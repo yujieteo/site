@@ -27,7 +27,8 @@ When the site and this file disagree, change the site.
 6. Each post has a download limit in KB of first load. The build fails over it.
 7. The limit is the first load rounded up to the next 10 KB. It is 80 KB for the posts now.
 8. Each figure kind has its own script, `/kit/KIND.js`. A post loads only the kinds it uses.
-9. The specimen post is a draft. It is built in evals and never deployed.
+9. A schematic figure is `::figure kind=schematic src=NAME.svg`, with the SVG in the post folder. Its labelled parts are `<g data-label="TEXT">`. A Next button shows them one at a time.
+10. The specimen post is a draft. It is built in evals and never deployed.
 
 ## Look
 

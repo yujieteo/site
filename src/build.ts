@@ -22,9 +22,9 @@ function loadPosts(dir: string, drafts: boolean): Post[] {
   return posts;
 }
 
-function renderBody(post: Post): { html: string; toc: ReturnType<typeof headings> } {
+function renderBody(post: Post, postsDir: string): { html: string; toc: ReturnType<typeof headings> } {
   const split = footnotes(post.source);
-  const withFigures = figures(split.body, post.slug);
+  const withFigures = figures(split.body, post.slug, postsDir);
   const html = footnoteHtml(Bun.markdown.html(withFigures, { headings: { ids: true } }), split.notes);
   return { html, toc: headings(html) };
 }
@@ -59,12 +59,12 @@ async function main(): Promise<void> {
   await buildAssets(out);
   const posts = loadPosts(postsDir, drafts);
   writeFileSync(`${out}/index.html`, homePage(posts));
-  for (const post of posts) writePost(out, post);
+  for (const post of posts) writePost(out, post, postsDir);
   console.log(`built ${posts.length} post(s) into ${out}`);
 }
 
-function writePost(out: string, post: Post): void {
-  const body = renderBody(post);
+function writePost(out: string, post: Post, postsDir: string): void {
+  const body = renderBody(post, postsDir);
   const kinds = figureKinds(post.source);
   const dir = `${out}/essays/${post.slug}`;
   mkdirSync(dir, { recursive: true });

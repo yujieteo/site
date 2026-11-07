@@ -41,6 +41,10 @@ main() {
   has "${page}" 'type="range"'
   has "${page}" 'src="/kit/orbit.js"'
   has "${page}" 'src="/kit/compound.js"'
+  has "${page}" 'src="/kit/schematic.js"'
+  want_count "${page}" 'data-label=' 3 "want three labelled parts"
+  has "${page}" 'data-next'
+  [[ -s "${out}/kit/schematic.js" ]] || fail "no script for the schematic kind"
   want_count "${page}" 'kit/faithful.js' 0 "the specimen loads a kind it does not use"
   [[ -s "${out}/kit/orbit.js" ]] || fail "no script for the orbit kind"
   has "${text}" '^# A specimen post'

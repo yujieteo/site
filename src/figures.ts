@@ -4,7 +4,7 @@ import { barHeight, CHART_HEIGHT, COMPOUND_MAX_RATE, COMPOUND_START } from "./ki
 import { YEARS, fillBalances } from "./kit/compound.hot.ts";
 import { faithfulFigure } from "./kit/faithful.ts";
 
-export const FIGURE_KINDS: readonly string[] = ["orbit", "compound", "faithful", "anscombe", "berkeley", "mix"];
+export const FIGURE_KINDS: readonly string[] = ["orbit", "compound", "faithful", "anscombe", "berkeley", "mix", "schematic"];
 
 const COMPOUND_START_RATE = 5;
 const BAR_WIDTH = 40;
@@ -36,11 +36,17 @@ function compound(id: string): string {
   return `<svg viewBox="0 0 576 ${CHART_HEIGHT}" width="576" role="img" aria-label="ALT" data-bars>${compoundBars(balances)}</svg><div class="controls"><label for="${id}-rate">Rate per year</label><input id="${id}-rate" type="range" min="0" max="${COMPOUND_MAX_RATE}" step="0.5" value="${COMPOUND_START_RATE}" data-compound><output for="${id}-rate">${COMPOUND_START_RATE}%: ${last} after ${YEARS} years</output></div>`;
 }
 
+function schematic(svg: string): string {
+  const drawn = svg.trim().replace("<svg", '<svg role="img" aria-label="ALT"');
+  return `${drawn}<div class="controls"><button class="button" type="button" data-next>Next</button></div><p class="step-label" aria-live="polite" data-step-label></p>`;
+}
+
 function escapeAttribute(text: string): string {
   return text.split("&").join("&amp;").split('"').join("&quot;").split("<").join("&lt;");
 }
 
-function inner(kind: string, id: string): string {
+function inner(kind: string, id: string, svg: string): string {
+  if (kind === "schematic") return schematic(svg);
   if (kind === "orbit") return orbit();
   if (kind === "faithful") return faithfulFigure(id);
   if (kind === "anscombe") return anscombeFigure(id);
@@ -49,6 +55,6 @@ function inner(kind: string, id: string): string {
   return compound(id);
 }
 
-export function figureHtml(kind: string, id: string, alt: string, caption: string): string {
-  return `<figure id="${id}" data-kind="${kind}"><div class="frame">${inner(kind, id).replace("ALT", escapeAttribute(alt))}</div><figcaption>${caption}</figcaption></figure>`;
+export function figureHtml(kind: string, id: string, alt: string, caption: string, svg: string): string {
+  return `<figure id="${id}" data-kind="${kind}"><div class="frame">${inner(kind, id, svg).replace("ALT", escapeAttribute(alt))}</div><figcaption>${caption}</figcaption></figure>`;
 }
