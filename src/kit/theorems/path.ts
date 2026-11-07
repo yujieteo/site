@@ -123,7 +123,7 @@ function rows(known: ReadonlySet<number>): string {
   const out: string[] = [];
   for (let c = 0; c <= most; c++) {
     out.push(`<p class="p-layer">${c === 0 ? "FOUNDATIONS" : c === most ? "LONGEST CHAINS" : `STEP ${c + 1}`}</p>`);
-    const ids = PATH.map((_, v) => v).filter((v) => col[v] === c).sort((a, b) => (row[a] ?? 0) - (row[b] ?? 0));
+    const ids = PATH.map((_, v) => v).filter((v) => col[v] === c).toSorted((a, b) => (row[a] ?? 0) - (row[b] ?? 0));
     for (const v of ids) out.push(listRow(v, known, s));
   }
   return `<div class="p-list">${out.join("")}</div>`;

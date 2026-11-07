@@ -11,7 +11,7 @@
           packages = with pkgs; [
             bashInteractive git jq shellcheck gnutar
             go golangci-lint
-            bun nodejs
+            bun nodejs chromium
             python3 ruff basedpyright
             rustc cargo clippy rustfmt
           ];

@@ -1,4 +1,4 @@
-import { at, scale, svgHead } from "./scale.ts";
+import { at, PHONE, scale, svgHead } from "./scale.ts";
 import { DIMS, fitPca, INFO_L1, INFO_L2, INFO_LOADINGS, INFO_SIZE, INFO_TOTAL, WORK_SIZE } from "./pca.hot.ts";
 import { AXES, LAYERS, PARADIGMS, REPOS } from "./stack-data.ts";
 
