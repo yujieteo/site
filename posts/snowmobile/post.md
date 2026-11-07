@@ -1,7 +1,6 @@
 ---
 title: Take apart before you put together
 date: 2026-11-07
-draft: true
 budget_kb: 80
 summary: In 1976 John Boyd said that new things come from the parts of old things. I built a tool that takes apart real software and puts the parts back together. The hard part was not the putting back.
 summary: To find parts that are far apart you need a ruler, and a ruler needs axes. The axes are a choice. Move them and the same 27 ideas change neighbours.

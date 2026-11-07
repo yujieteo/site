@@ -10,7 +10,7 @@ main() {
   has "${out}" "PASS the survey shares and the 73 links"
   out=$(mktemp -d)
   bun src/build.ts --out "${out}" > /dev/null || fail "build failed"
-  [[ ! -e "${out}/essays/snowmobile" ]] || fail "a draft was built without --drafts"
+  [[ -e "${out}/essays/snowmobile" ]] || fail "the published post is missing from the build"
   rm -rf "${out}"
   out=$(mktemp -d)
   bun src/build.ts --drafts --out "${out}" > /dev/null || fail "draft build failed"
