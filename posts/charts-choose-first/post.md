@@ -1,6 +1,7 @@
 ---
 title: Charts choose before you look
 date: 2026-11-07
+draft: true
 budget_kb: 80
 summary: Every chart makes choices before you see a single mark, such as how to bin, what to sum up, which groups to pool.
 summary: Three classic datasets let you make those choices yourself and watch what changes.

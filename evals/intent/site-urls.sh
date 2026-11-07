@@ -14,7 +14,8 @@ main() {
   files=$(cd "${out}" && find . -type f)
   has "${files}" './index.html'
   index=$(cat "${out}/index.html")
-  has "${index}" 'href="/essays/charts-choose-first/"'
+  [[ "${index}" != *'href="/essays/charts-choose-first/"'* ]] || fail "the charts draft is listed"
+  [[ ! -e "${out}/essays/charts-choose-first" ]] || fail "the charts draft was deployed"
   has "${index}" 'href="/contact.asc"'
   cmp -s static/public/contact.asc "${out}/contact.asc" || fail "the OpenPGP key is not served"
   has "${files}" './.well-known/openpgpkey/hu/dj3498u4hyyarh35rkjfnghbjxug6b19'

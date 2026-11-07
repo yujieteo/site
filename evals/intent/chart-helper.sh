@@ -9,7 +9,7 @@ main() {
   has "${out}" "PASS panels drop to one column when narrow"
   has "${out}" "PASS labels that touch a kept label are dropped"
   out=$(mktemp -d)
-  bun src/build.ts --out "${out}" > /dev/null || fail "build failed"
+  bun src/build.ts --drafts --out "${out}" > /dev/null || fail "build failed"
   page=$(cat "${out}/essays/charts-choose-first/index.html")
   has "${page}" 'data-wide'
   has "${page}" 'women: 89 of 108 admitted'

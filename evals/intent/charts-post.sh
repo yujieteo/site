@@ -5,7 +5,7 @@ need bun
 main() {
   local out page text
   out=$(mktemp -d)
-  bun src/build.ts --out "${out}" > /dev/null || fail "build failed"
+  bun src/build.ts --drafts --out "${out}" > /dev/null || fail "build failed"
   page=$(cat "${out}/essays/charts-choose-first/index.html")
   has "${page}" '0.50 min wide: 2 peaks'
   has "${page}" 'n 11 · r 0.82 · y = 3.00 + 0.50x'
