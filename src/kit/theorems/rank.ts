@@ -1,4 +1,4 @@
-import { DIALS, PRESETS, SCORED } from "./data-scores.ts";
+import { CANDIDATES, DIALS, PRESETS, SCORED } from "./data-scores.ts";
 import { addStyle, choices, escapeText, head, mount, setActive, stat, whole } from "./look.ts";
 import { groups, perfect, ranked, weighted, type Row } from "./scores.ts";
 import { plotWidth, watch } from "../redraw.ts";
@@ -86,7 +86,7 @@ function summary(rows: readonly Row[], weights: readonly number[]): string {
   const fixed = rows.slice(0, 10).filter(perfect).length;
   let tied = 0;
   for (const g of groups()) if (Math.abs(weighted(g.digits, weights) - cut) < 1e-9) tied += g.count;
-  return `<b>${fixed}</b> of the ten are perfect scores, marked with a dot. The tenth seat scores <b>${cut.toFixed(1)}</b>, and <b>${tied}</b> results tie at that score, so the alphabet picks who sits there.`;
+  return `<b>${fixed}</b> of the ten are perfect scores, marked with a dot. The tenth seat scores <b>${cut.toFixed(1)}</b>, and <b>${tied}</b> results tie at that score. The tool breaks a tie by the default score first, then by name.`;
 }
 
 function draw(figure: HTMLElement, root: Element): void {
@@ -132,7 +132,7 @@ function wire(figure: HTMLElement, root: Element): void {
 export function show(figure: HTMLElement): void {
   addStyle("theorem-rank", CSS);
   const start = PRESETS[0]?.[1] ?? [];
-  const stats = `<div class="t-stats">${stat(whole(SCORED), "results scored on seven dials")}${stat("41", "can ever reach the top ten, under any weights")}${stat("5", "are perfect, and are in every top ten")}</div>`;
+  const stats = `<div class="t-stats">${stat(whole(SCORED), "results scored on seven dials")}${stat(String(CANDIDATES.length), "can ever reach the top ten, under any weights")}${stat("5", "are perfect, and are in every top ten")}</div>`;
   const html = `${head("The weights", "Five of the ten seats are taken before you touch a slider")}${stats}${choices("preset", PRESETS.map((p) => p[0]), 0)}${sliders(start)}<ol class="r-top" data-list></ol><div data-chart></div><p class="t-note" data-note aria-live="polite"></p>`;
   const root = mount(figure, 1, html);
   if (!root) return;

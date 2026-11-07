@@ -63,3 +63,13 @@ export function mount(figure: HTMLElement, colour: number, html: string): HTMLEl
 export function whole(n: number): string {
   return n.toLocaleString("en-US");
 }
+
+const KEYS: readonly string[] = ["data-hyp", "data-move", "data-node"];
+
+export function refocus(root: Element, had: Element | null): void {
+  if (!had || had.isConnected) return;
+  for (const key of KEYS) {
+    const value = had.getAttribute(key);
+    if (value !== null) root.querySelector<HTMLElement>(`[${key}="${value}"]`)?.focus();
+  }
+}

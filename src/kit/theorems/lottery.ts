@@ -89,13 +89,11 @@ function render(root: Element, s: State): void {
 
 function frame(root: Element, s: State): void {
   const now = performance.now();
-  if (!s.paused) {
-    s.carry += ((now - s.last) * DRAWS) / DURATION;
-    const step = Math.min(Math.floor(s.carry), DRAWS - s.done);
-    s.carry -= step;
-    tally(s.counts, s.next, step);
-    s.done += step;
-  }
+  s.carry += ((now - s.last) * DRAWS) / DURATION;
+  const step = Math.min(Math.floor(s.carry), DRAWS - s.done);
+  s.carry -= step;
+  tally(s.counts, s.next, step);
+  s.done += step;
   s.last = now;
   if (s.done >= DRAWS) stop(s);
   render(root, s);
@@ -104,6 +102,13 @@ function frame(root: Element, s: State): void {
 function stop(s: State): void {
   clearInterval(s.timer);
   s.running = false;
+}
+
+function schedule(root: Element, s: State): void {
+  s.last = performance.now();
+  s.timer = window.setInterval(() => {
+    frame(root, s);
+  }, TICK);
 }
 
 function start(root: Element, s: State): void {
@@ -116,11 +121,8 @@ function start(root: Element, s: State): void {
     return;
   }
   s.running = true;
-  s.last = performance.now();
   render(root, s);
-  s.timer = window.setInterval(() => {
-    frame(root, s);
-  }, TICK);
+  schedule(root, s);
 }
 
 function wire(root: Element, s: State): void {
@@ -128,8 +130,10 @@ function wire(root: Element, s: State): void {
     const target = event.target instanceof Element ? event.target.closest("button") : null;
     if (!target) return;
     if (target.hasAttribute("data-run")) start(root, s);
-    if (target.hasAttribute("data-pause")) {
+    if (target.hasAttribute("data-pause") && s.running) {
       s.paused = !s.paused;
+      if (s.paused) clearInterval(s.timer);
+      else schedule(root, s);
       render(root, s);
     }
     if (target.hasAttribute("data-reset")) {
@@ -144,7 +148,7 @@ export function show(figure: HTMLElement): void {
   addStyle("theorem-lottery", CSS);
   const stats = `<div class="t-stats">${stat(String(CANDIDATES.length), "results can ever enter the top ten")}${stat("5", "sit in the top ten under every draw")}${stat('<output data-seen>0</output>', "different results have appeared so far")}</div>`;
   const controls = `<div class="l-controls"><button class="button" type="button" data-run>Draw ${whole(DRAWS)} weightings</button><button class="button fig-pause" type="button" data-pause aria-pressed="false" disabled>Pause</button><button class="button" type="button" data-reset>Reset</button><output data-count aria-live="polite"></output></div>`;
-  const html = `${head("A lottery of weights", "Thirty-six results share the other five seats")}${stats}${controls}<ol class="l-bars" data-bars></ol><p class="t-note">Each draw picks seven random weights, uniform over every way to split 100 between the dials. A bar is the share of draws whose top ten holds that result.</p>`;
+  const html = `${head("A lottery of weights", `${CANDIDATES.length - 5} results share the other five seats`)}${stats}${controls}<ol class="l-bars" data-bars></ol><p class="t-note">Each draw picks seven random weights, uniform over every way to split 100 between the dials. A bar is the share of draws whose top ten holds that result.</p>`;
   const root = mount(figure, 2, html);
   if (!root) return;
   const s = fresh();

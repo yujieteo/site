@@ -1,6 +1,6 @@
 import { PROOFS, type Proof } from "./data-proof.ts";
 import { VERIFIED } from "./data-proof-checks.ts";
-import { addStyle, choices, escapeText, head, mount, setActive, stat, whole } from "./look.ts";
+import { addStyle, choices, escapeText, head, mount, refocus, setActive, stat, whole } from "./look.ts";
 import { plotWidth, watch } from "../redraw.ts";
 import { hideTooltips, wireTooltips } from "../tooltip.ts";
 import { svgHead } from "../scale.ts";
@@ -171,6 +171,12 @@ function draw(figure: HTMLElement, root: Element, view: View): void {
   setActive(root, "proof", view.proof);
 }
 
+function redraw(figure: HTMLElement, root: Element, view: View): void {
+  const had = document.activeElement;
+  draw(figure, root, view);
+  refocus(root, had);
+}
+
 function act(target: Element, view: View): boolean {
   const pick = target.closest("[data-proof]");
   const hyp = target.closest("[data-hyp]");
@@ -193,9 +199,9 @@ export function show(figure: HTMLElement): void {
   if (!root) return;
   const view: View = { proof: 0, now: 0, hyp: -1 };
   root.addEventListener("click", (event) => {
-    if (event.target instanceof Element && act(event.target, view)) draw(figure, root, view);
+    if (event.target instanceof Element && act(event.target, view)) redraw(figure, root, view);
   });
-  watch(figure, () => { draw(figure, root, view); });
+  watch(figure, () => { redraw(figure, root, view); });
   draw(figure, root, view);
   wireTooltips(figure);
 }

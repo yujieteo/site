@@ -1,10 +1,10 @@
 ---
-title: Only Forty-One Theorems Can Win
+title: Only Twenty-Nine Theorems Can Win
 date: 2026-11-07
 draft: true
 budget_kb: 80
-summary: I built a machine to tell me which theorem to learn next. It scored 2,740 results on seven dials. Only 41 of them can ever reach its top ten, whatever weights you choose.
-summary: Five perfect scores sit in every top ten. The weights only ever fight over the other five seats, and ties at the cutoff are settled by the alphabet.
+summary: I built a machine to tell me which theorem to learn next. It scored 2,740 results on seven dials. Only 29 of them can ever reach its top ten, whatever weights you choose.
+summary: Five perfect scores sit in every top ten. The weights only ever fight over the other five seats, and a tie at the cutoff goes to the higher default score, then to the earlier name.
 summary: Asked twice, the same judge changed 27% of its scores. Almost every change went down.
 summary: A score is not a job. On a real question, the perfect-scoring result gives the weakest answer, and the best answer comes from a result scored lower.
 summary: The useful output was never the list. It was the shape of the disagreement, and what you already know.
@@ -20,9 +20,9 @@ I expected the ranking to be the point. It was the least useful thing the tools 
 
 Here is what I found when I looked closely at my own data. Each claim comes with a figure you can move, and every number in this essay is computed from the tools' own files.
 
-1. **Only 41 results can ever reach the top ten.** Not 41 under the default weights: 41 under any weights at all. The other 2,699 are beaten by at least ten results on every dial at once, so no choice of weights can lift them.
+1. **Only 29 results can ever reach the top ten.** Not 29 under the default weights: 29 under any weights at all. Each of the other 2,711 always has at least ten results ranked above it, so no choice of weights can lift it.
 
-2. **Half the top ten is fixed.** Five results score a perfect 4 on all seven dials. They sit in every top ten, whatever you do. The sliders only ever decide the other five seats, and when results tie for the last seat, the alphabet decides.
+2. **Half the top ten is fixed.** Five results score a perfect 4 on all seven dials. They sit in every top ten, whatever you do. The sliders only ever decide the other five seats. When results tie for the last seat, the default score decides, and when that ties too, the alphabet does.
 
 3. **The judge does not agree with itself.** For 57 results, the same model scored everything twice. It gave a different score on 27% of the dials. When it changed its mind, it went down nine times out of ten.
 
@@ -72,7 +72,7 @@ I don't think the judges were wrong to do this. The question asks whether a resu
 
 The dials that spread out are the ones with small weights or awkward questions. Practical impact runs the whole range: 277 results score 0 and 409 score 4. Research influence is nearly flat across 1, 2 and 3. Those are the dials doing the sorting, and they are also the hardest to judge from the evidence.
 
-## Only Forty-One Can Win
+## Only Twenty-Nine Can Win
 
 The overall score combines the seven dials with weights. The default weights are 25, 25, 20, 15, 5, 5 and 5. The tool turns them into a score out of 100:
 
@@ -82,27 +82,27 @@ Here <math><msub><mi>x</mi><mi>i</mi></msub></math> is the score on dial <math><
 
 My plan was to show you how the top ten moves as you change what you care about. Try it. Pick a preset, or drag a slider all the way down.
 
-::figure kind=theorem-rank wide=true alt="Seven weight sliders and three preset buttons control a ranked list of ten results with their scores, and a histogram of all 2,740 scores with a dashed line at the score of the tenth seat. Five results with perfect scores are marked with a dot." caption="The top ten under the weights you choose, ranked out of the 41 results that can ever enter it. The histogram shows all 2,740 scores; the dashed line is the tenth seat. A dot marks a perfect score."
+::figure kind=theorem-rank wide=true alt="Seven weight sliders and three preset buttons control a ranked list of ten results with their scores, and a histogram of all 2,740 scores with a dashed line at the score of the tenth seat. Five results with perfect scores are marked with a dot." caption="The top ten under the weights you choose, ranked out of the 29 results that can ever enter it. The histogram shows all 2,740 scores; the dashed line is the tenth seat. A dot marks a perfect score."
 
 The list moves less than I hoped, and for a reason that took me a while to see.
 
 Five results score 4 on every dial: Bayes rule, Bessel's inequality, the Cauchy–Schwarz inequality, Markov's inequality and a probabilistic form of Cauchy–Schwarz. A perfect score stays perfect under any weights. So those five are in every top ten you can make. The sliders never touch them.
 
-That leaves five seats. Who can sit there? I expected the answer to be "almost anyone, with the right weights". It is not. A result can only reach the top ten if fewer than ten other results beat it, or tie it, on every single dial. If ten results are at least as good on all seven dials and better on one, no weighting can lift it past them.[^dominance] I counted. Of 2,740 results, only 41 pass that test. The figure ranks those 41, and it gives the same top ten you would get from all 2,740.
+That leaves five seats. Who can sit there? I expected the answer to be "almost anyone, with the right weights". It is not. Some results are always ranked above a given result. One is a result that is at least as good on every dial and better on one. Another is a result with exactly the same scores and an earlier name. If ten results are always above it, no weighting can lift it into the top ten.[^dominance] I counted. Of 2,740 results, only 29 have fewer than ten results always above them, and each of those 29 does reach the top ten under some weights. The figure ranks those 29, and it gives the same top ten you would get from all 2,740.
 
-Look at the histogram under the list. The scores pile up near the top. Under the default weights, 255 results score 90 or more, and the scores can only take 58 different values. With seven dials of five steps each and a handful of weights, there just aren't many numbers to go around. So the tenth seat is usually a tie, and the tool breaks ties by name. Under the default weights, seven results tie for seats six to ten at 98.8. Under other weights it is worse: twelve results share the score string 4, 3, 4, 4, 4, 4, 4, including the Pythagorean theorem, Euler's formula, the binomial theorem and the fundamental theorem of arithmetic. Which of them you see depends on where its name falls in the alphabet.
+Look at the histogram under the list. The scores pile up near the top. Under the default weights, 255 results score 90 or more, and the scores can only take 58 different values. With seven dials of five steps each and a handful of weights, there just aren't many numbers to go around. So the tenth seat is usually a tie. The tool breaks a tie by the default score first, then by name. Under the default weights that second rule decides: seven results tie for seats six to ten at 98.8, and the alphabet picks five. Put all the weight on effectiveness, and 1,752 results tie at 100; the default score then picks the ten. The alphabet matters most when the scores are identical. Twelve results share the score string 4, 3, 4, 4, 4, 4, 4. Under every weighting they tie on both scores, so only the first five by name can ever take the five open seats: the binomial theorem, two diagonalization results, Euler's formula and Euler's theorem. The Pythagorean theorem and the fundamental theorem of arithmetic are among the seven that never can.
 
 ### A lottery for the last five seats
 
-If the sliders don't matter much, maybe the question is how often each result wins when you don't know what you want. So here is a lottery. Each draw picks a random set of weights, every set equally likely, ranks the 41 results and counts who made the top ten.
+If the sliders don't matter much, maybe the question is how often each result wins when you don't know what you want. So here is a lottery. Each draw picks a random set of weights, every set equally likely, ranks the 29 results and counts who made the top ten.
 
-::figure kind=theorem-lottery alt="Bars for the 41 results that can reach the top ten show how often each made it across random weightings. Five perfect scores are at 100 percent. A button draws 1,000 weightings as an animation that can be paused." caption="Press Draw to rank the 41 under 1,000 random weightings, one at a time. The five perfect scores are in every draw. The rest share five seats."
+::figure kind=theorem-lottery alt="Bars for the 29 results that can reach the top ten show how often each made it across random weightings. Five perfect scores are at 100 percent. A button draws 1,000 weightings as an animation that can be paused." caption="Press Draw to rank the 29 under 1,000 random weightings, one at a time. The five perfect scores are in every draw. The rest share five seats."
 
-Run it a few times. The five perfect scores are always at the top, at 100%. Below them, about a dozen results share the other five seats fairly evenly, each winning a quarter to two fifths of the draws: the binomial theorem, Cartan's magic formula, the diagonalization of self-adjoint maps, Chebyshev's inequality, the Abel summation formula. Then the tail drops fast. In 20,000 draws, only 29 of the 41 ever appear, and twelve never do.
+Run it a few times. The five perfect scores are always at the top, at 100%. Below them, about a dozen results share the other five seats fairly evenly, each winning a quarter to two fifths of the draws: the binomial theorem, Cartan's magic formula, the diagonalization of self-adjoint maps, Chebyshev's inequality, the Abel summation formula. Then the tail drops fast: halting theorem, Russell's paradox and the diagonal argument win one draw in fifty or less.
 
 Look for Bayes' theorem in that tail. It wins about one draw in fifteen. Its twin, Bayes rule, wins every draw. They are the same result, and I'll come back to why they score differently.
 
-This is when I stopped thinking of the ranking as an answer. A ranking of 2,740 things with seven coarse dials is mostly ties at the top, with the order inside each tie set by the alphabet. The interesting information is not in the order. It is in the dials.
+This is when I stopped thinking of the ranking as an answer. A ranking of 2,740 things with seven coarse dials is mostly ties at the top, with the order inside each tie set by a second score and then the alphabet. The interesting information is not in the order. It is in the dials.
 
 ## Asking Twice
 
@@ -252,7 +252,7 @@ If I had to compress it into advice, it would be this. **Don't ask a ranking wha
 
 ### What would change my mind
 
-I am fairly confident about the arithmetic: 41 results can enter the top ten, five are fixed, ties are settled by the alphabet. Those follow from the scores. I am less confident about the judges. The retest covers only 57 results, all of them scoring 77.5 or more, and all by the same two models. A wider retest across the whole range might show steadier scores lower down, where there is more room to move. I also don't know why the second pass went down. If it was because the second pass saw more evidence, the drift would be a sign of care, not of noise.
+I am fairly confident about the arithmetic: 29 results can enter the top ten, five are fixed, and ties go to the default score and then the name. Those follow from the scores. I am less confident about the judges. The retest covers only 57 results, all of them scoring 77.5 or more, and all by the same two models. A wider retest across the whole range might show steadier scores lower down, where there is more room to move. I also don't know why the second pass went down. If it was because the second pass saw more evidence, the drift would be a sign of care, not of noise.
 
 I am least confident about the papers. Name counts in abstracts are a narrow window, and the data ends in 2020, before a large share of today's machine learning work.
 
@@ -272,11 +272,11 @@ Every figure's data comes from [Theorems](https://github.com/yujieteo/theorems) 
 The explorer data is `viz/theorem-explorer/raw.json`: the rubric, presets and worked cases are in its top level; scores, confidence, evidence grades, prerequisite links and relations are in its core pack; arXiv counts are in its popularity pack.
 The learner data is `viz/theorem-learner/raw.json`, core pack, for the proof moves and the verification counts, and `viz/theorem-learner/data/learning/theorems/part-000.json`, `part-007.json` and `batch-00.json` for the three proofs.
 The arXiv counts cover titles and abstracts through August 2020, in two-year bins; rates use bins with at least 100 papers.
-The 41 results are those that fewer than ten results match or beat on all seven dials at once.
+The 29 results are those with fewer than ten results always ranked above them under the tool's tie-break; a search over every weighting on a grid of eighths, and 100,000 random weightings, put each of them in a top ten.
 
 [^judges]: Claude Opus 5.5 judged in the same session that built the catalog, with no API call. GPT-6.1 Terra ran through the Codex tool at low reasoning effort. DeepSeek Flash ran through its API with thinking turned off. The three never judged the same record, so their scores can't be compared directly, except by accident, as in the duplicate records below.
 [^weights]: Dividing by the total changes nothing when the weights already add to 100. It only lets a single slider move without the others. The original tool's insistence on 100 is a reasonable guard: it makes you notice that raising one weight means lowering another.
-[^dominance]: The figure breaks ties first by the default score and then by name, which makes the 41 exact: a result with ten dominators always ranks below all ten of them, under any weights with a positive total. If you break ties some other way, a few results at the edge can swap.
+[^dominance]: This depends on the tie-break. A result that is as good on every dial and better on one also has a higher default score, so it wins any tie. A result with the same scores wins on name. Both are above under every weighting with a positive total. Break ties some other way, and a few results at the edge can swap.
 [^second]: The second assessment ran on 58 results; one of them, Fourier series, is marked not applicable on every dial both times, which leaves 57. Each result was rescored by the same model that scored it first: Claude Opus 5.5 for 45 of them and GPT-6.1 Terra for 12.
 [^why]: A plain explanation is anchoring: if the second pass could see the first, a judge asked "are you sure?" tends to hedge downward. The data doesn't say whether it could.
 [^confidence]: There is a third possibility: the evidence grade is computed from the sources the pipeline found, while the judge's confidence also draws on what the model already knows. A model can be confident about the Pythagorean theorem with no evidence at all. That would be honest, but it would not be what the rubric says.

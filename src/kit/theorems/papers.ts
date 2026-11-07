@@ -114,7 +114,7 @@ export function show(figure: HTMLElement): void {
   addStyle("theorem-papers", CSS);
   const rho = papersSpearman();
   const stats = `<div class="t-stats">${stat(whole(PAPERS.length), "results named in at least five arXiv papers")}${stat(rho.toFixed(2), "rank correlation between score and papers")}${stat(whole(PAPERS.find((p) => p[0] === "Bessel inequality")?.[2] ?? 0), "papers name Bessel's inequality, a perfect score")}</div>`;
-  const html = `${head("Scores and papers", "The scores and the papers barely agree")}${stats}${choices("mode", ["Perfect scores", "The 41 that can reach the top ten"], 0)}<div data-chart></div>`;
+  const html = `${head("Scores and papers", "The scores and the papers barely agree")}${stats}${choices("mode", ["Perfect scores", `The ${TOP_TEN.size} that can reach the top ten`], 0)}<div data-chart></div>`;
   const root = mount(figure, 1, html);
   const slot = root?.querySelector("[data-chart]");
   if (!root || !slot) return;

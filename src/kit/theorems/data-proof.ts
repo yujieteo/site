@@ -59,11 +59,12 @@ const MARKOV: Proof = {
 const HOEFFDING: Proof = {
   theorem: "Hoeffding inequality",
   name: "Sub-Gaussian moments and the Chernoff bound",
-  statement: "If X₁, …, Xₙ are independent with aᵢ ≤ Xᵢ ≤ bᵢ and S is their sum, then P(S − E[S] ≥ ε) ≤ exp(−2ε² / Σ(bᵢ − aᵢ)²).",
+  statement: "If X₁, …, Xₙ are independent with aᵢ ≤ Xᵢ ≤ bᵢ, Σ(bᵢ − aᵢ)² > 0, S is their sum and ε ≥ 0, then P(S − E[S] ≥ ε) ≤ exp(−2ε² / Σ(bᵢ − aᵢ)²).",
   decl: "ProbabilityTheory.HasSubgaussianMGF.measure_sum_range_ge_le_of_iIndepFun",
   hypotheses: [
     { text: "independent", why: "Independence makes the moment generating function of the sum the product of those of the summands.", steps: [1] },
-    { text: "aᵢ ≤ Xᵢ ≤ bᵢ", why: "The ranges give each centred summand the parameter (bᵢ − aᵢ)²/4, and their positive sum makes c > 0.", steps: [0, 3] },
+    { text: "aᵢ ≤ Xᵢ ≤ bᵢ", why: "The ranges give each centred summand the parameter (bᵢ − aᵢ)²/4 in Hoeffding's lemma.", steps: [0, 1] },
+    { text: "Σ(bᵢ − aᵢ)² > 0", why: "A positive total range makes c > 0, so t = ε/c is defined. With every range zero the sum is constant and the bound would divide by zero.", steps: [3] },
     { text: "ε ≥ 0", why: "With ε ≥ 0 the best choice t = ε/c is not negative, as the Markov step needs.", steps: [3] },
   ],
   steps: [

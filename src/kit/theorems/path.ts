@@ -1,15 +1,17 @@
 import { PATH } from "./data-path.ts";
-import { addStyle, escapeText, head, mount, stat } from "./look.ts";
+import { addStyle, escapeText, head, mount, refocus, stat } from "./look.ts";
 import { plotWidth, watch } from "../redraw.ts";
 import { hideTooltips, wireTooltips } from "../tooltip.ts";
 import { svgHead } from "../scale.ts";
 
 const CSS = `
-.p-map .edge { fill: none; stroke: var(--underline-hover); stroke-width: 1.25; }
+.p-map .edge { fill: none; stroke: var(--underline-hover); stroke-width: 1.25; pointer-events: none; }
 .p-map .edge[data-judged] { stroke: var(--underline); stroke-dasharray: 3 3; }
 .p-map .node rect { fill: var(--card); stroke: var(--line); stroke-width: 1; }
 .p-map .node { cursor: pointer; outline: none; }
-.p-map .node text { fill: var(--ink); font-size: 12px; }
+.p-map .node text { fill: var(--ink); font-size: 12px; paint-order: stroke; stroke: var(--card); stroke-width: 4px; stroke-linejoin: round; }
+.p-map .node[data-ready] text { stroke: var(--fig-soft); }
+.p-map .node[data-known] text { stroke: var(--fig); }
 .p-map .node .un { fill: var(--muted); font-size: 10.5px; }
 .p-map .node[data-ready] rect { fill: var(--fig-soft); stroke: var(--fig); stroke-width: 1.5; }
 .p-map .node[data-known] rect { fill: var(--fig); stroke: var(--fig); }
@@ -113,18 +115,19 @@ function chart(width: number, known: ReadonlySet<number>): string {
   const xy = (v: number): [number, number] => [(col[v] ?? 0) * step, TOP + (((row[v] ?? 0) + 0.5) * band) / (count[col[v] ?? 0] ?? 1) - NODE_H / 2];
   const s = state(known);
   const edges: string[] = [];
+  const over: string[] = [];
   PATH.forEach(([, pre], v) => {
     const [x2, y2] = xy(v);
     for (const [p, ok] of pre) {
       const [x1, y1] = xy(p);
       const a = x1 + w;
       const m = (a + x2) / 2;
-      edges.push(`<path class="edge"${ok === 1 ? "" : " data-judged"} d="M${a} ${y1 + NODE_H / 2} C${m} ${y1 + NODE_H / 2} ${m} ${y2 + NODE_H / 2} ${x2} ${y2 + NODE_H / 2}"/>`);
+      ((col[v] ?? 0) - (col[p] ?? 0) > 1 ? over : edges).push(`<path class="edge"${ok === 1 ? "" : " data-judged"} d="M${a} ${y1 + NODE_H / 2} C${m} ${y1 + NODE_H / 2} ${m} ${y2 + NODE_H / 2} ${x2} ${y2 + NODE_H / 2}"/>`);
     }
   });
   const heads = [`<text class="col" x="0" y="14">FOUNDATIONS</text>`, `<text class="col" x="${width}" y="14" text-anchor="end">LONGEST CHAINS</text>`];
   const nodes = PATH.map((_, v) => node(v, ...xy(v), w, known, s));
-  return `${svgHead(width, height)}<g class="p-map">${heads.join("")}${edges.join("")}${nodes.join("")}</g></svg>`.replace("ALT", "A map of 31 results joined by prerequisite links, foundations on the left");
+  return `${svgHead(width, height)}<g class="p-map">${heads.join("")}${edges.join("")}${nodes.join("")}${over.join("")}</g></svg>`.replace("ALT", "A map of 31 results joined by prerequisite links, foundations on the left");
 }
 
 function supported(): number {
@@ -147,6 +150,12 @@ function toggle(known: Set<number>, v: number): void {
   else known.add(v);
 }
 
+function redraw(figure: HTMLElement, root: Element, known: ReadonlySet<number>): void {
+  const had = document.activeElement;
+  draw(figure, root, known);
+  refocus(root, had);
+}
+
 export function show(figure: HTMLElement): void {
   addStyle("theorem-path", CSS);
   const edges = PATH.reduce((n, [, pre]) => n + pre.length, 0);
@@ -164,18 +173,16 @@ export function show(figure: HTMLElement): void {
     if (t?.closest("[data-clear]")) known.clear();
     if (t?.closest("[data-base]")) PATH.forEach(([, pre], v) => { if (pre.length === 0) known.add(v); });
     if (!hit && !t?.closest("button")) return;
-    draw(figure, root, known);
-    if (hit) root.querySelector<SVGElement>(`[data-node="${hit.getAttribute("data-node") ?? ""}"]`)?.focus();
+    redraw(figure, root, known);
   });
   root.addEventListener("keydown", (event) => {
     const hit = event.target instanceof Element ? event.target.closest("[data-node]") : null;
     if (!hit || !(event instanceof KeyboardEvent) || (event.key !== "Enter" && event.key !== " ")) return;
     event.preventDefault();
     toggle(known, Number(hit.getAttribute("data-node")));
-    draw(figure, root, known);
-    root.querySelector<SVGElement>(`[data-node="${hit.getAttribute("data-node") ?? ""}"]`)?.focus();
+    redraw(figure, root, known);
   });
-  watch(figure, () => { draw(figure, root, known); });
+  watch(figure, () => { redraw(figure, root, known); });
   draw(figure, root, known);
   wireTooltips(figure);
 }

@@ -1,5 +1,5 @@
 import { KINDS, MOVES, PROOFS } from "./data-moves.ts";
-import { addStyle, escapeText, head, mount, stat, whole } from "./look.ts";
+import { addStyle, escapeText, head, mount, refocus, stat, whole } from "./look.ts";
 import { plotWidth, watch } from "../redraw.ts";
 import { hideTooltips, wireTooltips } from "../tooltip.ts";
 import { at, scale, svgHead } from "../scale.ts";
@@ -85,15 +85,18 @@ export function show(figure: HTMLElement): void {
     const bar = event.target instanceof Element ? event.target.closest("[data-move]") : null;
     if (!bar) return;
     lit = Number(bar.getAttribute("data-move"));
+    const had = document.activeElement;
     draw(figure, root, lit);
-    root.querySelector<SVGElement>(`[data-move="${lit}"]`)?.focus();
+    refocus(root, had);
   };
   root.addEventListener("click", choose);
   root.addEventListener("keydown", (event) => {
     if (event instanceof KeyboardEvent && (event.key === "Enter" || event.key === " ")) choose(event);
   });
   watch(figure, () => {
+    const had = document.activeElement;
     draw(figure, root, lit);
+    refocus(root, had);
   });
   draw(figure, root, lit);
   wireTooltips(figure);
