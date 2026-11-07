@@ -133,3 +133,46 @@ main.page th { color: var(--muted); font-weight: 550; }
 main.page math { font-size: 1.1em; }
 main.page .formula { display: block; margin: 2rem 0; text-align: center; padding: 18px; background: var(--chip); border-radius: var(--radius); box-shadow: inset 0 0 0 1px var(--line); }
 main.page article > h3 { font-weight: 550; margin: 32px 0 12px; }
+.chart .pt.l0, .chip.l0 { fill: var(--series-1); }
+.chart .pt.l1, .chip.l1 { fill: var(--series-2); }
+.chart .pt.l2, .chip.l2 { fill: var(--series-3); }
+.chart .pt.l3, .chip.l3 { fill: var(--series-4); }
+.chart .pt[data-mark=near] { stroke: var(--ink); stroke-width: 2; }
+.chart .pt[data-mark=self] { stroke: var(--ink); stroke-width: 3; }
+.chart .repo { fill: none; stroke: var(--underline-hover); stroke-width: 1.5; }
+.chart .name.soft { fill: var(--muted); font-weight: 450; }
+.chart .axis { fill: var(--ink); cursor: help; outline: none; }
+.chart .axis:focus-visible { text-decoration: underline; }
+.chart .range { stroke: var(--underline); stroke-width: 4; stroke-linecap: round; }
+.chart .dot.a, .chart .dot.l0 { fill: var(--series-1); }
+.chart .dot.b, .chart .dot.l1 { fill: var(--series-2); }
+.chart .dot.l2 { fill: var(--series-3); }
+.chart .dot.l3 { fill: var(--series-4); }
+.chart .gap { fill: var(--ink); font-weight: 550; }
+.chart .bar.prob { fill: var(--underline); }
+.chart .row { outline: none; cursor: pointer; }
+.chart .row .hitrow { fill: transparent; }
+.chart .row[data-on=true] .bar.prob { fill: var(--series-2); }
+.chart .row[data-on=true] .hitrow { fill: var(--chip); stroke: var(--line); }
+.chart .row:focus-visible .hitrow { stroke: var(--ink); stroke-width: 2; }
+.chart .colhead { fill: var(--ink); font-size: 12px; cursor: pointer; outline: none; }
+.chart .colhead[data-on=true] { font-weight: 650; text-decoration: underline; }
+.chart .colhead:focus-visible { text-decoration: underline; }
+.chart .cell { fill: var(--series-1); fill-opacity: calc(var(--v) * 0.85); stroke: none; }
+.chart .num { font-size: 11px; fill: var(--ink); pointer-events: none; }
+.chart .num[data-v="0"] { fill: var(--underline-hover); }
+.axes { gap: 6px 16px; }
+.check { display: inline-flex; align-items: center; gap: 6px; font-size: var(--small); cursor: pointer; }
+.check input { accent-color: var(--ink); }
+.note { margin: 12px 0 0; font-size: var(--small); color: var(--muted); text-align: center; }
+.readout { margin-top: 16px; font-size: var(--small); }
+.readout p { margin: 6px 0; }
+.chip { display: inline-block; margin: 2px 2px; padding: 1px 8px; border-radius: 999px; background: var(--card); box-shadow: inset 0 0 0 1px var(--line); fill: none; }
+.chip.l0 { box-shadow: inset 0 0 0 1.5px var(--series-1); }
+.chip.l1 { box-shadow: inset 0 0 0 1.5px var(--series-2); }
+.chip.l2 { box-shadow: inset 0 0 0 1.5px var(--series-3); }
+.chip.l3 { box-shadow: inset 0 0 0 1.5px var(--series-4); }
+.tag { font-weight: 600; margin-right: 4px; }
+.tag.good { color: var(--series-4); }
+.tag.bad { color: var(--series-2); }
+select { font: inherit; font-size: var(--small); padding: 6px 8px; border: 1px solid var(--gray3); border-radius: var(--radius); background: var(--gray1); color: var(--ink); max-width: 220px; }
