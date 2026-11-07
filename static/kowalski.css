@@ -38,7 +38,7 @@ a, button, [role="button"] { touch-action: manipulation; }
 button, [role="button"] { user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
 /* Purpose of the press: feedback that the control took the click. */
 button, [role="button"], .press { transition: transform var(--press-duration) var(--ease-out); }
-button:enabled:active, [role="button"]:not([aria-disabled=true]):active, .press:active { transform: scale(var(--press)); }
+button:enabled:active, [role="button"]:not([aria-disabled=true], svg *):active, .press:active { transform: scale(var(--press)); }
 button:disabled { opacity: 0.45; cursor: not-allowed; }
 /* The ::after hit area is absolute: it is a layer over the control, out of the flow. */
 button, [role="button"], .tap { position: relative; }

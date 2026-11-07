@@ -38,12 +38,12 @@ function wireMap(figure: Element): void {
     draw();
   });
   const choose = (target: EventTarget | null): void => {
-    const point = target instanceof Element ? target.closest(".pt[data-i]") : null;
+    const point = target instanceof Element ? target.closest("[data-i]") : null;
     if (!point) return;
     const i = Number(point.getAttribute("data-i"));
     selected = selected === i ? -1 : i;
     draw();
-    if (selected >= 0) figure.querySelector<SVGElement>(`.pt[data-i="${selected}"]`)?.focus();
+    if (selected >= 0) figure.querySelector<SVGElement>(`[data-i="${selected}"]`)?.focus();
   };
   wireChoose(figure, choose);
   watch(figure, (width) => {
