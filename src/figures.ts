@@ -18,7 +18,9 @@ import { wilbeckFigure } from "./kit/wilbeck.ts";
 
 const LAZY_HEIGHT = 420;
 
-export const FIGURE_KINDS: readonly string[] = ["orbit", "compound", "faithful", "anscombe", "berkeley", "mix", "schematic", "wilbeck", "metal", "converge", "trade", "strike", "bird", "map", "matrix", "pair", "stack", "problems"];
+const LAZY = new Map<string, number>([["theorem-dials", 330], ["theorem-rank", 760], ["theorem-lottery", 520], ["theorem-retest", 560], ["theorem-evidence", 360], ["theorem-papers", 520], ["theorem-bounds", 520], ["theorem-path", 640], ["theorem-moves", 620], ["theorem-proof", 600], ["theorem-trend", 460]]);
+
+export const FIGURE_KINDS: readonly string[] = ["orbit", "compound", "faithful", "anscombe", "berkeley", "mix", "schematic", "wilbeck", "metal", "converge", "trade", "strike", "bird", "map", "matrix", "pair", "stack", "problems", ...LAZY.keys()];
 
 const COMPOUND_START_RATE = 5;
 const BAR_WIDTH = 40;
@@ -60,6 +62,8 @@ function escapeAttribute(text: string): string {
 }
 
 function inner(kind: string, id: string, svg: string, width: number): string {
+  const lazy = LAZY.get(kind);
+  if (lazy !== undefined) return `<div data-lazy role="img" aria-label="ALT" style="min-height:${lazy}px"></div>`;
   if (kind === "schematic") return schematic(svg);
   if (kind === "orbit") return orbit();
   if (kind === "faithful") return faithfulFigure(id, width);

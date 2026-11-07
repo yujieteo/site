@@ -1,0 +1,1 @@
+export const BOUNDS: readonly (readonly [string, string, number, number | null])[] = [["Markov's inequality", "markov", 100.0, null], ["Chebyshev's inequality", "chebyshev", 98.75, 1867], ["Chernoff bound", "chernoff_kl", 92.5, 1952], ["Hoeffding inequality", "hoeffding", 97.5, 1963], ["Azuma-Hoeffding inequality", "azuma", 88.75, 1967]];

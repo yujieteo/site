@@ -23,6 +23,7 @@ main.page h1 { font-weight: 600; margin-bottom: 12px; }
 main.page .meta { font-size: var(--small); margin-bottom: 32px; }
 main.page article > p { margin-bottom: 26px; opacity: 0.9; }
 main.page article > h2 { font-weight: 550; margin: 48px 0 20px; }
+main.page article > h3 { font-weight: 550; margin: 32px 0 12px; }
 .summary, .toc { margin-bottom: 32px; padding: 16px 20px; background: var(--chip); border-radius: var(--radius); box-shadow: inset 0 0 0 1px var(--line); }
 .summary h2, .toc h2 { font-size: var(--small); font-weight: 550; color: var(--muted); margin-bottom: 8px; }
 .summary ul, .toc ol { margin: 0; padding-left: 1.2em; }
@@ -131,6 +132,7 @@ main.page table { width: 100%; margin: 2rem 0; border-collapse: collapse; font-s
 main.page th, main.page td { padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--line); }
 main.page th { color: var(--muted); font-weight: 550; }
 main.page math { font-size: 1.1em; }
+main.page math[display=block] { overflow-x: auto; overflow-y: hidden; }
 main.page .formula { display: block; margin: 2rem 0; text-align: center; padding: 18px; background: var(--chip); border-radius: var(--radius); box-shadow: inset 0 0 0 1px var(--line); }
 main.page article > h3 { font-weight: 550; margin: 32px 0 12px; }
 .chart .pt.l0, .chip.l0 { fill: var(--series-1); }
