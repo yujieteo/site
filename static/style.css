@@ -143,6 +143,10 @@ main.page article > h3 { font-weight: 550; margin: 32px 0 12px; }
 .chart .pt[data-mark=near] { stroke: var(--ink); stroke-width: 2; }
 .chart .pt[data-mark=self] { stroke: var(--ink); stroke-width: 3; }
 .chart .repo { fill: none; stroke: var(--underline-hover); stroke-width: 1.5; }
+.chart .repo[data-i] { pointer-events: all; cursor: pointer; outline: none; }
+.chart .repo[data-mark=near] { stroke: var(--ink); stroke-width: 2; }
+.chart .repo[data-mark=self] { stroke: var(--ink); stroke-width: 3; }
+.chart .repo:focus-visible { stroke: var(--ink); stroke-width: 2.5; }
 .chart .name.soft { fill: var(--muted); font-weight: 450; }
 .chart .axis { fill: var(--ink); cursor: help; outline: none; }
 .chart .axis:focus-visible { text-decoration: underline; }

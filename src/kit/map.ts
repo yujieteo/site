@@ -111,19 +111,33 @@ function legend(chart: number): string {
   return out.join("");
 }
 
+function stacked(i: number, xs: readonly number[], ys: readonly number[]): number {
+  let count = 0;
+  for (let k = 0; k < i; k++) if (Math.hypot((xs[k] ?? 0) - (xs[i] ?? 0), (ys[k] ?? 0) - (ys[i] ?? 0)) < 1) count += 1;
+  return count;
+}
+
 function dots(chart: number, selected: number, near: readonly number[]): string {
   const s = spans(chart);
-  const out: string[] = [];
+  const rings: string[] = [];
+  const xs: number[] = [];
+  const ys: number[] = [];
+  for (let i = 0; i < PARADIGMS.length; i++) {
+    xs.push(at(s.x, proj[2 * i] ?? 0));
+    ys.push(at(s.y, proj[2 * i + 1] ?? 0));
+  }
+  const points: string[] = [];
   for (let i = 0; i < COUNT; i++) {
     const p = pointAt(i);
     const x = at(s.x, proj[2 * i] ?? 0).toFixed(1);
     const y = at(s.y, proj[2 * i + 1] ?? 0).toFixed(1);
     const tip = `${p.name} (${p.repo ? "repo, " : ""}${LAYERS[p.layer] ?? ""}). Press to see its nearest neighbours.`;
     const mark = i === selected ? "self" : near.includes(i) ? "near" : "";
-    const ring = p.repo ? `<circle class="repo" cx="${x}" cy="${y}" r="9"/>` : "";
-    out.push(`${ring}<circle class="pt l${p.layer}" cx="${x}" cy="${y}" r="5.5" tabindex="0" role="button" aria-label="${tip}" data-i="${i}" data-mark="${mark}" data-tip="${tip}"/>`);
+    const button = `tabindex="0" role="button" aria-label="${tip}" data-i="${i}" data-mark="${mark}" data-tip="${tip}"`;
+    if (p.repo) rings.push(`<circle class="repo" cx="${x}" cy="${y}" r="9" ${button}/>`);
+    else points.push(`<circle class="pt l${p.layer}" cx="${x}" cy="${y}" r="${5.5 - 2.5 * stacked(i, xs, ys)}" ${button}/>`);
   }
-  return out.join("");
+  return rings.join("") + points.join("");
 }
 
 function labels(chart: number, selected: number, near: readonly number[]): string {
