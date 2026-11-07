@@ -49,7 +49,7 @@ repeated_footnotes() {
   out=$(mktemp -d)
   post "${dir}" "" $'Text a[^x] and b[^x].\n\n[^x]: Note.'
   build "${dir}" "${out}" || fail "repeated footnote did not build"
-  ids=$(grep -o ' id="fn-[^"]*"' "${out}/essays/p/index.html" | sort | uniq -d)
+  ids=$(grep -o ' id="fn-[^"]*"' "${out}/essays/p/index.html" | sort | uniq -d || true)
   [[ -z "${ids}" ]] || fail "duplicate ids:${ids}"
 }
 

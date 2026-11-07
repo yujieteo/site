@@ -19,7 +19,8 @@ const problems: string[] = [];
 let wilbeckRequests = 0;
 
 function writePost(dir: string): void {
-  const filler = Array.from({ length: 250 }, (_, i) => `Filler line ${i} to push the last figure far below the first screen.\n`).join("\n");
+  let filler = "";
+  for (let i = 0; i < 250; i++) filler += `Filler line ${i} to push the last figure far below the first screen.\n\n`;
   const lines = ["---", "title: States", "date: 2026-01-01", "summary: S", "budget_kb: 900", "---", "", "A note.[^1]", "", "[^1]: The note text.", ""];
   for (const figure of FIGURES) lines.push(`::figure ${figure}`, "");
   lines.push(filler, `::figure ${TAIL}`, "");
@@ -55,7 +56,12 @@ async function lazyRetry(page: Page): Promise<void> {
   await page.evaluate("window.scrollTo(0, 0)");
   await page.waitForTimeout(600);
   await page.evaluate('document.querySelector("figure[data-kind=wilbeck]").scrollIntoView()');
-  const done = await page.locator("figure[data-kind=wilbeck] svg").first().waitFor({ timeout: 4000 }).then(() => true, () => false);
+  let done = true;
+  try {
+    await page.locator("figure[data-kind=wilbeck] svg").first().waitFor({ timeout: 4000 });
+  } catch {
+    done = false;
+  }
   expect(done, "a lazy figure whose first import failed was never retried");
 }
 
@@ -172,7 +178,15 @@ async function main(): Promise<void> {
   try {
     const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
     await page.goto(`http://localhost:${server.port}/essays/${SLUG}/`);
-    for (const step of [footnoteEscape, orbitMotion, tooltipStates, pendingTip, zeroWeights, mapKeys, twoMaps, matrixKeys, lazyRetry]) await step(page);
+    await footnoteEscape(page);
+    await orbitMotion(page);
+    await tooltipStates(page);
+    await pendingTip(page);
+    await zeroWeights(page);
+    await mapKeys(page);
+    await twoMaps(page);
+    await matrixKeys(page);
+    await lazyRetry(page);
   } finally {
     await browser.close();
     await server.stop(true);

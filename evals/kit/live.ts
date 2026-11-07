@@ -31,9 +31,13 @@ async function stoppedBeforeStart(): Promise<void> {
 
 async function throwsMidRun(): Promise<void> {
   throwAfter = 2;
-  const outcome = await Promise.race([runLive(counted, 1.6, { us: [], deflection: [] }, { now: false }, tick).then(() => "settled", () => "rejected"), Bun.sleep(2000).then(() => "hung")]);
-  if (outcome !== "rejected") throw new Error(`a solver error left the live run ${outcome}, not rejected`);
-  console.log("PASS a solver error rejects the live run so the button resets");
+  try {
+    await runLive(counted, 1.6, { us: [], deflection: [] }, { now: false }, tick);
+  } catch {
+    console.log("PASS a solver error rejects the live run so the button resets");
+    return;
+  }
+  throw new Error("a solver error did not reject the live run");
 }
 
 await stoppedBeforeStart();
