@@ -43,7 +43,7 @@ def main(out: str, files: list[str]) -> None:
         stopped = e.code is not None
     else:
         stopped = False
-    print(f"stopped:{stopped} deck:{Path(out).exists()}")
+    _ = sys.stdout.write(f"stopped:{stopped} deck:{Path(out).exists()}\n")
 
 
 main(sys.argv[1], sys.argv[2:])
