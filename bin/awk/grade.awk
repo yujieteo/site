@@ -37,11 +37,19 @@ function count_line(s,   n, i, w, a) {
   if (s !~ /[.!?][ \t]*$/ && s ~ /[A-Za-z]/) sentences++
 }
 
+function fence_line(s,   m) {
+  match(s, /^[ \t]*(```+|~~~+)/)
+  m = substr(s, RSTART, RLENGTH)
+  gsub(/[ \t]/, "", m)
+  if (!fence) { fence = substr(m, 1, 1); flen = length(m); return }
+  if (substr(m, 1, 1) == fence && length(m) >= flen && s ~ /^[ \t]*(```+|~~~+)[ \t]*$/) fence = 0
+}
+
 BEGIN { fence = 0; front = 0 }
 
 FNR == 1 && $0 == "---" { front = 1; next }
 front { if ($0 == "---") front = 0; next }
-/^[ \t]*(```|~~~)/ { fence = !fence; next }
+/^[ \t]*(```|~~~)/ { fence_line($0); next }
 fence || /^[ \t]*\|[ \t]*-+/ { next }
 { count_line($0) }
 
