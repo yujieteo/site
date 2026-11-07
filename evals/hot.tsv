@@ -1,0 +1,2 @@
+node	evals/hot/steady.ts
+node	evals/hot/compound.ts
