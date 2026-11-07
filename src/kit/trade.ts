@@ -1,4 +1,4 @@
-import { at, scale, svgHead, type Scale } from "./scale.ts";
+import { at, PHONE, scale, svgHead, type Scale } from "./scale.ts";
 
 interface View {
   key: string;
@@ -56,7 +56,8 @@ export function tradeSvg(chart: number, view: string): string {
     parts.push(bar(v, centre - w - 2, w, v.cpu[i] ?? null, "cpu", m), bar(v, centre + 2, w, v.gpu[i] ?? 0, "gpu", m));
     parts.push(`<text x="${centre}" y="${BOTTOM + 18}" text-anchor="middle">${m}</text>`);
   });
-  const key = `<text x="${LEFT}" y="10" class="key cpu">CPU (one core, WebAssembly)</text><text x="${LEFT + 200}" y="10" class="key gpu">GPU (WebGPU)</text>`;
+  const near = chart < PHONE;
+  const key = `<text x="${near ? 0 : LEFT}" y="10" class="key cpu">CPU (one core, WebAssembly)</text><text x="${near ? chart : LEFT + 200}" y="10"${near ? ' text-anchor="end"' : ""} class="key gpu">GPU (WebGPU)</text>`;
   return `${svgHead(chart, HEIGHT)}${key}${parts.join("")}<line class="base" x1="${LEFT}" x2="${right}" y1="${BOTTOM}" y2="${BOTTOM}"/><text x="${right}" y="${BOTTOM + 36}" text-anchor="end">bird spacing, finer to the right →</text></svg>`;
 }
 

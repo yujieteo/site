@@ -1,5 +1,5 @@
 import { BIRD, CURVE_DEFLECTION, CURVE_FORCE, CURVE_US, FRAME_US, PROFILE } from "./strike-data.ts";
-import { at, scale, svgHead, type Scale } from "./scale.ts";
+import { at, PHONE, scale, svgHead, type Scale } from "./scale.ts";
 
 export interface Live {
   us: number[];
@@ -19,13 +19,21 @@ const DEFLECTION_HIGH = 160;
 const TENTH = 10;
 export const FRAMES: number = FRAME_US.length;
 
+function headroom(chart: number): number {
+  return chart < PHONE ? 38 : 20;
+}
+
+function gap(chart: number): number {
+  return chart < PHONE ? 76 : CURVE_GAP;
+}
+
 function sideHeight(chart: number): number {
-  return Math.round(((chart - LEFT - EDGE) / (2 * HALF_SPAN)) * (Z_HIGH - Z_LOW)) + 20;
+  return Math.round(((chart - LEFT - EDGE) / (2 * HALF_SPAN)) * (Z_HIGH - Z_LOW)) + headroom(chart);
 }
 
 function sideScales(chart: number): { x: Scale; z: Scale } {
   const h = sideHeight(chart);
-  return { x: scale(-HALF_SPAN, HALF_SPAN, LEFT, chart - EDGE), z: scale(Z_LOW, Z_HIGH, h, 20) };
+  return { x: scale(-HALF_SPAN, HALF_SPAN, LEFT, chart - EDGE), z: scale(Z_LOW, Z_HIGH, h, headroom(chart)) };
 }
 
 export function nearest(us: number): number {
@@ -51,7 +59,7 @@ export function sideParts(chart: number, frame: number): string {
 }
 
 function curveScales(chart: number): { t: Scale; d: Scale; f: Scale } {
-  const top = sideHeight(chart) + CURVE_GAP;
+  const top = sideHeight(chart) + gap(chart);
   const t = scale(0, T_END, LEFT, chart - EDGE);
   return { t, d: scale(0, DEFLECTION_HIGH, top + CURVE_H, top), f: scale(0, FORCE_HIGH, top + CURVE_H, top) };
 }
@@ -78,23 +86,31 @@ function curveAxes(chart: number): string {
   const out: string[] = [`<line class="base" x1="${t.r0}" x2="${t.r1}" y1="${d.r0}" y2="${d.r0}"/>`];
   for (let us = 0; us <= T_END; us += 1000) out.push(`<text x="${at(t, us)}" y="${d.r0 + 18}" text-anchor="middle">${us / 1000} ms</text>`);
   for (let mm = 0; mm <= DEFLECTION_HIGH; mm += 80) out.push(`<line class="grid" x1="${t.r0}" x2="${t.r1}" y1="${at(d, mm)}" y2="${at(d, mm)}"/><text x="${t.r0 - 8}" y="${at(d, mm) + 4}" text-anchor="end">${mm}</text>`);
-  out.push(`<text x="${t.r0}" y="${d.r1 - 12}">deflection in mm <tspan class="shock">(blue, recorded)</tspan>, contact force <tspan class="steady">(orange, 0 to ${FORCE_HIGH} kN)</tspan></text>`);
+  const blue = `deflection in mm <tspan class="shock">(blue, recorded)</tspan>,`;
+  const orange = `contact force <tspan class="steady">(orange, 0 to ${FORCE_HIGH} kN)</tspan>`;
+  if (chart < PHONE) out.push(`<text x="${t.r0}" y="${d.r1 - 28}">${blue}<tspan x="${t.r0}" dy="16">${orange}</tspan></text>`);
+  else out.push(`<text x="${t.r0}" y="${d.r1 - 12}">${blue} ${orange}</text>`);
   return out.join("");
 }
 
 export function strikeSvg(chart: number, frame: number, live: Live | null): string {
   const { t, d, f } = curveScales(chart);
-  const height = sideHeight(chart) + CURVE_GAP + CURVE_H + 30;
+  const height = sideHeight(chart) + gap(chart) + CURVE_H + 30;
   const recorded = `<polyline class="line shock" points="${trace(t, d, CURVE_US, CURVE_DEFLECTION, TENTH)}"/><polyline class="line steady" points="${trace(t, f, CURVE_US, CURVE_FORCE, 1)}"/>`;
   const edges = scaleEdges(chart);
   return `${svgHead(chart, height)}${edges}<g data-side>${sideParts(chart, frame)}</g>${curveAxes(chart)}${recorded}<g data-live>${livePart(chart, live)}</g><g data-cursor>${cursorPart(chart, frame)}</g></svg>`;
+}
+
+function sideTitle(chart: number, x: number): string {
+  if (chart < PHONE) return `<text x="${x}" y="12">side view along the panel,<tspan x="${x}" dy="16">bird in grey (one 9 mm slice)</tspan></text>`;
+  return `<text x="${x}" y="12">side view along the panel, bird in grey (one 9 mm slice)</text>`;
 }
 
 function scaleEdges(chart: number): string {
   const { x, z } = sideScales(chart);
   const y = at(z, 0);
   const clamp = (cx: number): string => `<rect class="clamp" x="${cx - 5}" y="${y - 10}" width="10" height="20" rx="2"/>`;
-  return `<line class="base" x1="${x.r0}" x2="${x.r1}" y1="${y}" y2="${y}" stroke-dasharray="3 4"/>${clamp(x.r0)}${clamp(x.r1)}<text x="${x.r0}" y="12">side view along the panel, bird in grey (one 9 mm slice)</text>`;
+  return `<line class="base" x1="${x.r0}" x2="${x.r1}" y1="${y}" y2="${y}" stroke-dasharray="3 4"/>${clamp(x.r0)}${clamp(x.r1)}${sideTitle(chart, x.r0)}`;
 }
 
 export function strikeFigure(id: string, chart: number): string {

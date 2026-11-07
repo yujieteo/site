@@ -179,3 +179,8 @@ main.page article > h3 { font-weight: 550; margin: 32px 0 12px; }
 .tag.good { color: var(--series-4); }
 .tag.bad { color: var(--series-2); }
 select { font: inherit; font-size: var(--small); padding: 6px 8px; border: 1px solid var(--gray3); border-radius: var(--radius); background: var(--gray1); color: var(--ink); max-width: 220px; }
+@media (max-width: 560px) { main.page figure .frame { padding: 8px 0 0; background: none; box-shadow: none; }
+  .control { display: grid; grid-template-columns: 5.5em minmax(0, 1fr); width: 100%; } .control select { max-width: none; width: 100%; }
+  .controls.axes { display: grid; grid-template-columns: 1fr 1fr; justify-items: start; } main.page figcaption { text-align: left; } .note { text-align: left; } }
+main.page svg.tall { display: none; }
+@media (max-width: 560px) { main.page figure[data-kind=schematic] svg:has(+ svg.tall) { display: none; } main.page figure[data-kind=schematic] svg.tall { display: block; width: 100%; max-width: 360px; } }

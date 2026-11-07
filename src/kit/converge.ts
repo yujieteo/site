@@ -1,5 +1,9 @@
 import { at, panelColumns, scale, svgHead } from "./scale.ts";
 
+function pad(w: number): number {
+  return w < 400 ? 26 : 14;
+}
+
 interface Metric {
   name: string;
   unit: string;
@@ -36,7 +40,7 @@ function number(m: Metric, i: number): string {
 }
 
 function panel(m: Metric, x0: number, y0: number, w: number, pick: number): string {
-  const xs = scale(0, 3, x0 + 14, x0 + w - 14);
+  const xs = scale(0, 3, x0 + pad(w), x0 + w - pad(w));
   const ys = scale(m.low, m.high, y0 + PANEL_H, y0 + 6);
   const pts = m.values.map((v, i) => `${at(xs, i).toFixed(1)},${at(ys, v).toFixed(1)}`).join(" ");
   const dots = m.values.map((v, i) => `<circle class="pt ${m.cls}" data-on="${i === pick}" cx="${at(xs, i)}" cy="${at(ys, v)}" r="${i === pick ? 7 : 5}" tabindex="0" data-tip="${SPACINGS[i]}: ${number(m, i)}"/>`).join("");
@@ -46,7 +50,7 @@ function panel(m: Metric, x0: number, y0: number, w: number, pick: number): stri
 }
 
 function ticks(x0: number, y: number, w: number): string {
-  const xs = scale(0, 3, x0 + 14, x0 + w - 14);
+  const xs = scale(0, 3, x0 + pad(w), x0 + w - pad(w));
   return SPACINGS.map((s, i) => `<text x="${at(xs, i)}" y="${y + PANEL_H + 16}" text-anchor="middle">${s}</text>`).join("");
 }
 

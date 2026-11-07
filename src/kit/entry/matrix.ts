@@ -11,7 +11,7 @@ function wireMatrix(figure: Element): void {
   const draw = (): void => {
     hideTooltips(figure);
     swapChart(figure, matrixSvg(chart, sort));
-    if (note) note.textContent = matrixNote(sort);
+    if (note) note.textContent = matrixNote(sort, chart);
   };
   const choose = (target: EventTarget | null): void => {
     const head = target instanceof Element ? target.closest("[data-col]") : null;

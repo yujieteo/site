@@ -1,4 +1,4 @@
-import { at, scale, svgHead } from "./scale.ts";
+import { at, PHONE, scale, svgHead } from "./scale.ts";
 import { DIMS, fitPca, INFO_L1, INFO_L2, INFO_LOADINGS, INFO_SIZE, INFO_TOTAL, WORK_SIZE } from "./pca.hot.ts";
 import { AXES, LAYERS, PARADIGMS, REPOS } from "./stack-data.ts";
 
@@ -80,7 +80,26 @@ function spans(chart: number): { x: ReturnType<typeof scale>; y: ReturnType<type
   return { x: scale(lowX - padX, highX + padX, EDGE, chart - EDGE), y: scale(lowY - padY, highY + padY, mapHeight(chart) - FOOT, TOP) };
 }
 
+function rowsLegend(chart: number): string {
+  const out: string[] = [];
+  let x = EDGE - 2;
+  let y = 12;
+  for (let k = 0; k <= LAYERS.length; k++) {
+    const name = LAYERS[k] ?? "a real repo";
+    const w = 16 + name.length * 6.5 + 14;
+    if (x + w > chart) {
+      x = EDGE - 2;
+      y += 18;
+    }
+    out.push(k < LAYERS.length ? `<circle class="pt l${k}" cx="${x}" cy="${y - 4}" r="5"/>` : `<circle class="repo" cx="${x}" cy="${y - 4}" r="7"/>`);
+    out.push(`<text x="${x + 11}" y="${y}">${name}</text>`);
+    x += w;
+  }
+  return out.join("");
+}
+
 function legend(chart: number): string {
+  if (chart < PHONE) return rowsLegend(chart);
   const per = Math.max(1, Math.min(4, Math.floor(chart / 110)));
   const out: string[] = [];
   for (let k = 0; k < LAYERS.length; k++) {
@@ -122,7 +141,8 @@ export function mapSvg(chart: number, on: Uint8Array, selected: number): string 
   const h = mapHeight(chart);
   const near = selected < 0 ? [] : nearest(selected, on, 3);
   const frame = `<rect class="plot" x="${EDGE - 8}" y="${TOP - 8}" width="${chart - 2 * EDGE + 16}" height="${h - FOOT - TOP + 16}" rx="6"/>`;
-  const foot = `<text x="${EDGE - 8}" y="${h - 6}">across: first direction</text><text x="${chart - EDGE + 8}" y="${h - 6}" text-anchor="end">up: second direction</text>`;
+  const [across, up] = chart < PHONE ? ["→ first direction", "↑ second direction"] : ["across: first direction", "up: second direction"];
+  const foot = `<text x="${EDGE - 8}" y="${h - 6}">${across}</text><text x="${chart - EDGE + 8}" y="${h - 6}" text-anchor="end">${up}</text>`;
   return `${svgHead(chart, h)}${legend(chart)}${frame}${foot}${dots(chart, selected, near)}${labels(chart, selected, near)}</svg>`;
 }
 

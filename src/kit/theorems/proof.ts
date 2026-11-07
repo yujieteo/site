@@ -13,6 +13,7 @@ const CSS = `
 .w-map .step .n { font: 600 10.5px var(--mono); letter-spacing: 0.06em; }
 .w-map .step[data-state] text.cite { fill: var(--fig); font: 500 10.5px var(--mono); }
 .w-map .step[data-state=later] { opacity: 0.6; }
+@media (max-width: 560px) { .w-map .step .n, .w-map .step[data-state] text.cite { font-size: 11px; } }
 .w-nav { margin-top: 14px; }
 .w-map .step[data-state=done] rect { fill: var(--fig-soft); stroke: color-mix(in srgb, var(--fig) 45%, var(--card)); }
 .w-map .step[data-state=done] text, .w-map .step[data-state=now] text { fill: var(--ink); }

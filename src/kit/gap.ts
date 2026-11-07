@@ -1,4 +1,4 @@
-import { at, scale, svgHead } from "./scale.ts";
+import { at, PHONE, scale, svgHead } from "./scale.ts";
 import { AXES, LAYERS, PARADIGMS, TEN, ZERO } from "./stack-data.ts";
 
 const ROW = 34;
@@ -32,28 +32,34 @@ export function gaps(picks: readonly Pick[]): number[] {
   });
 }
 
+function rowStep(chart: number): number {
+  return chart < PHONE ? 50 : ROW;
+}
+function trackLeft(chart: number): number {
+  return chart < PHONE ? 6 : leftMargin(chart);
+}
 function row(chart: number, picks: readonly Pick[], axis: number): string {
-  const left = leftMargin(chart);
+  const left = trackLeft(chart);
   const x = scale(0, 10, left, chart - EDGE);
-  const y = TOP + axis * ROW;
+  const y = TOP + (chart < PHONE ? 18 : 0) + axis * rowStep(chart);
   const s = spread(picks, axis);
   const tip = `${AXES[axis] ?? ""}. 0: ${ZERO[axis] ?? ""} 10: ${TEN[axis] ?? ""}`;
   const track = `<line class="grid" x1="${left}" x2="${chart - EDGE}" y1="${y}" y2="${y}"/>`;
-  const label = `<text class="axis" x="${left - 10}" y="${y + 4}" text-anchor="end" tabindex="0" data-tip="${tip}">${AXES[axis] ?? ""}</text>`;
+  const label = `<text class="axis" x="${chart < PHONE ? 0 : left - 10}" y="${chart < PHONE ? y - 14 : y + 4}" text-anchor="${chart < PHONE ? "start" : "end"}" tabindex="0" data-tip="${tip}">${AXES[axis] ?? ""}</text>`;
   const span = picks.length > 1 ? `<line class="range" x1="${at(x, s.low)}" x2="${at(x, s.high)}" y1="${y}" y2="${y}"/>` : "";
   const dots = picks.map((p) => `<circle class="dot ${p.cls}" cx="${at(x, PARADIGMS[p.index]?.scores[axis] ?? 0)}" cy="${y}" r="6" data-tip="${PARADIGMS[p.index]?.name ?? ""}: ${PARADIGMS[p.index]?.scores[axis] ?? 0} of 10"/>`).join("");
   const gap = picks.length > 1 ? `<text class="gap" x="${chart - EDGE + 10}" y="${y + 4}">${s.high - s.low}</text>` : "";
   return `${track}${label}${span}${dots}${gap}`;
 }
 
-export function gapHeight(): number {
-  return TOP + AXES.length * ROW - 6;
+export function gapHeight(chart: number): number {
+  return TOP + (chart < PHONE ? 18 : 0) + AXES.length * rowStep(chart) - 6;
 }
 
 export function gapSvg(chart: number, picks: readonly Pick[]): string {
-  const left = leftMargin(chart);
+  const left = trackLeft(chart);
   const head = `<text x="${left}" y="10">0</text><text x="${chart - EDGE}" y="10" text-anchor="end">10</text><text x="${chart - EDGE + 10}" y="10">gap</text>`;
-  return `${svgHead(chart, gapHeight())}${head}${AXES.map((_, a) => row(chart, picks, a)).join("")}</svg>`;
+  return `${svgHead(chart, gapHeight(chart))}${head}${AXES.map((_, a) => row(chart, picks, a)).join("")}</svg>`;
 }
 
 export function euclid(picks: readonly Pick[]): number {
