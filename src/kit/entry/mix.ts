@@ -15,6 +15,7 @@ function wireMix(figure: Element): void {
   let chart = plotWidth(figure);
   input.addEventListener("input", () => {
     const t = Number(input.value);
+    hideTooltips(figure);
     const next = mixParts(t, chart);
     const bar = figure.querySelector("[data-mix-bar]");
     const dot = figure.querySelector("[data-mix-dot]");
