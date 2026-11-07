@@ -19,9 +19,19 @@ export interface Heading {
 const DEFAULT_BUDGET_KB = 80;
 const WORDS_PER_MINUTE = 220;
 
+function validYaml(text: string): boolean {
+  try {
+    Bun.YAML.parse(text);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 export function parsePost(slug: string, raw: string): Post {
   const parts = raw.split("\n---\n");
   const head = (parts[0] ?? "").replace(/^---\n/, "");
+  if (!validYaml(head)) throw new Error(`${slug}: the front matter is not valid YAML`);
   const post: Post = { slug, title: "", date: "", draft: false, budgetKb: DEFAULT_BUDGET_KB, summary: [], source: parts.slice(1).join("\n---\n").trim() };
   for (const line of head.split("\n")) {
     const at = line.indexOf(": ");
