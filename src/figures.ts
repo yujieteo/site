@@ -22,6 +22,8 @@ const LAZY = new Map<string, number>([["theorem-dials", 330], ["theorem-rank", 7
 
 export const FIGURE_KINDS: readonly string[] = ["orbit", "compound", "faithful", "anscombe", "berkeley", "mix", "schematic", "wilbeck", "metal", "converge", "trade", "strike", "bird", "map", "matrix", "pair", "stack", "problems", ...LAZY.keys()];
 
+export const LAZY_KINDS: readonly string[] = ["bird", "problems", "converge", "strike", "map", "trade", "matrix", "wilbeck", "metal", "pair", "stack"];
+
 const COMPOUND_START_RATE = 5;
 const BAR_WIDTH = 40;
 const BAR_STEP = 56;

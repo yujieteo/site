@@ -1,4 +1,5 @@
 import { gzipSync } from "node:zlib";
+import { relative, resolve } from "node:path";
 import { copyFileSync, cpSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { homePage, postPage } from "./pages.ts";
 import { figureKinds, figures, footnoteHtml, footnotes, headings, parsePost, textVersion, type Post } from "./post.ts";
@@ -70,6 +71,7 @@ async function main(): Promise<void> {
   const out = outIndex > 0 ? (Bun.argv[outIndex + 1] ?? "dist") : "dist";
   const postsIndex = Bun.argv.indexOf("--posts");
   const postsDir = postsIndex > 0 ? (Bun.argv[postsIndex + 1] ?? "posts") : "posts";
+  if (!relative(resolve(out), resolve(postsDir)).startsWith("..")) throw new Error(`--out ${out} must not hold the posts in ${postsDir}`);
   rmSync(out, { recursive: true, force: true });
   mkdirSync(out, { recursive: true });
   await buildAssets(out);
