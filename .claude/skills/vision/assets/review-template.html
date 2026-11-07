@@ -106,6 +106,7 @@ function pick(i, btn){
   card.querySelector('.vr-commit').disabled = false;
 }
 function commit(i){
+  if (i !== topIdx) return;
   const card = document.getElementById('vrc-'+i);
   const verdict = card.querySelector('.vr-verdicts button[aria-pressed="true"]')?.textContent;
   if(!verdict) return;
@@ -126,18 +127,31 @@ function commit(i){
     setTimeout(() => { stack.hidden = true; document.getElementById('vr-done').hidden = false; }, 400);
   }
 }
-function sendBack(){
+async function sendBack(){
   const btn = document.getElementById('vr-send');
-  if (window.lavish?.queuePrompt) {
-    window.lavish.queuePrompt(
+  const notice = document.getElementById('vr-sent');
+  const lavish = window.lavish;
+  if (!lavish?.queuePrompt || !lavish?.sendQueuedPrompts) {
+    notice.textContent = 'Not sent: this page has no link to the agent. Copy the verdicts above and paste them in.';
+    notice.hidden = false;
+    return;
+  }
+  btn.disabled = true;
+  try {
+    lavish.queuePrompt(
       `All ${CARDS.length} hypotheticals are answered. Fold every verdict into the draft and send back the next round.`,
       { tag:'vision-verdict', queueKey:'vision-round-complete', text:'All verdicts recorded - next round',
         element: document.getElementById('vr-done'), data:{ complete:true, verdicts: ledger } });
+    await lavish.sendQueuedPrompts();
+  } catch (e) {
+    btn.disabled = false;
+    notice.textContent = 'Not sent: ' + (e?.message || e) + '. Press the button again.';
+    notice.hidden = false;
+    return;
   }
-  window.lavish?.sendQueuedPrompts?.();
-  btn.disabled = true;
   btn.textContent = 'Sent for the next round';
-  document.getElementById('vr-sent').hidden = false;
+  notice.textContent = 'Sent - the agent is folding these into the next draft.';
+  notice.hidden = false;
 }
 layout();
 </script>
