@@ -21,7 +21,7 @@ main() {
   [[ "${page}" != *'src="/kit/strike.js"'* ]] || fail "the page loads the strike figure before it is seen"
   has "${kit}" 'import(`/kit/'
   [[ -s "${out}/kit/strike.wasm" ]] || fail "the solver file is not served"
-  glue="$(find "${out}" -name '*.mjs' -o -name 'strike.js.map' || true)"
+  glue="$(find "${out}/kit" "${out}/essays" -name '*.mjs' -o -name 'strike.js.map' || true)"
   [[ -z "${glue}" ]] || fail "glue code is served"
   has "${page}" '<math'
   has "${text}" 'Figure: One strike at 180 m/s'

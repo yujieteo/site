@@ -217,6 +217,8 @@ What I would most like to know, and cannot tell from this data, is whether dista
 
 ## Data and methods
 
+The full tool cannot run on this site. It is a local server that calls your own Claude Code. The code is in the [snowmobile repository](https://github.com/yujieteo/snowmobile).
+
 The scores, axes, definitions and the paradigm and repository lists come from `data/repo-scores.json` in the snowmobile repository at commit bc05041, checked against its sources on 27 October 2026. Each of the 11 repositories is pinned to the revision named in that file. The survey shares and the 73 links come from `src/seeds/practical-problems.json` and `src/seeds/problem-links.json` at the same commit. The 49 paradigm names and their layers come from `src/seeds/start.json`. The four-line figure is hunt 8, idea 36, from `snowmobile-hunts.json`, an export of the snowmobile database on my own computer. The export holds 14 hunts and 70 ideas, and I picked one idea that survived. The description of the tool is its README at that commit. The page reads none of these files at run time. A script turned them into the typed tables the figures use, and a check in this repository confirms that the numbers quoted in this post match what the figures compute.
 
 The two directions of the map are fitted in your browser to the 27 paradigms. They do not use the repositories. Distances are straight-line on the axes you keep, on the raw 0 to 10 scores, with no scaling.

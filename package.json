@@ -7,6 +7,7 @@
     "@types/node": "latest",
     "oxlint": "latest",
     "oxlint-tsgolint": "latest",
-    "typescript": "7.0.2"
+    "typescript": "7.0.2",
+    "playwright-core": "^1.65.0"
   }
 }

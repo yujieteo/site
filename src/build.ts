@@ -32,6 +32,9 @@ function renderBody(post: Post, postsDir: string): { html: string; toc: ReturnTy
 async function buildAssets(out: string): Promise<void> {
   cpSync("static/fonts", `${out}/fonts`, { recursive: true });
   cpSync("static/public", out, { recursive: true });
+  cpSync("play", `${out}/play`, { recursive: true });
+  mkdirSync(`${out}/shared`);
+  copyFileSync("static/kowalski.css", `${out}/shared/kowalski.css`);
   const css = readFileSync("static/kowalski.css", "utf8") + readFileSync("static/style.css", "utf8");
   writeFileSync(`${out}/style.css`, css);
   const entrypoints = ["src/kit/entry/kit.ts"];
