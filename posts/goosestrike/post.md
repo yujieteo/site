@@ -217,6 +217,8 @@ That list is shorter than the pile of numbers the solver prints. I think that is
 
 ## Data and methods
 
+The full tool is [the goosestrike page](/play/goosestrike/): the same solver, with every setting, a 3D view and the source code. It runs in your browser. The repository is [goosestrike](https://github.com/yujieteo/goosestrike).
+
 The solver, the tables and the figures' data come from the goosestrike repository at commit 4ada067. The tables are the repository's README. The recording in the sixth figure was made by running the solver's WebAssembly file, unchanged, in Bun, with a cell count of 56, a spacing of 9 mm and a speed of 180.06 m/s, sampling the deflection every 25 steps and the middle line of the skin every 100 µs. The same file is loaded by the button. The Wilbeck curves are computed in your browser with the same Tait equation of state as the solver, by bisection on the shocked density.
 
 This is not a certification analysis. The panel is a representative assumption. The material data are catalogue values. The model has no failure calibration, no residual strength analysis and no rate effects. The text version of this page lists every figure's caption and description.

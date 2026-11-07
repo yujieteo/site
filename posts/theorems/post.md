@@ -267,6 +267,8 @@ Third, closing the formal gap. Only 1,512 of mathlib's 241,706 theorems link to 
 
 ## Source notes
 
+The full tools are [the Explorer](/play/theorems/explorer/) and [the Learner](/play/theorems/learner/). Each is one file that holds its own data, about 12 MB, so it takes a while to load on a phone. Neither loads unless you open it.
+
 Every figure's data comes from [Theorems](https://github.com/yujieteo/theorems) at commit `c404347027f03c133ea25350a9b0e0406ca21433`.
 The explorer data is `viz/theorem-explorer/raw.json`: the rubric, presets and worked cases are in its top level; scores, confidence, evidence grades, prerequisite links and relations are in its core pack; arXiv counts are in its popularity pack.
 The learner data is `viz/theorem-learner/raw.json`, core pack, for the proof moves and the verification counts, and `viz/theorem-learner/data/learning/theorems/part-000.json`, `part-007.json` and `batch-00.json` for the three proofs.

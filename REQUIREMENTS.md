@@ -15,7 +15,14 @@ When the site and this file disagree, change the site.
 2. A post is at `/essays/NAME/`. Its text version is at `/essays/NAME/index.md`.
 3. The OpenPGP key of <contact@teoyujie.org> is at `/contact.asc`. The footer of each page links to it.
 4. WKD serves the key from `/.well-known/openpgpkey/`. The files are in `static/public/`.
-5. Every other URL returns 404.
+5. The tools are at `/play/goosestrike/`, `/play/theorems/explorer/` and `/play/theorems/learner/`. The files are in `play/`. They are copies of the tool builds, and the rules skip them.
+6. Every other URL returns 404.
+
+## Tools
+
+1. A tool is one static page that runs in the browser. It works at 390 px and on a desktop.
+2. The page of a tool is not counted against a post limit. A post never loads it. The post links it in its data section.
+3. A tool that needs a server has no page here. Its post links the repository.
 
 ## Post kit
 
@@ -53,5 +60,5 @@ When the site and this file disagree, change the site.
 
 ## Removed
 
-1. The old posts, the apps, the privacy and support pages, the log and the tools are gone.
+1. The old posts, the apps, the privacy and support pages and the log are gone.
 2. They stay in git history. The tag `pre-rebuild` marks the last old version.

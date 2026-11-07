@@ -28,7 +28,9 @@ It owns one thing: the posts.
 ## Scope
 
 - The site is not a store of apps.
-- The site has no privacy pages, no support pages and no tools.
+- The site has no privacy pages and no support pages.
+- A post can have its full tool at `/play/`. The tool runs in the browser. Its post links it only in the data section at the end.
+- A tool that needs a server stays in its repository. The post links the repository.
 - The site has no log, no feed and no comments.
 - The site has no old posts. All of them were removed.
 
