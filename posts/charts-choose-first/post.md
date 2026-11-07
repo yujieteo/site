@@ -1,7 +1,7 @@
 ---
 title: Charts choose before you look
 date: 2026-11-07
-budget_kb: 90
+budget_kb: 80
 summary: Every chart makes choices before you see a single mark: how to bin, what to sum up, which groups to pool.
 summary: Three classic datasets let you make those choices yourself and watch what changes.
 summary: A finding that survives every reasonable choice is about the data. A finding that flips with one choice is about the choice.

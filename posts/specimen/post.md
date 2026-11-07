@@ -2,7 +2,7 @@
 title: A specimen post
 date: 2026-11-06
 draft: true
-budget_kb: 90
+budget_kb: 80
 summary: This post exists to test the kit. It is never deployed.
 summary: Footnotes open on hover and stay open on a tap.
 summary: Each moving figure has one pause button.
