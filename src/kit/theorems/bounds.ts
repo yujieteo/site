@@ -11,7 +11,7 @@ const CSS = `
 .b-bars .exact { stroke: var(--ink); stroke-width: 1.5; stroke-dasharray: 4 3; }
 .b-bars .who { fill: var(--ink); font-weight: 550; paint-order: stroke; stroke: var(--card); stroke-width: 4px; stroke-linejoin: round; }
 .b-bars .who .val { font-weight: 400; }
-.b-bars .val { fill: var(--muted); }
+.b-bars .val { fill: var(--muted); paint-order: stroke; stroke: var(--card); stroke-width: 4px; stroke-linejoin: round; }
 .b-bars .ex { fill: var(--ink); font-weight: 550; }
 .t-row > .t-row { margin: 0; }
 `;
@@ -78,7 +78,7 @@ function row(r: Bound, y: number, left: number, width: number, end: number, tail
   const who = narrow ? `<text class="who" x="0" y="${y + 13}">${escapeText(r.name)}<tspan class="val" dx="6">score ${r.score.toFixed(1)}</tspan></text>` : `<text class="who" x="0" y="${y + 13}">${escapeText(r.name)}</text><text x="0" y="${y + 29}">rubric score ${r.score.toFixed(1)}</text>`;
   const useless = r.value >= 1 ? " data-useless" : "";
   const bar = `<rect class="track" x="${left}" y="${top}" width="${width - 12 - left}" height="18" rx="3"/><rect class="bar"${useless} x="${left}" y="${top}" width="${Math.max(2, end - left)}" height="18" rx="3" tabindex="0" data-tip="${escapeText(r.name)}: P(S ≥ ${tail}) ≤ ${label(r.value)}"/>`;
-  return [who, `${bar}<text class="val" x="${left + 4}" y="${top + 34}">${label(r.value)}</text>`];
+  return [`${who}<text class="val" x="${left + 4}" y="${top + 34}">${label(r.value)}</text>`, bar];
 }
 
 function chart(width: number, n: number, t: number): string {
