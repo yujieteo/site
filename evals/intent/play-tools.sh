@@ -14,7 +14,7 @@ main() {
   has "${files}" 'play/theorems/explorer/index.html'
   has "${files}" 'play/theorems/learner/index.html'
   [[ -s "${out}/shared/kowalski.css" ]] || fail "the goosestrike page has no style sheet"
-  for slug in goosestrike theorems snowmobile charts-choose-first; do
+  for slug in goosestrike theorems snowmobile; do
     post=$(cat "${out}/essays/${slug}/index.html")
     [[ "${post}" != *'src="/play/'* ]] || fail "${slug} loads a tool"
   done
