@@ -15,7 +15,7 @@ make_repo() {
   printf 'dist\nstubs\n' > "${dir}/.gitignore"
   stub "${dir}/gate" 'echo v2 > src/page.txt; git add -A; git -c user.name=x -c user.email=x@x commit -q -m v2'
   stub "${dir}/stubs/bun" 'mkdir -p dist; cp src/page.txt dist/'
-  stub "${dir}/stubs/ssh" 'cat > "${SENT}"'
+  stub "${dir}/stubs/ssh" "cat > \"\${SENT}\""
   stub "${dir}/stubs/curl" 'printf 200'
   git -C "${dir}" init -q
   git -C "${dir}" add -A

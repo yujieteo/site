@@ -7,7 +7,8 @@ head=$(git rev-parse HEAD)
 ./gate
 bun src/build.ts
 dirty=$(git status --porcelain)
-[[ -z "${dirty}" && "$(git rev-parse HEAD)" = "${head}" ]] || { echo "The tree changed during the gate. Run again."; exit 1; }
+now=$(git rev-parse HEAD)
+[[ -z "${dirty}" && "${now}" = "${head}" ]] || { echo "The tree changed during the gate. Run again."; exit 1; }
 listed=$(find dist -type f)
 mapfile -t sent <<< "${listed}"
 echo "deploy: sending ${#sent[@]} files"

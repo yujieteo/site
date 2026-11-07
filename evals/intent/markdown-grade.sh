@@ -12,7 +12,7 @@ main() {
   printf 'The implementation utilizes configuration infrastructure to facilitate organizational communication.\n' > "${tmp}/hard.md"
   (cd "${tmp}" && bin/mdgrade easy.md) || fail "easy prose failed"
   (cd "${tmp}" && bin/mdgrade hard.md > /dev/null) && fail "hard prose passed"
-  printf '```\n~~~\n```\nThe implementation utilizes configuration infrastructure to facilitate organizational communication.\n~~~\n' > "${tmp}/nested.md"
+  printf '\x60\x60\x60\n~~~\n\x60\x60\x60\nThe implementation utilizes configuration infrastructure to facilitate organizational communication.\n~~~\n' > "${tmp}/nested.md"
   (cd "${tmp}" && bin/mdgrade nested.md > /dev/null) && fail "prose after a fence holding a tilde line was skipped"
   echo OK
 }
