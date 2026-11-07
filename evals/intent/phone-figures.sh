@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 . "$(dirname "$0")/../lib.sh"
 need bun
-need chromium
 
 main() {
   local out dist

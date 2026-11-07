@@ -1,6 +1,6 @@
 import { chromium, type BrowserContext, type Page } from "playwright-core";
+import { browserPath } from "./browser";
 
-const CHROMIUM = Bun.which(process.env["CHROMIUM"] ?? "chromium") ?? "chromium";
 const WATCH = 'window.__errors = []; addEventListener("error", (e) => __errors.push(String(e.message))); addEventListener("unhandledrejection", (e) => __errors.push(String(e.reason)));';
 const PHONE = { viewport: { width: 390, height: 844 }, deviceScaleFactor: 3, isMobile: true, hasTouch: true };
 const DESKTOP = { viewport: { width: 1280, height: 800 } };
@@ -66,8 +66,8 @@ async function main(): Promise<void> {
   const [dir = "dist", tool = "", label = "phone"] = process.argv.slice(2);
   const phone = label === "phone";
   const port = 20000 + Math.floor(Math.random() * 20000);
+  const browser = await chromium.launch({ executablePath: browserPath() });
   const server = Bun.spawn(["python3", "-m", "http.server", String(port), "--bind", "127.0.0.1", "-d", dir], { stdout: "ignore", stderr: "ignore" });
-  const browser = await chromium.launch({ executablePath: CHROMIUM });
   try {
     await Bun.sleep(500);
     const context = await browser.newContext(phone ? PHONE : DESKTOP);

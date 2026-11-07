@@ -11,8 +11,15 @@ Posts by Yu Jie Teo. Read VISION.md and REQUIREMENTS.md first.
 
 ## Check and deploy
 
-1. `./gate` runs every check.
-2. `scripts/deploy.sh` runs the gate and deploys. Turn on the VPN first.
+1. Run `nix develop`. The shell supports Arm and Intel Linux, and Arm Macs.
+   The pinned Nixpkgs no longer supports Intel Macs.
+2. On a Mac, run `bun install --frozen-lockfile`, then
+   `bunx playwright-core install chromium` once. Run it again when the lock file
+   changes the browser build. Linux gets Chromium from Nix.
+3. `./gate` runs every check. Both browser checks use `CHROMIUM` if set, then
+   `chromium` on the path, then the Playwright browser cache. Set `CHROMIUM` to
+   a browser path to use your own build. A bad path fails the gate.
+4. `scripts/deploy.sh` runs the gate and deploys. Turn on the VPN first.
 
 ## Measure
 
