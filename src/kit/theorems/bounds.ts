@@ -9,7 +9,7 @@ const CSS = `
 .b-bars .bar[data-useless] { fill: var(--underline); }
 .b-bars .track { fill: var(--fig-soft); }
 .b-bars .exact { stroke: var(--ink); stroke-width: 1.5; stroke-dasharray: 4 3; }
-.b-bars .who { fill: var(--ink); font-weight: 550; }
+.b-bars .who { fill: var(--ink); font-weight: 550; paint-order: stroke; stroke: var(--card); stroke-width: 4px; stroke-linejoin: round; }
 .b-bars .who .val { font-weight: 400; }
 .b-bars .val { fill: var(--muted); }
 .b-bars .ex { fill: var(--ink); font-weight: 550; }
@@ -72,13 +72,13 @@ export function power(exponent: number): string {
   return `10${String(exponent).split("").map((c) => SUPER.get(c) ?? c).join("")}`;
 }
 
-function row(r: Bound, y: number, left: number, width: number, end: number, tail: number): string {
+function row(r: Bound, y: number, left: number, width: number, end: number, tail: number): [string, string] {
   const narrow = left === 0;
   const top = narrow ? y + 20 : y + 2;
   const who = narrow ? `<text class="who" x="0" y="${y + 13}">${escapeText(r.name)}<tspan class="val" dx="6">score ${r.score.toFixed(1)}</tspan></text>` : `<text class="who" x="0" y="${y + 13}">${escapeText(r.name)}</text><text x="0" y="${y + 29}">rubric score ${r.score.toFixed(1)}</text>`;
   const useless = r.value >= 1 ? " data-useless" : "";
   const bar = `<rect class="track" x="${left}" y="${top}" width="${width - 12 - left}" height="18" rx="3"/><rect class="bar"${useless} x="${left}" y="${top}" width="${Math.max(2, end - left)}" height="18" rx="3" tabindex="0" data-tip="${escapeText(r.name)}: P(S ≥ ${tail}) ≤ ${label(r.value)}"/>`;
-  return `${who}${bar}<text class="val" x="${left + 4}" y="${top + 34}">${label(r.value)}</text>`;
+  return [who, `${bar}<text class="val" x="${left + 4}" y="${top + 34}">${label(r.value)}</text>`];
 }
 
 function chart(width: number, n: number, t: number): string {
@@ -89,9 +89,11 @@ function chart(width: number, n: number, t: number): string {
   const step = left === 0 ? ROW + 16 : ROW;
   const x = scale(low, 0, left, width - 12);
   const height = TOP + rows.length * step + 28;
-  const out = rows.map((r, i) => row(r, TOP + i * step, left, width, at(x, Math.min(0, Math.log10(Math.max(r.value, 10 ** low)))), n / 2 + t));
+  const drawn = rows.map((r, i) => row(r, TOP + i * step, left, width, at(x, Math.min(0, Math.log10(Math.max(r.value, 10 ** low)))), n / 2 + t));
+  const out = drawn.map((d) => d[1]);
   const ex = at(x, Math.log10(Math.max(exact, 10 ** low)));
   out.push(`<line class="exact" x1="${ex}" x2="${ex}" y1="${TOP - 14}" y2="${height - 24}"/><text class="ex" x="${Math.min(ex, width - 110)}" y="${TOP - 18}">exact ${label(exact)}</text>`);
+  out.push(...drawn.map((d) => d[0]));
   const middle = left === 0 ? "" : `<text x="${(left + width) / 2}" y="${height - 6}" text-anchor="middle">bound on P(S ≥ n/2 + t), log scale</text>`;
   out.push(`<text x="${left}" y="${height - 6}">${power(low)}</text><text x="${width - 12}" y="${height - 6}" text-anchor="end">1</text>${middle}`);
   return `${svgHead(width, height)}<g class="b-bars">${out.join("")}</g></svg>`.replace("ALT", "Five tail bounds against the exact probability on a log scale");
