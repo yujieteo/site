@@ -39,6 +39,10 @@ main() {
   same_count "${page}" '<figcaption>' '<figure ' "a figure has no caption"
   same_count "${page}" 'role="img" aria-label="[^"]' '<figure ' "a figure has no alt text"
   has "${page}" 'type="range"'
+  has "${page}" 'src="/kit/orbit.js"'
+  has "${page}" 'src="/kit/compound.js"'
+  want_count "${page}" 'kit/faithful.js' 0 "the specimen loads a kind it does not use"
+  [[ -s "${out}/kit/orbit.js" ]] || fail "no script for the orbit kind"
   has "${text}" '^# A specimen post'
   has "${text}" 'Image: Three dots'
   echo OK

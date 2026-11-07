@@ -13,8 +13,9 @@ const FOOT = `<footer class="wrap"><ul>
 <li>Code: <a href="https://github.com/yujieteo">GitHub ↗</a></li>
 </ul></footer>`;
 
-function shell(title: string, description: string, header: string, main: string, script: boolean): string {
-  const tail = script ? '<script type="module" src="/kit.js"></script>\n' : "";
+function shell(title: string, description: string, header: string, main: string, scripts: string[]): string {
+  let tail = "";
+  for (const src of scripts) tail += `<script type="module" src="/${src}"></script>\n`;
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -42,7 +43,7 @@ export function homePage(posts: Post[]): string {
   for (const post of posts) items.push(postItem(post));
   const list = items.length > 0 ? `<ol class="featured">${items.join("\n")}</ol>` : `<p class="muted">No posts yet.</p>`;
   const main = `<main class="wrap"><section id="posts"><h2>Posts</h2>${list}</section></main>`;
-  return shell("Yu Jie Teo", "Posts by Yu Jie Teo, Mechanical Engineer.", HEADER, main, false);
+  return shell("Yu Jie Teo", "Posts by Yu Jie Teo, Mechanical Engineer.", HEADER, main, []);
 }
 
 function contents(headings: Heading[]): string {
@@ -57,9 +58,11 @@ function summaryBlock(post: Post): string {
   return `<section class="summary" aria-label="Summary"><h2>Summary</h2><ul>${items.join("")}</ul></section>`;
 }
 
-export function postPage(post: Post, bodyHtml: string, headings: Heading[]): string {
+export function postPage(post: Post, bodyHtml: string, headings: Heading[], kinds: string[]): string {
   const minutes = readingMinutes(post.source);
   const meta = `<p class="meta muted"><time datetime="${post.date}">${post.date}</time> · ${minutes} min read · <a href="/essays/${post.slug}/index.md">Text version</a></p>`;
+  const scripts = ["kit/kit.js"];
+  for (const kind of kinds) scripts.push(`kit/${kind}.js`);
   const article = `<article><h1>${post.title}</h1>${meta}${summaryBlock(post)}${contents(headings)}${bodyHtml}</article>`;
-  return shell(post.title, post.summary[0] ?? "", HEADER, `<main class="wrap page">${article}</main>`, true);
+  return shell(post.title, post.summary[0] ?? "", HEADER, `<main class="wrap page">${article}</main>`, scripts);
 }

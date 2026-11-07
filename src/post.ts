@@ -15,7 +15,7 @@ export interface Heading {
   text: string;
 }
 
-const DEFAULT_BUDGET_KB = 60;
+const DEFAULT_BUDGET_KB = 80;
 const WORDS_PER_MINUTE = 220;
 
 export function parsePost(slug: string, raw: string): Post {
@@ -87,6 +87,15 @@ export function figures(source: string, slug: string): string {
     out.push(figureHtml(kind, `${slug}-${index}`, alt, caption));
   }
   return out.join("\n");
+}
+
+export function figureKinds(source: string): string[] {
+  const kinds: string[] = [];
+  for (const line of source.split("\n")) {
+    const kind = line.startsWith("::figure ") ? (parseAttributes(line.slice(9)).get("kind") ?? "") : "";
+    if (kind !== "" && !kinds.includes(kind)) kinds.push(kind);
+  }
+  return kinds;
 }
 
 export function headings(html: string): Heading[] {
