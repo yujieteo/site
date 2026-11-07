@@ -3,7 +3,7 @@ import { PAPERS } from "./data-papers.ts";
 import { addStyle, choices, escapeText, head, mount, setActive, stat, whole } from "./look.ts";
 import { plotWidth, watch } from "../redraw.ts";
 import { hideTooltips, wireTooltips } from "../tooltip.ts";
-import { at, scale, svgHead, ticks } from "../scale.ts";
+import { at, PHONE, scale, svgHead, ticks } from "../scale.ts";
 
 const CSS = `
 .p-dots circle { fill: var(--muted); fill-opacity: 0.28; stroke: none; outline: none; }
@@ -103,7 +103,8 @@ function dots(width: number, mode: number): string {
 function label(name: string, px: number, py: number, width: number): string {
   const left = px > width - 190;
   const tx = left ? px - 10 : px + 10;
-  return `<line class="p-lead" x1="${px}" y1="${py}" x2="${tx}" y2="${py - 12}"/><text class="p-label" x="${tx + (left ? -2 : 2)}" y="${py - 14}" text-anchor="${left ? "end" : "start"}">${escapeText(name)}</text>`;
+  const ty = width < PHONE ? Math.max(py - 14, TOP + 18) : py - 14;
+  return `<line class="p-lead" x1="${px}" y1="${py}" x2="${tx}" y2="${ty + 2}"/><text class="p-label" x="${tx + (left ? -2 : 2)}" y="${ty}" text-anchor="${left ? "end" : "start"}">${escapeText(name)}</text>`;
 }
 
 function chart(width: number, mode: number): string {

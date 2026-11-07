@@ -1,14 +1,17 @@
 function wireSchematic(figure: Element): void {
   const button = figure.querySelector("[data-next]");
   const label = figure.querySelector("[data-step-label]");
-  const parts = figure.querySelectorAll("svg [data-label]");
-  if (!button || !label || parts.length === 0) return;
+  const drawings = [...figure.querySelectorAll("svg")].map((svg) => svg.querySelectorAll("[data-label]"));
+  const parts = drawings[0];
+  if (!button || !label || !parts || parts.length === 0) return;
   let at = -1;
   const show = (): void => {
-    parts.forEach((part, i) => {
-      part.toggleAttribute("data-shown", i <= at);
-      part.toggleAttribute("data-current", i === at);
-    });
+    for (const drawing of drawings) {
+      drawing.forEach((part, i) => {
+        part.toggleAttribute("data-shown", i <= at);
+        part.toggleAttribute("data-current", i === at);
+      });
+    }
     label.textContent = at < 0 ? "Press Next to see the first part." : `${at + 1} of ${parts.length}: ${parts[at]?.getAttribute("data-label") ?? ""}`;
     button.textContent = at === parts.length - 1 ? "Start over" : "Next";
   };

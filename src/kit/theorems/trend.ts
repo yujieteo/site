@@ -2,7 +2,7 @@ import { TRENDS } from "./data-trends.ts";
 import { addStyle, choices, escapeText, head, mount, setActive } from "./look.ts";
 import { plotWidth, watch } from "../redraw.ts";
 import { hideTooltips, wireTooltips } from "../tooltip.ts";
-import { at, centred, keep, scale, svgHead, tickStep, ticks } from "../scale.ts";
+import { at, centred, keep, PHONE, scale, svgHead, tickStep, ticks } from "../scale.ts";
 
 const CSS = `
 .tr-line { fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
@@ -65,7 +65,7 @@ function axes(width: number, top: number): string {
   order.forEach((b, i) => {
     if (shown[i] === true) parts.push(`<text x="${at(x, b)}" y="${BASE + 18}" text-anchor="${b === 0 ? "start" : b === BINS - 1 ? "end" : "middle"}">${years[b] ?? ""}</text>`);
   });
-  parts.push(`<text x="${LEFT}" y="${TOP - 8}">Papers naming it, per 10,000 in the field</text>`);
+  parts.push(`<text x="${LEFT}" y="${TOP - 8}">${width < PHONE ? "Papers per 10,000 in the field" : "Papers naming it, per 10,000 in the field"}</text>`);
   return parts.join("");
 }
 

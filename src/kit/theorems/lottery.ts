@@ -3,7 +3,7 @@ import { addStyle, escapeText, head, mount, stat, whole } from "./look.ts";
 import { ranked } from "./scores.ts";
 
 const CSS = `
-.l-bars { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 3px 28px; }
+.l-bars { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr)); gap: 3px 28px; }
 .l-bars li { display: grid; grid-template-columns: minmax(0, 1fr) 72px 3.2em; align-items: center; gap: 8px; font-size: 0.8125rem; line-height: 1.3; min-height: 22px; }
 .l-bars .name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .l-bars .track { height: 8px; border-radius: 4px; background: var(--fig-soft); overflow: hidden; }

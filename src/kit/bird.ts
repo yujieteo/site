@@ -1,4 +1,4 @@
-import { svgHead } from "./scale.ts";
+import { PHONE, svgHead } from "./scale.ts";
 
 const D = 113.1;
 const L = 226.2;
@@ -38,8 +38,11 @@ export function birdSvg(chart: number, spacing: number): string {
     }
   }
   const h = 1.2 * spacing * SCALE;
-  const ring = `<circle class="ring" cx="${cx - D * SCALE * 0.15}" cy="${cy + L * SCALE * 0.25}" r="${h}"/><text x="${cx + D * SCALE * 0.62}" y="${cy + L * SCALE * 0.25 + 4}">smoothing length</text>`;
-  const wall = `<line class="base" x1="${cx - 150}" x2="${cx + 150}" y1="${HEIGHT - 8}" y2="${HEIGHT - 8}"/><text x="${cx}" y="${HEIGHT + 8}" text-anchor="middle">panel</text>`;
+  const ry = cy + L * SCALE * 0.25;
+  const name = chart < PHONE ? `<text x="${chart - 2}" y="${ry - 2}" text-anchor="end">smoothing<tspan x="${chart - 2}" dy="14">length</tspan></text>` : `<text x="${cx + D * SCALE * 0.62}" y="${ry + 4}">smoothing length</text>`;
+  const ring = `<circle class="ring" cx="${cx - D * SCALE * 0.15}" cy="${ry}" r="${h}"/>${name}`;
+  const half = Math.min(150, cx - 1);
+  const wall = `<line class="base" x1="${cx - half}" x2="${cx + half}" y1="${HEIGHT - 8}" y2="${HEIGHT - 8}"/><text x="${cx}" y="${HEIGHT + 8}" text-anchor="middle">panel</text>`;
   return `${svgHead(chart, HEIGHT + 16)}<g class="goose">${dots.join("")}</g>${ring}${wall}</svg>`;
 }
 

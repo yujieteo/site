@@ -3,6 +3,7 @@ export const WIDE = 960;
 export const GUTTER = 24;
 export const FRAME_PAD = 24;
 export const LABEL_GAP = 48;
+export const PHONE = 420;
 const GLYPH = 6.5;
 const STEPS: readonly number[] = [1, 2, 2.5, 5];
 

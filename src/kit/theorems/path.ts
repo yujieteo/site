@@ -2,7 +2,7 @@ import { PATH } from "./data-path.ts";
 import { addStyle, escapeText, head, mount, refocus, stat } from "./look.ts";
 import { plotWidth, watch } from "../redraw.ts";
 import { hideTooltips, wireTooltips } from "../tooltip.ts";
-import { svgHead } from "../scale.ts";
+import { PHONE, svgHead } from "../scale.ts";
 
 const CSS = `
 .p-map .edge { fill: none; stroke: var(--underline-hover); stroke-width: 1.25; pointer-events: none; }
@@ -24,6 +24,16 @@ const CSS = `
 figure[data-kind^=theorem] .p-scroll svg.chart { max-width: none; }
 .p-keys .solid, .p-keys .dash { width: 18px; height: 0; border-radius: 0; border-top: 1.5px solid var(--underline-hover); }
 .p-keys .dash { border-top: 1.5px dashed var(--underline); }
+.p-list { display: grid; gap: 6px; }
+.p-layer { margin: 12px 0 0; font: 500 11px var(--mono); letter-spacing: 0.06em; color: var(--muted); }
+.p-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 8px; padding: 8px 10px; border-radius: 6px; box-shadow: inset 0 0 0 1px var(--line); background: var(--card); font-size: 0.8125rem; line-height: 1.3; cursor: pointer; outline: none; }
+.p-row:focus-visible { box-shadow: inset 0 0 0 2px var(--ink); }
+.p-row .pre, .p-row .un { font-size: 11px; color: var(--muted); }
+.p-row .pre { grid-column: 1 / -1; }
+.p-row[data-ready] { background: var(--fig-soft); box-shadow: inset 0 0 0 1.5px var(--fig); }
+.p-row[data-known] { background: var(--fig); color: var(--card); }
+.p-row[data-known] .pre, .p-row[data-known] .un { color: var(--card); }
+@media (max-width: 560px) { .p-keys .t-key:has(.solid), .p-keys .t-key:has(.dash) { display: none; } }
 .p-keys .known { background: var(--fig); }
 .p-keys .ready { background: var(--fig-soft); box-shadow: inset 0 0 0 1.5px var(--fig); }
 `;
@@ -106,6 +116,28 @@ function node(v: number, x: number, y: number, w: number, known: ReadonlySet<num
   return [box, `<g class="node name"${flag}><text x="${x + 8}" y="${y + 19}">${escapeText(fit(name, w - (extra ? 32 : 12)))}</text>${extra}</g>`];
 }
 
+function rows(known: ReadonlySet<number>): string {
+  const { col, row } = layout();
+  const most = Math.max(...col);
+  const s = state(known);
+  const out: string[] = [];
+  for (let c = 0; c <= most; c++) {
+    out.push(`<p class="p-layer">${c === 0 ? "FOUNDATIONS" : c === most ? "LONGEST CHAINS" : `STEP ${c + 1}`}</p>`);
+    const ids = PATH.map((_, v) => v).filter((v) => col[v] === c).sort((a, b) => (row[a] ?? 0) - (row[b] ?? 0));
+    for (const v of ids) out.push(listRow(v, known, s));
+  }
+  return `<div class="p-list">${out.join("")}</div>`;
+}
+
+function listRow(v: number, known: ReadonlySet<number>, s: ReturnType<typeof state>): string {
+  const full = PATH[v]?.[0] ?? "";
+  const flag = known.has(v) ? " data-known" : s.ready.has(v) ? " data-ready" : "";
+  const un = s.unlocks[v] ?? 0;
+  const needs = (PATH[v]?.[1] ?? []).map(([p]) => SHORT.get(PATH[p]?.[0] ?? "") ?? PATH[p]?.[0] ?? "").join(", ");
+  const more = !known.has(v) && un > 0 ? `<span class="un">+${un}</span>` : "";
+  return `<div class="p-row"${flag} role="button" tabindex="0" aria-pressed="${known.has(v)}" data-node="${v}"><span>${escapeText(SHORT.get(full) ?? full)}</span>${more}${needs === "" ? "" : `<span class="pre">needs ${escapeText(needs)}</span>`}</div>`;
+}
+
 function chart(width: number, known: ReadonlySet<number>): string {
   const { col, row } = layout();
   const cols = Math.max(...col) + 1;
@@ -142,7 +174,8 @@ function draw(figure: HTMLElement, root: Element, known: ReadonlySet<number>): v
   const r = root.querySelector("[data-ready-n]");
   if (!slot) return;
   hideTooltips(figure);
-  slot.innerHTML = chart(Math.max(MIN_WIDTH, plotWidth(figure)), known);
+  const width = plotWidth(figure);
+  slot.innerHTML = width < PHONE ? rows(known) : chart(Math.max(MIN_WIDTH, width), known);
   if (k) k.textContent = String(known.size);
   if (r) r.textContent = String(state(known).ready.size);
 }

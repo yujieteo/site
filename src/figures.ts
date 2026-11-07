@@ -53,7 +53,7 @@ function compound(id: string): string {
 }
 
 function schematic(svg: string): string {
-  const drawn = svg.trim().replace("<svg", '<svg role="img" aria-label="ALT"');
+  const drawn = svg.trim().split("<svg").join('<svg role="img" aria-label="ALT"');
   return `${drawn}<div class="controls"><button class="button" type="button" data-next>Next</button></div><p class="step-label" aria-live="polite" data-step-label></p>`;
 }
 
@@ -86,6 +86,6 @@ function inner(kind: string, id: string, svg: string, width: number): string {
 
 export function figureHtml(kind: string, id: string, alt: string, caption: string, svg: string, wide: boolean, lazy: boolean): string {
   if (lazy) return `<figure id="${id}" data-kind="${kind}" data-lazy${wide ? " data-wide" : ""}><div class="frame" role="img" aria-label="${escapeAttribute(alt)}" style="min-height:${LAZY_HEIGHT}px"></div><figcaption>${caption}</figcaption></figure>`;
-  const body = inner(kind, id, svg, figureWidth(wide)).replace("ALT", escapeAttribute(alt));
+  const body = inner(kind, id, svg, figureWidth(wide)).split("ALT").join(escapeAttribute(alt));
   return `<figure id="${id}" data-kind="${kind}"${wide ? " data-wide" : ""}><div class="frame">${body}</div><figcaption>${caption}</figcaption></figure>`;
 }
