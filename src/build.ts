@@ -5,7 +5,7 @@ import { figureKinds, figures, footnoteHtml, footnotes, headings, parsePost, tex
 import { FIGURE_KINDS } from "./figures.ts";
 
 const KB = 1024;
-const BASE_ASSETS = ["fonts/inter.woff2", "style.css", "kit/kit.js"];
+const BASE_ASSETS = ["fonts/inter.woff2", "style.css"];
 
 function insertNewestFirst(posts: Post[], post: Post): void {
   let at = 0;
@@ -36,14 +36,26 @@ async function buildAssets(out: string): Promise<void> {
   writeFileSync(`${out}/style.css`, css);
   const entrypoints = ["src/kit/entry/kit.ts"];
   for (const kind of FIGURE_KINDS) entrypoints.push(`src/kit/entry/${kind}.ts`);
-  const built = await Bun.build({ entrypoints, outdir: `${out}/kit`, root: "src/kit/entry", minify: true, target: "browser" });
+  const built = await Bun.build({ entrypoints, outdir: `${out}/kit`, root: "src/kit/entry", minify: true, splitting: true, target: "browser" });
   if (!built.success) throw new Error("the kit did not build");
+}
+
+function withChunks(out: string, scripts: string[]): string[] {
+  const found: string[] = [];
+  for (let i = 0; i < scripts.length; i++) {
+    const script = scripts[i] ?? "";
+    if (found.includes(script)) continue;
+    found.push(script);
+    for (const m of readFileSync(`${out}/${script}`, "utf8").matchAll(/from"\.\/(chunk-[^"]+\.js)"/g)) scripts.push(`kit/${m[1] ?? ""}`);
+  }
+  return found;
 }
 
 function firstLoadBytes(out: string, page: string, kinds: string[]): number {
   let total = gzipSync(readFileSync(`${out}/${page}`), { level: 9 }).length;
-  const assets = [...BASE_ASSETS];
-  for (const kind of kinds) assets.push(`kit/${kind}.js`);
+  const scripts = ["kit/kit.js"];
+  for (const kind of kinds) scripts.push(`kit/${kind}.js`);
+  const assets = [...BASE_ASSETS, ...withChunks(out, scripts)];
   for (const asset of assets) total += asset.endsWith(".woff2") ? readFileSync(`${out}/${asset}`).length : gzipSync(readFileSync(`${out}/${asset}`), { level: 9 }).length;
   return total;
 }

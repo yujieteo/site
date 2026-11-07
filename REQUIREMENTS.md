@@ -29,11 +29,16 @@ When the site and this file disagree, change the site.
 8. Each figure kind has its own script, `/kit/KIND.js`. A post loads only the kinds it uses.
 9. A schematic figure is `::figure kind=schematic src=NAME.svg`, with the SVG in the post folder. Its labelled parts are `<g data-label="TEXT">`. A Next button shows them one at a time.
 10. The specimen post is a draft. It is built in evals and never deployed.
+11. A chart is drawn again at the width it gets. One unit is one pixel and labels stay 12 px. Ticks and labels that would touch are thinned or shortened.
+12. Chart panels drop to one column when narrow.
+13. A figure with `wide=true` is up to 960 px wide, or as wide as the screen when that is less.
+14. A chart mark has a tooltip. It sits above the mark and opens after a short delay, then at once for its neighbours. A tap shows it on a phone.
 
 ## Look
 
 1. The look is emilkowal.ski, light only. Tokens are in `static/kowalski.css`.
 2. Hover styles apply only under `(hover: hover) and (pointer: fine)`.
+3. Chart colours are the tokens `--series-1` to `--series-4`: Radix blue, orange, violet and grass, step 11. A figure never writes a hex colour.
 
 ## Build
 

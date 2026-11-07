@@ -23,7 +23,7 @@ Below are three famous datasets, one for each kind of choice. In each figure you
 
 Old Faithful is a geyser in Yellowstone. The dataset below is 272 of its eruptions: how long each one lasted, and how long the crowd then waited for the next one.[^faithful] The top panel is a histogram of eruption length. The bottom panel shows every eruption as a dot and does not depend on any choice at all. Thin lines carry the edges of the bins down into it, so you can see where each bar cuts the cloud.
 
-::figure kind=faithful alt="A histogram of 272 Old Faithful eruption lengths above a scatter plot of each eruption's length against the wait until the next one. The histogram has two humps, near 2 and 4.5 minutes. Two sliders change the bin width and shift where the bins start." caption="Drag the width down to 0.05 minutes and the two humps shatter into about twenty spikes. Drag it up past 1.2 and try the shift: some starts show one hump, some show two. Between 0.3 and 1 minute, every start shows two."
+::figure kind=faithful wide=true alt="A histogram of 272 Old Faithful eruption lengths above a scatter plot of each eruption's length against the wait until the next one. The histogram has two humps, near 2 and 4.5 minutes. Two sliders change the bin width and shift where the bins start." caption="Drag the width down to 0.05 minutes and the two humps shatter into about twenty spikes. Drag it up past 1.2 and try the shift: some starts show one hump, some show two. Between 0.3 and 1 minute, every start shows two."
 
 Try the width slider first. At very thin bars the histogram turns into a comb: twenty or so spikes, most of them one or two eruptions tall. Nothing about the geyser changed. The spikes are made by the bars, not by the data, and some come from how the times were written down.[^rounding]
 
@@ -39,7 +39,7 @@ In 1973 the statistician Francis Anscombe built four small datasets to make one 
 
 The figure shows them as points. Click a point to remove it from the fit; click again to put it back. The line and the numbers under each panel are computed again from the points you keep.
 
-::figure kind=anscombe alt="Four scatter plots in a two-by-two grid, labelled I to IV, each with eleven points and the same fitted line, y = 3.00 + 0.50x, with correlation 0.82. Points can be clicked to remove them from the fit." caption="Anscombe's quartet, all four panels on one scale. Remove the high point in III and the correlation jumps to 1.00. Remove the far point in IV and every remaining x is 8, so no line can be fitted. Removing any one point from I barely moves it."
+::figure kind=anscombe wide=true alt="Four scatter plots in a two-by-two grid, labelled I to IV, each with eleven points and the same fitted line, y = 3.00 + 0.50x, with correlation 0.82. Points can be clicked to remove them from the fit." caption="Anscombe's quartet, all four panels on one scale. Remove the high point in III and the correlation jumps to 1.00. Remove the far point in IV and every remaining x is 8, so no line can be fitted. Removing any one point from I barely moves it."
 
 Set I is what the numbers suggest: a loose cloud around a line. You can take out any single point and the correlation stays between 0.75 and 0.89. Set II is a smooth curve. The line is the wrong model, but the numbers cannot tell you that. Set III is a perfect line with one point off it. Take that point away and the correlation goes to 1.00 while the slope falls from 0.50 to 0.35: one point out of eleven was holding up the slope that all four sets share.
 

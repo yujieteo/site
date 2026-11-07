@@ -3,6 +3,7 @@ import { berkeleyFigure, mixFigure } from "./kit/berkeley.ts";
 import { barHeight, CHART_HEIGHT, COMPOUND_MAX_RATE, COMPOUND_START } from "./kit/chart.ts";
 import { YEARS, fillBalances } from "./kit/compound.hot.ts";
 import { faithfulFigure } from "./kit/faithful.ts";
+import { figureWidth } from "./kit/scale.ts";
 
 export const FIGURE_KINDS: readonly string[] = ["orbit", "compound", "faithful", "anscombe", "berkeley", "mix", "schematic"];
 
@@ -45,16 +46,17 @@ function escapeAttribute(text: string): string {
   return text.split("&").join("&amp;").split('"').join("&quot;").split("<").join("&lt;");
 }
 
-function inner(kind: string, id: string, svg: string): string {
+function inner(kind: string, id: string, svg: string, width: number): string {
   if (kind === "schematic") return schematic(svg);
   if (kind === "orbit") return orbit();
-  if (kind === "faithful") return faithfulFigure(id);
-  if (kind === "anscombe") return anscombeFigure(id);
-  if (kind === "berkeley") return berkeleyFigure();
-  if (kind === "mix") return mixFigure(id);
+  if (kind === "faithful") return faithfulFigure(id, width);
+  if (kind === "anscombe") return anscombeFigure(id, width);
+  if (kind === "berkeley") return berkeleyFigure(width);
+  if (kind === "mix") return mixFigure(id, width);
   return compound(id);
 }
 
-export function figureHtml(kind: string, id: string, alt: string, caption: string, svg: string): string {
-  return `<figure id="${id}" data-kind="${kind}"><div class="frame">${inner(kind, id, svg).replace("ALT", escapeAttribute(alt))}</div><figcaption>${caption}</figcaption></figure>`;
+export function figureHtml(kind: string, id: string, alt: string, caption: string, svg: string, wide: boolean): string {
+  const body = inner(kind, id, svg, figureWidth(wide)).replace("ALT", escapeAttribute(alt));
+  return `<figure id="${id}" data-kind="${kind}"${wide ? " data-wide" : ""}><div class="frame">${body}</div><figcaption>${caption}</figcaption></figure>`;
 }
