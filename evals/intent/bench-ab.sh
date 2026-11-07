@@ -8,12 +8,20 @@ make_side() {
   printf 'cmd="sleep %s"\nruns=10\nunits=1\n' "${nap}" > "${dir}/evals/bench/nap.bench"
 }
 
+make_failing_side() {
+  local dir=$1 nap=$2
+  make_side "${dir}" "${nap}"
+  printf 'cmd="sleep %s; exit 7"\nruns=10\nunits=1\n' "${nap}" > "${dir}/evals/bench/nap.bench"
+}
+
 verdict_for() {
   local base=$1 cur=$2 out
   mkdir -p "${cur}/bin" "${cur}/evals"
   cp bin/ab "${cur}/bin/ab"
   out=$("${cur}/bin/ab" nap --dir "${base}")
+  local code=$?
   echo "${out}"
+  return "${code}"
 }
 
 main() {
@@ -31,6 +39,10 @@ main() {
   has "${verdict}" "verdict: better"
   verdict=$(verdict_for "${tmp}/fast" "${tmp}/same")
   has "${verdict}" "verdict: no difference"
+  make_failing_side "${tmp}/failslow" 0.06
+  make_failing_side "${tmp}/failfast" 0.02
+  verdict=$(verdict_for "${tmp}/failslow" "${tmp}/failfast") && fail "ab exited 0 when every run failed: ${verdict}"
+  has "${verdict}" "verdict: invalid"
   echo OK
 }
 
