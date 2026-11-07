@@ -1,5 +1,6 @@
 import { barHeight, CHART_HEIGHT, COMPOUND_START } from "./chart.ts";
 import { YEARS, fillBalances } from "./compound.hot.ts";
+import { wireFigures } from "./wire.ts";
 
 function closeNotes(except: Element | null): void {
   for (const fn of document.querySelectorAll(".fn[data-open]")) {
@@ -71,3 +72,4 @@ function wireSliders(): void {
 wireNotes();
 wirePause();
 wireSliders();
+wireFigures();

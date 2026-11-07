@@ -48,3 +48,30 @@ figure[data-paused] .spin { animation-play-state: paused; }
 @media (hover: hover) and (pointer: fine) { .featured a:hover { background: var(--hover); } .fn:hover .fn-note { opacity: 1; visibility: visible; transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) { .fn-note { transform: translateX(-50%); } }
 @media (min-width: 640px) { header.wrap { padding-top: 96px; } }
+/* Series colours for charts: Radix blue-11 and orange-11, the hues of the schematic-emil tokens. Checked for colour-blind separation. */
+:root { --series-1: #0d74ce; --series-2: #cc4e00; }
+.chart { overflow: visible; }
+.chart text { font: 12px/1 var(--sans); fill: var(--muted); font-variant-numeric: tabular-nums; }
+.chart .grid { stroke: var(--line); }
+.chart .base { stroke: var(--underline); }
+.bins rect { fill: var(--ink); fill-opacity: 0.85; }
+.bins line { stroke: var(--line); }
+.dots circle { fill: var(--ink); fill-opacity: 0.5; stroke: var(--card); stroke-width: 1; }
+.chart .plot { fill: var(--chip); stroke: var(--line); }
+.chart .name { fill: var(--ink); font-weight: 550; }
+.fit line { stroke: var(--series-1); stroke-width: 2; stroke-linecap: round; }
+.pt { fill: var(--ink); stroke: var(--card); stroke-width: 1.5; cursor: pointer; outline: none; }
+.pt[data-dropped=true] { fill: var(--card); stroke: var(--underline-hover); stroke-dasharray: 2 2; }
+.pt:focus-visible { stroke: var(--ink); stroke-width: 2.5; }
+.chart .men { fill: var(--series-1); }
+.chart .women { fill: var(--series-2); }
+.chart .men, .chart .women { fill-opacity: 0.9; stroke: var(--card); stroke-width: 2; }
+.chart .key { fill: var(--ink); font-weight: 500; }
+.split .depts { opacity: 0.15; transition: opacity 200ms var(--ease-out); }
+.split[data-view=split] .depts { opacity: 1; }
+.mix rect { fill: var(--ink); }
+.mix text { fill: var(--ink); font-weight: 500; }
+.mix text.on-dark { fill: var(--card); }
+@media (hover: hover) and (pointer: fine) { .pt:hover { stroke: var(--ink); } }
+.control { display: inline-flex; align-items: center; gap: 12px; }
+@media (max-width: 560px) { .frame { padding: 12px; } .chart text { font-size: 18px; } .controls input[type=range] { width: 140px; } }
