@@ -1,0 +1,7 @@
+<svg viewBox="0 0 600 200" width="600" height="200" xmlns="http://www.w3.org/2000/svg">
+<g fill="none" stroke="var(--underline)" stroke-width="2"><path d="M130 56 H200 M330 56 H365 V145 H330 M130 145 H200"/><path d="M193 49 L200 56 L193 63 M337 138 L330 145 L337 152 M193 138 L200 145 L193 152"/></g>
+<g data-label="The least divisor above one must be prime."><rect x="10" y="35" width="120" height="42" rx="6" fill="var(--chip)" stroke="var(--line)"/><text x="70" y="61" text-anchor="middle" fill="var(--ink)" font-size="13">Least divisor</text></g>
+<g data-label="Split off that prime. Use induction on the rest."><rect x="200" y="35" width="130" height="42" rx="6" fill="var(--chip)" stroke="var(--line)"/><text x="265" y="61" text-anchor="middle" fill="var(--ink)" font-size="13">Existence</text></g>
+<g data-label="Use Bézout's identity to prove Euclid's lemma."><rect x="10" y="124" width="120" height="42" rx="6" fill="var(--chip)" stroke="var(--line)"/><text x="70" y="150" text-anchor="middle" fill="var(--ink)" font-size="13">Euclid's lemma</text></g>
+<g data-label="Match each prime and cancel. Both lists end together."><rect x="200" y="124" width="130" height="42" rx="6" fill="var(--chip)" stroke="var(--line)"/><text x="265" y="150" text-anchor="middle" fill="var(--ink)" font-size="13">Match and cancel</text></g>
+</svg>

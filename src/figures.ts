@@ -1,3 +1,6 @@
+import { rankFigure } from "./kit/theorem-rank.ts";
+import { treeFigure } from "./kit/theorem-tree.ts";
+import { trendFigure } from "./kit/theorem-trend.ts";
 import { anscombeFigure } from "./kit/anscombe.ts";
 import { berkeleyFigure, mixFigure } from "./kit/berkeley.ts";
 import { barHeight, CHART_HEIGHT, COMPOUND_MAX_RATE, COMPOUND_START } from "./kit/chart.ts";
@@ -5,7 +8,7 @@ import { YEARS, fillBalances } from "./kit/compound.hot.ts";
 import { faithfulFigure } from "./kit/faithful.ts";
 import { figureWidth } from "./kit/scale.ts";
 
-export const FIGURE_KINDS: readonly string[] = ["orbit", "compound", "faithful", "anscombe", "berkeley", "mix", "schematic"];
+export const FIGURE_KINDS: readonly string[] = ["orbit", "compound", "faithful", "anscombe", "berkeley", "mix", "schematic", "theorem-rank", "theorem-tree", "theorem-trend"];
 
 const COMPOUND_START_RATE = 5;
 const BAR_WIDTH = 40;
@@ -47,6 +50,9 @@ function escapeAttribute(text: string): string {
 }
 
 function inner(kind: string, id: string, svg: string, width: number): string {
+  if (kind === "theorem-rank") return rankFigure(id);
+  if (kind === "theorem-tree") return treeFigure(id);
+  if (kind === "theorem-trend") return trendFigure(id, width);
   if (kind === "schematic") return schematic(svg);
   if (kind === "orbit") return orbit();
   if (kind === "faithful") return faithfulFigure(id, width);
