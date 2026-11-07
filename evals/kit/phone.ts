@@ -1,4 +1,5 @@
 import { cpSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { browserPath } from "./browser";
 
 const WIDTHS = [320, 390];
 const POSTS = ["snowmobile", "goosestrike", "theorems"];
@@ -18,7 +19,7 @@ function stage(built: string, copy: string, driver: string): void {
 
 function problems(copy: string, post: string, width: number): string[] {
   const profile = `${copy}-profile`;
-  const run = Bun.spawnSync([process.env["CHROMIUM"] ?? "chromium", ...FLAGS, `--user-data-dir=${profile}`, `file://${copy}/essays/${post}/index.html?w=${width}`]);
+  const run = Bun.spawnSync([browserPath(), ...FLAGS, `--user-data-dir=${profile}`, `file://${copy}/essays/${post}/index.html?w=${width}`]);
   rmSync(profile, { recursive: true, force: true });
   const found = /<pre id="phone-result">(.*?)<\/pre>/s.exec(run.stdout.toString());
   if (!found) return [`${post} at ${width}px: the check did not finish`];

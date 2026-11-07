@@ -5,8 +5,14 @@ on:
     branches: [main]
 jobs:
   gate:
-    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-15]
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
       - uses: cachix/install-nix-action@v31
+      - if: runner.os == 'macOS'
+        run: nix develop -c bash -c 'bun install --frozen-lockfile && bunx playwright-core install chromium'
       - run: nix develop -c ./gate

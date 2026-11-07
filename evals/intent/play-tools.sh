@@ -2,7 +2,6 @@
 . "$(dirname "$0")/../lib.sh"
 need bun
 need python3
-need chromium
 
 main() {
   local out files post
