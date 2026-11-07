@@ -7,6 +7,7 @@ summary: This post exists to test the kit. It is never deployed.
 summary: Footnotes open on hover and stay open on a tap.
 summary: Each moving figure has one pause button.
 summary: A slider figure recomputes a value as you drag.
+summary: A schematic shows its labelled parts one at a time.
 ---
 
 A good post lets the reader move things. This one shows each part of the kit once.
@@ -27,6 +28,12 @@ Hover a number and the note opens.[^1] Tap it and the note stays open.[^2] Press
 Drag the slider. The bars and the number update at once.
 
 ::figure kind=compound alt="Bars show a balance growing each year at the chosen rate." caption="A balance of 100 grows each year at the rate you pick."
+
+## A schematic
+
+Press Next. Each press shows one more labelled part.
+
+::figure kind=schematic src=signal.svg alt="Three boxes in a row: input, filter and output, joined by lines." caption="A signal passes through a filter. Next shows one part at a time."
 
 ## Ending
 

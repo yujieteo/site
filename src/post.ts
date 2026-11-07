@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs";
 import { FIGURE_KINDS, figureHtml } from "./figures.ts";
 
 export interface Post {
@@ -69,7 +70,7 @@ function parseAttributes(rest: string): Map<string, string> {
   return found;
 }
 
-export function figures(source: string, slug: string): string {
+export function figures(source: string, slug: string, dir: string): string {
   const out: string[] = [];
   let index = 0;
   for (const line of source.split("\n")) {
@@ -84,7 +85,10 @@ export function figures(source: string, slug: string): string {
     const caption = a.get("caption") ?? "";
     if (!FIGURE_KINDS.includes(kind)) throw new Error(`${slug}: figure ${index} has an unknown kind "${kind}"`);
     if (alt === "" || caption === "") throw new Error(`${slug}: figure ${index} needs alt text and a caption`);
-    out.push(figureHtml(kind, `${slug}-${index}`, alt, caption));
+    const src = a.get("src") ?? "";
+    if (kind === "schematic" && !/^[\w-]+\.svg$/.test(src)) throw new Error(`${slug}: figure ${index} needs src=NAME.svg`);
+    const svg = kind === "schematic" ? readFileSync(`${dir}/${slug}/${src}`, "utf8") : "";
+    out.push(figureHtml(kind, `${slug}-${index}`, alt, caption, svg));
   }
   return out.join("\n");
 }
