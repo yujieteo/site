@@ -9,6 +9,7 @@ const CSS = `
 .p-map .edge[data-judged] { stroke: var(--underline); stroke-dasharray: 3 3; }
 .p-map .node rect { fill: var(--card); stroke: var(--line); stroke-width: 1; }
 .p-map .node { cursor: pointer; outline: none; }
+.p-map .name { pointer-events: none; }
 .p-map .node text { fill: var(--ink); font-size: 12px; paint-order: stroke; stroke: var(--card); stroke-width: 4px; stroke-linejoin: round; }
 .p-map .node[data-ready] text { stroke: var(--fig-soft); }
 .p-map .node[data-known] text { stroke: var(--fig); }
@@ -94,14 +95,15 @@ function fit(text: string, room: number): string {
   return text.length <= most ? text : `${text.slice(0, Math.max(1, most - 1))}…`;
 }
 
-function node(v: number, x: number, y: number, w: number, known: ReadonlySet<number>, s: ReturnType<typeof state>): string {
+function node(v: number, x: number, y: number, w: number, known: ReadonlySet<number>, s: ReturnType<typeof state>): [string, string] {
   const full = PATH[v]?.[0] ?? "";
   const name = SHORT.get(full) ?? full;
   const flag = known.has(v) ? " data-known" : s.ready.has(v) ? " data-ready" : "";
   const un = s.unlocks[v] ?? 0;
   const tip = `${full}${known.has(v) ? ": known" : un > 0 ? `: knowing it makes ${un} more ready` : ""}`;
   const extra = !known.has(v) && un > 0 ? `<text class="un" x="${x + w - 6}" y="${y + 19}" text-anchor="end">+${un}</text>` : "";
-  return `<g class="node"${flag} tabindex="0" role="button" aria-pressed="${known.has(v)}" data-node="${v}" data-tip="${escapeText(tip)}"><rect x="${x}" y="${y}" width="${w}" height="${NODE_H}" rx="6"/><text x="${x + 8}" y="${y + 19}">${escapeText(fit(name, w - (extra ? 32 : 12)))}</text>${extra}</g>`;
+  const box = `<g class="node"${flag} tabindex="0" role="button" aria-pressed="${known.has(v)}" aria-label="${escapeText(full)}" data-node="${v}" data-tip="${escapeText(tip)}"><rect x="${x}" y="${y}" width="${w}" height="${NODE_H}" rx="6"/></g>`;
+  return [box, `<g class="node name"${flag}><text x="${x + 8}" y="${y + 19}">${escapeText(fit(name, w - (extra ? 32 : 12)))}</text>${extra}</g>`];
 }
 
 function chart(width: number, known: ReadonlySet<number>): string {
@@ -127,7 +129,7 @@ function chart(width: number, known: ReadonlySet<number>): string {
   });
   const heads = [`<text class="col" x="0" y="14">FOUNDATIONS</text>`, `<text class="col" x="${width}" y="14" text-anchor="end">LONGEST CHAINS</text>`];
   const nodes = PATH.map((_, v) => node(v, ...xy(v), w, known, s));
-  return `${svgHead(width, height)}<g class="p-map">${heads.join("")}${edges.join("")}${nodes.join("")}${over.join("")}</g></svg>`.replace("ALT", "A map of 31 results joined by prerequisite links, foundations on the left");
+  return `${svgHead(width, height)}<g class="p-map">${heads.join("")}${edges.join("")}${nodes.map((n) => n[0]).join("")}${over.join("")}${nodes.map((n) => n[1]).join("")}</g></svg>`.replace("ALT", "A map of 31 results joined by prerequisite links, foundations on the left");
 }
 
 function supported(): number {
