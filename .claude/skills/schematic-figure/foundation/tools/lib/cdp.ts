@@ -18,6 +18,7 @@ const MIME: Record<string, string> = {
 };
 const BUNDLE_URL = '/__bundle/';
 
+
 function chromeCandidates(): string[] {
   const env = process.env;
   const roots = [env['PROGRAMFILES'], env['PROGRAMFILES(X86)'], env['LOCALAPPDATA'], 'C:/Program Files', 'C:/Program Files (x86)'];
@@ -55,9 +56,7 @@ interface Routes {
   bundle: Bundle | null;
 }
 
-let routes: Routes = { root: '', proj: null, bundle: null };
-
-function resolveFile(u: string): string | null {
+function resolveFile(routes: Routes, u: string): string | null {
   if (u.startsWith(BUNDLE_URL)) return join(routes.bundle?.dir ?? '', u.slice(BUNDLE_URL.length));
   let base = routes.root;
   const proj = routes.proj;
@@ -67,19 +66,19 @@ function resolveFile(u: string): string | null {
   return f.startsWith(base) ? f : null;
 }
 
-function handle(req: IncomingMessage, res: ServerResponse): void {
+function handle(routes: Routes, req: IncomingMessage, res: ServerResponse): void {
   const u = decodeURIComponent(new URL(req.url ?? '/', 'http://x').pathname);
-  const f = resolveFile(u);
+  const f = resolveFile(routes, u);
   if (f === null || !existsSync(f)) {
     res.writeHead(404);
     res.end();
     return;
   }
   res.writeHead(200, { 'content-type': MIME[extname(f)] ?? 'application/octet-stream', 'cache-control': 'no-store' });
-  res.end(u === '/engine/page.html' ? pageHtml(f) : readFileSync(f));
+  res.end(u === '/engine/page.html' ? pageHtml(routes, f) : readFileSync(f));
 }
 
-function pageHtml(f: string): string {
+function pageHtml(routes: Routes, f: string): string {
   const b = routes.bundle;
   const html = readFileSync(f, 'utf8');
   if (b === null) return html;
@@ -87,8 +86,8 @@ function pageHtml(f: string): string {
 }
 
 export function serve(root: string, projectRoot: string | null, bundle: Bundle | null): Promise<StaticServer> {
-  routes = { root: resolve(root), proj: projectRoot === null ? null : resolve(projectRoot), bundle };
-  return listen(createServer(handle));
+  const routes: Routes = { root: resolve(root), proj: projectRoot === null ? null : resolve(projectRoot), bundle };
+  return listen(createServer((req, res) => handle(routes, req, res)));
 }
 
 async function listen(srv: Server): Promise<StaticServer> {
@@ -126,11 +125,27 @@ async function pumpStderr(proc: ChildProcess): Promise<void> {
 }
 
 async function startChrome(): Promise<Session> {
+  const started = spawnChrome();
+  try {
+    return await connect(started);
+  } catch (e) {
+    started.proc.kill();
+    rmSync(started.profile, { recursive: true, force: true });
+    throw e;
+  }
+}
+
+function spawnChrome(): { proc: ChildProcess; profile: string } {
   const profile = mkdtempSync(join(tmpdir(), 'schem-cdp-'));
   debugPort = '';
   const proc = spawn(findChrome(), ['--headless=new', '--remote-debugging-port=0', `--user-data-dir=${profile}`, '--no-first-run',
     '--disable-gpu', '--hide-scrollbars', '--font-render-hinting=none', '--no-proxy-server', 'about:blank']);
   void pumpStderr(proc);
+  return { proc, profile };
+}
+
+async function connect(started: { proc: ChildProcess; profile: string }): Promise<Session> {
+  const { proc, profile } = started;
   let waited = 0;
   for await (const tick of every(50, 1)) {
     waited += tick;
@@ -151,8 +166,12 @@ async function startChrome(): Promise<Session> {
 async function call(s: Session, method: string, params: Record<string, unknown>): Promise<unknown> {
   const id = ++nextId;
   s.ws.send(JSON.stringify({ id, method, params }));
+  const limit = Number(process.env["CDP_CALL_TIMEOUT_MS"] ?? 120000);
+  const started = Date.now();
   for await (const tick of every(1, id)) {
     if (replies.has(tick)) break;
+    if (s.ws.readyState !== WebSocket.OPEN) throw new Error(`${method}: connection closed`);
+    if (Date.now() - started > limit) throw new Error(`${method}: no reply in ${limit} ms`);
   }
   const m = replies.get(id);
   replies.delete(id);
@@ -169,6 +188,12 @@ function closeSession(s: Session): void {
   rmSync(s.profile, { recursive: true, force: true });
 }
 
+function exceptionText(thrown: unknown): string {
+  const ex = field(thrown, 'exception');
+  const text = isRecord(ex) ? ex['description'] : undefined;
+  return typeof text === 'string' ? text : JSON.stringify(thrown);
+}
+
 export class Cdp {
   private readonly session: Session;
 
@@ -182,6 +207,8 @@ export class Cdp {
 
   async evaluate(expression: string): Promise<unknown> {
     const r = await call(this.session, 'Runtime.evaluate', { expression, returnByValue: true, awaitPromise: true });
+    const thrown = field(r, 'exceptionDetails');
+    if (thrown !== undefined) throw new Error(`evaluate: ${exceptionText(thrown)}`);
     return field(field(r, 'result'), 'value');
   }
 
