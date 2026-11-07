@@ -43,10 +43,12 @@ figure[data-paused] .spin { animation-play-state: paused; }
 .fn-ref:focus-visible { outline: 2px solid transparent; box-shadow: var(--focus-ring); }
 .fn-note { position: absolute; left: 50%; bottom: calc(100% + 8px); z-index: 2; width: max-content; max-width: min(280px, 80vw); padding: 10px 12px; transform: translateX(-50%) translateY(4px);
   background: var(--card); color: var(--ink); font-size: var(--small); line-height: var(--leading); border-radius: var(--radius); box-shadow: var(--shadow), inset 0 0 0 1px var(--card-edge);
-  opacity: 0; visibility: hidden; transition: opacity 150ms var(--ease-out), transform 150ms var(--ease-out), visibility 150ms; }
-.fn[data-open] .fn-note, .fn:focus-within .fn-note { opacity: 1; visibility: visible; transform: translateX(-50%); }
-@media (hover: hover) and (pointer: fine) { .featured a:hover { background: var(--hover); } .fn:hover .fn-note { opacity: 1; visibility: visible; transform: translateX(-50%); } }
-@media (prefers-reduced-motion: reduce) { .fn-note { transform: translateX(-50%); } }
+  display: none; opacity: 0; transition: opacity 150ms var(--ease-out), transform 150ms var(--ease-out), display 150ms allow-discrete; }
+.fn[data-open] .fn-note, .fn:focus-within .fn-note { display: block; opacity: 1; transform: translateX(-50%);
+  @starting-style { opacity: 0; transform: translateX(-50%) translateY(4px); } }
+@media (hover: hover) and (pointer: fine) { .featured a:hover { background: var(--hover); } .fn:hover .fn-note { display: block; opacity: 1; transform: translateX(-50%);
+  @starting-style { opacity: 0; transform: translateX(-50%) translateY(4px); } } }
+@media (prefers-reduced-motion: reduce) { .fn-note { transform: translateX(-50%); transition-property: opacity, display; } }
 @media (min-width: 640px) { header.wrap { padding-top: 96px; } }
 /* Series colours for charts: Radix step 11 of blue, orange, violet and grass, in this order. Source: https://www.radix-ui.com/colors. Never put grass next to orange. */
 :root { --blue: #0d74ce; --orange: #cc4e00; --violet: #6550b9; --grass: #2a7e3b; --series-1: var(--blue); --series-2: var(--orange); --series-3: var(--violet); --series-4: var(--grass); }
