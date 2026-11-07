@@ -10,7 +10,7 @@ main() {
   has "${out}" "PASS the recorded deflection curve ends where a fresh run ends"
   out=$(mktemp -d)
   bun src/build.ts --out "${out}" > /dev/null || fail "build failed"
-  [[ ! -e "${out}/essays/goosestrike" ]] || fail "a draft was built without --drafts"
+  [[ -e "${out}/essays/goosestrike" ]] || fail "the published post is missing from the build"
   rm -rf "${out}"
   out=$(mktemp -d)
   bun src/build.ts --drafts --out "${out}" > /dev/null || fail "draft build failed"

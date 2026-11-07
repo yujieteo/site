@@ -1,7 +1,6 @@
 ---
 title: Which numbers converge
 date: 2026-11-07
-draft: true
 budget_kb: 80
 summary: I threw a 4 lb bird at an aluminium panel on a laptop, four times, with a finer mesh each time. Some answers settled down. Some did not.
 summary: The pressure on the skin has two parts. The long push settles with the mesh. The first shock does not.
