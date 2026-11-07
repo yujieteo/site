@@ -77,7 +77,10 @@ def main(argv: list[str]) -> None:
         _ = native_main(argv[1], argv[2::2])
         return
     out, files = argv[1], argv[2:]
-    pairs = list(zip(files[0::2], files[1::2], strict=False))
+    if not files or len(files) % 2:
+        msg = "svg2pptx: give each SVG a PNG after it, as svg png pairs"
+        raise SystemExit(msg)
+    pairs = list(zip(files[0::2], files[1::2], strict=True))
     prs = Presentation()
     prs.slide_width, prs.slide_height = Mm(338.7), Mm(190.5)
     for i, (svg, png) in enumerate(pairs, 1):
