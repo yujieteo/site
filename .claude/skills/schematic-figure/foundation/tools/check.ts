@@ -4,6 +4,7 @@ import { tmpdir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildBundle, hasFlag, launch, loadFigure, optStr, parseArgs, serve, shutdown } from './lib/cdp.ts';
+import { figPath } from './lib/figpath.ts';
 import type { Bundle, Cdp, StaticServer } from './lib/cdp.ts';
 import { FORMATS, JOURNAL } from './lib/check-ctx.ts';
 import type { Ctx } from './lib/check-ctx.ts';
@@ -97,7 +98,7 @@ async function main(): Promise<void> {
   const A = parseArgs();
   const rootOpt = optStr(A, 'root');
   const proj = rootOpt === undefined ? null : resolve(rootOpt);
-  const figAbs = resolve(optStr(A, 'fig') ?? 'figure/figure.ts');
+  const figAbs = figPath(A, proj);
   const out = outDir(proj, figAbs, optStr(A, 'out'));
   mkdirSync(out, { recursive: true });
   const r = newReport();

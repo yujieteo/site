@@ -5,7 +5,7 @@ description: Draw a publication-quality scientific schematic, slide or poster fi
 
 # Schematic figure
 
-A **schematic** here is a Nature-style concept or setup figure: flat vector art, sometimes with 3D hero elements, 5-7 pt Arial labels, thin leader lines, one idea per panel. Code draws every mark (`figure/figure.js`, run in headless Chrome). The same source gives a vector PDF with live text, an SVG and a PNG, and the tools can measure it. For a patent drawing sheet, use the `patent-drawing` skill.
+A **schematic** here is a Nature-style concept or setup figure: flat vector art, sometimes with 3D hero elements, 5-7 pt Arial labels, thin leader lines, one idea per panel. Code draws every mark (`figure/figure.ts`, run in headless Chrome). The same source gives a vector PDF with live text, an SVG and a PNG, and the tools can measure it. For a patent drawing sheet, use the `patent-drawing` skill.
 
 What our development benchmark measured: the skill drew the main figure of 28 published papers. A blind judge model rated how much each figure looks published, from 0 to 100. The skill's lead over a plain model appears when the agent must decide what the figure shows. The full skill scored 36.6. Removing the design process (brief, concepts, spec) cost the most, 6.8 points. Two drafts, the critic, the reader test and the gate did not move the judge's score. The critic removed most of the errors it named. So spend the effort on the plan. Use the checks where an error is costly.
 
