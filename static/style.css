@@ -176,3 +176,11 @@ main.page article > h3 { font-weight: 550; margin: 32px 0 12px; }
 .tag.good { color: var(--series-4); }
 .tag.bad { color: var(--series-2); }
 select { font: inherit; font-size: var(--small); padding: 6px 8px; border: 1px solid var(--gray3); border-radius: var(--radius); background: var(--gray1); color: var(--ink); max-width: 220px; }
+.theorem-weights { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; }
+.theorem-weights label { display: grid; grid-template-columns: 1fr auto; font-size: var(--small); }
+.theorem-weights input { grid-column: 1 / 2; width: 100%; accent-color: var(--ink); }
+.theorem-weights output { grid-column: 2; grid-row: 2; padding-left: 12px; color: var(--muted); }
+[data-ranking] ol { padding-left: 28px; }
+[data-ranking] li span { float: right; font-variant-numeric: tabular-nums; color: var(--muted); }
+[data-tree] ul { padding-left: 24px; }
+[data-tree] label { overflow-wrap: anywhere; }
