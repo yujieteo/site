@@ -6,7 +6,7 @@ from pathlib import Path
 
 import bpy
 import numpy as np
-from bpy.types import Material, MaterialSlot, NodeSocket, Object, Scene
+from bpy.types import Material, MaterialSlot, Node, NodeSocket, Object, Scene
 from mathutils import Vector
 from scene_state import GEOM_TYPES, IlApplied
 
@@ -33,6 +33,8 @@ class PassState:
     saved: list[tuple[Material, NodeSocket | None]] = field(default_factory=list)
     swaps: list[tuple[MaterialSlot, Material]] = field(default_factory=list)
     floated: list[Object] = field(default_factory=list)
+    holds: list[tuple[Material, Node]] = field(default_factory=list)
+    white: Material | None = None
 
 
 def _plan(sc: Scene, info: IlApplied) -> PostPlan:
@@ -69,6 +71,7 @@ def _holdout_all(white: Material, state: PassState) -> None:
         surface = out.inputs["Surface"]
         state.saved.append((m, surface.links[0].from_socket if surface.is_linked else None))
         ho = m.node_tree.nodes.new("ShaderNodeHoldout")
+        state.holds.append((m, ho))
         _ = m.node_tree.links.new(ho.outputs[0], surface)
 
 
@@ -81,6 +84,10 @@ def _unhold_all(state: PassState) -> None:
             m.node_tree.links.remove(lk)
         if src is not None:
             _ = m.node_tree.links.new(src, out.inputs["Surface"])
+    for m, ho in state.holds:
+        m.node_tree.nodes.remove(ho)
+    if state.white is not None:
+        bpy.data.materials.remove(state.white)
 
 
 def _render_to(sc: Scene, path: str) -> None:
@@ -132,6 +139,8 @@ def _restore(sc: Scene, plan: PostPlan, state: PassState) -> None:
     sc.render.filepath = state.out_png
     for s, mm in state.swaps:
         s.material = mm
+    for n in plan.tint:
+        sc.objects[n].hide_render = False
     for o in plan.cat:
         o.hide_render = True
     for o in state.floated:
@@ -177,10 +186,11 @@ def _composite(out_png: str, info: IlApplied, plan: PostPlan, paths: dict[str, s
 
 
 def _run_passes(sc: Scene, info: IlApplied, plan: PostPlan, paths: dict[str, str], state: PassState) -> None:
-    white = _white_material()
-    _holdout_all(white, state)
-    sc.cycles.samples = min(state.samples, MAX_PASS_SAMPLES)
     try:
+        white = _white_material()
+        state.white = white
+        _holdout_all(white, state)
+        sc.cycles.samples = min(state.samples, MAX_PASS_SAMPLES)
         if plan.need_lines:
             _lines_pass(sc, plan, paths, white, state)
         if plan.need_shadow:

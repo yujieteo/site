@@ -70,6 +70,9 @@ def use_device(sc: Scene, mode: str | None = None) -> str:
         sc.cycles.device = "GPU"
         _ = sys.stdout.write(f"schematic-3d: Cycles device = {found[0]} ({found[1]})\n")
         return found[0]
+    if mode == "gpu":
+        msg = f"SCHEMATIC_3D_DEVICE=gpu but {why}"
+        raise RuntimeError(msg)
     sc.cycles.device = "CPU"
     _ = sys.stdout.write(f"schematic-3d: Cycles device = CPU ({why})\n")
     return "CPU"
