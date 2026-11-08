@@ -1,4 +1,7 @@
-export const FIGURE_KINDS: readonly string[] = ["schematic"];
+import { priceFigure } from "./kit/price-chart.ts";
+import { figureWidth } from "./kit/scale.ts";
+
+export const FIGURE_KINDS: readonly string[] = ["schematic", "prices"];
 
 function schematic(svg: string): string {
   const drawn = svg.trim().split("<svg").join('<svg role="img" aria-label="ALT"');
@@ -10,6 +13,7 @@ function escapeAttribute(text: string): string {
 }
 
 export function figureHtml(kind: string, id: string, alt: string, caption: string, svg: string, wide: boolean): string {
-  const body = schematic(svg).split("ALT").join(escapeAttribute(alt));
+  const drawn = kind === "prices" ? priceFigure(id, figureWidth(wide)) : schematic(svg);
+  const body = drawn.split("ALT").join(escapeAttribute(alt));
   return `<figure id="${id}" data-kind="${kind}"${wide ? " data-wide" : ""}><div class="frame">${body}</div><figcaption>${caption}</figcaption></figure>`;
 }
