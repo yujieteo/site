@@ -71,6 +71,7 @@ main.page math[display=block] { overflow-x: auto; overflow-y: hidden; }
 main.page article > h3 { font-weight: 550; margin: 32px 0 12px; }
 .note { margin: 12px 0 0; font-size: var(--small); color: var(--muted); text-align: center; }
 select { font: inherit; font-size: var(--small); padding: 6px 8px; border: 1px solid var(--gray3); border-radius: var(--radius); background: var(--gray1); color: var(--ink); max-width: 220px; }
+.control { display: inline-flex; align-items: center; gap: 12px; }
 @media (max-width: 560px) { main.page figure .frame { padding: 8px 0 0; background: none; box-shadow: none; }
   .control { display: grid; grid-template-columns: 5.5em minmax(0, 1fr); width: 100%; } .control select { max-width: none; width: 100%; }
   .controls.axes { display: grid; grid-template-columns: 1fr 1fr; justify-items: start; } main.page figcaption { text-align: left; } .note { text-align: left; } }
@@ -79,6 +80,10 @@ main.page svg.tall { display: none; }
 .chart { overflow: visible; }
 .chart text { font: 12px/1 var(--sans); fill: var(--muted); font-variant-numeric: tabular-nums; }
 .tip { position: absolute; left: 0; top: 0; z-index: 3; width: max-content; max-width: min(260px, 80vw); padding: 6px 10px; pointer-events: none;
+  background: var(--card); color: var(--ink); font-size: 0.8125rem; line-height: var(--leading); border-radius: var(--radius); box-shadow: var(--shadow), inset 0 0 0 1px var(--card-edge);
+  opacity: 0; visibility: hidden; transform: scale(0.97); transition: opacity 125ms ease-out, transform 125ms ease-out, visibility 125ms; }
 .tip[data-open] { opacity: 1; visibility: visible; transform: none; }
 .tip[data-instant] { transition-duration: 0ms; }
 @media (prefers-reduced-motion: reduce) { .tip { transform: none; } }
+input[type=search] { font: inherit; font-size: var(--small); padding: 6px 8px; border: 1px solid var(--gray3); border-radius: var(--radius); background: var(--gray1); color: var(--ink); width: 220px; }
+@media (max-width: 560px) { .control input[type=search] { width: 100%; font-size: 16px; } }

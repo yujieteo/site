@@ -1,11 +1,9 @@
-import { PRICES, type PriceItem } from "./price-data.ts";
+import { CATEGORIES, LAST_MONTH, PRICES, WORDS, type PriceItem } from "./price-data.ts";
 import { at, fitCount, scale, svgHead, tickStep, ticks, type Scale } from "./scale.ts";
 
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const LETTERS = ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"];
-const GROUPS: readonly (readonly [string, string])[] = [["pantry", "Pantry and drinks"], ["protein", "Meat and seafood"], ["produce", "Fruit and vegetables"], ["hawker", "Hawker food"], ["home", "Household"], ["fuel", "Fuel"]];
 const BASE_YEAR = 2015;
-const LAST_MONTH = 140;
 const AHEAD = 12;
 const BREAKS = [48, 108];
 const LEFT = 48;
@@ -23,8 +21,8 @@ interface Plot {
   width: number;
 }
 
-function money(cents: number): string {
-  return `S$${(cents / 100).toFixed(2)}`;
+function shown(item: PriceItem, value: number): string {
+  return item.unit === "S$" ? `S$${(value / 100).toFixed(2)}` : (value / 10).toFixed(1);
 }
 
 function monthName(month: number): string {
@@ -39,8 +37,12 @@ function plotOf(item: PriceItem, width: number): Plot {
   return { x, y, item, width };
 }
 
-function pricePoint(p: Plot, month: number, cents: number): string {
-  return `${at(p.x, month).toFixed(1)} ${at(p.y, cents).toFixed(1)}`;
+function pricePoint(p: Plot, month: number, value: number): string {
+  return `${at(p.x, month).toFixed(1)} ${at(p.y, value).toFixed(1)}`;
+}
+
+function breaksAt(p: Plot, month: number): boolean {
+  return p.item.unit === "S$" && BREAKS.includes(month);
 }
 
 function history(p: Plot): string {
@@ -48,9 +50,9 @@ function history(p: Plot): string {
   let marks = "";
   for (let k = 0; k < p.item.cents.length; k++) {
     const month = p.item.start + k;
-    const cents = p.item.cents[k] ?? 0;
-    path += `${k === 0 || BREAKS.includes(month) ? "M" : "L"}${pricePoint(p, month, cents)}`;
-    marks += `<circle cx="${at(p.x, month).toFixed(1)}" cy="${at(p.y, cents).toFixed(1)}" r="4" fill="transparent" data-tip="${monthName(month)}: ${money(cents)}"></circle>`;
+    const value = p.item.cents[k] ?? 0;
+    path += `${k === 0 || breaksAt(p, month) ? "M" : "L"}${pricePoint(p, month, value)}`;
+    marks += `<circle cx="${at(p.x, month).toFixed(1)}" cy="${at(p.y, value).toFixed(1)}" r="4" fill="transparent" data-tip="${monthName(month)}: ${shown(p.item, value)}"></circle>`;
   }
   return `<path d="${path}" fill="none" stroke="var(--series-1)" stroke-width="2"></path>${marks}`;
 }
@@ -59,7 +61,7 @@ function forecast(p: Plot): string {
   const now = p.item.cents.at(-1) ?? 0;
   const end = LAST_MONTH + AHEAD;
   const band = `${pricePoint(p, LAST_MONTH, now)} ${pricePoint(p, end, p.item.high)} ${pricePoint(p, end, p.item.low)}`;
-  const tip = `Sep 2027 forecast: ${money(p.item.mid)}, likely ${money(p.item.low)} to ${money(p.item.high)}`;
+  const tip = `${monthName(end)} forecast: ${shown(p.item, p.item.mid)}, likely ${shown(p.item, p.item.low)} to ${shown(p.item, p.item.high)}`;
   return `<polygon points="${band}" fill="var(--series-2)" fill-opacity="0.18"></polygon><path d="M${pricePoint(p, LAST_MONTH, now)}L${pricePoint(p, end, p.item.mid)}" fill="none" stroke="var(--series-2)" stroke-width="2" stroke-dasharray="4 4"></path><circle cx="${at(p.x, end).toFixed(1)}" cy="${at(p.y, p.item.mid).toFixed(1)}" r="5" fill="var(--series-2)" data-tip="${tip}"></circle>`;
 }
 
@@ -69,9 +71,10 @@ function label(x: number, y: number, anchor: string, text: string): string {
 
 function priceAxis(p: Plot): string {
   let out = "";
-  for (const cents of ticks(p.y.d0, p.y.d1, 5)) {
-    const y = at(p.y, cents);
-    out += `<line x1="${LEFT}" x2="${p.width - RIGHT}" y1="${y.toFixed(1)}" y2="${y.toFixed(1)}" stroke="var(--line)"></line>${label(LEFT - 6, y + 4, "end", (cents / 100).toFixed(2))}`;
+  for (const value of ticks(p.y.d0, p.y.d1, 5)) {
+    const y = at(p.y, value);
+    const text = p.item.unit === "S$" ? (value / 100).toFixed(2) : (value / 10).toFixed(0);
+    out += `<line x1="${LEFT}" x2="${p.width - RIGHT}" y1="${y.toFixed(1)}" y2="${y.toFixed(1)}" stroke="var(--line)"></line>${label(LEFT - 6, y + 4, "end", text)}`;
   }
   return out;
 }
@@ -82,7 +85,7 @@ function yearAxis(p: Plot): string {
   const step = Math.max(1, Math.ceil(tickStep(years, fitCount(room, "2026"))));
   let out = "";
   for (let year = Math.ceil(p.item.start / 12); year * 12 <= LAST_MONTH + AHEAD; year += step) out += label(at(p.x, year * 12), LINE_BOTTOM + 18, "middle", String(BASE_YEAR + year));
-  for (const month of BREAKS) if (month > p.item.start) out += `<line x1="${at(p.x, month).toFixed(1)}" x2="${at(p.x, month).toFixed(1)}" y1="${LINE_TOP}" y2="${LINE_BOTTOM}" stroke="var(--line)" stroke-dasharray="2 3"></line>`;
+  for (const month of BREAKS) if (month > p.item.start && breaksAt(p, month)) out += `<line x1="${at(p.x, month).toFixed(1)}" x2="${at(p.x, month).toFixed(1)}" y1="${LINE_TOP}" y2="${LINE_BOTTOM}" stroke="var(--line)" stroke-dasharray="2 3"></line>`;
   return out;
 }
 
@@ -122,29 +125,63 @@ function seasonNote(item: PriceItem): string {
   return `Usually cheapest in ${MONTHS[low] ?? ""} and dearest in ${MONTHS[high] ?? ""}.`;
 }
 
-export function priceNote(index: number): string {
+export function priceNote(index: number, word: string): string {
   const item = itemAt(index);
-  const now = item.cents.at(-1) ?? 0;
-  const deal = item.deal > 0 ? ` A good deal is ${money(item.deal)} or less.` : "";
-  return `${money(now)} in ${monthName(LAST_MONTH)}. Sep 2027 forecast ${money(item.mid)}, likely ${money(item.low)} to ${money(item.high)}.${deal} ${seasonNote(item)}`;
+  const now = shown(item, item.cents.at(-1) ?? 0);
+  const lead = word !== "" && word !== item.name ? `${word}: closest official series is ${item.name}. ` : "";
+  const level = item.unit === "S$" ? `${now} in ${monthName(LAST_MONTH)}.` : `${item.name} index ${now} in ${monthName(LAST_MONTH)}, where 2024 = 100.`;
+  const deal = item.deal > 0 ? ` A good deal is ${shown(item, item.deal)} or less.` : "";
+  return `${lead}${level} ${monthName(LAST_MONTH + AHEAD)} forecast ${shown(item, item.mid)}, likely ${shown(item, item.low)} to ${shown(item, item.high)}.${deal} ${seasonNote(item)}`;
 }
 
-function optionsIn(group: string, chosen: number): string {
-  let out = "";
-  for (let k = 0; k < PRICES.length; k++) {
-    const item = PRICES[k];
-    if (item?.group === group) out += `<option value="${k}"${k === chosen ? " selected" : ""}>${item.name.replace("&", "&amp;")}</option>`;
-  }
+function clean(text: string): string {
+  return text.toLowerCase().replace(/['’]/g, "").trim();
+}
+
+function inCategory(word: readonly [number, string, number], category: number): boolean {
+  return category < 0 || word[0] === category;
+}
+
+export function wordsIn(category: number): string[] {
+  const out: string[] = [];
+  for (const word of WORDS) if (inCategory(word, category) && !out.includes(word[1])) out.push(word[1]);
   return out;
 }
 
-function choices(chosen: number): string {
-  let out = "";
-  for (const [group, title] of GROUPS) out += `<optgroup label="${title}">${optionsIn(group, chosen)}</optgroup>`;
+function rankOf(label: string, wanted: string): number {
+  const text = clean(label);
+  if (text === wanted) return 0;
+  if (text.startsWith(wanted)) return 1;
+  if (text.split(/[^a-z0-9]+/).includes(wanted)) return 2;
+  return text.includes(wanted) ? 3 : 4;
+}
+
+export function findWord(text: string, category: number, exact: boolean): readonly [number, string, number] | undefined {
+  const wanted = clean(text);
+  if (wanted === "") return undefined;
+  let best: readonly [number, string, number] | undefined;
+  let bestRank = exact ? 1 : 4;
+  for (const word of WORDS) {
+    const rank = inCategory(word, category) ? rankOf(word[1], wanted) : 4;
+    if (rank < bestRank) {
+      best = word;
+      bestRank = rank;
+    }
+  }
+  return best;
+}
+
+export function firstIn(category: number): readonly [number, string, number] | undefined {
+  return WORDS.find((word) => word[0] === category);
+}
+
+function categoryOptions(): string {
+  let out = `<option value="-1">All</option>`;
+  for (let k = 0; k < CATEGORIES.length; k++) out += `<option value="${k}">${(CATEGORIES[k] ?? "").replaceAll("&", "&amp;")}</option>`;
   return out;
 }
 
 export function priceFigure(id: string, width: number): string {
   const chosen = Math.max(0, PRICES.findIndex((item) => item.name.startsWith("Hen Eggs")));
-  return `${priceSvg(chosen, width)}<div class="controls"><span class="control"><label for="${id}-item">Item</label><select id="${id}-item" data-item>${choices(chosen)}</select></span></div><p class="note" data-note aria-live="polite">${priceNote(chosen)}</p>`;
+  return `${priceSvg(chosen, width)}<div class="controls"><span class="control"><label for="${id}-cat">Category</label><select id="${id}-cat" data-cat>${categoryOptions()}</select></span><span class="control"><label for="${id}-item">Item</label><input id="${id}-item" type="search" list="${id}-list" data-item placeholder="Type eggs, sofa, haircut" autocomplete="off" enterkeyhint="search"><datalist id="${id}-list"></datalist></span></div><p class="note" data-note aria-live="polite">${priceNote(chosen, "")}</p>`;
 }

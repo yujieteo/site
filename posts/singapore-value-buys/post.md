@@ -1,8 +1,8 @@
 ---
 title: What Singapore buys, what it costs and when it is a deal
 date: 2026-11-08
-budget_kb: 120
-summary: Official prices for 84 everyday goods from 2015 to September 2026, with 255 shelf prices from Singapore shops on 8 November 2026.
+budget_kb: 190
+summary: Official data for 251 goods and services from 2015 to September 2026, with 721 shelf prices from Singapore shops on 8 and 9 November 2026.
 summary: The best guess for a future price is close to today's price. Across 4,416 tests, it missed by 6.1% a year out, and no trend or season model did much better.
 summary: 33 of the 63 goods with enough history have a steady month pattern. Fish is the big one. Buy in November, not January.
 summary: A good deal is at least 10% below the current average for the same pack. A crossed-out price proves nothing.
@@ -21,9 +21,9 @@ Most money spent on goods goes on small things bought again and again. This post
 
 ## Explore any item
 
-Pick a good. The blue line is the average Singapore price each month. The orange wedge is the forecast to September 2027. The bars show how each month sits against that year's level. Green bars mean the pattern held year after year.
+Type almost anything a person buys or pays for: eggs, sofa, Grab, MRT, haircut, cat food. Or narrow it down with a category. The blue line is the average Singapore price each month, or a CPI index where no dollar average exists. The orange wedge is the forecast to September 2027. The bars show how each month sits against that year's level. Green bars mean the pattern held year after year.
 
-::figure kind=prices wide=true alt="A line chart of the monthly Singapore retail price of the chosen good from 2015 to 2026, with a forecast wedge to September 2027, above twelve bars that show how each calendar month compares with the yearly level." caption="Monthly average retail price, with a 12-month forecast and the month pattern. Dotted lines mark January 2019 and January 2024, when SingStat changed its sample of brands and shops. Source: SingStat table M213761, to September 2026."
+::figure kind=prices wide=true alt="A line chart of the monthly Singapore retail price or price index of the chosen good or service from 2015 to 2026, with a forecast wedge to September 2027, above twelve bars that show how each calendar month compares with the yearly level." caption="Monthly average retail price or CPI index, with a 12-month forecast and the month pattern. On dollar prices, dotted lines mark January 2019 and January 2024, when SingStat changed its sample of brands and shops. Source: SingStat tables M213761 and M213751, to September 2026."
 
 ## What households really buy
 
@@ -612,6 +612,722 @@ Fuel has no good deal price, because card and loyalty discounts matter more than
 
 Electricity rose 9.1% in the same year, and it is 36.7% above September 2021. Water is 12.3% above its 2024 level. These prices are set by tariffs, so the saving is in using less.
 
+## Everything else in daily life
+
+These are grouped like Shopee's menu, plus the things Shopee does not sell, such as bus fares, bills and clinic visits. SingStat publishes no dollar average for most of them, so the tables use the CPI index, where 2024 = 100. An index tells you how fast a price is moving. It does not tell you the price. The shelf tables give real prices.
+
+Most shelf prices here are search listings rather than opened pages, because many shops block automated reading. Rows without a shop page are marked listing. Treat those as a rough guide.
+
+### Getting Around
+
+| Official series | Index, Sep 2026 | 1 year | Since Sep 2015 | Sep 2027 forecast | Month pattern |
+|---|---|---|---|---|---|
+| Bus & Train Fares | 111.3 | +5.0% | +28.7% | 112.9 (112.9 to 120.2) | no steady pattern |
+| Point-To-Point Transport Services | 115.5 | +8.5% | +51.6% | 116.0 (116.0 to 134.1) | no steady pattern |
+| Commuting Fares | 110.6 | +6.2% | +33.4% | 111.5 (109.5 to 117.3) | Dec low, Jan high (1%) |
+| Other Land Transport Services | 106.2 | +9.3% | n/a | 106.2 (103.9 to 113.6) | too new |
+| Transport Services Of Goods | 97.7 | -1.8% | +12.7% | 98.3 (92.2 to 104.4) | Dec low, Mar high (2%) |
+
+- **MRT and bus:** a 10 km adult card trip is S$1.86, rising by 13 cents on 26 December 2026. [Tap in before 7:45am ↗](https://www.ptc.gov.sg/fares/morning-pre-peak-fares/) on weekdays for up to 50 cents off a train fare.
+- **The monthly pass only pays for heavy use.** At S$122 it needs [about 66 trips at 10 km ↗](https://www.ptc.gov.sg/fares/public-transport-fares-and-passes/). A 22-day, twice-daily commute is only 44 trips.
+- **Taxi or Grab:** [work out the meter ↗](https://www.cdgtaxi.com.sg/fares_oct/), add 25% at peak or 50% late at night, then compare with the app's fare plus its platform fee. A 10 km ComfortDelGro ride comes to about S$10.81 on the meter before surcharges, by that method.
+- **Grab fares** [rise with rain and rush hour ↗](https://www.grab.com/inside-grab/stories/surge-dynamic-pricing-explained/), and Grab publishes no multiplier. Waiting can cut the fare.
+- **ERP:** expressway charges peak between about 7:35am and 8:55am. Leaving before that is the simplest saving.
+
+| Item | Product | Shop | Price | Covers | Unit price |
+|---|---|---|---|---|---|
+| MRT or bus adult fare | [Adult card fare, basic bus or MRT/LRT, up to 3.2 km ↗](https://www.ptc.gov.sg/fares/public-transport-fares-and-passes/) | Public Transport Council (PTC) | S$1.28 | One journey | S$1.28 per journey |
+| MRT or bus adult fare | [Adult card fare, about 5 km (4.3 to 5.2 km band) ↗](https://www.ptc.gov.sg/fares/public-transport-fares-and-passes/) | PTC | S$1.49 | One journey | S$1.49 per journey |
+| MRT or bus adult fare | [Adult card fare, about 10 km (9.3 to 10.2 km band) ↗](https://www.ptc.gov.sg/fares/public-transport-fares-and-passes/) | PTC | S$1.86 | One journey | S$1.86 per journey |
+| MRT or bus adult fare | [Fare rise from 26 Dec 2026 ↗](https://www.ptc.gov.sg/media-centre/newsroom/fare-review-exercise-2026/) | PTC, Fare Review Exercise 2026 | +S$0.12 up to 3.2 km; +S$0.13 above 3.2 km | Adult card fare | Per journey |
+| Monthly concession pass | [Adult Monthly Travel Pass (hybrid) ↗](https://www.ptc.gov.sg/fares/public-transport-fares-and-passes/) | PTC | S$122.00 | Unlimited basic bus and train rides, 30 days | S$122.00 per month |
+| Monthly concession pass | [Workfare Transport Concession hybrid pass ↗](https://www.ptc.gov.sg/fares/public-transport-fares-and-passes/) | PTC | S$92.00 | Unlimited basic bus and train rides | S$92.00 per month |
+| Monthly concession pass | [Senior citizen hybrid pass ↗](https://www.ptc.gov.sg/fares/public-transport-fares-and-passes/) | PTC | S$55.00 | Unlimited basic bus and train rides | S$55.00 per month |
+| Taxi | [Prius or Ioniq Hybrid flag-down ↗](https://www.cdgtaxi.com.sg/fares_oct/) | ComfortDelGro | S$4.60 | First 1 km or less | S$4.60 per trip |
+| Taxi | [Distance and waiting rate, standard taxi ↗](https://www.cdgtaxi.com.sg/fares_oct/) | ComfortDelGro | S$0.27 | Each 400 m up to 10 km; each 350 m after 10 km; each 45 s waiting | S$0.675 per km up to 10 km (calculated) |
+| Taxi | [Surcharges ↗](https://www.cdgtaxi.com.sg/fares_oct/) | ComfortDelGro | S$25% peak; 50% midnight to 5:59am | Share of metered fare | Per trip |
+| Taxi | [Temporary Driver Fee, fixed-fare bookings ↗](https://www.cdgtaxi.com.sg/fares_oct/) | ComfortDelGro | S$0.50 below S$15; S$0.80 at S$15 or more | Per fixed-fare trip | Per trip |
+| Taxi | [App platform fee ↗](https://www.cdgtaxi.com.sg/faq/platform-fee/) | ComfortDelGro, Zig and Kris+ | S$1.00 to S$1.30 | Per app booking, from 1 Jan 2026, GST included | Per trip |
+| Grab | [How the fare is set ↗](https://www.grab.com/inside-grab/stories/surge-dynamic-pricing-explained/) | Grab | Dynamic fare; no rate published | Upfront fare from distance, time and demand | Not published |
+| Grab | [Driver fee ↗](https://www.thestar.com.my/aseanplus/aseanplus-news/2026/07/23/comfortdelgro-grab-gojek-tada-to-retain-additional-driver-fee-for-rides-in-singapore-till-sept-30) | Grab | S$0.90 | Per trip | Per trip |
+| Gojek or TADA | [Platform fee ↗](https://www.gojek.com/sg/help/driver/fares-and-charges/does-gojek-charge-a-platform-fee) | Gojek | S$1.10 to S$1.70 | Per trip, including GoTaxi | Per trip |
+| Gojek or TADA | [Driver fee ↗](https://www.thestar.com.my/aseanplus/aseanplus-news/2026/07/23/comfortdelgro-grab-gojek-tada-to-retain-additional-driver-fee-for-rides-in-singapore-till-sept-30) | Gojek | S$0.90 | Per trip | Per trip |
+| Gojek or TADA | [Driver fee ↗](https://www.thestar.com.my/aseanplus/aseanplus-news/2026/07/23/comfortdelgro-grab-gojek-tada-to-retain-additional-driver-fee-for-rides-in-singapore-till-sept-30) | TADA | S$0.90; S$1.20 for trips above S$18 | Per trip | Per trip |
+| Car sharing | [Economy class, off-peak and peak ↗](https://getgo.sg/rates) | GetGo | S$3 off-peak; S$5 normal; S$9 peak; S$10 super-peak | Per hour, plus mileage | S$0.44 per km |
+| Car sharing | [Standard Electric class ↗](https://getgo.sg/rates) | GetGo | S$4 off-peak; S$7 normal; S$11 peak; S$12 super-peak | Per hour, plus mileage | S$0.29 per km |
+| Car sharing | [Essential tier, point-to-point (BlueSG successor) ↗](https://secretsingapore.co/flexar-singapore-launch-may-2026/) | Flexar | S$0.99 fee + from S$0.67 per minute | First 5 minutes and first 50 km free | From S$0.67 per minute |
+| Bike share | [Regular bike, pay per use ↗](https://themoneybees.co/blog/bicycle-rental-singapore) | Anywheel | S$1 | Per 30 minutes | S$1 per 30 minutes |
+| Bike share | [7-day, 30-day, 90-day pass ↗](https://themoneybees.co/blog/bicycle-rental-singapore) | Anywheel | S$6.90; S$9.90; S$26.90 | Unlimited rides under 30 minutes | S$9.90 per 30 days |
+| HDB and URA car parks | [Short-term parking, cars ↗](https://www.hdb.gov.sg/cs/infoweb/car-parks/short-term-parking/short-term-parking-charges) | HDB | S$0.60 outside Central Area; S$1.20 Central Area 7:00am to 5:00pm Mon to Sat | Per half hour | S$1.20 to S$2.40 per hour (calculated) (listing) |
+| HDB and URA car parks | [Parking coupon denominations ↗](https://www.ura.gov.sg/car-parks/short-term-parking/parking-coupons/) | URA | S$0.60 and S$1.20 | Per half hour | Per half hour (listing) |
+| Season parking | [Car season parking, Delta Circus Fringe (D0028) ↗](https://www.ura.gov.sg/car-parks/season-parking/apply/) | URA | S$90 | 24 hrs by 7 days | S$90 per month |
+| Season parking | [Car season parking, Spooner Road Off Street (S0171) ↗](https://www.ura.gov.sg/car-parks/season-parking/apply/) | URA | S$100 | 24 hrs by 7 days | S$100 per month |
+| ERP | [Highest morning charge, KPE southbound after Defu Flyover (gantry 50) ↗](https://onemotoring.lta.gov.sg/content/dam/onemotoring/Driving/ERP/ERP_rates_tables/2026.09.03-20260626-1PCU_ERP_Rates_Report.20260623170433.pdf) | LTA | S$6.00 | Passenger car, 8:35am to 8:55am weekdays | Per pass |
+| ERP | [CTE after Braddell Road (gantries 31, 33, 34) ↗](https://onemotoring.lta.gov.sg/content/dam/onemotoring/Driving/ERP/ERP_rates_tables/2026.09.03-20260626-1PCU_ERP_Rates_Report.20260623170433.pdf) | LTA | S$5.00 | Passenger car, 8:35am to 8:55am weekdays | Per pass |
+| ERP | [Orchard cordon and YMCA/Fort Canning gantries ↗](https://onemotoring.lta.gov.sg/content/dam/onemotoring/Driving/ERP/ERP_rates_tables/2026.09.03-20260626-1PCU_ERP_Rates_Report.20260623170433.pdf) | LTA | S$1.00 | Passenger car, about 11:05am to 6:55pm weekdays | Per pass |
+| COE | [COE Category A ↗](https://www.motorist.sg/article/6588/november-2026-coe-results-1st-bidding-category-a-was-supercharged-to-an-all-time-high-of-139-001-while-cat-b-and-cat-e-stayed-stubbornly-above-130k) | LTA bidding, reported by Motorist | S$139,001 | Up to 1,600 cc and 130 bhp; EV up to 110 kW | Per 10-year COE |
+| COE | [COE Category B ↗](https://www.motorist.sg/article/6588/november-2026-coe-results-1st-bidding-category-a-was-supercharged-to-an-all-time-high-of-139-001-while-cat-b-and-cat-e-stayed-stubbornly-above-130k) | LTA bidding, reported by Motorist | S$132,334 | Above 1,600 cc or 130 bhp; EV above 110 kW | Per 10-year COE |
+| Road tax | [Petrol car, 1,600 cc ↗](https://onemotoring.lta.gov.sg/content/onemotoring/home/buying/upfront-vehicle-costs/tax-structure.html) | LTA | S$371.45 (calculated) | Six months | About S$742.90 per year (calculated) |
+| Road tax | [Older-car surcharge ↗](https://onemotoring.lta.gov.sg/content/onemotoring/home/owning/ongoing-car-costs/road-tax.html) | LTA | S$10% to 50% of road tax | Cars over 10 to over 14 years | Per year |
+| Car insurance | [Comprehensive, sample driver ↗](https://www.singsaver.com.sg/car-insurance/blog/cheapest-car-insurance-singapore) | Singlife Motor | S$714.87 | 35-year-old, 2021 Honda Vezel 1.5, 50% NCD, no claims | Per year |
+| Car insurance | [Comprehensive, sample driver ↗](https://www.singsaver.com.sg/car-insurance/blog/cheapest-car-insurance-singapore) | Allianz Motor Protect | S$942.45 | Same sample driver | Per year |
+| Car insurance | [Comprehensive, sample driver ↗](https://www.singsaver.com.sg/car-insurance/blog/cheapest-car-insurance-singapore) | Great Eastern Drive and Save Plus | S$1,020.86 | Same sample driver | Per year |
+| Petrol at the pump | [95-octane petrol ↗](https://www.motorist.sg/article/6524/singapore-fuel-prices-rise-again-with-95-octane-petrol-hitting-3-60) | Major brands, highest listed | S$3.60 | Per litre, before discounts | S$3.60 per litre |
+| Petrol at the pump | [95-octane, member price ↗](https://mothership.sg/2026/03/cnergy-dunman/) | Cnergy | S$2.35 | Per litre, member | S$2.35 per litre |
+| Changi airport transfer | [Taxi to city, metered ↗](https://www.changiairport.com/en/at-changi/transport-and-directions/leaving-the-airport.html) | Changi Airport | S$25 to S$45 | About 30 minutes, before surcharges | Per trip |
+| Changi airport transfer | [Private airport transfer, 4-seater or 6-seater ↗](https://www.changiairport.com/en/at-changi/transport-and-directions/leaving-the-airport.html) | Ground Transport Concierge | S$70; S$75 | Per trip, one drop-off | Per trip |
+| Ferry or coach to Malaysia | [CW1, Kranji to JB ↗](https://wise.com/sg/blog/bus-to-jb) | Causeway Link | S$2.60 | One way, maximum fare | Per trip |
+| Ferry or coach to Malaysia | [Shuttle Tebrau ↗](https://sg.trip.com/guide/transport/train-from-singapore-to-jb.html) | KTM | S$5 | Standard seat, one way | Per trip |
+| Ferry or coach to Malaysia | [Coach, Changi Airport to JB ↗](https://www.changiairport.com/en/at-changi/transport-and-directions/coach-to-johor-bahru.html) | Transtar TS1 or WTS9 | S$11 | One way, adult | Per trip |
+
+### Bills & Housing
+
+| Official series | Index, Sep 2026 | 1 year | Since Sep 2015 | Sep 2027 forecast | Month pattern |
+|---|---|---|---|---|---|
+| Actual Rentals For Housing | 102.3 | +1.1% | +3.5% | 102.5 (102.5 to 108.2) | no steady pattern |
+| Imputed Rentals For Housing | 101.2 | +0.6% | +2.3% | 101.5 (101.5 to 108.1) | no steady pattern |
+| Housing Maintenance & Repairs | 114.9 | +3.1% | +27.3% | 116.1 (115.0 to 120.7) | Apr low, Aug high (26%) |
+| Water Supply | 112.3 | +0.0% | +59.2% | 112.3 (112.3 to 124.0) | no steady pattern |
+| Refuse Collection | 106.4 | +4.3% | +42.2% | 106.4 (106.4 to 124.2) | no steady pattern |
+| Electricity | 103.2 | +9.1% | +21.0% | 104.3 (97.9 to 128.0) | no steady pattern |
+| Gas | 103.4 | +5.8% | +31.9% | 104.3 (99.1 to 113.9) | Jan low, Apr high (1%) |
+| Domestic Services & Household Services | 101.3 | +1.0% | +19.5% | 101.9 (101.4 to 102.9) | no steady pattern |
+| Fixed Communication Services | 98.5 | -1.5% | n/a | 98.5 (96.3 to 105.3) | too new |
+| Mobile Communication Services | 97.9 | -1.9% | n/a | 97.9 (95.7 to 104.7) | too new |
+| Internet, Bundled & Other Telecommunication Services | 84.4 | -11.2% | n/a | 84.4 (82.6 to 90.3) | too new |
+| Information & Communication Services Nec | 99.6 | -2.6% | +7.7% | 100.2 (97.6 to 105.4) | no steady pattern |
+| Other Miscellaneous Services | 100.5 | -0.1% | -1.1% | 100.6 (96.6 to 102.5) | no steady pattern |
+
+- **Electricity:** the [regulated tariff ↗](https://www.spgroup.com.sg/our-services/utilities/tariff-information) changes every quarter. It is 31.16 cents per kWh with GST for Q4 2026.
+- **Before you switch retailer,** [check the rate, daily charges, lock-in and early exit fee ↗](https://www.singsaver.com.sg/blog/open-electricity-market-singapore-complete-guide).
+- **Rent:** [HDB medians ↗](https://www.hdb.gov.sg/-/media/hdb-pulse/news/2026/1q2026-rpi/Annex-D.pdf) are self-declared and cover whole flats only.
+
+| Item | Product | Shop | Price | Covers | Unit price |
+|---|---|---|---|---|---|
+| Mobile plan | [Simba Data-Only $5 ↗](https://simba.sg/data-only) | Simba | S$5/30 days | 500GB main data | n/a |
+| Mobile plan | [StarHub 5G Lite SIM-only ↗](https://www.starhub.com/personal/how-to/best-sim-only-plan-singapore.html) | StarHub | S$25/month | 200GB, 1,000 min, 1,000 SMS | n/a |
+| Mobile plan | [StarHub 5G Unlimited+ Core ↗](https://www.starhub.com/personal/how-to/best-sim-only-plan-singapore.html) | StarHub | S$38/month | Unlimited 5G, unlimited voice and SMS | n/a |
+| Mobile plan | [SuperRoam 10, 5G, 500 GB ↗](https://www.singsaver.com.sg/telco/blog/best-sim-only-no-contract-plans-for-light-moderate-and-heavy-data-users) | SIMBA | S$10.00 | No minimum contract per article | S$10.00 per month |
+| Mobile plan | [5G+ Value, 400 GB ↗](https://www.singsaver.com.sg/telco/blog/best-sim-only-no-contract-plans-for-light-moderate-and-heavy-data-users) | GOMO | S$10.00 | No minimum contract per article | S$10.00 per month |
+| Mobile plan | [5G Priority Plus, unlimited ↗](https://www.singsaver.com.sg/telco/blog/best-sim-only-no-contract-plans-for-light-moderate-and-heavy-data-users) | Singtel | S$49.50 | No minimum contract per article | S$49.50 per month |
+| Home broadband | [M1 10Gbps Broadband ↗](https://www.m1.com.sg/home-broadband) | M1 | S$26.90/month (usual S$135.00) | 24 months | n/a |
+| Home broadband | [StarHub UltraSpeed 5Gbps, new sign-ups ↗](https://www.starhub.com/personal/broadband.html) | StarHub | S$29.55/month (usual S$68.53) | 24 months | n/a |
+| Home broadband | [Singtel 5Gbps Broadband ↗](https://www.singtel.com/personal/products-services/broadband/fibre-broadband-plans) | Singtel | From S$39.90/month (regular S$70.90) | 2 years | n/a |
+| Home broadband | [Singtel 10Gbps Broadband Premium ↗](https://www.singtel.com/personal/products-services/broadband/fibre-broadband-plans) | Singtel | From S$39.90/month (regular S$89.90) | 2 years | n/a |
+| Laundry service | [Self-service wash, normal, detergent included ↗](https://www.laundrymart.com.sg/content/9-Laundromat) | LaundryMart | S$5.00 per load | 10 kg | S$0.50/kg, wash only |
+| Laundry service | [Wash & Fold ↗](https://piing.com.sg/) | Piing | S$6.95/kg | Per kg | S$6.95/kg |
+| Electricity tariff (SP) | [Low-tension domestic, Q4 2026 ↗](https://www.spgroup.com.sg/our-services/utilities/tariff-information) | SP Group | S$28.59 cents before GST; 31.16 cents with GST | 1 Oct to 31 Dec 2026 | S$0.3116 per kWh with GST |
+| Electricity retailer plans | [Savvy Saver 36, fixed ↗](https://dollarsandsense.sg/electricity-tariffs-are-up-17-for-3q2026-how-much-can-you-save-if-you-switch-to-an-electricity-oem-retailer/) | PacificLight | S$27.18 cents | 36-month contract | S$0.2718 per kWh |
+| Electricity retailer plans | [Give Us A Try, fixed ↗](https://dollarsandsense.sg/electricity-tariffs-are-up-17-for-3q2026-how-much-can-you-save-if-you-switch-to-an-electricity-oem-retailer/) | Geneco | S$29 cents | 6-month contract | S$0.29 per kWh |
+| Electricity retailer plans | [Easy Peasy, no contract ↗](https://dollarsandsense.sg/electricity-tariffs-are-up-17-for-3q2026-how-much-can-you-save-if-you-switch-to-an-electricity-oem-retailer/) | PacificLight | S$26 cents + 55 cents per day | No contract | S$0.26 per kWh plus daily charge |
+| PUB water tariff | [Potable water, total price before GST ↗](https://www.mse.gov.sg/latest-news/water-price-to-increase-from-2024/) | MSE/PUB | S$3.24 | Per cubic metre, from 1 Apr 2025 | S$3.53 per cubic metre with GST (calculated) |
+| PUB water tariff | [Water tariff component only, up to 40 m3 ↗](https://www.spgroup.com.sg/our-services/utilities/tariff-information) | SP Group bill listing | S$1.43 before GST; S$1.56 with GST | Up to 40 m3 per month | Per cubic metre |
+| Town gas tariff | [Town gas, Q4 2026 ↗](https://www.spgroup.com.sg/our-services/utilities/tariff-information) | City Energy, via SP tariff page | S$21.45 cents before GST; 23.38 cents with GST | 1 Oct to 31 Dec 2026 | S$0.2338 per kWh with GST |
+| Service and conservancy charges | [S&CC, 3-room, reduced rate ↗](https://www.tptc.org.sg/resident-services/scc/) | Tanjong Pagar Town Council | S$50.40 | Per month, GST included | S$50.40 per month |
+| Service and conservancy charges | [S&CC, 4-room, reduced rate ↗](https://www.tptc.org.sg/resident-services/scc/) | Tanjong Pagar Town Council | S$71.60 | Per month, GST included | S$71.60 per month |
+| Service and conservancy charges | [S&CC, 5-room, normal rate ↗](https://www.tptc.org.sg/resident-services/scc/) | Tanjong Pagar Town Council | S$91.20 | Per month, GST included | S$91.20 per month |
+| HDB rental | [3-room, whole flat, median, Woodlands ↗](https://www.hdb.gov.sg/-/media/hdb-pulse/news/2026/1q2026-rpi/Annex-D.pdf) | HDB | S$2,500 | Approved rent-out applications, Q1 2026 | Per month |
+| HDB rental | [4-room, whole flat, median, Tampines ↗](https://www.hdb.gov.sg/-/media/hdb-pulse/news/2026/1q2026-rpi/Annex-D.pdf) | HDB | S$3,400 | Q1 2026 | Per month |
+| HDB rental | [4-room, whole flat, median, Central Area ↗](https://www.hdb.gov.sg/-/media/hdb-pulse/news/2026/1q2026-rpi/Annex-D.pdf) | HDB | S$4,200 | Q1 2026 | Per month |
+| Broadband fibre plan | [HomePac 3Gbps ↗](https://whistleout.com.sg/Broadband/Reviews/m1-broadband-plans-review) | M1 | S$32.90 | 24-month contract, router included | Per month |
+| Broadband fibre plan | [HomePac 6Gbps ↗](https://whistleout.com.sg/Broadband/Reviews/m1-broadband-plans-review) | M1 | S$38.90 | 24-month contract, router included | Per month |
+| Maid levy | [Concessionary levy ↗](https://www.mom.gov.sg/passes-and-permits/work-permit-for-foreign-domestic-worker/foreign-domestic-worker-levy/paying-levy) | MOM | S$60 | Per month, eligible households | S$1.98 per day, part months |
+| Maid levy | [Normal levy, 1st helper ↗](https://www.mom.gov.sg/passes-and-permits/work-permit-for-foreign-domestic-worker/foreign-domestic-worker-levy/paying-levy) | MOM | S$300 | Per month | S$9.87 per day, part months |
+
+### Clinics & Insurance
+
+| Official series | Index, Sep 2026 | 1 year | Since Sep 2015 | Sep 2027 forecast | Month pattern |
+|---|---|---|---|---|---|
+| Other Insurance Nec | 102.8 | -0.8% | n/a | 102.8 (100.5 to 109.9) | too new |
+| Fees At Polyclinics | 107.4 | +2.5% | +29.1% | 108.2 (108.2 to 123.6) | Jun low, Oct high (2%) |
+| Fees At General Practitioners (GP) Clinics | 102.4 | +1.2% | +13.0% | 103.4 (97.7 to 133.7) | Jun low, Aug high (4%) |
+| Fees At Specialist Outpatient Clinics | 100.2 | +2.0% | +17.0% | 100.9 (98.6 to 104.5) | no steady pattern |
+| Outpatient Dental Services | 104.0 | +0.4% | +20.6% | 104.9 (104.3 to 110.9) | Dec low, Sep high (1%) |
+| Outpatient Care Services Nec | 94.7 | -2.9% | +21.2% | 95.3 (92.6 to 100.1) | no steady pattern |
+| Inpatient Care Services | 102.7 | +2.8% | +29.3% | 103.7 (102.2 to 110.0) | no steady pattern |
+| Diagnostic Imaging Services & Medical Laboratory Services | 104.3 | +2.0% | n/a | 104.3 (102.0 to 111.6) | too new |
+| Patient Emergency Transportation Services & Emergency Rescue | 100.8 | -1.9% | n/a | 100.8 (98.5 to 107.7) | too new |
+| Health Insurance | 122.8 | +8.6% | +46.8% | 124.0 (124.0 to 140.6) | no steady pattern |
+| Travel Insurance | 102.5 | +4.1% | n/a | 102.5 (100.2 to 109.5) | too new |
+
+- **CHAS clinics** must [give itemised bills ↗](https://www.chas.sg/FAQ), so you can check charges and subsidy.
+
+| Item | Product | Shop | Price | Covers | Unit price |
+|---|---|---|---|---|---|
+| GP visit | [Polyclinic medical consultation, Singapore citizen ↗](https://polyclinic.singhealth.com.sg/clinic-visit/charges-and-payment) | SingHealth Polyclinics | S$19.60 (child or elderly citizen S$9.00; PR S$39.70) | 1 visit | n/a |
+| Dental scaling | [CHAS private dental benchmark: scaling S$35 to S$60, polishing S$26 to S$38 ↗](https://www.moh.gov.sg/managing-expenses/bills-and-fee-benchmarks/guide-to-dental-treatment-costs/) | MOH (benchmark, not a clinic price) | S$61 to S$98 combined | 1 visit | n/a |
+| Dental scaling | [Polyclinic scaling and polishing, Singapore citizen ↗](https://polyclinic.singhealth.com.sg/clinic-visit/charges-and-payment) | SingHealth Polyclinics | S$55.60 to S$94.40 (child or elderly citizen S$27.60 to S$47.20) | 1 visit | n/a |
+
+### School & Childcare
+
+| Official series | Index, Sep 2026 | 1 year | Since Sep 2015 | Sep 2027 forecast | Month pattern |
+|---|---|---|---|---|---|
+| Primary Education | 86.8 | -13.2% | -13.7% | 86.8 (75.4 to 86.9) | no steady pattern |
+| Secondary Education | 93.0 | -7.5% | -5.1% | 93.0 (86.1 to 93.6) | no steady pattern |
+| Post-Secondary (Non-Tertiary) Education | 92.7 | -7.8% | +6.1% | 92.8 (85.5 to 102.1) | no steady pattern |
+| Polytechnic Education | 105.3 | +1.1% | +30.7% | 106.5 (105.6 to 109.2) | Mar low, Apr high (2%) |
+| Other Education | 99.8 | -0.6% | +14.6% | 100.7 (99.2 to 102.2) | no steady pattern |
+| Private Tuition & Other Educational Courses | 104.5 | +2.4% | +45.1% | 106.0 (106.0 to 111.1) | Nov low, Jan high (1%) |
+| School Textbooks & Study Guides | 103.1 | +2.4% | +8.0% | 103.3 (103.0 to 105.5) | no steady pattern |
+| Social Services | 94.8 | +0.8% | -8.8% | 94.8 (91.7 to 95.8) | Jul low, Feb high (1%) |
+
+- **Childcare caps** are [before GST and subsidies ↗](https://dollarsandsense.sg/complete-guide-childcare-operator-fees-singapore/). Compare the net fee after your own subsidy.
+
+| Item | Product | Shop | Price | Covers | Unit price |
+|---|---|---|---|---|---|
+| Infant and childcare monthly fee | [Full-day childcare, Anchor Operator fee cap ↗](https://dollarsandsense.sg/complete-guide-childcare-operator-fees-singapore/) | ECDA scheme, reported by Dollars and Sense | S$610 | 18 months to under 7, before GST, before subsidies, from 1 Jan 2026 | S$610 per month |
+| Infant and childcare monthly fee | [Full-day childcare, Partner Operator fee cap ↗](https://dollarsandsense.sg/complete-guide-childcare-operator-fees-singapore/) | ECDA scheme, reported by Dollars and Sense | S$650 | Same terms | S$650 per month |
+| Infant and childcare monthly fee | [Full-day infant care, Anchor Operator fee cap ↗](https://dollarsandsense.sg/complete-guide-childcare-operator-fees-singapore/) | ECDA scheme, reported by Dollars and Sense | S$1,235 | 2 to 18 months, before GST, before subsidies | S$1,235 per month |
+| Infant and childcare monthly fee | [Full-day infant care, Partner Operator fee cap ↗](https://dollarsandsense.sg/complete-guide-childcare-operator-fees-singapore/) | ECDA | S$1,290 | Same terms | S$1,290 per month |
+
+### Holidays & Fun
+
+| Official series | Index, Sep 2026 | 1 year | Since Sep 2015 | Sep 2027 forecast | Month pattern |
+|---|---|---|---|---|---|
+| Airfares | 105.0 | +11.9% | +13.7% | 104.8 (99.9 to 118.3) | Sep low, Dec high (8%) |
+| Seafares | 114.2 | +14.9% | +83.4% | 114.2 (113.1 to 175.6) | no steady pattern |
+| Other Recreational Services | 109.2 | -1.0% | n/a | 109.2 (106.8 to 116.8) | too new |
+| Recreational & Sporting Services | 104.5 | +3.6% | +33.2% | 105.6 (105.6 to 112.1) | Dec low, Apr high (1%) |
+| Services Provided By Cinemas, Theatres & Concert Venues | 107.5 | +4.0% | n/a | 107.5 (105.1 to 114.9) | too new |
+| Services Provided By Museums & Cultural Sites | 107.2 | +0.7% | n/a | 107.2 (104.8 to 114.6) | too new |
+| Photographic Services | 96.4 | +0.2% | n/a | 96.4 (94.2 to 103.0) | too new |
+| Cultural Services Nec | 102.5 | +1.8% | n/a | 102.5 (100.2 to 109.6) | too new |
+| Hotels | 96.7 | -2.8% | n/a | 96.7 (94.5 to 103.4) | too new |
+| Chalets | 101.4 | -5.1% | n/a | 101.4 (99.1 to 108.4) | too new |
+| Package Holidays | 97.1 | +0.4% | +21.6% | 97.8 (93.7 to 106.6) | Jul low, Dec high (4%) |
+
+- **Gyms:** [get the minimum term, notice and refund terms in writing ↗](https://www.fitnessfirst.com/sg/en/membership) before you sign.
+- **ActiveSG:** by the listed rates, the S$30 peak gym pass beats single entries at 13 or more visits a month.
+
+| Item | Product | Shop | Price | Covers | Unit price |
+|---|---|---|---|---|---|
+| Bubble tea | [Brown sugar pearl milk tea ↗](https://themoneybees.co/blog/bubble-tea-comparison-cheapest-singapore) | Mixue | About S$2.90 to S$3.50 | Size not stated | Per drink |
+| Bubble tea | [Milk tea, medium ↗](https://themoneybees.co/blog/bubble-tea-comparison-cheapest-singapore) | KOI | S$4.00 | Medium | Per drink |
+| Bubble tea | [Jasmine milk tea with brown sugar pearl ↗](https://themoneybees.co/blog/bubble-tea-comparison-cheapest-singapore) | LiHO | S$5.60 | Medium | Per drink |
+| Cinema ticket | [HSBC Movie Card, weekdays ↗](https://www.gv.com.sg/GVVouchersAndGiftCards-HSBC) | Golden Village | S$80 | 10 tickets, Mon to Thu | S$8.00 per ticket (calculated) (listing) |
+| Gym monthly membership | [Single Club (Home Club) ↗](https://www.fitnessfirst.com/sg/en/membership) | Fitness First | From S$200 | 4 or 12 month contract, no joining fee | From S$200 per month |
+| Gym monthly membership | [Multi Club (Passport) ↗](https://www.fitnessfirst.com/sg/en/membership) | Fitness First | From S$225 | 4 or 12 month contract | From S$225 per month |
+| ActiveSG gym | [ActiveGYM single entry, citizen or PR ↗](https://www.activesgcircle.gov.sg/facilities/individual-rates) | ActiveSG | S$2.50 | Per entry | S$2.50 per entry |
+| ActiveSG gym | [MyActiveGYM 1-month peak pass ↗](https://www.activesgcircle.gov.sg/facilities/individual-rates) | ActiveSG | S$30 | Unlimited, adults 18 to 54 | S$30 per month |
+| Swimming | [Normal pool, citizen or PR, adult ↗](https://www.activesgcircle.gov.sg/facilities/individual-rates) | ActiveSG | S$1.00 weekday; S$1.30 weekend and PH | Per entry | Per entry |
+| Swimming | [Special Features pool, citizen or PR ↗](https://www.activesgcircle.gov.sg/facilities/individual-rates) | ActiveSG | S$1.50 weekday; S$2.00 weekend and PH | Per entry | Per entry |
+| Swimming | [MyActiveSWIM monthly pass, adult ↗](https://www.activesgcircle.gov.sg/facilities/individual-rates) | ActiveSG | S$10 | Unlimited, all ActiveSG pools | S$10 per month |
+
+### Men's Wear
+
+| Official series | Index, Sep 2026 | 1 year | Since Sep 2015 | Sep 2027 forecast | Month pattern |
+|---|---|---|---|---|---|
+| Garments | 100.7 | +1.0% | -5.0% | 100.5 (95.3 to 105.6) | Jul low, Apr high (2%) |
+| Other Articles Of Clothing & Clothing Accessories | 104.7 | -1.5% | n/a | 104.7 (102.4 to 111.9) | too new |
+| Cleaning, Repair, Tailoring & Rental Of Clothing | 101.4 | +2.6% | n/a | 101.4 (99.1 to 108.4) | too new |
+
+- **Read the fibre label.** No credible body sets a fabric weight or stitch count, so ignore precise claims. Look for even seams, firm buttons and smooth zips.
+- **The law helps.** The [Lemon Law ↗](https://www.case.org.sg/cpfta-lemon-law/) covers goods that do not conform to the contract. It does not cover a change of mind or normal wear.
+
+| Item | Product | Shop | Price | Covers | Unit price |
+|---|---|---|---|---|---|
+| T-shirt | [Men's Fitness Cotton T-Shirt 100 Sportee ↗](https://www.decathlon.sg/c/fitness-sports/gym-activewear/t-shirts.html) | Decathlon | S$4.90 | 1 | S$4.90/pc (listing) |
+| T-shirt | [Men's 3-pack Regular Fit T-shirts ↗](https://www2.hm.com/en_sg/men/shop-by-product/basics/t-shirts.html) | H&M | S$29.90 | 3 | S$9.97/pc (listing) |
+| T-shirt | [Men's AIRism Cotton Crew Neck T-Shirt ↗](https://www.uniqlo.com/sg/en/men/airism) | Uniqlo | S$14.90 | 1 | S$14.90/pc (listing) |
+| Office shirt | [Oxford Shirt Long Sleeve ↗](https://www.uniqlo.com/sg/en/men/shirts-and-polo-shirts) | Uniqlo | S$39.90 | 1 | S$39.90/pc (listing) |
+| Office shirt | [Non-iron dry oxford smart fit long sleeve shirt ↗](https://g2000.com.sg/pages/men) | G2000 | S$79.90 | 1 | S$79.90/pc (listing) |
+| Office shirt | [Non-iron 200/2 pure cotton fine twill shirt ↗](https://g2000.com.sg/collections/mens-formal-shirts) | G2000 | S$119.00 | 1 | S$119.00/pc (listing) |
+| Polo | [Artengo tennis polo (model not given in snippet) ↗](https://www.decathlon.sg/c/men/tops/shirts-polo-shirts.html) | Decathlon | about S$6.50 | 1 | about S$6.50/pc (listing) |
+| Polo | [Dry Pique Polo Shirt ↗](https://www.uniqlo.com/sg/en/men/shirts-and-polo-shirts) | Uniqlo | S$29.90 | 1 | S$29.90/pc (listing) |
+| Polo | [DRY-EX polo (sale listing) ↗](https://www.uniqlo.com/sg/en/feature/sale/men/) | Uniqlo | S$14.90 (regular S$29.90) | 1 | S$14.90/pc (listing) |
+| Jeans | [Men's Regular Fit Jeans (range) ↗](https://www2.hm.com/en_sg/men/shop-by-product/jeans/regular.html) | H&M | S$39.90 to S$64.90 | 1 | S$39.90 to S$64.90/pc (listing) |
+| Jeans | [MEN Uniqlo U Regular Fit Jeans, item 433239 ↗](https://www.uniqlo.com/sg/store/men-uniqlo-u-regular-fit-jeans-4332390006.html) | Uniqlo | S$59.90 regular | 1 | S$59.90/pc (listing) |
+| Jeans | [Women's straight-leg regular-waist jeans (range) ↗](https://www2.hm.com/en_sg/women/shop-by-product/jeans/straight.html) | H&M | around S$59.90 | 1 | around S$59.90/pc (listing) |
+| Chinos | [Smart Ankle Pants ↗](https://www.uniqlo.com/sg/en/men/bottoms/ankle-pants) | Uniqlo | S$39.90 | 1 | S$39.90/pc (listing) |
+| Chinos | [Slim Chino Pants ↗](https://www.uniqlo.com/sg/en/men/bottoms/chinos/slim-fit) | Uniqlo | S$49.90 | 1 | S$49.90/pc (listing) |
+| Shorts | [Men's Fitness Shorts - Black ↗](https://www.decathlon.sg/c/collections/fitness-race-essentials/fitness-race-apparel/men-s-fitness-race-apparel.html) | Decathlon | S$6.90 | 1 | S$6.90/pc (listing) |
+| Jacket | [Men's Pocketable UV Protection Parka ↗](https://www.uniqlo.com/sg/en/men/uv-protection) | Uniqlo | S$39.90 | 1 | S$39.90/pc (listing) |
+| Underwear | [Men's stretch jersey boxer pants ↗](https://www.muji.com/sg/products/list/Mens%20Innerwear) | Muji | S$7.90 | 1 | S$7.90/pc (listing) |
+| Underwear | [Jockey mini briefs 3-pack ↗](https://store.takashimaya.com.sg/undergarment?pagesize=36&orderby=10) | Takashimaya | S$16.90 (was S$22.90) | 3 | S$5.63/pc (listing) |
+| Underwear | [AIRism Boxer Briefs ↗](https://www.uniqlo.com/sg/en/men/airism/underwear) | Uniqlo | S$14.90 | 1 | S$14.90/pc (listing) |
+| Socks | [Running Socks Run 100 (3 pairs) ↗](https://www.decathlon.sg/c/accessories/gloves-socks-footwear-accessories/socks.html) | Decathlon | S$3.90 | 3 pairs | S$1.30/pair (listing) |
+| Socks | [Artengo RS500 Tri-Pack ↗](https://www.decathlon.sg/c/accessories/gloves-socks-footwear-accessories/socks.html) | Decathlon | S$8.90 | 3 pairs | S$2.97/pair (listing) |
+| Socks | [Men's right-angle short socks, pack of 4 ↗](https://www.muji.com/sg/products/list/Fashion) | Muji | S$12.90 | 4 pairs | S$3.23/pair (listing) |
+
+### Women's Apparel
+
+| Item | Product | Shop | Price | Covers | Unit price |
+|---|---|---|---|---|---|
+| Dress | [Broderie Fit & Flare Midi Dress ↗](https://www.lovebonito.com/sg/broderie-fit-flare-midi-dress-31k5050452.html) | Love, Bonito | S$40.00 (was S$89.00) | 1 | S$40.00/pc |
+| Skirt | [Bubble Midi Skirt ↗](https://www.lovebonito.com/sg/bubble-midi-skirt-31i6082256.html) | Love, Bonito | S$59.00 | 1 | S$59.00/pc |
+| Blouse | [Rayon skipper-collar blouse (limited offer) ↗](https://www.uniqlo.com/sg/en/feature/limited-offers/women/) | Uniqlo | S$29.90 (regular S$39.90) | 1 | S$29.90/pc (listing) |
+| Blouse | [Women's Rayon Blouse ↗](https://www.uniqlo.com/sg/en/women/shirts-and-blouses/shirts-and-blouses) | Uniqlo | S$39.90 | 1 | S$39.90/pc (listing) |
+| Blouse | [Philomena Knot Front Blouse ↗](https://www.lovebonito.com/new-in?p=20) | Love, Bonito | S$39.90 | 1 | S$39.90/pc (listing) |
+| Bra | [Wireless Bra 3D Hold ↗](https://www.uniqlo.com/sg/en/women/innerwear/wireless-bra) | Uniqlo | S$29.90 | 1 | S$29.90/pc (listing) |
+| Bra | [Non-wired padded styles (lowest in range) ↗](https://sg.triumph.com/collections/non-wired-bras) | Triumph | from S$42.90 | 1 | from S$42.90/pc (listing) |
+| Bra | [Wacoal Non-wired Bra HB1404 ↗](https://wacoal.com.sg/collections/non-wired-bras) | Wacoal | S$69.00 | 1 | S$69.00/pc (listing) |
+| Pyjamas | [W's Side seamless thin gauze 3/4 sleeve pajamas ↗](https://www.muji.com/sg/products/cmdty/detail/4550584518751) | Muji | S$49.90 | 1 set | S$49.90/set (listing) |
+| Pyjamas | [W's Side Seamless double gauze pajamas (L/S) ↗](https://www.muji.com/sg/products/cmdty/detail/4550584026287) | Muji | S$49.90 | 1 set | S$49.90/set (listing) |
+| Swimwear | [Basic swimming shorts (men) ↗](https://www.decathlon.sg/c/water-sports/swimming/swimsuits.html?productNature=swim+shorts) | Decathlon | S$9.90 | 1 | S$9.90/pc (listing) |
+| Swimwear | [Nabaiji Heva Li one-piece (women) ↗](https://www.decathlon.sg/c/water-sports/swimming/swimsuits/women-s-swimsuits.html) | Decathlon | S$20.00 | 1 | S$20.00/pc (listing) |
+| Swimwear | [Speedo AquaNite Shaping one-piece ↗](https://www.decathlon.sg/c/speedo.html) | Decathlon (marketplace) | S$74.24 (was S$105.99) | 1 | S$74.24/pc (listing) |
+
+### Men's Shoes
+
+| Official series | Index, Sep 2026 | 1 year | Since Sep 2015 | Sep 2027 forecast | Month pattern |
+|---|---|---|---|---|---|
+| Footwear | 102.7 | +6.3% | +1.8% | 102.8 (96.6 to 112.2) | Nov low, May high (3%) |
+
+- **Fit beats price.** An [NHS podiatry leaflet ↗](https://www.elft.nhs.uk/sites/default/files/2025-09/NHS%20Footwear%20leaflet%20.pdf) says to leave about 1 cm past the longest toe, keep the heel under 4 cm, and buy shoes that fit from new. Try both, late in the day.
+
+| Item | Product | Shop | Price | Covers | Unit price |
+|---|---|---|---|---|---|
+| Sneakers | [Fleet Suede Sneakers ↗](https://www.pedroshoes.com/sg/men/shoes/sneakers) | Pedro | S$109.90 | 1 pair | S$109.90/pair (listing) |
+| Sneakers | [Crest Leather Sneakers ↗](https://www.pedroshoes.com/sg/men/shoes/sneakers) | Pedro | S$129.90 | 1 pair | S$129.90/pair (listing) |
+| Running shoes | [Jogflow 100.1 ↗](https://www.decathlon.sg/c/men/shoes/running-shoes.html) | Decathlon | S$19.90 | 1 pair | S$19.90/pair (listing) |
+| Running shoes | [KIPCORE (men) ↗](https://www.decathlon.sg/c/men/shoes/running-shoes.html) | Decathlon | S$39.90 (was S$59.90) | 1 pair | S$39.90/pair (listing) |
+| Running shoes | [GEL-CONTEND 10 ↗](https://www.asics.com/sg/en-sg/mens-running-shoes/) | ASICS | S$99.00 | 1 pair | S$99.00/pair (listing) |
+| Office/leather shoes | [Altitude Lightweight Leather Derby Shoes - Black ↗](https://www.pedroshoes.com/sg/men/PM1-46600125-1_BLACK.html) | Pedro | S$149.90 | 1 pair | S$149.90/pair |
+
+### Women's Shoes
+
+| Item | Product | Shop | Price | Covers | Unit price |
+|---|---|---|---|---|---|
+| Heels | [Valentina Satin Pointed Slingback Pumps ↗](https://www.charleskeith.com/sg/CK1-60280496-2_OLIVE.html) | Charles & Keith | S$59.90 | 1 pair | S$59.90/pair |
+| Sandals | [Arizona EVA ↗](https://www.birkenstock.com/sg/arizona-eva/arizona-eva-eva-0-eva-u_3716.html) | Birkenstock | S$89.90 | 1 pair | S$89.90/pair |
+| Slippers | [Floatz women's slippers ↗](https://www.bata.com/sg/women/shoes/slippers/) | Bata | S$9.00 | 1 pair | S$9.00/pair (listing) |
+| Slippers | [Bata-brand women's thong slippers ↗](https://www.bata.com/sg/women/shoes/slippers/) | Bata | S$24.95 | 1 pair | S$24.95/pair (listing) |
+
+### Bags & Luggage
+
+- **Luggage:** [wheels and handle matter most ↗](https://which.co.uk/reviews/suitcases/article/choosing-and-buying-the-best-luggage/tips-on-choosing-the-best-luggage-aMjh49F7APZu). Four spinners suit smooth floors, and two large wheels suit kerbs.
+- **Zips:** [chain zips outlast coil zips ↗](https://www.consumerreports.org/money/luggage/buying-guide/). Jiggle each wheel in the shop.
+- **PU is plastic.** Names like "Calf PU" or "Nappa PU" are not leather. Read the material line.
+
+| Item | Product | Shop | Price | Covers | Unit price |
+|---|---|---|---|---|---|
+| Backpack | [LITEPOINT LAPT. BACKPACK 15.6" ↗](https://www.samsonite.com.sg/samsonite/litepoint/lapt.-backpack-15.6%22/ss-134549-1041.html) | Samsonite | S$203.00 (was S$290.00) | 1 (18 L) | S$11.28/L |
+| Wallet | [Everleigh Wallet - Black (women) ↗](https://www.charleskeith.com/sg/CK6-10681184_BLACK.html) | Charles & Keith | S$33.90 | 1 | S$33.90/pc |
+| Wallet | [Leather Bi-Fold Wallet with Insert - Black ↗](https://www.pedroshoes.com/sg/men/PM4-16500115_BLACK.html) | Pedro | S$75.90 | 1 | S$75.90/pc |
+| Handbag | [Halsey Ruched Top Handle Bag, Black ↗](https://www.charleskeith.com/sg/CK2-50782952_BLACK.html) | Charles & Keith | S$75.90 | 1 | S$75.90/pc |
+| Cabin luggage | [ELLEN SPINNER 55/20 TSA V2 ↗](https://www.americantourister.com.sg/american-tourister/ellen/spinner-55/20-tsa-v2/at-156755-1259.html) | American Tourister | S$96.00 (was S$160.00) | 1 (32 L) | S$3.00/L |
+| Cabin luggage | [Samsonite Red TOIIS OCEAN SPINNER 55/20 FO EXP ↗](https://www.samsonite.com.sg/samsonite-red/toiis-ocean/spinner-55/20-fo-exp/ss-159411-1775.html) | Samsonite | S$217.00 (was S$310.00) | 1 | S$217.00/pc |
+
+### Watches & Jewellery
+
+| Official series | Index, Sep 2026 | 1 year | Since Sep 2015 | Sep 2027 forecast | Month pattern |
+|---|---|---|---|---|---|
+| Jewellery & Watches | 101.7 | +1.6% | -3.2% | 101.7 (97.3 to 106.8) | Apr low, Dec high (1%) |
+
+- **Water ratings:** at [Citizen's markings ↗](https://www.citizenwatch-global.com/support/html/en/e81/precaution_08_e81.html), 3 bar is splashes only and 5 bar is fine for swimming. Other makers may differ.
+
+| Item | Product | Shop | Price | Covers | Unit price |
+|---|---|---|---|---|---|
+| Watch | [Unisex Sports Watch W500 S - Black ↗](https://www.decathlon.sg/p/unisex-sports-watch-w500-s-black-decathlon-8603117.html) | Decathlon | S$19.90 | 1 | S$19.90/pc (listing) |
+| Watch | [Casio MTP-1302PD-2AV ↗](https://www.casio.com/sg/watches/casio/product.MTP-1302PD-2AV/) | Casio Singapore | S$87.00 | 1 | S$87.00/pc (listing) |
+| Watch | [Seiko 5 (standard models, not tied in snippet) ↗](https://www.amazon.sg/seiko-5/s?k=seiko+5) | Amazon.sg (third-party sellers) | around S$203.90 to S$220.73 | 1 | same/pc (listing) |
+
+### Fashion Accessories
+
+| Official series | Index, Sep 2026 | 1 year | Since Sep 2015 | Sep 2027 forecast | Month pattern |
+|---|---|---|---|---|---|
+| Other Personal Effects Nec | 98.3 | +3.1% | n/a | 98.3 (96.1 to 105.1) | too new |
+
+| Item | Product | Shop | Price | Covers | Unit price |
+|---|---|---|---|---|---|
+| Belt | [Leather Automatic Belt - Black Tumble ↗](https://www.pedroshoes.com/sg/men/PM3-15940348_BLK.TU.html) | Pedro | S$73.90 | 1 | S$73.90/pc |
+| Umbrella | [FairPrice Umbrella - Basic 3 Fold ↗](https://www.fairprice.com.sg/product/fairprice-3-fold-basic-umbrella-13007035) | FairPrice | S$7.03 | 1 | S$7.03/pc |
+
+### Beauty & Personal Care
+
+| Official series | Index, Sep 2026 | 1 year | Since Sep 2015 | Sep 2027 forecast | Month pattern |
+|---|---|---|---|---|---|
+| Hairdressing & Personal Grooming Services | 103.0 | +1.9% | +13.6% | 103.3 (103.2 to 106.9) | no steady pattern |
+| Electric Appliances For Personal Care | 91.5 | -2.6% | n/a | 91.5 (89.4 to 97.8) | too new |
+| Other Appliances, Articles & Products For Personal Care | 101.8 | +2.7% | n/a | 101.8 (99.5 to 108.8) | too new |
+
+- **Cosmetics:** [HSA does not evaluate them ↗](https://www.hsa.gov.sg/cosmetic-products/overview/classification). A notification is not a quality mark.
+
+| Item | Product | Shop | Price | Covers | Unit price |
+|---|---|---|---|---|---|
+| Moisturiser | [Nivea Cream Original Moisturising Creme ↗](https://www.fairprice.com.sg/product/nivea-cream-original-moisturising-creme-60-ml-90131939) | FairPrice | S$5.75 (was S$6.75) | 60 ml | S$9.58/100 ml |
+| Moisturiser | [Cetaphil Moisturising Cream for Face & Body ↗](https://www.fairprice.com.sg/product/cetaphil-moisturising-cream-for-body-550-g-90152248) | FairPrice | S$29.90 | 550 g | S$5.44/100 g |
+| Moisturiser | [CeraVe Moisturising Cream ↗](https://www.fairprice.com.sg/product/cerave-moisturising-cream-454g-13245756) | FairPrice | S$45.50 | 454 g | S$10.02/100 g |
+| Lip balm | [Vaseline Lip Therapy Original ↗](https://payment.fairprice.com.sg/category/lip-care) | FairPrice | S$4.55 | 10 g | S$0.46/g (listing) |
+| Lip balm | [Nivea Caring Lip Balm Original Care ↗](https://www.fairprice.com.sg/product/12401741) | FairPrice | About S$5.00 | 4.8 g | About S$1.04/g (listing) |
+| Lip balm | [Nivea Caring Lip Balm Med Repair ↗](https://www.fairprice.com.sg/product/12425129) | FairPrice | S$6.10 to S$6.90 | 4.8 g | S$1.27 to S$1.44/g (listing) |
+| Makeup foundation | [Maybelline Fit Me Powder Foundation SPF Natural Beige 220 ↗](https://www.guardian.com.sg/maybelline-fit-me-powder-foundation-spf-natural-beige-220-9g-610381.html) | Guardian | S$18.75 (was S$25.00) | 9 g | S$2.08/g (listing) |
+| Makeup foundation | [Maybelline Fit Me Foundation Pump 128 ↗](https://www.fairprice.com.sg/product/maybelline-fit-me-foundation-pump-128-30ml-13161798) | FairPrice | S$25.00 | 30 ml | S$0.83/ml (listing) |
+| Makeup foundation | [L'Oreal Paris True Match Liquid Foundation G4 ↗](https://www.guardian.com.sg/loreal-paris-true-match-liquid-foundation-g4/p/174759) | Guardian | S$27.35 (was S$36.50) | 30 ml | S$0.91/ml (listing) |
+| Perfume | [Calvin Klein CK One EDT ↗](https://www.fairprice.com.sg/brand/calvin-klein) | FairPrice | S$36.90 (was S$120.00) | 100 ml | S$0.37/ml (listing) |
+| Perfume | [Davidoff Cool Water Woman EDT ↗](https://www.fairprice.com.sg/brand/davidoff) | FairPrice | S$39.90 (was S$121.00) | 100 ml | S$0.40/ml (listing) |
+| Perfume | [Calvin Klein CK One EDT ↗](https://tangs.com/product/calvin-klein-ck-one-edt-100ml) | Tangs | S$120.00 | 100 ml | S$1.20/ml (listing) |
+| Hair dryer | [Braun Hair Dryer 2200W HD 225 ↗](https://www.courts.com.sg/braun-hair-dryer-2200w---black-hd-225-IP195430.html) | Courts | S$89.00 | 1 | n/a (listing) |
+| Hair dryer | [Panasonic Ionity 1500W EH-NE6M ↗](https://www.courts.com.sg/panasonic-ionity-hair-dryer-1500w---light-beige-eh-ne6m-c452-IP207803.html) | Courts | S$99.00 (was S$129.00) | 1 | n/a (listing) |
+| Hair dryer | [Dyson Supersonic Travel ↗](https://www.fairprice.com.sg/product/dyson-supersonic-travel-hair-dryer) | FairPrice | About S$399 | 1 | n/a (listing) |
+| Electric shaver | [Philips Series 1000 Wet & Dry S1882/00 ↗](https://www.courts.com.sg/philips-series-1000-wet-and-dry-electric-shaver-s1882%2F00-IP223107.html) | Courts | S$59.00 (RRP S$79.00) | 1 | n/a |
+| Electric shaver | [Philips Series 5000 Wet & Dry S5880/20 ↗](https://www.courts.com.sg/philips-series-5000-wet-and-dry-electric-shaver-s5880%2F20-IP212153.html) | Courts | S$149.00 (RRP S$249.00) | 1 | n/a |
+| Sanitary pads | [Kotex Soft & Smooth Slim Overnight Wing Pads Heavy 32cm ↗](https://www.fairprice.com.sg/product/kotex-soft-smooth-slim-overnight-wing-pads-heavy-32cm-18s-13057676) | FairPrice | S$5.80 (was S$6.27) | 18 | S$0.33/pad |
+| Condoms | [Okamoto Condom Extra Thin ↗](https://www.fairprice.com.sg/product/okamoto-condom-extra-thin-12-per-pack-10150854) | FairPrice | S$11.66 | 12 | S$0.97/condom (listing) |
+| Condoms | [Durex Condom Together 52.5mm ↗](https://www.fairprice.com.sg/product/durex-condom-together-52-5mm-12-per-pack-61458) | FairPrice | S$15.20 | 12 | S$1.27/condom (listing) |
+| Condoms | [Durex Condom Fetherlite Ultima 52mm ↗](https://www.fairprice.com.sg/product/durex-condom-fetherlite-ultima-52mm-12-per-pack-11920160) | FairPrice | S$27.25 | 12 | S$2.27/condom (listing) |
+| Haircut | [EC House quick haircut ↗](https://ec-house.com.sg/) | EC House | S$12 | 1 cut | n/a (listing) |
+| Haircut | [QB House haircut ↗](https://qbhouse.sg/user-guide/sgd-price/) | QB House | S$14 men, S$18 women | 1 cut | n/a (listing) |
+| Haircut | [Kimage salon haircut ↗](https://terris.sg/blog/best-hair-salons-singapore) | Kimage | From S$45 (school outlet from S$22) | 1 cut | n/a (listing) |
+
+### Health & Wellness
+
+| Official series | Index, Sep 2026 | 1 year | Since Sep 2015 | Sep 2027 forecast | Month pattern |
+|---|---|---|---|---|---|
+| Medicines & Health Supplements | 104.8 | +5.0% | +7.2% | 104.9 (103.9 to 109.0) | Dec low, Jul high (1%) |
+| Medical Products | 95.6 | -1.0% | n/a | 95.6 (93.5 to 102.2) | too new |
+| Assistive Products | 98.4 | -1.5% | n/a | 98.4 (96.2 to 105.2) | too new |
+
+- **Supplements:** [HSA does not approve them ↗](https://www.hsa.gov.sg/announcements/health-supplement-regulations/) before sale, so "HSA-approved" is false. Distrust fast slimming or detox claims.
+- **Contact lenses** are [registered medical devices ↗](https://www.moh.gov.sg/newsroom/regulatory-measures-for-ensuring-safe-use-of-contact-lenses/). Get an eye check and a fitting.
+
+| Item | Product | Shop | Price | Covers | Unit price |
+|---|---|---|---|---|---|
+| Multivitamin | [Blackmores Multivitamins + Minerals Daily Health ↗](https://www.guardian.com.sg/health/vitamins-and-supplements/vitamins/multi-vitamin.html) | Guardian | S$37.25 (was S$62.10) | 120 tablets | S$0.31/tablet (listing) |
+| Multivitamin | [Centrum Advance Multivitamin ↗](https://www.watsons.com.sg/product-categories/c/1?text=:productBrandCode:productBrandCode:227296) | Watsons | S$38.09 (was S$58.60) | 100 tablets | S$0.38/tablet (listing) |
+| Multivitamin | [Centrum For Men Multivitamin ↗](https://www.guardian.com.sg/centrum-for-men-multivitamin-100-tablets/p/177136) | Guardian | S$44.50 (was S$68.50) | 100 tablets | S$0.45/tablet (listing) |
+| Vitamin C or fish oil | [Blackmores Odourless Fish Oil 1000 ↗](https://www.fairprice.com.sg/product/blackmores-dietary-supplement-fish-oil-1000-odourless-400-per-pack-13068340) | FairPrice | S$60.30 (was S$100.50) | 400 capsules | S$0.15/capsule |
+| Face masks | [Skypro Classic Surgical Mask 3 Ply ↗](https://www.fairprice.com.sg/product/skypro-classic-surgical-mask-3-ply-50-per-pack-13200328) | FairPrice | S$3.95 | 50 | S$0.08/mask |
+| Face masks | [WeCare Premium Surgical Face Mask 3 Ply (White) ↗](https://www.fairprice.com.sg/product/wescare-premium-surgical-face-mask-3-ply-50-per-pack-13206697) | FairPrice | S$5.80 | 50 | S$0.12/mask |
+| Face masks | [Grace 3 Ply Surgical Face Mask BFE 98% ↗](https://www.fairprice.com.sg/product/grace-3-ply-surgical-face-mask-bfe-98-50-pc-90072968) | FairPrice (seller Aeras Medical) | S$18.16 | 50 | S$0.36/mask |
+| Thermometer | [Omron Digital Thermometer ↗](https://www.fairprice.com.sg/product/omron-digital-thermometer-1-per-pack-13116109) | FairPrice | S$12.00 | 1 | n/a (listing) |
+| Thermometer | [Omron Oral Thermometer MC-343 Flexible Tip ↗](https://www.fairprice.com.sg/product/omron-oral-thermometer-mc-343-flexible-tip-1-per-pack-13086950) | FairPrice | S$14.00 | 1 | n/a (listing) |
+| Thermometer | [Omron Forehead Thermometer MC-F300 ↗](https://guardian.com.sg/omron-forehead-thermometer-mc-635937.html) | Guardian | S$89.00 (was S$99.00) | 1 | n/a (listing) |
+| Blood pressure monitor | [Omron Upper Arm Blood Pressure Monitor (model not stated) ↗](https://www.fairprice.com.sg/product/omron-upper-arm-blood-pressure-monitor-1-per-pack-13221286) | FairPrice (seller Unity) | S$131.00 | 1 | n/a |
+| Contact lenses | [Acuvue Moist Daily Clear ↗](https://www.owndays.com/sg/en/acuvue-1-day-acuvue-moist-cl-contact-lens.html) | OWNDAYS Singapore | S$61 | 30 lenses | S$2.03/lens |
+| Contact lenses | [Acuvue Oasys Daily Clear ↗](https://www.owndays.com/sg/en/acuvue-1-day-acuvue-oasys-cl-contact-lens.html) | OWNDAYS Singapore | S$78 | 30 lenses | S$2.60/lens |
+| Spectacles | [OWNDAYS frame with standard high index aspheric lenses, all-in price ↗](https://www.owndays.com/sg/en/services/price) | OWNDAYS Singapore | From S$98 | 1 pair | n/a (listing) |
+| Spectacles | [OWNDAYS lens replacement (BlueNyte to Prestige Platinum) ↗](https://www.owndays.com/sg/en/services/lens-replacement) | OWNDAYS Singapore | S$200 to S$600 | 1 pair of lenses | n/a (listing) |
+
+### Home & Living
+
+| Official series | Index, Sep 2026 | 1 year | Since Sep 2015 | Sep 2027 forecast | Month pattern |
+|---|---|---|---|---|---|
+| Furniture & Furnishings | 99.2 | -1.6% | +8.6% | 99.6 (98.0 to 103.3) | no steady pattern |
+| Household Textiles | 93.4 | +3.1% | -11.8% | 92.8 (89.3 to 95.9) | Sep low, Mar high (1%) |
+| Glassware, Tableware & Household Utensils | 101.3 | +5.5% | +3.1% | 101.4 (99.6 to 105.9) | no steady pattern |
+| Tools & Equipment For House & Garden | 99.7 | +2.9% | +21.6% | 100.3 (98.5 to 106.7) | Apr low, Jul high (2%) |
+| Non-Durable Household Goods | 101.8 | +1.8% | +11.5% | 101.9 (101.0 to 107.3) | Jan low, Apr high (1%) |
+| Garden Products, Plants & Flowers | 101.8 | +0.5% | n/a | 101.8 (99.5 to 108.8) | too new |
+| Devotional Articles & Articles For Religious & Ritual Celebrations | 98.5 | +0.7% | n/a | 98.5 (96.3 to 105.3) | too new |
+
+- **Sheets:** Consumer Reports [found no link between thread count and performance ↗](https://www.consumerreports.org/home-garden/sheets/things-to-know-before-buying-sheets-a9843459169/). Measure your mattress depth, as cotton can shrink.
+- **Mattress trials** [vary and have fine print ↗](https://www.which.co.uk/news/article/mattress-sleep-trials-which-brand-offers-the-longest-trial-period-a2yXq3D92KGb). Check return cost and any exchange-only rule.
+- **Pans:** [the metal matters more than the layers ↗](https://www.consumerreports.org/home-garden/cookware/buying-guide/). Check that it works on induction if you need that.
+- Nothing credible was found on sofas, chairs, desks, towels, rugs, knives or plants.
+
+| Item | Product | Shop | Price | Covers | Unit price |
+|---|---|---|---|---|---|
+| Sofa | [GLOSTAD 3-seat sofa, Knisa dark grey ↗](https://www.ikea.com/sg/en/p/glostad-3-seat-sofa-knisa-dark-grey-40595937/) | IKEA | S$199 | 1, W171 cm | - |
+| Sofa | [KIVIK 3-seat sofa, Gunnared beige ↗](https://www.ikea.com/sg/en/p/kivik-3-seat-sofa-gunnared-beige-s89484872/) | IKEA | S$759 | 1, W228 cm | - |
+| Bed frame | [VIHALS bed frame, white ↗](https://www.ikea.com/sg/en/p/vihals-bed-frame-white-80602441/) | IKEA | S$144 | 150x200 cm | - |
+| Mattress | [VESTEROY pocket sprung, firm ↗](https://www.ikea.com/sg/en/p/vesteroey-pocket-sprung-mattress-firm-light-blue-10450498/) | IKEA | S$199 | 90x200 cm, 20 cm thick | S$110.56/m2 |
+| Office chair | [MARKUS office chair, Vissle dark grey ↗](https://www.ikea.com/sg/en/p/markus-office-chair-vissle-dark-grey-50261151/) | IKEA | S$199 | 1 | - |
+| Desk | [LAGKAPTEN / OLOV desk, white ↗](https://www.ikea.com/sg/en/p/lagkapten-olov-desk-white-s59416771/) | IKEA | S$139.90 | 120x60 cm | - |
+| Wardrobe | [KLEPPSTAD wardrobe, 2 doors, white ↗](https://www.ikea.com/sg/en/p/kleppstad-wardrobe-with-2-doors-white-10437237/) | IKEA | S$149 | 79x55x176 cm | S$0.19/L external (listing) |
+| Wardrobe | [KLEPPSTAD wardrobe, 3 doors, white ↗](https://www.ikea.com/sg/en/p/kleppstad-wardrobe-with-3-doors-white-80441759/) | IKEA | S$199 | 117x55x176 cm | S$0.18/L external (listing) |
+| Wardrobe | [PAX / FORSAND wardrobe combination, dark grey ↗](https://www.ikea.com/sg/en/p/pax-forsand-wardrobe-combination-dark-grey-dark-grey-s99429719/) | IKEA | S$565 | 150x60x201 cm | S$0.31/L external (listing) |
+| Bookshelf | [LAIVA bookcase, black-brown ↗](https://www.ikea.com/sg/en/p/laiva-bookcase-black-brown-20178592/) | IKEA | S$29.90 | 62x165 cm | - (listing) |
+| Bookshelf | [BILLY bookcase, white ↗](https://www.ikea.com/sg/en/p/billy-bookcase-white-00522047/) | IKEA | S$89 | 80x28x202 cm | - (listing) |
+| Bookshelf | [BILLY / OXBERG bookcase with doors, white ↗](https://www.ikea.com/sg/en/p/billy-oxberg-bookcase-with-doors-white-s99528347/) | IKEA | S$149 | 80x30x202 cm | - (listing) |
+| Pillow | [SANDGRASMAL pillow ↗](https://www.ikea.com/sg/en/p/sandgraesmal-pillow-60544881/) | IKEA | S$3.90 | 50x80 cm, 505 g fill | - (listing) |
+| Pillow | [BRUKSVARA pillow, high ↗](https://www.ikea.com/sg/en/p/bruksvara-pillow-high-20560364/) | IKEA | S$11.90 | 50x80 cm | - (listing) |
+| Pillow | [PILSPINNARE pillow, high ↗](https://www.ikea.com/sg/en/p/pilspinnare-pillow-high-70587115/) | IKEA | S$29.90 | 50x80 cm | - (listing) |
+| Bedsheet set | [ULLVIDE fitted sheet, dark blue ↗](https://www.ikea.com/sg/en/p/ullvide-fitted-sheet-dark-blue-70342769/) | IKEA | S$34.90 | 150x200 cm, single sheet | S$11.63/m2 of bed (listing) |
+| Bedsheet set | [RONNVECKMAL fitted sheet, white ↗](https://www.ikea.com/sg/en/p/roennveckmal-fitted-sheet-white-30532629/) | IKEA | S$59.90 | 150x200 cm, single sheet | S$19.97/m2 of bed (listing) |
+| Bedsheet set | [Washed cotton fitted sheet D, grey ↗](https://www.muji.com/sg/products/cmdty/detail/4550583522001) | Muji | S$59 | 140x200x18-28 cm | S$21.07/m2 of bed (listing) |
+| Blanket | [SANDBRODD throw, off-white ↗](https://www.ikea.com/sg/en/p/sandbrodd-throw-off-white-20562037/) | IKEA | S$15.90 | 130x170 cm | S$7.19/m2 |
+| Curtains | [MAJGULL block-out curtains, grey ↗](https://www.ikea.com/sg/en/p/majgull-block-out-curtains-1-pair-grey-with-heading-tape-10417814/) | IKEA | S$49.90 | 1 pair, 145x250 cm | S$6.88/m2 |
+| Bath towel | [VAGSJON bath towel ↗](https://www.ikea.com/sg/en/cat/vagsjoen-series-700503/) | IKEA | S$6.90 | 70x140 cm | S$7.04/m2 (listing) |
+| Bath towel | [HomeProud bath towel ↗](https://www.fairprice.com.sg/category/towels) | FairPrice | S$7.90 | 65x137 cm | S$8.87/m2 (listing) |
+| Rug | [KNARDRUP rug, low pile, light grey ↗](https://www.ikea.com/sg/en/p/knardrup-rug-low-pile-light-grey-90492588/) | IKEA | S$99 | 160x230 cm | S$26.90/m2 |
+| Storage box | [SAMLA box with lid, transparent ↗](https://www.ikea.com/sg/en/p/samla-box-with-lid-transparent-s49440837/) | IKEA | S$4.90 | 11 L | S$0.45/L (listing) |
+| Storage box | [SAMLA box with lid, transparent ↗](https://www.ikea.com/sg/en/p/samla-box-with-lid-transparent-s39440767/) | IKEA | S$10.90 | 45 L | S$0.24/L (listing) |
+| LED bulb | [SOLHETTA E27 806 lm, dimmable, globe opal ↗](https://www.ikea.com/sg/en/p/solhetta-led-bulb-e27-806-lumen-dimmable-globe-opal-white-90583927/) | IKEA | S$9.90 | 2 pieces | S$4.95/bulb |
+| Desk lamp | [TERTIAL work lamp, white ↗](https://www.ikea.com/sg/en/p/tertial-work-lamp-white-70355455/) | IKEA | S$19.90 | 1, E27 | - (listing) |
+| Desk lamp | [FORSA work lamp, black ↗](https://www.ikea.com/sg/en/p/forsa-work-lamp-black-00146776/) | IKEA | S$35.90 | 1, E14 | - (listing) |
+| Frying pan | [IKEA 365+ frying pan, stainless/non-stick ↗](https://www.ikea.com/sg/en/p/ikea-365-frying-pan-stainless-steel-non-stick-coating-50580704/) | IKEA | S$24.90 | 28 cm | - |
+| Pot | [IKEA 365+ pot with lid, stainless steel ↗](https://www.ikea.com/sg/en/p/ikea-365-pot-with-lid-stainless-steel-60484245/) | IKEA | S$19.90 | 3 L | S$6.63/L |
+| Knife | [VORDA cook's knife, black ↗](https://www.ikea.com/sg/en/p/voerda-cooks-knife-black-00289237/) | IKEA | S$15.90 | 20 cm | - (listing) |
+| Knife | [IKEA 365+ cook's knife ↗](https://www.ikea.com/sg/en/p/ikea-365-cooks-knife-stainless-steel-20283526/) | IKEA | S$24.90 | 20 cm | - (listing) |
+| Plates or bowls | [FARGKLAR deep plate, matt light grey ↗](https://www.ikea.com/sg/en/p/faergklar-deep-plate-matt-light-grey-20479378/) | IKEA | S$12.90 | 4 pieces, 19 cm | S$3.23/piece (listing) |
+| Plates or bowls | [FARGKLAR plate, glossy brown ↗](https://www.ikea.com/sg/en/p/faergklar-plate-glossy-brown-10485445/) | IKEA | S$19.90 | 4 pieces, 30x18 cm | S$4.98/piece (listing) |
+| Food container | [Food Storage Container 800ml ↗](https://shop.daisosingapore.com.sg/collections/scfood-containers) | Daiso | S$2.18 | 800 ml | S$2.73/L (listing) |
+| Food container | [IKEA 365+ food container with lid, glass/plastic ↗](https://www.ikea.com/sg/en/p/ikea-365-food-container-with-lid-rectangular-glass-plastic-s69269072/) | IKEA | S$6.90 | 1.0 L | S$6.90/L (listing) |
+| Food container | [IKEA 365+ food container with lid, glass ↗](https://www.ikea.com/sg/en/p/ikea-365-food-container-with-lid-rectangular-glass-70623830/) | IKEA | S$17.90 | 3 pieces, 1.0 L | S$5.97/L (listing) |
+| Drill or screwdriver set | [Stanley SCS4K-B1 4V screwdriver with 30 bits ↗](https://www.horme.com.sg/product.aspx?id=13604) | Horme | S$78.90 | 1 kit | - |
+| Potted plant | [EPIPREMNUM potted plant, Golden Pothos ↗](https://www.ikea.com/sg/en/cat/artificial-live-plants-pp003/) | IKEA | S$2.90 | 9 cm | - (listing) |
+| Potted plant | [SANSEVIERIA TRIFASCIATA potted plant ↗](https://www.ikea.com/sg/en/p/sansevieria-trifasciata-potted-plant-mother-in-laws-tongue-40415427/) | IKEA | S$9.90 to S$11.90 | 15 cm | - (listing) |
+| Extension socket | [PowerPac PP6884N 4-way, 6 m ↗](https://www.fairprice.com.sg/product/powerpac-4-way-6m-extension-cord-with-2-pin-direct-pp6884n-1-pc-90012715) | FairPrice | S$17.00 | 1 | S$4.25/outlet |
+| Extension socket | [KOPPLA 3-way socket with 2 USB, white ↗](https://www.ikea.com/sg/en/p/koppla-3-way-socket-with-2-usb-ports-white-80379111/) | IKEA | S$19.90 | 1, 3.0 m | S$6.63/outlet |
+
+### Home Appliances
+
+| Official series | Index, Sep 2026 | 1 year | Since Sep 2015 | Sep 2027 forecast | Month pattern |
+|---|---|---|---|---|---|
+| Major Household Appliances | 95.4 | -3.5% | n/a | 95.4 (93.3 to 102.0) | too new |
+| Small Household Appliances | 98.7 | +0.8% | n/a | 98.7 (96.5 to 105.5) | too new |
+| Repair & Installation Of Household Appliances | 104.8 | +3.4% | n/a | 104.8 (102.4 to 112.0) | too new |
+
+- **Energy label:** [more ticks means more efficient ↗](https://www.nea.gov.sg/our-services/climate-change-energy-efficiency/energy-efficiency/household-sector/household-resources). Compare the running cost as well as the price.
+- **Safety Mark:** fridges, aircons, washers, kettles, rice cookers, irons, fans and adaptors need one. [Check the 8-digit number ↗](https://www.consumerproductsafety.gov.sg/consumers/choose-safer-products/look-for-the-safety-mark/).
+- **Warranty** ranged from 1 year on small appliances to 10 years on IKEA sofas and mattresses on the pages opened. Compare it in writing.
+
+| Item | Product | Shop | Price | Covers | Unit price |
+|---|---|---|---|---|---|
+| Kettle | [Cornell CJKS17L kettle ↗](https://www.courts.com.sg/cornell-cjks17l-kettle-1-7l-ip084748) | Courts | S$21.90 | 1.7 L | - |
+| Kettle | [Philips HD9316/03 kettle ↗](https://www.courts.com.sg/philips-hd9316-03-kettle-1-7l-ip074777) | Courts | S$68.00 | 1.7 L | - |
+| Rice cooker | [Panasonic SR-Y18FGELSH ↗](https://www.courts.com.sg/panasonic-sr-y18fgelsh-rice-cooker-1-8l-ip142391) | Courts | S$64.90 | 1.8 L | - |
+| Microwave | [Sharp R-20SA-B solo, mechanical ↗](https://www.courts.com.sg/sharp-r-20sa-b-20l-solo-microwave-mechanical-black-ip216186) | Courts | S$99.00 | 20 L, 800 W | S$4.95/L |
+| Fan | [KDK P40US stand fan, white ↗](https://www.courts.com.sg/kdk-p40us-white-16-in-stand-fan-white-ip168224) | Courts | S$118.00 | 16 in, AC motor | - |
+| Air conditioner | [Midea MAS-1S09E / MSAS-09E ↗](https://www.courts.com.sg/midea/aircon) | Courts | S$1,159.00 | System 1, 9000 BTU, 5 ticks | - (listing) |
+| Air conditioner | [Daikin RKM25XVMG / FTKM25XVMG ↗](https://www.courts.com.sg/daikin-rkm25xvmg-ftkm25xvmg-single-split-aircon-ismart-envi-ip184193) | Courts | S$1,200.00 | System 1, 9000 BTU, 5 ticks | - (listing) |
+| Air conditioner | [Mitsubishi MUYGP10VF / MSYGP10VF ↗](https://www.gaincity.com/mitsubishi-system-1-aircon-muygp10vf-msygp10vf-t0158575) | Gain City | S$1,249.00 | System 1, 5 ticks | - (listing) |
+| Fridge | [Samsung RT35CG5444S9SS 2-door ↗](https://www.bestdenki.com.sg/1203992-samsung-2-door-fridge-rt35cg5444s9ss.html) | Best Denki | S$799.00 | 345 L net, 3 ticks | S$2.32/L |
+| Fridge | [Panasonic NR-BW530XMMS 2-door ↗](https://www.bestdenki.com.sg/1203861-panasonic-2-door-fridge-nr-bw530xmms.html) | Best Denki | S$1,934.00 | 497 L net, 3 ticks | S$3.89/L |
+| Washing machine | [Electrolux EWF8024D3EC front load ↗](https://www.courts.com.sg/electrolux-front-load-washer-8kg---white-ewf8024d3ec-IP221124.html) | Courts | S$649.00 | 8 kg | S$81.13/kg |
+| Washing machine | [LG FB1208S6W front load ↗](https://www.harveynorman.com.sg/home-appliances/washing-machines-and-dryers-en/washing-machines-en/lg-8kg-front-load-washing-machine-blue-white-fb1208s6w.html) | Harvey Norman | S$839 | 8 kg | S$104.88/kg |
+| Iron | [Panasonic NI-M300TVSH steam iron ↗](https://www.courts.com.sg/panasonic-ni-m300tvsh-steam-iron-1800w-ip141925) | Courts | S$32.90 | 1800 W | - |
+| Vacuum | [Dyson V8 Slim Fluffy ↗](https://www.courts.com.sg/dyson-v8-slim-fluffy-sv10k-v8-slim-fluffy-hk-sg-my-snk-ir-rd-ip184781) | Courts | S$459.00 | 1 | - |
+| Water filter | [Novita NP110/120F Hydropure water pitcher ↗](https://www.bestdenki.com.sg/brands/n-p/novita.html) | Best Denki | S$50.00 | 1 | - (listing) |
+| Water filter | [Brita Style Essential jug ↗](https://www.courts.com.sg/home-appliances/small-appliances/water-purifier) | Courts | S$79.00 | 2.4 L | - (listing) |
+| Water filter | [Novita W68 undersink filtration system ↗](https://www.courts.com.sg/novita-undersink-filtration-system-w68-IP176224.html) | Courts | S$1,089.00 | 1 | - (listing) |
+
+### Mobile & Gadgets
+
+| Official series | Index, Sep 2026 | 1 year | Since Sep 2015 | Sep 2027 forecast | Month pattern |
+|---|---|---|---|---|---|
+| Mobile Telephone Equipment | 93.1 | +0.1% | n/a | 93.1 (91.0 to 99.6) | too new |
+| Information & Communication Equipment & Accessories Nec | 93.8 | -3.6% | n/a | 93.8 (91.7 to 100.3) | too new |
+
+- **Registration:** phones and routers sold here [must be registered with IMDA ↗](https://eservice.imda.gov.sg/tls). Check an import, and make sure it supports VoLTE.
+- **Updates:** how many years of updates a phone gets matters more for its useful life than a small price gap.
+
+| Item | Product | Shop | Price | Covers | Unit price |
+|---|---|---|---|---|---|
+| Budget phone | [Samsung Galaxy A07 LTE 4GB+128GB Black (SM-A075FZKGXSP) ↗](https://www.courts.com.sg/samsung-galaxy-a07-lte-a075f-4%2B128gb---black-sm-a075fzkgxsp-IP213501.html) | Courts | S$211.00 | 1 | n/a |
+| Budget phone | [Samsung Galaxy A17 5G 8GB+128GB Gray (SM-A176BZAJXSP) ↗](https://www.courts.com.sg/samsung-galaxy-a17-5g-a176be-8%2B128gb---gray-sm-a176bzajxsp-IP213505.html) | Courts | S$398.00 | 1 | n/a |
+| Mid-range phone | [Samsung Galaxy A27 5G 8GB+256GB Black ↗](https://www.bestdenki.com.sg/2109814-samsung-smart-phones-sm-a276-256gb-black-a27.html) | Best Denki | $548.00 | 1 | n/a |
+| Phone case | [Spigen Tough Armor T (AI) MagFit for iPhone 16 Pro, Black ↗](https://www.amazon.sg/Spigen-Compatible-iPhone-Control-Coverage/dp/B0D7B6V9WV) | Amazon.sg | S$22.44 | 1 | n/a (listing) |
+| Phone case | [LAUT crystal case (phone model not recorded) ↗](https://www.courts.com.sg/computing-mobile/technology-essentials/mobile-accessories-cases) | Courts | S$23.90 | 1 | n/a (listing) |
+| Screen protector | [Daiso toughened glass protector (older phone sizes) ↗](https://shop.daisosingapore.com.sg/collections/sclcd-screen-films/sclcd-screen-films?page=3) | Daiso | S$2.18 | 1 | n/a (listing) |
+| Screen protector | [LITO D09 tempered glass for iPhone 16 Pro ↗](https://www.bestdenki.com.sg/it-mobile/apple-accessories.html?cat=644) | Best Denki | S$14.95 | 1 | n/a (listing) |
+| Screen protector | [ZAGG Tempered Glass Plus Edge for iPhone 16 Pro ↗](https://www.bestdenki.com.sg/it-mobile/apple/apple-compatible-accessories.html?cat=2276) | Best Denki | S$26.91 | 1 | n/a (listing) |
+| Charging cable | [J5 Create USB-C to USB-C 100W 1.8m (JUCX25L18) ↗](https://www.harveynorman.com.sg/smart-tech-and-phones/phone-accessories/cables-chargers-and-adapters/j5-create-usb-c-to-usb-c-100w-sync-and-charge-cable-jucx25l18.html) | Harvey Norman | S$20.90 | 1 | S$11.61/m (listing) |
+| Charging cable | [Belkin USB-C to USB-C 240W 1m (CAB15BT1MBK) ↗](https://www.harveynorman.com.sg/smart-tech-and-phones/phone-accessories/cables-chargers-and-adapters/belkin-cable-usbc-usbc2-240w-1m-cab15bt1mbk.html) | Harvey Norman | S$26.00 | 1 | S$26.00/m (listing) |
+| Charging cable | [Samsung USB-C to USB-C 5A 1.8m (DX510JB) ↗](https://www.harveynorman.com.sg/smart-tech-and-phones/phone-accessories/cables-chargers-and-adapters/samsung-usb-cable-usb-c-to-usb-c-5a-1.8m-dx510jb.html) | Harvey Norman | S$38.00 | 1 | S$21.11/m (listing) |
+| Tablet | [Apple 11-inch iPad (A16) Wi-Fi 128GB Silver (MD3Y4ZP/A) ↗](https://www.bestdenki.com.sg/2818985-apple-ipad-md3y4zp-a.html) | Best Denki | $649.00 | 1 | n/a |
+| Smartwatch | [Apple Watch SE 3 GPS 40mm Midnight, S/M (MEH94X/A) ↗](https://www.bestdenki.com.sg/2819613-apple-apple-watch-meh94x-a.html) | Best Denki | $349.00 | 1 | n/a (listing) |
+| Smartwatch | [Apple Watch SE 3 GPS 44mm Starlight, S/M (MEHG4X/A) ↗](https://www.bestdenki.com.sg/2819615-apple-apple-watch-mehg4x-a.html) | Best Denki | $389.00 | 1 | n/a (listing) |
+| Smartwatch | [Samsung Galaxy Watch 46mm Silver ↗](https://www.harveynorman.com.sg/connected-health-and-fitness/fitness-and-tracking-devices/smart-watches/samsung-galaxy-watch-46mm-silver-bt.html) | Harvey Norman | S$448.00 | 1 | n/a (listing) |
+
+### Computers & Peripherals
+
+| Official series | Index, Sep 2026 | 1 year | Since Sep 2015 | Sep 2027 forecast | Month pattern |
+|---|---|---|---|---|---|
+| Information Processing Equipment | 100.6 | +0.4% | -4.6% | 100.3 (97.2 to 104.4) | no steady pattern |
+
+- **Everyday laptops:** [a midrange processor, 8 GB RAM and 256 GB SSD ↗](https://www.consumerreports.org/electronics-computers/get-more-for-your-money-when-shopping-for-tech-products-a5993937408/) handle browsing, streaming and calls.
+- **Printers:** [compare the running cost ↗](https://www.which.co.uk/reviews/printers-and-ink/article/inkjet-vs-laser-printers/inkjet-vs-laser-printers-which-is-best-atHOH6Z2QjAA). Tank printers suit regular printing, and inkjets clog when idle.
+
+| Item | Product | Shop | Price | Covers | Unit price |
+|---|---|---|---|---|---|
+| Laptop | [Asus Vivobook 14 Snapdragon X X1 26 100, 16GB/1TB (X1407QA-LY069W) ↗](https://www.harveynorman.com.sg/computing/computers-en/laptops-en/asus-vivobook-14-14-inch-snapdragon-x-x1-26-100-16gb-1tb-ssd-qualcomm-adreno-laptop-quiet-blue-x1407qa-ly069w.html) | Harvey Norman | S$1,099 | 1 | n/a (listing) |
+| Laptop | [Acer Aspire Spin 14 Core Ultra 7-155U, 16GB/512GB (ASP14-52MTN-721B) ↗](https://www.harveynorman.com.sg/computing/computers-en/laptops-en/acer-aspire-spin-14-14-inch-intel-core-ultra-7-155u-16gb-512gb-ssd-intel-laptop-steel-gray-asp14-52mtn-721b.html) | Harvey Norman | S$1,399 | 1 | n/a (listing) |
+| Laptop | [Acer Swift Go 14 AI Core U7-256V, 16GB/1TB (SFG14-75-71G1) ↗](https://www.harveynorman.com.sg/computing/computers-en/laptops-en/acer-swift-go-14-ai-14-inch-intel-core-u7-256v-16gb-1tb-ssd-intel-arc-graphics-130v-ai-laptop-steam-blue-sfg14-75-71g1.html) | Harvey Norman | S$1,799 | 1 | n/a (listing) |
+| Monitor | [LG 27-inch 4K IPS 27UP600-W ↗](https://www.courts.com.sg/lg-27in-4k-uhd-ips-monitor-27up600-w-IP168966.html) | Courts | S$449.00 | 1 | n/a |
+| Keyboard | [Logitech MK295 Silent Wireless Keyboard and Mouse Combo (920-009814) ↗](https://www.courts.com.sg/logitech-920-009814-mk295-silent-wireless-mouse-keyboard-combo-ip162914) | Courts | S$47.00 | 1 set | n/a |
+| Mouse | [Logitech M170 Wireless Mouse Black (910-004658) ↗](https://www.harveynorman.com.sg/computing/computer-accessories-and-peripherals/mice/logitech-wl-mse-m170-black-910-004658.html) | Harvey Norman | S$16 | 1 | n/a (listing) |
+| Mouse | [Logitech M331 Silent Plus Wireless Black (910-4914) ↗](https://www.harveynorman.com.sg/computing/computer-accessories-and-peripherals/mice/logitech-mse-w-l-m331-blk-910-4914.html) | Harvey Norman | S$34 | 1 | n/a (listing) |
+| Mouse | [Logitech MX Vertical Ergonomic Wireless (005449) ↗](https://www.harveynorman.com.sg/computing/computer-accessories-and-peripherals/mice/logitech-mse-w-l-mx-vertical-ergo-005449.html) | Harvey Norman | S$189 | 1 | n/a (listing) |
+| USB drive | [SanDisk SDCZ73-128G-G46, 128GB ↗](https://www.bestdenki.com.sg/1909815-sandisk-data-storages-sdcz73-128g-g46.html) | Best Denki | $48.60 | 1 | $0.38/GB (listing) |
+| USB drive | [SanDisk SDCZ48-064G-U46, 64GB ↗](https://www.bestdenki.com.sg/1908025-sandisk-data-storages-sdcz48-064g-u46.html) | Best Denki | $30.00 | 1 | $0.47/GB (listing) |
+| USB drive | [SanDisk SDDDC3-128G-G46, 128GB ↗](https://www.bestdenki.com.sg/1913012-sandisk-data-storages-sdddc3-128g-g46.html) | Best Denki | $51.00 | 1 | $0.40/GB (listing) |
+| External SSD | [Samsung T7 Shield 1TB Black (MU-PE1T0S/WW) ↗](https://www.harveynorman.com.sg/computing/hard-drives-and-storage/portable-hard-drives/samsung-t7-shield-1tb-external-ssd-black-mu-pe1t0s-ww.html) | Harvey Norman | S$235 | 1 | S$0.24/GB (listing) |
+| External SSD | [Samsung T7 1TB Titan Gray (MU-PC1T0T/WW) ↗](https://www.harveynorman.com.sg/computing/hard-drives-and-storage/portable-hard-drives/samsung-ssd-t7-1tb-mu-pc1t0t-ww-gray.html) | Harvey Norman | S$359 | 1 | S$0.36/GB (listing) |
+| External SSD | [SanDisk Portable SSD 1TB (SDSSDE30-1T00-G26) ↗](https://www.courts.com.sg/sandisk-sandisk-portable-1tb-ssd%2Cread-speed-up-to-800mb%2Fs%2C2m-drop-protection-sdssde30-1t00-g26-IP202531.html) | Courts | S$410.50 | 1 | S$0.41/GB (listing) |
+| Printer | [Epson EcoTank L1350 A4 Wi-Fi Ink Tank (C11CL65502) ↗](https://www.harveynorman.com.sg/computing/printing-and-consumable/printers/epson-ecotank-l1350-a4-wi-fi-ink-tank-printer-black-c11cl65502.html) | Harvey Norman | S$209 | 1 | n/a (listing) |
+| Printer | [Epson EcoTank L3350 A4 Wi-Fi All-in-One (C11CL62503) ↗](https://www.harveynorman.com.sg/computing/printing-and-consumable/printers/epson-ecotank-l3350-a4-wi-fi-all-in-one-ink-tank-printer-black-c11cl62503.html) | Harvey Norman | S$239 | 1 | n/a (listing) |
+| Printer | [Epson EcoTank L6370 A4 Wi-Fi Duplex All-in-One (6852) ↗](https://www.harveynorman.com.sg/computing/printing-and-consumable/printers/epson-ecotank-l6370-a4-wi-fi-duplex-all-in-one-ink-tank-printer-black-6852.html) | Harvey Norman | S$439 | 1 | n/a (listing) |
+| Printer ink | [Canon GI-790 Ink Bottle Black ↗](https://www.harveynorman.com.sg/computing/printing-and-scanning/ink-toner-and-paper/) | Harvey Norman | S$15 | 1 bottle | Not stated (listing) |
+| Printer ink | [Epson 008 Black bottle, 127ml ↗](https://harveynorman.com.sg/epson/?items_per_page=80&layout=products_without_options&sort_by=product&sort_order=asc) | Harvey Norman | S$24.90 | 127ml | S$0.20/ml (listing) |
+| Printer ink | [HP 68 Black cartridge ↗](https://www.courts.com.sg/ink-cartridges) | Courts | S$37.90 | 1 | Not stated (listing) |
+| Router | [ASUS RT-AX3000 V2 AX3000 Dual Band Wi-Fi 6 ↗](https://www.courts.com.sg/asus-rt-ax3000-v2-ax3000-dual-band-wifi-6-router-ip213181) | Courts | S$109.00 | 1 | n/a |
+
+### Cameras & Audio
+
+| Official series | Index, Sep 2026 | 1 year | Since Sep 2015 | Sep 2027 forecast | Month pattern |
+|---|---|---|---|---|---|
+| Equipment For The Reception, Recording & Reproduction Of Sound & Vision | 101.4 | +0.3% | n/a | 101.4 (99.1 to 108.4) | too new |
+| Recreation & Cultural Goods | 98.5 | +0.4% | +0.1% | 98.4 (97.1 to 101.9) | Dec low, Jul high (1%) |
+
+| Item | Product | Shop | Price | Covers | Unit price |
+|---|---|---|---|---|---|
+| Headphones | [Sony WH-1000XM5 Black ↗](https://www.bestdenki.com.sg/0606573-sony-earphones-headphones-earbuds-wh-1000xm5-bme.html) | Best Denki | $329.00 | 1 | n/a |
+| Earbuds | [Sony WF-1000XM5 Black ↗](https://www.bestdenki.com.sg/0606822-sony-earphones-headphones-earbuds-wf-1000xm5-bce-black.html) | Best Denki | $229.00 | 1 | n/a |
+| Bluetooth speaker | [JBL Flip 7 Black (JBLFLIP7BLK) ↗](https://www.harveynorman.com.sg/tv-and-audio/sound-systems/portable-speakers/jbl-flip-7-portable-speaker-black-jblflip7blk.html) | Harvey Norman | S$139.90 | 1 | n/a |
+| TV | [Philips 7600 Series 55-inch 4K UHD LED (55PUT7630/98) ↗](https://www.harveynorman.com.sg/tv-and-audio/tvs-en-2/tvs-en-3/55-inches-tvs/philips-7600-series-55-inch-4k-uhd-led-tv-black-55put7630-98.html) | Harvey Norman | S$599 | 1 | n/a (listing) |
+| TV | [Samsung 55-inch Crystal UHD U8000H 4K 2026 (UA55U8000HKXXS) ↗](https://www.harveynorman.com.sg/tv-and-audio/tvs-en-2/tvs-en-3/55-inches-tvs/samsung-55-inch-crystal-uhd-u8000h-4k-2026-smart-tv-titan-gray-ua55u8000hkxxs.html) | Harvey Norman | S$799 | 1 | n/a (listing) |
+| TV | [LG 55-inch QNED Evo Mini LED 4K 2026 (55QNED80BSA.ATC) ↗](https://www.harveynorman.com.sg/tv-and-audio/tvs-en-2/tvs-en-3/55-inches-tvs/lg-55-inch-qned-evo-mini-led-ai-4k-2026-smart-tv-black-55qned80bsa.atc.html) | Harvey Norman | S$999 | 1 | n/a (listing) |
+| Camera | [Canon EOS R50 with 18-45mm, Black ↗](https://www.bestdenki.com.sg/9005942-canon-interchangeable-lens-eos-r50-18-45-4-5-6-3-blk.html) | Best Denki | $999.00 | 1 kit | n/a |
+
+### Stationery & Office
+
+| Official series | Index, Sep 2026 | 1 year | Since Sep 2015 | Sep 2027 forecast | Month pattern |
+|---|---|---|---|---|---|
+| Stationery & Drawing Materials | 105.4 | +4.3% | n/a | 105.4 (103.0 to 112.6) | too new |
+
+- **Paper:** the label gives gsm, so compare 70 gsm against 80 gsm. No consumer body rates pens, notebooks or staplers.
+
+| Item | Product | Shop | Price | Covers | Unit price |
+|---|---|---|---|---|---|
+| Ballpoint pens | [Pilot Rexgrip BRG-10F-LL 0.7mm Blue ↗](https://www.fairprice.com.sg/product/pilot-rexgrip-ballpoint-pen-0-7mm-brg-10f-ll-blue-10-pc-90130213) | FairPrice | $17.50 | 10 | $1.75/pen |
+| Pencils | [Chung Hwa Wooden Pencil 2B ↗](https://www.fairprice.com.sg/product/11296724) | FairPrice | $1.73 | 12 | $0.14/pencil |
+| Notebook | [CozyNest A5 Diary Black ↗](https://www.fairprice.com.sg/product/cozynest-a5-diary---black) | FairPrice | $6.90 | 1 | Not stated (listing) |
+| A4 paper | [PaperOne All Purpose A4 80gsm, ream ↗](https://www.fairprice.com.sg/product/paperone-all-purpose-a4-paper-80gsm-ream-1-pc-90127492) | FairPrice | $7.90 | 1 ream | $7.90/ream |
+| Stapler | [Toyo Stapler Set SS910 ↗](https://www.fairprice.com.sg/product/toyo-stapler-set-ss910-1-per-pack-10623295) | FairPrice | $3.90 | 1 | n/a |
+| File folders | [VIP A4 Clear L Shape Folder ↗](https://www.fairprice.com.sg/product/vip-a4-clear-l-shape-folder-90005952) | FairPrice | $6.05 | 10 | $0.61/folder (listing) |
+| File folders | [Daiso Colored B5 File Folder for Learning by Heart ↗](https://shop.daisosingapore.com.sg/products/4954939008469) | Daiso | S$2.18 | Not stated | Not stated (listing) |
+| File folders | [Alfax 182A4 PVC Arch File 3-inch Red ↗](https://www.fairprice.com.sg/product/alfax-182a-pvc-arch-file-3inches-a4-red-01-2-pc-90019711) | FairPrice | $9.90 | 2 | $4.95/file (listing) |
+| Sticky notes | [Daiso Sticky Notes ↗](https://shop.daisosingapore.com.sg/products/4549131592146) | Daiso | $2.18 | Not stated | Not stated |
+| Calculator | [Casio fx-97SG X (listed as SEAB-approved) ↗](https://www.amazon.sg/casio-fx97sg-x/s?k=casio+fx97sg+x) | Amazon.sg | S$35.50 | 1 | n/a (listing) |
+| Desk organiser | [Daiso Desk Organizer S ↗](https://shop.daisosingapore.com.sg/products/4955959219507) | Daiso | $2.18 | Not stated | n/a |
+| Art supplies | [Stabilo Swans Colored Pencils 13 Colours ↗](https://www.fairprice.com.sg/product/stabilo-swans-colored-pencils-13-colours-1-pc-90171667) | FairPrice | $3.70 | 13 | $0.28/pencil (listing) |
+| Art supplies | [Faber-Castell Classic 36-piece Colour Pencils with Sharpener (PL115856) ↗](https://www.amazon.sg/Faber-Castell-PL115856-36-Pieces-Classic-Sharpener/dp/B077G3R8VM) | Amazon.sg | S$15.70 | 36 | S$0.44/pencil (listing) |
+| Art supplies | [Faber-Castell Triangular Colour Pencils ↗](https://www.amazon.sg/Faber-Castell-Triangular-Colour-Pencils-Assorted/dp/B0825W7LP8) | Amazon.sg | S$30.45 | 48 | S$0.63/pencil (listing) |
+
+### Hobbies & Books
+
+| Official series | Index, Sep 2026 | 1 year | Since Sep 2015 | Sep 2027 forecast | Month pattern |
+|---|---|---|---|---|---|
+| Games, Toys & Hobbies | 100.8 | +0.1% | -1.3% | 100.7 (97.3 to 103.7) | Dec low, Aug high (2%) |
+| Books, Excl School Textbooks & Study Guides | 100.5 | -0.5% | n/a | 100.5 (98.3 to 107.5) | too new |
+| Newspapers & Others | 99.7 | -0.2% | +13.6% | 99.7 (99.7 to 101.0) | no steady pattern |
+
+- **Toys:** look for [EN 71, ASTM F963 or ISO 8124 ↗](https://isomer-user-content.by.gov.sg/498/9dcd3fad-8da8-4d63-863b-53f130d9fa40/cgsr-info-book.pdf) on the pack, plus the age grading.
+
+| Item | Product | Shop | Price | Covers | Unit price |
+|---|---|---|---|---|---|
+| Game console | [Nintendo Switch 2 (NTD-BEE-S-KB6AA-SGP) ↗](https://www.courts.com.sg/nintendo-switch-2-ntd-bee-s-kb6aa-sgp-IP210012.html) | Courts | S$799.00 | 1 | n/a |
+| Novel | [Mr Penumbra's 24-hour Bookstore, Paperback ↗](https://singapore.kinokuniya.com/bw/9781782392330) | Kinokuniya | S$14.10 | 1 | n/a (listing) |
+| Novel | [Odyssey (Penguin Classics) ↗](https://singapore.kinokuniya.com/t/books/english-books/literature-and-fiction/literature) | Kinokuniya | S$21.80 | 1 | n/a (listing) |
+| Novel | [The Original Daughter ↗](https://singapore.kinokuniya.com/t/books/english-books/literature-and-fiction/singaporean-literature-and-fiction) | Kinokuniya | S$23.95 | 1 | n/a (listing) |
+| Textbook or assessment book | [Cambridge IGCSE and O Level Economics Workbook (2nd) ↗](https://singapore.kinokuniya.com/bw/9781108440400) | Kinokuniya | S$31.03 | 1 | n/a (listing) |
+| Textbook or assessment book | [Cambridge O Level English Language Coursebook (2nd) ↗](https://singapore.kinokuniya.com/bw/9781107610804) | Kinokuniya | S$40.66 | 1 | n/a (listing) |
+| Textbook or assessment book | [Cambridge IGCSE and O Level Additional Mathematics Practice Book (2nd) ↗](https://singapore.kinokuniya.com/bw/9781108412858) | Kinokuniya | S$42.27 | 1 | n/a (listing) |
+| Board game | [Catan The Original ↗](https://www.toysrus.com.sg/catan-the-original-1198427.html) | Toys"R"Us | $83.99 | 1 | n/a |
+| Lego-type building set | [LEGO Classic Medium Creative Brick Box 10696 ↗](https://www.toysrus.com.sg/lego-classic-medium-creative-brick-box-10696-1005891.html) | Toys"R"Us | $49.99 | 1 | Not stated |
+| Soft toy | [Squishmallows 3.5-inch Clip On Assorted ↗](https://www.toysrus.com.sg/squishmallows-3.5-clip-on---assorted-1186407.html) | Toys"R"Us | $12.99 | 1 | n/a (listing) |
+| Soft toy | [Squishmallows Flip-A-Mallows 5-inch Assorted ↗](https://www.toysrus.com.sg/squishmallows-flip-a-mallows-5-inch---assorted-1190405.html) | Toys"R"Us | $14.99 | 1 | n/a (listing) |
+| Ukulele or guitar | [Harmony Foundation Series Sierra Classic ABS Soprano Ukulele ↗](https://www.sweelee.com.sg/collections/ukuleles) | Swee Lee | $59.00 | 1 | n/a (listing) |
+| Ukulele or guitar | [Harmony Foundation Series Sierra Soprano Ukulele with bag ↗](https://www.sweelee.com.sg/collections/ukuleles) | Swee Lee | $99.00 | 1 | n/a (listing) |
+| Ukulele or guitar | [Harmony e-Sierra concert ukulele ↗](https://www.sweelee.com.sg/collections/ukuleles) | Swee Lee | S$159 | 1 | n/a (listing) |
+
+### Sports & Outdoors
+
+| Official series | Index, Sep 2026 | 1 year | Since Sep 2015 | Sep 2027 forecast | Month pattern |
+|---|---|---|---|---|---|
+| Bicycles | 101.1 | +0.6% | n/a | 101.1 (98.8 to 108.1) | too new |
+| Equipment For Sport, Camping & Open-Air Recreation | 101.8 | -0.0% | n/a | 101.8 (99.5 to 108.9) | too new |
+
+- **Cycling:** [LTA requires a helmet on roads ↗](https://www.lta.gov.sg/content/ltaweb/en/walk-cycle-ride/rules-and-code-of-conduct.html). Motorised PMDs need UL2272 certification.
+
+| Item | Product | Shop | Price | Covers | Unit price |
+|---|---|---|---|---|---|
+| Yoga mat | [Kimjaly 8mm Gentle Yoga Mat (Burgundy) ↗](https://www.decathlon.sg/c/fitness-sports/gym-accessories/exercise-mats.html) | Decathlon | S$19.90 (was S$24.90) | 1 | n/a (listing) |
+| Yoga mat | [4mm Ultra Grip Dynamic Yoga Mat (Blue) ↗](https://www.decathlon.sg/c/fitness-sports/gym-accessories/exercise-mats.html) | Decathlon | S$39.90 (was S$59.90) | 1 | n/a (listing) |
+| Dumbbells | [Twin Pack Dumbbells 5kg x2 ↗](https://www.decathlon.sg/c/collections/fitness-race-essentials/strength-training-equipment/dumbbells.html) | Decathlon | S$29.90 | 2 x 5 kg | S$2.99/kg (listing) |
+| Dumbbells | [Weight Training Dumbbell Kit 20kg ↗](https://www.decathlon.sg/c/home-gym/weights-bars.html) | Decathlon | S$69.90 | 20 kg | S$3.50/kg (listing) |
+| Dumbbells | [Hex Dumbbell 20kg ↗](https://www.decathlon.sg/c/home-gym/weights-bars.html) | Decathlon | S$89.90 | 20 kg | S$4.50/kg (listing) |
+| Badminton racket | [BR Sensation 190 ↗](https://www.decathlon.sg/c/racket-sports/badminton/rackets/adult-badminton-rackets.html) | Decathlon | S$13.90 | 1 | n/a (listing) |
+| Badminton racket | [BR Sensation 500 (Black) ↗](https://www.decathlon.sg/c/racket-sports/badminton/rackets/adult-badminton-rackets.html) | Decathlon | S$24.90 | 1 | n/a (listing) |
+| Badminton racket | [Yonex Voltric Lite 47i (strung) ↗](https://www.decathlon.sg/c/racket-sports/badminton/rackets/adult-badminton-rackets.html) | Decathlon | S$47.90 | 1 | n/a (listing) |
+| Football | [Size 5 FIFA Basic Football Club Hybrid (Yellow) ↗](https://www.decathlon.sg/c/clearance/teamsports-deals.html) | Decathlon | S$14.90 (was S$19.90) | 1 | n/a (listing) |
+| Football | [Thermobonded Size 5 FIFA Quality Pro Ball (White) ↗](https://www.decathlon.sg/c/clearance/teamsports-deals.html) | Decathlon | S$39.90 (was S$54.90) | 1 | n/a (listing) |
+| Swim goggles | [Ready One Size Goggles, Clear Lenses (Grey) ↗](https://www.decathlon.sg/p/swimming-goggles-ready-one-size-clear-lenses-grey-nabaiji-8616684.html) | Decathlon | S$2.90 | 1 | n/a (listing) |
+| Swim goggles | [BFIT NANO Mirror Lens (Adult) ↗](https://www.decathlon.sg/c/water-sports/swimming/goggles-masks.html) | Decathlon | S$14.90 (was S$24.90) | 1 | n/a (listing) |
+| Swim goggles | [Speedo Biofuse 2.0 Smoke Lens ↗](https://www.decathlon.sg/c/speedo.html) | Decathlon | S$34.90 | 1 | n/a (listing) |
+| Bicycle | [Hybrid Bike Riverside 100, 6 speed V-Brake ↗](https://www.decathlon.sg/c/cycling/all-bikes.html) | Decathlon | S$249.90 | 1 | n/a (listing) |
+| Bicycle | [Hybrid Bike Riverside 500, 9 speed disc brake ↗](https://www.decathlon.sg/c/cycling/all-bikes.html) | Decathlon | S$329.90 (was S$399.90) | 1 | n/a (listing) |
+| Cycling helmet | [City Cycling Bike Helmet Btwin 100 (Black) ↗](https://www.decathlon.sg/p/100-city-cycling-helmet-black-btwin-8524063.html) | Decathlon | S$14.90 | 1 | n/a (listing) |
+| Cycling helmet | [City Cycling Helmet 500 (Black) ↗](https://www.decathlon.sg/p/8326832-7724-500-city-cycling-helmet-black.html?query=bike%20light) | Decathlon | S$35.00 | 1 | n/a (listing) |
+| Cycling helmet | [Van Rysel RCR MIPS road helmet ↗](https://www.decathlon.sg/c/cycling/bike-helmets/road-helmets.html) | Decathlon | S$119.90 | 1 | n/a (listing) |
+| Tent or camping gear | [Quechua Camping Tent MH100 2P ↗](https://www.decathlon.sg/p/camping-tent-mh100-2-person-quechua-8513471.html) | Decathlon | S$39.90 | 2 person | n/a (listing) |
+| Tent or camping gear | [Quechua 2 Person Pop-up 2 Seconds Tent Fresh & Black ↗](https://www.decathlon.sg/p/2-person-pop-up-2-seconds-tent-fresh-black-quechua-8801560.html) | Decathlon | S$129.90 | 2 person | n/a (listing) |
+| Tent or camping gear | [Quechua 2 Seconds Easy Fresh & Black ↗](https://www.decathlon.sg/p/camping-tent-2-seconds-easy-fresh-black-2-person-quechua-8553541.html) | Decathlon | S$149.90 | 2 person | n/a (listing) |
+| Water bottle | [Basic 1L plastic bottle ↗](https://www.decathlon.sg/c/outdoor-sports/hiking-trekking/equipment/hydration.html) | Decathlon | S$9.90 | 1 L | S$9.90/L (listing) |
+| Water bottle | [Mountain Hiking 1L aluminium flask MH500 ↗](https://www.decathlon.sg/c/outdoor-sports/hiking-trekking/equipment/hydration.html) | Decathlon | S$14.90 | 1 L | S$14.90/L (listing) |
+| Water bottle | [1L insulated stainless steel flask 900 (Grey) ↗](https://www.decathlon.sg/c/outdoor-sports/hiking-trekking/equipment/hydration.html) | Decathlon | S$29.90 | 1 L | S$29.90/L (listing) |
+
+### Mom & Baby
+
+- **Buy strollers and cots from authorised shops.** In 2025, a government check of 22 higher-risk products, [mainly from Shopee or Lazada sellers, failed 17 ↗](https://www.consumerproductsafety.gov.sg/news-and-media/ccs-warns-consumers-about-safety-risks-when-buying-baby-products-and-children-s-jewellery-online/).
+- **Formula:** MOH says [all formula sold here meets the rules ↗](https://www.moh.gov.sg/newsroom/response-to-competition-commission-of-singapore's-recommendations-on-formula-milk/), whatever the price. Standard brands are often under half the premium price.
+- **Strollers:** [test the brakes and the folding lock ↗](https://www.consumerproductsafety.gov.sg/consumers/product-safety-tips/children-products/safety-tips-on-strollers/).
+
+| Item | Product | Shop | Price | Covers | Unit price |
+|---|---|---|---|---|---|
+| School uniform | [Junyuan Primary polo T-shirt and khaki shorts or skort ↗](https://junyuanpri.moe.edu.sg/school-uniform/) | School-listed vendors | S$7 polo, S$7 or S$8 bottoms by vendor | 1 each | S$7 to S$8/pc (listing) |
+| School uniform | [Pei Hwa Presbyterian Primary shirt or blouse, and boys' shorts (2024) ↗](https://peihwapresbyterianpri.moe.edu.sg/files/Booklist/2024/phpps%20uniform%20list%202024.pdf) | School vendor | Shirt S$9.10 to S$11.20. Shorts S$9.60 to S$11.80 | 1 each | same, by size (listing) |
+| School uniform | [Wellington Primary boys' shirt and shorts, girls' pinafore (2024) ↗](https://wellingtonpri.moe.edu.sg/files/School%20uniform%20/School_Uniform_Price_List.pdf) | School vendor | Shirt or shorts S$9.30 to S$11.50. Pinafore S$14.30 to S$16.40 | 1 each | same, by size (listing) |
+| School uniform | [Junyuan Secondary unisex shirt (2025 order form) ↗](https://www.junyuansec.moe.edu.sg/files/Junyuan_Secondary_School__Order_Form_2025.pdf) | School vendor | S$10.50 to S$17.00 | 1 | same, by size (listing) |
+| Stroller | [Joie Pact Pro Stroller ↗](https://www.mothercare.com.sg/joie-pact-pro-stroller-assorted-colours) | Mothercare | S$359.00 (was S$499.00) | 1 | n/a |
+| Baby wipes | [FairPrice Baby Wipes Refill (scented) ↗](https://www.fairprice.com.sg/product-listing?category=baby-child-toys&pageType=category&url=baby-child-toys&metaData=%5Bobject+Object%5D&sorting=POPULARITY&title=Baby%2C+child%2C+toy+essentials) | FairPrice | S$2.95 (was S$3.60) | 150 | S$0.02/sheet (listing) |
+| Baby wipes | [FairPrice Baby Wipes with Lid (100% pure water) ↗](https://www.fairprice.com.sg/product-listing?category=baby-child-toys&pageType=category&url=baby-child-toys&metaData=%5Bobject+Object%5D&sorting=POPULARITY&title=Baby%2C+child%2C+toy+essentials) | FairPrice | S$7.50 (was S$9.50) | 3 x 80 | S$0.03/sheet (listing) |
+| Baby wipes | [Pigeon Aqua Baby Wipes with hard lid ↗](https://www.fairprice.com.sg/product-listing?category=baby-child-toys&pageType=category&url=baby-child-toys&metaData=%5Bobject+Object%5D&sorting=POPULARITY&title=Baby%2C+child%2C+toy+essentials) | FairPrice | S$14.20 (was S$17.80) | 6 x 70 | S$0.03/sheet (listing) |
+| Baby formula | [FairPrice Gold Follow on Milk Formula Stage 2 ↗](https://www.fairprice.com.sg/product/fairprice-gold-follow-on-milk-formula-stage-2-900g-13107319) | FairPrice | S$30.78 | 900 g | S$3.42/100 g (listing) |
+| Baby formula | [Abbott Similac 5MO Infant Formula Stage 1 ↗](https://www.fairprice.com.sg/product/abbott-similac-5mo-infant-formula-stage-1-850g-13226899) | FairPrice | S$70.00 | 850 g | S$8.24/100 g (listing) |
+| Baby formula | [Enfamil Pro A+ Infant Milk Formula Stage 1 ↗](https://www.fairprice.com.sg/product/enfamil-pro-a-infant-milk-formula-stage-1-800g-13226924) | FairPrice | S$75.35 | 800 g | S$9.42/100 g (listing) |
+
+### Pet Food & Supplies
+
+| Official series | Index, Sep 2026 | 1 year | Since Sep 2015 | Sep 2027 forecast | Month pattern |
+|---|---|---|---|---|---|
+| Pets & Products For Pets | 100.1 | -1.3% | +15.3% | 100.4 (99.1 to 107.8) | no steady pattern |
+| Veterinary & Other Services For Pets | 106.4 | +3.1% | n/a | 106.4 (104.0 to 113.7) | too new |
+
+- **Pet food:** look for ["complete and balanced" for your pet's life stage ↗](https://www.aafco.org/consumers/understanding-pet-food/reading-labels/) in the small print.
+
+| Item | Product | Shop | Price | Covers | Unit price |
+|---|---|---|---|---|---|
+| Dog food | [Pedigree Adult Dog Dry Food Beef & Vegetables ↗](https://www.fairprice.com.sg/product/pedigree-adult-dog-dry-food---beef---vegetables-11202126) | FairPrice | S$46.27 | 10 kg | S$4.63/kg (listing) |
+| Dog food | [Purina Supercoat Adult All Breed Beef ↗](https://www.fairprice.com.sg/product/purina-supercoat-adult-all-breed-dry-dog-food-beef-1-5kg-13236515) | FairPrice | S$15.64 | 1.5 kg | S$10.43/kg (listing) |
+| Dog food | [Diamond Naturals Grain Free Skin & Coat Salmon & Potato ↗](https://www.fairprice.com.sg/product/diamond-naturals-grain-free-skin-coat-salmon-potato-dog-1-x-15kg-90150708) | FairPrice | S$113.20 (was S$164.48) | 15 kg | S$7.55/kg (listing) |
+| Cat food | [Friskies Delish Cat Dry Food Indoor Delights ↗](https://www.fairprice.com.sg/product/friskies-indoor-delights-dry-cat-food-11kg-13080902) | FairPrice | S$7.18 | 1 kg | S$7.18/kg (listing) |
+| Cat food | [SmartHeart Gold Cat Dry Food Salmon & Rice ↗](https://www.fairprice.com.sg/product/smartheart-gold-cat-dry-food-salmon-rice-1-2kg-13131136) | FairPrice | S$14.50 (was S$15.99) | 1.2 kg | S$12.08/kg (listing) |
+| Cat food | [Purina One Dry Cat Food Salmon and Tuna ↗](https://www.fairprice.com.sg/product/purina-one-dry-cat-food-salmon-and-tuna-1-2kg-13219333) | FairPrice | S$22.30 | 1.2 kg | S$18.58/kg (listing) |
+| Cat litter | [Aatas Kuick Klump Bentonite Cat Litter (Charcoal) ↗](https://www.fairprice.com.sg/category/pets-club) | Pets Club via FairPrice | S$7.75 (regular S$10.03) | 10 L | S$0.78/L (listing) |
+| Cat litter | [Trustie Original Cat Sand ↗](https://www.petloverscentre.com/cat/cat-supplies-others/litter) | Pet Lovers Centre | S$8.37 (VIP S$7.95) | 10 L / 8.1 kg | S$0.84/L (listing) |
+| Cat litter | [Trustie Tofu Litter ↗](https://www.petloverscentre.com/cat/cat-supplies-others/litter) | Pet Lovers Centre | S$15.26 (VIP S$14.50) | 10 L / 4.5 kg | S$1.53/L (listing) |
+
+### Automotive
+
+| Official series | Index, Sep 2026 | 1 year | Since Sep 2015 | Sep 2027 forecast | Month pattern |
+|---|---|---|---|---|---|
+| Motor Cars | 114.3 | +5.4% | +67.6% | 115.9 (113.9 to 142.8) | Feb low, Oct high (2%) |
+| Motorcycles | 116.8 | +16.3% | +44.8% | 117.9 (104.0 to 138.7) | May low, Mar high (6%) |
+| Parts & Accessories For Personal Transport Equipment | 104.7 | +2.2% | n/a | 104.7 (102.4 to 112.0) | too new |
+| Petrol | 115.1 | +18.0% | +62.8% | 117.3 (110.4 to 145.5) | no steady pattern |
+| Other Fuel & Lubricants For Personal Transport Equipment | 138.4 | +39.4% | +128.9% | 141.7 (131.5 to 193.4) | no steady pattern |
+| Maintenance & Repair Of Personal Transport Equipment | 109.3 | +3.4% | n/a | 109.3 (106.8 to 116.8) | too new |
+| Other Services In Respect Of Personal Transport Equipment | 102.5 | +1.3% | n/a | 102.5 (100.2 to 109.6) | too new |
+| Insurance Connected With Transport | 104.3 | +1.2% | n/a | 104.3 (102.0 to 111.5) | too new |
+
+- **Motorcycle helmets:** [check the SS9 sticker or R22.06 mark ↗](https://www.police.gov.sg/Media-Hub/News/2025/09/20250909_updated_standards_for_motorcycle_helmets).
+- **Tyres:** [the last four DOT digits give the week and year made ↗](https://www.consumerreports.org/cars/tires/how-to-decode-tire-size-and-other-data-a8517724937/). Avoid tyres over a couple of years old.
+- **Fuel:** pump prices leave out card and loyalty discounts, so compare the net price.
+
+| Item | Product | Shop | Price | Covers | Unit price |
+|---|---|---|---|---|---|
+| Engine oil | [Shell Helix Ultra I Engine Oil ↗](https://www.fairprice.com.sg/product/13069749) | FairPrice | S$56.03 | 4 L | S$14.01/L (listing) |
+| Car tyres | [Dunlop SP Touring R1L 195/65R15 ↗](https://tyresonline.sg/product-tag/195-65-15/?filter_cat=115&stock_status=instock) | tyresonline.sg | S$77.00 | 1 tyre | S$77.00/tyre (listing) |
+| Car tyres | [Yokohama AE50 195/65R15 ↗](http://www.kimhoetyre.com/) | Kim Hoe Tyre | S$100 | 1 tyre | S$100/tyre (listing) |
+| Car tyres | [Michelin Energy XM2+ 195/65R15 ↗](https://tyresonline.sg/product-tag/195-65-15/?filter_cat=115&stock_status=instock) | tyresonline.sg | S$141.96 | 1 tyre | S$141.96/tyre (listing) |
+| Car shampoo or wash | [Meguiar's NXT Generation Car Wash ↗](https://www.fairprice.com.sg/product/meguiar-s-nxt-generation-car-wash-1-89l-11403833) | FairPrice | S$26.09 | 1.89 L | S$1.38/100 ml |
+| Motorcycle helmet | [GPR GS08 Open Face, PSB Approved ↗](https://www.motoworld.com.sg/gpr-gs08-open-face-motorcycle-helmet) | Motoworld | S$53.00 | 1 | n/a (listing) |
+| Motorcycle helmet | [HJC C10 ASPA Full Face, PSB Approved ↗](https://www.motoworld.com.sg/hjc-c10-aspa-full-face-motorcycle-helmet-psb-approved) | Motoworld | S$147.00 | 1 | n/a (listing) |
+| Motorcycle helmet | [HJC RPHA-1N Ben Spies Silverstar Full Face, PSB Approved ↗](https://www.motoworld.com.sg/hjc-rpha-1n-ben-spies-silverstar-full-face-motorcycle-helmet-psb-approved) | Motoworld | S$499.00 (was S$1,049.00) | 1 | n/a (listing) |
+
 ## Bigger one-off buys
 
 These are not daily goods, but they are where a good buy lasts for years.
@@ -668,7 +1384,9 @@ Basic clothes are best bought from the brand. Uniqlo's AIRism Cotton tee was [S$
 
 - **Sample changes.** SingStat changed its brands and shops in January 2019 and January 2024. Average prices are not pure price changes across those dates. The CPI is.
 - **Averages are not your shop.** They mix brands and outlets. Promotions may be partly hidden.
-- **Shops covered.** Shelf prices are mostly FairPrice, with some Cold Storage, Courts, Harvey Norman and Challenger. Sheng Siong, Giant and Don Don Donki showed no readable online prices. Shopee and Amazon.sg blocked automated reading. Of 255 shelf prices, 191 were read from an opened product page.
+- **Shops covered.** Shelf prices are mostly FairPrice, with some Cold Storage, IKEA, Courts, Harvey Norman and official fee pages. Sheng Siong, Giant and Don Don Donki showed no readable online prices. Shopee, Amazon.sg, Watsons, Popular, Challenger and several fashion sites blocked automated reading. Of 721 shelf prices, 352 were read from an opened page.
+- **Shopee categories.** Shopee's site could not be read, so the category names follow its menu from memory and may not match exactly.
+- **Indexes are not prices.** A word like "sofa" maps to the nearest official series, here Furniture & Furnishings. That series covers many products, so your sofa may move differently.
 - **Offers end.** Many shelf prices are offers. Dates are shown where a page gave one.
 - **Quality.** Many quality points come from agency pages. Some come only from search summaries of them. UK and US tests do not cover Singapore products. No named Singapore product has a test result here.
 - **Data end.** SingStat data ends at September 2026, and the shelf prices are from 8 November 2026.
