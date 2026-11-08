@@ -11,7 +11,11 @@ Posts by Yu Jie Teo.
 
 ## Deploy
 
-1. Install Bun.
+1. Install Bun 1.4.4.
 2. Commit to `main`.
 3. Turn on the VPN.
 4. Run `scripts/deploy.sh`. It builds the site and sends it.
+
+## Versions
+
+Tags named `vYYYY.MM.DD` mark the state of `main` on that date. They do not show the live version.
