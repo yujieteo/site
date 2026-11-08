@@ -76,3 +76,9 @@ select { font: inherit; font-size: var(--small); padding: 6px 8px; border: 1px s
   .controls.axes { display: grid; grid-template-columns: 1fr 1fr; justify-items: start; } main.page figcaption { text-align: left; } .note { text-align: left; } }
 main.page svg.tall { display: none; }
 @media (max-width: 560px) { main.page figure[data-kind=schematic] svg:has(+ svg.tall) { display: none; } main.page figure[data-kind=schematic] svg.tall { display: block; width: 100%; max-width: 360px; } }
+.chart { overflow: visible; }
+.chart text { font: 12px/1 var(--sans); fill: var(--muted); font-variant-numeric: tabular-nums; }
+.tip { position: absolute; left: 0; top: 0; z-index: 3; width: max-content; max-width: min(260px, 80vw); padding: 6px 10px; pointer-events: none;
+.tip[data-open] { opacity: 1; visibility: visible; transform: none; }
+.tip[data-instant] { transition-duration: 0ms; }
+@media (prefers-reduced-motion: reduce) { .tip { transform: none; } }
