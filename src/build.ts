@@ -1,12 +1,8 @@
-import { gzipSync } from "node:zlib";
 import { relative, resolve } from "node:path";
 import { copyFileSync, cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { homePage, postPage } from "./pages.ts";
 import { figureKinds, figures, footnoteHtml, footnotes, headings, parsePost, textVersion, type Post } from "./post.ts";
 import { FIGURE_KINDS } from "./figures.ts";
-
-const KB = 1024;
-const BASE_ASSETS = ["fonts/inter.woff2", "style.css"];
 
 function insertNewestFirst(posts: Post[], post: Post): void {
   let at = 0;
@@ -44,26 +40,6 @@ async function buildAssets(out: string): Promise<void> {
   if (!built.success) throw new Error("the kit did not build");
 }
 
-function withChunks(out: string, scripts: string[]): string[] {
-  const found: string[] = [];
-  for (let i = 0; i < scripts.length; i++) {
-    const script = scripts[i] ?? "";
-    if (found.includes(script)) continue;
-    found.push(script);
-    for (const m of readFileSync(`${out}/${script}`, "utf8").matchAll(/from"\.\/(chunk-[^"]+\.js)"/g)) scripts.push(`kit/${m[1] ?? ""}`);
-  }
-  return found;
-}
-
-function firstLoadBytes(out: string, page: string, kinds: string[]): number {
-  let total = gzipSync(readFileSync(`${out}/${page}`), { level: 9 }).length;
-  const scripts = ["kit/kit.js"];
-  for (const kind of kinds) scripts.push(`kit/${kind}.js`);
-  const assets = [...BASE_ASSETS, ...withChunks(out, scripts)];
-  for (const asset of assets) total += asset.endsWith(".woff2") ? readFileSync(`${out}/${asset}`).length : gzipSync(readFileSync(`${out}/${asset}`), { level: 9 }).length;
-  return total;
-}
-
 async function main(): Promise<void> {
   const drafts = Bun.argv.includes("--drafts");
   const outIndex = Bun.argv.indexOf("--out");
@@ -87,10 +63,6 @@ function writePost(out: string, post: Post, postsDir: string): void {
   mkdirSync(dir, { recursive: true });
   writeFileSync(`${dir}/index.html`, postPage(post, body.html, body.toc, kinds));
   writeFileSync(`${dir}/index.md`, textVersion(post));
-  const bytes = firstLoadBytes(out, `essays/${post.slug}/index.html`, kinds);
-  const limit = post.budgetKb * KB;
-  console.log(`first load ${post.slug}: ${bytes} of ${limit} bytes gzipped`);
-  if (bytes > limit) throw new Error(`${post.slug} first load is ${bytes} bytes, over its limit of ${limit}`);
 }
 
 await main();

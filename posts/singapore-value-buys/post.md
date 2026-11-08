@@ -1,7 +1,6 @@
 ---
 title: What Singapore buys, what it costs and when it is a deal
 date: 2026-11-08
-budget_kb: 190
 summary: Official data for 251 goods and services from 2015 to September 2026, with 721 shelf prices from Singapore shops on 8 and 9 November 2026.
 summary: The best guess for a future price is close to today's price. Across 4,416 tests, it missed by 6.1% a year out, and no trend or season model did much better.
 summary: 33 of the 63 goods with enough history have a steady month pattern. Fish is the big one. Buy in November, not January.

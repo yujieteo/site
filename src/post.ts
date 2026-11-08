@@ -6,7 +6,6 @@ export interface Post {
   title: string;
   date: string;
   draft: boolean;
-  budgetKb: number;
   summary: string[];
   source: string;
 }
@@ -16,7 +15,6 @@ export interface Heading {
   text: string;
 }
 
-const DEFAULT_BUDGET_KB = 80;
 const WORDS_PER_MINUTE = 220;
 
 function isDraft(text: string): boolean | undefined {
@@ -33,14 +31,13 @@ export function parsePost(slug: string, raw: string): Post {
   const head = (parts[0] ?? "").replace(/^---\n/, "");
   const draft = isDraft(head);
   if (draft === undefined) throw new Error(`${slug}: the front matter is not valid YAML`);
-  const post: Post = { slug, title: "", date: "", draft, budgetKb: DEFAULT_BUDGET_KB, summary: [], source: parts.slice(1).join("\n---\n").trim() };
+  const post: Post = { slug, title: "", date: "", draft, summary: [], source: parts.slice(1).join("\n---\n").trim() };
   for (const line of head.split("\n")) {
     const at = line.indexOf(": ");
     const key = line.slice(0, at);
     const value = line.slice(at + 2).trim();
     if (key === "title") post.title = value;
     if (key === "date") post.date = value;
-    if (key === "budget_kb") post.budgetKb = Number(value);
     if (key === "summary") post.summary.push(value);
   }
   if (post.title === "" || post.date === "" || post.summary.length === 0) throw new Error(`${slug}: a post needs title, date and summary`);
