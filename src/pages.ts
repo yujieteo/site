@@ -6,11 +6,13 @@ const HEAD = `<meta charset="utf-8">
 <meta name="theme-color" content="#fdfdfc">
 <link rel="icon" href="data:,">
 <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/style.css">`;
+<link rel="stylesheet" href="/style.css">
+<link rel="alternate" type="application/rss+xml" title="Reading feed" href="/feed.xml">`;
 
 const FOOT = `<footer class="wrap"><ul>
 <li>Email: <a href="mailto:contact@teoyujie.org">contact@teoyujie.org</a> · <a href="/contact.asc">OpenPGP key</a> (fingerprint <code>5E76 96A3 DDD7 6435 07DD 3EB8 F24F 7F0D 78EB E270</code>)</li>
 <li>Code: <a href="https://github.com/yujieteo">GitHub ↗</a></li>
+<li>Reading: <a href="/feed.xml">RSS feed</a></li>
 </ul></footer>`;
 
 function shell(title: string, description: string, header: string, main: string, scripts: string[]): string {
