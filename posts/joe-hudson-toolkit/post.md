@@ -1,0 +1,381 @@
+---
+title: The Joe Hudson toolkit for the feelings you avoid
+date: 2026-11-09
+budget_kb: 80
+summary: The best practices from Joe Hudson and Art of Accomplishment, sorted by the feeling or problem you want to get away from.
+summary: His core claim is that the feeling you avoid is the one your avoidance creates. So the work is to feel it on purpose.
+summary: Each section gives steps and a dose where he states one. Stories from his own life are marked as stories.
+summary: This is a coach's method, not a tested treatment. The evidence section says where research points the other way, above all on venting anger.
+summary: It is a selection from a large body of work. Paid courses and guided audio were not read.
+---
+Joe Hudson is an executive coach and the founder of Art of Accomplishment. He has coached leaders at OpenAI and other large tech firms. His podcast with Brett Kistler holds most of his method, and it is free.
+
+This post puts the most useful parts in one place and sorts them by what you are trying not to feel. Steps are paraphrased from his episodes and essays. Other teachers are named where a practice is theirs.
+
+## The short version
+
+1. **Find the loop.** Name the feeling you avoid. Then see how your way of avoiding it brings it back.
+2. **Feel it on purpose.** Do Emotional Inquiry once or twice a day. Meet the feeling in your body, with wonder, and do not try to change it.
+3. **If you cannot love the feeling, love your resistance to it.** Resistance is the place to start, not a mistake.
+4. **Run small experiments.** Do not take his word for it. Try one thing for a week and see.
+5. **Stay safe.** Never aim anger at a person without their consent. If you feel flooded, stop and rest.
+
+## Read this first
+
+This is coaching, not treatment. Hudson says that if you get overwhelmed, care for your nervous system comes first: rest, ground yourself and slow down. He advises one feeling at a time, perhaps twice a day. He also says hard early work, such as childhood chaos, should be done with skilled people, not alone.
+
+If you have trauma, or you get lost in these feelings or feel outside your body, work with a licensed therapist. If you think about harming yourself or someone else, contact a crisis line or emergency service now.
+
+## The core method
+
+**The Golden Algorithm.** The emotion you avoid comes back through the way you avoid it. Map it for one problem that repeats:
+
+1. Name the problem and what happens in it.
+2. Name one emotion you may be avoiding.
+3. Name what you do to avoid it.
+4. Trace how that brings the same emotion back. You skip the gym to dodge guilt, and skipping makes more guilt.
+5. Look for more emotions. There is often more than one.
+6. Welcome the emotion. If you welcome it only to make it leave, you are still resisting.
+
+**Emotional Inquiry.** This is his main tool. Call up the feeling, from a memory if you need to. Find it in your body. Ask where its centre is, what colour and how dense it is, and whether it moves. Keep coming back to it, as a small child looks at a frog. Do not analyse it or try to shift it. The guided version is about 8 minutes. He suggests one to three times a day.
+
+**VIEW.** This is the state you bring to any feeling or talk.
+
+- **Vulnerability.** Let it touch you.
+- **Impartiality.** Do not try to change it.
+- **Empathy.** Keep yourself company, and stay out of the story.
+- **Wonder.** Stay in the question with no need for an answer.
+
+**Four quick tests.**
+
+- **Resist, then release.** Take your strongest feeling. Resist it fully for a moment. Then drop the resistance and welcome it. Compare the two.
+- **Bracing or embracing.** Close your eyes, breathe and ask which one you are doing. He once did this about 10 times a day.
+- **Go and feel.** Sit 10 to 15 minutes with something you avoid. Then ask what was so bad, and what kept you from being destroyed.
+- **Feel and not-feel.** Clamp down on every emotion. Then release and allow all of it. Repeat at least once a day for a week, and make the feeling phases longer.
+
+**Signs of a feeling you have not felt.** Your thoughts loop. A decision stays unclear. You think in either/or terms. You judge someone. You get defensive. You rush. You try to control everything.
+
+**How to run an experiment.**
+
+- Make it short, often a week. Stop early if the answer is clear.
+- Start where you feel curious or in pain.
+- Test something that goes against what you believe.
+- Ask what will happen. Do not set a goal.
+- Run one at a time. If it is too big, shrink it. He cut a 30-minute daily breathwork practice to one 3-minute session.
+- If it turns into a "should", change it. If you use it to control yourself, it stops working.
+
+Sources: [The Golden Algorithm ↗](https://www.artofaccomplishment.com/podcast/the-golden-algorithm-decisions-series-3), [Emotional Inquiry ↗](https://www.artofaccomplishment.com/podcast/emotional-inquiry), [Making Great Emotional Decisions ↗](https://www.artofaccomplishment.com/podcast/making-great-emotional-decisions-decisions-series-2), [Embracing Intensity ↗](https://www.artofaccomplishment.com/podcast/embracing-intensity-emotion-series-2-3), [Feel Over Figure ↗](https://www.artofaccomplishment.com/podcast/feel-over-figure-master-class-series-5-3), [How Experiments Will Change Your Life ↗](https://www.artofaccomplishment.com/podcast/how-experiments-will-change-your-life), [the feel and not-feel talk ↗](https://www.youtube.com/watch?v=ZcA3KM2NM74).
+
+## Find your feeling
+
+| If you avoid | Start with | Dose |
+|---|---|---|
+| [Fear](#fear) | The tiger | Once, then as needed |
+| [Anxiety and worry](#anxiety-and-worry) | Five seconds at the worst part | Each time |
+| [Shame](#shame) | Stop, invite, love | Each time |
+| [Guilt](#guilt) | The upright apology | About 20 in all |
+| [Anger](#anger) | Listen to it, alone | 15 to 20 minutes |
+| [Grief and sadness](#grief-and-sadness) | Mourn before you decide | Until it eases |
+| [Helplessness](#helplessness-and-loss-of-control) | Find where you control most | Now |
+| [Hurt and rejection](#hurt-and-rejection) | Say "ouch" | Each time |
+| [Failure](#failure-and-disappointment) | A list of 50 tries | Months |
+| [Not being enough](#not-being-enough) | Island of saints | One minute |
+| [Overwhelm](#overwhelm-and-burnout) | Five minutes every two hours | One day |
+| [Uncertainty](#uncertainty-and-confusion) | The next obvious step | Each time |
+| [Numbness and low mood](#numbness-and-low-mood) | Attention in the body | Two to three weeks |
+| [Loneliness and boredom](#loneliness-and-boredom) | Do nothing, on purpose | One day |
+| [Joy and pleasure](#joy-and-pleasure) | Where is the pleasure now? | 10 minutes a day |
+| [Being loved and seen](#being-loved-and-seen) | Thank you, three seconds | Each time |
+| [Wanting](#wanting-and-jealousy) | Sit with the want | Daily |
+| [Success](#success) | See full failure, then full success | 2 to 10 sessions |
+
+## Fear
+
+- **The tiger.** Close your eyes. Imagine a tiger closing in on you, with no way out. Hear its feet and its breath. Now ask how much it weighs. Wonder and fear are hard to hold together. Use it for lesser fears, such as being fired, and not for real danger.
+- **Walk through the outcome.** Pick the fear. Picture the steps before, during and after it, again and again. Feel what it would bring.
+- **Say the scary truth.** Ask what scary thing is true for you right now. Then say it out loud.
+- **Shake and make sound.** Let the body shake and let sounds out. He recommends doing this with others.
+- **Check the story.** If fear is moving, the story changes and relief follows. If the story stays the same, you may be feeling it only to get rid of it.
+- **Ask what you defend.** What are you defending? What is the you that you are defending? What makes you think it can be destroyed?
+
+Sources: [Wonder ↗](https://www.artofaccomplishment.com/podcast/wonder-connection-course-series-2), [Impartiality ↗](https://www.artofaccomplishment.com/podcast/impartiality-connection-course-series-3), [Vulnerability ↗](https://www.artofaccomplishment.com/podcast/vulnerability-connection-course-series-5-3), [How to Get Unstuck ↗](https://www.artofaccomplishment.com/podcast/how-to-get-unstuck), [Fear ↗](https://www.artofaccomplishment.com/podcast/fear-a-path-to-authenticity-emotion-series-5-3), [The Power Dynamics of Fear ↗](https://www.artofaccomplishment.com/podcast/the-power-dynamics-of-fear-emotion-series-7-3).
+
+## Anxiety and worry
+
+- **Five seconds at the worst part.** When anxiety comes, go to its most intense part. Ask what the really scary thing is. Stay five seconds, then go on with your day.
+- **Ask the odd question.** Ask how your anxiety is right now, then feel the answer. The odd wording keeps the head out of it.
+- **Two steps down.** Ask what you are scared will happen. Then ask what you would have to feel if it did.
+- **The win log.** For one week, write down each thing that goes right. Write the first anxious thought that comes after it. Look for themes.
+
+Sources: [Helplessness ↗](https://www.artofaccomplishment.com/podcast/helplessness-the-cayenne-pepper-of-fear-emotion-series-12), [Anxiety ↗](https://www.artofaccomplishment.com/podcast/anxiety-a-signpost-to-unmet-needs-emotion-series-6-3), [Overwhelm ↗](https://www.artofaccomplishment.com/podcast/what-can-i-do-about-overwhelm-emotion-series-10), [You're not scared of failing ↗](https://blog.artofaccomplishment.com/p/youre-not-scared-of-failing-youre).
+
+## Shame
+
+- **Stop, invite, love.** Each time shame comes, stop. Invite it. Love it. Tell it that it can come back at any time. Move when you are ready. He calls this the fastest way through.
+- **Look under it.** Ask what you would have to feel if you could not feel ashamed right now. Then feel that. This is also the tool for regret that replays.
+- **Find the want.** Describe what you truly want and feel the desire inside the shame.
+- **Find the double bind.** Name a want. Ask if you also want its opposite, and if neither feels okay.
+- **Speak it among warm people.** Say the shameful thing to people who care for you. He calls this the best route.
+- **Drop the hot potato.** In a fight, only one person has to stop. Face each other. Say that nothing in you wants the other to feel ashamed or bad right now. Notice any wish to shame them.
+
+Sources: [The Anatomy of Shame ↗](https://www.artofaccomplishment.com/podcast/the-anatomy-of-shame-emotion-series-8-2), [Shame is designed to stagnate ↗](https://blog.artofaccomplishment.com/p/shame-is-designed-to-stagnate), [The Shame Hot Potato ↗](https://www.artofaccomplishment.com/podcast/the-shame-hot-potato).
+
+## Guilt
+
+- **The upright apology.** Sit or stand with your back straight. Say what happened and which part you are responsible for. Say that it is not how you want to be, and that you apologise. Avoid the word "you". Do not try to change how they feel.
+- **Twenty apologies.** List the times you were passive-aggressive and make about 20 upright apologies. His guess, which he did not measure, is that this cuts the habit by a third or so.
+- **Apologise to yourself.** For a bad habit, apologise to yourself each day for the harm it does.
+- **Use guilt as a check.** If you feel guilty or "dirty" after a talk, you were probably trying to control it.
+- **Refuse the guilt trip.** Say you are not interested in being guilt-tripped. Or name it and ask what makes them do it right now.
+
+Sources: [The Upright Apology ↗](https://www.artofaccomplishment.com/podcast/the-upright-apology-a-tool-for-transformation), [Passive Aggression ↗](https://www.artofaccomplishment.com/podcast/passive-aggression), [Vulnerability ↗](https://www.artofaccomplishment.com/podcast/vulnerability-connection-course-series-5-3).
+
+## Anger
+
+This covers frustration and rage too. Read the [evidence](#what-the-evidence-says) before you start. It is the part of his method that research disputes most.
+
+**His rules.** Do not aim it at anyone without their permission. Do not hurt yourself or others, and do not break things. If you try to scare or control someone with it, that is manipulation.
+
+1. **Find a safe place.** A pillow, a car, a beach, or a room with loud music.
+2. **Set a time.** Tell yourself you will listen to the anger for 15 to 20 minutes. He suggests 40 for people who are low.
+3. **Keep part of you outside it.** Treat it as a role you perform well. If you tend to shut down, lean into the story a little first.
+4. **Use the body and voice.** Yell, open the chest and make sounds. Heavy music can help.
+5. **Tell your body it is safe.** No one is attacking you and you are not hurting anyone.
+6. **Check that it is done.** Real completion brings relief and clarity about you, not a verdict on them.
+
+**If it goes wrong.** If you collapse, use your will and repeat a short line such as "No. I won't collapse." If you leave your body or lose track of time, return to the role or to the timed listening. If it keeps coming back fast, look for fear, hurt or grief under it.
+
+**Also useful.**
+
+- **Commute anger.** Get angry alone in the car each night, with no one there. He reports change in two or three weeks for one client.
+- **Announce and leave.** Tell your family you are angry, that you do not want to take it out on them, and that you will drive for 20 minutes.
+- **Release, then talk.** Move the anger first. Have the talk after.
+- **Ask what it cares about.** What do I care about here? What line was crossed? What clarity is it looking for?
+
+Sources: [The Wisdom of Anger, Part I ↗](https://www.artofaccomplishment.com/podcast/the-wisdom-of-anger-part-i-emotion-series-3-3), [Part II ↗](https://www.artofaccomplishment.com/podcast/the-wisdom-of-anger-part-ii-emotion-series-4-3), [Expressing Anger At ↗](https://www.artofaccomplishment.com/podcast/expressing-anger-at-playing-with-depression-alone-but-not-lonely-following-connection-desire-and-patience-through-deep-work), [Four signs of repressed anger ↗](https://blog.artofaccomplishment.com/p/four-signs-of-repressed-anger).
+
+## Grief and sadness
+
+- **Mourn before you decide.** Assume the outcome you dread, such as a marriage ending. Mourn it fully. Then decide what to do.
+- **A short cry.** Some built-up feeling needs only about 10 minutes of crying.
+- **Give grief a place.** A friend of his drove a long road each week and wailed and raged in the car. This is a story, but the idea is easy to borrow.
+- **Practise crying.** He could not cry for years. He went off alone and faked crying for about three months, until real crying came. This is also a story. Watch it as you would watch the Grand Canyon.
+- **Move through the feelings.** A guest, Alexa Anderson, spends about a minute each on sadness, fear, anger, shock, denial, acceptance and gratitude, in the body.
+- **Grieve all of it.** After a breakup, grieve the person, the patterns and the future you pictured.
+
+Sources: [The Beauty of Grief ↗](https://www.artofaccomplishment.com/podcast/the-beauty-of-grief-emotion-series-9-2), [Feel Over Figure ↗](https://www.artofaccomplishment.com/podcast/feel-over-figure-master-class-series-5-3), [Why You Never Have Enough Time ↗](https://www.artofaccomplishment.com/podcast/why-you-never-have-enough-time), [Triggered ↗](https://www.artofaccomplishment.com/podcast/triggered-relationships-series-2).
+
+## Helplessness and loss of control
+
+- **Find it through control.** Look where you control the most. Helplessness is often under it.
+- **Play out the worst case.** Name one thing you cannot let go of. Picture the worst in detail. Do Emotional Inquiry on what comes.
+- **Picture it going perfectly too.** The good version can be the scarier one.
+- **Feel the grip.** Letting go cannot be forced. Feel how much holding on hurts, as with a hot pan, and it follows.
+- **Pinky pull.** Press your palms together and try to pull your little fingers apart. Notice the trying. Then feel its opposite.
+- **Get a grounded person.** For deep release, such as shaking or old pain, be with someone who is not in fear.
+
+Sources: [Helplessness ↗](https://www.artofaccomplishment.com/podcast/helplessness-the-cayenne-pepper-of-fear-emotion-series-12), [The one emotion every high performer avoids ↗](https://blog.artofaccomplishment.com/p/the-one-emotion-every-high-performer), [The Opposite of Trying ↗](https://www.artofaccomplishment.com/podcast/the-opposite-of-trying).
+
+## Hurt and rejection
+
+- **Say "ouch".** When someone criticises you, say "ouch" or "that hurt". It has to come from choice, not from blame.
+- **Open your heart to the no.** Ask what happens when you open your heart to it. Do not treat it as proof that you are bad.
+- **Collect rejections.** Make rejection the goal. His story of an artist who did this varies between tellings, from 25 to 50 rejections. In one telling, galleries said yes once the artist stopped trying to convince them.
+- **List your blame.** Write who you subtly blame and for what. Next to each name, write how you are aggressive toward them.
+- **Turn resentment into a want.** Find what you wanted and never said. Say it as a request.
+- **Forgive in three steps.** Tara Howley's method: be with the anger, hurt and fear. Get curious about what wounded them. Then find the boundary you need.
+
+Sources: [Loving the No ↗](https://www.artofaccomplishment.com/podcast/loving-the-no-coaching-session-breakdown), [Failure ↗](https://www.artofaccomplishment.com/podcast/failure), [Passive Aggression ↗](https://www.artofaccomplishment.com/podcast/passive-aggression), [What's So Scary About Boundaries ↗](https://www.artofaccomplishment.com/podcast/whats-so-scary-about-boundaries-3), [I Learned Forgiveness ↗](https://www.artofaccomplishment.com/podcast/i-learned-forgiveness-by-refusing-to-forgive-with-tara-howley-and-alexa-kistler).
+
+## Failure and disappointment
+
+- **List 50 tries.** For a goal you keep dodging, write 50 ways to try it. Run them in order. Tick each as a win and ask what you learned. A shorter form is 15, each with what would make it fun.
+- **Feel it, then go back to the list.** After a setback, feel the sadness and fear. A reframe does not remove them.
+- **Say "I can't wait".** Say out loud that you look forward to the criticism or failure you dread.
+- **Ask whose standard it is.** Is your perfection an effort to please a critical parent?
+- **Draft twice.** Make the first pass playful and unjudged. Bring the harsh editor only on later passes.
+- **Applaud mistakes.** At a team meeting, each person names a failure and the group claps.
+
+Sources: [Failure ↗](https://www.artofaccomplishment.com/podcast/failure), [There is no way of getting it perfect ↗](https://blog.artofaccomplishment.com/p/there-is-no-way-of-getting-it-perfect), [How to End Procrastination Now ↗](https://www.artofaccomplishment.com/podcast/how-to-end-procrastination-now), [How to Set Goals ↗](https://www.artofaccomplishment.com/podcast/how-to-set-goals).
+
+## Not being enough
+
+This covers worthlessness and imposter feelings.
+
+- **Island of saints.** Close your eyes for a minute. You are stuck on an island with your needs met, among people who love you without condition. Who are you after 10 years? Notice that self-attack is not what grows you.
+- **What would you lose?** Hear "you are enough". Notice your reaction. Ask what you would lose if you stopped believing you must be more.
+- **Ask the journal question.** What would it take to feel enough after you had fixed everything?
+- **Tell someone.** Share a thing you judge yourself for, and see how they respond.
+- **Change the question.** Swap "how do I protect myself?" for "how do I serve here?"
+- **Say what you do not know.** Tell the group what you know and do not know, then ask what they know.
+- **Feel what your judging hides.** Each time you judge someone, ask what emotion you are avoiding and feel it for 20 seconds.
+
+Sources: [When Will I Be Enough ↗](https://www.artofaccomplishment.com/podcast/when-will-i-be-enough-coaching-session), [How to Build a Great Support System ↗](https://www.artofaccomplishment.com/podcast/how-to-build-a-great-support-system), [21 questions ↗](https://blog.artofaccomplishment.com/p/21-highly-psychoactive-questions), [Imposter Syndrome ↗](https://www.artofaccomplishment.com/podcast/what-to-do-about-imposter-syndrome), [The Superiority Trap ↗](https://blog.artofaccomplishment.com/p/the-superiority-trap).
+
+## Overwhelm and burnout
+
+- **Five minutes every two hours.** Sit and do nothing. Try it for one day. You may cry, scream or simply enjoy it.
+- **Even breath.** When there is no room to process, slow your breath and make the in and out equal. Do not use this to push the feeling down. Feel it later.
+- **Clear it between meetings.** Shake for 2 to 3 minutes, yawn 10 to 20 times, or cry for a minute or two.
+- **Audit your adrenaline.** Notice when you run on it. Name the trigger. Find a way to do the task without it.
+- **List what drains you.** After each task, ask if it gave or took energy, for one week. Find a way to enjoy each drain, or hand it off.
+- **Rest by type.** Sleep and food come first. Then ask if you are emotionally, socially, mentally or sensorily worn out, and match the rest to it. If you are still drained after, it was not rest.
+- **Stay when rest feels good.** Do not rush back when you start to feel fine.
+
+Sources: [Why You Never Have Enough Time ↗](https://www.artofaccomplishment.com/podcast/why-you-never-have-enough-time), [Overwhelm ↗](https://www.artofaccomplishment.com/podcast/what-can-i-do-about-overwhelm-emotion-series-10), [Empathy ↗](https://www.artofaccomplishment.com/podcast/empathy-connection-course-series-4), [The Burnout Cycle ↗](https://www.artofaccomplishment.com/podcast/the-burnout-cycle), [Energy management ↗](https://blog.artofaccomplishment.com/p/energy-management-not-time-management), [Rest and Recovery ↗](https://www.artofaccomplishment.com/podcast/the-art-of-rest-and-recovery).
+
+## Uncertainty and confusion
+
+- **The next obvious step.** Ask what the next most obvious thing is, and do it. Ask again.
+- **Ask two questions.** What is your confusion protecting you from? What are you pretending not to know?
+- **Rest in not knowing.** When you cannot rebuild your story, stop forcing an answer for a while.
+- **Practise wonder.** Ask what you are in wonder about right now, about 10 times a day.
+- **Open up the yes or no.** Replace "should I stay?" with what would have to happen for you to feel good staying.
+- **Test it over 10 years.** Would you be happy with this in 10 years, whatever the result?
+
+Sources: [How Can I Make Better Decisions ↗](https://www.artofaccomplishment.com/podcast/how-can-i-make-better-decisions-decisions-series-1), [21 questions ↗](https://blog.artofaccomplishment.com/p/21-highly-psychoactive-questions), [How to Get Unstuck ↗](https://www.artofaccomplishment.com/podcast/how-to-get-unstuck), [Wonder ↗](https://www.artofaccomplishment.com/podcast/wonder-connection-course-series-2), [Every time you chase certainty ↗](https://blog.artofaccomplishment.com/p/every-time-you-chase-certainty-you).
+
+## Numbness and low mood
+
+Depression is a medical condition. The hosts say treatment can help and do not argue against it. Treat these as additions to care, not a swap for it.
+
+Hudson maps low mood on four levels: harsh self-talk, held-in anger or sadness, a body always on watch, and being cut off from people.
+
+- **Attention in the body.** Keep 10% of your attention in your body as much as you can for two to three weeks. He warns it can be intense.
+- **Feel the numbness itself.** Brett's sequence: treat distraction as a fear signal, feel the numbness, wait for anxiety, then name the fears.
+- **Debate the top 20.** Write your 20 most persistent harsh thoughts and argue with them.
+- **Change "should" to "want".** Note each "should" and try "want".
+- **Simple pleasure, no guilt.** Rest in your breath, your walk, or your voice in your chest.
+- **Build a social life.** He treats this as part of the work.
+
+Sources: [Exploring Depression ↗](https://www.artofaccomplishment.com/podcast/exploring-depression-in-the-head-heart-and-gut), [Expressing Anger At ↗](https://www.artofaccomplishment.com/podcast/expressing-anger-at-playing-with-depression-alone-but-not-lonely-following-connection-desire-and-patience-through-deep-work), [How to Stop Seeking Approval ↗](https://www.artofaccomplishment.com/podcast/how-to-stop-seeking-approval), [Welcoming Fear in Extreme Sports ↗](https://www.artofaccomplishment.com/podcast/welcoming-fear-in-extreme-sports-business-and-relationships-3).
+
+## Loneliness and boredom
+
+He has little on these by name. This is the nearest material.
+
+- **Tell alone from lonely.** Aloneness is the fact that no one can share your whole experience. Loneliness is a feeling you can meet.
+- **Ask "what are you?"** With a partner, ask it again and again. Watch each answer run out.
+- **Ask for help before you have it handled.** Then let people help without checking their work.
+- **Do nothing on purpose.** Use the five minutes every two hours. Do not fill the gap.
+- **Stay in the discomfort.** For a week or two, do nothing you do not enjoy. When it gets uneasy, stay.
+
+Sources: [Expressing Anger At ↗](https://www.artofaccomplishment.com/podcast/expressing-anger-at-playing-with-depression-alone-but-not-lonely-following-connection-desire-and-patience-through-deep-work), [Authenticity Over Improvement ↗](https://www.artofaccomplishment.com/podcast/authenticity-over-improvement-master-class-series-7-3), [Self-Reliance Is a Trap ↗](https://www.artofaccomplishment.com/podcast/self-reliance-is-a-trap), [How Experiments Will Change Your Life ↗](https://www.artofaccomplishment.com/podcast/how-experiments-will-change-your-life).
+
+## Joy and pleasure
+
+People avoid these too. He says feeling good can scare us.
+
+- **Where is the pleasure now?** Ask it during a breath, the dishes or a walk. He did this for several weeks, and suggests about 10 minutes a day.
+- **Five minutes of breath.** Enjoy your breath for five minutes straight.
+- **10% more.** Ask how you could enjoy this 10% more. Set a reminder so you keep asking.
+- **Gratitude with a partner.** Sit facing someone for 7 to 10 minutes a day. Take turns. Feel it first, then say it in less than a sentence. The other person savours it. Later, try gratitude for something hard.
+- **Notice what stops it.** Practise pleasure, feel what comes up to block it, and return.
+- **Do not chase.** If there is hunger in the pleasure, it may be pulling you away from another feeling. Stay with that one.
+
+Sources: [Pleasure ↗](https://www.artofaccomplishment.com/podcast/pleasure), [Joy ↗](https://www.artofaccomplishment.com/podcast/joy), [Gratitude ↗](https://www.artofaccomplishment.com/podcast/gratitude), [Emotional Fluidity ↗](https://www.artofaccomplishment.com/podcast/emotional-fluidity), [Mastering your emotions, Modern Wisdom transcript ↗](https://rosetta.to/u/chriswillx/the-art-of-mastering-your-emotions-joe-hudson).
+
+## Being loved and seen
+
+- **Thank you, three seconds.** When praised, do not deflect. Breathe, say thanks and let it land for three seconds.
+- **Find what you wired to love.** List what you have tied to love, such as criticism, duty or anger. Do Emotional Inquiry on it daily for two weeks.
+- **Notice care.** Each day, find how someone cared for you and let it in.
+- **Open a little.** Several times a day, ask how to open your heart a bit more.
+- **Be seen in small ways.** Do it daily. Look for the evidence you discount.
+- **Love your younger self.** Imagine yourself at about three. Ask how you want to be loved. Give that.
+
+Sources: [The hungry ghost leader ↗](https://blog.artofaccomplishment.com/p/the-hungry-ghost-leader), [Stop Pushing Love Away ↗](https://www.artofaccomplishment.com/podcast/stop-pushing-love-away-how-to-end-self-sabotage-and-let-love-in), [The Fear of Being Seen ↗](https://www.artofaccomplishment.com/podcast/the-fear-of-being-seen-overcoming-shame-invisibility-and-social-anxiety), [How Love Gets Confused ↗](https://www.artofaccomplishment.com/podcast/how-love-gets-confused).
+
+## Wanting and jealousy
+
+- **Sit with the want.** Feel the wanting before you attach it to a thing or plan how to get it. He calls this the key step.
+- **Climb the want.** Write what you want. Ask what need is behind it. Repeat.
+- **Say it four ways.** Say a goal as "I should", "I want", "I will" and "I can't wait". Notice the energy in each.
+- **Use jealousy as a pointer.** Ask if you can let yourself want it completely.
+
+Sources: [Why You Feel Guilty for Wanting Things ↗](https://www.artofaccomplishment.com/podcast/why-you-feel-guilty-for-wanting-things), [How to Set Goals ↗](https://www.artofaccomplishment.com/podcast/how-to-set-goals), [Want Over Should ↗](https://www.artofaccomplishment.com/podcast/want-over-should-master-class-series-6-3), [Making Great Emotional Decisions ↗](https://www.artofaccomplishment.com/podcast/making-great-emotional-decisions-decisions-series-2).
+
+## Success
+
+- **See full failure, then full success.** Picture each slowly, through to how people respond. Feel each. Repeat 2 to 10 times.
+- **Breathe to enjoy.** In any arousal, breathe to enjoy it, not to calm it. Stay longer.
+- **Name your idols.** List three people you admire. Name what you admire most. Ask how you keep it out of your picture of yourself.
+
+Sources: [The Hidden Mechanics of Self-Sabotage ↗](https://www.artofaccomplishment.com/podcast/the-hidden-mechanics-of-self-sabotage), [Every crush or idol ↗](https://blog.artofaccomplishment.com/p/every-crush-or-idol-youve-had-is).
+
+## Every other feeling
+
+No list of feelings is ever complete. For this post, a checklist of 63 more groups of feelings was built from four published lists of emotions, and his work was searched for each. For any feeling with no section here, use the [core method](#the-core-method).
+
+**He discusses these, but gives no specific practice:** embarrassment, insecurity, abandonment, not belonging, intimacy, contempt, despair, meaninglessness, restlessness, apathy, panic, pride, peace.
+
+**The search found nothing specific on these:** disgust, betrayal, nostalgia, surprise, feeling insignificant, feeling like a burden, feeling torn, cynicism, relief, gloating, beauty.
+
+That is a limit of the search. It does not show that he has never spoken about them.
+
+## Problems these feelings cause
+
+**The voice in your head.**
+
+- **The 5x5x5.** For five days, write out the voice for 5 minutes a day. For the next five days, try 5 different replies each day. Examples: ask it to treat you with more respect, or tell it you see it is scared and you are here. Then look in your journal for where it was false or contradicted itself.
+- **Play with it.** Sing its lines. Give it a silly name. Hold it like a child in a tantrum.
+- **The boss test.** Say each harsh line out loud. Then picture a boss talking to you that way.
+
+**Procrastination.**
+
+- **The Double Blind.** For 7 days, each time you put off a task, name what you feel now and what you fear you would feel if you did it. Do Emotional Inquiry on both. The published steps jump from 2 to 4, so one may be missing.
+- **Enjoy first.** For a week, sit down with two aims: enjoy it first, finish it second. If you are not enjoying it, stop and find a way that you do.
+- **Ask one question.** How much would you procrastinate if you could not shame yourself?
+- **Three things.** Keep three items that matter. Ask what would make the list easier or not needed.
+
+**Decisions.**
+
+- **Head, heart, gut.** Say what each one says about the choice.
+- **Fortune or peace.** Imagine having the outcome and being miserable. Then imagine losing all of it and being joyful. See which you would choose.
+- **Know what you know.** What do you know? What do you not know? What do you need to know next?
+- **Write 5 to 7 principles.** Use them to filter most choices. Each year, check which ones really guided you. This one comes from a summary of a 2026 interview.
+
+**Hard talks and boundaries.**
+
+- **Ask how and what, not why.** "Why" sounds like a charge.
+- **Say what you held back.** Maybe one thing a day.
+- **Book the time.** Keep a monthly block, about three hours. Ask which talks you are not having. Then call those people.
+- **State what you will do.** A boundary is not a demand. Say that if the yelling goes on you will leave, and say when you will check back.
+- **Test it first.** Picture saying it. A good boundary keeps your heart open whatever they answer.
+- **Name your agenda.** Say "I notice I am trying to fix you", and ask how that is for them.
+
+**Teams.**
+
+- **Five-star meetings.** Rate each meeting from 1 to 5 by the energy it gives. Aim for a week of only five-star meetings within a month or two.
+- **Ask the room.** What are we not talking about? What are you scared to say?
+- **Ask what doubles it.** What would double our results? What would double our enjoyment?
+- **Open with thanks.** Start meetings with a round of gratitude.
+- **Blame the cause, not the person.** Ask what made it not get done, what changes, and how the team can help.
+
+Sources: [Procrastination Toolkit ↗](https://www.artofaccomplishment.com/resources/procrastination-toolkit), [Overcoming Procrastination ↗](https://www.artofaccomplishment.com/podcast/overcoming-procrastination-coaching-session-breakdown), [How to End Procrastination Now ↗](https://www.artofaccomplishment.com/podcast/how-to-end-procrastination-now), [Stop making to-do lists you hate ↗](https://blog.artofaccomplishment.com/p/stop-making-to-do-lists-you-hate), [Logan Bartlett interview ↗](https://www.youtube.com/watch?v=Ei05L8yc-J0), [Introduction to VIEW ↗](https://www.artofaccomplishment.com/podcast/introduction-to-view), [Triggered ↗](https://www.artofaccomplishment.com/podcast/triggered-relationships-series-2), [How to Delegate ↗](https://www.artofaccomplishment.com/podcast/how-to-delegate-without-micromanaging), [Boundaries ↗](https://www.artofaccomplishment.com/podcast/whats-so-scary-about-boundaries-3), [3 Metrics ↗](https://www.artofaccomplishment.com/podcast/3-metrics-tell-the-health-of-every-relationship), [Lenny's Newsletter ↗](https://www.lennysnewsletter.com/p/embracing-your-emotions-joe-hudson), [Great Decisions notes by a course member ↗](https://acceptable.substack.com/p/updated-joe-hudsons-art-of-accomplishment), [Shortform summary of Modern Wisdom #1171 ↗](https://www.shortform.com/podcast/episode/modern-wisdom-2026-11-02-episode-summary-how-to-make-better-decisions-with-way-less-uncertainty-joe-hudson-1171).
+
+## Where his advice differs
+
+He teaches by experiment, so his numbers shift. Treat a dose as a place to start.
+
+- **Moving big feelings alone.** He says both to practise anger alone first and not to do this alone. A careful reading is to start small alone, and to do deep release with a grounded person.
+- **Shame.** One episode says to love the shame itself. Others say to feel what is under it. Try each.
+- **Naming feelings.** He suggests naming your emotion 5 to 10 times a day. He also warns that a label can become a way not to feel. Name it, then drop into the body.
+- **Why questions.** He says to avoid "why", and sometimes asks it himself.
+- **How much.** Emotional Inquiry runs from daily to three times a day. Gratitude is 7 or 10 minutes. Replies to the inner voice change daily, weekly or five times a day.
+
+## What the evidence says
+
+Most of this rests on Hudson's coaching and on reports from students. A web search found no trial or peer-reviewed test of his method. One student of his Master Class, [Andrew Conner ↗](https://andrewconner.com/the-art-of-accomplishment-master-class-review/), later added that a sincere testimonial is not evidence, and that the gains had mellowed.
+
+**Venting is where the research pushes back.** A [2024 review of 154 studies ↗](https://news.osu.edu/breathe-dont-vent-turning-down-the-heat-is-key-to-managing-anger/) with about 10,000 people found that activities which lower arousal reduce anger, such as slow breathing and meditation. Activities that raise arousal did not help overall. An [earlier experiment ↗](https://public.websites.umich.edu/~bbushman/PSPB02.pdf) found that venting while thinking about the offender raised anger and aggression.
+
+Those studies test anger reduction, and not Hudson's protocol with its stated rules. Still, if your anger grows after you move it, or you act on it more, stop and try the calming route. His own test is the right one: you should end with relief and clarity.
+
+**Writing has modest support.** A [meta-analysis of 146 randomised studies ↗](https://www.gwern.net/doc/psychology/2006-frattaroli.pdf) found a small positive effect from writing about hard experiences.
+
+## What this post leaves out
+
+This is a selection, and a large one is still partial. More than 100 of his pages were read closely. About 190 more episodes were only scanned by keyword. The paid courses were not read, and the guided audio was not heard. Episode text came from machine transcripts, so steps here are paraphrased and may lose some detail.
+
+To go further, start with his [free experiments ↗](https://www.artofaccomplishment.com/get-your-experiment) and [podcast ↗](https://www.artofaccomplishment.com/podcast). This post is not connected with Art of Accomplishment.
