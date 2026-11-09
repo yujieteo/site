@@ -252,6 +252,7 @@ function renderMap(groups) {
     const [x, y0] = p(lon, lat); const y = y0 - 16, wide = t.length * 6;
     if (x < 8 || x + wide > width - 8 || y < 12 || y > height - 8) return "";
     if (taken.some(b => x < b[0] + b[2] + 6 && b[0] < x + wide + 6 && Math.abs(y - b[1]) < 16)) return "";
+    if (pins.some(m => m.x > x - 16 && m.x < x + wide + 16 && Math.abs(m.y - (y - 4)) < 20)) return "";
     taken.push([x, y, wide]);
     return `<text x="${x.toFixed(0)}" y="${y.toFixed(0)}">${esc(t)}</text>`;
   }).join("");
