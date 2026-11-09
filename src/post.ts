@@ -105,7 +105,7 @@ export function figures(source: string, slug: string, dir: string): string {
     const src = a.get("src") ?? "";
     if (kind === "schematic" && !/^[\w-]+\.svg$/.test(src)) throw new Error(`${slug}: figure ${index} needs src=NAME.svg`);
     const svg = kind === "schematic" ? withTall(`${dir}/${slug}/${src}`) : "";
-    out.push(figureHtml(kind, `${slug}-${index}`, alt, caption, svg, a.get("wide") === "true"));
+    out.push(figureHtml(kind, `${slug}-${index}`, alt, caption, svg, a.get("wide") === "true", a.get("view") ?? ""));
   }
   return out.join("\n");
 }

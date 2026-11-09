@@ -87,3 +87,35 @@ main.page svg.tall { display: none; }
 @media (prefers-reduced-motion: reduce) { .tip { transform: none; } }
 input[type=search] { font: inherit; font-size: var(--small); padding: 6px 8px; border: 1px solid var(--gray3); border-radius: var(--radius); background: var(--gray1); color: var(--ink); width: 220px; }
 @media (max-width: 560px) { .control input[type=search] { width: 100%; font-size: 16px; } }
+/* Food post. Rows carry the data on a phone. Controls reach the 44 px tap size on touch, and search text stays at 16 px so iOS does not zoom. */
+.food-tools { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+@media (pointer: coarse), (max-width: 560px) { .food-tools .button, .food-tools ~ .controls .button { min-height: var(--tap); padding: 8px 14px; } }
+.food-dot { display: inline-block; width: 9px; height: 9px; margin-right: 6px; border-radius: 50%; }
+.food-key { display: flex; flex-wrap: wrap; gap: 4px 16px; margin: 0 0 8px; font-size: var(--small); color: var(--muted); }
+.food-rows { list-style: none; margin: 0; padding: 0; }
+.food-rows li { border-bottom: 1px solid var(--line); }
+.food-rows li:last-child { border-bottom: 0; }
+.food-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 12px; align-items: start; padding: 12px 0; min-height: var(--tap); text-decoration: none; transition: transform var(--press-duration) var(--ease-out); }
+.food-row:active { transform: scale(var(--press)); }
+.food-row:focus-visible { outline: 2px solid transparent; box-shadow: var(--focus-ring); }
+.food-best { grid-template-columns: 2em minmax(0, 1fr) auto; }
+.food-score { font-size: 1.125rem; font-weight: 550; line-height: 1.35; font-variant-numeric: tabular-nums; }
+.food-body { display: block; min-width: 0; }
+.food-name { font-weight: 500; }
+.food-sub { display: block; font-size: var(--small); color: var(--muted); }
+.food-price { font-weight: 500; font-variant-numeric: tabular-nums; }
+.food-end { text-align: right; }
+.food-end .food-price { display: block; }
+.food-tag { display: inline-block; margin-left: 6px; padding: 0 6px; font-size: 0.75rem; line-height: 1.5; border-radius: 4px; background: var(--gray3); }
+.food-track { display: block; height: 4px; border-radius: 2px; background: var(--gray3); }
+.food-track span { display: block; height: 100%; border-radius: 2px; }
+.food-best .food-track { grid-column: 2 / -1; margin-top: 8px; }
+.food-count { display: grid; grid-template-columns: 6.5em minmax(0, 1fr) 2em; column-gap: 8px; align-items: center; padding: 6px 0; font-size: var(--small); font-variant-numeric: tabular-nums; text-align: left; }
+.food-count > :last-child { text-align: right; }
+.food-pick { margin: 8px 0; min-height: 1.5em; font-size: var(--small); color: var(--muted); }
+.food-pick strong { color: var(--ink); font-weight: 500; }
+.food-label { display: block; margin-bottom: 6px; font-size: var(--small); color: var(--muted); }
+input.food-search { display: block; width: 100%; min-height: var(--tap); margin-bottom: 12px; padding: 8px 12px; font: 16px/1.5 var(--sans); }
+input.food-search:focus-visible { outline: 2px solid transparent; box-shadow: var(--focus-ring); }
+.chart text.food-halo { paint-order: stroke; stroke: var(--chip); stroke-width: 4px; font-weight: 500; }
+figure[data-view=map] svg.chart { cursor: pointer; touch-action: manipulation; }
