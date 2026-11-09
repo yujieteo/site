@@ -73,6 +73,7 @@ main .meta { font-size: var(--small); margin-bottom: 20px; font-variant-numeric:
 .missed span { display: block; }
 .missed .muted { line-height: var(--leading); }
 @media (min-width: 640px) { header.wrap { padding-top: 96px; } }
+@media (pointer: coarse) { .keys { display: none; } }
 </style>
 <header class="wrap"><a class="name" href="/">Yu Jie Teo</a><span class="tagline">Mechanical Engineer</span></header>
 <main class="wrap">
@@ -81,7 +82,7 @@ main .meta { font-size: var(--small); margin-bottom: 20px; font-variant-numeric:
   <div class="track" id="track" role="img" aria-label="Progress"></div>
   <section id="view" aria-live="polite"></section>
 </main>
-<footer class="wrap"><p>Keys 1, 2 and 3 answer. Enter continues.</p><p>These questions are a derivative work of Adeel A. Khan, <a href="https://www.preschema.com/lecture-notes/2022-stacks/">A Modern Introduction to Algebraic Stacks</a> (lecture notes, 2022–23). An AI model wrote them, so some can be wrong. After a miss, the answer gives the page in the notes.</p></footer>
+<footer class="wrap"><p class="keys">Keys 1, 2 and 3 answer. Enter continues.</p><p>These questions are a derivative work of Adeel A. Khan, <a href="https://www.preschema.com/lecture-notes/2022-stacks/">A Modern Introduction to Algebraic Stacks</a> (lecture notes, 2022–23). An AI model wrote them, so some can be wrong. After a miss, the answer gives the page in the notes.</p></footer>
 
 <script>
 /* Full pass: every question once, in order. A correct answer moves on at once. A miss shows why and returns until it is right. */
