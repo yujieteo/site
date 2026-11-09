@@ -106,7 +106,8 @@ function wireMap(figure: Element): void {
   if (!frame || !note || !areaBox || !typeBox || !back) return;
   let width = plotWidth(figure);
   const list = (): Marker[] => markers(width, areaBox.value, typeBox.value);
-  const draw = (): void => {
+  const draw = (zoom = false): void => {
+    figure.toggleAttribute("data-zoom", zoom);
     swapChart(figure, mapSvg(width, areaBox.value, typeBox.value, true));
     note.textContent = areaBox.value === "all" ? MAP_HINT : ZOOM_HINT;
     back.hidden = areaBox.value === "all";
@@ -115,11 +116,11 @@ function wireMap(figure: Element): void {
     for (const held of figure.querySelectorAll(`g[${name}]`)) held.removeAttribute(name);
     if (index >= 0) figure.querySelector(`g[data-i="${index}"]`)?.setAttribute(name, "");
   };
-  const activate = (index: number): void => {
+  const activate = (index: number, pointer: boolean): void => {
     const marker = list()[index];
     if (marker && marker.area !== "") {
       areaBox.value = marker.area;
-      draw();
+      draw(pointer);
       return;
     }
     mark("data-on", marker ? index : -1);
@@ -132,25 +133,25 @@ function wireMap(figure: Element): void {
     const box = svg.getBoundingClientRect();
     return nearestIndex(list(), event.clientX - box.left, event.clientY - box.top);
   };
-  areaBox.addEventListener("change", draw);
-  typeBox.addEventListener("change", draw);
-  back.addEventListener("click", () => {
+  areaBox.addEventListener("change", () => draw());
+  typeBox.addEventListener("change", () => draw());
+  back.addEventListener("click", (event) => {
     areaBox.value = "all";
-    draw();
+    draw(event.detail > 0);
   });
   frame.addEventListener("pointerdown", (event) => {
     if (event instanceof PointerEvent) mark("data-pressed", indexAt(event));
   });
   for (const end of ["pointerup", "pointercancel", "pointerleave"]) frame.addEventListener(end, () => mark("data-pressed", -1));
   frame.addEventListener("click", (event) => {
-    if (event instanceof MouseEvent && event.detail > 0) activate(indexAt(event));
+    if (event instanceof MouseEvent && event.detail > 0) activate(indexAt(event), true);
   });
   frame.addEventListener("keydown", (event) => {
     if (!(event instanceof KeyboardEvent) || (event.key !== "Enter" && event.key !== " ")) return;
     const held = event.target instanceof Element ? event.target.closest("g[data-i]") : null;
     if (!held) return;
     event.preventDefault();
-    activate(Number(held.getAttribute("data-i")));
+    activate(Number(held.getAttribute("data-i")), false);
   });
   watch(figure, (next) => {
     width = next;
