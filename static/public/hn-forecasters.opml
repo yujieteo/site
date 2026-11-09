@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="2.0">
+<head><title>Hacker News forecasters</title></head>
+<body>
+<outline text="Comments">
+<outline type="rss" text="stcredzero on Hacker News" xmlUrl="https://hnrss.org/threads?id=stcredzero" htmlUrl="https://news.ycombinator.com/user?id=stcredzero"/>
+<outline type="rss" text="wmf on Hacker News" xmlUrl="https://hnrss.org/threads?id=wmf" htmlUrl="https://news.ycombinator.com/user?id=wmf"/>
+<outline type="rss" text="gojomo on Hacker News" xmlUrl="https://hnrss.org/threads?id=gojomo" htmlUrl="https://news.ycombinator.com/user?id=gojomo"/>
+<outline type="rss" text="adventured on Hacker News" xmlUrl="https://hnrss.org/threads?id=adventured" htmlUrl="https://news.ycombinator.com/user?id=adventured"/>
+<outline type="rss" text="jonnathanson on Hacker News" xmlUrl="https://hnrss.org/threads?id=jonnathanson" htmlUrl="https://news.ycombinator.com/user?id=jonnathanson"/>
+<outline type="rss" text="earl on Hacker News" xmlUrl="https://hnrss.org/threads?id=earl" htmlUrl="https://news.ycombinator.com/user?id=earl"/>
+<outline type="rss" text="Zigurd on Hacker News" xmlUrl="https://hnrss.org/threads?id=Zigurd" htmlUrl="https://news.ycombinator.com/user?id=Zigurd"/>
+<outline type="rss" text="gbog on Hacker News" xmlUrl="https://hnrss.org/threads?id=gbog" htmlUrl="https://news.ycombinator.com/user?id=gbog"/>
+<outline type="rss" text="nostrademons on Hacker News" xmlUrl="https://hnrss.org/threads?id=nostrademons" htmlUrl="https://news.ycombinator.com/user?id=nostrademons"/>
+<outline type="rss" text="potatolicious on Hacker News" xmlUrl="https://hnrss.org/threads?id=potatolicious" htmlUrl="https://news.ycombinator.com/user?id=potatolicious"/>
+<outline type="rss" text="dasil003 on Hacker News" xmlUrl="https://hnrss.org/threads?id=dasil003" htmlUrl="https://news.ycombinator.com/user?id=dasil003"/>
+<outline type="rss" text="snowwrestler on Hacker News" xmlUrl="https://hnrss.org/threads?id=snowwrestler" htmlUrl="https://news.ycombinator.com/user?id=snowwrestler"/>
+<outline type="rss" text="nl on Hacker News" xmlUrl="https://hnrss.org/threads?id=nl" htmlUrl="https://news.ycombinator.com/user?id=nl"/>
+<outline type="rss" text="jsjenkins168 on Hacker News" xmlUrl="https://hnrss.org/threads?id=jsjenkins168" htmlUrl="https://news.ycombinator.com/user?id=jsjenkins168"/>
+<outline type="rss" text="Samuel_Michon on Hacker News" xmlUrl="https://hnrss.org/threads?id=Samuel_Michon" htmlUrl="https://news.ycombinator.com/user?id=Samuel_Michon"/>
+<outline type="rss" text="bane on Hacker News" xmlUrl="https://hnrss.org/threads?id=bane" htmlUrl="https://news.ycombinator.com/user?id=bane"/>
+<outline type="rss" text="bryanlarsen on Hacker News" xmlUrl="https://hnrss.org/threads?id=bryanlarsen" htmlUrl="https://news.ycombinator.com/user?id=bryanlarsen"/>
+<outline type="rss" text="SwellJoe on Hacker News" xmlUrl="https://hnrss.org/threads?id=SwellJoe" htmlUrl="https://news.ycombinator.com/user?id=SwellJoe"/>
+<outline type="rss" text="tptacek on Hacker News" xmlUrl="https://hnrss.org/threads?id=tptacek" htmlUrl="https://news.ycombinator.com/user?id=tptacek"/>
+<outline type="rss" text="btilly on Hacker News" xmlUrl="https://hnrss.org/threads?id=btilly" htmlUrl="https://news.ycombinator.com/user?id=btilly"/>
+</outline>
+<outline text="Blogs">
+<outline type="rss" text="gojomo blog" xmlUrl="https://memesteading.wordpress.com/feed/"/>
+<outline type="rss" text="bryanlarsen blog" xmlUrl="https://bryan.larsen.st/feed.xml"/>
+<outline type="rss" text="SwellJoe blog" xmlUrl="https://swelljoe.com/index.xml"/>
+</outline>
+</body>
+</opml>
