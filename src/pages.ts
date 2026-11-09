@@ -41,7 +41,7 @@ function postItem(post: Post): string {
 }
 
 export function homePage(posts: Post[]): string {
-  const items: string[] = [`<li><a href="/khan-stacks-drill/"><h3>Algebraic stacks drill</h3><span class="kind">2026-11-09</span><p>1,347 questions on A Modern Introduction to Algebraic Stacks by Adeel A. Khan, with no prerequisites.</p></a></li>`, `<li><a href="/tampines-errands/"><h3>Tampines errands</h3><span class="kind">2026-11-09</span><p>Service shops in Tampines, with phone numbers, a map and the prices I could find.</p></a></li>`];
+  const items: string[] = [`<li><a href="/khan-stacks-free-recall/"><h3>Algebraic stacks free recall</h3><span class="kind">2026-11-09</span><p>57 cues on A Modern Introduction to Algebraic Stacks by Adeel A. Khan. Write from memory, then mark your answer against the notes.</p></a></li>`, `<li><a href="/khan-stacks-drill/"><h3>Algebraic stacks drill</h3><span class="kind">2026-11-09</span><p>1,347 questions on A Modern Introduction to Algebraic Stacks by Adeel A. Khan, with no prerequisites.</p></a></li>`, `<li><a href="/tampines-errands/"><h3>Tampines errands</h3><span class="kind">2026-11-09</span><p>Service shops in Tampines, with phone numbers, a map and the prices I could find.</p></a></li>`];
   for (const post of posts) items.push(postItem(post));
   const list = items.length > 0 ? `<ol class="featured">${items.join("\n")}</ol>` : `<p class="muted">No posts yet.</p>`;
   const main = `<main class="wrap"><section id="posts"><h2>Posts</h2>${list}</section></main>`;
