@@ -35,11 +35,12 @@ main.page figcaption { margin: 16px 0 0; text-align: center; font-size: 0.75rem;
 .controls { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px; margin-top: 16px; font-size: var(--small); }
 .controls input[type=range] { width: 200px; accent-color: var(--ink); }
 .controls output { font-variant-numeric: tabular-nums; color: var(--muted); }
-@keyframes spin { to { transform: rotate(360deg); } }
 .fn { position: relative; }
 .fn-ref { margin: 0 1px; padding: 0 5px; min-width: 20px; height: 20px; vertical-align: super; font: 500 0.6875rem/1 var(--sans); color: var(--ink);
   background: var(--gray3); border: 1px solid var(--gray7); border-radius: 10px; cursor: pointer; }
 .fn-ref:focus-visible { outline: 2px solid transparent; box-shadow: var(--focus-ring); }
+/* A keyboard action has no animation: the note opens at once under keyboard focus. */
+.fn:has(.fn-ref:focus-visible) .fn-note { transition: none; }
 .fn-note { position: absolute; left: 50%; bottom: calc(100% + 8px); z-index: 2; width: max-content; max-width: min(280px, 80vw); padding: 10px 12px; transform: translateX(-50%) translateY(4px);
   background: var(--card); color: var(--ink); font-size: var(--small); line-height: var(--leading); border-radius: var(--radius); box-shadow: var(--shadow), inset 0 0 0 1px var(--card-edge);
   display: none; opacity: 0; transition: opacity 150ms var(--ease-out), transform 150ms var(--ease-out), display 150ms allow-discrete; }
@@ -58,8 +59,6 @@ figure[data-steps] svg [data-shown] { opacity: 0.5; }
 figure[data-steps] svg [data-current] { opacity: 1; }
 .step-label { margin: 12px 0 0; min-height: 1.5em; text-align: center; font-size: var(--small); color: var(--muted); }
 main.page figure[data-wide] { position: relative; left: 50%; width: min(960px, calc(100vw - 2 * var(--gutter))); translate: -50% 0; }
-  background: var(--card); color: var(--ink); font-size: 0.8125rem; line-height: var(--leading); border-radius: var(--radius); box-shadow: var(--shadow), inset 0 0 0 1px var(--card-edge);
-  opacity: 0; visibility: hidden; transform: scale(0.97); transition: opacity 125ms ease-out, transform 125ms ease-out, visibility 125ms; }
 main.page blockquote { margin: 2rem 0; padding: 4px 0 4px 20px; border-left: 3px solid var(--series-2); font-size: 1.125rem; line-height: 1.5; font-weight: 500; }
 main.page blockquote p { margin: 0; }
 main.page table { width: 100%; margin: 2rem 0; border-collapse: collapse; font-size: var(--small); font-variant-numeric: tabular-nums; }
@@ -68,7 +67,6 @@ main.page th, main.page td { padding: 8px 10px; text-align: left; border-bottom:
 main.page th { color: var(--muted); font-weight: 550; }
 main.page math { font-size: 1.1em; }
 main.page math[display=block] { overflow-x: auto; overflow-y: hidden; }
-main.page article > h3 { font-weight: 550; margin: 32px 0 12px; }
 .note { margin: 12px 0 0; font-size: var(--small); color: var(--muted); text-align: center; }
 select { font: inherit; font-size: var(--small); padding: 6px 8px; border: 1px solid var(--gray3); border-radius: var(--radius); background: var(--gray1); color: var(--ink); max-width: 220px; }
 .control { display: inline-flex; align-items: center; gap: 12px; }
@@ -81,12 +79,15 @@ main.page svg.tall { display: none; }
 .chart text { font: 12px/1 var(--sans); fill: var(--muted); font-variant-numeric: tabular-nums; }
 .tip { position: absolute; left: 0; top: 0; z-index: 3; width: max-content; max-width: min(260px, 80vw); padding: 6px 10px; pointer-events: none;
   background: var(--card); color: var(--ink); font-size: 0.8125rem; line-height: var(--leading); border-radius: var(--radius); box-shadow: var(--shadow), inset 0 0 0 1px var(--card-edge);
-  opacity: 0; visibility: hidden; transform: scale(0.97); transition: opacity 125ms ease-out, transform 125ms ease-out, visibility 125ms; }
+  opacity: 0; visibility: hidden; transform: scale(0.97); transition: opacity 125ms var(--ease-out), transform 125ms var(--ease-out), visibility 125ms; }
 .tip[data-open] { opacity: 1; visibility: visible; transform: none; }
 .tip[data-instant] { transition-duration: 0ms; }
 @media (prefers-reduced-motion: reduce) { .tip { transform: none; } }
 input[type=search] { font: inherit; font-size: var(--small); padding: 6px 8px; border: 1px solid var(--gray3); border-radius: var(--radius); background: var(--gray1); color: var(--ink); width: 220px; }
 @media (max-width: 560px) { .control input[type=search] { width: 100%; font-size: 16px; } }
+/* Touch: form text is 16 px so iOS does not zoom the page on focus, and the fields reach the 44 px tap size. */
+@media (pointer: coarse) { select, input[type=search] { font-size: 16px; min-height: var(--tap); } }
+select:focus-visible, input[type=search]:focus-visible { outline: 2px solid transparent; box-shadow: var(--focus-ring); }
 /* Food post. Rows carry the data on a phone. Controls reach the 44 px tap size on touch, and form text stays at 16 px so iOS does not zoom. */
 .food-tools { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
 @media (pointer: coarse), (max-width: 560px) { .food-tools .button, figure[data-kind=food] .controls .button, .food-open .button { min-height: var(--tap); padding: 8px 14px; } }
@@ -98,7 +99,6 @@ input[type=search] { font: inherit; font-size: var(--small); padding: 6px 8px; b
 .food-select { display: grid; gap: 6px; margin-bottom: 12px; font-size: var(--small); color: var(--muted); }
 figure[data-kind=food] select { width: 100%; max-width: none; min-height: var(--tap); padding: 8px; font-size: 16px; color: var(--ink); }
 .food-pair { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; }
-figure[data-kind=food] select:focus-visible { outline: 2px solid transparent; box-shadow: var(--focus-ring); }
 .food-mapbar { margin-bottom: 8px; }
 .food-mapbar .button { min-height: var(--tap); }
 .food-rows { list-style: none; margin: 0; padding: 0; }
@@ -138,9 +138,10 @@ summary.food-row::-webkit-details-marker { display: none; }
 .food-picks li { min-height: var(--tap); padding: 8px 0; border-bottom: 1px solid var(--line); overflow-wrap: anywhere; }
 .food-label { display: block; margin-bottom: 6px; font-size: var(--small); color: var(--muted); }
 input.food-search { display: block; width: 100%; min-height: var(--tap); margin-bottom: 12px; padding: 8px 12px; font: 16px/1.5 var(--sans); }
-input.food-search:focus-visible { outline: 2px solid transparent; box-shadow: var(--focus-ring); }
 .chart text.food-halo { paint-order: stroke; stroke: var(--chip); stroke-width: 4px; font-weight: 500; fill: var(--ink); }
-figure[data-view=map] svg.chart { cursor: pointer; touch-action: manipulation; transition: opacity 150ms var(--ease-out); @starting-style { opacity: 0; } }
+/* The map fades only on a pointer zoom. The first draw, a resize, a filter and a keyboard zoom swap at once. */
+figure[data-view=map] svg.chart { cursor: pointer; touch-action: manipulation; }
+figure[data-view=map][data-zoom] svg.chart { transition: opacity 150ms var(--ease-out); @starting-style { opacity: 0; } }
 figure[data-view=map] g[data-i] { outline: none; transform-box: fill-box; transform-origin: center; transition: transform var(--press-duration) var(--ease-out), opacity var(--press-duration) var(--ease-out); }
 figure[data-view=map] g[data-pressed] { transform: scale(var(--press)); opacity: 0.7; }
 .food-ring { display: none; }

@@ -45,6 +45,8 @@ button, [role="button"], .tap { position: relative; }
 button::after, [role="button"]::after, .tap::after { content: ""; position: absolute; left: 50%; top: 50%;
   width: max(100%, var(--tap)); height: max(100%, var(--tap)); transform: translate(-50%, -50%); }
 @media (hover: hover) and (pointer: fine) { a:hover { text-decoration-color: var(--underline-hover); } }
+/* With no tap highlight, a link shows the press itself. https://github.com/emilkowalski/skills/blob/715c1807e08c497cfd1dc4feb450a2a3300ef2a9/skills/mobile-native/SKILL.md#2-grayblue-flash-on-tap */
+a:active { text-decoration-color: var(--underline-hover); }
 .button { margin: 0; padding: 8px 12px; background: var(--gray1); border: 1px solid var(--gray3); border-radius: var(--radius);
   color: var(--ink); font: 500 0.8125rem/var(--leading) var(--sans); white-space: nowrap; cursor: pointer;
   transition: transform var(--press-duration) var(--ease-out), background-color var(--fade-duration), border-color var(--fade-duration); }
