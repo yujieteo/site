@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="A 30-minute multiple-choice drill on Noncommutative Geometry, Quantum Fields and Motives by Alain Connes and Matilde Marcolli.">
+<link rel="icon" href="data:,">
+<link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<title>Connes–Marcolli Drill</title>
+<style>
+/* Tokens, type, spacing and interaction rules from teoyujie.org (~/src/site/static/style.css and kowalski.css).
+   Layout: the site's essay page. Light only, as on the site. */
+@font-face { font-family: "Inter"; src: url(/fonts/inter.woff2) format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Inter Fallback"; src: local("Arial"); size-adjust: 107.12%; ascent-override: 90.44%; descent-override: 22.52%; line-gap-override: 0%; }
+@font-face { font-family: "IBM Plex Mono"; src: url(/fonts/ibm-plex-mono.woff2) format("woff2"); font-weight: 400; font-display: swap; }
+:root { --bg: #fdfdfc; --chip: #f9f9f8; --line: #e9e9e7; --select: #e2e1de; --underline: #bcbbb5; --underline-hover: #8d8d86;
+  --muted: #63635e; --ink: #21201c; --hover: #f5f4f4;
+  --sans: "Inter", "Inter Fallback", Arial, sans-serif; --mono: "IBM Plex Mono", ui-monospace, monospace;
+  --text: 1rem; --small: 0.875rem; --leading: 1.5; --leading-prose: 1.65; --column: 692px; --gutter: 24px; --radius: 6px;
+  --press: 0.97; --press-duration: 150ms; --tap: 44px; --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --gray1: #fcfcfc; --gray2: #f8f8f8; --gray3: #f3f3f3; --gray4: #ededed; --gray7: #dbdbdb; --fade-duration: 150ms;
+  --focus-ring: 0 0 0 1px rgba(0,0,0,.06), 0 1px 0 0 rgba(0,0,0,.08), 0 2px 2px 0 rgba(0,0,0,.04), 0 3px 3px 0 rgba(0,0,0,.02), 0 4px 4px 0 rgba(0,0,0,.01), 0 0 0 2px rgba(0,0,0,.15);
+  color-scheme: light; }
+* { box-sizing: border-box; outline-color: var(--muted); }
+::selection { background: var(--select); }
+html { -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: var(--text)/var(--leading) var(--sans); font-feature-settings: "liga" 1, "calt" 1, "cv01", "ss03"; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+a { color: inherit; text-decoration: underline 0.08em var(--underline); text-underline-position: from-font; }
+a, button { touch-action: manipulation; }
+button { user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; position: relative; transition: transform var(--press-duration) var(--ease-out); }
+button:enabled:not([aria-disabled=true]):active { transform: scale(var(--press)); }
+button:disabled { opacity: 0.45; cursor: not-allowed; }
+button::after { content: ""; position: absolute; left: 50%; top: 50%; width: max(100%, var(--tap)); height: max(100%, var(--tap)); transform: translate(-50%, -50%); }
+@media (hover: hover) and (pointer: fine) { a:hover, .link:hover { text-decoration-color: var(--underline-hover); } }
+.button { margin: 0; padding: 8px 12px; background: var(--gray1); border: 1px solid var(--gray3); border-radius: var(--radius); color: var(--ink); font: 500 0.8125rem/var(--leading) var(--sans); white-space: nowrap; cursor: pointer;
+  transition: transform var(--press-duration) var(--ease-out), background-color var(--fade-duration), border-color var(--fade-duration); }
+@media (hover: hover) and (pointer: fine) { .button:hover:not(:disabled) { background: var(--gray2); border-color: var(--gray4); } }
+.button:focus-visible, .opt:focus-visible, .link:focus-visible { outline: 2px solid transparent; box-shadow: var(--focus-ring); }
+@media (prefers-reduced-motion: reduce) { :root { --press: 1; } }
+
+p { margin: 0; line-height: var(--leading-prose); text-wrap: pretty; }
+h1, h2 { margin: 0; font-size: inherit; font-weight: inherit; text-wrap: balance; }
+.wrap { max-width: var(--column); margin: 0 auto; padding-left: max(var(--gutter), env(safe-area-inset-left, 0px)); padding-right: max(var(--gutter), env(safe-area-inset-right, 0px)); }
+header.wrap { display: flex; flex-direction: column; align-items: flex-start; padding-top: 48px; margin-bottom: 96px; }
+.name { font-weight: 500; text-decoration: none; }
+.tagline { font-weight: 500; line-height: 1; color: var(--muted); }
+footer.wrap { margin-top: 96px; padding-bottom: 64px; color: var(--muted); }
+.muted { color: var(--muted); }
+main h1 { font-weight: 600; margin-bottom: 12px; }
+main .meta { font-size: var(--small); margin-bottom: 20px; font-variant-numeric: tabular-nums; }
+.link { padding: 0; background: none; border: 0; color: inherit; font: inherit; cursor: pointer; text-decoration: underline 0.08em var(--underline); text-underline-position: from-font; }
+.track { display: flex; height: 6px; margin-bottom: 48px; border-radius: 3px; overflow: hidden; background: var(--gray3); }
+.track i { flex: 1 1 0; min-width: 0; }
+.track i.ok { background: var(--underline); }
+.track i.miss { background: var(--ink); }
+.track i.cur { background: var(--muted); }
+.q { font-weight: 550; margin-bottom: 20px; }
+.featured { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; }
+.opt { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 16px; width: calc(100% + 32px); margin: 0 -16px; padding: 12px 16px; background: none; border: 0; border-radius: var(--radius); color: inherit; font: inherit; line-height: var(--leading); text-align: left; cursor: pointer; }
+.opt[aria-disabled=true] { cursor: default; }
+.kind { color: var(--muted); font-variant-numeric: tabular-nums; }
+@media (hover: hover) and (pointer: fine) { .opt:not([aria-disabled=true]):hover { background: var(--hover); } }
+.opt[data-state=right] { background: var(--gray3); box-shadow: inset 0 0 0 1px var(--gray7); font-weight: 500; }
+.summary { margin: 20px 0 16px; padding: 16px 20px; background: var(--chip); border-radius: var(--radius); box-shadow: inset 0 0 0 1px var(--line); }
+.summary h2 { font-size: var(--small); font-weight: 550; color: var(--muted); margin-bottom: 8px; }
+.summary p { line-height: var(--leading); }
+.summary .src { margin-top: 8px; font-size: var(--small); color: var(--muted); font-variant-numeric: tabular-nums; }
+.row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+.section-heading { font-weight: 500; margin: 48px 0 20px; }
+.missed { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px; }
+.missed span { display: block; }
+.missed .muted { line-height: var(--leading); }
+@media (min-width: 640px) { header.wrap { padding-top: 96px; } }
+</style>
+</head>
+<body>
+
+<header class="wrap"><a class="name" href="/">Yu Jie Teo</a><span class="tagline">Mechanical Engineer</span></header>
+<main class="wrap">
+  <h1>Noncommutative Geometry, Quantum Fields and Motives</h1>
+  <p class="meta muted"><span id="stage">The whole book</span> · <span id="count">0 of 0</span> · <span id="clock">00:00</span> of 30:00 · <button class="link" id="reset" type="button">Start over</button></p>
+  <div class="track" id="track" role="img" aria-label="Progress: one mark per question"></div>
+  <section id="view" aria-live="polite"></section>
+</main>
+<footer class="wrap"><p>Keys 1, 2 and 3 answer. Enter continues.</p><p>The questions are about the book by Alain Connes and Matilde Marcolli (AMS, 2008). An AI model wrote them, so some can be wrong. Each answer gives the book page.</p></footer>
+
+<script>
+/* [stem, correct, [wrong...], reveal, book page, key, key prerequisite] */
+const S=[
+{t:"The whole book",q:[
+["To study spacetime and the primes with one method, this book replaces a space with what?","An algebra of coordinates that need not commute",["A finer set of points with exact distances","A numerical grid of sampled coordinates"],"A space is its coordinate algebra. Drop xy = yx, and spacetime-with-matter and the primes both become geometry.","xiii","thesis"],
+["Which two open problems does the book aim at?","Quantum gravity and the Riemann hypothesis",["Turbulence and the Hodge conjecture","P versus NP and the Langlands program"],"Quantum gravity concerns spacetime. The Riemann hypothesis concerns primes. The book argues the two are analogous.","xiii"],
+["Does the book solve either problem?","No. It builds tools and analogies for both",["Yes. It proves the Riemann hypothesis","Yes. It completes quantum gravity"],"Its Riemann route ends at an unproved positivity. Its gravity section is explicitly conjecture.","673, 729"],
+["Several ways exist to measure the holes of a shape. What is a motive?","The one universal object behind all of them",["One more measure competing with the others","The average of all those measurements"],"Betti, de Rham and ℓ-adic cohomology are shadows of one object.","140","motive"],
+["Renormalization and heat equilibrium both hide a symmetry group. What does it behave like?","A Galois group, permuting solutions of equations",["A rotation group of ordinary 3D space","A translation group of spacetime points"],"An ambiguity forms a group. Physics ambiguities turn out to act like number-theoretic symmetry.","xv, xviii"]
+]},
+{t:"Language from zero",q:[
+["Let A = [[0,1],[0,0]] and B = [[0,0],[1,0]]. Is AB = BA?","No. AB and BA differ",["Yes. They are equal"],"AB = diag(1,0). BA = diag(0,1). Order matters. That is all noncommutative means.","background"],
+["A commutative C*-algebra, a complete algebra of bounded observables, is always what?","Continuous functions on some space",["Square matrices of one fixed size","Polynomials in one real variable"],"Commutative means ordinary space. So a noncommutative algebra is a space without a list of points.","734","gelfand"],
+["The spectrum of a matrix or operator D is what?","Its eigenvalues",["Its diagonal entries","Its largest row sum"],"Entries change with the basis. Eigenvalues do not. They are what can be measured.","background","spec"],
+["A state on an algebra is a positive, normalized linear functional. On functions on X, a state is what?","A probability measure on X",["A single vector field on X","A distance function on X"],"A state assigns expected values. On commuting observables that is exactly probability.","445","state","gelfand"],
+["X/G glues points that G moves into each other. If orbits are dense, continuous functions on X/G are what?","Constant, so they see nothing",["Plentiful, so they separate classes"],"A continuous function constant on a dense orbit is constant everywhere. The quotient looks like one blurred point.","383, 453","quot"],
+["For a bad quotient X/G, what does noncommutative geometry use in place of functions on X/G?","The crossed product: functions on X plus symbols for G",["Only those functions on X that G leaves fixed"],"Add a symbol U<sub>g</sub> per group element. U<sub>g</sub> does not commute with functions, and so remembers who was glued.","651","cross","quot"],
+["The Galois group of a polynomial is which set?","Root permutations preserving rational relations",["The polynomial's rational coefficients"],"For x² − 2, swapping √2 and −√2 preserves every rational relation. The group is Z/2.","744","galois"]
+]},
+{t:"Feynman graphs and infinities",q:[
+["Quantum field theory weights each field configuration by what?","A complex phase exp(iS/ħ)",["An ordinary positive probability"],"Configurations interfere, so weights are phases. S is the classical action.","11"],
+["The path integral cannot be done exactly. What do physicists expand in?","Powers of the interaction",["Powers of the free part"],"The free part is Gaussian, so solvable. The interaction becomes a power series around it.","18"],
+["A Gaussian integral of eight field factors is done by pairing them. How many pairings?","105",["40320","28"],"7 × 5 × 3 = 105. Feynman graphs are labels for these pairings.","24","pair"],
+["In Euclidean Feynman rules, what does each internal line contribute?","A propagator 1/(k² + m²)",["A coupling constant g","A delta function of momentum"],"Lines propagate. Vertices couple and conserve momentum.","33"],
+["What does each loop in a Feynman graph add?","One free momentum to integrate over",["One new external particle to track"],"Vertices fix momentum, except around loops. Integrating over unbounded momentum is the infinity.","34"],
+["In D = 4, a φ³ loop with momentum cut off at Λ does what as Λ grows?","Grows like log Λ",["Stays bounded","Grows like Λ⁴"],"The loop diverges as the cutoff is removed. Here it is logarithmic.","27"],
+["A ping-pong ball released underwater accelerates near 2g, not 11g. Why?","It must move water, which adds inertia",["Water pressure weakens the buoyant force","Surface tension holds the ball back"],"Observed inertia is m₀ + M/2. The mass in the equations is not the mass you measure.","28"],
+["Why can infinities be absorbed in the electron's bare mass?","Bare mass is unobservable",["Bare mass was measured huge","Bare mass is exactly zero"],"An electron cannot be separated from its own field. Only the dressed mass is observed.","29"],
+["Dimensional regularization makes integrals finite by replacing D with what?","A complex number D − z",["A very large integer D","A hard cutoff Λ on momentum"],"The infinity becomes a pole 1/z, from a Gamma function such as Γ(2 − D/2).","47–48","dimreg"],
+["Nested divergent subgraphs give pole coefficients with p² log p². Why is that a problem?","No local Lagrangian term can absorb it",["Those terms always cancel out anyway"],"Counterterms must be polynomial in momentum. So subgraphs must be subtracted first.","55, 66"],
+["In BPHZ, what is the counterterm C(Γ)?","Minus the pole, after subgraphs are subtracted",["Minus the pole of the raw value of Γ","The residue of the largest subgraph only"],"Preparation handles subdivergences first. Then the remaining pole is local.","64","bphz"],
+["What does renormalizable mean?","Finitely many parameter types absorb all divergences",["Every Feynman integral converges unadjusted","Theory predicts every parameter outright"],"Each counterterm type costs a parameter fixed by experiment. Finite means predictive.","43, 53"]
+]},
+{t:"Renormalization as geometry",q:[
+["The coproduct of a Feynman graph Γ is a sum of which terms?","γ ⊗ Γ/γ: a subgraph, and Γ with it contracted",["Pairs of connected components of the graph Γ","Single vertices of Γ tensored with its lines"],"Graphs form a Hopf algebra whose coproduct records nesting: exactly what BPHZ needs.","71","coprod","bphz"],
+["From a commutative Hopf algebra H and an algebra A, what are the group elements?","Algebra maps H → A",["Elements of H itself","Linear maps A → H"],"The coproduct of H defines the group multiplication. So graphs become coordinates on a group.","67","hopfg"],
+["Birkhoff factorization writes a loop γ(z) around z = 0 as what?","γ₋⁻¹ γ₊, a pole part and a regular part",["A finite sum of Fourier modes in z"],"γ₊ extends across z = 0. γ₋ holds all the singularity.","86","birk","hopfg"],
+["In γ = γ₋⁻¹γ₊, which factor gives the counterterms?","γ₋",["γ₊"],"Counterterms come from γ₋. The finite renormalized value is γ₊(0).","86","","birk"],
+["How does Connes–Kreimer theory relate to BPHZ?","It is the same recursion, now explained",["It gives different renormalized values","It applies only at one loop"],"The BPHZ recursion is exactly Birkhoff factorization in the group of graphs.","84–86"],
+["The group Difg(T) of a theory acts on what?","Coupling constants",["Spacetime points","The loop variable z"],"Diffeographisms act as formal diffeomorphisms of coupling-constant space, not of spacetime.","88"],
+["The beta function is read from what?","The 1/z residue of γ₋",["The finite part γ₊(0)","The Euler characteristic of Γ"],"Residue, then the grading operator: β = Y(Res γ).","92","beta","birk"],
+["All higher counterterm poles are fixed by what?","The beta function alone",["New data at each order","The one-loop finite part"],"The Gross–'t Hooft relations: one residue determines the whole singular part.","102"],
+["Flat equisingular connections carry renormalization geometrically. What classifies them?","One Lie algebra element β",["Their monodromy around z = 0","Their order of pole at z = 0"],"Their monodromy is trivial, so monodromy cannot classify them. β does.","109, 128"],
+["The Tannakian theorem recovers a group from what?","Its category of representations",["Its list of its subgroups only","Its Lie algebra alone"],"Know how a group can act, with tensor products, and the group itself comes back.","121","tan"],
+["The universal group U of renormalization has a free Lie algebra with which generators?","One in each degree 1, 2, 3, …",["Only one in each odd degree","One per graph of a chosen theory"],"One group U maps to every renormalizable theory.","130"],
+["The authors identify U* with what?","Cartier's cosmic Galois group",["The Lorentz group of relativity","The Standard Model gauge group"],"It acts on coupling constants universally, like a Galois group of physical constants.","136","","tan"]
+]},
+{t:"Motives",q:[
+["A correspondence from X to Y is what?","An algebraic cycle in X × Y",["An ordinary map from X to Y","A point of the product X × Y"],"The graph of a map is one example. Formal combinations make maps linear.","140","corr","motive"],
+["A motive is a pair (X, p). What is p?","An idempotent correspondence, p ∘ p = p",["A chosen basepoint of the variety X","A Riemannian metric on the variety X"],"Idempotents cut a variety into pieces, as projections cut a vector space.","141","proj","corr"],
+["The plane P² has 1 + q + q² points over a field of q elements. What does that reflect?","h(P²) = 1 ⊕ L ⊕ L²",["h(P²) cannot be split","h(P²) = L ⊗ L"],"The count is the shadow of a decomposition. L counts as q.","143","lef","proj"],
+["The Lefschetz motive L is which piece?","h²(P¹)",["h⁰(P¹)","h(Spec k)"],"h(P¹) = 1 ⊕ L. Inverting L adds the Tate motive Q(1) = L⁻¹, which gives duals.","147"],
+["Which equivalence of cycles makes pure motives semi-simple abelian?","Numerical",["Rational","None of them"],"Jannsen: among those discussed, only numerical equivalence does.","148"],
+["With the naive tensor swap, a motive's dimension is an Euler characteristic, possibly negative. What is the fix?","Insert a sign (−1)<sup>ij</sup> in the swap",["Delete all odd-degree cohomology","Take absolute values of all dimensions"],"Tannakian categories need nonnegative dimensions. The sign corrects them.","148","","tan"],
+["Pure motives being Tannakian depends on what?","The standard conjectures, generally unproved",["Deligne's proof of the Weil conjectures","Nothing: it is an established theorem"],"Numerical equals homological equivalence, among others, remains open in general.","148"],
+["Zero-dimensional varieties give Artin motives. What is their motivic Galois group?","The absolute Galois group",["The multiplicative group G<sub>m</sub>","The additive group G<sub>a</sub>"],"So classical Galois theory is the zero-dimensional case of motives.","146","","galois"],
+["Betti and de Rham cohomology agree over C. What records the comparison?","The period matrix",["The Euler characteristic","The Frobenius trace"],"Periods are integrals such as ∮dz/z = 2πi. Their transcendence carries arithmetic.","138"],
+["How do mixed motives differ from pure ones?","They carry nontrivial extensions",["They are always direct sums","They carry no cohomology"],"Mixed pieces are glued, not split, so a list of parts loses information.","151"],
+["Mixed Tate motives over O[1/N], N = 3 or 4, have Galois group U ⋊ G<sub>m</sub>. How does that relate to renormalization's U*?","Same group abstractly, with no canonical map",["An explicit map sends each graph to a motive"],"The match is abstract and non-canonical. The graph-to-motive link stays open.","155, 159"]
+]},
+{t:"Spectral geometry",q:[
+["A spectral triple (A, H, D) consists of what?","An algebra, a Hilbert space, a Dirac-type operator",["A point set, a metric tensor, a connection form","A manifold, a vector bundle, a Lagrangian"],"Coordinates act on H. D carries all the metric information.","190","triple","gelfand"],
+["In this geometry, the distance d(x, y) is what?","sup |f(x) − f(y)| over f with ‖[D, f]‖ ≤ 1",["inf of the lengths of paths from x to y","min ‖[D, f]‖ over f with f(x) ≠ f(y)"],"No paths needed. It works even between two isolated points.","189","dist","triple"],
+["On a Riemannian spin manifold, that formula gives what?","Exactly the geodesic distance",["Only an approximation to it"],"Ordinary geometry is recovered exactly, so the definition is a true generalization.","189"],
+["The line element ds is what?","D⁻¹",["D","D²"],"Large eigenvalues of D mean short distances. Physics reads D⁻¹ as the fermion propagator.","189"],
+["In the operator dictionary, an infinitesimal is what?","A compact operator",["The zero operator","A bounded invertible operator"],"Compact operators get arbitrarily small off finite-dimensional subspaces, without being zero.","188"],
+["The dimension of a noncommutative geometry is what?","A set of poles of zeta functions of D",["Always a single positive integer","The rank of the algebra A"],"Dimension is read from where Tr(b|D|⁻ᶻ) is singular. It can be a spectrum.","191"],
+["In a commutative algebra, what does conjugation x ↦ uxu⁻¹ do?","Nothing",["It moves every element"],"Only noncommutative algebras have inner automorphisms. They form a normal subgroup.","185","inner"],
+["Can an ordinary manifold have symmetry group gauge ⋊ Diff(M)?","No. Diffeomorphisms form a simple group",["Yes, in sufficiently high dimension"],"Gauge theory needs a normal subgroup. Ordinary geometry has none to offer.","185","","inner"],
+["An inner fluctuation replaces D by D + A, with A = Σ a[D, b]. What are the A's physically?","Gauge bosons",["Gravitons","Quarks and leptons"],"Forces become internal fluctuations of the metric.","203–204","fluct","inner"],
+["The spectral action principle says the action is what?","Tr f(D/Λ), a function of D's eigenvalues",["An integral of chosen curvature expressions","A determinant of the metric alone"],"Physics depends only on the spectrum of D.","207","saction","spec"],
+["In four dimensions, which term gives Einstein gravity?","Λ²",["Λ⁰","Λ⁴"],"Λ⁴ is cosmological. Λ² is Einstein–Hilbert. Λ⁰ is Yang–Mills.","209"],
+["Which term of the expansion gives the Yang–Mills gauge action?","Λ⁰",["Λ²","Λ⁴"],"The scale-independent term holds the forces.","209"],
+["How does the cutoff shape f enter the expansion's terms?","Through a few numbers: its moments and f(0)",["Through the detailed shape of f everywhere","It does not enter at all"],"So one vague function contributes only a handful of parameters.","208"]
+]},
+{t:"The Standard Model from one geometry",q:[
+["The book models spacetime with matter as what?","A 4D manifold times a finite noncommutative space",["An ordinary curved manifold of ten real dimensions"],"M × F. The finite part F is the internal structure of matter.","231","mf","triple"],
+["What is the algebra of the finite space F?","C ⊕ H ⊕ M₃(C)",["u(1) ⊕ su(2) ⊕ su(3)","C ⊕ H ⊕ H ⊕ M₃(C)"],"Complex numbers, quaternions, 3×3 matrices. The Lie algebras come out; they are not put in.","240"],
+["The unit-determinant unitaries of that algebra form which gauge group?","U(1) × SU(2) × SU(3)",["SU(5)","SO(10)"],"Exactly the Standard Model group, up to a finite abelian group.","243–244"],
+["The Hilbert space of F has dimension 96. Where does it come from?","32 states × 3 generations",["48 states × 2 chiralities"],"N = 3 generations is assumed, not derived.","238"],
+["F has metric dimension 0. What is its KO-dimension, defined mod 8?","6",["0","4"],"A space can be metrically a point yet have nontrivial K-theoretic dimension.","233","ko"],
+["M has KO-dimension 4 and F has 6. What is the KO-dimension of M × F?","2",["10","4"],"4 + 6 = 10, and 10 ≡ 2 mod 8.","233","","ko"],
+["What does KO-dimension 6 make possible?","A Majorana mass for neutrinos",["A fourth generation of quarks"],"γ anticommutes with J at KO-dimension 6. That allows the see-saw term.","251, 294","","ko"],
+["In this model fermions are vectors in H. What are bosons?","Inner fluctuations of D",["More vectors in H","Points of the finite space F"],"Matter is what D acts on. Force is how D fluctuates.","231","","fluct"],
+["The finite part D<sub>F</sub> fluctuates too. What does that give?","The Higgs field",["The gluon fields","The graviton"],"The manifold part gives gauge bosons. The finite part gives one quaternion-valued Higgs.","259, 261","","fluct"],
+["What do the 31 real parameters of the choices of D<sub>F</sub> encode?","The Yukawa couplings",["The three force strengths","The curvature of spacetime"],"Masses and mixing angles become the geometry of F.","253–254"],
+["What Higgs mass did the book predict?","About 168 GeV",["About 125 GeV","Under 100 GeV"],"That was the book's value. The mass measured in 2012 is about 125 GeV, so this prediction failed as written.","305"],
+["Do the three coupling constants exactly meet in this model?","No, so the book calls it approximate",["Yes, at one scale, confirming it"],"One-loop running with measured values misses a single meeting point.","283"],
+["Dimensional regularization's D − z gets a real meaning. How?","A spectral triple X<sub>z</sub> of dimension z",["A new physical extra dimension of size z"],"Tr e^(−λD²) = π^(z/2) λ^(−z/2), exactly the Gaussian rule the physics needs.","322–324","","dimreg"]
+]},
+{t:"Zeta and the primes",q:[
+["For Re(s) > 1, Σ n⁻ˢ over integers equals what?","A product over primes of 1/(1 − p⁻ˢ)",["A product over integers of 1/(1 − n⁻ˢ)"],"Unique factorization turns the sum into a product. That is why zeros know the primes.","345","zeta"],
+["The Riemann hypothesis says what?","Nontrivial zeros have real part 1/2",["All zeros are negative even integers"],"The negative even integers are the separate, trivial zeros.","347","rh","zeta"],
+["The explicit formula expresses the prime-power count ψ(x) using what?","The nontrivial zeros",["Only the trivial zeros"],"ψ(x) = x − Σ x<sup>ρ</sup>/ρ + small terms. Zeros are the harmonics of the primes.","349"],
+["How does the number of zeros up to height E grow?","(E/2π) log(E/2π) − E/2π",["Exactly linearly, like E/2π"],"Zeros get denser with height.","349"],
+["An adèle of Q lists what?","One real number, plus a p-adic per prime",["Only p-adic numbers, one per prime"],"Almost all p-adic entries lie in Z<sub>p</sub>. One object sees every place at once.","382","adele"],
+["The adèle class space is A/Q*. Why call it noncommutative?","Q* acts so badly that the quotient has no useful functions",["Q* acts so well that the quotient is an ordinary space"],"This is the bad quotient of the language stage, with the primes inside.","383, xvii","acs","adele"],
+["With places {2, 3, ∞}, the powers 2ⁿ3ᵐ are dense. Why?","log 3 / log 2 is irrational",["log 3 / log 2 equals 19/12"],"Density is exactly what makes the quotient genuinely noncommutative.","388"],
+["Zero counting resembles energy levels, with the wrong sign. What is Connes's fix?","Zeros are an absorption spectrum",["Zeros are an emission spectrum","Zeros are a thermal noise floor"],"Dark lines missing from a continuum. The minus sign means removal.","353–354","absorb"],
+["In mathematics, an absorption spectrum is what?","A cokernel",["A kernel","A direct sum"],"What remains after removing a range. Zeros live in what the map cannot reach.","354, 408","coker","absorb"],
+["The map E sends f to λ^½ Σ f(nλ). What gives its symmetry λ ↔ 1/λ?","Poisson summation",["Partial integration","Euler's product formula"],"It uses f(0) = f̂(0) = 0. The same symmetry drives the functional equation of zeta.","378"],
+["In the Hilbert-space version, which zeros appear in the spectrum?","Only those on the critical line",["All nontrivial zeros, on or off it","None: the spectrum is empty"],"So this version does not prove the Riemann hypothesis.","408","","rh"],
+["With finitely many places S, the space is a product. How do the places combine in the trace?","They add, one term per place",["They multiply, one factor per place"],"The space is a product, yet the trace is a sum, matching Weil's formula.","395"],
+["Weil's explicit formula equates what?","A sum over zeros and a sum over places",["A sum over primes and a volume integral","Two separate sums over primes alone"],"Primes and infinity are local terms. Zeros are the global term.","399, 406","weil","zeta"]
+]},
+{t:"Heat, equilibrium and Galois",q:[
+["On matrices with Hamiltonian H, the equilibrium Gibbs state weights a by what?","e<sup>−βH</sup>",["e<sup>+βH</sup>","A uniform weight on all states"],"β is inverse temperature. Low energy is favoured.","443","gibbs"],
+["What do KMS states generalize?","Gibbs equilibrium to any algebra with time evolution",["Ground states of a single particle in a box"],"KMS is a condition on correlations. It needs no density matrix.","446","kms","gibbs"],
+["A Q-lattice is a lattice plus what?","A labelling of torsion points, possibly not one-to-one",["A choice of orthonormal basis of its real span"],"The allowed degeneracy is what makes the moduli space noncommutative.","452","qlat"],
+["Two Q-lattices are commensurable when what holds?","Same rational span, labels agree mod the sum",["The two underlying lattices are identical"],"Commensurability is the equivalence that creates the bad quotient.","452","","qlat"],
+["The Bost–Connes system has energies log n. What is its partition function?","ζ(β)",["1/(1 − e<sup>−β</sup>)","ζ(2β)"],"Σ e^(−β log n) = Σ n<sup>−β</sup>. Thermodynamics and zeta are the same sum.","475–476","bc","zeta"],
+["Where is the Bost–Connes phase transition?","β = 1, the pole of ζ",["β = ½, on the critical line","β = 2, as for GL₂"],"The partition function blows up exactly where order sets in.","476"],
+["For 0 < β ≤ 1, how many KMS states does Bost–Connes have?","Exactly one",["One per unit of Ẑ","None at all"],"Hot means disordered and symmetric.","474","","kms"],
+["Below the critical temperature, extremal states are indexed by what?","Ẑ*, which permutes them transitively",["A single point, fixed by every symmetry"],"Cooling breaks the symmetry. Phases become labelled by the group.","475"],
+["At zero temperature, on rational observables, what values do extremal states take?","Cyclotomic numbers, with Galois acting as symmetry",["Transcendental numbers, with no Galois action"],"Thermal symmetry becomes the Galois group of the cyclotomic numbers.","475","","galois"],
+["By Kronecker–Weber, every abelian extension of Q lies in what?","A cyclotomic field",["An elliptic function field","A quadratic field"],"So exp(2πi ·) on Q/Z generates all abelian extensions of Q.","473"],
+["Explicit class field theory (Hilbert's 12th problem) is solved for which number fields?","Only Q and imaginary quadratic fields",["Every number field"],"The Bost–Connes and K-lattice systems target exactly these two cases.","472–473"],
+["For the GL₂ system, what is the partition function?","ζ(β) ζ(β − 1)",["ζ(β)","ζ(β)²"],"Energy log n occurs σ₁(n) times, once per index-n sublattice of Z².","539"],
+["For the GL₂ system, what happens for β &lt; 1?","No KMS states exist",["One disordered state exists","Infinitely many states exist"],"The forced probabilities turn negative. Hot here means no equilibrium at all.","544"],
+["For β > 2, GL₂ extremal states form what?","Points of the classical Shimura variety",["A single point of the moduli space"],"They correspond to invertible 2D Q-lattices.","538, 546"],
+["An imaginary quadratic field K gives which partition function?","ζ<sub>K</sub>(β)",["ζ(β) ζ(β − 1)","ζ(β)"],"Zero-temperature values then fill the maximal abelian extension of K.","558, 563"]
+]},
+{t:"Endomotives and distillation",q:[
+["What are the right maps between noncommutative spaces?","Correspondences such as bimodules",["Algebra homomorphisms only","Continuous maps of point sets"],"Bimodules include homomorphisms as a special case, as cycles include graphs.","582"],
+["Why pass from algebras to cyclic modules?","They form an abelian category, so cokernels exist",["They are commutative, so spectra become simpler"],"Algebras have no cokernels. The method needs one.","586","cyc","coker"],
+["An endomotive is a limit of what?","Finite point-sets, with a semigroup of self-maps",["Smooth curves, with a group of translations"],"Artin motives extended to limits, and acted on.","594","endo"],
+["The Bost–Connes endomotive comes from which maps on the multiplicative group?","u ↦ uⁿ",["u ↦ u + n","u ↦ 1/u"],"Level n is the n-th roots of unity.","608","","endo"],
+["Tomita–Takesaki says a state alone gives what?","A time evolution",["A distance function","A Dirac operator"],"No Hamiltonian is chosen. A noncommutative algebra generates its own time.","617, 739","tomita","state"],
+["Why do extremal low-temperature KMS states act as classical points?","Their factor is type I, Morita equivalent to a point",["Their factor is type III, with no trace at all"],"Type I means matrix-like, and matrices are one point in disguise.","579"],
+["For Bost–Connes, cooling lands on which space?","The idèle class group C<sub>Q</sub>",["The full adèle class space","A single classical point"],"The classical points are the invertible Q-lattices.","641"],
+["What is distillation?","A cokernel of the cooling map, in cyclic modules",["The kernel of the cooling map, in cyclic modules"],"What cooling cannot reach is kept. This is the absorption spectrum again.","636","","coker"],
+["In characteristic zero, what replaces Frobenius?","Scaling by R*₊ on distilled cyclic homology",["A discrete Z-action by one automorphism","Galois action on cyclic homology"],"A continuous flow plays the role of a discrete arithmetic operator.","616"],
+["The fiber of distilled HC₀ at z is nonzero exactly when what holds?","L<sub>χ</sub>(−iz) = 0",["L<sub>χ</sub>(−iz) ≠ 0"],"Zeros of L-functions become spectrum, one summand per character.","649"]
+]},
+{t:"Weil's proof and quantum gravity",q:[
+["For a curve over F<sub>q</sub>, Riemann's statement says Frobenius eigenvalues on H¹ have what size?","√q",["q","1"],"Weil proved this. It is the model for the number-field case.","678","frob"],
+["Weil's proof for curves has which two steps?","Explicit formula, then positivity",["Numerics, then induction on genus","Point counts, then interpolation"],"Tr(Z ∘ Zᵀ) &gt; 0 for nontrivial correspondences Z forces the size bound.","682","wpf"],
+["The trace of a correspondence on C × C is what?","degree + codegree − intersection with the diagonal",["degree × codegree, ignoring the diagonal entirely"],"Geometry computes the trace through intersection numbers.","680"],
+["H¹ of the adèle class space is what?","What restriction to idèle classes misses",["What restriction to idèle classes kills"],"It is a cokernel again, with the zeros inside.","657","h1","coker"],
+["In the cohomological version, which zeros appear?","All zeros, including any off the line",["Only critical-line zeros, automatically"],"Unlike the Hilbert-space version. So the Riemann hypothesis is not assumed.","659"],
+["For number fields, the Riemann hypothesis is equivalent to what?","Positivity of a trace pairing",["Vanishing of the trace on H¹"],"The book states the equivalence and does not prove the positivity.","673","","wpf"],
+["In the dictionary with Weil's proof, scaling graphs Z(f) replace what?","Frobenius correspondences",["Additive translations","The diagonal class"],"Degree becomes f̂(1), codegree f̂(0): the first two terms of the formula.","691"],
+["What is still missing from the dictionary?","An analog of principal divisors",["An analog of the explicit formula","An analog of Frobenius"],"Without it, the effectivity step of Weil's proof remains heuristic.","722"],
+["Modulo norm-one classes, the orbit at prime p has what period?","log p",["p","1/p"],"Primes become lengths of periodic orbits in the adèle class space.","696"],
+["What does the book suggest about spacetime and temperature?","Geometry may emerge only at low temperature",["Geometry is proved to persist at every heat"],"An analogy with Q-lattices. It is conjecture, marked as such.","729"]
+]},
+{t:"Mixed",q:[
+["Chapter 2's map E reappears in Chapter 4 as what?","The cooling map of Bost–Connes",["The Tomita flow of Bost–Connes"],"Σ f(1, nu, nλ) recovers E. The spectral realization becomes distillation.","641"],
+["In M × F, where do gravity, gauge fields and the Higgs come from?","One operator D, through its spectrum",["Three independently written actions"],"One formula, Tr f(D/Λ), expands into all of them.","272–274"],
+["Across the three Chapter 3 systems, what are the zero-temperature states?","Classical points of a noncommutative moduli space",["Random points with no arithmetic structure"],"Noncommutative moduli space above, ordinary Shimura variety below.","480, 546, xx"],
+["A pole marks a critical event in two places. Which pair is right?","z = 0 in renormalization, β = 1 in Bost–Connes",["β = 0 in renormalization, z = 1 in Bost–Connes"],"A pole in z is the divergence. A pole in β is the phase transition.","51, 476"],
+["What gives log n in Bost–Connes and log p in the adèle class space?","Energy levels, then lengths of periodic orbits",["Coupling constants, then masses of the quarks"],"Same logarithms, two readings: thermodynamics and geometry.","475, 696"],
+["What is the book's status overall?","Renormalization and the Lagrangian are worked out; RH and quantum gravity stay open",["RH and quantum gravity are settled; renormalization and the Lagrangian stay open"],"Know which claims are theorems, which are analogies, and which are hopes.","673, 729"]
+]}
+];
+const Q=[];const byKey={};
+S.forEach((g,si)=>g.q.forEach(x=>{const o={i:Q.length,st:si,s:x[0],a:x[1],w:x[2],r:x[3],p:x[4],k:x[5]||"",n:x[6]||""};Q.push(o);if(o.k)byKey[o.k]=o}));
+
+const KEY="cm-drill-v1";
+function fresh(list){return{queue:list||Q.map(q=>q.i),pos:0,miss:{},ever:{},ok:{},last:{},rev:{},tick:0,time:0}}
+let st;
+try{const raw=localStorage.getItem(KEY);if(raw){const v=JSON.parse(raw);if(Array.isArray(v.queue)&&v.queue.every(i=>Q[i]))st=v}}catch(e){}
+if(!st)st=fresh();
+function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
+
+const $=id=>document.getElementById(id),view=$("view"),track=$("track");
+const ticks=Q.map(()=>{const e=document.createElement("i");track.appendChild(e);return e});
+function paint(c){ticks.forEach((e,i)=>{e.className=i===c?"cur":st.miss[i]?"miss":st.ok[i]?"ok":""})}
+function clock(){const m=String(Math.floor(st.time/60)).padStart(2,"0"),s=String(st.time%60).padStart(2,"0");$("clock").textContent=m+":"+s}
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function count(){$("count").textContent=Object.keys(st.ok).length+" of "+Q.length}
+
+let cur=null,opts=[],answered=false;
+function render(){
+  if(st.pos>=st.queue.length)return finish();
+  cur=Q[st.queue[st.pos]];opts=shuffle([cur.a,...cur.w]);answered=false;
+  const kind=st.last[cur.i]===undefined?"":st.miss[cur.i]?" · Repeat":" · Review";
+  $("stage").textContent=S[cur.st].t+kind;
+  count();paint(cur.i);clock();
+  view.innerHTML='<h2 class="q">'+cur.s+'</h2><ul class="featured">'+
+    opts.map((o,i)=>'<li><button class="opt" id="opt'+i+'" type="button" data-i="'+i+'"><span>'+o+'</span><span class="kind">'+(i+1)+'</span></button></li>').join("")+
+    '</ul><div id="why"></div>';
+  document.querySelectorAll(".opt").forEach(b=>b.onclick=()=>choose(+b.dataset.i));
+}
+function choose(i){
+  if(answered)return;answered=true;
+  const right=opts[i]===cur.a;
+  document.querySelectorAll(".opt").forEach((b,j)=>{
+    b.setAttribute("aria-disabled","true");b.tabIndex=-1;
+    if(opts[j]===cur.a){b.dataset.state="right";b.querySelector(".kind").textContent="Correct"}
+    else if(j===i){b.dataset.state="chosen";b.querySelector(".kind").textContent="Your answer"}
+    else b.disabled=true;
+  });
+  st.tick++;st.last[cur.i]=st.tick;
+  if(right){st.ok[cur.i]=1;delete st.miss[cur.i]}
+  else{
+    delete st.ok[cur.i];
+    const m=(st.miss[cur.i]||0)+1;st.miss[cur.i]=m;st.ever[cur.i]=(st.ever[cur.i]||0)+1;
+    if(st.ever[cur.i]<=3)st.queue.splice(Math.min(st.pos+5,st.queue.length),0,cur.i);
+    if(m===2&&cur.n&&byKey[cur.n])st.queue.splice(st.pos+1,0,byKey[cur.n].i);
+  }
+  save();paint(cur.i);count();
+  const src=cur.p==="background"?"Background":"Book p. "+cur.p;
+  $("why").innerHTML='<div class="summary"><h2>'+(right?"Correct":"Incorrect")+'</h2><p>'+cur.r+'</p><p class="src">'+src+'</p></div><button class="button" id="next" type="button">Continue</button>';
+  $("next").onclick=next;$("next").focus({preventScroll:true});
+  $("next").scrollIntoView({block:"nearest"});
+}
+function next(){
+  const prev=cur;st.pos++;
+  if(st.pos<st.queue.length){
+    const nx=Q[st.queue[st.pos]];
+    if(nx.st>prev.st&&!st.rev[nx.st]){
+      st.rev[nx.st]=1;
+      const seen=Object.keys(st.last).map(Number).filter(i=>Q[i].st<nx.st&&i!==prev.i);
+      seen.sort((a,b)=>(st.ever[b]?1:0)-(st.ever[a]?1:0)||st.last[a]-st.last[b]);
+      if(seen.length)st.queue.splice(st.pos,0,seen[0]);
+    }
+  }
+  save();render();window.scrollTo({top:0});
+}
+function finish(){
+  cur=null;answered=true;paint(-1);
+  const ever=Object.keys(st.ever).map(Number),n=Object.keys(st.last).length,first=n-ever.length;
+  $("stage").textContent="Finished";count();clock();
+  view.innerHTML='<h2 class="q">'+first+' of '+n+' correct on the first try.</h2>'+
+   '<div class="row">'+(ever.length?'<button class="button" id="again" type="button">Repeat the '+ever.length+' missed</button>':'')+'<button class="button" id="all" type="button">Start over</button></div>'+
+   (ever.length?'<h2 class="section-heading">Missed</h2><ul class="missed">'+ever.map(i=>'<li><span>'+Q[i].s+'</span><span class="muted">'+Q[i].a+'</span></li>').join("")+'</ul>':'');
+  if($("again"))$("again").onclick=()=>{st=fresh(ever);save();render();window.scrollTo({top:0})};
+  $("all").onclick=restart;save();
+}
+function restart(){st=fresh();save();render();window.scrollTo({top:0})}
+$("reset").onclick=restart;
+document.addEventListener("keydown",e=>{
+  if(e.metaKey||e.ctrlKey||e.altKey)return;
+  if(!answered&&["1","2","3"].includes(e.key)){const i=+e.key-1;if(i<opts.length){e.preventDefault();choose(i)}}
+  else if(answered&&cur&&(e.key==="Enter"||e.key===" ")&&e.target.id!=="reset"){e.preventDefault();next()}
+});
+setInterval(()=>{if(!document.hidden&&cur){st.time++;clock();if(st.time%10===0)save()}},1000);
+render();
+</script>
+</body>
+</html>
