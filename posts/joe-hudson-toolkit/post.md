@@ -162,6 +162,10 @@ Sources: [part 1 ↗](https://x.com/FU_joehudson/status/2048829041562841378), [p
 
 ## Fear
 
+**Short videos (13):** [A Mom's Fear of Her Own Needs Make Sense in 20 Mins \| Coaching with Joe ↗](https://www.youtube.com/watch?v=2jztqQGdnxk) (22 min) · [I'm Afraid I Won't Get Anything Done ↗](https://www.youtube.com/watch?v=SPM8VFY4EQM) (9 min) · [Hangout with Joe: “Working Harder Is a Fear Response” ↗](https://www.youtube.com/watch?v=pRsW5aTsoO8) (18 min) · [Most Likely, You’re Scared to See Yourself. Here's What to Do ↗](https://www.youtube.com/watch?v=oNRHuj4bzuw) (11 min) · [When You Help Others, You're Asking Them to Hold Your Fear ↗](https://www.youtube.com/watch?v=yiWqENl3xuo) (10 min) · [I Want Connection with People I'm Afraid Will Judge Me \| Coaching with Joe ↗](https://www.youtube.com/watch?v=lVRggOAFad8) (17 min) · [Ambitious But Afraid? Here's What's Happening Beneath ↗](https://www.youtube.com/watch?v=lMVHl8CIhzI) (12 min) · [What’s Beneath Your Fear of Being Seen? (Coaching with Joe Hudson) ↗](https://www.youtube.com/watch?v=seZPqPtV3nI) (19 min) · [Why He's Afraid To Commit ↗](https://www.youtube.com/watch?v=zDUTPSvIoNg) (9 min) · [I'm Afraid I'll Get Depressed Again ↗](https://www.youtube.com/watch?v=MBhSl5INKAs) (7 min) · [I Am Scared Of The Unknown ↗](https://www.youtube.com/watch?v=RgLW1piok0k) (9 min) · [Fear Of Overworking ↗](https://www.youtube.com/watch?v=OmjVohrDcuU) (5 min) · [But... Is It Safe? ↗](https://www.youtube.com/watch?v=y0BkZ6KJ92c) (26 min)
+
+**Full interviews and episodes (7):** [The Fear of Being Seen and the Strange Way Out ↗](https://www.youtube.com/watch?v=B3p3ypov6ZU) (35 min) · [A Workshop For Welcoming Fear ↗](https://www.youtube.com/watch?v=DLMal_PaRbw) (42 min) · [What We're Afraid to Lose ↗](https://www.youtube.com/watch?v=I02EVlDLUX8) (40 min) · [Helplessness: The Cayenne Pepper of Fear ↗](https://www.youtube.com/watch?v=GKDM6G6W3HA) (38 min) · [Brett Kistler On Welcoming Fear ↗](https://www.youtube.com/watch?v=qLsRJqYTh8A) (39 min) · [The Power Dynamics Of Fear ↗](https://www.youtube.com/watch?v=x1iRrYBdgAE) (34 min) · [Fear: A Path To Authenticity ↗](https://www.youtube.com/watch?v=XGRxX5jGaj0) (36 min)
+
 - **The tiger.** Close your eyes. Imagine a tiger closing in on you, with no way out. Hear its feet and its breath. Now ask how much it weighs. Wonder and fear are hard to hold together. Use it for lesser fears, such as being fired, and not for real danger.
 - **Walk through the outcome.** Pick the fear. Picture the steps before, during and after it, again and again. Feel what it would bring.
 - **Say the scary truth.** Ask what scary thing is true for you right now. Then say it out loud.
@@ -176,6 +180,10 @@ Sources: [Wonder ↗](https://www.artofaccomplishment.com/podcast/wonder-connect
 
 ## Anxiety and worry
 
+**Short videos (10):** [The Hidden Reason You Overthink Everything \| Joe Hudson ↗](https://www.youtube.com/watch?v=LYN_FAD60zU) (14 min, Know Thyself Clips, 2026) · [What’s Beneath Arrogance, Self-doubt, Anxiety and Depression? ↗](https://www.youtube.com/watch?v=HsS0dwob92Y) (11 min) · [Your Anxiety is a Sign of Devotion ↗](https://www.youtube.com/watch?v=dwZvYPwvuSo) (10 min) · [How to Feel Safe Again: Practical Guide for Your Nervous System ↗](https://www.youtube.com/watch?v=yfGz5YI0kIo) (10 min) · [Regulate Your Nervous System in 2-minutes \| The Reset ↗](https://www.youtube.com/watch?v=elvJFfvAGUc) (3 min) · [Anxiety Explained In A Way That Finally Makes Sense ↗](https://www.youtube.com/watch?v=1Jy4DivRTlE) (12 min) · [Escape Time Anxiety: Your 14-Day Experiment ↗](https://www.youtube.com/watch?v=fYXTd-HnObc) (8 min) · [When Being Seen Feels Dangerous: Ending Performance Anxiety ↗](https://www.youtube.com/watch?v=mpWGY0wKHPM) (28 min) · [Social Anxiety Breakthrough (Coaching Session With Joe Hudson) ↗](https://www.youtube.com/watch?v=QoOlCC46NiE) (8 min) · [How to Break Free From Overthinking ↗](https://www.youtube.com/watch?v=cU1xoqllVps) (9 min)
+
+**Full interviews and episodes (5):** [Repressed Emotions, Anxiety + Why Self-Improvement Doesn’t Exist \| Joe Hudson ↗](https://www.youtube.com/watch?v=cOTuyPeqRQE) (1 h 19 min, Be Well by Kelly, 2025) · [Watch her Lifelong Anxiety Begin to Shift \| Coaching with Joe ↗](https://www.youtube.com/watch?v=fKsZaHstlhI) (39 min) · [‘WTF Is A Nervous System?’ With Jonny Miller ↗](https://www.youtube.com/watch?v=hCV8pH8UcPg) (57 min) · [Anxiety: A Signpost To Unmet Needs ↗](https://www.youtube.com/watch?v=N_fltKFwR_M) (36 min) · [Overthinking Dissolved In Real-Time \| Coaching Breakdown ↗](https://www.youtube.com/watch?v=XCbXt1s4omQ) (33 min)
+
 - **Five seconds at the worst part.** When anxiety comes, go to its most intense part. Ask what the really scary thing is. Stay five seconds, then go on with your day.
 - **Ask the odd question.** Ask how your anxiety is right now, then feel the answer. The odd wording keeps the head out of it.
 - **Two steps down.** Ask what you are scared will happen. Then ask what you would have to feel if it did.
@@ -188,6 +196,10 @@ Watch, short: [Anxiety Explained In A Way That Finally Makes Sense ↗](https://
 Sources: [Helplessness ↗](https://www.artofaccomplishment.com/podcast/helplessness-the-cayenne-pepper-of-fear-emotion-series-12), [Anxiety ↗](https://www.artofaccomplishment.com/podcast/anxiety-a-signpost-to-unmet-needs-emotion-series-6-3), [Overwhelm ↗](https://www.artofaccomplishment.com/podcast/what-can-i-do-about-overwhelm-emotion-series-10), [You're not scared of failing ↗](https://blog.artofaccomplishment.com/p/youre-not-scared-of-failing-youre), [the "I'm excited" experiment ↗](https://x.com/FU_joehudson/status/1931410077417873832).
 
 ## Shame
+
+**Short videos (3):** [Overcome Shame in Conflict - 4-Min Guide ↗](https://www.youtube.com/watch?v=-diXWZic0Sk) (5 min) · [When shame puts the brakes on feeling ↗](https://www.youtube.com/watch?v=HbVpfGPHeN0) (YouTube Short) · [How Do I Overcome Self-Consciousness? (Coaching Session With Master Coach) ↗](https://www.youtube.com/watch?v=uaqGB89KIPs) (8 min)
+
+**Full interviews and episodes (3):** [The Shame Hot Potato ↗](https://www.youtube.com/watch?v=Ru-9xpWh8Y0) (32 min) · [The Anatomy Of Shame ↗](https://www.youtube.com/watch?v=mFZgUzg31rc) (43 min) · [Healing Shame By Being Ourselves ↗](https://www.youtube.com/watch?v=XPGLsT6w2CE) (38 min)
 
 - **Stop, invite, love.** Each time shame comes, stop. Invite it. Love it. Tell it that it can come back at any time. Move when you are ready. He calls this the fastest way through.
 - **Look under it.** Ask what you would have to feel if you could not feel ashamed right now. Then feel that. This is also the tool for regret that replays.
@@ -203,6 +215,10 @@ Sources: [The Anatomy of Shame ↗](https://www.artofaccomplishment.com/podcast/
 
 ## Guilt
 
+**Short videos (4):** [If Others' Anger Makes You Feel You Did Something Wrong ↗](https://www.youtube.com/watch?v=djOMmAkd6k0) (10 min) · [How to Apologize in A Way That Transforms You ↗](https://www.youtube.com/watch?v=Ez13eCKqlMw) (5 min) · ["I'm Not Responsible For How You Feel" (Coaching with Joe) ↗](https://www.youtube.com/watch?v=xVXOesjPE3k) (12 min) · [I'm Tired Of Taking Responsibility ↗](https://www.youtube.com/watch?v=Si3pYvzF06Q) (12 min)
+
+**Full interviews and episodes (1):** [The Upright Apology ↗](https://www.youtube.com/watch?v=fdsUsWBXHDQ) (34 min)
+
 - **The upright apology.** Sit or stand with your back straight. Say what happened and which part you are responsible for. Say that it is not how you want to be, and that you apologise. Avoid the word "you". Do not try to change how they feel.
 - **Twenty apologies.** List the times you were passive-aggressive and make about 20 upright apologies. His guess, which he did not measure, is that this cuts the habit by a third or so.
 - **Apologise to yourself.** For a bad habit, apologise to yourself each day for the harm it does.
@@ -215,6 +231,10 @@ Watch, short: [How to Apologize in A Way That Transforms You ↗](https://www.yo
 Sources: [The Upright Apology ↗](https://www.artofaccomplishment.com/podcast/the-upright-apology-a-tool-for-transformation), [Passive Aggression ↗](https://www.artofaccomplishment.com/podcast/passive-aggression), [Vulnerability ↗](https://www.artofaccomplishment.com/podcast/vulnerability-connection-course-series-5-3).
 
 ## Anger
+
+**Short videos (11):** [If Others' Anger Makes You Feel You Did Something Wrong ↗](https://www.youtube.com/watch?v=djOMmAkd6k0) (10 min) · [What To Do When You Get Triggered ↗](https://www.youtube.com/watch?v=dArljuXtZEg) (7 min) · [The Path To Healthy Fighting ↗](https://www.youtube.com/watch?v=RePuSgxdiYw) (13 min) · [What Causes Resentment in Relationships? and How to Stop It ↗](https://www.youtube.com/watch?v=NJwuDwCFkTo) (5 min) · [Passive Aggression: How To Identify & Respond ↗](https://www.youtube.com/watch?v=s6y4OmCZivE) (5 min) · [Why Blame Is So Corrosive to Love (And What To Do Instead) ↗](https://www.youtube.com/watch?v=ZCqSiaQGGCo) (8 min) · [How To Stop Being Resentful ↗](https://www.youtube.com/watch?v=FQY7bcS5RRE) (8 min) · [How Anger Works (8-min Guide to Healthy Anger) ↗](https://www.youtube.com/watch?v=wbSXl_SX2Vc) (8 min) · [Triggered By Others? Watch This ↗](https://www.youtube.com/watch?v=ZVnRru4rohk) (7 min) · [The Wisdom Of Anger, Part 1 ↗](https://www.youtube.com/watch?v=kdfCDvBzIH4) (29 min) · [50 Years of Numbness Dissolved in 15Mins of Rage (Coaching with Joe Hudson) ↗](https://www.youtube.com/watch?v=Xrev7lM7sKU) (15 min)
+
+**Full interviews and episodes (5):** [How To Fight And Win ↗](https://www.youtube.com/watch?v=dR08XKn8dmA) (53 min) · [Passive Aggression ↗](https://www.youtube.com/watch?v=aNM9_vpG2Vk) (47 min) · [Q&A – Expressing 'Anger At', Playing with Depression, & More ↗](https://www.youtube.com/watch?v=tzAUTWizy4k) (40 min) · [The Wisdom Of Anger, Part 2 ↗](https://www.youtube.com/watch?v=ToMFxUAJV8I) (37 min) · [Triggered! ↗](https://www.youtube.com/watch?v=ncKimBGih1Y) (55 min)
 
 This covers frustration and rage too. Read the [evidence](#what-the-evidence-says) before you start. It is the part of his method that research disputes most.
 
@@ -246,6 +266,10 @@ Sources: [The Wisdom of Anger, Part I ↗](https://www.artofaccomplishment.com/p
 
 ## Grief and sadness
 
+**Short videos (4):** [She Came Asking to Let Go, She Left with a Love That Doesn't End \| Coaching with Joe ↗](https://www.youtube.com/watch?v=K00D8yxT3ak) (12 min) · [How Death Brings Life Closer ↗](https://www.youtube.com/watch?v=NVhWaCX5YIw) (28 min) · [Why Can't I Move On After My Breakup? (Coaching Session With Joe Hudson) ↗](https://www.youtube.com/watch?v=11Pbk6WyqTU) (11 min) · [I Can't Get Over My Ex ↗](https://www.youtube.com/watch?v=I94-r5A-v80) (17 min)
+
+**Full interviews and episodes (4):** [I'm Not Dead Yet: Life Lessons from Chemotherapy \| Tara Howley with Guest Michael Nagle ↗](https://www.youtube.com/watch?v=f2MCclXtmzs) (32 min) · [Marriage, Love, and Death ↗](https://www.youtube.com/watch?v=TpVHwB12XY0) (47 min) · [The Beauty Of Grief ↗](https://www.youtube.com/watch?v=KM2kJPzPz5E) (50 min) · [How You End a Relationship Shapes What Comes Next ↗](https://www.youtube.com/watch?v=D3NyVouLkmY) (40 min)
+
 - **Mourn before you decide.** Assume the outcome you dread, such as a marriage ending. Mourn it fully. Then decide what to do.
 - **A short cry.** Some built-up feeling needs only about 10 minutes of crying.
 - **Give grief a place.** A friend of his drove a long road each week and wailed and raged in the car. This is a story, but the idea is easy to borrow.
@@ -261,6 +285,8 @@ Sources: [The Beauty of Grief ↗](https://www.artofaccomplishment.com/podcast/t
 
 ## Helplessness and loss of control
 
+**Full interviews and episodes (1):** [Helplessness: The Cayenne Pepper of Fear ↗](https://www.youtube.com/watch?v=GKDM6G6W3HA) (38 min)
+
 - **Find it through control.** Look where you control the most. Helplessness is often under it.
 - **Play out the worst case.** Name one thing you cannot let go of. Picture the worst in detail. Do Emotional Inquiry on what comes.
 - **Picture it going perfectly too.** The good version can be the scarier one.
@@ -275,6 +301,10 @@ Sources: [Helplessness ↗](https://www.artofaccomplishment.com/podcast/helpless
 
 ## Hurt and rejection
 
+**Short videos (3):** [I Want Connection with People I'm Afraid Will Judge Me \| Coaching with Joe ↗](https://www.youtube.com/watch?v=lVRggOAFad8) (17 min) · [How Do I Love The "No"? ↗](https://www.youtube.com/watch?v=ycgwrlkmNys) (9 min) · [How Saying “No” Sets You Free (Coaching Reaction Video) ↗](https://www.youtube.com/watch?v=gjggsXgyg8U) (28 min)
+
+**Full interviews and episodes (1):** [Why It’s Hard to Ask for Help, Say What You Want or Show Hurt ↗](https://www.youtube.com/watch?v=MhcS71Ta4T0) (39 min)
+
 - **Say "ouch".** When someone criticises you, say "ouch" or "that hurt". It has to come from choice, not from blame.
 - **Open your heart to the no.** Ask what happens when you open your heart to it. Do not treat it as proof that you are bad.
 - **Collect rejections.** Make rejection the goal. His story of an artist who did this varies between tellings, from 25 to 50 rejections. In one telling, galleries said yes once the artist stopped trying to convince them. In a 2026 interview, the artist is his barber, whom he offered $1,000 or $2,000 to collect 50 rejections in 60 days. The barber got two acceptances and now sells his paintings for a living.
@@ -288,6 +318,8 @@ Sources: [Loving the No ↗](https://www.artofaccomplishment.com/podcast/loving-
 
 ## Failure and disappointment
 
+**Full interviews and episodes (1):** [How Reframing Failure Changes Your Life ↗](https://www.youtube.com/watch?v=FwrU150K2XM) (38 min)
+
 - **List 50 tries.** For a goal you keep dodging, write 50 ways to try it. Run them in order. Tick each as a win and ask what you learned. A shorter form is 15, each with what would make it fun.
 - **Feel it, then go back to the list.** After a setback, feel the sadness and fear. A reframe does not remove them.
 - **Say "I can't wait".** Say out loud that you look forward to the criticism or failure you dread.
@@ -300,6 +332,10 @@ Watch, full: [How Reframing Failure Changes Your Life ↗](https://www.youtube.c
 Sources: [Failure ↗](https://www.artofaccomplishment.com/podcast/failure), [There is no way of getting it perfect ↗](https://blog.artofaccomplishment.com/p/there-is-no-way-of-getting-it-perfect), [How to End Procrastination Now ↗](https://www.artofaccomplishment.com/podcast/how-to-end-procrastination-now), [How to Set Goals ↗](https://www.artofaccomplishment.com/podcast/how-to-set-goals).
 
 ## Not being enough
+
+**Short videos (14):** [Your To-Do List is Just Your Inner Critic on Paper ↗](https://www.youtube.com/watch?v=oLWz4JzW3EM) (8 min) · [Self-love made simple: the somatic method ↗](https://www.youtube.com/watch?v=PBJvid6q68w) (YouTube Short) · [Watch His Inner Critic Begin to Lose Its Power \| Coaching with Joe ↗](https://www.youtube.com/watch?v=rvwugeJDUZc) (15 min) · [How A Perfectionist Learns to Accept Herself \| Coaching with Joe ↗](https://www.youtube.com/watch?v=a132K8oo88A) (16 min) · [1 Word That Changes Your Inner Critic (Full Guide) ↗](https://www.youtube.com/watch?v=ZeIShRO_8NE) (12 min) · [This is How To Love Yourself (Coaching with Joe) ↗](https://www.youtube.com/watch?v=5EZ2OtB6HDA) (15 min) · [This is why you're so hard on yourself (Coaching with Joe) ↗](https://www.youtube.com/watch?v=guz__bc2x7M) (8 min) · [The Question That Ended Her 30-Year War With Herself (Coaching With Joe Hudson) ↗](https://www.youtube.com/watch?v=gKUdfy7fOAg) (10 min) · [The Art of Accomplishment: End The War With Yourself ↗](https://www.youtube.com/watch?v=m6H6zeiUV6E) (9 min) · [How Can I Feel Self-Love? - Coaching Session Breakdown ↗](https://www.youtube.com/watch?v=n24xPZP1dmQ) (29 min) · [How Do I Love Myself? (Coaching Session With Joe Hudson) ↗](https://www.youtube.com/watch?v=htYNDwMXZNU) (13 min) · [Imposter Syndrome — Are You Actually An Imposter? ↗](https://www.youtube.com/watch?v=86H9ljWhlL4) (7 min) · [Am I A Fake? ↗](https://www.youtube.com/watch?v=iXtKAVGI9mk) (10 min) · [How Do I Live Up To My Potential? ↗](https://www.youtube.com/watch?v=njGNG6nrMzI) (13 min)
+
+**Full interviews and episodes (5):** [Ending Self-Punishment and Finding More Joy with Joe Hudson \| Being Well ↗](https://www.youtube.com/watch?v=mRDpP91POxM) (1 h 17 min, Forrest Hanson, 2025) · [Perfectionism Creates the Chaos it's trying to Prevent ↗](https://www.youtube.com/watch?v=fMzEp7YQ-js) (35 min) · [The Plight Of Perfection – Joe Hudson with Stephanie Harrison ↗](https://www.youtube.com/watch?v=BcMNb2MJTHM) (50 min) · [Connection Over Perfection ↗](https://www.youtube.com/watch?v=2J7xla5rkBQ) (51 min) · [The Counterintuitive Cure for Imposter Syndrome ↗](https://www.youtube.com/watch?v=5zzsisfNZ9c) (34 min)
 
 This covers worthlessness and imposter feelings.
 
@@ -317,6 +353,10 @@ Sources: [When Will I Be Enough ↗](https://www.artofaccomplishment.com/podcast
 
 ## Overwhelm and burnout
 
+**Short videos (8):** [Hangout with Joe: “Working Harder Is a Fear Response” ↗](https://www.youtube.com/watch?v=pRsW5aTsoO8) (18 min) · [The 3-Minute Test That Proves You're Creating Your Own Stress ↗](https://www.youtube.com/watch?v=ZcA3KM2NM74) (13 min) · [You Need The Stress You Hate (Good vs Bad Stress Explained) ↗](https://www.youtube.com/watch?v=RNa6x_toR0w) (12 min) · [Your Brain Has A Stress Reset Button, Here's How to Use It ↗](https://www.youtube.com/watch?v=5GVz4LgT1Ac) (14 min) · [4 Causes of Stress (And How to Start Resolving Them Now) ↗](https://www.youtube.com/watch?v=7b7R4zQEDH4) (14 min) · [Fear Of Overworking ↗](https://www.youtube.com/watch?v=OmjVohrDcuU) (5 min) · [Why You're Exhausted (Even After Resting) ↗](https://www.youtube.com/watch?v=LfIonsHpKZc) (24 min) · [How Do I Not Burn Out Again? ↗](https://www.youtube.com/watch?v=XrFi5m9Kfuk) (11 min)
+
+**Full interviews and episodes (5):** [The Hidden Forces Keeping You Stressed, Tired & Behind In Life \| Joe Hudson ↗](https://www.youtube.com/watch?v=RLtGLVec2DY) (1 h 48 min, Dhru Purohit, 2025) · [Why You Can't Rest (And How to Actually Recover) ↗](https://www.youtube.com/watch?v=d_JaFK23Tlc) (40 min) · [The Burnout Cycle ↗](https://www.youtube.com/watch?v=AdCNadypDAk) (32 min) · [I Can't Hold It All Anymore (Coaching Session) ↗](https://www.youtube.com/watch?v=n8z5RMuJhu4) (45 min) · [What Can I Do About Overwhelm? ↗](https://www.youtube.com/watch?v=cezTrYF7qQ8) (51 min)
+
 - **Five minutes every two hours.** Sit and do nothing. Try it for one day. You may cry, scream or simply enjoy it.
 - **Even breath.** When there is no room to process, slow your breath and make the in and out equal. Do not use this to push the feeling down. Feel it later.
 - **Clear it between meetings.** Shake for 2 to 3 minutes, yawn 10 to 20 times, or cry for a minute or two.
@@ -331,6 +371,10 @@ Sources: [Why You Never Have Enough Time ↗](https://www.artofaccomplishment.co
 
 ## Uncertainty and confusion
 
+**Short videos (1):** [I Am Scared Of The Unknown ↗](https://www.youtube.com/watch?v=RgLW1piok0k) (9 min)
+
+**Full interviews and episodes (4):** [How To Get Unstuck ↗](https://www.youtube.com/watch?v=qgs92uSZuzw) (35 min) · [How Do I Get Unstuck? (Coaching Commentary) ↗](https://www.youtube.com/watch?v=OxWNr34Bl2w) (35 min) · [Making the Most of Uncertain Times ↗](https://www.youtube.com/watch?v=JRz3Nnu-MJI) (38 min) · [How Do I Trust Myself? ↗](https://www.youtube.com/watch?v=naEYY4PLnlQ) (40 min)
+
 - **The next obvious step.** Ask what the next most obvious thing is, and do it. Ask again.
 - **Ask two questions.** What is your confusion protecting you from? What are you pretending not to know?
 - **Rest in not knowing.** When you cannot rebuild your story, stop forcing an answer for a while.
@@ -343,6 +387,10 @@ Watch, full: [Making the Most of Uncertain Times ↗](https://www.youtube.com/wa
 Sources: [How Can I Make Better Decisions ↗](https://www.artofaccomplishment.com/podcast/how-can-i-make-better-decisions-decisions-series-1), [21 questions ↗](https://blog.artofaccomplishment.com/p/21-highly-psychoactive-questions), [How to Get Unstuck ↗](https://www.artofaccomplishment.com/podcast/how-to-get-unstuck), [Wonder ↗](https://www.artofaccomplishment.com/podcast/wonder-connection-course-series-2), [Every time you chase certainty ↗](https://blog.artofaccomplishment.com/p/every-time-you-chase-certainty-you).
 
 ## Numbness and low mood
+
+**Short videos (4):** [What’s Beneath Arrogance, Self-doubt, Anxiety and Depression? ↗](https://www.youtube.com/watch?v=HsS0dwob92Y) (11 min) · [I'm Afraid I'll Get Depressed Again ↗](https://www.youtube.com/watch?v=MBhSl5INKAs) (7 min) · [50 Years of Numbness Dissolved in 15Mins of Rage (Coaching with Joe Hudson) ↗](https://www.youtube.com/watch?v=Xrev7lM7sKU) (15 min) · [I Can't Feel Anything (Coaching Session With Master Coach) ↗](https://www.youtube.com/watch?v=0UxOxlLv02Y) (13 min)
+
+**Full interviews and episodes (3):** [Joe Hudson: Why Numbing & Avoidance Will Cost You 2026 ↗](https://www.youtube.com/watch?v=M-D5j9-TU-8) (1 h 51 min, Mighty Pursuit, 2026) · [Q&A – Expressing 'Anger At', Playing with Depression, & More ↗](https://www.youtube.com/watch?v=tzAUTWizy4k) (40 min) · [Exploring Depression in the Head, Heart, and Gut ↗](https://www.youtube.com/watch?v=KeZ6TJAEjro) (39 min)
 
 Depression is a medical condition. The hosts say treatment can help and do not argue against it. Treat these as additions to care, not a swap for it.
 
@@ -361,6 +409,10 @@ Sources: [Exploring Depression ↗](https://www.artofaccomplishment.com/podcast/
 
 ## Loneliness and boredom
 
+**Short videos (4):** [Why You Still Feel Alone (Coaching with Joe) ↗](https://www.youtube.com/watch?v=clHzKiXakGc) (13 min) · ["I Don't Belong Here" - Belonging Is The Wrong Question ↗](https://www.youtube.com/watch?v=J_IvAx8dTQ4) (9 min) · [Connection Is Hard Until You Face Your Aloneness ↗](https://www.youtube.com/watch?v=rJCXb4rrbew) (12 min) · [Do You Want To Fit In Or Be Extraordinary? \| Joe Hudson @Ultraspeaking ↗](https://www.youtube.com/watch?v=SHHdPi6KOvw) (1 min)
+
+**Full interviews and episodes (3):** [Dear Lonely Person: You're Probably A Sweetheart ↗](https://www.youtube.com/watch?v=Wswz67PpBsY) (34 min) · [Finding Community ↗](https://www.youtube.com/watch?v=aurxR6UEo2U) (34 min) · [How To Build A Great Support System \| Art Of Accomplishment Podcast #122 ↗](https://www.youtube.com/watch?v=zTPyoa-U9UE) (32 min)
+
 He has less on these than on other feelings.
 
 - **Tell alone from lonely.** Aloneness is the fact that no one can share your whole experience. Loneliness is a feeling you can meet.
@@ -377,6 +429,10 @@ Sources: [Expressing Anger At ↗](https://www.artofaccomplishment.com/podcast/e
 
 ## Joy and pleasure
 
+**Short videos (5):** [How To Enjoy Your Work (And Get More Done!) ↗](https://www.youtube.com/watch?v=hvhzt22JEBE) (7 min) · [Pleasure Is What Makes Healing Possible ↗](https://www.youtube.com/watch?v=nJMPJYrfplI) (11 min) · [How Generosity Improves Your Well-Being ↗](https://www.youtube.com/watch?v=uP8us2NqPzg) (27 min) · [The Power Of Gratitude In A Team ↗](https://www.youtube.com/watch?v=4551ILzvs7Y) (11 min) · [How NOT To Be Happy ↗](https://www.youtube.com/watch?v=ZLvYb_OGLpc) (7 min)
+
+**Full interviews and episodes (8):** [Ending Self-Punishment and Finding More Joy with Joe Hudson \| Being Well ↗](https://www.youtube.com/watch?v=mRDpP91POxM) (1 h 17 min, Forrest Hanson, 2025) · [Enjoyment is the Ultimate Hack: Joe Hudson's Radical Approach to Business & Life ↗](https://www.youtube.com/watch?v=L8ozMKdGFUc) (1 h 06 min, Tiago Forte, 2024) · [Pleasure ↗](https://www.youtube.com/watch?v=u0lUteRXC0c) (43 min) · [Gratitude ↗](https://www.youtube.com/watch?v=Nwh2AVkBa_8) (57 min) · [Joy ↗](https://www.youtube.com/watch?v=XjfCZRVaGqY) (39 min) · [How Do I Stop Postponing My Enjoyment? (Coaching Session) ↗](https://www.youtube.com/watch?v=IPFRRowdd2w) (31 min) · [Wonder ↗](https://www.youtube.com/watch?v=Oti8_SnZQCk) (53 min) · [Enjoy Over Manage ↗](https://www.youtube.com/watch?v=SEsv-pF7BWs) (46 min)
+
 People avoid these too. He says feeling good can scare us.
 
 - **Where is the pleasure now?** Ask it during a breath, the dishes or a walk. He did this for several weeks, and suggests about 10 minutes a day.
@@ -392,6 +448,10 @@ Sources: [Pleasure ↗](https://www.artofaccomplishment.com/podcast/pleasure), [
 
 ## Being loved and seen
 
+**Short videos (10):** [When Being Seen Feels Dangerous: Ending Performance Anxiety ↗](https://www.youtube.com/watch?v=mpWGY0wKHPM) (28 min) · [What’s Beneath Your Fear of Being Seen? (Coaching with Joe Hudson) ↗](https://www.youtube.com/watch?v=seZPqPtV3nI) (19 min) · [You only get the love you can let in ↗](https://www.youtube.com/watch?v=KRYcrGQ155Y) (7 min) · [You're Not Giving People the Chance to Love You ↗](https://www.youtube.com/watch?v=JsNRVP6g_Xs) (19 min) · [What Blocks Your Love? ↗](https://www.youtube.com/watch?v=NJLJJeFvrfQ) (15 min) · [What Happens When You Admit You Want to Be Seen \| Coaching with Joe ↗](https://www.youtube.com/watch?v=4nSINgJn-4M) (16 min) · [If You Can't Accept Compliments, Watch This (Coaching Session With Joe Hudson) ↗](https://www.youtube.com/watch?v=v235OpxMywM) (15 min) · [Unlocking your trauma pattern (how to see and be seen) ↗](https://www.youtube.com/watch?v=XRHh3PHrB5s) (5 min) · [Why Your Boss Never Sees You (Even When They Try) - Follow-along Coaching Session ↗](https://www.youtube.com/watch?v=YtrecDD6juU) (16 min) · [The Art of Receiving What You Give \| Guided Heart Meditation ↗](https://www.youtube.com/watch?v=84Y-yNCycPM) (13 min)
+
+**Full interviews and episodes (4):** [The Fear of Being Seen and the Strange Way Out ↗](https://www.youtube.com/watch?v=B3p3ypov6ZU) (35 min) · [Why Love Can Feel Scary With the Right Person \| Joe & Tara on Attachment ↗](https://www.youtube.com/watch?v=8KyBc1bnOgk) (37 min) · [How Love Gets Confused ↗](https://www.youtube.com/watch?v=66sMWhm6NKk) (34 min) · [The Desire To Be Seen ↗](https://www.youtube.com/watch?v=sG-VTGqnTYs) (35 min)
+
 - **Thank you, three seconds.** When praised, do not deflect. Breathe, say thanks and let it land for three seconds.
 - **Find what you wired to love.** List what you have tied to love, such as criticism, duty or anger. Do Emotional Inquiry on it daily for two weeks.
 - **Notice care.** Each day, find how someone cared for you and let it in.
@@ -406,6 +466,10 @@ Sources: [The hungry ghost leader ↗](https://blog.artofaccomplishment.com/p/th
 
 ## Wanting and jealousy
 
+**Short videos (8):** [I Want Connection with People I'm Afraid Will Judge Me \| Coaching with Joe ↗](https://www.youtube.com/watch?v=lVRggOAFad8) (17 min) · [What Happens When You Admit You Want to Be Seen \| Coaching with Joe ↗](https://www.youtube.com/watch?v=4nSINgJn-4M) (16 min) · [Why It's Hard For You To Ask For Help Or Say What You Want ↗](https://www.youtube.com/watch?v=w0CQ3_zbfY8) (14 min) · [The Thing We Most Want Terrifies All of Us \| Coaching with Joe ↗](https://www.youtube.com/watch?v=GvCamuEnbKw) (20 min) · [You're Pushing Away What You Want Most ↗](https://www.youtube.com/watch?v=ZjpQYci3OdQ) (13 min) · [Why You Can't Ask for What You Want \| 15mins Coaching with Joe ↗](https://www.youtube.com/watch?v=yn12x7lJq3g) (15 min) · [You're Pushing Away What You Most Want ↗](https://www.youtube.com/watch?v=mfU5lW5S6Mg) (9 min) · [You're Deflecting What You Want Most (Coaching With Joe Hudson) ↗](https://www.youtube.com/watch?v=-yldgDoSssw) (10 min)
+
+**Full interviews and episodes (4):** [Why It’s Hard to Ask for Help, Say What You Want or Show Hurt ↗](https://www.youtube.com/watch?v=MhcS71Ta4T0) (39 min) · [The Desire To Be Seen ↗](https://www.youtube.com/watch?v=sG-VTGqnTYs) (35 min) · [Pushing Away What You Want Most, Explained. Joe & Brett ↗](https://www.youtube.com/watch?v=Dwi1fub8oYc) (32 min) · [Want Over Should ↗](https://www.youtube.com/watch?v=ENtcGRXisTo) (41 min)
+
 - **Sit with the want.** Feel the wanting before you attach it to a thing or plan how to get it. He calls this the key step.
 - **Drop the object.** Think of something you badly want. Let the wanting fill your body. Now take away the thing itself and savour what is left. He says wanting with no object is close to love.
 - **If you cannot name a want.** He says this often comes from a childhood spent looking after a parent. You may have learned not to feel wanting at all. Start with the feeling and leave the object for later.
@@ -418,6 +482,10 @@ Watch, short: [You're Pushing Away What You Want Most ↗](https://www.youtube.c
 Sources: [Why You Feel Guilty for Wanting Things ↗](https://www.artofaccomplishment.com/podcast/why-you-feel-guilty-for-wanting-things), [How to Set Goals ↗](https://www.artofaccomplishment.com/podcast/how-to-set-goals), [Want Over Should ↗](https://www.artofaccomplishment.com/podcast/want-over-should-master-class-series-6-3), [Making Great Emotional Decisions ↗](https://www.artofaccomplishment.com/podcast/making-great-emotional-decisions-decisions-series-2), [How to own your wants ↗](https://x.com/FU_joehudson/status/1982856585128087681), [wanting clip ↗](https://x.com/FU_joehudson/status/2039437043273805974).
 
 ## Success
+
+**Short videos (5):** [Unhealthy Ambition vs. Aligned Ambition (Joe Hudson) ↗](https://www.youtube.com/watch?v=yqRkngnE-MY) (6 min, Scott Britton) · [What Are You Ambitious For? ↗](https://www.youtube.com/watch?v=JfyOSG6HbNY) (11 min) · [Ambitious But Afraid? Here's What's Happening Beneath ↗](https://www.youtube.com/watch?v=lMVHl8CIhzI) (12 min) · [Walk with Joe: "Self-sabotage disguised as self-improvement" ↗](https://www.youtube.com/watch?v=BbSfqJJKJes) (12 min) · [How Do I Live Up To My Potential? ↗](https://www.youtube.com/watch?v=njGNG6nrMzI) (13 min)
+
+**Full interviews and episodes (6):** [How To Surrender Into Success & Wealth \| Joe Hudson ↗](https://www.youtube.com/watch?v=WuU99xmoZUM) (1 h 32 min, The Don Rob Show, 2025) · [Joe Hudson: How your Emotions Drive your Success & Fulfillment ↗](https://www.youtube.com/watch?v=FPphsUOpJBs) (1 h 48 min, Ali Abdaal – Lifestyle Business Academy, 2024) · [Joe Hudson (Executive Coach): You Can Have Ambition And Peace \| The Danny Miranda Podcast 348 ↗](https://www.youtube.com/watch?v=ilneXQebf5c) (1 h 19 min, Danny Miranda, 2023) · [How Ambition and Spiritual Growth Can Work Together (Joe Hudson) ↗](https://www.youtube.com/watch?v=mVVPrhJnC04) (1 h 05 min, Scott Britton) · [Why you keep sabotaging your own success (Coaching with Joe) ↗](https://www.youtube.com/watch?v=HD__7X_gq_g) (56 min) · [How to Expand Your Capacity to Hold Success ↗](https://www.youtube.com/watch?v=_8gqYYb5mLI) (34 min)
 
 - **See full failure, then full success.** Picture each slowly, through to how people respond. Feel each. Repeat 2 to 10 times.
 - **Breathe to enjoy.** In any arousal, breathe to enjoy it, not to calm it. Stay longer.
@@ -593,7 +661,7 @@ This lists 444 videos found up to 9 November 2026: 191 full interviews and episo
 
 His own videos come from the [Art of Accomplishment channel ↗](https://www.youtube.com/@ArtofAccomplishment), and some feature his co-host Brett Kistler or a guest. They are grouped by topic from their titles, newest first, so a few could sit under another heading. Appearances on other shows were found by search, so some may be missing. Each one was checked against its title or description, because other people share his name. Summary channels, reposts and reaction videos are left out.
 
-Being listed does not mean a video was watched for this post. The "Watch" lines under each topic were also picked by title, apart from the interviews the post cites.
+Being listed does not mean a video was watched for this post. The "Watch" lines under each topic were also picked by title, apart from the interviews the post cites. The video lists at the top of each emotion are copied from this list and matched by title too.
 
 ### Full interviews and episodes
 
