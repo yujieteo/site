@@ -1,11 +1,12 @@
 import { plotWidth, swapChart, watch } from "../redraw.ts";
 import { hideTooltips, wireTooltips } from "../tooltip.ts";
-import { bestRows, countLine, findRows, MAP_HINT, mapDots, mapSvg, PAGE, pickHtml, scatterSvg, spreadSvg, type BestSort, type Filter } from "../food.ts";
+import { countLine, findRows, listRows, MAP_HINT, mapSvg, markers, PAGE, pickHtml, spreadSvg, ZOOM_HINT, type FindState, type ListState, type Marker, type Sort } from "../food.ts";
 
 const REACH = 28;
 
-function onPick(group: Element, pick: (value: string) => void): void {
-  group.addEventListener("click", (event) => {
+function onPick(figure: Element, name: string, pick: (value: string) => void): void {
+  const group = figure.querySelector(`[data-group=${name}]`);
+  group?.addEventListener("click", (event) => {
     const button = event.target instanceof Element ? event.target.closest("button[data-value]") : null;
     if (!button) return;
     for (const other of group.querySelectorAll("button[data-value]")) {
@@ -16,13 +17,63 @@ function onPick(group: Element, pick: (value: string) => void): void {
   });
 }
 
-function wireBest(figure: Element): void {
-  const group = figure.querySelector(".food-tools");
+function wireRows(figure: Element, read: (shown: number) => { html: string; total: number }): (reset: boolean) => void {
   const rows = figure.querySelector("[data-rows]");
-  if (!group || !rows) return;
-  onPick(group, (value) => {
-    rows.innerHTML = bestRows(value as BestSort);
+  const count = figure.querySelector("[data-count]");
+  const more = figure.querySelector<HTMLButtonElement>("[data-more]");
+  let shown = PAGE;
+  const draw = (reset: boolean): void => {
+    if (reset) shown = PAGE;
+    const found = read(shown);
+    if (rows) rows.innerHTML = found.html;
+    if (count) count.textContent = countLine(shown, found.total);
+    if (more) more.hidden = shown >= found.total;
+  };
+  more?.addEventListener("click", () => {
+    shown += PAGE;
+    draw(false);
   });
+  return draw;
+}
+
+function wireList(figure: Element): void {
+  const state: ListState = { sort: "cuisine", group: "meal", cuisine: "all", shown: PAGE };
+  const draw = wireRows(figure, (shown) => listRows({ ...state, shown }));
+  figure.querySelector<HTMLSelectElement>("[data-sort]")?.addEventListener("change", (event) => {
+    state.sort = (event.target as HTMLSelectElement).value as Sort;
+    draw(true);
+  });
+  figure.querySelector<HTMLSelectElement>("[data-group]")?.addEventListener("change", (event) => {
+    state.group = (event.target as HTMLSelectElement).value;
+    draw(true);
+  });
+  figure.querySelector<HTMLSelectElement>("[data-cuisine]")?.addEventListener("change", (event) => {
+    state.cuisine = (event.target as HTMLSelectElement).value;
+    draw(true);
+  });
+  draw(true);
+}
+
+function wireFind(figure: Element): void {
+  const state: FindState = { words: "", kind: "all", budget: 0, cuisine: "all", shown: PAGE };
+  const draw = wireRows(figure, (shown) => findRows({ ...state, shown }));
+  figure.querySelector<HTMLInputElement>("[data-q]")?.addEventListener("input", (event) => {
+    state.words = (event.target as HTMLInputElement).value;
+    draw(true);
+  });
+  onPick(figure, "kind", (value) => {
+    state.kind = value;
+    draw(true);
+  });
+  onPick(figure, "budget", (value) => {
+    state.budget = Number(value);
+    draw(true);
+  });
+  figure.querySelector<HTMLSelectElement>("[data-cuisine]")?.addEventListener("change", (event) => {
+    state.cuisine = (event.target as HTMLSelectElement).value;
+    draw(true);
+  });
+  draw(true);
 }
 
 function wireChart(figure: Element, draw: (width: number) => string): void {
@@ -33,90 +84,84 @@ function wireChart(figure: Element, draw: (width: number) => string): void {
   wireTooltips(figure);
 }
 
+function nearestIndex(list: Marker[], x: number, y: number): number {
+  let best = REACH * REACH;
+  let chosen = -1;
+  list.forEach((marker, index) => {
+    const distance = (marker.x - x) ** 2 + (marker.y - y) ** 2;
+    if (distance < best) {
+      best = distance;
+      chosen = index;
+    }
+  });
+  return chosen;
+}
+
 function wireMap(figure: Element): void {
-  const group = figure.querySelector(".food-tools");
   const frame = figure.querySelector(".frame");
   const note = figure.querySelector("[data-pick]");
-  if (!group || !frame || !note) return;
-  let kind = "all";
-  let chosen = "";
+  const areaBox = figure.querySelector<HTMLSelectElement>("[data-area]");
+  const typeBox = figure.querySelector<HTMLSelectElement>("[data-type]");
+  const back = figure.querySelector<HTMLButtonElement>("[data-back]");
+  if (!frame || !note || !areaBox || !typeBox || !back) return;
   let width = plotWidth(figure);
-  const draw = (): void => swapChart(figure, mapSvg(width, kind, chosen));
-  onPick(group, (value) => {
-    kind = value;
-    chosen = "";
-    note.textContent = MAP_HINT;
+  const list = (): Marker[] => markers(width, areaBox.value, typeBox.value);
+  const draw = (): void => {
+    swapChart(figure, mapSvg(width, areaBox.value, typeBox.value, true));
+    note.textContent = areaBox.value === "all" ? MAP_HINT : ZOOM_HINT;
+    back.hidden = areaBox.value === "all";
+  };
+  const mark = (name: string, index: number): void => {
+    for (const held of figure.querySelectorAll(`g[${name}]`)) held.removeAttribute(name);
+    if (index >= 0) figure.querySelector(`g[data-i="${index}"]`)?.setAttribute(name, "");
+  };
+  const activate = (index: number): void => {
+    const marker = list()[index];
+    if (marker && marker.area !== "") {
+      areaBox.value = marker.area;
+      draw();
+      return;
+    }
+    mark("data-on", marker ? index : -1);
+    if (marker) note.innerHTML = pickHtml(marker);
+    else note.textContent = ZOOM_HINT;
+  };
+  const indexAt = (event: MouseEvent): number => {
+    const svg = event.target instanceof Element ? event.target.closest("svg.chart") : null;
+    if (!svg) return -1;
+    const box = svg.getBoundingClientRect();
+    return nearestIndex(list(), event.clientX - box.left, event.clientY - box.top);
+  };
+  areaBox.addEventListener("change", draw);
+  typeBox.addEventListener("change", draw);
+  back.addEventListener("click", () => {
+    areaBox.value = "all";
     draw();
   });
+  frame.addEventListener("pointerdown", (event) => {
+    if (event instanceof PointerEvent) mark("data-pressed", indexAt(event));
+  });
+  for (const end of ["pointerup", "pointercancel", "pointerleave"]) frame.addEventListener(end, () => mark("data-pressed", -1));
   frame.addEventListener("click", (event) => {
-    const svg = event.target instanceof Element ? event.target.closest("svg.chart") : null;
-    if (!svg || !(event instanceof MouseEvent)) return;
-    const box = svg.getBoundingClientRect();
-    const x = event.clientX - box.left;
-    const y = event.clientY - box.top;
-    let best = REACH * REACH;
-    let found = "";
-    let html = MAP_HINT;
-    for (const dot of mapDots(width, kind)) {
-      const distance = (dot.x - x) ** 2 + (dot.y - y) ** 2;
-      if (distance >= best) continue;
-      best = distance;
-      found = dot.place.id;
-      html = pickHtml(dot.place);
-    }
-    chosen = found;
-    note.innerHTML = html;
-    draw();
+    if (event instanceof MouseEvent && event.detail > 0) activate(indexAt(event));
+  });
+  frame.addEventListener("keydown", (event) => {
+    if (!(event instanceof KeyboardEvent) || (event.key !== "Enter" && event.key !== " ")) return;
+    const held = event.target instanceof Element ? event.target.closest("g[data-i]") : null;
+    if (!held) return;
+    event.preventDefault();
+    activate(Number(held.getAttribute("data-i")));
   });
   watch(figure, (next) => {
     width = next;
     draw();
   });
-}
-
-function wireFind(figure: Element): void {
-  const box = figure.querySelector<HTMLInputElement>("[data-q]");
-  const rows = figure.querySelector("[data-rows]");
-  const count = figure.querySelector("[data-count]");
-  const more = figure.querySelector<HTMLButtonElement>("[data-more]");
-  const groups = figure.querySelectorAll(".food-tools");
-  const kinds = groups[0];
-  const budgets = groups[1];
-  if (!box || !rows || !count || !more || !kinds || !budgets) return;
-  const filter: Filter = { words: "", kind: "all", budget: 0 };
-  let shown = PAGE;
-  const draw = (): void => {
-    const found = findRows(filter, shown);
-    rows.innerHTML = found.html;
-    count.textContent = countLine(shown, found.total);
-    more.hidden = shown >= found.total;
-  };
-  const fresh = (): void => {
-    shown = PAGE;
-    draw();
-  };
-  box.addEventListener("input", () => {
-    filter.words = box.value;
-    fresh();
-  });
-  onPick(kinds, (value) => {
-    filter.kind = value;
-    fresh();
-  });
-  onPick(budgets, (value) => {
-    filter.budget = Number(value);
-    fresh();
-  });
-  more.addEventListener("click", () => {
-    shown += PAGE;
-    draw();
-  });
+  draw();
 }
 
 for (const figure of document.querySelectorAll("figure[data-kind=food]")) {
   const view = figure.getAttribute("data-view");
-  if (view === "best") wireBest(figure);
-  if (view === "scatter") wireChart(figure, scatterSvg);
+  if (view === "list") wireList(figure);
   if (view === "spread") wireChart(figure, spreadSvg);
   if (view === "map") wireMap(figure);
   if (view === "find") wireFind(figure);

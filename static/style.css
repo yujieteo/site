@@ -87,35 +87,63 @@ main.page svg.tall { display: none; }
 @media (prefers-reduced-motion: reduce) { .tip { transform: none; } }
 input[type=search] { font: inherit; font-size: var(--small); padding: 6px 8px; border: 1px solid var(--gray3); border-radius: var(--radius); background: var(--gray1); color: var(--ink); width: 220px; }
 @media (max-width: 560px) { .control input[type=search] { width: 100%; font-size: 16px; } }
-/* Food post. Rows carry the data on a phone. Controls reach the 44 px tap size on touch, and search text stays at 16 px so iOS does not zoom. */
+/* Food post. Rows carry the data on a phone. Controls reach the 44 px tap size on touch, and form text stays at 16 px so iOS does not zoom. */
 .food-tools { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
-@media (pointer: coarse), (max-width: 560px) { .food-tools .button, .food-tools ~ .controls .button { min-height: var(--tap); padding: 8px 14px; } }
+@media (pointer: coarse), (max-width: 560px) { .food-tools .button, figure[data-kind=food] .controls .button, .food-open .button { min-height: var(--tap); padding: 8px 14px; } }
 .food-dot { display: inline-block; width: 9px; height: 9px; margin-right: 6px; border-radius: 50%; }
+.food-square { display: inline-block; width: 9px; height: 9px; margin-right: 6px; border: 1.5px solid var(--ink); border-radius: 2px; background: var(--card); }
+.food-line { display: inline-block; width: 16px; margin-right: 6px; border-top: 2px dashed var(--muted); vertical-align: middle; }
 .food-key { display: flex; flex-wrap: wrap; gap: 4px 16px; margin: 0 0 8px; font-size: var(--small); color: var(--muted); }
+.food-map-key { margin-top: 8px; }
+.food-select { display: grid; gap: 6px; margin-bottom: 12px; font-size: var(--small); color: var(--muted); }
+figure[data-kind=food] select { width: 100%; max-width: none; min-height: var(--tap); padding: 8px; font-size: 16px; color: var(--ink); }
+.food-pair { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; }
+figure[data-kind=food] select:focus-visible { outline: 2px solid transparent; box-shadow: var(--focus-ring); }
+.food-mapbar { margin-bottom: 8px; }
+.food-mapbar .button { min-height: var(--tap); }
 .food-rows { list-style: none; margin: 0; padding: 0; }
 .food-rows li { border-bottom: 1px solid var(--line); }
 .food-rows li:last-child { border-bottom: 0; }
-.food-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 12px; align-items: start; padding: 12px 0; min-height: var(--tap); text-decoration: none; transition: transform var(--press-duration) var(--ease-out); }
+.food-rows li.food-group { padding: 20px 0 6px; font-size: var(--small); font-weight: 550; color: var(--muted); }
+.food-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 12px; align-items: start; padding: 12px 0; min-height: var(--tap); text-decoration: none; cursor: pointer; transition: transform var(--press-duration) var(--ease-out); }
+summary.food-row { list-style: none; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; touch-action: manipulation; }
+summary.food-row::-webkit-details-marker { display: none; }
 .food-row:active { transform: scale(var(--press)); }
 .food-row:focus-visible { outline: 2px solid transparent; box-shadow: var(--focus-ring); }
 .food-best { grid-template-columns: 2em minmax(0, 1fr) auto; }
 .food-score { font-size: 1.125rem; font-weight: 550; line-height: 1.35; font-variant-numeric: tabular-nums; }
-.food-body { display: block; min-width: 0; }
+.food-other { color: var(--muted); font-weight: 400; }
+.food-body { display: block; min-width: 0; overflow-wrap: anywhere; }
 .food-name { font-weight: 500; }
 .food-sub { display: block; font-size: var(--small); color: var(--muted); }
-.food-price { font-weight: 500; font-variant-numeric: tabular-nums; }
+.food-price { display: block; font-weight: 500; font-variant-numeric: tabular-nums; }
+.food-thin { font-weight: 400; font-size: var(--small); }
 .food-end { text-align: right; }
-.food-end .food-price { display: block; }
 .food-tag { display: inline-block; margin-left: 6px; padding: 0 6px; font-size: 0.75rem; line-height: 1.5; border-radius: 4px; background: var(--gray3); }
-.food-track { display: block; height: 4px; border-radius: 2px; background: var(--gray3); }
-.food-track span { display: block; height: 100%; border-radius: 2px; }
+.food-track { position: relative; display: block; height: 6px; border-radius: 3px; background: var(--gray3); }
+.food-range { position: absolute; top: 0; bottom: 0; border-radius: 3px; opacity: 0.45; }
+.food-tick { position: absolute; top: -2px; width: 2px; height: 10px; margin-left: -1px; background: var(--ink); }
 .food-best .food-track { grid-column: 2 / -1; margin-top: 8px; }
-.food-count { display: grid; grid-template-columns: 6.5em minmax(0, 1fr) 2em; column-gap: 8px; align-items: center; padding: 6px 0; font-size: var(--small); font-variant-numeric: tabular-nums; text-align: left; }
-.food-count > :last-child { text-align: right; }
+.food-open { padding: 0 0 14px 2em; }
+.food-open .button { display: inline-block; margin-top: 10px; text-decoration: none; }
+.food-menu { list-style: none; margin: 0; padding: 0; font-size: var(--small); font-variant-numeric: tabular-nums; }
+.food-rows .food-menu li { display: grid; grid-template-columns: minmax(0, 1fr) auto 4.5em; column-gap: 10px; align-items: center; min-height: var(--tap); padding: 4px 0; }
+.food-menu a { display: block; overflow-wrap: anywhere; }
+.food-menu small { font-size: 0.75rem; color: var(--muted); text-align: right; }
+.food-count { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 12px; align-items: baseline; padding: 10px 0; }
+.food-count .food-track, .food-wide { grid-column: 1 / -1; }
 .food-pick { margin: 8px 0; min-height: 1.5em; font-size: var(--small); color: var(--muted); }
 .food-pick strong { color: var(--ink); font-weight: 500; }
+.food-picks { list-style: none; margin: 8px 0 0; padding: 0; color: var(--ink); }
+.food-picks li { min-height: var(--tap); padding: 8px 0; border-bottom: 1px solid var(--line); overflow-wrap: anywhere; }
 .food-label { display: block; margin-bottom: 6px; font-size: var(--small); color: var(--muted); }
 input.food-search { display: block; width: 100%; min-height: var(--tap); margin-bottom: 12px; padding: 8px 12px; font: 16px/1.5 var(--sans); }
 input.food-search:focus-visible { outline: 2px solid transparent; box-shadow: var(--focus-ring); }
-.chart text.food-halo { paint-order: stroke; stroke: var(--chip); stroke-width: 4px; font-weight: 500; }
-figure[data-view=map] svg.chart { cursor: pointer; touch-action: manipulation; }
+.chart text.food-halo { paint-order: stroke; stroke: var(--chip); stroke-width: 4px; font-weight: 500; fill: var(--ink); }
+figure[data-view=map] svg.chart { cursor: pointer; touch-action: manipulation; transition: opacity 150ms var(--ease-out); @starting-style { opacity: 0; } }
+figure[data-view=map] g[data-i] { outline: none; transform-box: fill-box; transform-origin: center; transition: transform var(--press-duration) var(--ease-out), opacity var(--press-duration) var(--ease-out); }
+figure[data-view=map] g[data-pressed] { transform: scale(var(--press)); opacity: 0.7; }
+.food-ring { display: none; }
+g[data-on] .food-ring, g[data-i]:focus-visible .food-ring { display: inline; }
+figure[data-view=map] g[data-i]:focus-visible > circle:first-child { stroke: var(--ink); stroke-width: 2; }
+@media (hover: hover) and (pointer: fine) { .food-row:hover .food-name { text-decoration: underline 0.08em var(--underline-hover); text-underline-position: from-font; } }
