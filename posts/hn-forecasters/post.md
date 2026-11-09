@@ -40,7 +40,7 @@ The order is a judgment. It weighs how many calls came true, how often the perso
 | 19 | [tptacek ↗](https://news.ycombinator.com/user?id=tptacek) | Security, from comment history | 3 | 1 | 2 | [Comments ↗](https://hnrss.org/threads?id=tptacek) |
 | 20 | [btilly ↗](https://news.ycombinator.com/user?id=btilly) (Ben Tilly) | Programmer | 5 | 0 | 5 | [Comments ↗](https://hnrss.org/threads?id=btilly) |
 
-Every comment feed comes from [hnrss.org ↗](https://hnrss.org) and carries that person's new comments. Three people also have a blog with a working feed. To add them all to a feed reader, use the [OPML file](/hn-forecasters.opml).
+Every comment feed comes from [hnrss.org ↗](https://hnrss.org) and carries that person's new comments. Three people also have a blog with a working feed. To add them all to a feed reader, use the [OPML file](/hn-forecasters.opml). The [Forecasters page](/forecasters.html) gathers their latest comments and posts and updates every hour.
 
 
 ## Apple, Android and big tech
