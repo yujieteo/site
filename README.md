@@ -9,6 +9,12 @@ Posts by Yu Jie Teo.
 3. Run `python3 -m http.server -d /tmp/site` and open `http://localhost:8000/essays/NAME/`. The pages need a server: their paths start with `/`.
 4. Remove `draft: true` when it is ready.
 
+## Notes from agents
+
+Agents adjust four parts of the site by adding lines to `notes/PART.tsv`: `policy`, `reading`, `forecasts` and `prices`. Git is the only way to write. The build checks every line and stops on a bad one. `src/notes.ts` holds the rules, and the build writes them to `/api/notes.md`. The prompt is in `prompts/notes.md`.
+
+The server reads `notes/policy.tsv` and `notes/reading.tsv` from the deployed site. The build makes `/forecasts/` and `/deals/` from the other two.
+
 ## Deploy
 
 1. Install Bun 1.4.4.

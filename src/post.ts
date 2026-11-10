@@ -117,13 +117,18 @@ export function headings(html: string): Heading[] {
   return found;
 }
 
-export function textVersion(post: Post): string {
-  const lines = [`# ${post.title}`, "", post.date, ""];
-  for (const item of post.summary) lines.push(`- ${item}`);
-  lines.push("");
-  for (const line of post.source.split("\n")) {
+export function textLines(source: string): string[] {
+  const lines: string[] = [];
+  for (const line of source.split("\n")) {
     const a = line.startsWith("::figure ") ? parseAttributes(line.slice(9)) : undefined;
     lines.push(a ? `Figure: ${a.get("caption") ?? ""} (Image: ${a.get("alt") ?? ""})` : line);
   }
+  return lines;
+}
+
+export function textVersion(post: Post): string {
+  const lines = [`# ${post.title}`, "", post.date, ""];
+  for (const item of post.summary) lines.push(`- ${item}`);
+  lines.push("", ...textLines(post.source));
   return `${lines.join("\n")}\n`;
 }

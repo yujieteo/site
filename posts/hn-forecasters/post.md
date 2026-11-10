@@ -11,6 +11,8 @@ Many people on Hacker News have been right once. This post looks for the people 
 
 It covers 3,048 forecasts made between 2007 and 2019 by 227 frequent or notable forecasters. 277 came true, 49 partly came true, 237 failed and 147 cannot be checked yet. The other 2,338 turned out not to be real forecasts.
 
+The open forecasts are also on [one page](/forecasts/), where an AI agent adds new ones and marks outcomes.
+
 Names appear only where a person gives one in their own Hacker News profile. Nobody was traced beyond what they published.
 
 ## The ranking

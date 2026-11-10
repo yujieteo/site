@@ -1,6 +1,8 @@
 import { relative, resolve } from "node:path";
 import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
-import { homePage, postPage } from "./pages.ts";
+import { apiPage, dealsPage, dealsText, forecastsPage, homePage, postPage } from "./pages.ts";
+import { deals, forecastOrder, loadNotes, notesGuide, pricesTsv } from "./notes.ts";
+import { postApi, writeApi } from "./api.ts";
 import { figureKinds, figures, footnoteHtml, footnotes, headings, parsePost, textVersion, type Post } from "./post.ts";
 import { FIGURE_KINDS } from "./figures.ts";
 
@@ -53,7 +55,23 @@ async function main(): Promise<void> {
   const posts = loadPosts(postsDir, drafts);
   writeFileSync(`${out}/index.html`, homePage(posts));
   for (const post of posts) writePost(out, post);
+  const apis = posts.map(postApi);
+  writeApi(out, apis);
+  writeFileSync(`${out}/api/index.html`, apiPage(apis));
+  writeNotes(out);
   console.log(`built ${posts.length} post(s) into ${out}`);
+}
+
+function writeNotes(out: string): void {
+  const notes = loadNotes("notes", out);
+  const seen = deals(notes.prices ?? [], new Date().toISOString().slice(0, 10));
+  writeFileSync(`${out}/api/notes.md`, notesGuide());
+  writeFileSync(`${out}/api/prices.tsv`, pricesTsv());
+  writeFileSync(`${out}/api/deals.md`, dealsText(seen));
+  mkdirSync(`${out}/deals`, { recursive: true });
+  writeFileSync(`${out}/deals/index.html`, dealsPage(seen));
+  mkdirSync(`${out}/forecasts`, { recursive: true });
+  writeFileSync(`${out}/forecasts/index.html`, forecastsPage(forecastOrder(notes.forecasts ?? [])));
 }
 
 function writePost(out: string, post: Post): void {

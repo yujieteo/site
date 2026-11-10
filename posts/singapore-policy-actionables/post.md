@@ -54,9 +54,9 @@ The same saved copies and the same notes always give the same ranking. The word 
 
 Rules cannot read. A title that says "launches consultation" scores high, even when the consultation concerns a few hundred co-operatives. So the ranking takes one more input.
 
-An AI model reads [the plain text file](/singapore-policy-actionables.txt) and opens the documents that look useful. For each one it writes a line in [a notes file](/sg-notes.tsv): the document, points from -60 to 60, and one sentence. The job adds the points and shows the sentence. The score of a noted document lists the change as "claude" in the text file.
+An AI model reads [the plain text file](/singapore-policy-actionables.txt) and opens the documents that look useful. For each one it writes a line in [a notes file](/notes/policy.tsv): the document, points from -60 to 60, and one sentence. The job adds the points and shows the sentence. The score of a noted document lists the change as "claude" in the text file.
 
-The plain text file is made for this. It has one line per document, with the reasons for the score, and its first lines say how to write a note. I ask Claude to do this by hand for now. The job itself never calls a model.
+The plain text file is made for this. It has one line per document, with the reasons for the score, and its first lines say how to write a note. I ask Claude to do this by hand for now, with the steps in [the notes guide](/api/notes.md). The job itself never calls a model.
 
 ## Limits
 

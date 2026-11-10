@@ -90,7 +90,7 @@ Some of the 2026 rise has a known cause. Ministers said in March and April that 
 A sale tag tells you what a shop wants you to feel. These checks tell you what you are getting.
 
 1. **Work out the unit price.** 3 x 200 g of toothpaste at S$8.50 is S$1.42 per 100 g. A 250 g tube at S$6.10 is S$2.44.
-2. **Compare with the average.** The tables below give the current SingStat average and a good deal price for each good.
+2. **Compare with the average.** The tables below give the current SingStat average and a good deal price for each good. Prices that an AI agent has seen in shops in the last 30 days are on [the deals page](/deals/).
 3. **Compare the same quality.** A house brand under the average is not a deal. It is a cheaper product. For brands, compare with that brand's usual price.
 4. **Ignore the "was" price.** Some offers on shop pages run for about a year. A price that is always on offer is the normal price.
 5. **Count what you will use.** Buy 3 for S$5.60 is only a deal if you use three. Fresh food on offer that you throw away costs more.
