@@ -65,9 +65,9 @@ async function main(): Promise<void> {
 function writeNotes(out: string): void {
   const notes = loadNotes("notes", out);
   const seen = deals(notes.prices ?? [], new Date().toISOString().slice(0, 10));
-  writeFileSync(`${out}/api/notes.md`, notesGuide());
-  writeFileSync(`${out}/api/prices.tsv`, pricesTsv());
-  writeFileSync(`${out}/api/deals.md`, dealsText(seen));
+  writeFileSync(`${out}/api/notes.txt`, notesGuide());
+  writeFileSync(`${out}/api/prices.txt`, pricesTsv());
+  writeFileSync(`${out}/api/deals.txt`, dealsText(seen));
   mkdirSync(`${out}/deals`, { recursive: true });
   writeFileSync(`${out}/deals/index.html`, dealsPage(seen));
   mkdirSync(`${out}/forecasts`, { recursive: true });

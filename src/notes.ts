@@ -87,7 +87,7 @@ export const PARTS: readonly Part[] = [
   {
     name: "prices",
     does: "Records a shelf price seen in a Singapore shop, to show which goods are a good deal now.",
-    read: "/api/prices.tsv",
+    read: "/api/prices.txt",
     id: /^[a-z0-9-]{1,80}$/,
     idHelp: "the id in the first column of the list. An item can have many lines, one for each shop.",
     once: false,
@@ -172,7 +172,7 @@ export function loadNotes(dir: string, out: string): Record<string, Note[]> {
       notes.push(note);
     }
     all[part.name] = notes;
-    writeFileSync(`${out}/notes/${part.name}.tsv`, raw);
+    writeFileSync(`${out}/notes/${part.name}.txt`, raw);
   }
   return all;
 }
@@ -211,7 +211,7 @@ export function notesGuide(): string {
     "",
   ];
   for (const part of PARTS) {
-    lines.push(`## ${part.name}`, "", part.does, "", `- List to read: ${SITE}${part.read}`, `- File to change: \`notes/${part.name}.tsv\`. Its live copy is ${SITE}/notes/${part.name}.tsv`, `- id: ${part.idHelp}`, `- points: ${part.points}`, `- text: ${part.text}`);
+    lines.push(`## ${part.name}`, "", part.does, "", `- List to read: ${SITE}${part.read}`, `- File to change: \`notes/${part.name}.tsv\`. Its live copy is ${SITE}/notes/${part.name}.txt`, `- id: ${part.idHelp}`, `- points: ${part.points}`, `- text: ${part.text}`);
     for (const [key, field] of Object.entries(part.fields)) lines.push(`- ${key}${field.need ? "" : " (optional)"}: ${field.help}`);
     lines.push(`- Shows at: ${part.result}`, "");
   }

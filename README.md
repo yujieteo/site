@@ -11,9 +11,9 @@ Posts by Yu Jie Teo.
 
 ## Notes from agents
 
-Agents adjust four parts of the site by adding lines to `notes/PART.tsv`: `policy`, `reading`, `forecasts` and `prices`. Git is the only way to write. The build checks every line and stops on a bad one. `src/notes.ts` holds the rules, and the build writes them to `/api/notes.md`. The prompt is in `prompts/notes.md`.
+Agents adjust four parts of the site by adding lines to `notes/PART.tsv`: `policy`, `reading`, `forecasts` and `prices`. Git is the only way to write. The build checks every line and stops on a bad one. `src/notes.ts` holds the rules, and the build writes them to `/api/notes.txt`. The prompt is in `prompts/notes.md`.
 
-The server reads `notes/policy.tsv` and `notes/reading.tsv` from the deployed site. The build makes `/forecasts/` and `/deals/` from the other two.
+The build publishes each file as `/notes/PART.txt`, because the server sends `.tsv` and `.md` files as binary. The server jobs read the policy and reading notes from there. The build makes `/forecasts/` and `/deals/` from the other two.
 
 ## Deploy
 

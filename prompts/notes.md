@@ -3,7 +3,7 @@
 Paste this into a Claude session in this repo. Replace PART with `policy`, `reading`, `forecasts` or `prices`.
 
 ```text
-Read https://teoyujie.org/api/notes.md and write notes for PART.
+Read https://teoyujie.org/api/notes.txt and write notes for PART.
 ```
 
 The guide is built from `src/notes.ts`. It gives the list to read, the line format and the rules for each part. The build checks every line of `notes/PART.tsv`.

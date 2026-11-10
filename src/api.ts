@@ -1,5 +1,5 @@
 import { mkdirSync, writeFileSync } from "node:fs";
-import { textLines, type Post } from "./post.ts";
+import { textLines, textVersion, type Post } from "./post.ts";
 import { SPREADS } from "./kit/food-data.ts";
 import { SITE } from "./notes.ts";
 
@@ -31,7 +31,7 @@ interface Resource {
 }
 
 const DATA: readonly Resource[] = [
-  { href: "/api/tampines-food/places.tsv", title: "Tampines food places", about: `TSV, one row per place: ${SPREADS.length} places with type, cuisine, venue, typical price in S$ and Google rating. Goes with the post on Tampines food.` },
+  { href: "/api/tampines-food/places.txt", title: "Tampines food places", about: `TSV, one row per place: ${SPREADS.length} places with type, cuisine, venue, typical price in S$ and Google rating. Goes with the post on Tampines food.` },
   { href: "/hn-forecasters.opml", title: "Hacker News forecasters", about: "OPML list of the RSS feeds of the ranked commenters. Goes with the post on Hacker News forecasters." },
 ];
 
@@ -39,9 +39,9 @@ const LIVE: readonly Resource[] = [
   { href: "/singapore-policy-actionables.txt", title: "Singapore policy actionables", about: "TSV with a header. New Singapore government documents, ranked by what a resident can act on. The server rebuilds it each Saturday." },
   { href: "/reading.txt", title: "Reading feed", about: "TSV with a header. About 70 links on mathematics, politics, Hacker News and EDMW. The server rebuilds it each hour." },
   { href: "/forecasters.txt", title: "Forecasters feed", about: "TSV with a header. The latest comments and posts from the 20 ranked Hacker News forecasters. The server rebuilds it each hour." },
-  { href: "/notes/forecasts.tsv", title: "Forecasts", about: "TSV. Forecasts by those commenters, each with its date, link and outcome: open, right, partly or wrong." },
-  { href: "/api/deals.md", title: "Deals seen now", about: "Shelf prices seen in Singapore shops in the last 30 days, against the official average price." },
-  { href: "/api/prices.tsv", title: "Price list", about: "TSV. The latest official average price of 84 goods and the price that counts as a good deal." },
+  { href: "/notes/forecasts.txt", title: "Forecasts", about: "TSV. Forecasts by those commenters, each with its date, link and outcome: open, right, partly or wrong." },
+  { href: "/api/deals.txt", title: "Deals seen now", about: "Shelf prices seen in Singapore shops in the last 30 days, against the official average price." },
+  { href: "/api/prices.txt", title: "Price list", about: "TSV. The latest official average price of 84 goods and the price that counts as a good deal." },
 ];
 
 function tokens(text: string): number {
@@ -111,9 +111,9 @@ function holds(lines: string[]): string {
 }
 
 export function postApi(post: Post): PostApi {
-  const index = `${SITE}/api/${post.slug}/index.md`;
+  const index = `${SITE}/api/${post.slug}/index.txt`;
   const parts: Part[] = [];
-  const seen = new Set<string>();
+  const seen = new Set<string>(["index", "whole-post"]);
   let total = 0;
   for (const section of sections(textLines(post.source))) {
     const id = sectionId(section.heading);
@@ -123,9 +123,9 @@ export function postApi(post: Post): PostApi {
     for (let n = 0; n < cut.length; n++) {
       const many = cut.length > 1;
       const label = many ? `${section.heading}, part ${n + 1} of ${cut.length}` : section.heading;
-      const file = many ? `${id}-${n + 1}.md` : `${id}.md`;
+      const file = many ? `${id}-${n + 1}.txt` : `${id}.txt`;
       const body = (cut[n] ?? []).join("\n").trim();
-      const after = n + 1 < cut.length ? `\n\nNext part: ${SITE}/api/${post.slug}/${id}-${n + 2}.md` : "";
+      const after = n + 1 < cut.length ? `\n\nNext part: ${SITE}/api/${post.slug}/${id}-${n + 2}.txt` : "";
       const text = `From "${post.title}" (${post.date}). Section list: ${index}\n\n## ${label}\n\n${body}${after}\n`;
       parts.push({ file, label, holds: many ? holds(cut[n] ?? []) : "", tokens: tokens(text), text });
       total += tokens(body);
@@ -140,7 +140,7 @@ function count(n: number): string {
 
 function postIndex(api: PostApi): string {
   const { post } = api;
-  const lines = [`# ${post.title}`, "", `Date: ${post.date}`, `Page for people: ${SITE}/essays/${post.slug}/`, `Whole post in one file: ${SITE}/essays/${post.slug}/index.md (about ${count(api.tokens)} tokens)`, "", "## Summary", ""];
+  const lines = [`# ${post.title}`, "", `Date: ${post.date}`, `Page for people: ${SITE}/essays/${post.slug}/`, `Whole post in one file: ${SITE}/api/${post.slug}/whole-post.txt (about ${count(api.tokens)} tokens)`, "", "## Summary", ""];
   for (const item of post.summary) lines.push(`- ${item}`);
   lines.push("", "## Sections", "", "Fetch only the sections you need. Each line gives the size in tokens.", "");
   for (const part of api.parts) {
@@ -172,9 +172,9 @@ function llmsText(apis: PostApi[]): string {
     "## Posts",
     "",
   ];
-  for (const api of apis) lines.push(`- [${api.post.title}](${SITE}/api/${api.post.slug}/index.md): ${api.post.summary[0] ?? ""} Dated ${api.post.date}. ${api.parts.length} section files, about ${count(api.tokens)} tokens in all.`);
+  for (const api of apis) lines.push(`- [${api.post.title}](${SITE}/api/${api.post.slug}/index.txt): ${api.post.summary[0] ?? ""} Dated ${api.post.date}. ${api.parts.length} section files, about ${count(api.tokens)} tokens in all.`);
   lines.push("", "## Data", "", ...resourceLines(DATA), "", "## Live", "", ...resourceLines(LIVE), "", "## Optional", "");
-  lines.splice(lines.length - 3, 0, "", "## Write", "", `- [How to write notes](${SITE}/api/notes.md): an agent can adjust the policy ranking, the reading feed, the forecasts and the deals by adding lines to a file in git. Read this first.`);
+  lines.splice(lines.length - 3, 0, "", "## Write", "", `- [How to write notes](${SITE}/api/notes.txt): an agent can adjust the policy ranking, the reading feed, the forecasts and the deals by adding lines to a file in git. Read this first.`);
   lines.push(`- [Index as JSON](${SITE}/api/index.json): the same lists for a program.`, `- [Page for people](${SITE}/api/): this API explained, with every address.`);
   return `${lines.join("\n")}\n`;
 }
@@ -186,12 +186,12 @@ function indexJson(apis: PostApi[]): string {
     date: api.post.date,
     summary: api.post.summary,
     tokens: api.tokens,
-    index: `${SITE}/api/${api.post.slug}/index.md`,
-    full: `${SITE}/essays/${api.post.slug}/index.md`,
+    index: `${SITE}/api/${api.post.slug}/index.txt`,
+    full: `${SITE}/api/${api.post.slug}/whole-post.txt`,
     sections: api.parts.map((part) => ({ title: part.label, tokens: part.tokens, url: `${SITE}/api/${api.post.slug}/${part.file}` })),
   }));
   const resource = (item: Resource) => ({ title: item.title, url: `${SITE}${item.href}`, about: item.about });
-  return `${JSON.stringify({ site: SITE, start: `${SITE}/llms.txt`, write: `${SITE}/api/notes.md`, posts, data: DATA.map(resource), live: LIVE.map(resource) }, null, 1)}\n`;
+  return `${JSON.stringify({ site: SITE, start: `${SITE}/llms.txt`, write: `${SITE}/api/notes.txt`, posts, data: DATA.map(resource), live: LIVE.map(resource) }, null, 1)}\n`;
 }
 
 function cell(value: string | number): string {
@@ -213,11 +213,12 @@ export function writeApi(out: string, apis: PostApi[]): void {
   for (const api of apis) {
     const dir = `${out}/api/${api.post.slug}`;
     mkdirSync(dir, { recursive: true });
-    writeFileSync(`${dir}/index.md`, postIndex(api));
+    writeFileSync(`${dir}/index.txt`, postIndex(api));
+    writeFileSync(`${dir}/whole-post.txt`, textVersion(api.post));
     for (const part of api.parts) writeFileSync(`${dir}/${part.file}`, part.text);
   }
   mkdirSync(`${out}/api/tampines-food`, { recursive: true });
-  writeFileSync(`${out}/api/tampines-food/places.tsv`, foodTsv());
+  writeFileSync(`${out}/api/tampines-food/places.txt`, foodTsv());
   writeFileSync(`${out}/api/index.json`, indexJson(apis));
   writeFileSync(`${out}/llms.txt`, llmsText(apis));
 }

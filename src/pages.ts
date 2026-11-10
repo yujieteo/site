@@ -96,7 +96,7 @@ export function apiPage(apis: PostApi[]): string {
   const rows: string[] = [];
   for (const api of apis) {
     const base = `/api/${api.post.slug}`;
-    rows.push(`<tr><td><a href="${base}/index.md">${api.post.title}</a></td><td>${api.post.date}</td><td>${api.parts.length}</td><td>${api.tokens.toLocaleString("en-US")}</td></tr>`);
+    rows.push(`<tr><td><a href="${base}/index.txt">${api.post.title}</a></td><td>${api.post.date}</td><td>${api.parts.length}</td><td>${api.tokens.toLocaleString("en-US")}</td></tr>`);
   }
   const posts = `<table><thead><tr><th>Post index</th><th>Date</th><th>Section files</th><th>Tokens in all</th></tr></thead><tbody>${rows.join("")}</tbody></table>`;
   const others: string[] = [];
@@ -106,8 +106,8 @@ export function apiPage(apis: PostApi[]): string {
 <h2 id="use">How an agent uses it</h2>
 <ol>
 <li>Fetch <a href="/llms.txt"><code>/llms.txt</code></a>. It lists every post in one line each.</li>
-<li>Fetch the index of one post, <code>/api/POST/index.md</code>. It holds the summary and the section list.</li>
-<li>Fetch only the sections it needs, <code>/api/POST/SECTION.md</code>. No section file is much longer than 2,000 tokens. A long section comes in numbered parts, and each part links to the next.</li>
+<li>Fetch the index of one post, <code>/api/POST/index.txt</code>. It holds the summary and the section list.</li>
+<li>Fetch only the sections it needs, <code>/api/POST/SECTION.txt</code>. No section file is much longer than 2,000 tokens. A long section comes in numbered parts, and each part links to the next.</li>
 </ol>
 <p>To point an agent here, give it this line: <code>Read https://teoyujie.org/llms.txt and follow its steps.</code></p>
 <h2 id="posts">Posts</h2>
@@ -116,9 +116,9 @@ ${posts}
 <ul>${others.join("")}</ul>
 <p>A program can read the same lists from <a href="/api/index.json"><code>/api/index.json</code></a>.</p>
 <h2 id="write">How an agent writes</h2>
-<p>An agent can adjust four parts of the site with notes. Fixed rules build each part, and a note moves one item or adds a sentence to it. Git is the only way to write: the agent adds lines to a file in <a href="https://github.com/yujieteo/site">the site repository ↗</a> and opens a pull request. The build checks every line. <a href="/api/notes.md"><code>/api/notes.md</code></a> has the full format.</p>
+<p>An agent can adjust four parts of the site with notes. Fixed rules build each part, and a note moves one item or adds a sentence to it. Git is the only way to write: the agent adds lines to a file in <a href="https://github.com/yujieteo/site">the site repository ↗</a> and opens a pull request. The build checks every line. <a href="/api/notes.txt"><code>/api/notes.txt</code></a> has the full format.</p>
 ${notesTable()}
-<p>To set an agent to work, give it this line with the part you want: <code>Read https://teoyujie.org/api/notes.md and write notes for PART.</code></p>
+<p>To set an agent to work, give it this line with the part you want: <code>Read https://teoyujie.org/api/notes.txt and write notes for PART.</code></p>
 <h2 id="rules">What stays the same</h2>
 <ul>
 <li>The address of a section comes from its heading. It changes only if the heading changes.</li>
@@ -130,7 +130,7 @@ ${notesTable()}
 
 function notesTable(): string {
   const rows: string[] = [];
-  for (const part of PARTS) rows.push(`<tr><td>${part.name}</td><td>${escapeText(part.does)}</td><td><a href="${part.read}"><code>${part.read}</code></a></td><td><a href="/notes/${part.name}.tsv"><code>notes/${part.name}.tsv</code></a></td></tr>`);
+  for (const part of PARTS) rows.push(`<tr><td>${part.name}</td><td>${escapeText(part.does)}</td><td><a href="${part.read}"><code>${part.read}</code></a></td><td><a href="/notes/${part.name}.txt"><code>notes/${part.name}.tsv</code></a></td></tr>`);
   return `<table><thead><tr><th>Part</th><th>What a note does</th><th>List to read</th><th>File to change</th></tr></thead><tbody>${rows.join("")}</tbody></table>`;
 }
 
@@ -163,7 +163,7 @@ export function dealsPage(seen: Deal[]): string {
   const article = `<article><h1>Deals seen now</h1>
 <p>These are shelf prices that an AI agent saw in a Singapore shop in the last 30 days. Each is set against the latest official average for the same unit, from <a href="/essays/singapore-value-buys/">the post on what Singapore buys</a>. Bold marks a good deal: a price at least 10% below the average. Nobody checked these by hand, so open the link before you buy.</p>
 ${table}
-<p class="muted">Agents add prices as <a href="/api/notes.md">notes</a>. <a href="/api/deals.md">Text version</a></p></article>`;
+<p class="muted">Agents add prices as <a href="/api/notes.txt">notes</a>. <a href="/api/deals.txt">Text version</a></p></article>`;
   return shell("Deals seen now", "Shelf prices seen in Singapore shops in the last 30 days, against the official average.", HEADER, `<main class="wrap page">${article}</main>`, []);
 }
 
@@ -177,6 +177,6 @@ export function forecastsPage(notes: Note[]): string {
   const article = `<article><h1>Forecasts to check</h1>
 <p>These are forecasts by the people in <a href="/essays/hn-forecasters/">the forecasting ranking</a>. Open ones come first. An AI agent picks them from <a href="/forecasters.html">the forecasters feed</a> and marks the outcome when one can be checked. Most were not checked by hand, so some will be wrong.</p>
 ${table}
-<p class="muted">Agents add forecasts as <a href="/api/notes.md">notes</a>. <a href="/notes/forecasts.tsv">Text version</a></p></article>`;
+<p class="muted">Agents add forecasts as <a href="/api/notes.txt">notes</a>. <a href="/notes/forecasts.txt">Text version</a></p></article>`;
   return shell("Forecasts to check", "Open and settled forecasts by the ranked Hacker News commenters.", HEADER, `<main class="wrap page">${article}</main>`, []);
 }

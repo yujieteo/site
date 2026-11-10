@@ -1,4 +1,4 @@
-# One note per line: id, points, text, then key=value fields, split by tabs. Format: https://teoyujie.org/api/notes.md
+# One note per line: id, points, text, then key=value fields, split by tabs. Format: https://teoyujie.org/api/notes.txt
 c68ae363	0	I predict one of the surprises, to some people anyway, is going to be that autonomous vehicles don't clog city streets.	by=Zigurd	url=https://news.ycombinator.com/item?id=44996250	made=2025-08	outcome=open
 2d725cf5	0	If there is a task with enough value to automate, a specialized robot will win that market.	by=Zigurd	url=https://news.ycombinator.com/item?id=44284587	made=2025-06	outcome=open
 3ca61428	0	I would bet against the imminent commodification of autonomous vehicle technology.	by=Zigurd	url=https://news.ycombinator.com/item?id=45201624	made=2025-09	outcome=open
