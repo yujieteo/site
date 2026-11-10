@@ -51,10 +51,6 @@ main.page figcaption { margin: 16px 0 0; text-align: center; font-size: 0.75rem;
 /* Series colours for charts: Radix step 11 of blue, orange, violet and grass, in this order. Source: https://www.radix-ui.com/colors. Never put grass next to orange. */
 :root { --blue: #0d74ce; --orange: #cc4e00; --violet: #6550b9; --grass: #2a7e3b; --series-1: var(--blue); --series-2: var(--orange); --series-3: var(--violet); --series-4: var(--grass); }
 @media (max-width: 560px) { .frame { padding: 12px; } }
-figure[data-steps] svg [data-label] { opacity: 0.12; transition: opacity 200ms var(--ease-out); }
-figure[data-steps] svg [data-shown] { opacity: 0.5; }
-figure[data-steps] svg [data-current] { opacity: 1; }
-.step-label { margin: 12px 0 0; min-height: 1.5em; text-align: center; font-size: var(--small); color: var(--muted); }
 main.page figure[data-wide] { position: relative; left: 50%; width: min(960px, calc(100vw - 2 * var(--gutter))); translate: -50% 0; }
 main.page blockquote { margin: 2rem 0; padding: 4px 0 4px 20px; border-left: 3px solid var(--series-2); font-size: 1.125rem; line-height: 1.5; font-weight: 500; }
 main.page blockquote p { margin: 0; }
@@ -62,16 +58,12 @@ main.page table { width: 100%; margin: 2rem 0; border-collapse: collapse; font-s
 main.page th, main.page td { padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--line); }
 @media (max-width: 560px) { main.page table { display: block; overflow-x: auto; } }
 main.page th { color: var(--muted); font-weight: 550; }
-main.page math { font-size: 1.1em; }
-main.page math[display=block] { overflow-x: auto; overflow-y: hidden; }
 .note { margin: 12px 0 0; font-size: var(--small); color: var(--muted); text-align: center; }
 select { font: inherit; font-size: var(--small); padding: 6px 8px; border: 1px solid var(--gray3); border-radius: var(--radius); background: var(--gray1); color: var(--ink); max-width: 220px; }
 .control { display: inline-flex; align-items: center; gap: 12px; }
 @media (max-width: 560px) { main.page figure .frame { padding: 8px 0 0; background: none; box-shadow: none; }
   .control { display: grid; grid-template-columns: 5.5em minmax(0, 1fr); width: 100%; } .control select { max-width: none; width: 100%; }
   main.page figcaption { text-align: left; } .note { text-align: left; } }
-main.page svg.tall { display: none; }
-@media (max-width: 560px) { main.page figure[data-kind=schematic] svg:has(+ svg.tall) { display: none; } main.page figure[data-kind=schematic] svg.tall { display: block; width: 100%; max-width: 360px; } }
 .chart { overflow: visible; }
 .chart text { font: 12px/1 var(--sans); fill: var(--muted); font-variant-numeric: tabular-nums; }
 .tip { position: absolute; left: 0; top: 0; z-index: 3; width: max-content; max-width: min(260px, 80vw); padding: 6px 10px; pointer-events: none;

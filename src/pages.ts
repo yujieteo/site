@@ -41,13 +41,28 @@ ${tail}</body>
 
 const HEADER = `<header class="wrap"><a class="name" href="/">Yu Jie Teo</a><span class="tagline">Mechanical Engineer</span></header>`;
 
-function postItem(post: Post): string {
-  return `<li><a href="/essays/${post.slug}/"><h3>${post.title}</h3><span class="kind">${post.date}</span><p>${post.summary[0] ?? ""}</p></a></li>`;
+interface Entry {
+  href: string;
+  title: string;
+  date: string;
+  summary: string;
+}
+
+const PAGES: readonly Entry[] = [
+  { href: "/khan-stacks-free-recall/", title: "Algebraic stacks free recall", date: "2026-11-09", summary: "57 cues on A Modern Introduction to Algebraic Stacks by Adeel A. Khan. Write from memory, then mark your answer against the notes." },
+  { href: "/khan-stacks-drill/", title: "Algebraic stacks drill", date: "2026-11-09", summary: "1,347 questions on A Modern Introduction to Algebraic Stacks by Adeel A. Khan, with no prerequisites." },
+  { href: "/tampines-errands/", title: "Tampines errands", date: "2026-11-09", summary: "Service shops in Tampines, with phone numbers, a map and the prices I could find." },
+];
+
+function item(entry: Entry): string {
+  return `<li><a href="${entry.href}"><h3>${entry.title}</h3><span class="kind">${entry.date}</span><p>${entry.summary}</p></a></li>`;
 }
 
 export function homePage(posts: Post[]): string {
-  const items: string[] = [`<li><a href="/khan-stacks-free-recall/"><h3>Algebraic stacks free recall</h3><span class="kind">2026-11-09</span><p>57 cues on A Modern Introduction to Algebraic Stacks by Adeel A. Khan. Write from memory, then mark your answer against the notes.</p></a></li>`, `<li><a href="/khan-stacks-drill/"><h3>Algebraic stacks drill</h3><span class="kind">2026-11-09</span><p>1,347 questions on A Modern Introduction to Algebraic Stacks by Adeel A. Khan, with no prerequisites.</p></a></li>`, `<li><a href="/tampines-errands/"><h3>Tampines errands</h3><span class="kind">2026-11-09</span><p>Service shops in Tampines, with phone numbers, a map and the prices I could find.</p></a></li>`];
-  for (const post of posts) items.push(postItem(post));
+  const entries: Entry[] = [...PAGES];
+  for (const post of posts) entries.push({ href: `/essays/${post.slug}/`, title: post.title, date: post.date, summary: post.summary[0] ?? "" });
+  entries.sort((a, b) => b.date.localeCompare(a.date));
+  const items = entries.map(item);
   const list = items.length > 0 ? `<ol class="featured">${items.join("\n")}</ol>` : `<p class="muted">No posts yet.</p>`;
   const main = `<main class="wrap"><section id="posts"><h2>Posts</h2>${list}</section></main>`;
   return shell("Yu Jie Teo", "Posts by Yu Jie Teo, Mechanical Engineer.", HEADER, main, []);

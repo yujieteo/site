@@ -1,5 +1,5 @@
 import { relative, resolve } from "node:path";
-import { copyFileSync, cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { homePage, postPage } from "./pages.ts";
 import { figureKinds, figures, footnoteHtml, footnotes, headings, parsePost, textVersion, type Post } from "./post.ts";
 import { FIGURE_KINDS } from "./figures.ts";
@@ -22,9 +22,9 @@ function loadPosts(dir: string, drafts: boolean): Post[] {
   return posts;
 }
 
-function renderBody(post: Post, postsDir: string): { html: string; toc: ReturnType<typeof headings> } {
+function renderBody(post: Post): { html: string; toc: ReturnType<typeof headings> } {
   const split = footnotes(post.source);
-  const withFigures = figures(split.body, post.slug, postsDir);
+  const withFigures = figures(split.body, post.slug);
   const html = footnoteHtml(Bun.markdown.html(withFigures, { headings: { ids: true } }), split.notes);
   return { html, toc: headings(html) };
 }
@@ -32,8 +32,6 @@ function renderBody(post: Post, postsDir: string): { html: string; toc: ReturnTy
 async function buildAssets(out: string): Promise<void> {
   cpSync("static/fonts", `${out}/fonts`, { recursive: true });
   cpSync("static/public", out, { recursive: true });
-  mkdirSync(`${out}/shared`);
-  copyFileSync("static/kowalski.css", `${out}/shared/kowalski.css`);
   const css = readFileSync("static/kowalski.css", "utf8") + readFileSync("static/style.css", "utf8");
   writeFileSync(`${out}/style.css`, css);
   const entrypoints = ["src/kit/entry/kit.ts"];
@@ -54,12 +52,12 @@ async function main(): Promise<void> {
   await buildAssets(out);
   const posts = loadPosts(postsDir, drafts);
   writeFileSync(`${out}/index.html`, homePage(posts));
-  for (const post of posts) writePost(out, post, postsDir);
+  for (const post of posts) writePost(out, post);
   console.log(`built ${posts.length} post(s) into ${out}`);
 }
 
-function writePost(out: string, post: Post, postsDir: string): void {
-  const body = renderBody(post, postsDir);
+function writePost(out: string, post: Post): void {
+  const body = renderBody(post);
   const kinds = figureKinds(post.source);
   const dir = `${out}/essays/${post.slug}`;
   mkdirSync(dir, { recursive: true });

@@ -1,4 +1,3 @@
-import { existsSync, readFileSync } from "node:fs";
 import { FIGURE_KINDS, figureHtml } from "./figures.ts";
 
 export interface Post {
@@ -82,12 +81,7 @@ function parseAttributes(rest: string): Map<string, string> {
   return found;
 }
 
-function withTall(path: string): string {
-  const tall = path.replace(/\.svg$/, "-phone.svg");
-  return readFileSync(path, "utf8") + (existsSync(tall) ? readFileSync(tall, "utf8") : "");
-}
-
-export function figures(source: string, slug: string, dir: string): string {
+export function figures(source: string, slug: string): string {
   const out: string[] = [];
   let index = 0;
   for (const line of source.split("\n")) {
@@ -102,10 +96,7 @@ export function figures(source: string, slug: string, dir: string): string {
     const caption = a.get("caption") ?? "";
     if (!FIGURE_KINDS.includes(kind)) throw new Error(`${slug}: figure ${index} has an unknown kind "${kind}"`);
     if (alt === "" || caption === "") throw new Error(`${slug}: figure ${index} needs alt text and a caption`);
-    const src = a.get("src") ?? "";
-    if (kind === "schematic" && !/^[\w-]+\.svg$/.test(src)) throw new Error(`${slug}: figure ${index} needs src=NAME.svg`);
-    const svg = kind === "schematic" ? withTall(`${dir}/${slug}/${src}`) : "";
-    out.push(figureHtml(kind, `${slug}-${index}`, alt, caption, svg, a.get("wide") === "true", a.get("view") ?? ""));
+    out.push(figureHtml(kind, `${slug}-${index}`, alt, caption, a.get("wide") === "true", a.get("view") ?? ""));
   }
   return out.join("\n");
 }
