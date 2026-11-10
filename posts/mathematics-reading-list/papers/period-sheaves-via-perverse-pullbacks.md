@@ -26,7 +26,7 @@ In the relative Langlands programme of Ben-Zvi, Sakellaridis and Venkatesh, a sp
 
 **Theorem (support estimate; Theorem A, Proposition 2.3).** Let π: X → B be locally of finite presentation with an oriented exact relative (−1)-shifted symplectic structure and moment map μ: X → T<sup>\*</sup>B. If a complex F on B has microsupport in Λ ⊂ T<sup>\*</sup>B, then π<sup>φ</sup>(F) is supported on μ<sup>−1</sup>(Λ).
 
-**Theorem (dimensional reduction; Theorem B, Theorem 4.1).** Let g: Y → B be a map of derived Artin stacks, locally of finite presentation. Let π: T<sup>\*</sup>[−1](Y/B) → B and let τ: T<sup>\*</sup>[−1](Y/B) → Y be the projection. Then τ<sub>!</sub> π<sup>φ</sup> ≅ g<sup>\*</sup>[dim(Y/B)] and τ<sub>\*</sub> π<sup>φ</sup> ≅ g<sup>!</sup>[−dim(Y/B)].
+**Theorem (dimensional reduction; Theorem B, Theorem 4.1).** Let g: Y → B be a map of derived Artin stacks, locally of finite presentation. Let π: T<sup>\*</sup>\[−1\](Y/B) → B and let τ: T<sup>\*</sup>\[−1\](Y/B) → Y be the projection. Then τ<sub>!</sub> π<sup>φ</sup> ≅ g<sup>\*</sup>[dim(Y/B)] and τ<sub>\*</sub> π<sup>φ</sup> ≅ g<sup>!</sup>[−dim(Y/B)].
 - Step 1: deformation to the normal cone reduces to the linear case.
 - Step 2: in the linear case g is the zero section of a perfect complex, and one computes there.
 

@@ -29,7 +29,7 @@ The classical Atiyah–Witten formula lives on the loop space LX of a spin manif
 - Step 1: identify both line bundles with the Chern–Simons prequantum line bundle.
 - Step 2: prove the identity on the moduli space of semistable bundles on the elliptic curve, where the Pfaffians become Kac–Weyl characters. Then pull back to L<sup>2</sup>X.
 
-**Corollary (the classical limit; Corollary 1.4).** Let pf[τ] be the Pfaffian for the odd spin structure, restricted to double loops that are constant in one direction. Then q<sup>−n/12</sup> · pf[τ](γ) tends to the classical Pfaffian of the covariant derivative along γ as q → 0. So the classical formula sits at the cusp τ → i∞.
+**Corollary (the classical limit; Corollary 1.4).** Let pf[τ] be the Pfaffian for the odd spin structure, restricted to double loops that are constant in one direction. Then q<sup>−n/12</sup> · pf\[τ\](γ) tends to the classical Pfaffian of the covariant derivative along γ as q → 0. So the classical formula sits at the cusp τ → i∞.
 
 **Claim (elliptic Bismut–Chern character; Sections 4 and 6).** The local trace formula for the elliptic Chern character converges and defines a global D<sub>τ</sub>-closed form on LX. On L<sup>2</sup>X there is an elliptic Bismut–Chern character whose degree-zero part is the elliptic holonomy. Its restrictions along the two loop directions give the two characters on LX. The authors say that convergence is known only on gauged polystable double loops, so part of this picture is future work.
 - Convergence on LX uses energy estimates and Floquet theory.

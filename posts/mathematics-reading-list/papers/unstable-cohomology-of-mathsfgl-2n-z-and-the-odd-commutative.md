@@ -16,7 +16,7 @@ Borel computed the stable cohomology of GL(ℤ) with invariant forms β on the s
 - Consequence: it is a form on P<sub>2n</sub>/GL<sub>2n</sub>(ℤ) with coefficients in the orientation bundle O. The paper calls this an orientation form.
 
 **Canonical forms.** β<sup>4k+1</sup> = tr((X<sup>−1</sup>dX)<sup>4k+1</sup>) for k ≥ 1. They are closed and GL-invariant.
-- Compact type: products β ∧ … ∧ β<sup>4n−3</sup> ∧ φ<sup>2n</sup> that contain the top form β<sup>4n−3</sup>, together with φ<sup>2</sup>. They span Ω<sub>c</sub>[φ](2n).
+- Compact type: products β ∧ … ∧ β<sup>4n−3</sup> ∧ φ<sup>2n</sup> that contain the top form β<sup>4n−3</sup>, together with φ<sup>2</sup>. They span Ω<sub>c</sub>\[φ\](2n).
 
 **Odd graph complex.** The chain complex GC<sup>3</sup> is spanned over ℚ by oriented connected graphs. A graph with m edges and ℓ loops has degree m − 3ℓ, and the boundary contracts edges. GC<sub>3</sub> is the dual cochain complex, with coboundary δ and a Lie bracket.
 
@@ -24,11 +24,11 @@ Borel computed the stable cohomology of GL(ℤ) with invariant forms β on the s
 
 ## Main results
 
-**Theorem (unstable classes; Theorem 1.1).** For all n > 1 there is a canonical injective map of graded vector spaces from Ω<sub>c</sub>[φ](2n) to the compactly supported cohomology of P<sub>2n</sub>/GL<sub>2n</sub>(ℤ) with coefficients in O. For n = 1 the class of φ<sup>2</sup> generates H<sub>c</sub><sup>3</sup>(P<sub>2</sub>/GL<sub>2</sub>(ℤ); O) ≅ ℝ.
+**Theorem (unstable classes; Theorem 1.1).** For all n > 1 there is a canonical injective map of graded vector spaces from Ω<sub>c</sub>\[φ\](2n) to the compactly supported cohomology of P<sub>2n</sub>/GL<sub>2n</sub>(ℤ) with coefficients in O. For n = 1 the class of φ<sup>2</sup> generates H<sub>c</sub><sup>3</sup>(P<sub>2</sub>/GL<sub>2</sub>(ℤ); O) ≅ ℝ.
 - Step 1: show β<sup>4n−3</sup> ∧ φ<sup>2n</sup> extends to a version of the Borel–Serre compactification and vanishes on the boundary.
 - Step 2: pair with the known classes of Borel's forms under Poincaré duality.
 
-**Theorem (symmetric algebra; Theorem 1.2).** The symmetric algebra on the sum over n of Ω<sub>c</sub>[φ](2n), tensored with ℝ, embeds as a bigraded vector space into the sum over n of H<sub>c</sub><sup>•</sup>(P<sub>2n</sub>/GL<sub>2n</sub>(ℤ); O).
+**Theorem (symmetric algebra; Theorem 1.2).** The symmetric algebra on the sum over n of Ω<sub>c</sub>\[φ\](2n), tensored with ℝ, embeds as a bigraded vector space into the sum over n of H<sub>c</sub><sup>•</sup>(P<sub>2n</sub>/GL<sub>2n</sub>(ℤ); O).
 - Step 1: the compact type classes are primitive for the Hopf algebra structure introduced in the cited paper [AMP24].
 - Step 2: apply the Milnor–Moore and Poincaré–Birkhoff–Witt theorems.
 
