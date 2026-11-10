@@ -33,8 +33,6 @@ main.page figure svg { display: block; max-width: 100%; height: auto; margin-inl
 .frame { position: relative; padding: 24px; background: var(--card); border-radius: 12px; box-shadow: inset 0 0 0 1px var(--card-edge); }
 main.page figcaption { margin: 16px 0 0; text-align: center; font-size: 0.75rem; line-height: 1.3333; color: var(--muted); }
 .controls { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px; margin-top: 16px; font-size: var(--small); }
-.controls input[type=range] { width: 200px; accent-color: var(--ink); }
-.controls output { font-variant-numeric: tabular-nums; color: var(--muted); }
 .fn { position: relative; }
 .fn-ref { margin: 0 1px; padding: 0 5px; min-width: 20px; height: 20px; vertical-align: super; font: 500 0.6875rem/1 var(--sans); color: var(--ink);
   background: var(--gray3); border: 1px solid var(--gray7); border-radius: 10px; cursor: pointer; }
@@ -52,8 +50,7 @@ main.page figcaption { margin: 16px 0 0; text-align: center; font-size: 0.75rem;
 @media (min-width: 640px) { header.wrap { padding-top: 96px; } }
 /* Series colours for charts: Radix step 11 of blue, orange, violet and grass, in this order. Source: https://www.radix-ui.com/colors. Never put grass next to orange. */
 :root { --blue: #0d74ce; --orange: #cc4e00; --violet: #6550b9; --grass: #2a7e3b; --series-1: var(--blue); --series-2: var(--orange); --series-3: var(--violet); --series-4: var(--grass); }
-@media (hover: hover) and (pointer: fine) { .pt:hover { stroke: var(--ink); } }
-@media (max-width: 560px) { .frame { padding: 12px; } .controls input[type=range] { width: 140px; } }
+@media (max-width: 560px) { .frame { padding: 12px; } }
 figure[data-steps] svg [data-label] { opacity: 0.12; transition: opacity 200ms var(--ease-out); }
 figure[data-steps] svg [data-shown] { opacity: 0.5; }
 figure[data-steps] svg [data-current] { opacity: 1; }
@@ -72,7 +69,7 @@ select { font: inherit; font-size: var(--small); padding: 6px 8px; border: 1px s
 .control { display: inline-flex; align-items: center; gap: 12px; }
 @media (max-width: 560px) { main.page figure .frame { padding: 8px 0 0; background: none; box-shadow: none; }
   .control { display: grid; grid-template-columns: 5.5em minmax(0, 1fr); width: 100%; } .control select { max-width: none; width: 100%; }
-  .controls.axes { display: grid; grid-template-columns: 1fr 1fr; justify-items: start; } main.page figcaption { text-align: left; } .note { text-align: left; } }
+  main.page figcaption { text-align: left; } .note { text-align: left; } }
 main.page svg.tall { display: none; }
 @media (max-width: 560px) { main.page figure[data-kind=schematic] svg:has(+ svg.tall) { display: none; } main.page figure[data-kind=schematic] svg.tall { display: block; width: 100%; max-width: 360px; } }
 .chart { overflow: visible; }
@@ -93,7 +90,6 @@ select:focus-visible, input[type=search]:focus-visible { outline: 2px solid tran
 @media (pointer: coarse), (max-width: 560px) { .food-tools .button, figure[data-kind=food] .controls .button, .food-open .button { min-height: var(--tap); padding: 8px 14px; } }
 .food-dot { display: inline-block; width: 9px; height: 9px; margin-right: 6px; border-radius: 50%; }
 .food-square { display: inline-block; width: 9px; height: 9px; margin-right: 6px; border: 1.5px solid var(--ink); border-radius: 2px; background: var(--card); }
-.food-line { display: inline-block; width: 16px; margin-right: 6px; border-top: 2px dashed var(--muted); vertical-align: middle; }
 .food-key { display: flex; flex-wrap: wrap; gap: 4px 16px; margin: 0 0 8px; font-size: var(--small); color: var(--muted); }
 .food-map-key { margin-top: 8px; }
 .food-select { display: grid; gap: 6px; margin-bottom: 12px; font-size: var(--small); color: var(--muted); }

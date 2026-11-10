@@ -51,7 +51,7 @@ const EDGE = 14;
 
 type Box = readonly [number, number, number, number];
 const WHOLE: Box = [103.9255, 1.3345, 103.9665, 1.3775];
-export const AREAS: Record<string, readonly [string, number, number]> = {
+const AREAS: Record<string, readonly [string, number, number]> = {
   central: ["Central", 103.942, 1.3535],
   south: ["South", 103.947, 1.3455],
   west: ["West", 103.932, 1.3485],

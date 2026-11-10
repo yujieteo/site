@@ -13,7 +13,9 @@ function insertNewestFirst(posts: Post[], post: Post): void {
 function loadPosts(dir: string, drafts: boolean): Post[] {
   const posts: Post[] = [];
   if (!existsSync(dir)) return posts;
-  for (const slug of readdirSync(dir)) {
+  for (const entry of readdirSync(dir, { withFileTypes: true })) {
+    if (!entry.isDirectory()) continue;
+    const slug = entry.name;
     const post = parsePost(slug, readFileSync(`${dir}/${slug}/post.md`, "utf8"));
     if (drafts || !post.draft) insertNewestFirst(posts, post);
   }

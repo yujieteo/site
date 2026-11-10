@@ -15,6 +15,6 @@ function escapeAttribute(text: string): string {
 
 export function figureHtml(kind: string, id: string, alt: string, caption: string, svg: string, wide: boolean, view: string): string {
   const drawn = kind === "prices" ? priceFigure(id, figureWidth(wide)) : kind === "food" ? foodFigure(view, id, figureWidth(wide)) : schematic(svg);
-  const body = drawn.split("ALT").join(escapeAttribute(alt));
+  const body = drawn.split('aria-label="ALT"').join(`aria-label="${escapeAttribute(alt)}"`);
   return `<figure id="${id}" data-kind="${kind}"${view === "" ? "" : ` data-view="${view}"`}${wide ? " data-wide" : ""}><div class="frame">${body}</div><figcaption>${caption}</figcaption></figure>`;
 }

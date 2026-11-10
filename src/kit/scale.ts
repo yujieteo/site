@@ -1,8 +1,8 @@
-export const COLUMN = 692;
-export const WIDE = 960;
-export const GUTTER = 24;
-export const FRAME_PAD = 24;
-export const LABEL_GAP = 48;
+const COLUMN = 692;
+const WIDE = 960;
+const GUTTER = 24;
+const FRAME_PAD = 24;
+const LABEL_GAP = 48;
 const GLYPH = 6.5;
 const STEPS: readonly number[] = [1, 2, 2.5, 5];
 

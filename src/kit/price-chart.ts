@@ -107,7 +107,7 @@ function seasons(p: Plot): string {
   return out;
 }
 
-export function itemAt(index: number): PriceItem {
+function itemAt(index: number): PriceItem {
   const item = PRICES[index] ?? PRICES[0];
   if (!item) throw new Error("no price data");
   return item;

@@ -16,6 +16,10 @@ const FOOT = `<footer class="wrap"><ul>
 <li>Singapore policy actionables: <a href="/singapore-policy-actionables.html">Ranking</a> · <a href="/singapore-policy-actionables.xml">RSS feed</a></li>
 </ul></footer>`;
 
+function escapeText(text: string): string {
+  return text.replace(/&(?![a-z]+;|#\d+;)/g, "&amp;").replaceAll('"', "&quot;").replaceAll("<", "&lt;");
+}
+
 function shell(title: string, description: string, header: string, main: string, scripts: string[]): string {
   let tail = "";
   for (const src of scripts) tail += `<script type="module" src="/${src}"></script>\n`;
@@ -23,8 +27,8 @@ function shell(title: string, description: string, header: string, main: string,
 <html lang="en">
 <head>
 ${HEAD}
-<title>${title}</title>
-<meta name="description" content="${description}">
+<title>${escapeText(title)}</title>
+<meta name="description" content="${escapeText(description)}">
 </head>
 <body>
 ${header}
