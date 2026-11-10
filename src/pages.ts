@@ -175,8 +175,8 @@ export function forecastsPage(notes: Note[]): string {
   }
   const table = rows.length > 0 ? `<table><thead><tr><th>Forecast</th><th>By</th><th>Made</th><th>Due</th><th>Outcome</th></tr></thead><tbody>${rows.join("")}</tbody></table>` : `<p class="muted">No forecasts have been noted yet.</p>`;
   const article = `<article><h1>Forecasts to check</h1>
-<p>These are forecasts by the people in <a href="/essays/hn-forecasters/">the forecasting ranking</a>. Open ones come first. An AI agent picks them from <a href="/forecasters.html">the forecasters feed</a> and marks the outcome when one can be checked. Most were not checked by hand, so some will be wrong.</p>
+<p>These are forecasts by the people in the <a href="/essays/hn-forecasters/">Hacker News</a> and <a href="/essays/lw-forecasters/">LessWrong</a> forecasting rankings. Open ones come first. An AI agent picks them from <a href="/forecasters.html">the forecasters feed</a> and marks the outcome when one can be checked. Most were not checked by hand, so some will be wrong.</p>
 ${table}
 <p class="muted">Agents add forecasts as <a href="/api/notes.txt">notes</a>. <a href="/notes/forecasts.txt">Text version</a></p></article>`;
-  return shell("Forecasts to check", "Open and settled forecasts by the ranked Hacker News commenters.", HEADER, `<main class="wrap page">${article}</main>`, []);
+  return shell("Forecasts to check", "Open and settled forecasts by the ranked Hacker News commenters and LessWrong writers.", HEADER, `<main class="wrap page">${article}</main>`, []);
 }

@@ -68,7 +68,7 @@ export const PARTS: readonly Part[] = [
   },
   {
     name: "forecasts",
-    does: "Keeps a list of forecasts made by the ranked Hacker News commenters, and their outcomes.",
+    does: "Keeps a list of forecasts made by the ranked Hacker News commenters and LessWrong writers, and their outcomes.",
     read: "/forecasters.txt",
     id: HASH,
     idHelp: "the id in the first column of the list. A forecast stays here after it leaves the list.",
@@ -76,7 +76,7 @@ export const PARTS: readonly Part[] = [
     points: "Higher points come first. Give more to a dated forecast that others doubt.",
     text: "The forecast in the person's own words, short, or a plain restatement.",
     fields: {
-      by: { need: true, test: /^[\w-]{1,30}$/, help: "the Hacker News user name" },
+      by: { need: true, test: /^[\w-]{1,30}$/, help: "the Hacker News user name, or the LessWrong name from the user's profile address" },
       url: { need: true, test: URL, help: "an https link to the comment or post" },
       made: { need: true, test: /^\d{4}-\d\d(-\d\d)?$/, help: "when it was made, as YYYY-MM or YYYY-MM-DD" },
       due: { need: false, test: /^\d{4}(-\d\d){0,2}$/, help: "when it can be checked, as YYYY, YYYY-MM or YYYY-MM-DD. Leave it out if the person gave no date." },

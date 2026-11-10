@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="2.0">
+<head><title>LessWrong forecasters</title></head>
+<body>
+<outline text="Comments">
+<outline type="rss" text="Zvi on LessWrong, comments" xmlUrl="https://www.lesswrong.com/feed.xml?type=comments&amp;userId=N9zj5qpTfqmbn9dro" htmlUrl="https://www.lesswrong.com/users/zvi"/>
+<outline type="rss" text="gwern on LessWrong, comments" xmlUrl="https://www.lesswrong.com/feed.xml?type=comments&amp;userId=BtbwfsEyeT4P2eqXu" htmlUrl="https://www.lesswrong.com/users/gwern"/>
+<outline type="rss" text="Daniel Kokotajlo on LessWrong, comments" xmlUrl="https://www.lesswrong.com/feed.xml?type=comments&amp;userId=YLFQfGzNdGA4NFcKS" htmlUrl="https://www.lesswrong.com/users/daniel-kokotajlo"/>
+<outline type="rss" text="Matthew Barnett on LessWrong, comments" xmlUrl="https://www.lesswrong.com/feed.xml?type=comments&amp;userId=TWDkQT6f9mgyNXQ4p" htmlUrl="https://www.lesswrong.com/users/matthew-barnett"/>
+<outline type="rss" text="Rohin Shah on LessWrong, comments" xmlUrl="https://www.lesswrong.com/feed.xml?type=comments&amp;userId=du6SPHKnnPrPmxWNT" htmlUrl="https://www.lesswrong.com/users/rohinmshah"/>
+<outline type="rss" text="Richard_Kennaway on LessWrong, comments" xmlUrl="https://www.lesswrong.com/feed.xml?type=comments&amp;userId=tumpuMka2DnK7zW73" htmlUrl="https://www.lesswrong.com/users/richard_kennaway"/>
+<outline type="rss" text="paulfchristiano on LessWrong, comments" xmlUrl="https://www.lesswrong.com/feed.xml?type=comments&amp;userId=gb44edJjXhte8DA3A" htmlUrl="https://www.lesswrong.com/users/paulfchristiano"/>
+<outline type="rss" text="knb on LessWrong, comments" xmlUrl="https://www.lesswrong.com/feed.xml?type=comments&amp;userId=YEwEAL5Mu6YxaX4rD" htmlUrl="https://www.lesswrong.com/users/knb"/>
+<outline type="rss" text="Costanza on LessWrong, comments" xmlUrl="https://www.lesswrong.com/feed.xml?type=comments&amp;userId=cXudnoTp54SYgqfgF" htmlUrl="https://www.lesswrong.com/users/costanza"/>
+<outline type="rss" text="jsteinhardt on LessWrong, comments" xmlUrl="https://www.lesswrong.com/feed.xml?type=comments&amp;userId=EF8W65G6RaXxZjLBX" htmlUrl="https://www.lesswrong.com/users/jsteinhardt"/>
+<outline type="rss" text="Mati_Roy on LessWrong, comments" xmlUrl="https://www.lesswrong.com/feed.xml?type=comments&amp;userId=Tw9etd8rMnHLeSQ9q" htmlUrl="https://www.lesswrong.com/users/mathieuroy"/>
+<outline type="rss" text="orthonormal on LessWrong, comments" xmlUrl="https://www.lesswrong.com/feed.xml?type=comments&amp;userId=4fh2AAe3n7oBviyxx" htmlUrl="https://www.lesswrong.com/users/orthonormal"/>
+<outline type="rss" text="Cthulhoo on LessWrong, comments" xmlUrl="https://www.lesswrong.com/feed.xml?type=comments&amp;userId=9Bn8KsjZrr5DmFNHW" htmlUrl="https://www.lesswrong.com/users/cthulhoo"/>
+<outline type="rss" text="mfb on LessWrong, comments" xmlUrl="https://www.lesswrong.com/feed.xml?type=comments&amp;userId=Ze9tyaDB9MZDh9XKZ" htmlUrl="https://www.lesswrong.com/users/mfb"/>
+<outline type="rss" text="JoshuaZ on LessWrong, comments" xmlUrl="https://www.lesswrong.com/feed.xml?type=comments&amp;userId=fmTiLqp6mmXeLjwfN" htmlUrl="https://www.lesswrong.com/users/joshuaz"/>
+<outline type="rss" text="Liam Donovan on LessWrong, comments" xmlUrl="https://www.lesswrong.com/feed.xml?type=comments&amp;userId=HeRKphdWzJhkfWuJh" htmlUrl="https://www.lesswrong.com/users/liam-donovan-1"/>
+<outline type="rss" text="Dagon on LessWrong, comments" xmlUrl="https://www.lesswrong.com/feed.xml?type=comments&amp;userId=3EiFeonpTS34c3vzZ" htmlUrl="https://www.lesswrong.com/users/dagon"/>
+<outline type="rss" text="Kevin on LessWrong, comments" xmlUrl="https://www.lesswrong.com/feed.xml?type=comments&amp;userId=8GnKujYLZ2ZZLs5zk" htmlUrl="https://www.lesswrong.com/users/kevin"/>
+<outline type="rss" text="TheRev on LessWrong, comments" xmlUrl="https://www.lesswrong.com/feed.xml?type=comments&amp;userId=Qf7dawgKSDMJ3BjkN" htmlUrl="https://www.lesswrong.com/users/therev"/>
+<outline type="rss" text="AspiringKnitter on LessWrong, comments" xmlUrl="https://www.lesswrong.com/feed.xml?type=comments&amp;userId=wyuRmEzfzp3zGgSNK" htmlUrl="https://www.lesswrong.com/users/aspiringknitter"/>
+</outline>
+<outline text="Posts">
+<outline type="rss" text="Zvi on LessWrong, posts" xmlUrl="https://www.lesswrong.com/feed.xml?userId=N9zj5qpTfqmbn9dro" htmlUrl="https://www.lesswrong.com/users/zvi"/>
+<outline type="rss" text="gwern on LessWrong, posts" xmlUrl="https://www.lesswrong.com/feed.xml?userId=BtbwfsEyeT4P2eqXu" htmlUrl="https://www.lesswrong.com/users/gwern"/>
+<outline type="rss" text="Daniel Kokotajlo on LessWrong, posts" xmlUrl="https://www.lesswrong.com/feed.xml?userId=YLFQfGzNdGA4NFcKS" htmlUrl="https://www.lesswrong.com/users/daniel-kokotajlo"/>
+<outline type="rss" text="Matthew Barnett on LessWrong, posts" xmlUrl="https://www.lesswrong.com/feed.xml?userId=TWDkQT6f9mgyNXQ4p" htmlUrl="https://www.lesswrong.com/users/matthew-barnett"/>
+<outline type="rss" text="Rohin Shah on LessWrong, posts" xmlUrl="https://www.lesswrong.com/feed.xml?userId=du6SPHKnnPrPmxWNT" htmlUrl="https://www.lesswrong.com/users/rohinmshah"/>
+<outline type="rss" text="Richard_Kennaway on LessWrong, posts" xmlUrl="https://www.lesswrong.com/feed.xml?userId=tumpuMka2DnK7zW73" htmlUrl="https://www.lesswrong.com/users/richard_kennaway"/>
+<outline type="rss" text="paulfchristiano on LessWrong, posts" xmlUrl="https://www.lesswrong.com/feed.xml?userId=gb44edJjXhte8DA3A" htmlUrl="https://www.lesswrong.com/users/paulfchristiano"/>
+<outline type="rss" text="knb on LessWrong, posts" xmlUrl="https://www.lesswrong.com/feed.xml?userId=YEwEAL5Mu6YxaX4rD" htmlUrl="https://www.lesswrong.com/users/knb"/>
+<outline type="rss" text="Costanza on LessWrong, posts" xmlUrl="https://www.lesswrong.com/feed.xml?userId=cXudnoTp54SYgqfgF" htmlUrl="https://www.lesswrong.com/users/costanza"/>
+<outline type="rss" text="jsteinhardt on LessWrong, posts" xmlUrl="https://www.lesswrong.com/feed.xml?userId=EF8W65G6RaXxZjLBX" htmlUrl="https://www.lesswrong.com/users/jsteinhardt"/>
+<outline type="rss" text="Mati_Roy on LessWrong, posts" xmlUrl="https://www.lesswrong.com/feed.xml?userId=Tw9etd8rMnHLeSQ9q" htmlUrl="https://www.lesswrong.com/users/mathieuroy"/>
+<outline type="rss" text="orthonormal on LessWrong, posts" xmlUrl="https://www.lesswrong.com/feed.xml?userId=4fh2AAe3n7oBviyxx" htmlUrl="https://www.lesswrong.com/users/orthonormal"/>
+<outline type="rss" text="Cthulhoo on LessWrong, posts" xmlUrl="https://www.lesswrong.com/feed.xml?userId=9Bn8KsjZrr5DmFNHW" htmlUrl="https://www.lesswrong.com/users/cthulhoo"/>
+<outline type="rss" text="mfb on LessWrong, posts" xmlUrl="https://www.lesswrong.com/feed.xml?userId=Ze9tyaDB9MZDh9XKZ" htmlUrl="https://www.lesswrong.com/users/mfb"/>
+<outline type="rss" text="JoshuaZ on LessWrong, posts" xmlUrl="https://www.lesswrong.com/feed.xml?userId=fmTiLqp6mmXeLjwfN" htmlUrl="https://www.lesswrong.com/users/joshuaz"/>
+<outline type="rss" text="Liam Donovan on LessWrong, posts" xmlUrl="https://www.lesswrong.com/feed.xml?userId=HeRKphdWzJhkfWuJh" htmlUrl="https://www.lesswrong.com/users/liam-donovan-1"/>
+<outline type="rss" text="Dagon on LessWrong, posts" xmlUrl="https://www.lesswrong.com/feed.xml?userId=3EiFeonpTS34c3vzZ" htmlUrl="https://www.lesswrong.com/users/dagon"/>
+<outline type="rss" text="Kevin on LessWrong, posts" xmlUrl="https://www.lesswrong.com/feed.xml?userId=8GnKujYLZ2ZZLs5zk" htmlUrl="https://www.lesswrong.com/users/kevin"/>
+<outline type="rss" text="TheRev on LessWrong, posts" xmlUrl="https://www.lesswrong.com/feed.xml?userId=Qf7dawgKSDMJ3BjkN" htmlUrl="https://www.lesswrong.com/users/therev"/>
+<outline type="rss" text="AspiringKnitter on LessWrong, posts" xmlUrl="https://www.lesswrong.com/feed.xml?userId=wyuRmEzfzp3zGgSNK" htmlUrl="https://www.lesswrong.com/users/aspiringknitter"/>
+</outline>
+<outline text="Blogs and Hacker News">
+<outline type="rss" text="Zvi: thezvi.wordpress.com feed" xmlUrl="https://thezvi.wordpress.com/feed/"/>
+<outline type="rss" text="gwern: gwern.net newsletter feed, last issue 2021" xmlUrl="https://gwern.substack.com/feed"/>
+<outline type="rss" text="gwern: Hacker News comment feed" xmlUrl="https://hnrss.org/threads?id=gwern"/>
+<outline type="rss" text="Daniel Kokotajlo: AI Futures Project blog feed, written with others" xmlUrl="https://blog.aifutures.org/feed"/>
+<outline type="rss" text="Matthew Barnett: matthewbarnett.substack.com feed" xmlUrl="https://matthewbarnett.substack.com/feed"/>
+<outline type="rss" text="Rohin Shah: rohinshah.com feed, last post 2021" xmlUrl="https://rohinshah.com/feed/"/>
+<outline type="rss" text="jsteinhardt: bounded-regret.ghost.io feed" xmlUrl="https://bounded-regret.ghost.io/rss/"/>
+</outline>
+</body>
+</opml>

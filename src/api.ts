@@ -33,13 +33,14 @@ interface Resource {
 const DATA: readonly Resource[] = [
   { href: "/api/tampines-food/places.txt", title: "Tampines food places", about: `TSV, one row per place: ${SPREADS.length} places with type, cuisine, venue, typical price in S$ and Google rating. Goes with the post on Tampines food.` },
   { href: "/hn-forecasters.opml", title: "Hacker News forecasters", about: "OPML list of the RSS feeds of the ranked commenters. Goes with the post on Hacker News forecasters." },
+  { href: "/lw-forecasters.opml", title: "LessWrong forecasters", about: "OPML list of the comment and post feeds of the ranked writers. Goes with the post on LessWrong forecasters." },
 ];
 
 const LIVE: readonly Resource[] = [
   { href: "/singapore-policy-actionables.txt", title: "Singapore policy actionables", about: "TSV with a header. New Singapore government documents, ranked by what a resident can act on. The server rebuilds it each Saturday." },
   { href: "/reading.txt", title: "Reading feed", about: "TSV with a header. About 70 links on mathematics, politics, Hacker News and EDMW. The server rebuilds it each hour." },
-  { href: "/forecasters.txt", title: "Forecasters feed", about: "TSV with a header. The latest comments and posts from the 20 ranked Hacker News forecasters. The server rebuilds it each hour." },
-  { href: "/notes/forecasts.txt", title: "Forecasts", about: "TSV. Forecasts by those commenters, each with its date, link and outcome: open, right, partly or wrong." },
+  { href: "/forecasters.txt", title: "Forecasters feed", about: "TSV with a header. The latest comments and posts from the 20 ranked Hacker News forecasters and the 20 ranked LessWrong forecasters. The server rebuilds it each hour." },
+  { href: "/notes/forecasts.txt", title: "Forecasts", about: "TSV. Forecasts by those people, each with its date, link and outcome: open, right, partly or wrong." },
   { href: "/api/deals.txt", title: "Deals seen now", about: "Shelf prices seen in Singapore shops in the last 30 days, against the official average price." },
   { href: "/api/prices.txt", title: "Price list", about: "TSV. The latest official average price of 84 goods and the price that counts as a good deal." },
 ];

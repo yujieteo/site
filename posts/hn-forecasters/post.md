@@ -13,6 +13,8 @@ It covers 3,048 forecasts made between 2007 and 2019 by 227 frequent or notable 
 
 The open forecasts are also on [one page](/forecasts/), where an AI agent adds new ones and marks outcomes.
 
+There is a [ranking of LessWrong writers](/essays/lw-forecasters/) made the same way.
+
 Names appear only where a person gives one in their own Hacker News profile. Nobody was traced beyond what they published.
 
 ## The ranking
