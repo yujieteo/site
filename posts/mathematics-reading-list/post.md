@@ -10,6 +10,8 @@ This list holds 535 papers and notes in mathematics, sorted by subject. Each tit
 
 An annotation says why a work is useful. The annotations paraphrase remarks from a mathematics discussion. They are not the words of the author of this site.
 
+A Summary link opens a five-minute summary of the work: its story, main definitions, main results and the details to skip. An AI model wrote the summaries from the sources. Nobody checked them by hand.
+
 ## Quantum field theory and mathematical physics
 
 - [Localization of strings on group manifolds ↗](https://arxiv.org/pdf/2506.20028). Sameer Murthy, Edward Witten, 2025. *Annotation:* Explains the localization technique.

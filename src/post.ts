@@ -1,3 +1,4 @@
+import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { FIGURE_KINDS, figureHtml } from "./figures.ts";
 
 export interface Post {
@@ -6,6 +7,16 @@ export interface Post {
   date: string;
   draft: boolean;
   summary: string[];
+  source: string;
+}
+
+export interface Paper {
+  slug: string;
+  title: string;
+  byline: string;
+  url: string;
+  slogan: string;
+  basis: string;
   source: string;
 }
 
@@ -131,4 +142,44 @@ export function textVersion(post: Post): string {
   for (const item of post.summary) lines.push(`- ${item}`);
   lines.push("", ...textLines(post.source));
   return `${lines.join("\n")}\n`;
+}
+
+const LIST_ITEM = /^- \[(.*?)(?: ↗)?\]\((https?:\/\/[^)]*)\)\.?\s*(.*)$/;
+
+// A paper file starts with "source:", "slogan:" and "basis:" lines, then a blank line, then markdown.
+// The title and the byline come from the list item in the post that has the same source link.
+export function loadPapers(dir: string, post: Post): Paper[] {
+  const papers: Paper[] = [];
+  if (!existsSync(dir)) return papers;
+  const items = new Map<string, { title: string; byline: string }>();
+  for (const line of post.source.split("\n")) {
+    const found = LIST_ITEM.exec(line);
+    if (found) items.set(found[2] ?? "", { title: (found[1] ?? "").replaceAll("\\_", "_"), byline: (found[3] ?? "").split("*Annotation:*")[0]?.trim().replace(/\.$/, "") ?? "" });
+  }
+  for (const name of readdirSync(dir).sort()) {
+    if (!name.endsWith(".md")) continue;
+    const slug = name.slice(0, -3);
+    const parts = readFileSync(`${dir}/${name}`, "utf8").split("\n\n");
+    const head = new Map<string, string>();
+    for (const line of (parts[0] ?? "").split("\n")) head.set(line.slice(0, line.indexOf(": ")), line.slice(line.indexOf(": ") + 2).trim());
+    const url = head.get("source") ?? "";
+    const item = items.get(url);
+    const slogan = head.get("slogan") ?? "";
+    if (item === undefined) throw new Error(`${post.slug}/papers/${name}: no list item links to ${url}`);
+    if (slogan === "") throw new Error(`${post.slug}/papers/${name}: a paper needs a slogan`);
+    papers.push({ slug, title: item.title, byline: item.byline, url, slogan, basis: head.get("basis") ?? "", source: parts.slice(1).join("\n\n").trim() });
+  }
+  return papers;
+}
+
+export function linkPapers(post: Post, papers: Paper[]): string {
+  if (papers.length === 0) return post.source;
+  const slugs = new Map<string, string>();
+  for (const paper of papers) slugs.set(paper.url, paper.slug);
+  const lines: string[] = [];
+  for (const line of post.source.split("\n")) {
+    const slug = slugs.get(LIST_ITEM.exec(line)?.[2] ?? "");
+    lines.push(slug === undefined ? line : `${line} [Summary](/essays/${post.slug}/${slug}/)`);
+  }
+  return lines.join("\n");
 }

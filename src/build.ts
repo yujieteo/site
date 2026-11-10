@@ -1,9 +1,9 @@
 import { relative, resolve } from "node:path";
 import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
-import { apiPage, dealsPage, dealsText, forecastsPage, homePage, postPage } from "./pages.ts";
+import { apiPage, dealsPage, dealsText, forecastsPage, homePage, paperPage, postPage } from "./pages.ts";
 import { deals, forecastOrder, loadNotes, notesGuide, pricesTsv } from "./notes.ts";
 import { postApi, writeApi } from "./api.ts";
-import { figureKinds, figures, footnoteHtml, footnotes, headings, parsePost, textVersion, type Post } from "./post.ts";
+import { figureKinds, figures, footnoteHtml, footnotes, headings, linkPapers, loadPapers, parsePost, textVersion, type Paper, type Post } from "./post.ts";
 import { FIGURE_KINDS } from "./figures.ts";
 
 function insertNewestFirst(posts: Post[], post: Post): void {
@@ -54,7 +54,12 @@ async function main(): Promise<void> {
   await buildAssets(out);
   const posts = loadPosts(postsDir, drafts);
   writeFileSync(`${out}/index.html`, homePage(posts));
-  for (const post of posts) writePost(out, post);
+  for (const post of posts) {
+    const papers = loadPapers(`${postsDir}/${post.slug}/papers`, post);
+    post.source = linkPapers(post, papers);
+    writePost(out, post);
+    for (const paper of papers) writePaper(out, post, paper);
+  }
   const apis = posts.map(postApi);
   writeApi(out, apis);
   writeFileSync(`${out}/api/index.html`, apiPage(apis));
@@ -81,6 +86,13 @@ function writePost(out: string, post: Post): void {
   mkdirSync(dir, { recursive: true });
   writeFileSync(`${dir}/index.html`, postPage(post, body.html, body.toc, kinds));
   writeFileSync(`${dir}/index.md`, textVersion(post));
+}
+
+function writePaper(out: string, post: Post, paper: Paper): void {
+  const dir = `${out}/essays/${post.slug}/${paper.slug}`;
+  mkdirSync(dir, { recursive: true });
+  const html = Bun.markdown.html(paper.source, { headings: { ids: true } });
+  writeFileSync(`${dir}/index.html`, paperPage(post, paper, html));
 }
 
 await main();

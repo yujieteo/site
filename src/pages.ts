@@ -1,6 +1,6 @@
 import { API_DATA, API_LIVE, type PostApi } from "./api.ts";
 import { PARTS, type Deal, type Note } from "./notes.ts";
-import { readingMinutes, type Heading, type Post } from "./post.ts";
+import { readingMinutes, type Heading, type Paper, type Post } from "./post.ts";
 
 const HEAD = `<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -90,6 +90,17 @@ export function postPage(post: Post, bodyHtml: string, headings: Heading[], kind
   for (const kind of kinds) scripts.push(`kit/${kind}.js`);
   const article = `<article><h1>${post.title}</h1>${meta}${summaryBlock(post)}${contents(headings)}${bodyHtml}</article>`;
   return shell(post.title, post.summary[0] ?? "", HEADER, `<main class="wrap page">${article}</main>`, scripts);
+}
+
+export function paperPage(post: Post, paper: Paper, bodyHtml: string): string {
+  const minutes = readingMinutes(paper.source);
+  const back = `/essays/${post.slug}/`;
+  const meta = `<p class="meta muted">${escapeText(paper.byline)} · ${minutes} min read · <a href="${escapeText(paper.url)}" rel="noopener noreferrer">Source ↗</a> · <a href="${back}">${post.title}</a></p>`;
+  const slogan = `<section class="summary" aria-label="Slogan"><h2>Slogan</h2><ul><li>${escapeText(paper.slogan)}</li></ul></section>`;
+  const basis = paper.basis === "" ? "" : ` It is based on ${escapeText(paper.basis)}.`;
+  const note = `<p class="muted">An AI model wrote this summary. Nobody checked it by hand.${basis} Check each statement against the source before you rely on it.</p>`;
+  const article = `<article><h1>${escapeText(paper.title)}</h1>${meta}${slogan}${bodyHtml}${note}</article>`;
+  return shell(paper.title, paper.slogan, HEADER, `<main class="wrap page">${article}</main>`, []);
 }
 
 export function apiPage(apis: PostApi[]): string {
