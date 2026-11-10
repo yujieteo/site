@@ -1,8 +1,8 @@
 ---
 title: Singapore policy actionables, a weekly ranking of government documents
 date: 2026-11-10
-summary: A server job reads 15 primary sources each Saturday and ranks the new documents by fixed rules.
-summary: It reads no news. It reads agency notices, the Gazette, Parliament's bills and replies to parliamentary questions.
+summary: A server job reads 14 primary sources each Saturday and ranks the new documents by fixed rules.
+summary: It reads no news. It reads agency notices, the Gazette and replies to parliamentary questions.
 summary: The rules favour what a resident can act on in money, work and public services.
 summary: An AI model can add or remove up to 60 points for a document and leave one sentence on what to do.
 summary: The ranking is at /singapore-policy-actionables.html, with an RSS feed and a plain text file.
@@ -19,7 +19,6 @@ The job reads primary sources only. It fetches them once a week, on Saturday mor
 |---|---|
 | [REACH ↗](https://www.reach.gov.sg/latest-happenings/public-consultation/) | Public consultations and their status |
 | [Government Gazette ↗](https://www.egazette.gov.sg/gazettes/) | New Acts, bills and subsidiary legislation |
-| [Parliament ↗](https://www.parliament.gov.sg/parliamentary-business/bills-introduced) | Bills introduced and passed |
 | MOF, MTI, MOH, MHA, MDDI, MSE, MOT, PMO | Notices, speeches and replies to parliamentary questions |
 | MOM, URA, ACRA | Notices and statistics |
 | [gov.sg ↗](https://www.gov.sg/explainers/) | The government's own explainers |
@@ -45,7 +44,7 @@ Each document starts with the points of its kind. Then the job adds and removes 
 | The title is about a ceremony, a visit or an appointment | -30 |
 | Each day since the date of the document | -2 |
 
-The age of an open consultation or a pending bill costs 10 points at most, because it stays useful until it closes. The list holds the last 28 days. Open consultations and pending bills stay for 120 days.
+The age of an open consultation costs 10 points at most, because it stays useful until it closes. The list holds the last 28 days. Open consultations stay for 120 days.
 
 The three lenses are word lists. Money covers tax, property, CPF and markets. Work covers jobs, wages, work passes and training. Services covers vouchers, subsidies, housing, health care, schools and fares.
 
@@ -63,5 +62,6 @@ The plain text file is made for this. It has one line per document, with the rea
 
 - The rules match words in titles. They miss a useful document with a dull title, and they reward a dull document with a busy one.
 - The Monetary Authority of Singapore, HDB, IRAS, CPF and Singapore Statutes Online are not in the list. Their sites had no feed, blocked the job, or were down when I built it.
+- Parliament's list of bills answers the server with a bot check, so the bills come from the Gazette. The Gazette shows a bill when it is published, not when it passes.
 - A note is an AI model's reading of a document. It can be wrong. Open the document before you act on it.
 - Nothing here is financial advice.
