@@ -2,10 +2,10 @@
 title: What the best-rated food in Tampines costs
 date: 2026-11-09
 summary: Among meals I can compare per person, Ippon Fusion Bowl has 4.8 on Google at a typical S$7.50, and Botak Cantonese Porridge has 4.6 at S$5.00.
-summary: A high score can also cost much more. Captain Kim has 4.7 from 3,387 reviews, and its typical buffet costs S$34.65.
-summary: A typical main costs S$6.00 at a hawker stall, against S$16.67 at a restaurant, across 50 places.
-summary: Prices come from 539 dated dishes. Every comparison uses the typical main of a place, not its cheapest item, and each row opens the menu behind it.
-summary: Only six places have both a Google rating and a price I can compare per person, so the rating ranking is a small sample.
+summary: A high score can also cost much more. Seoul Garden has 4.8 from 3,753 reviews, and its typical buffet costs S$41.85.
+summary: A typical main costs S$6.00 at a hawker stall, against S$16.67 at a restaurant, across 51 places.
+summary: Prices come from 546 dated dishes. Every comparison uses the typical main of a place, not its cheapest item, and each row opens the menu behind it.
+summary: Only 16 places have both a Google rating and a price I can compare per person, so the rating ranking is still a small sample.
 ---
 Tampines has two working hawker centres, three big malls and many coffee shops. This page shows what the food costs and how it is rated. It works best on a phone: tap a row to see the menu behind its price.
 
@@ -25,7 +25,7 @@ Rajarani Thosai shows that scores and awards measure different things. Michelin 
 
 Each dot is one place, at its typical main. The black line marks the median of each group. Shared-dish places are left out, because their prices are per table and not per person.
 
-::figure kind=food view=spread alt="Four rows of dots showing the typical price at 25 hawker places, 25 restaurants, 4 cafes and 24 snack places in Tampines. The medians are S$6.00, S$16.67, S$14.66 and S$5.70." caption="Typical price per person on a logarithmic axis. Tap a dot for the place and its range. Only 4 cafes have enough verified meal prices, so that median is weak."
+::figure kind=food view=spread alt="Four rows of dots showing the typical price at 25 hawker places, 26 restaurants, 4 cafes and 24 snack places in Tampines. The medians are S$6.00, S$16.67, S$14.66 and S$5.70." caption="Typical price per person on a logarithmic axis. Tap a dot for the place and its range. Only 4 cafes have enough verified meal prices, so that median is weak."
 
 ## What each cuisine costs
 
@@ -47,9 +47,9 @@ Search all 332 places by name, dish, cuisine or address. Researched places come 
 
 ## How I built this
 
-**Prices.** I collected 970 menu rows for 140 places from guides, reviews and official menus. Each row keeps its source and date.
+**Prices.** I collected 983 menu rows for 140 places from guides, reviews and official menus. Each row keeps its source and date.
 
-**What I removed.** Delivery prices, since apps mark them up. Prices with no date or from before 2023. Add-ons and sides. Whole fish, steamboats and boxes with no stated portion. One promo lunch deal, and one price from another outlet of the same chain. That left 539 dishes.
+**What I removed.** Delivery prices, since apps mark them up. Prices with no date or from before 2023. Add-ons and sides. Whole fish, steamboats and boxes with no stated portion. One promo lunch deal, and one price from another outlet of the same chain. That left 546 dishes.
 
 **Typical main.** A place needs at least three different verified mains for a typical price, or two for a shared-dish place. For a dish sold in several sizes, I use the middle size. The typical main is the median of those dish prices. A place with too few dishes shows its range and no typical price.
 
@@ -57,9 +57,9 @@ Search all 332 places by name, dish, cuisine or address. Researched places come 
 
 **Places left without a comparison.** Social Bite has a quoted 4.9, and Ah Gong Ban Mian has a quoted 3.2, but I could not verify a price from 2023 or later for either. Tanyu has a quoted 4.8, but its fish is sold to share and no source states a portion. They stay on the list without a typical price.
 
-**Ratings.** A rating counts as Google only if a page quotes Google. Scores date from 2022 to 2026, and most guides gave no review count. I did not collect scores from Google Maps directly. I left out editorial scores, and directory scores whose source is unclear.
+**Ratings.** A rating counts as Google only if a page quotes Google. I also take scores from [FooTinder](https://en.footinder.app/), which shows Google review counts and links each place to Google Maps; those rows are dated November 2026. Scores date from 2022 to 2026, and most guides gave no review count. I did not collect scores from Google Maps directly. I left out editorial scores, and directory scores whose source is unclear.
 
-**Closed or moved.** I removed Mr. Doner Kebab, Nuodle and The Co-op, since their units now show other tenants or a closed label. Eleven places have no recent proof they are open, and their rows say so. Two have moved.
+**Closed or moved.** I removed Mr. Doner Kebab, Nuodle and The Co-op, since their units now show other tenants or a closed label. Eight places have no recent proof they are open, and their rows say so. Two have moved.
 
 **The map.** Researched places use their block address or their mall. The rest use OpenStreetMap positions, inside the official planning-area boundary. Where a map entry was last edited before 2022, its row says so, because the shop may have closed.
 
