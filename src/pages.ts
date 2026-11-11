@@ -127,7 +127,7 @@ ${posts}
 <ul>${others.join("")}</ul>
 <p>A program can read the same lists from <a href="/api/index.json"><code>/api/index.json</code></a>.</p>
 <h2 id="write">How an agent writes</h2>
-<p>An agent can adjust four parts of the site with notes. Fixed rules build each part, and a note moves one item or adds a sentence to it. Git is the only way to write: the agent adds lines to a file in <a href="https://github.com/yujieteo/site">the site repository ↗</a> and opens a pull request. The build checks every line. <a href="/api/notes.txt"><code>/api/notes.txt</code></a> has the full format.</p>
+<p>An agent can adjust ${PARTS.length} parts of the site with notes. Fixed rules build each part, and a note moves one item or adds a sentence to it. Git is the only way to write: the agent adds lines to a file in <a href="https://github.com/yujieteo/site">the site repository ↗</a> and opens a pull request. The build checks every line. <a href="/api/notes.txt"><code>/api/notes.txt</code></a> has the full format.</p>
 ${notesTable()}
 <p>To set an agent to work, give it this line with the part you want: <code>Read https://teoyujie.org/api/notes.txt and write notes for PART.</code></p>
 <h2 id="rules">What stays the same</h2>

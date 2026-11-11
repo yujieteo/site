@@ -43,6 +43,9 @@ const LIVE: readonly Resource[] = [
   { href: "/notes/forecasts.txt", title: "Forecasts", about: "TSV. Forecasts by those people, each with its date, link and outcome: open, right, partly or wrong." },
   { href: "/api/deals.txt", title: "Deals seen now", about: "Shelf prices seen in Singapore shops in the last 30 days, against the official average price." },
   { href: "/api/prices.txt", title: "Price list", about: "TSV. The latest official average price of 84 goods and the price that counts as a good deal." },
+  { href: "/api/products.txt", title: "Products", about: "TSV with a header. Every product on the Singapore prices post, with the id of its item, its shop, price and link." },
+  { href: "/api/checks.txt", title: "Product checks", about: "TSV with a header. The products whose item has a quality check, the check, and what a page showed." },
+  { href: "/api/advice.txt", title: "Advice", about: "TSV with a header. The 12 spending groups of the Singapore prices post and the advice in each, by lever." },
 ];
 
 function tokens(text: string): number {
@@ -175,7 +178,7 @@ function llmsText(apis: PostApi[]): string {
   ];
   for (const api of apis) lines.push(`- [${api.post.title}](${SITE}/api/${api.post.slug}/index.txt): ${api.post.summary[0] ?? ""} Dated ${api.post.date}. ${api.parts.length} section files, about ${count(api.tokens)} tokens in all.`);
   lines.push("", "## Data", "", ...resourceLines(DATA), "", "## Live", "", ...resourceLines(LIVE), "", "## Optional", "");
-  lines.splice(lines.length - 3, 0, "", "## Write", "", `- [How to write notes](${SITE}/api/notes.txt): an agent can adjust the policy ranking, the reading feed, the forecasts and the deals by adding lines to a file in git. Read this first.`);
+  lines.splice(lines.length - 3, 0, "", "## Write", "", `- [How to write notes](${SITE}/api/notes.txt): an agent can adjust the policy ranking, the reading feed, the forecasts, the deals, and the products, product checks and advice of the Singapore prices post by adding lines to a file in git. Read this first.`);
   lines.push(`- [Index as JSON](${SITE}/api/index.json): the same lists for a program.`, `- [Page for people](${SITE}/api/): this API explained, with every address.`);
   return `${lines.join("\n")}\n`;
 }

@@ -15,9 +15,9 @@ A post can hold summaries in `posts/NAME/papers/SLUG.md`. A file starts with `so
 
 ## Notes from agents
 
-Agents adjust four parts of the site by adding lines to `notes/PART.tsv`: `policy`, `reading`, `forecasts` and `prices`. Git is the only way to write. The build checks every line and stops on a bad one. `src/notes.ts` holds the rules, and the build writes them to `/api/notes.txt`. The prompt is in `prompts/notes.md`.
+Agents adjust seven parts of the site by adding lines to `notes/PART.tsv`: `policy`, `reading`, `forecasts`, `prices`, `products`, `checks` and `advice`. Git is the only way to write. The build checks every line and stops on a bad one. `src/notes.ts` holds the rules, and the build writes them to `/api/notes.txt`. The prompt is in `prompts/notes.md`.
 
-The build publishes each file as `/notes/PART.txt`, because the server sends `.tsv` and `.md` files as binary. The server jobs read the policy and reading notes from there. The build makes `/forecasts/` and `/deals/` from the other two.
+The build publishes each file as `/notes/PART.txt`, because the server sends `.tsv` and `.md` files as binary. The server jobs read the policy and reading notes from there. The build makes `/forecasts/` and `/deals/` from the forecasts and prices notes. It draws the Singapore prices post from the products, checks and advice notes, and it writes the list for each of those three to `/api/PART.txt`.
 
 ## Deploy
 

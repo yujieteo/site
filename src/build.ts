@@ -1,10 +1,11 @@
 import { relative, resolve } from "node:path";
 import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { apiPage, dealsPage, dealsText, forecastsPage, homePage, paperPage, postPage } from "./pages.ts";
-import { deals, forecastOrder, loadNotes, notesGuide, pricesTsv } from "./notes.ts";
+import { deals, forecastOrder, loadNotes, notesGuide, pricesTsv, type Note } from "./notes.ts";
 import { postApi, writeApi } from "./api.ts";
 import { figureKinds, figures, footnoteHtml, footnotes, headings, linkPapers, loadPapers, parsePost, textVersion, type Paper, type Post } from "./post.ts";
 import { FIGURE_KINDS } from "./figures.ts";
+import { adviceList, checksList, productsList, useLifeNotes } from "./kit/life.ts";
 
 function insertNewestFirst(posts: Post[], post: Post): void {
   let at = 0;
@@ -52,6 +53,9 @@ async function main(): Promise<void> {
   rmSync(out, { recursive: true, force: true });
   mkdirSync(out, { recursive: true });
   await buildAssets(out);
+  // The notes come first: the Singapore prices post draws its product checks, products and advice from them.
+  const notes = loadNotes("notes", out);
+  useLifeNotes({ checks: notes.checks ?? [], products: notes.products ?? [], advice: notes.advice ?? [] });
   const posts = loadPosts(postsDir, drafts);
   writeFileSync(`${out}/index.html`, homePage(posts));
   for (const post of posts) {
@@ -63,15 +67,17 @@ async function main(): Promise<void> {
   const apis = posts.map(postApi);
   writeApi(out, apis);
   writeFileSync(`${out}/api/index.html`, apiPage(apis));
-  writeNotes(out);
+  writeNotes(out, notes);
   console.log(`built ${posts.length} post(s) into ${out}`);
 }
 
-function writeNotes(out: string): void {
-  const notes = loadNotes("notes", out);
+function writeNotes(out: string, notes: Record<string, Note[]>): void {
   const seen = deals(notes.prices ?? [], new Date().toISOString().slice(0, 10));
   writeFileSync(`${out}/api/notes.txt`, notesGuide());
   writeFileSync(`${out}/api/prices.txt`, pricesTsv());
+  writeFileSync(`${out}/api/products.txt`, productsList());
+  writeFileSync(`${out}/api/checks.txt`, checksList());
+  writeFileSync(`${out}/api/advice.txt`, adviceList());
   writeFileSync(`${out}/api/deals.txt`, dealsText(seen));
   mkdirSync(`${out}/deals`, { recursive: true });
   writeFileSync(`${out}/deals/index.html`, dealsPage(seen));
