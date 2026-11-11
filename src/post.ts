@@ -1,5 +1,5 @@
 import { existsSync, readFileSync, readdirSync } from "node:fs";
-import { FIGURE_KINDS, figureHtml } from "./figures.ts";
+import { FIGURE_KINDS, figureHtml, figureText } from "./figures.ts";
 
 export interface Post {
   slug: string;
@@ -133,6 +133,7 @@ export function textLines(source: string): string[] {
   for (const line of source.split("\n")) {
     const a = line.startsWith("::figure ") ? parseAttributes(line.slice(9)) : undefined;
     lines.push(a ? `Figure: ${a.get("caption") ?? ""} (Image: ${a.get("alt") ?? ""})` : line);
+    if (a) lines.push(...figureText(a.get("kind") ?? ""));
   }
   return lines;
 }
