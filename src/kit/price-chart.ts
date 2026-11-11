@@ -1,4 +1,4 @@
-import { CATEGORIES, LAST_MONTH, PRICES, WORDS, type PriceItem } from "./price-data.ts";
+import { LAST_MONTH, PRICES, WORDS, type PriceItem } from "./price-data.ts";
 import { at, fitCount, scale, svgHead, tickStep, ticks, type Scale } from "./scale.ts";
 
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -125,63 +125,24 @@ function seasonNote(item: PriceItem): string {
   return `Usually cheapest in ${MONTHS[low] ?? ""} and dearest in ${MONTHS[high] ?? ""}.`;
 }
 
-export function priceNote(index: number, word: string): string {
+export function priceNote(index: number): string {
   const item = itemAt(index);
   const now = shown(item, item.cents.at(-1) ?? 0);
-  const lead = word !== "" && word !== item.name ? `${word}: closest official series is ${item.name}. ` : "";
-  const level = item.unit === "S$" ? `${now} in ${monthName(LAST_MONTH)}.` : `${item.name} index ${now} in ${monthName(LAST_MONTH)}, where 2024 = 100.`;
+  const level = item.unit === "S$" ? `${item.name}: ${now} in ${monthName(LAST_MONTH)}.` : `${item.name} index ${now} in ${monthName(LAST_MONTH)}, where 2024 = 100.`;
   const deal = item.deal > 0 ? ` A good deal is ${shown(item, item.deal)} or less.` : "";
-  return `${lead}${level} ${monthName(LAST_MONTH + AHEAD)} forecast ${shown(item, item.mid)}, likely ${shown(item, item.low)} to ${shown(item, item.high)}.${deal} ${seasonNote(item)}`;
+  return `${level} ${monthName(LAST_MONTH + AHEAD)} forecast ${shown(item, item.mid)}, likely ${shown(item, item.low)} to ${shown(item, item.high)}.${deal} ${seasonNote(item)}`;
 }
 
 function clean(text: string): string {
   return text.toLowerCase().replace(/['’]/g, "").trim();
 }
 
-function inCategory(word: readonly [number, string, number], category: number): boolean {
-  return category < 0 || word[0] === category;
-}
-
-export function wordsIn(category: number): string[] {
-  const out: string[] = [];
-  for (const word of WORDS) if (inCategory(word, category) && !out.includes(word[1])) out.push(word[1]);
-  return out;
-}
-
-function rankOf(label: string, wanted: string): number {
-  const text = clean(label);
-  if (text === wanted) return 0;
-  if (text.startsWith(wanted)) return 1;
-  if (text.split(/[^a-z0-9]+/).includes(wanted)) return 2;
-  return text.includes(wanted) ? 3 : 4;
-}
-
-export function findWord(text: string, category: number, exact: boolean): readonly [number, string, number] | undefined {
+// The official series that a word points to: "sofa" points to Furniture & Furnishings. A word counts when it
+// holds the text that the reader typed.
+export function seriesFor(text: string): number[] {
   const wanted = clean(text);
-  if (wanted === "") return undefined;
-  let best: readonly [number, string, number] | undefined;
-  let bestRank = exact ? 1 : 4;
-  for (const word of WORDS) {
-    const rank = inCategory(word, category) ? rankOf(word[1], wanted) : 4;
-    if (rank < bestRank) {
-      best = word;
-      bestRank = rank;
-    }
-  }
-  return best;
-}
-
-export function firstIn(category: number): readonly [number, string, number] | undefined {
-  return WORDS.find((word) => word[0] === category);
-}
-
-function categoryOptions(): string {
-  let out = `<option value="-1">All</option>`;
-  for (let k = 0; k < CATEGORIES.length; k++) out += `<option value="${k}">${(CATEGORIES[k] ?? "").replaceAll("&", "&amp;")}</option>`;
-  return out;
-}
-
-export function priceFigure(id: string, width: number): string {
-  const chosen = Math.max(0, PRICES.findIndex((item) => item.name.startsWith("Hen Eggs")));
-  return `${priceSvg(chosen, width)}<div class="controls"><span class="control"><label for="${id}-cat">Category</label><select id="${id}-cat" data-cat>${categoryOptions()}</select></span><span class="control"><label for="${id}-item">Item</label><input id="${id}-item" type="search" list="${id}-list" data-item placeholder="Type eggs, sofa, haircut" autocomplete="off" enterkeyhint="search"><datalist id="${id}-list"></datalist></span></div><p class="note" data-note aria-live="polite">${priceNote(chosen, "")}</p><div class="life-found" data-found></div>`;
+  const found: number[] = [];
+  if (wanted.length < 2) return found;
+  for (const word of WORDS) if (clean(word[1]).includes(wanted) && !found.includes(word[2])) found.push(word[2]);
+  return found;
 }
