@@ -133,7 +133,7 @@ export function textLines(source: string): string[] {
   for (const line of source.split("\n")) {
     const a = line.startsWith("::figure ") ? parseAttributes(line.slice(9)) : undefined;
     lines.push(a ? `Figure: ${a.get("caption") ?? ""} (Image: ${a.get("alt") ?? ""})` : line);
-    if (a) lines.push(...figureText(a.get("kind") ?? "", a.get("view") ?? ""));
+    if (a) lines.push(...figureText(a.get("kind") ?? ""));
   }
   return lines;
 }

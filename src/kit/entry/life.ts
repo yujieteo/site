@@ -1,6 +1,6 @@
 import { wireTooltips } from "../tooltip.ts";
 
-// The list of groups. The build has already drawn every row. This filters them as the reader types, opens a
+// The list of spending groups. The build has already drawn every row. This filters them as the reader types, opens a
 // group when a link points at it, and draws the full chart of a price when its row first opens. The chart code
 // and its data are large, so they load only when the reader first opens a price row or uses the Find box.
 // A keyboard action has no animation, so the filter swaps at once.
@@ -56,7 +56,6 @@ function wireLife(figure: Element): void {
   if (!box || !note) return;
   const idle = note.textContent ?? "";
   const groups = [...figure.querySelectorAll<HTMLDetailsElement>("details.life-cat")];
-  const areas = [...figure.querySelectorAll<HTMLElement>("li.life-area")];
   const texts = new Map<Element, string>();
   let series: (text: string) => number[] = () => [];
   const textOf = (row: Element): string => {
@@ -103,12 +102,6 @@ function wireLife(figure: Element): void {
       found++;
       openAuto(group);
     }
-    for (const area of areas) {
-      let next = area.nextElementSibling;
-      let any = false;
-      for (; next && !next.classList.contains("life-area"); next = next.nextElementSibling) any ||= !next.hasAttribute("hidden");
-      area.toggleAttribute("hidden", !any);
-    }
     if (items.length <= OPENED_ITEMS) items.forEach(openAuto);
     note.textContent = rows === 0 ? `Nothing matches "${box.value.trim()}". Try a simpler word, such as shoes or rent.` : `${count(rows, "row matches", "rows match")} in ${count(found, "group", "groups")}.`;
   };
@@ -146,12 +139,15 @@ function wireLife(figure: Element): void {
   wireTooltips(figure);
 }
 
-// A link to a group opens it. The browser does the scroll.
+// A link to a group, or to a part inside one, opens the group. A part inside a closed group cannot be scrolled
+// to until the group is open, so scroll to it again.
 function openTarget(hash: string): void {
   const target = hash.length > 1 ? document.getElementById(hash.slice(1)) : null;
-  if (!(target instanceof HTMLDetailsElement) || !target.classList.contains("life-cat")) return;
-  if (target.closest("li[hidden]")) target.closest("figure")?.dispatchEvent(new Event("life-clear"));
-  target.open = true;
+  const group = target?.closest<HTMLDetailsElement>("details.life-cat");
+  if (!target || !group) return;
+  if (target.closest("[hidden]")) group.closest("figure")?.dispatchEvent(new Event("life-clear"));
+  group.open = true;
+  if (target !== group) target.scrollIntoView();
 }
 
 for (const figure of document.querySelectorAll("figure[data-kind=life]")) wireLife(figure);
