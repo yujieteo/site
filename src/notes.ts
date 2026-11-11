@@ -1,4 +1,5 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { lifeIds } from "./kit/life.ts";
 import { LAST_MONTH, PRICES } from "./kit/price-data.ts";
 
 // The notes API. An agent reads a list, then adds lines to notes/PART.tsv in
@@ -102,6 +103,59 @@ export const PARTS: readonly Part[] = [
     },
     result: `/deals/, on deploy. A line leaves the page after its until date, or ${DEAL_DAYS} days after its date.`,
   },
+  {
+    name: "products",
+    does: "Adds a product and its price to an item of the Singapore prices post, or refreshes one that is there.",
+    read: "/api/products.txt",
+    id: /^[a-z0-9-]{1,80}$/,
+    idHelp: "the item id in the first column of the list. An item can have many lines, one for each product.",
+    once: false,
+    points: "Not used. Use 0.",
+    text: "The product name as the shop gives it. To refresh a product that is in the list, use the url of its row: the line then replaces that row, and the product keeps the name in the list.",
+    fields: {
+      price: { need: true, test: /^\d{1,6}(\.\d\d?)?$/, help: "the price of one pack as a plain number in S$, such as 6.62, with no S$ sign. Do not use a multi-buy price." },
+      pack: { need: true, test: /^[\p{L}\p{N} .,x×/()%+-]{1,40}$/u, help: "what the price covers, such as 150 g, 1 L or 12 months" },
+      per: { need: false, test: /^\d{1,6}(\.\d{1,4})?$/, help: "the unit price as a plain number in S$, such as 4.41, for the unit in the unit column of the list. Work it out from the price and the pack. Give it where the list shows a unit for the item, and leave it out where the unit is empty." },
+      shop: { need: true, test: /^[\p{L}\p{N} .&'-]{1,40}$/u, help: "the shop name" },
+      url: { need: true, test: URL, help: "an https link to the product page you opened" },
+      date: { need: true, test: DATE, help: "the day you saw the price, as YYYY-MM-DD" },
+      until: { need: false, test: DATE, help: "the last day of the offer, as YYYY-MM-DD. Leave it out if the page gives no date." },
+    },
+    result: "the shop prices at /essays/singapore-value-buys/, on deploy",
+  },
+  {
+    name: "checks",
+    does: "Records what a product page says about the quality check of its item, for the Singapore prices post.",
+    read: "/api/checks.txt",
+    id: /^[a-z0-9-]{1,80}$/,
+    idHelp: "the product id in the first column of the list",
+    once: true,
+    points: "Not used. Use 0.",
+    text: "The fact as the page states it, in a few words, such as \"1,450 ppm fluoride\". Read it on a page you opened. A search result does not count. Leave a product out if no page shows the whole fact, or if the list already has an answer for it in the now column and yours is the same.",
+    fields: {
+      verdict: { need: true, test: /^(pass|fail|recorded)$/, help: "pass or fail, by the check in the list. Use recorded where the answer column says recorded." },
+      url: { need: true, test: URL, help: "an https link to the page where you read the fact" },
+      date: { need: true, test: DATE, help: "the day you read the page, as YYYY-MM-DD" },
+    },
+    result: "the dots and the pick of the item at /essays/singapore-value-buys/, on deploy",
+  },
+  {
+    name: "advice",
+    does: "Adds one piece of advice to a spending group of the Singapore prices post.",
+    read: "/api/advice.txt",
+    id: /^[a-z-]{1,40}$/,
+    idHelp: "the id of the spending group in the first column of the list. A group can have many lines.",
+    once: false,
+    points: "Higher points come first among the notes of one lever. The advice of the post itself stays first.",
+    text: "The thing to do, as one instruction of at most 80 characters, such as \"Tap in before 7:45am on weekdays\". Do not repeat advice that is in the list.",
+    fields: {
+      lever: { need: true, test: /^(check|pick|when|much)$/, help: "check for a quality check, pick for the lowest price that passes, when for timing, or much for the amount to buy" },
+      why: { need: true, test: /^[^<>\x00-\x1f]{1,300}$/, help: "the reason in one or two sentences, with the figure. State facts from the source only." },
+      url: { need: true, test: URL, help: "an https link to the source of the reason" },
+      worth: { need: false, test: /^[^<>\x00-\x1f]{1,40}$/, help: "the figure in a few words, such as \"up to S$0.50 a trip\"" },
+    },
+    result: "the group at /essays/singapore-value-buys/, on deploy",
+  },
 ];
 
 export interface PriceRow {
@@ -153,13 +207,23 @@ function parseLine(part: Part, line: string, where: string, known: Set<string> |
   return { id, points: Number(points), text, fields };
 }
 
+// The ids that a part accepts, for the parts whose list comes from this repository. A check may name a
+// product that a products note added, so the products part loads first.
+function knownIds(name: string, all: Record<string, Note[]>): Set<string> | undefined {
+  if (name === "prices") return new Set(priceRows().map((row) => row.id));
+  if (name === "products") return lifeIds([]).products;
+  if (name === "checks") return lifeIds(all.products ?? []).checks;
+  if (name === "advice") return lifeIds([]).advice;
+  return undefined;
+}
+
 export function loadNotes(dir: string, out: string): Record<string, Note[]> {
   const all: Record<string, Note[]> = {};
   mkdirSync(`${out}/notes`, { recursive: true });
   for (const part of PARTS) {
     const path = `${dir}/${part.name}.tsv`;
     const raw = existsSync(path) ? readFileSync(path, "utf8") : "";
-    const known = part.name === "prices" ? new Set(priceRows().map((row) => row.id)) : undefined;
+    const known = knownIds(part.name, all);
     const notes: Note[] = [];
     const seen = new Set<string>();
     const lines = raw.split("\n");
@@ -181,7 +245,7 @@ export function notesGuide(): string {
   const lines = [
     "# How to write notes for teoyujie.org",
     "",
-    "An agent can change four parts of this site by adding notes. Fixed rules build each part, and a note adjusts one item. The only way to write is a change to a file in git, which the owner merges.",
+    `An agent can change ${PARTS.length} parts of this site by adding notes: ${PARTS.map((part) => part.name).join(", ")}. Fixed rules build each part, and a note adjusts one item. The only way to write is a change to a file in git, which the owner merges.`,
     "",
     "## Steps",
     "",

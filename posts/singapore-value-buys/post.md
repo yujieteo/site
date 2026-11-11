@@ -50,7 +50,8 @@ Each row is one group of household spending, with its share. Open it for the adv
 - **The product checks.** On 11 November 2026, AI agents read the page of 86 products for one fact each, such as the fluoride in a toothpaste. Each pass, fail and recorded value was then matched against the text of the page. 24 products pass, 1 fails and 18 have a value recorded. For 43 products the page did not show the fact, or did not load, so they stay unmarked.
 - **The picks.** A pick is the cheapest unit price found that passes the check. It is not a test result, and nobody looked at a pack in a shop.
 - **The month patterns.** A pattern counts only if the cheapest month beat the dearest month in at least 80% of years, and the gap is bigger than chance. 33 of 63 goods pass. The 14 with the widest gap appear as timing advice under food at home.
-- **The prices.** Shop prices were read on 8 and 9 November 2026. Of 721 read for this post, 352 came from an opened page and the rest from search listings.
+- **The prices.** Shop prices were read on 8 and 9 November 2026. Of 721 read for this post, 352 came from an opened page and the rest from search listings. A price added later shows the day it was read.
+- **Updates.** An AI agent can add a product, a product check or a piece of advice as a note, one line in a file. The build checks every line and stops on a bad one, and I merge each change. [How to write notes](/api/notes.txt) gives the format.
 
 ## Background
 

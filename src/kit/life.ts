@@ -1,5 +1,6 @@
-import { GOOD_CHECKS, LEVERS, LIFE, MONTH_TABLE, REHOME, SPENDING, STRONGEST, VERDICTS, type LifeCategory, type Move, type Official, type Series, type Shelf } from "./life-data.ts";
+import { GOOD_CHECKS, LEVERS, LIFE, MONTH_TABLE, REHOME, SPENDING, STRONGEST, type LifeCategory, type Move, type Official, type Series, type Shelf } from "./life-data.ts";
 import { LAST_MONTH, PRICES, type PriceItem } from "./price-data.ts";
+import type { Note } from "../notes.ts";
 
 // The page answers one question: what is the best quality for the price? This draws its one list.
 // The rows are the 12 spending groups of the household survey, biggest share first. A group opens to its
@@ -42,6 +43,21 @@ interface Buy {
   verdict: Verdict;
   fact: string;
   source: string;
+  seen: string;
+}
+
+// The notes that agents write for this page: product checks, products and advice. The build sets them before
+// it draws a post. notes/PART.tsv holds them, and src/notes.ts holds their rules.
+export interface LifeNotes {
+  checks: readonly Note[];
+  products: readonly Note[];
+  advice: readonly Note[];
+}
+
+let notes: LifeNotes = { checks: [], products: [], advice: [] };
+
+export function useLifeNotes(next: LifeNotes): void {
+  notes = next;
 }
 
 // One shop item, such as "Toothpaste", with the products found for it.
@@ -121,24 +137,71 @@ function packOf(name: string): { good: string; pack: string } {
   return found ? { good: found[1] ?? name, pack: (found[2] ?? "").toLowerCase() } : { good: name, pack: "" };
 }
 
-function verdictOf(shelf: Shelf): Verdict {
-  const read = VERDICTS[`${shelf[0]}|${shelf[1]}`]?.[0];
-  if (read === "pass" || read === "fail" || read === "recorded") return read;
+// The id of a shop item in the notes, such as "toothpaste".
+function itemId(name: string): string {
+  return slug(name).slice(0, 80).replace(/-$/, "");
+}
+
+// The id of a product in the notes: its item and its name.
+function productId(shelf: Shelf): string {
+  return slug(`${shelf[0]} ${shelf[1]}`).slice(0, 80).replace(/-$/, "");
+}
+
+function verdictOf(shelf: Shelf, read: Note | undefined): Verdict {
+  const verdict = read?.fields.verdict;
+  if (verdict === "pass" || verdict === "fail" || verdict === "recorded") return verdict;
   return GOOD_CHECKS[shelf[0]] ? "unknown" : "none";
+}
+
+function shortDate(date: string): string {
+  const [year, month, day] = date.split("-");
+  return `${Number(day)} ${MONTHS[Number(month) - 1] ?? ""} ${year ?? ""}`;
+}
+
+// The unit that the rows of an item share, such as "/100 g" or " per month". Empty where they share none.
+function unitOf(rows: readonly Shelf[]): string {
+  const tails = rows.map((row) => buyOf(row, "").tail);
+  const first = tails[0] ?? "";
+  return tails.every((tail) => tail.toLowerCase() === first.toLowerCase()) ? first : "";
+}
+
+// The shop rows of a set of goods, with the product notes applied. A note with the link of a row replaces
+// that row. Any other note adds a row to its item. The map gives the day a noted row was seen.
+function shelfOf(category: LifeCategory, products: readonly Note[]): { rows: Shelf[]; seen: Map<Shelf, string> } {
+  const rows = [...category.shelf];
+  const seen = new Map<Shelf, string>();
+  for (const note of products) {
+    const same = category.shelf.filter((row) => itemId(row[0]) === note.id);
+    const first = same[0];
+    if (!first) continue;
+    const { price = "", pack = "", per = "", shop = "", url = "", date = "", until = "" } = note.fields;
+    const unit = unitOf(same);
+    if (unit !== "" && per === "") throw new Error(`notes/products.tsv: "${note.text}" needs the field per, its unit price for "${unit.trim()}"`);
+    if (unit === "" && per !== "") throw new Error(`notes/products.tsv: "${note.text}" must not have the field per, as the item ${note.id} has no shared unit`);
+    const at = rows.findIndex((old) => old[0] === first[0] && old[2] === url);
+    // A refreshed product keeps its name, so the id of its check stays the same.
+    const name = rows[at]?.[1] ?? note.text;
+    const row: Shelf = [first[0], name, url, shop, `S$${price}${until === "" ? "" : ` (till ${shortDate(until)})`}`, pack, per === "" ? "n/a" : `S$${per}${unit}`, 0];
+    if (at < 0) rows.push(row);
+    else rows[at] = row;
+    seen.set(row, date);
+  }
+  return { rows, seen };
 }
 
 // The figure a row is ranked on: its unit price where the row has one, and its price where it does not.
 // The tail is the unit, such as "/pc" or " per month". A plain price has no tail. The low and top figures keep
 // the digits of the source, so a summary reads the same as its rows.
-function buyOf(shelf: Shelf): Buy {
+function buyOf(shelf: Shelf, seen: string): Buy {
   const byUnit = /\d/.test(shelf[6]);
   const main = byUnit ? shelf[6] : shelf[4];
   const found = /^(?:(?:about|around|from)\s+)?S\$([\d,]+(?:\.\d+)?)(?:\s+to\s+S\$([\d,]+(?:\.\d+)?))?(.*)$/i.exec(main);
   const low = found?.[1] ?? "";
   const top = found?.[2] ?? low;
   const tail = byUnit ? ((found?.[3] ?? "").split(";")[0] ?? "").replace(/\([^)]*\)/g, "").trimEnd() : "";
-  const read = VERDICTS[`${shelf[0]}|${shelf[1]}`];
-  return { shelf, main, value: found ? amount(low) : Number.NaN, high: found ? amount(top) : Number.NaN, low, top, tail, verdict: verdictOf(shelf), fact: read?.[1] ?? "", source: read?.[2] ?? "" };
+  const id = productId(shelf);
+  const read = notes.checks.find((note) => note.id === id);
+  return { shelf, main, value: found ? amount(low) : Number.NaN, high: found ? amount(top) : Number.NaN, low, top, tail, verdict: verdictOf(shelf, read), fact: read?.text ?? "", source: read?.fields.url ?? "", seen };
 }
 
 // Rows are ranked only when every row of the item has a figure in the same unit. The pick is the cheapest
@@ -146,14 +209,15 @@ function buyOf(shelf: Shelf): Buy {
 // products may not be equals. An item whose check no product shows has no pick either.
 function groupsOf(category: LifeCategory): Group[] {
   const groups: Group[] = [];
-  for (const shelf of category.shelf) {
+  const { rows, seen } = shelfOf(category, notes.products);
+  for (const shelf of rows) {
     let group = groups.find((g) => g.name === shelf[0]);
     if (!group) {
       const check = GOOD_CHECKS[shelf[0]];
       group = { name: shelf[0], buys: [], ranked: false, check: check?.[0] ?? "", passes: check?.[1] === "pass", pick: undefined };
       groups.push(group);
     }
-    group.buys.push(buyOf(shelf));
+    group.buys.push(buyOf(shelf, seen.get(shelf) ?? ""));
   }
   for (const group of groups) {
     const tail = (group.buys[0]?.tail ?? "").toLowerCase();
@@ -191,6 +255,13 @@ function bucketsOf(): Bucket[] {
       set.groups.push(group);
     }
   }
+  // Advice from notes follows the advice of the post, highest points first.
+  for (const note of [...notes.advice].sort((a, b) => b.points - a.points)) {
+    const lever = LEVERS.find(([key]) => key === note.fields.lever)?.[0];
+    const bucket = buckets.find((b) => b.id === note.id);
+    if (!lever || !bucket) continue;
+    bucket.moves.push({ lever, lead: note.text, text: `${note.fields.why ?? ""} [Source](${note.fields.url ?? ""})`, worth: note.fields.worth ?? "" });
+  }
   return buckets;
 }
 
@@ -213,7 +284,7 @@ function buyDetail(buy: Buy): string {
   const pack = /^\d+$/.test(shelf[5]);
   const covers = shelf[5] === "1" ? "" : pack ? `${shelf[5]} for ${shelf[4]}` : shelf[5];
   const price = pack || buy.main.startsWith(shelf[4]) ? "" : shelf[4];
-  const parts = [shelf[3], covers, price, shelf[7] === 1 ? "listing" : ""].filter((part) => part !== "").map(esc);
+  const parts = [shelf[3], covers, price, shelf[7] === 1 ? "listing" : "", buy.seen === "" ? "" : `read ${shortDate(buy.seen)}`].filter((part) => part !== "").map(esc);
   return [...parts, factOf(buy)].filter((part) => part !== "").join(" · ");
 }
 
@@ -460,6 +531,70 @@ export function lifeFigure(id: string): string {
   const count = `<p class="life-count" data-count aria-live="polite">${buckets.length} spending groups, ${moves} things to do, ${shops} shop prices, ${official} official prices.</p>`;
   const base = (sparkY(BASE) / SPARK_GRID).toFixed(1);
   return `${anchors}${find}${count}<ol class="life-cats" aria-label="ALT" style="--life-base:${base}px">${buckets.map((bucket) => bucketRow(bucket, widest)).join("")}</ol>`;
+}
+
+// The ids that a note may use: the products of items that have a quality check, every shop item, and every
+// spending group. Two things with one id stop the build.
+export function lifeIds(products: readonly Note[]): { checks: Set<string>; products: Set<string>; advice: Set<string> } {
+  const items = new Map<string, string>();
+  const checked = new Set<string>();
+  for (const category of LIFE) {
+    for (const row of category.shelf) {
+      const id = itemId(row[0]);
+      if ((items.get(id) ?? row[0]) !== row[0]) throw new Error(`life: the items "${items.get(id)}" and "${row[0]}" share the id ${id}`);
+      items.set(id, row[0]);
+    }
+    for (const row of shelfOf(category, products).rows) {
+      if (!GOOD_CHECKS[row[0]]) continue;
+      const id = productId(row);
+      if (checked.has(id)) throw new Error(`life: two products share the id ${id}`);
+      checked.add(id);
+    }
+  }
+  return { checks: checked, products: new Set(items.keys()), advice: new Set(SPENDING.map(([name]) => slug(name))) };
+}
+
+function tsv(rows: readonly (readonly string[])[]): string {
+  return `${rows.map((row) => row.map((text) => text.replace(/[\t\n]/g, " ")).join("\t")).join("\n")}\n`;
+}
+
+// The list an agent reads before it writes a check: every product of an item that has a quality check.
+export function checksList(): string {
+  const rows = [["id", "item", "product", "shop", "url", "check", "answer", "now"]];
+  for (const bucket of bucketsOf()) {
+    for (const set of bucket.sets) {
+      for (const group of set.groups) {
+        if (group.check === "") continue;
+        for (const buy of group.buys) rows.push([productId(buy.shelf), group.name, buy.shelf[1], buy.shelf[3], buy.shelf[2], group.check, group.passes ? "pass or fail" : "recorded", buy.verdict === "unknown" ? "" : `${buy.verdict}: ${buy.fact}`]);
+      }
+    }
+  }
+  return tsv(rows);
+}
+
+// The list an agent reads before it writes a product: every product on the page, under the id of its item.
+export function productsList(): string {
+  const rows = [["id", "item", "group", "unit", "product", "shop", "price", "pack", "unit_price", "url"]];
+  for (const bucket of bucketsOf()) {
+    for (const set of bucket.sets) {
+      for (const group of set.groups) {
+        const unit = unitOf(group.buys.map((buy) => buy.shelf)).trim();
+        for (const { shelf } of group.buys) rows.push([itemId(group.name), group.name, bucket.name, unit, shelf[1], shelf[3], shelf[4], shelf[5], shelf[6], shelf[2]]);
+      }
+    }
+  }
+  return tsv(rows);
+}
+
+// The list an agent reads before it writes advice: every spending group and the advice it has.
+export function adviceList(): string {
+  const rows = [["id", "group", "share", "lever", "advice"]];
+  for (const bucket of bucketsOf()) {
+    const share = `${bucket.share.toFixed(1)}%`;
+    if (bucket.moves.length === 0) rows.push([bucket.id, bucket.name, share, "", ""]);
+    for (const move of bucket.moves) rows.push([bucket.id, bucket.name, share, move.lever, move.lead]);
+  }
+  return tsv(rows);
 }
 
 function cell(text: string): string {
