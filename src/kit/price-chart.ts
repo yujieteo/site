@@ -183,5 +183,5 @@ function categoryOptions(): string {
 
 export function priceFigure(id: string, width: number): string {
   const chosen = Math.max(0, PRICES.findIndex((item) => item.name.startsWith("Hen Eggs")));
-  return `${priceSvg(chosen, width)}<div class="controls"><span class="control"><label for="${id}-cat">Category</label><select id="${id}-cat" data-cat>${categoryOptions()}</select></span><span class="control"><label for="${id}-item">Item</label><input id="${id}-item" type="search" list="${id}-list" data-item placeholder="Type eggs, sofa, haircut" autocomplete="off" enterkeyhint="search"><datalist id="${id}-list"></datalist></span></div><p class="note" data-note aria-live="polite">${priceNote(chosen, "")}</p>`;
+  return `${priceSvg(chosen, width)}<div class="controls"><span class="control"><label for="${id}-cat">Category</label><select id="${id}-cat" data-cat>${categoryOptions()}</select></span><span class="control"><label for="${id}-item">Item</label><input id="${id}-item" type="search" list="${id}-list" data-item placeholder="Type eggs, sofa, haircut" autocomplete="off" enterkeyhint="search"><datalist id="${id}-list"></datalist></span></div><p class="note" data-note aria-live="polite">${priceNote(chosen, "")}</p><div class="life-found" data-found></div>`;
 }

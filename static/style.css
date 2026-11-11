@@ -136,3 +136,79 @@ figure[data-view=map] g[data-pressed] { transform: scale(var(--press)); opacity:
 g[data-on] .food-ring, g[data-i]:focus-visible .food-ring { display: inline; }
 figure[data-view=map] g[data-i]:focus-visible > circle:first-child { stroke: var(--ink); stroke-width: 2; }
 @media (hover: hover) and (pointer: fine) { .food-row:hover .food-name { text-decoration: underline 0.08em var(--underline-hover); text-underline-position: from-font; } }
+/* Daily-life list. A row is a grid: the name and its lines on the left, the figure on the right. Rows that open are
+   summaries, with the press of any pressable row and a 44 px tap size. The filter and a keyboard toggle have no animation.
+   The chevron turns in 150 ms under a pointer only. Dots are 8 px: a filled dot is a price from the shop's page.
+   --life-surface is the colour behind the list: the card on a wide screen, the page on a phone, where a figure has no card. */
+.frame { --life-surface: var(--card); }
+figure[data-kind=life] [hidden] { display: none; }
+.life-find { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 12px; font-size: var(--small); }
+.life-find input[type=search] { width: 100%; }
+.life-count { margin: 12px 0 8px; min-height: 1.5em; font-size: var(--small); color: var(--muted); }
+.life-key { display: flex; flex-wrap: wrap; gap: 4px 16px; margin: 0 0 12px; font-size: 0.75rem; color: var(--muted); }
+.life-key i { display: inline-block; width: 8px; height: 8px; margin-right: 6px; border-radius: 50%; background: var(--ink); }
+/* The axis labels and the ticks of each strip sit at the same places: every 5%, from -15% to +15%. */
+.life-axis { position: relative; height: 1.5em; margin: 0 4px; font-size: 0.75rem; line-height: 1.5; color: var(--muted); font-variant-numeric: tabular-nums; }
+.life-axis span { position: absolute; transform: translateX(-50%); }
+.life-cats, .life-rows { list-style: none; margin: 0; padding: 0; }
+.life-cats > li, .life-rows > li { border-top: 1px solid var(--line); }
+.life-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 12px; align-items: start; padding: 12px 0; min-height: var(--tap); }
+.life-row > * { grid-column: 1; min-width: 0; overflow-wrap: anywhere; }
+.life-row > b { font-weight: 500; }
+.life-cat > summary > b { font-weight: 550; }
+.life-row > small, .life-end small { display: block; font-size: var(--small); font-weight: 400; color: var(--muted); }
+.life-row > span { font-size: var(--small); }
+.life-row > .life-end { grid-area: 1 / 2 / span 4; max-width: 14em; text-align: right; font-size: inherit; font-weight: 500; font-variant-numeric: tabular-nums; }
+.life-cat > summary .life-end small { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.life-tag { display: inline-block; margin-left: 2px; padding: 0 6px; vertical-align: 1px; font: 500 0.75rem/1.5 var(--sans); white-space: nowrap; border-radius: 4px; background: var(--gray3); }
+summary.life-row { list-style: none; cursor: pointer; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; touch-action: manipulation; transition: transform var(--press-duration) var(--ease-out); }
+summary.life-row::-webkit-details-marker { display: none; }
+summary.life-row:active { transform: scale(var(--press)); }
+/* An open group keeps its name at the top of the screen, as one line, so the reader knows where they are and can close it
+   from anywhere in it. Its best move and its dots are in the rows below by then. */
+.life-cat[open] > summary { position: sticky; top: 0; z-index: 2; background: var(--life-surface); box-shadow: 0 1px 0 var(--line); }
+.life-cat[open] > summary > small, .life-cat[open] > summary > .life-strip, .life-cat[open] > summary .life-end small { display: none; }
+summary.life-row:focus-visible { outline: 2px solid transparent; box-shadow: var(--focus-ring); }
+.life-chev { display: inline-block; width: 7px; height: 7px; margin: 0 0 2px 10px; border-right: 1.5px solid var(--underline-hover); border-bottom: 1.5px solid var(--underline-hover); transform: rotate(-45deg); transition: transform 150ms var(--ease-out); }
+details[open] > summary .life-chev { transform: rotate(45deg); }
+details:has(> summary:focus-visible) .life-chev, details[data-auto] .life-chev, .life-found .life-chev { transition: none; }
+.life-strip, .life-track { position: relative; grid-column: 1 / -1; height: 8px; margin: 10px 4px 2px; }
+.life-strip { background: linear-gradient(90deg, var(--gray7) 1px, transparent 1px) 0 0 / calc((100% - 1px) / 6) 100% repeat-x; }
+.life-strip::before, .life-track::before { content: ""; position: absolute; left: -4px; right: -4px; top: 3px; height: 2px; border-radius: 1px; background: var(--gray4); }
+.life-strip::after { content: ""; position: absolute; left: 50%; top: -3px; width: 1px; height: 14px; background: var(--underline-hover); }
+.life-strip i, .life-track i { position: absolute; top: 0; z-index: 1; width: 8px; height: 8px; margin-left: -4px; border-radius: 50%; background: var(--ink); box-shadow: 0 0 0 1.5px var(--life-surface); }
+i.life-up { background: var(--series-2); }
+i.life-down { background: var(--series-1); }
+i.life-flat { background: var(--muted); }
+i.life-hollow { background: var(--life-surface); box-shadow: inset 0 0 0 1.5px var(--ink); }
+/* The index that rose most has the larger dot. A change beyond the axis is an arrowhead at the edge, not a dot. */
+.life-strip i.life-top { top: -2px; width: 12px; height: 12px; margin-left: -6px; }
+.life-strip i.life-over { border-radius: 0; box-shadow: none; clip-path: polygon(0 0, 100% 50%, 0 100%); }
+.life-strip i.life-down.life-over { clip-path: polygon(100% 0, 0 50%, 100% 100%); }
+.life-buy > b:first-child::before { content: ""; display: inline-block; width: 8px; height: 8px; margin-right: 8px; border-radius: 50%; background: var(--ink); }
+.life-listing > b:first-child::before { background: none; box-shadow: inset 0 0 0 1.5px var(--ink); }
+.life-buy > b a { font-weight: 400; }
+.life-open { padding: 0 0 24px 16px; }
+.life-open h4, .life-found h4 { margin: 0; padding: 16px 0 8px; font-size: var(--small); font-weight: 550; color: var(--muted); }
+.life-open .life-key { margin-bottom: 8px; }
+.life-nest { padding: 0 0 8px 16px; }
+.life-series { grid-template-columns: minmax(0, 1fr) auto 4.5em; }
+.life-series > .life-end { grid-column: 3; }
+/* The small chart: the line, and a shade for the gap between the line and the 2024 level. */
+.life-spark { grid-area: 1 / 2 / span 2; align-self: center; width: 96px; height: 36px; overflow: visible; background: linear-gradient(var(--line), var(--line)) 0 var(--life-base) / 100% 1px no-repeat; }
+.life-spark path { fill: var(--series-1); fill-opacity: 0.14; stroke: var(--series-1); stroke-width: 4.5; stroke-linejoin: round; }
+.life-spark circle { fill: var(--series-1); }
+.life-note { margin: 12px 0 0; font-size: var(--small); color: var(--muted); }
+.life-found { max-width: 644px; margin: 16px auto 0; text-align: left; }
+.life-found:empty { display: none; }
+.life-found .button { display: inline-block; margin-top: 12px; text-decoration: none; }
+@media (prefers-reduced-motion: reduce) { .life-chev { transition: none; } }
+@media (pointer: coarse), (max-width: 560px) { .life-found .button { min-height: var(--tap); padding: 11px 14px; } }
+/* Phone: the second and later lines of a row take the full width. On a group row the name of the index that rose most
+   gives way: it is the first row once the group is open. An index row keeps its small chart at full size, on a second
+   line beside the figures since 2015, and drops "in a year", which the heading already says. */
+@media (max-width: 560px) { .frame { --life-surface: var(--bg); } .life-open { padding-left: 0; } .life-nest { padding-left: 12px; } .life-row > .life-end { max-width: 10em; }
+  .life-row > .life-end { grid-row: 1; } .life-row > :not(b, .life-end, svg) { grid-column: 1 / -1; } .life-cat > summary > .life-end small { display: none; }
+  .life-series { grid-template-columns: 96px minmax(0, 1fr) auto; row-gap: 4px; } .life-series > b { grid-column: 1 / 3; } .life-series > .life-end small { display: none; }
+  .life-spark { grid-area: 2 / 1; } .life-row.life-series > small { grid-area: 2 / 2 / auto / 4; align-self: center; } }
+@media (hover: hover) and (pointer: fine) { summary.life-row:hover > b { text-decoration: underline 0.08em var(--underline-hover); text-underline-position: from-font; } }
