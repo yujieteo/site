@@ -3,9 +3,9 @@ title: What the best-rated food in Tampines costs
 date: 2026-11-09
 summary: Among meals I can compare per person, Ippon Fusion Bowl has 4.8 on Google at a typical S$7.50, and Botak Cantonese Porridge has 4.6 at S$5.00.
 summary: A high score can also cost much more. Seoul Garden has 4.8 from 3,753 reviews, and its typical buffet costs S$41.85.
-summary: A typical main costs S$6.00 at a hawker stall, against S$16.67 at a restaurant, across 51 places.
-summary: Prices come from 552 dated dishes. Every comparison uses the typical main of a place, not its cheapest item, and each row opens the menu behind it.
-summary: Only 16 places have both a Google rating and a price I can compare per person, so the rating ranking is still a small sample.
+summary: A typical main costs S$6.00 at a hawker stall, against S$16.67 at a restaurant, across 49 places.
+summary: Prices come from 539 dated dishes. Every comparison uses the typical main of a place, not its cheapest item, and each row opens the menu behind it.
+summary: Only 15 places have both a Google rating and a price I can compare per person, so the rating ranking is still a small sample.
 ---
 Tampines has two working hawker centres, three big malls and many coffee shops. This page shows what the food costs and how it is rated. It works best on a phone: tap a row to see the menu behind its price.
 
@@ -25,7 +25,7 @@ Rajarani Thosai shows that scores and awards measure different things. Michelin 
 
 Each dot is one place, at its typical main. The black line marks the median of each group. Shared-dish places are left out, because their prices are per table and not per person.
 
-::figure kind=food view=spread alt="Four rows of dots showing the typical price at 25 hawker places, 26 restaurants, 4 cafes and 24 snack places in Tampines. The medians are S$6.00, S$16.67, S$14.66 and S$5.70." caption="Typical price per person on a logarithmic axis. Tap a dot for the place and its range. Only 4 cafes have enough verified meal prices, so that median is weak."
+::figure kind=food view=spread alt="Four rows of dots showing the typical price at 24 hawker places, 25 restaurants, 4 cafes and 23 snack places in Tampines. The medians are S$6.00, S$16.67, S$14.66 and S$5.90." caption="Typical price per person on a logarithmic axis. Tap a dot for the place and its range. Only 4 cafes have enough verified meal prices, so that median is weak."
 
 ## What each cuisine costs
 
@@ -49,13 +49,15 @@ Search all 332 places by name, dish, cuisine or address. Researched places come 
 
 **Prices.** I collected 989 menu rows for 140 places from guides, reviews and official menus. Each row keeps its source and date.
 
-**What I removed.** Delivery prices, since apps mark them up. Prices with no date or from before 2023. Add-ons and sides. Whole fish, steamboats and boxes with no stated portion. One promo lunch deal, and one price from another outlet of the same chain. That left 552 dishes.
+**What I removed.** Delivery prices, since apps mark them up. Prices with no date or from before 2023. Add-ons and sides. Whole fish, steamboats and boxes with no stated portion. Two promo lunch deals, and one price from another outlet of the same chain. Two Putien prices from before it dropped service charge and GST in August 2024. That left 539 dishes.
+
+**Dates.** A guide often repeats a price from an older review. Where a guide links to that review and the review gives the same price for the dish, the row takes the review's date. Where a page was edited after it came out, the row takes the date it came out. A guide entry with no linked review keeps the guide's date, so its price may be older than it looks.
 
 **Typical main.** A place needs at least three different verified mains for a typical price, or two for a shared-dish place. For a dish sold in several sizes, I use the middle size. The typical main is the median of those dish prices. A place with too few dishes shows its range and no typical price.
 
-**Conversions.** A price marked `++` is multiplied by 1.199, for 10% service charge and 9% GST. A price marked `+` is multiplied by 1.09, on my assumption that it means GST only. A shared set is divided only when its source states how many people it serves.
+**Conversions.** A price marked `++` is multiplied by 1.199, for 10% service charge and 9% GST. A price marked `+` is multiplied by 1.09, on my assumption that it means GST only. A shared set is divided only when its source states how many people it serves. Some sources print the menu price and leave the mark out. Where another source shows that the place adds the charges, I add them to those rows too.
 
-**Places left without a comparison.** Social Bite has a quoted 4.9 and two September 2026 budget-meal prices, too few dishes for a typical price. Ah Gong Ban Mian has a quoted 3.2 but no verified price from 2023 or later. Tanyu has a quoted 4.8, but its fish is sold to share and no source states a portion. They stay on the list without a typical price.
+**Places left without a comparison.** Social Bite has a quoted 4.9 and two September 2026 budget-meal prices, too few dishes for a typical price. Ah Gong Ban Mian has a quoted 3.2 but no verified price from 2023 or later. Tanyu has a quoted 4.8, but its fish is sold to share and no source states a portion. Putien has a quoted 4.8, but only two dated prices since it moved to nett prices. They stay on the list without a typical price.
 
 **Ratings.** A rating counts as Google only if a page quotes Google. I also take scores from [FooTinder](https://en.footinder.app/), which shows Google review counts and links each place to Google Maps; those rows are dated November 2026. Scores date from 2022 to 2026, and most guides gave no review count. I did not collect scores from Google Maps directly. I left out editorial scores, and directory scores whose source is unclear.
 
