@@ -15,6 +15,8 @@ main > section > h2 { font-weight: 500; margin-bottom: 20px; }
 .featured h3 { grid-area: 1 / 1; }
 .kind { grid-area: 1 / 2; color: var(--muted); font-variant-numeric: tabular-nums; }
 .featured p { grid-column: 1 / -1; line-height: var(--leading); color: var(--muted); }
+/* The reading list holds text from other sites. A long link, or a run of letters with no space, breaks where it must, so the page does not move sideways on a phone. */
+.featured h3, .featured p { overflow-wrap: anywhere; }
 footer.wrap { margin-top: 96px; padding-bottom: 64px; color: var(--muted); }
 footer ul { list-style: none; margin: 0; padding: 0; }
 code { font: var(--code) var(--mono); overflow-wrap: anywhere; }
@@ -56,7 +58,11 @@ main.page blockquote { margin: 2rem 0; padding: 4px 0 4px 20px; border-left: 3px
 main.page blockquote p { margin: 0; }
 main.page table { width: 100%; margin: 2rem 0; border-collapse: collapse; font-size: var(--small); font-variant-numeric: tabular-nums; }
 main.page th, main.page td { padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--line); }
-@media (max-width: 560px) { main.page table { display: block; overflow-x: auto; } }
+/* Under 692 px the column is narrower than its full 644 px, so a wide table scrolls inside itself and the page does not move sideways. */
+@media (max-width: 691px) { main.page table { display: block; overflow-x: auto; } }
+/* In a table a date stays on one line and a file path keeps its words whole. The table scrolls sideways when they do not fit. */
+main.page td time { white-space: nowrap; }
+main.page td code { overflow-wrap: break-word; }
 main.page th { color: var(--muted); font-weight: 550; }
 .note { margin: 12px 0 0; font-size: var(--small); color: var(--muted); text-align: center; }
 select { font: inherit; font-size: var(--small); padding: 6px 8px; border: 1px solid var(--gray3); border-radius: var(--radius); background: var(--gray1); color: var(--ink); max-width: 220px; }
@@ -87,6 +93,8 @@ select:focus-visible, input[type=search]:focus-visible { outline: 2px solid tran
 .food-select { display: grid; gap: 6px; margin-bottom: 12px; font-size: var(--small); color: var(--muted); }
 figure[data-kind=food] select { width: 100%; max-width: none; min-height: var(--tap); padding: 8px; font-size: 16px; color: var(--ink); }
 .food-pair { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; }
+/* Under 360 px half the column is too narrow for "Cuisine, rating", so the two selects stack. */
+@media (max-width: 359px) { .food-pair { grid-template-columns: minmax(0, 1fr); } }
 .food-mapbar { margin-bottom: 8px; }
 .food-mapbar .button { min-height: var(--tap); }
 .food-rows { list-style: none; margin: 0; padding: 0; }
