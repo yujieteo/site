@@ -98,7 +98,7 @@ function cost(item: Spread): number {
 }
 
 function groupOf(item: Spread): string {
-  return item.sh === 1 ? "shared" : item.f === "s" ? "snack" : "meal";
+  return item.sh === 1 ? "shared" : item.f === "s" ? "snack" : item.f === "d" ? "drink" : "meal";
 }
 
 function ratingLine(item: Spread): string {
@@ -121,7 +121,7 @@ function rangeTrack(item: Spread): string {
 }
 
 function priceBlock(item: Spread): string {
-  const unit = item.sh === 1 ? "per dish" : item.f === "s" ? "typical item" : "typical main";
+  const unit = item.sh === 1 ? "per dish" : item.f === "s" ? "typical item" : item.f === "d" ? "typical drink" : "typical main";
   if (item.typ > 0) return `<span class="food-price">${money(item.typ)}</span><span class="food-sub">${unit}</span>`;
   if (item.low > 0) return `<span class="food-price food-thin">${item.low === item.high ? money(item.low) : `${money(item.low)}–${item.high.toFixed(2)}`}</span><span class="food-sub">too few dishes</span>`;
   return `<span class="food-sub">No verified price</span>`;
@@ -130,7 +130,9 @@ function priceBlock(item: Spread): string {
 function menuList(item: Spread): string {
   const rows = item.items.slice(0, MENU_LIMIT).map(([dish, price, date, url]) => `<li><a href="${esc(url)}" target="_blank" rel="noopener">${esc(dish)}</a><span>${money(price)}</span><small>${monthOf(date)}</small></li>`);
   const more = item.items.length > MENU_LIMIT ? `<p class="food-sub">And ${item.items.length - MENU_LIMIT} more dishes.</p>` : "";
-  return rows.length > 0 ? `<ul class="food-menu">${rows.join("")}</ul>${more}` : `<p class="food-sub">I found no dated menu price from 2023 or later.</p>`;
+  const other = (item.other ?? []).map(([dish, price, date, url, kind]) => `<li><a href="${esc(url)}" target="_blank" rel="noopener">${esc(dish)} (${esc(kind)})</a><span>${money(price)}</span><small>${monthOf(date)}</small></li>`);
+  const compared = rows.length > 0 ? `<ul class="food-menu">${rows.join("")}</ul>${more}` : `<p class="food-sub">I found no comparable dated price from 2023 or later.</p>`;
+  return compared + (other.length ? `<p class="food-sub">Other items, not included in this comparison</p><ul class="food-menu">${other.join("")}</ul>` : "");
 }
 
 function statusNote(item: Spread): string {
@@ -205,7 +207,7 @@ function listFigure(id: string): string {
   const state: ListState = { sort: "cuisine", group: "meal", cuisine: "all", shown: PAGE };
   const first = listRows(state);
   const sort = select(id, "Sort by", "sort", [["cuisine", "Cuisine, rating"], ["rating", "Rating"], ["cost", "Typical cost"]]);
-  const group = select(id, "Show", "group", [["meal", "Meals"], ["snack", "Snacks"], ["shared", "Shared dishes"]]);
+  const group = select(id, "Show", "group", [["meal", "Meals"], ["snack", "Snacks"], ["drink", "Drinks"], ["shared", "Shared dishes"]]);
   return `<div class="food-pair">${sort}${group}</div>${cuisineSelect(id)}${legend(["h", "r", "c"])}<p class="food-pick" aria-live="polite" data-count>${countLine(PAGE, first.total)}</p><ol class="food-rows" data-rows>${first.html}</ol><div class="controls"><button class="button" type="button" data-more>Show more</button></div>`;
 }
 
@@ -509,7 +511,7 @@ function extraRow(item: Mapped): string {
 export function findRows(state: FindState): { html: string; total: number } {
   const words = state.words.trim().toLowerCase();
   const fits = (kind: string, cuisine: string, price: number, haystack: string): boolean => (state.kind === "all" || kind === state.kind) && (state.cuisine === "all" || cuisine === state.cuisine) && (state.budget === 0 || (price > 0 && price <= state.budget)) && (words === "" || haystack.toLowerCase().includes(words));
-  const spreads = SPREADS.filter((item) => fits(item.k, item.cu, item.sh === 1 ? 0 : item.typ, `${item.n} ${item.cu} ${item.p} ${item.items.map((menu) => menu[0]).join(" ")}`));
+  const spreads = SPREADS.filter((item) => fits(item.k, item.cu, item.sh === 1 ? 0 : item.typ, `${item.n} ${item.cu} ${item.p} ${[...item.items, ...(item.other ?? [])].map((menu) => menu[0]).join(" ")}`));
   spreads.sort(state.budget > 0 ? (a, b) => a.typ - b.typ : byRating);
   const extras = state.budget > 0 ? [] : EXTRAS.filter((item) => fits(item.k, item.cu, 0, `${item.n} ${item.cu} ${item.a}`));
   const rows = [...spreads.map(row), ...extras.map(extraRow)];
