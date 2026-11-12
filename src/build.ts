@@ -1,7 +1,7 @@
 import { relative, resolve } from "node:path";
 import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { apiPage, dealsPage, dealsText, forecastsPage, homePage, paperPage, postPage } from "./pages.ts";
-import { deals, forecastOrder, loadNotes, notesGuide, pricesTsv, type Note } from "./notes.ts";
+import { deals, forecastOrder, loadNotes, notesGuide, pricesTsv, today, type Note } from "./notes.ts";
 import { postApi, writeApi } from "./api.ts";
 import { figureKinds, figures, footnoteHtml, footnotes, headings, linkPapers, loadPapers, parsePost, textVersion, type Paper, type Post } from "./post.ts";
 import { FIGURE_KINDS } from "./figures.ts";
@@ -72,7 +72,7 @@ async function main(): Promise<void> {
 }
 
 function writeNotes(out: string, notes: Record<string, Note[]>): void {
-  const seen = deals(notes.prices ?? [], new Date().toISOString().slice(0, 10));
+  const seen = deals(notes.prices ?? [], today());
   writeFileSync(`${out}/api/notes.txt`, notesGuide());
   writeFileSync(`${out}/api/prices.txt`, pricesTsv());
   writeFileSync(`${out}/api/products.txt`, productsList());

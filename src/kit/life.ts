@@ -165,6 +165,30 @@ function unitOf(rows: readonly Shelf[]): string {
   return tails.every((tail) => tail.toLowerCase() === first.toLowerCase()) ? first : "";
 }
 
+// The amount a pack states, in grams or millilitres, such as "6 x 330ml" or "1.5 kg". Undefined where it
+// states none at its start.
+function amountOf(pack: string): { of: string; size: number } | undefined {
+  const found = /^(?:(\d+)\s*[x×]\s*)?(\d+(?:\.\d+)?)\s*(kg|g|ml|l)\b/i.exec(pack.trim());
+  if (!found) return undefined;
+  const size = Number(found[1] ?? 1) * Number(found[2]);
+  const unit = (found[3] ?? "").toLowerCase();
+  return unit === "kg" ? { of: "g", size: size * 1000 } : unit === "l" ? { of: "ml", size: size * 1000 } : { of: unit, size };
+}
+
+// The unit prices that follow from a price and a pack by weight or volume.
+const UNIT_SIZES: Record<string, { of: string; size: number }> = { "/kg": { of: "g", size: 1000 }, "/100 g": { of: "g", size: 100 }, "/g": { of: "g", size: 1 }, "/l": { of: "ml", size: 1000 }, "/100 ml": { of: "ml", size: 100 }, "/ml": { of: "ml", size: 1 } };
+const PER_SLACK = 0.02;
+
+// Stops a unit price that does not follow from the price and the pack. A wrong one would change the pick.
+function checkPer(note: Note, unit: string): void {
+  const { price = "", pack = "", per = "" } = note.fields;
+  const base = UNIT_SIZES[unit.trim().toLowerCase()];
+  const amount = amountOf(pack);
+  if (!base || !amount || amount.of !== base.of) return;
+  const right = (Number(price) / amount.size) * base.size;
+  if (Math.abs(Number(per) - right) > right * PER_SLACK) throw new Error(`notes/products.tsv: "${note.text}" has per=${per}, but S$${price} for ${pack} is S$${right.toFixed(4)}${unit}`);
+}
+
 // The shop rows of a set of goods, with the product notes applied. A note with the link of a row replaces
 // that row. Any other note adds a row to its item. The map gives the day a noted row was seen.
 function shelfOf(category: LifeCategory, products: readonly Note[]): { rows: Shelf[]; seen: Map<Shelf, string> } {
@@ -178,6 +202,7 @@ function shelfOf(category: LifeCategory, products: readonly Note[]): { rows: She
     const unit = unitOf(same);
     if (unit !== "" && per === "") throw new Error(`notes/products.tsv: "${note.text}" needs the field per, its unit price for "${unit.trim()}"`);
     if (unit === "" && per !== "") throw new Error(`notes/products.tsv: "${note.text}" must not have the field per, as the item ${note.id} has no shared unit`);
+    checkPer(note, unit);
     const at = rows.findIndex((old) => old[0] === first[0] && old[2] === url);
     // A refreshed product keeps its name, so the id of its check stays the same.
     const name = rows[at]?.[1] ?? note.text;
@@ -534,10 +559,12 @@ export function lifeFigure(id: string): string {
 }
 
 // The ids that a note may use: the products of items that have a quality check, every shop item, and every
-// spending group. Two things with one id stop the build.
-export function lifeIds(products: readonly Note[]): { checks: Set<string>; products: Set<string>; advice: Set<string> } {
+// spending group. A product comes with how its check is answered, and a group with the advice the post gives
+// it, in lower case. Two things with one id stop the build.
+export function lifeIds(products: readonly Note[]): { checks: Map<string, "pass" | "record">; products: Set<string>; advice: Map<string, Set<string>> } {
   const items = new Map<string, string>();
-  const checked = new Set<string>();
+  const checked = new Map<string, "pass" | "record">();
+  const advice = new Map(SPENDING.map(([name]) => [slug(name), new Set<string>()]));
   for (const category of LIFE) {
     for (const row of category.shelf) {
       const id = itemId(row[0]);
@@ -545,13 +572,15 @@ export function lifeIds(products: readonly Note[]): { checks: Set<string>; produ
       items.set(id, row[0]);
     }
     for (const row of shelfOf(category, products).rows) {
-      if (!GOOD_CHECKS[row[0]]) continue;
+      const answer = GOOD_CHECKS[row[0]]?.[1];
+      if (!answer) continue;
       const id = productId(row);
       if (checked.has(id)) throw new Error(`life: two products share the id ${id}`);
-      checked.add(id);
+      checked.set(id, answer);
     }
+    for (const move of [...category.moves, ...category.checks]) advice.get(slug(REHOME[move.lead] ?? category.spend))?.add(move.lead.toLowerCase());
   }
-  return { checks: checked, products: new Set(items.keys()), advice: new Set(SPENDING.map(([name]) => slug(name))) };
+  return { checks: checked, products: new Set(items.keys()), advice };
 }
 
 function tsv(rows: readonly (readonly string[])[]): string {
