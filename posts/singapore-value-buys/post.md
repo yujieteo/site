@@ -39,7 +39,7 @@ Each row is one group of household spending, with its share. Open it for the adv
 - **Forecast** is the 80% range for September 2027. **Since 2015** means since September 2015. "Began in 2024" means the series is too new for a long view.
 - **Bars beside an average price** show a steady month pattern with a gap of 3% or more. The bars give the shape, and the figure in brackets gives the gap.
 - **The line beside an index** runs from 2015 to September 2026 on one shared scale, index 55 to 130. The shade is the gap to the 2024 level, so a thick wedge is a large change.
-- **The chart of an official price** opens from its row. The blue line is the price or the index each month. The orange wedge is the forecast to September 2027. The bars show how each month sits against that year's level, and green bars mean the pattern held year after year. On dollar prices, dotted lines mark January 2019 and January 2024, when SingStat changed its sample of brands and shops.
+- **The chart of an official price** opens from its row. The blue line is the price or the index each month. The orange wedge is the forecast to September 2027. The bars show how each month sits against that year's level, and green bars mean the pattern held year after year. On dollar prices, dotted lines mark January 2019 and January 2024, when SingStat changed its sample of brands and shops. Prices before a dotted line are scaled to today's sample, so the line shows price moves and not the change of sample. Point at a month to see the published price too.
 - **The text version** of this post also gives the yearly change from 2015 to 2025, adjusted for the sample changes. "Sample changed" there means a sample change moved the price by over 5% in one month, so the long view is not safe.
 - **Cigarettes** are in the SingStat list. They are left out here because tax sets the price.
 
@@ -167,7 +167,7 @@ The forecasts in this post use that winner. The range is where 80% of past misse
 
 ## Limits
 
-- **Sample changes.** SingStat changed its brands and shops in January 2019 and January 2024. Average prices are not pure price changes across those dates. The CPI is.
+- **Sample changes.** SingStat changed its brands and shops in January 2019 and January 2024. Average prices are not pure price changes across those dates. The CPI is. Instant noodles went from S$2.80 to S$3.86 in one month when the sample changed, and the CPI for noodles and pasta fell 0.5%. So the charts scale each older price to today's sample, to move across the change as the CPI of its class did. On Januaries with no sample change, this link was within 1% of the truth half the time and within about 5% nine times in ten.
 - **Averages are not your shop.** They mix brands and outlets. Promotions may be partly hidden.
 - **Shops covered.** Shelf prices are mostly FairPrice, with some Cold Storage, IKEA, Courts, Harvey Norman and official fee pages. Sheng Siong, Giant and Don Don Donki showed no readable online prices. Shopee, Amazon.sg, Watsons, Popular, Challenger and several fashion sites blocked automated reading. Of 721 shelf prices, 352 were read from an opened page.
 - **Sets of goods.** Inside a spending group, shop prices sit in sets such as "Home and living". Those names follow Shopee's menu from memory, as its site could not be read, and may not match exactly.

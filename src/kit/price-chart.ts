@@ -29,8 +29,15 @@ function monthName(month: number): string {
   return `${MONTHS[month % 12] ?? ""} ${BASE_YEAR + Math.floor(month / 12)}`;
 }
 
+// How far a month's published price is scaled to match the sample of brands and shops in use today.
+function linkAt(item: PriceItem, month: number): number {
+  if (!item.link) return 1;
+  for (let k = 0; k < BREAKS.length; k++) if (month < (BREAKS[k] ?? 0)) return item.link[k] ?? 1;
+  return 1;
+}
+
 function plotOf(item: PriceItem, width: number): Plot {
-  const all = [...item.cents, item.low, item.high];
+  const all = [...item.cents.map((value, k) => value * linkAt(item, item.start + k)), item.low, item.high];
   const pad = (Math.max(...all) - Math.min(...all)) * 0.08 + 1;
   const x = scale(item.start, LAST_MONTH + AHEAD, LEFT, width - RIGHT);
   const y = scale(Math.min(...all) - pad, Math.max(...all) + pad, LINE_BOTTOM, LINE_TOP);
@@ -50,9 +57,12 @@ function history(p: Plot): string {
   let marks = "";
   for (let k = 0; k < p.item.cents.length; k++) {
     const month = p.item.start + k;
-    const value = p.item.cents[k] ?? 0;
-    path += `${k === 0 || breaksAt(p, month) ? "M" : "L"}${pricePoint(p, month, value)}`;
-    marks += `<circle cx="${at(p.x, month).toFixed(1)}" cy="${at(p.y, value).toFixed(1)}" r="4" fill="transparent" data-tip="${monthName(month)}: ${shown(p.item, value)}"></circle>`;
+    const published = p.item.cents[k] ?? 0;
+    const link = linkAt(p.item, month);
+    const value = published * link;
+    const tip = link === 1 ? shown(p.item, value) : `${shown(p.item, value)} in today's sample, ${shown(p.item, published)} as published`;
+    path += `${k === 0 ? "M" : "L"}${pricePoint(p, month, value)}`;
+    marks += `<circle cx="${at(p.x, month).toFixed(1)}" cy="${at(p.y, value).toFixed(1)}" r="4" fill="transparent" data-tip="${monthName(month)}: ${tip}"></circle>`;
   }
   return `<path d="${path}" fill="none" stroke="var(--series-1)" stroke-width="2"></path>${marks}`;
 }
