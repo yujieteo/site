@@ -29,7 +29,7 @@ cooking-oil-2-l	0	Rice Field 100% Pure Rice Bran Oil	price=9.25	pack=2L	per=4.62
 cooking-oil-2-l	0	Knife Brand Cooking Oil	price=7.90	pack=2L	per=3.9500	shop=FairPrice	url=https://www.fairprice.com.sg/product/knife-brand-cooking-oil-2lt-10451032	date=2026-11-11	until=2026-12-01
 cooking-oil-2-l	0	Naturel Rice Bran Oil	price=8.50	pack=2L	per=4.2500	shop=FairPrice	url=https://www.fairprice.com.sg/product/naturel-rice-bran-oil-2l-13260758	date=2026-11-11	until=2026-12-01
 cooking-oil-2-l	0	FairPrice Groundnut Oil	price=14.50	pack=2L	per=7.2500	shop=FairPrice	url=https://www.fairprice.com.sg/product/fairprice-groundnut-oil-2l-13222202	date=2026-11-11
-cooking-oil-2-l	0	Fairprice Rice Bran Oil	price=8.50	pack=2L	per=4.2500	shop=FairPrice	url=https://www.fairprice.com.sg/product/fairprice-rice-bran-oil-2l-13181592	date=2026-11-11	until=2026-11-12
+cooking-oil-2-l	0	Fairprice Rice Bran Oil	price=9.50	pack=2L	per=4.7500	shop=FairPrice	url=https://www.fairprice.com.sg/product/fairprice-rice-bran-oil-2l-13181592	date=2026-11-12
 cooking-oil-2-l	0	FairPrice Premium Cooking Oil	price=7.95	pack=2L	per=3.9750	shop=FairPrice	url=https://www.fairprice.com.sg/product/fairprice-premium-cooking-oil-2l-13135482	date=2026-11-11
 dishwashing-liquid	0	Soaply Dishwashing Soap Fresh Tingle of Lime	price=7.40	pack=500 ML	per=1.4800	shop=FairPrice	url=https://www.fairprice.com.sg/product/soaply-dishwashing-soap-fresh-tingle-of-lime-1-x-500ml-90192560	date=2026-11-11
 dishwashing-liquid	0	Mama Lemon Gold Dishwashing Liquid Refill -  Lemon Gold	price=4.13	pack=3 x 600ml	per=0.2294	shop=FairPrice	url=https://www.fairprice.com.sg/product/mama-lemon-gold-dishwashing-liquid-refill-natural-lemon-3-x-600ml-13007345	date=2026-11-11
@@ -111,7 +111,7 @@ tea-bags	0	Dilmah Pure Ceylon Tea Bags - English Breakfast	price=14.52	pack=100 
 white-sugar-2-kg	0	FairPrice Pure Cane Sugar - Coarse Grain	price=3.36	pack=2kg	per=1.6800	shop=FairPrice	url=https://www.fairprice.com.sg/product/fairprice-pure-cane-sugar-coarse-grain-2kg-13242073	date=2026-11-11
 chicken-wing	0	FarmFresh Chicken Mid Wings	price=3.94	pack=200 G	per=19.7000	shop=FairPrice	url=https://www.fairprice.com.sg/product/farmfresh-chicken-mid-wings-200-g-90199899	date=2026-11-11
 banana	0	Sumifru Philippines Banana	price=2.55	pack=700g	per=3.6429	shop=FairPrice	url=https://www.fairprice.com.sg/product/sumifru-cavendish-banana-700g-13102605	date=2026-11-11
-banana	0	Sumifru Sweet Mountain Bananas	price=4.00	pack=820g	per=4.8780	shop=FairPrice	url=https://www.fairprice.com.sg/product/sumifru-sweet-mountain-bananas-820g-13137896	date=2026-11-11	until=2026-11-12
+banana	0	Sumifru Sweet Mountain Bananas	price=4.55	pack=820g	per=5.5488	shop=FairPrice	url=https://www.fairprice.com.sg/product/sumifru-sweet-mountain-bananas-820g-13137896	date=2026-11-12
 banana	0	Sumifru Poongmi Wang Banana	price=5.35	pack=820g	per=6.5244	shop=FairPrice	url=https://www.fairprice.com.sg/product/sumifru-poongmi-wang-banana-820g-13137901	date=2026-11-11
 banana	0	Sumifru Kamsookwang Banana	price=5.30	pack=820g	per=6.4634	shop=FairPrice	url=https://www.fairprice.com.sg/product/sumifru-kamsookwang-banana-820g-13137900	date=2026-11-11
 dishwashing-liquid	0	FairPrice Dishwashing Liquid Detergent Refill - AntiBac	price=4.50	pack=4 x 600ml	per=0.1875	shop=FairPrice	url=https://www.fairprice.com.sg/product/fairprice-dishwashing-liquid-detergent-refill-antibac-4-x-600ml-13210278	date=2026-11-11	until=2026-11-19
@@ -1319,3 +1319,7 @@ streaky-pork-belly	0	Borrowdale Free Range Pork Belly Boneless Skinless	price=29
 lean-pork	0	Borrowdale Free Range Pork Leg Steak	price=10.50	pack=300g	per=35.0000	shop=Ryan's Grocery	url=https://ryansgrocery.com/free-range-carbon-neutral-pork-leg-steak/	date=2026-11-12
 lean-pork	0	Borrowdale Free Range Pork Loin Steak Boneless	price=12.90	pack=300g	per=43.0000	shop=Ryan's Grocery	url=https://ryansgrocery.com/free-range-pork-loin-steak-boneless/	date=2026-11-12
 ribeye-beef	0	Ryan's Organic Beef Cube Roll Ribeye Steak	price=26.70	pack=300g	per=89.0000	shop=Ryan's Grocery	url=https://ryansgrocery.com/organic-carbon-neutral-beef-cube-roll-ribeye-steak/	date=2026-11-12
+rice-thai-hom-mali-5-kg	0	Double FP Thai Hom Mali Premium Quality Fragrant Rice	price=14.10	pack=5 kg	per=2.82	shop=FairPrice	url=https://www.fairprice.com.sg/product/double-fp-thai-hom-mali-premium-quality-fragrant-rice-5kg-13097846	date=2026-11-12
+kitchen-towel	0	FairPrice Premium Kitchen Towel Rolls	price=4.99	pack=6 rolls	per=0.8317	shop=FairPrice	url=https://www.fairprice.com.sg/product/fairprice-gold-premium-kitchen-towel-6s-13084758	date=2026-11-12
+shampoo	0	Sunsilk Smooth & Manageable	price=6.90	pack=625 ml	per=1.104	shop=FairPrice	url=https://www.fairprice.com.sg/product/sunsilk-shampoo-smooth-manageable-650ml-13085432	date=2026-11-12	until=2026-12-01
+beer-6-cans	0	Anchor Can Beer - Smooth Pilsener	price=10.50	pack=6 x 320 ml	per=1.75	shop=FairPrice	url=https://www.fairprice.com.sg/product/bcrs-anchor-can-beer-smooth-pilsener-6-x-320ml-13281031	date=2026-11-12	until=2026-11-26
