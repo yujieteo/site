@@ -169,7 +169,7 @@ The forecasts in this post use that winner. The range is where 80% of past misse
 
 - **Sample changes.** SingStat changed its brands and shops in January 2019 and January 2024. Average prices are not pure price changes across those dates. The CPI is. Instant noodles went from S$2.80 to S$3.86 in one month when the sample changed, and the CPI for noodles and pasta fell 0.5%. So the charts scale each older price to today's sample, to move across the change as the CPI of its class did. On Januaries with no sample change, this link was within 1% of the truth half the time and within about 5% nine times in ten.
 - **Averages are not your shop.** They mix brands and outlets. Promotions may be partly hidden.
-- **Shops covered.** Shelf prices are mostly FairPrice, with some Cold Storage, IKEA, Courts, Harvey Norman and official fee pages. Sheng Siong, Giant and Don Don Donki showed no readable online prices. Shopee, Amazon.sg, Watsons, Popular, Challenger and several fashion sites blocked automated reading.
+- **Shops covered.** Rows link to the retailer product page, official catalogue or fee page used for the price. Amazon.sg import prices can have postage at checkout. Some retailers restrict access to product pages or do not publish item prices.
 - **Sets of goods.** Inside a spending group, shop prices sit in sets such as "Home and living". Those names follow Shopee's menu from memory, as its site could not be read, and may not match exactly.
 - **Indexes are not prices.** A word like "sofa" maps to the nearest official series, here Furniture & Furnishings. That series covers many products, so your sofa may move differently.
 - **Offers end.** Many shelf prices are offers. Dates are shown where a page gave one.
