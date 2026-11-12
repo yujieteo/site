@@ -5,7 +5,7 @@ summary: Among meals I can compare per person, Professor Brawn Cafe has a quoted
 summary: A high score can also cost much more. Seoul Garden has 4.8 from 3,753 reviews, and its typical buffet costs S$41.85.
 summary: A typical main costs S$5.90 at a hawker stall, against S$16.67 at a restaurant, across 47 places.
 summary: Prices come from 645 dated menu items. Every comparison uses the typical main of a place, not its cheapest item, and each row opens the menu behind it.
-summary: Only 31 places have both a Google rating and a comparable per-person meal price, so the rating ranking is still a small sample.
+summary: Only 32 places have both a Google rating and a comparable per-person meal price, so the rating ranking is still a small sample.
 ---
 Tampines has two working hawker centres, three big malls and many coffee shops. This page shows what the food costs and how it is rated. It works best on a phone: tap a row to see the menu behind its price.
 
