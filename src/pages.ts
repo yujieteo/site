@@ -42,6 +42,11 @@ ${tail}</body>
 `;
 }
 
+// A date in a table. The time element keeps it on one line: see "main.page td time" in static/style.css.
+function day(date: string): string {
+  return date === "" ? "" : `<time datetime="${date}">${date}</time>`;
+}
+
 const HEADER = `<header class="wrap"><a class="name" href="/">Yu Jie Teo</a><span class="tagline">Mechanical Engineer</span></header>`;
 
 interface Entry {
@@ -107,7 +112,7 @@ export function apiPage(apis: PostApi[]): string {
   const rows: string[] = [];
   for (const api of apis) {
     const base = `/api/${api.post.slug}`;
-    rows.push(`<tr><td><a href="${base}/index.txt">${api.post.title}</a></td><td>${api.post.date}</td><td>${api.parts.length}</td><td>${api.tokens.toLocaleString("en-US")}</td></tr>`);
+    rows.push(`<tr><td><a href="${base}/index.txt">${api.post.title}</a></td><td>${day(api.post.date)}</td><td>${api.parts.length}</td><td>${api.tokens.toLocaleString("en-US")}</td></tr>`);
   }
   const posts = `<table><thead><tr><th>Post index</th><th>Date</th><th>Section files</th><th>Tokens in all</th></tr></thead><tbody>${rows.join("")}</tbody></table>`;
   const others: string[] = [];
@@ -168,7 +173,7 @@ export function dealsPage(seen: Deal[]): string {
   const rows: string[] = [];
   for (const deal of seen) {
     const f = deal.note.fields;
-    rows.push(`<tr><td><a href="${escapeText(f.url ?? "")}" rel="noopener noreferrer">${escapeText(deal.row.name)}</a><br><span class="muted">${escapeText(deal.note.text)}</span></td><td>${money(deal.price)}</td><td>${money(deal.row.average)}</td><td>${deal.good ? "<strong>" : ""}${below(deal)}${deal.good ? "</strong>" : ""}</td><td>${escapeText(f.shop ?? "")}</td><td>${f.date ?? ""}</td></tr>`);
+    rows.push(`<tr><td><a href="${escapeText(f.url ?? "")}" rel="noopener noreferrer">${escapeText(deal.row.name)}</a><br><span class="muted">${escapeText(deal.note.text)}</span></td><td>${money(deal.price)}</td><td>${money(deal.row.average)}</td><td>${deal.good ? "<strong>" : ""}${below(deal)}${deal.good ? "</strong>" : ""}</td><td>${escapeText(f.shop ?? "")}</td><td>${day(f.date ?? "")}</td></tr>`);
   }
   const table = rows.length > 0 ? `<table><thead><tr><th>Item</th><th>Shelf price</th><th>Average</th><th>Against average</th><th>Shop</th><th>Seen</th></tr></thead><tbody>${rows.join("")}</tbody></table>` : `<p class="muted">No prices have been noted yet.</p>`;
   const article = `<article><h1>Deals seen now</h1>
@@ -182,7 +187,7 @@ export function forecastsPage(notes: Note[]): string {
   const rows: string[] = [];
   for (const note of notes) {
     const f = note.fields;
-    rows.push(`<tr><td><a href="${escapeText(f.url ?? "")}" rel="noopener noreferrer">${escapeText(note.text)}</a></td><td>${escapeText(f.by ?? "")}</td><td>${f.made ?? ""}</td><td>${f.due ?? ""}</td><td>${f.outcome ?? ""}</td></tr>`);
+    rows.push(`<tr><td><a href="${escapeText(f.url ?? "")}" rel="noopener noreferrer">${escapeText(note.text)}</a></td><td>${escapeText(f.by ?? "")}</td><td>${day(f.made ?? "")}</td><td>${day(f.due ?? "")}</td><td>${f.outcome ?? ""}</td></tr>`);
   }
   const table = rows.length > 0 ? `<table><thead><tr><th>Forecast</th><th>By</th><th>Made</th><th>Due</th><th>Outcome</th></tr></thead><tbody>${rows.join("")}</tbody></table>` : `<p class="muted">No forecasts have been noted yet.</p>`;
   const article = `<article><h1>Forecasts to check</h1>

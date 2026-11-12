@@ -243,16 +243,20 @@ function band(title: string, items: Spread[], top: number, x: Scale): string {
   const middle = median(items.map((item) => item.typ));
   const centre = top + 48;
   const line = at(x, Math.log(middle));
+  // Every tap area lies under every dot. A tap on a dot then gives that dot, and not a neighbour whose wider tap area covers it.
+  // The median line takes no taps, so a dot under it still answers.
+  let areas = "";
   let dots = "";
   items.forEach((item, index) => {
     const jitter = (((index * 0.618) % 1) - 0.5) * 30;
     const left = at(x, Math.log(item.typ)).toFixed(1);
     const y = (centre + jitter).toFixed(1);
     const tip = esc(`${item.n}: typical ${money(item.typ)}, ${money(item.low)} to ${money(item.high)}`);
-    dots += `<g data-tip="${tip}"><circle cx="${left}" cy="${y}" r="9" fill="transparent"></circle><circle cx="${left}" cy="${y}" r="4" fill="${COLOURS[item.k]}" stroke="var(--card)"></circle></g>`;
+    areas += `<circle cx="${left}" cy="${y}" r="9" fill="transparent" data-tip="${tip}"></circle>`;
+    dots += `<circle cx="${left}" cy="${y}" r="4" fill="${COLOURS[item.k]}" stroke="var(--card)" data-tip="${tip}"></circle>`;
   });
   const label = text(x.r0, top + 12, "start", `${title}: ${items.length} places, median ${money(middle)}`, "var(--ink)");
-  return `${label}${dots}<line x1="${line.toFixed(1)}" x2="${line.toFixed(1)}" y1="${centre - 22}" y2="${centre + 22}" stroke="var(--ink)" stroke-width="2"></line>`;
+  return `${label}${areas}${dots}<line x1="${line.toFixed(1)}" x2="${line.toFixed(1)}" y1="${centre - 22}" y2="${centre + 22}" stroke="var(--ink)" stroke-width="2" pointer-events="none"></line>`;
 }
 
 export function spreadSvg(width: number): string {

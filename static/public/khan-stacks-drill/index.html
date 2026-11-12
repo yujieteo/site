@@ -74,6 +74,10 @@ main .meta { font-size: var(--small); margin-bottom: 20px; font-variant-numeric:
 .missed .muted { line-height: var(--leading); }
 @media (min-width: 640px) { header.wrap { padding-top: 96px; } }
 @media (pointer: coarse) { .keys { display: none; } }
+/* The questions are in this file, so on a slow connection the first one shows seconds after the page does. Until then the
+   view keeps the height of a question, so the footer does not jump down when it comes. */
+#view:empty { min-height: 20rem; }
+@media (min-width: 640px) { #view:empty { min-height: 14rem; } }
 </style>
 <header class="wrap"><a class="name" href="/">Yu Jie Teo</a><span class="tagline">Mechanical Engineer</span></header>
 <main class="wrap">

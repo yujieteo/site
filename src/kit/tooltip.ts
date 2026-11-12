@@ -69,7 +69,11 @@ export function wireTooltips(figure: Element): void {
     const mark = markOf(event);
     if (mark) show(t, mark, true);
   });
-  frame.addEventListener("focusout", () => hide(t));
+  // Focus that leaves a mark closes its tip. Focus that leaves anything else does not: a tap on a mark takes the
+  // focus from the row the reader opened, after the tap has shown the tip.
+  frame.addEventListener("focusout", (event) => {
+    if (markOf(event)) hide(t);
+  });
   document.addEventListener("pointerdown", (event) => {
     if (!mouse(event) && !markOf(event)) hide(t);
   });
