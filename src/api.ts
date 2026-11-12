@@ -32,6 +32,7 @@ interface Resource {
 
 const DATA: readonly Resource[] = [
   { href: "/api/tampines-food/places.txt", title: "Tampines food places", about: `TSV, one row per place: ${SPREADS.length} places with type, cuisine, venue, typical price in S$ and Google rating, its source and date. The prices_as_of field is the newest dish date, not a date for every price. Goes with the post on Tampines food.` },
+  { href: "/api/tampines-food/dishes.txt", title: "Tampines food dish prices", about: "TSV, one row per dated dish with place, venue, unit, comparison type, price in S$, source date and URL. Prices follow the methods in the Tampines food post." },
   { href: "/hn-forecasters.opml", title: "Hacker News forecasters", about: "OPML list of the RSS feeds of the ranked commenters. Goes with the post on Hacker News forecasters." },
   { href: "/lw-forecasters.opml", title: "LessWrong forecasters", about: "OPML list of the comment and post feeds of the ranked writers. Goes with the post on LessWrong forecasters." },
 ];
@@ -213,6 +214,17 @@ function foodTsv(): string {
   return `${rows.join("\n")}\n`;
 }
 
+function foodDishesTsv(): string {
+  const rows = [["name", "venue", "unit", "price_is", "dish", "price_sgd", "price_as_of", "source"].join("\t")];
+  for (const item of SPREADS) {
+    const priceIs = item.sh === 1 ? "shared dish" : item.f === "s" ? "snack" : "main";
+    for (const [dish, price, date, source] of item.items) {
+      rows.push([item.n, item.p, item.u, priceIs, dish, price, date, source].map(cell).join("\t"));
+    }
+  }
+  return `${rows.join("\n")}\n`;
+}
+
 export function writeApi(out: string, apis: PostApi[]): void {
   for (const api of apis) {
     const dir = `${out}/api/${api.post.slug}`;
@@ -223,6 +235,7 @@ export function writeApi(out: string, apis: PostApi[]): void {
   }
   mkdirSync(`${out}/api/tampines-food`, { recursive: true });
   writeFileSync(`${out}/api/tampines-food/places.txt`, foodTsv());
+  writeFileSync(`${out}/api/tampines-food/dishes.txt`, foodDishesTsv());
   writeFileSync(`${out}/api/index.json`, indexJson(apis));
   writeFileSync(`${out}/llms.txt`, llmsText(apis));
 }
