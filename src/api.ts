@@ -28,11 +28,12 @@ interface Resource {
   href: string;
   title: string;
   about: string;
+  postSlug?: string;
 }
 
 const DATA: readonly Resource[] = [
-  { href: "/api/tampines-food/places.txt", title: "Tampines food places", about: `TSV, one row per place: ${SPREADS.length} places with type, cuisine, venue, typical price in S$ and Google rating, its source and date. The prices_as_of field is the newest compared item date, not a date for every price. Goes with the post on Tampines food.` },
-  { href: "/api/tampines-food/dishes.txt", title: "Tampines food dish prices", about: "TSV, one row per dated menu item with place, venue, unit, comparison type, price in S$, source date and URL. Items labelled not compared do not contribute to the place’s typical price. Prices follow the methods in the Tampines food post." },
+  { href: "/api/tampines-food/places.txt", title: "Tampines food places", postSlug: "tampines-food", about: `TSV with ${SPREADS.length} places. Join to the dishes file on name, venue and unit. A typical_sgd value of 0 means there is no typical price. prices_as_of gives the newest compared dish date.` },
+  { href: "/api/tampines-food/dishes.txt", title: "Tampines food dish prices", postSlug: "tampines-food", about: "TSV with one row per dated menu item. unit is the stall or store identifier and can be empty. price_sgd is numeric, and price_as_of has year, month or day precision. A price_is value ending in (not compared) excludes the row from the place’s typical price. See How I built this in the Tampines food post for dates, charges and serving sizes." },
   { href: "/hn-forecasters.opml", title: "Hacker News forecasters", about: "OPML list of the RSS feeds of the ranked commenters. Goes with the post on Hacker News forecasters." },
   { href: "/lw-forecasters.opml", title: "LessWrong forecasters", about: "OPML list of the comment and post feeds of the ranked writers. Goes with the post on LessWrong forecasters." },
 ];
@@ -44,7 +45,7 @@ const LIVE: readonly Resource[] = [
   { href: "/notes/forecasts.txt", title: "Forecasts", about: "TSV. Forecasts by those people, each with its date, link and outcome: open, right, partly or wrong." },
   { href: "/api/deals.txt", title: "Deals seen now", about: "Shelf prices seen in Singapore shops in the last 30 days, against the official average price." },
   { href: "/api/prices.txt", title: "Price list", about: "TSV. The latest official average price of 84 goods and the price that counts as a good deal." },
-  { href: "/api/products.txt", title: "Products", about: "TSV with a header. Every product on the Singapore prices post, with the id of its item, its shop, price and link." },
+  { href: "/api/products.txt", title: "Products", postSlug: "singapore-value-buys", about: "TSV with one row per product listing on the Singapore prices post. id identifies the item group and can repeat. price and unit_price are display strings that can contain ranges, promotion dates or multiple amounts. The export has no per-row observation date." },
   { href: "/api/checks.txt", title: "Product checks", about: "TSV with a header. The products whose item has a quality check, the check, and what a page showed." },
   { href: "/api/advice.txt", title: "Advice", about: "TSV with a header. The 12 spending groups of the Singapore prices post and the advice in each, by lever." },
 ];
@@ -147,6 +148,8 @@ function postIndex(api: PostApi): string {
   const { post } = api;
   const lines = [`# ${post.title}`, "", `Date: ${post.date}`, `Page for people: ${SITE}/essays/${post.slug}/`, `Whole post in one file: ${SITE}/api/${post.slug}/whole-post.txt (about ${count(api.tokens)} tokens)`, "", "## Summary", ""];
   for (const item of post.summary) lines.push(`- ${item}`);
+  const resources = [...DATA, ...LIVE].filter((item) => item.postSlug === post.slug);
+  if (resources.length > 0) lines.push("", "## Data", "", ...resourceLines(resources));
   lines.push("", "## Sections", "", "Fetch only the sections you need. Each line gives the size in tokens.", "");
   for (const part of api.parts) {
     const inside = part.holds === "" ? "" : ` Holds: ${part.holds}`;
@@ -170,7 +173,7 @@ function llmsText(apis: PostApi[]): string {
     "1. Find the post you need in the list below.",
     "2. Fetch its link. You get a summary and a list of sections, each with its size in tokens.",
     "3. Fetch only the sections that answer the question. Do not fetch the whole post unless you need all of it.",
-    "4. In your answer, give the page address and the post date. Prices, ratings and forecasts are right for that date only.",
+    "4. In your answer, give the source address and its observation date when available. For a post, also give the publication date.",
     "",
     "Token sizes are estimates: the number of characters divided by 4.",
     "",
