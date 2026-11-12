@@ -139,7 +139,7 @@ ${notesTable()}
 <ul>
 <li>The address of a section comes from its heading. It changes only if the heading changes.</li>
 <li>Token counts are estimates: the number of characters divided by 4.</li>
-<li>Every file names its post and date. Prices, ratings and forecasts are right for that date only.</li>
+<li>Post files give the publication date. Data and live files describe their date fields or update schedule where available.</li>
 </ul></article>`;
   return shell("API for AI agents", "A text version of this site for language models, in short files with token counts.", HEADER, `<main class="wrap page">${article}</main>`, []);
 }
