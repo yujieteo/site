@@ -19,7 +19,7 @@ The price on the right is the typical main: the median across the dishes I could
 
 Meals, snacks and shared dishes stay in separate lists, because they are not like for like. A S$2 pancake is not a cheaper dinner. A S$48.90 fish feeds a table.
 
-Rajarani Thosai shows that scores and awards measure different things. Michelin gave it a Bib Gourmand in 2026, yet a guide quoted 4.0 on Google in 2025.
+Rajarani Thosai shows that scores and awards measure different things. Michelin gave it a Bib Gourmand in 2026, yet a guide last updated in July 2025 quoted 4.0 on Google. Yi Pin Wei Braised Duck Kway Chap at the same market also earned a 2026 Bib Gourmand.
 
 ## What a meal costs
 
@@ -71,5 +71,5 @@ Search all 335 places by name, dish, cuisine or address. Researched places come 
 
 - Places, streets and MRT: [OpenStreetMap](https://www.openstreetmap.org/copyright) contributors, ODbL, extracted 9 November 2026.
 - Boundary and hawker centres: [URA Master Plan 2019 planning areas](https://data.gov.sg/datasets/d_4765db0e87b9c86336792efe8a1f7a66/view) and [NEA hawker centres](https://data.gov.sg/datasets/d_4a086da0a5553be1d89383cd90d07ecd/view), Singapore Open Data Licence.
-- Michelin: [Daniel Food Diary's Bib Gourmand 2026 list](https://danielfooddiary.com/2026/07/28/bibgourmand2026/).
+- Michelin: [The MICHELIN Guide Singapore Bib Gourmand 2026 selection](https://guide.michelin.com/sg/en/article/michelin-guide-ceremony/singapore-bib-gourmand-2026).
 - Menus and ratings: each dish links to its own source in the list above. The main guides are [Eatbook](https://eatbook.sg/tampines-food-guide/), [Seth Lui](https://sethlui.com/tampines-round-market-food-centre-singapore/) and [Daniel Food Diary](https://danielfooddiary.com/2026/06/16/tampinesroundmarket/).
