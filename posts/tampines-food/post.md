@@ -4,7 +4,7 @@ date: 2026-11-09
 summary: Among meals I can compare per person, Ippon Fusion Bowl has 4.8 on Google at a typical S$7.50, and Botak Cantonese Porridge has 4.6 at S$5.00.
 summary: A high score can also cost much more. Seoul Garden has 4.8 from 3,753 reviews, and its typical buffet costs S$41.85.
 summary: A typical main costs S$6.00 at a hawker stall, against S$16.67 at a restaurant, across 49 places.
-summary: Prices come from 638 dated menu items. Every comparison uses the typical main of a place, not its cheapest item, and each row opens the menu behind it.
+summary: Prices come from 632 dated menu items. Every comparison uses the typical main of a place, not its cheapest item, and each row opens the menu behind it.
 summary: Only 21 places have both a Google rating and a comparable per-person meal price, so the rating ranking is still a small sample.
 ---
 Tampines has two working hawker centres, three big malls and many coffee shops. This page shows what the food costs and how it is rated. It works best on a phone: tap a row to see the menu behind its price.
@@ -25,7 +25,7 @@ Rajarani Thosai shows that scores and awards measure different things. Michelin 
 
 Each dot is one place, at its typical main. The black line marks the median of each group. Shared-dish places are left out, because their prices are per table and not per person.
 
-::figure kind=food view=spread alt="Four rows of dots showing the typical price at 24 hawker places, 25 restaurants, 6 cafes and 22 snack places in Tampines. The medians are S$6.00, S$16.67, S$15.54 and S$5.75." caption="Typical price per person on a logarithmic axis. Tap a dot for the place and its range. Only 6 cafes have enough verified meal prices, so that median is weak."
+::figure kind=food view=spread alt="Four rows of dots showing the typical price at 24 hawker places, 25 restaurants, 6 cafes and 21 snack places in Tampines. The medians are S$6.00, S$16.67, S$15.54 and S$6.00." caption="Typical price per person on a logarithmic axis. Tap a dot for the place and its range. Only 6 cafes have enough verified meal prices, so that median is weak."
 
 ## What each cuisine costs
 
@@ -35,21 +35,21 @@ Median typical main by cuisine, with the place that scores highest. The bar runs
 
 ## Where the food is
 
-The map shows 336 places on real streets and MRT lines. Places with a menu sit at their block or mall. Each large number is an area, and the first view counts all 336 places: tap a number to zoom in. Dots that would touch merge into a number, and tapping that number lists the places. Malls show as one number because every unit shares one address.
+The map shows 335 places on real streets and MRT lines. Places with a menu sit at their block or mall. Each large number is an area, and the first view counts all 335 places: tap a number to zoom in. Dots that would touch merge into a number, and tapping that number lists the places. Malls show as one number because every unit shares one address.
 
 ::figure kind=food view=map alt="A street map of Tampines divided into five areas, each with a count of food places. Tapping an area zooms in to individual places, malls and MRT stations." caption="Streets, MRT and parks from OpenStreetMap. Hawker centre status from NEA, which listed Tampines North as under construction in December 2024."
 
 ## Find a place
 
-Search all 336 places by name, dish, cuisine or address. Researched places come first, best rated at the top. A budget filter uses the typical price for each place’s comparison category, so a drink or snack can appear alongside a meal in search.
+Search all 335 places by name, dish, cuisine or address. Researched places come first, best rated at the top. A budget filter uses the typical price for each place’s comparison category, so a drink or snack can appear alongside a meal in search.
 
-::figure kind=food view=find alt="A search box and filters over a list of 336 Tampines food places." caption="196 places come from OpenStreetMap only, and I did not check their menus."
+::figure kind=food view=find alt="A search box and filters over a list of 335 Tampines food places." caption="196 places come from OpenStreetMap only, and I did not check their menus."
 
 ## How I built this
 
 **Prices.** I collected 1,093 menu rows for 144 places from guides, reviews and official menus. Each row keeps its source and date.
 
-**What I removed.** Delivery prices, since apps mark them up. Prices with no date or from before 2023. Add-ons and sides. At 108 Matcha Saro I also left out drinks and a pasta from the snack list, boxes with no clear serving count, and an older soft-serve price with unclear charges. Whole fish, steamboats and boxes with no stated portion. Casa Vostra pizzas are also left out of its per-person comparison because their serving count is not stated. At Ging Sun Ho, I left standalone dishes and a time-limited crab-roe special out of the per-person main comparison. Two promo lunch deals, and one price from another outlet of the same chain. Two Putien prices from before it dropped service charge and GST in August 2024. I also removed repeated entries for the same dish at Yummy Sarawak Kolo Mee, Song Han Carrot Cake, Lao Lee, Teo Kee and Penang Savour. That left 638 dated menu items. Fifteen drinks, mains, shared or ambiguous-serving items are shown separately and excluded from their venue’s snack comparison.
+**What I removed.** Delivery prices, since apps mark them up. Prices with no date or from before 2023. Add-ons and sides. At 108 Matcha Saro I also left out drinks and a pasta from the snack list, boxes with no clear serving count, and an older soft-serve price with unclear charges. Whole fish, steamboats and boxes with no stated portion. Casa Vostra pizzas are also left out of its per-person comparison because their serving count is not stated. At Ging Sun Ho, I left standalone dishes and a time-limited crab-roe special out of the per-person main comparison. Two promo lunch deals, and one price from another outlet of the same chain. Two Putien prices from before it dropped service charge and GST in August 2024. I also removed repeated entries for the same dish at Yummy Sarawak Kolo Mee, Song Han Carrot Cake, Lao Lee, Teo Kee and Penang Savour. That left 632 dated menu items. Seventeen drinks, mains, shared or ambiguous-serving items are shown separately and excluded from their venue’s snack comparison.
 
 **Dates.** A guide often repeats a price from an older review. Where a guide links to that review and the review gives the same price for the dish, the row takes the review's date. Where a page was edited after it came out, the row takes the date it came out. A guide entry with no linked review keeps the guide's date, so its price may be older than it looks. For an undated official menu, the date is when I checked it. The place-level price date is the newest item in its comparison, not the date of every item.
 
@@ -61,7 +61,7 @@ Search all 336 places by name, dish, cuisine or address. Researched places come 
 
 **Ratings.** A rating counts as Google only if a page quotes Google. I also take scores from [FooTinder](https://en.footinder.app/), which shows Google review counts and links each place to Google Maps; those rows are dated November 2026. Scores date from 2022 to 2026, and most guides gave no review count. Twelve additional scores and counts come from StationMap’s 19 October 2026 snapshots. Ashes Burnnit’s Google score and count are quoted by STAMPEDE, but the observation date is not stated. I did not collect scores from Google Maps directly. I left out editorial scores, and directory scores whose source is unclear.
 
-**Closed or moved.** I removed Mr. Doner Kebab, Nuodle and The Co-op, since their units now show other tenants or a closed label. Eight places have no recent proof they are open, and their rows say so. Two have moved.
+**Closed or moved.** I removed Mr. Doner Kebab, Nuodle and The Co-op, since their units now show other tenants or a closed label. Bae.gal at Century Square is also excluded: [a local closure report](https://forkinworthit.com/restaurants/bae-gal-century-square) says it ceased operations there by August 2026. Seven places have no recent proof they are open, and their rows say so. One has moved. Puffs and Peaks has two outlets, rather than having moved: the [Changkat cafe](https://www.puffsandpeaks.com/pages/find-us) remains open alongside Tampines Central.
 
 **The map.** Researched places use their block address or their mall. The rest use OpenStreetMap positions, inside the official planning-area boundary. Where a map entry was last edited before 2022, its row says so, because the shop may have closed.
 
