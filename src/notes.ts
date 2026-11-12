@@ -1,4 +1,4 @@
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { lifeIds } from "./kit/life.ts";
 import { LAST_MONTH, PRICES } from "./kit/price-data.ts";
 
@@ -23,6 +23,8 @@ interface Field {
   need: boolean;
   test: RegExp;
   help: string;
+  // A date must be a real day or month. A "past" date must not be after today.
+  date?: "past" | "any";
 }
 
 interface Part {
@@ -31,7 +33,10 @@ interface Part {
   read: string;
   id: RegExp;
   idHelp: string;
-  once: boolean;
+  // What a file may hold only once: an id, or an id with the same url or the same text.
+  one: "id" | "url" | "text";
+  // The longest text, where the part allows less than the usual limit.
+  limit?: number;
   points: string;
   text: string;
   fields: Record<string, Field>;
@@ -49,7 +54,7 @@ export const PARTS: readonly Part[] = [
     read: "/singapore-policy-actionables.txt",
     id: HASH,
     idHelp: "the id in the first column of the list",
-    once: true,
+    one: "id",
     points: "Added to the score of the document. Use minus points for a document the rules overrate.",
     text: "What to do and by when. State facts from the document only. No investment advice.",
     fields: {},
@@ -61,7 +66,7 @@ export const PARTS: readonly Part[] = [
     read: "/reading.txt",
     id: HASH,
     idHelp: "the id in the first column of the list",
-    once: true,
+    one: "id",
     points: "Each point moves the item by one hour in the order, which is newest first. Minus points move it down.",
     text: "Why it is worth reading, or why it is not.",
     fields: {},
@@ -73,14 +78,14 @@ export const PARTS: readonly Part[] = [
     read: "/forecasters.txt",
     id: HASH,
     idHelp: "the id in the first column of the list. A forecast stays here after it leaves the list.",
-    once: true,
-    points: "Higher points come first. Give more to a dated forecast that others doubt.",
+    one: "id",
+    points: "Higher points come first. Give more to a dated forecast that others doubt. Among equal points, the soonest due date comes first.",
     text: "The forecast in the person's own words, short, or a plain restatement.",
     fields: {
       by: { need: true, test: /^[\w-]{1,30}$/, help: "the Hacker News user name, or the LessWrong name from the user's profile address" },
       url: { need: true, test: URL, help: "an https link to the comment or post" },
-      made: { need: true, test: /^\d{4}-\d\d(-\d\d)?$/, help: "when it was made, as YYYY-MM or YYYY-MM-DD" },
-      due: { need: false, test: /^\d{4}(-\d\d){0,2}$/, help: "when it can be checked, as YYYY, YYYY-MM or YYYY-MM-DD. Leave it out if the person gave no date." },
+      made: { need: true, test: /^\d{4}-\d\d(-\d\d)?$/, date: "past", help: "when it was made, as YYYY-MM or YYYY-MM-DD" },
+      due: { need: false, test: /^\d{4}(-\d\d){0,2}$/, date: "any", help: "when it can be checked, as YYYY, YYYY-MM or YYYY-MM-DD. Leave it out if the person gave no date." },
       outcome: { need: true, test: /^(open|right|partly|wrong)$/, help: "open, right, partly or wrong. Change it only with evidence, and say the evidence in the text." },
     },
     result: "/forecasts/, on deploy",
@@ -91,15 +96,15 @@ export const PARTS: readonly Part[] = [
     read: "/api/prices.txt",
     id: /^[a-z0-9-]{1,80}$/,
     idHelp: "the id in the first column of the list. An item can have many lines, one for each shop.",
-    once: false,
+    one: "url",
     points: "Breaks ties only. Use 0.",
     text: "The product and pack seen, and any condition such as a member price or an end date.",
     fields: {
       price: { need: true, test: /^\d{1,5}(\.\d\d?)?$/, help: "the price in S$ for the unit in the item name. Convert a different pack size to that unit." },
       shop: { need: true, test: /^[\p{L}\p{N} .&'-]{1,40}$/u, help: "the shop name" },
       url: { need: true, test: URL, help: "an https link to the product page" },
-      date: { need: true, test: DATE, help: "the day you saw the price, as YYYY-MM-DD" },
-      until: { need: false, test: DATE, help: "the last day of the offer, as YYYY-MM-DD" },
+      date: { need: true, test: DATE, date: "past", help: "the day you saw the price, as YYYY-MM-DD" },
+      until: { need: false, test: DATE, date: "any", help: "the last day of the offer, as YYYY-MM-DD" },
     },
     result: `/deals/, on deploy. A line leaves the page after its until date, or ${DEAL_DAYS} days after its date.`,
   },
@@ -109,7 +114,7 @@ export const PARTS: readonly Part[] = [
     read: "/api/products.txt",
     id: /^[a-z0-9-]{1,80}$/,
     idHelp: "the item id in the first column of the list. An item can have many lines, one for each product.",
-    once: false,
+    one: "url",
     points: "Not used. Use 0.",
     text: "The product name as the shop gives it. To refresh a product that is in the list, use the url of its row: the line then replaces that row, and the product keeps the name in the list.",
     fields: {
@@ -118,8 +123,8 @@ export const PARTS: readonly Part[] = [
       per: { need: false, test: /^\d{1,6}(\.\d{1,4})?$/, help: "the unit price as a plain number in S$, such as 4.41, for the unit in the unit column of the list. Work it out from the price and the pack. Give it where the list shows a unit for the item, and leave it out where the unit is empty." },
       shop: { need: true, test: /^[\p{L}\p{N} .&'-]{1,40}$/u, help: "the shop name" },
       url: { need: true, test: URL, help: "an https link to the product page you opened" },
-      date: { need: true, test: DATE, help: "the day you saw the price, as YYYY-MM-DD" },
-      until: { need: false, test: DATE, help: "the last day of the offer, as YYYY-MM-DD. Leave it out if the page gives no date." },
+      date: { need: true, test: DATE, date: "past", help: "the day you saw the price, as YYYY-MM-DD" },
+      until: { need: false, test: DATE, date: "any", help: "the last day of the offer, as YYYY-MM-DD. Leave it out if the page gives no date." },
     },
     result: "the shop prices at /essays/singapore-value-buys/, on deploy",
   },
@@ -129,13 +134,13 @@ export const PARTS: readonly Part[] = [
     read: "/api/checks.txt",
     id: /^[a-z0-9-]{1,80}$/,
     idHelp: "the product id in the first column of the list",
-    once: true,
+    one: "id",
     points: "Not used. Use 0.",
     text: "The fact as the page states it, in a few words, such as \"1,450 ppm fluoride\". Read it on a page you opened. A search result does not count. Leave a product out if no page shows the whole fact, or if the list already has an answer for it in the now column and yours is the same.",
     fields: {
       verdict: { need: true, test: /^(pass|fail|recorded)$/, help: "pass or fail, by the check in the list. Use recorded where the answer column says recorded." },
       url: { need: true, test: URL, help: "an https link to the page where you read the fact" },
-      date: { need: true, test: DATE, help: "the day you read the page, as YYYY-MM-DD" },
+      date: { need: true, test: DATE, date: "past", help: "the day you read the page, as YYYY-MM-DD" },
     },
     result: "the dots and the pick of the item at /essays/singapore-value-buys/, on deploy",
   },
@@ -145,7 +150,8 @@ export const PARTS: readonly Part[] = [
     read: "/api/advice.txt",
     id: /^[a-z-]{1,40}$/,
     idHelp: "the id of the spending group in the first column of the list. A group can have many lines.",
-    once: false,
+    one: "text",
+    limit: 80,
     points: "Higher points come first among the notes of one lever. The advice of the post itself stays first.",
     text: "The thing to do, as one instruction of at most 80 characters, such as \"Tap in before 7:45am on weekdays\". Do not repeat advice that is in the list.",
     fields: {
@@ -179,7 +185,28 @@ export function priceRows(): PriceRow[] {
   return rows;
 }
 
-function parseLine(part: Part, line: string, where: string, known: Set<string> | undefined): Note {
+// The day in Singapore, where the shops are. A note written there in the morning has a date that is still
+// tomorrow in UTC.
+export function today(): string {
+  return new Date(Date.now() + 8 * 3600000).toISOString().slice(0, 10);
+}
+
+// True for a year, month or day that exists: 2026-02-30 does not.
+function real(date: string): boolean {
+  const [year = "", month = "01", day = "01"] = date.split("-");
+  const made = new Date(Date.UTC(Number(year), Number(month) - 1, Number(day)));
+  return made.getUTCMonth() === Number(month) - 1 && made.getUTCDate() === Number(day);
+}
+
+// True where the first date is before the second. A year or a month is compared as far as both go.
+function before(a: string, b: string): boolean {
+  const size = Math.min(a.length, b.length);
+  return a.slice(0, size) < b.slice(0, size);
+}
+
+type Known = ReadonlySet<string> | ReadonlyMap<string, unknown>;
+
+function parseLine(part: Part, line: string, where: string, known: Known | undefined): Note {
   const cells = line.split("\t");
   const id = cells[0] ?? "";
   const points = cells[1] ?? "";
@@ -188,7 +215,8 @@ function parseLine(part: Part, line: string, where: string, known: Set<string> |
   if (!part.id.test(id)) throw new Error(`${where}: "${id}" is not a valid id`);
   if (known && !known.has(id)) throw new Error(`${where}: no item has the id "${id}"`);
   if (!/^[+-]?\d{1,2}$/.test(points) || Math.abs(Number(points)) > POINTS_LIMIT) throw new Error(`${where}: points must be a whole number from -${POINTS_LIMIT} to ${POINTS_LIMIT}`);
-  if (text.trim() !== text || text === "" || text.length > TEXT_LIMIT) throw new Error(`${where}: the text must have 1 to ${TEXT_LIMIT} characters and no space at either end`);
+  const limit = part.limit ?? TEXT_LIMIT;
+  if (text.trim() !== text || text === "" || text.length > limit) throw new Error(`${where}: the text must have 1 to ${limit} characters and no space at either end`);
   if (/[<>\x00-\x1f]/.test(text)) throw new Error(`${where}: the text must not hold < or > or control characters`);
   const fields: Record<string, string> = {};
   for (const cell of cells.slice(3)) {
@@ -199,17 +227,26 @@ function parseLine(part: Part, line: string, where: string, known: Set<string> |
     if (at < 1 || !field) throw new Error(`${where}: "${cell}" is not a field of ${part.name} notes`);
     if (key in fields) throw new Error(`${where}: the field ${key} appears twice`);
     if (!field.test.test(value)) throw new Error(`${where}: ${key} must be ${field.help}`);
+    if (field.date && !real(value)) throw new Error(`${where}: ${key} ${value} is not a real date`);
+    if (field.date === "past" && before(today(), value)) throw new Error(`${where}: ${key} ${value} is after today`);
+    if ((key === "price" || key === "per") && Number(value) <= 0) throw new Error(`${where}: ${key} must be more than 0`);
     fields[key] = value;
   }
   for (const [key, field] of Object.entries(part.fields)) {
     if (field.need && !(key in fields)) throw new Error(`${where}: the field ${key} is missing`);
   }
+  if (fields.date && fields.until && before(fields.until, fields.date)) throw new Error(`${where}: until ${fields.until} is before date ${fields.date}`);
+  if (fields.made && fields.due && before(fields.due, fields.made)) throw new Error(`${where}: due ${fields.due} is before made ${fields.made}`);
+  // What the post says about the id: how the item of a check is answered, or the advice a group has.
+  const has = known instanceof Map ? known.get(id) : undefined;
+  if (part.name === "checks" && (has === "record") !== (fields.verdict === "recorded")) throw new Error(`${where}: the verdict must be ${has === "record" ? "recorded" : "pass or fail"}, as the answer column of the list says`);
+  if (part.name === "advice" && has instanceof Set && has.has(text.toLowerCase())) throw new Error(`${where}: the post already gives the advice "${text}"`);
   return { id, points: Number(points), text, fields };
 }
 
 // The ids that a part accepts, for the parts whose list comes from this repository. A check may name a
 // product that a products note added, so the products part loads first.
-function knownIds(name: string, all: Record<string, Note[]>): Set<string> | undefined {
+function knownIds(name: string, all: Record<string, Note[]>): Known | undefined {
   if (name === "prices") return new Set(priceRows().map((row) => row.id));
   if (name === "products") return lifeIds([]).products;
   if (name === "checks") return lifeIds(all.products ?? []).checks;
@@ -220,6 +257,9 @@ function knownIds(name: string, all: Record<string, Note[]>): Set<string> | unde
 export function loadNotes(dir: string, out: string): Record<string, Note[]> {
   const all: Record<string, Note[]> = {};
   mkdirSync(`${out}/notes`, { recursive: true });
+  for (const name of existsSync(dir) ? readdirSync(dir) : []) {
+    if (name.endsWith(".tsv") && !PARTS.some((part) => `${part.name}.tsv` === name)) throw new Error(`notes/${name}: no part has this file. The files are ${PARTS.map((part) => `${part.name}.tsv`).join(", ")}`);
+  }
   for (const part of PARTS) {
     const path = `${dir}/${part.name}.tsv`;
     const raw = existsSync(path) ? readFileSync(path, "utf8") : "";
@@ -230,9 +270,11 @@ export function loadNotes(dir: string, out: string): Record<string, Note[]> {
     for (let at = 0; at < lines.length; at++) {
       const line = lines[at] ?? "";
       if (line === "" || line.startsWith("#")) continue;
-      const note = parseLine(part, line, `notes/${part.name}.tsv line ${at + 1}`, known);
-      if (part.once && seen.has(note.id)) throw new Error(`notes/${part.name}.tsv line ${at + 1}: the id ${note.id} appears twice`);
-      seen.add(note.id);
+      const where = `notes/${part.name}.tsv line ${at + 1}`;
+      const note = parseLine(part, line, where, known);
+      const key = part.one === "id" ? note.id : `${note.id} with the ${part.one} "${part.one === "url" ? (note.fields.url ?? "") : note.text.toLowerCase()}"`;
+      if (seen.has(key)) throw new Error(`${where}: the id ${key} appears twice`);
+      seen.add(key);
       notes.push(note);
     }
     all[part.name] = notes;
@@ -310,5 +352,6 @@ export function deals(notes: Note[], today: string): Deal[] {
 }
 
 export function forecastOrder(notes: Note[]): Note[] {
-  return [...notes].sort((a, b) => Number(b.fields.outcome === "open") - Number(a.fields.outcome === "open") || b.points - a.points || (b.fields.made ?? "").localeCompare(a.fields.made ?? ""));
+  // Open ones first, then by points. Among equals the one that can be checked soonest leads, and one with no due date trails.
+  return [...notes].sort((a, b) => Number(b.fields.outcome === "open") - Number(a.fields.outcome === "open") || b.points - a.points || (a.fields.due ?? "9999").localeCompare(b.fields.due ?? "9999") || (b.fields.made ?? "").localeCompare(a.fields.made ?? ""));
 }

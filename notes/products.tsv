@@ -208,7 +208,7 @@ eggs-10	0	Nuyolk Premium Eggs 10s 550g	price=8.40	pack=10s 550g	per=0.8400	shop=
 eggs-10	0	Nuyolk M Vitamin Eggs 10s 530g	price=6.05	pack=10s 530g	per=0.6050	shop=Cold Storage	url=https://coldstorage.com.sg/product/nuyolk-vitamins-eggs-m-10-x-530g	date=2026-11-11
 eggs-10	0	Farm Choice Farm Fresh Eggs 10s 550g	price=3.60	pack=10s 550g	per=0.3600	shop=Cold Storage	url=https://coldstorage.com.sg/product/farm-choice-farm-fresh-eggs-10s-550g	date=2026-11-11
 eggs-10	0	Farm Choice Singapore Premium Eggs 10s 600g	price=3.70	pack=10s 600g	per=0.3700	shop=Cold Storage	url=https://coldstorage.com.sg/product/farm-choice-singapore-premium-eggs-10s-600g	date=2026-11-11
-eggs-10	0	Farm Choice Singapore Omega 3+6 Farm Eggs 10s 550g	price=4.45	pack=10s 550g	per=0.4450	shop=Cold Storage	url=https://coldstorage.com.sg/product/farm-choice-singapore-omega-36-farm-eggs-10s-550g	date=2026-11-11
+eggs-10	0	Farm Choice Singapore Omega 3+6 Farm Eggs 10s 550g	price=4.25	pack=10s 550g	per=0.4250	shop=Cold Storage	url=https://coldstorage.com.sg/product/farm-choice-singapore-omega-36-farm-eggs-10s-550g	date=2026-11-12
 eggs-10	0	Fujihashiya Japanese White Eggs 10s 520g	price=6.40	pack=10s 520g	per=0.6400	shop=Cold Storage	url=https://coldstorage.com.sg/product/fujihashiya-japanese-white-eggs-10s-520g	date=2026-11-11
 wholemeal-bread-about-400-g	0	Gardenia Fine Grain Wholemeal Bread 420g	price=3.10	pack=420g	per=0.7381	shop=Cold Storage	url=https://coldstorage.com.sg/product/gardenia-fine-grain-wholemeal-bread-420g	date=2026-11-11
 pot	0	IKEA 365+ Pot with lid - stainless steel 5.0 l	price=24.90	pack=5.0 L	per=4.9800	shop=IKEA	url=https://www.ikea.com/sg/en/p/ikea-365-pot-with-lid-stainless-steel-40484251/	date=2026-11-12
@@ -540,7 +540,7 @@ canned-sardines	0	Ayam Brand Sardines in Tomato Sauce Oval	price=4.40	pack=215g	
 canned-sardines	0	Ayam Brand Sardines in Tomato Sauce Light Reduced Salt	price=5.90	pack=425g	per=1.3882	shop=Cold Storage	url=https://coldstorage.com.sg/product/ayam-brand-sardines-tomato-light-reduced-salt-425g	date=2026-11-12
 baked-beans	0	Heinz Baked Beans in Tomato Sauce	price=2.80	pack=220g	per=1.2727	shop=Cold Storage	url=https://coldstorage.com.sg/product/heinz-baked-beans-in-tomato-sauce-220g	date=2026-11-12
 baked-beans	0	Heinz Beanz No Added Sugar in Tomato Sauce	price=2.80	pack=415g	per=0.6747	shop=Cold Storage	url=https://coldstorage.com.sg/product/heinz-beanz-in-tomato-sauce-no-added-sugar-415g	date=2026-11-12
-baked-beans	0	Heinz Beanz Original in Tomato Sauce	price=2.40	pack=415g	per=0.5783	shop=Cold Storage	url=https://coldstorage.com.sg/product/heinz-beanz-original-415g	date=2026-11-12
+baked-beans	0	Heinz Beanz Original in Tomato Sauce	price=2.80	pack=415g	per=0.6747	shop=Cold Storage	url=https://coldstorage.com.sg/product/heinz-beanz-original-415g	date=2026-11-12
 keyboard	0	Logitech MK235 Wireless Keyboard and Mouse Combo	price=25	pack=1	shop=Challenger	url=https://online.challenger.sg/products/logitech-mk235-wireless-keyboard-and-mouse-combo	date=2026-11-12
 keyboard	0	Logitech MK850 Wireless Keyboard and Mouse Combo	price=99	pack=1	shop=Challenger	url=https://online.challenger.sg/products/logitech-mk850-wireless-keyboard-and-mouse-combo	date=2026-11-12
 mouse	0	Logitech M190 Wireless Mouse Charcoal	price=15	pack=1	shop=Challenger	url=https://online.challenger.sg/products/logitech-m190-wireless-mouse-charcoal	date=2026-11-12
@@ -1058,17 +1058,17 @@ dumbbells	0	3kg Twin Pack Dumbbells (3kg x2)	price=22.90	pack=2 x 3 kg	per=3.816
 t-shirt	0	Men's Breathable Fitness T-Shirt - Navy	price=7.90	pack=1	per=7.9000	shop=Decathlon	url=https://www.decathlon.sg/p/men-s-breathable-fitness-t-shirt-navy-domyos-8996897.html	date=2026-11-12
 t-shirt	0	Men's Breathable Fitness T-Shirt - Black	price=9.90	pack=1	per=9.9000	shop=Decathlon	url=https://www.decathlon.sg/p/men-s-breathable-fitness-t-shirt-black-domyos-8871331.html	date=2026-11-12
 t-shirt	0	Women's Short-Sleeved Cardio Fitness T-Shirt - Navy Blue	price=5.90	pack=1	per=5.9000	shop=Decathlon	url=https://www.decathlon.sg/p/women-s-short-sleeved-cardio-fitness-t-shirt-navy-blue-domyos-8969045.html	date=2026-11-12
-t-shirt	0	Men's Kiprun Run 100 running T-shirt - white	price=6.90	pack=1	per=6.9000	shop=Decathlon	url=https://www.decathlon.sg/p/men-s-kiprun-run-100-running-t-shirt-white-kiprun-8955568.html	date=2026-11-12
+t-shirt	0	Men's Kiprun Run 100 running T-shirt - white	price=4.90	pack=1	per=4.9000	shop=Decathlon	url=https://www.decathlon.sg/p/men-s-kiprun-run-100-running-t-shirt-white-kiprun-8955568.html	date=2026-11-12
 t-shirt	0	Men's Quick Dry Running T-Shirt - Deep Blue	price=6.90	pack=1	per=6.9000	shop=Decathlon	url=https://www.decathlon.sg/p/men-s-quick-dry-running-t-shirt-deep-blue-decathlon-8666011.html	date=2026-11-12
 t-shirt	0	Men's Running Quick Dry T-Shirt - Black	price=6.90	pack=1	per=6.9000	shop=Decathlon	url=https://www.decathlon.sg/p/men-s-running-quick-dry-t-shirt-black-decathlon-8488034.html	date=2026-11-12
 t-shirt	0	Men's Running T-Shirt Breathable - Carbon Grey	price=19.90	pack=1	per=19.9000	shop=Decathlon	url=https://www.decathlon.sg/p/men-s-running-t-shirt-breathable-carbon-grey-kiprun-8942121.html	date=2026-11-12
 shorts	0	Men's Running Shorts Run 100 - Black	price=6.90	pack=1	per=6.9000	shop=Decathlon	url=https://www.decathlon.sg/p/men-s-running-shorts-run-100-black-kalenji-8817443.html	date=2026-11-12
 shorts	0	Men's Running Shorts Run 500 Dry - Black	price=14.90	pack=1	per=14.9000	shop=Decathlon	url=https://www.decathlon.sg/p/men-s-running-shorts-run-500-dry-black-kiprun-8751038.html	date=2026-11-12
 t-shirt	0	Women's Running Long Sleeved T-Shirt Anti-UV - White	price=9.90	pack=1	per=9.9000	shop=Decathlon	url=https://www.decathlon.sg/p/women-s-running-long-sleeved-t-shirt-anti-uv-white-kalenji-8520964.html	date=2026-11-12
-shorts	0	Women's Running Shorts Run 500 Dry - Black	price=6.90	pack=1	per=6.9000	shop=Decathlon	url=https://www.decathlon.sg/p/women-s-running-shorts-run-500-dry-black-kiprun-8852986.html	date=2026-11-12
-shorts	0	Men's Fitness Shorts 500 Essentials - Grey	price=12.90	pack=1	per=12.9000	shop=Decathlon	url=https://www.decathlon.sg/p/men-s-cotton-essential-shorts-grey-domyos-8645059.html	date=2026-11-12
-t-shirt	0	Men training Tee-shirt - linen beige	price=6.90	pack=1	per=6.9000	shop=Decathlon	url=https://www.decathlon.sg/p/men-training-tee-shirt-linen-beige-domyos-8982946.html	date=2026-11-12
-t-shirt	0	Women's Running Slim Seamless T-shirt - Kiprun Run 500 Comfort Slim grey/black	price=19.90	pack=1	per=19.9000	shop=Decathlon	url=https://www.decathlon.sg/p/women-s-running-slim-seamless-t-shirt-kiprun-run-500-comfort-slim-grey-black-kiprun-8831008.html	date=2026-11-12
+shorts	0	Women's Running Shorts Run 500 Dry - Black	price=14.90	pack=1	per=14.9000	shop=Decathlon	url=https://www.decathlon.sg/p/women-s-running-shorts-run-500-dry-black-kiprun-8852986.html	date=2026-11-12
+shorts	0	Men's Fitness Shorts 500 Essentials - Grey	price=9.90	pack=1	per=9.9000	shop=Decathlon	url=https://www.decathlon.sg/p/men-s-cotton-essential-shorts-grey-domyos-8645059.html	date=2026-11-12
+t-shirt	0	Men training Tee-shirt - linen beige	price=11.90	pack=1	per=11.9000	shop=Decathlon	url=https://www.decathlon.sg/p/men-training-tee-shirt-linen-beige-domyos-8982946.html	date=2026-11-12
+t-shirt	0	Women's Running Slim Seamless T-shirt - Kiprun Run 500 Comfort Slim grey/black	price=14.90	pack=1	per=14.9000	shop=Decathlon	url=https://www.decathlon.sg/p/women-s-running-slim-seamless-t-shirt-kiprun-run-500-comfort-slim-grey-black-kiprun-8831008.html	date=2026-11-12
 t-shirt	0	Women's Running Long Sleeved T-Shirt Anti-UV - Pink	price=9.90	pack=1	per=9.9000	shop=Decathlon	url=https://www.decathlon.sg/p/women-s-running-long-sleeved-t-shirt-anti-uv-pink-kalenji-8666222.html	date=2026-11-12
 t-shirt	0	Women's Kiprun Run 100 running T-shirt - black	price=6.90	pack=1	per=6.9000	shop=Decathlon	url=https://www.decathlon.sg/p/women-s-kiprun-run-100-running-t-shirt-black-kalenji-8817407.html	date=2026-11-12
 shorts	0	Men's Breathable Fitness Shorts with Zip-Up Pockets - Smoky Black	price=9.90	pack=1	per=9.9000	shop=Decathlon	url=https://www.decathlon.sg/p/men-s-breathable-fitness-shorts-with-zip-up-pockets-smoky-black-domyos-8547823.html	date=2026-11-12
@@ -1237,7 +1237,7 @@ textbook-or-assessment-book	0	Primary 3A Maths Tests Book	price=13.65	pack=1 boo
 textbook-or-assessment-book	0	Primary 4A Maths Tests Book	price=13.65	pack=1 book	shop=Popular	url=https://popular.com.sg/products/primary-4a-maths-tests-book	date=2026-11-12
 cooking-oil-2-l	0	Oki Premium Canola Oil	price=6.50	pack=2L	per=3.2500	shop=Cold Storage	url=https://coldstorage.com.sg/product/oki-premium-canola-oil-2l	date=2026-11-12
 cooking-oil-2-l	0	Cold Storage Golden Circle Canola Oil	price=9.80	pack=2L	per=4.9000	shop=Cold Storage	url=https://coldstorage.com.sg/product/golden-circle-canola-oil-2l	date=2026-11-12
-tea-bags	0	Lipton Yellow Label Teabags	price=5.95	pack=100 x 2g	per=0.0595	shop=Cold Storage	url=https://coldstorage.com.sg/product/lipton-yellow-label-tea-100x2g	date=2026-11-12
+tea-bags	0	Lipton Yellow Label Teabags	price=6.75	pack=100 x 2g	per=0.0675	shop=Cold Storage	url=https://coldstorage.com.sg/product/lipton-yellow-label-tea-100x2g	date=2026-11-12
 tea-bags	0	OSK Japanese Green Teabags with Roasted Rice	price=7.90	pack=50 x 2g	per=0.1580	shop=Cold Storage	url=https://coldstorage.com.sg/product/osk-japanese-green-tea-with-roasted-rice-50s-x-2g	date=2026-11-12
 tea-bags	0	Twinings English Breakfast Teabags	price=17.95	pack=50 x 2g	per=0.3590	shop=Cold Storage	url=https://coldstorage.com.sg/product/twinings-tea-bags---english-breakfast-50s-x-2g	date=2026-11-12
 face-masks	0	WATSONS 3-Ply Surgical Face Mask ASTM Level 3	price=8.00	pack=50s	per=0.1600	shop=Watsons	url=https://www.watsons.com.sg/watsons-3-ply-surgical-face-mask-astm-level-3-en14683-type-iir-50s/p/BP_42961	date=2026-11-12
@@ -1255,7 +1255,7 @@ lip-balm	0	MENTHOLATUM LIP Deep Moist Menthol	price=8.05	pack=4.5g	per=1.7889	sh
 instant-coffee-200-g	0	Nescafe Classic Arabica Bean Instant Coffee Jar	price=13.65	pack=200g	per=6.8250	shop=Cold Storage	url=https://coldstorage.com.sg/product/nescafe-freeze-dried-instant-coffee-classic-arabica-bean-jar-200g	date=2026-11-12
 instant-coffee-200-g	0	Nescafe Gold Decaffeinated Instant Coffee Jar	price=21.20	pack=200g	per=10.6000	shop=Cold Storage	url=https://coldstorage.com.sg/product/nescafe-gold-decaf-coffee-jar-200g	date=2026-11-12
 cooking-oil-2-l	0	Knife Blended Cooking Oil	price=8.95	pack=2L	per=4.4750	shop=Cold Storage	url=https://coldstorage.com.sg/product/knife-blended-oil-2l	date=2026-11-12
-cooking-oil-2-l	0	Oki Sunflower Oil	price=7.30	pack=2L	per=3.6500	shop=Cold Storage	url=https://coldstorage.com.sg/product/oki-sunflower-oil-2l	date=2026-11-12
+cooking-oil-2-l	0	Oki Sunflower Oil	price=7.25	pack=2L	per=3.6250	shop=Cold Storage	url=https://coldstorage.com.sg/product/oki-sunflower-oil-2l	date=2026-11-12
 moisturiser	0	CERAVE Moisturizing Cream	price=11.80	pack=50ml	shop=Watsons	url=https://www.watsons.com.sg/cerave-moisturizing-cream-50ml/p/BP_51159	date=2026-11-12
 moisturiser	0	SEBAMED Moisturising Cream	price=27.62	pack=50ml	shop=Watsons	url=https://www.watsons.com.sg/sebamed-moisturising-cream-50ml/p/BP_40936	date=2026-11-12
 moisturiser	0	HIMALAYA Intensive Moisturizing Cream (Expiry Jun 2027)	price=5.20	pack=50ml	shop=Watsons	url=https://www.watsons.com.sg/himalaya-intensive-moisturizing-cream-50ml-expiry-jun-2027/p/BP_96939	date=2026-11-12
