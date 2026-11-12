@@ -4,7 +4,7 @@ date: 2026-11-09
 summary: Among meals I can compare per person, Ippon Fusion Bowl has 4.8 on Google at a typical S$7.50, and Botak Cantonese Porridge has 4.6 at S$5.00.
 summary: A high score can also cost much more. Seoul Garden has 4.8 from 3,753 reviews, and its typical buffet costs S$41.85.
 summary: A typical main costs S$6.00 at a hawker stall, against S$16.67 at a restaurant, across 49 places.
-summary: Prices come from 600 dated dishes. Every comparison uses the typical main of a place, not its cheapest item, and each row opens the menu behind it.
+summary: Prices come from 596 dated dishes. Every comparison uses the typical main of a place, not its cheapest item, and each row opens the menu behind it.
 summary: Only 20 places have both a Google rating and a comparable per-person meal price, so the rating ranking is still a small sample.
 ---
 Tampines has two working hawker centres, three big malls and many coffee shops. This page shows what the food costs and how it is rated. It works best on a phone: tap a row to see the menu behind its price.
@@ -47,9 +47,9 @@ Search all 335 places by name, dish, cuisine or address. Researched places come 
 
 ## How I built this
 
-**Prices.** I collected 1,050 menu rows for 143 places from guides, reviews and official menus. Each row keeps its source and date.
+**Prices.** I collected 1,046 menu rows for 143 places from guides, reviews and official menus. Each row keeps its source and date.
 
-**What I removed.** Delivery prices, since apps mark them up. Prices with no date or from before 2023. Add-ons and sides. At 108 Matcha Saro I also left out drinks and a pasta from the snack list, boxes with no clear serving count, and an older soft-serve price with unclear charges. Whole fish, steamboats and boxes with no stated portion. Casa Vostra pizzas are also left out of its per-person comparison because their serving count is not stated. Two promo lunch deals, and one price from another outlet of the same chain. Two Putien prices from before it dropped service charge and GST in August 2024. That left 600 dishes.
+**What I removed.** Delivery prices, since apps mark them up. Prices with no date or from before 2023. Add-ons and sides. At 108 Matcha Saro I also left out drinks and a pasta from the snack list, boxes with no clear serving count, and an older soft-serve price with unclear charges. Whole fish, steamboats and boxes with no stated portion. Casa Vostra pizzas are also left out of its per-person comparison because their serving count is not stated. At Ging Sun Ho, I left standalone dishes and a time-limited crab-roe special out of the per-person main comparison. Two promo lunch deals, and one price from another outlet of the same chain. Two Putien prices from before it dropped service charge and GST in August 2024. That left 596 dishes.
 
 **Dates.** A guide often repeats a price from an older review. Where a guide links to that review and the review gives the same price for the dish, the row takes the review's date. Where a page was edited after it came out, the row takes the date it came out. A guide entry with no linked review keeps the guide's date, so its price may be older than it looks. For an undated official menu, the date is when I checked it.
 
