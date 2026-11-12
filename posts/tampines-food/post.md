@@ -4,7 +4,7 @@ date: 2026-11-09
 summary: Among meals I can compare per person, Ippon Fusion Bowl has 4.8 on Google at a typical S$7.50, and Botak Cantonese Porridge has 4.6 at S$5.00.
 summary: A high score can also cost much more. Seoul Garden has 4.8 from 3,753 reviews, and its typical buffet costs S$41.85.
 summary: A typical main costs S$6.00 at a hawker stall, against S$16.67 at a restaurant, across 49 places.
-summary: Prices come from 638 dated dishes. Every comparison uses the typical main of a place, not its cheapest item, and each row opens the menu behind it.
+summary: Prices come from 638 dated menu items. Every comparison uses the typical main of a place, not its cheapest item, and each row opens the menu behind it.
 summary: Only 21 places have both a Google rating and a comparable per-person meal price, so the rating ranking is still a small sample.
 ---
 Tampines has two working hawker centres, three big malls and many coffee shops. This page shows what the food costs and how it is rated. It works best on a phone: tap a row to see the menu behind its price.
@@ -17,7 +17,7 @@ The price on the right is the typical main: the median across the dishes I could
 
 ::figure kind=food view=list alt="A list of Tampines food places grouped by cuisine and sorted by rating, with the typical price of a main and the range of the menu." caption="Tap a row for its dishes, prices, dates and sources. Prices include service charge and GST where the menu adds them."
 
-Meals, snacks and shared dishes stay in separate lists, because they are not like for like. A S$2 pancake is not a cheaper dinner. A S$48.90 fish feeds a table.
+Meals, snacks, drinks and shared dishes use separate categories, because they are not like for like. Some mixed menus are still being checked, so the snack comparison is provisional. A S$2 pancake is not a cheaper dinner. A S$48.90 fish feeds a table.
 
 Rajarani Thosai shows that scores and awards measure different things. Michelin gave it a Bib Gourmand in 2026, yet a guide last updated in July 2025 quoted 4.0 on Google. Yi Pin Wei Braised Duck Kway Chap at the same market also earned a 2026 Bib Gourmand.
 
@@ -25,7 +25,7 @@ Rajarani Thosai shows that scores and awards measure different things. Michelin 
 
 Each dot is one place, at its typical main. The black line marks the median of each group. Shared-dish places are left out, because their prices are per table and not per person.
 
-::figure kind=food view=spread alt="Four rows of dots showing the typical price at 24 hawker places, 25 restaurants, 6 cafes and 23 snack places in Tampines. The medians are S$6.00, S$16.67, S$15.54 and S$5.90." caption="Typical price per person on a logarithmic axis. Tap a dot for the place and its range. Only 6 cafes have enough verified meal prices, so that median is weak."
+::figure kind=food view=spread alt="Four rows of dots showing the typical price at 24 hawker places, 25 restaurants, 6 cafes and 22 snack places in Tampines. The medians are S$6.00, S$16.67, S$15.54 and S$5.75." caption="Typical price per person on a logarithmic axis. Tap a dot for the place and its range. Only 6 cafes have enough verified meal prices, so that median is weak."
 
 ## What each cuisine costs
 
@@ -41,7 +41,7 @@ The map shows 336 places on real streets and MRT lines. Places with a menu sit a
 
 ## Find a place
 
-Search all 336 places by name, dish, cuisine or address. Researched places come first, best rated at the top. A budget filter uses the typical main, so a place cannot pass on one cheap side dish.
+Search all 336 places by name, dish, cuisine or address. Researched places come first, best rated at the top. A budget filter uses the typical price for each place’s comparison category, so a drink or snack can appear alongside a meal in search.
 
 ::figure kind=food view=find alt="A search box and filters over a list of 336 Tampines food places." caption="196 places come from OpenStreetMap only, and I did not check their menus."
 
@@ -49,9 +49,9 @@ Search all 336 places by name, dish, cuisine or address. Researched places come 
 
 **Prices.** I collected 1,093 menu rows for 144 places from guides, reviews and official menus. Each row keeps its source and date.
 
-**What I removed.** Delivery prices, since apps mark them up. Prices with no date or from before 2023. Add-ons and sides. At 108 Matcha Saro I also left out drinks and a pasta from the snack list, boxes with no clear serving count, and an older soft-serve price with unclear charges. Whole fish, steamboats and boxes with no stated portion. Casa Vostra pizzas are also left out of its per-person comparison because their serving count is not stated. At Ging Sun Ho, I left standalone dishes and a time-limited crab-roe special out of the per-person main comparison. Two promo lunch deals, and one price from another outlet of the same chain. Two Putien prices from before it dropped service charge and GST in August 2024. I also removed repeated entries for the same dish at Yummy Sarawak Kolo Mee, Song Han Carrot Cake, Lao Lee, Teo Kee and Penang Savour. That left 638 dishes.
+**What I removed.** Delivery prices, since apps mark them up. Prices with no date or from before 2023. Add-ons and sides. At 108 Matcha Saro I also left out drinks and a pasta from the snack list, boxes with no clear serving count, and an older soft-serve price with unclear charges. Whole fish, steamboats and boxes with no stated portion. Casa Vostra pizzas are also left out of its per-person comparison because their serving count is not stated. At Ging Sun Ho, I left standalone dishes and a time-limited crab-roe special out of the per-person main comparison. Two promo lunch deals, and one price from another outlet of the same chain. Two Putien prices from before it dropped service charge and GST in August 2024. I also removed repeated entries for the same dish at Yummy Sarawak Kolo Mee, Song Han Carrot Cake, Lao Lee, Teo Kee and Penang Savour. That left 638 dated menu items. Fifteen drinks, mains, shared or ambiguous-serving items are shown separately and excluded from their venue’s snack comparison.
 
-**Dates.** A guide often repeats a price from an older review. Where a guide links to that review and the review gives the same price for the dish, the row takes the review's date. Where a page was edited after it came out, the row takes the date it came out. A guide entry with no linked review keeps the guide's date, so its price may be older than it looks. For an undated official menu, the date is when I checked it.
+**Dates.** A guide often repeats a price from an older review. Where a guide links to that review and the review gives the same price for the dish, the row takes the review's date. Where a page was edited after it came out, the row takes the date it came out. A guide entry with no linked review keeps the guide's date, so its price may be older than it looks. For an undated official menu, the date is when I checked it. The place-level price date is the newest item in its comparison, not the date of every item.
 
 **Typical main.** A place needs at least three different verified mains for a typical price, or two for a shared-dish place. For a dish sold in several sizes, I use the middle size. At Ashes Burnnit, I use the single-patty burger price rather than double. The typical main is the median of those dish prices. A place with too few dishes shows its range and no typical price.
 
