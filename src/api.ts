@@ -31,7 +31,7 @@ interface Resource {
 }
 
 const DATA: readonly Resource[] = [
-  { href: "/api/tampines-food/places.txt", title: "Tampines food places", about: `TSV, one row per place: ${SPREADS.length} places with type, cuisine, venue, typical price in S$ and Google rating. Goes with the post on Tampines food.` },
+  { href: "/api/tampines-food/places.txt", title: "Tampines food places", about: `TSV, one row per place: ${SPREADS.length} places with type, cuisine, venue, typical price in S$ and Google rating, its source and date. The prices_as_of field is the newest dish date, not a date for every price. Goes with the post on Tampines food.` },
   { href: "/hn-forecasters.opml", title: "Hacker News forecasters", about: "OPML list of the RSS feeds of the ranked commenters. Goes with the post on Hacker News forecasters." },
   { href: "/lw-forecasters.opml", title: "LessWrong forecasters", about: "OPML list of the comment and post feeds of the ranked writers. Goes with the post on LessWrong forecasters." },
 ];
@@ -204,10 +204,10 @@ function cell(value: string | number): string {
 
 function foodTsv(): string {
   const type = { h: "hawker", r: "restaurant", c: "cafe", f: "fast food" };
-  const rows = [["name", "type", "cuisine", "venue", "unit", "status", "price_is", "typical_sgd", "low_sgd", "high_sgd", "prices_as_of", "google_rating", "google_reviews", "bib_gourmand"].join("\t")];
+  const rows = [["name", "type", "cuisine", "venue", "unit", "status", "price_is", "typical_sgd", "low_sgd", "high_sgd", "prices_as_of", "google_rating", "google_reviews", "bib_gourmand", "google_rating_as_of", "google_rating_source"].join("\t")];
   for (const item of SPREADS) {
     const priceIs = item.sh === 1 ? "shared dish" : item.f === "s" ? "snack" : "main";
-    const row = [item.n, type[item.k], item.cu, item.p, item.u, item.st, priceIs, item.typ, item.low, item.high, item.asof, item.g?.s ?? "", item.g?.c ?? "", item.b === 1 ? "yes" : "no"];
+    const row = [item.n, type[item.k], item.cu, item.p, item.u, item.st, priceIs, item.typ, item.low, item.high, item.asof, item.g?.s ?? "", item.g?.c ?? "", item.b === 1 ? "yes" : "no", item.g?.d ?? "", item.g?.u ?? ""];
     rows.push(row.map(cell).join("\t"));
   }
   return `${rows.join("\n")}\n`;

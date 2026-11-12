@@ -5,7 +5,7 @@ summary: Among meals I can compare per person, Ippon Fusion Bowl has 4.8 on Goog
 summary: A high score can also cost much more. Seoul Garden has 4.8 from 3,753 reviews, and its typical buffet costs S$41.85.
 summary: A typical main costs S$6.00 at a hawker stall, against S$16.67 at a restaurant, across 49 places.
 summary: Prices come from 590 dated dishes. Every comparison uses the typical main of a place, not its cheapest item, and each row opens the menu behind it.
-summary: Only 15 places have both a Google rating and a price I can compare per person, so the rating ranking is still a small sample.
+summary: Only 20 places have both a Google rating and a comparable per-person meal price, so the rating ranking is still a small sample.
 ---
 Tampines has two working hawker centres, three big malls and many coffee shops. This page shows what the food costs and how it is rated. It works best on a phone: tap a row to see the menu behind its price.
 
@@ -59,7 +59,7 @@ Search all 335 places by name, dish, cuisine or address. Researched places come 
 
 **Places left without a comparison.** Social Bite has a quoted 4.9 and two September 2026 budget-meal prices, too few dishes for a typical price. Ah Gong Ban Mian has a quoted 3.2 but no verified price from 2023 or later. Tanyu has a quoted 4.8, but its fish is sold to share and no source states a portion. Putien has a quoted 4.8, but only two dated prices since it moved to nett prices. They stay on the list without a typical price.
 
-**Ratings.** A rating counts as Google only if a page quotes Google. I also take scores from [FooTinder](https://en.footinder.app/), which shows Google review counts and links each place to Google Maps; those rows are dated November 2026. Scores date from 2022 to 2026, and most guides gave no review count. I did not collect scores from Google Maps directly. I left out editorial scores, and directory scores whose source is unclear.
+**Ratings.** A rating counts as Google only if a page quotes Google. I also take scores from [FooTinder](https://en.footinder.app/), which shows Google review counts and links each place to Google Maps; those rows are dated November 2026. Scores date from 2022 to 2026, and most guides gave no review count. Twelve additional scores and counts come from StationMap’s 19 October 2026 snapshots. I did not collect scores from Google Maps directly. I left out editorial scores, and directory scores whose source is unclear.
 
 **Closed or moved.** I removed Mr. Doner Kebab, Nuodle and The Co-op, since their units now show other tenants or a closed label. Eight places have no recent proof they are open, and their rows say so. Two have moved.
 
