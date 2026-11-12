@@ -203,7 +203,11 @@ function shelfOf(category: LifeCategory, products: readonly Note[]): { rows: She
     if (unit !== "" && per === "") throw new Error(`notes/products.tsv: "${note.text}" needs the field per, its unit price for "${unit.trim()}"`);
     if (unit === "" && per !== "") throw new Error(`notes/products.tsv: "${note.text}" must not have the field per, as the item ${note.id} has no shared unit`);
     checkPer(note, unit);
-    const at = rows.findIndex((old) => old[0] === first[0] && old[2] === url);
+    const matches = (row: Shelf): boolean => row[0] === first[0] && row[2] === url;
+    const at = rows.findIndex(matches);
+    if (at !== rows.findLastIndex(matches)) {
+      throw new Error(`notes/products.tsv: item ${note.id} has multiple listings at ${url}. Update the specific listing in the base data.`);
+    }
     // A refreshed product keeps its name, so the id of its check stays the same.
     const name = rows[at]?.[1] ?? note.text;
     const row: Shelf = [first[0], name, url, shop, `S$${price}${until === "" ? "" : ` (till ${shortDate(until)})`}`, pack, per === "" ? "n/a" : `S$${per}${unit}`, 0];

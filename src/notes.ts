@@ -116,7 +116,7 @@ export const PARTS: readonly Part[] = [
     idHelp: "the item id in the first column of the list. An item can have many lines, one for each product.",
     one: "url",
     points: "Not used. Use 0.",
-    text: "The product name as the shop gives it. To refresh a product that is in the list, use the url of its row: the line then replaces that row, and the product keeps the name in the list.",
+    text: "The product name as the shop gives it. To refresh a product, use a URL that identifies one row for the item. The product keeps its name in the list. If several rows for the item share the URL, update the specific listing in the base data.",
     fields: {
       price: { need: true, test: /^\d{1,6}(\.\d\d?)?$/, help: "the price of one pack as a plain number in S$, such as 6.62, with no S$ sign. Do not use a multi-buy price." },
       pack: { need: true, test: /^[\p{L}\p{N} .,x×/()%+-]{1,40}$/u, help: "what the price covers, such as 150 g, 1 L or 12 months" },
