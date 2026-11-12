@@ -509,3 +509,566 @@ cod	0	Frozen Thawed Nautical Cod Fish Portion 350g	price=32.87	pack=350 g	per=93
 prawns	0	Serve Grey Vannamei Prawns Hotpot Steamboat - Fresh	price=5.78	pack=200 g	per=28.9000	shop=FairPrice	url=https://www.fairprice.com.sg/product/serve-by-hai-sia-grey-vannamei-prawns-fresh-200-g-90196576	date=2026-11-12	until=2026-11-30
 salmon	0	Serve by Hai Sia Salmon Belly Skinless - Fresh	price=9.95	pack=200 g	per=49.7500	shop=FairPrice	url=https://www.fairprice.com.sg/product/serve-by-hai-sia-salmon-belly-skinless-fresh-200-g-90196582	date=2026-11-12	until=2026-11-30
 salmon	0	Serve by Hai Sia Salmon Chunks - Fresh	price=8.88	pack=200 g	per=44.4000	shop=FairPrice	url=https://www.fairprice.com.sg/product/serve-by-hai-sia-salmon-chunks-fresh-200-g-90196208	date=2026-11-12	until=2026-11-30
+instant-noodles-5-pack	0	Maggi 2-Minute BIG Chicken Instant Noodles	price=3.70	pack=5 x 103g	per=0.7400	shop=Cold Storage	url=https://coldstorage.com.sg/product/maggi-big-chicken-flavour-5s-x-98g	date=2026-11-12
+instant-noodles-5-pack	0	Maggi 2-Minute Tom Yum Instant Noodles	price=3.70	pack=5 x 107g	per=0.7400	shop=Cold Storage	url=https://coldstorage.com.sg/product/maggi-big-instant-noodle-tom-yam-5s-x-112g	date=2026-11-12
+instant-noodles-5-pack	0	Maggi Syiok Chilli Kampung Mi Goreng Instant Noodles	price=3.70	pack=5 x 89g	per=0.7400	shop=Cold Storage	url=https://coldstorage.com.sg/product/maggi-mi-goreng-chilli-kampung-5s-390g	date=2026-11-12
+toilet-paper-10-rolls	0	Meadows Home Original 4-Ply Toilet Paper	price=5.90	pack=10 rolls x 205 sheets	per=0.5900	shop=Cold Storage	url=https://coldstorage.com.sg/product/meadows-home-4-ply-toilet-paper-10x205s	date=2026-11-12
+toilet-paper-10-rolls	0	Kleenex Cottony Clean 3-Ply Toilet Paper	price=8.15	pack=10 rolls x 200 sheets	per=0.8150	shop=Cold Storage	url=https://coldstorage.com.sg/product/kleenex-3-ply-ultrasoft-toilet-rolls-10s	date=2026-11-12
+toilet-paper-10-rolls	0	Kleenex Aloe Vera 3-Ply Toilet Paper	price=8.15	pack=10 rolls x 190 sheets	per=0.8150	shop=Cold Storage	url=https://coldstorage.com.sg/product/kleenex-3ply-bathroom-tissue-cleancare-aloe-10r-200s	date=2026-11-12
+toilet-paper-10-rolls	0	Cloversoft Unbleached Bamboo 3-Ply Toilet Paper	price=7.00	pack=10 rolls x 200 sheets	per=0.7000	shop=Cold Storage	url=https://coldstorage.com.sg/product/cloversoft-plant-based-unbleached-bamboo-toilet-tissues-roll-3-ply-10-x-200-sheets	date=2026-11-12
+toilet-paper-10-rolls	0	Tempo Neutral 4-Ply Toilet Paper	price=10.75	pack=10 rolls x 130 sheets	per=1.0750	shop=Cold Storage	url=https://coldstorage.com.sg/product/tempo-4ply-neutral	date=2026-11-12
+toilet-paper-10-rolls	0	Pursoft Charcoal Floral 3-Ply Toilet Paper	price=7.10	pack=10 rolls x 200 sheets	per=0.7100	shop=Cold Storage	url=https://coldstorage.com.sg/product/pursoft-charcoal-floral-broll-3ply-10x200s	date=2026-11-12
+toilet-paper-10-rolls	0	Pursoft Chocolate Rain 3-Ply Toilet Paper	price=7.10	pack=10 rolls x 220 sheets	per=0.7100	shop=Cold Storage	url=https://coldstorage.com.sg/product/pursoft-3ply-bathroom-tissue-chocolate-rain-10s	date=2026-11-12
+toilet-paper-10-rolls	0	Nootrees Bamboo 3-Ply Toilet Paper	price=7.35	pack=10 rolls x 220 sheets	per=0.7350	shop=Cold Storage	url=https://coldstorage.com.sg/product/nootrees-3-ply-bamboo-toilet-tissue-10x220s	date=2026-11-12
+fresh-milk-1-l	0	Meiji 4.3 Deluxe Fresh Milk	price=3.65	pack=946ml	per=3.8584	shop=Cold Storage	url=https://coldstorage.com.sg/product/meiji-43-deluxe-fresh-milk-946ml	date=2026-11-12
+fresh-milk-1-l	0	Pauls Australian Fresh Milk	price=4.55	pack=1L	per=4.5500	shop=Cold Storage	url=https://coldstorage.com.sg/product/pauls-fresh-milk-1l	date=2026-11-12
+fresh-milk-1-l	0	Farm Fresh Pure Fresh Milk	price=3.85	pack=1L	per=3.8500	shop=Cold Storage	url=https://coldstorage.com.sg/product/farm-fresh-pure-fresh-milk-1l	date=2026-11-12
+fresh-milk-1-l	0	Meiji Lactose Free Fresh Milk	price=5.25	pack=946ml	per=5.5497	shop=Cold Storage	url=https://coldstorage.com.sg/product/meiji-lactose-free-fresh-milk-946ml	date=2026-11-12
+fresh-milk-1-l	0	Magnolia Fresh Milk	price=3.65	pack=946ml	per=3.8584	shop=Cold Storage	url=https://coldstorage.com.sg/product/magnolia-fresh-milk-946ml	date=2026-11-12
+fresh-milk-1-l	0	Cowhead Fresh Milk	price=4.15	pack=1L	per=4.1500	shop=Cold Storage	url=https://coldstorage.com.sg/product/cowhead-100-fresh-milk-1l	date=2026-11-12
+fresh-milk-1-l	0	Farmhouse Fresh Milk	price=3.75	pack=946ml	per=3.9641	shop=Cold Storage	url=https://coldstorage.com.sg/product/farmhouse-fresh-milk-946ml	date=2026-11-12
+fresh-milk-1-l	0	Meadows Low Fat Milk	price=3.60	pack=1L	per=3.6000	shop=Cold Storage	url=https://coldstorage.com.sg/product/meadows-low-fat-milk-1l	date=2026-11-12
+dishwashing-liquid	0	Clean Conscience Calming Citrus Concentrated Dishwashing Liquid	price=9.90	pack=500ml	per=1.9800	shop=Cold Storage	url=https://coldstorage.com.sg/product/clean-conscience-dishwashing-liquid-calming-citrus-hypollergenic-500ml	date=2026-11-12
+dishwashing-liquid	0	Earth Choice Green Tea & Lime Dishwashing Liquid	price=5.60	pack=500ml	per=1.1200	shop=Cold Storage	url=https://coldstorage.com.sg/product/earth-choice-dishwashing-liquid-green-tea-lime-500ml	date=2026-11-12
+dishwashing-liquid	0	Mama Lemon Anti-Bacterial Green Tea Dishwashing Liquid	price=4.90	pack=3 x 600ml	per=0.2722	shop=Cold Storage	url=https://coldstorage.com.sg/product/mama-lemon-dishwashing-liquid-refill-green-tea-3sx600ml	date=2026-11-12
+dishwashing-liquid	0	Mama Lemon Lemon Dishwashing Liquid	price=1.75	pack=600ml	per=0.2917	shop=Cold Storage	url=https://coldstorage.com.sg/product/mama-lemon-dishwashing-liquid-refill-lemon-600ml	date=2026-11-12
+dishwashing-liquid	0	Mama Royal Natural Citrus Blossom Concentrated Dishwashing Liquid	price=4.35	pack=500ml	per=0.8700	shop=Cold Storage	url=https://coldstorage.com.sg/product/mama-natural-citrus-blossom-dishwashing-liquid-500ml	date=2026-11-12
+dishwashing-liquid	0	Mama Lemon Lemon Gold Dishwashing Liquid Pump and Refill	price=6.15	pack=2 x 1L	per=0.3075	shop=Cold Storage	url=https://coldstorage.com.sg/product/mama-lemon-dishwashing-liquid-lemon-gold-refill-1l	date=2026-11-12
+dishwashing-liquid	0	Mama Lemon Lemon Gold Dishwashing Liquid	price=1.75	pack=600ml	per=0.2917	shop=Cold Storage	url=https://coldstorage.com.sg/product/mama-lemon-dishwashing-liquid-refill-lemon-gold-600ml	date=2026-11-12
+dishwashing-liquid	0	Mama Lemon Lemon Gold Dishwashing Liquid	price=4.25	pack=3 x 600ml	per=0.2361	shop=Cold Storage	url=https://coldstorage.com.sg/product/mama-lemon-dishwashing-liquid-refill-3x600ml	date=2026-11-12
+canned-sardines	0	Ayam Brand Sardines in Tomato Sauce Oval	price=4.40	pack=215g	per=2.0465	shop=Cold Storage	url=https://coldstorage.com.sg/product/ayam-brand-sardines-in-tomato-oval-215g	date=2026-11-12
+canned-sardines	0	Ayam Brand Sardines in Tomato Sauce Light Reduced Salt	price=5.90	pack=425g	per=1.3882	shop=Cold Storage	url=https://coldstorage.com.sg/product/ayam-brand-sardines-tomato-light-reduced-salt-425g	date=2026-11-12
+baked-beans	0	Heinz Baked Beans in Tomato Sauce	price=2.80	pack=220g	per=1.2727	shop=Cold Storage	url=https://coldstorage.com.sg/product/heinz-baked-beans-in-tomato-sauce-220g	date=2026-11-12
+baked-beans	0	Heinz Beanz No Added Sugar in Tomato Sauce	price=2.80	pack=415g	per=0.6747	shop=Cold Storage	url=https://coldstorage.com.sg/product/heinz-beanz-in-tomato-sauce-no-added-sugar-415g	date=2026-11-12
+baked-beans	0	Heinz Beanz Original in Tomato Sauce	price=2.40	pack=415g	per=0.5783	shop=Cold Storage	url=https://coldstorage.com.sg/product/heinz-beanz-original-415g	date=2026-11-12
+keyboard	0	Logitech MK235 Wireless Keyboard and Mouse Combo	price=25	pack=1	shop=Challenger	url=https://online.challenger.sg/products/logitech-mk235-wireless-keyboard-and-mouse-combo	date=2026-11-12
+keyboard	0	Logitech MK850 Wireless Keyboard and Mouse Combo	price=99	pack=1	shop=Challenger	url=https://online.challenger.sg/products/logitech-mk850-wireless-keyboard-and-mouse-combo	date=2026-11-12
+mouse	0	Logitech M190 Wireless Mouse Charcoal	price=15	pack=1	shop=Challenger	url=https://online.challenger.sg/products/logitech-m190-wireless-mouse-charcoal	date=2026-11-12
+mouse	0	Logitech M170 Wireless Mouse Black	price=10	pack=1	shop=Challenger	url=https://online.challenger.sg/products/logitech-m170-wireless-mouse-black-910-004658	date=2026-11-12
+mouse	0	Logitech MX Anywhere 2s Wireless Mouse Graphite	price=53	pack=1	shop=Challenger	url=https://online.challenger.sg/products/logitech-mx-anywhere-2s-wireless-mouse-graphite-910-007226	date=2026-11-12
+keyboard	0	Logitech MK120 Wired Keyboard and Mouse Combo	price=25	pack=1	shop=Challenger	url=https://online.challenger.sg/products/logitech-mk120-wired-keyboard-and-mouse-combo	date=2026-11-12
+mouse	0	Logitech MX Anywhere 3s Wireless Mouse Graphite	price=103	pack=1	shop=Challenger	url=https://online.challenger.sg/products/logitech-mx-anywhere-3s-wireless-mouse-graphite-910-006932	date=2026-11-12
+mouse	0	Logitech M240 Silent Bluetooth Mouse Graphite	price=27.90	pack=1	shop=Challenger	url=https://online.challenger.sg/products/logitech-910-007122-m240-silent-bluetooth-mouse-graphite	date=2026-11-12
+keyboard	0	Logitech MK295 Silent Wireless Keyboard and Mouse Combo	price=52	pack=1	shop=Challenger	url=https://online.challenger.sg/products/logitech-mk295-silent-wireless-keyboard-and-mouse-combo	date=2026-11-12
+keyboard	0	Logitech MX Keys S Wireless Keyboard Graphite	price=139	pack=1	shop=Challenger	url=https://online.challenger.sg/products/logitech-mx-keys-s-wireless-keyboard-920-011563-graphite	date=2026-11-12
+mouse	0	Logitech Signature M650 Wireless Mouse Medium Graphite	price=52	pack=1	shop=Challenger	url=https://online.challenger.sg/products/logitech-signature-m650-medium-graphite	date=2026-11-12
+mouse	0	Logitech Lift Vertical Ergonomic Mouse Graphite	price=83	pack=1	shop=Challenger	url=https://online.challenger.sg/products/logitech-lift-vertical-ergonomic-mouse-graphite	date=2026-11-12
+keyboard	0	Logitech MK270r Wireless Keyboard and Mouse Combo	price=39	pack=1	shop=Challenger	url=https://online.challenger.sg/products/logitech-mk270r-wireless-keyboard-and-mouse-combo	date=2026-11-12
+mouse	0	Logitech Pebble Mouse 2 M350s Graphite	price=33	pack=1	shop=Challenger	url=https://online.challenger.sg/products/logitech-pebble-mouse-2-m350s-bluetooth-mouse-910-006988-graphite	date=2026-11-12
+mouse	0	Logitech M100r Wired Mouse	price=10.60	pack=1	shop=Challenger	url=https://online.challenger.sg/products/logitech-910-006765-m100r-basic-wired-mouse	date=2026-11-12
+mouse	0	Logitech MX Anywhere 3s Wireless Mouse Rose	price=103	pack=1	shop=Challenger	url=https://online.challenger.sg/products/logitech-mx-anywhere-3s-wireless-mouse-rose-910-006934	date=2026-11-12
+mouse	0	Logitech Lift Vertical Ergonomic Mouse Rose	price=83	pack=1	shop=Challenger	url=https://online.challenger.sg/products/logitech-lift-vertical-ergonomic-mouse-rose	date=2026-11-12
+keyboard	0	Logitech Keys-To-Go 2 Wireless Keyboard Graphite	price=89	pack=1	shop=Challenger	url=https://online.challenger.sg/products/logitech-keys-to-go-2-wireless-bluetooth-keyboard-graphite	date=2026-11-12
+mouse	0	Logitech M190 Wireless Mouse Red	price=15	pack=1	shop=Challenger	url=https://online.challenger.sg/products/logitech-m190-wireless-mouse-red	date=2026-11-12
+keyboard	0	Logitech MX Keys Mini Wireless Keyboard Graphite	price=109	pack=1	shop=Challenger	url=https://online.challenger.sg/products/logitech-920-010505-4-mx-keys-mini-graphite	date=2026-11-12
+printer	0	Epson Mono Multifunction Printer M2050	price=299	pack=1	shop=Courts	url=https://www.courts.com.sg/epson-mono-multifunction-printer-m2050-IP207801.html	date=2026-11-12
+printer	0	Brother Colour Laser Printer HL-L3240CDW	price=398	pack=1	shop=Courts	url=https://www.courts.com.sg/brother-colour-laser-printer-hl-l3240cdw-IP191412.html	date=2026-11-12
+printer	0	Canon Pixma TR160 Wireless Portable Printer With Battery	price=589	pack=1	shop=Courts	url=https://www.courts.com.sg/canon-pixma-tr160-wireless-portable-printer-with-battery-tr160-with-battery-IP217055.html	date=2026-11-12
+printer	0	HP LaserJet M111w Printer	price=149	pack=1	shop=Courts	url=https://www.courts.com.sg/hp-laserjet-m111w-printer-m111w-IP188734.html	date=2026-11-12
+printer	0	Brother Colour Laser Printer HL-L8260CDN	price=748	pack=1	shop=Courts	url=https://www.courts.com.sg/brother-colour-laser-printer-hl-l8260cdn-IP135542.html	date=2026-11-12
+printer	0	Epson A4 Photo Printer L8050	price=499	pack=1	shop=Courts	url=https://www.courts.com.sg/epson-a4-photo-printer-l8050-IP182366.html	date=2026-11-12
+printer	0	Brother Mono Laser Printer HL-1210W	price=128	pack=1	shop=Courts	url=https://www.courts.com.sg/brother-mono-laser-printer-hl-1210w-IP090386.html	date=2026-11-12
+printer	0	Brother Multifunction Inkjet Printer MFC-J2740DW	price=498	pack=1	shop=Courts	url=https://www.courts.com.sg/brother-multifunction-injet-printer-mfc-j2740dw-IP178395.html	date=2026-11-12
+printer	0	Epson Mono Printer M1050	price=209	pack=1	shop=Courts	url=https://www.courts.com.sg/epson-mono-printer-m1050-IP207800.html	date=2026-11-12
+printer	0	Epson A3 Photo Printer L18050	price=779	pack=1	shop=Courts	url=https://www.courts.com.sg/epson-a3-photo-printer-l18050-IP182367.html	date=2026-11-12
+printer	0	Brother 3-in-1 Smartcut Inkjet Printer DCP-J1700DW	price=298	pack=1	shop=Courts	url=https://www.courts.com.sg/brother-3-in-1-smartcut-inkjet-printer-dcp-j1700dw-IP180081.html	date=2026-11-12
+printer	0	Brother Monochrome Laser Printer HL-L2460DW	price=258	pack=1	shop=Courts	url=https://www.courts.com.sg/brother-monochrome-laser-printer-hl-l2460dw-IP191407.html	date=2026-11-12
+printer	0	Canon Mono All In One Laser Printer MF284DW	price=279	pack=1	shop=Courts	url=https://www.courts.com.sg/canon-mono-all-in-one-laser-printer-mf284dw-IP203436.html	date=2026-11-12
+monitor	0	MSI Pro MP225 21.5-inch FHD IPS Monitor	price=109	pack=1	shop=Harvey Norman	url=https://www.harveynorman.com.sg/computing/computers-en/monitors-en/msi-pro-mp225-21.5-inch-fhd-ips-business-productivity-monitor-black-9s6-3pc6cm-007.html	date=2026-11-12
+monitor	0	Philips 21.5-inch Full HD 100Hz IPS Monitor 22E1N1200A/69	price=112	pack=1	shop=Harvey Norman	url=https://www.harveynorman.com.sg/computing/computers-en/monitors-en/philips-21.5-inch-full-hd-led-100hz-ips-monitor-black-22e1n1200a-69.html	date=2026-11-12
+monitor	0	Samsung Essential S3 S30GD 24-inch FHD Monitor	price=118	pack=1	shop=Harvey Norman	url=https://www.harveynorman.com.sg/computing/computers-en/monitors-en/samsung-essential-s3-s30gd-24-inch-fhd-monitor-black-ls24d300gaexxs.html	date=2026-11-12
+monitor	0	MSI PRO MP251W E14A 24.5-inch FHD Monitor White	price=139	pack=1	shop=Harvey Norman	url=https://www.harveynorman.com.sg/computing/computers-en/monitors-en/msi-pro-mp251w-e14a-24.5-inch-fhd-144hz-business-productivity-monitor-white-9s6-3pd2cm-082.html	date=2026-11-12
+monitor	0	MSI PRO MP251 E14A 24.5-inch FHD Monitor Black	price=139	pack=1	shop=Harvey Norman	url=https://www.harveynorman.com.sg/computing/computers-en/monitors-en/msi-pro-mp251-e14a-24.5-inch-fhd-144hz-business-productivity-monitor-black-9s6-3pd2cm-072.html	date=2026-11-12
+monitor	0	Acer SA273 27-inch FHD IPS Monitor White	price=149	pack=1	shop=Harvey Norman	url=https://www.harveynorman.com.sg/computing/computers-en/monitors-en/acer-sa273-27-inch-ultra-slim-fhd-144hz-ips-monitor-white-um.hs3sg.101.html	date=2026-11-12
+monitor	0	Philips 27-inch FHD IPS Monitor White 27E1N2100AW/69	price=149	pack=1	shop=Harvey Norman	url=https://www.harveynorman.com.sg/computing/computers-en/monitors-en/philips-27-inch-full-hd-lcd-120hz-ips-monitor-white-27e1n2100aw-69.html	date=2026-11-12
+monitor	0	MSI PRO MP275 E14L 27-inch FHD Monitor	price=159	pack=1	shop=Harvey Norman	url=https://www.harveynorman.com.sg/computing/computers-en/monitors-en/msi-pro-mp275-e14l-27-inch-fhd-144hz-business-productivity-monitor-black-9s6-3pf0cm-011.html	date=2026-11-12
+monitor	0	MSI PRO MP165 E6 15.6-inch FHD Portable Monitor	price=159	pack=1	shop=Harvey Norman	url=https://www.harveynorman.com.sg/computing/computers-en/monitors-en/msi-pro-mp165-e6-15.6-inch-fhd-60hz-portable-monitor-black-9s6-3pe50m-009.html	date=2026-11-12
+monitor	0	MSI PRO MP273W E14A 27-inch FHD Monitor White	price=159	pack=1	shop=Harvey Norman	url=https://www.harveynorman.com.sg/computing/computers-en/monitors-en/msi-pro-mp273w-e14a-27-inch-fhd-monitor-white-9s6-3pb4ch-262.html	date=2026-11-12
+monitor	0	Samsung Essential S3 S30GD 27-inch Full HD Monitor	price=168	pack=1	shop=Harvey Norman	url=https://www.harveynorman.com.sg/computing/computers-en/monitors-en/samsung-27-inch-essential-s3-s30gd-full-hd-monitor-black-ls27d300gaexxs.html	date=2026-11-12
+chilled-whole-chicken	0	FarmFresh Whole Chicken - Large	price=11.44	pack=1200 G	per=9.5333	shop=FairPrice	url=https://www.fairprice.com.sg/product/farmfresh-whole-chicken-large-1200-g-90199920	date=2026-11-12
+chilled-whole-chicken	0	FarmFresh GG French Poulet Large (An Xin Chicken)	price=20.10	pack=1300 G	per=15.4615	shop=FairPrice	url=https://www.fairprice.com.sg/product/farmfresh-gg-french-poulet-large-1300-g-90199894	date=2026-11-12
+chilled-whole-chicken	0	FarmFresh Whole Chicken Medium - Portion-Cut	price=10.10	pack=1050 G	per=9.6190	shop=FairPrice	url=https://www.fairprice.com.sg/product/farmfresh-whole-chicken-medium-portion-cut-1100-g-90199918	date=2026-11-12
+chilled-whole-chicken	0	Kee Song Fresh Chicken - Kampong	price=12.30	pack=900g	per=13.6667	shop=Kee Song Poultry via FairPrice	url=https://www.fairprice.com.sg/product/kee-song-fresh-chicken-kampong-900g-13097670	date=2026-11-12
+chilled-whole-chicken	0	FarmFresh Kampong Chicken Whole Portion Cut	price=12.25	pack=800 G	per=15.3125	shop=FairPrice	url=https://www.fairprice.com.sg/product/farmfresh-kampong-chicken-whole-portion-cut	date=2026-11-12
+chilled-whole-chicken	0	FarmFresh Kampong Chicken	price=12.25	pack=700 G	per=17.5000	shop=FairPrice	url=https://www.fairprice.com.sg/product/farmfresh-kampong-chicken-900-g-90199897	date=2026-11-12
+kailan	0	Chef Hong Kong Kailan	price=1.16	pack=200g	per=5.8000	shop=FairPrice	url=https://www.fairprice.com.sg/product/chef-hong-kong-kailan-200g-13236466	date=2026-11-12
+chye-sim	0	Simply Finest Baby Cai Xin	price=2.20	pack=300g	per=7.3333	shop=FairPrice	url=https://www.fairprice.com.sg/product/simply-finest-baby-cai-xin-300g-13167827	date=2026-11-12
+chye-sim	0	Yuan Zhen Yuan Baby Chye Sim	price=2.20	pack=200 G	per=11.0000	shop=FairPrice	url=https://www.fairprice.com.sg/product/yuan-zhen-yuan-baby-chye-sim-200-g-90187012	date=2026-11-12
+chye-sim	0	Pasar Cai Sim	price=1.03	pack=220g	per=4.6818	shop=FairPrice	url=https://www.fairprice.com.sg/product/pasar-cai-sim-220g-13032619	date=2026-11-12
+carrots	0	Pasar Prepacked Carrots	price=1.10	pack=500g	per=2.2000	shop=FairPrice	url=https://www.fairprice.com.sg/product/pasar-prepacked-carrots-500g-13000321	date=2026-11-12
+carrots	0	Sumich Fresh Carrots	price=0.95	pack=500g	per=1.9000	shop=FairPrice	url=https://www.fairprice.com.sg/product/sumich-fresh-carrots-500g-10733611	date=2026-11-12
+carrots	0	Baby Mixed Carrots	price=10.90	pack=250 G	per=43.6000	shop=FairPrice	url=https://www.fairprice.com.sg/product/riviera-farms-baby-mixed-carrots-250-g-90106271	date=2026-11-12
+carrots	0	Baby Orange Carrots	price=10.90	pack=250 G	per=43.6000	shop=FairPrice	url=https://www.fairprice.com.sg/product/riviera-farms-baby-orange-carrots-250-g-90106272	date=2026-11-12
+grapes	0	China Shine Muscat Grapes	price=2.95	pack=500g	per=5.9000	shop=FairPrice	url=https://www.fairprice.com.sg/product/chn-shine-muscat500-13222746	date=2026-11-12	until=2026-11-19
+grapes	0	Premium Shine Muscat Korea Grape	price=7.45	pack=450g	per=16.5556	shop=FairPrice	url=https://www.fairprice.com.sg/product/premium-shine-muscat-korea-grape-450g-450g-13162937	date=2026-11-12	until=2026-11-19
+grapes	0	USA Green Grapes (Seedless)	price=5.45	pack=500g	per=10.9000	shop=FairPrice	url=https://www.fairprice.com.sg/product/usa-green-grapes-seedless-500g-13184458	date=2026-11-12	until=2026-11-19
+grapes	0	China Premium Shine Muscat	price=4.95	pack=650g	per=7.6154	shop=FairPrice	url=https://www.fairprice.com.sg/product/china-premium-shine-muscat-650g-13184824	date=2026-11-12	until=2026-11-19
+grapes	0	Candy Heart US Red Grapes (Seedless)	price=10.95	pack=454g	per=24.1189	shop=FairPrice	url=https://www.fairprice.com.sg/product/candy-heart-us-red-grapes-seedless-454g-13164568	date=2026-11-12
+grapes	0	Korea Myheart Grapes	price=10.95	pack=450g	per=24.3333	shop=FairPrice	url=https://www.fairprice.com.sg/product/korea-myheart-grapes-450g-13262469	date=2026-11-12	until=2026-11-19
+apple	0	South Africa Candy Apple	price=1.95	pack=500g	shop=FairPrice	url=https://www.fairprice.com.sg/product/south-africa-candy-apple-500g-13040453	date=2026-11-12
+salmon	0	Ocean Fresh Delite Frozen Salmon Portion	price=19.95	pack=500g	per=39.9000	shop=FairPrice	url=https://www.fairprice.com.sg/product/ocean-fresh-delite-frozen-salmon-portion-500g-13106181	date=2026-11-12
+salmon	0	Catch Seafood Salmon Portion (Frozen)	price=13.35	pack=3 x 150 G	per=29.6667	shop=FairPrice	url=https://www.fairprice.com.sg/product/catch-seafood-salmon-portion-pack-of-3-150g-x-3-90007411	date=2026-11-12	until=2026-11-30
+salmon	0	Fisher's Catch Salmon Portion Chunks (Frozen)	price=19.95	pack=1 KG	per=19.9500	shop=Foodie Square via FairPrice	url=https://www.fairprice.com.sg/product/fishers-catch-salmon-portion-chunks	date=2026-11-12	until=2029-02-01
+salmon	0	Catch Seafood Salmon Portion Family Cut (Frozen)	price=9.91	pack=350 G	per=28.3143	shop=FairPrice	url=https://www.fairprice.com.sg/product/catch-seafood-salmon-portion-family-cut-frozen-400g-90007357	date=2026-11-12	until=2026-11-30
+salmon	0	Catch Seafood Salmon Portion (Frozen)	price=27.20	pack=6 x 150 G	per=30.2222	shop=FairPrice	url=https://www.fairprice.com.sg/product/catch-seafood-salmon-portion-frozen-150g-x-6-90007364	date=2026-11-12	until=2026-11-30
+salmon	0	Okeanoss Premium Salmon Portion	price=17.05	pack=400g	per=42.6250	shop=FairPrice	url=https://www.fairprice.com.sg/product/okeanoss-premium-salmon-portion-400g-13239166	date=2026-11-12	until=2026-11-12
+prawns	0	Okeanoss Frozen IQF Shrimp Meat (Tail Off)	price=11.00	pack=400g	per=27.5000	shop=FairPrice	url=https://www.fairprice.com.sg/product/okeanoss-iqf-shrimp-meat-tail-off-400g-13047093	date=2026-11-12
+prawns	0	Seafood Boy Frozen Jumbo Peeled Prawn Meat - Tail On	price=9.81	pack=500g	per=19.6200	shop=FairPrice	url=https://www.fairprice.com.sg/product/seafood-boy-frozen-jumbo-peeled-prawn-meat-tail-on-500g-13291957	date=2026-11-12	until=2026-12-01
+prawns	0	Okeanoss Frozen Jumbo Tiger Prawn Meat	price=16.50	pack=400g	per=41.2500	shop=FairPrice	url=https://www.fairprice.com.sg/product/okeanoss-jumbo-tiger-prawn-meat-400g-13047035	date=2026-11-12
+prawns	0	PMK Quality Frozen Shrimp	price=17.90	pack=800g	per=22.3750	shop=FairPrice	url=https://www.fairprice.com.sg/product/pmk-quality-frozen-shrimp-800g-12200464	date=2026-11-12
+prawns	0	Catch Seafood Prawn Meat Without Shell - Large (Frozen)	price=17.99	pack=1 KG	per=17.9900	shop=Catch Seafood via FairPrice	url=https://www.fairprice.com.sg/product/catch-seafood-prawn-meat-without-shell-large-1-kg-90007399	date=2026-11-12	until=2026-11-30
+prawns	0	Ocean Fresh Delite Frozen IQF Black Tiger Prawn - Shell On	price=26.10	pack=700g	per=37.2857	shop=FairPrice	url=https://www.fairprice.com.sg/product/ocean-fresh-delite-frozen-iqf-black-tiger-prawn-shell-on-700g-13140029	date=2026-11-12
+prawns	0	Okeanoss Frozen IQF Shrimp Meat (Tail On)	price=10.90	pack=400g	per=27.2500	shop=FairPrice	url=https://www.fairprice.com.sg/product/13047091	date=2026-11-12
+prawns	0	Seafood Boy Jumbo Frozen Peeled Tiger Prawn Meat	price=14.25	pack=500 G	per=28.5000	shop=FairPrice	url=https://www.fairprice.com.sg/product/seafood-boy---jumbo-frozen-peeled-tiger-prawn-meat	date=2026-11-12	until=2026-11-30
+prawns	0	Catch Seafood Broken Shrimp (Frozen)	price=10.99	pack=1 KG	per=10.9900	shop=FairPrice	url=https://www.fairprice.com.sg/product/catch-seafood-broken-shrimp-1kg-90024027	date=2026-11-12	until=2026-11-30
+prawns	0	Catch Seafood Banana Prawns (Angka) - Medium (Frozen)	price=19.99	pack=1 KG	per=19.9900	shop=FairPrice	url=https://www.fairprice.com.sg/product/catch-seafood-banana-prawns-angka-medium-1-kg-90078918	date=2026-11-12	until=2026-11-30
+prawns	0	Ocean Fresh Delite Peeled White Shrimp - Raw (Frozen)	price=22.15	pack=700g	per=31.6429	shop=FairPrice	url=https://www.fairprice.com.sg/product/ocean-fresh-delite-peeled-white-shrimp-raw-700g-13140030	date=2026-11-12
+prawns	0	Snow Treasures Premium Live Frozen Raw Grey Prawn	price=17.71	pack=1 KG	per=17.7100	shop=FairPrice	url=https://www.fairprice.com.sg/product/snow-treasures-premium-live-frozen-raw-grey-prawn-1-kg-90098739	date=2026-11-12	until=2026-12-31
+prawns	0	Catch Seafood Baby Shrimp (Frozen)	price=11.99	pack=1 KG	per=11.9900	shop=FairPrice	url=https://www.fairprice.com.sg/product/catch-seafood-baby-shrimp-1kg-1kg-90012817	date=2026-11-12	until=2026-11-30
+blanket	0	VALLKRASSING Throw, off-white, 150x200 cm	price=19.90	pack=150x200 cm	per=6.6333	shop=IKEA	url=https://www.ikea.com/sg/en/p/vallkrassing-throw-off-white-40570927/	date=2026-11-12
+blanket	0	DAGGKÅPOR Throw, light beige, 130x170 cm	price=7.90	pack=130x170 cm	per=3.5747	shop=IKEA	url=https://www.ikea.com/sg/en/p/daggkapor-throw-light-beige-00624593/	date=2026-11-12
+blanket	0	HORNMAL Throw, off-white, 130x170 cm	price=15.90	pack=130x170 cm	per=7.1946	shop=IKEA	url=https://www.ikea.com/sg/en/p/hornmal-throw-off-white-00529096/	date=2026-11-12
+blanket	0	LAPPKATTFOT Throw, brown/black, 130x170 cm	price=19.90	pack=130x170 cm	per=9.0045	shop=IKEA	url=https://www.ikea.com/sg/en/p/lappkattfot-throw-brown-black-90598660/	date=2026-11-12
+blanket	0	JÄTTETUJA Blanket, blue, 140x190 cm	price=19.90	pack=140x190 cm	per=7.4812	shop=IKEA	url=https://www.ikea.com/sg/en/p/jaettetuja-blanket-blue-00627191/	date=2026-11-12
+blanket	0	PERSIKOTRÄD Throw, off-white/grey-beige, 150x200 cm	price=29.90	pack=150x200 cm	per=9.9667	shop=IKEA	url=https://www.ikea.com/sg/en/p/persikotraed-throw-off-white-grey-beige-00625309/	date=2026-11-12
+blanket	0	ROSTLÖNN Throw, anthracite, 130x170 cm	price=15.90	pack=130x170 cm	per=7.1946	shop=IKEA	url=https://www.ikea.com/sg/en/p/rostloenn-throw-anthracite-20630423/	date=2026-11-12
+blanket	0	HUMLEMOTT Throw, off-white, 130x170 cm	price=34.90	pack=130x170 cm	per=15.7919	shop=IKEA	url=https://www.ikea.com/sg/en/p/humlemott-throw-off-white-50549544/	date=2026-11-12
+blanket	0	VITMOSSA Throw, grey, 120x160 cm	price=4.90	pack=120x160 cm	per=2.5521	shop=IKEA	url=https://www.ikea.com/sg/en/p/vitmossa-throw-grey-70304890/	date=2026-11-12
+blanket	0	TORPSPIREA Throw, white, 130x170 cm	price=39.90	pack=130x170 cm	per=18.0543	shop=IKEA	url=https://www.ikea.com/sg/en/p/torpspirea-throw-white-00639716/	date=2026-11-12
+blanket	0	SANDBRODD Throw, anthracite, 130x170 cm	price=15.90	pack=130x170 cm	per=7.1946	shop=IKEA	url=https://www.ikea.com/sg/en/p/sandbrodd-throw-anthracite-80562039/	date=2026-11-12
+blanket	0	HOLMVI Throw, grey, 120x160 cm	price=9.90	pack=120x160 cm	per=5.1563	shop=IKEA	url=https://www.ikea.com/sg/en/p/holmvi-throw-grey-10513599/	date=2026-11-12
+blanket	0	FLIKBRUNÖRT Throw, check pattern, 130x170 cm	price=19.90	pack=130x170 cm	per=9.0045	shop=IKEA	url=https://www.ikea.com/sg/en/p/flikbrunoert-throw-check-pattern-60614402/	date=2026-11-12
+blanket	0	LAPPTÅG Throw, off-white, 130x170 cm	price=49.90	pack=130x170 cm	per=22.5792	shop=IKEA	url=https://www.ikea.com/sg/en/p/lapptag-throw-off-white-90572207/	date=2026-11-12
+blanket	0	IKEA PS 2026 Throw, white/multicolour, 150x200 cm	price=34.90	pack=150x200 cm	per=11.6333	shop=IKEA	url=https://www.ikea.com/sg/en/p/ikea-ps-2026-throw-white-multicolour-10617634/	date=2026-11-12
+blanket	0	KLIPPOXEL Throw, light blue, 130x170 cm	price=29.90	pack=130x170 cm	per=13.5294	shop=IKEA	url=https://www.ikea.com/sg/en/p/klippoxel-throw-light-blue-30633553/	date=2026-11-12
+blanket	0	OFELIA Throw, white, 130x170 cm	price=19.90	pack=130x170 cm	per=9.0045	shop=IKEA	url=https://www.ikea.com/sg/en/p/ofelia-throw-white-10621810/	date=2026-11-12
+blanket	0	MYRULL Throw, light grey, 130x170 cm	price=49.90	pack=130x170 cm	per=22.5792	shop=IKEA	url=https://www.ikea.com/sg/en/p/myrull-throw-light-grey-70563483/	date=2026-11-12
+blanket	0	LIVVAKT Throw, off-white yellow/striped, 130x170 cm	price=49.90	pack=130x170 cm	per=22.5792	shop=IKEA	url=https://www.ikea.com/sg/en/p/livvakt-throw-off-white-yellow-striped-90632999/	date=2026-11-12
+blanket	0	VINTERFINT Throw, check pattern multicolour, 130x170 cm	price=24.90	pack=130x170 cm	per=11.2670	shop=IKEA	url=https://www.ikea.com/sg/en/p/vinterfint-throw-check-pattern-multicolour-70636470/	date=2026-11-12
+rug	0	JÄRNVÄG Rug, low pile, ornament pattern pink/beige, 80x150 cm	price=59.90	pack=80x150 cm	per=49.9167	shop=IKEA	url=https://www.ikea.com/sg/en/p/jaernvaeg-rug-low-pile-ornament-pattern-pink-beige-20623074/	date=2026-11-12
+rug	0	LOHALS Rug, flatwoven, natural, 80x150 cm	price=49.90	pack=80x150 cm	per=41.5833	shop=IKEA	url=https://www.ikea.com/sg/en/p/lohals-rug-flatwoven-natural-00307482/	date=2026-11-12
+rug	0	TIPHEDE Rug, flatwoven, natural/black, 50x80 cm	price=3.90	pack=50x80 cm	per=9.7500	shop=IKEA	url=https://www.ikea.com/sg/en/p/tiphede-rug-flatwoven-natural-black-20592826/	date=2026-11-12
+rug	0	LOKALTÅG Rug, low pile, beige/grey, 80x150 cm	price=39.90	pack=80x150 cm	per=33.2500	shop=IKEA	url=https://www.ikea.com/sg/en/p/lokaltag-rug-low-pile-beige-grey-40623233/	date=2026-11-12
+rug	0	SJÖINGENJÖR Rug, low pile, beige/brown, 60x90 cm	price=9.90	pack=60x90 cm	per=18.3333	shop=IKEA	url=https://www.ikea.com/sg/en/p/sjoeingenjoer-rug-low-pile-beige-brown-90641183/	date=2026-11-12
+rug	0	STOENSE Rug, low pile, off-white, 80x150 cm	price=49.90	pack=80x150 cm	per=41.5833	shop=IKEA	url=https://www.ikea.com/sg/en/p/stoense-rug-low-pile-off-white-60426806/	date=2026-11-12
+rug	0	VÄGSKYLT Rug, flatwoven, pink/orange, 80x150 cm	price=34.90	pack=80x150 cm	per=29.0833	shop=IKEA	url=https://www.ikea.com/sg/en/p/vaegskylt-rug-flatwoven-pink-orange-40587008/	date=2026-11-12
+rug	0	TIDTABELL Rug, flatwoven, beige, 80x200 cm	price=129.00	pack=80x200 cm	per=80.6250	shop=IKEA	url=https://www.ikea.com/sg/en/p/tidtabell-rug-flatwoven-beige-20561882/	date=2026-11-12
+rug	0	RAKLEV Rug, flatwoven, handmade natural/multicolour, 70x160 cm	price=49.90	pack=70x160 cm	per=44.5536	shop=IKEA	url=https://www.ikea.com/sg/en/p/raklev-rug-flatwoven-handmade-natural-multicolour-50408025/	date=2026-11-12
+rug	0	SORTSÖ Rug, flatwoven, unbleached, 55x85 cm	price=6.90	pack=55x85 cm	per=14.7594	shop=IKEA	url=https://www.ikea.com/sg/en/p/sortsoe-rug-flatwoven-unbleached-50418519/	date=2026-11-12
+rug	0	LINDKNUD Rug, high pile, dark grey, 80x150 cm	price=49.90	pack=80x150 cm	per=41.5833	shop=IKEA	url=https://www.ikea.com/sg/en/p/lindknud-rug-high-pile-dark-grey-30478726/	date=2026-11-12
+rug	0	ÄRENDE Rug, high pile, off-white, 80x80 cm	price=19.90	pack=80x80 cm	per=31.0938	shop=IKEA	url=https://www.ikea.com/sg/en/p/aerende-rug-high-pile-off-white-10628779/	date=2026-11-12
+rug	0	VÄXELFEL Rug, low pile, off-white, 80x180 cm	price=39.90	pack=80x180 cm	per=27.7083	shop=IKEA	url=https://www.ikea.com/sg/en/p/vaexelfel-rug-low-pile-off-white-90636978/	date=2026-11-12
+rug	0	TÅNUM Rug, flatwoven, assorted colours, 60x90 cm	price=7.90	pack=60x90 cm	per=14.6296	shop=IKEA	url=https://www.ikea.com/sg/en/p/tanum-rug-flatwoven-assorted-colours-10212676/	date=2026-11-12
+rug	0	LYDERSHOLM Rug flatwoven, in/outdoor, medium brown, 80x150 cm	price=29.90	pack=80x150 cm	per=24.9167	shop=IKEA	url=https://www.ikea.com/sg/en/p/lydersholm-rug-flatwoven-in-outdoor-medium-brown-10495393/	date=2026-11-12
+rug	0	MORUM Rug flatwoven, in/outdoor, beige, 60x150 cm	price=49.90	pack=60x150 cm	per=55.4444	shop=IKEA	url=https://www.ikea.com/sg/en/p/morum-rug-flatwoven-in-outdoor-beige-70624170/	date=2026-11-12
+rug	0	TOFTLUND Rug, blue, 55x85 cm	price=14.90	pack=55x85 cm	per=31.8717	shop=IKEA	url=https://www.ikea.com/sg/en/p/toftlund-rug-blue-10642799/	date=2026-11-12
+rug	0	MÄVINN Rug, flatwoven, multicolour, 60x90 cm	price=22.90	pack=60x90 cm	per=42.4074	shop=IKEA	url=https://www.ikea.com/sg/en/p/maevinn-rug-flatwoven-multicolour-10615135/	date=2026-11-12
+rug	0	RIDSTIG Rug, flatwoven, grey/off-white, 80x180 cm	price=29.90	pack=80x180 cm	per=20.7639	shop=IKEA	url=https://www.ikea.com/sg/en/p/ridstig-rug-flatwoven-grey-off-white-00600969/	date=2026-11-12
+rug	0	VÄGOMRÅDE Rug, flatwoven, light orange-pink, 80x150 cm	price=39.90	pack=80x150 cm	per=33.2500	shop=IKEA	url=https://www.ikea.com/sg/en/p/vaegomrade-rug-flatwoven-light-orange-pink-00623904/	date=2026-11-12
+rug	0	STRÖG Rug, flatwoven, natural, 120x180 cm	price=49.90	pack=120x180 cm	per=23.1019	shop=IKEA	url=https://www.ikea.com/sg/en/p/stroeg-rug-flatwoven-natural-30527048/	date=2026-11-12
+bath-towel	0	VÅGSJÖN Bath towel - light beige 70x140 cm	price=6.90	pack=70x140 cm	per=7.0408	shop=IKEA	url=https://www.ikea.com/sg/en/p/vagsjoen-bath-towel-light-beige-10607324/	date=2026-11-12
+bath-towel	0	VÅGSJÖN Bath towel - dark grey 70x140 cm	price=6.90	pack=70x140 cm	per=7.0408	shop=IKEA	url=https://www.ikea.com/sg/en/p/vagsjoen-bath-towel-dark-grey-50609137/	date=2026-11-12
+bath-towel	0	VÅGSJÖN Bath towel - pink 70x140 cm	price=6.90	pack=70x140 cm	per=7.0408	shop=IKEA	url=https://www.ikea.com/sg/en/p/vagsjoen-bath-towel-pink-10609931/	date=2026-11-12
+bath-towel	0	VÅGSJÖN Bath towel - white 70x140 cm	price=6.90	pack=70x140 cm	per=7.0408	shop=IKEA	url=https://www.ikea.com/sg/en/p/vagsjoen-bath-towel-white-30609138/	date=2026-11-12
+bath-towel	0	VÅGSJÖN Bath towel - orange-red 70x140 cm	price=6.90	pack=70x140 cm	per=7.0408	shop=IKEA	url=https://www.ikea.com/sg/en/p/vagsjoen-bath-towel-orange-red-10610543/	date=2026-11-12
+bath-towel	0	GULVIAL Bath towel - turquoise 70x140 cm	price=9.90	pack=70x140 cm	per=10.1020	shop=IKEA	url=https://www.ikea.com/sg/en/p/gulvial-bath-towel-turquoise-80624527/	date=2026-11-12
+bath-towel	0	GULVIAL Bath towel - dark grey-blue 70x140 cm	price=9.90	pack=70x140 cm	per=10.1020	shop=IKEA	url=https://www.ikea.com/sg/en/p/gulvial-bath-towel-dark-grey-blue-70624518/	date=2026-11-12
+bath-towel	0	GULVIAL Bath towel - pale pink 70x140 cm	price=9.90	pack=70x140 cm	per=10.1020	shop=IKEA	url=https://www.ikea.com/sg/en/p/gulvial-bath-towel-pale-pink-80624508/	date=2026-11-12
+bath-towel	0	GULVIAL Bath towel - beige 70x140 cm	price=9.90	pack=70x140 cm	per=10.1020	shop=IKEA	url=https://www.ikea.com/sg/en/p/gulvial-bath-towel-beige-50624492/	date=2026-11-12
+bath-towel	0	GULVIAL Bath towel - white 70x140 cm	price=9.90	pack=70x140 cm	per=10.1020	shop=IKEA	url=https://www.ikea.com/sg/en/p/gulvial-bath-towel-white-70624472/	date=2026-11-12
+bath-towel	0	GULVIAL Bath towel - black 70x140 cm	price=9.90	pack=70x140 cm	per=10.1020	shop=IKEA	url=https://www.ikea.com/sg/en/p/gulvial-bath-towel-black-60624482/	date=2026-11-12
+bath-towel	0	GULVIAL Bath towel - yellow 70x140 cm	price=9.90	pack=70x140 cm	per=10.1020	shop=IKEA	url=https://www.ikea.com/sg/en/p/gulvial-bath-towel-yellow-80614359/	date=2026-11-12
+bath-towel	0	LUDDVIAL Bath towel - grey 55x120 cm	price=2.90	pack=55x120 cm	per=4.3939	shop=IKEA	url=https://www.ikea.com/sg/en/p/luddvial-bath-towel-grey-90579869/	date=2026-11-12
+bath-towel	0	BROKGLIM Bath towel - dark blue 70x140 cm	price=19.90	pack=70x140 cm	per=20.3061	shop=IKEA	url=https://www.ikea.com/sg/en/p/brokglim-bath-towel-dark-blue-50612045/	date=2026-11-12
+bath-towel	0	BROKGLIM Bath towel - grey 70x140 cm	price=19.90	pack=70x140 cm	per=20.3061	shop=IKEA	url=https://www.ikea.com/sg/en/p/brokglim-bath-towel-grey-40612017/	date=2026-11-12
+bath-towel	0	BROKGLIM Bath towel - white 70x140 cm	price=19.90	pack=70x140 cm	per=20.3061	shop=IKEA	url=https://www.ikea.com/sg/en/p/brokglim-bath-towel-white-90612034/	date=2026-11-12
+bath-towel	0	BROKGLIM Bath towel - pink 70x140 cm	price=19.90	pack=70x140 cm	per=20.3061	shop=IKEA	url=https://www.ikea.com/sg/en/p/brokglim-bath-towel-pink-10612066/	date=2026-11-12
+bath-towel	0	BROKGLIM Bath towel - beige 70x140 cm	price=19.90	pack=70x140 cm	per=20.3061	shop=IKEA	url=https://www.ikea.com/sg/en/p/brokglim-bath-towel-beige-60612097/	date=2026-11-12
+bath-towel	0	BROKGLIM Bath towel - green 70x140 cm	price=19.90	pack=70x140 cm	per=20.3061	shop=IKEA	url=https://www.ikea.com/sg/en/p/brokglim-bath-towel-green-10612085/	date=2026-11-12
+bath-towel	0	SLÅNHÖSTMAL Bath towel - black/light beige striped 70x140 cm	price=9.90	pack=70x140 cm	per=10.1020	shop=IKEA	url=https://www.ikea.com/sg/en/p/slanhoestmal-bath-towel-black-light-beige-striped-80625697/	date=2026-11-12
+bath-towel	0	SLÅNHÖSTMAL Bath towel - bright blue/light blue striped 70x140 cm	price=9.90	pack=70x140 cm	per=10.1020	shop=IKEA	url=https://www.ikea.com/sg/en/p/slanhoestmal-bath-towel-bright-blue-light-blue-striped-80576036/	date=2026-11-12
+bath-towel	0	GULLDYNA Bath towel - beige 70x140 cm	price=8.90	pack=70x140 cm	per=9.0816	shop=IKEA	url=https://www.ikea.com/sg/en/p/gulldyna-bath-towel-beige-60614483/	date=2026-11-12
+bath-towel	0	VALLASÅN Bath towel - light green 70x140 cm	price=9.90	pack=70x140 cm	per=10.1020	shop=IKEA	url=https://www.ikea.com/sg/en/p/vallasan-bath-towel-light-green-70531331/	date=2026-11-12
+bath-towel	0	BROKGINST Bath towel - black 70x140 cm	price=15.90	pack=70x140 cm	per=16.2245	shop=IKEA	url=https://www.ikea.com/sg/en/p/brokginst-bath-towel-black-30614408/	date=2026-11-12
+pillow	0	KLUBBSPORRE Ergonomic pillow, side/back sleeper 41x70 cm	price=39.90	pack=1 pillow (41x70 cm)	shop=IKEA	url=https://www.ikea.com/sg/en/p/klubbsporre-ergonomic-pillow-side-back-sleeper-80446097/	date=2026-11-12
+pillow	0	SENAPSMOTT Pillow, high - with cooling fabric 50x80 cm	price=29.90	pack=1 pillow (50x80 cm)	shop=IKEA	url=https://www.ikea.com/sg/en/p/senapsmott-pillow-high-with-cooling-fabric-70580326/	date=2026-11-12
+pillow	0	FJÄLLHAVRE Pillow, high 50x80 cm	price=99.90	pack=1 pillow (50x80 cm)	shop=IKEA	url=https://www.ikea.com/sg/en/p/fjaellhavre-pillow-high-30629933/	date=2026-11-12
+pillow	0	GULKAVLE Pillow, high 50x80 cm	price=89.90	pack=1 pillow (50x80 cm)	shop=IKEA	url=https://www.ikea.com/sg/en/p/gulkavle-pillow-high-80532943/	date=2026-11-12
+pillow	0	ISRANUNKEL Ergonomic pillow, multi position 41x71 cm	price=49.90	pack=1 pillow (41x71 cm)	shop=IKEA	url=https://www.ikea.com/sg/en/p/isranunkel-ergonomic-pillow-multi-position-90576738/	date=2026-11-12
+pillow	0	SMÅSPORRE Pillow, low 50x80 cm	price=7.90	pack=1 pillow (50x80 cm)	shop=IKEA	url=https://www.ikea.com/sg/en/p/smasporre-pillow-low-00622829/	date=2026-11-12
+pillow	0	PILSPINNARE Pillow, low 50x80 cm	price=19.90	pack=1 pillow (50x80 cm)	shop=IKEA	url=https://www.ikea.com/sg/en/p/pilspinnare-pillow-low-10587137/	date=2026-11-12
+pillow	0	KVARNVEN Ergonomic pillow, side/back sleeper 39x69 cm	price=59.90	pack=1 pillow (39x69 cm)	shop=IKEA	url=https://www.ikea.com/sg/en/p/kvarnven-ergonomic-pillow-side-back-sleeper-10507348/	date=2026-11-12
+pillow	0	ROSENSKÄRM Ergonomic pillow, side/back sleeper 33x50 cm	price=19.90	pack=1 pillow (33x50 cm)	shop=IKEA	url=https://www.ikea.com/sg/en/p/rosenskaerm-ergonomic-pillow-side-back-sleeper-70444367/	date=2026-11-12
+pillow	0	NORDSTÅLÖRT Ergonomic pillow, side/back sleeper 35x50 cm	price=19.90	pack=1 pillow (35x50 cm)	shop=IKEA	url=https://www.ikea.com/sg/en/p/nordstaloert-ergonomic-pillow-side-back-sleeper-20560284/	date=2026-11-12
+pillow	0	GULKAVLE Pillow, low 50x80 cm	price=79.90	pack=1 pillow (50x80 cm)	shop=IKEA	url=https://www.ikea.com/sg/en/p/gulkavle-pillow-low-70542315/	date=2026-11-12
+pillow	0	RAMSLÖKSMAL Ergonomic pillow, multi position 41x52 cm	price=69.90	pack=1 pillow (41x52 cm)	shop=IKEA	url=https://www.ikea.com/sg/en/p/ramsloeksmal-ergonomic-pillow-multi-position-20554283/	date=2026-11-12
+pillow	0	LAPPTÅTEL Pillow, high 50x80 cm	price=7.90	pack=1 pillow (50x80 cm)	shop=IKEA	url=https://www.ikea.com/sg/en/p/lapptatel-pillow-high-60460372/	date=2026-11-12
+pillow	0	SKOGSFRÄKEN Pillow, high 50x80 cm	price=29.90	pack=1 pillow (50x80 cm)	shop=IKEA	url=https://www.ikea.com/sg/en/p/skogsfraeken-pillow-high-30627199/	date=2026-11-12
+pillow	0	KVARNVEN Ergonomic pillow, stomach sleeper 39x69 cm	price=49.90	pack=1 pillow (39x69 cm)	shop=IKEA	url=https://www.ikea.com/sg/en/p/kvarnven-ergonomic-pillow-stomach-sleeper-80513218/	date=2026-11-12
+pillow	0	SKOGSFRÄKEN Pillow, low 50x80 cm	price=19.90	pack=1 pillow (50x80 cm)	shop=IKEA	url=https://www.ikea.com/sg/en/p/skogsfraeken-pillow-low-50627216/	date=2026-11-12
+pillow	0	LÖKSTAMFLY Ergonomic pillow, side/back sleeper 50x80 cm	price=23.90	pack=1 pillow (50x80 cm)	shop=IKEA	url=https://www.ikea.com/sg/en/p/loekstamfly-ergonomic-pillow-side-back-sleeper-60596196/	date=2026-11-12
+pillow	0	HAGTORNSFLY Ergonomic pillow, side/back sleeper 40x60 cm	price=59.90	pack=1 pillow (40x60 cm)	shop=IKEA	url=https://www.ikea.com/sg/en/p/hagtornsfly-ergonomic-pillow-side-back-sleeper-00556278/	date=2026-11-12
+knife	0	VARDAGEN 3-piece knife set - stainless steel/walnut	price=54.90	pack=3 knifes	shop=IKEA	url=https://www.ikea.com/sg/en/p/vardagen-3-piece-knife-set-stainless-steel-walnut-90602474/	date=2026-11-12
+knife	0	IKEA 365+ 3-piece knife set	price=47.90	pack=3 knifes	shop=IKEA	url=https://www.ikea.com/sg/en/p/ikea-365-3-piece-knife-set-30454966/	date=2026-11-12
+knife	0	JÄMFÖRA Knife block with 3 knives - black	price=29.90	pack=3 knifes	shop=IKEA	url=https://www.ikea.com/sg/en/p/jaemfoera-knife-block-with-3-knives-black-90346832/	date=2026-11-12
+knife	0	STJÄRNSTÖR Cook's knife - stainless steel/dark grey 16 cm	price=2.90	pack=1 knife	shop=IKEA	url=https://www.ikea.com/sg/en/p/stjaernstoer-cooks-knife-stainless-steel-dark-grey-60606652/	date=2026-11-12
+knife	0	VÖRDA Chinese chopper - black 18 cm	price=14.90	pack=1 knife	shop=IKEA	url=https://www.ikea.com/sg/en/p/voerda-chinese-chopper-black-80289163/	date=2026-11-12
+knife	0	TIGERBARB 3-piece knife set - grey-turquoise	price=14.90	pack=3 knifes	shop=IKEA	url=https://www.ikea.com/sg/en/p/tigerbarb-3-piece-knife-set-grey-turquoise-40559581/	date=2026-11-12
+knife	0	FJÄLLRÖDING Utility knife - damascus steel/black 14 cm	price=37.90	pack=1 knife	shop=IKEA	url=https://www.ikea.com/sg/en/p/fjaellroeding-utility-knife-damascus-steel-black-10631475/	date=2026-11-12
+knife	0	FÖRSLAG 3-piece knife set	price=14.90	pack=3 knifes	shop=IKEA	url=https://www.ikea.com/sg/en/p/foerslag-3-piece-knife-set-30346830/	date=2026-11-12
+knife	0	ÄNDLIG Chinese chopper - light grey/white 18 cm	price=9.90	pack=1 knife	shop=IKEA	url=https://www.ikea.com/sg/en/p/aendlig-chinese-chopper-light-grey-white-10257622/	date=2026-11-12
+knife	0	IKEA 365+ Cook's knife - stainless steel 16 cm	price=19.90	pack=1 knife	shop=IKEA	url=https://www.ikea.com/sg/en/p/ikea-365-cooks-knife-stainless-steel-90283523/	date=2026-11-12
+knife	0	HACKIG 3-piece knife set - ceramic white/beige	price=34.90	pack=3 knifes	shop=IKEA	url=https://www.ikea.com/sg/en/p/hackig-3-piece-knife-set-ceramic-white-beige-20603014/	date=2026-11-12
+knife	0	FJÄLLRÖDING Cook's knife - damascus steel/black 22 cm	price=67.90	pack=1 knife	shop=IKEA	url=https://www.ikea.com/sg/en/p/fjaellroeding-cooks-knife-damascus-steel-black-00631466/	date=2026-11-12
+knife	0	FJÄLLRÖDING Santoku knife - damascus steel/black 16 cm	price=47.90	pack=1 knife	shop=IKEA	url=https://www.ikea.com/sg/en/p/fjaellroeding-santoku-knife-damascus-steel-black-00631471/	date=2026-11-12
+knife	0	UPPFYLLD Paring knife, set of 3 - mixed colours	price=6.90	pack=3 knifes	shop=IKEA	url=https://www.ikea.com/sg/en/p/uppfylld-paring-knife-set-of-3-mixed-colours-10521943/	date=2026-11-12
+knife	0	FJÄLLRÖDING Paring knife - damascus steel/black 10 cm	price=24.90	pack=1 knife	shop=IKEA	url=https://www.ikea.com/sg/en/p/fjaellroeding-paring-knife-damascus-steel-black-60631468/	date=2026-11-12
+knife	0	FJÄLLRÖDING Nakiri knife - damascus steel/black 18 cm	price=57.90	pack=1 knife	shop=IKEA	url=https://www.ikea.com/sg/en/p/fjaellroeding-nakiri-knife-damascus-steel-black-40631474/	date=2026-11-12
+knife	0	VÖRDA Vegetable knife - black 16 cm	price=12.90	pack=1 knife	shop=IKEA	url=https://www.ikea.com/sg/en/p/voerda-vegetable-knife-black-30289245/	date=2026-11-12
+knife	0	ÄNDLIG 3-piece knife set - light grey/white	price=12.90	pack=3 knifes	shop=IKEA	url=https://www.ikea.com/sg/en/p/aendlig-3-piece-knife-set-light-grey-white-90257623/	date=2026-11-12
+knife	0	IKEA 365+ Utility knife - stainless steel 14 cm	price=14.90	pack=1 knife	shop=IKEA	url=https://www.ikea.com/sg/en/p/ikea-365-utility-knife-stainless-steel-30283516/	date=2026-11-12
+knife	0	VÖRDA Cleaver - black 19 cm	price=24.90	pack=1 knife	shop=IKEA	url=https://www.ikea.com/sg/en/p/voerda-cleaver-black-40289160/	date=2026-11-12
+knife	0	HACKIG Cook's knife - ceramic white/beige 15 cm	price=17.90	pack=1 knife	shop=IKEA	url=https://www.ikea.com/sg/en/p/hackig-cooks-knife-ceramic-white-beige-80603011/	date=2026-11-12
+knife	0	IKEA 365+ Vegetable knife - stainless steel 16 cm	price=19.90	pack=1 knife	shop=IKEA	url=https://www.ikea.com/sg/en/p/ikea-365-vegetable-knife-stainless-steel-90287936/	date=2026-11-12
+toothpaste	0	SENSODYNE Sensitive Teeth Oral Care Toothpaste Complete Protection Cool Mint (Dental Sensitivity Relief) 100g	price=10.45	pack=100g	per=10.4500	shop=Watsons	url=https://www.watsons.com.sg/sensodyne-sensitive-teeth-oral-care-toothpaste-complete-protection-cool-mint-dental-sensitivity-relief-100g/p/BP_83639	date=2026-11-12
+toothpaste	0	SENSODYNE Clinical Repair Deep Clean Toothpaste 100g	price=13.00	pack=100g	per=13.0000	shop=Watsons	url=https://www.watsons.com.sg/sensodyne-clinical-repair-deep-clean-toothpaste-100g/p/BP_24859	date=2026-11-12
+toothpaste	0	SENSODYNE Sensitive Teeth Oral Care Toothpaste Deep Repair & Protect Extra Fresh (Dental Sensitivity Relief) 100g	price=10.45	pack=100g	per=10.4500	shop=Watsons	url=https://www.watsons.com.sg/sensodyne-sensitive-teeth-oral-care-toothpaste-deep-repair-protect-extra-fresh-dental-sensitivity-relief-100g/p/BP_64752	date=2026-11-12
+toothpaste	0	SENSODYNE Sensitive Teeth Oral Care Toothpaste Complete Protection Fresh Breath (Dental Sensitivity Relief) 100g	price=10.45	pack=100g	per=10.4500	shop=Watsons	url=https://www.watsons.com.sg/sensodyne-sensitive-teeth-oral-care-toothpaste-complete-protection-fresh-breath-dental-sensitivity-relief-100g/p/BP_83641	date=2026-11-12
+toothpaste	0	SENSODYNE Sensitive Teeth Oral Care Toothpaste Sensitivity and Gum Whitening (Dental Sensitivity Relief) 100g	price=10.45	pack=100g	per=10.4500	shop=Watsons	url=https://www.watsons.com.sg/sensodyne-sensitive-teeth-oral-care-toothpaste-sensitivity-and-gum-whitening-dental-sensitivity-relief-100g/p/BP_45103	date=2026-11-12
+toothpaste	0	SENSODYNE Sensitive Teeth Oral Care Toothpaste Sensitivity and Gum Extra Fresh (Dental Sensitivity Relief) 100g	price=10.45	pack=100g	per=10.4500	shop=Watsons	url=https://www.watsons.com.sg/sensodyne-sensitive-teeth-oral-care-toothpaste-sensitivity-and-gum-extra-fresh-dental-sensitivity-relief-100g/p/BP_51696	date=2026-11-12
+toothpaste	0	SENSODYNE Clinical Repair Active White Toothpaste 100g	price=13.00	pack=100g	per=13.0000	shop=Watsons	url=https://www.watsons.com.sg/sensodyne-clinical-repair-active-white-toothpaste-100g/p/BP_24861	date=2026-11-12
+toothpaste	0	SENSODYNE Sensitive Teeth Gum Care Toothpaste (Dental Sensitivity Relief) 100g	price=7.50	pack=100g	per=7.5000	shop=Watsons	url=https://www.watsons.com.sg/sensodyne-sensitive-teeth-gum-care-toothpaste-dental-sensitivity-relief-100g/p/BP_45477	date=2026-11-12
+toothpaste	0	SENSODYNE Sensitive Teeth Oral Care Toothpaste Fresh Mint (Dental Sensitivity Relief) 100g	price=7.50	pack=100g	per=7.5000	shop=Watsons	url=https://www.watsons.com.sg/sensodyne-sensitive-teeth-oral-care-toothpaste-fresh-mint-dental-sensitivity-relief-100g/p/BP_21758	date=2026-11-12
+toothpaste	0	SENSODYNE Sensitive Teeth Oral Care Toothpaste Gentle Whitening (Dental Sensitivity Relief) 100g	price=7.80	pack=100g	per=7.8000	shop=Watsons	url=https://www.watsons.com.sg/sensodyne-sensitive-teeth-oral-care-toothpaste-gentle-whitening-dental-sensitivity-relief-100g/p/BP_47922	date=2026-11-12
+toothpaste	0	SENSODYNE Sensitive Teeth Multi Care (Dental Sensitivity Relief) 100g	price=7.50	pack=100g	per=7.5000	shop=Watsons	url=https://www.watsons.com.sg/sensodyne-sensitive-teeth-multi-care-dental-sensitivity-relief-100g/p/BP_92324	date=2026-11-12
+shampoo	0	PANTENE Daily Moisture Repair Shampoo 680ml	price=9.50	pack=680ml	per=1.3971	shop=Watsons	url=https://www.watsons.com.sg/daily-moisture-repair-shampoo-680ml/p/BP_93087	date=2026-11-12
+shampoo	0	PANTENE Total Damage Care Shampoo 680ml	price=9.50	pack=680ml	per=1.3971	shop=Watsons	url=https://www.watsons.com.sg/total-damage-care-shampoo-680ml/p/BP_93101	date=2026-11-12
+shampoo	0	PANTENE Anti-Dandruff Shampoo 680ml	price=9.50	pack=680ml	per=1.3971	shop=Watsons	url=https://www.watsons.com.sg/anti-dandruff-shampoo-680ml/p/BP_92963	date=2026-11-12
+toothpaste	0	Sensodyne Toothpaste - Clinical White Stain Protector	price=13.00	pack=100g	per=13.0000	shop=FairPrice	url=https://www.fairprice.com.sg/product/s-c-white-s-protc100-13256314	date=2026-11-12
+toothpaste	0	Colgate Total Toothpaste - Whitening	price=17.95	pack=4 x 150g	per=2.9917	shop=FairPrice	url=https://www.fairprice.com.sg/product/colgate-total-toothpaste-whitening-4-x-150g-13197740	date=2026-11-12
+toothpaste	0	Oral-B Tooth and Gum Care Toothpaste - Fresh Mint	price=9.70	pack=3 x 100ml	per=3.2333	shop=FairPrice	url=https://www.fairprice.com.sg/product/oral-b-toothpaste-fresh-mint-2s-x-100mlfree-100ml-733619	date=2026-11-12
+toothpaste	0	Colgate Total Toothpaste - Fresh Mint	price=17.95	pack=4 x 150g	per=2.9917	shop=FairPrice	url=https://www.fairprice.com.sg/product/colgate-total-fresh-mint-4-per-pack-13266203	date=2026-11-12
+toothpaste	0	Colgate Total Toothpaste - Charcoal Clean	price=17.95	pack=4 x 150g	per=2.9917	shop=FairPrice	url=https://www.fairprice.com.sg/product/colgate-total-toothpaste-charcoal-clean-4-x-150g-13197741	date=2026-11-12
+toothpaste	0	Sensodyne Clinical Repair Toothpaste - Deep Clean	price=11.70	pack=100g	per=11.7000	shop=FairPrice	url=https://www.fairprice.com.sg/product/sensodyne-clinical-repair-toothpaste-deep-clean-100g-13289538	date=2026-11-12
+toothpaste	0	Colgate Total Toothpaste - Breath Health	price=8.30	pack=150g	per=5.5333	shop=FairPrice	url=https://www.fairprice.com.sg/product/colgate-total-breath-health-150g-13266200	date=2026-11-12
+toothpaste	0	Colgate Total Toothpaste - Sensitivity & Gum Health	price=8.30	pack=150g	per=5.5333	shop=FairPrice	url=https://www.fairprice.com.sg/product/colgate-total-sensitivity-gum-health-150g-13266199	date=2026-11-12
+toothpaste	0	FairPrice Sensodyne Toothpaste - Repair & Protect	price=23.50	pack=3 x 100g	per=7.8333	shop=FairPrice	url=https://www.fairprice.com.sg/product/sensodyne-toothpaste-repair-protect-3-x-100g-13067619	date=2026-11-12
+toothpaste	0	Colgate Total Toothpaste - Gum Care	price=8.30	pack=150g	per=5.5333	shop=FairPrice	url=https://www.fairprice.com.sg/product/colgate-total-gum-care-toothpaste-150g-13266202	date=2026-11-12
+shampoo	0	KLORANE Ultra-Gentle Oat Shampoo	price=19.12	pack=400ml	per=4.7800	shop=Watsons	url=https://www.watsons.com.sg/klorane-ulta-gentle-oat-shampoo-for-all-hair-types-to-gently-cleanses-softens-protects-scalp-hair-400ml/p/BP_91853	date=2026-11-12
+shampoo	0	KLORANE Oil Control Organic Nettle Shampoo	price=19.12	pack=400ml	per=4.7800	shop=Watsons	url=https://www.watsons.com.sg/klorane-oil-control-organic-nettle-shampoo-to-purifies-gently-cleanses-regulates-sebum-400ml/p/BP_92187	date=2026-11-12
+shampoo	0	KLORANE Purifying Citrus Shampoo	price=19.12	pack=400ml	per=4.7800	shop=Watsons	url=https://www.watsons.com.sg/klorane-purifying-citrus-shampoo-to-cleanses-purifies-scalp-for-normal-to-oily-hair-400ml/p/BP_91740	date=2026-11-12
+shampoo	0	KLORANE Volumizing Organic Flax Shampoo	price=19.12	pack=400ml	per=4.7800	shop=Watsons	url=https://www.watsons.com.sg/klorane-volumizing-organic-flax-shampoo-to-cleanses-restores-natural-volume-400ml/p/BP_87675	date=2026-11-12
+shampoo	0	NATURALS BY WATSONS Peppermint + Peptide Thickening Shampoo	price=13.40	pack=490ml	per=2.7347	shop=Watsons	url=https://www.watsons.com.sg/naturals-by-watsons-peppermint-peptide-thickening-shampoo-490ml/p/BP_60331	date=2026-11-12
+shampoo	0	TARGET PRO BY WATSONS FEMTechLab Hair Anti-Hair Fall & Clarifying Shampoo	price=17.90	pack=270ml	per=6.6296	shop=Watsons	url=https://www.watsons.com.sg/target-pro-by-watsons-femtechlab%E2%84%A2-hair-anti-hair-fall-clarifying-shampoo-270ml/p/BP_59939	date=2026-11-12
+baby-wipes	0	FairPrice Baby Wipes with Lid - Unscented	price=6.50	pack=3 x 80	per=0.0271	shop=FairPrice	url=https://www.fairprice.com.sg/product/fairprice-baby-wipes-with-lid-unscented-3-x-80-per-pack-13270457	date=2026-11-12
+baby-wipes	0	FairPrice Baby Wipes with Lid - Unscented carton	price=39.00	pack=18 x 80	per=0.0271	shop=FairPrice	url=https://www.fairprice.com.sg/product/fairprice-baby-wipes-with-lid-unscented-18-x-80-per-pack-ctn-12714521	date=2026-11-12
+desk-organiser	0	Desk Organizer XS	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4955959222606	date=2026-11-12
+sticky-notes	0	Sticky Note 50mm x 15mm Colorful	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480319490	date=2026-11-12
+sticky-notes	0	Corner Sticky Notes	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480256764	date=2026-11-12
+stapler	0	Stapler Black	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480041742	date=2026-11-12
+notebook	0	Spiral Notebook Flower A5	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480531502	date=2026-11-12
+desk-organiser	0	Desk Organizer M	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4955959219408	date=2026-11-12
+sticky-notes	0	Super Sticky Notes 4.92in x 2.95in Yellow	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480136141	date=2026-11-12
+notebook	0	Spiral Notebook A5 with Index	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4549131569841	date=2026-11-12
+ballpoint-pens	0	Crystal Fine Ballpoint Pen	price=2.18	pack=1	per=2.1800	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4901473942827	date=2026-11-12
+notebook	0	Memorize Notebook B6	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4549131572216	date=2026-11-12
+sticky-notes	0	Cosmetic Sticky Notes Pink	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480210452	date=2026-11-12
+ballpoint-pens	0	Ballpoint Pen 0.5mm	price=2.18	pack=1	per=2.1800	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480352312	date=2026-11-12
+notebook	0	Pu Notebook Artificial Leather B6	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4549131750034	date=2026-11-12
+sticky-notes	0	Super Sticky Notes 1.96in x 2.95in Yellow	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480136196	date=2026-11-12
+stapler	0	Stapler White Mini with 1 Box of Staples No. 10	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480041735	date=2026-11-12
+notebook	0	A5 Notebook A Line 2pcs	price=2.18	pack=2 pieces	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4984355057147	date=2026-11-12
+notebook	0	What If Notebook A5	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4549131941135	date=2026-11-12
+sticky-notes	0	Super Sticky Notes 0.98 in x 2.95in Blue/Yellow	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480136233	date=2026-11-12
+sticky-notes	0	Separable Sticky Notes	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480256757	date=2026-11-12
+sticky-notes	0	Film Sticky Note	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480463094	date=2026-11-12
+notebook	0	Spiral Notebook Black A6	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4549131884111	date=2026-11-12
+sticky-notes	0	Super Sticky Notes 2.95in x 2.95in Lined Green	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480136257	date=2026-11-12
+sticky-notes	0	Tape Sticky Note Pastel Two Rolls	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4991203182920	date=2026-11-12
+notebook	0	A5 Notebook	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4549131941128	date=2026-11-12
+sticky-notes	0	Film sticky notes Travel 90sheets	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4549131606256	date=2026-11-12
+sticky-notes	0	Colors Film Sticky Note 7Breeze Pop-Up Type	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480005287	date=2026-11-12
+sticky-notes	0	Colors Film Sticky Note 7Sweet Pop-Up Type	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480005294	date=2026-11-12
+notebook	0	Parent Child Exchange Notebook	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550163006693	date=2026-11-12
+notebook	0	Notebook B7 Grid 3mm Cream Soda	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480444710	date=2026-11-12
+ballpoint-pens	0	Semi Gel Ball Pen 0.5mm	price=2.18	pack=1	per=2.1800	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480352336	date=2026-11-12
+notebook	0	Spiral Notebook A6 with Index Dots	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4549131568035	date=2026-11-12
+sticky-notes	0	Super Sticky Notes 0.98 in x 2.95 in Green/Yellow	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480136226	date=2026-11-12
+sticky-notes	0	Super Sticky Notes 1.96in x 2.95in Lined Green	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480136189	date=2026-11-12
+sticky-notes	0	Super Sticky Notes 4.92in x 2.95in Green	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480136158	date=2026-11-12
+sticky-notes	0	Super Sticky Notes 1.96in x 2.95in Green	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480136202	date=2026-11-12
+sticky-notes	0	Sticky Notes Ring Binder Book Blooming Pink/Stella Blue	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480197418	date=2026-11-12
+sticky-notes	0	Super Sticky Notes 4.92in x 2.95in Lined Green	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480136172	date=2026-11-12
+notebook	0	Pastel Spiral Notebook A5 with Front Pocket	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4549131601282	date=2026-11-12
+stapler	0	Stapler White	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480041759	date=2026-11-12
+notebook	0	Notebook with Pull-Out Pages Sweets Time	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480290485	date=2026-11-12
+notebook	0	Spiral Notebook Simple Logo A5	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480531496	date=2026-11-12
+sticky-notes	0	Super Sticky Notes 2.95in x 2.95in Lined Blue	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480136271	date=2026-11-12
+sticky-notes	0	Super Sticky Notes Lined Yellow 2.95in x 2.95in	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480136264	date=2026-11-12
+notebook	0	A6 HS Double Ring Notebook A Ruled Black	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4954939026876	date=2026-11-12
+desk-organiser	0	Desk Organizer Tray Clear	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4955959219217	date=2026-11-12
+notebook	0	A5 Notebook for Contacts	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4549131939699	date=2026-11-12
+notebook	0	Received Gift Notebook	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4549131894868	date=2026-11-12
+notebook	0	Gift Record Notebook	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4549131894899	date=2026-11-12
+sticky-notes	0	Sticky Notes 2.95X0.98Inch 200 Sheets Water Drop Pattern	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4549131859560	date=2026-11-12
+sticky-notes	0	Film Sticky Note Shape	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4549131787887	date=2026-11-12
+notebook	0	Post-It Strong Adhesion Notebook 35 Pieces 75X50Mm Orange	price=2.18	pack=35 pieces	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4549395636822	date=2026-11-12
+sticky-notes	0	Sticky Notes 2.95X0.98Inch 200 Sheets Plaid Pattern	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4549131859591	date=2026-11-12
+sticky-notes	0	Memo Sticky Notes	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4549131646528	date=2026-11-12
+sticky-notes	0	Neon Color Sticky Memo Message	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4549131583656	date=2026-11-12
+sticky-notes	0	Film Sticky Note Candy	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4549131786422	date=2026-11-12
+file-folders	0	A4 30 Ring File	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4549131288667	date=2026-11-12
+ballpoint-pens	0	Gel knock ball pen -red - 3pcs - 0.7mm - 0.027in-	price=2.18	pack=3 pieces	per=0.7267	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4549131990225	date=2026-11-12
+ballpoint-pens	0	Gel knock ball pen -red - 3pcs - 0.4mm - 0.015in-	price=2.18	pack=3 pieces	per=0.7267	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4549131990249	date=2026-11-12
+file-folders	0	Clear Document Folders B5	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4549131974775	date=2026-11-12
+sticky-notes	0	Colors Film Sticky Note 7Nature Pop-Up Type	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480005300	date=2026-11-12
+sticky-notes	0	Colors Film Sticky Note 9Nature Pop-Up Type	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480005270	date=2026-11-12
+sticky-notes	0	Makeup Palette Sticky Notes-Mlp-Sweet-	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4549131895209	date=2026-11-12
+sticky-notes	0	Makeup Palette Sticky Notes-Mlp Bitter-	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4549131895094	date=2026-11-12
+sticky-notes	0	Die Cut Sticky Note Pad Mini	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4549131529371	date=2026-11-12
+sticky-notes	0	Sticky Note-Card Type-	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480117522	date=2026-11-12
+sticky-notes	0	Super Sticky Notes 0.98in x 2.95in Yellow	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480136219	date=2026-11-12
+sticky-notes	0	Cosmetic Sticky Notes Blue	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480210445	date=2026-11-12
+stapler	0	White Stapler No. 10	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480362113	date=2026-11-12
+notebook	0	Notebook B6 Grid 3mm Pudding Ala Mode	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480425269	date=2026-11-12
+notebook	0	Notebook B6 Grid 3mm Cream Soda	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480444918	date=2026-11-12
+notebook	0	Notebook A5 Grid 3mm Pudding Ala Mode	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480425245	date=2026-11-12
+notebook	0	Notebook B6 Grid 3mm Cream Soda	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480425252	date=2026-11-12
+notebook	0	Notebook A5 Grid 3mm Strawberry Parfait	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480425221	date=2026-11-12
+notebook	0	Notebook B6 Grid 3mm Retro Pudding	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480444680	date=2026-11-12
+notebook	0	Notebook B6 Grid 3mm Retro Jelly	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480444697	date=2026-11-12
+notebook	0	Notebook A5 Grid 3mm Pancake	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480444901	date=2026-11-12
+notebook	0	Notebook A5 Grid 3mm Retro Pudding	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480444888	date=2026-11-12
+notebook	0	Notebook A5 Grid 3mm Cream Soda	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480425214	date=2026-11-12
+sticky-notes	0	Marker Sticky Notes Roll Mystic Sunset	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480267920	date=2026-11-12
+sticky-notes	0	Pop Up Sticky Note	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480340647	date=2026-11-12
+ballpoint-pens	0	Smooth Gel Ink Pen with Pastel Color Clip Black 0.55mm	price=2.18	pack=1	per=2.1800	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480454559	date=2026-11-12
+sticky-notes	0	Colors Film Sticky Note 7Sweet Extra Thin	price=2.18	pack=1	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480005355	date=2026-11-12
+ballpoint-pens	0	Smooth Writing Ballpoint Pen Metal Clip	price=2.18	pack=1	per=2.1800	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4550480007779	date=2026-11-12
+ballpoint-pens	0	Gel Ink Knock Ball Pen Red	price=2.18	pack=1	per=2.1800	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4549131216769	date=2026-11-12
+ballpoint-pens	0	Ballpoint Pen Hot Pepper	price=2.18	pack=1	per=2.1800	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4549131637151	date=2026-11-12
+ballpoint-pens	0	Multicolored Ballpoint Pen	price=2.18	pack=1	per=2.1800	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4984343891081	date=2026-11-12
+ballpoint-pens	0	Ball Point Pen Black	price=2.18	pack=1	per=2.1800	shop=Daiso	url=https://shop.daisosingapore.com.sg/products/4977114932762	date=2026-11-12
+wardrobe	0	LASTARE Wardrobe combination - white 60x42x101 cm	price=84.00	pack=60x42x101 cm	per=0.3300	shop=IKEA	url=https://www.ikea.com/sg/en/p/lastare-wardrobe-combination-white-s89613317/	date=2026-11-12
+sofa	0	GLOSTAD 2-seat sofa - Knisa dark grey	price=89.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/glostad-2-seat-sofa-knisa-dark-grey-10489009/	date=2026-11-12
+sofa	0	GLOSTAD 2-seat sofa - Knisa medium blue	price=89.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/glostad-2-seat-sofa-knisa-medium-blue-00488821/	date=2026-11-12
+wardrobe	0	GURSKEN Wardrobe - light beige 49x55x186 cm	price=89.90	pack=49x55x186 cm	per=0.1793	shop=IKEA	url=https://www.ikea.com/sg/en/p/gursken-wardrobe-light-beige-50503292/	date=2026-11-12
+wardrobe	0	KRONÖREN Open wardrobe - pine 90x49x181 cm	price=99.90	pack=90x49x181 cm	per=0.1252	shop=IKEA	url=https://www.ikea.com/sg/en/p/kronoeren-open-wardrobe-pine-20610806/	date=2026-11-12
+wardrobe	0	LASTARE Wardrobe combination - yellow 60x42x101 cm	price=104.00	pack=60x42x101 cm	per=0.4086	shop=IKEA	url=https://www.ikea.com/sg/en/p/lastare-wardrobe-combination-yellow-s79603677/	date=2026-11-12
+wardrobe	0	LASTARE Wardrobe combination - blue 60x42x101 cm	price=104.00	pack=60x42x101 cm	per=0.4086	shop=IKEA	url=https://www.ikea.com/sg/en/p/lastare-wardrobe-combination-blue-s29630715/	date=2026-11-12
+sofa	0	GLOSTAD 2-seat sofa with chaise longue - Knisa medium blue	price=139.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/glostad-2-seat-sofa-with-chaise-longue-knisa-medium-blue-s79618805/	date=2026-11-12
+sofa	0	GLOSTAD 2-seat sofa with chaise longue - Knisa dark grey	price=139.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/glostad-2-seat-sofa-with-chaise-longue-knisa-dark-grey-s09618804/	date=2026-11-12
+wardrobe	0	LASTARE Wardrobe combination - white 40x62x201 cm	price=150.00	pack=40x62x201 cm	per=0.3009	shop=IKEA	url=https://www.ikea.com/sg/en/p/lastare-wardrobe-combination-white-s89602880/	date=2026-11-12
+wardrobe	0	LASTARE Wardrobe combination - white 60x42x201 cm	price=153.00	pack=60x42x201 cm	per=0.3021	shop=IKEA	url=https://www.ikea.com/sg/en/p/lastare-wardrobe-combination-white-s29602798/	date=2026-11-12
+wardrobe	0	BRUKSVARA Wardrobe with 2 doors and 2 drawers - white 79x57x201 cm	price=159.00	pack=79x57x201 cm	per=0.1757	shop=IKEA	url=https://www.ikea.com/sg/en/p/bruksvara-wardrobe-with-2-doors-and-2-drawers-white-90556047/	date=2026-11-12
+wardrobe	0	BRUKSVARA Wardrobe with 2 doors and 2 drawers - brown 79x57x201 cm	price=159.00	pack=79x57x201 cm	per=0.1757	shop=IKEA	url=https://www.ikea.com/sg/en/p/bruksvara-wardrobe-with-2-doors-and-2-drawers-brown-00556056/	date=2026-11-12
+wardrobe	0	LASTARE Wardrobe combination - white 80x42x201 cm	price=176.00	pack=80x42x201 cm	per=0.2606	shop=IKEA	url=https://www.ikea.com/sg/en/p/lastare-wardrobe-combination-white-s49602900/	date=2026-11-12
+wardrobe	0	LASTARE Wardrobe combination - white 60x62x201 cm	price=184.00	pack=60x62x201 cm	per=0.2461	shop=IKEA	url=https://www.ikea.com/sg/en/p/lastare-wardrobe-combination-white-s29602982/	date=2026-11-12
+sofa	0	SALTMYRAN 2-seat sofa - Öreryd grey-beige	price=199.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/saltmyran-2-seat-sofa-oereryd-grey-beige-40618528/	date=2026-11-12
+sofa	0	SALTMYRAN 2-seat sofa - Öreryd blue	price=199.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/saltmyran-2-seat-sofa-oereryd-blue-20618534/	date=2026-11-12
+sofa	0	GLOSTAD 3-seat sofa - Knisa medium blue	price=199.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/glostad-3-seat-sofa-knisa-medium-blue-30595933/	date=2026-11-12
+wardrobe	0	BRIMNES Wardrobe with 2 doors - white 78x50x190 cm	price=199.00	pack=78x50x190 cm	per=0.2686	shop=IKEA	url=https://www.ikea.com/sg/en/p/brimnes-wardrobe-with-2-doors-white-20400479/	date=2026-11-12
+wardrobe	0	LASTARE Wardrobe combination - white 80x62x201 cm	price=214.00	pack=80x62x201 cm	per=0.2147	shop=IKEA	url=https://www.ikea.com/sg/en/p/lastare-wardrobe-combination-white-s69602876/	date=2026-11-12
+wardrobe	0	KLEPPSTAD Wardrobe with sliding doors - white 117x55x176 cm	price=239.00	pack=117x55x176 cm	per=0.2110	shop=IKEA	url=https://www.ikea.com/sg/en/p/kleppstad-wardrobe-with-sliding-doors-white-30437241/	date=2026-11-12
+wardrobe	0	LASTARE Wardrobe combination - white/yellow 60x42x201 cm	price=243.00	pack=60x42x201 cm	per=0.4797	shop=IKEA	url=https://www.ikea.com/sg/en/p/lastare-wardrobe-combination-white-yellow-s19603816/	date=2026-11-12
+wardrobe	0	LASTARE Wardrobe combination - white/blue 60x42x201 cm	price=243.00	pack=60x42x201 cm	per=0.4797	shop=IKEA	url=https://www.ikea.com/sg/en/p/lastare-wardrobe-combination-white-blue-s09630778/	date=2026-11-12
+sofa	0	SALTMYRAN 3-seat sofa - Öreryd blue	price=249.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/saltmyran-3-seat-sofa-oereryd-blue-10618520/	date=2026-11-12
+sofa	0	SALTMYRAN 3-seat sofa - Öreryd grey-beige	price=249.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/saltmyran-3-seat-sofa-oereryd-grey-beige-90618516/	date=2026-11-12
+sofa	0	GLOSTAD 3-seat sofa with chaise longue - Knisa dark grey	price=249.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/glostad-3-seat-sofa-with-chaise-longue-knisa-dark-grey-s49578599/	date=2026-11-12
+sofa	0	GLOSTAD 3-seat sofa with chaise longue - Knisa medium blue	price=249.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/glostad-3-seat-sofa-with-chaise-longue-knisa-medium-blue-s69578598/	date=2026-11-12
+sofa	0	GULLVALLA 2-seat sofa - Silkeryd dark grey-beige	price=299.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/gullvalla-2-seat-sofa-silkeryd-dark-grey-beige-20618505/	date=2026-11-12
+sofa	0	HEMLINGBY Two-seat sofa - Bomstad black	price=299.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/hemlingby-two-seat-sofa-bomstad-black-10295025/	date=2026-11-12
+wardrobe	0	BRIMNES Wardrobe with 3 doors - white 117x50x190 cm	price=299.00	pack=117x50x190 cm	per=0.2690	shop=IKEA	url=https://www.ikea.com/sg/en/p/brimnes-wardrobe-with-3-doors-white-10407928/	date=2026-11-12
+sofa	0	KLIPPAN 2-seat sofa - Vissle grey	price=329.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/klippan-2-seat-sofa-vissle-grey-s49010615/	date=2026-11-12
+sofa	0	KLIPPAN 2-seat sofa - Vissle green	price=329.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/klippan-2-seat-sofa-vissle-green-s59561664/	date=2026-11-12
+sofa	0	KLIPPAN 2-seat sofa - Grimsmåla black/beige	price=349.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/klippan-2-seat-sofa-grimsmala-black-beige-s69625203/	date=2026-11-12
+sofa	0	GULLVALLA 3-seat sofa - Silkeryd dark grey-beige	price=359.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/gullvalla-3-seat-sofa-silkeryd-dark-grey-beige-90618502/	date=2026-11-12
+sofa	0	GULLVALLA 3-seat sofa - Silkeryd grey-green	price=359.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/gullvalla-3-seat-sofa-silkeryd-grey-green-00618511/	date=2026-11-12
+wardrobe	0	HAUGA Wardrobe with sliding doors - white 118x55x199 cm	price=359.00	pack=118x55x199 cm	per=0.2780	shop=IKEA	url=https://www.ikea.com/sg/en/p/hauga-wardrobe-with-sliding-doors-white-40456917/	date=2026-11-12
+wardrobe	0	HAUGA Wardrobe with sliding doors - beige 118x55x199 cm	price=359.00	pack=118x55x199 cm	per=0.2780	shop=IKEA	url=https://www.ikea.com/sg/en/p/hauga-wardrobe-with-sliding-doors-beige-10456914/	date=2026-11-12
+wardrobe	0	PAX / FLISBERGET Wardrobe combination - white/off-white 100x60x201 cm	price=360.00	pack=100x60x201 cm	per=0.2985	shop=IKEA	url=https://www.ikea.com/sg/en/p/pax-flisberget-wardrobe-combination-white-off-white-s29626049/	date=2026-11-12
+wardrobe	0	PAX / FORSAND Wardrobe - white/white stained oak effect 100x60x201 cm	price=375.00	pack=100x60x201 cm	per=0.3109	shop=IKEA	url=https://www.ikea.com/sg/en/p/pax-forsand-wardrobe-white-white-stained-oak-effect-s49500647/	date=2026-11-12
+wardrobe	0	PAX / FORSAND Wardrobe - white/white 100x60x201 cm	price=375.00	pack=100x60x201 cm	per=0.3109	shop=IKEA	url=https://www.ikea.com/sg/en/p/pax-forsand-wardrobe-white-white-s29500653/	date=2026-11-12
+wardrobe	0	PAX / GRIMO Wardrobe - white/white 100x60x201 cm	price=415.00	pack=100x60x201 cm	per=0.3441	shop=IKEA	url=https://www.ikea.com/sg/en/p/pax-grimo-wardrobe-white-white-s79496856/	date=2026-11-12
+sofa	0	SMEDSTORP 2-seat sofa - Lejde red/brown/black	price=429.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/smedstorp-2-seat-sofa-lejde-red-brown-black-s99463652/	date=2026-11-12
+sofa	0	SALTSJÖBADEN 2-seat sofa - Blekinge white	price=439.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/saltsjoebaden-2-seat-sofa-blekinge-white-s69579178/	date=2026-11-12
+wardrobe	0	PAX / FORSAND Wardrobe - white/white stained oak effect 100x60x236 cm	price=450.00	pack=100x60x236 cm	per=0.3178	shop=IKEA	url=https://www.ikea.com/sg/en/p/pax-forsand-wardrobe-white-white-stained-oak-effect-s19500644/	date=2026-11-12
+wardrobe	0	PAX / FORSAND Wardrobe - white/white 100x60x236 cm	price=450.00	pack=100x60x236 cm	per=0.3178	shop=IKEA	url=https://www.ikea.com/sg/en/p/pax-forsand-wardrobe-white-white-s89500650/	date=2026-11-12
+wardrobe	0	PAX / FLISBERGET Wardrobe combination - white/off-white 100x60x236 cm	price=455.00	pack=100x60x236 cm	per=0.3213	shop=IKEA	url=https://www.ikea.com/sg/en/p/pax-flisberget-wardrobe-combination-white-off-white-s79626056/	date=2026-11-12
+sofa	0	KLIPPAN 2-seat sofa - Bomstad black	price=459.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/klippan-2-seat-sofa-bomstad-black-10399315/	date=2026-11-12
+sofa	0	SALTSJÖBADEN 2-seat sofa - Vittangi light beige/white	price=459.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/saltsjoebaden-2-seat-sofa-vittangi-light-beige-white-s89621421/	date=2026-11-12
+wardrobe	0	MUSKEN Wardrobe with 2 doors+3 drawers - white 124x60x201 cm	price=459.00	pack=124x60x201 cm	per=0.3069	shop=IKEA	url=https://www.ikea.com/sg/en/p/musken-wardrobe-with-2-doors-3-drawers-white-50378684/	date=2026-11-12
+wardrobe	0	LASTARE Wardrobe combination - white 120x62x201 cm	price=462.00	pack=120x62x201 cm	per=0.3089	shop=IKEA	url=https://www.ikea.com/sg/en/p/lastare-wardrobe-combination-white-s69603036/	date=2026-11-12
+sofa	0	SALTSJÖBADEN 2-seat sofa - Tonerud grey	price=489.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/saltsjoebaden-2-seat-sofa-tonerud-grey-s89579182/	date=2026-11-12
+sofa	0	SALTSJÖBADEN 2-seat sofa - Tonerud red-brown	price=489.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/saltsjoebaden-2-seat-sofa-tonerud-red-brown-s99579186/	date=2026-11-12
+wardrobe	0	PAX / GRIMO Wardrobe - white/white 100x60x236 cm	price=490.00	pack=100x60x236 cm	per=0.3460	shop=IKEA	url=https://www.ikea.com/sg/en/p/pax-grimo-wardrobe-white-white-s69496852/	date=2026-11-12
+wardrobe	0	RÅDMANSÖ Wardrobe - brown walnut effect 118x64x190 cm	price=499.00	pack=118x64x190 cm	per=0.3478	shop=IKEA	url=https://www.ikea.com/sg/en/p/radmansoe-wardrobe-brown-walnut-effect-70593828/	date=2026-11-12
+wardrobe	0	PAX / KAMMARTORP Wardrobe combination - white mirror glass/grey 100x60x201 cm	price=505.00	pack=100x60x201 cm	per=0.4187	shop=IKEA	url=https://www.ikea.com/sg/en/p/pax-kammartorp-wardrobe-combination-white-mirror-glass-grey-s69572426/	date=2026-11-12
+sofa	0	EKTORP 2-seat sofa - Hakebo dark grey	price=529.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/ektorp-2-seat-sofa-hakebo-dark-grey-s89509014/	date=2026-11-12
+sofa	0	EKTORP 2-seat sofa - Mångbyn brown/multicolour	price=529.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/ektorp-2-seat-sofa-mangbyn-brown-multicolour-s79620728/	date=2026-11-12
+sofa	0	EKTORP 2-seat sofa - Hakebo grey-green	price=529.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/ektorp-2-seat-sofa-hakebo-grey-green-s19509017/	date=2026-11-12
+sofa	0	EKHOLMA 2-seat sofa - Hakebo beige	price=559.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/ekholma-2-seat-sofa-hakebo-beige-s99537399/	date=2026-11-12
+sofa	0	EKHOLMA 2-seat sofa - Hakebo dark grey	price=559.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/ekholma-2-seat-sofa-hakebo-dark-grey-s19537402/	date=2026-11-12
+sofa	0	EKTORP 2-seat sofa - Kilanda light beige	price=559.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/ektorp-2-seat-sofa-kilanda-light-beige-s29509026/	date=2026-11-12
+sofa	0	FRIHETEN 3-seat sofa-bed - Faringe brown-orange	price=559.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/friheten-3-seat-sofa-bed-faringe-brown-orange-80551229/	date=2026-11-12
+sofa	0	FRIHETEN 3-seat sofa-bed - Faringe light grey	price=559.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/friheten-3-seat-sofa-bed-faringe-light-grey-40551226/	date=2026-11-12
+sofa	0	FRIHETEN Three-seat sofa-bed - Skiftebo dark grey	price=559.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/friheten-three-seat-sofa-bed-skiftebo-dark-grey-30341149/	date=2026-11-12
+wardrobe	0	PAX / FORSAND Wardrobe combination - white/white stained oak effect 150x60x201 cm	price=565.00	pack=150x60x201 cm	per=0.3123	shop=IKEA	url=https://www.ikea.com/sg/en/p/pax-forsand-wardrobe-combination-white-white-stained-oak-effect-s79478112/	date=2026-11-12
+wardrobe	0	PAX / FORSAND Wardrobe - white/white 150x60x201 cm	price=565.00	pack=150x60x201 cm	per=0.3123	shop=IKEA	url=https://www.ikea.com/sg/en/p/pax-forsand-wardrobe-white-white-s99501022/	date=2026-11-12
+sofa	0	LILLEHEM 2-seat modular sofa - Vissle/beige metal	price=569.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/lillehem-2-seat-modular-sofa-vissle-beige-metal-s99471280/	date=2026-11-12
+sofa	0	LILLEHEM 2-seat modular sofa - Vissle/beige wood	price=569.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/lillehem-2-seat-modular-sofa-vissle-beige-wood-s69471286/	date=2026-11-12
+sofa	0	KIVIK 2-seat sofa - Kelinge grey-turquoise	price=589.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/kivik-2-seat-sofa-kelinge-grey-turquoise-s19443045/	date=2026-11-12
+sofa	0	SALTSJÖBADEN 2-seat sofa - Fridtuna light beige	price=589.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/saltsjoebaden-2-seat-sofa-fridtuna-light-beige-s39622512/	date=2026-11-12
+sofa	0	SALTSJÖBADEN 2-seat sofa - Gunnared beige	price=589.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/saltsjoebaden-2-seat-sofa-gunnared-beige-s69622520/	date=2026-11-12
+wardrobe	0	PAX / KAMMARTORP Wardrobe combination - white mirror glass/grey 100x60x236 cm	price=600.00	pack=100x60x236 cm	per=0.4237	shop=IKEA	url=https://www.ikea.com/sg/en/p/pax-kammartorp-wardrobe-combination-white-mirror-glass-grey-s59572422/	date=2026-11-12
+sofa	0	EKHOLMA 2-seat sofa - Kilanda light beige	price=609.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/ekholma-2-seat-sofa-kilanda-light-beige-s09537407/	date=2026-11-12
+sofa	0	EKHOLMA 2-seat sofa - Kilanda brown-red	price=609.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/ekholma-2-seat-sofa-kilanda-brown-red-s49537405/	date=2026-11-12
+wardrobe	0	PAX / FORSAND Wardrobe combination - white/white 150x60x201 cm	price=610.00	pack=150x60x201 cm	per=0.3372	shop=IKEA	url=https://www.ikea.com/sg/en/p/pax-forsand-wardrobe-combination-white-white-s19500696/	date=2026-11-12
+sofa	0	SALTSJÖBADEN 3-seat sofa - Vittangi light beige/white	price=619.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/saltsjoebaden-3-seat-sofa-vittangi-light-beige-white-s59622766/	date=2026-11-12
+sofa	0	LILLEHEM 2-seat modular sofa - Gunnared/dark grey wood	price=629.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/lillehem-2-seat-modular-sofa-gunnared-dark-grey-wood-s79471262/	date=2026-11-12
+sofa	0	LILLEHEM 2-seat modular sofa - Gunnared/brown-red metal	price=629.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/lillehem-2-seat-modular-sofa-gunnared-brown-red-metal-s49471268/	date=2026-11-12
+sofa	0	LILLEHEM 2-seat modular sofa - Gunnared/brown-red wood	price=629.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/lillehem-2-seat-modular-sofa-gunnared-brown-red-wood-s29471274/	date=2026-11-12
+sofa	0	LILLEHEM 2-seat modular sofa - Gunnared/dark grey metal	price=629.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/lillehem-2-seat-modular-sofa-gunnared-dark-grey-metal-s19471260/	date=2026-11-12
+sofa	0	KIVIK 3-seat sofa - Tibbleby beige/grey	price=639.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/kivik-3-seat-sofa-tibbleby-beige-grey-s59440592/	date=2026-11-12
+sofa	0	EKTORP 3-seat sofa - Hakebo grey-green	price=639.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/ektorp-3-seat-sofa-hakebo-grey-green-s39509002/	date=2026-11-12
+sofa	0	EKTORP 3-seat sofa - Hakebo dark grey	price=639.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/ektorp-3-seat-sofa-hakebo-dark-grey-s19508999/	date=2026-11-12
+sofa	0	EKTORP 3-seat sofa - Mångbyn brown/multicolour	price=639.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/ektorp-3-seat-sofa-mangbyn-brown-multicolour-s99619757/	date=2026-11-12
+sofa	0	SALTSJÖBADEN 3-seat sofa - Tonerud grey	price=639.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/saltsjoebaden-3-seat-sofa-tonerud-grey-s39579194/	date=2026-11-12
+sofa	0	SALTSJÖBADEN 3-seat sofa - Tonerud red-brown	price=639.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/saltsjoebaden-3-seat-sofa-tonerud-red-brown-s49579198/	date=2026-11-12
+sofa	0	LANDSKRONA 2-seat sofa - Gunnared light green/wood	price=669.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/landskrona-2-seat-sofa-gunnared-light-green-wood-s19270290/	date=2026-11-12
+sofa	0	LANDSKRONA 2-seat sofa - Gunnared dark grey/wood	price=669.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/landskrona-2-seat-sofa-gunnared-dark-grey-wood-s29270280/	date=2026-11-12
+sofa	0	LANDSKRONA 2-seat sofa - Gunnared dark grey/metal	price=669.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/landskrona-2-seat-sofa-gunnared-dark-grey-metal-s29270275/	date=2026-11-12
+sofa	0	LANDSKRONA 2-seat sofa - Gunnared light green/metal	price=669.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/landskrona-2-seat-sofa-gunnared-light-green-metal-s19270285/	date=2026-11-12
+sofa	0	KIVIK 2-seat sofa - Tresund anthracite	price=679.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/kivik-2-seat-sofa-tresund-anthracite-s79482821/	date=2026-11-12
+sofa	0	EKTORP 3-seat sofa - Kilanda light beige	price=679.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/ektorp-3-seat-sofa-kilanda-light-beige-s49509011/	date=2026-11-12
+wardrobe	0	PAX / FORSAND Wardrobe combination - grey-beige/grey-beige 150x60x236 cm	price=690.00	pack=150x60x236 cm	per=0.3249	shop=IKEA	url=https://www.ikea.com/sg/en/p/pax-forsand-wardrobe-combination-grey-beige-grey-beige-s49429726/	date=2026-11-12
+wardrobe	0	PAX / FORSAND Wardrobe combination - white/white 150x60x236 cm	price=690.00	pack=150x60x236 cm	per=0.3249	shop=IKEA	url=https://www.ikea.com/sg/en/p/pax-forsand-wardrobe-combination-white-white-s59429716/	date=2026-11-12
+wardrobe	0	PAX / FORSAND Wardrobe combination - white stained oak effect/white stained oak effect 150x60x236 cm	price=690.00	pack=150x60x236 cm	per=0.3249	shop=IKEA	url=https://www.ikea.com/sg/en/p/pax-forsand-wardrobe-combination-white-stained-oak-effect-white-stained-oak-effect-s69429711/	date=2026-11-12
+wardrobe	0	PAX / FORSAND Wardrobe combination - dark grey/dark grey 150x60x236 cm	price=690.00	pack=150x60x236 cm	per=0.3249	shop=IKEA	url=https://www.ikea.com/sg/en/p/pax-forsand-wardrobe-combination-dark-grey-dark-grey-s59429721/	date=2026-11-12
+wardrobe	0	PAX / FORSAND Wardrobe combination - white/white stained oak effect 150x60x236 cm	price=690.00	pack=150x60x236 cm	per=0.3249	shop=IKEA	url=https://www.ikea.com/sg/en/p/pax-forsand-wardrobe-combination-white-white-stained-oak-effect-s39478114/	date=2026-11-12
+wardrobe	0	PAX / FORSAND Wardrobe - white/white 150x60x236 cm	price=690.00	pack=150x60x236 cm	per=0.3249	shop=IKEA	url=https://www.ikea.com/sg/en/p/pax-forsand-wardrobe-white-white-s59501024/	date=2026-11-12
+sofa	0	FRIHETEN Three-seat sofa-bed - Bomstad black	price=699.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/friheten-three-seat-sofa-bed-bomstad-black-00341136/	date=2026-11-12
+wardrobe	0	GULLABERG Wardrobe - white 128x64x201 cm	price=699.00	pack=128x64x201 cm	per=0.4245	shop=IKEA	url=https://www.ikea.com/sg/en/p/gullaberg-wardrobe-white-90573952/	date=2026-11-12
+wardrobe	0	GULLABERG Wardrobe - grey 128x64x201 cm	price=699.00	pack=128x64x201 cm	per=0.4245	shop=IKEA	url=https://www.ikea.com/sg/en/p/gullaberg-wardrobe-grey-20573955/	date=2026-11-12
+wardrobe	0	PAX / FORSAND Wardrobe - white/white 200x60x201 cm	price=700.00	pack=200x60x201 cm	per=0.2902	shop=IKEA	url=https://www.ikea.com/sg/en/p/pax-forsand-wardrobe-white-white-s49501034/	date=2026-11-12
+sofa	0	VIMLE 2-seat sofa - Gunnared beige	price=709.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/vimle-2-seat-sofa-gunnared-beige-s99398973/	date=2026-11-12
+sofa	0	VIMLE 2-seat sofa - Gunnared medium grey	price=709.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/vimle-2-seat-sofa-gunnared-medium-grey-s29398976/	date=2026-11-12
+sofa	0	KIVIK 3-seat sofa - Kelinge grey-turquoise	price=709.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/kivik-3-seat-sofa-kelinge-grey-turquoise-s19443050/	date=2026-11-12
+sofa	0	EKHOLMA 3-seat sofa - Hakebo dark grey	price=719.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/ekholma-3-seat-sofa-hakebo-dark-grey-s39537415/	date=2026-11-12
+wardrobe	0	PAX / GRIMO Wardrobe combination - white/white 100x60x201 cm	price=735.00	pack=100x60x201 cm	per=0.6095	shop=IKEA	url=https://www.ikea.com/sg/en/p/pax-grimo-wardrobe-combination-white-white-s89478098/	date=2026-11-12
+sofa	0	VIMLE 2-seat sofa - Knäbäck grey-green	price=749.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/vimle-2-seat-sofa-knaebaeck-grey-green-s39634666/	date=2026-11-12
+sofa	0	VIMLE 2-seat sofa - Knäbäck light beige	price=749.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/vimle-2-seat-sofa-knaebaeck-light-beige-s29634662/	date=2026-11-12
+sofa	0	KIVIK 3-seat sofa - Gunnared medium grey	price=759.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/kivik-3-seat-sofa-gunnared-medium-grey-s99484876/	date=2026-11-12
+wardrobe	0	PAX / KAMMARTORP/GRIMO Wardrobe combination - dark grey/mirror glass grey-green 150x60x201 cm	price=765.00	pack=150x60x201 cm	per=0.4229	shop=IKEA	url=https://www.ikea.com/sg/en/p/pax-kammartorp-grimo-wardrobe-combination-dark-grey-mirror-glass-grey-green-s69579258/	date=2026-11-12
+wardrobe	0	PAX / KAMMARTORP/GRIMO Wardrobe combination - white mirror glass/grey white 150x60x201 cm	price=765.00	pack=150x60x201 cm	per=0.4229	shop=IKEA	url=https://www.ikea.com/sg/en/p/pax-kammartorp-grimo-wardrobe-combination-white-mirror-glass-grey-white-s99572533/	date=2026-11-12
+wardrobe	0	PAX / KAMMARTORP/GRIMO Wardrobe combination - white mirror glass/grey grey-green 150x60x201 cm	price=765.00	pack=150x60x201 cm	per=0.4229	shop=IKEA	url=https://www.ikea.com/sg/en/p/pax-kammartorp-grimo-wardrobe-combination-white-mirror-glass-grey-grey-green-s79579248/	date=2026-11-12
+sofa	0	EKHOLMA 3-seat sofa - Kilanda light beige	price=769.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/ekholma-3-seat-sofa-kilanda-light-beige-s39537420/	date=2026-11-12
+sofa	0	EKHOLMA 3-seat sofa - Kilanda brown-red	price=769.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/ekholma-3-seat-sofa-kilanda-brown-red-s79537418/	date=2026-11-12
+sofa	0	VIMLE 2-seat sofa - with wide armrests/Gunnared beige	price=789.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/vimle-2-seat-sofa-with-wide-armrests-gunnared-beige-s59400548/	date=2026-11-12
+sofa	0	VIMLE 2-seat sofa - with wide armrests Gunnared/medium grey	price=789.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/vimle-2-seat-sofa-with-wide-armrests-gunnared-medium-grey-s19400545/	date=2026-11-12
+sofa	0	SALTSJÖBADEN 3-seat sofa - Gunnared beige	price=789.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/saltsjoebaden-3-seat-sofa-gunnared-beige-s89622576/	date=2026-11-12
+sofa	0	SALTSJÖBADEN 3-seat sofa - Gunnared medium grey	price=789.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/saltsjoebaden-3-seat-sofa-gunnared-medium-grey-s49622578/	date=2026-11-12
+sofa	0	LILLESÄTER 3-seat sofa - Gunnared bright green-yellow	price=799.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/lillesaeter-3-seat-sofa-gunnared-bright-green-yellow-60618495/	date=2026-11-12
+sofa	0	BÅRSLÖV 3-seat sofa-bed - Tibbleby light grey-turquoise	price=799.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/barsloev-3-seat-sofa-bed-tibbleby-light-grey-turquoise-10541583/	date=2026-11-12
+sofa	0	BÅRSLÖV 3-seat sofa-bed - Tibbleby beige/grey	price=799.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/barsloev-3-seat-sofa-bed-tibbleby-beige-grey-60541590/	date=2026-11-12
+sofa	0	KIVIK 3-seat sofa - Tresund anthracite	price=809.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/kivik-3-seat-sofa-tresund-anthracite-s69482831/	date=2026-11-12
+sofa	0	KIVIK 3-seat sofa - Tresund light beige	price=809.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/kivik-3-seat-sofa-tresund-light-beige-s49482832/	date=2026-11-12
+wardrobe	0	PAX / GRIMO Wardrobe combination - white/white 100x60x236 cm	price=835.00	pack=100x60x236 cm	per=0.5897	shop=IKEA	url=https://www.ikea.com/sg/en/p/pax-grimo-wardrobe-combination-white-white-s49478095/	date=2026-11-12
+sofa	0	VIMLE 3-seat sofa - Gunnared beige	price=839.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/vimle-3-seat-sofa-gunnared-beige-s39399032/	date=2026-11-12
+sofa	0	VIMLE 3-seat sofa - Gunnared medium grey	price=839.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/vimle-3-seat-sofa-gunnared-medium-grey-s99399029/	date=2026-11-12
+wardrobe	0	PAX / FORSAND Wardrobe - grey-beige/grey-beige 150x60x236 cm	price=850.00	pack=150x60x236 cm	per=0.4002	shop=IKEA	url=https://www.ikea.com/sg/en/p/pax-forsand-wardrobe-grey-beige-grey-beige-s09431627/	date=2026-11-12
+wardrobe	0	PAX / FORSAND Wardrobe - white/white 200x60x236 cm	price=850.00	pack=200x60x236 cm	per=0.3001	shop=IKEA	url=https://www.ikea.com/sg/en/p/pax-forsand-wardrobe-white-white-s59501038/	date=2026-11-12
+wardrobe	0	PAX / GRIMO Wardrobe - white/white 150x66x201 cm	price=860.00	pack=150x66x201 cm	per=0.4322	shop=IKEA	url=https://www.ikea.com/sg/en/p/pax-grimo-wardrobe-white-white-s99502371/	date=2026-11-12
+sofa	0	VIMLE 3-seat sofa - Knäbäck grey-green	price=869.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/vimle-3-seat-sofa-knaebaeck-grey-green-s69635117/	date=2026-11-12
+sofa	0	VIMLE 3-seat sofa - Knäbäck light beige	price=869.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/vimle-3-seat-sofa-knaebaeck-light-beige-s39635114/	date=2026-11-12
+sofa	0	VALNÄS 2-seat sofa - Knäbäck light beige	price=899.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/valnaes-2-seat-sofa-knaebaeck-light-beige-s89615321/	date=2026-11-12
+sofa	0	ÄPPLARYD 2-seat sofa - Gunnared black/grey	price=899.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/aepplaryd-2-seat-sofa-gunnared-black-grey-40575067/	date=2026-11-12
+sofa	0	SLATORP 3-seat sofa - Hakebo dark grey	price=899.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/slatorp-3-seat-sofa-hakebo-dark-grey-70594385/	date=2026-11-12
+sofa	0	SLATORP 3-seat sofa - Hakebo yellow-brown	price=899.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/slatorp-3-seat-sofa-hakebo-yellow-brown-90594389/	date=2026-11-12
+sofa	0	LILLESÄTER 3-seat sofa - Axvall off-white	price=899.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/lillesaeter-3-seat-sofa-axvall-off-white-20619072/	date=2026-11-12
+wardrobe	0	PAX / KAMMARTORP/GRIMO Wardrobe combination - white mirror glass/grey white 150x60x236 cm	price=900.00	pack=150x60x236 cm	per=0.4237	shop=IKEA	url=https://www.ikea.com/sg/en/p/pax-kammartorp-grimo-wardrobe-combination-white-mirror-glass-grey-white-s29572536/	date=2026-11-12
+sofa	0	HYLTARP 2-seat sofa - Gransel natural	price=909.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/hyltarp-2-seat-sofa-gransel-natural-s59489611/	date=2026-11-12
+sofa	0	HYLTARP 2-seat sofa - Gransel grey-brown	price=909.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/hyltarp-2-seat-sofa-gransel-grey-brown-s79489605/	date=2026-11-12
+sofa	0	HYLTARP 2-seat sofa - Gransel grey	price=909.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/hyltarp-2-seat-sofa-gransel-grey-s69514894/	date=2026-11-12
+sofa	0	VIMLE 3-seat sofa - with wide armrests/Gunnared beige	price=919.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/vimle-3-seat-sofa-with-wide-armrests-gunnared-beige-s49401336/	date=2026-11-12
+sofa	0	VIMLE 3-seat sofa - with wide armrests/Gunnared medium grey	price=919.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/vimle-3-seat-sofa-with-wide-armrests-gunnared-medium-grey-s39401332/	date=2026-11-12
+sofa	0	VIMLE 3-seat sofa - with wide armrests/Knäbäck grey-green	price=929.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/vimle-3-seat-sofa-with-wide-armrests-knaebaeck-grey-green-s59635189/	date=2026-11-12
+sofa	0	VIMLE 3-seat sofa - with wide armrests/Knäbäck light beige	price=929.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/vimle-3-seat-sofa-with-wide-armrests-knaebaeck-light-beige-s19635186/	date=2026-11-12
+sofa	0	SÖDERHAMN 2-seat sofa with chaise longue - Fridtuna dark grey	price=950.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/soederhamn-2-seat-sofa-with-chaise-longue-fridtuna-dark-grey-s19449617/	date=2026-11-12
+sofa	0	VIMLE 3-seat sofa - with wide armrests/Johanneshov brown-beige	price=959.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/vimle-3-seat-sofa-with-wide-armrests-johanneshov-brown-beige-s89635183/	date=2026-11-12
+wardrobe	0	PAX / GRIMO Wardrobe - white/white 150x66x236 cm	price=960.00	pack=150x66x236 cm	per=0.4109	shop=IKEA	url=https://www.ikea.com/sg/en/p/pax-grimo-wardrobe-white-white-s39502369/	date=2026-11-12
+sofa	0	SÖDERHAMN 2-seat sofa with chaise longue - Kelinge dark yellow	price=970.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/soederhamn-2-seat-sofa-with-chaise-longue-kelinge-dark-yellow-s49621753/	date=2026-11-12
+sofa	0	SÖDERHAMN 2-seat sofa with chaise longue - Kelinge beige	price=970.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/soederhamn-2-seat-sofa-with-chaise-longue-kelinge-beige-s99621760/	date=2026-11-12
+sofa	0	SÖDERHAMN 2-seat sofa with chaise longue - Kelinge dark blue	price=970.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/soederhamn-2-seat-sofa-with-chaise-longue-kelinge-dark-blue-s59621757/	date=2026-11-12
+wardrobe	0	PAX / FORSAND Wardrobe - white/white 250x60x201 cm	price=980.00	pack=250x60x201 cm	per=0.3250	shop=IKEA	url=https://www.ikea.com/sg/en/p/pax-forsand-wardrobe-white-white-s59478085/	date=2026-11-12
+wardrobe	0	PAX / FORSAND Wardrobe - dark grey/dark grey 250x60x201 cm	price=980.00	pack=250x60x201 cm	per=0.3250	shop=IKEA	url=https://www.ikea.com/sg/en/p/pax-forsand-wardrobe-dark-grey-dark-grey-s09431321/	date=2026-11-12
+sofa	0	RULLERUM 2-seat sofa with electric recliner - Tornarp dark grey-brown	price=999.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/rullerum-2-seat-sofa-with-electric-recliner-tornarp-dark-grey-brown-70624306/	date=2026-11-12
+sofa	0	ÄPPLARYD 2-seat sofa - Lejde light grey	price=999.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/aepplaryd-2-seat-sofa-lejde-light-grey-40506229/	date=2026-11-12
+sofa	0	ÄPPLARYD 2-seat sofa - Lejde grey/black	price=999.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/aepplaryd-2-seat-sofa-lejde-grey-black-00506226/	date=2026-11-12
+sofa	0	VALNÄS 3-seat sofa - Knäbäck light beige	price=999.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/valnaes-3-seat-sofa-knaebaeck-light-beige-s69615336/	date=2026-11-12
+sofa	0	HYLTARP 3-seat sofa - Kilanda pale blue	price=1019.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/hyltarp-3-seat-sofa-kilanda-pale-blue-s99489647/	date=2026-11-12
+sofa	0	SÖDERHAMN 2-seat sofa with chaise longue - Fridtuna dark grey-blue	price=1020.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/soederhamn-2-seat-sofa-with-chaise-longue-fridtuna-dark-grey-blue-s39621763/	date=2026-11-12
+sofa	0	SÖDERHAMN 2-seat sofa - with chaise longue/Viarp beige/brown	price=1030.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/soederhamn-2-seat-sofa-with-chaise-longue-viarp-beige-brown-s99305752/	date=2026-11-12
+sofa	0	HYLTARP 3-seat sofa - Gransel natural	price=1089.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/hyltarp-3-seat-sofa-gransel-natural-s49489635/	date=2026-11-12
+sofa	0	HYLTARP 3-seat sofa - Gransel grey-brown	price=1089.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/hyltarp-3-seat-sofa-gransel-grey-brown-s79489629/	date=2026-11-12
+sofa	0	HYLTARP 3-seat sofa - Gransel grey	price=1089.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/hyltarp-3-seat-sofa-gransel-grey-s49514927/	date=2026-11-12
+sofa	0	SÖDERHAMN 2-seat sofa with chaise longue - Fridtuna light beige	price=1110.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/soederhamn-2-seat-sofa-with-chaise-longue-fridtuna-light-beige-s89449685/	date=2026-11-12
+sofa	0	VIMLE 2-seat sofa - Grann/Bomstad black	price=1119.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/vimle-2-seat-sofa-grann-bomstad-black-s39306293/	date=2026-11-12
+sofa	0	ÄPPLARYD 3-seat sofa - Gunnared light blue	price=1119.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/aepplaryd-3-seat-sofa-gunnared-light-blue-00575088/	date=2026-11-12
+sofa	0	ÄPPLARYD 3-seat sofa - Gunnared black/grey	price=1119.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/aepplaryd-3-seat-sofa-gunnared-black-grey-10575078/	date=2026-11-12
+wardrobe	0	PAX / FORSAND Wardrobe - white/white 250x60x236 cm	price=1165.00	pack=250x60x236 cm	per=0.3291	shop=IKEA	url=https://www.ikea.com/sg/en/p/pax-forsand-wardrobe-white-white-s89478022/	date=2026-11-12
+wardrobe	0	PAX / FORSAND Wardrobe - dark grey/dark grey 250x60x236 cm	price=1165.00	pack=250x60x236 cm	per=0.3291	shop=IKEA	url=https://www.ikea.com/sg/en/p/pax-forsand-wardrobe-dark-grey-dark-grey-s79431313/	date=2026-11-12
+wardrobe	0	PAX / FORSAND Wardrobe - white stained oak effect/white stained oak effect 250x60x236 cm	price=1165.00	pack=250x60x236 cm	per=0.3291	shop=IKEA	url=https://www.ikea.com/sg/en/p/pax-forsand-wardrobe-white-stained-oak-effect-white-stained-oak-effect-s49286096/	date=2026-11-12
+sofa	0	ÄPPLARYD 3-seat sofa - Lejde grey/black	price=1199.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/aepplaryd-3-seat-sofa-lejde-grey-black-40506234/	date=2026-11-12
+sofa	0	ÄPPLARYD 3-seat sofa - Lejde light grey	price=1199.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/aepplaryd-3-seat-sofa-lejde-light-grey-30506244/	date=2026-11-12
+sofa	0	RULLERUM 3-seat sofa w 2 electric recliners - Tornarp dark grey-brown	price=1299.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/rullerum-3-seat-sofa-w-2-electric-recliners-tornarp-dark-grey-brown-s69625000/	date=2026-11-12
+sofa	0	KIVIK 3-seat sofa - Grann/Bomstad black	price=1299.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/kivik-3-seat-sofa-grann-bomstad-black-80519526/	date=2026-11-12
+sofa	0	RULLERUM 2-seat sofa with electric recliner - Grann/Bomstad golden-brown	price=1399.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/rullerum-2-seat-sofa-with-electric-recliner-grann-bomstad-golden-brown-30624308/	date=2026-11-12
+sofa	0	RULLERUM 2-seat sofa with electric recliner - Grann/Bomstad beige	price=1399.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/rullerum-2-seat-sofa-with-electric-recliner-grann-bomstad-beige-50624307/	date=2026-11-12
+sofa	0	VIMLE 3-seat sofa - Grann/Bomstad black	price=1399.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/vimle-3-seat-sofa-grann-bomstad-black-s79306644/	date=2026-11-12
+sofa	0	VISKAFORS 3-seat sofa - Lejde light beige/brown	price=1499.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/viskafors-3-seat-sofa-lejde-light-beige-brown-s79443373/	date=2026-11-12
+sofa	0	VISKAFORS 3-seat sofa - Lejde light beige/birch	price=1499.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/viskafors-3-seat-sofa-lejde-light-beige-birch-s19443333/	date=2026-11-12
+sofa	0	VISKAFORS 3-seat sofa - Lejde anthracite/brown	price=1499.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/viskafors-3-seat-sofa-lejde-anthracite-brown-s89443363/	date=2026-11-12
+sofa	0	VISKAFORS 3-seat sofa - Lejde anthracite/birch	price=1499.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/viskafors-3-seat-sofa-lejde-anthracite-birch-s19443328/	date=2026-11-12
+sofa	0	JÄTTEBO 2-seat modular sofa - with headrest/Samsala dark blue	price=1560.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/jaettebo-2-seat-modular-sofa-with-headrest-samsala-dark-blue-s79617622/	date=2026-11-12
+sofa	0	JÄTTEBO 2-seat modular sofa - with headrest/Samsala dark yellow-green	price=1560.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/jaettebo-2-seat-modular-sofa-with-headrest-samsala-dark-yellow-green-s29510402/	date=2026-11-12
+sofa	0	JÄTTEBO 2-seat modular sofa - with headrest/Samsala grey-beige	price=1560.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/jaettebo-2-seat-modular-sofa-with-headrest-samsala-grey-beige-s19510407/	date=2026-11-12
+sofa	0	STOCKHOLM 2025 2-seat sofa - Djurmo grey/white	price=1699.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/stockholm-2025-2-seat-sofa-djurmo-grey-white-80586120/	date=2026-11-12
+sofa	0	STOCKHOLM 2025 2-seat sofa - Alhamn beige	price=1699.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/stockholm-2025-2-seat-sofa-alhamn-beige-80586115/	date=2026-11-12
+sofa	0	STOCKHOLM 2025 2-seat sofa - Alhamn dark brown	price=1699.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/stockholm-2025-2-seat-sofa-alhamn-dark-brown-70591749/	date=2026-11-12
+sofa	0	STOCKHOLM 2025 2-seat sofa - Alhamn dark turquoise	price=1699.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/stockholm-2025-2-seat-sofa-alhamn-dark-turquoise-70586111/	date=2026-11-12
+sofa	0	STOCKHOLM 2025 3-seat sofa - Alhamn dark brown	price=2199.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/stockholm-2025-3-seat-sofa-alhamn-dark-brown-s19574296/	date=2026-11-12
+sofa	0	STOCKHOLM 2025 3-seat sofa - Alhamn dark turquoise	price=2199.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/stockholm-2025-3-seat-sofa-alhamn-dark-turquoise-s99574301/	date=2026-11-12
+sofa	0	STOCKHOLM 2025 3-seat sofa - Alhamn beige	price=2199.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/stockholm-2025-3-seat-sofa-alhamn-beige-s89574293/	date=2026-11-12
+sofa	0	STOCKHOLM 2025 3-seat sofa - Djurmo grey/white	price=2199.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/stockholm-2025-3-seat-sofa-djurmo-grey-white-s39574304/	date=2026-11-12
+sofa	0	STOCKHOLM 2025 3-seat sofa - Sundhamn beige	price=2599.00	pack=1 sofa	shop=IKEA	url=https://www.ikea.com/sg/en/p/stockholm-2025-3-seat-sofa-sundhamn-beige-50586094/	date=2026-11-12
+t-shirt	0	unisex AIRism Cotton Crew Neck T-Shirt (Long Sleeve)	price=19.90	pack=1	per=19.9000	shop=UNIQLO	url=https://www.uniqlo.com/sg/en/products/E465193-000/00	date=2026-11-12
+t-shirt	0	men HEATTECH Crew Neck T-Shirt (Long Sleeve)	price=19.90	pack=1	per=19.9000	shop=UNIQLO	url=https://www.uniqlo.com/sg/en/products/E461003-000/00	date=2026-11-12
+t-shirt	0	men HEATTECH Ultra Warm Crew Neck T-Shirt (Long Sleeve)	price=39.90	pack=1	per=39.9000	shop=UNIQLO	url=https://www.uniqlo.com/sg/en/products/E461011-000/00	date=2026-11-12
+jeans	0	men Baggy Straight Jeans	price=59.90	pack=1	per=59.9000	shop=UNIQLO	url=https://www.uniqlo.com/sg/en/products/E492365-000/00	date=2026-11-12
+jeans	0	unisex Baggy Barrel Leg Jeans	price=59.90	pack=1	per=59.9000	shop=UNIQLO	url=https://www.uniqlo.com/sg/en/products/E480740-000/00	date=2026-11-12
+jeans	0	unisex Baggy Barrel Leg Jeans (Longer Length)	price=59.90	pack=1	per=59.9000	shop=UNIQLO	url=https://www.uniqlo.com/sg/en/products/E484807-000/00	date=2026-11-12
+jeans	0	unisex Baggy Barrel Leg Jeans (Longer Length)	price=59.90	pack=1	per=59.9000	shop=UNIQLO	url=https://www.uniqlo.com/sg/en/products/E484807-001/00	date=2026-11-12
+jeans	0	unisex Baggy Barrel Leg Jeans	price=59.90	pack=1	per=59.9000	shop=UNIQLO	url=https://www.uniqlo.com/sg/en/products/E484808-000/00	date=2026-11-12
+shorts	0	unisex Sweat Wide Shorts	price=29.90	pack=1	per=29.9000	shop=UNIQLO	url=https://www.uniqlo.com/sg/en/products/E482758-000/00	date=2026-11-12
+shorts	0	men Linen Blend Easy Shorts	price=19.90	pack=1	per=19.9000	shop=UNIQLO	url=https://www.uniqlo.com/sg/en/products/E482260-000/00	date=2026-11-12
+yoga-mat	0	8mm Gentle Yoga Mat - Extra Thick & Durable (Dark Blue)	price=24.90	pack=1	shop=Decathlon	url=https://www.decathlon.sg/p/8mm-gentle-yoga-mat-dark-blue-kimjaly-8665059.html	date=2026-11-12
+dumbbells	0	2kg Twin Pack Dumbbells (2kg x2)	price=14.90	pack=2 x 2 kg	per=3.7250	shop=Decathlon	url=https://www.decathlon.sg/p/2kg-twin-pack-dumbbells-domyos-8336573.html	date=2026-11-12
+dumbbells	0	3kg Twin Pack Dumbbells (3kg x2)	price=22.90	pack=2 x 3 kg	per=3.8167	shop=Decathlon	url=https://www.decathlon.sg/p/3kg-twin-pack-dumbbells-3kg-x2-domyos-8336581.html	date=2026-11-12
+t-shirt	0	Men's Breathable Fitness T-Shirt - Navy	price=7.90	pack=1	per=7.9000	shop=Decathlon	url=https://www.decathlon.sg/p/men-s-breathable-fitness-t-shirt-navy-domyos-8996897.html	date=2026-11-12
+t-shirt	0	Men's Breathable Fitness T-Shirt - Black	price=9.90	pack=1	per=9.9000	shop=Decathlon	url=https://www.decathlon.sg/p/men-s-breathable-fitness-t-shirt-black-domyos-8871331.html	date=2026-11-12
+t-shirt	0	Women's Short-Sleeved Cardio Fitness T-Shirt - Navy Blue	price=5.90	pack=1	per=5.9000	shop=Decathlon	url=https://www.decathlon.sg/p/women-s-short-sleeved-cardio-fitness-t-shirt-navy-blue-domyos-8969045.html	date=2026-11-12
+t-shirt	0	Men's Kiprun Run 100 running T-shirt - white	price=6.90	pack=1	per=6.9000	shop=Decathlon	url=https://www.decathlon.sg/p/men-s-kiprun-run-100-running-t-shirt-white-kiprun-8955568.html	date=2026-11-12
+t-shirt	0	Men's Quick Dry Running T-Shirt - Deep Blue	price=6.90	pack=1	per=6.9000	shop=Decathlon	url=https://www.decathlon.sg/p/men-s-quick-dry-running-t-shirt-deep-blue-decathlon-8666011.html	date=2026-11-12
+t-shirt	0	Men's Running Quick Dry T-Shirt - Black	price=6.90	pack=1	per=6.9000	shop=Decathlon	url=https://www.decathlon.sg/p/men-s-running-quick-dry-t-shirt-black-decathlon-8488034.html	date=2026-11-12
+t-shirt	0	Men's Running T-Shirt Breathable - Carbon Grey	price=19.90	pack=1	per=19.9000	shop=Decathlon	url=https://www.decathlon.sg/p/men-s-running-t-shirt-breathable-carbon-grey-kiprun-8942121.html	date=2026-11-12
+shorts	0	Men's Running Shorts Run 100 - Black	price=6.90	pack=1	per=6.9000	shop=Decathlon	url=https://www.decathlon.sg/p/men-s-running-shorts-run-100-black-kalenji-8817443.html	date=2026-11-12
+shorts	0	Men's Running Shorts Run 500 Dry - Black	price=14.90	pack=1	per=14.9000	shop=Decathlon	url=https://www.decathlon.sg/p/men-s-running-shorts-run-500-dry-black-kiprun-8751038.html	date=2026-11-12
+t-shirt	0	Women's Running Long Sleeved T-Shirt Anti-UV - White	price=9.90	pack=1	per=9.9000	shop=Decathlon	url=https://www.decathlon.sg/p/women-s-running-long-sleeved-t-shirt-anti-uv-white-kalenji-8520964.html	date=2026-11-12
+shorts	0	Women's Running Shorts Run 500 Dry - Black	price=6.90	pack=1	per=6.9000	shop=Decathlon	url=https://www.decathlon.sg/p/women-s-running-shorts-run-500-dry-black-kiprun-8852986.html	date=2026-11-12
+shorts	0	Men's Fitness Shorts 500 Essentials - Grey	price=12.90	pack=1	per=12.9000	shop=Decathlon	url=https://www.decathlon.sg/p/men-s-cotton-essential-shorts-grey-domyos-8645059.html	date=2026-11-12
+t-shirt	0	Men training Tee-shirt - linen beige	price=6.90	pack=1	per=6.9000	shop=Decathlon	url=https://www.decathlon.sg/p/men-training-tee-shirt-linen-beige-domyos-8982946.html	date=2026-11-12
+t-shirt	0	Women's Running Slim Seamless T-shirt - Kiprun Run 500 Comfort Slim grey/black	price=19.90	pack=1	per=19.9000	shop=Decathlon	url=https://www.decathlon.sg/p/women-s-running-slim-seamless-t-shirt-kiprun-run-500-comfort-slim-grey-black-kiprun-8831008.html	date=2026-11-12
+t-shirt	0	Women's Running Long Sleeved T-Shirt Anti-UV - Pink	price=9.90	pack=1	per=9.9000	shop=Decathlon	url=https://www.decathlon.sg/p/women-s-running-long-sleeved-t-shirt-anti-uv-pink-kalenji-8666222.html	date=2026-11-12
+t-shirt	0	Women's Kiprun Run 100 running T-shirt - black	price=6.90	pack=1	per=6.9000	shop=Decathlon	url=https://www.decathlon.sg/p/women-s-kiprun-run-100-running-t-shirt-black-kalenji-8817407.html	date=2026-11-12
+shorts	0	Men's Breathable Fitness Shorts with Zip-Up Pockets - Smoky Black	price=9.90	pack=1	per=9.9000	shop=Decathlon	url=https://www.decathlon.sg/p/men-s-breathable-fitness-shorts-with-zip-up-pockets-smoky-black-domyos-8547823.html	date=2026-11-12
