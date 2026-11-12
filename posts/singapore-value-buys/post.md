@@ -1,10 +1,10 @@
 ---
 title: What Singapore buys, what it costs and when it is a deal
 date: 2026-11-08
-summary: Advice for the 12 groups of household spending, biggest first. It rests on official data for 251 goods and services to September 2026 and 558 shop prices read on 8 and 9 November 2026.
+summary: Advice for the 12 groups of household spending, biggest first. It uses SingStat data through September 2026 and prices from shops and service providers. The list shows the current number of price rows.
 summary: Every piece of advice uses one of four levers. In order, they are to check quality, take the lowest price that passes, buy at the right time and buy the right amount.
-summary: A product is the pick by rule only. It is the cheapest unit price that passes the stated check. Of 86 products checked on 11 November 2026, 24 pass, 1 fails, 18 have a value recorded and 43 pages do not show the fact.
-summary: 33 of the 63 goods with enough history have a steady month pattern. Fish is the big one. Buy in November, not January.
+summary: A product is the pick by rule only. It is the cheapest unit price that passes the stated check. Each result links to its source when the product page or another source shows the required fact.
+summary: 33 of the 63 goods with enough history have a steady month pattern. In the historical data, several fish and seafood prices were lower in November than in January.
 summary: Nobody tested these goods for this post. Quality checks come from health and food agencies, and forecasts are ranges, not promises.
 ---
 This page answers one question: what is the best quality for the price, for the things a Singapore household spends money on? It follows the money. The 12 groups below come from the Household Expenditure Survey, biggest share first.
@@ -14,7 +14,7 @@ This page answers one question: what is the best quality for the price, for the 
 Every piece of advice on this page uses one of four levers. Use them in this order.
 
 1. **Check quality.** Find the one thing you can verify on the pack or in the shop, and pay more only for that. Toothpaste that states 1,450 ppm fluoride is worth it. A shampoo with a nicer scent may not be.
-2. **Take the lowest price that passes.** Compare unit prices: per 100 g, per 100 sheets or per wash. Do not compare packs. A good deal is 10% under the official average, and a crossed-out price proves nothing.
+2. **Take the lowest price that passes.** Compare unit prices: per 100 g, per 100 sheets or per wash. Do not compare packs. Use the deal price as a guide, and compare products of the same quality.
 3. **Buy at the right time.** A few goods have a steady month pattern, and fish is the big one. For the rest, do not wait for a price to fall. Most goods drift up, so if you need it and the price is fair, buy it.
 4. **Buy the right amount.** A pass or a big pack is a deal only if you use it. Stock up only on what keeps.
 
@@ -24,7 +24,7 @@ A product is named as the pick by rule only. It is the cheapest unit price found
 
 Each row is one group of household spending, with its share. Open it for the advice under the four levers, then the shop prices and official prices behind that advice. Or type a word, such as eggs, taxi or sofa.
 
-::figure kind=life alt="A list of the 12 groups of household spending, each with a bar for its share, from eating out at 16.3% to holiday stays at 1.4%. Each group opens to advice under four levers, then shop prices and official prices." caption="Sources: Household Expenditure Survey 2023 for the shares. SingStat tables M213761 and M213751, to September 2026, for official prices. The shop or agency page linked on each row, read on 8 and 9 November 2026. Product checks read on 11 November 2026."
+::figure kind=life alt="A list of the 12 groups of household spending, each with a bar for its share, from eating out at 16.3% to holiday stays at 1.4%. Each group opens to advice under four levers, then shop prices and official prices." caption="Sources: Household Expenditure Survey 2023 for the shares. SingStat tables M213761 and M213751, to September 2026, for official prices. See the linked shop, agency and product-check sources for individual rows."
 
 ### How to read the list
 
@@ -34,7 +34,7 @@ Each row is one group of household spending, with its share. Open it for the adv
 - **Month cells** under timing advice show each month against the level of its year: blue is cheaper, orange is dearer, and a ring marks the cheapest and the dearest month.
 - **A line with a blue half** is a break-even point. The pass pays on the blue side, and a dot marks a typical use.
 - **Dots on a shop item** are its prices on a line that starts at zero, cheapest first. They show only where two or more prices share a unit. Blue passes the item's quality check. Hollow means the product page does not show the check. A struck dot fails. Grey means the item has no check. A ring marks the pick.
-- **Shop prices** are real products. Each link goes to a page read on 8 or 9 November 2026. A date in brackets is when the offer ends. "Listing" means a search listing rather than an opened page, so treat it as a rough guide.
+- **Shop prices** are real products. The first shop prices were collected on 8 and 9 November 2026. Later entries show the date when the price was read. A date in brackets is when the offer ends. "Listing" means a search listing rather than an opened page, so treat it as a rough guide.
 - **Official prices** come in two kinds. An average price is in dollars, for the pack shown, with the price that counts as a good deal. An index has no dollar price: it is 100 in 2024, and it tells you how fast a price is moving.
 - **Forecast** is the 80% range for September 2027. **Since 2015** means since September 2015. "Began in 2024" means the series is too new for a long view.
 - **Bars beside an average price** show a steady month pattern with a gap of 3% or more. The bars give the shape, and the figure in brackets gives the gap.
@@ -47,10 +47,10 @@ Each row is one group of household spending, with its share. Open it for the adv
 
 - **The groups.** The 12 groups and their shares are from the Household Expenditure Survey 2023. Placing each good in one group was my call. Computers sit under recreation, airfares under transport, and toiletries under personal care.
 - **The advice.** Each line links to its source where it has one. Quality checks come from health and food agencies and from consumer tests. UK and US tests do not cover Singapore products.
-- **The product checks.** On 11 November 2026, AI agents read the page of 86 products for one fact each, such as the fluoride in a toothpaste. Each pass, fail and recorded value was then matched against the text of the page. 24 products pass, 1 fails and 18 have a value recorded. For 43 products the page did not show the fact, or did not load, so they stay unmarked.
+- **The product checks.** Product checks use the stated pack, formulation or model, such as the fluoride concentration in a toothpaste. The list links to the page that supports a pass, fail or recorded value. A check stays open if the source omits the fact or the product match is uncertain.
 - **The picks.** A pick is the cheapest unit price found that passes the check. It is not a test result, and nobody looked at a pack in a shop.
 - **The month patterns.** A pattern counts only if the cheapest month beat the dearest month in at least 80% of years, and the gap is bigger than chance. 33 of 63 goods pass. The 14 with the widest gap appear as timing advice under food at home.
-- **The prices.** Shop prices were read on 8 and 9 November 2026. Of 721 read for this post, 352 came from an opened page and the rest from search listings. A price added later shows the day it was read.
+- **The prices.** The first prices were read on 8 and 9 November 2026. Entries marked “listing” came from search listings. A price added later shows the day it was read.
 - **Updates.** An AI agent can add a product, a product check or a piece of advice as a note, one line in a file. The build checks every line and stops on a bad one, and I merge each change. [How to write notes](/api/notes.txt) gives the format.
 
 ## Background
@@ -126,24 +126,24 @@ A sale tag tells you what a shop wants you to feel. These checks tell you what y
 4. **Ignore the "was" price.** Some offers on shop pages run for about a year. A price that is always on offer is the normal price.
 5. **Count what you will use.** Buy 3 for S$5.60 is only a deal if you use three. Fresh food on offer that you throw away costs more.
 6. **Stock up only on what keeps.** Rice, oil, canned food, paper goods and detergent keep. Stock up at 20% under the average.
-7. **Add the deposit.** Since the Beverage Container Return Scheme began, most drink cans and bottles carry a [10-cent deposit added at checkout ↗](https://www.nea.gov.sg/our-services/waste-management/beverage-container-return-scheme). Shop prices usually leave it out.
+7. **Add the deposit.** Check for the deposit mark on plastic bottles and metal cans from 150 ml to 3 L. The deposit is 10 cents per marked container and is refundable on eligible return. Glass, cartons and pouches are excluded. [NEA ↗](https://www.nea.gov.sg/our-services/waste-management/beverage-container-return-scheme/for-consumers)
 
 The good deal price is the current average less 10%, or less twice the good's normal monthly swing if that is larger. It is a rule of thumb, and it was set by judgment. Here it is at work on shelf prices seen on 8 November 2026.
 
 | Shelf price, 8 Nov 2026 | Price | Average now | Good deal at | Result |
 |---|---|---|---|---|
-| Pasar eggs, 10 | S$2.85 | S$3.27 | S$2.94 | Good deal |
-| Double FP Thai hom mali, 5 kg | S$10.50 | S$14.53 | S$13.07 | Good deal |
-| FairPrice Classic instant coffee, 200 g | S$10.65 | S$12.66 | S$11.39 | Good deal |
+| Pasar eggs, 10 | S$2.85 | S$3.27 | S$2.94 | Below the deal threshold |
+| Double FP Thai hom mali, 5 kg | S$10.50 | S$14.53 | S$13.07 | Below the deal threshold |
+| FairPrice Classic instant coffee, 200 g | S$10.65 | S$12.66 | S$11.39 | Below the deal threshold |
 | PurSoft 3-ply toilet paper, 10 rolls | S$5.70 | S$6.03 | S$5.43 | Fair |
 | Tiger light soy sauce, 640 ml | S$2.55 | S$2.51 | S$2.26 | Dear |
 | Greenfields fresh milk, 1 L | S$3.51 | S$3.73 | S$3.35 | Fair |
 | FairPrice sugar, 2 kg | S$3.36 | S$3.52 | S$3.17 | Fair |
 | Coca-Cola, 4 cans | S$4.00 | S$3.79 | S$3.41 | Dear |
 
-Average now is the mean of July to September 2026, across the brands and shops SingStat samples. So the house brand rows pass partly because they are cheaper products.
+Average now is the mean of July to September 2026, across the brands and shops SingStat samples. The comparison gives a price benchmark. To judge a promotion, compare with the usual price of the same product.
 
-Sites such as [Price Kaki ↗](https://www.case.org.sg/media_centre/sheng-siong-adds-all-house-brand-products-on-price-kaki-2/), run with CASE, compare prices between shops.
+CASE’s [Price Kaki app ↗](https://www.case.org.sg/) compares grocery and hawker food prices.
 
 ### How the forecasts work
 
@@ -169,12 +169,12 @@ The forecasts in this post use that winner. The range is where 80% of past misse
 
 - **Sample changes.** SingStat changed its brands and shops in January 2019 and January 2024. Average prices are not pure price changes across those dates. The CPI is. Instant noodles went from S$2.80 to S$3.86 in one month when the sample changed, and the CPI for noodles and pasta fell 0.5%. So the charts scale each older price to today's sample, to move across the change as the CPI of its class did. On Januaries with no sample change, this link was within 1% of the truth half the time and within about 5% nine times in ten.
 - **Averages are not your shop.** They mix brands and outlets. Promotions may be partly hidden.
-- **Shops covered.** Shelf prices are mostly FairPrice, with some Cold Storage, IKEA, Courts, Harvey Norman and official fee pages. Sheng Siong, Giant and Don Don Donki showed no readable online prices. Shopee, Amazon.sg, Watsons, Popular, Challenger and several fashion sites blocked automated reading. Of 721 shelf prices, 352 were read from an opened page.
+- **Shops covered.** Rows link to the retailer product page, official catalogue or fee page used for the price. Amazon.sg import prices can have postage at checkout. Some retailers restrict access to product pages or do not publish item prices.
 - **Sets of goods.** Inside a spending group, shop prices sit in sets such as "Home and living". Those names follow Shopee's menu from memory, as its site could not be read, and may not match exactly.
 - **Indexes are not prices.** A word like "sofa" maps to the nearest official series, here Furniture & Furnishings. That series covers many products, so your sofa may move differently.
 - **Offers end.** Many shelf prices are offers. Dates are shown where a page gave one.
 - **Quality.** Many quality points come from agency pages. Some come only from search summaries of them. UK and US tests do not cover Singapore products. No named Singapore product has a test result here.
-- **Data end.** SingStat data ends at September 2026, and the shelf prices are from 8 November 2026.
+- **Data end.** SingStat data ends at September 2026. Use the date on a later shop entry to judge how recent its price is.
 - **Toothpaste and shampoo** have no official item price in Singapore's list.
 
 ## Sources
