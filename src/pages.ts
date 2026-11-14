@@ -47,7 +47,7 @@ function day(date: string): string {
   return date === "" ? "" : `<time datetime="${date}">${date}</time>`;
 }
 
-const HEADER = `<header class="wrap"><a class="name" href="/">Yu Jie Teo</a><span class="tagline">Mechanical Engineer</span></header>`;
+const HEADER = `<header class="wrap"><a class="name" href="/">Yu Jie Teo</a></header>`;
 
 interface Entry {
   href: string;
@@ -71,7 +71,7 @@ export function homePage(posts: Post[]): string {
   const items = entries.map(item);
   const list = items.length > 0 ? `<ol class="featured">${items.join("\n")}</ol>` : `<p class="muted">No posts yet.</p>`;
   const main = `<main class="wrap"><section id="posts"><h2>Posts</h2>${list}</section></main>`;
-  return shell("Yu Jie Teo", "Posts by Yu Jie Teo, Mechanical Engineer.", HEADER, main, []);
+  return shell("Yu Jie Teo", "Posts by Yu Jie Teo.", HEADER, main, []);
 }
 
 function contents(headings: Heading[]): string {
