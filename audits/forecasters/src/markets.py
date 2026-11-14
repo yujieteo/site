@@ -105,6 +105,7 @@ def forecasts():
     """Every AI-listed forecast that could be scored: settled true, false or partly."""
     index = {r["token"]: r["unit"] for r in csv.DictReader(open(DATA / "batch_index.tsv"), delimiter="\t")}
     units = {u["id"]: u for u in read_jsonl(dumps_dir() / "derived" / "units.jsonl")}
+    units.update({u["id"]: u for u in read_jsonl(dumps_dir() / "derived" / "recall_units.jsonl")})
     units.update({u["id"]: u for u in read_jsonl(DATA / "planted.jsonl")})
     for f in sorted((DATA / "verdicts").glob("*.jsonl")):
         for v in read_jsonl(f):
