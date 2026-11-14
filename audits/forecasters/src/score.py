@@ -338,9 +338,14 @@ def oos(calls, orders):
             if not mine:
                 rows_out.append(dict(site=site_name, person=p, n=0, log_e="", e_value=""))
                 continue
-            site = Site(mine, [p])
-            _, d = site.observed()
-            le = float(d.sum())
+            # Only the sum of d is needed; shrinkage over one person is undefined.
+            kind = np.array([r["kind"] for r in mine])
+            pp = np.array([float(r["p"]) if r["p"] not in ("", None) else np.nan for r in mine])
+            ref = np.array([float(r["ref"]) for r in mine])
+            asr = np.array([float(r["asserted"]) if r["asserted"] not in ("", None) else np.nan for r in mine])
+            y = np.array([float(r["outcome"]) for r in mine])
+            d1, d0 = call_scores(kind, pp, ref, asr)
+            le = float(np.where(y == 1, d1, d0).sum())
             total += le
             rows_out.append(dict(site=site_name, person=p, n=len(mine), log_e=round(le, 4),
                                  e_value=f"{math.exp(le):.4g}"))
