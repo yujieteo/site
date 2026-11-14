@@ -161,7 +161,7 @@ def main():
     for f in sorted((DATA / "verdicts").glob("*.jsonl")):
         for line in open(f, encoding="utf-8"):
             v = json.loads(line)
-            u = idx.get(v["token"], "")
+            u = idx.get(v.get("blind", v.get("token")), "")
             if u.endswith(":recall"):
                 s0 = u.split(":")[0]
                 rec.setdefault(s0, [0, 0, 0])

@@ -109,7 +109,7 @@ def forecasts():
     units.update({u["id"]: u for u in read_jsonl(DATA / "planted.jsonl")})
     for f in sorted((DATA / "verdicts").glob("*.jsonl")):
         for v in read_jsonl(f):
-            uid = index.get(v.get("token"))
+            uid = index.get(v.get("blind", v.get("token")))
             if uid is None:
                 continue
             for i, fc in enumerate(v.get("forecasts") or []):

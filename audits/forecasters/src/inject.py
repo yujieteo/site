@@ -126,7 +126,7 @@ def verdicts_by_token():
     v = {}
     for f in sorted((DATA / "verdicts").glob("*.jsonl")):
         for row in read_jsonl(f):
-            v[row.get("token")] = row.get("forecasts") or []
+            v[row.get("blind", row.get("token"))] = row.get("forecasts") or []
     return v
 
 

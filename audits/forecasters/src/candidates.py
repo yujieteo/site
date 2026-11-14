@@ -305,7 +305,6 @@ def main():
     write_tsv(DATA / "search_population.tsv", pop)
     write_tsv(DATA / "units_index.tsv", [{k: u[k] for k in ("id", "site", "sample", "author", "made", "url",
                                                              "sha256", "stated", "macro")} for u in units])
-    (DATA / "lw_names.json").write_text(json.dumps(lw_names, indent=0, sort_keys=True) + "\n")
     flow = [dict(site="hn", step=k, count=v) for k, v in hn_flow.items()]
     flow += [dict(site="lw", step=k, count=v) for k, v in lw_flow.items()]
     flow += [dict(site=s, step="published_candidates", count=n) for s, n in (("hn", 3048), ("lw", 3843))]
