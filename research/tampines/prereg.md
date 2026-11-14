@@ -98,5 +98,12 @@ A monthly scheduled check runs `scripts/tampines/check.py`. It finds new article
   - The HPB food composition database no longer resolves, so no HPB input exists. Portions are handled only by the dish-type means.
   - The GST audit changed 5 of the 23 rows from 2023 (all Butahage, about −0.9% each).
   - The audit also found two place dates that look wrong in the site data: Tai Wah (stored 2023-10, earliest source 2024-07) and Jin Kimchi (stored 2023-02, review dated 2023-12-15). They are left as stored and flagged for the post.
+- 15 November 2026, from the survival inputs, before any fit:
+  - The pre-registered ACRA rule (same postal code plus the same unit, or a name score of 0.6) matched other businesses: a phone shop at a ramen unit, an interior firm, a bridal shop, earlier tenants of the same stall, and "Khon Thai Kitchen" for "Soi Thai Kitchen".
+  - Replaced by: the same postal code, a food and beverage SSIC (56xxx), and the same name by distinctive words. One name's words, after dropping generic ones such as kitchen, restaurant and Pte Ltd, must all appear in the other's. Unit-only matches no longer count, because a unit's earlier tenants and an operating company's registration date are not the stall's age.
+  - A place's age is its earliest same-name registration, ceased ones included. When a dated guide shows the place before that date, the registration is read as a re-registration, and the age becomes a lower bound.
+  - The OpenStreetMap match also needs a name score of 0.8, not 0.6.
+  - This leaves 7 exact ages and about 120 lower bounds, so the survival part carries little information.
+  - ACRA has no cessation dates, so no dated 2016–2026 closure rate exists. The closure baseline uses ACRA's Tampines F&B entities registered from 2016, with a constant hazard fitted to live status at known age: hawker 0.146, restaurant 0.072, cafe 0.149, fast food 0.066 a year. The rate falls with age, so it overstates risk for established places. This is still preferred to the flat 0.10, as it is measured.
 - The 1,116 raw menu rows are not in the repository; only the 652 rows kept or set aside are. The coded filters therefore run over those 652 rows. They check the stated rules (no delivery sources, no undated or pre-2023 rows, set-aside rows excluded with their reason); they cannot recreate the earlier removals.
 - 15 November 2026: the dish-type rules live in `dishtypes.py`, not `types.py`, because a file named `types.py` shadows Python's standard `types` module. The rules are the same.
