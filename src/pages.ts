@@ -57,8 +57,6 @@ interface Entry {
 }
 
 const PAGES: readonly Entry[] = [
-  { href: "/khan-stacks-free-recall/", title: "Algebraic stacks free recall", date: "2026-11-09", summary: "57 cues on A Modern Introduction to Algebraic Stacks by Adeel A. Khan. Write from memory, then mark your answer against the notes." },
-  { href: "/khan-stacks-drill/", title: "Algebraic stacks drill", date: "2026-11-09", summary: "1,347 questions on A Modern Introduction to Algebraic Stacks by Adeel A. Khan, with no prerequisites." },
   { href: "/tampines-errands/", title: "Tampines errands", date: "2026-11-09", summary: "Service shops in Tampines, with phone numbers, a map and the prices I could find." },
 ];
 
