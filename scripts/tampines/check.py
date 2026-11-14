@@ -21,6 +21,8 @@ import csv
 import json
 import re
 import sys
+import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from datetime import date
@@ -58,10 +60,25 @@ def append(path: Path, header: list[str], rows: list[list]) -> None:
         w.writerows(rows)
 
 
-def get_json(url: str):
-    req = urllib.request.Request(url, headers={"User-Agent": UA})
-    with urllib.request.urlopen(req, timeout=40) as r:
-        return json.loads(r.read())
+_last: dict[str, float] = {}
+
+
+def get_json(url: str, tries: int = 6):
+    """GET JSON at most one request every 3 seconds per host, backing off on HTTP 429."""
+    host = urllib.parse.urlsplit(url).netloc
+    for attempt in range(tries):
+        wait = 3.0 - (time.time() - _last.get(host, 0))
+        if wait > 0:
+            time.sleep(wait)
+        _last[host] = time.time()
+        req = urllib.request.Request(url, headers={"User-Agent": UA})
+        try:
+            with urllib.request.urlopen(req, timeout=40) as r:
+                return json.loads(r.read())
+        except urllib.error.HTTPError as e:
+            if e.code != 429 or attempt == tries - 1:
+                raise
+            time.sleep(10 * 2 ** attempt)
 
 
 def brier(pairs: list[tuple[float, int]]) -> float:
@@ -144,6 +161,9 @@ def acra_dataset_ids() -> dict[str, str]:
     return out
 
 
+ACRA_FAILED: list[str] = []
+
+
 def acra_status(rows: list[dict[str, str]]) -> dict[str, str]:
     chosen = rows
     if not chosen:
@@ -158,6 +178,7 @@ def acra_status(rows: list[dict[str, str]]) -> dict[str, str]:
             rec = get_json(f"https://data.gov.sg/api/action/datastore_search?{q}")["result"]["records"]
         except Exception as e:
             print(f"  ACRA {r['uen']}: {e}", file=sys.stderr)
+            ACRA_FAILED.append(r["place_id"])
             continue
         status = rec[0]["entity_status_description"] if rec else "not found"
         if status != r["status"]:
@@ -236,7 +257,7 @@ def main() -> None:
         base = [(float(f["p_baseline"]), int(bool(ev.get(f["id"])))) for f in forecasts if f["target"] == "closed_by"]
         scores.append([TODAY, "closed_by", len(pairs), *score_line(pairs, base), "resolved"])
     else:
-        scores.append([TODAY, "closed_by", sum(1 for r in status_rows if r[2]), "", "", "", f"places with closure evidence so far; resolves {END}"])
+        scores.append([TODAY, "closed_by", sum(1 for r in status_rows if r[2]), "", "", "", f"places with closure evidence so far; ACRA lookups failed this run: {len(ACRA_FAILED)}; resolves {END}"])
 
     seen, listed, source = michelin_2027(places)
     if seen:

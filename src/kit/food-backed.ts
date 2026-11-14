@@ -24,6 +24,13 @@ function ordinal(n: number): string {
   return `${r}${tail}`;
 }
 
+const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+function monthName(stamp: string): string {
+  const [year, month] = stamp.split("-");
+  return `${MONTHS[Number(month) - 1] ?? ""} ${year ?? ""}`;
+}
+
 function span(lo: number, hi: number): string {
   return lo === hi ? `${lo}` : `${lo}–${hi}`;
 }
@@ -62,9 +69,9 @@ function row(item: Backed, sort: BackedSort): string {
   const [plo = 0, pmid = 0, phi = 0] = item.pr;
   const [vlo = 0, vmid = 0, vhi = 0] = item.v;
   const named = item.by.length > 0 ? `Named by ${esc(list(item.by))}.` : "No outlet in the study names it.";
-  const michelin = item.m >= 0 ? `<li>Chance of a place on the next Michelin list: ${percent(item.m)}.</li>` : "";
+  const michelin = item.m >= 0 ? `<li>Chance of a Bib Gourmand or star on the next Michelin list, from backing alone: ${percent(item.m)}.</li>` : "";
   const label = `Rank ${span(lo, hi)}, most likely ${mid}`;
-  return `<li><details class="food-item"><summary class="food-row food-best press"><span class="food-score" aria-label="${esc(label)}">${span(lo, hi)}</span><span class="food-body"><span class="food-name">${esc(item.n)}</span><span class="food-sub">${esc(item.cu)} · ${KIND[item.k]}</span><span class="food-sub">Backing ${ordinal(qmid)} percentile · top 5 in ${percent(topOf(item, sort))} of draws</span></span><span class="food-end"><span class="food-price">${money(pmid)}</span><span class="food-sub">standard main</span></span>${track(item)}</summary><div class="food-open"><ul class="food-notes"><li>${named}</li><li>Backing between the ${ordinal(qlo)} and ${ordinal(qhi)} percentile, 8 times in 10.</li><li>Standard main between ${money(plo)} and ${money(phi)}, in ${esc(MODEL.cpi)} dollars.</li><li>Value ${vmid.toFixed(1)} percentile points per S$10, between ${vlo.toFixed(1)} and ${vhi.toFixed(1)}.</li><li>Rank on ${sort === "value" ? "value" : "backing"} between ${lo} and ${hi} of ${MODEL.places}, 8 times in 10.</li>${michelin}</ul></div></details></li>`;
+  return `<li><details class="food-item"><summary class="food-row food-best press"><span class="food-score" aria-label="${esc(label)}">${span(lo, hi)}</span><span class="food-body"><span class="food-name">${esc(item.n)}</span><span class="food-sub">${esc(item.cu)} · ${KIND[item.k]}</span><span class="food-sub">Backing ${ordinal(qmid)} percentile · top 5 in ${percent(topOf(item, sort))} of draws</span></span><span class="food-end"><span class="food-price">${money(pmid)}</span><span class="food-sub">standard main</span></span>${track(item)}</summary><div class="food-open"><ul class="food-notes"><li>${named}</li><li>Backing between the ${ordinal(qlo)} and ${ordinal(qhi)} percentile, 8 times in 10.</li><li>Standard main between ${money(plo)} and ${money(phi)}, in ${monthName(MODEL.cpi)} dollars.</li><li>Value ${vmid.toFixed(1)} percentile points per S$10, between ${vlo.toFixed(1)} and ${vhi.toFixed(1)}.</li><li>Rank on ${sort === "value" ? "value" : "backing"} between ${lo} and ${hi} of ${MODEL.places}, 8 times in 10.</li>${michelin}</ul></div></details></li>`;
 }
 
 function header(text: string): string {
