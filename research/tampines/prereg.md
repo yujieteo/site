@@ -58,7 +58,7 @@ All three parts are fitted jointly in PyMC with the NUTS sampler: 4 chains, 1,00
 
 - Each item price is converted to November 2026 dollars with the CPI series for its kind and month, and the GST correction is applied.
 - log price_i ~ Normal(d_type(i) + π_p, σ_type), with π_p ~ Normal(m_k, s_k).
-- The dish type comes from fixed keyword rules in `scripts/tampines/types.py`, written before the fit: noodles, rice plate, porridge and soup, bread and prata, dim sum and small plates, burger and sandwich, pasta and pizza, Japanese bowl and sushi, ramen, Western main, Korean, Thai, Mexican and Middle Eastern, dessert and snack. Anything that matches no rule is "other".
+- The dish type comes from fixed keyword rules in `scripts/tampines/dishtypes.py`, written before the fit: noodles, rice plate, porridge and soup, bread and prata, dim sum and small plates, burger and sandwich, pasta and pizza, Japanese bowl and sushi, ramen, Western main, Korean, Thai, Mexican and Middle Eastern, dessert and snack. Anything that matches no rule is "other".
 - The standard basket is the dish-type mix of all compared items. A place's standard price is exp(π_p + the weighted mean of d).
 - Exclusion rules are those in the post's "How I built this" section. They are kept as coded filters over the raw rows, not prose.
 
@@ -87,4 +87,4 @@ A monthly scheduled check runs `scripts/tampines/check.py`. It finds new article
 
 ## Deviations
 
-None yet.
+- 15 November 2026: the dish-type rules live in `dishtypes.py`, not `types.py`, because a file named `types.py` shadows Python's standard `types` module. The rules are the same.

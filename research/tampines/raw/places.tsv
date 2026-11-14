@@ -1,0 +1,140 @@
+id	name	kind	cuisine	venue	place	unit	status	lat	lon	bib_2026	items	typical_sgd	shared	form
+p000	Chai Chee Pork Porridge	h	Chinese	Round Market	Round Market	#01-39	open	1.34537	103.94463	0	6	5.5	0	m
+p001	Nasi Lemak Specialist	h	Malay	Round Market	Round Market	#01-14	open	1.34537	103.94463	0	5	5.5	0	m
+p002	Yummy Sarawak Kolo Mee	h	Local	Round Market	Round Market	#01-45	open	1.34537	103.94463	0	7	5.5	0	m
+p003	Song Han Carrot Cake	h	Local	Round Market	Round Market	#01-07	open	1.34537	103.94463	0	3	3.5	0	m
+p004	137 Lor Mee Prawn Mee	h	Local	Round Market	Round Market	#01-09	open	1.34537	103.94463	0	2	0	0	m
+p005	Teo Kee Mushroom Minced Pork Noodle	h	Local	Round Market	Round Market	#01-05	open	1.34537	103.94463	0	3	5	0	m
+p006	Xing Ji Wanton Mee	h	Local	Round Market	Round Market	#01-35	open	1.34537	103.94463	0	6	6	0	m
+p007	Rajarani Thosai	h	Indian	Round Market	Round Market	#01-33	open	1.34537	103.94463	1	18	4	0	m
+p008	Hai Chang Fish Head Steamboat	h	Chinese	Round Market	Round Market	#01-03	open	1.34537	103.94463	0	3	12	1	m
+p009	Yi Le Shu Shi	h	Local	Round Market	Round Market	#01-10	open	1.34537	103.94463	0	2	0	0	m
+p010	House of Dessert	h	Dessert	Round Market	Round Market	#01-02	open	1.34537	103.94463	0	4	1.9	0	s
+p011	Lao Lee Pig's Viscera Prawn Noodle	h	Local	Round Market	Round Market	#01-43	open	1.34537	103.94463	0	4	5	0	m
+p012	Yong Huat Chicken Rice	h	Chinese	Round Market	Round Market	#01-12	open	1.34537	103.94463	0	2	0	0	m
+p013	Jie Shen Shou Gong Bao	h	Bakery	Round Market	Round Market	#01-42	open	1.34537	103.94463	0	3	1.5	0	s
+p014	Shen Li Restaurant	h	Chinese	Round Market	Round Market	#01-15	open	1.34537	103.94463	0	5	18	1	m
+p015	Yi Pin Wei Braised Duck Kway Chap	h	Chinese	Round Market	Round Market	#01-40	open	1.34537	103.94463	1	6	4.75	0	m
+p016	Xiong Kee Famous Carrot Cake	h	Local	Round Market	Round Market	#01-29	unknown	1.34537	103.94463	0	0	0	0	m
+p017	Ju Ming Xiang Mushroom Minced Meat Noodle	h	Local	Round Market	Round Market	#01-21	unknown	1.34537	103.94463	0	0	0	0	m
+p018	137 Market Pancake	h	Local	Round Market	Round Market	#01-06	unknown	1.34537	103.94463	0	0	0	0	s
+p019	Xing Yun Kway Chap	h	Chinese	Round Market	Round Market	#01-14	unknown	1.34537	103.94463	0	0	0	0	m
+p020	Ah Gong Ban Mian	h	Chinese	Our Tampines Hub	Our Tampines Hub	#01-38	open	1.35313	103.94041	0	0	0	0	m
+p021	Botak Cantonese Porridge	h	Chinese	Our Tampines Hub	Our Tampines Hub	#01-65	open	1.35313	103.94041	0	5	5	0	m
+p022	Munchi Pancakes	h	Bakery	Our Tampines Hub	Our Tampines Hub	#01-67	open	1.35313	103.94041	0	6	2	0	s
+p023	Penang Savour	h	Local	Our Tampines Hub	Our Tampines Hub	B1-K10	open	1.35313	103.94041	0	2	0	0	m
+p024	Ippon Fusion Bowl	h	Japanese	Our Tampines Hub	Our Tampines Hub	#01-72	open	1.35313	103.94041	0	3	7.5	0	m
+p025	Yong Seng Heng Prawn Noodle	h	Chinese	Our Tampines Hub	Our Tampines Hub	#01-43	open	1.35313	103.94041	0	1	0	0	m
+p026	Indian Cuisine	h	Indian	Our Tampines Hub	Our Tampines Hub	#01-59	open	1.35313	103.94041	0	0	0	0	m
+p027	Jue Shi Lor Mee	h	Chinese	Our Tampines Hub	Our Tampines Hub	#01-45	open	1.35313	103.94041	0	0	0	0	m
+p028	Japanese Curry House	h	Japanese	Our Tampines Hub	Our Tampines Hub	#01-34	open	1.35313	103.94041	0	0	0	0	m
+p029	Ofanz Rojak Popiah	h	Local	Our Tampines Hub	Our Tampines Hub	#01-39	open	1.35313	103.94041	0	0	0	0	s
+p030	The Fish Soup	h	Chinese	Our Tampines Hub	Our Tampines Hub	#01-44	unknown	1.35313	103.94041	0	0	0	0	m
+p031	Warung Wak Dindang	h	Malay	Our Tampines Hub	Our Tampines Hub	#01-58	open	1.35313	103.94041	0	0	0	0	m
+p032	Social Bite	h	Local	Our Tampines Hub	Our Tampines Hub	#01-63	open	1.35313	103.94041	0	2	0	0	m
+p033	P&J Western Food	h	Western	Our Tampines Hub	Our Tampines Hub	#01-69	open	1.35313	103.94041	0	0	0	0	m
+p034	Gopizza	r	Korean	Our Tampines Hub	Our Tampines Hub	#01-44 per Eatbook, unconfirmed	unknown	1.35313	103.94041	0	5	8.9	0	m
+p035	Guzman y Gomez	r	Mexican	Our Tampines Hub	Our Tampines Hub	#01-99	open	1.35313	103.94041	0	5	14.2	0	m
+p036	Rumah Makan Minang	r	Malay	Our Tampines Hub	Our Tampines Hub	#B1-47A	open	1.35313	103.94041	0	4	7.75	0	m
+p037	Ramen Hitoyoshi	r	Japanese	Our Tampines Hub	Our Tampines Hub	#01-94/95	open	1.35313	103.94041	0	5	16.67	0	m
+p038	Wingstop	r	Western	Our Tampines Hub	Our Tampines Hub	#B1-08/09/10	open	1.35313	103.94041	0	2	0	0	m
+p039	Saap Saap Thai	r	Thai	Our Tampines Hub	Our Tampines Hub	#01-100	open	1.35313	103.94041	0	4	9.9	0	m
+p040	Wok Hey	r	Chinese	Our Tampines Hub	Our Tampines Hub	#01-82A	open	1.35313	103.94041	0	3	6.5	0	m
+p041	Dutch Colony Coffee Co.	c	Coffee	Our Tampines Hub	Our Tampines Hub	#01-K8	open	1.35313	103.94041	0	2	0	0	m
+p042	Best Zaika	h	Indian	Our Tampines Hub	Our Tampines Hub	#01-56	open	1.35313	103.94041	0	0	0	0	m
+p043	Haji Salim Food Stall	h	Malay	Our Tampines Hub	Our Tampines Hub	#01-55	open	1.35313	103.94041	0	0	0	0	m
+p044	Hainan Beef Noodle & Claypot Rice	h	Chinese	Our Tampines Hub	Our Tampines Hub	#01-48	open	1.35313	103.94041	0	0	0	0	m
+p045	Maxwell Chicken Rice	h	Chinese	Our Tampines Hub	Our Tampines Hub	#01-42	open	1.35313	103.94041	0	0	0	0	m
+p046	IM Thai Kitchen	h	Thai	Our Tampines Hub	Our Tampines Hub	#01-40	open	1.35313	103.94041	0	1	0	0	m
+p047	Jinjja Kitchen	r	Korean	Our Tampines Hub	Our Tampines Hub	#01-101	open	1.35313	103.94041	0	0	0	0	m
+p048	Mommy Rendang	h	Malay	Our Tampines Hub	Our Tampines Hub	#01-61	open	1.35313	103.94041	0	0	0	0	m
+p049	Tai Wah Pork Noodle	h	Local	Tampines 1	Tampines 1	#05-05/06/07 (Hawkers' Street)	open	1.35422	103.94501	0	2	0	0	m
+p050	Koung's Wan Tan Mee	h	Local	Tampines 1	Tampines 1	#05-05/06/07 (Hawkers' Street)	open	1.35422	103.94501	0	2	0	0	m
+p051	Tiong Bahru Boneless Chicken Rice	h	Local	Tampines 1	Tampines 1	#05-05/06/07 (Hawkers' Street)	open	1.35422	103.94501	0	1	0	0	m
+p052	Keming Bing Sat	r	Chinese	Tampines 1	Tampines 1	#02-14/K6/K7	open	1.35422	103.94501	0	2	0	0	m
+p053	Haruyama Udon	r	Japanese	Tampines 1	Tampines 1	B1-09	open	1.35422	103.94501	0	5	19.18	0	m
+p054	Bari Bari Steak	r	Japanese	Tampines 1	Tampines 1	#01-24/25/26	open	1.35422	103.94501	0	5	28.66	0	m
+p055	Sushiro	r	Japanese	Tampines 1	Tampines 1	#02-15/16/17	open	1.35422	103.94501	0	3	10.43	0	m
+p056	TANYU	r	Chinese	Tampines 1	Tampines 1	#04-06/07/08	open	1.35422	103.94501	0	1	0	1	m
+p057	Monster Planet	r	Japanese	Tampines 1	Tampines 1	#01-08	open	1.35422	103.94501	0	1	0	0	m
+p058	Cafe Bom Bom	c	Dessert	Tampines 1	Tampines 1	#04-14	open	1.35422	103.94501	0	2	0	0	s
+p059	fieldnotes	c	Bakery	Tampines 1	Tampines 1	B1-K10	open	1.35422	103.94501	0	6	9	0	s
+p060	Brotherbird Bakehouse	c	Bakery	Tampines 1	Tampines 1	#01-38	open	1.35422	103.94501	0	5	5.5	0	s
+p061	CHURN	c	Dessert	Tampines 1	Tampines 1	#02-K5	open	1.35422	103.94501	0	4	6.5	0	s
+p062	108 Matcha Saro	c	Dessert	Tampines 1	Tampines 1	#02-K1	open	1.35422	103.94501	0	3	9.11	0	s
+p063	Mister Donut	c	Bakery	Tampines 1	Tampines 1	B1-K6	open	1.35422	103.94501	0	6	2.5	0	s
+p064	Luckin Coffee	c	Coffee	Tampines 1	Tampines 1	#01-17/18	open	1.35422	103.94501	0	2	0	0	d
+p065	Wanpo Tea Shop	c	Drinks	Tampines 1	Tampines 1	B1-K2	open	1.35422	103.94501	0	2	0	0	d
+p066	Alley Wei	r	Chinese	Tampines Mall	Tampines Mall	B1-K21	open	1.35254	103.94472	0	1	0	0	m
+p067	Swensen's	r	Western	Tampines Mall	Tampines Mall	#03-30	open	1.35254	103.94472	0	25	21.46	0	m
+p068	Nando's	r	Western	Tampines Mall	Tampines Mall	#01-46	open	1.35254	103.94472	0	5	15.3	0	m
+p069	So Pho	r	Vietnamese	Tampines Mall	Tampines Mall	#04-30/31	open	1.35254	103.94472	0	5	18.58	0	m
+p070	Tokyo Shokudo	r	Japanese	Tampines Mall	Tampines Mall	#04-02	open	1.35254	103.94472	0	4	15.95	0	m
+p071	Genki Sushi	r	Japanese	Tampines Mall	Tampines Mall	#03-26/27	open	1.35254	103.94472	0	1	0	0	m
+p072	Legendary Hong Kong	r	Chinese	Tampines Mall	Tampines Mall	#B1-11	open	1.35254	103.94472	0	3	11.39	0	m
+p073	Ging Sun Ho King of Bun	r	Chinese	Tampines Mall	Tampines Mall	#B1-K17/18	open	1.35254	103.94472	0	5	11.75	0	m
+p074	POCHA Korean Street Dining	r	Korean	Tampines Mall	Tampines Mall	#B1-02	open	1.35254	103.94472	0	9	16.67	0	m
+p075	Casa Vostra	r	Italian	Tampines Mall	Tampines Mall	#01-33A	open	1.35254	103.94472	0	20	25.78	0	m
+p076	Lola's Cafe	c	Western	Tampines Mall	Tampines Mall	#01-50	open	1.35254	103.94472	0	12	23.98	0	m
+p077	RUXU	c	Dessert	Tampines Mall	Tampines Mall	#B1-K2 to K3	open	1.35254	103.94472	0	13	4.8	0	s
+p078	Yeah Gelato	c	Dessert	Tampines Mall	Tampines Mall	#01-31C	open	1.35254	103.94472	0	7	7.8	0	s
+p079	Gokuku	c	Bakery	Tampines Mall	Tampines Mall	B1-K7	open	1.35254	103.94472	0	0	0	0	s
+p080	Mango Ice	c	Dessert	Tampines Mall	Tampines Mall	#02-K3	open	1.35254	103.94472	0	2	0	0	s
+p081	Abundance	r	Chinese	Century Square	Century Square	#01-35	open	1.35239	103.94379	0	6	16.67	0	m
+p082	Butahage	r	Japanese	Century Square	Century Square	#01-11A	open	1.35239	103.94379	0	7	17.75	0	m
+p083	Nanyang Dao	c	Local	Tampines Mall	Tampines Mall	#B1-18	open	1.35254	103.94472	0	5	9.35	0	m
+p084	The Tree Cafe	c	Western	Century Square	Century Square	#03-34	open	1.35239	103.94379	0	33	12.54	0	m
+p085	Putien	r	Chinese	Tampines Mall	Tampines Mall	#02-02	open	1.35254	103.94472	0	16	27.9	1	m
+p086	Sushi Zanmai	r	Japanese	Tampines Mall	Tampines Mall	#04-32	open	1.35254	103.94472	0	5	23.74	0	m
+p087	Seoul Garden	r	Korean	Tampines Mall	Tampines Mall	#04-01	open	1.35254	103.94472	0	5	41.85	0	m
+p088	Dian Xiao Er	r	Chinese	Tampines 1	Tampines 1	#04-15	open	1.35422	103.94501	0	0	0	0	m
+p089	Tongue Tip Lanzhou Beef Noodles	r	Chinese	Century Square	Century Square	#01-42	open	1.35239	103.94379	0	3	11.9	0	m
+p090	Tim Ho Wan	r	Chinese	Tampines 1	Tampines 1	#01-43/44	open	1.35422	103.94501	0	0	0	0	m
+p091	Steak 99 Plus	r	Western	Tampines Mall	Tampines Mall	#04-19/20	open	1.35254	103.94472	0	0	0	0	m
+p092	A-One Signature	r	Local	Century Square	Century Square		open	1.35239	103.94379	0	0	0	0	m
+p093	Big Fish Small Fish	r	Seafood	Century Square	Century Square	#02-06	open	1.35239	103.94379	0	0	0	0	m
+p094	Ichiban Boshi	r	Japanese	Century Square	Century Square	#02-29	open	1.35239	103.94379	0	0	0	0	m
+p095	Ramen Taisho	r	Japanese		802 Tampines Avenue 4	#01-23	open	1.34576	103.93805	0	7	11.8	0	m
+p096	Keng Eng Kee Seafood	r	Seafood		SAFRA Tampines	#01-K2	open	1.34485	103.94228	0	6	22.13	1	m
+p097	Captain Kim Korean BBQ	r	Korean		NTUC Income Tampines Junction	#01-06	open	1.35233	103.94194	0	4	34.65	0	m
+p098	Little Tokio	r	Japanese		824 Tampines Street 81	#01-22	open	1.34902	103.93262	0	5	20.6	0	m
+p099	Soi Thai Kitchen	h	Thai		824 Tampines Street 81	#01-28	open	1.34902	103.93262	0	2	0	0	m
+p100	Jin Hock Seafood	h	Seafood		844 Tampines Street 82	#01-131	open	1.3521	103.93651	0	3	12	1	m
+p101	The Only Burger	h	Western		Happy Hawkers	#01-01	open	1.36137	103.93767	0	5	8.8	0	m
+p102	Super Gepuk	h	Malay		201D Tampines Street 21	#01-1105	open	1.35199	103.95391	0	2	0	0	m
+p103	Jin Kimchi Express	h	Korean		Kopitiam Corner	#01-66	open	1.3511	103.92932	0	3	6.8	0	m
+p104	Old World Bakuteh & Fried Porridge	h	Chinese		Happy Hawker	#01-34	open	1.37203	103.93444	0	3	6	0	m
+p105	Soon Soon Prawn Noodles	h	Local		824 Tampines Street 81	#01-38	open	1.34902	103.93262	0	1	0	0	m
+p106	Fu Yuan Minced Pork Noodle	h	Local		201C Tampines Street 21		open	1.35281	103.953	0	1	0	0	m
+p107	Mui Kee Chicken Rice	h	Local		264 Tampines Street 21		open	1.35292	103.95113	0	1	0	0	m
+p108	Al Mahboob Indian Rojak	h	Indian		NTUC Income Tampines Junction	#01-02	open	1.35233	103.94194	0	4	6.5	0	m
+p109	Granny's Pancake	h	Local		Kim San Leng Kopitiam	#01-148	open	1.34748	103.95719	0	1	0	0	s
+p110	Tokyo Western Food	h	Western		823A Tampines Street 81	#01-02	open	1.34889	103.9335	0	2	0	0	m
+p111	Tipsy Penguin	r	Fusion		NTUC Income Tampines Junction	#01-02A	open	1.35233	103.94194	0	1	0	0	m
+p112	888 Mookata	r	Thai		Georgetown Coffee House		unknown	1.34793	103.93614	0	1	0	1	m
+p113	Craze Kitchen	c	Western		201D Tampines Street 21	#01-1171	open	1.35199	103.95391	0	24	16.78	0	m
+p114	Hundred Acre Creamery	c	Dessert		824 Tampines Street 81	#01-24	open	1.34902	103.93262	0	4	6.25	0	s
+p115	Delato	c	Dessert		477 Tampines Street 43	#01-154	open	1.3609	103.95268	0	7	6	0	s
+p116	Glasshouse Creamery	c	Dessert		The Alps Residences	#01-51	open	1.35542	103.92991	0	5	8.9	0	s
+p117	Three's A Crowd	c	Dessert		802 Tampines Avenue 4	#01-11	open	1.34576	103.93805	0	4	5.25	0	s
+p118	Puffs and Peaks	c	Bakery		Tampines Changkat Community Club	#01-03	open	1.34583	103.94769	0	4	6	0	s
+p119	New Deli Bakery	c	Bakery		462 Tampines Street 44	#01-66	open	1.35927	103.95515	0	6	5.1	0	s
+p120	Betsubara Creamery & Cafe	c	Dessert		625B Tampines Street 61	#01-01	open	1.36248	103.94048	0	5	8.9	0	s
+p121	Ben Baker	c	Bakery		633 Tampines North Drive 2	#02-13	open	1.36533	103.94109	0	6	1.65	0	s
+p122	One18 Bakery	c	Bakery		826 Tampines Street 81	#01-118	open	1.34932	103.93357	0	9	6	0	s
+p123	Spilled Roaster & Brews	c	Coffee		634A Tampines North Drive 2		open	1.3652	103.94054	0	5	5	0	d
+p124	Baobei Coffee	c	Coffee		645B Tampines Street 62		open	1.36598	103.94229	0	4	4.25	0	s
+p125	My Father's Minced Meat Noodles	h	Local		Everyday Come Coffee Shop	#01-190	open	1.3609	103.95268	0	2	0	0	m
+p126	Srisun Express	h	Indian		474 Tampines Street 43	#01-118	open	1.35992	103.95281	0	4	10.5	0	m
+p127	JOFA Meepok	h	Local		Kimly Coffeeshop		moved	1.34932	103.93357	0	2	0	0	m
+p128	San Ye Seafood	h	Seafood		824 Tampines Street 81	#01-38	open	1.34902	103.93262	0	8	7.25	0	m
+p129	Wong's Family Western	h	Western		Tampines Polyview		open	1.34793	103.93614	0	7	6.8	0	m
+p130	Zoul's Corner	h	Malay		801 Tampines Avenue 4	#01-257	open	1.34733	103.93804	0	2	0	0	m
+p131	Lawa Bintang	h	Malay		Kenny Eating House		open	1.34182	103.94259	0	8	7.75	0	m
+p132	Rong Kee Roasted Delights	h	Local		Chang Cheng Mee Wah Coffeeshop	#01-07	open	1.34576	103.93805	0	3	4.5	0	m
+p133	The Grace Bowl by Sarawak Delicacy	h	Local		Chang Cheng Mee Wah Coffeeshop	#02-01	open	1.36533	103.94109	0	3	5.8	0	m
+p134	Baan Kai Khon	h	Thai		Chang Cheng Mee Wah Coffeeshop	#02-01	open	1.36533	103.94109	0	3	7.5	0	m
+p135	Heartland by Enjoy	c	Local	481 Tampines Street 44	481 Tampines Street 44	#01-267	open	1.36162956	103.9532511	0	15	14.3	0	m
+p136	Professor Brawn Cafe	c	Western	Pathlight School (Tampines)	4 Tampines Street 91		open	1.34711276	103.93945188	0	17	19.18	0	m
+p137	FPC Seafood	r	Chinese	267 Tampines Street 21	267 Tampines Street 21	#01-47	open	1.35077279	103.94925923	0	14	18	1	m
+p138	Ashes Burnnit	h	Western		929 Tampines Street 91	#01-451	open	1.3463	103.9395	0	21	10.5	0	m
