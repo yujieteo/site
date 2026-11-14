@@ -87,4 +87,16 @@ A monthly scheduled check runs `scripts/tampines/check.py`. It finds new article
 
 ## Deviations
 
+- 15 November 2026, before the real fit, from tests on fake data:
+  - The survival spread prior is τ_k ~ Gamma(3, 3) (mean 1), not HalfNormal(1). Fake data showed a funnel as τ approached 0, and a log-age spread under 0.2 within a kind is implausible.
+  - The pre-registration gave no priors for the price spreads. They are σ_type ~ Gamma(4, 10) (mean 0.4) and s_k ~ Gamma(3, 6) (mean 0.5), both bounded away from zero for the same reason.
+  - For mixing, the kind price means m_k sum to zero, the type means are d = level + offset with offsets summing to zero, and the place price effects are π_p = m_k + s_k·z_p with the z summing to zero. The model is the same up to this centring.
+  - Sampling uses NumPyro's NUTS through PyMC. PyTensor's C backend does not link on this macOS. The chains, warm-up, draws and gates are unchanged.
+- 15 November 2026, from the price inputs:
+  - Table M213751 has no series named Hawker Food, Restaurant Food or Fast Food under its 2024 classification. The series used are 1.11.3 "Hawker Centres, And Food Courts, Coffee Shops & Kiosks", 1.11.1 "Restaurants, Cafes & Pubs" and 1.11.2 "Fast Food Restaurants".
+  - The latest CPI month is September 2026, so prices are in September 2026 dollars, not November 2026.
+  - The HPB food composition database no longer resolves, so no HPB input exists. Portions are handled only by the dish-type means.
+  - The GST audit changed 5 of the 23 rows from 2023 (all Butahage, about −0.9% each).
+  - The audit also found two place dates that look wrong in the site data: Tai Wah (stored 2023-10, earliest source 2024-07) and Jin Kimchi (stored 2023-02, review dated 2023-12-15). They are left as stored and flagged for the post.
+- The 1,116 raw menu rows are not in the repository; only the 652 rows kept or set aside are. The coded filters therefore run over those 652 rows. They check the stated rules (no delivery sources, no undated or pre-2023 rows, set-aside rows excluded with their reason); they cannot recreate the earlier removals.
 - 15 November 2026: the dish-type rules live in `dishtypes.py`, not `types.py`, because a file named `types.py` shadows Python's standard `types` module. The rules are the same.
