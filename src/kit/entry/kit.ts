@@ -1,3 +1,5 @@
+import { applyCss } from "../css.ts";
+
 function closeNotes(except: Element | null): void {
   for (const fn of document.querySelectorAll(".fn[data-open]")) {
     if (fn === except) continue;
@@ -30,3 +32,4 @@ function wireNotes(): void {
 }
 
 wireNotes();
+applyCss(document);

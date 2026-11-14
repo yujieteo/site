@@ -78,7 +78,7 @@ function mapsUrl(name: string, place: string): string {
 }
 
 function swatch(kind: Kind): string {
-  return `<i class="food-dot" style="background:${COLOURS[kind]}"></i>`;
+  return `<i class="food-dot" data-k="${kind}"></i>`;
 }
 
 function rating(item: Spread): Rating | null {
@@ -116,8 +116,8 @@ function rangeTrack(item: Spread): string {
   if (item.low <= 0) return "";
   const left = logPosition(item.low);
   const width = Math.max(1, logPosition(item.high) - left);
-  const tick = item.typ > 0 ? `<i class="food-tick" style="left:${logPosition(item.typ).toFixed(1)}%"></i>` : "";
-  return `<span class="food-track"><span class="food-range" style="left:${left.toFixed(1)}%;width:${width.toFixed(1)}%;background:${COLOURS[item.k]}"></span>${tick}</span>`;
+  const tick = item.typ > 0 ? `<i class="food-tick" data-css="left:${logPosition(item.typ).toFixed(1)}%"></i>` : "";
+  return `<span class="food-track"><span class="food-range" data-k="${item.k}" data-css="left:${left.toFixed(1)}%;width:${width.toFixed(1)}%"></span>${tick}</span>`;
 }
 
 function priceBlock(item: Spread): string {
@@ -211,8 +211,8 @@ function listFigure(id: string): string {
   return `<div class="food-pair">${sort}${group}</div>${cuisineSelect(id)}${legend(["h", "r", "c"])}<p class="food-pick" aria-live="polite" data-count>${countLine(PAGE, first.total)}</p><ol class="food-rows" data-rows>${first.html}</ol><div class="controls"><button class="button" type="button" data-more>Show more</button></div>`;
 }
 
-function text(x: number, y: number, anchor: string, body: string, ink = "var(--muted)"): string {
-  return `<text x="${x.toFixed(1)}" y="${y.toFixed(1)}" text-anchor="${anchor}" style="fill:${ink}">${esc(body)}</text>`;
+function text(x: number, y: number, anchor: string, body: string, strong = false): string {
+  return `<text x="${x.toFixed(1)}" y="${y.toFixed(1)}" text-anchor="${anchor}"${strong ? ' class="food-ink"' : ""}>${esc(body)}</text>`;
 }
 
 function median(values: number[]): number {
@@ -255,7 +255,7 @@ function band(title: string, items: Spread[], top: number, x: Scale): string {
     areas += `<circle cx="${left}" cy="${y}" r="9" fill="transparent" data-tip="${tip}"></circle>`;
     dots += `<circle cx="${left}" cy="${y}" r="4" fill="${COLOURS[item.k]}" stroke="var(--card)" data-tip="${tip}"></circle>`;
   });
-  const label = text(x.r0, top + 12, "start", `${title}: ${items.length} places, median ${money(middle)}`, "var(--ink)");
+  const label = text(x.r0, top + 12, "start", `${title}: ${items.length} places, median ${money(middle)}`, true);
   return `${label}${areas}${dots}<line x1="${line.toFixed(1)}" x2="${line.toFixed(1)}" y1="${centre - 22}" y2="${centre + 22}" stroke="var(--ink)" stroke-width="2" pointer-events="none"></line>`;
 }
 
@@ -290,7 +290,7 @@ function cuisineFigure(): string {
     const lead = top && best ? `Best rated: ${esc(top.n)}, ${best.s.toFixed(1)} on ${esc(best.p)}` : "No rated place with a comparable price";
     const left = logPosition(Math.min(...values));
     const span = Math.max(1, logPosition(Math.max(...values)) - left);
-    return `<li class="food-count"><span class="food-name">${esc(name)}</span><span class="food-price">${money(median(values))}</span><span class="food-track"><span class="food-range" style="left:${left.toFixed(1)}%;width:${span.toFixed(1)}%;background:var(--series-1)"></span><i class="food-tick" style="left:${logPosition(median(values)).toFixed(1)}%"></i></span><span class="food-sub food-wide">${items.length} ${items.length === 1 ? "place" : "places"} · ${lead}</span></li>`;
+    return `<li class="food-count"><span class="food-name">${esc(name)}</span><span class="food-price">${money(median(values))}</span><span class="food-track"><span class="food-range" data-k="h" data-css="left:${left.toFixed(1)}%;width:${span.toFixed(1)}%"></span><i class="food-tick" data-css="left:${logPosition(median(values)).toFixed(1)}%"></i></span><span class="food-sub food-wide">${items.length} ${items.length === 1 ? "place" : "places"} · ${lead}</span></li>`;
   });
   return `<ol class="food-rows">${rows.join("")}</ol>`;
 }
@@ -471,13 +471,13 @@ function markerMark(marker: Marker, index: number): string {
   const first = marker.points[0];
   if (marker.area !== "") {
     const name = AREAS[marker.area]?.[0] ?? "";
-    return `<g data-i="${index}" role="button" tabindex="0" aria-label="Zoom to ${esc(name)}, ${count} places"><circle cx="${x}" cy="${y}" r="24" fill="var(--ink)" stroke="var(--card)" stroke-width="2"></circle><text x="${x}" y="${(marker.y + 5).toFixed(1)}" text-anchor="middle" style="fill:var(--card);font-weight:600;font-size:15px">${count}</text><text class="food-halo" x="${x}" y="${(marker.y + 40).toFixed(1)}" text-anchor="middle">${esc(name)}</text></g>`;
+    return `<g data-i="${index}" role="button" tabindex="0" aria-label="Zoom to ${esc(name)}, ${count} places"><circle cx="${x}" cy="${y}" r="24" fill="var(--ink)" stroke="var(--card)" stroke-width="2"></circle><text x="${x}" y="${(marker.y + 5).toFixed(1)}" text-anchor="middle" class="food-num food-big">${count}</text><text class="food-halo" x="${x}" y="${(marker.y + 40).toFixed(1)}" text-anchor="middle">${esc(name)}</text></g>`;
   }
   const label = count === 1 && first ? first.name : `${count} places`;
   const radius = count === 1 ? 5 : Math.min(13, 8 + Math.log2(count));
   const ring = `<circle class="food-ring" cx="${x}" cy="${y}" r="${(radius + 4).toFixed(1)}" fill="none" stroke="var(--ink)" stroke-width="2"></circle>`;
   if (count === 1 && first) return `<g data-i="${index}" role="button" tabindex="0" aria-label="${esc(label)}"><circle cx="${x}" cy="${y}" r="${radius}" fill="${COLOURS[first.kind]}" stroke="var(--card)" stroke-width="1.5"></circle>${ring}</g>`;
-  return `<g data-i="${index}" role="button" tabindex="0" aria-label="${esc(label)}"><circle cx="${x}" cy="${y}" r="${radius.toFixed(1)}" fill="var(--ink)" stroke="var(--card)" stroke-width="1.5"></circle><text x="${x}" y="${(marker.y + 4).toFixed(1)}" text-anchor="middle" style="fill:var(--card);font-weight:600">${count}</text>${ring}</g>`;
+  return `<g data-i="${index}" role="button" tabindex="0" aria-label="${esc(label)}"><circle cx="${x}" cy="${y}" r="${radius.toFixed(1)}" fill="var(--ink)" stroke="var(--card)" stroke-width="1.5"></circle><text x="${x}" y="${(marker.y + 4).toFixed(1)}" text-anchor="middle" class="food-num">${count}</text>${ring}</g>`;
 }
 
 export function mapSvg(width: number, area: string, kind: string, full: boolean): string {
@@ -503,7 +503,7 @@ function mapFigure(id: string, width: number): string {
   const areas = [["all", "All areas"], ...Object.entries(AREAS).map(([key, value]) => [key, value[0]] as const)] as const;
   const short: Record<Kind, string> = { h: "Hawker", r: "Restaurant", c: "Cafe", f: "Fast food" };
   const kinds = [["all", "All types"], ...(["h", "r", "c", "f"] as const).map((kind) => [kind, `${short[kind]} (${POINTS.filter((point) => point.kind === kind).length})`] as const)] as const;
-  return `<div class="food-pair">${select(id, "Area", "area", areas)}${select(id, "Type", "type", kinds)}</div><div class="food-mapbar"><button class="button" type="button" data-back hidden>Back to all areas</button></div>${mapSvg(width, "all", "all", false)}<p class="food-key food-map-key"><span>${swatch("h")}Hawker</span><span>${swatch("r")}Restaurant</span><span>${swatch("c")}Cafe</span><span>${swatch("f")}Fast food</span><span><i class="food-dot" style="background:var(--ink)"></i>Several places</span><span><i class="food-square"></i>MRT</span></p><div class="food-pick" aria-live="polite" data-pick>${MAP_HINT}</div>`;
+  return `<div class="food-pair">${select(id, "Area", "area", areas)}${select(id, "Type", "type", kinds)}</div><div class="food-mapbar"><button class="button" type="button" data-back hidden>Back to all areas</button></div>${mapSvg(width, "all", "all", false)}<p class="food-key food-map-key"><span>${swatch("h")}Hawker</span><span>${swatch("r")}Restaurant</span><span>${swatch("c")}Cafe</span><span>${swatch("f")}Fast food</span><span><i class="food-dot" data-k="many"></i>Several places</span><span><i class="food-square"></i>MRT</span></p><div class="food-pick" aria-live="polite" data-pick>${MAP_HINT}</div>`;
 }
 
 function extraRow(item: Mapped): string {
