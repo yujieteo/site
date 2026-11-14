@@ -1,6 +1,7 @@
 import { plotWidth, swapChart, watch } from "../redraw.ts";
 import { applyCss } from "../css.ts";
 import { hideTooltips, wireTooltips } from "../tooltip.ts";
+import { backedRows, type BackedSort } from "../food-backed.ts";
 import { countLine, findRows, listRows, MAP_HINT, mapSvg, markers, PAGE, pickHtml, spreadSvg, ZOOM_HINT, type FindState, type ListState, type Marker, type Sort } from "../food.ts";
 
 const REACH = 28;
@@ -164,10 +165,29 @@ function wireMap(figure: Element): void {
   draw();
 }
 
+function wireBacked(figure: Element): void {
+  const rows = figure.querySelector("[data-rows]");
+  const count = figure.querySelector("[data-count]");
+  const rank = figure.querySelector<HTMLSelectElement>("[data-rank]");
+  const kind = figure.querySelector<HTMLSelectElement>("[data-kind]");
+  const draw = (): void => {
+    const found = backedRows({ sort: (rank?.value ?? "value") as BackedSort, kind: kind?.value ?? "all" });
+    if (rows) {
+      rows.innerHTML = found.html;
+      applyCss(rows);
+    }
+    if (count) count.textContent = `${found.total} places. The number on the left is the rank, 8 times in 10.`;
+  };
+  rank?.addEventListener("change", draw);
+  kind?.addEventListener("change", draw);
+  draw();
+}
+
 for (const figure of document.querySelectorAll("figure[data-kind=food]")) {
   const view = figure.getAttribute("data-view");
   if (view === "list") wireList(figure);
   if (view === "spread") wireChart(figure, spreadSvg);
   if (view === "map") wireMap(figure);
   if (view === "find") wireFind(figure);
+  if (view === "backed") wireBacked(figure);
 }

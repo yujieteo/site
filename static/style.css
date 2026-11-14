@@ -111,6 +111,10 @@ summary.food-row::-webkit-details-marker { display: none; }
 .food-row:active { transform: scale(var(--press)); }
 .food-row:focus-visible { outline: 2px solid transparent; box-shadow: var(--focus-ring); }
 .food-best { grid-template-columns: 2em minmax(0, 1fr) auto; }
+.food-backed .food-best { grid-template-columns: 3.5em minmax(0, 1fr) auto; }
+.food-backed .food-open { padding-left: 3.5em; }
+.food-notes { margin: 0; padding: 0 0 0 1.1em; font-size: var(--small); }
+.food-notes li { padding: 3px 0; border: 0; }
 .food-score { font-size: 1.125rem; font-weight: 550; line-height: 1.35; font-variant-numeric: tabular-nums; }
 .food-other { color: var(--muted); font-weight: 400; }
 .food-body { display: block; min-width: 0; overflow-wrap: anywhere; }
