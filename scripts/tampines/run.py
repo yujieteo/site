@@ -113,10 +113,17 @@ def closure_base_rates() -> dict[str, float]:
 def run_fit() -> None:
     data, meta = assemble()
     pls = meta["places"]
-    idata = fit(data)
+    draws = int(os.environ.get("TAMPINES_DRAWS", "1000"))
+    idata = fit(data, draws=draws, tune=draws)
     g = gates(idata)
+    rh = az.rhat(idata)
+    slow = sorted(((float(np.nanmax(rh[v].values)), v) for v in idata.posterior.data_vars), reverse=True)[:5]
+    print("slowest R-hat:", ", ".join(f"{v} {r:.4f}" for r, v in slow))
     OUT.mkdir(parents=True, exist_ok=True)
-    idata.to_netcdf(str(Path(os.environ.get("TAMPINES_CACHE", "/private/tmp")) / "tampines-idata.nc"))
+    try:
+        idata.to_netcdf(str(Path(os.environ.get("TAMPINES_CACHE", "/private/tmp")) / "tampines-idata.nc"))
+    except ImportError as e:  # the posterior cache is optional
+        print(f"posterior not cached: {e}", file=sys.stderr)
 
     q = derived(idata, data)
     sub = reported(meta)
@@ -183,7 +190,9 @@ def run_fit() -> None:
         for i, pl in enumerate(pls):
             fc.append(["named_by", pl.id, pl.name, "(any other outlet)", f"{p_new[i]:.4f}", f"{hist_all:.4f}", "articles published 2026-11-16 to 2027-11-15", "named in a new in-scope article by an outlet not in the matrix"])
     forecasts = ROOT / "research/tampines/forecasts.tsv"
-    if forecasts.exists():
+    if not g["pass"]:
+        print("Gates failed: the fit is not accepted, so no forecasts and no site data are written.")
+    elif forecasts.exists():
         print(f"{forecasts} already exists and is frozen; not overwritten. Delete it only to re-freeze before any outcome is known.")
     else:
         tsv(forecasts, ["target", "id", "name", "outlet", "p_model", "p_baseline", "resolves", "counts_as"], fc)
@@ -200,7 +209,7 @@ def run_fit() -> None:
     fitmd = [
         "# Real fit",
         "",
-        f"Run {date.today().isoformat()}. Prices in {meta['cpi_month']} dollars (latest CPI month).",
+        f"Run {date.today().isoformat()}: 4 chains, {draws} warm-up and {draws} draws each. Prices in {meta['cpi_month']} dollars (latest CPI month).",
         "",
         f"Gates: max R-hat {g['max_rhat']:.4f}, min bulk ESS {g['min_ess_bulk']:.0f}, divergences {g['divergences']}. **{'pass' if g['pass'] else 'FAIL'}**.",
         "",
@@ -216,7 +225,8 @@ def run_fit() -> None:
     ]
     (OUT / "fit.md").write_text("\n".join(fitmd) + "\n")
     print("\n".join(fitmd))
-    site_data(meta, data, q, sub, rk_back, rk_value, tied_back, tied_value, p_mich, g, (lam_lo, lam_hi), outlets, a, b)
+    if g["pass"]:
+        site_data(meta, data, q, sub, rk_back, rk_value, tied_back, tied_value, p_mich, g, (lam_lo, lam_hi), outlets, a, b)
 
 
 def site_data(meta, data, q, sub, rk_back, rk_value, tied_back, tied_value, p_mich, g, lam, outlets, a, b) -> None:

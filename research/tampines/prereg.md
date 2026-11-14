@@ -105,5 +105,10 @@ A monthly scheduled check runs `scripts/tampines/check.py`. It finds new article
   - The OpenStreetMap match also needs a name score of 0.8, not 0.6.
   - This leaves 7 exact ages and about 120 lower bounds, so the survival part carries little information.
   - ACRA has no cessation dates, so no dated 2016–2026 closure rate exists. The closure baseline uses ACRA's Tampines F&B entities registered from 2016, with a constant hazard fitted to live status at known age: hawker 0.146, restaurant 0.072, cafe 0.149, fast food 0.066 a year. The rate falls with age, so it overstates risk for established places. This is still preferred to the flat 0.10, as it is measured.
+- 15 November 2026, at the real fit:
+  - The first real fit (4 chains, 1,000 warm-up, 1,000 draws) failed the R-hat gate: maximum 1.0138, bulk ESS 415, no divergences. It was not accepted.
+  - A bug wrote its forecasts before the gate was checked. The file was deleted unread and uncommitted. `run.py` now writes forecasts and site data only after every gate passes.
+  - I saw that fit's summary before deleting it: λ's interval ran from 0.014 to 0.397, 3 places were tied on backing, and 2 on value.
+  - The remedy is longer chains, 2,000 warm-up and 2,000 draws, with the model, data and gates unchanged.
 - The 1,116 raw menu rows are not in the repository; only the 652 rows kept or set aside are. The coded filters therefore run over those 652 rows. They check the stated rules (no delivery sources, no undated or pre-2023 rows, set-aside rows excluded with their reason); they cannot recreate the earlier removals.
 - 15 November 2026: the dish-type rules live in `dishtypes.py`, not `types.py`, because a file named `types.py` shadows Python's standard `types` module. The rules are the same.
