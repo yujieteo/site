@@ -1,0 +1,8 @@
+site	sample	units	stated	market_era	macro	sent
+hn	in	18048	6648	0	135	6648
+hn	out	300	117	287	10	292
+lw	in	12753	7353	2108	120	8300
+lw	out	876	572	876	22	876
+hn	recall	150				150
+lw	recall	150				150
+planted	in	64				64

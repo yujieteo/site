@@ -1,0 +1,12 @@
+{
+ "price_sources": [
+  "manifold",
+  "polymarket",
+  "kalshi"
+ ],
+ "alfred": false,
+ "market_start": "2020-06-01",
+ "run_at": "2026-11-15T01:37:06+08:00",
+ "batches": 165,
+ "units_sent": 16480
+}
