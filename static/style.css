@@ -87,6 +87,11 @@ select:focus-visible, input[type=search]:focus-visible { outline: 2px solid tran
 .food-tools { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
 @media (pointer: coarse), (max-width: 560px) { .food-tools .button, figure[data-kind=food] .controls .button, .food-open .button { min-height: var(--tap); padding: 8px 14px; } }
 .food-dot { display: inline-block; width: 9px; height: 9px; margin-right: 6px; border-radius: 50%; }
+.food-dot[data-k=h], .food-range[data-k=h] { background: var(--series-1); }
+.food-dot[data-k=r], .food-range[data-k=r] { background: var(--series-2); }
+.food-dot[data-k=c], .food-range[data-k=c] { background: var(--series-3); }
+.food-dot[data-k=f], .food-range[data-k=f] { background: var(--series-4); }
+.food-dot[data-k=many] { background: var(--ink); }
 .food-square { display: inline-block; width: 9px; height: 9px; margin-right: 6px; border: 1.5px solid var(--ink); border-radius: 2px; background: var(--card); }
 .food-key { display: flex; flex-wrap: wrap; gap: 4px 16px; margin: 0 0 8px; font-size: var(--small); color: var(--muted); }
 .food-map-key { margin-top: 8px; }
@@ -135,6 +140,9 @@ summary.food-row::-webkit-details-marker { display: none; }
 .food-label { display: block; margin-bottom: 6px; font-size: var(--small); color: var(--muted); }
 input.food-search { display: block; width: 100%; min-height: var(--tap); margin-bottom: 12px; padding: 8px 12px; font: 16px/1.5 var(--sans); }
 .chart text.food-halo { paint-order: stroke; stroke: var(--chip); stroke-width: 4px; font-weight: 500; fill: var(--ink); }
+.chart text.food-ink { fill: var(--ink); }
+.chart text.food-num { font-weight: 600; fill: var(--card); }
+.chart text.food-big { font-size: 15px; }
 /* The map fades only on a pointer zoom. The first draw, a resize, a filter and a keyboard zoom swap at once. */
 figure[data-view=map] svg.chart { cursor: pointer; touch-action: manipulation; }
 figure[data-view=map][data-zoom] svg.chart { transition: opacity 150ms var(--ease-out); @starting-style { opacity: 0; } }

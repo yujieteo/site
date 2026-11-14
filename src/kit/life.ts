@@ -330,7 +330,7 @@ function buyRow(buy: Buy, label: string, picked: boolean): string {
 function track(group: Group, top: number): string {
   const marks = group.buys.map((buy) => {
     const kind = `${DOT[buy.verdict]}${buy === group.pick ? " life-ring" : ""}`.trim();
-    return `<i${kind === "" ? "" : ` class="${kind}"`} style="left:${((buy.value / top) * 100).toFixed(1)}%"></i>`;
+    return `<i${kind === "" ? "" : ` class="${kind}"`} data-css="left:${((buy.value / top) * 100).toFixed(1)}%"></i>`;
   });
   return `<span class="life-track">${marks.join("")}</span>`;
 }
@@ -385,8 +385,8 @@ function groupRow(group: Group): string {
 function evenLine(even: readonly [number, number, string]): string {
   const [point, typical, unit] = even;
   const at = ((typical / (point * 2)) * 100).toFixed(1);
-  const dot = typical > 0 ? `<i style="left:${at}%"></i><small style="left:${at}%">${typical}</small>` : "";
-  return `<span class="life-even" role="img" aria-label="The pass pays from ${point} ${esc(unit)}${typical > 0 ? `. A typical use is ${typical}` : ""}.">${dot}<small style="left:50%">${point} ${esc(unit)}</small></span>`;
+  const dot = typical > 0 ? `<i data-css="left:${at}%"></i><small data-css="left:${at}%">${typical}</small>` : "";
+  return `<span class="life-even" role="img" aria-label="The pass pays from ${point} ${esc(unit)}${typical > 0 ? `. A typical use is ${typical}` : ""}.">${dot}<small data-css="left:50%">${point} ${esc(unit)}</small></span>`;
 }
 
 // A move: the thing to do, a tag with its figure, then the reason. The tag follows the lead, so the text keeps
@@ -411,7 +411,7 @@ function calendarRow(row: readonly [string, string, string, string, string]): st
     const value = item.season[month] ?? 0;
     const depth = CELL_FLOOR + (1 - CELL_FLOOR) * Math.min(1, Math.abs(value) / CELL_REACH);
     const kind = `${month === low || month === high ? " life-edge" : ""}${depth > CELL_DEEP ? " life-deep" : ""}`;
-    cells += `<i class="${value < 0 ? "life-down" : "life-up"}${kind}" style="--d:${depth.toFixed(2)}">${LETTERS[month] ?? ""}</i>`;
+    cells += `<i class="${value < 0 ? "life-down" : "life-up"}${kind}" data-css="--d:${depth.toFixed(2)}">${LETTERS[month] ?? ""}</i>`;
   }
   const good = packOf(row[0]).good.toLowerCase().replace("spanish", "Spanish");
   const move: Move = { lever: "when", lead: `Buy ${good} in ${row[1]}, not ${row[2]}`, text: `The gap between the two months is ${row[3]}. The pattern held in ${row[4]} years.`, worth: `gap ${row[3]}` };
@@ -537,7 +537,7 @@ function shopCount(bucket: Bucket): number {
 
 function bucketRow(bucket: Bucket, widest: number): string {
   const end = `<span class="life-end">${bucket.share.toFixed(1)}%<small>S$${bucket.dollars} a month</small></span>`;
-  const summary = `<summary class="life-row"><b>${esc(bucket.name)}${chevron()}</b>${end}<small>${esc(leadOf(bucket))}</small><span class="life-share"><i style="width:${((bucket.share / widest) * 100).toFixed(1)}%"></i></span></summary>`;
+  const summary = `<summary class="life-row"><b>${esc(bucket.name)}${chevron()}</b>${end}<small>${esc(leadOf(bucket))}</small><span class="life-share"><i data-css="width:${((bucket.share / widest) * 100).toFixed(1)}%"></i></span></summary>`;
   const notes = bucket.notes.length === 0 ? "" : part("Good to know", "", "", "", bucket.notes.map((note) => `<p class="life-note">${linked(note)}</p>`).join(""));
   let shops = "";
   bucket.sets.forEach((set, index) => {
@@ -559,7 +559,7 @@ export function lifeFigure(id: string): string {
   const official = buckets.reduce((sum, bucket) => sum + bucket.official.length + bucket.series.length, 0);
   const count = `<p class="life-count" data-count aria-live="polite">${buckets.length} spending groups, ${moves} things to do, ${shops} shop prices, ${official} official prices.</p>`;
   const base = (sparkY(BASE) / SPARK_GRID).toFixed(1);
-  return `${anchors}${find}${count}<ol class="life-cats" aria-label="ALT" style="--life-base:${base}px">${buckets.map((bucket) => bucketRow(bucket, widest)).join("")}</ol>`;
+  return `${anchors}${find}${count}<ol class="life-cats" aria-label="ALT" data-css="--life-base:${base}px">${buckets.map((bucket) => bucketRow(bucket, widest)).join("")}</ol>`;
 }
 
 // The ids that a note may use: the products of items that have a quality check, every shop item, and every

@@ -1,4 +1,5 @@
 import { plotWidth, swapChart, watch } from "../redraw.ts";
+import { applyCss } from "../css.ts";
 import { hideTooltips, wireTooltips } from "../tooltip.ts";
 import { countLine, findRows, listRows, MAP_HINT, mapSvg, markers, PAGE, pickHtml, spreadSvg, ZOOM_HINT, type FindState, type ListState, type Marker, type Sort } from "../food.ts";
 
@@ -25,7 +26,10 @@ function wireRows(figure: Element, read: (shown: number) => { html: string; tota
   const draw = (reset: boolean): void => {
     if (reset) shown = PAGE;
     const found = read(shown);
-    if (rows) rows.innerHTML = found.html;
+    if (rows) {
+      rows.innerHTML = found.html;
+      applyCss(rows);
+    }
     if (count) count.textContent = countLine(shown, found.total);
     if (more) more.hidden = shown >= found.total;
   };
