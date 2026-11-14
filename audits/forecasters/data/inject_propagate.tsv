@@ -1,0 +1,41 @@
+site	person	published_rank	base_rank	median_abs_shift	p90_abs_shift	flip_rate	drop_rate
+hn	stcredzero	1				0.0	0.0179
+hn	wmf	2				0.0	0.0179
+hn	gojomo	3	20.0	0.0	1.0	0.0	0.0179
+hn	adventured	4				0.0	0.0179
+hn	jonnathanson	5				0.0	0.0179
+hn	earl	6				0.0	0.0179
+hn	Zigurd	7	20.0	0.0	1.0	0.0	0.0179
+hn	gbog	8				0.0	0.0179
+hn	nostrademons	9				0.0	0.0179
+hn	potatolicious	10				0.0	0.0179
+hn	dasil003	11				0.0	0.0179
+hn	snowwrestler	12				0.0	0.0179
+hn	nl	13				0.0	0.0179
+hn	jsjenkins168	14				0.0	0.0179
+hn	Samuel_Michon	15				0.0	0.0179
+hn	bane	16				0.0	0.0179
+hn	bryanlarsen	17				0.0	0.0179
+hn	SwellJoe	18				0.0	0.0179
+hn	tptacek	19				0.0	0.0179
+hn	btilly	20				0.0	0.0179
+lw	Zvi	1	37.5	0.0	1.0	0.0	0.0179
+lw	gwern	2				0.0	0.0179
+lw	Daniel Kokotajlo	3				0.0	0.0179
+lw	Matthew Barnett	4	37.5	0.0	1.0	0.0	0.0179
+lw	Rohin Shah	5				0.0	0.0179
+lw	Richard_Kennaway	6	37.5	0.0	1.0	0.0	0.0179
+lw	paulfchristiano	7				0.0	0.0179
+lw	knb	8	37.5	0.0	1.0	0.0	0.0179
+lw	Costanza	9	37.5	0.0	1.0	0.0	0.0179
+lw	jsteinhardt	10	37.5	0.0	1.0	0.0	0.0179
+lw	Mati_Roy	11				0.0	0.0179
+lw	orthonormal	12	37.5	0.0	1.0	0.0	0.0179
+lw	Cthulhoo	13	37.5	0.0	1.0	0.0	0.0179
+lw	mfb	14	37.5	0.0	1.0	0.0	0.0179
+lw	JoshuaZ	15	37.5	0.0	1.0	0.0	0.0179
+lw	Liam Donovan	16				0.0	0.0179
+lw	Dagon	17				0.0	0.0179
+lw	Kevin	18	37.5	0.0	1.0	0.0	0.0179
+lw	TheRev	19				0.0	0.0179
+lw	AspiringKnitter	20	37.5	0.0	1.0	0.0	0.0179

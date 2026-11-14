@@ -54,7 +54,8 @@ def main():
     L = ["# Are the forecaster rankings more than luck?", "",
          f"Frozen method: commit `{frozen}` (see `METHOD.md`). Every number below was produced by the scripts in `src/` "
          "from the dumps and the stored AI verdicts. Rerun with `./run.sh`.", ""]
-    L += ["## Answer", "", "(WRITTEN AFTER THE RESULTS; SEE THE SECTIONS BELOW)", ""]
+    ans = AUDIT / "answer.md"
+    L += [ans.read_text() if ans.exists() else "## Answer\n\n(not written yet)\n", ""]
 
     L += ["## 1. From texts to scored calls", ""]
     L += [table(tsv("flow.tsv"), ["site", "step", "count"])]
@@ -155,7 +156,52 @@ def main():
           f"and {len(late)} were last edited more than a day after posting.",
           f"- HN candidates of the 20: {sum(e['text_same'] == '0' for e in hn_ed)} of {sum(e['in_api'] == '1' for e in hn_ed)} "
           f"differ between the dump and Algolia, and {sum(e['in_api'] == '0' for e in hn_ed)} are missing from Algolia.", ""]
-    L += ["(The remaining items are filled in from the results.)", ""]
+    rec = {}
+    idx = {r["token"]: r["unit"] for r in csv.DictReader(open(DATA / "batch_index.tsv"), delimiter="\t")}
+    for f in sorted((DATA / "verdicts").glob("*.jsonl")):
+        for line in open(f, encoding="utf-8"):
+            v = json.loads(line)
+            u = idx.get(v["token"], "")
+            if u.endswith(":recall"):
+                s0 = u.split(":")[0]
+                rec.setdefault(s0, [0, 0, 0])
+                rec[s0][0] += 1
+                rec[s0][1] += len(v["forecasts"])
+                rec[s0][2] += sum(x.get("stated_p") is not None for x in v["forecasts"])
+    skipped = {r["reason"]: r["count"] for r in tsv("skipped.tsv")}
+    flow = {(r["site"], r["step"]): int(r["count"]) for r in tsv("flow.tsv")}
+    L += ["| Systematic error | Measured | Effect on the answer |", "|---|---|---|",
+          f"| Candidate rule differs from the published one | HN {flow.get(('hn', 'candidates'))} candidates and pool {flow.get(('hn', 'pool'))} (published 3,048 and 227); "
+          f"LessWrong {flow.get(('lw', 'candidates'))} and {flow.get(('lw', 'pool'))} authors (published 3,843 and 545) | The rebuilt rule is broader, so it finds more calls, not fewer. The published files were not kept. |",
+          f"| Forecasts rule C misses | Recall sample: HN {rec.get('hn', [0,0,0])[1]} forecasts in {rec.get('hn', [0,0,0])[0]} non-candidate comments; "
+          f"LessWrong {rec.get('lw', [0,0,0])[1]} in {rec.get('lw', [0,0,0])[0]} ({rec.get('lw', [0,0,0])[2]} with a stated chance) | At most about 1 in 300 comments (95% upper bound about 2%). Missed priced calls cannot be ruled out, but they would be few next to the 167,540 HN and 36,835 LessWrong in-window texts of the 40, and they add calls to everyone in the pool alike. |",
+          "| AI verdicts | Planted units: 55 of 56 forecasts found, 0 of 8 non-forecasts flagged, 48 of 48 stated probabilities exact, 52 of 52 outcomes right | An upper bound: the planted events are famous. Real claims are more obscure. The AI marked 170 real claims unclear and 201 open, and those are left out, not guessed. |",
+          "| Crawl gaps | HN dump against Algolia for the 20: 10 items missing from the dump in 167,540, no text differences. LessWrong crawl against GraphQL: the crawl lacks quick takes and some later items (only_api column) | Small for HN. On LessWrong, quick takes before 2022 are missing, as the published ranking also said. |",
+          "| Edits after posting | LessWrong candidates of the 20: 151 of 1,105 have a version past 1.0, and 41 were last edited over a day after posting. 2 of 28 scored items with edit data were edited over a day later | Too few to move a rank, and the ranking has no information to move. |",
+          f"| Price sources unreachable | Metaculus (token), ALFRED (FRED key). {skipped.get('no price', '?')} settled forecasts skipped for having no price | This is the largest cause of the empty records. |",
+          "| Market matches | 27 forecasts had an open market. The AI matched 14, and 9 of those had a price that day | Out-of-sample only. |",
+          "| 1/2 reference rewards easy questions | Variant 3 (base-rate reference) in section 4. Zvi out-of-sample: e = 493 against 1/2, 0.42 against markets | It is why the 1/2 out-of-sample e-values are not counted as skill. |",
+          "| Calls made together in one thread | Prediction-thread comments list many calls at once, and the calls are not independent | It would widen the intervals further. |",
+          "| Frozen-code defect | Records whose only calls are a stated 50% against 1/2 have zero variance and pin μ near 0 (2 HN, 5 LessWrong people). The frozen order statistics then compare numbers near 1e-22 | The frozen p-values below rank 3 and the frozen synthetic injection are not interpretable. Section 7 reruns them without those calls. The decision does not depend on it. |", ""]
+    ex = js("exploratory_summary.json")
+    if ex:
+        L += ["## 7. Exploratory, after the results: without the zero-information calls", "",
+              "Written after the frozen results were seen (DEVIATIONS.md item 3). It does not replace them.", ""]
+        for s0, v in ex.items():
+            L += [f"- {SITE[s0]}: pool {v['pool']}, {v['calls']} calls, μ = {v['mu']:.4f}, τ² = {v['tau2']:.4f}; "
+                  f"sum of the top 20 against chance: coin p = {v['p_topsum']['coin']:.4f}, market p = {v['p_topsum']['market']:.4f}. "
+                  "Largest raw log e-values against the reference: "
+                  + ", ".join(f"{x['person']} {x['log_e']} ({x['n']} calls)" for x in v["largest_log_e"]) + "."]
+        L += ["", "With τ² = 0 every shrunk record equals μ, so the order-statistic test only compares the pool's mean with chance's. "
+              "On LessWrong that mean beats both nulls (p ≈ 0.006), against a 1/2 reference that rewards easy questions. "
+              "The largest single record, JoshuaZ's e = 1,284 on 16 calls, falls short of the look-elsewhere bar for 74 people (74/0.05 = 1,480).", ""]
+        en = tsv("exploratory_null.tsv")
+        L += [table([r for r in en if int(r["published_rank"]) <= 5],
+                    ["site", "published_rank", "person", "n", "p_pub_coin", "p_pub_market"])]
+        L += ["Synthetic injection without the zero-information calls (300 replications):", "",
+              table(tsv("exploratory_inject.tsv"), ["site", "delta", "reps", "pool", "median_rank", "share_top20", "share_p05_both"]),
+              "Fakes of every skill tie at the pool mean (median ranks are tie averages). share_p05 tracks the pool mean, not the fake, "
+              "so it is not a power estimate. The pipeline has no power at these call counts.", ""]
     (AUDIT / "REPORT.md").write_text("\n".join(L))
     print("wrote REPORT.md")
 

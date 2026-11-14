@@ -32,4 +32,5 @@ run score.py
 run inject.py synthetic
 run inject.py planted
 run inject.py propagate
+run exploratory.py
 run report.py
