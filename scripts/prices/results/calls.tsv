@@ -1,0 +1,22 @@
+eggs-2026-12	0	The CPI for eggs in 2026-12 will be between 99.2 and 106.1, from 99.7 in 2026-09.	series=1.01.4.4	month=2026-12	low=99.25	mid=101.30	high=106.07	model=world-a
+eggs-2027-09	0	The CPI for eggs in 2027-09 will be between 105.2 and 131.4, from 99.7 in 2026-09.	series=1.01.4.4	month=2027-09	low=105.24	mid=105.47	high=131.44	model=world-a
+rice-2026-12	0	The CPI for rice in 2026-12 will be between 99.1 and 105.0, from 101.8 in 2026-09.	series=1.01.1.1	month=2026-12	low=99.12	mid=101.86	high=105.00	model=baseline
+rice-2027-09	0	The CPI for rice in 2027-09 will be between 98.4 and 106.5, from 101.8 in 2026-09.	series=1.01.1.1	month=2027-09	low=98.44	mid=102.13	high=106.53	model=baseline
+chicken-2026-12	0	The CPI for chicken in 2026-12 will be between 97.9 and 103.1, from 99.1 in 2026-09.	series=1.01.2.4	month=2026-12	low=97.87	mid=99.45	high=103.12	model=baseline
+chicken-2027-09	0	The CPI for chicken in 2027-09 will be between 96.8 and 132.0, from 99.1 in 2026-09.	series=1.01.2.4	month=2027-09	low=96.78	mid=100.47	high=132.01	model=baseline
+fresh-fish-2026-12	0	The CPI for fresh fish in 2026-12 will be between 103.1 and 111.3, from 106.3 in 2026-09.	series=1.01.3.1	month=2026-12	low=103.09	mid=106.62	high=111.27	model=baseline
+fresh-fish-2027-09	0	The CPI for fresh fish in 2027-09 will be between 102.1 and 115.3, from 106.3 in 2026-09.	series=1.01.3.1	month=2027-09	low=102.15	mid=107.48	high=115.32	model=baseline
+coffee-2026-12	0	The CPI for coffee in 2026-12 will be between 117.0 and 121.4, from 118.8 in 2026-09.	series=1.01.10.2	month=2026-12	low=117.00	mid=117.97	high=121.41	model=world-b
+coffee-2027-09	0	The CPI for coffee in 2027-09 will be between 117.2 and 124.9, from 118.8 in 2026-09.	series=1.01.10.2	month=2027-09	low=117.21	mid=117.21	high=124.91	model=world-b
+cooking-oil-2026-12	0	The CPI for cooking oil in 2026-12 will be between 99.2 and 106.5, from 101.9 in 2026-09.	series=1.01.5.1	month=2026-12	low=99.17	mid=102.05	high=106.46	model=baseline
+cooking-oil-2027-09	0	The CPI for cooking oil in 2027-09 will be between 99.1 and 110.6, from 101.9 in 2026-09.	series=1.01.5.1	month=2027-09	low=99.14	mid=102.56	high=110.55	model=baseline
+milk-2026-12	0	The CPI for milk in 2026-12 will be between 99.3 and 101.9, from 100.0 in 2026-09.	series=1.01.4.1	month=2026-12	low=99.27	mid=100.20	high=101.95	model=baseline
+milk-2027-09	0	The CPI for milk in 2027-09 will be between 98.9 and 105.5, from 100.0 in 2026-09.	series=1.01.4.1	month=2027-09	low=98.89	mid=100.74	high=105.52	model=baseline
+bread-2026-12	0	The CPI for bread in 2026-12 will be between 103.5 and 106.0, from 103.7 in 2026-09.	series=1.01.1.3	month=2026-12	low=103.55	mid=103.98	high=106.03	model=baseline
+bread-2027-09	0	The CPI for bread in 2027-09 will be between 104.5 and 112.9, from 103.7 in 2026-09.	series=1.01.1.3	month=2027-09	low=104.51	mid=104.94	high=112.93	model=baseline
+electricity-2026-12	0	The CPI for electricity in 2026-12 will be between 93.4 and 98.7, from 103.2 in 2026-09.	series=1.03.2.3	month=2026-12	low=93.45	mid=96.05	high=98.72	model=tariff
+electricity-2027-09	0	The CPI for electricity in 2027-09 will be between 98.7 and 126.4, from 103.2 in 2026-09.	series=1.03.2.3	month=2027-09	low=98.71	mid=103.83	high=126.42	model=baseline
+petrol-2026-12	0	The CPI for petrol in 2026-12 will be between 110.0 and 128.9, from 115.1 in 2026-09.	series=1.06.1.5	month=2026-12	low=110.04	mid=115.92	high=128.92	model=baseline
+petrol-2027-09	0	The CPI for petrol in 2027-09 will be between 110.8 and 146.4, from 115.1 in 2026-09.	series=1.06.1.5	month=2027-09	low=110.80	mid=118.37	high=146.43	model=baseline
+hawker-food-2026-12	0	The CPI for hawker food in 2026-12 will be between 104.7 and 106.8, from 104.6 in 2026-09.	series=1.11.3.1	month=2026-12	low=104.72	mid=105.30	high=106.82	model=world-a
+hawker-food-2027-09	0	The CPI for hawker food in 2027-09 will be between 105.9 and 108.4, from 104.6 in 2026-09.	series=1.11.3.1	month=2027-09	low=105.89	mid=107.35	high=108.42	model=world-a

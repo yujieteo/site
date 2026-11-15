@@ -1,6 +1,6 @@
 import { relative, resolve } from "node:path";
 import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
-import { apiPage, dealsPage, dealsText, forecastsPage, homePage, paperPage, postPage } from "./pages.ts";
+import { apiPage, callsPage, callsText, dealsPage, dealsText, forecastsPage, homePage, paperPage, postPage } from "./pages.ts";
 import { deals, forecastOrder, loadNotes, notesGuide, pricesTsv, today, type Note } from "./notes.ts";
 import { postApi, writeApi } from "./api.ts";
 import { figureKinds, figures, footnoteHtml, footnotes, headings, linkPapers, loadPapers, parsePost, textVersion, type Paper, type Post } from "./post.ts";
@@ -81,6 +81,9 @@ function writeNotes(out: string, notes: Record<string, Note[]>): void {
   writeFileSync(`${out}/api/deals.txt`, dealsText(seen));
   mkdirSync(`${out}/deals`, { recursive: true });
   writeFileSync(`${out}/deals/index.html`, dealsPage(seen));
+  writeFileSync(`${out}/api/calls.txt`, callsText(notes.calls ?? [], notes.outcomes ?? []));
+  mkdirSync(`${out}/calls`, { recursive: true });
+  writeFileSync(`${out}/calls/index.html`, callsPage(notes.calls ?? [], notes.outcomes ?? []));
   mkdirSync(`${out}/forecasts`, { recursive: true });
   writeFileSync(`${out}/forecasts/index.html`, forecastsPage(forecastOrder(notes.forecasts ?? [])));
 }

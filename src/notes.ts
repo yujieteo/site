@@ -162,6 +162,42 @@ export const PARTS: readonly Part[] = [
     },
     result: "the group at /essays/singapore-value-buys/, on deploy",
   },
+  {
+    name: "calls",
+    does: "Records a dated call on a Singapore price, made before its outcome is known, so it can be scored later.",
+    read: "/api/calls.txt",
+    id: /^[a-z0-9-]{1,80}$/,
+    idHelp: "a new id, the good and the month, such as eggs-2027-09. Never change or remove a call once it is merged: add an outcome instead.",
+    one: "id",
+    points: "Not used. Use 0.",
+    text: "The call in one plain sentence, with the range and the level it starts from.",
+    fields: {
+      series: { need: true, test: /^\d+(\.\d+){0,4}$/, help: "the SingStat CPI series number of table M213751, such as 1.01.4.4 for eggs" },
+      month: { need: true, test: /^\d{4}-\d\d$/, date: "any", help: "the month the call is about, as YYYY-MM" },
+      low: { need: true, test: /^\d{1,4}(\.\d{1,2})?$/, help: "the bottom of the 80% range, as an index value" },
+      mid: { need: true, test: /^\d{1,4}(\.\d{1,2})?$/, help: "the middle guess, as an index value" },
+      high: { need: true, test: /^\d{1,4}(\.\d{1,2})?$/, help: "the top of the 80% range, as an index value" },
+      made: { need: true, test: DATE, date: "past", help: "the day the call was made, as YYYY-MM-DD. It must be before the month of the call." },
+      model: { need: true, test: /^[a-z0-9-]{1,30}$/, help: "the forecast that made it, such as baseline, world-a or tariff, as named in scripts/prices/passthrough.py" },
+    },
+    result: "/calls/, on deploy",
+  },
+  {
+    name: "outcomes",
+    does: "Records what SingStat published for the month of a call, so the call can be scored.",
+    read: "/api/calls.txt",
+    id: /^[a-z0-9-]{1,80}$/,
+    idHelp: "the id of a call in notes/calls.tsv",
+    one: "id",
+    points: "Not used. Use 0.",
+    text: "Where the value was read, such as \"SingStat M213751, 1.01.4.4, 2026 Dec\".",
+    fields: {
+      actual: { need: true, test: /^\d{1,4}(\.\d{1,3})?$/, help: "the published index value for the month of the call" },
+      url: { need: true, test: URL, help: "an https link to the table" },
+      date: { need: true, test: DATE, date: "past", help: "the day the value was read, as YYYY-MM-DD" },
+    },
+    result: "the score at /calls/, on deploy. scripts/prices/resolve.ts writes these lines.",
+  },
 ];
 
 export interface PriceRow {
@@ -241,6 +277,15 @@ function parseLine(part: Part, line: string, where: string, known: Known | undef
   const has = known instanceof Map ? known.get(id) : undefined;
   if (part.name === "checks" && (has === "record") !== (fields.verdict === "recorded")) throw new Error(`${where}: the verdict must be ${has === "record" ? "recorded" : "pass or fail"}, as the answer column of the list says`);
   if (part.name === "advice" && has instanceof Set && has.has(text.toLowerCase())) throw new Error(`${where}: the post already gives the advice "${text}"`);
+  if (part.name === "calls") {
+    const [low, mid, high] = [Number(fields.low), Number(fields.mid), Number(fields.high)];
+    if (!(low <= mid && mid <= high)) throw new Error(`${where}: low, mid and high must be in order`);
+    if (!before(fields.made ?? "", fields.month ?? "")) throw new Error(`${where}: the call was made on ${fields.made}, not before its month ${fields.month}`);
+  }
+  if (part.name === "outcomes" && known instanceof Map) {
+    const call = known.get(id) as Note | undefined;
+    if (call && before(fields.date ?? "", call.fields.month ?? "")) throw new Error(`${where}: the outcome was read on ${fields.date}, before the month ${call.fields.month} of the call`);
+  }
   return { id, points: Number(points), text, fields };
 }
 
@@ -251,6 +296,7 @@ function knownIds(name: string, all: Record<string, Note[]>): Known | undefined 
   if (name === "products") return lifeIds([]).products;
   if (name === "checks") return lifeIds(all.products ?? []).checks;
   if (name === "advice") return lifeIds([]).advice;
+  if (name === "outcomes") return new Map((all.calls ?? []).map((call) => [call.id, call]));
   return undefined;
 }
 
@@ -354,4 +400,39 @@ export function deals(notes: Note[], today: string): Deal[] {
 export function forecastOrder(notes: Note[]): Note[] {
   // Open ones first, then by points. Among equals the one that can be checked soonest leads, and one with no due date trails.
   return [...notes].sort((a, b) => Number(b.fields.outcome === "open") - Number(a.fields.outcome === "open") || b.points - a.points || (a.fields.due ?? "9999").localeCompare(b.fields.due ?? "9999") || (b.fields.made ?? "").localeCompare(a.fields.made ?? ""));
+}
+
+export interface Scored {
+  call: Note;
+  outcome?: Note;
+  inside?: boolean;
+  miss?: number; // the middle against the outcome, in percent
+}
+
+export function scoreCalls(calls: Note[], outcomes: Note[]): { rows: Scored[]; resolved: number; inside: number; miss: number; pinball: number } {
+  const byId = new Map(outcomes.map((o) => [o.id, o]));
+  const rows: Scored[] = [];
+  let inside = 0;
+  let miss = 0;
+  let pinball = 0;
+  for (const call of calls) {
+    const outcome = byId.get(call.id);
+    if (!outcome) {
+      rows.push({ call });
+      continue;
+    }
+    const actual = Number(outcome.fields.actual);
+    const [low, mid, high] = [Number(call.fields.low), Number(call.fields.mid), Number(call.fields.high)];
+    const hit = low <= actual && actual <= high;
+    const m = (100 * Math.abs(mid - actual)) / actual;
+    // Pinball loss of the 10%, 50% and 90% points, as a percent of the outcome. Lower is better.
+    const loss = (q: number, x: number) => (actual >= x ? q * (actual - x) : (1 - q) * (x - actual));
+    pinball += (100 * (loss(0.1, low) + loss(0.5, mid) + loss(0.9, high))) / 3 / actual;
+    if (hit) inside++;
+    miss += m;
+    rows.push({ call, outcome, inside: hit, miss: m });
+  }
+  const resolved = rows.filter((r) => r.outcome).length;
+  rows.sort((a, b) => (a.call.fields.month ?? "").localeCompare(b.call.fields.month ?? "") || a.call.id.localeCompare(b.call.id));
+  return { rows, resolved, inside, miss: resolved ? miss / resolved : NaN, pinball: resolved ? pinball / resolved : NaN };
 }

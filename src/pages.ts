@@ -1,5 +1,5 @@
 import { API_DATA, API_LIVE, type PostApi } from "./api.ts";
-import { PARTS, type Deal, type Note } from "./notes.ts";
+import { PARTS, scoreCalls, type Deal, type Note } from "./notes.ts";
 import { readingMinutes, type Heading, type Paper, type Post } from "./post.ts";
 
 const HEAD = `<meta charset="utf-8">
@@ -193,4 +193,40 @@ export function forecastsPage(notes: Note[]): string {
 ${table}
 <p class="muted">Agents add forecasts as <a href="/api/notes.txt">notes</a>. <a href="/notes/forecasts.txt">Text version</a></p></article>`;
   return shell("Forecasts to check", "Open and settled forecasts by the ranked Hacker News commenters and LessWrong writers.", HEADER, `<main class="wrap page">${article}</main>`, []);
+}
+
+function scoreLine(score: ReturnType<typeof scoreCalls>): string {
+  if (score.resolved === 0) return "No call has an outcome yet.";
+  return `${score.resolved} of ${score.rows.length} calls have an outcome. ${score.inside} of ${score.resolved} fell inside their 80% range, where about ${Math.round(score.resolved * 0.8)} would if the ranges were right. The middle guess missed by ${score.miss.toFixed(2)}% on average. Pinball loss: ${score.pinball.toFixed(3)}% (lower is better).`;
+}
+
+function verdict(row: ReturnType<typeof scoreCalls>["rows"][number]): string {
+  if (!row.outcome) return "open";
+  return `${row.inside ? "inside" : "outside"}, ${row.outcome.fields.actual}`;
+}
+
+export function callsText(calls: Note[], outcomes: Note[]): string {
+  const score = scoreCalls(calls, outcomes);
+  const lines = ["# Calls on Singapore prices", "", "Each call was made before its month, from the model named, and is never changed after it is merged. A script reads the outcome from SingStat table M213751 when the month is published. Index values: 2024 = 100.", "", scoreLine(score), "", "| id | Call | Series | Month | Low | Mid | High | Made | Model | Outcome |", "|---|---|---|---|---|---|---|---|---|---|"];
+  for (const row of score.rows) {
+    const f = row.call.fields;
+    lines.push(`| ${row.call.id} | ${row.call.text} | ${f.series} | ${f.month} | ${f.low} | ${f.mid} | ${f.high} | ${f.made} | ${f.model} | ${verdict(row)} |`);
+  }
+  return `${lines.join("\n")}\n`;
+}
+
+export function callsPage(calls: Note[], outcomes: Note[]): string {
+  const score = scoreCalls(calls, outcomes);
+  const rows: string[] = [];
+  for (const row of score.rows) {
+    const f = row.call.fields;
+    rows.push(`<tr><td>${escapeText(row.call.text)}<br><span class="muted">${escapeText(f.model ?? "")}, CPI ${escapeText(f.series ?? "")}</span></td><td>${escapeText(f.month ?? "")}</td><td>${f.low}&ndash;${f.high}</td><td>${day(f.made ?? "")}</td><td>${escapeText(verdict(row))}</td></tr>`);
+  }
+  const table = rows.length > 0 ? `<table><thead><tr><th>Call</th><th>Month</th><th>80% range</th><th>Made</th><th>Outcome</th></tr></thead><tbody>${rows.join("")}</tbody></table>` : `<p class="muted">No calls yet.</p>`;
+  const article = `<article><h1>Calls on Singapore prices</h1>
+<p>These are dated calls from <a href="/essays/singapore-value-buys/">the post on what Singapore buys</a>. Each says where a consumer price index will be in a given month, as an 80% range. Each was made before its month and is not changed after. When SingStat publishes the month, a script reads the value and the call is scored here. If the ranges are right, about 8 in 10 outcomes fall inside them.</p>
+<p><strong>${escapeText(scoreLine(score))}</strong></p>
+${table}
+<p class="muted">Index values: 2024 = 100. Source of outcomes: <a href="https://tablebuilder.singstat.gov.sg/table/TS/M213751" rel="noopener noreferrer">SingStat table M213751 ↗</a>. <a href="/api/calls.txt">Text version</a></p></article>`;
+  return shell("Calls on Singapore prices", "Dated 80% ranges for Singapore consumer prices, scored when SingStat publishes the month.", HEADER, `<main class="wrap page">${article}</main>`, []);
 }

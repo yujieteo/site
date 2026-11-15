@@ -1,0 +1,41 @@
+good	cpi_series	drivers	windows	h	months	same_as_today	baseline	cost_months	baseline_same_months	cost	keep	passthrough_12m	best_lag	best_r
+eggs	1.01.4.4	Maize + Soybean meal	world A	3	78	2.35	2.38	65	2.49	2.25	yes	0.58	9	0.79
+eggs	1.01.4.4	Maize + Soybean meal	world A	12	69	6.89	7.31	58	7.32	7.08	yes	0.58	9	0.79
+eggs	1.01.4.4	Maize + Soybean meal	world B	3	78	2.35	2.38	65	2.49	2.63	no	0.58	9	0.79
+eggs	1.01.4.4	Maize + Soybean meal	world B	12	69	6.89	7.31	58	7.32	8.02	no	0.58	9	0.79
+rice	1.01.1.1	Rice, Thai 5%	world A	3	78	1.96	1.97	65	1.92	2.10	no	0.01	0	0.35
+rice	1.01.1.1	Rice, Thai 5%	world A	12	69	2.16	2.22	58	2.17	2.52	no	0.01	0	0.35
+rice	1.01.1.1	Rice, Thai 5%	world B	3	78	1.96	1.97	65	1.92	2.13	no	0.01	0	0.35
+rice	1.01.1.1	Rice, Thai 5%	world B	12	69	2.16	2.22	58	2.17	2.76	no	0.01	0	0.35
+chicken	1.01.2.4	Maize + Soybean meal + Chicken **	world A	3	78	1.84	1.93	65	1.90	2.01	no	0.62	16	0.68
+chicken	1.01.2.4	Maize + Soybean meal + Chicken **	world A	12	69	5.77	6.59	58	6.50	8.13	no	0.62	16	0.68
+chicken	1.01.2.4	Maize + Soybean meal + Chicken **	world B	3	78	1.84	1.93	65	1.90	2.44	no	0.62	16	0.68
+chicken	1.01.2.4	Maize + Soybean meal + Chicken **	world B	12	69	5.77	6.59	58	6.50	9.26	no	0.62	16	0.68
+fresh fish	1.01.3.1	Crude oil, Brent	world A	3	78	2.42	2.45	65	2.41	2.43	no	0.03	1	0.33
+fresh fish	1.01.3.1	Crude oil, Brent	world A	12	69	3.62	3.75	58	3.77	4.10	no	0.03	1	0.33
+fresh fish	1.01.3.1	Crude oil, Brent	world B	3	78	2.42	2.45	65	2.41	2.48	no	0.03	1	0.33
+fresh fish	1.01.3.1	Crude oil, Brent	world B	12	69	3.62	3.75	58	3.77	4.04	no	0.03	1	0.33
+coffee	1.01.10.2	Coffee, Robusta + Coffee, Arabica	world A	3	78	1.43	1.31	65	1.42	1.48	no	0.16	15	0.60
+coffee	1.01.10.2	Coffee, Robusta + Coffee, Arabica	world A	12	69	4.72	4.05	58	4.03	4.21	no	0.16	15	0.60
+coffee	1.01.10.2	Coffee, Robusta + Coffee, Arabica	world B	3	78	1.43	1.31	65	1.42	1.35	yes	0.16	15	0.60
+coffee	1.01.10.2	Coffee, Robusta + Coffee, Arabica	world B	12	69	4.72	4.05	58	4.03	3.59	yes	0.16	15	0.60
+cooking oil	1.01.5.1	Palm oil + Soybean oil + Sunflower oil + Rapeseed oil	world A	3	78	2.50	2.50	65	2.51	2.59	no	0.06	6	0.44
+cooking oil	1.01.5.1	Palm oil + Soybean oil + Sunflower oil + Rapeseed oil	world A	12	69	3.98	3.91	58	3.81	5.09	no	0.06	6	0.44
+cooking oil	1.01.5.1	Palm oil + Soybean oil + Sunflower oil + Rapeseed oil	world B	3	78	2.50	2.50	65	2.51	2.67	no	0.06	6	0.44
+cooking oil	1.01.5.1	Palm oil + Soybean oil + Sunflower oil + Rapeseed oil	world B	12	69	3.98	3.91	58	3.81	5.46	no	0.06	6	0.44
+bread	1.01.1.3	Wheat, US HRW	world A	3	78	0.98	0.87	65	0.89	0.91	no	0.10	18	0.59
+bread	1.01.1.3	Wheat, US HRW	world A	12	69	3.71	2.95	58	2.94	3.40	no	0.10	18	0.59
+bread	1.01.1.3	Wheat, US HRW	world B	3	78	0.98	0.87	65	0.89	0.93	no	0.10	18	0.59
+bread	1.01.1.3	Wheat, US HRW	world B	12	69	3.71	2.95	58	2.94	3.57	no	0.10	18	0.59
+electricity	1.03.2.3	Liquefied natural gas, Japan + Crude oil, Brent	world A	3	78	3.18	3.21	65	3.15	2.86	no	0.18	3	0.84
+electricity	1.03.2.3	Liquefied natural gas, Japan + Crude oil, Brent	world A	12	69	7.82	8.14	58	8.38	8.83	no	0.18	3	0.84
+electricity	1.03.2.3	Liquefied natural gas, Japan + Crude oil, Brent	world B	3	78	3.18	3.21	65	3.15	2.93	no	0.18	3	0.84
+electricity	1.03.2.3	Liquefied natural gas, Japan + Crude oil, Brent	world B	12	69	7.82	8.14	58	8.38	10.01	no	0.18	3	0.84
+petrol	1.06.1.5	Crude oil, Brent	world A	3	78	4.40	4.38	65	4.52	4.94	no	-0.05	0	0.87
+petrol	1.06.1.5	Crude oil, Brent	world A	12	69	9.30	9.14	58	8.88	9.12	no	-0.05	0	0.87
+petrol	1.06.1.5	Crude oil, Brent	world B	3	78	4.40	4.38	65	4.52	5.21	no	-0.05	0	0.87
+petrol	1.06.1.5	Crude oil, Brent	world B	12	69	9.30	9.14	58	8.88	9.53	no	-0.05	0	0.87
+hawker food	1.11.3.1	CPI 1.01 food at home	world A	3	78	0.84	0.55	52	0.58	0.47	yes	0.68	1	0.76
+hawker food	1.11.3.1	CPI 1.01 food at home	world A	12	69	3.43	2.21	34	1.15	0.76	yes	0.68	1	0.76
+hawker food	1.11.3.1	CPI 1.01 food at home	world B	3	78	0.84	0.55	52	0.58	0.51	no	0.68	1	0.76
+hawker food	1.11.3.1	CPI 1.01 food at home	world B	12	69	3.43	2.21	34	1.15	1.50	no	0.68	1	0.76
