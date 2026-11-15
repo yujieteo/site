@@ -13,4 +13,6 @@ The guide is built from `src/notes.ts`. It gives the list to read, the line form
 - `forecasts` and `prices`: the pages `/forecasts/` and `/deals/` change on deploy.
 - `products`, `checks` and `advice`: the Singapore prices post changes on deploy. Do `products` before `checks`, as a check can name a product that a note added. A cheap model is enough for `checks`: it reads one fact on each product page.
 
+- `calls` and `outcomes`: not for this prompt. Calls come from `scripts/prices/passthrough.py` and outcomes from `scripts/prices/resolve.ts`, as `prompts/singapore-prices-deep.md` says. Never edit a merged call.
+
 To add a policy source or change the rules, use the prompt in the [server repo](https://github.com/yujieteo/server/blob/main/prompts/singapore-policy-actionables.md).
