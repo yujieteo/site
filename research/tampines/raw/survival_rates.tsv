@@ -1,0 +1,81 @@
+kind	group	entities	not_live_at_snapshot	share_not_live	mean_age_at_snapshot_y	hazard_per_entity_year	annual_closure_prob
+all 56xxx	cohort 2016	120	81	0.675	10.27		
+all 56xxx	cohort 2017	131	85	0.649	9.24		
+all 56xxx	cohort 2018	131	74	0.565	8.29		
+all 56xxx	cohort 2019	125	72	0.576	7.37		
+all 56xxx	cohort 2020	140	91	0.650	6.22		
+all 56xxx	cohort 2021	138	83	0.601	5.31		
+all 56xxx	cohort 2022	118	69	0.585	4.30		
+all 56xxx	cohort 2023	166	72	0.434	3.27		
+all 56xxx	cohort 2024	128	36	0.281	2.28		
+all 56xxx	cohort 2025	171	24	0.140	1.29		
+all 56xxx	cohort 2026	144	1	0.007	0.40		
+all 56xxx	registered 2016+, constant hazard	1512	688	0.455	5.08	0.1349	0.126
+restaurant (56111 restaurants)	cohort 2016	24	14	0.583	10.29		
+restaurant (56111 restaurants)	cohort 2017	21	9	0.429	9.29		
+restaurant (56111 restaurants)	cohort 2018	23	10	0.435	8.36		
+restaurant (56111 restaurants)	cohort 2019	33	12	0.364	7.35		
+restaurant (56111 restaurants)	cohort 2020	28	11	0.393	6.16		
+restaurant (56111 restaurants)	cohort 2021	19	4	0.211	5.23		
+restaurant (56111 restaurants)	cohort 2022	35	13	0.371	4.27		
+restaurant (56111 restaurants)	cohort 2023	39	12	0.308	3.28		
+restaurant (56111 restaurants)	cohort 2024	27	4	0.148	2.35		
+restaurant (56111 restaurants)	cohort 2025	30	2	0.067	1.28		
+restaurant (56111 restaurants)	cohort 2026	25	0	0.000	0.39		
+restaurant (56111 restaurants)	registered 2016+, constant hazard	304	91	0.299	5.06	0.0751	0.072
+cafe (56112 cafes, coffee houses, snack bars)	cohort 2016	16	13	0.812	10.36		
+cafe (56112 cafes, coffee houses, snack bars)	cohort 2017	9	8	0.889	9.18		
+cafe (56112 cafes, coffee houses, snack bars)	cohort 2018	14	12	0.857	8.30		
+cafe (56112 cafes, coffee houses, snack bars)	cohort 2019	12	7	0.583	7.17		
+cafe (56112 cafes, coffee houses, snack bars)	cohort 2020	5	4	0.800	6.33		
+cafe (56112 cafes, coffee houses, snack bars)	cohort 2021	13	8	0.615	5.41		
+cafe (56112 cafes, coffee houses, snack bars)	cohort 2022	10	6	0.600	4.34		
+cafe (56112 cafes, coffee houses, snack bars)	cohort 2023	22	10	0.455	3.21		
+cafe (56112 cafes, coffee houses, snack bars)	cohort 2024	14	3	0.214	2.33		
+cafe (56112 cafes, coffee houses, snack bars)	cohort 2025	23	0	0.000	1.24		
+cafe (56112 cafes, coffee houses, snack bars)	cohort 2026	19	0	0.000	0.46		
+cafe (56112 cafes, coffee houses, snack bars)	registered 2016+, constant hazard	157	71	0.452	4.69	0.1615	0.149
+fast food (56121 fast food outlets)	cohort 2016	4	2	0.500	9.99		
+fast food (56121 fast food outlets)	cohort 2019	1	1	1.000	6.94		
+fast food (56121 fast food outlets)	cohort 2020	2	1	0.500	6.20		
+fast food (56121 fast food outlets)	cohort 2023	3	0	0.000	2.92		
+fast food (56121 fast food outlets)	cohort 2024	3	0	0.000	2.23		
+fast food (56121 fast food outlets)	cohort 2025	1	0	0.000	1.39		
+fast food (56121 fast food outlets)	cohort 2026	1	0	0.000	0.77		
+fast food (56121 fast food outlets)	registered 2016+, constant hazard	15	4	0.267	5.13	0.0682	0.066
+hawker (56140 food stalls)	cohort 2016	30	20	0.667	10.33		
+hawker (56140 food stalls)	cohort 2017	35	27	0.771	9.19		
+hawker (56140 food stalls)	cohort 2018	33	16	0.485	8.35		
+hawker (56140 food stalls)	cohort 2019	26	17	0.654	7.41		
+hawker (56140 food stalls)	cohort 2020	40	29	0.725	6.30		
+hawker (56140 food stalls)	cohort 2021	36	23	0.639	5.30		
+hawker (56140 food stalls)	cohort 2022	33	23	0.697	4.33		
+hawker (56140 food stalls)	cohort 2023	43	17	0.395	3.32		
+hawker (56140 food stalls)	cohort 2024	25	11	0.440	2.22		
+hawker (56140 food stalls)	cohort 2025	48	12	0.250	1.31		
+hawker (56140 food stalls)	cohort 2026	28	0	0.000	0.37		
+hawker (56140 food stalls)	registered 2016+, constant hazard	377	195	0.517	5.19	0.1581	0.146
+coffee shop / food court operator (56122)	cohort 2016	36	26	0.722	10.19		
+coffee shop / food court operator (56122)	cohort 2017	44	25	0.568	9.25		
+coffee shop / food court operator (56122)	cohort 2018	41	22	0.537	8.21		
+coffee shop / food court operator (56122)	cohort 2019	24	13	0.542	7.50		
+coffee shop / food court operator (56122)	cohort 2020	30	19	0.633	6.11		
+coffee shop / food court operator (56122)	cohort 2021	36	24	0.667	5.31		
+coffee shop / food court operator (56122)	cohort 2022	24	14	0.583	4.27		
+coffee shop / food court operator (56122)	cohort 2023	33	20	0.606	3.26		
+coffee shop / food court operator (56122)	cohort 2024	38	10	0.263	2.25		
+coffee shop / food court operator (56122)	cohort 2025	24	1	0.042	1.45		
+coffee shop / food court operator (56122)	cohort 2026	23	0	0.000	0.45		
+coffee shop / food court operator (56122)	registered 2016+, constant hazard	353	174	0.493	5.68	0.1311	0.123
+other (56123 kiosks, 56130 pubs, 56200 caterers)	cohort 2016	10	6	0.600	10.30		
+other (56123 kiosks, 56130 pubs, 56200 caterers)	cohort 2017	22	16	0.727	9.27		
+other (56123 kiosks, 56130 pubs, 56200 caterers)	cohort 2018	20	14	0.700	8.26		
+other (56123 kiosks, 56130 pubs, 56200 caterers)	cohort 2019	29	22	0.759	7.36		
+other (56123 kiosks, 56130 pubs, 56200 caterers)	cohort 2020	35	27	0.771	6.26		
+other (56123 kiosks, 56130 pubs, 56200 caterers)	cohort 2021	34	24	0.706	5.32		
+other (56123 kiosks, 56130 pubs, 56200 caterers)	cohort 2022	16	13	0.812	4.34		
+other (56123 kiosks, 56130 pubs, 56200 caterers)	cohort 2023	26	13	0.500	3.28		
+other (56123 kiosks, 56130 pubs, 56200 caterers)	cohort 2024	21	8	0.381	2.26		
+other (56123 kiosks, 56130 pubs, 56200 caterers)	cohort 2025	45	9	0.200	1.20		
+other (56123 kiosks, 56130 pubs, 56200 caterers)	cohort 2026	48	1	0.021	0.37		
+other (56123 kiosks, 56130 pubs, 56200 caterers)	registered 2016+, constant hazard	306	153	0.500	4.44	0.1904	0.173

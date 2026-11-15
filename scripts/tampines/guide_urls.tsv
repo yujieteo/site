@@ -1,0 +1,181 @@
+# Curated article list for scripts/tampines/guides.py (one row per article; lines starting with # are comments).
+# how_found: seed = cited in src/kit/food-data.ts; sitemap = outlet post sitemap, slug matched "tampines"/a venue or a place name; tag = outlet tag/location page; web search = WebSearch query.
+# scope: semicolon list of filters over places.tsv columns (place in scope when every filter matches); a comma inside one value means either value.
+# area=north: p101 p104 p120 p121 p123 p124 p132 p133 p134
+# area=west: p000-p019 p095 p096 p098 p099 p100 p101 p103 p105 p110 p112 p114 p116 p117 p118 p122 p127 p128 p129 p130 p131 p136 p138
+# area=east: p097 p102 p106 p107 p108 p109 p111 p113 p115 p119 p125 p126 p135 p137
+# area=central: p020-p094 p097 p108 p111
+url	outlet	how_found	scope	theme
+https://eatbook.sg/tampines-food-guide/	Eatbook	seed: src/kit/food-data.ts	all	
+https://eatbook.sg/tampines-hawker-food/	Eatbook	seed: src/kit/food-data.ts	kind=h	hawker
+https://eatbook.sg/tampines-cafe/	Eatbook	sitemap: Tampines slug	kind=c	cafes
+https://eatbook.sg/home-cafes-tampines/	Eatbook	sitemap: Tampines slug	kind=c	home cafes
+https://eatbook.sg/tampines-east-food/	Eatbook	seed: src/kit/food-data.ts	area=east	sub-area
+https://eatbook.sg/tampines-west-food/	Eatbook	seed: src/kit/food-data.ts	area=west	sub-area
+https://eatbook.sg/tampines-central-food/	Eatbook	sitemap: Tampines slug	area=central	sub-area
+https://eatbook.sg/tampines-north-food/	Eatbook	seed: src/kit/food-data.ts	area=north	sub-area
+https://eatbook.sg/tampines-west-dining-spots/	Eatbook	sitemap: Tampines slug	place=SAFRA Tampines	venue guide (SAFRA Tampines)
+https://eatbook.sg/tampines-1-food-guide/	Eatbook	seed: src/kit/food-data.ts	venue=Tampines 1	
+https://eatbook.sg/tampines-1-new-openings/	Eatbook	sitemap: Tampines slug	venue=Tampines 1	new openings
+https://eatbook.sg/hawkers-street-tampines/	Eatbook	sitemap: Tampines slug	venue=Tampines 1;kind=h	food court opening
+https://eatbook.sg/tampines-mall-food/	Eatbook	seed: src/kit/food-data.ts	venue=Tampines Mall	
+https://eatbook.sg/our-tampines-hub-food/	Eatbook	seed: src/kit/food-data.ts	venue=Our Tampines Hub	
+https://eatbook.sg/century-square-food/	Eatbook	sitemap: Tampines slug	venue=Century Square	
+https://eatbook.sg/new-tampines-food/	Eatbook	sitemap: Tampines slug	venue=Tampines 1,Century Square	new openings (two malls; comma = either)
+https://eatbook.sg/chang-cheng-mee-wah-tampines-north/	Eatbook	seed: src/kit/food-data.ts	place=Chang Cheng Mee Wah Coffeeshop	coffeeshop opening
+https://sethlui.com/tampines-food-guide-singapore/	Seth Lui	sitemap: Tampines slug	all	
+https://sethlui.com/tampines-round-market-food-centre-singapore/	Seth Lui	seed: src/kit/food-data.ts	venue=Round Market	
+https://sethlui.com/breakfast-food-guide-tampines-round-market-food-centre-singapore/	Seth Lui	sitemap: Tampines slug	venue=Round Market	breakfast
+https://sethlui.com/our-tampines-hub-hawker-centre-singapore/	Seth Lui	seed: src/kit/food-data.ts	venue=Our Tampines Hub;kind=h	hawker
+https://sethlui.com/tampines-1-food-guide-singapore/	Seth Lui	sitemap: Tampines slug	venue=Tampines 1	family-friendly
+https://sethlui.com/newly-revamped-tampines-1-food-guide-singapore/	Seth Lui	sitemap: Tampines slug	venue=Tampines 1	new openings
+https://sethlui.com/tampines-1-revamp-singapore-may-2024/	Seth Lui	sitemap: Tampines slug	venue=Tampines 1	new openings
+https://sethlui.com/hawkers-street-opens-tampines-singapore-jul-2024/	Seth Lui	sitemap: Tampines slug	venue=Tampines 1;kind=h	food court opening
+https://sethlui.com/tampines-mall-food-guide-singapore/	Seth Lui	seed: src/kit/food-data.ts	venue=Tampines Mall	family-friendly
+https://sethlui.com/tampines-mall-christmas-food-guide-2024-singapore/	Seth Lui	sitemap: Tampines slug	venue=Tampines Mall	festive menus
+https://sethlui.com/tampines-mall-revamp-singapore-nov-2026/	Seth Lui	sitemap: Tampines slug	venue=Tampines Mall	new openings
+https://sethlui.com/century-square-food-guide-singapore/	Seth Lui	seed: src/kit/food-data.ts	venue=Century Square	
+https://sethlui.com/chang-cheng-mee-wah-tampines-opens-singapore-sep-2024/	Seth Lui	sitemap: Tampines slug	place=Chang Cheng Mee Wah Coffeeshop	coffeeshop opening
+https://sethlui.com/bk-eating-house-tampines-singapore-jun-2023/	Seth Lui	sitemap: Tampines slug	place=824 Tampines Street 81;unit=#01-38	coffeeshop opening (BK Eating House)
+https://danielfooddiary.com/2018/06/05/centurysquare/	Daniel Food Diary	sitemap: Tampines slug	venue=Century Square	new openings
+https://danielfooddiary.com/2018/07/31/ourtampineshub/	Daniel Food Diary	sitemap: Tampines slug	venue=Our Tampines Hub	
+https://danielfooddiary.com/2021/02/18/tampinescafes/	Daniel Food Diary	sitemap: Tampines slug	kind=c	cafes
+https://danielfooddiary.com/2021/11/16/centurysquaresg/	Daniel Food Diary	sitemap: Tampines slug	venue=Century Square	
+https://danielfooddiary.com/2021/11/17/tampines1sg/	Daniel Food Diary	sitemap: Tampines slug	venue=Tampines 1	
+https://danielfooddiary.com/2025/12/19/tampinesmall/	Daniel Food Diary	sitemap: Tampines slug	venue=Tampines Mall	
+https://danielfooddiary.com/2026/06/16/tampinesroundmarket/	Daniel Food Diary	sitemap: Tampines slug	venue=Round Market	
+https://danielfooddiary.com/2026/11/12/tampinesmallsg/	Daniel Food Diary	sitemap: Tampines slug	venue=Tampines Mall	new openings
+https://hungrygowhere.com/what-to-eat/food-in-tampines/	HungryGoWhere	seed: src/kit/food-data.ts	all	
+https://hungrygowhere.com/what-to-eat/tampines-hawker-stalls/	HungryGoWhere	sitemap: Tampines slug	kind=h	hawker
+https://hungrygowhere.com/what-to-eat/tampines-mall-food/	HungryGoWhere	seed: src/kit/food-data.ts	venue=Tampines Mall	
+https://hungrygowhere.com/what-to-eat/tampines-round-market-food-centre/	HungryGoWhere	sitemap: Tampines slug	venue=Round Market	
+https://hungrygowhere.com/critics-reviews/hawkers-street-tampines-1/	HungryGoWhere	sitemap: Tampines slug	venue=Tampines 1;kind=h	food court review
+https://www.misstamchiak.com/tampines/	Miss Tam Chiak	sitemap: Tampines slug	all	near Tampines MRT
+https://www.misstamchiak.com/tampines-round-market/	Miss Tam Chiak	sitemap: Tampines slug	venue=Round Market	breakfast
+https://thehoneycombers.com/singapore/guide-to-tampines-singapore/	Honeycombers	web search	all	area guide (food and activities)
+https://citynomads.com/dining-guide-to-tampines-what-to-eat-in-this-eastern-suburb-of-singapore/	CityNomads	web search	all	
+https://singaporefoodie.com/eat-like-a-local-10-best-must-try-eats-around-tampines	Singapore Foodie	web search	all	
+https://www.womensweekly.com.sg/food/tampines-round-food-centre-best-hawker-stalls	Women's Weekly Singapore	web search	venue=Round Market	
+https://wonderwall.sg/Food/go-there-eat-what-tampines-round-market-food-centre	Wonderwall	web search	venue=Round Market	
+https://mothership.sg/2017/09/these-stories-of-the-people-from-the-tampines-round-market-will-warm-your-heart	Mothership	web search	venue=Round Market	stallholder stories
+https://mothership.sg/2024/07/tampines-1-hawker-street	Mothership	seed: src/kit/food-data.ts	venue=Tampines 1;kind=h	food court opening
+https://middleclass.sg/treats/hawkers-street-in-tampines/	MiddleClass	web search	venue=Tampines 1;kind=h	food court review
+https://ordinarypatrons.com/2017/08/10/our-tampines-hub-restaurants-food-places/	Ordinary Patrons (blog)	web search	venue=Our Tampines Hub	
+https://liyenz.wordpress.com/2024/06/05/our-tampines-hub-hawker-centre/	liyenz (blog)	seed: src/kit/food-data.ts	venue=Our Tampines Hub;kind=h	hawker
+https://danielfooddiary.com/2017/01/12/saapsaapthai/	Daniel Food Diary	sitemap: place-name slug	single=p039	review
+https://danielfooddiary.com/2020/11/06/puffsandpeaks/	Daniel Food Diary	sitemap: place-name slug	single=p118	review
+https://danielfooddiary.com/2021/01/25/threesacrowd/	Daniel Food Diary	sitemap: place-name slug	single=p117	review (2 outlets)
+https://danielfooddiary.com/2021/10/11/dutchcolonycafe/	Daniel Food Diary	outlet tag/location page	single=p041	opening
+https://danielfooddiary.com/2021/10/27/crazekitchen/	Daniel Food Diary	sitemap: place-name slug	single=p113	review
+https://danielfooddiary.com/2021/11/09/tonguetip/	Daniel Food Diary	outlet tag/location page	single=p089	opening
+https://danielfooddiary.com/2022/03/13/rumahmakanminang/	Daniel Food Diary	sitemap: place-name slug	single=p036	review (2 outlets)
+https://danielfooddiary.com/2022/08/05/kek/	Daniel Food Diary	outlet tag/location page	single=p096	opening
+https://danielfooddiary.com/2023/02/02/brotherbirdtampines/	Daniel Food Diary	sitemap: Tampines slug	single=p060	opening
+https://danielfooddiary.com/2023/04/19/luckincoffee/	Daniel Food Diary	sitemap: place-name slug	single=p064	opening (2 outlets)
+https://danielfooddiary.com/2023/07/31/butahagesg/	Daniel Food Diary	sitemap: place-name slug	single=p082	review (2 outlets)
+https://danielfooddiary.com/2024/04/26/glasshousecreamery/	Daniel Food Diary	seed: src/kit/food-data.ts	single=p116	review
+https://danielfooddiary.com/2024/05/16/betsubara/	Daniel Food Diary	outlet tag/location page	single=p120	review
+https://danielfooddiary.com/2026/04/14/rajaranithosai/	Daniel Food Diary	seed: src/kit/food-data.ts	single=p007	review
+https://danielfooddiary.com/2026/04/16/yipinwei/	Daniel Food Diary	seed: src/kit/food-data.ts	single=p015	review
+https://danielfooddiary.com/2026/06/08/xingjiwantonmee/	Daniel Food Diary	seed: src/kit/food-data.ts	single=p006	review
+https://danielfooddiary.com/2026/06/09/yummysarawakkolomee/	Daniel Food Diary	seed: src/kit/food-data.ts	single=p002	review
+https://danielfooddiary.com/2026/06/15/songhancarrotcake/	Daniel Food Diary	seed: src/kit/food-data.ts	single=p003	review
+https://eatbook.sg/abundance-century-square/	Eatbook	seed: src/kit/food-data.ts	single=p081	opening
+https://eatbook.sg/abundance-taiwanese-new-menu/	Eatbook	seed: src/kit/food-data.ts	single=p081	menu news
+https://eatbook.sg/alley-wei/	Eatbook	sitemap: place-name slug	single=p066	review
+https://eatbook.sg/baan-kai-khon-tampines/	Eatbook	sitemap: Tampines slug	single=p134	opening
+https://eatbook.sg/bari-bari-steak-singapore/	Eatbook	seed: src/kit/food-data.ts	single=p054	review
+https://eatbook.sg/ben-baker/	Eatbook	seed: src/kit/food-data.ts	single=p121	opening
+https://eatbook.sg/betsubara-creamery-and-cafe/	Eatbook	sitemap: place-name slug	single=p120	opening
+https://eatbook.sg/brotherbird-bakehouse-tampines-1/	Eatbook	sitemap: Tampines slug	single=p060	opening
+https://eatbook.sg/butahage-century-square/	Eatbook	seed: src/kit/food-data.ts	single=p082	opening
+https://eatbook.sg/casa-vostra-tampines/	Eatbook	sitemap: Tampines slug	single=p075	opening
+https://eatbook.sg/craze-kitchen/	Eatbook	sitemap: place-name slug	single=p113	review
+https://eatbook.sg/delato-tampines/	Eatbook	seed: src/kit/food-data.ts	single=p115	opening
+https://eatbook.sg/genki-sushi-tampines-mall/	Eatbook	sitemap: Tampines slug	single=p071	promotion
+https://eatbook.sg/ging-sun-ho-king-of-bun/	Eatbook	seed: src/kit/food-data.ts	single=p073	review
+https://eatbook.sg/ging-sun-ho-curry-bao/	Eatbook	outlet tag/location page	single=p073	menu news
+https://eatbook.sg/ging-sun-ho-crab-roe/	Eatbook	outlet tag/location page	single=p073	menu news
+https://eatbook.sg/glasshouse-creamery/	Eatbook	sitemap: place-name slug	single=p116	opening
+https://eatbook.sg/haruyama-udon/	Eatbook	seed: src/kit/food-data.ts	single=p053	review
+https://eatbook.sg/heartland-by-enjoy/	Eatbook	sitemap: place-name slug	single=p135	review
+https://eatbook.sg/house-of-dessert/	Eatbook	sitemap: place-name slug	single=p010	review
+https://eatbook.sg/hundred-acre-creamery-tampines/	Eatbook	seed: src/kit/food-data.ts	single=p114	review
+https://eatbook.sg/ippon-fusion-bowl/	Eatbook	sitemap: place-name slug	single=p024	review
+https://eatbook.sg/jin-hock-seafood/	Eatbook	sitemap: place-name slug	single=p100	review
+https://eatbook.sg/jin-kimchi-express-tampines/	Eatbook	sitemap: Tampines slug	single=p103	opening
+https://eatbook.sg/jofa-meepok/	Eatbook	sitemap: place-name slug	single=p127	review
+https://eatbook.sg/keming-bing-sat-tampines/	Eatbook	seed: src/kit/food-data.ts	single=p052	opening
+https://eatbook.sg/keng-eng-kee-seafood-tampines/	Eatbook	sitemap: Tampines slug	single=p096	opening
+https://eatbook.sg/keng-eng-kee-seafood/	Eatbook	seed: src/kit/food-data.ts	single=p096	review
+https://eatbook.sg/lawa-bintang/	Eatbook	sitemap: place-name slug	single=p131	review
+https://eatbook.sg/legendary-hong-kong-tampines-mall/	Eatbook	seed: src/kit/food-data.ts	single=p072	opening
+https://eatbook.sg/little-tokio-tampines/	Eatbook	seed: src/kit/food-data.ts	single=p098	review
+https://eatbook.sg/lolas-cafe-tampines/	Eatbook	sitemap: Tampines slug	single=p076	opening
+https://eatbook.sg/luckin-coffee-tampines/	Eatbook	sitemap: Tampines slug	single=p064	opening
+https://eatbook.sg/monster-planet-tampines-1/	Eatbook	sitemap: Tampines slug	single=p057	opening
+https://eatbook.sg/nanyang-dao-century-square/	Eatbook	seed: src/kit/food-data.ts	single=p083	opening
+https://eatbook.sg/new-deli-bakery/	Eatbook	seed: src/kit/food-data.ts	single=p119	review
+https://eatbook.sg/one18-bakery/	Eatbook	seed: src/kit/food-data.ts	single=p122	review
+https://eatbook.sg/pocha-korean-buffet/	Eatbook	outlet tag/location page	single=p074	review
+https://eatbook.sg/puffs-and-peaks/	Eatbook	sitemap: place-name slug	single=p118	review
+https://eatbook.sg/rajarani-thosai/	Eatbook	seed: src/kit/food-data.ts	single=p007	review
+https://eatbook.sg/ruxu-tampines-mall/	Eatbook	seed: src/kit/food-data.ts	single=p077	opening
+https://eatbook.sg/song-han-carrot-cake/	Eatbook	sitemap: place-name slug	single=p003	review
+https://eatbook.sg/super-gepuk/	Eatbook	seed: src/kit/food-data.ts	single=p102	opening
+https://eatbook.sg/the-only-burger/	Eatbook	sitemap: place-name slug	single=p101	review
+https://eatbook.sg/threes-a-crowd-cafe-singapore/	Eatbook	sitemap: place-name slug	single=p117	review
+https://eatbook.sg/tipsy-penguin/	Eatbook	sitemap: place-name slug	single=p111	review
+https://eatbook.sg/yeah-gelato-tampines-mall/	Eatbook	seed: src/kit/food-data.ts	single=p078	opening
+https://hungrygowhere.com/critics-reviews/bari-bari-steak-singapore/	HungryGoWhere	sitemap: place-name slug	single=p054	review
+https://hungrygowhere.com/food-news/casa-vostra-tampines-mall/	HungryGoWhere	sitemap: Tampines slug	single=p075	opening
+https://hungrygowhere.com/food-news/ging-sun-ho-singapore/	HungryGoWhere	seed: src/kit/food-data.ts	single=p073	opening
+https://hungrygowhere.com/food-news/haruyama-udon-singapore/	HungryGoWhere	sitemap: place-name slug	single=p053	opening
+https://hungrygowhere.com/food-news/heartland-by-enjoy-restaurant/	HungryGoWhere	sitemap: place-name slug	single=p135	review
+https://hungrygowhere.com/food-news/lolas-cafe-tampines/	HungryGoWhere	seed: src/kit/food-data.ts	single=p076	opening
+https://hungrygowhere.com/food-news/ramen-taisho-tampines/	HungryGoWhere	seed: src/kit/food-data.ts	single=p095	review
+https://ieatishootipost.sg/abundance-century-square-execellent-gua-bao-and-other-taiwanese-dishes/	ieatishootipost	sitemap: Tampines slug	single=p081	review
+https://ieatishootipost.sg/kek-seafood-tampines/	ieatishootipost	sitemap: Tampines slug	single=p096	review
+https://sethlui.com/137-lor-mee-prawn-mee-singapore/	Seth Lui	seed: src/kit/food-data.ts	single=p004	review
+https://sethlui.com/al-mahboob-rojak-singapore/	Seth Lui	seed: src/kit/food-data.ts	single=p108	review
+https://sethlui.com/baan-kai-khon-opens-tampines-singapore-aug-2024/	Seth Lui	sitemap: Tampines slug	single=p134	opening
+https://sethlui.com/botak-cantonese-porridge-singapore/	Seth Lui	seed: src/kit/food-data.ts	single=p021	review
+https://sethlui.com/botak-cantonese-porridge-reopens-singapore-may-2024/	Seth Lui	outlet tag/location page	single=p021	news
+https://sethlui.com/cafe-bombom-tampines-singapore-oct-2022/	Seth Lui	sitemap: Tampines slug	single=p058	opening
+https://sethlui.com/ging-sun-ho-tampines-opens-singapore-sep-2024/	Seth Lui	sitemap: Tampines slug	single=p073	opening
+https://sethlui.com/haruyama-udon-opens-tampines-singapore-jul-2024/	Seth Lui	sitemap: Tampines slug	single=p053	opening
+https://sethlui.com/im-thai-kitchen-thai-food-singapore/	Seth Lui	seed: src/kit/food-data.ts	single=p046	review
+https://sethlui.com/jin-hock-seafood-deep-fried-hor-fun-singapore/	Seth Lui	sitemap: place-name slug	single=p100	review
+https://sethlui.com/jofa-mee-pok-tampines-singapore-sep-2021/	Seth Lui	sitemap: Tampines slug	single=p127	opening
+https://sethlui.com/jofa-mee-pok-singapore	Seth Lui	seed: src/kit/food-data.ts	single=p127	review
+https://sethlui.com/lawa-bintang-lobster-nasi-lemak-singapore/	Seth Lui	sitemap: place-name slug	single=p131	review
+https://sethlui.com/legendary-hong-kong-tampines-singapore-jul-2025/	Seth Lui	sitemap: Tampines slug	single=p072	opening
+https://sethlui.com/little-tokio-tampines-singapore-nov-2022/	Seth Lui	sitemap: Tampines slug	single=p098	opening
+https://sethlui.com/my-fathers-minced-meat-noodles-singapore/	Seth Lui	seed: src/kit/food-data.ts	single=p125	review
+https://sethlui.com/one-18-bakery-singapore/	Seth Lui	seed: src/kit/food-data.ts	single=p122	review
+https://sethlui.com/rajarani-thosai-singapore/	Seth Lui	seed: src/kit/food-data.ts	single=p007	review
+https://sethlui.com/rajarani-thosai-owner-death-singapore-jun-2026/	Seth Lui	sitemap: place-name slug	single=p007	news
+https://sethlui.com/san-ye-seafood-tampines-singapore-feb-2024/	Seth Lui	seed: src/kit/food-data.ts	single=p128	opening
+https://sethlui.com/shen-li-restaurant-singapore/	Seth Lui	seed: src/kit/food-data.ts	single=p014	review
+https://sethlui.com/song-han-carrot-cake-tampines-singapore/	Seth Lui	sitemap: Tampines slug	single=p003	review
+https://sethlui.com/song-han-carrot-cake-tampines-singapore-aug-2023/	Seth Lui	sitemap: Tampines slug	single=p003	news
+https://sethlui.com/the-only-burger-tampines-singapore-jan-2024/	Seth Lui	seed: src/kit/food-data.ts	single=p101	opening
+https://sethlui.com/threes-a-crowd-waffles-singapore/	Seth Lui	sitemap: place-name slug	single=p117	review
+https://sethlui.com/tipsy-penguin-sports-bar-singapore/	Seth Lui	sitemap: place-name slug	single=p111	review
+https://sethlui.com/xing-ji-wanton-mee-singapore/	Seth Lui	seed: src/kit/food-data.ts	single=p006	review
+https://sethlui.com/yummy-sarawak-kolo-mee-tampines-singapore/	Seth Lui	seed: src/kit/food-data.ts	single=p002	review
+https://sethlui.com/zouls-corner-singapore/	Seth Lui	sitemap: place-name slug	single=p130	review
+https://www.misstamchiak.com/jin-hock-seafood-tampines/	Miss Tam Chiak	sitemap: Tampines slug	single=p100	review
+https://www.misstamchiak.com/keng-eng-kee-seafood-tampines-safra/	Miss Tam Chiak	sitemap: Tampines slug	single=p096	opening
+https://www.misstamchiak.com/koungs-wan-tan-mee-tampines/	Miss Tam Chiak	sitemap: Tampines slug	single=p050	opening
+https://www.misstamchiak.com/lawa-bintang/	Miss Tam Chiak	sitemap: place-name slug	single=p131	review
+https://www.misstamchiak.com/nasi-lemak-specialist/	Miss Tam Chiak	sitemap: place-name slug	single=p001	review
+https://www.misstamchiak.com/rajarani-thosai/	Miss Tam Chiak	sitemap: place-name slug	single=p007	review
+https://www.misstamchiak.com/saap-saap-thai/	Miss Tam Chiak	sitemap: place-name slug	single=p039	review
+https://www.misstamchiak.com/song-han-carrot-cake/	Miss Tam Chiak	sitemap: place-name slug	single=p003	review
+https://www.misstamchiak.com/teo-kee-minced-pork-noodles/	Miss Tam Chiak	sitemap: place-name slug	single=p005	review
+https://www.misstamchiak.com/xing-yun-kway-chap/	Miss Tam Chiak	sitemap: place-name slug	single=p019	review
+https://www.misstamchiak.com/xiong-kee-famous-carrot-cake/	Miss Tam Chiak	sitemap: place-name slug	single=p016	review
+https://faithfullyours18.blogspot.com/2024/04/pocha-tampines-review.html	Faithfully Yours (blog)	seed: src/kit/food-data.ts	single=p074	review
+https://www.thewackyduo.com/2024/02/soi-thai-kitchen-tampines-review-your.html	The Wacky Duo (blog)	seed: src/kit/food-data.ts	single=p099	review
+https://www.littledayout.com/tanyu-sichuan-grilled-fish-restaurant-singapore/	Little Day Out (blog)	seed: src/kit/food-data.ts	single=p056	review (chain; Tampines 1 outlet listed)

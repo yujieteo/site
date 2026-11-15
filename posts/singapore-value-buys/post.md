@@ -1,13 +1,15 @@
 ---
 title: What Singapore buys, what it costs and when it is a deal
 date: 2026-11-08
-summary: Advice for the 12 groups of household spending, biggest first. It uses SingStat data through September 2026 and prices from shops and service providers. The list shows the current number of price rows.
-summary: Every piece of advice uses one of four levers. In order, they are to check quality, take the lowest price that passes, buy at the right time and buy the right amount.
-summary: A product is the pick by rule only. It is the cheapest unit price that passes the stated check. Each result links to its source when the product page or another source shows the required fact.
-summary: 33 of the 63 goods with enough history have a steady month pattern. In the historical data, several fish and seafood prices were lower in November than in January.
+summary: This post goes deep on 11 goods instead of wide on 84. For each, it gives what the price is made of, what moves it, what to do and a dated call that a script will score against SingStat.
+summary: An upstream cost beat "today plus half the usual drift" at both 3 and 12 months for eggs, coffee and hawker food. For the other eight, the honest forecast is close to today's price, and for rice and cooking oil, world prices barely reach the shelf within a year.
+summary: Electricity for October to December 2026 is already set. SP Group cut the household tariff by 10.4%, and the call on record puts the December index at 93.4 to 98.7, from 103.2 in September.
+summary: A snapshot of every FairPrice product in eight of the goods, taken on 15 November 2026, shows that 181 of the 266 products with a price cut had an "offer" that runs for 300 days or more, so the "was" price is not a real price.
 summary: Nobody tested these goods for this post. Quality checks come from health and food agencies, and forecasts are ranges, not promises.
 ---
-This page answers one question: what is the best quality for the price, for the things a Singapore household spends money on? It follows the money. The 12 groups below come from the Household Expenditure Survey, biggest share first.
+This page answers one question: what is the best quality for the price, for the things a Singapore household spends money on?
+
+It goes deep on 11 goods that are both a large part of the budget and traceable to a cost upstream: eggs, rice, chicken, fresh fish, coffee, cooking oil, milk, bread, electricity, petrol and hawker food. For each, it asks what a supermarket buyer would ask. What is the price made of? What moves it, and how far ahead? Is the shelf price today below what its costs say it should be? The other spending groups are still at the end, as they were.
 
 ## The rule
 
@@ -15,14 +17,131 @@ Every piece of advice on this page uses one of four levers. Use them in this ord
 
 1. **Check quality.** Find the one thing you can verify on the pack or in the shop, and pay more only for that. Toothpaste that states 1,450 ppm fluoride is worth it. A shampoo with a nicer scent may not be.
 2. **Take the lowest price that passes.** Compare unit prices: per 100 g, per 100 sheets or per wash. Do not compare packs. Use the deal price as a guide, and compare products of the same quality.
-3. **Buy at the right time.** A few goods have a steady month pattern, and fish is the big one. For the rest, do not wait for a price to fall. Most goods drift up, so if you need it and the price is fair, buy it.
+3. **Buy at the right time.** Wait only where there is a signal with a record: a price that is already announced, such as the electricity tariff, a cost that leads the shelf price by months and beat the plain forecast in a backtest, or a steady month pattern, as for fish. For the rest, do not wait for a price to fall. Most goods drift up, so if you need it and the price is fair, buy it.
 4. **Buy the right amount.** A pass or a big pack is a deal only if you use it. Stock up only on what keeps.
 
 A product is named as the pick by rule only. It is the cheapest unit price found that passes the check of its item. Where no product shows the check, there is no pick, and the page says so.
 
-## What to do, by where the money goes
+## Eleven goods, in depth
 
-Each row is one group of household spending, with its share. Open it for the advice under the four levers, then the shop prices and official prices behind that advice. Or type a word, such as eggs, taxi or sofa.
+For each good, three questions. What is the price made of? Does a cost upstream tell you where it is going, and how far ahead? What should you do today?
+
+The test of a cost signal is a backtest. Stand at each month from January 2020, use only the data known then, and forecast the CPI item 3 and 12 months ahead. The plain forecast to beat is the winner from [How the forecasts work](#how-the-forecasts-work): today's level plus half the usual drift. The cost forecast adds how much of the cost's past change later showed up in the price. A signal is kept only if it beats the plain forecast at both 3 and 12 months.
+
+| Good | Upstream cost tested | Best lag | Miss at 3 months, plain → cost | At 12 months | Kept |
+|---|---|---|---|---|---|
+| Eggs | Maize and soybean meal, in S$ | 9 months | 2.49% → 2.25% | 7.32% → 7.08% | Yes |
+| Rice | Thai 5% white rice | none | 1.92% → 2.10% | 2.17% → 2.52% | No |
+| Chicken | Maize, soybean meal, world chicken | 16 months | 1.90% → 2.01% | 6.50% → 8.13% | No |
+| Fresh fish | Brent crude, for boat fuel | none | 2.41% → 2.43% | 3.77% → 4.10% | No |
+| Coffee | Robusta and arabica | 15 months | 1.42% → 1.35% | 4.03% → 3.59% | Yes |
+| Cooking oil | Palm, soybean, sunflower and rapeseed oil | 6 months | 2.51% → 2.59% | 3.81% → 5.09% | No |
+| Milk | No world price fits | | | | Not tested |
+| Bread | US hard red winter wheat | 18 months | 0.89% → 0.91% | 2.94% → 3.40% | No |
+| Electricity | Asian LNG and Brent | 3 months | 3.15% → 2.86% | 8.38% → 8.83% | No, but the tariff is announced |
+| Petrol | Brent crude | 0 months | 4.52% → 4.94% | 8.88% → 9.12% | No |
+| Hawker food | The CPI for food at home | 1 month | 0.58% → 0.47% | 1.15% → 0.76% | Yes, on 34 months |
+
+The miss is the average gap between forecast and outcome. Both columns use the same months. The best lag is where the yearly change of the cost and of the price line up most closely over the whole period. It describes the data and was not used to pick a model.
+
+Three goods out of 11 have a cost signal that earns its place, and even those gain little. Everywhere else, the honest forecast is close to today's price. The first run used cost changes over the last 12 months only. Coffee, chicken and bread line up with costs 15 to 18 months back, so a second run added the 12 to 18 months before. Only coffee passed with it. Both runs are in [the results file](https://github.com/yujieteo/site/blob/main/scripts/prices/results/passthrough.tsv).
+
+### Eggs
+
+- **Made of.** Most eggs are imported, mainly from Malaysia, and the rest come from local farms. How much of the shelf price is the imported good itself is still to come: Singapore's import records by HS code are being collected, and run only to July 2021 so far.
+- **What moves it.** Feed. Maize and soybean meal lead the egg CPI by about 9 months, and adding them beat the plain forecast at both horizons. In S$, maize is up 19% and soybean meal 23% in the year to September 2026.
+- **What to do.** No egg at FairPrice had a price cut on 15 November. Buy on unit price. A 30-egg tray was 23 cents an egg against a median of 40 cents for caged eggs. A tray is a deal only if you use 30 eggs before the date on the pack.
+- **Call.** September 2027: 105.2 to 131.4, from 99.7. The range is wide and leans up because egg prices jumped in 2022 and 2024.
+
+### Rice
+
+- **Made of.** All rice is imported. Importers must hold a stockpile under the Rice Stockpile Scheme. That buffer may be part of why the shelf price ignores world swings.
+- **What moves it.** Not the world price. Thai 5% rice in S$ rose 27% in the year to September 2026, and the rice CPI rose 2.5%. The fitted pass-through is close to zero.
+- **What to do.** Nothing to time. Rice keeps, so buy the cheapest unit price that you like eating. Fragrant rice on 15 November ran from S$1.53 a kg to a median of S$2.98 a kg.
+- **Call.** September 2027: 98.4 to 106.5, from 101.8.
+
+### Chicken
+
+- **Made of.** Chilled chicken comes mainly from Malaysia, and frozen chicken from Brazil and the US. Feed is the largest farm cost. How much of the shelf price is the imported good itself is still to come: Singapore's import records by HS code are being collected, and run only to July 2021 so far.
+- **What moves it.** Feed lines up with the chicken CPI 16 months later, but a forecast built on it did worse than the plain one.
+- **What to do.** Ignore the "was" price. On 15 November, 95 of 210 chicken products at FairPrice showed a cut, and most of those cuts run for a year. The SingStat average for a whole chilled chicken was S$8.68 a kg in September. The cheapest whole bird online was S$9.00 a kg and the median S$13.80, so a wet market or a shop's own counter is likely cheaper than a packed bird online.
+- **Call.** September 2027: 96.8 to 132.0, from 99.1.
+
+### Fresh fish
+
+- **Made of.** Mostly imported, with some local farms. Wholesale prices at Jurong Fishery Port are not published, so this post cannot split the shelf price.
+- **What moves it.** No cost signal worked. The month pattern does: several fish are cheaper in November than in January, before Chinese New Year. See food at home in the list below.
+- **What to do.** Buy fish for Chinese New Year early, and freeze what keeps. As with chicken, 110 of 161 fish products online showed a "cut" on 15 November, and most run for a year.
+- **Call.** September 2027: 102.1 to 115.3, from 106.3.
+
+### Coffee
+
+- **Made of.** Imported beans or instant coffee, then roasting, packing, sugar and milk powder for the mixes. How much of the shelf price is the imported good itself is still to come: Singapore's import records by HS code are being collected, and run only to July 2021 so far.
+- **What moves it.** World coffee, about 15 months later. In S$, robusta is down 37% and arabica 21% over the 18 months to September 2026. Over the past year the coffee CPI still rose 5.8%, and in September 2026 it was at its highest since the series began in 2015.
+- **What to do.** Do not stock up on coffee now. The cost model says the next move is flat to down.
+- **Call.** September 2027: 117.2 to 124.9, from 118.8. The model's middle guess is 117.2, below today. The range sits above it because the model under-forecast the 2024 and 2025 rise.
+
+### Cooking oil
+
+- **Made of.** Palm oil from Malaysia and Indonesia, and soybean, sunflower and canola oil from further away. How much of the shelf price is the imported good itself is still to come: Singapore's import records by HS code are being collected, and run only to July 2021 so far.
+- **What moves it.** Not the world price, within a year. Soybean oil in S$ rose 37% in the year to September 2026, and the cooking oil CPI fell 1.6%.
+- **What to do.** Oil keeps. Buy the big pack at the lowest unit price. On 15 November, everyday oils ran from S$2.79 a litre in a 5 L bottle to a median of S$4.90.
+- **Call.** September 2027: 99.1 to 110.6, from 101.9.
+
+### Milk
+
+- **Made of.** Fresh milk is imported, from Malaysia and Australia among others. The World Bank publishes no dairy price. How much of the shelf price is the imported good itself is still to come: Singapore's import records by HS code are being collected, and run only to July 2021 so far.
+- **What moves it.** No cost signal yet. The test on Singapore's own import value waits for the import records. The milk CPI moves the least of the 11 goods.
+- **What to do.** No milk had a price cut on 15 November. Four of 46 had a multi-buy offer. Buy the size you finish before it turns.
+- **Call.** September 2027: 98.9 to 105.5, from 100.0.
+
+### Bread
+
+- **Made of.** Mostly baking, delivery and margin. At September's US wheat price of S$444 a tonne, the wheat in a kg of bread costs about 36 cents. That is 9% of the cheapest white loaf and 4% of the median one. This assumes 0.6 kg of flour per kg of bread and 0.75 kg of flour per kg of wheat.
+- **What moves it.** Wheat lines up with the bread CPI about 18 months later, but too weakly to forecast with. US wheat in S$ rose 46% in the year to September 2026, and bread rose 1.4%.
+- **What to do.** Compare per kg, not per loaf. FairPrice's own enriched white bread was S$4.10 a kg on 15 November, against a median of S$9.50 for white loaves.
+- **Call.** September 2027: 104.5 to 112.9, from 103.7.
+
+### Electricity
+
+- **Made of.** About 95% of Singapore's power comes from natural gas, and gas contracts follow oil prices. SP Group sets the household tariff each quarter from the gas prices of the quarter before. [EMA ↗](https://ema.gov.sg/consumer-information/electricity/buying-electricity/buying-at-regulated-tariff)
+- **What moves it.** The tariff, and it is announced before the quarter starts. 98% of the monthly movement in the electricity CPI happens in January, April, July and October. In July 2026 the tariff rose 17.0% and the CPI rose 10.8%. That is about 65% of the change, because many homes are on fixed-price retailer plans.
+- **What to do.** For October to December 2026 the tariff is 28.59 cents a kWh before GST, down 10.4%. SP said fuel prices have risen since September, so the next quarter may go up. If a retailer offers a fixed price, compare it with 28.59 cents. The next tariff comes out at the end of December. [SP Group ↗](https://www.spgroup.com.sg/our-services/utilities/tariff-information)
+- **Call.** December 2026: 93.4 to 98.7, from 103.2. This is the one call made from a known price, not a forecast. The plain forecast would have said 100.7 to 110.2, almost surely wrong.
+
+### Petrol
+
+- **Made of.** Crude oil, refining, the petrol duty and the pump operator's margin.
+- **What moves it.** Brent crude, in the same month. The yearly changes line up closely (0.87), but at no lag, so by the time crude moves the pump price has moved too. No cost forecast beat the plain one.
+- **What to do.** Nothing to time. The lever is the discount on your card or membership, under transport in the list below. The SingStat average for 95-octane was S$2.92 a litre in September 2026.
+- **Call.** September 2027: 110.8 to 146.4, from 115.1. Petrol has the widest range of the 11.
+
+### Hawker food
+
+- **Made of.** Ingredients, rent, labour and gas. A plate of chicken rice averaged S$4.25 in September 2026, and a cup of coffee or tea with condensed milk S$1.45.
+- **What moves it.** Grocery prices, a month later. Adding the CPI for food at home beat the plain forecast at both horizons. The 12-month test has only 34 months, because the hawker series starts in 2019.
+- **What to do.** Nothing to time. In the 92 months since the hawker index began in 2019, it never fell by more than a rounding step. The lever is the order: coffee or tea without milk averaged S$1.27, 18 cents less than with condensed milk.
+- **Call.** September 2027: 105.9 to 108.4, from 104.6.
+
+## A snapshot of shelf prices
+
+On 15 November 2026, a script saved every FairPrice product in the eight shop goods above: 1,066 products. It kept the shop's whole reply, with barcode, pack, price, "was" price and the dates of each offer. Sheng Siong and Cold Storage do not publish prices in a form a script can read, so the snapshot is FairPrice only.
+
+What it shows:
+
+- **Most "cuts" are not sales.** 266 products showed a price below their "was" price. For 181 of them, the offer runs 300 days or more, often from 23 October 2026 to 23 October 2027. Those had a median cut of 33%. Most are fresh chicken and fish from marketplace sellers. A price that is always on offer is the normal price.
+- **Real offers are shallower.** The other 85 offers ran a median of 57 days, at a median of 15% off.
+- **Eggs, milk and bread had no price cuts at all.** Their only offers were buy-two deals.
+
+What one day cannot show: a product's regular price, how deep and how often its sales come, and whether its pack has shrunk. Those need the same products read again over weeks. With one snapshot, the offer dates are the best guide: an offer that runs a year is not a sale, and one with an end date in a few weeks probably is.
+
+## Calls on record
+
+Each good above has a dated call, an 80% range for the CPI in December 2026 and September 2027. All 22 are on [the calls page](/calls/). They were made on 15 November 2026 from the CPI of September 2026, and they are not changed afterwards. When SingStat publishes a month, a script reads the value and the page scores the calls. About 8 in 10 outcomes should fall inside their ranges. If far fewer do, the ranges are too narrow, and the page will show it. The first calls resolve when the December CPI comes out, in late January 2027.
+
+## All 12 spending groups
+
+This is the wide view from the first version of this post, kept as it was. Each row is one group of household spending, with its share. Open it for the advice under the four levers, then the shop prices and official prices behind that advice. Or type a word, such as eggs, taxi or sofa.
 
 ::figure kind=life alt="A list of the 12 groups of household spending, each with a bar for its share, from eating out at 16.3% to holiday stays at 1.4%. Each group opens to advice under four levers, then shop prices and official prices." caption="Sources: Household Expenditure Survey 2023 for the shares. SingStat tables M213761 and M213751, to September 2026, for official prices. See the linked shop, agency and product-check sources for individual rows."
 
@@ -51,6 +170,10 @@ Each row is one group of household spending, with its share. Open it for the adv
 - **The picks.** A pick is the cheapest unit price found that passes the check. It is not a test result, and nobody looked at a pack in a shop.
 - **The month patterns.** A pattern counts only if the cheapest month beat the dearest month in at least 80% of years, and the gap is bigger than chance. 33 of 63 goods pass. The 14 with the widest gap appear as timing advice under food at home.
 - **The prices.** The first prices were read on 8 and 9 November 2026. Entries marked “listing” came from search listings. A price added later shows the day it was read.
+- **The eleven goods.** Each was picked because it is a large part of the budget and has a cost upstream that can be traced. The CPI item for each is from SingStat table M213751. World prices are from the World Bank Pink Sheet, in US$, turned into S$ at the month's exchange rate. A cost is used only from the month after it is published.
+- **The cost backtest.** [scripts/prices/passthrough.py](https://github.com/yujieteo/site/blob/main/scripts/prices/passthrough.py) runs it. Two sets of cost windows were tried: the last 0 to 6 and 6 to 12 months, and the same plus 12 to 18 months. A good keeps the first set that passes. Trying two sets gives each good two chances, so a pass is weaker evidence than it looks, and a small gain such as eggs' could be luck.
+- **The snapshot.** [scripts/prices/collect.ts](https://github.com/yujieteo/site/blob/main/scripts/prices/collect.ts) saved the shop's replies, and [history.ts](https://github.com/yujieteo/site/blob/main/scripts/prices/history.ts) reads them into unit prices. 1,023 of 1,066 products on the first day had a pack size it could read. The rest were eggs sold by weight with no count and coffee sachets with no weight.
+- **The calls.** Each call is one line in [notes/calls.tsv](/notes/calls.txt). The build stops if a call's date is not before its month. Git keeps every past version, so a changed call would show.
 - **Updates.** An AI agent can add a product, a product check or a piece of advice as a note, one line in a file. The build checks every line and stops on a bad one, and I merge each change. [How to write notes](/api/notes.txt) gives the format.
 
 ## Background
@@ -177,6 +300,12 @@ The forecasts in this post use that winner. The range is where 80% of past misse
 - **Data end.** SingStat data ends at September 2026. Use the date on a later shop entry to judge how recent its price is.
 - **Toothpaste and shampoo** have no official item price in Singapore's list.
 
+- **One shop.** The snapshot is FairPrice online only. Prices in its stores, at Sheng Siong and at wet markets can differ.
+- **One day.** The shelf prices are one day, 15 November 2026. The page gives no regular price, sale pattern or wait-or-buy rule for a product, because one day cannot support them.
+- **Import costs.** The UN Comtrade records of Singapore's imports are fetched one month at a time from a free service that limits each day's requests. On 15 November 2026 they ran from January 2015 to July 2021, so the import cost of each good and the test of import values against the CPI are not on this page yet.
+- **Wholesale.** Jurong Fishery Port and Pasir Panjang Wholesale Centre do not publish prices. This post does not guess them.
+- **The tariff call** rests on one quarter's pass-through, July 2026. Its range is wide for that reason.
+
 ## Sources
 
 - [Average retail prices, table M213761, SingStat ↗](https://tablebuilder.singstat.gov.sg/table/TS/M213761)
@@ -187,3 +316,10 @@ The forecasts in this post use that winner. The range is where 80% of past misse
 - [Middle East and food supply, Mothership ↗](https://mothership.sg/2026/03/grace-fu-middle-east-food-supply/)
 - [Food labels, SFA ↗](https://www.sfa.gov.sg/food-safety-tips/food-risk-concerns/understanding-food-nutrition-labels-before-purchase)
 - [Saving on Shopee, ShopBack ↗](https://www.shopback.sg/blog/finance/shopee-save-money-singapore)
+- [Commodity prices, the Pink Sheet, World Bank ↗](https://www.worldbank.org/en/research/commodity-markets)
+- [Singapore imports by HS code, UN Comtrade ↗](https://comtradeplus.un.org/)
+- [Electricity tariff, SP Group ↗](https://www.spgroup.com.sg/our-services/utilities/tariff-information)
+- [Higher electricity tariffs for July to September 2026, EMA ↗](https://ema.gov.sg/news-events/news/media-releases/2026/Higher-Electricity-and-Town-Gas-Tariffs-for-July-September-2026)
+- [Electricity tariff to fall 10.4% from October, Must Share News ↗](https://mustsharenews.com/electricity-gas-tariffs-fall-q4/)
+- [Reference prices, costs and nominal rigidities, Eichenbaum, Jaimovich and Rebelo, American Economic Review, 2011 ↗](https://www.aeaweb.org/articles?id=10.1257/aer.101.1.234)
+- FairPrice product data, saved from its website API on 15 November 2026

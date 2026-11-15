@@ -1,0 +1,319 @@
+place_id	uen	entity_name	entity_type	status	registration_date	status_date	level_no	unit_no	postal	match_rule	name_score	chosen	ssic
+p000	53391668B	CHAI CHEE PORK PORRIDGE	Sole Proprietorship/ Partnership	Live	2018-12-26		01	39	521137	unit+name	1.00	1	56140
+p000	52818725B	JIA HUA COOKED FOOD	Sole Proprietorship/ Partnership	Cancelled	1996-03-29		01	39	521137	unit	0.29	0	56140
+p001	53362173M	NASI LEMAK SPECIALIST	Sole Proprietorship/ Partnership	Live	2017-05-08		01	14	521137	unit+name	1.00	1	56140
+p006	53344251J	XING JI	Sole Proprietorship/ Partnership	Live	2016-08-19		01	35	521137	unit+name	1.00	1	10750
+p006	53099639A	XIN JI	Sole Proprietorship/ Partnership	Cancelled	2007-08-27		01	35	521137	unit	0.50	0	10750
+p007	53533008A	RAJARANI	Sole Proprietorship/ Partnership	Live	2026-09-30		01	33	521137	unit+name	1.00	1	56140
+p007	53123641B	MING EARN KITCHEN	Sole Proprietorship/ Partnership	Terminated	2008-08-19		01	33	521137	unit	0.44	0	56140
+p012	10530900A	HENG HUAT PIN KEE	Sole Proprietorship/ Partnership	Live	1975-07-12		01	54	521137	name	0.62	1	47109
+p014	53130364X	SHEN LI RESTAURANT	Sole Proprietorship/ Partnership	Live	2008-12-01		01	15	521137	unit+name	1.00	1	56140
+p014	31006300X	SHENG LI RESTAURANT	Sole Proprietorship/ Partnership	Ceased Registration	1983-05-12		01	15	521137	unit+name	0.97	0	56111
+p014	26827300J	KIN TEE RESTAURANT	Sole Proprietorship/ Partnership	Cancelled	1980-07-10		01	08	521137	name	0.78	0	68104
+p016	53013157M	XIONG KEE FOOD ENTERPRISE	Sole Proprietorship/ Partnership	Cancelled	2004-02-06		01	29	521137	unit+name	0.60	1	56140
+p019	53362173M	NASI LEMAK SPECIALIST	Sole Proprietorship/ Partnership	Live	2017-05-08		01	14	521137	unit	0.26	1	56140
+p019	53344251J	XING JI	Sole Proprietorship/ Partnership	Live	2016-08-19		01	35	521137	name	0.73	0	10750
+p024	202322168G	SUPABEN PTE. LTD.	Local Company	Live Company	2023-06-06		01	72	528523	unit	0.31	1	56140
+p024	53453359X	DCLICIOUS GOURMET	Sole Proprietorship/ Partnership	Ceased Registration	2022-07-19		01	72	528523	unit	0.29	0	56140
+p031	53494464K	ZAREEN'S KITCHEN	Sole Proprietorship/ Partnership	Live	2024-11-11		01	58	528523	unit	0.41	1	56122
+p031	53497998W	DOBEH DELIGHTS	Sole Proprietorship/ Partnership	Live	2025-02-10		01	58	528523	unit	0.25	0	56122
+p031	202613475Z	HK EXPRESS PTE. LTD.	Local Company	Live Company	2026-03-26		01	58	528523	unit	0.17	0	56140
+p033	53507080B	PNJ WESTERN	Sole Proprietorship/ Partnership	Live	2025-07-14		1	69	528523	unit+name	0.78	1	56140
+p033	53394938J	FRUITS & VEG @ OTH	Sole Proprietorship/ Partnership	Ceased Registration	2019-03-11		01	69	528523	unit	0.27	0	56122
+p046	53504001J	FAT FAT KITCHEN	Sole Proprietorship/ Partnership	Live	2025-05-15		01	66	528523	name	0.78	1	56140
+p046	53494464K	ZAREEN'S KITCHEN	Sole Proprietorship/ Partnership	Live	2024-11-11		01	58	528523	name	0.65	0	56122
+p047	53504001J	FAT FAT KITCHEN	Sole Proprietorship/ Partnership	Live	2025-05-15		01	66	528523	name	0.78	1	56140
+p047	53494464K	ZAREEN'S KITCHEN	Sole Proprietorship/ Partnership	Live	2024-11-11		01	58	528523	name	0.67	0	56122
+p049	53412577L	RICKY ROJAK ISTIMEWA	Sole Proprietorship/ Partnership	Live	2020-04-26		5	05	529536	unit	0.31	1	56140
+p049	202314597G	JUST CHEONG FUN 101 PTE. LTD.	Local Company	Struck Off	2023-04-18		05	06	529536	unit	0.22	0	47219
+p050	53412577L	RICKY ROJAK ISTIMEWA	Sole Proprietorship/ Partnership	Live	2020-04-26		5	05	529536	unit	0.26	1	56140
+p050	202314597G	JUST CHEONG FUN 101 PTE. LTD.	Local Company	Struck Off	2023-04-18		05	06	529536	unit	0.39	0	47219
+p051	53412577L	RICKY ROJAK ISTIMEWA	Sole Proprietorship/ Partnership	Live	2020-04-26		5	05	529536	unit	0.34	1	56140
+p051	202314597G	JUST CHEONG FUN 101 PTE. LTD.	Local Company	Struck Off	2023-04-18		05	06	529536	unit	0.27	0	47219
+p052	202611715N	KEMING (TAMPINES) PTE. LTD.	Local Company	Live Company	2026-03-17		02	14	529536	unit	0.57	1	56111
+p052	202643212R	AXION MEDIA INTERNATIONAL PTE. LTD.	Local Company	Live Company	2026-09-18		02	14	529536	unit	0.38	0	60302
+p074	53407704L	JT BEAUTY	Sole Proprietorship/ Partnership	Cancelled (Non-Renewal)	2020-01-01		B1	02	529510	unit	0.23	1	96022
+p086	52817662E	PHONE JUNCTION 2	Sole Proprietorship/ Partnership	Cancelled	1996-03-15		04	32	529510	unit	0.29	1	26301
+p086	53137152B	KLT INTERNATIONAL	Sole Proprietorship/ Partnership	Cancelled	2009-03-05		04	32	529510	unit	0.28	0	46900
+p086	52862993W	LEONBEN ENTERPRISE	Sole Proprietorship/ Partnership	Terminated	1998-03-03		04	32	529510	unit	0.20	0	46452
+p095	200906801R	RICO-A-MONA BRIDAL PTE. LTD.	Local Company	Live Company	2009-04-17		01	23	520802	unit	0.42	1	96040
+p095	53519256L	GAVON BRIDAL	Sole Proprietorship/ Partnership	Live	2026-02-26		01	23	520802	unit	0.42	0	74193
+p095	200504454G	DIGIO BRIDAL PTE. LTD.	Local Company	Live Company	2005-04-05		01	23	520802	unit	0.31	0	74193
+p095	43872700B	EAT SHOP 21	Sole Proprietorship/ Partnership	Terminated	1991-01-04		01	23	520802	unit	0.43	0	56112
+p095	52931168B	DI GIO BRIDAL	Sole Proprietorship/ Partnership	Terminated	2000-10-23		01	23	520802	unit	0.40	0	74193
+p095	39931900W	802 TONG SUN FRESH MART	Sole Proprietorship/ Partnership	Terminated	1988-09-21		01	23	520802	unit	0.34	0	47102
+p095	52815064B	GOLDEN HORSE AWARDS BRIDAL & PHOTO WORLD TRADE	Sole Proprietorship/ Partnership	Cancelled	1996-01-31		01	23	520802	unit	0.29	0	74200
+p095	202344619R	PHUAORITY CONSTRUCTION CO PTE. LTD.	Local Company	Struck Off	2023-11-10		01	23	520802	unit	0.27	0	42100
+p097	53087629M	LE GRAND SCHOOL OF DANCE	Sole Proprietorship/ Partnership	Ceased Registration	2007-03-08		01	06	529653	unit	0.26	1	85508
+p098	202215483H	RED PEAR PTE. LTD.	Local Company	Live Company	2022-05-05		01	22	520824	unit	0.36	1	56111
+p098	53293147E	KHON THAI KITCHEN	Sole Proprietorship/ Partnership	Cancelled (Non-Renewal)	2015-04-01		01	22	520824	unit	0.41	0	56111
+p098	53234557J	BANGRAK THAI KITCHEN	Sole Proprietorship/ Partnership	Ceased Registration	2013-04-08		01	22	520824	unit	0.38	0	56111
+p098	52940087A	AD-DEEN PROMOTIONS NETWORK	Sole Proprietorship/ Partnership	Terminated	2001-03-19		01	22	520824	unit	0.37	0	82999
+p098	32847100C	WONG YENG KEE AQUARIUM STORE	Sole Proprietorship/ Partnership	Terminated	1984-05-24		01	22	520824	unit	0.30	0	47745
+p098	52803977J	SUCI ENTERPRISE	Sole Proprietorship/ Partnership	Terminated	1995-07-25		01	22	520824	unit	0.30	0	46424
+p098	35366500B	ANIMAQUA FLORA	Sole Proprietorship/ Partnership	Terminated	1985-12-27		01	22	520824	unit	0.23	0	46444
+p098	43784900K	ZALEHA CAKE SHOP	Sole Proprietorship/ Partnership	Cancelled	1990-12-07		01	22	520824	unit	0.21	0	10712
+p098	T11LL2121E	BALANCE & CLEANSE WELLNESS LLP	Limited Liability Partnership	Struck Off	2011-11-25		01	22	520824	unit	0.20	0	47214
+p098	52961475L	LITTLE FISH AQUARIUM	Sole Proprietorship/ Partnership	Cancelled	2002-01-25		01	26	520824	name	0.67	0	46212
+p099	53502891A	DESTYNEE STUDIO	Sole Proprietorship/ Partnership	Live	2025-04-21		01	28	520824	unit	0.39	1	96029
+p099	53027232J	TIAN XIANG TONIC	Sole Proprietorship/ Partnership	Cancelled	2004-08-16		01	28	520824	unit	0.44	0	47214
+p099	53071546E	THURSINA HAIRSTYLIST	Sole Proprietorship/ Partnership	Terminated	2006-06-30		01	028	520824	unit	0.39	0	96021
+p099	53272299W	DESTYNEE STUDIO	Sole Proprietorship/ Partnership	Cancelled (Non-Renewal)	2014-08-29		01	28	520824	unit	0.39	0	96022
+p099	52893628W	CHI NESE COMICS	Sole Proprietorship/ Partnership	Ceased Registration	1999-05-26		01	28	520824	unit	0.39	0	77299
+p099	52945233B	ELKINI MARKETING CONCEPT	Sole Proprietorship/ Partnership	Cancelled	2001-06-01		01	28	520824	unit	0.35	0	46100
+p099	53183454M	SUGAR SHACK	Sole Proprietorship/ Partnership	Cancelled	2011-01-13		01	28	520824	unit	0.30	0	56140
+p099	53133926B	M. DAILY CUP	Sole Proprietorship/ Partnership	Cancelled	2009-01-20		01	28	520824	unit	0.30	0	56140
+p099	43810500A	DAS PROMOTIONS	Sole Proprietorship/ Partnership	Terminated	1990-12-13		01	28	520824	unit	0.27	0	77391
+p099	53293147E	KHON THAI KITCHEN	Sole Proprietorship/ Partnership	Cancelled (Non-Renewal)	2015-04-01		01	22	520824	name	0.86	0	56111
+p099	53234557J	BANGRAK THAI KITCHEN	Sole Proprietorship/ Partnership	Ceased Registration	2013-04-08		01	22	520824	name	0.86	0	56111
+p100	53450980X	844 WUXIANG	Sole Proprietorship/ Partnership	Live	2022-05-26		01	131	520844	unit	0.22	1	56122
+p100	202430472G	FUNG YI PTE. LTD.	Local Company	Live Company	2024-07-26		01	131	520844	unit	0.19	0	47219
+p100	52964351X	JIN FU SEAFOOD RESTAURANT	Sole Proprietorship/ Partnership	Cancelled (Non-Renewal)	2002-03-12		01	131	520844	unit+name	0.81	0	56111
+p100	09406500D	KOON BEE EATING HOUSE	Sole Proprietorship/ Partnership	Terminated	1975-06-19		01	131	520844	unit	0.43	0	68104
+p100	52836226K	CHENG QUN FISHHEAD STEAMBOAT	Sole Proprietorship/ Partnership	Terminated	1996-12-26		01	131	520844	unit	0.41	0	56140
+p100	52929539C	ANTHONY'S FRIED CHICKEN & WESTERN FOOD	Sole Proprietorship/ Partnership	Terminated	2000-09-27		01	131	520844	unit	0.38	0	56140
+p100	53086035W	WAH LOK	Sole Proprietorship/ Partnership	Ceased Registration	2007-02-08		01	131	520844	unit	0.35	0	56122
+p100	45701000B	A & A MUSLIM FOOD	Sole Proprietorship/ Partnership	Cancelled	1991-12-16		01	131	520844	unit	0.34	0	56140
+p100	35828000A	B B Q FOODSTALL	Sole Proprietorship/ Partnership	Terminated	1986-04-16		01	131	520844	unit	0.34	0	56140
+p100	53151480C	NAN HUA FRIED PRAWN NOODLE	Sole Proprietorship/ Partnership	Terminated	2009-09-11		01	131	520844	unit	0.33	0	56140
+p100	50920900M	82 STREET EATING HOUSE	Sole Proprietorship/ Partnership	Terminated	1994-06-18		01	131	520844	unit	0.32	0	56122
+p100	199802057E	WING FU CAFETERIA PTE LTD	Local Company	Struck Off	1998-04-28		01	131	520844	unit	0.24	0	68104
+p100	53132794M	ST 82 C&B	Sole Proprietorship/ Partnership	Terminated	2009-01-05		01	131	520844	unit	0.24	0	56112
+p100	53132574A	ST 82 COFFEE HOUSE	Sole Proprietorship/ Partnership	Terminated	2009-01-02		01	131	520844	unit	0.24	0	68104
+p102	202322839C	DATER PTE. LTD.	Local Company	Live Company	2023-06-09		01	1105	524201	unit	0.33	1	46900
+p102	202422902E	KAILASA TRADERS PTE. LTD.	Local Company	Live Company	2024-06-06		01	1105	524201	unit	0.29	0	47102
+p102	202607459E	ALTAJ TRADERS PTE. LTD.	Local Company	Live Company	2026-02-16		01	1105	524201	unit	0.25	0	56111
+p102	202328124K	MILLION DOLLAR PTE. LTD.	Local Company	Live Company	2023-07-17		01	1105	524201	unit	0.18	0	46900
+p102	53144418W	RAMEN RAMEN EKSPRES	Sole Proprietorship/ Partnership	Cancelled	2009-06-08		01	1105	524201	unit	0.50	0	56111
+p102	52971410L	FENG SHENG RESTAURANT	Sole Proprietorship/ Partnership	Terminated	2002-06-17		01	1105	524201	unit	0.38	0	68104
+p102	53452927E	TAMPINES SEAFOOD	Sole Proprietorship/ Partnership	Cancelled (Non-Renewal)	2022-07-09		01	1105	524201	unit	0.30	0	56140
+p102	202223544H	ABC EATING HOUSE PTE. LTD.	Local Company	Struck Off	2022-07-06		01	1105	524201	unit	0.29	0	56122
+p102	53176215K	DOUBLE JOY CUISINE	Sole Proprietorship/ Partnership	Ceased Registration	2010-09-22		01	1105	524201	unit	0.28	0	56140
+p102	29881800X	GEORGE BAKER'S RESTAURANT AND BAR	Sole Proprietorship/ Partnership	Cancelled	1982-08-23		01	1105	524201	unit	0.27	0	56130
+p102	46731200A	TAMPINES FOOD CENTRE	Sole Proprietorship/ Partnership	Terminated	1992-06-23		01	1105	524201	unit	0.26	0	68104
+p102	53407781A	TAMPINES CHICKEN RICE & SEAFOOD	Sole Proprietorship/ Partnership	Ceased Registration	2020-01-02		01	1105	524201	unit	0.25	0	56140
+p102	53099006K	RASA 21	Sole Proprietorship/ Partnership	Cancelled	2007-08-17		01	1105	524201	unit	0.22	0	68104
+p102	49125700K	YONG LEE TAMPINES FOOD CENTRE	Sole Proprietorship/ Partnership	Terminated	1993-08-12		01	1105	524201	unit	0.20	0	56200
+p102	40790400W	KUAH SENG LEE SELF-SERVICE SEAFOOD STEAM-BOAT	Sole Proprietorship/ Partnership	Terminated	1989-03-23		01	1105	524201	unit	0.18	0	56140
+p102	53506038J	INDO MINANG	Sole Proprietorship/ Partnership	Ceased Registration	2025-06-25		01	1105	524201	unit	0.09	0	56140
+p104	202505929D	HOONG LOK PTE. LTD.	Local Company	Live Company	2025-02-11		01	34	528559	unit	0.33	1	56122
+p105	202231250Z	FOODSAVVYEMPIRE PTE. LTD.	Local Company	Live Company	2022-09-04		01	38	520824	unit	0.34	1	56122
+p105	53464309D	MARLINAMUSLIMFOOD	Sole Proprietorship/ Partnership	Live	2023-03-11		01	38	520824	unit	0.29	0	56122
+p105	202124767H	IPOH TUCK KEE PTE. LTD.	Local Company	Live Company	2021-07-15		01	38	520824	unit	0.26	0	56140
+p105	53468295B	XIE BI AN	Sole Proprietorship/ Partnership	Live	2023-05-31		01	38	520824	unit	0.22	0	56122
+p105	202239889N	KWBFGROUPS PTE. LTD.	Local Company	Live Company	2022-11-09		01	38	520824	unit	0.22	0	47109
+p105	53024342C	ENG HIN SEAFOOD RESTAURANT	Sole Proprietorship/ Partnership	Terminated	2004-07-07		01	38	520824	unit	0.45	0	68104
+p105	202320502K	SIN LIN SEAFOOD PTE. LTD.	Local Company	Struck Off	2023-05-25		01	38	520824	unit	0.44	0	56200
+p105	52891747A	CDP FOOD POINT	Sole Proprietorship/ Partnership	Terminated	1999-05-04		01	38	520824	unit	0.44	0	68104
+p105	52866601X	HOT TEST RESTAURANT	Sole Proprietorship/ Partnership	Terminated	1998-04-23		01	38	520824	unit	0.43	0	56111
+p105	53108230W	EAST SEA KP FOOD	Sole Proprietorship/ Partnership	Ceased Registration	2008-01-15		01	38	520824	unit	0.41	0	56140
+p105	39453800E	YING TAO SEAFOOD STALL	Sole Proprietorship/ Partnership	Terminated	1988-06-14		01	38	520824	unit	0.40	0	47211
+p105	200718001D	TAMPINES 824 FOOD HOUSE PTE. LTD.	Local Company	Struck Off	2007-10-01		01	38	520824	unit	0.37	0	68104
+p105	53064724M	KIMPO SEAFOOD	Sole Proprietorship/ Partnership	Ceased Registration	2006-03-23		01	38	520824	unit	0.32	0	68104
+p105	53043916J	CDP 881 COFFEE POINT	Sole Proprietorship/ Partnership	Terminated	2005-05-04		01	38	520824	unit	0.32	0	68104
+p105	53085331X	KIMPO TAMPINES	Sole Proprietorship/ Partnership	Terminated	2007-01-28		01	38	520824	unit	0.31	0	56140
+p105	01194000W	HOCK TIAN HONG	Sole Proprietorship/ Partnership	Terminated	1974-10-16		01	38	520824	unit	0.31	0	68104
+p105	T20LL1918F	STICKS 'N' BOWLS Limited Liability Partnership	Limited Liability Partnership	Struck Off	2020-12-01		01	38	520824	unit	0.29	0	56122
+p105	T07LL0049D	MINI MING 824 LLP	Limited Liability Partnership	Struck Off	2007-01-09		01	38	520824	unit	0.29	0	56140
+p105	T21LL0209H	F AND J LLP	Limited Liability Partnership	Struck Off	2021-02-08		01	38	520824	unit	0.28	0	56140
+p105	52802467A	POH LAI HUAT	Sole Proprietorship/ Partnership	Terminated	1995-06-30		01	38	520824	unit	0.27	0	47219
+p105	201014321G	TP824 KIMLY PTE. LTD.	Local Company	Struck Off	2010-07-06		01	38	520824	unit	0.22	0	47219
+p108	201306639R	AL MAHBOOB ROJAK RESTAURANT PTE. LTD.	Local Company	Live Company	2013-03-13		01	02	529653	unit+name	0.82	1	56111
+p108	53033347C	AL MAHBOOB ROJAK RESTAURANT & CATERER	Sole Proprietorship/ Partnership	Live	2004-11-18		01	02	529653	unit+name	0.82	0	56200
+p110	53495223B	AN AN MINCED MEAT NOODLE	Sole Proprietorship/ Partnership	Live	2024-11-28		01	02	521823	unit	0.26	1	56140
+p110	52949374L	SAUSAGE AND WESTERN DELIGHTS	Sole Proprietorship/ Partnership	Cancelled	2001-08-01		01	02	521823	unit	0.56	0	47212
+p110	53036120E	823 FOOD PARK	Sole Proprietorship/ Partnership	Terminated	2005-01-04		01	02	521823	unit	0.47	0	68104
+p110	52967845D	KATONG HUP KEE SEAFOOD JUNCTION	Sole Proprietorship/ Partnership	Ceased Registration	2002-04-26		01	02	521823	unit	0.37	0	68104
+p110	53050566E	TOTO FISHBALL MINCED MEAT NOODLE	Sole Proprietorship/ Partnership	Cancelled	2005-08-15		01	02	521823	unit	0.32	0	56140
+p110	53106029B	81 ECONOMICS RICE	Sole Proprietorship/ Partnership	Cancelled	2007-12-05		01	02	521823	unit	0.29	0	56140
+p110	53444772D	LAO K DELIGHTS	Sole Proprietorship/ Partnership	Cancelled (Non-Renewal)	2022-01-03		01	02	521823	unit	0.25	0	56140
+p110	53086040J	SQUISITO	Sole Proprietorship/ Partnership	Terminated	2007-02-08		01	02	521823	unit	0.15	0	56140
+p111	53022053M	KENT CAFE	Sole Proprietorship/ Partnership	Cancelled	2004-06-04		01	02A	529653	unit	0.27	1	56112
+p111	53031391W	K-CONCEPT F&B MANAGEMENT	Sole Proprietorship/ Partnership	Ceased Registration	2004-10-18		01	02A	529653	unit	0.27	0	56112
+p113	201416011W	TOASTIES GROUP PTE. LTD.	Local Company	Live Company	2014-06-02		01	1171	524201	unit	0.29	1	56121
+p113	201908857D	YP2019 PTE. LTD.	Local Company	Live Company	2019-03-19		01	1171	524201	unit	0.22	0	56111
+p113	52922663D	GEMINI BAKERY	Sole Proprietorship/ Partnership	Terminated	2000-06-22		01	1171	524201	unit	0.38	0	10712
+p113	52921434B	THONG LAM CAKE HOUSE(2000)	Sole Proprietorship/ Partnership	Terminated	2000-06-06		01	1171	524201	unit	0.37	0	47213
+p113	53351612M	CLASSIC SPA	Sole Proprietorship/ Partnership	Ceased Registration	2016-12-05		01	1171	524201	unit	0.33	0	96024
+p113	53012148D	HAYYAN TRADE & SERVICES	Sole Proprietorship/ Partnership	Cancelled	2004-01-19		01	1171	524201	unit	0.29	0	47102
+p113	48666700J	KOH BOK CHOON ENGINEERING	Sole Proprietorship/ Partnership	Terminated	1993-05-27		01	1171	524201	unit	0.26	0	28300
+p113	53059880M	IKHLAS MEDAN SELERA	Sole Proprietorship/ Partnership	Cancelled	2006-01-09		01	1171	524201	unit	0.25	0	56111
+p113	53397160L	FOUNTAIN SPA	Sole Proprietorship/ Partnership	Cancelled (Non-Renewal)	2019-04-26		01	1171	524201	unit	0.24	0	96024
+p113	52853690K	PRO PET AQUARIUM	Sole Proprietorship/ Partnership	Ceased Registration	1997-09-19		01	1171	524201	unit	0.21	0	47745
+p114	201112787W	FRAMEWERKS OPTICAL PRIVATE LIMITED	Local Company	Live Company	2011-05-30		01	24	520824	unit	0.33	1	47751
+p114	35224700B	COAM TECHNICAL SERVICE	Sole Proprietorship/ Partnership	Terminated	1985-11-19		01	24	520824	unit	0.37	0	43210
+p114	45248700E	DE-CLEAN SERVICES	Sole Proprietorship/ Partnership	Terminated	1991-09-18		01	24	520824	unit	0.37	0	68101
+p114	52922068K	FIBRE ZOOM HAIRDRESSING	Sole Proprietorship/ Partnership	Terminated	2000-06-14		01	24	520824	unit	0.36	0	96021
+p114	53133262D	ADUKA UNISEX SALON	Sole Proprietorship/ Partnership	Cancelled (Non-Renewal)	2009-01-09		01	24	520824	unit	0.36	0	96022
+p114	31773500D	KWAN MEI CONTRACTOR	Sole Proprietorship/ Partnership	Cancelled (Non-Renewal)	1983-10-17		01	24	520824	unit	0.35	0	43301
+p114	52877373M	PRO PRINT MART	Sole Proprietorship/ Partnership	Terminated	1998-10-05		01	24	520824	unit	0.34	0	18121
+p114	41839400L	RONG ZHI ENGINEERING SERVICE	Sole Proprietorship/ Partnership	Terminated	1989-11-01		01	24	520824	unit	0.33	0	46599
+p114	53072796W	BEAUTY INN	Sole Proprietorship/ Partnership	Terminated	2006-07-19		01	24	520824	unit	0.32	0	96022
+p114	38982700B	INTEL ALUMINIUM & INTERIOR DECORATIONS	Sole Proprietorship/ Partnership	Cancelled	1988-03-15		01	24	520824	unit	0.32	0	25111
+p114	52885004X	IMAGE MATTERS BEAUTY SPA	Sole Proprietorship/ Partnership	Terminated	1999-02-01		01	24	520824	unit	0.31	0	96022
+p114	53395978X	KLEENBRITE SERVICES	Sole Proprietorship/ Partnership	Cancelled (Non-Renewal)	2019-04-02		01	24	520824	unit	0.30	0	81212
+p114	47565400E	HPDESIGN INSTRUMENTATION	Sole Proprietorship/ Partnership	Terminated	1992-11-23		01	24	520824	unit	0.27	0	26209
+p114	28244100W	BROSIS FURNISHING	Sole Proprietorship/ Partnership	Ceased Registration	1981-07-16		01	24	520824	unit	0.26	0	74191
+p114	52878879E	DE INSPIRATION BEAUTY SPA	Sole Proprietorship/ Partnership	Terminated	1998-10-28		01	24	520824	unit	0.26	0	46594
+p114	53073060W	SB INTERNET	Sole Proprietorship/ Partnership	Cancelled	2006-07-23		01	24	520824	unit	0.25	0	61020
+p114	53210442X	TIAN YING BEAUTY SPA	Sole Proprietorship/ Partnership	Terminated	2012-03-08		01	24	520824	unit	0.24	0	96022
+p114	52831386W	BEAUTY BLISS	Sole Proprietorship/ Partnership	Terminated	1996-10-09		01	24	520824	unit	0.24	0	88919
+p114	53256267D	YZ BEAUTY SPA	Sole Proprietorship/ Partnership	Cancelled (Non-Renewal)	2014-03-11		01	24	520824	unit	0.24	0	86909
+p114	40260000B	DESIGN 3000	Sole Proprietorship/ Partnership	Terminated	1988-12-01		01	24	520824	unit	0.19	0	43301
+p115	53517291E	MEE+	Sole Proprietorship/ Partnership	Live	2026-01-19		01	154	520477	unit	0.22	1	56123
+p115	52915100J	THAT'S TO SALON	Sole Proprietorship/ Partnership	Cancelled	2000-03-17		01	154	520477	unit	0.38	0	96022
+p115	53074988B	SIBO MARKETING	Sole Proprietorship/ Partnership	Cancelled	2006-08-21		01	154	520477	unit	0.30	0	46900
+p115	52915075A	@ ZONE COMMUNICATIONS	Sole Proprietorship/ Partnership	Cancelled	2000-03-17		01	154	520477	unit	0.24	0	47411
+p115	200613227W	LOYANG VILLAGE FOOD INDUSTRIES PTE. LTD.	Local Company	Struck Off	2006-09-08		01	154	520477	unit	0.23	0	10750
+p115	53021187D	TMT SUPPLIER	Sole Proprietorship/ Partnership	Cancelled	2004-05-22		01	154	520477	unit	0.22	0	46900
+p115	40939600A	PASSION OPTICS GALLERY	Sole Proprietorship/ Partnership	Cancelled	1989-04-21		01	154	520477	unit	0.21	0	47109
+p115	52873201C	GUYS HAIR STYLE	Sole Proprietorship/ Partnership	Cancelled	1998-08-03		01	154	520477	unit	0.19	0	96021
+p115	52400100J	ESNET ENTERPRISE	Sole Proprietorship/ Partnership	Terminated	1995-03-04		01	154	520477	unit	0.18	0	47412
+p115	52799071W	CYBER-TECH ENTERPRISES	Sole Proprietorship/ Partnership	Ceased Registration	1995-05-05		01	154	520477	unit	0.14	0	47412
+p115	50935000C	PROCOM NETWORK & COMPUTERS TRADING ENTERPRISE	Sole Proprietorship/ Partnership	Terminated	1994-06-21		01	154	520477	unit	0.12	0	46513
+p115	53000895E	WANI'S PROVISION SHOP	Sole Proprietorship/ Partnership	Cancelled	2003-08-15		01	154	520477	unit	0.07	0	47102
+p116	202402440E	SUBZERO GLASSHOUSE PTE. LTD.	Local Company	Live Company	2024-01-17		01	51	528538	unit+name	0.69	1	56112
+p117	201630114K	MONG HOLDINGS PTE. LTD.	Local Company	Live Company	2016-11-02		01	11	520802	unit	0.33	1	56121
+p117	53415269D	THREE'S A CROWD	Sole Proprietorship/ Partnership	Cancelled (Non-Renewal)	2020-06-18		01	11	520802	unit+name	1.00	0	56121
+p117	44658300J	ASIA AUTOMOBILE SERVING CENTRE	Sole Proprietorship/ Partnership	Cancelled	1991-06-04		01	11	520802	unit	0.36	0	95301
+p117	201209967C	FY-TE TRADING PTE. LTD.	Local Company	Struck Off	2012-04-22		01	11	520802	unit	0.33	0	47630
+p117	05092200M	LIM LIAN HENG PROVISION SHOP	Sole Proprietorship/ Partnership	Terminated	1975-01-16		01	11	520802	unit	0.33	0	47102
+p117	53233321K	A77 TRADING	Sole Proprietorship/ Partnership	Ceased Registration	2013-03-20		01	11	520802	unit	0.31	0	46309
+p117	53023973J	TAN KOON HENG TCM PHYSICIAN	Sole Proprietorship/ Partnership	Terminated	2004-07-02		01	11	520802	unit	0.29	0	86909
+p117	44352600A	JUNIOR WORLD TRADING	Sole Proprietorship/ Partnership	Terminated	1991-04-10		01	11	520802	unit	0.29	0	46213
+p117	52814500B	ENG PENG CHINESE MEDICAL & TRADING	Sole Proprietorship/ Partnership	Ceased Registration	1996-01-22		01	11	520802	unit	0.26	0	47723
+p117	40021400L	KIAN BENG HUP KEE TRADING MEDICAL HALL	Sole Proprietorship/ Partnership	Terminated	1988-10-10		01	11	520802	unit	0.23	0	47723
+p118	53409581W	PUFFS AND PEAKS	Sole Proprietorship/ Partnership	Live	2020-02-18		01	03	529453	unit+name	1.00	1	10712
+p119	202204654R	WELLNESS DELIGHT PTE. LTD.	Local Company	Live Company	2022-02-10		01	66	520462	unit	0.36	1	96022
+p119	53462666A	D2CN VENTURE	Sole Proprietorship/ Partnership	Live	2023-02-08		01	66	520462	unit	0.30	0	96012
+p119	07101300L	YEO SENG HENG MINI-MART	Sole Proprietorship/ Partnership	Ceased Registration	1975-04-08		01	66	520462	unit	0.37	0	47102
+p119	35188000C	GOLDEN ISLAND HOBBY CENTRE	Sole Proprietorship/ Partnership	Terminated	1985-11-08		01	66	520462	unit	0.34	0	47746
+p122	202422626K	ONE18 PTE. LTD.	Local Company	Live Company	2024-06-05		01	118	520826	unit	0.59	1	56200
+p122	53417150L	BROTHERHOOD BARBERSHOP WELLNESS & SUPPLY	Sole Proprietorship/ Partnership	Live	2020-07-17		01	118	520826	unit	0.32	0	96021
+p122	T23LL0210D	MAHDI DELIGHTS LLP	Limited Liability Partnership	Live	2023-02-26		01	118	520826	unit	0.13	0	56200
+p122	53486585B	0NE18	Sole Proprietorship/ Partnership	Cancelled (Non-Renewal)	2024-06-05		01	118	520826	unit	0.47	0	56200
+p122	53103136E	XIN BEAUTY	Sole Proprietorship/ Partnership	Ceased Registration	2007-10-18		01	118	520826	unit	0.45	0	96022
+p122	201600617C	XIN BEAUTY (BEDOK) PTE. LTD.	Local Company	Struck Off	2016-01-12		01	118	520826	unit	0.33	0	96022
+p122	36938500D	FUDU ELECTRICAL ENTERPRISE	Sole Proprietorship/ Partnership	Terminated	1986-12-16		01	118	520826	unit	0.26	0	47535
+p122	53010900W	EXCELLENT MARKETING ENTERPRISE	Sole Proprietorship/ Partnership	Terminated	2003-12-30		01	118	520826	unit	0.24	0	46473
+p122	35444800E	AH WANG FRUITS & CONFECTIONERIES	Sole Proprietorship/ Partnership	Terminated	1986-01-17		01	118	520826	unit	0.24	0	47211
+p122	49941000M	GINDA ELECTRICAL TRADING	Sole Proprietorship/ Partnership	Terminated	1994-01-10		01	118	520826	unit	0.22	0	47535
+p122	53427025E	MAHDI DELIGHTS	Sole Proprietorship/ Partnership	Converted To LLP	2021-01-07		01	118	520826	unit	0.15	0	56200
+p123	53496965L	SPILLED ROASTER & BREWS	Sole Proprietorship/ Partnership	Live	2025-01-16		11	235	521634	name	1.00	1	47220
+p124	53506684L	BAOBEI IDEAS	Sole Proprietorship/ Partnership	Live	2025-07-08		12	55	522645	name	0.67	1	47220
+p125	201002381M	TONGGARDEN SEAFOOD PTE. LTD.	Local Company	Live Company	2010-02-01		01	190	520477	unit	0.35	1	56111
+p125	45776000A	ZENG KOH FOO MARKETING AND FOODSTUFF SERVICE	Sole Proprietorship/ Partnership	Terminated	1992-01-03		01	190	520477	unit	0.35	0	47219
+p125	52867553B	TONGGARDEN SEAFOOD	Sole Proprietorship/ Partnership	Terminated	1998-05-07		01	190	520477	unit	0.29	0	56111
+p125	52874936J	HUANG WEI FOODSTUFF	Sole Proprietorship/ Partnership	Terminated	1998-08-31		01	190	520477	unit	0.28	0	47219
+p125	53438937J	MY FATHER'S MINCED MEAT NOODLE	Sole Proprietorship/ Partnership	Live	2021-08-30		01		520477	name	0.98	0	56140
+p126	53041078L	SINGGAH DISINI	Sole Proprietorship/ Partnership	Ceased Registration	2005-03-24		01	118	520474	unit	0.36	1	56140
+p126	53059277X	MR TEH TARIK (TAMPINES)	Sole Proprietorship/ Partnership	Terminated	2005-12-29		01	118	520474	unit	0.34	0	68104
+p126	53137198X	GENG LING TRADING	Sole Proprietorship/ Partnership	Cancelled	2009-03-05		01	118	520474	unit	0.32	0	46900
+p126	198303350E	DREAM MASTER MARKETING PTE LTD	Local Company	Struck Off	1983-07-18		01	118	520474	unit	0.27	0	46900
+p126	21020800K	SHY HUP FURNITURE	Sole Proprietorship/ Partnership	Cancelled	1975-09-01		01	118	520474	unit	0.26	0	31001
+p126	41397800A	GLOBAL EXPRESS COLOUR PROCESSING CENTRE & TRADING	Sole Proprietorship/ Partnership	Cancelled	1989-07-28		01	104	520474	name	0.67	0	96021
+p128	53464309D	MARLINAMUSLIMFOOD	Sole Proprietorship/ Partnership	Live	2023-03-11		01	38	520824	unit	0.45	1	56122
+p128	53468295B	XIE BI AN	Sole Proprietorship/ Partnership	Live	2023-05-31		01	38	520824	unit	0.43	0	56122
+p128	202231250Z	FOODSAVVYEMPIRE PTE. LTD.	Local Company	Live Company	2022-09-04		01	38	520824	unit	0.32	0	56122
+p128	202239889N	KWBFGROUPS PTE. LTD.	Local Company	Live Company	2022-11-09		01	38	520824	unit	0.31	0	47109
+p128	202124767H	IPOH TUCK KEE PTE. LTD.	Local Company	Live Company	2021-07-15		01	38	520824	unit	0.29	0	56140
+p128	53064724M	KIMPO SEAFOOD	Sole Proprietorship/ Partnership	Ceased Registration	2006-03-23		01	38	520824	unit+name	0.70	0	68104
+p128	202320502K	SIN LIN SEAFOOD PTE. LTD.	Local Company	Struck Off	2023-05-25		01	38	520824	unit+name	0.67	0	56200
+p128	53024342C	ENG HIN SEAFOOD RESTAURANT	Sole Proprietorship/ Partnership	Terminated	2004-07-07		01	38	520824	unit+name	0.67	0	68104
+p128	39453800E	YING TAO SEAFOOD STALL	Sole Proprietorship/ Partnership	Terminated	1988-06-14		01	38	520824	unit+name	0.67	0	47211
+p128	53108230W	EAST SEA KP FOOD	Sole Proprietorship/ Partnership	Ceased Registration	2008-01-15		01	38	520824	unit	0.53	0	56140
+p128	52891747A	CDP FOOD POINT	Sole Proprietorship/ Partnership	Terminated	1999-05-04		01	38	520824	unit	0.43	0	68104
+p128	T21LL0209H	F AND J LLP	Limited Liability Partnership	Struck Off	2021-02-08		01	38	520824	unit	0.40	0	56140
+p128	200718001D	TAMPINES 824 FOOD HOUSE PTE. LTD.	Local Company	Struck Off	2007-10-01		01	38	520824	unit	0.31	0	68104
+p128	52802467A	POH LAI HUAT	Sole Proprietorship/ Partnership	Terminated	1995-06-30		01	38	520824	unit	0.31	0	47219
+p128	52866601X	HOT TEST RESTAURANT	Sole Proprietorship/ Partnership	Terminated	1998-04-23		01	38	520824	unit	0.30	0	56111
+p128	201014321G	TP824 KIMLY PTE. LTD.	Local Company	Struck Off	2010-07-06		01	38	520824	unit	0.24	0	47219
+p128	T20LL1918F	STICKS 'N' BOWLS Limited Liability Partnership	Limited Liability Partnership	Struck Off	2020-12-01		01	38	520824	unit	0.24	0	56122
+p128	53043916J	CDP 881 COFFEE POINT	Sole Proprietorship/ Partnership	Terminated	2005-05-04		01	38	520824	unit	0.24	0	68104
+p128	53085331X	KIMPO TAMPINES	Sole Proprietorship/ Partnership	Terminated	2007-01-28		01	38	520824	unit	0.21	0	56140
+p128	01194000W	HOCK TIAN HONG	Sole Proprietorship/ Partnership	Terminated	1974-10-16		01	38	520824	unit	0.21	0	68104
+p128	T07LL0049D	MINI MING 824 LLP	Limited Liability Partnership	Struck Off	2007-01-09		01	38	520824	unit	0.13	0	56140
+p130	07121900E	ITALY INTERIOR DECORATION CO	Sole Proprietorship/ Partnership	Terminated	1975-05-09		01	257	520801	unit	0.39	1	46471
+p130	201007428H	IWANNAGETSTUFFED.COM (S) PTE. LTD.	Local Company	Struck Off	2010-04-08		01	257	520801	unit	0.37	0	56111
+p130	53338868J	LITTLE SUN STUDENT CARE CENTRE	Sole Proprietorship/ Partnership	Cancelled (Non-Renewal)	2016-06-06		01	257	520801	unit	0.37	0	88912
+p130	53079789E	INDIANO'S SPICY HOUSE	Sole Proprietorship/ Partnership	Terminated	2006-10-30		01	257	520801	unit	0.35	0	56111
+p130	53337126X	LITTLE SUN ENRICHMENT CENTRE	Sole Proprietorship/ Partnership	Ceased Registration	2016-05-12		01	257	520801	unit	0.34	0	88912
+p130	52799663K	EDUTECH SYSTEMS SOLUTIONS	Sole Proprietorship/ Partnership	Cancelled (Non-Renewal)	1995-05-17		01	257	520801	unit	0.26	0	47610
+p131	202517158E	L BINTANG GROUP PTE. LTD.	Local Company	Live Company	2025-04-21		1	09	528843	name	0.74	1	56140
+p131	53306642E	LAWA BINTANG	Sole Proprietorship/ Partnership	Cancelled (Non-Renewal)	2015-05-19				528843	name	1.00	0	56140
+p132	202232412R	THREE WOK PTE. LTD.	Local Company	Live Company	2022-09-12		01	07	520802	unit	0.43	1	56111
+p132	53447890E	WC FOOD CULTURE	Sole Proprietorship/ Partnership	Live	2022-03-15		01	07	520802	unit	0.35	0	56140
+p132	48902400M	LIM KHONG KEE ROSTED MEAT	Sole Proprietorship/ Partnership	Terminated	1993-07-05		01	07	520802	unit	0.56	0	56140
+p132	32235100J	LIAN HUAT EATING HOUSE	Sole Proprietorship/ Partnership	Terminated	1984-02-06		01	07	520802	unit	0.47	0	56122
+p132	52806790K	TEONG HUAT SEAFOOD	Sole Proprietorship/ Partnership	Terminated	1995-09-08		01	07	520802	unit	0.47	0	56140
+p132	52815554K	ENG SENG HENG PRAWN NOODLES	Sole Proprietorship/ Partnership	Cancelled	1996-02-08		01	07	520802	unit	0.46	0	56140
+p132	52984448J	U-ONE FOOD CENTRE	Sole Proprietorship/ Partnership	Terminated	2002-12-18		01	07	520802	unit	0.43	0	68104
+p132	52880512J	CHIA BEE HUAT (KRANJI) EATING HOUSE	Sole Proprietorship/ Partnership	Terminated	1998-11-20		01	07	520802	unit	0.41	0	56122
+p132	53156556D	NICE YONG TAU FU	Sole Proprietorship/ Partnership	Ceased Registration	2009-11-25		01	07	520802	unit	0.39	0	56140
+p132	52880510W	CHIA BEE HUAT (TAMPINES) EATING HOUSE	Sole Proprietorship/ Partnership	Terminated	1998-11-20		01	07	520802	unit	0.37	0	56122
+p132	T06LL0392C	FULI (TAMPINES) SEAFOOD LLP	Limited Liability Partnership	Struck Off	2006-03-25		01	07	520802	unit	0.36	0	68104
+p132	51640700K	NEW LIAN HUAT LIQUOR & SOFT DRINKS	Sole Proprietorship/ Partnership	Terminated	1994-10-14		01	07	520802	unit	0.35	0	47220
+p132	48882800K	LIAN HUAT SEAFOOD RESTAURANT	Sole Proprietorship/ Partnership	Terminated	1993-07-01		01	07	520802	unit	0.34	0	56140
+p132	200800031R	TP802 (FULI) PTE. LTD.	Local Company	Struck Off	2008-01-01		01	07	520802	unit	0.33	0	56112
+p132	52880511L	CHIA BEE HUAT (BUKIT BATOK) EATING HOUSE	Sole Proprietorship/ Partnership	Terminated	1998-11-20		01	07	520802	unit	0.32	0	56122
+p132	28208400B	BOCK SENG BUS SERVICE	Sole Proprietorship/ Partnership	Terminated	1981-07-18		01	07	520802	unit	0.30	0	49212
+p132	53051744B	COFFEELINGS	Sole Proprietorship/ Partnership	Ceased Registration	2005-08-31		01	07	520802	unit	0.28	0	68104
+p132	52378100L	NEW KOWLOON HONG KONG TIM SUM	Sole Proprietorship/ Partnership	Cancelled	1995-02-28		01	07	520802	unit	0.26	0	46306
+p132	51532300D	S-11 (TAMPINES) FOOD COURT	Sole Proprietorship/ Partnership	Terminated	1994-09-28		01	07	520802	unit	0.24	0	56200
+p133	202644835W	LASTBITE7 PRIVATE LIMITED	Local Company	Live Company	2026-09-29		02	01	520633	unit	0.37	1	56140
+p134	202644835W	LASTBITE7 PRIVATE LIMITED	Local Company	Live Company	2026-09-29		02	01	520633	unit	0.21	1	56140
+p135	52838058C	NETHAR TRADING	Sole Proprietorship/ Partnership	Terminated	1997-01-28		01	267	520481	unit	0.44	1	47721
+p135	53456499B	AL MADINA RESTAURANT	Sole Proprietorship/ Partnership	Ceased Registration	2022-09-20		01	267	520481	unit	0.42	0	56111
+p135	50050500D	LINCOLN CAR RENTAL	Sole Proprietorship/ Partnership	Cancelled	1994-01-28		01	267	520481	unit	0.39	0	49215
+p135	52988199C	PNP  TRADING AND SERVICES.	Sole Proprietorship/ Partnership	Cancelled	2003-02-20		01	267	520481	unit	0.38	0	46309
+p135	52891250W	CHOY'S MINIMART	Sole Proprietorship/ Partnership	Terminated	1999-04-27		01	267	520481	unit	0.36	0	47102
+p135	52961286X	DODO MINIMART & TRADING	Sole Proprietorship/ Partnership	Terminated	2002-01-23		01	267	520481	unit	0.36	0	47102
+p135	53163864B	H & H MINIMART	Sole Proprietorship/ Partnership	Cancelled (Non-Renewal)	2010-03-22		01	267	520481	unit	0.36	0	47102
+p135	51758900A	CHERRY HILL INDUSTRIAL	Sole Proprietorship/ Partnership	Terminated	1994-11-04		01	267	520481	unit	0.35	0	46900
+p135	50241600M	DONG RONG TRADING	Sole Proprietorship/ Partnership	Terminated	1994-03-05		01	267	520481	unit	0.34	0	46431
+p135	52971961D	KANG BAO WEN NUAN ZI JIA	Sole Proprietorship/ Partnership	Terminated	2002-06-25		01	267	520481	unit	0.33	0	96024
+p135	52977058W	ROYAL SAGA AQUARIUM	Sole Proprietorship/ Partnership	Cancelled	2002-09-04		01	267	520481	unit	0.32	0	46212
+p135	53169763X	DE' NUTRI HOUSE	Sole Proprietorship/ Partnership	Terminated	2010-06-15		01	267	520481	unit	0.31	0	47214
+p135	52807693X	TOKO GREENWOOD	Sole Proprietorship/ Partnership	Terminated	1995-09-22		01	267	520481	unit	0.31	0	46412
+p135	51455900D	KAZZ TRADING & SERVICES	Sole Proprietorship/ Partnership	Terminated	1994-09-16		01	267	520481	unit	0.31	0	47102
+p135	52963767K	CHAI'S MINIMART	Sole Proprietorship/ Partnership	Terminated	2002-03-05		01	267	520481	unit	0.30	0	47102
+p135	52889854W	JIN XIANG STORE	Sole Proprietorship/ Partnership	Terminated	1999-04-10		01	267	520481	unit	0.30	0	47102
+p135	46495500M	FORTUNE TREE ENTERPRISE	Sole Proprietorship/ Partnership	Terminated	1992-05-09		01	267	520481	unit	0.29	0	46411
+p135	53340369C	TPS MOBILE	Sole Proprietorship/ Partnership	Ceased Registration	2016-06-27		01	267	520481	unit	0.29	0	47411
+p135	52949661E	BUBBLE DINO	Sole Proprietorship/ Partnership	Terminated	2001-08-04		01	267	520481	unit	0.28	0	47220
+p135	49659900C	GIFTS & CANDY	Sole Proprietorship/ Partnership	Terminated	1993-11-12		01	267	520481	unit	0.28	0	47742
+p135	48172400A	SWEETS TALK	Sole Proprietorship/ Partnership	Terminated	1993-03-11		01	267	520481	unit	0.28	0	47109
+p135	50341000D	ACCESSORIES LINKWAY	Sole Proprietorship/ Partnership	Terminated	1994-03-21		01	267	520481	unit	0.27	0	47414
+p135	49352100C	VINEST PHOTO & TRADING	Sole Proprietorship/ Partnership	Terminated	1993-09-20		01	267	520481	unit	0.26	0	74200
+p135	53016292W	IN'FLAIR HAIRDRESSING	Sole Proprietorship/ Partnership	Ceased Registration	2004-03-16		01	267	520481	unit	0.26	0	96022
+p135	200406803Z	GP2 COLOUR LAB PTE. LTD.	Local Company	Struck Off	2004-06-01		01	267	520481	unit	0.25	0	74200
+p135	52826686A	MAVIS CREATION	Sole Proprietorship/ Partnership	Terminated	1996-07-29		01	267	520481	unit	0.25	0	88919
+p135	45711500M	PC EXPRESS	Sole Proprietorship/ Partnership	Terminated	1991-12-18		01	267	520481	unit	0.14	0	47414
+p137	53078531E	F P C SEAFOOD	Sole Proprietorship/ Partnership	Live	2006-10-10		01	47	520267	unit+name	0.83	1	68104
+p137	53020865B	EPICS FOOD HOUSE	Sole Proprietorship/ Partnership	Cancelled	2004-05-18		01	47	520267	unit	0.52	0	56122
+p137	52841759B	TOLY FRUIT & FLOWER SHOP	Sole Proprietorship/ Partnership	Terminated	1997-03-25		01	47	520267	unit	0.30	0	47211
+p137	53035712K	TRADITIONAL EATING HOUSE	Sole Proprietorship/ Partnership	Terminated	2004-12-28		01	47	520267	unit	0.29	0	68104
+p137	53054836D	JEFVIN EATING HOUSE	Sole Proprietorship/ Partnership	Cancelled	2005-10-15		01	47	520267	unit	0.27	0	56112
+p137	52807767L	TOLY HAIRDRESSING SALON (1995)	Sole Proprietorship/ Partnership	Terminated	1995-09-25		01	47	520267	unit	0.26	0	96021
+p137	52807416D	988 HAIR & BEAUTY HOUSE	Sole Proprietorship/ Partnership	Terminated	1995-09-19		01	47	520267	unit	0.25	0	96021
+p137	10117200A	TOLY LADIES HAIR DRESSING SALON	Sole Proprietorship/ Partnership	Terminated	1975-07-18		01	47	520267	unit	0.24	0	96021
+p137	41344600W	JULY INTERIOR DESIGN	Sole Proprietorship/ Partnership	Cancelled	1989-07-18		01	47	520267	unit	0.19	0	43301
+p138	202323972G	929 BEVERAGES PTE. LTD.	Local Company	Live Company	2023-06-19		01	451	520929	unit	0.29	1	56140
+p138	201817933G	99 THAI FOOD PTE. LTD.	Local Company	Live Company	2018-05-25		01	451	520929	unit	0.18	0	56111
+p138	53013744E	ASAN BROSE  COOKING  SERVICES	Sole Proprietorship/ Partnership	Cancelled	2004-02-13		01	451	520929	unit	0.35	0	56200
+p138	53220143D	CAKE THIS N THAT	Sole Proprietorship/ Partnership	Cancelled	2012-08-06		01	451	520929	unit	0.34	0	10712
+p138	202213661W	UNIVERSAL22(S)DESSERT PTE. LTD.	Local Company	Struck Off	2022-04-20		01	451	520929	unit	0.33	0	47220
+p138	53259120L	NASI LEMAK CIK ANN	Sole Proprietorship/ Partnership	Cancelled	2014-04-14		01	451	520929	unit	0.32	0	47801
+p138	27723200K	UNIVERSAL DEPARTMENTAL CO	Sole Proprietorship/ Partnership	Cancelled (Non-Renewal)	1981-03-24		01	451	520929	unit	0.32	0	47102
+p138	52876373C	TAT SHENG FOOD COURT	Sole Proprietorship/ Partnership	Terminated	1998-09-22		01	451	520929	unit	0.30	0	68104
+p138	52956012K	YANG YUN SEAFOOD RESTAURANT	Sole Proprietorship/ Partnership	Terminated	2001-10-31		01	451	520929	unit	0.30	0	56111
+p138	52927651L	TAMPINES ST 91 EATING HOUSE	Sole Proprietorship/ Partnership	Ceased Registration	2000-08-31		01	451	520929	unit	0.30	0	68104
+p138	53063050L	ADAM FOOD & GRILL	Sole Proprietorship/ Partnership	Cancelled	2006-03-02		01	451	520929	unit	0.29	0	56140
+p138	53050798J	NISHA INDIAN FOOD STALL	Sole Proprietorship/ Partnership	Cancelled	2005-08-18		01	451	520929	unit	0.28	0	56140
+p138	53359637L	QUAN CAI SEAFOOD	Sole Proprietorship/ Partnership	Ceased Registration	2017-03-30		01	451	520929	unit	0.28	0	56140
+p138	53133332M	EDEN ROASTED DELUXE	Sole Proprietorship/ Partnership	Cancelled	2009-01-11		01	451	520929	unit	0.25	0	56140
+p138	53209219L	JR'S KITCHEN	Sole Proprietorship/ Partnership	Cancelled	2012-02-21		01	451	520929	unit	0.24	0	56140
+p138	34168000A	COVENANT EATING HOUSE	Sole Proprietorship/ Partnership	Ceased Registration	1985-03-07		01	451	520929	unit	0.24	0	56122
+p138	52954683C	CRYSTALBELLE EATING HOUSE	Sole Proprietorship/ Partnership	Ceased Registration	2001-10-12		01	451	520929	unit	0.21	0	56200
+p138	52916507D	DUO LI SIN	Sole Proprietorship/ Partnership	Terminated	2000-04-01		01	451	520929	unit	0.17	0	56200
+p138	53333841K	161 NOODLES	Sole Proprietorship/ Partnership	Ceased Registration	2016-04-07		01	451	520929	unit	0.17	0	47802

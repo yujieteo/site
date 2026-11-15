@@ -1,5 +1,6 @@
 import { BOUNDARY, CENTRES, EXTRAS, MALLS, PARKS, RAIL, ROADS, SPREADS, STATIONS, type Kind, type Mapped, type Rating, type Spread } from "./food-data.ts";
 import { at, scale, svgHead, textWidth, type Scale } from "./scale.ts";
+import { backedFigure } from "./food-backed.ts";
 
 export type Sort = "cuisine" | "rating" | "cost";
 
@@ -536,5 +537,6 @@ export function foodFigure(view: string, id: string, width: number): string {
   if (view === "map") return mapFigure(id, width);
   if (view === "cuisine") return cuisineFigure();
   if (view === "find") return findFigure(id);
+  if (view === "backed") return backedFigure(id);
   throw new Error(`unknown food view "${view}"`);
 }

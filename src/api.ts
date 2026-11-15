@@ -43,6 +43,7 @@ const LIVE: readonly Resource[] = [
   { href: "/reading.txt", title: "Reading feed", about: "TSV with a header. About 70 links on mathematics, politics, Hacker News and EDMW. The server rebuilds it each hour." },
   { href: "/forecasters.txt", title: "Forecasters feed", about: "TSV with a header. The latest comments and posts from the 20 ranked Hacker News forecasters and the 20 ranked LessWrong forecasters. The server rebuilds it each hour." },
   { href: "/notes/forecasts.txt", title: "Forecasts", about: "TSV. Forecasts by those people, each with its date, link and outcome: open, right, partly or wrong." },
+  { href: "/api/calls.txt", title: "Calls on Singapore prices", about: "Dated 80% ranges for Singapore CPI items, made before their month, with outcomes read from SingStat and the running score." },
   { href: "/api/deals.txt", title: "Deals seen now", about: "Shelf prices seen in Singapore shops in the last 30 days, against the official average price." },
   { href: "/api/prices.txt", title: "Price list", about: "TSV. The latest official average price of 84 goods and the price that counts as a good deal." },
   { href: "/api/products.txt", title: "Products", postSlug: "singapore-value-buys", about: "TSV with one row per product listing on the Singapore prices post. id identifies the item group and can repeat. price and unit_price are display strings that can contain ranges, promotion dates or multiple amounts. The export has no per-row observation date." },

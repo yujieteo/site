@@ -1,0 +1,468 @@
+article_id	place_id	name_as_written	numeric_score	score_scale	says_closed
+a000	p010	House of Dessert			0
+a000	p021	Botak Cantonese Porridge			0
+a000	p022	Munchi Pancakes			0
+a000	p024	Ippon Fusion Bowl			0
+a000	p037	Ramen Hitoyoshi			0
+a000	p041	Dutch Colony Coffee Co			0
+a000	p052	Keming Bing Sat			0
+a000	p054	Bari Bari Steak			0
+a000	p055	Sushiro			0
+a000	p056	TANYU			0
+a000	p059	Fieldnotes			0
+a000	p060	Brotherbird Bakehouse			0
+a000	p061	CHURN			0
+a000	p062	108 Matcha Saro			0
+a000	p072	Legendary Hong Kong			0
+a000	p073	Ging Sun Ho			0
+a000	p074	POCHA Korean Street Dining			0
+a000	p075	Casa Vostra			0
+a000	p076	Lola's Cafe			0
+a000	p077	RUXU			0
+a000	p078	Yeah Gelato			0
+a000	p079	Gokuku			0
+a000	p081	Abundance			0
+a000	p082	Butahage			0
+a000	p083	Nanyang Dao			0
+a000	p095	Ramen Taisho			0
+a000	p096	Keng Eng Kee			0
+a000	p097	Captain Kim Korean BBQ			0
+a000	p098	Little Tokio			0
+a000	p101	The Only Burger			0
+a000	p113	Craze Kitchen			0
+a000	p114	Hundred Acre Creamery			0
+a000	p118	Puff and Peaks			0
+a000	p119	New Deli			0
+a000	p120	Betsubara Creamery & Cafe			0
+a000	p121	Ben Baker			0
+a000	p122	One18 Bakery			0
+a000	p123	Spilled Roaster & Brews			0
+a000	p124	Baobei Coffee			0
+a001	p000	Chai Chee Pork Porridge			0
+a001	p001	Nasi Lemak Specialist			0
+a001	p002	Yummy Sarawak Kolo Mee			0
+a001	p003	Song Han Carrot Cake			0
+a001	p004	137 Lor Mee Prawn Mee			0
+a001	p005	Teo Kee Mushroom Minced Pork Noodle			0
+a001	p006	Xing Ji Wanton Mee			0
+a001	p007	Rajarani Thosai			0
+a001	p008	Hai Chang Fish Head Steamboat			0
+a001	p009	Yi Le Shu Shi			0
+a001	p010	House of Dessert			0
+a001	p021	Botak Cantonese Porridge			0
+a001	p022	Munchi Pancakes			0
+a001	p099	Soi Thai Kitchen			0
+a001	p100	Jin Hock Seafood			0
+a001	p101	The Only Burger			0
+a001	p102	Super Gepuk			0
+a001	p103	Jin Kimchi Express			0
+a001	p104	Old World Bakuteh & Fried Porridge			0
+a001	p105	Soon Soon Prawn Noodles			0
+a001	p106	Fu Yuan Minced Pork Noodle			0
+a001	p107	Mui Kee Chicken Rice			0
+a001	p108	Al Mahboob Indian Rojak			0
+a001	p109	Granny's Pancake			0
+a001	p110	Tokyo Western Food			0
+a002	p058	Cafe Bom Bom			0
+a002	p076	Lola's Cafe			0
+a002	p083	Nanyang Dao			0
+a002	p084	The Tree Cafe			0
+a002	p113	Craze Kitchen			0
+a002	p114	Hundred Acre Creamery			0
+a002	p115	Delato			0
+a002	p116	Glasshouse Creamery			0
+a002	p117	Three's A Crowd			0
+a002	p118	Puffs And Peaks			0
+a002	p119	New Deli Bakery			0
+a002	p120	Betsubara Creamery & Cafe			0
+a003	p064	Luckin			0
+a003	p123	Spilled Roaster			0
+a003	p124	Baobei Coffee			0
+a004	p111	Tipsy Penguin			0
+a004	p113	Craze Kitchen			0
+a004	p115	Delato			0
+a004	p119	New Deli Bakery			0
+a004	p126	Srisun Express			0
+a005	p002	Yummy Sarawak Kolo Mee			0
+a005	p004	137 Lor Mee Prawn Mee			0
+a005	p006	Xing Ji Wanton Mee			0
+a005	p098	Little Tokio			0
+a005	p099	Soi Thai Kitchen			0
+a005	p101	The Only Burger			0
+a005	p117	Three's A Crowd			0
+a005	p129	Wong's Family Western			0
+a005	p131	Lawa Bintang			0
+a006	p021	Botak Delicacy			0
+a006	p029	Ofanz Rojak Popiah			0
+a006	p108	Al Mahboob			0
+a007	p104	Old World Bakuteh & Fried Porridge			0
+a007	p120	Betsubara Creamery & Cafe			0
+a007	p121	Ben Baker			0
+a007	p123	Spilled Roaster&Brews			0
+a007	p132	Rong Kee Roasted Delights			0
+a007	p133	The Grace Bowl by Sarawak Delicacy			0
+a007	p134	Banom Kai Khon			0
+a009	p049	Tai Wah Pork Noodle			0
+a009	p050	Koung's Wan Tan Mee			0
+a009	p051	Tiong Bahru Hainanese Boneless Chicken Rice			0
+a009	p052	Keming Bing Sat			0
+a009	p053	Haruyama Udon			0
+a009	p054	Bari Bari Steak			0
+a009	p055	Sushiro			0
+a009	p056	Tanyu			0
+a009	p057	Monster Planet			0
+a009	p059	Fieldnotes			0
+a009	p062	108 Matcha Saro			0
+a009	p063	Mister Donut			0
+a009	p064	Luckin Coffee			0
+a009	p065	Wanpo Tea Shop			0
+a010	p059	fieldnotes			0
+a010	p063	Mister Donut			0
+a010	p065	Wanpo Tea Shop			0
+a011	p049	Tai Wah Pork Noodle			0
+a011	p050	Koung's Wan Tan Mee			0
+a011	p051	Tiong Bahru Hainanese Boneless Chicken Rice			0
+a012	p069	So Pho			0
+a012	p072	Legendary Hong Kong			0
+a012	p073	Ging Sun Ho King of Bun			0
+a012	p074	POCHA			0
+a012	p075	Casa Vostra			0
+a012	p085	PUTIEN			0
+a012	p086	Sushi Zanmai			0
+a012	p087	Seoul Garden			0
+a013	p021	Botak Cantonese Porridge			0
+a013	p022	Munchi Pancakes			0
+a013	p023	Penang Savour			0
+a013	p024	Ippon Fusion Bowl			0
+a013	p034	Gopizza			0
+a013	p035	Guzman y Gomez			0
+a013	p036	Rumah Makan Minang			0
+a013	p037	Ramen Hitoyoshi			0
+a013	p038	Wingstop			0
+a013	p039	Saap Saap Thai			0
+a013	p040	Wok Hey			0
+a015	p058	Cafe Bom Bom			0
+a015	p084	The Tree Cafe			0
+a016	p132	Rong Kee Roasted Delights			0
+a016	p133	The Grace Bowl by Sarawak Delicacy			0
+a016	p134	baankaikhon			0
+a017	p002	Yummy Sarawak Kolo Mee			0
+a017	p003	Song Han Carrot Cake			0
+a017	p034	Gopizza			0
+a017	p046	Im Thai Kitchen			0
+a017	p100	Jin Hock Seafood			0
+a017	p117	Three's A Crowd			0
+a017	p131	Lawa Bintang			0
+a018	p000	Chai Chee Pork Porridge			0
+a018	p002	Yummy Sarawak Kolo Mee			0
+a018	p003	Song Han Carrot Cake			0
+a018	p004	137 Lor Mee Prawn Mee			0
+a018	p006	Xing Ji Wanton Mee			0
+a018	p007	Rajarani Thosai			0
+a018	p010	House of Dessert			0
+a018	p011	Lao Lee Pig's Viscera			0
+a018	p012	Yong Huat Chicken Rice			0
+a018	p013	Jie Shen Shou Gong Bao			0
+a018	p014	Shen Li Restaurant			0
+a019	p000	Chai Chee Pork Porridge			0
+a019	p002	Sarawak Kolo Mee			0
+a019	p003	Song Han Carrot Cake			0
+a019	p004	137 Lor Mee			0
+a019	p018	137 Market Pancake			0
+a020	p021	Botak Cantonese Porridge			0
+a020	p025	Yong Seng Heng Prawn Noodle			0
+a020	p026	Indian Cuisine			0
+a020	p027	Jue Shi Lor Mee			0
+a020	p028	Japanese Curry House			0
+a020	p029	Ofanz Rojak  Popiah			0
+a020	p030	The Fish Soup			0
+a020	p031	Warung Wak Dindang			0
+a020	p032	Social Bite			0
+a020	p033	P&J Western Food			0
+a021	p056	TANYU			0
+a021	p064	luckin' coffee			0
+a022	p049	Tai Wah Pork Noodle			0
+a022	p051	Tiong Bahru Hainanese Boneless Chicken Rice			0
+a022	p053	Haruyama Udon			0
+a022	p059	fieldnotes			0
+a022	p062	108 Matcha Saro			0
+a022	p063	Mister Donut			0
+a023	p063	Mister Donut			0
+a023	p064	Luckin Coffee			0
+a024	p049	Tai Wah Pork Noodle			0
+a024	p051	Tiong Bahru Hainanese Boneless Chicken Rice			0
+a025	p066	Alley Wei			0
+a025	p067	Swensen's			0
+a025	p068	Nando's			0
+a025	p069	So Pho			0
+a025	p070	Tokyo Shokudo			0
+a025	p071	Genki Sushi			0
+a025	p076	Lola's Cafe			0
+a025	p080	Yang Xiao Xian			0
+a026	p067	Swensen's			0
+a026	p074	POCHA! Korean Street Dining			0
+a026	p076	Lola's			0
+a026	p085	PUTIEN			0
+a027	p073	Ging Sun Ho King of Bun			0
+a027	p075	Casa Vostra			0
+a027	p077	RUXU			0
+a027	p078	YEAH Gelato			0
+a028	p084	The Tree Cafe			0
+a028	p089	Tongue Tip Lanzhou Beef Noodles			0
+a029	p133	The Grace Bowl			0
+a029	p134	Ban Kai Khon			0
+a030	p105	Soon Soon Prawn Noodle			0
+a031	p094	Ichiban Boshi			0
+a032	p036	Rumah Makan Minang			0
+a033	p041	Dutch Colony			0
+a033	p117	Three's A Crowd			0
+a033	p118	Puffs and Peaks			0
+a034	p089	Tongue Tip Lanzhou Beef Noodles			0
+a034	p094	Ichiban Boshi			0
+a035	p056	TANYU			0
+a035	p058	Cafe Bom Bom			0
+a035	p064	Luckin Coffee			0
+a035	p088	Dian Xiao Er			0
+a035	p090	Tim Ho Wan			0
+a036	p072	Legendary Hong Kong			0
+a036	p073	Ging Sun Ho King of Bun			0
+a036	p076	Lola's			0
+a036	p086	Sushi Zanmai			0
+a037	p000	Chai Chee Pork Porridge			0
+a037	p001	Nasi Lemak Specialist			0
+a037	p002	Yummy Sarawak Kolo Mee			0
+a037	p003	Song Han Carrot Cake			0
+a037	p004	137 Lor Mee Prawn Mee			0
+a037	p005	Teo Kee Mushroom Minced Pork Noodle			0
+a037	p006	Xing Ji Wanton Mee			0
+a037	p007	Rajarani Thosai			0
+a037	p010	House of Dessert			0
+a037	p011	Lao Lee Pig's Viscera			0
+a037	p012	Yong Huat Chicken Rice			0
+a037	p014	Shen Li Restaurant			0
+a037	p015	Yi Pin Wei Braised Duck Kway Chap			0
+a038	p073	Ging Sun Ho			0
+a038	p075	Casa Vostra			0
+a038	p077	RUXU			0
+a039	p014	Shen Li Restaurant			0
+a039	p036	Rumah Makan Minang			0
+a039	p053	Haruyama Udon			0
+a039	p059	Fieldnotes			0
+a039	p073	Ging Sun Ho			0
+a039	p076	Lola's Cafe			0
+a039	p084	The Tree Cafe			0
+a039	p096	Keng Eng Kee Seafood			0
+a039	p104	Old World Bakuteh & Fried Porridge			0
+a039	p114	Hundred Acre Creamery			0
+a039	p116	Glasshouse Creamery			0
+a039	p117	Three's A Crowd			0
+a039	p118	Puffs And Peaks			0
+a039	p120	Betsubara Creamery & Cafe			0
+a039	p125	My Father's Minced Meat Noodles			0
+a039	p127	Jofa Meepok			0
+a039	p128	Sanye Seafood			0
+a039	p129	Wong's Family Western			0
+a039	p130	Zoul's Corner			0
+a039	p131	Lawa Bintang			0
+a040	p001	Nasi Lemak Specialist			0
+a040	p003	Song Han Carrot Cake			0
+a040	p021	Botak Cantonese Porridge			0
+a040	p127	Jofa Meepok			0
+a040	p131	Lawa Bintang			0
+a041	p072	Legendary Hong Kong			0
+a041	p073	Ging Sun Ho King of Bun			0
+a041	p075	Casa Vostra			0
+a041	p076	Lola's Cafe			0
+a041	p078	Yeah Gelato			0
+a041	p086	Sushi Zanmai			0
+a041	p091	Steak 99 Plus			0
+a042	p000	Chai Chee Pork Porridge			0
+a042	p001	Nasi Lemak Specialist			0
+a042	p002	Yummy Sarawak Kolo Mee			0
+a042	p003	Song Han Carrot Cake			0
+a042	p004	137 Lor Mee Prawn Mee			0
+a042	p005	Teo Kee Mushroom Minced Pork Noodle			0
+a042	p007	Rajarani Thosai			0
+a042	p008	Hai Chang Fish Head Steamboat			0
+a042	p009	Yi Le Shu Shi			0
+a042	p010	House of Dessert			0
+a042	p011	Lao Lee Pig's Viscera			0
+a042	p014	Shen Li Restaurant			0
+a043	p049	Tai Wah Pork Noodle			0
+a043	p050	Koung's Wan Tan Mee			0
+a043	p051	Tiong Bahru Hainanese Chicken Rice			0
+a044	p039	Saap Saap Thai			0
+a044	p106	Fu Yuan Teochew Bak Chor Mee			0
+a044	p108	Al Mahboob			0
+a045	p000	Chai Chee Pork Porridge			0
+a045	p002	Sarawak Kolo Mee			0
+a045	p004	137 Lor Mee			0
+a045	p006	Xing Ji			0
+a045	p007	Rajarani Thosai			0
+a045	p009	Yi Le Shu Shi			0
+a045	p011	Pig's Viscera Pork Ribs Prawn Noodle			0
+a046	p090	Tim Ho Wan			0
+a046	p094	Ichiban Boshi			0
+a046	p098	Little Tokio			0
+a046	p099	Soi Thai Kitchen			0
+a046	p111	Tipsy Penguin			0
+a046	p114	Hundred Acre Creamery			0
+a046	p117	Three's A Crowd			0
+a046	p118	Puffs and Peaks			0
+a047	p008	Hai Chang Fish Head Steamboat			0
+a047	p108	Al Mahboob Indian Rojak			0
+a047	p111	Tipsy Penguin			0
+a047	p112	888 Mookata			0
+a047	p117	Three's A Crowd			0
+a048	p005	Teo Kee Mushroom Minced Pork Noodle			0
+a048	p099	Soi Thai Kitchen			0
+a048	p106	Fu Yuan Teochew Bak Chor Mee			0
+a048	p108	Al Mahboob Indian Rojak			0
+a049	p000	Chai Chee Pork Porridge			0
+a049	p001	Nasi Lemak Specialist			0
+a049	p002	Yummy Sarawak Kolo Mee			0
+a049	p003	Song Han Carrot Cake			0
+a049	p004	137 Lor Mee Prawn Mee			0
+a049	p005	Teo Kee Mushroom Minced Pork Noodle			0
+a049	p007	Rajarani Thosai			0
+a049	p009	Yi Le Shu Shi			0
+a049	p010	House of Dessert			0
+a049	p018	137 Market Pancake			0
+a050	p002	Yummy Sarawak Kolo Mee			0
+a050	p003	Song Han Carrot Cake			0
+a050	p007	Rajarani Thosai			0
+a050	p010	House of Dessert			0
+a052	p049	Tai Wah Pork Noodle			0
+a052	p050	Koung's Wan Tan Mee			0
+a052	p051	Tiong Bahru Hainanese Boneless Chicken Rice			0
+a053	p049	Tai Wah Pork Noodle			0
+a053	p050	Koung's Wan Tan Mee			0
+a053	p051	Tiong Bahru Hainanese Boneless Chicken Rice			0
+a054	p021	Botak Cantonese Porridge			0
+a054	p025	Yong Seng Heng Prawn Noodle			0
+a054	p031	Warung Wak Dindang			0
+a054	p036	Rumah Makan Minang			0
+a054	p038	Wingstop			0
+a054	p039	Saap Saap Thai			0
+a054	p048	Mommy's Rendang			0
+a055	p020	Ah Gong Ban Mian			0
+a055	p022	Munchi Pancake			0
+a055	p024	IPPON Fusion Bowl			0
+a055	p027	Jue Shi Lor Mee			0
+a056	p039	Saap Saap Thai			0
+a057	p118	Puffs and Peaks			0
+a058	p117	Three's A Crowd			0
+a059	p041	Dutch Colony			0
+a060	p113	Craze Kitchen			0
+a061	p089	Tongue Tip Lanzhou Beef Noodles			0
+a062	p036	Rumah Makan Minang			0
+a063	p096	Keng Eng Kee Seafood			0
+a064	p060	Brother Bird			0
+a065	p064	Luckin Coffee			0
+a066	p082	Butahage			0
+a067	p116	Glasshouse Creamery'			0
+a068	p120	Betsubara Creamery & Cafe			0
+a069	p007	Rajarani Thosai			0
+a070	p015	Yi Pin Wei Braised Duck Kway Chap			0
+a071	p006	Xing Ji Wanton Mee			0
+a072	p002	Yummy Sarawak Kolo Mee			0
+a073	p003	Song Han Carrot Cake			0
+a074	p081	Abundance			0
+a075	p081	Abundance			0
+a076	p066	Alley Wei	8	10	0
+a077	p134	Baan Kai Khon			0
+a078	p054	Bari Bari Steak	7.5	10	0
+a079	p121	Ben Baker			0
+a080	p120	Betsubara Creamery & Cafe			0
+a081	p060	Brotherbird Bakehouse			0
+a082	p082	Butahage			0
+a083	p075	Casa Vostra			0
+a084	p113	Craze Kitchen	7	10	0
+a085	p115	Delato			0
+a086	p071	Genki Sushi			0
+a087	p073	Ging Sun Ho King of Bun	8	10	0
+a088	p073	Ging Sun Ho			0
+a089	p073	Ging Sun Ho King of Bun			0
+a090	p116	Glasshouse Creamery			0
+a091	p053	Haruyama Udon	6.5	10	0
+a092	p135	Heartland By Enjoy			0
+a093	p010	House of Dessert	7.5	10	0
+a094	p114	Hundred Acre Creamery	7.5	10	0
+a095	p024	Ippon Fusion Bowl	7.5	10	0
+a096	p100	Jin Hock Seafood	8	10	0
+a097	p103	JIN Kimchi Express			0
+a098	p127	JOFA Meepok	8	10	0
+a099	p052	Keming Bing Sat			0
+a100	p096	Keng Eng Kee Seafood			0
+a101	p096	Keng Eng Kee Seafood	8	10	0
+a102	p131	Lawa Bintang	8	10	0
+a103	p072	Legendary Hong Kong			0
+a104	p098	Little Tokio			0
+a105	p076	Lola's Cafe			0
+a106	p064	Luckin Coffee			0
+a107	p057	Monster Planet			0
+a108	p083	Nanyang Dao			0
+a109	p119	New Deli Bakery	8	10	0
+a110	p122	One18 Bakery			0
+a111	p074	POCHA	6	10	0
+a112	p118	Puffs And Peaks	8	10	0
+a113	p007	Rajarani Thosai			0
+a114	p077	RUXU			0
+a115	p003	Song Han Carrot Cake			0
+a116	p102	Super Gepuk			0
+a117	p101	The Only Burger	8	10	0
+a118	p117	Three's A Crowd	7	10	0
+a119	p111	Tipsy Penguin	8	10	0
+a120	p078	Yeah Gelato			0
+a121	p054	Bari Bari Steak			0
+a122	p075	Casa Vostra			0
+a123	p073	Ging Sun Ho King of Bun			0
+a124	p053	Haruyama Udon			0
+a125	p135	Heartland by Enjoy			0
+a126	p076	Lola's Cafe			0
+a127	p095	Ramen Taisho			0
+a128	p081	Abundance			0
+a129	p096	Keng Eng Kee			0
+a130	p004	137 Lor Mee Prawn Mee			0
+a131	p108	Al Mahboob			0
+a132	p134	Baan Kai Khon			0
+a133	p021	Botak Cantonese Porridge			0
+a134	p021	Botak Cantonese Porridge			0
+a135	p058	cafe BomBom			0
+a136	p073	Ging Sun Ho			0
+a137	p053	Haruyama Udon			0
+a138	p046	Im Thai Kitchen			0
+a139	p100	Jin Hock Seafood			0
+a140	p127	JOFA Mee Pok			0
+a141	p127	JOFA Mee Pok			0
+a142	p131	Lawa Bintang			0
+a143	p072	Legendary Hong Kong			0
+a144	p098	Little Tokio			0
+a145	p125	My Father's Minced Meat Noodles			0
+a146	p122	One 18 Bakery			0
+a147	p007	Rajarani Thosai			0
+a148	p007	Rajarani Thosai'			0
+a149	p128	San Ye Seafood			0
+a150	p014	Shen Li Restaurant			0
+a151	p003	Song Han Carrot Cake			0
+a152	p003	Song Han Carrot Cake			0
+a153	p101	The Only Burger			0
+a154	p117	Three's A Crowd			0
+a155	p111	Tipsy Penguin			0
+a156	p006	Xing Ji Wanton Mee			0
+a157	p002	Yummy Sarawak Kolo Mee			0
+a158	p130	Zoul's Corner			0
+a159	p100	Jin Hock Seafood			0
+a160	p096	Keng Eng Kee Seafood			0
+a161	p050	Koung's Wan Tan Mee			0
+a162	p131	Lawa Bintang			0
+a163	p001	Nasi Lemak Specialist			0
+a164	p007	Rajarani Thosai			0
+a165	p039	Saap Saap Thai			0
+a166	p003	Song Han Carrot Cake			0
+a167	p005	Teo Kee Minced Pork			0
+a168	p019	Xing Yun Kway Chap			1
+a169	p016	Xiong Kee			0
+a170	p074	Pocha			0
+a171	p099	Soi Thai Kitchen			0
+a172	p056	TANYU			0
