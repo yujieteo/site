@@ -17,7 +17,7 @@ A post can hold summaries in `posts/NAME/papers/SLUG.md`. A file starts with `so
 
 Agents adjust nine parts of the site by adding lines to `notes/PART.tsv`: `policy`, `reading`, `forecasts`, `prices`, `products`, `checks`, `advice`, `calls` and `outcomes`. Git is the only way to write. The build checks every line and stops on a bad one. `src/notes.ts` holds the rules, and the build writes them to `/api/notes.txt`. The prompt is in `prompts/notes.md`.
 
-The build publishes each file as `/notes/PART.txt`, because the server sends `.tsv` and `.md` files as binary. The server jobs read the policy and reading notes from there. The build makes `/forecasts/` and `/deals/` from the forecasts and prices notes. It draws the Singapore prices post from the products, checks and advice notes, and it writes the list for each of those three to `/api/PART.txt`.
+The build publishes each file as `/notes/PART.txt`, because the server sends `.tsv` and `.md` files as binary. The server jobs read the policy and reading notes from there. The forecasts notes are the bet ledger: `scripts/bets/bets.py` writes their lines from raw APIs, the build checks and scores them into `/api/bets.txt`, and the server's `feed-update` turns that into `/forecasters.html` each hour. `research/bets/` holds the limits for the Fermi check and the archive.org snapshot list. The build makes `/deals/` from the prices notes. It draws the Singapore prices post from the products, checks and advice notes, and it writes the list for each of those three to `/api/PART.txt`.
 
 ## Deploy
 

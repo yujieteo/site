@@ -1,0 +1,76 @@
+{
+ "hn": {
+  "pool": 35,
+  "calls": 47,
+  "mu": -0.059700303096218925,
+  "tau2": 0.0,
+  "p_topsum": {
+   "coin": 0.17698230176982302,
+   "market": 0.1698830116988301
+  },
+  "largest_log_e": [
+   {
+    "person": "downandout",
+    "n": 2,
+    "log_e": 1.366
+   },
+   {
+    "person": "MaysonL",
+    "n": 1,
+    "log_e": 0.683
+   },
+   {
+    "person": "gfodor",
+    "n": 1,
+    "log_e": 0.683
+   },
+   {
+    "person": "droithomme",
+    "n": 1,
+    "log_e": 0.683
+   },
+   {
+    "person": "cryoshon",
+    "n": 1,
+    "log_e": 0.683
+   }
+  ]
+ },
+ "lw": {
+  "pool": 74,
+  "calls": 224,
+  "mu": 0.00628207544042758,
+  "tau2": 0.0,
+  "p_topsum": {
+   "coin": 0.006099390060993901,
+   "market": 0.005099490050994901
+  },
+  "largest_log_e": [
+   {
+    "person": "JoshuaZ",
+    "n": 16,
+    "log_e": 7.158
+   },
+   {
+    "person": "AspiringKnitter",
+    "n": 5,
+    "log_e": 3.168
+   },
+   {
+    "person": "mfb",
+    "n": 6,
+    "log_e": 2.922
+   },
+   {
+    "person": "Zvi",
+    "n": 19,
+    "log_e": 2.791
+   },
+   {
+    "person": "Cthulhoo",
+    "n": 6,
+    "log_e": 2.678
+   }
+  ]
+ }
+}

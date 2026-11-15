@@ -1,0 +1,137 @@
+{
+ "counts": {
+  "forecast_units": 56,
+  "detected": 55,
+  "nonforecast_units": 8,
+  "false_positive": 0,
+  "p_truth": 48,
+  "p_found": 48,
+  "p_exact": 48,
+  "p_none_truth": 7,
+  "p_none_ok": 7,
+  "decided_truth": 52,
+  "ai_decided": 52,
+  "ai_hit_right": 52,
+  "ai_unclear": 0,
+  "due_truth": 54,
+  "due_ok": 53
+ },
+ "rates": {
+  "detection": 0.9821,
+  "false_positive": 0.0,
+  "stated_p_found": 1.0,
+  "stated_p_exact": 1.0,
+  "no_p_kept_null": 1.0,
+  "due_within_31_days": 0.9815,
+  "outcome_decided": 1.0,
+  "outcome_right_when_decided": 1.0
+ },
+ "ranks": {
+  "hn": {
+   "pool": 37,
+   "fakes": {
+    "planted-hn-a": {
+     "ai": {
+      "rank": 2.0,
+      "n": 6,
+      "shrunk_skill": 0.0453
+     },
+     "truth": {
+      "rank": 2.0,
+      "n": 6,
+      "shrunk_skill": 0.0453
+     }
+    },
+    "planted-hn-b": {
+     "ai": {
+      "rank": 41.0,
+      "n": 6,
+      "shrunk_skill": -0.2658
+     },
+     "truth": {
+      "rank": 41.0,
+      "n": 6,
+      "shrunk_skill": -0.2658
+     }
+    },
+    "planted-hn-c": {
+     "ai": {
+      "rank": 6.0,
+      "n": 6,
+      "shrunk_skill": -0.0328
+     },
+     "truth": {
+      "rank": 6.0,
+      "n": 6,
+      "shrunk_skill": -0.0328
+     }
+    },
+    "planted-hn-d": {
+     "ai": {
+      "rank": 11.0,
+      "n": 6,
+      "shrunk_skill": -0.065
+     },
+     "truth": {
+      "rank": 11.0,
+      "n": 6,
+      "shrunk_skill": -0.065
+     }
+    }
+   }
+  },
+  "lw": {
+   "pool": 79,
+   "fakes": {
+    "planted-lw-a": {
+     "ai": {
+      "rank": 44.5,
+      "n": 6,
+      "shrunk_skill": -0.0
+     },
+     "truth": {
+      "rank": 44.5,
+      "n": 6,
+      "shrunk_skill": -0.0
+     }
+    },
+    "planted-lw-b": {
+     "ai": {
+      "rank": 44.5,
+      "n": 6,
+      "shrunk_skill": -0.0
+     },
+     "truth": {
+      "rank": 44.5,
+      "n": 6,
+      "shrunk_skill": -0.0
+     }
+    },
+    "planted-lw-c": {
+     "ai": {
+      "rank": 44.5,
+      "n": 6,
+      "shrunk_skill": -0.0
+     },
+     "truth": {
+      "rank": 44.5,
+      "n": 6,
+      "shrunk_skill": -0.0
+     }
+    },
+    "planted-lw-d": {
+     "ai": {
+      "rank": 44.5,
+      "n": 6,
+      "shrunk_skill": -0.0
+     },
+     "truth": {
+      "rank": 44.5,
+      "n": 6,
+      "shrunk_skill": -0.0
+     }
+    }
+   }
+  }
+ }
+}

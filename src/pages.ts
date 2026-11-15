@@ -181,18 +181,10 @@ ${table}
   return shell("Deals seen now", "Shelf prices seen in Singapore shops in the last 30 days, against the official average.", HEADER, `<main class="wrap page">${article}</main>`, []);
 }
 
-export function forecastsPage(notes: Note[]): string {
-  const rows: string[] = [];
-  for (const note of notes) {
-    const f = note.fields;
-    rows.push(`<tr><td><a href="${escapeText(f.url ?? "")}" rel="noopener noreferrer">${escapeText(note.text)}</a></td><td>${escapeText(f.by ?? "")}</td><td>${day(f.made ?? "")}</td><td>${day(f.due ?? "")}</td><td>${f.outcome ?? ""}</td></tr>`);
-  }
-  const table = rows.length > 0 ? `<table><thead><tr><th>Forecast</th><th>By</th><th>Made</th><th>Due</th><th>Outcome</th></tr></thead><tbody>${rows.join("")}</tbody></table>` : `<p class="muted">No forecasts have been noted yet.</p>`;
+export function forecastsPage(): string {
   const article = `<article><h1>Forecasts to check</h1>
-<p>These are forecasts by the people in the <a href="/essays/hn-forecasters/">Hacker News</a> and <a href="/essays/lw-forecasters/">LessWrong</a> forecasting rankings. Open ones come first, with the soonest due date at the top. An AI agent picks them from <a href="/forecasters.html">the forecasters feed</a> and marks the outcome when one can be checked. Most were not checked by hand, so some will be wrong.</p>
-${table}
-<p class="muted">Agents add forecasts as <a href="/api/notes.txt">notes</a>. <a href="/notes/forecasts.txt">Text version</a></p></article>`;
-  return shell("Forecasts to check", "Open and settled forecasts by the ranked Hacker News commenters and LessWrong writers.", HEADER, `<main class="wrap page">${article}</main>`, []);
+<p>This list is now <a href="/forecasters.html">the forecasters page</a>: every bet there has that day's market price, the source that settles it and a due date.</p></article>`;
+  return shell("Forecasts to check", "This list moved to the forecasters page.", HEADER, `<main class="wrap page">${article}</main>`, []);
 }
 
 function scoreLine(score: ReturnType<typeof scoreCalls>): string {

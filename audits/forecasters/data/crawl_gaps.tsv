@@ -1,0 +1,41 @@
+site	person	dump	api	both	only_dump	only_api	text_differs
+hn	stcredzero	16443	16443	16443	0	0	0
+hn	wmf	11756	11756	11756	0	0	0
+hn	gojomo	6858	6858	6858	0	0	0
+hn	adventured	8407	8407	8407	0	0	0
+hn	jonnathanson	2063	2063	2063	0	0	0
+hn	earl	876	876	876	0	0	0
+hn	Zigurd	4372	4372	4372	0	0	0
+hn	gbog	1790	1790	1790	0	0	0
+hn	nostrademons	11698	11698	11698	0	0	0
+hn	potatolicious	5138	5138	5138	0	0	0
+hn	dasil003	5882	5882	5882	0	0	0
+hn	snowwrestler	5781	5781	5781	0	0	0
+hn	nl	7586	7586	7586	0	0	0
+hn	jsjenkins168	507	507	507	0	0	0
+hn	Samuel_Michon	1890	1890	1890	0	0	0
+hn	bane	7045	7045	7045	0	0	0
+hn	bryanlarsen	5053	5053	5053	0	0	0
+hn	SwellJoe	6675	6675	6675	0	0	0
+hn	tptacek	50034	50043	50034	0	9	0
+hn	btilly	7686	7687	7686	0	1	0
+lw	Zvi	1388	1531	1386	2	145	
+lw	gwern	10144	10314	10111	33	203	
+lw	Daniel Kokotajlo	1130	1536	1130	0	406	
+lw	Matthew Barnett	392	603	392	0	211	
+lw	Rohin Shah	1770	1937	1770	0	167	
+lw	Richard_Kennaway	5183	5291	5108	75	183	
+lw	paulfchristiano	1898	2065	1897	1	168	
+lw	knb	1243	1215	1202	41	13	
+lw	Costanza	341	327	327	14	0	
+lw	jsteinhardt	789	810	786	3	24	
+lw	Mati_Roy	404	673	403	1	270	
+lw	orthonormal	2782	2833	2776	6	57	
+lw	Cthulhoo	169	169	169	0	0	
+lw	mfb	73	73	73	0	0	
+lw	JoshuaZ	4865	4887	4855	10	32	
+lw	Liam Donovan	66	84	66	0	18	
+lw	Dagon	2364	3102	2364	0	738	
+lw	Kevin	1507	1458	1443	64	15	
+lw	TheRev	35	32	32	3	0	
+lw	AspiringKnitter	292	292	292	0	0	

@@ -1,0 +1,65 @@
+unit	author	status	ai_claim	ai_p	truth_p	ai_outcome	truth_outcome
+hn:planted-00:0	planted-hn-a	detected	Barack Obama will win the November 2008 US presidential election.	0.8	0.8	true	true
+hn:planted-01:0	planted-hn-a	detected	One bitcoin will trade above $1,000 at some point before the end of 2014.	0.75	0.75	true	true
+hn:planted-02:0	planted-hn-a	detected	Windows Phone will reach 10% of the US smartphone market by the end of 2013.	0.15	0.15	false	false
+hn:planted-03:0	planted-hn-a	detected	Google gives up on Google Wave within two years of 2009-12-01.	0.85	0.85	true	true
+hn:planted-04:0	planted-hn-a	detected	Yahoo's core business will be acquired before the end of 2017.	0.8	0.8	true	true
+hn:planted-05:0	planted-hn-a	detected	Intel will not ship 10nm desktop chips in volume during 2016.	0.8	0.2	true	false
+hn:planted-06:0	planted-hn-a	detected	The LHC will find the Higgs boson and then find nothing else new for years, disappointing physicists.			true	true
+hn:planted-07:0	planted-hn-a	ok					
+hn:planted-08:0	planted-hn-b	detected	Hillary Clinton will win the November 2016 US presidential election.	0.9	0.9	false	false
+hn:planted-09:0	planted-hn-b	detected	Brazil will win the 2014 FIFA World Cup.	0.7	0.7	false	false
+hn:planted-10:0	planted-hn-b	detected	Apple will have a smartwatch in customers' hands before the end of 2014.	0.85	0.85	false	false
+hn:planted-11:0	planted-hn-b	detected	Greece will be out of the eurozone by the end of 2015.	0.8	0.8	false	false
+hn:planted-12:0	planted-hn-b	detected	The WeWork IPO happens in 2019.	0.85	0.85	false	false
+hn:planted-13:0	planted-hn-b	detected	Google will shut down Google Reader before the end of 2013.	0.1	0.1	true	true
+hn:planted-14:0	planted-hn-b	detected	Nokia will remain the largest phone maker by units for years (at least two years), with Samsung not close.			false	false
+hn:planted-15:0	planted-hn-b	ok					
+hn:planted-16:0	planted-hn-c	detected	Tesla Model 3 customer deliveries will start in 2017.	0.6	0.6	true	true
+hn:planted-17:0	planted-hn-c	detected	Lee Sedol will win the March 2016 match against AlphaGo.	0.6	0.6	false	false
+hn:planted-18:0	planted-hn-c	detected	Uber will IPO by the end of 2019.	0.6	0.6	true	true
+hn:planted-19:0	planted-hn-c	detected	Apple announces Macs using its own ARM-based chips before the end of 2020.	0.4	0.4	true	true
+hn:planted-20:0	planted-hn-c	detected	Twitter will complete its IPO before the end of 2013.	0.6	0.6	true	true
+hn:planted-21:0	planted-hn-c	detected	Amazon will reach a market capitalization of $1 trillion before the end of 2020.	0.4	0.4	true	true
+hn:planted-22:0	planted-hn-c	detected	The Dell going-private buyout will close in 2013.			true	true
+hn:planted-23:0	planted-hn-c	ok					
+hn:planted-24:0	planted-hn-d	detected	Facebook goes public (IPO) in 2012.	0.97	0.97	true	true
+hn:planted-25:0	planted-hn-d	detected	SpaceX will land a Falcon 9 first stage on solid ground before the end of 2016.	0.95	0.95	true	true
+hn:planted-26:0	planted-hn-d	detected	Someone will buy Instagram before the end of 2012.	0.95	0.95	true	true
+hn:planted-27:0	planted-hn-d	detected	Microsoft buys Nokia's phone business before the end of 2014.	0.95	0.95	true	true
+hn:planted-28:0	planted-hn-d	detected	Bitcoin will trade above $10,000 before the end of 2017.	0.95	0.95	true	true
+hn:planted-29:0	planted-hn-d	detected	Supersymmetry (superpartner particles) is discovered at the LHC before the end of 2015.	0.95	0.95	false	false
+hn:planted-30:0	planted-hn-d	detected	Contactless payments will become normal in US shops within five years of September 2014.			unclear	unclear
+hn:planted-31:0	planted-hn-d	ok					
+lw:planted-32:0	planted-lw-a	detected	The discovery of the Higgs boson will be announced by the end of 2012.	0.8	0.8	true	true
+lw:planted-33:0	planted-lw-a	detected	Advanced LIGO announces a direct detection of gravitational waves before 2017.	0.75	0.75	true	true
+lw:planted-34:0	planted-lw-a	detected	Scotland does not vote for independence in the September 2014 referendum.	0.8	0.2	true	false
+lw:planted-35:0	planted-lw-a	detected	Emmanuel Macron wins the 2017 French presidency, with Le Pen making the runoff but losing it.	0.75	0.75	true	true
+lw:planted-36:0	planted-lw-a	detected	The UK will have left the EU by the end of 2019.	0.25	0.25	false	false
+lw:planted-37:0	planted-lw-a	detected	The James Webb Space Telescope launches before the end of 2021.	0.7	0.7	true	true
+lw:planted-38:0	planted-lw-a	missed					
+lw:planted-39:0	planted-lw-a	ok					
+lw:planted-40:0	planted-lw-b	detected	Bernie Sanders wins the 2016 Democratic presidential nomination.	0.65	0.65	false	false
+lw:planted-41:0	planted-lw-b	detected	Marine Le Pen will win the 2017 French presidential election.	0.6	0.6	false	false
+lw:planted-42:0	planted-lw-b	detected	Humans will walk on the Moon again before the end of 2024.	0.8	0.8	false	false
+lw:planted-43:0	planted-lw-b	detected	Bitcoin will trade above $100,000 at some point in 2021.	0.7	0.7	false	false
+lw:planted-44:0	planted-lw-b	detected	Angela Merkel will no longer be German chancellor by the end of 2019.	0.75	0.75	false	false
+lw:planted-45:0	planted-lw-b	detected	Leave does not win the UK EU membership referendum (Remain wins).	0.75	0.25	false	true
+lw:planted-46:0	planted-lw-b	detected	Within a decade of September 2012, most new cars sold in Norway will be electric.			true	true
+lw:planted-47:0	planted-lw-b	ok					
+lw:planted-48:0	planted-lw-c	detected	Nintendo Switch will not pass 50 million units sold by the end of 2019.	0.6	0.4	false	true
+lw:planted-49:0	planted-lw-c	detected	Netflix will have more than 100 million subscribers by the end of 2017.	0.6	0.6	true	true
+lw:planted-50:0	planted-lw-c	detected	Kim Jong-un will meet a sitting US president before the end of 2018.	0.6	0.6	true	true
+lw:planted-51:0	planted-lw-c	detected	Boris Johnson is still UK prime minister at the end of 2022.	0.6	0.6	false	false
+lw:planted-52:0	planted-lw-c	detected	FTX is still operating normally at the end of 2022.	0.6	0.6	false	false
+lw:planted-53:0	planted-lw-c	detected	Musk's Twitter acquisition will close before the end of 2022.	0.6	0.6	true	true
+lw:planted-54:0	planted-lw-c	detected	The PredictionBook userbase will be smaller in August 2016 than it was in August 2011.			unclear	unclear
+lw:planted-55:0	planted-lw-c	ok					
+lw:planted-56:0	planted-lw-d	detected	Ethereum switches to proof of stake before the end of 2022.	0.95	0.95	true	true
+lw:planted-57:0	planted-lw-d	detected	At least one COVID-19 vaccine receives FDA emergency use authorization before the end of 2020.	0.95	0.95	true	true
+lw:planted-58:0	planted-lw-d	detected	Russia launches a full-scale invasion of Ukraine before March 2022.	0.95	0.95	true	true
+lw:planted-59:0	planted-lw-d	detected	Germany wins the 2014 FIFA World Cup.	0.95	0.95	true	true
+lw:planted-60:0	planted-lw-d	detected	Donald Trump will win the 2016 US presidential election.	0.05	0.05	true	true
+lw:planted-61:0	planted-lw-d	detected	AlphaGo wins its match against Lee Sedol in March 2016.	0.95	0.95	true	true
+lw:planted-62:0	planted-lw-d	detected	Cryonics organizations (e.g. Alcor, Cryonics Institute) will have more members in 2020 than in 2010.			true	unclear
+lw:planted-63:0	planted-lw-d	ok					

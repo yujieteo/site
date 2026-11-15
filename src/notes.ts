@@ -46,6 +46,7 @@ interface Part {
 const DATE = /^\d{4}-\d\d-\d\d$/;
 const URL = /^https:\/\/[^\s<>"]+$/;
 const HASH = /^[0-9a-f]{8}$/;
+const STAMP = /^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\dZ$/;
 
 export const PARTS: readonly Part[] = [
   {
@@ -74,21 +75,36 @@ export const PARTS: readonly Part[] = [
   },
   {
     name: "forecasts",
-    does: "Keeps a list of forecasts made by the ranked Hacker News commenters and LessWrong writers, and their outcomes.",
+    does: "Keeps the ledger of bets behind /forecasters.html: checkable claims that the 40 ranked Hacker News commenters and LessWrong writers made or revised, each with that day's market price, the source that settles it and a due date.",
     read: "/forecasters.txt",
     id: HASH,
-    idHelp: "the id in the first column of the list. A forecast stays here after it leaves the list.",
+    idHelp: "the bet id that scripts/bets/bets.py gives. Do not write lines by hand: give the script a proposal (the item url, the quote, the market url, and the stated chance or the side), and it fetches the rest from the raw APIs. A bet stays after it is settled.",
     one: "id",
-    points: "Higher points come first. Give more to a dated forecast that others doubt. Among equal points, the soonest due date comes first.",
-    text: "The forecast in the person's own words, short, or a plain restatement.",
+    points: "Not used. Use 0.",
+    text: "The quote: the person's words that make the claim, copied exactly from the item, at most 300 characters.",
     fields: {
-      by: { need: true, test: /^[\w-]{1,30}$/, help: "the Hacker News user name, or the LessWrong name from the user's profile address" },
+      by: { need: true, test: /^[\p{L}\p{N} _.-]{1,40}$/u, help: "the name as the person gives it: the Hacker News user name, or the LessWrong display name" },
       url: { need: true, test: URL, help: "an https link to the comment or post" },
-      made: { need: true, test: /^\d{4}-\d\d(-\d\d)?$/, date: "past", help: "when it was made, as YYYY-MM or YYYY-MM-DD" },
-      due: { need: false, test: /^\d{4}(-\d\d){0,2}$/, date: "any", help: "when it can be checked, as YYYY, YYYY-MM or YYYY-MM-DD. Leave it out if the person gave no date." },
-      outcome: { need: true, test: /^(open|right|partly|wrong)$/, help: "open, right, partly or wrong. Change it only with evidence, and say the evidence in the text." },
+      made: { need: true, test: STAMP, help: "when the item was posted, as YYYY-MM-DDTHH:MM:SSZ, from the site's API" },
+      edited: { need: false, test: DATE, date: "past", help: "the last edit the site reports, if more than a day after posting, as YYYY-MM-DD" },
+      sha256: { need: true, test: /^[0-9a-f]{64}$/, help: "the SHA-256 of the item's text on the record day, as scripts/bets/bets.py defines it" },
+      archive: { need: true, test: /^https:\/\/web\.archive\.org\/web\/\d{14}\/\S+$/, help: "an archive.org snapshot of the url, the first after posting" },
+      claim: { need: true, test: /^[^<>\t\x00-\x1f]{1,300}$/, help: "the question that the market resolves, as the market words it" },
+      p: { need: false, test: /^0?\.\d{1,4}$/, help: "the chance of YES that the person stated, from 0 to 1. Leave it out if they stated none, and give side." },
+      side: { need: false, test: /^(yes|no)$/, help: "the side the person takes, yes or no, when they stated no chance" },
+      market: { need: true, test: /^https:\/\/(manifold\.markets|polymarket\.com|kalshi\.com)\/\S+$/, help: "the market that prices the claim" },
+      price: { need: true, test: /^0?\.\d{1,4}$/, help: "the market's YES price just before the item was posted" },
+      price_at: { need: true, test: STAMP, help: "when that price was set, as YYYY-MM-DDTHH:MM:SSZ" },
+      source: { need: true, test: URL, help: "the only source that settles the bet: the market's own resolution" },
+      due: { need: true, test: DATE, date: "any", help: "the day the source closes, as YYYY-MM-DD" },
+      fermi: { need: true, test: /^(none|[a-z0-9_]+:\d+(\.\d+)?)$/, help: "none, or the key of a physical limit and the amount the claim implies, such as nuclear_world_gw_year:60" },
+      outcome: { need: true, test: /^(open|yes|no|void)$/, help: "open, or how the source resolved: yes, no, or void for a cancelled or partial resolution" },
+      settled: { need: false, test: DATE, date: "past", help: "the day the source resolved, as YYYY-MM-DD" },
+      evidence: { need: false, test: URL, help: "the page of the source that shows the resolution" },
+      revises: { need: false, test: HASH, help: "the id of an earlier bet by the same person that this one revises" },
+      correction: { need: false, test: /^[^<>\t\x00-\x1f]{1,300}$/, help: "what changed after a dispute, and why" },
     },
-    result: "/forecasts/, on deploy",
+    result: "/forecasters.html, within an hour of a deploy",
   },
   {
     name: "prices",
@@ -395,11 +411,6 @@ export function deals(notes: Note[], today: string): Deal[] {
     found.push({ note, row, price, below: Math.round((1 - price / row.average) * 100), good: price <= row.deal });
   }
   return found.sort((a, b) => b.below - a.below || b.note.points - a.note.points);
-}
-
-export function forecastOrder(notes: Note[]): Note[] {
-  // Open ones first, then by points. Among equals the one that can be checked soonest leads, and one with no due date trails.
-  return [...notes].sort((a, b) => Number(b.fields.outcome === "open") - Number(a.fields.outcome === "open") || b.points - a.points || (a.fields.due ?? "9999").localeCompare(b.fields.due ?? "9999") || (b.fields.made ?? "").localeCompare(a.fields.made ?? ""));
 }
 
 export interface Scored {

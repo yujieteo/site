@@ -1,0 +1,25 @@
+variant	site	published_rank	person	rank	p_pub_coin	p_pub_market
+partly_true	hn	1	stcredzero		1.0	1.0
+partly_true	hn	2	wmf		1.0	1.0
+partly_true	hn	3	gojomo	20.5	0.8520739630184908	0.8450774612693653
+partly_true	lw	1	Zvi	37.5	1.0	1.0
+partly_true	lw	2	gwern		1.0	1.0
+partly_true	lw	3	Daniel Kokotajlo		1.0	1.0
+partly_false	hn	1	stcredzero		1.0	1.0
+partly_false	hn	2	wmf		1.0	1.0
+partly_false	hn	3	gojomo	20.5	0.8470764617691154	0.8520739630184908
+partly_false	lw	1	Zvi	37.5	1.0	1.0
+partly_false	lw	2	gwern		1.0	1.0
+partly_false	lw	3	Daniel Kokotajlo		1.0	1.0
+coin_ref_base_rate	hn	1	stcredzero		1.0	1.0
+coin_ref_base_rate	hn	2	wmf		1.0	1.0
+coin_ref_base_rate	hn	3	gojomo	19.0	0.6431784107946027	0.5032483758120939
+coin_ref_base_rate	lw	1	Zvi	40.0	1.0	0.7401299350324838
+coin_ref_base_rate	lw	2	gwern		1.0	1.0
+coin_ref_base_rate	lw	3	Daniel Kokotajlo		1.0	1.0
+search_population	hn	1	stcredzero		1.0	1.0
+search_population	hn	2	wmf		1.0	1.0
+search_population	hn	3	gojomo	20.0	1.0	1.0
+search_population	lw	1	Zvi	37.5	1.0	1.0
+search_population	lw	2	gwern		1.0	1.0
+search_population	lw	3	Daniel Kokotajlo		1.0	1.0

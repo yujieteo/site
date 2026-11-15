@@ -13,7 +13,7 @@ It covers 3,843 comments and posts with forecast wording, written between 2005 a
 
 The text comes from [a public crawl of LessWrong ↗](https://huggingface.co/datasets/x65617379/lesswrong_260509) made in May 2026. That crawl leaves out quick takes, so forecasts made there before 2022 are missing. A large share of the forecasts come from the yearly prediction threads, where people listed forecasts with odds.
 
-The open forecasts are also on [one page](/forecasts/), with the Hacker News ones.
+A [pre-registered test ↗](https://github.com/yujieteo/site/tree/main/audits/forecasters) later found that chance explains the top ranks of this ranking: too few of the forecasts can be priced to tell skill from luck. The [forecasters page](/forecasters.html) now scores these people only by checkable bets, each against the market price on the day it was made.
 
 Names appear as each person shows them on LessWrong. Nobody was traced beyond what they published.
 
