@@ -18,7 +18,7 @@ p015	Yi Pin Wei Braised Duck Kway Chap	h	Chinese	Round Market	Round Market	#01-4
 p016	Xiong Kee Famous Carrot Cake	h	Local	Round Market	Round Market	#01-29	unknown	1.34537	103.94463	0	0	0	0	m
 p017	Ju Ming Xiang Mushroom Minced Meat Noodle	h	Local	Round Market	Round Market	#01-21	unknown	1.34537	103.94463	0	0	0	0	m
 p018	137 Market Pancake	h	Local	Round Market	Round Market	#01-06	unknown	1.34537	103.94463	0	0	0	0	s
-p019	Xing Yun Kway Chap	h	Chinese	Round Market	Round Market	#01-14	unknown	1.34537	103.94463	0	0	0	0	m
+p019	Xing Yun Kway Chap	h	Chinese	Round Market	Round Market	#01-14	closed	1.34537	103.94463	0	0	0	0	m
 p020	Ah Gong Ban Mian	h	Chinese	Our Tampines Hub	Our Tampines Hub	#01-38	open	1.35313	103.94041	0	0	0	0	m
 p021	Botak Cantonese Porridge	h	Chinese	Our Tampines Hub	Our Tampines Hub	#01-65	open	1.35313	103.94041	0	5	5	0	m
 p022	Munchi Pancakes	h	Bakery	Our Tampines Hub	Our Tampines Hub	#01-67	open	1.35313	103.94041	0	6	2	0	s
@@ -82,7 +82,7 @@ p079	Gokuku	c	Bakery	Tampines Mall	Tampines Mall	B1-K7	open	1.35254	103.94472	0	
 p080	Mango Ice	c	Dessert	Tampines Mall	Tampines Mall	#02-K3	open	1.35254	103.94472	0	2	0	0	s
 p081	Abundance	r	Chinese	Century Square	Century Square	#01-35	open	1.35239	103.94379	0	6	16.67	0	m
 p082	Butahage	r	Japanese	Century Square	Century Square	#01-11A	open	1.35239	103.94379	0	7	17.75	0	m
-p083	Nanyang Dao	c	Local	Tampines Mall	Tampines Mall	#B1-18	open	1.35254	103.94472	0	5	9.35	0	m
+p083	Nanyang Dao	c	Local	Century Square	Century Square	#B1-18	open	1.35239	103.94379	0	5	9.35	0	m
 p084	The Tree Cafe	c	Western	Century Square	Century Square	#03-34	open	1.35239	103.94379	0	33	12.54	0	m
 p085	Putien	r	Chinese	Tampines Mall	Tampines Mall	#02-02	open	1.35254	103.94472	0	16	27.9	1	m
 p086	Sushi Zanmai	r	Japanese	Tampines Mall	Tampines Mall	#04-32	open	1.35254	103.94472	0	5	23.74	0	m

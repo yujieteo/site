@@ -36,6 +36,8 @@ import guides  # noqa: E402
 ROOT = Path(__file__).resolve().parents[2]
 RES = ROOT / "research/tampines"
 RAW = RES / "raw"
+# Places found closed after the freeze but closed before it began: their closure forecasts are not scored.
+CLOSED_BEFORE_FREEZE = {"p019": "Xing Yun Kway Chap, reported closed by Miss Tam Chiak in 2016"}
 TODAY = date.today().isoformat()
 START = "2026-11-16"
 END = "2027-11-15"
@@ -253,8 +255,9 @@ def main() -> None:
         w.writerows(status_rows)
     if TODAY >= END:
         ev = {r[0]: r[2] for r in status_rows}
-        pairs = [(float(f["p_model"]), int(bool(ev.get(f["id"])))) for f in forecasts if f["target"] == "closed_by"]
-        base = [(float(f["p_baseline"]), int(bool(ev.get(f["id"])))) for f in forecasts if f["target"] == "closed_by"]
+        scored = [f for f in forecasts if f["target"] == "closed_by" and f["id"] not in CLOSED_BEFORE_FREEZE]
+        pairs = [(float(f["p_model"]), int(bool(ev.get(f["id"])))) for f in scored]
+        base = [(float(f["p_baseline"]), int(bool(ev.get(f["id"])))) for f in scored]
         scores.append([TODAY, "closed_by", len(pairs), *score_line(pairs, base), "resolved"])
     else:
         scores.append([TODAY, "closed_by", sum(1 for r in status_rows if r[2]), "", "", "", f"places with closure evidence so far; ACRA lookups failed this run: {len(ACRA_FAILED)}; resolves {END}"])

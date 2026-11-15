@@ -252,6 +252,9 @@ def survival(pls: list[Place], report: Counter) -> tuple[list[tuple[int, float]]
         if pl.status == "moved":
             report["survival: moved, left out"] += 1
             continue
+        if pl.status == "closed":
+            report["survival: closed before the study, left out"] += 1
+            continue
         ages = [y for r in acra.get(pl.id, []) if (y := years_since(r["registration_date"]))]
         floor = max(floors[pl.id], default=0.0)
         if ages and max(ages) < floor:

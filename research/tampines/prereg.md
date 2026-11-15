@@ -118,3 +118,10 @@ A monthly scheduled check runs `scripts/tampines/check.py`. It finds new article
   - Buffets and sharing platters (`buffet|platter for two` in the dish name, 10 rows) are no longer price rows: none is one person's main. Before, they fell in the catch-all `other` type, whose low mean made a buffet place look very dear.
   - The ranking rule's "at least three verified mains" now counts rows that reach the price model. Seoul Garden and Captain Kim Korean BBQ list only buffets, so they leave the ranking, which drops from 54 places to 52.
   - The model, priors and gates are unchanged. The refit used 2,000 warm-up and 2,000 draws, with the same seed. `forecasts.tsv` stays as frozen; the fit does not overwrite it. Its rows for the two places above are still scored.
+- 15 November 2026, fixing the data errors listed on the page:
+  - Tai Wah Pork Noodle: the S$5 row was dated 2023-10 from Eatbook's Tampines 1 guide, but Hawkers' Street opened in July 2024. The row now takes the page's shown date, 2026-07. The dating rule in the post gained this case.
+  - Nanyang Dao (p083) is at Century Square #B1-18 (Eatbook, 7 October 2024), not Tampines Mall. Its venue, coordinates and postal record changed, so guides scoped to Tampines Mall no longer count it and guides scoped to Century Square do. No ACRA entity matches it at either address.
+  - Xing Yun Kway Chap (p019) is marked closed: Miss Tam Chiak reported it closed in 2016, and ACRA shows Nasi Lemak Specialist at its unit since 2017. It leaves the survival model like the moved place. Its frozen closure forecast is not scored (`CLOSED_BEFORE_FREEZE` in `check.py`), because it closed before the forecasts were made.
+  - Wingstop's second outlet, Tampines Mall #04-23 to 25 (the mall's store list), is a note on the page only. The study's place list and prices are for Our Tampines Hub.
+  - Jin Kimchi Express: the flagged date was right. Its review was published on 27 February 2023, and the rule gives the row that date. Nothing changed.
+  - The refit used the same model, priors, gates, seed and draws. `forecasts.tsv` is unchanged.
