@@ -27,8 +27,18 @@ FIT_DAY = "2026-11-15"
 TOP = 5
 
 
-def reported(meta) -> np.ndarray:
-    return np.array([i for i, pl in enumerate(meta["places"]) if pl.shared == 0 and pl.form == "m" and pl.typical > 0])
+def reported(meta, data) -> np.ndarray:
+    """Per-person places with at least three mains that reach the price model (prereg: three verified mains)."""
+    rows = np.bincount(data.item_place, minlength=len(meta["places"]))
+    return np.array([i for i, pl in enumerate(meta["places"]) if pl.shared == 0 and pl.form == "m" and pl.typical > 0 and rows[i] >= 3])
+
+
+def dish_prices(data, i: int) -> list[float]:
+    """Cheapest, median and dearest of the place's own priced dishes, in latest-CPI-month dollars."""
+    real = np.exp(data.item_log[data.item_place == i])
+    if real.size == 0:
+        return [float("nan")] * 3
+    return [float(real.min()), float(np.median(real)), float(real.max())]
 
 
 def gates(idata) -> dict:
@@ -126,7 +136,7 @@ def run_fit() -> None:
         print(f"posterior not cached: {e}", file=sys.stderr)
 
     q = derived(idata, data)
-    sub = reported(meta)
+    sub = reported(meta, data)
     rk_value = ranks(q["value"], sub)
     rk_back = ranks(q["theta"], sub)
     lam = draws_of(idata, "lam")
@@ -160,6 +170,8 @@ def run_fit() -> None:
             float(np.median(q["pct"][:, i])), float(np.quantile(q["pct"][:, i], 0.1)), float(np.quantile(q["pct"][:, i], 0.9)),
             float(np.median(q["price"][:, i])), float(np.quantile(q["price"][:, i], 0.1)), float(np.quantile(q["price"][:, i], 0.9)),
             float(np.median(q["value"][:, i])), float(np.quantile(q["value"][:, i], 0.1)), float(np.quantile(q["value"][:, i], 0.9)),
+            *(float(np.nanquantile(q["own"][:, i], x)) if not np.isnan(q["own"][0, i]) else "" for x in (0.5, 0.1, 0.9)),
+            *(x if not np.isnan(x) else "" for x in dish_prices(data, i)),
             int(rb[0]) if inside else "", int(rb[1]) if inside else "", float(np.mean(rk_back[:, j[0]] <= TOP)) if inside else "",
             int(rv[0]) if inside else "", int(rv[1]) if inside else "", float(np.mean(rk_value[:, j[0]] <= TOP)) if inside else "",
             int(i in tied_back), int(i in tied_value),
@@ -170,7 +182,7 @@ def run_fit() -> None:
             fc.append(["michelin_next", pl.id, pl.name, "", f"{p_mich[i]:.4f}", f"{base:.4f}", "next MICHELIN Guide Singapore list (expected mid-2027)", "Bib Gourmand or star"])
         bc = base_close.get(pl.kind, 0.10)
         fc.append(["closed_by", pl.id, pl.name, "", f"{p_close[i]:.4f}", f"{bc:.4f}", "2027-11-15", "ACRA ceased or struck off; OSM rename or disused/was; or two independent reports"])
-    header = ["id", "name", "kind", "ranked", "theta", "theta_lo", "theta_hi", "pct", "pct_lo", "pct_hi", "price", "price_lo", "price_hi", "value", "value_lo", "value_hi",
+    header = ["id", "name", "kind", "ranked", "theta", "theta_lo", "theta_hi", "pct", "pct_lo", "pct_hi", "price", "price_lo", "price_hi", "value", "value_lo", "value_hi", "own_price", "own_price_lo", "own_price_hi", "dish_lo", "dish_median", "dish_hi",
               "back_rank_lo", "back_rank_hi", "back_p_top5", "value_rank_lo", "value_rank_hi", "value_p_top5", "tied_back", "tied_value", "p_michelin", "p_close_1y"]
     tsv(OUT / "places.tsv", header, rows)
 
@@ -205,6 +217,7 @@ def run_fit() -> None:
 
     hawker = [i for i in sub if pls[i].kind == "h"]
     hawker_median = float(np.median(np.median(q["price"][:, hawker], axis=0))) if hawker else float("nan")
+    hawker_own = float(np.median([dish_prices(data, i)[1] for i in hawker])) if hawker else float("nan")
     report = meta["report"]
     fitmd = [
         "# Real fit",
@@ -217,7 +230,7 @@ def run_fit() -> None:
         "",
         f"Ranked places: {len(sub)}. Tied with the leader on backing: {len(tied_back)}. On value: {len(tied_value)}.",
         "",
-        f"Median standard price across ranked hawker places: S${hawker_median:.2f}.",
+        f"Median standard price (shared dish mix) across ranked hawker places: S${hawker_median:.2f}. Median of their own dish medians: S${hawker_own:.2f}.",
         "",
         "## Filter report",
         "",
@@ -238,6 +251,7 @@ def site_data(meta, data, q, sub, rk_back, rk_value, tied_back, tied_value, p_mi
             "n": pl.name, "k": pl.kind, "cu": pl.cuisine,
             "q": [round(float(x), 1) for x in np.quantile(q["pct"][:, i], [0.1, 0.5, 0.9])],
             "pr": [round(float(x), 2) for x in np.quantile(q["price"][:, i], [0.1, 0.5, 0.9])],
+            "po": [round(x, 2) for x in dish_prices(data, i)],
             "v": [round(float(x), 2) for x in np.quantile(q["value"][:, i], [0.1, 0.5, 0.9])],
             "rb": [int(x) for x in np.quantile(rk_back[:, j], [0.1, 0.5, 0.9])],
             "rv": [int(x) for x in np.quantile(rk_value[:, j], [0.1, 0.5, 0.9])],
@@ -255,7 +269,7 @@ def site_data(meta, data, q, sub, rk_back, rk_value, tied_back, tied_value, p_mi
     meta_out = {"asof": FIT_DAY, "cpi": meta["cpi_month"], "places": len(sub), "outlets": [o for o in outlets], "lam": [round(float(lam[0]), 3), round(float(lam[1]), 3)], "pass": g["pass"]}
     body = (
         "// Generated by scripts/tampines/run.py fit. Do not edit. See research/tampines/prereg.md.\n"
-        "export interface Backed { n: string; k: \"h\" | \"r\" | \"c\" | \"f\"; cu: string; q: number[]; pr: number[]; v: number[]; rb: number[]; rv: number[]; tb: number; tv: number; xb: number; xv: number; m: number; by: string[] }\n"
+        "export interface Backed { n: string; k: \"h\" | \"r\" | \"c\" | \"f\"; cu: string; q: number[]; pr: number[]; po: number[]; v: number[]; rb: number[]; rv: number[]; tb: number; tv: number; xb: number; xv: number; m: number; by: string[] }\n"
         f"export const MODEL = {json.dumps(meta_out, ensure_ascii=False)} as const;\n"
         f"export const BACKED: readonly Backed[] = {json.dumps(rows, ensure_ascii=False, separators=(',', ':'))};\n"
     )

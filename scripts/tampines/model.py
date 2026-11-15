@@ -42,6 +42,14 @@ class Inputs:
         counts = np.bincount(self.item_type, minlength=len(self.types)).astype(float)
         return counts / counts.sum()
 
+    @property
+    def own_weights(self) -> np.ndarray:
+        """(P, T) share of each place's own priced dishes by type; a row of zeros for a place with none."""
+        w = np.zeros((self.n_places, len(self.types)))
+        np.add.at(w, (self.item_place, self.item_type), 1.0)
+        total = w.sum(axis=1, keepdims=True)
+        return np.divide(w, total, out=np.zeros_like(w), where=total > 0)
+
 
 def build(data: Inputs) -> pm.Model:
     P, G, K, T = data.n_places, len(data.outlets), len(KINDS), len(data.types)
@@ -128,9 +136,13 @@ def derived(idata, data: Inputs) -> dict[str, np.ndarray]:
     d = draws_of(idata, "d")
     basket = d @ data.type_weights
     price = np.exp(pi + basket[:, None])
+    # What the place charges for its own mix of dishes: the page shows this; value uses the shared basket.
+    own_w = data.own_weights
+    own = np.exp(pi + d @ own_w.T)
+    own[:, own_w.sum(axis=1) == 0] = np.nan
     pct = norm.cdf(theta) * 100
     value = pct / price * 10
-    return {"theta": theta, "pct": pct, "price": price, "value": value}
+    return {"theta": theta, "pct": pct, "price": price, "own": own, "value": value}
 
 
 def ranks(values: np.ndarray, subset: np.ndarray) -> np.ndarray:

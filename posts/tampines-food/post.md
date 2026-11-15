@@ -2,9 +2,9 @@
 title: Which Tampines food the experts back, and what it costs
 date: 2026-11-09
 summary: Three Round Market stalls are tied as the best-backed food in Tampines. They are Rajarani Thosai, Yummy Sarawak Kolo Mee and Chai Chee Pork Porridge.
-summary: For value, Rajarani Thosai and Song Han Carrot Cake are tied for first, with a standard main at about S$3.40.
+summary: For value, Song Han Carrot Cake and Rajarani Thosai are tied for first, with typical dishes at S$3.53 and S$4.07.
 summary: Backing means how often independent food writers and Michelin name a place, and how long it has lasted. It is not taste, and nobody ate at these places for this page.
-summary: Most ranks are uncertain. Of 54 places, only the top few can be told apart, and each row shows its rank as a range.
+summary: Most ranks are uncertain. Of 52 places, only the top few can be told apart, and each row shows its rank as a range.
 summary: 2,224 forecasts, frozen on 15 November 2026, will show by November 2027 whether the method is any good.
 ---
 Tampines has two working hawker centres, three big malls and many coffee shops. This page ranks where to eat by how strongly independent experts back each place, and by what it costs. It works best on a phone: tap a row to see why it ranks where it does.
@@ -13,17 +13,17 @@ Tampines has two working hawker centres, three big malls and many coffee shops. 
 
 Each row is one place that sells meals for one person. The number on the left is its rank, 8 times in 10: "2–14" means the place ranks between 2nd and 14th in 80% of the model's draws. A narrow range is a place the evidence can place. A wide one is a place it cannot.
 
-Places at the top are tied with the leader when they beat it in at least 1 draw in 5. The bar is the backing percentile, from 0 on the left to 100 on the right: the shaded part is its 80% range and the tick is the most likely value. The price is a standard main, explained below.
+Places at the top are tied with the leader when they beat it in at least 1 draw in 5. The bar is the backing percentile, from 0 on the left to 100 on the right: the shaded part is its 80% range and the tick is the most likely value. The price is what the place's own dishes typically cost.
 
-::figure kind=food view=backed alt="54 Tampines food places ranked by value for money or by backing, each with a rank range, a backing percentile bar and the price of a standard main." caption="Rank by value (backing per dollar) or by backing alone. Tap a row for who names the place and its ranges. Prices are in September 2026 dollars."
+::figure kind=food view=backed alt="52 Tampines food places ranked by value for money or by backing, each with a rank range, a backing percentile bar and the typical price of its dishes." caption="Rank by value (backing per dollar) or by backing alone. Tap a row for who names the place and its ranges. Prices are in September 2026 dollars."
 
 **Backing** is a score for how strongly independent food writers and Michelin back a place. It comes from 43 Tampines guides by 13 outlets and from Michelin's Singapore lists for 2016 to 2026. A place counts as named only by a guide that could have named it: a Round Market guide says nothing about a place in Tampines Mall. An outlet that names nearly everything it covers counts for less than one that is choosy.
 
-**Value** is the backing percentile divided by the price of a standard main, per S$10. It favours cheap places that experts name.
+**Value** is the backing percentile per S$10. For value, every place is priced on the same dishes: the mix sold across all places here. Otherwise a stall would win on what it sells, not on what it charges. Value favours cheap places that experts name. Tap a row to see both prices.
 
-Three Round Market stalls are tied for the most backing: Rajarani Thosai, Yummy Sarawak Kolo Mee and Chai Chee Pork Porridge. Michelin gave Rajarani Thosai a Bib Gourmand in 2026. On value, Rajarani Thosai (S$3.33) and Song Han Carrot Cake (S$3.48) are tied for first.
+Three Round Market stalls are tied for the most backing: Rajarani Thosai, Yummy Sarawak Kolo Mee and Chai Chee Pork Porridge. Michelin gave Rajarani Thosai a Bib Gourmand in 2026. On value, Song Han Carrot Cake (dishes from S$3.53) and Rajarani Thosai (S$4.07) are tied for first.
 
-Chains and mall restaurants sit low, with wide ranges. That says local food writers rarely write about them, not that their food is worse. Professor Brawn Cafe has a quoted 4.9 on Google, yet it ranks between 29th and 53rd on backing, because few of the guides name it. The two measures answer different questions.
+Chains and mall restaurants sit low, with wide ranges. That says local food writers rarely write about them, not that their food is worse. Professor Brawn Cafe has a quoted 4.9 on Google, yet it ranks between 28th and 51st on backing, because few of the guides name it. The two measures answer different questions.
 
 ## What Google reviewers say, quoted
 
@@ -109,9 +109,12 @@ On 15 November 2026 I froze 2,224 forecasts made by this model, each set beside 
 - For the rest, the oldest dated guide or map entry gives only a lower bound.
 - I first matched records by unit number, but that found the shop's earlier tenants, such as a phone shop at a ramen restaurant's unit. Only same-name matches count.
 
-**Standard main.**
+**Prices in the ranking.**
 - Each dish price is brought to September 2026 dollars with SingStat's consumer price index for hawker food, restaurants or fast food.
-- A model then separates what a dish type normally costs from how dear a place is. The standard main is what the place would charge for the mix of dishes sold across all places here.
+- A model then separates what a dish type normally costs from how dear a place is.
+- The price on each row is the median of the place's own dishes. It is the typical main in the Google list, brought to September 2026 dollars, with buffets left out.
+- Value uses a second price: what the place would charge for the mix of dishes sold across all places here. A pasta place comes out cheaper on that mix than on its own menu, because the shared mix is mostly hawker noodles and rice.
+- Buffets and sharing platters are left out of the prices, because none is one person's main. Seoul Garden and Captain Kim Korean BBQ list only buffets, so they are not ranked.
 
 **GST in 2023.** GST was 8% in 2023, not 9%. Five 2023 prices marked `++` were corrected, each by about 0.9%.
 

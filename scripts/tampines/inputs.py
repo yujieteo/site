@@ -13,7 +13,7 @@ from pathlib import Path
 
 import numpy as np
 
-from dishtypes import TYPES, dish_type
+from dishtypes import TYPES, dish_type, is_buffet
 from model import KINDS, Inputs
 from places import spreads
 
@@ -111,6 +111,9 @@ def items(report: Counter) -> list[tuple[int, int, float, str, str, float]]:
                 continue
             if price <= 0:
                 report["dropped: no price"] += 1
+                continue
+            if is_buffet(dish):
+                report["dropped: buffet or sharing platter, not a main"] += 1
                 continue
             fixed = fixes.get((x["n"], dish, stamp))
             if fixed is not None and abs(fixed - price) > 1e-9:
