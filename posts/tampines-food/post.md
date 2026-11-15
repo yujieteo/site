@@ -2,9 +2,9 @@
 title: Which Tampines food the experts back, and what it costs
 date: 2026-11-09
 summary: Three Round Market stalls are tied as the best-backed food in Tampines. They are Rajarani Thosai, Yummy Sarawak Kolo Mee and Chai Chee Pork Porridge.
-summary: For value, Rajarani Thosai and Song Han Carrot Cake are tied for first, with a standard main at about S$3.40.
+summary: For value, Song Han Carrot Cake and Rajarani Thosai are tied for first, with typical dishes at S$3.53 and S$4.07.
 summary: Backing means how often independent food writers and Michelin name a place, and how long it has lasted. It is not taste, and nobody ate at these places for this page.
-summary: Most ranks are uncertain. Of 54 places, only the top few can be told apart, and each row shows its rank as a range.
+summary: Most ranks are uncertain. Of 52 places, only the top few can be told apart, and each row shows its rank as a range.
 summary: 2,224 forecasts, frozen on 15 November 2026, will show by November 2027 whether the method is any good.
 ---
 Tampines has two working hawker centres, three big malls and many coffee shops. This page ranks where to eat by how strongly independent experts back each place, and by what it costs. It works best on a phone: tap a row to see why it ranks where it does.
@@ -13,17 +13,17 @@ Tampines has two working hawker centres, three big malls and many coffee shops. 
 
 Each row is one place that sells meals for one person. The number on the left is its rank, 8 times in 10: "2–14" means the place ranks between 2nd and 14th in 80% of the model's draws. A narrow range is a place the evidence can place. A wide one is a place it cannot.
 
-Places at the top are tied with the leader when they beat it in at least 1 draw in 5. The bar is the backing percentile, from 0 on the left to 100 on the right: the shaded part is its 80% range and the tick is the most likely value. The price is a standard main, explained below.
+Places at the top are tied with the leader when they beat it in at least 1 draw in 5. The bar is the backing percentile, from 0 on the left to 100 on the right: the shaded part is its 80% range and the tick is the most likely value. The price is what the place's own dishes typically cost.
 
-::figure kind=food view=backed alt="54 Tampines food places ranked by value for money or by backing, each with a rank range, a backing percentile bar and the price of a standard main." caption="Rank by value (backing per dollar) or by backing alone. Tap a row for who names the place and its ranges. Prices are in September 2026 dollars."
+::figure kind=food view=backed alt="52 Tampines food places ranked by value for money or by backing, each with a rank range, a backing percentile bar and the typical price of its dishes." caption="Rank by value (backing per dollar) or by backing alone. Tap a row for who names the place and its ranges. Prices are in September 2026 dollars."
 
 **Backing** is a score for how strongly independent food writers and Michelin back a place. It comes from 43 Tampines guides by 13 outlets and from Michelin's Singapore lists for 2016 to 2026. A place counts as named only by a guide that could have named it: a Round Market guide says nothing about a place in Tampines Mall. An outlet that names nearly everything it covers counts for less than one that is choosy.
 
-**Value** is the backing percentile divided by the price of a standard main, per S$10. It favours cheap places that experts name.
+**Value** is the backing percentile per S$10. For value, every place is priced on the same dishes: the mix sold across all places here. Otherwise a stall would win on what it sells, not on what it charges. Value favours cheap places that experts name. Tap a row to see both prices.
 
-Three Round Market stalls are tied for the most backing: Rajarani Thosai, Yummy Sarawak Kolo Mee and Chai Chee Pork Porridge. Michelin gave Rajarani Thosai a Bib Gourmand in 2026. On value, Rajarani Thosai (S$3.33) and Song Han Carrot Cake (S$3.48) are tied for first.
+Three Round Market stalls are tied for the most backing: Rajarani Thosai, Yummy Sarawak Kolo Mee and Chai Chee Pork Porridge. Michelin gave Rajarani Thosai a Bib Gourmand in 2026. On value, Song Han Carrot Cake (dishes from S$3.53) and Rajarani Thosai (S$4.07) are tied for first.
 
-Chains and mall restaurants sit low, with wide ranges. That says local food writers rarely write about them, not that their food is worse. Professor Brawn Cafe has a quoted 4.9 on Google, yet it ranks between 29th and 53rd on backing, because few of the guides name it. The two measures answer different questions.
+Chains and mall restaurants sit low, with wide ranges. That says local food writers rarely write about them, not that their food is worse. Professor Brawn Cafe has a quoted 4.9 on Google, yet it ranks between 28th and 51st on backing, because few of the guides name it. The two measures answer different questions.
 
 ## What Google reviewers say, quoted
 
@@ -88,12 +88,12 @@ On 15 November 2026 I froze 2,224 forecasts made by this model, each set beside 
 - **Whether you will like the food.** Nobody tasted anything for this page. Backing measures what food writers choose to write about, and they share tastes and copy each other.
 - **About places the writers ignore.** Chains, new openings and most coffee-shop stalls are rarely in guides, so their backing is close to the average and very uncertain.
 - **About sources I could not reach.** The Straits Times, CNA, 8days, TODAY, Time Out and MoneySmart were not searchable or refused access. Their guides are not in.
-- **About this page's own errors.** Checks for this version found possible errors I have not yet fixed:
-  - Tai Wah Pork Noodle's price is dated October 2023, but its earliest source is from July 2024.
-  - Jin Kimchi Express's is dated February 2023, but its review is from December 2023.
-  - Eatbook places Nanyang Dao at Century Square, not Tampines Mall.
-  - Wingstop has a new Tampines Mall outlet as well as the one at Our Tampines Hub.
-  - Miss Tam Chiak reported Xing Yun Kway Chap closed in 2016, and its unit is now Nasi Lemak Specialist's.
+- **About errors I have not found.** Checks for this version found five possible errors. On 15 November 2026 I fixed four and found the fifth was not an error:
+  - Tai Wah Pork Noodle's S$5 price was dated October 2023, before Hawkers' Street at Tampines 1 opened in July 2024. It now takes the date of the guide that lists it, July 2026.
+  - Nanyang Dao is at Century Square #B1-18, not Tampines Mall. The guides that could have named it changed with it, so its backing was refitted.
+  - Wingstop's row now notes its second outlet, at Tampines Mall #04-23 to 25.
+  - Xing Yun Kway Chap is marked closed. Miss Tam Chiak reported it closed in 2016, and Nasi Lemak Specialist now has its unit.
+  - Jin Kimchi Express's naengmyeon price was right to carry February 2023. The review it comes from was published on 27 February 2023, not in December 2023 as the check said.
 
 ## How I built this
 
@@ -109,9 +109,12 @@ On 15 November 2026 I froze 2,224 forecasts made by this model, each set beside 
 - For the rest, the oldest dated guide or map entry gives only a lower bound.
 - I first matched records by unit number, but that found the shop's earlier tenants, such as a phone shop at a ramen restaurant's unit. Only same-name matches count.
 
-**Standard main.**
+**Prices in the ranking.**
 - Each dish price is brought to September 2026 dollars with SingStat's consumer price index for hawker food, restaurants or fast food.
-- A model then separates what a dish type normally costs from how dear a place is. The standard main is what the place would charge for the mix of dishes sold across all places here.
+- A model then separates what a dish type normally costs from how dear a place is.
+- The price on each row is the median of the place's own dishes. It is the typical main in the Google list, brought to September 2026 dollars, with buffets left out.
+- Value uses a second price: what the place would charge for the mix of dishes sold across all places here. A pasta place comes out cheaper on that mix than on its own menu, because the shared mix is mostly hawker noodles and rice.
+- Buffets and sharing platters are left out of the prices, because none is one person's main. Seoul Garden and Captain Kim Korean BBQ list only buffets, so they are not ranked.
 
 **GST in 2023.** GST was 8% in 2023, not 9%. Five 2023 prices marked `++` were corrected, each by about 0.9%.
 
@@ -123,7 +126,7 @@ On 15 November 2026 I froze 2,224 forecasts made by this model, each set beside 
 
 **What I removed.** Delivery prices, since apps mark them up. Prices with no date or from before 2023. Add-ons and sides. At 108 Matcha Saro I also left out drinks and a pasta from the snack list, boxes with no clear serving count, and an older soft-serve price with unclear charges. Whole fish, steamboats and boxes with no stated portion. Casa Vostra pizzas are also left out of its per-person comparison because their serving count is not stated. At Ging Sun Ho, I left standalone dishes and a time-limited crab-roe special out of the per-person main comparison. Two promo lunch deals, and one price from another outlet of the same chain. Menu prices on MakanEast stall pages, because the menus carry no date. Two Putien prices from before it dropped service charge and GST in August 2024. I also removed repeated entries for the same dish at Yummy Sarawak Kolo Mee, Song Han Carrot Cake, Lao Lee, Teo Kee, Penang Savour and Ippon Fusion Bowl. That left 652 dated menu items. Mango Ice’s standard Mango Cotton Ice is excluded from the per-person sample because its [Tampines outlet menu](https://www.foodpanda.sg/restaurant/gci7/yang-xiao-xian-mango-ice-tampines-mall-gci7) describes it as suitable for two; the price shown here is from an earlier dine-in guide, not the delivery menu. Thirty-five drinks, mains, shared or ambiguous-serving items are shown separately and excluded from their venue’s comparison. This includes [Old World’s claypot for two to three](https://eatbook.sg/tampines-north-food/amp/), [Soi Thai Kitchen’s shared dishes](https://eatbook.sg/tampines-hawker-food/) and [Legendary Hong Kong’s sharing plates](https://eatbook.sg/legendary-hong-kong-tampines-mall/), and [JOFA’s soup upgrade](https://hungrygowhere.com/what-to-eat/food-in-tampines/).
 
-**Dates.** A guide often repeats a price from an older review. Where a guide links to that review and the review gives the same price for the dish, the row takes the review's date. Where a page was edited after it came out, the row takes the date it came out. A guide entry with no linked review keeps the guide's date, so its price may be older than it looks. For an undated official menu, the date is when I checked it. The place-level price date is the newest item in its comparison, not the date of every item.
+**Dates.** A guide often repeats a price from an older review. Where a guide links to that review and the review gives the same price for the dish, the row takes the review's date. Where a page was edited after it came out, the row takes the date it came out. A guide entry with no linked review keeps the guide's date, so its price may be older than it looks. If the stall opened after the guide first came out, the entry takes the date the page shows now. For an undated official menu, the date is when I checked it. The place-level price date is the newest item in its comparison, not the date of every item.
 
 **Typical main.** A place needs at least three different verified mains for a typical price, or two for a shared-dish place. For a dish sold in several sizes, I use the middle size. At Ashes Burnnit, I use the single-patty burger price rather than double. The typical main is the median of those dish prices. A place with too few dishes shows its range and no typical price.
 
@@ -133,7 +136,7 @@ On 15 November 2026 I froze 2,224 forecasts made by this model, each set beside 
 
 **Quoted ratings.** These are shown for reference and are not used in the backing score. A rating counts as Google only if a page quotes Google. I also take scores from [FooTinder](https://en.footinder.app/), which shows Google review counts and links each place to Google Maps; those rows are dated November 2026. Scores date from 2022 to 2026, and most guides gave no review count. Twelve additional scores and counts come from StationMap’s 19 October 2026 snapshots. Ashes Burnnit, Saap Saap Thai, Professor Brawn Cafe and Jin Kimchi Express have Google scores and counts quoted by STAMPEDE; Guzman y Gomez, Wok Hey, Nando’s, So Pho, Craze Kitchen, Heartland by Enjoy and Ramen Taisho have theirs quoted by Restaurant Guru, and Bari Bari Steak by MakanEast. On 14 November 2026 I added Google scores quoted by STAMPEDE for Mango Ice, Wingstop, Jinjja Kitchen, Sushiro, Cafe Bom Bom, Luckin Coffee and Genki Sushi, by MakanEast for eight hawker stalls, by Wanderlog for Soi Thai Kitchen and by Eatbook for New Deli Bakery. Their observation dates are not stated, except Eatbook's. I did not collect scores from Google Maps directly. I left out editorial scores, and directory scores whose source is unclear.
 
-**Closed or moved.** I removed Mr. Doner Kebab, Nuodle and The Co-op, since their units now show other tenants or a closed label. The Pizza Hut at Our Tampines Hub is off the map: [Mothership reported in 2022](https://mothership.sg/2022/10/mcdonalds-our-tampines-hub/) that it had gone. Bae.gal at Century Square is also excluded: [a local closure report](https://forkinworthit.com/restaurants/bae-gal-century-square) says it ceased operations there by August 2026. Seven places have no recent proof they are open, and their rows say so. One has moved. Puffs and Peaks has two outlets, rather than having moved: the [Changkat cafe](https://www.puffsandpeaks.com/pages/find-us) remains open alongside Tampines Central.
+**Closed or moved.** I removed Mr. Doner Kebab, Nuodle and The Co-op, since their units now show other tenants or a closed label. Xing Yun Kway Chap stays on the list, marked closed, because the frozen forecasts refer to it by its place in the list. The Pizza Hut at Our Tampines Hub is off the map: [Mothership reported in 2022](https://mothership.sg/2022/10/mcdonalds-our-tampines-hub/) that it had gone. Bae.gal at Century Square is also excluded: [a local closure report](https://forkinworthit.com/restaurants/bae-gal-century-square) says it ceased operations there by August 2026. Seven places have no recent proof they are open, and their rows say so. One has moved. Puffs and Peaks has two outlets, rather than having moved: the [Changkat cafe](https://www.puffsandpeaks.com/pages/find-us) remains open alongside Tampines Central.
 
 **The map.** Researched places use their block address or their mall. The rest use OpenStreetMap positions, inside the official planning-area boundary. Where a map entry was last edited before 2022, its row says so, because the shop may have closed.
 

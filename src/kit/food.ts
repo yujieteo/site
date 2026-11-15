@@ -137,7 +137,8 @@ function menuList(item: Spread): string {
 }
 
 function statusNote(item: Spread): string {
-  return item.st === "unknown" ? `<p class="food-sub">I could not confirm this place is still open.</p>` : item.st === "moved" ? `<p class="food-sub">This place has moved. Check the address.</p>` : "";
+  const status = item.st === "unknown" ? "I could not confirm this place is still open." : item.st === "moved" ? "This place has moved. Check the address." : item.st === "closed" ? "This place has closed." : "";
+  return [status, item.also ?? ""].filter((line) => line !== "").map((line) => `<p class="food-sub">${esc(line)}</p>`).join("");
 }
 
 function row(item: Spread): string {

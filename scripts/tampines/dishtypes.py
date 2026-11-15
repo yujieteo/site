@@ -24,13 +24,21 @@ SMALL = r"dim sum|kang ?kong|lala|coffee pork|chilli crab|salted egg|pig liver|p
 WESTERN = r"steak|chop|chicken|fish|salmon|lamb|duck|benedict|shakshuka|breakfast|porchetta|peposo|guazzetto|bangers|rosti|cutlet|dory|seabass|hake|lobster|beef cheek|waffle|platter|teppan|hamburg"
 DRINK = r"espresso|latte|americano|brew\b|milk tea|\bblack\b|\bwhite\b|noir|cloud hug|bed of roses|ondeh|sago"
 
+BUFFET = r"buffet|platter for two"
+
+
+def is_buffet(dish: str) -> bool:
+    """A buffet or a sharing platter is not one person's main, so the price model leaves it out."""
+    return _has(dish.lower(), BUFFET)
+
+
 def dish_type(dish: str, cuisine: str) -> str:
     name = dish.lower()
     if cuisine in ("Dessert", "Bakery"):
         return "dessert_snack"
     if cuisine in ("Coffee", "Drinks") and _has(name, DRINK):
         return "other"
-    if _has(name, r"buffet|platter for two"):
+    if _has(name, BUFFET):
         return "other"
     if _has(name, r"kueh|tau huay"):
         return "dessert_snack"
