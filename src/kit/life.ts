@@ -601,6 +601,8 @@ const DATA_FILE = "src/kit/life-data.ts";
 // 11 November. A base row whose line changed after that was read again on the day it changed.
 const BASE_READ = "2026-11";
 const BASE_MOVED = "2026-11-11";
+// The spending shares are from the Household Expenditure Survey 2023.
+const SHARE_YEAR = "2023";
 const MONEY = /^(about\s+|around\s+|from\s+)?S\$([\d,]+(?:\.\d+)?)(?:\s+to\s+S\$([\d,]+(?:\.\d+)?))?/i;
 
 // The low and high of a price as written, such as "About S$2.90 to S$3.50". "From S$5" has no high. Anything
@@ -668,7 +670,7 @@ export function checkRows(): Row[] {
           const read = notes.checks.find((note) => note.id === productId(buy.shelf));
           const verdict = buy.verdict === "pass" || buy.verdict === "fail" || buy.verdict === "recorded" ? buy.verdict : null;
           const listed = shelfDay(buy);
-          rows.push({ id: productId(buy.shelf), item: group.name, product: buy.shelf[1], shop: buy.shelf[3], url: buy.shelf[2], check: group.check, answer: group.passes ? "pass or fail" : "recorded", now: buy.verdict === "unknown" ? "" : `${buy.verdict}: ${buy.fact}`, verdict, fact: read ? read.text : null, as_of: read ? newest(listed, read.fields.date ?? "") : listed, source: read?.fields.url ?? buy.shelf[2] });
+          rows.push({ id: productId(buy.shelf), item: group.name, product: buy.shelf[1], shop: buy.shelf[3], url: buy.shelf[2], check: group.check, answer: group.passes ? "pass or fail" : "recorded", now: buy.verdict === "unknown" ? "" : `${buy.verdict}: ${buy.fact}`, verdict, fact: read ? read.text : null, as_of: read ? newest(listed, read.fields.date ?? "") : listed, source: read?.fields.url ?? buy.shelf[2], verdict_as_of: read?.fields.date ?? null });
         }
       }
     }
@@ -682,13 +684,13 @@ export function adviceRows(): Row[] {
   const rows: Row[] = [];
   for (const bucket of bucketsOf()) {
     const share = bucket.share;
-    if (bucket.moves.length === 0) rows.push({ id: bucket.id, group: bucket.name, share, lever: null, advice: null, why: null, worth: null, as_of: null, source: null });
+    if (bucket.moves.length === 0) rows.push({ id: bucket.id, group: bucket.name, share, lever: null, advice: null, why: null, worth: null, as_of: null, source: null, share_as_of: SHARE_YEAR });
     for (const move of bucket.moves) {
       const link = [...move.text.matchAll(LINK)][0]?.[2];
       const why = move.text.replace(LINK, "$1").replace(/\s*\bSource\b\s*$/, "").trim();
       const blamed = move.note ? lineDay("notes/advice.tsv", [`${move.note.id}\t`, `\t${move.note.text}\t`]) : lineDay(DATA_FILE, [`lead: "${literal(move.lead)}"`]);
       const day = !move.note && blamed <= BASE_MOVED ? BASE_READ : blamed;
-      rows.push({ id: bucket.id, group: bucket.name, share, lever: move.lever, advice: move.lead, why: why === "" ? null : why, worth: move.worth === "" ? null : move.worth, as_of: day, source: move.note?.fields.url ?? link ?? POST_URL });
+      rows.push({ id: bucket.id, group: bucket.name, share, lever: move.lever, advice: move.lead, why: why === "" ? null : why, worth: move.worth === "" ? null : move.worth, as_of: day, source: move.note?.fields.url ?? link ?? POST_URL, share_as_of: SHARE_YEAR });
     }
   }
   return rows;

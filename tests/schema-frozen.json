@@ -1,5 +1,5 @@
 {
- "version": "1.0.0",
+ "version": "1.1.0",
  "resources": {
   "prices": [
    [
@@ -153,6 +153,10 @@
    [
     "source",
     "string"
+   ],
+   [
+    "verdict_as_of",
+    "date"
    ]
   ],
   "advice": [
@@ -190,6 +194,10 @@
    ],
    [
     "source",
+    "string"
+   ],
+   [
+    "share_as_of",
     "string"
    ]
   ],
@@ -560,6 +568,10 @@
    ],
    [
     "link",
+    "string"
+   ],
+   [
+    "match",
     "string"
    ]
   ],

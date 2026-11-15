@@ -119,6 +119,7 @@ function checks(): Table {
       { name: "fact", type: "string", description: "The fact as the page states it. Empty where no page has been read." },
       asOf("The later of the day the product was listed and the day its check was read."),
       source("The page the check was read on, or the product page where no check has been read."),
+      { name: "verdict_as_of", type: "date", description: "The day the check was read: cite it with verdict and fact. Empty where no page has been read." },
     ],
     rows: checkRows(),
   };
@@ -139,6 +140,7 @@ function advice(): Table {
       { name: "worth", type: "string", description: "What following it is worth, in a few words, where the post gives a figure." },
       { ...AS_OF, required: false, description: "The day the advice was written or last changed: the day its line last changed in git (notes/advice.tsv for advice from notes, src/kit/life-data.ts for the post's own), or 2026-11 for the post's own advice not changed since the post moved into that file on 11 November 2026. Figures inside why keep the date their source gives. Empty only for a group with no advice." },
       source("The page the reason comes from. Advice the post gives without a link cites the post itself. Empty only for a group with no advice.", false),
+      { name: "share_as_of", type: "string", pattern: WHEN, required: true, description: "The year of the survey that share comes from: cite it with share." },
     ],
     rows: adviceRows(),
   };
@@ -321,8 +323,8 @@ export const FEEDS: readonly { name: string; path: string; title: string; descri
   },
   {
     name: "forecasters-feed", path: `${SITE}/forecasters.txt`, title: "Forecasters feed",
-    description: "New comments and posts by the 40 ranked forecasters that look like a forecast and are not in the ledger yet. Rebuilt by the server each hour.",
-    columns: [{ name: "id", type: "string", required: true, description: "The item id." }, { name: "date", type: "date", required: true, description: "The item's date." }, { name: "source", type: "string", required: true, description: "The person and the site." }, { name: "title", type: "string", required: true, description: "The title." }, { name: "link", type: "string", required: true, description: "The item." }],
+    description: "New comments and posts by the 40 ranked forecasters that may make or revise a checkable claim and are not in the bet ledger yet, for an agent to record or pass over. Rebuilt by the server each hour.",
+    columns: [{ name: "id", type: "string", required: true, description: "The item id." }, { name: "date", type: "date", required: true, description: "The item's date." }, { name: "source", type: "string", required: true, description: "The person and the site." }, { name: "title", type: "string", required: true, description: "The title." }, { name: "link", type: "string", required: true, description: "The item." }, { name: "match", type: "string", required: true, description: "Why it is a candidate: up to 300 characters around the words that look like a claim, or \"links a market\"." }],
   },
   {
     name: "singapore-policy-actionables", path: `${SITE}/singapore-policy-actionables.txt`, title: "Singapore policy actionables",

@@ -3,7 +3,8 @@
   uv run --with tiktoken python -I tests/questions/score.py [runs-dir]
 
 Exact match: the ANSWER line equals the derived answer (numbers compared as numbers, dates as ISO text,
-text case-folded). Tokens fetched: the o200k_base count of every body the model fetched, plus bytes.
+text case-folded). Tokens fetched: the o200k_base count of every body the model fetched, plus bytes. In tok/q: the input
+tokens the model's own API reported for the whole session, where the runner recorded them.
 Date cited: the AS_OF line equals the fact's date at the precision the site gives it; questions with no
 dated fact are left out of that rate.
 """
@@ -48,7 +49,7 @@ def correct(q, answer):
     return answer.strip().lower().rstrip(".") == str(q["answer"]).lower()
 
 
-table = collections.defaultdict(lambda: {"n": 0, "exact": 0, "bytes": 0, "tokens": 0, "fetches": 0, "dated": 0, "cited": 0, "errors": 0})
+table = collections.defaultdict(lambda: {"n": 0, "exact": 0, "bytes": 0, "tokens": 0, "fetches": 0, "dated": 0, "cited": 0, "errors": 0, "input": 0})
 for path in sorted(runs.glob("*/*.jsonl")):
     for raw in path.read_text().splitlines():
         row = json.loads(raw)
@@ -60,16 +61,17 @@ for path in sorted(runs.glob("*/*.jsonl")):
         t["errors"] += row.get("error") is not None
         t["exact"] += correct(q, line(row["reply"], "ANSWER"))
         t["fetches"] += len(row["fetches"])
+        t["input"] += (row.get("usage") or {}).get("input", 0) or 0
         t["bytes"] += sum(f["bytes"] for f in row["fetches"])
         t["tokens"] += sum(tokens(f.get("sha256")) for f in row["fetches"])
         if q["as_of"]:
             t["dated"] += 1
             t["cited"] += line(row["reply"], "AS_OF").strip()[: len(q["as_of"])] == q["as_of"]
 
-print(f"{'label':<10} {'vendor':<9} {'model':<28} {'n':>3} {'exact':>6} {'fetch/q':>8} {'kB/q':>7} {'o200k/q':>8} {'date cited':>10} {'errors':>6}")
+print(f"{'label':<10} {'vendor':<9} {'model':<28} {'n':>3} {'exact':>6} {'fetch/q':>8} {'kB/q':>7} {'o200k/q':>8} {'date cited':>10} {'in tok/q':>9} {'errors':>6}")
 for (label, vendor, model), t in sorted(table.items()):
     n = t["n"] or 1
     cited = f"{t['cited']}/{t['dated']}" if t["dated"] else "-"
-    print(f"{label:<10} {vendor:<9} {model[:28]:<28} {t['n']:>3} {t['exact'] / n:>6.0%} {t['fetches'] / n:>8.1f} {t['bytes'] / n / 1000:>7.1f} {t['tokens'] / n:>8.0f} {cited:>10} {t['errors']:>6}")
+    print(f"{label:<10} {vendor:<9} {model[:28]:<28} {t['n']:>3} {t['exact'] / n:>6.0%} {t['fetches'] / n:>8.1f} {t['bytes'] / n / 1000:>7.1f} {t['tokens'] / n:>8.0f} {cited:>10} {t['input'] / n:>9.0f} {t['errors']:>6}")
 if enc is None:
     print("tiktoken is not installed: o200k counts are 0. Run with: uv run --with tiktoken python -I tests/questions/score.py")

@@ -13,9 +13,19 @@ export { SITE };
 
 // The version of the tables in datapackage.json. A new column raises the minor number. A column is never
 // renamed, retyped or removed; tests/schema.test.ts checks that against tests/schema-frozen.json.
-export const SCHEMA_VERSION = "1.0.0";
+export const SCHEMA_VERSION = "1.1.0";
 
 export const CHANGELOG: readonly { version: string; date: string; changes: readonly string[] }[] = [
+  {
+    version: "1.1.0",
+    date: "2026-11-15",
+    changes: [
+      "checks gains verdict_as_of, the day the check was read. as_of stays the later of that and the listing day.",
+      "advice gains share_as_of, the survey year of share (2023).",
+      "forecasters-feed gains match, which the server has written since the bets-only feed-update was installed on 2026-11-15. 1.0.0 did not list it, so that feed failed validation under 1.0.0.",
+      "llms.txt: cite a fact's own date column where it has one (price_at, verdict_as_of, share_as_of, prices_as_of, google_rating_as_of), and the row's as_of otherwise.",
+    ],
+  },
   {
     version: "1.0.0",
     date: "2026-11-15",
@@ -144,7 +154,7 @@ function llmsText(apis: PostApi[], all: Table[], files: Map<string, string>): st
     "1. Find the post or table you need below.",
     "2. For a post, fetch its index. It lists one file per heading, with its size. Fetch only the sections that answer the question.",
     "3. For a table, every row has as_of (the day its newest fact was read) and source (where it was read; in products, the url column; in bets, url and archive, as source there names the settling source). Column types and meanings are in /api/datapackage.json.",
-    "4. In your answer, give the address you read, and the row's as_of or the post's text-as-of date.",
+    "4. In your answer, give the address you read and the date of the fact you used: its own date column where the row has one (price_at, verdict_as_of, share_as_of, prices_as_of, google_rating_as_of), else the row's as_of. For a post, its text-as-of date.",
     "",
     `Every file, with its bytes, SHA-256 and as-of date: ${SITE}/api/manifest.json. Files change only on deploy, except the live tables, which the server rebuilds.`,
     "",
