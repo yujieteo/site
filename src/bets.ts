@@ -100,19 +100,3 @@ export function scoreBets(notes: Note[]): Bet[] {
     return { note, q: clip(Number(f.price)), factor: x, running, fermi: fermi(f.fermi ?? "") };
   });
 }
-
-const COLUMNS = ["id", "by", "made", "url", "archive", "sha256", "edited", "quote", "claim", "p", "side", "market", "price", "price_at", "source", "due", "fermi", "fermi_url", "outcome", "settled", "evidence", "factor", "running_e", "revises", "correction"];
-
-// The file feed-update reads. One bet per line, in time order, tab-separated, no cell holds a tab.
-export function betsTsv(bets: Bet[]): string {
-  const rows = [COLUMNS.join("\t")];
-  for (const bet of bets) {
-    const f = bet.note.fields;
-    const cell: Record<string, string> = {
-      ...f, id: bet.note.id, quote: bet.note.text, fermi: bet.fermi.text, fermi_url: bet.fermi.url,
-      factor: bet.factor === null ? "" : bet.factor.toPrecision(4), running_e: bet.running.toPrecision(4),
-    };
-    rows.push(COLUMNS.map((key) => (cell[key] ?? "").replace(/[\t\n]/g, " ")).join("\t"));
-  }
-  return `${rows.join("\n")}\n`;
-}

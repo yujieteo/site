@@ -1,0 +1,547 @@
+# part: policy
+# expect: split by tabs
+# why: format rule: fields are split by TAB, never spaces (notes.ts parseLine, cells.length < 3)
+368238c1  40  Private home prices rose 1.4% in 3Q 2026, and more than 32,000 new units could go on sale within two years. Read it before you buy or sell a home.
+
+# part: policy
+# expect: no space at either end
+# why: format rule: CRLF line endings leave a trailing \r on the last field (parseLine text.trim())
+368238c1	40	Private home prices rose 1.4% in 3Q 2026, and more than 32,000 new units could go on sale within two years. Read it before you buy or sell a home.
+
+# part: policy
+# expect: must not hold < or >
+# why: git/transcript evidence: policy text corrected 6 times after merge; markup in text is refused (parseLine)
+368238c1	40	Read <b>this</b> before you buy a home.
+
+# part: policy
+# expect: no space at either end
+# why: git/transcript evidence: policy text corrected 6 times after merge; trailing space (parseLine)
+368238c1	40	Check the cap before buying. 
+
+# part: policy
+# expect: the text must have 1 to 300
+# why: git/transcript evidence: policy text corrected 6 times; over TEXT_LIMIT 300
+368238c1	40	Read the notice. Read the notice. Read the notice. Read the notice. Read the notice. Read the notice. Read the notice. Read the notice. Read the notice. Read the notice. Read the notice. Read the notice. Read the notice. Read the notice. Read the notice. Read the notice. Read the notice. Read the notice. Read the notice. Read the notice. Read the notice. Read the notice. Read the notice. Read the notice. Read the notice. Read the notice. Read the notice. Read the notice. Read the notice. Read the notice.
+
+# part: policy
+# expect: the text must have 1 to 300
+# why: format rule: empty text
+368238c1	40	
+
+# part: policy
+# expect: points must be a whole number
+# why: format rule: non-integer points
+368238c1	4.5	Private home prices rose 1.4% in 3Q 2026, and more than 32,000 new units could go on sale within two years. Read it before you buy or sell a home.
+
+# part: policy
+# expect: points must be a whole number
+# why: format rule: points beyond +-60
+368238c1	99	Private home prices rose 1.4% in 3Q 2026, and more than 32,000 new units could go on sale within two years. Read it before you buy or sell a home.
+
+# part: policy
+# expect: is not a valid id
+# why: format rule: id must be 8 hex characters
+368238C1	40	Private home prices rose 1.4% in 3Q 2026, and more than 32,000 new units could go on sale within two years. Read it before you buy or sell a home.
+
+# part: policy
+# expect: is not a field of policy notes
+# why: format rule: unknown field on a part with no fields
+368238c1	40	Private home prices rose 1.4% in 3Q 2026, and more than 32,000 new units could go on sale within two years. Read it before you buy or sell a home.	deadline=2026-12-01
+
+# part: policy
+# expect: is not a field
+# why: format rule: field without '='
+368238c1	40	Private home prices rose 1.4% in 3Q 2026, and more than 32,000 new units could go on sale within two years. Read it before you buy or sell a home.	deadline
+
+# part: policy
+# expect: appears twice
+# why: format rule: duplicate id in one file (one: id)
+# setup: policy
+368238c1	40	Private home prices rose 1.4% in 3Q 2026, and more than 32,000 new units could go on sale within two years. Read it before you buy or sell a home.
+368238c1	40	Private home prices rose 1.4% in 3Q 2026, and more than 32,000 new units could go on sale within two years. Read it before you buy or sell a home.
+
+# part: reading
+# expect: appears twice
+# why: format rule: duplicate id in one file
+# setup: reading
+368238c1	5	A primary source on the new rule; worth reading.
+368238c1	5	A primary source on the new rule; worth reading.
+
+# part: reading
+# expect: points must be a whole number
+# why: format rule: points out of range
+368238c1	61	Worth reading.
+
+# part: forecasts
+# expect: the field due is missing
+# why: git/transcript evidence: forecasts.due corrected 9 times: lines had no due date
+1331bb41	0	Subject to specifying the terms, I would be on Marcus’ side of this for size, as is Michael Vassar, as is Eliezer Yudkowsky.	by=Zvi	url=https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	made=2023-10-26T13:30:02Z	sha256=f067994c45ed1d24ba54cd6ce47fcc82f4368a4f57a93903a42b3fc60fc4fbdc	archive=https://web.archive.org/web/20231026135024/https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	claim=Will we get hallucination rates down to human-expert levels by May 2024?	side=no	market=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	price=0.1701	price_at=2023-10-26T13:28:33Z	source=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	fermi=none	outcome=no	settled=2024-05-02	evidence=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow
+
+# part: forecasts
+# expect: is before made
+# why: format rule: due before made (parseLine)
+1331bb41	0	Subject to specifying the terms, I would be on Marcus’ side of this for size, as is Michael Vassar, as is Eliezer Yudkowsky.	by=Zvi	url=https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	made=2023-10-26T13:30:02Z	sha256=f067994c45ed1d24ba54cd6ce47fcc82f4368a4f57a93903a42b3fc60fc4fbdc	archive=https://web.archive.org/web/20231026135024/https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	claim=Will we get hallucination rates down to human-expert levels by May 2024?	side=no	market=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	price=0.1701	price_at=2023-10-26T13:28:33Z	source=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	due=2020-01-01	fermi=none	outcome=no	settled=2024-05-02	evidence=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow
+
+# part: forecasts
+# expect: made must be
+# why: format rule: made needs a full UTC stamp, not a bare date
+1331bb41	0	Subject to specifying the terms, I would be on Marcus’ side of this for size, as is Michael Vassar, as is Eliezer Yudkowsky.	by=Zvi	url=https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	made=2023-10-26	sha256=f067994c45ed1d24ba54cd6ce47fcc82f4368a4f57a93903a42b3fc60fc4fbdc	archive=https://web.archive.org/web/20231026135024/https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	claim=Will we get hallucination rates down to human-expert levels by May 2024?	side=no	market=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	price=0.1701	price_at=2023-10-26T13:28:33Z	source=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	due=2024-05-02	fermi=none	outcome=no	settled=2024-05-02	evidence=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow
+
+# part: forecasts
+# expect: price must be
+# why: format rule: S$ or percent sign in a market price
+1331bb41	0	Subject to specifying the terms, I would be on Marcus’ side of this for size, as is Michael Vassar, as is Eliezer Yudkowsky.	by=Zvi	url=https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	made=2023-10-26T13:30:02Z	sha256=f067994c45ed1d24ba54cd6ce47fcc82f4368a4f57a93903a42b3fc60fc4fbdc	archive=https://web.archive.org/web/20231026135024/https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	claim=Will we get hallucination rates down to human-expert levels by May 2024?	side=no	market=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	price=17%	price_at=2023-10-26T13:28:33Z	source=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	due=2024-05-02	fermi=none	outcome=no	settled=2024-05-02	evidence=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow
+
+# part: forecasts
+# expect: is not a real date
+# why: format rule: nonexistent date
+1331bb41	0	Subject to specifying the terms, I would be on Marcus’ side of this for size, as is Michael Vassar, as is Eliezer Yudkowsky.	by=Zvi	url=https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	made=2023-10-26T13:30:02Z	sha256=f067994c45ed1d24ba54cd6ce47fcc82f4368a4f57a93903a42b3fc60fc4fbdc	archive=https://web.archive.org/web/20231026135024/https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	claim=Will we get hallucination rates down to human-expert levels by May 2024?	side=no	market=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	price=0.1701	price_at=2023-10-26T13:28:33Z	source=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	due=2024-05-02	fermi=none	outcome=no	settled=2024-05-02	evidence=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	edited=2026-02-30
+
+# part: forecasts
+# expect: is after today
+# why: format rule: settled in the future
+1331bb41	0	Subject to specifying the terms, I would be on Marcus’ side of this for size, as is Michael Vassar, as is Eliezer Yudkowsky.	by=Zvi	url=https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	made=2023-10-26T13:30:02Z	sha256=f067994c45ed1d24ba54cd6ce47fcc82f4368a4f57a93903a42b3fc60fc4fbdc	archive=https://web.archive.org/web/20231026135024/https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	claim=Will we get hallucination rates down to human-expert levels by May 2024?	side=no	market=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	price=0.1701	price_at=2023-10-26T13:28:33Z	source=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	due=2024-05-02	fermi=none	outcome=no	settled=2099-01-01	evidence=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow
+
+# part: forecasts
+# expect: outcome must be
+# why: format rule: outcome outside open/yes/no/void
+1331bb41	0	Subject to specifying the terms, I would be on Marcus’ side of this for size, as is Michael Vassar, as is Eliezer Yudkowsky.	by=Zvi	url=https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	made=2023-10-26T13:30:02Z	sha256=f067994c45ed1d24ba54cd6ce47fcc82f4368a4f57a93903a42b3fc60fc4fbdc	archive=https://web.archive.org/web/20231026135024/https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	claim=Will we get hallucination rates down to human-expert levels by May 2024?	side=no	market=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	price=0.1701	price_at=2023-10-26T13:28:33Z	source=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	due=2024-05-02	fermi=none	outcome=maybe	settled=2024-05-02	evidence=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow
+
+# part: forecasts
+# expect: appears twice
+# why: format rule: duplicate field
+1331bb41	0	Subject to specifying the terms, I would be on Marcus’ side of this for size, as is Michael Vassar, as is Eliezer Yudkowsky.	by=Zvi	url=https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	made=2023-10-26T13:30:02Z	sha256=f067994c45ed1d24ba54cd6ce47fcc82f4368a4f57a93903a42b3fc60fc4fbdc	archive=https://web.archive.org/web/20231026135024/https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	claim=Will we get hallucination rates down to human-expert levels by May 2024?	side=no	market=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	price=0.1701	price_at=2023-10-26T13:28:33Z	source=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	due=2024-05-02	fermi=none	outcome=no	settled=2024-05-02	evidence=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	due=2030-01-01
+
+# part: forecasts
+# expect: is not a field of forecasts
+# why: format rule: unknown field
+1331bb41	0	Subject to specifying the terms, I would be on Marcus’ side of this for size, as is Michael Vassar, as is Eliezer Yudkowsky.	by=Zvi	url=https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	made=2023-10-26T13:30:02Z	sha256=f067994c45ed1d24ba54cd6ce47fcc82f4368a4f57a93903a42b3fc60fc4fbdc	archive=https://web.archive.org/web/20231026135024/https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	claim=Will we get hallucination rates down to human-expert levels by May 2024?	side=no	market=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	price=0.1701	price_at=2023-10-26T13:28:33Z	source=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	due=2024-05-02	fermi=none	outcome=no	settled=2024-05-02	evidence=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	confidence=high
+
+# part: forecasts
+# expect: p must be
+# why: format rule: stated chance beyond 1
+1331bb41	0	Subject to specifying the terms, I would be on Marcus’ side of this for size, as is Michael Vassar, as is Eliezer Yudkowsky.	by=Zvi	url=https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	made=2023-10-26T13:30:02Z	sha256=f067994c45ed1d24ba54cd6ce47fcc82f4368a4f57a93903a42b3fc60fc4fbdc	archive=https://web.archive.org/web/20231026135024/https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	claim=Will we get hallucination rates down to human-expert levels by May 2024?	market=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	price=0.1701	price_at=2023-10-26T13:28:33Z	source=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	due=2024-05-02	fermi=none	outcome=no	settled=2024-05-02	evidence=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	p=1.5
+
+# part: forecasts
+# expect: market must be
+# why: format rule: market host outside the allow-list
+1331bb41	0	Subject to specifying the terms, I would be on Marcus’ side of this for size, as is Michael Vassar, as is Eliezer Yudkowsky.	by=Zvi	url=https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	made=2023-10-26T13:30:02Z	sha256=f067994c45ed1d24ba54cd6ce47fcc82f4368a4f57a93903a42b3fc60fc4fbdc	archive=https://web.archive.org/web/20231026135024/https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	claim=Will we get hallucination rates down to human-expert levels by May 2024?	side=no	market=https://example.com/m/1	price=0.1701	price_at=2023-10-26T13:28:33Z	source=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	due=2024-05-02	fermi=none	outcome=no	settled=2024-05-02	evidence=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow
+
+# part: forecasts
+# expect: claim must be
+# why: format rule: claim holding <
+1331bb41	0	Subject to specifying the terms, I would be on Marcus’ side of this for size, as is Michael Vassar, as is Eliezer Yudkowsky.	by=Zvi	url=https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	made=2023-10-26T13:30:02Z	sha256=f067994c45ed1d24ba54cd6ce47fcc82f4368a4f57a93903a42b3fc60fc4fbdc	archive=https://web.archive.org/web/20231026135024/https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	claim=Will <b>AI</b> win?	side=no	market=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	price=0.1701	price_at=2023-10-26T13:28:33Z	source=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	due=2024-05-02	fermi=none	outcome=no	settled=2024-05-02	evidence=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow
+
+# part: forecasts
+# expect: appears twice
+# why: format rule: duplicate bet id
+# setup: forecasts
+1331bb41	0	Subject to specifying the terms, I would be on Marcus’ side of this for size, as is Michael Vassar, as is Eliezer Yudkowsky.	by=Zvi	url=https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	made=2023-10-26T13:30:02Z	sha256=f067994c45ed1d24ba54cd6ce47fcc82f4368a4f57a93903a42b3fc60fc4fbdc	archive=https://web.archive.org/web/20231026135024/https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	claim=Will we get hallucination rates down to human-expert levels by May 2024?	side=no	market=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	price=0.1701	price_at=2023-10-26T13:28:33Z	source=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	due=2024-05-02	fermi=none	outcome=no	settled=2024-05-02	evidence=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow
+1331bb41	0	Subject to specifying the terms, I would be on Marcus’ side of this for size, as is Michael Vassar, as is Eliezer Yudkowsky.	by=Zvi	url=https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	made=2023-10-26T13:30:02Z	sha256=f067994c45ed1d24ba54cd6ce47fcc82f4368a4f57a93903a42b3fc60fc4fbdc	archive=https://web.archive.org/web/20231026135024/https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	claim=Will we get hallucination rates down to human-expert levels by May 2024?	side=no	market=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	price=0.1701	price_at=2023-10-26T13:28:33Z	source=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	due=2024-05-02	fermi=none	outcome=no	settled=2024-05-02	evidence=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow
+
+# part: forecasts
+# expect: split by tabs
+# why: format rule: spaces instead of tabs
+1331bb41 0 Subject to specifying the terms, I would be on Marcus’ side of this for size, as is Michael Vassar, as is Eliezer Yudkowsky. by=Zvi url=https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies made=2023-10-26T13:30:02Z sha256=f067994c45ed1d24ba54cd6ce47fcc82f4368a4f57a93903a42b3fc60fc4fbdc archive=https://web.archive.org/web/20231026135024/https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies claim=Will we get hallucination rates down to human-expert levels by May 2024? side=no market=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow price=0.1701 price_at=2023-10-26T13:28:33Z source=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow due=2024-05-02 fermi=none outcome=no settled=2024-05-02 evidence=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow
+
+# part: forecasts
+# expect: evidence must be
+# why: format rule: CRLF: trailing \r on the last field
+1331bb41	0	Subject to specifying the terms, I would be on Marcus’ side of this for size, as is Michael Vassar, as is Eliezer Yudkowsky.	by=Zvi	url=https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	made=2023-10-26T13:30:02Z	sha256=f067994c45ed1d24ba54cd6ce47fcc82f4368a4f57a93903a42b3fc60fc4fbdc	archive=https://web.archive.org/web/20231026135024/https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	claim=Will we get hallucination rates down to human-expert levels by May 2024?	side=no	market=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	price=0.1701	price_at=2023-10-26T13:28:33Z	source=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	due=2024-05-02	fermi=none	outcome=no	settled=2024-05-02	evidence=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow
+
+# part: forecasts
+# expect: the field sha256 is missing
+# why: git/transcript evidence: 53 forecasts lines were removed outright; a bet with no content hash is unusable
+1331bb41	0	Subject to specifying the terms, I would be on Marcus’ side of this for size, as is Michael Vassar, as is Eliezer Yudkowsky.	by=Zvi	url=https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	made=2023-10-26T13:30:02Z	archive=https://web.archive.org/web/20231026135024/https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	claim=Will we get hallucination rates down to human-expert levels by May 2024?	side=no	market=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	price=0.1701	price_at=2023-10-26T13:28:33Z	source=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	due=2024-05-02	fermi=none	outcome=no	settled=2024-05-02	evidence=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow
+
+# part: prices
+# expect: price must be
+# why: format rule: 'S$' sign in price
+premium-thai-rice-per-5-kilogram	0	Premium Thai rice 5 kg, member price	price=S$14.20	shop=FairPrice	url=https://www.fairprice.com.sg/product/test-rice-5kg-1	date=2026-11-10
+
+# part: prices
+# expect: price must be
+# why: format rule: multi-buy price written as text
+premium-thai-rice-per-5-kilogram	0	Premium Thai rice 5 kg, member price	price=2 for 5	shop=FairPrice	url=https://www.fairprice.com.sg/product/test-rice-5kg-1	date=2026-11-10
+
+# part: prices
+# expect: no item has the id
+# why: format rule: id that no priced item has
+no-such-goods	0	Premium Thai rice 5 kg, member price	price=14.20	shop=FairPrice	url=https://www.fairprice.com.sg/product/test-rice-5kg-1	date=2026-11-10
+
+# part: prices
+# expect: is not a real date
+# why: format rule: nonexistent date
+premium-thai-rice-per-5-kilogram	0	Premium Thai rice 5 kg, member price	price=14.20	shop=FairPrice	url=https://www.fairprice.com.sg/product/test-rice-5kg-1	date=2026-02-30
+
+# part: prices
+# expect: is after today
+# why: format rule: date after today
+premium-thai-rice-per-5-kilogram	0	Premium Thai rice 5 kg, member price	price=14.20	shop=FairPrice	url=https://www.fairprice.com.sg/product/test-rice-5kg-1	date=2099-01-01
+
+# part: prices
+# expect: is before date
+# why: format rule: until before date
+premium-thai-rice-per-5-kilogram	0	Premium Thai rice 5 kg, member price	price=14.20	shop=FairPrice	url=https://www.fairprice.com.sg/product/test-rice-5kg-1	date=2026-11-10	until=2026-11-01
+
+# part: prices
+# expect: must be more than 0
+# why: format rule: zero price
+premium-thai-rice-per-5-kilogram	0	Premium Thai rice 5 kg, member price	price=0	shop=FairPrice	url=https://www.fairprice.com.sg/product/test-rice-5kg-1	date=2026-11-10
+
+# part: prices
+# expect: appears twice
+# why: format rule: duplicate id with the same url (one: url)
+# setup: prices
+premium-thai-rice-per-5-kilogram	0	Premium Thai rice 5 kg, member price	price=14.20	shop=FairPrice	url=https://www.fairprice.com.sg/product/test-rice-5kg-1	date=2026-11-10
+premium-thai-rice-per-5-kilogram	0	Premium Thai rice 5 kg, member price	price=14.20	shop=FairPrice	url=https://www.fairprice.com.sg/product/test-rice-5kg-1	date=2026-11-10
+
+# part: prices
+# expect: the field url is missing
+# why: format rule: missing required field
+premium-thai-rice-per-5-kilogram	0	Premium Thai rice 5 kg, member price	price=14.20	shop=FairPrice	date=2026-11-10
+
+# part: prices
+# expect: split by tabs
+# why: format rule: spaces instead of tabs
+premium-thai-rice-per-5-kilogram   0   Premium Thai rice 5 kg, member price   price=14.20   shop=FairPrice   url=https://www.fairprice.com.sg/product/test-rice-5kg-1   date=2026-11-10
+
+# part: prices
+# expect: date must be
+# why: format rule: CRLF trailing \r
+premium-thai-rice-per-5-kilogram	0	Premium Thai rice 5 kg, member price	price=14.20	shop=FairPrice	url=https://www.fairprice.com.sg/product/test-rice-5kg-1	date=2026-11-10
+
+# part: products
+# expect: price must be
+# why: git/transcript evidence: products.price corrected 14 times; 'S$' sign
+baked-beans	0	Test Beans Tomato 230g	price=S$1.30	pack=230g	per=0.5652	shop=FairPrice	url=https://www.fairprice.com.sg/product/test-beans-230g-1	date=2026-11-10
+
+# part: products
+# expect: price must be
+# why: git/transcript evidence: products.price corrected 14 times; multi-buy form
+baked-beans	0	Test Beans Tomato 230g	price=2 for 5	pack=230g	per=0.5652	shop=FairPrice	url=https://www.fairprice.com.sg/product/test-beans-230g-1	date=2026-11-10
+
+# part: products
+# expect: needs the field per
+# why: git/transcript evidence: products.per corrected 14 times; item with a unit needs per (life.ts shelfOf)
+baked-beans	0	Test Beans Tomato 230g	price=1.30	pack=230g	shop=FairPrice	url=https://www.fairprice.com.sg/product/test-beans-230g-1	date=2026-11-10
+
+# part: products
+# expect: must not have the field per
+# why: git/transcript evidence: products.per corrected 14 times; per on an item with no shared unit (life.ts shelfOf)
+mrt-or-bus-adult-fare	0	Test fare card	price=1.28	pack=One journey	shop=SBS	url=https://www.ptc.gov.sg/test-fare-1	date=2026-11-10	per=1.28
+
+# part: products
+# expect: has per=0.9
+# why: git/transcript evidence: products.per corrected 14 times; per disagrees with price/pack (life.ts checkPer)
+baked-beans	0	Test Beans Tomato 230g	price=1.30	pack=230g	per=0.9	shop=FairPrice	url=https://www.fairprice.com.sg/product/test-beans-230g-1	date=2026-11-10
+
+# part: products
+# expect: has per=565.2
+# why: git/transcript evidence: products.per corrected 14 times; per in the wrong unit, per g x 100000 (life.ts checkPer)
+baked-beans	0	Test Beans Tomato 230g	price=1.30	pack=230g	per=565.2	shop=FairPrice	url=https://www.fairprice.com.sg/product/test-beans-230g-1	date=2026-11-10
+
+# part: products
+# expect: must be more than 0
+# why: format rule: per of zero
+baked-beans	0	Test Beans Tomato 230g	price=1.30	pack=230g	per=0	shop=FairPrice	url=https://www.fairprice.com.sg/product/test-beans-230g-1	date=2026-11-10
+
+# part: products
+# expect: per must be
+# why: format rule: per with a currency sign
+baked-beans	0	Test Beans Tomato 230g	price=1.30	pack=230g	per=S$0.5652	shop=FairPrice	url=https://www.fairprice.com.sg/product/test-beans-230g-1	date=2026-11-10
+
+# part: products
+# expect: is not a real date
+# why: git/transcript evidence: products.date corrected 5 times; nonexistent date
+baked-beans	0	Test Beans Tomato 230g	price=1.30	pack=230g	per=0.5652	shop=FairPrice	url=https://www.fairprice.com.sg/product/test-beans-230g-1	date=2026-02-30
+
+# part: products
+# expect: is after today
+# why: git/transcript evidence: products.date corrected 5 times; date after today
+baked-beans	0	Test Beans Tomato 230g	price=1.30	pack=230g	per=0.5652	shop=FairPrice	url=https://www.fairprice.com.sg/product/test-beans-230g-1	date=2099-01-01
+
+# part: products
+# expect: is before date
+# why: git/transcript evidence: products.until corrected 5 times (invented end dates); until before date
+baked-beans	0	Test Beans Tomato 230g	price=1.30	pack=230g	per=0.5652	shop=FairPrice	url=https://www.fairprice.com.sg/product/test-beans-230g-1	date=2026-11-10	until=2026-11-01
+
+# part: products
+# expect: until must be
+# why: git/transcript evidence: products.until corrected 5 times; until in a non-ISO form
+baked-beans	0	Test Beans Tomato 230g	price=1.30	pack=230g	per=0.5652	shop=FairPrice	url=https://www.fairprice.com.sg/product/test-beans-230g-1	date=2026-11-10	until=30 Nov 2026
+
+# part: products
+# expect: no item has the id
+# why: format rule: id of no shop item
+no-such-item	0	Test Beans Tomato 230g	price=1.30	pack=230g	per=0.5652	shop=FairPrice	url=https://www.fairprice.com.sg/product/test-beans-230g-1	date=2026-11-10
+
+# part: products
+# expect: the field url is missing
+# why: format rule: missing url
+baked-beans	0	Test Beans Tomato 230g	price=1.30	pack=230g	per=0.5652	shop=FairPrice	date=2026-11-10
+
+# part: products
+# expect: appears twice
+# why: format rule: duplicate id and url
+# setup: products
+baked-beans	0	Test Beans Tomato 230g	price=1.30	pack=230g	per=0.5652	shop=FairPrice	url=https://www.fairprice.com.sg/product/test-beans-230g-1	date=2026-11-10
+baked-beans	0	Test Beans Tomato 230g	price=1.30	pack=230g	per=0.5652	shop=FairPrice	url=https://www.fairprice.com.sg/product/test-beans-230g-1	date=2026-11-10
+
+# part: products
+# expect: split by tabs
+# why: format rule: spaces instead of tabs
+baked-beans 0 Test Beans Tomato 230g price=1.30 pack=230g per=0.5652 shop=FairPrice url=https://www.fairprice.com.sg/product/test-beans-230g-1 date=2026-11-10
+
+# part: products
+# expect: date must be
+# why: format rule: CRLF trailing \r
+baked-beans	0	Test Beans Tomato 230g	price=1.30	pack=230g	per=0.5652	shop=FairPrice	url=https://www.fairprice.com.sg/product/test-beans-230g-1	date=2026-11-10
+
+# part: products
+# expect: must not hold < or >
+# why: format rule: text with <
+baked-beans	0	Beans <special>	price=1.30	pack=230g	per=0.5652	shop=FairPrice	url=https://www.fairprice.com.sg/product/test-beans-230g-1	date=2026-11-10
+
+# part: checks
+# expect: the verdict must be pass or fail
+# why: format rule: verdict recorded where the answer column says pass or fail
+rice-thai-hom-mali-5-kg-double-fp-thai-hom-mali-premium-quality-fragrant-rice	0	Thai Hom Mali in the name	verdict=recorded	url=https://www.fairprice.com.sg/product/double-fp-thai-hom-mali-premium-quality-fragrant-rice-5kg-13097846	date=2026-11-11
+
+# part: checks
+# expect: the verdict must be recorded
+# why: format rule: verdict pass where the answer column says recorded
+toilet-paper-10-rolls-fairprice-bathroom-tissues-value-2-ply	0	2-ply	verdict=pass	url=https://www.fairprice.com.sg/product/fairprice-bathroom-tissues-value-2-ply-10-x-160-per-pack-13285373	date=2026-11-11
+
+# part: checks
+# expect: verdict must be
+# why: format rule: verdict outside pass/fail/recorded
+rice-thai-hom-mali-5-kg-double-fp-thai-hom-mali-premium-quality-fragrant-rice	0	Thai Hom Mali in the name	verdict=ok	url=https://www.fairprice.com.sg/product/double-fp-thai-hom-mali-premium-quality-fragrant-rice-5kg-13097846	date=2026-11-11
+
+# part: checks
+# expect: is after today
+# why: format rule: date after today
+rice-thai-hom-mali-5-kg-double-fp-thai-hom-mali-premium-quality-fragrant-rice	0	Thai Hom Mali in the name	verdict=pass	url=https://www.fairprice.com.sg/product/double-fp-thai-hom-mali-premium-quality-fragrant-rice-5kg-13097846	date=2099-01-01
+
+# part: checks
+# expect: no item has the id
+# why: format rule: unknown product id
+no-such-product	0	Thai Hom Mali in the name	verdict=pass	url=https://www.fairprice.com.sg/product/double-fp-thai-hom-mali-premium-quality-fragrant-rice-5kg-13097846	date=2026-11-11
+
+# part: checks
+# expect: appears twice
+# why: format rule: duplicate id
+# setup: checks
+rice-thai-hom-mali-5-kg-double-fp-thai-hom-mali-premium-quality-fragrant-rice	0	Thai Hom Mali in the name	verdict=pass	url=https://www.fairprice.com.sg/product/double-fp-thai-hom-mali-premium-quality-fragrant-rice-5kg-13097846	date=2026-11-11
+rice-thai-hom-mali-5-kg-double-fp-thai-hom-mali-premium-quality-fragrant-rice	0	Thai Hom Mali in the name	verdict=pass	url=https://www.fairprice.com.sg/product/double-fp-thai-hom-mali-premium-quality-fragrant-rice-5kg-13097846	date=2026-11-11
+
+# part: checks
+# expect: the field url is missing
+# why: format rule: missing url
+rice-thai-hom-mali-5-kg-double-fp-thai-hom-mali-premium-quality-fragrant-rice	0	Thai Hom Mali in the name	verdict=pass	date=2026-11-11
+
+# part: checks
+# expect: split by tabs
+# why: format rule: spaces instead of tabs
+rice-thai-hom-mali-5-kg-double-fp-thai-hom-mali-premium-quality-fragrant-rice  0  Thai Hom Mali in the name  verdict=pass  url=https://www.fairprice.com.sg/product/double-fp-thai-hom-mali-premium-quality-fragrant-rice-5kg-13097846  date=2026-11-11
+
+# part: advice
+# expect: already gives the advice
+# why: git/transcript evidence: advice.why/text corrected 4 times; advice that repeats the post's own advice (parseLine)
+eating-out	0	Eat economical rice for the cheapest full meal	lever=pick	why=Cheapest full meal.	url=https://www.nea.gov.sg/test-1
+
+# part: advice
+# expect: already gives the advice
+# why: format rule: same advice in other case (compared in lower case)
+eating-out	0	eat economical rice for the cheapest full meal	lever=pick	why=Cheapest full meal.	url=https://www.nea.gov.sg/test-1
+
+# part: advice
+# expect: the text must have 1 to 80
+# why: format rule: advice text over 80 characters
+eating-out	0	Cook at home most weekdays and carry the lunch to work so that you skip the hawker queue entirely	lever=when	why=x	url=https://www.nea.gov.sg/test-1
+
+# part: advice
+# expect: why must be
+# why: git/transcript evidence: advice.why corrected 4 times; markup in why
+eating-out	0	Cook rice at home on weekdays	lever=when	why=Saves <b>S$3</b> a meal.	url=https://www.nea.gov.sg/test-1
+
+# part: advice
+# expect: the field why is missing
+# why: git/transcript evidence: advice.why corrected 4 times; why missing
+eating-out	0	Cook rice at home on weekdays	lever=when	url=https://www.nea.gov.sg/test-1
+
+# part: advice
+# expect: lever must be
+# why: format rule: lever outside check/pick/when/much
+eating-out	0	Cook rice at home on weekdays	lever=cheap	why=A home meal costs about S$2 against S$5 at a hawker centre.	url=https://www.nea.gov.sg/test-1
+
+# part: advice
+# expect: url must be
+# why: format rule: url that is not https
+eating-out	0	Cook rice at home on weekdays	lever=when	why=A home meal costs about S$2 against S$5 at a hawker centre.	url=http://www.nea.gov.sg/x
+
+# part: advice
+# expect: no item has the id
+# why: format rule: unknown spending group
+no-such-group	0	Cook rice at home on weekdays	lever=when	why=A home meal costs about S$2 against S$5 at a hawker centre.	url=https://www.nea.gov.sg/test-1
+
+# part: advice
+# expect: appears twice
+# why: format rule: duplicate id with the same text (one: text)
+# setup: advice
+eating-out	0	Cook rice at home on weekdays	lever=when	why=A home meal costs about S$2 against S$5 at a hawker centre.	url=https://www.nea.gov.sg/test-1
+eating-out	0	Cook rice at home on weekdays	lever=when	why=A home meal costs about S$2 against S$5 at a hawker centre.	url=https://www.nea.gov.sg/test-1
+
+# part: advice
+# expect: no space at either end
+# why: format rule: trailing space in text
+eating-out	0	Cook rice at home on weekdays 	lever=when	why=A home meal costs about S$2 against S$5 at a hawker centre.	url=https://www.nea.gov.sg/test-1
+
+# part: advice
+# expect: worth must be
+# why: format rule: worth over 40 characters
+eating-out	0	Cook rice at home on weekdays	lever=when	why=A home meal costs about S$2 against S$5 at a hawker centre.	url=https://www.nea.gov.sg/test-1	worth=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+# part: calls
+# expect: not before its month
+# why: git/transcript evidence: agent transcript build error: a call made on or after its month
+eggs-2026-12	0	The CPI for eggs in 2026-12 will be between 99.2 and 106.1, from 99.7 in 2026-09.	series=1.01.4.4	month=2026-11	low=99.25	mid=101.30	high=106.07	model=world-a	made=2026-11-10
+
+# part: calls
+# expect: not before its month
+# why: git/transcript evidence: agent transcript: made after the month it is about
+eggs-2026-12	0	The CPI for eggs in 2026-12 will be between 99.2 and 106.1, from 99.7 in 2026-09.	series=1.01.4.4	month=2026-09	low=99.25	mid=101.30	high=106.07	model=world-a	made=2026-11-10
+
+# part: calls
+# expect: model must be
+# why: git/transcript evidence: agent transcript: a bad model name (capitals and underscore)
+eggs-2026-12	0	The CPI for eggs in 2026-12 will be between 99.2 and 106.1, from 99.7 in 2026-09.	series=1.01.4.4	month=2026-12	low=99.25	mid=101.30	high=106.07	model=World_A	made=2026-11-10
+
+# part: calls
+# expect: model must be
+# why: git/transcript evidence: agent transcript: a bad model name (a sentence)
+eggs-2026-12	0	The CPI for eggs in 2026-12 will be between 99.2 and 106.1, from 99.7 in 2026-09.	series=1.01.4.4	month=2026-12	low=99.25	mid=101.30	high=106.07	model=world a baseline	made=2026-11-10
+
+# part: calls
+# expect: must be in order
+# why: format rule: low above mid
+eggs-2026-12	0	The CPI for eggs in 2026-12 will be between 99.2 and 106.1, from 99.7 in 2026-09.	series=1.01.4.4	month=2026-12	low=102.00	mid=101.30	high=106.07	model=world-a	made=2026-11-10
+
+# part: calls
+# expect: must be in order
+# why: format rule: mid above high
+eggs-2026-12	0	The CPI for eggs in 2026-12 will be between 99.2 and 106.1, from 99.7 in 2026-09.	series=1.01.4.4	month=2026-12	low=99.25	mid=107.00	high=106.07	model=world-a	made=2026-11-10
+
+# part: calls
+# expect: series must be
+# why: format rule: series that is not a CPI number
+eggs-2026-12	0	The CPI for eggs in 2026-12 will be between 99.2 and 106.1, from 99.7 in 2026-09.	series=eggs	month=2026-12	low=99.25	mid=101.30	high=106.07	model=world-a	made=2026-11-10
+
+# part: calls
+# expect: is not a real date
+# why: format rule: month 13
+eggs-2026-12	0	The CPI for eggs in 2026-12 will be between 99.2 and 106.1, from 99.7 in 2026-09.	series=1.01.4.4	month=2026-13	low=99.25	mid=101.30	high=106.07	model=world-a	made=2026-11-10
+
+# part: calls
+# expect: month must be
+# why: format rule: month with a day
+eggs-2026-12	0	The CPI for eggs in 2026-12 will be between 99.2 and 106.1, from 99.7 in 2026-09.	series=1.01.4.4	month=2026-12-01	low=99.25	mid=101.30	high=106.07	model=world-a	made=2026-11-10
+
+# part: calls
+# expect: is not a real date
+# why: format rule: nonexistent made date
+eggs-2026-12	0	The CPI for eggs in 2026-12 will be between 99.2 and 106.1, from 99.7 in 2026-09.	series=1.01.4.4	month=2026-12	low=99.25	mid=101.30	high=106.07	model=world-a	made=2026-02-30
+
+# part: calls
+# expect: is after today
+# why: format rule: made after today
+eggs-2026-12	0	The CPI for eggs in 2026-12 will be between 99.2 and 106.1, from 99.7 in 2026-09.	series=1.01.4.4	month=2026-12	low=99.25	mid=101.30	high=106.07	model=world-a	made=2099-01-01
+
+# part: calls
+# expect: appears twice
+# why: format rule: duplicate call id
+# setup: calls
+eggs-2026-12	0	The CPI for eggs in 2026-12 will be between 99.2 and 106.1, from 99.7 in 2026-09.	series=1.01.4.4	month=2026-12	low=99.25	mid=101.30	high=106.07	model=world-a	made=2026-11-10
+eggs-2026-12	0	The CPI for eggs in 2026-12 will be between 99.2 and 106.1, from 99.7 in 2026-09.	series=1.01.4.4	month=2026-12	low=99.25	mid=101.30	high=106.07	model=world-a	made=2026-11-10
+
+# part: calls
+# expect: the field model is missing
+# why: format rule: missing model
+eggs-2026-12	0	The CPI for eggs in 2026-12 will be between 99.2 and 106.1, from 99.7 in 2026-09.	series=1.01.4.4	month=2026-12	low=99.25	mid=101.30	high=106.07	made=2026-11-10
+
+# part: calls
+# expect: split by tabs
+# why: format rule: spaces instead of tabs
+eggs-2026-12  0  The CPI for eggs in 2026-12 will be between 99.2 and 106.1, from 99.7 in 2026-09.  series=1.01.4.4  month=2026-12  low=99.25  mid=101.30  high=106.07  model=world-a  made=2026-11-10
+
+# part: calls
+# expect: made must be
+# why: format rule: CRLF trailing \r
+eggs-2026-12	0	The CPI for eggs in 2026-12 will be between 99.2 and 106.1, from 99.7 in 2026-09.	series=1.01.4.4	month=2026-12	low=99.25	mid=101.30	high=106.07	model=world-a	made=2026-11-10
+
+# part: outcomes
+# expect: before the month
+# why: git/transcript evidence: agent transcript: an outcome read before the call's month
+# setup: calls
+eggs-2026-09	0	The CPI for eggs in 2026-12 will be between 99.2 and 106.1, from 99.7 in 2026-09.	series=1.01.4.4	month=2026-09	low=99.25	mid=101.30	high=106.07	model=world-a	made=2026-08-01
+eggs-2026-09	0	SingStat M213751, 1.01.4.4, 2026 Sep	actual=99.7	url=https://tablebuilder.singstat.gov.sg/table/TS/M213751	date=2026-08-15
+
+# part: outcomes
+# expect: no item has the id
+# why: format rule: outcome for a call that is not in calls.tsv
+eggs-2026-09	0	SingStat M213751, 1.01.4.4, 2026 Sep	actual=99.7	url=https://tablebuilder.singstat.gov.sg/table/TS/M213751	date=2026-11-10
+
+# part: outcomes
+# expect: actual must be
+# why: format rule: actual with a unit or too many digits
+# setup: calls
+eggs-2026-09	0	The CPI for eggs in 2026-12 will be between 99.2 and 106.1, from 99.7 in 2026-09.	series=1.01.4.4	month=2026-09	low=99.25	mid=101.30	high=106.07	model=world-a	made=2026-08-01
+eggs-2026-09	0	SingStat M213751, 1.01.4.4, 2026 Sep	actual=12345	url=https://tablebuilder.singstat.gov.sg/table/TS/M213751	date=2026-11-10
+
+# part: outcomes
+# expect: is after today
+# why: format rule: outcome date after today
+# setup: calls
+eggs-2026-09	0	The CPI for eggs in 2026-12 will be between 99.2 and 106.1, from 99.7 in 2026-09.	series=1.01.4.4	month=2026-09	low=99.25	mid=101.30	high=106.07	model=world-a	made=2026-08-01
+eggs-2026-09	0	SingStat M213751, 1.01.4.4, 2026 Sep	actual=99.7	url=https://tablebuilder.singstat.gov.sg/table/TS/M213751	date=2099-01-01
+
+# part: outcomes
+# expect: appears twice
+# why: format rule: duplicate outcome id
+# setup: calls
+eggs-2026-09	0	The CPI for eggs in 2026-12 will be between 99.2 and 106.1, from 99.7 in 2026-09.	series=1.01.4.4	month=2026-09	low=99.25	mid=101.30	high=106.07	model=world-a	made=2026-08-01
+# setup: outcomes
+eggs-2026-09	0	SingStat M213751, 1.01.4.4, 2026 Sep	actual=99.7	url=https://tablebuilder.singstat.gov.sg/table/TS/M213751	date=2026-11-10
+eggs-2026-09	0	SingStat M213751, 1.01.4.4, 2026 Sep	actual=99.7	url=https://tablebuilder.singstat.gov.sg/table/TS/M213751	date=2026-11-10
+
+# part: outcomes
+# expect: the field url is missing
+# why: format rule: missing url
+# setup: calls
+eggs-2026-09	0	The CPI for eggs in 2026-12 will be between 99.2 and 106.1, from 99.7 in 2026-09.	series=1.01.4.4	month=2026-09	low=99.25	mid=101.30	high=106.07	model=world-a	made=2026-08-01
+eggs-2026-09	0	SingStat M213751, 1.01.4.4, 2026 Sep	actual=99.7	date=2026-11-10
+
+# part: forecasts
+# expect: give exactly one of p and side
+# why: documented rule, enforced since this branch: neither p nor side given: the person's stance is unknown
+1331bb41	0	Subject to specifying the terms, I would be on Marcus’ side of this for size, as is Michael Vassar, as is Eliezer Yudkowsky.	by=Zvi	url=https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	made=2023-10-26T13:30:02Z	sha256=f067994c45ed1d24ba54cd6ce47fcc82f4368a4f57a93903a42b3fc60fc4fbdc	archive=https://web.archive.org/web/20231026135024/https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	claim=Will we get hallucination rates down to human-expert levels by May 2024?	market=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	price=0.1701	price_at=2023-10-26T13:28:33Z	source=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	due=2024-05-02	fermi=none	outcome=no	settled=2024-05-02	evidence=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow
+
+# part: forecasts
+# expect: give exactly one of p and side
+# why: documented rule, enforced since this branch: p and side both given and can contradict (p=0.9 with side=no)
+1331bb41	0	Subject to specifying the terms, I would be on Marcus’ side of this for size, as is Michael Vassar, as is Eliezer Yudkowsky.	by=Zvi	url=https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	made=2023-10-26T13:30:02Z	sha256=f067994c45ed1d24ba54cd6ce47fcc82f4368a4f57a93903a42b3fc60fc4fbdc	archive=https://web.archive.org/web/20231026135024/https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	claim=Will we get hallucination rates down to human-expert levels by May 2024?	side=no	market=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	price=0.1701	price_at=2023-10-26T13:28:33Z	source=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	due=2024-05-02	fermi=none	outcome=no	settled=2024-05-02	evidence=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	p=0.9
+
+# part: forecasts
+# expect: points must be 0
+# why: documented rule, enforced since this branch: points not 0 where the part says Not used
+1331bb41	50	Subject to specifying the terms, I would be on Marcus’ side of this for size, as is Michael Vassar, as is Eliezer Yudkowsky.	by=Zvi	url=https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	made=2023-10-26T13:30:02Z	sha256=f067994c45ed1d24ba54cd6ce47fcc82f4368a4f57a93903a42b3fc60fc4fbdc	archive=https://web.archive.org/web/20231026135024/https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	claim=Will we get hallucination rates down to human-expert levels by May 2024?	side=no	market=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	price=0.1701	price_at=2023-10-26T13:28:33Z	source=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	due=2024-05-02	fermi=none	outcome=no	settled=2024-05-02	evidence=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow
+
+# part: products
+# expect: points must be 0
+# why: documented rule, enforced since this branch: points not 0 where the part says Not used
+baked-beans	50	Test Beans Tomato 230g	price=1.30	pack=230g	per=0.5652	shop=FairPrice	url=https://www.fairprice.com.sg/product/test-beans-230g-1	date=2026-11-10
+
+# part: checks
+# expect: points must be 0
+# why: documented rule, enforced since this branch: points not 0 where the part says Not used
+rice-thai-hom-mali-5-kg-double-fp-thai-hom-mali-premium-quality-fragrant-rice	50	Thai Hom Mali in the name	verdict=pass	url=https://www.fairprice.com.sg/product/double-fp-thai-hom-mali-premium-quality-fragrant-rice-5kg-13097846	date=2026-11-11

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# For language models and agents: https://teoyujie.org/llms.txt
+# Every file of the agent API, with its SHA-256: https://teoyujie.org/api/manifest.json

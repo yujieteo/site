@@ -1,0 +1,133 @@
+# part: policy
+# observed: loads without error, so the build would accept it
+# why: documented rule (help text), not enforced: text says 'No investment advice' but nothing checks it (notes.ts has no rule)
+368238c1	40	Buy STI ETF units now; they will rise after this announcement.
+
+# part: forecasts
+# observed: loads without error, so the build would accept it
+# why: documented rule (help text), not enforced: outcome=open although due is long past
+1331bb41	0	Subject to specifying the terms, I would be on Marcus’ side of this for size, as is Michael Vassar, as is Eliezer Yudkowsky.	by=Zvi	url=https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	made=2023-10-26T13:30:02Z	sha256=f067994c45ed1d24ba54cd6ce47fcc82f4368a4f57a93903a42b3fc60fc4fbdc	archive=https://web.archive.org/web/20231026135024/https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	claim=Will we get hallucination rates down to human-expert levels by May 2024?	side=no	market=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	price=0.1701	price_at=2023-10-26T13:28:33Z	source=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	due=2024-05-02	fermi=none	outcome=open
+
+# part: forecasts
+# observed: loads without error, so the build would accept it
+# why: documented rule (help text), not enforced: outcome=yes with no settled day and no evidence url
+1331bb41	0	Subject to specifying the terms, I would be on Marcus’ side of this for size, as is Michael Vassar, as is Eliezer Yudkowsky.	by=Zvi	url=https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	made=2023-10-26T13:30:02Z	sha256=f067994c45ed1d24ba54cd6ce47fcc82f4368a4f57a93903a42b3fc60fc4fbdc	archive=https://web.archive.org/web/20231026135024/https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	claim=Will we get hallucination rates down to human-expert levels by May 2024?	side=no	market=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	price=0.1701	price_at=2023-10-26T13:28:33Z	source=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	due=2024-05-02	fermi=none	outcome=yes
+
+# part: forecasts
+# observed: loads without error, so the build would accept it
+# why: documented rule (help text), not enforced: settled before made
+1331bb41	0	Subject to specifying the terms, I would be on Marcus’ side of this for size, as is Michael Vassar, as is Eliezer Yudkowsky.	by=Zvi	url=https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	made=2023-10-26T13:30:02Z	sha256=f067994c45ed1d24ba54cd6ce47fcc82f4368a4f57a93903a42b3fc60fc4fbdc	archive=https://web.archive.org/web/20231026135024/https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	claim=Will we get hallucination rates down to human-expert levels by May 2024?	side=no	market=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	price=0.1701	price_at=2023-10-26T13:28:33Z	source=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	due=2024-05-02	fermi=none	outcome=no	settled=2020-01-01	evidence=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow
+
+# part: forecasts
+# observed: loads without error, so the build would accept it
+# why: documented rule (help text), not enforced: edited before made
+1331bb41	0	Subject to specifying the terms, I would be on Marcus’ side of this for size, as is Michael Vassar, as is Eliezer Yudkowsky.	by=Zvi	url=https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	made=2023-10-26T13:30:02Z	sha256=f067994c45ed1d24ba54cd6ce47fcc82f4368a4f57a93903a42b3fc60fc4fbdc	archive=https://web.archive.org/web/20231026135024/https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	claim=Will we get hallucination rates down to human-expert levels by May 2024?	side=no	market=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	price=0.1701	price_at=2023-10-26T13:28:33Z	source=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	due=2024-05-02	fermi=none	outcome=no	settled=2024-05-02	evidence=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	edited=2020-01-01
+
+# part: forecasts
+# observed: loads without error, so the build would accept it
+# why: documented rule (help text), not enforced: price_at after made: the price is not 'just before the item was posted'
+1331bb41	0	Subject to specifying the terms, I would be on Marcus’ side of this for size, as is Michael Vassar, as is Eliezer Yudkowsky.	by=Zvi	url=https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	made=2023-10-26T13:30:02Z	sha256=f067994c45ed1d24ba54cd6ce47fcc82f4368a4f57a93903a42b3fc60fc4fbdc	archive=https://web.archive.org/web/20231026135024/https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	claim=Will we get hallucination rates down to human-expert levels by May 2024?	side=no	market=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	price=0.1701	price_at=2023-12-01T00:00:00Z	source=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	due=2024-05-02	fermi=none	outcome=no	settled=2024-05-02	evidence=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow
+
+# part: forecasts
+# observed: loads without error, so the build would accept it
+# why: documented rule (help text), not enforced: revises an id that no line has, and revises itself
+1331bb41	0	Subject to specifying the terms, I would be on Marcus’ side of this for size, as is Michael Vassar, as is Eliezer Yudkowsky.	by=Zvi	url=https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	made=2023-10-26T13:30:02Z	sha256=f067994c45ed1d24ba54cd6ce47fcc82f4368a4f57a93903a42b3fc60fc4fbdc	archive=https://web.archive.org/web/20231026135024/https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	claim=Will we get hallucination rates down to human-expert levels by May 2024?	side=no	market=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	price=0.1701	price_at=2023-10-26T13:28:33Z	source=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	due=2024-05-02	fermi=none	outcome=no	settled=2024-05-02	evidence=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	revises=1331bb41
+
+# part: forecasts
+# observed: loads without error, so the build would accept it
+# why: documented rule (help text), not enforced: source url on a different host from market (source must be the market's own resolution)
+1331bb41	0	Subject to specifying the terms, I would be on Marcus’ side of this for size, as is Michael Vassar, as is Eliezer Yudkowsky.	by=Zvi	url=https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	made=2023-10-26T13:30:02Z	sha256=f067994c45ed1d24ba54cd6ce47fcc82f4368a4f57a93903a42b3fc60fc4fbdc	archive=https://web.archive.org/web/20231026135024/https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	claim=Will we get hallucination rates down to human-expert levels by May 2024?	side=no	market=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	price=0.1701	price_at=2023-10-26T13:28:33Z	source=https://example.com/anything	due=2024-05-02	fermi=none	outcome=no	settled=2024-05-02	evidence=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow
+
+# part: prices
+# observed: loads without error, so the build would accept it
+# why: git/transcript evidence: products.until corrected 5 times (invented end dates): until far in the future is accepted
+premium-thai-rice-per-5-kilogram	0	Premium Thai rice 5 kg, member price	price=14.20	shop=FairPrice	url=https://www.fairprice.com.sg/product/test-rice-5kg-1	date=2026-11-10	until=2030-01-01
+
+# part: prices
+# observed: loads without error, so the build would accept it
+# why: git/transcript evidence: date older than 30 days: loads but the deal silently never shows
+premium-thai-rice-per-5-kilogram	0	Premium Thai rice 5 kg, member price	price=14.20	shop=FairPrice	url=https://www.fairprice.com.sg/product/test-rice-5kg-1	date=2020-01-01
+
+# part: prices
+# observed: loads without error, so the build would accept it
+# why: documented rule (help text), not enforced: absurd price against the average (14.65): 99999
+premium-thai-rice-per-5-kilogram	0	Premium Thai rice 5 kg, member price	price=99999	shop=FairPrice	url=https://www.fairprice.com.sg/product/test-rice-5kg-1	date=2026-11-10
+
+# part: products
+# observed: loads without error, so the build would accept it
+# why: git/transcript evidence: products.until corrected 5 times (invented end dates): until years ahead
+baked-beans	0	Test Beans Tomato 230g	price=1.30	pack=230g	per=0.5652	shop=FairPrice	url=https://www.fairprice.com.sg/product/test-beans-230g-1	date=2026-11-10	until=2030-01-01
+
+# part: products
+# observed: loads without error, so the build would accept it
+# why: git/transcript evidence: products.date corrected 5 times: a date years old for a price 'seen' now
+baked-beans	0	Test Beans Tomato 230g	price=1.30	pack=230g	per=0.5652	shop=FairPrice	url=https://www.fairprice.com.sg/product/test-beans-230g-1	date=2020-01-01
+
+# part: products
+# observed: loads without error, so the build would accept it
+# why: documented rule (help text), not enforced: pack unrelated to name (230g text, pack=1 L): per then unchecked
+baked-beans	0	Test Beans Tomato 230g	price=1.30	pack=1 L	per=0.5652	shop=FairPrice	url=https://www.fairprice.com.sg/product/test-beans-230g-1	date=2026-11-10
+
+# part: products
+# observed: loads without error, so the build would accept it
+# why: documented rule (help text), not enforced: absurd price for a 230g can with a consistent per (price=9999)
+baked-beans	0	Test Beans Tomato 230g	price=9999	pack=230g	per=4347.3913	shop=FairPrice	url=https://www.fairprice.com.sg/product/test-beans-230g-1	date=2026-11-10
+
+# part: advice
+# observed: loads without error, so the build would accept it
+# why: documented rule (help text), not enforced: advice that repeats another group's post advice (transport's 'Tap in before 7:45am on weekdays' under eating-out)
+eating-out	0	Tap in before 7:45am on weekdays	lever=when	why=A home meal costs about S$2 against S$5 at a hawker centre.	url=https://www.nea.gov.sg/test-1
+
+# part: advice
+# observed: loads without error, so the build would accept it
+# why: documented rule (help text), not enforced: paraphrase of the post's advice slips past the exact-match rule
+eating-out	0	Eat economical rice, the cheapest full meal	lever=when	why=A home meal costs about S$2 against S$5 at a hawker centre.	url=https://www.nea.gov.sg/test-1
+
+# part: advice
+# observed: loads without error, so the build would accept it
+# why: documented rule (help text), not enforced: why with no figure although the help says 'with the figure'
+eating-out	0	Cook rice at home on weekdays	lever=when	why=It is cheaper.	url=https://www.nea.gov.sg/test-1
+
+# part: calls
+# observed: loads without error, so the build would accept it
+# why: git/transcript evidence: transcript: a bad model name. Any well-formed name loads; names are not checked against passthrough.py (baseline, cost, world-a, tariff)
+eggs-2026-12	0	The CPI for eggs in 2026-12 will be between 99.2 and 106.1, from 99.7 in 2026-09.	series=1.01.4.4	month=2026-12	low=99.25	mid=101.30	high=106.07	model=gpt-4	made=2026-11-10
+
+# part: calls
+# observed: loads without error, so the build would accept it
+# why: documented rule (help text), not enforced: made years before the month (backdated call)
+eggs-2026-12	0	The CPI for eggs in 2026-12 will be between 99.2 and 106.1, from 99.7 in 2026-09.	series=1.01.4.4	month=2026-12	low=99.25	mid=101.30	high=106.07	model=world-a	made=2020-01-01
+
+# part: calls
+# observed: loads without error, so the build would accept it
+# why: documented rule (help text), not enforced: index values far from any plausible level (mid=9000)
+eggs-2026-12	0	The CPI for eggs in 2026-12 will be between 99.2 and 106.1, from 99.7 in 2026-09.	series=1.01.4.4	month=2026-12	low=8000	mid=9000	high=9999	model=world-a	made=2026-11-10
+
+# part: calls
+# observed: loads without error, so the build would accept it
+# why: documented rule (help text), not enforced: text numbers disagree with low/mid/high
+eggs-2026-12	0	The CPI for eggs in 2026-12 will be between 10.0 and 11.0, from 50.0 in 2026-09.	series=1.01.4.4	month=2026-12	low=99.25	mid=101.30	high=106.07	model=world-a	made=2026-11-10
+
+# part: calls
+# observed: loads without error, so the build would accept it
+# why: documented rule (help text), not enforced: series that is not an eggs series for an eggs id
+eggs-2026-12	0	The CPI for eggs in 2026-12 will be between 99.2 and 106.1, from 99.7 in 2026-09.	series=9.9	month=2026-12	low=99.25	mid=101.30	high=106.07	model=world-a	made=2026-11-10
+
+# part: calls
+# observed: loads without error, so the build would accept it
+# why: documented rule (help text), not enforced: id month differs from month field (eggs-2027-01 with month=2026-12)
+eggs-2027-01	0	The CPI for eggs in 2026-12 will be between 99.2 and 106.1, from 99.7 in 2026-09.	series=1.01.4.4	month=2026-12	low=99.25	mid=101.30	high=106.07	model=world-a	made=2026-11-10
+
+# part: outcomes
+# observed: loads without error, so the build would accept it
+# why: documented rule (help text), not enforced: actual=0 is accepted as a CPI index value
+# setup: calls
+eggs-2026-09	0	The CPI for eggs in 2026-12 will be between 99.2 and 106.1, from 99.7 in 2026-09.	series=1.01.4.4	month=2026-09	low=99.25	mid=101.30	high=106.07	model=world-a	made=2026-08-01
+eggs-2026-09	0	SingStat M213751, 1.01.4.4, 2026 Sep	actual=0	url=https://tablebuilder.singstat.gov.sg/table/TS/M213751	date=2026-11-10
+
+# part: outcomes
+# observed: loads without error, so the build would accept it
+# why: documented rule (help text), not enforced: outcome read in the call's month, before SingStat publishes (about the 23rd of the next month)
+# setup: calls
+eggs-2026-09	0	The CPI for eggs in 2026-12 will be between 99.2 and 106.1, from 99.7 in 2026-09.	series=1.01.4.4	month=2026-09	low=99.25	mid=101.30	high=106.07	model=world-a	made=2026-08-01
+eggs-2026-09	0	SingStat M213751, 1.01.4.4, 2026 Sep	actual=99.7	url=https://tablebuilder.singstat.gov.sg/table/TS/M213751	date=2026-09-02

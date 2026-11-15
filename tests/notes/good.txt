@@ -1,0 +1,45 @@
+# part: policy
+# why: valid control
+368238c1	40	Private home prices rose 1.4% in 3Q 2026, and more than 32,000 new units could go on sale within two years. Read it before you buy or sell a home.
+
+# part: reading
+# why: valid control
+368238c1	5	A primary source on the new rule; worth reading.
+
+# part: forecasts
+# why: valid control
+1331bb41	0	Subject to specifying the terms, I would be on Marcus’ side of this for size, as is Michael Vassar, as is Eliezer Yudkowsky.	by=Zvi	url=https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	made=2023-10-26T13:30:02Z	sha256=f067994c45ed1d24ba54cd6ce47fcc82f4368a4f57a93903a42b3fc60fc4fbdc	archive=https://web.archive.org/web/20231026135024/https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	claim=Will we get hallucination rates down to human-expert levels by May 2024?	side=no	market=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	price=0.1701	price_at=2023-10-26T13:28:33Z	source=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	due=2024-05-02	fermi=none	outcome=no	settled=2024-05-02	evidence=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow
+
+# part: prices
+# why: valid control
+premium-thai-rice-per-5-kilogram	0	Premium Thai rice 5 kg, member price	price=14.20	shop=FairPrice	url=https://www.fairprice.com.sg/product/test-rice-5kg-1	date=2026-11-10
+
+# part: products
+# why: valid control
+baked-beans	0	Test Beans Tomato 230g	price=1.30	pack=230g	per=0.5652	shop=FairPrice	url=https://www.fairprice.com.sg/product/test-beans-230g-1	date=2026-11-10
+
+# part: products
+# why: valid control
+mrt-or-bus-adult-fare	0	Test fare card	price=1.28	pack=One journey	shop=SBS	url=https://www.ptc.gov.sg/test-fare-1	date=2026-11-10
+
+# part: checks
+# why: valid control
+rice-thai-hom-mali-5-kg-double-fp-thai-hom-mali-premium-quality-fragrant-rice	0	Thai Hom Mali in the name	verdict=pass	url=https://www.fairprice.com.sg/product/double-fp-thai-hom-mali-premium-quality-fragrant-rice-5kg-13097846	date=2026-11-11
+
+# part: checks
+# why: valid control
+toilet-paper-10-rolls-fairprice-bathroom-tissues-value-2-ply	0	2-ply	verdict=recorded	url=https://www.fairprice.com.sg/product/fairprice-bathroom-tissues-value-2-ply-10-x-160-per-pack-13285373	date=2026-11-11
+
+# part: advice
+# why: valid control
+eating-out	0	Cook rice at home on weekdays	lever=when	why=A home meal costs about S$2 against S$5 at a hawker centre.	url=https://www.nea.gov.sg/test-1
+
+# part: calls
+# why: valid control
+eggs-2026-12	0	The CPI for eggs in 2026-12 will be between 99.2 and 106.1, from 99.7 in 2026-09.	series=1.01.4.4	month=2026-12	low=99.25	mid=101.30	high=106.07	model=world-a	made=2026-11-10
+
+# part: outcomes
+# why: valid control
+# setup: calls
+eggs-2026-09	0	The CPI for eggs in 2026-12 will be between 99.2 and 106.1, from 99.7 in 2026-09.	series=1.01.4.4	month=2026-09	low=99.25	mid=101.30	high=106.07	model=world-a	made=2026-08-01
+eggs-2026-09	0	SingStat M213751, 1.01.4.4, 2026 Sep	actual=99.7	url=https://tablebuilder.singstat.gov.sg/table/TS/M213751	date=2026-11-10

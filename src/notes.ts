@@ -287,6 +287,8 @@ function parseLine(part: Part, line: string, where: string, known: Known | undef
   for (const [key, field] of Object.entries(part.fields)) {
     if (field.need && !(key in fields)) throw new Error(`${where}: the field ${key} is missing`);
   }
+  if (part.points.startsWith("Not used") && Number(points) !== 0) throw new Error(`${where}: points must be 0 in ${part.name} notes`);
+  if (part.name === "forecasts" && ("p" in fields) === ("side" in fields)) throw new Error(`${where}: give exactly one of p and side`);
   if (fields.date && fields.until && before(fields.until, fields.date)) throw new Error(`${where}: until ${fields.until} is before date ${fields.date}`);
   if (fields.made && fields.due && before(fields.due, fields.made)) throw new Error(`${where}: due ${fields.due} is before made ${fields.made}`);
   // What the post says about the id: how the item of a check is answered, or the advice a group has.
@@ -349,7 +351,9 @@ export function notesGuide(): string {
   const lines = [
     "# How to write notes for teoyujie.org",
     "",
-    `An agent can change ${PARTS.length} parts of this site by adding notes: ${PARTS.map((part) => part.name).join(", ")}. Fixed rules build each part, and a note adjusts one item. The only way to write is a change to a file in git, which the owner merges.`,
+    `An agent can change ${PARTS.length} parts of this site by adding notes: ${PARTS.map((part) => part.name).join(", ")}. Fixed rules build each part, and a note adjusts one item.`,
+    "",
+    `Writing needs git access. There is no write endpoint, form or key: a note is a line in a file in ${REPO}, sent as a pull request, which the owner merges and deploys. An agent that cannot run git cannot write; it can only hand its lines to someone who can (see the end of Steps).`,
     "",
     "## Steps",
     "",
@@ -386,11 +390,6 @@ export function notesGuide(): string {
   return lines.join("\n");
 }
 
-export function pricesTsv(): string {
-  const rows = ["id\titem\taverage_sgd\tgood_deal_at_sgd"];
-  for (const row of priceRows()) rows.push(`${row.id}\t${row.name}\t${row.average.toFixed(2)}\t${row.deal.toFixed(2)}`);
-  return `${rows.join("\n")}\n`;
-}
 
 export interface Deal {
   note: Note;

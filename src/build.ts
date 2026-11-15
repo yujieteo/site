@@ -1,12 +1,13 @@
 import { relative, resolve } from "node:path";
 import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
-import { apiPage, callsPage, callsText, dealsPage, dealsText, forecastsPage, homePage, paperPage, postPage } from "./pages.ts";
-import { deals, loadNotes, notesGuide, pricesTsv, today, type Note } from "./notes.ts";
-import { postApi, writeApi } from "./api.ts";
-import { betsTsv, checkBets, scoreBets } from "./bets.ts";
+import { apiPage, callsPage, dealsPage, forecastsPage, homePage, paperPage, postPage } from "./pages.ts";
+import { deals, loadNotes, notesGuide, today, type Note } from "./notes.ts";
+import { postApi, writeApi, writeManifest } from "./api.ts";
+import { checkBets, scoreBets } from "./bets.ts";
+import { tables } from "./tables.ts";
 import { figureKinds, figures, footnoteHtml, footnotes, headings, linkPapers, loadPapers, parsePost, textVersion, type Paper, type Post } from "./post.ts";
 import { FIGURE_KINDS } from "./figures.ts";
-import { adviceList, checksList, productsList, useLifeNotes } from "./kit/life.ts";
+import { useLifeNotes } from "./kit/life.ts";
 
 function insertNewestFirst(posts: Post[], post: Post): void {
   let at = 0;
@@ -66,30 +67,27 @@ async function main(): Promise<void> {
     for (const paper of papers) writePaper(out, post, paper);
   }
   const apis = posts.map(postApi);
-  writeApi(out, apis);
-  writeFileSync(`${out}/api/index.html`, apiPage(apis));
-  writeNotes(out, notes);
+  const all = writeNotes(out, notes);
+  writeApi(out, apis, all);
+  writeFileSync(`${out}/api/index.html`, apiPage(apis, all));
+  writeManifest(out, apis, all);
   console.log(`built ${posts.length} post(s) into ${out}`);
 }
 
-function writeNotes(out: string, notes: Record<string, Note[]>): void {
+// The pages and tables drawn from the notes. The tables go to writeApi with the rest of the API.
+function writeNotes(out: string, notes: Record<string, Note[]>): ReturnType<typeof tables> {
   const seen = deals(notes.prices ?? [], today());
+  mkdirSync(`${out}/api`, { recursive: true });
   writeFileSync(`${out}/api/notes.txt`, notesGuide());
-  writeFileSync(`${out}/api/prices.txt`, pricesTsv());
-  writeFileSync(`${out}/api/products.txt`, productsList());
-  writeFileSync(`${out}/api/checks.txt`, checksList());
-  writeFileSync(`${out}/api/advice.txt`, adviceList());
-  writeFileSync(`${out}/api/deals.txt`, dealsText(seen));
   mkdirSync(`${out}/deals`, { recursive: true });
   writeFileSync(`${out}/deals/index.html`, dealsPage(seen));
-  writeFileSync(`${out}/api/calls.txt`, callsText(notes.calls ?? [], notes.outcomes ?? []));
   mkdirSync(`${out}/calls`, { recursive: true });
   writeFileSync(`${out}/calls/index.html`, callsPage(notes.calls ?? [], notes.outcomes ?? []));
   mkdirSync(`${out}/forecasts`, { recursive: true });
   // The bets move to /forecasters.html, which the server builds from api/bets.txt. The old address points there.
   checkBets(notes.forecasts ?? []);
-  writeFileSync(`${out}/api/bets.txt`, betsTsv(scoreBets(notes.forecasts ?? [])));
   writeFileSync(`${out}/forecasts/index.html`, forecastsPage());
+  return tables({ calls: notes.calls ?? [], outcomes: notes.outcomes ?? [], seen, bets: scoreBets(notes.forecasts ?? []) });
 }
 
 function writePost(out: string, post: Post): void {

@@ -1,4 +1,5 @@
-import { API_DATA, API_LIVE, type PostApi } from "./api.ts";
+import { SITE, type PostApi } from "./api.ts";
+import { FEEDS, type Table } from "./tables.ts";
 import { PARTS, scoreCalls, type Deal, type Note } from "./notes.ts";
 import { readingMinutes, type Heading, type Paper, type Post } from "./post.ts";
 
@@ -106,40 +107,36 @@ export function paperPage(post: Post, paper: Paper, bodyHtml: string): string {
   return shell(paper.title, paper.slogan, HEADER, `<main class="wrap page">${article}</main>`, []);
 }
 
-export function apiPage(apis: PostApi[]): string {
+export function apiPage(apis: PostApi[], all: Table[]): string {
   const rows: string[] = [];
-  for (const api of apis) {
-    const base = `/api/${api.post.slug}`;
-    rows.push(`<tr><td><a href="${base}/index.txt">${api.post.title}</a></td><td>${day(api.post.date)}</td><td>${api.parts.length}</td><td>${api.tokens.toLocaleString("en-US")}</td></tr>`);
-  }
-  const posts = `<table><thead><tr><th>Post index</th><th>Date</th><th>Section files</th><th>Tokens in all</th></tr></thead><tbody>${rows.join("")}</tbody></table>`;
-  const others: string[] = [];
-  for (const item of [...API_DATA, ...API_LIVE]) others.push(`<li><a href="${item.href}"><code>${item.href}</code></a>: ${escapeText(item.about)}</li>`);
+  for (const api of apis) rows.push(`<tr><td><a href="/api/${api.post.slug}/index.txt">${escapeText(api.post.title)}</a></td><td>${day(api.post.date)}</td><td>${day(api.asOf)}</td><td>${api.parts.length}</td></tr>`);
+  const posts = `<table><thead><tr><th>Post index</th><th>Published</th><th>Text as of</th><th>Section files</th></tr></thead><tbody>${rows.join("")}</tbody></table>`;
+  const tableRows = all.map((table) => `<tr><td><a href="/${table.path}"><code>/${table.path}</code></a></td><td>${escapeText(table.title)}</td><td>${table.rows.length}</td></tr>`);
+  const feedRows = FEEDS.map((feed) => `<tr><td><a href="${feed.path}"><code>${feed.path.replace(SITE, "")}</code></a></td><td>${escapeText(feed.title)}, rebuilt by the server</td><td></td></tr>`);
   const article = `<article><h1>API for AI agents</h1>
-<p>This site has a text version for language models. It is a set of static files, so there is no key, no login and no rate limit beyond the server's own. Small models can use it: each file is short, and each list says how many tokens a file costs before the model fetches it.</p>
-<h2 id="use">How an agent uses it</h2>
+<p>This site has a text version for agents that cannot ask a follow-up question and will cite what they read. It is a set of static files: no key, no login. Every file has a size, a SHA-256 and an as-of date in <a href="/api/manifest.json"><code>/api/manifest.json</code></a>, and every table has typed columns in <a href="/api/datapackage.json"><code>/api/datapackage.json</code></a> (Frictionless Table Schema).</p>
+<h2 id="use">How an agent reads it</h2>
 <ol>
-<li>Fetch <a href="/llms.txt"><code>/llms.txt</code></a>. It lists every post in one line each.</li>
-<li>Fetch the index of one post, <code>/api/POST/index.txt</code>. It holds the summary and the section list.</li>
-<li>Fetch only the sections it needs, <code>/api/POST/SECTION.txt</code>. No section file is much longer than 2,000 tokens. A long section comes in numbered parts, and each part links to the next.</li>
+<li>Fetch <a href="/llms.txt"><code>/llms.txt</code></a>. It lists every post and table in one line each.</li>
+<li>For a post, fetch its index, <code>/api/POST/index.txt</code>. It lists one file per heading with its size. Fetch only the sections needed.</li>
+<li>For a table, read the rows needed. Every row has <code>as_of</code>, the day its newest fact was read, and <code>source</code>, where. An answer cites both.</li>
 </ol>
 <p>To point an agent here, give it this line: <code>Read https://teoyujie.org/llms.txt and follow its steps.</code></p>
 <h2 id="posts">Posts</h2>
 ${posts}
-<h2 id="other">Data and live files</h2>
-<ul>${others.join("")}</ul>
-<p>A program can read the same lists from <a href="/api/index.json"><code>/api/index.json</code></a>.</p>
+<h2 id="tables">Tables</h2>
+<table><thead><tr><th>Address</th><th>What it holds</th><th>Rows</th></tr></thead><tbody>${tableRows.join("")}${feedRows.join("")}</tbody></table>
 <h2 id="write">How an agent writes</h2>
-<p>An agent can adjust ${PARTS.length} parts of the site with notes. Fixed rules build each part, and a note moves one item or adds a sentence to it. Git is the only way to write: the agent adds lines to a file in <a href="https://github.com/yujieteo/site">the site repository ↗</a> and opens a pull request. The build checks every line. <a href="/api/notes.txt"><code>/api/notes.txt</code></a> has the full format.</p>
+<p>Writing needs git access. There is no write endpoint. An agent adds lines to a file in <a href="https://github.com/yujieteo/site">the site repository ↗</a> and opens a pull request; the owner merges and deploys. The build checks every line and stops on a bad one. <a href="/api/notes.txt"><code>/api/notes.txt</code></a> has the full format.</p>
 ${notesTable()}
 <p>To set an agent to work, give it this line with the part you want: <code>Read https://teoyujie.org/api/notes.txt and write notes for PART.</code></p>
 <h2 id="rules">What stays the same</h2>
 <ul>
+<li>A table column is never renamed, retyped or removed. New columns go at the end. The changelog is in <code>datapackage.json</code>.</li>
 <li>The address of a section comes from its heading. It changes only if the heading changes.</li>
-<li>Token counts are estimates: the number of characters divided by 4.</li>
-<li>Post files give the publication date. Data and live files describe their date fields or update schedule where available.</li>
+<li>A file changes only on deploy, except the live tables. <code>Last-Modified</code> and <code>If-Modified-Since</code> work; there is no ETag, so compare the SHA-256 in the manifest instead.</li>
 </ul></article>`;
-  return shell("API for AI agents", "A text version of this site for language models, in short files with token counts.", HEADER, `<main class="wrap page">${article}</main>`, []);
+  return shell("API for AI agents", "A text version of this site for agents: typed tables and one file per heading, each with a hash and an as-of date.", HEADER, `<main class="wrap page">${article}</main>`, []);
 }
 
 function notesTable(): string {
@@ -156,16 +153,6 @@ function below(deal: Deal): string {
   return deal.below >= 0 ? `${deal.below}% below` : `${-deal.below}% above`;
 }
 
-export function dealsText(seen: Deal[]): string {
-  const lines = ["# Deals seen now", "", "Shelf prices that agents saw in Singapore shops in the last 30 days, against the latest official average for the same unit. A good deal is at or under the deal price of the item. Largest saving first.", ""];
-  if (seen.length === 0) lines.push("No prices have been noted yet.");
-  else lines.push("| Item | Shelf price | Average | Against average | Good deal | Shop | Seen | Note | Link |", "|---|---|---|---|---|---|---|---|---|");
-  for (const deal of seen) {
-    const f = deal.note.fields;
-    lines.push(`| ${deal.row.name} | ${money(deal.price)} | ${money(deal.row.average)} | ${below(deal)} | ${deal.good ? "yes" : "no"} | ${f.shop ?? ""} | ${f.date ?? ""} | ${deal.note.text.replaceAll("|", "/")} | ${f.url ?? ""} |`);
-  }
-  return `${lines.join("\n")}\n`;
-}
 
 export function dealsPage(seen: Deal[]): string {
   const rows: string[] = [];
@@ -197,15 +184,6 @@ function verdict(row: ReturnType<typeof scoreCalls>["rows"][number]): string {
   return `${row.inside ? "inside" : "outside"}, ${row.outcome.fields.actual}`;
 }
 
-export function callsText(calls: Note[], outcomes: Note[]): string {
-  const score = scoreCalls(calls, outcomes);
-  const lines = ["# Calls on Singapore prices", "", "Each call was made before its month, from the model named, and is never changed after it is merged. A script reads the outcome from SingStat table M213751 when the month is published. Index values: 2024 = 100.", "", scoreLine(score), "", "| id | Call | Series | Month | Low | Mid | High | Made | Model | Outcome |", "|---|---|---|---|---|---|---|---|---|---|"];
-  for (const row of score.rows) {
-    const f = row.call.fields;
-    lines.push(`| ${row.call.id} | ${row.call.text} | ${f.series} | ${f.month} | ${f.low} | ${f.mid} | ${f.high} | ${f.made} | ${f.model} | ${verdict(row)} |`);
-  }
-  return `${lines.join("\n")}\n`;
-}
 
 export function callsPage(calls: Note[], outcomes: Note[]): string {
   const score = scoreCalls(calls, outcomes);

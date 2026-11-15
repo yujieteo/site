@@ -1,6 +1,7 @@
 import { GOOD_CHECKS, LEVERS, LIFE, MONTH_TABLE, REHOME, SPENDING, STRONGEST, type LifeCategory, type Move, type Official, type Series, type Shelf } from "./life-data.ts";
 import { LAST_MONTH, PRICES, type PriceItem } from "./price-data.ts";
 import type { Note } from "../notes.ts";
+import { lineDay } from "../blame.ts";
 
 // The page answers one question: what is the best quality for the price? This draws its one list.
 // The rows are the 12 spending groups of the household survey, biggest share first. A group opens to its
@@ -82,7 +83,7 @@ interface Bucket {
   id: string;
   dollars: number;
   share: number;
-  moves: Move[];
+  moves: (Move & { note?: Note })[];
   notes: string[];
   sets: GoodSet[];
   official: Official[];
@@ -191,6 +192,9 @@ function checkPer(note: Note, unit: string): void {
 
 // The shop rows of a set of goods, with the product notes applied. A note with the link of a row replaces
 // that row. Any other note adds a row to its item. The map gives the day a noted row was seen.
+// The note behind each noted shop row, for its offer end date.
+const noted = new WeakMap<Shelf, Note>();
+
 function shelfOf(category: LifeCategory, products: readonly Note[]): { rows: Shelf[]; seen: Map<Shelf, string> } {
   const rows = [...category.shelf];
   const seen = new Map<Shelf, string>();
@@ -214,6 +218,7 @@ function shelfOf(category: LifeCategory, products: readonly Note[]): { rows: She
     if (at < 0) rows.push(row);
     else rows[at] = row;
     seen.set(row, date);
+    noted.set(row, note);
   }
   return { rows, seen };
 }
@@ -289,7 +294,7 @@ function bucketsOf(): Bucket[] {
     const lever = LEVERS.find(([key]) => key === note.fields.lever)?.[0];
     const bucket = buckets.find((b) => b.id === note.id);
     if (!lever || !bucket) continue;
-    bucket.moves.push({ lever, lead: note.text, text: `${note.fields.why ?? ""} [Source](${note.fields.url ?? ""})`, worth: note.fields.worth ?? "" });
+    bucket.moves.push({ note, lever, lead: note.text, text: `${note.fields.why ?? ""} [Source](${note.fields.url ?? ""})`, worth: note.fields.worth ?? "" });
   }
   return buckets;
 }
@@ -587,47 +592,106 @@ export function lifeIds(products: readonly Note[]): { checks: Map<string, "pass"
   return { checks: checked, products: new Set(items.keys()), advice };
 }
 
-function tsv(rows: readonly (readonly string[])[]): string {
-  return `${rows.map((row) => row.map((text) => text.replace(/[\t\n]/g, " ")).join("\t")).join("\n")}\n`;
+export type Value = string | number | boolean | null;
+export type Row = Record<string, Value>;
+
+const POST_URL = "https://teoyujie.org/essays/singapore-value-buys/";
+const DATA_FILE = "src/kit/life-data.ts";
+// Base shop rows were read on 8 and 9 November 2026, as life-data.ts says, and moved into that file on
+// 11 November. A base row whose line changed after that was read again on the day it changed.
+const BASE_READ = "2026-11";
+const BASE_MOVED = "2026-11-11";
+const MONEY = /^(about\s+|around\s+|from\s+)?S\$([\d,]+(?:\.\d+)?)(?:\s+to\s+S\$([\d,]+(?:\.\d+)?))?/i;
+
+// The low and high of a price as written, such as "About S$2.90 to S$3.50". "From S$5" has no high. Anything
+// that does not start with one price or one range, such as a multi-buy, gives no number.
+function money(text: string): [number | null, number | null] {
+  const found = MONEY.exec(text.trim());
+  if (!found) return [null, null];
+  const rest = text.trim().slice(found[0].length);
+  if (/S\$|[;+]|\bfee\b|GST|\boff\b/i.test(rest)) return [null, null];
+  const low = Number((found[2] ?? "").replaceAll(",", ""));
+  if (found[3]) return [low, Number(found[3].replaceAll(",", ""))];
+  return [low, /^from/i.test(found[1] ?? "") ? null : low];
 }
 
-// The list an agent reads before it writes a check: every product of an item that has a quality check.
-export function checksList(): string {
-  const rows = [["id", "item", "product", "shop", "url", "check", "answer", "now"]];
-  for (const bucket of bucketsOf()) {
-    for (const set of bucket.sets) {
-      for (const group of set.groups) {
-        if (group.check === "") continue;
-        for (const buy of group.buys) rows.push([productId(buy.shelf), group.name, buy.shelf[1], buy.shelf[3], buy.shelf[2], group.check, group.passes ? "pass or fail" : "recorded", buy.verdict === "unknown" ? "" : `${buy.verdict}: ${buy.fact}`]);
-      }
-    }
-  }
-  return tsv(rows);
+// What a unit price is per, as its display string gives it: "/kg", "/100 ml", " per month".
+function perOf(text: string): string | null {
+  const found = MONEY.exec(text.trim());
+  if (!found) return null;
+  const tail = text.trim().slice(found[0].length).split(/[;(]/)[0]?.trim() ?? "";
+  return tail === "" ? null : tail;
 }
 
-// The list an agent reads before it writes a product: every product on the page, under the id of its item.
-export function productsList(): string {
-  const rows = [["id", "item", "group", "unit", "product", "shop", "price", "pack", "unit_price", "url"]];
+function literal(text: string): string {
+  return JSON.stringify(text).slice(1, -1);
+}
+
+function shelfDay(buy: Buy): string {
+  if (buy.seen !== "") return buy.seen;
+  const day = lineDay(DATA_FILE, [`"${literal(buy.shelf[2])}"`, literal(buy.shelf[1])]);
+  return day <= BASE_MOVED ? BASE_READ : day;
+}
+
+function newest(a: string, b: string): string {
+  return a.localeCompare(b) >= 0 ? a : b;
+}
+
+// Every product on the page, under the id of its item. The display columns stay as they were; the numbers
+// beside them are read from the same strings, and stay empty where the string holds no single price or range.
+export function productRows(): Row[] {
+  const rows: Row[] = [];
   for (const bucket of bucketsOf()) {
     for (const set of bucket.sets) {
       for (const group of set.groups) {
         const unit = unitOf(group.buys.map((buy) => buy.shelf)).trim();
-        for (const { shelf } of group.buys) rows.push([itemId(group.name), group.name, bucket.name, unit, shelf[1], shelf[3], shelf[4], shelf[5], shelf[6], shelf[2]]);
+        for (const buy of group.buys) {
+          const { shelf } = buy;
+          const [low, high] = money(shelf[4]);
+          const [perLow, perHigh] = money(shelf[6]);
+          rows.push({ id: itemId(group.name), item: group.name, group: bucket.name, unit, product: shelf[1], shop: shelf[3], price: shelf[4], pack: shelf[5], unit_price: shelf[6], url: shelf[2], price_low_sgd: low, price_high_sgd: high, unit_price_low_sgd: perLow, unit_price_high_sgd: perHigh, as_of: shelfDay(buy), pick: buy === group.pick, listing: shelf[7] === 1, unit_price_per: perLow === null ? null : perOf(shelf[6]), until: noted.get(shelf)?.fields.until ?? null });
+        }
       }
     }
   }
-  return tsv(rows);
+  return rows;
 }
 
-// The list an agent reads before it writes advice: every spending group and the advice it has.
-export function adviceList(): string {
-  const rows = [["id", "group", "share", "lever", "advice"]];
+// Every product of an item that has a quality check, with what a page showed, if anyone has read one.
+export function checkRows(): Row[] {
+  const rows: Row[] = [];
   for (const bucket of bucketsOf()) {
-    const share = `${bucket.share.toFixed(1)}%`;
-    if (bucket.moves.length === 0) rows.push([bucket.id, bucket.name, share, "", ""]);
-    for (const move of bucket.moves) rows.push([bucket.id, bucket.name, share, move.lever, move.lead]);
+    for (const set of bucket.sets) {
+      for (const group of set.groups) {
+        if (group.check === "") continue;
+        for (const buy of group.buys) {
+          const read = notes.checks.find((note) => note.id === productId(buy.shelf));
+          const verdict = buy.verdict === "pass" || buy.verdict === "fail" || buy.verdict === "recorded" ? buy.verdict : null;
+          const listed = shelfDay(buy);
+          rows.push({ id: productId(buy.shelf), item: group.name, product: buy.shelf[1], shop: buy.shelf[3], url: buy.shelf[2], check: group.check, answer: group.passes ? "pass or fail" : "recorded", now: buy.verdict === "unknown" ? "" : `${buy.verdict}: ${buy.fact}`, verdict, fact: read ? read.text : null, as_of: read ? newest(listed, read.fields.date ?? "") : listed, source: read?.fields.url ?? buy.shelf[2] });
+        }
+      }
+    }
   }
-  return tsv(rows);
+  return rows;
+}
+
+// Every spending group and the advice it has, with the reason and the page the reason comes from. Advice the
+// post gives without a link cites the post itself.
+export function adviceRows(): Row[] {
+  const rows: Row[] = [];
+  for (const bucket of bucketsOf()) {
+    const share = bucket.share;
+    if (bucket.moves.length === 0) rows.push({ id: bucket.id, group: bucket.name, share, lever: null, advice: null, why: null, worth: null, as_of: null, source: null });
+    for (const move of bucket.moves) {
+      const link = [...move.text.matchAll(LINK)][0]?.[2];
+      const why = move.text.replace(LINK, "$1").replace(/\s*\bSource\b\s*$/, "").trim();
+      const blamed = move.note ? lineDay("notes/advice.tsv", [`${move.note.id}\t`, `\t${move.note.text}\t`]) : lineDay(DATA_FILE, [`lead: "${literal(move.lead)}"`]);
+      const day = !move.note && blamed <= BASE_MOVED ? BASE_READ : blamed;
+      rows.push({ id: bucket.id, group: bucket.name, share, lever: move.lever, advice: move.lead, why: why === "" ? null : why, worth: move.worth === "" ? null : move.worth, as_of: day, source: move.note?.fields.url ?? link ?? POST_URL });
+    }
+  }
+  return rows;
 }
 
 function cell(text: string): string {
@@ -643,40 +707,29 @@ function table(head: readonly string[], rows: readonly (readonly string[])[]): s
   return ["", `| ${head.join(" | ")} |`, `|${head.map(() => "---").join("|")}|`, ...rows.map((row) => `| ${row.map(cell).join(" | ")} |`)];
 }
 
-function verdictText(buy: Buy): string {
-  if (buy.verdict === "none") return "no check for this item";
-  if (buy.verdict === "unknown") return "check not shown on the page";
-  return `${buy.verdict === "recorded" ? "" : `${buy.verdict}: `}${buy.fact}`;
-}
-
-function shelfCells(group: Group, buy: Buy): string[] {
-  const { shelf } = buy;
-  const check = `${verdictText(buy)}${buy === group.pick ? "; the pick" : ""}`;
-  return [shelf[0], `[${shelf[1]} ↗](${shelf[2]})`, shelf[3], shelf[4], shelf[5], `${shelf[6]}${shelf[7] === 1 ? " (listing)" : ""}`, check];
-}
-
-// The same data as Markdown, for the text version of the post and the agent API.
+// The same data as text, for the text version of the post and the agent API. Shop rows, checks and advice
+// are not repeated here: each has its one copy in a table with a date and a source on every row.
 export function lifeText(): string[] {
   const lines: string[] = [];
+  const api = "https://teoyujie.org/api";
   for (const bucket of bucketsOf()) {
-    lines.push("", `### ${bucket.name}`, "", `Share of household spending: ${bucket.share.toFixed(1)}%, S$${bucket.dollars} a month.`);
+    const products = bucket.sets.reduce((n, set) => n + set.groups.reduce((m, group) => m + group.buys.length, 0), 0);
+    lines.push("", `### ${bucket.name}`, "", `Share of household spending: ${bucket.share.toFixed(1)}%, S$${bucket.dollars} a month.`, "");
+    lines.push(`Shop prices: ${products} rows of ${api}/products.txt where group is "${bucket.name}". Quality checks of those products: ${api}/checks.txt. The advice below is also in ${api}/advice.txt with a date on every row.`);
     LEVERS.forEach(([lever, name], index) => {
       const moves = bucket.moves.filter((move) => move.lever === lever);
-      const calendar = lever === "when" && bucket.name === CALENDAR_HOME;
       lines.push("", `${index + 1}. ${name}:`, "");
-      if (moves.length === 0 && !calendar) lines.push("- None found.");
+      if (moves.length === 0) lines.push("- None found.");
       for (const move of moves) lines.push(`- **${move.lead}**${move.worth === "" ? "" : ` (${move.worth})`}. ${marked(move.text)}`);
-      if (calendar) {
-        lines.push(...table(["Item", "Cheapest", "Dearest", "Gap", "Years it held"], STRONGEST));
-        lines.push("", "The same patterns by month, for gaps of 3% or more. The figure in brackets is the gap between that good's cheapest and dearest month.");
-        lines.push(...table(["Month", "Usually cheapest", "Usually dearest"], MONTH_TABLE));
-      }
     });
+    if (bucket.name === CALENDAR_HOME) {
+      lines.push(...table(["Item", "Cheapest", "Dearest", "Gap", "Years it held"], STRONGEST));
+      lines.push("", "The same patterns by month, for gaps of 3% or more. The figure in brackets is the gap between that good's cheapest and dearest month.");
+      lines.push(...table(["Month", "Usually cheapest", "Usually dearest"], MONTH_TABLE));
+    }
     for (const note of bucket.notes) lines.push("", marked(note));
     lines.push(...table(["Item", "Sep 2026", "1 year", "Long run a year", "Sep 2027 forecast", "Good deal at", "Month pattern"], bucket.official));
     lines.push(...table(["Official series", "Index, Sep 2026", "1 year", "Since Sep 2015", "Sep 2027 forecast", "Month pattern"], bucket.series));
-    const rows = bucket.sets.flatMap((set) => set.groups.flatMap((group) => group.buys.map((buy) => shelfCells(group, buy))));
-    lines.push(...table(["Item", "Product", "Shop", "Price", "Covers", "Unit price", "Quality check"], rows));
   }
   return lines;
 }

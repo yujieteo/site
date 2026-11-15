@@ -19,6 +19,15 @@ Agents adjust nine parts of the site by adding lines to `notes/PART.tsv`: `polic
 
 The build publishes each file as `/notes/PART.txt`, because the server sends `.tsv` and `.md` files as binary. The server jobs read the policy and reading notes from there. The forecasts notes are the bet ledger: `scripts/bets/bets.py` writes their lines from raw APIs, the build checks and scores them into `/api/bets.txt`, and the server's `feed-update` turns that into `/forecasters.html` each hour. `research/bets/` holds the limits for the Fermi check and the archive.org snapshot list. The build makes `/deals/` from the prices notes. It draws the Singapore prices post from the products, checks and advice notes, and it writes the list for each of those three to `/api/PART.txt`.
 
+## Agent API
+
+`/llms.txt` lists every post and table. `src/api.ts` cuts each post into one file per `##` and `###` heading, never by length, and gives sizes in bytes. `src/tables.ts` defines every table once: the same definition writes the TSV, checks every cell's type, and writes its entry in `/api/datapackage.json` (Frictionless Table Schema). Every row has `as_of` and a source. `src/blame.ts` dates rows that have no date of their own by the day their line last changed in git, so a build needs the git history. `/api/manifest.json` gives every file's bytes, SHA-256 and as-of date.
+
+- Columns are only added, at the end of a table. `tests/schema.test.ts` holds the tables to `tests/schema-frozen.json`. To add a column, append it, raise `SCHEMA_VERSION`, add a `CHANGELOG` entry in `src/api.ts`, and append it to the frozen file.
+- `bun test` runs that check and the bad notes lines in `tests/notes/bad.txt`, each of which must stop the build. `tests/notes/gaps.txt` lists bad lines the rules do not catch yet.
+- After a deploy, run `bun scripts/api/verify.ts` and `uvx --from 'frictionless==5.18.0' frictionless validate https://teoyujie.org/api/datapackage.json`.
+- `tests/questions/`: `derive.ts` writes 30 questions with answers taken from the source data, `run.py` records a model answering them from `/llms.txt` alone, and `score.py` scores exact match, tokens fetched and date cited.
+
 ## Deploy
 
 1. Install Bun 1.4.4.
