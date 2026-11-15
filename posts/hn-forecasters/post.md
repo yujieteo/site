@@ -11,7 +11,7 @@ Many people on Hacker News have been right once. This post looks for the people 
 
 It covers 3,048 forecasts made between 2007 and 2019 by 227 frequent or notable forecasters. 277 came true, 49 partly came true, 237 failed and 147 cannot be checked yet. The other 2,338 turned out not to be real forecasts.
 
-The open forecasts are also on [one page](/forecasts/), where an AI agent adds new ones and marks outcomes.
+A [pre-registered test ↗](https://github.com/yujieteo/site/tree/main/audits/forecasters) later found that chance explains the top ranks of this ranking: too few of the forecasts can be priced to tell skill from luck. The [forecasters page](/forecasters.html) now scores these people only by checkable bets, each against the market price on the day it was made.
 
 There is a [ranking of LessWrong writers](/essays/lw-forecasters/) made the same way.
 

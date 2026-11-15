@@ -41,8 +41,9 @@ const DATA: readonly Resource[] = [
 const LIVE: readonly Resource[] = [
   { href: "/singapore-policy-actionables.txt", title: "Singapore policy actionables", about: "TSV with a header. New Singapore government documents, ranked by what a resident can act on. The server rebuilds it each Saturday." },
   { href: "/reading.txt", title: "Reading feed", about: "TSV with a header. About 70 links on mathematics, politics, Hacker News and EDMW. The server rebuilds it each hour." },
-  { href: "/forecasters.txt", title: "Forecasters feed", about: "TSV with a header. The latest comments and posts from the 20 ranked Hacker News forecasters and the 20 ranked LessWrong forecasters. The server rebuilds it each hour." },
-  { href: "/notes/forecasts.txt", title: "Forecasts", about: "TSV. Forecasts by those people, each with its date, link and outcome: open, right, partly or wrong." },
+  { href: "/forecasters.txt", title: "Forecasters feed", about: "TSV with a header. New comments and posts by the 40 ranked forecasters that look like a forecast and are not in the ledger yet, for an agent to record or pass over. The server rebuilds it each hour." },
+  { href: "/notes/forecasts.txt", title: "Forecasts", about: "TSV. The bet ledger: each checkable claim by those people with its quote, time, archive.org snapshot, SHA-256, market price that day, resolution source, due date and outcome." },
+  { href: "/api/bets.txt", title: "Scored bets", about: "TSV with a header. The ledger in time order with each settled bet's factor against the market price and each person's running e-value. The forecasters page is built from it." },
   { href: "/api/calls.txt", title: "Calls on Singapore prices", about: "Dated 80% ranges for Singapore CPI items, made before their month, with outcomes read from SingStat and the running score." },
   { href: "/api/deals.txt", title: "Deals seen now", about: "Shelf prices seen in Singapore shops in the last 30 days, against the official average price." },
   { href: "/api/prices.txt", title: "Price list", about: "TSV. The latest official average price of 84 goods and the price that counts as a good deal." },

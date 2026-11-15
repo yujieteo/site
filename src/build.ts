@@ -1,8 +1,9 @@
 import { relative, resolve } from "node:path";
 import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { apiPage, callsPage, callsText, dealsPage, dealsText, forecastsPage, homePage, paperPage, postPage } from "./pages.ts";
-import { deals, forecastOrder, loadNotes, notesGuide, pricesTsv, today, type Note } from "./notes.ts";
+import { deals, loadNotes, notesGuide, pricesTsv, today, type Note } from "./notes.ts";
 import { postApi, writeApi } from "./api.ts";
+import { betsTsv, checkBets, scoreBets } from "./bets.ts";
 import { figureKinds, figures, footnoteHtml, footnotes, headings, linkPapers, loadPapers, parsePost, textVersion, type Paper, type Post } from "./post.ts";
 import { FIGURE_KINDS } from "./figures.ts";
 import { adviceList, checksList, productsList, useLifeNotes } from "./kit/life.ts";
@@ -85,7 +86,10 @@ function writeNotes(out: string, notes: Record<string, Note[]>): void {
   mkdirSync(`${out}/calls`, { recursive: true });
   writeFileSync(`${out}/calls/index.html`, callsPage(notes.calls ?? [], notes.outcomes ?? []));
   mkdirSync(`${out}/forecasts`, { recursive: true });
-  writeFileSync(`${out}/forecasts/index.html`, forecastsPage(forecastOrder(notes.forecasts ?? [])));
+  // The bets move to /forecasters.html, which the server builds from api/bets.txt. The old address points there.
+  checkBets(notes.forecasts ?? []);
+  writeFileSync(`${out}/api/bets.txt`, betsTsv(scoreBets(notes.forecasts ?? [])));
+  writeFileSync(`${out}/forecasts/index.html`, forecastsPage());
 }
 
 function writePost(out: string, post: Post): void {
