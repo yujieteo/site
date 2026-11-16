@@ -2,3 +2,6 @@ run	target	n	brier_model	brier_baseline	skill	note
 2026-11-15	named_by	0	nan	nan	nan	0 new articles seen so far
 2026-11-15	closed_by	0				places with closure evidence so far; ACRA lookups failed this run: 0; resolves 2027-11-15
 2026-11-15	michelin_next	0				2027 list not found yet
+2026-11-16	named_by	0	nan	nan	nan	0 new articles seen so far
+2026-11-16	closed_by	0				places with closure evidence so far; ACRA lookups failed this run: 0; resolves 2027-11-15
+2026-11-16	michelin_next	0				2027 list not found yet
