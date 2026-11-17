@@ -24,7 +24,7 @@ function escapeText(text: string): string {
   return text.replace(/&(?![a-z]+;|#\d+;)/g, "&amp;").replaceAll('"', "&quot;").replaceAll("<", "&lt;");
 }
 
-function shell(title: string, description: string, header: string, main: string, scripts: string[]): string {
+function shell(title: string, description: string, header: string, main: string, scripts: string[], head = ""): string {
   let tail = "";
   for (const src of scripts) tail += `<script type="module" src="/${src}"></script>\n`;
   return `<!doctype html>
@@ -33,7 +33,7 @@ function shell(title: string, description: string, header: string, main: string,
 ${HEAD}
 <title>${escapeText(title)}</title>
 <meta name="description" content="${escapeText(description)}">
-</head>
+${head}</head>
 <body>
 ${header}
 ${main}
@@ -199,4 +199,24 @@ export function callsPage(calls: Note[], outcomes: Note[]): string {
 ${table}
 <p class="muted">Index values: 2024 = 100. Source of outcomes: <a href="https://tablebuilder.singstat.gov.sg/table/TS/M213751" rel="noopener noreferrer">SingStat table M213751 ↗</a>. <a href="/api/calls.txt">Text version</a></p></article>`;
   return shell("Calls on Singapore prices", "Dated 80% ranges for Singapore consumer prices, scored when SingStat publishes the month.", HEADER, `<main class="wrap page">${article}</main>`, []);
+}
+
+// httpd answers errors with these files (errdocs in the server's httpd.conf), at any address, /f/ included.
+// It fills in $RESPONSE_CODE and $HTTP_ERROR itself, so the generic page fits a 403 as well as a 500.
+const NOINDEX = `<meta name="robots" content="noindex">\n`;
+
+export function notFoundPage(): string {
+  const article = `<article><h1>Page not found</h1>
+<p class="meta muted">404</p>
+<p>There is nothing at this address. Shared links under /f/ stop working when their time is up, which is 30 days unless the link said otherwise.</p>
+<p><a href="/">Go to the home page</a></p></article>`;
+  return shell("Page not found", "There is nothing at this address.", HEADER, `<main class="wrap page">${article}</main>`, [], NOINDEX);
+}
+
+export function errorPage(): string {
+  const article = `<article><h1>$HTTP_ERROR</h1>
+<p class="meta muted">$RESPONSE_CODE</p>
+<p>The server did not give you this page.</p>
+<p><a href="/">Go to the home page</a></p></article>`;
+  return shell("$RESPONSE_CODE $HTTP_ERROR", "The server did not give you this page.", HEADER, `<main class="wrap page">${article}</main>`, [], NOINDEX);
 }

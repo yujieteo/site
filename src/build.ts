@@ -1,6 +1,6 @@
 import { relative, resolve } from "node:path";
 import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
-import { apiPage, callsPage, dealsPage, forecastsPage, homePage, paperPage, postPage } from "./pages.ts";
+import { apiPage, callsPage, dealsPage, errorPage, forecastsPage, homePage, notFoundPage, paperPage, postPage } from "./pages.ts";
 import { deals, loadNotes, notesGuide, today, type Note } from "./notes.ts";
 import { postApi, writeApi, writeManifest } from "./api.ts";
 import { checkBets, scoreBets } from "./bets.ts";
@@ -60,6 +60,9 @@ async function main(): Promise<void> {
   useLifeNotes({ checks: notes.checks ?? [], products: notes.products ?? [], advice: notes.advice ?? [] });
   const posts = loadPosts(postsDir, drafts);
   writeFileSync(`${out}/index.html`, homePage(posts));
+  mkdirSync(`${out}/errdocs`, { recursive: true });
+  writeFileSync(`${out}/errdocs/404.html`, notFoundPage());
+  writeFileSync(`${out}/errdocs/err.html`, errorPage());
   for (const post of posts) {
     const papers = loadPapers(`${postsDir}/${post.slug}/papers`, post);
     post.source = linkPapers(post, papers);
