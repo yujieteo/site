@@ -1,6 +1,7 @@
 ---
 title: A mathematics reading list
 date: 2026-11-08
+draft: true
 summary: 535 papers and notes in mathematics, sorted into 24 subjects.
 summary: Number theory, the Langlands program, algebraic geometry, K-theory, homotopy theory and mathematical physics are the largest parts.
 summary: Annotations paraphrase remarks from a mathematics discussion. They are not the words of the author of this site.
