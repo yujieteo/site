@@ -7,9 +7,11 @@ from __future__ import annotations
 import csv
 import re
 from collections import Counter, defaultdict
+from collections.abc import Set
 from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
+from urllib.parse import urlsplit
 
 import numpy as np
 
@@ -94,7 +96,7 @@ def gst_fixes() -> dict[tuple[str, str, str], float]:
     return {(r["place_name"], r["dish"], r["date"]): float(r["corrected_price"]) for r in read("gst2023.tsv") if r["mark"] in ("++", "+")}
 
 
-def items(report: Counter) -> list[tuple[int, int, float, str, str, float]]:
+def items(report: Counter, omit_domains: Set[str] = frozenset()) -> list[tuple[int, int, float, str, str, float]]:
     """(place index, type index, log deflated price, dish, date, deflated price) for every compared row that passes."""
     table, latest = cpi()
     fixes = gst_fixes()
@@ -103,6 +105,9 @@ def items(report: Counter) -> list[tuple[int, int, float, str, str, float]]:
         report["rows set aside on the page (other)"] += len(x.get("other") or [])
         for dish, price, stamp, url in x["items"]:
             report["compared rows read"] += 1
+            if omit_domains and urlsplit(url).hostname.removeprefix("www.") in omit_domains:
+                report["dropped: held-out publication"] += 1
+                continue
             if stamp == "" or stamp < "2023":
                 report["dropped: undated or before 2023"] += 1
                 continue
@@ -232,7 +237,7 @@ def acra_matches(pls: list[Place], report: Counter | None = None) -> dict[str, l
     return out
 
 
-def survival(pls: list[Place], report: Counter) -> tuple[list[tuple[int, float]], list[tuple[int, float]], np.ndarray]:
+def survival(pls: list[Place], report: Counter, omit_outlet: str | None = None) -> tuple[list[tuple[int, float]], list[tuple[int, float]], np.ndarray]:
     acra = acra_matches(pls, report)
     floors: dict[str, list[float]] = defaultdict(list)
     for r in read("osm.tsv"):
@@ -241,7 +246,7 @@ def survival(pls: list[Place], report: Counter) -> tuple[list[tuple[int, float]]
         y = years_since(r.get("first_version", "")[:10])
         if y:
             floors[r["place_id"]].append(y)
-    published = {a["article_id"]: a["published"] for a in read("articles.tsv")}
+    published = {a["article_id"]: a["published"] for a in read("articles.tsv") if a["outlet"] != omit_outlet}
     for m in read("mentions.tsv"):
         y = years_since(published.get(m["article_id"], ""))
         if y:
@@ -293,13 +298,16 @@ def write_acra_watch(pls: list[Place]) -> None:
         w.writerows(rows)
 
 
-def assemble() -> tuple[Inputs, dict]:
+def assemble(*, omit_menu_and_age_from: str | None = None, write_watch: bool = True) -> tuple[Inputs, dict]:
     report: Counter = Counter()
     pls = places()
-    rows = items(report)
+    domains = {urlsplit(a["url"]).hostname.removeprefix("www.") for a in read("articles.tsv")
+               if a["outlet"] == omit_menu_and_age_from}
+    rows = items(report, domains)
     outlets, pairs, meta = guide_pairs(pls, report)
-    exact, cens, age_now = survival(pls, report)
-    write_acra_watch(pls)
+    exact, cens, age_now = survival(pls, report, omit_menu_and_age_from)
+    if write_watch:
+        write_acra_watch(pls)
     kind = np.array([KINDS.index(pl.kind) for pl in pls])
 
     def col(seq, j, dtype):

@@ -1,29 +1,26 @@
 ---
-title: Which Tampines food the experts back, and what it costs
+title: Two S$2.50 breakfasts at Tampines Round Market, and what breaks the value tie
 date: 2026-11-09
-summary: Three Round Market stalls are tied as the best-backed food in Tampines. They are Rajarani Thosai, Yummy Sarawak Kolo Mee and Chai Chee Pork Porridge.
-summary: For value, Song Han Carrot Cake and Rajarani Thosai are tied for first, with typical dishes at S$3.53 and S$4.07.
-summary: Backing means how often independent food writers and Michelin name a place, and how long it has lasted. It is not taste, and nobody ate at these places for this page.
-summary: Most ranks are uncertain. Of 52 places, only the top few can be told apart, and each row shows its rank as a range.
-summary: 2,224 forecasts, frozen on 15 November 2026, will show by November 2027 whether the method is any good.
+summary: Song Han sold a small plate of carrot cake for S$2.50. Rajarani sold one plain thosai for the same price. Both orders appear in an October 2026 guide.
+summary: At S$2.50 each, backing favours Rajarani in 81% of draws. Compare a regular carrot cake with two plain thosai and Song Han leads in 79%.
+summary: Among 52 places, Rajarani’s value rank ranges from 1st to 3rd and Song Han’s from 1st to 5th in the middle 80% of common-basket draws.
+summary: Backing measures how often food writers and Michelin name a place. Nobody tasted or weighed these meals for this page.
 ---
-Tampines has two working hawker centres, three big malls and many coffee shops. This page ranks where to eat by how strongly independent experts back each place, and by what it costs. It works best on a phone: tap a row to see why it ranks where it does.
+At Tampines Round Market, S$2.50 bought a small black or white carrot cake at Song Han (#01-07) or one plain thosai at Rajarani (#01-33). Song Han’s June menu also listed a regular plate at S$3.50. Rajarani’s April menu offered two plain thosai or one potato masala thosai for S$4. These are dated prices. [Song Han menu](https://danielfooddiary.com/2026/06/15/songhancarrotcake/), [Rajarani menu](https://danielfooddiary.com/2026/04/14/rajaranithosai/) and [October guide](https://eatbook.sg/tampines-hawker-food/).
 
 ## Ranked by backing and value
 
-Each row is one place that sells meals for one person. The number on the left is its rank, 8 times in 10: "2–14" means the place ranks between 2nd and 14th in 80% of the model's draws. A narrow range is a place the evidence can place. A wide one is a place it cannot.
-
-Places at the top are tied with the leader when they beat it in at least 1 draw in 5. The bar is the backing percentile, from 0 on the left to 100 on the right: the shaded part is its 80% range and the tick is the most likely value. The price is what the place's own dishes typically cost.
+Each row shows the middle 80% of ranks across model draws. Tap for the sources and prices. The bar shows the range of backing percentiles. The model groups a stall with the leader if it beats the leader in at least one draw in five.
 
 ::figure kind=food view=backed alt="52 Tampines food places ranked by value for money or by backing, each with a rank range, a backing percentile bar and the typical price of its dishes." caption="Rank by value (backing per dollar) or by backing alone. Tap a row for who names the place and its ranges. Prices are in September 2026 dollars."
 
-**Backing** is a score for how strongly independent food writers and Michelin back a place. It comes from 43 Tampines guides by 13 outlets and from Michelin's Singapore lists for 2016 to 2026. A place counts as named only by a guide that could have named it: a Round Market guide says nothing about a place in Tampines Mall. An outlet that names nearly everything it covers counts for less than one that is choosy.
+**Backing** comes from 43 guides by 13 publications plus Michelin’s 2026 Bibs and stars. Each publication gets one vote per stall it could cover, however many guides it wrote. A Round Market breakfast guide could name either stall. A Tampines Mall guide could name neither. Six publications named both. Miss Tam Chiak also named Rajarani, which earned a Bib Gourmand. Michelin listed Song Han as Selected. Rajarani, Yummy Sarawak Kolo Mee and Chai Chee Pork Porridge share the lead on backing. [Market breakfast guide](https://www.misstamchiak.com/tampines-round-market/) and [Michelin’s list](https://guide.michelin.com/sg/en/article/michelin-guide-ceremony/full-list-michelin-guide-sg-2026).
 
-**Value** is the backing percentile per S$10. For value, every place is priced on the same dishes: the mix sold across all places here. Otherwise a stall would win on what it sells, not on what it charges. Value favours cheap places that experts name. Tap a row to see both prices.
+**Value** is the backing percentile per S$10. On the common basket, Song Han beats Rajarani in 37% of draws. Chai Chee, the closest challenger, beats Rajarani in 10% and ranks 2nd–9th. The basket estimates what each stall would charge for 15 dish types. Song Han supplies three carrot cake prices and Rajarani supplies eighteen thosai prices. They have no dish type in common.
 
-Three Round Market stalls are tied for the most backing: Rajarani Thosai, Yummy Sarawak Kolo Mee and Chai Chee Pork Porridge. Michelin gave Rajarani Thosai a Bib Gourmand in 2026. On value, Song Han Carrot Cake (dishes from S$3.53) and Rajarani Thosai (S$4.07) are tied for first.
+Use the stalls’ own menu medians instead (S$3.53 and S$4.07 in September dollars), and Song Han beats Rajarani in 79% of draws. At the October guide’s two S$2.50 prices, Rajarani wins 81% of draws. Song Han falls just outside the one-in-five tie rule. A regular carrot cake against two plain thosai reverses the order, with Song Han ahead in 79%. The portions were never weighed.
 
-Chains and mall restaurants sit low, with wide ranges. That says local food writers rarely write about them, not that their food is worse. Professor Brawn Cafe has a quoted 4.9 on Google, yet it ranks between 28th and 51st on backing, because few of the guides name it. The two measures answer different questions.
+The basket tie survives dropping each of the 14 backing sources in turn. Song Han beats Rajarani in 35% to 42% of draws, depending on the source omitted. Remove a publication’s menus as well and the field changes. Without Eatbook, Chai Chee joins the leaders among 26 eligible stalls. Without Daniel Food Diary, Song Han loses all three fitted prices and drops out. Both breakfasts are credible budget choices. Which leads depends on the serving. [Rank ranges, pairwise draws, source records and reproduction commands](https://github.com/yujieteo/site/tree/main/research/tampines#value-audit-19-november-2026).
 
 ## What Google reviewers say, quoted
 
@@ -77,7 +74,7 @@ The prices match official figures where they can be compared, though few dishes 
 
 ## What would show this is wrong
 
-On 15 November 2026 I froze 2,224 forecasts made by this model, each set beside a simpler forecast. The method is worth keeping only if it beats the simple one. A script checks them each month.
+On 15 November 2026 I froze 2,224 forecasts made by this model, each set beside a simpler forecast. The method is worth keeping only if it beats the simple one. A script checks them each month. For a new publisher’s in-scope guide through 15 November 2027, the frozen chance of a mention is 51% for Song Han and 63% for Rajarani. Its actual choices could change their backing. Same-day receipts for weighed portions at both counters could change the price comparison.
 
 - **Michelin.** For each place, the chance of a Bib Gourmand or star on the next Singapore list, expected mid-2027. The simple forecast gives 85% to this year's two Bibs and about 0.2% to everyone else. The model's forecast comes from backing alone and gives Rajarani Thosai only 13%, so it will probably lose here. I did not change it after seeing that.
 - **New guides.** For each outlet and place, the chance that the place is named in a new Tampines guide published by November 2027. The simple forecast is how often that outlet names the places it covers.
@@ -102,7 +99,7 @@ On 15 November 2026 I froze 2,224 forecasts made by this model, each set beside 
 - I dropped 34 sponsored articles, which disclose payment or an invited tasting. I also left 96 one-place reviews out of the score, because a review of one place cannot say it beats another.
 - That left 43 guides by 13 outlets. For each guide I recorded which places it could have named and which it did. An outlet with several guides counts once, so an outlet that repeats itself is not counted twice.
 - Michelin is one more source, using its 2026 list. Its earlier lists from 2016 have no other Tampines entries.
-- The model gives each source a choosiness and a weight, and each place a backing score. A place no source names is not marked down for it; it is only uncertain.
+- The model gives each source a choosiness and a weight, and each place a backing score. In-scope omissions enter the model as zeros. Outside-scope omissions carry no weight.
 
 **How long places last.**
 - Company records (ACRA, on data.gov.sg) give a registration date for 8 places, under the same name at the same postal code.
@@ -113,18 +110,18 @@ On 15 November 2026 I froze 2,224 forecasts made by this model, each set beside 
 - Each dish price is brought to September 2026 dollars with SingStat's consumer price index for hawker food, restaurants or fast food.
 - A model then separates what a dish type normally costs from how dear a place is.
 - The price on each row is the median of the place's own dishes. It is the typical main in the Google list, brought to September 2026 dollars, with buffets left out.
-- Value uses a second price: what the place would charge for the mix of dishes sold across all places here. A pasta place comes out cheaper on that mix than on its own menu, because the shared mix is mostly hawker noodles and rice.
+- Value uses the mix of all 607 fitted items, including 94 noodle dishes, 73 rice dishes and 113 desserts or snacks. Other stalls supply the evidence for dish types missing from a stall’s own menu.
 - Buffets and sharing platters are left out of the prices, because none is one person's main. Seoul Garden and Captain Kim Korean BBQ list only buffets, so they are not ranked.
 
 **GST in 2023.** GST was 8% in 2023, not 9%. Five 2023 prices marked `++` were corrected, each by about 0.9%.
 
 **The plan.**
 - I wrote down the method, the checks and the forecasts before collecting the data, and every change since is listed with its reason.
-- The code and data are in the site's repository under `scripts/tampines` and `research/tampines`.
+- From `scripts/tampines`, run `PYTENSOR_FLAGS=cxx= uv run --no-project -p 3.13 --with-requirements requirements.txt python value_audit.py --matched` to repeat the decisive order comparisons.
 
 **Prices.** I collected 1,116 menu rows for 144 places from guides, reviews and official menus. Each row keeps its source and date.
 
-**What I removed.** Delivery prices, since apps mark them up. Prices with no date or from before 2023. Add-ons and sides. At 108 Matcha Saro I also left out drinks and a pasta from the snack list, boxes with no clear serving count, and an older soft-serve price with unclear charges. Whole fish, steamboats and boxes with no stated portion. Casa Vostra pizzas are also left out of its per-person comparison because their serving count is not stated. At Ging Sun Ho, I left standalone dishes and a time-limited crab-roe special out of the per-person main comparison. Two promo lunch deals, and one price from another outlet of the same chain. Menu prices on MakanEast stall pages, because the menus carry no date. Two Putien prices from before it dropped service charge and GST in August 2024. I also removed repeated entries for the same dish at Yummy Sarawak Kolo Mee, Song Han Carrot Cake, Lao Lee, Teo Kee, Penang Savour and Ippon Fusion Bowl. That left 652 dated menu items. Mango Ice’s standard Mango Cotton Ice is excluded from the per-person sample because its [Tampines outlet menu](https://www.foodpanda.sg/restaurant/gci7/yang-xiao-xian-mango-ice-tampines-mall-gci7) describes it as suitable for two; the price shown here is from an earlier dine-in guide, not the delivery menu. Thirty-five drinks, mains, shared or ambiguous-serving items are shown separately and excluded from their venue’s comparison. This includes [Old World’s claypot for two to three](https://eatbook.sg/tampines-north-food/amp/), [Soi Thai Kitchen’s shared dishes](https://eatbook.sg/tampines-hawker-food/) and [Legendary Hong Kong’s sharing plates](https://eatbook.sg/legendary-hong-kong-tampines-mall/), and [JOFA’s soup upgrade](https://hungrygowhere.com/what-to-eat/food-in-tampines/).
+**What I removed.** I excluded delivery prices, undated and pre-2023 prices, sides, promotions, repeats, other outlets’ prices and shared items with unclear portions. That left 652 dated items. The list shows 35 separately from their venue’s comparison, including [Mango Ice’s dessert for two](https://www.foodpanda.sg/restaurant/gci7/yang-xiao-xian-mango-ice-tampines-mall-gci7), [Soi Thai Kitchen’s shared dishes](https://eatbook.sg/tampines-hawker-food/) and [JOFA’s soup upgrade](https://hungrygowhere.com/what-to-eat/food-in-tampines/). Ten more buffet or sharing rows fall outside the price model.
 
 **Dates.** A guide often repeats a price from an older review. Where a guide links to that review and the review gives the same price for the dish, the row takes the review's date. Where a page was edited after it came out, the row takes the date it came out. A guide entry with no linked review keeps the guide's date, so its price may be older than it looks. If the stall opened after the guide first came out, the entry takes the date the page shows now. For an undated official menu, the date is when I checked it. The place-level price date is the newest item in its comparison, not the date of every item.
 
