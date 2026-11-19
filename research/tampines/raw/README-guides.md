@@ -57,7 +57,7 @@ The script reads `scripts/tampines/guide_urls.tsv` (the curated list) and `miche
 - **Tampines entries:** the only Tampines entries on those lists are the 2026 Bibs for Rajarani Thosai (p007) and Yi Pin Wei (p015).
 - **Same-name entries at other addresses are not recorded.** These are Tai Wah Pork Noodle at Hong Lim, Tiong Bahru Hainanese Boneless Chicken Rice at Tiong Bahru Market, Keng Eng Kee at Alexandra, and Putien's star at Kitchener Road.
 - **Michelin Selected (plate) is not checked for any year.** News outlets do not print the Selected lists, and guide.michelin.com returned nothing.
-- **Three 2026 plates come from Daniel Food Diary reviews:** Yummy Sarawak Kolo Mee and Xing Ji Wanton Mee, stated directly, and Song Han Carrot Cake. The Song Han plate is inferred from "five new stalls" at Round Market, which leaves three Selected after the two Bibs. Treat Song Han as uncertain.
+- **Three 2026 plates come from Daniel Food Diary reviews:** Yummy Sarawak Kolo Mee and Xing Ji Wanton Mee, stated directly, and Song Han Carrot Cake. The Song Han plate is inferred from "five new stalls" at Round Market, which leaves three Selected after the two Bibs. Song Han was uncertain at collection. The [19 November value audit](../README.md#value-audit-19-november-2026) checked [Michelin’s complete 2026 list](https://guide.michelin.com/sg/en/article/michelin-guide-ceremony/full-list-michelin-guide-sg-2026), which explicitly names Song Han and Yummy as Selected and Rajarani as Bib Gourmand.
 
 ## Known weaknesses
 
