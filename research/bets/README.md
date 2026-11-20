@@ -25,7 +25,8 @@ The scoring is the price rule of the frozen audit method:
 - **Stated chance.** A stated chance p is scored against the price q: the factor is p/q on YES and (1 − p)/(1 − q) on NO.
 - **No stated chance.** The bet stakes half at the market price on the person's side: the factor is 1/2 + 1/(2q_side) on a win and 1/2 on a loss.
 - **Clipping and voids.** Prices and chances are clipped to [0.01, 0.99]. A void bet scores 1.
-- **E-value.** A person's running e-value is the product of their factors in time order. If the market prices are right, its expected value is 1 at every step.
+- **First occurrence.** Only the earliest recorded claim per person and exact market URL is scored at its price, in posting time order (row ID breaks ties). Later rows, including revisions, keep their quotes and outcomes but contribute a multiplier of 1 when settled. The exported row links to the first record in `repeat_of`; the first row has no such link. Different people on the same market and the same person on distinct markets are scored separately.
+- **Running product.** The running product multiplies the applied factors in that order. A sufficient condition for interpreting it as an e-value is that each factor has conditional expected value at most 1 under the benchmark given the earlier factors. This holds for the price rule when the price used for scoring is the conditional YES probability. Marginally calibrated prices are not enough: distinct contracts can still depend on the same outcome. Without the conditional guarantee, treat the product as a descriptive score.
 
 ## Fermi check
 

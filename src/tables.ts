@@ -224,17 +224,18 @@ const BET_COLUMNS: readonly Column[] = [
   { name: "outcome", type: "string", required: true, enum: ["open", "yes", "no", "void"], description: "open, or how the source resolved." },
   { name: "settled", type: "date", description: "The day the source resolved." },
   { name: "evidence", type: "string", description: "The page of the source that shows the resolution." },
-  { name: "factor", type: "number", description: "The settled bet's factor against the market price, unrounded. Empty while open or void." },
-  { name: "running_e", type: "number", required: true, description: "The person's running e-value after this bet: the product of their settled factors so far, unrounded." },
+  { name: "factor", type: "number", description: "The multiplier applied to the running score, unrounded. Only the first bet per person and market uses the price rule; settled repeats are 1. Empty while open or void." },
+  { name: "running_e", type: "number", required: true, description: "The person's running product of applied factors so far, unrounded. Conditional pricing can justify an e-value interpretation; marginal calibration alone is insufficient." },
   { name: "revises", type: "string", description: "The id of an earlier bet by the same person that this one revises." },
   { name: "correction", type: "string", description: "What changed after a dispute, and why." },
   asOf("The day the bet settled, or the day its line in notes/forecasts.tsv last changed while it is open."),
+  { name: "repeat_of", type: "string", description: "ID of the earliest row by the same person for the exact recorded market URL; empty for the first row." },
 ];
 
 function bets(scored: Bet[]): Table {
   return {
     name: "bets", path: "api/bets.txt", title: "Scored bets",
-    description: "The bet ledger of the 40 ranked forecasters in time order, with each settled bet's factor against that day's market price and each person's running e-value. /forecasters.html is built from it.",
+    description: "The bet ledger of the 40 ranked forecasters in time order, with each settled bet's applied factor and each person's running product. /forecasters.html is built from it.",
     sources: [notesFile("forecasts")],
     primaryKey: ["id"],
     columns: BET_COLUMNS,
@@ -243,7 +244,7 @@ function bets(scored: Bet[]): Table {
       const row: Row = {};
       for (const column of BET_COLUMNS) row[column.name] = f[column.name] ?? null;
       const num = (v: string | undefined) => (v === undefined || v === "" ? null : Number(v));
-      return { ...row, id: bet.note.id, quote: bet.note.text, p: num(f.p), price: num(f.price), fermi: bet.fermi.text, fermi_url: bet.fermi.url === "" ? null : bet.fermi.url, factor: bet.factor, running_e: bet.running, as_of: f.settled ?? lineDay("notes/forecasts.tsv", [`${bet.note.id}\t`]) };
+      return { ...row, id: bet.note.id, quote: bet.note.text, p: num(f.p), price: num(f.price), fermi: bet.fermi.text, fermi_url: bet.fermi.url === "" ? null : bet.fermi.url, factor: bet.factor, running_e: bet.running, repeat_of: bet.repeatOf, as_of: f.settled ?? lineDay("notes/forecasts.tsv", [`${bet.note.id}\t`]) };
     }),
   };
 }
