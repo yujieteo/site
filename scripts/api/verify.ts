@@ -1,11 +1,17 @@
-// Checks a deployed site against its own manifest: every file listed must be served with the bytes and
-// SHA-256 the manifest gives. Then checks the live tables against /feeds-manifest.json where the server has
-// one. Run: bun scripts/api/verify.ts [https://teoyujie.org]
+// Checks a site's static and live manifests. Every listed file must match its SHA-256; static files
+// must also match their listed byte size. For a static preview with no live manifest, opt in to skipping
+// a 404. Run: bun scripts/api/verify.ts [https://teoyujie.org] [--allow-missing-feeds]
 // For the tables' types, also run: uvx --from 'frictionless==5.18.0' frictionless validate https://teoyujie.org/api/datapackage.json
 
 import { createHash } from "node:crypto";
 
-const base = (Bun.argv[2] ?? "https://teoyujie.org").replace(/\/$/, "");
+const args = Bun.argv.slice(2);
+const allowMissingFeeds = args.includes("--allow-missing-feeds");
+const targets = args.filter((arg) => arg !== "--allow-missing-feeds");
+if (targets.length > 1 || targets.some((arg) => arg.startsWith("-"))) {
+  throw new Error("Usage: bun scripts/api/verify.ts [base URL] [--allow-missing-feeds]");
+}
+const base = (targets[0] ?? "https://teoyujie.org").replace(/\/$/, "");
 const sha = (data: ArrayBuffer) => createHash("sha256").update(new Uint8Array(data)).digest("hex");
 
 async function get(path: string, tries = 3): Promise<{ status: number; data: ArrayBuffer; headers: Headers }> {
@@ -37,7 +43,9 @@ await Promise.all(Array.from({ length: 6 }, async () => {
 }));
 
 const feeds = await get("/feeds-manifest.json");
-if (feeds.status !== 200) console.log(`/feeds-manifest.json: HTTP ${feeds.status}; the live tables are not hash-checked`);
+const skippedFeeds = allowMissingFeeds && feeds.status === 404;
+if (skippedFeeds) console.log("SKIP live feeds: /feeds-manifest.json returned HTTP 404 on a static preview");
+else if (feeds.status !== 200) failures.push(`/feeds-manifest.json: HTTP ${feeds.status}; live feeds not verified`);
 else {
   const live = JSON.parse(new TextDecoder().decode(feeds.data)) as { built_at: string; files: { path: string; bytes: number; sha256: string }[] };
   for (const file of live.files) {
@@ -49,5 +57,7 @@ else {
 }
 
 for (const line of failures) console.log(`FAIL ${line}`);
-console.log(failures.length === 0 ? `OK: every file matches` : `${failures.length} failure(s)`);
+console.log(failures.length > 0 ? `${failures.length} failure(s)`
+  : skippedFeeds ? "OK: all static files match; live feeds skipped"
+  : "OK: all static and live files match");
 process.exit(failures.length === 0 ? 0 : 1);

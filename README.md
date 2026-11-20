@@ -34,3 +34,9 @@ The build publishes each file as `/notes/PART.txt`, because the server sends `.t
 2. Commit to `main`.
 3. Turn on the VPN.
 4. Run `scripts/deploy.sh`. It builds the site and sends it.
+
+The post-deploy verifier requires both the static and live manifests.
+For a static preview without live feeds, run
+`bun scripts/api/verify.ts PREVIEW_URL --allow-missing-feeds`. Only HTTP 404
+for the live manifest is skipped, and the verifier reports that the live feeds
+were not checked.
