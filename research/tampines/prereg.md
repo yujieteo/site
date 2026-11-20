@@ -132,3 +132,12 @@ A monthly scheduled check runs `scripts/tampines/check.py`. It finds new article
   - A place whose closure date cannot be found keeps the score unresolved. How to settle it will be decided and recorded here before the score is computed.
   - The checker also failed to record `first_seen` for new evidence, because every place already had a row with a blank date. It now records the run date.
   - The closure definition above, the deadline, the baseline and `forecasts.tsv` are unchanged.
+- 21 November 2026, before any closure forecast resolved, from issue #138:
+  - The closure rule says a place counts as closed when its ACRA entity "becomes ceased or struck off". ACRA uses more status names than these two. At the freeze the checker counted any status change as a closure, including a provisional status such as `Gazetted To Be Struck Off` and a lookup that found no record.
+  - Reading: "ceased or struck off" means a final ACRA status, one that says the business no longer exists. The names are spelled as in the data.gov.sg ACRA datasets on 21 November 2026.
+    - Companies and limited liability partnerships: `Struck Off`, and every status that starts with `Dissolved`, such as `Dissolved - Members Voluntary Winding Up`, `Dissolved - Creditors Voluntary Winding Up` and `Dissolved - Compulsory Winding Up`.
+    - Sole proprietorships and partnerships: `Ceased Registration`, `Terminated`, `Cancelled` and `Cancelled (Non-Renewal)`.
+  - These do not count, because the business still exists or the status can still change back: `Gazetted To Be Struck Off`, every status that starts with `In Liquidation`, and `Registration expired and has not been renewed`, which the owner can still renew.
+  - Any other status does not count. The checker prints it so that a person can review it. A lookup that finds no record, or more than one, is a failed lookup, not a closure.
+  - Some statuses in the data are not decided yet: `Struck Off (Early Dissolution)`, `Struck Off (Early Dissolution - simplified winding up)`, `Removed (Dissolved)` and `Ceased Registration (Transferred to Singapore)`. Until a decision is recorded here, they do not count and the checker prints them.
+  - None of the 10 matched ACRA entities has changed status, so no recorded result changes. The closure rule above, the deadline, the baseline and `forecasts.tsv` are unchanged.
