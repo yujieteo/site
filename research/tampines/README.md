@@ -49,6 +49,28 @@ The monthly check:
 uv run --no-project -p 3.13 --with beautifulsoup4 python scripts/tampines/check.py
 ```
 
+### Michelin settlement
+
+The checker leaves the 2027 forecast open until the complete Singapore Bib Gourmand and
+one-, two- and three-star lists have been reviewed. After both releases, compare their
+entries against the frozen place IDs by outlet and address, not just business name, and
+save the checked results in `research/tampines/michelin-2027-reviewed.json`:
+
+```json
+{
+  "edition": 2027,
+  "bib": { "checked": true, "source_url": "<official Michelin URL>", "place_ids": [] },
+  "stars": { "checked": true, "source_url": "<official Michelin URL>", "place_ids": [] }
+}
+```
+
+Use full HTTPS URLs on `guide.michelin.com` for the 2027 Singapore selection. Both categories
+may reference the same complete official page. Include only frozen place IDs with that
+distinction, and use an empty array only after checking the full list and finding none.
+Michelin Selected entries without a Bib or star do not count. A preview, missing category,
+or invalid evidence file does not settle the forecast. This input does not change the
+frozen probabilities or scoring rule.
+
 ## Value audit, 19 November 2026
 
 **Decision rule recorded before rerunning.** Retain the two-stall conclusion if the published fit reproduces, comparable observed meals support the same pair, and the leading group survives every single-publication deletion under the published 20% rule. Narrow the claim to the tested price or source assumptions if any of these comparisons disagree or like-for-like evidence is missing. Withdraw it if reproduction fails or corrected evidence rules out the pair.
