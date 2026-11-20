@@ -159,7 +159,7 @@ function calls(calls: Note[], outcomes: Note[]): Table {
       { name: "series", type: "string", required: true, description: "The CPI series number in table M213751, such as 1.01.4.4 for eggs." },
       { name: "month", type: "string", required: true, pattern: "^\\d{4}-\\d\\d$", description: "The month the call is about, YYYY-MM." },
       { name: "low", type: "number", required: true, description: "The bottom of the 80% range, as an index value." },
-      { name: "mid", type: "number", required: true, description: "The middle guess, as an index value." },
+      { name: "mid", type: "number", required: true, description: "The model point forecast, as an index value; not fitted as the median." },
       { name: "high", type: "number", required: true, description: "The top of the 80% range, as an index value." },
       { name: "start_value", type: "number", description: "The index value the call starts from, as its text states." },
       { name: "start_month", type: "string", pattern: "^\\d{4}-\\d\\d$", description: "The month of start_value, YYYY-MM." },

@@ -176,7 +176,7 @@ export function forecastsPage(): string {
 
 function scoreLine(score: ReturnType<typeof scoreCalls>): string {
   if (score.resolved === 0) return "No call has an outcome yet.";
-  return `${score.resolved} of ${score.rows.length} calls have an outcome. ${score.inside} of ${score.resolved} fell inside their 80% range, where about ${Math.round(score.resolved * 0.8)} would if the ranges were right. The middle guess missed by ${score.miss.toFixed(2)}% on average. Pinball loss: ${score.pinball.toFixed(3)}% (lower is better).`;
+  return `${score.resolved} of ${score.rows.length} calls have an outcome. ${score.inside} of ${score.resolved} fell inside their 80% range, where about ${Math.round(score.resolved * 0.8)} would if the ranges were right. The point forecast missed by ${score.miss.toFixed(2)}% on average. Percentage-weighted pinball loss: ${score.pinball.toFixed(3)}% (lower is better).`;
 }
 
 function verdict(row: ReturnType<typeof scoreCalls>["rows"][number]): string {
@@ -196,6 +196,7 @@ export function callsPage(calls: Note[], outcomes: Note[]): string {
   const article = `<article><h1>Calls on Singapore prices</h1>
 <p>These are dated calls from <a href="/essays/singapore-value-buys/">the post on what Singapore buys</a>. Each says where a consumer price index will be in a given month, as an 80% range. Each was made before its month and is not changed after. When SingStat publishes the month, a script reads the value and the call is scored here. If the ranges are right, about 8 in 10 outcomes fall inside them.</p>
 <p><strong>${escapeText(scoreLine(score))}</strong></p>
+<p>The point forecast is the model's guess; it is not fitted as the median. For each call, percentage-weighted pinball loss averages terms at levels 0.1, 0.5 and 0.9 for the lower bound, point forecast and upper bound. It divides that loss by the actual index, then averages across resolved calls. The same loss in index points counts more when the actual index is lower. Range coverage and the point forecast's average absolute percentage miss are reported separately.</p>
 ${table}
 <p class="muted">Index values: 2024 = 100. Source of outcomes: <a href="https://tablebuilder.singstat.gov.sg/table/TS/M213751" rel="noopener noreferrer">SingStat table M213751 ↗</a>. <a href="/api/calls.txt">Text version</a></p></article>`;
   return shell("Calls on Singapore prices", "Dated 80% ranges for Singapore consumer prices, scored when SingStat publishes the month.", HEADER, `<main class="wrap page">${article}</main>`, []);
