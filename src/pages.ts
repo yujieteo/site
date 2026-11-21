@@ -57,7 +57,8 @@ const NUMBER = String.raw`[−+~≈]?(?:S\$|US\$|\$)?\d[\d,]*(?:\.\d+)?%?`;
 const NUMBER_CELL = new RegExp(`^${NUMBER}(?:\\s*(?:→|–|&ndash;)\\s*${NUMBER}|\\s+(?:to|-)\\s+${NUMBER})?$`);
 
 // Rules for tables: a column whose filled body cells are all numbers gets class="num" on every cell, its head too,
-// so it lines up on the right and a number never breaks over two lines. A table of six columns or more gets
+// so it lines up on the right and a number never breaks over two lines. A column of sentences (a median body cell of
+// 40 characters or more) gets class="long": on a phone it keeps a minimum width, so its lines hold more than one word. A table of six columns or more gets
 // data-wide: on a wide screen it may use the width of a wide figure. tabindex="0" lets a keyboard scroll a table
 // that is wider than a phone screen (WCAG 2.1.1).
 export function markTables(html: string): string {
@@ -66,13 +67,19 @@ export function markTables(html: string): string {
       [...(row[1] ?? "").matchAll(/<(td|th)>([\s\S]*?)<\/\1>/g)].map((cell) => ({ head: cell[1] === "th", text: (cell[2] ?? "").replace(/<[^>]+>/g, "").trim() })));
     const width = Math.max(0, ...rows.map((row) => row.length));
     const body = rows.filter((row) => !row.some((cell) => cell.head));
-    const numeric = Array.from({ length: width }, (_, i) => {
+    const kind = Array.from({ length: width }, (_, i) => {
       const filled = body.map((row) => row[i]?.text ?? "").filter((text) => text !== "" && text !== "–" && text !== "—");
-      return filled.length > 0 && filled.every((text) => NUMBER_CELL.test(text));
+      if (filled.length === 0) return "";
+      if (filled.every((text) => NUMBER_CELL.test(text))) return "num";
+      const lengths = filled.map((text) => text.length).sort((a, b) => a - b);
+      return (lengths[Math.floor(lengths.length / 2)] ?? 0) >= 40 ? "long" : "";
     });
     const marked = inner.replace(/<tr>([\s\S]*?)<\/tr>/g, (_row, cells: string) => {
       let i = 0;
-      return `<tr>${cells.replace(/<(td|th)>/g, (_tag, tag: string) => (numeric[i++] ? `<${tag} class="num">` : `<${tag}>`))}</tr>`;
+      return `<tr>${cells.replace(/<(td|th)>/g, (_tag, tag: string) => {
+        const name = kind[i++];
+        return name ? `<${tag} class="${name}">` : `<${tag}>`;
+      })}</tr>`;
     });
     return `<table tabindex="0"${width >= 6 ? " data-wide" : ""}>${marked}</table>`;
   });

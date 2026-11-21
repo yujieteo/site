@@ -34,7 +34,7 @@ test("a failed rebuild preserves the last preview and unrelated directories", ()
 const SERVER_PATHS = ["/reading.html", "/reading.txt", "/forecasters.html", "/forecasters.txt", "/forecasters.xml", "/feed.xml", "/feeds-manifest.json", "/edmw.xml",
   "/singapore-policy-actionables.html", "/singapore-policy-actionables.txt", "/singapore-policy-actionables.xml", "/contact.gpg", "/health.txt"];
 // The served style.css on 2026-11-21. The CSS must not grow.
-const CSS_LIMIT = 25724;
+const CSS_LIMIT = 25679;
 
 test("the built site passes the release checks", () => {
   const out = mkdtempSync(join(tmpdir(), "site-release-"));
@@ -82,4 +82,7 @@ test("number columns line up on the right, and only number columns", async () =>
     "<tr><td>Eggs</td><td>2.49% → 2.25%</td><td>9 months</td><td>2026-12</td></tr><tr><td>Rice</td><td>S$1,404</td><td></td><td>2027-01</td></tr></tbody></table>";
   expect(markTables(table)).toBe("<table tabindex=\"0\"><thead><tr><th>Good</th><th class=\"num\">Miss</th><th>Lag</th><th>Month</th></tr></thead><tbody>" +
     "<tr><td>Eggs</td><td class=\"num\">2.49% → 2.25%</td><td>9 months</td><td>2026-12</td></tr><tr><td>Rice</td><td class=\"num\">S$1,404</td><td></td><td>2027-01</td></tr></tbody></table>");
+  const call = "The CPI for bread in 2026-12 will be between 103.5 and 106.0.";
+  expect(markTables(`<table><tr><th>Call</th><th>Outcome</th></tr><tr><td>${call}</td><td>open</td></tr></table>`))
+    .toBe(`<table tabindex="0"><tr><th class="long">Call</th><th>Outcome</th></tr><tr><td class="long">${call}</td><td>open</td></tr></table>`);
 });
