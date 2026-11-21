@@ -22,16 +22,18 @@ token_cache = {}
 
 
 def tokens(sha):
-    if enc is None or not sha:
+    if not sha:
         return 0
+    if enc is None:
+        return None
     if sha not in token_cache:
         path = runs / "bodies" / sha
-        token_cache[sha] = len(enc.encode(path.read_text("utf-8", "replace"))) if path.exists() else 0
+        token_cache[sha] = len(enc.encode(path.read_text("utf-8", "replace"))) if path.exists() else None
     return token_cache[sha]
 
 
 def line(reply, key):
-    m = re.search(rf"^\s*{key}:\s*(.+?)\s*$", reply or "", re.M | re.I)
+    m = re.search(rf"^[ \t]*{key}:[ \t]*(.*?)[ \t]*$", reply or "", re.M | re.I)
     return m.group(1) if m else ""
 
 
@@ -63,7 +65,12 @@ for path in sorted(runs.glob("*/*.jsonl")):
         t["fetches"] += len(row["fetches"])
         t["input"] += (row.get("usage") or {}).get("input", 0) or 0
         t["bytes"] += sum(f["bytes"] for f in row["fetches"])
-        t["tokens"] += sum(tokens(f.get("sha256")) for f in row["fetches"])
+        for fetched in row["fetches"]:
+            count = tokens(fetched.get("sha256"))
+            if count is None:
+                t["tokens"] = None
+            elif t["tokens"] is not None:
+                t["tokens"] += count
         if q["as_of"]:
             t["dated"] += 1
             t["cited"] += line(row["reply"], "AS_OF").strip()[: len(q["as_of"])] == q["as_of"]
@@ -72,6 +79,7 @@ print(f"{'label':<10} {'vendor':<9} {'model':<28} {'n':>3} {'exact':>6} {'fetch/
 for (label, vendor, model), t in sorted(table.items()):
     n = t["n"] or 1
     cited = f"{t['cited']}/{t['dated']}" if t["dated"] else "-"
-    print(f"{label:<10} {vendor:<9} {model[:28]:<28} {t['n']:>3} {t['exact'] / n:>6.0%} {t['fetches'] / n:>8.1f} {t['bytes'] / n / 1000:>7.1f} {t['tokens'] / n:>8.0f} {cited:>10} {t['input'] / n:>9.0f} {t['errors']:>6}")
+    per_question = f"{t['tokens'] / n:.0f}" if t["tokens"] is not None else "n/a"
+    print(f"{label:<10} {vendor:<9} {model[:28]:<28} {t['n']:>3} {t['exact'] / n:>6.0%} {t['fetches'] / n:>8.1f} {t['bytes'] / n / 1000:>7.1f} {per_question:>8} {cited:>10} {t['input'] / n:>9.0f} {t['errors']:>6}")
 if enc is None:
-    print("tiktoken is not installed: o200k counts are 0. Run with: uv run --with tiktoken python -I tests/questions/score.py")
+    print("tiktoken is not installed: o200k counts are unavailable. Run with: uv run --with tiktoken python -I tests/questions/score.py")
