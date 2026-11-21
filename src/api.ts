@@ -89,23 +89,23 @@ const FIGURE_DATA: Record<string, readonly string[]> = {
   life: ["src/kit/life-data.ts", "src/kit/price-data.ts", "notes/products.tsv", "notes/checks.tsv", "notes/advice.tsv"],
   food: ["src/kit/food-data.ts", "src/kit/food-model.ts"],
 };
-function postAsOf(post: Post): string {
-  const days = [lastChanged(`posts/${post.slug}`)];
+function postAsOf(post: Post, postsDir: string): string {
+  const days = [lastChanged(`${postsDir}/${post.slug}`)];
   for (const kind of new Set([...post.source.matchAll(/::figure[^\n]*kind=([a-z-]+)/g)].map((m) => m[1] ?? ""))) days.push(...(FIGURE_DATA[kind] ?? []).map(lastChanged));
   return days.sort().at(-1) ?? post.date;
 }
 
-export function postApi(post: Post): PostApi {
+export function postApi(post: Post, postsDir = "posts"): PostApi {
   const index = `${SITE}/api/${post.slug}/index.txt`;
-  const asOf = postAsOf(post);
+  const asOf = postAsOf(post, postsDir);
   const parts: Part[] = [];
   const seen = new Set<string>(["index", "whole-post"]);
   for (const section of sections(textLines(post.source))) {
     const body = section.lines.join("\n").trim();
+    if (body === "") continue;
     const id = section.depth === 3 ? `${sectionId(section.parent)}--${sectionId(section.heading)}` : sectionId(section.heading);
     if (id === "" || seen.has(id)) throw new Error(`${post.slug}: the section "${section.heading}" needs a name of its own`);
     seen.add(id);
-    if (body === "") continue;
     const label = section.depth === 3 ? `${section.parent}: ${section.heading}` : section.heading;
     const text = `From "${post.title}", published ${post.date}, text as of ${asOf}. Section list: ${index}\n\n${"#".repeat(section.depth)} ${label}\n\n${body}\n`;
     parts.push({ file: `${id}.txt`, label, depth: section.depth, text });

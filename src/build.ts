@@ -1,7 +1,7 @@
-import { relative, resolve } from "node:path";
-import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { relative, resolve, sep } from "node:path";
+import { cpSync, existsSync, mkdirSync, renameSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { apiPage, callsPage, dealsPage, errorPage, forecastsPage, homePage, notFoundPage, paperPage, postPage } from "./pages.ts";
-import { deals, loadNotes, notesGuide, today, type Note } from "./notes.ts";
+import { SITE, deals, loadNotes, notesGuide, today, type Note } from "./notes.ts";
 import { postApi, writeApi, writeManifest } from "./api.ts";
 import { checkBets, scoreBets } from "./bets.ts";
 import { tables } from "./tables.ts";
@@ -9,22 +9,15 @@ import { figureKinds, figures, footnoteHtml, footnotes, headings, linkPapers, lo
 import { FIGURE_KINDS } from "./figures.ts";
 import { useLifeNotes } from "./kit/life.ts";
 
-function insertNewestFirst(posts: Post[], post: Post): void {
-  let at = 0;
-  while (at < posts.length && (posts[at]?.date ?? "") >= post.date) at++;
-  posts.splice(at, 0, post);
-}
-
 function loadPosts(dir: string, drafts: boolean): Post[] {
   const posts: Post[] = [];
-  if (!existsSync(dir)) return posts;
   for (const entry of readdirSync(dir, { withFileTypes: true })) {
     if (!entry.isDirectory()) continue;
     const slug = entry.name;
     const post = parsePost(slug, readFileSync(`${dir}/${slug}/post.md`, "utf8"));
-    if (drafts || !post.draft) insertNewestFirst(posts, post);
+    if (drafts || !post.draft) posts.push(post);
   }
-  return posts;
+  return posts.sort((a, b) => b.date.localeCompare(a.date));
 }
 
 function renderBody(post: Post): { html: string; toc: ReturnType<typeof headings> } {
@@ -46,19 +39,52 @@ async function buildAssets(out: string): Promise<void> {
 }
 
 async function main(): Promise<void> {
-  const drafts = Bun.argv.includes("--drafts");
-  const outIndex = Bun.argv.indexOf("--out");
-  const out = outIndex > 0 ? (Bun.argv[outIndex + 1] ?? "dist") : "dist";
-  const postsIndex = Bun.argv.indexOf("--posts");
-  const postsDir = postsIndex > 0 ? (Bun.argv[postsIndex + 1] ?? "posts") : "posts";
-  if (!relative(resolve(out), resolve(postsDir)).startsWith("..")) throw new Error(`--out ${out} must not hold the posts in ${postsDir}`);
-  rmSync(out, { recursive: true, force: true });
+  let drafts = false;
+  let out = "dist";
+  let postsDir = "posts";
+  const args = Bun.argv.slice(2);
+  for (let i = 0; i < args.length; i++) {
+    const arg = args[i];
+    if (arg === "--drafts") drafts = true;
+    else if (arg === "--out" || arg === "--posts") {
+      const value = args[++i];
+      if (!value || value.startsWith("--")) throw new Error(`${arg} needs a directory`);
+      if (arg === "--out") out = value;
+      else postsDir = value;
+    } else throw new Error(`unknown option: ${arg}`);
+  }
+  const posts = loadPosts(postsDir, drafts);
+  const outside = (from: string, to: string) => {
+    const path = relative(resolve(from), resolve(to));
+    return path === ".." || path.startsWith(`..${sep}`);
+  };
+  if (!outside(out, postsDir) || !outside(postsDir, out)) throw new Error("--out and --posts must be separate directories");
+  if (existsSync(out) && readdirSync(out).length > 0) {
+    const manifest = `${out}/api/manifest.json`;
+    if (!existsSync(manifest) || JSON.parse(readFileSync(manifest, "utf8")).site !== SITE) {
+      throw new Error(`refusing to clear ${out}: choose an empty directory or a previous site build`);
+    }
+  }
   mkdirSync(out, { recursive: true });
+  const staging = `${out}/.site-build`;
+  mkdirSync(staging);
+  try {
+    await renderSite(staging, postsDir, posts);
+    for (const name of readdirSync(out)) {
+      if (name !== ".site-build") rmSync(`${out}/${name}`, { recursive: true, force: true });
+    }
+    for (const name of readdirSync(staging)) renameSync(`${staging}/${name}`, `${out}/${name}`);
+  } finally {
+    rmSync(staging, { recursive: true, force: true });
+  }
+  console.log(`built ${posts.length} post(s) into ${out}`);
+}
+
+async function renderSite(out: string, postsDir: string, posts: Post[]): Promise<void> {
   await buildAssets(out);
   // The notes come first: the Singapore prices post draws its product checks, products and advice from them.
   const notes = loadNotes("notes", out);
   useLifeNotes({ checks: notes.checks ?? [], products: notes.products ?? [], advice: notes.advice ?? [] });
-  const posts = loadPosts(postsDir, drafts);
   writeFileSync(`${out}/index.html`, homePage(posts));
   mkdirSync(`${out}/errdocs`, { recursive: true });
   writeFileSync(`${out}/errdocs/404.html`, notFoundPage());
@@ -69,12 +95,11 @@ async function main(): Promise<void> {
     writePost(out, post);
     for (const paper of papers) writePaper(out, post, paper);
   }
-  const apis = posts.map(postApi);
+  const apis = posts.map((post) => postApi(post, postsDir));
   const all = writeNotes(out, notes);
   writeApi(out, apis, all);
   writeFileSync(`${out}/api/index.html`, apiPage(apis, all));
   writeManifest(out, apis, all);
-  console.log(`built ${posts.length} post(s) into ${out}`);
 }
 
 // The pages and tables drawn from the notes. The tables go to writeApi with the rest of the API.

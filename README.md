@@ -9,6 +9,8 @@ Posts by Yu Jie Teo.
 3. Run `python3 -m http.server -d /tmp/site` and open `http://localhost:8000/essays/NAME/`. The pages need a server: their paths start with `/`.
 4. Remove `draft: true` when it is ready.
 
+Use a dedicated output directory. The build replaces its contents after rendering succeeds. It accepts an empty directory or a previous build of this site.
+
 ## Paper summaries
 
 A post can hold summaries in `posts/NAME/papers/SLUG.md`. A file starts with `source:`, `slogan:` and `basis:` lines, then a blank line, then Markdown. The `source` must equal the link of one list item in the post. The build takes the title and byline from that item, writes `/essays/NAME/SLUG/` and adds a Summary link to the item.

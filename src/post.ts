@@ -30,17 +30,21 @@ const WORDS_PER_MINUTE = 220;
 function isDraft(text: string): boolean | undefined {
   try {
     const parsed: unknown = Bun.YAML.parse(text);
-    return typeof parsed === "object" && parsed !== null && "draft" in parsed && parsed.draft === true;
+    if (typeof parsed !== "object" || parsed === null || Array.isArray(parsed)) return undefined;
+    if (!("draft" in parsed)) return false;
+    return typeof parsed.draft === "boolean" ? parsed.draft : undefined;
   } catch {
     return undefined;
   }
 }
 
 export function parsePost(slug: string, raw: string): Post {
+  raw = raw.replaceAll("\r\n", "\n");
+  if (!raw.startsWith("---\n") || !raw.includes("\n---\n", 3)) throw new Error(`${slug}: missing front matter delimiter`);
   const parts = raw.split("\n---\n");
   const head = (parts[0] ?? "").replace(/^---\n/, "");
   const draft = isDraft(head);
-  if (draft === undefined) throw new Error(`${slug}: the front matter is not valid YAML`);
+  if (draft === undefined) throw new Error(`${slug}: expected YAML front matter with a boolean draft field when present`);
   const post: Post = { slug, title: "", date: "", draft, summary: [], source: parts.slice(1).join("\n---\n").trim() };
   for (const line of head.split("\n")) {
     const at = line.indexOf(": ");
@@ -160,7 +164,7 @@ export function loadPapers(dir: string, post: Post): Paper[] {
   for (const name of readdirSync(dir).sort()) {
     if (!name.endsWith(".md")) continue;
     const slug = name.slice(0, -3);
-    const parts = readFileSync(`${dir}/${name}`, "utf8").split("\n\n");
+    const parts = readFileSync(`${dir}/${name}`, "utf8").replaceAll("\r\n", "\n").split("\n\n");
     const head = new Map<string, string>();
     for (const line of (parts[0] ?? "").split("\n")) head.set(line.slice(0, line.indexOf(": ")), line.slice(line.indexOf(": ") + 2).trim());
     const url = head.get("source") ?? "";
@@ -168,6 +172,7 @@ export function loadPapers(dir: string, post: Post): Paper[] {
     const slogan = head.get("slogan") ?? "";
     if (item === undefined) throw new Error(`${post.slug}/papers/${name}: no list item links to ${url}`);
     if (slogan === "") throw new Error(`${post.slug}/papers/${name}: a paper needs a slogan`);
+    if (!head.get("basis") || !parts.slice(1).join("").trim()) throw new Error(`${post.slug}/papers/${name}: a paper needs a basis and body`);
     papers.push({ slug, title: item.title, byline: item.byline, url, slogan, basis: head.get("basis") ?? "", source: parts.slice(1).join("\n\n").trim() });
   }
   return papers;
