@@ -29,13 +29,15 @@ used only from month t + its delay.
 import gzip
 import json
 import math
+import os
 import sys
 from pathlib import Path
 
 import numpy as np
 import openpyxl
 
-ROOT = Path.home() / "data/library/sg-prices/upstream"
+PRICES_DIR = os.environ.get("PRICES_DIR")
+ROOT = (Path(PRICES_DIR) if PRICES_DIR is not None else Path.home() / "data/library/sg-prices") / "upstream"
 START_EVAL = (2020, 1)
 HORIZONS = (3, 12)
 MIN_TRAIN = 36
