@@ -32,6 +32,7 @@ from bs4 import BeautifulSoup
 
 sys.path.insert(0, str(Path(__file__).parent))
 import guides  # noqa: E402
+from closures import first_seen, read_event_dates, settle  # noqa: E402
 from michelin import read_selection  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -228,17 +229,21 @@ def main() -> None:
     status_rows = []
     for p in places:
         why = closed.get(p["id"]) or prev.get(p["id"], {}).get("evidence", "")
-        status_rows.append([p["id"], p["name"], why, prev.get(p["id"], {}).get("first_seen", TODAY) if why else ""])
+        status_rows.append([p["id"], p["name"], why, first_seen(prev.get(p["id"], {}), why, TODAY)])
     with (RES / "status.tsv").open("w", newline="") as f:
         w = csv.writer(f, delimiter="\t", lineterminator="\n")
         w.writerow(["id", "name", "evidence", "first_seen"])
         w.writerows(status_rows)
     if TODAY >= END:
-        ev = {r[0]: r[2] for r in status_rows}
         scored = [f for f in forecasts if f["target"] == "closed_by" and f["id"] not in CLOSED_BEFORE_FREEZE]
-        pairs = [(float(f["p_model"]), int(bool(ev.get(f["id"])))) for f in scored]
-        base = [(float(f["p_baseline"]), int(bool(ev.get(f["id"])))) for f in scored]
-        scores.append([TODAY, "closed_by", len(pairs), *score_line(pairs, base), "resolved"])
+        dates = read_event_dates(RES / "closure-dates-reviewed.tsv", {f["id"] for f in scored})
+        y, waiting = settle([f["id"] for f in scored], {r[0]: (r[2], r[3]) for r in status_rows}, dates, END)
+        if waiting:
+            scores.append([TODAY, "closed_by", len(waiting), "", "", "", f"awaiting reviewed closure dates for: {' '.join(waiting)}"])
+        else:
+            pairs = [(float(f["p_model"]), y[f["id"]]) for f in scored]
+            base = [(float(f["p_baseline"]), y[f["id"]]) for f in scored]
+            scores.append([TODAY, "closed_by", len(pairs), *score_line(pairs, base), "resolved"])
     else:
         scores.append([TODAY, "closed_by", sum(1 for r in status_rows if r[2]), "", "", "", f"places with closure evidence so far; ACRA lookups failed this run: {len(ACRA_FAILED)}; resolves {END}"])
 
