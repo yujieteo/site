@@ -71,6 +71,17 @@ Michelin Selected entries without a Bib or star do not count. A preview, missing
 or invalid evidence file does not settle the forecast. This input does not change the
 frozen probabilities or scoring rule.
 
+### Closure settlement
+
+From 15 November 2027 the checker scores the closure forecast only by closures that happened on or before that date. The rule is the 21 November 2026 entry under Deviations in `prereg.md`. Evidence that the checker first recorded on or before the deadline counts as a closure. Evidence first recorded later stays unresolved until its closure date has been reviewed. The checker then writes an "awaiting reviewed closure dates" row with the place IDs instead of a score. Find the date in a dated source, such as a news report, a guide or a notice at the place. Then add a row to `research/tampines/closure-dates-reviewed.tsv`:
+
+```tsv
+id	closed_on	source_url	note
+p012	2027-11-16	https://example.org/report	last day of trading
+```
+
+`closed_on` is the date of the closure, as `YYYY-MM-DD`. `source_url` must be an HTTPS link. A reviewed date decides for that place, even over an earlier `first_seen`. A row with a bad date, a bad link or an unknown place ID gives no date, and so do two rows for one place. This file does not change the frozen probabilities or the closure definition.
+
 ## Value audit, 19 November 2026
 
 **Decision rule recorded before rerunning.** Retain the two-stall conclusion if the published fit reproduces, comparable observed meals support the same pair, and the leading group survives every single-publication deletion under the published 20% rule. Narrow the claim to the tested price or source assumptions if any of these comparisons disagree or like-for-like evidence is missing. Withdraw it if reproduction fails or corrected evidence rules out the pair.
