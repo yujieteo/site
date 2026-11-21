@@ -1,6 +1,6 @@
 import { GOOD_CHECKS, LEVERS, LIFE, MONTH_TABLE, REHOME, SPENDING, STRONGEST, type LifeCategory, type Move, type Official, type Series, type Shelf } from "./life-data.ts";
 import { LAST_MONTH, PRICES, type PriceItem } from "./price-data.ts";
-import type { Note } from "../notes.ts";
+import { today, type Note } from "../notes.ts";
 import { lineDay } from "../blame.ts";
 
 // The page answers one question: what is the best quality for the price? This draws its one list.
@@ -56,15 +56,19 @@ export interface LifeNotes {
 }
 
 let notes: LifeNotes = { checks: [], products: [], advice: [] };
+let buildDay = "";
 
 export function useLifeNotes(next: LifeNotes): void {
   notes = next;
+  // Keep the HTML and product API on the same Singapore date for this build.
+  buildDay = today();
 }
 
 // One shop item, such as "Toothpaste", with the products found for it.
 interface Group {
   name: string;
   buys: Buy[];
+  eligible: Buy[];
   ranked: boolean;
   check: string;
   passes: boolean;
@@ -241,25 +245,31 @@ function buyOf(shelf: Shelf, seen: string): Buy {
 // Rows are ranked only when every row of the item has a figure in the same unit. The pick is the cheapest
 // product that passes the item's check. An item with no pass mark has no pick, only a lowest price: its
 // products may not be equals. An item whose check no product shows has no pick either.
-function groupsOf(category: LifeCategory): Group[] {
+function groupsOf(category: LifeCategory, day: string): Group[] {
   const groups: Group[] = [];
   const { rows, seen } = shelfOf(category, notes.products);
   for (const shelf of rows) {
     let group = groups.find((g) => g.name === shelf[0]);
     if (!group) {
       const check = GOOD_CHECKS[shelf[0]];
-      group = { name: shelf[0], buys: [], ranked: false, check: check?.[0] ?? "", passes: check?.[1] === "pass", pick: undefined };
+      group = { name: shelf[0], buys: [], eligible: [], ranked: false, check: check?.[0] ?? "", passes: check?.[1] === "pass", pick: undefined };
       groups.push(group);
     }
     group.buys.push(buyOf(shelf, seen.get(shelf) ?? ""));
   }
   for (const group of groups) {
-    const tail = (group.buys[0]?.tail ?? "").toLowerCase();
-    group.ranked = group.buys.length > 1 && group.buys.every((buy) => Number.isFinite(buy.value) && buy.tail.toLowerCase() === tail);
-    const passing = group.buys.filter((buy) => buy.verdict === "pass");
-    if (group.ranked) group.buys.sort((a, b) => a.value - b.value);
+    const comparable = (buys: readonly Buy[]): boolean => {
+      const tail = (buys[0]?.tail ?? "").toLowerCase();
+      return buys.every((buy) => Number.isFinite(buy.value) && buy.tail.toLowerCase() === tail);
+    };
+    // Keep every dated observation, but never recommend a price after its final Singapore day.
+    group.eligible = group.buys.filter((buy) => (noted.get(buy.shelf)?.fields.until ?? day) >= day);
+    group.ranked = group.eligible.length > 0 && comparable(group.eligible);
+    const passing = group.eligible.filter((buy) => buy.verdict === "pass");
+    if (group.ranked) group.eligible.sort((a, b) => a.value - b.value);
+    if (comparable(group.buys)) group.buys.sort((a, b) => a.value - b.value);
     // Where prices cannot be ranked, a lone product that passes is still the pick.
-    if (group.passes && (group.ranked || passing.length === 1)) group.pick = group.buys.find((buy) => buy.verdict === "pass");
+    if (group.passes && (group.ranked || passing.length === 1)) group.pick = group.eligible.find((buy) => buy.verdict === "pass");
   }
   return groups;
 }
@@ -273,13 +283,14 @@ function bucketOf(buckets: Bucket[], key: string, fallback: string): Bucket {
 
 // Puts every move, shop item and official price into its one spending group.
 function bucketsOf(): Bucket[] {
+  const day = buildDay || today();
   const buckets: Bucket[] = SPENDING.map(([name, dollars, share]) => ({ name, id: slug(name), dollars, share, moves: [], notes: [], sets: [], official: [], series: [] }));
   for (const category of LIFE) {
     for (const move of [...category.moves, ...category.checks]) bucketOf(buckets, move.lead, category.spend).moves.push(move);
     bucketOf(buckets, "", category.spend).notes.push(...category.notes);
     for (const row of category.official) bucketOf(buckets, row[0], category.spend).official.push(row);
     for (const row of category.series) bucketOf(buckets, row[0], category.spend).series.push(row);
-    for (const group of groupsOf(category)) {
+    for (const group of groupsOf(category, day)) {
       const bucket = bucketOf(buckets, group.name, category.spend);
       let set = bucket.sets.find((s) => s.name === category.name);
       if (!set) {
@@ -333,7 +344,7 @@ function buyRow(buy: Buy, label: string, picked: boolean): string {
 }
 
 function track(group: Group, top: number): string {
-  const marks = group.buys.map((buy) => {
+  const marks = group.eligible.map((buy) => {
     const kind = `${DOT[buy.verdict]}${buy === group.pick ? " life-ring" : ""}`.trim();
     return `<i${kind === "" ? "" : ` class="${kind}"`} data-css="left:${((buy.value / top) * 100).toFixed(1)}%"></i>`;
   });
@@ -349,16 +360,20 @@ function shopList(group: Group): string {
 
 // Why the pick is the pick, in a few words.
 function basisOf(group: Group): string {
-  const passing = group.buys.filter((buy) => buy.verdict === "pass").length;
+  const passing = group.eligible.filter((buy) => buy.verdict === "pass").length;
   return passing === 1 ? "the only one that passes" : `cheapest of ${passing} that pass`;
 }
 
 // The figure on the right of an item: the pick, or the lowest price where the item has no pass mark.
-function priceOf(group: Group, first: Buy): string {
+function priceOf(group: Group, first: Buy | undefined): string {
   if (group.pick) return `${group.ranked ? `S$${group.pick.low}${esc(group.pick.tail)}` : esc(group.pick.main)}<small>${basisOf(group)}</small>`;
+  if (!first) return `No unexpired price`;
+  if (group.passes && group.buys.some((buy) => buy.verdict === "pass") && !group.eligible.some((buy) => buy.verdict === "pass")) {
+    return `No pick<small>all passing offers ended</small>`;
+  }
   if (!group.ranked) return "";
   if (group.passes) return `No pick<small>no product shows the check</small>`;
-  return `S$${first.low}${esc(first.tail)}<small>lowest of ${group.buys.length}</small>`;
+  return `S$${first.low}${esc(first.tail)}<small>${group.eligible.length === 1 ? "only unexpired price" : `lowest of ${group.eligible.length}`}</small>`;
 }
 
 function checkLine(group: Group): string {
@@ -372,15 +387,14 @@ function checkLine(group: Group): string {
 }
 
 function groupRow(group: Group): string {
-  const first = group.buys[0];
-  if (!first) return "";
-  if (group.buys.length === 1) return buyRow(first, group.name, false);
-  const top = Math.max(...group.buys.map((buy) => buy.high));
-  const last = group.buys.reduce((best, buy) => (buy.high > best.high ? buy : best), first);
-  const spread = group.ranked && top > first.value;
+  const first = group.eligible[0];
+  if (group.buys.length === 1 && first) return buyRow(first, group.name, false);
+  const last = group.eligible.reduce((best, buy) => (!best || buy.high > best.high ? buy : best), first);
+  const top = last?.high ?? 0;
+  const spread = group.ranked && group.eligible.length > 1 && first !== undefined && top > first.value;
   const price = priceOf(group, first);
   const end = price === "" ? "" : `<span class="life-end">${price}</span>`;
-  const range = spread ? ` · up to S$${last.top}` : "";
+  const range = spread && last ? ` · up to S$${last.top}` : "";
   const summary = `<summary class="life-row"><b>${esc(group.name)}${chevron()}</b>${end}<small>${esc(`${checkLine(group)}${range}`)}</small>${spread ? track(group, top) : ""}</summary>`;
   return `<li><details class="life-item">${summary}<ol class="life-rows life-nest">${group.buys.map((buy) => buyRow(buy, "", buy === group.pick)).join("")}</ol></details></li>`;
 }
