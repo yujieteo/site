@@ -6,7 +6,7 @@ It looks for:
 1. new articles from outlets with a WordPress search API (Eatbook, Seth Lui, Daniel Food Diary,
    ieatishootipost) published from 2026-11-16, gives each a scope by a fixed rule, and scores the
    named_by forecasts for the places in that scope;
-2. ACRA status changes for the matched entities;
+2. final ACRA statuses (ceased, struck off, dissolved and the like) for the matched entities;
 3. OpenStreetMap changes for the matched elements (deleted, renamed, or a disused:/was: prefix);
 4. reviewed 2027 MICHELIN Guide Singapore Bib Gourmand and star outcomes.
 
@@ -190,6 +190,38 @@ def acra_dataset_ids() -> dict[str, str]:
 
 
 ACRA_FAILED: list[str] = []
+# How the closure rule's "ceased or struck off" reads ACRA's statuses, spelled as in the
+# data.gov.sg ACRA datasets. The list is in the 21 November 2026 entry from issue #138 under
+# Deviations in research/tampines/prereg.md. A closure is a final status: the business no longer exists.
+ACRA_CLOSED = {
+    "Struck Off",
+    "Struck Off (Early Dissolution)",
+    "Struck Off (Early Dissolution - simplified winding up)",
+    "Removed (Dissolved)",
+    "Ceased Registration",
+    "Terminated",
+    "Cancelled",
+    "Cancelled (Non-Renewal)",
+}
+ACRA_CLOSED_PREFIX = "Dissolved"  # "Dissolved", "Dissolved - Members Voluntary Winding Up", and so on
+# Not closures: the business still exists, or the status can still change back.
+ACRA_OPEN = {
+    "Live",
+    "Live Company",
+    "Gazetted To Be Struck Off",
+    "Registration expired and has not been renewed",
+    "Ceased Registration (Transferred to Singapore)",
+}
+ACRA_OPEN_PREFIX = "In Liquidation"
+
+
+def acra_closure_kind(status: str) -> str:
+    """Return "closed" for a final ACRA status, "open" for a known other status, else "unknown"."""
+    if status in ACRA_CLOSED or status.startswith(ACRA_CLOSED_PREFIX):
+        return "closed"
+    if status in ACRA_OPEN or status.startswith(ACRA_OPEN_PREFIX):
+        return "open"
+    return "unknown"
 
 
 def acra_status(rows: list[dict[str, str]]) -> dict[str, str]:
@@ -203,14 +235,27 @@ def acra_status(rows: list[dict[str, str]]) -> dict[str, str]:
         ds = ids.get(letter if letter.isalpha() else "Others", ids.get("Others"))
         q = urllib.parse.urlencode({"resource_id": ds, "filters": json.dumps({"uen": r["uen"]})})
         try:
-            rec = get_json(f"https://data.gov.sg/api/action/datastore_search?{q}")["result"]["records"]
+            records = get_json(f"https://data.gov.sg/api/action/datastore_search?{q}")["result"]["records"]
+            if records == []:
+                raise ValueError("no matching record; closure unresolved")
+            if not isinstance(records, list) or len(records) != 1 or not isinstance(records[0], dict):
+                raise ValueError("expected a single matching record; closure unresolved")
+            status = records[0].get("entity_status_description")
+            if not isinstance(status, str) or not status.strip():
+                raise ValueError("missing or invalid status; closure unresolved")
         except Exception as e:
             print(f"  ACRA {r['uen']}: {e}", file=sys.stderr)
             ACRA_FAILED.append(r["place_id"])
             continue
-        status = rec[0]["entity_status_description"] if rec else "not found"
-        if status != r["status"] and status.casefold() in {"ceased", "ceased registration", "struck off"}:
+        if status == r["status"]:
+            continue
+        kind = acra_closure_kind(status)
+        if kind == "closed":
             out[r["place_id"]] = f"ACRA {r['status']} -> {status}"
+        elif kind == "open":
+            print(f"  ACRA {r['uen']}: status {status!r} is not a closure", file=sys.stderr)
+        else:
+            print(f"  ACRA {r['uen']}: unknown status {status!r}, not counted as a closure; review it", file=sys.stderr)
     return out
 
 
