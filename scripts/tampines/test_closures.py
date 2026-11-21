@@ -73,6 +73,9 @@ class EventDatesTest(unittest.TestCase):
             f"typo\t2027-11-16\t{SOURCE}\t\n"
         ), {})
 
+    def test_unparsable_link_gives_no_date(self):
+        self.assertEqual(self.dates("p2\t2027-11-16\thttps://[broken\t\n"), {})
+
     def test_missing_file_gives_no_dates(self):
         self.assertEqual(read_event_dates(Path("/nonexistent/closure-dates-reviewed.tsv"), {"p1"}), {})
 

@@ -35,7 +35,10 @@ def read_event_dates(path: Path, place_ids: set[str]) -> dict[str, str]:
     bad: set[str] = set()
     for r in rows:
         pid, day, source = r.get("id"), iso_day(r.get("closed_on")), r.get("source_url") or ""
-        parts = urlsplit(source) if not any(c.isspace() for c in source) else None
+        try:
+            parts = urlsplit(source) if not any(c.isspace() for c in source) else None
+        except ValueError:
+            parts = None
         if pid not in place_ids or day is None or not parts or parts.scheme != "https" or not parts.netloc:
             if pid:
                 bad.add(pid)
