@@ -191,7 +191,7 @@ export const PARTS: readonly Part[] = [
       series: { need: true, test: /^\d+(\.\d+){0,4}$/, help: "the SingStat CPI series number of table M213751, such as 1.01.4.4 for eggs" },
       month: { need: true, test: /^\d{4}-\d\d$/, date: "any", help: "the month the call is about, as YYYY-MM" },
       low: { need: true, test: /^\d{1,4}(\.\d{1,2})?$/, help: "the bottom of the 80% range, as an index value" },
-      mid: { need: true, test: /^\d{1,4}(\.\d{1,2})?$/, help: "the middle guess, as an index value" },
+      mid: { need: true, test: /^\d{1,4}(\.\d{1,2})?$/, help: "the model point forecast, as an index value" },
       high: { need: true, test: /^\d{1,4}(\.\d{1,2})?$/, help: "the top of the 80% range, as an index value" },
       made: { need: true, test: DATE, date: "past", help: "the day the call was made, as YYYY-MM-DD. It must be before the month of the call." },
       model: { need: true, test: /^[a-z0-9-]{1,30}$/, help: "the forecast that made it, such as baseline, world-a or tariff, as named in scripts/prices/passthrough.py" },
@@ -418,7 +418,7 @@ export interface Scored {
   call: Note;
   outcome?: Note;
   inside?: boolean;
-  miss?: number; // the middle against the outcome, in percent
+  miss?: number; // the point forecast against the outcome, in percent
 }
 
 export function scoreCalls(calls: Note[], outcomes: Note[]): { rows: Scored[]; resolved: number; inside: number; miss: number; pinball: number } {
@@ -437,7 +437,8 @@ export function scoreCalls(calls: Note[], outcomes: Note[]): { rows: Scored[]; r
     const [low, mid, high] = [Number(call.fields.low), Number(call.fields.mid), Number(call.fields.high)];
     const hit = low <= actual && actual <= high;
     const m = (100 * Math.abs(mid - actual)) / actual;
-    // Pinball loss of the 10%, 50% and 90% points, as a percent of the outcome. Lower is better.
+    // Apply pinball levels to the lower bound, model point and upper bound, then divide by the outcome.
+    // These are loss parameters, not a claim that all three inputs are fitted quantiles.
     const loss = (q: number, x: number) => (actual >= x ? q * (actual - x) : (1 - q) * (x - actual));
     pinball += (100 * (loss(0.1, low) + loss(0.5, mid) + loss(0.9, high))) / 3 / actual;
     if (hit) inside++;

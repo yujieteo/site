@@ -125,3 +125,10 @@ A monthly scheduled check runs `scripts/tampines/check.py`. It finds new article
   - Wingstop's second outlet, Tampines Mall #04-23 to 25 (the mall's store list), is a note on the page only. The study's place list and prices are for Our Tampines Hub.
   - Jin Kimchi Express: the flagged date was right. Its review was published on 27 February 2023, and the rule gives the row that date. Nothing changed.
   - The refit used the same model, priors, gates, seed and draws. `forecasts.tsv` is unchanged.
+- 21 November 2026, before any closure forecast resolved, from issue #139:
+  - The closure forecast counts closures that happened by 15 November 2027. The checker scans ACRA and OpenStreetMap after that date too. It used to count any evidence it held on the scoring run, so a closure on 16 November 2027 could change the score.
+  - ACRA gives no cessation date, and an OpenStreetMap edit date is the date of the edit, not of the closure. The date the checker first records the evidence (`first_seen` in `status.tsv`) therefore says only that the closure happened on or before that date.
+  - Rule: a place with closure evidence counts as closed by the deadline when a reviewed closure date in `closure-dates-reviewed.tsv` is on or before 15 November 2027. A reviewed date after the deadline means the place counts as not closed. With no reviewed date, evidence first recorded on or before 15 November 2027 counts as closed. Evidence first recorded after the deadline, or with no recorded date, stays unresolved until a reviewed date is added. While any place is unresolved, the closure score is not computed.
+  - A place whose closure date cannot be found keeps the score unresolved. How to settle it will be decided and recorded here before the score is computed.
+  - The checker also failed to record `first_seen` for new evidence, because every place already had a row with a blank date. It now records the run date.
+  - The closure definition above, the deadline, the baseline and `forecasts.tsv` are unchanged.

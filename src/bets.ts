@@ -27,11 +27,12 @@ export interface Bet {
   q: number;
   factor: number | null;
   running: number;
+  repeatOf: string | null;
   fermi: { text: string; url: string };
 }
 
 // How much a bettor's bankroll is multiplied by the outcome, against a bettor who takes the market price.
-// Its expected value is 1 when the market price is right, so the running product is an e-value.
+// Its expected value is 1 if the scoring price equals the conditional YES probability.
 export function factor(f: Record<string, string>): number | null {
   if (f.outcome !== "yes" && f.outcome !== "no") return null;
   const q = clip(Number(f.price));
@@ -91,16 +92,24 @@ export function checkBets(notes: Note[]): void {
   }
 }
 
-// In time order. Each person's running e-value multiplies the factors of their settled bets so far.
+// Count the first occurrence of each author and exact recorded market URL, in posting order.
+// Keep every row; a settled repeat uses a neutral multiplier rather than creating another stake.
 export function scoreBets(notes: Note[]): Bet[] {
   const order = [...notes].sort((a, b) => (a.fields.made ?? "").localeCompare(b.fields.made ?? "") || a.id.localeCompare(b.id));
   const bank = new Map<string, number>();
+  const marketsByPerson = new Map<string, Map<string, string>>();
   return order.map((note) => {
     const f = note.fields;
     const by = f.by ?? "";
-    const x = factor(f);
+    const market = f.market ?? "";
+    const seen = marketsByPerson.get(by) ?? new Map<string, string>();
+    const repeatOf = seen.get(market) ?? null;
+    if (repeatOf === null) seen.set(market, note.id);
+    marketsByPerson.set(by, seen);
+    const raw = factor(f);
+    const x = repeatOf !== null && raw !== null ? 1 : raw;
     const running = (bank.get(by) ?? 1) * (x ?? 1);
     bank.set(by, running);
-    return { note, q: clip(Number(f.price)), factor: x, running, fermi: fermi(f.fermi ?? "") };
+    return { note, q: clip(Number(f.price)), factor: x, running, repeatOf, fermi: fermi(f.fermi ?? "") };
   });
 }

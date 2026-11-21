@@ -36,7 +36,8 @@ from pathlib import Path
 import numpy as np
 import openpyxl
 
-ROOT = Path(os.environ.get("PRICES_DIR", Path.home() / "data/library/sg-prices")) / "upstream"
+PRICES_DIR = os.environ.get("PRICES_DIR")
+ROOT = (Path(PRICES_DIR) if PRICES_DIR is not None else Path.home() / "data/library/sg-prices") / "upstream"
 START_EVAL = (2020, 1)
 HORIZONS = (3, 12)
 MIN_TRAIN = 36
@@ -363,9 +364,9 @@ if __name__ == "__main__" and "--stack" not in sys.argv:
     main()
 
 
-# The share of a shelf price that is the imported good itself. Shelf: the median price per kg or litre of the
-# everyday kind on the newest saved day. Import: Singapore's import value per kg over the last 12 months
-# that Comtrade has, in S$, before GST, freight inside Singapore, packing and margins.
+# Compare shelf and import prices. Shelf: the median by unit of the everyday kind on the newest saved day.
+# Import: Singapore's import value per kg over the last 12 months that Comtrade has, in S$, before GST,
+# freight inside Singapore, packing and margins. Only kg shelf prices have a comparable import share.
 STACK = {
     "eggs": ("0407", "eggs", "caged"),
     "rice": ("1006", "rice", "fragrant"),
@@ -405,12 +406,20 @@ def stack_table() -> str:
                 m = re.search(r"(\d+)\s?g", r["pack"].lower()) or re.search(r"(\d+)\s?g", r["name"].lower())
                 if m:
                     per.append(float(r["paid"]) / (int(m.group(1)) / 1000))
-            unit = "kg"
+            by_unit = {"kg": per}
         else:
-            per = [float(r["perUnit"]) for r in picks if r["unit"] in ("kg", "L")]
-            unit = picks[0]["unit"] if picks else ""
-        shelf = float(np.median(per)) if per else math.nan
-        lines.append("\t".join(str(x) for x in [good, hs, len(last), f"{value:.2f}", kind or "all", len(per), f"{shelf:.2f}", unit, f"{100 * value / shelf:.0f}" if per and last else "nan"]))
+            by_unit = {}
+            for unit in ("kg", "L"):
+                per = [float(r["perUnit"]) for r in picks if r["unit"] == unit]
+                if per:
+                    by_unit[unit] = per
+        for unit, per in (by_unit or {"": []}).items():
+            shelf = float(np.median(per)) if per else math.nan
+            share = f"{100 * value / shelf:.0f}" if unit == "kg" and per and last else "nan"
+            lines.append("\t".join(str(x) for x in [
+                good, hs, len(last), f"{value:.2f}", kind or "all", len(per),
+                f"{shelf:.2f}", unit, share,
+            ]))
     return "\n".join(lines) + "\n"
 
 

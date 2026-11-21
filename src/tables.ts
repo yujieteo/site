@@ -91,7 +91,7 @@ function products(): Table {
       SGD("unit_price_low_sgd", "The unit price, per unit_price_per, or the low end of a range. Empty where unit_price holds no single figure or range. Compare rows only where unit_price_per is the same: some items mix units."),
       SGD("unit_price_high_sgd", "The high end of the unit price range; equal to unit_price_low_sgd for one figure."),
       asOf("For a row from notes, the day the agent saw the price. For a base row, 2026-11 (read on 8 and 9 November 2026), or the day its line in life-data.ts changed after 11 November, when it was read again."),
-      { name: "pick", type: "boolean", required: true, description: "true for the item's pick: the cheapest product that passes the item's quality check. At most one per item." },
+      { name: "pick", type: "boolean", required: true, description: "true for the item's pick: the cheapest product that passes its quality check, excluding offers past their recorded end date in Singapore on the build day. At most one per item." },
       { name: "listing", type: "boolean", required: true, description: "true where the price is from a search listing, not an opened product page." },
       { name: "unit_price_per", type: "string", description: "What unit_price_low_sgd is per, as the display string gives it, such as /kg or /100 ml. Empty where there is no unit price figure." },
       { name: "until", type: "date", description: "The last day of an offer price, for rows from notes. A base row's offer end, if any, is only in the price display string, without a year." },
@@ -159,7 +159,7 @@ function calls(calls: Note[], outcomes: Note[]): Table {
       { name: "series", type: "string", required: true, description: "The CPI series number in table M213751, such as 1.01.4.4 for eggs." },
       { name: "month", type: "string", required: true, pattern: "^\\d{4}-\\d\\d$", description: "The month the call is about, YYYY-MM." },
       { name: "low", type: "number", required: true, description: "The bottom of the 80% range, as an index value." },
-      { name: "mid", type: "number", required: true, description: "The middle guess, as an index value." },
+      { name: "mid", type: "number", required: true, description: "The model point forecast, as an index value; not fitted as the median." },
       { name: "high", type: "number", required: true, description: "The top of the 80% range, as an index value." },
       { name: "start_value", type: "number", description: "The index value the call starts from, as its text states." },
       { name: "start_month", type: "string", pattern: "^\\d{4}-\\d\\d$", description: "The month of start_value, YYYY-MM." },
@@ -224,17 +224,18 @@ const BET_COLUMNS: readonly Column[] = [
   { name: "outcome", type: "string", required: true, enum: ["open", "yes", "no", "void"], description: "open, or how the source resolved." },
   { name: "settled", type: "date", description: "The day the source resolved." },
   { name: "evidence", type: "string", description: "The page of the source that shows the resolution." },
-  { name: "factor", type: "number", description: "The settled bet's factor against the market price, unrounded. Empty while open or void." },
-  { name: "running_e", type: "number", required: true, description: "The person's running e-value after this bet: the product of their settled factors so far, unrounded." },
+  { name: "factor", type: "number", description: "The multiplier applied to the running score, unrounded. Only the first bet per person and market uses the price rule; settled repeats are 1. Empty while open or void." },
+  { name: "running_e", type: "number", required: true, description: "The person's running product of applied factors so far, unrounded. Conditional pricing can justify an e-value interpretation; marginal calibration alone is insufficient." },
   { name: "revises", type: "string", description: "The id of an earlier bet by the same person that this one revises." },
   { name: "correction", type: "string", description: "What changed after a dispute, and why." },
   asOf("The day the bet settled, or the day its line in notes/forecasts.tsv last changed while it is open."),
+  { name: "repeat_of", type: "string", description: "ID of the earliest row by the same person for the exact recorded market URL; empty for the first row." },
 ];
 
 function bets(scored: Bet[]): Table {
   return {
     name: "bets", path: "api/bets.txt", title: "Scored bets",
-    description: "The bet ledger of the 40 ranked forecasters in time order, with each settled bet's factor against that day's market price and each person's running e-value. /forecasters.html is built from it.",
+    description: "The bet ledger of the 40 ranked forecasters in time order, with each settled bet's applied factor and each person's running product. /forecasters.html is built from it.",
     sources: [notesFile("forecasts")],
     primaryKey: ["id"],
     columns: BET_COLUMNS,
@@ -243,7 +244,7 @@ function bets(scored: Bet[]): Table {
       const row: Row = {};
       for (const column of BET_COLUMNS) row[column.name] = f[column.name] ?? null;
       const num = (v: string | undefined) => (v === undefined || v === "" ? null : Number(v));
-      return { ...row, id: bet.note.id, quote: bet.note.text, p: num(f.p), price: num(f.price), fermi: bet.fermi.text, fermi_url: bet.fermi.url === "" ? null : bet.fermi.url, factor: bet.factor, running_e: bet.running, as_of: f.settled ?? lineDay("notes/forecasts.tsv", [`${bet.note.id}\t`]) };
+      return { ...row, id: bet.note.id, quote: bet.note.text, p: num(f.p), price: num(f.price), fermi: bet.fermi.text, fermi_url: bet.fermi.url === "" ? null : bet.fermi.url, factor: bet.factor, running_e: bet.running, repeat_of: bet.repeatOf, as_of: f.settled ?? lineDay("notes/forecasts.tsv", [`${bet.note.id}\t`]) };
     }),
   };
 }

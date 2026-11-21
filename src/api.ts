@@ -13,9 +13,16 @@ export { SITE };
 
 // The version of the tables in datapackage.json. A new column raises the minor number. A column is never
 // renamed, retyped or removed; tests/schema.test.ts checks that against tests/schema-frozen.json.
-export const SCHEMA_VERSION = "1.1.0";
+export const SCHEMA_VERSION = "1.2.0";
 
 export const CHANGELOG: readonly { version: string; date: string; changes: readonly string[] }[] = [
+  {
+    version: "1.2.0",
+    date: "2026-11-20",
+    changes: [
+      "bets gains repeat_of, the ID of a person's first row on the same recorded market. A settled repeat keeps its quote and outcome but uses a neutral factor of 1.",
+    ],
+  },
   {
     version: "1.1.0",
     date: "2026-11-15",

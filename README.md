@@ -28,7 +28,7 @@ The build publishes each file as `/notes/PART.txt`, because the server sends `.t
 - Columns are only added, at the end of a table. `tests/schema.test.ts` holds the tables to `tests/schema-frozen.json`. To add a column, append it, raise `SCHEMA_VERSION`, add a `CHANGELOG` entry in `src/api.ts`, and append it to the frozen file.
 - `bun test` runs that check and the bad notes lines in `tests/notes/bad.txt`, each of which must stop the build. `tests/notes/gaps.txt` lists bad lines the rules do not catch yet. It also builds the whole site and checks it before a release: every page has one `h1`, a `lang` and a `title`, every link inside the site and every `#` target resolves, and the served `style.css` is no larger than its limit in `tests/build.test.ts`.
 - After a deploy, run `bun scripts/api/verify.ts` and `uvx --from 'frictionless==5.18.0' frictionless validate https://teoyujie.org/api/datapackage.json`.
-- `tests/questions/`: `derive.ts` writes 30 questions with answers taken from the source data, `run.py` records a model answering them from `/llms.txt` alone, and `score.py` scores exact match, tokens fetched and date cited.
+- `tests/questions/`: `derive.ts` writes 30 questions with answers taken from the source data, `run.py` records a model answering them from `/llms.txt` alone, and `score.py` scores exact match, tokens fetched, date cited, and whether each cited URL was successfully fetched.
 
 ## Deploy
 
@@ -38,3 +38,9 @@ The build publishes each file as `/notes/PART.txt`, because the server sends `.t
 4. Run `scripts/deploy.sh`. It builds the site, sends it, and checks the key pages: each must answer 200 with its security and cache headers, a repeat request must get 304, and the live manifest must name the commit.
 
 To roll back, run `scripts/deploy.sh COMMIT` with the last good commit. It builds that commit in a fresh clone and sends it with the same checks.
+
+The post-deploy verifier requires both the static and live manifests.
+For a static preview without live feeds, run
+`bun scripts/api/verify.ts PREVIEW_URL --allow-missing-feeds`. Only HTTP 404
+for the live manifest is skipped, and the verifier reports that the live feeds
+were not checked.

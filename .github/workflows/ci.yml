@@ -1,0 +1,69 @@
+# Builds the site and runs the tests on the self-hosted runner on the NixOS desktop.
+# This workflow uses no secrets, does not deploy, and calls no model API. The question runs in
+# tests/questions/run.py and run_claude.py call a model, so they stay out of CI on purpose.
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# The job only reads the code, so the token gets read access to the contents and nothing else.
+permissions:
+  contents: read
+
+# A new push to a pull request cancels the run for the older commit, because only the newest result matters.
+# Runs on main are never cancelled, so every commit on main keeps a result.
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  check:
+    runs-on: [self-hosted, desktop]
+    # A normal run takes about one minute. The limit stops a stuck job from holding the only runner.
+    timeout-minutes: 20
+    # The README asks for Bun 1.4.4, but the runner's registry nixpkgs has Bun 1.3.13.
+    # This nixpkgs commit (nixos-unstable) has Bun 1.4.4, so every run gets the same Bun.
+    env:
+      BUN: github:NixOS/nixpkgs/0bb8272318b4ca41bf0edc6224df3e3e3046b70d#bun
+    steps:
+      # The build dates table rows with git blame, so it needs the full history, not one commit.
+      # The job never pushes, so the token is not kept in the clone.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      # Each job runs as a new user with no home folder. Nix and Bun keep caches under HOME,
+      # so give them an empty folder in the job's temporary space.
+      - name: Make a home folder
+        run: |
+          mkdir -p "$RUNNER_TEMP/home"
+          echo "HOME=$RUNNER_TEMP/home" >> "$GITHUB_ENV"
+
+      - name: Check the Bun version
+        run: |
+          version=$(nix shell "$BUN" -c bun --version)
+          echo "Bun ${version}"
+          test "${version}" = 1.4.4
+
+      # The build checks every line in notes/ and stops on a bad one.
+      - name: Build the site
+        run: nix shell "$BUN" -c bun src/build.ts --out "$RUNNER_TEMP/dist"
+
+      # This runs tests/schema.test.ts and tests/notes/bad.test.ts.
+      - name: Run the tests
+        run: nix shell "$BUN" -c bun test
+
+      # tests/questions/questions.jsonl is written from the source data and committed.
+      # Writing it again must give the same file, or the committed answer key is out of date.
+      - name: Check that the question file matches the data
+        run: |
+          nix shell "$BUN" -c bun tests/questions/derive.ts
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "The build or derive.ts changed files in the repository. Commit the new output:"
+            git status --porcelain
+            git diff
+            exit 1
+          fi
