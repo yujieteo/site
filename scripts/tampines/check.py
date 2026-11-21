@@ -8,7 +8,7 @@ It looks for:
    named_by forecasts for the places in that scope;
 2. ACRA status changes for the matched entities;
 3. OpenStreetMap changes for the matched elements (deleted, renamed, or a disused:/was: prefix);
-4. a 2027 MICHELIN Guide Singapore Bib Gourmand list.
+4. reviewed 2027 MICHELIN Guide Singapore Bib Gourmand and star outcomes.
 
 It appends to research/tampines/scores.tsv and research/tampines/new_articles.tsv and rewrites
 research/tampines/status.tsv (one row per place: closed evidence so far). It never edits
@@ -32,6 +32,7 @@ from bs4 import BeautifulSoup
 
 sys.path.insert(0, str(Path(__file__).parent))
 import guides  # noqa: E402
+from michelin import read_selection  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
 RES = ROOT / "research/tampines"
@@ -208,27 +209,6 @@ def osm_status(rows: list[dict[str, str]]) -> dict[str, str]:
     return out
 
 
-def michelin_2027(places) -> tuple[bool, set[str], str]:
-    """Look for coverage of a 2027 Singapore Bib Gourmand list on the outlets' search APIs."""
-    pats = guides.build_patterns(places)
-    for outlet, host in WP.items():
-        try:
-            posts = get_json(f"https://{host}/wp-json/wp/v2/posts?search=bib%20gourmand%202027&per_page=10&_fields=link,title")
-        except Exception:
-            continue
-        for post in posts:
-            title = BeautifulSoup(post["title"]["rendered"], "html.parser").get_text().lower()
-            if "bib gourmand" in title and "2027" in title and "singapore" in title:
-                html, _ = guides.fetch(post["link"])
-                text = guides.body_text(BeautifulSoup(html, "html.parser"))
-                # The page names stalls across Singapore; a name counts only near a Tampines address.
-                found = set(guides.find_mentions(text, places, pats, post["link"], "all"))
-                low = guides.norm(text)
-                near = {pid for pid in found if any(abs(m.start() - t.start()) < 300 for m in pats[pid].finditer(low) for t in re.finditer(r"tampines|\b52\d{4}\b", low))}
-                return True, near, post["link"]
-    return False, set(), ""
-
-
 def main() -> None:
     places = guides.load_places()
     forecasts = read(RES / "forecasts.tsv")
@@ -262,14 +242,15 @@ def main() -> None:
     else:
         scores.append([TODAY, "closed_by", sum(1 for r in status_rows if r[2]), "", "", "", f"places with closure evidence so far; ACRA lookups failed this run: {len(ACRA_FAILED)}; resolves {END}"])
 
-    seen, listed, source = michelin_2027(places)
-    if seen:
-        mf = [f for f in forecasts if f["target"] == "michelin_next"]
+    mf = [f for f in forecasts if f["target"] == "michelin_next"]
+    selection = read_selection(RES / "michelin-2027-reviewed.json", 2027, {f["id"] for f in mf})
+    if selection is not None:
+        listed, sources = selection
         pairs = [(float(f["p_model"]), int(f["id"] in listed)) for f in mf]
         base = [(float(f["p_baseline"]), int(f["id"] in listed)) for f in mf]
-        scores.append([TODAY, "michelin_next", len(pairs), *score_line(pairs, base), f"from {source}; Tampines entries: {' '.join(sorted(listed)) or 'none'}"])
+        scores.append([TODAY, "michelin_next", len(pairs), *score_line(pairs, base), f"from {' '.join(sources)}; Tampines entries: {' '.join(sorted(listed)) or 'none'}"])
     else:
-        scores.append([TODAY, "michelin_next", 0, "", "", "", "2027 list not found yet"])
+        scores.append([TODAY, "michelin_next", 0, "", "", "", "awaiting reviewed 2027 Bib Gourmand and star lists"])
     append(RES / "scores.tsv", ["run", "target", "n", "brier_model", "brier_baseline", "skill", "note"], scores)
     for s in scores:
         print("\t".join(str(x) for x in s))
