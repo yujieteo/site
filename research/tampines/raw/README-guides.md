@@ -4,7 +4,7 @@ Collected 2026-11-15. Everything here is rebuilt by:
 
     uv run --with beautifulsoup4 python scripts/tampines/guides.py --michelin
 
-The script reads `scripts/tampines/guide_urls.tsv` (the curated list) and `michelin_lists.tsv`. It fetches with a cache outside the repo (`GUIDES_CACHE`, default the session scratchpad), at most 1 request per second per host. It writes `articles.tsv`, `mentions.tsv` and `michelin.tsv`. Only facts are stored: titles, dates, URLs, flags and numbers. Sponsorship evidence is at most 10 words. No Google, Tripadvisor or Foursquare ratings are stored.
+The script reads `scripts/tampines/guide_urls.tsv` (the curated list) and `michelin_lists.tsv`. It fetches with a cache outside the repo (`GUIDES_CACHE`, default `~/.cache/tampines-guides`), at most 1 request per second per host. It writes `articles.tsv`, `mentions.tsv` and `michelin.tsv`. Only facts are stored: titles, dates, URLs, flags and numbers. Sponsorship evidence is at most 10 words. No Google, Tripadvisor or Foursquare ratings are stored.
 
 ## How the list was built
 

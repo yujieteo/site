@@ -35,7 +35,7 @@ for (const cells of lines("notes/calls.tsv")) {
   const [year, month] = field("month").split("-");
   const key = `${year} ${MONTHS[Number(month) - 1]}`;
   const value = series.get(field("series"))?.get(key);
-  if (value === undefined || value === "" || Number.isNaN(Number(value))) continue;
+  if (value === undefined || value === "" || !Number.isFinite(Number(value)) || Number(value) <= 0) continue;
   appendFileSync("notes/outcomes.tsv", `${id}\t0\tSingStat M213751, ${field("series")}, ${key}\tactual=${Number(value)}\turl=${TABLE}\tdate=${day}\n`);
   added++;
 }

@@ -105,13 +105,32 @@ def scope_of(title: str) -> str | None:
     return "all"
 
 
+def article_pages(host: str):
+    query = urllib.parse.urlencode({
+        "search": "tampines", "after": START + "T00:00:00", "before": END + "T23:59:59",
+        "per_page": 50, "_fields": "date,link,title", "order": "asc", "orderby": "date",
+    })
+    page = 1
+    while True:
+        try:
+            posts = get_json(f"https://{host}/wp-json/wp/v2/posts?{query}&page={page}")
+        except urllib.error.HTTPError as error:
+            if page > 1 and error.code == 400 and json.loads(error.read()).get("code") == "rest_post_invalid_page_number":
+                return
+            raise
+        yield from posts
+        if len(posts) < 50:
+            return
+        page += 1
+
+
 def new_articles(places, known: set[str]) -> list[list]:
     pats = guides.build_patterns(places)
     _, areas = guides.read_urls()
     out = []
     for outlet, host in WP.items():
         try:
-            posts = get_json(f"https://{host}/wp-json/wp/v2/posts?search=tampines&after={START}T00:00:00&per_page=50&_fields=date,link,title")
+            posts = list(article_pages(host))
         except Exception as e:  # an outlet that is down is skipped this month
             print(f"  {outlet}: {e}", file=sys.stderr)
             continue
@@ -120,12 +139,17 @@ def new_articles(places, known: set[str]) -> list[list]:
             if url in known or day > END:
                 continue
             title = BeautifulSoup(post["title"]["rendered"], "html.parser").get_text()
-            html, _ = guides.fetch(url)
-            text = guides.body_text(BeautifulSoup(html, "html.parser")) if html else ""
+            html, info = guides.fetch(url)
+            if info.get("status") != 200 or not html:
+                continue
+            text = guides.body_text(BeautifulSoup(html, "html.parser"))
+            if not text.strip():
+                continue
             sponsored, _ = guides.sponsorship(text)
             scope = scope_of(title)
-            named = guides.find_mentions(text, places, pats, url, scope or "all") if text else {}
+            named = guides.find_mentions(text, places, pats, url, scope or "all")
             inside = [p["id"] for p in places if scope and guides.in_scope(p, scope, areas)]
+            known.add(url)
             out.append([TODAY, outlet, url, day, title, scope or "single", int(bool(sponsored)), " ".join(sorted(named)), " ".join(inside)])
     return out
 
@@ -183,7 +207,7 @@ def acra_status(rows: list[dict[str, str]]) -> dict[str, str]:
             ACRA_FAILED.append(r["place_id"])
             continue
         status = rec[0]["entity_status_description"] if rec else "not found"
-        if status != r["status"]:
+        if status != r["status"] and status.casefold() in {"ceased", "ceased registration", "struck off"}:
             out[r["place_id"]] = f"ACRA {r['status']} -> {status}"
     return out
 
@@ -219,8 +243,12 @@ def michelin_2027(places) -> tuple[bool, set[str], str]:
         for post in posts:
             title = BeautifulSoup(post["title"]["rendered"], "html.parser").get_text().lower()
             if "bib gourmand" in title and "2027" in title and "singapore" in title:
-                html, _ = guides.fetch(post["link"])
+                html, info = guides.fetch(post["link"])
+                if info.get("status") != 200 or not html:
+                    continue
                 text = guides.body_text(BeautifulSoup(html, "html.parser"))
+                if not text.strip():
+                    continue
                 # The page names stalls across Singapore; a name counts only near a Tampines address.
                 found = set(guides.find_mentions(text, places, pats, post["link"], "all"))
                 low = guides.norm(text)
@@ -248,16 +276,16 @@ def main() -> None:
     status_rows = []
     for p in places:
         why = closed.get(p["id"]) or prev.get(p["id"], {}).get("evidence", "")
-        status_rows.append([p["id"], p["name"], why, prev.get(p["id"], {}).get("first_seen", TODAY) if why else ""])
+        status_rows.append([p["id"], p["name"], why, (prev.get(p["id"], {}).get("first_seen") or TODAY) if why else ""])
     with (RES / "status.tsv").open("w", newline="") as f:
         w = csv.writer(f, delimiter="\t", lineterminator="\n")
         w.writerow(["id", "name", "evidence", "first_seen"])
         w.writerows(status_rows)
     if TODAY >= END:
-        ev = {r[0]: r[2] for r in status_rows}
+        ev = {pid for pid, _, evidence, first_seen in status_rows if evidence and first_seen <= END}
         scored = [f for f in forecasts if f["target"] == "closed_by" and f["id"] not in CLOSED_BEFORE_FREEZE]
-        pairs = [(float(f["p_model"]), int(bool(ev.get(f["id"])))) for f in scored]
-        base = [(float(f["p_baseline"]), int(bool(ev.get(f["id"])))) for f in scored]
+        pairs = [(float(f["p_model"]), int(f["id"] in ev)) for f in scored]
+        base = [(float(f["p_baseline"]), int(f["id"] in ev)) for f in scored]
         scores.append([TODAY, "closed_by", len(pairs), *score_line(pairs, base), "resolved"])
     else:
         scores.append([TODAY, "closed_by", sum(1 for r in status_rows if r[2]), "", "", "", f"places with closure evidence so far; ACRA lookups failed this run: {len(ACRA_FAILED)}; resolves {END}"])

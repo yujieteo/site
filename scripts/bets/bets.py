@@ -122,23 +122,24 @@ def lw(query: str) -> dict:
 
 # --- Items: the text as its site serves it now ------------------------------------------------------
 def item(url: str) -> dict:
-    """{html, made, edited}: the item's HTML, when it was posted and when last edited (or None)."""
+    """{by, html, made, edited}: the item's author, HTML, when it was posted and when last edited (or None)."""
     u = urllib.parse.urlparse(url)
     if u.netloc == "news.ycombinator.com":
         hid = urllib.parse.parse_qs(u.query)["id"][0]
         r = fetch(f"https://hn.algolia.com/api/v1/items/{hid}")
-        return {"html": r.get("text") or "", "made": r["created_at_i"], "edited": None}
+        return {"by": r.get("author"), "html": r.get("text") or "", "made": r["created_at_i"], "edited": None}
     if u.netloc == "www.lesswrong.com":
         cid = urllib.parse.parse_qs(u.query).get("commentId", [None])[0]
         if cid:
-            r = lw(f'{{ comment(input:{{selector:{{_id:"{cid}"}}}}) {{ result {{ postedAt contents {{ html editedAt }} }} }} }}')["comment"]["result"]
+            r = lw(f'{{ comment(input:{{selector:{{_id:"{cid}"}}}}) {{ result {{ userId postedAt contents {{ html editedAt }} }} }} }}')["comment"]["result"]
         else:
             pid = u.path.split("/")[2]
-            r = lw(f'{{ post(input:{{selector:{{_id:"{pid}"}}}}) {{ result {{ postedAt contents {{ html editedAt }} }} }} }}')["post"]["result"]
+            r = lw(f'{{ post(input:{{selector:{{_id:"{pid}"}}}}) {{ result {{ userId postedAt contents {{ html editedAt }} }} }} }}')["post"]["result"]
         made = epoch(r["postedAt"])
         edited = (r.get("contents") or {}).get("editedAt")
         edited = epoch(edited) if edited and epoch(edited) - made > 86400 else None
-        return {"html": (r.get("contents") or {}).get("html") or "", "made": made, "edited": edited}
+        by = next((name for name, uid in LW if uid == r.get("userId")), None)
+        return {"by": by, "html": (r.get("contents") or {}).get("html") or "", "made": made, "edited": edited}
     raise ValueError(f"no reader for {url}")
 
 
@@ -203,7 +204,7 @@ def price(m: dict, t: float) -> tuple[float, float] | None:
         before = [x for x in h if x["t"] <= t]
         if before:
             return before[-1]["p"], before[-1]["t"]
-        return (h[0]["p"], h[0]["t"]) if h else None
+        return None  # A later price sample cannot establish the pre-post price.
     return None
 
 
@@ -276,7 +277,9 @@ def record(proposals: Path):
             it = items.get(prop["url"]) or items.setdefault(prop["url"], item(prop["url"]))
             text = text_of(it["html"])
             quote = " ".join(html.unescape(prop["quote"]).split())
-            if quote not in text:
+            if prop.get("by") != it["by"] or it["by"] not in HN + [name for name, _ in LW]:
+                why = "proposal must name the ranked author of the item"
+            elif not quote or quote not in text:
                 why = "quote not in the text"
             elif len(quote) > 300 or re.search(r"[<>\x00-\x1f]", quote):
                 why = "quote longer than 300 characters or holds < or >"
@@ -295,12 +298,15 @@ def record(proposals: Path):
             print("skip:", why, prop["url"], prop["market"], file=sys.stderr)
             continue
         p = prop.get("p")
-        f = {"by": prop["by"], "url": prop["url"], "made": iso(it["made"]), "edited": day(it["edited"]) if it["edited"] else "",
+        f = {"by": it["by"], "url": prop["url"], "made": iso(it["made"]), "edited": day(it["edited"]) if it["edited"] else "",
              "sha256": sha256(text), "archive": archive(prop["url"], it["made"]), "claim": clean(m["question"]),
              "p": f"{min(max(p, 0.0001), 0.9999):.4f}".rstrip("0") if p is not None else "", "side": "" if p is not None else prop["side"],
              "market": m["url"], "price": f"{min(max(pr[0], 0.0001), 0.9999):.4f}".rstrip("0"), "price_at": iso(pr[1]),
              "source": m["url"], "due": day(m["close"]) if m["close"] else "", "fermi": prop.get("fermi") or "none",
              "outcome": m["resolution"] or "open", "revises": prop.get("revises") or ""}
+        if m["resolution"] and not m["resolved_at"]:
+            skipped.append({**prop, "why": "market has no resolution date"})
+            continue
         if m["resolution"]:
             f["settled"], f["evidence"] = day(m["resolved_at"]), m["url"]
         if not f["due"]:
@@ -325,7 +331,7 @@ def resolve():
         if f.get("outcome") != "open":
             continue
         m = market(f["source"])
-        if m and m["resolution"]:
+        if m and m["resolution"] and m["resolved_at"]:
             f.update(outcome=m["resolution"], settled=day(m["resolved_at"]), evidence=m["url"])
             lines[i] = line_of(head, f)
             changed += 1

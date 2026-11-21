@@ -18,13 +18,13 @@ from bs4 import BeautifulSoup
 ROOT = Path(__file__).resolve().parents[2]
 RAW = ROOT / "research/tampines/raw"
 URLS = ROOT / "scripts/tampines/guide_urls.tsv"
-CACHE = Path(os.environ.get("GUIDES_CACHE", "/private/tmp/claude-501/-Users-yj-src/0ef9ddbc-ca79-4a24-92df-7b8061967ae5/scratchpad/guides-cache"))
+CACHE = Path(os.environ.get("GUIDES_CACHE", Path.home() / ".cache/tampines-guides"))
 UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15"
 OFFLINE = "--offline" in sys.argv
 _last = {}
 
 
-def fetch(url, binary=False):
+def fetch(url):
     """GET with a per-host 1 request/second limit and a disk cache keyed by URL."""
     CACHE.mkdir(parents=True, exist_ok=True)
     key = CACHE / (hashlib.sha1(url.encode()).hexdigest() + ".html")

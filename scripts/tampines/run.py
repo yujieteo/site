@@ -8,6 +8,7 @@ from __future__ import annotations
 import json
 import os
 import sys
+import tempfile
 from datetime import date
 from pathlib import Path
 
@@ -131,7 +132,7 @@ def run_fit() -> None:
     print("slowest R-hat:", ", ".join(f"{v} {r:.4f}" for r, v in slow))
     OUT.mkdir(parents=True, exist_ok=True)
     try:
-        idata.to_netcdf(str(Path(os.environ.get("TAMPINES_CACHE", "/private/tmp")) / "tampines-idata.nc"))
+        idata.to_netcdf(str(Path(os.environ.get("TAMPINES_CACHE", tempfile.gettempdir())) / "tampines-idata.nc"))
     except ImportError as e:  # the posterior cache is optional
         print(f"posterior not cached: {e}", file=sys.stderr)
 

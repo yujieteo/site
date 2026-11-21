@@ -29,13 +29,14 @@ used only from month t + its delay.
 import gzip
 import json
 import math
+import os
 import sys
 from pathlib import Path
 
 import numpy as np
 import openpyxl
 
-ROOT = Path.home() / "data/library/sg-prices/upstream"
+ROOT = Path(os.environ.get("PRICES_DIR", Path.home() / "data/library/sg-prices")) / "upstream"
 START_EVAL = (2020, 1)
 HORIZONS = (3, 12)
 MIN_TRAIN = 36
@@ -379,7 +380,7 @@ STACK = {
 def shelf_rows() -> list[dict]:
     import subprocess
 
-    out = subprocess.run(["bun", "scripts/prices/history.ts"], capture_output=True, text=True, check=True).stdout.splitlines()
+    out = subprocess.run(["bun", str(Path(__file__).with_name("history.ts"))], capture_output=True, text=True, check=True).stdout.splitlines()
     head = out[0].split("\t")
     return [dict(zip(head, line.split("\t"))) for line in out[1:]]
 
