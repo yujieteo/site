@@ -1,6 +1,7 @@
 import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
+import { checkBets } from "../../src/bets.ts";
 import * as life from "../../src/kit/life.ts";
 import { loadNotes } from "../../src/notes.ts";
 
@@ -53,10 +54,8 @@ export function build(c: Case): void {
     for (const [part, lines] of files) writeFileSync(join(dir, `${part}.tsv`), `${lines.join("\n")}\n`);
     const all = loadNotes(dir, join(root, "out"));
     life.useLifeNotes({ checks: all.checks ?? [], products: all.products ?? [], advice: all.advice ?? [] });
-    // src/ is being edited: productsList was renamed productRows. Use whichever exists.
-    const draw = (life as Record<string, unknown>).productsList ?? (life as Record<string, unknown>).productRows;
-    if (typeof draw !== "function") throw new Error("tests/notes: life.ts exports neither productsList nor productRows");
-    draw();
+    checkBets(all.forecasts ?? []);
+    life.productRows();
   } finally {
     life.useLifeNotes({ checks: [], products: [], advice: [] });
     rmSync(root, { recursive: true, force: true });

@@ -279,9 +279,10 @@ function parseLine(part: Part, line: string, where: string, known: Known | undef
     if (at < 1 || !field) throw new Error(`${where}: "${cell}" is not a field of ${part.name} notes`);
     if (key in fields) throw new Error(`${where}: the field ${key} appears twice`);
     if (!field.test.test(value)) throw new Error(`${where}: ${key} must be ${field.help}`);
+    if (field.test === STAMP && (!real(value.slice(0, 10)) || !Number.isFinite(Date.parse(value)) || value.slice(11, 13) >= "24")) throw new Error(`${where}: ${key} is not a real timestamp`);
     if (field.date && !real(value)) throw new Error(`${where}: ${key} ${value} is not a real date`);
     if (field.date === "past" && before(today(), value)) throw new Error(`${where}: ${key} ${value} is after today`);
-    if ((key === "price" || key === "per") && Number(value) <= 0) throw new Error(`${where}: ${key} must be more than 0`);
+    if ((key === "price" || key === "per" || key === "actual") && Number(value) <= 0) throw new Error(`${where}: ${key} must be more than 0`);
     fields[key] = value;
   }
   for (const [key, field] of Object.entries(part.fields)) {
@@ -299,6 +300,7 @@ function parseLine(part: Part, line: string, where: string, known: Known | undef
     const [low, mid, high] = [Number(fields.low), Number(fields.mid), Number(fields.high)];
     if (!(low <= mid && mid <= high)) throw new Error(`${where}: low, mid and high must be in order`);
     if (!before(fields.made ?? "", fields.month ?? "")) throw new Error(`${where}: the call was made on ${fields.made}, not before its month ${fields.month}`);
+    if (!id.endsWith(`-${fields.month}`)) throw new Error(`${where}: the call id must end with its month`);
   }
   if (part.name === "outcomes" && known instanceof Map) {
     const call = known.get(id) as Note | undefined;

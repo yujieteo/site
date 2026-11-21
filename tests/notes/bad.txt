@@ -545,3 +545,45 @@ baked-beans	50	Test Beans Tomato 230g	price=1.30	pack=230g	per=0.5652	shop=FairP
 # expect: points must be 0
 # why: documented rule, enforced since this branch: points not 0 where the part says Not used
 rice-thai-hom-mali-5-kg-double-fp-thai-hom-mali-premium-quality-fragrant-rice	50	Thai Hom Mali in the name	verdict=pass	url=https://www.fairprice.com.sg/product/double-fp-thai-hom-mali-premium-quality-fragrant-rice-5kg-13097846	date=2026-11-11
+
+# part: forecasts
+# expect: a settled bet needs settled and evidence
+# why: outcome=yes with no settled day and no evidence url
+1331bb41	0	Subject to specifying the terms, I would be on Marcus’ side of this for size, as is Michael Vassar, as is Eliezer Yudkowsky.	by=Zvi	url=https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	made=2023-10-26T13:30:02Z	sha256=f067994c45ed1d24ba54cd6ce47fcc82f4368a4f57a93903a42b3fc60fc4fbdc	archive=https://web.archive.org/web/20231026135024/https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	claim=Will we get hallucination rates down to human-expert levels by May 2024?	side=no	market=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	price=0.1701	price_at=2023-10-26T13:28:33Z	source=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	due=2024-05-02	fermi=none	outcome=yes
+
+# part: forecasts
+# expect: settled is before made
+# why: settled before made
+1331bb41	0	Subject to specifying the terms, I would be on Marcus’ side of this for size, as is Michael Vassar, as is Eliezer Yudkowsky.	by=Zvi	url=https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	made=2023-10-26T13:30:02Z	sha256=f067994c45ed1d24ba54cd6ce47fcc82f4368a4f57a93903a42b3fc60fc4fbdc	archive=https://web.archive.org/web/20231026135024/https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	claim=Will we get hallucination rates down to human-expert levels by May 2024?	side=no	market=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	price=0.1701	price_at=2023-10-26T13:28:33Z	source=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	due=2024-05-02	fermi=none	outcome=no	settled=2020-01-01	evidence=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow
+
+# part: forecasts
+# expect: edited is before made
+# why: edited before made
+1331bb41	0	Subject to specifying the terms, I would be on Marcus’ side of this for size, as is Michael Vassar, as is Eliezer Yudkowsky.	by=Zvi	url=https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	made=2023-10-26T13:30:02Z	sha256=f067994c45ed1d24ba54cd6ce47fcc82f4368a4f57a93903a42b3fc60fc4fbdc	archive=https://web.archive.org/web/20231026135024/https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	claim=Will we get hallucination rates down to human-expert levels by May 2024?	side=no	market=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	price=0.1701	price_at=2023-10-26T13:28:33Z	source=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	due=2024-05-02	fermi=none	outcome=no	settled=2024-05-02	evidence=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	edited=2020-01-01
+
+# part: forecasts
+# expect: price_at must be before the end
+# why: price_at after made: the price is not 'just before the item was posted'
+1331bb41	0	Subject to specifying the terms, I would be on Marcus’ side of this for size, as is Michael Vassar, as is Eliezer Yudkowsky.	by=Zvi	url=https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	made=2023-10-26T13:30:02Z	sha256=f067994c45ed1d24ba54cd6ce47fcc82f4368a4f57a93903a42b3fc60fc4fbdc	archive=https://web.archive.org/web/20231026135024/https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	claim=Will we get hallucination rates down to human-expert levels by May 2024?	side=no	market=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	price=0.1701	price_at=2023-12-01T00:00:00Z	source=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	due=2024-05-02	fermi=none	outcome=no	settled=2024-05-02	evidence=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow
+
+# part: forecasts
+# expect: revises must name an earlier bet
+# why: revises an id that no line has, and revises itself
+1331bb41	0	Subject to specifying the terms, I would be on Marcus’ side of this for size, as is Michael Vassar, as is Eliezer Yudkowsky.	by=Zvi	url=https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	made=2023-10-26T13:30:02Z	sha256=f067994c45ed1d24ba54cd6ce47fcc82f4368a4f57a93903a42b3fc60fc4fbdc	archive=https://web.archive.org/web/20231026135024/https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	claim=Will we get hallucination rates down to human-expert levels by May 2024?	side=no	market=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	price=0.1701	price_at=2023-10-26T13:28:33Z	source=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	due=2024-05-02	fermi=none	outcome=no	settled=2024-05-02	evidence=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	revises=1331bb41
+
+# part: forecasts
+# expect: the source must come from the market
+# why: source url on a different host from market (source must be the market's own resolution)
+1331bb41	0	Subject to specifying the terms, I would be on Marcus’ side of this for size, as is Michael Vassar, as is Eliezer Yudkowsky.	by=Zvi	url=https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	made=2023-10-26T13:30:02Z	sha256=f067994c45ed1d24ba54cd6ce47fcc82f4368a4f57a93903a42b3fc60fc4fbdc	archive=https://web.archive.org/web/20231026135024/https://www.lesswrong.com/posts/aQ6LDhc2zxrYXFjEF/ai-35-responsible-scaling-policies	claim=Will we get hallucination rates down to human-expert levels by May 2024?	side=no	market=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow	price=0.1701	price_at=2023-10-26T13:28:33Z	source=https://example.com/anything	due=2024-05-02	fermi=none	outcome=no	settled=2024-05-02	evidence=https://manifold.markets/ZviMowshowitz/will-we-get-hallucination-rates-dow
+
+# part: calls
+# expect: the call id must end with its month
+# why: id month differs from month field (eggs-2027-01 with month=2026-12)
+eggs-2027-01	0	The CPI for eggs in 2026-12 will be between 99.2 and 106.1, from 99.7 in 2026-09.	series=1.01.4.4	month=2026-12	low=99.25	mid=101.30	high=106.07	model=world-a	made=2026-11-10
+
+# part: outcomes
+# expect: actual must be more than 0
+# why: actual=0 is accepted as a CPI index value
+# setup: calls
+eggs-2026-09	0	The CPI for eggs in 2026-12 will be between 99.2 and 106.1, from 99.7 in 2026-09.	series=1.01.4.4	month=2026-09	low=99.25	mid=101.30	high=106.07	model=world-a	made=2026-08-01
+eggs-2026-09	0	SingStat M213751, 1.01.4.4, 2026 Sep	actual=0	url=https://tablebuilder.singstat.gov.sg/table/TS/M213751	date=2026-11-10

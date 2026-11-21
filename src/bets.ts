@@ -3,7 +3,7 @@ import { LIMITS } from "./kit/limits.ts";
 
 // The bet ledger in notes/forecasts.tsv. scripts/bets/bets.py writes its lines from raw APIs. The build
 // checks what one line cannot check alone, scores the settled bets against that day's market price, and
-// writes api/bets.tsv, which feed-update on the server turns into /forecasters.html each hour.
+// writes api/bets.txt, which feed-update on the server turns into /forecasters.html each hour.
 
 // The 40 people of the two rankings, by the names they give themselves there.
 export const PEOPLE: readonly string[] = [
@@ -71,7 +71,11 @@ export function checkBets(notes: Note[]): void {
     const day = (f.made ?? "").slice(0, 10);
     if (!(made < Date.now())) fail("made must be a past time");
     if (!(time(f.price_at ?? "") < Date.parse(day) + 86400000)) fail("price_at must be before the end of the day the bet was made");
-    if (!(f.archive ?? "").replace(/^https:\/\/web\.archive\.org\/web\/\d{14}\/(https?:\/\/)?(www\.)?/, "").startsWith((f.url ?? "").replace(/^https:\/\/(www\.)?/, ""))) fail("the archive snapshot must be of the url");
+    const target = (f.archive ?? "").replace(/^https:\/\/web\.archive\.org\/web\/\d{14}\//, "");
+    const withoutScheme = (url: string) => url.replace(/^(?:https?:\/\/)?(?:www\.)?/, "");
+    if (withoutScheme(target) !== withoutScheme(f.url ?? "")) fail("the archive snapshot must be of the url");
+    if (f.edited && f.edited < day) fail("edited is before made");
+    if (host(f.source ?? "") !== host(f.market ?? "")) fail("the source must come from the market");
     if (f.outcome === "open") {
       if (f.settled || f.evidence) fail("an open bet has no settled date and no evidence");
     } else {
