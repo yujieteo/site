@@ -311,7 +311,7 @@ The forecasts in this post use that winner. The range is where 80% of past misse
 - [Average retail prices, table M213761, SingStat ↗](https://tablebuilder.singstat.gov.sg/table/TS/M213761)
 - [Consumer Price Index, table M213751, SingStat ↗](https://tablebuilder.singstat.gov.sg/table/TS/M213751)
 - [Household expenditure, table M212981, SingStat ↗](https://tablebuilder.singstat.gov.sg/table/TS/M212981)
-- [Household Expenditure Survey 2023, SingStat ↗](https://www.singstat.gov.sg/publications/households/household-expenditure-survey)
+- [Household Expenditure Survey 2023, SingStat ↗](https://www.singstat.gov.sg/publication-resources/report-on-the-household-expenditure-survey-2023)
 - [Public holidays for 2027, MOM ↗](https://www.mom.gov.sg/newsroom/press-releases/2026/0618-public-holidays-for-2027)
 - [Middle East and food supply, Mothership ↗](https://mothership.sg/2026/03/grace-fu-middle-east-food-supply/)
 - [Food labels, SFA ↗](https://www.sfa.gov.sg/food-safety-tips/food-risk-concerns/understanding-food-nutrition-labels-before-purchase)
