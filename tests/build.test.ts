@@ -28,3 +28,58 @@ test("a failed rebuild preserves the last preview and unrelated directories", ()
     rmSync(dir, { recursive: true, force: true });
   }
 });
+
+// Release checks on a full build of the site. The paths below are served by the server's own jobs, not built here:
+// see etc/httpd.conf in the server repo.
+const SERVER_PATHS = ["/reading.html", "/reading.txt", "/forecasters.html", "/forecasters.txt", "/forecasters.xml", "/feed.xml", "/feeds-manifest.json", "/edmw.xml",
+  "/singapore-policy-actionables.html", "/singapore-policy-actionables.txt", "/singapore-policy-actionables.xml", "/contact.gpg", "/health.txt"];
+// The served style.css on 2026-11-21. The CSS must not grow.
+const CSS_LIMIT = 25724;
+
+test("the built site passes the release checks", () => {
+  const out = mkdtempSync(join(tmpdir(), "site-release-"));
+  try {
+    const built = Bun.spawnSync([process.execPath, "src/build.ts", "--out", out]);
+    expect(built.exitCode).toBe(0);
+    expect(Bun.file(join(out, "style.css")).size).toBeLessThanOrEqual(CSS_LIMIT);
+    const pages = [...new Bun.Glob("**/*.html").scanSync(out)].filter((page) => !page.startsWith("errdocs/"));
+    const ids = new Map<string, Set<string>>();
+    const html = new Map<string, string>();
+    for (const page of pages) {
+      const text = readFileSync(join(out, page), "utf8");
+      html.set(page, text);
+      ids.set(page, new Set([...text.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1] ?? "")));
+    }
+    const problems: string[] = [];
+    for (const [page, text] of html) {
+      if ((text.match(/<h1[\s>]/g) ?? []).length !== 1) problems.push(`${page}: needs exactly one h1`);
+      if (!/<html lang="[a-z]/.test(text)) problems.push(`${page}: no lang`);
+      if (!/<title>[^<]+<\/title>/.test(text)) problems.push(`${page}: no title`);
+      for (const m of text.matchAll(/\s(?:href|src)="([^"]+)"/g)) {
+        const link = (m[1] ?? "").replaceAll("&amp;", "&");
+        if (/^(?:[a-z]+:|\/\/)/i.test(link)) continue;
+        const [path = "", fragment] = link.split("#");
+        const base = `/${page}`.replace(/[^/]*$/, "");
+        const target = path === "" ? `/${page}` : new URL(path, `https://site${base}`).pathname;
+        if (SERVER_PATHS.includes(target) || target.startsWith("/f/")) continue;
+        const file = target.endsWith("/") ? `${target}index.html` : target;
+        if (!existsSync(join(out, decodeURIComponent(file)))) {
+          problems.push(`${page}: broken link ${link}`);
+          continue;
+        }
+        if (fragment && file.endsWith(".html") && !ids.get(file.slice(1))?.has(decodeURIComponent(fragment))) problems.push(`${page}: no id for ${link}`);
+      }
+    }
+    expect(problems).toEqual([]);
+  } finally {
+    rmSync(out, { recursive: true, force: true });
+  }
+});
+
+test("number columns line up on the right, and only number columns", async () => {
+  const { markTables } = await import("../src/pages.ts");
+  const table = "<table><thead><tr><th>Good</th><th>Miss</th><th>Lag</th><th>Month</th></tr></thead><tbody>" +
+    "<tr><td>Eggs</td><td>2.49% → 2.25%</td><td>9 months</td><td>2026-12</td></tr><tr><td>Rice</td><td>S$1,404</td><td></td><td>2027-01</td></tr></tbody></table>";
+  expect(markTables(table)).toBe("<table tabindex=\"0\"><thead><tr><th>Good</th><th class=\"num\">Miss</th><th>Lag</th><th>Month</th></tr></thead><tbody>" +
+    "<tr><td>Eggs</td><td class=\"num\">2.49% → 2.25%</td><td>9 months</td><td>2026-12</td></tr><tr><td>Rice</td><td class=\"num\">S$1,404</td><td></td><td>2027-01</td></tr></tbody></table>");
+});

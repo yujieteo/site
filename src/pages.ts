@@ -36,7 +36,7 @@ ${HEAD}
 ${head}</head>
 <body>
 ${header}
-${main}
+${markTables(main)}
 ${FOOT}
 ${tail}</body>
 </html>
@@ -49,6 +49,34 @@ function day(date: string): string {
 }
 
 const HEADER = `<header class="wrap"><a class="name" href="/">Yu Jie Teo</a></header>`;
+// The home page has no article, so the name is its one h1. h1 takes the look of its parent: see static/style.css.
+const HOME_HEADER = `<header class="wrap"><h1><a class="name" href="/">Yu Jie Teo</a></h1></header>`;
+
+// A number, a money amount or a percentage, and a range of two of them. A date is not a number here: it stays on the left.
+const NUMBER = String.raw`[−+~≈]?(?:S\$|US\$|\$)?\d[\d,]*(?:\.\d+)?%?`;
+const NUMBER_CELL = new RegExp(`^${NUMBER}(?:\\s*(?:→|–|&ndash;)\\s*${NUMBER}|\\s+(?:to|-)\\s+${NUMBER})?$`);
+
+// Rules for tables: a column whose filled body cells are all numbers gets class="num" on every cell, its head too,
+// so it lines up on the right and a number never breaks over two lines. A table of six columns or more gets
+// data-wide: on a wide screen it may use the width of a wide figure. tabindex="0" lets a keyboard scroll a table
+// that is wider than a phone screen (WCAG 2.1.1).
+export function markTables(html: string): string {
+  return html.replace(/<table>([\s\S]*?)<\/table>/g, (table, inner: string) => {
+    const rows = [...inner.matchAll(/<tr>([\s\S]*?)<\/tr>/g)].map((row) =>
+      [...(row[1] ?? "").matchAll(/<(td|th)>([\s\S]*?)<\/\1>/g)].map((cell) => ({ head: cell[1] === "th", text: (cell[2] ?? "").replace(/<[^>]+>/g, "").trim() })));
+    const width = Math.max(0, ...rows.map((row) => row.length));
+    const body = rows.filter((row) => !row.some((cell) => cell.head));
+    const numeric = Array.from({ length: width }, (_, i) => {
+      const filled = body.map((row) => row[i]?.text ?? "").filter((text) => text !== "" && text !== "–" && text !== "—");
+      return filled.length > 0 && filled.every((text) => NUMBER_CELL.test(text));
+    });
+    const marked = inner.replace(/<tr>([\s\S]*?)<\/tr>/g, (_row, cells: string) => {
+      let i = 0;
+      return `<tr>${cells.replace(/<(td|th)>/g, (_tag, tag: string) => (numeric[i++] ? `<${tag} class="num">` : `<${tag}>`))}</tr>`;
+    });
+    return `<table tabindex="0"${width >= 6 ? " data-wide" : ""}>${marked}</table>`;
+  });
+}
 
 interface Entry {
   href: string;
@@ -72,7 +100,7 @@ export function homePage(posts: Post[]): string {
   const items = entries.map(item);
   const list = items.length > 0 ? `<ol class="featured">${items.join("\n")}</ol>` : `<p class="muted">No posts yet.</p>`;
   const main = `<main class="wrap"><section id="posts"><h2>Posts</h2>${list}</section></main>`;
-  return shell("Yu Jie Teo", "Posts by Yu Jie Teo.", HEADER, main, []);
+  return shell("Yu Jie Teo", "Posts by Yu Jie Teo.", HOME_HEADER, main, []);
 }
 
 function contents(headings: Heading[]): string {

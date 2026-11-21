@@ -30,8 +30,9 @@ function renderBody(post: Post): { html: string; toc: ReturnType<typeof headings
 async function buildAssets(out: string): Promise<void> {
   cpSync("static/fonts", `${out}/fonts`, { recursive: true });
   cpSync("static/public", out, { recursive: true });
+  // The comments hold the sources of the rules. They stay in static/ for people who edit the CSS; readers do not download them.
   const css = readFileSync("static/kowalski.css", "utf8") + readFileSync("static/style.css", "utf8");
-  writeFileSync(`${out}/style.css`, css);
+  writeFileSync(`${out}/style.css`, css.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\n\s*\n/g, "\n"));
   const entrypoints = ["src/kit/entry/kit.ts"];
   for (const kind of FIGURE_KINDS) entrypoints.push(`src/kit/entry/${kind}.ts`);
   const built = await Bun.build({ entrypoints, outdir: `${out}/kit`, root: "src/kit/entry", minify: true, splitting: true, target: "browser" });

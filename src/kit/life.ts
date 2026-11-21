@@ -515,7 +515,7 @@ function byRise(a: Series, b: Series): number {
 const SHOP_KEY = `<p class="life-key"><span><i class="life-pass"></i>passes the check</span><span><i class="life-hollow"></i>check not shown</span><span><i class="life-fail"></i>fails</span><span><i></i>no check for this item</span><span><i class="life-ring"></i>the pick</span></p>`;
 
 function part(heading: string, id: string, key: string, rows: string, after: string): string {
-  return `<section${id === "" ? "" : ` id="${id}"`}><h4>${heading}</h4>${key}${rows === "" ? "" : `<ol class="life-rows">${rows}</ol>`}${after}</section>`;
+  return `<section${id === "" ? "" : ` id="${id}"`}><h3>${heading}</h3>${key}${rows === "" ? "" : `<ol class="life-rows">${rows}</ol>`}${after}</section>`;
 }
 
 // The four levers of a group, always all four and always in order. An empty one says so.

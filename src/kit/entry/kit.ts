@@ -8,11 +8,26 @@ function closeNotes(except: Element | null): void {
   }
 }
 
+// A note is centred on its marker. Near the edge of a phone screen it would run off the screen, so it moves back in.
+function keepInView(fn: Element): void {
+  const note = fn.querySelector<HTMLElement>(".fn-note");
+  if (!note) return;
+  note.style.marginLeft = "";
+  const box = note.getBoundingClientRect();
+  const edge = 8;
+  const width = document.documentElement.clientWidth;
+  const shift = box.right > width - edge ? width - edge - box.right : box.left < edge ? edge - box.left : 0;
+  if (shift !== 0) note.style.marginLeft = `${shift}px`;
+}
+
 function toggleNote(fn: Element): void {
   const open = fn.hasAttribute("data-open");
   closeNotes(fn);
   if (open) fn.removeAttribute("data-open");
-  else fn.setAttribute("data-open", "");
+  else {
+    fn.setAttribute("data-open", "");
+    keepInView(fn);
+  }
   fn.querySelector(".fn-ref")?.setAttribute("aria-expanded", String(!open));
 }
 
@@ -22,6 +37,10 @@ function wireNotes(): void {
     const fn = target?.closest(".fn") ?? null;
     if (fn && target?.closest(".fn-ref")) toggleNote(fn);
     else closeNotes(null);
+  });
+  document.addEventListener("focusin", (event) => {
+    const fn = event.target instanceof Element ? event.target.closest(".fn") : null;
+    if (fn) keepInView(fn);
   });
   document.addEventListener("keydown", (event) => {
     if (event.key !== "Escape") return;
