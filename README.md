@@ -26,7 +26,7 @@ The build publishes each file as `/notes/PART.txt`, because the server sends `.t
 - Columns are only added, at the end of a table. `tests/schema.test.ts` holds the tables to `tests/schema-frozen.json`. To add a column, append it, raise `SCHEMA_VERSION`, add a `CHANGELOG` entry in `src/api.ts`, and append it to the frozen file.
 - `bun test` runs that check and the bad notes lines in `tests/notes/bad.txt`, each of which must stop the build. `tests/notes/gaps.txt` lists bad lines the rules do not catch yet.
 - After a deploy, run `bun scripts/api/verify.ts` and `uvx --from 'frictionless==5.18.0' frictionless validate https://teoyujie.org/api/datapackage.json`.
-- `tests/questions/`: `derive.ts` writes 30 questions with answers taken from the source data, `run.py` records a model answering them from `/llms.txt` alone, and `score.py` scores exact match, tokens fetched and date cited.
+- `tests/questions/`: `derive.ts` writes 30 questions with answers taken from the source data, `run.py` records a model answering them from `/llms.txt` alone, and `score.py` scores exact match, tokens fetched, date cited, and whether each cited URL was successfully fetched.
 
 ## Deploy
 
