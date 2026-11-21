@@ -44,5 +44,5 @@ Raw data lives outside git, in `~/data/library/sg-prices/` (set `PRICES_DIR` to 
 2. `bun scripts/prices/upstream.ts`: SingStat CPI and average prices, the World Bank Pink Sheet, UN Comtrade imports and exchange rates. Run it after SingStat publishes a month (around the 23rd).
 3. `bun scripts/prices/history.ts --summary`: reads every saved day into unit prices, and lists what it could not read.
 4. `uv run scripts/prices/passthrough.py --out scripts/prices/results`: the backtest, and the calls for the newest CPI month.
-5. `uv run scripts/prices/passthrough.py --stack`: the share of each shelf price that is the imported good.
+5. `uv run scripts/prices/passthrough.py --stack`: compare import and shelf prices. Shelf rows are grouped by unit; the import share is only reported for shelf prices per kg.
 6. `bun scripts/prices/resolve.ts`: writes outcomes for calls whose month is published. Then build.
