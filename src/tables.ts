@@ -91,7 +91,7 @@ function products(): Table {
       SGD("unit_price_low_sgd", "The unit price, per unit_price_per, or the low end of a range. Empty where unit_price holds no single figure or range. Compare rows only where unit_price_per is the same: some items mix units."),
       SGD("unit_price_high_sgd", "The high end of the unit price range; equal to unit_price_low_sgd for one figure."),
       asOf("For a row from notes, the day the agent saw the price. For a base row, 2026-11 (read on 8 and 9 November 2026), or the day its line in life-data.ts changed after 11 November, when it was read again."),
-      { name: "pick", type: "boolean", required: true, description: "true for the item's pick: the cheapest product that passes the item's quality check. At most one per item." },
+      { name: "pick", type: "boolean", required: true, description: "true for the item's pick: the cheapest product that passes its quality check, excluding offers past their recorded end date in Singapore on the build day. At most one per item." },
       { name: "listing", type: "boolean", required: true, description: "true where the price is from a search listing, not an opened product page." },
       { name: "unit_price_per", type: "string", description: "What unit_price_low_sgd is per, as the display string gives it, such as /kg or /100 ml. Empty where there is no unit price figure." },
       { name: "until", type: "date", description: "The last day of an offer price, for rows from notes. A base row's offer end, if any, is only in the price display string, without a year." },
