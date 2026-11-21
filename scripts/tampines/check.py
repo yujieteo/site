@@ -193,10 +193,25 @@ ACRA_FAILED: list[str] = []
 # How the closure rule's "ceased or struck off" reads ACRA's statuses, spelled as in the
 # data.gov.sg ACRA datasets. The list is in the 21 November 2026 entry from issue #138 under
 # Deviations in research/tampines/prereg.md. A closure is a final status: the business no longer exists.
-ACRA_CLOSED = {"Struck Off", "Ceased Registration", "Terminated", "Cancelled", "Cancelled (Non-Renewal)"}
+ACRA_CLOSED = {
+    "Struck Off",
+    "Struck Off (Early Dissolution)",
+    "Struck Off (Early Dissolution - simplified winding up)",
+    "Removed (Dissolved)",
+    "Ceased Registration",
+    "Terminated",
+    "Cancelled",
+    "Cancelled (Non-Renewal)",
+}
 ACRA_CLOSED_PREFIX = "Dissolved"  # "Dissolved", "Dissolved - Members Voluntary Winding Up", and so on
 # Not closures: the business still exists, or the status can still change back.
-ACRA_OPEN = {"Live", "Live Company", "Gazetted To Be Struck Off", "Registration expired and has not been renewed"}
+ACRA_OPEN = {
+    "Live",
+    "Live Company",
+    "Gazetted To Be Struck Off",
+    "Registration expired and has not been renewed",
+    "Ceased Registration (Transferred to Singapore)",
+}
 ACRA_OPEN_PREFIX = "In Liquidation"
 
 

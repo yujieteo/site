@@ -21,6 +21,9 @@ CLOSED = (
     "Dissolved - Compulsory Winding Up",
     "Dissolved - Compulsory Winding Up (Insolvency)",
     "Dissolved - Simplified Winding Up",
+    "Struck Off (Early Dissolution)",
+    "Struck Off (Early Dissolution - simplified winding up)",
+    "Removed (Dissolved)",
     "Ceased Registration",
     "Terminated",
     "Cancelled",
@@ -34,6 +37,7 @@ OPEN = (
     "In Liquidation - Creditors voluntary winding up",
     "In Liquidation - Compulsory Winding Up (Insolvency)",
     "Registration expired and has not been renewed",
+    "Ceased Registration (Transferred to Singapore)",
 )
 # Statuses outside the list, and wrong spellings, are printed for review and never count.
 UNKNOWN = ("Amalgamated", "Cancellation In Progress", "To Be Ceased", "struck off", "Gazetted to be Struck Off")
