@@ -1,0 +1,50 @@
+{
+  "id": "radio-headboard",
+  "as_told": "A Hacker News commenter's family told of a brass headboard on a bed from which you could hear Morse code coming from the local military base's radio. The metal of the bed acted as a radio receiver by itself.",
+  "lesson": "A plain metal object, such as a bed headboard, can by itself work as a radio receiver that you can hear.",
+  "what_happened": "The only telling found is a family story told on Hacker News on 29 September 2023 by the user geocrasher. It gives no place, date, base or family name. When challenged, the same user wrote that the story is apocryphal and that he may have details wrong. No record of the event was found. The physics is real in part: loosely touching or corroded metal can rectify radio signals, but that alone does not show that a headboard can make audible sound without a speaker.",
+  "false_part": "",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "2023-09-29",
+    "who": "Hacker News user geocrasher",
+    "where": "Comment 37708864 on the Hacker News thread 'A scientific curiosity that happened to me' (item 37706706)",
+    "quote": "My family used to talk about a brass headboard that you could hear Morse code from, coming from the local military base.",
+    "url": "https://news.ycombinator.com/item?id=37708864",
+    "archive": "http://web.archive.org/web/20230929205903/https://news.ycombinator.com/item?id=37708864",
+    "file": "sources/radio-headboard/hn-37706706-thread.json",
+    "sha256": "c666bbcd8885de80fa4ba41d0b383be4599ce1f725cfeb6d23a724d7892fa4b0"
+  },
+  "original": [],
+  "teller_correction": {
+    "what": "The teller's own reply in the same thread, 29 September 2023, admitting the story is unverified family lore",
+    "date": "2023-09-29",
+    "who": "Hacker News user geocrasher",
+    "quote": "Maybe I have details wrong (likely) but it was a headboard and they heard radio from it.",
+    "url": "https://news.ycombinator.com/item?id=37709336",
+    "archive": "https://web.archive.org/web/20261122153259/https://news.ycombinator.com/item?id=37709336",
+    "file": "sources/radio-headboard/hn-37709336.json",
+    "sha256": "3067bf785ed1064684a9789a309198252b05768c4331f23854356d11311e89e5"
+  },
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "An IEEE EMC Society teaching manual shows that a rusty nut and bolt or loosely touching metal (including brass hardware) can rectify broadcast signals, but in that test a radio's amplifier and speaker make the sound. No source found shows a metal object making audible sound by itself.",
+    "source": {
+      "what": "IEEE Electromagnetic Compatibility Society, Education and Student Activities Committee, Experiments Manual: 'Rusty Bolt' Demonstrator by Raymond F. Elsner, Martin Marietta Aerospace (shows rectification only)",
+      "quote": "rusty combination in which the nut can be turned can usually be adjusted to produce rectification.",
+      "url": "https://www.emcs.org/wp-content/uploads/assets/documents/ExperimentsManual.pdf",
+      "archive": "http://web.archive.org/web/20230704104801/https://www.emcs.org/wp-content/uploads/assets/documents/ExperimentsManual.pdf",
+      "file": "sources/radio-headboard/emcs-experiments-manual.pdf.txt",
+      "sha256": "b273c8931dff496383ce205f52a1a7025adcd75a98221238d0e79b81eb8fe4fc"
+    }
+  },
+  "search_steps": [
+    "Grep of the project's Hacker News pool for 'headboard': found the source comment 37709336 (geocrasher, 2023-09-29, phrase 'apocryphal').",
+    "Hacker News Algolia API, items 37709336 and thread 37706706: the first telling is comment 37708864 ('brass headboard ... Morse code ... local military base'); saved both.",
+    "Web search for families hearing radio through bed headboards or bed springs: found a 2020 Lockport, Illinois case (a wall, not a bed), WLW 1934 folklore of fences and gutters, a 1940 New Zealand Listener piece on a metal bed frame used as an aerial (Papers Past blocked the download).",
+    "Open Library full-text search for 'bed springs'/'bedsprings' with radio and heard: no relevant hit.",
+    "Searched for a technical source on the 'rusty bolt effect': DTIC report and NASA NTRS blocked (403); ARRL RFI book copy too large and of unclear licence; Lichty 1964 WLW history truncated in download; IEEE EMC Society manual saved and used."
+  ],
+  "confidence_note": "The story has no place, date or named witness, so it cannot be checked. Audible sound needs something that vibrates; the lesson source shows rectification by metal joints but not a speaker-free effect."
+}

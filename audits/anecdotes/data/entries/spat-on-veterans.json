@@ -1,0 +1,85 @@
+{
+  "id": "spat-on-veterans",
+  "as_told": "American soldiers who came home from the Vietnam War were spat on by antiwar protesters, often at airports such as San Francisco, and called \"baby killers\".",
+  "lesson": "Returning Vietnam veterans were met with contempt by the antiwar public.",
+  "what_happened": "I found no record made at the time that shows a protester spitting on a returning soldier. A survey made for the Veterans Administration by Louis Harris and Associates in 1971, and printed by the Senate Committee on Veterans' Affairs in 1972, asked Vietnam-era veterans how they were received on coming home. It does not mention spitting. Of these veterans, 53% said people their own age who had not served were very friendly to them and 29% somewhat friendly; 3% said not at all friendly. The survey also found that this reception was less warm than the one earlier veterans got. Many first-person spitting accounts were printed later, especially in Bob Greene's 1989 book Homecoming, which collected letters from veterans.",
+  "false_part": "No saved record made at the time shows the spitting, and the survey made at the time shows that most veterans found people their own age friendly.",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "1989",
+    "who": "Bob Greene",
+    "where": "Homecoming: When the Soldiers Returned from Vietnam (1989), Open Library search snippet",
+    "quote": "can troops  returned  home  from  {{{Vietnam}}},  they  were  {{{spat upon}}}  by  anti- war  protesters.  The  stories",
+    "url": "https://openlibrary.org/search/inside.json?q=%22spat%20upon%22%20vietnam%20soldier%20airport&limit=30",
+    "archive": "https://archive.org/details/homecomingwhens00gree",
+    "file": "sources/spat-on-veterans/ol_inside_spat_upon_vietnam_soldier_airport.json",
+    "sha256": "0e2ebbf8dc79fa6e46ac3766fb932a01e55da91c24e5a09201d823db00da6a1f"
+  },
+  "original": [
+    {
+      "what": "Louis Harris and Associates, A Study of the Problems Facing Vietnam Era Veterans on Their Readjustment to Civilian Life (1971), Senate Committee on Veterans' Affairs, Committee Print No. 7 (1972): the summary of Table 9",
+      "date": "1972",
+      "who": "Louis Harris and Associates, for the Veterans Administration",
+      "quote": "Both the Vietnam era veterans, and those of earlier periods have little complaint about the way they were received by family and friends. However, in assessing the reception given by people their own age who had not served in the armed forces, a real difference emerges.",
+      "url": "https://archive.org/download/micro_IA41152923_0658/micro_IA41152923_0658_djvu.txt",
+      "archive": "https://archive.org/details/micro_IA41152923_0658",
+      "file": "sources/spat-on-veterans/micro_IA41152923_0658_djvu.txt",
+      "sha256": "2b365cf7c057ca4c300c896ea4baf5b55e48d5ba42eef60c3c8dee45844ed090"
+    },
+    {
+      "what": "Same survey, Table 9, Vietnam era veterans: the first column is reception by close friends and family, the second is reception by people their own age who had not served (percent)",
+      "date": "1972",
+      "who": "Louis Harris and Associates, for the Veterans Administration",
+      "quote": "Very friendly 82 53",
+      "url": "https://archive.org/download/micro_IA41152923_0658/micro_IA41152923_0658_djvu.txt",
+      "archive": "https://archive.org/details/micro_IA41152923_0658",
+      "file": "sources/spat-on-veterans/micro_IA41152923_0658_djvu.txt",
+      "sha256": "2b365cf7c057ca4c300c896ea4baf5b55e48d5ba42eef60c3c8dee45844ed090"
+    },
+    {
+      "what": "Same table, same rows",
+      "date": "1972",
+      "who": "Louis Harris and Associates, for the Veterans Administration",
+      "quote": "Somewhat friendly 14 29",
+      "url": "https://archive.org/download/micro_IA41152923_0658/micro_IA41152923_0658_djvu.txt",
+      "archive": "https://archive.org/details/micro_IA41152923_0658",
+      "file": "sources/spat-on-veterans/micro_IA41152923_0658_djvu.txt",
+      "sha256": "2b365cf7c057ca4c300c896ea4baf5b55e48d5ba42eef60c3c8dee45844ed090"
+    },
+    {
+      "what": "Same table, same rows",
+      "date": "1972",
+      "who": "Louis Harris and Associates, for the Veterans Administration",
+      "quote": "Not at all friendly 1 3",
+      "url": "https://archive.org/download/micro_IA41152923_0658/micro_IA41152923_0658_djvu.txt",
+      "archive": "https://archive.org/details/micro_IA41152923_0658",
+      "file": "sources/spat-on-veterans/micro_IA41152923_0658_djvu.txt",
+      "sha256": "2b365cf7c057ca4c300c896ea4baf5b55e48d5ba42eef60c3c8dee45844ed090"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "does not hold",
+    "why": "In a national survey made at the time, 82% of Vietnam-era veterans said people their own age who had not served were very or somewhat friendly to them, and only 3% said not at all friendly. The welcome was cooler than the one earlier veterans got, but it was not general contempt. The survey asked about people of the veterans' own age who had not served, not about antiwar protesters as a group, so it tests the lesson only for that wider group.",
+    "source": {
+      "what": "Louis Harris and Associates survey of Vietnam-era veterans (1971), Senate Committee on Veterans' Affairs, Committee Print No. 7 (1972), Table 9",
+      "quote": "Very friendly 82 53",
+      "url": "https://archive.org/download/micro_IA41152923_0658/micro_IA41152923_0658_djvu.txt",
+      "archive": "https://archive.org/details/micro_IA41152923_0658",
+      "file": "sources/spat-on-veterans/micro_IA41152923_0658_djvu.txt",
+      "sha256": "2b365cf7c057ca4c300c896ea4baf5b55e48d5ba42eef60c3c8dee45844ed090"
+    }
+  },
+  "search_steps": [
+    "English Wikipedia article on the spitting image myth and Jerry Lembcke's book The Spitting Image (1998), used as leads: Lembcke says he found no news report made at the time of a protester spitting on a returning veteran, and that the stories grew in the 1980s.",
+    "Open Library full-text search for \"spat upon\" vietnam soldier airport: earliest telling I could read with a spitting claim is Bob Greene, Homecoming (1989). The book is lending-only, so the quote is from an Open Library search snippet. This bends rule 7.",
+    "More Open Library full-text searches: \"spit on\" vietnam veterans returning protesters (no hits), \"spat on\" vietnam returning protesters (no hits), \"spitting on\" returning vietnam veterans, and \"spit on me\" vietnam airport uniform (no useful hits). The hits I could judge are Greene (1989) and later books, many of which discuss the story as a myth (Lembcke 1998, Nelson's After Clinton). Myra MacPherson's Long Time Passing (1984) was in the results, but no snippet showed a spitting passage. The result lists give no dates, so a telling earlier than 1989 may be among hits I could not date.",
+    "James Lindgren's posts on The Volokh Conspiracy, used as leads: they cite James Reston in the New York Times of 23 October 1967 on protesters who spat on soldiers guarding the Pentagon, reports from Allentown (1967) and Pomona (1970), and an AP story of 1971. These are soldiers on duty or not on return, and I could not save the articles: nytimes.com returned 403.",
+    "Slate article on Delbert Pickett, used as a lead: it cites CBS Evening News of 27 December 1971, in which a veteran tells of being spat on in Seattle. The Vanderbilt Television News Archive returned 503, so I could not see the record; Slate also refused the request.",
+    "HathiTrust full-text search was blocked (HTTP 403).",
+    "Saved the 1971 Harris survey from archive.org (micro_IA41152923_0658, and the ERIC copy ED074268) and grepped it for spit and spat: no hits about spitting. Read Table 9 and its summary.",
+    "No correction by a teller was found."
+  ],
+  "confidence_note": "The CBS 1971 broadcast and the 1967-1971 newspaper reports that Lindgren cites may show real incidents; I could not see them. If they do, the class would be true for some cases. The Harris survey does not ask about protesters, so it tests the general lesson, not the spitting itself."
+}

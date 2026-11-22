@@ -1,0 +1,44 @@
+{
+  "id": "bear-proof-bins",
+  "as_told": "In the 1980s Yosemite National Park installed armoured garbage cans to keep bears out. Designs that were hard enough to stop bears were too hard for some visitors to open. A park ranger explained: \"There is considerable overlap between the intelligence of the smartest bears and the dumbest tourists.\"",
+  "lesson": "A lock that the cleverest animals cannot open will also stop some people, so designing for every user is harder than it looks.",
+  "what_happened": "No record names the ranger, the park, the date or the bin design. The earliest telling I found is an April 1993 electronic magazine, The Unplastic News no. 9, which gives the line to an unnamed 'biologist' in a short piece about black bears in Yosemite and Sequoia. The piece is followed by the address of Keith Bostic at Berkeley, which is how this magazine credits the person who sent in an item, so it was probably taken from somewhere else. The Yosemite garbage-can setting and the 'park ranger' speaker appear in a Slashdot comment of 21 July 2006, which Bruce Schneier quoted on his blog on 18 August 2006; most later tellings come from those.",
+  "false_part": "",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "1993-04",
+    "who": "Unsigned piece in The Unplastic News no. 9 ('The Prank Issue'), credited after the text to Keith Bostic, University of California, Berkeley",
+    "where": "The Unplastic News #9, \"Don't Pull Any Pranks on These Bears\"",
+    "quote": "Campaigns to bearproof all garbage\ncontainers in wild areas have been difficult, because as one biologist\nput it, \"There is a considerable overlap between the intelligence levels\nof the smartest bears and the dumbest tourists.\"",
+    "url": "http://www.etext.org/Zines/ASCII/Unplastic_News/unplasticnews.9",
+    "archive": "http://web.archive.org/web/20081013215014/http://www.etext.org/Zines/ASCII/Unplastic_News/unplasticnews.9",
+    "file": "sources/bear-proof-bins/unplasticnews9.txt",
+    "sha256": "4c538f2cbe2b76e7a84adaec58a45918774e13fa3ef90b80ab4a3db304e57394"
+  },
+  "original": [],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "I found no study showing that people fail to open bear-resistant bins because the bins are too hard. A field study of 383 households in Durango, Colorado found that residents locked their bear-resistant containers on only 44 percent of observations, but it linked this to beliefs, trust and local conflict rates, not to the difficulty of the latch.",
+    "source": {
+      "what": "Stacy A. Lischka, PhD dissertation, Colorado State University, Fall 2018, 'Integrating social and ecological predictors of human-wildlife interactions to guide conservation and management', abstract",
+      "quote": "containers were locked on 44% of",
+      "url": "https://api.mountainscholar.org/server/api/core/bitstreams/d87ea021-f9b7-4caf-87fd-cd2934271948/content",
+      "archive": "",
+      "file": "sources/bear-proof-bins/lischka-2018-dissertation.pdf.txt",
+      "sha256": "289139d0bf7b6b2e3e9078349a6cfef1174c5ca54d5c5e3a83a374459e42ea6e"
+    }
+  },
+  "search_steps": [
+    "Web search for the exact quote: leads to Schneier (2006), a PBS SoCal article that treats it as a doubtful account from a 2006 Slashdot post (page not saved), Core77, KSL and social media posts. None names the ranger.",
+    "Schneier blog post (saved): links to Slashdot comment 15757347 (saved, 21 July 2006). In the comments, one reader says a 1995 web page credited the line to Richard Wabrek of Idaho State University (I did not find that page); another, 'giafly', points to The Unplastic News #9 of 1993.",
+    "The Unplastic News #9 (April 1993): etext.org returned 404; saved the 2008 Wayback copy. The speaker is 'one biologist', not a ranger, and the setting is bears opening cars and garbage in Yosemite and Sequoia.",
+    "Web search for the 1993 sentence 'Campaigns to bearproof all garbage containers': no earlier source found. I did not search Usenet archives.",
+    "Open Library and Google Books: not searched for this story (Open Library refused connections and Google Books returned 429 during this session).",
+    "Lesson: tried the Johnson et al. (2018) Durango bear-proofing paper on core.ac.uk and digitalcommons.unl.edu (both 403); saved the related Lischka (2018) dissertation from Mountain Scholar.",
+    "Later tellings (saved, not records of the event): Slashdot comment 15757347 by 'theonetruekeebler', 21 July 2006, sets the line at 1980s Yosemite garbage cans and gives it to 'one park ranger' (file sources/bear-proof-bins/slashdot-15757347.html.txt, sha256 5d9619880b973b3a79500ba0d3bbdd1fcca4160ceab935888f78ab589904bc45); Bruce Schneier, 'Human/Bear Security Trade-Off', 18 August 2006, quotes that comment (file sources/bear-proof-bins/schneier-2006.html.txt, sha256 f2ba9a6f64cb438791426ece380c0f78b7d7a062c130ebcdca38b9113115a5f4).",
+    "Exact-phrase web search for 'intelligence levels of the smartest bears' (the 1993 wording): no earlier source found. I did not search the Google Groups Usenet archive, which does not allow automated phrase search."
+  ],
+  "confidence_note": "The 1993 piece looks copied from a book or article that I could not find, so an earlier telling with a named speaker may exist. Bear-resistant bins at Yosemite are real, but I did not save a record of the 1980s design problem the story describes. I could not confirm the 1995 Wabrek attribution. The Wayback Machine had no copy of the Lischka dissertation PDF after one lookup, so its archive field is empty."
+}

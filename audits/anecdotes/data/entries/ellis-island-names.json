@@ -1,0 +1,74 @@
+{
+  "id": "ellis-island-names",
+  "as_told": "When immigrants arrived at Ellis Island, officials who could not spell or pronounce their names wrote down a new, shorter or English name. The family has carried that name ever since.",
+  "lesson": "Immigrants lost their family names to careless officials on arrival in America.",
+  "what_happened": "Inspectors at Ellis Island did not write down names. They checked each immigrant against the ship's passenger list, which was made at the port of departure; for example, the Immigration Act of 1917 (section 13) required these lists and gave each immigrant a ticket with his name and list number for identification on arrival. Under the rules, an inspector was not to change a name unless the immigrant asked or the list was wrong. Many immigrants did change their names, but they did it themselves, mostly in the first years after arrival and often at naturalization.",
+  "false_part": "The name changes were made later by the immigrants themselves, not by Ellis Island officials, who worked from passenger lists made abroad.",
+  "class": "misattributed",
+  "also": "",
+  "earliest_telling": {
+    "date": "1971",
+    "who": "Oscar Handlin",
+    "where": "Statue of Liberty (Newsweek Book Division, 1971), p. 176, as shown in an Open Library full-text search result",
+    "quote": "because  an  inspector  misunderstood",
+    "url": "https://archive.org/details/statueofliberty0000hand_a2l4",
+    "archive": "https://archive.org/details/statueofliberty0000hand_a2l4",
+    "file": "sources/ellis-island-names/ol-inside-new-name-at-ellis-island.json",
+    "sha256": "ac929943ee39dc3c4ac7677f9a78692e497cd53eddf9f5f8d56167b3e12ee8f6"
+  },
+  "original": [
+    {
+      "what": "Immigration Act of 1917, section 13 (on passenger lists and identification tickets), reprinted in Philip Davis (ed.), Immigration and Americanization: Selected Readings (1920), pp. 396-397",
+      "date": "1917",
+      "who": "United States Congress",
+      "quote": "which  shall  be  written  his  name,  a  number  or  letter  designating  the",
+      "url": "https://archive.org/details/immigrationameri00davi",
+      "archive": "https://archive.org/details/immigrationameri00davi",
+      "file": "sources/ellis-island-names/immigrationameri00davi_djvu.txt",
+      "sha256": "ac2bcb18b19a9723b7aae2ab2479d690e50532ace503bd308e01bb77be47bfa0"
+    },
+    {
+      "what": "USCIS History Office essay 'American Names / Declaring Independence', on the official page 'Immigrant Name Changes'",
+      "date": "",
+      "who": "U.S. Citizenship and Immigration Services, History Office",
+      "quote": "he was not to change the name or identifying information found for any immigrant unless it was requested by the immigrant or inspection demonstrated the original information was in error",
+      "url": "https://www.uscis.gov/history-and-genealogy/genealogy/genealogy-notebook/immigrant-name-changes",
+      "archive": "http://web.archive.org/web/20200701032658/https://www.uscis.gov/history-and-genealogy/genealogy/genealogy-notebook/immigrant-name-changes",
+      "file": "sources/ellis-island-names/uscis-immigrant-name-changes.html",
+      "sha256": "be68bda26868effceaaa8a553d2d758f0643c29940359be252fbe9faccb60d95"
+    },
+    {
+      "what": "Same USCIS page, on where the lists were made",
+      "date": "",
+      "who": "U.S. Citizenship and Immigration Services, History Office",
+      "quote": "passenger lists were not created at Ellis Island",
+      "url": "https://www.uscis.gov/history-and-genealogy/genealogy/genealogy-notebook/immigrant-name-changes",
+      "archive": "http://web.archive.org/web/20200701032658/https://www.uscis.gov/history-and-genealogy/genealogy/genealogy-notebook/immigrant-name-changes",
+      "file": "sources/ellis-island-names/uscis-immigrant-name-changes.html",
+      "sha256": "be68bda26868effceaaa8a553d2d758f0643c29940359be252fbe9faccb60d95"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "does not hold",
+    "why": "The federal immigration agency's historians state that the records seldom support a name changed by an Ellis Island clerk, and that immigrants changed their own names after arrival.",
+    "source": {
+      "what": "USCIS History Office, 'Immigrant Name Changes'",
+      "quote": "immigrants DID change their names, and tended to do so within the first 5 years after arrival",
+      "url": "https://www.uscis.gov/history-and-genealogy/genealogy/genealogy-notebook/immigrant-name-changes",
+      "archive": "http://web.archive.org/web/20200701032658/https://www.uscis.gov/history-and-genealogy/genealogy/genealogy-notebook/immigrant-name-changes",
+      "file": "sources/ellis-island-names/uscis-immigrant-name-changes.html",
+      "sha256": "be68bda26868effceaaa8a553d2d758f0643c29940359be252fbe9faccb60d95"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search \"changed at Ellis Island\": all 410 hits read (5 pages); earliest is 1978 (a Jewish history saying immigration officers changed names on arrival; a Harlan Ellison story), then 1979 and 1982 family memories and many citations of Ellen Levine's 1993 children's book.",
+    "Open Library searches combining Ellis Island with 'name was changed', 'changed his name', 'immigration officer ... spell', 'new name ... inspector', 'name was shortened', 'wrote down ... clerk': no relevant hit before 1967; Louis Adamic's 'What's Your Name?' (1942) appeared but its full text is lending-only.",
+    "Open Library search \"name at Ellis Island\": a 1913 joke book (an Irishman asked his name at Ellis Island; not a name change), 1969 'How to Be an American Jew' (self-change), 1971 Handlin; search \"new name at Ellis Island\" saved: earliest Handlin 1971, p. 176. The book itself is lending-only, so only the search snippet is quoted.",
+    "Open Library search \"Ellis Island officials\" name: 1974 'The Blaine House' says officials shortened a name.",
+    "Chronicling America and HathiTrust full-text search: both returned a Cloudflare challenge (403); not searched.",
+    "USCIS 'Immigrant Name Changes' page saved: official essay on passenger lists, inspection rules, interpreters and later self-changes.",
+    "Philip Davis 1920 reader (archive.org, public domain) saved: reprints the 1917 Immigration Act section 13 on manifests and identification tickets."
+  ],
+  "confidence_note": "Earlier tellings very likely exist (for example family stories and fiction before 1971, and the 1974 film The Godfather Part II); the free newspaper archives could not be searched. The USCIS essay says such changes are 'seldom' supported, and inspectors could correct a list on request, so a few names were changed at Ellis Island. The story is wrong as a general account, not in every single case."
+}

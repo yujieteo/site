@@ -1,0 +1,117 @@
+{
+  "id": "carrots-night-vision",
+  "as_told": "In 1940-41 the Royal Air Force began to shoot down German night bombers with the help of a new, secret airborne radar. To hide the radar, the British government told the press that its night-fighter pilots, such as John \"Cat's Eyes\" Cunningham, could see in the dark because they ate a lot of carrots. The public believed it, and the belief that carrots improve night vision has lasted ever since.",
+  "lesson": "The belief that eating carrots improves your night vision is a myth that wartime propaganda spread.",
+  "what_happened": "By 1942 the rumour that British night-fighter pilots ate carrots to see in the dark was widespread: the American reporter Quentin Reynolds wrote in 1942 that \"one heard\" they ate nothing but carrots, and that in fact very few of them ate carrots at all. In his 1960 autobiography, Herbert Morrison, Home Secretary in the wartime government, tells the story in one passage. The Minister of Food, Lord Woolton, had a glut of carrots and stressed that carrots improved night vision. His \"master stroke\" was to spread the report that RAF night-fighter and bomber aces ate carrots to see in the dark. Morrison then writes that the new airborne radar and the ground radar were top secret at the time, that the public was asking how enemy bombers were being shot down at night, and that some people were convinced it was all done by carrots. So Morrison, a member of the government, links the carrot report to the secrecy of radar, and gives the carrot glut as a second reason. John Cunningham later said, in words quoted in a 2010 magazine article, that the Air Ministry gave him the nickname to cover up the radar.",
+  "false_part": "",
+  "class": "true",
+  "also": "",
+  "earliest_telling": {
+    "date": "1960",
+    "who": "Herbert Morrison",
+    "where": "Herbert Morrison: An Autobiography (1960), Open Library search snippet",
+    "quote": "stroke  was  to  spread  the  {{{report  that  the  night  fighter and  bomber  aces}}}  of  the  R.A.F.  were  eating",
+    "url": "https://openlibrary.org/search/inside.json?q=%22report%20that%20the%20night%20fighter%20and%20bomber%20aces%22&limit=10",
+    "archive": "https://archive.org/details/herbertmorrisona0000morr",
+    "file": "sources/carrots-night-vision/ol_inside_report_that_the_night_fighter.json",
+    "sha256": "0ea11b06e35482db3f8e60ce4e14a7947d981438166498997a359cc535dd6da3"
+  },
+  "original": [
+    {
+      "what": "Quentin Reynolds, Only the Stars Are Neutral (Random House, 1942; Blue Ribbon reprint 1943): a record made during the war that the carrot story was circulating, and that the pilots did not in fact eat many carrots",
+      "date": "1942",
+      "who": "Quentin Reynolds",
+      "quote": "One heard that they ate nothing but carrots, which gave them phenomenal eyesight.",
+      "url": "https://archive.org/download/onlythestarsaren009148mbp/onlythestarsaren009148mbp_djvu.txt",
+      "archive": "https://archive.org/details/onlythestarsaren009148mbp",
+      "file": "sources/carrots-night-vision/onlythestarsaren009148mbp_djvu.txt",
+      "sha256": "49f91e8d7d780c2a9d5212fc16cf210a81911b74429bd83b8e1c51e7c2a0025f"
+    },
+    {
+      "what": "Same book, on what the pilots really ate",
+      "date": "1942",
+      "who": "Quentin Reynolds",
+      "quote": "very few of them ate carrots at all",
+      "url": "https://archive.org/download/onlythestarsaren009148mbp/onlythestarsaren009148mbp_djvu.txt",
+      "archive": "https://archive.org/details/onlythestarsaren009148mbp",
+      "file": "sources/carrots-night-vision/onlythestarsaren009148mbp_djvu.txt",
+      "sha256": "49f91e8d7d780c2a9d5212fc16cf210a81911b74429bd83b8e1c51e7c2a0025f"
+    },
+    {
+      "what": "Herbert Morrison, Herbert Morrison: An Autobiography (1960): the Ministry of Food campaign (Open Library search snippet)",
+      "date": "1960",
+      "who": "Herbert Morrison",
+      "quote": "one  and  the  same  time  by  stressing  that  {{{carrots}}}  improved night  vision.",
+      "url": "https://openlibrary.org/search/inside.json?q=%22airborne%20radar%2C%20and%20for%22%20carrots&limit=10",
+      "archive": "https://archive.org/details/herbertmorrisona0000morr",
+      "file": "sources/carrots-night-vision/ol_inside_airborne_radar_and_for.json",
+      "sha256": "ed3ed545c32e0a7af3f79645425a77505fd44f92792b83d0a11982a1dc6bf1f3"
+    },
+    {
+      "what": "Same book: the sentence after the report, which names the airborne radar (Open Library search snippet)",
+      "date": "1960",
+      "who": "Herbert Morrison",
+      "quote": "the  R.A.F.  were  eating  {{{carrots  to  enable  them to  see  in  the  dark}}}.  The  new  airborne  radar",
+      "url": "https://openlibrary.org/search/inside.json?q=%22carrots%20to%20enable%20them%20to%20see%20in%20the%20dark%22&limit=30",
+      "archive": "https://archive.org/details/herbertmorrisona0000morr",
+      "file": "sources/carrots-night-vision/ol_inside_carrots_to_enable_them.json",
+      "sha256": "27144002820657e4764ac31caed5a114aefa49b8773b4d89ecb9fa5eb2338302"
+    },
+    {
+      "what": "Same book, the sentence after the report: the radar was secret (Open Library search snippet)",
+      "date": "1960",
+      "who": "Herbert Morrison",
+      "quote": "detection,  {{{were  at  the time  top  secret}}}.  Success  in  bringing  down  enemy  bombers  at  night was  increasing",
+      "url": "https://openlibrary.org/search/inside.json?q=%22were%20at%20the%20time%20top%20secret%22%20radar&limit=20",
+      "archive": "https://archive.org/details/herbertmorrisona0000morr",
+      "file": "sources/carrots-night-vision/ol_inside_at_the_time_top_secret.json",
+      "sha256": "9114110cefb81ea694c2459a557eebde660073460f79c93f3209ae47384d89c4"
+    },
+    {
+      "what": "Same passage: the public asked how it was done (Open Library search snippet)",
+      "date": "1960",
+      "who": "Herbert Morrison",
+      "quote": "increasing,  thanks  to  these  {{{radar}}}  devices,  and  the  public  was naturally  asking  how  it  was",
+      "url": "https://openlibrary.org/search/inside.json?q=%22were%20at%20the%20time%20top%20secret%22%20radar&limit=20",
+      "archive": "https://archive.org/details/herbertmorrisona0000morr",
+      "file": "sources/carrots-night-vision/ol_inside_at_the_time_top_secret.json",
+      "sha256": "9114110cefb81ea694c2459a557eebde660073460f79c93f3209ae47384d89c4"
+    },
+    {
+      "what": "Same passage: what some people believed (Open Library search snippet)",
+      "date": "1960",
+      "who": "Herbert Morrison",
+      "quote": "was  done.  {{{Some  at  least  were  quite  convinced}}} that  it  was  all  done  by  {{{carrots}}}.  Admittedly",
+      "url": "https://openlibrary.org/search/inside.json?q=%22Some%20at%20least%20were%20quite%20convinced%22%20carrots&limit=20",
+      "archive": "https://archive.org/details/herbertmorrisona0000morr",
+      "file": "sources/carrots-night-vision/ol_inside_some_at_least_convinced.json",
+      "sha256": "d0dc5d4e3ea85d1a566e50f5eb56337e16462a486cf6b2784dbbd49cceca2c70"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "A randomized trial in night-blind, vitamin A deficient pregnant women in Nepal found that carrots restored dark adaptation, but only to the level of women who were not night-blind. I found no trial showing that carrots improve night vision in well-fed people, and none showing that they cannot; so carrots do help night vision when vitamin A is lacking, and the claim of better-than-normal night vision is untested in my sources.",
+    "source": {
+      "what": "Haskell et al., Recovery from impaired dark adaptation in nightblind pregnant Nepali women who receive small daily doses of vitamin A as amaranth leaves, carrots, goat liver, vitamin A-fortified rice, or retinyl palmitate, American Journal of Clinical Nutrition (2005), PubMed abstract",
+      "quote": "the final mean PT did not differ significantly from that in the nonnightblind women",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/15699236/",
+      "archive": "http://web.archive.org/web/20260617204754/https://pubmed.ncbi.nlm.nih.gov/15699236/",
+      "file": "sources/carrots-night-vision/haskell2005_pubmed15699236.xml",
+      "sha256": "72ba417e83168360ca029e01a77a06577ee5859ed29571b0caa4c42143a0e148"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search for carrots \"night fighter\" radar: hits include Rawnsley and Wright, Night Fighter (1957), and later books that call the carrot diet a deliberate story. A later search (carrots \"night fighter\" Cunningham Rawnsley, and carrots \"cat's eyes\" radar) showed no carrot passage in Night Fighter, so it is not a telling.",
+    "Open Library search for \"cat's eyes\" cunningham carrots: Quentin Reynolds, Only the Stars Are Neutral (1942/1943) is the earliest. Its full text is open on archive.org; saved it and grepped the carrot passage.",
+    "Open Library search for \"eating carrots\" \"night fighter\": found Herbert Morrison's 1960 autobiography (catalogued under a wrong title, British nuclear reactors). Follow-up searches for \"carrots to enable them to see in the dark\", \"report that the night fighter and bomber aces\", \"aircrews did have carrots\" and \"airborne radar, and for\" walked through the passage. Further phrase searches (\"airborne radar, and for that matter\", \"ground station radar detection\", \"were at the time top secret\", \"the public was naturally asking\", \"convinced that it was all done by carrots\", \"by carrots. Admittedly\") read the rest of it. Morrison's book is lending-only, so the quotes are from Open Library search snippets, not the full text. This bends rule 7.",
+    "The snippets show Morrison giving two reasons in one passage: Lord Woolton's carrot glut, and the top-secret radar that the public was asking about. He does not use the words \"to hide\" in any snippet I saw, but he puts the report directly before the radar secrecy.",
+    "Tried to download Rawnsley's Night Fighter (bwb_KU-428-172) full text from archive.org: HTTP 500.",
+    "English Wikipedia article on John Cunningham, used as a lead: says the nickname was given to avoid revealing airborne radar, without a footnote for that sentence.",
+    "Air & Space magazine, Gavin Mortimer, Cat's Eyes (19 November 2010), saved from the Wayback Machine (snapshot 20150915040404): quotes Cunningham saying the Air Ministry gave him the nickname to cover up the radar. These are relayed words with no source given, so they are a lead only and not quoted as evidence.",
+    "Smithsonian.com, K. Annabelle Smith, 13 August 2013, used as a lead: John Stolarczyk of the World Carrot Museum says the Ministry of Information reinforced the carrot story; he cites files at the Imperial War Museum and the National Archives but no single document.",
+    "PubMed searches (through the NCBI E-utilities) for trials of vitamin A or carrots and dark adaptation in healthy people: none found. Saved the abstract of Haskell et al. 2005 as the lesson source.",
+    "No correction by Morrison or Cunningham was found."
+  ],
+  "confidence_note": "Morrison was in the government at the time and states both the carrot report and the radar secrecy, so the class is true. His book is lending-only and I read the passage only in overlapping search snippets; the word order between snippets is my reconstruction. No wartime document that orders the carrot story as a cover for radar was found, and Morrison also gives the carrot glut as a reason."
+}

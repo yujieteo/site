@@ -1,0 +1,55 @@
+{
+  "id": "lumiere-train",
+  "as_told": "When the Lumière brothers first showed their 50-second film of a train arriving at La Ciotat station in Paris in 1895 or 1896, the audience thought the train was real. People screamed, jumped from their seats and ran to the back of the room or out of the hall.",
+  "lesson": "The first film audiences could not tell moving pictures from reality.",
+  "what_happened": "No film with a title like Arrival of the Train was shown at the first paid Paris show on 28 December 1895; the first mention of such a film dates from 26 January 1896, and the famous version was shot in summer 1897. This search found no record made at the time that reports people fleeing. Maxim Gorky saw a train film at the Nizhny Novgorod fair and wrote in Odesskie Novosti (No. 3681, 6 July 1896) that the audience 'nervously moves its chairs' as the engine comes near, and that it is only shadows. Viewers of 1896 described the train as if it would run into the hall; later writers turned that 'as if' into fact. The earliest claim of real flight found is a 1916 memory by the Berlin projectionist Gustav Schönwald; a British comedy film of 1901 already made a joke of a farmer who runs from a filmed train.",
+  "false_part": "This search found no record made at the time of audiences fleeing; the 1896 eyewitness Gorky describes nervous shifting in seats by an audience that knew it watched shadows.",
+  "class": "changed",
+  "also": "",
+  "earliest_telling": {
+    "date": "1916",
+    "who": "Gustav Schönwald, projectionist in Berlin from spring 1896 (quoted in English translation by Martin Loiperdinger, 2004)",
+    "where": "Schönwald's 1916 memoir of the first Berlin film shows, quoted in Loiperdinger, 'Lumière's Arrival of the Train: Cinema's Founding Myth', The Moving Image 4(1), 2004, p. 92",
+    "quote": "they cried out when a horse reared, or fled from their seats because they",
+    "url": "https://komparativna.ffzg.unizg.hr/wp-content/uploads/2011/10/doc-205-4.1loiperdinger.pdf",
+    "archive": "http://web.archive.org/web/20251204131759/https://komparativna.ffzg.unizg.hr/wp-content/uploads/2011/10/doc-205-4.1loiperdinger.pdf",
+    "file": "sources/lumiere-train/loiperdinger-2004.pdf.txt",
+    "sha256": "57a97d9d13b577314cc6191be25254dbd723dcca04f9ac094fe5fd7e58767c2e"
+  },
+  "original": [
+    {
+      "what": "Maxim Gorky's newspaper report of a Lumière programme at Charles Aumont's theatre, Nizhny Novgorod fair; first printed in Odesskie Novosti, No. 3681, 6 July 1896 (Russian text, 1949 collected works, on Wikisource). The quote means 'The audience nervously moves its chairs'.",
+      "date": "1896-07-06",
+      "who": "Maxim Gorky",
+      "quote": "Публика нервно двигает стульями",
+      "url": "https://ru.wikisource.org/wiki/С_Всероссийской_выставки_(Горький)",
+      "archive": "https://web.archive.org/web/20261122153152/https://ru.wikisource.org/wiki/%D0%A1_%D0%92%D1%81%D0%B5%D1%80%D0%BE%D1%81%D1%81%D0%B8%D0%B9%D1%81%D0%BA%D0%BE%D0%B9_%D0%B2%D1%8B%D1%81%D1%82%D0%B0%D0%B2%D0%BA%D0%B8_(%D0%93%D0%BE%D1%80%D1%8C%D0%BA%D0%B8%D0%B9)",
+      "file": "sources/lumiere-train/gorky-1896-s-vserossiiskoi-vystavki.wiki",
+      "sha256": "55ab768a9785df5f3452e146333442ac0706188e5dd7dc6820103c90d909f603"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "does not hold",
+    "why": "The 1896 eyewitness texts describe surprise and a strong sense of depth, but their writers state that the images are shadows; the study of the records finds no panic and finds the projected picture too small, grey and flickering to be taken for reality.",
+    "source": {
+      "what": "Loiperdinger 2004, The Moving Image 4(1): 89-118, conclusion of the section 'Panic among the audience: fact or legend?'",
+      "quote": "The moving images projected onto the screen with the Cinématographe Lumière could hardly be",
+      "url": "https://komparativna.ffzg.unizg.hr/wp-content/uploads/2011/10/doc-205-4.1loiperdinger.pdf",
+      "archive": "http://web.archive.org/web/20251204131759/https://komparativna.ffzg.unizg.hr/wp-content/uploads/2011/10/doc-205-4.1loiperdinger.pdf",
+      "file": "sources/lumiere-train/loiperdinger-2004.pdf.txt",
+      "sha256": "57a97d9d13b577314cc6191be25254dbd723dcca04f9ac094fe5fd7e58767c2e"
+    }
+  },
+  "search_steps": [
+    "Web search for Loiperdinger's article: found the full text as a PDF on a University of Zagreb course site (Project MUSE copy is paywalled); saved and converted with pdftotext.",
+    "Read Loiperdinger: no reports in Paris police files, contemporary press or Lumière letters; 1896 texts by Regnault (L'Illustration), Volkmer and Gorky use 'as if' language; earliest flight stories are R. W. Paul's 1901 comedy film and Schönwald's 1916 memoir.",
+    "English Wikipedia article on the film: points to Loiperdinger, Gorky and Gunning 1994; no earlier telling of flight cited.",
+    "Russian Wikisource search for Gorky's 1896 text: found 'С Всероссийской выставки', part 7 'Синематограф Люмьера', first printed in Odesskie Novosti No. 3681, 6 July 1896; saved the raw wikitext; the 'nervously moves chairs' line is in it.",
+    "Web search for Bottomore 1999, 'The Panicking Audience?' (Historical Journal of Film, Radio and Television 19(2)): no free full text; not read.",
+    "Gunning 1994 'An Aesthetic of Astonishment' PDF (blogs.ubc.ca) is a scan without a text layer and no OCR tool was available; not quoted.",
+    "Did not search Open Library full text for this story; earliest-telling search relied on Loiperdinger's survey.",
+    "Loiperdinger on dates: no Arrival-of-the-Train film at the 28 December 1895 show; first mention 26 January 1896 (Lyon républicain); the famous third version shot in summer 1897."
+  ],
+  "confidence_note": "Bottomore (1999) is unread; he reportedly collected 1896-1897 accounts of single spectators who were startled. Schönwald's 1916 claim of flight was read only in Loiperdinger's English translation and was written 20 years after the event. The 1896 newspapers and Paris police files were not seen; the statement that they hold no reports of panic comes from Loiperdinger's study and is a lead, not evidence. The class rests on Gorky's eyewitness text and on the absence of any earlier telling of flight. The dates of the first showings are from Loiperdinger."
+}

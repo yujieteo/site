@@ -1,0 +1,64 @@
+{
+  "id": "percy-schmeiser",
+  "as_told": "Percy Schmeiser was a canola farmer in Bruno, Saskatchewan. Pollen or seed from neighbours' genetically modified Roundup Ready canola blew onto his fields. Monsanto then sued him for patent infringement because its patented plants were growing on his land, and it won.",
+  "lesson": "A seed company can sue a farmer and win when its patented plants reach his field by accident.",
+  "what_happened": "Monsanto sued Schmeiser in August 1998. The courts did not decide whether the Roundup Ready canola first reached his land by accident. In 1997 he sprayed a three-acre patch near a road with Roundup, kept the seed from the plants that survived, and in 1998 had it treated as seed and planted it on about 1,000 acres. The trial judge found that no accidental source could explain a crop that was 95 to 98 percent Roundup Ready, and that he knew or ought to have known that the saved seed was Roundup tolerant. The Supreme Court of Canada upheld infringement 5 to 4 on 21 May 2004 but gave Monsanto no money, because he made no profit from the invention.",
+  "false_part": "He was found liable for knowingly saving and planting the patented seed on about 1,000 acres, not because canola blew onto his field.",
+  "class": "changed",
+  "also": "",
+  "earliest_telling": {
+    "date": "1999-08-19",
+    "who": "Adrian Ewins, reporting Percy Schmeiser's own account",
+    "where": "The Western Producer, \"Legal battle over patented canola set for next June\"",
+    "quote": "insists that any Roundup Ready growing on his land was spread by the wind or by grain trucks traveling on roads adjacent to his fields",
+    "url": "https://www.producer.com/1999/08/legal-battle-over-patented-canola-set-for-next-june/",
+    "archive": "http://web.archive.org/web/20150610035828/http://www.producer.com/1999/08/legal-battle-over-patented-canola-set-for-next-june/",
+    "file": "sources/percy-schmeiser/wp-1999.html.txt",
+    "sha256": "c06682a3527661c90a0c3f2670caf903ac99b20c3d68cd7b80bc8d0bd0497483"
+  },
+  "original": [
+    {
+      "what": "Supreme Court of Canada judgment, Monsanto Canada Inc. v. Schmeiser, 2004 SCC 34, [2004] 1 S.C.R. 902, majority reasons quoting the trial judgment at paragraph 120",
+      "date": "2004-05-21",
+      "who": "Supreme Court of Canada (McLachlin C.J. and Fish J. for the majority)",
+      "quote": "knew or ought to have known was Roundup tolerant",
+      "url": "https://scc-csc.lexum.com/scc-csc/scc-csc/en/item/2147/index.do",
+      "archive": "https://web.archive.org/web/20161012181633/http://scc-csc.lexum.com/scc-csc/scc-csc/en/2147/1/document.do",
+      "file": "sources/percy-schmeiser/scc-2004-34.pdf.txt",
+      "sha256": "29f52404d206b23d4b3172db445560a26dfd0d770fbbf7dbe5448110f5c83597"
+    },
+    {
+      "what": "Same judgment, paragraph 6: the court says the origin of the plants is unclear and may include seed that blew in",
+      "date": "2004-05-21",
+      "who": "Supreme Court of Canada",
+      "quote": "seed that blew onto or near Schmeiser’s land",
+      "url": "https://scc-csc.lexum.com/scc-csc/scc-csc/en/item/2147/index.do",
+      "archive": "https://web.archive.org/web/20161012181633/http://scc-csc.lexum.com/scc-csc/scc-csc/en/2147/1/document.do",
+      "file": "sources/percy-schmeiser/scc-2004-34.pdf.txt",
+      "sha256": "29f52404d206b23d4b3172db445560a26dfd0d770fbbf7dbe5448110f5c83597"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "does not hold",
+    "why": "In the Schmeiser case itself the Supreme Court said a farmer who never intended to grow the patented plants could rebut the presumption of use, and rejected the innocent-bystander argument only because Schmeiser was not one. In the United States, the Federal Circuit held in 2013 that Monsanto had bindingly disclaimed suing farmers whose seed is inadvertently contaminated with up to one percent of its patented seed.",
+    "source": {
+      "what": "Organic Seed Growers and Trade Association v. Monsanto Company, No. 12-1298, United States Court of Appeals for the Federal Circuit, decided 10 June 2013",
+      "quote": "We conclude that Monsanto has disclaimed any intent to",
+      "url": "https://www.cafc.uscourts.gov/opinions-orders/12-1298.opinion.6-6-2013.1.pdf",
+      "archive": "http://web.archive.org/web/20260415103204/https://www.cafc.uscourts.gov/opinions-orders/12-1298.opinion.6-6-2013.1.pdf",
+      "file": "sources/percy-schmeiser/osgata-v-monsanto-2013.pdf.txt",
+      "sha256": "78cc48087d52a33fba874fead5c1e4e89a85ad255feec1262a1492df0a6b8c0f"
+    }
+  },
+  "search_steps": [
+    "English Wikipedia articles 'Percy Schmeiser' and 'Monsanto Canada Inc v Schmeiser' (raw wikitext): used only as leads to the court decisions and the 1999 Western Producer article.",
+    "Supreme Court of Canada decision on scc-csc.lexum.com and decisions.scc-csc.ca: blocked by a bot check; CanLII returned 403. Saved the official PDF from the Wayback Machine copy of scc-csc.lexum.com/.../2147/1/document.do (2016 snapshot) and ran pdftotext -layout.",
+    "Western Producer, 19 August 1999 (Adrian Ewins): producer.com returned 403; saved the 2015 Wayback copy. It reports Schmeiser's claim that the canola was spread by wind or grain trucks, and Monsanto's claim that he bought seed and saved it, side by side. I found no earlier telling; I did not search 1998 newspapers.",
+    "Federal Court trial judgment, 2001 FCT 256 (29 March 2001): not saved; the Wayback Machine has no copy of the decisions.fct-cf.gc.ca page. The trial findings are quoted here only through the Supreme Court text.",
+    "Open Library full-text search and Google Books: not used for this story (Google Books returned 429 and Open Library refused connections during this session).",
+    "Searched for a correction by Schmeiser: none found. He kept saying until his death in 2020 that the canola came by accident; I did not save those statements.",
+    "Lesson: saved the Federal Circuit opinion in Organic Seed Growers v. Monsanto (2013) from cafc.uscourts.gov (an earlier guessed URL returned 404 and the Justia copy returned 403). Supreme Court of Canada paragraph 95 on innocent bystanders is also in the saved judgment."
+  ],
+  "confidence_note": "The trial judge's full reasons (2001 FCT 256) are not saved, so the 1997 facts come from the Supreme Court summary. The Canadian court's remark on innocent bystanders is not a holding on a case of real accidental contamination, and the US ruling rests on Monsanto's own disclaimer for contamination up to one percent; neither shows what a court would do with heavier accidental contamination. The 5 to 4 split is read from the judgment's list of judges dissenting in part."
+}

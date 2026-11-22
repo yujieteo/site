@@ -1,0 +1,86 @@
+{
+  "id": "newton-window",
+  "as_told": "Isaac Newton sat in Parliament as a member for Cambridge University. In the whole session he said only one thing: he asked an usher to close a window because he felt a draught. The greatest scientist of his age had nothing else to say in the House.",
+  "lesson": "Newton was not an active Member of Parliament.",
+  "what_happened": "Newton was elected for Cambridge University to the Convention Parliament in January 1689 and sat until it was dissolved in February 1690; he sat again from December 1701 to 1702. The Commons Journal of that time records votes, committees and orders, not speeches, so the Journal cannot show what he said or did not say in debate; I did not check private diaries of debates such as Grey's Debates. The History of Parliament finds that he was not an active member: in 1689 he was named to four committees and was a teller in one division (22 February 1689). In 1701-02 he brought in and managed a bill to continue the act against counterfeiting the coin, and on 10 March 1702 he led the Commons party that carried that bill to the House of Lords. I found no record made at the time of the window request.",
+  "false_part": "",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "2010-05-25",
+    "who": "Adam White (this telling says it was his first speech, not his only one)",
+    "where": "TIME, \"Welcome to Westminster: What It's Like to Be a New MP\"",
+    "quote": "According to some accounts, when Isaac Newton made his first speech as an MP in 1689, it was a request to close a window, as he could feel a draft.",
+    "url": "https://content.time.com/time/world/article/0,8599,1991687,00.html",
+    "archive": "http://web.archive.org/web/20220818092854/http://content.time.com/time/world/article/0,8599,1991687,00.html",
+    "file": "sources/newton-window/time-2010-welcome-westminster.html.txt",
+    "sha256": "c219f0f2aac3d16681487478a50ec8e4d0e8782ff9583479e4c0908d46260329"
+  },
+  "original": [
+    {
+      "what": "Journal of the House of Commons, volume 10, 22 February 1689: Newton as a teller in a division on adjournment (the Journal records tellers and votes, not speeches)",
+      "date": "1689-02-22",
+      "who": "Clerk of the House of Commons (British History Online transcription)",
+      "quote": "Tellers for the Noes, Mr. Baldwyn , 94. Mr. Newton",
+      "url": "https://www.british-history.ac.uk/commons-jrnl/vol10/pp32-33",
+      "archive": "http://web.archive.org/web/20260125212623/https://www.british-history.ac.uk/commons-jrnl/vol10/pp32-33",
+      "file": "sources/newton-window/cj10-1689-02-22.html.txt",
+      "sha256": "69cb0f42d80bd20261cd253be31bdcd11001538c39b0026ff8e9d4e6f9a95dec"
+    },
+    {
+      "what": "Journal of the House of Commons, volume 10, 30 April 1689: leave to bring in the universities charters bill; the entry does not name who moved it",
+      "date": "1689-04-30",
+      "who": "Clerk of the House of Commons (British History Online transcription)",
+      "quote": "Ordered , That Leave be given to bring in a Bill for Confirmation of the Charters and Privileges of the Universities of Oxford and Cambridge",
+      "url": "https://www.british-history.ac.uk/commons-jrnl/vol10/pp112-113",
+      "archive": "http://web.archive.org/web/20260125212706/https://www.british-history.ac.uk/commons-jrnl/vol10/pp112-113",
+      "file": "sources/newton-window/cj10-1689-04-30.html.txt",
+      "sha256": "a1a594105ad59c9443a0597a7e96b31708a6ec92eb945b4985b5f0168a7ad3cf"
+    },
+    {
+      "what": "Journal of the House of Lords, volume 17, 10 March 1702: Newton carries a Commons bill and message to the Lords",
+      "date": "1702-03-10",
+      "who": "Clerk of the Parliaments (British History Online transcription)",
+      "quote": "A Message was brought from the House of Commons, by Mr. Newton and others",
+      "url": "https://www.british-history.ac.uk/lords-jrnl/vol17/pp65-66",
+      "archive": "http://web.archive.org/web/20260129212930/https://www.british-history.ac.uk/lords-jrnl/vol17/pp65-66",
+      "file": "sources/newton-window/lj17-1702-03-10.html.txt",
+      "sha256": "8cb6e33480e1e6b5f9d0a41556ef4cd3ff5883e5133388e3eb29f746eb8c0466"
+    },
+    {
+      "what": "History of Parliament, The House of Commons 1690-1715, biography of Isaac Newton (D. W. Hayton): his work on the coinage bill in 1701-02",
+      "date": "2002",
+      "who": "D. W. Hayton, History of Parliament Trust",
+      "quote": "aside from bringing in and managing the bill to continue the Act to prevent counterfeiting the coinage",
+      "url": "https://www.historyofparliamentonline.org/volume/1690-1715/member/newton-isaac-1642-1727",
+      "archive": "http://web.archive.org/web/20241225092103/http://www.historyofparliamentonline.org/volume/1690-1715/member/newton-isaac-1642-1727",
+      "file": "sources/newton-window/hop-1690-1715.html.txt",
+      "sha256": "8acc9c3db3deab839e3bd169bf220a7acceb2f521a62124bb52b73c23069aa4f"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "holds",
+    "why": "The History of Parliament, written from the Journals and Newton's letters, says he was not an active member of the Convention: four committees and one division as teller. He did obtain leave for one bill in 1689 and managed another in 1701-02, and the narrow point that his only words were about a window is not shown by any record.",
+    "source": {
+      "what": "History of Parliament, The House of Commons 1660-1690, biography of Isaac Newton (E. R. Edwards and Geoffrey Jaggar, 1983)",
+      "quote": "He was not an active Member of the Convention, in which he was appointed to only four committees, and acted as teller in a single division",
+      "url": "https://www.historyofparliamentonline.org/volume/1660-1690/member/newton-isaac-1642-1727",
+      "archive": "http://web.archive.org/web/20250416112258/http://www.historyofparliamentonline.org/volume/1660-1690/member/newton-isaac-1642-1727",
+      "file": "sources/newton-window/hop-1660-1690.html.txt",
+      "sha256": "f6b01d64bb5eb97ce9cc63d19f3b904b8f5d63299d0d2f2f063d9c1c2ba9f5a4"
+    }
+  },
+  "search_steps": [
+    "History of Parliament online, Newton biographies for 1660-1690 and 1690-1715: the live site returned 401; saved the Wayback copies. Neither mentions a window. The 1660-1690 text says he 'successfully applied' with Sir Thomas Clarges on 30 April 1689 for leave to bring in the universities bill.",
+    "Commons Journal vol. 10 on British History Online, 30 April 1689: the entry orders leave for the universities bill but does not name Newton. 22 February 1689: Newton is a teller for the Noes. The Journal does not record speeches.",
+    "Lords Journal vol. 17, 10 March 1702: 'Mr. Newton and others' bring the Commons bill on counterfeiting the coin to the Lords. I did not fetch the Commons Journal vol. 13 entries for that bill.",
+    "Newton Project essay 'Newton: The Making of a Politician' (saved): no window story; it says there is no evidence he spoke on the Trinity proviso in May 1689.",
+    "Open Library full-text search: a search snippet from Westfall, Never at Rest (1980), says the story that he spoke only once rests on anecdote alone (the book is lending-only and not saved, so it is not quoted). Other phrase searches matched loosely and gave nothing; Open Library then reset connections and I stopped.",
+    "Google Books API returned 429; HathiTrust full-text search, Chronicling America (loc.gov) and Papers Past returned bot checks (403 or Incapsula). Not retried.",
+    "Web search: Michael White, Isaac Newton: The Last Sorcerer (1998), is cited by a retelling as a source; not online, not checked. History.com (2015, updated 2025) repeats the story with a hedge (not saved). The earliest telling I could save in full is TIME, 25 May 2010.",
+    "English Wikipedia articles 'Isaac Newton' and 'Later life of Isaac Newton' (raw wikitext): no mention of the window story.",
+    "Grey's Debates of the House of Commons, vol. 9 (1689), on British History Online: one web search found no passage naming Newton; I did not read the volume in full."
+  ],
+  "confidence_note": "The story is older than 2010: Westfall (1980) already calls it anecdotal, but I could not read his source note. Because Commons speeches were not recorded in 1689-90, no record can prove or disprove what Newton said in debate. Carrying a message to the Lords in 1702 needs the bearer to speak, but that was in the Lords and in his second Parliament, so it does not settle the claim about 1689."
+}
