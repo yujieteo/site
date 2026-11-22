@@ -1,0 +1,76 @@
+{
+  "id": "cake-mix-egg",
+  "as_told": "When instant cake mixes came out in the 1940s and 1950s, housewives did not buy them, because the cakes felt too easy and not really theirs. A psychologist, usually Ernest Dichter, told the makers to take the dried egg out so the buyer had to add a fresh egg. Sales then took off.",
+  "lesson": "People value a product more when they put some of their own effort into it.",
+  "what_happened": "Some mixes did tell the buyer to add fresh eggs: Vance Packard (1957) reports that Swansdown White Cake Mix began telling wives \"You Add Fresh Eggs\", and that other mixes said \"Do not add eggs\" because the eggs were already in. A 1935 patent by P. Duff and Sons already named a psychological handicap of dried eggs, but its answer was to put fresh eggs into the mix at the factory; the buyer added only water or milk. No sales record was found showing that mixes which asked for an egg sold better. A 1958 book by Harry Henry, seen only in search snippets, discusses buyers' use of egg-included and egg-omitted mixes, but its context could not be read.",
+  "false_part": "No record shows that cake mixes sold better because buyers had to add an egg.",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "1957",
+    "who": "Vance Packard",
+    "where": "The Hidden Persuaders (1957), page 262 of the archive.org scan hiddenpersuaders0000unse_i7b4 (Open Library search snippet only)",
+    "quote": "began telling wives in large type",
+    "url": "https://openlibrary.org/search/inside.json?q=%22Swansdown%22%20%22cake%20mix%22%20eggs%20housewife&limit=50",
+    "archive": "https://archive.org/details/hiddenpersuaders0000unse_i7b4",
+    "file": "sources/cake-mix-egg/openlibrary-inside-swansdown-cake-mix-eggs.json",
+    "sha256": "238186c4a7106896e4deebb3cbff8a2f26caacb962cbc1e29d08995c55a6a625"
+  },
+  "original": [
+    {
+      "what": "US Patent 2,016,320, Dehydrated flour mix and process of making the same, John D. Duff and Louis E. Dietrich, assignors to P. Duff and Sons, filed 13 June 1933, granted 8 October 1935: names the buyer's dislike of dried eggs",
+      "date": "1935-10-08",
+      "who": "John D. Duff and Louis E. Dietrich",
+      "quote": "The housewife and the purchasing public in general seem to prefer fresh eggs and hence the use of dried or powdered eggs is somewhat of a handicap from a psychological standpoint.",
+      "url": "https://patents.google.com/patent/US2016320A/en",
+      "archive": "http://web.archive.org/web/20251211042854/https://patents.google.com/patent/US2016320A/en",
+      "file": "sources/cake-mix-egg/us2016320-duff-patent.html",
+      "sha256": "abb7e65f6c2b1a415f2bf26b2c9c7c02810d9080198dbaa9b3c9b3b486bd2562"
+    },
+    {
+      "what": "The same patent: in this mix the fresh eggs go in at the factory, and the buyer adds only water or milk",
+      "date": "1935-10-08",
+      "who": "John D. Duff and Louis E. Dietrich",
+      "quote": "is utilized by the purchaser by adding water or milk and then baking or cooking in the usual manner",
+      "url": "https://patents.google.com/patent/US2016320A/en",
+      "archive": "http://web.archive.org/web/20251211042854/https://patents.google.com/patent/US2016320A/en",
+      "file": "sources/cake-mix-egg/us2016320-duff-patent.html",
+      "sha256": "abb7e65f6c2b1a415f2bf26b2c9c7c02810d9080198dbaa9b3c9b3b486bd2562"
+    },
+    {
+      "what": "Harry Henry, Motivation Research (London: Crosby Lockwood, 1958), p. 258 of the scan, discussing housewives' attitudes to cake mixes (Open Library search snippet only)",
+      "date": "1958",
+      "who": "Harry Henry",
+      "quote": "(the egg-included being mostly new brands",
+      "url": "https://openlibrary.org/search/inside.json?q=%22egg-omitted%20mixes%22&limit=50",
+      "archive": "https://archive.org/details/motivationresear0000harr",
+      "file": "sources/cake-mix-egg/openlibrary-inside-egg-omitted-mixes.json",
+      "sha256": "8a5c716976fbf6bc1c9e4d3432630ce3972468d535b0fcc6beebbd0471114850"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "holds",
+    "why": "In laboratory experiments, people who assembled a product themselves (an IKEA box, origami, Lego) bid more for it than people given the same product ready-made. This supports the effort part of the lesson, but not the claim about cake-mix sales.",
+    "source": {
+      "what": "Michael I. Norton, Daniel Mochon and Dan Ariely, The IKEA Effect: When Labor Leads to Love, Harvard Business School Working Paper 11-091 (2011); published in Journal of Consumer Psychology in 2012",
+      "quote": "We found that builders bid significantly more for their boxes (M = $0.78, SD = 0.63) than non-builders (M = $0.48, SD = 0.40), t(50) = 2.12, p < .05.",
+      "url": "https://www.hbs.edu/ris/Publication%20Files/11-091.pdf",
+      "archive": "http://web.archive.org/web/20261103230057/https://www.hbs.edu/ris/Publication%20Files/11-091.pdf",
+      "file": "sources/cake-mix-egg/norton-mochon-ariely-ikea-effect-2011.pdf.txt",
+      "sha256": "58f35710d4ab48e9f715733653ac9a0bf64b0dd66f06c11d69a8e5768d572e6f"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search for \"cake mix\" \"fresh egg\" housewife guilt, \"add an egg\" \"cake mix\", and Dichter \"cake mix\" egg: earliest relevant hits are Packard, The Hidden Persuaders (1957), and Harry Henry, Motivation Research (1958).",
+    "Open Library search \"You Add Fresh Eggs\" and \"Swansdown\" \"cake mix\": Packard 1957 reports the Swansdown label and mixes that said \"Do not add eggs\" because the eggs were already in.",
+    "All 1957 copies of The Hidden Persuaders and Henry's 1958 book on archive.org are lending-only; quotes come from Open Library search snippets saved as JSON.",
+    "Targeted Open Library searches on Henry's text (\"adds a fresh egg to a cake-mix\", \"egg-omitted mixes\", \"cake-mixes to a considerable extent\") recovered pieces of one passage on p. 258; its full context could not be read.",
+    "Saved US Patent 2,016,320 (Duff, 1935) from Google Patents and read the whole text: fresh eggs are added at the factory; the buyer adds water or milk.",
+    "Did not find Ernest Dichter's own published words on cake mix and eggs in open full text; Packard's 1957 book is the earliest telling found, and Dichter's 1960 book The Strategy of Desire is lending-only.",
+    "Rule 3: did not search for a correction by Packard or Dichter.",
+    "Lesson: saved Norton, Mochon and Ariely (2011 working paper), which opens with the cake-mix story citing Laura Shapiro (2004); Shapiro's book was not read.",
+    "Did not search newspaper archives for 1950s cake-mix advertisements or sales figures."
+  ],
+  "confidence_note": "The Packard and Henry quotes come only from Open Library search snippets, not full page text. Packard's passage was not read in full, so his stated reason and any sales claim are not known. Henry's passage may describe one study's findings or a hypothetical; its context was not recovered. No cake-mix sales data from the 1950s were found. Whether Dichter gave the advice is not shown by any saved record."
+}

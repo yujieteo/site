@@ -1,0 +1,46 @@
+{
+  "id": "cruise-control-rv",
+  "as_told": "A man (in some versions Mr or Mrs Merv Grazinski of Oklahoma City) bought a new 32-foot Winnebago motor home. On the freeway he set the cruise control at 70 mph and left the driver's seat to make a cup of coffee in the back, and the motor home crashed. He sued Winnebago because the manual did not say he could not do this, and a jury awarded him $1,750,000 and a new motor home.",
+  "lesson": "American juries give huge awards to people who sue over their own foolishness.",
+  "what_happened": "No record of such a crash or lawsuit was found. The story was told as an urban legend, without names, by 1986: the folklorist Jan Harold Brunvand printed it in The Choking Doberman under the heading \"'Cruise Control' Stories\", in a version where the driver sets the cruise control at sixty miles per hour and leaves the wheel. The names, the Winnebago lawsuit and the $1.75 million award appear later, in an e-mail list of 'Stella Awards' cases; the real Stella Awards site (StellaAwards.com) lists that case among fabricated ones.",
+  "false_part": "",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "1986",
+    "who": "Jan Harold Brunvand",
+    "where": "The Choking Doberman and Other \"New\" Urban Legends (New York: W. W. Norton, 1986 printing per the scan's metadata; a 1984 first edition is reported but not verified), section \"'Cruise Control' Stories\", p. 63",
+    "quote": "drives  out  on  the highway,",
+    "url": "https://openlibrary.org/search/inside.json?q=%22sets%20the%20cruise%20control%20at%20sixty%22",
+    "archive": "https://archive.org/details/chokingdoberman00janh",
+    "file": "sources/cruise-control-rv/ol-inside-choking-doberman-cruise-control.json",
+    "sha256": "340212a59a4a4b70a47b11b3c5191e571c5c03460108cd9e68ce254a3031b431"
+  },
+  "original": [],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "In a national sample of 2005 civil trials in US state courts, plaintiffs in product liability trials other than asbestos won only 19.6% of the time, but those who won had a median award of $500,000, against $28,000 for all winning plaintiffs; punitive damages went to 5% of winners. So product liability winners can get large awards, but most such plaintiffs lose, and the data do not measure how many suits are frivolous.",
+    "source": {
+      "what": "Lynn Langton and Thomas H. Cohen, Civil Bench and Jury Trials in State Courts, 2005, Bureau of Justice Statistics Special Report NCJ 223851, October 2008 (revised 4/9/09), table on plaintiff win rates by case type",
+      "quote": "Product liability (other)                 265           19.6",
+      "url": "https://bjs.ojp.gov/content/pub/pdf/cbjtsc05.pdf",
+      "archive": "http://web.archive.org/web/20261110165937/https://bjs.ojp.gov/content/pub/pdf/cbjtsc05.pdf",
+      "file": "sources/cruise-control-rv/bjs-civil-trials-2005.pdf.txt",
+      "sha256": "a93b194bf6bf78522fb4b87787a7497eedb3a55bc60ce942c7c0d393a7ab3f4c"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search for \"cruise control\" \"motor home\" coffee: hits are novels, manuals and later retellings (Total English 2006, Crazy Court Cases 2006, Urban Legends 2005), all later than 1984.",
+    "Open Library full-text search for \"cruise control\" \"urban legend\", \"Mexican Pet\" and \"recreational vehicle\": found Brunvand's books with a \"Cruise Control\" legend entry (Too Good to Be True 1999, Encyclopedia of Urban Legends 2001, p. 100, The Baby Train 1993).",
+    "Open Library full-text search for \"since the\" RV and for \"sets the cruise control at sixty\": found the 'Cruise Control' Stories section (p. 63) in Brunvand, The Choking Doberman (scan dated 1986). Snippets only; the book is lending-only.",
+    "Web searches (Snopes, RV Travel, Good Sam) as leads: Snopes quotes Brunvand that the legend began in the late 1970s, when cruise control first became available on RVs; I could not read Snopes (HTTP 402) or Brunvand's own text on the late-1970s date.",
+    "stellaawards.com/bogus.html returned 403; saved the 2019 Wayback copy as a lead. It prints the Grazinski Winnebago text and marks it 'Fabricated.'; this is a debunker's statement and is not used as evidence.",
+    "Searched for a Winnebago company statement about the Grazinski case: none found.",
+    "Searched alt.folklore.urban and newspapers via web search for tellings before 1984: none found.",
+    "Tried the Oklahoma State Courts Network docket search for the name Grazinski twice: both requests timed out (HTTP 000); not retried again.",
+    "Tried Papers Past (search for \"cruise control\" \"motor home\"): blocked by a bot challenge page. Did not search Trove or Google News Archive.",
+    "For the lesson, saved the Bureau of Justice Statistics report on civil trials in state courts in 2005."
+  ],
+  "confidence_note": "No record shows the crash or the lawsuit, but the one record that could rule it out (an Oklahoma court docket search) could not be completed, so the class is 'unsupported' rather than 'invented'. Brunvand's telling is quoted from an Open Library search snippet only, so I could not read his full text, his sources or his dating of the legend; the 1986 date is the scanned printing, and the book may be older. The date the Grazinski lawsuit version first appeared (early 2000s) comes from leads, not from a saved copy of the original e-mail."
+}

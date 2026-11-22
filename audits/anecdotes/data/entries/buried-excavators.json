@@ -1,0 +1,65 @@
+{
+  "id": "buried-excavators",
+  "as_told": "Builders who dig mega-basements under rich London homes cannot drive the digger out of the deep hole. Lifting it out with a crane costs more than the digger is worth, so they bury it under gravel and concrete. Hundreds, perhaps 1,000, diggers are said to lie under west London.",
+  "lesson": "In London's top property market the sums are so large that throwing away a working machine is cheaper than getting it out.",
+  "what_happened": "The story was first printed by Ed Smith in the New Statesman on 5 June 2014. He gave no named source; he wrote that one developer he asked guessed at least 1,000 and another 500. The next day the Evening Standard quoted a director of the developer Galliard and the managing director of Cranbrook Basements, who called it ludicrous and said the small diggers can be lifted out with a block and tackle. No record of an actual buried digger under a London house was found.",
+  "false_part": "No record shows any digger buried under a London basement; the only sources are two unnamed developers, and named basement builders deny it.",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "2014-06-05",
+    "who": "Ed Smith",
+    "where": "The bizarre secret of London's buried diggers, New Statesman",
+    "quote": "One property developer I asked reckoned at least 1,000; another put the figure at more like 500.",
+    "url": "https://www.newstatesman.com/politics/2014/06/bizarre-secret-london-s-buried-diggers",
+    "archive": "http://web.archive.org/web/20201103132049/https://www.newstatesman.com/politics/2014/06/bizarre-secret-london-s-buried-diggers",
+    "file": "sources/buried-excavators/newstatesman-smith-buried-diggers-2014-wayback2020.html",
+    "sha256": "36be9054826ac76136a4580999f505d6378f83e6b85aacc50997867504769b80"
+  },
+  "original": [
+    {
+      "what": "Evening Standard, 6 June 2014: interview statement by Kevin O'Connor, managing director of Cranbrook Basements",
+      "date": "2014-06-06",
+      "who": "Kevin O'Connor (Cranbrook Basements)",
+      "quote": "The diggers used are tiny little machines and they can be lifted out with a block and tackle. There is always an exit strategy for the equipment.",
+      "url": "http://www.standard.co.uk/news/london/claims-developers-are-dumping-diggers-in-london-basement-conservations-nonsense-9501998.html",
+      "archive": "http://web.archive.org/web/20140606190234/http://www.standard.co.uk/news/london/claims-developers-are-dumping-diggers-in-london-basement-conservations-nonsense-9501998.html",
+      "file": "sources/buried-excavators/evening-standard-prynn-2014-06-06-wayback.html",
+      "sha256": "4a0ed490eac358e813d5a575a894f0b0a4f37148224df4e13a60dae4cf6a0d20"
+    },
+    {
+      "what": "Evening Standard, 6 June 2014: interview statement by Don O'Sullivan, a director of the London developer Galliard",
+      "date": "2014-06-06",
+      "who": "Don O'Sullivan (Galliard)",
+      "quote": "why would someone leave such valuable space filled with dumped equipment and fill in concrete?",
+      "url": "http://www.standard.co.uk/news/london/claims-developers-are-dumping-diggers-in-london-basement-conservations-nonsense-9501998.html",
+      "archive": "http://web.archive.org/web/20140606190234/http://www.standard.co.uk/news/london/claims-developers-are-dumping-diggers-in-london-basement-conservations-nonsense-9501998.html",
+      "file": "sources/buried-excavators/evening-standard-prynn-2014-06-06-wayback.html",
+      "sha256": "4a0ed490eac358e813d5a575a894f0b0a4f37148224df4e13a60dae4cf6a0d20"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "No cost record or study of basement building was found that compares the value of a small digger with the cost of lifting it out. The only named builders quoted say removal is cheap and that the basement space is worth far more than the machine.",
+    "source": {
+      "what": "Evening Standard, 6 June 2014: Don O'Sullivan of Galliard on the value of basement space",
+      "quote": "With the basement space worth up to £8,000 per sq ft",
+      "url": "http://www.standard.co.uk/news/london/claims-developers-are-dumping-diggers-in-london-basement-conservations-nonsense-9501998.html",
+      "archive": "http://web.archive.org/web/20140606190234/http://www.standard.co.uk/news/london/claims-developers-are-dumping-diggers-in-london-basement-conservations-nonsense-9501998.html",
+      "file": "sources/buried-excavators/evening-standard-prynn-2014-06-06-wayback.html",
+      "sha256": "4a0ed490eac358e813d5a575a894f0b0a4f37148224df4e13a60dae4cf6a0d20"
+    }
+  },
+  "search_steps": [
+    "Web search for buried diggers under London basements: all tellings point to Ed Smith, New Statesman, 5 June 2014; the story spread the same week (Telegraph, ITV, Boing Boing, Gizmodo).",
+    "Saved the New Statesman article: the live page is cut off by a paywall; saved a full copy from the Wayback Machine (2020 snapshot).",
+    "Saved HuffPost UK (Charlotte Meredith, 6 June 2014) as a lead only; followed its link to the Evening Standard article of 6 June 2014.",
+    "The live Evening Standard page refused access (Cloudflare 403); saved the Wayback Machine copy of 6 June 2014.",
+    "Searched for an earlier telling (before June 2014) and for a documented case of a buried digger; found none.",
+    "Tried Kensington and Chelsea council basement studies (Alan Baxter, 2013 and 2014) for how plant is removed; the council site refused access (403); the 2014 case-study report from the Wayback Machine covers spoil and lorries, not diggers, so it was not used.",
+    "Rule 3: searched for a correction or reply by Ed Smith or the New Statesman; found none. The 2020 archived page carries no correction note.",
+    "Open Library and newspaper archives were not searched; the story is from 2014."
+  ],
+  "confidence_note": "An earlier oral or forum version before June 2014 may exist but was not found. The builders' denials are interview statements in a newspaper, and they have a business interest. That no digger has ever been buried cannot be proven; the class rests on the lack of any record."
+}

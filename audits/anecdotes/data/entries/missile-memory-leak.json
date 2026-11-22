@@ -1,0 +1,55 @@
+{
+  "id": "missile-memory-leak",
+  "as_told": "A consultant reviewing the on-board software of a missile found that it leaked memory. The chief engineer was not worried. The team had calculated how much memory the program would leak during the longest possible flight, doubled it, and fitted that much extra memory. The missile explodes at the end of its flight, so the leak never matters.",
+  "lesson": "A known memory leak can be acceptable when the program's run time is short and bounded and the leak is planned for.",
+  "what_happened": "On 31 March 1995 Kent Mitchell, a technical consultant at Rational Software Corporation, told this story in the comp.lang.ada Usenet thread \"Does memory leak?\". He wrote that he had once worked with a customer who produced on-board software for a missile, that he had pointed out storage leaks in their code, and that the customer's chief software engineer answered \"Of course it leaks\". According to Mitchell, the team had calculated the leak over the total possible flight time, doubled it, and added that much memory to the hardware. Mitchell does not name the customer, the missile or the engineer, and no other record of the project was found.",
+  "false_part": "",
+  "class": "true",
+  "also": "",
+  "earliest_telling": {
+    "date": "1995-03-31",
+    "who": "Kent Mitchell (Rational Software Corporation)",
+    "where": "comp.lang.ada, thread \"Re: Does memory leak?\", Message-ID <3lhdjd$l6h@rational.rational.com>",
+    "quote": "He went on to point out that they had calculated the amount of memory the application would leak in the total possible flight time for the missile and then doubled that number.",
+    "url": "https://pages.mtu.edu/~djbyrne/does_memory_leak.html",
+    "archive": "http://web.archive.org/web/20221009114750/https://pages.mtu.edu/%7Edjbyrne/does_memory_leak.html",
+    "file": "sources/missile-memory-leak/mtu-does-memory-leak.html",
+    "sha256": "9d852c83608e81b6d6af3fb60358e24420074505b27463dc2b060b2ba274ba8f"
+  },
+  "original": [
+    {
+      "what": "The teller's own first-person Usenet post (comp.lang.ada, Message-ID <3lhdjd$l6h@rational.rational.com>), published under his name; he was the consultant in the story. Same post as the earliest telling, saved from a mirror of the Deja News copy.",
+      "date": "1995-03-31",
+      "who": "Kent Mitchell",
+      "quote": "I was once working with a customer who was producing on-board software for a missile.",
+      "url": "https://pages.mtu.edu/~djbyrne/does_memory_leak.html",
+      "archive": "http://web.archive.org/web/20221009114750/https://pages.mtu.edu/%7Edjbyrne/does_memory_leak.html",
+      "file": "sources/missile-memory-leak/mtu-does-memory-leak.html",
+      "sha256": "9d852c83608e81b6d6af3fb60358e24420074505b27463dc2b060b2ba274ba8f"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "holds",
+    "why": "Walter Bright, author of the DMD compiler, wrote in 2013 that DMD deliberately allocates memory and never frees it because a compiler runs for a short time, and he names the cost: a big enough input can use up the machine's memory. The lesson holds only for short, bounded runs. Coding rules for safety-critical software take another route: Holzmann's NASA/JPL 'Power of Ten' Rule 3 ('Do not use dynamic memory allocation after initialization') and the 2005 Joint Strike Fighter C++ standard, AV Rule 206, forbid heap allocation after start-up, so a leak cannot grow in flight.",
+    "source": {
+      "what": "Walter Bright, \"Increasing Compiler Speed by 77%\", digitalmars.com, 25 July 2013",
+      "quote": "Since compilers are short lived programs,",
+      "url": "https://digitalmars.com/articles/b87.html",
+      "archive": "http://web.archive.org/web/20260216234624/https://digitalmars.com/articles/b87.html",
+      "file": "sources/missile-memory-leak/bright-2013-compiler-speed.html",
+      "sha256": "fc10d7821613cf2a66952981a73c37a64fc161138f133fabb9e5bfa9ca9d599e"
+    }
+  },
+  "search_steps": [
+    "Web search for Kent Mitchell, missile, memory leak, comp.lang.ada: found the post (Message-ID <3lhdjd$l6h@rational.rational.com>, 31 March 1995) on usenet.ada-lang.io and a mirror at pages.mtu.edu.",
+    "usenet.ada-lang.io returned a Cloudflare challenge page to curl, also with a browser User-Agent and on the /raw path; Wayback had no snapshot of it.",
+    "pages.mtu.edu/~djbyrne/does_memory_leak.html now returns 404; saved the 2022-10-09 Wayback copy, which holds the full post with Deja News headers (X-Deja-AN: 100649473).",
+    "Web search for the thread on Google Groups: only usenet.ada-lang.io copies came up. The thread started on 22-23 March 1995; Mitchell's post is a reply to Norman H. Cohen. No earlier telling of the missile story was found.",
+    "Open Library full-text search for missile, \"memory leak\", \"garbage collection\": no book telling of the story found among the top hits (2012-2018 programming books only).",
+    "Searched for a correction or later account by Mitchell: none found.",
+    "For the lesson, saved Walter Bright's 2013 article on the DMD compiler, which never frees memory by design.",
+    "For context, saved Holzmann's NASA/JPL 'Power of Ten' rules (spinroot.com/gerard/pdf/P10.pdf, Rule 3) and the Lockheed Martin JSF Air Vehicle C++ Coding Standards, Doc. No. 2RDU00001 Rev C, December 2005 (AV Rule 206); both forbid heap allocation after initialization. They are cited in the lesson verdict, not as records of the event."
+  ],
+  "confidence_note": "The only record is Mitchell's own account, written years after the event; the customer, the missile and the engineer are not named, so the story cannot be checked against a project record. The engineer's reasoning reaches us only as Mitchell reports it. The class 'true' rests on Mitchell being the consultant in the story and publishing it under his own name. The saved copy is a mirror of the Deja News archive, not the original Usenet spool."
+}

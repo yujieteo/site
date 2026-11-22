@@ -1,0 +1,78 @@
+{
+  "id": "desire-paths-campus",
+  "as_told": "When a new university campus was built, the architect laid no paths. He planted grass and waited a year to see where the students walked. Then he paved the paths they had worn into the grass, and the result was better than any plan. The campus is named differently in different tellings (Michigan State, Ohio State, Vassar, Virginia, and others).",
+  "lesson": "Design from how people actually behave: watch where they walk, then pave those routes.",
+  "what_happened": "No record was found of any campus that was deliberately built without paths so that the paths could be paved later. The earliest telling found, in a 1967 collection of inspirational messages by Paul Speicher, puts the story at Tuskegee Institute with George Washington Carver: he first drew a plan of the walks, and the story turns on what he learned after he 'had watched his students walk for a few years' (the snippet stops there). A 1981 book on design by Christopher Williams tells it about an unnamed architect and a cluster of office buildings, not a campus, and Roger von Oech repeated that version in his books from 1983. Universities have paved paths that students wore across lawns after the fact, for example at Ohio State, where student paths partly shaped the sidewalks of the Oval and the Long Walk (built 1914), but that is not the planned wait-and-see design of the story.",
+  "false_part": "",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "1967",
+    "who": "Paul Speicher",
+    "where": "154 Messages: containing 154 selected messages from a lifetime of inspirational writings (Research & Review Service, 1967), message 'The Way People Like to Walk'",
+    "quote": "had watched his students walk for a few years,",
+    "url": "https://openlibrary.org/search/inside.json?q=%22where%20the%20students%20walked%22%20Carver",
+    "archive": "https://archive.org/details/bwb_P4-BAB-746",
+    "file": "sources/desire-paths-campus/ol-inside-where-the-students-walked-carver.json",
+    "sha256": "096453a9107f7b3cf0fef05e5945f34dbab2afa47640a4d6a704fa096c4a2407"
+  },
+  "original": [
+    {
+      "what": "Ohio State University Archives blog post on the history of the Oval and the Long Walk, quoting the student newspaper The Lantern of 15 September 1914; a record of paving worn student paths after the fact, within a formal plan by University Architect Joseph N. Bradford",
+      "date": "2014-11-25",
+      "who": "The Ohio State University Libraries, University Archives",
+      "quote": "Their walking paths partly led to the current design of sidewalks, including the Long Walk.",
+      "url": "https://library.osu.edu/site/archives/2014/11/25/the-ovals-long-walk-has-paved-the-way-for-students-for-a-century/",
+      "archive": "http://web.archive.org/web/20241129014754/https://library.osu.edu/site/archives/2014/11/25/the-ovals-long-walk-has-paved-the-way-for-students-for-a-century/",
+      "file": "sources/desire-paths-campus/osu-oval-long-walk-2014.html",
+      "sha256": "377bc9d4dc55f98000c6fffbdcc8a5a96b584a074fc51773c01274ec894872c0"
+    },
+    {
+      "what": "Christopher G. Williams, Origins of Form (New York: Architectural Book Publishing Co., 1981): the office-building version of the story, with no names and no place. Search snippet only.",
+      "date": "1981",
+      "who": "Christopher G. Williams",
+      "quote": "architect  once  built  a  cluster  of  large",
+      "url": "https://openlibrary.org/search/inside.json?q=%22architect%20simply%20paved%22%20%22office%20buildings%22",
+      "archive": "https://archive.org/details/originsofform0000will",
+      "file": "sources/desire-paths-campus/ol-inside-architect-simply-paved.json",
+      "sha256": "baf8c48f898d76a5426311f28f4a82ac3b08d0f05b889d75c5aa852eed3c5959"
+    },
+    {
+      "what": "Roger von Oech, Expect the Unexpected (Berrett-Koehler, 2002 per the scan metadata), naming Christopher Williams as his source for the story. Search snippet only.",
+      "date": "2002",
+      "who": "Roger von Oech",
+      "quote": "Christopher  Williams  tells  a  story  about  an",
+      "url": "https://openlibrary.org/search/inside.json?q=%22paths%20across%20the%20lawn%22%20architect",
+      "archive": "https://archive.org/details/expectunexpected00roge",
+      "file": "sources/desire-paths-campus/ol-inside-worn-paths-lawn.json",
+      "sha256": "838aaacb22e826ffbe736a0bc5f211cb8beaa42cacec6dfbd344a5de8bd83b94"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "Helbing, Keltsch and Molnár (Nature, 1997) modelled how walkers form trail systems, using real trails on the Stuttgart-Vaihingen campus, and proposed the model as a planning tool. They only expected that paths designed this way would be accepted by walkers; they did not test whether paving worn paths gives better results than a planned layout, and I found no study that did.",
+    "source": {
+      "what": "Dirk Helbing, Joachim Keltsch and Péter Molnár, 'Modelling the evolution of human trail systems', Nature 388, 47-50 (1997); arXiv preprint cond-mat/9805158",
+      "quote": "We expect that such way systems will actually be accepted, since they",
+      "url": "https://arxiv.org/pdf/cond-mat/9805158v1",
+      "archive": "http://web.archive.org/web/20240502012001/https://arxiv.org/pdf/cond-mat/9805158v1",
+      "file": "sources/desire-paths-campus/helbing-1997-human-trail-systems.pdf.txt",
+      "sha256": "2875de091f0f8492cd0ce79774bc1f1143c6f23f6f634841b7cf5deeac8aacb5"
+    }
+  },
+  "search_steps": [
+    "Web search for the campus desire-path legend: leads name Vassar, Ohio State, Michigan State, University of Northern Colorado, Virginia Tech and Thomas Jefferson at Virginia; a Straight Dope thread says it is told of almost every US university.",
+    "English Wikipedia 'Desire path' (read as a lead): cites Virginia Tech News (2014) on paving dirt paths on the Drillfield and 99% Invisible (2016) on planners who wait to see paths form; neither names a campus built without paths.",
+    "Open Library full-text search for \"paved the paths\" students: found the 'architect simply paved the paths' story in More of the Best of Bits & Pieces (undated).",
+    "Open Library full-text search for \"architect simply paved\": 14 books; the earliest dated is Christopher G. Williams, Origins of Form (1981), then Roger von Oech, A Whack on the Side of the Head (1983) and later von Oech books. All tell it about a cluster of office buildings set in a central green, not a campus.",
+    "Open Library full-text search for \"paths across the lawn\" architect: von Oech's Expect the Unexpected names Christopher Williams as the teller.",
+    "Open Library full-text search for campus \"where the students walked\": found Paul Speicher, 154 Messages (1967), with the Carver and Tuskegee Institute version, and a 1995 church book with an unnamed 'new college campus' version.",
+    "Looked for a Tuskegee record of Carver laying out the campus walks: none found online, and I found no source other than Speicher that he planned the campus walks.",
+    "Saved the Ohio State University Archives post on the Oval and Long Walk (2014) as a record of a campus paving worn student paths after the fact.",
+    "Tried Chronicling America full-text search for \"paved the paths\": blocked by a Cloudflare challenge (HTTP 403). Did not search Papers Past, Trove or Google News Archive for this story.",
+    "Did not search Google Books or HathiTrust for this story (both refused requests for another story in this batch).",
+    "For the lesson, saved Helbing, Keltsch and Molnár (1997, arXiv preprint)."
+  ],
+  "confidence_note": "All book tellings are quoted from Open Library search snippets only, because the books are lending-only. Speicher's 1967 book collects messages written over many years, so his telling may be older than 1967; I could not see the rest of the message. The campus versions name many universities, and I checked only Ohio State's archive; another campus could have a record of a planned wait-and-see layout that I did not find."
+}

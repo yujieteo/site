@@ -1,0 +1,68 @@
+{
+  "id": "qwerty-slow",
+  "as_told": "Christopher Latham Sholes's early typewriters jammed when typists struck keys too fast. So he arranged the letters in the awkward QWERTY order on purpose, to slow typists down. The layout stayed long after the jamming problem was gone.",
+  "lesson": "A poor design can become a permanent standard once everyone has learned it, even when a better design exists.",
+  "what_happened": "The layout grew in steps from 1872 to 1878; the machine was first sold to telegraph operators who copied Morse messages, and it was shown off for speed. In an 1886 account, James Densmore, Sholes's backer, describes an autumn 1872 demonstration (on a keyboard that came before the final QWERTY order) where the operator kept asking the Western Union senders to go faster. Yasuoka and Yasuoka measured surviving Sholes and Glidden machines and found that the second most common letter pair, E and R, sits on adjacent typebars, which does not fit a plan to keep common pairs apart. Whether type-bar clashes shaped some placements is still argued, but no saved record shows a purpose to slow the operator, and the records that exist contradict it.",
+  "false_part": "The layout was not designed to slow typists; the machine was first sold to and shown off for fast telegraph copying.",
+  "class": "changed",
+  "also": "",
+  "earliest_telling": {
+    "date": "1976",
+    "who": "Insup Taylor",
+    "where": "Introduction to Psycholinguistics (New York: Holt, Rinehart and Winston, 1976), p. 460 (Open Library search snippet only)",
+    "quote": "in order to prevent jamming of the",
+    "url": "https://openlibrary.org/search/inside.json?q=keyboard%20typewriter%20%22slow%20down%20the%20typist%22&limit=100",
+    "archive": "https://archive.org/details/introductiontops00tayl",
+    "file": "sources/qwerty-slow/openlibrary-inside-keyboard-typewriter-slow-down-the-typist.json",
+    "sha256": "2b62c5fef1646aa85ba87c6c56bfb10293c0c1478cdd410b6fca81106788ada7"
+  },
+  "original": [
+    {
+      "what": "James Densmore, \"Typewriting and Telegraphy\", The Phonographic World, vol. 2, no. 1 (September 1886), pp. 6-7, as transcribed in the Yasuokas' QWERTY People Archive; account of the autumn 1872 demonstration to Western Union, on a machine whose keyboard came before the final QWERTY order",
+      "date": "1886-09",
+      "who": "James Densmore",
+      "quote": "The general then sent faster, but immediately Porter again cried",
+      "url": "http://kanji.zinbun.kyoto-u.ac.jp/~yasuoka/QWERTY/",
+      "archive": "http://web.archive.org/web/20261029134045/http://kanji.zinbun.kyoto-u.ac.jp/~yasuoka/QWERTY/",
+      "file": "sources/qwerty-slow/yasuoka-qwerty-people-archive.html",
+      "sha256": "df8647d5dd74f357280f6a73f844b4cf1b8ca4b1ae69a781210ac0646dc7735a"
+    },
+    {
+      "what": "Yasuoka and Yasuoka, On the Prehistory of QWERTY, ZINBUN No. 42 (2009/2010 issue, published 2011): their measurement of letter pairs on the typebar basket of surviving Sholes and Glidden machines",
+      "date": "2011",
+      "who": "Koichi Yasuoka and Motoko Yasuoka",
+      "quote": "But the second one, ER + RE, was placed adjacently in the basket.",
+      "url": "https://repository.kulib.kyoto-u.ac.jp/server/api/core/bitstreams/dc434be9-80cd-499b-a984-f9fa35954c3b/content",
+      "archive": "http://web.archive.org/web/20250617092851/https://repository.kulib.kyoto-u.ac.jp/dspace/bitstream/2433/139379/1/42_161.pdf",
+      "file": "sources/qwerty-slow/yasuoka-prehistory-qwerty-2011.pdf.txt",
+      "sha256": "2d4ee5310d0afb0b9fb0b0b4e1564d414c5295ce660a4c6cd2737f56ff3a35ae"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "The claim that Dvorak's layout is clearly better rests on weak tests. Liebowitz and Margolis review the tests and report that the 1956 US General Services Administration study by Earle Strong found no gain from retraining typists on Dvorak.",
+    "source": {
+      "what": "S. J. Liebowitz and Stephen E. Margolis, The Fable of the Keys, Journal of Law and Economics 33 (1990), authors' web copy",
+      "quote": "He concluded that retraining typists on Dvorak had no advantages over retraining on Qwerty.",
+      "url": "http://www.utdallas.edu/~liebowit/keys1.html",
+      "archive": "http://web.archive.org/web/20190808161403/http://www.utdallas.edu/~liebowit/keys1.html",
+      "file": "sources/qwerty-slow/liebowitz-margolis-fable-of-keys-1990.html",
+      "sha256": "441b32b38b2817d6fa8f81a9eef0a00fdf7fcfa6819af958ca447effa10b33ad"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search \"slow down the typist\": 102 hits. Page 1 earliest: 1968 (a library catalogue book, about catalogue keyboards, not QWERTY), then 1978 (Hanks et al., Design Yourself!). Page 2 gave 1976 (Insup Taylor, Introduction to Psycholinguistics). Page 3 gave nothing before 1980.",
+    "Open Library also searched for \"slow the typist\" (earliest 1980), \"typing too fast\" keyboard jam (earliest 1985) and other phrasings; no earlier hit.",
+    "The 1968 and 1976 books are lending-only on archive.org (full text not open); the quote comes from the Open Library search snippet.",
+    "A second Open Library query (keyboard typewriter \"slow down the typist\") returned other fragments of Taylor's p. 460, which confirm the passage is about the typewriter keyboard; saved that result as the source.",
+    "HathiTrust full-text search refused automated access (403). Google Books API returned 429 (quota); backed off.",
+    "Web search for the earliest telling found only modern debunks; they point to Yasuoka and Yasuoka (2011).",
+    "Saved Yasuoka and Yasuoka, On the Prehistory of QWERTY (Kyoto University repository) and their QWERTY People Archive of 19th-century articles; quoted Densmore's 1886 account from the archive.",
+    "Tried Sholes's 1878 patent (US 207,559) on Google Patents; the OCR text is unreadable, so it was not used.",
+    "Lesson: saved Liebowitz and Margolis (1990) from the authors' web page via the Wayback Machine. Did not find Strong's 1956 GSA report online.",
+    "Did not search newspaper archives.",
+    "Rule 3: did not search for a correction by Insup Taylor."
+  ],
+  "confidence_note": "The earliest telling (1976) is from an Open Library search snippet only, and the search is ranked by relevance, so an earlier telling may exist; the claim was likely spoken long before. Densmore's 1886 account is quoted from the Yasuokas' transcription, not a page image. The role of type-bar clashes in single letter placements is not settled; the slow-down purpose is contradicted by the records here, not disproved outright. The lesson source is a review by two economists, and the Strong study itself was not read."
+}
