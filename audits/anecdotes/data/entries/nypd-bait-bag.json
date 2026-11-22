@@ -1,0 +1,41 @@
+{
+  "id": "nypd-bait-bag",
+  "as_told": "In a sting called Operation Lucky Bag, New York police left bags and wallets with money or valuables in subway stations and other public places. Officers watched, and arrested people who picked them up and walked off instead of handing them in. Many of those arrested had no criminal record.",
+  "lesson": "Bait stings catch ordinary people who give in to a chance temptation rather than real criminals.",
+  "what_happened": "Not established by any record saved in this run. Two criminal-justice textbooks, from 2010 and 2014, describe a New York Police Department sting called Operation Lucky Bag in which police left wallets and bags in public and arrested people who took them, and one calls it controversial. No police record, court decision or contemporary news report was found and saved, so the dates, the number of arrests and how the cases ended are not confirmed here.",
+  "false_part": "",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "2010",
+    "who": "authors not shown in the snippet (Open Library identifier introductiontocr0012sieg)",
+    "where": "Introduction to Criminal Justice (Open Library full-text search snippet)",
+    "quote": "was launched with the best of intentions",
+    "url": "https://openlibrary.org/search/inside.json?q=%22operation%20lucky%20bag%22",
+    "archive": "https://archive.org/details/introductiontocr0012sieg",
+    "file": "sources/nypd-bait-bag/ol-search-operation-lucky-bag.json",
+    "sha256": "22c79afea61ab9e57d718283dc86425962960d2b8ff63b35d590e947b9309e36"
+  },
+  "original": [],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "No arrest data, court ruling or study of who was caught by the sting was found and saved.",
+    "source": {
+      "what": "",
+      "quote": "",
+      "url": "",
+      "archive": "",
+      "file": "",
+      "sha256": ""
+    }
+  },
+  "search_steps": [
+    "Open Library full text \"operation lucky bag\": two hits, Introduction to Criminal Justice (2010) and Criminal Procedure (2014). Both are lending-only scans; the full text download returned HTTP 401. Saved the search JSON with its snippets.",
+    "Open Library full text \"lucky bag\" \"new york times\" police, \"lucky bag\" sting subway and \"operation lucky bag\" judge: no further relevant hits (mostly the US Naval Academy yearbook, also called The Lucky Bag).",
+    "Wikipedia site search for \"Operation Lucky Bag\" and \"Lucky Bag\" police New York: no article.",
+    "CourtListener opinion search: refused anonymous use (HTTP 401 on the v4 API, then 403 on the v3 API and on the HTML search page); stopped after these three requests.",
+    "Did not reach New York Times, New York Post or court records: the web search budget for the session was used up before this story was searched, so no exact article or case could be found."
+  ],
+  "confidence_note": "Provisional. This entry needs a rerun with web search. The class is 'unsupported' only because no record was found and saved in this run, not because evidence casts doubt on the event; the textbooks suggest a real NYPD programme, and a contemporary news report or court decision would likely settle the class and the lesson. Both quotes come only from Open Library search snippets."
+}

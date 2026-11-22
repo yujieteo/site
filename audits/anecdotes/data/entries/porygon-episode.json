@@ -1,0 +1,85 @@
+{
+  "id": "porygon-episode",
+  "as_told": "On 16 December 1997 Japanese television showed a Pokemon episode with a scene of fast red and blue flashing lights. Hundreds of children who watched it had seizures and were taken to hospital. The episode was never shown again.",
+  "lesson": "Flashing lights on a screen can trigger seizures in viewers who are sensitive to light.",
+  "what_happened": "The episode 'Computer Warrior Porygon' was broadcast on TV Tokyo stations on 16 December 1997. That night about 700 people, mostly children, were taken to hospitals with seizure symptoms; CNN reported the next day that 111 were still in hospital. According to a 1998 paper, an official report identified the problem scene as a low-brightness 12 Hz red and blue flicker. A later study argued that the much larger number of milder cases (more than 12,000 children reported symptoms) fits mass psychogenic illness after news reports, but it accepts that real photosensitive seizures occurred in a small fraction.",
+  "false_part": "",
+  "class": "true",
+  "also": "",
+  "earliest_telling": {
+    "date": "1997-12-17",
+    "who": "CNN (Tokyo bureau, with Reuters)",
+    "where": "Cartoon triggers seizures in hundreds of children (CNN World, posted 17 December 1997)",
+    "quote": "The bright flashing lights of a popular TV cartoon became a serious matter Tuesday evening, when they triggered seizures in hundreds of Japanese children.",
+    "url": "http://edition.cnn.com/WORLD/9712/17/video.seizures.update/",
+    "archive": "https://web.archive.org/web/20070506074555/http://edition.cnn.com/WORLD/9712/17/video.seizures.update/",
+    "file": "sources/porygon-episode/cnn_1997-12-17_wayback.html",
+    "sha256": "4a39b0b7cc169727d6193f18c4df3944f780c9acc68ea78e5b647a5372882922"
+  },
+  "original": [
+    {
+      "what": "Peer-reviewed paper by Takahashi and Tsukahara on the incident (Acta Paediatrica Japonica 40:631-637), abstract",
+      "date": "1998",
+      "who": "Takeo Takahashi, Yasuo Tsukahara",
+      "quote": "On the evening of 16 December 1997 approximately 700 people around the nation (mostly children) were rushed to hospitals and treated for seizure symptoms.",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI:10.1111/j.1442-200X.1998.tb02006.x&format=json&resultType=core",
+      "archive": "http://web.archive.org/web/20261122202549/https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI:10.1111%2Fj.1442-200X.1998.tb02006.x&format=json&resultType=core",
+      "file": "sources/porygon-episode/europepmc_takahashi_1998.json",
+      "sha256": "966eebb9b86818e61447c820ccd8c6163ee73799d2120436ffd59c014b035d90"
+    },
+    {
+      "what": "Same abstract: the official finding on the scene",
+      "date": "1998",
+      "who": "Takeo Takahashi, Yasuo Tsukahara",
+      "quote": "Due to an official report regarding the problematic TV scene as a low luminance, 12 Hz alternating red/blue stimulus",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI:10.1111/j.1442-200X.1998.tb02006.x&format=json&resultType=core",
+      "archive": "http://web.archive.org/web/20261122202549/https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI:10.1111%2Fj.1442-200X.1998.tb02006.x&format=json&resultType=core",
+      "file": "sources/porygon-episode/europepmc_takahashi_1998.json",
+      "sha256": "966eebb9b86818e61447c820ccd8c6163ee73799d2120436ffd59c014b035d90"
+    },
+    {
+      "what": "News report made the day after, citing NHK",
+      "date": "1997-12-17",
+      "who": "CNN",
+      "quote": "Japanese television network NHK reported that 111 people were still hospitalized Wednesday morning.",
+      "url": "http://edition.cnn.com/WORLD/9712/17/video.seizures.update/",
+      "archive": "https://web.archive.org/web/20070506074555/http://edition.cnn.com/WORLD/9712/17/video.seizures.update/",
+      "file": "sources/porygon-episode/cnn_1997-12-17_wayback.html",
+      "sha256": "4a39b0b7cc169727d6193f18c4df3944f780c9acc68ea78e5b647a5372882922"
+    },
+    {
+      "what": "Radford and Bartholomew, Southern Medical Journal 94:197-204, abstract: the milder mass cases",
+      "date": "2001",
+      "who": "Benjamin Radford, Robert Bartholomew",
+      "quote": "While photosensitive epilepsy was diagnosed in a minuscule fraction of those affected, this explanation cannot account for the breadth and pattern of the events.",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=TITLE:%22Pokemon%20contagion%22&format=json&resultType=core",
+      "archive": "http://web.archive.org/web/20261122202637/https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=TITLE:%22Pokemon%20contagion%22&format=json&resultType=core",
+      "file": "sources/porygon-episode/europepmc_radford_2001.json",
+      "sha256": "41e993e67632a0bc0aaf6cdc4fe8cb772084e23553c3715d495c8d6fe97a17b3"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "holds",
+    "why": "An expert consensus of the Epilepsy Foundation of America, based on a review of the literature, sets the flash rate, brightness and red-colour conditions under which screen flashes can provoke seizures.",
+    "source": {
+      "what": "Harding et al., Photic- and pattern-induced seizures: expert consensus of the Epilepsy Foundation of America Working Group, Epilepsia 46:1423-1425 (2005), abstract",
+      "quote": "A flash is a potential hazard if it has luminance >or=20 cd/m2, occurs at a frequency of >or=3 Hz",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI:10.1111/j.1528-1167.2005.31305.x&format=json&resultType=core",
+      "archive": "http://web.archive.org/web/20261122202508/https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI:10.1111%2Fj.1528-1167.2005.31305.x&format=json&resultType=core",
+      "file": "sources/porygon-episode/europepmc_harding_2005.json",
+      "sha256": "ac6171d4ac179e6f55f6e61d8ed9c5e368a5aa82de4ccc27e4e1315bf6095b77"
+    }
+  },
+  "search_steps": [
+    "Read the English Wikipedia article 'Denno Senshi Porygon' as a lead. It cites a Fire and Disaster Management Agency count of 685 people taken to hospital by ambulance, the CNN and New York Times reports of 17-18 December 1997, and papers by Ishida et al. (1998), Takahashi et al. (1998, 1999) and Radford (2001).",
+    "Saved the CNN report of 17 December 1997 from the Wayback Machine (2007 capture). It is the earliest telling I saved; Japanese TV and newspapers reported it on the night of 16 December, but I did not save those.",
+    "CNN's figure of 618 children refers to children with symptoms in a fire department survey, not to hospital admissions, so it is not used as the hospital count.",
+    "Wiley refused downloads of the 1998 Pediatrics International / Acta Paediatrica Japonica papers (HTTP 403). Took the Takahashi and Tsukahara 1998 abstract from the Europe PMC record instead.",
+    "The Takahashi et al. 1999 PDF from neurology-asia.org is a scanned image with no text layer, so it could not be quoted and was not kept.",
+    "Took the Radford and Bartholomew 2001 abstract and the Harding et al. 2005 abstract from Europe PMC records (looked up by title and DOI).",
+    "Could not read the Fire and Disaster Management Agency report (685 people) itself; it is not online in a form I found.",
+    "Did not run Open Library full-text or newspaper archive searches for an earlier telling, because the event date (16 December 1997) bounds the earliest telling and reports from the next day were already in hand. Did not search Google Books because the session's web-search budget was used up."
+  ],
+  "confidence_note": "The exact hospital count varies by source (about 700 in the 1998 paper, 685 in the Fire and Disaster Management Agency count cited by Wikipedia, which I did not read). The quotes from papers come from abstracts in Europe PMC records, not full texts. How many of the hospital cases were true photosensitive seizures, rather than anxiety, is debated."
+}

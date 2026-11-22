@@ -1,0 +1,73 @@
+{
+  "id": "microsoft-bob-xp",
+  "as_told": "Windows XP install CDs had spare space. Microsoft filled it with dummy data that Setup checked, to make pirated copies bigger to download. The dummy data was an encrypted copy of Microsoft Bob, the failed 1995 product.",
+  "lesson": "Adding dummy data to a disc did little to stop people copying Windows XP.",
+  "what_happened": "Raymond Chen, a Microsoft engineer, wrote in TechNet Magazine in 2008 that about 30 MB of spare space on the Windows XP CD was filled with dummy data that Setup checked, and that the engineer who did it used the Microsoft Bob floppy images, combined and encrypted. In September 2026 Dave Plummer, who says he was the main author of Windows Product Activation on the operating-system side, gave his own account: the block was about 10 MB, was only on the volume-licence CDs, and was hashed and checked to match a volume key; it was Microsoft Bob, compressed and encrypted. The two insiders agree that an encrypted copy of Bob was on XP media as check data. They differ on its size (30 MB or 10 MB), on which CDs had it (all XP CDs or only volume CDs) and on its exact purpose (to make downloads bigger, or to tell volume media from retail media).",
+  "false_part": "By the implementer's own account the encrypted Bob block was about 10 MB of key-check data on volume-licence CDs only, not padding on all Windows XP CDs.",
+  "class": "changed",
+  "also": "",
+  "earliest_telling": {
+    "date": "2008",
+    "who": "Raymond Chen",
+    "where": "Windows Confidential: History Taking Up Space, TechNet Magazine",
+    "quote": "Somebody decided to fill that extra capacity on the CD with dummy data and to have the Windows Setup program verify that the dummy data was still there",
+    "url": "https://technet.microsoft.com/magazine/cc565089(v=msdn.10)",
+    "archive": "http://web.archive.org/web/20250413144058/https://learn.microsoft.com/en-us/previous-versions/technet-magazine/cc565089(v=msdn.10)",
+    "file": "sources/microsoft-bob-xp/chen-technet-2008.html",
+    "sha256": "10e329eca5047f10e3f5045f77141abea673797201c378480ddfe13f2e9a883f"
+  },
+  "original": [
+    {
+      "what": "Raymond Chen's own article as a Microsoft engineer (he did not do the work himself; he describes what 'the person who was asked to implement this check' did)",
+      "date": "2008",
+      "who": "Raymond Chen",
+      "quote": "Instead, he dug through the archives and found a copy of Microsoft Bob",
+      "url": "https://technet.microsoft.com/magazine/cc565089(v=msdn.10)",
+      "archive": "http://web.archive.org/web/20250413144058/https://learn.microsoft.com/en-us/previous-versions/technet-magazine/cc565089(v=msdn.10)",
+      "file": "sources/microsoft-bob-xp/chen-technet-2008.html",
+      "sha256": "10e329eca5047f10e3f5045f77141abea673797201c378480ddfe13f2e9a883f"
+    },
+    {
+      "what": "Post on X by Dave Plummer, who says he wrote the operating-system side of Windows Product Activation (saved as the JSON copy served by api.fxtwitter.com)",
+      "date": "2026-09-15",
+      "who": "Dave Plummer",
+      "quote": "That secret data, which I hashed and checked to match to the key, was Microsoft Bob.",
+      "url": "https://x.com/davepl1968/status/2099883465256865923",
+      "archive": "http://web.archive.org/web/20261012063852/https://x.com/davepl1968/status/2099883465256865923",
+      "file": "sources/microsoft-bob-xp/plummer-x-2026.json",
+      "sha256": "e704a60971074eb808b00a0351908ac93bbaa17938e15f6980bdd8e4c75b90cb"
+    },
+    {
+      "what": "Same post by Dave Plummer: size of the block and which CDs carried it",
+      "date": "2026-09-15",
+      "who": "Dave Plummer",
+      "quote": "It was about 10MB of data, entropy stripped, hard to duplicate on Usenet at the time. And it was only present on the Volume media.",
+      "url": "https://x.com/davepl1968/status/2099883465256865923",
+      "archive": "http://web.archive.org/web/20261012063852/https://x.com/davepl1968/status/2099883465256865923",
+      "file": "sources/microsoft-bob-xp/plummer-x-2026.json",
+      "sha256": "e704a60971074eb808b00a0351908ac93bbaa17938e15f6980bdd8e4c75b90cb"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "The only evidence saved is the anecdote's own sources: Plummer says the volume image and a volume key leaked before launch and pirates spread them, and Chen calls the scheme a 'rather feeble attempt'. No study of how well such checks slowed copying was found and saved.",
+    "source": {
+      "what": "",
+      "quote": "",
+      "url": "",
+      "archive": "",
+      "file": "",
+      "sha256": ""
+    }
+  },
+  "search_steps": [
+    "Web search (one query) for Windows XP CD encrypted Microsoft Bob: led to Chen's TechNet Magazine column and to 2026 press reports (Tom's Hardware, PC Gamer) of Dave Plummer's post.",
+    "Fetched Chen's column at technet.microsoft.com (redirects to learn.microsoft.com); saved and read in full. Page footer: '(c) 2008 Microsoft Corporation and CMP Media'.",
+    "Fetched the Tom's Hardware report (published 2026-09-17) only to find the link to Plummer's post; not quoted.",
+    "Fetched Plummer's post text through api.fxtwitter.com, because x.com does not serve post text to scripts; saved the JSON and read it in full.",
+    "Open Library full text \"microsoft bob\" \"windows xp\" encrypted: no relevant hit; no telling older than 2008 found.",
+    "Did not search Usenet, blogs or Chen's blog The Old New Thing for an older telling: the web search budget for the session was used up after the first query."
+  ],
+  "confidence_note": "The two insider accounts differ on size, on which CDs had the data, and on its purpose. Plummer did the work and gives his own words, while Chen reports it second hand, so this entry follows Plummer on those details; that is why the class is 'changed'. If Chen is right, retail XP CDs did carry Bob as roughly 30 MB of checked filler, and the class would be 'true'. Plummer wrote 26 years after the event and his post has at least one slip (it says '1995' for the time of XP downloads, though XP shipped in 2001), so his memory of sizes may also be imperfect. His post was read through the api.fxtwitter.com copy; the Wayback copy of the post was not opened."
+}

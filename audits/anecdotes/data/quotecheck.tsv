@@ -150,6 +150,10 @@ columbus-flat-earth	original[1]	ok	sources/columbus-flat-earth/cihm_33298_djvu.t
 columbus-flat-earth	original[2]	ok	sources/columbus-flat-earth/cihm_33298_djvu.txt	57edaed7c3b9d074e39e18744c064fbe899cf74a106ea9a8da15fd9dac1c43bc
 columbus-flat-earth	original[3]	ok	sources/columbus-flat-earth/historyoflifevoy01irvi_djvu.txt	a3f777487e139329fedab8c720b639ed2a59225f4bf4b9f31e46d0e15fd38dd3
 columbus-flat-earth	lesson_verdict.source	ok	sources/columbus-flat-earth/mandeville-gutenberg782.txt	8935abfa12079ba552bc2695a743b281063c0d6aa714eca0ba0cb8e8c6da1228
+cray-tunnel	earliest_telling	ok	sources/cray-tunnel/time-1988-just-dig.txt	76bafdb41b1e116ae89ba0cddae36c4a17bb71cc9cb01d36a60e9d65c1977edb
+cray-tunnel	original[0]	ok	sources/cray-tunnel/time-1988-just-dig.txt	76bafdb41b1e116ae89ba0cddae36c4a17bb71cc9cb01d36a60e9d65c1977edb
+cray-tunnel	original[1]	ok	sources/cray-tunnel/ol-search-cray-did-dig.json	69dccbaf17d09d9f6276f72276b17ed179d9da6ad0ce75ce660630940a867357
+cray-tunnel	lesson_verdict.source	ok	sources/cray-tunnel/pubmed-19210055.txt	6672f1fcb1fedae40dca4ba1d9a7625c0ca0ef6bddd38e11cb274f6e47b23e18
 cruise-control-rv	earliest_telling	ok	sources/cruise-control-rv/ol-inside-choking-doberman-cruise-control.json	340212a59a4a4b70a47b11b3c5191e571c5c03460108cd9e68ce254a3031b431
 cruise-control-rv	lesson_verdict.source	ok	sources/cruise-control-rv/bjs-civil-trials-2005.pdf.txt	a93b194bf6bf78522fb4b87787a7497eedb3a55bc60ce942c7c0d393a7ab3f4c
 dantzig-homework	earliest_telling	ok	sources/dantzig-homework/columbiadocument0000unse_g4v8_djvu.txt	f2ac1d720d246e46e091fe85947b3ab81e4beb689d85144d65e80e2dc500348e
@@ -306,6 +310,17 @@ honesty-pledge	original[4]	ok	sources/honesty-pledge/DanBlogComment_Aug_16_2021_
 honesty-pledge	original[5]	ok	sources/honesty-pledge/hbswk-signing-at-the-top.txt	fc6e2383be418c46c6b6236dc20c7c4cb0daf9524d3fddddc69ed386edf27185
 honesty-pledge	teller_correction	ok	sources/honesty-pledge/PMC7132248.xml.txt	204839706099e9c63a5bf6d1b71c1f4468ca15436e034514e9c3e2c707c42a25
 honesty-pledge	lesson_verdict.source	ok	sources/honesty-pledge/PMC7132248.xml.txt	204839706099e9c63a5bf6d1b71c1f4468ca15436e034514e9c3e2c707c42a25
+hoover-mechanic	earliest_telling	ok	sources/hoover-mechanic/ol_inside_bob_hoover_test_pilot.txt	9f02a96b620ee029a853ce70bc2ec5c4b1a944cc3c41ad9c63cdb939e35ccfc4
+hoover-mechanic	original[0]	ok	sources/hoover-mechanic/ol_inside_lineboywhodrovethefueltruck.txt	e0338ac1336350948ea71f47c760359dc535fb0c49b45c44089336cc19da3df8
+hoover-mechanic	original[1]	ok	sources/hoover-mechanic/ol_inside_itwasjetfuelMymindflashed.txt	0cd72b69a80f89ce9a156842d7dcd4ade554d7092a68bdcf41c4f7055397d1a8
+hoover-mechanic	original[2]	ok	sources/hoover-mechanic/ol_inside_ff_climbeduptheravineFullerton.txt	45abff26d7b65704864de2cfcf82522eda710aa85d0c3ada262beaf76cf8d109
+hoover-mechanic	original[3]	ok	sources/hoover-mechanic/ol_inside_NewsTribunethenextday.txt	799f2c2ab6f32c5a6c872bc2765587e907618dfb55dc97316d8a3791e7d532e7
+hoover-mechanic	original[4]	ok	sources/hoover-mechanic/ol_inside_ff_01.txt	ed79ef76a87f988a2bc4b88d3ef0160319f26ec53f6358c6361faba9a9365f9d
+hoover-mechanic	original[5]	ok	sources/hoover-mechanic/ol_inside_ff3_01.txt	8310988bfc6a2a6ccd503480afed47e37ba557ed978c089e9262111920df08fe
+hoover-mechanic	original[6]	ok	sources/hoover-mechanic/ol_inside_ff3_05.txt	b7f638728e568f228d9f34c01ab94992b772a0e8b4c6d76001dbf0e7574dedb5
+hoover-mechanic	original[7]	ok	sources/hoover-mechanic/ol_inside_ww2_propeller.txt	0516ed63612670f16d109b87a830776cdae65fb7df327371a322449d89758cdf
+hoover-mechanic	original[8]	ok	sources/hoover-mechanic/ol_inside_service_my_F-51.txt	f9966cf2ac27fe7d17a0c51ac186cddce4d345b81222bf348ccaa5b3b708c618
+hoover-mechanic	lesson_verdict.source	no quote		
 hopper-bug	earliest_telling	ok	sources/hopper-bug/hopper-1968-11-oral-history.pdf	0b5252688b0501054d67272e13bd80e78ec2758ed8f32697ed2cb8e03fbdb16b
 hopper-bug	original[0]	ok	sources/hopper-bug/nmah-334663-log-book.html	4f7d3803d104997845f0017ec447a14f5bd6f03f4173ef8b77df4f91d4e651e5
 hopper-bug	original[1]	ok	sources/hopper-bug/nmah-334663-log-book.html	4f7d3803d104997845f0017ec447a14f5bd6f03f4173ef8b77df4f91d4e651e5
@@ -431,6 +446,16 @@ mehrabian	earliest_telling	ok	sources/mehrabian/ol-inside-verbal-liking-facial-l
 mehrabian	original[0]	ok	sources/mehrabian/ol-inside-verbal-liking-facial-liking.txt	5664bd03cf9091f9cbabc87b204460eaadb018885b02634c486dc6594efae31d
 mehrabian	teller_correction	ok	sources/mehrabian/kaaj-smorder.txt	b9c8b2682b5c054061e2e42753e0c2d94268130f6d8543219243559d53e5b120
 mehrabian	lesson_verdict.source	ok	sources/mehrabian/lapakko-2007.pdf.txt	d226b001fd7b39785b7e81508583bfede4d09858aec4d7a6840d94c69816cb65
+microsoft-bob-xp	earliest_telling	ok	sources/microsoft-bob-xp/chen-technet-2008.html	10e329eca5047f10e3f5045f77141abea673797201c378480ddfe13f2e9a883f
+microsoft-bob-xp	original[0]	ok	sources/microsoft-bob-xp/chen-technet-2008.html	10e329eca5047f10e3f5045f77141abea673797201c378480ddfe13f2e9a883f
+microsoft-bob-xp	original[1]	ok	sources/microsoft-bob-xp/plummer-x-2026.json	e704a60971074eb808b00a0351908ac93bbaa17938e15f6980bdd8e4c75b90cb
+microsoft-bob-xp	original[2]	ok	sources/microsoft-bob-xp/plummer-x-2026.json	e704a60971074eb808b00a0351908ac93bbaa17938e15f6980bdd8e4c75b90cb
+microsoft-bob-xp	lesson_verdict.source	no quote		
+microsoft-saved-apple	earliest_telling	ok	sources/microsoft-saved-apple/ol-search-rescued-apple.json	b97021ee2edbee85f95c4f89539b6a455ed00ead6fab0b4faa3b176d6b581c60
+microsoft-saved-apple	original[0]	ok	sources/microsoft-saved-apple/apple-10k-1997.txt	0ebe0b5c0b8b0f9b6456b3dd77224800911d13106a405afaa5d1c63d93d736be
+microsoft-saved-apple	original[1]	ok	sources/microsoft-saved-apple/apple-10k-1997.txt	0ebe0b5c0b8b0f9b6456b3dd77224800911d13106a405afaa5d1c63d93d736be
+microsoft-saved-apple	original[2]	ok	sources/microsoft-saved-apple/apple-10k-1997.txt	0ebe0b5c0b8b0f9b6456b3dd77224800911d13106a405afaa5d1c63d93d736be
+microsoft-saved-apple	lesson_verdict.source	ok	sources/microsoft-saved-apple/apple-10k-1997.txt	0ebe0b5c0b8b0f9b6456b3dd77224800911d13106a405afaa5d1c63d93d736be
 missile-memory-leak	earliest_telling	ok	sources/missile-memory-leak/mtu-does-memory-leak.html	9d852c83608e81b6d6af3fb60358e24420074505b27463dc2b060b2ba274ba8f
 missile-memory-leak	original[0]	ok	sources/missile-memory-leak/mtu-does-memory-leak.html	9d852c83608e81b6d6af3fb60358e24420074505b27463dc2b060b2ba274ba8f
 missile-memory-leak	lesson_verdict.source	ok	sources/missile-memory-leak/bright-2013-compiler-speed.html	fc10d7821613cf2a66952981a73c37a64fc161138f133fabb9e5bfa9ca9d599e
@@ -447,6 +472,11 @@ musk-emerald-mine	original[0]	ok	sources/musk-emerald-mine/bi-za-2018-emerald-mi
 musk-emerald-mine	original[1]	ok	sources/musk-emerald-mine/forbes-2014-clash.html	a4e73cc4651d11d057bab95ceaaab621aa4065eaaa0e2b7a090556d41474230f
 musk-emerald-mine	teller_correction	ok	sources/musk-emerald-mine/tweet-1611856501798215680-oembed.json	863925e9994254bda755809d21e9537f994fc90e0eb0020d41c41f9e3dd43c62
 musk-emerald-mine	lesson_verdict.source	ok	sources/musk-emerald-mine/levine-rubinstein-nber-w19276.pdf	e838add50b744ced8c5412f69f6adf9ab05c255bc2d9b828220f932b378b4731
+nasa-sanskrit	earliest_telling	ok	sources/nasa-sanskrit/ol-search-rick-briggs.json	8aaaab5768d110cc8140b6ce851f0241fd8b6f211b6d9bd7e3d69ec2b0a19fbf
+nasa-sanskrit	original[0]	ok	sources/nasa-sanskrit/briggs-1985-abstract.html	4d2b12bfb68bb70d18a795ba19b1c546a477f51ffed1516edbd860b1edf63c30
+nasa-sanskrit	original[1]	ok	sources/nasa-sanskrit/briggs-1985-abstract.html	4d2b12bfb68bb70d18a795ba19b1c546a477f51ffed1516edbd860b1edf63c30
+nasa-sanskrit	original[2]	ok	sources/nasa-sanskrit/briggs-1985.pdf.txt	88823d8d73daf70069fdcbf7279cfb3939e735e3628c43f41bc8f00ed55e3a02
+nasa-sanskrit	lesson_verdict.source	ok	sources/nasa-sanskrit/briggs-1985-abstract.html	4d2b12bfb68bb70d18a795ba19b1c546a477f51ffed1516edbd860b1edf63c30
 new-college-oaks	earliest_telling	ok	sources/new-college-oaks/ol-inside-dept-medicine-hawaii.json	bf5fd71cdbb7efc1cdf5504b05f31ece5774fe63f976bf6a9a5979c8a90dab45
 new-college-oaks	original[0]	ok	sources/new-college-oaks/new-college-archives-trivia-2003.html	11bcb666b24456408c3872fcc67216b2654532e757d0c71dc132208bf20acb30
 new-college-oaks	original[1]	ok	sources/new-college-oaks/new-college-archives-trivia-2003.html	11bcb666b24456408c3872fcc67216b2654532e757d0c71dc132208bf20acb30
@@ -457,6 +487,11 @@ newton-apple	original[0]	ok	sources/newton-apple/newtonproject-NATP00385-diploma
 newton-apple	original[1]	ok	sources/newton-apple/newtonproject-NATP00385-diplomatic.html.txt	080e7f1c094b6959c4719071ce2b0bf566bef28edccdc8d50f960bac269d720a
 newton-apple	original[2]	ok	sources/newton-apple/newtonproject-OTHE00001-stukeley.html	63d7ec82cabed35fe4aaee9f081a283772ea441d2dfc6b211db3fa86d2183509
 newton-apple	lesson_verdict.source	ok	sources/newton-apple/jung-beeman-2004-plosbiol.html	343a76fb229df4c409a11ab0bde819fa5d6a5a1e14440b688e60f713efc8e3ae
+newton-cat-flap	earliest_telling	ok	sources/newton-cat-flap/wright-alma-mater-1827_djvu.txt	4c17981a6a677ecc52b831db603d5b8efbc6a0b5eeabcee2f840a0d7bf371304
+newton-cat-flap	original[0]	ok	sources/newton-cat-flap/british-poets-1822-chaucer_djvu.txt	0f58e1d860e88e57a51ec8896b7b7ce8035303d38fbdcdd600eb80810719b7fb
+newton-cat-flap	original[1]	ok	sources/newton-cat-flap/olio-1823_djvu.txt	bb9129d893374d89169d89e12a9c5249295dce8d4155a87ac79efafc915a3688
+newton-cat-flap	original[2]	ok	sources/newton-cat-flap/combe-letter-1826_djvu.txt	a6a0f148fdf42422f41e34eb95a7347500f55ca0933e53e3e677a040698fe914
+newton-cat-flap	lesson_verdict.source	no quote		
 newton-window	earliest_telling	ok	sources/newton-window/time-2010-welcome-westminster.html.txt	c219f0f2aac3d16681487478a50ec8e4d0e8782ff9583479e4c0908d46260329
 newton-window	original[0]	ok	sources/newton-window/cj10-1689-02-22.html.txt	69cb0f42d80bd20261cd253be31bdcd11001538c39b0026ff8e9d4e6f9a95dec
 newton-window	original[1]	ok	sources/newton-window/cj10-1689-04-30.html.txt	a1a594105ad59c9443a0597a7e96b31708a6ec92eb945b4985b5f0168a7ad3cf
@@ -480,10 +515,16 @@ nuclear-gandhi	earliest_telling	ok	sources/nuclear-gandhi/tvtropes_civ_history_2
 nuclear-gandhi	original[0]	ok	sources/nuclear-gandhi/kotaku2020_meier_memoir.html.txt	b530fa4ed18af34497378475ad1503cd72a57d03dc81c72164bab8839073f59c
 nuclear-gandhi	original[1]	ok	sources/nuclear-gandhi/civ5_CIV5Leader_Gandhi.xml.txt	8f6e6157a70a28e5b247c2a8cdf09f828f1d12fdf1c5ad027e07e5a8579c0876
 nuclear-gandhi	lesson_verdict.source	ok	sources/nuclear-gandhi/c11_draft_n1570.pdf.txt	00bbdd63df34828403635fce0608e6173006c3bfd28b41b053835b45513e717c
+nypd-bait-bag	earliest_telling	ok	sources/nypd-bait-bag/ol-search-operation-lucky-bag.json	22c79afea61ab9e57d718283dc86425962960d2b8ff63b35d590e947b9309e36
+nypd-bait-bag	lesson_verdict.source	no quote		
 oil-trader-delivery	earliest_telling	no quote		
 oil-trader-delivery	original[0]	ok	sources/oil-trader-delivery/eia-todayinenergy-43495.txt	16ce23a96c4dd6285be35bf996f9a92192195ed1d73620bd49d9a0382cb329c5
 oil-trader-delivery	original[1]	ok	sources/oil-trader-delivery/crs-IN11354-2020-04-22.txt	b212c5f45e520baa53333ee2f8f8942b7d77c0fdb42a7f262a380b3a7d097257
 oil-trader-delivery	lesson_verdict.source	ok	sources/oil-trader-delivery/eia-todayinenergy-43495.txt	16ce23a96c4dd6285be35bf996f9a92192195ed1d73620bd49d9a0382cb329c5
+oscar-cat	earliest_telling	ok	sources/oscar-cat/nejm_dosa_2007_wayback2010.txt	0aa532bcfc02f4eadd626312ede096481706aad14672a088a0ae50cd5738708b
+oscar-cat	original[0]	ok	sources/oscar-cat/nejm_dosa_2007_wayback2010.txt	0aa532bcfc02f4eadd626312ede096481706aad14672a088a0ae50cd5738708b
+oscar-cat	original[1]	ok	sources/oscar-cat/nejm_dosa_2007_wayback2010.txt	0aa532bcfc02f4eadd626312ede096481706aad14672a088a0ae50cd5738708b
+oscar-cat	lesson_verdict.source	no quote		
 outsourced-own-job	earliest_telling	ok	sources/outsourced-own-job/verizon-2013-01-14-case-study.html	894e8c55e0db947c4b5e64d24370ffd3f82bea203a17ded2e7a0d7c640a89cd9
 outsourced-own-job	original[0]	ok	sources/outsourced-own-job/verizon-2013-01-14-case-study.html	894e8c55e0db947c4b5e64d24370ffd3f82bea203a17ded2e7a0d7c640a89cd9
 outsourced-own-job	original[1]	ok	sources/outsourced-own-job/verizon-2013-01-14-case-study.html	894e8c55e0db947c4b5e64d24370ffd3f82bea203a17ded2e7a0d7c640a89cd9
@@ -524,6 +565,12 @@ pinto-memo	original[4]	ok	sources/pinto-memo/grimshaw-1981.html	115a3d8abb68c536
 pinto-memo	lesson_verdict.source	ok	sources/pinto-memo/grimshaw-1981.html	115a3d8abb68c5368082fad7e3c88696da6dcd8633d4c0ef43469ba5920cd8f3
 polybius	earliest_telling	ok	sources/polybius/coinop-polybius-20000303.html	70b90abe8dc0ee13d9fbdfcd935230c0cbec81f4f18c8dd721e84946b19219e1
 polybius	lesson_verdict.source	ok	sources/polybius/mkultra-1977-hearing_djvu.txt	fd43aa452cae5860746e5e97879b2ed5f1531cbb2ff60f8883f913468519febe
+porygon-episode	earliest_telling	ok	sources/porygon-episode/cnn_1997-12-17_wayback.html	4a39b0b7cc169727d6193f18c4df3944f780c9acc68ea78e5b647a5372882922
+porygon-episode	original[0]	ok	sources/porygon-episode/europepmc_takahashi_1998.json	966eebb9b86818e61447c820ccd8c6163ee73799d2120436ffd59c014b035d90
+porygon-episode	original[1]	ok	sources/porygon-episode/europepmc_takahashi_1998.json	966eebb9b86818e61447c820ccd8c6163ee73799d2120436ffd59c014b035d90
+porygon-episode	original[2]	ok	sources/porygon-episode/cnn_1997-12-17_wayback.html	4a39b0b7cc169727d6193f18c4df3944f780c9acc68ea78e5b647a5372882922
+porygon-episode	original[3]	ok	sources/porygon-episode/europepmc_radford_2001.json	41e993e67632a0bc0aaf6cdc4fe8cb772084e23553c3715d495c8d6fe97a17b3
+porygon-episode	lesson_verdict.source	ok	sources/porygon-episode/europepmc_harding_2005.json	ac6171d4ac179e6f55f6e61d8ed9c5e368a5aa82de4ccc27e4e1315bf6095b77
 pot-roast-ends	earliest_telling	ok	sources/pot-roast-ends/ol_inside_ham_pan_was_too_small.json	d0cec84298bb4356febf924c99b8da314fffb710e2c4a83f04dfe6958d6a7d57
 pot-roast-ends	original[0]	ok	sources/pot-roast-ends/ol_inside_never_follow_custom_blindly.json	0d7fbfb15c676622a088529ebfce35f17459f4055b6a18078d5959cb8b15ba8f
 pot-roast-ends	lesson_verdict.source	ok	sources/pot-roast-ends/lyons2007_pmc2148370.html	46a06a5835f1921e202c2e7d48fa8c7b9cb345882025172a3fe5c15950eb6baa
@@ -545,10 +592,22 @@ rat-park	earliest_telling	ok	sources/rat-park/peele1985-excerpt-alexander-site.h
 rat-park	original[0]	ok	sources/rat-park/alexander1978-springer.html	c0adcb1aeb5cda22b0d65ab4df453cea367c5b4c5ecc64f8c34498ad7cb5b865
 rat-park	original[1]	ok	sources/rat-park/alexander1981.pdf	da489aab701ec807c8b0ba9f4ad14656bd650fe600801e1e814e7cc07500534b
 rat-park	lesson_verdict.source	ok	sources/rat-park/petrie1996.pdf	7f2618251d7313b69e893f8410a0379981c82d05d6ce3b0ff4fb69ba0a4e1604
+rave-laser-blinding	earliest_telling	ok	sources/rave-laser-blinding/ntv-2008-136097.txt	5215de27381678006083b6f1577a694c3473c7379d916cc953bae7bd7b2e02c4
+rave-laser-blinding	original[0]	ok	sources/rave-laser-blinding/ntv-2008-136097.txt	5215de27381678006083b6f1577a694c3473c7379d916cc953bae7bd7b2e02c4
+rave-laser-blinding	original[1]	ok	sources/rave-laser-blinding/ntv-2008-136097.txt	5215de27381678006083b6f1577a694c3473c7379d916cc953bae7bd7b2e02c4
+rave-laser-blinding	original[2]	ok	sources/rave-laser-blinding/ntv-2008-136097.txt	5215de27381678006083b6f1577a694c3473c7379d916cc953bae7bd7b2e02c4
+rave-laser-blinding	original[3]	ok	sources/rave-laser-blinding/kommersant-2008-07-15-laser-eye-damage.txt	dea6a940ced8f00a4006ff52f3ccb7dbf470db1316a9f84676852da4b52be547
+rave-laser-blinding	original[4]	ok	sources/rave-laser-blinding/kommersant-2008-07-15-laser-eye-damage.txt	dea6a940ced8f00a4006ff52f3ccb7dbf470db1316a9f84676852da4b52be547
+rave-laser-blinding	lesson_verdict.source	ok	sources/rave-laser-blinding/pubmed-40058065.txt	d49d87c56fb6f00ab10f530aab9cdbf8280bccc2f95d381b9858b4861eaf1fc4
 rhythm-nation	earliest_telling	ok	sources/rhythm-nation/oldnewthing-20220816.html	63f623da89741df9a997d258b2426bd2d0091c09f1ab2c326fe09db48d9027f6
 rhythm-nation	original[0]	ok	sources/rhythm-nation/nvd-cve-2022-38392.json	3a2b49f4a4048399739bb9734168805f6f43f3b6869dcef72a9161e6693ccde6
 rhythm-nation	teller_correction	ok	sources/rhythm-nation/oldnewthing-20220920.html	b075db03afc28c82956578a0558edae0f148b62beee28f79adf8d00eeabc0d55
 rhythm-nation	lesson_verdict.source	ok	sources/rhythm-nation/bolton-blue-note-2018.pdf.txt	971232834df82d5395208a7dfe9380f4168b1d20541d39d5c684a40c98c4205b
+roddenberry-baldness	earliest_telling	ok	sources/roddenberry-baldness/ol_inside_whether_still_baldness.txt	ce43d687c97dbb410968028d3ee35af0e920ea303dc5cf6c04d8e476e1d937ce
+roddenberry-baldness	original[0]	ok	sources/roddenberry-baldness/ol_inside_baldness_will_be_cured.txt	faf2797fbce1a549c4bee69c01bb7bab6284bd18d029cf8392ce06cfcbbfbc21
+roddenberry-baldness	original[1]	ok	sources/roddenberry-baldness/ol_inside_roddenberry_bald_care.txt	94042bc1b69db58e9192ad5a5691f1e402d1b0f2e16e05ee6ba78cce72a946af
+roddenberry-baldness	original[2]	ok	sources/roddenberry-baldness/ol_inside_men_of_this_time_find.txt	6e03d021962b3875da1467063788d264a31be7cf5c76519b5cd0fcec6ad8acbc
+roddenberry-baldness	lesson_verdict.source	no quote		
 roman-bridge-engineers	earliest_telling	ok	sources/roman-bridge-engineers/ol-search-inside-engineer-who-designed.json	82f4ddd6ff0d4e142b11e7c989e5615efe898942cd52393390ccd830abce3b23
 roman-bridge-engineers	original[0]	ok	sources/roman-bridge-engineers/livius-fabricius-inscription.html	9e592cfb672c94f238c51ba792f0e13a82968a653c44cb1f7bb32a065567af60
 roman-bridge-engineers	lesson_verdict.source	ok	sources/roman-bridge-engineers/avalon-hammurabi.html	93410a95441d28fd498df423ec7860ae5ee821df3811989bb469838075c9eb12
@@ -577,6 +636,12 @@ shovels-not-spoons	earliest_telling	ok	sources/shovels-not-spoons/omaha-daily-be
 shovels-not-spoons	original[0]	ok	sources/shovels-not-spoons/omaha-daily-bee-1908-07-19-p20-ocr.txt	db060e584c6495938dd957df945275aa1434f3008416c9088b57748f75feff5a
 shovels-not-spoons	original[1]	ok	sources/shovels-not-spoons/clevelandfed-1996-10-jordan-jobs-creation.pdf	b6dce5cb07a17888d0eb7bb0a6cb456dc61d1df80491a748339adb0261d7878e
 shovels-not-spoons	lesson_verdict.source	ok	sources/shovels-not-spoons/autor-2015-jep-still-so-many-jobs.pdf	94a4fcd31fc8e8021f36c298cb5aa67dad69baa89f7dc8c41b869563c6ea46fa
+smallpox-blankets	earliest_telling	ok	sources/smallpox-blankets/fortpittlettersf00darl_djvu.txt	65618d5487cc877dd14be1fea19327c1d023c02019a2d4003f9a478782bff181
+smallpox-blankets	original[0]	ok	sources/smallpox-blankets/sim_journal-of-american-history_1924-12_11_3_0_djvu.txt	0f15b47cf2330fe8e4e300c20b162e02ffcb660214818dbfe7e44d3ae6b2b3ca
+smallpox-blankets	original[1]	ok	sources/smallpox-blankets/nativeweb-amherst-pitt.html	d3048b912f3d3e14ebd1d69b8a60135b34190ee1055cb8949f661be4ccc69cfb
+smallpox-blankets	original[2]	ok	sources/smallpox-blankets/nativeweb-amherst-fn1.html	ca6c398eff61f90945b35d11b4234e775fb70e8d6f13acfab3c13f4bd2fc3198
+smallpox-blankets	original[3]	ok	sources/smallpox-blankets/nativeweb-amherst-fn2.html	2f4ff9644e49f0a580fbc9181c166be86d9682713bc10ac4ed04b929a4d96532
+smallpox-blankets	lesson_verdict.source	ok	sources/smallpox-blankets/nativeweb-fenn-pox-americana-excerpts.html	2140fcd9cb3b3663bfcf9e4bdac2e03debb493a5ffdaa476d3958fa50ab56c5e
 snow-pump-handle	earliest_telling	ok	sources/snow-pump-handle/onchloroformothe1858snow_djvu.txt	e5e472847756073ea929777d0aa32a34b1365220699aea50b4fa8e3b9e191e0b
 snow-pump-handle	original[0]	ok	sources/snow-pump-handle/b28985266_djvu.txt	3a5e9a7f3527b373c9f0d2235e3156654d8d31026bb83d2e27621a3e42296072
 snow-pump-handle	original[1]	ok	sources/snow-pump-handle/b28985266_djvu.txt	3a5e9a7f3527b373c9f0d2235e3156654d8d31026bb83d2e27621a3e42296072
@@ -597,6 +662,13 @@ spat-on-veterans	original[1]	ok	sources/spat-on-veterans/micro_IA41152923_0658_d
 spat-on-veterans	original[2]	ok	sources/spat-on-veterans/micro_IA41152923_0658_djvu.txt	2b365cf7c057ca4c300c896ea4baf5b55e48d5ba42eef60c3c8dee45844ed090
 spat-on-veterans	original[3]	ok	sources/spat-on-veterans/micro_IA41152923_0658_djvu.txt	2b365cf7c057ca4c300c896ea4baf5b55e48d5ba42eef60c3c8dee45844ed090
 spat-on-veterans	lesson_verdict.source	ok	sources/spat-on-veterans/micro_IA41152923_0658_djvu.txt	2b365cf7c057ca4c300c896ea4baf5b55e48d5ba42eef60c3c8dee45844ed090
+stallman-printer	earliest_telling	ok	sources/stallman-printer/rms-nyu-2001-transcript.txt	9105d57e73b5c1e3259b47e2ccd24f552b4551aeba9018eb62af6a3056433004
+stallman-printer	original[0]	ok	sources/stallman-printer/stallman-kth-1986.html	b7ed8e278f221b79da957d70a1636a01e7fe648200ff6c89fd91ffaef9d03af7
+stallman-printer	original[1]	ok	sources/stallman-printer/stallman-kth-1986.html	b7ed8e278f221b79da957d70a1636a01e7fe648200ff6c89fd91ffaef9d03af7
+stallman-printer	original[2]	ok	sources/stallman-printer/rms-nyu-2001-transcript.txt	9105d57e73b5c1e3259b47e2ccd24f552b4551aeba9018eb62af6a3056433004
+stallman-printer	original[3]	ok	sources/stallman-printer/thegnuproject.html	b11d675600d061aba98c99d9b10180aadd940e9b765c3635380f40968ffabf9f
+stallman-printer	original[4]	ok	sources/stallman-printer/faif-ch01.txt	896b3e130c0cba8b9a01fa9f3e59fcf6647ff1d5b40499a9fc86a42e7b5466f8
+stallman-printer	lesson_verdict.source	no quote		
 stanford-prison	earliest_telling	ok	sources/stanford-prison/correctionsheari1971unit_djvu.txt	afe44613224906162de07e19f60b21ed30dda17aa471daf96afee6ed5d2cc131
 stanford-prison	original[0]	ok	sources/stanford-prison/ncjrs-10301.pdf.txt	650317ac125bf43e2a6f3a08fc4631cf21b2a9d03e7e4c515ecb2aa8d1f1145c
 stanford-prison	original[1]	ok	sources/stanford-prison/letexier2019-supplement.docx.txt	65db0ff3f0ae4385c96e71849a75a8a33fdcea2c33a5658613efb28f04ed04b5

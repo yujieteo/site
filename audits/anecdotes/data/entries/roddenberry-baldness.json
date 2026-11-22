@@ -1,0 +1,73 @@
+{
+  "id": "roddenberry-baldness",
+  "as_told": "When Patrick Stewart was cast as Captain Picard in Star Trek: The Next Generation (1987), someone objected that baldness would surely be cured by the 24th century. Gene Roddenberry replied that in the 24th century nobody would care about baldness.",
+  "lesson": "In a better future, people will not judge others by appearance such as baldness.",
+  "what_happened": "The line is widely repeated, most often by Patrick Stewart in interviews, as something Roddenberry said to a reporter or a colleague. The earliest text I found is a 1996 Paramount magazine, 'Star Trek 30 Years', which reports the objection and says Roddenberry's 'attitude was' that it did not matter whether there was still baldness in the 24th century. That text paraphrases his attitude; it is not a quote published as Roddenberry's own words. I found no interview, letter or text published under Roddenberry's name that contains the remark.",
+  "false_part": "",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "1996",
+    "who": "Star Trek 30 Years special collector's edition (Paramount Pictures); the speaker of the passage is not shown in the snippet",
+    "where": "Star Trek 30 Years Special Collector's Edition (archive.org item startrek30yearss0000na); Hatfield's biography of the same year also tells it",
+    "quote": "His attitude was, ‘Whether there is still baldness or not in the 24th century does not",
+    "url": "https://openlibrary.org/search/inside.json?q=%22Whether%20there%20is%20still%20baldness%22&limit=50",
+    "archive": "https://archive.org/details/startrek30yearss0000na",
+    "file": "sources/roddenberry-baldness/ol_inside_whether_still_baldness.txt",
+    "sha256": "ce43d687c97dbb410968028d3ee35af0e920ea303dc5cf6c04d8e476e1d937ce"
+  },
+  "original": [
+    {
+      "what": "The same 1996 text: the objection it reports, just before Roddenberry's view",
+      "date": "1996",
+      "who": "Star Trek 30 Years (Paramount Pictures)",
+      "quote": "Baldness will be cured by the 24th century!",
+      "url": "https://openlibrary.org/search/inside.json?q=%22Baldness%20will%20be%20cured%22&limit=50",
+      "archive": "https://archive.org/details/startrek30yearss0000na",
+      "file": "sources/roddenberry-baldness/ol_inside_baldness_will_be_cured.txt",
+      "sha256": "faf2797fbce1a549c4bee69c01bb7bab6284bd18d029cf8392ce06cfcbbfbc21"
+    },
+    {
+      "what": "James Hatfield, Patrick Stewart (Kensington, 1996), a biography that relays the exchange; a relayed account, used as a lead",
+      "date": "1996",
+      "who": "James Hatfield",
+      "quote": "that ‘Surely, in the 24th century there would be a cure for male pattern baldness,’ Gene responded, “But",
+      "url": "https://openlibrary.org/search/inside.json?q=Roddenberry%20baldness%20%2224th%20century%22&limit=100",
+      "archive": "https://archive.org/details/patrickstewart0000hatf",
+      "file": "sources/roddenberry-baldness/ol_inside_roddenberry_bald_care.txt",
+      "sha256": "94042bc1b69db58e9192ad5a5691f1e402d1b0f2e16e05ee6ba78cce72a946af"
+    },
+    {
+      "what": "A 1991 guide to The Next Generation (archive.org item voyagecontinuest00vanh). It gives a different, in-story explanation and does not mention Roddenberry's remark in the snippet",
+      "date": "1991",
+      "who": "Trek: The Next Generation (1991)",
+      "quote": "generations before the 24th century, the men of this time find the nat- ural look appealing",
+      "url": "https://openlibrary.org/search/inside.json?q=%22men%20of%20this%20time%20find%22%20it%20Picard&limit=20",
+      "archive": "https://archive.org/details/voyagecontinuest00vanh",
+      "file": "sources/roddenberry-baldness/ol_inside_men_of_this_time_find.txt",
+      "sha256": "6e03d021962b3875da1467063788d264a31be7cf5c76519b5cd0fcec6ad8acbc"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "The lesson is a prediction about future attitudes, and no study can test it. I did not look for evidence on attitudes to baldness because the session's web-search budget was used up.",
+    "source": {
+      "what": "",
+      "quote": "",
+      "url": "",
+      "archive": "",
+      "file": "",
+      "sha256": ""
+    }
+  },
+  "search_steps": [
+    "Read the English Wikipedia articles 'Jean-Luc Picard' and 'Patrick Stewart' as leads. The Stewart article says that in an interview with Michael Parkinson, Stewart thanked Roddenberry for replying 'In the 24th century, they wouldn't care' to a reporter. Its sources are a 2008 Mental Floss blog post and a video, both relayed accounts.",
+    "Open Library search-inside for \"cured baldness\" Roddenberry: no hits.",
+    "Open Library search-inside for Roddenberry baldness \"24th century\": 60 hits. The relevant ones are a 1991 book 'Trek: The Next Generation' (voyagecontinuest00vanh), which says (in later phrase searches) that baldness had been cured generations before the 24th century and the men of that time find the natural look appealing; this is an in-story explanation, not Roddenberry's remark; the 1996 Star Trek 30 Years magazine; and James Hatfield's 1996 biography 'Patrick Stewart', which relays the exchange.",
+    "Open Library phrase searches \"Baldness will be cured\" and \"Whether there is still baldness\": only the 1996 Star Trek 30 Years text has the passage.",
+    "All these books are lending-only, so quotes come only from Open Library search snippets (saved JSON responses, with plain-text extracts that remove the highlight marks).",
+    "Did not search Google Books, HathiTrust or 1987-1988 newspapers (for example interviews at the time of casting), and did not read Stewart's 2023 memoir 'Making It So': the session's web-search budget was used up."
+  ],
+  "confidence_note": "A 1987-1988 interview with Roddenberry may contain the remark, but I could not search newspapers. The 1996 snippet does not show who is speaking. All quotes are from Open Library search snippets, not full texts."
+}

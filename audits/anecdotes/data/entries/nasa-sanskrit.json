@@ -1,0 +1,75 @@
+{
+  "id": "nasa-sanskrit",
+  "as_told": "NASA studied the world's languages and found that Sanskrit is the best, or the only unambiguous, language for computers and artificial intelligence. NASA scientists are said to be using or learning Sanskrit for this reason.",
+  "lesson": "Sanskrit is uniquely suited to computers and artificial intelligence.",
+  "what_happened": "In the Spring 1985 issue of AI Magazine (vol. 6, no. 1, pp. 32-39), Rick Briggs, whose address is given as RIACS, NASA Ames Research Center, published 'Knowledge Representation in Sanskrit and Artificial Intelligence'. He argued that the method of paraphrase used by the old Indian grammarians of Shastric Sanskrit gives the same kind of analysis as the semantic nets used in AI, that 'there is at least one language, Sanskrit' that served both as a living language and as an unambiguous one, and that 'a natural language can serve as an artificial language also'. The article is one researcher's paper in the magazine of the American Association for Artificial Intelligence. It does not rank Sanskrit against other languages for computing or say it is the best language for AI. NASA's only link shown in the paper is the author's address.",
+  "false_part": "The paper does not say Sanskrit is the best language for AI, and nothing in it presents its argument as a finding of NASA; its only NASA link is the author's address at NASA Ames.",
+  "class": "changed",
+  "also": "",
+  "earliest_telling": {
+    "date": "2009",
+    "who": "Tattoo Alphabets and Scripts (author not recorded in the snippet)",
+    "where": "Tattoo Alphabets and Scripts: An Essential Reference for Body Art, section 'The Sanskrit alphabet' (Open Library full-text search snippet)",
+    "quote": "In ancient India, says NASA researcher",
+    "url": "https://openlibrary.org/search/inside.json?q=%22rick%20briggs%22",
+    "archive": "https://archive.org/details/tattooalphabetss0000hemi",
+    "file": "sources/nasa-sanskrit/ol-search-rick-briggs.json",
+    "sha256": "8aaaab5768d110cc8140b6ce851f0241fd8b6f211b6d9bd7e3d69ec2b0a19fbf"
+  },
+  "original": [
+    {
+      "what": "Rick Briggs, 'Knowledge Representation in Sanskrit and Artificial Intelligence', AI Magazine 6(1), Spring 1985, abstract on the journal page",
+      "date": "1985-03-15",
+      "who": "Rick Briggs",
+      "quote": "Among the accomplishments of the grammarians can be reckoned a method for paraphrasing Sanskrit in a manner that is identical not only in essence but in form with current work in Artificial Intelligence",
+      "url": "https://ojs.aaai.org/aimagazine/index.php/aimagazine/article/view/466",
+      "archive": "http://web.archive.org/web/20260508193126/https://ojs.aaai.org/aimagazine/index.php/aimagazine/article/view/466",
+      "file": "sources/nasa-sanskrit/briggs-1985-abstract.html",
+      "sha256": "4d2b12bfb68bb70d18a795ba19b1c546a477f51ffed1516edbd860b1edf63c30"
+    },
+    {
+      "what": "Same article, abstract: the claim about Sanskrit as a natural language",
+      "date": "1985-03-15",
+      "who": "Rick Briggs",
+      "quote": "There is at least one language, Sanskrit, which for the duration of almost 1000 years was a living spoken language",
+      "url": "https://ojs.aaai.org/aimagazine/index.php/aimagazine/article/view/466",
+      "archive": "http://web.archive.org/web/20260508193126/https://ojs.aaai.org/aimagazine/index.php/aimagazine/article/view/466",
+      "file": "sources/nasa-sanskrit/briggs-1985-abstract.html",
+      "sha256": "4d2b12bfb68bb70d18a795ba19b1c546a477f51ffed1516edbd860b1edf63c30"
+    },
+    {
+      "what": "Same article, full PDF: the author's affiliation line",
+      "date": "1985",
+      "who": "Rick Briggs",
+      "quote": "RIACS, NASA Ames Research Centeu, Moffet Field, California 94305",
+      "url": "https://ojs.aaai.org/aimagazine/index.php/aimagazine/article/download/466/402",
+      "archive": "http://web.archive.org/web/20251118100525/https://ojs.aaai.org/aimagazine/index.php/aimagazine/article/download/466/402",
+      "file": "sources/nasa-sanskrit/briggs-1985.pdf.txt",
+      "sha256": "88823d8d73daf70069fdcbf7279cfb3939e735e3628c43f41bc8f00ed55e3a02"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "The only source behind the story claims a parallel between the grammarians' analysis and semantic nets, not that Sanskrit is better for computers than other languages. No study comparing languages for computing was found and saved.",
+    "source": {
+      "what": "Briggs (1985), abstract: the paper's own statement of what it shows",
+      "quote": "This article demonstrates that a natural language can serve as an artificial language also",
+      "url": "https://ojs.aaai.org/aimagazine/index.php/aimagazine/article/view/466",
+      "archive": "http://web.archive.org/web/20260508193126/https://ojs.aaai.org/aimagazine/index.php/aimagazine/article/view/466",
+      "file": "sources/nasa-sanskrit/briggs-1985-abstract.html",
+      "sha256": "4d2b12bfb68bb70d18a795ba19b1c546a477f51ffed1516edbd860b1edf63c30"
+    }
+  },
+  "search_steps": [
+    "Open Library full text \"sanskrit\" \"nasa\" \"artificial intelligence\": no telling of the NASA claim; a 1990 KBCS '89 conference paper discusses Sanskrit and AI.",
+    "Open Library full text \"rick briggs\": scholarly citations of Briggs from 1986 (Kak, The Nature of Physical Reality) and 1994; 2009 Tattoo Alphabets and Scripts calls him 'NASA researcher Rick Briggs'; 2014 Geek Sublime (Vikram Chandra) calls him 'a NASA specialist in artificial intelligence'. Snippets only; saved the search JSON.",
+    "Open Library full text \"briggs\" \"sanskrit\" \"nasa\", \"nasa\" \"sanskrit\" \"computers\", \"nasa\" \"sanskrit\" \"suitable\", \"sanskrit\" \"nasa scientist\", \"most suitable language\" \"nasa\": no telling that says NASA found Sanskrit best.",
+    "Open Library full text \"most suitable language for computer software\": a related claim credited to Forbes magazine appears in 2002, 2003 and 2009 books; it is a different source claim and was not used as the NASA telling.",
+    "Saved and read the 1992 Sri Korada Ramakrishnaiah centenary volume, essay 'Paninian Grammar and Computer Science': it quotes Briggs accurately, so it is not a telling of the story.",
+    "Fetched the AI Magazine article page and PDF from ojs.aaai.org; ran pdftotext; read the whole article, including the abstract, the semantic-net and Shastric Sanskrit sections and the conclusion.",
+    "Snopes and Wikipedia pages were tried by guessed address (404). Usenet (soc.culture.indian) and Indian newspapers of the late 1980s were not searched: the web search budget was used up.",
+    "Wikipedia site search (API) for Briggs Sanskrit NASA artificial intelligence: no article on Briggs or on the claim. This was a site search run after the web search budget was used up."
+  ],
+  "confidence_note": "The earliest telling of the NASA claim is not found; the 2009 entry is only the earliest Open Library hit that links Briggs to NASA in a popular book, and its quote comes from a search snippet. The claim likely circulated in the late 1980s or 1990s in Indian press, Usenet or chain e-mails. The affiliation line is OCR text with errors ('Centeu', 'Moffet') copied as found. Briggs's later papers (for example 'Shastric Sanskrit as a Machine Translation Interlingua', cited in a 1994 book) were not read."
+}

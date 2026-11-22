@@ -1,0 +1,86 @@
+{
+  "id": "smallpox-blankets",
+  "as_told": "During the colonial wars, British officers gave Native Americans blankets taken from smallpox patients, on purpose, to spread the disease among them. The best-known case is Fort Pitt (now Pittsburgh) in 1763, during Pontiac's War, when the commander in chief, Jeffery Amherst, also wrote about spreading smallpox among the tribes.",
+  "lesson": "Colonial officers deliberately used smallpox as a weapon against Native Americans.",
+  "what_happened": "Smallpox broke out in the Fort Pitt garrison in June 1763, and the commander, Captain Simeon Ecuyer, built a hospital for it (Bouquet to Amherst, 23 June 1763). On 24 June 1763 two Delaware men, Turtle's Heart and Mamaltee, came to parley, and the garrison gave them two blankets and a handkerchief from the smallpox hospital; the trader William Trent wrote in his journal 'I hope it will have the desired effect.' Separately, in July 1763 Amherst and Colonel Henry Bouquet agreed in postscripts to try to infect the Indians by means of blankets; no record shows that this later plan was carried out. Smallpox did spread among the Ohio tribes in 1763-64, but no record shows whether the Fort Pitt blankets caused it.",
+  "false_part": "",
+  "class": "true",
+  "also": "",
+  "earliest_telling": {
+    "date": "1892",
+    "who": "Mary Carson Darlington (editor), printing the entry as part of Captain Ecuyer's journal",
+    "where": "Fort Pitt and Letters from the Frontier (Pittsburgh, 1892)",
+    "quote": "Out of our regard to them we gave them two blankets and an handkerchief out of the Small Pox Hospital. I hope it will have the desired effect.",
+    "url": "https://archive.org/details/fortpittlettersf00darl",
+    "archive": "https://archive.org/details/fortpittlettersf00darl",
+    "file": "sources/smallpox-blankets/fortpittlettersf00darl_djvu.txt",
+    "sha256": "65618d5487cc877dd14be1fea19327c1d023c02019a2d4003f9a478782bff181"
+  },
+  "original": [
+    {
+      "what": "William Trent's journal at Fort Pitt, entry for 24 June 1763, printed from the manuscript at the Historical Society of Pennsylvania (ed. A. T. Volwiler, Mississippi Valley Historical Review 11(3), December 1924). The scan text reads 'Smal!' for 'Small', and a footnote mark follows 'Hospital'",
+      "date": "1763-06-24",
+      "who": "William Trent",
+      "quote": "Out of our regard to them we gave them two Blankets and an Handkerchief out of the Smal! Pox Hospital",
+      "url": "https://archive.org/details/sim_journal-of-american-history_1924-12_11_3_0",
+      "archive": "https://archive.org/details/sim_journal-of-american-history_1924-12_11_3_0",
+      "file": "sources/smallpox-blankets/sim_journal-of-american-history_1924-12_11_3_0_djvu.txt",
+      "sha256": "0f15b47cf2330fe8e4e300c20b162e02ffcb660214818dbfe7e44d3ae6b2b3ca"
+    },
+    {
+      "what": "Bouquet to Amherst, 23 June 1763 (British Library, Bouquet Papers; transcription by Peter d'Errico from the Library of Congress British Manuscripts Project microfilm, reel 34/40, item 281): smallpox in the Fort Pitt garrison",
+      "date": "1763-06-23",
+      "who": "Henry Bouquet",
+      "quote": "unluckily the Small Pox has broken out in the garrison, for which he has built an Hospital under the Draw Bridge to prevent the Spreading of that distemper.",
+      "url": "http://www.nativeweb.org/pages/legal/amherst/pitt.html",
+      "archive": "http://web.archive.org/web/20200217173351/http://www.nativeweb.org:80/pages/legal/amherst/pitt.html",
+      "file": "sources/smallpox-blankets/nativeweb-amherst-pitt.html",
+      "sha256": "d3048b912f3d3e14ebd1d69b8a60135b34190ee1055cb8949f661be4ccc69cfb"
+    },
+    {
+      "what": "Bouquet to Amherst, postscript, 13 July 1763 (reel 34/40, item 305), transcription",
+      "date": "1763-07-13",
+      "who": "Henry Bouquet",
+      "quote": "P.S. I will try to inocculate the Indians by means of Blankets that may fall in their hands, taking care however not to get the disease myself.",
+      "url": "http://www.nativeweb.org/pages/legal/amherst/fn1.html",
+      "archive": "http://web.archive.org/web/20220427133948/http://www.nativeweb.org/pages/legal/amherst/fn1.html",
+      "file": "sources/smallpox-blankets/nativeweb-amherst-fn1.html",
+      "sha256": "ca6c398eff61f90945b35d11b4234e775fb70e8d6f13acfab3c13f4bd2fc3198"
+    },
+    {
+      "what": "Amherst to Bouquet, postscript, 16 July 1763 (reel 34/41, item 114), transcription",
+      "date": "1763-07-16",
+      "who": "Jeffery Amherst",
+      "quote": "P.S. You will Do well to try to Innoculate the Indians by means of Blankets, as well as to try Every other method that can serve to Extirpate this Execrable Race.",
+      "url": "http://www.nativeweb.org/pages/legal/amherst/fn2.html",
+      "archive": "http://web.archive.org/web/20200129164547/http://www.nativeweb.org:80/pages/legal/amherst/fn2.html",
+      "file": "sources/smallpox-blankets/nativeweb-amherst-fn2.html",
+      "sha256": "2f4ff9644e49f0a580fbc9181c166be86d9682713bc10ac4ed04b929a4d96532"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "holds",
+    "why": "The Fort Pitt journal records a deliberate gift of infected items, and the historian Elizabeth Fenn reports that senior officers approved the reimbursement for items used 'to Convey the Smallpox to the Indians'. The intent and the attempt are documented; whether the attempt caused any deaths is not established.",
+    "source": {
+      "what": "Elizabeth A. Fenn, Pox Americana: The Great Smallpox Epidemic of 1775-82 (Hill and Wang, 2001), pp. 88-89, excerpt transcribed by Peter d'Errico",
+      "quote": "This act had the sanction of an impressive array of British officers, including Sir Jeffery Amherst, commander in chief at the time, and General Thomas Gage, who replaced Amherst and signed off on reimbursements for the \"Sundries\" used \"to Convey the Smallpox to the Indians.\"",
+      "url": "http://www.nativeweb.org/pages/legal/amherst/fenn.html",
+      "archive": "http://web.archive.org/web/20241208064313/http://www.nativeweb.org/pages/legal/amherst/fenn.html",
+      "file": "sources/smallpox-blankets/nativeweb-fenn-pox-americana-excerpts.html",
+      "sha256": "2140fcd9cb3b3663bfcf9e4bdac2e03debb493a5ffdaa476d3958fa50ab56c5e"
+    }
+  },
+  "search_steps": [
+    "The web search tool had no budget left when I started, so I used only direct addresses and catalogue searches (Open Library, Wikipedia, archive.org).",
+    "Open Library full text, 'out of the Small Pox Hospital': 120 hits; I looked at the first 40 only, and none of those is earlier than the 1892 printing.",
+    "Open Library full text, 'Could it not be contrived to send the small pox': 238 hits; I looked at the first 60 only. The earliest dated ones among them are Parkman editions and an 1897 French book.",
+    "Parkman, History of the Conspiracy of Pontiac, 1851 first edition, vol. 2 (archive.org historyofconspir02park): the Amherst smallpox letters are not in it.",
+    "Parkman, 6th edition 1870, vol. 2 (archive.org conspiracyofpont02park): prints the Amherst and Bouquet postscripts and says 'There is no direct evidence that Bouquet carried into effect the shameful plan'; it does not mention the 24 June blankets. I did not check the editions of 1855 to 1868.",
+    "Wikipedia 'Siege of Fort Pitt' pointed to Darlington, Fort Pitt and Letters from the Frontier (1892); its full text prints the 24 June entry inside Ecuyer's journal. The year 1892 and the publisher (J. R. Weldin, Pittsburgh) come from the archive.org record; the editor's name, Mary Carson Darlington, is on the preface. The preface's mention of earlier printing in the 'Olden Time' refers to Celeron's journal, not this one.",
+    "Found the December 1924 Mississippi Valley Historical Review on archive.org; it prints the journal as William Trent's, from the manuscript. I used the second scan (_0), whose text of the line is cleaner.",
+    "Saved transcriptions of the Bouquet and Amherst letters from nativeweb.org (Peter d'Errico, from Library of Congress microfilm); I did not see the manuscript images myself.",
+    "I could not get Fenn's 2000 Journal of American History article or the Levy, Trent and Company invoice; I used the Fenn book excerpt instead."
+  ],
+  "confidence_note": "The quotes from the letters are transcriptions on a personal academic site, not images I checked. The reimbursement record ('to Convey the Smallpox to the Indians') is known to me only through Fenn. Many retellings also say the blankets caused a great epidemic, or tell a different story about the US Army and the Mandan in 1837; I did not research the 1837 version, and the cause of the 1763-64 epidemic is not established."
+}

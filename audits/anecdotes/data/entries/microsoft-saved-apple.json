@@ -1,0 +1,73 @@
+{
+  "id": "microsoft-saved-apple",
+  "as_told": "In 1997 Apple was weeks from bankruptcy. Bill Gates's Microsoft put $150 million into Apple, and that money saved the company. Without its great rival's cash, there would be no iMac, iPod or iPhone.",
+  "lesson": "A rival's cash injection can be what keeps a failing company alive.",
+  "what_happened": "In August 1997 Apple and Microsoft signed patent cross-licence and technology agreements. Microsoft agreed to make Office and Internet Explorer for the Mac OS for five years, Apple agreed to bundle Internet Explorer as the default browser, and Microsoft bought 150,000 shares of non-voting convertible preferred stock for $150 million. Apple's 10-K for the year to 26 September 1997 shows $1,459 million in cash, cash equivalents and short-term investments on that date; this figure already includes the $150 million, so Apple held about $1.3 billion without it. In the same filing Apple said its cash, short-term investments and bank borrowings would be sufficient for the next twelve months, though its debt was rated below investment grade and it had lost $1,045 million in the year.",
+  "false_part": "The $150 million was about a tenth of the cash Apple already held, and Apple's own filing did not describe it as what kept the company out of bankruptcy.",
+  "class": "changed",
+  "also": "",
+  "earliest_telling": {
+    "date": "2012",
+    "who": "author of 100 People Who Changed 20th-Century America (not shown in the snippet; Open Library identifier 100peoplewhochan0002cros)",
+    "where": "100 People Who Changed 20th-Century America (Open Library full-text search snippet)",
+    "quote": "by investing $150 million in the",
+    "url": "https://openlibrary.org/search/inside.json?q=%22microsoft%22%20%22rescued%20apple%22",
+    "archive": "https://archive.org/details/100peoplewhochan0002cros",
+    "file": "sources/microsoft-saved-apple/ol-search-rescued-apple.json",
+    "sha256": "b97021ee2edbee85f95c4f89539b6a455ed00ead6fab0b4faa3b176d6b581c60"
+  },
+  "original": [
+    {
+      "what": "Apple Computer, Inc., Form 10-K for the fiscal year ended 26 September 1997, filed with the SEC on 5 December 1997: terms of the Microsoft agreements",
+      "date": "1997-12-05",
+      "who": "Apple Computer, Inc.",
+      "quote": "Microsoft purchased 150,000 shares of Apple Series 'A' non-voting convertible preferred stock for $150 million.",
+      "url": "https://www.sec.gov/Archives/edgar/data/320193/0001047469-97-006960.txt",
+      "archive": "http://web.archive.org/web/20250816100155/https://www.sec.gov/Archives/edgar/data/320193/0001047469-97-006960.txt",
+      "file": "sources/microsoft-saved-apple/apple-10k-1997.txt",
+      "sha256": "0ebe0b5c0b8b0f9b6456b3dd77224800911d13106a405afaa5d1c63d93d736be"
+    },
+    {
+      "what": "Same 10-K: the five-year software commitment",
+      "date": "1997-12-05",
+      "who": "Apple Computer, Inc.",
+      "quote": "for a period of five years from August 1997, Microsoft will make future versions of its Microsoft Office and Internet Explorer products for the Mac OS",
+      "url": "https://www.sec.gov/Archives/edgar/data/320193/0001047469-97-006960.txt",
+      "archive": "http://web.archive.org/web/20250816100155/https://www.sec.gov/Archives/edgar/data/320193/0001047469-97-006960.txt",
+      "file": "sources/microsoft-saved-apple/apple-10k-1997.txt",
+      "sha256": "0ebe0b5c0b8b0f9b6456b3dd77224800911d13106a405afaa5d1c63d93d736be"
+    },
+    {
+      "what": "Same 10-K, Liquidity and Capital Resources: Apple's cash and short-term investments",
+      "date": "1997-12-05",
+      "who": "Apple Computer, Inc.",
+      "quote": "decreased to $1,459 million as of September 26, 1997, from $1,745 million as of September 27, 1996.",
+      "url": "https://www.sec.gov/Archives/edgar/data/320193/0001047469-97-006960.txt",
+      "archive": "http://web.archive.org/web/20250816100155/https://www.sec.gov/Archives/edgar/data/320193/0001047469-97-006960.txt",
+      "file": "sources/microsoft-saved-apple/apple-10k-1997.txt",
+      "sha256": "0ebe0b5c0b8b0f9b6456b3dd77224800911d13106a405afaa5d1c63d93d736be"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "In this case Apple's own filing shows cash far larger than the investment and says its resources would cover the next twelve months, so the case does not show a rival's cash keeping a company alive. No general study of rival rescues was found and saved.",
+    "source": {
+      "what": "Apple Computer, Inc., Form 10-K for fiscal 1997, Liquidity and Capital Resources",
+      "quote": "will be sufficient to meet its cash requirements over the next twelve months.",
+      "url": "https://www.sec.gov/Archives/edgar/data/320193/0001047469-97-006960.txt",
+      "archive": "http://web.archive.org/web/20250816100155/https://www.sec.gov/Archives/edgar/data/320193/0001047469-97-006960.txt",
+      "file": "sources/microsoft-saved-apple/apple-10k-1997.txt",
+      "sha256": "0ebe0b5c0b8b0f9b6456b3dd77224800911d13106a405afaa5d1c63d93d736be"
+    }
+  },
+  "search_steps": [
+    "Open Library full text \"microsoft saved apple\": one hit, Tamny, Popular Economics (2015), snippet 'Microsoft saved Apple from bankruptcy in the late 1990s'; the earliest hit found with the word bankruptcy. Saved the search JSON; the book is lending-only and was not read in full.",
+    "Open Library full text \"microsoft\" \"rescued apple\": earliest clear telling is 100 People Who Changed 20th-Century America (2012), snippet 'A decade later Microsoft rescued Apple by investing $150 million in the'. The words 'Microsoft rescued Apple' sit inside the search highlight marks, so only the words after them are quoted. A 2006 snippet (Mind Your X's and Y's) is ambiguous. Saved the search JSON.",
+    "Open Library full text \"bailed out apple\" microsoft: no relevant hit. \"saved apple\" microsoft 1997: no hits.",
+    "SEC EDGAR company listing refused the request (HTTP 403, it asks automated clients for contact details); did not retry.",
+    "Downloaded Apple's 1997 10-K (accession 0001047469-97-006960) from its Wayback Machine copy and read the Microsoft, Liquidity and Preferred Stock sections.",
+    "Did not find Steve Jobs's own published words on how near Apple was to bankruptcy, nor 1997 press tellings; the web search budget was used up, so newspaper archives were not searched."
+  ],
+  "confidence_note": "The earliest telling found (2012) is surely not the first; the story was likely told in the 1997 press. Its quote comes only from an Open Library search snippet, and the quoted words do not include the subject 'Microsoft rescued Apple', which sits inside the highlight marks. Apple's cash before the deal is inferred from the 26 September 1997 figure minus $150 million; the June 1997 10-Q was not fetched. Steve Jobs's own published words on the deal were not found. Whether Apple would have failed without the Office commitment is a matter of judgment that no saved record settles."
+}

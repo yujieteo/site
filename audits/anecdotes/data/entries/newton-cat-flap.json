@@ -1,0 +1,75 @@
+{
+  "id": "newton-cat-flap",
+  "as_told": "Isaac Newton invented the cat flap. His cat kept disturbing his work, so he cut a hole in his door for it. When the cat had kittens, he cut a second, smaller hole for them, not seeing that the kittens could use the big hole.",
+  "lesson": "Even a great genius can lack plain common sense.",
+  "what_happened": "Holes in doors for cats existed long before Newton: Chaucer's Miller's Tale, written in the late 1300s, describes a hole low in a board door 'ther as the cat was wont in for to crepe'. The two-hole joke was in print in 1823 about a squire's carpenter, and in 1826 George Combe called the cat-and-kitten form 'the common edition of the story' about an unnamed 'wiseacre'; neither names Newton. The earliest telling found that ties it to Newton is J. M. F. Wright's Alma Mater (1827), who said Newton had the college carpenter cut the holes, but added 'Whether this account be true or false', and reported only that two plugged holes were in a door at Trinity College. No record from Newton's lifetime of the holes, or of Newton keeping a cat, was searched for in this run.",
+  "false_part": "Newton did not invent the cat flap: cat holes in doors are recorded about 250 years before he was born, and the story that he cut them is a joke first found about other people.",
+  "class": "invented",
+  "also": "unsupported",
+  "earliest_telling": {
+    "date": "1827",
+    "who": "J. M. F. Wright",
+    "where": "Alma Mater; or, Seven Years at the University of Cambridge, vol. 1, pp. 17-18",
+    "quote": "issued orders to the college carpenter to make two holes in the door, one for the cat and the other for the kitten. Whether this account be true or false, indisputably true is it that there are in the door to this day two plugged holes of proper dimensions for the respective egresses of cat and kitten.",
+    "url": "https://archive.org/details/almamaterorseven01wrig",
+    "archive": "https://archive.org/details/almamaterorseven01wrig",
+    "file": "sources/newton-cat-flap/wright-alma-mater-1827_djvu.txt",
+    "sha256": "4c17981a6a677ecc52b831db603d5b8efbc6a0b5eeabcee2f840a0d7bf371304"
+  },
+  "original": [
+    {
+      "what": "Geoffrey Chaucer, The Miller's Tale (late 14th century), as printed in The British Poets, vol. 1 (1822): a cat hole in a door, centuries before Newton",
+      "date": "c. 1390s (printed 1822)",
+      "who": "Geoffrey Chaucer",
+      "quote": "An hole he found ful low upon the bord, Ther as the cat was wont in for to crepe,",
+      "url": "https://archive.org/details/britishpoetsincl01chis",
+      "archive": "https://archive.org/details/britishpoetsincl01chis",
+      "file": "sources/newton-cat-flap/british-poets-1822-chaucer_djvu.txt",
+      "sha256": "0f58e1d860e88e57a51ec8896b7b7ce8035303d38fbdcdd600eb80810719b7fb"
+    },
+    {
+      "what": "The Olio (1823), comic verse 'The Carpenter and two holes in the Barn Door': the same two-hole joke told of a squire's carpenter, four years before the first Newton version found",
+      "date": "1823",
+      "who": "anonymous verse in The Olio, a collection of poems, fables and epigrams",
+      "quote": "The small one for the kitten.",
+      "url": "https://archive.org/details/oliobeingacolle00gillgoog",
+      "archive": "https://archive.org/details/oliobeingacolle00gillgoog",
+      "file": "sources/newton-cat-flap/olio-1823_djvu.txt",
+      "sha256": "bb9129d893374d89169d89e12a9c5249295dce8d4155a87ac79efafc915a3688"
+    },
+    {
+      "what": "George Combe, Letter to Francis Jeffrey in answer to his criticism of phrenology (1826), p. 46: the cat-and-kitten joke as a well-known story about an unnamed 'wiseacre', one year before the first Newton telling found",
+      "date": "1826",
+      "who": "George Combe",
+      "quote": "The common edition of the story is, that the wiseacre made a large hole for the cat, and a small one for the kitten",
+      "url": "https://archive.org/details/letterfromgeorge00comb",
+      "archive": "https://archive.org/details/letterfromgeorge00comb",
+      "file": "sources/newton-cat-flap/combe-letter-1826_djvu.txt",
+      "sha256": "a6a0f148fdf42422f41e34eb95a7347500f55ca0933e53e3e677a040698fe914"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "The story cannot show that Newton lacked common sense, because no record shows that it happened to him. No study of genius and practical sense was found and saved, so the general lesson is not established here.",
+    "source": {
+      "what": "",
+      "quote": "",
+      "url": "",
+      "archive": "",
+      "file": "",
+      "sha256": ""
+    }
+  },
+  "search_steps": [
+    "Open Library full text \"hole for the kitten\": earliest Newton hit 1839 (Leila; or, The Island); many later children's readers and anecdote books.",
+    "Open Library full text \"newton\" \"cat\" \"kitten\" \"holes in the door\": earliest hit Wright, Alma Mater (1827); saved its full text and read pp. 17-18.",
+    "Open Library full text \"one for the kitten\" newton and \"newton\" \"hole for the cat\": found The Olio (1823), a carpenter verse with no Newton link, and George Combe's Letter to Francis Jeffrey (1826). Saved and read both. Combe tells the joke of an unnamed 'wiseacre' and calls the cat-and-kitten form 'the common edition of the story'; he does not name Newton.",
+    "Open Library full text \"newton\" \"for the kitten\": the phrase 'invented ... the first cat flap' appears in For the Love of Cats (2006), a modern telling.",
+    "Open Library full text \"the cat was wont in for to crepe\": Chaucer's Miller's Tale line in The British Poets (1822) and many later editions; saved the 1822 text.",
+    "Project Gutenberg copy of the Canterbury Tales could not be fetched (site down for maintenance, HTTP 503).",
+    "Did not search for a record from Newton's lifetime (his own papers, or his assistant Humphrey Newton's account) of a cat or holes in his door.",
+    "No Wikipedia, Google Books or HathiTrust search was run: the web search budget for this session was used up."
+  ],
+  "confidence_note": "The 1823 carpenter verse and Combe's 1826 letter are only a few years older than the first Newton telling found, so an older Newton version may exist. The Wright quote and Chaucer quote are from OCR text of scans; spacing was normalised. Whether Newton ever owned a cat is not settled by any source saved here."
+}
