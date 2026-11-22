@@ -1,0 +1,77 @@
+{
+  "id": "kekule-dream",
+  "as_told": "The chemist August Kekulé could not work out how the six carbon atoms of benzene were joined. He dozed off by the fire and dreamed of atoms twisting like snakes, until one snake seized its own tail. He woke and saw that benzene is a ring.",
+  "lesson": "Dreams and sleep can deliver the answer to a hard problem that waking thought could not find.",
+  "what_happened": "Kekulé published the ring formula for benzene in the Bulletin de la Société chimique de Paris on 27 January 1865, and in more detail in Liebig's Annalen in 1866; neither paper mentions a dream. On 11 March 1890, at a celebration held in his honour in Berlin by the German Chemical Society, Kekulé said in his own speech that while living in Ghent he turned his chair to the fire, fell into a half-sleep ('Halbschlaf'), saw chains of atoms moving like snakes, saw one snake seize its own tail, woke as if struck by lightning, and spent the rest of the night working out the consequences. The speech was printed in the Society's Berichte the same year. He also warned his audience not to publish dreams before testing them with the waking mind.",
+  "false_part": "",
+  "class": "true",
+  "also": "",
+  "earliest_telling": {
+    "date": "1890-03-11",
+    "who": "August Kekulé (speech printed in Gustav Schultz's report of the celebration)",
+    "where": "Bericht über die Feier der Deutschen Chemischen Gesellschaft zu Ehren August Kekulé's, Berichte der Deutschen Chemischen Gesellschaft 23 (1890)",
+    "quote": "den Stuhl nach dem Kamin und versank in Halbschlaf. Wieder",
+    "url": "https://zenodo.org/records/1425576",
+    "archive": "http://web.archive.org/web/20241216032428/https://zenodo.org/records/1425576",
+    "file": "sources/kekule-dream/berichte1890-kekule-feier.pdf",
+    "sha256": "37bf3a8b98bc3c66619bb05abfe5b654ceda4cc9da7c911d47989bb43b3cab6f"
+  },
+  "original": [
+    {
+      "what": "Kekulé's own words in his 1890 speech: the snake seizing its own tail (the text is OCR of the 1890 print, so some letters are misread, e.g. 'eigeuen' for 'eigenen').",
+      "date": "1890-03-11",
+      "who": "August Kekulé",
+      "quote": "Eine der Schlangen erfasste den eigeuen Schwanz und hohnisch wirbelte das Gebilde vor meinen Augen.",
+      "url": "https://zenodo.org/records/1425576",
+      "archive": "http://web.archive.org/web/20241216032428/https://zenodo.org/records/1425576",
+      "file": "sources/kekule-dream/berichte1890-kekule-feier.pdf",
+      "sha256": "37bf3a8b98bc3c66619bb05abfe5b654ceda4cc9da7c911d47989bb43b3cab6f"
+    },
+    {
+      "what": "Kekulé's own warning, in the same speech, not to publish dreams before testing them with the waking mind.",
+      "date": "1890-03-11",
+      "who": "August Kekulé",
+      "quote": "aber hiiten wir uns, unsere Traume zu veroffentlichen, ehe sie durch",
+      "url": "https://zenodo.org/records/1425576",
+      "archive": "http://web.archive.org/web/20241216032428/https://zenodo.org/records/1425576",
+      "file": "sources/kekule-dream/berichte1890-kekule-feier.pdf",
+      "sha256": "37bf3a8b98bc3c66619bb05abfe5b654ceda4cc9da7c911d47989bb43b3cab6f"
+    },
+    {
+      "what": "Kekulé's 1866 paper in Liebig's Annalen, which sets out the closed chain (ring) of six carbon atoms. It gives no account of how he found it and does not mention a dream.",
+      "date": "1866",
+      "who": "August Kekulé",
+      "quote": "so hat man eine geschlossene Kette *) (einen symmetrischen",
+      "url": "https://zenodo.org/records/1427249",
+      "archive": "http://web.archive.org/web/20240327100536/https://zenodo.org/records/1427249",
+      "file": "sources/kekule-dream/annalen1866-kekule-aromatisch.pdf",
+      "sha256": "339fddac159ddd747d0172fe4cf72a6701a3f89fcf11e8826320feeecd855337"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "A laboratory study found that a night of sleep more than doubled the share of people who discovered a hidden rule in a number task, but only after they had first practised the task. This supports a limited role for sleep after hard work; it does not show that dream images carry solutions.",
+    "source": {
+      "what": "Wagner, U., Gais, S., Haider, H., Verleger, R. and Born, J. (2004), 'Sleep inspires insight', Nature 427: 352-355",
+      "quote": "more than twice as many subjects gained insight into the hidden",
+      "url": "https://pages.ucsd.edu/~achiba/SleepInsightWagnerNature04.pdf",
+      "archive": "http://web.archive.org/web/20260216230721/https://pages.ucsd.edu/~achiba/SleepInsightWagnerNature04.pdf",
+      "file": "sources/kekule-dream/wagner2004-sleep-insight.pdf",
+      "sha256": "8cae604bbe8e76ffa6590958c017d67ecd01dcc0c27d9ae32c9aca1130cb098f"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search for kekule dream snake tail benzene: 0 hits.",
+    "Open Library full-text search for kekule \"biting its own tail\": 438 hits; the earliest dated hit is 1980, long after Kekulé's 1890 speech.",
+    "Web search for the German wording of the 1890 speech led to leads (GDCh Mitteilungen, a British Journal for the History of Science article on the Benzolfest) that cite the Berichte 1890 report.",
+    "archive.org advanced search for Berichte der Deutschen Chemischen Gesellschaft 1890: 0 results.",
+    "Zenodo search found the scanned 1890 Berichte report by Gustav Schultz (DOI 10.1002/cber.189002301204, 48 pages); saved it and ran pdftotext. Kekulé's speech in it gives the omnibus reverie (structure theory, London) and the half-sleep by the fire (benzene, Ghent) in the first person.",
+    "Zenodo search found Kekulé's 1866 Annalen paper on aromatic compounds (DOI 10.1002/jlac.18661370202); saved it. grep for Traum, Schlaf and Schlange gives 0 hits.",
+    "The 1865 Bulletin de la Société chimique de Paris paper was not found online in full text; its date (27 January 1865) is taken from the 1890 Berichte report.",
+    "Leads (not evidence) say that Wotiz and Rudofsky (1984) argued that Kekulé made up the story to hide debts to earlier chemists such as Loschmidt and Laurent; I found no record that shows he made it up, only that he told it 25 years later.",
+    "Searched for a correction by Kekulé: none found; he did not withdraw the story.",
+    "Lesson: web search for a controlled study of sleep and insight; saved Wagner et al. (2004) from a UCSD course page."
+  ],
+  "confidence_note": "The only record of the reverie is Kekulé's own account, given about 25 years after the event in a light-hearted after-dinner style speech, so the class rests on his word alone. He described a half-sleep (Halbschlaf) by the fire, not a night-time dream. Whether earlier chemists (Loschmidt 1861, Laurent) had already suggested ring-like structures, and how much Kekulé owed them, is disputed and was not checked against their own texts."
+}

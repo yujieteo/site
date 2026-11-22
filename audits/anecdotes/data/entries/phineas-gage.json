@@ -1,0 +1,76 @@
+{
+  "id": "phineas-gage",
+  "as_told": "In September 1848 an explosion drove an iron tamping rod through the head of Phineas Gage, a railway construction foreman in Vermont. He survived, but his personality changed: the capable, steady foreman became fitful, profane and unreliable, and his friends said he was 'no longer Gage'. He is said to have stayed that way for the rest of his life.",
+  "lesson": "Damage to the frontal lobes of the brain can change a person's personality and social behaviour.",
+  "what_happened": "Gage's physician, John M. Harlow, described the change in his 1868 report: after the injury Gage was fitful, irreverent, profane and unable to keep to plans, and his former employers would not give him back his job as foreman. The same report says Gage then worked about a year and a half in a livery stable in New Hampshire, and from August 1852 spent nearly eight years in Chile caring for horses and often driving a heavily laden six-horse coach. Harlow gives no description of Gage's character in those later years. In November 1860 an Ohio medical journal printed the editor's account that a doctor from Valparaiso, Henry Trevitt, had said Gage was driving stages in Chile in good health with no impairment of his mental faculties; this is a second-hand report. No record I found shows that the change lasted for the rest of his life.",
+  "false_part": "",
+  "class": "true",
+  "also": "unsupported",
+  "earliest_telling": {
+    "date": "1868",
+    "who": "John M. Harlow, M.D., of Woburn",
+    "where": "Recovery from the Passage of an Iron Bar through the Head, Publications of the Massachusetts Medical Society 2(3), 327-347 (separate printing, National Library of Medicine scan)",
+    "quote": "In this regard his mind was radically changed, so decidedly that his friends and acquaintances said he was no longer Gage.",
+    "url": "https://digirepo.nlm.nih.gov/pdf/nlm:nlmuid-66210360R-bk",
+    "archive": "",
+    "file": "sources/phineas-gage/harlow-1868.pdf.txt",
+    "sha256": "a0865512af2f343abb31723483d26529a4e557e916e30d690440762c874ed8c2"
+  },
+  "original": [
+    {
+      "what": "Harlow's 1868 report, the physician's own published account of Gage's state when he applied for his old job",
+      "date": "1868",
+      "who": "John M. Harlow",
+      "quote": "His contractors, who regarded him as the most efficient and capable foreman in their employ previous to his injury, considered the change in his mind so marked that they could not give him his place again.",
+      "url": "https://digirepo.nlm.nih.gov/pdf/nlm:nlmuid-66210360R-bk",
+      "archive": "",
+      "file": "sources/phineas-gage/harlow-1868.pdf.txt",
+      "sha256": "a0865512af2f343abb31723483d26529a4e557e916e30d690440762c874ed8c2"
+    },
+    {
+      "what": "The same report, on Gage's later work in Chile",
+      "date": "1868",
+      "who": "John M. Harlow",
+      "quote": "vicinity of Valparaiso and Santiago, occupied in caring for horses, and often driving a coach heavily laden and drawn by six horses.",
+      "url": "https://digirepo.nlm.nih.gov/pdf/nlm:nlmuid-66210360R-bk",
+      "archive": "",
+      "file": "sources/phineas-gage/harlow-1868.pdf.txt",
+      "sha256": "a0865512af2f343abb31723483d26529a4e557e916e30d690440762c874ed8c2"
+    },
+    {
+      "what": "Editorial note signed 'H.' in the Ohio Medical and Surgical Journal, vol. 13, November 1860, p. 174, 'The Man through whose head an iron rod passed still living'. It relays what Dr. Henry Trevitt of Valparaiso said; it is a second-hand report, so it is a lead and not proof of Gage's state.",
+      "date": "1860-11",
+      "who": "Editor 'H.' of the Ohio Medical and Surgical Journal, reporting Dr. Henry Trevitt",
+      "quote": "that he was in the enjoyment of good health, with no impairment whatever of his mental faculties.",
+      "url": "https://archive.org/download/ohiomedicalsurgi1318unse/ohiomedicalsurgi1318unse_djvu.txt",
+      "archive": "https://archive.org/details/ohiomedicalsurgi1318unse",
+      "file": "sources/phineas-gage/ohio-med-surg-j-v13-1860_djvu.txt",
+      "sha256": "14f0ad461798aaf827d4426665658261e056c8739941bf84be4c6814a83bead8"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "holds",
+    "why": "A preregistered study of 182 adults with focal brain lesions found that damage to the ventromedial prefrontal cortex was most strongly linked to acquired emotional and social personality disturbance, rated against the person's personality before the injury.",
+    "source": {
+      "what": "Barrash, Bruss, Anderson, Kuceyeski, Manzel, Tranel and Boes (2022), Lesions in different prefrontal sectors are associated with different types of acquired personality disturbances, Cortex (PubMed abstract)",
+      "quote": "(i) Emotional/social personality disturbance was most strongly associated with ventromedial PFC lesions in both statistical approaches.",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=35051710&retmode=xml",
+      "archive": "",
+      "file": "sources/phineas-gage/pubmed-35051710.xml",
+      "sha256": "26eb352c59ac25c489bb1f0c8778e4fbe666c63dba2f929f438d56535394da66"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search for \"Gage was no longer Gage\": 231 hits; the earliest on the first page is Damasio's Descartes' Error (1994). The phrase comes from Harlow (1868).",
+    "Web search found the National Library of Medicine scan of Harlow's 1868 report (Medicine in the Americas collection). The NLM OCR page returned an empty file; the PDF download worked, and I converted it with pdftotext.",
+    "Harlow's first report (Boston Medical and Surgical Journal, 1848) and Bigelow's 1850 report were not saved. I did not find them in a free text source I could download, so I do not quote them.",
+    "Read the Macmillan and Kihlstrom (2019) encyclopedia entry only as a lead. It mentions a physician who saw Gage in Chile.",
+    "The English Wikipedia article on Gage cites that report as J. W. Hamilton, Ohio Medical and Surgical Journal 13 (1860), p. 174, reprinted in the Medical and Surgical Reporter 5 (1860), p. 183. Found the Ohio volume on the Internet Archive (Medical Heritage Library, public) and saved its full text. The physician is named there as Dr. Henry Trevitt of Valparaiso.",
+    "Searched PubMed for lesion studies of personality change and saved two abstracts by Barrash and colleagues (PubMed 11385830 and 35051710); I quote the 2022 study.",
+    "HathiTrust full-text search returned 403 and Google Books returned 429, so I could not search them. loc.gov and Papers Past blocked automated requests. I did not retry.",
+    "Requested a Wayback Machine save of the NLM PDF of Harlow (1868) on 2026-11-22. The save request returned 200, but the availability check still shows no snapshot, so the archive field for that file is empty.",
+    "Requested a Wayback Machine save of the PubMed page for 35051710 on 2026-11-22. The snapshot (20261122131755) holds only a reCAPTCHA browser-check page, not the abstract, so I leave that archive field empty. The saved E-utilities record is the source."
+  ],
+  "confidence_note": "The change after the injury is recorded by Harlow, who knew Gage. Whether it was permanent is not settled by any record I could read: Harlow records eight years of demanding coach work but not Gage's character then, and the only statement about his mind in Chile is a second-hand report. Harlow's dates for Gage's last years may be a year off; I did not check them against other records."
+}

@@ -1,0 +1,75 @@
+{
+  "id": "snow-pump-handle",
+  "as_told": "In 1854 cholera killed hundreds of people around Broad Street in Soho, London. John Snow mapped the deaths, traced them to the Broad Street water pump, and had its handle removed. The outbreak then stopped.",
+  "lesson": "Find the source of an epidemic from the data and remove it, and the epidemic stops.",
+  "what_happened": "Snow traced the deaths to the Broad Street pump and spoke to the Board of Guardians of St James's parish on the evening of Thursday 7 September 1854. The handle was removed on 8 September. By Snow's own count, new cases peaked at 143 on 1 September and had already fallen to 12 on 8 September, partly because many residents had fled. Snow himself wrote that the attacks had fallen so far before the water was stopped that he could not decide whether the well was still infectious.",
+  "false_part": "Removing the handle did not stop the outbreak; by Snow's own figures it was already almost over when the handle was removed.",
+  "class": "changed",
+  "also": "",
+  "earliest_telling": {
+    "date": "1858",
+    "who": "Benjamin Ward Richardson",
+    "where": "\"The Life of John Snow, M.D.\", memoir prefaced to John Snow, On Chloroform and Other Anaesthetics (London: John Churchill, 1858)",
+    "quote": "handle was removed, and the plague was stayed.",
+    "url": "https://archive.org/details/onchloroformothe1858snow",
+    "archive": "https://archive.org/details/onchloroformothe1858snow",
+    "file": "sources/snow-pump-handle/onchloroformothe1858snow_djvu.txt",
+    "sha256": "e5e472847756073ea929777d0aa32a34b1365220699aea50b4fa8e3b9e191e0b"
+  },
+  "original": [
+    {
+      "what": "Snow's own account of the handle removal, in his book",
+      "date": "1855",
+      "who": "John Snow",
+      "quote": "In consequence of what I said, the handle of the pump was removed on the following day.",
+      "url": "https://archive.org/details/b28985266",
+      "archive": "https://archive.org/details/b28985266",
+      "file": "sources/snow-pump-handle/b28985266_djvu.txt",
+      "sha256": "3a5e9a7f3527b373c9f0d2235e3156654d8d31026bb83d2e27621a3e42296072"
+    },
+    {
+      "what": "Snow's own daily count of new attacks, showing the decline before the handle was removed",
+      "date": "1855",
+      "who": "John Snow",
+      "quote": "The greatest number of attacks in any one day occurred on the 1st of September, immediately after the outbreak commenced. The following day the attacks fell from one hundred and forty-three to one hundred and sixteen, and the day afterwards to fifty-four. A glance at the above table will show that the fresh attacks continued to become less numerous every day. On September the 8th — the day when the handle of the pump was removed — there were twelve attacks",
+      "url": "https://archive.org/details/b28985266",
+      "archive": "https://archive.org/details/b28985266",
+      "file": "sources/snow-pump-handle/b28985266_djvu.txt",
+      "sha256": "3a5e9a7f3527b373c9f0d2235e3156654d8d31026bb83d2e27621a3e42296072"
+    },
+    {
+      "what": "Snow's own statement that the attacks had already declined before the water was stopped",
+      "date": "1855",
+      "who": "John Snow",
+      "quote": "but the attacks had so far diminished before the use of the water was stopped, that it is impossible to decide whether the well",
+      "url": "https://archive.org/details/b28985266",
+      "archive": "https://archive.org/details/b28985266",
+      "file": "sources/snow-pump-handle/b28985266_djvu.txt",
+      "sha256": "3a5e9a7f3527b373c9f0d2235e3156654d8d31026bb83d2e27621a3e42296072"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "holds",
+    "why": "Snow's central claim, that cholera spreads through contaminated water and that safe water prevents it, is now the settled basis of cholera control. The handle removal itself did not end this outbreak, but removing a contaminated water source does cut transmission.",
+    "source": {
+      "what": "World Health Organization, Cholera fact sheet",
+      "quote": "Cholera is an acute diarrhoeal infection caused by consuming food or water contaminated with the bacterium",
+      "url": "https://www.who.int/news-room/fact-sheets/detail/cholera",
+      "archive": "https://web.archive.org/web/20250605114319/https://www.who.int/news-room/fact-sheets/detail/cholera",
+      "file": "sources/snow-pump-handle/who_cholera.html",
+      "sha256": "83b4eac10f3fd17cb5abc0728c910a8782e6dc2ee35512c747db2971b1090206"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search for \"removed the handle\" pump broad street cholera: no hits.",
+    "Open Library full-text search for \"pump handle\" snow cholera stayed: 20 hits, the earliest from 1967; none earlier than Richardson.",
+    "Web search for the 1855 second edition of Snow's On the Mode of Communication of Cholera: found archive.org item b28985266; saved its full text.",
+    "Read Snow's account: handle removed on 8 September after his talk to the Guardians on 7 September; daily attack counts show the peak on 1 September and 12 attacks on 8 September.",
+    "Web search for Richardson's 1858 memoir of Snow: found archive.org item onchloroformothe1858snow; saved its full text. It says 'the pump-handle was removed, and the plague was stayed'. This is the earliest telling found.",
+    "Saved the WHO cholera fact sheet as evidence for the lesson.",
+    "The 1855 St James's vestry Cholera Inquiry Committee report was not found online in full text in this search, so it is not quoted.",
+    "Richardson revised his memoir of Snow in The Asclepiad (1887). Open Library full-text search for Asclepiad and pump-handle found other volumes of The Asclepiad but not the 1887 Snow memoir, so I could not check whether its wording changed."
+  ],
+  "confidence_note": "The handle-removal date and Snow's case counts are from Snow's own book. Earlier tellings than Richardson's 1858 memoir may exist in newspapers or medical journals of 1855-1857; I did not search those. The daily counts depend on Snow's own collection of dates of attack."
+}

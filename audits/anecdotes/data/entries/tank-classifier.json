@@ -1,0 +1,57 @@
+{
+  "id": "tank-classifier",
+  "as_told": "In the early days of neural networks the US Army trained a network to tell photos of woods with hidden tanks from photos of woods without them. It worked perfectly on the test photos but failed on new ones. It turned out that the tank photos had been taken on sunny days and the empty-woods photos on cloudy days, so the network had learned to tell sunshine from cloud.",
+  "lesson": "A machine-learning model can learn an accidental feature of its training data instead of the thing you meant it to learn.",
+  "what_happened": "In the early 1960s Laveen Kanal and N. C. Randall did build a statistically designed two-layer network to recognize tanks in aerial photographs for a US Army agency. Kanal wrote in 1991 that the method worked well enough that the Army classified the final reports, so the results were never published, and he did not mention any failure. The sunny-versus-cloudy version first appears in full in 1992 in an essay by Hubert and Stuart Dreyfus, who themselves call it 'the legend'. No record of the failed experiment has been found.",
+  "false_part": "",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "1992",
+    "who": "Hubert L. Dreyfus and Stuart E. Dreyfus",
+    "where": "\"What Artificial Experts Can and Cannot Do\", AI & Society 6:18-26 (1992)",
+    "quote": "The mystery was finally solved when someone noticed that the training pictures of the woods without tanks were taken on a cloudy day, whereas those with tanks were taken on a sunny day.",
+    "url": "https://www.jefftk.com/dreyfus92.pdf",
+    "archive": "https://web.archive.org/web/20260921045802/https://www.jefftk.com/dreyfus92.pdf",
+    "file": "sources/tank-classifier/dreyfus_1992_artificial-experts.pdf.txt",
+    "sha256": "452b12197f78e32c7e9aa4ec57f001646ec904c0c499e5ffe8240e28adff70a2"
+  },
+  "original": [
+    {
+      "what": "Laveen Kanal's own account of his 1960s tank-recognition project, in his foreword to Sethi and Jain (eds.), Artificial Neural Networks and Statistical Pattern Recognition (1991)",
+      "date": "1991",
+      "who": "Laveen N. Kanal",
+      "quote": "On a project to recognize tanks in aerial photography, the method worked well enoughin practice that the U.S. Army agency sponsoringthe project decided to classify the final reports, although previously the project had been unclassified.",
+      "url": "https://gwern.net/doc/ai/nn/1991-sethi-artificialneuralnetworksandstatisticalpatternrecognition.pdf",
+      "archive": "https://web.archive.org/web/20261122130209/https://gwern.net/doc/ai/nn/1991-sethi-artificialneuralnetworksandstatisticalpatternrecognition.pdf",
+      "file": "sources/tank-classifier/kanal_1991_foreword.pdf.txt",
+      "sha256": "b8a3988807ee62ff1994e468b0e833d87f07370895c6a891328c6b3e8080cfcf"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "holds",
+    "why": "A study of pneumonia-detecting neural networks trained on chest X-rays from three hospital systems found that the networks learned to recognise which hospital an image came from and used that as a shortcut, which hurt performance at a new hospital. This is the failure the story describes, documented in a real system.",
+    "source": {
+      "what": "Zech et al., 'Variable generalization performance of a deep learning model to detect pneumonia in chest radiographs: A cross-sectional study', PLOS Medicine 15(11):e1002683, 2018",
+      "quote": "The performance of CNNs in diagnosing diseases on X-rays may reflect not only their ability to identify disease-specific imaging findings on X-rays but also their ability to exploit confounding information.",
+      "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1002683",
+      "archive": "https://web.archive.org/web/20261122130557/https://journals.plos.org/plosmedicine/article?id=10.1371%2Fjournal.pmed.1002683",
+      "file": "sources/tank-classifier/zech_2018_plosmed.xml",
+      "sha256": "6c2e02d9a0f4a070218bc6de4ea8b0038d87a5ba77259ce0ce4b73b594051543"
+    }
+  },
+  "search_steps": [
+    "Used Gwern Branwen's essay 'The Neural Net Tank Urban Legend' (gwern.net/tank) as a lead list of tellings; it lists none in full before Dreyfus and Dreyfus 1992.",
+    "Saved Dreyfus and Dreyfus 1992 (AI & Society) from the copy at jefftk.com; it tells the full sunny/cloudy story and calls it 'the legend of one of connectionism's first applications'. Earliest full telling found.",
+    "Gwern also lists Edward Fredkin's 2013 email, quoted by Eliezer Yudkowsky on LessWrong, recalling that around 1963 he asked a speaker whether the tank photos differed in brightness. This is relayed in another person's text, so it is a lead only, not quoted.",
+    "Gwern lists a 1991 BBC documentary (The Machine That Changed the World) with a similar story; video only, not quoted.",
+    "Saved Kanal's 1991 foreword (copy hosted at gwern.net): he describes the real 1960s tank project, says the method worked well and that the Army classified the reports, and mentions no failure.",
+    "Kanal and Randall, 'Recognition System Design by Statistical Analysis', Proc. 19th ACM Conference (1964): not read in full here; not quoted.",
+    "Open Library full-text search for tanks, sunny, cloudy, neural (the API treats the words as OR, so most of 12,980 hits are noise) and for tanks, \"cloudy day\", neural (1,516 hits): the only relevant hit is Dreyfus, What Computers Still Can't Do (1992), with the same story; no earlier telling found. Saved as ol_search.json and ol_search2.json.",
+    "For the lesson: saved Zech et al. 2018 (PLOS Medicine, open access) as JATS XML from the PLOS site.",
+    "Read the rest of Gwern's essay (characters 100,000 to the end): it lists no earlier telling and no original record of the failed experiment.",
+    "The saved file is the article's JATS XML from journals.plos.org (article/file?id=...&type=manuscript); the Wayback link is to the article landing page, because saving the XML link only captured a temporary storage redirect."
+  ],
+  "confidence_note": "The tank project was real, but its results were classified, so the absence of a record does not rule out a brightness problem. The story may have grown from Fredkin's question at a talk around 1963, but that link rests on his recollection relayed by others. Copies of Dreyfus 1992 and Kanal 1991 come from personal sites, not the publishers."
+}

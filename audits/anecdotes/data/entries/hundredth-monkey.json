@@ -1,0 +1,88 @@
+{
+  "id": "hundredth-monkey",
+  "as_told": "On the Japanese island of Koshima, a young monkey learned to wash sweet potatoes in the sea, and other monkeys copied her one by one. One day the number of washers reached a critical number, often given as the hundredth monkey, and by that evening the whole troop washed potatoes. Then the habit jumped across the sea to monkeys on other islands and on the mainland, which had no contact with Koshima.",
+  "lesson": "When a critical number of people take up an idea, it suddenly spreads to everyone, even to people who have no contact with them.",
+  "what_happened": "Japanese researchers recorded that a young female on Koshima began to wash sweet potatoes in 1953. Over the next years the habit spread slowly, mostly from young monkeys to their playmates, mothers and siblings; by August 1962, 36 of the 49 monkeys older than two washed potatoes, and only two of the 11 monkeys born before 1950 had learned it. The whole troop had 20 monkeys in 1952 and 59 in 1962, so there was never a group of 99 or 100 washers. A few single monkeys in other troops washed potatoes, but in those troops the habit did not spread. Lyall Watson made up the sudden jump in his 1979 book Lifetide and in 1986 called it a metaphor of his own making.",
+  "false_part": "No sudden spread at a critical number was recorded, and the habit did not spread to the monkeys of other islands or the mainland.",
+  "class": "invented",
+  "also": "",
+  "earliest_telling": {
+    "date": "1979",
+    "who": "Lyall Watson",
+    "where": "Lifetide: A Biology of the Unconscious (1979); quoted word for word from the book in Ron Amundson's article in Whole Earth Review, Fall 1986",
+    "quote": "the habit seems to have jumped natural barriers and to have appeared spontaneously, like glycerine crystals in sealed laboratory jars, in colonies on other islands and on the mainland in a troop at Takasakiyama.",
+    "url": "https://archive.org/details/wholeearthreview00unse_7",
+    "archive": "https://archive.org/details/wholeearthreview00unse_7",
+    "file": "sources/hundredth-monkey/wholeearthreview00unse_7_djvu.txt",
+    "sha256": "529636340ba19660a15486d6e7f3979f10f7916d8deb65e05caca8b5d3df9082"
+  },
+  "original": [
+    {
+      "what": "Kawai's 1965 report of the Koshima observations in the journal Primates (vol. 6, no. 1, pp. 1-30): the troop size",
+      "date": "1965",
+      "who": "Masao Kawai",
+      "quote": "At that time there were twenty monkeys in all, but in 1962 the number increased to 59",
+      "url": "https://www.j-monkey.jp/lng/pdf/sweet-potato-washing/Kawai-(1965)-Monkey-culture-PRIMATES.pdf",
+      "archive": "http://web.archive.org/web/20260715033943/https://www.j-monkey.jp/lng/pdf/sweet-potato-washing/Kawai-(1965)-Monkey-culture-PRIMATES.pdf",
+      "file": "sources/hundredth-monkey/kawai-1965-primates.pdf",
+      "sha256": "06a21fc787ee1a14b821d01d70a758b36b0e7ed756cbc895a276a7852e885465"
+    },
+    {
+      "what": "Kawai 1965: how many monkeys washed potatoes in 1962",
+      "date": "1965",
+      "who": "Masao Kawai",
+      "quote": "As of the last date, 36 monkeys out of 49 monkeys above two years old did SPW behavior",
+      "url": "https://www.j-monkey.jp/lng/pdf/sweet-potato-washing/Kawai-(1965)-Monkey-culture-PRIMATES.pdf",
+      "archive": "http://web.archive.org/web/20260715033943/https://www.j-monkey.jp/lng/pdf/sweet-potato-washing/Kawai-(1965)-Monkey-culture-PRIMATES.pdf",
+      "file": "sources/hundredth-monkey/kawai-1965-primates.pdf",
+      "sha256": "06a21fc787ee1a14b821d01d70a758b36b0e7ed756cbc895a276a7852e885465"
+    },
+    {
+      "what": "Kawai 1965: potato washing in other troops",
+      "date": "1965",
+      "who": "Masao Kawai",
+      "quote": "But in these troops the behavior remains individual and is not propagated to other monkeys to form pre-cultural behavior of the troop.",
+      "url": "https://www.j-monkey.jp/lng/pdf/sweet-potato-washing/Kawai-(1965)-Monkey-culture-PRIMATES.pdf",
+      "archive": "http://web.archive.org/web/20260715033943/https://www.j-monkey.jp/lng/pdf/sweet-potato-washing/Kawai-(1965)-Monkey-culture-PRIMATES.pdf",
+      "file": "sources/hundredth-monkey/kawai-1965-primates.pdf",
+      "sha256": "06a21fc787ee1a14b821d01d70a758b36b0e7ed756cbc895a276a7852e885465"
+    }
+  ],
+  "teller_correction": {
+    "what": "Lyall Watson's reply to Ron Amundson, Whole Earth Review, Fall 1986 (issue 52)",
+    "date": "1986",
+    "who": "Lyall Watson",
+    "quote": "It is a metaphor of my own making, based — as he rightly suggests — on very slim evidence and a great deal of hearsay. I have never pretended otherwise.",
+    "url": "https://archive.org/details/wholeearthreview00unse_7",
+    "archive": "https://archive.org/details/wholeearthreview00unse_7",
+    "file": "sources/hundredth-monkey/wholeearthreview00unse_7_djvu.txt",
+    "sha256": "529636340ba19660a15486d6e7f3979f10f7916d8deb65e05caca8b5d3df9082"
+  },
+  "lesson_verdict": {
+    "status": "does not hold",
+    "why": "The only case offered for the lesson shows the opposite: the habit spread by direct learning between monkeys over about ten years, and where it appeared in other troops it did not spread at all. A 2001 review of the Koshima records, written with the original observer, confirms this.",
+    "source": {
+      "what": "Hirata, Watanabe and Kawai, 'Sweet-Potato Washing Revisited', chapter 24 of an edited book (2001)",
+      "date": "2001",
+      "who": "Satoshi Hirata, Kunio Watanabe and Masao Kawai",
+      "quote": "SPW behavior has sometimes been observed in other troops such as Takasakiyama, Ohirayama,Arashiyama, and Gagyusan , although it remains individualistic and has not been propagated to other monkeys in these troops.",
+      "url": "https://www.j-monkey.jp/lng/pdf/sweet-potato-washing/Hirata-2001-Sweet-potato-washing-revisited.pdf",
+      "archive": "http://web.archive.org/web/20260904214422/https://www.j-monkey.jp/lng/pdf/sweet-potato-washing/Hirata-2001-Sweet-potato-washing-revisited.pdf",
+      "file": "sources/hundredth-monkey/hirata-2001-sweet-potato-washing-revisited.pdf",
+      "sha256": "2d69b1be44415768363e53b96c42bf2d12d0c77bc2145d160f5f0a37bf5a48d5"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search for \"hundredth monkey\" potatoes: earliest dated hits are Ken Keyes, The Hundredth Monkey (1982 and later printings); saved as ol-inside-hundredth-monkey.json.",
+    "Open Library full-text search for Watson's phrases \"number was ninety-nine\", \"bits of folklore among primate researchers\", \"jumped natural barriers\" and \"glycerine crystals in sealed laboratory jars\": each finds Lifetide (archive.org item lifetidebiologyo00watsrich, meta_year 1979) as the earliest hit; snippets saved in ol-inside-*.json.",
+    "Tried to download the full text of Lifetide from archive.org: refused (401, lending-only book). Tried the archive.org search-inside endpoint for the book: refused (403); did not retry. So I quote Watson's passage from Amundson's 1986 article, which reprints it, and use the Open Library snippets only to confirm that the same words are in the 1979 book.",
+    "Open Library full-text search for \"colonies of monkeys on other islands\": Ken Keyes 1982 and many later retellings; no telling earlier than 1979 found.",
+    "Found and saved Kawai (1965), Primates 6:1-30, the original record of the Koshima observations, from the Japan Monkey Centre website (j-monkey.jp).",
+    "Found and saved Hirata, Watanabe and Kawai (2001), a review of the Koshima records, from the same site.",
+    "Web search for Watson's correction led to Whole Earth Review, Fall 1986; found the issue on archive.org (wholeearthreview00unse_7) and saved its full text; it contains Amundson's article and Watson's reply.",
+    "Open Library search for \"metaphor of my own making\" finds only later books quoting the 1986 reply.",
+    "The English Wikipedia article on the hundredth monkey effect says that Watson first published the story in a foreword to Lawrence Blair, Rhythms of Vision (1975). archive.org has that book (items rhythmsofvision0000lawr, rhythmsofvision0000blai, lending-only). Open Library full-text searches for \"Koshima\" and for \"Koshima\" \"hundredth\" did not return it, so I could not see or date the foreword text.",
+    "Wayback Machine availability checked for both j-monkey.jp PDFs; snapshots exist."
+  ],
+  "confidence_note": "Watson may have told the story first in a 1975 foreword to Lawrence Blair's Rhythms of Vision, as the Wikipedia article says; I could not see that text, so the earliest telling here is the 1979 book. I could not read Lifetide itself; the earliest-telling quote comes from Amundson's 1986 reprint of the passage, and Open Library snippets of the 1979 book match its wording. The Kawai and Hirata PDFs are copies hosted by the Japan Monkey Centre, not the publisher's copies."
+}

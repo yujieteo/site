@@ -1,0 +1,76 @@
+{
+  "id": "western-union-memo",
+  "as_told": "In 1876 Western Union was offered Alexander Graham Bell's telephone. An internal Western Union memo rejected it, saying the 'telephone' has too many shortcomings to be seriously considered as a means of communication and is inherently of no value to the company.",
+  "lesson": "Established companies and experts tend to dismiss new technologies that later transform their industry.",
+  "what_happened": "Histories say that Bell's backers offered the Bell patents to William Orton, president of Western Union, for $100,000, and that Orton refused; Herbert Casson's 1910 history tells this but cites no document. No memo with the quoted words has been produced. The earliest printings of the memo wording that I found are from 1990 onward, more than a century later. Records from the time show Western Union working with telephones soon after: Prescott's 1878 book credits Western Union's mechanician G. M. Phelps with some of the best telephones, and Casson says Western Union formed the American Speaking-Telephone Company with Edison, Gray and Dolbear.",
+  "false_part": "No 1876 Western Union memo with these words has been found, and Western Union entered the telephone business within about two years.",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "1998",
+    "who": "The Macintosh Bible, 7th edition (Peachpit Press), in a list of quotations",
+    "where": "The Macintosh Bible, 7th edition (Peachpit Press, 1998): the earliest telling I could save in full. Earlier tellings seen only as Open Library search snippets: William Sandy, Forging the Productivity Partnership (1990), and Ireland on the Internet (1995).",
+    "quote": "The device is inherently of no value to us.",
+    "url": "https://archive.org/details/mac_The_Macintosh_Bible_7th_Edition_1998",
+    "archive": "https://archive.org/details/mac_The_Macintosh_Bible_7th_Edition_1998",
+    "file": "sources/western-union-memo/macintosh-bible-7th-1998_djvu.txt",
+    "sha256": "93a1f58ecef6859f05b288a9998758763346acad07e2fb4e71203b2115bb3048"
+  },
+  "original": [
+    {
+      "what": "George B. Prescott, The Speaking Telephone, Talking Phonograph, and Other Novelties (New York: D. Appleton, 1878), a book on the telephone written at the time",
+      "date": "1878",
+      "who": "George B. Prescott",
+      "quote": "mechanician of the Western Union Telegraph Company, to whose ability in",
+      "url": "https://archive.org/details/speakingtelepho01presgoog",
+      "archive": "https://archive.org/details/speakingtelepho01presgoog",
+      "file": "sources/western-union-memo/speakingtelepho01presgoog_djvu.txt",
+      "sha256": "9162239519814d84b2c138967a5a3fba12fc179af55b1444b7e7945d79952089"
+    },
+    {
+      "what": "Herbert N. Casson, The History of the Telephone (Chicago: McClurg, 1910), pages 58-59; an early history, not a record made at the time, and it cites no source for the Orton offer",
+      "date": "1910",
+      "who": "Herbert N. Casson",
+      "quote": "the telephone to President Orton, of the Western Union, for $100,000; and Orton had refused it.",
+      "url": "https://archive.org/details/historyoftelepho00cassuoft",
+      "archive": "https://archive.org/details/historyoftelepho00cassuoft",
+      "file": "sources/western-union-memo/historyoftelepho00cassuoft_djvu.txt",
+      "sha256": "a82197075668a63a581c2a0d3e39b950da17b939cc5680c5a86edbf234a5ba7d"
+    },
+    {
+      "what": "Casson 1910, page 59, on Western Union's own telephone company",
+      "date": "1910",
+      "who": "Herbert N. Casson",
+      "quote": "with $300,000 capital, and with three electrical inventors, Edison, Gray, and Dolbear",
+      "url": "https://archive.org/details/historyoftelepho00cassuoft",
+      "archive": "https://archive.org/details/historyoftelepho00cassuoft",
+      "file": "sources/western-union-memo/historyoftelepho00cassuoft_djvu.txt",
+      "sha256": "a82197075668a63a581c2a0d3e39b950da17b939cc5680c5a86edbf234a5ba7d"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "A study of 64 significant product innovations in consumer durables and office products since 1850 found that newcomers made most radical innovations before the Second World War, but incumbent firms made most of them afterwards. So the pattern fits the 1870s but is not a general rule.",
+    "source": {
+      "what": "Rajesh K. Chandy and Gerard J. Tellis, 'The Incumbent's Curse? Incumbency, Size, and Radical Product Innovation', Journal of Marketing 64(3) (2000) 1-17 (text without page layout, made with pdftotext)",
+      "quote": "Incumbents significantly outnumber nonincumbents for recent innovations in the sample (74% to 26%",
+      "url": "https://people.duke.edu/~moorman/Marketing-Strategy-Seminar-2015/Session%205/Chandy%20and%20Tellis.pdf",
+      "archive": "http://web.archive.org/web/20221221065043/https://people.duke.edu/~moorman/Marketing-Strategy-Seminar-2015/Session%205/Chandy%20and%20Tellis.pdf",
+      "file": "sources/western-union-memo/chandy-tellis2000-incumbents-curse.pdf.raw.txt",
+      "sha256": "bec5ab9cc5e0aa029457b217f4629ae7f658e668628de8e330c8737886ecf16d"
+    }
+  },
+  "search_steps": [
+    "Web search for the memo wording and its origin: found many quotation lists dating it 1876 (one Western Union tweet says 1878), and a Slate correction calling a related Western Union 'idiotic' committee report a fabrication. Leads only.",
+    "Open Library full-text search for 'too many shortcomings to be seriously considered' (498 hits read): the earliest dated hit is Ireland on the Internet (1995), followed by many 1996-1997 computer and business books; all early ones are borrow-only.",
+    "Open Library full-text search for 'inherently of no value to us': the earliest hit is William Sandy, Forging the Productivity Partnership (McGraw-Hill, 1990), in a longer 'committee report' version ('We do not recommend the purchase'); borrow-only, seen as a search snippet only, so not quoted.",
+    "The earliest hit with full text open to download is The Macintosh Bible, 7th edition (1998); I saved its full text and quote it as the earliest telling I could save.",
+    "Google Books API (quota exceeded), Google Books pages, HathiTrust and Chronicling America (loc.gov challenge pages) refused automated requests, so I could not search them for earlier tellings.",
+    "Original record: no 1876 memo has been published. Saved Casson's History of the Telephone (1910) from archive.org for the Orton offer and the American Speaking-Telephone Company. Project Gutenberg was down for maintenance.",
+    "Saved Prescott's The Speaking Telephone, Talking Phonograph, and Other Novelties (1878) from archive.org as a record from the time showing Western Union's mechanician building telephones.",
+    "Searched for a correction by Western Union or by the people who spread the quote: found none.",
+    "Lesson: Chandy and Tellis (2000) found through OpenAlex; the SSRN copy refused the download, so I saved the copy on a Duke University course page."
+  ],
+  "confidence_note": "The absence of the memo alone does not prove it never existed, so the class is 'unsupported'. Earlier printings than 1990 may exist in sources I could not search (Google Books, HathiTrust, newspapers). Casson's account of the Orton offer is itself unsourced. Prescott's 1878 book shows Western Union staff building telephones but does not date Western Union's decision."
+}

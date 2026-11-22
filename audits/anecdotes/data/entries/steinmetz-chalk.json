@@ -1,0 +1,44 @@
+{
+  "id": "steinmetz-chalk",
+  "as_told": "Henry Ford's engineers could not fix a broken generator, so they called in the electrical engineer Charles Proteus Steinmetz. He listened to it, made a chalk mark on its side, and told them to fix the part under the mark. He sent a bill for $10,000, and when Ford asked for details, the bill read: making chalk mark, $1; knowing where to make the mark, $9,999.",
+  "lesson": "Expert knowledge is worth far more than the small visible act it takes to use it, and it is fair to pay for it.",
+  "what_happened": "The joke is older than the Steinmetz version. Quote Investigator reports it from 1907 as an anonymous fable about an unnamed expert who taps a stopped machine with a hammer; the earliest copy I could read, a 1923 joke book, prints it with a bill of $25 for tapping and $225 for knowing where to tap. The version naming Steinmetz, Ford and a chalk mark appears decades after Steinmetz died in 1923: Quote Investigator reports a reader's letter in LIFE in March 1965 retelling a family story, and I saw a 1968 book version only as a search snippet. I found no record from Steinmetz, Ford or General Electric of such a bill.",
+  "false_part": "The story is a joke about an unnamed expert that was later attached to Steinmetz and Ford; no record shows that Steinmetz made such a mark or sent such a bill.",
+  "class": "invented",
+  "also": "",
+  "earliest_telling": {
+    "date": "1923",
+    "who": "Randall Albert Carter (compiler)",
+    "where": "Canned Laughter (joke collection), item 'Knowledge is Power', pages 122-123",
+    "quote": "To knowing where to tap",
+    "url": "https://archive.org/details/cannedlaughter00cart",
+    "archive": "https://archive.org/details/cannedlaughter00cart",
+    "file": "sources/steinmetz-chalk/cannedlaughter00cart_djvu.xml",
+    "sha256": "334f7216a3239e656832f9aeadc6ef391714c0345eb2f52f3c42b08d626f1aed"
+  },
+  "original": [],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "A small study of network engineers found that the most skilled ones guessed early which device had the fault, while unskilled ones did not, which fits the idea that expertise lies in knowing where to look. But it had only a few participants and says nothing about what such knowledge is worth or what a fair price is.",
+    "source": {
+      "what": "Ogata, Takeuchi, Fukuda, Yamada, Ochi, Inoue and Ota, 'Characteristics of Skilled and Unskilled System Engineers in Troubleshooting for Network Systems', IEEE Access (2020), doi:10.1109/ACCESS.2020.2990911; abstract as recorded by the Directory of Open Access Journals (DOAJ)",
+      "quote": "the most skilled participants appropriately hypothesized which device was experiencing trouble",
+      "url": "https://ieeexplore.ieee.org/document/9079857/",
+      "archive": "http://web.archive.org/web/20240730153837/https://ieeexplore.ieee.org/document/9079857/",
+      "file": "sources/steinmetz-chalk/ieee-access-2020-troubleshooting-doaj.json",
+      "sha256": "594ea89ebabe2ab8a6088c1c0b2dcc3750cf8a0ad9c077e94107b34be5bc6f70"
+    }
+  },
+  "search_steps": [
+    "Web search led to Quote Investigator ('Knowing where to tap', 2017), used as a lead only. It lists a 1907 fable in the Huddersfield Daily Examiner reprinted from The Story-Teller, a 1908 trade journal, Forbes 1921, US newspaper reprints in 1922, and a LIFE letter of March 1965 as the first Steinmetz version. I could not open any of these: the 1907 paper is in a paid archive, Forbes 1921 is on HathiTrust (challenge page), the 1922 newspapers are on Chronicling America (loc.gov challenge page), and LIFE 1965 is on Google Books (refused automated requests).",
+    "Quote Investigator gives the LIFE letter date as 14 March 1965, which was a Sunday; LIFE issues were dated Fridays, so I give only the month.",
+    "Open Library full-text search for 'knowing where to tap': earliest hit is Canned Laughter (1923), full text open; I saved it. Also found Bower, Character Through Creative Experience (1930), with a $1 / $99 version.",
+    "Open Library full-text search for Steinmetz with 'chalk mark' and 'knowing where to make': earliest hit is Richard O'Connor, The German-Americans (1968), which tells the Ford River Rouge version; borrow-only, seen as a search snippet only, so not quoted. A later book, Franck, German-American Heritage, gives the $1 / $9,999 bill.",
+    "Searched for any record of a Steinmetz bill to Ford in Steinmetz biographies and General Electric material through web search: found none.",
+    "Searched for a correction by a teller: none found.",
+    "Lesson: tried van Gog, Paas and van Merrienboer (2005) on expert troubleshooting, but core.ac.uk and research.ou.nl refused the download. Used the open-access IEEE Access 2020 study instead; the IEEE site was not tried for the full text, so I saved the abstract from the DOAJ record.",
+    "The plain-text OCR file of Canned Laughter (cannedlaughter00cart_djvu.txt, also saved) contains a stray '<' from the scan that breaks the quote checker, so the entry cites the archive.org word-by-word OCR file (cannedlaughter00cart_djvu.xml) of the same scan; the quote was grep-checked in the plain-text file."
+  ],
+  "confidence_note": "I could not read the 1907 fable or the 1965 LIFE letter myself; their dates come from Quote Investigator. The 'invented' class rests on the saved 1923 joke book, which prints the story as a joke about an unnamed expert, and on the absence of any Steinmetz version before 1965. The lesson source is only an abstract of a very small study."
+}

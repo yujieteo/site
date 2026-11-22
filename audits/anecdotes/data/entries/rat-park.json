@@ -1,0 +1,68 @@
+{
+  "id": "rat-park",
+  "as_told": "In the late 1970s the psychologist Bruce Alexander built \"Rat Park\", a large, rich enclosure where rats could play, mate and live together. Rats alone in small cages drank morphine water heavily, but the rats in Rat Park refused it and drank plain water instead. So addiction is caused by a poor, lonely environment, not by the drug.",
+  "lesson": "Addiction is caused mainly by isolation and a poor environment, not by the drug itself.",
+  "what_happened": "Bruce Alexander and colleagues at Simon Fraser University ran a series of studies published in 1978, 1979 and 1981. Rats housed together in a large open box (8.8 square metres) drank significantly less morphine solution than rats isolated in standard cages, but they still drank some; they did not refuse it. In the 1978 study the morphine solution was the only fluid for the first 57 days, so all rats took morphine. Later attempts by Bruce Petrie, a member of the same laboratory, did not reproduce the difference between housed and isolated rats.",
+  "false_part": "The Rat Park rats did not refuse morphine; they drank less of it than isolated rats, and the difference did not hold up in later attempts to repeat it.",
+  "class": "changed",
+  "also": "",
+  "earliest_telling": {
+    "date": "1985",
+    "who": "Stanton Peele (chapter 'Adult, Infant, and Animal Addiction', as extracted on Bruce Alexander's website)",
+    "where": "The Meaning of Addiction (Lexington, Mass.: D. C. Heath, 1985), pp. 77-96",
+    "quote": "The results show clearly that the caged rats ingested more morphine than the animals in Rat Park",
+    "url": "https://brucekalexander.com/articles-speeches/rat-park/229--adult-infant-and-animal-addiction",
+    "archive": "http://web.archive.org/web/20260807110957/https://brucekalexander.com/articles-speeches/rat-park/229--adult-infant-and-animal-addiction",
+    "file": "sources/rat-park/peele1985-excerpt-alexander-site.html",
+    "sha256": "4fda499ab9a54c63f43577ce5002ece2374ce8da56ef1edc4c306ec4ea7f73dd"
+  },
+  "original": [
+    {
+      "what": "Abstract of the first Rat Park paper (1978): morphine solution was the only fluid for 57 days, then choice days followed. The full paper was not available to me.",
+      "date": "1978",
+      "who": "Bruce K. Alexander, Robert B. Coambs and Patricia F. Hadaway",
+      "quote": "were given morphine in solution (0.5 mg/ml) as their only source of fluid for 57 days",
+      "url": "https://link.springer.com/article/10.1007/BF00426903",
+      "archive": "http://web.archive.org/web/20251228075303/https://link.springer.com/article/10.1007/BF00426903",
+      "file": "sources/rat-park/alexander1978-springer.html",
+      "sha256": "c0adcb1aeb5cda22b0d65ab4df453cea367c5b4c5ecc64f8c34498ad7cb5b865"
+    },
+    {
+      "what": "Full text of the 1981 Rat Park paper: colony rats drank less morphine solution than isolated rats, not none.",
+      "date": "1981",
+      "who": "Bruce K. Alexander, Barry L. Beyerstein, Patricia F. Hadaway and Robert B. Coambs",
+      "quote": "Rats housed in the colony at the time of testing drank less MHC1 solution than isolated rats, but no less of the",
+      "url": "https://web.viu.ca/marchante/courses/Psyc345/Rat%20Park%201981%20PB&B.pdf",
+      "archive": "http://web.archive.org/web/20250816154613/https://web.viu.ca/marchante/courses/Psyc345/Rat%20Park%201981%20PB&B.pdf",
+      "file": "sources/rat-park/alexander1981.pdf",
+      "sha256": "da489aab701ec807c8b0ba9f4ad14656bd650fe600801e1e814e7cc07500534b"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "The animal evidence behind the lesson did not replicate: in two later studies the isolated rats no longer drank more morphine than the colony rats. Rat Park alone cannot show what mainly causes addiction in people.",
+    "source": {
+      "what": "Petrie, B. F. (1996), 'Environment is not the most important variable in determining oral morphine consumption in Wistar rats', Psychological Reports 78: 391-400",
+      "quote": "than rats isolated in standard laborarory cages, could nor be replicated",
+      "url": "https://www.gwern.net/doc/psychology/animal/1996-petrie.pdf",
+      "archive": "",
+      "file": "sources/rat-park/petrie1996.pdf",
+      "sha256": "7f2618251d7313b69e893f8410a0379981c82d05d6ce3b0ff4fb69ba0a4e1604"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search for \"rat park\" morphine: 151 hits; the earliest dated hits are Peele, The Meaning of Addiction (1985) and Touchstones (1988), which says the Rat Park rats 'took far less morphine'.",
+    "Open Library full-text search for \"rat park\" alexander isolated: 0 hits.",
+    "Web search for the 1978 paper: no free full text; saved the Springer page with the abstract (DOI 10.1007/BF00426903).",
+    "Saved the full 1981 Pharmacology Biochemistry and Behavior paper from a Vancouver Island University course page.",
+    "Saved Petrie (1996) from gwern.net; also found Petrie's 1985 Simon Fraser University PhD thesis, 'Failure to replicate an environmental effect of morphine hydrochloride consumption' (lead; not quoted).",
+    "brucekalexander.com (an extract of Peele 1985 on Alexander's site) refused the connection; saved the Wayback capture of 7 August 2026. It is the earliest telling found that uses the name 'Rat Park', and it reports that caged rats drank more, not that park rats refused. The authors' own 1978 abstract is listed under original.",
+    "archive.org full text (_djvu.txt) of Peele's book (meaningofaddiction00peel): refused with 401 (lending-only book); not retried. The extract on Alexander's website was used instead.",
+    "Gage and Sumnall (2019), 'Rat Park: How a rat paradise changed the narrative of addiction', Addiction (accepted manuscript at LJMU), read as a lead: it says the authors' measured conclusions were 'lost in translation'.",
+    "Google Books API: refused with 429 (daily quota); HathiTrust full-text search: refused with 403. Not retried.",
+    "Searched for a correction by Alexander: none found; he has kept defending the studies.",
+    "Wayback Machine: no capture of the gwern.net copy of Petrie (1996), and the save request was refused with 403; so its archive link is empty."
+  ],
+  "confidence_note": "I read only the abstract of the 1978 paper, not its tables. The exact amounts drunk by the colony rats in 1978 and 1979 were not checked. Petrie worked in Alexander's laboratory and suggested that a change in the rat supplier's stock may explain the failure to replicate. The earliest telling found (Peele 1985) gives the accurate version; I did not find when the stronger 'refused morphine' version first appeared."
+}

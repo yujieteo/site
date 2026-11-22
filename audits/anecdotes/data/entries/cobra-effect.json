@@ -1,0 +1,77 @@
+{
+  "id": "cobra-effect",
+  "as_told": "Under British rule, the government in Delhi worried about the number of venomous cobras and offered a bounty for every dead cobra. People began to breed cobras to collect the bounty. When the government found out and stopped paying, the breeders set their worthless snakes free, and Delhi had more cobras than before.",
+  "lesson": "A reward or rule meant to fix a problem can make the problem worse when people find a way around it.",
+  "what_happened": "Governments in British India did pay rewards for killing venomous snakes in the 19th century. A visiting actor reported in 1885 a premium of eight annas for every dead cobra, and in 1887 the Government of Bombay was paying rewards in the districts of Satara and Ratnagiri. District officers reported rumours that people bred snakes for the reward; the Government of Bombay asked the Bombay Natural History Society, whose secretary H. M. Phipson replied on 8 June 1887 that this was 'highly improbable', because the cobra was not known to breed in confinement, and that the rumours probably came from people keeping found eggs until they hatched. In 1907 a member of Parliament repeated the breeding claim; the Secretary of State for India answered that local governments paid such rewards and spent under £200 a year in all. I found no record of a Delhi bounty, of cobra farms, or of a release of snakes after a bounty ended.",
+  "false_part": "No record shows a Delhi cobra bounty, cobra breeding for a bounty, or a release of bred cobras; the breeding was a rumour that a naturalist of the time judged improbable.",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "1887",
+    "who": "Bombay Natural History Society (note introducing H. M. Phipson's reply to the Government of Bombay)",
+    "where": "Journal of the Bombay Natural History Society, vol. 2, pp. 205-206, 'Snake-breeding for the Government Reward'",
+    "quote": "the question was raised as to whether there was likely to be any truth in the rumours that snakes were frequently bred in confinement by the people, in those districts, for the sake of the Government reward.",
+    "url": "https://zenodo.org/records/13654980/files/bhlpart370426.pdf",
+    "file": "sources/cobra-effect/phipson-1887-jbnhs-snake-breeding.pdf",
+    "archive": "https://web.archive.org/web/20251118172824/https://zenodo.org/records/13654980/files/bhlpart370426.pdf",
+    "sha256": "549e03b773d8319aa7a5d6694d2d45f9700d06cc4c9c2b70d9c5fac7a92f7873"
+  },
+  "original": [
+    {
+      "what": "Daniel E. Bandmann, 'An Actor's Tour, or, Seventy Thousand Miles with Shakespeare' (1885), p. 154, on India: a government reward for dead cobras existed. He says nothing about breeding.",
+      "date": "1885",
+      "who": "Daniel E. Bandmann",
+      "quote": "The government pays a premium of eight annas (twenty-five cents) for every dead cobra.",
+      "url": "https://archive.org/details/anactorstourors01bandgoog",
+      "archive": "https://archive.org/details/anactorstourors01bandgoog",
+      "file": "sources/cobra-effect/anactorstourors01bandgoog_djvu.txt",
+      "sha256": "f5e10e66ad0293d3c70cc2e6405f5817275b4372efce8b3e391d07ef9810141a"
+    },
+    {
+      "what": "H. M. Phipson's reply of 8 June 1887 to the Government of Bombay, as printed by the Society.",
+      "date": "1887-06-08",
+      "who": "H. M. Phipson, Honorary Secretary, Bombay Natural History Society",
+      "quote": "The Cobra has, to the best of my knowledge, never been known to breed in confinement",
+      "url": "https://zenodo.org/records/13654980/files/bhlpart370426.pdf",
+      "file": "sources/cobra-effect/phipson-1887-jbnhs-snake-breeding.pdf",
+      "archive": "https://web.archive.org/web/20251118172824/https://zenodo.org/records/13654980/files/bhlpart370426.pdf",
+      "sha256": "549e03b773d8319aa7a5d6694d2d45f9700d06cc4c9c2b70d9c5fac7a92f7873"
+    },
+    {
+      "what": "House of Commons written answer, 15 April 1907 (Hansard vol. 172 c584). The question asserts breeding; the answer neither confirms it nor names Delhi.",
+      "date": "1907-04-15",
+      "who": "John Morley, Secretary of State for India",
+      "quote": "Rewards for the destruction of snakes are not offered by the Government of India, but local Governments are authorised to offer them to such extent as they think fit.",
+      "url": "https://api.parliament.uk/historic-hansard/commons/1907/apr/15/rewards-for-snake-killing-in-india",
+      "file": "sources/cobra-effect/hansard-1907-04-15-snake-rewards.html",
+      "archive": "https://web.archive.org/web/20240222165740/https://api.parliament.uk/historic-hansard/commons/1907/apr/15/rewards-for-snake-killing-in-india",
+      "sha256": "6fe85a8fa2be545ef942d60d2cf5dc6802803ee523acd425d9a1606198c5cfb2"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "holds",
+    "why": "Studies do document rules that backfired because people found a way around them. Mexico City's 1989 driving ban by license plate did not improve air quality and led people to buy more, and dirtier, cars.",
+    "source": {
+      "what": "Lucas W. Davis, 'The Effect of Driving Restrictions on Air Quality in Mexico City', Journal of Political Economy 116(1), 2008, pp. 38-81 (abstract)",
+      "quote": "Evidence from additional sources indicates that the restrictions led to an increase in the total number of vehicles in circulation as well as a change in composition toward high-emissions vehicles.",
+      "url": "https://faculty.haas.berkeley.edu/ldavis/Davis%20JPE%202008.pdf",
+      "file": "sources/cobra-effect/davis-2008-jpe-driving-restrictions.pdf",
+      "archive": "https://web.archive.org/web/20260625010500/http://faculty.haas.berkeley.edu/ldavis/Davis%20JPE%202008.pdf",
+      "sha256": "ae5a053c49d907a034a0206d70c60c235e0371ee4ecd9900474b6dcd385f2bf8"
+    }
+  },
+  "search_steps": [
+    "English Wikipedia 'Perverse incentive' (lead only): says economist Horst Siebert coined 'cobra effect' in 'Der Kobra-Effekt' (2001) from a British Raj anecdote set in Delhi. That book is not online in full text; I did not see or quote it.",
+    "Open Library full-text search for 'cobra effect': hits before 2001 use the phrase in other senses (venom, hairstyles, COBRA health insurance); one 1998 hit, Christian A. Schwarz, 'Implementation Guide to Natural Church Development', uses 'cobra effect'. English Wikipedia also cites Schwarz's 'NCD Implementation Guide' (1996), p. 126, for the anecdote. The book is lending-only, so I could not read the context or check whether it names Delhi.",
+    "Open Library full-text search for 'every dead cobra': found D. E. Bandmann (1885), a government premium for dead cobras with no breeding; and Rev. C. W. Formby, 'Re-Creation' (London, 1907), p. 90-91, which says the 'English Government' paid 3d. per dead cobra and the 'natives' bred cobras so payments stopped (saved as sources/cobra-effect/recreationanewa00formgoog_djvu.txt; no place, date or source given).",
+    "Lead: Friends of Snakes Society article 'Cobra effect' lists earlier newspaper reports of the breeding rumour (Morning Advertiser, 23 September 1873, citing the Medical Times and Gazette; Driffield Times, 9 December 1876), a Government of Bombay resolution of 23 April 1877, Fayrer (1878, 1891) and Phipson (1887). I tried Chronicling America (loc.gov, refused with 403) and Papers Past (returned a blank challenge page) for 'breed cobras' 1860-1890 and a web search; I did not find the 1873 or 1876 items. I did not try Trove or the British Newspaper Archive, and did not check the National Archives of India files.",
+    "Saved Phipson (1887) from Zenodo/Biodiversity Heritage Library: the rumour, and the Society's reply that breeding was 'highly improbable'.",
+    "Saved Hansard, 15 April 1907: question by Mr. Rees asserting breeding by snake charmers; answer by Morley on local rewards under £200 a year.",
+    "Lead: historian Michael Vann's work on the 1902 Hanoi rat bounty, where officials reported tailless rats and rat farming. His interview page at World History Connected returned 503; I did not try his 2003 article in French Colonial History. Not quoted.",
+    "No record of a bounty in Delhi was found in any source seen.",
+    "I did not search for a correction by Siebert or Schwarz.",
+    "Lesson source: Davis (2008), Journal of Political Economy."
+  ],
+  "confidence_note": "Snake rewards in British India are real and the breeding rumour dates back at least to 1887 (and, by a secondary list, to 1873). I could not read the 1873 and 1877 records myself. The Delhi setting, the cobra farms and the release appear only in modern tellings, which I traced through leads to Schwarz (1996) and Siebert (2001) but could not read. A local record of breeding might still exist in Indian archives."
+}

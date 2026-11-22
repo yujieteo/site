@@ -1,0 +1,76 @@
+{
+  "id": "ten-thousand-hours",
+  "as_told": "Studies show that 10,000 hours of practice is the magic number for becoming a world-class expert. Anyone who puts in 10,000 hours can master anything, whether violin, chess, sport or programming. The Beatles in Hamburg and Bill Gates at his school computer are given as examples.",
+  "lesson": "Anyone can become a world-class expert in any field with about 10,000 hours of practice.",
+  "what_happened": "The main source is a 1993 study by K. Anders Ericsson, Ralf Krampe and Clemens Tesch-Römer of violin students at a music academy in Berlin. By age 18, the best students had practised alone for an average of 7,410 hours, the good students 5,301 hours and the future music teachers 3,420 hours; the paper uses 10,000 hours only as a rough figure for experts after more than ten years. All the students had already been admitted to an elite academy, and the study did not test whether anyone could become an expert. Popular books stated the figure as a general rule by 2004, and Daniel Levitin (2006, 'in anything') and Malcolm Gladwell (2008, 'the magic number of greatness') spread it widely. In 2013 Gladwell wrote that innate talent is also needed and that the rule does not apply to every field.",
+  "false_part": "The study did not show that 10,000 hours makes anyone an expert; the figure was a rough average for students who were already highly selected, not a threshold that works for everyone.",
+  "class": "changed",
+  "also": "",
+  "earliest_telling": {
+    "date": "2004",
+    "who": "Robert Winston",
+    "where": "What Makes Me, Me? (2004); Open Library full-text snippet of archive.org item whatmakesmeme0000wins. The snippet reads: 'Psychologists reckon it takes about 10,000 hours of practice at'; the quote is the part of it outside the search match.",
+    "quote": "10,000 hours of practice at",
+    "url": "https://openlibrary.org/search/inside.json?q=%22Psychologists%20reckon%20it%20takes%20about%22&limit=100",
+    "archive": "https://archive.org/details/whatmakesmeme0000wins",
+    "file": "sources/ten-thousand-hours/ol-inside-psychologists-reckon.json",
+    "sha256": "763ef9d2cbf592778d89c4f64b2395cf312ea30655f201779e3adcab5dc9cdfb"
+  },
+  "original": [
+    {
+      "what": "Ericsson, Krampe and Tesch-Römer, 'The Role of Deliberate Practice in the Acquisition of Expert Performance', Psychological Review 100(3):363-406: hours of practice by age 18",
+      "date": "1993",
+      "who": "K. Anders Ericsson, Ralf Th. Krampe, Clemens Tesch-Römer",
+      "quote": "age, the best young violinists had accumulated an average of 7,410 hr of practice, which is reliably different from 5,301 hr, the average number of hours accumulated by the good violinists",
+      "url": "https://graphics8.nytimes.com/images/blogs/freakonomics/pdf/DeliberatePractice(PsychologicalReview).pdf",
+      "archive": "http://web.archive.org/web/20261111220236/https://graphics8.nytimes.com/images/blogs/freakonomics/pdf/DeliberatePractice(PsychologicalReview).pdf",
+      "file": "sources/ten-thousand-hours/ericsson-krampe-tesch-romer-1993.txt",
+      "sha256": "0b91ddff8e2bb0886b7a682193c15d99ae78b34410198ecc2f62db319b0c5aba"
+    },
+    {
+      "what": "Ericsson et al. 1993: the only place the text uses 10,000 hours, as a rough general figure (grep of the text for 10,000, 10,OOO, 10.000 and ten thousand)",
+      "date": "1993",
+      "who": "K. Anders Ericsson, Ralf Th. Krampe, Clemens Tesch-Römer",
+      "quote": "10,000 h of deliberate practice extended over more than a decade.",
+      "url": "https://graphics8.nytimes.com/images/blogs/freakonomics/pdf/DeliberatePractice(PsychologicalReview).pdf",
+      "archive": "http://web.archive.org/web/20261111220236/https://graphics8.nytimes.com/images/blogs/freakonomics/pdf/DeliberatePractice(PsychologicalReview).pdf",
+      "file": "sources/ten-thousand-hours/ericsson-krampe-tesch-romer-1993.txt",
+      "sha256": "0b91ddff8e2bb0886b7a682193c15d99ae78b34410198ecc2f62db319b0c5aba"
+    }
+  ],
+  "teller_correction": {
+    "what": "Malcolm Gladwell, 'Complexity and the Ten-Thousand-Hour Rule', The New Yorker, 21 August 2013. This is a qualification by the writer who made the story popular; I found no correction by Winston or Levitin, the earlier tellers I found.",
+    "date": "2013",
+    "who": "Malcolm Gladwell",
+    "quote": "I think that it is also a mistake to assume that the ten-thousand-hour idea applies to every domain.",
+    "url": "https://www.newyorker.com/sports/sporting-scene/complexity-and-the-ten-thousand-hour-rule",
+    "archive": "http://web.archive.org/web/20261117085158/https://www.newyorker.com/sports/sporting-scene/complexity-and-the-ten-thousand-hour-rule",
+    "file": "sources/ten-thousand-hours/gladwell-2013-new-yorker.html",
+    "sha256": "2effdad7da5bb9414341278231a99c131769bbd040f2fa1771a169a9136f39da"
+  },
+  "lesson_verdict": {
+    "status": "does not hold",
+    "why": "A meta-analysis of 88 studies found that the amount of deliberate practice explained only 12 per cent of the differences in performance overall, and less than 1 per cent in professions. Practice matters, but it does not make anyone an expert by itself.",
+    "source": {
+      "what": "Macnamara, Hambrick and Oswald, 'Deliberate Practice and Performance in Music, Games, Sports, Education, and Professions: A Meta-Analysis', Psychological Science 25(8):1608-1618",
+      "date": "2014",
+      "who": "Brooke N. Macnamara, David Z. Hambrick, Frederick L. Oswald",
+      "quote": "practice explained 12% of the variance in performance, 95% CI = [9%, 15%]; thus, 88% of the variance was unexplained.",
+      "url": "https://www.psychologie.uzh.ch/dam/jcr:658d39fe-2f4b-467f-9ae2-ffeb25caf2b6/McNamara.PsychSci.25.2014.pdf",
+      "archive": "http://web.archive.org/web/20260729161258/https://www.psychologie.uzh.ch/dam/jcr:658d39fe-2f4b-467f-9ae2-ffeb25caf2b6/McNamara.PsychSci.25.2014.pdf",
+      "file": "sources/ten-thousand-hours/macnamara-2014-psychsci.txt",
+      "sha256": "d60076526125451794c401a855cdb27fa8b1a3d142a4fc0247898fde98cf2252"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search for \"ten thousand hours of practice is required\": earliest hit is Levitin, This Is Your Brain on Music (archive.org item thisisyourbraino00levi, meta_year 2006); Gladwell's Outliers (2008) quotes the same sentence.",
+    "The archive.org copies of both books are lending-only, so I could not save their full text. I quote only from Open Library search snippets, which are short; the full Levitin sentence ('ten thousand hours of practice is required to achieve the level of mastery associated with being a world-class expert — in anything') is assembled from snippets in ol-inside-ten-thousand-hours-required.json, ol-inside-world-class-expert.json, ol-inside-emerging-picture.json and ol-inside-study-after-study.json, all for item thisisyourbraino00levi.",
+    "Open Library full-text search for \"magic number of greatness\": earliest hits are Outliers (2008, items outliersstoryofs0000glad and others).",
+    "Open Library full-text search for the general phrase \"10,000 hours of practice\": academic mentions before 2006, for example Reed and Burton, Educational Computing and Problem Solving (1988), 'between 5,000 and 10,000 hours of practice with feedback (Simon, 1980)', and Starkes and Ericsson, Expert Performance in Sports (2003). These state a rough figure, not the claim that it works for anyone. A hit dated 2001 (The Storyteller's Secret, Carmine Gallo) has a wrong date; the book is from 2016. The earliest popular telling found is Robert Winston, What Makes Me, Me? (2004): 'Psychologists reckon it takes about 10,000 hours of practice at something to become so good'; a second search on \"Psychologists reckon it takes about\" was saved to get part of the sentence outside the search markers. Keltie Thomas, How Baseball Works (2004), also says it takes at least 10,000 hours of practice to become a major-league player.",
+    "Followed the tellings back to Ericsson, Krampe and Tesch-Römer (1993); saved a full PDF of the paper and made a plain text copy (pdftotext without -layout) because the two-column layout split sentences. Quotes from this paper use the .txt copy.",
+    "Searched for a correction: found Gladwell's 2013 New Yorker article and saved it; found nothing by Levitin.",
+    "Searched for evidence on the lesson: saved the Macnamara, Hambrick and Oswald (2014) meta-analysis (University of Zurich copy); quotes use a plain text copy made without -layout.",
+    "Wayback Machine availability checked for the Ericsson PDF, the New Yorker page and the Macnamara PDF; snapshots exist."
+  ],
+  "confidence_note": "The earliest-telling quote is a short fragment of an Open Library snippet (the search markers cover the rest of the sentence); the 2004 date is Open Library's meta_year, which I did not check against the book. The Levitin wording also comes only from snippets, not a full saved text of the book. The Ericsson PDF is a copy hosted on a New York Times blog server, not the publisher's copy. The paper's Figure 9 may show about 10,000 hours by age 20 for the best group, but I did not read the figure and do not rely on it."
+}

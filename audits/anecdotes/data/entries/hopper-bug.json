@@ -1,0 +1,79 @@
+{
+  "id": "hopper-bug",
+  "as_told": "Grace Hopper was working on an early Harvard computer when it broke down. She found a moth stuck in a relay and taped it into the log book. From that day, faults in computers have been called \"bugs\", and fixing them \"debugging\".",
+  "lesson": "The computing word \"bug\" comes from a real insect that was found inside an early computer.",
+  "what_happened": "A Smithsonian museum record says that in 1947 engineers working on the Harvard Mark II computer found a moth stuck in one of its components and taped it into the log book with the note \"first actual case of bug being found\". The museum says it was probably not Hopper's log book. In a 1968 interview, Hopper told the story with \"we\" as the finders and did not claim that the word came from the moth. An 1892 electrical dictionary already defines \"bug\" as a fault in electric apparatus, so the word was in use long before 1947.",
+  "false_part": "The word \"bug\" for a machine fault did not come from the 1947 moth; it was in print by 1892, and the moth note is a joke on a word that was already in use.",
+  "class": "changed",
+  "also": "",
+  "earliest_telling": {
+    "date": "1968-11",
+    "who": "Grace Murray Hopper, interviewed by Uta C. Merzbach",
+    "where": "Computer Oral History Collection, Archives Center, National Museum of American History (transcript)",
+    "quote": "and we went to look for the bug and found an actual large moth, about four inches wing",
+    "url": "https://mads.si.edu/mads/id/NMAH-AC0196_hopp681100",
+    "archive": "http://web.archive.org/web/20250913124740/https://mads.si.edu/mads/id/NMAH-AC0196_hopp681100",
+    "file": "sources/hopper-bug/hopper-1968-11-oral-history.pdf",
+    "sha256": "0b5252688b0501054d67272e13bd80e78ec2758ed8f32697ed2cb8e03fbdb16b"
+  },
+  "original": [
+    {
+      "what": "Smithsonian National Museum of American History record for the Mark II log book with the moth (object nmah_334663)",
+      "date": "1947",
+      "who": "National Museum of American History",
+      "quote": "In 1947, engineers working on the Mark II computer at Harvard University found a moth stuck in one of the components.",
+      "url": "http://americanhistory.si.edu/collections/search/object/nmah_334663",
+      "archive": "https://web.archive.org/web/20211006190855/http://americanhistory.si.edu/collections/search/object/nmah_334663",
+      "file": "sources/hopper-bug/nmah-334663-log-book.html",
+      "sha256": "4f7d3803d104997845f0017ec447a14f5bd6f03f4173ef8b77df4f91d4e651e5"
+    },
+    {
+      "what": "The same museum record, on who kept the log book",
+      "date": "1947",
+      "who": "National Museum of American History",
+      "quote": "This log book was probably not Hopper",
+      "url": "http://americanhistory.si.edu/collections/search/object/nmah_334663",
+      "archive": "https://web.archive.org/web/20211006190855/http://americanhistory.si.edu/collections/search/object/nmah_334663",
+      "file": "sources/hopper-bug/nmah-334663-log-book.html",
+      "sha256": "4f7d3803d104997845f0017ec447a14f5bd6f03f4173ef8b77df4f91d4e651e5"
+    },
+    {
+      "what": "The Standard Electrical Dictionary by T. O'Conor Sloane (New York: Norman W. Henley, 1892): an entry for \"bug\" as a fault in electric apparatus, 55 years before the moth",
+      "date": "1892",
+      "who": "T. O'Conor Sloane",
+      "quote": "Bug. Any fault or trouble in the connections or working:",
+      "url": "https://archive.org/download/standardelectri00sloagoog/standardelectri00sloagoog_djvu.txt",
+      "archive": "https://archive.org/details/standardelectri00sloagoog",
+      "file": "sources/hopper-bug/sloane-1892-standard-electrical-dictionary_djvu.txt",
+      "sha256": "14ef1770c92a298df66dd7c6bec1ca4bf4dc15d4e6945a739269dfed3cace799"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "does not hold",
+    "why": "A dictionary printed in 1892 already lists \"bug\" as a fault in electric apparatus, so the word was not born from the 1947 moth.",
+    "source": {
+      "what": "The Standard Electrical Dictionary (1892), entry \"Bug\"",
+      "quote": "Bug. Any fault or trouble in the connections or working:",
+      "url": "https://archive.org/download/standardelectri00sloagoog/standardelectri00sloagoog_djvu.txt",
+      "archive": "https://archive.org/details/standardelectri00sloagoog",
+      "file": "sources/hopper-bug/sloane-1892-standard-electrical-dictionary_djvu.txt",
+      "sha256": "14ef1770c92a298df66dd7c6bec1ca4bf4dc15d4e6945a739269dfed3cace799"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search for \"first actual case of bug\": earliest hits are 1985 books (Time-Life \"Software\"; \"Writing the laboratory notebook\"). All are lending-only scans, so their full text could not be saved or quoted.",
+    "Open Library full-text search for Hopper, moth and \"coined\" or \"origin of the term\": no useful early hit.",
+    "Read the English Wikipedia article \"Bug (engineering)\" (history section): it cites the Smithsonian log book record, IEEE Annals of the History of Computing vol. 22 (2000), and Edison's 1878 letter via T. P. Hughes, American Genesis (1989). It does not say when the claim that the word came from the moth first appeared. These leads were not followed further.",
+    "Web search led to the Smithsonian Computer Oral History Collection. Saved the November 1968 Hopper interview transcript (PDF) from mads.si.edu. Hopper tells the moth story and says \"we went to look for the bug\", so she uses the word before the moth is found. This is the earliest telling saved. It does not claim that the word came from the moth.",
+    "Also read the July 1968 Hopper interview (same collection): Hopper uses \"bug\" and \"debug\" for relay and timing faults; not quoted.",
+    "Computer History Museum 1980 oral history of Hopper (interviewer Angeline Pantages): saved and searched; it does not mention a moth or a bug. Not used.",
+    "Smithsonian object page for the log book (si.edu) refused with 403. Saved the Wayback Machine copy (original bytes) of the americanhistory.si.edu page for object nmah_334663.",
+    "Open Library full-text search for \"any fault or trouble in the connections\": found the 1892 Standard Electrical Dictionary (public-domain Google scan on archive.org). Saved its full text; the entry \"Bug\" is there.",
+    "Open Library led to the OED's quotation from the Pall Mall Gazette (1889) about Edison \"discovering 'a bug' in his phonograph\". The OED scan is lending-only (401). Not quoted.",
+    "Edison Papers (edisondigital.rutgers.edu) letter from Edison to Puskas, 13 November 1878 (document LB003487), often quoted for \"Bugs\": the host did not answer (connection timed out). Not quoted.",
+    "Library of Congress newspapers, HathiTrust and Gallica refused automated requests; the Google Books API had no quota.",
+    "Did not search for a correction by the first teller of the origin claim, because that teller was not identified. Hopper's own 1968 telling does not make the claim."
+  ],
+  "confidence_note": "The exact date of the log entry (often given as 9 September 1947) and the name of the person who found the moth are not in the saved files; the museum says only \"engineers\" in 1947. The saved earliest telling (Hopper, 1968) tells the moth story but does not say the word came from the moth. I did not find when that claim first appeared in print; the earliest hits seen were 1985 books in lending-only scans."
+}

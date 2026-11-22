@@ -1,0 +1,68 @@
+{
+  "id": "kildall-flying",
+  "as_told": "In 1980 IBM came to Digital Research, maker of the leading microcomputer operating system CP/M, to license it for the coming IBM PC. Gary Kildall did not bother to meet them and went off flying his private plane instead. His wife refused to sign IBM's non-disclosure agreement, IBM went back to Microsoft, and Bill Gates became the richest man in the world.",
+  "lesson": "A casual attitude to one important meeting can throw away the opportunity of a lifetime.",
+  "what_happened": "When IBM's team visited Digital Research in Pacific Grove, California, in 1980, they first met Dorothy McEwen, who with the company's lawyer would not sign IBM's non-disclosure agreement as it stood. Tom Rolander of Digital Research said on The Computer Chronicles in 1995 that he and Kildall had flown that morning in Kildall's plane to Oakland, on a scheduled trip to deliver CP/M documentation to the hardware maker Bill Godbout, and flew back to join the IBM meeting later in the afternoon. He said that by then things had already gone wrong over what he called a one-way (unidirectional) non-disclosure agreement. IBM's Jack Sams, interviewed in 1996, said Kildall 'had some other plans' and that the IBM team spent the whole day arguing over whether Dorothy McEwen could even talk to them, and then left.",
+  "false_part": "Kildall was flying that morning, but on a scheduled business trip, and by Rolander's account he came back for the IBM meeting the same afternoon, after the talks had already stalled over IBM's non-disclosure agreement.",
+  "class": "changed",
+  "also": "",
+  "earliest_telling": {
+    "date": "1984",
+    "who": "Paul Freiberger and Michael Swaine",
+    "where": "Fire in the Valley: The Making of the Personal Computer (Osborne/McGraw-Hill, 1984), which quotes Bill Gates as saying 'Gary went flying'; seen only as an Open Library full-text search snippet, not quoted",
+    "quote": "",
+    "url": "https://openlibrary.org/search/inside.json?q=%22Gary%20went%20flying%22&limit=50",
+    "archive": "https://archive.org/details/fireinvalleymaki0000frei",
+    "file": "sources/kildall-flying/ol_q6.json",
+    "sha256": "44b2375698c274b9482cb0b104a785e6a40e34d3e65748d61169128e0b16cda2"
+  },
+  "original": [
+    {
+      "what": "Tom Rolander of Digital Research, who flew with Kildall that day, interviewed in 'Special Edition: Gary Kildall', The Computer Chronicles (1995). Text is the archive.org automatic speech transcript; the item's description lists Tom Rolander among those interviewed.",
+      "date": "1995",
+      "who": "Tom Rolander",
+      "quote": "So Gary and I, as the story goes, were in fact flying. We flew up to the Bay Area, up to the Oakland airport, delivered the software to Bill, and flew back down and joined the IBM meeting. We were there for the meeting later in the afternoon. By that point in time, things had already gone a little bit wrong.",
+      "url": "https://archive.org/details/GaryKild",
+      "archive": "https://archive.org/details/GaryKild",
+      "file": "sources/kildall-flying/computerchronicles_1995_garykild_asr.txt",
+      "sha256": "987c1f579ffbf5e3f642d1b595dfa4da086b1b628bc7875234f73fd90c2489fb"
+    },
+    {
+      "what": "Jack Sams, head of the IBM team, interviewed in Triumph of the Nerds, part II (PBS, 1996), published transcript",
+      "date": "1996",
+      "who": "Jack Sams",
+      "quote": "Gary had some other plans and so he said well, Dorothy will see you.",
+      "url": "https://www.pbs.org/nerds/part2.html",
+      "archive": "https://web.archive.org/web/20261030160137/https://www.pbs.org/nerds/part2.html",
+      "file": "sources/kildall-flying/pbs_nerds_part2.html",
+      "sha256": "7ef061583ce21d33227cd3d1b140686feb58ff298f56b3dfda4ca5de560b55be"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "I found no study or review on whether a single missed meeting decides large deals. In this case the participants' own accounts (Sams, Rolander) say the talks stalled over IBM's non-disclosure agreement while Kildall was away and that he returned the same day, so the case itself does not show that his absence cost the deal.",
+    "source": {
+      "what": "no lesson-level source found",
+      "quote": "",
+      "url": "",
+      "archive": "",
+      "file": "",
+      "sha256": ""
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search for Kildall flying, Kildall AND IBM AND flying, airborne AND Kildall: few or no useful hits.",
+    "Open Library full-text search for \"Dorothy McEwen\": 89 hits; Fire in the Valley (1984 and 2000 editions), Hard Drive (1993), The Making of Microsoft; the 2000 edition of Fire in the Valley says 'while Kildall was airborne'.",
+    "Open Library full-text search for \"Gary went flying\": 23 hits; the earliest relevant is Fire in the Valley (1984): 'Instead of meeting the IBM representatives, \"Gary went flying,\" said Gates'. The 1984 book is a lending-only scan (download refused, HTTP 403), so it is not quoted; the search result is saved as ol_q6.json. The snippet says the Gates line became well known, so an earlier press telling probably exists.",
+    "Other hits from the same search: Kaplan, The Silicon Boys (1999), says Rolander calls 'Gary went flying' a myth; Evans, They Made America (2004), says the story is false and quotes Kildall's unpublished memoir. These are leads only.",
+    "Computer History Museum released only pages 1-78 of Kildall's 1993 memoir Computer Connections; I downloaded it and found it does not cover the IBM visit, so it is not quoted.",
+    "English Wikipedia's Gary Kildall article cites The Computer Chronicles special edition (1995) for Rolander's account, Wallace and Erickson's Hard Drive (1993) for Sams, and Manes and Andrews' Gates (1992) for Gates's 'went flying'. Gates (1992) and Hard Drive (1993) were not found in downloadable full text.",
+    "Saved the archive.org automatic transcript of The Computer Chronicles special (item GaryKild). It contains the 'Gary and I' account of the Oakland flight.",
+    "The live PBS transcript of Triumph of the Nerds part II is refused (HTTP 403); saved the Wayback copy, which has Jack Sams's interview.",
+    "Searched for a 1980-1983 press telling of the flying story; found none online.",
+    "Saved archive.org metadata for item GaryKild: its description says the programme 'Includes comments by Gordon Eubanks, Symantec; Tom Rolander, DRI; ...', which supports attributing the 'Gary and I' passage to Rolander.",
+    "The programme's narration says IBM also wanted to buy CP/M outright for a flat fee and rename it PC-DOS; this is the programme's retelling, not a participant's words, so it is not used as evidence."
+  ],
+  "confidence_note": "The archive.org transcript is machine-made and does not name speakers; the 'Gary and I' passage is attributed to Tom Rolander from its content, the item's guest list, and Wikipedia's citation of this programme. Sams and Rolander disagree on whether Kildall met the IBM team; Sams said elsewhere (as reported in Hard Drive) that he never met Kildall. The visit date in 1980 is not fixed in the records I saved. Gates's 1984 words come only through Freiberger and Swaine."
+}

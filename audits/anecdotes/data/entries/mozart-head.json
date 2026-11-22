@@ -1,0 +1,106 @@
+{
+  "id": "mozart-head",
+  "as_told": "Mozart composed whole works complete in his head. When he sat down to write, he only copied out what was already finished, and his manuscripts show no corrections. A famous letter by Mozart himself describes how a whole piece came to him at once and went onto paper unchanged.",
+  "lesson": "True genius produces perfect work at once, without drafts or revision.",
+  "what_happened": "Mozart's first biographer, Franz Niemetschek (Prague, 1798), wrote that the work was always finished in Mozart's head before he sat down to write, and that corrected or crossed-out passages are rare in his drafts. Mozart's own letters partly agree: in April 1782 he wrote that he composed a fugue first and thought out its prelude while writing the fugue down. But in July 1782 he also wrote to his father that the score of his opera Die Entfuhrung had \"a great many erasures\", alterations and cuts. Otto Jahn, who studied the autographs, described sketches and alterations, and he called the famous letter \"to Baron von P.\", first printed by Friedrich Rochlitz in 1815, a fabrication.",
+  "false_part": "Mozart did not write down his works without correction: he made sketches, erasures, alterations and cuts, and the letter usually quoted for the story is a fabrication.",
+  "class": "changed",
+  "also": "",
+  "earliest_telling": {
+    "date": "1798",
+    "who": "Franz Xaver Niemetschek",
+    "where": "Leben des K. K. Kapellmeisters Wolfgang Gottlieb Mozart (Prague, 1798)",
+    "quote": "lag das Werk immer ſchon vollendet, ehe er ſich zum Schreibpulte",
+    "url": "https://archive.org/download/10528149bsb/10528149bsb_djvu.txt",
+    "archive": "https://archive.org/details/10528149bsb",
+    "file": "sources/mozart-head/niemetschek-1798_djvu.txt",
+    "sha256": "623ef0cd7f64b9077cef19a2ce04fd72268ad269f7a9cb9d12b5dabd8823a008"
+  },
+  "original": [
+    {
+      "what": "Niemetschek (1798), same passage: corrected or crossed-out passages are rare in Mozart's draft scores (rare, not absent)",
+      "date": "1798",
+      "who": "Franz Xaver Niemetschek",
+      "quote": "ausgebeſſerte oder uͤberſtrichene Stellen an",
+      "url": "https://archive.org/download/10528149bsb/10528149bsb_djvu.txt",
+      "archive": "https://archive.org/details/10528149bsb",
+      "file": "sources/mozart-head/niemetschek-1798_djvu.txt",
+      "sha256": "623ef0cd7f64b9077cef19a2ce04fd72268ad269f7a9cb9d12b5dabd8823a008"
+    },
+    {
+      "what": "The letter \"Schreiben Mozarts an den Baron von . . .\", printed by Rochlitz in the Allgemeine musikalische Zeitung, vol. 17, no. 34 (23 August 1815), cols. 561-566: the piece rarely ends up on paper much different from how it was in his head",
+      "date": "1815-08-23",
+      "who": "Friedrich Rochlitz (editor), letter ascribed to Mozart",
+      "quote": "und wird auch selten viel anders, als es vorher im",
+      "url": "https://archive.org/download/bub_gb_MxNDAAAAcAAJ/bub_gb_MxNDAAAAcAAJ_djvu.txt",
+      "archive": "https://archive.org/details/bub_gb_MxNDAAAAcAAJ",
+      "file": "sources/mozart-head/amz-1815-vol17_djvu.txt",
+      "sha256": "41c24defbe5a3f0bb9a1c0969e17860de673e9a5a7250d2ea4b387d1cc54adfd"
+    },
+    {
+      "what": "Mozart's letter to his sister, Vienna, 20 April 1782 (English translation by Lady Wallace, 1866): he composed a fugue in his head and thought out the prelude while writing the fugue down",
+      "date": "1782-04-20",
+      "who": "Wolfgang Amadeus Mozart",
+      "quote": "first,  and  while  writing  it  out  I  devised  the  prelude.",
+      "url": "https://archive.org/download/lettersofwolfgan02moza/lettersofwolfgan02moza_djvu.txt",
+      "archive": "https://archive.org/details/lettersofwolfgan02moza",
+      "file": "sources/mozart-head/wallace-1866-letters-v2_djvu.txt",
+      "sha256": "fc39494dd7b3eec023f3f046485395d12143f455fbf69e49a027f400c3f9c75c"
+    },
+    {
+      "what": "Mozart's letter to his father, Vienna, 20 July 1782 (Wallace translation, 1866): the opera score he sends has many erasures",
+      "date": "1782-07-20",
+      "who": "Wolfgang Amadeus Mozart",
+      "quote": "books,  in  which  you  will  find  a  great  many",
+      "url": "https://archive.org/download/lettersofwolfgan02moza/lettersofwolfgan02moza_djvu.txt",
+      "archive": "https://archive.org/details/lettersofwolfgan02moza",
+      "file": "sources/mozart-head/wallace-1866-letters-v2_djvu.txt",
+      "sha256": "fc39494dd7b3eec023f3f046485395d12143f455fbf69e49a027f400c3f9c75c"
+    },
+    {
+      "what": "Otto Jahn, Life of Mozart, vol. 2 (English translation by Pauline D. Townsend, London: Novello, Ewer & Co., 1881; Project Gutenberg text), footnote on the letter to Baron von P.",
+      "date": "1881",
+      "who": "Otto Jahn",
+      "quote": "is incontestably a fabrication as it stands.",
+      "url": "https://archive.org/download/lifeofmozartvolo43412gut/43412.txt",
+      "archive": "https://archive.org/details/lifeofmozartvolo43412gut",
+      "file": "sources/mozart-head/jahn-1882-life-v2-gutenberg43412.txt",
+      "sha256": "8a2fcca0146faa07a4186f1992e5240b93330a0e2f7b2f4e1c27414d47c471ba"
+    },
+    {
+      "what": "Jahn, same volume, on the autograph of Susanna's aria in Figaro: sketches and alterations show earlier attempts",
+      "date": "1881",
+      "who": "Otto Jahn",
+      "quote": "and alterations of the original show that many earlier experiments",
+      "url": "https://archive.org/download/lifeofmozartvolo43412gut/43412.txt",
+      "archive": "https://archive.org/details/lifeofmozartvolo43412gut",
+      "file": "sources/mozart-head/jahn-1882-life-v2-gutenberg43412.txt",
+      "sha256": "8a2fcca0146faa07a4186f1992e5240b93330a0e2f7b2f4e1c27414d47c471ba"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "The only evidence I saved is about Mozart himself, which rule 10 does not count as evidence for the general lesson. Even for Mozart it is mixed: he wrote of erasures, alterations and cuts in an opera score, but Jahn, who studied the autographs, says important alterations were seldom made. I did not look for a general study of revision by creative people.",
+    "source": {
+      "what": "Mozart's letter to his father, Vienna, 20 July 1782 (Wallace translation, 1866)",
+      "quote": "scribed, I  first  marked  the  different  alterations  and",
+      "url": "https://archive.org/download/lettersofwolfgan02moza/lettersofwolfgan02moza_djvu.txt",
+      "archive": "https://archive.org/details/lettersofwolfgan02moza",
+      "file": "sources/mozart-head/wallace-1866-letters-v2_djvu.txt",
+      "sha256": "fc39494dd7b3eec023f3f046485395d12143f455fbf69e49a027f400c3f9c75c"
+    }
+  },
+  "search_steps": [
+    "Archive.org search for the Allgemeine musikalische Zeitung 1815: two scans of vol. 17. The first (bub_gb_9twqAAAAYAAJ) had poor text; the second (bub_gb_MxNDAAAAcAAJ) has the letter \"Schreiben Mozarts an den Baron von . . .\" in no. 34, 23 August 1815. Saved its full text.",
+    "Open Library full-text search for \"lunga e laboriosa fatica\" (Mozart's 1785 dedication of six quartets to Haydn, \"the fruit of a long and laborious toil\"): found Nohl, Mozarts Briefe (1865), and Wallace, Letters of Mozart (1866). Saved the Wallace vol. 2 full text. The dedication is not quoted.",
+    "Searched the Wallace letters for Mozart's own words on composing: found the letter of 20 April 1782 (fugue composed before the prelude was written) and the letter of 20 July 1782 (erasures and alterations in the Entfuhrung score). Did not find the often-quoted letter of 30 December 1780 about Idomeneo (\"composed but not yet written\"); it is probably in vol. 1, which I did not open.",
+    "Archive.org search for Jahn's Life of Mozart: saved the Project Gutenberg text of vol. 2. Jahn calls the 1815 letter a fabrication and describes sketches and alterations in the autographs. Jahn also agrees that Mozart usually had a work finished in his mind before writing.",
+    "Jahn names Niemetschek as an earlier writer who said the work was ready in Mozart's head. Archive.org search for Niemetschek: saved the full text of the 1798 first edition (scan 10528149bsb). It is the earliest telling found. It also says Mozart worked the ideas out at the clavier before writing.",
+    "Open Library searches for the letter's English wording with \"spurious\" or \"not genuine\": no hits.",
+    "Library of Congress, HathiTrust and Gallica refused automated requests; the Google Books API had no quota.",
+    "English Wikipedia article on Mozart or on Rochlitz: not opened; their cited sources were not followed.",
+    "Web search for a reply by Rochlitz to the charge that the 1815 letter was forged: none found in one search. A lead names Maynard Solomon, \"The Rochlitz Anecdotes\" (1991), which I did not read."
+  ],
+  "confidence_note": "The texts of 1798 and 1815 are machine readings of Fraktur type, so the quotes keep their reading errors. Mozart's letters are quoted in an 1866 English translation, not the German originals. The judgement that the 1815 letter is a fabrication is Jahn's; I did not find who wrote it or what Rochlitz said when challenged. The sources agree that Mozart often composed in his head before writing, so only the \"without correction\" part is false."
+}

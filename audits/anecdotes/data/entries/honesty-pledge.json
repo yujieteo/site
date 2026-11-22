@@ -1,0 +1,116 @@
+{
+  "id": "honesty-pledge",
+  "as_told": "Researchers moved the honesty statement on a form from the bottom to the top, so that people signed before they filled it in. In a car-insurance field test, customers who signed at the top reported more miles driven, which means they lied less. In a lab test with a tax-style form, fewer people cheated when they signed at the top.",
+  "lesson": "Asking people to sign an honesty pledge at the start of a form, not at the end, reduces cheating.",
+  "what_happened": "Lisa Shu, Nina Mazar, Francesca Gino, Dan Ariely and Max Bazerman reported two lab studies and one insurance field study in PNAS on 27 August 2012. In 2020 three of them, with Ariella Kristal and Ashley Whillans, ran five new studies (n = 4,559) and a direct replication of lab Study 1 (n = 1,235) and found no effect of signing first. In August 2021 the authors said in signed statements that the insurance field data were fabricated, and PNAS retracted the paper on 13 September 2021. Harvard Business School later told the journal of concerns about data fabrication in a study by Gino in the same paper.",
+  "false_part": "The field result was based on fabricated data, and the lab result did not replicate in a large direct replication run with the original authors.",
+  "class": "invented",
+  "also": "",
+  "earliest_telling": {
+    "date": "2011-06-02",
+    "who": "Carmen Nobel, Harvard Business School Working Knowledge",
+    "where": "Signing at the Top: The Key to Preventing Tax Fraud?",
+    "quote": "In one experiment, they teamed up with an automobile insurance company, manipulating the signature line on the policy review forms that customers receive at the end of each year.",
+    "url": "https://www.library.hbs.edu/working-knowledge/signing-at-the-top-the-key-to-preventing-tax-fraud",
+    "archive": "http://web.archive.org/web/20261122131405/https://www.library.hbs.edu/working-knowledge/signing-at-the-top-the-key-to-preventing-tax-fraud",
+    "file": "sources/honesty-pledge/hbswk-signing-at-the-top.txt",
+    "sha256": "fc6e2383be418c46c6b6236dc20c7c4cb0daf9524d3fddddc69ed386edf27185"
+  },
+  "original": [
+    {
+      "what": "The 2012 PNAS paper (abstract), Shu et al., Signing at the beginning makes ethics salient and decreases dishonest self-reports in comparison to signing at the end, PNAS 109(38), 15197-15200",
+      "date": "2012-08-27",
+      "who": "Lisa L. Shu, Nina Mazar, Francesca Gino, Dan Ariely, Max H. Bazerman",
+      "quote": "Using laboratory and field experiments, we find that signing before—rather than after—the opportunity to cheat makes ethics salient when they are needed most and significantly reduces dishonesty.",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pmc&id=3458378",
+      "archive": "",
+      "file": "sources/honesty-pledge/PMC3458378.xml.txt",
+      "sha256": "a79fb6c9eceba74e35229dd97e8ae45950a24d7a83ce3c5b1f55e45403729ed1"
+    },
+    {
+      "what": "PNAS retraction notice for the 2012 paper",
+      "date": "2021-09-13",
+      "who": "May R. Berenbaum, Editor-in-Chief, PNAS",
+      "quote": "The editors are retracting this article and note that Simonsohn, Simmons, and Nelson (",
+      "url": "https://www.pnas.org/doi/10.1073/pnas.2115397118",
+      "archive": "http://web.archive.org/web/20250806163901/https://www.pnas.org/doi/10.1073/pnas.2115397118",
+      "file": "sources/honesty-pledge/pnas-retraction-2021.txt",
+      "sha256": "fdbb72f155d6a536a35c6759279b4b77e45ed5a7162b518676325be65aa49626"
+    },
+    {
+      "what": "Signed statement by co-author Max H. Bazerman, posted on Data Colada with his name",
+      "date": "2021-08-13",
+      "who": "Max H. Bazerman",
+      "quote": "I am completely convinced by the analyses provided by Simonsohn, Simmons, and Nelson and their conclusion that the field experiment (Study 3) in Shu, Mazar, Gino, Ariely, and Bazerman (2012) contains fraudulent data",
+      "url": "https://datacolada.org/wp-content/uploads/fraud.resonse.max_.8.13.21.pdf",
+      "archive": "http://web.archive.org/web/20260315050202/https://datacolada.org/wp-content/uploads/fraud.resonse.max_.8.13.21.pdf",
+      "file": "sources/honesty-pledge/fraud.resonse.max_.8.13.21.pdf.txt",
+      "sha256": "5813b707b8f629e2194484eb25c985bd23ce5f8f3f129bf8e9e49b33063ffb28"
+    },
+    {
+      "what": "Signed statement by co-author Nina Mazar, posted on Data Colada with her name",
+      "date": "2021-08-16",
+      "who": "Nina Mazar",
+      "quote": "the evidence that proves that the insurance field data was fabricated",
+      "url": "https://datacolada.org/wp-content/uploads/20210816_NM-Response2DataColada.pdf",
+      "archive": "http://web.archive.org/web/20260315050448/https://datacolada.org/wp-content/uploads/20210816_NM-Response2DataColada.pdf",
+      "file": "sources/honesty-pledge/20210816_NM-Response2DataColada.pdf.txt",
+      "sha256": "90b6d0b541661ab280f74d3c9ca1f11fe9aa7e4339675f4f0e0780007fa4fde8"
+    },
+    {
+      "what": "Signed statement by co-author Dan Ariely, who ran the insurance study, posted on Data Colada with his name",
+      "date": "2021-08-16",
+      "who": "Dan Ariely",
+      "quote": "I agree with the conclusions and I also fully agree that posting data sooner would help to improve data quality and scientific accuracy.",
+      "url": "https://datacolada.org/wp-content/uploads/DanBlogComment_Aug_16_2021_final.pdf",
+      "archive": "http://web.archive.org/web/20260315043307/https://datacolada.org/wp-content/uploads/DanBlogComment_Aug_16_2021_final.pdf",
+      "file": "sources/honesty-pledge/DanBlogComment_Aug_16_2021_final.pdf.txt",
+      "sha256": "0818894c90c5da289bea9b24fac7c4767186758d93022953c1476095b2c2dae9"
+    },
+    {
+      "what": "Editor's note now at the top of the 2011 Harvard Business School Working Knowledge article",
+      "date": "",
+      "who": "Harvard Business School Working Knowledge",
+      "quote": "Concerns about data falsification and fabrication in a study conducted by Francesca Gino as part of this article have been shared by Harvard Business School with the publishing journal’s editor, along with a request that the article be retracted.",
+      "url": "https://www.library.hbs.edu/working-knowledge/signing-at-the-top-the-key-to-preventing-tax-fraud",
+      "archive": "http://web.archive.org/web/20261122131405/https://www.library.hbs.edu/working-knowledge/signing-at-the-top-the-key-to-preventing-tax-fraud",
+      "file": "sources/honesty-pledge/hbswk-signing-at-the-top.txt",
+      "sha256": "fc6e2383be418c46c6b6236dc20c7c4cb0daf9524d3fddddc69ed386edf27185"
+    }
+  ],
+  "teller_correction": {
+    "what": "Kristal et al. (2020), Signing at the beginning versus at the end does not decrease dishonesty, PNAS 117(13), 7103-7107. All five authors of the 2012 paper are co-authors.",
+    "date": "2020-03-16",
+    "who": "Ariella S. Kristal, Ashley V. Whillans, Max H. Bazerman, Francesca Gino, Lisa L. Shu, Nina Mazar, Dan Ariely",
+    "quote": "Across five conceptual replications ( n = 4,559) and one highly powered, preregistered, direct replication ( n = 1,235) conducted with the authors of the original paper, we observed no effect of signing first on honest reporting.",
+    "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pmc&id=7132248",
+    "archive": "http://web.archive.org/web/20250405190513/https://pmc.ncbi.nlm.nih.gov/articles/PMC7132248/",
+    "file": "sources/honesty-pledge/PMC7132248.xml.txt",
+    "sha256": "204839706099e9c63a5bf6d1b71c1f4468ca15436e034514e9c3e2c707c42a25"
+  },
+  "lesson_verdict": {
+    "status": "does not hold",
+    "why": "Five new experiments with 4,559 people and a preregistered direct replication with 1,235 people found no effect of signing first. The one large field result that supported the lesson was fabricated.",
+    "source": {
+      "what": "Kristal et al. (2020), PNAS 117(13), 7103-7107",
+      "quote": "In a recent investigation, across five related experiments we failed to find an effect of signing at the beginning on dishonesty.",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pmc&id=7132248",
+      "archive": "http://web.archive.org/web/20250405190513/https://pmc.ncbi.nlm.nih.gov/articles/PMC7132248/",
+      "file": "sources/honesty-pledge/PMC7132248.xml.txt",
+      "sha256": "204839706099e9c63a5bf6d1b71c1f4468ca15436e034514e9c3e2c707c42a25"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search for \"signing at the beginning\" dishonest: 23 hits. The earliest that refers to the finding are books from 2013 that cite the 2012 paper. No hit before 2012.",
+    "Web search found the Harvard Business School Working Knowledge article of 2 June 2011, which reports the insurance study and the lab tax-form study from the working paper 'When to Sign on the Dotted Line?'. Saved it; this is the earliest dated telling I found.",
+    "Bazerman's 2021 statement says the co-authors knew of the insurance data 'from multiple public presentations by Ariely' before 2011. I did not find a record of those talks, so an earlier telling may exist.",
+    "Tried to download the 2012 paper and the 2020 paper from PMC, PNAS, Europe PMC and CORE. PMC showed a captcha, PNAS and CORE showed a bot check, and the Europe PMC full-text service returned error 500. Saved the PMC records through the NCBI E-utilities efetch service instead. For the 2012 paper only the abstract is in that record; for the 2020 paper the full text is there.",
+    "Saved the PNAS retraction notice from the Wayback Machine (snapshot 2025-08-06), because pnas.org blocked direct requests.",
+    "Used the Data Colada post 98 only as a lead. Saved the signed statements by Bazerman, Mazar and Ariely that it links to, and quote those.",
+    "Found a 2026 PNAS correction to Kristal et al. 2020 (PMC13342925), saved as PMC13342925.xml.txt. It fixes sample sizes, effect-size signs and confidence intervals, and the corrected direct replication still shows no effect (d = 0.04).",
+    "Did not search newspaper archives: Chronicling America ends long before 2011, and loc.gov, Papers Past and HathiTrust blocked automated requests. Google Books returned 429 and I did not retry.",
+    "Requested a Wayback Machine save of the Harvard Business School Working Knowledge page on 2026-11-22 (snapshot 20261122131405); I fetched the snapshot and checked that it contains the quoted text, because it had no earlier snapshot.",
+    "The Wayback Machine snapshot of PMC3458378 (20260724233332) holds only a reCAPTCHA browser-check page, so I leave that archive field empty. The saved E-utilities record is the source. I fetched the PMC7132248 snapshot and checked that it holds the article."
+  ],
+  "confidence_note": "The fabrication finding covers the insurance field study (Study 3). For the lab studies, the evidence here is the failed direct replication of Study 1 and the Harvard Business School note about a study by Gino; I did not read the Harvard investigation report itself. The saved records do not say who fabricated the insurance data. In their statements, Ariely says the insurance company collected and entered the data, and Mazar and Bazerman say they were not involved in collecting it. 'Invented' here means the reported result did not come from real data, not that the authors made up the idea."
+}

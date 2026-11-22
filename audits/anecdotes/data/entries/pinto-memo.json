@@ -1,0 +1,96 @@
+{
+  "id": "pinto-memo",
+  "as_told": "Ford knew the Pinto's fuel tank could burst into flames in rear-end crashes. An internal Ford cost-benefit memo put a price of $200,000 on each burn death and found that an $11-per-car fix cost more than paying for the deaths. So Ford chose not to fix the Pinto's tank.",
+  "lesson": "Companies will coldly price human lives and let customers die rather than pay for a cheap safety fix.",
+  "what_happened": "The famous table comes from a Ford paper titled \"Fatalities Associated with Crash-Induced Fuel Leakage and Fires\". As Mother Jones reprinted it, the table is headed \"Benefits and Costs Relating to Fuel Leakage Associated with the Static Rollover Test Portion of FMVSS 208\", and its cost side counts sales of 11 million cars and 1.5 million light trucks. So it was about a proposed federal rollover test applied to many millions of vehicles, not about a fix to the Pinto's rear-end fuel tank. In the 1981 Grimshaw appeal, Ford argued that a cost-benefit paper called the \"Grush-Saunby Report\" had been excluded from evidence; the court did not dispute this, and answered that other documents showed that Ford delayed fuel-tank safety features for reasons of cost.",
+  "false_part": "The $200,000-per-death table was not a decision about fixing the Pinto's rear-end fuel tank; it was a cost-benefit table about a proposed rollover fuel-leak standard, costed over 11 million cars and 1.5 million light trucks.",
+  "class": "changed",
+  "also": "",
+  "earliest_telling": {
+    "date": "1977-09",
+    "who": "Mark Dowie",
+    "where": "Pinto Madness, Mother Jones (September/October 1977)",
+    "quote": "This cost-benefit analysis argued that Ford should not make an $11-per-car improvement that would prevent 180 fiery deaths a year.",
+    "url": "https://www.motherjones.com/politics/1977/09/pinto-madness/",
+    "archive": "http://web.archive.org/web/20261104190912/https://www.motherjones.com/politics/1977/09/pinto-madness/",
+    "file": "sources/pinto-memo/dowie-1977-pinto-madness.html",
+    "sha256": "1263230d3503cebfe2c02048910c4087c4d1e5bd6b3bb0a9763bcf1623eb600d"
+  },
+  "original": [
+    {
+      "what": "The cost-benefit table from the Ford paper, as reprinted by Mother Jones beside Dowie's article (a reprint by the teller, not the paper itself). The heading shows the table was about the static rollover test of federal standard FMVSS 208.",
+      "date": "1977-09",
+      "who": "Ford Motor Company (reprinted by Mother Jones)",
+      "quote": "Benefits and Costs Relating to Fuel Leakage Associated with the Static Rollover Test Portion of FMVSS",
+      "url": "https://www.motherjones.com/politics/1977/09/11-vs-burn-death/",
+      "archive": "http://web.archive.org/web/20260512224252/https://www.motherjones.com/politics/1977/09/11-vs-burn-death/",
+      "file": "sources/pinto-memo/mj-1977-11-vs-burn-death.html",
+      "sha256": "92f4de8ceebba4edf66ebb32031c5381cad9f91765ac2bdd4acdb6c40b8c3185"
+    },
+    {
+      "what": "The same reprinted table: the cost side counts 11 million cars and 1.5 million light trucks, far more than the Pinto alone.",
+      "date": "1977-09",
+      "who": "Ford Motor Company (reprinted by Mother Jones)",
+      "quote": "11 million cars, 1.5 million light trucks.",
+      "url": "https://www.motherjones.com/politics/1977/09/11-vs-burn-death/",
+      "archive": "http://web.archive.org/web/20260512224252/https://www.motherjones.com/politics/1977/09/11-vs-burn-death/",
+      "file": "sources/pinto-memo/mj-1977-11-vs-burn-death.html",
+      "sha256": "92f4de8ceebba4edf66ebb32031c5381cad9f91765ac2bdd4acdb6c40b8c3185"
+    },
+    {
+      "what": "Dowie's own article says the fix would also apply to rollover crashes, which shows the paper was not about Pinto rear-end crashes only.",
+      "date": "1977-09",
+      "who": "Mark Dowie",
+      "quote": "and in rollover accidents, where the same thing tends to happen.",
+      "url": "https://www.motherjones.com/politics/1977/09/pinto-madness/",
+      "archive": "http://web.archive.org/web/20261104190912/https://www.motherjones.com/politics/1977/09/pinto-madness/",
+      "file": "sources/pinto-memo/dowie-1977-pinto-madness.html",
+      "sha256": "1263230d3503cebfe2c02048910c4087c4d1e5bd6b3bb0a9763bcf1623eb600d"
+    },
+    {
+      "what": "Grimshaw v. Ford Motor Co., 119 Cal.App.3d 757, California Court of Appeal opinion. The court reports Ford's argument that the Grush-Saunby Report was excluded from evidence, and answers that there was other documentation. (No saved file shows that this report is the same paper that Mother Jones reprinted.)",
+      "date": "1981-05-29",
+      "who": "California Court of Appeal, Fourth District",
+      "quote": "Ford argues that the documentation referred to by Mr. Copp--the \"Grush-Saunby Report\"--was excluded from evidence so that the statement was improper.",
+      "url": "https://law.justia.com/cases/california/court-of-appeal/3d/119/757.html",
+      "archive": "http://web.archive.org/web/20261106010306/https://law.justia.com/cases/california/court-of-appeal/3d/119/757.html",
+      "file": "sources/pinto-memo/grimshaw-1981.html",
+      "sha256": "115a3d8abb68c5368082fad7e3c88696da6dcd8633d4c0ef43469ba5920cd8f3"
+    },
+    {
+      "what": "Same opinion, the court's answer to Ford's argument",
+      "date": "1981-05-29",
+      "who": "California Court of Appeal, Fourth District",
+      "quote": "However, there was other documentation which illustrated the fact that cost considerations caused Ford to delay incorporating safety features in the fuel tank system of its cars",
+      "url": "https://law.justia.com/cases/california/court-of-appeal/3d/119/757.html",
+      "archive": "http://web.archive.org/web/20261106010306/https://law.justia.com/cases/california/court-of-appeal/3d/119/757.html",
+      "file": "sources/pinto-memo/grimshaw-1981.html",
+      "sha256": "115a3d8abb68c5368082fad7e3c88696da6dcd8633d4c0ef43469ba5920cd8f3"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "holds",
+    "why": "In the Pinto case itself, the appeal court found evidence, from documents other than the famous table, that Ford put off cheap fuel-tank fixes for reasons of cost. So the lesson holds for Ford, but the evidence comes from the same case, and the famous table is not that evidence.",
+    "source": {
+      "what": "Grimshaw v. Ford Motor Co. (1981), California Court of Appeal opinion",
+      "quote": "There was evidence that Ford could have corrected the hazardous design defects at minimal cost but decided to defer correction of the shortcomings by engaging in a cost-benefit analysis balancing human lives and limbs against corporate profits.",
+      "url": "https://law.justia.com/cases/california/court-of-appeal/3d/119/757.html",
+      "archive": "http://web.archive.org/web/20261106010306/https://law.justia.com/cases/california/court-of-appeal/3d/119/757.html",
+      "file": "sources/pinto-memo/grimshaw-1981.html",
+      "sha256": "115a3d8abb68c5368082fad7e3c88696da6dcd8633d4c0ef43469ba5920cd8f3"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search for \"static rollover test\" \"burn deaths\": the table is reprinted in many textbooks from 1982 on (e.g. Product design liability, 1982; Deviance and social control, 1982). All are lending-only scans; their full text returns 401, so none is quoted.",
+    "Web search led to Mark Dowie, \"Pinto Madness\", Mother Jones, September/October 1977. Saved the article from motherjones.com. It is the earliest telling found; it names the paper \"Fatalities Associated with Crash-Induced Fuel Leakage and Fires\".",
+    "Saved the Mother Jones 1977 page that reprints the paper's cost-benefit table. Its heading names the static rollover test of FMVSS 208, and its cost line counts 11 million cars and 1.5 million light trucks.",
+    "English Wikipedia article on the Ford Pinto: not opened; its cited sources were not followed.",
+    "Searched the web for a full copy of the Ford paper itself (Grush and Saunby). Found none online, so the paper is known here only from the Mother Jones reprint of its table.",
+    "Grimshaw v. Ford (1981): justia.com, findlaw.com and courtlistener.com all refused with 403. Saved the opinion from the Wayback Machine copy of the justia page (original bytes, id_ link). The court reports Ford's argument that the Grush-Saunby Report was excluded from evidence and answers that other documentation showed Ford delayed safety features for cost. One request to findlaw.com was sent with a changed User-Agent (it also returned 403).",
+    "Tried to save the US Department of Transportation guidance on the value of a statistical life (transportation.gov, fmcsa.dot.gov, dco.uscg.mil). All refused with 403; a UNT web archive copy returned an HTML page, not the PDF. Not used.",
+    "Library of Congress (Chronicling America), HathiTrust and Gallica refused automated requests (Cloudflare); the Google Books API had no quota. No newspaper archive could be searched.",
+    "Web search for a correction or reply by Mark Dowie to later criticism (for example by Gary Schwartz, 1991): none found in one search."
+  ],
+  "confidence_note": "The Ford paper itself was not found online; its content here rests on the table that Mother Jones reprinted. The exact date of the paper (often given as 1973) and its authors are not in the saved files. The court names a \"Grush-Saunby Report\", and other writers say this is the same paper, but no saved file shows that. The lesson verdict rests on one court's reading of the trial evidence in the same case, not on an independent study."
+}

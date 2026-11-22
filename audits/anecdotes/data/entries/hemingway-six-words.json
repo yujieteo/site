@@ -1,0 +1,65 @@
+{
+  "id": "hemingway-six-words",
+  "as_told": "Ernest Hemingway, lunching with other writers, bet them ten dollars each that he could write a complete short story in six words. He wrote 'For sale: baby shoes, never worn' on a napkin, passed it around, and won the bet. He is said to have called it his best work.",
+  "lesson": "Six well-chosen words are enough to tell a complete and moving story.",
+  "what_happened": "No record from Hemingway's lifetime (he died in 1961) links him to the six words or to a bet. Quote Investigator reports that the earliest known attribution to him is John De Groot's one-man play Papa (1989), and that the literary agent Peter Miller told the bet story in Get Published! Get Produced! (1991), saying he heard it around 1974 from a newspaper syndicator; I saw Miller's telling only as a search snippet of a 1998 printing. Similar ideas were printed long before by other people: in 1910, when Hemingway was ten, The Spokane Press ran a piece reading a classified advertisement for an unused baby's trousseau and bed as a small tragic story. Quote Investigator also reports a 1906 Michigan newspaper item 'For sale, baby carriage; never been used' and a 1917 essay by William R. Kane proposing a story called 'Little Shoes, Never Worn'; I could not read these.",
+  "false_part": "No record shows that Hemingway wrote the six words or won a bet with them; the idea of a sad story in a baby-goods sale notice was in print before he was known.",
+  "class": "unsupported",
+  "also": "misattributed",
+  "earliest_telling": {
+    "date": "1998",
+    "who": "Peter Miller (literary agent)",
+    "where": "Get Published! Get Produced! (Lone Eagle, 1998 printing), seen only as an Open Library search snippet. Not seen: a 1991 first edition (page 27) and John De Groot's play Papa (1989), both reported by Quote Investigator.",
+    "quote": "",
+    "url": "https://archive.org/details/getpublishedgetp0000mill",
+    "archive": "https://archive.org/details/getpublishedgetp0000mill",
+    "file": "",
+    "sha256": ""
+  },
+  "original": [
+    {
+      "what": "The Spokane Press, 16 May 1910, page 6: 'Tragedy of Baby's Death Is Revealed in Sale of Clothes', a piece reading a classified advertisement as a short sad story (Chronicling America OCR text, Wayback copy)",
+      "date": "1910-05-16",
+      "who": "The Spokane Press (unsigned)",
+      "quote": "Baby's hand made trousseau and baby's bed for sale. Never been used.",
+      "url": "https://chroniclingamerica.loc.gov/lccn/sn88085947/1910-05-16/ed-1/seq-7/ocr/",
+      "archive": "http://web.archive.org/web/20160418172643/http://chroniclingamerica.loc.gov/lccn/sn88085947/1910-05-16/ed-1/seq-7/ocr/",
+      "file": "sources/hemingway-six-words/spokane-press-1910-05-16-p6-ocr-wayback.html",
+      "sha256": "6ad8123ccf2925d0c9a77c73da8724317ea216f79e7c6825fca10cf9998b2e80"
+    },
+    {
+      "what": "WIRED, November 2006, 'Very Short Stories': a widely read later telling that spread the attribution (not a record of the event)",
+      "date": "2006-11-01",
+      "who": "WIRED staff",
+      "quote": "is said to have called it his best work",
+      "url": "https://www.wired.com/2006/11/very-short-stories/",
+      "archive": "http://web.archive.org/web/20261016051542/https://www.wired.com/2006/11/very-short-stories/",
+      "file": "sources/hemingway-six-words/wired-2006-11-very-short-stories.html",
+      "sha256": "026ee5ad48b6430355ca103b2e8691277d25b5cffed43dd7d4f03ec9d27e64b2"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "In a 2021 survey of 103 Russian-speaking adults in Kyiv, only 26 (25.2%) read 'For sale: baby shoes, never worn' as a sad story and 77 (74.8%) read it as a plain sale notice, a statistically significant difference. So these six words did not reliably tell the moving story for most readers; one survey of one text cannot settle the general claim.",
+    "source": {
+      "what": "Vitalii Shymko, 'The Hemingway's Six-Word Story Effect: A Psycholinguistic Verification', Psycholinguistics 32(1) (2022) 189-206, doi:10.31470/2309-1797-2022-32-1-189-206 (full text, saved from the Wayback copy)",
+      "quote": "The higher frequency of pragmatic interpretation is significantly different from the sentimental view on a six-word story.",
+      "url": "https://psycholing-journal.com/index.php/journal/article/download/1294/385",
+      "archive": "http://web.archive.org/web/20260320160609/https://psycholing-journal.com/index.php/journal/article/download/1294/385/",
+      "file": "sources/hemingway-six-words/shymko2022-six-word-effect.pdf.txt",
+      "sha256": "a29de9e6a575c18f4b8c1afc5abd6cdbe5e94495ce64a5d59a20c00ac4f3efa2"
+    }
+  },
+  "search_steps": [
+    "Read the English Wikipedia article 'For sale: baby shoes, never worn' and Quote Investigator (2013) as leads. They cite an 1883 St. Louis Globe-Democrat ad, a 1906 Ironwood News Record item, the 1910 Spokane Press, William R. Kane in The Editor (1917), Life (1921), John De Groot's play Papa (1989), Peter Miller (1991) and Arthur C. Clarke (1991 letter, 1998 essay).",
+    "Open Library full-text search for 'Papa won the bet': earliest hit is Miller, Get Published! Get Produced! (1998 printing; first edition 1991). Borrow-only; the search snippet shows the Luchow's lunch, the ten-dollar ante and the bet, but I do not quote a snippet, so the earliest-telling quote is left empty.",
+    "Open Library full-text search for 'baby shoes, never worn' with Hemingway: hits from 1998 (Miller) and 1999 (Clarke, Greetings, Carbon-Based Bipeds!), all borrow-only. A 1988 hit (Fuentes, Ernest Hemingway Rediscovered) only matched the words separately. 'little shoes, never worn' found only O'Toole's 2017 book.",
+    "De Groot's play Papa (1989) is not online in full text, so I could not check its wording.",
+    "Saved the 1910 Spokane Press page as OCR text from the Wayback Machine, because loc.gov (Chronicling America) returned a challenge page.",
+    "The 1906 Ironwood News Record is in a paid archive (NewspaperArchive); Kane's 1917 essay is on Google Books and Life 1921 on HathiTrust, both of which refused automated requests. Not quoted.",
+    "Searched for any statement by Hemingway or his estate about the story: found none.",
+    "Lesson: searched OpenAlex for studies of six-word stories and found Shymko (2022), an empirical reader study. The journal and PhilPapers PDFs returned challenge pages; I saved the Crossref record (https://api.crossref.org/works/10.31470/2309-1797-2022-32-1-189-206) and then the full PDF from its Wayback copy."
+  ],
+  "confidence_note": "The bet is unsupported: no record shows it, and no record shows Hemingway wrote the words. The 1910 newspaper piece shows that the idea of reading a baby-goods sale notice as a tiny sad story was in print by others when Hemingway was a child, which is why 'misattributed' may also apply, but it does not contain the six words. I could not read the 1906, 1917 or 1921 items, Miller's book in full, or De Groot's play. The lesson source is one survey, run in 2021 in Kyiv, presumably in translation."
+}

@@ -1,0 +1,62 @@
+{
+  "id": "mehrabian",
+  "as_told": "Research by psychologist Albert Mehrabian is said to show that only 7% of the meaning of any message comes from the words. Another 38% comes from the tone of voice and 55% from body language. The figures are used in training on speaking, sales and leadership.",
+  "lesson": "In communication, how you say something and how you look matter far more than what you say.",
+  "what_happened": "In 1967 Mehrabian published two small laboratory studies, with Morton Wiener and with Susan Ferris, about how listeners judge a speaker's feeling (liking or disliking) when the word, the tone of voice and the face give different signals. From them he proposed the formula 'Total liking = 7% verbal liking + 38% vocal liking + 55% facial liking', which he printed in his books Tactics of Social Influence (1970) and Silent Messages (1971). On his own website he says the equations come from experiments on feelings and attitudes and do not apply when a speaker is not talking about feelings or attitudes. The popular version drops that limit and applies the numbers to all communication.",
+  "false_part": "The 7-38-55 figures describe how people judge liking from inconsistent single-word messages, not how much of any message the words carry.",
+  "class": "changed",
+  "also": "",
+  "earliest_telling": {
+    "date": "1970",
+    "who": "Albert Mehrabian",
+    "where": "Tactics of Social Influence (Prentice-Hall), page 166 of the scan, as shown in the Open Library full-text search index",
+    "quote": "Total liking = 7% Verbal liking + 38% Vocal liking + 55% Facial liking",
+    "url": "https://openlibrary.org/search/inside.json?q=%22verbal+liking%22+%22facial+liking%22",
+    "archive": "https://archive.org/details/tacticsofsociali0000mehr",
+    "file": "sources/mehrabian/ol-inside-verbal-liking-facial-liking.txt",
+    "sha256": "5664bd03cf9091f9cbabc87b204460eaadb018885b02634c486dc6594efae31d"
+  },
+  "original": [
+    {
+      "what": "Mehrabian's book Silent Messages (Wadsworth, 1971), page 166 of the scan, as shown in the Open Library full-text search index",
+      "date": "1971",
+      "who": "Albert Mehrabian",
+      "quote": "Total liking = 7% verbal liking + 38% vocal liking + 55% facial liking",
+      "url": "https://openlibrary.org/search/inside.json?q=%22verbal+liking%22+%22facial+liking%22",
+      "archive": "https://archive.org/details/silentmessages00mehr",
+      "file": "sources/mehrabian/ol-inside-verbal-liking-facial-liking.txt",
+      "sha256": "5664bd03cf9091f9cbabc87b204460eaadb018885b02634c486dc6594efae31d"
+    }
+  ],
+  "teller_correction": {
+    "what": "Mehrabian's own page describing Silent Messages, on his website kaaj.com",
+    "date": "1995-2016 (copyright years on the page)",
+    "who": "Albert Mehrabian",
+    "quote": "Please note that this and other equations regarding relative importance of verbal and nonverbal messages were derived from experiments dealing with communications of feelings and attitudes (i.e., like-dislike). Unless a communicator is talking about their feelings or attitudes, these equations are not applicable",
+    "url": "http://www.kaaj.com/psych/smorder.html",
+    "archive": "http://web.archive.org/web/20261109100219/https://www.kaaj.com/psych/smorder.html",
+    "file": "sources/mehrabian/kaaj-smorder.txt",
+    "sha256": "b9c8b2682b5c054061e2e42753e0c2d94268130f6d8543219243559d53e5b120"
+  },
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "The only studies behind the numbers used one-word messages about feelings, and no study cited for the general claim measured how much meaning words carry in ordinary communication. A review of the research and its textbook use concludes that no broad conclusion about communication can be drawn from it.",
+    "source": {
+      "what": "Lapakko (2007), Communication is 93% Nonverbal: An Urban Legend Proliferates, Communication and Theater Association of Minnesota Journal 34, 7-19",
+      "quote": "because of its limitations, any broad-based conclusions about the nature of communication simply cannot be derived from it.",
+      "url": "https://cornerstone.lib.mnsu.edu/cgi/viewcontent.cgi?article=1000&context=ctamj",
+      "archive": "http://web.archive.org/web/20261020175207/https://cornerstone.lib.mnsu.edu/cgi/viewcontent.cgi?context=ctamj&article=1000",
+      "file": "sources/mehrabian/lapakko-2007.pdf.txt",
+      "sha256": "d226b001fd7b39785b7e81508583bfede4d09858aec4d7a6840d94c69816cb65"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search for \"55 percent\" \"38 percent\" \"7 percent\" words: 48,200 hits, almost all unrelated statistics. Not useful.",
+    "Open Library full-text search for \"verbal liking\" \"facial liking\": the earliest dated hit is Mehrabian's Tactics of Social Influence (1970); Silent Messages (1971) is undated in the index. Both scans are lending-only on the Internet Archive, so I saved the search result as JSON and a plain-text copy with the highlight marks removed, and quote the plain-text copy.",
+    "Searched for the two 1967 papers (Mehrabian and Wiener, Journal of Personality and Social Psychology 6(1), 109-114; Mehrabian and Ferris, Journal of Consulting Psychology 31(3), 248-252). I found no free full text. APA PsycNet refused automated requests with 403, the PubMed record for the Ferris paper has no abstract, and my request for the PubMed record of the Wiener paper timed out. I did not read them and do not quote them.",
+    "Saved Mehrabian's own page on kaaj.com, which states the limit of the equations.",
+    "Saved Lapakko (2007) from the Wayback Machine (snapshot 2026-10-20), because the Minnesota State repository link showed a bot check.",
+    "Did not search newspaper archives: loc.gov, Papers Past and HathiTrust blocked automated requests during this work, and Google Books returned 429."
+  ],
+  "confidence_note": "I could not read the 1967 papers, so the description of their design (one-word messages, feelings of liking) rests on Mehrabian's later books and website and on Lapakko's review. I did not find who first applied the numbers to all communication; the 1970 book is the earliest telling of the formula that I could read. Mehrabian's page does not say when the note was added."
+}

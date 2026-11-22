@@ -1,0 +1,73 @@
+{
+  "id": "jam-study",
+  "as_told": "In a grocery store, researchers set up a tasting table with either 24 or 6 kinds of jam. More shoppers stopped at the big display, but far fewer of them bought jam: about 3% against about 30% for the small display. The story is told to show that too much choice stops people from choosing.",
+  "lesson": "Giving people more options makes them less likely to choose or buy anything.",
+  "what_happened": "Sheena Iyengar and Mark Lepper ran the study at Draeger's Supermarket in Menlo Park, California, on two Saturdays, with Wilkin & Sons jams. They published it in the Journal of Personality and Social Psychology in 2000 (vol. 79, no. 6, pp. 995-1006). The display with 24 jams drew 60% of passers-by (145) and the display with 6 jams drew 40% (104). Of the shoppers who stopped, 31 at the 6-jam display (nearly 30%) and 4 at the 24-jam display (3%) later bought a jar. The story matches the paper in every detail that the lesson needs.",
+  "false_part": "",
+  "class": "true",
+  "also": "",
+  "earliest_telling": {
+    "date": "2000",
+    "who": "Sheena S. Iyengar and Mark R. Lepper",
+    "where": "When Choice is Demotivating: Can One Desire Too Much of a Good Thing? Journal of Personality and Social Psychology 79(6), 995-1006",
+    "quote": "people are more likely to purchase gourmet jams or chocolates or to undertake optional class essay assignments when offered a limited array of 6 choices rather than a more extensive array of 24 or 30 choices",
+    "url": "https://faculty.washington.edu/jdb/345/345%20Articles/Iyengar%20%26%20Lepper%20(2000).pdf",
+    "archive": "http://web.archive.org/web/20261117105230/https://faculty.washington.edu/jdb/345/345%20Articles/Iyengar%20%26%20Lepper%20(2000).pdf",
+    "file": "sources/jam-study/iyengar-lepper-2000.pdf.txt",
+    "sha256": "f2e02556729e6bcfb8d8e89baa7df1d251b93c36db3c95d05690cb8a4e96468a"
+  },
+  "original": [
+    {
+      "what": "The published paper, Study 1 (the jam field experiment), results on purchases",
+      "date": "2000",
+      "who": "Sheena S. Iyengar and Mark R. Lepper",
+      "quote": "30% (31) o f the consumers in the limited-choice condition",
+      "url": "https://faculty.washington.edu/jdb/345/345%20Articles/Iyengar%20%26%20Lepper%20(2000).pdf",
+      "archive": "http://web.archive.org/web/20261117105230/https://faculty.washington.edu/jdb/345/345%20Articles/Iyengar%20%26%20Lepper%20(2000).pdf",
+      "file": "sources/jam-study/iyengar-lepper-2000.pdf.txt",
+      "sha256": "f2e02556729e6bcfb8d8e89baa7df1d251b93c36db3c95d05690cb8a4e96468a"
+    },
+    {
+      "what": "The same paper, Study 1, the matching figure for the 24-jam display",
+      "date": "2000",
+      "who": "Sheena S. Iyengar and Mark R. Lepper",
+      "quote": "(4) o f the consumers in the extensive-choice condition did so",
+      "url": "https://faculty.washington.edu/jdb/345/345%20Articles/Iyengar%20%26%20Lepper%20(2000).pdf",
+      "archive": "http://web.archive.org/web/20261117105230/https://faculty.washington.edu/jdb/345/345%20Articles/Iyengar%20%26%20Lepper%20(2000).pdf",
+      "file": "sources/jam-study/iyengar-lepper-2000.pdf.txt",
+      "sha256": "f2e02556729e6bcfb8d8e89baa7df1d251b93c36db3c95d05690cb8a4e96468a"
+    },
+    {
+      "what": "The same paper, Study 1, the place of the study",
+      "date": "2000",
+      "who": "Sheena S. Iyengar and Mark R. Lepper",
+      "quote": "store (Draeger's Supermarket) located in Menlo Park, California",
+      "url": "https://faculty.washington.edu/jdb/345/345%20Articles/Iyengar%20%26%20Lepper%20(2000).pdf",
+      "archive": "http://web.archive.org/web/20261117105230/https://faculty.washington.edu/jdb/345/345%20Articles/Iyengar%20%26%20Lepper%20(2000).pdf",
+      "file": "sources/jam-study/iyengar-lepper-2000.pdf.txt",
+      "sha256": "f2e02556729e6bcfb8d8e89baa7df1d251b93c36db3c95d05690cb8a4e96468a"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "A meta-analysis of 63 conditions from 50 experiments (N = 5,036) found an average choice-overload effect of virtually zero, with large differences between studies. The authors could not find conditions that reliably produce the effect, so the general lesson is not established, although the effect may occur in some settings.",
+    "source": {
+      "what": "Scheibehenne, Greifeneder and Todd (2010), Can There Ever Be Too Many Options? A Meta-Analytic Review of Choice Overload, Journal of Consumer Research 37(3), 409-425",
+      "quote": "In a meta-analysis of 63 conditions from 50 published and unpublished experiments (N p 5,036), we found a mean effect size of virtually zero but considerable variance between studies.",
+      "url": "https://abcwest.cogs.indiana.edu/pmwiki/pdf/scheibehenne.options.2010.pdf",
+      "archive": "http://web.archive.org/web/20240912194234/https://abcwest.cogs.indiana.edu/pmwiki/pdf/scheibehenne.options.2010.pdf",
+      "file": "sources/jam-study/scheibehenne-2010.pdf.txt",
+      "sha256": "9cd091877026e3556a215afb641cd5d317721290be582f7055b26bb00b30cbb7"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search for \"24 jams\": 143 hits on the first page of results; the earliest that tells the story is The Science of Influence (2005). Older hits are recipe books and lists that only contain the words.",
+    "Treated the 2000 paper itself as the earliest telling. I found no telling before it. The paper does not say when the study was run, and I could not check conference talks or a dissertation before 2000.",
+    "Downloaded the 2000 paper from a University of Washington course page (faculty.washington.edu) and converted it with pdftotext -layout. The OCR text has spaced letters such as 'o f' and 'j a r'; quotes keep them as they are in the file.",
+    "Searched for the Scheibehenne 2010 meta-analysis. The Indiana University copy now returns 404, and the Basel, Mannheim and Geneva repository pages gave no direct PDF. I saved the Wayback Machine copy of the Indiana PDF (snapshot 2024-09-12).",
+    "Did not search newspaper archives for this candidate. Chronicling America ends before 2000, and the loc.gov and Papers Past search pages blocked automated requests for my other candidates.",
+    "Searched for a correction by Iyengar or Lepper and found none. The 2000 paper has not been retracted as far as I could find."
+  ],
+  "confidence_note": "The anecdote matches the paper. The paper reports one field study on two Saturdays in one store, with 249 shoppers who stopped at the table. The lesson rests on later studies, and the meta-analysis says the average effect across studies is close to zero."
+}

@@ -1,0 +1,76 @@
+{
+  "id": "lemmings",
+  "as_told": "Every few years, lemmings march in huge columns across the land. When they reach a cliff or the sea, they follow each other over the edge and drown in a mass suicide. The story is often told with film of lemmings leaping from a cliff.",
+  "lesson": "Like lemmings, animals and people will blindly follow the crowd even to their own death.",
+  "what_happened": "Norway lemmings do have population peaks and mass movements, and many drown when they try to cross water. In 1877 W. D. Crotch, who watched three migrations in Norway, wrote that swimming lemmings drowned when the wind rose and that frightened lemmings often swam back to the shore. Daniel Q. Thompson's field study of the 1953 brown lemming emigration at Point Barrow, Alaska, described that movement as \"a haphazard dispersal or shuffle\", and said it did not resemble the Scandinavian migrations. So the deaths that eyewitnesses report are drownings during dispersal, not a deliberate suicide.",
+  "false_part": "Lemmings do not kill themselves on purpose; they drown by accident while dispersing across water.",
+  "class": "changed",
+  "also": "",
+  "earliest_telling": {
+    "date": "1877-08",
+    "who": "W. Duppa Crotch",
+    "where": "The Norwegian Lemming and its Migrations, Popular Science Monthly, vol. 11 (reprinted from the Popular Science Review)",
+    "quote": "perishes voluntarily, or at least instinctively, in the ocean",
+    "url": "https://en.wikisource.org/wiki/Popular_Science_Monthly/Volume_11/August_1877/The_Norwegian_Lemming_and_its_Migrations",
+    "archive": "http://web.archive.org/web/20260812040317/https://en.wikisource.org/wiki/Popular_Science_Monthly/Volume_11/August_1877/The_Norwegian_Lemming_and_its_Migrations",
+    "file": "sources/lemmings/crotch-1877-psm-norwegian-lemming.html",
+    "sha256": "fffc72a0597f1a2c35fba38b9bd3d872c01a0a4fe983c146d329836bb25cecce"
+  },
+  "original": [
+    {
+      "what": "Crotch's own observations of lemmings swimming across his lake in Norway (same article): they drowned when the wind rose",
+      "date": "1877-08",
+      "who": "W. Duppa Crotch",
+      "quote": "When the least wind ruffled the water every swimmer was drowned",
+      "url": "https://en.wikisource.org/wiki/Popular_Science_Monthly/Volume_11/August_1877/The_Norwegian_Lemming_and_its_Migrations",
+      "archive": "http://web.archive.org/web/20260812040317/https://en.wikisource.org/wiki/Popular_Science_Monthly/Volume_11/August_1877/The_Norwegian_Lemming_and_its_Migrations",
+      "file": "sources/lemmings/crotch-1877-psm-norwegian-lemming.html",
+      "sha256": "fffc72a0597f1a2c35fba38b9bd3d872c01a0a4fe983c146d329836bb25cecce"
+    },
+    {
+      "what": "Crotch's own observations (same article): frightened swimmers turned back to the shore",
+      "date": "1877-08",
+      "who": "W. Duppa Crotch",
+      "quote": "they would lose all idea of direction, and frequently swim back to the bank they had left",
+      "url": "https://en.wikisource.org/wiki/Popular_Science_Monthly/Volume_11/August_1877/The_Norwegian_Lemming_and_its_Migrations",
+      "archive": "http://web.archive.org/web/20260812040317/https://en.wikisource.org/wiki/Popular_Science_Monthly/Volume_11/August_1877/The_Norwegian_Lemming_and_its_Migrations",
+      "file": "sources/lemmings/crotch-1877-psm-norwegian-lemming.html",
+      "sha256": "fffc72a0597f1a2c35fba38b9bd3d872c01a0a4fe983c146d329836bb25cecce"
+    },
+    {
+      "what": "Daniel Q. Thompson, \"The 1953 lemming emigration at Point Barrow, Alaska\", Arctic vol. 8, no. 1, p. 37 (the year of the issue is not printed in the saved file; the field work ran from 1950 to 1954)",
+      "date": "1950-1954 (field work)",
+      "who": "Daniel Q. Thompson",
+      "quote": "lemmings appeared to be engaged in a haphazard dispersal or shuffle, in which",
+      "url": "https://pubs.aina.ucalgary.ca/arctic/Arctic8-1-37.pdf",
+      "archive": "http://web.archive.org/web/20220811064141/https://pubs.aina.ucalgary.ca/arctic/Arctic8-1-37.pdf",
+      "file": "sources/lemmings/arctic-8-1-37.pdf",
+      "sha256": "4e3df56425fc20a57854098c72f784fc955eaebc119888d4ca60d5a4ddb26751"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "For lemmings the lesson is not supported: the eyewitness Crotch saw swimmers drown in wind and frightened swimmers turn back, not a crowd following each other to death on purpose; Thompson's Alaska study saw a haphazard dispersal. The anecdote gives no evidence about people, and I did not look for a study of human crowd behaviour.",
+    "source": {
+      "what": "Crotch (1877), his own observations of lemmings crossing his lake in Norway",
+      "quote": "they would lose all idea of direction, and frequently swim back to the bank they had left",
+      "url": "https://en.wikisource.org/wiki/Popular_Science_Monthly/Volume_11/August_1877/The_Norwegian_Lemming_and_its_Migrations",
+      "archive": "http://web.archive.org/web/20260812040317/https://en.wikisource.org/wiki/Popular_Science_Monthly/Volume_11/August_1877/The_Norwegian_Lemming_and_its_Migrations",
+      "file": "sources/lemmings/crotch-1877-psm-norwegian-lemming.html",
+      "sha256": "fffc72a0597f1a2c35fba38b9bd3d872c01a0a4fe983c146d329836bb25cecce"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search for lemmings with \"suicide\", \"commit suicide\", \"suicidal\" migration and \"into the sea\" drowned: hits from 1941 on (e.g. Icebound summer, 1953: \"their suicidal rush to the sea\"). All are lending-only scans; not quoted.",
+    "Read the English Wikipedia article \"Lemming\" (its section on the suicide misconception and its references): it cites W. D. Crotch, Popular Science Monthly, August 1877, as an early telling; it says the 1958 Disney film White Wilderness staged the leap, citing BBC Earth, Snopes and the CBC programme Cruel Camera.",
+    "Saved Crotch 1877 from Wikisource. It is the earliest telling found that says the lemmings die in the sea \"voluntarily, or at least instinctively\" and calls the migrations \"apparently suicidal\". It also gives his own observations of drowning by accident. It quotes Pennant, an earlier writer, who says only that they perish \"in some great water, or in the sea\".",
+    "Archive.org search for Collett (1895) on Norway lemming migrations: no hit. Not used.",
+    "Web search led to Daniel Q. Thompson, \"The 1953 lemming emigration at Point Barrow, Alaska\", Arctic vol. 8 no. 1. Saved the PDF. Its remark that Norwegian valleys funnel lemmings into the fjords is attributed there to Elton (1942) \"and others\", so it is not used as a finding.",
+    "Lindstrom et al. (2001), Biological Reviews, review of Elton's 1924 lemming paper: saved and searched; it does not discuss the suicide story. Not used.",
+    "White Wilderness (1958) and the CBC Cruel Camera report on how the leap was filmed: neither is online as a saved text here. Not quoted.",
+    "Library of Congress newspapers, HathiTrust and Gallica refused automated requests; the Google Books API had no quota.",
+    "Did not search for a correction by Crotch."
+  ],
+  "confidence_note": "The claim that the White Wilderness crew pushed lemmings off a cliff rests on the CBC report, which I could not save; it is not used here. The Alaska study is of brown lemmings, and says the Norway lemming migrations are different; for Norway the entry rests on one 1877 eyewitness, Crotch, who was also the earliest teller found. I did not read Collett (1895) or Elton (1942)."
+}
