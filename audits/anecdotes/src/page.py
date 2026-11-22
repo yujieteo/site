@@ -132,7 +132,7 @@ def main():
     true = [e for e in es if e["class"] == "true"]
     done, total = len(es), len(names)
 
-    lines = ["---", "title: Widely told anecdotes that are false or misleading", "date: 2026-11-22", "draft: true",
+    lines = ["---", "title: Widely told anecdotes that are false or misleading", "date: 2026-11-22", "draft: false",
              f"summary: {done} of {total} anecdotes checked so far against their earliest telling and the record they claim to report.",
              "summary: Each entry quotes both sources, gives an archived link, and says separately whether the lesson still holds.",
              "summary: A draft. The ranking by how common and how misleading each story is comes after every candidate is checked.",

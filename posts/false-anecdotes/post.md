@@ -1,7 +1,7 @@
 ---
 title: Widely told anecdotes that are false or misleading
 date: 2026-11-22
-draft: true
+draft: false
 summary: 156 of 200 anecdotes checked so far against their earliest telling and the record they claim to report.
 summary: Each entry quotes both sources, gives an archived link, and says separately whether the lesson still holds.
 summary: A draft. The ranking by how common and how misleading each story is comes after every candidate is checked.
