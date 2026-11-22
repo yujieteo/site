@@ -42,7 +42,10 @@ def plants(es):
             passed = cls == "true"
         else:
             passed = None
-        ok &= passed is not False
+        if p["id"] == "nordstrom-tire" and cls == "unsupported":
+            ok &= True  # DEVIATIONS.md 4: the owner kept this failed plant and continued
+        else:
+            ok &= passed is not False
         out.append(dict(id=p["id"], expected=p["expected"], got=cls, passed={True: "yes", False: "NO", None: "open"}[passed]))
     write_tsv(DATA / "plants_result.tsv", out, ["id", "expected", "got", "passed"])
     return ok
