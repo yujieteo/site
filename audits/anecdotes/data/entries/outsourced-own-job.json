@@ -1,0 +1,64 @@
+{
+  "id": "outsourced-own-job",
+  "as_told": "A software developer at a US company secretly paid a firm in China to do his job. He mailed his security token to China so the firm could log in as him, and he spent his days on Reddit, eBay and Facebook. His reviews called him the best developer in the building. He was caught when the company found a VPN connection from China in its logs.",
+  "lesson": "Reviewing access logs as a routine can reveal insider abuse that other security controls miss.",
+  "what_happened": "On 14 January 2013 Andrew Valentine of the Verizon RISK team published the story as a case study on the Verizon Business Security Blog. He wrote that in 2012 a US critical infrastructure company asked Verizon to examine a VPN connection from Shenyang, China. Investigators found invoices from a contractor in Shenyang and concluded that the developer, called \"Bob\" in the post, had outsourced his own job and had sent his RSA token to China by FedEx. The company and the developer are not named, and no record other than Verizon's own account is known.",
+  "false_part": "",
+  "class": "true",
+  "also": "",
+  "earliest_telling": {
+    "date": "2013-01-14",
+    "who": "Andrew Valentine, Verizon RISK team",
+    "where": "Verizon Business Security Blog, \"Case Study: Pro-active Log Review Might Be A Good Idea\"",
+    "quote": "As it turns out, Bob had simply outsourced his own job to a Chinese consulting firm.",
+    "url": "http://securityblog.verizonbusiness.com/2013/01/14/case-study-pro-active-log-review-might-be-a-good-idea/",
+    "archive": "https://web.archive.org/web/20130116231226/http://securityblog.verizonbusiness.com/2013/01/14/case-study-pro-active-log-review-might-be-a-good-idea/",
+    "file": "sources/outsourced-own-job/verizon-2013-01-14-case-study.html",
+    "sha256": "894e8c55e0db947c4b5e64d24370ffd3f82bea203a17ded2e7a0d7c640a89cd9"
+  },
+  "original": [
+    {
+      "what": "The investigators' own published case study (the same blog post), which is the only known record of the case",
+      "date": "2013-01-14",
+      "who": "Andrew Valentine, Verizon RISK team",
+      "quote": "he physically FedExed his RSA token to China so that the third-party contractor could log-in under his credentials during the workday",
+      "url": "http://securityblog.verizonbusiness.com/2013/01/14/case-study-pro-active-log-review-might-be-a-good-idea/",
+      "archive": "https://web.archive.org/web/20130116231226/http://securityblog.verizonbusiness.com/2013/01/14/case-study-pro-active-log-review-might-be-a-good-idea/",
+      "file": "sources/outsourced-own-job/verizon-2013-01-14-case-study.html",
+      "sha256": "894e8c55e0db947c4b5e64d24370ffd3f82bea203a17ded2e7a0d7c640a89cd9"
+    },
+    {
+      "what": "The same case study, on his performance reviews",
+      "date": "2013-01-14",
+      "who": "Andrew Valentine, Verizon RISK team",
+      "quote": "Quarter after quarter, his performance review noted him as the best developer in the building.",
+      "url": "http://securityblog.verizonbusiness.com/2013/01/14/case-study-pro-active-log-review-might-be-a-good-idea/",
+      "archive": "https://web.archive.org/web/20130116231226/http://securityblog.verizonbusiness.com/2013/01/14/case-study-pro-active-log-review-might-be-a-good-idea/",
+      "file": "sources/outsourced-own-job/verizon-2013-01-14-case-study.html",
+      "sha256": "894e8c55e0db947c4b5e64d24370ffd3f82bea203a17ded2e7a0d7c640a89cd9"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "Verizon's 2012 breach report found that log review discovered only 8% of breaches at large organizations and 1% of all breaches in its data. Verizon says log review would work better if more organizations did it, but the report gives no study that measures this.",
+    "source": {
+      "what": "Verizon, 2012 Data Breach Investigations Report, section on breach discovery methods (Figure 45 and the Internal Active section)",
+      "quote": "In 8% of breaches affecting large",
+      "url": "https://www.verizon.com/business/resources/reports/data-breach-investigations-report-2012-ebk.pdf",
+      "archive": "http://web.archive.org/web/20261014222856/https://www.verizon.com/business/resources/reports/data-breach-investigations-report-2012-ebk.pdf",
+      "file": "sources/outsourced-own-job/verizon-dbir-2012-ebk.pdf",
+      "sha256": "8644535be5d9d71688cb47bf46d3895c95db3c9d21a0128c87e5b1d5ca36cd74"
+    }
+  },
+  "search_steps": [
+    "Web search for the story: news reports of 16-17 January 2013 (The Next Web, NPR, IEEE Spectrum, Computerworld, SCMP) all point to a Verizon RISK team blog post.",
+    "Wayback CDX search for securityblog.verizonbusiness.com/2013/01/14/: the post 'Case Study: Pro-active Log Review Might Be A Good Idea' is captured from 2013-01-16; saved the 20130116231226 capture. The live site no longer exists.",
+    "The post is dated 14 January 2013 and signed by Andrew Valentine. I found no earlier telling; news coverage begins on 16 January 2013.",
+    "Searched for a later correction or retraction by Valentine or Verizon: found only news interviews (The Next Web, 17 January 2013; ABC) where he adds details. No correction found.",
+    "The post's figures do not agree with each other: it says Bob paid 'less that one fifth of his six-figure salary', and also that he earned 'several hundred thousand dollars a year' across several companies and paid the firm 'about fifty grand annually'.",
+    "Lesson: downloaded Verizon's 2012 Data Breach Investigations Report (the English ebook PDF; the first PDF found was a German summary and was deleted) and read the breach discovery section.",
+    "English Wikipedia: not searched for this story; the Verizon post itself is the origin."
+  ],
+  "confidence_note": "The only record is the investigating firm's own anonymised case study. The company, the developer and the Chinese firm are not named, so no independent record can confirm the case. The class 'true' rests on the investigators' first-hand published account. The salary figures in the post are not consistent."
+}

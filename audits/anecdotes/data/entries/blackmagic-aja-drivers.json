@@ -1,0 +1,131 @@
+{
+  "id": "blackmagic-aja-drivers",
+  "as_told": "Grant Petty, who founded Blackmagic Design, is a hands-on engineer. The story says that before Blackmagic became AJA's rival, Petty himself wrote the first drivers for AJA's video boards. It is told as an \"urban legend\" or \"rumor\" on Hacker News.",
+  "lesson": "A founder who can do the deep technical work himself, even for his rivals, gives his company an edge.",
+  "what_happened": "AJA Video sold its first PCI card in 1998 and showed its first Kona cards at SIGGRAPH in 2001. Grant Petty launched Blackmagic Design in 2001. In January 2002 Blackmagic's own website offered hardware makers a partner service: they bring a video board, and Blackmagic makes it work with Apple's QuickTime and supplies the manuals and CDs. The Kona SD card was a joint product of AJA and Blackmagic: AJA's own Kona SD manual, copyright Blackmagic Design 2002, says the card's software was developed by Blackmagic Design and has the user install the \"Blackmagic QuickTime driver\". Press notices of August 2002 and January 2003 name both companies and call the Kona SD a joint development. No record I found says that Petty personally wrote this software, and none says that Blackmagic wrote drivers for AJA's earlier boards.",
+  "false_part": "The records credit the software and QuickTime driver of one AJA card, the Kona SD (2002), to the company Blackmagic Design, in a product that both firms called a joint development. They do not credit Petty in person, and they do not concern AJA's first boards: AJA had sold PCI cards since 1998, before Blackmagic existed.",
+  "class": "changed",
+  "also": "",
+  "earliest_telling": {
+    "date": "2022-10-21",
+    "who": "dylan604 (Hacker News user)",
+    "where": "Hacker News comment in the thread on DaVinci Resolve for iPad",
+    "quote": "psst, rumors say that Grant Petty wrote the original drivers for AJA.",
+    "url": "https://news.ycombinator.com/item?id=33284739",
+    "archive": "https://web.archive.org/web/20261122181038/https://news.ycombinator.com/item?id=33284739",
+    "file": "sources/blackmagic-aja-drivers/hn_33284739.html",
+    "sha256": "84db727e7bfc63f384be667b8b9c7eac7985c213408782dbf7c7c70c9ef6ddb2"
+  },
+  "original": [
+    {
+      "what": "British Cinematographer profile of Grant Petty (Wayback copy), on when Blackmagic began",
+      "date": "",
+      "who": "British Cinematographer",
+      "quote": "eventually launched BMD in 2001",
+      "url": "https://britishcinematographer.co.uk/grant-petty-blackmagic-design/",
+      "archive": "http://web.archive.org/web/20250717104437/https://britishcinematographer.co.uk/grant-petty-blackmagic-design/",
+      "file": "sources/blackmagic-aja-drivers/britcine_petty_wb.html",
+      "sha256": "89209c76c5a57c6e825f0a33f1e384bf786fc4f5da2639c00399f454a0425167"
+    },
+    {
+      "what": "AJA Video: Kona SD user manual (PDF created 23 January 2002), installation section",
+      "date": "2002",
+      "who": "AJA Video and Blackmagic Design",
+      "quote": "The software for your Kona SD has been developed by Blackmagic Design, and you will find the software CD included with your Kona SD.",
+      "url": "https://d26ddnfpy9hzf8.cloudfront.net/aja-web/public/pdf/support/KonaSD_Manual.pdf",
+      "archive": "http://web.archive.org/web/20261122181323/https://d26ddnfpy9hzf8.cloudfront.net/aja-web/public/pdf/support/KonaSD_Manual.pdf",
+      "file": "sources/blackmagic-aja-drivers/KonaSD_Manual.flat.txt",
+      "sha256": "3398823ee57f0cf711610721edd86fee4a2b3751a5ba5dce246e5e9987a244f5"
+    },
+    {
+      "what": "Same manual, copyright line on the warranty page",
+      "date": "2002",
+      "who": "Blackmagic Design",
+      "quote": "Copyright Blackmagic Design Pty. Ltd. 2002. All Rights Reserved.",
+      "url": "https://d26ddnfpy9hzf8.cloudfront.net/aja-web/public/pdf/support/KonaSD_Manual.pdf",
+      "archive": "http://web.archive.org/web/20261122181323/https://d26ddnfpy9hzf8.cloudfront.net/aja-web/public/pdf/support/KonaSD_Manual.pdf",
+      "file": "sources/blackmagic-aja-drivers/KonaSD_Manual.flat.txt",
+      "sha256": "3398823ee57f0cf711610721edd86fee4a2b3751a5ba5dce246e5e9987a244f5"
+    },
+    {
+      "what": "Blackmagic Design website, Hardware Partners page, Wayback capture of 9 January 2002",
+      "date": "2002-01-09",
+      "who": "Blackmagic Design",
+      "quote": "have a hardware product that you think would make a great QuickTime capture card, and we'll do the rest",
+      "url": "http://www.blackmagic-design.com/Hardware_Partners.html",
+      "archive": "https://web.archive.org/web/20020109114547/http://www.blackmagic-design.com:80/Hardware_Partners.html",
+      "file": "sources/blackmagic-aja-drivers/bmd_2002_Hardware_Partners.html",
+      "sha256": "ced802df551914b7a6471f80a247ef57b9edcb05e25e6f2f131fc918ff35e988"
+    },
+    {
+      "what": "MacTech news item of 26 August 2002 on Kona SD version 2.1",
+      "date": "2002-08-26",
+      "who": "MacTech",
+      "quote": "Blackmagic Design, in conjunction with AJA Video, today announced that the Kona SD uncompressed QuickTime video card is now compatible with Mac OS X 10.2.",
+      "url": "https://www.mactech.com/2002/08/26/kona-sd-2-1-offers-jaguar-compatibility/",
+      "archive": "http://web.archive.org/web/20260120004622/https://www.mactech.com/2002/08/26/kona-sd-2-1-offers-jaguar-compatibility/",
+      "file": "sources/blackmagic-aja-drivers/mactech_2002-08-26_konasd21.html",
+      "sha256": "205450625760c80d35187b8da36ff4520a0d0152f87ccd8fe13302a306a02a58"
+    },
+    {
+      "what": "Macworld news item of 29 January 2003 on Kona SD version 2.4",
+      "date": "2003-01-29",
+      "who": "Peter Cohen, Macworld",
+      "quote": "A joint development between AJA Video and Blackmagic Design, the Kona SD is available for US$3,295.",
+      "url": "https://www.macworld.com/article/157748/kona-6.html",
+      "archive": "http://web.archive.org/web/20230205033147/https://www.macworld.com/article/157748/kona-6.html",
+      "file": "sources/blackmagic-aja-drivers/macworld_kona_157748.html",
+      "sha256": "81880ef7f0d75fc1be36b1d7f7d01a54158c6914212ebb7cdb609efc9e216de0"
+    },
+    {
+      "what": "AJA founder John Abt's own history of AJA, Post Magazine, 25 June 2013",
+      "date": "2013-06-25",
+      "who": "John Abt",
+      "quote": "We released our first PCI card, a single framestore, in 1998",
+      "url": "https://www.postmagazine.com/Publications/Post-Magazine/2013/June-1-2013/AJA-Video-Systems-turns-20.aspx",
+      "archive": "http://web.archive.org/web/20260611041921/https://www.postmagazine.com/Publications/Post-Magazine/2013/June-1-2013/AJA-Video-Systems-turns-20.aspx",
+      "file": "sources/blackmagic-aja-drivers/postmag_aja20.html",
+      "sha256": "62f5f88a41deb76b41b648be0c65de64369ab99a8384bc6ee092c39eef46fd7d"
+    },
+    {
+      "what": "Interview with John Abt, TV Technology, 25 June 2018",
+      "date": "2018-06-25",
+      "who": "John Abt",
+      "quote": "at SIGGRAPH in 2001, we introduced the first KONA card",
+      "url": "https://www.tvtechnology.com/news/aja-ceo-john-abt-reflects-on-companys-25th-anniversary",
+      "archive": "http://web.archive.org/web/20260721074320/https://www.tvtechnology.com/news/aja-ceo-john-abt-reflects-on-companys-25th-anniversary",
+      "file": "sources/blackmagic-aja-drivers/tvtech_aja25.html",
+      "sha256": "25d3738ac47933f7bba33888c0b344c7a1c29988bda57d2a95da95e7d339be2c"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "The evidence is mixed. A Stanford study of start-ups found that technically focused founding teams reach product milestones faster and were 12.8 percent more likely to reach a favourable exit in cooperative markets, but that more diverse teams are better prepared to compete against established firms. A 2025 preprint on 2,113 Y Combinator companies found that founders' backgrounds explain less than 4% of the variation in funding. No study I found tests a founder's own hands-on skill against rivals.",
+    "source": {
+      "what": "Stanford School of Engineering news release on Eesley, Hsu and Roberts, Strategic Management Journal, 2 December 2013",
+      "quote": "a technically focused founding team had a 12.8 percent greater likelihood of a favorable exit",
+      "url": "https://engineering.stanford.edu/news/innovative-founders-give-tech-start-ups-edge-stanford-research-shows",
+      "archive": "http://web.archive.org/web/20261110125906/https://engineering.stanford.edu/news/innovative-founders-give-tech-start-ups-edge-stanford-research-shows",
+      "file": "sources/blackmagic-aja-drivers/stanford_eesley_2013.html",
+      "sha256": "e5971f3dd30f126b7c6a51434d00438e72f75b12dd854253d5e095e2777c43d6"
+    }
+  },
+  "search_steps": [
+    "Google Books: not tried for this story, because Google Books refused an earlier request in this batch with HTTP 429.",
+    "Web searches for Grant Petty and AJA drivers: only Hacker News comments by one user, dylan604, on 9 October 2023 (\"Urban legend says that he even wrote the first drivers of his competitor AJA boards\") and 21 October 2022 (\"rumors say\"). Both saved.",
+    "Hacker News comment search (Algolia) for \"Petty AJA\", \"Blackmagic AJA drivers\" and \"Petty drivers AJA\": the 2022 comment is the earliest telling found.",
+    "Open Library full-text search for \"Kona SD\" Blackmagic: two Final Cut Pro books (2003, 2004) that mention the Kona SD card; no telling of the story.",
+    "English Wikipedia Blackmagic Design article (lead only): founded 7 September 2001 by Grant Petty; first product DeckLink, 2002. No mention of AJA drivers.",
+    "Profiles of Petty (TV Technology 2020, Dynamic Business, British Cinematographer via Wayback): telecine engineer in Melbourne and Singapore; set up an earlier capture-card company with partners before Blackmagic. None mentions AJA. Forbes 2022 profile refused with HTTP 403; not retried. British Cinematographer refused curl with HTTP 403; used its Wayback copy.",
+    "AJA history: John Abt in Post Magazine (2013) and TV Technology (2018): first PCI card 1998, still-store cards sold to OEM vendors, first Kona cards at SIGGRAPH 2001. Abt also says Apple wrote the driver for AJA's later Io box.",
+    "A 2006 LAFCPUG forum post (Wayback) says the two firms used to work together, \"AJA provided the hardware and Blackmagic the software\". Used as a lead.",
+    "Followed the lead to the Kona SD manual on AJA's download server (PDF created 23 January 2002, copyright Blackmagic Design 2002) and to MacTech (2002) and Macworld (2003) news items. All saved and quoted.",
+    "Creative COW forum threads on Kona SD drivers refused with HTTP 403 and have no Wayback copy; not read.",
+    "Searched for a correction by the Hacker News teller: none found.",
+    "The Kona SD manual quotes are from KonaSD_Manual.flat.txt, made from the saved PDF with pdftotext (without -layout) and with all whitespace runs joined into single spaces, because the -layout text breaks the sentences across columns.",
+    "Wayback captures of blackmagic-design.com from January and February 2002 (Hardware Partners and Company Information pages, saved): the company offered to make partners' video boards QuickTime compatible.",
+    "For the lesson: the arXiv preprint 2512.13755v1 on Y Combinator founders (saved) and a Stanford release of 2 December 2013 on a study of founding teams (saved). The study itself in Strategic Management Journal was not read."
+  ],
+  "confidence_note": "The records show that Blackmagic, the company, wrote the Kona SD software; there is no record that Petty himself wrote it, and no record names the person who wrote the code. I could not find whether Blackmagic or Petty's earlier company also wrote software for AJA's 2001 Kona HD card or its 1998 PCI cards. The lesson source is a university press release about the study, not the study itself."
+}

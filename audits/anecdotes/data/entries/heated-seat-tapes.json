@@ -1,0 +1,64 @@
+{
+  "id": "heated-seat-tapes",
+  "as_told": "A system administrator, often said to be in Sweden, took the company's backup tapes home in his car each night for safe keeping. He put them on the passenger seat, which had an electric seat heater. When the backups were needed, every tape was blank: the seat heater had erased them.",
+  "lesson": "Ordinary low-power electrical equipment, such as a car seat heater, gives off enough magnetic field to silently erase backup tapes.",
+  "what_happened": "I found no record of this happening: no named person, company, date or report. The earliest telling I found is a 2012 Hacker News comment that calls it 'the story (urban legend?)', and a 2015 comment by the same person that says it came from 'one of the first books that I read', without naming the book. A 1972 National Bureau of Standards study found that a field of about 4000 A/m begins to affect a recorded computer tape, and that a field below the tape's coercivity (about 20,000 A/m) cannot erase it completely. The same study found that office bar magnets and picture hooks do exceed that coercivity. A seat heater is a low-voltage resistive wire; no measurement of its magnetic field is on record here.",
+  "false_part": "",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "2012-05-14",
+    "who": "Hacker News user larrys",
+    "where": "Hacker News comment thread, item 3972798",
+    "quote": "the guy in Sweden who brought his backup tapes home and erased them on the car's electric seats.",
+    "url": "https://news.ycombinator.com/item?id=3972798",
+    "archive": "http://web.archive.org/web/20250617013057/https://news.ycombinator.com/item?id=3972798",
+    "file": "sources/heated-seat-tapes/hn-3972798.html",
+    "sha256": "f4f204c5c3ea17b789acb42748416f6669ba8ede357bc9e28043e8f31d2fa07e"
+  },
+  "original": [
+    {
+      "what": "Retelling by the same teller: his later comment naming an unnamed early book as his source; a reply doubts the story because seat heaters run on DC",
+      "date": "2015-07-24",
+      "who": "Hacker News user larrys",
+      "quote": "One of the first books that I read talked about the story of the backup tapes on the car seat that were erased when someone in Sweden (?) with heated seats drove home.",
+      "url": "https://news.ycombinator.com/item?id=9944359",
+      "archive": "https://web.archive.org/web/20261122183603/https://news.ycombinator.com/item?id=9944359",
+      "file": "sources/heated-seat-tapes/hn-9944359.html",
+      "sha256": "1e596e2a1d08f7f2c48883bf4cb5dc12ec5fc8654b43bb2a81d098991e9ef9b1"
+    },
+    {
+      "what": "Lesson evidence, not a telling: NBS laboratory study of how strong a magnetic field must be to damage recorded computer tape",
+      "date": "1972-07",
+      "who": "Sidney B. Geller, National Bureau of Standards, Technical Note 735",
+      "quote": "4000 A/m (50 oersteds) will begin to affect the amplitude of a recorded",
+      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/TN/nbstechnicalnote735.pdf",
+      "archive": "http://web.archive.org/web/20260726155757/https://nvlpubs.nist.gov/nistpubs/Legacy/TN/nbstechnicalnote735.pdf",
+      "file": "sources/heated-seat-tapes/nbs-tn735.pdf.txt",
+      "sha256": "184c9d4ee1a89efb638d92d7ff322edfd0aeffeaf1af5f7801e79470139f359e"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "The NBS study found that a field of about 4000 A/m begins to affect a recorded tape, and that weak sources such as airport metal detectors (under 80 A/m) cannot harm it. It also found that some everyday objects, such as office bar magnets and picture hooks, give fields greater than the tape's coercivity and can cause large signal loss. So strong permanent magnets can damage tape, but no source I saved measures the field of a seat heater or other low-power electrical equipment. My own rough estimate for a seat-heater wire carrying about 10 A, seen from 5 mm, is about 300 A/m, which is below the level that affects tape; that figure is mine and is not from any source.",
+    "source": {
+      "what": "Sidney B. Geller, 'The Effects of Magnetic Fields on Magnetic Storage Media Used in Computers', NBS Technical Note 735 (July 1972)",
+      "quote": "These fields are greater than the typical computer",
+      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/TN/nbstechnicalnote735.pdf",
+      "archive": "http://web.archive.org/web/20260726155757/https://nvlpubs.nist.gov/nistpubs/Legacy/TN/nbstechnicalnote735.pdf",
+      "file": "sources/heated-seat-tapes/nbs-tn735.pdf.txt",
+      "sha256": "184c9d4ee1a89efb638d92d7ff322edfd0aeffeaf1af5f7801e79470139f359e"
+    }
+  },
+  "search_steps": [
+    "Open Library search-inside for \"heated seat\" backup tapes (120 hits), \"heated seats\" tapes erased (231 hits) and \"seat heater\" erased tapes (64 hits): only car repair manuals and fiction; no telling.",
+    "Web searches in English for heated seat or seat heater erasing backup tapes or floppies: found only the Hacker News comments (2012, 2015) and unrelated sysadmin stories (a tape erased on a UPS, a VW Beetle back seat). Saved the two Hacker News threads.",
+    "Swedish web search (stolsvärme raderade backupband / disketter): nothing.",
+    "RISKS Digest search via web search: no item on heated seats and tapes (checked volume 8 issues 48 and 51, which have unrelated BMW items).",
+    "Google Groups search of alt.folklore.computers for \"heated seats\" and seat heater tape, and of alt.folklore.urban for heated seat tapes erased: no telling. A 1996 alt.folklore.computers thread on magnetic-media legends has a tape-librarian magnet story but no seat-heater story.",
+    "The book that larrys remembers is not named; I could not identify it.",
+    "For the physics, saved NBS Technical Note 735 (1972) from nvlpubs.nist.gov and grep-checked the quotes."
+  ],
+  "confidence_note": "The story may be older than 2012, perhaps from a book on computer security or operations, but I could not find that book. No record rules the story out: the field of a real seat heater is not measured in any source I saved, and my 300 A/m figure is only a rough estimate. The NBS study tested 1970s tape with a coercivity of about 250 oersteds; I did not save a source on the coercivity of later tape types."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "cambridge-scrambled",
+  "as_told": "A text in scrambled spelling says that \"a rscheearch at Cmabrigde Uinervtisy\" found that the order of the letters in a word does not matter, as long as the first and last letters are in the right place. The reader can still read the text, which seems to prove the claim. The human mind is said to read each word as a whole, not letter by letter.",
+  "lesson": "The order of the letters inside a word does not matter for reading, as long as the first and last letters stay in place.",
+  "what_happened": "The text spread by email and on the web in September 2003; a mailing-list post of 17 September 2003 already has the Cambridge version, and a blog quoted on that list saw an earlier variant that said only \"an Elingsh uinervtisy\". No Cambridge study has been found. The research behind it is Graham Rawlinson's 1976 PhD thesis at the University of Nottingham, which he described in a letter to New Scientist on 29 May 1999: randomising the middle letters of words had little or no effect on skilled readers' understanding. His letter says to keep the first two and last two letters the same, not only the first and last. Later eye-movement studies found that jumbled text can be read but is read more slowly.",
+  "false_part": "The research was not done at Cambridge but in Rawlinson's 1976 PhD thesis at Nottingham, and the claim that letter order does not matter is too strong, because jumbled words slow reading.",
+  "class": "misattributed",
+  "also": "changed",
+  "earliest_telling": {
+    "date": "2003-09-17",
+    "who": "Donald James Cunningham, Indiana University, posting to the XMCA mailing list",
+    "where": "XMCA Mail 2003_09, message \"Lteter Oerdr?\"",
+    "quote": "Aoccdrnig to a rscheearch at Cmabrigde Uinervtisy, it deosn't mttaer in what oredr the ltteers in a wrod are",
+    "url": "https://lchc.ucsd.edu/MCA/Mail/xmcamail.2003_09.dir/0050.html",
+    "archive": "http://web.archive.org/web/20261122182246/https://lchc.ucsd.edu/MCA/Mail/xmcamail.2003_09.dir/0050.html",
+    "file": "sources/cambridge-scrambled/xmca_2003_09_0050.html",
+    "sha256": "d4f1df7180b47e2ae92f9d500898d97c569b2169dbf9a70ba7aebba28b765b40"
+  },
+  "original": [
+    {
+      "what": "Graham Rawlinson's letter to New Scientist, vol 162 issue 2188, 29 May 1999, page 55 (copy hosted on Matt Davis's page at the MRC Cognition and Brain Sciences Unit)",
+      "date": "1999-05-29",
+      "who": "Graham Rawlinson",
+      "quote": "This reminds me of my PhD at Nottingham University (1976), which showed that randomising letters in the middle of words had little or no effect on the ability of skilled readers to understand the text.",
+      "url": "https://www.mrc-cbu.cam.ac.uk/people/matt-davis/cmabrigde/newscientist_letter/",
+      "archive": "http://web.archive.org/web/20260715103538/https://www.mrc-cbu.cam.ac.uk/people/matt-davis/cmabrigde/newscientist_letter/",
+      "file": "sources/cambridge-scrambled/davis_newscientist_letter.html",
+      "sha256": "bbf10f09d571dbd067ee049af11f557e46be5866c506723dff812fd2f8d6683e"
+    },
+    {
+      "what": "Same letter: Rawlinson's own rule keeps two letters at each end",
+      "date": "1999-05-29",
+      "who": "Graham Rawlinson",
+      "quote": "keipeng the first two and last two the same",
+      "url": "https://www.mrc-cbu.cam.ac.uk/people/matt-davis/cmabrigde/newscientist_letter/",
+      "archive": "http://web.archive.org/web/20260715103538/https://www.mrc-cbu.cam.ac.uk/people/matt-davis/cmabrigde/newscientist_letter/",
+      "file": "sources/cambridge-scrambled/davis_newscientist_letter.html",
+      "sha256": "bbf10f09d571dbd067ee049af11f557e46be5866c506723dff812fd2f8d6683e"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "does not hold",
+    "why": "In an eye-movement study, sentences with transposed letters inside words could be read, but every kind of transposition made reading slower. The condition closest to the story, letters swapped inside the word near its end, slowed reading by 11%; swapping the first two letters, which the story does not allow, slowed it by 36%.",
+    "source": {
+      "what": "White, Johnson, Liversedge and Rayner, Eye movements when reading transposed text: the importance of word-beginning letters, Journal of Experimental Psychology: Human Perception and Performance, 2008 (PMC2662926)",
+      "quote": "Total sentence reading times ranged from 36% longer in the external beginning transposed condition to 11% longer in the internal ending transposed condition, compared to the control condition.",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2662926/",
+      "archive": "http://web.archive.org/web/20250223010905/https://pmc.ncbi.nlm.nih.gov/articles/PMC2662926/",
+      "file": "sources/cambridge-scrambled/White2008_PMC2662926.xml",
+      "sha256": "8a11f36366f7fe9ae86d383e230ba1fc9911aee72265d7abfce2ca88adf4ed16"
+    }
+  },
+  "search_steps": [
+    "Google Books: not tried for this story, because Google Books refused an earlier request in this batch with HTTP 429.",
+    "Open Library full-text search for \"Cmabrigde Uinervtisy\": 222 hits. The earliest by catalogue year is a children's book, What makes your body work? (A. & C. Black, catalogue date 2001), but it is a lending-only scan and its edition date could not be checked, so it is not used. Other hits are from 2005 on.",
+    "English Wikipedia and the sources it cites: not checked separately; Matt Davis's page, below, gave the same primary sources (Rawlinson's thesis and letter, the Rayner group's studies).",
+    "Matt Davis's page at the MRC Cognition and Brain Sciences Unit, Cambridge (saved, lead only): says the text circulated in September 2003 and points to Rawlinson's 1999 New Scientist letter, his 1976 Nottingham thesis and Rayner et al. 2006.",
+    "Web search found the XMCA mailing list thread \"Lteter Oerdr?\" of 17 September 2003. Message 0050 has the full Cambridge text. Message 0054 (saved) quotes a blog, Uncle Jazzbeau's Gallimaufrey, dated 14 and 15 September 2003, which saw an \"Elingsh uinervtisy\" variant before the Cambridge one. The site's certificate failed in curl, so the two messages were downloaded with certificate checking off.",
+    "Tried the blog (bisso.com/ujg) in Wayback: no capture from September 2003. Tried an ILX forum thread of 18 September 2003: refused with HTTP 403; its only Wayback capture is from 2026. Not used.",
+    "Know Your Meme (lead) says the text spread on LiveJournal in September 2003; not followed further.",
+    "New Scientist letter: could not find it on newscientist.com; used the transcription hosted by Matt Davis, which gives volume, issue, page and the signature Graham Rawlinson, Aldershot, Hampshire.",
+    "Rawlinson's 1976 thesis, The significance of letter position in word recognition, is not online in full text; not quoted.",
+    "Rayner, White, Johnson and Liversedge (2006), Psychological Science 17(3): the Leicester repository copy returned an empty response (HTTP 202) twice; not quoted. Used the open 2008 study by the same group from PubMed Central for the lesson.",
+    "Searched for a correction by the teller: the original author of the 2003 text is unknown, so none can be found.",
+    "Usenet archives (Google Groups): not tried.",
+    "Tried the Wayback capture of the blog's front page of 2 December 2003: it no longer shows the September posts; deleted."
+  ],
+  "confidence_note": "The New Scientist letter is quoted from a copy on a Cambridge researcher's web page, not from the magazine itself. The link from the 2003 text to Rawlinson's thesis is an inference made by Matt Davis and others; the 2003 text does not cite him. The first author of the 2003 text is not known, and earlier versions may exist; Know Your Meme reports copies on web pages cached in 2001, which I did not check. The lesson verdict rests on one eye-movement study; it shows a cost of 11% to 36% in reading time, not that jumbled text is unreadable."
+}

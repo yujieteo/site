@@ -1,0 +1,86 @@
+{
+  "id": "cancer-treatment-empire",
+  "as_told": "When Britain still had its empire, upper-class men with cancer went to the tropics \"for one last adventure\". Some caught a tropical disease with a dangerously high fever, and when they survived it, their tumours shrank. This is said to be how heat or fever treatment for cancer (hyperthermia therapy) was discovered.",
+  "lesson": "A high fever or raised body heat can make tumours shrink, and this treatment has been wrongly ignored.",
+  "what_happened": "The link between fever and shrinking tumours was reported by surgeons in hospitals, not by travellers in the tropics. William B. Coley of New York wrote in 1893 that he began his work after finding a case at the New York Hospital: a 31-year-old German man whose sarcoma of the neck, left after five operations, disappeared during two attacks of erysipelas, a streptococcal skin infection with fever. Coley also listed earlier German cases, including one by Busch, and he then infected patients on purpose. Modern hyperthermia uses heat, usually together with radiotherapy.",
+  "false_part": "The observation came from hospital patients in New York and Germany who caught erysipelas, not from upper-class men of the British Empire who travelled to the tropics.",
+  "class": "misattributed",
+  "also": "",
+  "earliest_telling": {
+    "date": "2023-08-03",
+    "who": "Modified3019 (Hacker News user)",
+    "where": "Hacker News comment in the thread \"New targeted chemotherapy able to kill all solid tumors\", reply about hyperthermia therapy",
+    "quote": "upper class guys with cancer heading off to some tropical place",
+    "url": "https://news.ycombinator.com/item?id=36988859",
+    "archive": "http://web.archive.org/web/20231203214647/https://news.ycombinator.com/item?id=36988859",
+    "file": "sources/cancer-treatment-empire/hn_36988859.html",
+    "sha256": "0c8816ba98ddb62d86ab3d032eae8e5384989eda6503d1d83d6a341f1ef24e6a"
+  },
+  "original": [
+    {
+      "what": "William B. Coley, The treatment of malignant tumors by repeated inoculations of erysipelas: with a report of ten original cases, American Journal of the Medical Sciences, vol 105, no 5, May 1893 (Wellcome Library scan on archive.org)",
+      "date": "1893-05",
+      "who": "William B. Coley",
+      "quote": "While  collect¬ ing  the  cases  of  sarcoma  treated  at  the  New  York  Hospital  during the  past  fifteen  years,  I  found  a  case",
+      "url": "https://archive.org/download/b30587979/b30587979_djvu.txt",
+      "archive": "https://archive.org/details/b30587979",
+      "file": "sources/cancer-treatment-empire/b30587979_djvu.txt",
+      "sha256": "5229918a296a09a8e7dc63943fc6ce88bc562aba0b19b3740fbc55c6252a573f"
+    },
+    {
+      "what": "Same paper, the patient in that case",
+      "date": "1893-05",
+      "who": "William B. Coley",
+      "quote": "This  was  one  of  round-celled  sarcoma  of  the  neck,  occurring  in  a German,  aged  thirty-one  years.",
+      "url": "https://archive.org/download/b30587979/b30587979_djvu.txt",
+      "archive": "https://archive.org/details/b30587979",
+      "file": "sources/cancer-treatment-empire/b30587979_djvu.txt",
+      "sha256": "5229918a296a09a8e7dc63943fc6ce88bc562aba0b19b3740fbc55c6252a573f"
+    },
+    {
+      "what": "Same paper, what happened to the tumour",
+      "date": "1893-05",
+      "who": "William B. Coley",
+      "quote": "During  the  progress  of  the  erysipelas  the  remains  of  the  sarcoma entirely  disappeared",
+      "url": "https://archive.org/download/b30587979/b30587979_djvu.txt",
+      "archive": "https://archive.org/details/b30587979",
+      "file": "sources/cancer-treatment-empire/b30587979_djvu.txt",
+      "sha256": "5229918a296a09a8e7dc63943fc6ce88bc562aba0b19b3740fbc55c6252a573f"
+    },
+    {
+      "what": "Same paper, an earlier German case in Coley's list",
+      "date": "1893-05",
+      "who": "William B. Coley",
+      "quote": "The  sixth  case  (Busch’s)  was  a  multiple  sarcoma  of  the  face  that entirely  disappeared  after  an  attack  of  facial  erysipelas",
+      "url": "https://archive.org/download/b30587979/b30587979_djvu.txt",
+      "archive": "https://archive.org/details/b30587979",
+      "file": "sources/cancer-treatment-empire/b30587979_djvu.txt",
+      "sha256": "5229918a296a09a8e7dc63943fc6ce88bc562aba0b19b3740fbc55c6252a573f"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "A Cochrane review of six randomised trials in advanced cervical cancer found that adding heat to radiotherapy gave more complete responses and better survival, but its authors say the trials are too few and flawed for definite conclusions. I found no trial evidence that fever or heat alone shrinks tumours.",
+    "source": {
+      "what": "Lutgens L. et al., Combined use of hyperthermia and radiation therapy for treating locally advanced cervix carcinoma, Cochrane Database of Systematic Reviews 2010, CD006377 (PubMed abstract)",
+      "quote": "prohibit drawing definite conclusions regarding the impact of adding hyperthermia to standard radiotherapy",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20238344/",
+      "archive": "http://web.archive.org/web/20231115163432/https://pubmed.ncbi.nlm.nih.gov/20238344/",
+      "file": "sources/cancer-treatment-empire/pubmed_20238344_abstract.txt",
+      "sha256": "f5ab48032a685053e6ed6a2390558f4b9bfdb2361b35806f4239e7be6e521a04"
+    }
+  },
+  "search_steps": [
+    "The one-line story did not name a treatment. Web searches for a cancer treatment found by observing upper-class men of the British Empire found nothing. I asked the main session for the wording; no answer came.",
+    "Hacker News comment search (Algolia) with short queries: cancer \"British Empire\" (2 unrelated hits), cancer aristocrats (4 unrelated), cancer \"upper class\" treatment (3 hits, one of them the story), cancer colonial India treatment (0). Story searches gave 0 hits.",
+    "The matching comment, by Modified3019 on 3 August 2023, says the story is \"apocryphal\" and gives no source. Its parent comment quotes \"Hyperthermia Therapy\", so the treatment is heat or fever therapy. Both saved.",
+    "Open Library full-text search for cancer, tropics, fever and \"one last adventure\": 137 hits, none relevant.",
+    "Open Library full-text search for \"repeated inoculations of erysipelas\" found Coley's 1893 paper as a public Wellcome Library scan (b30587979). Full text saved and quoted.",
+    "Coley's 1891 paper in Annals of Surgery is in PubMed Central (PMC1428624) only as page scans without text; not quoted.",
+    "PubMed search for hyperthermia, radiotherapy and cervix cancer: Cochrane review 20238344 (2010). Abstract saved.",
+    "Google Books and newspaper archives: not tried for this story, because the only telling found is from 2023.",
+    "Searched for a correction by the teller: none, but the teller called the story apocryphal in the comment itself."
+  ],
+  "confidence_note": "I am not certain that this Hacker News comment is the story the audit meant; it is the only telling I found that matches the one-line summary. Earlier tellings may exist. Coley's 1893 paper records the hospital route to fever therapy; I did not find any record of British travellers cured by tropical fever, but a missing record alone does not rule it out, so the class rests on the documented origin being elsewhere."
+}

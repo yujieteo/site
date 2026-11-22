@@ -1,0 +1,96 @@
+{
+  "id": "betamax-porn",
+  "as_told": "In the videotape format war of the late 1970s and 1980s, Sony refused to allow adult films on its Betamax format, while JVC's VHS took them. Since adult films were a large share of early tape sales, buyers chose VHS. That is why the technically better Betamax lost.",
+  "lesson": "Whoever wins the adult-content market decides a media format war.",
+  "what_happened": "Betamax did lose to VHS, but adult films were sold on Betamax: adult-video advertising text quoted in a 2016 university-press history (nearby snippets refer to 1979) offered titles 'in both Betamax and VHS formats', at $89.50 for Betamax and $99.50 for VHS. Cusumano, Mylonadis and Rosenbloom's history of the contest finds that in the late 1970s three-quarters of US VCR owners bought no prerecorded tapes at all. It attributes the VHS win to JVC's alliances for production and distribution and to Matsushita's commitments, with VHS dominance of tape-rental channels only hastening the end. Early Betamax tapes held one hour, while RCA had concluded in 1974 that two hours was the minimum for success. I did not find any record of a 1970s Sony policy against adult films. The only Sony policy on adult titles I found is from 2007, when reports said Sony's disc plant would not replicate adult films on Blu-ray; that is a different format and decade.",
+  "false_part": "Adult films were available on Betamax, and adult tapes were not what decided the contest; recording time and the alliances behind VHS were.",
+  "class": "changed",
+  "also": "unsupported",
+  "earliest_telling": {
+    "date": "1995-03-17",
+    "who": "Andrew C Bulhak (question), quoted in a reply by Harry M. F. Teasley",
+    "where": "Usenet alt.folklore.urban, thread 'Betamax died because of porn ban?'",
+    "quote": "licensing agreement by Sony which prohibited the use of Betamax for",
+    "url": "https://groups.google.com/g/alt.folklore.urban/c/RsFmYsjgRs4",
+    "archive": "https://web.archive.org/web/20261122184154/https://groups.google.com/g/alt.folklore.urban/c/RsFmYsjgRs4",
+    "file": "sources/betamax-porn/googlegroups-afu-1995-03-17-betamax-porn-ban.html",
+    "sha256": "925ab13a2cd6d35da8a62f7c577fb417fca7a38396b9a48e37ca680cfa04f03b"
+  },
+  "original": [
+    {
+      "what": "Adult-video advertising text quoted in Peter Alilunas, Smutty Little Movies: The Creation and Regulation of Adult Video (University of California Press, 2016); text known only from an Open Library search snippet",
+      "date": "2016 (catalogue date not confirmed; nearby snippets refer to 1979)",
+      "who": "Peter Alilunas (advertising text quoted in the book)",
+      "quote": "TVX, QUALITY X in both Betamax and VHS formats. ALL TITLES: Betamax $89.50 VHS $99.50 plus tax",
+      "url": "https://openlibrary.org/search/inside.json?q=%22X-rated%22%20Betamax%20VHS%201979",
+      "archive": "https://archive.org/details/smuttylittlemovi0000alil",
+      "file": "sources/betamax-porn/openlibrary-inside-xrated-betamax-vhs.json.txt",
+      "sha256": "b6cf4d659f01c46f8de5e42bd4833ace81242c35f9eb45b5ac14e3d4767f3249"
+    },
+    {
+      "what": "Same book, Alilunas's own sentence on early adult-video prices (search snippet)",
+      "date": "2016",
+      "who": "Peter Alilunas",
+      "quote": "Prices were set at $89.50 for Betamax and $99.50 for VHS.",
+      "url": "https://openlibrary.org/search/inside.json?q=%22X-rated%22%20Betamax%20VHS%201979",
+      "archive": "https://archive.org/details/smuttylittlemovi0000alil",
+      "file": "sources/betamax-porn/openlibrary-inside-xrated-betamax-vhs.json.txt",
+      "sha256": "b6cf4d659f01c46f8de5e42bd4833ace81242c35f9eb45b5ac14e3d4767f3249"
+    },
+    {
+      "what": "Business-history study of the VHS-Beta contest: few early owners bought prerecorded tapes",
+      "date": "1991 (working paper; published in Business History Review 66(1), 1992)",
+      "who": "Michael A. Cusumano, Yiorgos Mylonadis and Richard Rosenbloom, MIT",
+      "quote": "1970s, three-quarters of all VCR owners bought no pre-recorded tapes.",
+      "url": "https://dspace.mit.edu/bitstream/handle/1721.1/17091/JP-WP-91-08-23715224.pdf",
+      "archive": "http://web.archive.org/web/20230812152924/http://dspace.mit.edu/bitstream/handle/1721.1/17091/JP-WP-91-08-23715224.pdf",
+      "file": "sources/betamax-porn/cusumano-1991-mitjp-91-08.pdf.txt",
+      "sha256": "18bf8274dcd776c3c3ad4c7a52f0037e37d869b32a2983833f79cfec16d8d6fa"
+    },
+    {
+      "what": "Same study: RCA's 1974 market test and the two-hour requirement that early Betamax did not meet",
+      "date": "1991",
+      "who": "Michael A. Cusumano, Yiorgos Mylonadis and Richard Rosenbloom",
+      "quote": "1974 and concluded that a minimum 2-hour playing time was necessary for commercial",
+      "url": "https://dspace.mit.edu/bitstream/handle/1721.1/17091/JP-WP-91-08-23715224.pdf",
+      "archive": "http://web.archive.org/web/20230812152924/http://dspace.mit.edu/bitstream/handle/1721.1/17091/JP-WP-91-08-23715224.pdf",
+      "file": "sources/betamax-porn/cusumano-1991-mitjp-91-08.pdf.txt",
+      "sha256": "18bf8274dcd776c3c3ad4c7a52f0037e37d869b32a2983833f79cfec16d8d6fa"
+    },
+    {
+      "what": "Retelling, not evidence: a widely cited modern telling (cited by English Wikipedia) that states the Sony refusal as fact",
+      "date": "2014-02-14",
+      "who": "Jeremy Glass, Thrillist",
+      "quote": "Sony toiled over the pornography issue, but ultimately decided against allowing smutty movies to be recorded onto the Betamax format.",
+      "url": "https://www.thrillist.com/vice/how-porn-influenced-technology-8-ways-porn-influenced-tech-supercompressor-com",
+      "archive": "https://web.archive.org/web/20210620104530/https://www.thrillist.com/vice/how-porn-influenced-technology-8-ways-porn-influenced-tech-supercompressor-com",
+      "file": "sources/betamax-porn/thrillist-2014-wayback.html",
+      "sha256": "ba36f6f7f7c4dc3ec726c47d69f29c7af095e1a232267a3f4270e806f5e89398"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "does not hold",
+    "why": "For the case the lesson is built on, the business-history study finds that production and distribution alliances decided the contest, and that prerecorded tapes (of any kind) mattered only from the mid-1980s, after VHS already led. The study does not mention adult films at all.",
+    "source": {
+      "what": "Cusumano, Mylonadis and Rosenbloom, 'Strategic Maneuvering and Mass-Market Dynamics: The Triumph of VHS over Beta', MIT Japan Program working paper MITJP 91-08 (published in Business History Review, 1992)",
+      "quote": "commitments of its ally, Matsushita, proved to be the decisive factors in the triumph",
+      "url": "https://dspace.mit.edu/bitstream/handle/1721.1/17091/JP-WP-91-08-23715224.pdf",
+      "archive": "http://web.archive.org/web/20230812152924/http://dspace.mit.edu/bitstream/handle/1721.1/17091/JP-WP-91-08-23715224.pdf",
+      "file": "sources/betamax-porn/cusumano-1991-mitjp-91-08.pdf.txt",
+      "sha256": "18bf8274dcd776c3c3ad4c7a52f0037e37d869b32a2983833f79cfec16d8d6fa"
+    }
+  },
+  "search_steps": [
+    "Open Library search-inside for Sony Betamax pornography refused: 0 hits; for \"Sony refused\" pornographic Beta: 15 hits, none a telling.",
+    "Open Library search-inside for Betamax pornography Sony VHS (1774 hits) and \"X-rated\" Betamax VHS 1979 (710 hits): found Alilunas 2016 (catalogue offering adult titles in both formats), McNitt 1982 Home Video Sourcebook and Mahony et al., Keeping PACE with the New Television (a table giving the X-rated share of video titles). Saved the search results; the books are lending-only, so their full text could not be downloaded and only snippets are quoted.",
+    "Tried Lardner, Fast Forward (1987) full text and search-inside on archive.org: 'Item not available' (lending-only).",
+    "English Wikipedia 'Videotape format war' cites only Thrillist (2014) and Macworld (2006) for the porn claim. Saved both. The Macworld piece quotes E!'s Ron Wagner saying porn went out on VHS; it does not say Sony refused.",
+    "Google Groups search of alt.folklore.urban for betamax porn sony: found the thread of 17 March 1995 'Betamax died because of porn ban?', where Andrew C Bulhak's question about a Sony licence banning porn is quoted. Saved it and requested a Wayback copy. Bulhak's own post is not in the saved page.",
+    "Saved the 1996 alt.folklore.urban white paper on Betamax (Helge Moulding, Wayback 1998 copy); it does not mention adult films. Saved a 2003 Straight Dope thread whose first post says early porn was nearly all on VHS.",
+    "Tried Billboard 1979 issues on worldradiohistory.com: blocked (Cloudflare). Tried Papers Past (1981 article on home cassettes): blocked (Incapsula). Did not retry.",
+    "The Skeptic (July 2026) debunking article used only as a lead; it says Sony would not duplicate adult films on its own equipment but gives no source. A web search for a Sony duplication policy found only Sony's 2007 Blu-ray policy (Sony DADC would not replicate adult titles, per Computerworld and InfoWorld; not saved). No 1970s Sony statement was found.",
+    "Saved the Cusumano, Mylonadis and Rosenbloom working paper from its Wayback copy (dspace.mit.edu served a bot page)."
+  ],
+  "confidence_note": "The evidence that adult films were sold on Betamax comes from Open Library search snippets of Alilunas's 2016 book, not from a full text or an original 1970s document, so the catalogue's exact date is not confirmed. I could not confirm or rule out that Sony refused to duplicate adult films in its own plants; if it did, that would be a narrower and true kernel. The earliest telling found is a 1995 Usenet question; the claim is likely older."
+}

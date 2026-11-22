@@ -1,0 +1,56 @@
+{
+  "id": "railway-last-kiss",
+  "as_told": "A railway worker is crushed between two wagons or cars at the coupling. He is still conscious, but everyone knows that he will bleed to death as soon as the wagons are moved apart. His wife is brought to the scene, she kisses him goodbye, and then the wagons are separated and he dies.",
+  "lesson": "A person who is crushed and pinned can stay alive while the pressure holds and then die soon after being freed.",
+  "what_happened": "I found no report made at the time that names a railway worker whose wife was brought to kiss him before the wagons were moved. The earliest telling I found is a 1990 newspaper column by the folklorist Jan Harold Brunvand. He printed two letters from railroad staff who heard the story from co-workers (one in 1979, one in 1966-68), each set on the Missouri Pacific Railroad, and he linked it to a legend he calls \"The Last Kiss\", which he had also heard set in a Utah steel-rolling mill and, in 1988, in a New Zealand gravel crusher. The tellers he quotes doubted the story, and no victim's name, date or place is given.",
+  "false_part": "",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "1990-11-27",
+    "who": "Jan Harold Brunvand, quoting a letter from Elisa E. Tubbs of the Union Pacific Railroad",
+    "where": "Deseret News, \"A Couple of Familiar Railroad Tales\"",
+    "quote": "he was coupled between two rail cars, completely through his midsection",
+    "url": "https://www.deseret.com/1990/11/27/18893366/a-couple-of-familiar-railroad-tales/",
+    "archive": "http://web.archive.org/web/20241106143440/https://www.deseret.com/1990/11/27/18893366/a-couple-of-familiar-railroad-tales/",
+    "file": "sources/railway-last-kiss/deseret-1990-11-27-brunvand-railroad-tales.html",
+    "sha256": "b75643e982500dc935219565f38202e1ba1132291b9b7a4e11fb0a6f66f86590"
+  },
+  "original": [
+    {
+      "what": "The same column, giving the date and source of the oral telling it reports; no record of an actual accident is cited",
+      "date": "1990-11-27",
+      "who": "Elisa E. Tubbs, quoted by Jan Harold Brunvand",
+      "quote": "In 1979 I was told this by a co-worker who was deadly serious",
+      "url": "https://www.deseret.com/1990/11/27/18893366/a-couple-of-familiar-railroad-tales/",
+      "archive": "http://web.archive.org/web/20241106143440/https://www.deseret.com/1990/11/27/18893366/a-couple-of-familiar-railroad-tales/",
+      "file": "sources/railway-last-kiss/deseret-1990-11-27-brunvand-railroad-tales.html",
+      "sha256": "b75643e982500dc935219565f38202e1ba1132291b9b7a4e11fb0a6f66f86590"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "Medical reviews of crush syndrome say that after prolonged crushing of muscle a patient can deteriorate suddenly after being freed, mainly from high blood potassium. That evidence is about hours of crushed muscle; I found no evidence that a person cut through the body at a coupling stays alive until the wagons are moved.",
+    "source": {
+      "what": "Usuda et al., \"Crush syndrome: a review for prehospital providers and emergency clinicians\", Journal of Translational Medicine 21:584, 2023",
+      "quote": "risk shortly after extrication; the mainstay treatment is",
+      "url": "https://translational-medicine.biomedcentral.com/counter/pdf/10.1186/s12967-023-04416-9.pdf",
+      "archive": "http://web.archive.org/web/20250404201602/https://translational-medicine.biomedcentral.com/counter/pdf/10.1186/s12967-023-04416-9.pdf",
+      "file": "sources/railway-last-kiss/usuda-2023-crush-syndrome-review.pdf",
+      "sha256": "8eac347740bcdd512b6a5ed3a3597c01b5903c9e69b1900f6df563bb7abb8a7e"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search for \"last kiss\" with switchman: only novels and poems; no telling of this story.",
+    "English Wikipedia search (API) for the story: no article.",
+    "Web searches for a brakeman, switchman or shunter caught between cars or buffers whose wife was brought to kiss him before the cars or wagons were moved: found many real accident reports (Utah Digital Newspapers, Papers Past, a 2006 UK accident report at Dagenham) but none with the wife or the kiss.",
+    "Nebraska Newspapers full-text search (nebnewspapers.unl.edu), 1870-1925, for 'kissed his wife' near cars and crushed, and for brakeman, wife, kiss, cars, caught, between: no matching report.",
+    "Chronicling America (loc.gov), Papers Past and HathiTrust returned bot challenges (403) and could not be searched directly. Google Books API returned 429.",
+    "Saved Brunvand's Deseret News column of 27 November 1990: two railroad letters (Tubbs, told in 1979; Dixon, told in 1966-68, a priest instead of the wife) and the related 'Last Kiss' legend set in a steel mill and a New Zealand shingle crusher.",
+    "Searched for an earlier printed telling of 'The Last Kiss' (folklore newsletters, Snopes leads): none found before 1990.",
+    "No teller can be identified, so there is no teller correction to look for.",
+    "Lesson: tried StatPearls (NCBI, reCAPTCHA) and Europe PMC full-text XML (error 500); saved the open-access Usuda et al. 2023 review from the publisher."
+  ],
+  "confidence_note": "Real accidents with men caught between cars were common, so a case like this could have happened without my finding it; archives I could not search (Chronicling America, Trove, Papers Past) may hold one. Brunvand's column is folklore research, and he states that he does not know whether any such accident happened."
+}
