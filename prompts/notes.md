@@ -16,4 +16,4 @@ The guide is built from `src/notes.ts`. It gives the list to read, the line form
 
 - `calls` and `outcomes`: not for this prompt. Calls come from `scripts/prices/passthrough.py` and outcomes from `scripts/prices/resolve.ts`, as `prompts/singapore-prices-deep.md` says. Never edit a merged call.
 
-To add a policy source or change the rules, use the prompt in the [server repo](https://github.com/yujieteo/server/blob/main/prompts/singapore-policy-actionables.md).
+To add a policy source or change the rules, edit the source list and the rules at the top of [sbin/sg-update](https://github.com/yujieteo/server/blob/main/sbin/sg-update) in the server repo.
