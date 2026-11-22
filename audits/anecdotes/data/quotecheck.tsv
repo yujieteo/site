@@ -12,6 +12,14 @@ archimedes-bath	earliest_telling	ok	sources/archimedes-bath/vitruvius-9pr-eng.ht
 archimedes-bath	original[0]	ok	sources/archimedes-bath/vitruvius-9pr-lat.html	7fa9f516c964476c7b1199e7c416397ea71354cc7b594e1d478043adbbf7fa8f
 archimedes-bath	original[1]	ok	sources/archimedes-bath/vitruvius-9pr-eng.html	367380369b4cf94cbfb6849cb11fb23df29613587aea0ba408aac8e434ee263f
 archimedes-bath	lesson_verdict.source	ok	sources/archimedes-bath/sio-ormerod2009.pdf	4f5daed6cbc20d493bfc582b0ae3ec65030df0ceb8723b97443990d417aa50d8
+aristotle-alexander-letter	earliest_telling	ok	sources/aristotle-alexander-letter/budge-1896-ethiopic-alexander-cu31924091208573_djvu.txt	ab982b99ca26b69f0b38dd32f33880cf638fafe79d80ffdb704814e7bb5c3952
+aristotle-alexander-letter	original[0]	ok	sources/aristotle-alexander-letter/herodotus-5-92F-godley-perseids.txt	731e76adf9264b4b313ef7d7304385a0e07dca8d990ea20885db1f525ceb8a51
+aristotle-alexander-letter	original[1]	ok	sources/aristotle-alexander-letter/aristotle-politics-3-jowett-mit.txt	0408914e4a275461526f47fa32946b6f93a78aca21e0e6861609707663921864
+aristotle-alexander-letter	original[2]	ok	sources/aristotle-alexander-letter/aristotle-politics-5-jowett-mit.txt	dfba8559707e34695ea959f28db5b2888625f69cdc9c16d9bfe981e472354b67
+aristotle-alexander-letter	original[3]	ok	sources/aristotle-alexander-letter/steele-1920-opera-baconi-05-secretum_djvu.txt	b9fcf736fd309bf1344dba3c5c51d51c15220c404e30ff58b3709a0be224666b
+aristotle-alexander-letter	original[4]	ok	sources/aristotle-alexander-letter/plutarch-de-fortuna-alexandri-1-loeb-penelope.txt	d88c41c49a26d945b587a3da0bc89d8f372e88afb84b93e6ca5e3e6e12737881
+aristotle-alexander-letter	original[5]	ok	sources/aristotle-alexander-letter/budge-1896-ethiopic-alexander-cu31924091208573_djvu.txt	ab982b99ca26b69f0b38dd32f33880cf638fafe79d80ffdb704814e7bb5c3952
+aristotle-alexander-letter	lesson_verdict.source	no quote		
 atari-et	earliest_telling	ok	sources/atari-et/clip-177220593.ocr.txt	b3de92e493f330a6b2f8256c1bc3f09c26be1c7c795e92e4a59d3bd43dbb65b4
 atari-et	original[0]	ok	sources/atari-et/clip-177220108.ocr.txt	f203b1c68c009d0d65a1756bcdeb1f95cdfab499d056ceae5082d50770ed654a
 atari-et	original[1]	ok	sources/atari-et/clip-177220200.ocr.txt	0708911a61c6de13114ac06ae8edf11770ba7a04e847d9cfe9879db76b590d95
@@ -124,6 +132,14 @@ ellis-island-names	original[0]	ok	sources/ellis-island-names/immigrationameri00d
 ellis-island-names	original[1]	ok	sources/ellis-island-names/uscis-immigrant-name-changes.html	be68bda26868effceaaa8a553d2d758f0643c29940359be252fbe9faccb60d95
 ellis-island-names	original[2]	ok	sources/ellis-island-names/uscis-immigrant-name-changes.html	be68bda26868effceaaa8a553d2d758f0643c29940359be252fbe9faccb60d95
 ellis-island-names	lesson_verdict.source	ok	sources/ellis-island-names/uscis-immigrant-name-changes.html	be68bda26868effceaaa8a553d2d758f0643c29940359be252fbe9faccb60d95
+f16-equator	earliest_telling	ok	sources/f16-equator/usenet-1983-06-famous-bugs.html	89140f013c2c01f012d37fb8617e3bd623b1e9e285eba2dac2e5a4bae7548d49
+f16-equator	original[0]	ok	sources/f16-equator/usenet-1983-06-famous-bugs.html	89140f013c2c01f012d37fb8617e3bd623b1e9e285eba2dac2e5a4bae7548d49
+f16-equator	original[1]	ok	sources/f16-equator/risks-3-44.html	60fae23f8a5052331a52a03df94d13d0fdc439e9ca7c0883c02e42dcf39cf415
+f16-equator	teller_correction	ok	sources/f16-equator/neumann-illustrative-risks.html	45c158129f4c292bdfbf08dd823a560789a4bd6a4c1afe9da0cd7855157959a8
+f16-equator	lesson_verdict.source	ok	sources/f16-equator/risks-3-46.html	b15d7527218e5f01b661d562493c7dbebc6b9dc1e759f9b9b188b10936ebdace
+faraday-tax	earliest_telling	ok	sources/faraday-tax/lecky-1899-democracy-liberty-intro_djvu.txt	e9fa29ce9db43f91bc095bfac92607fc5bc10917555d94a9bb5ec63b0deb2964
+faraday-tax	original[0]	ok	sources/faraday-tax/lecky-1899-democracy-liberty-intro_djvu.txt	e9fa29ce9db43f91bc095bfac92607fc5bc10917555d94a9bb5ec63b0deb2964
+faraday-tax	lesson_verdict.source	ok	sources/faraday-tax/ahmadpoor-jones-2017-dual-frontier.pdf	e952471065d95e03b8eb9bf2ce233915c443149977d9a013cd394bbd8769c8b8
 fidelity-dead-investors	earliest_telling	ok	sources/fidelity-dead-investors/bi-2014-09-04.html	0546c1bba46130d933abb8022d59116ac09bf303936b68aedd366a164d4a9a93
 fidelity-dead-investors	original[0]	ok	sources/fidelity-dead-investors/bi-2014-09-04.html	0546c1bba46130d933abb8022d59116ac09bf303936b68aedd366a164d4a9a93
 fidelity-dead-investors	original[1]	ok	sources/fidelity-dead-investors/bi-2014-09-04.html	0546c1bba46130d933abb8022d59116ac09bf303936b68aedd366a164d4a9a93
@@ -132,6 +148,11 @@ five-monkeys	earliest_telling	ok	sources/five-monkeys/openlibrary-inside-oncedes
 five-monkeys	original[0]	ok	sources/five-monkeys/openlibrary-inside-stephenson-1969-method.json	7512164d21973d5ff135efe6b5a1b9a5f2a06c9e2e0cb9439ce7dba9bc3e4452
 five-monkeys	original[1]	ok	sources/five-monkeys/openlibrary-inside-stephenson-1969-airblast.json	9d08572c4b84224e2aa5bd30d165fa6806f27422fd1a4122b96946441307d486
 five-monkeys	lesson_verdict.source	ok	sources/five-monkeys/baum-2004-cultural-evolution-microsocieties.html	c1c90c30f0db7df682ef89689cdde594f09b42ef9f503877d492f7004bad7fa5
+flexible-glass	earliest_telling	ok	sources/flexible-glass/petronius51-en.html	b6223da0802bb4b8749a9c397986a69b3a1b1c148735352020ddf2545cc4f8e4
+flexible-glass	original[0]	ok	sources/flexible-glass/pliny36-66-en.html	9a32db3c9772a03443cc35f828daab3376f01f9c7f24e3ebcf606986ac16d64d
+flexible-glass	original[1]	ok	sources/flexible-glass/pliny36-66-en.html	9a32db3c9772a03443cc35f828daab3376f01f9c7f24e3ebcf606986ac16d64d
+flexible-glass	original[2]	ok	sources/flexible-glass/dio57.html	4f8868aa47c60d5817774636977b9428d42a8d8a1f144619c8bb88a55bc0938b
+flexible-glass	lesson_verdict.source	ok	sources/flexible-glass/killer-acquisitions-2021.pdf	7af6b472a574e89a8d68ba67408cef8a0b0c5f43403d5ee51a95d50536abc694
 ford-five-dollar	earliest_telling	ok	sources/ford-five-dollar/todaytomorrow0000ford_t6y5_djvu.txt	6a3141c4a42e2787154500fd0d0c8de1a7673377b49ed6891b79beb818724141
 ford-five-dollar	original[0]	ok	sources/ford-five-dollar/mylifework00ford_djvu.txt	bbff35e1436b82dd9104f2219f382adde6e0ea63282eb5b490e97388b75b42d8
 ford-five-dollar	original[1]	ok	sources/ford-five-dollar/mylifework00ford_djvu.txt	bbff35e1436b82dd9104f2219f382adde6e0ea63282eb5b490e97388b75b42d8
@@ -173,6 +194,11 @@ hemingway-six-words	earliest_telling	no quote
 hemingway-six-words	original[0]	ok	sources/hemingway-six-words/spokane-press-1910-05-16-p6-ocr-wayback.html	6ad8123ccf2925d0c9a77c73da8724317ea216f79e7c6825fca10cf9998b2e80
 hemingway-six-words	original[1]	ok	sources/hemingway-six-words/wired-2006-11-very-short-stories.html	026ee5ad48b6430355ca103b2e8691277d25b5cffed43dd7d4f03ec9d27e64b2
 hemingway-six-words	lesson_verdict.source	ok	sources/hemingway-six-words/shymko2022-six-word-effect.pdf.txt	a29de9e6a575c18f4b8c1afc5abd6cdbe5e94495ce64a5d59a20c00ac4f3efa2
+hippasus-drowned	earliest_telling	ok	sources/hippasus-drowned/iamblichus-taylor-1818_djvu.txt	a77fe73b071825e58dcecd30e0392cdbf307315e31e6dcd000e0faeddfe3f0fd
+hippasus-drowned	original[0]	ok	sources/hippasus-drowned/iamblichus-taylor-1818_djvu.txt	a77fe73b071825e58dcecd30e0392cdbf307315e31e6dcd000e0faeddfe3f0fd
+hippasus-drowned	original[1]	ok	sources/hippasus-drowned/iamblichus-taylor-1818_djvu.txt	a77fe73b071825e58dcecd30e0392cdbf307315e31e6dcd000e0faeddfe3f0fd
+hippasus-drowned	original[2]	ok	sources/hippasus-drowned/pappus-thomson-1930_djvu.txt	14e6aea7304fb77902ff6daff4c75714c800a36957bcce79fef7e3fbb7bd0d62
+hippasus-drowned	lesson_verdict.source	ok	sources/hippasus-drowned/knorr-2001-impact-modern-math.pdf	ffbaa6f145e40091f00a16516528db5c5c6cf6a78dc2d34bbccf37d01ac2c9e4
 honesty-pledge	earliest_telling	ok	sources/honesty-pledge/hbswk-signing-at-the-top.txt	fc6e2383be418c46c6b6236dc20c7c4cb0daf9524d3fddddc69ed386edf27185
 honesty-pledge	original[0]	ok	sources/honesty-pledge/PMC3458378.xml.txt	a79fb6c9eceba74e35229dd97e8ae45950a24d7a83ce3c5b1f55e45403729ed1
 honesty-pledge	original[1]	ok	sources/honesty-pledge/pnas-retraction-2021.txt	fdbb72f155d6a536a35c6759279b4b77e45ed5a7162b518676325be65aa49626
@@ -198,6 +224,8 @@ ibm-black-team	original[0]	ok	sources/ibm-black-team/ol-inside-black-team-mustac
 ibm-black-team	original[1]	ok	sources/ibm-black-team/ol-inside-black-team-dressing.json	c7f096e38329fdca2645ad573d68bb44a0ebc7c52ce165d799c8fd10816157f1
 ibm-black-team	original[2]	ok	sources/ibm-black-team/ol-inside-black-team-ibm-1960s.json	2ab1ed8c3317957ddeda1032f40b9b97770fc900a2140ff97b86e62086b73301
 ibm-black-team	lesson_verdict.source	ok	sources/ibm-black-team/salman-2019-confirmation-bias-testing.pdf.txt	ff8f2d9147178fc99cbe6b305482b2a83eb73a4bbe58baa83ebb3810e6bed36b
+ibm-defects-japan	earliest_telling	ok	sources/ibm-defects-japan/ol-inside-ibm-1983c.json	88b757f24366b4eb1e79dd1bcddb187cb96aebf9ea0f2976fb7a7d9f5adf5cdc
+ibm-defects-japan	lesson_verdict.source	ok	sources/ibm-defects-japan/krafcik-1988.pdf	99950539dbe84887189b69be56e9e82ea9f03310b4831178cb28aaf5f688d308
 interstate-runways	earliest_telling	ok	sources/interstate-runways/ol_onemile_every_five.json.txt	1456f64458755d0c3af31745c73ca5e88ecbebe6bb56c74f0199b32721d454db
 interstate-runways	original[0]	ok	sources/interstate-runways/fedaid_highway_act_1956_statute70_pg374.pdf.txt	5af52adb6c02dc15551d762ce7c882786526d1c0cf8e035fcd2a71ea85e7f52b
 interstate-runways	original[1]	ok	sources/interstate-runways/weingroff2000_onemile.html.txt	1b81347fe7a424a95bec2e616fe50a578307f5a8092e6f7a1096db04b6fbfac4
@@ -213,6 +241,9 @@ jam-study	original[0]	ok	sources/jam-study/iyengar-lepper-2000.pdf.txt	f2e025567
 jam-study	original[1]	ok	sources/jam-study/iyengar-lepper-2000.pdf.txt	f2e02556729e6bcfb8d8e89baa7df1d251b93c36db3c95d05690cb8a4e96468a
 jam-study	original[2]	ok	sources/jam-study/iyengar-lepper-2000.pdf.txt	f2e02556729e6bcfb8d8e89baa7df1d251b93c36db3c95d05690cb8a4e96468a
 jam-study	lesson_verdict.source	ok	sources/jam-study/scheibehenne-2010.pdf.txt	9cd091877026e3556a215afb641cd5d317721290be582f7055b26bb00b30cbb7
+jobs-fish-tank	earliest_telling	ok	sources/jobs-fish-tank/atlantic-2011.html	57047740a4b16026c08c4cf2c56aa9f9de061461d23bca765f6f3b279ba9ba13
+jobs-fish-tank	original[0]	ok	sources/jobs-fish-tank/cultofmac-2015.html	aa367dd9306a97c98dad1ac1d413b777b7c4f3acd463f5404b7f6b55286db43a
+jobs-fish-tank	lesson_verdict.source	ok	sources/jobs-fish-tank/locke-latham-2002.pdf	4e706ba7747f55896758f2d1a6c37d6bc0834a9ce70b2de446cdd086c78b17aa
 kekule-dream	earliest_telling	ok	sources/kekule-dream/berichte1890-kekule-feier.pdf	37bf3a8b98bc3c66619bb05abfe5b654ceda4cc9da7c911d47989bb43b3cab6f
 kekule-dream	original[0]	ok	sources/kekule-dream/berichte1890-kekule-feier.pdf	37bf3a8b98bc3c66619bb05abfe5b654ceda4cc9da7c911d47989bb43b3cab6f
 kekule-dream	original[1]	ok	sources/kekule-dream/berichte1890-kekule-feier.pdf	37bf3a8b98bc3c66619bb05abfe5b654ceda4cc9da7c911d47989bb43b3cab6f
@@ -250,9 +281,19 @@ library-alexandria	original[0]	ok	sources/library-alexandria/caesar-bellum-civil
 library-alexandria	original[1]	ok	sources/library-alexandria/plutarch-caesar-loeb-lacuscurtius.html	11ee326b7bc23d56e6d2d37d7563c1f4bcb2cd95feaccd572dc143e46ed2e27a
 library-alexandria	original[2]	ok	sources/library-alexandria/suetonius-domitian-loeb-lacuscurtius.html	db825ca459ec25818a88e45a2f04a58db66786d6cbf31c37bea337f0b0c93851
 library-alexandria	lesson_verdict.source	ok	sources/library-alexandria/bagnall-library-of-dreams-2002.pdf.txt	25d4a24d1d481587942b893b988920a1e656eac2d93c1cc349bbbf5dc15a2f68
+lighthouse-navy	earliest_telling	ok	sources/lighthouse-navy/ol-inside-battleship-lighthouse.json	a51b08a24aaeea46351850a7562a9097b74dfad8d8ce881aabf3e9c86adeda49
+lighthouse-navy	original[0]	ok	sources/lighthouse-navy/navy-lighthouse-joke-unt-2012.txt	971aa748a61742ad8ff106431d92d42bfbbbd8d8ad318500dd49274d033aa4cd
+lighthouse-navy	original[1]	ok	sources/lighthouse-navy/navy-lighthouse-joke-unt-2012.txt	971aa748a61742ad8ff106431d92d42bfbbbd8d8ad318500dd49274d033aa4cd
+lighthouse-navy	lesson_verdict.source	no quote		
 lumiere-train	earliest_telling	ok	sources/lumiere-train/loiperdinger-2004.pdf.txt	57a97d9d13b577314cc6191be25254dbd723dcca04f9ac094fe5fd7e58767c2e
 lumiere-train	original[0]	ok	sources/lumiere-train/gorky-1896-s-vserossiiskoi-vystavki.wiki	55ab768a9785df5f3452e146333442ac0706188e5dd7dc6820103c90d909f603
 lumiere-train	lesson_verdict.source	ok	sources/lumiere-train/loiperdinger-2004.pdf.txt	57a97d9d13b577314cc6191be25254dbd723dcca04f9ac094fe5fd7e58767c2e
+mariner-1-fortran	earliest_telling	ok	sources/mariner-1-fortran/risks-5-66.txt	9cec4c5e4fa19503c66d84f76f103bb299741512851d5744c9a8458d238faa9d
+mariner-1-fortran	original[0]	ok	sources/mariner-1-fortran/nssdca-marin1.txt	59175c0bdc2828e89456b52bb80cb0fc6dd24d3ad1b9a07d9ec0f222bb968fbe
+mariner-1-fortran	original[1]	ok	sources/mariner-1-fortran/risks-5-66.txt	9cec4c5e4fa19503c66d84f76f103bb299741512851d5744c9a8458d238faa9d
+mariner-1-fortran	original[2]	ok	sources/mariner-1-fortran/risks-9-54.txt	1f4fd8849669f1e830e7337ff38528f3eb5fe72052af60a8fc957b24e44be24d
+mariner-1-fortran	original[3]	ok	sources/mariner-1-fortran/risks-8-75.txt	993817a97673659c0241634df4913597ff912aae6d2d375be53ff7bb032ae6bb
+mariner-1-fortran	lesson_verdict.source	ok	sources/mariner-1-fortran/nssdca-marin1.txt	59175c0bdc2828e89456b52bb80cb0fc6dd24d3ad1b9a07d9ec0f222bb968fbe
 marshmallow	earliest_telling	ok	sources/marshmallow/pubmed-3367285.xml	6ec62cca238d64d7aa80d321932749e93a66e43bcc87d7dd4f1f1d59148d94f4
 marshmallow	original[0]	ok	sources/marshmallow/shoda-mischel-peake-1990.pdf.txt	887c23e38684fe8c74a162a673680c7d7a44a7d8f14f8dd163ed9875f6af90e8
 marshmallow	original[1]	ok	sources/marshmallow/shoda-mischel-peake-1990.pdf.txt	887c23e38684fe8c74a162a673680c7d7a44a7d8f14f8dd163ed9875f6af90e8
@@ -315,6 +356,10 @@ nuclear-gandhi	earliest_telling	ok	sources/nuclear-gandhi/tvtropes_civ_history_2
 nuclear-gandhi	original[0]	ok	sources/nuclear-gandhi/kotaku2020_meier_memoir.html.txt	b530fa4ed18af34497378475ad1503cd72a57d03dc81c72164bab8839073f59c
 nuclear-gandhi	original[1]	ok	sources/nuclear-gandhi/civ5_CIV5Leader_Gandhi.xml.txt	8f6e6157a70a28e5b247c2a8cdf09f828f1d12fdf1c5ad027e07e5a8579c0876
 nuclear-gandhi	lesson_verdict.source	ok	sources/nuclear-gandhi/c11_draft_n1570.pdf.txt	00bbdd63df34828403635fce0608e6173006c3bfd28b41b053835b45513e717c
+oil-trader-delivery	earliest_telling	no quote		
+oil-trader-delivery	original[0]	ok	sources/oil-trader-delivery/eia-todayinenergy-43495.txt	16ce23a96c4dd6285be35bf996f9a92192195ed1d73620bd49d9a0382cb329c5
+oil-trader-delivery	original[1]	ok	sources/oil-trader-delivery/crs-IN11354-2020-04-22.txt	b212c5f45e520baa53333ee2f8f8942b7d77c0fdb42a7f262a380b3a7d097257
+oil-trader-delivery	lesson_verdict.source	ok	sources/oil-trader-delivery/eia-todayinenergy-43495.txt	16ce23a96c4dd6285be35bf996f9a92192195ed1d73620bd49d9a0382cb329c5
 pareto-peas	earliest_telling	ok	sources/pareto-peas/jamesclear-the-1-percent-rule.html	88bb6c2468c8bbea7fcec39bd142b49aa20ceedfb567e1b60179b6f69ef92a6d
 pareto-peas	original[0]	ok	sources/pareto-peas/FP0148_2_djvu.txt	4a1f7467dbbd1de3b775d7385ec98c3ef19bb5960a944024fc1253c06387cf36
 pareto-peas	original[1]	ok	sources/pareto-peas/juran-non-pareto-principle-1974.pdf	31cdac5f7bd97719cb8f2f45caf08dfd11e12ab4ae928301183248a8949aa757
@@ -415,6 +460,12 @@ stanford-prison	original[3]	ok	sources/stanford-prison/ncjrs-10301.pdf.txt	65031
 stanford-prison	lesson_verdict.source	ok	sources/stanford-prison/reicher-haslam2006-standrews.html	a5b609feefe344dc7f2525db84289145391656357df0e6db353ca030b176f385
 steinmetz-chalk	earliest_telling	ok	sources/steinmetz-chalk/cannedlaughter00cart_djvu.xml	334f7216a3239e656832f9aeadc6ef391714c0345eb2f52f3c42b08d626f1aed
 steinmetz-chalk	lesson_verdict.source	ok	sources/steinmetz-chalk/ieee-access-2020-troubleshooting-doaj.json	594ea89ebabe2ab8a6088c1c0b2dcc3750cf8a0ad9c077e94107b34be5bc6f70
+story-of-mel	earliest_telling	ok	sources/story-of-mel/mel-usenet-1983.txt	30dcf1cea86c5532fb41aef3902a359fbe2228433f40cf64cb4d56419dc7b44f
+story-of-mel	original[0]	ok	sources/story-of-mel/librazette-1956-08.pdf	fc64a9b9845b762159463c37942a3b28af04dea2e4a5dc7cbf34f66832d87c00
+story-of-mel	original[1]	ok	sources/story-of-mel/act1-compiler-1959.pdf	acfc1960b40224c2a43ef8e76d6df64520ff81935c65096d27cf1a1e849c80cd
+story-of-mel	original[2]	ok	sources/story-of-mel/blackjack-manual.pdf	8b0cb7789c1780ff171e55f9b2770c79a08b6839e412ede276001db9d41c90ca
+story-of-mel	original[3]	ok	sources/story-of-mel/blackjack-manual.pdf	8b0cb7789c1780ff171e55f9b2770c79a08b6839e412ede276001db9d41c90ca
+story-of-mel	lesson_verdict.source	no quote		
 tank-classifier	earliest_telling	ok	sources/tank-classifier/dreyfus_1992_artificial-experts.pdf.txt	452b12197f78e32c7e9aa4ec57f001646ec904c0c499e5ffe8240e28adff70a2
 tank-classifier	original[0]	ok	sources/tank-classifier/kanal_1991_foreword.pdf.txt	b8a3988807ee62ff1994e468b0e833d87f07370895c6a891328c6b3e8080cfcf
 tank-classifier	lesson_verdict.source	ok	sources/tank-classifier/zech_2018_plosmed.xml	6c2e02d9a0f4a070218bc6de4ea8b0038d87a5ba77259ce0ce4b73b594051543
@@ -425,6 +476,16 @@ ten-thousand-hours	original[0]	ok	sources/ten-thousand-hours/ericsson-krampe-tes
 ten-thousand-hours	original[1]	ok	sources/ten-thousand-hours/ericsson-krampe-tesch-romer-1993.txt	0b91ddff8e2bb0886b7a682193c15d99ae78b34410198ecc2f62db319b0c5aba
 ten-thousand-hours	teller_correction	ok	sources/ten-thousand-hours/gladwell-2013-new-yorker.html	2effdad7da5bb9414341278231a99c131769bbd040f2fa1771a169a9136f39da
 ten-thousand-hours	lesson_verdict.source	ok	sources/ten-thousand-hours/macnamara-2014-psychsci.txt	d60076526125451794c401a855cdb27fa8b1a3d142a4fc0247898fde98cf2252
+tesla-leak-spaces	earliest_telling	ok	sources/tesla-leak-spaces/musk-tweet-1579101966453858305.json	bd63011b71a9277ea09026c162eaa83dd1308c8eb4029c1a5da4f5348d7911db
+tesla-leak-spaces	original[0]	ok	sources/tesla-leak-spaces/musk-tweet-syndication.json	b806d29b33ec8d6df0db8bfdb137c5486cb589cd4535224c66f8496676451008
+tesla-leak-spaces	original[1]	ok	sources/tesla-leak-spaces/valleywag-2008.html	b0639316f72bc5e8af281f80b2e82dd94cec695122493ef559d99b305d8fd643
+tesla-leak-spaces	original[2]	ok	sources/tesla-leak-spaces/ttac-2008-11.html	90800227227cb58aa5b6fcf7ffbbbdc9686625698d205b1da35685ac489d8886
+tesla-leak-spaces	original[3]	ok	sources/tesla-leak-spaces/gawker-2009-witch-hunt.html	f8170a27a350107982a6055f220df99c496ad4e037c229c7fc4060dfef42f8f5
+tesla-leak-spaces	lesson_verdict.source	ok	sources/tesla-leak-spaces/brassil-1994-infocom.pdf	3e42035106749444e78b10a23c0183d438958a629cf5d940836858cd3062d174
+tulip-mania	earliest_telling	ok	sources/tulip-mania/mackay-1841-vol1-ch3-wikisource.txt	6b705f204d2f286d85b1f7ce708f0b0b1fe54b651491b7d89207ca0e1fb9ee8c
+tulip-mania	original[0]	ok	sources/tulip-mania/goldgar-conversation-2018.txt	965cbf6dbbde59b7282c171e0fb3eda7bdb8a87a7e5305f1addc88efbdad6b45
+tulip-mania	original[1]	ok	sources/tulip-mania/goldgar-conversation-2018.txt	965cbf6dbbde59b7282c171e0fb3eda7bdb8a87a7e5305f1addc88efbdad6b45
+tulip-mania	lesson_verdict.source	ok	sources/tulip-mania/garber-1989-jpe-tulipmania.pdf.txt	43842425697f6f3e12e35d8d6ea781bcb5dd856bc697917a4e22095c38a6517e
 van-halen	earliest_telling	ok	sources/van-halen/openlibrary-inside-matthews-1984-brown.json	2f9a08bb20c28a0d7da7ac41d5d0048bec98b304da8c11e32429727af8ab6e08
 van-halen	original[0]	ok	sources/van-halen/tsg-van-halen-legendary-mms-rider.html	b3d25e3080f815d1b2fc143acdf190602a6490891b35cb5b1c6c25e0bf8b8e15
 van-halen	original[1]	ok	sources/van-halen/openlibrary-inside-littletest.json	1f117d74f13889bb1646268f2ad0b11b1f058705c9fd6d94a81d683cc656866e
@@ -438,11 +499,21 @@ vicary-popcorn	original[0]	ok	sources/vicary-popcorn/motionpicturedai82unse_0_dj
 vicary-popcorn	original[1]	ok	sources/vicary-popcorn/motionpicturedai82unse_0_djvu.txt	1ae43e0a600c2758d3e83f14aa84b0788d22c5e9227780d1f58ef5028b6fa3ed
 vicary-popcorn	original[2]	ok	sources/vicary-popcorn/motionpicturedai82unse_0_djvu.txt	1ae43e0a600c2758d3e83f14aa84b0788d22c5e9227780d1f58ef5028b6fa3ed
 vicary-popcorn	lesson_verdict.source	ok	sources/vicary-popcorn/bermeitinger-2009-hidden-persuaders.pdf	da48eb51638ba6204c9db47ee89de68fb9600a41f00097de12b24a51aaf99dfb
+vodka-meat-translation	earliest_telling	ok	sources/vodka-meat-translation/hutchins-1995-whisky-invisible.pdf	0941b4dd4e66a334a4cb87979d8b7289f8d3bf537ba138f7dab415fb355c112c
+vodka-meat-translation	original[0]	ok	sources/vodka-meat-translation/hutchins-1995-whisky-invisible.pdf	0941b4dd4e66a334a4cb87979d8b7289f8d3bf537ba138f7dab415fb355c112c
+vodka-meat-translation	original[1]	ok	sources/vodka-meat-translation/hutchins-1995-whisky-invisible.pdf	0941b4dd4e66a334a4cb87979d8b7289f8d3bf537ba138f7dab415fb355c112c
+vodka-meat-translation	lesson_verdict.source	ok	sources/vodka-meat-translation/alpac-1966.pdf	8fa2ff53221c9b8e5ce0c1f16000be9b1199ca095c833aba2b530e932ca7735f
 wald-bombers	earliest_telling	ok	sources/wald-bombers/johndcook-2008-01-21-selection-bias-bombers.html	fe9290e46382bd22df0c090869ef231423e33205ab1dd16a67fdeaba598b96b3
 wald-bombers	original[0]	ok	sources/wald-bombers/DTIC_ADA091073_djvu.txt	49a705eb47a7f0d6f7f205ccf4184e9f8b129900da3c95600ab649e8fbbf3fd8
 wald-bombers	original[1]	ok	sources/wald-bombers/DTIC_ADA091073_djvu.txt	49a705eb47a7f0d6f7f205ccf4184e9f8b129900da3c95600ab649e8fbbf3fd8
 wald-bombers	original[2]	ok	sources/wald-bombers/DTIC_ADA091073_djvu.txt	49a705eb47a7f0d6f7f205ccf4184e9f8b129900da3c95600ab649e8fbbf3fd8
 wald-bombers	lesson_verdict.source	ok	sources/wald-bombers/brown-goetzmann-1992-repec-abstract.html	e3ec655a6a380139571ed85634e281c1ff4a28349a548d441d43861e94f9e626
+well-to-hell	earliest_telling	ok	sources/well-to-hell/christianity-today-1990-07-buhler.html	0cc8d1298904c51fa5c0006b7c83913212c1834b33924c2c7dc18bb40c4aa583
+well-to-hell	original[0]	ok	sources/well-to-hell/christianity-today-1990-07-buhler.html	0cc8d1298904c51fa5c0006b7c83913212c1834b33924c2c7dc18bb40c4aa583
+well-to-hell	original[1]	ok	sources/well-to-hell/christianity-today-1990-07-buhler.html	0cc8d1298904c51fa5c0006b7c83913212c1834b33924c2c7dc18bb40c4aa583
+well-to-hell	original[2]	ok	sources/well-to-hell/usgs-ofr-86-517.pdf	a87be7dde3a957552838e889472df2a531d8e812f04133140f54db7f06b2032b
+well-to-hell	original[3]	ok	sources/well-to-hell/usgs-ofr-86-517.pdf	a87be7dde3a957552838e889472df2a531d8e812f04133140f54db7f06b2032b
+well-to-hell	lesson_verdict.source	ok	sources/well-to-hell/usgs-ofr-86-517.pdf	a87be7dde3a957552838e889472df2a531d8e812f04133140f54db7f06b2032b
 western-union-memo	earliest_telling	ok	sources/western-union-memo/macintosh-bible-7th-1998_djvu.txt	93a1f58ecef6859f05b288a9998758763346acad07e2fb4e71203b2115bb3048
 western-union-memo	original[0]	ok	sources/western-union-memo/speakingtelepho01presgoog_djvu.txt	9162239519814d84b2c138967a5a3fba12fc179af55b1444b7e7945d79952089
 western-union-memo	original[1]	ok	sources/western-union-memo/historyoftelepho00cassuoft_djvu.txt	a82197075668a63a581c2a0d3e39b950da17b939cc5680c5a86edbf234a5ba7d

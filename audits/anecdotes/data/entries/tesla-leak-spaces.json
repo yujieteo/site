@@ -1,0 +1,87 @@
+{
+  "id": "tesla-leak-spaces",
+  "as_told": "Someone at Tesla leaked a confidential company email to the press. Elon Musk had sent out what looked like identical copies of the email, but each copy had a different pattern of one or two spaces between sentences. The pattern in the leaked copy worked as a binary code and showed who the leaker was.",
+  "lesson": "If you give each person a copy with tiny hidden differences, a leaked copy shows exactly who leaked it.",
+  "what_happened": "In October 2008 a Tesla engineer, Peng Zhou, wrote his own letter to the blog Valleywag about an all-hands meeting where staff learned the company had about $9 million in the bank. He later apologised for writing that letter and resigned, and Musk forwarded the apology to all staff on 3 November 2008. The leaked text was a letter the employee wrote, not a company email, so the leak itself could not carry a per-copy code; no record mentions any coded email in the days between the leak and the apology. In March 2009 Gawker reported, from an anonymous tipster, that Musk later did send staff individually altered copies of a memo, with word changes such as \"I'm\" to \"I am\", but the trap was exposed when the general counsel forwarded his own copy to everyone. Musk first described the spacing code in a tweet on 9 October 2022, in reply to a question about the 2008 leaker.",
+  "false_part": "The 2008 leaker was not caught by a spacing code in copies of a company email: the leak was a letter he wrote himself, and the only marked-email trap reported at the time used changed words and was exposed before it caught anyone.",
+  "class": "changed",
+  "also": "",
+  "earliest_telling": {
+    "date": "2022-10-09",
+    "who": "Elon Musk",
+    "where": "Tweet (X post) by @elonmusk, status 1579101966453858305",
+    "quote": "We sent what appeared to be identical emails to all, but each was actually coded with either one or two spaces between sentences, forming a binary signature that identified the leaker.",
+    "url": "https://twitter.com/elonmusk/status/1579101966453858305",
+    "archive": "http://web.archive.org/web/20241008183945/https://twitter.com/elonmusk/status/1579101966453858305",
+    "file": "sources/tesla-leak-spaces/musk-tweet-1579101966453858305.json",
+    "sha256": "bd63011b71a9277ea09026c162eaa83dd1308c8eb4029c1a5da4f5348d7911db"
+  },
+  "original": [
+    {
+      "what": "The tweet that Musk was answering (same thread, from the X syndication data); it asks about the 2008 leaker",
+      "date": "2022-10-09",
+      "who": "@NASAEarthMars (X user)",
+      "quote": "Elon in 2008 how did you catch that employee who leaked the confidential data of Tesla",
+      "url": "https://cdn.syndication.twimg.com/tweet-result?id=1579101966453858305&token=4",
+      "archive": "http://web.archive.org/web/20241008183945/https://twitter.com/elonmusk/status/1579101966453858305",
+      "file": "sources/tesla-leak-spaces/musk-tweet-syndication.json",
+      "sha256": "b806d29b33ec8d6df0db8bfdb137c5486cb589cd4535224c66f8496676451008"
+    },
+    {
+      "what": "The 2008 leak itself: Valleywag post that prints the insider's own letter about an all-hands meeting",
+      "date": "2008-10-30",
+      "who": "Owen Thomas, Valleywag (Gawker Media), printing a letter from a Tesla employee",
+      "quote": "A company all-hands meeting was called yesterday evening and a simple six-page company financial model was communicated.",
+      "url": "http://valleywag.gawker.com/5071621/tesla-motors-has-9-million-in-the-bank-may-not-deliver-cars",
+      "archive": "https://web.archive.org/web/20090124153901/http://valleywag.gawker.com/5071621/tesla-motors-has-9-million-in-the-bank-may-not-deliver-cars",
+      "file": "sources/tesla-leak-spaces/valleywag-2008.html",
+      "sha256": "b0639316f72bc5e8af281f80b2e82dd94cec695122493ef559d99b305d8fd643"
+    },
+    {
+      "what": "Peng Zhou's apology letter to Tesla staff, forwarded by Musk to all employees on 3 November 2008, printed in full by The Truth About Cars",
+      "date": "2008-11-03",
+      "who": "Peng Zhou (forwarded by Elon Musk)",
+      "quote": "did the very foolish thing of writing a letter to Valleywag",
+      "url": "https://www.thetruthaboutcars.com/2008/11/tesla-death-watch-35-employee-commits-hara-kiri/",
+      "archive": "http://web.archive.org/web/20261003210025/https://www.thetruthaboutcars.com/2008/11/tesla-death-watch-35-employee-commits-hara-kiri/",
+      "file": "sources/tesla-leak-spaces/ttac-2008-11.html",
+      "sha256": "90800227227cb58aa5b6fcf7ffbbbdc9686625698d205b1da35685ac489d8886"
+    },
+    {
+      "what": "Gawker report (anonymous tipster) on how the 2008 leaker was found, and on a later Tesla memo sent in individually altered copies",
+      "date": "2009-03-04",
+      "who": "Owen Thomas, Gawker (Valleywag)",
+      "quote": "By altering phrases scattered throughout the email",
+      "url": "http://gawker.com/5164035/tesla-ceo-in-digital-witch-hunt",
+      "archive": "http://web.archive.org/web/20100324053838/http://gawker.com:80/5164035/tesla-ceo-in-digital-witch-hunt",
+      "file": "sources/tesla-leak-spaces/gawker-2009-witch-hunt.html",
+      "sha256": "f8170a27a350107982a6055f220df99c496ad4e037c229c7fc4060dfef42f8f5"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "holds",
+    "why": "Bell Labs tests showed that tiny per-copy shifts in a document can be decoded reliably to name the copy's recipient, even after repeated photocopying. The method only works when the leaked item is the marked copy itself, and the 2009 Tesla case shows a trap can be exposed if recipients compare copies.",
+    "source": {
+      "what": "Brassil, Low, Maxemchuk and O'Gorman, 'Electronic Marking and Identification Techniques to Discourage Document Copying', AT&T Bell Laboratories, Proceedings of IEEE INFOCOM 1994; archive link is the Caltech record page, because the PDF URL redirects to a short-lived storage link",
+      "quote": "centroid detection method successfully detected all 21",
+      "url": "https://authors.library.caltech.edu/records/900jx-96a58/files/BRAinfocom94.pdf",
+      "archive": "https://web.archive.org/web/20261122174931/https://authors.library.caltech.edu/records/900jx-96a58",
+      "file": "sources/tesla-leak-spaces/brassil-1994-infocom.pdf",
+      "sha256": "3e42035106749444e78b10a23c0183d438958a629cf5d940836858cd3062d174"
+    }
+  },
+  "search_steps": [
+    "Web search for the spacing story: all retellings (SlashGear, Carscoops, LADbible, IBTimes) date from October 2022 or later and point to Musk's tweet.",
+    "Fetched the tweet through X's oEmbed and syndication endpoints; saved both. The tweet is dated 9 October 2022 and replies to a question about the 2008 leaker.",
+    "The Intercept (15 December 2022) used as a lead: it links the 2008 Valleywag post, the Truth About Cars post, Gawker 2009, Forbes 2008, and notes that Ashlee Vance's 2015 biography gives a different method (printer logs). Vance's book is relayed and not online in full text, so it is not quoted.",
+    "Saved the 2008 Valleywag post from the Wayback Machine: the leak is the employee's own letter about an all-hands meeting, and it reproduces no company email.",
+    "Saved The Truth About Cars post (3 November 2008) with Musk's forward of Peng Zhou's apology.",
+    "Saved the Gawker post of 4 March 2009 from the Wayback Machine: tipster says the 2008 leaker was found by an IT search of email and instant messages and fingerprints on a printout; describes a later memo with altered phrases that was exposed by the general counsel.",
+    "Forbes 2008-10-24 article downloaded (709 KB); I searched it only for 'apolog' and found nothing, and did not read it further; not quoted.",
+    "Searched for a correction by Musk of the 2022 tweet: none found.",
+    "Lesson source: Brassil et al. 1994 (Bell Labs) saved from the Caltech repository.",
+    "Did not search newspaper archives (Chronicling America, Trove, Papers Past): they do not cover 2008-2022 US technology news."
+  ],
+  "confidence_note": "The 2009 Gawker account comes from an anonymous tipster, so the details of how Zhou was found (email search, fingerprints) and of the altered-memo trap are not confirmed by a named source. The class rests on records that are not relayed: the leaked text was Zhou's own letter, and Zhou's apology calls it a letter he wrote. It is still possible that Tesla used a spacing code on some other, later occasion that has never been reported; nothing rules that out."
+}

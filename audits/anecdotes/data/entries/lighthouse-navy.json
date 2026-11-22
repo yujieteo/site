@@ -1,0 +1,65 @@
+{
+  "id": "lighthouse-navy",
+  "as_told": "A transcript of a radio exchange off the coast of Newfoundland, said to have been released by the US Chief of Naval Operations in October 1995. A US Navy ship, named as an aircraft carrier, orders a Canadian station to divert its course and insists on its size and rank. The Canadians reply: 'This is a lighthouse. Your call.'",
+  "lesson": "Rank and power do not change hard facts, so check what you are dealing with before you insist that it must give way.",
+  "what_happened": "No such exchange is on record. The US Navy put out a page titled 'The Lighthouse Joke' saying that the transcript never happened and is an old joke like those in popular magazines. The Navy noted that USS Coral Sea, the ship named in the most common version, was decommissioned and scrapped in 1993, before the claimed date of October 1995. The joke circulated in print long before 1995: a 1985 humour book by Rusty Wright tells it as a battleship and a lighthouse exchanging signal-light messages.",
+  "false_part": "The exchange never took place; it is an old joke presented as a real transcript.",
+  "class": "invented",
+  "also": "",
+  "earliest_telling": {
+    "date": "1985",
+    "who": "Rusty Wright",
+    "where": "Secrets of Successful Humor (San Bernardino, CA: Here's Life Publishers, 1985), scan page 234, as shown in an Open Library full-text search result",
+    "quote": "Reply: “I am a {{{lighthouse}}}. You change",
+    "url": "https://openlibrary.org/search/inside.json?q=battleship%20lighthouse%20%22change%20your%20course%22%20signalman&hl=true",
+    "archive": "https://archive.org/details/secretsofsuccess0000wrig",
+    "file": "sources/lighthouse-navy/ol-inside-battleship-lighthouse.json",
+    "sha256": "a51b08a24aaeea46351850a7562a9097b74dfad8d8ce881aabf3e9c86adeda49"
+  },
+  "original": [
+    {
+      "what": "US Navy web page 'The Lighthouse Joke' (reviewed 2 September 2009), copy held by the University of North Texas web archive (captured 6 October 2012)",
+      "date": "2009-09-02",
+      "who": "United States Navy",
+      "quote": "The following is being transmitted around the Internet as an event that really took place, but it never happened. It is simply an old joke like those found in popular magazines:",
+      "url": "http://www.navy.mil/navydata/nav_legacy.asp?id=174",
+      "archive": "http://web.archive.org/web/20200607143102/https://www.navy.mil/navydata/nav_legacy.asp?id=174",
+      "file": "sources/lighthouse-navy/navy-lighthouse-joke-unt-2012.txt",
+      "sha256": "971aa748a61742ad8ff106431d92d42bfbbbd8d8ad318500dd49274d033aa4cd"
+    },
+    {
+      "what": "Same US Navy page, note on the ship named in the transcript",
+      "date": "2009-09-02",
+      "who": "United States Navy",
+      "quote": "*Note: USS Coral Sea (CV 43) was decommissioned and scrapped 2 July 1993.",
+      "url": "http://www.navy.mil/navydata/nav_legacy.asp?id=174",
+      "archive": "http://web.archive.org/web/20200607143102/https://www.navy.mil/navydata/nav_legacy.asp?id=174",
+      "file": "sources/lighthouse-navy/navy-lighthouse-joke-unt-2012.txt",
+      "sha256": "971aa748a61742ad8ff106431d92d42bfbbbd8d8ad318500dd49274d033aa4cd"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "The lesson is a moral about attitude, not a claim that a study or record tests. I found no study or official record that measures it, and the anecdote cannot serve as evidence because it did not happen.",
+    "source": {
+      "what": "",
+      "quote": "",
+      "url": "",
+      "archive": "",
+      "file": "",
+      "sha256": ""
+    }
+  },
+  "search_steps": [
+    "Web search led to the English Wikipedia article 'Lighthouse and naval vessel urban legend' (lead only). It cites a 1931 cartoon in The Humorist (London), reprinted in the Drumheller Review in 1931; Frank Koch, 'Pulling Rank', Proceedings (US Naval Institute), November 1987, p. 81; the US Navy page; and the Virginian-Pilot of 14 March 1996.",
+    "Saved the US Navy page 'The Lighthouse Joke' from the University of North Texas web archive (raw capture of 6 October 2012).",
+    "usni.org returned 403 for the Proceedings November 1987 pages, so Koch's article is not saved.",
+    "Searched the University of Calgary Drumheller Review collection through web search for the 1931 cartoon: not found.",
+    "Papers Past (Incapsula block), Chronicling America and HathiTrust (Cloudflare challenge) refused automated search; Google Books API returned 429 (daily quota). I backed off and did not retry.",
+    "thatsnonsense.com (lead only) points to a 1940 Boys' Life page on Google Books (id RxoGbB2htgAC, page 28); Google Books returned 403, so it is not saved or quoted.",
+    "Open Library full-text search for battleship, lighthouse, 'change your course', signalman: earliest hit Rusty Wright, Secrets of Successful Humor (1985), scan page 234; later hits from 1996 onward, including a 1999 book that credits 'Frank Koch's famous illustration'. The books are lending-only; saved the search result JSON.",
+    "No correction by a teller was looked for beyond this, because the transcript version has no named teller."
+  ],
+  "confidence_note": "The 1985 quote comes only from an Open Library search snippet; the {{{ }}} marks are search highlighting in the saved file, not part of the book's text. Earlier tellings exist according to leads (a 1931 cartoon in The Humorist, a 1940 Boys' Life joke, Koch 1987), but I could not save them. The Navy page was saved from the UNT web archive; the Wayback link given is a 7 June 2020 capture of the same navy.mil page, which I opened and which shows the same 'Lighthouse Joke' text."
+}

@@ -1,0 +1,64 @@
+{
+  "id": "oil-trader-delivery",
+  "as_told": "When oil prices crashed, a trader who held oil futures failed to sell or roll them before they expired. He was then forced to take physical delivery of a whole cargo of crude oil and had to find somewhere to put it. (The one-line story given to me says only that a trader had to take delivery of a cargo of oil after a price crash; the futures and the failure to roll are details from common retellings that I added.)",
+  "lesson": "A futures contract held to expiry is a real obligation to take delivery of the goods, so traders must close or roll positions before expiry.",
+  "what_happened": "I found no named, dated case with a record made at the time of a trader forced to take delivery of a cargo of oil after a price crash. What is on record is the general mechanism: WTI futures held through expiry must be settled by physical delivery at Cushing, Oklahoma, and only about 1% of futures go to delivery. On 20 April 2020 the expiring May WTI contract closed at minus $37.62 a barrel because holders who could not take delivery, with storage at Cushing almost full, sold at negative prices to avoid it. Those records describe traders paying to avoid delivery, not a named trader who received a cargo.",
+  "false_part": "",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "",
+    "who": "",
+    "where": "Not found: I found no telling that names a trader, a date and a cargo.",
+    "quote": "",
+    "url": "",
+    "archive": "",
+    "file": "",
+    "sha256": ""
+  },
+  "original": [
+    {
+      "what": "US Energy Information Administration, Today in Energy, article id 43495, on negative WTI prices of 20 April 2020",
+      "date": "2020-04",
+      "who": "US Energy Information Administration",
+      "quote": "Market participants that hold WTI futures contracts through expiration must make or take physical delivery of WTI crude oil in Cushing, Oklahoma, unless they have made other arrangements ahead of time.",
+      "url": "https://www.eia.gov/todayinenergy/detail.php?id=43495",
+      "archive": "http://web.archive.org/web/20261030090935/https://www.eia.gov/todayinenergy/detail.php?id=43495",
+      "file": "sources/oil-trader-delivery/eia-todayinenergy-43495.txt",
+      "sha256": "16ce23a96c4dd6285be35bf996f9a92192195ed1d73620bd49d9a0382cb329c5"
+    },
+    {
+      "what": "Congressional Research Service Insight IN11354, 22 April 2020, on the negative WTI futures price (copy at EveryCRSReport)",
+      "date": "2020-04-22",
+      "who": "Congressional Research Service",
+      "quote": "One reason this may have occurred is that financial traders—traders that cannot take physical delivery of crude oil—needed to sell before the contract expiration.",
+      "url": "https://www.everycrsreport.com/files/20200422_IN11354_22b1bbff637649ec03f45eb517f4b78a0a42c059.html",
+      "archive": "http://web.archive.org/web/20250208160830/https://www.everycrsreport.com/files/20200422_IN11354_22b1bbff637649ec03f45eb517f4b78a0a42c059.html",
+      "file": "sources/oil-trader-delivery/crs-IN11354-2020-04-22.txt",
+      "sha256": "b212c5f45e520baa53333ee2f8f8942b7d77c0fdb42a7f262a380b3a7d097257"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "holds",
+    "why": "The EIA states that holders of WTI futures through expiry must make or take physical delivery, and that most participants close positions before expiry to avoid it; the April 2020 price collapse shows the cost of being caught.",
+    "source": {
+      "what": "US Energy Information Administration, Today in Energy, article id 43495",
+      "quote": "Typically, most market participants close any futures contracts ahead of their expiration through cash settlement—buying or selling offsetting contracts—to avoid taking physical delivery; only about 1% of futures traded go to physical delivery.",
+      "url": "https://www.eia.gov/todayinenergy/detail.php?id=43495",
+      "archive": "http://web.archive.org/web/20261030090935/https://www.eia.gov/todayinenergy/detail.php?id=43495",
+      "file": "sources/oil-trader-delivery/eia-todayinenergy-43495.txt",
+      "sha256": "16ce23a96c4dd6285be35bf996f9a92192195ed1d73620bd49d9a0382cb329c5"
+    }
+  },
+  "search_steps": [
+    "Web search for a trader who forgot to roll oil futures and had to take delivery: found no named case. Results were the 2009 Steven Perkins drunk-trading incident (a purchase, not a delivery) and general coverage of April 2020.",
+    "Web search for the 1986 crash and the forward Brent market ('five o'clocked'): found a lead to a legal note on Phibro v Coastal (the 'Aragon'), a disputed 600,000-barrel Brent cargo for 8-10 February 1986 that was resold about $10 a barrel below the contract price. This is a contract dispute, not a trader stuck with a cargo; I did not obtain the case report, so it is not quoted.",
+    "Web search for a trader who took physical delivery in April 2020: found no named case; found EIA, CRS and ICMA Centre explanations of why holders sold at negative prices to avoid delivery.",
+    "Open Library full-text searches for 'take delivery' with oil, trader, forgot and cargo: no relevant telling (hits were novels and unrelated books).",
+    "Saved the EIA Today in Energy article 43495, CRS Insight IN11354 and the ICMA Centre note of 2020.",
+    "Did not obtain the CFTC interim staff report of November 2020 on trading on 20 April 2020.",
+    "Open Library full-text search found a passage in Tom Bower, The Squeeze (2009; US title Oil, 2010), chapter 'The Master Trader', about a trader facing storage costs on 'cargoes he had bought' that 'would be crippling' if he took delivery. The book is lending-only; the snippets do not show who the trader was, when it happened or whether he took delivery, and a further search for the context found nothing. Saved the search result as sources/oil-trader-delivery/ol-inside-bower-squeeze.json; not quoted."
+  ],
+  "confidence_note": "The story as given is vague, and it is told in many forms. I could not find a single telling with a name and date to test, so no earliest telling is recorded. A real case may exist in trade press or court records (for example the 1986 forward Brent market, where the last buyer in a chain received a cargo) that I did not reach. Bower's 2009 book may describe a real case of a trader caught with cargoes and storage costs; I could not read the passage, so it remains an open lead."
+}

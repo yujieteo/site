@@ -1,0 +1,65 @@
+{
+  "id": "tulip-mania",
+  "as_told": "In the 1630s the Dutch went mad for tulip bulbs. People of every class, down to chimney-sweeps, sold houses and land to buy bulbs, and single bulbs sold for the price of a house. When prices crashed in February 1637, many were ruined, merchants were reduced to beggary, and the Dutch economy suffered a severe shock.",
+  "lesson": "Speculative manias are irrational and end in crashes that ruin many ordinary people.",
+  "what_happened": "Tulip bulb prices did rise steeply in the winter of 1636-37 and collapsed in early February 1637; contracts went unpaid and disputes followed. The historian Anne Goldgar, who studied Dutch archives for her 2007 book, found only 37 people who spent more than 300 guilders on bulbs, mostly wealthy merchants, and not a single bankrupt who could be identified as ruined by the crash. She reports that the Dutch economy was left unaffected and that the courts asked parties to settle among themselves. Peter Garber's 1989 study of price data found that high and quickly falling prices for rare bulbs were normal in the bulb trade, and that only the last month, when common bulbs rose and crashed, remains a possible bubble.",
+  "false_part": "There is no record that many people were ruined or that the Dutch economy was badly hurt; the mass participation comes from satirical pamphlets of 1637 retold by Beckmann, and the picture of widespread ruin is Mackay's.",
+  "class": "changed",
+  "also": "",
+  "earliest_telling": {
+    "date": "1852",
+    "who": "Charles Mackay",
+    "where": "Memoirs of Extraordinary Popular Delusions and the Madness of Crowds, 2nd edition (London: Office of the National Illustrated Library, 1852), vol. 1, chapter 'The Tulipomania' (Wikisource transcription of the 1852 scan); first published 1841",
+    "quote": "Substantial merchants were reduced almost to beggary, and many a representative of a noble line saw the fortunes of his house ruined beyond redemption.",
+    "url": "https://en.wikisource.org/wiki/Memoirs_of_Extraordinary_Popular_Delusions_and_the_Madness_of_Crowds/Volume_1/Chapter_3",
+    "archive": "https://web.archive.org/web/20261122172915/https://en.wikisource.org/wiki/Memoirs_of_Extraordinary_Popular_Delusions_and_the_Madness_of_Crowds/Volume_1/Chapter_3",
+    "file": "sources/tulip-mania/mackay-1841-vol1-ch3-wikisource.txt",
+    "sha256": "6b705f204d2f286d85b1f7ce708f0b0b1fe54b651491b7d89207ca0e1fb9ee8c"
+  },
+  "original": [
+    {
+      "what": "Anne Goldgar's own summary of her archival research, published under her name in The Conversation, 12 February 2018 (a historian's summary of the records, not a 1637 record)",
+      "date": "2018-02-12",
+      "who": "Anne Goldgar, King's College London",
+      "quote": "I found not a single bankrupt in these years who could be identified as someone dealt the fatal financial blow by tulip mania.",
+      "url": "https://theconversation.com/tulip-mania-the-classic-story-of-a-dutch-financial-bubble-is-mostly-wrong-91413",
+      "archive": "http://web.archive.org/web/20261115222640/https://theconversation.com/tulip-mania-the-classic-story-of-a-dutch-financial-bubble-is-mostly-wrong-91413",
+      "file": "sources/tulip-mania/goldgar-conversation-2018.txt",
+      "sha256": "965cbf6dbbde59b7282c171e0fb3eda7bdb8a87a7e5305f1addc88efbdad6b45"
+    },
+    {
+      "what": "Same article: the number and class of large buyers",
+      "date": "2018-02-12",
+      "who": "Anne Goldgar",
+      "quote": "I was able to identify only 37 people who spent more than 300 guilders on bulbs, around the yearly wage of a master craftsman.",
+      "url": "https://theconversation.com/tulip-mania-the-classic-story-of-a-dutch-financial-bubble-is-mostly-wrong-91413",
+      "archive": "http://web.archive.org/web/20261115222640/https://theconversation.com/tulip-mania-the-classic-story-of-a-dutch-financial-bubble-is-mostly-wrong-91413",
+      "file": "sources/tulip-mania/goldgar-conversation-2018.txt",
+      "sha256": "965cbf6dbbde59b7282c171e0fb3eda7bdb8a87a7e5305f1addc88efbdad6b45"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "Garber's study of the price data finds that most of the tulip price movement fits normal bulb-market patterns and that only the last month is a possible bubble, and Goldgar found no ruined bankrupts, so this episode gives no evidence for mass ruin. Garber also notes that data cannot tell a mania apart from a wrong model of fundamentals, so whether manias in general are irrational is not settled by this case.",
+    "source": {
+      "what": "Peter M. Garber, 'Tulipmania', Journal of Political Economy 97(3), June 1989, pp. 535-560",
+      "quote": "Most of the \"tulip-\n      mania\" was not obvious madness. High but rapidly depreciating\n      prices for rare bulbs is a typical pattern in the flower bulb industry.",
+      "url": "https://ms.mcmaster.ca/~grasselli/Garber89.pdf",
+      "archive": "http://web.archive.org/web/20261017055746/https://ms.mcmaster.ca/~grasselli/Garber89.pdf",
+      "file": "sources/tulip-mania/garber-1989-jpe-tulipmania.pdf.txt",
+      "sha256": "43842425697f6f3e12e35d8d6ea781bcb5dd856bc697917a4e22095c38a6517e"
+    }
+  },
+  "search_steps": [
+    "Web search led to Anne Goldgar's article in The Conversation (2018); saved. She names the 1637 satirical songs and pamphlets, a late 18th-century German history of inventions (Beckmann), and Mackay (1841) as the chain of tellings.",
+    "Saved Mackay's chapter from Wikisource (rendered page). The Wikisource index page shows the transcription is of the 1852 second edition, not the 1841 first edition.",
+    "Project Gutenberg was down for maintenance (503), so its copies of Mackay and Beckmann were not used.",
+    "archive.org advanced search for Beckmann's History of Inventions; saved the full text of the 1814 English vol. 1 (b21299808_0001). I read its whole 'Tulips' chapter (pp. 36-51). It tells of trade by chimney-sweeps, seamen and maid-servants, of gains and losses on contracts, of broken contracts ('many had engaged to pay more than they were able') and of the 24 February 1637 Amsterdam resolution, but it does not say that many were ruined; it says sellers at last settled for 'a small profit'. It is a telling, not a record, so it is not listed as an original.",
+    "Looked for the 1637 pamphlet 'Samen-spraeck tusschen Waermondt ende Gaergoedt' (Haarlem: Adriaen Roman, 1637) in full text: found only catalogue records (STCN, Max Planck eBooks); not saved or quoted.",
+    "Goldgar's book Tulipmania (2007) is not online in full text; her 2018 article is used as her own published summary.",
+    "Searched for Earl Thompson, 'The tulipmania: Fact or artifact?', Public Choice 130 (2007): paywalled, not saved.",
+    "Saved Garber, 'Tulipmania', JPE 1989, from a McMaster University copy and converted it with pdftotext."
+  ],
+  "confidence_note": "Mackay is the earliest telling of widespread ruin that I could save, and I quote his 1852 second edition; I did not check the wording of the 1841 first edition. The 1637 satirical pamphlets, which Goldgar says are the root of the story, were not found in full text and may hold earlier tellings of ruin. The finding of no ruined bankrupts rests on Goldgar's archival work as she summarises it; I did not see the archive records. Some scholars (for example Thompson 2007) read the price data differently."
+}

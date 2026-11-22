@@ -1,0 +1,74 @@
+{
+  "id": "f16-equator",
+  "as_told": "When the F-16 fighter was new, its flight software had a bug. Whenever the plane crossed the equator, the computer flipped it upside down. The story is told as an example of a strange software failure in a real aircraft.",
+  "lesson": "Software fails in dangerous ways in conditions that its designers did not expect, so such edge cases must be tested before flight.",
+  "what_happened": "The story first appeared in April 1980 in ACM SIGSOFT Software Engineering Notes, edited by Peter G. Neumann. A 1983 Usenet post that summarizes that issue says the bug was in the navigation software and was caught early in simulation testing. The same post says that in July 1980 J.N. Frisina of Singer-Kearfott wrote that there was no bug in the flight software. A 1986 Usenet post, forwarded to the RISKS Digest, again said it happened when the plane was flown in simulation. Neumann later wrote that it was still not known whether the fault was in the avionics software or in the simulation program itself. I found no first-hand record that shows the event, and no telling says a real F-16 flipped over.",
+  "false_part": "All early tellings say the flip happened only in a simulation, not in a real F-16, and the navigation-system maker reportedly denied any bug in the flight software.",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "1983-06-09",
+    "who": "Berry Kercheval (berry at zinfandel.UUCP), summarizing ACM SIGSOFT Software Engineering Notes of April and July 1980",
+    "where": "Usenet comp.unix.wizards, \"Famous Bugs - (nf)\"",
+    "quote": "Apparently a problem in the navigation software inverted the aircraft whenever it corssed the equator.  Luckily it was caught early in simulation testing and promptly fixed.",
+    "url": "https://www.tuhs.org/Usenet/comp.unix.wizards/1983-June/008307.html",
+    "archive": "",
+    "file": "sources/f16-equator/usenet-1983-06-famous-bugs.html",
+    "sha256": "89140f013c2c01f012d37fb8617e3bd623b1e9e285eba2dac2e5a4bae7548d49"
+  },
+  "original": [
+    {
+      "what": "Relay, in the 1983 Usenet post, of a letter from the navigation-system maker printed in Software Engineering Notes, July 1980. This is a lead only: the letter itself was not available.",
+      "date": "1980-07",
+      "who": "J.N. Frisina, Singer-Kearfott (as relayed by Berry Kercheval)",
+      "quote": "concerned that readers might have mistakenly believed there was a bug in the flight software, which was of course not the case.",
+      "url": "https://www.tuhs.org/Usenet/comp.unix.wizards/1983-June/008307.html",
+      "archive": "",
+      "file": "sources/f16-equator/usenet-1983-06-famous-bugs.html",
+      "sha256": "89140f013c2c01f012d37fb8617e3bd623b1e9e285eba2dac2e5a4bae7548d49"
+    },
+    {
+      "what": "Usenet net.aviation post by George Moore, forwarded by Bill Janssen to the RISKS Digest 3.44. It reports what a General Dynamics programmer told the writer.",
+      "date": "1986-08-27",
+      "who": "George Moore (gm@trsvax.UUCP), forwarded by Bill Janssen",
+      "quote": "So when they were 'flying' the F-16 in simulation over the equator, the",
+      "url": "http://catless.ncl.ac.uk/Risks/3/44",
+      "archive": "http://web.archive.org/web/20260722143452/https://catless.ncl.ac.uk/risks/3/44",
+      "file": "sources/f16-equator/risks-3-44.html",
+      "sha256": "60fae23f8a5052331a52a03df94d13d0fdc439e9ca7c0883c02e42dcf39cf415"
+    }
+  ],
+  "teller_correction": {
+    "what": "Peter G. Neumann, who first printed the story in Software Engineering Notes 5(2), 1980, in his own list Illustrative Risks to the Public (version dated January 20, 2015)",
+    "date": "2015-01-20",
+    "who": "Peter G. Neumann",
+    "quote": "This case is still one that still needs definitive",
+    "url": "http://www.csl.sri.com/users/neumann/illustrative.html",
+    "archive": "http://web.archive.org/web/20261029174155/https://www.csl.sri.com/users/neumann/illustrative.html",
+    "file": "sources/f16-equator/neumann-illustrative-risks.html",
+    "sha256": "45c158129f4c292bdfbf08dd823a560789a4bd6a4c1afe9da0cd7855157959a8"
+  },
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "I could not save a study or review of software faults in aircraft that tests this lesson. The only saved support is an expert's opinion in the RISKS Digest, which is not a study.",
+    "source": {
+      "what": "Moderator's note by Peter G. Neumann in RISKS Digest 3.46, 29 August 1986 (opinion, not a study)",
+      "quote": "It is very dangerous to start",
+      "url": "http://catless.ncl.ac.uk/Risks/3/46",
+      "archive": "http://web.archive.org/web/20260722143452/https://catless.ncl.ac.uk/risks/3/46",
+      "file": "sources/f16-equator/risks-3-46.html",
+      "sha256": "b15d7527218e5f01b661d562493c7dbebc6b9dc1e759f9b9b188b10936ebdace"
+    }
+  },
+  "search_steps": [
+    "Web search for F-16 equator upside down software: found RISKS Digest 3.44 (27 Aug 1986) and a 1983 Usenet post on tuhs.org.",
+    "Saved RISKS 3.44 to 3.56 from catless.ncl.ac.uk. 3.44 has the George Moore post forwarded by Bill Janssen; it places the equator flip in simulation. Follow-ups in 3.46, 3.47, 3.49, 3.51, 3.52, 3.53 and 3.55 discuss the landing-gear and bomb stories, not the equator case.",
+    "Saved the 1983 comp.unix.wizards post 'Famous Bugs' (tuhs.org). It cites SEN April 1980 (Neumann, via Earl Boebert from Mark Groves, OSD R&E) and the July 1980 letter by J.N. Frisina of Singer-Kearfott.",
+    "Tried the ACM Digital Library table of contents for SEN 5(2), 1980: HTTP 403. The SEN 1980 items and SEN 9(5) were not obtained.",
+    "Saved Neumann's Illustrative Risks list (csl.sri.com). Its entry cites S 5 2 and S 9 5 and says the case still needs definitive resolution.",
+    "Looked for a study of safety-critical software faults to test the lesson: Lutz 1993 (no free copy found), NTRS search API (no JSON returned), DTIC reports (HTTP 403), Leveson papers at cs.washington.edu (301, no file) and sunnyday.mit.edu (no connection).",
+    "Saved a 2007 Register news report on the F-22 date-line navigation failure; it is another anecdote, so I did not use it as evidence for the lesson.",
+    "Wayback: snapshots exist for RISKS 3.44, RISKS 3.46 and the Neumann list. The tuhs.org page had none; two save requests returned HTTP 523 and 520."
+  ],
+  "confidence_note": "The 1980 SEN items and the Frisina letter are known to me only through the 1983 Usenet summary. Every saved telling is second- or third-hand. It is not known whether the fault was in the F-16 navigation software or in the simulator. The 1983 post has no Wayback copy."
+}

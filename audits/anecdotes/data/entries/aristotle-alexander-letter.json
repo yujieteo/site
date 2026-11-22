@@ -1,0 +1,106 @@
+{
+  "id": "aristotle-alexander-letter",
+  "as_told": "After conquering Persia, Alexander the Great wrote to his teacher Aristotle to ask what to do about the able and ambitious Persian nobles. Aristotle gave no spoken answer: he cut off the tallest ears of grain (in some forms, the tallest plants), and the messenger reported this to Alexander, who understood that he should remove the leading men. (This wording is my own expansion of the one-line story given to me.)",
+  "lesson": "A ruler who wants to keep power should remove the people who stand out above the rest.",
+  "what_happened": "The silent gesture of cutting down the tallest plants first appears in a story about two tyrants of about 600 BC. Herodotus (Histories 5.92) tells it of Thrasybulus of Miletus advising Periander of Corinth by cutting the tallest ears of wheat; Aristotle retells it in the Politics (books 3 and 5) with the roles reversed. The version with Aristotle and Alexander is a medieval legend: the 13th-century Coptic chronicler Abu Shaker ibn al-Rahib, in an Ethiopic version translated by E. A. Wallis Budge (1896), says that when nobles of Babylon conspired against Alexander, Aristotle went into his garden, pulled up large trees and planted small ones, and Alexander then removed the nobles. In the same chronicle, and in the Arabic Secret of Secrets, Aristotle's advice about the Persian governors is the opposite: rule them graciously and win them with love.",
+  "false_part": "The grain-cutting gesture belongs to Thrasybulus and Periander; the medieval Aristotle-Alexander version concerns uprooted trees and the nobles of Babylon, while the advice it gives about the Persian elite is to win them with kindness.",
+  "class": "misattributed",
+  "also": "changed",
+  "earliest_telling": {
+    "date": "1896",
+    "who": "Abu Shaker ibn al-Rahib (Coptic chronicler, flourished about 1250), Ethiopic version translated by E. A. Wallis Budge",
+    "where": "The Life and Exploits of Alexander the Great: being a series of translations of the Ethiopic histories of Alexander (London, 1896), pp. 393-394, 'History of Alexander ... by Abu-Shaker'",
+    "quote": "Then Aristotle meditated \nin his mind, and went out into his garden, and \nlaying hold upon the large trees he pulled them \nforth from the earth, and he planted in their place \nlittle trees.",
+    "url": "https://archive.org/download/cu31924091208573/cu31924091208573_djvu.txt",
+    "archive": "https://archive.org/details/cu31924091208573",
+    "file": "sources/aristotle-alexander-letter/budge-1896-ethiopic-alexander-cu31924091208573_djvu.txt",
+    "sha256": "ab982b99ca26b69f0b38dd32f33880cf638fafe79d80ffdb704814e7bb5c3952"
+  },
+  "original": [
+    {
+      "what": "Herodotus, Histories 5.92F, English translation by A. D. Godley (Loeb), Perseus text via Perseids",
+      "date": "c. 430 BC",
+      "who": "Herodotus",
+      "quote": "he kept cutting off all the tallest ears of wheat which he could see, and throwing them away, until he had destroyed the best and richest part of the crop.",
+      "url": "https://cts.perseids.org/read/greekLit/tlg0016/tlg001/perseus-eng2/5.92F.1-5.92F.3",
+      "archive": "https://web.archive.org/web/20261122173004/https://cts.perseids.org/read/greekLit/tlg0016/tlg001/perseus-eng2/5.92F.1-5.92F.3",
+      "file": "sources/aristotle-alexander-letter/herodotus-5-92F-godley-perseids.txt",
+      "sha256": "731e76adf9264b4b313ef7d7304385a0e07dca8d990ea20885db1f525ceb8a51"
+    },
+    {
+      "what": "Aristotle, Politics, book 3 (1284a), translated by Benjamin Jowett, MIT Internet Classics Archive",
+      "date": "4th century BC",
+      "who": "Aristotle",
+      "quote": "The story \nis that Periander, when the herald was sent to ask counsel of him, said \nnothing, but only cut off the tallest ears of corn till he had brought \nthe field to a level.",
+      "url": "http://classics.mit.edu/Aristotle/politics.3.three.html",
+      "archive": "http://web.archive.org/web/20261115083444/https://classics.mit.edu/Aristotle/politics.3.three.html",
+      "file": "sources/aristotle-alexander-letter/aristotle-politics-3-jowett-mit.txt",
+      "sha256": "0408914e4a275461526f47fa32946b6f93a78aca21e0e6861609707663921864"
+    },
+    {
+      "what": "Aristotle, Politics, book 5 (1311a), translated by Benjamin Jowett, MIT Internet Classics Archive",
+      "date": "4th century BC",
+      "who": "Aristotle",
+      "quote": "Hence Periander advised Thrasybulus by cutting \noff the tops of the tallest ears of corn",
+      "url": "http://classics.mit.edu/Aristotle/politics.5.five.html",
+      "archive": "http://web.archive.org/web/20261117142740/https://classics.mit.edu/Aristotle/politics.5.five.html",
+      "file": "sources/aristotle-alexander-letter/aristotle-politics-5-jowett-mit.txt",
+      "sha256": "dfba8559707e34695ea959f28db5b2888625f69cdc9c16d9bfe981e472354b67"
+    },
+    {
+      "what": "Kitab Sirr al-asrar (Secret of Secrets), English translation by Ismail Ali in R. Steele (ed.), Opera hactenus inedita Rogeri Baconi, fasc. 5 (1920): the pseudo-Aristotelian letter on the Persian nobles",
+      "date": "1920 (Arabic text c. 10th century)",
+      "who": "attributed to Aristotle",
+      "quote": "Therefore \nconquer  them  by  kindness  and  benevolence,  and  so  obtain  their \nlove.",
+      "url": "https://archive.org/download/operahactenusin05baco/operahactenusin05baco_djvu.txt",
+      "archive": "https://archive.org/details/operahactenusin05baco",
+      "file": "sources/aristotle-alexander-letter/steele-1920-opera-baconi-05-secretum_djvu.txt",
+      "sha256": "b9fcf736fd309bf1344dba3c5c51d51c15220c404e30ff58b3709a0be224666b"
+    },
+    {
+      "what": "Plutarch, On the Fortune or the Virtue of Alexander 1.6 (Moralia 329B), Loeb translation by F. C. Babbitt (1936), LacusCurtius",
+      "date": "c. AD 100",
+      "who": "Plutarch",
+      "quote": "advice to treat the Greeks as if he were their leader, and other peoples as if he were their master",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Plutarch/Moralia/Fortuna_Alexandri*/1.html",
+      "archive": "https://web.archive.org/web/20261122173158/https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Plutarch/Moralia/Fortuna_Alexandri%2A/1.html",
+      "file": "sources/aristotle-alexander-letter/plutarch-de-fortuna-alexandri-1-loeb-penelope.txt",
+      "sha256": "d88c41c49a26d945b587a3da0bc89d8f372e88afb84b93e6ca5e3e6e12737881"
+    },
+    {
+      "what": "Same chronicle by Abu Shaker, Budge 1896 translation, p. 393: Aristotle's advice about the Persian governors",
+      "date": "1896 (chronicle about 1250)",
+      "who": "Abu Shaker ibn al-Rahib, trans. E. A. Wallis Budge",
+      "quote": "therefore, rule them \n“graciously, and conquer them with love",
+      "url": "https://archive.org/download/cu31924091208573/cu31924091208573_djvu.txt",
+      "archive": "https://archive.org/details/cu31924091208573",
+      "file": "sources/aristotle-alexander-letter/budge-1896-ethiopic-alexander-cu31924091208573_djvu.txt",
+      "sha256": "ab982b99ca26b69f0b38dd32f33880cf638fafe79d80ffdb704814e7bb5c3952"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "The lesson is political advice, and I found no study or record that tests whether removing prominent subjects keeps rulers in power. Aristotle himself presents the practice as a policy of tyrants, oligarchies and democracies, not as proven advice.",
+    "source": {
+      "what": "",
+      "quote": "",
+      "url": "",
+      "archive": "",
+      "file": "",
+      "sha256": ""
+    }
+  },
+  "search_steps": [
+    "Web search for Aristotle, Alexander, Persian nobles and the tallest grain: found no telling that joins them. Leads point to Herodotus 5.92 and Aristotle's Politics for the gesture, and to the Arabic Secret of Secrets for the letter about the Persians.",
+    "purplemotes.net (lead only) summarises the Secret of Secrets letter and cites Steele (1920) and Plutarch.",
+    "Saved Herodotus 5.92F (Godley translation, Perseids), Aristotle Politics books 3 and 5 (Jowett, MIT Classics), Plutarch De Fortuna Alexandri 1 (LacusCurtius) and the Steele 1920 Secret of Secrets translation (archive.org full text).",
+    "Searched for a variant in the Arabic or Persian Alexander tradition in which Aristotle uproots large trees and plants small ones: found nothing.",
+    "Open Library full-text search for Aristotle, Alexander, 'tallest ears': hits only for the Thrasybulus and Periander story (1895 school history; Jowett's Politics in a 1956-2000 anthology).",
+    "Open Library full-text search for Aristotle, Alexander, messenger, garden, uprooted trees, Persians: no hits.",
+    "archive.org search for Budge's Ethiopic Alexander texts; saved the full text of the 1896 English translation (cu31924091208573). Budge's introduction (p. xlv) says the story of Aristotle uprooting large trees is told by Al-Makin and Abu Shaker; the Abu Shaker text is on pp. 393-394.",
+    "Budge's footnote to the Abu Shaker passage says 'Compare Mas’ûdi, tom. ii. p. 134', which points to a possible 10th-century telling in al-Mas'udi's Meadows of Gold; I did not obtain or check it.",
+    "Google Books returned a daily-quota error during this work, so it was not searched."
+  ],
+  "confidence_note": "The earliest telling I saved that joins Aristotle and Alexander is a 13th-century chronicle in a 1896 translation, and it uses trees and the nobles of Babylon, not grain and the Persian elite. Budge's footnote points to al-Mas'udi (10th century), which may hold an earlier form; I did not check it. I did not find where the grain form joined to Aristotle and Alexander first appears. The Thrasybulus and Periander story is itself a tradition reported by Herodotus about 170 years later, so it cannot be confirmed as a real event either."
+}
