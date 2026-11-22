@@ -20,6 +20,9 @@ CLASS_TEXT = {
     "true": "True as told",
 }
 LESSON_TEXT = {"holds": "Holds", "does not hold": "Does not hold", "not established": "Not established"}
+SHORT = {"invented": "Invented", "changed": "Changed", "misattributed": "Wrong people or place",
+         "unsupported": "Not established", "true": "True"}
+GROUPS = [("False or misleading", RANKED), ("Not established either way", ("unsupported",)), ("True as told", ("true",))]
 
 
 def read_tsv(path):
@@ -59,8 +62,8 @@ def source(label, src):
     return lines
 
 
-def entry(e, names, score=None):
-    lines = [f"### {esc(names.get(e['id'], e['id']))}", ""]
+def entry(e, names, takeaways, score=None):
+    lines = [f'<div id="{e["id"]}"></div>', "", f"### {esc(names.get(e['id'], e['id']))}", ""]
     lines += [f"**As usually told:** {esc(e['as_told'])}", ""]
     lines += [f"**The usual lesson:** {esc(e['lesson'])}", ""]
     lines += [f"**What happened:** {esc(e['what_happened'])}", ""]
@@ -70,9 +73,12 @@ def entry(e, names, score=None):
     lines += [""]
     lv = e.get("lesson_verdict") or {}
     lines += [f"**Does the lesson hold?** {LESSON_TEXT.get(lv.get('status'), lv.get('status', ''))}. {esc(lv.get('why'))}", ""]
+    if takeaways.get(e["id"]):
+        lines += [f"**What to take away:** {esc(takeaways[e['id']])}", ""]
     if score:
         lines += [f"**Scores:** how common {score['f1']} (books {score['n_books']}, Wikipedia {score['n_wikipedia']}); "
                   f"how misleading {score['f2_rater1']} and {score['f2_rater2']} of 4 from the two raters.", ""]
+    lines += ["<details>", "<summary>Sources and quotes</summary>", ""]
     lines += source("Earliest telling found", e.get("earliest_telling"))
     for o in e.get("original") or []:
         lines += source("Original record", o)
@@ -82,11 +88,42 @@ def entry(e, names, score=None):
         lines += source("Evidence on the lesson", lv["source"])
     if e.get("confidence_note"):
         lines += [f"*Still uncertain:* {esc(e['confidence_note'])}", ""]
+    lines += ["</details>", ""]
     return lines
+
+
+def overview(es, takeaways, names):
+    """The summary at the top: counts, patterns, and one row per story."""
+    n = len(es)
+    cls = {c: sum(e["class"] == c for e in es) for c in SHORT}
+    false = [e for e in es if e["class"] in RANKED]
+    st = lambda group, s: sum((e.get("lesson_verdict") or {}).get("status") == s for e in group)  # noqa: E731
+    lines = ["## At a glance", "",
+             f"Of the {n} stories checked so far, {len(false)} are false or misleading: {cls['invented']} were invented, "
+             f"{cls['changed']} were changed in a way that carries the lesson, and {cls['misattributed']} are told about the wrong "
+             f"people, place or field. For {cls['unsupported']} more, no record shows the event happened and none rules it out. "
+             f"Only {cls['true']} are true as told.", "",
+             f"A false story does not always carry a false lesson. Of the {len(false)} false or misleading stories, the usual lesson "
+             f"still holds for {st(false, 'holds')}, does not hold for {st(false, 'does not hold')}, and is not established for "
+             f"{st(false, 'not established')}. So the useful question is usually not \"did it happen?\" but \"what does the real "
+             "event, or the real study, actually show?\" The last column of the table answers that for each story.", "",
+             "Some patterns repeat. Many stories trace back to one unnamed source, such as a former employee "
+             "([the iPod in the fish tank](#jobs-fish-tank)) or \"corporate lore\" ([the Battle Chess duck](#battle-chess-duck)). "
+             "Real studies get stretched past what they measured ([Mehrabian's 7-38-55 rule](#mehrabian)). Sayings move to more "
+             "famous people ([\"Let them eat cake\"](#let-them-eat-cake)). And harm grows as the story is retold: dozens of eye "
+             "injuries at one festival became [a blinded audience](#rave-laser-blinding).", ""]
+    rows = ["| Story | What the record shows | Does the usual lesson hold? | What to take away |", "|---|---|---|---|"]
+    for _, group in GROUPS:
+        for e in sorted((e for e in es if e["class"] in group), key=lambda e: names.get(e["id"], e["id"]).lower()):
+            lv = (e.get("lesson_verdict") or {}).get("status", "")
+            rows.append(f"| [{esc(names.get(e['id'], e['id']))}](#{e['id']}) | {SHORT[e['class']]} | "
+                        f"{LESSON_TEXT.get(lv, lv)} | {esc(takeaways.get(e['id'], ''))} |")
+    return lines + rows + [""]
 
 
 def main():
     names = {r["id"]: r["name"] for r in read_tsv(DATA / "candidates.tsv")}
+    takeaways = {r["id"]: r["takeaway"] for r in read_tsv(DATA / "takeaways.tsv")}
     es = [json.loads(p.read_text()) for p in sorted((DATA / "entries").glob("*.json"))]
     by_id = {e["id"]: e for e in es}
     ranking = read_tsv(DATA / "ranking.tsv")
@@ -114,6 +151,7 @@ def main():
         lines += [f"**This is a draft.** {done} of the {total} candidate stories are checked. Nothing is ranked or scored yet: "
                   "the counts of how often each story is told, and the two raters' scores, come after every story is checked, "
                   "so that the scores cannot be shaped by the counts.", ""]
+    lines += overview(es, takeaways, names)
     lines += ["## False or misleading", ""]
     if ranking:
         lines += ["| Rank | Story | How common | How misleading (two raters) |", "|---|---|---|---|"]
@@ -125,17 +163,21 @@ def main():
     else:
         order, scores = ranked, {}
     for e in order:
-        lines += entry(e, names, scores.get(e["id"]))
+        lines += entry(e, names, takeaways, scores.get(e["id"]))
     if unsupported:
         lines += ["## Not established either way", "",
                   "No record shows these events happened, and none rules them out. They are not ranked.", ""]
         for e in unsupported:
-            lines += entry(e, names)
-    lines += ["## Checked and rejected", "",
-              "These stories were checked and are not on the list, because they are true as told or out of scope.", "",
+            lines += entry(e, names, takeaways)
+    if true:
+        lines += ["## True as told", "",
+                  "These stories were checked and found true as told, so they are not ranked. Some still carry a lesson the "
+                  "evidence does not support.", ""]
+        for e in true:
+            lines += entry(e, names, takeaways)
+    lines += ["## Out of scope", "",
+              "These were set aside before research, because they are quotations, parables, personal stories or duplicates.", "",
               "| Story | Reason |", "|---|---|"]
-    for e in true:
-        lines.append(f"| {esc(names.get(e['id'], e['id']))} | True as told. {esc(e['what_happened'].split('. ')[0])}. |")
     for r in read_tsv(DATA / "rejected_scope.tsv"):
         lines.append(f"| {esc(r['name'])} | {esc(r['reason']).replace('Out of scope before the freeze: ', '').capitalize()} |")
     lines.append("")
