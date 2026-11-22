@@ -1,0 +1,65 @@
+{
+  "id": "battle-chess-duck",
+  "as_told": "At Interplay, producers always asked for at least one change. The artist who animated the queen in Battle Chess (1988) gave her a pet duck in every animation, kept clear of the real animation. At the review the producer watched it all and said: 'That looks great. Just one thing - get rid of the duck.'",
+  "lesson": "Give a reviewer an obvious, harmless thing to remove so the work you care about is left alone.",
+  "what_happened": "The earliest telling found is a Stack Overflow answer by the user 'kyoryu', dated about 14 March 2010, who calls it 'Interplay corporate lore' and says he did not originate the story. In 2016 a commenter signing as Bill Dugan, who said he was a junior employee at Interplay in 1989 (a Bill Dugan is credited on Interplay's 1989 Dragon Wars manual), wrote that the story is true except for details: lead Battle Chess artist Todd Camasta put a still image of a duck, not an animation, into the NES game Total Recall, and the approver 'supposedly' asked for it to be removed. No record from 1988-1990 was found. The account does not come from the artist or the approver, so the event itself is not shown by any record.",
+  "false_part": "",
+  "class": "unsupported",
+  "also": "misattributed",
+  "earliest_telling": {
+    "date": "2010-03-14",
+    "who": "Stack Overflow user 'kyoryu'",
+    "where": "Answer 'A Duck' to the question 'New programming jargon you coined?' (stackoverflow.com question 2349378, later deleted)",
+    "quote": "he gave the queen a pet duck",
+    "url": "http://stackoverflow.com/questions/2349378/new-programming-jargon-you-coined",
+    "archive": "https://web.archive.org/web/20100324091039/http://stackoverflow.com:80/questions/2349378/new-programming-jargon-you-coined",
+    "file": "sources/battle-chess-duck/so-2349378-20100324.html",
+    "sha256": "531e0489436836577c7eea2ea6e0f25371c98a1bac7dbc680f75fe243bacf4db"
+  },
+  "original": [
+    {
+      "what": "Comment on Jeff Atwood's 'New Programming Jargon' discussion (Coding Horror forum), posted under the name Bill Dugan, who says he worked at Interplay in 1989",
+      "date": "2016-06-07",
+      "who": "Bill Dugan (username BDugan)",
+      "quote": "Todd Camasta (who had indeed been the lead artist for Battle Chess) put in the duck, but it was a still image, not animated, and it was in the NES game",
+      "url": "https://discourse.codinghorror.com/t/new-programming-jargon/41?page=9",
+      "archive": "https://web.archive.org/web/20261122153226/https://discourse.codinghorror.com/t/new-programming-jargon/41?page=9",
+      "file": "sources/battle-chess-duck/codinghorror-discourse-41-page9.json",
+      "sha256": "78250f2fbef09898cc2569f74373faae526d87462846608e8c660144edba2d58"
+    },
+    {
+      "what": "Same Stack Overflow answer: the teller's statement that the story was received lore, not his own experience",
+      "date": "2010-03-14",
+      "who": "Stack Overflow user 'kyoryu'",
+      "quote": "This started as a piece of Interplay corporate lore.",
+      "url": "http://stackoverflow.com/questions/2349378/new-programming-jargon-you-coined",
+      "archive": "https://web.archive.org/web/20100324091039/http://stackoverflow.com:80/questions/2349378/new-programming-jargon-you-coined",
+      "file": "sources/battle-chess-duck/so-2349378-20100324.html",
+      "sha256": "531e0489436836577c7eea2ea6e0f25371c98a1bac7dbc680f75fe243bacf4db"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "No study was found that tests whether a planted decoy flaw protects the rest of a piece of work in review. Parkinson's 'law of triviality' (1957), often linked to this story, is satire, not evidence.",
+    "source": {
+      "what": "",
+      "quote": "",
+      "url": "",
+      "archive": "",
+      "file": "",
+      "sha256": ""
+    }
+  },
+  "search_steps": [
+    "English Wikipedia 'Battle Chess': calls the story 'possibly apocryphal'; cites Coding Horror 'New Programming Jargon' (20 July 2012) and The Economist 2022.",
+    "Wayback CDX for stackoverflow.com/questions/2349378: snapshots from 3 March 2010 onward; the 3 March 2010 copy has no duck answer; the 24 March 2010 copy has kyoryu's answer with a timestamp of 2010-03-14 23:59:44Z; saved the 24 March and 16 May 2010 copies.",
+    "Stack Exchange API search for 'battle chess' on stackoverflow, softwareengineering and meta: only later retellings (2011 onward); the 2010 answer is deleted (API returns nothing for answer 2444361).",
+    "Coding Horror forum (Discourse) JSON pages 1-9 searched for 'Camasta': page 9 has the 2016 Bill Dugan comment; saved.",
+    "Web search for an interview with Brian Fargo, Rebecca Heineman or Todd Camasta about the duck: none found.",
+    "Web search found a VOGONS forum post that reports an undocumented '/ducks' command-line switch in the VGA Battle Chess executable; the page refused connection and has no Wayback copy; not verified.",
+    "Open Library full-text search for \"get rid of the duck\": no hit about software before 2012.",
+    "Web search (MobyGames results): a Bill Dugan is credited for the manual of Interplay's Dragon Wars (1989); this is consistent with, but does not prove, the commenter's identity."
+  ],
+  "confidence_note": "The only account from someone at Interplay is the 2016 Dugan comment, written 27 years later by a person who was neither the artist nor the approver; its key line is 'supposedly', and his identity was not confirmed. If his account is right, the story is misattributed (Total Recall on NES, a still image). A VOGONS forum post reports an undocumented '/ducks' switch in the VGA Battle Chess program, which, if real, would point back to Battle Chess; it could not be checked. No lesson source was found, so the lesson source fields are empty."
+}

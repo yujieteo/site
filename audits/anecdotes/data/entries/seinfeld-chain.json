@@ -1,0 +1,65 @@
+{
+  "id": "seinfeld-chain",
+  "as_told": "Jerry Seinfeld told a young comic that the way to write better jokes is to write every day. He marks a big red X on a wall calendar for each day he writes. After a few days the Xs form a chain, and his only job is to not break the chain.",
+  "lesson": "To build a habit you must do the task every day and never break the chain.",
+  "what_happened": "The story first appeared on Lifehacker on 24 July 2007, in a guest post by the software developer Brad Isaac. Isaac wrote that Seinfeld gave him the calendar advice at a comedy club years before, when Seinfeld was still a touring comic. No record from Seinfeld supports it. On 6 January 2014, in his Reddit question-and-answer session, Seinfeld answered a question about the calendar X and said the idea was not his.",
+  "false_part": "Seinfeld says the calendar-and-chain method is not his idea, although it is told as his method.",
+  "class": "invented",
+  "also": "",
+  "earliest_telling": {
+    "date": "2007-07-24",
+    "who": "Brad Isaac (guest post, Lifehacker)",
+    "where": "Jerry Seinfeld's Productivity Secret, Lifehacker",
+    "quote": "He said for each day that I do my task of writing, I get to put a big red X over that day.",
+    "url": "https://lifehacker.com/281626/jerry-seinfelds-productivity-secret",
+    "archive": "http://web.archive.org/web/20090209061938/http://lifehacker.com:80/281626/jerry-seinfelds-productivity-secret",
+    "file": "sources/seinfeld-chain/lifehacker-2007-isaac-wayback2009.html",
+    "sha256": "42794c27674f88f27371bf93ed430d4e099802a6448c1b12890cb9bb3a81e995"
+  },
+  "original": [
+    {
+      "what": "Seinfeld's own answer in his Reddit question-and-answer session (account _Seinfeld, thread 1ujvrg, comment ceiugt5), replying to a question asking whether he still writes a big X on his calendar every day",
+      "date": "2014-01-06",
+      "who": "Jerry Seinfeld",
+      "quote": "getting credit for making an X on a calendar with the Seinfeld productivity program",
+      "url": "https://www.reddit.com/r/IAmA/comments/1ujvrg/jerry_seinfeld_here_i_will_give_you_an_answer/ceiugt5/",
+      "archive": "http://web.archive.org/web/20220728055752/https://www.reddit.com/r/IAmA/comments/1ujvrg/jerry_seinfeld_here_i_will_give_you_an_answer/ceiugt5/",
+      "file": "sources/seinfeld-chain/reddit-ceiugt5-wayback2022.html",
+      "sha256": "5ecfe2829da7c06c7975b2aef50d18367de2aa27fe1b5297b12be046aa482c7f"
+    },
+    {
+      "what": "Same Reddit comment and the question it answers, as stored by the third-party Reddit archive Arctic Shift (gives author, time and full text in plain form)",
+      "date": "2014-01-06",
+      "who": "Jerry Seinfeld (_Seinfeld); question by Reddit user seb245",
+      "quote": "the dumbest non-idea that was not mine, but somehow I'm getting credit for it.",
+      "url": "https://arctic-shift.photon-reddit.com/api/comments/ids?ids=ceiugt5,ceitfxh",
+      "archive": "http://web.archive.org/web/20220728055752/https://www.reddit.com/r/IAmA/comments/1ujvrg/jerry_seinfeld_here_i_will_give_you_an_answer/ceiugt5/",
+      "file": "sources/seinfeld-chain/reddit-ceiugt5-arcticshift.json",
+      "sha256": "9158eb2ce15bf82cceca6a7560d033b9c9684b808d29df4b6ee2ab879d1c0d86"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "does not hold",
+    "why": "In a 12-week study of 96 volunteers forming a daily habit, repetition built automaticity, but one missed day did not materially slow habit formation. An earlier study the authors cite found that missing a whole week did harm, so long gaps matter but one broken link does not. The study did not test calendar marking or Isaac's claim that one skip makes the next skip easier.",
+    "source": {
+      "what": "Lally, van Jaarsveld, Potts and Wardle, 'How are habits formed: Modelling habit formation in the real world', European Journal of Social Psychology 40 (2010) 998-1009, doi:10.1002/ejsp.674",
+      "quote": "shows that a missed opportunity did not materially affect the habit formation process.",
+      "url": "https://repositorio.ispa.pt/server/api/core/bitstreams/370f1dca-cc04-4d3d-a0f0-36d16109ec37/content",
+      "archive": "http://web.archive.org/web/20260816054251/https://repositorio.ispa.pt/server/api/core/bitstreams/370f1dca-cc04-4d3d-a0f0-36d16109ec37/content",
+      "file": "sources/seinfeld-chain/lally2010-habits.pdf.txt",
+      "sha256": "fea76db40229c8a538102a5205e5a7de87d9b61920c226db64e2ec3ea5ba167d"
+    }
+  },
+  "search_steps": [
+    "Web search for the Seinfeld calendar story and his Reddit reply: led to Lifehacker (2007) and to news reports of his 2014 Reddit session.",
+    "Fetched the current Lifehacker page (lifehacker.com/281626): it is a 2023 rewrite, so I saved the 2009 Wayback copy of the original 24 July 2007 post by Brad Isaac instead.",
+    "Searched for an earlier telling on Brad Isaac's own blog: found nothing earlier than the Lifehacker post; news and blog posts from 24-25 July 2007 cite Lifehacker.",
+    "Found the Reddit thread id 1ujvrg via kottke.org; reddit.com refused automated requests, so I used the Arctic Shift Reddit archive API to search comments by the thread author _Seinfeld and found comment ceiugt5 (6 January 2014, Unix time 1389033634) and the question it answers (ceitfxh).",
+    "Saved the Wayback copy (28 July 2022) of the reddit.com permalink for comment ceiugt5; it shows the same text under the account _Seinfeld.",
+    "Searched for a correction by Brad Isaac: found none.",
+    "Open Library full-text search was not used for this story because the first telling is a 2007 web post.",
+    "Lesson: found Lally et al. 2010 through web search; core.ac.uk returned a challenge page, so I saved the PDF from the ISPA repository (Repositorio ISPA) and converted it with pdftotext."
+  ],
+  "confidence_note": "Seinfeld denies that the idea is his, but he does not say whether he ever spoke with Brad Isaac, so Isaac may have misremembered or embellished a real conversation. The Reddit post is under the verified AMA account _Seinfeld; I could not read it on reddit.com directly, only through the Wayback copy and the Arctic Shift mirror. The Lally study did not test marking a calendar; it tested whether single missed days slow habit formation."
+}

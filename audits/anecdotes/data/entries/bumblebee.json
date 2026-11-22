@@ -1,0 +1,58 @@
+{
+  "id": "bumblebee",
+  "as_told": "Scientists once worked out, by the laws of aerodynamics, that a bumblebee cannot fly: its wings are too small for its heavy body. But the bumblebee does not know this, so it flies anyway. The story is told to show that experts can be wrong and that the impossible can be done.",
+  "lesson": "Science cannot explain how a bumblebee flies, so what experts call impossible can still be done.",
+  "what_happened": "The story is usually traced to a 1934 book on insect flight by the French scientist A. Magnan, working with the mathematician Andre Sainte-Lague. A 2005 study in PNAS reports that in 1934 they \"concluded from a simple mathematical analysis that the flight of bees was\" impossible, and says their assumptions have since been shown to be wrong. I could not get Magnan's book, so I could not check what it says. The same study measured honeybees: fixed-wing theory does not fit their flapping wings, and robot-wing measurements show that bees get lift from unsteady forces, especially when the wing reverses its stroke. In books, the story is told as a chapter title, \"The Bumblebee Cannot Fly\", by 1949.",
+  "false_part": "No one proved that a bumblebee cannot fly; at most, a rough calculation that treated insect wings like fixed aircraft wings came out wrong, and the way bees fly is now measured and explained.",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "1949",
+    "who": "Donald F. Ackland",
+    "where": "Moving Heaven and Earth (a life of R. G. LeTourneau), chapter IX, \"The Bumblebee Cannot Fly\"; Open Library search-inside snippet only",
+    "quote": "to the theory of aerodynamics, and",
+    "url": "https://openlibrary.org/search/inside.json?q=%22bumblebee+cannot+fly%22&limit=50",
+    "archive": "https://archive.org/details/movingheaveneart0000dona",
+    "file": "sources/bumblebee/openlibrary-inside-bumblebee-cannot-fly.json",
+    "sha256": "9456eec8368e6f8dfdd9f1320b3cf9021d96736ad59f0965da4f518cf319ba2d"
+  },
+  "original": [
+    {
+      "what": "Altshuler, Dickson, Vance, Roberts and Dickinson, \"Short-amplitude high-frequency wing strokes determine the aerodynamics of honeybee flight\", PNAS 102 (2005): its account of the 1934 calculation. This is a later paper's report of the calculation, not the 1934 book itself, which I could not get.",
+      "date": "2005",
+      "who": "Douglas L. Altshuler and others (the paper calls him \"August Magnan\")",
+      "quote": "concluded from a simple mathematical analysis that the flight of bees was",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1312389/",
+      "archive": "http://web.archive.org/web/20231105114945/https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1312389/",
+      "file": "sources/bumblebee/altshuler-2005-pnas-PMC1312389.html",
+      "sha256": "26517b8465e7b9d2a489305110c31542603238939757730d81eaa1af24c4512f"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "does not hold",
+    "why": "Bee flight is measured and explained: in honeybees, fixed-wing theory does not fit flapping wings, and robot-wing experiments show that bees use unsteady forces at stroke reversal. So bee flight is not a case of science calling something impossible that happens anyway.",
+    "source": {
+      "what": "Altshuler et al. (2005), PNAS 102: 18213-18218, results on honeybee wing forces measured on a dynamically scaled robot wing",
+      "quote": "bees make extensive use of unsteady stroke-reversal forces when hovering",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1312389/",
+      "archive": "http://web.archive.org/web/20231105114945/https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1312389/",
+      "file": "sources/bumblebee/altshuler-2005-pnas-PMC1312389.html",
+      "sha256": "26517b8465e7b9d2a489305110c31542603238939757730d81eaa1af24c4512f"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search for \"bumblebee cannot fly\": earliest hits are D. F. Ackland, Moving Heaven and Earth (1949), with a chapter titled \"The Bumblebee Cannot Fly\", then several 1953-1954 books. All are lending-only scans whose full text returns 401, so only the search-inside snippet was saved and quoted.",
+    "Open Library full-text search for \"bumblebee can't fly\", \"should not be able to fly\" and \"bumble bee\" \"cannot fly\" aerodynamics: no hit before 1949.",
+    "Open Library full-text search for Magnan's French wording \"leur vol est impossible\": no hits.",
+    "Web search and the English Wikipedia article on Antoine Magnan point to Magnan, Le Vol des Insectes (Paris: Hermann, 1934), introduction, as the source. Wikipedia links only a Google Books record, not a scan.",
+    "Tried to get Magnan 1934: Gallica refused automated requests (Cloudflare); archive.org has no copy; the French defence ministry digital library refused the connection; the Google Books API had no quota. The book was not read, and nothing from it is quoted.",
+    "BnF catalogue record (catalogue.bnf.fr, ark cb312800773) is for a related work, \"Le vol au point fixe\" by A. Magnan and A. Sainte-Lague (Paris: Hermann, 1933), and links a Gallica copy (ark bpt6k38048h). Gallica refuses automated requests, and the Wayback Machine has no snapshot of that copy or its text. Not read.",
+    "Chronicling America (Library of Congress), HathiTrust and Papers Past refused automated requests, so 1930s newspapers could not be searched.",
+    "Altshuler et al. (2005), PNAS: pnas.org, pmc.ncbi.nlm.nih.gov and Europe PMC refused (403 or captcha). Saved the Wayback Machine copy (original bytes) of the PMC article.",
+    "Tried the Journal of Experimental Biology review by Sane (2003) on insect aerodynamics: refused (403). Not used.",
+    "A Wayback Machine save of the Open Library search response failed (error 523); the archive.org page of the 1949 book is given as the archived link.",
+    "Did not search for a correction by Magnan; Wikipedia says he qualified the claim in the same book, which I could not read."
+  ],
+  "confidence_note": "The class is unsupported because I could not read Magnan's 1934 book or the 1933 work with Sainte-Lague, so no saved primary record shows that the calculation was made or what it said; the 2005 PNAS paper reports it but is a later account. If the book confirms the passage, the class would be changed (a rough calculation became a \"proof\"). The 1949 earliest telling is a search snippet from a lending-only scan, not a full text, and earlier tellings (1934-1948) probably exist in newspapers that I could not search. The lesson verdict rests on honeybee measurements; bumblebees were not studied in the saved paper."
+}

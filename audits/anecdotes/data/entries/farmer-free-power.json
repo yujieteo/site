@@ -1,0 +1,55 @@
+{
+  "id": "farmer-free-power",
+  "as_told": "A farmer whose land lay under a high-voltage power line strung a large coil of wire in his barn or field under the line. Without touching the line, he got free electricity for years, until the power company noticed the loss and he was taken to court.",
+  "lesson": "You can get free electricity from a power line without touching it.",
+  "what_happened": "No court record, newspaper report or named farmer for this story was found. The earliest telling found is a 2004 forum post that says 'I've heard a story'; later versions place the farmer in Idaho, England, Ontario or beside an electric railway. The physics behind it is real: the US Bonneville Power Administration warns that fences near lines can pick up induced voltages. But harvesting research reports milliwatt outputs, enough to run small sensors. New Zealand farmers were prosecuted for electricity theft in 1927-1937, but those cases involved wires joined to mains, meters or switches, not induction.",
+  "false_part": "No record shows that any farmer did this or was prosecuted for it.",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "2004-08-12",
+    "who": "forum user 'check'",
+    "where": "Physics Forums, thread 'Stealing Electricity by induced EMF', post #2",
+    "quote": "I've heard a story where a farmer whose barn was right underneath some high-voltage lines, set up many many copy coils in the barns roof and was able to steal electricity that way.",
+    "url": "https://www.physicsforums.com/threads/stealing-electricity-by-induced-emf.39132/",
+    "archive": "http://web.archive.org/web/20260501071737/https://www.physicsforums.com/threads/stealing-electricity-by-induced-emf.39132/",
+    "file": "sources/farmer-free-power/physicsforums-39132-2004.html",
+    "sha256": "c95a5939d752ed56b7143a9d6be79643fe4e588e970d192e32d500e8e72ee881"
+  },
+  "original": [
+    {
+      "what": "Bonneville Power Administration, 'Living and Working Safely Around High-Voltage Power Lines' (DOE/BP-3804, updated February 2025): record that metal objects near lines pick up induced voltage",
+      "date": "2025",
+      "who": "Bonneville Power Administration",
+      "quote": "Barbed wire and woven wire fences insulated from ... ground on wood posts can assume an induced",
+      "url": "https://www.bpa.gov/-/media/Aep/lands/living-and-working-safely-around-high-voltage-power-lines.pdf",
+      "archive": "http://web.archive.org/web/20260412012746/https://www.bpa.gov/-/media/Aep/lands/living-and-working-safely-around-high-voltage-power-lines.pdf",
+      "file": "sources/farmer-free-power/bpa-living-and-working-safely.pdf",
+      "sha256": "b6bfe49af975d5e884b1ec9d45bb92ad18872a5ff1b7ff26e4c99c619b26adfc"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "A review of grid energy harvesting shows that induction near lines does yield power, but the reported amounts are milliwatts, enough for a sensor, and the energy comes from the line, so it is not free. One paper seen only as a search lead reports watt-level output from a parallel wire; it could not be read, so the useful size of the effect is not settled.",
+    "source": {
+      "what": "Yang, Du, Yu and Huang, 'Magnetic and Electric Energy Harvesting Technologies in Power Grids: A Review', Sensors 20(5):1496 (2020)",
+      "quote": "obtained 16.4 mW energy under the voltage of 60 kV ... S. Kang et al. used a conductor tube under actual three-phase 765 kV power transmission lines to harvest electric-field energy and successfully power a Zigbee-based temperature sensor node",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7085584/",
+      "archive": "http://web.archive.org/web/20260415213717/https://pmc.ncbi.nlm.nih.gov/articles/PMC7085584/",
+      "file": "sources/farmer-free-power/pmc7085584-review.html",
+      "sha256": "cd85feab72cb9e21106954615f0ea0ef8c8151ce6296c5c78810b130416a8665"
+    }
+  },
+  "search_steps": [
+    "Web search: leads to Straight Dope (2018; posters say no cite was ever given; versions in Idaho and England), Physics Forums (2004), Hackaday comments (Ontario, Tennessee), Industry Tap (Idaho, unsourced), a uk.railway Usenet thread (2011, farmer and electric railway, Theft Act s. 13, no citation; other posters call it a legend).",
+    "Straight Dope thread points to a Snopes message board thread t=9291; no Wayback copy exists.",
+    "Saved the 2004 Physics Forums thread, the earliest dated telling found.",
+    "A UNC physics course exam page tells the story as a 'reportedly' problem and calculates about $31 a year of power; saved as a lead only, not quoted.",
+    "Papers Past: read six 1927-1937 New Zealand articles on farmers and electricity theft through new Wayback captures (Ashburton Guardian 11 June 1932; Dominion 12 June 1933; Evening Post 21 June 1933; Southland Times 2 July 1927; Auckland Star 23 March 1937; Manawatu Standard 16 September 1932). All involve wires joined to mains, meters, switches or fuses; none involves induction. Not quoted.",
+    "Open Library full-text searches for farmer coil 'power line', 'stealing electricity' coil, farmer 'transmission lines' coil: no telling found. HathiTrust full-text search returned a 403 bot check. Chronicling America was not usable (403 earlier in this batch).",
+    "Saved the BPA safety booklet on induced voltages and the Sensors 2020 review on grid energy harvesting. A De Gruyter paper (ehs-2022-0085) reporting watt-level harvest could not be fetched (202 empty, 405).",
+    "No correction by the forum poster was found."
+  ],
+  "confidence_note": "Older tellings almost surely exist (engineering-school lore, Usenet, physics textbooks) but were not found in searchable form. A real prosecution may exist in court records not online. The lesson verdict would change if the watt-level parallel-wire paper shows practical farm-scale power."
+}

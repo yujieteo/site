@@ -1,0 +1,65 @@
+{
+  "id": "fidelity-dead-investors",
+  "as_told": "Fidelity studied which of its customers' accounts did best and found that the top performers belonged to people who had died. In some versions the second-best were people who had forgotten they had an account. The accounts did best because nobody traded in them.",
+  "lesson": "Investors who trade less earn better returns.",
+  "what_happened": "The earliest telling found is a Bloomberg Radio 'Masters in Business' interview of James O'Shaughnessy by Barry Ritholtz, aired about 30 August 2014 and transcribed by Business Insider on 4 September 2014. O'Shaughnessy, relaying a story from a new employee, said a Fidelity study found the best accounts were those of people who forgot they had them. Ritholtz guessed 'They were dead', and O'Shaughnessy answered 'No'. No Fidelity study was found, and in 2015 Morningstar's John Rekenthaler reported that his Fidelity contacts had not heard of one.",
+  "false_part": "The 'dead people' finding began as an interviewer's guess that the teller rejected on air, and no Fidelity study of either kind has been found.",
+  "class": "invented",
+  "also": "unsupported",
+  "earliest_telling": {
+    "date": "2014-08-30",
+    "who": "James O'Shaughnessy and Barry Ritholtz (transcribed by Myles Udland, Business Insider, 2014-09-04)",
+    "where": "Bloomberg Radio, Masters in Business; Business Insider, 'Fidelity Reviewed Which Accounts Did Best And What They Found Was Hilarious'",
+    "quote": "Ritholtz: \"They were dead.\"",
+    "url": "http://www.businessinsider.com/forgetful-investors-performed-best-2014-9",
+    "archive": "https://web.archive.org/web/20140904234316/http://www.businessinsider.com/forgetful-investors-performed-best-2014-9",
+    "file": "sources/fidelity-dead-investors/bi-2014-09-04.html",
+    "sha256": "0546c1bba46130d933abb8022d59116ac09bf303936b68aedd366a164d4a9a93"
+  },
+  "original": [
+    {
+      "what": "O'Shaughnessy's words on the radio, as transcribed by Business Insider; his reply to Ritholtz's guess",
+      "date": "2014-08-30",
+      "who": "James O'Shaughnessy",
+      "quote": "No, that's close though! They were the accounts people who forgot they had an account at Fidelity.",
+      "url": "http://www.businessinsider.com/forgetful-investors-performed-best-2014-9",
+      "archive": "https://web.archive.org/web/20140904234316/http://www.businessinsider.com/forgetful-investors-performed-best-2014-9",
+      "file": "sources/fidelity-dead-investors/bi-2014-09-04.html",
+      "sha256": "0546c1bba46130d933abb8022d59116ac09bf303936b68aedd366a164d4a9a93"
+    },
+    {
+      "what": "Business Insider's description of where O'Shaughnessy got the story (reporter's paraphrase)",
+      "date": "2014-09-04",
+      "who": "Myles Udland, Business Insider",
+      "quote": "anecdote from an employee who recently joined his firm",
+      "url": "http://www.businessinsider.com/forgetful-investors-performed-best-2014-9",
+      "archive": "https://web.archive.org/web/20140904234316/http://www.businessinsider.com/forgetful-investors-performed-best-2014-9",
+      "file": "sources/fidelity-dead-investors/bi-2014-09-04.html",
+      "sha256": "0546c1bba46130d933abb8022d59116ac09bf303936b68aedd366a164d4a9a93"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "holds",
+    "why": "A study of 66,465 households at a large US discount broker, 1991-1996, found that the households that traded most earned 11.4 percent a year against 17.9 percent for the market.",
+    "source": {
+      "what": "Barber and Odean, 'Trading Is Hazardous to Your Wealth', Journal of Finance 55(2), April 2000, abstract",
+      "quote": "Our central message is that trading is hazardous to your",
+      "url": "https://faculty.haas.berkeley.edu/odean/papers%20current%20versions/individual_investor_performance_final.pdf",
+      "archive": "http://web.archive.org/web/20261116012011/https://faculty.haas.berkeley.edu/odean/papers%20current%20versions/individual_investor_performance_final.pdf",
+      "file": "sources/fidelity-dead-investors/barber-odean-2000.pdf.txt",
+      "sha256": "bd77a2b4f31ce30dbf95202f41ec4587377c3a09f2a5d8df3d4725639ce5d184"
+    }
+  },
+  "search_steps": [
+    "Web search for the Fidelity dead-investors study: leads point to the 2014 Ritholtz/O'Shaughnessy radio exchange and to Morningstar (Rekenthaler, 6 October 2015).",
+    "Wayback CDX for businessinsider.com/forgetful-investors-performed-best-2014-9: first capture 2014-09-04; saved; the transcript has 'They were dead' from Ritholtz and 'No' from O'Shaughnessy.",
+    "Morningstar 'From the Archives: In Praise of the Dead (Investors)' (Wayback copy 2024-04-18, fetched with a browser User-Agent after a 403): lead only; reports that a Fidelity contact had not heard of the study and lists later tellings (Conservative Income Investor's 'dead or inactive', 2003-2013; a Mohnish Pabrai speech; Moneyvator, June 2015).",
+    "Wayback CDX for the Conservative Income Investor article: first capture 2018-10-12 (Morningstar shows it existed by October 2015).",
+    "Open Library full-text search for Fidelity, dead, best performing accounts: no earlier telling.",
+    "Ritholtz.com and Bloomberg pages for the 30 August 2014 episode found by search; no transcript or audio file was saved, so the radio words are quoted from Business Insider's transcript.",
+    "Saved Barber and Odean (2000) from Odean's Berkeley page for the lesson.",
+    "Open Library full-text search for Fidelity, 'accounts', 'were dead' (years 2000-2014 printed): no telling. Hacker News Algolia comment search before 30 August 2014 for 'fidelity dead' and 'best investors dead': no telling."
+  ],
+  "confidence_note": "Ritholtz's quick guess 'They were dead' suggests a 'dead investors' joke may have circulated before 2014; none was found in Open Library or Hacker News, but newspapers, blogs and forums before 2014 were not searched broadly. If an earlier 'dead' telling exists, the class should be 'unsupported'. Fidelity's denial is known only from a journalist's report, so it is a lead, not evidence. The original radio audio was not heard."
+}

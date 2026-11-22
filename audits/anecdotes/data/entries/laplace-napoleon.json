@@ -1,0 +1,56 @@
+{
+  "id": "laplace-napoleon",
+  "as_told": "Laplace presented his great book on celestial mechanics to Napoleon. Napoleon remarked that the book never mentioned God, the Creator of the universe. Laplace answered: \"Sire, I had no need of that hypothesis.\"",
+  "lesson": "Science can explain the workings of the universe by natural laws alone, without calling on God.",
+  "what_happened": "On 8 August 1802 William Herschel, Count Rumford and Laplace met the First Consul, Napoleon, at Malmaison. In his diary entry for 8 August 1802, Herschel wrote that Napoleon exclaimed \"and who is the author of all this\" while they spoke of the extent of the heavens, and that Laplace argued that a chain of natural causes would account for the construction and preservation of the system, which Napoleon rather opposed. Herschel does not record the words \"no need of that hypothesis\". The earliest printing of the words I found is from 1825, in the memoirs of Napoleon's doctor Antommarchi. There, Napoleon on St Helena says that a man named only by the initial L, whom he had congratulated on a newly published work, gave him that answer.",
+  "false_part": "",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "1825",
+    "who": "Francesco Antommarchi, reporting Napoleon's words on St Helena",
+    "where": "Mémoires du docteur F. Antommarchi, ou les derniers momens de Napoléon, tome premier (Paris: Barrois l'aîné), p. 282",
+    "quote": "C’est , » me répondit-il, que je n’ai pas eu besoin de » cette hypothèse.",
+    "url": "https://archive.org/download/b29331882_0001/b29331882_0001_djvu.txt",
+    "archive": "https://archive.org/details/b29331882_0001",
+    "file": "sources/laplace-napoleon/b29331882_0001_djvu.txt",
+    "sha256": "8e59ac5a08d24ac7d3c213970153a4ed8128f80f8f654e3ebbec34abe6ce3108"
+  },
+  "original": [
+    {
+      "what": "William Herschel's diary of his 1802 visit to Paris, entry for Sunday 8 August 1802, printed in J. L. E. Dreyer's biographical introduction (p. lxii)",
+      "date": "1802-08-08",
+      "who": "William Herschel",
+      "url": "https://archive.org/download/scientificpapers032804mbp/scientificpapers032804mbp_djvu.txt",
+      "archive": "https://archive.org/details/scientificpapers032804mbp",
+      "quote": "M. de La Place wished to shew that a chain of natural causes would account for the construction and preservation of the wonderful system ; this the First Consul rather opposed.",
+      "file": "sources/laplace-napoleon/scientificpapers032804mbp_djvu.txt",
+      "sha256": "21a41f126aafe377c76a2c260d9fb5f79fc440e82e6a668ab7805397c943ce81"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "The broad claim that science needs no God cannot be settled by one study. The part that can be tested holds: modern celestial mechanics computes the evolution of the Solar System over billions of years from physical law alone, with no outside correction. But the same work shows that the system is not strictly stable as Laplace believed: about one per cent of the computed futures lead to Mercury colliding with Venus or the Sun.",
+    "source": {
+      "what": "J. Laskar and M. Gastineau, 'Existence of collisional trajectories of Mercury, Mars and Venus with the Earth', Nature 459, 817-819 (2009), abstract",
+      "quote": "one per cent of the solutions lead to a large increase in Mercury’s eccentricity—an increase large enough to allow collisions with Venus or the Sun",
+      "url": "https://www.nature.com/articles/nature08096",
+      "archive": "http://web.archive.org/web/20261103191730/https://www.nature.com/articles/nature08096",
+      "file": "sources/laplace-napoleon/laskar-gastineau-2009-nature08096.html",
+      "sha256": "ba940643dd3c6bd38953eadf6b3a8489e725582be04338ce49d441bfd8565f5a"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search for \"no need of that hypothesis\": 1,913 hits; first page of 20 hits, earliest 1915.",
+    "Open Library full-text search for \"besoin de cette hypothèse\" Laplace and for \"besoin de cette hypothese\" Napoleon: 686 and 711 hits; first page of each; earliest dated hit is a microfiche with a wrong year (1800); then 1884 and 1907.",
+    "English Wikipedia 'Pierre-Simon Laplace' (section on the phrase) used as a lead: it cites Rouse Ball (1888 telling), Antommarchi (1825), Faye (1884), Arago's eulogy (1827) and Herschel's diary.",
+    "Antommarchi, Mémoires, vol. 1, 1825 (archive.org b29331882_0001): saved full text; the passage is on p. 282, Napoleon speaking, the other man named only by the initial L (the saved text reads 'avecL').",
+    "Herschel's diary, 8 August 1802: The Herschel Chronicle (1933) is a lending-only book on archive.org (full text refused, 401). Found the same diary entry printed in Dreyer's introduction to The Scientific Papers of Sir William Herschel, vol. 1 (1912), p. lxii (archive.org scientificpapers032804mbp). Saved. Also seen in Webb's 1913 biography of T. J. J. See, which quotes Dreyer.",
+    "Faye, Sur l'origine du monde (1884), pp. 109-111, which says Laplace asked Arago to have the anecdote removed: not found on archive.org; Gallica, HathiTrust and Google Books refused automated requests (403/429). Pasquier 1898 on Persée is a page image only. Not quoted.",
+    "Searched for a correction by Laplace himself: none in his own published words found. The only report (via Faye, via Arago) is second-hand and I could not obtain it.",
+    "Google Books returned 429 and HathiTrust returned 403. Free newspaper archives were not searched, because the story is older than their main coverage and the book searches reached 1825.",
+    "Lesson source: Laskar and Gastineau, Nature 2009, abstract page. Saved."
+  ],
+  "confidence_note": "The meeting and an argument about natural causes are recorded first-hand by Herschel. The famous words come only from Napoleon as reported by Antommarchi 23 years later, with Laplace's name shown only by an initial, so I class them unsupported rather than true or invented. Faye's 1884 report that Laplace disowned the anecdote is hearsay through Arago and I did not read it."
+}

@@ -1,0 +1,57 @@
+{
+  "id": "soviet-nails",
+  "as_told": "A Soviet nail factory was given a production target. When the target was set by the number of nails, the factory made huge numbers of tiny, useless nails. When the target was changed to weight, it made a few enormous nails, or one giant nail.",
+  "lesson": "When people are judged by one crude number, they meet the number in ways that defeat its purpose.",
+  "what_happened": "Gwyn Bevan (2023) reproduces a satirical cartoon from the Soviet magazine Krokodil, which he cites as E. Vasilyeva, 'The Nail Factory', Krokodil 1954, No. 5, page 5. In his reproduction a worker asks who needs such a nail and the manager answers that the nail quota is fulfilled. Western economics books from the early 1960s, seen as search snippets, use tons of nails as a general example of output targets. A 1957 Newsweek item about a nail factory at Kuibyshev is reported in a Stack Exchange answer, but I could not read it. I found no record of a real factory that made one giant nail or only tiny nails, and I could not save a primary record of weight-based targets distorting Soviet output.",
+  "false_part": "No record I could find shows a real factory that made one giant nail or only tiny nails; the best-known early telling is a satirical cartoon.",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "1962",
+    "who": "Clair Wilcox and others",
+    "where": "Economies of the World Today (1962), seen only as an Open Library search snippet saying a producer told to make so many tons of nails will make more large ones. Not seen: the Krokodil cartoon (reported as 1954, No. 5, page 5, by Bevan 2023) and a Newsweek item (reported as 1957).",
+    "quote": "",
+    "url": "https://archive.org/details/economiesofworld00wilc",
+    "archive": "https://archive.org/details/economiesofworld00wilc",
+    "file": "",
+    "sha256": ""
+  },
+  "original": [
+    {
+      "what": "Gwyn Bevan's 2023 reproduction, with his English translation of the caption, of the 1954 Krokodil cartoon (Figure 2.1); a secondary copy of the cartoon, which I could not see in the original",
+      "date": "2023 (cartoon reported as 1954)",
+      "who": "Gwyn Bevan, reproducing E. Vasilyeva, Krokodil",
+      "quote": "immediately fulfilled our nail",
+      "url": "https://archive.org/details/66de44e7-39e4-4b5a-90f6-090f12614667",
+      "archive": "https://archive.org/details/66de44e7-39e4-4b5a-90f6-090f12614667",
+      "file": "sources/soviet-nails/bevan2023-how-did-britain_djvu.txt",
+      "sha256": "edadc105dc8bbf0b3d82ad93b3dd04b64d334db0f763820211055a7ad9b5f983"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "Bevan's 2023 book describes gaming of targets in Soviet planning and in the English university market, for example by inflating the share of first-class degrees. But the same book reports that England's targets for hospital waiting times and school results improved real performance, and that the school gains were not explained by gaming. So crude measures can invite gaming, but the evidence I read does not show that judging by a number generally defeats its purpose.",
+    "source": {
+      "what": "Gwyn Bevan, How Did Britain Come to This? A Century of Systemic Failures of Governance (LSE Press, 2023), chapter 7, open access",
+      "quote": "This includes inflating the proportion of students being awarded first-class degrees",
+      "url": "https://archive.org/details/66de44e7-39e4-4b5a-90f6-090f12614667",
+      "archive": "https://archive.org/details/66de44e7-39e4-4b5a-90f6-090f12614667",
+      "file": "sources/soviet-nails/bevan2023-how-did-britain_djvu.txt",
+      "sha256": "edadc105dc8bbf0b3d82ad93b3dd04b64d334db0f763820211055a7ad9b5f983"
+    }
+  },
+  "search_steps": [
+    "Web search for the origin of the Soviet nail factory story: found blogs and a Skeptics Stack Exchange question (read through the Stack Exchange API). Its answers cite a Krokodil cartoon (1954, No. 5, page 5), a 1957 Newsweek item about a nail factory at Kuibyshev, and Paul Craig Roberts's memoir. These are leads only.",
+    "Open Library full-text search: 'one giant nail' gives a 1966 book, Theory of Profit in Socialist Economy, describing the Krokodil cartoon, and Rothman, European Society and Politics (1970); 'tons of nails' gives Wilcox, Economies of the World Today (1962), and Bornstein (1969-70). All are borrow-only, seen as search snippets only, so I do not quote them.",
+    "Open Library full-text search also found Gwyn Bevan, How Did Britain Come to This? (2023), which is open access; I saved its full text. It reproduces the Krokodil cartoon with an English caption and cites 'Vasilyeva, E. (1954) The Nail Factory, Krokodil No 5, p.5' at croco.uno.",
+    "croco.uno is now a parked domain. A Wayback copy (2023) of croco.uno/year/1954 lists a PDF of Krokodil 1954 No. 05. The only Wayback capture of that PDF is cut off at 1 MB and does not open, so I could not see the cartoon. I deleted the broken file.",
+    "archive.org collection krokodil_magazine: an identifier search for 1954 issues found none.",
+    "Newsweek 1957 is on Google Books only; Google Books and the Google Books API refused automated requests (rate limit), so I could not read it.",
+    "HathiTrust and Chronicling America (loc.gov) returned challenge pages, so I could not search them.",
+    "Khrushchev's 1959 report to the 21st Party Congress and his 1961 speeches (marxists.org PDFs): grep found no passage on nails or weight-based targets.",
+    "Searched for a correction by the cartoonist or the magazine: found none.",
+    "Lesson: Bevan and Hood (2006) 'What's measured is what matters' is not open access; Bevan and Hamblin (2009) on ambulance targets is listed as open but academic.oup.com refused the download. I used Bevan's 2023 open-access book, which summarises both studies."
+  ],
+  "confidence_note": "I did not see the 1954 cartoon itself; its date, issue and caption come from Bevan's 2023 book, and the quoted caption is his English translation. Real Soviet distortions caused by weight-based targets are widely reported in the economics literature, so the story may be an exaggeration of real events (which would make it 'changed'), but I could not save a primary record of a real nail factory. The 1957 Newsweek report of a Kuibyshev nail factory remains unread."
+}

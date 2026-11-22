@@ -1,0 +1,83 @@
+{
+  "id": "marshmallow",
+  "as_told": "At a Stanford preschool, Walter Mischel offered children one marshmallow now or two if they waited alone for the researcher to come back. Years later, the children who had waited longer did better in life: they had higher SAT scores and were more competent as adolescents. The story is told to show that self-control in early childhood predicts success.",
+  "lesson": "Children who can delay gratification early in life go on to be more successful.",
+  "what_happened": "Mischel and colleagues tested preschool children at Stanford's Bing Nursery School from 1967 to 1973 with several kinds of treats, including marshmallows and pretzels. A 1988 follow-up of 95 of the children found that parents rated those who had waited longer as more competent in adolescence. A 1990 follow-up found that waiting time correlated with SAT scores only in one test condition (rewards in view, no strategy suggested; 35 children), and the correlations were negative and not significant in the three other conditions. In 2020 a team that included Mischel, Peake and Shoda surveyed 113 of the same children in their late 40s and found that preschool waiting did not predict 11 adult outcomes such as net worth, income and education (average correlation 0.02).",
+  "false_part": "The same children, followed into their late 40s, showed no link between preschool waiting and adult success, and the adolescent links were found mainly in one of four test conditions (in the other three, the SAT correlations were not significant and only 3 of 42 parent-rating correlations were).",
+  "class": "changed",
+  "also": "",
+  "earliest_telling": {
+    "date": "1988",
+    "who": "Walter Mischel, Yuichi Shoda and Philip K. Peake",
+    "where": "The nature of adolescent competencies predicted by preschool delay of gratification, Journal of Personality and Social Psychology 54(4), 687-696",
+    "quote": "Specifically, children who were able to wait longer at age 4 or 5 became adolescents whose parents rated them as more academically and socially competent, verbally fluent, rational, attentive, planful, and able to deal well with frustration and stress.",
+    "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=3367285&retmode=xml",
+    "archive": "",
+    "file": "sources/marshmallow/pubmed-3367285.xml",
+    "sha256": "6ec62cca238d64d7aa80d321932749e93a66e43bcc87d7dd4f1f1d59148d94f4"
+  },
+  "original": [
+    {
+      "what": "Shoda, Mischel and Peake (1990), Predicting adolescent cognitive and self-regulatory competencies from preschool delay of gratification: identifying diagnostic conditions, Developmental Psychology 26(6), 978-986; text on the SAT results",
+      "date": "1990",
+      "who": "Yuichi Shoda, Walter Mischel, Philip K. Peake",
+      "quote": "correlations were negative and statistically insignificant",
+      "url": "https://scholarworks.smith.edu/cgi/viewcontent.cgi?article=1080&context=psy_facpubs",
+      "archive": "http://web.archive.org/web/20260915202941/https://scholarworks.smith.edu/cgi/viewcontent.cgi?article=1080&context=psy_facpubs",
+      "file": "sources/marshmallow/shoda-mischel-peake-1990.pdf.txt",
+      "sha256": "887c23e38684fe8c74a162a673680c7d7a44a7d8f14f8dd163ed9875f6af90e8"
+    },
+    {
+      "what": "The same 1990 paper, Table 4, correlations of preschool delay time with SAT Verbal (.42) and SAT Quantitative (.57) in the rewards-exposed, spontaneous-ideation condition, and the sample size of each condition",
+      "date": "1990",
+      "who": "Yuichi Shoda, Walter Mischel, Philip K. Peake",
+      "quote": "Sample size 35 33 14 12",
+      "url": "https://scholarworks.smith.edu/cgi/viewcontent.cgi?article=1080&context=psy_facpubs",
+      "archive": "http://web.archive.org/web/20260915202941/https://scholarworks.smith.edu/cgi/viewcontent.cgi?article=1080&context=psy_facpubs",
+      "file": "sources/marshmallow/shoda-mischel-peake-1990.pdf.txt",
+      "sha256": "887c23e38684fe8c74a162a673680c7d7a44a7d8f14f8dd163ed9875f6af90e8"
+    },
+    {
+      "what": "The same 1990 paper, method: the rewards used in the preschool experiments",
+      "date": "1990",
+      "who": "Yuichi Shoda, Walter Mischel, Philip K. Peake",
+      "quote": "one small marshmallow vs. two",
+      "url": "https://scholarworks.smith.edu/cgi/viewcontent.cgi?article=1080&context=psy_facpubs",
+      "archive": "http://web.archive.org/web/20260915202941/https://scholarworks.smith.edu/cgi/viewcontent.cgi?article=1080&context=psy_facpubs",
+      "file": "sources/marshmallow/shoda-mischel-peake-1990.pdf.txt",
+      "sha256": "887c23e38684fe8c74a162a673680c7d7a44a7d8f14f8dd163ed9875f6af90e8"
+    }
+  ],
+  "teller_correction": {
+    "what": "Benjamin, Laibson, Mischel, Peake, Shoda, Wellsjo and Wilson (2020), Predicting mid-life capital formation with pre-school delay of gratification and life-course measures of self-regulation, Journal of Economic Behavior & Organization (PubMed abstract). Mischel, Peake and Shoda are authors of the original follow-ups.",
+    "date": "2020-11",
+    "who": "Daniel J. Benjamin, David Laibson, Walter Mischel, Philip K. Peake, Yuichi Shoda, Alexandra Steiny Wellsjo, Nicole L. Wilson",
+    "quote": "As predicted, a newly constructed and pre-registered measure derived from preschool delay of gratification does not predict the 11 capital formation variables (i.e., the sign-adjusted average correlation was 0.02).",
+    "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=33424063&retmode=xml",
+    "archive": "http://web.archive.org/web/20250205234354/https://pubmed.ncbi.nlm.nih.gov/33424063/",
+    "file": "sources/marshmallow/pubmed-33424063.xml",
+    "sha256": "76babf5332fe370b09cb6921489b5a6cefcc8cda130901c65813ebe087ee8e77"
+  },
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "In a different sample, made up of children whose mothers had not completed college, an extra minute of waiting at age 4 predicted only about a tenth of a standard deviation in achievement at age 15. That link was half the size of the original ones and fell by two thirds after controls for family background, early ability and home environment; links with behaviour were much smaller and rarely significant.",
+    "source": {
+      "what": "Watts, Duncan and Quan (2018), Revisiting the Marshmallow Test: A Conceptual Replication Investigating Links Between Early Delay of Gratification and Later Outcomes, Psychological Science 29(7), 1159-1177 (abstract)",
+      "quote": "But this bivariate correlation was only half the size of those reported in the original studies and was reduced by two thirds in the presence of controls for family background, early cognitive ability, and the home environment.",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pmc&id=6050075",
+      "archive": "http://web.archive.org/web/20261103235703/https://pmc.ncbi.nlm.nih.gov/articles/PMC6050075/",
+      "file": "sources/marshmallow/PMC6050075.xml.txt",
+      "sha256": "3ed8d9e95186ebab7212fa6f0a721b678141d9cf8c5f2ae860feb6c34dc32fb4"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search for marshmallow Mischel \"SAT\": 1,655 hits; on the first page of results the earliest is Teaching Children Patience (1999). I did not page through all the results.",
+    "Took the 1988 paper by Mischel, Shoda and Peake as the earliest telling of the 'did better later' claim. Saved its PubMed abstract through NCBI E-utilities; the full text is behind a paywall and I did not read it.",
+    "Found the 1990 Shoda, Mischel and Peake paper on Smith College ScholarWorks. The direct PDF link showed a bot check, so I saved the Wayback Machine copy (snapshot 2026-09-15) and the landing page with the abstract.",
+    "Saved the abstract of Watts, Duncan and Quan (2018) from the PMC record through E-utilities; the full text was not in that record.",
+    "Searched PubMed for later follow-ups by the original team and found Benjamin et al. (2020), with Mischel, Peake and Shoda as co-authors. Checked the author list in the saved PubMed record.",
+    "Did not search newspaper archives: loc.gov, Papers Past and HathiTrust blocked automated requests during this work, and Google Books returned 429.",
+    "The Wayback Machine snapshot of the PubMed page for 3367285 (20261103235703) holds only a browser-check page, not the abstract, so I leave that archive field empty. The saved E-utilities record is the source. I fetched the other snapshots used here and checked that they hold the article."
+  ],
+  "confidence_note": "The 1988 and 1990 results are real and the story reports them. The 'changed' class rests on the midlife follow-up of the same children and on the 1990 finding that the SAT links came from one condition with 35 children. Other follow-ups of the same group that I did not read may report other adult outcomes. I did not verify the popular claim of a large SAT point gap."
+}

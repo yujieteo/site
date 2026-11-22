@@ -1,0 +1,78 @@
+{
+  "id": "new-college-oaks",
+  "as_told": "New College, Oxford, was founded in the late 14th century and has a dining hall with great oak beams. When an entomologist found the beams full of beetles, the College Council did not know where to find oaks that big. The College Forester told them that a grove of oaks had been planted when the College was founded, to replace the hall beams, and that each forester had passed the order down for five hundred years: 'You don't cut them oaks. Them's for the College Hall.'",
+  "lesson": "A well-run institution plans for its needs centuries ahead, as New College did when it planted oaks at its founding to replace its hall beams.",
+  "what_happened": "The hall's original roof was a flat tie-beam roof; it was demolished in 1786 and replaced by James Pears with a roof hidden by a plaster ceiling, using pitch pine according to the college archives. In 1865 Sir George Gilbert Scott built the present oak roof as an imitation of the original. The college archives say the oak came from the college woods at Great Horwood, Akeley and Whaddon Chase, where trees had grown for several hundred years, but that those Buckinghamshire woods only came to the college in 1441, after its founding, and that leaving some trees to grow on was normal woodland practice, not a plan for the hall.",
+  "false_part": "No grove was planted at the founding to replace the hall beams; the oaks used in the 1860s grew in woods the college acquired in 1441 and kept under ordinary woodland management, and the medieval roof had already been replaced with pine in 1786.",
+  "class": "changed",
+  "also": "",
+  "earliest_telling": {
+    "date": "1980",
+    "who": "Gregory Bateson",
+    "where": "'The Oak Beams of New College, Oxford', in The Next Whole Earth Catalog (Sausalito: Point, 1980)",
+    "quote": "I owe this story to a man who was I think a New",
+    "url": "https://archive.org/details/nextwholeearthca0000unse",
+    "archive": "https://archive.org/details/nextwholeearthca0000unse",
+    "file": "sources/new-college-oaks/ol-inside-dept-medicine-hawaii.json",
+    "sha256": "bf5fd71cdbb7efc1cdf5504b05f31ece5774fe63f976bf6a9a5979c8a90dab45"
+  },
+  "original": [
+    {
+      "what": "New College Archives web page 'Trivia', on the oak story (Wayback copy of 21 November 2003)",
+      "date": "2002-2003",
+      "who": "New College, Oxford, College Archives",
+      "quote": "the Buckinghamshire woods where the mature oaks were felled did not come into the hands of the college until 1441",
+      "url": "http://www.new.ox.ac.uk/archives/trivia.html",
+      "archive": "http://web.archive.org/web/20031121174515/http://www.new.ox.ac.uk/archives/trivia.html",
+      "file": "sources/new-college-oaks/new-college-archives-trivia-2003.html",
+      "sha256": "11bcb666b24456408c3872fcc67216b2654532e757d0c71dc132208bf20acb30"
+    },
+    {
+      "what": "Same page, on where the oak for the 1860s roof came from",
+      "date": "2002-2003",
+      "who": "New College, Oxford, College Archives",
+      "quote": "The truth is that the oaks came from the college woods in Great Horwood, Akeley and Whaddon Chase, where they had indeed been maturing for several hundred years.",
+      "url": "http://www.new.ox.ac.uk/archives/trivia.html",
+      "archive": "http://web.archive.org/web/20031121174515/http://www.new.ox.ac.uk/archives/trivia.html",
+      "file": "sources/new-college-oaks/new-college-archives-trivia-2003.html",
+      "sha256": "11bcb666b24456408c3872fcc67216b2654532e757d0c71dc132208bf20acb30"
+    },
+    {
+      "what": "Victoria County History, A History of the County of Oxford, vol. 3 (1954), 'New College', architectural description of the hall, citing the college accounts",
+      "date": "1954",
+      "who": "Victoria County History (British History Online)",
+      "quote": "In 1786 the medieval roof was demolished and a new roof erected, concealed by a plaster ceiling.",
+      "url": "https://www.british-history.ac.uk/vch/oxon/vol3/pp144-162",
+      "archive": "http://web.archive.org/web/20260125160456/https://www.british-history.ac.uk/vch/oxon/vol3/pp144-162",
+      "file": "sources/new-college-oaks/vch-oxon3-new-college.html",
+      "sha256": "2028f6dbfecd7519418d1f6f8c750e1f61481d9e2216906cbd496fd0b3c8fdd4"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "English woods were normally run as coppice with standards, in which oak timber trees were grown on for 80 to 100 years, so big oaks existed through routine stewardship rather than a single plan made centuries ahead. The evidence found does not test whether planning centuries ahead works better.",
+    "source": {
+      "what": "Forestry Commission Practice Guide, The Management of Semi-natural Woodlands: 3. Lowland Mixed Broadleaved Woods (1994, reprinted 2003), section 'History and traditional management'",
+      "quote": "Standard oaks were grown for 80–100 years.",
+      "url": "https://cdn.forestresearch.gov.uk/2003/01/fcpg003.pdf",
+      "archive": "http://web.archive.org/web/20231224034641/https://cdn.forestresearch.gov.uk/2003/01/fcpg003.pdf",
+      "file": "sources/new-college-oaks/fc-practice-guide-fcpg003.pdf.txt",
+      "sha256": "1d914dce7e87876ab768827681d8b58b8260e631f50d064f076ab666e30cb5d7"
+    }
+  },
+  "search_steps": [
+    "Wikipedia step: I did not read a Wikipedia article on the story; a web search summary of the New College article said the hall's open oak roof had been replaced by a ceiling at the end of the 18th century.",
+    "Open Library full-text searches for New College with oak, beams, forester, hall and beetle: no telling before 1980.",
+    "Web search: found Stewart Brand's retelling (How Buildings Learn, 1994, pp. 130-131), which says he heard it from Bateson in the 1970s and that the college archivist and Clerk of Works 'had no idea' about a new grove. A blog page (beebo.org, 2007) quoting Brand links to the New College archives page that calls the story 'nonsense'. Leads only.",
+    "Open Library search for \"Them's for the College Hall\": earliest hit is The Next Whole Earth Catalog (1980); then Brand 1994 and later books. Searches for \"is of rather late foundation\" and \"Department of Medicine at the University of Hawaii\" show the 1980 text opens 'Oak Beams of New College, Oxford / I owe this story to a man who was I think a New College student'. Saved these search results.",
+    "The 1980 catalog is lending-only on archive.org, so I quote only the search snippet. A later book in the search results (goodstewardship, Open Library) cites it as 'Bateson, Gregory. \"The Oak Beams of New College.\" The Next Whole Earth Catalog' (saved as ol-inside-bateson-way-to-run-a-culture.json); the 1980 snippet itself does not show the byline.",
+    "Checked for an earlier Bateson printing in CoEvolution Quarterly: an archive.org metadata search for \"Oak Beams of New College\" found nothing, and the Open Library full-text search for \"Them's for the College Hall\" returned no CoEvolution Quarterly issue, though archive.org holds 1974-1980 issues. So no telling before 1980 was found, but a metadata search cannot rule one out.",
+    "Searched Open Library for older forms the college page mentions (1862, woodsman, acorns planted about 1380, William of Wykeham): no telling found before 1980.",
+    "Saved the New College Archives 'Trivia' page from the Wayback Machine (21 November 2003) and the Victoria County History account of the hall (vol. 3, 1954).",
+    "Chronicling America and Papers Past were blocked by bot checks; Trove needs an API key; Google Books quota was exceeded. No newspaper search was possible.",
+    "Lesson: one search for an independent source on keeping timber trees; saved the Forestry Commission practice guide on lowland mixed broadleaved woods.",
+    "Teller correction: Bateson died in 1980; no correction found."
+  ],
+  "confidence_note": "The college page is a web page by the archives, not a dated record of the 1860s works; I did not see the 1860s accounts or the 1786 bills. Bateson may have printed or told the story before 1980. The 1980 quote is a snippet from a search result, because the book is lending-only."
+}

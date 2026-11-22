@@ -1,0 +1,89 @@
+{
+  "id": "van-halen",
+  "as_told": "Van Halen's tour contract demanded a bowl of M&Ms backstage with all the brown ones removed. It was not vanity: it was a test, so if David Lee Roth found brown M&Ms, he knew the promoter had not read the contract carefully and the whole stage setup had to be checked.",
+  "lesson": "A small, easy-to-check detail placed inside detailed instructions shows whether the reader actually read and followed them.",
+  "what_happened": "Van Halen's 1982 tour rider, 53 typewritten pages, lists under 'Munchies' 'M&M's (WARNING: ABSOLUTELY NO BROWN ONES)'. David Lee Roth's memoir Crazy from the Heat (1997) gives the purpose in his own words: it was 'just as a little test' in the technical part of the rider; if he saw a brown M&M he would line-check the whole production, because the promoter had not read the contract. The earliest telling found, Gordon Matthews' 1984 band biography, tells the brown-M&M story from the 1980 tour. In the 1982 rider the clause is on page 40, under food requirements; Roth's memoir places the test 'in the technical aspect of the rider'. The saved rider page does not show it among the technical requirements.",
+  "false_part": "",
+  "class": "true",
+  "also": "",
+  "earliest_telling": {
+    "date": "1984",
+    "who": "Gordon Matthews",
+    "where": "Van Halen (New York: Ballantine Books, 1984), chapter 'Brown M&Ms; Tales from the Road (1979-83)', item vanhalen0000matt",
+    "quote": "road story is, of course, the saga of the ... M&M’s. This occurred during the nine-month ... at their dining table. But first all the ... M&M’s had to be removed! In Colorado they",
+    "url": "https://openlibrary.org/search/inside.json?q=brown+%22Van+Halen+Quiz%22&limit=100",
+    "archive": "https://archive.org/details/vanhalen0000matt",
+    "file": "sources/van-halen/openlibrary-inside-matthews-1984-brown.json",
+    "sha256": "2f9a08bb20c28a0d7da7ac41d5d0048bec98b304da8c11e32429727af8ab6e08"
+  },
+  "original": [
+    {
+      "what": "The contract rider itself. Scans of the rider pages are saved in rider-1982-images/; page 40 shows the clause.",
+      "date": "1982",
+      "who": "Van Halen (tour rider, from the files of promoter Jack Belle), published by The Smoking Gun",
+      "where": "Van Halen 1982 World Tour rider, page 40, 'Food Requirements (Band)', as reproduced by The Smoking Gun",
+      "quote": "TSG has finally obtained the 1982 Van Halen World Tour rider--typewritten and 53 pages long--containing the M&M prohibition ... \"M&M's (WARNING: ABSOLUTELY NO BROWN ONES).\"",
+      "url": "http://www.thesmokinggun.com/documents/crime/van-halens-legendary-mms-rider",
+      "archive": "http://web.archive.org/web/20261029035716/http://www.thesmokinggun.com/documents/crime/van-halens-legendary-mms-rider",
+      "file": "sources/van-halen/tsg-van-halen-legendary-mms-rider.html",
+      "sha256": "b3d25e3080f815d1b2fc143acdf190602a6490891b35cb5b1c6c25e0bf8b8e15"
+    },
+    {
+      "what": "Roth's own account of why the clause was there.",
+      "date": "1997",
+      "who": "David Lee Roth",
+      "where": "Crazy from the Heat (New York: Hyperion, 1997), item crazyfromheat0000roth",
+      "quote": "many human beings to make it function. So ... in the technical aspect of the rider, it",
+      "url": "https://openlibrary.org/search/inside.json?q=%22just+as+a+little+test%22&limit=100",
+      "archive": "https://archive.org/details/crazyfromheat0000roth",
+      "file": "sources/van-halen/openlibrary-inside-littletest.json",
+      "sha256": "1f117d74f13889bb1646268f2ad0b11b1f058705c9fd6d94a81d683cc656866e"
+    },
+    {
+      "what": "Roth: a brown M&M meant he would line-check the whole production.",
+      "date": "1997",
+      "who": "David Lee Roth",
+      "where": "Crazy from the Heat (Hyperion, 1997)",
+      "quote": "walk backstage, if I saw a ... in that bowl . . . well, ... the entire production. Guaranteed",
+      "url": "https://openlibrary.org/search/inside.json?q=%22line+check%22+%22brown+M%26M%22&limit=100",
+      "archive": "https://archive.org/details/crazyfromheat0000roth",
+      "file": "sources/van-halen/openlibrary-inside-lineitem.json",
+      "sha256": "2a8631d003ef1017e44ced56bf276cdcd7371e4556ce7b526eb885dbafd5d15b"
+    },
+    {
+      "what": "Roth: the brown M&M showed the promoter had not read the contract.",
+      "date": "1997",
+      "who": "David Lee Roth",
+      "where": "Crazy from the Heat (Hyperion, 1997)",
+      "quote": "production. Guaranteed you’re going to ... They didn’t read the contract.",
+      "url": "https://openlibrary.org/search/inside.json?q=%22arrive+at+a+technical+error%22&limit=100",
+      "archive": "https://archive.org/details/crazyfromheat0000roth",
+      "file": "sources/van-halen/openlibrary-inside-technicalerror.json",
+      "sha256": "e04c1def0df3080bf52b985f47301e8068ea2fd78647b05e48eb368f20102fd6"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "holds",
+    "why": "An instructional manipulation check, an instruction hidden in a survey that a careful reader must follow, finds a large share of participants who did not read; and those who fail it also fail to follow other instructions, so the small check predicts wider carelessness.",
+    "source": {
+      "what": "Oppenheimer, Meyvis and Davidenko, 'Instructional manipulation checks: Detecting satisficing to increase statistical power', Journal of Experimental Social Psychology 45 (2009) 867-872",
+      "quote": "Participants who failed the IMC showed no ... cant difference in what they would pay at the resort",
+      "url": "https://bpb-us-e1.wpmucdn.com/sites.ucsc.edu/dist/6/210/files/2015/06/Oppenheimer_2009_Journal-of-Experimental-Social-Psychology.pdf",
+      "archive": "http://web.archive.org/web/20261122122251/https://bpb-us-e1.wpmucdn.com/sites.ucsc.edu/dist/6/210/files/2015/06/Oppenheimer_2009_Journal-of-Experimental-Social-Psychology.pdf",
+      "file": "sources/van-halen/oppenheimer-2009-imc.pdf",
+      "sha256": "4509647540a8c58548e479b1e35b43ce345b0cdb2f66f982d8ffb36e67c3e90f"
+    }
+  },
+  "search_steps": [
+    "Open Library full text for '\"brown M&M\" Roth \"Crazy from the Heat\"', '\"no brown M&M\"', '\"Article 126\"', '\"Article 126\" \"brown M&M\" Roth', '\"upon pain of forfeiture\"', '\"Pueblo, Colorado\" Roth \"M&M\"': earliest dated telling is Gordon Matthews, Van Halen (Ballantine, 1984).",
+    "A hit catalogued as Robyn Flans, Journey (1984, item bwb_p8-cim-897) is only a word list without context; not used.",
+    "Open Library: Roth, Crazy from the Heat (1997) passages saved: '\"just as a little test\"', '\"line check\" \"brown M&M\"', '\"arrive at a technical error\"', '\"third-level markets\"'. The archive.org item is restricted (djvu.txt returns 401).",
+    "English Wikipedia search API for 'Van Halen brown M&Ms rider': the Wikipedia passage on the brown M&M clause cites Snopes and Roth's memoir. Snopes is a lead only; followed to the memoir.",
+    "Google Books API: daily quota used up (HTTP 429). HathiTrust: blocked (HTTP 403). Not searched.",
+    "Papers Past search '\"Van Halen\" M&M': results load by script; none visible. Chronicling America, Trove and Google News Archive were not searched for this story. A 2010 Pueblo Chieftain article (found via a fan site) on the 1980 show at Massari Gym, University of Southern Colorado, refers to 1980 reports in USC Today and the Pueblo Chieftain that are not online. Not quoted.",
+    "The Smoking Gun page on the 1982 rider: the site is behind Cloudflare; saved the Wayback copy and the eleven rider page images. Page 40 shows 'M & M's (WARNING: ABSOLUTELY NO BROWN ONES)'. The forfeiture wording was not seen on that page.",
+    "Lesson: Oppenheimer et al. 2009 saved from a UCSC course site; Wayback save made on 2026-11-22."
+  ],
+  "confidence_note": "The rider clause rests on The Smoking Gun's reproduction of the 1982 rider (images viewed; quote taken from the page text). Roth's memoir was read only as Open Library snippets. The story of damage at the 1980 Pueblo show, and its cost, was not checked against 1980 records, which are not online; it does not affect the class or the lesson. Retellings say the clause was hidden among technical requirements; the 1982 rider page saved has it under food requirements, and only Roth's memoir links it to the technical part of the rider."
+}

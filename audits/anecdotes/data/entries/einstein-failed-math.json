@@ -1,0 +1,106 @@
+{
+  "id": "einstein-failed-math",
+  "as_told": "Albert Einstein, the greatest physicist of his age, is said to have failed mathematics at school. The story is told to children and students who struggle with a subject. It suggests that poor school results say little about later achievement.",
+  "lesson": "Even a genius can fail at mathematics in school, so poor early results in a subject do not predict later failure in it.",
+  "what_happened": "Einstein did well at mathematics at school. In the final grades of the Aargau Kantonsschule (5 September 1896, scale 1 to 6 with 6 the best) he received 6 in geometry, and his Matura geometry paper of 19 September 1896 was graded 6. In his autobiographical notes he wrote that between the ages of 12 and 16 he taught himself the elements of mathematics, including differential and integral calculus. The one failure is real but different: in October 1895, at 16 and without a school-leaving certificate, he failed the entrance examination of the Zurich Polytechnic (ETH), apparently because of the general (non-science) part, and he later wrote that the failure was fully justified.",
+  "false_part": "No record shows Einstein failing mathematics: the school records give him top grades in it, and the exam he did fail, the 1895 ETH entrance examination, he apparently failed on the general subjects.",
+  "class": "invented",
+  "also": "changed",
+  "earliest_telling": {
+    "date": "1934",
+    "who": "Robert L. Ripley's Believe It or Not! series (book compilation; author given as 'various' in the catalogue)",
+    "where": "believe it or not!, page 312 of the book (scan page 394), as shown in the Open Library full-text search index",
+    "quote": "BELIEVE IT OR NOT. EINSTEIN FLUNKED IN MATHEMATICS LBERT EINSTEIN, the greatest",
+    "url": "https://openlibrary.org/search/inside.json?q=%22Einstein+flunked%22",
+    "archive": "https://archive.org/details/believeitornot0000vari",
+    "file": "sources/einstein-failed-math/ol-inside-einstein-flunked.txt",
+    "sha256": "fa61a62aff4d69a309117e2d27be02871ae4b2c58c6faab6e7677b5759c05da6"
+  },
+  "original": [
+    {
+      "what": "Final grades (Abgangsnoten) of the Aargau Kantonsschule, 5 September 1896, Collected Papers of Albert Einstein vol. 1, Doc. 19, page 23. In the web transcription the subject names and grades are flattened into one list; for the second row, each subject is followed by its grade.",
+      "date": "1896-09-05",
+      "who": "Dr. A. Tuchschmid, Rektor, Aargau Kantonsschule",
+      "quote": "Geometrie 6 Darst. Geometrie 5 Physik 5-6",
+      "url": "https://einsteinpapers.press.princeton.edu/vol1-doc/91",
+      "archive": "http://web.archive.org/web/20250624051709/https://einsteinpapers.press.princeton.edu/vol1-doc/91",
+      "file": "sources/einstein-failed-math/cpae-vol1-doc-91.txt",
+      "sha256": "4fd9d31d23da00146eb68de67c655bf10606acc1332cd52c7907b642c5d42a96"
+    },
+    {
+      "what": "Hunziker (2001), Albert Einsteins Maturitätsprüfung in Mathematik 1896, Elemente der Mathematik 56, 45-54. A study of Einstein's Matura exam papers; it reports the grade given to his geometry paper.",
+      "date": "2001",
+      "who": "Herbert Hunziker",
+      "quote": "Trotz Unkorrektheiten und kleineren Fehlern wurde die Geometriearbeit Einsteins vom Examinator Prof. H. Ganter mit der bestmöglichen Note 6 bewertet.",
+      "url": "https://ems.press/content/serial-article-files/45159",
+      "archive": "http://web.archive.org/web/20261116142810/https://ems.press/content/serial-article-files/45159",
+      "file": "sources/einstein-failed-math/hunziker-2001-ems.pdf.txt",
+      "sha256": "92a66c4582553cd81ad7dc8a65f7a304b70be9aa7583863e6553f8863bc9091f"
+    },
+    {
+      "what": "Einstein's own Autobiographical Notes, in Schilpp (ed.), Albert Einstein: Philosopher-Scientist (1949; reprint scan)",
+      "date": "1949",
+      "who": "Albert Einstein",
+      "quote": "the elements of mathematics together with the principles of differential and integral calculus.",
+      "url": "https://archive.org/download/albert-einstein-philosopher-scientist/albert-einstein-philosopher-scientist_djvu.txt",
+      "archive": "https://archive.org/details/albert-einstein-philosopher-scientist",
+      "file": "sources/einstein-failed-math/schilpp-einstein-philosopher-scientist_djvu.txt",
+      "sha256": "902245b4c9e36855d0cb2ea41cb775ce41f75418830c28e03e88f1e964dbd390"
+    },
+    {
+      "what": "Editorial note 'ETH Entrance Examination', Collected Papers of Albert Einstein vol. 1, page 11, with its footnote quoting Einstein's own 1955 account (Einstein 1955, p. 145)",
+      "date": "events of October 1895",
+      "who": "Editors of the Collected Papers of Albert Einstein; quoted words by Albert Einstein",
+      "quote": "Einstein failed to gain admission, apparently because of poor performance on the general part of the examination.",
+      "url": "https://einsteinpapers.press.princeton.edu/vol1-doc/79",
+      "archive": "http://web.archive.org/web/20250612232459/https://einsteinpapers.press.princeton.edu/vol1-doc/79",
+      "file": "sources/einstein-failed-math/cpae-vol1-doc-79.txt",
+      "sha256": "2d8eedecafa47a13c8b5feb98cf27b84dcd58bf21bc10fc92a0e1ce8fc91fcd9"
+    },
+    {
+      "what": "The same page, footnote 7: Einstein's own published words on the failed 1895 entrance examination (Einstein 1955, p. 145)",
+      "date": "1955",
+      "who": "Albert Einstein",
+      "quote": "Daß ich durchfiel, empfand ich als voll berechtigt",
+      "url": "https://einsteinpapers.press.princeton.edu/vol1-doc/79",
+      "archive": "http://web.archive.org/web/20250612232459/https://einsteinpapers.press.princeton.edu/vol1-doc/79",
+      "file": "sources/einstein-failed-math/cpae-vol1-doc-79.txt",
+      "sha256": "2d8eedecafa47a13c8b5feb98cf27b84dcd58bf21bc10fc92a0e1ce8fc91fcd9"
+    }
+  ],
+  "teller_correction": {
+    "what": "Ripley's Believe It or Not!, web article 'Did Einstein Really Fail Math?'. It does not mention the earlier Ripley item.",
+    "date": "2024-02-16",
+    "who": "Ripley's Believe It or Not!",
+    "quote": "his reputation for ineptitude in math is definitely undeserved",
+    "url": "https://www.ripleys.com/stories/einstein-fail-math",
+    "archive": "http://web.archive.org/web/20261122131445/https://www.ripleys.com/stories/einstein-fail-math",
+    "file": "sources/einstein-failed-math/ripleys-einstein-fail-math.txt",
+    "sha256": "fd8868b90a2d70c35f7804ec431f50b20e13ebe5b0c2764558b122e7f76fc270"
+  },
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "Long-term data point the other way for mathematics: children in the top 1% of mathematical reasoning at age 13 went on to far more than expected creative and leadership achievements. That does not show that children who do badly cannot succeed, but no study I found supports the lesson, and the Einstein case itself does not.",
+    "source": {
+      "what": "Lubinski, Benbow and Kell (2014), Life paths and accomplishments of mathematically precocious males and females four decades later, Psychological Science (PubMed abstract)",
+      "quote": "For both males and females, mathematical precocity early in life predicts later creative contributions and leadership in critical occupational roles.",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=25384550&retmode=xml",
+      "archive": "http://web.archive.org/web/20261101123205/https://pubmed.ncbi.nlm.nih.gov/25384550/",
+      "file": "sources/einstein-failed-math/pubmed-25384550.xml",
+      "sha256": "8a714eb63432f621afff1addc52ec272373c69ae9c20152eed465a8d9ee526ba"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search for \"Einstein flunked\": 190 hits. I read all 10 result pages (saved in ol-inside-einstein-flunked-pages). The earliest dated hit is a Believe It or Not! compilation catalogued as 1934, with the heading 'EINSTEIN FLUNKED IN MATHEMATICS'. The next dated hits are from 1962. The scan is lending-only, so I quote the search-index snippet from a plain-text copy with the highlight marks removed.",
+    "Open Library full-text search for \"Einstein failed in mathematics\": 1 hit, Reading the Price Tags of Life (1938), which already calls the story a report that 'has got round'.",
+    "Web searches say the claim spread through a Ripley's Believe It or Not! item and that Einstein denied it in 1935. The 1935 denial is known only from biographies that relay it, so I do not use it as evidence.",
+    "The free Princeton Einstein Papers site now redirects to a paid database. I saved Wayback Machine copies of Collected Papers vol. 1, pages 11 (ETH entrance examination note) and 23 (Doc. 19, final grades of September 1896).",
+    "Saved Hunziker (2001) from ems.press; it studies Einstein's Matura papers in the Aargau State Archive.",
+    "Saved the full text of Schilpp (ed.), Albert Einstein: Philosopher-Scientist, from an Internet Archive user upload (the library copies are lending-only).",
+    "Saved Ripley's own 2024 web article on the myth as the teller's correction. It does not name or date the original Ripley item.",
+    "Chronicling America (loc.gov), Papers Past and HathiTrust blocked automated requests (bot checks and 403), and Google Books returned 429. I did not retry, so I could not find or date the original Ripley newspaper item.",
+    "Searched PubMed for long-term studies of early mathematical ability and saved the abstract of Lubinski, Benbow and Kell (2014) for the lesson.",
+    "Requested a Wayback Machine save of the Ripley's 2024 page on 2026-11-22 (snapshot 20261122131445); I fetched the snapshot and checked that it contains the quoted text, because it had no earlier snapshot."
+  ],
+  "confidence_note": "The 1934 date for the Ripley book is the Internet Archive catalogue date; the scan is lending-only and I read only the search-index snippet, so I could not check the title page or the full text of the item. The CPAE web transcription of the 1896 final grades flattens the table, so I quote only the geometry grade, whose pairing is clear. The Schilpp scan is a 2000 reprint uploaded by a user; its OCR text splits words at line ends with the sign ¬, so the quote starts after the split word \"familiarized\" (the full sentence reads \"At the age of 12-16 I familiarized myself with\"). The 1955 Einstein quote is taken from the CPAE footnote, not from the 1955 publication itself."
+}

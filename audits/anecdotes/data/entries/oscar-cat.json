@@ -1,0 +1,63 @@
+{
+  "id": "oscar-cat",
+  "as_told": "Oscar, a cat at a nursing home in Providence, Rhode Island, could tell which patients were about to die. He curled up beside them in their last hours, and staff called families when they saw him there. He is said to have predicted dozens, later more than 100, deaths.",
+  "lesson": "Animals can sense when a person is about to die.",
+  "what_happened": "The story comes from a short essay by geriatrician David Dosa in the New England Journal of Medicine on 26 July 2007. Most of the essay is a narrative of one day told from the cat's point of view. A note at the end says that Oscar had 'presided over the deaths of more than 25 residents' of the third floor of Steere House, and that staff viewed his presence as 'an almost absolute indicator of impending death'. No count of the times Oscar lay with patients who did not die, and no comparison with other cats or with staff judgement, was published.",
+  "false_part": "",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "2007-07-26",
+    "who": "David M. Dosa",
+    "where": "A Day in the Life of Oscar the Cat, New England Journal of Medicine 357:328-329",
+    "quote": "Since he was adopted by staff members as a kitten, Oscar the Cat has had an uncanny ability to predict when residents are about to die.",
+    "url": "https://www.nejm.org/doi/full/10.1056/NEJMp078108",
+    "archive": "https://web.archive.org/web/20100706035034/http://content.nejm.org/cgi/content/full/357/4/328",
+    "file": "sources/oscar-cat/nejm_dosa_2007_wayback2010.txt",
+    "sha256": "0aa532bcfc02f4eadd626312ede096481706aad14672a088a0ae50cd5738708b"
+  },
+  "original": [
+    {
+      "what": "The NEJM essay itself, the only published first-hand account by the physician. It gives a count of deaths but no denominator.",
+      "date": "2007-07-26",
+      "who": "David M. Dosa",
+      "quote": "Thus far, he has presided over the deaths of more than 25 residents on the third floor of Steere House Nursing and Rehabilitation Center in Providence, Rhode Island.",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMp078108",
+      "archive": "https://web.archive.org/web/20100706035034/http://content.nejm.org/cgi/content/full/357/4/328",
+      "file": "sources/oscar-cat/nejm_dosa_2007_wayback2010.txt",
+      "sha256": "0aa532bcfc02f4eadd626312ede096481706aad14672a088a0ae50cd5738708b"
+    },
+    {
+      "what": "The same essay: the main text is a narrative written from the cat's view, not a case report.",
+      "date": "2007-07-26",
+      "who": "David M. Dosa",
+      "quote": "After all, no one dies on the third floor unless Oscar pays a visit and stays awhile.",
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMp078108",
+      "archive": "https://web.archive.org/web/20100706035034/http://content.nejm.org/cgi/content/full/357/4/328",
+      "file": "sources/oscar-cat/nejm_dosa_2007_wayback2010.txt",
+      "sha256": "0aa532bcfc02f4eadd626312ede096481706aad14672a088a0ae50cd5738708b"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "I found no study that tests whether Oscar, or cats in general, can predict death. Among the 16 papers that cite the NEJM essay in Europe PMC, none is such a test; they are commentaries and reviews. A wider search was not possible because the session's web-search budget was used up.",
+    "source": {
+      "what": "",
+      "quote": "",
+      "url": "",
+      "archive": "",
+      "file": "",
+      "sha256": ""
+    }
+  },
+  "search_steps": [
+    "Read the English Wikipedia article 'Oscar (therapy cat)' as a lead. It points to Dosa's NEJM essay of July 2007 and to news reports of 25-26 July 2007.",
+    "nejm.org refused the direct download (HTTP 403). Saved the 2010 Wayback copy of content.nejm.org/cgi/content/full/357/4/328 and a plain-text extract of it (tags removed).",
+    "News reports (CBS News, The Register, Fox News, 25-26 July 2007) appeared on the same days as the essay and repeat it; they quote Dr Joan Teno, which is a relayed account, so they were used as leads only.",
+    "Looked up the papers citing the essay in Europe PMC (16 records, saved as europepmc_citations_17652647.json). None is a test of the claim; one, Szawarski 2016 (J Intensive Care Soc), is a commentary on uncertainty in prognosis.",
+    "Did not run Open Library full-text or newspaper searches for an earlier telling, because the story starts with the NEJM essay of July 2007 and the news reports of the same days. Did not search Google Books because the session's web-search budget was used up.",
+    "Did not find a correction by Dosa. His 2010 book 'Making Rounds with Oscar' is not online in full text, so it was not read."
+  ],
+  "confidence_note": "Class reason: the essay is a first-hand published record that staff saw Oscar at more than 25 deathbeds and called families when they saw him, but the claim in the story is that he could tell who was about to die, and no record shows how often he sat with residents who did not die. That claim is therefore neither shown nor ruled out, which is 'unsupported'. If the audit counts the physician's own statement as enough, the class would be 'true'. The essay is the origin, but no published record says how often Oscar sat with patients who did not die, so the claim can be neither confirmed nor ruled out. Later figures of 50 or 100 deaths come from press reports, not a study. I did not read Dosa's 2010 book."
+}

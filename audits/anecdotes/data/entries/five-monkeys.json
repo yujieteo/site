@@ -1,0 +1,69 @@
+{
+  "id": "five-monkeys",
+  "as_told": "Scientists put five monkeys in a cage with a banana at the top of a ladder. Whenever a monkey climbed toward it, all the monkeys were sprayed with cold water, so they learned to beat any monkey that tried. The monkeys were then replaced one at a time, until none had ever been sprayed, yet they still beat any monkey that climbed the ladder. Nobody knew why; that was just how things were done.",
+  "lesson": "Groups keep enforcing rules long after the reason for them is gone, and newcomers learn the rule without the reason.",
+  "what_happened": "No experiment matching the story was found. The earliest telling found, Hamel and Prahalad, Competing for the Future (1994), credits 'a friend of ours' and gives no source; it has four monkeys and a pole. Later retellings name a 1967 study by Gordon R. Stephenson. Stephenson's own description (1968 congress paper, published 1969) shows a different study: monkeys in pairs, one monkey punished with an air blast when it touched a plastic kitchen object. Sometimes the naive partner then avoided the object, and once the trained monkey pulled the naive one away by the hind legs. In other pairs the trained monkey lost its fear after watching the naive one handle the object. There were no five monkeys, no ladder, no banana, no water spray and no chain of replacements.",
+  "false_part": "The study that retellers name as the experiment (Stephenson 1967) did happen and did show that monkeys can pass on the avoidance of an object to a naive partner. But the details that the lesson needs are false: there was no group of five, no replacement of the monkeys one by one, and no finding that the rule outlived every trained monkey. In some pairs the fear passed the other way, from the naive monkey to the trained one, and it faded. The ladder, banana and cold-water spray are also not in the study.",
+  "class": "changed",
+  "also": "",
+  "earliest_telling": {
+    "date": "1994",
+    "who": "Gary Hamel and C. K. Prahalad",
+    "where": "Competing for the Future (Boston: Harvard Business School Press, 1994); scan is the 1996 paperback, item competingforfut000hame",
+    "quote": "A friend of ours ... Four monkeys were put",
+    "url": "https://openlibrary.org/search/inside.json?q=%22once+described+an+experiment+with+monkeys%22&limit=100",
+    "archive": "https://archive.org/details/competingforfut000hame",
+    "file": "sources/five-monkeys/openlibrary-inside-oncedescribed.json",
+    "sha256": "cf875dab4b72026620b24390e9cb79512d32980731d1c7044b0f8a90fd85ef76"
+  },
+  "original": [
+    {
+      "what": "Stephenson's own summary of the 1967 study that later retellings cite.",
+      "date": "1968 (paper given); 1969 (published)",
+      "who": "Gordon R. Stephenson",
+      "where": "'Communication and Structure: A Model of Primate Populations', Proceedings of the VIIIth International Congress of Anthropological and Ethnological Sciences, Tokyo and Kyoto 1968 (Science Council of Japan, 1969), item proceedings0003inte",
+      "quote": "monkeys (Stephenson, 1967). After ... I conditioned one member of a ... avoided the conditioning object ... the naive member manipulate it. ... conditioned member came up behind ... it by the hind legs, and pulled it",
+      "url": "https://openlibrary.org/search/inside.json?q=%22control+studies+were+done%22+%22whenever+it+attempted%22+%22in+the+study+were%22+%22the+naive%2C+grabbed%22+%22until+after+it+observed%22&limit=100",
+      "archive": "https://archive.org/details/proceedings0003inte",
+      "file": "sources/five-monkeys/openlibrary-inside-stephenson-1969-method.json",
+      "sha256": "7512164d21973d5ff135efe6b5a1b9a5f2a06c9e2e0cb9439ce7dba9bc3e4452"
+    },
+    {
+      "what": "Stephenson's description of the conditioning: an air blast, not water, and one monkey of a pair.",
+      "date": "1968 (paper given); 1969 (published)",
+      "who": "Gordon R. Stephenson",
+      "where": "Same paper as above",
+      "quote": "specific object by punishing it with an ... it attempted to manipulate the object",
+      "url": "https://openlibrary.org/search/inside.json?q=%22air+blast+whenever%22&limit=100",
+      "archive": "https://archive.org/details/proceedings0003inte",
+      "file": "sources/five-monkeys/openlibrary-inside-stephenson-1969-airblast.json",
+      "sha256": "9d08572c4b84224e2aa5bd30d165fa6806f27422fd1a4122b96946441307d486"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "Laboratory studies of arbitrary traditions, where members are replaced one at a time, find that a tradition persists for some replacements and then fades toward what is useful. That supports a partial and temporary version of the lesson, not the strong claim that a rule lasts unchanged after everyone who knew its reason is gone.",
+    "source": {
+      "what": "Baum, Richerson, Efferson and Paciotti, 'Cultural evolution in laboratory microsocieties including traditions of rule giving and rule following', Evolution and Human Behavior 25 (2004), describing Jacobs and Campbell (1961) and their own results",
+      "quote": "the magnitude of the illusion reported gradually decreased to normal levels. The exaggeration persisted, however, for several replacements",
+      "url": "https://ethology.ru/english/?id=57",
+      "archive": "http://web.archive.org/web/20140810154522/http://ethology.ru/english/?id=57",
+      "file": "sources/five-monkeys/baum-2004-cultural-evolution-microsocieties.html",
+      "sha256": "c1c90c30f0db7df682ef89689cdde594f09b42ef9f503877d492f7004bad7fa5"
+    }
+  },
+  "search_steps": [
+    "Open Library full text for '\"Four monkeys were put into a room\"', '\"once described an experiment with monkeys\"', '\"One particularly hungry monkey\"', '\"bananas suspended from the top\"': earliest is Hamel and Prahalad, Competing for the Future (copyright 1994; scan is 1996 paperback). It credits 'a friend of ours' and gives no source.",
+    "Open Library: copyright line confirmed ('Copyright © 1994 by Gary Hamel...'), file openlibrary-inside-forget.json.",
+    "Open Library for '\"five monkeys\" banana ladder', '\"original monkeys\" bananas replaced', '\"new monkey\" bananas pole \"cold water\"', 'monkeys \"ice-cold water\" bananas pole', '\"the monkeys stopped trying\"', '\"one-way mirrors\" monkeys bananas pole', 'monkeys bananas sprinkler pole': no telling before 1994. Patler, Don't Compete... Tilt the Field! (Open Library shows 1991, but the book is copyright 1999) and Brenner, The Financial Century (2001) are later.",
+    "English Wikipedia search API for 'monkeys banana water experiment Stephenson': no article on the story.",
+    "Google Books API: daily quota used up (HTTP 429). HathiTrust: blocked (HTTP 403). Not searched.",
+    "Chronicling America search 'monkeys bananas ladder water', 1900 to 1963: HTTP 403. Trove, Papers Past and Google News Archive were not searched for this story.",
+    "Followed later tellings' cited source: Bankable Leadership (2013) names 'G. R. Stephenson' in 1967 with five monkeys and a banana. Saved as openlibrary-inside-bankable-stephenson.json (lead).",
+    "Stephenson 1967, 'Cultural acquisition of a specific learned response among rhesus monkeys', in Progress in Primatology (Stuttgart: Fischer), pp. 279-288: not online in full text (no archive.org scan; Scribd blocked). Not quoted.",
+    "Found Stephenson's own summary of that study in his 1968 congress paper (published 1969, item proceedings0003inte; also reprinted in Carpenter, ed., Behavioral Regulators of Behavior in Primates, 1973). Saved Open Library snippets for the method, the air blast, the author line and the hind-legs passage.",
+    "Lesson: Baum et al. 2004 saved from ethology.ru (Wayback 2014 copy)."
+  ],
+  "confidence_note": "Stephenson's 1967 chapter itself was not read; his 1969 summary was read only as Open Library snippets, pieced together. The friend Hamel and Prahalad mention is not named, so a private source for the story cannot be ruled out, but no experiment like it was found. The class is changed and not invented because the record that retellers point to (Stephenson) exists and shows a related but different event; the earliest telling found (1994) does not itself cite Stephenson, so if that link is rejected, the class would be unsupported."
+}

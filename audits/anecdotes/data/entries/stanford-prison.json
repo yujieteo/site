@@ -1,0 +1,86 @@
+{
+  "id": "stanford-prison",
+  "as_told": "In 1971 Philip Zimbardo put ordinary, healthy Stanford students into a mock prison in a university basement and made some of them guards and some prisoners. Without being told how to behave, the guards soon became cruel and abusive. The experiment had to be stopped after six days.",
+  "lesson": "Put ordinary people in a powerful role, such as prison guard, and the situation alone will make many of them cruel.",
+  "what_happened": "The experiment ran in 1971 at Stanford University, with Zimbardo as 'superintendent' and an undergraduate research assistant as 'warden'. In October 1971 Zimbardo told a committee of Congress that the guards made up their own rules, and the researchers' 1973 paper says the guards received no specific training and only minimal guidelines. But a tape recording kept in Zimbardo's papers at Stanford shows the warden telling a guard who was not active enough that every guard had to be what the team called a 'tough guard', and that he needed him to play that part for the experiment. The guards were therefore coached by the research team to be tough; they did not become harsh entirely on their own.",
+  "false_part": "The guards did not become cruel on their own: the research team told at least one reluctant guard that he had to act as a 'tough guard' for the experiment to work.",
+  "class": "changed",
+  "also": "",
+  "earliest_telling": {
+    "date": "1971-10-25",
+    "who": "Philip G. Zimbardo",
+    "where": "Statement to Subcommittee No. 3 of the Committee on the Judiciary, House of Representatives, 92nd Congress, 1st session, hearing in San Francisco; printed in Corrections, Part II: Prisons, Prison Reform and Prisoners' Rights: California",
+    "quote": "the mere act of assigning labels to people, calling some people prisoners and other guards, is sufficient to elicit pathological behavior.",
+    "url": "https://archive.org/details/correctionsheari1971unit",
+    "archive": "https://archive.org/details/correctionsheari1971unit",
+    "file": "sources/stanford-prison/correctionsheari1971unit_djvu.txt",
+    "sha256": "afe44613224906162de07e19f60b21ed30dda17aa471daf96afee6ed5d2cc131"
+  },
+  "original": [
+    {
+      "what": "The researchers' own paper: Haney, Banks and Zimbardo, 'Interpersonal Dynamics in a Simulated Prison' (paper presented at Stanford University; NCJRS document NCJ 10301; published in International Journal of Criminology and Penology, vol. 1, 1973), abstract",
+      "date": "1973",
+      "who": "Craig Haney, Curtis Banks and Philip Zimbardo",
+      "quote": "Neither group received any specific training in these roles.",
+      "url": "https://www.ncjrs.gov/pdffiles1/Photocopy/10301NCJRS.pdf",
+      "archive": "http://web.archive.org/web/20170126113326/https://www.ncjrs.gov/pdffiles1/Photocopy/10301NCJRS.pdf",
+      "file": "sources/stanford-prison/ncjrs-10301.pdf.txt",
+      "sha256": "650317ac125bf43e2a6f3a08fc4631cf21b2a9d03e7e4c515ecb2aa8d1f1145c"
+    },
+    {
+      "what": "Transcript of a recorded meeting between the warden and Guard 7 during the experiment (Stanford Prison Experiment tape 136510, side 2, Philip G. Zimbardo papers, Stanford University, http://purl.stanford.edu/wn708sg0050), printed as supplementary material to Le Texier, American Psychologist 2019",
+      "date": "1971",
+      "who": "The experiment's warden (an undergraduate research assistant) and Guard 7",
+      "quote": "the Guards have to know that every Guard is going to be what we call a tough Guard",
+      "url": "https://supp.apa.org/psycarticles/supplemental/amp0000443/amp0000443_Supplemental-Materials.docx",
+      "archive": "http://web.archive.org/web/20220615093757/https://supp.apa.org/psycarticles/supplemental/amp0000443/amp0000443_Supplemental-Materials.docx",
+      "file": "sources/stanford-prison/letexier2019-supplement.docx.txt",
+      "sha256": "65db0ff3f0ae4385c96e71849a75a8a33fdcea2c33a5658613efb28f04ed04b5"
+    },
+    {
+      "what": "Same recorded meeting, later in the tape",
+      "date": "1971",
+      "who": "The experiment's warden (an undergraduate research assistant)",
+      "quote": "we need you to play the part of, you know, tough Guard and forget some of the more sophisticated psychology that you might know.",
+      "url": "https://supp.apa.org/psycarticles/supplemental/amp0000443/amp0000443_Supplemental-Materials.docx",
+      "archive": "http://web.archive.org/web/20220615093757/https://supp.apa.org/psycarticles/supplemental/amp0000443/amp0000443_Supplemental-Materials.docx",
+      "file": "sources/stanford-prison/letexier2019-supplement.docx.txt",
+      "sha256": "65db0ff3f0ae4385c96e71849a75a8a33fdcea2c33a5658613efb28f04ed04b5"
+    },
+    {
+      "what": "The researchers' own description of what the guards were told, in the body of the 1973 paper",
+      "date": "1973",
+      "who": "Craig Haney, Curtis Banks and Philip Zimbardo",
+      "quote": "given only minimal guidelines for what it meant to be a guard.",
+      "url": "https://www.ncjrs.gov/pdffiles1/Photocopy/10301NCJRS.pdf",
+      "archive": "http://web.archive.org/web/20170126113326/https://www.ncjrs.gov/pdffiles1/Photocopy/10301NCJRS.pdf",
+      "file": "sources/stanford-prison/ncjrs-10301.pdf.txt",
+      "sha256": "650317ac125bf43e2a6f3a08fc4631cf21b2a9d03e7e4c515ecb2aa8d1f1145c"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "When the BBC prison study randomly divided men into prisoners and guards for 8 days, the guards did not identify with their role, were reluctant to use their authority, and were overcome by the prisoners. So being given a guard role does not reliably make ordinary people cruel.",
+    "source": {
+      "what": "Reicher and Haslam, 'Rethinking the psychology of tyranny: The BBC prison study', British Journal of Social Psychology 45(1):1-40 (2006), abstract on the University of St Andrews research portal",
+      "quote": "Unlike the prisoners, the guards failed to identify with their role. This made the guards reluctant to impose their authority and they were eventually overcome by the prisoners.",
+      "url": "https://research-portal.st-andrews.ac.uk/en/publications/rethinking-the-psychology-of-tyranny-the-bbc-prison-study/",
+      "archive": "https://web.archive.org/web/20261122130819/https://research-portal.st-andrews.ac.uk/en/publications/rethinking-the-psychology-of-tyranny-the-bbc-prison-study/",
+      "file": "sources/stanford-prison/reicher-haslam2006-standrews.html",
+      "sha256": "a5b609feefe344dc7f2525db84289145391656357df0e6db353ca030b176f385"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search for \"Zimbardo\" \"guards\" \"prisoners\" \"Stanford\": 6,856 hits; the earliest were textbooks of 1975, later than the researchers' own reports.",
+    "Searched for Zimbardo's testimony to House Judiciary Subcommittee No. 3 (25 October 1971). pdf.prisonexp.org/congress.pdf is a 22-page scan with no text layer, so it was deleted. An archive.org search then found the printed hearing volume (correctionsheari1971unit, Corrections Part II); saved its full text. Zimbardo's statement begins on p. 110.",
+    "Saved 'Interpersonal Dynamics in a Simulated Prison' (Haney, Banks, Zimbardo) from NCJRS, document 10301. The NCJRS record gives no date; the paper appeared in International Journal of Criminology and Penology in 1973.",
+    "Searched for the guard orientation recording. Stanford's digital repository lists the video and audio (purl.stanford.edu/pk326gk3338; source ID SC0750_s5_b1_07) but gives no transcript. Did not quote the orientation.",
+    "Found the transcript of the warden's meeting with Guard 7 in the supplementary material of Le Texier's 2019 article in American Psychologist (a debunking article, used only as the place where the tape transcript is printed). Saved the .docx file and converted it to text with textutil.",
+    "DTIC copy of a 1972 Office of Naval Research report (AD0751041) refused the download (403).",
+    "Teller correction: no retraction by Zimbardo was found. He has defended the study (for example in a 2018 response on prisonexp.org), which I did not save or quote.",
+    "Lesson source: the Masaryk University PDF of Reicher and Haslam 2006 is behind a bot check and the CORE copy refused the download (403); saved the abstract from the University of St Andrews research portal instead.",
+    "HathiTrust and Google Books full-text search: HathiTrust refused with a Cloudflare check; Google Books API refused with 429; did not retry. Chronicling America refused with 403 and Papers Past with a bot check; did not retry."
+  ],
+  "confidence_note": "The warden transcript shows coaching of one guard; I did not hear the tape or read the guard orientation, so I cannot say how strongly all guards were pushed. The transcript reached me through a debunker's supplement, though it cites the Stanford tape and Zimbardo's permission. The 1973 paper's date is from its publication in the journal, not from the undated NCJRS copy."
+}

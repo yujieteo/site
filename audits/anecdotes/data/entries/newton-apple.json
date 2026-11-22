@@ -1,0 +1,78 @@
+{
+  "id": "newton-apple",
+  "as_told": "Isaac Newton was sitting under an apple tree when an apple fell, in many versions onto his head. In that moment he understood that the same force that pulls the apple to the ground holds the Moon in its orbit, and so he discovered the theory of gravity.",
+  "lesson": "Great scientific discoveries come in a sudden flash of insight from an ordinary everyday event.",
+  "what_happened": "I found no writing by Newton that tells the apple story. In his own memorandum, written after February 1716, he says that in 1666 he 'began to think of gravity extending to ye orb of the Moon' and compared the Moon's force with gravity at the Earth's surface, with no mention of an apple; he also records that the full proof of elliptical orbits came in 1676-77 and was registered at the Royal Society in the winter of 1683-84, and the Principia appeared in 1687. The apple appears only in accounts by others who say Newton told them: Voltaire in print in 1727, and William Stukeley in a memoir written in 1752 of a talk with Newton on 15 April 1726, in which the apple falls while Newton sits 'in a comtemplative mood'. No source found says the apple hit his head.",
+  "false_part": "No writing by Newton found mentions the apple, and no source found says it hit his head or that the theory came in one moment; the apple rests only on what others say Newton told them.",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "1727",
+    "who": "Voltaire",
+    "where": "An Essay upon the Civil Wars of France, extracted from curious Manuscripts, and also upon the Epick Poetry of the European Nations, from Homer down to Milton (London, 1727), as reprinted in Florence Donnell White, Voltaire's Essay on Epic Poetry: A Study and an Edition (Albany, 1915)",
+    "quote": "Newton walking in his Gardens had the first Thought of his System of Gravitation, upon seeing an Apple falling from a Tree.",
+    "url": "https://archive.org/details/voltairesessayon00voltuoft",
+    "archive": "https://archive.org/details/voltairesessayon00voltuoft",
+    "file": "sources/newton-apple/voltairesessayon00voltuoft_djvu.txt",
+    "sha256": "bb8d8d0a70a3b39b054b603daad34448380340fc20868cb28dd60fbccb700ea8"
+  },
+  "original": [
+    {
+      "what": "Newton's own draft memorandum on his discoveries of 1665-1666, among his papers on the Leibniz dispute (Cambridge University Library, MS Add. 3968, f. 85r), Newton Project transcription NATP00385",
+      "date": "after February 1716",
+      "who": "Isaac Newton",
+      "quote": "I began to think of gravity extending to ye orb of the Moon",
+      "url": "https://www.newtonproject.ox.ac.uk/view/texts/diplomatic/NATP00385",
+      "archive": "http://web.archive.org/web/20251019204004/https://www.newtonproject.ox.ac.uk/view/texts/diplomatic/NATP00385",
+      "file": "sources/newton-apple/newtonproject-NATP00385-diplomatic.html.txt",
+      "sha256": "080e7f1c094b6959c4719071ce2b0bf566bef28edccdc8d50f960bac269d720a"
+    },
+    {
+      "what": "Same memorandum, on when the proof was entered at the Royal Society",
+      "date": "after February 1716",
+      "who": "Isaac Newton",
+      "quote": "And in the winter between the years 1683 & 1684 this Proposition wth the Demonstration was entered in the Register book of the R. Society",
+      "url": "https://www.newtonproject.ox.ac.uk/view/texts/diplomatic/NATP00385",
+      "archive": "http://web.archive.org/web/20251019204004/https://www.newtonproject.ox.ac.uk/view/texts/diplomatic/NATP00385",
+      "file": "sources/newton-apple/newtonproject-NATP00385-diplomatic.html.txt",
+      "sha256": "080e7f1c094b6959c4719071ce2b0bf566bef28edccdc8d50f960bac269d720a"
+    },
+    {
+      "what": "William Stukeley, Memoirs of Sir Isaac Newton's Life (manuscript, 1752; Royal Society MS/142), Newton Project transcription OTHE00001. This is a relayed account ('he told me'), so under the audit rules it is a lead, not Newton's own words.",
+      "date": "1752 (recalling 15 April 1726)",
+      "who": "William Stukeley",
+      "quote": "occasion'd by the fall of an apple, as he sat in a comtemplative mood",
+      "url": "https://www.newtonproject.ox.ac.uk/view/texts/normalized/OTHE00001",
+      "archive": "http://web.archive.org/web/20261011210834/https://www.newtonproject.ox.ac.uk/view/texts/normalized/OTHE00001",
+      "file": "sources/newton-apple/newtonproject-OTHE00001-stukeley.html",
+      "sha256": "63d7ec82cabed35fe4aaee9f081a283772ea441d2dfc6b211db3fa86d2183509"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "Laboratory studies show that sudden insight is a real, distinct way of solving small verbal puzzles, but they do not show that great discoveries arise from one such moment. Newton's own account describes work spread over about twenty years.",
+    "source": {
+      "what": "Mark Jung-Beeman and others, 'Neural Activity When People Solve Verbal Problems with Insight', PLoS Biology 2(4): e97, 2004 (PubMed Central PMC387268)",
+      "quote": "the sudden flash of insight occurs when solvers engage distinct neural and cognitive processes that allow them to see connections that previously eluded them",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC387268/",
+      "archive": "http://web.archive.org/web/20260128051330/https://pmc.ncbi.nlm.nih.gov/articles/PMC387268/",
+      "file": "sources/newton-apple/jung-beeman-2004-plosbiol.html",
+      "sha256": "343a76fb229df4c409a11ab0bde819fa5d6a5a1e14440b688e60f713efc8e3ae"
+    }
+  },
+  "search_steps": [
+    "Wikipedia step: I did not read the English Wikipedia article on the apple story; I went to the primary transcriptions at the Newton Project directly.",
+    "Open Library full-text search for \"upon seeing an apple falling\": all hits reprint Voltaire's 1727 English Essay upon Epick Poetry; saved the full text of Florence White's 1915 edition of the 1727 text.",
+    "Web search led to the Newton Project transcription of Stukeley's 1752 memoir (Royal Society MS/142); saved it. Stukeley dates the talk to 15 April 1726 and reports the apple as Newton's words to him.",
+    "Searched the Newton Project for Newton's own account: found the memorandum with 'I began to think of gravity extending to ye orb of the Moon' in NATP00385 (MS Add. 3968, f. 85r); saved the diplomatic transcription. It does not mention an apple.",
+    "Other accounts by people close to Newton (for example John Conduitt's memoranda) are also relayed accounts and leads under rule 5; I did not search for or save them.",
+    "Did not find any version before 1900 saying the apple struck Newton's head; I did not search for its origin.",
+    "Did not check whether Robert Greene's 1727 book has an apple passage; an Open Library search with Folkes found nothing.",
+    "Google Books quota was exceeded; newspaper archives were blocked or need a key.",
+    "Lesson: saved Jung-Beeman and others (PLoS Biology, 2004) on the brain basis of insight solutions.",
+    "Teller correction: I found no telling by Newton himself, so there is nothing for him to correct.",
+    "The Newton Project diplomatic page marks deletions and insertions with HTML tags inside words, so the quote cannot be matched in the raw page. I saved a plain-text copy made by removing the tags and joining white space (newtonproject-NATP00385-diplomatic.html.txt, next to the downloaded .html) and quote from that copy."
+  ],
+  "confidence_note": "Stukeley and Voltaire both report the apple as coming from Newton, so it is probably Newton's own account of how he began to think about gravity. It is 'unsupported' only because the audit rules count relayed words as leads, and the Newton writings found do not mention an apple. The 'apple on the head' detail has no support in any source found. The date 1687 for the Principia is from general knowledge, not a saved source."
+}

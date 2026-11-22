@@ -1,0 +1,76 @@
+{
+  "id": "pareto-peas",
+  "as_told": "The Italian economist Vilfredo Pareto noticed that about 20 percent of the pea pods in his garden produced about 80 percent of the peas. He then found that about 80 percent of the land in Italy was owned by about 20 percent of the people. From this he discovered the 80/20 rule.",
+  "lesson": "About 20 percent of causes produce about 80 percent of results, so you should find and focus on the vital few.",
+  "what_happened": "Pareto's published work on inequality, in his 'Cours d'économie politique' (Lausanne, volume 2, 1897), studied the distribution of income from income-tax returns in several countries. He plotted the logarithm of income against the logarithm of the number of people above that income and found a nearly straight line. I found no writing by Pareto about pea pods or about an 80/20 split. The name 'Pareto principle' for the 'vital few and trivial many' was given by the quality engineer Joseph M. Juran in the late 1940s. In 1974 Juran wrote that he had applied the wrong name, and that later authors had credited Pareto with things he did not do.",
+  "false_part": "There is no record that Pareto studied pea pods, and the general 80/20 principle was named and spread by Juran, not stated by Pareto.",
+  "class": "unsupported",
+  "also": "misattributed",
+  "earliest_telling": {
+    "date": "2017-03-29",
+    "who": "James Clear",
+    "where": "'The 1 Percent Rule: Why a Few People Get Most of the Rewards' (jamesclear.com)",
+    "quote": "Pareto noticed that a tiny number of pea pods in his garden produced the majority of the peas.",
+    "url": "https://jamesclear.com/the-1-percent-rule",
+    "file": "sources/pareto-peas/jamesclear-the-1-percent-rule.html",
+    "archive": "https://web.archive.org/web/20261122130308/https://jamesclear.com/the-1-percent-rule",
+    "sha256": "88bb6c2468c8bbea7fcec39bd142b49aa20ceedfb567e1b60179b6f69ef92a6d"
+  },
+  "original": [
+    {
+      "what": "Pareto, Cours d'économie politique, vol. 2 (Lausanne: F. Rouge, 1897), book III, chapter 1 'La courbe des revenus', section 958. Pareto's data are income-tax returns, not garden produce: he writes x for an income and N for the number of taxpayers with an income above x.",
+      "date": "1897",
+      "who": "Vilfredo Pareto",
+      "quote": "et par N le nombre de contribuables ayant un revenu supérieur à æ.",
+      "url": "https://archive.org/details/fp-0148-2",
+      "archive": "https://archive.org/details/fp-0148-2",
+      "file": "sources/pareto-peas/FP0148_2_djvu.txt",
+      "sha256": "4a1f7467dbbd1de3b775d7385ec98c3ef19bb5960a944024fc1253c06387cf36"
+    },
+    {
+      "what": "Juran's own account of how he named the principle after Pareto while writing the first edition of his Quality Control Handbook in the late 1940s.",
+      "date": "1974",
+      "who": "Joseph M. Juran",
+      "quote": "about Pareto's name. Hence the Pareto principle.",
+      "url": "https://www.juran.com/wp-content/uploads/2021/03/The-Non-Pareto-Principle-1974.pdf",
+      "file": "sources/pareto-peas/juran-non-pareto-principle-1974.pdf",
+      "archive": "https://web.archive.org/web/20261113012744/https://www.juran.com/wp-content/uploads/2021/03/The-Non-Pareto-Principle-1974.pdf",
+      "sha256": "31cdac5f7bd97719cb8f2f45caf08dfd11e12ab4ae928301183248a8949aa757"
+    }
+  ],
+  "teller_correction": {
+    "what": "Joseph M. Juran, 'The Non-Pareto Principle; Mea Culpa' (1974; Juran Institute archive copy). Juran, who gave the principle Pareto's name, says he was forced to confess that he had applied the wrong name, and that other authors have since added invented details about Pareto. (The PDF has two columns, so only one line can be quoted exactly.)",
+    "date": "1974",
+    "who": "Joseph M. Juran",
+    "quote": "that I had mistakenly applied the",
+    "url": "https://www.juran.com/wp-content/uploads/2021/03/The-Non-Pareto-Principle-1974.pdf",
+    "file": "sources/pareto-peas/juran-non-pareto-principle-1974.pdf",
+    "archive": "https://web.archive.org/web/20261113012744/https://www.juran.com/wp-content/uploads/2021/03/The-Non-Pareto-Principle-1974.pdf",
+    "sha256": "31cdac5f7bd97719cb8f2f45caf08dfd11e12ab4ae928301183248a8949aa757"
+  },
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "Heavy-tailed distributions, where a few items account for much of a total, are real in some data, but a careful test of 24 data sets claimed to follow such laws found that some fit and others do not. There is no general law that the split is 80/20.",
+    "source": {
+      "what": "Aaron Clauset, Cosma Rohilla Shalizi and M. E. J. Newman, 'Power-law distributions in empirical data', SIAM Review 51 (2009), arXiv:0706.1062v2 (abstract)",
+      "quote": "In some cases we find these conjectures to be consistent with the data while in others the power law is ruled out.",
+      "url": "https://arxiv.org/pdf/0706.1062",
+      "file": "sources/pareto-peas/clauset-shalizi-newman-2009-arxiv-0706.1062.pdf",
+      "archive": "https://web.archive.org/web/20261122130446/https://arxiv.org/pdf/0706.1062",
+      "sha256": "b73aede05194f26b2446bd7003129f4d2caeaa5d9a0c47e5a652d3387ec2ac9f"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search for Pareto 'pea pods' and Pareto 'of the peas': earliest dated hit is Michael Q. Pink, 'Rainforest Strategy' (2008); other hits include Peter Thiel, 'Zero to One' (2014), 'Profit First' and 'Burnout to Brilliance' (undated). These books are lending-only, so I did not quote them.",
+    "Open Library full-text search for Pareto, peas, pods and garden together: no older hit.",
+    "Google Books API search refused with 429 (daily quota); I did not retry.",
+    "Web search: many recent tellings, none citing a source by Pareto. Saved James Clear (2017), the earliest telling I could save in full; it says 'nobody is quite sure exactly when'.",
+    "English Wikipedia 'Pareto principle' (lead only): does not mention peas; it says Pareto showed in the Cours that about 80% of Italian land was owned by 20% of the people, citing the 1971 English Manual and Newman (2005). I did not check that land figure.",
+    "Found Pareto's Cours d'économie politique, vol. 2 (1897), on archive.org and saved its OCR text. The chapter 'La courbe des revenus' (sections 951-972) uses income-tax data. A search of the whole volume for 'pois' (peas) and 'jardin' (garden) found no pea observation, only unrelated mentions of gardens.",
+    "Saved Juran's 1974 'The Non-Pareto Principle; Mea Culpa' from the Juran Institute site: he names the principle and later admits the misattribution.",
+    "Did not check Pareto's Manuale (1906) or his letters in full text for peas. Did not try HathiTrust or newspaper archives for the peas story.",
+    "Correction: Juran, who named the principle, wrote in 1974 that the name was a mistake (see teller_correction). I did not search for a correction by Pink, Thiel or Clear.",
+    "Lesson source: Clauset, Shalizi and Newman (2009)."
+  ],
+  "confidence_note": "I could not find the first telling of the peas story; the earliest dated one I saw is from 2008, and only as a search snippet. I searched one volume of Pareto's main economics work, not all his writings and letters, so a pea remark cannot be fully ruled out. The 80 percent land figure for Italy also has no source I could find."
+}

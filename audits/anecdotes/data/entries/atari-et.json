@@ -1,0 +1,95 @@
+{
+  "id": "atari-et",
+  "as_told": "Atari rushed out a video game of the film E.T. for Christmas 1982. It was so bad that most copies went unsold. In 1983 Atari secretly trucked the unsold E.T. cartridges, often said to be millions, to a landfill in the New Mexico desert and buried them under concrete.",
+  "lesson": "Rushing a poor product to market can leave a company with so much unsold stock that it ruins the company.",
+  "what_happened": "From about 22 September 1983, trucks from Atari's plant in El Paso, Texas dumped Atari cartridges, consoles and computer parts at the city landfill in Alamogordo, New Mexico. Local reports gave 8 truckloads by 25 September and 11 by 27 September, and The New York Times reported 14 truckloads and concrete poured over the waste. Onlookers said that E.T. was among the games, but an Atari spokesman said it was mostly scrap and returned stock. A dig on 26 April 2014 recovered just over 1,300 games of more than 40 titles, including boxed E.T. cartridges, and many were still in their boxes and unsold. So Atari did bury unsold E.T. cartridges there, but mixed with many other games and with returns. No saved record supports 'millions' of E.T. copies.",
+  "false_part": "",
+  "class": "true",
+  "also": "",
+  "earliest_telling": {
+    "date": "1983-09-27",
+    "who": "Tribune Wires, in The Albuquerque Tribune, page 14",
+    "where": "Computer goods get burial at N.M. site",
+    "quote": "People watching the operation said it included cassettes of the popular video games E.T., Pacman and Ms. Pacman, the consoles used to convey the games to television screens and high-priced personal computers.",
+    "url": "https://www.newspapers.com/article/the-albuquerque-tribune/177220593/",
+    "archive": "http://web.archive.org/web/20250917122307/https://www.newspapers.com/article/the-albuquerque-tribune/177220593/",
+    "file": "sources/atari-et/clip-177220593.ocr.txt",
+    "sha256": "b3de92e493f330a6b2f8256c1bc3f09c26be1c7c795e92e4a59d3bd43dbb65b4"
+  },
+  "original": [
+    {
+      "what": "Alamogordo Daily News report, 'Dump here utilized' (OCR text of the newspapers.com clipping)",
+      "date": "1983-09-25",
+      "who": "M.E. McQuiddy, Alamogordo Daily News",
+      "quote": "The new pit at the Alamogordo city landfill has become the apparent final resting place for a warehouse of Atari games from Texas. According to a landfill officials, eight 18-wheeler truckloads have been crushed and buried in the pit since operations began Thursday",
+      "url": "https://www.newspapers.com/article/alamogordo-daily-news/177220108/",
+      "archive": "http://web.archive.org/web/20251229151818/https://www.newspapers.com/article/alamogordo-daily-news/177220108/",
+      "file": "sources/atari-et/clip-177220108.ocr.txt",
+      "sha256": "f203b1c68c009d0d65a1756bcdeb1f95cdfab499d056ceae5082d50770ed654a"
+    },
+    {
+      "what": "Alamogordo Daily News report, 'City to Atari: E.T. trash go home', with the Atari spokesman's statement (OCR text of the newspapers.com clipping)",
+      "date": "1983-09-27",
+      "who": "M.E. McQuiddy, Alamogordo Daily News; statement by Bruce Enten of Atari",
+      "quote": "Bruce Enten of Atari in California said today Atari is sending scrap merchandise to the Alamogordo dump. \"It is by-and-large inoperable stuff.\"",
+      "url": "https://www.newspapers.com/article/alamogordo-daily-news/177220200/",
+      "archive": "http://web.archive.org/web/20260225185039/https://www.newspapers.com/article/alamogordo-daily-news/177220200/",
+      "file": "sources/atari-et/clip-177220200.ocr.txt",
+      "sha256": "0708911a61c6de13114ac06ae8edf11770ba7a04e847d9cfe9879db76b590d95"
+    },
+    {
+      "what": "The New York Times, 'Atari Parts Are Dumped'",
+      "date": "1983-09-28",
+      "who": "The New York Times",
+      "quote": "The company has dumped 14 truckloads of discarded game cartridges and other computer equipment at the city landfill in Alamogordo, N.M. Guards kept reporters and spectators away from the area yesterday as workers poured concrete over the dumped merchandise.",
+      "url": "https://www.nytimes.com/1983/09/28/business/atari-parts-are-dumped.html",
+      "archive": "http://web.archive.org/web/20251104213855/https://www.nytimes.com/1983/09/28/business/atari-parts-are-dumped.html",
+      "file": "sources/atari-et/nyt-1983-09-28-atari-parts-dumped.html",
+      "sha256": "a5ba270e3b05d99684ab625a1340e40cd42c9a9737e9f77df954fb48dd717bd5"
+    },
+    {
+      "what": "Report of the 2014 excavation by its lead archaeologist, Journal of Contemporary Archaeology 2.1 (2015), author's copy on Zenodo",
+      "date": "2015",
+      "who": "Andrew Reinhard",
+      "quote": "Rothaus found the first Atari game, an E.T. cartridge still in the box with its instruction manual",
+      "url": "https://zenodo.org/records/571499/files/Reinhard-Media-Archaeologies.pdf",
+      "archive": "https://web.archive.org/web/20261122115804/https://zenodo.org/records/571499/files/Reinhard-Media-Archaeologies.pdf",
+      "file": "sources/atari-et/reinhard-2015-excavating-atari.pdf",
+      "sha256": "fac00081b045babd5b6eb2efa0eb3a4f14e6fea8080237d1dbacdd246f6e4275"
+    },
+    {
+      "what": "Same excavation report, on what the dig found",
+      "date": "2015",
+      "who": "Andrew Reinhard",
+      "quote": "over 40 separate game titles for the Atari 2600 and 5200 systems—much, much more than what we'd expected to find, thinking it would be mostly E.T. Many of the games were still in their boxes, unsold ... In all, just over 1300 games were recovered.",
+      "url": "https://zenodo.org/records/571499/files/Reinhard-Media-Archaeologies.pdf",
+      "archive": "https://web.archive.org/web/20261122115804/https://zenodo.org/records/571499/files/Reinhard-Media-Archaeologies.pdf",
+      "file": "sources/atari-et/reinhard-2015-excavating-atari.pdf",
+      "sha256": "fac00081b045babd5b6eb2efa0eb3a4f14e6fea8080237d1dbacdd246f6e4275"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "The saved records tie Atari's 1983 losses to a general fall in video game sales, not to E.T. alone, and the dump held more than 40 titles. No saved study or official record measures how much the E.T. game itself caused the losses.",
+    "source": {
+      "what": "The New York Times, 'Atari Parts Are Dumped', on Atari's second-quarter 1983 loss",
+      "quote": "Atari lost $310.5 million in the second quarter, largely because of a sharp drop in video game sales.",
+      "url": "https://www.nytimes.com/1983/09/28/business/atari-parts-are-dumped.html",
+      "archive": "http://web.archive.org/web/20251104213855/https://www.nytimes.com/1983/09/28/business/atari-parts-are-dumped.html",
+      "file": "sources/atari-et/nyt-1983-09-28-atari-parts-dumped.html",
+      "sha256": "a5ba270e3b05d99684ab625a1340e40cd42c9a9737e9f77df954fb48dd717bd5"
+    }
+  },
+  "search_steps": [
+    "English Wikipedia 'Atari video game burial': its citations led to the Alamogordo Daily News reports of 25, 27 and 28 September 1983, the Albuquerque Tribune wire report of 27 September 1983, The New York Times of 28 September 1983, and reports of the 2014 dig.",
+    "newspapers.com clipping pages blocked direct download, so I saved Wayback copies. The OCR text is only inside the page's application/ld+json script block, which the quote checker removes. I extracted that 'text' field by script, with HTML entities decoded, into clip-*.ocr.txt files next to each saved page. This is a departure from rule 6: the quoted files are machine extractions, not the downloaded files.",
+    "The New York Times article page blocked direct download. Saved the Wayback copy. It does not name E.T.",
+    "The Alamogordo Daily News of 28 September 1983 ('City cementing ban on dumping') is cited by Wikipedia without a link. Not found online; not quoted.",
+    "Open Library full-text search was not needed for the earliest telling: the 1983 reports were written while the dumping went on, and nothing earlier can exist.",
+    "2014 excavation: saved Andrew Reinhard's report in the Journal of Contemporary Archaeology (2015) and the dig team's 'Why We Dug Atari' (The Atlantic, 2014-08-07, by Reinhard, Caraher, Rothaus, Weber and Guins) from Zenodo. The Atlantic piece also says that E.T. was buried with many other Atari titles.",
+    "The often quoted figure of about 728,000 cartridges comes from news reports of what Joe Lewandowski said. These are relayed words, so they were not used.",
+    "Teller correction: the story has no single first teller. Atari's own 1983 statement (Bruce Enten) said that the dumped goods were mostly inoperable returns."
+  ],
+  "confidence_note": "The burial and the presence of E.T. cartridges are well recorded, both in 1983 and in the 2014 dig. 'Unsold' is partly true: the dig found many boxed, unsold games, but Atari said in 1983 that most of the goods were returns, and the dig also found returns. The share of E.T. among the buried games and the total number of cartridges are not known from any saved record; the dig recovered only about 1,300 games from part of the deposit. If a teller says millions of E.T. copies were buried, that number is not supported. The expected class for this candidate was seen by mistake in data/plants.tsv before research started."
+}

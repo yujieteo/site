@@ -1,0 +1,86 @@
+{
+  "id": "cargo-cult-airstrips",
+  "as_told": "During the Second World War, Melanesian islanders saw American planes land with rich supplies. Afterwards, cargo cults built airstrips and imitation radios so that planes would come and bring them cargo. Richard Feynman made the story famous in his 1974 Caltech speech 'Cargo Cult Science', adding fires beside the runways and a man in a hut with wooden headphones.",
+  "lesson": "Copying the outward form of something, without the substance that makes it work, does not bring the results.",
+  "what_happened": "At least one movement did clear an airstrip for an expected plane. David Attenborough, writing in 1960 about his visit to Tanna (New Hebrides, now Vanuatu), reported that a leader of the John Frum movement said John Frum would come from America by aeroplane, and that hundreds of men then cleared the bush in the centre of the island so that the plane could land. Margaret Spencer's 1964 book on Papua says that some cargo houses were 'Wireless Houses' with ropes for aerials. Feynman's 1974 details (fires along the runways, a hut with wooden headphones and bamboo antennas) are not confirmed by any source I saved.",
+  "false_part": "",
+  "class": "true",
+  "also": "",
+  "earliest_telling": {
+    "date": "1960",
+    "who": "David Attenborough",
+    "where": "People of Paradise (1960; UK title Quest in Paradise), chapter on John Frum, as indexed by Open Library full-text search",
+    "quote": "One of the leaders said that John Frum would be coming from America by air- plane, and hundreds of men",
+    "url": "https://openlibrary.org/search/inside.json?q=%22coming%20from%20America%20by%22%20Frum&rows=50",
+    "archive": "https://archive.org/details/peopleofparadise0000davi",
+    "file": "sources/cargo-cult-airstrips/ol_inside_coming_from_america.json.txt",
+    "sha256": "3e45ae432bccec8f0dc843bb7fffcfcac0d07fae433a3bde39050f2aa69c4316"
+  },
+  "original": [
+    {
+      "what": "Attenborough's 1960 account of the John Frum movement on Tanna: the airstrip clearing (Open Library full-text snippet)",
+      "date": "1960",
+      "who": "David Attenborough",
+      "quote": "and hundreds of men began to clear the bush in the centre of the island so that the plane might have an",
+      "url": "https://openlibrary.org/search/inside.json?q=%22the%20bush%20in%20the%20centre%20of%20the%20island%22&rows=50",
+      "archive": "https://archive.org/details/peopleofparadise0000davi",
+      "file": "sources/cargo-cult-airstrips/ol_inside_bush_centre_island.json.txt",
+      "sha256": "7c69ac44ca2c30eb445168ba7c1f4f8d2b86c48499ffc7364b388676422e339e"
+    },
+    {
+      "what": "Attenborough 1960, the next words of the same sentence (Open Library full-text snippet)",
+      "date": "1960",
+      "who": "David Attenborough",
+      "quote": "island so that the plane might have an airstrip on which to land. Soon the situation was so bad that Nicol",
+      "url": "https://openlibrary.org/search/inside.json?q=%22airstrip%20on%20which%20to%20land%22&rows=50",
+      "archive": "https://archive.org/details/peopleofparadise0000davi",
+      "file": "sources/cargo-cult-airstrips/ol_inside_airstrip_on_which_to_land.json.txt",
+      "sha256": "31625bb36841936fd9614bcd28827cc2596106fa7e6f33a6f904ed3ed858edac"
+    },
+    {
+      "what": "Margaret Spencer, Doctor's Wife in Papua (1964), a general description of cargo houses with imitation radio aerials (Open Library full-text snippet); a telling, not a dated record of one event",
+      "date": "1964",
+      "who": "Margaret Spencer",
+      "quote": "these houses were “Wireless Houses” with ropes for aerials.",
+      "url": "https://openlibrary.org/search/inside.json?q=%22ropes%20for%20aerials%22&rows=50",
+      "archive": "https://archive.org/details/doctorswifeinpap0000marg",
+      "file": "sources/cargo-cult-airstrips/ol_inside_ropes_for_aerials.json.txt",
+      "sha256": "a57213311c454db7d3d23f10c285ed477917ffb4ac889204e495ebb94dc84b23"
+    },
+    {
+      "what": "Richard Feynman, 'Cargo Cult Science', Caltech commencement address, 1974 (printed in Engineering and Science, June 1974; quoted from a web transcription, because the saved Caltech PDF is a scan without a text layer)",
+      "date": "1974",
+      "who": "Richard P. Feynman",
+      "quote": "They're doing everything right. The form",
+      "url": "https://sites.cs.ucsb.edu/~ravenben/cargocult.html",
+      "archive": "http://web.archive.org/web/20260904082013/https://sites.cs.ucsb.edu/~ravenben/cargocult.html",
+      "file": "sources/cargo-cult-airstrips/feynman1974_cargocult_transcript_ucsb.html.txt",
+      "sha256": "f16d15e6814e33a52e8b29a422577e09d0cc8857710907b216fc6386ecbf3a44"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "No study tests the cargo-cult lesson as such. The nearest evidence is the large psychology replication project: 97% of 100 original studies that followed the usual form of research had significant results, but only 36% of the repeats did; this shows that research can look right and still fail, but it does not isolate 'form without substance' as the cause.",
+    "source": {
+      "what": "Open Science Collaboration (2015), 'Estimating the reproducibility of psychological science', Science 349(6251): aac4716, authors' copy",
+      "quote": "percent of replications had significant results",
+      "url": "https://www.pure.ed.ac.uk/ws/files/21474290/RPP.pdf",
+      "archive": "http://web.archive.org/web/20231118231007/https://www.pure.ed.ac.uk/ws/files/21474290/RPP.pdf",
+      "file": "sources/cargo-cult-airstrips/osc2015_reproducibility.pdf.txt",
+      "sha256": "caf05ce308ec62975a0f1be4849b28c53ed55e46d63534968f098516886216bc"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text searches for cargo airstrip cult planes natives and \"cargo cult\" airstrip: hits from Attenborough (People of Paradise / Quest in Paradise, 1960 and 1962) and Lawrence, Road Belong Cargo (1964); no cargo-cult airstrip telling before 1960 found.",
+    "Open Library exact-phrase searches \"airstrip on which to land\", \"so that the plane might have\", \"the bush in the centre of the island\", \"hundreds of men began to clear\" and \"coming from America by\" Frum gave Attenborough's full sentence in pieces. The .json.txt files are my own derivation of the saved JSON with the {{{ }}} match markers removed.",
+    "Open Library searches airstrip \"John Frum\" and \"landing strip\" cargo cult: Worsley, The Trumpet Shall Sound (1957) is indexed, but no airstrip passage from it surfaced. Multi-word searches such as \"John Frum\" plane airstrip Nicol and \"wireless house\" aerial bamboo returned 0 or unrelated hits; these are not taken as negatives.",
+    "Ken Shirriff's 2025 blog post 'It's time to abandon the cargo cult metaphor' used as a lead only: it points to Berndt (Oceania, 1952-53) on a 1943 'wireless house', Worsley 1957 pp. 198-199, Attenborough 1960-62, and the film Mondo Cane (1962) as a likely source of the bamboo control tower image. I could not get Berndt or the Worsley pages in full text.",
+    "Exact-phrase search \"ropes for aerials\" found the 1964 Doctor's Wife in Papua passage on 'Wireless Houses'.",
+    "Downloaded Feynman's speech as printed by Caltech (calteches.library.caltech.edu, scanned PDF with no text layer; no OCR tool available) and a web transcription for quoting.",
+    "Papers Past search: blocked by a bot-protection page; not retried. Trove: not searched (its API needs a key). Pacific Islands Monthly reports of the 1940s were therefore not read.",
+    "Searched for a correction by Feynman: none found.",
+    "Further Open Library searches for \"clear an airstrip\" cargo, \"built an airstrip\" cargo and \"aerodrome\" cargo cult: no cargo-cult hits earlier than 1960."
+  ],
+  "confidence_note": "The airstrip clearing is shown only through Attenborough's 1960 book, written from what he was told years after the event, not a record of the time; the Open Library snippets do not give the date of the clearing. The imitation radios are shown only by Spencer's 1964 general description; a 1943 patrol report of a 'wireless house' (Berndt, Oceania 1953, p. 227) is known only as a lead. Feynman's wooden headphones and bamboo antennas are not confirmed. Anthropologists argue that building airstrips and radios was rare among cargo movements, so the story overstates how typical it was. No telling earlier than 1960 was found; Worsley (1957) is indexed by Open Library, but no airstrip passage from it surfaced."
+}

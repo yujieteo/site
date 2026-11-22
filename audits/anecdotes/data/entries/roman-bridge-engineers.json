@@ -1,0 +1,57 @@
+{
+  "id": "roman-bridge-engineers",
+  "as_told": "In ancient Rome, the engineer who built a bridge or an arch had to stand underneath it when the scaffolding was taken away. In some versions he had to stand under it while the first legion marched across. If the work was bad, he died with it.",
+  "lesson": "People who build things should bear the risk of their own work, and they will build better if they do.",
+  "what_happened": "I found no Roman text, law or inscription that describes such a practice. The Pons Fabricius in Rome (built in 62 BC, according to Platner and Ashby's 1929 Topographical Dictionary) carries the builder's own inscription: Lucius Fabricius, curator of roads, had it built and also approved it ('probaveit'); a second inscription records that the consuls of 21 BC approved repair work by decree of the Senate. The inscriptions do not say how the work was checked. The earliest telling I found is in a 1995 business book by Gerald A. Michaelson, which says that when the early Romans built a bridge, the engineer stood under the arch as the scaffolding was removed. A 2004 Usenet signature line credits a 'first legion' version to the computer scientist Robert Dewar.",
+  "false_part": "",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "1995",
+    "who": "Gerald A. Michaelson",
+    "where": "Building Bridges to Customers (Portland, Oregon: Productivity Press), page 98 of the archive.org scan",
+    "quote": "the early Romans built a bridge, ",
+    "url": "https://openlibrary.org/search/inside.json?q=%22the+engineer+who+designed+the+structure%22&fields=title,meta_year,identifier&limit=100",
+    "archive": "https://archive.org/details/buildingbridgest0000mich",
+    "file": "sources/roman-bridge-engineers/ol-search-inside-engineer-who-designed.json",
+    "sha256": "82f4ddd6ff0d4e142b11e7c989e5615efe898942cd52393390ccd830abce3b23"
+  },
+  "original": [
+    {
+      "what": "Building inscription of the Pons Fabricius, Rome (CIL VI 1305, EDCS-17800463), as transcribed by Livius.org from the stone",
+      "date": "62 BC (upper text); 21 BC (lower text)",
+      "who": "Lucius Fabricius, curator viarum; consuls Q. Lepidus and M. Lollius",
+      "quote": "probaveit",
+      "url": "https://www.livius.org/pictures/italy/rome/rome-bridge-of-fabricius/rome-bridge-of-fabricius-inscription/",
+      "archive": "http://web.archive.org/web/20260203092930/https://www.livius.org/pictures/italy/rome/rome-bridge-of-fabricius/rome-bridge-of-fabricius-inscription/",
+      "file": "sources/roman-bridge-engineers/livius-fabricius-inscription.html",
+      "sha256": "9e592cfb672c94f238c51ba792f0e13a82968a653c44cb1f7bb32a065567af60"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "I found no study that tests whether making builders bear personal risk makes their work safer. The oldest written rule of this kind is in the Code of Hammurabi, not in Roman law, and it shows only that the idea is ancient, not that it works.",
+    "source": {
+      "what": "Code of Hammurabi, law 229 (L. W. King translation, Avalon Project, Yale Law School); a related rule, not evidence that the lesson holds",
+      "quote": "and the house which he built fall in and kill its owner, then that builder shall be put to death",
+      "url": "https://avalon.law.yale.edu/ancient/hamcode.asp",
+      "archive": "http://web.archive.org/web/20261110174349/https://avalon.law.yale.edu/ancient/hamcode.asp",
+      "file": "sources/roman-bridge-engineers/avalon-hammurabi.html",
+      "sha256": "93410a95441d28fd498df423ec7860ae5ee821df3811989bb469838075c9eb12"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search '\"roman\" \"stand under\" \"bridge\" \"scaffolding\"' (9,077 hits; first 50 seen): no relevant hit; the search does not require all terms.",
+    "Open Library full-text searches '\"roman\" \"engineer\" \"stand under\" \"arch\" \"centering\"', '\"stand under the bridge\"' and '\"roman engineers\" \"under the bridge\"' (first 100 hits each): no telling of the story.",
+    "Open Library exact-phrase searches '\"stood under the arch\"' (832 hits), '\"stand under the arch\"' (208) and '\"stand beneath the arch\"' (63), first 100 hits each: earliest telling was Michaelson 1995 (snippet only, lending-only book); later tellings in 2007 and 2008 books.",
+    "Open Library exact-phrase search '\"the engineer who designed the structure\"' (21 hits) gave the words before the 1995 snippet: 'the early Romans built a bridge, the engineer who designed the structure stood under the arch as the scaffolding'. Saved both 1995 result files. The book is lending-only, so the quotes come from search snippets.",
+    "Lead: Kiwi Hellenist blog post 'Did Roman engineers stand under bridges?' (2020) points to Taleb, Antifragile (2012), the QI television episode 'Keys' (2013) and the 2004 comp.lang.ada post; I saved the 2004 post from its Wayback copy. I did not search Google Groups for an earlier Dewar post.",
+    "The 2004 comp.lang.ada post (Preben Randhol's signature quoting Robert Dewar: 'When Roman engineers built a bridge, they had to stand under it while the first legion marched across') is the earliest 'legion' version I found; saved from its Wayback copy (https://web.archive.org/web/20160305052156/http://coding.derkeiler.com/Archive/Ada/comp.lang.ada/2004-02/0286.html).",
+    "Lead: the same blog suggests the story grew from the 'probavit' formula on the Pons Fabricius; saved the Livius.org transcription of the inscription. Platner and Ashby's 1929 entry on the Pons Fabricius (LacusCurtius) was saved, but its Wayback lookup was refused (403), so I do not quote it.",
+    "Looked for an ancient source (Vitruvius, Frontinus, Roman law) on testing bridges by standing under them; found none, and the leads I read cite none.",
+    "Saved the Code of Hammurabi (Avalon Project) for the builder-liability laws 229-233.",
+    "Did not search Google Books, HathiTrust or newspaper archives."
+  ],
+  "confidence_note": "Absence of a Roman source is not proof that no Roman engineer ever stood under his work, so the class is 'unsupported'. The 1995 telling is known to me only from two Open Library search snippets; I could not read the page or see whether Michaelson cites a source. Earlier tellings are likely in sources I did not search."
+}

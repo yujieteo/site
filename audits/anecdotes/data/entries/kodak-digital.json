@@ -1,0 +1,100 @@
+{
+  "id": "kodak-digital",
+  "as_told": "In 1975 Kodak engineer Steven Sasson built the first digital camera. Kodak's managers feared it would kill their film business, so they buried it and hid it away. Rivals later took the digital market, and Kodak went bankrupt in 2012.",
+  "lesson": "Incumbent companies fail because they suppress new technology that threatens their existing business.",
+  "what_happened": "Steven Sasson built a portable electronic still camera at Kodak in 1975; it recorded images digitally on a cassette tape and played them back on a TV. Kodak filed a patent on it on 20 May 1977, naming Gareth A. Lloyd and Sasson as inventors, and the patent was published on 26 December 1978, so the invention was public. Sasson wrote in 2007 that he showed it to many internal Kodak audiences in 1976, that they asked sceptical questions, that he expected 15 to 20 years before it could reach consumers, and that apart from the patent the work was not shown publicly until 2001. Kodak did not make that prototype into a product, but by its own account it made the first megapixel CCD image sensor in 1986, introduced a professional digital camera system for photojournalists in 1991 and launched the DC40 consumer digital camera in 1995.",
+  "false_part": "Kodak did not bury the invention: it patented it publicly in 1978, kept developing digital imaging and sold digital cameras from 1991.",
+  "class": "changed",
+  "also": "",
+  "earliest_telling": {
+    "date": "2005-09-09",
+    "who": "Ben Dobbin, Associated Press (published on NBC News)",
+    "where": "Digital camera turns 30 — sort of",
+    "quote": "some critics insist Kodak discovered the \"next big thing\" and didn't bring it out quickly enough",
+    "url": "https://www.nbcnews.com/id/wbna9261340",
+    "archive": "",
+    "file": "sources/kodak-digital/nbc-2005-digital-camera-30.html",
+    "sha256": "05177970b2da63a24f9c22449fabf1dd13cc6376fc20dfe24dfb002f297136ac"
+  },
+  "original": [
+    {
+      "what": "US patent 4,131,919, 'Electronic still camera', filed 20 May 1977 and published 26 December 1978, assigned to Eastman Kodak.",
+      "date": "1978-12-26",
+      "who": "Gareth A. Lloyd and Steven J. Sasson (inventors); Eastman Kodak Company (assignee)",
+      "quote": "Inventors: Gareth A. Lloyd; Steven J. Sasson",
+      "url": "https://patentimages.storage.googleapis.com/6d/23/dc/6cfb7f8f65f131/US4131919.pdf",
+      "archive": "http://web.archive.org/web/20261017122852/https://patentimages.storage.googleapis.com/6d/23/dc/6cfb7f8f65f131/US4131919.pdf",
+      "file": "sources/kodak-digital/US4131919.pdf",
+      "sha256": "7b507be9eaf9a70c89ea926e5dc4a105a69397f966e9439459bc4cf2ddab22ac"
+    },
+    {
+      "what": "Steven Sasson's own blog post on Kodak's 'Plugged In' blog, 'We Had No Idea' (16 October 2007), saved from a Wayback capture: the prototype was patented, but apart from the patent the work was not made public until 2001.",
+      "date": "2007-10-16",
+      "who": "Steven Sasson",
+      "quote": "An internal report was written and a patent was granted on this concept in 1978 (US 4,131,919).",
+      "url": "http://pluggedin.kodak.com/post/?ID=687843",
+      "archive": "http://web.archive.org/web/20101226033310/http://pluggedin.kodak.com/post/?ID=687843",
+      "file": "sources/kodak-digital/sasson-pluggedin-2007.html",
+      "sha256": "c281248cf066b1f123cf16bac2024e67f0cb654de05da89cc61d74a83e586859"
+    },
+    {
+      "what": "The same post: the only public disclosure before 2001 was the patent.",
+      "date": "2007-10-16",
+      "who": "Steven Sasson",
+      "quote": "Outside of the patent, there was no public disclosure of our work until 2001.",
+      "url": "http://pluggedin.kodak.com/post/?ID=687843",
+      "archive": "http://web.archive.org/web/20101226033310/http://pluggedin.kodak.com/post/?ID=687843",
+      "file": "sources/kodak-digital/sasson-pluggedin-2007.html",
+      "sha256": "c281248cf066b1f123cf16bac2024e67f0cb654de05da89cc61d74a83e586859"
+    },
+    {
+      "what": "The same post: Sasson's own account of the 1976 internal demonstrations, where the audience asked why anyone would view pictures on a TV, and he estimated 15 to 20 years before a consumer product.",
+      "date": "2007-10-16",
+      "who": "Steven Sasson",
+      "quote": "Although we attempted to address the last question by applying Moore’s law to our architecture (15 to 20 years to reach the consumer)",
+      "url": "http://pluggedin.kodak.com/post/?ID=687843",
+      "archive": "http://web.archive.org/web/20101226033310/http://pluggedin.kodak.com/post/?ID=687843",
+      "file": "sources/kodak-digital/sasson-pluggedin-2007.html",
+      "sha256": "c281248cf066b1f123cf16bac2024e67f0cb654de05da89cc61d74a83e586859"
+    },
+    {
+      "what": "Kodak's own history page: its first digital camera products, 1991 (professional) and 1995 (consumer).",
+      "date": "accessed 2026-11-22",
+      "who": "Eastman Kodak Company",
+      "quote": "The KODAK DC40 Point-and-Shoot Digital Camera for consumers was launched in 1995.",
+      "url": "https://www.kodak.com/en/company/page/photography-history/",
+      "archive": "http://web.archive.org/web/20261031112702/https://www.kodak.com/en/company/page/photography-history/",
+      "file": "sources/kodak-digital/kodak-photography-history.html",
+      "sha256": "864b47405102ec9fe2544b62810ab82aa688aabd326fac4f0ae6d3981d86a7e7"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "Experts surveyed on the 77 cases that Christensen's work offers as disruptive innovation, Kodak among them, found that only seven fit all four key parts of the theory. So Kodak's fall does not by itself show that incumbents fail because they suppress threatening technology.",
+    "source": {
+      "what": "King, A. A. and Baatartogtokh, B. (2015), 'How useful is the theory of disruptive innovation?', MIT Sloan Management Review 57(1)",
+      "quote": "only seven of the cases (9%) exhibited all four elements of the theory",
+      "url": "https://sloanreview.mit.edu/article/how-useful-is-the-theory-of-disruptive-innovation/",
+      "archive": "http://web.archive.org/web/20261101041747/https://sloanreview.mit.edu/article/how-useful-is-the-theory-of-disruptive-innovation/",
+      "file": "sources/kodak-digital/king-baatartogtokh2015-smr.html",
+      "sha256": "a016653be1528c21879d4d467d35661478dd413c8da791e8e6d490df6d1f2f31"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search for kodak sasson digital camera 1975: 6 hits, earliest 2002 (Inductees of the National Inventors Hall of Fame); for sasson kodak \"digital camera\" 1975: 376 hits, earliest 2008; for kodak \"digital camera\" 1975 sasson shelved: 64 hits, none earlier than 2000 telling the 'buried' version.",
+    "Google Patents: saved US 4,131,919 (page and PDF).",
+    "Snopes fact-check (lead only): pointed to a 2015 New York Times Lens blog post and a 1991 Associated Press story on Kodak's first digital camera system.",
+    "Saved the New York Times Lens blog post 'Kodak's First Digital Moment' (12 August 2015), which relays Sasson's account; used as a lead, not quoted.",
+    "Saved the 2005 Associated Press story by Ben Dobbin on NBC News: the earliest telling found of the claim that Kodak held the invention back.",
+    "The 1991 Associated Press story itself was not found online.",
+    "Kodak 'Plugged In' blog post by Sasson (pluggedin.kodak.com/post/?ID=687843): site is gone; saved the Wayback capture of 26 December 2010. Post dated 16 October 2007, under Sasson's name.",
+    "New York Times, 2 May 2008 (Claudia H. Deutsch), source of the line that management's reaction was 'that's cute — but don't tell anyone about it': nytimes.com refused with 403; saved a Wayback capture. The line is Sasson's account relayed by a reporter, so it is a lead only.",
+    "IEEE Milestone page on ETHW (a wiki; lead only).",
+    "Saved Kodak's own photography history page for its 1991 and 1995 digital camera launches.",
+    "Google Books API: refused with 429; HathiTrust: refused with 403.",
+    "Searched for a correction by the teller: none found.",
+    "Wayback Machine: the save request for the NBC News page returned a page but no capture was listed afterwards, so its archive link is empty."
+  ],
+  "confidence_note": "The 1986, 1991 and 1995 dates come from Kodak's own website, not from records made at the time. The often-quoted line that managers said 'that's cute, but don't tell anyone about it' is Sasson's account relayed by reporters (New York Times 2008, 2015); in his own 2007 post he describes sceptical questions, not an order to hide it. What is false is that the invention was buried: it was patented in public in 1978, and Kodak sold digital cameras from 1991."
+}

@@ -1,0 +1,78 @@
+{
+  "id": "schmidt-pig-iron",
+  "as_told": "At Bethlehem Steel, Frederick Taylor found that pig-iron handlers each loaded about 12.5 tons a day. He chose one worker, whom he called Schmidt, and had a man with a watch tell him exactly when to lift, walk and rest. Schmidt then loaded 47 tons a day, almost four times as much, and earned 60 per cent more pay. The story is told as proof that scientific management multiplies a worker's output.",
+  "lesson": "Studying work scientifically and paying by results can make ordinary workers several times more productive.",
+  "what_happened": "The only published accounts I could read are Taylor's own, and they differ. In 1903 he wrote that the first man chosen, from gangs of five to twenty men, was asked to load 45 to 48 tons a day on piece-work and earned $1.85 a day. In 1911 he told a longer version with a gang of 75 men, 80,000 tons of iron, the name Schmidt, task work, and 47.5 tons loaded on the first day, and he added that only about one man in eight could keep that pace. The Bethlehem records of 1899 are not online, so I could not check the tonnage. Later writers say Schmidt was a real worker, Henry Noll, but I did not read a record that shows this.",
+  "false_part": "No record made at the time that I could read shows that Schmidt or other men loaded 47 tons a day; the figure rests only on Taylor's own accounts, which change between 1903 and 1911.",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "1903",
+    "who": "Frederick W. Taylor",
+    "where": "Shop Management, paper no. 1003, American Society of Mechanical Engineers (June 1903), paragraph 108",
+    "quote": "work from forty-five to forty-eight tons (2,240 lbs. each) per day.",
+    "url": "https://archive.org/details/shopmanagementpa00tayl",
+    "archive": "https://archive.org/details/shopmanagementpa00tayl",
+    "file": "sources/schmidt-pig-iron/shopmanagementpa00tayl_djvu.txt",
+    "sha256": "b4fcfbe1d1383ca0ebcdc1baecaff1d406131cbff4d86edaa2020a34175f6d17"
+  },
+  "original": [
+    {
+      "what": "Taylor's own fuller account, The Principles of Scientific Management (1911); written about 12 years after the work, not a record made at the time",
+      "date": "1911",
+      "who": "Frederick W. Taylor",
+      "quote": "The task before us, then, narrowed itself down to getting Schmidt to handle 47 tons of pig iron per day and making him glad to do it.",
+      "url": "https://archive.org/details/principlesofscie00taylrich",
+      "archive": "https://archive.org/details/principlesofscie00taylrich",
+      "file": "sources/schmidt-pig-iron/principlesofscie00taylrich_djvu.txt",
+      "sha256": "252a2bde34be0e5fcdc881578237a8e3fc74d1317a8704a2814b17275a2b2459"
+    },
+    {
+      "what": "Taylor 1911: how many men could do the work",
+      "date": "1911",
+      "who": "Frederick W. Taylor",
+      "quote": "it is a fact that in this gang of 75 pig-iron handlers only about one man in eight was physically capable of handling",
+      "url": "https://archive.org/details/principlesofscie00taylrich",
+      "archive": "https://archive.org/details/principlesofscie00taylrich",
+      "file": "sources/schmidt-pig-iron/principlesofscie00taylrich_djvu.txt",
+      "sha256": "252a2bde34be0e5fcdc881578237a8e3fc74d1317a8704a2814b17275a2b2459"
+    },
+    {
+      "what": "Taylor 1903: the gangs and the old rate, as first reported",
+      "date": "1903",
+      "who": "Frederick W. Taylor",
+      "quote": "The men in doing this work had worked in gangs of from five to twenty men.",
+      "url": "https://archive.org/details/shopmanagementpa00tayl",
+      "archive": "https://archive.org/details/shopmanagementpa00tayl",
+      "file": "sources/schmidt-pig-iron/shopmanagementpa00tayl_djvu.txt",
+      "sha256": "b4fcfbe1d1383ca0ebcdc1baecaff1d406131cbff4d86edaa2020a34175f6d17"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "The 1915 federal study of scientific management shops found that time study and task setting were not exact and varied with the judgement of the man who set the task; in the section I read it does not report a general several-fold rise in output. I found no record that tests the four-fold claim for pig iron.",
+    "source": {
+      "what": "Robert F. Hoxie, Scientific Management and Labor (1915), report of an investigation for the U.S. Commission on Industrial Relations",
+      "date": "1915",
+      "who": "Robert F. Hoxie",
+      "quote": "Far from being the invariable and purely objective matters that they are pictured, the methods and results of time study and task setting are, in practice, the special sport",
+      "url": "https://archive.org/details/cu31924092673882",
+      "archive": "https://archive.org/details/cu31924092673882",
+      "file": "sources/schmidt-pig-iron/cu31924092673882_djvu.txt",
+      "sha256": "1b560a78bd5062c17e88217008a84a9046c902e4c0ae853b2246c10c96b510ec"
+    }
+  },
+  "search_steps": [
+    "Project Gutenberg (ebooks 6435 and others) was down for maintenance; used archive.org scans instead.",
+    "archive.org search for Principles of Scientific Management: saved the 1911 printing principlesofscie00taylrich (full text).",
+    "archive.org search for Shop Management: saved the 1903 ASME paper shopmanagementpa00tayl (full text); paragraphs 107-109 are the first published telling of the pig-iron story, without the name Schmidt.",
+    "Compared the 1903 and 1911 versions: 1903 says gangs of five to twenty men, piece-work, 45 to 48 tons; 1911 says a gang of 75, task work, 47.5 tons, 80,000 tons of stored iron, and only one man in eight able to do it.",
+    "Web search for the 1899 Bethlehem records (the Gillespie and Wolle report, Henry Noll): found only secondary pages and a Cornell archive catalogue entry 'Pig-Iron Report Bethlehem 1899' with no online text. Not online in full text, so not quoted.",
+    "Web search for Wrege and Perroni (1974), 'Taylor's Pig-Tale', Academy of Management Journal 17(1):6-27: found citations only, no free full text; did not read it and do not rely on it.",
+    "Open Library full-text search for Gillespie Wolle \"pig iron\": no relevant hit.",
+    "Saw the English Wikipedia article on Henry Noll only as a web search result; as given there, it rests on Wrege and Perroni, which I could not read.",
+    "Saved Hoxie (1915), Scientific Management and Labor, from archive.org (cu31924092673882) as evidence on the lesson."
+  ],
+  "confidence_note": "Historians who read the Bethlehem papers (Wrege and Perroni 1974; Wrege and Hodgetts 2000) are said to have found that Taylor's story is largely wrong, which could change this entry to changed or invented, but I could not read either their work or the papers they used. The OCR of the archive.org scans has small errors (for example 12| for 12 1/2), so I quote only clean passages."
+}

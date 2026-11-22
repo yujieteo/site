@@ -1,0 +1,45 @@
+{
+  "id": "ibm-defects-japan",
+  "as_told": "IBM ordered a batch of parts from a Japanese supplier and wrote in the specification that it would accept three defective parts per 10,000. The parts arrived with the defective ones packed separately and a letter saying that the Japanese did not understand why IBM wanted defective parts, but they had made them specially and wrapped them on their own.",
+  "lesson": "Japanese manufacturers aimed for zero defects, so a Western 'acceptable defect level' looked absurd to them.",
+  "what_happened": "The story was in print by 1983. A 1983 book of essays published by the LTV Corporation, Basic Industries in Trouble, tells it as a recent event at IBM, and a 1988 quality textbook (Aft) says it appeared in the Toronto Sun on 25 April 1983 (page 6, by Susan Ford). The two 1983 versions are worded differently, so at least two versions already circulated in 1983. Later books (Gitlow and Gitlow 1987, Seymour 1992, Bank 1992 and many more) repeat it with the same supplier letter; Aft, Seymour and Bank cite the Toronto Sun. No IBM record, no named supplier, no named IBM employee and no copy of the letter has been found, and in the snippets I could read no telling gives a date, a plant or a part.",
+  "false_part": "",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "1983",
+    "who": "Essay in a collection published by the LTV Corporation (author not visible in the search snippet)",
+    "where": "Basic Industries in Trouble: Why, and Are There Solutions? (LTV Corporation, 1983); Open Library full-text search snippet",
+    "quote": "IBM recently ordered some components",
+    "url": "https://openlibrary.org/search/inside.json?q=%22This%20concept%20is%20foreign%20to%20the%20Japanese%22",
+    "archive": "https://archive.org/details/basicindustriesi0000ltvc",
+    "file": "sources/ibm-defects-japan/ol-inside-ibm-1983c.json",
+    "sha256": "88b757f24366b4eb1e79dd1bcddb187cb96aebf9ea0f2976fb7a7d9f5adf5cdc"
+  },
+  "original": [],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "holds",
+    "why": "For the 1980s car industry, the MIT assembly-plant study found that Japanese-run plants had the best quality, US-run plants a wide middle range and European-run plants the worst, measured as assembly defects per 100 cars. This supports a real Japanese quality lead in that period, though not a literal zero-defect standard.",
+    "source": {
+      "what": "John F. Krafcik, 'Triumph of the Lean Production System', Sloan Management Review 30(1), Fall 1988, p. 47 (scanned; text made by OCR)",
+      "quote": "based plants show the best quality performance:",
+      "url": "https://www.lean.org/downloads/MITSloan.pdf",
+      "archive": "http://web.archive.org/web/20261021091349/https://www.lean.org/downloads/MITSloan.pdf",
+      "file": "sources/ibm-defects-japan/krafcik-1988.pdf",
+      "sha256": "99950539dbe84887189b69be56e9e82ea9f03310b4831178cb28aaf5f688d308"
+    }
+  },
+  "search_steps": [
+    "Web search: many copies on joke and quote sites (Crosswalk, glenandpaula.com, sptulsian.com, Boomboxery); one forum post credits the consultant David Hutchins as a frequent teller. None cites a primary source.",
+    "Open Library full-text search 'defective parts per 10,000' and 'three defective parts per 10,000': hits from 1987 onward (Gitlow and Gitlow, The Deming Guide to Quality and Competitive Position, 1987; Aft 1988; Bank 1992; Seymour, On Q, 1992), all with the same letter ('wrapped separately. Hope this pleases').",
+    "Open Library search IBM 'three defective parts': found Basic Industries in Trouble (LTV Corporation, 1983), which says 'IBM recently ordered some components from a Japanese supplier and specified, as was their practice, an acceptable ...'. Saved the snippet results; the book is lending-only, so I read only snippets.",
+    "Tried to download the full text of Gitlow 1987 from archive.org: refused (401, lending-only). Its note 2 could not be read.",
+    "Followed On Q (1992), which says the story was in the Toronto Sun 'a few years ago', and Aft 1988, which cites 'Ford, Susan, Toronto Sun, April 25, 1983, p. 6'. The Toronto Sun of that date is not online in full text, so it is not quoted.",
+    "Google Books API returned 429 and HathiTrust full-text search returned a 403 bot check; I did not retry.",
+    "Tried one Papers Past (New Zealand) newspaper search for 'defective parts' IBM Japanese, 1980-1989: blocked by a bot check (Incapsula). Did not search Chronicling America or Trove, which do not cover Canadian papers of 1983.",
+    "Searched for any IBM statement or a named supplier: none found. Searched for a teller correction: none found (the teller is anonymous).",
+    "Lesson source: Krafcik 1988 from lean.org. The PDF is a scan, so I made the .txt with RapidOCR (page 8 left column at 300 dpi), not pdftotext."
+  ],
+  "confidence_note": "The earliest quote comes only from an Open Library search snippet, not a full text; the snippet does not show the '10,000' figure or the separate package, though later snippets of other books do. The Toronto Sun article of 25 April 1983 may be earlier than the LTV book and may name a source, but I could not read it. The story's uniform anonymous letter and its spread through quality-training books fit a business joke, but no positive evidence shows it did not happen, so the class is 'unsupported'."
+}

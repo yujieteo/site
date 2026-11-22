@@ -1,0 +1,63 @@
+{
+  "id": "rhythm-nation",
+  "as_told": "Janet Jackson's 1989 \"Rhythm Nation\" music video crashed some laptop hard drives. One note in the song matched a natural resonant frequency of the laptops' 5400 rpm drives, so the sound shook them. A laptop playing the video could even crash a laptop next to it. The manufacturer added an audio filter to remove the frequency.",
+  "lesson": "Sound at a device's resonant frequency can disrupt a spinning hard drive enough to crash the computer, and a software workaround can hide a physical defect.",
+  "what_happened": "On 16 August 2022, Microsoft engineer Raymond Chen published the story on his blog The Old New Thing. He said a colleague told it to him from Windows XP product support, and he did not name the computer manufacturer. No record from the manufacturer, a support case, or a test report has been published. In a follow-up on 20 September 2022, Chen named his source only as \"Kai\" and said the drives were disrupted, not damaged: the operating system crashed, not the hard drive. MITRE assigned CVE-2022-38392 on 17 August 2022, but the CVE cites Chen's blog post and is not an independent record.",
+  "false_part": "The common retelling that the song crashed or damaged the hard drives is false by the teller's own account; he says the drives were only disrupted and the operating system crashed. The event itself rests only on one unnamed person's relayed account.",
+  "class": "unsupported",
+  "also": "changed",
+  "earliest_telling": {
+    "date": "2022-08-16",
+    "who": "Raymond Chen",
+    "where": "The Old New Thing (Microsoft Developer Blogs), \"Janet Jackson had the power to crash laptop computers\"",
+    "quote": "A colleague of mine shared a story from Windows XP product support. A major computer manufacturer discovered that playing the music video for Janet Jackson’s “Rhythm Nation” would crash certain models of laptops.",
+    "url": "https://devblogs.microsoft.com/oldnewthing/20220816-00/?p=106994",
+    "archive": "http://web.archive.org/web/20260921164430/https://devblogs.microsoft.com/oldnewthing/20220816-00/?p=106994",
+    "file": "sources/rhythm-nation/oldnewthing-20220816.html",
+    "sha256": "63f623da89741df9a997d258b2426bd2d0091c09f1ab2c326fe09db48d9027f6"
+  },
+  "original": [
+    {
+      "what": "The CVE record created after the blog post; its only description source is the blog post",
+      "date": "2022-08-17",
+      "who": "MITRE / NIST National Vulnerability Database",
+      "quote": "allow physically proximate attackers to cause a denial of service (device malfunction and system crash) via a resonant-frequency attack with the audio signal from the Rhythm Nation music video",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-38392",
+      "archive": "http://web.archive.org/web/20261007023250/https://nvd.nist.gov/vuln/detail/cve-2022-38392",
+      "file": "sources/rhythm-nation/nvd-cve-2022-38392.json",
+      "sha256": "3a2b49f4a4048399739bb9734168805f6f43f3b6869dcef72a9161e6693ccde6"
+    }
+  ],
+  "teller_correction": {
+    "what": "Chen's follow-up post, which names the source only as \"Kai\", notes that a reproduction attempt used the wrong kind of drive, and says the drive was disrupted, not crashed",
+    "date": "2022-09-20",
+    "who": "Raymond Chen",
+    "quote": "Note that the disruption from the natural resonant frequency does not crash the hard drive, as a number of outlets erroneously reported. It merely disrupts the hard drive’s proper operation long enough for it to result in the operating system crashing.",
+    "url": "https://devblogs.microsoft.com/oldnewthing/20220920-00/?p=107201",
+    "archive": "http://web.archive.org/web/20260618073641/https://devblogs.microsoft.com/oldnewthing/20220920-00/?p=107201",
+    "file": "sources/rhythm-nation/oldnewthing-20220920.html",
+    "sha256": "b075db03afc28c82956578a0558edae0f148b62beee28f79adf8d00eeabc0d55"
+  },
+  "lesson_verdict": {
+    "status": "holds",
+    "why": "A peer-reviewed 2018 study showed in the laboratory that audible tones can vibrate hard-drive heads out of bounds and crash Windows on a laptop through its own built-in speaker. This supports the general lesson, but not the Rhythm Nation event itself.",
+    "source": {
+      "what": "Bolton, Rampazzi, Li, Kwong, Xu and Fu, \"Blue Note: How Intentional Acoustic Interference Damages Availability and Integrity in Hard Disk Drives and Operating Systems\", IEEE Symposium on Security and Privacy 2018",
+      "quote": "Audible tones can vibrate the read/write head(s) and disk outside of operational bounds.",
+      "url": "https://spqrlab1.github.io/papers/bolton-blue-note.pdf",
+      "archive": "http://web.archive.org/web/20261006161326/https://spqrlab1.github.io/papers/bolton-blue-note.pdf",
+      "file": "sources/rhythm-nation/bolton-blue-note-2018.pdf.txt",
+      "sha256": "971232834df82d5395208a7dfe9380f4168b1d20541d39d5c684a40c98c4205b"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search was not useful: the story first appeared in 2022, after the books it indexes; no earlier telling was looked for there beyond this note.",
+    "English Wikipedia article \"Rhythm Nation\" (section on resonant frequencies) cites only Chen's 16 August 2022 blog post, the CVE, and a video by Adam Neely.",
+    "Saved Chen's blog post of 16 August 2022. It links a video version and a Twitter poll on the @WindowsDocs account dated 12 August 2022 (tweet ids 1558114944738103297 and 1558115433449852929), four days earlier, also by Chen. I did not save the tweets; the blog post is the earliest telling I saved.",
+    "Saved Chen's follow-up of 20 September 2022. He names the source as \"Kai\", says Dave Plummer's reproduction used a full-size drive, and refuses to name the manufacturer.",
+    "Saved the NVD record for CVE-2022-38392 (published 17 August 2022). Its references are the blog post, a Seagate security page and a YouTube video; it is not independent evidence.",
+    "Saved the 2018 Blue Note paper (IEEE S&P) as evidence for the lesson.",
+    "I did not search separately for a manufacturer statement, support bulletin or patent describing the audio filter."
+  ],
+  "confidence_note": "The whole event rests on one person (\"Kai\") relayed by Chen, which rule 5 treats as a lead only; no manufacturer record is public. Physically the story is plausible (see the Blue Note paper), so the class is unsupported, not invented. The earlier 12 August 2022 tweets and video were not saved."
+}

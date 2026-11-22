@@ -1,0 +1,77 @@
+{
+  "id": "apple-iii-drop",
+  "as_told": "The Apple III (1980) had no fan, and its chips worked loose from their sockets as it heated and cooled. Apple's official advice to owners was to lift the computer a few inches and drop it on the desk, so that the chips would fall back into their sockets.",
+  "lesson": "Putting looks ahead of engineering, as with the fanless Apple III case, leads to hardware failures.",
+  "what_happened": "The early Apple III did have serious reliability problems, and loose chips were among them; a 2006 user-group history says Apple replaced every faulty main board through June 1981. The drop advice is told in print from 1991 on, but the tellings disagree: Robert X. Cringely (1991) says Apple told customers to drop it from twelve to eighteen inches, Owen Linzmayer (2004) says six inches with the front lifted, and the Washington Apple Pi FAQ (2006) says owners dropped it two inches. None of them cites an Apple document, and I found no Apple manual, bulletin or other record of the time that gives this advice.",
+  "false_part": "No Apple document or record from 1980-1981 was found that shows Apple officially told owners to drop the computer; the tellings disagree on the height.",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "1991",
+    "who": "Robert X. Cringely",
+    "where": "Accidental Empires (Addison-Wesley, Reading, Mass., 1991), as indexed by Open Library full-text search",
+    "quote": "an- swer was  to  tell  90,000  customers  to  pick  up  their  Apple  III carefully,  hold  it  twelve",
+    "url": "https://openlibrary.org/search/inside.json?q=%22customers%20to%20pick%20up%20their%20Apple%22&rows=50",
+    "archive": "https://archive.org/details/accidentalempire00crin",
+    "file": "sources/apple-iii-drop/ol_inside_customers_pick_up.json.txt",
+    "sha256": "69d8a635062676ab15d76f48b31d35ef9e502db4e53eb4db53c4a0067f584117"
+  },
+  "original": [
+    {
+      "what": "The rest of Cringely's 1991 sentence (Open Library full-text snippet)",
+      "date": "1991",
+      "who": "Robert X. Cringely",
+      "quote": "III carefully,  hold  it  twelve  to  eighteen  inches  above  a  level  surface, and  then  drop  it",
+      "url": "https://openlibrary.org/search/inside.json?q=%22reseat%20all%20the%20chips%22%20inches&rows=50",
+      "archive": "https://archive.org/details/accidentalempire00crin",
+      "file": "sources/apple-iii-drop/ol_inside_reseat_all_the_chips.json.txt",
+      "sha256": "ada1a9a9dbe45ce55a3bef9efc4e4b0073c14abb08478775a8ae140b6bb5cb8b"
+    },
+    {
+      "what": "Owen W. Linzmayer, Apple Confidential 2.0 (No Starch Press, 2004), chapter 'The Apple III Fiasco', the source cited by Wikipedia; it gives a different height and no source",
+      "date": "2004",
+      "who": "Owen W. Linzmayer",
+      "quote": "six inches off the desktop, then letting it drop with the hope that the chips",
+      "url": "https://mirrors.apple2.org.za/ftp.apple.asimov.net/documentation/magazines/misc/Apple%20Confidential%202.0.pdf",
+      "archive": "http://web.archive.org/web/20251231212030/https://mirrors.apple2.org.za/ftp.apple.asimov.net/documentation/magazines/misc/Apple%20Confidential%202.0.pdf",
+      "file": "sources/apple-iii-drop/linzmayer2004_apple_confidential2.pdf.txt",
+      "sha256": "25cd3195d1e991f842323addd9603bd83769554bbdd301ac7a0d66c7c42af61f"
+    },
+    {
+      "what": "The Apple /// FAQ File v5.2 by David Ottalini (Washington Apple Pi user group, February 2006); it describes the drop as something owners did and says Apple replaced faulty main boards",
+      "date": "2006-02",
+      "who": "David Ottalini, Washington Apple Pi",
+      "quote": "owners would pick their machine up and drop it two inches to reseat the chips.",
+      "url": "https://www.wap.org/a3/A3FAQ.pdf",
+      "archive": "http://web.archive.org/web/20261009141041/https://www.wap.org/a3/A3FAQ.pdf",
+      "file": "sources/apple-iii-drop/wap_A3FAQ.pdf.txt",
+      "sha256": "784c23d6bcfff020e5b660c91c90884b84b471c97813e80c2c9ae4bb2240e5e0"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "The physical part is real: industry test guidance says heat stress can change how a connector is seated. But I found no study that tests whether putting looks ahead of engineering causes failures in general, and the Apple III case alone cannot show it.",
+    "source": {
+      "what": "Rubin, Pascucci, Toran, Druckenmiller and others, 'A Standardized Reliability Evaluation Framework for Connectors - Stress Levels and Test Recommendations', IEEE Holm Conference on Electrical Contacts, 2019 (iNEMI project)",
+      "quote": "Thermal shock can affect how a connector is seated and can",
+      "url": "https://thor.inemi.org/webdownload/2019/IEEE_Holm2019-Connector_Rel-paper.pdf",
+      "archive": "http://web.archive.org/web/20260412161813/https://thor.inemi.org/webdownload/2019/IEEE_Holm2019-Connector_Rel-paper.pdf",
+      "file": "sources/apple-iii-drop/inemi_holm2019_connector_reliability.pdf.txt",
+      "sha256": "1f845499382af47ae78c456c1d34e375a6c49a4a6784c28408570083f2cb5bc3"
+    }
+  },
+  "search_steps": [
+    "Wikipedia 'Apple III' used as a lead: it says it 'has been rumored' that Apple gave the drop advice, citing Linzmayer 2004, pp. 41-44.",
+    "Open Library full-text search for \"Apple III\" \"drop it\" chips: hit in Cringely, Accidental Empires (1991), 'and then drop it, hoping that the resulting crash would reseat all the chips'; repeated in Dawkins, Climbing Mount Improbable (1996), which quotes Cringely.",
+    "Open Library exact-phrase searches \"hoping that the resulting crash\", \"reseat all the chips\", \"III carefully\" \"twelve to eighteen\" and \"customers to pick up their Apple\" gave the full Cringely sentence in pieces; no earlier book telling found. The .json.txt files are my own derivation of the saved JSON with the {{{ }}} match markers removed.",
+    "Open Library searches \"Apple III\" drop inches chips reseat, \"Apple III\" drop chips sockets inches and \"Apple ///\" drop inches chips: 0 hits (multi-word queries; not taken as negatives). One query failed with a connection timeout and was rerun later.",
+    "Downloaded Linzmayer, Apple Confidential 2.0, from an Apple II archive mirror (the asimov.net host failed its TLS certificate check; used the mirrors.apple2.org.za copy). It gives six inches and no source.",
+    "Downloaded the Washington Apple Pi Apple III FAQ (web page and the 2006 PDF v5.2): 'two-inch drop' done by owners; Kottke's account in it is relayed through David Craig's notes, so it is a lead only.",
+    "Downloaded the KansasFest 2010 Apple III talk slides (Maginnis): they mention socket problems but not the drop advice.",
+    "Web searches for the advice in InfoWorld, Softalk, Byte or an Apple service bulletin from 1981: nothing found. Did not search Google Books (the API refused with 429 on another candidate in this batch) or HathiTrust.",
+    "Searched for a correction by Cringely or Linzmayer: none found.",
+    "Further Open Library searches in other words: \"Apple III\" dropped, \"Apple III\" reseat and \"Apple III\" sockets (results sorted by year). Indexed Apple histories from 1984 (The Journey Is the Reward), 1988 (Accidental Millionaire) and 1989 surfaced, but none showed the drop story; the earliest drop telling is still Cringely 1991. The archive.org metadata of accidentalempire00crin gives 1991, Addison-Wesley."
+  ],
+  "confidence_note": "The loose-chip problem is well attested, and some owners may well have dropped their machines. What is not shown is that Apple officially advised it. A 1981 Apple support document or trade-press report could still exist; I did not search the scanned 1981 magazines page by page. The figure of 90,000 customers in Cringely was not checked."
+}

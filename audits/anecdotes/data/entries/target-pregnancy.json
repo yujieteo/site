@@ -1,0 +1,45 @@
+{
+  "id": "target-pregnancy",
+  "as_told": "Target built a statistical model that predicted from shopping data which customers were pregnant. An angry father in Minneapolis complained that Target was sending his high-school daughter coupons for baby clothes. A few days later he apologised: his daughter was pregnant, and Target had known before he did.",
+  "lesson": "Companies can infer intimate facts about people, such as pregnancy, from ordinary purchase data.",
+  "what_happened": "Charles Duhigg reported in the New York Times Magazine (online 16 February 2012) that Target statistician Andrew Pole built a pregnancy-prediction model. In the same article Duhigg told the father story, sourced only to an unnamed Target employee who took part in the conversation. No store, date, names or record of the mailing are given, and the article does not show that the mailer came from Pole's model. Target declined interviews and told Duhigg that almost all of his statements contained inaccurate information, without saying which. I found no other record of the incident.",
+  "false_part": "",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "2012-02-16",
+    "who": "Charles Duhigg",
+    "where": "\"How Companies Learn Your Secrets\", The New York Times Magazine (print issue 19 February 2012)",
+    "quote": "About a year after Pole created his pregnancy-prediction model, a man walked into a Target outside Minneapolis and demanded to see the manager.",
+    "url": "https://www.nytimes.com/2012/02/19/magazine/shopping-habits.html",
+    "archive": "https://web.archive.org/web/20120302105613/http://www.nytimes.com/2012/02/19/magazine/shopping-habits.html?pagewanted=all",
+    "file": "sources/target-pregnancy/nyt_2012_shopping-habits_all.html",
+    "sha256": "a943e264def721fb87df304530c903f0c4d63ec73a22e60d8b2f47558fe80ee8"
+  },
+  "original": [],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "holds",
+    "why": "A peer-reviewed study of 58,000 volunteers showed that ordinary digital behaviour records (Facebook Likes) predict highly sensitive personal attributes with high accuracy. That study used Likes, not purchases, so it supports the general lesson rather than pregnancy prediction from shopping in particular.",
+    "source": {
+      "what": "Kosinski, Stillwell and Graepel, 'Private traits and attributes are predictable from digital records of human behavior', PNAS 110(15):5802-5805, 2013 (PMC copy)",
+      "quote": "can be used to automatically and accurately predict a range of highly sensitive personal attributes",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3625324/",
+      "archive": "https://web.archive.org/web/20261105000543/https://pmc.ncbi.nlm.nih.gov/articles/PMC3625324/",
+      "file": "sources/target-pregnancy/kosinski_2013_pnas_pmc.html",
+      "sha256": "00dce7d49954c068d8c4150b39c70c532427f9ab7c7d8a48b4f514f650c495e4"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search for Target, pregnant, coupons, daughter (treated as OR; 58,580 hits): relevant hits are Duhigg's own The Power of Habit (2012) and later books; no telling before Duhigg's 2012 article. Saved as ol_search.json.",
+    "The New York Times page refuses automated download (bot check); saved the full-article (pagewanted=all) Wayback copy of 2 March 2012 instead.",
+    "Read the article: the father story is attributed only to 'an employee who participated in the conversation'; the article gives no date, store or names, and does not say the mailer came from Pole's model.",
+    "No original record found. The only stated source for the incident is an unnamed employee in Duhigg's own article ('according to an employee who participated in the conversation'), and Target's reply that 'Almost all of your statements contain inaccurate information' appears only inside Duhigg's text, so neither is listed as an original record.",
+    "The article prints Target's reply that almost all of Duhigg's statements were inaccurate; Target did not say which.",
+    "Web search for later confirmation, a correction by Duhigg, or a statement by Pole about the incident: found only retellings and opinion pieces; no record, and no correction by Duhigg.",
+    "Andrew Pole's 2010 Predictive Analytics World talk exists as video only; I did not find a transcript, so it is not quoted.",
+    "Duhigg's book The Power of Habit (2012) retells the story; I did not find it online in full text, so it is not quoted.",
+    "For the lesson: Kosinski et al. 2013 PNAS. The PNAS PDF and Europe PMC PDF and XML were refused; saved the PubMed Central HTML page."
+  ],
+  "confidence_note": "Duhigg is an experienced reporter and the story may be true, but it rests on one unnamed person and nothing else. Pole's model itself is described only through Duhigg's interview with Pole; Target disputed the reporting in general terms. The usual retelling that 'the model knew before the father' adds a causal link the article does not state."
+}

@@ -1,0 +1,76 @@
+{
+  "id": "library-alexandria",
+  "as_told": "The great Library of Alexandria held the learning of the ancient world. It burned in one great fire, usually blamed on Julius Caesar in 48 BC (or on Christians or Arabs), and that knowledge was lost for ever.",
+  "lesson": "One catastrophe can wipe out a civilisation's knowledge, so the burning of the Library set learning back by centuries.",
+  "what_happened": "In 48 BC Caesar, besieged in Alexandria, burned the ships in the harbour and the dockyards; his own account mentions no library. Later writers say books burned: Seneca (first century AD) says 40,000 books burned at Alexandria, and Plutarch (about AD 100) says the fire destroyed the great library. But the library or libraries went on: Suetonius says Domitian (AD 81-96) sent scribes to Alexandria to copy books. Bagnall (2002) concludes that the collections faded over centuries through decay of papyrus and lack of upkeep, not in one event.",
+  "false_part": "There was no single fire that ended the Library; there was a fire in 48 BC that burned books, but the collections survived it and declined over centuries.",
+  "class": "changed",
+  "also": "",
+  "earliest_telling": {
+    "date": "0055",
+    "who": "Seneca the Younger",
+    "where": "De tranquillitate animi 9.5 (Latin text, The Latin Library); written about AD 49-62, so the date 55 is an approximation",
+    "quote": "Quadraginta milia librorum Alexandriae arserunt.",
+    "url": "https://www.thelatinlibrary.com/sen/sen.tranq.shtml",
+    "archive": "http://web.archive.org/web/20251225085640/http://www.thelatinlibrary.com/sen/sen.tranq.shtml",
+    "file": "sources/library-alexandria/seneca-tranq-latin-thelatinlibrary.html",
+    "sha256": "078d83b6b61b1796d5c1a3ba0c5665736cd9e230be80818687a1305cf868d1fc"
+  },
+  "original": [
+    {
+      "what": "Caesar's own account of the fighting at Alexandria, Bellum Civile 3.111 (Latin text): he burned the ships in the docks and seized Pharos; no library is mentioned",
+      "date": "c. 48-45 BC",
+      "who": "Julius Caesar",
+      "quote": "omnesque eas naves et reliquas, quae erant in navalibus, incendit",
+      "url": "https://www.thelatinlibrary.com/caesar/bc3.shtml",
+      "archive": "http://web.archive.org/web/20260305213921/http://www.thelatinlibrary.com/caesar/bc3.shtml",
+      "file": "sources/library-alexandria/caesar-bellum-civile-3-thelatinlibrary.html",
+      "sha256": "cd27fa83472645207f4a0fdc03bff6f948a951090aef19c6033179813aea788c"
+    },
+    {
+      "what": "Plutarch, Life of Caesar 49.6, Loeb translation by Bernadotte Perrin (1919), LacusCurtius: the first saved text that says the library itself was destroyed",
+      "date": "c. AD 100",
+      "who": "Plutarch",
+      "quote": "and this spread from the dockyards and destroyed the great library",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Plutarch/Lives/Caesar*.html",
+      "archive": "https://web.archive.org/web/20261122162751/https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Plutarch/Lives/Caesar%2A.html",
+      "file": "sources/library-alexandria/plutarch-caesar-loeb-lacuscurtius.html",
+      "sha256": "11ee326b7bc23d56e6d2d37d7563c1f4bcb2cd95feaccd572dc143e46ed2e27a"
+    },
+    {
+      "what": "Suetonius, Life of Domitian 20, Loeb translation by J. C. Rolfe, LacusCurtius: Alexandria still held books worth copying in AD 81-96",
+      "date": "c. AD 121",
+      "who": "Suetonius",
+      "quote": "seeking everywhere for copies of the lost works, and sending scribes to Alexandria to transcribe and correct them",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Suetonius/12Caesars/Domitian*.html",
+      "archive": "https://web.archive.org/web/20261122162924/https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Suetonius/12Caesars/Domitian%2A.html",
+      "file": "sources/library-alexandria/suetonius-domitian-loeb-lacuscurtius.html",
+      "sha256": "db825ca459ec25818a88e45a2f04a58db66786d6cbf31c37bea337f0b0c93851"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "does not hold",
+    "why": "Bagnall argues that papyrus rolls lasted at most two or three centuries in Alexandria's climate, that most books existed in several copies, and that no more books would have survived if the Library had never been destroyed. Works were lost because nobody kept recopying them, not because of one fire.",
+    "source": {
+      "what": "Roger S. Bagnall, Alexandria: Library of Dreams (2002), conclusion on the effect of the destruction",
+      "quote": "Indeed, no more books would have survived antiquity if the Library had not been destroyed (deliberately or accidentally) than did so anyway. The destruction simply is not important.",
+      "url": "https://archive.nyu.edu/bitstream/2451/28263/2/D172-Alexandria%20Library%20of%20Dreams.pdf",
+      "archive": "http://web.archive.org/web/20260910110615/https://archive.nyu.edu/bitstream/2451/28263/2/D172-Alexandria%20Library%20of%20Dreams.pdf",
+      "file": "sources/library-alexandria/bagnall-library-of-dreams-2002.pdf.txt",
+      "sha256": "25d4a24d1d481587942b893b988920a1e656eac2d93c1cc349bbbf5dc15a2f68"
+    }
+  },
+  "search_steps": [
+    "No Open Library search was useful here: the earliest tellings are ancient texts, so went straight to the ancient sources.",
+    "Saved Seneca, De tranquillitate animi (Latin, The Latin Library): 9.5 says 40,000 books burned at Alexandria and cites Livy, whose text on this is lost.",
+    "Saved Plutarch, Life of Caesar (Loeb, LacusCurtius): 49.6 says the fire spread from the dockyards and destroyed the great library.",
+    "Saved Caesar, Bellum Civile book 3 (Latin): 3.111 says he burned the ships in the docks; no library is mentioned.",
+    "Saved Suetonius, Life of Domitian (Loeb, LacusCurtius): 20 says Domitian sent scribes to Alexandria to copy lost works.",
+    "Found and saved Bagnall (2002) from the NYU archive; it reviews the evidence for Caesar, Aurelian (AD 273), the Serapeum (391) and the Arab story (642), and calls the 642 story fiction.",
+    "Did not save Strabo, Cassius Dio, Aulus Gellius or Ammianus; Bagnall quotes Strabo and Ammianus, but those were not checked in the original.",
+    "Rule 3: no original teller to correct; Seneca and Plutarch are ancient.",
+    "Did not search Wikipedia's cited sources or newspapers; not useful for an ancient event."
+  ],
+  "confidence_note": "Seneca's date is uncertain (De tranquillitate is usually dated about AD 49-62), and the figure of 40,000 books was not checked against other manuscripts or editions. The Seneca quote is in Latin; no translation was saved. Which library or store of books burned in 48 BC is debated. The lesson verdict rests on one scholar's review."
+}

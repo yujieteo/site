@@ -1,0 +1,98 @@
+{
+  "id": "xerox-parc",
+  "as_told": "In 1979 Steve Jobs visited Xerox's research centre in Palo Alto (PARC) and saw the Alto computer with its mouse, windows and icons. Xerox did not understand what it had. Jobs took the ideas back to Apple and copied them in the Lisa and the Macintosh, so Apple stole the graphical interface from Xerox.",
+  "lesson": "Big companies fail to profit from their own inventions, and outsiders who take the ideas win.",
+  "what_happened": "Xerox and Apple made a deal in 1979: Xerox was allowed to invest in Apple, and in return Apple was allowed to see some PARC technology. Larry Tesler, the PARC researcher who gave the demonstration, said that the visit was part of this deal and that Xerox wanted Apple to build mice and bitmap displays cheaply so that Xerox could buy them. Apple's 1980 public offering documents list Xerox Corporation as a shareholder with 800,000 shares. Adele Goldberg of PARC said in 1996 that Xerox executives ordered her to give Apple's team a fuller demonstration over her objection. Apple then hired PARC staff, Tesler among them in July 1980, and developed the interface further. In December 1989 Xerox sued Apple, claiming that the Lisa and Macintosh interfaces came from Xerox's Star software and that Apple had concealed this; Apple answered that the suit made no claim of copyright infringement.",
+  "false_part": "Apple did not steal the ideas: Xerox let Apple see PARC's work under a deal in which Xerox invested in Apple.",
+  "class": "changed",
+  "also": "",
+  "earliest_telling": {
+    "date": "1989-12-14",
+    "who": "Xerox Corporation (complaint against Apple, as reported by the Dow Jones news wire and forwarded to the Usenet group comp.sys.mac)",
+    "where": "Fwd: Xerox - Apple Computer Suit -2-, comp.sys.mac, 15 December 1989",
+    "quote": "The company said its complaint also alleges that Apple ''intentionally and purposefully concealed'' that its Lisa and Macintosh software was derived from Xerox software.",
+    "url": "https://utzoo.superglobalmegacorp.com/usenet/news118f1/b145/comp/sys/mac/44329.txt",
+    "archive": "http://web.archive.org/web/20190926012221/https://utzoo.superglobalmegacorp.com/usenet/news118f1/b145/comp/sys/mac/44329.txt",
+    "file": "sources/xerox-parc/usenet-comp.sys.mac-44329.txt",
+    "sha256": "996431803fe903fd5f692ad6d1cc3fb56adf18ba5badb472dfe2875b5dc5d09c"
+  },
+  "original": [
+    {
+      "what": "Oral history of Larry Tesler, the PARC researcher who gave the 1979 demonstration to Apple, recorded by the Computer History Museum in 2013 (his own words in an interview published as his).",
+      "date": "2013",
+      "who": "Larry Tesler, interviewed by Al Kossow",
+      "quote": "And so, they came up with a deal where Xerox would be allowed to invest in Apple. Apple would be allowed to see some PARC technology",
+      "url": "https://archive.computerhistory.org/resources/access/text/2014/08/102746675-05-01-acc.pdf",
+      "archive": "http://web.archive.org/web/20261117144213/https://archive.computerhistory.org/resources/access/text/2014/08/102746675-05-01-acc.pdf",
+      "file": "sources/xerox-parc/tesler-chm-oralhistory-2013.pdf",
+      "sha256": "3abdb91c4b47d9058c05a6eb3f9385fbd43b2bec01e38400f76145106fa56851"
+    },
+    {
+      "what": "Transcript of the PBS documentary Triumph of the Nerds, part 3 (1996): Adele Goldberg, the PARC researcher asked to give the second demonstration, says she objected and gave it only because Xerox executives ordered her to.",
+      "date": "1996",
+      "who": "Adele Goldberg (interviewed for PBS / Robert X. Cringely)",
+      "quote": "I had a big argument with these Xerox executives telling them that they were about to give away the kitchen sink and I said that I would only do it if I were ordered to do it",
+      "url": "https://www.pbs.org/nerds/part3.html",
+      "archive": "http://web.archive.org/web/20261112065028/https://www.pbs.org/nerds/part3.html",
+      "file": "sources/xerox-parc/pbs-nerds-part3.html",
+      "sha256": "6f3a3d7adf5fe5146e597e2d2cb5d73b1cf5c0067c77e3d9735f96a03ddd3e9b"
+    },
+    {
+      "what": "Steve Jobs in the same 1996 transcript: his own telling that Xerox did not understand what it had.",
+      "date": "1996",
+      "who": "Steve Jobs (interviewed for PBS)",
+      "quote": "Basically they were copier heads that just had no clue about a computer or what it could do.",
+      "url": "https://www.pbs.org/nerds/part3.html",
+      "archive": "http://web.archive.org/web/20261112065028/https://www.pbs.org/nerds/part3.html",
+      "file": "sources/xerox-parc/pbs-nerds-part3.html",
+      "sha256": "6f3a3d7adf5fe5146e597e2d2cb5d73b1cf5c0067c77e3d9735f96a03ddd3e9b"
+    },
+    {
+      "what": "Apple's draft prospectus for its public offering (selling shareholders as of 26 September 1980), from a Computer History Museum file of Apple offering documents 1978-1982. It lists Xerox Corporation as holding 800,000 Apple shares.",
+      "date": "1980",
+      "who": "Apple Computer, Inc.",
+      "quote": "Xerox Corporation          800,000                   1,7     80,000        720,000         1.4",
+      "url": "https://archive.computerhistory.org/resources/access/text/2019/03/102783503-05-01-acc.pdf",
+      "archive": "http://web.archive.org/web/20260513102531/https://archive.computerhistory.org/resources/access/text/2019/03/102783503-05-01-acc.pdf",
+      "file": "sources/xerox-parc/apple-offering-docs-1978-1982-chm.pdf",
+      "sha256": "5597a44f8de8800e8ac3fda8364d313ab75776321b9eb1c6fd9691e1af4589ef"
+    },
+    {
+      "what": "Apple press release of 15 December 1989 answering the Xerox suit, posted to comp.sys.mac.",
+      "date": "1989-12-15",
+      "who": "Apple Computer, Inc.",
+      "quote": "Xerox makes no allegations of\ncoypright infringement.",
+      "url": "https://utzoo.superglobalmegacorp.com/usenet/news118f1/b145/comp/sys/mac/44926.txt",
+      "archive": "http://web.archive.org/web/20190926012159/https://utzoo.superglobalmegacorp.com/usenet/news118f1/b145/comp/sys/mac/44926.txt",
+      "file": "sources/xerox-parc/usenet-comp.sys.mac-44926.txt",
+      "sha256": "37b84df3cc57462d90cbb1ee6cbb37cf22c58b1e89c4d0e24c536cc4ed43e8bd"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "A study of the 35 companies that came out of Xerox's research centres from 1979 to 1998 found that Xerox managed them on purpose and let go of the ones that did not fit its strategy. It did miss value, but by choice, not by blindness, so the broad lesson is not shown by this case.",
+    "source": {
+      "what": "Chesbrough, H. (2002), 'Graceful exits and missed opportunities: Xerox's management of its technology spin-off organizations', Business History Review 76(4): 803-837 (abstract only)",
+      "quote": "Contradicting the common perception that Xerox “fumbled the future” by letting its technology walk out the door, in fact the company set in motion a series of deliberate initiatives to manage its spin-off organizations.",
+      "url": "https://econpapers.repec.org/RePEc:cup:buhirw:v:76:y:2002:i:04:p:803-837_07",
+      "archive": "http://web.archive.org/web/20261122132125/https://econpapers.repec.org/RePEc:cup:buhirw:v:76:y:2002:i:04:p:803-837_07",
+      "file": "sources/xerox-parc/chesbrough2002-econpapers.html",
+      "sha256": "28d24ec2b19608cf4b9ed94e6e96aa58cb1983eca9152bf050e4063ae393135e"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search for xerox parc jobs stole: 1 hit (The Best American Essays 2012, which reprints a 2011 essay calling it 'the legend of Xerox PARC').",
+    "Open Library full-text search for xerox parc jobs visit 1979 stock: 0 hits; for jobs parc alto mouse visit lisa: 0 hits.",
+    "Stanford 'Making the Macintosh' essay on the PARC visit (lead only): says the Mac and Lisa projects were already under way, there were two visits, and Xerox's venture arm had invested in Apple.",
+    "Computer History Museum: saved the 2013 oral history of Larry Tesler, who gave the demonstration.",
+    "Computer History Museum: saved a scanned file of Apple offering documents 1978-1982; its 1980 prospectus drafts list Xerox Corporation as a selling shareholder with 800,000 shares. A 1979 purchase agreement with Xerox was not found in it.",
+    "SEC copy of the 1980 Apple prospectus (sec.gov FOIA file): refused with 403.",
+    "Court decision Xerox v. Apple, 734 F. Supp. 1542 (N.D. Cal. 1990): Justia, Leagle and CourtListener all refused automated access (403 or 401).",
+    "PBS 'Triumph of the Nerds' transcript (part 3): pbs.org refused with 403; saved the Wayback capture of 12 November 2026 (it came gzip-compressed and was unpacked). It has Jobs's, Goldberg's and Tesler's own words.",
+    "Usenet archive (utzoo): saved the Dow Jones report of the Xerox complaint (14 December 1989), the Los Angeles Times report of 15 December 1989 and Apple's press release of 15 December 1989.",
+    "Google Books API: refused with 429; HathiTrust: refused with 403.",
+    "Searched for a correction by the tellers: Xerox's claims were largely dismissed in 1990 according to leads, but I could not save the decision."
+  ],
+  "confidence_note": "I could not save the 1990 court decision, so the outcome of the Xerox suit is not stated as fact here. The exact terms of Xerox's 1979 investment (the often-quoted 100,000 shares for about $1 million) were not found in a saved record. Earlier tellings of the 'stole' story in the 1980s press probably exist but were not found."
+}

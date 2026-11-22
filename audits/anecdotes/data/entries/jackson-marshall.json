@@ -1,0 +1,74 @@
+{
+  "id": "jackson-marshall",
+  "as_told": "In 1832 the Supreme Court ruled in Worcester v. Georgia that Georgia had no power over Cherokee land. President Andrew Jackson is said to have answered: \"John Marshall has made his decision; now let him enforce it.\" The line is told as proof that a president openly defied the Court.",
+  "lesson": "A court ruling has force only if the executive branch is willing to enforce it.",
+  "what_happened": "The Supreme Court decided Worcester v. Georgia on 3 March 1832, and Georgia ignored the decision. On 7 April 1832 Jackson wrote privately to John Coffee that the decision \"has fell still born\" and that it \"cannot coerce Georgia\". No record from 1832 shows Jackson saying the famous line. It first appears in print in 1864, in Horace Greeley's The American Conflict, which credits the late George N. Briggs, a Massachusetts congressman in 1832. Worcester and Butler were pardoned and released on 14 January 1833.",
+  "false_part": "No record made at the time shows that Jackson said the line; it first appears in print 32 years later, second hand.",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "1864",
+    "who": "Horace Greeley",
+    "where": "The American Conflict, vol. 1 (1864)",
+    "quote": "Well : John Marshall has made his decision :",
+    "url": "https://archive.org/details/americanconflict01greeuoft",
+    "archive": "https://archive.org/details/americanconflict01greeuoft",
+    "file": "sources/jackson-marshall/greeley-american-conflict-v1-1864_djvu.txt",
+    "sha256": "3a4cfc29b7133c4b8be5e8ceda3185b9d58c1178e602957615db85f2194dc035"
+  },
+  "original": [
+    {
+      "what": "Jackson's own letter to John Coffee, 7 April 1832, as printed in The Papers of Andrew Jackson, vol. 10 (University of Tennessee Press, 2016)",
+      "date": "1832-04-07",
+      "who": "Andrew Jackson",
+      "quote": "The decision of the supreme court has fell still born, and they find that it cannot coerce Georgia to yield to its mandate",
+      "url": "https://trace.tennessee.edu/bitstreams/00292701-e41d-4ba5-a3f5-e2e702c56084/download",
+      "archive": "https://web.archive.org/web/20261122162614/https://trace.tennessee.edu/server/api/core/bitstreams/00292701-e41d-4ba5-a3f5-e2e702c56084/content",
+      "file": "sources/jackson-marshall/papers-andrew-jackson-v10-1832.pdf.txt",
+      "sha256": "c5443a878c11297b77a82f672e7e0fb7eba761d09375bf16c772d07d0cee98a0"
+    },
+    {
+      "what": "Greeley's own footnote to the line, naming his informant",
+      "date": "1864",
+      "who": "Horace Greeley",
+      "quote": "I am indebted for this fact to the late Governor George N. Briggs, of Massachusetts",
+      "url": "https://archive.org/details/americanconflict01greeuoft",
+      "archive": "https://archive.org/details/americanconflict01greeuoft",
+      "file": "sources/jackson-marshall/greeley-american-conflict-v1-1864_djvu.txt",
+      "sha256": "3a4cfc29b7133c4b8be5e8ceda3185b9d58c1178e602957615db85f2194dc035"
+    },
+    {
+      "what": "Editors' note in The Papers of Andrew Jackson, vol. 10, on the outcome of Worcester v. Georgia",
+      "date": "2016",
+      "who": "Daniel Feller, Thomas Coens and Laura-Eve Moss (editors)",
+      "quote": "Georgia authorities ignored the decision. Worcester and Butler were pardoned and released on January 14, 1833.",
+      "url": "https://trace.tennessee.edu/bitstreams/00292701-e41d-4ba5-a3f5-e2e702c56084/download",
+      "archive": "https://web.archive.org/web/20261122162614/https://trace.tennessee.edu/server/api/core/bitstreams/00292701-e41d-4ba5-a3f5-e2e702c56084/content",
+      "file": "sources/jackson-marshall/papers-andrew-jackson-v10-1832.pdf.txt",
+      "sha256": "c5443a878c11297b77a82f672e7e0fb7eba761d09375bf16c772d07d0cee98a0"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "holds",
+    "why": "In 1832 Georgia ignored the ruling and no federal force acted. In 1957 a federal court order in Little Rock was obeyed only after the President sent troops by Executive Order 10730, which states that obstruction made it impracticable to enforce the law by ordinary judicial proceedings.",
+    "source": {
+      "what": "Executive Order 10730, 24 September 1957 (National Archives transcription)",
+      "quote": "makes it impracticable to enforce such laws by the ordinary course of judicial proceedings",
+      "url": "https://www.archives.gov/milestone-documents/executive-order-10730",
+      "archive": "http://web.archive.org/web/20261018161624/https://www.archives.gov/milestone-documents/executive-order-10730",
+      "file": "sources/jackson-marshall/eo10730-archives-gov.html",
+      "sha256": "6d868ceb82f5f064ebf6c778678bfe81fc29a367944c4a71b3bcd1d17e82974d"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search \"let him enforce it\": 3,981 hits; earliest in the first 50 results is 1912; adding Briggs gave 1896, 1907 and 1971 books that credit George N. Briggs.",
+    "Archive.org search for Greeley's The American Conflict; saved the full text of vol. 1 (1864, americanconflict01greeuoft) and found the line with the footnote crediting Briggs.",
+    "Searched for Jackson's own words: Bassett's Correspondence of Andrew Jackson vol. 4 (1929) is not found online in full text; found The Papers of Andrew Jackson vol. 10 (1832) as an open PDF at the University of Tennessee repository and saved it.",
+    "Found Jackson's letter to John Coffee of 7 April 1832 and the editors' notes on Worcester v. Georgia and on the Greeley source in that volume.",
+    "Rule 3: did not search for a correction by Greeley (he died in 1872); none is known to me from the saved sources.",
+    "Lesson: saved Federalist No. 78 first, then replaced it with Executive Order 10730 (1957) from the National Archives, an official record of a court order enforced by executive force.",
+    "Did not search Chronicling America or other newspaper archives for an earlier printing than 1864."
+  ],
+  "confidence_note": "The earliest telling found is 1864. An earlier printing in a newspaper between 1832 and 1864 is possible but was not searched for. Greeley's text in the saved file is OCR; the quote was checked against it. Briggs's own account, if he wrote one, was not found. The OCR of the saved scan garbles the rest of the line (\"now Jet him enforce itP\"), so the quote stops at \"decision :\"."
+}

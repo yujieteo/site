@@ -1,0 +1,89 @@
+{
+  "id": "coca-cola-santa",
+  "as_told": "Before the 1930s Santa Claus wore many colours, often green. Coca-Cola's Christmas advertising dressed him in red and white, the company's colours. The red suit stuck, so the modern Santa is a creation of a soft-drink campaign.",
+  "lesson": "Advertising can create a cultural tradition that people later take to be old.",
+  "what_happened": "Coca-Cola's Santa advertisements painted by Haddon Sundblom began in 1931, and Coca-Cola itself says that Santa appeared in a red coat before Sundblom painted him. Santa in a red suit is in print well before that: in Sarah Addington's children's book The Boy Who Lived in Pudding Lane (Atlantic Monthly Press, copyright 1922), the young Santa is \"always dressed in a bright red suit\" and Mrs. Claus makes him twelve red suits. Coca-Cola says its advertising showed Santa from 1931 to 1964 and helped shape his image, but it did not give him the red suit.",
+  "false_part": "Coca-Cola did not give Santa his red suit; he was shown in red before Coca-Cola's Santa advertising began in 1931.",
+  "class": "changed",
+  "also": "",
+  "earliest_telling": {
+    "date": "1999",
+    "who": "Peter Corey",
+    "where": "Coping with Christmas (London: Hippo; Open Library lists one edition, Scholastic, 15 October 1999), page 166, as shown in Open Library full-text search snippets",
+    "quote": "dressed in  a  red  suit,  and  the  red  suit",
+    "url": "https://openlibrary.org/search/inside.json?q=%22stuck.%20Talk%20about%20the%22%20Santa",
+    "archive": "https://archive.org/details/copingwithchrist0000core",
+    "file": "sources/coca-cola-santa/ol_inside_corey_stuck.json",
+    "sha256": "c34b8a7e36dc011e7679c9d6c921b17854e0f7d6ae2f13d6790e47caac90f567"
+  },
+  "original": [
+    {
+      "what": "Sarah Addington, The Boy Who Lived in Pudding Lane, Atlantic Monthly Press, Boston, copyright 1922; archive.org scan, full text",
+      "date": "1922",
+      "who": "Sarah Addington",
+      "quote": "always  dressed  in  a bright  red  suit.",
+      "url": "https://archive.org/download/boywholivedinpud00addi/boywholivedinpud00addi_djvu.txt",
+      "archive": "https://archive.org/details/boywholivedinpud00addi",
+      "file": "sources/coca-cola-santa/boywholivedinpud00addi_djvu.txt",
+      "sha256": "3df0243b8096deabc25e58507e9b7952def277116be6cdcac5715f26ec677bc0"
+    },
+    {
+      "what": "Same book, Santa's family prepares him for his journey north",
+      "date": "1922",
+      "who": "Sarah Addington",
+      "quote": "Claus  made  twelve  red  suits,  each  one",
+      "url": "https://archive.org/download/boywholivedinpud00addi/boywholivedinpud00addi_djvu.txt",
+      "archive": "https://archive.org/details/boywholivedinpud00addi",
+      "file": "sources/coca-cola-santa/boywholivedinpud00addi_djvu.txt",
+      "sha256": "3df0243b8096deabc25e58507e9b7952def277116be6cdcac5715f26ec677bc0"
+    },
+    {
+      "what": "The Coca-Cola Company, Haddon Sundblom and the Coca-Cola Santas (company history page)",
+      "date": "",
+      "who": "The Coca-Cola Company",
+      "quote": "Sundblom’s Santa debuted in 1931 in Coke ads in The Saturday Evening Post",
+      "url": "https://www.coca-colacompany.com/about-us/history/haddon-sundblom-and-the-coca-cola-santas",
+      "archive": "http://web.archive.org/web/20261111162147/https://www.coca-colacompany.com/about-us/history/haddon-sundblom-and-the-coca-cola-santas",
+      "file": "sources/coca-cola-santa/coke_sundblom.html",
+      "sha256": "9382de0e20e0d9e9a510cab8731085540581d522b7cc6322e5176e642464016f"
+    },
+    {
+      "what": "Same Coca-Cola page, on the red coat",
+      "date": "",
+      "who": "The Coca-Cola Company",
+      "quote": "Santa appeared in a red coat before Sundblom painted him.",
+      "url": "https://www.coca-colacompany.com/about-us/history/haddon-sundblom-and-the-coca-cola-santas",
+      "archive": "http://web.archive.org/web/20261111162147/https://www.coca-colacompany.com/about-us/history/haddon-sundblom-and-the-coca-cola-santas",
+      "file": "sources/coca-cola-santa/coke_sundblom.html",
+      "sha256": "9382de0e20e0d9e9a510cab8731085540581d522b7cc6322e5176e642464016f"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "Half of the lesson has a documented case: Rudolph the Red-Nosed Reindeer was written in 1939 by an advertising writer at Montgomery Ward as a Christmas promotion, given to customers as a booklet, and later became a song and many products. I found no source that shows people later took such a tradition to be old, and no study of the question.",
+    "source": {
+      "what": "Kenneth C. Cramer, Rudolph at Fifty, Dartmouth College Library Bulletin, November 1989 (Wayback copy)",
+      "quote": "as a Christmas promotion for the company",
+      "url": "https://www.dartmouth.edu/~library/Library_Bulletin/Nov1989/LB-N89-KCramer.html",
+      "archive": "http://web.archive.org/web/20200807154600/https://www.dartmouth.edu/~library/Library_Bulletin/Nov1989/LB-N89-KCramer.html",
+      "file": "sources/coca-cola-santa/dartmouth_rudolph_1989.html",
+      "sha256": "ad754c5ceb8a31bad7132b61179ad5a528b11cf18fe66a8847ef8d6d016c6905"
+    }
+  },
+  "search_steps": [
+    "English Wikipedia and the sources it cites: not checked separately; the debunkers listed below and Coca-Cola's own page were used instead.",
+    "Google Books API: refused with HTTP 429 earlier in this batch and again on one retry for this story; not tried further.",
+    "Open Library full-text search for Coca-Cola, Santa, \"red suit\" and invented: 2,094 hits. The earliest that tells the story is Peter Corey, Coping with Christmas (Hippo, 1999), page 166. The book is lending-only (full text refused with HTTP 401), so its words come only from search snippets, saved as JSON.",
+    "Joined snippets from four phrase searches give Corey's text as: \"Coke was originally packaged in green. When they decided to make it red, they re-launched it using Santa dressed in a red suit, and the red suit stuck. Talk about the power of ...\". Other hits: Arda, The truth about Christmas (2003), and a 2006 book saying Coca-Cola \"actually invented Santa Claus\". A 1976 book, The Santa Claus Book (E. Willis Jones), has a chapter called \"Birth of the Red Suit\" in its contents, so it does not credit Coca-Cola with the suit; not read in full.",
+    "Open Library searches for \"Santa Claus in his red\" and \"Coca-Cola colors\": a 1985 trivia book credits Thomas Nast with the red-suited Santa; a 2000 trivia book links the red trimmings to Coca-Cola colours. Snippets only; not quoted.",
+    "Tried free newspaper archives for a pre-1931 text: Chronicling America and loc.gov (HTTP 403), Papers Past (bot block), HathiTrust full-text search (HTTP 403), Utah Digital Newspapers (HTTP 418), Penn State newspaper archive (connection reset). Project Gutenberg returned HTTP 503. None retried.",
+    "A web search led to an archive.org scan of Sarah Addington, The Boy Who Lived in Pudding Lane (copyright 1922). Its full text, saved, has Santa \"always dressed in a bright red suit\" and Mrs. Claus making him twelve red suits.",
+    "Coca-Cola Company history page (saved): Sundblom's Santa debuted in 1931 in The Saturday Evening Post; the page also says Santa appeared in a red coat before Sundblom painted him, and that a 1930 Coca-Cola ad by Fred Mizen showed a department-store Santa at the soda fountain of the Famous Barr department store in St. Louis. Coca-Cola Canada FAQ page saved but its text did not load in the download.",
+    "Leads not used as evidence: Snopes, The Ferret, VERIFY and other debunkers point to Puck covers, an 1868 Sugar Plums advertisement and White Rock advertisements of 1915 and 1923; these are pictures and I did not find their text.",
+    "Searched for a correction by Corey: none found.",
+    "Open Library edition records for Corey's book: one edition only, Scholastic (Hippo), 15 October 1999.",
+    "For the lesson: searched for a documented case of a tradition created by advertising. The Dartmouth College Library Bulletin of November 1989 (Wayback copy of 2020, saved) records that Robert L. May created Rudolph in 1939 as a Montgomery Ward Christmas promotion. A first download of that page from the live site gave only a 'content has moved' page and was deleted."
+  ],
+  "confidence_note": "The earliest telling found comes only from Open Library search snippets of a 1999 humorous children's book, and much earlier tellings probably exist in newspapers I could not search. The 1922 book shows that a red suit for Santa was in print before 1931, but it is one children's book, not proof that red was the usual colour; I could not get text from the many pre-1931 pictures of a red-suited Santa that debunkers cite. The lesson verdict rests on one documented case, Rudolph, not on a study; it supports only the claim that advertising can create a tradition. Open Library lists only one edition of Corey's book (1999); I did not confirm that it was first published that year."
+}

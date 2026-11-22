@@ -1,0 +1,66 @@
+{
+  "id": "space-pen",
+  "as_told": "When NASA found that ballpoint pens would not work in zero gravity, it spent years and millions (in some versions $12 billion) of taxpayers' money developing a pen that writes in space. The Soviet cosmonauts faced the same problem and simply used a pencil.",
+  "lesson": "Expensive high-technology solutions are often waste when a cheap, simple tool would do the job.",
+  "what_happened": "Early NASA astronauts did use pencils. In 1965 NASA bought 34 mechanical pencils at $128.89 each, which caused public criticism. Paul C. Fisher of the Fisher Pen Company developed a pressurized ballpoint pen with no NASA funding, reportedly investing about $1 million of the company's own money, and filed a patent on it in his own name on 19 May 1965. NASA tested the pen and in 1967 chose it for Apollo, buying about 400 pens at about $6 each. The Soviet Union, whose cosmonauts had used grease pencils, bought 100 Fisher pens and 1,000 cartridges in February 1969.",
+  "false_part": "NASA did not spend millions developing a space pen; a private company developed it with its own money and sold it to NASA for a few dollars a pen, and the Soviets bought the same pen.",
+  "class": "invented",
+  "also": "",
+  "earliest_telling": {
+    "date": "2002",
+    "who": "LaughLab project (book; the archive.org record gives no author)",
+    "where": "LaughLab: The Scientific Quest for the World's Funniest Joke (London: Arrow Books, 2002), page 198 of the scan by the search index, told as a joke",
+    "quote": "",
+    "url": "https://openlibrary.org/search/inside.json?q=%22spent%20a%20decade%20and%20%2412%20billion%22&fields=*&limit=100",
+    "archive": "https://archive.org/details/laughlabscientif0000unse",
+    "file": "sources/space-pen/ol-search-spent-a-decade-12-billion.json",
+    "sha256": "310c18ff3aae32bfe065a3f53ddb0f298e73a583cfd49dfe17cde1cc6574533e"
+  },
+  "original": [
+    {
+      "what": "NASA History Office page on the Fisher Space Pen (official record)",
+      "date": "2004-08-03",
+      "who": "Steve Garber, NASA History Web Curator",
+      "quote": "For Project Gemini, for example, NASA ordered mechanical pencils in 1965 from Tycam Engineering Manufacturing, Inc., in Houston. The fixed price contract purchased 34 units at a total cost of $4,382.50, or $128.89 per unit. ... Fisher developed his space pen with no NASA funding. The company reportedly invested about $1 million of its own funds in the effort then patented its product and cornered the market as a result. ... Media reports indicate that approximately 400 pens were purchased from Fisher at $6 per unit for Project Apollo. The Soviet Union also purchased 100 of the Fisher pens, and 1,000 ink cartridges, in February 1969, for use on its Soyuz space flights. Previously, its cosmonauts had been using grease pencils to write in orbit.",
+      "url": "https://history.nasa.gov/spacepen.html",
+      "archive": "http://web.archive.org/web/20200220061203/https://history.nasa.gov/spacepen.html",
+      "file": "sources/space-pen/nasa-history-spacepen.html",
+      "sha256": "b2293c60f6f6f645ada98203940c040b64b261c1e82e4a08b8ff054e47de83dd"
+    },
+    {
+      "what": "US patent 3,285,228, Anti-gravity pen, filed 19 May 1965 by Paul C. Fisher as an individual (Google Patents record)",
+      "date": "1966-11-15",
+      "who": "Paul C. Fisher",
+      "quote": "Inventor Paul C Fisher ... Original Assignee Individual",
+      "url": "https://patents.google.com/patent/US3285228A/en",
+      "archive": "http://web.archive.org/web/20251126060900/https://patents.google.com/patent/US3285228A/en",
+      "file": "sources/space-pen/us3285228-patent.html",
+      "sha256": "f47742ce5cc2c84b2eda77908edf8bd552879a0b07bd543757b2501ffd29ed78"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "No study was found that tests how often costly high-technology solutions are waste compared with simple ones. In this case the simple tool was not clearly better: NASA's own pencils had cost $128.89 each and drew criticism, and the Soviets later bought the pen too.",
+    "source": {
+      "what": "",
+      "quote": "",
+      "url": "",
+      "archive": "",
+      "file": "",
+      "sha256": ""
+    }
+  },
+  "search_steps": [
+    "Open Library search inside, \"space pen\" pencil russians (184 hits): no telling of the story before 2002 among the first 100 hits sorted by year.",
+    "Open Library search inside, \"russians used a pencil\" (50 hits), \"russians used pencils\" (5), \"soviets used a pencil\" (1), \"cosmonauts used pencils\" (1): earliest is LaughLab (2002), then joke collections from 2002-2005. Every early telling has the same joke wording.",
+    "Open Library search inside, \"ballpoint pens would not work in zero gravity\" (17 hits) and \"spent a decade and $12 billion\" (11 hits): earliest again LaughLab (2002, search-index page 198). Saved the search responses.",
+    "LaughLab is a lending-only scan on archive.org (full text returns 401), so only the search snippets exist. The snippets carry search-highlight marks, so they are not quoted. The snippet reads that NASA scientists spent a decade and $12 billion to develop a pen that writes in zero gravity, and that the Russians used a pencil.",
+    "Tried the LaughLab website (laughlab.co.uk) in the Wayback Machine: home pages from 2001-2003 exist, but the CDX listing of sub-pages failed (archive.org temporarily offline), so the joke page was not found.",
+    "Wikipedia (Space Pen), fetched as raw wikitext and read only as a lead: it calls the story an urban legend and cites physics.org, Snopes ('The Write Stuff', dated 22 August 2000, so the story was circulating by then), spacepen.com, Scientific American (Curtin, 2006) and Fisher's patent. I did not fetch Scientific American or Snopes.",
+    "Saved the NASA History Office page from the Wayback Machine (the live URL now redirects to the NASA history home page). Saved the Google Patents record of US 3,285,228.",
+    "I did not search for records made at the time of the 1965 pencil purchase or the 1967 pen purchase; the NASA page itself says 'media reports indicate' for the 400 pens at $6.",
+    "Google Books API returned a daily quota error and HathiTrust returned a Cloudflare block page. Papers Past returned a script block page (Incapsula); the Trove API needs a key (HTTP 401); Google News Archive has no text search. None of these was searched."
+  ],
+  "confidence_note": "The earliest telling found is a joke in a 2002 book; Snopes dated a page on it 22 August 2000, so email versions are older, but none was found in print. The 2002 book is lending-only and is not quoted. The pencil half is partly right: early astronauts and cosmonauts did use pencils (the cosmonauts used grease pencils until 1969). The figures of about $1 million (Fisher's own spending) and 400 pens at $6 come from the NASA page, which cites media reports."
+}

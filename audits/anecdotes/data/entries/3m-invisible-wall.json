@@ -1,0 +1,94 @@
+{
+  "id": "3m-invisible-wall",
+  "as_told": "At a 3M plant, a fast-moving sheet of plastic film built up so much static charge that it formed an invisible wall. Workers who tried to walk through the area under the film were stopped by it. The effect vanished when the static was removed.",
+  "lesson": "Static charge on fast-moving plastic film can build a force field strong enough to stop a person.",
+  "what_happened": "David E. Swenson of 3M's Electrical Specialties Division told this story at the 17th EOS/ESD Symposium on 14 September 1995 as a case study from a polypropylene film tape plant in the south-east United States, visited one August 'long, long ago'. In his slides he says that, early in the morning, his meter read off scale 20 feet from the web, and that half-way into the tent formed by the moving film a static 'wall' made it impossible to walk through. The next morning the plant manager also got half-way and could not continue. An induction static eliminator across the web cut the charge to below 50 kV and ended the problem. No measurement of the force on a person was made or reported; the account rests on Swenson's own memory.",
+  "false_part": "",
+  "class": "true",
+  "also": "",
+  "earliest_telling": {
+    "date": "1995-09-14",
+    "who": "David E. Swenson, 3M Company",
+    "where": "17th Annual EOS/ESD Symposium, Phoenix, Session 7, paper 7.7 'Case study - large plastic web electrostatic problems, results and cure' (program abstract, archived 1996)",
+    "quote": "Tremendous static charge generation on a plastic web causes unique",
+    "url": "http://www.att.com/conferences/eosesd/s7.htm",
+    "archive": "http://web.archive.org/web/19961226041803/http://www.att.com/conferences/eosesd/s7.htm",
+    "file": "sources/3m-invisible-wall/att-eosesd-s7-1996.html",
+    "sha256": "1ef37464f62436d5ab6ef50365219ce30056c2b1d38bb18789b73288565b0ab3"
+  },
+  "original": [
+    {
+      "what": "Swenson's slide text for the 1995 symposium talk, 'Static Charge Worthy of Star Trek', as posted by William Beaty",
+      "date": "1995",
+      "who": "David E. Swenson, 3M Electrical Specialties Division, Austin, TX",
+      "quote": "When exactly half-way into area, static charge created a",
+      "url": "http://amasci.com/weird/unusual/swenson1.html",
+      "archive": "http://web.archive.org/web/20260314065653/http://amasci.com/weird/unusual/swenson1.html",
+      "file": "sources/3m-invisible-wall/swenson1.html",
+      "sha256": "001387cacb6fa28cc936eef5c4b54813cf2176a353006e48dcc8eea283b7e7c7"
+    },
+    {
+      "what": "Same slides: the second test with the plant manager",
+      "date": "1995",
+      "who": "David E. Swenson",
+      "quote": "He made it half-way and could not continue",
+      "url": "http://amasci.com/weird/unusual/swenson1.html",
+      "archive": "http://web.archive.org/web/20260314065653/http://amasci.com/weird/unusual/swenson1.html",
+      "file": "sources/3m-invisible-wall/swenson1.html",
+      "sha256": "001387cacb6fa28cc936eef5c4b54813cf2176a353006e48dcc8eea283b7e7c7"
+    },
+    {
+      "what": "Same slides: the plant is described only as a polypropylene film tape plant, not as a 3M plant",
+      "date": "1995",
+      "who": "David E. Swenson",
+      "quote": "Polypropylene film tape manufacturing plant",
+      "url": "http://amasci.com/weird/unusual/swenson1.html",
+      "archive": "http://web.archive.org/web/20260314065653/http://amasci.com/weird/unusual/swenson1.html",
+      "file": "sources/3m-invisible-wall/swenson1.html",
+      "sha256": "001387cacb6fa28cc936eef5c4b54813cf2176a353006e48dcc8eea283b7e7c7"
+    },
+    {
+      "what": "Retelling, not evidence: first written retelling, second-hand, on the Physics-L mailing list (it says workers were stopped and that the force was a repulsion)",
+      "date": "1996-08-06",
+      "who": "William Beaty",
+      "quote": "When workers tried to walk between the rolls, they",
+      "url": "https://www.phys-l.org/archives/1996/08_1996/msg00036.html",
+      "archive": "https://web.archive.org/web/20261122183046/https://www.phys-l.org/archives/1996/08_1996/msg00036.html",
+      "file": "sources/3m-invisible-wall/physl36.html",
+      "sha256": "cc99156673285d5256516bc3259a55bc2771f829f917b95c40f725b9c596b259"
+    }
+  ],
+  "teller_correction": {
+    "what": "Swenson's own email reply to Beaty's second Physics-L post, quoted in full by Beaty. It corrects the film size and type but does not withdraw the wall claim.",
+    "date": "1996-08-09",
+    "who": "David E. Swenson, 3M Company",
+    "quote": "also the film was polypropylene (PP).",
+    "url": "https://www.phys-l.org/archives/1996/08_1996/msg00058.html",
+    "archive": "https://web.archive.org/web/20261122183238/https://www.phys-l.org/archives/1996/08_1996/msg00058.html",
+    "file": "sources/3m-invisible-wall/physl58.html",
+    "sha256": "db969192844bf9fe848a8bb8fc227d1bec3ebe0a6e756c99c38b1dd2f3567030"
+  },
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "The only evidence is one witness's account, given about 15 years after the visit, with no force measured and no replication on record. The electric field in air is limited by breakdown at about 3 MV/m; my own estimate from that limit (pressure about ε0E²/2, roughly 40 N per square metre) is far less than the force of a person leaning forward, so a field acting directly on the body does not explain a 'wall'. That estimate is mine, not the source's.",
+    "source": {
+      "what": "Jeremy Smallwood, 'Evaluating the electrostatic discharge risk between small radius objects and charged planar insulating materials', Journal of Electrostatics (accepted manuscript, 2022)",
+      "quote": "produce a field strength exceeding about 3 MVm-1, the breakdown field strength of air.",
+      "url": "https://eprints.soton.ac.uk/454802/1/JELECTRO_Smallwood_Accepted_2022.pdf",
+      "archive": "http://web.archive.org/web/20240511171015/https://eprints.soton.ac.uk/454802/1/JELECTRO_Smallwood_Accepted_2022.pdf",
+      "file": "sources/3m-invisible-wall/smallwood2022.pdf.txt",
+      "sha256": "2f93c0605b9b9e38617b1438c32e9af67c8b2b145bb67f591cf59034ca0507ea"
+    }
+  },
+  "search_steps": [
+    "Open Library search-inside for \"invisible wall\" Swenson static: 457 hits, none about the plant.",
+    "Web search found William Beaty's page amasci.com/weird/unusual/e-wall.html (lead). It links the 1995 symposium program (Wayback copy of att.com/conferences/eosesd/s7.htm, 26 Dec 1996), Swenson's slide text (swenson1.html) and an ESD Journal piece. Saved all three.",
+    "The symposium program lists paper 7.7 by D. Swenson, 3M Company, on 14 September 1995. The full paper is not online; a web search for its title found no copy, so the slide text posted by Beaty is the fullest version of Swenson's words.",
+    "Found Beaty's Physics-L posts of 6, 8 and 9 August 1996 (phys-l.org archive). The 8 August post reports a phone call with Swenson; the 9 August post quotes Swenson's email correction. Saved all three and requested Wayback copies.",
+    "ESD Journal 'The Final Frontier' (Wayback, 2005 copy; the live domain is parked) is labelled 'Paraphrased and dramatized by Cynthia Waters'. It adds 'August of 1980', birds caught in the film and the feeling of hitting a Star Trek force field. It is a retelling, not Swenson's text, so I do not quote it as evidence.",
+    "Beaty's page, not Swenson's slides, gives 'South Carolina, August 1980' and calls the site a '3M adhesive tape plant'. Swenson's slides say only 'S.E. US' and 'long, long ago'.",
+    "Google Groups search of sci.physics for invisible wall static: no relevant thread.",
+    "Searched for a replication or physical analysis; found only forum discussion and a 2025 video. For the physics limit, eprints.soton.ac.uk served a bot check, so I saved Smallwood's 2022 paper from its Wayback copy."
+  ],
+  "confidence_note": "Class 'true' rests on the rule that a person's own published words are the record: Swenson describes being stopped himself. Nobody else's first-hand account is on record, nothing was measured, and the physics is unexplained, so the 'wall' may describe a strong sensation (hair standing, sparks) rather than a real mechanical barrier. It is not established that the plant belonged to 3M; Swenson was a 3M static-control specialist, and the slides name no owner. The year 1980 comes only from retellings. The slide text is Beaty's transcription, not a scan."
+}

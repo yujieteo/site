@@ -1,0 +1,85 @@
+{
+  "id": "gm-streetcars",
+  "as_told": "General Motors, with Firestone, Standard Oil of California and others, secretly bought the streetcar systems of Los Angeles through a front company, National City Lines. They tore up the tracks and replaced the cars with GM buses, so that people would have to drive. A court convicted them of the conspiracy.",
+  "lesson": "Los Angeles lost its streetcars, and became a car city, because General Motors and its partners destroyed them on purpose.",
+  "what_happened": "In 1947 nine companies, including National City Lines, General Motors, Firestone and Standard Oil of California, were indicted on two counts. In 1949 a jury acquitted them of conspiring to restrain trade by getting control of transit companies, and convicted them of conspiring to monopolize the sale of buses, fuel, tires and tubes to the transit companies that National City Lines controlled; the Seventh Circuit upheld the conviction in 1951. The court record says National City Lines planned in 1938 to buy systems in cities where streetcars were no longer practicable and replace them with buses. In Los Angeles, the National City Lines group bought the Los Angeles Railway (the Yellow Cars) in about 1944-45 and replaced many but not all of its lines with buses; it never owned the Pacific Electric Red Car system, which Southern Pacific owned until 1953. Both Los Angeles companies had run buses since the 1910s and 1920s, and the public Los Angeles Metropolitan Transit Authority closed the last lines.",
+  "false_part": "The court convicted the companies of monopolizing the sale of buses and supplies, not of a plan to destroy streetcars, and the group never owned the Red Car system that the story is usually about.",
+  "class": "changed",
+  "also": "",
+  "earliest_telling": {
+    "date": "1946",
+    "who": "Edwin Jenyss Quinby",
+    "where": "Untitled mimeographed pamphlet addressed to mayors, city managers and taxpayers (online transcription on History Is a Weapon)",
+    "quote": "This is an urgent warning to each and everyone of you, that there is a carefully, deliberately planned campaign to swindle you out of one of your most important and valuable public utilities, your Electric Railway System.",
+    "url": "https://www.historyisaweapon.com/defcon2/quinbyswarning/",
+    "archive": "http://web.archive.org/web/20260626004657/https://www.historyisaweapon.com/defcon2/quinbyswarning/",
+    "file": "sources/gm-streetcars/quinby1946_historyisaweapon.html",
+    "sha256": "fbe37fa3961c327f39ddd3f27591bdb0ef073d516eeabb883fe69ffa4da12b20"
+  },
+  "original": [
+    {
+      "what": "United States v. National City Lines, Inc., 186 F.2d 562 (7th Cir. 1951), the appeal court's opinion: the count on which the defendants were convicted",
+      "date": "1951-01-03",
+      "who": "United States Court of Appeals for the Seventh Circuit",
+      "quote": "that part consisting of the sale of busses, petroleum products, tires and tubes used by local transportation systems",
+      "url": "https://law.resource.org/pub/us/case/reporter/F2/186/186.F2d.562.9943-9953.html",
+      "archive": "http://web.archive.org/web/20250119103454/https://law.resource.org/pub/us/case/reporter/F2/186/186.F2d.562.9943-9953.html",
+      "file": "sources/gm-streetcars/186.F2d.562.html",
+      "sha256": "767f01564b93fbafdf163d9f48a7938b4cb161c2d58f1175003f6d3ace253b69"
+    },
+    {
+      "what": "Same opinion: the jury acquitted on the count of conspiring to get control of the transit systems",
+      "date": "1951-01-03",
+      "who": "United States Court of Appeals for the Seventh Circuit",
+      "quote": "no conspiracy to restrain trade by securing control of those transportation systems",
+      "url": "https://law.resource.org/pub/us/case/reporter/F2/186/186.F2d.562.9943-9953.html",
+      "archive": "http://web.archive.org/web/20250119103454/https://law.resource.org/pub/us/case/reporter/F2/186/186.F2d.562.9943-9953.html",
+      "file": "sources/gm-streetcars/186.F2d.562.html",
+      "sha256": "767f01564b93fbafdf163d9f48a7938b4cb161c2d58f1175003f6d3ace253b69"
+    },
+    {
+      "what": "Same opinion: the evidence the jury accepted about the plan's purpose",
+      "date": "1951-01-03",
+      "who": "United States Court of Appeals for the Seventh Circuit",
+      "quote": "In 1938, National conceived the idea of purchasing transportation systems in cities where street cars were no longer practicable and supplanting the latter with passenger busses",
+      "url": "https://law.resource.org/pub/us/case/reporter/F2/186/186.F2d.562.9943-9953.html",
+      "archive": "http://web.archive.org/web/20250119103454/https://law.resource.org/pub/us/case/reporter/F2/186/186.F2d.562.9943-9953.html",
+      "file": "sources/gm-streetcars/186.F2d.562.html",
+      "sha256": "767f01564b93fbafdf163d9f48a7938b4cb161c2d58f1175003f6d3ace253b69"
+    },
+    {
+      "what": "Quinby's 1946 pamphlet on the Los Angeles purchase (transcription)",
+      "date": "1946",
+      "who": "Edwin Jenyss Quinby",
+      "quote": "American City Lines then bought the Los Angeles Railway from the estate of Henry E. Huntington",
+      "url": "https://www.historyisaweapon.com/defcon2/quinbyswarning/",
+      "archive": "http://web.archive.org/web/20260626004657/https://www.historyisaweapon.com/defcon2/quinbyswarning/",
+      "file": "sources/gm-streetcars/quinby1946_historyisaweapon.html",
+      "sha256": "fbe37fa3961c327f39ddd3f27591bdb0ef073d516eeabb883fe69ffa4da12b20"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "does not hold",
+    "why": "A study of the Los Angeles systems finds that both companies were already large bus operators before GM was involved, that the GM-linked group never owned the Pacific Electric Red Cars, and that a public authority removed the last tracks; it argues buses would have replaced streetcars anyway. A 1998 Portland State review (Bianco) also explains the decline mainly by public-policy failure.",
+    "source": {
+      "what": "Cliff Slater, General Motors and the Demise of Streetcars, Transportation Quarterly 51(3):45-66 (1997)",
+      "quote": "This article makes the case that, GM or not, under a less onerous regulatory environment, buses would have replaced streetcars even earlier than they actually did.",
+      "url": "https://utahrails.net/pdf/slater_GM-demise-of-streetcars.pdf",
+      "archive": "http://web.archive.org/web/20260416054634/https://utahrails.net/pdf/slater_GM-demise-of-streetcars.pdf",
+      "file": "sources/gm-streetcars/slater1997_gm_demise_streetcars.pdf",
+      "sha256": "deb5b6b2465450a03f6d2870ba7ac80498c545b29bf763c97c061e0df91c375d"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search for \"national city lines\" streetcars \"general motors\": earliest hits are a 1958 Senate antitrust study and transit histories from 1968 on; a 1979 book already calls it a conspiracy.",
+    "English Wikipedia article on the General Motors streetcar conspiracy, used as a lead: it names Edwin J. Quinby's 1946 pamphlet as the first public allegation, gives the 1949 verdict and the Los Angeles dates.",
+    "Found a transcription of Quinby's 1946 pamphlet on History Is a Weapon and saved it. The transcribers say they changed some punctuation, so the quote may differ slightly from the mimeographed original. I could not find a scan of the original.",
+    "Saved United States v. National City Lines, 186 F.2d 562 (7th Cir. 1951) from law.resource.org and read the counts, the verdicts and the facts the court accepted.",
+    "Grepped the opinion for \"Los Angeles\": it appears only in the list of counsel. The opinion does not discuss the Los Angeles systems.",
+    "Tried to save Bradford Snell's 1974 statement from the Los Angeles Metro library: the server did not answer. Started downloading the 1974 Senate hearing (Industrial Reorganization Act, Part 3) from govinfo; the file is 291 MB; I did not read it and deleted it.",
+    "Saved Cliff Slater's 1997 Transportation Quarterly article (Wayback copy of the utahrails.net PDF) and Martha Bianco's 1998 Portland State discussion paper (Wayback copy of the PDXScholar PDF). Both are studies of the decline; Slater gives the Los Angeles ownership history with sources.",
+    "No correction by Quinby or Snell was found."
+  ],
+  "confidence_note": "The exact date of the Los Angeles Railway purchase is given as 1944 by Slater and 1945 by Wikipedia. Slater's argument that buses were economically better is disputed by some writers; the ownership facts are not disputed."
+}

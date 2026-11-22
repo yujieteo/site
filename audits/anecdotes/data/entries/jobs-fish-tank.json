@@ -1,0 +1,56 @@
+{
+  "id": "jobs-fish-tank",
+  "as_told": "Apple engineers showed Steve Jobs the first iPod prototype and said it could not be made any smaller. Jobs walked to an aquarium and dropped the prototype in. When air bubbles rose, he said the bubbles showed there was still empty space inside, so they should make it smaller.",
+  "lesson": "Do not accept 'it cannot be done'; a leader who pushes for a harder goal gets a better result.",
+  "what_happened": "The earliest telling I found is an article in The Atlantic of 6 October 2011, published the day after Jobs died, under the byline D.B. Grady. The writer says a former Apple employee, not named, told him the story the year before, and he writes that he has no way of knowing if it is true. In November 2014 Cult of Mac reposted the story from a Quora answer by Amit Chaudhary, described as an ex-Apple employee; the text it quotes is word for word the 2011 Atlantic text and does not say he was present. No account by Jobs or by an engineer who says he was present has been found.",
+  "false_part": "",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "2011-10-06",
+    "who": "D.B. Grady (byline; John Gruber names the writer as David W. Brown)",
+    "where": "The Atlantic, 'In Praise of Bad Steve'",
+    "quote": "Last year a former Apple employee related his favorite Steve Jobs story to me. I have no way of knowing if it is true, so take it for what it's worth.",
+    "url": "http://www.theatlantic.com/technology/archive/2011/10/in-praise-of-bad-steve/246242/",
+    "archive": "http://web.archive.org/web/20111007054916/http://www.theatlantic.com/technology/archive/2011/10/in-praise-of-bad-steve/246242/",
+    "file": "sources/jobs-fish-tank/atlantic-2011.html",
+    "sha256": "57047740a4b16026c08c4cf2c56aa9f9de061461d23bca765f6f3b279ba9ba13"
+  },
+  "original": [
+    {
+      "what": "Cult of Mac repost of the Quora answer that later retellings cite (the Quora page itself could not be fetched); the quoted text is identical to The Atlantic of 2011",
+      "date": "2014-11-18",
+      "who": "John Brownlee, Cult of Mac, quoting a Quora answer by Amit Chaudhary",
+      "quote": "Originally posted on Quora by ex-Apple employee Amit Chaudhary",
+      "url": "https://www.cultofmac.com/303469/steve-jobs-drowned-first-ipod-prototype/",
+      "archive": "http://web.archive.org/web/20160208060908/http://www.cultofmac.com/303469/steve-jobs-drowned-first-ipod-prototype/",
+      "file": "sources/jobs-fish-tank/cultofmac-2015.html",
+      "sha256": "aa367dd9306a97c98dad1ac1d413b777b7c4f3acd463f5404b7f6b55286db43a"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "holds",
+    "why": "A large body of goal-setting research finds that specific, difficult goals lead to higher effort and performance than easy or vague goals, up to the limits of ability. It does not show that a leader's theatrical gesture works, and the bubbles would not prove the space inside was wasted.",
+    "source": {
+      "what": "Locke and Latham, 'Building a Practically Useful Theory of Goal Setting and Task Motivation: A 35-Year Odyssey', American Psychologist 57(9), 2002",
+      "quote": "in that the highest or most difficult goals produced the",
+      "url": "https://goal-lab.psych.umn.edu/orgpsych/2020/readings/5.%20Motivation/Locke%20&%20Latham%20(2002).pdf",
+      "archive": "http://web.archive.org/web/20261009171914/https://goal-lab.psych.umn.edu/orgpsych/2020/readings/5.%20Motivation/Locke%20%26%20Latham%20(2002).pdf",
+      "file": "sources/jobs-fish-tank/locke-latham-2002.pdf",
+      "sha256": "4e706ba7747f55896758f2d1a6c37d6bc0834a9ce70b2de446cdd086c78b17aa"
+    }
+  },
+  "search_steps": [
+    "Web searches for the story: retellings in Business Insider (November 2014), Cult of Mac, Benzinga and many blogs; several say it comes from a Quora post by Amit Chaudhary. Business Insider India did not resolve and the live Cult of Mac page gave a Cloudflare block.",
+    "John Gruber, Daring Fireball, 1 May 2015 (saved, lead only): quotes the story from The Atlantic of 2011 and doubts it ('How common is it for these rooms at Apple to have aquariums in them?').",
+    "Saved The Atlantic article from the Wayback Machine snapshot of 7 October 2011; the live page refused the download (403). It is dated 6 October 2011.",
+    "Saved the Cult of Mac post of 18 November 2014 from the Wayback Machine copy nearest to 2015 (snapshot of 8 February 2016): it quotes Amit Chaudhary's Quora answer, whose wording is identical to The Atlantic of 2011. The Quora answer has no Wayback snapshot (lookup returned an upstream 403), so I could not read it.",
+    "Open Library full-text searches for 'those are air bubbles', 'air bubbles iPod aquarium Jobs' and 'make it smaller' 'air bubbles': no telling before 2011.",
+    "David Pogue's book Apple: The First 50 Years (2026), excerpt on Next Big Idea Club (saved, lead only): says no one he interviewed saw or heard of the event and that there were no fish tanks there. A debunker, so not used as evidence.",
+    "Searched for any account by Tony Fadell or another named iPod engineer of the event: none found.",
+    "Searched for a correction by the Atlantic writer: none found.",
+    "Did not search newspaper archives (Chronicling America, Trove, Papers Past): they do not cover 2010-2014 US technology stories."
+  ],
+  "confidence_note": "The only early source is relayed ('a former Apple employee ... told me'), with the writer's own warning that it may not be true, so it is a lead and not evidence. Chaudhary's Quora answer (before November 2014) repeats the 2011 Atlantic text word for word, as far as the Cult of Mac copy shows, so it is not an independent first-hand account; I could not read the Quora page itself. Pogue's report that nobody remembers it and that there were no fish tanks points toward invention, but absence of witnesses is not positive proof, so the class is 'unsupported'."
+}

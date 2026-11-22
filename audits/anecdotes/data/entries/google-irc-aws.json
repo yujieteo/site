@@ -1,0 +1,74 @@
+{
+  "id": "google-irc-aws",
+  "as_told": "Google runs almost everything on its own infrastructure. But for outages it keeps a backup chat server, an IRC server, hosted on Amazon Web Services, so that its engineers can still talk when Google itself is down.",
+  "lesson": "Keep a backup communication channel for incidents that does not depend on your own infrastructure.",
+  "what_happened": "Google's own site reliability engineering texts say that it uses IRC in incident response and that teams need backup channels that do not depend on Google services; neither says where the backup servers run. The telling I found on Hacker News (27 October 2023) was hedged by its own author as possibly apocryphal. About six hours later another commenter, who said they had left Google about two years before, replied that such backup IRC servers exist but are not on AWS or any other major cloud provider. I found no record from Google about where the servers are hosted.",
+  "false_part": "",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "2023-10-27",
+    "who": "jedberg (Hacker News user)",
+    "where": "Hacker News comment 38040311, on 'Lessons Learned from Twenty Years of Site Reliability Engineering'",
+    "quote": "And I think Google has a backup IRC server on AWS, but that might just apocryphal.",
+    "url": "https://news.ycombinator.com/item?id=38040311",
+    "archive": "http://web.archive.org/web/20261122152732/https://news.ycombinator.com/item?id=38040311",
+    "file": "sources/google-irc-aws/hn-38040311.json",
+    "sha256": "d81b3b059b0a40da0b3296e51187192a737b6fc818a2c090678e7f727b5a0c1f"
+  },
+  "original": [
+    {
+      "what": "Google SRE book, chapter 'Managing Incidents': Google uses IRC in incident response",
+      "date": "",
+      "who": "Google (Site Reliability Engineering book, online edition at sre.google)",
+      "quote": "Google has found IRC to be a huge boon in incident response.",
+      "url": "https://sre.google/sre-book/managing-incidents/",
+      "archive": "http://web.archive.org/web/20261110220853/https://sre.google/sre-book/managing-incidents/",
+      "file": "sources/google-irc-aws/sre-book-managing-incidents.html.txt",
+      "sha256": "34008d2e77fbddff53e03ae3bc45060f372f0c4be713422d8e2e871fa87cad5a"
+    },
+    {
+      "what": "Reply to the telling by a commenter who says he worked at Google until about two years before (identity not verified)",
+      "date": "2023-10-27",
+      "who": "l9i (Hacker News user)",
+      "quote": "do exist but not on AWS or any other major cloud provider.",
+      "url": "https://news.ycombinator.com/item?id=38044662",
+      "archive": "http://web.archive.org/web/20261122152926/https://news.ycombinator.com/item?id=38044662",
+      "file": "sources/google-irc-aws/hn-38044662.json",
+      "sha256": "5211c0d9da40ddc4c2ee9cf2423a1b611433efa59ad4588d1ff0356ef8baf847"
+    },
+    {
+      "what": "Earlier Hacker News comment by a self-described Google employee: IRC is used during outages because it has few dependencies (identity not verified; says nothing about AWS)",
+      "date": "2019-06-07",
+      "who": "alpb (Hacker News user)",
+      "quote": "IRC is still actively used as a main communication channel internally at Google to coordinate during outages",
+      "url": "https://news.ycombinator.com/item?id=20122358",
+      "archive": "http://web.archive.org/web/20261122153119/https://news.ycombinator.com/item?id=20122358",
+      "file": "sources/google-irc-aws/hn-20122358.json",
+      "sha256": "1c9a4e5efedb19ff4ff42a01eab2fbc9c122eefd663e1a8e994a5ebd9585a5c3"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "holds",
+    "why": "Google's own account of twenty years of SRE describes a 2017 incident in which teams could not rely on Google Hangouts and Meet because users had been logged out, and draws this lesson. This is Google's own published lesson, not a controlled study.",
+    "source": {
+      "what": "Google SRE, 'Lessons Learned from Twenty Years of Site Reliability Engineering', lesson 6",
+      "quote": "Ensure that you have non-dependent backup communication channels, and that you have tested them.",
+      "url": "https://sre.google/resources/practices-and-processes/twenty-years-of-sre-lessons-learned/",
+      "archive": "http://web.archive.org/web/20260908065104/https://sre.google/resources/practices-and-processes/twenty-years-of-sre-lessons-learned/",
+      "file": "sources/google-irc-aws/sre-twenty-years.html.txt",
+      "sha256": "26277d5c3c698083f9f3ec02c36607117831952544c8b0e1c7bdee5636faebd7"
+    }
+  },
+  "search_steps": [
+    "Web search for Google backup IRC on AWS: no Google document and no news report found.",
+    "Hacker News full-text search (hn.algolia.com) for combinations of Google, IRC, AWS, EC2 and Amazon: the earliest telling found is jedberg's comment of 27 October 2023, with l9i's reply the same day. A 2020 comment (kuschku, 25440698) says network staff 'at Google and AWS use IRC', which is not the same claim.",
+    "Saved the Hacker News comments as JSON from the hn.algolia.com items API, because news.ycombinator.com returned 403 to my requests.",
+    "Google SRE book, 'Managing Incidents' chapter (saved): says Google uses IRC for incidents; says nothing about hosting.",
+    "Google SRE article 'Lessons Learned from Twenty Years of Site Reliability Engineering' (saved; the article the 2023 thread discussed): calls for backup channels that do not depend on Google; says nothing about AWS or IRC.",
+    "Open Library, Google Books and newspaper archives: not relevant for a 2020s internet claim; not searched.",
+    "Looked for a later reply by the teller accepting or rejecting the rebuttal: the saved reply (38044662) has no child comments."
+  ],
+  "confidence_note": "The only direct evidence on hosting is one pseudonymous former employee, so I did not class the story as invented or changed. The AWS detail could be true for some period or some team without any public record. The saved SRE book page carries no date, so I left the date empty. The Hacker News Wayback snapshots were made on the day of this research; I did not open them to check that they show the comments."
+}

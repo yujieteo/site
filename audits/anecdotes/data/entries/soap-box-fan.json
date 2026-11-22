@@ -1,0 +1,43 @@
+{
+  "id": "soap-box-fan",
+  "as_told": "A large Japanese cosmetics company got a complaint that a customer had bought an empty soap box. Its engineers built an expensive X-ray system, with two people watching monitors, to find empty boxes on the assembly line. A worker at a small company met the same problem by pointing a cheap electric fan at the line, which blew the empty boxes off.",
+  "lesson": "A simple, cheap solution often beats an expensive engineered one.",
+  "what_happened": "No company, place, date or person is named in any telling, and I found no record of such an event. The earliest telling I found is an unsourced forum post of 18 June 2004 that presents it as a 'case study on Japanese management'. Automatic removal of empty or underweight packages with a blast of air is standard equipment on packaging lines.",
+  "false_part": "No record shows that this event happened at any company.",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "2004-06-18",
+    "who": "Forum user 'suthra'",
+    "where": "NamePros forum, The Break Room, thread 'Japanese Case Study'",
+    "quote": "each soap box passed the fan, it simply blew the empty boxes out of the",
+    "url": "https://www.namepros.com/threads/japanese-case-study.34617/",
+    "archive": "https://web.archive.org/web/20261122144221/https://www.namepros.com/threads/japanese-case-study.34617/",
+    "file": "sources/soap-box-fan/namepros-japanese-case-study.html",
+    "sha256": "323a7340b03f29241749992bdb046e25847945d1b0c5a8fc0bd0dce6be412799"
+  },
+  "original": [],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "I found no study that compares cheap improvised fixes with engineered ones. The industry guide below shows that blowing rejected packages off the line with air is itself a standard part of engineered checkweighing systems, so the story's contrast between the two solutions is weaker than it seems.",
+    "source": {
+      "what": "Thermo Fisher Scientific, 'A Practical Guide to Checkweighing and Checkweighers' (industry handbook), section 'Rejecting Products', which lists 'Air Blast', 'Pusher' and 'Bopper' as the three typical ways to remove rejected items",
+      "quote": "Three typical ways to remove items from the conveyor after they are rejected",
+      "url": "https://assets.thermofisher.com/TFS-Assets/CAD/Handbooks/checkweighing-checkweighers-ebook.pdf",
+      "archive": "https://web.archive.org/web/20250426201743/http://assets.thermofisher.com/TFS-Assets/CAD/Handbooks/checkweighing-checkweighers-ebook.pdf",
+      "file": "sources/soap-box-fan/thermo-checkweighing-guide.pdf.txt",
+      "sha256": "d11a82a61c971831af7a7f6f1793ecd886d404e059699493ca4d5f530c0c0aa5"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search for \"empty soap\" fan \"x-ray\" and \"empty soapbox\" fan: no telling of the story.",
+    "Snopes, 'Blue collar innovation' (lead): treats the wider family of 'lowly worker's simple idea' business legends; it does not cover the soap box version.",
+    "Web search for the usual wording ('case of the empty soapbox', 'Japanese management'): blog copies from 2007 onward; the earliest dated copy is a NamePros forum post of 18 June 2004, which names no company or source. Saved it.",
+    "Web search results summarise forum copies of a toothpaste-factory version with a checkweigher and a desk fan; I did not save or read them, and none named a company or date in the summary.",
+    "Searched for a company record, press report or engineering case of an X-ray system replaced by a fan: found none.",
+    "Google Books API refused with 429 (daily quota); I did not retry. Usenet was not searchable to me.",
+    "For the lesson: a Mettler Toledo checkweighing guide returned 406; saved the Thermo Fisher checkweighing handbook instead."
+  ],
+  "confidence_note": "An earlier telling before 2004, for example in e-mail or Usenet, is likely but I could not search those. Because the story names no company, no record could confirm or rule it out."
+}

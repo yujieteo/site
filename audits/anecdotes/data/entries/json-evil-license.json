@@ -1,0 +1,77 @@
+{
+  "id": "json-evil-license",
+  "as_told": "Douglas Crockford's JSON licence is the MIT licence with one added line: \"The Software shall be used for Good, not Evil.\" IBM's lawyers could not promise that IBM's customers would never do evil, so they wrote to Crockford and asked for permission. Crockford wrote back and gave IBM, its customers, partners and minions permission to use it for evil.",
+  "lesson": "A joke or vague clause in a software licence causes real legal trouble for the people who want to use the software.",
+  "what_happened": "Crockford told the story himself in his talk \"The JSON Saga\". Yahoo's YUI Theater video was public by 12 August 2009, and its transcript is in a Wayback capture of 17 August 2009, and the slides were online by 8 September 2009. In the talk he says an IBM lawyer asked for a special licence because IBM could not say for sure what its customers would do, and that he wrote back: \"I give permission for IBM, its customers, partners, and minions, to use JSLint for evil.\" He says it happened \"literally two weeks ago\", so in mid-2009. The written grant names JSLint, Crockford's code-checking tool, which carries the same \"Good, not Evil\" line as the JSON licence.",
+  "false_part": "",
+  "class": "true",
+  "also": "",
+  "earliest_telling": {
+    "date": "2009-08-17",
+    "who": "Douglas Crockford (talk transcript published by Yahoo YUI Theater)",
+    "where": "Video: Douglas Crockford — The JSON Saga, YUI Theater, developer.yahoo.com (Wayback capture of 17 August 2009)",
+    "quote": "they were pretty sure they weren't going to use it for evil, but they couldn't say for sure about their customers. So could I give them a special license for that?",
+    "url": "http://developer.yahoo.com/yui/theater/video.php?v=crockford-json",
+    "archive": "https://web.archive.org/web/20090817031852/http://developer.yahoo.com:80/yui/theater/video.php?v=crockford-json",
+    "file": "sources/json-evil-license/yui_theater_crockford-json_20090817.html",
+    "sha256": "f808816f8970573b0d1418794bc39f221cf42ee3c24393ac459772e0457d5936"
+  },
+  "original": [
+    {
+      "what": "Crockford's own account of his reply to IBM, in Yahoo's transcript of his talk The JSON Saga",
+      "date": "2009-08-17",
+      "who": "Douglas Crockford",
+      "quote": "I give permission for IBM, its customers, partners, and minions, to use JSLint for evil.",
+      "url": "http://developer.yahoo.com/yui/theater/video.php?v=crockford-json",
+      "archive": "https://web.archive.org/web/20090817031852/http://developer.yahoo.com:80/yui/theater/video.php?v=crockford-json",
+      "file": "sources/json-evil-license/yui_theater_crockford-json_20090817.html",
+      "sha256": "f808816f8970573b0d1418794bc39f221cf42ee3c24393ac459772e0457d5936"
+    },
+    {
+      "what": "Crockford's slides for The JSON Saga, which show the grant and the IBM attorney's reply (upload by a third party, dated 8 September 2009)",
+      "date": "2009-09-08",
+      "who": "Douglas Crockford",
+      "quote": "I give permission to IBM, its customers, partners, and minions, to use JSLint for evil.",
+      "url": "https://www.slideshare.net/slideshow/jsonsaga/1966097",
+      "archive": "http://web.archive.org/web/20250819193457/https://www.slideshare.net/slideshow/jsonsaga/1966097",
+      "file": "sources/json-evil-license/slideshare_jsonsaga_1966097.html",
+      "sha256": "3aea655a208e8962f74210052e5fa3e61de8097b0d66f35a2fe386c9e55cb931"
+    },
+    {
+      "what": "The JSON licence text on json.org",
+      "date": "2002",
+      "who": "Douglas Crockford (JSON.org)",
+      "quote": "The Software shall be used for Good, not Evil.",
+      "url": "https://www.json.org/license.html",
+      "archive": "http://web.archive.org/web/20261115214341/https://www.json.org/license.html",
+      "file": "sources/json-evil-license/json_license.html",
+      "sha256": "8db93878b706bb9b2107fb997597c82ad722c0438c158b6a991262889ed0e12d"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "holds",
+    "why": "The Free Software Foundation, which keeps a public list of licences, classes the JSON licence as not free because of this one line and tells people to avoid software under it. Crockford's own account also shows company lawyers asking him for a separate licence.",
+    "source": {
+      "what": "Free Software Foundation, Various Licenses and Comments about Them, entry for the JSON License",
+      "quote": "Thus, the license is nonfree.",
+      "url": "https://www.gnu.org/licenses/license-list.html",
+      "archive": "http://web.archive.org/web/20261118021016/https://www.gnu.org/licenses/license-list.html",
+      "file": "sources/json-evil-license/gnu_license_list.html",
+      "sha256": "1dd52c486977d823618f0c05d612285c0cbd9c1d56ecdfd131f1f0ceb21f14b2"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search for \"minions to use JSLint for evil\": 0 hits.",
+    "Google Books API search for the same phrase: refused with HTTP 429; not retried.",
+    "Web search for the grant wording led to two GitHub gists with a transcript of the talk, a Slideshare copy of the slides and Mike Amundsen's unofficial transcript of the 2011 YouTube upload. All saved as leads.",
+    "A W3C mailing-list hit named Yahoo's YUI Theater page for the talk. The Wayback CDX index shows captures from 17 August 2009 on. The 17 August 2009 capture has Yahoo's own transcript with the IBM passage. Saved and quoted.",
+    "Slideshare copy uploaded 8 September 2009 (user nohmad) has the slides \"I give permission to IBM ... to use JSLint for evil\" and \"Thanks very much, Douglas! Staff Attorney, IP Law IBM Corporation\". Saved.",
+    "Crockford's own 2009 appearances page lists a Bayjax talk at Yahoo, Sunnyvale, on 27 July 2009; Microsoft Research lists a recording of The JSON Saga dated 31 July 2009. Saved. The exact recording date of the YUI Theater video is not stated on Yahoo's page.",
+    "Hacker News comment search (Algolia) for \"JSLint for evil\": earliest comment is 14 August 2009. A Hacker News post of 12 August 2009 (saved) already linked the Yahoo video, so the video was public by then. Nothing earlier found.",
+    "English Wikipedia JSLint article (lead only) dates the IBM grant to 2011; that date appears to come from the 2011 YouTube upload and conflicts with the 2009 Yahoo transcript.",
+    "Downloaded the JSON licence from json.org and the FSF licence list for the lesson.",
+    "Searched for a correction by Crockford: none found."
+  ],
+  "confidence_note": "The story rests on Crockford's own account; I did not find the IBM letter or a statement from IBM. The grant he quotes names JSLint, not JSON itself, though both carry the same added line. Some retellings date the event to 2011, but Yahoo's transcript was online by 17 August 2009 and Crockford said it had happened two weeks before the talk. The talk was probably given in late July 2009, but the exact date is not on Yahoo's page."
+}

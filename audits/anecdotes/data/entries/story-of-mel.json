@@ -1,0 +1,85 @@
+{
+  "id": "story-of-mel",
+  "as_told": "Mel was a real programmer at Royal McBee who wrote machine code for drum-memory computers, the LGP-30 and the RPC-4000, placing each instruction on the drum so it arrived just in time. He wrote a blackjack program, and when sales asked for a switch that would let customers win, he got the test backwards so the program cheated instead. A colleague who later tried to fix it found a loop with no exit test: Mel let an address overflow into the operation code so the instruction became a jump.",
+  "lesson": "Hand-optimised code that exploits the quirks of the machine can be brilliant, but other people cannot read or change it.",
+  "what_happened": "Ed Nather posted the story to the Usenet group net.followup on 21 May 1983, as his own memory of a colleague at Royal McBee. Records from the 1950s confirm the main facts about the person: a Librascope newsletter of August 1956 names Mel Kaye as a Royal-McBee applications engineer teaching LGP-30 programming, the 1959 ACT I compiler manual credits Mel Kaye of Royal McBee with doing the bulk of the programming, and an RPC-4000 program write-up, 'Blackjack Game', is signed 'By Mel Kaye of Librascope Inc.'. That write-up documents sense switches, including one (SENSE SWITCH 32) that gives the player a better than normal chance of an ace. No record shows the overflow loop or the reversed test; those rest only on Nather's memory, written more than 20 years later.",
+  "false_part": "",
+  "class": "true",
+  "also": "",
+  "earliest_telling": {
+    "date": "1983-05-21",
+    "who": "Ed Nather (utastro!nather)",
+    "where": "Usenet, net.followup, 're: Real Programmers ...' (Message-ID <355@utastro.UUCP>), copy with headers kept by Rob Stampfli",
+    "quote": "I'll call him Mel, because that was his name.",
+    "url": "https://cboh.org/mel.txt",
+    "archive": "https://web.archive.org/web/20180212083430/https://cboh.org/mel.txt",
+    "file": "sources/story-of-mel/mel-usenet-1983.txt",
+    "sha256": "30dcf1cea86c5532fb41aef3902a359fbe2228433f40cf64cb4d56419dc7b44f"
+  },
+  "original": [
+    {
+      "what": "The Librazette (Librascope company newsletter), August 1956, front-page article on the first LGP-30 customer training class; names Mel Kaye among the applications engineers who will train customers",
+      "date": "1956-08",
+      "who": "Librascope Inc.",
+      "quote": "Mel Kaye, will probably handle",
+      "url": "https://www.librascopememories.net/1950_-_1959_files/560800%20Librazette.pdf",
+      "archive": "https://web.archive.org/web/20261122173138/https://www.librascopememories.net/1950_-_1959_files/560800%20Librazette.pdf",
+      "file": "sources/story-of-mel/librazette-1956-08.pdf",
+      "sha256": "fc64a9b9845b762159463c37942a3b28af04dea2e4a5dc7cbf34f66832d87c00"
+    },
+    {
+      "what": "LGP-30 ACT I Compiler manual, preface by Clay S. Boswell Jr., Royal McBee Corporation, 1959 (scanned; text made by OCR and checked against the page image)",
+      "date": "1959",
+      "who": "Clay S. Boswell Jr., Royal McBee Corporation",
+      "quote": "MEL KAYE OF ROYAL MCBEE WHO DID THE BULK OF",
+      "url": "http://www.bitsavers.org/pdf/royalPrecision/LGP-30/ACT1_Compiler_1959.pdf",
+      "archive": "http://web.archive.org/web/20240530162955/http://bitsavers.org/pdf/royalPrecision/LGP-30/ACT1_Compiler_1959.pdf",
+      "file": "sources/story-of-mel/act1-compiler-1959.pdf",
+      "sha256": "acfc1960b40224c2a43ef8e76d6df64520ff81935c65096d27cf1a1e849c80cd"
+    },
+    {
+      "what": "RPC-4000 Program W1-01.0, 'Blackjack Game' write-up, page 1 heading (scanned; text made by OCR and checked against the page image)",
+      "date": "undated",
+      "who": "Mel Kaye, Librascope Inc. (Royal McBee RPC-4000 program library)",
+      "quote": "(By Mel Kaye of Librascope Inc.)",
+      "url": "http://www.bitsavers.org/pdf/royalPrecision/RPC-4000/programWriteups/W1-01.0_Blackjack_Game.pdf",
+      "archive": "http://web.archive.org/web/20260311005103/https://bitsavers.org/pdf/royalPrecision/RPC-4000/programWriteups/W1-01.0_Blackjack_Game.pdf",
+      "file": "sources/story-of-mel/blackjack-manual.pdf",
+      "sha256": "8b0cb7789c1780ff171e55f9b2770c79a08b6839e412ede276001db9d41c90ca"
+    },
+    {
+      "what": "Same Blackjack Game write-up, page 2, playing convention 8: a documented sense switch that favours the player",
+      "date": "undated",
+      "who": "Mel Kaye, Librascope Inc.",
+      "quote": "If SENSE SWITCH 32 is depressed, there is a better than normal chance",
+      "url": "http://www.bitsavers.org/pdf/royalPrecision/RPC-4000/programWriteups/W1-01.0_Blackjack_Game.pdf",
+      "archive": "http://web.archive.org/web/20260311005103/https://bitsavers.org/pdf/royalPrecision/RPC-4000/programWriteups/W1-01.0_Blackjack_Game.pdf",
+      "file": "sources/story-of-mel/blackjack-manual.pdf",
+      "sha256": "8b0cb7789c1780ff171e55f9b2770c79a08b6839e412ede276001db9d41c90ca"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "I found no study that measures whether hand-optimised, self-modifying machine code is harder for others to maintain than code from an optimising assembler. Nather's story is the only evidence offered, and it is the anecdote itself.",
+    "source": {
+      "what": "",
+      "quote": "",
+      "url": "",
+      "archive": "",
+      "file": "",
+      "sha256": ""
+    }
+  },
+  "search_steps": [
+    "English Wikipedia 'The Story of Mel' (raw text) used as a lead for sources: Usenet post of 21 May 1983, Librazette August 1956, ACT-1 manual, Blackjack write-up, e-basteln.de analysis.",
+    "Saved Rob Stampfli's copy of the original Usenet post with headers (cboh.org/mel.txt) from the Wayback Machine snapshot of 2018-02-12, because cboh.org did not resolve.",
+    "Saved the Librazette of August 1956 (text layer present): names Mel Kaye among Royal-McBee applications engineers who will train LGP-30 customers.",
+    "Saved the ACT I Compiler manual (1959) and the RPC-4000 Blackjack Game write-up from bitsavers. Both are scans with no text layer, so I made the .txt files with RapidOCR OCR, not pdftotext, and checked the quoted lines by eye against the page images.",
+    "Read the e-basteln.de analysis 'Dissecting the Story of Mel' (saved, lead only): using the RPC-4000 Features Manual, it shows that the Index bit is the least significant bit of the instruction word, not between the address and the operation code as Nather wrote, so the clue Nather describes does not check out; it agrees the overflow into the operation code itself is possible. I did not read the RPC-4000 manual myself. Did not read Mel's Loop (melsloop.com).",
+    "Searched the web for a later correction by Ed Nather: none found.",
+    "Searched for a study on maintainability of hand-optimised machine code for the lesson: none found.",
+    "Did not search newspaper archives; a 1950s in-house programming story is not likely to be in them."
+  ],
+  "confidence_note": "The class 'true' rests on Nather being a first-hand witness and on 1950s records that confirm Mel Kaye, his job at Royal McBee, his LGP-30 work and his RPC-4000 blackjack program. No record confirms the reversed sense-switch test or the overflow loop. One technical detail is wrong: according to the e-basteln.de analysis of the RPC-4000 manual, the Index bit is not between the address and the operation code, so it could not have been the clue Nather describes; this detail is not needed for the lesson. The blackjack write-up documents a switch that helps the player, which neither confirms nor contradicts Nather's account. The OCR text of the two scanned manuals is mine, not pdftotext output. The Usenet copy is a third-party archive, not Google Groups."
+}

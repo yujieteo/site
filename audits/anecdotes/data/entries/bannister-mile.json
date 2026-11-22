@@ -1,0 +1,100 @@
+{
+  "id": "bannister-mile",
+  "as_told": "Before 1954, experts believed that no human could run a mile in under four minutes. On 6 May 1954 Roger Bannister ran it in 3:59.4. Once runners saw it could be done, the barrier fell: in the year after Bannister's run, 37 other runners also broke four minutes.",
+  "lesson": "Limits are often only in the mind; once one person shows that something is possible, many others quickly do it too.",
+  "what_happened": "Roger Bannister ran the first mile under four minutes, 3:59.4, at Oxford on 6 May 1954. The record before him was 4:01.4, set by Gunder Hägg of Sweden in 1945; Hägg and his rival Arne Andersson, the two fastest milers then, were banned for life for professionalism in November 1945. John Landy of Australia then set a world record of 3:58, about seven weeks before the two men met at the British Empire and Commonwealth Games in Vancouver in August 1954, where both ran under four minutes; Sports Illustrated called them 'history's first four-minute milers'. The next three, Laszlo Tabori, Chris Chataway and Brian Hewson, did it in one race at White City Stadium in London, reported by Sports Illustrated on 6 June 1955, about 13 months after Bannister. TIME reported in May 1964 that, ten years after Bannister, 44 men from 15 nations had run under four minutes.",
+  "false_part": "About 13 months after Bannister's run, only four other men had run under four minutes, not 37; after ten years the total was 44.",
+  "class": "changed",
+  "also": "unsupported",
+  "earliest_telling": {
+    "date": "1955-06-06",
+    "who": "Sports Illustrated (unsigned editorial page)",
+    "where": "Events & Discoveries ('Do we hear 3:50?'), Sports Illustrated, 6 June 1955",
+    "quote": "In so doing, it now seems quite obvious, they relieved the minds of other men.",
+    "url": "https://vault.si.com/vault/1955/06/06/events-discoveries",
+    "archive": "http://web.archive.org/web/20210513215850/https://vault.si.com/vault/1955/06/06/events-discoveries",
+    "file": "sources/bannister-mile/si-1955-06-06-events.html",
+    "sha256": "99fd1b5ab824ad877a0c049e474ac98e77019d140f7f3b839d15134048742bdc"
+  },
+  "original": [
+    {
+      "what": "Sports Illustrated report of the Vancouver 'Mile of the Century' (Paul O'Neil, 16 August 1954), saved from a Wayback capture: three months after Bannister's run, he and Landy are the only two men to have run under four minutes.",
+      "date": "1954-08-16",
+      "who": "Paul O'Neil, Sports Illustrated",
+      "quote": "The duel of history's first four-minute milers",
+      "url": "https://vault.si.com/vault/1954/08/16/duel-of-the-fourminute-men",
+      "archive": "http://web.archive.org/web/20251117160755/https://vault.si.com/vault/1954/08/16/duel-of-the-fourminute-men",
+      "file": "sources/bannister-mile/si-1954-08-16.html",
+      "sha256": "c0bf3468aa5377af5d20c7533d9f65b8876ba87749a79f7e9a5d152fd4a8f1d6"
+    },
+    {
+      "what": "The same report: the Vancouver race was the first in which two men ran under four minutes.",
+      "date": "1954-08-16",
+      "who": "Paul O'Neil, Sports Illustrated",
+      "quote": "Thus for the first time two men broke four minutes in the same race.",
+      "url": "https://vault.si.com/vault/1954/08/16/duel-of-the-fourminute-men",
+      "archive": "http://web.archive.org/web/20251117160755/https://vault.si.com/vault/1954/08/16/duel-of-the-fourminute-men",
+      "file": "sources/bannister-mile/si-1954-08-16.html",
+      "sha256": "c0bf3468aa5377af5d20c7533d9f65b8876ba87749a79f7e9a5d152fd4a8f1d6"
+    },
+    {
+      "what": "Sports Illustrated, 6 June 1955: three more men (Tabori, Chataway, Hewson) ran under four minutes in one race at London's White City Stadium, about 13 months after Bannister's run.",
+      "date": "1955-06-06",
+      "who": "Sports Illustrated",
+      "quote": "Only 13 months ago the four-minute barrier seemed all but impregnable",
+      "url": "https://vault.si.com/vault/1955/06/06/events-discoveries",
+      "archive": "http://web.archive.org/web/20210513215850/https://vault.si.com/vault/1955/06/06/events-discoveries",
+      "file": "sources/bannister-mile/si-1955-06-06-events.html",
+      "sha256": "99fd1b5ab824ad877a0c049e474ac98e77019d140f7f3b839d15134048742bdc"
+    },
+    {
+      "what": "Open Library full-text search response (saved JSON) for the '37 runners' claim: the earliest dated hit is Harvey Mackay, Swim with the Sharks Without Being Eaten Alive (1989 scan), which tells the claim with the number. This is a later telling, saved to show the claim, not a record of the event.",
+      "date": "1988",
+      "who": "Harvey Mackay (book text as indexed by Open Library)",
+      "quote": "year  after  Roger {{{Bannister}}}  broke  the  four-minute  mile,  {{{thirty-seven  other runners}}}  broke  the  four-minute",
+      "url": "https://openlibrary.org/search/inside.json?q=%22thirty-seven%20other%20runners%22%20bannister",
+      "archive": "",
+      "file": "sources/bannister-mile/openlibrary-inside-thirty-seven.json",
+      "sha256": "564b6de22c5f206f908f7045480d1881ad71b4480aef41ab5f71e4540bfc4029"
+    },
+    {
+      "what": "TIME, 15 May 1964: the count of sub-four-minute milers ten years after Bannister.",
+      "date": "1964-05-15",
+      "who": "TIME magazine",
+      "quote": "had been smashed by 44 men from 15 nations a total of 143 times",
+      "url": "https://time.com/archive/6808692/track-field-ten-years-after/",
+      "archive": "http://web.archive.org/web/20241212005945/https://time.com/archive/6808692/track-field-ten-years-after/",
+      "file": "sources/bannister-mile/time-ten-years-after.html",
+      "sha256": "31aa8c6385430625f55f24bde984da26b707f489985b56f4c8397f4f99cc845f"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "The nine-year gap between Hägg's 4:01.4 in 1945 and Bannister's run has a plain cause in the records: the war, and life bans in November 1945 on the two fastest milers of the time. No source found measures belief as what held runners back, and the spread after 1954 was gradual (five men in about 13 months, 44 in ten years).",
+    "source": {
+      "what": "World Athletics heritage article 'Recalling Hägg's 4:01.4 world record mile, on its 75th anniversary' (17 July 2020)",
+      "quote": "in November 1945 both men received life bans for professionalism in this era of strict amateurism, thus ending their chances of becoming the first four minute miler",
+      "url": "https://worldathletics.org/heritage/news/gunder-hagg-mile-world-record",
+      "archive": "http://web.archive.org/web/20261122132227/https://worldathletics.org/heritage/news/gunder-hagg-mile-world-record",
+      "file": "sources/bannister-mile/worldathletics-hagg-2020.html",
+      "sha256": "606eaed5f6621958d65162ae7bfd0595db71912de2325e81081ac25eee1851da"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search for the four-minute mile story: hits include Bannister's own book First Four Minutes (1955), whose snippet compares the mile to Everest, and a 1990 assertiveness book, whose snippet says people believed it was 'physiologically impossible'. These are leads only.",
+    "Open Library full-text search for \"thirty-seven other runners\" bannister: saved the JSON response; the earliest dated hit is Mackay, Swim with the Sharks (1989 scan of the 1988 book); later business and self-help books repeat the figure. A search-response URL like this was not sent to the Wayback Machine, so it has no archived link.",
+    "archive.org full text (_djvu.txt) of First Four Minutes: refused with 401 (the book is lending-only); not retried.",
+    "Sports Illustrated vault: direct page gave 404; saved the Wayback capture of the 16 August 1954 report.",
+    "Sports Illustrated vault, 6 June 1955 ('Events & Discoveries'): saved through the Wayback Machine. It reports the White City race of Tabori, Chataway and Hewson, and is the earliest telling found that says Bannister and Landy 'relieved the minds of other men'.",
+    "TIME archive: saved 'Track & Field: Ten Years After' (15 May 1964), an early telling of the 'only mental' version (later than Sports Illustrated 1955). Also saved a 1957 TIME article and a 1957 Sports Illustrated article; neither is quoted.",
+    "University Daily Kansan, 16 April 1976 (saved as text): relays Arthur Daley's New York Times column of 7 May 1954, which compared the mile to Everest and predicted many sub-four-minute miles. This is relayed, so it is a lead only; the 1954 column itself was not found.",
+    "Papers Past (New Zealand newspapers, 1954 and 1955 reports): refused with 403, and no Wayback captures exist.",
+    "Trove (Australian newspapers), Chronicling America and loc.gov, HathiTrust and the Michigan Daily archive: refused automated access (403 or a bot check). Not retried.",
+    "Google Books API: refused with 429 (daily quota).",
+    "Web search for a study of the 'psychological barrier': found only blogs and magazine pieces (leads). Saved the World Athletics heritage article on Hägg's 1945 record for the lesson.",
+    "No record from before May 1954 was found in which an expert says a four-minute mile is impossible; Sports Illustrated in 1955 says only that the barrier had 'seemed all but impregnable'. This part of the story is therefore unsupported, given as the second class.",
+    "Searched for a correction by TIME: none found."
+  ],
+  "confidence_note": "The count of five men within about 13 months rests on Sports Illustrated's 1954 and 1955 reports; a full list of sub-four-minute miles for 1954-55 was not saved. The 1988 date of Mackay's book is from its first edition; the indexed scan is dated 1989. Statements by experts before 1954 calling the time impossible may exist in newspapers I could not reach."
+}

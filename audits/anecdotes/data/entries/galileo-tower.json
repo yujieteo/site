@@ -1,0 +1,67 @@
+{
+  "id": "galileo-tower",
+  "as_told": "In about 1590 the young Galileo, then a professor at Pisa, climbed the Leaning Tower and dropped two balls of different weights in front of professors and students. The balls hit the ground at the same moment. This disproved Aristotle's teaching that heavier bodies fall faster.",
+  "lesson": "Heavy and light bodies fall at the same rate.",
+  "what_happened": "The only source for a drop from the Pisa tower is Vincenzo Viviani's account of Galileo's life, dated 29 April 1654 and first printed in 1717. Viviani, a pupil of Galileo, says Galileo showed with repeated trials from the height of the Pisa bell tower, before the other lecturers and all the students, that bodies of the same material but unequal weight fall with equal speed. In the writings of Galileo that I checked, he never names the Pisa tower. In his early manuscript 'De motu' (about 1590) he wrote that he had often dropped wood and lead from a high tower and that the lead, after a brief start by the wood, went far ahead. In 'Two New Sciences' (1638) his character Sagredo says he has made the test, and that a cannon ball of one or two hundred pounds lands less than a span ahead of a half-pound musket ball dropped from 200 cubits.",
+  "false_part": "No record made at the time shows a public drop from the Pisa tower, and Galileo's own early note on tower drops says the heavier lead body arrived far ahead, not at the same moment.",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "1654",
+    "who": "Vincenzo Viviani",
+    "where": "Racconto istorico della vita di Galileo (letter dated 29 April 1654, first printed 1717; text from Le opere di Galileo Galilei, Edizione Nazionale, vol. XIX)",
+    "quote": "che si muovon tutti con pari velocità, dimostrando ciò con replicate esperienze, fatte dall'altezza del Campanile di Pisa con l'intervento delli altri lettori e filosofi e di tutta la scolaresca",
+    "url": "https://linux.studenti.polito.it/static_resources/liberliber/biblioteca/v/viviani/racconto_istorico_della_vita_di_galileo/pdf/raccon_p.pdf",
+    "file": "sources/galileo-tower/viviani-racconto-liberliber.pdf",
+    "archive": "https://web.archive.org/web/20261122130000/https://linux.studenti.polito.it/static_resources/liberliber/biblioteca/v/viviani/racconto_istorico_della_vita_di_galileo/pdf/raccon_p.pdf",
+    "sha256": "3d03a3adb0d18b348643d35af45bb102a2a642b712bfec2ce5bfe73893bb7eeb"
+  },
+  "original": [
+    {
+      "what": "Galileo's own manuscript 'De motu' (about 1589-1592, first printed 1890 in Le opere di Galileo Galilei, Edizione Nazionale, vol. I, p. 334). He says he often dropped wood and lead from a high tower and the lead went far ahead. He does not name the tower.",
+      "date": "c. 1590",
+      "who": "Galileo Galilei",
+      "quote": "verum enim est, lignum in principio sui motus ocius ferri plumbo; attamen paulo post adeo acceleratur motus plumbi, ut lignum post se relinquat, et, si ex alta turri demittantur, per magnum spatium praecedat: et de hoc saepe periculum feci.",
+      "url": "https://it.wikisource.org/wiki/Pagina:Le_opere_di_Galileo_Galilei_I.djvu/337",
+      "file": "sources/galileo-tower/opere-I-p337-wikisource.txt",
+      "archive": "https://web.archive.org/web/20261122130043/https://it.wikisource.org/wiki/Pagina:Le_opere_di_Galileo_Galilei_I.djvu/337",
+      "sha256": "3ce56403afe42979ecfaa5cc182ab1f5acca163d8aac2982b7dbfbea77027f1b"
+    },
+    {
+      "what": "Galileo, 'Dialogues Concerning Two New Sciences' (1638), First Day, English translation by Henry Crew and Alfonso de Salvio (1914). The speaker is Sagredo, a character in the dialogue. No place is named.",
+      "date": "1638",
+      "who": "Galileo Galilei",
+      "quote": "But I, Simplicio, who have made the test can assure you that a cannon ball weighing one or two hundred pounds, or even more, will not reach the ground by as much as a span ahead of a musket ball weighing only half a pound, provided both are dropped from a height of 200 cubits.",
+      "url": "https://archive.org/details/dialoguesconcern00galiuoft",
+      "archive": "https://archive.org/details/dialoguesconcern00galiuoft",
+      "file": "sources/galileo-tower/dialoguesconcern00galiuoft_djvu.txt",
+      "sha256": "18171a28fa35405e34a5e46321be05e8f9d2462d3167a15f5bb0e044f08e3695"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "holds",
+    "why": "Without air resistance, bodies of any mass fall with the same acceleration. NASA recorded this directly when Apollo 15 astronaut David Scott dropped a hammer and a feather on the Moon in 1971.",
+    "source": {
+      "what": "NASA Space Science Data Coordinated Archive page 'The Apollo 15 Hammer-Feather Drop', quoting Joe Allen, NASA SP-289, Apollo 15 Preliminary Science Report, p. 2-11",
+      "quote": "the objects were observed to undergo the same acceleration and strike the lunar surface simultaneously",
+      "url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/apollo_15_feather_drop.html",
+      "file": "sources/galileo-tower/nssdc-apollo15-feather-drop.html",
+      "archive": "https://web.archive.org/web/20261031121651/https://nssdc.gsfc.nasa.gov/planetary/lunar/apollo_15_feather_drop.html",
+      "sha256": "af7c2c58689b981b02228bc40ff99f4e10279b68b53483bd40110d206c9a92f6"
+    }
+  },
+  "search_steps": [
+    "English Wikipedia article 'Galileo's Leaning Tower of Pisa experiment' (lead only) cites Viviani's 'Racconto istorico' (1717 edition, p. 606) as the source.",
+    "Saved Viviani's text from Liber Liber (taken from the Edizione Nazionale, vol. XIX); grep-checked the passage on the 'Campanile di Pisa'.",
+    "Searched Italian Wikisource's transcription of Le opere di Galileo Galilei, vol. I, for 'turri': found the De motu passages on dropping bodies from a tower (pages 266, 270, 276, 337). Saved page 337, where Galileo says he often tested wood against lead.",
+    "Searched archive.org for 'Two New Sciences' and saved the 1914 Crew and de Salvio translation; it has the cannon ball and musket ball test but names no tower.",
+    "In the Galileo texts I saved (De motu page 337 and Two New Sciences), no drop from the Pisa tower is mentioned. I did not search his letters.",
+    "Lead not followed to full text: the Wikipedia article says Simon Stevin and Jan Cornets de Groot dropped two lead balls, one ten times heavier, from 30 feet in Delft, as told in Stevin's 'De Beghinselen der Weeghconst' (1586). I did not save or quote it.",
+    "English Wikipedia (lead only) also cites Stillman Drake, 'Galileo at Work' (2003), as the main historian who thinks the Pisa demonstration took place roughly as Viviani says. Not read.",
+    "Open Library full-text search for Galileo 'tower of Pisa' balls: the earliest hits returned were I. B. Cohen, 'The Birth of a New Physics' (1960) and Lane Cooper, 'Aristotle, Galileo, and the Tower of Pisa' (1935; 1972 reprint). All are much later than Viviani; none showed an earlier telling.",
+    "I did not run a separate search for a correction by Viviani.",
+    "Lesson source: NASA NSSDCA page on the Apollo 15 hammer-feather drop, quoting the Apollo 15 Preliminary Science Report."
+  ],
+  "confidence_note": "A drop from the Pisa tower cannot be ruled out: Viviani knew Galileo personally, and Galileo did drop bodies from some high tower. But no record from about 1590 names Pisa or describes a public show, and Galileo's own early note reports a result (wood against lead) that differs from the story. That note compares different materials, so it does not directly contradict Viviani's same-material claim."
+}

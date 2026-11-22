@@ -1,0 +1,88 @@
+{
+  "id": "chariot-gauge",
+  "as_told": "The standard railway gauge of 4 feet 8.5 inches comes from the ruts that Roman war chariots wore into the old roads of Europe and England. Wagon builders had to match those ruts, and the first railway builders used the wagon builders' jigs and tools. The Space Shuttle's solid rocket boosters had to travel by rail from Utah through a tunnel only a little wider than the track, so the width of two Roman horses set the size of the boosters.",
+  "lesson": "Old standards persist long after the reasons for them are gone, so a choice made long ago can fix the design of modern technology.",
+  "what_happened": "George Stephenson used the 4 ft 8 in gauge of the colliery waggonways near Newcastle for the Stockton and Darlington Railway (opened 1825) and the Liverpool and Manchester Railway (opened 1830), where he added half an inch. A history of the North Eastern Railway (Tomlinson, 1914) traces that gauge to the Killingworth and Willington waggonways, the oldest part laid in 1762, and says that most old horse railways and tramroads were about 4 ft wide, so there was no single inherited gauge. The Shuttle booster segments did travel by rail from the Thiokol plant in Utah, but NASA gives each segment as 12 ft in diameter, which is 144 in against a track gauge of 56.5 in, more than twice as wide. The records found do not show what set the booster diameter, and they do not show a tunnel on the route.",
+  "false_part": "The chain from Roman chariot ruts is false at its key step: the 1914 history of the line finds no evidence that the gauge came from cart wheels, and traces it to a 1762 colliery waggonway; and a tunnel 'slightly wider than the railroad track' (4 ft 8.5 in) could not pass booster segments 12 ft wide, if 'track' means the gauge. Whether rail clearances limited the booster diameter is not verified.",
+  "class": "changed",
+  "also": "",
+  "earliest_telling": {
+    "date": "1905",
+    "who": "Marshall Everett (compiler), reprinting an item that Snopes dates to Popular Mechanics, 1905",
+    "where": "Everett's Encyclopedia of Useful Knowledge, item 'Ancient Romans Determined Our Standard Railway Gauge'",
+    "quote": "he discovered that deep ruts had been worn in the stone. Upon measuring the distance between them he found it to be in the neighborhood of 4 ft. 8^^ in.",
+    "url": "https://archive.org/details/everettsencyclop00ever",
+    "archive": "https://archive.org/details/everettsencyclop00ever",
+    "file": "sources/chariot-gauge/everettsencyclop00ever_djvu.txt",
+    "sha256": "193da7ea5e72c6bb7bfe77b5356985eb430b577639092f1b70e57bc50d812996"
+  },
+  "original": [
+    {
+      "what": "History of the North Eastern Railway, drawing on records of the 1820s (the Liverpool deputation of 1824, Joseph Pease's evidence to Parliament in 1839), on where Stephenson's gauge came from",
+      "date": "1914",
+      "who": "William Weaver Tomlinson",
+      "quote": "For the Stockton and Darlington Railway, as for the Hetton Colliery Railway, George Stephenson had adopted the gauge of the Killingworth",
+      "url": "https://archive.org/details/northeasternrail00tomluoft",
+      "archive": "https://archive.org/details/northeasternrail00tomluoft",
+      "file": "sources/chariot-gauge/northeasternrail00tomluoft_djvu.txt",
+      "sha256": "3a75a9989c3cb6f7dc5d9de143e351d3dd6fbb61fef2fb0cc5f7c902fa8c6ba6"
+    },
+    {
+      "what": "Same history, answering whether the gauge came from the width of carts",
+      "date": "1914",
+      "who": "William Weaver Tomlinson",
+      "quote": "There is no evidence that this was the case.",
+      "url": "https://archive.org/details/northeasternrail00tomluoft",
+      "archive": "https://archive.org/details/northeasternrail00tomluoft",
+      "file": "sources/chariot-gauge/northeasternrail00tomluoft_djvu.txt",
+      "sha256": "3a75a9989c3cb6f7dc5d9de143e351d3dd6fbb61fef2fb0cc5f7c902fa8c6ba6"
+    },
+    {
+      "what": "Same history, on the usual width of earlier horse railways and tramroads",
+      "date": "1914",
+      "who": "William Weaver Tomlinson",
+      "quote": "The width between the rails on the old horse railways and tramroads was generally four feet.",
+      "url": "https://archive.org/details/northeasternrail00tomluoft",
+      "archive": "https://archive.org/details/northeasternrail00tomluoft",
+      "file": "sources/chariot-gauge/northeasternrail00tomluoft_djvu.txt",
+      "sha256": "3a75a9989c3cb6f7dc5d9de143e351d3dd6fbb61fef2fb0cc5f7c902fa8c6ba6"
+    },
+    {
+      "what": "NASA fact sheet on the NASA Railroad at Kennedy Space Center, giving the size of the Shuttle booster segments carried by rail",
+      "date": "c. 2010",
+      "who": "NASA, Kennedy Space Center",
+      "quote": "each 32 feet long and 12 feet in diameter",
+      "url": "https://www.nasa.gov/wp-content/uploads/2015/03/nasa-railroad.pdf",
+      "archive": "http://web.archive.org/web/20260519152007/https://www.nasa.gov/wp-content/uploads/2015/03/nasa-railroad.pdf",
+      "file": "sources/chariot-gauge/nasa-railroad.pdf.txt",
+      "sha256": "caafe95af00575d119bd2789063d1ab9724f7702fee4d9e6158d3dcbd68b773e"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "holds",
+    "why": "An economic history of track gauge finds that early chance choices fixed regional standards and that the Stephenson gauge, taken from a mining tramway, still dominates the world. The lesson holds, but the real chain starts at an 18th-century colliery waggonway, not at Rome.",
+    "source": {
+      "what": "Douglas J. Puffert, 'Path Dependence in Spatial Networks: The Standardization of Railway Track Gauge', working paper, University of Munich, July 2001",
+      "quote": "In no case did the process entirely break free of early contingent choices and events.",
+      "url": "https://sa-transport.co.za/train_modellers/signals/gauge_spatial_1.pdf",
+      "archive": "http://web.archive.org/web/20261116074208/https://www.sa-transport.co.za/train_modellers/signals/gauge_spatial_1.pdf",
+      "file": "sources/chariot-gauge/puffert-gauge-spatial.pdf.txt",
+      "sha256": "46226a03bfd4d8da04f83f9cf03a4f6dc7faf156b7200c93f7408fd04d1d7ba6"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search for \"Roman chariots\" gauge railway: earliest relevant hit is J. F. C. Fuller, Pegasus: Problems of Transportation (1925), 'even to-day the gauge of our railway lines is the gauge of the Roman chariots'; saved its full text (sources/chariot-gauge/pegasusproblemso032294mbp_djvu.txt).",
+    "Read the English Wikipedia article 'Standard-gauge railway' as a lead: it says the Roman legend has circulated 'since at least 1937' and traces the gauge to Stephenson's Killingworth wagonways; the Open Library results above give earlier dates (1905, 1925).",
+    "Open Library searches for \"Roman chariot\" gauge railway, \"gauge of the Roman\" and \"Roman chariots\" \"standard gauge\": no relevant hit before 1905 (one 1831 date is a catalogue error on a modern book).",
+    "Read the Snopes page (Wayback copy, 2022) as a lead only: it quotes the Shuttle email and points to a 1905 Popular Mechanics item about Stephenson measuring ruts in a Roman wall.",
+    "Open Library search for \"Roman wall through which chariots\": found the same item in Everett's Encyclopedia of Useful Knowledge (copyright 1905); saved its full text. I did not find the Popular Mechanics 1905 issue itself online.",
+    "Google Books API search: refused with 429 (daily quota); did not retry. HathiTrust full-text search: blocked by a browser check. Chronicling America: blocked by a browser check. Papers Past: blocked by a bot check. Trove API: needs a key (401).",
+    "Shuttle version: a web search found a 3 November 1999 posting titled 'The History of Shuttle SRB' to the MIT humor list (diswww.mit.edu/tla/humor/2984), forwarded from Halmer Haag. The host refused connections and the Wayback Machine has no copy, so I could not save or quote it. Google Groups (Usenet) copies found by search had no visible date.",
+    "Original record: searched Open Library for Stephenson, Killingworth and tramroad gauge; saved Tomlinson, The North Eastern Railway (1914), which cites the 1824 Liverpool deputation and Joseph Pease's 1839 evidence. Archive.org has no copy of the 1846 Gauge Commissioners' report.",
+    "Saved NASA's KSC railroad fact sheet for the booster segment size and rail route; found no NASA record of a tunnel limit or of what set the booster diameter.",
+    "Lesson: saved Puffert's 2001 working paper on path dependence in railway gauge; it also reports Robert Stephenson's 1846 evidence that his father 'adopted' the gauge already in use.",
+    "Teller correction: the Shuttle email is anonymous, and the 1905 item is unsigned; no correction found."
+  ],
+  "confidence_note": "The Roman part may be older than 1905; Google Books, HathiTrust and the newspaper archives could not be searched. The 1999 email could not be saved. The booster diameter was set by design choices that I did not find in a saved record, so whether rail clearances played a part is open. Roman rut widths themselves were not measured in any saved source."
+}

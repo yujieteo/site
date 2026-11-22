@@ -1,0 +1,57 @@
+{
+  "id": "faraday-tax",
+  "as_told": "Michael Faraday showed William Gladstone his work on electricity. Gladstone asked what use it was. Faraday answered that one day the government would be able to tax it.",
+  "lesson": "Basic research that seems useless often leads to practical inventions of great value.",
+  "what_happened": "The earliest telling I found is by the historian W.E.H. Lecky, in the Introduction to the revised Cabinet Edition of Democracy and Liberty, printed separately by Longmans in 1899 (the note is dated February 1899). Lecky says an unnamed intimate friend of Faraday told him the story. In Lecky's version Faraday explains 'an important new discovery in science' to Gladstone and several others; Lecky does not name the discovery, does not mention electricity and gives no date. I found no record of the exchange by Faraday, Gladstone or anyone present.",
+  "false_part": "No record shows that the exchange took place; the story first appears in 1899 as hearsay, and the oldest version does not mention electricity.",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "1899-02",
+    "who": "W.E.H. Lecky",
+    "where": "Introduction to Democracy and Liberty (London: Longmans, Green, and Co., 1899)",
+    "quote": "An intimate friend of Faraday once described to me how, when Faraday was endeavouriog to explain to Gladstone and several others an important new discovery in science",
+    "url": "https://archive.org/details/cu31924024864617",
+    "archive": "https://archive.org/details/cu31924024864617",
+    "file": "sources/faraday-tax/lecky-1899-democracy-liberty-intro_djvu.txt",
+    "sha256": "e9fa29ce9db43f91bc095bfac92607fc5bc10917555d94a9bb5ec63b0deb2964"
+  },
+  "original": [
+    {
+      "what": "The punch line in the same 1899 telling. It is Lecky's report of what an unnamed friend of Faraday told him, so it is a lead only, not Faraday's own words.",
+      "date": "1899-02",
+      "who": "W.E.H. Lecky",
+      "quote": "that you will soon be able to tax it",
+      "url": "https://archive.org/details/cu31924024864617",
+      "archive": "https://archive.org/details/cu31924024864617",
+      "file": "sources/faraday-tax/lecky-1899-democracy-liberty-intro_djvu.txt",
+      "sha256": "e9fa29ce9db43f91bc095bfac92607fc5bc10917555d94a9bb5ec63b0deb2964"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "holds",
+    "why": "A study of 4.8 million U.S. patents and 32 million research articles found that most cited research articles link forward, through chains of citations, to a later patent. This supports the general claim that research done for understanding often feeds practical invention, although it does not measure value.",
+    "source": {
+      "what": "Mohammad Ahmadpoor and Benjamin F. Jones, The Dual Frontier: Patented Inventions and Prior Scientific Advance, manuscript dated May 27, 2017 (published in Science, 2017)",
+      "quote": "We find that most cited research articles (80%) link forward to a future patent.",
+      "url": "https://www.kellogg.northwestern.edu/faculty/jones-ben/htm/Dual%20Frontier%20_%20Integrated%20MS%20and%20SM.pdf",
+      "archive": "http://web.archive.org/web/20260721225619/https://www.kellogg.northwestern.edu/faculty/jones-ben/htm/Dual%20Frontier%20_%20Integrated%20MS%20and%20SM.pdf",
+      "file": "sources/faraday-tax/ahmadpoor-jones-2017-dual-frontier.pdf",
+      "sha256": "e952471065d95e03b8eb9bf2ce233915c443149977d9a013cd394bbd8769c8b8"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search for \"soon be able to tax it\": earliest dated hit is Lecky, Introduction to Democracy and Liberty, 1899; later hits from 1920, 1922, 1933, 1938 and many later books.",
+    "Open Library full-text search for Faraday \"tax it\": no hit dated before 1899.",
+    "Open Library full-text search for Faraday Peel \"what use\" tax (to look for a variant with Robert Peel): no hits.",
+    "Saved the full text of the 1899 Lecky Introduction from archive.org (Cornell copy cu31924024864617).",
+    "HathiTrust full-text search: blocked (HTTP 403).",
+    "Google Books API: refused with HTTP 429 (daily quota); I did not retry.",
+    "Web search for the quote history: found only retellings that point back to Lecky; no earlier printed version.",
+    "An Open Library snippet from I. Bernard Cohen, Benjamin Franklin's Science (1990), comments on Lecky's lack of a source (snippet only; the book is not readable), so I did not use it.",
+    "I did not search Faraday's published letters or Gladstone's diaries.",
+    "For the lesson, saved the 2017 manuscript of Ahmadpoor and Jones from Kellogg School of Management."
+  ],
+  "confidence_note": "An earlier telling may exist in print sources that I could not search (HathiTrust and Google Books were blocked). I did not search Faraday's letters or Gladstone's diaries, so I cannot say that no record exists, only that I found none. The lesson source is the authors' manuscript, not the final published version."
+}

@@ -1,0 +1,85 @@
+{
+  "id": "sesame-seeds",
+  "as_told": "A big hamburger chain found that removing a few sesame seeds from each bun saved a lot of money and no customer noticed. Each year a new manager removed a few more seeds. In the end the buns had almost no seeds, and customers stopped buying the burgers.",
+  "lesson": "Many small cost cuts, each too small to notice, add up to a loss of quality that customers do notice.",
+  "what_happened": "No record of a real burger chain doing this was found. The oldest telling found is a fictional parable in Gerald M. Weinberg's book \"The Secrets of Consulting\" (Dorset House, 1985), which names it \"The Fast-Food Fallacy\". In it, a made-up firm, Corporal MacAndrew's Arkansas Stewed Possum Company, considers reducing the number of caraway seeds on its \"Possum-Patty\" from 100 to 99. By 2001 a computing book retold Weinberg's fallacy with sesame seeds on a bun. Joel Spolsky (2007) retold it as a hamburger-chain story and called it apocryphal, and Tim Owens (2011) told it as a fictional story about \"Bob's Burger Barn\".",
+  "false_part": "The story began as a made-up example in a consulting book, about a fictional possum-burger company and caraway seeds; no real burger chain is recorded as doing it.",
+  "class": "invented",
+  "also": "",
+  "earliest_telling": {
+    "date": "1985",
+    "who": "Gerald M. Weinberg",
+    "where": "The Secrets of Consulting: A Guide to Giving and Getting Advice Successfully (Dorset House, New York), chapter section \"The Fast-Food Fallacy\", index pages 129-32",
+    "quote": "of caraway seeds on the Possum-Patty from",
+    "url": "https://archive.org/details/secretsofconsult0000wein",
+    "archive": "https://archive.org/details/secretsofconsult0000wein",
+    "file": "sources/sesame-seeds/openlibrary-inside-weinberg-caraway-seeds.json",
+    "sha256": "d405b47f648f2952a457ea25875028a87733d655f4db96752005d8c1da2a9659"
+  },
+  "original": [
+    {
+      "what": "Open Library full-text search snippet from the same 1985 book, naming the fictional company",
+      "date": "1985",
+      "who": "Gerald M. Weinberg",
+      "quote": "MacAndrew’s Arkansas Stewed Possum Company, Ltd., Harold",
+      "url": "https://archive.org/details/secretsofconsult0000wein",
+      "archive": "https://archive.org/details/secretsofconsult0000wein",
+      "file": "sources/sesame-seeds/openlibrary-inside-weinberg-halstead.json",
+      "sha256": "61271b6a5efe2b2361e7dcd6cdfcc0b484dff61ebccf25e8b2174236731b06af"
+    },
+    {
+      "what": "2004 edition of a computing book retelling Weinberg's Fast-Food Fallacy with sesame seeds (first edition 2001 has the same passage)",
+      "date": "2004",
+      "who": "Chris Britton and Peter Bye, IT Architectures and Middleware, 2nd edition",
+      "quote": "on a bun from 100 to 99 is not noticeable, likewise",
+      "url": "https://archive.org/details/itarchitecturesm0002edbrit_h3h8",
+      "archive": "https://archive.org/details/itarchitecturesm0002edbrit_h3h8",
+      "file": "sources/sesame-seeds/openlibrary-inside-fast-food-fallacy-sesame.json",
+      "sha256": "31a09dea9d3fb7ff49574e9183e2f561cebb14b7e820f5fe920073d282c3e66b"
+    },
+    {
+      "what": "Blog retelling as a hamburger-chain story, called apocryphal",
+      "date": "2007-09-11",
+      "who": "Joel Spolsky",
+      "quote": "there’s the apocryphal story of the giant multinational hamburger chain where some bright MBA figured out that eliminating just three sesame seeds from a sesame-seed bun would be completely unnoticeable by anyone yet would save the company $126,000 per year",
+      "url": "https://www.joelonsoftware.com/2007/09/11/theres-no-place-like-127001/",
+      "archive": "http://web.archive.org/web/20260601033624/https://www.joelonsoftware.com/2007/09/11/theres-no-place-like-127001/",
+      "file": "sources/sesame-seeds/joelonsoftware-2007-09-11.html",
+      "sha256": "c8f30ff42df6bb72e7c6bdf9543b071baaab0d11a430e61b0464970c93b055cd"
+    },
+    {
+      "what": "Blog retelling as an openly fictional story",
+      "date": "2011-08-03",
+      "who": "Tim Owens",
+      "quote": "I can't remember where I first heard the story so you get my version of it",
+      "url": "https://blog.timowens.io/sesame-seeds-and-the-race-to-the-bottom/",
+      "archive": "http://web.archive.org/web/20260717141713/https://blog.timowens.io/sesame-seeds-and-the-race-to-the-bottom/",
+      "file": "sources/sesame-seeds/timowens-sesame-seeds.html",
+      "sha256": "c3b80d9043543bdb7372cdb44930deabd7fe3693ef5dce9b33e035955d5c880d"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "A study of ice-cream buyers found that shoppers respond much less to smaller packages than to higher prices, so small cuts do tend to go unnoticed. I found no study showing that such cuts add up until customers leave.",
+    "source": {
+      "what": "Metin Cakir and Joseph V. Balagtas, \"Consumer Response to Package Downsizing: An Application to the Chicago Ice Cream Market\", poster, AgEcon Search record 123980 (2012); journal version in Journal of Retailing 90(1), 2014",
+      "quote": "Consumers are less responsive to package size than to",
+      "url": "https://ageconsearch.umn.edu/record/123980/files/Cakir_Balagtas_ConsumerResponsetoPackageDownsizing.pdf",
+      "archive": "http://web.archive.org/web/20261122194904/https://ageconsearch.umn.edu/record/123980/files/Cakir_Balagtas_ConsumerResponsetoPackageDownsizing.pdf",
+      "file": "sources/sesame-seeds/cakir-balagtas-package-downsizing-2012.pdf.txt",
+      "sha256": "a5407291de65c56ec544670cc62326909085c8fc52b28a98f17f2762ca21dc87"
+    }
+  },
+  "search_steps": [
+    "Web search for a burger chain removing sesame seeds to save money found only the 2025-2026 In-N-Out change (sesame flour removed from buns, framed as an ingredient and allergy decision, not a cost saving) and retellings.",
+    "Extended web search found Joel Spolsky's post of 11 September 2007, which credits the story to a Gerald Weinberg book, \"probably The Secrets of Consulting\", and calls it apocryphal; also Tim Owens's fictional version (2011) and a 2023 Hacker News comment telling it as a hypothetical.",
+    "Open Library full-text search for \"fast food fallacy\" found Weinberg's The Secrets of Consulting (archive.org item secretsofconsult0000wein, 1985, lending only) and IT Architectures and Middleware (2001, 2004), which retells Weinberg's fallacy with sesame seeds on a bun.",
+    "Open Library snippet searches inside Weinberg's book (\"no difference plus no difference\", \"Compositional Fallacy\", \"possum fat Halstead\", \"Arkansas Stewed Possum\" with \"reduce the number\") show the example is a fictional company and caraway seeds on a \"Possum-Patty\". A search for \"Arkansas Stewed Possum\" with \"sesame\" found nothing.",
+    "Tried the archive.org in-book search for the Weinberg item; it returned 403, so I stopped. The full text is not open, so I could see only search snippets.",
+    "Other Open Library searches (\"fewer sesame seeds\", \"sesame seeds on each bun\", \"sesame seeds\" with \"hamburger chain\" and \"saved\") found no earlier telling.",
+    "English Wikipedia was not checked for this story. Google Books returned 429 and was not used again.",
+    "Saved the Cakir and Balagtas poster on package downsizing as evidence for the lesson."
+  ],
+  "confidence_note": "All quotes from Weinberg's 1985 book and from the 2004 book come from Open Library search snippets, not the full text, so they are short. A telling older than 1985, or a separate sesame-seed version, may exist. The 1985 date is from the archive.org record for the first edition. The lesson source is a conference poster, not the full journal article."
+}

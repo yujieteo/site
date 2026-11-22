@@ -1,0 +1,95 @@
+{
+  "id": "avid-dumped-stations",
+  "as_told": "When Avid announced that it would stop making its Media Composer editing systems for the Macintosh and move to Windows NT, its customers were furious. Editors brought their Mac-based Avid editing stations and dumped them at Avid's offices in protest. Avid backed down and recommitted to the Mac.",
+  "lesson": "A vendor that abandons the platform its loyal customers depend on will face a revolt and be forced to back down.",
+  "what_happened": "At the NAB show in April 1999, Avid said it would support the Mac through Media Composer 8.0, while its staff on the show floor said Mac development would then stop and later releases would be NT only. A July 1999 report said many of Avid's 50,000 users had been 'very vocal' in response. On 15 July 1999 Avid said the Macintosh was a key part of its strategy and announced a new Macintosh Development Group. Avid's 10-K for 1999 reports a significant decrease in Mac-based unit sales that year. I found no record, from that time or later, of customers dumping editing stations at Avid's offices.",
+  "false_part": "",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "",
+    "who": "",
+    "where": "No telling of the dumping found",
+    "quote": "",
+    "url": "",
+    "archive": "",
+    "file": "",
+    "sha256": ""
+  },
+  "original": [
+    {
+      "what": "Trade report of Avid's NAB 1999 announcement of Media Composer for Windows NT",
+      "date": "1999-04-23",
+      "who": "Carolyn Giardina, SHOOT",
+      "quote": "Avid does not have any plans to offer version 9.0 software for the Mac.",
+      "url": "https://www.shootonline.com/article/avid-unveils-media-composer-nt/",
+      "archive": "https://web.archive.org/web/20261122185522/https://www.shootonline.com/article/avid-unveils-media-composer-nt/",
+      "file": "sources/avid-dumped-stations/shoot-1999-04-23-avid-unveils-media-composer-nt.html",
+      "sha256": "fa5b07d9d52a3d565547ff1b15f7c8ace01c37171b35bf4920ceaf3b635a7f65"
+    },
+    {
+      "what": "Trade report a week later: customer reaction to the NT announcement, with editors quoted; no dumping of systems reported",
+      "date": "1999-04-30",
+      "who": "SHOOT",
+      "quote": "caused many emotional and mixed customer responses to the NT announcement.",
+      "url": "https://www.shootonline.com/article/avid-earns-high-marks-revamped-customer-support-program/",
+      "archive": "http://web.archive.org/web/20250722225138/https://www.shootonline.com/article/avid-earns-high-marks-revamped-customer-support-program/",
+      "file": "sources/avid-dumped-stations/shoot-1999-04-30-avid-customer-support.html",
+      "sha256": "805bd88c354053036b6eda741720e2f3679aa25a3232dfb16a67b80bfe77acda"
+    },
+    {
+      "what": "Trade report on Avid's NAB 1999 statements about the Mac",
+      "date": "1999-07-01",
+      "who": "Ben Long, The Independent (independent-magazine.org)",
+      "quote": "future on the Mac platform is limited, and further releases will be for the Windows NT operating system only.",
+      "url": "https://independent-magazine.org/1999/07/01/avid-leaves-mac-cutting-room-floor/",
+      "archive": "http://web.archive.org/web/20260720005806/https://independent-magazine.org/1999/07/01/avid-leaves-mac-cutting-room-floor/",
+      "file": "sources/avid-dumped-stations/independent-1999-07-01-avid-leaves-mac.html",
+      "sha256": "e814ec54be5e9d7ac193c89514695025037ace1ef19cae06b76d13f14c114382"
+    },
+    {
+      "what": "Same report: the customer reaction, described as vocal, with interviews but no protest action",
+      "date": "1999-07-01",
+      "who": "Ben Long, The Independent (independent-magazine.org)",
+      "quote": "50,000 installed users have been very vocal in their response.",
+      "url": "https://independent-magazine.org/1999/07/01/avid-leaves-mac-cutting-room-floor/",
+      "archive": "http://web.archive.org/web/20260720005806/https://independent-magazine.org/1999/07/01/avid-leaves-mac-cutting-room-floor/",
+      "file": "sources/avid-dumped-stations/independent-1999-07-01-avid-leaves-mac.html",
+      "sha256": "e814ec54be5e9d7ac193c89514695025037ace1ef19cae06b76d13f14c114382"
+    },
+    {
+      "what": "News report of Avid's reversal: a new Macintosh Development Group",
+      "date": "1999-07-15",
+      "who": "CBR Staff Writer, Computer Business Review (now Tech Monitor)",
+      "quote": "now says the Macintosh plays a key part in its product strategy and has formed a new Macintosh Development Group",
+      "url": "https://www.techmonitor.ai/technology/avid_has_change_of_heart_over_apple_forms_mac_division/",
+      "archive": "http://web.archive.org/web/20251015085502/https://www.techmonitor.ai/technology/avid_has_change_of_heart_over_apple_forms_mac_division",
+      "file": "sources/avid-dumped-stations/techmonitor-1999-07-15-avid-mac-division.html",
+      "sha256": "cb117a98f6a48579f7dc61491cea1c630d8ff6403647e97cee2c7352cc4cdce3"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "Avid's own annual report shows that Mac-based unit sales fell significantly in 1999, and Avid reversed course within about three months of NAB. But neither the 10-K nor the July 1999 news report says why Avid reversed, and later reports (not saved here) say Apple's Final Cut Pro, launched at the same NAB, also competed for Mac users. One company's case does not show the general rule.",
+    "source": {
+      "what": "Avid Technology, Inc., Form 10-K for the year ended 31 December 1999, filed with the SEC on 30 March 2000",
+      "quote": "Macintosh-based  unit sales which was only partially  offset by the introduction",
+      "url": "https://www.sec.gov/Archives/edgar/data/896841/000089684100000003/0000896841-00-000003.txt",
+      "archive": "",
+      "file": "sources/avid-dumped-stations/avid-10k-1999-filed-2000-03-30.txt",
+      "sha256": "e7f719e19684864a24839ef01124ba3eed3d99a210091f5cba5db300eb197aa5"
+    }
+  },
+  "search_steps": [
+    "Open Library search-inside for Avid Macintosh customers \"dumped\" editing systems: 233 hits, none about a protest.",
+    "Google Books API search: refused with 429 (daily quota); did not retry.",
+    "Web searches (standard and extended) for Avid customers dumping, piling or returning editing systems at Avid's Tewksbury offices, lobby, doorstep or parking lot: no telling found, old or new.",
+    "Google Groups search of rec.video.desktop for avid dumped mac and avid abandon mac protest: no thread about dumping systems.",
+    "Found and saved The Independent's July 1999 report on Avid's NAB 1999 statements and customer reaction. It quotes editors and a post-production supervisor; none mentions dumping systems.",
+    "Found and saved the Computer Business Review report of 15 July 1999 on Avid's new Macintosh Development Group.",
+    "Saved Avid's 10-K filings from sec.gov (periods 1997, 1998 and 1999). Only the 1999 report (filed 30 March 2000) mentions the fall in Mac-based unit sales. The Wayback save request for it failed (HTTP 523), so there is no archive link.",
+    "Found SHOOT's report of 23 April 1999 on the NAB announcement (no version 9.0 for the Mac) and its report of 30 April 1999 on customer reaction (emotional and mixed responses; no dumping). Saved both; the first had no Wayback copy, so I requested one. Two other SHOOT pages were not useful: ?p=15860 (resignations, November 1999) is not relevant, and ?p=7979 returned HTTP 503."
+  ],
+  "confidence_note": "I could not find any telling of the dumping story, so I cannot say who first told it or when; it may come from spoken industry lore. Because no telling was found, the 'as_told' text and the lesson ('Avid backed down') are built from the records of 1999, not from any telling. Avid's reversal and the customers' anger are on record; the physical dumping of editing stations is not. The records place Avid's NT-only signal at NAB in April 1999 and the reversal in July 1999."
+}

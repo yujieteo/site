@@ -1,0 +1,76 @@
+{
+  "id": "ibm-black-team",
+  "as_told": "In the early 1960s IBM put its best testers together in one team. The team came to love breaking other people's software: its members dressed in black, grew mustaches to twirl like villains, and programmers dreaded bringing them their code. The team kept its spirit even after all the first members had left.",
+  "lesson": "Testers who set out to break software, rather than to show it works, find far more defects.",
+  "what_happened": "The story is told by Tom DeMarco, first in Controlling Software Projects (1982), where the 'now-legendary' Black Team is a separate test group that enjoyed finding defects, and again with Timothy Lister in Peopleware (1987; quoted here from the 1999 second edition), whose snippets describe the black clothes and the mustaches (I could not see whether the 1982 section has them too). Neither book, in the snippets I could read, gives a source or names the members. Later books repeat it as IBM history (Ince 1988; Craig Kaplan and co-authors, Secrets of Software Quality: 40 Innovations from IBM, 1995, who quote DeMarco). I found no IBM document, no named member and no first-hand account.",
+  "false_part": "",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "1982",
+    "who": "Tom DeMarco",
+    "where": "Controlling Software Projects: Management, Measurement & Estimation (New York: Yourdon Press, 1982), section 21.3.1 'Black Team testing', pp. 221-222",
+    "quote": "was a separate test group",
+    "url": "https://openlibrary.org/search/inside.json?q=%22Black%20Team%22%20Ming",
+    "archive": "https://archive.org/details/controllingsoftw0000dema",
+    "file": "sources/ibm-black-team/ol-inside-black-team-ming.json",
+    "sha256": "d4053e6c40ea06f9a309866e652f3a5c25c672e0102a1eba933ee9f011d9749c"
+  },
+  "original": [
+    {
+      "what": "Tom DeMarco and Timothy Lister, Peopleware, 2nd edition (1999), chapter 19 'The Black Team': the version with mustaches twirled 'in Simon Legree fashion'. Search snippet only; first edition 1987.",
+      "date": "1999",
+      "who": "Tom DeMarco and Timothy Lister",
+      "quote": "that  they  could  twirl  in  Simon  Legree  fashion.",
+      "url": "https://openlibrary.org/search/inside.json?q=%22Black%20Team%22%20mustaches",
+      "archive": "https://archive.org/details/peoplewareproduc00dema_0",
+      "file": "sources/ibm-black-team/ol-inside-black-team-mustaches.json",
+      "sha256": "1bbe169c13febaa703120d3ef3eba952a8bae4800f5dcaaa212fb761867f351f"
+    },
+    {
+      "what": "Peopleware, 2nd edition (1999): the black clothes. Search snippet only.",
+      "date": "1999",
+      "who": "Tom DeMarco and Timothy Lister",
+      "quote": "if  their  workspaces  were",
+      "url": "https://openlibrary.org/search/inside.json?q=%22Black%20Team%22%20%22dressing%20in%20black%22",
+      "archive": "https://archive.org/details/peoplewareproduc00dema_0",
+      "file": "sources/ibm-black-team/ol-inside-black-team-dressing.json",
+      "sha256": "c7f096e38329fdca2645ad573d68bb44a0ebc7c52ce165d799c8fd10816157f1"
+    },
+    {
+      "what": "Darrel Ince, Software Development: Fashioning the Baroque (Oxford University Press, 1988), describing black teams as a past feature of some IBM divisions. Search snippet only; a retelling, not a record.",
+      "date": "1988",
+      "who": "Darrel Ince",
+      "quote": "is a collection of misfits and loners who",
+      "url": "https://openlibrary.org/search/inside.json?q=%22Black%20Team%22%20IBM%20%221960s%22",
+      "archive": "https://archive.org/details/softwaredevelopm0000ince",
+      "file": "sources/ibm-black-team/ol-inside-black-team-ibm-1960s.json",
+      "sha256": "2ab1ed8c3317957ddeda1032f40b9b97770fc900a2140ff97b86e62086b73301"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "A controlled experiment with 42 graduate students found that testers design significantly more confirmatory than disconfirmatory test cases, so a deliberately disconfirming attitude is uncommon. The study did not measure whether testers with that attitude find more defects, and I found no open study that did.",
+    "source": {
+      "what": "Iflaah Salman, Burak Turhan and Sira Vegas, 'A controlled experiment on time pressure and confirmation bias in functional software testing', Empirical Software Engineering 24:1727-1761 (2019), open access",
+      "quote": "participants designed significantly more confirmatory test",
+      "url": "https://link.springer.com/content/pdf/10.1007/s10664-018-9668-8.pdf",
+      "archive": "http://web.archive.org/web/20230729214616/https://link.springer.com/content/pdf/10.1007/s10664-018-9668-8.pdf",
+      "file": "sources/ibm-black-team/salman-2019-confirmation-bias-testing.pdf.txt",
+      "sha256": "ff8f2d9147178fc99cbe6b305482b2a83eb73a4bbe58baa83ebb3810e6bed36b"
+    }
+  },
+  "search_steps": [
+    "Web search for IBM Black Team, Peopleware, DeMarco, Lister: leads are Peopleware (chapter 'The Black Team'), a 2002 Tangled Web article, a Mary Sue article that calls the dramatic details likely apocryphal, and a 2014 book saying the term comes from IBM in the 1960s. None cites an IBM record.",
+    "Open Library full-text search for \"the Black Team\" testers and \"Black Team\" IBM: hits in Peopleware (1999 scan, chapter 19, pp. 129-131), Craig Kaplan et al., Secrets of Software Quality: 40 Innovations from IBM (1995), and Ince (1988).",
+    "Open Library full-text search for \"legendary Black Team\" and \"Black Team testing\": found DeMarco, Controlling Software Projects (1982), section 21.3.1, the earliest telling found; Kaplan et al. (1995) quote this passage.",
+    "Open Library snippets of the 1982 passage do not show the word IBM; the only IBM hits in that book are on other topics (Walston and Felix). I could not confirm that the 1982 telling names IBM.",
+    "Tried the archive.org in-book search for the 1982 book: HTTP 403; not retried. The book and Peopleware are lending-only, so only snippets could be read.",
+    "Tried Google Books API (HTTP 429) and HathiTrust full-text search (Cloudflare challenge); neither was retried.",
+    "Web search for a first-hand account by a Black Team member: none found.",
+    "Searched for a correction by DeMarco or Lister: none found.",
+    "For the lesson, searched for studies of tester attitude and defect finding; a core.ac.uk PDF returned 403; saved the open-access Salman, Turhan and Vegas (2019) experiment."
+  ],
+  "confidence_note": "All book quotes come from Open Library search snippets only, which show a few words around the search terms. I could not read where DeMarco and Lister say they heard the story, or whether the 1987 first edition has the same details as the 1999 edition. A record could exist in IBM archives that is not online."
+}

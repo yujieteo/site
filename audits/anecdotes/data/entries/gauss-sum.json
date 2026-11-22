@@ -1,0 +1,66 @@
+{
+  "id": "gauss-sum",
+  "as_told": "When Carl Friedrich Gauss was a small boy, his teacher told the class to add up all the whole numbers from 1 to 100, to keep them busy. Gauss wrote the answer, 5050, almost at once. He had seen that the numbers form 50 pairs (1 + 100, 2 + 99 and so on) that each add up to 101.",
+  "lesson": "Looking for a pattern can turn a long, dull calculation into a short one.",
+  "what_happened": "The earliest account is in Wolfgang Sartorius von Waltershausen's memoir 'Gauss zum Gedächtniss' (Leipzig, 1856). Sartorius writes that Gauss told the story to him in old age. In that account the teacher Büttner set the summation of an arithmetic series, Gauss put his slate on the table almost at once with one number on it, and that number was correct while many other pupils were wrong. Sartorius does not give the numbers 1 to 100 and does not say how Gauss found the sum. No record made at the time (about 1786) is known.",
+  "false_part": "The numbers 1 to 100 and the pairing method are not in the earliest account; later tellers added them.",
+  "class": "unsupported",
+  "also": "changed",
+  "earliest_telling": {
+    "date": "1856",
+    "who": "Wolfgang Sartorius von Waltershausen",
+    "where": "Gauss zum Gedächtniss (Leipzig: S. Hirzel, 1856), p. 12",
+    "quote": "Gauss war kaum in die Bechen^lasse angetreten, als Büttner die Snmmation einer arithmetischen Reihe aufgab.",
+    "url": "https://archive.org/details/bub_gb_h_Q5AAAAcAAJ",
+    "archive": "https://archive.org/details/bub_gb_h_Q5AAAAcAAJ",
+    "file": "sources/gauss-sum/bub_gb_h_Q5AAAAcAAJ_djvu.txt",
+    "sha256": "53204c43415c0ba65e94264253f88e6441bc7c89f3d3036a4c62b847eaab45fb"
+  },
+  "original": [
+    {
+      "what": "Sartorius's statement that Gauss himself often told him the story in old age. These are relayed words, so they are a lead, not Gauss's own published words. No record from Gauss's school years is known.",
+      "date": "1856",
+      "who": "Wolfgang Sartorius von Waltershausen",
+      "quote": "und Lebhaftigkeit öfter erzählt hat.",
+      "url": "https://archive.org/details/bub_gb_h_Q5AAAAcAAJ",
+      "archive": "https://archive.org/details/bub_gb_h_Q5AAAAcAAJ",
+      "file": "sources/gauss-sum/bub_gb_h_Q5AAAAcAAJ_djvu.txt",
+      "sha256": "53204c43415c0ba65e94264253f88e6441bc7c89f3d3036a4c62b847eaab45fb"
+    },
+    {
+      "what": "The 1966 English translation of Sartorius's memoir by Helen Worthington Gauss. Where the German text says only 'the summation of an arithmetic series', the translation says 'the adding of a series of numbers from 1 to 100'. This shows how the specific numbers entered the English story.",
+      "date": "1966",
+      "who": "Helen Worthington Gauss (translator)",
+      "quote": "a problem the adding of a series of numbers from 1 to 100.",
+      "url": "https://archive.org/details/gauss00waltgoog",
+      "archive": "https://archive.org/details/gauss00waltgoog",
+      "file": "sources/gauss-sum/gauss00waltgoog_djvu.txt",
+      "sha256": "7b3d88d3a209808a2668540c0670cb35b9faadd78dfcb498bc6f9a7bd9a55b20"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "holds",
+    "why": "Pairing the terms of an arithmetic series from both ends is a valid general method, and it is set out as a standard rule in Euler's 'Elements of Algebra'.",
+    "source": {
+      "what": "Leonhard Euler, Elements of Algebra, Part I, Section III, Chapter 4, 'Of the Summation of Arithmetical Progressions' (English translation by John Hewlett, third edition, London 1822), web transcription by Jordan Bell",
+      "quote": "is twice the sum of the arithmetical progression, the sum required must be 155.",
+      "url": "https://jordanbell2357.github.io/euler/euler-algebra-I-III-04.html",
+      "file": "sources/gauss-sum/euler-algebra-I-III-04.html",
+      "archive": "https://web.archive.org/web/20261122125904/http://jordanbell.info/euler/euler-algebra-I-III-04.html",
+      "sha256": "6b3f25b6519b3a8825fb57b5f30ce9d8669fd4d2d69ff906eb3a580d80a11c33"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search for 'ligget se' and for Gauss Büttner 'to 100': found E. T. Bell (1937) and G. W. Dunnington (1937) retellings, all later than Sartorius.",
+    "English Wikipedia's Gauss article (lead only) tells the 1-to-100 version with the teller J. G. Büttner; I did not read its footnotes in full.",
+    "archive.org search: found the German 1856 Sartorius memoir (bub_gb_h_Q5AAAAcAAJ) and saved its OCR text; the passage on p. 12 says 'Summation einer arithmetischen Reihe' and that Gauss told the story himself in old age.",
+    "Saved the 1966 English translation (archive.org gauss00waltgoog); it inserts 'from 1 to 100', which the German original does not have.",
+    "Project Gutenberg was down; a mirror gave F. A. T. Winnecke's 1877 'Gauss, ein Umriss seines Lebens und Wirkens' (sources/gauss-sum/winnecke-1877-gutenberg.txt). It retells Sartorius and also says only 'arithmetische Reihe'.",
+    "Lead: Brian Hayes, 'Gauss's Day of Reckoning', American Scientist 94 (2006). Hayes surveyed over a hundred tellings and found the 1–100 series first in Ludwig Bieberbach's 1938 Gauss biography. That biography is not online in full text, so I did not check or quote it.",
+    "No record from the Catharinen school (1784–1788) and no account in Gauss's own published writings was found.",
+    "I did not run a separate search for a correction by Sartorius; none came up in the searches above.",
+    "Lesson source: Euler's 'Elements of Algebra', chapter on summing arithmetical progressions, which uses the same pairing method."
+  ],
+  "confidence_note": "The only source for the event is Gauss's own memory as relayed by Sartorius some 70 years later, so the event itself cannot be confirmed or ruled out. I did not see Bieberbach (1938) myself, so the date when 1 to 100 first appeared rests on Hayes. The quotes from the 1856 text keep the OCR errors of the scan ('Bechen^lasse', 'Snmmation')."
+}

@@ -1,0 +1,64 @@
+{
+  "id": "cray-tunnel",
+  "as_told": "Seymour Cray, the designer of the Cray supercomputers, dug a tunnel under his house in Chippewa Falls, Wisconsin. When he was stuck on a design problem, he would stop and dig for a while. He joked that elves came and solved his problems while he was in the tunnel.",
+  "lesson": "When you are stuck on a hard problem, stepping away to do simple physical work helps you solve it.",
+  "what_happened": "In March 1988 Time magazine reported, from John Rollwagen, chairman of Cray Research, that Cray had been digging a tunnel under his Chippewa Falls house for some time. Rollwagen gave its size as 8 ft high and 4 ft wide, lined with 4-by-4 cedar boards, and said: 'The real work happens when Seymour is in the tunnel.' Time also relays words Cray said to a visiting scientist: he dug when he was stumped, and elves in the woods solved his problems. Charles Murray's 1997 history of Cray says that most of Rollwagen's stories were true and that Cray did dig a tunnel in the hillside beneath his cottage. I found no account of the tunnel published under Cray's own name.",
+  "false_part": "",
+  "class": "true",
+  "also": "",
+  "earliest_telling": {
+    "date": "1988-03-28",
+    "who": "Time magazine, reporting John Rollwagen, chairman of Cray Research",
+    "where": "Time, 'Technology: Just Dig While You Work'",
+    "quote": "\"He's been working at it for some time now,\" says Rollwagen, who reports that the tunnel is 8 ft. high, 4 ft. wide and lined with 4-by-4 cedar boards.",
+    "url": "http://www.time.com/time/magazine/article/0,9171,967095,00.html",
+    "archive": "https://web.archive.org/web/20080521163217/http://www.time.com/time/magazine/article/0,9171,967095,00.html",
+    "file": "sources/cray-tunnel/time-1988-just-dig.txt",
+    "sha256": "76bafdb41b1e116ae89ba0cddae36c4a17bb71cc9cb01d36a60e9d65c1977edb"
+  },
+  "original": [
+    {
+      "what": "John Rollwagen's own words, quoted under his name in Time, linking the digging to Cray's design work",
+      "date": "1988-03-28",
+      "who": "John Rollwagen",
+      "quote": "Says the chairman: \"The real work happens when Seymour is in the tunnel.\"",
+      "url": "http://www.time.com/time/magazine/article/0,9171,967095,00.html",
+      "archive": "https://web.archive.org/web/20080521163217/http://www.time.com/time/magazine/article/0,9171,967095,00.html",
+      "file": "sources/cray-tunnel/time-1988-just-dig.txt",
+      "sha256": "76bafdb41b1e116ae89ba0cddae36c4a17bb71cc9cb01d36a60e9d65c1977edb"
+    },
+    {
+      "what": "Charles J. Murray, The Supermen: The Story of Seymour Cray and the Technical Wizards Behind the Supercomputer (1997), seen only as an Open Library full-text search snippet; the snippet goes on: 'Cray did dig a tunnel in the hillside beneath his cottage' (I removed the search highlight marks and the line-break hyphen from that sentence; the quote below is exact)",
+      "date": "1997",
+      "who": "Charles J. Murray",
+      "quote": "majority of Rollwagen’s stories were true.",
+      "url": "https://openlibrary.org/search/inside.json?q=%22Cray%20did%20dig%20a%20tunnel%22&limit=20",
+      "archive": "https://archive.org/details/supermenstory00murr",
+      "file": "sources/cray-tunnel/ol-search-cray-did-dig.json",
+      "sha256": "69dccbaf17d09d9f6276f72276b17ed179d9da6ad0ce75ce660630940a867357"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "holds",
+    "why": "A meta-analysis found a positive incubation effect: setting a problem aside for a while raises solution rates, and filling the break with low-demand tasks works better than demanding ones. The effect depends on the kind of problem, so it is not a sure method.",
+    "source": {
+      "what": "Sio and Ormerod, 'Does incubation enhance problem solving? A meta-analytic review', Psychological Bulletin 135(1):94-120, 2009 (abstract)",
+      "quote": "The authors identified a positive incubation effect, with divergent thinking tasks benefiting more than linguistic and visual insight tasks from incubation.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19210055/",
+      "archive": "http://web.archive.org/web/20261117141328/https://pubmed.ncbi.nlm.nih.gov/19210055/",
+      "file": "sources/cray-tunnel/pubmed-19210055.txt",
+      "sha256": "6672f1fcb1fedae40dca4ba1d9a7625c0ca0ef6bddd38e11cb274f6e47b23e18"
+    }
+  },
+  "search_steps": [
+    "The web search tool had no budget left when I started, so I used only direct addresses and catalogue searches (Open Library, Wikipedia, archive.org, PubMed).",
+    "Open Library full text, 'Seymour Cray' tunnel: earliest relevant hits are a 1990 book quoting Time ('The real work happens when Seymour is in the tunnel') and Murray, The Supermen (1997).",
+    "Open Library full text, 'elves will often come': four books from 1997 to 2011 repeat a version of the elves line; none is earlier than Time 1988.",
+    "Wikipedia 'Seymour Cray' cites Time, 28 March 1988, 'Just Dig While You Work'; saved the 2008 Wayback copy and read the full article.",
+    "The Supermen (archive.org supermenstory00murr) is lending-only; its full text could not be downloaded (403), so I have only search snippets.",
+    "Saved the 1995 Smithsonian video history interview with Cray (David Allison); it does not mention the tunnel or elves.",
+    "PubMed title search found the Sio and Ormerod 2009 meta-analysis on incubation; saved the abstract."
+  ],
+  "confidence_note": "The tunnel and the habit rest on Rollwagen (in Time) and on Murray (seen only as a search snippet); I found nothing published under Cray's own name. The elves remark is Cray's speech as relayed by Time from a visiting scientist, so it is a lead only. Time says Cray was 'only half kidding', which is Time's view. Murray's snippet also mentions part of the tunnel collapsing; I could not read the full passage. The lesson source is an abstract, not the full paper."
+}

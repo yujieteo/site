@@ -1,0 +1,73 @@
+{
+  "id": "kitty-genovese",
+  "as_told": "In March 1964 Kitty Genovese was stabbed to death outside her home in Kew Gardens, Queens. Thirty-eight neighbours watched the attack from their windows for more than half an hour. None of them called the police until she was dead.",
+  "lesson": "When many people watch an emergency, nobody helps, because each one expects someone else to act.",
+  "what_happened": "Winston Moseley attacked Kitty Genovese early on 13 March 1964 in Kew Gardens. At the trial, a neighbour, Robert Mozer, testified that he shouted at the attacker from his window and the attacker ran away, and that Genovese got up and walked off. Her neighbour Sophie Farrar testified that after a telephone call she ran downstairs, found Genovese alive in the hallway, and stayed with her until the police and an ambulance came. In 2016 The New York Times itself wrote that its 1964 account was wrong: few people saw any part of the attack, there were two attacks, not three, and two people called the police.",
+  "false_part": "Thirty-eight people did not watch the murder and do nothing: few saw any part of it, one shouted and drove the attacker off, two called the police, and a neighbour went to Genovese and held her while she was still alive.",
+  "class": "changed",
+  "also": "",
+  "earliest_telling": {
+    "date": "1964-03-27",
+    "who": "Martin Gansberg, The New York Times",
+    "where": "\"37 Who Saw Murder Didn't Call the Police\", The New York Times, front page",
+    "quote": "For more than half an hour 38 respectable, law‐abiding citizens in Queens watched a killer stalk and stab a woman in three separate attacks in Kew Gardens.",
+    "url": "https://www.nytimes.com/1964/03/27/archives/37-who-saw-murder-didnt-call-the-police-apathy-at-stabbing-of.html",
+    "archive": "http://web.archive.org/web/20260117225143/https://www.nytimes.com/1964/03/27/archives/37-who-saw-murder-didnt-call-the-police-apathy-at-stabbing-of.html",
+    "file": "sources/kitty-genovese/nyt1964.html",
+    "sha256": "39068f1bc9ce07ff086e0930760117bb9c8f3a5af266796fc24c5bf743e5d52c"
+  },
+  "original": [
+    {
+      "what": "Trial testimony of Sophie Farrar, People v. Moseley, 8 June 1964, transcript pages 76-79 (excerpt published by Joseph De May on oldkewgardens.com)",
+      "date": "1964-06-08",
+      "who": "Sophie Farrar (witness for the prosecution)",
+      "quote": "I saw Kitty Genovese laying down; she was stretched out in the hall.",
+      "url": "https://www.oldkewgardens.com/kitty_genovese-3-Farrar.html",
+      "archive": "https://web.archive.org/web/20261122130716/https://www.oldkewgardens.com/kitty_genovese-3-Farrar.html",
+      "file": "sources/kitty-genovese/kitty_genovese-3-Farrar.html",
+      "sha256": "f97f21321fa22beb20fabc16c53729fc7ce3ac3f5244e1a76b2920513f312183"
+    },
+    {
+      "what": "Trial testimony of Robert Mozer, People v. Moseley, 8 June 1964, transcript pages 57-59 (excerpt published by Joseph De May on oldkewgardens.com)",
+      "date": "1964-06-08",
+      "who": "Robert Mozer (witness for the prosecution)",
+      "quote": "I hollered, \"Hey, get out of there\" or \"What are you doing?\"",
+      "url": "https://www.oldkewgardens.com/kitty_genovese-3-Mozer.html",
+      "archive": "http://web.archive.org/web/20080517122121/http://www.oldkewgardens.com:80/kitty_genovese-3-Mozer.html",
+      "file": "sources/kitty-genovese/kitty_genovese-3-Mozer.html",
+      "sha256": "a0f40b210ec6116ab18ab42c9ca7ac7148f2cc8ff65b207259bbeef93a56f1b4"
+    }
+  ],
+  "teller_correction": {
+    "what": "The New York Times obituary of Winston Moseley, which states that the paper's 1964 account was wrong (the 1964 article page also carries an Editors' Note dated 12 October 2016 saying later reporting 'has called into question significant elements of this account')",
+    "date": "2016-04-04",
+    "who": "Robert D. McFadden, The New York Times",
+    "quote": "the portrayal of 38 witnesses as fully aware and unresponsive was erroneous. The article grossly exaggerated the number of witnesses and what they had perceived.",
+    "url": "https://www.nytimes.com/2016/04/05/nyregion/winston-moseley-81-killer-of-kitty-genovese-dies-in-prison.html",
+    "archive": "http://web.archive.org/web/20260107223127/https://www.nytimes.com/2016/04/05/nyregion/winston-moseley-81-killer-of-kitty-genovese-dies-in-prison.html",
+    "file": "sources/kitty-genovese/nyt2016-moseley.html",
+    "sha256": "8f8c0d8015e6311ddcc67ca06c88719629446647e97f26925007f1131bd19e44"
+  },
+  "lesson_verdict": {
+    "status": "does not hold",
+    "why": "Laboratory studies do find that each person is less likely to help when others are present. But a study of 219 real public conflicts filmed by street cameras in three countries found that someone helped in 9 of 10 cases, and that more bystanders made help more likely, not less.",
+    "source": {
+      "what": "Philpot, Liebst, Levine, Bernasco and Lindegaard, 'Would I be helped? Cross-national CCTV footage shows that intervention is the norm in public conflicts', American Psychologist 75(1):66-75 (2020)",
+      "quote": "in 9 of 10 public conflicts, at least 1 bystander, but typically several, will do something to help.",
+      "url": "https://gwern.net/doc/crime/2020-philpot.pdf",
+      "archive": "https://web.archive.org/web/20261122130745/https://gwern.net/doc/crime/2019-philpot.pdf",
+      "file": "sources/kitty-genovese/philpot2020.pdf.txt",
+      "sha256": "b55d81e88d4fdf5825c826703461b9a7c47f4099e6581b66a67ad608f001a08a"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search for \"Genovese\" \"38\" \"witnesses\": 29,402 hits, mostly Mafia books with the Genovese crime family; the earliest relevant book was A. M. Rosenthal's Thirty-Eight Witnesses (1964 text, scanned editions 1999 and 2008). No telling before March 1964 was found.",
+    "Wikipedia and news articles point to Martin Gansberg's New York Times front-page article of 27 March 1964 as the source of the '38 witnesses' story. nytimes.com refused the direct download (403); saved the Wayback Machine copy of 17 January 2026, which holds the full 1964 text and the Editors' Note of 12 October 2016.",
+    "Saved the Wayback Machine copy of the New York Times obituary of Winston Moseley (4-5 April 2016), which lists the errors of the 1964 article.",
+    "Search for trial records led to oldkewgardens.com (Joseph De May), which publishes excerpts of the trial transcript of People v. Moseley (8 June 1964). Saved the testimony of Sophie Farrar and Robert Mozer. The site is a lead, but the transcript text is the court record itself.",
+    "Lesson source: saved Philpot et al. 2020 from gwern.net. The CORE copy refused the download (403). When I asked the Wayback Machine to save the gwern.net address, gwern.net redirected it to 2019-philpot.pdf, so the archived link has that name.",
+    "HathiTrust and Google Books full-text search: HathiTrust refused with a Cloudflare check; Google Books API refused with 429; did not retry.",
+    "Free newspaper archives: Chronicling America stops at 1963 and the story begins in 1964, so it was not searched."
+  ],
+  "confidence_note": "The trial transcript excerpts come from a site run by a researcher who argues that the popular story is wrong; I did not see the full court transcript. The Times's own 2016 correction agrees with the excerpts. The number of people who heard or saw any part of the attack is not known exactly."
+}

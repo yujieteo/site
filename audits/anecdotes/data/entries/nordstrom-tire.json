@@ -1,0 +1,100 @@
+{
+  "id": "nordstrom-tire",
+  "as_told": "A customer rolled a set of car tyres into a Nordstrom store and asked for his money back. Nordstrom has never sold tyres, but the salesperson gave him a refund anyway. The story is told to show how far Nordstrom goes to keep a customer happy.",
+  "lesson": "Generous, no-questions-asked returns build customer loyalty that repays their cost.",
+  "what_happened": "In 1975 Nordstrom bought three Alaska stores from the Northern Commercial Company, and its Fairbanks store was in an old Northern Commercial building. The earliest telling found, in the Los Angeles Times of 15 December 1986, is a rule, not an event: Betsy Sanders, the Nordstrom vice president in charge of its Southern California stores, said staff were told to take back a tire if someone wheeled one in. From 2001 on, Nordstrom family members and the company said it really happened in Fairbanks in the mid- or late 1970s, and in 2015 a former clerk, Craig Trounce, was named as the salesperson. In that later account the customer had bought the tires from Northern Commercial in the same building, and the clerk paid him an estimated value. Every saved account that the event happened was published 26 or more years later and relays someone else's memory, and the accounts differ on the number of tires, the amount and the date.",
+  "false_part": "",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "1986-12-15",
+    "who": "S.J. Diamond, Los Angeles Times, quoting Betsy Sanders of Nordstrom",
+    "where": "Not All Stores Will Cheerfully Give Refunds",
+    "quote": "Nordstrom even claims that it will take back something it doesn't carry if the customer insists: \"We were always told that if someone came in wheeling a tire and said it came from Nordstrom, we should take the return,\" says Betsy Sanders.",
+    "url": "https://www.latimes.com/archives/la-xpm-1986-12-15-fi-2829-story.html",
+    "archive": "https://web.archive.org/web/20261122115330/https://www.latimes.com/archives/la-xpm-1986-12-15-fi-2829-story.html",
+    "file": "sources/nordstrom-tire/latimes-1986-12-15-not-all-stores-refunds.html",
+    "sha256": "a177d65d5d1ca5e630d4d16041b1b2b259eaefca816e6a70b5d610846884fc22"
+  },
+  "original": [
+    {
+      "what": "Nordstrom company history (Nordstrom press room)",
+      "date": "undated (page shows events to 2006 or later)",
+      "who": "Nordstrom, Inc.",
+      "quote": "In 1975, Nordstrom purchased three stores in Alaska from the Northern Commercial Company in Anchorage, Fairbanks and Kenai.",
+      "url": "https://press.nordstrom.com/static-files/64477c93-6b88-4865-ab18-37b222d71c22",
+      "archive": "http://web.archive.org/web/20251206132432/https://press.nordstrom.com/static-files/64477c93-6b88-4865-ab18-37b222d71c22",
+      "file": "sources/nordstrom-tire/nordstrom-history-64477c93.pdf",
+      "sha256": "efcd3ee4bd338f3ba1639c3fcfa81a559c63174b19a8b7f7eb8e8b34c7fddd26"
+    },
+    {
+      "what": "Anchorage Daily News report on the closing of the Fairbanks store (reprinted online in 2019)",
+      "date": "1989-09-09",
+      "who": "David Hulen, Anchorage Daily News",
+      "quote": "The main building here is one of the oldest in Fairbanks, built in 1905 as the Northern Commercial Co. warehouse, and taken over by Nordstrom in the 1970s during the pipeline boom.",
+      "url": "https://www.adn.com/business-economy/2019/06/26/customers-march-to-protest-closure-of-fairbanks-nordstrom-store/",
+      "archive": "http://web.archive.org/web/20250210225845/https://www.adn.com/business-economy/2019/06/26/customers-march-to-protest-closure-of-fairbanks-nordstrom-store/",
+      "file": "sources/nordstrom-tire/adn-1989-09-09-fairbanks-closure.html",
+      "sha256": "d935f52594b68ce10986121e139cee17e10723064628dfe42f98d41b503aad0f"
+    },
+    {
+      "what": "Seattle Times report quoting John Nordstrom (relayed words; a lead under rule 5)",
+      "date": "2001-05-29",
+      "who": "Bill Kossen, The Seattle Times",
+      "quote": "such as the time in mid-1970s when a salesman in Fairbanks took back a $25 automobile tire, even though Nordstrom didn't sell tires. Nordstrom had just expanded into a building that had been a tire store, said John Nordstrom, who was there that day.",
+      "url": "https://archive.seattletimes.com/archive/20010529/newnordstrom29/success-came-a-step-at-a-time-for-nordstrom",
+      "archive": "http://web.archive.org/web/20260704005304/https://archive.seattletimes.com/archive/20010529/newnordstrom29/success-came-a-step-at-a-time-for-nordstrom",
+      "file": "sources/nordstrom-tire/seattletimes-2001-05-29-success-step.html",
+      "sha256": "42f96e9d11ad5fd02b02850455b44e145316376cc7f24628cf27144cf5b027c5"
+    },
+    {
+      "what": "Alaska Airlines Magazine article naming the clerk (relayed words; a lead under rule 5)",
+      "date": "2015-10-05",
+      "who": "Paul Frichtl, Alaska Airlines Magazine",
+      "quote": "He called a local tire dealer, came up with a fair value for the used tires—$25 for the pair—and paid the man out of the till.",
+      "url": "https://news.alaskaair.com/alaska-airlines/nordstrom-tire-story/",
+      "archive": "http://web.archive.org/web/20260809013939/https://news.alaskaair.com/alaska-airlines/nordstrom-tire-story/",
+      "file": "sources/nordstrom-tire/alaskaair-nordstrom-tire-story.html",
+      "sha256": "428e42d9bc073f65d8ea03fad3f92a2acd370b2197b6ea1c1ea19f9cd0bc57b5"
+    },
+    {
+      "what": "Nordstrom press release on its podcast episode about the story (the company's own published words, relaying what the former clerk told it)",
+      "date": "undated on the saved page; it announces podcast episode 14, which Apple Podcasts dates 2022-08-01",
+      "who": "Nordstrom, Inc.",
+      "quote": "The tire story did happen– and Pete even tracked down the former Nordstrom employee responsible for the now-famous interaction.",
+      "url": "https://press.nordstrom.com/news-releases/news-release-details/nordy-pod-truth-about-nordstroms-legendary-tire-story",
+      "archive": "http://web.archive.org/web/20250918210909/https://press.nordstrom.com/news-releases/news-release-details/nordy-pod-truth-about-nordstroms-legendary-tire-story",
+      "file": "sources/nordstrom-tire/nordstrom-press-nordypod-tire.html",
+      "sha256": "8bcde4dca1b1b2f9ebd0f63e31bce3074e6ba3a457fffb23c8f52577d33e69ff"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "holds",
+    "why": "A meta-analysis of 21 papers found that lenient return policies raise purchases more than they raise returns. It does not test refunds for goods a store never sold.",
+    "source": {
+      "what": "Janakiraman, Syrdal and Freling, 'The Effect of Return Policy Leniency on Consumer Purchase and Return Decisions: A Meta-analytic Review', Journal of Retailing 92(2):226-235, 2016 (abstract)",
+      "quote": "We conduct a meta-analysis of 21 papers examining the effect of leniency on purchase and return decisions, and demonstrate that overall, leniency increases purchase more than return.",
+      "url": "https://econpapers.repec.org/RePEc:eee:jouret:v:92:y:2016:i:2:p:226-235",
+      "archive": "https://web.archive.org/web/20261122115837/https://econpapers.repec.org/article/eeejouret/v_3a92_3ay_3a2016_3ai_3a2_3ap_3a226-235.htm",
+      "file": "sources/nordstrom-tire/janakiraman-2016-repec-abstract.html",
+      "sha256": "6e6944a1338ac45ce49de49cbb0083ff008c14eb5fa752e3aff1126dd33b277d"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search 'Nordstrom tires refund', 'Nordstrom \"tires\" returned', '\"Nordstrom\" \"tires\"' (five pages), 'Nordstrom \"snow tires\"', 'Nordstrom \"tires\" \"doesn't sell\"': the earliest tellings found are from 1990 (Arlene Singer, Take It Back; and the book with archive.org id loversorclientss0000jhow) and 1991. Tom Peters, Thriving on Chaos (1987) says 'Nordstrom takes anything' but the snippet seen does not mention tires.",
+    "Google Books API: refused with 'Quota exceeded' (HTTP 429), so no query ran. HathiTrust full-text search: refused with a JavaScript check page (HTTP 403). Neither search could be done.",
+    "English Wikipedia 'Nordstrom': not used; the leads came from the Snopes page 'Return to Spender' (read from a Wayback copy, lead only). It lists tellings in the Los Angeles Times (1986-12-15), Newsweek (1987-01-05), Business Week (1987-07-15), U.S. News (1988-12-05), The Washington Post (1988-12-26), The New York Times (1989-08-27), The Seattle Times (2001-05-29), and Spector and McCarthy, The Nordstrom Way (1995).",
+    "Los Angeles Times 1986-12-15: found the article id with a Wayback CDX listing, requested a Wayback save, and saved that copy. It is the earliest telling found, and it is a staff rule about a hypothetical tire, not a report of an event.",
+    "The Washington Post 1988-12-26 'Many Happy Returns' (Lena H. Sun): Snopes says it reported that Nordstrom officials called the tire story apocryphal. The saved page showed only the first two sentences behind a paywall, so this was not verified and the file was deleted.",
+    "The New York Times 1989-08-27: no Wayback copy; not read. Newsweek, Business Week and U.S. News 1987-1988: not found online in full text.",
+    "Spector and McCarthy, The Nordstrom Way (1995, p. 26): lending-only on archive.org. An Open Library snippet shows that it tells the story with the 1975 Northern Commercial purchase; Snopes quotes it as calling the story true. Not quoted.",
+    "Saved the company history PDF and the Nordstrom press release from Wayback copies, because press.nordstrom.com refused direct download.",
+    "Saved the Star Tribune article of 2015-10-02 (Blake Nordstrom quoted: the store had turned 'the auto store into a men's store'), the Seattle Times 2001 article (John Nordstrom quoted), and the Alaska Airlines Magazine article of 2015-10-05 (names Craig Trounce, 16 years old, late 1970s, $25 for a pair). All three relay someone else's account.",
+    "Looked for a transcript of the Nordy Pod episode, where the former clerk would speak in his own words. The press release links to Apple Podcasts episode 14, 'The Tire Story Is True', released 2022-08-01 (page saved as apple-podcast-nordypod-ep14.html). Its page data shows transcriptInfo null, and no transcript was found elsewhere, so the clerk's own account is not quoted.",
+    "Open Library '\"Northern Commercial\" tires Fairbanks' and '\"Northern Commercial Company\" tires': no record found that the Fairbanks store sold tires in the 1970s. Snopes says the Alaska Commercial Company told it the stores sold were already department stores; not verified.",
+    "Newspaper archives (Chronicling America, Trove, Papers Past, Google News Archive): not useful for a 1970s Alaska event. No Fairbanks Daily News-Miner report of the refund was found.",
+    "Teller correction: the 1988 Washington Post denial, if it exists, would be one. It could not be read."
+  ],
+  "confidence_note": "No record made at the time shows the refund. The earliest telling found (1986) is a hypothetical rule told by a Nordstrom vice president. Read literally, rule 9 says that a hypothetical earliest telling gives 'invented'. I kept 'unsupported' because the search for earlier tellings is incomplete (Google Books and HathiTrust refused every request, and the 1987-1989 magazine and newspaper tellings could not be read), so this 1986 rule may not be the first telling, and because the company later said the event was real. Against that, the company and members of the Nordstrom family later said that it happened, and in 2015 a former clerk was named. But each of these accounts is relayed, all were published 26 or more years after the event, and they disagree on the details: one tire or a pair, a $25 refund for one tire or $25 for the pair, the mid- or late 1970s, and whether John Nordstrom was there. Whether the Fairbanks store had sold tires under Northern Commercial is stated only in later Nordstrom accounts. If the clerk's own words are found, this could become 'changed': in his version the customer had bought the tires in the same building, so the refund was not for goods with no link to the store. The expected class for this candidate was seen by mistake in data/plants.tsv before research started."
+}

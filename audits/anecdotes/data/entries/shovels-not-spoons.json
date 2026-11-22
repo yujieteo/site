@@ -1,0 +1,68 @@
+{
+  "id": "shovels-not-spoons",
+  "as_told": "An economist, usually Milton Friedman, visits a country in Asia and sees hundreds of workers building a dam or canal with shovels. He asks why they do not use machines and is told that the project is a jobs programme. He replies: \"Then why not give them spoons instead of shovels?\"",
+  "lesson": "Creating jobs by using less productive methods makes a society poorer, because wealth comes from output, not from the amount of work.",
+  "what_happened": "The joke about spoons instead of shovels was printed in American newspapers by 1901, told about an unnamed bystander watching a steam shovel in Philadelphia. In 1908 the Philadelphia Press, reprinted in the Omaha Daily Bee, credited a version to the late Walter A. Wyckoff, the tramp professor of Princeton, as told by a magazine editor; in it Wyckoff argues about political economy. The dam version appears in 1996, when Cleveland Fed president Jerry L. Jordan wrote that a western businessman told him the story about a dam in China. The attribution to Milton Friedman (a canal in India in the 1960s) first appears in a 2008 book by Laffer, Moore and Tanous, and I found no telling by Friedman himself.",
+  "false_part": "No record shows Friedman or any named economist saying it at a dam or canal; the quip circulated earlier as an anecdote with other speakers.",
+  "class": "unsupported",
+  "also": "misattributed",
+  "earliest_telling": {
+    "date": "1908-07-19",
+    "who": "Unnamed magazine editor recalling Walter A. Wyckoff; Philadelphia Press, reprinted in the Omaha Daily Bee",
+    "where": "Omaha Daily Bee, 19 July 1908, page 20, item headed \"Aa F.eoaoiulcal Idea\" in the OCR text (probably \"An Economical Idea\")",
+    "quote": "why not get E,000 men with teaspoons for",
+    "url": "https://nebnewspapers.unl.edu/lccn/sn99021999/1908-07-19/ed-1/seq-20/ocr.txt",
+    "archive": "https://web.archive.org/web/20261122182457/https://nebnewspapers.unl.edu/lccn/sn99021999/1908-07-19/ed-1/seq-20/",
+    "file": "sources/shovels-not-spoons/omaha-daily-bee-1908-07-19-p20-ocr.txt",
+    "sha256": "db060e584c6495938dd957df945275aa1434f3008416c9088b57748f75feff5a"
+  },
+  "original": [
+    {
+      "what": "The same 1908 reprint: Wyckoff's point that labour-saving machines do not rob men of work, told through a conversation he overheard",
+      "date": "1908-07-19",
+      "who": "Philadelphia Press, reprinted in the Omaha Daily Bee",
+      "quote": "reminded of a conversation he overheard",
+      "url": "https://nebnewspapers.unl.edu/lccn/sn99021999/1908-07-19/ed-1/seq-20/ocr.txt",
+      "archive": "https://web.archive.org/web/20261122182457/https://nebnewspapers.unl.edu/lccn/sn99021999/1908-07-19/ed-1/seq-20/",
+      "file": "sources/shovels-not-spoons/omaha-daily-bee-1908-07-19-p20-ocr.txt",
+      "sha256": "db060e584c6495938dd957df945275aa1434f3008416c9088b57748f75feff5a"
+    },
+    {
+      "what": "Earliest dam version I could save: Jordan retells a story from a western businessman about workers building an earthen dam in China",
+      "date": "1996-10-01",
+      "who": "Jerry L. Jordan, Federal Reserve Bank of Cleveland, Economic Commentary \"Jobs Creation and Government Policy\"",
+      "quote": "els and give them spoons!\"",
+      "url": "https://www.clevelandfed.org/-/media/project/clevelandfedtenant/clevelandfedsite/publications/economic-commentary/1996/ec-19961001-jobs-creation-and-government-policy-pdf.pdf",
+      "archive": "http://web.archive.org/web/20260217022823/https://www.clevelandfed.org/-/media/project/clevelandfedtenant/clevelandfedsite/publications/economic-commentary/1996/ec-19961001-jobs-creation-and-government-policy-pdf.pdf",
+      "file": "sources/shovels-not-spoons/clevelandfed-1996-10-jordan-jobs-creation.pdf",
+      "sha256": "b6dce5cb07a17888d0eb7bb0a6cb456dc61d1df80491a748339adb0261d7878e"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "holds",
+    "why": "Two centuries of machines replacing hand labour have not reduced employment overall; the employment-to-population ratio rose during the 20th century, while output and incomes grew. This supports the view that productive tools, not make-work, raise living standards.",
+    "source": {
+      "what": "David H. Autor, \"Why Are There Still So Many Jobs? The History and Future of Workplace Automation\", Journal of Economic Perspectives 29(3), 2015, pp. 3-30",
+      "quote": "not made human labor obsolete: the employment‐to‐population ratio rose during",
+      "url": "https://economics.mit.edu/files/11563",
+      "archive": "https://web.archive.org/web/20160630045409/http://economics.mit.edu:80/files/11563",
+      "file": "sources/shovels-not-spoons/autor-2015-jep-still-so-many-jobs.pdf",
+      "sha256": "94a4fcd31fc8e8021f36c298cb5aa67dad69baa89f7dc8c41b869563c6ea46fa"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search for the exact phrase \"give them spoons\": found Aberhart's 1935 speech (printed 1991) and later citations of Jordan 1996; no earlier dam or economist version.",
+    "English Wikipedia search (API) for spoons, shovels, Friedman and jobs: no article on the story.",
+    "Web search led to Quote Investigator (2011, updated 2023) and two ADS-L posts by Garson O'Toole; used them only as leads to dated sources.",
+    "ADS-L 2023: O'Toole cites Chicago Daily Tribune, 20 September 1901, page 12, 'They Saw the Point', reprinted from the Philadelphia Public Ledger: a bystander at a steam shovel on North Broad Street asks why not give a thousand men teaspoons. The page is on Newspapers.com (paywalled); I could not save it and do not quote it.",
+    "ADS-L 2011: O'Toole cites Lethbridge Herald, 18 May 1935 (William Aberhart: 'spoons and forks' for airport workers), Dail Eireann 1966, House of Lords 1967, Cato Journal 1996 (Jordan), and Laffer, Moore and Tanous 2008, the first Friedman attribution. I did not save the Lethbridge Herald (NewspaperArchive, paywalled) or the 2008 book (Google Books preview only).",
+    "Chronicling America (loc.gov), NYS Historic Newspapers, HathiTrust and Papers Past all returned a bot challenge (403) and were not searched. Google Books API returned 429.",
+    "Nebraska Newspapers (nebnewspapers.unl.edu) full-text search for 'teaspoons shovels dirt' 1895-1925: found Omaha Daily Bee, 19 July 1908, page 20, crediting the Philadelphia Press, with the Wyckoff version; saved its OCR text. Also found Omaha Daily Bee, 9 November 1920, page 6, a bystander version at a Dodge Street cut (not saved).",
+    "Quote Investigator lists an Evening Star (Washington) Wyckoff version of 13 June 1908; I could not reach Chronicling America to save it.",
+    "Searched for the dam setting: Jordan's essay first appeared as a Cleveland Fed Economic Commentary dated 1 October 1996 (saved), before the Cato Journal version (Winter 1997). Quote Investigator also lists a 2007 Economist item about an economist in Mao-era China that it calls perhaps apocryphal; not saved.",
+    "Searched for Friedman telling the story in his own words (books, interviews, transcripts): found none. All Friedman attributions are by others from 2008 on.",
+    "Lesson: the AEA copy of Autor 2015 returned 403 and MIT DSpace returned 429; saved the MIT Economics copy from the Wayback Machine."
+  ],
+  "confidence_note": "The 1901 Chicago Tribune text comes only from O'Toole's transcription, so the earliest saved telling is 1908. The 1908 OCR text has errors (for example 'E,000' for '5,000' and 'DUO' for '500'). Friedman may have told the joke orally, but no record in his own name shows it."
+}

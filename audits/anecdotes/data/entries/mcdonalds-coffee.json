@@ -1,0 +1,107 @@
+{
+  "id": "mcdonalds-coffee",
+  "as_told": "A woman bought a cup of coffee at a McDonald's drive-through, spilled it on herself, and sued the company. A jury gave her nearly $3 million. The case is told as the classic example of a frivolous lawsuit and of a legal system out of control.",
+  "lesson": "Juries often give huge awards for trivial claims, so the civil justice system is out of control.",
+  "what_happened": "On 27 February 1992 Stella Liebeck, aged 79, spilled McDonald's coffee in her lap while she sat in a parked car and tried to take off the lid to add cream and sugar. She had third-degree burns, spent seven days in hospital and needed skin grafts, and McDonald's offered her $800. At the trial in August 1994, company documents showed at least 700 earlier reports of coffee burns in ten years. The jury set compensatory damages at $200,000, cut to $160,000 because it found her 20 per cent at fault, and punitive damages at $2.7 million. The judge cut the total to $640,000, and the two sides then settled for an amount they kept secret.",
+  "false_part": "The claim was not trivial, because her burns were severe and McDonald's knew of hundreds of earlier burns, and she did not keep millions, because the judge cut the award to $640,000 before a secret settlement.",
+  "class": "changed",
+  "also": "",
+  "earliest_telling": {
+    "date": "1994-09-01",
+    "who": "Andrea Gerlin",
+    "where": "The Wall Street Journal, 1 September 1994, page A1 (Westlaw copy)",
+    "quote": "A Matter of Degree: How a Jury Decided That a Coffee Spill Is Worth $2.9 Million",
+    "url": "http://www.business.txstate.edu/users/ds26/Business%20Law%202361/Misc/McDonalds%20coffee.pdf",
+    "archive": "https://web.archive.org/web/20150923195353/http://www.business.txstate.edu/users/ds26/Business%20Law%202361/Misc/McDonalds%20coffee.pdf",
+    "file": "sources/mcdonalds-coffee/gerlin-1994-wsj.pdf",
+    "sha256": "03a2ba541fe3b7a0c117e0aa552a318bbfc2453dfa32b0b0475001864c63e6ca"
+  },
+  "original": [
+    {
+      "what": "Andrea Gerlin's report from the trial, Wall Street Journal, 1 September 1994: the earlier burn reports",
+      "date": "1994-09-01",
+      "who": "Andrea Gerlin",
+      "quote": "Company documents showed that in the past decade McDonald's had received at least 700 reports of coffee burns ranging from mild to third degree",
+      "url": "http://www.business.txstate.edu/users/ds26/Business%20Law%202361/Misc/McDonalds%20coffee.pdf",
+      "archive": "https://web.archive.org/web/20150923195353/http://www.business.txstate.edu/users/ds26/Business%20Law%202361/Misc/McDonalds%20coffee.pdf",
+      "file": "sources/mcdonalds-coffee/gerlin-1994-wsj.pdf",
+      "sha256": "03a2ba541fe3b7a0c117e0aa552a318bbfc2453dfa32b0b0475001864c63e6ca"
+    },
+    {
+      "what": "Gerlin 1994: the jury's awards",
+      "date": "1994-09-01",
+      "who": "Andrea Gerlin",
+      "quote": "Then the six men and six women decided on compensatory damages of $200,000, which they reduced to $160,000 after determining that 20% of the fault belonged with Mrs. Liebeck for spilling the coffee.",
+      "url": "http://www.business.txstate.edu/users/ds26/Business%20Law%202361/Misc/McDonalds%20coffee.pdf",
+      "archive": "https://web.archive.org/web/20150923195353/http://www.business.txstate.edu/users/ds26/Business%20Law%202361/Misc/McDonalds%20coffee.pdf",
+      "file": "sources/mcdonalds-coffee/gerlin-1994-wsj.pdf",
+      "sha256": "03a2ba541fe3b7a0c117e0aa552a318bbfc2453dfa32b0b0475001864c63e6ca"
+    },
+    {
+      "what": "Gerlin 1994: the injuries as described at the trial",
+      "date": "1994-09-01",
+      "who": "Andrea Gerlin",
+      "quote": "Told during the trial of Mrs. Liebeck's seven days in the hospital and of her skin grafts, and shown gruesome photographs, jurors began taking the matter more seriously.",
+      "url": "http://www.business.txstate.edu/users/ds26/Business%20Law%202361/Misc/McDonalds%20coffee.pdf",
+      "archive": "https://web.archive.org/web/20150923195353/http://www.business.txstate.edu/users/ds26/Business%20Law%202361/Misc/McDonalds%20coffee.pdf",
+      "file": "sources/mcdonalds-coffee/gerlin-1994-wsj.pdf",
+      "sha256": "03a2ba541fe3b7a0c117e0aa552a318bbfc2453dfa32b0b0475001864c63e6ca"
+    },
+    {
+      "what": "Newsweek, 'Are Lawyers Burning America?', issue of 20 March 1995: the reduced award",
+      "date": "1995-03-20",
+      "who": "Newsweek",
+      "quote": "A jury awarded her $2.9 million after a trial; a judge knocked that down to $640,000.",
+      "url": "https://www.newsweek.com/are-lawyers-burning-america-180680",
+      "archive": "http://web.archive.org/web/20250831190321/https://www.newsweek.com/are-lawyers-burning-america-180680",
+      "file": "sources/mcdonalds-coffee/newsweek-1995-03-19.html",
+      "sha256": "04a11c3bcdb0622511f322fe5667e4bf1e51e642d09b34c7b7605309e9051355"
+    },
+    {
+      "what": "Newsweek 1995: the settlement",
+      "date": "1995-03-20",
+      "who": "Newsweek",
+      "quote": "After further post-trial skirmishing, the two sides settled out of court. Part of their deal includes keeping secret the final amount.",
+      "url": "https://www.newsweek.com/are-lawyers-burning-america-180680",
+      "archive": "http://web.archive.org/web/20250831190321/https://www.newsweek.com/are-lawyers-burning-america-180680",
+      "file": "sources/mcdonalds-coffee/newsweek-1995-03-19.html",
+      "sha256": "04a11c3bcdb0622511f322fe5667e4bf1e51e642d09b34c7b7605309e9051355"
+    },
+    {
+      "what": "Newsweek 1995: the car was parked",
+      "date": "1995-03-20",
+      "who": "Newsweek",
+      "quote": "Chris parked the car so she could add some cream and sugar to her coffee.",
+      "url": "https://www.newsweek.com/are-lawyers-burning-america-180680",
+      "archive": "http://web.archive.org/web/20250831190321/https://www.newsweek.com/are-lawyers-burning-america-180680",
+      "file": "sources/mcdonalds-coffee/newsweek-1995-03-19.html",
+      "sha256": "04a11c3bcdb0622511f322fe5667e4bf1e51e642d09b34c7b7605309e9051355"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "does not hold",
+    "why": "In a national survey of state court trials, the median award to plaintiffs who won money was $28,000, and only 5 per cent of winning plaintiffs received punitive damages. Huge awards like the Liebeck verdict are rare. The survey does not measure how many claims are trivial.",
+    "source": {
+      "what": "U.S. Bureau of Justice Statistics, Civil Justice Survey of State Courts, 2005 (Special Report NCJ 223851, October 2008, revised 2009)",
+      "date": "2008-10",
+      "who": "Lynn Langton and Thomas H. Cohen, Bureau of Justice Statistics",
+      "quote": "Punitive damages were awarded to 5% of plaintiff winners in general civil trials in 2005.",
+      "url": "https://bjs.ojp.gov/content/pub/pdf/cbjtsc05.pdf",
+      "archive": "http://web.archive.org/web/20261110165937/https://bjs.ojp.gov/content/pub/pdf/cbjtsc05.pdf",
+      "file": "sources/mcdonalds-coffee/bjs-cbjtsc05.txt",
+      "sha256": "87674160694faef5306b290896687c33223844e257d64c29c44841cddd6e7f89"
+    }
+  },
+  "search_steps": [
+    "Read the English Wikipedia article on the case for its cited sources: an AP report of 18 August 1994, Andrea Gerlin's Wall Street Journal article of 1 September 1994 (archived PDF), AP reports of the reduced award (15 September 1994) and a settlement report in the Albuquerque Journal (1 December 1994).",
+    "Saved Gerlin's Wall Street Journal article from its Wayback Machine copy of a Texas State University PDF. It also says that 'radio talk-show hosts around the country have lambasted the plaintiff', so the story was already told as a scandal by 1 September 1994.",
+    "Tried the newspapers.com clippings cited by Wikipedia for the reduced award: refused (403); did not retry. The AP reports of 18 August 1994 and the court docket (No. CV-93-02419, Bernalillo County, New Mexico) are not online in free full text, so not quoted.",
+    "Saved Newsweek, 'Are Lawyers Burning America?' (20 March 1995), which reports the reduced award of $640,000, the secret settlement, the $800 offer and that the car was parked.",
+    "Open Library full-text search for McDonald's coffee \"frivolous\" lawsuit: dated hits from 1995 onward; 'Judicial Process' (1997) quotes the view that a law would 'discourage frivolous law- suits like the McDonald's coffee spill case'. Saved as ol-inside-coffee-frivolous.json, not quoted.",
+    "Saved a Tampa Bay Times reprint of Gerlin's article (2 September 1994) and a university teaching handout as leads; deleted both after saving the Wall Street Journal copy, which is the better source.",
+    "Saved the Bureau of Justice Statistics report on the 2005 Civil Justice Survey of State Courts as evidence on the lesson; quotes use a plain text copy made without -layout.",
+    "Wayback Machine availability checked for the Newsweek page and the BJS PDF; snapshots exist. The Wall Street Journal copy is itself a Wayback Machine copy."
+  ],
+  "confidence_note": "The court records are not online, so the awards, the reduction and the settlement come from news reports made at the time or a few months later. Some sources give the reduced punitive award as $480,000, which matches a $640,000 total with $160,000 compensatory; I did not read a record that gives $480,000 directly. The BJS survey is for 2005, not 1994."
+}

@@ -1,0 +1,55 @@
+{
+  "id": "einstein-speed-light",
+  "as_told": "Someone asked Albert Einstein for the speed of sound (some tellings say the speed of light). He did not give the number and said that he did not keep in his head facts that he could easily look up in a book. The story is told to show that a great mind does not waste memory on facts.",
+  "lesson": "You do not need to memorise facts that you can look up; understanding matters more than stored knowledge.",
+  "what_happened": "On 17 May 1921 Einstein arrived in Boston. He was asked a question from Thomas Edison's much-discussed test: the speed of sound. The New York Times of 18 May 1921, page 15, reported it under the headline \"Einstein Sees Boston; Fails on Edison Test\", with the subhead \"Asked to Tell Speed of Sound He Refers Questioner to Text Books\". The question was about sound, and the headline presents it as a question he could not answer, not one he refused.",
+  "false_part": "",
+  "class": "true",
+  "also": "",
+  "earliest_telling": {
+    "date": "1921-05-18",
+    "who": "Special to The New York Times (unsigned), Boston, 17 May",
+    "where": "The New York Times, \"Einstein Sees Boston; Fails on Edison Test\", page 15",
+    "quote": "Asked to Tell Speed of Sound He Refers Questioner to Text Books.",
+    "url": "https://www.nytimes.com/1921/05/18/archives/einstein-sees-boston-fails-on-edison-test-asked-to-tell-speed-of.html",
+    "archive": "https://web.archive.org/web/20191015034317/https://www.nytimes.com/1921/05/18/archives/einstein-sees-boston-fails-on-edison-test-asked-to-tell-speed-of.html",
+    "file": "sources/einstein-speed-light/nyt-1921-05-18-einstein-sees-boston.html",
+    "sha256": "a12e714b20124f1b6341d578abcde20d2680b1c101c0b76ff831da1b6c1188f6"
+  },
+  "original": [
+    {
+      "what": "The same New York Times report, made the day after the event; only the headline, subhead and first sentence are free online",
+      "date": "1921-05-18",
+      "who": "Special to The New York Times",
+      "quote": "EINSTEIN SEES BOSTON; FAILS ON EDISON TEST;",
+      "url": "https://www.nytimes.com/1921/05/18/archives/einstein-sees-boston-fails-on-edison-test-asked-to-tell-speed-of.html",
+      "archive": "https://web.archive.org/web/20191015034317/https://www.nytimes.com/1921/05/18/archives/einstein-sees-boston-fails-on-edison-test-asked-to-tell-speed-of.html",
+      "file": "sources/einstein-speed-light/nyt-1921-05-18-einstein-sees-boston.html",
+      "sha256": "a12e714b20124f1b6341d578abcde20d2680b1c101c0b76ff831da1b6c1188f6"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "does not hold",
+    "why": "Research reviewed by the cognitive psychologist Daniel Willingham shows that factual knowledge held in memory makes reading comprehension, learning and reasoning faster and better; in one study poor readers who knew baseball understood a baseball text better than good readers who did not. So the general rule that stored knowledge matters less than understanding is contradicted.",
+    "source": {
+      "what": "Daniel T. Willingham, \"How Knowledge Helps: It Speeds and Strengthens Reading Comprehension, Learning—and Thinking\", American Educator 30(1), Spring 2006, article beginning on page 30 (citing Recht and Leslie 1988)",
+      "quote": "baseball displayed better comprehension than good readers",
+      "url": "https://www.aft.org/sites/default/files/media/documents/2023/30.1_spring_2006.pdf",
+      "archive": "http://web.archive.org/web/20260206051210/https://www.aft.org/sites/default/files/media/documents/2023/30.1_spring_2006.pdf",
+      "file": "sources/einstein-speed-light/american-educator-spring-2006.pdf",
+      "sha256": "b42d05761dc3e9939c8ac8a193c8d8edd5ff2b38140a954487fc8830371b3410"
+    }
+  },
+  "search_steps": [
+    "Web search led to Quote Investigator (2016), which cites The New York Times, 18 May 1921, page 15, and Philipp Frank, Einstein: His Life and Times (1947), page 185. Used only as leads.",
+    "Fetched the New York Times archive page for 18 May 1921 (403 directly); saved the Wayback capture of 15 October 2019. It gives the headline, subhead and first sentence only; the full text is behind TimesMachine and was not saved, so the body of the report (including how the answer was relayed) is not quoted.",
+    "Open Library full-text search for Einstein with 'velocity of sound', 'speed of sound' and 'text books': no 1920s hits. A phrase search for 'I don't carry information in my mind' found only retellings from 1996 on (Denis Brian, Einstein: A Life, 1996, and later books); not used.",
+    "Frank 1947 (archive.org einsteinhislifet0000fran_h8o1 and bwb_S0-AMR-718) is lending-only; its full text returned 401, so Frank's wording is not quoted.",
+    "Chronicling America, NYS Historic Newspapers, HathiTrust, Papers Past and the Rutgers Edison Papers site were blocked or unreachable, so other 1921 newspaper versions were not saved. Google Books API returned 429.",
+    "The Collected Papers of Albert Einstein, vol. 12 (Princeton digital edition) is a script-driven site; I could not save its text. A web search summary (not a saved file) says the volume cites the Boston Evening Transcript, Boston Herald and Boston Post for the Boston visit; I did not check those papers.",
+    "Lesson: saved the Spring 2006 American Educator issue (aft.org) containing Willingham's article.",
+    "English Wikipedia search (API) for Einstein, speed of sound and Edison questionnaire: no article on the story."
+  ],
+  "confidence_note": "Only the headline, subhead and first sentence of the 1921 report are saved. Quote Investigator transcribes the body as saying the question was put to him through his secretary and that he could not give the figure offhand; I could not confirm this from a saved file. Two details differ from the usual telling: some tellings say light instead of sound (I saved no such telling), and the record says he failed the question rather than refused it. The lesson needs neither detail: it needs only that he said such facts belong in books, which the subhead records."
+}

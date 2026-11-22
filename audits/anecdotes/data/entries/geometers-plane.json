@@ -1,0 +1,74 @@
+{
+  "id": "geometers-plane",
+  "as_told": "A mathematician was doing algebra on a plane. The passenger next to him thought the symbols were a terrorist code and reported him. The flight was held and he was questioned before people saw it was only mathematics.",
+  "lesson": "Fear and ignorance make people see ordinary work by someone who looks foreign as a terrorist threat, and security systems act on such reports without checking them.",
+  "what_happened": "On Thursday 5 May 2016, Guido Menzio, an economist at the University of Pennsylvania, sat on an American Airlines regional flight (operated by Air Wisconsin) from Philadelphia to Syracuse. He was working on a differential equation for a talk at Queen's University in Ontario. The woman next to him passed a note to the crew and left the plane, first saying she was ill. She then said she was worried by her seatmate's behaviour. Security staff questioned Menzio, found he was not a credible threat, and let him back on; the flight left more than two hours late. Menzio told the Washington Post that he was treated respectfully but blamed a rigid protocol that relies on clueless people.",
+  "false_part": "",
+  "class": "true",
+  "also": "",
+  "earliest_telling": {
+    "date": "2016-05-07",
+    "who": "Catherine Rampell",
+    "where": "Washington Post, Rampage blog: 'Ivy League economist ethnically profiled, interrogated for doing math on American Airlines flight'",
+    "quote": "A differential equation, to be exact.",
+    "url": "https://www.washingtonpost.com/news/rampage/wp/2016/05/07/ivy-league-economist-interrogated-for-doing-math-on-american-airlines-flight/",
+    "archive": "http://web.archive.org/web/20160508121710/https://www.washingtonpost.com/news/rampage/wp/2016/05/07/ivy-league-economist-interrogated-for-doing-math-on-american-airlines-flight/",
+    "file": "sources/geometers-plane/wapo-rampell-2016-05-07.html",
+    "sha256": "86a42db64b0fa523e144933cfe2dd3f09c85b038668b2b3c1f3a64f021cdc082"
+  },
+  "original": [
+    {
+      "what": "Menzio's own words, given by email to the Washington Post and published in the column",
+      "date": "2016-05-07",
+      "who": "Guido Menzio",
+      "quote": "relies on the input of people who may be completely clueless.",
+      "url": "https://www.washingtonpost.com/news/rampage/wp/2016/05/07/ivy-league-economist-interrogated-for-doing-math-on-american-airlines-flight/",
+      "archive": "http://web.archive.org/web/20160508121710/https://www.washingtonpost.com/news/rampage/wp/2016/05/07/ivy-league-economist-interrogated-for-doing-math-on-american-airlines-flight/",
+      "file": "sources/geometers-plane/wapo-rampell-2016-05-07.html",
+      "sha256": "86a42db64b0fa523e144933cfe2dd3f09c85b038668b2b3c1f3a64f021cdc082"
+    },
+    {
+      "what": "What the seatmate saw, as reported from Menzio's account: work on the price-setting model for his talk",
+      "date": "2016-05-07",
+      "who": "Catherine Rampell, from Menzio's email",
+      "quote": "him trying to work out some properties of the model of price-setting he was about to present.",
+      "url": "https://www.washingtonpost.com/news/rampage/wp/2016/05/07/ivy-league-economist-interrogated-for-doing-math-on-american-airlines-flight/",
+      "archive": "http://web.archive.org/web/20160508121710/https://www.washingtonpost.com/news/rampage/wp/2016/05/07/ivy-league-economist-interrogated-for-doing-math-on-american-airlines-flight/",
+      "file": "sources/geometers-plane/wapo-rampell-2016-05-07.html",
+      "sha256": "86a42db64b0fa523e144933cfe2dd3f09c85b038668b2b3c1f3a64f021cdc082"
+    },
+    {
+      "what": "Retelling, not evidence: university student newspaper report of the same incident, the same day",
+      "date": "2016-05-07",
+      "who": "Sydney Schaedel, The Daily Pennsylvanian",
+      "quote": "Guido Menzio was on an American Airlines flight when he was profiled as a terrorist",
+      "url": "https://www.thedp.com/article/2016/05/penn-prof-profiled-as-a-terrorist-for-doing-math",
+      "archive": "http://web.archive.org/web/20220523081128/https://www.thedp.com/article/2016/05/penn-prof-profiled-as-a-terrorist-for-doing-math",
+      "file": "sources/geometers-plane/thedp-2016-05-07.html",
+      "sha256": "ecadd886faf42fd65198fc8d9e5ea7f0f73c4821985d1ab564558ca583f8c109"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "One case cannot show how often such reports happen or why. The nearest official evidence is GAO's 2013 review of the TSA behaviour-observation programme: it found that people judge deception from behaviour at about chance level, which supports the doubt about acting on what an observer thinks looks suspicious, but it studied trained screeners, not fellow passengers, and says nothing about ethnic bias.",
+    "source": {
+      "what": "US Government Accountability Office, GAO-14-159, Aviation Security: TSA Should Limit Future Funding for Behavior Detection Activities (November 2013)",
+      "quote": "cues or indicators is the same as or slightly better than chance (54",
+      "url": "https://www.gao.gov/assets/gao-14-159.pdf",
+      "archive": "http://web.archive.org/web/20261115063519/https://www.gao.gov/assets/gao-14-159.pdf",
+      "file": "sources/geometers-plane/gao-14-159.pdf.txt",
+      "sha256": "60b79c63c9b2cbaffc0cd9baf721043afe957b97ed17bf454a3d0b5fa3ced937"
+    }
+  },
+  "search_steps": [
+    "Open Library search-inside for \"differential equations\" Menzio plane: 0 hits (the event is from 2016, after most scanned books).",
+    "Web search for the incident: found the Washington Post column (7 May 2016), AP-based reports (NBC, Fox, CSM, 8-9 May 2016), The Daily Pennsylvanian (7 May 2016) and Snopes. Snopes used only as a lead.",
+    "Saved the Washington Post column from the Wayback copy of 8 May 2016 (the live site did not answer a plain request). It holds Menzio's emailed words and the American Airlines spokesman's account.",
+    "Saved The Daily Pennsylvanian report of 7 May 2016.",
+    "Web search for an earlier story of a mathematician or geometer reported as a terrorist on a plane: found only reports of this case from May 2016 and later. The usual telling's 'mathematician' and 'algebra' are retellings of this case.",
+    "Reports mention that Menzio wrote about the incident on Facebook, but the saved Washington Post and Daily Pennsylvanian pages do not quote such a post, and I did not find or save it. His emailed words in the Post are used instead.",
+    "For the lesson, gao.gov refused the request (403); saved GAO-14-159 from its Wayback copy and grep-checked the quote."
+  ],
+  "confidence_note": "The incident is well recorded, but the woman never spoke publicly, so her reasons are known only through the airline spokesman and Menzio. Menzio is an economist and the work was a differential equation, not algebra by a mathematician; I judge that this does not change the lesson. The ethnic-profiling reading is Menzio's and Rampell's inference, not a fact on record."
+}

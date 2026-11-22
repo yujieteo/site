@@ -1,0 +1,85 @@
+{
+  "id": "droit-du-seigneur",
+  "as_told": "In the Middle Ages a lord had a legal right, the droit du seigneur or jus primae noctis, to spend the wedding night with any bride among his peasants. Peasants could only escape it by paying the lord a fee.",
+  "lesson": "Medieval peasants were so unfree that the law gave their lords even their brides' wedding nights.",
+  "what_happened": "In the sources I could read, no medieval law, court record or charter grants a lord a right to sleep with a peasant bride. What these sources show are money payments on marriage, such as the Norman culage of three sous paid when a villein married his daughter outside the lordship. The earliest medieval text found that links such a fee to sex, a satirical poem on the villeins of Verson (about 1250, per Delisle), tells the sexual version as something that happened 'jadis' (long ago). The one legal text found that names the act, the Sentencia Arbitral de Guadalupe of 21 April 1486 by Ferdinand II for Catalonia, forbids lords to sleep with a peasant's bride on the first night or to step over her in bed as a sign of lordship; it shows that the claim was alleged in Catalonia, not that it was a recognised right, and not that it never happened.",
+  "false_part": "",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "1250",
+    "who": "Estout de Goz, named in the last lines of the poem, which is copied in a rent register of the abbey of Mont-Saint-Michel",
+    "where": "Le Conte des vilains de Verson, dated 'v. 1250' (about 1250) by Delisle and 1247 by Boureau (per a review), printed in Léopold Delisle, Études sur la condition de la classe agricole et l'état de l'agriculture en Normandie au moyen âge (Évreux, 1851), pp. 668-673",
+    "quote": "Le  seignor  en  a  le  culage  :",
+    "url": "https://archive.org/details/tudessurlacond00deliuoft",
+    "archive": "https://archive.org/details/tudessurlacond00deliuoft",
+    "file": "sources/droit-du-seigneur/tudessurlacond00deliuoft_djvu.txt",
+    "sha256": "e0c501ede36f738ffcad380980feccdc6017d11da0b73afe2baaf6459a38e5db"
+  },
+  "original": [
+    {
+      "what": "Sentencia Arbitral de Guadalupe, article IX: the royal arbitration that settled the Catalan remença conflict. It forbids lords to sleep with a peasant's bride on the first night, or, as a sign of lordship, to pass over her in the bed on the wedding night. Edition by Guillermo Pérez Sarrión (Repertorio de Mayans, Universidad de Zaragoza).",
+      "date": "1486-04-21",
+      "who": "Ferdinand II of Aragon",
+      "quote": "voluntat, ni tampoco puedan la primera noche quel pages prende mujer dormir",
+      "url": "https://repertoriomayans.unizar.es/wp-content/uploads/2024/04/1486-Sentencia-Arbitral-de-Guadalupe.pdf",
+      "archive": "http://web.archive.org/web/20261104101938/https://repertoriomayans.unizar.es/wp-content/uploads/2024/04/1486-Sentencia-Arbitral-de-Guadalupe.pdf",
+      "file": "sources/droit-du-seigneur/sentencia-guadalupe-1486-perez-sarrion.pdf.txt",
+      "sha256": "00d339f5c5be32783eaff3c6cc2b898d607f8a02c5b911941f0c67cba64439da"
+    },
+    {
+      "what": "The Verson poem's own explanation of the culage fee: 'long ago it happened that the villein led his daughter by the hand and delivered her to his lord' (to do his will, until he had paid to allow the marriage). The poem places the sexual act in the past and the money fee in its own day.",
+      "date": "1250",
+      "who": "Estout de Goz",
+      "quote": "Jadis  avint  que  le  vilein",
+      "url": "https://archive.org/details/tudessurlacond00deliuoft",
+      "archive": "https://archive.org/details/tudessurlacond00deliuoft",
+      "file": "sources/droit-du-seigneur/tudessurlacond00deliuoft_djvu.txt",
+      "sha256": "e0c501ede36f738ffcad380980feccdc6017d11da0b73afe2baaf6459a38e5db"
+    },
+    {
+      "what": "Léopold Delisle's note on the Verson lines and on a 1455 Norman record of 'collage de mariages': in both, he says, only a money payment is meant",
+      "date": "1851",
+      "who": "Léopold Delisle",
+      "quote": "ne  s'agit  évidemment  que  d'une  redevance  en  argent",
+      "url": "https://archive.org/details/tudessurlacond00deliuoft",
+      "archive": "https://archive.org/details/tudessurlacond00deliuoft",
+      "file": "sources/droit-du-seigneur/tudessurlacond00deliuoft_djvu.txt",
+      "sha256": "e0c501ede36f738ffcad380980feccdc6017d11da0b73afe2baaf6459a38e5db"
+    },
+    {
+      "what": "Paul Freedman, Images of the Medieval Peasant (Stanford University Press, 1999), translating a Catalan text that says 'certain lords claim' the first night. Search snippet only; the snippet does not identify the document. A second highlight in the same file matches the wording of the 1486 ruling.",
+      "date": "1999",
+      "who": "Paul Freedman",
+      "quote": "peasant takes a woman, the lord has to",
+      "url": "https://openlibrary.org/search/inside.json?q=%22sleep%20the%20first%20night%20with%20her%22",
+      "archive": "https://archive.org/details/imagesofmedieval0000free",
+      "file": "sources/droit-du-seigneur/ol-inside-freedman-certain-lords-claim.json",
+      "sha256": "f528e0b01f3bae631dd9eaac9ed3513b3a58fa35491acf84b206cdf8540ce990"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "The lords' marriage rights shown in the records I read were money fees, such as culage at Verson, and the only legal text found that names a sexual claim, the 1486 Sentencia of Guadalupe, bans it rather than grants it. This does not show that the law gave lords their peasants' brides, but the sources I could read are too few to rule out a local custom.",
+    "source": {
+      "what": "Sentencia Arbitral de Guadalupe, 21 April 1486, article IX (edition by Guillermo Pérez Sarrión)",
+      "quote": "con ella o en señal de senyoria la noche de las bodas de que la muger sera",
+      "url": "https://repertoriomayans.unizar.es/wp-content/uploads/2024/04/1486-Sentencia-Arbitral-de-Guadalupe.pdf",
+      "archive": "http://web.archive.org/web/20261104101938/https://repertoriomayans.unizar.es/wp-content/uploads/2024/04/1486-Sentencia-Arbitral-de-Guadalupe.pdf",
+      "file": "sources/droit-du-seigneur/sentencia-guadalupe-1486-perez-sarrion.pdf.txt",
+      "sha256": "00d339f5c5be32783eaff3c6cc2b898d607f8a02c5b911941f0c67cba64439da"
+    }
+  },
+  "search_steps": [
+    "Web search for the Sentencia Arbitral de Guadalupe text: found and saved the Pérez Sarrión edition (Universidad de Zaragoza); article IX forbids the first-night act and the symbolic stepping over the bride.",
+    "Web search for reviews of Alain Boureau, The Lord's First Night (1995, English 1998): read Adam J. Kosto's review in The Medieval Review 99.05.14 as a lead only. It says Boureau found the earliest mention in a poem of 1247 and reduced Jules Delpit's 72 'proofs' (1857) to five doubtful aveux of 1419-1674; it also says the Iberian evidence weakens Boureau's claim that the myth is 'essentially French'.",
+    "Open Library full-text search for culage Verson: hits in Delisle 1851, Veuillot 1854/1878, Schmidt, Jus primae noctis (1881), Labessade 1878, Boureau 1998 and Freedman 1999. Saved the full text of Delisle 1851 (public domain, archive.org tudessurlacond00deliuoft), which prints the Verson poem in its appendix (pp. 668-673).",
+    "Read the Verson poem in Delisle: the culage is three sous paid when a villein marries his daughter outside the lordship; the poem explains it by a past custom ('Jadis avint') of handing the daughter to the lord. Delisle lists the poem as 'v. 1250'; Boureau, per the review, dates it 1247.",
+    "Web search for the 1462 Catalan draft agreement (projecte de concòrdia) and the lords' answer on the first night: found only general studies of the mals usos; no text of the lords' answer online.",
+    "English Wikipedia (lead only) cites Boureau pp. 239-240 for the claim that the Catalan lords replied they doubted any lord had demanded the practice; Boureau is not online in full text, so this was not checked or quoted.",
+    "Open Library full-text search for \"sleep the first night with her\": found Freedman, Images of the Medieval Peasant (1999), translating a Catalan complaint that 'certain lords claim' the right; snippet only, the book is lending-only.",
+    "Did not search for Hector Boece's 1527 Scottish story of King Evenus and the merchet, or for ancient tellings (Herodotus 4.168, Gilgamesh), which are not about medieval lords; the Verson poem is earlier than Boece."
+  ],
+  "confidence_note": "The class rests on the absence of any record of a legal right in the sources I could read; the records found show money fees and one royal ban. A ban shows that some Catalan lords were accused of the claim, and possibly that some abused peasant brides; it does not prove that it never happened. I could not read Boureau's book or the 1462 Catalan texts. The Freedman quote is from an Open Library search snippet only. Delisle's footnote on the Verson manuscript (badly scanned) says that some verses near this passage were written at the foot of the page; I could not tell from the scan whether the culage lines are among them."
+}

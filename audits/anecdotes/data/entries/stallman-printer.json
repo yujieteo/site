@@ -1,0 +1,96 @@
+{
+  "id": "stallman-printer",
+  "as_told": "Around 1980 Xerox gave the MIT AI Lab a laser printer, but its software came without source code, so Richard Stallman could not add a feature to report paper jams. A researcher at Carnegie Mellon who had the code refused to share it because he had signed a non-disclosure agreement. Stallman's anger at this refusal, the story goes, started the GNU Project and the free software movement.",
+  "lesson": "One locked-down program was enough to start the free software movement.",
+  "what_happened": "The printer episode happened as Stallman describes it, and he names it as his first direct encounter with a non-disclosure agreement. But in his 1986 KTH lecture, his essay 'The GNU Project' (1999) and his 2001 NYU speech he gives a different main cause: in the early 1980s companies hired away the AI Lab hackers, and their software-sharing community collapsed. He says the printer refusal came before that and 'prepared' him, so that he refused to sign non-disclosure agreements himself. He announced GNU in September 1983, about three years after the printer refusal.",
+  "false_part": "The printer refusal did not start GNU; by Stallman's own account it prepared him, and the collapse of the AI Lab community was the event that led him to start GNU.",
+  "class": "changed",
+  "also": "",
+  "earliest_telling": {
+    "date": "2001-05-29",
+    "who": "Ed Schonberg (introducing Stallman)",
+    "where": "Transcript of Richard M. Stallman's speech, 'Free Software: Freedom and Cooperation', New York University",
+    "quote": "Richard is the perfect example of somebody who, by acting locally, started thinking globally from problems concerning the unavailability of source code for printer drivers at the AI Lab many years ago.",
+    "url": "https://www.gnu.org/philosophy/rms-nyu-2001-transcript.txt",
+    "archive": "http://web.archive.org/web/20260902111514/https://www.gnu.org/philosophy/rms-nyu-2001-transcript.txt",
+    "file": "sources/stallman-printer/rms-nyu-2001-transcript.txt",
+    "sha256": "9105d57e73b5c1e3259b47e2ccd24f552b4551aeba9018eb62af6a3056433004"
+  },
+  "original": [
+    {
+      "what": "Stallman's own lecture at KTH, Stockholm, the earliest account in his own words that I found; it uses the printer as an example of frustration and gives the collapse of the AI Lab as the reason for GNU",
+      "date": "1986-10-30",
+      "who": "Richard Stallman",
+      "quote": "We then got a much nicer graphic printer, one of the first laser printers, but then the software was supplied by Xerox, and we couldn't change it.",
+      "url": "https://www.gnu.org/philosophy/stallman-kth.html",
+      "archive": "http://web.archive.org/web/20261018235715/http://www.gnu.org/philosophy/stallman-kth.html",
+      "file": "sources/stallman-printer/stallman-kth-1986.html",
+      "sha256": "b7ed8e278f221b79da957d70a1636a01e7fe648200ff6c89fd91ffaef9d03af7"
+    },
+    {
+      "what": "Stallman's 1986 KTH lecture: his own statement of why he started GNU, the fact the class rests on",
+      "date": "1986-10-30",
+      "who": "Richard Stallman",
+      "quote": "So the MIT AI lab that I loved is gone and after a couple of years of fighting against the people who did it to try to punish them for it I decided that I should dedicate my self to try to create a new community with that spirit.",
+      "url": "https://www.gnu.org/philosophy/stallman-kth.html",
+      "archive": "http://web.archive.org/web/20261018235715/http://www.gnu.org/philosophy/stallman-kth.html",
+      "file": "sources/stallman-printer/stallman-kth-1986.html",
+      "sha256": "b7ed8e278f221b79da957d70a1636a01e7fe648200ff6c89fd91ffaef9d03af7"
+    },
+    {
+      "what": "Stallman's NYU speech, his own account of the printer refusal and of its place in the story",
+      "date": "2001-05-29",
+      "who": "Richard Stallman",
+      "quote": "But before this happened, I had an experience that prepared me, helped me see what to do, helped prepare me to see what to do when this happened,",
+      "url": "https://www.gnu.org/philosophy/rms-nyu-2001-transcript.txt",
+      "archive": "http://web.archive.org/web/20260902111514/https://www.gnu.org/philosophy/rms-nyu-2001-transcript.txt",
+      "file": "sources/stallman-printer/rms-nyu-2001-transcript.txt",
+      "sha256": "9105d57e73b5c1e3259b47e2ccd24f552b4551aeba9018eb62af6a3056433004"
+    },
+    {
+      "what": "Stallman's essay 'The GNU Project' (written 1998, first published 1999 in the book Open Sources), which mentions the printer as the reason he would not sign non-disclosure agreements",
+      "date": "1999",
+      "who": "Richard Stallman",
+      "quote": "I had already experienced being on the receiving end of a nondisclosure agreement, when someone refused to give me and the MIT AI Lab the source code for the control program for our printer.",
+      "url": "https://www.gnu.org/gnu/thegnuproject.html",
+      "archive": "http://web.archive.org/web/20261117083651/https://www.gnu.org/gnu/thegnuproject.html",
+      "file": "sources/stallman-printer/thegnuproject.html",
+      "sha256": "b11d675600d061aba98c99d9b10180aadd940e9b765c3635380f40968ffabf9f"
+    },
+    {
+      "what": "Sam Williams, Free as in Freedom, chapter 1 'For Want of a Printer': the person who most likely refused, Robert Sproull, says he does not remember the event",
+      "date": "2002-03",
+      "who": "Sam Williams (quoting Robert Sproull by email)",
+      "quote": "\"I can't make a factual comment,\" writes Sproull via email. \"I have absolutely no recollection of the incident.\"",
+      "url": "https://www.oreilly.com/openbook/freedom/ch01.html",
+      "archive": "http://web.archive.org/web/20121226180327/http://oreilly.com:80/openbook/freedom/ch01.html",
+      "file": "sources/stallman-printer/faif-ch01.txt",
+      "sha256": "896b3e130c0cba8b9a01fa9f3e59fcf6647ff1d5b40499a9fc86a42e7b5466f8"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "The only record of the cause is Stallman's own account, and in it the printer is one experience among several; he names the break-up of the AI Lab community as the reason he started GNU. I found no independent study that could test whether a single program can start a movement.",
+    "source": {
+      "what": "",
+      "quote": "",
+      "url": "",
+      "archive": "",
+      "file": "",
+      "sha256": ""
+    }
+  },
+  "search_steps": [
+    "The web search tool had no budget left when I started, so I used only direct addresses and catalogue searches (Open Library, Wikipedia, archive.org, PubMed).",
+    "gnu.org: saved the 2001 NYU speech transcript; it holds the full printer story in Stallman's words and the introducer's 'printer drivers' framing.",
+    "gnu.org: saved 'The GNU Project'; its own notes say it was written in 1998 and first published in the book Open Sources (1999). the printer appears only as the reason he would not sign non-disclosure agreements.",
+    "gnu.org: saved the 1986 KTH lecture; it mentions the Xerox printer software as an example of frustration and gives the destruction of the AI Lab community as the reason for GNU.",
+    "oreilly.com chapter 1 of Free as in Freedom returned 403; saved the 2012 Wayback copy. It names Robert Sproull as the likely person and quotes his email saying he does not remember.",
+    "gnu.org initial announcement: dated 27 September 1983 (checked, not quoted).",
+    "Open Library full text, 'Stallman printer Xerox \"source code\"' (first 60 of 1149 hits, sorted by year): earlier tellings of the printer story appear as snippets in Computers in Society (1992 edition), Open Sources (1999) and Naughton, A Brief History of the Future (2000). The snippets do not show whether they say the printer started GNU. These books are lending-only, so I could not read them.",
+    "Wikipedia 'Richard Stallman' and 'GNU Project': the printer passages cite only Free as in Freedom chapter 1 and the 2001 NYU speech.",
+    "I found no telling before May 2001 that clearly says the printer started GNU. I did not search Usenet, because the search budget was used up."
+  ],
+  "confidence_note": "The date of the refusal (about 1980) comes from Williams and Brian Reid, not from a record made at the time. Sproull does not remember the event, so the refusal rests on Stallman's word alone. I did not find who first said the printer 'started' GNU; Williams's 2002 chapter title 'For Want of a Printer' and the 2001 NYU introduction are the earliest such framings I found."
+}

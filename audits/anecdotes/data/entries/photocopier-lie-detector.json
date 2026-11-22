@@ -1,0 +1,69 @@
+{
+  "id": "photocopier-lie-detector",
+  "as_told": "Police in Radnor, Pennsylvania, put a metal colander on a suspect's head and wired it to a photocopier. In the copier they placed a sheet that read \"He's lying.\" Each time the suspect gave an answer they did not believe, they pressed the copy button, and the suspect, convinced the machine worked, confessed. A judge then threw the case out or scolded the police.",
+  "lesson": "A suspect who believes that a machine can detect his lies can be tricked into confessing.",
+  "what_happened": "No court record, police record or news report made at the time of a real case has been found. The folklore site Snopes reports that the oldest printed version it found is in the Philadelphia Inquirer of 22 June 1977, which gave the place only as \"a small police department in the county\"; I could not see that article. The earliest telling I could read is in William Petrocelli's book Low Profile (1981). In 1990 the Radnor Township chief of police, Maurice L. Hennessy, wrote to the folklorist Jan Harold Brunvand that the incident did not happen in Radnor.",
+  "false_part": "The Radnor setting is false by the police chief's letter, and no record shows that the trick happened anywhere else.",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "1981",
+    "who": "William Petrocelli",
+    "where": "Low Profile (book, 1981)",
+    "quote": "suspect  and hooked  it  up  with  {{{battery  cables  to  a  Xerox  machine}}}.  They  had  pre- viously placed",
+    "url": "https://openlibrary.org/search/inside.json?q=%22battery%20cables%20to%20a%20Xerox%20machine%22&limit=30",
+    "archive": "https://archive.org/details/lowprofilehowtoa00petr",
+    "file": "sources/photocopier-lie-detector/ol_inside_battery_cables_xerox.json",
+    "sha256": "97cc2a14a068a64abf70446f8980267fd0bfdac11b2b712607478ae4200eaa17"
+  },
+  "original": [
+    {
+      "what": "Letter of 10 October 1990 from the Radnor Township chief of police to Jan Harold Brunvand, printed in Brunvand's book The Baby Train (1993); quoted here from the Open Library full-text search snippet of that book",
+      "date": "1990-10-10",
+      "who": "Maurice L. Hennessy, Chief of Police, Radnor Township",
+      "quote": "detector incident referred to in your letter {{{did not happen in Radnor}}}.",
+      "url": "https://openlibrary.org/search/inside.json?q=%22did%20not%20happen%20in%20Radnor%22&limit=100",
+      "archive": "https://archive.org/details/babytrainotherlu0000brun",
+      "file": "sources/photocopier-lie-detector/ol_inside_did_not_happen_in_radnor.json",
+      "sha256": "6289208e6bf07d5b01e0bdd996a7212d70a88d67c16d151033cadc83cfb8c2c7"
+    },
+    {
+      "what": "Rodney R. Jones and Gerald F. Uelmen, Disorderly Conduct (1987), a book of excerpts from court cases; Open Library snippet of its version of the story. The snippet does not name a court, a case or a date.",
+      "date": "1987",
+      "who": "Rodney R. Jones",
+      "quote": "to the  duplicating  machine.  Then,  under  the {{{Xerox}}}  lid  they  placed  a  slip  of  paper reading",
+      "url": "https://openlibrary.org/search/inside.json?q=colander%20%22salad%20strainer%22%20Xerox&limit=30",
+      "archive": "https://archive.org/details/disorderlyconduc00jone",
+      "file": "sources/photocopier-lie-detector/ol_inside_colander_salad_strainer.json",
+      "sha256": "730caad9e74cbd96229385cc70900d85756487a52cbe5d87e5022d75ab30742d"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "holds",
+    "why": "A scientific review of police-induced confessions lists the presentation of false evidence among the interrogation tactics that influence confessions, including false ones. A fake lie detector result is a form of false evidence.",
+    "source": {
+      "what": "Kassin, Drizin, Grisso, Gudjonsson, Leo and Redlich, Police-induced confessions: risk factors and recommendations, Law and Human Behavior 34(1):3-38 (2010), PubMed abstract",
+      "quote": "interrogation tactics (e.g., excessive interrogation time; presentations of false evidence; and minimization)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19603261/",
+      "archive": "http://web.archive.org/web/20261116054107/https://pubmed.ncbi.nlm.nih.gov/19603261/",
+      "file": "sources/photocopier-lie-detector/kassin2010_pubmed19603261.xml",
+      "sha256": "364a86f3e710cb819b37cd05ea7b97451925b0e8d7063c8e1e843fdd22063d2c"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search for \"xerox\" \"lie detector\" colander: earliest hits are Petrocelli, Low Profile (1981 and 1982 editions) and Jones, Disorderly Conduct (1987).",
+    "Open Library search for \"battery cables to a Xerox machine\": the 1981 edition of Low Profile (lowprofilehowtoa00petr) has the story. This is the earliest telling I could read.",
+    "Open Library searches for \"copy machine\" \"lie detector\" suspect, \"xerox machine\" \"lie detector\" and colander \"copy machine\" \"He's lying\": nothing earlier than 1981.",
+    "Tried to download the full text of Low Profile (both editions) and Disorderly Conduct from archive.org: HTTP 401, because they are lending-only books. All quotes from books here are therefore from Open Library search snippets, not from full texts. This bends rule 7.",
+    "Open Library search for words around the Disorderly Conduct snippet (colander \"salad strainer\" Xerox): the snippets do not show a court, case name or date. \"Xerox lid\" search gave no hits.",
+    "Snopes (Wayback copy of snopes.com/legal/colander.asp), used only as a lead: it says the story was oral lore since the late 1960s, that the oldest print sighting is the Philadelphia Inquirer of 22 June 1977, that News of the Weird placed it in Radnor in 1989, and it quotes the Radnor police chief's letter of 10 October 1990. I could not get the 1977 Inquirer article; it is not in a free archive.",
+    "Open Library search for \"did not happen in Radnor\": found the chief's letter as printed in Brunvand, The Baby Train (1993).",
+    "Deseret News, 21 September 1990, Brunvand column \"Lie detector legend flunks the truth test\", used as a lead: a Los Angeles police veteran had only heard the story secondhand; a Naval Justice School instructor told it in 1983.",
+    "Web searches for a court opinion that mentions a colander and a copier: none found. Commonwealth v. Cunningham (Pa. 1977) is about a confession but does not mention a copier.",
+    "Wikipedia and a 2014 letter by Thomas Gutheil in the Journal of the American Academy of Psychiatry and the Law were read as leads only; neither gives a source.",
+    "No correction by a teller was found; the tellings have no named teller who claims to have seen it.",
+    "Lesson source: PubMed abstract of Kassin et al. 2010 (fetched through the NCBI E-utilities). A meta-analysis of bogus pipeline studies (Roese and Jamieson 1993) would fit the lesson better, but I found no free full text or abstract."
+  ],
+  "confidence_note": "I could not read the 1977 Philadelphia Inquirer article or the full text of any book. Some police department may have used the trick, so the class is unsupported, not invented. The Radnor version is contradicted by the police chief's letter."
+}

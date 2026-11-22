@@ -1,0 +1,77 @@
+{
+  "id": "dantzig-homework",
+  "as_told": "A graduate student came late to a statistics class and copied two problems from the blackboard, thinking they were homework. He found them harder than usual but handed in solutions a few days later. Weeks later his professor told him they had been two famous unsolved problems. The student was George Dantzig, at Berkeley, and the professor was Jerzy Neyman.",
+  "lesson": "If you do not know that a problem is thought to be impossible, you are more likely to solve it.",
+  "what_happened": "George Dantzig told the story himself in a published interview in 1986. In his first year at Berkeley, where he arrived in 1939, he came late to one of Jerzy Neyman's classes, copied two problems from the blackboard as homework, and handed in the solutions some days later. About six weeks later Neyman came to his house to say that the problems had been two famous unsolved problems in statistics and that he had written an introduction to one paper. Neyman later accepted the two solutions as Dantzig's thesis. By Dantzig's account the second problem was published only after the Second World War, around 1950, jointly with Abraham Wald, who had reached the same result.",
+  "false_part": "",
+  "class": "true",
+  "also": "",
+  "earliest_telling": {
+    "date": "1981",
+    "who": "Robert H. Schuller",
+    "where": "Robert Schuller's Life Changers, ed. Robert A. Schuller (Fleming H. Revell, 1981), pp. 136-150; quoted from the excerpt reprinted in The Columbia Documentary History of Religion in America Since 1945, ed. Paul Harvey and Philip Goff (Columbia University Press, 2005), pp. 326-327",
+    "quote": "I was a graduate at Berkeley thirty years ago. I came to class late and copied what I believed to be the homework: two problems that were written on the blackboard.",
+    "url": "https://archive.org/details/columbiadocument0000unse_g4v8",
+    "archive": "https://archive.org/details/columbiadocument0000unse_g4v8",
+    "file": "sources/dantzig-homework/columbiadocument0000unse_g4v8_djvu.txt",
+    "sha256": "f2ac1d720d246e46e091fe85947b3ab81e4beb689d85144d65e80e2dc500348e"
+  },
+  "original": [
+    {
+      "what": "George Dantzig's own account, in an interview published under his name",
+      "date": "1986-09",
+      "who": "Donald J. Albers and Constance Reid, An Interview with George B. Dantzig: The Father of Linear Programming, The College Mathematics Journal 17(4), 292-314",
+      "quote": "during my first year at Berkeley I arrived ... day at one of Neyman's classes. On the blackboard there were two problems ... assumed had been assigned for homework. I copied them down. ... About six weeks later, one Sunday morning about eight o'clock, Anne and I were awakened by someone banging on our front door. It was Neyman. ... To make a long story short, the problems on the blackboard that I had solved thinking they were homework were in fact two famous unsolved problems in statistics.",
+      "url": "https://www.cs.umd.edu/~gasarch/BLOGPAPERS/Albers-InterviewGeorgeB-1986.pdf",
+      "archive": "http://web.archive.org/web/20260520140000/https://www.cs.umd.edu/~gasarch/BLOGPAPERS/Albers-InterviewGeorgeB-1986.pdf",
+      "file": "sources/dantzig-homework/albers-reid-1986-interview.pdf",
+      "sha256": "2601e9c6699096e7584d13c2301d18c4fd65965e33d091be0abeaa55644308d3"
+    },
+    {
+      "what": "Same interview: Dantzig on the thesis and on Schuller's version",
+      "date": "1986-09",
+      "who": "George B. Dantzig, interviewed by Albers and Reid",
+      "quote": "A year later, when I began to worry about a thesis topic, Neyman just shrugged and told me to wrap the two problems in a binder and he would accept them as my thesis. ... Schuler's published version was a bit garbled and exaggerated",
+      "url": "https://www.cs.umd.edu/~gasarch/BLOGPAPERS/Albers-InterviewGeorgeB-1986.pdf",
+      "archive": "http://web.archive.org/web/20260520140000/https://www.cs.umd.edu/~gasarch/BLOGPAPERS/Albers-InterviewGeorgeB-1986.pdf",
+      "file": "sources/dantzig-homework/albers-reid-1986-interview.pdf",
+      "sha256": "2601e9c6699096e7584d13c2301d18c4fd65965e33d091be0abeaa55644308d3"
+    },
+    {
+      "what": "The first solved problem as published: Dantzig (1940), On the non-existence of tests of 'Student's' hypothesis having power functions independent of sigma, Annals of Mathematical Statistics 11(2), 186-192 (citation as given by Wikipedia). Scanned pages with no text layer, so the year, title and content were not checked in the saved file and it is not quoted.",
+      "date": "1940",
+      "who": "George B. Dantzig",
+      "quote": "",
+      "url": "https://doi.org/10.1214/aoms/1177731912",
+      "archive": "http://web.archive.org/web/20170626191422/http://projecteuclid.org/download/pdf_1/euclid.aoms/1177731912",
+      "file": "sources/dantzig-homework/dantzig-1940-annals.pdf",
+      "sha256": "658b8c545a35eca8fd9188f8b73feaf68e000ce09865f2654d919fa3edf9e384"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "No study was found that tests whether people solve hard problems more often when they do not know the problems are thought hard. One case cannot show it.",
+    "source": {
+      "what": "",
+      "quote": "",
+      "url": "",
+      "archive": "",
+      "file": "",
+      "sha256": ""
+    }
+  },
+  "search_steps": [
+    "Open Library search inside, \"dantzig\" \"homework\" neyman (283 hits) and \"dantzig\" \"blackboard\" \"unsolved\" (1,393 hits): no telling of the story among the first 100 hits sorted by year.",
+    "Open Library search inside, \"two famous unsolved\" (79 hits) and \"mistook for homework\" (6 hits): earliest real telling is Robert Schuller's Life Changers (1981, archive.org robertschullersl0000schu, lending only). One hit dated 1893 is a metadata error for the 2005 Columbia Documentary History, which reprints the Life Changers passage and is open; saved its full text.",
+    "Open Library search inside on Schuller's own lines (\"He answered, 'Applied mathematics'\", \"possibility thinking doesn't apply in mathematics\", \"copied what I believed to be the homework\"): only Life Changers (1981, 1983 printings) and a 1996 Schuller omnibus. No earlier book found.",
+    "Life Changers is an edited collection of Schuller's material, and in it Dantzig says he was at Berkeley 'thirty years ago', so the passage may first have been told earlier than 1981 in a sermon or book. I could not find an earlier printed telling.",
+    "Wikipedia (George Dantzig) cites Albers, Alexanderson and Reid, More Mathematical People (1990), the 1986 interview, and the 1940 and 1951 Annals papers. Found the 1986 College Mathematics Journal interview as a PDF of the JSTOR copy and saved it.",
+    "In the saved interview, some lines are cut at the right edge of the scan and dashes appear as '?'. The quote uses '...' where the line is cut.",
+    "Saved the 1940 Annals paper from a Wayback copy of Project Euclid (the live site blocks scripts). It is a scan with no text layer; no OCR tool was available, so it is listed but not quoted. The 1951 Dantzig-Wald paper could not be fetched (Wayback returned the Project Euclid block page).",
+    "Teller correction: the teller of the 1981 version is Schuller. No correction by him was found. Dantzig himself said Schuller's version was 'garbled and exaggerated but essentially correct'.",
+    "Papers Past returned a script block page (Incapsula); the Trove API needs a key (HTTP 401); Google News Archive has no text search; Chronicling America returned a Cloudflare block page. None of these was searched.",
+    "Google Books API returned a daily quota error (on a query for another candidate) and HathiTrust returned a Cloudflare block page; neither was searched for this story."
+  ],
+  "confidence_note": "The account rests on Dantzig's own words, given 47 years after the event; no record from 1939 of what was on the blackboard was found. That the two problems were 'famous unsolved problems' is Dantzig's and Neyman's description, not checked against a list of open problems of the time. The as-told details (late, copied from the board, thought it homework, solved, later told they were unsolved) all match his account."
+}

@@ -1,0 +1,43 @@
+{
+  "id": "elevator-mirrors",
+  "as_told": "The people in a tall building (or the guests of a hotel) complained that the elevators were too slow. Engineers proposed faster or extra elevators, which would cost a great deal. Someone instead suggested putting mirrors beside the elevators. People looked at themselves while they waited, and the complaints stopped, although the elevators were no faster.",
+  "lesson": "Changing how a wait feels, for example by giving people something to look at, can remove complaints as well as making the wait shorter.",
+  "what_happened": "I found no record of a specific building, hotel, date or person where mirrors were installed and complaints were counted before and after. David Maister in 1985 quotes the story from Sasser, Olsen and Wyckoff (1979) as an unnamed 'well-known hotel group'; later retellings say Russell Ackoff told it earlier, set in an office building, but I could not read his text. The setting, the person who suggested the mirrors and the result change between tellings. None of the tellings I could read cites a study or a record.",
+  "false_part": "",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "1985",
+    "who": "David H. Maister, quoting Sasser, Olsen and Wyckoff (1979)",
+    "where": "The Psychology of Waiting Lines (chapter in The Service Encounter, ed. Czepiel, Solomon and Surprenant), text on the author's website",
+    "quote": "it was suggested that mirrors be installed near where guests waited for elevators. The natural tendency of people to check their personal appearance substantially reduced complaints, although the actual wait for the elevators was unchanged.",
+    "url": "https://davidmaister.com/articles/1/52/",
+    "archive": "",
+    "file": "sources/elevator-mirrors/maister-1985-psychology-of-waiting-lines.html.txt",
+    "sha256": "8d7a8a361e24b3e631a8ae2369938069c71715252d2d2f2cadad2eebac47f502"
+  },
+  "original": [],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "The saved paper's own laboratory and field studies found that having something to do during a wait reduced boredom and gave a better wait experience. But its summary of earlier studies says the effect of filling the wait has not been conclusively established: some found higher satisfaction with no shorter perceived wait, others a longer perceived wait. I found no study of mirrors at elevators.",
+    "source": {
+      "what": "Kelly A. McGuire, Sheryl E. Kimes, Michael Lynn, Madeline E. Pullman and Russell C. Lloyd, 'A Framework for Evaluating the Customer Wait Experience' (Cornell eCommons copy), the paper's summary of earlier studies on filled waits",
+      "quote": "effect of time filling activities has not conclusively established this effect.",
+      "url": "https://ecommons.cornell.edu/server/api/core/bitstreams/fb8f58af-4b9e-4db7-9ad9-43cb876be389/content",
+      "archive": "http://web.archive.org/web/20240414233347/https://ecommons.cornell.edu/server/api/core/bitstreams/fb8f58af-4b9e-4db7-9ad9-43cb876be389/content",
+      "file": "sources/elevator-mirrors/cornell-wait.pdf.txt",
+      "sha256": "1fdce5fc0966acbcb5722b5078331231102bb1858eff3314909b69cbfb143708"
+    }
+  },
+  "search_steps": [
+    "Web search for the origin: retellings cite Maister (1985), Ackoff, and Gause and Weinberg; none cites a building or a record.",
+    "Systems blog 'Ackoff's lift and Rory Sutherland's fantasy' (syscoi.com, 2020): cites Ackoff, Re-creating the Corporation (1999), pp. 15-16; a reader comment (unverified) says the story was told second-hand in Ackoff and Rivett, A Manager's Guide to Operations Research (1963), and found nothing earlier. Lead only.",
+    "Archive.org: A Manager's Guide to Operations Research (1963) exists as managersguidetoo00acko and managersguidetoo0000acko, but both are lending-only; the full text download returned 401 and search-inside returned 'Item not available'. Not quoted.",
+    "Open Library full-text search: Gause and Weinberg, Are Your Lights On? (1982), discusses an elevator problem; Bentley, More Programming Pearls (1988), tells the mirror solution; Dery, Problem Definition in Policy Analysis (1984), uses the slow-elevator problem as an example. Seen only as snippets; not saved. Open Library then refused connections and I stopped.",
+    "David Maister's 1985 essay: the PDF link on davidmaister.com returned 404; saved the HTML text of the essay from the same site. Maister credits the hotel version to Sasser, Olsen and Wyckoff, Management of Service Operations (1979), which I could not find online.",
+    "HathiTrust and Chronicling America returned bot checks (403); Google Books returned 429. Not retried.",
+    "Lesson: saved the McGuire, Kimes, Lynn, Pullman and Lloyd paper from Cornell eCommons. It summarises Pruyn and Smidts (1998), Chebat and Filiatrault (1993) and Katz et al. (1991), which disagree on whether filled waits feel shorter."
+  ],
+  "confidence_note": "The 1963 Ackoff and Rivett telling (known only from a blog comment) and the 1979 Sasser telling are earlier than the 1985 text I saved, but I could not read them. The date and journal of the Cornell paper are not printed in the saved copy, so I give it without them. The Wayback Machine had no copy of the Maister page after one lookup, so its archive field is empty."
+}

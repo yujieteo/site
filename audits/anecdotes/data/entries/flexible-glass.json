@@ -1,0 +1,75 @@
+{
+  "id": "flexible-glass",
+  "as_told": "A craftsman in Rome invented unbreakable (or flexible) glass and showed it to the emperor Tiberius by throwing a glass cup on the floor; it only dented, and he hammered it back into shape. Tiberius asked whether anyone else knew the secret, and when the man said no, Tiberius had him beheaded, so that the new glass would not make gold and silver worthless.",
+  "lesson": "Those in power suppress inventions that threaten the value of what they already own.",
+  "what_happened": "The story survives in three ancient texts that disagree with each other, and none is a record from Tiberius's reign (AD 14-37). The earliest is Petronius's novel the Satyricon (written about AD 60-66), where the freedman Trimalchio tells it at his dinner party about an unnamed 'Caesar'; there the inventor is beheaded so that gold will not become as cheap as dirt. Pliny the Elder (Natural History 36.66, published about AD 77) places it in Tiberius's reign but says only that the craftsman's workshop was destroyed, and he adds that the story was told more often than it was confirmed. Cassius Dio (early 3rd century AD) tells it of an exiled architect who dropped a crystal goblet and restored it with his hands, and says the emperor put him to death. The usual telling is a composite of these versions.",
+  "false_part": "",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "0065",
+    "who": "Petronius (character Trimalchio speaking); translation by Michael Heseltine, Loeb, 1913",
+    "where": "Satyricon, section 51 (Perseus Digital Library); written about AD 60-66",
+    "quote": "But there was once a workman who made a glass cup that was unbreakable.",
+    "url": "http://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:2007.01.0027:text=Satyricon:section=51",
+    "archive": "http://web.archive.org/web/20250807201851/http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A2007.01.0027%3Atext%3DSatyricon%3Asection%3D51",
+    "file": "sources/flexible-glass/petronius51-en.html",
+    "sha256": "b6223da0802bb4b8749a9c397986a69b3a1b1c148735352020ddf2545cc4f8e4"
+  },
+  "original": [
+    {
+      "what": "Pliny the Elder, Natural History, book 36, chapter 66 (Bostock and Riley translation, 1855), the earliest telling that names Tiberius; it reports the story as a rumour",
+      "date": "0077",
+      "who": "Pliny the Elder",
+      "quote": "This story, however, was, for a long time, more widely spread than well authentieated.",
+      "url": "http://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0137:book=36:chapter=66",
+      "archive": "http://web.archive.org/web/20260725023346/https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.02.0137%3Abook%3D36%3Achapter%3D66",
+      "file": "sources/flexible-glass/pliny36-66-en.html",
+      "sha256": "9a32db3c9772a03443cc35f828daab3376f01f9c7f24e3ebcf606986ac16d64d"
+    },
+    {
+      "what": "Pliny, same passage: in his version the workshop is destroyed; no one is executed",
+      "date": "0077",
+      "who": "Pliny the Elder",
+      "quote": "In the reign of Tiberius, it is said, a combination was devised which produced a flexible",
+      "url": "http://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0137:book=36:chapter=66",
+      "archive": "http://web.archive.org/web/20260725023346/https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.02.0137%3Abook%3D36%3Achapter%3D66",
+      "file": "sources/flexible-glass/pliny36-66-en.html",
+      "sha256": "9a32db3c9772a03443cc35f828daab3376f01f9c7f24e3ebcf606986ac16d64d"
+    },
+    {
+      "what": "Cassius Dio, Roman History 57.21.7 (Loeb translation by Earnest Cary, on LacusCurtius): an exiled architect and a crystal goblet",
+      "date": "0220",
+      "who": "Cassius Dio",
+      "quote": "For this he hoped to obtain pardon, but instead the emperor put him to death.",
+      "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Cassius_Dio/57*.html",
+      "archive": "https://web.archive.org/web/20261122173412/https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Cassius_Dio/57%2A.html",
+      "file": "sources/flexible-glass/dio57.html",
+      "sha256": "4f8868aa47c60d5817774636977b9428d42a8d8a1f144619c8bb88a55bc0938b"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "holds",
+    "why": "In a limited form: a study of pharmaceutical acquisitions found that incumbent firms buy and shut down drug projects that would compete with their own products, in about 5 to 7 percent of acquisitions. This shows that incumbents do sometimes kill innovations to protect existing value, though it says nothing about ancient Rome.",
+    "source": {
+      "what": "Cunningham, Ederer and Ma, 'Killer Acquisitions', Journal of Political Economy 129(3), 2021 (accepted manuscript, LBS Research Online)",
+      "quote": "Conservative estimates indicate 5.3 percent to 7.4 percent of acquisitions in",
+      "url": "https://lbsresearch.london.edu/id/eprint/1632/1/cem_jpe.pdf",
+      "archive": "http://web.archive.org/web/20250718075705/https://lbsresearch.london.edu/id/eprint/1632/1/cem_jpe.pdf",
+      "file": "sources/flexible-glass/killer-acquisitions-2021.pdf",
+      "sha256": "7af6b472a574e89a8d68ba67408cef8a0b0c5f43403d5ee51a95d50536abc694"
+    }
+  },
+  "search_steps": [
+    "Started from the three classical sources known for the story (Petronius 51, Pliny NH 36.66, Dio 57.21); the translator's footnote in the LacusCurtius Dio points to Pliny and Petronius as the other tellings.",
+    "Saved Petronius, Satyricon 51 (Heseltine translation) and Pliny NH 36.66 (Bostock and Riley translation) from Perseus; saved Dio book 57 (Cary translation) from LacusCurtius.",
+    "Tried to save the Latin Pliny text from Perseus; the page held no usable text, so it was deleted and not quoted.",
+    "Checked what each text says: Petronius names only 'Caesar' and has a beheading; Pliny names Tiberius, has the workshop destroyed and no death, and doubts the story; Dio names Tiberius, has a crystal goblet restored by hand and a death, and does not say 'flexible glass' or 'beheaded' in the main text.",
+    "No record from Tiberius's reign mentions the event. Checked Suetonius's Life of Tiberius on LacusCurtius (cited in the Bostock footnote): the word 'glass' does not occur in it.",
+    "Searched for a teller correction: not applicable for ancient authors; none found.",
+    "Lesson source: Cunningham, Ederer and Ma (2021) found via web search and saved from LBS Research Online.",
+    "Did not search newspaper archives or Open Library: the story is ancient and its tellings are the three classical texts."
+  ],
+  "confidence_note": "The earliest surviving telling is fiction (a character's dinner-party tale in a novel), which under the rules could support 'invented'. I chose 'unsupported' because Pliny, writing separately about 10-15 years later, reports the story as a rumour that had long circulated, so the novel is not shown to be its origin. Glass that dents like metal and can be hammered back is not possible with ancient soda-lime glass, but I did not save a source for that, so it is not used for the class. Quotes are from English translations, not the Latin and Greek. The dates (Petronius about AD 65, Pliny AD 77, Dio about AD 220) are the standard scholarly dates, written as 4-digit years, and do not come from a saved file."
+}

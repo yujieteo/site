@@ -1,0 +1,78 @@
+{
+  "id": "interstate-runways",
+  "as_told": "The Eisenhower Interstate Highway System requires that one mile in every five be straight. These straight sections can be used as airstrips by military planes in war or other emergencies.",
+  "lesson": "The Interstate System was built for national defense, down to the details of its design.",
+  "what_happened": "The Federal-Aid Highway Act of 1956 named the network the 'National System of Interstate and Defense Highways' because of its importance to national defense. But the Act set the design standards by the traffic forecast for 1975, and it contains no rule about straight sections or aircraft. The Federal Highway Administration's historian, Richard F. Weingroff, wrote in 2000 that no law, regulation or policy has ever required one mile in five to be straight. A separate wartime flight-strip program under the Defense Highway Act of 1941 built runways beside highways, and Congress left it out of the 1944 highway act.",
+  "false_part": "No law, regulation or design standard requires one mile in five of the Interstate System to be straight for use as an airstrip.",
+  "class": "invented",
+  "also": "",
+  "earliest_telling": {
+    "date": "1997",
+    "who": "compiler of an internet humor collection (Best Jokes & Other Humor from the Internet)",
+    "where": "Best Jokes & Other Humor from the Internet (1997), as indexed by Open Library full-text search",
+    "quote": "Eisenhower interstate system requires that one mile in every five must be straight. These straight sections",
+    "url": "https://openlibrary.org/search/inside.json?q=%22one%20mile%20in%20every%20five%22&rows=100",
+    "archive": "https://archive.org/details/bestjokesotherhu0000sull",
+    "file": "sources/interstate-runways/ol_onemile_every_five.json.txt",
+    "sha256": "1456f64458755d0c3af31745c73ca5e88ecbebe6bb56c74f0199b32721d454db"
+  },
+  "original": [
+    {
+      "what": "Federal-Aid Highway Act of 1956 (Public Law 627, 70 Stat. 374), section 108(i), the design standards for the Interstate System",
+      "date": "1956-06-29",
+      "who": "United States Congress",
+      "quote": "types and volumes of traffic forecast for the year 1975.",
+      "url": "https://www.govinfo.gov/content/pkg/STATUTE-70/pdf/STATUTE-70-Pg374.pdf",
+      "archive": "http://web.archive.org/web/20261118093719/https://www.govinfo.gov/content/pkg/STATUTE-70/pdf/STATUTE-70-Pg374.pdf",
+      "file": "sources/interstate-runways/fedaid_highway_act_1956_statute70_pg374.pdf.txt",
+      "sha256": "5af52adb6c02dc15551d762ce7c882786526d1c0cf8e035fcd2a71ea85e7f52b"
+    },
+    {
+      "what": "Article by the Federal Highway Administration's historian in the agency's journal Public Roads (May/June 2000), 'One Mile in Five: Debunking the Myth'",
+      "date": "2000",
+      "who": "Richard F. Weingroff, Federal Highway Administration",
+      "quote": "BUT NO LAW, REGULATION, POLICY, OR SLIVER OF RED TAPE REQUIRES THAT ONE OUT OF FIVE MILES OF THE INTERSTATE HIGHWAY SYSTEM MUST BE STRAIGHT.",
+      "url": "https://highways.dot.gov/public-roads/mayjune-2000/one-mile-five-debunking-myth",
+      "archive": "http://web.archive.org/web/20250222091822/https://highways.dot.gov/public-roads/mayjune-2000/one-mile-five-debunking-myth",
+      "file": "sources/interstate-runways/weingroff2000_onemile.html.txt",
+      "sha256": "1b81347fe7a424a95bec2e616fe50a578307f5a8092e6f7a1096db04b6fbfac4"
+    },
+    {
+      "what": "A Straight Dope message board post that quotes the claim as a 'fact' sent to the poster, an early online telling",
+      "date": "1999-11-03",
+      "who": "forum user 'Jake'",
+      "quote": "The Eisenhower interstate system requires that one mile in every five",
+      "url": "https://boards.straightdope.com/t/interstate-airports/4496",
+      "archive": "http://web.archive.org/web/20260308055953/https://boards.straightdope.com/t/interstate-airports/4496",
+      "file": "sources/interstate-runways/straightdope_1999_interstate_airports.html.txt",
+      "sha256": "97cb84e00ae297f135e4f9e0c2af10dd49627a5720a0814e481d95728a417464"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "does not hold",
+    "why": "The 1956 Act did rename the network for national defense (section 108(a)), but its design standards (section 108(i)) are set by the traffic forecast for 1975, and it says nothing about aircraft or straight sections.",
+    "source": {
+      "what": "Federal-Aid Highway Act of 1956, section 108(i), on the design standards",
+      "quote": "types and volumes of traffic forecast for the year 1975.",
+      "url": "https://www.govinfo.gov/content/pkg/STATUTE-70/pdf/STATUTE-70-Pg374.pdf",
+      "archive": "http://web.archive.org/web/20261118093719/https://www.govinfo.gov/content/pkg/STATUTE-70/pdf/STATUTE-70-Pg374.pdf",
+      "file": "sources/interstate-runways/fedaid_highway_act_1956_statute70_pg374.pdf.txt",
+      "sha256": "5af52adb6c02dc15551d762ce7c882786526d1c0cf8e035fcd2a71ea85e7f52b"
+    }
+  },
+  "search_steps": [
+    "Wikipedia 'Interstate Highway System' used as a lead: it calls the rule an urban legend with no basis in legislation.",
+    "Open Library full-text search for the exact phrase \"one mile in every five\": earliest hit on this story is Best Jokes & Other Humor from the Internet (1997); then Humor on the Net (1998), Internet Jokes (2000) and several trivia books (2001-2004). The 1881 hit is about sound, not roads.",
+    "Open Library full-text searches for \"one mile in five\" interstate straight, \"five miles\" interstate straight airplanes land, interstate \"every five miles\" straight and similar multi-word queries: 0 hits (these zero results are not negatives; the exact-phrase search above found hits).",
+    "Open Library search for \"one out of every five miles\" interstate: hits only from 2008 on, quoting Weingroff. Search for \"one mile out of every five\": a 2005 book calls it a persistent legend. One query (\"one of every five miles\") failed with a connection timeout and was not rerun.",
+    "Google Books API search: refused with 429 on the first request; backed off and did not retry.",
+    "Web search for Usenet (alt.folklore.urban) posts: none found through the search engine; Google Groups was not searched directly.",
+    "Found and saved the Straight Dope thread 'Interstate Airports?' (first post 1999-11-03), which quotes the claim as a forwarded 'fact'.",
+    "FHWA myths page and FHWA FAQ page: refused with 403 (Access Denied) to the anecdote-audit user agent; one retry with a browser user agent also got 403; did not retry again. Saved Weingroff's 2000 Public Roads article from its Wayback Machine copy instead.",
+    "Downloaded the Federal-Aid Highway Act of 1956 (70 Stat. 374) from govinfo.gov. A text search of the whole Act for aircraft, airplane, landing, straight, flight strip and airstrip found none of these words.",
+    "Snopes page: refused with 402; not used.",
+    "Chronicling America, Trove and Papers Past were not searched: the story is American and later than Chronicling America's 1963 limit."
+  ],
+  "confidence_note": "The 1997 humor collection is the earliest telling found, but it is a compilation of internet texts, so the claim was circulating earlier; Usenet and newspapers before 1997 were not searched. The absence of the rule in the 1956 Act is shown by a word search of the saved Act text; later laws and FHWA design manuals were not read directly, and that part rests on the FHWA historian's statement."
+}

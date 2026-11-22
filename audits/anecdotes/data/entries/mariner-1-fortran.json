@@ -1,0 +1,88 @@
+{
+  "id": "mariner-1-fortran",
+  "as_told": "In 1962 the Mariner 1 probe to Venus was lost because a programmer typed a period instead of a comma in a FORTRAN DO statement. FORTRAN ignores blanks and does not need declared variables, so the compiler read 'DO 3 I = 1.3' as an assignment to a new variable DO3I instead of a loop. This one-character slip destroyed the mission.",
+  "lesson": "A one-character slip in code can destroy a costly mission.",
+  "what_happened": "Mariner 1 was launched on 22 July 1962 and destroyed by the range safety officer 293 seconds after launch when the Atlas booster veered off course. NASA's record says two factors combined: the airborne beacon that gave rate data failed for several periods, and a superscript overbar was left out when the handwritten guidance equations were turned into computer instructions, so the guidance computer used instantaneous instead of smoothed values. The New York Times of 28 July 1962 reported the cause as the 'omission of a hyphen'. No record from the time mentions FORTRAN or a period typed for a comma. A FORTRAN DO statement with a period for a comma was found in 1963 in a NASA orbit-computation program used for the Mercury flights, according to Fred Webb, who said it caused no flight failure.",
+  "false_part": "The fault was a missing overbar in a handwritten guidance equation, together with a hardware failure, not a period typed for a comma in a FORTRAN DO statement.",
+  "class": "changed",
+  "also": "misattributed",
+  "earliest_telling": {
+    "date": "1976",
+    "who": "Glenford J. Myers",
+    "where": "Software Reliability: Principles and Practices (New York: John Wiley, 1976), as quoted word for word by Eric Roberts in RISKS Digest 5.66, 25 November 1987",
+    "quote": "In a FORTRAN program controlling the United States' first\n      mission to Venus, a programmer coded a DO statement in a\n      form similar to the following:",
+    "url": "https://catless.ncl.ac.uk/risks/5/66",
+    "archive": "http://web.archive.org/web/20260519224916/https://catless.ncl.ac.uk/risks/5/66",
+    "file": "sources/mariner-1-fortran/risks-5-66.txt",
+    "sha256": "9cec4c5e4fa19503c66d84f76f103bb299741512851d5744c9a8458d238faa9d"
+  },
+  "original": [
+    {
+      "what": "NASA NSSDCA catalogue record for Mariner 1, summarising the finding of the Mariner 1 Post Flight Review Board",
+      "date": "accessed 2026-11-23",
+      "who": "NASA Space Science Data Coordinated Archive",
+      "quote": "the Mariner 1 Post Flight Review Board determined that the omission of a superscript overbar when translating the handwritten equations into the coded computer instructions allowed transmission of incorrect guidance signals",
+      "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=MARIN1",
+      "archive": "http://web.archive.org/web/20261115142019/https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=MARIN1",
+      "file": "sources/mariner-1-fortran/nssdca-marin1.txt",
+      "sha256": "59175c0bdc2828e89456b52bb80cb0fc6dd24d3ad1b9a07d9ec0f222bb968fbe"
+    },
+    {
+      "what": "New York Times, 28 July 1962, 'For Want of Hyphen Venus Rocket Is Lost' by Gladwin Hill, as transcribed by Eric Roberts in RISKS Digest 5.66",
+      "date": "1962-07-28",
+      "who": "Gladwin Hill, New York Times",
+      "quote": "LOS ANGELES, July 27--The omission of a hyphen in some",
+      "url": "https://catless.ncl.ac.uk/risks/5/66",
+      "archive": "http://web.archive.org/web/20260519224916/https://catless.ncl.ac.uk/risks/5/66",
+      "file": "sources/mariner-1-fortran/risks-5-66.txt",
+      "sha256": "9cec4c5e4fa19503c66d84f76f103bb299741512851d5744c9a8458d238faa9d"
+    },
+    {
+      "what": "Fred Webb's own account, posted under his name to alt.folklore.computers and relayed word for word by Mark Brader in RISKS Digest 9.54, 12 December 1989, of a real FORTRAN period-for-comma bug in a Mercury orbit program",
+      "date": "1989-12-12",
+      "who": "Fred Webb",
+      "quote": "After a couple of weeks with no results, he came across a DO state-\n   ment, in exactly the form ... indicated above.  After changing the\n   . to a , the program results were correct to the desired accuracy.",
+      "url": "https://catless.ncl.ac.uk/risks/9/54",
+      "archive": "http://web.archive.org/web/20260530110547/https://catless.ncl.ac.uk/risks/9/54",
+      "file": "sources/mariner-1-fortran/risks-9-54.txt",
+      "sha256": "1f4fd8849669f1e830e7337ff38528f3eb5fe72052af60a8fc957b24e44be24d"
+    },
+    {
+      "what": "Paul Ceruzzi, Beyond the Limits (1989), pp. 202-203, as quoted by Peter Neumann in RISKS Digest 8.75, 27 May 1989",
+      "date": "1989",
+      "who": "Paul Ceruzzi",
+      "quote": "The bar was left out of the hand-written guidance equations.",
+      "url": "https://catless.ncl.ac.uk/risks/8/75",
+      "archive": "http://web.archive.org/web/20261006223909/https://catless.ncl.ac.uk/risks/8/75",
+      "file": "sources/mariner-1-fortran/risks-8-75.txt",
+      "sha256": "993817a97673659c0241634df4913597ff912aae6d2d375be53ff7bb032ae6bb"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "holds",
+    "why": "NASA's own record shows that one missing symbol in the guidance equations, combined with a beacon failure, sent incorrect steering signals and forced the destruction of the vehicle. The extra point often drawn from the story, that FORTRAN's design is to blame, is not supported by this case, because FORTRAN played no shown part in it.",
+    "source": {
+      "what": "NASA NSSDCA catalogue record for Mariner 1",
+      "quote": "This caused the rocket to swing automatically into a series of unnecessary course corrections with erroneous steering commands which finally threw the spacecraft off course.",
+      "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=MARIN1",
+      "archive": "http://web.archive.org/web/20261115142019/https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=MARIN1",
+      "file": "sources/mariner-1-fortran/nssdca-marin1.txt",
+      "sha256": "59175c0bdc2828e89456b52bb80cb0fc6dd24d3ad1b9a07d9ec0f222bb968fbe"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search for \"DO 3 I = 1.3\": hits in 1985 and 1991 programming books, all lending-only.",
+    "Open Library full-text search for \"first mission to Venus\" \"DO statement\": hit in Myers, Software Reliability (1976), scan page 394 (softwarereliabil00myer); saved the search result as sources/mariner-1-fortran/ol-inside-myers-1976.json.",
+    "Tried the archive.org full text of softwarereliabil00myer: 401, the book is lending-only, so the book itself is not saved.",
+    "Web search led to RISKS Digest 5.65, 5.66, 8.75 and 9.54; saved all four. RISKS 5.66 quotes Myers word for word and transcribes the New York Times of 28 July 1962.",
+    "RISKS 5.66: Eric Roberts reports that Myers could not remember a source for his version.",
+    "RISKS 9.54: Fred Webb's account of the 1963 Mercury orbit-program DO bug.",
+    "RISKS 8.75: Ceruzzi's account of the missing bar in 'R dot bar sub n'.",
+    "Saved NASA NSSDCA Mariner 1 record, which summarises the Post Flight Review Board finding.",
+    "Tried Project Gutenberg copy of JPL's 'Mariner Mission to Venus' (1963): site returned 503 (maintenance). Tried NTRS document 19630002483: 403. Neither saved.",
+    "Did not find the Post Flight Review Board report itself online in full text.",
+    "Wayback Machine: archive.org was offline for part of this work; when it returned, the availability check found snapshots for all four quoted URLs."
+  ],
+  "confidence_note": "The Myers 1976 text is quoted through Eric Roberts's transcription in RISKS 5.66; the Open Library search snippet of the book (saved) agrees with it, but the book itself could not be downloaded. The New York Times article is also quoted through that transcription. The Post Flight Review Board report was not found; NASA's NSSDCA summary is used instead. Earlier tellings than 1976 may exist. The second class, misattributed, rests on one person's recollection (Fred Webb, posted in 1989 about events of 1963); no record from the time confirms the Mercury bug."
+}

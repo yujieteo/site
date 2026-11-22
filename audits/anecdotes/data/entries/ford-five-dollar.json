@@ -1,0 +1,99 @@
+{
+  "id": "ford-five-dollar",
+  "as_told": "In January 1914 Henry Ford doubled his workers' pay to $5 a day. He did it so that the men who built the Model T could afford to buy one. By turning his workers into customers, he created the demand that made his company grow.",
+  "lesson": "High wages pay for themselves because the workers become customers for the company's own products.",
+  "what_happened": "In January 1914 Ford Motor Company introduced a minimum of $5 a day, partly paid as a share of profits and only to workers who met certain conditions, together with an eight-hour day. In 1913 the company had to hire about 50,000 men to keep a work force of about 13,600, a turnover of 370 per cent, and about 10 per cent of workers were absent each day. In his own 1922 account Ford calls the plan profit-sharing and an act of social justice, and he says the $5 day was one of the finest cost-cutting moves the company ever made. In the same book he says only that sales depend 'in a measure' on wages paid across the whole country. The workers-as-customers explanation first appears in Ford's next book, Today and Tomorrow (1926), twelve years after the raise: 'One's own employees ought to be one's own best customers', and the 1914 raise 'increased the buying power of our own people'.",
+  "false_part": "The idea that Ford raised pay so that his own workers could buy his cars is Ford's own explanation from 1926; his 1922 account of the 1914 plan gives profit-sharing, fairness and lower costs as the reasons, and the plan followed very high turnover and absence.",
+  "class": "changed",
+  "also": "",
+  "earliest_telling": {
+    "date": "1926",
+    "who": "Henry Ford (with Samuel Crowther)",
+    "where": "Today and Tomorrow (Doubleday, Page, 1926), chapter 1, 'We Are Being Born into Opportunity'",
+    "quote": "One’s own employees ought to be one’s own best customers. The real progress of our company dates from 1914, when we raised the minimum wage from somewhat more than two dollars to a flat five dollars a day, for then we increased the buying power of our own people, and they increased the buying power of other people, and so on and on.",
+    "url": "https://archive.org/details/todaytomorrow0000ford_t6y5",
+    "archive": "https://archive.org/details/todaytomorrow0000ford_t6y5",
+    "file": "sources/ford-five-dollar/todaytomorrow0000ford_t6y5_djvu.txt",
+    "sha256": "6a3141c4a42e2787154500fd0d0c8de1a7673377b49ed6891b79beb818724141"
+  },
+  "original": [
+    {
+      "what": "Ford's own account of the January 1914 plan, My Life and Work (1922), chapter 8",
+      "date": "1922",
+      "who": "Henry Ford (with Samuel Crowther)",
+      "quote": "Having these facts in hand we announced and put into operation in January, 1914, a kind of profit-sharing plan in which the minimum wage for any class of work and under certain conditions was five dollars a day.",
+      "url": "https://archive.org/details/mylifework00ford",
+      "archive": "https://archive.org/details/mylifework00ford",
+      "file": "sources/ford-five-dollar/mylifework00ford_djvu.txt",
+      "sha256": "bbff35e1436b82dd9104f2219f382adde6e0ea63282eb5b490e97388b75b42d8"
+    },
+    {
+      "what": "Ford 1922, chapter 10: the $5 day as a way to cut costs",
+      "date": "1922",
+      "who": "Henry Ford (with Samuel Crowther)",
+      "quote": "The payment of five dollars a day for an eight-hour day was one of the finest cost-cutting moves we ever made",
+      "url": "https://archive.org/details/mylifework00ford",
+      "archive": "https://archive.org/details/mylifework00ford",
+      "file": "sources/ford-five-dollar/mylifework00ford_djvu.txt",
+      "sha256": "bbff35e1436b82dd9104f2219f382adde6e0ea63282eb5b490e97388b75b42d8"
+    },
+    {
+      "what": "Ford 1922, chapter 8: the only link he then made between wages and sales",
+      "date": "1922",
+      "who": "Henry Ford (with Samuel Crowther)",
+      "quote": "I believe in the first place that, all other considerations aside, our own sales depend in a measure upon the wages we pay.",
+      "url": "https://archive.org/details/mylifework00ford",
+      "archive": "https://archive.org/details/mylifework00ford",
+      "file": "sources/ford-five-dollar/mylifework00ford_djvu.txt",
+      "sha256": "bbff35e1436b82dd9104f2219f382adde6e0ea63282eb5b490e97388b75b42d8"
+    },
+    {
+      "what": "Ford 1922, chapter 8: hiring before the plan",
+      "date": "1922",
+      "who": "Henry Ford (with Samuel Crowther)",
+      "quote": "In 1914, when the first plan went into effect, we had 14,000 employees and it had been necessary to hire at the rate of about 53,000 a year in order to keep a constant force of 14,000.",
+      "url": "https://archive.org/details/mylifework00ford",
+      "archive": "https://archive.org/details/mylifework00ford",
+      "file": "sources/ford-five-dollar/mylifework00ford_djvu.txt",
+      "sha256": "bbff35e1436b82dd9104f2219f382adde6e0ea63282eb5b490e97388b75b42d8"
+    },
+    {
+      "what": "Raff and Summers, 'Did Henry Ford Pay Efficiency Wages?', NBER Working Paper 2101 (1986), using Ford Motor Company archive figures",
+      "date": "1986",
+      "who": "Daniel M. G. Raff and Lawrence H. Summers",
+      "quote": "In 1913, annual turnover at the Ford plant reached 370 percent. Ford had to hire 50,448 men during the course of the year in order to maintain the average labor force at",
+      "url": "https://www.nber.org/system/files/working_papers/w2101/w2101.pdf",
+      "archive": "http://web.archive.org/web/20261101052230/https://www.nber.org/system/files/working_papers/w2101/w2101.pdf",
+      "file": "sources/ford-five-dollar/raff-summers-1986-nber-w2101.txt",
+      "sha256": "495acb157d8b6f0cfa83e4f21b09a6b7ccea27bb6f63b3ad13fa273ea2b9f155"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "The one study of Ford's own records found that the $5 day paid off through lower turnover and absence and higher productivity, which is a different reason from worker spending. It did not test whether Ford workers' purchases repaid the cost, and I found no study that did.",
+    "source": {
+      "what": "Raff and Summers, NBER Working Paper 2101 (1986), abstract",
+      "date": "1986",
+      "who": "Daniel M. G. Raff and Lawrence H. Summers",
+      "quote": "Finally, significant increases in productivity and profits at Ford accompanied the introduction of the five-dollar day.",
+      "url": "https://www.nber.org/system/files/working_papers/w2101/w2101.pdf",
+      "archive": "http://web.archive.org/web/20261101052230/https://www.nber.org/system/files/working_papers/w2101/w2101.pdf",
+      "file": "sources/ford-five-dollar/raff-summers-1986-nber-w2101.txt",
+      "sha256": "495acb157d8b6f0cfa83e4f21b09a6b7ccea27bb6f63b3ad13fa273ea2b9f155"
+    }
+  },
+  "search_steps": [
+    "Project Gutenberg (ebook 7213, My Life and Work) was down for maintenance; saved the 1922 printing from archive.org (mylifework00ford) instead.",
+    "Read Ford's 1922 account of the $5 day in chapters 8 and 10: reasons given are profit-sharing, social justice, cost-cutting and lower turnover; the only link to sales is a general statement that country-wide high wages help sales.",
+    "Searched the 1922 text for 'best customers' and 'own employees': not found.",
+    "Open Library full-text search for the words after the Garrett quotation, \"The real progress of our company\" and \"dates from 1914, when we raised\": the earliest hit is Ford's own Today and Tomorrow (archive.org item todaytomorrow0000ford_t6y5, 1926). Its full text was downloadable, so I saved it; the sentence is hyphenated across a line there ('cus- tomers'), which is why the first exact search missed it.",
+    "Open Library full-text search for \"employees ought to be one's own best customers\": earliest hit is Garet Garrett, The Wild Wheel (1952), which quotes Ford; later school textbooks (from 2008) tie the sentence to the 1914 raise. This is a relayed quotation, so it is a lead only.",
+    "Open Library full-text search for Ford \"five dollars a day\" \"could afford to buy\": no relevant telling found; saved as ol-inside-afford-cars.json.",
+    "Tried to find the January 1914 announcement in newspapers: Chronicling America and the Library of Congress search both refused (403); HathiTrust full-text search refused (403). Did not retry. The Henry Ford museum holds the typed press release of 5 January 1914 (object 64.167.1.33), but its text is not online.",
+    "Open Library full-text search for the press-release phrase \"greatest revolution in the matter of rewards\": only books from 1948 onward.",
+    "Found and saved Raff and Summers (1986), NBER Working Paper 2101, which uses Ford archive figures on turnover, absence, hiring queues and productivity; quotes use a plain text copy made without -layout.",
+    "Wayback Machine availability checked for the NBER PDF; a snapshot exists."
+  ],
+  "confidence_note": "Ford himself is the source of the story, in 1926, so the class rests on comparing his two accounts: the 1922 account of the 1914 plan does not give the workers-as-customers reason, and the 1913 turnover figures point to labour problems. I could not read a record made in January 1914. A reader who gives more weight to the 1926 statement could class this as true or unsupported rather than changed."
+}

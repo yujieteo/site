@@ -1,0 +1,72 @@
+{
+  "id": "pottery-class",
+  "as_told": "A ceramics teacher split a class in two. One half was graded only on the quantity of pots it made, the other half only on the quality of one pot. At the end, the best pots all came from the quantity group, because they had practised while the quality group only theorised.",
+  "lesson": "Making a large quantity of work, and learning from each attempt, gives better quality than trying to make one perfect piece.",
+  "what_happened": "The story first appears, with no source and no names, in David Bayles and Ted Orland, Art & Fear (1993). In an email that James Clear quotes as dated 18 October 2016, Orland said the story came from a gambit that the photographer Jerry Uelsmann used with his Beginning Photography students at the University of Florida, 'as Jerry told it to me', and that Orland changed photography to ceramics. No statement by Orland under his own name was found that says this: not on his archived website (107 pages, 2001 to 2017), not in his 2006 book The View from the Studio Door, not in his own posts on The WELL (2006), and not in a 2003 interview. No record by Uelsmann of the grading experiment was found. Uelsmann did say in a 2013 interview that 'quantity produces quality', but he did not describe the two-group grading. So whether any class was graded this way, and what its results were, rests only on a story Uelsmann told Orland.",
+  "false_part": "No record shows that any class was graded this way, or what its result was. Orland is quoted (in a 2016 email that James Clear published) as saying that the story he heard was about a photography class and that he changed it to ceramics. Orland witnessed only his own change of medium; the experiment itself rests on what Uelsmann told him. If the event took place, the field is wrong (photography, not ceramics), which is why misattributed is given as the second class.",
+  "class": "unsupported",
+  "also": "misattributed",
+  "earliest_telling": {
+    "date": "1993",
+    "who": "David Bayles and Ted Orland",
+    "where": "Art & Fear: Observations on the Perils (and Rewards) of Artmaking (text copyright 1993 by David Bayles and Ted Orland; the saved scan is an Image Continuum Press printing of 2010 or later), p. 29",
+    "quote": "that he was dividing the class into two groups. All those on the left side of the studio, he said, would be graded solely on the quantity of work they produced, all those on the right solely on its quality. ... the works of highest quality were all produced by the group being graded for quantity.",
+    "url": "https://artistryinaction.wordpress.com/wp-content/uploads/2016/03/david_bayles_ted_orland_art_and_fear.pdf",
+    "archive": "http://web.archive.org/web/20261103065732/https://artistryinaction.wordpress.com/wp-content/uploads/2016/03/david_bayles_ted_orland_art_and_fear.pdf",
+    "file": "sources/pottery-class/art-and-fear-scan.pdf",
+    "sha256": "240a65d142e8bd6699b3bc9bafb39a4641e9f8ea2abb9e07f42b35953a55f592"
+  },
+  "original": [
+    {
+      "what": "Uelsmann's own words on his teaching idea. It states the idea only. It does not record a class graded in two groups, or any result.",
+      "date": "2013-08-06",
+      "who": "Jerry Uelsmann (interviewed by Florida Trend)",
+      "where": "'Jerry Uelsmann is a Florida Icon', Florida Trend",
+      "quote": "there’s sort of a way in which quantity produces quality. You produce enough images and then you edit back to the ones that rise above.",
+      "url": "https://www.floridatrend.com/article/15901/jerry-uelsmann-is-a-florida-icon",
+      "archive": "http://web.archive.org/web/20260712052102/https://www.floridatrend.com/article/15901/jerry-uelsmann-is-a-florida-icon/",
+      "file": "sources/pottery-class/floridatrend-uelsmann.html",
+      "sha256": "35f3470465019f1bcc0a2869955f54508170081fa7151b0a0027713190ace7c5"
+    }
+  ],
+  "teller_correction": {
+    "what": "Orland's email to James Clear, published by Clear, not by Orland. Clear says he then published an adapted version that combines both tellings.",
+    "date": "2016-10-18 (email); published by James Clear",
+    "who": "Ted Orland, as quoted by James Clear",
+    "where": "Footnote to 'The Quality of Your Work Depends on Your Number of Repetitions' (jamesclear.com/repetitions); the same account appears in Clear's Atomic Habits (2018)",
+    "quote": "Its real-world origin was as a gambit employed by photographer Jerry Uelsmann to motivate his Beginning Photography students at the University of Florida. As retold in ‘Art & Fear’ it faithfully captures the scene as Jerry told it to me—except I replaced photography with ceramics as the medium being explored.",
+    "url": "https://jamesclear.com/repetitions",
+    "archive": "http://web.archive.org/web/20261031153340/https://jamesclear.com/repetitions",
+    "file": "sources/pottery-class/jamesclear.com_repetitions.html",
+    "sha256": "f776b9a3416fce21d8b51b3a8f731149cc8436c1aafc269fdb99b10d1ee45e44"
+  },
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "Studies of creative output support a weaker claim: people who produce more ideas also produce more good ideas (the equal-odds rule). No study found compares a group graded on quantity with a group graded on quality of one piece, as the story claims.",
+    "source": {
+      "what": "Jung, Wertz, Meadows, Ryman, Vakhtin and Flores, 'Quantity yields quality when it comes to creativity: a brain and behavioral test of the equal-odds rule', Frontiers in Psychology 6:864 (2015)",
+      "quote": "We found that higher number of responses on the divergent thinking task was significantly associated with higher creativity",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4479710/",
+      "archive": "http://web.archive.org/web/20260411175722/https://pmc.ncbi.nlm.nih.gov/articles/PMC4479710/",
+      "file": "sources/pottery-class/jung-2015-equal-odds-pmc4479710.html",
+      "sha256": "a31162e95f69a1774075f900930d236e382d51bcba63bbc91d3901203fefdbe3"
+    }
+  },
+  "search_steps": [
+    "Open Library full text, https://openlibrary.org/search/inside.json?q=%22graded+solely+on+the+quantity%22&limit=100: earliest hit is Art & Fear (1993, item artfear00davi); all other hits are later. Saved as openlibrary-inside-quantity.json.",
+    "Open Library full text for '\"fifty pounds of pots\"', '\"ceramics teacher announced\"', '\"Well, came grading time\"' and '\"being graded for quantity\"': no hit before 1993; Art & Fear text confirmed. Saved as openlibrary-inside-quality/teacher/grading/graded-for-quantity.json.",
+    "archive.org scans artfear00davi and artfearobservati0000bayl: restricted (djvu.txt and full text return 401). Used a full PDF scan on artistryinaction.wordpress.com instead. Its imprint page says 'Copyright ©1993 by David Bayles & Ted Orland' and lists Capra Press printings 1994 to 2000 and Image Continuum Press printings 2001 to 2010. The story is on p. 29. The book gives no source for the story.",
+    "English Wikipedia search API for 'Art & Fear Bayles Orland ceramics': no article on the story.",
+    "Google Books API: daily quota used up (HTTP 429). HathiTrust full-text search: blocked (HTTP 403). Not searched.",
+    "Newspaper archives (Chronicling America, Trove, Papers Past, Google News Archive) were not searched for this story; Chronicling America returned HTTP 403 when tried for another story in this batch.",
+    "Followed the best-known retelling, James Clear (jamesclear.com/repetitions and Atomic Habits): its footnote quotes an email from Orland dated 18 October 2016 naming Jerry Uelsmann's photography class. Saved.",
+    "Searched for the same account under Orland's own name: Wayback CDX for tedorland.com listed 107 archived HTML pages (2001 to 2017); all fetched; none mentions the ceramics story or its origin. Uelsmann appears only in photo captions and a bibliography line. The site was suspended in 2018.",
+    "Open Library full text of Orland, The View from the Studio Door (2006, item viewfromstudiodo00orla): no 'Uelsmann' or 'ceramics' passage found.",
+    "Orland's own posts on The WELL inkwell topic 278 (2006, six pages saved) and a 2003 interview by Jim Kasson (saved): neither mentions the story.",
+    "Hacker News comments (2016, 2017) by a user who says he emailed David Bayles, who said the story was adapted from a photography class: relayed words, used only as a lead.",
+    "Searched for Uelsmann's own account: a 2013 Florida Trend interview gives his 'quantity produces quality' idea, but no grading experiment. No record of the two-group class found.",
+    "LessWrong post 'Quantity vs quality in pottery is a lie': lead only.",
+    "Lesson: Jung et al. 2015 (equal-odds rule) saved from PubMed Central."
+  ],
+  "confidence_note": "The only statement that the class was really a photography class is Orland's 2016 email, which James Clear published; Orland did not publish it under his own name in any source found, and his account itself rests on what Uelsmann told him. The 1993 text was checked in a later printing (2010 or after) scanned on a third-party site, not the restricted archive.org scan; Open Library snippets of artfear00davi match it. Uelsmann died in 2022; any record he left of the grading scheme was not found online."
+}

@@ -1,0 +1,85 @@
+{
+  "id": "well-to-hell",
+  "as_told": "Soviet scientists drilling a very deep hole in Siberia broke through into a hollow space at about 14 km. The temperature there was about 2,000 degrees. They lowered a microphone and recorded the screams of people suffering in hell, and many of the workers quit in fear.",
+  "lesson": "Science has found physical proof that hell is a real place under the earth.",
+  "what_happened": "By 1990 the story was spread by the Trinity Broadcasting Network and a Texas evangelist. In 1990 the radio host Rich Buhler traced it. He found that the 'Finnish scientific journal' was a newsletter of Finnish missionaries, and that the trail went back through a reader's letter and a Helsinki Christian magazine to an unnamed 'Christian newsletter from California', where it stopped. The story names no real well. The deepest Soviet research well was the Kola Superdeep well (SG-3) on the Kola Peninsula in northwestern USSR, not in Siberia; that the story grew from news of this well is an inference by others, not a fact I could check. The published Soviet results for that well show ordinary rock heating with depth, temperature logs to 11,503 m, and a forecast of only 266 °C at 15,000 m.",
+  "false_part": "No drillers broke into a hollow space or recorded screams; the only known deep Soviet research well recorded normal rock temperatures far below the 2,000 degrees in the story.",
+  "class": "invented",
+  "also": "",
+  "earliest_telling": {
+    "date": "1990-07-16",
+    "who": "Rich Buhler, quoting a caller to his radio program",
+    "where": "Christianity Today, \"Scientists Discover Hell in Siberia\"",
+    "quote": "lowered microphones into the hole and heard human voices",
+    "url": "https://www.christianitytoday.com/1990/07/scientists-discover-hell-in-siberia/",
+    "archive": "http://web.archive.org/web/20260310034402/https://www.christianitytoday.com/1990/07/scientists-discover-hell-in-siberia/",
+    "file": "sources/well-to-hell/christianity-today-1990-07-buhler.html",
+    "sha256": "0cc8d1298904c51fa5c0006b7c83913212c1834b33924c2c7dc18bb40c4aa583"
+  },
+  "original": [
+    {
+      "what": "Rich Buhler's own report of where the story came from, based on his staff's calls to each source",
+      "date": "1990-07-16",
+      "who": "Rich Buhler",
+      "quote": "It was from a newsletter published by a group of Finnish missionaries",
+      "url": "https://www.christianitytoday.com/1990/07/scientists-discover-hell-in-siberia/",
+      "archive": "http://web.archive.org/web/20260310034402/https://www.christianitytoday.com/1990/07/scientists-discover-hell-in-siberia/",
+      "file": "sources/well-to-hell/christianity-today-1990-07-buhler.html",
+      "sha256": "0cc8d1298904c51fa5c0006b7c83913212c1834b33924c2c7dc18bb40c4aa583"
+    },
+    {
+      "what": "Same article: where Buhler's trail of the story ended",
+      "date": "1990-07-16",
+      "who": "Rich Buhler",
+      "quote": "thought he got it from a Christian newsletter from California",
+      "url": "https://www.christianitytoday.com/1990/07/scientists-discover-hell-in-siberia/",
+      "archive": "http://web.archive.org/web/20260310034402/https://www.christianitytoday.com/1990/07/scientists-discover-hell-in-siberia/",
+      "file": "sources/well-to-hell/christianity-today-1990-07-buhler.html",
+      "sha256": "0cc8d1298904c51fa5c0006b7c83913212c1834b33924c2c7dc18bb40c4aa583"
+    },
+    {
+      "what": "U.S. Geological Survey Open File Report 86-517, a detailed summary of Kozlovskiy's 1984 Soviet monograph on the Kola Superdeep well: location",
+      "date": "1986",
+      "who": "James W. Clarke and others, U.S. Geological Survey",
+      "quote": "Drilling of the Kola Superdeep well (SG-3) was begun in May, 1970 on the Kola Peninsula above the Arctic Circle in northwestern U.S.S.R.",
+      "url": "https://pubs.usgs.gov/of/1986/0517/report.pdf",
+      "archive": "http://web.archive.org/web/20250909125204/https://pubs.usgs.gov/of/1986/0517/report.pdf",
+      "file": "sources/well-to-hell/usgs-ofr-86-517.pdf",
+      "sha256": "a87be7dde3a957552838e889472df2a531d8e812f04133140f54db7f06b2032b"
+    },
+    {
+      "what": "Same report: measured temperature gradient and the forecast temperature at 15 km",
+      "date": "1986",
+      "who": "James W. Clarke and others, U.S. Geological Survey",
+      "quote": "Linear extrapolation of the geothermal gradient (0.019°C/m) gives a temperature of 266°C at a depth of 15,000 m in the Kola hole.",
+      "url": "https://pubs.usgs.gov/of/1986/0517/report.pdf",
+      "archive": "http://web.archive.org/web/20250909125204/https://pubs.usgs.gov/of/1986/0517/report.pdf",
+      "file": "sources/well-to-hell/usgs-ofr-86-517.pdf",
+      "sha256": "a87be7dde3a957552838e889472df2a531d8e812f04133140f54db7f06b2032b"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "does not hold",
+    "why": "The real deep well was logged for temperature and showed rock warming steadily at about 2 °C per 100 m, with no hollow space; no record shows any sound from below.",
+    "source": {
+      "what": "U.S. Geological Survey Open File Report 86-517 (summary of Kozlovskiy 1984), geophysical logging section",
+      "quote": "Logs were run to a depth of 11,503 m.",
+      "url": "https://pubs.usgs.gov/of/1986/0517/report.pdf",
+      "archive": "http://web.archive.org/web/20250909125204/https://pubs.usgs.gov/of/1986/0517/report.pdf",
+      "file": "sources/well-to-hell/usgs-ofr-86-517.pdf",
+      "sha256": "a87be7dde3a957552838e889472df2a531d8e812f04133140f54db7f06b2032b"
+    }
+  },
+  "search_steps": [
+    "Web search for the Well to Hell hoax, Ammennusastia, Trinity Broadcasting Network and Age Rendalen: found Wikipedia, Skeptoid and Snopes pages (leads only) and a 1991 Deseret News column by Jan Harold Brunvand.",
+    "Saved the Brunvand column (Deseret News, 15 May 1991). It is a lead: it names the TBN magazine Praise the Lord, February 1990, and Buhler's article in Christianity Today, 16 July 1990, and gives a geologist's guess that the story grew from news of the Kola well.",
+    "Saved Buhler's full article from christianitytoday.com (dated 1990-07-16 in the page data).",
+    "The Finnish newsletter Ammennusastia, the TBN broadcasts and the February 1990 Praise the Lord magazine are not online in full text; not obtained.",
+    "Searched for Rendalen's own account and the Secular Humanist Bulletin of October 1990: not found online. Rendalen's admission is known only as speech reported in Buhler's article, so I treated it as a lead.",
+    "Open Library and Chronicling America were not searched for this story because the story begins in 1989 and Chronicling America ends in 1963.",
+    "Searched for an open-access scientific record of the Kola well: found U.S. Geological Survey Open File Report 86-517 (1986), saved as PDF and text. Kozlovsky's Scientific American article of December 1984 is not free online.",
+    "Wayback snapshots found for the Christianity Today article and the USGS report."
+  ],
+  "confidence_note": "The earliest telling I could read is a caller's version quoted by Buhler in July 1990; earlier versions on TBN and in Finnish newsletters exist but I could not read them. The well's final depth after 1984 is not in my saved sources. Rendalen's hoax letter is reported only by Buhler."
+}

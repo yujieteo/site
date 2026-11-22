@@ -1,0 +1,90 @@
+{
+  "id": "heller-enough",
+  "as_told": "At a party given by a billionaire (often called a hedge fund manager) on Shelter Island, Kurt Vonnegut asked Joseph Heller how it felt that their host may have made more money in one day than Catch-22 had earned in its whole history. Heller answered that he had something the billionaire could never have. Asked what, he said: \"The knowledge that I've got enough.\"",
+  "lesson": "Knowing that you have enough brings more contentment than more wealth does.",
+  "what_happened": "The story comes only from Kurt Vonnegut. He told it in his commencement address at Rice University, apparently on 9 May 1998 while Heller was alive, as printed in the anthology Onward! (2000), and again in the poem \"Joe Heller\" in The New Yorker of 16 May 2005, after Heller's death in 1999, where he calls it \"True story, Word of Honor\" and places the party on Shelter Island. I found no record of the exchange in Heller's own published words. Heller's daughter Erica mentions the remark in her 2011 memoir; I saw only search snippets of it.",
+  "false_part": "",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "2000",
+    "who": "Kurt Vonnegut (commencement address, apparently Rice University, 9 May 1998)",
+    "where": "Onward! 25 years of advice, exhortation, and inspiration from America's best commencement speeches, ed. Peter J. Smith (New York: Scribner, 2000), p. 280 (search snippet)",
+    "quote": "He's Joe Heller, author, as",
+    "url": "https://openlibrary.org/search/inside.json?q=%22another+Methuselah+said+to+me%22",
+    "archive": "https://archive.org/details/onward25yearsofa00smit",
+    "file": "sources/heller-enough/ol-inside-another-methuselah.json",
+    "sha256": "c1a2c4dd833bb76071e63c4c99be7a1df150fc650c9f690152b0d5fafa64bdab"
+  },
+  "original": [
+    {
+      "what": "Kurt Vonnegut, poem \"Joe Heller\", The New Yorker, 16 May 2005 (first-hand account by the other person in the conversation)",
+      "date": "2005-05-16",
+      "who": "Kurt Vonnegut",
+      "quote": "And Joe said, “The knowledge that I’ve got enough.”",
+      "url": "https://www.newyorker.com/magazine/2005/05/16/joe-heller",
+      "archive": "http://web.archive.org/web/20251204184716/https://www.newyorker.com/magazine/2005/05/16/joe-heller",
+      "file": "sources/heller-enough/newyorker-2005-05-16-joe-heller.html",
+      "sha256": "46d1696313c03d194dad9ed0bf4a39dfc429d8423cf236c332414d9583bfec77"
+    },
+    {
+      "what": "Vonnegut's commencement address as printed in Onward! (2000), p. 280: the sentence after the punchline, which the 2014 reprint snippet in the same file shows follows \"The knowledge that I've got enough.\" (search snippet)",
+      "date": "2000",
+      "who": "Kurt Vonnegut",
+      "quote": "to many of you Adams and Eves",
+      "url": "https://openlibrary.org/search/inside.json?q=%22His+example+may+be+of+comfort%22",
+      "archive": "https://archive.org/details/onward25yearsofa00smit",
+      "file": "sources/heller-enough/ol-inside-his-example-may-be-of-comfort.json",
+      "sha256": "cba8b22bdeb2253493ccd23285a1a79934a12e287a75502ebf94654c16a4dc75"
+    },
+    {
+      "what": "Open Library full-text search result for \"knowledge apple\" Vonnegut: the Onward! (2000) text heads the speech 'Kurt Vonnegut / Writer / Rice University' and contains the Eden passage that MIT reports from the Rice address (search snippet)",
+      "date": "2000",
+      "who": "Kurt Vonnegut",
+      "quote": "It's  in  your  tummies  now.",
+      "url": "https://openlibrary.org/search/inside.json?q=%22knowledge+apple%22+Vonnegut",
+      "archive": "https://archive.org/details/onward25yearsofa00smit",
+      "file": "sources/heller-enough/ol-inside-knowledge-apple.json",
+      "sha256": "ab22fa4e060c7b29351599439462967f324de27153d6df0dbaf09e478d27d0da"
+    },
+    {
+      "what": "MIT Tech Talk report dating Vonnegut's Rice University commencement address to 9 May 1998 and quoting its Eden theme",
+      "date": "1998-06-03",
+      "who": "MIT News Office",
+      "quote": "This is Eden and you're about to get kicked out",
+      "url": "https://news.mit.edu/1998/vonnegut-0603",
+      "archive": "http://web.archive.org/web/20260207101716/https://news.mit.edu/1998/vonnegut-0603",
+      "file": "sources/heller-enough/mit-techtalk-1998-06-03-vonnegut-rice.html",
+      "sha256": "9db4e7c6090636f647f5a11c4d48242544032add38f57198b43a8b1a51c03118"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "A 2023 joint reanalysis of a large experience-sampling study found that, for most people, day-to-day happiness keeps rising with log income, and it levels off only for the least happy 20 per cent. That does not test contentment directly, but it does not support a general rule that more money stops adding happiness once a person has enough.",
+    "source": {
+      "what": "M. A. Killingsworth, D. Kahneman and B. Mellers, 'Income and emotional well-being: A conflict resolved', PNAS 120(10) e2208661120 (2023), significance statement",
+      "quote": "the flattening pattern exists but is restricted to the least happy 20% of the population",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10013834/fullTextXML",
+      "archive": "http://web.archive.org/web/20260629205434/https://www.pnas.org/doi/10.1073/pnas.2208661120",
+      "file": "sources/heller-enough/killingsworth-2023-pnas-PMC10013834.xml",
+      "sha256": "fb7950ca1272c61adce9dbcf2eee260087d99af142b60697426f151529c17c88"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search for \"Joe Heller\" \"enough\" billionaire: 114 hits; first page of 20; earliest real telling Vonnegut's 2005 poem as reprinted (one 1991 hit is a mis-dated copy of a 2005 book).",
+    "Open Library full-text search for \"that I've got enough\" Heller and for \"Shelter Island\" Heller billionaire Vonnegut: first page of each; earliest dated telling is the anthology Onward! (2000), which prints a Vonnegut commencement speech with the story.",
+    "Open Library full-text search for \"another Methuselah said to me\" and \"His example may be of comfort\": both phrases appear in Onward! (2000, p. 280) and in If This Isn't Nice, What Is? (2014). The 2014 snippet also holds the punchline. Saved both result files. Quotes avoid the highlight marks that the snippets contain, so they are short.",
+    "Tried the full text of Onward! on archive.org: lending only (401); its in-book search refused (403).",
+    "Identified the speech: MIT Tech Talk (3 June 1998) dates Vonnegut's Rice address to 9 May 1998 and quotes its Eden theme ('You ate the knowledge apple'), which matches 'Adams and Eves' in the Onward! text. The East Hampton Star (lead only) also says the Rice address recalls Heller's remark. Saved the MIT page.",
+    "The New Yorker, 16 May 2005, 'Joe Heller' by Kurt Vonnegut: saved; full text in the page data.",
+    "John C. Bogle, Enough (2008/2009) retells the poem and calls the host a hedge fund manager: lead only, not quoted.",
+    "Searched for Heller's own words: Open Library full-text search for Heller \"I have enough money\" (593 hits, first page) found nothing by Heller. Erica Heller's memoir (2011) mentions the remark: snippet saved.",
+    "Open Library full-text search for \"knowledge apple\" Vonnegut: Onward! (2000) holds the Rice University speech heading and the line 'You ate the knowledge apple. It's in your tummies now.' Saved.",
+    "Open Library full-text search for \"he can never have\" Heller enough: 0 hits, so I could not see where the Onward! text sets the party.",
+    "English Wikipedia search API for Heller Vonnegut \"enough\" Shelter Island: no article on the story (top hits unrelated).",
+    "Google Books API returned 429 and HathiTrust returned 403; free newspaper archives were not searched for this story.",
+    "Lesson source: Killingsworth, Kahneman and Mellers, PNAS 2023, full text from Europe PMC. Saved."
+  ],
+  "confidence_note": "All tellings are Vonnegut's; Heller's words reach us only through him, so the class is unsupported. Onward! heads the speech 'Rice University' and shares the Eden passage that MIT dates to 9 May 1998. The East Hampton Star (a lead) instead places the Rice speech 'Two years later' than a 1999 talk, which would make it 2001, and puts the party 'in the Hamptons'; since Onward! appeared in 2000, I take 1998 as more likely, but the date is not settled. I could not see the earliest telling's own setting for the party. The Killingsworth source's url is the Europe PMC full text, but its archive link is the PNAS article page article page, not a copy of the Europe PMC address. The Onward! text is known to me only from two search snippets (the lead-in and the line after the punchline); the punchline itself in that book is seen only in the 2014 reprint snippet. Erica Heller's remark is known to me only from search snippets (saved as sources/heller-enough/ol-inside-yossarian-*.json, not quoted)."
+}
