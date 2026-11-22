@@ -1,0 +1,80 @@
+{
+  "id": "wald-bombers",
+  "as_told": "In the Second World War, the military studied bombers that came back from missions and planned to add armour where the bullet holes were thickest. The statistician Abraham Wald said they had it backwards. The planes hit in the other places had not come back, so the armour should go where the returning planes had no holes.",
+  "lesson": "When you only see the cases that survived, the missing cases can reverse what the data seems to say (survivorship bias).",
+  "what_happened": "In 1943 Abraham Wald wrote eight memoranda for the Statistical Research Group at Columbia University on how to estimate the vulnerability of the parts of an aircraft from the damage on planes that came back. The Center for Naval Analyses reprinted them in July 1980. The memoranda show that hits on returning planes under-count the hits on the most vulnerable parts. In a worked example with hypothetical data, the engine area got fewer hits on returning planes than its share of the plane's area, so Wald's method found it the most vulnerable part. The last memorandum says that such results 'can be used as guides for locating protective armor'. The saved memoranda give a method and no order to the military, they use hypothetical data, and they say 'planes', not 'bombers'.",
+  "false_part": "",
+  "class": "true",
+  "also": "",
+  "earliest_telling": {
+    "date": "2008-01-21",
+    "who": "John D. Cook",
+    "where": "Selection bias and bombers (blog post, johndcook.com)",
+    "quote": "During WWII, statistician Abraham Wald was asked to help the British decide where to add armor to their bombers. After analyzing the records, he recommended adding more armor to the places where there was no damage!",
+    "url": "https://www.johndcook.com/blog/2008/01/21/selection-bias-and-bombers/",
+    "archive": "http://web.archive.org/web/20260704211041/https://www.johndcook.com/blog/2008/01/21/selection-bias-and-bombers/",
+    "file": "sources/wald-bombers/johndcook-2008-01-21-selection-bias-bombers.html",
+    "sha256": "fe9290e46382bd22df0c090869ef231423e33205ab1dd16a67fdeaba598b96b3"
+  },
+  "original": [
+    {
+      "what": "Abstract of the 1980 Center for Naval Analyses reprint (CRC 432) of Wald's eight 1943 memoranda (SRG memos 85, 87, 88, 89, 96, 103, 109, 126)",
+      "date": "1943 (memoranda); 1980-07 (reprint)",
+      "who": "Abraham Wald; reprinted by the Center for Naval Analyses",
+      "quote": "This research contribution consists of a series of eight memoranda originally published by the Statistical Research Group at Columbia University ... in 1943 on methods of estimating the vulnerability of various parts of an aircraft based on damage to surviving planes.",
+      "url": "https://archive.org/download/DTIC_ADA091073/DTIC_ADA091073_djvu.txt",
+      "archive": "https://archive.org/details/DTIC_ADA091073",
+      "file": "sources/wald-bombers/DTIC_ADA091073_djvu.txt",
+      "sha256": "49a705eb47a7f0d6f7f205ccf4184e9f8b129900da3c95600ab649e8fbbf3fd8"
+    },
+    {
+      "what": "Wald, Part V (SRG memo 96), worked example with hypothetical data",
+      "date": "1943",
+      "who": "Abraham Wald",
+      "quote": "Thus, for the observed data of this hypothetical example, the engine area is the most vulnerable in the sense that a hit there is most likely to down the plane. The fuselage has a relatively low vulnerability.",
+      "url": "https://archive.org/download/DTIC_ADA091073/DTIC_ADA091073_djvu.txt",
+      "archive": "https://archive.org/details/DTIC_ADA091073",
+      "file": "sources/wald-bombers/DTIC_ADA091073_djvu.txt",
+      "sha256": "49a705eb47a7f0d6f7f205ccf4184e9f8b129900da3c95600ab649e8fbbf3fd8"
+    },
+    {
+      "what": "Part VIII of the reprint (SRG memo 126), comments on results",
+      "date": "1943",
+      "who": "Abraham Wald (published under his name in the reprint)",
+      "quote": "These, and other conclusions that can be made from the table of vulnerabilities derived by the method of analysis of part VIII, can be used as guides for locating protective armor and can be used to make a prediction of the estimated loss of a future mission.",
+      "url": "https://archive.org/download/DTIC_ADA091073/DTIC_ADA091073_djvu.txt",
+      "archive": "https://archive.org/details/DTIC_ADA091073",
+      "file": "sources/wald-bombers/DTIC_ADA091073_djvu.txt",
+      "sha256": "49a705eb47a7f0d6f7f205ccf4184e9f8b129900da3c95600ab649e8fbbf3fd8"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "holds",
+    "why": "An independent study of mutual funds shows that a sample cut down to survivors can create a pattern that is not real, strong enough to explain the evidence for it. Wald's memoranda make the same point for aircraft damage, but they are the anecdote's own record, so they are not used as evidence here.",
+    "source": {
+      "what": "Brown, Stephen J., et al., 'Survivorship Bias in Performance Studies', The Review of Financial Studies 5(4):553-580, 1992 (abstract)",
+      "quote": "We analyze the relationship between volatility and returns in a sample that is truncated by survivorship and show that this relationship gives rise to the appearance of predictability. We present some numerical examples to show that this effect can be strong enough to account for the strength of evidence favoring return predictability.",
+      "url": "https://econpapers.repec.org/RePEc:oup:rfinst:v:5:y:1992:i:4:p:553-80",
+      "archive": "https://web.archive.org/web/20261122120553/https://econpapers.repec.org/article/ouprfinst/v_3a5_3ay_3a1992_3ai_3a4_3ap_3a553-80.htm",
+      "file": "sources/wald-bombers/brown-goetzmann-1992-repec-abstract.html",
+      "sha256": "e3ec655a6a380139571ed85634e281c1ff4a28349a548d441d43861e94f9e626"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search '\"Abraham Wald\" armor' (272 hits): the earliest dated hits do not tell the story; most are about armour of other kinds or cite Wald's other work.",
+    "Open Library '\"planes that did not return\"' and '\"Wald\" \"planes that returned\" armor': earliest hit is Martin K. Starr, Management: A Modern Approach (1971, p. 754), which tells the same idea about a British operational research group without naming Wald. The book is lending-only, so only a search snippet was seen and it is not quoted.",
+    "Open Library also found Wald tellings in Wadsworth, Modern Methods for Quality Control and Improvement (1986, p. 714), Good and Hardin, Common Errors in Statistics (2003) and Wainer, Graphic Discovery (2005). All are lending-only or restricted; only snippets were seen, so none is quoted. An archive.org search-inside request for the 1986 book returned 'Item not available'.",
+    "English Wikipedia 'Survivorship bias' cites Wald's 1943 memoranda (CNA reprint CRC 432, DTIC ADA091073), Wallis 1980 (JASA 75(370):334-335, the rejoinder to 'The Statistical Research Group, 1942-1945'), Mangel and Samaniego 1984 (JASA 79:259-267) and Casselman's 2016 AMS column.",
+    "The DTIC PDF link returned an HTML block page. Saved the full OCR text of the reprint from archive.org item DTIC_ADA091073 instead.",
+    "Casselman, 'The Legend of Abraham Wald', AMS Feature Column, June 2016 (lead only, read from a Wayback copy saved as casselman-ams-2016.html): it says Wald's memoranda give no advice on what the military should do, and it quotes Wallis's 1980 rejoinder as saying that the military meant to protect the parts with most hits on returning planes.",
+    "Wallis 1980 rejoinder (doi 10.2307/2287454; 10.1080/01621459.1980.10477472): it is behind a paywall, not on archive.org, and not in Open Library full text. It is the earliest telling that names Wald known to this search, by the director of the group, but it was not read and is not quoted.",
+    "Mangel and Samaniego 1984: saved the author's reprint (people.ucsc.edu/~msmangel/Wald.pdf) as mangel-samaniego-1984.pdf. It is a scanned image with no text layer, so it is not quoted.",
+    "Google Books API: refused with 'Quota exceeded' (HTTP 429), so no query ran. HathiTrust full-text search: refused with a JavaScript check page (HTTP 403). Neither search could be done.",
+    "Newspaper archives: not searched. The story is a wartime technical memorandum, not a news event.",
+    "Saved John D. Cook's 2008 blog post as the earliest full-text telling found that names Wald. It says the work was for 'the British', but the memoranda were written for the US Statistical Research Group.",
+    "Teller correction: none looked for beyond the above. Wald died in 1950 and the popular story was not his telling.",
+    "Lesson source: Wald's memoranda are the anecdote's own record, so an independent study was used instead: Brown et al. 1992 on survivorship bias in mutual fund studies (abstract saved from EconPapers)."
+  ],
+  "confidence_note": "The memoranda support the core of the story: Wald's method reads survivor damage with the missing planes in mind, it ranks the engine (few hits on survivors) as most vulnerable, and it names armour placement as a use. No saved file shows that the military planned to armour the most-hit areas, or that Wald gave any advice. That part rests on Wallis 1980 (not read) and on retellings. The data in the memoranda are hypothetical, so no saved file shows which aircraft (bombers or others), which service, or what was done with the results. The British setting in some tellings, including the earliest one quoted here, is wrong. The expected class for this candidate was seen by mistake in data/plants.tsv before research started."
+}

@@ -1,0 +1,87 @@
+{
+  "id": "lemon-juice-robber",
+  "as_told": "In 1995 a man named McArthur Wheeler robbed two banks in Pittsburgh in broad daylight without any disguise. He had rubbed lemon juice on his face, believing it would make him invisible to the security cameras. When police showed him the surveillance tapes, he said, \"But I wore the juice.\" The case inspired the research on the Dunning-Kruger effect.",
+  "lesson": "People who lack skill in an area often do not realize it and rate themselves far too highly.",
+  "what_happened": "On 6 January 1995 the Mellon Bank branch on Noble Street in Swissvale, near Pittsburgh, was robbed by a man with a handgun while a second man waited in line. Clifton Earl Johnson pleaded guilty to that robbery and testified against McArthur Wheeler, who was convicted in October 1995. In January 1996 Wheeler was sentenced to 24 and a half years. A report of the sentence datelined Pittsburgh said Wheeler had rubbed lemon juice on his face because he thought it would stop the cameras from taking a clear picture, and the prosecutor said the men wore no masks because they were sure the juice would work. Kruger and Dunning retold the case in 1999, citing a Pittsburgh Post-Gazette feature of 21 March 1996; their version says Wheeler thought the juice made his face invisible and that he was arrested the same night.",
+  "false_part": "",
+  "class": "true",
+  "also": "",
+  "earliest_telling": {
+    "date": "1996-01-07",
+    "who": "Centre Daily Times (unsigned report, datelined Pittsburgh)",
+    "where": "Centre Daily Times (State College, Pennsylvania), 7 January 1996, p. 7, \"Lemon juice didn't work; robber jailed\". It says the lemon juice was meant to stop the cameras from taking a clear picture, not to make him invisible. Clipping image with no text layer, so not quoted.",
+    "quote": "",
+    "url": "https://www.newspapers.com/clip/111378933/lemon-juice-didnt-work-robber-jailed/",
+    "archive": "http://web.archive.org/web/20221016020646/https://img.newspapers.com/img/img?institutionId=0&user=0&id=756884873&clippingId=111378933&width=557&height=1610&crop=16_602_508_1496&rotation=0",
+    "file": "sources/lemon-juice-robber/centre-daily-times-1996-01-07-clip.jpg",
+    "sha256": "9313c2428a375047a60cdb9e61a28960ee293e8f332a01e08532255cb6590a6e"
+  },
+  "original": [
+    {
+      "what": "Report of Wheeler's sentence, datelined Pittsburgh,, Centre Daily Times (State College, Pennsylvania), 7 January 1996, p. 7, \"Lemon juice didn't work; robber jailed\". Newspapers.com clipping image with no text layer, so not quoted. It says Wheeler rubbed lemon juice on his face because he thought it would prevent surveillance cameras from taking a clear picture of him; that Johnson told him about the juice; that the men did not wear masks because they were sure the juice would work, according to prosecutor Shaun Sweeney; and that Judge Gary Lancaster gave Wheeler a 24 1/2-year sentence.",
+      "date": "1996-01-07",
+      "who": "Centre Daily Times (unsigned report, datelined Pittsburgh)",
+      "quote": "",
+      "url": "https://www.newspapers.com/clip/111378933/lemon-juice-didnt-work-robber-jailed/",
+      "archive": "http://web.archive.org/web/20221016020646/https://img.newspapers.com/img/img?institutionId=0&user=0&id=756884873&clippingId=111378933&width=557&height=1610&crop=16_602_508_1496&rotation=0",
+      "file": "sources/lemon-juice-robber/centre-daily-times-1996-01-07-clip.jpg",
+      "sha256": "9313c2428a375047a60cdb9e61a28960ee293e8f332a01e08532255cb6590a6e"
+    },
+    {
+      "what": "Pittsburgh Post-Gazette, 7 January 1995, p. B-4, \"Swissvale bank robbed\". Clipping image, not quoted. It reports that the Mellon Bank branch on Noble Street in Swissvale was robbed at 2:47 p.m. the day before by a man with a semiautomatic handgun, and that a second man in line ran out with him.",
+      "date": "1995-01-07",
+      "who": "Pittsburgh Post-Gazette (unsigned)",
+      "quote": "",
+      "url": "https://www.newspapers.com/clip/109931339/swissvale-bank-robbed/",
+      "archive": "http://web.archive.org/web/20221016020716/https://img.newspapers.com/img/img?institutionId=0&user=0&id=89899153&clippingId=109931339&width=557&height=481&crop=3192_3017_584_514&rotation=0",
+      "file": "sources/lemon-juice-robber/ppg-1995-01-07-clip.jpg",
+      "sha256": "4384a9539771be968ab9a9e2ca6414b8300b7155d38097351b04116a3cb4ff2c"
+    },
+    {
+      "what": "Pittsburgh Post-Gazette, 28 October 1995, p. C-2, \"Robber is sentenced\". Clipping image, not quoted. It reports that Clifton E. Johnson, 43, got five years for three robberies including the 6 January Swissvale robbery, and that Macarthur J. Wheeler, 43, of McKeesport, his accomplice there, was convicted earlier that month after Johnson testified against him.",
+      "date": "1995-10-28",
+      "who": "Pittsburgh Post-Gazette (unsigned)",
+      "quote": "",
+      "url": "https://www.newspapers.com/clip/109930926/robber-is-sentenced/",
+      "archive": "http://web.archive.org/web/20221029163737/https://img.newspapers.com/img/img?institutionId=0&user=0&id=91128498&clippingId=109930926&width=557&height=978&crop=3160_2849_550_984&rotation=0",
+      "file": "sources/lemon-juice-robber/ppg-1995-10-28-clip.jpg",
+      "sha256": "78711d0c3215db2caeb2b795d42d85d7c4800a8780b6c4c4498edf274ddf8457"
+    },
+    {
+      "what": "Michael A. Fuoco, \"Trial & error\", Pittsburgh Post-Gazette, 21 March 1996, p. D-1 (the source Kruger and Dunning cite). Only a small clipping image (546 x 304 pixels) was found; it is too small to read reliably, so it is not quoted or used.",
+      "date": "1996-03-21",
+      "who": "Michael A. Fuoco",
+      "quote": "",
+      "url": "https://www.newspapers.com/clip/73185038/dumb1/",
+      "archive": "http://web.archive.org/web/20210725101005/https://img.newspapers.com/img/img?institutionId=0&user=0&id=89534430&width=557&height=304&crop=786_2512_3002_1669&rotation=0&brightness=0&contrast=0&invert=0&iat=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVlLXZpZXctaWQiOjg5NTM0NDMwLCJpYXQiOjE2MjcyMDY4NDgsImV4cCI6MTYyNzI5MzI0OH0.4OoiXQxCV_72-q_Qu0sQHA39trVUyys07mMNfKNwfvc&ts=1627206848",
+      "file": "sources/lemon-juice-robber/fuoco-1996-03-21-clip.jpg",
+      "sha256": "3fe6648811d22fbc69786742fc70c5f7526c48f8f17e87c2ece70351d65d34d1"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "holds",
+    "why": "In four studies, the people who scored lowest on tests of humor, grammar and logic placed themselves far above their real rank.",
+    "source": {
+      "what": "Kruger and Dunning (1999), Journal of Personality and Social Psychology 77(6), 1121-1134, abstract (copy hosted at holub.com)",
+      "quote": "Across 4 studies, the authors found that participants scoring in the bottom quartile on tests of humor, grammar, and logic grossly overestimated their test performance and ability. Although their test scores put them in the 12th percentile, they estimated themselves to be in the 62nd.",
+      "url": "https://holub.com/goodies/incompetence.pdf",
+      "archive": "http://web.archive.org/web/20260309150311/https://holub.com/goodies/incompetence.pdf",
+      "file": "sources/lemon-juice-robber/kruger-dunning-1999-holub.pdf",
+      "sha256": "6d038059cf238de218f242cddc6a8ad49045034bb9ae6b84805dfb66e011a089"
+    }
+  },
+  "search_steps": [
+    "Open Library search inside, \"mcarthur wheeler\" (43 hits): earliest telling is the Ig Nobel Prizes book (2002), which quotes Kruger and Dunning. \"wore the juice\" (27 hits): earliest 2002. \"i wore the lemon juice\": 0 hits.",
+    "Saved Kruger and Dunning (1999), the best-known telling and the study behind the lesson. It cites Fuocco [sic], Pittsburgh Post-Gazette, 21 March 1996, p. D1. The 7 January 1996 Centre Daily Times report (below) is an earlier telling.",
+    "Kruger and Dunning was first saved from gwern.net, but the Wayback Machine would not save that copy. The same paper was then saved from holub.com, which has a Wayback copy, and that copy is the one quoted. Its text is in one column.",
+    "Wikipedia (1995 Greater Pittsburgh bank robberies) was read only as a lead. It cites Newspapers.com clippings of the Post-Gazette (7 January 1995, 28 October 1995, 21 March 1996) and the Centre Daily Times (7 January 1996), and Errol Morris in The New York Times (2010).",
+    "The clipping pages on Newspapers.com hide the OCR text and the live site returns a Cloudflare block page. Saved the clipping images from their Wayback Machine copies and read them. They have no text layer, so they are listed but not quoted.",
+    "Errol Morris (New York Times, 20 June 2010, read as a lead) quotes a Post-Gazette article by Fuoco on Wheeler's arrest on 20 April 1995 after his photo was shown on television, and says Dunning found the case in the 1996 World Almanac. Neither the April 1995 article nor the World Almanac entry was found online in full text.",
+    "Searched for a court record: the CourtListener API gave no usable reply, Leagle returned HTTP 403, and a web search found no opinion naming Wheeler. Searched for the January 1996 report as text: found only behind a paywall (ProQuest).",
+    "Teller correction: one web search for a correction by Kruger or Dunning (for example of 'arrested later that night') found none.",
+    "Lesson: tried to save Nuhfer et al. (2016, 2017, Numeracy), which argue that much of the pattern is a statistical artifact; both downloads returned block pages, so they are not quoted.",
+    "Papers Past returned a script block page (Incapsula); the Trove API needs a key (HTTP 401); Google News Archive has no text search. None of these was searched."
+  ],
+  "confidence_note": "The lemon-juice belief is known from a newspaper report made at the time that cites Wheeler and the prosecutor; a newspaper report made at the time is treated here as a record of the event, not as relayed words (the same reading is used for vicary-popcorn). Details differ between tellings: Kruger and Dunning say Wheeler was 'arrested later that night', but the robbery was on 6 January 1995 and, by Morris's quote of the Post-Gazette, the arrest was on 20 April 1995 after a television broadcast. The 1996 report dates the robbery 5 January and says Johnson was sentenced in April; the Post-Gazette dates the robbery 6 January and Johnson's sentence 27 October 1995. Ages differ (46 in the 1996 report, 43 in the Post-Gazette). That Wheeler robbed two banks rests on the Post-Gazette as quoted by Morris; the saved records show one. None of these touch the lesson."
+}

@@ -1,0 +1,78 @@
+{
+  "id": "vicary-popcorn",
+  "as_told": "In 1957 a cinema in New Jersey flashed the words \"Eat popcorn\" and \"Drink Coca-Cola\" on the screen during films, too fast for the audience to see. Over six weeks, popcorn sales rose by 57.5% and Coca-Cola sales by 18.1%. The test, by the market researcher James Vicary, is told as proof that hidden messages make people buy.",
+  "lesson": "Hidden messages that people cannot consciously see can make large numbers of them buy a product.",
+  "what_happened": "On 12 September 1957 James Vicary showed reporters in New York a film with hidden \"Drink Coca-Cola\" flashes and said that a six-week test in a New Jersey cinema had raised popcorn sales by 57.5% and Coca-Cola sales by 18.1%. He did not name the cinema and gave only attendance and percentage figures, no sales records. In December 1957 Motion Picture Daily found that the cinema was the Fort Lee Theatre, Fort Lee, New Jersey, and that Vicary's company had put its equipment there for six weeks in the summer of 1957. The executives in charge of the theatre told the paper that the device had no effect on refreshment stand sales and that sales stayed at the theatre's usual average. The next day the circuit's president, B. S. Moss, said he was satisfied that the method could help sales, but only on figures that Vicary's own company had given him, and he said more tests were needed.",
+  "false_part": "The sales rise: the theatre's own executives reported at the time that sales did not change, and the only figures for a rise came from Vicary's company; no sales records from the test were found published.",
+  "class": "changed",
+  "also": "invented",
+  "earliest_telling": {
+    "date": "1957-09-16",
+    "who": "Advertising Age (unsigned report, dateline New York, 12 September 1957)",
+    "where": "Advertising Age, vol. 28, no. 37, 16 September 1957, \"'Persuaders' Get Deeply 'Hidden' Tool: Subliminal Projection\"",
+    "quote": "Mr. Vicary reported that he recently tested the \"invisible commercial\" in a New Jersey movie theater. The tests ran for six weeks, during which time some 45,000 persons attended the theater. Two advertising messages were projected—one urging the audience to eat popcorn, the other suggesting, \"Drink Coca-Cola.\" According to Mr. Vicary, the \"invisible commercial\" increased popcorn sales by 57.5% and ... sales by 18.1%.",
+    "url": "https://archive.org/details/sim_advertising-age_1957-09-16_28_37",
+    "archive": "https://archive.org/details/sim_advertising-age_1957-09-16_28_37",
+    "file": "sources/vicary-popcorn/sim_advertising-age_1957-09-16_28_37_djvu.txt",
+    "sha256": "0767f6439f2afdb949861a2ecefa965291fa9c6ebfe7a1380c8ffe7c7bf560b8"
+  },
+  "original": [
+    {
+      "what": "Motion Picture Daily report naming the cinema, quoting Vicary's press release, and giving the theatre executives' account of sales",
+      "date": "1957-12-16",
+      "who": "Motion Picture Daily (unsigned)",
+      "quote": "\"The invisible advertising increased popcorn sales on the average of 57.5%, and increased sales of Coca-Cola on the average of 18.8%.\"",
+      "url": "https://archive.org/details/motionpicturedai82unse_0",
+      "archive": "https://archive.org/details/motionpicturedai82unse_0",
+      "file": "sources/vicary-popcorn/motionpicturedai82unse_0_djvu.txt",
+      "sha256": "1ae43e0a600c2758d3e83f14aa84b0788d22c5e9227780d1f58ef5028b6fa3ed"
+    },
+    {
+      "what": "Motion Picture Daily follow-up: the theatre owner confirms the test site and the paper restates the executives' account of no effect",
+      "date": "1957-12-17",
+      "who": "Motion Picture Daily (unsigned), reporting B. S. Moss, president of the B. S. Moss Theatre Circuit",
+      "quote": "Subliminal advertising equipment tested in the Fort Lee Theatre, Fort Lee, N. J., was that of the Subliminal Projection Company, New York, according to B. S. Moss, president of the B. S. Moss Theatre Circuit, owners and operators of the theatre. ... According to executives in immediate charge of theatre operation and advertising, the device tested had no effect on refreshment stand sales, and this was reported in the Motion Picture Daily story.",
+      "url": "https://archive.org/details/motionpicturedai82unse_0",
+      "archive": "https://archive.org/details/motionpicturedai82unse_0",
+      "file": "sources/vicary-popcorn/motionpicturedai82unse_0_djvu.txt",
+      "sha256": "1ae43e0a600c2758d3e83f14aa84b0788d22c5e9227780d1f58ef5028b6fa3ed"
+    },
+    {
+      "what": "Same Motion Picture Daily follow-up: the owner's support rests only on figures from Vicary's company",
+      "date": "1957-12-17",
+      "who": "Motion Picture Daily (unsigned), reporting B. S. Moss",
+      "quote": "Moss said that on the basis of figures supplied him by the Subliminal Projection Company for the test period, he was satisfied that this type of \"subconscious\" advertising could help to increase sales. He said that the manager of the theatre and other members of his organization had not been informed of those figures.",
+      "url": "https://archive.org/details/motionpicturedai82unse_0",
+      "archive": "https://archive.org/details/motionpicturedai82unse_0",
+      "file": "sources/vicary-popcorn/motionpicturedai82unse_0_djvu.txt",
+      "sha256": "1ae43e0a600c2758d3e83f14aa84b0788d22c5e9227780d1f58ef5028b6fa3ed"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "Laboratory studies find that a hidden brand cue can shift choice a little, but only in people who already need that kind of product (thirsty or tired). No study shows a sales rise of the size Vicary claimed among ordinary audiences.",
+    "source": {
+      "what": "Bermeitinger, Goelz, Johr, Neumann, Ecker and Doerr (2009), The hidden persuaders break into the tired brain, Journal of Experimental Social Psychology 45(2), 320-326 (accepted manuscript)",
+      "quote": "We found the same pattern as Karremans et al. (2006): Only tired participants consumed more of the subliminally presented than the not presented brand. Therefore, the findings confirm that subjects are influenced by subliminally presented stimuli if these stimuli are need-related and if subjects are in the matching motivational state.",
+      "url": "https://ssoar.info/ssoar/bitstream/document/29133/1/29133_1.pdf",
+      "archive": "http://web.archive.org/web/20231203181842/https://www.ssoar.info/ssoar/handle/document/29133",
+      "file": "sources/vicary-popcorn/bermeitinger-2009-hidden-persuaders.pdf",
+      "sha256": "da48eb51638ba6204c9db47ee89de68fb9600a41f00097de12b24a51aaf99dfb"
+    }
+  },
+  "search_steps": [
+    "Open Library search inside, \"eat popcorn\" vicary: 679 hits; earliest book in the first 100 sorted by year is Martin Mayer, Madison Avenue U.S.A. (1958). Trade papers from 1957 are earlier.",
+    "Wikipedia (James Vicary), fetched as raw wikitext and read only as a lead: it cites Acland (2011), Life (31 March 1958), O'Barr (2005), Snopes, Rogers (1992) and Crandall (2006), and gives the 1962 Advertising Age interview with only Snopes and O'Barr as sources. Rogers (1992, Public Relations Quarterly), read from a copy on gwern.net as a lead, points to the press releases and to Motion Picture Daily.",
+    "archive.org: found Advertising Age, 16 September 1957 (sim_advertising-age_1957-09-16_28_37). Its report, dated New York 12 September, is the earliest telling found. Saved its full text.",
+    "archive.org: found Motion Picture Daily for July-September 1957 (motionpicturedai82unse) and October-December 1957 (motionpicturedai82unse_0). The 16 September 1957 issue also reports the demonstration, on 'Thursday' (12 September), with the same figures. The 16 and 17 December 1957 issues name the Fort Lee Theatre and give the executives' and the owner's accounts. Saved the October-December text.",
+    "The 16 December 1957 column's account of sales ('circuit executives st[ate] that they experienced no effect on [re]freshment stand patronage... sales of all items during [the] six-week period remained at the est[ab]lished average') is cut off at the line ends in the scan, so the clean restatement from 17 December is quoted instead.",
+    "Number differences found: Advertising Age and Motion Picture Daily (16 September) give a Coca-Cola rise of 18.1%; the press release text quoted by Motion Picture Daily on 16 December gives 18.8%. Motion Picture Daily on 16 December dates the demonstration 'Sept. 15'; Advertising Age dates it 12 September and Motion Picture Daily on 16 September says 'Thursday'.",
+    "Teller correction: the 1962 Advertising Age interview by Fred Danzig, in which Vicary is said to have called the test a gimmick with too little data, is cited by many retellings. archive.org holds Advertising Age issues for 1957-1961 but none for 1962. I could not find the interview online and did not quote it, so teller_correction is null.",
+    "Chronicling America (loc.gov) and HathiTrust full-text search returned a Cloudflare block page; not searched. Google Books API returned a daily quota error; not searched.",
+    "Papers Past returned a script block page (Incapsula); the Trove API needs a key (HTTP 401); Google News Archive has no text search. None of these was searched.",
+    "Lesson: one web search found no open copy of Karremans, Stroebe and Claus (2006); saved the open accepted manuscript of Bermeitinger et al. (2009), which repeats its result with a different product.",
+    "The Wayback Machine would not save the Bermeitinger PDF (the save request failed, then returned HTTP 429). The archive link for that source is a Wayback copy of the ssoar record page that links to the PDF, not of the PDF itself."
+  ],
+  "confidence_note": "A newspaper report made at the time, of what theatre executives said about their own sales, is treated here as a record of the event, not as relayed words; the same reading is used for the lemon-juice entry. The executives' account and the owner's account conflict, and no sales records from either side were found. Vicary's 1962 admission was not seen. If one reads the test itself as part of the story, the class is changed; if one reads the sales result as the story, it is invented."
+}

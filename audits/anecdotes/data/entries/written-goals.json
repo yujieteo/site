@@ -1,0 +1,68 @@
+{
+  "id": "written-goals",
+  "as_told": "In 1953 (or 1979), researchers asked the graduating class at Yale (or Harvard) how many had clear, written goals. Only 3% did. Twenty years later, the 3% with written goals were worth more in money than the other 97% put together.",
+  "lesson": "Writing down specific goals makes people far more successful than people who do not.",
+  "what_happened": "No such study took place. The Yale University Library examined records and asked the secretary of the Class of 1953; it found no record, and nobody recalled such a study of that class or any other. The earliest telling found is Mark Victor Hansen's Future Diary (copyright 1983), which says the 1953 Yale class was polled, only three percent had written goals, and twenty years later those few had accomplished more than the other 97 percent. Hansen gives no source.",
+  "false_part": "The study itself: no Yale class was polled about written goals and followed up twenty years later. The Harvard versions are later retellings; the Matthews summary also calls the Yale/Harvard study an urban myth.",
+  "class": "invented",
+  "also": "",
+  "earliest_telling": {
+    "date": "1983",
+    "who": "Mark Victor Hansen",
+    "where": "Future Diary (Newport Beach, Calif.: M.V. Hansen Pub. Co., copyright 1983; scan is a 1985 printing), item futurediary00hans",
+    "quote": "University, in 1953, the graduating ... to see how many had written goals",
+    "url": "https://openlibrary.org/search/inside.json?q=%22class+was+polled%22&limit=100",
+    "archive": "https://archive.org/details/futurediary00hans",
+    "file": "sources/written-goals/openlibrary-inside-polled.json",
+    "sha256": "3b20f84626886b1a0fbfaa54153bf81c42e298d6f0aadd7e0dce4797f7129895"
+  },
+  "original": [
+    {
+      "what": "Yale's own search of its records and of the Class of 1953, finding no study.",
+      "date": "2020-09-28 (last updated)",
+      "who": "Yale University Library (answered by Laura Galas)",
+      "where": "Ask Yale Library FAQ 175224",
+      "quote": "There was no relevant record, nor did anyone recall the purported study of the Class of 1953, or of any other class.",
+      "url": "https://ask.library.yale.edu/faq/175224",
+      "archive": "http://web.archive.org/web/20261012024028/https://ask.library.yale.edu/faq/175224",
+      "file": "sources/written-goals/ask-yale-library-faq-175224.html",
+      "sha256": "860fc63290ead5b797a9832c290bbb52227ad6f410152f27a2d10b62d80d4c5a"
+    },
+    {
+      "what": "Yale's conclusion.",
+      "date": "2020-09-28 (last updated)",
+      "who": "Yale University Library",
+      "where": "Ask Yale Library FAQ 175224",
+      "quote": "It has been determined that no “goals study” of the Class of 1953 actually occurred.",
+      "url": "https://ask.library.yale.edu/faq/175224",
+      "archive": "http://web.archive.org/web/20261012024028/https://ask.library.yale.edu/faq/175224",
+      "file": "sources/written-goals/ask-yale-library-faq-175224.html",
+      "sha256": "860fc63290ead5b797a9832c290bbb52227ad6f410152f27a2d10b62d80d4c5a"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "The only direct test found (Matthews, Dominican University) had 149 participants who completed it, ran for 4 weeks, used self-rated progress and is not peer reviewed. It found that writing goals helped somewhat, which is far from the story's claim of larger lifetime earnings.",
+    "source": {
+      "what": "Gail Matthews, 'Goals Research Summary', Dominican University of California",
+      "quote": "only 149 participants completed the study.",
+      "url": "https://www.dominican.edu/sites/default/files/2020-02/gailmatthews-harvard-goals-researchsummary.pdf",
+      "archive": "http://web.archive.org/web/20261109221506/https://www.dominican.edu/sites/default/files/2020-02/gailmatthews-harvard-goals-researchsummary.pdf",
+      "file": "sources/written-goals/matthews-goals-research-summary.pdf",
+      "sha256": "53144e3ae8d2b9ae79b965c6f92ef9ed84b95a91f8f5ead73f2c125d8c275177"
+    }
+  },
+  "search_steps": [
+    "Open Library full text for '\"years later\" \"written goals\" 1953', '\"3 percent\" \"97 percent\"', '\"3%\" \"97%\"', '\"class was polled\"', '\"sum totally\"', '\"study was reopened\"', '\"definite, positive, specific, believable\"': earliest dated telling is Mark Victor Hansen, Future Diary (copyright 1983, file openlibrary-inside-hansen-copyright.json).",
+    "Hansen's passage, in pieces: polled (openlibrary-inside-polled.json), reopened (openlibrary-inside-reopened.json: 'years later this chrono- file/longevity study was reopened, only to discover that the students'), sum totally (openlibrary-inside-sumtotally.json: 'students with written goals had accomplished ... more than the other 97 percent of'). No source given.",
+    "Later tellings seen: Pushing Up People (1984) with a Harvard version; Charting Your Family's Course (1994) with a Harvard Business School version.",
+    "English Wikipedia search API for 'Yale 1953 goals study written': no article on the story.",
+    "Google Books API: daily quota used up (HTTP 429). HathiTrust: blocked (HTTP 403). Not searched.",
+    "Newspaper archives (Chronicling America, Trove, Papers Past, Google News Archive) were not searched for this story; Chronicling America returned HTTP 403 when tried for another story in this batch.",
+    "Yale University Library FAQ 175224 saved: no record, no study. It names a September 1991 Success magazine article by Ken Thuerback that traces the story to a Zig Ziglar tape; this is relayed and used only as a lead.",
+    "No correction by Hansen was seen in the sources searched; no separate search for one was made.",
+    "Lesson: Matthews goals research summary saved from Dominican University."
+  ],
+  "confidence_note": "Hansen may have taken the story from an earlier speaker (the Yale page points to Zig Ziglar), but no earlier dated telling was found. The Hansen text was read only as Open Library snippets. Open Library dates the scan to 1983; the copyright line was seen in a snippet."
+}
