@@ -1,0 +1,65 @@
+{
+  "id": "hard-drive-freezer",
+  "as_told": "When a hard drive fails and will not spin up, put it in a sealed bag in the freezer overnight. When you plug it back in, it works again long enough to copy your data off.",
+  "lesson": "Freezing a failing hard drive is a good way to revive it and save its data.",
+  "what_happened": "Hard-disk guides recommended freezing in the early 1990s: John M. Goodman's 1990 SpinRite companion links it to 'stiction', where parked heads stick to the platters. Some users report that it worked: a Microsoft blogger wrote in 2009 that a failed new 2TB drive spun up and was found again by his home server after an hour in the freezer. In 2007 a Kroll Ontrack data-recovery executive said it might once have helped certain faults, but that freezing is 'more likely to make the situation worse'. No controlled test of how often it works was found.",
+  "false_part": "It is not a reliable fix: the reports are single cases, and recovery experts say it can damage the drive.",
+  "class": "changed",
+  "also": "",
+  "earliest_telling": {
+    "date": "1990",
+    "who": "John M. Goodman",
+    "where": "The Official SpinRite II and Hard Disk Companion (San Mateo: IDG Books Worldwide), Open Library search snippet",
+    "quote": "This failure mode is called ... and then try again. ... Put only the drive in the ... PC and put it in your refrigera- tor or ... for several hours, then hook it up to",
+    "url": "https://openlibrary.org/search/inside.json?q=freezer%20stiction",
+    "archive": "https://archive.org/details/officialspinrite00good",
+    "file": "sources/hard-drive-freezer/openlibrary-search-inside-freezer-stiction.json",
+    "sha256": "0289dbee81a16cc7ba5e9f98da1e8ba2e325b18d90ca7d4d10437896f02f02dd"
+  },
+  "original": [
+    {
+      "what": "A first-hand report that a failed drive worked after freezing: MSDN blog 'shawnste', 'A Cool Hard Drive Fix' (now on Microsoft Learn archive)",
+      "date": "2009-09-28",
+      "who": "author of the MSDN blog 'shawnste'",
+      "quote": "Figuring I had nothing to lose, I stuck the drive in the freezer (in it's USB housing for good measure). An hour later I pulled it out, ran downstairs & plugged it into the Windows Home Server. The power turned on, the drive spun up",
+      "url": "https://learn.microsoft.com/en-us/archive/blogs/shawnste/a-cool-hard-drive-fix",
+      "archive": "http://web.archive.org/web/20240611015216/https://learn.microsoft.com/en-us/archive/blogs/shawnste/a-cool-hard-drive-fix",
+      "file": "sources/hard-drive-freezer/msblog-shawnste-cool-hard-drive-fix.html",
+      "sha256": "56edc51a4ac93637c557c0807cfc3efe08856b61ba17f78da8de8517d1775b0f"
+    },
+    {
+      "what": "Jim Reinert, vice president of data recovery and software products at Kroll Ontrack, quoted by Serdar Yegulalp, TechTarget, 1 August 2007",
+      "date": "2007-08-01",
+      "who": "Jim Reinert",
+      "quote": "Freezing a drive may get the heads unstuck from the platters, although it's more likely to make the situation worse by damaging the delicate surfaces of the heads.",
+      "url": "https://www.techtarget.com/news/Can-freezing-a-hard-drive-thats-crashed-restore-it-to-life/871376/",
+      "archive": "http://web.archive.org/web/20261122193704/https://www.techtarget.com/news/Can-freezing-a-hard-drive-thats-crashed-restore-it-to-life/871376/",
+      "file": "sources/hard-drive-freezer/techtarget-freezing-hard-drive-ontrack.html",
+      "sha256": "d43dec31b988dbe868f37c038a99e0e1bb1650b7930018646829df6e07c4ca0c"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "No study or manufacturer test of the freezer method was found. The evidence is single reports for it and data-recovery experts against it; the Kroll Ontrack executive said nearly all modern drives use fluid-bearing motors, so the old reasons apply less.",
+    "source": {
+      "what": "TechTarget, 1 August 2007, reporting Kroll Ontrack's Jim Reinert (an expert statement, not a study)",
+      "quote": "According to Reinert, freezing a faulty drive might have been beneficial once upon a time, but is no longer recommended.",
+      "url": "https://www.techtarget.com/news/Can-freezing-a-hard-drive-thats-crashed-restore-it-to-life/871376/",
+      "archive": "http://web.archive.org/web/20261122193704/https://www.techtarget.com/news/Can-freezing-a-hard-drive-thats-crashed-restore-it-to-life/871376/",
+      "file": "sources/hard-drive-freezer/techtarget-freezing-hard-drive-ontrack.html",
+      "sha256": "d43dec31b988dbe868f37c038a99e0e1bb1650b7930018646829df6e07c4ca0c"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text 'hard drive' freezer 'plastic bag': no relevant early hits.",
+    "Open Library full-text 'drive in the freezer': earliest hits Goodman, Official SpinRite II and Hard Disk Companion (1990), and Mark Minasi, The hard disk survival guide (1991): 'truly a gonzo recovery technique: Put the drive in the freezer overnight, then hook it up and try to read'.",
+    "Open Library full-text 'freezer stiction' gave a longer Goodman 1990 snippet linking the advice to stiction. Archive.org full texts of these books are restricted (401), so only the search snippets are saved and quoted.",
+    "Archive.org metadata confirmed Goodman, John M., 1939-, IDG Books Worldwide, 1990.",
+    "Web searches for 1990s Usenet tellings found only 1990 comp.sys.att posts on stiction (no freezer) and a 1996 linux-kernel post on stiction (no freezer). Google Groups was not searched directly.",
+    "Saved the 2009 Microsoft blog first-hand report and the 2007 TechTarget article quoting Kroll Ontrack.",
+    "PCWorld 2016 article (DriveSavers) refused with a Cloudflare block; a Seagate blog post redirected to the blog home page. Rossmann Group, Gillware and DriveSavers pages were seen only as search leads.",
+    "No correction by Goodman or Minasi was found."
+  ],
+  "confidence_note": "Usenet tellings before 1990 may exist; Google Groups could not be searched. The 1990 quote is from an Open Library search snippet, not from the full book. The class 'changed' rests on single first-hand reports that it worked; no count of successes and failures exists. The 1990 quote does not itself show the words 'freezer' or 'stiction', because in the snippet those words sit inside search highlights that the quote skips; the Minasi 1991 snippet, quoted in search_steps, is the one that says 'drive in the freezer overnight'. The archive field for the 1990 book is the archive.org book page, not a Wayback copy of the search result."
+}

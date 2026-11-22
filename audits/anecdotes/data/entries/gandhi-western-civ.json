@@ -1,0 +1,76 @@
+{
+  "id": "gandhi-western-civ",
+  "as_told": "A journalist asked Mahatma Gandhi, \"What do you think of Western civilization?\" Gandhi replied, \"I think it would be a good idea.\" The exchange is often placed on his arrival in England.",
+  "lesson": "Gandhi held that modern Western civilisation was not true civilisation.",
+  "what_happened": "No record made in Gandhi's lifetime (he died in 1948) shows the exchange. Quote Investigator, used here only as a lead, traces it to a Seattle Times item of January 1967 about the CBS documentary \"The Italians\", which says Gandhi \"was reported to have answered\"; I could not obtain that newspaper. The earliest telling I saved is Harvey Day's 1970 book Practical Yoga for the Businessman, where a visitor to Gandhi's ashram asks the question and Gandhi answers that it \"would be a very good idea\". In 1971 it appears as wall writing in graffiti collections. In 1979 E. F. Schumacher wrote that he had seen a film of Gandhi disembarking at Southampton in 1930 and replying \"That would be a good idea\" to a question about \"modern civilization\", but no such film has been found. Gandhi's own book Hind Swaraj (1909) does attack modern European civilisation in strong words.",
+  "false_part": "",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "1970",
+    "who": "Harvey Day",
+    "where": "Practical Yoga for the Businessman (section \"What Is Civilization?\")",
+    "quote": "was a cunning little man with a keen sense of humour",
+    "url": "https://archive.org/details/practicalyogafor0000dayh",
+    "archive": "https://archive.org/details/practicalyogafor0000dayh",
+    "file": "sources/gandhi-western-civ/openlibrary-inside-gandhi-very-good-idea-vorster.json",
+    "sha256": "dd34593834efe9286c7ceee82b65ccbaddc2c40446085676af04e8f9bccfdc24"
+  },
+  "original": [
+    {
+      "what": "1971 graffiti collection recording the exchange as wall writing",
+      "date": "1971",
+      "who": "Robert Reisner (compiler)",
+      "quote": "Mr.  Gandi  [sic] :  I  think  it  would  be  a",
+      "url": "https://archive.org/details/graffititwothous00reis",
+      "archive": "https://archive.org/details/graffititwothous00reis",
+      "file": "sources/gandhi-western-civ/openlibrary-inside-western-civilization-good-idea.json",
+      "sha256": "c0eafd92b63a3798543df4c60c62d22fda33f85422c8aa8ee8a119a9b4e94205"
+    },
+    {
+      "what": "E. F. Schumacher's claim to have seen the exchange on film (the only claimed first-hand record)",
+      "date": "1979",
+      "who": "E. F. Schumacher, Good Work (Harper & Row)",
+      "quote": "in 1930. He disembarked in Southampton",
+      "url": "https://archive.org/details/goodwork0000schu",
+      "archive": "https://archive.org/details/goodwork0000schu",
+      "file": "sources/gandhi-western-civ/openlibrary-inside-schumacher-film-of-gandhi.json",
+      "sha256": "755ed5acce1110360546e55d4eb83cb6e22feff1537959d865fe92868a7402cd"
+    },
+    {
+      "what": "Gandhi's own published view of modern civilisation, in his book Hind Swaraj (1909), Navajivan edition",
+      "date": "1909",
+      "who": "M. K. Gandhi",
+      "quote": "This civilization is irreligion, and it has taken such a hold on the people in Europe that those who are in it appear to be half mad.",
+      "url": "https://www.mkgandhi.org/ebks/hind_swaraj.pdf",
+      "archive": "http://web.archive.org/web/20260915150550/https://www.mkgandhi.org/ebks/hind_swaraj.pdf",
+      "file": "sources/gandhi-western-civ/hind-swaraj-mkgandhi.pdf.txt",
+      "sha256": "d46e83bdecc0d5bde248e95ee1bac9183f4444699d434054459052fd32a7ac93"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "holds",
+    "why": "In Hind Swaraj, published under his own name, Gandhi calls modern European civilisation irreligion and a disease that the English suffer from, which matches the point of the quip even though the quip itself is not recorded.",
+    "source": {
+      "what": "M. K. Gandhi, Hind Swaraj or Indian Home Rule (1909), chapter on civilisation, Navajivan edition",
+      "quote": "Civilization is not an incurable disease, but it should never be forgotten that the English people are at present afflicted by it.",
+      "url": "https://www.mkgandhi.org/ebks/hind_swaraj.pdf",
+      "archive": "http://web.archive.org/web/20260915150550/https://www.mkgandhi.org/ebks/hind_swaraj.pdf",
+      "file": "sources/gandhi-western-civ/hind-swaraj-mkgandhi.pdf.txt",
+      "sha256": "d46e83bdecc0d5bde248e95ee1bac9183f4444699d434054459052fd32a7ac93"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search for \"think of western civilization\" with \"good idea\": 236 hits; the earliest with Gandhi is a 1970 hit in Harvey Day, Practical Yoga for the Businessman, then two 1971 graffiti collections (graffiti0000unse, graffititwothous00reis) and 1972-1973 humour and quotation books. Saved the result.",
+    "Open Library search for \"thought of western civilization\" with \"good idea\" found nothing with Gandhi earlier than 1973. Saved the result.",
+    "Open Library search for Gandhi with \"very good idea\", \"western civilization\" and Vorster returned more snippets from the 1970 Day book (ashram visitor; Gandhi as \"a cunning little man\"). Saved the result.",
+    "Open Library searches for \"film of Gandhi when he came to England\" and \"think of modern civilization\" with \"good idea\" found Schumacher's Good Work (1979, 1980) and later quotation dictionaries; saved the first result.",
+    "Quote Investigator (lead only) cites the Seattle Times, 23 January 1967 (GenealogyBank, paywalled; not obtained), Reader's Digest September 1967, and 1968-1971 books, and a 1923 Life filler \"What's your opinion of civilization?\" \"It's a good idea. Somebody ought to start it.\"",
+    "Looked for the September 1967 Reader's Digest on archive.org: the Indian Vol. 91 (July-December 1967) scan had no match; the US serial set has only the 1967 index online. Not quoted.",
+    "Guessed the archive.org identifier Life19230329 for Life, 29 March 1923; that identifier does not exist. Not quoted.",
+    "Saved Gandhi's Hind Swaraj from mkgandhi.org as his own published words on civilisation.",
+    "Google Books full-text search returned 429 and was not retried. English Wikipedia was not checked for this quote."
+  ],
+  "confidence_note": "Quotes from the 1970 and 1971 books and from Schumacher come from Open Library search snippets, not full texts (the books are lending-only), so they are short fragments. The 1967 Seattle Times and Reader's Digest tellings, which are earlier than 1970, are known only through Quote Investigator. Gandhi's visit to England was in 1931, not 1930; this is from general knowledge and was not saved as a source. Absence of a record during Gandhi's life does not prove he never said it."
+}

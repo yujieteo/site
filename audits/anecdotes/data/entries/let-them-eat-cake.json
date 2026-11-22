@@ -1,0 +1,76 @@
+{
+  "id": "let-them-eat-cake",
+  "as_told": "When Queen Marie Antoinette was told that the people of Paris had no bread, she answered \"Let them eat cake\" (in French, \"Qu'ils mangent de la brioche\"). The remark is told as proof of her careless ignorance of the poor on the eve of the French Revolution.",
+  "lesson": "Marie Antoinette, and the royal court with her, did not care that the poor of France were hungry.",
+  "what_happened": "The earliest telling I found is in Book VI of Rousseau's Confessions (first published in 1782), where Rousseau says that during his stay with M. de Mably in Lyon, before he left for Paris in 1741, he remembered the answer of \"a great princess\" who, told that the peasants had no bread, replied \"qu'ils mangent de la brioche\". Marie Antoinette was born in 1755 and came to France in 1770, so she cannot be that princess. The earliest link to her that I found is Alphonse Karr's satirical monthly Les Guêpes, November 1841, which calls it a saying \"true or false\" that is told of her. In a later issue (headed April 1843 in the collected edition) Karr wrote that he had found the same saying told of a duchess of Tuscany in a book dated 1760, and that it had been put in circulation against her.",
+  "false_part": "The saying was told of an unnamed \"great princess\" decades before Marie Antoinette came to France, and the earliest link to her I found is about fifty years after her death.",
+  "class": "misattributed",
+  "also": "unsupported",
+  "earliest_telling": {
+    "date": "1841-11",
+    "who": "Alphonse Karr",
+    "where": "Les Guêpes, November 1841 issue (Paris)",
+    "quote": "Cet aperçu rappelle le mot vrai ou faux qu’on rapporte de Marie Antoinette",
+    "url": "https://archive.org/download/bub_gb_pCv7DOf42bsC/bub_gb_pCv7DOf42bsC_djvu.txt",
+    "archive": "https://archive.org/details/bub_gb_pCv7DOf42bsC",
+    "file": "sources/let-them-eat-cake/bub_gb_pCv7DOf42bsC_djvu.txt",
+    "sha256": "e7629017be29a2ff4d8c018a76ada46492f4b71bd7927330efcb507a87ece122"
+  },
+  "original": [
+    {
+      "what": "Rousseau, Les Confessions, Book VI (Geneva, 1782, vol. 2, p. 109): the saying of 'a great princess' (old spelling and OCR errors kept)",
+      "date": "1782",
+      "who": "Jean-Jacques Rousseau",
+      "quote": "qui répondit, qu'ils mangent de la brioche.",
+      "url": "https://archive.org/download/lesconfessions02rous/lesconfessions02rous_djvu.txt",
+      "archive": "https://archive.org/details/lesconfessions02rous",
+      "file": "sources/let-them-eat-cake/lesconfessions02rous_djvu.txt",
+      "sha256": "753f7ea3cc85c685303ae09a888d2d3e5db4d381ef3ec9a519a1ba47a76db558"
+    },
+    {
+      "what": "Same volume, opening of the period that Book VI covers: from his arrival at Chambéry until he left for Paris in 1741, which dates the Lyon episode before 1741",
+      "date": "1782",
+      "who": "Jean-Jacques Rousseau",
+      "quote": "mon départ pour Paris en 1741",
+      "url": "https://archive.org/download/lesconfessions02rous/lesconfessions02rous_djvu.txt",
+      "archive": "https://archive.org/details/lesconfessions02rous",
+      "file": "sources/let-them-eat-cake/lesconfessions02rous_djvu.txt",
+      "sha256": "753f7ea3cc85c685303ae09a888d2d3e5db4d381ef3ec9a519a1ba47a76db558"
+    }
+  ],
+  "teller_correction": {
+    "what": "Karr retracts his own 1841 line: Les Guêpes, issue headed April 1843 in the collected edition (Campion-Vincent and Shojaei Kawan cite it as March 1843, pp. 85-86)",
+    "date": "1843",
+    "who": "Alphonse Karr",
+    "quote": "ce qui me paraît prouver à peu près que le mot n’a pas été dit par Marie-Antoinette, mais retrouvé et mis en circulation contre elle.",
+    "url": "https://archive.org/download/lesgupessries42798gut/42798-0.txt",
+    "archive": "https://archive.org/details/lesgupessries42798gut",
+    "file": "sources/let-them-eat-cake/karr-les-guepes-series-3-4-gutenberg-42798-0.txt",
+    "sha256": "2e7a1ac22fdea42f93a0b2bfb6a2fb520e04657cb34f08a99140961592b84b7c"
+  },
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "Her own letter to her mother of 22 June 1775, written after the bread riots of that spring, says that the people's kindness despite their misfortune and the high price of bread obliges the royal couple to work for their happiness. One private letter cannot prove her attitude, but it is the opposite of the saying, and no record I found shows her mocking the hungry.",
+    "source": {
+      "what": "Marie Antoinette to Maria Theresa, Versailles, 22 June 1775, in A. von Arneth (ed.), Maria Theresia und Marie Antoinette: ihr Briefwechsel (1866 printing), p. 149 (accents lost in OCR)",
+      "quote": "qu'en voyant des gens qui dans le malheur nous traitent aussi bien, nous sommes encore plus obliges de travailler a leur bonheur.",
+      "url": "https://archive.org/download/mariatheresiaund00mari/mariatheresiaund00mari_djvu.txt",
+      "archive": "https://archive.org/details/mariatheresiaund00mari",
+      "file": "sources/let-them-eat-cake/mariatheresiaund00mari_djvu.txt",
+      "sha256": "5c6718b887dd3d0123c88bcca1a7c95383a5e9cad571c878299fd30ad800ee7a"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search for \"qu'ils mangent de la brioche\": 590 hits; first page of 20; earliest 1871 (Paris pendant le siège, 'disait une reine en 1789').",
+    "English Wikipedia 'Let them eat cake' used as a lead: points to Rousseau's Confessions, Karr's Les Guêpes (1841 and March 1843), Louis XVIII's memoirs (via Fraser) and Campion-Vincent and Shojaei Kawan (2002).",
+    "Google Books returned 429 and HathiTrust returned 403. Free newspaper archives were not searched, because the book searches already reached 1782 and the French press of 1789 is not in them.",
+    "Campion-Vincent and Shojaei Kawan, Annales historiques de la Révolution française (2002), on openedition.org: lead only. It names Karr 1843 as the first link to the queen and cites a 1788 Correspondance secrète that gives the saying to the duchesse du Maine.",
+    "Rousseau, Les Confessions, Geneva 1782, vol. 2 (archive.org lesconfessions02rous): saved; the passage is in Book VI, at M. de Mably's.",
+    "Karr, Les Guêpes, November 1841 issue (archive.org bub_gb_pCv7DOf42bsC, Google scan): saved; 'le mot vrai ou faux qu'on rapporte de Marie Antoinette'.",
+    "Karr, Les Guêpes séries 3 & 4 (Project Gutenberg 42798, copy on archive.org): saved; holds both the 1841 line and the 1843 retraction. gutenberg.org itself returned 503.",
+    "Searched for an earlier written link to the queen: none found before 1841. The 1788 Correspondance secrète and Louis XVIII's memoirs were not read (not found in free full text in the time available).",
+    "Marie Antoinette's letters: Arneth's edition of her correspondence with Maria Theresa (archive.org mariatheresiaund00mari): saved; letter of 22 June 1775.",
+    "Gallica and HathiTrust refused automated requests (403), so French newspapers 1789-1841 were not searched."
+  ],
+  "confidence_note": "Rousseau's 'great princess' may be invented or a stock joke; only the Confessions record it, so who first said it is unsupported. The dates of Rousseau's writing (1765-1769) come from leads; the class rests on his own statement that the memory belongs to a stay before 1741. The OCR of the 1782 and 1866 volumes is poor, and quotes keep its errors. The issue month of Karr's retraction (March or April 1843) is uncertain."
+}

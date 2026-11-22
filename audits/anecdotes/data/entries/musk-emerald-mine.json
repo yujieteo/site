@@ -1,0 +1,74 @@
+{
+  "id": "musk-emerald-mine",
+  "as_told": "Elon Musk's family owned an emerald mine in Zambia. The mine made his father Errol rich, and that wealth gave Elon his start.",
+  "lesson": "Elon Musk is not self-made: his success rests on his family's emerald-mine fortune.",
+  "what_happened": "In a 2014 AskMen interview, Elon Musk himself said that his father 'had a share in an emerald mine in Zambia'. In 2018 Errol Musk told Business Insider South Africa that in the mid-1980s he bought half of a Zambian emerald mine after selling a plane, and got emeralds 'for the next six years'. Elon later called the story fake: in January 2023 he tweeted 'The fake emerald mine thing is so annoying'. No ownership record, registration or company filing for such a mine was found.",
+  "false_part": "No record shows that the Musk family owned a mine; the only evidence is Errol Musk's own changing account and Elon's 2014 remark, which he later contradicted.",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "2014",
+    "who": "Elon Musk, interviewed by Jim Clash",
+    "where": "AskMen, 'Elon Musk interview' (page 3); earliest Wayback capture 2014-04-13",
+    "quote": "This is going to sound slightly crazy, but my father also had a share in an emerald mine in Zambia.",
+    "url": "https://www.askmen.com/entertainment/right-stuff/elon-musk-interview-3.html",
+    "archive": "https://web.archive.org/web/20140413112637/https://www.askmen.com/entertainment/right-stuff/elon-musk-interview-3.html",
+    "file": "sources/musk-emerald-mine/askmen-2014-interview-3.html",
+    "sha256": "790a20134cd57cedc50f88a06b8ef401dcd59a13c5696f5ea61af95414deeea0"
+  },
+  "original": [
+    {
+      "what": "Errol Musk's own account, quoted in an interview article by Phillip de Wet, Business Insider South Africa, 28 February 2018",
+      "date": "2018-02-28",
+      "who": "Errol Musk",
+      "quote": "So I became a half owner of the mine, and we got emeralds for the next six years.",
+      "url": "https://www.businessinsider.co.za/how-elon-musks-family-came-to-own-an-emerald-mine-2018-2",
+      "archive": "http://web.archive.org/web/20230204113543/https://www.businessinsider.co.za/how-elon-musks-family-came-to-own-an-emerald-mine-2018-2",
+      "file": "sources/musk-emerald-mine/bi-za-2018-emerald-mine.html",
+      "sha256": "0692529ef97689b1920d36c0234e76b0945f0e86655844caaac6c8353ff5b4b6"
+    },
+    {
+      "what": "Elon Musk's same words in Jim Clash's Forbes interview, 28 July 2014 (later removed from Forbes; Wayback copy)",
+      "date": "2014-07-28",
+      "who": "Elon Musk",
+      "quote": "This is going to sound slightly crazy, but my father also had a share in an Emerald mine in Zambia.",
+      "url": "http://www.forbes.com/sites/jimclash/2014/07/28/elon-musk-tells-me-his-secret-of-success-hint-it-aint-about-the-money/",
+      "archive": "https://web.archive.org/web/20140729222547/http://www.forbes.com/sites/jimclash/2014/07/28/elon-musk-tells-me-his-secret-of-success-hint-it-aint-about-the-money/",
+      "file": "sources/musk-emerald-mine/forbes-2014-clash.html",
+      "sha256": "a4e73cc4651d11d057bab95ceaaab621aa4065eaaa0e2b7a090556d41474230f"
+    }
+  ],
+  "teller_correction": {
+    "what": "Elon Musk's tweet of 7 January 2023 (text from the X embed service)",
+    "date": "2023-01-07",
+    "who": "Elon Musk",
+    "quote": "The fake emerald mine thing is so annoying (sigh). Like where exactly is this thing anyway!?",
+    "url": "https://twitter.com/elonmusk/status/1611856501798215680",
+    "archive": "http://web.archive.org/web/20250117092446/https://twitter.com/elonmusk/status/1611856501798215680",
+    "file": "sources/musk-emerald-mine/tweet-1611856501798215680-oembed.json",
+    "sha256": "863925e9994254bda755809d21e9537f994fc90e0eb0020d41c41f9e3dd43c62"
+  },
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "No record shows how much, if any, emerald money reached Elon Musk or his companies. A study of US data finds that people who found incorporated businesses tend to come from higher-income families, so family money often matters, but this does not settle Musk's own case.",
+    "source": {
+      "what": "Levine and Rubinstein, 'Smart and Illicit: Who Becomes an Entrepreneur and Do They Earn More?', NBER Working Paper 19276 (2013, revised 2015), abstract",
+      "quote": "Besides tending to be white, male, and come from higher-income families, the incorporated",
+      "url": "https://www.nber.org/system/files/working_papers/w19276/w19276.pdf",
+      "archive": "http://web.archive.org/web/20261116013931/https://www.nber.org/system/files/working_papers/w19276/w19276.pdf",
+      "file": "sources/musk-emerald-mine/levine-rubinstein-nber-w19276.pdf",
+      "sha256": "e838add50b744ced8c5412f69f6adf9ab05c255bc2d9b828220f932b378b4731"
+    }
+  },
+  "search_steps": [
+    "Web search for Errol Musk emerald mine: leads to Snopes (402, not readable), Futurism, Yahoo, Deccan Herald, Gizmodo.",
+    "Futurism page gave the Forbes 2014 Wayback link and two Business Insider South Africa 2018 links; saved the Forbes copy and the Business Insider 'how the family came to own an emerald mine' copy from the Wayback Machine (the live site redirects to the US homepage).",
+    "Deccan Herald gave a Wayback link to the AskMen interview page captured 2014-04-13, earlier than the Forbes piece; saved it. Same words as Forbes.",
+    "Saved Elon Musk's 7 January 2023 tweet through the X embed service. Leads say he also denied the mine in 2019 and 2020 tweets; those tweets were not saved.",
+    "Yahoo/Business Insider (12 September 2023) reports that Errol told biographer Walter Isaacson the mine was never registered; this is relayed words in a book not online in full, so it is a lead only and not quoted.",
+    "No company or mining registry record for a Musk share in a Zambian emerald mine was found; Zambian registries were not searched.",
+    "Open Library full-text search was not used for this story because the story begins in 2014 web interviews.",
+    "Lesson: saved Levine and Rubinstein, NBER w19276."
+  ],
+  "confidence_note": "Errol Musk's words come through a reporter's interview article, and his later words to Isaacson come through a book; neither is a record of ownership, and both are treated the same way. Errol's accounts differ: in 2018 he said he was a half owner; Isaacson reports that he said the mine was never registered. Elon's own 2014 remark is the earliest telling found. Whether any emerald money helped Elon is not shown by any record."
+}

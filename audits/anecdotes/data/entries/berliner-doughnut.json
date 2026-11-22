@@ -1,0 +1,66 @@
+{
+  "id": "berliner-doughnut",
+  "as_told": "In his Berlin speech of 26 June 1963, John F. Kennedy said \"Ich bin ein Berliner\". Because he added the article \"ein\", the sentence supposedly meant \"I am a jelly doughnut\", since a Berliner is a kind of doughnut. The crowd is said to have laughed at the mistake.",
+  "lesson": "Kennedy's German was wrong: to Germans, and to Berliners in particular, \"Ich bin ein Berliner\" meant \"I am a jelly doughnut\", so check foreign phrases with native speakers.",
+  "what_happened": "Kennedy said \"Ich bin ein Berliner\" twice in his speech at the Rudolph Wilde Platz on 26 June 1963. The published transcript shows that after the first use he joked \"I appreciate my interpreter translating my German!\"; it does not mark any laughter about a doughnut. The earliest telling of the doughnut story I found is in Len Deighton's spy novel Berlin Game (1983), spoken by the narrator Bernard Samson, who adds that Berlin cartoonists drew talking doughnuts the next day. A New York Times review of the novel (12 December 1983) then repeated it as fact. In Berlin itself the pastry is called Pfannkuchen, not Berliner.",
+  "false_part": "The sentence did not mean \"I am a jelly doughnut\" to the Berlin crowd, and the earliest telling of the joke I found is a 1983 novel, not a 1963 record.",
+  "class": "invented",
+  "also": "",
+  "earliest_telling": {
+    "date": "1983",
+    "who": "Len Deighton (narrator Bernard Samson)",
+    "where": "Berlin Game (London: Hutchinson, 1983), a novel (search snippet)",
+    "quote": "is a doughnut. The day after President",
+    "url": "https://openlibrary.org/search/inside.json?q=%22talking+doughnuts%22+Kennedy",
+    "archive": "https://archive.org/details/berlingame00lend",
+    "file": "sources/berliner-doughnut/ol-inside-talking-doughnuts.json",
+    "sha256": "0ebce4a45fa83eea09466a453549b8003f0ddfef841888bc31fb8461abcd76ff"
+  },
+  "original": [
+    {
+      "what": "Transcript of Kennedy's remarks in the Rudolph Wilde Platz, Berlin, 26 June 1963 (Public Papers of the Presidents, via the American Presidency Project)",
+      "date": "1963-06-26",
+      "who": "John F. Kennedy",
+      "quote": "I appreciate my interpreter translating my German!",
+      "url": "https://www.presidency.ucsb.edu/documents/remarks-the-rudolph-wilde-platz-berlin",
+      "archive": "http://web.archive.org/web/20260116120626/https://www.presidency.ucsb.edu/documents/remarks-the-rudolph-wilde-platz-berlin",
+      "file": "sources/berliner-doughnut/app-remarks-rudolph-wilde-platz-1963.html",
+      "sha256": "dfc4a7bed43fe485b8a4ba7e7772deba3fb10c5fac346c0b7ad96c26a3afecb6"
+    },
+    {
+      "what": "First telling as fact: Christopher Lehmann-Haupt's review of Berlin Game, The New York Times, 12 December 1983",
+      "date": "1983-12-12",
+      "who": "Christopher Lehmann-Haupt",
+      "quote": "and thereby amused the city's populace because in the local parlance a ''Berliner'' is a doughnut.",
+      "url": "https://www.nytimes.com/1983/12/12/books/books-of-the-times-104882.html",
+      "archive": "https://web.archive.org/web/20240213073718/https://www.nytimes.com/1983/12/12/books/books-of-the-times-104882.html",
+      "file": "sources/berliner-doughnut/nyt-1983-12-12-lehmann-haupt.html",
+      "sha256": "bb3d2ac95abca3d27c478e8fa4a3d300496d88f82de936a64d04d67a50d6ad0e"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "does not hold",
+    "why": "The Atlas zur deutschen Alltagssprache, a survey of everyday German usage, records that in Berlin and almost all of eastern Germany the pastry is called simply Pfannkuchen; Berliner is the name in the rest of western Germany and Switzerland. So a Berlin crowd would not have heard the sentence as a reference to a pastry.",
+    "source": {
+      "what": "Atlas zur deutschen Alltagssprache (University of Augsburg / University of Liège), round 4, question 3: Berliner/Krapfen (2017 Wayback capture)",
+      "quote": "in Berlin – logischerweise – sowie fast im gesamten Ostdeutschland dagegen einfach als",
+      "url": "http://www.atlas-alltagssprache.de/runde-4/f03/",
+      "archive": "https://web.archive.org/web/20171229130210/http://www.atlas-alltagssprache.de/runde-4/f03/",
+      "file": "sources/berliner-doughnut/atlas-alltagssprache-berliner-krapfen.html",
+      "sha256": "750a2fefbad786942103808afe41fb4d68ac11c574c0fa37d18521aa81aa3c27"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search for \"jelly doughnut\" Kennedy Berliner: 412 hits; read the first three pages (60 hits). Earliest real hit 1988. One hit dated 1977 (archive.org pocketberlin00fodo, catalogued as \"Fodor's Europe, 1978\") is a mis-dated Fodor's Pocket Berlin: its ISBNs belong to the 1998 Fodor's Pocket series.",
+    "Open Library full-text search for \"A Berliner is a doughnut\" and \"talking doughnuts\" Kennedy: Deighton, Berlin Game, earliest edition London: Hutchinson 1983. Full text is lending only; saved the search results and quoted the snippet.",
+    "English Wikipedia 'Ich bin ein Berliner' used as a lead: points to Deighton (1983), the NYT review (1983), a NYT op-ed (1988), the Duden grammar, Eichhoff (1993) and the Atlas zur deutschen Alltagssprache.",
+    "JFK Library transcript page refused (403). Saved the transcript from the American Presidency Project instead.",
+    "NYT review of 12 December 1983: nytimes.com refused (403); saved the 2024 Wayback capture.",
+    "Atlas zur deutschen Alltagssprache page: direct connection reset; saved the 2017 Wayback capture.",
+    "Searched for a pre-1983 telling (1963 press, cartoons): none found in Open Library; one request to Papers Past (search \"ich bin ein berliner\" doughnut) was refused by an Incapsula block page, so no newspaper archive was searched. Deighton's claim of 'talking doughnuts' cartoons is not backed by any record I found.",
+    "Google Books API returned 429 and HathiTrust returned 403, so neither was searched.",
+    "No correction by Deighton found; the claim is made by a fictional narrator."
+  ],
+  "confidence_note": "The Deighton quote comes from a search snippet of the 1983 edition, so it is short. I did not hear the speech audio; the claim that the crowd laughed is judged from the transcript alone. Leads (Duden, Eichhoff 1993) say the grammar of the sentence was correct; I did not save a grammar source, so the entry does not rely on that point. The lesson verdict rests on the Atlas record of what Berliners call the pastry."
+}

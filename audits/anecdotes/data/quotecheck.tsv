@@ -62,6 +62,10 @@ bear-proof-bins	lesson_verdict.source	ok	sources/bear-proof-bins/lischka-2018-di
 beer-diapers	earliest_telling	ok	sources/beer-diapers/palace_1996_datamining.htm	9b4c4dadecf28c5c6a4174777a4adfed732cbf31ce1bc280c5b67091eb695975
 beer-diapers	original[0]	ok	sources/beer-diapers/scoop_2002_beyond-beer-nappies.html	3bd64a15b27209cfe58245cd8f5fe12a7987203753ed42c5773190d111e12077
 beer-diapers	lesson_verdict.source	ok	sources/beer-diapers/brijs_2001_profset.pdf.txt	934ef04c71ea2202a2dd7e9b95c5d39c887148549913d04f3b8cb679138daf28
+berliner-doughnut	earliest_telling	ok	sources/berliner-doughnut/ol-inside-talking-doughnuts.json	0ebce4a45fa83eea09466a453549b8003f0ddfef841888bc31fb8461abcd76ff
+berliner-doughnut	original[0]	ok	sources/berliner-doughnut/app-remarks-rudolph-wilde-platz-1963.html	dfc4a7bed43fe485b8a4ba7e7772deba3fb10c5fac346c0b7ad96c26a3afecb6
+berliner-doughnut	original[1]	ok	sources/berliner-doughnut/nyt-1983-12-12-lehmann-haupt.html	bb3d2ac95abca3d27c478e8fa4a3d300496d88f82de936a64d04d67a50d6ad0e
+berliner-doughnut	lesson_verdict.source	ok	sources/berliner-doughnut/atlas-alltagssprache-berliner-krapfen.html	750a2fefbad786942103808afe41fb4d68ac11c574c0fa37d18521aa81aa3c27
 betamax-porn	earliest_telling	ok	sources/betamax-porn/googlegroups-afu-1995-03-17-betamax-porn-ban.html	925ab13a2cd6d35da8a62f7c577fb417fca7a38396b9a48e37ca680cfa04f03b
 betamax-porn	original[0]	ok	sources/betamax-porn/openlibrary-inside-xrated-betamax-vhs.json.txt	b6cf4d659f01c46f8de5e42bd4833ace81242c35f9eb45b5ac14e3d4767f3249
 betamax-porn	original[1]	ok	sources/betamax-porn/openlibrary-inside-xrated-betamax-vhs.json.txt	b6cf4d659f01c46f8de5e42bd4833ace81242c35f9eb45b5ac14e3d4767f3249
@@ -172,6 +176,11 @@ einstein-failed-math	original[3]	ok	sources/einstein-failed-math/cpae-vol1-doc-7
 einstein-failed-math	original[4]	ok	sources/einstein-failed-math/cpae-vol1-doc-79.txt	2d8eedecafa47a13c8b5feb98cf27b84dcd58bf21bc10fc92a0e1ce8fc91fcd9
 einstein-failed-math	teller_correction	ok	sources/einstein-failed-math/ripleys-einstein-fail-math.txt	fd8868b90a2d70c35f7804ec431f50b20e13ebe5b0c2764558b122e7f76fc270
 einstein-failed-math	lesson_verdict.source	ok	sources/einstein-failed-math/pubmed-25384550.xml	8a714eb63432f621afff1addc52ec272373c69ae9c20152eed465a8d9ee526ba
+einstein-patent-clerk	earliest_telling	ok	sources/einstein-patent-clerk/wikisource-reiser-1930-chapter-2.html	4810dcd44ea7b9ec5b31e750d0ab59a53e2e45c78a17e3e5e0ab6b515bb1ef40
+einstein-patent-clerk	original[0]	ok	sources/einstein-patent-clerk/wikisource-zur-elektrodynamik-bewegter-koerper.html	a0eb86d772b02c2904b280ecc69ffe06ec0818b12b7985a3dd1513f52724eaf6
+einstein-patent-clerk	original[1]	ok	sources/einstein-patent-clerk/wikisource-zur-elektrodynamik-bewegter-koerper.html	a0eb86d772b02c2904b280ecc69ffe06ec0818b12b7985a3dd1513f52724eaf6
+einstein-patent-clerk	original[2]	ok	sources/einstein-patent-clerk/wikisource-lorentz-1904-electromagnetic-phenomena.html	b41e1415a8428a47d30fb1eba2013a79f1d041cbb971e168e6ab60c382ce9753
+einstein-patent-clerk	lesson_verdict.source	ok	sources/einstein-patent-clerk/wuchty-jones-uzzi-2007-teams.pdf	dc48e9e4ff2174085b052b9361b5a67ad60567aacb0551d59b3c8d15ffbaeeb6
 einstein-speed-light	earliest_telling	ok	sources/einstein-speed-light/nyt-1921-05-18-einstein-sees-boston.html	a12e714b20124f1b6341d578abcde20d2680b1c101c0b76ff831da1b6c1188f6
 einstein-speed-light	original[0]	ok	sources/einstein-speed-light/nyt-1921-05-18-einstein-sees-boston.html	a12e714b20124f1b6341d578abcde20d2680b1c101c0b76ff831da1b6c1188f6
 einstein-speed-light	lesson_verdict.source	ok	sources/einstein-speed-light/american-educator-spring-2006.pdf	b42d05761dc3e9939c8ac8a193c8d8edd5ff2b38140a954487fc8830371b3410
@@ -186,6 +195,9 @@ epoxy-usb	earliest_telling	ok	sources/epoxy-usb/gcn-2005-pulling-the-plug.html	8
 epoxy-usb	original[0]	ok	sources/epoxy-usb/fedtech-2007-closed-door.html	7569103dbd04ca974a646dd5241f7a5037c2ed12847d0bb11b4c0df54a5bc65a
 epoxy-usb	original[1]	ok	sources/epoxy-usb/gcn-2006-thumb-drives.html	e265eb280fd5572e7b2c14692588840875337cc81fcce6a67770c9ed1b3afe89
 epoxy-usb	lesson_verdict.source	ok	sources/epoxy-usb/tischer-2016-usb-drop.pdf	cfedbcec74f717e3b085bbda9b057bab1dd0529d0cf25f19fe67cce8abd1118a
+erasmus-latrine	earliest_telling	ok	sources/erasmus-latrine/oapen-54852-raccontare-la-slovenia-2008.pdf	097e83002e4511ca5795a689482175be5e02fcb1f2b93f91f6cba5b7de8cdf26
+erasmus-latrine	original[0]	ok	sources/erasmus-latrine/ndb-lueger-erasmus.html	cbada2121845e16a81ccd51fcfa9c096a146405f39bf2e0acf8377c335ba1e97
+erasmus-latrine	lesson_verdict.source	ok	sources/erasmus-latrine/oapen-54852-raccontare-la-slovenia-2008.pdf	097e83002e4511ca5795a689482175be5e02fcb1f2b93f91f6cba5b7de8cdf26
 f16-equator	earliest_telling	ok	sources/f16-equator/usenet-1983-06-famous-bugs.html	89140f013c2c01f012d37fb8617e3bd623b1e9e285eba2dac2e5a4bae7548d49
 f16-equator	original[0]	ok	sources/f16-equator/usenet-1983-06-famous-bugs.html	89140f013c2c01f012d37fb8617e3bd623b1e9e285eba2dac2e5a4bae7548d49
 f16-equator	original[1]	ok	sources/f16-equator/risks-3-44.html	60fae23f8a5052331a52a03df94d13d0fdc439e9ca7c0883c02e42dcf39cf415
@@ -194,6 +206,9 @@ f16-equator	lesson_verdict.source	ok	sources/f16-equator/risks-3-46.html	b15d752
 faraday-tax	earliest_telling	ok	sources/faraday-tax/lecky-1899-democracy-liberty-intro_djvu.txt	e9fa29ce9db43f91bc095bfac92607fc5bc10917555d94a9bb5ec63b0deb2964
 faraday-tax	original[0]	ok	sources/faraday-tax/lecky-1899-democracy-liberty-intro_djvu.txt	e9fa29ce9db43f91bc095bfac92607fc5bc10917555d94a9bb5ec63b0deb2964
 faraday-tax	lesson_verdict.source	ok	sources/faraday-tax/ahmadpoor-jones-2017-dual-frontier.pdf	e952471065d95e03b8eb9bf2ce233915c443149977d9a013cd394bbd8769c8b8
+farmer-free-power	earliest_telling	ok	sources/farmer-free-power/physicsforums-39132-2004.html	c95a5939d752ed56b7143a9d6be79643fe4e588e970d192e32d500e8e72ee881
+farmer-free-power	original[0]	ok	sources/farmer-free-power/bpa-living-and-working-safely.pdf	b6bfe49af975d5e884b1ec9d45bb92ad18872a5ff1b7ff26e4c99c619b26adfc
+farmer-free-power	lesson_verdict.source	ok	sources/farmer-free-power/pmc7085584-review.html	cd85feab72cb9e21106954615f0ea0ef8c8151ce6296c5c78810b130416a8665
 fidelity-dead-investors	earliest_telling	ok	sources/fidelity-dead-investors/bi-2014-09-04.html	0546c1bba46130d933abb8022d59116ac09bf303936b68aedd366a164d4a9a93
 fidelity-dead-investors	original[0]	ok	sources/fidelity-dead-investors/bi-2014-09-04.html	0546c1bba46130d933abb8022d59116ac09bf303936b68aedd366a164d4a9a93
 fidelity-dead-investors	original[1]	ok	sources/fidelity-dead-investors/bi-2014-09-04.html	0546c1bba46130d933abb8022d59116ac09bf303936b68aedd366a164d4a9a93
@@ -214,10 +229,20 @@ ford-five-dollar	original[2]	ok	sources/ford-five-dollar/mylifework00ford_djvu.t
 ford-five-dollar	original[3]	ok	sources/ford-five-dollar/mylifework00ford_djvu.txt	bbff35e1436b82dd9104f2219f382adde6e0ea63282eb5b490e97388b75b42d8
 ford-five-dollar	original[4]	ok	sources/ford-five-dollar/raff-summers-1986-nber-w2101.txt	495acb157d8b6f0cfa83e4f21b09a6b7ccea27bb6f63b3ad13fa273ea2b9f155
 ford-five-dollar	lesson_verdict.source	ok	sources/ford-five-dollar/raff-summers-1986-nber-w2101.txt	495acb157d8b6f0cfa83e4f21b09a6b7ccea27bb6f63b3ad13fa273ea2b9f155
+funranium-ip-scheme	earliest_telling	ok	sources/funranium-ip-scheme/fringes-of-regulation-2018.html	cce6b88b68a1c573ee0222e097cf174584d73b8f874ef08b83e73e289a49ae44
+funranium-ip-scheme	original[0]	ok	sources/funranium-ip-scheme/hn-item-37917597.json	9afdba02ea0ce5a49a656c3e636d8649ac1585021b3a2953e631bb1a905f6f5a
+funranium-ip-scheme	original[1]	ok	sources/funranium-ip-scheme/fringes-of-regulation-2018.html	cce6b88b68a1c573ee0222e097cf174584d73b8f874ef08b83e73e289a49ae44
+funranium-ip-scheme	original[2]	ok	sources/funranium-ip-scheme/ecfr-10-1047-7-2026-11-01.xml	9ad591e3b6e5e89556bc192e74633f703111e9ff22f0c618541e456eed677a16
+funranium-ip-scheme	lesson_verdict.source	ok	sources/funranium-ip-scheme/ecfr-10-1047-7-2026-11-01.xml	9ad591e3b6e5e89556bc192e74633f703111e9ff22f0c618541e456eed677a16
 galileo-tower	earliest_telling	ok	sources/galileo-tower/viviani-racconto-liberliber.pdf	3d03a3adb0d18b348643d35af45bb102a2a642b712bfec2ce5bfe73893bb7eeb
 galileo-tower	original[0]	ok	sources/galileo-tower/opere-I-p337-wikisource.txt	3ce56403afe42979ecfaa5cc182ab1f5acca163d8aac2982b7dbfbea77027f1b
 galileo-tower	original[1]	ok	sources/galileo-tower/dialoguesconcern00galiuoft_djvu.txt	18171a28fa35405e34a5e46321be05e8f9d2462d3167a15f5bb0e044f08e3695
 galileo-tower	lesson_verdict.source	ok	sources/galileo-tower/nssdc-apollo15-feather-drop.html	af7c2c58689b981b02228bc40ff99f4e10279b68b53483bd40110d206c9a92f6
+gandhi-western-civ	earliest_telling	ok	sources/gandhi-western-civ/openlibrary-inside-gandhi-very-good-idea-vorster.json	dd34593834efe9286c7ceee82b65ccbaddc2c40446085676af04e8f9bccfdc24
+gandhi-western-civ	original[0]	ok	sources/gandhi-western-civ/openlibrary-inside-western-civilization-good-idea.json	c0eafd92b63a3798543df4c60c62d22fda33f85422c8aa8ee8a119a9b4e94205
+gandhi-western-civ	original[1]	ok	sources/gandhi-western-civ/openlibrary-inside-schumacher-film-of-gandhi.json	755ed5acce1110360546e55d4eb83cb6e22feff1537959d865fe92868a7402cd
+gandhi-western-civ	original[2]	ok	sources/gandhi-western-civ/hind-swaraj-mkgandhi.pdf.txt	d46e83bdecc0d5bde248e95ee1bac9183f4444699d434054459052fd32a7ac93
+gandhi-western-civ	lesson_verdict.source	ok	sources/gandhi-western-civ/hind-swaraj-mkgandhi.pdf.txt	d46e83bdecc0d5bde248e95ee1bac9183f4444699d434054459052fd32a7ac93
 gauss-sum	earliest_telling	ok	sources/gauss-sum/bub_gb_h_Q5AAAAcAAJ_djvu.txt	53204c43415c0ba65e94264253f88e6441bc7c89f3d3036a4c62b847eaab45fb
 gauss-sum	original[0]	ok	sources/gauss-sum/bub_gb_h_Q5AAAAcAAJ_djvu.txt	53204c43415c0ba65e94264253f88e6441bc7c89f3d3036a4c62b847eaab45fb
 gauss-sum	original[1]	ok	sources/gauss-sum/gauss00waltgoog_djvu.txt	7b3d88d3a209808a2668540c0670cb35b9faadd78dfcb498bc6f9a7bd9a55b20
@@ -243,6 +268,10 @@ halloween-razor-blades	original[0]	ok	sources/halloween-razor-blades/nyt-1964-11
 halloween-razor-blades	original[1]	ok	sources/halloween-razor-blades/best-halloween-sadism-evidence.pdf	0636ab910bdc2f416a9cb1de8e17befb02b29903e39456136c67cc17e92ae2bb
 halloween-razor-blades	original[2]	ok	sources/halloween-razor-blades/hcdistrictclerk-cotm-oct-2021.pdf	d5bb06f58adeaeb6e92753ee74da05884110b333abdf7417f1a49812205a6494
 halloween-razor-blades	lesson_verdict.source	ok	sources/halloween-razor-blades/best-halloween-sadism-evidence.pdf	0636ab910bdc2f416a9cb1de8e17befb02b29903e39456136c67cc17e92ae2bb
+hard-drive-freezer	earliest_telling	ok	sources/hard-drive-freezer/openlibrary-search-inside-freezer-stiction.json	0289dbee81a16cc7ba5e9f98da1e8ba2e325b18d90ca7d4d10437896f02f02dd
+hard-drive-freezer	original[0]	ok	sources/hard-drive-freezer/msblog-shawnste-cool-hard-drive-fix.html	56edc51a4ac93637c557c0807cfc3efe08856b61ba17f78da8de8517d1775b0f
+hard-drive-freezer	original[1]	ok	sources/hard-drive-freezer/techtarget-freezing-hard-drive-ontrack.html	d43dec31b988dbe868f37c038a99e0e1bb1650b7930018646829df6e07c4ca0c
+hard-drive-freezer	lesson_verdict.source	ok	sources/hard-drive-freezer/techtarget-freezing-hard-drive-ontrack.html	d43dec31b988dbe868f37c038a99e0e1bb1650b7930018646829df6e07c4ca0c
 hawthorne-lighting	earliest_telling	ok	sources/hawthorne-lighting/managementworker00roet_djvu.txt	8ebefea1a9bc4055f2dbf861008b8cd9056b19866b2395261c78fc5c1746dc27
 hawthorne-lighting	original[0]	ok	sources/hawthorne-lighting/managementworker00roet_djvu.txt	8ebefea1a9bc4055f2dbf861008b8cd9056b19866b2395261c78fc5c1746dc27
 hawthorne-lighting	original[1]	ok	sources/hawthorne-lighting/managementworker00roet_djvu.txt	8ebefea1a9bc4055f2dbf861008b8cd9056b19866b2395261c78fc5c1746dc27
@@ -253,6 +282,12 @@ heated-seat-tapes	earliest_telling	ok	sources/heated-seat-tapes/hn-3972798.html	
 heated-seat-tapes	original[0]	ok	sources/heated-seat-tapes/hn-9944359.html	1e596e2a1d08f7f2c48883bf4cb5dc12ec5fc8654b43bb2a81d098991e9ef9b1
 heated-seat-tapes	original[1]	ok	sources/heated-seat-tapes/nbs-tn735.pdf.txt	184c9d4ee1a89efb638d92d7ff322edfd0aeffeaf1af5f7801e79470139f359e
 heated-seat-tapes	lesson_verdict.source	ok	sources/heated-seat-tapes/nbs-tn735.pdf.txt	184c9d4ee1a89efb638d92d7ff322edfd0aeffeaf1af5f7801e79470139f359e
+heller-enough	earliest_telling	ok	sources/heller-enough/ol-inside-another-methuselah.json	c1a2c4dd833bb76071e63c4c99be7a1df150fc650c9f690152b0d5fafa64bdab
+heller-enough	original[0]	ok	sources/heller-enough/newyorker-2005-05-16-joe-heller.html	46d1696313c03d194dad9ed0bf4a39dfc429d8423cf236c332414d9583bfec77
+heller-enough	original[1]	ok	sources/heller-enough/ol-inside-his-example-may-be-of-comfort.json	cba8b22bdeb2253493ccd23285a1a79934a12e287a75502ebf94654c16a4dc75
+heller-enough	original[2]	ok	sources/heller-enough/ol-inside-knowledge-apple.json	ab22fa4e060c7b29351599439462967f324de27153d6df0dbaf09e478d27d0da
+heller-enough	original[3]	ok	sources/heller-enough/mit-techtalk-1998-06-03-vonnegut-rice.html	9db4e7c6090636f647f5a11c4d48242544032add38f57198b43a8b1a51c03118
+heller-enough	lesson_verdict.source	ok	sources/heller-enough/killingsworth-2023-pnas-PMC10013834.xml	fb7950ca1272c61adce9dbcf2eee260087d99af142b60697426f151529c17c88
 hemingway-six-words	earliest_telling	no quote		
 hemingway-six-words	original[0]	ok	sources/hemingway-six-words/spokane-press-1910-05-16-p6-ocr-wayback.html	6ad8123ccf2925d0c9a77c73da8724317ea216f79e7c6825fca10cf9998b2e80
 hemingway-six-words	original[1]	ok	sources/hemingway-six-words/wired-2006-11-very-short-stories.html	026ee5ad48b6430355ca103b2e8691277d25b5cffed43dd7d4f03ec9d27e64b2
@@ -294,6 +329,12 @@ interstate-runways	original[0]	ok	sources/interstate-runways/fedaid_highway_act_
 interstate-runways	original[1]	ok	sources/interstate-runways/weingroff2000_onemile.html.txt	1b81347fe7a424a95bec2e616fe50a578307f5a8092e6f7a1096db04b6fbfac4
 interstate-runways	original[2]	ok	sources/interstate-runways/straightdope_1999_interstate_airports.html.txt	97cb84e00ae297f135e4f9e0c2af10dd49627a5720a0814e481d95728a417464
 interstate-runways	lesson_verdict.source	ok	sources/interstate-runways/fedaid_highway_act_1956_statute70_pg374.pdf.txt	5af52adb6c02dc15551d762ce7c882786526d1c0cf8e035fcd2a71ea85e7f52b
+israeli-22-rifle	earliest_telling	ok	sources/israeli-22-rifle/haaretz-2001-12-26-ruger.html	ce8746979f61142154a43b1d7570cdbbc945a0165fe64db4fec3386552d999d2
+israeli-22-rifle	original[0]	ok	sources/israeli-22-rifle/haaretz-2001-12-26-ruger.html	ce8746979f61142154a43b1d7570cdbbc945a0165fe64db4fec3386552d999d2
+israeli-22-rifle	original[1]	ok	sources/israeli-22-rifle/haaretz-2001-12-26-ruger.html	ce8746979f61142154a43b1d7570cdbbc945a0165fe64db4fec3386552d999d2
+israeli-22-rifle	original[2]	ok	sources/israeli-22-rifle/jag-response-ruger-2009.pdf.txt	f44f82c68e1476827f99531afaef656b49dc308fc42b721c4f9917d46c2593f2
+israeli-22-rifle	original[3]	ok	sources/israeli-22-rifle/btselem-crowd-control-2012.pdf.txt	2045864be882814c230677a518e77cb7cdf1eb559e379299613b98ba779525d9
+israeli-22-rifle	lesson_verdict.source	ok	sources/israeli-22-rifle/haar-2017-bmjopen-europepmc-record.json	d790cbb9f9175b0eb6c3c227634e3881c59d9775d8dc566fba479235a856f701
 jackson-marshall	earliest_telling	ok	sources/jackson-marshall/greeley-american-conflict-v1-1864_djvu.txt	3a4cfc29b7133c4b8be5e8ceda3185b9d58c1178e602957615db85f2194dc035
 jackson-marshall	original[0]	ok	sources/jackson-marshall/papers-andrew-jackson-v10-1832.pdf.txt	c5443a878c11297b77a82f672e7e0fb7eba761d09375bf16c772d07d0cee98a0
 jackson-marshall	original[1]	ok	sources/jackson-marshall/greeley-american-conflict-v1-1864_djvu.txt	3a4cfc29b7133c4b8be5e8ceda3185b9d58c1178e602957615db85f2194dc035
@@ -321,6 +362,8 @@ kildall-flying	earliest_telling	no quote	sources/kildall-flying/ol_q6.json
 kildall-flying	original[0]	ok	sources/kildall-flying/computerchronicles_1995_garykild_asr.txt	987c1f579ffbf5e3f642d1b595dfa4da086b1b628bc7875234f73fd90c2489fb
 kildall-flying	original[1]	ok	sources/kildall-flying/pbs_nerds_part2.html	7ef061583ce21d33227cd3d1b140686feb58ff298f56b3dfda4ca5de560b55be
 kildall-flying	lesson_verdict.source	no quote		
+killeen-grow-houses	earliest_telling	ok	sources/killeen-grow-houses/hn-37037821.html	c6e0cabd3bd4ba0c56e2e1211abf839dc6a4287aa242088eef9f377bae337721
+killeen-grow-houses	lesson_verdict.source	ok	sources/killeen-grow-houses/kyllo-v-us-2001.html	270a0a43fd63043fec2aabc9e9dc9d2646c794e420c6c5f12d2b5b03313d8025
 kitty-genovese	earliest_telling	ok	sources/kitty-genovese/nyt1964.html	39068f1bc9ce07ff086e0930760117bb9c8f3a5af266796fc24c5bf743e5d52c
 kitty-genovese	original[0]	ok	sources/kitty-genovese/kitty_genovese-3-Farrar.html	f97f21321fa22beb20fabc16c53729fc7ce3ac3f5244e1a76b2920513f312183
 kitty-genovese	original[1]	ok	sources/kitty-genovese/kitty_genovese-3-Mozer.html	a0f40b210ec6116ab18ab42c9ca7ac7148f2cc8ff65b207259bbeef93a56f1b4
@@ -333,6 +376,9 @@ kodak-digital	original[2]	ok	sources/kodak-digital/sasson-pluggedin-2007.html	c2
 kodak-digital	original[3]	ok	sources/kodak-digital/sasson-pluggedin-2007.html	c281248cf066b1f123cf16bac2024e67f0cb654de05da89cc61d74a83e586859
 kodak-digital	original[4]	ok	sources/kodak-digital/kodak-photography-history.html	864b47405102ec9fe2544b62810ab82aa688aabd326fac4f0ae6d3981d86a7e7
 kodak-digital	lesson_verdict.source	ok	sources/kodak-digital/king-baatartogtokh2015-smr.html	a016653be1528c21879d4d467d35661478dd413c8da791e8e6d490df6d1f2f31
+laplace-napoleon	earliest_telling	ok	sources/laplace-napoleon/b29331882_0001_djvu.txt	8e59ac5a08d24ac7d3c213970153a4ed8128f80f8f654e3ebbec34abe6ce3108
+laplace-napoleon	original[0]	ok	sources/laplace-napoleon/scientificpapers032804mbp_djvu.txt	21a41f126aafe377c76a2c260d9fb5f79fc440e82e6a668ab7805397c943ce81
+laplace-napoleon	lesson_verdict.source	ok	sources/laplace-napoleon/laskar-gastineau-2009-nature08096.html	ba940643dd3c6bd38953eadf6b3a8489e725582be04338ce49d441bfd8565f5a
 lemmings	earliest_telling	ok	sources/lemmings/crotch-1877-psm-norwegian-lemming.html	fffc72a0597f1a2c35fba38b9bd3d872c01a0a4fe983c146d329836bb25cecce
 lemmings	original[0]	ok	sources/lemmings/crotch-1877-psm-norwegian-lemming.html	fffc72a0597f1a2c35fba38b9bd3d872c01a0a4fe983c146d329836bb25cecce
 lemmings	original[1]	ok	sources/lemmings/crotch-1877-psm-norwegian-lemming.html	fffc72a0597f1a2c35fba38b9bd3d872c01a0a4fe983c146d329836bb25cecce
@@ -344,6 +390,11 @@ lemon-juice-robber	original[1]	no quote	sources/lemon-juice-robber/ppg-1995-01-0
 lemon-juice-robber	original[2]	no quote	sources/lemon-juice-robber/ppg-1995-10-28-clip.jpg	
 lemon-juice-robber	original[3]	no quote	sources/lemon-juice-robber/fuoco-1996-03-21-clip.jpg	
 lemon-juice-robber	lesson_verdict.source	ok	sources/lemon-juice-robber/kruger-dunning-1999-holub.pdf	6d038059cf238de218f242cddc6a8ad49045034bb9ae6b84805dfb66e011a089
+let-them-eat-cake	earliest_telling	ok	sources/let-them-eat-cake/bub_gb_pCv7DOf42bsC_djvu.txt	e7629017be29a2ff4d8c018a76ada46492f4b71bd7927330efcb507a87ece122
+let-them-eat-cake	original[0]	ok	sources/let-them-eat-cake/lesconfessions02rous_djvu.txt	753f7ea3cc85c685303ae09a888d2d3e5db4d381ef3ec9a519a1ba47a76db558
+let-them-eat-cake	original[1]	ok	sources/let-them-eat-cake/lesconfessions02rous_djvu.txt	753f7ea3cc85c685303ae09a888d2d3e5db4d381ef3ec9a519a1ba47a76db558
+let-them-eat-cake	teller_correction	ok	sources/let-them-eat-cake/karr-les-guepes-series-3-4-gutenberg-42798-0.txt	2e7a1ac22fdea42f93a0b2bfb6a2fb520e04657cb34f08a99140961592b84b7c
+let-them-eat-cake	lesson_verdict.source	ok	sources/let-them-eat-cake/mariatheresiaund00mari_djvu.txt	5c6718b887dd3d0123c88bcca1a7c95383a5e9cad571c878299fd30ad800ee7a
 library-alexandria	earliest_telling	ok	sources/library-alexandria/seneca-tranq-latin-thelatinlibrary.html	078d83b6b61b1796d5c1a3ba0c5665736cd9e230be80818687a1305cf868d1fc
 library-alexandria	original[0]	ok	sources/library-alexandria/caesar-bellum-civile-3-thelatinlibrary.html	cd27fa83472645207f4a0fdc03bff6f948a951090aef19c6033179813aea788c
 library-alexandria	original[1]	ok	sources/library-alexandria/plutarch-caesar-loeb-lacuscurtius.html	11ee326b7bc23d56e6d2d37d7563c1f4bcb2cd95feaccd572dc143e46ed2e27a
@@ -391,6 +442,11 @@ mozart-head	original[3]	ok	sources/mozart-head/wallace-1866-letters-v2_djvu.txt	
 mozart-head	original[4]	ok	sources/mozart-head/jahn-1882-life-v2-gutenberg43412.txt	8a2fcca0146faa07a4186f1992e5240b93330a0e2f7b2f4e1c27414d47c471ba
 mozart-head	original[5]	ok	sources/mozart-head/jahn-1882-life-v2-gutenberg43412.txt	8a2fcca0146faa07a4186f1992e5240b93330a0e2f7b2f4e1c27414d47c471ba
 mozart-head	lesson_verdict.source	ok	sources/mozart-head/wallace-1866-letters-v2_djvu.txt	fc39494dd7b3eec023f3f046485395d12143f455fbf69e49a027f400c3f9c75c
+musk-emerald-mine	earliest_telling	ok	sources/musk-emerald-mine/askmen-2014-interview-3.html	790a20134cd57cedc50f88a06b8ef401dcd59a13c5696f5ea61af95414deeea0
+musk-emerald-mine	original[0]	ok	sources/musk-emerald-mine/bi-za-2018-emerald-mine.html	0692529ef97689b1920d36c0234e76b0945f0e86655844caaac6c8353ff5b4b6
+musk-emerald-mine	original[1]	ok	sources/musk-emerald-mine/forbes-2014-clash.html	a4e73cc4651d11d057bab95ceaaab621aa4065eaaa0e2b7a090556d41474230f
+musk-emerald-mine	teller_correction	ok	sources/musk-emerald-mine/tweet-1611856501798215680-oembed.json	863925e9994254bda755809d21e9537f994fc90e0eb0020d41c41f9e3dd43c62
+musk-emerald-mine	lesson_verdict.source	ok	sources/musk-emerald-mine/levine-rubinstein-nber-w19276.pdf	e838add50b744ced8c5412f69f6adf9ab05c255bc2d9b828220f932b378b4731
 new-college-oaks	earliest_telling	ok	sources/new-college-oaks/ol-inside-dept-medicine-hawaii.json	bf5fd71cdbb7efc1cdf5504b05f31ece5774fe63f976bf6a9a5979c8a90dab45
 new-college-oaks	original[0]	ok	sources/new-college-oaks/new-college-archives-trivia-2003.html	11bcb666b24456408c3872fcc67216b2654532e757d0c71dc132208bf20acb30
 new-college-oaks	original[1]	ok	sources/new-college-oaks/new-college-archives-trivia-2003.html	11bcb666b24456408c3872fcc67216b2654532e757d0c71dc132208bf20acb30
@@ -489,6 +545,10 @@ rat-park	earliest_telling	ok	sources/rat-park/peele1985-excerpt-alexander-site.h
 rat-park	original[0]	ok	sources/rat-park/alexander1978-springer.html	c0adcb1aeb5cda22b0d65ab4df453cea367c5b4c5ecc64f8c34498ad7cb5b865
 rat-park	original[1]	ok	sources/rat-park/alexander1981.pdf	da489aab701ec807c8b0ba9f4ad14656bd650fe600801e1e814e7cc07500534b
 rat-park	lesson_verdict.source	ok	sources/rat-park/petrie1996.pdf	7f2618251d7313b69e893f8410a0379981c82d05d6ce3b0ff4fb69ba0a4e1604
+rhythm-nation	earliest_telling	ok	sources/rhythm-nation/oldnewthing-20220816.html	63f623da89741df9a997d258b2426bd2d0091c09f1ab2c326fe09db48d9027f6
+rhythm-nation	original[0]	ok	sources/rhythm-nation/nvd-cve-2022-38392.json	3a2b49f4a4048399739bb9734168805f6f43f3b6869dcef72a9161e6693ccde6
+rhythm-nation	teller_correction	ok	sources/rhythm-nation/oldnewthing-20220920.html	b075db03afc28c82956578a0558edae0f148b62beee28f79adf8d00eeabc0d55
+rhythm-nation	lesson_verdict.source	ok	sources/rhythm-nation/bolton-blue-note-2018.pdf.txt	971232834df82d5395208a7dfe9380f4168b1d20541d39d5c684a40c98c4205b
 roman-bridge-engineers	earliest_telling	ok	sources/roman-bridge-engineers/ol-search-inside-engineer-who-designed.json	82f4ddd6ff0d4e142b11e7c989e5615efe898942cd52393390ccd830abce3b23
 roman-bridge-engineers	original[0]	ok	sources/roman-bridge-engineers/livius-fabricius-inscription.html	9e592cfb672c94f238c51ba792f0e13a82968a653c44cb1f7bb32a065567af60
 roman-bridge-engineers	lesson_verdict.source	ok	sources/roman-bridge-engineers/avalon-hammurabi.html	93410a95441d28fd498df423ec7860ae5ee821df3811989bb469838075c9eb12
@@ -501,6 +561,12 @@ seinfeld-chain	earliest_telling	ok	sources/seinfeld-chain/lifehacker-2007-isaac-
 seinfeld-chain	original[0]	ok	sources/seinfeld-chain/reddit-ceiugt5-wayback2022.html	5ecfe2829da7c06c7975b2aef50d18367de2aa27fe1b5297b12be046aa482c7f
 seinfeld-chain	original[1]	ok	sources/seinfeld-chain/reddit-ceiugt5-arcticshift.json	9158eb2ce15bf82cceca6a7560d033b9c9684b808d29df4b6ee2ab879d1c0d86
 seinfeld-chain	lesson_verdict.source	ok	sources/seinfeld-chain/lally2010-habits.pdf.txt	fea76db40229c8a538102a5205e5a7de87d9b61920c226db64e2ec3ea5ba167d
+sesame-seeds	earliest_telling	ok	sources/sesame-seeds/openlibrary-inside-weinberg-caraway-seeds.json	d405b47f648f2952a457ea25875028a87733d655f4db96752005d8c1da2a9659
+sesame-seeds	original[0]	ok	sources/sesame-seeds/openlibrary-inside-weinberg-halstead.json	61271b6a5efe2b2361e7dcd6cdfcc0b484dff61ebccf25e8b2174236731b06af
+sesame-seeds	original[1]	ok	sources/sesame-seeds/openlibrary-inside-fast-food-fallacy-sesame.json	31a09dea9d3fb7ff49574e9183e2f561cebb14b7e820f5fe920073d282c3e66b
+sesame-seeds	original[2]	ok	sources/sesame-seeds/joelonsoftware-2007-09-11.html	c8f30ff42df6bb72e7c6bdf9543b071baaab0d11a430e61b0464970c93b055cd
+sesame-seeds	original[3]	ok	sources/sesame-seeds/timowens-sesame-seeds.html	c3b80d9043543bdb7372cdb44930deabd7fe3693ef5dce9b33e035955d5c880d
+sesame-seeds	lesson_verdict.source	ok	sources/sesame-seeds/cakir-balagtas-package-downsizing-2012.pdf.txt	a5407291de65c56ec544670cc62326909085c8fc52b28a98f17f2762ca21dc87
 shackleton-ad	earliest_telling	ok	sources/shackleton-ad/ol-inside-100-greatest-advertisements-shackleton.json	85432c5569b711c79cdedff1ee4f14f3739288c3d78e1937d583dc21b863bfc2
 shackleton-ad	original[0]	ok	sources/shackleton-ad/lifeofsirernests00milluoft_djvu.txt	908e3fa9070c9ad51d2b19c05b51c838e5bd8bfd0c64ae9b105fab743cc5a3fc
 shackleton-ad	original[1]	ok	sources/shackleton-ad/lifeofsirernests00milluoft_djvu.txt	908e3fa9070c9ad51d2b19c05b51c838e5bd8bfd0c64ae9b105fab743cc5a3fc

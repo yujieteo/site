@@ -1,0 +1,75 @@
+{
+  "id": "einstein-patent-clerk",
+  "as_told": "In 1905 Albert Einstein was an unknown clerk at the Swiss patent office in Bern, far from the universities. Working alone in his spare time, he created the special theory of relativity and overturned physics.",
+  "lesson": "Great breakthroughs come from lone outsiders who work apart from the scientific establishment.",
+  "what_happened": "Einstein did work at the Federal patent office in Bern when he wrote the 1905 paper 'Zur Elektrodynamik bewegter Körper', which is signed 'Bern, Juni 1905'. But he did not work alone. The paper itself ends by thanking his friend and patent-office colleague Michele Besso, who stood by him while he worked on the problem and gave him many valuable suggestions. The paper also builds on the electrodynamics of H. A. Lorentz, which it names. Lorentz had published transformation equations and a 'local time' in 1904.",
+  "false_part": "He did not make the theory alone: the paper thanks Besso for help, and it builds on Lorentz's published electrodynamics.",
+  "class": "changed",
+  "also": "",
+  "earliest_telling": {
+    "date": "1930",
+    "who": "Anton Reiser (pen name of Rudolf Kayser, Einstein's son-in-law)",
+    "where": "Albert Einstein, a Biographical Portrait (New York: Albert & Charles Boni), chapter 2",
+    "quote": "Worried, Einstein saw to it that the small sheets of paper on which he wrote and figured vanished into his desk-drawer as soon as he heard footsteps approaching behind his door.",
+    "url": "https://en.wikisource.org/wiki/Albert_Einstein,_a_Biographical_Portrait/Chapter_2",
+    "archive": "http://web.archive.org/web/20261013110739/https://en.wikisource.org/wiki/Albert_Einstein,_a_Biographical_Portrait/Chapter_2",
+    "file": "sources/einstein-patent-clerk/wikisource-reiser-1930-chapter-2.html",
+    "sha256": "4810dcd44ea7b9ec5b31e750d0ab59a53e2e45c78a17e3e5e0ab6b515bb1ef40"
+  },
+  "original": [
+    {
+      "what": "Einstein's 1905 relativity paper, Annalen der Physik 17 (1905), closing acknowledgement (Wikisource transcription)",
+      "date": "1905-06-30",
+      "who": "Albert Einstein",
+      "quote": "Zum Schlusse bemerke ich, daß mir beim Arbeiten an dem hier behandelten Probleme mein Freund und Kollege M. Besso treu zur Seite stand und daß ich demselben manche wertvolle Anregung verdanke. Bern , Juni 1905. (Eingegangen 30. Juni 1905.)",
+      "url": "https://de.wikisource.org/wiki/Zur_Elektrodynamik_bewegter_K%C3%B6rper",
+      "archive": "http://web.archive.org/web/20260421174507/https://de.wikisource.org/wiki/Zur_Elektrodynamik_bewegter_K%C3%B6rper",
+      "file": "sources/einstein-patent-clerk/wikisource-zur-elektrodynamik-bewegter-koerper.html",
+      "sha256": "a0eb86d772b02c2904b280ecc69ffe06ec0818b12b7985a3dd1513f52724eaf6"
+    },
+    {
+      "what": "The same 1905 paper, where it names Lorentz's electrodynamics as the basis it treats",
+      "date": "1905-06-30",
+      "who": "Albert Einstein",
+      "quote": "so sind diese Gleichungen die elektromagnetische Grundlage der Lorentz ... Elektrodynamik und Optik bewegter Körper",
+      "url": "https://de.wikisource.org/wiki/Zur_Elektrodynamik_bewegter_K%C3%B6rper",
+      "archive": "http://web.archive.org/web/20260421174507/https://de.wikisource.org/wiki/Zur_Elektrodynamik_bewegter_K%C3%B6rper",
+      "file": "sources/einstein-patent-clerk/wikisource-zur-elektrodynamik-bewegter-koerper.html",
+      "sha256": "a0eb86d772b02c2904b280ecc69ffe06ec0818b12b7985a3dd1513f52724eaf6"
+    },
+    {
+      "what": "H. A. Lorentz, 'Electromagnetic phenomena in a system moving with any velocity smaller than that of light', Proceedings of the Royal Netherlands Academy of Arts and Sciences 6 (1904) 809-831 (Wikisource transcription)",
+      "date": "1904",
+      "who": "Hendrik A. Lorentz",
+      "quote": "may be called the local time ... it becomes identical with what I have formerly understood by this name.",
+      "url": "https://en.wikisource.org/wiki/Electromagnetic_phenomena",
+      "archive": "http://web.archive.org/web/20261025004136/https://en.wikisource.org/wiki/Electromagnetic_phenomena",
+      "file": "sources/einstein-patent-clerk/wikisource-lorentz-1904-electromagnetic-phenomena.html",
+      "sha256": "b41e1415a8428a47d30fb1eba2013a79f1d041cbb971e168e6ab60c382ce9753"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "does not hold",
+    "why": "A study of 19.9 million papers and 2.1 million patents found that teams, not solo authors, now produce most highly cited and most exceptional work, and that the team advantage grows over time. Einstein's own 1905 paper also shows help from a colleague and a base in Lorentz's work.",
+    "source": {
+      "what": "Wuchty, Jones and Uzzi, 'The Increasing Dominance of Teams in Production of Knowledge', Science (2007), Science Express author copy",
+      "quote": "Teams typically produce more highly cited research ... than individuals do, and this advantage is increasing over ... time. Teams now also produce the exceptionally high",
+      "url": "https://www.kellogg.northwestern.edu/faculty/jones-ben/htm/Teams.ScienceExpress.pdf",
+      "archive": "http://web.archive.org/web/20261116014911/https://www.kellogg.northwestern.edu/faculty/jones-ben/htm/Teams.ScienceExpress.pdf",
+      "file": "sources/einstein-patent-clerk/wuchty-jones-uzzi-2007-teams.pdf",
+      "sha256": "dc48e9e4ff2174085b052b9361b5a67ad60567aacb0551d59b3c8d15ffbaeeb6"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search 'obscure patent clerk' relativity: earliest hits 1981 (Nicolson, Gravity) and 1989.",
+    "Open Library 'clerk in the patent office' Einstein relativity, 'Einstein was' 'in the patent office', 'patent office' Berne, 'spare time': earliest clear telling found was Catherine Owens Peare, Albert Einstein: a biography for young people (1949), snippet 'able to create new ideas sitting at his desk in the patent office'. Its full text on archive.org is restricted (401), so it is not quoted.",
+    "English Wikisource search found Anton Reiser (Rudolf Kayser), Albert Einstein, a Biographical Portrait (1930). Chapter 2 tells the secret work at the patent office desk and also names Besso as a colleague there. Reiser does not say that Einstein worked alone. Chapter 3 says that as a student Einstein did not yet know Lorentz's 1895 essay.",
+    "Chronicling America (loc.gov) search for 1919-1922 newspapers refused with 403. Papers Past search was blocked by a bot check. Google Books was not tried for this story. HathiTrust full-text search returned a 403 bot check.",
+    "Original record: saved the 1905 paper from German Wikisource; it ends with thanks to M. Besso and names Lorentz's electrodynamics. Saved Lorentz 1904 from English Wikisource.",
+    "Tried German Wikisource for Einstein's 1907 review 'Über das Relativitätsprinzip...' (404) and Project Gutenberg for his 1920 book Relativity (site down for maintenance).",
+    "No correction by Reiser was found.",
+    "Lesson: saved Wuchty, Jones and Uzzi 2007 (Science) from the author's site."
+  ],
+  "confidence_note": "The earliest telling with the false 'alone' part was not found. Reiser 1930 is only the earliest telling found of the patent-office story; it does not say 'alone' and it names Besso as a colleague there. Earlier tellings, likely in 1919-1922 newspapers after the eclipse news, could not be searched (loc.gov 403, Papers Past and HathiTrust blocked). The 1905 paper is quoted from a Wikisource transcription, not a page scan. That Einstein had no university post in 1905 is true, so the 'outsider' part holds; the false part is 'alone'. The lesson study covers 1955 onward, so it shows a general pattern, not a rule about 1905."
+}

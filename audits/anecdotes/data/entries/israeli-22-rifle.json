@@ -1,0 +1,84 @@
+{
+  "id": "israeli-22-rifle",
+  "as_told": "The Israeli army classifies the Ruger 10/22, a .22-calibre sports rifle with a silencer, as a \"less lethal\" crowd-control weapon. Because of that label, soldiers fire it at Palestinian stone-throwers and demonstrators, as they would rubber bullets or tear gas. People, including children, have been killed by it.",
+  "lesson": "Calling a weapon \"less lethal\" leads soldiers to use it more freely, and it still kills.",
+  "what_happened": "After the second intifada began in late 2000, the rules of engagement were relaxed and the army let troops fire the Ruger at stone-throwers and demonstrators. Whether it was a live or a nonlethal weapon was argued inside the army; Southern Command (Gaza) favoured the nonlethal definition, while Central Command (West Bank) stopped its use against demonstrators in the first half of 2001. In December 2001, Judge Advocate General Menachem Finkelstein decided that it must be treated as a live weapon. The army resumed firing 0.22-inch bullets at demonstrations at the end of 2008, and at least two Palestinians were killed by them in 2009. Since 2009 the army's lawyers have stated in writing that the Ruger is not classified as a means of dispersing demonstrations.",
+  "false_part": "The army has not held a standing classification of the Ruger as less lethal: it was permitted against demonstrators in 2000-2001 and one regional command treated it as nonlethal, but the army's chief lawyer ruled in December 2001 that it is a live weapon, and the army's written position since then is that it is not a crowd-control weapon.",
+  "class": "changed",
+  "also": "",
+  "earliest_telling": {
+    "date": "2001-12-27",
+    "who": "Amos Harel",
+    "where": "Haaretz, \"'Nonlethal' Ruger Rifle Likely to Be Classified as Live Weapon\"",
+    "quote": "The classification of the Ruger as either a live or a nonlethal weapon that is unlikely to cause the death of those targeted by it has been the subject of a stormy and protracted debate in the Israel Defense Forces.",
+    "url": "https://www.haaretz.com/1.5461345",
+    "archive": "https://web.archive.org/web/20200919200401/https://www.haaretz.com/1.5461345",
+    "file": "sources/israeli-22-rifle/haaretz-2001-12-26-ruger.html",
+    "sha256": "ce8746979f61142154a43b1d7570cdbbc945a0165fe64db4fec3386552d999d2"
+  },
+  "original": [
+    {
+      "what": "Haaretz report made at the time of the Judge Advocate General's decision, describing how the rifle was permitted against demonstrators",
+      "date": "2001-12-27",
+      "who": "Amos Harel, Haaretz",
+      "quote": "When the rules of engagement were relaxed at the start of the intifada, the IDF let troops use the Ruger against stone-throwers and demonstrators.",
+      "url": "https://www.haaretz.com/1.5461345",
+      "archive": "https://web.archive.org/web/20200919200401/https://www.haaretz.com/1.5461345",
+      "file": "sources/israeli-22-rifle/haaretz-2001-12-26-ruger.html",
+      "sha256": "ce8746979f61142154a43b1d7570cdbbc945a0165fe64db4fec3386552d999d2"
+    },
+    {
+      "what": "Same report: the regional split on the nonlethal definition",
+      "date": "2001-12-27",
+      "who": "Amos Harel, Haaretz",
+      "quote": "The Ruger has been used primarily in Gaza, since the head of Southern Command, Maj. Gen. Doron Almog, is among those who favor the nonlethal definition.",
+      "url": "https://www.haaretz.com/1.5461345",
+      "archive": "https://web.archive.org/web/20200919200401/https://www.haaretz.com/1.5461345",
+      "file": "sources/israeli-22-rifle/haaretz-2001-12-26-ruger.html",
+      "sha256": "ce8746979f61142154a43b1d7570cdbbc945a0165fe64db4fec3386552d999d2"
+    },
+    {
+      "what": "Letter from the Judge Advocate General, Brig. Gen. Avichai Mandelblit, to B'Tselem (the army's own written position)",
+      "date": "2009-07-02",
+      "who": "Avichai Mandelblit, Judge Advocate General, Israel Defense Forces",
+      "quote": "the Ruger and similar means are not classified by the IDF as means for dispersing demonstrations or public disturbances",
+      "url": "https://www.btselem.org/download/20090702_jag_response_to_letter_on_use_of_ruger_rifles_against_demonstrators_eng.pdf",
+      "archive": "http://web.archive.org/web/20260803071253/https://www.btselem.org/download/20090702_jag_response_to_letter_on_use_of_ruger_rifles_against_demonstrators_eng.pdf",
+      "file": "sources/israeli-22-rifle/jag-response-ruger-2009.pdf.txt",
+      "sha256": "f44f82c68e1476827f99531afaef656b49dc308fc42b721c4f9917d46c2593f2"
+    },
+    {
+      "what": "B'Tselem report on crowd-control weapons, documenting renewed use and deaths after 2008 (includes the army's response as an appendix)",
+      "date": "2012-12",
+      "who": "B'Tselem",
+      "quote": "At the end of 2008, the Israeli military resumed use of 0.22 caliber bullets in the dispersal of demonstrations. Since then, at least two Palestinians have been killed by this ammunition",
+      "url": "https://www.btselem.org/download/201212_crowd_control_eng.pdf",
+      "archive": "http://web.archive.org/web/20261103174506/https://www.btselem.org/download/201212_crowd_control_eng.pdf",
+      "file": "sources/israeli-22-rifle/btselem-crowd-control-2012.pdf.txt",
+      "sha256": "2045864be882814c230677a518e77cb7cdf1eb559e379299613b98ba779525d9"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "holds",
+    "why": "Both halves have evidence: at the time, the army's Central Command itself concluded that soldiers fired the Ruger when they were not in danger, causing unjustified casualties (Haaretz, 2001), and B'Tselem documents deaths from 0.22 bullets. A systematic review shows that weapons used on crowds as less lethal (rubber and plastic bullets) cause deaths; it does not study the Ruger.",
+    "source": {
+      "what": "Haar, Iacopino, Ranadive, Dandu and Weiser, \"Death, injury and disability from kinetic impact projectiles in crowd-control settings: a systematic review\", BMJ Open 7(12):e018154, 2017 (Europe PMC record with abstract)",
+      "quote": "These articles included injury data on 1984 people, 53 of whom died as a result of their injuries.",
+      "url": "https://bmjopen.bmj.com/content/7/12/e018154",
+      "archive": "http://web.archive.org/web/20260403144611/https://bmjopen.bmj.com/content/7/12/e018154",
+      "file": "sources/israeli-22-rifle/haar-2017-bmjopen-europepmc-record.json",
+      "sha256": "d790cbb9f9175b0eb6c3c227634e3881c59d9775d8dc566fba479235a856f701"
+    }
+  },
+  "search_steps": [
+    "Web search for Ruger, IDF, less lethal, Military Advocate General 2001 and B'Tselem found B'Tselem reports, the 2009 army letter and Haaretz coverage.",
+    "English Wikipedia \"Ruger 10/22\" (Military users) cites B'Tselem's 2015 press release, Amos Harel in Haaretz (26/27 December 2001, archived copy) and Mondoweiss 2011. Saved the archived Haaretz article.",
+    "Saved the Judge Advocate General's letter to B'Tselem of 2 July 2009 (army's own words).",
+    "Saved B'Tselem's December 2012 report \"Crowd Control\", pages 30-33 on 0.22 bullets and the army's appended response (paragraph 22 says the Ruger is a lethal weapon, not a means of riot dispersal).",
+    "B'Tselem's 2002 report \"Trigger Happy\" (pages 17-18) and the Kol Ha'Ir article of 23 November 2001 (Hebrew) are cited by the 2012 report; btselem.org returned 429 so I did not save Trigger Happy, and Kol Ha'Ir is not online in full text.",
+    "Open Library and newspaper archives were not searched for earlier tellings; the Haaretz 2001 article is the earliest telling I saved. Earlier Hebrew press of 2000-2001 may exist.",
+    "Saved the Europe PMC record of the 2017 BMJ Open systematic review as evidence for the lesson (the BMJ site returned 403 for the PDF)."
+  ],
+  "confidence_note": "The text of the 2000 rules of engagement is not public, so I could not see the exact wording that allowed the Ruger against demonstrators. The Haaretz account of army debate relies on unnamed officers. Use after 2009 that is in practice like crowd control is reported by B'Tselem, an advocacy group, and is denied by the army. The lesson source is the abstract only."
+}

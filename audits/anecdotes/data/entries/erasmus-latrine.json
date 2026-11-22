@@ -1,0 +1,55 @@
+{
+  "id": "erasmus-latrine",
+  "as_told": "Erasmus of Lueg, a robber knight, held out for a year in his cave castle of Predjama. A bribed servant signalled with a light when Erasmus went to the toilet, and the besiegers fired a cannonball that killed him on the latrine.",
+  "lesson": "Even an impregnable fortress falls when one insider is bribed to betray it.",
+  "what_happened": "Erasmus Lueger died in 1484 when imperial troops besieged his castle of Lueg (Predjama), and the castle then surrendered. The latrine detail first appears in Johann Weichard Valvasor's 'Die Ehre dess Hertzogthums Crain' (1689), about 205 years later. Valvasor says the bribed servant showed a light at the place where his master went every night for 'a certain necessary thing'. But Valvasor also says the ball only knocked a piece off the rock, and that rock splinters, not the ball, broke Erasmus's shin and struck his head. No record made at the time of the siege was found.",
+  "false_part": "No record from 1484 places Erasmus on a latrine, and even the earliest telling says he was killed by rock splinters, not by the cannonball.",
+  "class": "unsupported",
+  "also": "changed",
+  "earliest_telling": {
+    "date": "1689",
+    "who": "Johann Weichard Valvasor",
+    "where": "Die Ehre dess Hertzogthums Crain, vol. I, book IV, ch. VII, pp. 525-529; transcribed in Maria Bidovec, Raccontare la Slovenia (Firenze University Press, 2008)",
+    "quote": "angemerckt / daselbst ein Ort wäre / allwo sein Herr alle Nächte eine gewisse nothwendige Sache zu verrichten hette ... dem Lueger das Schienbein zerschmettert / und ein andrer ihn an den Kopff getroffen; wovon er Todes verblichen / und nicht von der Kugel berührt / sondern nur von den Stein-Schiefern so hart gequetschet worden.",
+    "url": "https://archive.org/download/oapen-20.500.12657-54852/9788884537614.pdf",
+    "archive": "https://archive.org/details/oapen-20.500.12657-54852",
+    "file": "sources/erasmus-latrine/oapen-54852-raccontare-la-slovenia-2008.pdf",
+    "sha256": "097e83002e4511ca5795a689482175be5e02fcb1f2b93f91f6cba5b7de8cdf26"
+  },
+  "original": [
+    {
+      "what": "Not a record made at the time: Franz von Krones, 'Lueger, Erasmus', Allgemeine Deutsche Biographie 19 (1884), p. 617, which summarises Sigmund von Herberstein's 16th-century family book and Valvasor. It gives the death and surrender in 1484 and does not mention a latrine.",
+      "date": "1884",
+      "who": "Franz von Krones",
+      "quote": "Der Schuß der Bombarde traf das Ziel und der Lueger fand im Trümmerwerk den Tod. Seine Brüder Andreas und Niklas hielten es gleichfalls mit den Ungarn und starben kinderlos. Das Schloß ergab sich dann den Kaiserlichen (1484).",
+      "url": "https://www.deutsche-biographie.de/sfz54942.html",
+      "archive": "http://web.archive.org/web/20241212075943/https://www.deutsche-biographie.de/sfz54942.html",
+      "file": "sources/erasmus-latrine/ndb-lueger-erasmus.html",
+      "sha256": "cbada2121845e16a81ccd51fcfa9c096a146405f39bf2e0acf8377c335ba1e97"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "The lesson is Valvasor's own moral about bribery and fortresses. No study or review that tests it was found, and the Predjama siege itself rests on a telling made two centuries later.",
+    "source": {
+      "what": "No study found; Valvasor states the moral himself in the same passage (Ehre, IV: 525-529, transcribed in Bidovec 2008)",
+      "quote": "es sey kein Schloss so hoch und fest / und unüberwindlich / von dem nur ein Geld-nehmender Diener hinunter steigen könnte",
+      "url": "https://archive.org/download/oapen-20.500.12657-54852/9788884537614.pdf",
+      "archive": "https://archive.org/details/oapen-20.500.12657-54852",
+      "file": "sources/erasmus-latrine/oapen-54852-raccontare-la-slovenia-2008.pdf",
+      "sha256": "097e83002e4511ca5795a689482175be5e02fcb1f2b93f91f6cba5b7de8cdf26"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search 'Erasmus' Predjama privy: travel guides from 1983 on; Rick Steves (2004) 'blew Erasmus off his throne (literally—with a cannonball)'; Kiernan, The duel in European history (1988).",
+    "Open Library 'Erasmus Lueger cannon': no useful hits (mostly Karl Lueger).",
+    "English Wikipedia 'Erasmus of Lueg' cites Dnevnik 2013 'Erazem Predjamski ni umrl na stranišču' (404 when fetched), Jurende's Mährischer Pilger 1841 p. 154 and Stanonik 2013; none read in full.",
+    "Archive.org search for Valvasor's Die Ehre: 1689 Google scans and an 1877 reprint exist, but the Fraktur OCR of the 1877 volume 4 is unreadable for quoting.",
+    "Found Maria Bidovec, Raccontare la Slovenia (OAPEN, 2008) on archive.org; it transcribes Valvasor's full Erasmus story from Ehre IV: 523-529. Saved the PDF and its text.",
+    "Allgemeine Deutsche Biographie entry (1884) names Herberstein's family book, ed. Zahn, Archiv für österreichische Geschichte 39 (1868), pp. 60-62, as the main source. Searched archive.org and Open Library for volume 39; not found. Google Books API refused with 429. So Herberstein's 16th-century text was not reached.",
+    "A Slovenian scholarly article (Vilfan, Traditiones) was downloaded but is about Baumkircher, not Erasmus; deleted. dlib.si timed out.",
+    "No correction by Valvasor was found."
+  ],
+  "confidence_note": "The earliest telling is quoted from a 2008 transcription of Valvasor, not from the 1689 scan. Herberstein's family book, written within living memory of 1484 by a relative of the Luegers, may be earlier and may not mention a latrine; it was not reached. Popular versions differ on the signal (light, flag) and the weapon. Whether Erasmus died exactly as Valvasor says cannot be checked from the sources saved. The archive field for the Bidovec PDF is the archive.org item page; the Wayback availability service gave no capture of the PDF (it returned an upstream 403)."
+}

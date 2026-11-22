@@ -1,0 +1,74 @@
+{
+  "id": "funranium-ip-scheme",
+  "as_told": "A new worker at a nuclear facility has federal warrants, and a US Marshal comes to arrest him. At the entry portal the marshal refuses to give up his gun, and a protective force officer raises his rifle at him until supervisors sort it out. The worker is brought out to the marshal. (This candidate was listed as a Funranium Labs story about stealing IPv4 address blocks; I found no such post, and the Funranium post linked from the Hacker News thread about an IP-address fraud is this marshal story.)",
+  "lesson": "A rule you are sure of has exceptions at its edges: even a US Marshal's pursuit authority stops at a nuclear facility's fence, where guards may use deadly force to keep out an unauthorised gun.",
+  "what_happened": "I found no Funranium Labs post about IP addresses. The candidate label matches the title of a Hacker News thread of 17 October 2023 on a Krebs on Security article, \"Tech CEO sentenced to 5 years in IP address scheme\". In that thread, user kens linked the Funranium post \"The Fringes of Regulation\" (14 September 2018, by Phil Broughton) in reply to another user's story about marshals at a secure nuclear laboratory. The post tells the marshal story without naming the facility, the date or the people, and says the vagueness is intentional. No other record of the event was found. The regulation the post links as the guards' authority (10 CFR 1047.7) lists the cases in which deadly force is allowed; keeping out an unauthorised firearm is not one of them by itself.",
+  "false_part": "The marshal event has no record behind it, and the post's claim that guards could shoot the marshal to keep his gun out goes beyond the regulation it cites. Separately, the candidate's IP-address description does not match any Funranium post I found.",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "2018-09-14",
+    "who": "Phil Broughton (\"Phil B\")",
+    "where": "Funranium Labs, \"The Fringes of Regulation\"",
+    "quote": "STORY TIME BEGINS! (please note, vagueness in details is intentional)",
+    "url": "https://www.funraniumlabs.com/2018/09/the-fringes-of-regulation/",
+    "archive": "http://web.archive.org/web/20260609083622/https://www.funraniumlabs.com/2018/09/the-fringes-of-regulation/",
+    "file": "sources/funranium-ip-scheme/fringes-of-regulation-2018.html",
+    "sha256": "cce6b88b68a1c573ee0222e097cf174584d73b8f874ef08b83e73e289a49ae44"
+  },
+  "original": [
+    {
+      "what": "Hacker News thread on the IP-address fraud sentencing, where the Funranium post was linked (the source of the mix-up)",
+      "date": "2023-10-17",
+      "who": "Hacker News user kens",
+      "quote": "The version of that story that I read is much longer, by Funranium Labs. It is entertainingly written, but I wonder how much is urban legend",
+      "url": "https://news.ycombinator.com/item?id=37921808",
+      "archive": "http://web.archive.org/web/20261122193032/https://news.ycombinator.com/item?id=37921808",
+      "file": "sources/funranium-ip-scheme/hn-item-37917597.json",
+      "sha256": "9afdba02ea0ce5a49a656c3e636d8649ac1585021b3a2953e631bb1a905f6f5a"
+    },
+    {
+      "what": "The post's own claim about the guards' authority",
+      "date": "2018-09-14",
+      "who": "Phil Broughton",
+      "quote": "including shooting an arrogant US Marshal through the heart if necessary to prevent an unauthorized firearm from entering the facility",
+      "url": "https://www.funraniumlabs.com/2018/09/the-fringes-of-regulation/",
+      "archive": "http://web.archive.org/web/20260609083622/https://www.funraniumlabs.com/2018/09/the-fringes-of-regulation/",
+      "file": "sources/funranium-ip-scheme/fringes-of-regulation-2018.html",
+      "sha256": "cce6b88b68a1c573ee0222e097cf174584d73b8f874ef08b83e73e289a49ae44"
+    },
+    {
+      "what": "The regulation the post links as the guards' \"enabling language\": 10 CFR 1047.7, Use of deadly force (eCFR XML as of 1 November 2026; the post links the 1997 edition on gpo.gov, saved as sources/funranium-ip-scheme/cfr-1997-10-1047-7.pdf, whose paragraph (a) I compared by eye and found worded the same)",
+      "date": "1997-01-01 (1997 edition); text saved 2026-11-01",
+      "who": "US Department of Energy, Code of Federal Regulations",
+      "quote": "A protective force officer is authorized to use deadly force only when one or more of the following circumstances exists",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-11-01/title-10.xml?part=1047&section=1047.7",
+      "archive": "",
+      "file": "sources/funranium-ip-scheme/ecfr-10-1047-7-2026-11-01.xml",
+      "sha256": "9ad591e3b6e5e89556bc192e74633f703111e9ff22f0c618541e456eed677a16"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "The general moral is a truism that no record tests. The one example the post gives is overstated: the regulation it cites allows deadly force only for self-defence, serious offences against persons, protecting nuclear weapons or special nuclear material, and stopping escape after such offences, not simply to keep out a gun.",
+    "source": {
+      "what": "10 CFR 1047.7, Use of deadly force (eCFR text), the regulation linked by the post",
+      "quote": "Its use may be justified only under conditions of extreme necessity, when all lesser means have failed or cannot reasonably be employed.",
+      "url": "https://www.ecfr.gov/api/versioner/v1/full/2026-11-01/title-10.xml?part=1047&section=1047.7",
+      "archive": "",
+      "file": "sources/funranium-ip-scheme/ecfr-10-1047-7-2026-11-01.xml",
+      "sha256": "9ad591e3b6e5e89556bc192e74633f703111e9ff22f0c618541e456eed677a16"
+    }
+  },
+  "search_steps": [
+    "Web searches for \"Funranium Labs\" with IP addresses, IPv4 and heist found no such post.",
+    "Searched the Funranium Labs site with its WordPress search for \"IP address\", IPv4, subnet, \"class B\", ARIN, routing and netblock, and then for the quoted phrases \"IP address\", \"IP addresses\" and \"address block\". The only post that mentions IP addresses is \"The One Where I Play Sherlock Holmes\" (2012), which mentions IP addresses on a lab wall in passing. I found no post about stealing IP addresses.",
+    "An extended web search found Hacker News item 37917597 (Krebs article \"Tech CEO sentenced to 5 years in IP address scheme\", 17 October 2023). In it, comment 37921808 by kens links the Funranium post \"The Fringes of Regulation\" in reply to a story about marshals at Idaho National Laboratory, not about IP addresses. Saved the thread from the Algolia HN API.",
+    "Saved the Funranium post of 14 September 2018 (updated 15 September 2019). It is told as true with intentionally vague details; no facility, date or names.",
+    "Saved the regulation the post links (10 CFR 1047.7, 1997 edition, from gpo.gov) and read the list of deadly-force cases.",
+    "One web search for an earlier telling of the marshal-at-nuclear-facility story found nothing before September 2018. Open Library and newspaper archives were not searched because the story has no names or dates to search on.",
+    "The Wayback Machine has no copy of the gpo.gov PDF (a save request returned HTTP 523) or of the eCFR section page (a save request returned HTTP 200 but no copy was listed afterwards). Because the two-column PDF breaks words across lines, I quoted the same section from the eCFR XML instead."
+  ],
+  "confidence_note": "The id and one-line description given for this candidate do not match any Funranium Labs post I found; I researched the Funranium post that the Hacker News thread links instead. If a different Funranium post about IP addresses was meant, I could not find it. The real IP-address fraud in the thread (Amir Golestan and Micfo) was not researched. The marshal event may have happened; no record shows it or rules it out."
+}
