@@ -57,7 +57,7 @@ export const PARTS: readonly Part[] = [
     idHelp: "the id in the first column of the list",
     one: "id",
     points: "Added to the score of the document. Use minus points for a document the rules overrate.",
-    text: "What to do and by when. State facts from the document only. No investment advice.",
+    text: "Every document in the list needs a note, and a new fetch brings new ones: give each row with an empty note column a line. Read the document, not only its title. Write what to do and by when. When there is nothing to do, give the one fact worth knowing and end with \"Nothing for a resident to do.\" or \"This matters only if you ...\". State facts from the document only. No investment advice.",
     fields: {},
     result: "/singapore-policy-actionables.html, within an hour of a deploy",
   },

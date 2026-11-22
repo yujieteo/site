@@ -4,7 +4,7 @@ date: 2026-11-10
 summary: A server job reads 14 primary sources each Saturday and ranks the new documents by fixed rules.
 summary: It reads no news. It reads agency notices, the Gazette and replies to parliamentary questions.
 summary: The rules favour what a resident can act on in money, work and public services.
-summary: An AI model can add or remove up to 60 points for a document and leave one sentence on what to do.
+summary: An AI model adds or removes up to 60 points for each document and writes a note on what to do or what is worth knowing.
 summary: The ranking is at /singapore-policy-actionables.html, with an RSS feed and a plain text file.
 ---
 News about Singapore policy arrives after an editor has chosen it. The documents behind the news are public, and most of them never become a story. This page ranks the documents themselves.
@@ -54,7 +54,7 @@ The same saved copies and the same notes always give the same ranking. The word 
 
 Rules cannot read. A title that says "launches consultation" scores high, even when the consultation concerns a few hundred co-operatives. So the ranking takes one more input.
 
-An AI model reads [the plain text file](/singapore-policy-actionables.txt) and opens the documents that look useful. For each one it writes a line in [a notes file](/notes/policy.txt): the document, points from -60 to 60, and one sentence. The job adds the points and shows the sentence. The score of a noted document lists the change as "claude" in the text file.
+An AI model reads [the plain text file](/singapore-policy-actionables.txt) and opens each document. For every listed document it writes a line in [a notes file](/notes/policy.txt): the document, points from -60 to 60, and a short note. The note says what to do and by when. When there is nothing to do, it gives the one fact worth knowing and says so. The job adds the points and shows the note on the page, in the RSS feed and in the last column of the text file. A document that has no note yet shows "No summary yet.", and the server reports it if it stays that way for a day. The score of a noted document lists the change as "claude" in the text file.
 
 The plain text file is made for this. It has one line per document, with the reasons for the score, and its first lines say how to write a note. I ask Claude to do this by hand for now, with the steps in [the notes guide](/api/notes.txt). The job itself never calls a model.
 
