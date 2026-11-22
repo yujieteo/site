@@ -20,3 +20,11 @@ uv run python -I src/rank.py
 ```
 
 Both search indexes change over time, so a later count can differ. The stored responses are the record.
+
+## Going past 200 stories
+
+The audit stops at 200 stories (DEVIATIONS.md 8), but nothing found so far is thrown away. `data/hn_ranked.tsv` keeps all 1,125 stories found on Hacker News, in order of how many different people told them. Stages 2 and 3 used the list down to the Earl of Sandwich story (line 179 of the file). The next unused story is on line 180. After it, 87 more stories were told by two people and 859 by one.
+
+To go further, log a new deviation first. Then take the next stories in file order and drop personal stories and duplicates, as in DEVIATIONS.md 7 and 8. Add their ids, names and queries to `data/candidates.tsv` and `data/queries.json`, and commit before any research. Give each research agent `prompts/brief.md` and five stories, with its own work folder. Run the counts, the scores and the ranking only after all research is done, and raise `LIMIT` in `src/rank.py`.
+
+The raw Hacker News responses and the item texts stay in `AA_DATA/hn-pool/`. `src/candidates_hn.py` rebuilds them.
