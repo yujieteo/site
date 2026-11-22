@@ -13,9 +13,16 @@ export { SITE };
 
 // The version of the tables in datapackage.json. A new column raises the minor number. A column is never
 // renamed, retyped or removed; tests/schema.test.ts checks that against tests/schema-frozen.json.
-export const SCHEMA_VERSION = "1.2.0";
+export const SCHEMA_VERSION = "1.3.0";
 
 export const CHANGELOG: readonly { version: string; date: string; changes: readonly string[] }[] = [
+  {
+    version: "1.3.0",
+    date: "2026-11-22",
+    changes: [
+      "singapore-policy-actionables gains note, the note for the document: what to do and by when, or the one fact worth knowing and that there is nothing to do. It is required, so a row that has no note yet fails validation.",
+    ],
+  },
   {
     version: "1.2.0",
     date: "2026-11-20",
