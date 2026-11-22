@@ -1,0 +1,48 @@
+{
+  "id": "shoeshine-boy",
+  "as_told": "In 1929 Joseph P. Kennedy stopped at a shoeshine stand on Wall Street, and the boy who shined his shoes gave him stock tips. Kennedy decided that when a shoeshine boy knew as much about the market as he did, it was time to get out. He sold his stocks and so escaped the crash of October 1929.",
+  "lesson": "When ordinary people with no expertise are giving out stock tips, the market is near its top and it is time to sell.",
+  "what_happened": "The earliest telling found is in Joseph F. Dinneen's book The Kennedy Family (Little, Brown, catalogued as 1960), where Kennedy tells the story to an unnamed reporter at an unstated later date. John Henry Cutler's 'Honey Fitz' (1962) prints the same words. I found no record from 1929 of Kennedy's trades, no interview or letter published under Kennedy's name that tells the story, and no record of the shoeshine boy.",
+  "false_part": "No record shows that a shoeshine boy's tips led Kennedy to sell before the crash; the only source is Kennedy's own story as retold by others from 1960 on.",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "1960",
+    "who": "Joseph F. Dinneen, quoting Joseph P. Kennedy as told to an unnamed reporter",
+    "where": "The Kennedy Family (Boston: Little, Brown)",
+    "quote": "boy knows as much as I do about what",
+    "url": "https://archive.org/details/kennedyfamily0000dinn",
+    "archive": "https://archive.org/details/kennedyfamily0000dinn",
+    "file": "sources/shoeshine-boy/ol-inside-fishing-for-information-shoeshine.json",
+    "sha256": "8f92c3786fe06aa622662a677810dba6e3506b14060fffd304bb8b778779780f"
+  },
+  "original": [],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "Surveys from 1963 to 2011 show that when investors expect high returns, later market returns are on average lower, which fits the idea of crowd optimism at the top. But the same paper finds the forecasting power weak, so the evidence does not show that popular enthusiasm is a reliable signal to sell.",
+    "source": {
+      "what": "Robin Greenwood and Andrei Shleifer, 'Expectations of Returns and Expected Returns', NBER Working Paper 18686, January 2013 (published in Review of Financial Studies, 2014)",
+      "quote": "survey measures of expectations negatively forecast realized returns, consistent with behavioral models in which investors extrapolate and are most optimistic at the top, when future returns are actually low.",
+      "url": "https://www.nber.org/system/files/working_papers/w18686/w18686.pdf",
+      "archive": "http://web.archive.org/web/20261117204116/https://www.nber.org/system/files/working_papers/w18686/w18686.pdf",
+      "file": "sources/shoeshine-boy/greenwood-shleifer-w18686.pdf.txt",
+      "sha256": "64e947cf556c30f76846a6913d921417043a61bc79523ddaae18709f77dfe68a"
+    }
+  },
+  "search_steps": [
+    "Wikipedia step: I did not read the English Wikipedia article on Joseph P. Kennedy Sr.; a web search result summary from it says only that he sold most of his stocks before the crash and later sold short.",
+    "Open Library full-text search for Kennedy \"shoeshine boy\" market and for Kennedy bootblack market 1929: no telling before 1959; many retellings from the 1960s on.",
+    "Quote Investigator page on the quote (2026), read as a lead only: names Dinneen's The Kennedy Family as the earliest Kennedy telling (it gives 1959), a 1928 Lumber Trade Journal remark that 'a bootblack knows as much about what the market is going to be, as anyone else', Baruch's 1960 memoir, and Kessler's 1996 claim about Guy Currier.",
+    "Open Library full-text search for \"shoeshine parlor on Wall Street\" and \"shoeshine boy knows as much\": earliest hits are both scanned copies of Dinneen, The Kennedy Family, dated 1960 in archive.org and Open Library metadata (Open Library work record also gives 1960, not 1959).",
+    "Dinneen's book is a lending-only scan: its full text (djvu.txt) returned 401 and its in-book search returned 'Item not available'. I saved the Open Library search-inside result (sources/shoeshine-boy/ol-inside-fishing-for-information-shoeshine.json and ol-inside-shoeshine-boy-knows-as-much.json) and quote only the snippet text in it.",
+    "Saved the full text of John Henry Cutler, 'Honey Fitz' (1962), which is open: it prints the same Kennedy words ('I dropped in at a shoeshine parlor on Wall Street ... it's time for me to get out, and I did') and says he cleared out of the market in August 1929. It gives no source and is a retelling.",
+    "Searched archive.org for Kennedy's own 1936 book I'm for Roosevelt: all copies are lending-only, so I could not check whether he tells the story there.",
+    "Koskoff, Joseph P. Kennedy: A Life and Times (1974) appears in search-inside results introducing the passage as a fanciful story; lending-only, not saved or quoted. Kessler, The Sins of the Father (1996): lending-only, not read.",
+    "Web search for 'Pat Bologna', the shoeshine man Kessler names: nothing found.",
+    "Google Books: daily quota exceeded (429), not retried. Chronicling America: blocked by a browser check. Trove: API key required. Papers Past: bot check. So no newspaper search for 1929-1959 was possible.",
+    "Lesson: saved Greenwood and Shleifer (NBER 2013) on survey expectations and later returns.",
+    "Teller correction: Kennedy died in 1969; no correction found."
+  ],
+  "confidence_note": "Kennedy's 1929 trading records were not found online; a biography with access to his papers (for example Nasaw, The Patriarch, 2012) may settle what he sold and when. The earliest-telling quote is a short snippet from a search result, because the book is not open in full text. Dinneen's book may carry a 1959 copyright date; catalogues give 1960."
+}

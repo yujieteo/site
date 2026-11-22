@@ -1,0 +1,66 @@
+{
+  "id": "shackleton-ad",
+  "as_told": "Before an Antarctic expedition, Ernest Shackleton put a short advertisement in a London newspaper: \"Men wanted for hazardous journey. Small wages, bitter cold, long months of complete darkness, constant danger, safe return doubtful. Honour and recognition in case of success.\" The story says that thousands of men answered it.",
+  "lesson": "An honest advertisement that states the hardships of a job attracts more, and more committed, applicants.",
+  "what_happened": "No copy of the advertisement has been found in any newspaper. Shackleton announced the Imperial Trans-Antarctic Expedition in a letter to The Times on 29 December 1913. His biographer Hugh Robert Mill wrote in 1923 that this letter, not an advertisement, brought offers of service from nearly five thousand people. The wording of the advertisement first appears in print decades later: Carl Hopkins Elmore's book of 1944 and Julian Watkins's 'The 100 Greatest Advertisements' of 1949 are the earliest known, and the earliest telling I could read myself is the contents page of the 1959 Dover edition of Watkins's book, which lists Shackleton's 'Wanted: Volunteers for the South Pole' as advertisement number 1.",
+  "false_part": "No record shows that Shackleton placed this advertisement; the applicants Mill describes answered a letter in The Times that announced the expedition.",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "1959",
+    "who": "Julian Lewis Watkins",
+    "where": "The 100 Greatest Advertisements: Who Wrote Them and What They Did (New York: Dover, 1959; first published 1949), contents page, snippet from Open Library full-text search",
+    "quote": "WANTED:  Volunteers  For  The  South  Pole",
+    "url": "https://openlibrary.org/search/inside.json?q=%22100+greatest+advertisements%22+Shackleton",
+    "archive": "https://archive.org/details/100greatestadver0000watk",
+    "file": "sources/shackleton-ad/ol-inside-100-greatest-advertisements-shackleton.json",
+    "sha256": "85432c5569b711c79cdedff1ee4f14f3739288c3d78e1937d583dc21b863bfc2"
+  },
+  "original": [
+    {
+      "what": "The 1923 biography of Shackleton by Hugh Robert Mill, which describes how the Trans-Antarctic expedition was announced and how men applied",
+      "date": "1923",
+      "who": "Hugh Robert Mill",
+      "quote": "The  first  public  announcement  was  made  in  a  letter  to",
+      "url": "https://archive.org/download/lifeofsirernests00milluoft/lifeofsirernests00milluoft_djvu.txt",
+      "archive": "https://archive.org/details/lifeofsirernests00milluoft",
+      "file": "sources/shackleton-ad/lifeofsirernests00milluoft_djvu.txt",
+      "sha256": "908e3fa9070c9ad51d2b19c05b51c838e5bd8bfd0c64ae9b105fab743cc5a3fc"
+    },
+    {
+      "what": "The same biography, on the number of people who offered to go after the letter to The Times",
+      "date": "1923",
+      "who": "Hugh Robert Mill",
+      "quote": "expedition  of  nearly  five  thousand  people,  from  whom  only",
+      "url": "https://archive.org/download/lifeofsirernests00milluoft/lifeofsirernests00milluoft_djvu.txt",
+      "archive": "https://archive.org/details/lifeofsirernests00milluoft",
+      "file": "sources/shackleton-ad/lifeofsirernests00milluoft_djvu.txt",
+      "sha256": "908e3fa9070c9ad51d2b19c05b51c838e5bd8bfd0c64ae9b105fab743cc5a3fc"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "I found no study of job advertisements that list hardships. A meta-analysis of 52 studies of realistic job previews finds that they reduce voluntary turnover mainly because recruits see the employer as honest, and it finds the most effective preview may be one given after hiring; it does not test whether a harsh advertisement draws more or better applicants.",
+    "source": {
+      "what": "Earnest, Allen and Landis, 'Mechanisms linking realistic job previews with turnover: a meta-analytic path analysis', Personnel Psychology 64 (2011), abstract from Crossref",
+      "quote": "enhanced perceptions of organizational honesty is the primary mechanism by which realistic job previews (RJPs) influence voluntary turnover",
+      "url": "https://api.crossref.org/works/10.1111/j.1744-6570.2011.01230.x",
+      "archive": "https://web.archive.org/web/20261122144607/https://api.crossref.org/works/10.1111/j.1744-6570.2011.01230.x",
+      "file": "sources/shackleton-ad/crossref-earnest-2011-rjp-meta.json",
+      "sha256": "4f52feab07192df11eadbfaa055b57b5b7a22d665ad698b779c485b813577320"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search for \"men wanted for hazardous journey\": hits from 1988 onward (Swan, Destination: Antarctica); Rees, Why Do We Quote? (1989) says the advertisement was nominated by Julian L. Watkins.",
+    "Open Library full-text search for \"100 greatest advertisements\" Shackleton: the 1959 Dover scan of Watkins (100greatestadver0000watk) lists 'ERNEST SHACKLETON ... WANTED: Volunteers For The South Pole' as item 1 of its contents; the snippets do not include the advertisement's text. Runyon, Consumer Behavior and the Practice of Marketing (1977), p. 490, citing Watkins; Morneau (1983) also tells it.",
+    "Open Library full-text search for \"safe return doubtful\" Shackleton and for \"hazardous journey\" \"small wages\" \"bitter cold\": nothing before 1977.",
+    "A 2014 American Dialect Society mailing list post (Garson O'Toole, saved as adsl-2014-04-132040.html) points to Carl Hopkins Elmore, Quit You Like Men (New York: Scribner, 1944), p. 53, as an earlier telling. The archive.org copy (quityoulikemen0000carl) is a lending copy; its full text returned 401 and its search-inside returned 403, so I did not read or quote it.",
+    "Julian L. Watkins, The 100 Greatest Advertisements (1949; Dover 1959): archive.org copies 100greatestadver00watk and 100greatestadver0000watk are lending copies; the full text returned 401, so I could read only the search snippets (contents page). Leads say Watkins dates the advertisement to 'London newspapers in 1900' and gives no source.",
+    "Google Books API refused with 429 (daily quota) and HathiTrust full-text search returned 403 (browser check); I did not retry.",
+    "The Antarctic Circle advertisement contest page (saved as antarctic-circle-advert.htm) is a lead: it offers a reward for the original since about 2000, reports searches of The Times for December 1913 to January 1914 and February 1907 that found no such advertisement, and transcribes Shackleton's letter in The Times of 29 December 1913.",
+    "Hugh Robert Mill, The Life of Sir Ernest Shackleton (1923), full text from archive.org: p. 195 says the first public announcement was a letter to The Times on 29 December 1913 and that nearly five thousand people offered their services; it mentions no advertisement. Mill also says that the 1907 announcement of the Nimrod expedition brought 'an immediate flood of applications', again with no advertisement mentioned.",
+    "Searched Crossref for meta-analyses of realistic job previews; saved the Crossref record of Earnest, Allen and Landis (2011) with its abstract."
+  ],
+  "confidence_note": "The Times of 29 December 1913 itself was not available to me; I rely on Mill (1923) and on a transcription by the Antarctic Circle, which is a lead. Earlier tellings by Elmore (1944, p. 53) and Watkins (1949) exist but were not readable, Watkins's first edition of 1949 was not readable, so the 1959 date is only the earliest edition I could see. Volunteers have searched only some London papers and dates, so an advertisement in another paper or year is not ruled out; this is why the class is unsupported, not invented."
+}

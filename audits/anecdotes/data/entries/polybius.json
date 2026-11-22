@@ -1,0 +1,44 @@
+{
+  "id": "polybius",
+  "as_told": "In 1981 a strange arcade game called Polybius appeared in a few arcades near Portland, Oregon. Players suffered amnesia, nightmares and seizures, and men in black coats came to collect data from the machines rather than coins. The game was a secret government (CIA or military) experiment in mind control, and the machines vanished after about a month.",
+  "lesson": "Governments secretly run mind experiments on unsuspecting members of the public.",
+  "what_happened": "The first known telling is an anonymous entry on the arcade database coinop.org, last modified on 6 February 2000 with the note 'New addition - anyone heard of this game?'. It claims a ROM of the game had turned up, but the site never published it; its 2009 update still promised new information. My searches (Open Library full text and web searches) found no record of Polybius from 1981; I could not search 1981 newspapers or coin-op trade magazines.",
+  "false_part": "No record shows that a game called Polybius existed in 1981 or that any government used an arcade game for mind experiments.",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "2000-02-06",
+    "who": "Anonymous contributor to coinop.org (The Clickto Network)",
+    "where": "coinop.org game page 'Polybius' (Wayback copy of 3 March 2000)",
+    "quote": "used some kind of proprietary behavior modification algorithms developed for the CIA or something",
+    "url": "http://www.clickto.com/coinop/GamePage/Polybius.html",
+    "archive": "https://web.archive.org/web/20000303224844/http://www.clickto.com/coinop/GamePage/Polybius.html",
+    "file": "sources/polybius/coinop-polybius-20000303.html",
+    "sha256": "70b90abe8dc0ee13d9fbdfcd935230c0cbec81f4f18c8dd721e84946b19219e1"
+  },
+  "original": [],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "holds",
+    "why": "A 1977 US Senate hearing records that the CIA's MKULTRA program tested drugs, including LSD, on citizens who did not know they were being tested; the hearing records that the testing was later stopped. Nothing in it concerns video games, so it supports the general lesson but not this story.",
+    "source": {
+      "what": "Project MKULTRA, the CIA's Program of Research in Behavioral Modification: Joint Hearing before the Select Committee on Intelligence and the Subcommittee on Health and Scientific Research, US Senate, 3 August 1977 (statement of Senator Edward Kennedy)",
+      "quote": "covert drug tests on unwitting citizens “at all social levels, high and low, native Americans and foreign.”",
+      "url": "https://archive.org/details/project-mkultra-the-cias-program-of-research-in-behavioral-modification_202305",
+      "archive": "https://archive.org/details/project-mkultra-the-cias-program-of-research-in-behavioral-modification_202305",
+      "file": "sources/polybius/mkultra-1977-hearing_djvu.txt",
+      "sha256": "fd43aa452cae5860746e5e97879b2ed5f1531cbb2ff60f8883f913468519febe"
+    }
+  },
+  "search_steps": [
+    "Open Library full-text search for Polybius arcade Portland and for Sinnesloschen: no hit about the game before 2000.",
+    "Read the English Wikipedia article as a lead: it cites the coinop.org page (Wayback, 3 March 2000), a 2019-2020 version of it, Skeptoid episode 362 and Oregonian and Register-Guard articles of 1981-1982, and says no archived Usenet posts discuss Polybius.",
+    "Saved the coinop.org page from the Wayback Machine (capture 3 March 2000; 'Last Modification of this game: 2/6/2000 10:23:41 AM'). Its date of 1998 shown in later versions is said by leads to be a system default; I could not check that.",
+    "Saved the 2020 Wayback copy of the coinop.org page to look for a correction by the teller: the text is unchanged, with a 2009 update ('one of us is flying to the Kyiv, Ukraine area tomorrow') and no retraction.",
+    "Read Skeptoid episode 362 (Brian Dunning) as a lead: it cites the Eugene Register-Guard, 29 November 1981, 'Tummy Derails Asteroids Champ' (AP), and The Oregonian, 9 December 1981, 'Video Games Gambling Count Admitted'. The Register-Guard page is a scanned image in Google News Archive and The Oregonian is behind a paywall, so I did not save or quote them.",
+    "Usenet: a web search for Polybius on Google Groups found no dated post; secondary accounts mention a 2000 Usenet repost and a claimed 1994 post, neither found.",
+    "Chronicling America (blocked by a browser check) does not cover 1981 in any case; Google Books quota was exceeded.",
+    "Lesson: the US Senate's own copy of the 1977 MKULTRA hearing returned 403; I did not retry and saved an archive.org copy of the printed hearing instead."
+  ],
+  "confidence_note": "The rules require positive evidence for 'invented', and I found only the absence of any 1981 record, so the class is 'unsupported'; most researchers treat the game as a hoax. Who wrote the coinop.org entry is unknown. The 1981 Portland newspaper reports that leads cite were not read."
+}

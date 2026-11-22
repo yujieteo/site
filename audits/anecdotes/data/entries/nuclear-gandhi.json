@@ -1,0 +1,67 @@
+{
+  "id": "nuclear-gandhi",
+  "as_told": "In the first Civilization game (1991), Gandhi had the lowest aggression value, 1. Adopting democracy lowered aggression by 2, and because the value was stored as an unsigned number it wrapped around from -1 to 255, the maximum. So Gandhi became the most aggressive leader in the game just as India gained nuclear weapons.",
+  "lesson": "A small integer underflow bug can wrap a value around and cause huge, unexpected behaviour.",
+  "what_happened": "The story first appears in a TV Tropes edit of 17 July 2012, two decades after the game came out, with no source. Sid Meier, the game's designer, wrote in his 2020 memoir that Gandhi used nukes 'just like any civilization in the game' and that he threatened players often because one of his main traits was to avoid war; Brian Reynolds, designer of Civilization II, is reported as saying the bug is apocryphal. In Civilization V, the game's data file for Gandhi sets his nuke preference (FLAVOR_NUKE) to 12; this is a set value in the data, not the result of an overflow.",
+  "false_part": "No bug in the original Civilization made Gandhi nuke-happy; its designer says Gandhi used nukes like any other leader.",
+  "class": "invented",
+  "also": "",
+  "earliest_telling": {
+    "date": "2012-07-17",
+    "who": "TV Tropes user 'Tunafish'",
+    "where": "TV Tropes, VideoGame/Civilization page, edit history (archived 2012-09-01)",
+    "quote": "Actually, Gandhi has been a warmonger since the first game. It was originally a bug.",
+    "url": "http://tvtropes.org/pmwiki/article_history.php?article=VideoGame.Civilization&more=t",
+    "archive": "https://web.archive.org/web/20120901052801/http://tvtropes.org/pmwiki/article_history.php?article=VideoGame.Civilization&more=t",
+    "file": "sources/nuclear-gandhi/tvtropes_civ_history_20120901.html.txt",
+    "sha256": "5ef6f22a1aada9b232cf435031aba13a75a845510be77850f21d015c7a8145bb"
+  },
+  "original": [
+    {
+      "what": "Sid Meier's own words in Sid Meier's Memoir! (W. W. Norton, 2020), as quoted in Kotaku's report on the book",
+      "date": "2020-09-09",
+      "who": "Sid Meier (quoted by Kotaku)",
+      "quote": "“It is true that Gandhi would—eventually—use nukes when India was at war, just like any civilization in the game, and at the time this did strike a lot of players as odd,” Meier writes.",
+      "url": "https://kotaku.com/civilization-creator-shoots-down-our-memories-of-a-nuke-1845006305",
+      "archive": "http://web.archive.org/web/20260607192350/https://kotaku.com/civilization-creator-shoots-down-our-memories-of-a-nuke-1845006305",
+      "file": "sources/nuclear-gandhi/kotaku2020_meier_memoir.html.txt",
+      "sha256": "b530fa4ed18af34497378475ad1503cd72a57d03dc81c72164bab8839073f59c"
+    },
+    {
+      "what": "Civilization V game data file CIV5Leader_Gandhi.xml (Firaxis Games), copy in a public GitHub repository of the game's configuration files; the .xml.txt file is an unchanged copy of the saved .xml; the quote is the row FlavorType FLAVOR_NUKE, Flavor 12 with the XML tags left out",
+      "date": "not dated in the file",
+      "who": "Firaxis Games",
+      "quote": "FLAVOR_NUKE 12",
+      "url": "https://raw.githubusercontent.com/wangxinyu199306/Civ5Configuration/HEAD/Gameplay/XML/Leaders/CIV5Leader_Gandhi.xml",
+      "archive": "https://web.archive.org/web/20261122144026/https://raw.githubusercontent.com/wangxinyu199306/Civ5Configuration/HEAD/Gameplay/XML/Leaders/CIV5Leader_Gandhi.xml",
+      "file": "sources/nuclear-gandhi/civ5_CIV5Leader_Gandhi.xml.txt",
+      "sha256": "8f6e6157a70a28e5b247c2a8cdf09f828f1d12fdf1c5ad027e07e5a8579c0876"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "holds",
+    "why": "The C language standard states that unsigned arithmetic wraps around modulo the type's range, so a value that goes below zero in an unsigned variable does become a very large number; such bugs are real, even though this one did not happen.",
+    "source": {
+      "what": "ISO/IEC 9899:201x (C11) committee draft N1570, section 6.2.5, paragraph 9",
+      "quote": "A computation involving unsigned operands can never overflow,",
+      "url": "https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf",
+      "archive": "http://web.archive.org/web/20261118101911/https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf",
+      "file": "sources/nuclear-gandhi/c11_draft_n1570.pdf.txt",
+      "sha256": "00bbdd63df34828403635fce0608e6173006c3bfd28b41b053835b45513e717c"
+    }
+  },
+  "search_steps": [
+    "Wikipedia 'Nuclear Gandhi' used as a lead: it dates the first telling to a TV Tropes edit of 17 July 2012 and cites Meier's memoir (pp. 261-266) and Chris Bratt's 2019 video with Brian Reynolds.",
+    "Saved the archived TV Tropes edit history (Wayback Machine, 2012-09-01): the 17 July 2012 edit by 'Tunafish' gives the bug story; earlier June 2012 lines only say that Civilization V's Gandhi AI is tailored to build nukes.",
+    "Tried to save Sid Meier's memoir text: not online in full text; Open Library full-text search for the exact phrase \"Gandhi firing nukes\" (known from the memoir) gave 0 hits, so the memoir is not indexed there. Bloomberg's report host did not resolve; AV Club and Kotaku refused the anecdote-audit user agent with 403, so Kotaku was saved from its Wayback Machine copy.",
+    "Saved PCGamesN's 2020 report on the memoir: it paraphrases the denial and quotes only one short line, so it is not used as evidence.",
+    "Kotaku's sentence that Meier says there is no bug is Kotaku's own paraphrase; only the sentences inside quotation marks are used here as Meier's words.",
+    "Brian Reynolds's '99.99% certainty' statement is known only as relayed in Bratt's 2019 video and in articles; not used as evidence.",
+    "Searched GitHub code for LEADER_GANDHI and FLAVOR_NUKE: found copies of the Civilization V file CIV5Leader_Gandhi.xml (header names Ed Beach of Firaxis Games); saved one and found FLAVOR_NUKE set to 12.",
+    "Did not find a disassembly of the original Civilization's CIV.EXE that lists the leaders' aggression values.",
+    "Searched for a correction by the TV Tropes editor: none found.",
+    "Requested a Wayback Machine capture of the GitHub raw file (none existed); it was captured at 20261122144026. The quote 'FLAVOR_NUKE 12' is the XML row with tags removed; grep -F finds '<FlavorType>FLAVOR_NUKE</FlavorType>' followed on the next line by '<Flavor>12</Flavor>' in the saved file."
+  ],
+  "confidence_note": "The memoir passage that most directly denies the bug (reported at pp. 261-266) was not saved in full; the class rests on Meier's quoted words that Gandhi used nukes like any civilization, plus the absence of any telling before 2012. The original game's code was not inspected. The Civilization V file is a third-party copy of the game data, not downloaded from Firaxis."
+}

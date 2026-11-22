@@ -1,0 +1,74 @@
+{
+  "id": "aws-spare-capacity",
+  "as_told": "Amazon had to buy enough servers for the Christmas shopping peak, so most of its computers sat idle for the rest of the year. To earn money from this spare capacity, it began renting it to outside developers, and that business became Amazon Web Services (AWS).",
+  "lesson": "Selling the idle part of resources you must own anyway can grow into a large new business.",
+  "what_happened": "AWS offered its storage service S3 and its compute service EC2 by 2006, as a press report of September 2006 shows. According to Benjamin Black, an Amazon engineer at the time, EC2 grew from a 2003 paper by Chris Pinkham and Benjamin Black about standardised, automated infrastructure, which ended by suggesting that Amazon could sell virtual servers as a service. In his letter to shareholders for 2006, Jeff Bezos described AWS as a new business for a new customer set, software developers, built on Amazon's expertise in scaling its own site, and did not mention spare capacity. A 2006 press report did describe EC2 and S3 as a way to sell 'excess' capacity. A copy of a 2011 Quora answer by Werner Vogels, Amazon's chief technology officer, calls the excess capacity story a myth, but I could not read the original.",
+  "false_part": "Amazon's own records present AWS as a new business for developers, not a way to rent out idle holiday-season servers.",
+  "class": "changed",
+  "also": "",
+  "earliest_telling": {
+    "date": "2006-09-27",
+    "who": "China Martens, reporting a keynote by Jeff Bezos at MIT",
+    "where": "Computerworld, 'Bezos gives a look at \"hidden Amazon\"'",
+    "quote": "S3 and EC2 are Web services that let Amazon sell excess storage and excess compute capacity respectively to third-party developers.",
+    "url": "https://www.computerworld.com/article/1483552/bezos-gives-a-look-at-hidden-amazon.html",
+    "archive": "https://web.archive.org/web/20261122143741/https://www.computerworld.com/article/1483552/bezos-gives-a-look-at-hidden-amazon.html",
+    "file": "sources/aws-spare-capacity/computerworld-2006-bezos.html",
+    "sha256": "1fbbc710f32d1620ca4902ffaeba17a3d7c16e1f329673c803924040d88ff78e"
+  },
+  "original": [
+    {
+      "what": "Jeff Bezos's letter to shareholders for 2006, filed with the US SEC as exhibit 99.1 to Amazon's Form 8-K of April 2007",
+      "date": "2007-04",
+      "who": "Jeff Bezos",
+      "quote": "building a new business focused on a new customer set",
+      "url": "https://www.sec.gov/Archives/edgar/data/1018724/000119312507093886/dex991.htm",
+      "archive": "https://web.archive.org/web/20211017231701/https://www.sec.gov/Archives/edgar/data/1018724/000119312507093886/dex991.htm",
+      "file": "sources/aws-spare-capacity/amazon-2006-shareholder-letter.htm",
+      "sha256": "b5c13a3c0ef699d37f56dbf8cc9137902020f08ebf62067f5cb5872b47531d06"
+    },
+    {
+      "what": "The same letter, on why Amazon could offer storage and compute",
+      "date": "2007-04",
+      "who": "Jeff Bezos",
+      "quote": "in which we have deep expertise from scaling Amazon.com over the last twelve years",
+      "url": "https://www.sec.gov/Archives/edgar/data/1018724/000119312507093886/dex991.htm",
+      "archive": "https://web.archive.org/web/20211017231701/https://www.sec.gov/Archives/edgar/data/1018724/000119312507093886/dex991.htm",
+      "file": "sources/aws-spare-capacity/amazon-2006-shareholder-letter.htm",
+      "sha256": "b5c13a3c0ef699d37f56dbf8cc9137902020f08ebf62067f5cb5872b47531d06"
+    },
+    {
+      "what": "Benjamin Black's own account of the origin of EC2, on his blog",
+      "date": "2009-01-25",
+      "who": "Benjamin Black",
+      "quote": "we mentioned the possibility of selling virtual servers as a service",
+      "url": "http://blog.b3k.us/2009/01/25/ec2-origins.html",
+      "archive": "https://web.archive.org/web/20261116183051/https://blog.b3k.us/2009/01/25/ec2-origins.html",
+      "file": "sources/aws-spare-capacity/b3k-2009-ec2-origins.html",
+      "sha256": "9e309d7dbefc97917aea33f49b35414865a1f329949aa7127e9654d22840149a"
+    }
+  ],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "I found no study that tests whether selling idle internal resources tends to create large businesses. The AWS case cannot support the lesson, because Amazon's own record presents AWS as a deliberate new business for developers, not a way to fill idle servers.",
+    "source": {
+      "what": "Jeff Bezos's letter to shareholders for 2006 (SEC filing)",
+      "quote": "building a new business focused on a new customer set",
+      "url": "https://www.sec.gov/Archives/edgar/data/1018724/000119312507093886/dex991.htm",
+      "archive": "https://web.archive.org/web/20211017231701/https://www.sec.gov/Archives/edgar/data/1018724/000119312507093886/dex991.htm",
+      "file": "sources/aws-spare-capacity/amazon-2006-shareholder-letter.htm",
+      "sha256": "b5c13a3c0ef699d37f56dbf8cc9137902020f08ebf62067f5cb5872b47531d06"
+    }
+  },
+  "search_steps": [
+    "Web search for Werner Vogels and 'excess capacity': found Simon Willison's blog of 5 January 2011, which copies a Quora answer by Vogels: 'The excess capacity story is a myth... within 2 months after launch AWS would have already burned through the excess Amazon.com capacity.' Saved as willison-2011-vogels.html; it is a copy made by someone else, so it is a lead only.",
+    "Tried the Quora page that Willison links (https://www.quora.com/How-and-why-did-Amazon-get-into-the-cloud-computing-business): quora.com returned 403, the Wayback Machine availability lookup found no capture of that URL, and a save request returned 520. So I could not read Vogels's answer in its original place.",
+    "ITPro, 2 March 2010 (saved as itpro-2010-cebit.html): a journalist reports Vogels saying at CeBIT that the idea 'that Amazon is only in this to sell off excess capacity' is 'simply not true'. A press report of a talk, so a lead only.",
+    "Searched for 2006 tellings: Computerworld (IDG), 27 September 2006, reporting Bezos's MIT keynote, says S3 and EC2 'let Amazon sell excess storage and excess compute capacity'. This is the reporter's description, not a quoted Bezos statement. It is the earliest telling I found; Data Center Knowledge (6 November 2006) on a BusinessWeek cover story quotes Bezos giving a different motive ('So our motives for doing it are very straightforward: We think it's good business.').",
+    "Saved Jeff Bezos's 2006 letter to shareholders from SEC EDGAR: describes AWS as a new business for software developers that uses Amazon's expertise in scaling; no mention of spare capacity.",
+    "Saved Benjamin Black's blog post 'EC2 Origins' (25 January 2009): he and Chris Pinkham wrote a paper in 2003 on standardised infrastructure that suggested selling virtual servers; Bezos asked for more detail in early 2004; Pinkham's team in South Africa built EC2.",
+    "A CACM interview with Vogels (2021) returned 403; I did not retry. Open Library full-text search was not useful for a 2006 story."
+  ],
+  "confidence_note": "Vogels's denial is known to me only through a copy on Simon Willison's blog and a press report, because the Quora original could not be fetched. The Bezos letter and Black's account give a different motive but do not say in so many words that no spare capacity was ever sold. An earlier press telling than September 2006 may exist."
+}

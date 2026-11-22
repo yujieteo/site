@@ -1,0 +1,42 @@
+{
+  "id": "vanilla-ice-cream-car",
+  "as_told": "A man wrote to the Pontiac division of General Motors that his new car would not start whenever he bought vanilla ice cream, but started fine with any other flavour. An engineer rode with him and found that vanilla sat near the shop door, so the trip was shorter. With a short stop the hot engine had vapour lock; with a longer stop it cooled enough to start.",
+  "lesson": "Take strange customer complaints seriously, because even absurd-looking problems can have a real, physical cause.",
+  "what_happened": "No record of such a complaint to Pontiac or General Motors, or of an engineer's report, has been found. The story was in print by 1979 in a book by the preacher Robert Schuller; according to Snopes, the folklorist Jan Harold Brunvand reports an earlier version in Traffic Safety magazine of June 1978, which I did not see. The tellings disagree on the cause: Schuller's 1979 version has vanilla by the entrance, so buying it was quicker, while the version Brunvand prints in 1989 has vanilla hand-packed, so buying it took longer. A car book confirms that a hot engine can refuse to start soon after it is stopped, there blamed on carburettor percolation, a fault related to vapour lock.",
+  "false_part": "No record shows that this complaint and investigation took place; the mechanism changes between tellings.",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "1979",
+    "who": "Robert H. Schuller",
+    "where": "Discover Your Possibilities (New York: Ballantine Books), p. 262",
+    "quote": "The  engineer  went  along every  night",
+    "url": "https://openlibrary.org/search/inside.json?q=%22vanilla+ice+cream%22+%22vapor+lock%22",
+    "archive": "https://archive.org/details/discoveryourposs00schu",
+    "file": "sources/vanilla-ice-cream-car/ol-inside-vanilla-vapor-lock.json",
+    "sha256": "85e658eebe7bd12bec3c52f6e72d3bd276b6b1586b84cbcbf49878b25e628900"
+  },
+  "original": [],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "I found no study of how often odd customer complaints turn out to have real causes. The source below shows only that a mechanism like the one in the story is real: carburettor percolation, related to vapour lock, can make a hot engine refuse to start soon after it is stopped.",
+    "source": {
+      "what": "James Joseph, 110 Car and Driving Emergencies (Guilford, Conn.: Lyons Press, 2003), p. 230, snippet from Open Library full-text search",
+      "quote": "to  refuse  to  start  once  stopped.",
+      "url": "https://openlibrary.org/search/inside.json?q=%22vapor+lock%22+percolation+%22hot+engine%22",
+      "archive": "https://archive.org/details/110cardrivingeme0000jose",
+      "file": "sources/vanilla-ice-cream-car/ol-inside-vapor-lock-percolation.json",
+      "sha256": "7df7c6cd63b53effc57a6cd31b24f92d36943e3e7e9bb6b8679895ec8630aa8c"
+    }
+  },
+  "search_steps": [
+    "Web search and Snopes (lead): Snopes cites Brunvand, Curses! Broiled Again! (1989), pp. 121-122, who says Traffic Safety magazine printed the story in June 1978, citing Automotive Engineering; Snopes also cites Hendry, The UFO Handbook (1979), pp. 268-269.",
+    "Open Library full-text search for \"vanilla ice cream\" \"vapor lock\": earliest hits are Schuller, Discover Your Possibilities (1979), p. 262 (vanilla 'right at the entrance door', so a short stop), H. Edwin Young, A Winning Walk (1982), and Hoefler, With Wings of Eagles (1983, names Pontiac). Brunvand, Curses! Broiled Again! (1989) gives a Texas version in which vanilla 'was hand-packed for each customer', so a long stop.",
+    "Tried the full text of Brunvand (cursesbroiledaga00brun): 401, lending copy only; I quote only the Open Library snippets.",
+    "Searched archive.org for Hendry's UFO Handbook (1979): no copy found. Traffic Safety (June 1978) and Automotive Engineering: not found online, not read.",
+    "Searched for a Pontiac or General Motors record of the complaint: found none.",
+    "For the mechanism: Defense Technical Information Center report ADA155413 (Coordinating Research Council vapour lock and hot-start tests, 1984) and a US Department of Transportation report both returned 403; I did not retry. Used an Open Library snippet instead."
+  ],
+  "confidence_note": "The June 1978 Traffic Safety printing and an anecdotal 1971 sighting reported by Snopes are earlier than the 1979 telling I could read, but I did not see them. A real incident behind the story is not ruled out, because vapour lock after a short stop was a common fault; no record of this specific case exists that I could find."
+}

@@ -1,0 +1,45 @@
+{
+  "id": "chevy-nova",
+  "as_told": "General Motors launched the Chevrolet Nova in Mexico or elsewhere in Latin America and it sold badly. Someone finally pointed out that 'no va' means 'it doesn't go' in Spanish. In some versions GM renamed the car Caribe and sales took off.",
+  "lesson": "Check what a product name means in each market's language before launching it there.",
+  "what_happened": "Leads (Snopes and an unsourced production compilation) say the Chevrolet Nova was sold and built in Mexico and sold in Venezuela in the 1970s. I found no sales record that shows it sold badly, and none that shows it sold well; the claim that Venezuelan sales beat GM's expectations rests on a 1993 GM letter cited by Snopes that is not online. A 1994 Mexican official standard lists a Pemex petrol named Nova Plus, so a common product in Mexico carried the name. Snopes (a lead, not checked by me) adds that 'nova' and 'no va' are stressed differently and that the Caribe sold in Mexico was a Volkswagen, not a renamed Nova.",
+  "false_part": "No record shows that the Nova sold badly in Latin America because of its name.",
+  "class": "unsupported",
+  "also": "",
+  "earliest_telling": {
+    "date": "1987",
+    "who": "Joseph W. Bereswill",
+    "where": "Corporate Design: Graphic Identity Systems (Glen Cove, N.Y.: PBC International), p. 170",
+    "quote": "in  Mexico  and  quickly learned  that",
+    "url": "https://openlibrary.org/search/inside.json?q=%22Chevy+Nova%22+%22no+va%22",
+    "archive": "https://archive.org/details/corporatedesigng0000bere",
+    "file": "sources/chevy-nova/ol-inside-chevy-nova-no-va.json",
+    "sha256": "ee281f8be27feed1a83a4c38a989d312db66ff6c432f096dab205369e8ff24e5"
+  },
+  "original": [],
+  "teller_correction": null,
+  "lesson_verdict": {
+    "status": "not established",
+    "why": "I found no study that measures how often a foreign meaning of a brand name harms sales. The record below shows only that in Mexico a widely sold product, Pemex petrol, carried the name Nova, which goes against the idea that the name alone repelled buyers there.",
+    "source": {
+      "what": "Mexican official standard NOM-086-ECOL-1994 on fuel specifications, which lists Pemex petrol 'Nova Plus' (copy on FAO FAOLEX)",
+      "quote": "Nova Plus en botellas de 4 onzas",
+      "url": "https://faolex.fao.org/docs/pdf/mex50857.pdf",
+      "archive": "https://web.archive.org/web/20250203003256/https://faolex.fao.org/docs/pdf/mex50857.pdf",
+      "file": "sources/chevy-nova/faolex-mex50857.pdf.txt",
+      "sha256": "ebb319569c23b2bdfdd599392b374aab6cb8166eb1ebad879499c6b261e2be21"
+    }
+  },
+  "search_steps": [
+    "Snopes (lead): says the Nova was sold in Mexico and Venezuela from 1972 to 1978, sold well, and beat GM's expectations in Venezuela; it cites Ricks, Blunders in International Business (1993), p. 35, Paxman in Business Mexico (June 1993), and a letter of 5 August 1993 from Frances R. Hammond of GM's Worldwide Economics and Market Analysis Staff. None of these is online; I did not read them.",
+    "English Wikipedia article 'Chevrolet Chevy II / Nova' (lead): its 'Urban legend' section cites only Snopes.",
+    "Open Library full-text search for \"Chevy Nova\" \"no va\", Chevrolet Nova \"no va\", \"Nova\" \"no va\" \"General Motors\" and Nova \"doesn't go\" Spanish: earliest tellings are Bereswill, Corporate Design (1987), p. 170, and Eldin, Amazing Pranks & Blunders (1988); McPhee, Automania (1990), tells it as a joke. Most of this index is books from after 1980, so earlier tellings are likely.",
+    "Open Library snippet: Dammann, 75 Years of Chevrolet (1986) already jokes that the name Nova is 'Spanish for doesn't go' (saved as ol-inside-nova-doesnt-go-spanish.json).",
+    "A 2005 American Dialect Society mailing list thread (lead): a member recalls first hearing the story 'maybe 1980 or earlier'.",
+    "Google Books API refused with 429 (daily quota); Papers Past and HathiTrust returned browser checks; I did not retry.",
+    "Saved a hobbyist compilation of Chevrolet production figures (chevrolet-production-1961-1977.pdf): it says Mexico built about 10,000 Novas a year from 1973, about twice its Chevelle output. It gives no source, so it is a lead only.",
+    "Searched for GM, Mexican or Venezuelan sales records of the Nova in the 1970s: found none online.",
+    "Saved Mexican standard NOM-086-ECOL-1994, which names Pemex petrol 'Nova Plus'; Mexican press (lead) says Pemex sold 'Nova' petrol from 1973."
+  ],
+  "confidence_note": "The key records, GM's 1993 letter and any 1970s sales figures for Mexico and Venezuela, were not available, so I cannot say whether the Nova sold well or badly; this is why the class is unsupported rather than invented. The 1987 telling is surely not the first; the story was probably told in the late 1970s."
+}
