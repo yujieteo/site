@@ -64,7 +64,6 @@ export function checkBets(notes: Note[]): void {
     const where = `notes/forecasts.tsv, bet ${note.id}`;
     const fail: (why: string) => never = (why) => { throw new Error(`${where}: ${why}`); };
     if (!PEOPLE.includes(f.by ?? "")) fail(`${f.by} is not one of the 40 people of the rankings`);
-    if ((f.p === undefined) === (f.side === undefined)) fail("give either p, the stated chance, or side, never both");
     for (const key of ["p", "price"] as const) {
       if (f[key] !== undefined && !(Number(f[key]) > 0 && Number(f[key]) < 1)) fail(`${key} must be between 0 and 1`);
     }
