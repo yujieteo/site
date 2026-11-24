@@ -153,6 +153,6 @@ export function seriesFor(text: string): number[] {
   const wanted = clean(text);
   const found: number[] = [];
   if (wanted.length < 2) return found;
-  for (const word of WORDS) if (clean(word[1]).includes(wanted) && !found.includes(word[2])) found.push(word[2]);
+  for (const [word, series] of WORDS) if (clean(word).includes(wanted) && !found.includes(series)) found.push(series);
   return found;
 }
