@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "deny": [
+      "Bash(scripts/deploy.sh:*)",
+      "Bash(./scripts/deploy.sh:*)",
+      "Bash(bash scripts/deploy.sh:*)",
+      "Bash(ssh:*)",
+      "Bash(bun src/build.ts)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -e '.tool_input.command // \"\" | test(\"bun +(run +)?(\\\\./)?src/build\\\\.ts\") and (test(\"--out\") | not)' >/dev/null && { echo 'A bare bun src/build.ts replaces dist/. Add --out \"$(mktemp -d)\".' >&2; exit 2; } || exit 0"
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Write|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -e --arg root \"$CLAUDE_PROJECT_DIR/\" '.tool_input.file_path // .tool_input.notebook_path // \"\" | ltrimstr($root) | startswith(\"dist/\")' >/dev/null && { echo 'dist/ is build output. Change the sources instead.' >&2; exit 2; } || exit 0"
+          }
+        ]
+      }
+    ]
+  }
+}
