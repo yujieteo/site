@@ -52,9 +52,18 @@ jobs:
       - name: Build the site
         run: nix shell "$BUN" -c bun src/build.ts --out "$RUNNER_TEMP/dist"
 
-      # This runs tests/schema.test.ts and tests/notes/bad.test.ts.
-      - name: Run the tests
-        run: nix shell "$BUN" -c bun test
+      # scripts/check.sh runs bun test (every *.test.ts file, including a full build with the release checks),
+      # the Python tests, shellcheck, ruff and the type check. A skipped Python test counts as a failure.
+      # Wheels from PyPI do not run on NixOS, so Python with its packages, ruff and shellcheck come from
+      # the same nixpkgs commit as Bun.
+      - name: Run every check
+        run: |
+          nixpkgs=${BUN%#bun}
+          tools="let p = (builtins.getFlake \"${nixpkgs}\").legacyPackages.\${builtins.currentSystem}; in {
+            python = p.python3.withPackages (ps: [ ps.numpy ps.openpyxl ps.beautifulsoup4 ]);
+            inherit (p) bun ruff shellcheck;
+          }"
+          CHECK_PYTHON=python3 CHECK_RUFF=ruff nix shell --impure --expr "${tools}" python bun ruff shellcheck -c scripts/check.sh
 
       # tests/questions/questions.jsonl is written from the source data and committed.
       # Writing it again must give the same file, or the committed answer key is out of date.

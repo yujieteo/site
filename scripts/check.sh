@@ -2,6 +2,11 @@
 # Runs every check: the Bun tests (they build the site into a temporary folder), the Python tests, shellcheck,
 # ruff and the type check. It runs them all, names each that fails, and exits non-zero if any failed.
 # It writes nothing into the repository.
+#
+# By default, uv fetches the Python packages and ruff. Two settings replace uv, for a machine where wheels from PyPI
+# do not run, such as the NixOS CI runner:
+#   CHECK_PYTHON  a Python that has numpy, openpyxl and beautifulsoup4
+#   CHECK_RUFF    a ruff program
 set -uo pipefail
 cd "$(dirname "$0")/.." || exit 1
 export PYTHONDONTWRITEBYTECODE=1
@@ -9,6 +14,15 @@ export PYTHONDONTWRITEBYTECODE=1
 tmp=$(mktemp -d)
 trap 'rm -rf "$tmp"' EXIT
 failed=()
+
+if [ -n "${CHECK_PYTHON:-}" ]; then
+  prices_python=("$CHECK_PYTHON")
+  tampines_python=("$CHECK_PYTHON")
+else
+  prices_python=(uv run --no-project --with-requirements scripts/prices/requirements.txt python)
+  tampines_python=(uv run --no-project --with beautifulsoup4 python)
+fi
+if [ -n "${CHECK_RUFF:-}" ]; then ruff=("$CHECK_RUFF"); else ruff=(uvx ruff@0.14.0); fi
 
 run() {
   local name=$1
@@ -35,11 +49,11 @@ type_check() {
 }
 
 run "bun test" bun test
-run "prices tests" python_tests uv run --no-project --with-requirements scripts/prices/requirements.txt python -m unittest discover -s scripts/prices
-run "tampines tests" python_tests uv run --no-project --with beautifulsoup4 python -m unittest discover -s scripts/tampines
-run "questions tests" python_tests python3 -m unittest discover -s tests/questions
+run "prices tests" python_tests "${prices_python[@]}" -m unittest discover -s scripts/prices
+run "tampines tests" python_tests "${tampines_python[@]}" -m unittest discover -s scripts/tampines
+run "questions tests" python_tests "${CHECK_PYTHON:-python3}" -m unittest discover -s tests/questions
 run "shellcheck" shellcheck scripts/check.sh scripts/deploy.sh tests/questions/fetch.sh
-run "ruff" uvx ruff@0.14.0 check --no-cache --select F scripts tests
+run "ruff" "${ruff[@]}" check --no-cache --select F scripts tests
 run "type check" type_check
 
 if [ "${#failed[@]}" -gt 0 ]; then
