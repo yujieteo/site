@@ -240,10 +240,10 @@ def run_fit() -> None:
     (OUT / "fit.md").write_text("\n".join(fitmd) + "\n")
     print("\n".join(fitmd))
     if g["pass"]:
-        site_data(meta, data, q, sub, rk_back, rk_value, tied_back, tied_value, p_mich, g, (lam_lo, lam_hi), outlets, a, b)
+        site_data(meta, data, q, sub, rk_back, rk_value, tied_back, tied_value, p_mich, g, (lam_lo, lam_hi), outlets)
 
 
-def site_data(meta, data, q, sub, rk_back, rk_value, tied_back, tied_value, p_mich, g, lam, outlets, a, b) -> None:
+def site_data(meta, data, q, sub, rk_back, rk_value, tied_back, tied_value, p_mich, g, lam, outlets) -> None:
     pls = meta["places"]
     rows = []
     for j, i in enumerate(sub):

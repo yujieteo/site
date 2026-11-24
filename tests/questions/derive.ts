@@ -40,7 +40,8 @@ for (const at of [0, 20, 40, 60, 80]) {
 }
 {
   const p = current[10];
-  if (p) add({ id: "deal-10", question: `At what price does ${p.name} count as a good deal in Singapore?`, answer: p.deal / 100, kind: "number", as_of: month, where: "api/prices.txt good_deal_at_sgd" });
+  // A deal of 0 in price-data.ts means the good has no good-deal price.
+  if (p && p.deal > 0) add({ id: "deal-10", question: `At what price does ${p.name} count as a good deal in Singapore?`, answer: p.deal / 100, kind: "number", as_of: month, where: "api/prices.txt good_deal_at_sgd" });
 }
 
 // Tampines food.

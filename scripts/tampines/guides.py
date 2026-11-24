@@ -418,7 +418,7 @@ def build_patterns(places):
 OVERRIDES = {}
 
 
-def find_mentions(text, places, pats, aid, scope):
+def find_mentions(text, places, pats, scope):
     """Return {place_id: name_as_written} for the 139 places the text names."""
     raw = text
     low = norm(text)
@@ -556,7 +556,7 @@ def main():
         scope = u.get("scope") or "all"
         single = scope.startswith("single=")
         scoped = {pid for pid in pmap if in_scope(pmap[pid], scope, areas)}
-        found = find_mentions(text, places, pats, aid, scope)
+        found = find_mentions(text, places, pats, scope)
         for (k, pid), v in OVERRIDES.items():
             if k in (aid, url):
                 if v:

@@ -86,3 +86,20 @@ test("number columns line up on the right, and only number columns", async () =>
   expect(markTables(`<table><tr><th>Call</th><th>Outcome</th></tr><tr><td>${call}</td><td>open</td></tr></table>`))
     .toBe(`<table tabindex="0"><tr><th class="long">Call</th><th>Outcome</th></tr><tr><td class="long">${call}</td><td>open</td></tr></table>`);
 });
+
+test("a section file that would overwrite a table stops the build", async () => {
+  const { checkApiPaths } = await import("../src/api.ts");
+  const post = { slug: "tampines-food" } as Parameters<typeof checkApiPaths>[0][number]["post"];
+  const table = { path: "api/tampines-food/places.txt" } as Parameters<typeof checkApiPaths>[1][number];
+  const part = (file: string) => ({ file, label: file, depth: 2 as const, text: "" });
+  expect(() => checkApiPaths([{ post, asOf: "2026-11-25", parts: [part("places.txt")] }], [table])).toThrow("is also a table");
+  expect(() => checkApiPaths([{ post, asOf: "2026-11-25", parts: [part("menus.txt")] }], [table])).not.toThrow();
+});
+
+test("a good with no good-deal price has an empty cell and is never a good deal", async () => {
+  const { deals, priceRows } = await import("../src/notes.ts");
+  const diesel = priceRows().find((row) => row.id === "diesel-per-litre");
+  expect(diesel?.deal).toBeNull();
+  const note = { id: "diesel-per-litre", points: 0, text: "Diesel", fields: { price: "0.01", shop: "Shop", date: "2026-11-25", url: "https://example.invalid/" } };
+  expect(deals([note], "2026-11-25")[0]?.good).toBe(false);
+});

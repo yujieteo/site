@@ -149,7 +149,7 @@ def new_articles(places, known: set[str]) -> list[list]:
                 continue
             sponsored, _ = guides.sponsorship(text)
             scope = scope_of(title)
-            named = guides.find_mentions(text, places, pats, url, scope or "all")
+            named = guides.find_mentions(text, places, pats, scope or "all")
             inside = [p["id"] for p in places if scope and guides.in_scope(p, scope, areas)]
             known.add(url)
             out.append([TODAY, outlet, url, day, title, scope or "single", int(bool(sponsored)), " ".join(sorted(named)), " ".join(inside)])

@@ -4,7 +4,7 @@
 # ///
 """Does an upstream cost tell us where a Singapore price is going, better than the price itself does?
 
-    uv run scripts/prices/passthrough.py [--out scripts/prices/results]
+    uv run scripts/prices/passthrough.py [--out scripts/prices/results] [--made YYYY-MM-DD]
 
 For each good it takes the CPI item from SingStat and one or more upstream costs in S$: a world commodity
 price from the World Bank Pink Sheet times the exchange rate, or Singapore's own import value per kg from
@@ -16,6 +16,9 @@ from January 2020 and using only data known then:
             window of past months later showed up in the price. Two sets of windows are tried, and both are
             reported. A: 0-6 and 6-12 months back. B: A plus 12-18 months back, added after A's run showed
             coffee, chicken and bread line up with costs 15 to 18 months earlier.
+
+It also writes a call for each good in the form of notes/calls.tsv. Each call has made=, the day it was made:
+today in Singapore, or the day given with --made.
 
 The error is the mean absolute miss in percent, as in the post. A cost signal is kept only if it beats the
 baseline at both 3 and 12 months. The script also reports, on the full sample, the long-run pass-through
@@ -31,6 +34,7 @@ import json
 import math
 import os
 import sys
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import numpy as np
@@ -243,6 +247,8 @@ def full_sample(price: dict[int, float], cost: dict[int, float], h: int = 12) ->
 
 def main() -> None:
     out_dir = Path(sys.argv[sys.argv.index("--out") + 1]) if "--out" in sys.argv else None
+    made = sys.argv[sys.argv.index("--made") + 1] if "--made" in sys.argv else singapore_today()
+    datetime.strptime(made, "%Y-%m-%d")  # stops on a date that is not YYYY-MM-DD
     fx = load_fx()
     cpi = load_cpi()
     pink = load_pink(fx)
@@ -290,7 +296,7 @@ def main() -> None:
             models[good] = (series, price, None, None, "baseline")
     text = "\n".join(lines) + "\n"
     print(text)
-    calls = forecast_calls(models)
+    calls = forecast_calls(models, made)
     print(calls)
     if out_dir:
         out_dir.mkdir(parents=True, exist_ok=True)
@@ -311,9 +317,14 @@ def tariff_quarter(k: int) -> tuple[int, int]:
     return k // 12, k % 12 // 3 + 1
 
 
-def forecast_calls(models: dict) -> str:
+def singapore_today() -> str:
+    return datetime.now(timezone(timedelta(hours=8))).date().isoformat()
+
+
+def forecast_calls(models: dict, made: str) -> str:
     """An 80% range for each good, 3 and 12 months past its last CPI month, from the model the backtest kept.
-    The range is the 10th to 90th percentile of that model's past misses at the same horizon."""
+    The range is the 10th to 90th percentile of that model's past misses at the same horizon. made is the day
+    the calls are made, YYYY-MM-DD, as notes/calls.tsv needs it."""
     out = []
     for good, (series, price, cost, chosen, label) in models.items():
         origin = max(price)
@@ -355,7 +366,7 @@ def forecast_calls(models: dict) -> str:
                 f"{good.replace(' ', '-')}-{month_name(target)}", "0",
                 f"The CPI for {good} in {month_name(target)} will be between {price[origin] * math.exp(guess + lo):.1f} and {price[origin] * math.exp(guess + hi):.1f}, from {price[origin]:.1f} in {month_name(origin)}.",
                 f"series={series}", f"month={month_name(target)}", f"low={price[origin] * math.exp(guess + lo):.2f}",
-                f"mid={mid:.2f}", f"high={price[origin] * math.exp(guess + hi):.2f}", f"model={model.replace(' ', '-')}",
+                f"mid={mid:.2f}", f"high={price[origin] * math.exp(guess + hi):.2f}", f"model={model.replace(' ', '-')}", f"made={made}",
             ]))
     return "\n".join(out) + "\n"
 

@@ -40,6 +40,7 @@ const source = (description: string, required = true): Column => ({ name: "sourc
 const SGD = (name: string, description: string, required = false): Column => ({ name, type: "number", required, description: `${description} In Singapore dollars, as a plain number.` });
 
 const life = (path: string) => ({ title: "Base data of the Singapore prices post", path: `${REPO}/blob/main/${path}` });
+const food = (path: string) => ({ title: "Base data of the Tampines food post", path: `${REPO}/blob/main/${path}` });
 const notesFile = (part: string) => ({ title: `notes/${part}.tsv, written by agents through git`, path: `${SITE}/notes/${part}.txt` });
 
 function priceMonth(): string {
@@ -55,14 +56,14 @@ function prices(): Table {
   const month = priceMonth();
   return {
     name: "prices", path: "api/prices.txt", title: "Price list",
-    description: `The latest official average retail price of each good that SingStat prices in dollars, and the price that counts as a good deal. Every row is the month ${month}.`,
+    description: `The latest official average retail price of each good that SingStat prices in dollars, and the price that counts as a good deal, where the good has one. Every row is the month ${month}.`,
     sources: [{ title: "SingStat table M213761, average retail prices", path: PRICE_TABLE }],
     primaryKey: ["id"],
     columns: [
       { name: "id", type: "string", required: true, description: "The id to use in notes/prices.tsv." },
       { name: "item", type: "string", required: true, description: "The good and its unit, as SingStat names it." },
       SGD("average_sgd", "The official average price for the month in as_of.", true),
-      SGD("good_deal_at_sgd", "A price at or under this is a good deal: the low end of what the item's own history and season predict.", true),
+      SGD("good_deal_at_sgd", "A price at or under this is a good deal: the low end of what the item's own history and season predict. Empty where the item has no good-deal price, as for fuel."),
       asOf("The month of the official figure."),
       source("SingStat table M213761."),
     ],
@@ -191,7 +192,7 @@ function deals(seen: Deal[]): Table {
       SGD("price_sgd", "The shelf price for the unit in item.", true),
       SGD("average_sgd", "The official average, as in prices.txt.", true),
       { name: "below_average_pct", type: "integer", required: true, description: "How far the shelf price is below the average, in whole percent. Negative where it is above." },
-      { name: "good_deal", type: "boolean", required: true, description: "true where price_sgd is at or under good_deal_at_sgd in prices.txt." },
+      { name: "good_deal", type: "boolean", required: true, description: "true where price_sgd is at or under good_deal_at_sgd in prices.txt. false where that cell is empty." },
       { name: "shop", type: "string", required: true, description: "The shop." },
       { name: "note", type: "string", required: true, description: "The product and pack seen, and any condition." },
       { name: "until", type: "date", description: "The last day of the offer, where the page gives one." },
@@ -257,7 +258,7 @@ function places(): Table {
   return {
     name: "tampines-places", path: "api/tampines-food/places.txt", title: "Tampines food places",
     description: "Places to eat in Tampines. Join to tampines-dishes on name, venue and unit. typical_sgd, low_sgd and high_sgd are empty where no dish price is compared.",
-    sources: [life("src/kit/food-data.ts")],
+    sources: [food("src/kit/food-data.ts")],
     columns: [
       { name: "name", type: "string", required: true, description: "The place." },
       { name: "type", type: "string", required: true, enum: Object.values(kind), description: "The kind of place." },
@@ -298,7 +299,7 @@ function dishes(): Table {
   return {
     name: "tampines-dishes", path: "api/tampines-food/dishes.txt", title: "Tampines food dish prices",
     description: "One row per dated menu item. A price_is ending in (not compared) is left out of the place's typical price. See How I built this in the Tampines food post for charges and serving sizes.",
-    sources: [life("src/kit/food-data.ts")],
+    sources: [food("src/kit/food-data.ts")],
     columns: [
       { name: "name", type: "string", required: true, description: "The place, as in tampines-places." },
       { name: "venue", type: "string", required: true, description: "The venue." },

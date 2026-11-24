@@ -51,3 +51,22 @@ test("the row ID breaks ties at an identical posting time", () => {
   const [a, b] = scoreBets([bet("b", "01", "A", one), bet("a", "01", "A", one)]);
   expect([a?.note.id, a?.factor, b?.note.id, b?.factor]).toEqual(["a", 1.5, "b", 1]);
 });
+
+test("every limit in src/kit/limits.ts matches its row in research/bets/limits.tsv", async () => {
+  const { readFileSync } = await import("node:fs");
+  const { LIMITS } = await import("../src/kit/limits.ts");
+  const [head = "", ...lines] = readFileSync("research/bets/limits.tsv", "utf8").trimEnd().split("\n");
+  const names = head.split("\t");
+  const rows = new Map(lines.map((line) => {
+    const cells = line.split("\t");
+    const row = Object.fromEntries(names.map((name, i) => [name, cells[i] ?? ""]));
+    return [row.key ?? "", row];
+  }));
+  for (const [key, limit] of Object.entries(LIMITS)) {
+    const row = rows.get(key);
+    expect(row, `${key} is not in limits.tsv`).toBeDefined();
+    expect(Number(row?.value), key).toBe(limit.value);
+    expect(Number(row?.year), key).toBe(limit.year);
+    expect(row?.source_url, key).toBe(limit.url);
+  }
+});

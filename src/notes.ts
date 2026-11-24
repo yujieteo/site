@@ -1,6 +1,7 @@
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { lifeIds, slug } from "./kit/life.ts";
 import { LAST_MONTH, PRICES } from "./kit/price-data.ts";
+import { goodDeal } from "./kit/price-chart.ts";
 
 // The notes API. An agent reads a list, then adds lines to notes/PART.tsv in
 // this repository. Git is the only way to write. The build checks every line,
@@ -92,12 +93,12 @@ export const PARTS: readonly Part[] = [
       claim: { need: true, test: /^[^<>\t\x00-\x1f]{1,300}$/, help: "the question that the market resolves, as the market words it" },
       p: { need: false, test: /^0?\.\d{1,4}$/, help: "the chance of YES that the person stated, from 0 to 1. Leave it out if they stated none, and give side." },
       side: { need: false, test: /^(yes|no)$/, help: "the side the person takes, yes or no, when they stated no chance" },
-      market: { need: true, test: /^https:\/\/(manifold\.markets|polymarket\.com|kalshi\.com)\/\S+$/, help: "the market that prices the claim" },
+      market: { need: true, test: /^https:\/\/(manifold\.markets|polymarket\.com)\/\S+$/, help: "the market that prices the claim, on Manifold or Polymarket" },
       price: { need: true, test: /^0?\.\d{1,4}$/, help: "the market's YES price just before the item was posted" },
       price_at: { need: true, test: STAMP, help: "when that price was set, as YYYY-MM-DDTHH:MM:SSZ" },
       source: { need: true, test: URL, help: "the only source that settles the bet: the market's own resolution" },
       due: { need: true, test: DATE, date: "any", help: "the day the source closes, as YYYY-MM-DD" },
-      fermi: { need: true, test: /^(none|[a-z0-9_]+:\d+(\.\d+)?)$/, help: "none, or the key of a physical limit and the amount the claim implies, such as nuclear_world_gw_year:60" },
+      fermi: { need: true, test: /^(none|[a-z0-9_]+:\d+(\.\d+)?)$/, help: "none, or the key of a physical limit and the amount the claim implies, such as nuclear_world_gw_year_peak:60" },
       outcome: { need: true, test: /^(open|yes|no|void)$/, help: "open, or how the source resolved: yes, no, or void for a cancelled or partial resolution" },
       settled: { need: false, test: DATE, date: "past", help: "the day the source resolved, as YYYY-MM-DD" },
       evidence: { need: false, test: URL, help: "the page of the source that shows the resolution" },
@@ -220,7 +221,7 @@ export interface PriceRow {
   id: string;
   name: string;
   average: number;
-  deal: number;
+  deal: number | null; // null where the item has no good-deal price, such as fuel
 }
 
 export function priceRows(): PriceRow[] {
@@ -228,7 +229,8 @@ export function priceRows(): PriceRow[] {
   for (const item of PRICES) {
     const last = item.cents[item.cents.length - 1];
     if (item.unit !== "S$" || last === undefined || item.start + item.cents.length - 1 !== LAST_MONTH) continue;
-    rows.push({ id: slug(item.name), name: item.name, average: last / 100, deal: item.deal / 100 });
+    const deal = goodDeal(item);
+    rows.push({ id: slug(item.name), name: item.name, average: last / 100, deal: deal === null ? null : deal / 100 });
   }
   return rows;
 }
@@ -405,7 +407,7 @@ export function deals(notes: Note[], today: string): Deal[] {
     const row = rows.get(note.id);
     if (!row || (note.fields.date ?? "") < oldest || (note.fields.until ?? today) < today) continue;
     const price = Number(note.fields.price);
-    found.push({ note, row, price, below: Math.round((1 - price / row.average) * 100), good: price <= row.deal });
+    found.push({ note, row, price, below: Math.round((1 - price / row.average) * 100), good: row.deal !== null && price <= row.deal });
   }
   return found.sort((a, b) => b.below - a.below || b.note.points - a.note.points);
 }
@@ -414,7 +416,6 @@ export interface Scored {
   call: Note;
   outcome?: Note;
   inside?: boolean;
-  miss?: number; // the point forecast against the outcome, in percent
 }
 
 export function scoreCalls(calls: Note[], outcomes: Note[]): { rows: Scored[]; resolved: number; inside: number; miss: number; pinball: number } {
@@ -439,7 +440,7 @@ export function scoreCalls(calls: Note[], outcomes: Note[]): { rows: Scored[]; r
     pinball += (100 * (loss(0.1, low) + loss(0.5, mid) + loss(0.9, high))) / 3 / actual;
     if (hit) inside++;
     miss += m;
-    rows.push({ call, outcome, inside: hit, miss: m });
+    rows.push({ call, outcome, inside: hit });
   }
   const resolved = rows.filter((r) => r.outcome).length;
   rows.sort((a, b) => (a.call.fields.month ?? "").localeCompare(b.call.fields.month ?? "") || a.call.id.localeCompare(b.call.id));

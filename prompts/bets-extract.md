@@ -1,6 +1,6 @@
 # Extract bets on linked markets
 
-You read texts written by one named person each. Each text shows only the parts near links to prediction markets (Manifold, Polymarket or Kalshi). After the link text comes the marker `[link: URL]`.
+You read texts written by one named person each. Each text shows only the parts near links to prediction markets (Manifold or Polymarket). After the link text comes the marker `[link: URL]`.
 
 For every market link, decide whether the author takes a position of their own on that market's question. Write one JSON line for each position. Write nothing for a link where the author takes none.
 
