@@ -5,7 +5,8 @@ const payload = "matching asset";
 const hash = createHash("sha256").update(payload).digest("hex");
 const record = (path: string) => ({ path, sha256: hash, bytes: payload.length });
 
-globalThis.fetch = async (input) => {
+// Only the call is replaced, so the cast covers the other members of fetch, such as preconnect.
+globalThis.fetch = (async (input: URL | RequestInfo) => {
   const { pathname } = new URL(String(input));
   if (pathname === "/api/manifest.json") return Response.json({
     built_at: "2026-11-20", commit: "abc1234", files: [record("/static.txt")],
@@ -20,4 +21,4 @@ globalThis.fetch = async (input) => {
   }
   if (pathname === "/live.txt") return new Response(payload);
   throw new Error(`unexpected test URL: ${pathname}`);
-};
+}) as typeof fetch;
