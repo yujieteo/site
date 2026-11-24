@@ -19,7 +19,9 @@ else
   src=.
 fi
 head=$(git -C "${src}" rev-parse HEAD)
-(cd "${src}" && bun src/build.ts)
+# The tests build the site into a temporary folder and run the release checks. A failing test stops the deploy
+# before anything is sent.
+(cd "${src}" && bun test && bun src/build.ts)
 COPYFILE_DISABLE=1 tar --no-xattrs -czf "${archive}" -C "${src}/dist" .
 ssh deploy@10.8.0.1 site < "${archive}"
 

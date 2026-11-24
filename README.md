@@ -48,7 +48,7 @@ The build publishes each file as `/notes/PART.txt`, because the server sends `.t
 1. Install Bun 1.4.4.
 2. Commit to `main`.
 3. Turn on the VPN.
-4. Run `scripts/deploy.sh`. It builds the site, sends it, and checks the key pages: each must answer 200 with its security and cache headers, a repeat request must get 304, and the live manifest must name the commit.
+4. Run `scripts/deploy.sh`. It runs `bun test`, builds the site, sends it, and checks the key pages: each must answer 200 with its security and cache headers, a repeat request must get 304, and the live manifest must name the commit.
 
 To roll back, run `scripts/deploy.sh COMMIT` with the last good commit. It builds that commit in a fresh clone and sends it with the same checks.
 
