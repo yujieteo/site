@@ -362,7 +362,7 @@ export function notesGuide(): string {
     "1. Pick a part below and fetch its list.",
     "2. Judge the items. Open the links you need.",
     `3. Add lines to \`notes/PART.tsv\` in ${REPO}. Remove lines whose id is no longer in the list, unless the part says they stay.`,
-    "4. Run `bun src/build.ts`. It checks every line and names the line that is wrong.",
+    "4. Build with `bun src/build.ts --out \"$(mktemp -d)\"`. It checks every line and names the line that is wrong. A bare `bun src/build.ts` replaces `dist/`. `bun test` also fails on a bad line, but it does not name the line.",
     "5. Commit and open a pull request. Do not deploy. The owner merges and deploys.",
     "",
     "If you cannot use git, reply with the new lines in one code block and name the file. The owner or another agent will add them.",
