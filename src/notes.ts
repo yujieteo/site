@@ -1,5 +1,5 @@
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
-import { lifeIds } from "./kit/life.ts";
+import { lifeIds, slug } from "./kit/life.ts";
 import { LAST_MONTH, PRICES } from "./kit/price-data.ts";
 
 // The notes API. An agent reads a list, then adds lines to notes/PART.tsv in
@@ -221,10 +221,6 @@ export interface PriceRow {
   name: string;
   average: number;
   deal: number;
-}
-
-function slug(text: string): string {
-  return text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 }
 
 export function priceRows(): PriceRow[] {

@@ -99,7 +99,8 @@ function linked(text: string): string {
   return escapeHtml(text).replace(LINK, '<a href="$2">$1 ↗</a>');
 }
 
-function slug(name: string): string {
+// A name as an id: lower case, with each run of other characters made one hyphen.
+export function slug(name: string): string {
   return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 }
 
