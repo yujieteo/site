@@ -1,6 +1,7 @@
 import { BOUNDARY, CENTRES, EXTRAS, MALLS, PARKS, RAIL, ROADS, SPREADS, STATIONS, type Kind, type Mapped, type Rating, type Spread } from "./food-data.ts";
 import { at, scale, svgHead, textWidth, type Scale } from "./scale.ts";
 import { backedFigure } from "./food-backed.ts";
+import { escapeHtml } from "./html.ts";
 
 export type Sort = "cuisine" | "rating" | "cost";
 
@@ -59,10 +60,6 @@ const AREAS: Record<string, readonly [string, number, number]> = {
   east: ["East", 103.9555, 1.3555],
   north: ["North", 103.9365, 1.3685],
 };
-
-function esc(text: string): string {
-  return text.replaceAll("&", "&amp;").replaceAll('"', "&quot;").replaceAll("<", "&lt;");
-}
 
 function money(value: number): string {
   return `S$${value.toFixed(2)}`;
@@ -129,29 +126,29 @@ function priceBlock(item: Spread): string {
 }
 
 function menuList(item: Spread): string {
-  const rows = item.items.slice(0, MENU_LIMIT).map(([dish, price, date, url]) => `<li><a href="${esc(url)}" target="_blank" rel="noopener">${esc(dish)}</a><span>${money(price)}</span><small>${monthOf(date)}</small></li>`);
+  const rows = item.items.slice(0, MENU_LIMIT).map(([dish, price, date, url]) => `<li><a href="${escapeHtml(url)}" target="_blank" rel="noopener">${escapeHtml(dish)}</a><span>${money(price)}</span><small>${monthOf(date)}</small></li>`);
   const more = item.items.length > MENU_LIMIT ? `<p class="food-sub">And ${item.items.length - MENU_LIMIT} more dishes.</p>` : "";
-  const other = (item.other ?? []).map(([dish, price, date, url, kind]) => `<li><a href="${esc(url)}" target="_blank" rel="noopener">${esc(dish)} (${esc(kind)})</a><span>${money(price)}</span><small>${monthOf(date)}</small></li>`);
+  const other = (item.other ?? []).map(([dish, price, date, url, kind]) => `<li><a href="${escapeHtml(url)}" target="_blank" rel="noopener">${escapeHtml(dish)} (${escapeHtml(kind)})</a><span>${money(price)}</span><small>${monthOf(date)}</small></li>`);
   const compared = rows.length > 0 ? `<ul class="food-menu">${rows.join("")}</ul>${more}` : `<p class="food-sub">I found no comparable dated price from 2023 or later.</p>`;
   return compared + (other.length ? `<p class="food-sub">Other items, not included in this comparison</p><ul class="food-menu">${other.join("")}</ul>` : "");
 }
 
 function statusNote(item: Spread): string {
   const status = item.st === "unknown" ? "I could not confirm this place is still open." : item.st === "moved" ? "This place has moved. Check the address." : item.st === "closed" ? "This place has closed." : "";
-  return [status, item.also ?? ""].filter((line) => line !== "").map((line) => `<p class="food-sub">${esc(line)}</p>`).join("");
+  return [status, item.also ?? ""].filter((line) => line !== "").map((line) => `<p class="food-sub">${escapeHtml(line)}</p>`).join("");
 }
 
 function row(item: Spread): string {
   const best = rating(item);
   const score = best ? best.s.toFixed(1) : "–";
-  const where = [item.cu, `${item.p}${item.u === "" ? "" : ` ${item.u}`}`].filter((part) => part !== "").map(esc).join(" · ");
+  const where = [item.cu, `${item.p}${item.u === "" ? "" : ` ${item.u}`}`].filter((part) => part !== "").map(escapeHtml).join(" · ");
   const bib = item.b === 1 ? `<span class="food-tag">Bib Gourmand</span>` : "";
   const range = item.low > 0 && item.typ > 0 ? ` · ${money(item.low)} to ${money(item.high)}` : "";
-  return `<li><details class="food-item"><summary class="food-row food-best press"><span class="food-score${item.g ? "" : " food-other"}">${score}</span><span class="food-body"><span class="food-name">${esc(item.n)}</span>${bib}<span class="food-sub">${where}</span><span class="food-sub">${esc(ratingLine(item))}${range}</span></span><span class="food-end">${priceBlock(item)}</span>${rangeTrack(item)}</summary><div class="food-open">${statusNote(item)}${menuList(item)}<a class="button press" href="${mapsUrl(item.n, item.p)}" target="_blank" rel="noopener">Open in Maps</a></div></details></li>`;
+  return `<li><details class="food-item"><summary class="food-row food-best press"><span class="food-score${item.g ? "" : " food-other"}">${score}</span><span class="food-body"><span class="food-name">${escapeHtml(item.n)}</span>${bib}<span class="food-sub">${where}</span><span class="food-sub">${escapeHtml(ratingLine(item))}${range}</span></span><span class="food-end">${priceBlock(item)}</span>${rangeTrack(item)}</summary><div class="food-open">${statusNote(item)}${menuList(item)}<a class="button press" href="${mapsUrl(item.n, item.p)}" target="_blank" rel="noopener">Open in Maps</a></div></details></li>`;
 }
 
 function header(text: string): string {
-  return `<li class="food-group">${esc(text)}</li>`;
+  return `<li class="food-group">${escapeHtml(text)}</li>`;
 }
 
 function ranked(state: Pick<ListState, "sort" | "group" | "cuisine">): Spread[] {
@@ -193,7 +190,7 @@ function cuisines(): string[] {
 }
 
 function cuisineSelect(id: string): string {
-  return `<div class="food-select"><label for="${id}-c">Cuisine</label><select id="${id}-c" data-cuisine><option value="all">All cuisines</option>${cuisines().map((name) => `<option>${esc(name)}</option>`).join("")}</select></div>`;
+  return `<div class="food-select"><label for="${id}-c">Cuisine</label><select id="${id}-c" data-cuisine><option value="all">All cuisines</option>${cuisines().map((name) => `<option>${escapeHtml(name)}</option>`).join("")}</select></div>`;
 }
 
 export function countLine(shown: number, total: number): string {
@@ -214,7 +211,7 @@ function listFigure(id: string): string {
 }
 
 function text(x: number, y: number, anchor: string, body: string, strong = false): string {
-  return `<text x="${x.toFixed(1)}" y="${y.toFixed(1)}" text-anchor="${anchor}"${strong ? ' class="food-ink"' : ""}>${esc(body)}</text>`;
+  return `<text x="${x.toFixed(1)}" y="${y.toFixed(1)}" text-anchor="${anchor}"${strong ? ' class="food-ink"' : ""}>${escapeHtml(body)}</text>`;
 }
 
 function median(values: number[]): number {
@@ -253,7 +250,7 @@ function band(title: string, items: Spread[], top: number, x: Scale): string {
     const jitter = (((index * 0.618) % 1) - 0.5) * 30;
     const left = at(x, Math.log(item.typ)).toFixed(1);
     const y = (centre + jitter).toFixed(1);
-    const tip = esc(`${item.n}: typical ${money(item.typ)}, ${money(item.low)} to ${money(item.high)}`);
+    const tip = escapeHtml(`${item.n}: typical ${money(item.typ)}, ${money(item.low)} to ${money(item.high)}`);
     areas += `<circle cx="${left}" cy="${y}" r="9" fill="transparent" data-tip="${tip}"></circle>`;
     dots += `<circle cx="${left}" cy="${y}" r="4" fill="${COLOURS[item.k]}" stroke="var(--card)" data-tip="${tip}"></circle>`;
   });
@@ -289,10 +286,10 @@ function cuisineFigure(): string {
     const values = items.map((item) => item.typ);
     const top = [...items].sort(byRating)[0];
     const best = top ? rating(top) : null;
-    const lead = top && best ? `Best rated: ${esc(top.n)}, ${best.s.toFixed(1)} on ${esc(best.p)}` : "No rated place with a comparable price";
+    const lead = top && best ? `Best rated: ${escapeHtml(top.n)}, ${best.s.toFixed(1)} on ${escapeHtml(best.p)}` : "No rated place with a comparable price";
     const left = logPosition(Math.min(...values));
     const span = Math.max(1, logPosition(Math.max(...values)) - left);
-    return `<li class="food-count"><span class="food-name">${esc(name)}</span><span class="food-price">${money(median(values))}</span><span class="food-track"><span class="food-range" data-k="h" data-css="left:${left.toFixed(1)}%;width:${span.toFixed(1)}%"></span><i class="food-tick" data-css="left:${logPosition(median(values)).toFixed(1)}%"></i></span><span class="food-sub food-wide">${items.length} ${items.length === 1 ? "place" : "places"} · ${lead}</span></li>`;
+    return `<li class="food-count"><span class="food-name">${escapeHtml(name)}</span><span class="food-price">${money(median(values))}</span><span class="food-track"><span class="food-range" data-k="h" data-css="left:${left.toFixed(1)}%;width:${span.toFixed(1)}%"></span><i class="food-tick" data-css="left:${logPosition(median(values)).toFixed(1)}%"></i></span><span class="food-sub food-wide">${items.length} ${items.length === 1 ? "place" : "places"} · ${lead}</span></li>`;
   });
   return `<ol class="food-rows">${rows.join("")}</ol>`;
 }
@@ -435,7 +432,7 @@ function placeLabel(name: string, x: number, y: number, blocked: Rect[], width: 
     const box = { x: left, y: top, w, h };
     if (left < 2 || top < 2 || left + w > width - 2 || top + h > height - 2 || blocked.some((other) => overlaps(box, other))) continue;
     blocked.push(box);
-    return `<text class="food-halo" x="${(left + 3).toFixed(1)}" y="${(top + 11).toFixed(1)}">${esc(name)}</text>`;
+    return `<text class="food-halo" x="${(left + 3).toFixed(1)}" y="${(top + 11).toFixed(1)}">${escapeHtml(name)}</text>`;
   }
   return "";
 }
@@ -473,13 +470,13 @@ function markerMark(marker: Marker, index: number): string {
   const first = marker.points[0];
   if (marker.area !== "") {
     const name = AREAS[marker.area]?.[0] ?? "";
-    return `<g data-i="${index}" role="button" tabindex="0" aria-label="Zoom to ${esc(name)}, ${count} places"><circle cx="${x}" cy="${y}" r="24" fill="var(--ink)" stroke="var(--card)" stroke-width="2"></circle><text x="${x}" y="${(marker.y + 5).toFixed(1)}" text-anchor="middle" class="food-num food-big">${count}</text><text class="food-halo" x="${x}" y="${(marker.y + 40).toFixed(1)}" text-anchor="middle">${esc(name)}</text></g>`;
+    return `<g data-i="${index}" role="button" tabindex="0" aria-label="Zoom to ${escapeHtml(name)}, ${count} places"><circle cx="${x}" cy="${y}" r="24" fill="var(--ink)" stroke="var(--card)" stroke-width="2"></circle><text x="${x}" y="${(marker.y + 5).toFixed(1)}" text-anchor="middle" class="food-num food-big">${count}</text><text class="food-halo" x="${x}" y="${(marker.y + 40).toFixed(1)}" text-anchor="middle">${escapeHtml(name)}</text></g>`;
   }
   const label = count === 1 && first ? first.name : `${count} places`;
   const radius = count === 1 ? 5 : Math.min(13, 8 + Math.log2(count));
   const ring = `<circle class="food-ring" cx="${x}" cy="${y}" r="${(radius + 4).toFixed(1)}" fill="none" stroke="var(--ink)" stroke-width="2"></circle>`;
-  if (count === 1 && first) return `<g data-i="${index}" role="button" tabindex="0" aria-label="${esc(label)}"><circle cx="${x}" cy="${y}" r="${radius}" fill="${COLOURS[first.kind]}" stroke="var(--card)" stroke-width="1.5"></circle>${ring}</g>`;
-  return `<g data-i="${index}" role="button" tabindex="0" aria-label="${esc(label)}"><circle cx="${x}" cy="${y}" r="${radius.toFixed(1)}" fill="var(--ink)" stroke="var(--card)" stroke-width="1.5"></circle><text x="${x}" y="${(marker.y + 4).toFixed(1)}" text-anchor="middle" class="food-num">${count}</text>${ring}</g>`;
+  if (count === 1 && first) return `<g data-i="${index}" role="button" tabindex="0" aria-label="${escapeHtml(label)}"><circle cx="${x}" cy="${y}" r="${radius}" fill="${COLOURS[first.kind]}" stroke="var(--card)" stroke-width="1.5"></circle>${ring}</g>`;
+  return `<g data-i="${index}" role="button" tabindex="0" aria-label="${escapeHtml(label)}"><circle cx="${x}" cy="${y}" r="${radius.toFixed(1)}" fill="var(--ink)" stroke="var(--card)" stroke-width="1.5"></circle><text x="${x}" y="${(marker.y + 4).toFixed(1)}" text-anchor="middle" class="food-num">${count}</text>${ring}</g>`;
 }
 
 export function mapSvg(width: number, area: string, kind: string, full: boolean): string {
@@ -492,13 +489,13 @@ export function mapSvg(width: number, area: string, kind: string, full: boolean)
 
 export function pickHtml(marker: Marker): string {
   const sorted = [...marker.points].sort((a, b) => b.price - a.price || a.name.localeCompare(b.name));
-  const rows = sorted.slice(0, PICK_LIMIT).map((point) => `<li>${swatch(point.kind)}<a href="${mapsUrl(point.name, "Tampines")}" target="_blank" rel="noopener">${esc(point.name)}</a><span class="food-sub">${esc(point.detail)}</span></li>`);
+  const rows = sorted.slice(0, PICK_LIMIT).map((point) => `<li>${swatch(point.kind)}<a href="${mapsUrl(point.name, "Tampines")}" target="_blank" rel="noopener">${escapeHtml(point.name)}</a><span class="food-sub">${escapeHtml(point.detail)}</span></li>`);
   const more = sorted.length > PICK_LIMIT ? `<p class="food-sub">And ${sorted.length - PICK_LIMIT} more. Use the search below to find them.</p>` : "";
   return `<strong>${sorted.length} ${sorted.length === 1 ? "place" : "places"} here</strong><ul class="food-picks">${rows.join("")}</ul>${more}`;
 }
 
 function select(id: string, label: string, name: string, options: readonly (readonly [string, string])[]): string {
-  return `<div class="food-select"><label for="${id}-${name}">${label}</label><select id="${id}-${name}" data-${name}>${options.map(([value, text_]) => `<option value="${value}">${esc(text_)}</option>`).join("")}</select></div>`;
+  return `<div class="food-select"><label for="${id}-${name}">${label}</label><select id="${id}-${name}" data-${name}>${options.map(([value, text_]) => `<option value="${value}">${escapeHtml(text_)}</option>`).join("")}</select></div>`;
 }
 
 function mapFigure(id: string, width: number): string {
@@ -510,8 +507,8 @@ function mapFigure(id: string, width: number): string {
 
 function extraRow(item: Mapped): string {
   const old = item.y > 0 && item.y < 2022 ? ` · map entry last edited ${item.y}` : "";
-  const parts = [NAMES[item.k], item.cu, item.a === "" ? "Tampines" : item.a].filter((part) => part !== "").map(esc).join(" · ");
-  return `<li><a class="food-row press" href="${mapsUrl(item.n, item.a === "" ? "Tampines" : item.a)}" target="_blank" rel="noopener"><span class="food-body"><span class="food-name">${esc(item.n)}</span><span class="food-sub">${parts}${old}</span></span><span class="food-end"><span class="food-sub">No menu checked</span></span></a></li>`;
+  const parts = [NAMES[item.k], item.cu, item.a === "" ? "Tampines" : item.a].filter((part) => part !== "").map(escapeHtml).join(" · ");
+  return `<li><a class="food-row press" href="${mapsUrl(item.n, item.a === "" ? "Tampines" : item.a)}" target="_blank" rel="noopener"><span class="food-body"><span class="food-name">${escapeHtml(item.n)}</span><span class="food-sub">${parts}${old}</span></span><span class="food-end"><span class="food-sub">No menu checked</span></span></a></li>`;
 }
 
 export function findRows(state: FindState): { html: string; total: number } {

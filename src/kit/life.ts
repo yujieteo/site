@@ -2,6 +2,7 @@ import { GOOD_CHECKS, LEVERS, LIFE, MONTH_TABLE, REHOME, SPENDING, STRONGEST, ty
 import { LAST_MONTH, PRICES, type PriceItem } from "./price-data.ts";
 import { today, type Note } from "../notes.ts";
 import { lineDay } from "../blame.ts";
+import { escapeHtml } from "./html.ts";
 
 // The page answers one question: what is the best quality for the price? This draws its one list.
 // The rows are the 12 spending groups of the household survey, biggest share first. A group opens to its
@@ -94,12 +95,8 @@ interface Bucket {
   series: Series[];
 }
 
-function esc(text: string): string {
-  return text.replaceAll("&", "&amp;").replaceAll('"', "&quot;").replaceAll("<", "&lt;");
-}
-
 function linked(text: string): string {
-  return esc(text).replace(LINK, '<a href="$2">$1 ↗</a>');
+  return escapeHtml(text).replace(LINK, '<a href="$2">$1 ↗</a>');
 }
 
 function slug(name: string): string {
@@ -319,9 +316,9 @@ const DOT: Record<Verdict, string> = { pass: " life-pass", fail: " life-fail", r
 function factOf(buy: Buy): string {
   if (buy.verdict === "none") return "";
   if (buy.verdict === "unknown") return "check not shown on the page";
-  const source = buy.source !== "" && buy.source !== buy.shelf[2] ? ` (<a href="${esc(buy.source)}">source ↗</a>)` : "";
+  const source = buy.source !== "" && buy.source !== buy.shelf[2] ? ` (<a href="${escapeHtml(buy.source)}">source ↗</a>)` : "";
   const lead = buy.verdict === "pass" ? "passes: " : buy.verdict === "fail" ? "fails: " : "";
-  return `${lead}${esc(buy.fact)}${source}`;
+  return `${lead}${escapeHtml(buy.fact)}${source}`;
 }
 
 function buyDetail(buy: Buy): string {
@@ -329,17 +326,17 @@ function buyDetail(buy: Buy): string {
   const pack = /^\d+$/.test(shelf[5]);
   const covers = shelf[5] === "1" ? "" : pack ? `${shelf[5]} for ${shelf[4]}` : shelf[5];
   const price = pack || buy.main.startsWith(shelf[4]) ? "" : shelf[4];
-  const parts = [shelf[3], covers, price, shelf[7] === 1 ? "listing" : "", buy.seen === "" ? "" : `read ${shortDate(buy.seen)}`].filter((part) => part !== "").map(esc);
+  const parts = [shelf[3], covers, price, shelf[7] === 1 ? "listing" : "", buy.seen === "" ? "" : `read ${shortDate(buy.seen)}`].filter((part) => part !== "").map(escapeHtml);
   return [...parts, factOf(buy)].filter((part) => part !== "").join(" · ");
 }
 
 // A row with the item as its name stands alone. A row inside an opened item starts with the product.
 function buyRow(buy: Buy, label: string, picked: boolean): string {
   const { shelf } = buy;
-  const link = `<a href="${esc(shelf[2])}">${esc(shelf[1])} ↗</a>`;
-  const name = label === "" ? `<b>${link}</b>` : `<b>${esc(label)}</b><small>${link}</small>`;
+  const link = `<a href="${escapeHtml(shelf[2])}">${escapeHtml(shelf[1])} ↗</a>`;
+  const name = label === "" ? `<b>${link}</b>` : `<b>${escapeHtml(label)}</b><small>${link}</small>`;
   const wide = buy.main.length > WIDE_PRICE;
-  const price = wide ? `<span>${esc(buy.main)}</span>` : `<span class="life-end">${esc(buy.main)}${picked ? "<small>the pick</small>" : ""}</span>`;
+  const price = wide ? `<span>${escapeHtml(buy.main)}</span>` : `<span class="life-end">${escapeHtml(buy.main)}${picked ? "<small>the pick</small>" : ""}</span>`;
   return `<li class="life-row life-buy${DOT[buy.verdict]}">${name}${price}<small>${buyDetail(buy)}</small></li>`;
 }
 
@@ -366,14 +363,14 @@ function basisOf(group: Group): string {
 
 // The figure on the right of an item: the pick, or the lowest price where the item has no pass mark.
 function priceOf(group: Group, first: Buy | undefined): string {
-  if (group.pick) return `${group.ranked ? `S$${group.pick.low}${esc(group.pick.tail)}` : esc(group.pick.main)}<small>${basisOf(group)}</small>`;
+  if (group.pick) return `${group.ranked ? `S$${group.pick.low}${escapeHtml(group.pick.tail)}` : escapeHtml(group.pick.main)}<small>${basisOf(group)}</small>`;
   if (!first) return `No unexpired price`;
   if (group.passes && group.buys.some((buy) => buy.verdict === "pass") && !group.eligible.some((buy) => buy.verdict === "pass")) {
     return `No pick<small>all passing offers ended</small>`;
   }
   if (!group.ranked) return "";
   if (group.passes) return `No pick<small>no product shows the check</small>`;
-  return `S$${first.low}${esc(first.tail)}<small>${group.eligible.length === 1 ? "only unexpired price" : `lowest of ${group.eligible.length}`}</small>`;
+  return `S$${first.low}${escapeHtml(first.tail)}<small>${group.eligible.length === 1 ? "only unexpired price" : `lowest of ${group.eligible.length}`}</small>`;
 }
 
 function checkLine(group: Group): string {
@@ -395,7 +392,7 @@ function groupRow(group: Group): string {
   const price = priceOf(group, first);
   const end = price === "" ? "" : `<span class="life-end">${price}</span>`;
   const range = spread && last ? ` · up to S$${last.top}` : "";
-  const summary = `<summary class="life-row"><b>${esc(group.name)}${chevron()}</b>${end}<small>${esc(`${checkLine(group)}${range}`)}</small>${spread ? track(group, top) : ""}</summary>`;
+  const summary = `<summary class="life-row"><b>${escapeHtml(group.name)}${chevron()}</b>${end}<small>${escapeHtml(`${checkLine(group)}${range}`)}</small>${spread ? track(group, top) : ""}</summary>`;
   return `<li><details class="life-item">${summary}<ol class="life-rows life-nest">${group.buys.map((buy) => buyRow(buy, "", buy === group.pick)).join("")}</ol></details></li>`;
 }
 
@@ -405,14 +402,14 @@ function evenLine(even: readonly [number, number, string]): string {
   const [point, typical, unit] = even;
   const at = ((typical / (point * 2)) * 100).toFixed(1);
   const dot = typical > 0 ? `<i data-css="left:${at}%"></i><small data-css="left:${at}%">${typical}</small>` : "";
-  return `<span class="life-even" role="img" aria-label="The pass pays from ${point} ${esc(unit)}${typical > 0 ? `. A typical use is ${typical}` : ""}.">${dot}<small data-css="left:50%">${point} ${esc(unit)}</small></span>`;
+  return `<span class="life-even" role="img" aria-label="The pass pays from ${point} ${escapeHtml(unit)}${typical > 0 ? `. A typical use is ${typical}` : ""}.">${dot}<small data-css="left:50%">${point} ${escapeHtml(unit)}</small></span>`;
 }
 
 // A move: the thing to do, a tag with its figure, then the reason. The tag follows the lead, so the text keeps
 // the full width.
 function moveRow(move: Move, extra: string): string {
-  const worth = move.worth === "" ? "" : ` <em class="life-tag">${esc(move.worth)}</em>`;
-  return `<li class="life-row"><b>${esc(move.lead)}${worth}</b><span>${linked(move.text)}</span>${move.even ? evenLine(move.even) : ""}${extra}</li>`;
+  const worth = move.worth === "" ? "" : ` <em class="life-tag">${escapeHtml(move.worth)}</em>`;
+  return `<li class="life-row"><b>${escapeHtml(move.lead)}${worth}</b><span>${linked(move.text)}</span>${move.even ? evenLine(move.even) : ""}${extra}</li>`;
 }
 
 function monthAt(text: string): number {
@@ -490,7 +487,7 @@ function monthBars(item: PriceItem, pattern: string): string {
 
 // A price row opens to its full chart. The script draws the chart when the row first opens.
 function priceRow(name: string, visual: string, end: string, sub: string, kind: string): string {
-  const summary = `<summary class="life-row life-series${visual === "" ? " life-plain" : ""}"><b>${esc(packOf(name).good)}${chevron()}</b>${visual}${end}<small>${esc(sub)}</small></summary>`;
+  const summary = `<summary class="life-row life-series${visual === "" ? " life-plain" : ""}"><b>${escapeHtml(packOf(name).good)}${chevron()}</b>${visual}${end}<small>${escapeHtml(sub)}</small></summary>`;
   return `<li><details class="life-item life-price ${kind}" data-s="${seriesAt(name)}">${summary}<div class="life-chart"><p class="life-note">The chart of this price since 2015 loads here.</p></div></details></li>`;
 }
 
@@ -503,7 +500,7 @@ function officialRow(row: Official): string {
   const steady = pattern.includes(" low");
   const gap = Number(/\((\d+)%\)/.exec(pattern)?.[1] ?? 0);
   const sub = [packOf(name).pack, `${year} in a year`, `forecast ${rangeOf(forecast)}`, steady ? pattern : ""].filter((part) => part !== "").join(" · ");
-  const end = `<span class="life-end">${esc(now)}${deal === "" ? "" : `<small>deal at ${esc(deal)}</small>`}</span>`;
+  const end = `<span class="life-end">${escapeHtml(now)}${deal === "" ? "" : `<small>deal at ${escapeHtml(deal)}</small>`}</span>`;
   return priceRow(name, steady && gap >= BAR_GAP ? monthBars(seriesItem(name), pattern) : "", end, sub, "life-average");
 }
 
@@ -518,7 +515,7 @@ function seriesRow(series: Series): string {
   const since = series[3] === "n/a" ? "began in 2024" : `${series[3]} since 2015`;
   const pattern = series[5].includes(" low") ? series[5] : "";
   const sub = [since, outlook(series), pattern].filter((part) => part !== "").join(" · ");
-  const end = `<span class="life-end">${esc(series[2])}<small>in a year</small></span>`;
+  const end = `<span class="life-end">${escapeHtml(series[2])}<small>in a year</small></span>`;
   return priceRow(series[0], spark(seriesItem(series[0])), end, sub, "life-index");
 }
 
@@ -538,7 +535,7 @@ function leverParts(bucket: Bucket): string {
   LEVERS.forEach(([lever, name], index) => {
     const calendar = lever === "when" && bucket.name === CALENDAR_HOME ? STRONGEST.map(calendarRow).join("") : "";
     const rows = bucket.moves.filter((move) => move.lever === lever).map((move) => moveRow(move, "")).join("") + calendar;
-    out += part(`<i class="life-step">${index + 1}</i>${esc(name)}`, "", "", rows, rows === "" ? `<p class="life-note">None found.</p>` : "");
+    out += part(`<i class="life-step">${index + 1}</i>${escapeHtml(name)}`, "", "", rows, rows === "" ? `<p class="life-note">None found.</p>` : "");
   });
   return out;
 }
@@ -556,12 +553,12 @@ function shopCount(bucket: Bucket): number {
 
 function bucketRow(bucket: Bucket, widest: number): string {
   const end = `<span class="life-end">${bucket.share.toFixed(1)}%<small>S$${bucket.dollars} a month</small></span>`;
-  const summary = `<summary class="life-row"><b>${esc(bucket.name)}${chevron()}</b>${end}<small>${esc(leadOf(bucket))}</small><span class="life-share"><i data-css="width:${((bucket.share / widest) * 100).toFixed(1)}%"></i></span></summary>`;
+  const summary = `<summary class="life-row"><b>${escapeHtml(bucket.name)}${chevron()}</b>${end}<small>${escapeHtml(leadOf(bucket))}</small><span class="life-share"><i data-css="width:${((bucket.share / widest) * 100).toFixed(1)}%"></i></span></summary>`;
   const notes = bucket.notes.length === 0 ? "" : part("Good to know", "", "", "", bucket.notes.map((note) => `<p class="life-note">${linked(note)}</p>`).join(""));
   let shops = "";
   bucket.sets.forEach((set, index) => {
     const count = set.groups.reduce((n, group) => n + group.buys.length, 0);
-    shops += part(esc(`Shop prices · ${title(set.name)} · ${count} in ${set.groups.length} items`), set.id, index === 0 ? SHOP_KEY : "", set.groups.map(groupRow).join(""), "");
+    shops += part(escapeHtml(`Shop prices · ${title(set.name)} · ${count} in ${set.groups.length} items`), set.id, index === 0 ? SHOP_KEY : "", set.groups.map(groupRow).join(""), "");
   });
   const prices = bucket.official.map(officialRow).join("") + [...bucket.series].sort(byRise).map(seriesRow).join("");
   const official = prices === "" ? "" : part("Official prices · year to Sep 2026", "", "", prices, "");

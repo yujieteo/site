@@ -2,16 +2,13 @@ import { foodFigure } from "./kit/food.ts";
 import { lifeFigure, lifeText } from "./kit/life.ts";
 import { backedText } from "./kit/food-backed.ts";
 import { figureWidth } from "./kit/scale.ts";
+import { escapeHtml } from "./kit/html.ts";
 
 export const FIGURE_KINDS: readonly string[] = ["food", "life"];
 
-function escapeAttribute(text: string): string {
-  return text.split("&").join("&amp;").split('"').join("&quot;").split("<").join("&lt;");
-}
-
 export function figureHtml(kind: string, id: string, alt: string, caption: string, wide: boolean, view: string): string {
   const drawn = kind === "life" ? lifeFigure(id) : foodFigure(view, id, figureWidth(wide));
-  const body = drawn.split('aria-label="ALT"').join(`aria-label="${escapeAttribute(alt)}"`);
+  const body = drawn.split('aria-label="ALT"').join(`aria-label="${escapeHtml(alt)}"`);
   return `<figure id="${id}" data-kind="${kind}"${view === "" ? "" : ` data-view="${view}"`}${wide ? " data-wide" : ""}><div class="frame">${body}</div><figcaption>${caption}</figcaption></figure>`;
 }
 

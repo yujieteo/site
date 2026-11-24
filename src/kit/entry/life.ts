@@ -1,4 +1,5 @@
 import { wireTooltips } from "../tooltip.ts";
+import { escapeHtml } from "../html.ts";
 
 // The list of spending groups. The build has already drawn every row. This filters them as the reader types, opens a
 // group when a link points at it, and draws the full chart of a price when its row first opens. The chart code
@@ -31,17 +32,13 @@ function openAuto(details: HTMLDetailsElement): void {
   details.setAttribute("data-auto", "");
 }
 
-function escapeAttribute(text: string): string {
-  return text.replaceAll("&", "&amp;").replaceAll('"', "&quot;").replaceAll("<", "&lt;");
-}
-
 async function drawChart(row: HTMLDetailsElement): Promise<void> {
   const box = row.querySelector<HTMLElement>(".life-chart");
   if (!box || box.hasAttribute("data-drawn")) return;
   const { priceNote, priceSvg } = await loadCharts();
   const index = Number(row.dataset.s);
   const name = row.querySelector("summary b")?.textContent ?? "";
-  const svg = priceSvg(index, Math.floor(box.clientWidth)).replace('aria-label="ALT"', `aria-label="${escapeAttribute(`Monthly price of ${name} from 2015, with a forecast to September 2027 and its month pattern`)}"`);
+  const svg = priceSvg(index, Math.floor(box.clientWidth)).replace('aria-label="ALT"', `aria-label="${escapeHtml(`Monthly price of ${name} from 2015, with a forecast to September 2027 and its month pattern`)}"`);
   box.innerHTML = svg;
   const note = document.createElement("p");
   note.className = "note";
