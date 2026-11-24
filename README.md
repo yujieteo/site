@@ -11,6 +11,18 @@ Posts by Yu Jie Teo.
 
 Use a dedicated output directory. The build replaces its contents after rendering succeeds. It accepts an empty directory or a previous build of this site.
 
+## Check a change
+
+- `bun test` is the fast check. It builds the whole site into a temporary folder.
+- The Python tests need these packages:
+  - `uv run --no-project --with numpy --with openpyxl python -m unittest discover -s scripts/prices`
+  - `uv run --no-project --with beautifulsoup4 python -m unittest discover -s scripts/tampines`
+  - `python3 -m unittest discover -s tests/questions`
+- Always build with `--out` and a temporary folder, such as `bun src/build.ts --out "$(mktemp -d)"`. A bare `bun src/build.ts` replaces `dist/`.
+- The build needs the full git history. It dates rows that are not committed yet as today.
+- A change to `src/kit/*-data.ts`, `src/kit/food-model.ts` or `src/notes.ts` moves the as-of dates that readers see, even when no value changes.
+- The lines in `notes/forecasts.tsv` come from `scripts/bets/bets.py`. Do not write them by hand.
+
 ## Paper summaries
 
 A post can hold summaries in `posts/NAME/papers/SLUG.md`. A file starts with `source:`, `slogan:` and `basis:` lines, then a blank line, then Markdown. The `source` must equal the link of one list item in the post. The build takes the title and byline from that item, writes `/essays/NAME/SLUG/` and adds a Summary link to the item.
