@@ -14,6 +14,7 @@ Use a dedicated output directory. The build replaces its contents after renderin
 ## Check a change
 
 - `bun test` is the fast check. It builds the whole site into a temporary folder.
+- `scripts/check.sh` runs every check: `bun test`, the Python tests, shellcheck, ruff and the type check (`tsconfig.json`, with pinned TypeScript). It exits non-zero if any check fails, and a skipped Python test counts as a failure.
 - The Python tests need these packages:
   - `uv run --no-project --with numpy --with openpyxl python -m unittest discover -s scripts/prices`
   - `uv run --no-project --with beautifulsoup4 python -m unittest discover -s scripts/tampines`
