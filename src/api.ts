@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
 import { mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
-import { textLines, textVersion, type Post } from "./post.ts";
+import { figureKinds, textLines, textVersion, type Post } from "./post.ts";
 import { REPO, SITE } from "./notes.ts";
 import { asOfRange, FEEDS, tableTsv, type Column, type Table } from "./tables.ts";
 import { headCommit, lastChanged } from "./blame.ts";
@@ -105,7 +105,7 @@ const FIGURE_DATA: Record<string, readonly string[]> = {
 };
 function postAsOf(post: Post, postsDir: string): string {
   const days = [lastChanged(`${postsDir}/${post.slug}`)];
-  for (const kind of new Set([...post.source.matchAll(/::figure[^\n]*kind=([a-z-]+)/g)].map((m) => m[1] ?? ""))) days.push(...(FIGURE_DATA[kind] ?? []).map(lastChanged));
+  for (const kind of figureKinds(post.source)) days.push(...(FIGURE_DATA[kind] ?? []).map(lastChanged));
   return days.sort().at(-1) ?? post.date;
 }
 

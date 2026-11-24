@@ -90,9 +90,11 @@ export function footnoteHtml(body: string, notes: Map<string, string>): string {
   return out;
 }
 
-function parseAttributes(rest: string): Map<string, string> {
+// The attributes of a "::figure" line, such as kind=food or alt="...", or undefined for any other line.
+function figureAttributes(line: string): Map<string, string> | undefined {
+  if (!line.startsWith("::figure ")) return undefined;
   const found = new Map<string, string>();
-  for (const m of rest.matchAll(/(\w+)=(?:"([^"]*)"|(\S+))/g)) found.set(m[1] ?? "", m[2] ?? m[3] ?? "");
+  for (const m of line.slice(9).matchAll(/(\w+)=(?:"([^"]*)"|(\S+))/g)) found.set(m[1] ?? "", m[2] ?? m[3] ?? "");
   return found;
 }
 
@@ -100,12 +102,12 @@ export function figures(source: string, slug: string): string {
   const out: string[] = [];
   let index = 0;
   for (const line of source.split("\n")) {
-    if (!line.startsWith("::figure ")) {
+    const a = figureAttributes(line);
+    if (!a) {
       out.push(line);
       continue;
     }
     index++;
-    const a = parseAttributes(line.slice(9));
     const kind = a.get("kind") ?? "";
     const alt = a.get("alt") ?? "";
     const caption = a.get("caption") ?? "";
@@ -119,7 +121,7 @@ export function figures(source: string, slug: string): string {
 export function figureKinds(source: string): string[] {
   const kinds: string[] = [];
   for (const line of source.split("\n")) {
-    const a = line.startsWith("::figure ") ? parseAttributes(line.slice(9)) : undefined;
+    const a = figureAttributes(line);
     const kind = a?.get("kind") ?? "";
     if (kind !== "" && !kinds.includes(kind)) kinds.push(kind);
   }
@@ -135,7 +137,7 @@ export function headings(html: string): Heading[] {
 export function textLines(source: string): string[] {
   const lines: string[] = [];
   for (const line of source.split("\n")) {
-    const a = line.startsWith("::figure ") ? parseAttributes(line.slice(9)) : undefined;
+    const a = figureAttributes(line);
     lines.push(a ? `Figure: ${a.get("caption") ?? ""} (Image: ${a.get("alt") ?? ""})` : line);
     if (a) lines.push(...figureText(a.get("kind") ?? "", a.get("view") ?? ""));
   }
