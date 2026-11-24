@@ -499,7 +499,7 @@ def main():
     log(f"ACRA: {total} entities scanned; fields: {', '.join(f for f in fields if not f.startswith(('former', 'uen_of', 'name_of')))}")
     log(f"ACRA snapshot (latest dataset update): {SNAPSHOT}")
     log("ACRA status values in kept rows:", dict(Counter(r.get("entity_status_description", "") for r in acra)))
-    matches = stage_acra(rows, postal_rows, acra)
+    stage_acra(rows, postal_rows, acra)
     fnb, sector = stage_fnb(acra, rings)
     log("F&B postal codes by sector (in / out of Tampines polygon):", {k: dict(v) for k, v in sorted(sector.items())})
     rates(fnb, SNAPSHOT)

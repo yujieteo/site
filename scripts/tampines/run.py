@@ -20,7 +20,7 @@ from scipy.special import expit
 from scipy.stats import chisquare
 
 from inputs import assemble, read
-from model import KINDS, closure_probability, derived, draws_of, fit, ranks, simulate
+from model import closure_probability, derived, draws_of, fit, ranks, simulate
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "research/tampines/derived"

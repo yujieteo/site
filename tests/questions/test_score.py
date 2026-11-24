@@ -19,7 +19,7 @@ class ScoreSourceTest(unittest.TestCase):
             prefix += f"AS_OF: {question['as_of']}\n"
         cases = (
             ("match", f"SOURCE: {URL}", URL, 200, "1/1"),
-            ("fragment", f"Source: HTTPS://EXAMPLE.INVALID/Page?version=1#heading", URL, 206, "1/1"),
+            ("fragment", "Source: HTTPS://EXAMPLE.INVALID/Page?version=1#heading", URL, 206, "1/1"),
             ("other-page", f"SOURCE: {URL}", URL.replace("/Page", "/Other"), 200, "0/1"),
             ("path-case", f"SOURCE: {URL}", URL.replace("/Page", "/page"), 200, "0/1"),
             ("query", f"SOURCE: {URL}", URL.replace("version=1", "version=2"), 200, "0/1"),
