@@ -2,6 +2,7 @@ import { SITE, type PostApi } from "./api.ts";
 import { FEEDS, type Table } from "./tables.ts";
 import { PARTS, scoreCalls, type Deal, type Note } from "./notes.ts";
 import { readingMinutes, type Heading, type Paper, type Post } from "./post.ts";
+import { escapeHtml } from "./kit/html.ts";
 
 const HEAD = `<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,10 +21,6 @@ const FOOT = `<footer class="wrap"><ul>
 <li>For AI agents: <a href="/api/">API</a> · <a href="/llms.txt">llms.txt</a></li>
 </ul></footer>`;
 
-function escapeText(text: string): string {
-  return text.replace(/&(?![a-z]+;|#\d+;)/g, "&amp;").replaceAll('"', "&quot;").replaceAll("<", "&lt;");
-}
-
 function shell(title: string, description: string, header: string, main: string, scripts: string[], head = ""): string {
   let tail = "";
   for (const src of scripts) tail += `<script type="module" src="/${src}"></script>\n`;
@@ -31,8 +28,8 @@ function shell(title: string, description: string, header: string, main: string,
 <html lang="en">
 <head>
 ${HEAD}
-<title>${escapeText(title)}</title>
-<meta name="description" content="${escapeText(description)}">
+<title>${escapeHtml(title)}</title>
+<meta name="description" content="${escapeHtml(description)}">
 ${head}</head>
 <body>
 ${header}
@@ -62,7 +59,7 @@ const NUMBER_CELL = new RegExp(`^${NUMBER}(?:\\s*(?:→|–|&ndash;)\\s*${NUMBER
 // data-wide: on a wide screen it may use the width of a wide figure. tabindex="0" lets a keyboard scroll a table
 // that is wider than a phone screen (WCAG 2.1.1).
 export function markTables(html: string): string {
-  return html.replace(/<table>([\s\S]*?)<\/table>/g, (table, inner: string) => {
+  return html.replace(/<table>([\s\S]*?)<\/table>/g, (_table, inner: string) => {
     const rows = [...inner.matchAll(/<tr>([\s\S]*?)<\/tr>/g)].map((row) =>
       [...(row[1] ?? "").matchAll(/<(td|th)>([\s\S]*?)<\/\1>/g)].map((cell) => ({ head: cell[1] === "th", text: (cell[2] ?? "").replace(/<[^>]+>/g, "").trim() })));
     const width = Math.max(0, ...rows.map((row) => row.length));
@@ -134,20 +131,20 @@ export function postPage(post: Post, bodyHtml: string, headings: Heading[], kind
 export function paperPage(post: Post, paper: Paper, bodyHtml: string): string {
   const minutes = readingMinutes(paper.source);
   const back = `/essays/${post.slug}/`;
-  const meta = `<p class="meta muted">${escapeText(paper.byline)} · ${minutes} min read · <a href="${escapeText(paper.url)}" rel="noopener noreferrer">Source ↗</a> · <a href="${back}">${post.title}</a></p>`;
-  const slogan = `<section class="summary" aria-label="Slogan"><h2>Slogan</h2><ul><li>${escapeText(paper.slogan)}</li></ul></section>`;
-  const basis = paper.basis === "" ? "" : ` It is based on ${escapeText(paper.basis)}.`;
+  const meta = `<p class="meta muted">${escapeHtml(paper.byline)} · ${minutes} min read · <a href="${escapeHtml(paper.url)}" rel="noopener noreferrer">Source ↗</a> · <a href="${back}">${post.title}</a></p>`;
+  const slogan = `<section class="summary" aria-label="Slogan"><h2>Slogan</h2><ul><li>${escapeHtml(paper.slogan)}</li></ul></section>`;
+  const basis = paper.basis === "" ? "" : ` It is based on ${escapeHtml(paper.basis)}.`;
   const note = `<p class="muted">An AI model wrote this summary. Nobody checked it by hand.${basis} Check each statement against the source before you rely on it.</p>`;
-  const article = `<article><h1>${escapeText(paper.title)}</h1>${meta}${slogan}${bodyHtml}${note}</article>`;
+  const article = `<article><h1>${escapeHtml(paper.title)}</h1>${meta}${slogan}${bodyHtml}${note}</article>`;
   return shell(paper.title, paper.slogan, HEADER, `<main class="wrap page">${article}</main>`, []);
 }
 
 export function apiPage(apis: PostApi[], all: Table[]): string {
   const rows: string[] = [];
-  for (const api of apis) rows.push(`<tr><td><a href="/api/${api.post.slug}/index.txt">${escapeText(api.post.title)}</a></td><td>${day(api.post.date)}</td><td>${day(api.asOf)}</td><td>${api.parts.length}</td></tr>`);
+  for (const api of apis) rows.push(`<tr><td><a href="/api/${api.post.slug}/index.txt">${escapeHtml(api.post.title)}</a></td><td>${day(api.post.date)}</td><td>${day(api.asOf)}</td><td>${api.parts.length}</td></tr>`);
   const posts = `<table><thead><tr><th>Post index</th><th>Published</th><th>Text as of</th><th>Section files</th></tr></thead><tbody>${rows.join("")}</tbody></table>`;
-  const tableRows = all.map((table) => `<tr><td><a href="/${table.path}"><code>/${table.path}</code></a></td><td>${escapeText(table.title)}</td><td>${table.rows.length}</td></tr>`);
-  const feedRows = FEEDS.map((feed) => `<tr><td><a href="${feed.path}"><code>${feed.path.replace(SITE, "")}</code></a></td><td>${escapeText(feed.title)}, rebuilt by the server</td><td></td></tr>`);
+  const tableRows = all.map((table) => `<tr><td><a href="/${table.path}"><code>/${table.path}</code></a></td><td>${escapeHtml(table.title)}</td><td>${table.rows.length}</td></tr>`);
+  const feedRows = FEEDS.map((feed) => `<tr><td><a href="${feed.path}"><code>${feed.path.replace(SITE, "")}</code></a></td><td>${escapeHtml(feed.title)}, rebuilt by the server</td><td></td></tr>`);
   const article = `<article><h1>API for AI agents</h1>
 <p>This site has a text version for agents that cannot ask a follow-up question and will cite what they read. It is a set of static files: no key, no login. Every file has a size, a SHA-256 and an as-of date in <a href="/api/manifest.json"><code>/api/manifest.json</code></a>, and every table has typed columns in <a href="/api/datapackage.json"><code>/api/datapackage.json</code></a> (Frictionless Table Schema).</p>
 <h2 id="use">How an agent reads it</h2>
@@ -176,7 +173,7 @@ ${notesTable()}
 
 function notesTable(): string {
   const rows: string[] = [];
-  for (const part of PARTS) rows.push(`<tr><td>${part.name}</td><td>${escapeText(part.does)}</td><td><a href="${part.read}"><code>${part.read}</code></a></td><td><a href="/notes/${part.name}.txt"><code>notes/${part.name}.tsv</code></a></td></tr>`);
+  for (const part of PARTS) rows.push(`<tr><td>${part.name}</td><td>${escapeHtml(part.does)}</td><td><a href="${part.read}"><code>${part.read}</code></a></td><td><a href="/notes/${part.name}.txt"><code>notes/${part.name}.tsv</code></a></td></tr>`);
   return `<table><thead><tr><th>Part</th><th>What a note does</th><th>List to read</th><th>File to change</th></tr></thead><tbody>${rows.join("")}</tbody></table>`;
 }
 
@@ -193,11 +190,11 @@ export function dealsPage(seen: Deal[]): string {
   const rows: string[] = [];
   for (const deal of seen) {
     const f = deal.note.fields;
-    rows.push(`<tr><td><a href="${escapeText(f.url ?? "")}" rel="noopener noreferrer">${escapeText(deal.row.name)}</a><br><span class="muted">${escapeText(deal.note.text)}</span></td><td>${money(deal.price)}</td><td>${money(deal.row.average)}</td><td>${deal.good ? "<strong>" : ""}${below(deal)}${deal.good ? "</strong>" : ""}</td><td>${escapeText(f.shop ?? "")}</td><td>${day(f.date ?? "")}</td></tr>`);
+    rows.push(`<tr><td><a href="${escapeHtml(f.url ?? "")}" rel="noopener noreferrer">${escapeHtml(deal.row.name)}</a><br><span class="muted">${escapeHtml(deal.note.text)}</span></td><td>${money(deal.price)}</td><td>${money(deal.row.average)}</td><td>${deal.good ? "<strong>" : ""}${below(deal)}${deal.good ? "</strong>" : ""}</td><td>${escapeHtml(f.shop ?? "")}</td><td>${day(f.date ?? "")}</td></tr>`);
   }
   const table = rows.length > 0 ? `<table><thead><tr><th>Item</th><th>Shelf price</th><th>Average</th><th>Against average</th><th>Shop</th><th>Seen</th></tr></thead><tbody>${rows.join("")}</tbody></table>` : `<p class="muted">No prices have been noted yet.</p>`;
   const article = `<article><h1>Deals seen now</h1>
-<p>These are shelf prices that an AI agent saw in a Singapore shop in the last 30 days. Each is set against the latest official average for the same unit, from <a href="/essays/singapore-value-buys/">the post on what Singapore buys</a>. Bold marks a good deal: a price at least 10% below the average. Nobody checked these by hand, so open the link before you buy.</p>
+<p>These are shelf prices that an AI agent saw in a Singapore shop in the last 30 days. Each is set against the latest official average for the same unit, from <a href="/essays/singapore-value-buys/">the post on what Singapore buys</a>. Bold marks a good deal: a price at or under the item's own good-deal price, the low end of what its history and season predict. Fuel has no good-deal price, so a fuel price is never bold. Nobody checked these by hand, so open the link before you buy.</p>
 ${table}
 <p class="muted">Agents add prices as <a href="/api/notes.txt">notes</a>. <a href="/api/deals.txt">Text version</a></p></article>`;
   return shell("Deals seen now", "Shelf prices seen in Singapore shops in the last 30 days, against the official average.", HEADER, `<main class="wrap page">${article}</main>`, []);
@@ -225,12 +222,12 @@ export function callsPage(calls: Note[], outcomes: Note[]): string {
   const rows: string[] = [];
   for (const row of score.rows) {
     const f = row.call.fields;
-    rows.push(`<tr><td>${escapeText(row.call.text)}<br><span class="muted">${escapeText(f.model ?? "")}, CPI ${escapeText(f.series ?? "")}</span></td><td>${escapeText(f.month ?? "")}</td><td>${f.low}&ndash;${f.high}</td><td>${day(f.made ?? "")}</td><td>${escapeText(verdict(row))}</td></tr>`);
+    rows.push(`<tr><td>${escapeHtml(row.call.text)}<br><span class="muted">${escapeHtml(f.model ?? "")}, CPI ${escapeHtml(f.series ?? "")}</span></td><td>${escapeHtml(f.month ?? "")}</td><td>${f.low}&ndash;${f.high}</td><td>${day(f.made ?? "")}</td><td>${escapeHtml(verdict(row))}</td></tr>`);
   }
   const table = rows.length > 0 ? `<table><thead><tr><th>Call</th><th>Month</th><th>80% range</th><th>Made</th><th>Outcome</th></tr></thead><tbody>${rows.join("")}</tbody></table>` : `<p class="muted">No calls yet.</p>`;
   const article = `<article><h1>Calls on Singapore prices</h1>
 <p>These are dated calls from <a href="/essays/singapore-value-buys/">the post on what Singapore buys</a>. Each says where a consumer price index will be in a given month, as an 80% range. Each was made before its month and is not changed after. When SingStat publishes the month, a script reads the value and the call is scored here. If the ranges are right, about 8 in 10 outcomes fall inside them.</p>
-<p><strong>${escapeText(scoreLine(score))}</strong></p>
+<p><strong>${escapeHtml(scoreLine(score))}</strong></p>
 <p>The point forecast is the model's guess; it is not fitted as the median. For each call, percentage-weighted pinball loss averages terms at levels 0.1, 0.5 and 0.9 for the lower bound, point forecast and upper bound. It divides that loss by the actual index, then averages across resolved calls. The same loss in index points counts more when the actual index is lower. Range coverage and the point forecast's average absolute percentage miss are reported separately.</p>
 ${table}
 <p class="muted">Index values: 2024 = 100. Source of outcomes: <a href="https://tablebuilder.singstat.gov.sg/table/TS/M213751" rel="noopener noreferrer">SingStat table M213751 ↗</a>. <a href="/api/calls.txt">Text version</a></p></article>`;

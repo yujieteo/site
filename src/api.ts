@@ -13,9 +13,16 @@ export { SITE };
 
 // The version of the tables in datapackage.json. A new column raises the minor number. A column is never
 // renamed, retyped or removed; tests/schema.test.ts checks that against tests/schema-frozen.json.
-export const SCHEMA_VERSION = "1.3.0";
+export const SCHEMA_VERSION = "1.3.1";
 
 export const CHANGELOG: readonly { version: string; date: string; changes: readonly string[] }[] = [
+  {
+    version: "1.3.1",
+    date: "2026-11-25",
+    changes: [
+      "prices: good_deal_at_sgd is no longer required. It is empty for the goods that have no good-deal price (the three petrol grades, LPG and diesel), where 1.3.0 gave 0. deals: good_deal is false for those goods.",
+    ],
+  },
   {
     version: "1.3.0",
     date: "2026-11-22",
@@ -267,7 +274,20 @@ function manifest(out: string, apis: PostApi[], all: Table[], built: ReturnType<
   return `${JSON.stringify({ site: SITE, built_at: built.at, commit: built.commit, note, files }, null, 1)}\n`;
 }
 
+// A post's section files share api/SLUG/ with any table whose path is there, such as
+// api/tampines-food/places.txt. Stops the build if a section or the index would overwrite a table.
+export function checkApiPaths(apis: PostApi[], all: Table[]): void {
+  const tablePaths = new Set(all.map((table) => table.path));
+  for (const api of apis) {
+    for (const file of ["index.txt", "whole-post.txt", ...api.parts.map((part) => part.file)]) {
+      const path = `api/${api.post.slug}/${file}`;
+      if (tablePaths.has(path)) throw new Error(`${api.post.slug}: the file ${path} is also a table; rename the section`);
+    }
+  }
+}
+
 export function writeApi(out: string, apis: PostApi[], all: Table[]): void {
+  checkApiPaths(apis, all);
   const built = headCommit();
   const files = new Map<string, string>();
   for (const table of all) {

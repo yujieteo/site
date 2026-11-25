@@ -54,11 +54,12 @@ LW = [("Zvi", "N9zj5qpTfqmbn9dro"), ("gwern", "BtbwfsEyeT4P2eqXu"), ("Daniel Kok
       ("Cthulhoo", "9Bn8KsjZrr5DmFNHW"), ("mfb", "Ze9tyaDB9MZDh9XKZ"), ("JoshuaZ", "fmTiLqp6mmXeLjwfN"),
       ("Liam Donovan", "HeRKphdWzJhkfWuJh"), ("Dagon", "3EiFeonpTS34c3vzZ"), ("Kevin", "8GnKujYLZ2ZZLs5zk"),
       ("TheRev", "Qf7dawgKSDMJ3BjkN"), ("AspiringKnitter", "wyuRmEzfzp3zGgSNK")]
-# Manifold opened in December 2021. Polymarket and Kalshi are older, but no seed item predates Manifold.
+# Manifold opened in December 2021. Polymarket is older, but no seed item predates Manifold.
+# Only Manifold and Polymarket links count: market() reads no other site.
 SEED_FROM = "2021-12-01"
 # An item that grades earlier predictions reprints them at late prices: it makes no new claim.
 GRADING = re.compile(r"evaluat|grading|graded", re.I)
-MARKET = re.compile(r"https?://(?:www\.)?(?:manifold\.markets|polymarket\.com|kalshi\.com)/[^\s\"'<>)\]]+")
+MARKET = re.compile(r"https?://(?:www\.)?(?:manifold\.markets|polymarket\.com)/[^\s\"'<>)\]]+")
 
 # --- Text -----------------------------------------------------------------------------------------
 BLOCK = re.compile(r"<(?:/?p|br|/?li|/?ol|/?ul|/?blockquote|/?h\d|/?div|/?pre|/?tr|/?td|hr)\b[^>]*>", re.I)

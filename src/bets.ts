@@ -24,7 +24,6 @@ const time = (iso: string): number => Date.parse(iso);
 
 export interface Bet {
   note: Note;
-  q: number;
   factor: number | null;
   running: number;
   repeatOf: string | null;
@@ -109,6 +108,6 @@ export function scoreBets(notes: Note[]): Bet[] {
     const x = repeatOf !== null && raw !== null ? 1 : raw;
     const running = (bank.get(by) ?? 1) * (x ?? 1);
     bank.set(by, running);
-    return { note, q: clip(Number(f.price)), factor: x, running, repeatOf, fermi: fermi(f.fermi ?? "") };
+    return { note, factor: x, running, repeatOf, fermi: fermi(f.fermi ?? "") };
   });
 }

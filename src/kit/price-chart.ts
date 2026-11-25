@@ -135,11 +135,18 @@ function seasonNote(item: PriceItem): string {
   return `Usually cheapest in ${MONTHS[low] ?? ""} and dearest in ${MONTHS[high] ?? ""}.`;
 }
 
+// The good-deal price in cents, or null where the item has none. In price-data.ts a deal of 0 means none:
+// fuel and the index series have no good-deal price. Every reader of "deal" in src goes through this.
+export function goodDeal(item: PriceItem): number | null {
+  return item.deal > 0 ? item.deal : null;
+}
+
 export function priceNote(index: number): string {
   const item = itemAt(index);
   const now = shown(item, item.cents.at(-1) ?? 0);
   const level = item.unit === "S$" ? `${item.name}: ${now} in ${monthName(LAST_MONTH)}.` : `${item.name} index ${now} in ${monthName(LAST_MONTH)}, where 2024 = 100.`;
-  const deal = item.deal > 0 ? ` A good deal is ${shown(item, item.deal)} or less.` : "";
+  const cents = goodDeal(item);
+  const deal = cents === null ? "" : ` A good deal is ${shown(item, cents)} or less.`;
   return `${level} ${monthName(LAST_MONTH + AHEAD)} forecast ${shown(item, item.mid)}, likely ${shown(item, item.low)} to ${shown(item, item.high)}.${deal} ${seasonNote(item)}`;
 }
 
