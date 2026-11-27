@@ -37,7 +37,7 @@
 
 **Remember:** Follow a strand and then repeat from its ending label.
 
-*Makes the theorem clean to state or prove.* MSC 57K10 (Knot theory). arXiv math.GT. Level 1: early undergraduate.
+*True by definition.* MSC 57K10 (Knot theory). arXiv math.GT. Level 1: early undergraduate.
 
 **Definition.** A braid consists of disjoint strands running from one row of points to another without turning back. Its endpoint permutation sends each starting position to the ending position of its strand. Close the braid by joining each ending position to the starting position with the same label.
 
@@ -51,7 +51,7 @@
 
 ### Nonconstant tricolorings rule out the unknot
 
-**Remember:** One color always works, so it tells you nothing.
+**Remember:** Use all three colors, with each crossing monochrome or showing all three.
 
 *Rules out counterexamples.* MSC 57K10 (Knot theory). arXiv math.GT. Level 1: early undergraduate.
 
@@ -99,15 +99,15 @@
 
 ### Reflection across a cylinder makes two Möbius strips
 
-**Remember:** Two strips share the boundary of a reflected cylinder.
+**Remember:** Glue the ends of a cylinder by reflecting its circle.
 
 *True by definition.* MSC 57K20 (2-dimensional topology (including mapping class groups of surfaces, Teichmüller theory, curve complexes, etc.)). arXiv math.GT. Level 1: early undergraduate.
 
-**Definition.** Build the Klein bottle by joining the two ends of a cylinder with a reflection of the end circle. Choose two opposite points exchanged by the reflection and cut the cylinder along the two lengthwise lines through them.
+**Definition.** The Klein bottle is the quotient of S¹ × \[0,1\] identifying (z,1) with (r(z),0) for every z, where r reflects the circle (our own).
 
 **Problem.** The Klein bottle is the union of two Möbius strips glued along their single boundary circles.
 
-**How the definition helps.** The reflection preserves each semicircle between the cut points and exchanges its ends. Each semicircle traces a rectangle along the cylinder, so the end gluing makes that rectangle a Möbius strip. Our own cut shows that the two strips meet along their entire boundary circle. This construction avoids identifying the pieces by the classification of surfaces.
+**How the definition helps.** Cut the circle at opposite points exchanged by the reflection (our own). The reflection preserves each resulting semicircle and reverses its ends (our own). Each semicircle therefore sweeps out a Möbius strip, and the two strips share their entire boundary (our own).
 
 **Wikipedia:** [Klein bottle](https://en.wikipedia.org/wiki/Klein_bottle). It says: “Dissecting the Klein bottle results in two Möbius strips.”
 
@@ -167,11 +167,11 @@
 
 *True by definition.* MSC 57K10 (Knot theory), 57K14. arXiv math.GT. Level 2: later undergraduate.
 
-**Definition.** A framed knot is a tame knot thickened to an embedded ribbon or solid torus. The framing is the linking number of the ribbon's edge with the knot. A diagram drawn flat on the page gives the blackboard framing.
+**Definition.** A framing of a smooth link in oriented three-space is a homotopy class of nowhere-zero normal vector fields along its components (our own). The blackboard framing pushes each strand sideways in its diagram plane (our own).
 
 **Problem.** The Kauffman bracket is an invariant of framed links. Diagrams show the same framed link exactly when modified Reidemeister moves connect them.
 
-**How the definition helps.** Framed equivalence forbids the one move that changes the bracket, so the bracket is invariant almost by definition. The ordinary type I move adds a twist to the ribbon, so it changes the framing. The modified type I move combines two opposite type I moves and keeps the framing. The work moves into the framed Reidemeister theorem.
+**How the definition helps.** The bracket relations preserve the bracket under moves II and III (our own). Opposite curls on one strand contribute inverse factors, so the modified type I move also preserves it (our own). The framed Reidemeister theorem identifies the resulting equivalence of blackboard diagrams with framed link equivalence.
 
 **Wikipedia:** [Knot (mathematics)](https://en.wikipedia.org/wiki/Knot_%28mathematics%29), [Bracket polynomial](https://en.wikipedia.org/wiki/Bracket_polynomial), [Reidemeister move](https://en.wikipedia.org/wiki/Reidemeister_move). It says: “Link diagrams, with blackboard framing, represent equivalent framed links if and only if they are connected by a sequence of (modified) type I, II, and III moves.”
 
@@ -187,9 +187,9 @@
 
 **Definition.** Two knots are equivalent if there is an ambient isotopy between them. An ambient isotopy is a continuous family of homeomorphisms of the whole surrounding space. It starts at the identity, and its last member carries one knot onto the other.
 
-**Problem.** Under plain isotopy, every knot is equivalent to the unknot. Under ambient isotopy, the trefoil is not equivalent to the unknot.
+**Problem.** Under continuous isotopy through embeddings, every tame knot in ℝ³ is equivalent to the unknot. Under ambient isotopy, the trefoil is inequivalent to the unknot.
 
-**How the definition helps.** Ambient isotopy moves the space together with the knot, so the knotted part cannot be shrunk away. Plain isotopy only asks that the knot stay an embedding at every moment, so the knotted part can be contracted to a straight line. That contraction is not a homeomorphism of the surrounding space. Proving that two particular knots differ still needs invariants.
+**How the definition helps.** An ambient isotopy preserves the homeomorphism type of the complement. Our own argument distinguishes the trefoil’s nonabelian knot group from the unknot’s infinite cyclic group. Plain isotopy can shrink a knotted arc to a point on an otherwise unknotted circle while keeping each time slice embedded.
 
 **Wikipedia:** [Knot theory](https://en.wikipedia.org/wiki/Knot_theory), [Ambient isotopy](https://en.wikipedia.org/wiki/Ambient_isotopy). It says: “However, this definition would make every knot equivalent to the unknot, as the knotted portions can be "contracted" down to a straight line.”
 
@@ -271,11 +271,11 @@
 
 *Rules out counterexamples.* MSC 57K10 (Knot theory), 57M30. arXiv math.GT. Level 2: later undergraduate.
 
-**Definition.** A polygonal knot is a closed curve in space made of finitely many line segments. A knot is tame if it is equivalent to a polygonal knot. Smooth knots are tame.
+**Definition.** A polygonal knot is an embedded circle in ℝ³ made of finitely many line segments. A tame knot is a knot ambient isotopic to a polygonal knot.
 
-**Problem.** Reidemeister's theorem is about diagrams of tame knots. Two diagrams show the same knot if and only if a finite sequence of three local moves turns one into the other. A diagram is a projection to the plane with finitely many crossings, each marked over or under.
+**Problem.** Two regular diagrams of tame knots represent equivalent knots exactly when planar isotopies and finitely many Reidemeister moves relate them.
 
-**How the definition helps.** A polygonal knot has a regular projection with finitely many crossings, so knots become finite combinatorial objects. Our own remark: a wild knot can have infinitely many crossings in every projection. The Fox–Artin arc, whose complement is not simply connected, shows how differently wild embeddings can behave. What stays hard is to decide when two diagrams show the same knot.
+**How the definition helps.** Every tame knot has a polygonal representative with a finite regular diagram. Our own observation is that every finite regular diagram reconstructs a tame knot, excluding wild knots. Reidemeister’s theorem supplies the equivalence criterion for these diagrams.
 
 **Wikipedia:** [Knot (mathematics)](https://en.wikipedia.org/wiki/Knot_%28mathematics%29), [Wild knot](https://en.wikipedia.org/wiki/Wild_knot), [Wild arc](https://en.wikipedia.org/wiki/Wild_arc). It says: “A tame knot is any knot equivalent to a polygonal knot. Knots which are not tame are called wild, and can have pathological behavior.”
 
@@ -290,11 +290,11 @@
 
 *True by definition.* MSC 57K10 (Knot theory). arXiv math.GT. Level 2: later undergraduate.
 
-**Definition.** Take coprime positive integers p and q. On the unit sphere in ℂ², define T(p,q) by the curve (exp(ipt), exp(iqt))/√2 for 0 ≤ t &lt; 2π. The other description closes the p-strand braid obtained by repeating the adjacent crossings σ₁ through σₚ₋₁ a total of q times.
+**Definition.** Take coprime positive integers p and q. On the unit sphere in ℂ², define T(p,q) by the curve (exp(ipt), exp(iqt))/√2 for 0 ≤ t &lt; 2π.
 
 **Problem.** The torus knots T(p,q) and T(q,p) are equivalent by an ambient isotopy of the 3-sphere.
 
-**How the definition helps.** The coordinate definition displays the two winding numbers symmetrically, so swapping coordinates exchanges the knots (our own). The swap map belongs to the unitary group, the group of complex linear maps preserving lengths (our own). It is connected to the identity by a path of unitary maps, so it gives a deformation of the entire sphere (our own). The braid descriptions use different numbers of strands and hide this symmetry (our own). The work is showing that closing the stated braid gives the coordinate curve (our own).
+**How the definition helps.** Our own proof swaps the two coordinates, carrying T(p,q) onto T(q,p). The swap belongs to the path-connected unitary group U(2). A path from the identity to the swap restricts to an ambient isotopy of the unit sphere.
 
 **Wikipedia:** [Torus knot](https://en.wikipedia.org/wiki/Torus_knot). It says: “The (p,q) torus knot is equivalent to the (q,p) torus knot.”
 
@@ -306,11 +306,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 57K14 (Knot polynomials), 57K10. arXiv math.GT. Level 2: later undergraduate.
 
-**Definition.** The Alexander polynomial of a knot is defined only up to multiplication by a unit ±tⁿ. Conway's version ∇(z) is normalized so that the unknot has ∇ = 1. It obeys the skein relation ∇(L₊) − ∇(L₋) = z∇(L₀). Here L₊, L₋ and L₀ are diagrams that agree except at one crossing, which is positive, negative or smoothed away.
+**Definition.** The Conway polynomial ∇ assigns each oriented link a polynomial in z and gives the unknot value 1. For every oriented skein triple it satisfies ∇(L₊) − ∇(L₋) = z∇(L₀). The diagrams agree outside one disk containing respectively a positive crossing, a negative crossing, or its oriented smoothing.
 
-**Problem.** The Alexander–Conway polynomial of any oriented link can be computed from a diagram by the skein relation alone. It satisfies Δ(t²) = ∇(t − t⁻¹) for the suitably normalized Alexander polynomial.
+**Problem.** The Alexander–Conway polynomial of any oriented link can be computed from a diagram using the skein relation and the unknot value. It satisfies Δ(t²) = ∇(t − t⁻¹) for the suitably normalized Alexander polynomial.
 
-**How the definition helps.** Choosing one representative of the polynomial removes the ±tⁿ ambiguity, so a linear recursion on crossings becomes possible. Our own sketch: changing crossings turns any diagram into an unlink, and smoothing lowers the crossing number, so the relation and the unknot value determine everything by induction. This skein approach later gave the Jones and HOMFLY polynomials. What stays hard is to show that the recursion gives a well-defined invariant.
+**How the definition helps.** The unknot value fixes the scale of the skein recursion. Our own argument applies the rule to a curl to get zero for unlinks with multiple components. Crossing changes leading to an unlink then reduce the computation to smoothings with fewer crossings. Conway’s normalization identifies this invariant with the stated substitution in the Alexander polynomial.
 
 **Wikipedia:** [Alexander polynomial](https://en.wikipedia.org/wiki/Alexander_polynomial). It says: “John Conway later rediscovered this in a different form and showed that the skein relation together with a choice of value on the unknot was enough to determine the polynomial.”
 
@@ -443,11 +443,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 57K20 (2-dimensional topology (including mapping class groups of surfaces, Teichmüller theory, curve complexes, etc.)). arXiv math.GT. Level 2: later undergraduate.
 
-**Definition.** A closed surface is a surface that is compact and has no boundary. The sphere counts as the connected sum of zero tori. A connected sum glues two surfaces together after you cut a small disc out of each.
+**Definition.** A closed surface is a compact two-dimensional manifold without boundary.
 
 **Problem.** The classification of surfaces: every connected closed surface is a sphere with handles or a connected sum of projective planes.
 
-**How the definition helps.** Each condition removes cases that the short list of surfaces cannot handle. Compactness excludes surfaces such as the Loch Ness monster surface (a plane with infinitely many handles), which need a space of ends to classify. Excluding boundary removes the Möbius strip and the disc, which are handled afterwards by counting boundary circles. The hard step that remains is to show that every compact surface can be triangulated.
+**How the definition helps.** Closedness excludes the disk and surfaces with infinitely many handles. Our own explanation uses the classification theorem for compact connected surfaces. With no boundary circles to record, its orientable and nonorientable cases give exactly the stated list.
 
 **Wikipedia:** [Surface (topology)](https://en.wikipedia.org/wiki/Surface_%28topology%29). It says: “In other words, Euler characteristic and orientability completely classify closed surfaces up to homeomorphism.”
 
@@ -493,9 +493,9 @@
 
 *Rules out counterexamples.* MSC 57K20 (2-dimensional topology (including mapping class groups of surfaces, Teichmüller theory, curve complexes, etc.)), 57Q05. arXiv math.GT. Level 2: later undergraduate.
 
-**Definition.** The definition requires the surface of a polyhedron to be a manifold. So each edge lies on exactly two faces, and the faces around each vertex form a single cycle.
+**Definition.** A closed polyhedral surface is a finite polygonal complex with two incident face sides at every edge and a single cyclic link at every vertex.
 
-**Problem.** Two numbers decide the topological type of a polyhedron's surface: its Euler characteristic χ and whether it is orientable.
+**Problem.** Euler characteristic and orientability determine the homeomorphism type of a connected closed polyhedral surface.
 
 **How the definition helps.** The manifold condition lets the classification of closed surfaces apply directly. The condition rules out two cubes that share only one edge, and two cubes that share only one vertex. For example, an orientable polyhedron with χ = 2 must be a topological sphere. The deep part is the classification of surfaces itself; the definition only makes it available.
 
@@ -509,11 +509,11 @@
 
 *True by definition.* MSC 57K30 (General topology of 3-manifolds), 57M10. arXiv math.GT. Level 2: later undergraduate.
 
-**Definition.** Take p ≥ 2 and q coprime to p. Define L(p;q) as the quotient of the unit sphere in ℂ² by the cyclic action generated by (z, w) ↦ (exp(2πi/p)z, exp(2πiq/p)w). The gluing definition joins two solid tori by identifying their boundary tori.
+**Definition.** Let p ≥ 2 and q be coprime integers. The lens space L(p;q) is the orbit space of the unit sphere in ℂ² under (z,w) ↦ (exp(2πi/p)z, exp(2πiq/p)w) and its powers.
 
 **Problem.** For every q coprime to p, the fundamental group of L(p;q) is ℤ/pℤ.
 
-**How the definition helps.** The quotient definition supplies a simply connected cover, so one reads the fundamental group from the group of symmetries of the cover (our own). No nonidentity power of the generator can fix a point, because at least one coordinate is nonzero and q is coprime to p (our own). The sphere is simply connected, so it is the universal cover and its covering group is ℤ/pℤ (our own). With the gluing definition, one calculates the fundamental group from the two solid tori and their overlap (our own). The work shifts into identifying the two constructions (our own).
+**How the definition helps.** Our own argument uses the quotient map as the universal cover. A power fixing a nonzero first coordinate has exponent divisible by p. Coprimality gives the same conclusion for a nonzero second coordinate, so the cyclic action is free. The sphere S³ is simply connected, hence its deck group ℤ/pℤ gives the fundamental group.
 
 **Wikipedia:** [Lens space](https://en.wikipedia.org/wiki/Lens_space). It says: “The fundamental group of all the lens spaces L(p;q₁,…, qₙ) is ℤ/pℤ independent of the qᵢ.”
 
@@ -525,11 +525,11 @@
 
 *True by definition.* MSC 57K30 (General topology of 3-manifolds), 57M10. arXiv math.GT. Level 2: later undergraduate.
 
-**Definition.** Take p ≥ 2 and q coprime to p. Define L(p;q) as the quotient of the unit sphere in ℂ² by the cyclic action generated by (z, w) ↦ (exp(2πi/p)z, exp(2πiq/p)w). In the gluing description, one joins two solid tori by identifying their boundary tori.
+**Definition.** Let p ≥ 2 and q be coprime integers. The lens space L(p;q) is the orbit space of the unit sphere in ℂ² under (z,w) ↦ (exp(2πi/p)z, exp(2πiq/p)w) and its powers.
 
 **Problem.** If q′ ≡ ±q or q′q ≡ ±1 modulo p, then L(p;q) and L(p;q′) are homeomorphic. The homeomorphism may reverse orientation.
 
-**How the definition helps.** The quotient definition makes each homeomorphism a coordinate change that carries orbits to orbits (our own). Complex conjugation in the second coordinate changes the generator for q into the generator for −q (our own). If rq ≡ 1 modulo p, raise the generator to the rth power to get the same cyclic group (our own). Now swapping coordinates gives the generator for r (our own). With the gluing definition one must track changes of coordinates on the boundary tori instead (our own). The hard classification step is the converse, which the source notes does not follow from these symmetries.
+**How the definition helps.** Our own proof carries orbits to orbits by changing coordinates. Conjugating the second coordinate replaces q by −q. For rq ≡ 1 modulo p, the rth power generates the same group. Swapping coordinates then gives the generator for r, so these changes give all the stated homeomorphisms.
 
 **Wikipedia:** [Lens space](https://en.wikipedia.org/wiki/Lens_space). It says: “they are "obviously" homeomorphic, as one can easily produce a homeomorphism. It is harder to show that these are the only homeomorphic lens spaces.”
 
@@ -573,7 +573,7 @@
 
 *True by definition.* MSC 57M05 (Fundamental group, presentations, free differential calculus), 57K10. arXiv math.GT. Level 2: later undergraduate.
 
-**Definition.** The standard torus divides the three-sphere into two solid tori, each shaped like a filled doughnut. For coprime positive integers p and q, the torus knot winds p times around one core circle and q times around the other.
+**Definition.** On the standard torus in S³, a (p,q) torus knot is a simple closed curve of slope (p,q), for coprime positive integers p,q. Its oriented class winds p times around the core of one complementary solid torus and q times around the other.
 
 **Problem.** The group of loops around the (p, q) torus knot has generators x and y and just one relation, xᵖ = yᑫ.
 
@@ -603,13 +603,13 @@
 
 **Remember:** The loops that return upstairs are the ones from upstairs.
 
-*Makes the theorem clean to state or prove.* MSC 57M10 (Covering spaces and low-dimensional topology), 55Q05. arXiv math.AT. Level 2: later undergraduate.
+*True by definition.* MSC 57M10 (Covering spaces and low-dimensional topology), 55Q05. arXiv math.AT. Level 2: later undergraduate.
 
 **Definition.** The fiber over a point is the set of points that map to it. Monodromy lets a loop class act on that fiber by sending a starting point to the endpoint of its lift.
 
 **Problem.** For a covering, the loop classes that fix a chosen point form its monodromy stabilizer. This subgroup consists exactly of the classes of loops that project from loops upstairs based at that point.
 
-**How the definition helps.** A loop class fixes the chosen point exactly when its lift returns there (our own). Such a lift is a loop upstairs, and every loop upstairs lifts its own projection (our own). The path and homotopy lifting theorems make the endpoint independent of the representative (our own).
+**How the definition helps.** Our own argument reads the stabilizer from the lifted endpoint. A loop fixes the chosen point exactly when its lift there is closed. Conversely, a based loop upstairs is the unique lift of its projection from that point. Homotopy lifting makes this endpoint test independent of the representative.
 
 **nLab:** [monodromy](https://ncatlab.org/nlab/show/monodromy). It says: “it is independent of the choice of γ in the given homotopy class of paths due to the homotopy-lifting property”
 
@@ -621,11 +621,11 @@
 
 *True by definition.* MSC 57M10 (Covering spaces and low-dimensional topology). arXiv math.AT. Level 2: later undergraduate.
 
-**Definition.** Fix a connected base B with a base point. Call a connected pointed cover universal if it has exactly one pointed map over B to every connected pointed cover. A pointed map over B commutes with the projections to B and keeps the base points. The usual definition calls a cover universal if it is simply connected, that is, path-connected with every loop contractible.
+**Definition.** Fix a connected base B with a base point. Call a connected pointed cover universal if it has exactly one pointed map over B to every connected pointed cover. A pointed map over B commutes with the projections to B and keeps the base points.
 
 **Problem.** A pointed universal cover is unique up to a unique isomorphism over the base.
 
-**How the definition helps.** With the universal-property definition, uniqueness is the standard argument for initial objects. The maps in both directions compose to a pointed self-map over B, and the only such map is the identity. The nLab supports the key step: maps between covers over B are unique once the image of one point is fixed. In our own account, the work moves to the lifting criterion, which shows that a simply connected cover has this universal property. That criterion needs a base that is path-connected and locally path-connected.
+**How the definition helps.** Our own argument applies the universal property in both directions. Each composite is a pointed map over B from a universal cover to itself. The identity is such a map, so uniqueness forces both composites to be identities.
 
 **nLab:** [universal covering space](https://ncatlab.org/nlab/show/universal+covering+space). It says: “and that these are unique once we specify the image of a single point, which we may freely do (in the given fiber).”
 
@@ -639,11 +639,11 @@
 
 *True by definition.* MSC 57M10 (Covering spaces and low-dimensional topology). arXiv math.AT. Level 2: later undergraduate.
 
-**Definition.** Let G = π₁(B, b) be the fundamental group of the base. Describe a connected cover by the action of G on its fiber over b, which comes from lifting loops. The action is transitive, so the fiber is the set of right cosets Hg of a subgroup H. The geometric definition uses a map that splits into separate copies over small open sets.
+**Definition.** For a connected cover of a path-connected, locally path-connected base B, lifting loops gives a right action of π₁(B,b) on the fiber. Choosing a point identifies the fiber with the right cosets Hg of its stabilizer H, with G = π₁(B,b) acting by right multiplication.
 
-**Problem.** Let B be path-connected and locally path-connected, and let H be the image of the fundamental group of a connected cover. Its deck group, the group of self-maps of the cover over B, is isomorphic to N(H)/H. Here the normalizer N(H) is the set of g in G with gHg⁻¹ = H.
+**Problem.** For such a cover, its group of deck transformations is isomorphic to N(H)/H, where N(H) consists of elements n satisfying nHn⁻¹ = H.
 
-**How the definition helps.** With covers as coset actions, a deck map is a bijection of cosets that respects the action, which is pure group theory. In our own account, such a bijection is fixed by the image Hn of the coset H. That image must have the same stabilizer as H, which holds exactly when n is in N(H). Two elements n and n′ give the same bijection exactly when Hn = Hn′. The work moves to the monodromy correspondence between covers and sets with an action of G.
+**How the definition helps.** Monodromy identifies deck transformations with equivariant permutations of the fiber. In our own calculation, sending H to Hn forces Hg to map to Hng. This gives a permutation exactly when H and Hn have the same stabilizer, equivalently nHn⁻¹ = H. Composition multiplies representatives, and the kernel is H.
 
 **nLab:** [category of covering spaces](https://ncatlab.org/nlab/show/category+of+covering+spaces). It says: “For X a topological space then forming monodromy is a functor from the category of covering spaces over X to that of permutation groupoid representations of the fundamental groupoid of X”
 
@@ -687,7 +687,7 @@
 
 **Remember:** Keep exactly the sheets lying over the image of each point.
 
-*Makes the theorem clean to state or prove.* MSC 57M10 (Covering spaces and low-dimensional topology). arXiv math.AT. Level 2: later undergraduate.
+*True by definition.* MSC 57M10 (Covering spaces and low-dimensional topology). arXiv math.AT. Level 2: later undergraduate.
 
 **Definition.** Let p map a covering space E onto X, and let f map Y continuously to X. The pullback consists of pairs (y, e) with f(y) = p(e), with the topology inherited from Y × E. Its projection sends each pair to y.
 
@@ -719,13 +719,13 @@
 
 **Remember:** With no points to check, the empty space passes every local test.
 
-*Makes the theorem clean to state or prove. Confidence: low.* MSC 57N99 (Topological manifolds), 54A05. arXiv math.GT, math.GN. Level 2: later undergraduate.
+*True by definition. Confidence: low.* MSC 57N99 (Topological manifolds), 54A05. arXiv math.GT, math.GN. Level 2: later undergraduate.
 
-**Definition.** A topological n-manifold is a Hausdorff space with a countable base of open sets. Each point has a neighbourhood homeomorphic to an open set in ℝⁿ. The empty space has no points, so every condition about points holds.
+**Definition.** For an integer n ≥ 0, a topological n-manifold is a second-countable Hausdorff space locally homeomorphic to ℝⁿ at every point.
 
 **Problem.** The empty space is an n-manifold for every n. So the invariance of dimension, which says that a manifold has only one dimension, holds only for nonempty manifolds.
 
-**How the definition helps.** The definition checks conditions at each point, so the empty space satisfies them all. In our own reading, this costs one exception, since "the dimension of a manifold" needs a nonempty manifold. It also pays back, in our own reading. The boundary of a closed manifold is the empty manifold, and a closed manifold bounds exactly when it is cobordant to the empty manifold.
+**How the definition helps.** The empty family is a countable base for the empty space. The Hausdorff and chart conditions hold vacuously, for there are no points to check. Our own observation is that this works for every n, so uniqueness of dimension requires nonemptiness.
 
 **Paper or page:** [Empty Topological Space is n-Manifold](https://proofwiki.org/wiki/Empty_Topological_Space_is_n-Manifold), [Empty Topological Space is Hausdorff](https://proofwiki.org/wiki/Empty_Topological_Space_is_Hausdorff). It says: “Let T = (∅, {∅}) be the empty topological space. Then T is a topological n-manifold for every n ∈ ℕ.”
 
@@ -760,7 +760,7 @@
 
 **Problem.** For finite CW complexes M and N, χ(M × N) = χ(M) · χ(N).
 
-**How the definition helps.** The cell-count definition makes the formula a product because cells in the product are pairs of cells and their dimensions add. In our own proof, the sign for each product cell is the product of the two original signs. The alternating count therefore factors. The Betti-number proof instead uses the Künneth formula, which computes homology of products from the homology of the factors. The work shifts to identifying the cell count with the alternating sum of Betti numbers.
+**How the definition helps.** A product cell has dimension equal to the sum of its factor dimensions. In our own count its sign is therefore the product of their signs. Summing over all pairs of cells gives χ(M)χ(N).
 
 **Wikipedia:** [Euler characteristic](https://en.wikipedia.org/wiki/Euler_characteristic). It says: “Also, the Euler characteristic of any product space M × N is χ(M × N) = χ(M) · χ(N).”
 
@@ -776,7 +776,7 @@
 
 **Problem.** A k-sheeted cover of a finite CW complex has k times its Euler characteristic.
 
-**How the definition helps.** The cell-count definition makes the formula immediate because each cell lifts once per sheet. In our own proof, lift the map attaching each cell from its closed disk, which is simply connected. The lifted disks attach the cells of the covering space. Every dimension therefore has k times as many cells. The Betti-number definition does not give this count directly because the homology groups need not grow by k. The work shifts to proving that the counts agree with the Betti-number definition.
+**How the definition helps.** Every cell downstairs contributes one cell of the same dimension per sheet. In our own argument, each characteristic map lifts from its disk in exactly k ways because the disk is simply connected. The lifted maps give the cells upstairs, so their alternating count is k times the original count.
 
 **Wikipedia:** [Euler characteristic](https://en.wikipedia.org/wiki/Euler_characteristic). It says: “Similarly, for a k-sheeted covering space M̃ → M, one has χ(M̃) = k · χ(M).”
 
@@ -870,11 +870,11 @@
 
 ### Joint transversality excludes families with only bad parameters
 
-**Remember:** Test the parameter projection on the joint inverse image.
+**Remember:** Source and parameter derivatives together supply every direction normal to the submanifold.
 
 *Rules out counterexamples.* MSC 57R35 (Differentiable mappings in differential topology), 58K05. arXiv math.DG. Level 2: later undergraduate.
 
-**Definition.** A family is jointly transverse to a submanifold if its derivatives in source and parameter directions together span all directions missing from the submanifold. Test this at each point the family maps into the submanifold.
+**Definition.** Let F: M × P → N be smooth and S an embedded submanifold of N. Joint transversality means that at every (x,p) with y = F(x,p) in S, the image of dF plus TᵧS equals TᵧN.
 
 **Problem.** For a jointly transverse smooth family on manifolds without boundary, almost every parameter gives a transverse map. The exceptional parameters form a set of measure zero in local coordinates.
 
@@ -983,7 +983,7 @@
 
 ### Closed embedded submanifolds admit smooth extensions
 
-**Remember:** Blend extensions with weights that stay inside their patches.
+**Remember:** Local slices extend functions nearby, and closedness gives an open patch everywhere else.
 
 *Rules out counterexamples.* MSC 57R40 (Embeddings in differential topology), 58A05. arXiv math.DG. Level 2: later undergraduate.
 
@@ -1035,11 +1035,11 @@
 
 *True by definition.* MSC 57R42 (Immersions in differential topology), 55M25, 53A04. arXiv math.GT, math.DG. Level 2: later undergraduate.
 
-**Definition.** An immersed plane curve is smooth and its velocity never vanishes. For a closed immersed curve, take the map that sends each point of the parameter circle to the unit velocity. Its degree is the turning number, the signed number of turns of the velocity. An alternative definition divides the total signed curvature by 2π.
+**Definition.** For a smooth immersion γ: S¹ → ℝ², the turning number is the degree of the unit tangent map γ′/‖γ′‖: S¹ → S¹.
 
 **Problem.** The turning number stays fixed in a deformation through immersed closed plane curves with continuously varying velocities.
 
-**How the definition helps.** The degree definition gives invariance because a deformation through immersions continuously deforms the unit velocity map. Degree is constant under such a deformation. With the signed-curvature definition, our own comparison is that you must relate the integral to the net change in tangent angle. The work shifts to degree invariance and the agreement of the definitions. The converse is the hard direction of the Whitney–Graustein theorem, which classifies these immersions by turning number.
+**How the definition helps.** The nonzero velocities give a homotopy of unit tangent maps throughout the deformation. Homotopy invariance of degree gives the same turning number at both ends.
 
 **Wikipedia:** [Regular homotopy](https://en.wikipedia.org/wiki/Regular_homotopy). It says: “two immersions are regularly homotopic if and only if they have the same turning number – equivalently, total curvature; equivalently, if and only if their Gauss maps have the same degree/winding number.”
 
@@ -1067,11 +1067,11 @@
 
 *True by definition. Confidence: medium.* MSC 57K10 (Knot theory), 57M05. arXiv math.GT. Level 3: graduate.
 
-**Definition.** For n ≥ 3, a Fox n-coloring is a homomorphism from the link complement group to the symmetry group of a regular n-gon. It sends each meridian, a small loop around a strand, to a reflection. In a diagram, the labels are integers modulo n on arcs. Twice the label on the overpassing arc must equal the sum of the labels on the two underpassing arcs.
+**Definition.** For an integer n ≥ 3, a Fox n-coloring is a homomorphism from the link group to the symmetry group of a regular n-gon. It must send every meridian to a reflection.
 
 **Problem.** The number of Fox n-colorings, including the constant colorings, does not depend on the link diagram. In particular, the existence of a nonconstant Fox 3-coloring is a link invariant.
 
-**How the definition helps.** The representation definition counts maps from a group with marked meridians, which a link equivalence preserves (our own). The Wirtinger presentation gives one meridian generator for each arc, and label i means the reflection tsⁱ, where t is a reflection and s is the rotation through 2π/n. The group relation at a crossing becomes exactly the rule for labels (our own). The work shifts from checking diagram moves to the Wirtinger presentation (our own).
+**How the definition helps.** Our own argument counts homomorphisms preserving the meridian condition, which link equivalences preserve. Label i represents the reflection tsⁱ for a fixed reflection t and generating rotation s. Each Wirtinger crossing relation gives twice the overpassing label as the sum of the underpassing labels modulo n. Exactly n colorings are constant, so the total count also detects nonconstant colorings.
 
 **Wikipedia:** [Fox n-coloring](https://en.wikipedia.org/wiki/Fox_n-coloring). It says: “Such reflections correspond to elements tsⁱ of the dihedral group, where t is a reflection and s is a generating (2π/n) rotation of the n-gon.”
 
@@ -1083,7 +1083,7 @@
 
 *True by definition.* MSC 57K10 (Knot theory), 55M25. arXiv math.GT, math.AT. Level 3: graduate.
 
-**Definition.** Take two disjoint, oriented smooth knots in three-dimensional space. The Gauss map sends a pair of points, one on each knot, to the unit vector from the second to the first. Linking number is its degree, a signed count of preimages taken where the derivative is invertible at each preimage. The diagram definition instead halves the signed crossing count between the knots, with compatible sign conventions.
+**Definition.** Take two disjoint, oriented smooth knots in three-dimensional space. The Gauss map sends a pair of points, one on each knot, to the unit vector from the second to the first. Linking number is its degree, a signed count of preimages taken where the derivative is invertible at each preimage.
 
 **Problem.** Linking number stays fixed during an isotopy, a motion through disjoint knots.
 
@@ -1101,11 +1101,11 @@
 
 *True by definition.* MSC 57K10 (Knot theory), 55N10. arXiv math.GT. Level 3: graduate.
 
-**Definition.** Let K be an oriented knot, a smoothly embedded circle in three-dimensional space. The first homology of its complement is ℤ, generated by a small loop that circles K once in the positive direction. The linking number of a disjoint oriented loop L with K is the integer giving the class of L in that group. The diagram definition instead halves the signed count of crossings between K and L.
+**Definition.** Let K be an oriented knot, a smoothly embedded circle in three-dimensional space. The first homology of its complement is ℤ, generated by a small loop that circles K once in the positive direction. The linking number of a disjoint oriented loop L with K is the integer giving the class of L in that group.
 
 **Problem.** The linking number is an integer. So in any diagram, the signed count of crossings between two knots is even.
 
-**How the definition helps.** The homology definition gives an integer, because the knot complement has first homology ℤ. The diagram definition needs an argument, which the nLab gives: it separates crossings by which knot passes over, and shows that the two signed counts agree. The work shifts to computing the homology of the complement and matching it with the crossing count (our own).
+**How the definition helps.** The class of L has an integer coefficient in the positive meridian basis. By the crossing formula, the signed count of mixed crossings equals twice that coefficient. Our own explanation uses the complement homology computation and its agreement with the crossing formula.
 
 **nLab:** [linking number](https://ncatlab.org/nlab/show/linking+number). It says: “We deduce that n₁ − n₂ = 0 in all cases. Hence n₁ = n₂, and the linking number is equal to ½(2n₁) = n₁ = n₂.”
 
@@ -1119,11 +1119,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 57K10 (Knot theory), 57K14. arXiv math.GT. Level 3: graduate.
 
-**Definition.** The genus of a knot is the least genus of a Seifert surface for it. A Seifert surface is a compact, connected, orientable surface whose boundary is the knot. The unknot is the only knot of genus zero, because it bounds a disk.
+**Definition.** The genus of a tame knot in S³ is the least genus among compact connected orientable surfaces embedded in S³ with that knot as boundary.
 
 **Problem.** Knot genus is additive: the genus of K₁ \# K₂ is the genus of K₁ plus the genus of K₂. So a sum of two nontrivial knots is never the unknot.
 
-**How the definition helps.** Genus is a nonnegative integer that adds up, so a nontrivial summand can never be cancelled. Each nontrivial knot has genus at least 1, so any sum of them has genus at least 1 and is knotted. Our own remark: requiring orientable surfaces matters here, because the nonorientable analogue, the crosscap number, is not additive in general. In codimension at least three, two nontrivial knots can add up to an unknot. What stays hard is the inequality that genus does not drop under sum, which needs cut-and-paste of surfaces.
+**How the definition helps.** Our own deduction uses Schubert’s genus additivity theorem for the equality. A genus-zero Seifert surface with one boundary component is a disk. Only the unknot bounds an embedded disk, so each nontrivial summand has positive genus and their sum does too.
 
 **Wikipedia:** [Seifert surface](https://en.wikipedia.org/wiki/Seifert_surface), [Connected sum](https://en.wikipedia.org/wiki/Connected_sum). It says: “In three dimensions, the unknot cannot be written as the sum of two non-trivial knots. This fact follows from additivity of knot genus”
 
@@ -1137,11 +1137,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 57K10 (Knot theory), 57K14. arXiv math.GT. Level 3: graduate.
 
-**Definition.** A Seifert surface for an oriented knot or link L is a compact, connected, oriented surface in 3-space. Its boundary is L, with the induced orientation. Orientable means the surface has two sides.
+**Definition.** A Seifert surface for a tame oriented link in S³ is a compact connected oriented surface embedded in S³ whose oriented boundary equals the link.
 
-**Problem.** Every tame oriented knot or link has a Seifert surface, built by Seifert's algorithm from a diagram. Its Seifert matrix V is integral, with V − Vᵀ the intersection form of the surface. The Alexander polynomial is det(V − tVᵀ) up to a unit.
+**Problem.** Every tame oriented link admits a Seifert surface by Seifert’s construction. Its integral Seifert matrix V satisfies V − Vᵀ = the intersection matrix with compatible conventions. Its one-variable Alexander polynomial is det(V − tVᵀ) up to a unit.
 
-**How the definition helps.** Because the surface has two sides, each loop on it can be pushed off in the positive direction. The linking numbers of loops with these push-offs form the Seifert matrix. A Möbius band has only one side, so this push-off is not defined there. Every knot bounds such a surface, so the matrix always exists. Different Seifert surfaces give different matrices, related by moves that do not change the Alexander polynomial or the signature (our own remark on the moves). What stays hard is that Seifert's algorithm need not give a surface of least genus.
+**How the definition helps.** Our own explanation uses Seifert’s algorithm for existence, connecting separate surface components by tubes if needed. Linking integral basis cycles with positive normal push-offs gives integer matrix entries. The difference between the positive and negative push-off pairings gives the intersection form with compatible signs. The Seifert matrix formula identifies det(V − tVᵀ) with the one-variable Alexander polynomial up to a unit.
 
 **Wikipedia:** [Seifert surface](https://en.wikipedia.org/wiki/Seifert_surface). It says: “The standard Möbius strip has the unknot for a boundary but is not a Seifert surface for the unknot because it is not orientable.”
 
@@ -1155,11 +1155,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 57K10 (Knot theory). arXiv math.GT. Level 3: graduate.
 
-**Definition.** The connected sum of two knots cuts each knot open and joins the ends. It uses oriented knots, and it joins them so that the orientations match. A prime knot is a nontrivial knot that is not the sum of two nontrivial knots.
+**Definition.** Form the connected sum of two oriented knots in separate balls by removing a small arc from each and joining corresponding ends without twisting. A prime knot is a nontrivial knot admitting no connected sum decomposition with both summands nontrivial.
 
-**Problem.** Every nontrivial oriented knot is a connected sum of prime knots in exactly one way, up to order.
+**Problem.** Every nontrivial tame oriented knot in S³ is a connected sum of prime knots uniquely up to oriented knot type and order.
 
-**How the definition helps.** With orientations, the sum is well defined, and knots then factor uniquely. On unoriented knots, the sum is not well defined: the four oriented sums of the noninvertible pretzel knots P(3,5,7) and P(3,5,9) give two different unoriented knots. Leaving the unknot out of the primes keeps the factorization unique, as leaving 1 out of the prime numbers does (our own comparison). That the unknot is not a sum of two nontrivial knots is a real theorem.
+**How the definition helps.** Orientation fixes the joining convention, so prime decomposition is a statement about oriented knot types. In our own comparison, excluding the unknot prevents insertion of arbitrary unit factors. Schubert’s prime decomposition theorem provides existence and uniqueness.
 
 **Wikipedia:** [Connected sum](https://en.wikipedia.org/wiki/Connected_sum), [Prime knot](https://en.wikipedia.org/wiki/Prime_knot). It says: “Under this operation, oriented knots in 3-space form a commutative monoid with unique prime factorization, which allows us to define what is meant by a prime knot.”
 
@@ -1167,7 +1167,7 @@
 
 ### Reduced alternating diagrams minimize crossings
 
-**Remember:** A reduced alternating diagram already uses the fewest possible crossings.
+**Remember:** Alternate over and under, and exclude crossings cut off by a circle.
 
 *Rules out counterexamples.* MSC 57K10 (Knot theory), 57K14. arXiv math.GT. Level 3: graduate.
 
@@ -1175,7 +1175,7 @@
 
 **Problem.** Every reduced alternating diagram of a knot realizes the knot’s crossing number, the least number of crossings in any diagram.
 
-**How the definition helps.** Reducedness excludes a removable twist that could increase the crossing count, in our own explanation. The Jones polynomial gives a lower bound through its span, the difference between its highest and lowest exponents. For a reduced alternating knot diagram, that span equals its crossing count. In our own example, a circle with one twist is an alternating unknot diagram. Removing the twist gives a diagram with no crossings.
+**How the definition helps.** Reducedness excludes a removable twist, such as a one-crossing drawing of the unknot. Our own argument uses the Jones span bound for every knot diagram. The span equals the crossing count for a reduced alternating knot diagram, so no diagram of that knot has fewer crossings.
 
 **Wikipedia:** [Tait conjectures](https://en.wikipedia.org/wiki/Tait_conjectures). It says: “a knot diagram is called "reduced" if all the "isthmi", or "nugatory crossings" have been removed.”
 
@@ -1189,7 +1189,7 @@
 
 *True by definition. Confidence: medium.* MSC 57K10 (Knot theory). arXiv math.GT. Level 3: graduate.
 
-**Definition.** Take a plane diagram of two disjoint oriented knots. The directions of the two strands and which passes over the other give each crossing a sign. The linking number is half the sum of the signs at crossings between the knots. Another definition counts signed intersections of one knot with an oriented surface bounded by the other.
+**Definition.** Take a plane diagram of two disjoint oriented knots. The directions of the two strands and which passes over the other give each crossing a sign. The linking number is half the sum of the signs at crossings between the knots.
 
 **Problem.** The linking number is unchanged when the two knots switch roles.
 
@@ -1205,11 +1205,11 @@
 
 *True by definition.* MSC 57K10 (Knot theory), 57K14. arXiv math.GT. Level 3: graduate.
 
-**Definition.** A knot in the 3-sphere is fibered if its complement is a bundle over the circle, locally a product with a surface. Let F be that surface and g the map that returns F to itself after one circuit. Use H₁ of the infinite cyclic cover as a module on which t acts by shifting sheets. Define the Alexander polynomial to generate the module's presentation ideal, rather than by a determinant from a spanning surface.
+**Definition.** A fibered knot exterior is a surface bundle over S¹ with connected fiber F and return map g. Its Alexander module is the first integral homology of the infinite cyclic cover, with t acting by deck translation. Its Alexander polynomial generates the zeroth Fitting ideal of that module over ℤ\[t,t⁻¹\].
 
 **Problem.** For a fibered knot the Alexander polynomial is det(tI − A), up to a factor ±tⁿ. Here A is the action of g on H₁(F; ℤ), with the shift t chosen to match it. This determinant is monic and has constant term ±1.
 
-**How the definition helps.** The covering definition lets the return map present the Alexander module directly (our own). Unwrapping the base circle gives F times a line, so the module is H₁(F; ℤ) with t acting as A (our own). Thus tI − A presents the module, and its determinant gives the polynomial. The leading coefficient is 1, and the constant coefficient is ±1 because A is invertible over ℤ (our own). The key topological step is identifying the unwrapped bundle with the infinite cyclic cover of the knot complement (our own).
+**How the definition helps.** Unwrapping the circle gives the infinite cyclic cover F × ℝ. In our own calculation its first homology is free abelian, with t acting by the integral automorphism A induced by g. Thus tI − A is a square presentation, whose determinant generates the ideal. Its leading coefficient is one and its constant term is ±1 since det(A) = ±1.
 
 **Wikipedia:** [Fibered knot](https://en.wikipedia.org/wiki/Fibered_knot), [Alexander polynomial](https://en.wikipedia.org/wiki/Alexander_polynomial). It says: “The Alexander polynomial of a fibered knot is monic, i.e. the coefficients of the highest and lowest powers of t are plus or minus 1.”
 
@@ -1221,11 +1221,11 @@
 
 *True by definition.* MSC 57K12 (Generalized knots (virtual knots, welded knots, quandles, etc.)), 57K10. arXiv math.GT. Level 3: graduate.
 
-**Definition.** In a quandle, x ▷ x = x and each fixed right input gives a bijection preserving the operation. The knot quandle uses paths from a basepoint to the knot's boundary torus, with endpoints allowed to slide on the torus. Its operation inserts a small loop around the knot via the second path. A diagram coloring instead assigns quandle elements to arcs using the operation at each crossing.
+**Definition.** For a finite quandle Q, a Q-coloring of an oriented knot diagram assigns an element of Q to every arc between undercrossings. If the overarc has color b, crossing its positive normal takes the underarc color a to a ▷ b.
 
 **Problem.** For any finite quandle Q, the number of Q-colorings does not depend on the oriented knot diagram.
 
-**How the definition helps.** Counting quandle homomorphisms, which preserve the operation, makes the result depend on the knot quandle rather than the diagram. A homeomorphism of oriented knot complements preserves the path construction and the direction of loops around the knot (our own). The work is to establish the diagram presentation, with one generator per arc and one coloring relation per crossing (our own). Thus each assignment satisfying the crossing rules extends to exactly one homomorphism (our own).
+**How the definition helps.** The fundamental quandle presentation identifies these assignments with homomorphisms from the knot quandle to Q. Each arc gives one generator and each crossing gives its coloring relation. Our own deduction uses invariance of the fundamental quandle under oriented knot equivalence, so every diagram counts the same homomorphisms.
 
 **Wikipedia:** [Racks and quandles](https://en.wikipedia.org/wiki/Racks_and_quandles). It says: “Less powerful but more easily computable invariants of knots may be obtained by counting the homomorphisms from the knot quandle to a fixed quandle Q.”
 
@@ -1243,7 +1243,7 @@
 
 **Problem.** The Alexander polynomial is a unit, so it can be normalized to 1, exactly when G′ equals its own commutator subgroup.
 
-**How the definition helps.** Unlike a diagram determinant, the covering definition identifies the module with G′ made abelian (our own). The zeroth Fitting ideal lies in the annihilator, the set of scalars that kill the whole module (our own). Hence the ideal is the whole ring exactly when the module is zero (our own). First integral homology is the fundamental group made abelian, which is zero precisely when the group equals its own commutator subgroup (our own). The work lies in showing that the covering module admits a square presentation, so this ideal has a single generator (our own).
+**How the definition helps.** Our own argument identifies H₁(X; ℤ) with the abelianization of G′. The knot module has a square presentation, so its determinant is a unit exactly when the presentation matrix is invertible. This holds exactly when its cokernel vanishes, equivalently when G′ equals its commutator subgroup.
 
 **Wikipedia:** [Alexander polynomial](https://en.wikipedia.org/wiki/Alexander_polynomial). It says: “Since the Alexander ideal is principal, Δₖ(t) = 1 if and only if the commutator subgroup of the knot group is perfect (i.e. equal to its own commutator subgroup).”
 
@@ -1255,11 +1255,11 @@
 
 *True by definition.* MSC 57K14 (Knot polynomials), 57K10. arXiv math.GT. Level 3: graduate.
 
-**Definition.** A Seifert surface is a connected oriented surface bounded by a knot. Its Seifert matrix V records linking numbers between basis loops and copies pushed off the surface. Define the Alexander polynomial as det(V − tVᵀ) up to factors ±tⁿ, and the knot signature as the signature of V + Vᵀ. The signature counts positive eigenvalues minus negative ones.
+**Definition.** Choose a compact connected oriented surface embedded in S³ with the knot as oriented boundary. Set Vᵢⱼ to the linking number of basis cycle i with a positive push-off of basis cycle j in integral first homology. Define the Alexander polynomial by det(V − tVᵀ) up to ±tⁿ and the signature by the signature of V + Vᵀ.
 
 **Problem.** For the connected sum K \# J, the Alexander polynomial is the product, up to a unit ±tⁿ. The knot signature is the sum.
 
-**How the definition helps.** The Seifert matrix definitions turn connected sum into a block diagonal matrix, so the claims follow from linear algebra (our own). Join Seifert surfaces for the two knots by a band across a separating sphere (our own). Then a loop from one side has zero linking number with a push-off from the other. Determinants multiply across blocks, and signatures add. The main work is proving that the surface formulas define knot invariants (our own).
+**How the definition helps.** In our own construction a band across a separating sphere joins the two spanning surfaces. Their basis cycles together form a basis, and mixed linking numbers vanish because the sphere separates the cycles. The resulting Seifert matrix is block diagonal. Determinants multiply across blocks, and signatures add.
 
 **Paper or page:** [An Elementary Proof of the Signature of Satellite Knots](https://arxiv.org/abs/2203.03217v2). It says: “If K′ is a satellite of J by K and n is the winding number of the embedding of K in the solid torus, then a Seifert matrix A for K′ is given by the block matrix”
 
@@ -1309,11 +1309,11 @@
 
 *True by definition.* MSC 57K14 (Knot polynomials), 57M10. arXiv math.GT. Level 3: graduate.
 
-**Definition.** Send a positive meridian of an oriented knot in the 3-sphere to 1 to define a homomorphism from the complement group to ℤ. In the corresponding cover X, a meridian, or small loop around the knot, lifts to a path between successive sheets. The shift t between sheets makes H₁(X; ℤ) a module over the Laurent polynomial ring ℤ\[t, t⁻¹\]. The Alexander polynomial generates the ideal of presentation minors of size equal to the number of module generators.
+**Definition.** For an oriented knot, take the cover X corresponding to the kernel of abelianization, with positive meridians mapping to 1 in ℤ. Its Alexander module is H₁(X; ℤ) over ℤ\[t,t⁻¹\], with t acting by positive deck translation. The Alexander polynomial generates its zeroth Fitting ideal.
 
 **Problem.** Equivalent oriented knots have the same Alexander polynomial up to a factor ±tⁿ.
 
-**How the definition helps.** The cover definition makes invariance follow from a homeomorphism of complements that preserves the meridian map (our own). The homeomorphism lifts and commutes with the shift t, so it gives an isomorphism of modules (our own). The ideal depends only on the module, not on its presentation. A Seifert surface, an oriented spanning surface for the knot, gives a square presentation and hence one generator for the ideal (our own). In place of checking invariance for a diagram matrix, one shows that the matrix presents the covering module (our own).
+**How the definition helps.** An oriented knot equivalence preserves the meridian homomorphism and therefore lifts to a homeomorphism commuting with t. Our own deduction gives isomorphic Alexander modules and hence equal Fitting ideals. A Seifert matrix supplies a square presentation, so the ideal is principal and its generators differ by units ±tⁿ.
 
 **Wikipedia:** [Alexander polynomial](https://en.wikipedia.org/wiki/Alexander_polynomial). It says: “The transformation t acts on the homology and so we can consider H₁(X) a module over the ring of Laurent polynomials ℤ\[t, t⁻¹\]. This is called the Alexander invariant or Alexander module.”
 
@@ -1327,7 +1327,7 @@
 
 *True by definition.* MSC 57K14 (Knot polynomials), 57K10. arXiv math.GT. Level 3: graduate.
 
-**Definition.** A Seifert surface is a connected oriented surface bounded by the knot, and its genus g counts its handles. Its first homology has rank 2g. The Seifert matrix V records the linking numbers of basis loops with copies pushed to one side of the surface. Define the Alexander polynomial as det(V − tVᵀ), up to factors ±tⁿ.
+**Definition.** Take a compact connected oriented surface of genus g embedded in S³ with the knot as boundary. Its Seifert matrix V pairs each integral homology basis cycle with each positive push-off by linking number. The Alexander polynomial is det(V − tVᵀ) up to a factor ±tⁿ.
 
 **Problem.** The difference between the highest and lowest exponents in a knot's Alexander polynomial is at most twice the knot's least Seifert surface genus.
 
@@ -1343,11 +1343,11 @@
 
 *True by definition.* MSC 57K16 (Finite-type and quantum invariants, topological quantum field theories (TQFT)), 57K14. arXiv math.GT. Level 3: graduate.
 
-**Definition.** The Conway polynomial ∇ equals 1 on the unknot and obeys ∇(L₊) − ∇(L₋) = z∇(L₀). These links agree outside one site, with a positive crossing, a negative crossing or a smoothing there. Extend a knot invariant to a double point by subtracting its negative crossing value from its positive crossing value. It has finite type of order at most n if the extension vanishes on knots with n + 1 double points.
+**Definition.** The Conway polynomial equals 1 on the unknot and satisfies ∇(L₊) − ∇(L₋) = z∇(L₀) for every oriented skein triple. Extend an invariant to transverse double points by repeatedly subtracting its negative resolution value from its positive resolution value. It has order at most n if this extension vanishes on every knot with n + 1 double points.
 
 **Problem.** For n ≥ 0, the coefficient of zⁿ in the Conway polynomial is finite type of order at most n.
 
-**How the definition helps.** The skein definition makes the difference at a double point equal to z times the value on the smoothed link (our own). Apply the difference rule at each double point in turn, including on links with more than one component (our own). With n + 1 double points the result has a factor zⁿ⁺¹, so the coefficient of zⁿ is zero (our own). Starting with Alexander's diagram determinant instead, one first has to obtain the Conway skein relation and normalization (our own). The work lies in proving that the skein definition gives a well-defined polynomial on oriented links (our own).
+**How the definition helps.** Our own argument applies the skein relation at each double point. Each difference introduces a factor z and replaces that double point by its oriented smoothing. After n + 1 smoothings, the result is divisible by zⁿ⁺¹, so its coefficient of zⁿ vanishes.
 
 **nLab:** [Vassiliev invariant](https://ncatlab.org/nlab/show/Vassiliev+invariant). It says: “The nth coefficient of the Conway polynomial is a Vassiliev invariant of order ≤ n.”
 
@@ -1361,7 +1361,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 57K20 (2-dimensional topology (including mapping class groups of surfaces, Teichmüller theory, curve complexes, etc.)). arXiv math.GT. Level 3: graduate.
 
-**Definition.** An end of a noncompact surface is a way to go to infinity: a consistent choice of an unbounded complementary piece for each compact set. The ends form a space E that is compact and totally disconnected. The ends accumulated by genus, where every neighbourhood holds infinitely many handles, form a closed subset E∞. Here surfaces have no boundary.
+**Definition.** An end selects a component U(K) of the surface outside each compact K, with U(K′) ⊆ U(K) whenever K ⊆ K′. Fixing one selection U(K) gives a basic open set in the end space E. An end belongs to E∞ if every selected component has positive genus.
 
 **Problem.** Two connected orientable surfaces without boundary are homeomorphic exactly when they have the same genus and homeomorphic pairs (E, E∞) of end spaces (Kerékjártó, Richards).
 
@@ -1386,7 +1386,7 @@
 
 **Problem.** If S has genus at least two, then 1 → π₁(S, x) → Mod(S, x) → Mod(S) → 1 is exact. The left map pushes the marked point around a loop, and the right map forgets the mark.
 
-**How the definition helps.** The component definition makes the maps part of the long exact sequence for evaluation at x (our own). Evaluation is a locally trivial bundle whose fiber is the group of homeomorphisms fixing x (our own). For genus at least two, the identity component of the homeomorphism group is contractible, so the first group vanishes. S is connected, so the last map is onto (our own).
+**How the definition helps.** Evaluation at x is a fiber bundle whose fiber consists of homeomorphisms fixing x. Our own argument takes its long exact homotopy sequence, whose connecting map pushes x around a loop. Contractibility of the identity component gives π₁(Homeo⁺(S)) = 0, so point pushing is injective. Connectedness of S makes the forgetful map surjective.
 
 **nLab:** [braid group](https://ncatlab.org/nlab/show/braid+group). It says: “In words: The mapping class group of a punctured surface is a group extension of the mapping class group of the plain surface by the surface braid group on the set of punctures.”
 
@@ -1432,11 +1432,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 57K30 (General topology of 3-manifolds). arXiv math.GT. Level 3: graduate.
 
-**Definition.** A 3-manifold is prime if it is not S³ and every splitting as a connected sum has an S³ factor. It is irreducible if every embedded 2-sphere bounds a ball. The connected sum M \# N removes a ball from each and glues the two boundary spheres. In the orientable case, the only prime manifold that is not irreducible is S² × S¹.
+**Definition.** A closed connected oriented 3-manifold is prime if it differs from S³ and every connected sum decomposition has a factor homeomorphic to S³. Connected sum removes an open ball from each summand and glues the boundary spheres by an orientation-reversing homeomorphism. A manifold is irreducible if every smoothly embedded 2-sphere bounds a ball in the smooth category.
 
-**Problem.** Every closed orientable 3-manifold other than S³ is a connected sum of prime 3-manifolds, unique up to order (Kneser, Milnor). Equivalently, it is a sum of irreducible pieces and copies of S² × S¹.
+**Problem.** Every closed connected oriented smooth 3-manifold other than S³ splits uniquely up to order and oriented homeomorphism into prime summands. Equivalently, its summands are irreducible manifolds other than S³ and copies of S² × S¹.
 
-**How the definition helps.** S³ is the unit for connected sum, so it must be excluded from the primes, as 1 is excluded from the prime numbers. Irreducible pieces are the ones that sphere arguments handle well, and they differ from prime pieces only by S² × S¹. For non-orientable manifolds, S² × S¹ \# N and the twisted S² bundle \# N are homeomorphic when N is non-orientable (our own example). So uniqueness there needs the convention in the quotation.
+**How the definition helps.** Our own observation is that allowing the unit S³ would permit arbitrary extra summands. Excluding it gives the uniqueness statement of the Kneser–Milnor theorem. Among closed connected oriented prime 3-manifolds, only S² × S¹ is reducible.
 
 **Wikipedia:** [Prime decomposition of 3-manifolds](https://en.wikipedia.org/wiki/Prime_decomposition_of_3-manifolds). It says: “This sum is unique as long as we specify that each summand is either irreducible or a non-orientable S² bundle over S¹.”
 
@@ -1453,11 +1453,11 @@
 
 *Rules out counterexamples.* MSC 57K30 (General topology of 3-manifolds), 57R60. arXiv math.GT. Level 3: graduate.
 
-**Definition.** The hypothesis of the Poincaré conjecture is that the closed connected 3-manifold has trivial fundamental group. This means that every loop shrinks to a point. Having the homology of a sphere is not enough.
+**Definition.** A space is simply connected if it is path-connected and every loop in it contracts to a point.
 
-**Problem.** The Poincaré conjecture: every such 3-manifold is homeomorphic to the 3-sphere.
+**Problem.** Every closed simply connected 3-manifold is homeomorphic to S³.
 
-**How the definition helps.** The condition on the fundamental group excludes a known counterexample. Poincaré first claimed that a closed 3-manifold with the homology of a sphere is a sphere. In 1904 he found the counterexample himself. The Poincaré homology sphere has the homology of the sphere, but its fundamental group has 120 elements. He then restated the conjecture with the fundamental group, which excludes this example. The new statement took a century to prove, through Perelman's work on Ricci flow.
+**How the definition helps.** Simple connectivity excludes the Poincaré homology sphere, whose fundamental group has order 120 despite its sphere homology. Our own explanation uses this example to distinguish the two hypotheses. Perelman’s proof of the Poincaré conjecture supplies the classification under the stronger hypothesis.
 
 **Wikipedia:** [Poincaré conjecture](https://en.wikipedia.org/wiki/Poincar%C3%A9_conjecture). It says: “This example made it clear that homology is not powerful enough to characterize the topology of a manifold.”
 
@@ -1471,11 +1471,11 @@
 
 *True by definition.* MSC 57K30 (General topology of 3-manifolds), 57M10. arXiv math.GT. Level 3: graduate.
 
-**Definition.** View the 3-sphere as the group of unit quaternions, with multiplication extending complex multiplication. Define the Poincaré sphere as the quotient by left multiplication by the binary icosahedral group. This is the inverse image of the icosahedron's rotation group in the two-to-one map from unit quaternions to rotations of 3-space. Another description glues pairs of opposite faces of a dodecahedron with a twist.
+**Definition.** View the 3-sphere as the group of unit quaternions, with multiplication extending complex multiplication. Define the Poincaré sphere as the quotient by left multiplication by the binary icosahedral group. This is the inverse image of the icosahedron's rotation group in the two-to-one map from unit quaternions to rotations of 3-space.
 
 **Problem.** The Poincaré sphere has fundamental group of order 120 and the same integral homology as the 3-sphere.
 
-**How the definition helps.** The quotient definition shows a universal cover and the group that gives first homology (our own). Left multiplication acts freely on the simply connected sphere, so the fundamental group is the binary icosahedral group, of order 2 · 60 = 120 (our own). The source says this group is perfect, so its abelianization, the first homology, is zero. Poincaré duality then gives the rest of the homology of a sphere (our own).
+**How the definition helps.** In our own argument, the finite group acts freely by translations on the simply connected sphere, giving the universal cover. The binary icosahedral group therefore gives the fundamental group, of order 2 · 60 = 120. Its perfectness gives zero first homology by abelianization. The quotient is closed and oriented, so integral Poincaré duality and the universal coefficient theorem give the remaining sphere homology.
 
 **Wikipedia:** [Homology sphere](https://en.wikipedia.org/wiki/Homology_sphere). It says: “In this case, the Poincaré homology sphere is isomorphic to S³/Ĩ where Ĩ is the binary icosahedral group, the perfect double cover of I embedded in S³.”
 
@@ -1487,7 +1487,7 @@
 
 *Rules out counterexamples.* MSC 57K30 (General topology of 3-manifolds). arXiv math.GT. Level 3: graduate.
 
-**Definition.** Consider a closed connected surface other than a sphere, embedded in the interior of a three-manifold and locally looking like a coordinate plane. A compressing disk meets the surface only in its boundary, a loop that bounds no disk on the surface. The surface is incompressible if it has no compressing disk. It is two-sided if its neighborhood is a product with an open interval.
+**Definition.** Let S be a closed connected locally flat surface other than a sphere in the interior of a 3-manifold. A compressing disk is an embedded disk meeting S exactly along its boundary, an essential simple closed curve in S. Incompressibility excludes such disks, and two-sidedness requires a neighborhood homeomorphic to S × (−1,1) with S as the middle slice.
 
 **Problem.** For such a two-sided incompressible surface, inclusion induces an injection of fundamental groups. A loop that contracts in the ambient manifold already contracts on the surface.
 
@@ -1503,11 +1503,11 @@
 
 *Rules out counterexamples.* MSC 57K31 (Invariants of 3-manifolds (including skein modules, character varieties)), 57K30. arXiv math.GT. Level 3: graduate.
 
-**Definition.** For a compact oriented 3-manifold M and an integer class in its second homology, take the embedded oriented surfaces that represent it. Add up χ₋ = max(0, −χ) over their components and take the least value. Spheres, discs, tori and annuli count zero.
+**Definition.** For an integral class in H₂(M;ℤ) of a compact oriented 3-manifold M, consider all closed embedded oriented surfaces representing it. Minimize the sum of max(0,−χ(C)) over their connected components C.
 
-**Problem.** The least value of χ₋ over surfaces representing a class extends to a seminorm on H₂(M;ℝ), the Thurston norm. It satisfies the triangle inequality and is linear on multiples of a class.
+**Problem.** This minimum extends to a seminorm x on H₂(M;ℝ), the Thurston norm. It satisfies the triangle inequality and x(ra) = \|r\|x(a) for every real r and class a.
 
-**How the definition helps.** With plain −χ, adding small disjoint spheres would push the value down without limit (our own example). Counting only negative Euler characteristic rules this out, and cut-and-paste of surfaces gives the triangle inequality (Thurston; our own summary). Tori still count zero, so the norm can vanish on nonzero classes, and it is only a seminorm. What stays hard is the shape of the unit ball.
+**How the definition helps.** Our own example adds disjoint null-homologous spheres, driving plain −χ down without changing the class. The componentwise maximum makes each added sphere cost zero. Thurston’s seminorm theorem supplies the triangle inequality, absolute homogeneity and extension to real classes.
 
 **Wikipedia:** [Thurston norm](https://en.wikipedia.org/wiki/Thurston_norm). It says: “χ₋(F) = max(0, −χ(F)) is the absolute value of the Euler characteristic for surfaces which are not spheres (and 0 for spheres).”
 
@@ -1539,11 +1539,11 @@
 
 *True by definition.* MSC 57K32 (Hyperbolic 3-manifolds), 52B45. arXiv math.GT, math.KT. Level 3: graduate.
 
-**Definition.** An ideal tetrahedron has all four vertices at infinity in hyperbolic space. Its shape z is the fourth vertex after moving the first three to 0, ∞, 1 by a fractional linear transformation. Form the rational vector space on shapes, imposing the alternating boundary relation for each ordered set of five distinct vertices. This quotient is the rational pre-Bloch group.
+**Definition.** Take the rational vector space freely generated by complex shapes z ≠ 0,1 of ordered ideal tetrahedra. Read z as the fourth vertex after sending the first three to 0, ∞, 1. The rational pre-Bloch group imposes the alternating sum of the five ordered faces of each ordered five-tuple of distinct ideal vertices as zero.
 
 **Problem.** Sending each shape to its signed volume defines a linear map to ℝ. For an oriented complete cusped hyperbolic three-manifold of finite volume, this map sends its Bloch class to its volume.
 
-**How the definition helps.** Geometric additivity verifies the quotient relation without proving a five-term identity for a special function (our own). A flat tetrahedron contributes zero. The Bloch–Wigner dilogarithm is the function D giving this signed volume from the shape. Summing over a triangulation gives the manifold’s volume (our own). The Bloch invariant theorem identifies that sum of shapes with a class independent of the triangulation.
+**How the definition helps.** Our own argument uses signed volume additivity to make every five-term relation map to zero. The resulting linear map evaluates each tetrahedron by its Bloch–Wigner volume, with flat tetrahedra contributing zero. The Bloch class is represented by the sum of shapes of an oriented ideal triangulation. Its signed tetrahedral volumes sum to the manifold volume.
 
 **Paper or page:** [The Andersen-Kashaev volume conjecture for FAMED geometric triangulations](https://arxiv.org/abs/2410.10776v1). It says: “Let T be an ideal tetrahedron in ℍ³ with complex shape structure z. Then, its volume is given by Vol(T) = D(z) = D((z − 1)/z) = D(1/(1 − z)).”
 
@@ -1552,33 +1552,15 @@
 - [Walter D. Neumann, Extended Bloch group and the Cheeger–Chern–Simons class (2004)](https://doi.org/10.2140/gt.2004.8.413)
 - [Fathi Ben Aribi and Ka Ho Wong, The Andersen-Kashaev volume conjecture for FAMED geometric triangulations (2024), ideal tetrahedron volume proposition](https://arxiv.org/abs/2410.10776v1)
 
-### Asking for the fewest tori makes a graph manifold's structure unique
-
-**Remember:** Use as few tori as you can, and the cut is canonical.
-
-*Rules out counterexamples. Confidence: medium.* MSC 57K35 (Other geometric structures on 3-manifolds), 57K30. arXiv math.GT. Level 3: graduate.
-
-**Definition.** A graph manifold is a 3-manifold that can be cut along disjoint embedded tori into Seifert fibred pieces. A Seifert fibred piece is a union of disjoint circles that looks like a circle bundle over a surface, except at finitely many special circles. A graph structure is a choice of such tori and of the fibrations of the pieces.
-
-**Problem.** Apart from a short list of exceptions, every graph manifold has a unique graph structure with the fewest tori (Waldhausen).
-
-**How the definition helps.** Extra tori can always be added, since a vertical torus cuts a Seifert piece into two Seifert pieces (our own example). Requiring the fewest tori rules out these redundant cuts. This is the graph manifold case of the JSJ decomposition (our own remark). The work stays in Waldhausen's proof.
-
-**Paper or page:** [Homology inclusion of complex line arrangements](https://arxiv.org/abs/2501.10558). It says: “Any graph manifold admits a unique graph structure with a minimal number of tori, except for those listed in \[Satz 8.1\].”
-
-**Sources:**
-
-- [A. Rodau, Homology inclusion of complex line arrangements, arXiv:2501.10558 (2025)](https://arxiv.org/abs/2501.10558)
-
 ### In the topological category every unimodular form is an intersection form
 
 **Remember:** Drop smoothness, and every unimodular form is some 4-manifold's intersection form.
 
 *Makes the theorem clean to state or prove.* MSC 57K40 (General topology of 4-manifolds), 57K41. arXiv math.GT. Level 3: graduate.
 
-**Definition.** The intersection form of a closed oriented 4-manifold is the pairing on its second homology that counts signed intersections of surfaces. It is unimodular by Poincaré duality. A topological 4-manifold is only required to look locally like ℝ⁴ up to homeomorphism, with no smooth structure. The Kirby–Siebenmann invariant in ℤ/2 vanishes when the manifold has a smooth structure.
+**Definition.** For a closed oriented topological 4-manifold M, the intersection form pairs integral degree-two classes modulo torsion by evaluating their cup product on \[M\]. A topological manifold is Hausdorff, second countable and locally homeomorphic to Euclidean space.
 
-**Problem.** Every symmetric unimodular form over ℤ is the intersection form of a closed simply connected topological 4-manifold (Freedman). The form and the Kirby–Siebenmann invariant classify these manifolds up to homeomorphism.
+**Problem.** Every symmetric unimodular form on a finite-rank free abelian group occurs as the intersection form of a closed simply connected oriented topological 4-manifold. The form and the Kirby–Siebenmann invariant classify these manifolds up to orientation-preserving homeomorphism.
 
 **How the definition helps.** Working with topological manifolds lets Freedman use constructions that are only topologically standard, such as Casson handles (our own remark). For even forms, the Kirby–Siebenmann invariant must equal one eighth of the signature mod 2. The smooth version fails: by Donaldson's theorem, no smooth closed simply connected manifold has the E8 form (our own remark). The hard work moves into Freedman's disc embedding theorem (our own remark).
 
@@ -1595,11 +1577,11 @@
 
 *True by definition.* MSC 57K40 (General topology of 4-manifolds), 57R20, 55S10. arXiv math.GT, math.AT. Level 3: graduate.
 
-**Definition.** Let M be a closed oriented smooth four-dimensional manifold and work modulo 2 unless stated otherwise. Its second Wu class v₂ satisfies v₂ ⌣ x = Sq²(x) for every degree-two class x, and the operation Sq² squares x. The intersection form pairs two integral degree-two classes by evaluating their product on the oriented manifold. Here spin means that the second Stiefel–Whitney class w₂ of the tangent bundle vanishes.
+**Definition.** On a closed oriented smooth four-manifold, the second Wu class v₂ satisfies v₂ ⌣ x = x ⌣ x for every x ∈ H²(M;ℤ/2). This property determines v₂ uniquely. The integral intersection form evaluates cup products on the fundamental class.
 
 **Problem.** The intersection form of a closed spin four-manifold is even: every integral class has even self-pairing.
 
-**How the definition helps.** The Wu definition reduces evenness to showing v₂ = 0 because v₂ measures all cup squares modulo 2. Our own derivation uses Wu's theorem, which gives w₂ = v₂ for oriented manifolds. The spin condition then makes every square zero modulo 2, so every integral self-pairing is even. In contrast, the usual definition of w₂ as the obstruction to a spin structure does not mention cup squares. The work is proving Wu's theorem and constructing the Steenrod operations.
+**How the definition helps.** Our own calculation uses Wu’s formula v₂ = w₂ for oriented manifolds. A spin structure makes w₂(TM) vanish. Reducing an integral class modulo 2 therefore makes its cup square zero, so its integral self-pairing is even.
 
 **nLab:** [Wu formula](https://ncatlab.org/nlab/show/Wu+formula), [Wu class](https://ncatlab.org/nlab/show/Wu+class). It says: “The intersection form of a closed spin topological 4-manifold is even.”
 
@@ -1611,11 +1593,11 @@
 
 *Rules out counterexamples.* MSC 57N45 (Flatness and tameness of topological manifolds), 57N50. arXiv math.GT. Level 3: graduate.
 
-**Definition.** An embedded (n − 1)-sphere in the n-sphere is locally flat if the embedding extends to an embedding of a thickened sphere. The thickened sphere is a collar on both sides, that is, the sphere times an interval.
+**Definition.** An embedded (n − 1)-sphere in Sⁿ is locally flat if ambient coordinates near each of its points identify it with a coordinate hyperplane.
 
 **Problem.** Every locally flat (n − 1)-sphere in the n-sphere bounds a ball on each side (the generalized Schoenflies theorem).
 
-**How the definition helps.** Local flatness rules out the wild spheres for which the theorem is false. In three dimensions, Alexander's horned sphere is a topological sphere whose outside is not simply connected; it fails to be locally flat at a Cantor set of points. Brown, and independently Mazur with Morse, proved the theorem in every dimension for locally flat spheres. The smooth and piecewise-linear versions in dimension 4 are still open.
+**How the definition helps.** Local flatness excludes Alexander’s horned sphere, whose exterior is not simply connected. Its wild points admit no chart in which the sphere is a coordinate plane. The generalized Schoenflies theorem supplies the ball on each side under the local flatness hypothesis.
 
 **Wikipedia:** [Schoenflies problem](https://en.wikipedia.org/wiki/Schoenflies_problem), [Alexander horned sphere](https://en.wikipedia.org/wiki/Alexander_horned_sphere), [Knot (mathematics)](https://en.wikipedia.org/wiki/Knot_%28mathematics%29). It says: “At these Cantor points, the sphere is "wild". This set of wild points is the reason the Schoenflies theorem fails in three dimensions.”
 
@@ -1627,7 +1609,7 @@
 
 ### Mod 2 orientations give Poincaré duality on every closed manifold
 
-**Remember:** Over ℤ/2 every manifold is oriented, so duality never fails.
+**Remember:** Modulo two, each local homology group has just one generator.
 
 *Rules out counterexamples.* MSC 57N65 (Algebraic topology of manifolds), 55N25, 55M05. arXiv math.AT, math.GT. Level 3: graduate.
 
@@ -1635,7 +1617,7 @@
 
 **Problem.** For a closed n-manifold M, the cohomology Hᵏ(M; ℤ/2) is isomorphic to the homology Hₙ₋ₖ(M; ℤ/2) for all k.
 
-**How the definition helps.** Orientation is defined relative to the coefficients, so changing to ℤ/2 removes the obstruction for free. Our own example: for the real projective plane, H₂ with ℤ coefficients is zero but H⁰ is ℤ, while over ℤ/2 both groups are ℤ/2. Our own remark: this is why Stiefel–Whitney numbers work for every closed manifold. Mod 2 duality cannot see integral information such as torsion.
+**How the definition helps.** The unique mod 2 generator varies consistently in every chart, so Poincaré duality applies with these coefficients. Our own example is the real projective plane. Its top integral homology vanishes despite its nonzero integral degree-zero cohomology. Both groups with mod 2 coefficients are ℤ/2.
 
 **Wikipedia:** [Poincaré duality](https://en.wikipedia.org/wiki/Poincar%C3%A9_duality). It says: “Poincaré duality holds for any coefficient ring, so long as one has taken an orientation with respect to that coefficient ring; in particular, since every manifold has a unique orientation mod 2, Poincaré duality holds mod 2”
 
@@ -1649,11 +1631,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 57N65 (Algebraic topology of manifolds), 55N25, 55M05. arXiv math.AT, math.GT. Level 3: graduate.
 
-**Definition.** For an n-manifold M and a point p, the local homology group Hₙ(M, M minus p; ℤ) is ℤ. A local orientation at p is a choice of one of its two generators. An orientation is a choice of local orientations that is locally constant.
+**Definition.** At each point p of an n-manifold without boundary, a local orientation is a generator of Hₙ(M,M∖{p};ℤ) ≅ ℤ. A chart transports each choice to nearby points, giving the two local sheets of the orientation cover. A global orientation is a continuous section.
 
-**Problem.** Every connected manifold M has an orientation double cover. M is orientable if and only if this cover is disconnected, and if M is not orientable the cover is a connected orientable manifold.
+**Problem.** Every nonempty connected manifold without boundary has an orientation double cover. It is disconnected exactly when the manifold is orientable. Otherwise it is connected and orientable.
 
-**How the definition helps.** Local homology gives a definition with no derivatives, so topological manifolds get orientations and fundamental classes. The set of local orientations forms a two-sheeted cover of M by construction. A section of this cover is an orientation, so orientability is the question of whether the cover is trivial. Our own remark: since connected double covers of a simply connected space do not exist, every simply connected manifold is orientable. The same definition with another coefficient ring gives orientations relative to that ring. What stays hard is to show that the homological and smooth definitions agree on smooth manifolds.
+**How the definition helps.** Local charts give two choices at every point, hence a double cover. A section and its opposite split the cover into two sheets. Conversely, in a disconnected double cover of a connected manifold each component maps homeomorphically onto the base. Our own observation is that the chosen generator at each point upstairs orients the cover itself.
 
 **Wikipedia:** [Orientability](https://en.wikipedia.org/wiki/Orientability). It says: “If M is orientable, then M itself is one of these open sets, so O is the disjoint union of two copies of M. If M is non-orientable, however, then O is connected and orientable.”
 
@@ -1663,15 +1645,15 @@
 
 ### Simple homotopy type separates lens spaces that ordinary homotopy cannot
 
-**Remember:** Lens spaces need torsion, not just homotopy, to be told apart.
+**Remember:** The two rotation exponents give the parameters for both lens-space classifications.
 
 *Makes the theorem clean to state or prove.* MSC 57Q10 (Simple homotopy type, Whitehead torsion, Reidemeister-Franz torsion, etc.), 57K31. arXiv math.GT, math.AT. Level 3: graduate.
 
-**Definition.** A lens space L(p;q) is the quotient of the 3-sphere by a free action of the cyclic group of order p. The generator rotates the two complex coordinates by angles in ratio 1 to q. Reidemeister torsion is an invariant computed from the cellular chain complex of the universal cover, twisted by the group action. It detects simple homotopy type, not only homotopy type.
+**Definition.** Let p ≥ 2 and q be coprime integers. The lens space L(p;q) is the orbit space of the unit sphere in ℂ² under (z,w) ↦ (exp(2πi/p)z, exp(2πiq/p)w) and its powers.
 
 **Problem.** L(p;q₁) and L(p;q₂) are homotopy equivalent when q₁q₂ is ± a square mod p. They are homeomorphic only when q₁ is ±q₂ or ±q₂⁻¹ mod p. For example (our own), L(7;1) and L(7;2) are homotopy equivalent but not homeomorphic.
 
-**How the definition helps.** Reidemeister torsion is a finer invariant than homotopy type, so it can see the difference that homotopy groups and homology miss. Lens spaces are the simplest closed manifolds whose homotopy type does not fix their homeomorphism type. Reidemeister classified them up to PL homeomorphism in 1935, and Brody extended this to homeomorphism in 1960. In modern terms, lens spaces are determined by their simple homotopy type. What stays hard is the topological invariance of torsion, which needed Chapman's later theorem in general (our own remark).
+**How the definition helps.** The cyclic quotient describes both classification tests using the same parameter q modulo p. The homotopy classification uses the square condition, while the Reidemeister–Brody homeomorphism classification uses the stricter congruences. In our own example, 2 ≡ 3² modulo 7, but 2 is neither 1 nor −1 modulo 7.
 
 **Wikipedia:** [Lens space](https://en.wikipedia.org/wiki/Lens_space). It says: “The homeomorphism classification is more subtle, and is given by Reidemeister torsion.”
 
@@ -1685,11 +1667,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 57Q10 (Simple homotopy type, Whitehead torsion, Reidemeister-Franz torsion, etc.), 57R80. arXiv math.GT, math.AT. Level 3: graduate.
 
-**Definition.** An h-cobordism is a compact manifold W whose boundary is two manifolds M and N, such that both inclusions into W are homotopy equivalences. A simple homotopy equivalence is one built from elementary expansions and collapses of cells. Whitehead torsion is an element of the Whitehead group Wh(π₁) that vanishes exactly when a homotopy equivalence is simple.
+**Definition.** A smooth h-cobordism is a compact smooth manifold W with boundary M ⊔ N such that both boundary inclusions are homotopy equivalences. It is an s-cobordism when M → W is a simple homotopy equivalence, equivalently when its Whitehead torsion τ(W,M) vanishes.
 
-**Problem.** Let W be an h-cobordism of dimension at least 6 from M to N, with any fundamental group. Then W is a product M × \[0,1\] if and only if its Whitehead torsion vanishes (the s-cobordism theorem).
+**Problem.** A connected smooth h-cobordism W of dimension at least six is diffeomorphic to M × \[0,1\] relative to M exactly when τ(W,M) vanishes.
 
-**How the definition helps.** Simple homotopy tracks exactly the algebra needed to cancel handles, so the cylinder exists when the torsion is zero. In the simply connected case the Whitehead group is trivial, and Smale's h-cobordism theorem is the special case. For other groups, each element of the Whitehead group is realized by some h-cobordism on a given M. What stays hard is to compute Whitehead groups, which are quotients of K₁ of the group ring (our own remark).
+**How the definition helps.** The torsion condition expresses simplicity for any fundamental group. The smooth s-cobordism theorem turns that condition into a product relative to M. Conversely, a product collapses onto its incoming boundary and has zero torsion.
 
 **Wikipedia:** [h-cobordism](https://en.wikipedia.org/wiki/h-cobordism), [Whitehead torsion](https://en.wikipedia.org/wiki/Whitehead_torsion). It says: “If the assumption that M and N are simply connected is dropped, h-cobordisms need not be cylinders; the obstruction is exactly the Whitehead torsion τ (W, M) of the inclusion M ↪︎ W.”
 
@@ -1706,7 +1688,7 @@
 
 **Definition.** The link of a vertex in a simplicial complex is made of the simplices of its star that do not contain it. A combinatorial n-manifold is a simplicial complex in which every vertex link is a PL (piecewise linear) (n−1)-sphere. A triangulated manifold only asks that the whole space be a topological manifold.
 
-**Problem.** The link condition survives subdivision and PL homeomorphism, so it is a property of the PL structure. Pachner's theorem then says that two PL-equivalent combinatorial manifolds are connected by finitely many local Pachner moves.
+**Problem.** The vertex-link condition survives subdivision and PL homeomorphism. Two PL-equivalent finite closed combinatorial manifolds of the same dimension are related by finitely many Pachner moves.
 
 **How the definition helps.** The link condition is local and is kept by subdivision, so PL manifolds become finite combinatorial objects. It excludes the double suspension of a homology sphere X that is not a sphere, such as the Poincaré sphere (our own detail). By the theorem of Edwards and Cannon, this double suspension is a topological sphere. But the link of a suspension vertex is the single suspension of X, which is not a sphere, so this triangulation is not combinatorial.
 
@@ -1718,15 +1700,15 @@
 
 ### Acyclic matchings make the discrete Morse complex well defined
 
-**Remember:** Pair cells with cofaces of degree ±1, and never go round in a circle.
+**Remember:** Pair faces with cofaces and reverse their arrows without creating a directed cycle.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 57Q70 (Discrete Morse theory and related ideas in manifold topology), 55U05. arXiv math.AT, math.CO. Level 3: graduate.
 
-**Definition.** An acyclic matching on a finite CW complex pairs some cells a with a cell w(a) of one dimension higher. Each face a must be regular: its attaching degree in w(a) is ±1. The relation 'a is a face of w(a′)' must generate a partial order, so there are no cycles. The cells that are not matched are the critical cells.
+**Definition.** An acyclic matching pairs cells disjointly, matching each lower cell with a coface in which it is a regular face. The attaching map must carry the entire preimage of the lower open cell homeomorphically onto that cell. Reversing matched edges in the downward face graph must leave no directed cycle, and unmatched cells are critical.
 
 **Problem.** A finite CW complex X with an acyclic matching with n critical cells is homotopy equivalent to a CW complex with n cells. The Morse complex, built on the critical cells, has the same integer homology as X.
 
-**How the definition helps.** Each of the two axioms removes one obstacle to writing down the boundary map of the Morse complex. This boundary is a sum over gradient paths between critical cells, each with a multiplicity built from attaching degrees. The first axiom makes sure that you only divide by ±1, so the multiplicities are integers. The second axiom makes sure that paths cannot go backwards, so the boundary is well defined.
+**How the definition helps.** Regular face incidences make each matched face geometrically available for cancellation. Acyclicity orders the cancellations and makes the gradient path sums finite. Our own explanation uses the discrete Morse theorem for the homotopy equivalence and its integral Morse boundary formula for homology.
 
 **nLab:** [discrete Morse theory](https://ncatlab.org/nlab/show/discrete+Morse+theory). It says: “The first axiom of the partial matching guarantees that one only divides by ±1, while the second axiom guarantees that no such path can go "backwards" from c′ up to c.”
 
@@ -1740,11 +1722,11 @@
 
 *True by definition. Confidence: medium.* MSC 57R15 (Specialized structures on manifolds (spin manifolds, framed manifolds, etc.)), 55R40, 55R15. arXiv math.DG, math.AT. Level 3: graduate.
 
-**Definition.** The groupoid of spin structures on an oriented manifold X is a homotopy fiber. It is the fiber over the trivial class of the map Map(X, BSO) → Map(X, B²ℤ/2) given by composing with w₂, the second Stiefel–Whitney class. A spin structure on X is a point of this fiber over the classifying map of the tangent bundle. So it is a lift of that map through BSpin → BSO, which is the homotopy fiber of w₂.
+**Definition.** Fix the classifying map f: X → BSO of the oriented tangent bundle of a smooth manifold. A spin structure is a lift of f to BSpin, modeled by a null-homotopy of w₂ ∘ f: X → K(ℤ/2,2).
 
-**Problem.** An oriented manifold X admits a spin structure exactly when w₂(TX) = 0. If spin structures exist, H¹(X; ℤ/2) classifies them.
+**Problem.** An oriented smooth manifold X admits a spin structure exactly when w₂(TX) = 0. When structures exist, their isomorphism classes form a torsor for H¹(X; ℤ/2).
 
-**How the definition helps.** With this definition, the existence statement is the universal property of the homotopy fiber. A lift exists exactly when the composite X → BSO → K(ℤ/2, 2) is null-homotopic, that is, when w₂(TX) = 0. Our own remark: when lifts exist, maps X → K(ℤ/2, 1) act on them freely and transitively, which gives the classification by H¹(X; ℤ/2). The real content is that the homotopy fiber of w₂ is BSpin, so this definition agrees with the classical one.
+**How the definition helps.** The composite admits a null-homotopy precisely when the cohomology class it represents vanishes. Our own argument compares two null-homotopies by joining one to the reverse of the other. Their difference is a map into the loop space K(ℤ/2,1), giving a free and transitive H¹ action on classes. The identification of BSpin with the homotopy fiber of w₂ relates this description to classical spin structures.
 
 **nLab:** [spin structure](https://ncatlab.org/nlab/show/spin+structure). It says: “By construction (the universal property of the homotopy fiber) this is the obstruction to the existence of a lift”
 
@@ -1755,7 +1737,7 @@
 
 ### Fractional Euler characteristic decides the geometry of every 2-orbifold
 
-**Remember:** Subtract a fraction for each cone point, and the sign decides the geometry.
+**Remember:** Subtract cone deficits and half corner deficits from the surface’s Euler characteristic.
 
 *Makes the theorem clean to state or prove.* MSC 57R18 (Topology and geometry of orbifolds), 57K20. arXiv math.GT, math.DG. Level 3: graduate.
 
@@ -1763,7 +1745,7 @@
 
 **Problem.** A compact connected 2-orbifold is hyperbolic when χ &lt; 0 and Euclidean when χ = 0. When χ &gt; 0 it is either spherical or bad, which means it has no manifold cover.
 
-**How the definition helps.** A cone point of order m counts as only 1/m of a point, so the Euler characteristic multiplies by the degree under orbifold covers (our own remark). So an orbifold and its manifold covers have the same sign, and Gauss–Bonnet ties the sign to the curvature (our own remark). With the integer Euler characteristic of the underlying surface, no such rule holds: a sphere with three cone points can be hyperbolic. Bad orbifolds such as the teardrop need separate treatment.
+**How the definition helps.** The fractional contributions make Euler characteristic multiply by the degree of a finite orbifold cover. Our own explanation uses orbifold uniformization to supply the geometric structures, with bad orbifolds exceptional when the Euler characteristic is positive. Gauss–Bonnet relates the sign of curvature to the sign of the orbifold Euler characteristic.
 
 **Wikipedia:** [Orbifold](https://en.wikipedia.org/wiki/Orbifold), [Euler characteristic](https://en.wikipedia.org/wiki/Euler_characteristic). It says: “A 2-dimensional compact connected orbifold has a hyperbolic structure if its Euler characteristic is less than 0, a Euclidean structure if it is 0, and if its Euler characteristic is positive it is either bad or has an elliptic structure”
 
@@ -1777,11 +1759,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 57R18 (Topology and geometry of orbifolds), 58H05. arXiv math.DG, math.GT. Level 3: graduate.
 
-**Definition.** An orbifold is a proper étale Lie groupoid, up to Morita equivalence. A Lie groupoid is a groupoid whose objects and arrows form manifolds, with smooth structure maps; étale means that the source and target maps are local diffeomorphisms. Morita equivalence is the notion of equivalence under which two groupoids describe the same space. Equivalently, an orbifold is an étale differentiable stack, and locally it looks like the action groupoid ℝⁿ//G of a finite group G acting on ℝⁿ.
+**Definition.** An orbifold is represented by a proper étale Lie groupoid, up to Morita equivalence. Étale means the source and target are local diffeomorphisms. Proper means their joint map from arrows to ordered pairs of objects has compact inverse images of compact sets.
 
-**Problem.** Orbifolds, as proper étale groupoids, form a bicategory that is the localization of proper étale groupoids at Morita equivalences (Moerdijk–Pronk). In it, the inertia orbifold, which gives the twisted sectors, is the mapping space from the circle groupoid Bℤ.
+**Problem.** The orbifold bicategory localizes proper étale Lie groupoids at Morita equivalences. The inertia orbifold of X is the mapping stack from Bℤ to X, where Bℤ has one object and automorphism group ℤ.
 
-**How the definition helps.** As groupoids, orbifolds keep the isotropy groups, the finite groups that fix each point, so maps and invariants become natural. Satake's definition by charts makes maps between orbifolds hard to define (our reading). The invariants of the underlying quotient space are the wrong ones. It still takes a real argument to rebuild an atlas of charts from a groupoid.
+**How the definition helps.** Morita localization identifies groupoid presentations of the same orbifold, as in the Moerdijk–Pronk theorem. Our own calculation sends the generator of ℤ to an automorphism of an object of X. Isomorphisms between these choices act by conjugation, giving exactly the inertia groupoid.
 
 **nLab:** [orbifold](https://ncatlab.org/nlab/show/orbifold). It says: “It has been noticed that the topological invariants of the underlying topological space of an orbifold as a topological space with an orbifold structure are not appropriate, but have to be corrected”
 
@@ -1796,11 +1778,11 @@
 
 *True by definition. Confidence: medium.* MSC 57R20 (Characteristic classes and numbers in differential topology), 53C05. arXiv math.DG, math.AT. Level 3: graduate.
 
-**Definition.** Choose a connection on a complex vector bundle E, a rule for differentiating sections. Its curvature F is a two-form whose values are linear maps of the fibers. The Chern character of E is the de Rham class, the cohomology class of closed forms, of the trace of exp(iF/2π). Another definition writes it as a polynomial in the Chern classes, the basic characteristic classes of complex bundles.
+**Definition.** For a smooth complex vector bundle E with connection of curvature F, its de Rham Chern character is the class of tr(exp(iF/2π)).
 
 **Problem.** For smooth complex vector bundles E and E′, the Chern character of E ⊗ E′ is the product of their Chern characters.
 
-**How the definition helps.** With the Chern–Weil definition, the identity already holds for the forms that represent the classes. In our own step, the tensor product connection has curvature F ⊗ 1 + 1 ⊗ F′, and these two terms commute. So the exponential splits into a tensor product of two exponentials, and the trace of a tensor product is the product of the traces. In our own comparison, the Chern-class definition needs the splitting principle, which reduces the claim to line bundles. In our own account, Chern–Weil theory carries the work of proving that the class does not depend on the connection and matches the Chern-class formula.
+**How the definition helps.** Our own calculation uses the tensor product curvature F ⊗ 1 + 1 ⊗ F′. Its two summands commute, so exponentiating gives the tensor product of the individual exponentials. Taking the trace multiplies their traces, and taking de Rham classes gives the claimed product.
 
 **nLab:** [Chern character](https://ncatlab.org/nlab/show/Chern+character). It says: “and it is multiplicative under the tensor product of vector bundles”
 
@@ -1848,7 +1830,7 @@
 
 *True by definition.* MSC 57R20 (Characteristic classes and numbers in differential topology), 55R40. arXiv math.AT. Level 3: graduate.
 
-**Definition.** Let E be an oriented real vector bundle of rank 2k. Its Euler class is the pullback of its fiber orientation class to the zero section. The complexification E ⊗ ℂ extends the real scalars in each fiber to complex scalars. Its Chern class c₂ₖ gives pₖ(E) = (−1)ᵏc₂ₖ(E ⊗ ℂ).
+**Definition.** For an oriented real vector bundle E of rank 2k, the Euler class is the pullback of its Thom class along the zero section. Define its top Pontryagin class by pₖ(E) = (−1)ᵏc₂ₖ(E ⊗ ℂ).
 
 **Problem.** For an oriented real vector bundle E of rank 2k, the square of the Euler class is the top Pontryagin class: e(E)² = pₖ(E).
 
@@ -1872,7 +1854,7 @@
 
 **Problem.** The ith real Chern class of the dual bundle is (−1)ⁱ times that of the original bundle.
 
-**How the definition helps.** The curvature definition gives the signs because the dual connection has curvature equal to the negative transpose of Ω. In our own calculation, transposing the matrix preserves its determinant, and negating Ω replaces t by −t. The coefficient of degree i in t thus changes by (−1)ⁱ. The integral proof instead splits the bundle into lines after a pullback that preserves cohomology classes, then computes with their first Chern classes. The work here shifts to proving that the curvature forms represent the real Chern classes for every connection.
+**How the definition helps.** The dual connection has curvature −Ωᵀ. In our own calculation, transposing preserves the Chern determinant and negating curvature replaces t by −t. Its degree-j coefficient thus gains the factor (−1)ʲ, which passes to the real cohomology class by Chern–Weil theory.
 
 **Wikipedia:** [Chern class](https://en.wikipedia.org/wiki/Chern_class), [Chern–Weil homomorphism](https://en.wikipedia.org/wiki/Chern%E2%80%93Weil_homomorphism). It says: “For the dual bundle E\* of E, cᵢ(E\*) = (−1)ⁱcᵢ(E).”
 
@@ -1886,7 +1868,7 @@
 
 *True by definition.* MSC 57R20 (Characteristic classes and numbers in differential topology), 53C05. arXiv math.DG. Level 3: graduate.
 
-**Definition.** A connection differentiates sections of a smooth complex bundle. Its curvature Ω measures the failure of derivatives to commute. The Chern–Weil definition takes the coefficients of det(I + itΩ/2π) as differential forms that represent the real Chern classes. A flat connection has zero curvature.
+**Definition.** For a smooth complex vector bundle with connection of curvature Ω, the coefficient of tʲ in det(I + itΩ/2π) represents its jth real Chern class. A connection is flat if Ω vanishes everywhere.
 
 **Problem.** Every positive-degree real Chern class of a bundle with a flat connection vanishes.
 
@@ -1904,11 +1886,11 @@
 
 *True by definition.* MSC 57R20 (Characteristic classes and numbers in differential topology), 57R75. arXiv math.AT, math.GT. Level 3: graduate.
 
-**Definition.** A Stiefel–Whitney number of a closed n-manifold evaluates a product of Stiefel–Whitney classes of its tangent bundle on the mod 2 fundamental class. The product must have total degree n. Stiefel–Whitney classes are mod 2 cohomology classes of a vector bundle, unchanged by adding a trivial bundle. Stiefel's original definition used the loci where chosen tangent vector fields become dependent.
+**Definition.** For a closed smooth n-manifold M, choose any product of Stiefel–Whitney classes of TM whose degrees sum to n. Its Stiefel–Whitney number is the evaluation of that product on the mod 2 fundamental class of M.
 
-**Problem.** If M is the boundary of a compact manifold W, then every Stiefel–Whitney number of M is zero.
+**Problem.** If M is the boundary of a compact smooth manifold W, then every Stiefel–Whitney number of M is zero.
 
-**How the definition helps.** With the cohomology definition, the theorem follows from two formal facts about the pair (W, M). In our own proof, the tangent bundle of W restricted to M is TM plus a trivial line. So each class of M is the restriction of a class of W. The fundamental class of M maps to zero in W, since it is the boundary of the relative fundamental class of W. So each number, a pairing of a restricted class with that fundamental class, is zero. The work goes into the existence and stability of the classes. This is Pontryagin's theorem, and Thom proved the converse.
+**How the definition helps.** Our own proof extends each characteristic class product across W. Along M the tangent bundle of W splits as TM plus a trivial line, so stability and naturality give the extension. The fundamental class of M maps to zero in W because it bounds the relative fundamental class. Naturality of evaluation therefore gives zero for every such number.
 
 **nLab:** [Stiefel-Whitney number](https://ncatlab.org/nlab/show/Stiefel-Whitney+number). It says: “All Stiefel-Whitney numbers of the boundary of a compact smooth manifold vanish.”
 
@@ -1923,11 +1905,11 @@
 
 *True by definition.* MSC 57R20 (Characteristic classes and numbers in differential topology), 55R25. arXiv math.AT, math.GT. Level 3: graduate.
 
-**Definition.** Define the Euler class of an oriented real vector bundle as the pullback of its Thom class along the zero section. The Thom class is the relative cohomology class that restricts to the orientation generator on each fibre. Another definition takes the class dual to the zero set of a section transverse to the zero section.
+**Definition.** Let Z be the zero section of an oriented real rank-n bundle E. Its Thom class in Hⁿ(E, E ∖ Z; ℤ) restricts to each fibre’s orientation generator. The Euler class is its pullback along the zero section.
 
 **Problem.** For oriented real vector bundles E and F over the same base, e(E ⊕ F) = e(E) ⌣ e(F).
 
-**How the definition helps.** With the Thom class definition, the theorem reduces to the product rule for Thom classes. That rule says the Thom class of E ⊕ F is a product of the two Thom classes, since fibre orientations multiply. In our own proof, restricting to the zero section turns this product into the cup product. The work goes into the Thom isomorphism and this product rule. With the zero-set definition, one needs sections whose zero sets meet transversely.
+**How the definition helps.** With the Thom class definition, the theorem reduces to the product rule for Thom classes. That rule says the Thom class of E ⊕ F is a product of the two Thom classes, since fibre orientations multiply. In our own proof, restricting to the zero section turns this product into the cup product. The work goes into the Thom isomorphism and this product rule.
 
 **nLab:** [Euler class](https://ncatlab.org/nlab/show/Euler+class). It says: “Euler class takes Whitney sum to cup product”
 
@@ -1941,7 +1923,7 @@
 
 *True by definition. Confidence: medium.* MSC 57R20 (Characteristic classes and numbers in differential topology), 55R40. arXiv math.AT. Level 3: graduate.
 
-**Definition.** A complex vector bundle of rank n has a preferred orientation as a real bundle. The Euler class pulls the fiber orientation class back along the zero section. One construction starts by defining the top Chern class cₙ as this Euler class. For lower classes it pulls back to the space of nonzero bundle vectors, where each vector supplies a nowhere-zero section.
+**Definition.** Give a rank-n complex bundle E its complex orientation as a real bundle. Define cₙ(E) by pulling the real Thom class back along the zero section.
 
 **Problem.** The top Chern class of a complex vector bundle equals the Euler class of the underlying oriented real bundle.
 
@@ -1959,11 +1941,11 @@
 
 *True by definition.* MSC 57R20 (Characteristic classes and numbers in differential topology), 55R25. arXiv math.AT. Level 3: graduate.
 
-**Definition.** Let E be a real vector bundle over a space built from cells. Its determinant line is the top exterior power of E. Real line bundles correspond to classes in H¹ with coefficients modulo 2, and the trivial line corresponds to zero. Define the first Stiefel–Whitney class w₁(E) as the class of the determinant line.
+**Definition.** For a real rank-n bundle E over a CW complex X, its determinant line is ∧ⁿE. Define w₁(E) as the class of this line under the classification of real line bundles by H¹(X; ℤ/2).
 
 **Problem.** A real vector bundle E is orientable exactly when w₁(E) = 0.
 
-**How the definition helps.** The determinant-line definition gives the test because E is orientable exactly when its determinant line is orientable. An orientation on a real line bundle lets you choose a positive unit vector in each fiber, so the line bundle is trivial. The classification of real line bundles sends that trivial line to zero. In our own comparison, a definition by cohomology operations needs a separate proof of this interpretation. The work shifts to classifying real line bundles and proving agreement with the cohomological definition.
+**How the definition helps.** Orientations of E correspond to orientations of its determinant line. Given a bundle metric, the positive unit vectors form a trivializing section of an oriented line (our own argument). Conversely, a trivialization orients the line. The classification sends exactly the trivial line to zero.
 
 **Wikipedia:** [Orientation of a vector bundle](https://en.wikipedia.org/wiki/Orientation_of_a_vector_bundle), [Stiefel–Whitney class](https://en.wikipedia.org/wiki/Stiefel%E2%80%93Whitney_class). It says: “To give an orientation to a real vector bundle E of rank n is to give an orientation to the (real) determinant bundle det E = ∧ⁿE of E.”
 
@@ -1977,11 +1959,11 @@
 
 *True by definition.* MSC 57R20 (Characteristic classes and numbers in differential topology), 14C17. arXiv math.AT, math.AG. Level 3: graduate.
 
-**Definition.** Let E have positive complex rank n over a space built from cells, and let P(E) be the bundle of lines in its fibers. Let a be minus the first Chern class of the line that each point of P(E) represents. By Leray–Hirsch, every cohomology class of P(E) has a unique expansion in 1, a, …, aⁿ⁻¹ with coefficients from the base. The coefficients of −aⁿ in reverse order are c₁(E), …, cₙ(E), and the higher classes are zero.
+**Definition.** On the projective bundle π of lines in a complex rank-n bundle E, let a be minus the tautological line’s first Chern class. For n &gt; 0, define cᵢ(E) by the unique relation aⁿ + ∑ᵢ₌₁ⁿ π\*(cᵢ(E))aⁿ⁻ⁱ = 0. Set cᵢ(E) = 0 for i &gt; n.
 
 **Problem.** For a complex vector bundle E of rank n, the classes cᵢ(E) vanish for i &gt; n. Pulling back the bundle along a map pulls back its Chern classes.
 
-**How the definition helps.** The projective-bundle definition makes both claims direct because the defining expansion has exactly n coefficients and stays unique after pullback. In our own naturality argument, the bundle of lines and its chosen line both pull back with E. The relation therefore pulls back, and uniqueness identifies each new coefficient. The axiomatic approach instead assumes naturality and derives the rank bound by splitting the bundle into lines after a suitable pullback. The work here shifts to proving the unique expansion and showing that the resulting classes satisfy the axioms.
+**How the definition helps.** The projective-bundle definition makes both claims direct because the defining expansion has exactly n coefficients and stays unique after pullback. In our own naturality argument, the bundle of lines and its chosen line both pull back with E. The relation therefore pulls back, and uniqueness identifies each new coefficient. Leray–Hirsch gives uniqueness.
 
 **Wikipedia:** [Chern class](https://en.wikipedia.org/wiki/Chern_class). It says: “In particular, one may define the Chern classes of E in the sense of Grothendieck, denoted c₁(E), … cₙ(E) by expanding this way the class −aⁿ, with the relation:”
 
@@ -1999,7 +1981,7 @@
 
 **Problem.** The total Stiefel–Whitney class is multiplicative: w(E ⊕ F) = w(E)w(F).
 
-**How the definition helps.** The total-class definition makes the sum rule a product because the constant 1 includes the two end terms in every positive degree. The result is w(E ⊕ F) = w(E)w(F). Without the constant, the two single-bundle terms would have to be added separately. The work still lies in proving the sum rule. In our own explanation, packing the classes into one product changes the statement, not its proof.
+**How the definition helps.** The degree-k part of the product sums wᵢ(E)wⱼ(F) over i + j = k. The constant terms supply both end terms for k &gt; 0 (our own explanation). The Whitney sum formula identifies this sum with wₖ(E ⊕ F).
 
 **Wikipedia:** [Stiefel–Whitney class](https://en.wikipedia.org/wiki/Stiefel%E2%80%93Whitney_class). It says: “The w₀(E) class contains no information, because it is equal to 1 by definition. Its creation by Whitney was an act of creative notation, allowing the Whitney sum Formula w(E₁ ⊕ E₂) = w(E₁)w(E₂) to be true.”
 
@@ -2013,11 +1995,11 @@
 
 *True by definition.* MSC 57R20 (Characteristic classes and numbers in differential topology), 55N45. arXiv math.AT, math.GT. Level 3: graduate.
 
-**Definition.** Define the Euler class of an oriented vector bundle as the pullback of its Thom class along the zero section. The Thom class restricts to the orientation generator on each fibre. The obstruction definition measures the failure to extend a nowhere-zero section over cells of dimension equal to the rank.
+**Definition.** Let Z be the zero section of an oriented real rank-n bundle E. Its Thom class in Hⁿ(E, E ∖ Z; ℤ) restricts to each fibre’s orientation generator. The Euler class is its pullback along the zero section.
 
-**Problem.** Let M be a closed oriented m-manifold inside a closed oriented 2m-manifold W. The self-intersection number of M equals the Euler class of its normal bundle, evaluated on \[M\].
+**Problem.** Let M be a closed oriented m-manifold smoothly embedded in a closed oriented 2m-manifold W. The self-intersection number of M equals the Euler class of its normal bundle, evaluated on \[M\].
 
-**How the definition helps.** With the Thom class definition, the dual class of M, restricted to M, is the Euler class by definition. In our own proof, a tubular neighborhood, an open set around M shaped like its normal bundle, identifies the two. Under this identification, the class dual to M is the Thom class of the normal bundle. The self-intersection number evaluates this class, restricted to M, on \[M\]. That restriction is the pullback along the zero section, which is the Euler class. The work goes into the tubular neighborhood theorem and the identification of the dual class with the Thom class.
+**How the definition helps.** Our own proof evaluates the restriction of the Poincaré dual of M on \[M\]. In a tubular neighborhood this dual is the absolute image of the normal Thom class. Restriction to M pulls that class back along the zero section, giving the normal Euler class.
 
 **Wikipedia:** [Euler class](https://en.wikipedia.org/wiki/Euler_class). It says: “if Y is a compact submanifold, then the Euler class of the normal bundle of Y in X is naturally identified with the self-intersection of Y in X.”
 
@@ -2031,11 +2013,11 @@
 
 *True by definition.* MSC 57R20 (Characteristic classes and numbers in differential topology), 55R25. arXiv math.AT, math.GT. Level 3: graduate.
 
-**Definition.** Let E be an oriented real vector bundle over X, with zero section E₀. Its Thom class u lies in the cohomology of E relative to E ∖ E₀ and restricts to the orientation generator on each fibre. Define the Euler class e(E) as the pullback of u to X along the zero section. Another definition uses obstruction theory, and for even rank a curvature formula gives its real image.
+**Definition.** Let E be an oriented real vector bundle over X, with zero section E₀. Its Thom class u lies in the cohomology of E relative to E ∖ E₀ and restricts to the orientation generator on each fibre. Define the Euler class e(E) as the pullback of u to X along the zero section.
 
 **Problem.** If an oriented real vector bundle has a section that is nowhere zero, its Euler class is zero.
 
-**How the definition helps.** With the Thom class definition, the proof is one homotopy and one exact sequence. In our own proof, a nowhere-zero section s is homotopic to the zero section by the straight-line homotopy ts. So e(E) is also the pullback of u along s. But s maps X into E ∖ E₀, where u restricts to zero by the exact sequence of the pair. The work goes into the Thom isomorphism theorem, which gives u.
+**How the definition helps.** Our own proof uses the absolute image of the Thom class, which vanishes off the zero section by relative exactness. A nowhere-zero section therefore pulls it back to zero. Scaling that section to zero gives a homotopy, so its pullback equals the Euler class.
 
 **Wikipedia:** [Euler class](https://en.wikipedia.org/wiki/Euler_class). It says: “If E possesses a nowhere-zero section, then e(E) = 0.”
 
@@ -2045,7 +2027,7 @@
 
 ### Thom’s Steenrod-square definition bounds Stiefel–Whitney classes by rank
 
-**Remember:** A square that raises degree by more than the input degree vanishes.
+**Remember:** Apply a Steenrod square to the Thom class, then undo the Thom isomorphism.
 
 *True by definition.* MSC 57R20 (Characteristic classes and numbers in differential topology), 55S10. arXiv math.AT. Level 3: graduate.
 
@@ -2053,7 +2035,7 @@
 
 **Problem.** For a real vector bundle E of rank n, wᵢ(E) = 0 for i &gt; n and w₀(E) = 1. The top class wₙ(E) is the mod 2 Euler class.
 
-**How the definition helps.** Thom's definition gives the rank bound because a Steenrod square is zero when its index exceeds the input degree n. The zeroth square is the identity, so w₀(E) = 1. In our own calculation, Sqⁿ(u) is the cup square of u. That square is u times the pullback of its zero-section restriction, which defines the mod 2 Euler class. The axiomatic approach instead derives the rank bound by pulling the bundle back to split it into line bundles. The work shifts to the Thom isomorphism and the construction of Steenrod squares with these properties.
+**How the definition helps.** Instability gives Sqⁱ(u) = 0 for i &gt; n, and Sq⁰(u) = u gives w₀ = 1. In our own calculation, Sqⁿ(u) = u ⌣ u. The Thom isomorphism sends the mod 2 Euler class to this square, since the zero section pulls u back to the Euler class.
 
 **Wikipedia:** [Thom space](https://en.wikipedia.org/wiki/Thom_space), [Euler class](https://en.wikipedia.org/wiki/Euler_class). It says: “We can define the ith Stiefel–Whitney class wᵢ(p) of the vector bundle p: E → B by: wᵢ(p) = Φ⁻¹(Sqⁱ(Φ(1))) = Φ⁻¹(Sqⁱ(u)).”
 
@@ -2067,11 +2049,11 @@
 
 *True by definition.* MSC 57R20 (Characteristic classes and numbers in differential topology), 55S10. arXiv math.AT. Level 3: graduate.
 
-**Definition.** Let M be a closed smooth n-manifold, and use cohomology with coefficients modulo 2. The Steenrod squares Sqᵏ are cohomology operations that raise degree by k and commute with pullback. The Wu class vₖ is the unique class with vₖ ⌣ x = Sqᵏ(x) for every x of degree n − k. Poincaré duality gives uniqueness because the cohomology product pairs complementary degrees without a kernel.
+**Definition.** On a closed smooth n-manifold M, use cohomology modulo 2. For 0 ≤ k ≤ n, vₖ is the unique degree-k class satisfying vₖ ⌣ x = Sqᵏ(x) for every degree-(n−k) class x.
 
 **Problem.** A homotopy equivalence between closed smooth manifolds pulls back the Stiefel–Whitney classes of one tangent bundle to those of the other.
 
-**How the definition helps.** The Wu definition makes invariance easy because a homotopy equivalence preserves cup products and commutes with Steenrod squares. It therefore pulls back each Wu class to the unique class satisfying the same rule. Wu's theorem expresses every tangent Stiefel–Whitney class as a sum of Steenrod squares applied to Wu classes. These sums commute with pullback too. In our own comparison, defining the classes from tangent bundles does not give this directly because a homotopy equivalence need not identify those bundles. The substantial work is proving Wu's theorem.
+**How the definition helps.** A homotopy equivalence preserves cup products and Steenrod squares, so uniqueness makes the Wu classes invariant (our own argument). Wu’s theorem expresses the tangent Stiefel–Whitney classes as sums of squares of Wu classes. Each sum commutes with pullback.
 
 **nLab:** [Wu class](https://ncatlab.org/nlab/show/Wu+class). It says: “is defined to be the class that "represents" Sqᵏ(−) under the cup product”
 
@@ -2087,11 +2069,11 @@
 
 *True by definition.* MSC 57R25 (Vector fields, frame fields in differential topology), 37C10. arXiv math.DG, math.DS. Level 3: graduate.
 
-**Definition.** Define a global flow on M as a smooth action of the additive group ℝ. That is a smooth map φ: ℝ × M → M with φ₀ the identity and φₛ ∘ φₜ = φₛ₊ₜ. Another definition takes, for a vector field, the solution curve through each point, defined for all time.
+**Definition.** A global flow on a smooth manifold M is a smooth map φ from ℝ × M to M. Writing φₜ(x) = φ(t,x), require φ₀ = id and φₛ ∘ φₜ = φₛ₊ₜ for all real s and t.
 
 **Problem.** Each time map φₜ of a global flow is a diffeomorphism, with inverse φ₋ₜ.
 
-**How the definition helps.** With the action definition, φₜ ∘ φ₋ₜ = φ₀ is one case of the group law. In our own proof, both maps are smooth because φ is smooth, so φₜ is a diffeomorphism. With the solution-curve definition, the group law is a theorem. It follows from uniqueness of solutions of ordinary differential equations. Smoothness in time and position needs smooth dependence on initial conditions. That is where the work goes, for a complete vector field.
+**How the definition helps.** The action law gives φₜ ∘ φ₋ₜ = φ₀ = φ₋ₜ ∘ φₜ. Both maps are smooth by restriction of φ (our own proof).
 
 **nLab:** [flow of a vector field](https://ncatlab.org/nlab/show/flow+of+a+vector+field). It says: “This yields an action of the additive group (ℝ,+) of real numbers on the differentiable manifold X by diffeomorphisms”
 
@@ -2103,11 +2085,11 @@
 
 *True by definition. Confidence: medium.* MSC 57R25 (Vector fields, frame fields in differential topology), 57R20, 55M25. arXiv math.GT, math.AT. Level 3: graduate.
 
-**Definition.** Let v be a vector field with isolated zeros on a closed oriented manifold M. View v as a section of the tangent bundle and pull back the Thom class along it. Near each zero this gives a local class, and its integer value is the index of that zero. The usual definition takes the degree of v/\|v\| on a small sphere around the zero.
+**Definition.** For a vector field v on a closed oriented manifold, choose an oriented coordinate ball B around each isolated zero containing no other zero. Its index is the evaluation of the tangent Thom class pulled back by v on the relative fundamental class \[B, ∂B\].
 
 **Problem.** For a vector field with isolated zeros on a closed oriented manifold, the indices sum to the Euler characteristic.
 
-**How the definition helps.** The Thom class definition turns the index sum into the value of one cohomology class on \[M\]. In our own account, the pullback along v is the Euler class, because v is homotopic to the zero section. It vanishes away from the zeros, so excision splits its value into the local indices. The real work is the theorem that the Euler class of the tangent bundle has value χ(M) on \[M\]. The nLab states that theorem, and Milnor and Stasheff prove it. One must also check that the local index agrees with the sphere degree.
+**How the definition helps.** Excision splits the relative Thom class pulled back by v into its local contributions (our own argument). Their sum evaluates its absolute image on \[M\]. Scaling v to zero identifies that image with the Euler class. The tangent Euler class evaluates to χ(M).
 
 **nLab:** [Euler class](https://ncatlab.org/nlab/show/Euler+class). It says: “The Euler class of the tangent bundle of a smooth manifold X, evaluated on its fundamental class, is its Euler characteristic χ\[X\].”
 
@@ -2122,11 +2104,11 @@
 
 *True by definition. Confidence: medium.* MSC 57R25 (Vector fields, frame fields in differential topology), 17B66. arXiv math.DG. Level 3: graduate.
 
-**Definition.** Treat a vector field as a derivation, a linear operator on smooth functions that obeys the product rule. Define the bracket \[X, Y\] as the commutator XY − YX. Fields X on M and X′ on N are F-related when dF sends X(p) to X′(F(p)) for every point p. Another definition of the bracket differentiates one field along the flow of the other.
+**Definition.** Treat a vector field as a derivation, a linear operator on smooth functions that obeys the product rule. Define the bracket \[X, Y\] as the commutator XY − YX. Fields X on M and X′ on N are F-related when dF sends X(p) to X′(F(p)) for every point p.
 
 **Problem.** Let F: M → N be smooth. If X is F-related to X′ and Y is F-related to Y′, then \[X, Y\] is F-related to \[X′, Y′\].
 
-**How the definition helps.** With commutators, relatedness becomes an operator identity that passes through products. In our own proof, X is F-related to X′ exactly when X(g ∘ F) = (X′g) ∘ F for every smooth function g on N. Applying this twice gives XY(g ∘ F) = (X′Y′g) ∘ F, and the same holds in the other order. Subtracting gives the claim for the brackets. The work goes into the theorem that derivations are the vector fields, and that the commutator equals the flow definition.
+**How the definition helps.** In our own proof, related fields satisfy X ∘ F\* = F\* ∘ X′ on smooth functions. Applying the identities for X and Y successively gives XY ∘ F\* = F\* ∘ X′Y′. Reversing the order and subtracting proves the bracket identity.
 
 **nLab:** [Lie bracket of vector fields](https://ncatlab.org/nlab/show/Lie+bracket+of+vector+fields). It says: “Taking the commutator uv−vu of these derivations produces another derivation”
 
@@ -2138,11 +2120,11 @@
 
 *True by definition. Confidence: medium.* MSC 57R25 (Vector fields, frame fields in differential topology), 37C10. arXiv math.DG. Level 3: graduate.
 
-**Definition.** Define the Lie derivative of a tensor field T along a vector field X as the derivative at t = 0 of φₜ\*T. Here φₜ is the flow of X, and φₜ\*T is the pullback of T. An algebraic definition sets it to X(f) on functions and the bracket on vector fields, then extends it by the product rule.
+**Definition.** Define the Lie derivative of a tensor field T along a vector field X as the derivative at t = 0 of φₜ\*T. Here φₜ is the flow of X, and φₜ\*T is the pullback of T.
 
 **Problem.** Let X be a complete vector field. If the Lie derivative of T along X is zero, then every flow map φₜ preserves T.
 
-**How the definition helps.** With the flow definition, the group law moves the derivative from time zero to any time t. In our own proof, φₜ₊ₛ\*T = φₜ\*(φₛ\*T), so the derivative in t is φₜ\* applied to the Lie derivative. That is zero, so φₜ\*T = T for every t. With the algebraic definition, one must first prove that it equals the flow derivative. The work goes into that comparison and into the existence of flows.
+**How the definition helps.** The flow law gives φₜ₊ₛ\*T = φₜ\*(φₛ\*T). In our own proof, differentiating in s at zero gives the time derivative of φₜ\*T as the pullback of the Lie derivative. That derivative vanishes, so the pullback stays equal to its initial value T.
 
 **Wikipedia:** [Lie derivative](https://en.wikipedia.org/wiki/Lie_derivative). It says: “The Lie derivative is the speed with which the tensor field changes under the space deformation caused by the flow.”
 
@@ -2154,11 +2136,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 57R25 (Vector fields, frame fields in differential topology), 55M25. arXiv math.DG, math.AT. Level 3: graduate.
 
-**Definition.** Let x be an isolated zero of a vector field v. The index of v at x is the degree of the map v/\|v\| from a small sphere around x to the unit sphere. On a manifold with boundary, v is required to point outward along the boundary.
+**Definition.** A field points outward if its normal component points strictly out of the manifold at every boundary point. At an isolated interior zero, its index is the degree of its normalized coordinate field on a small sphere enclosing only that zero.
 
 **Problem.** Poincaré–Hopf theorem. Let v be a vector field with isolated zeros on a compact manifold M, pointing outward with no zeros along any boundary. Then the indices of v sum to the Euler characteristic χ(M).
 
-**How the definition helps.** Fixing the behaviour at the boundary makes the index sum depend only on M. Without the condition, a constant vector field on the closed disc has no zeros, so the sum is 0, but χ(disc) = 1 (our own example). With v pointing outward, the sum is the degree of a Gauss map, which is a topological invariant. Relating it to χ(M) needs one good vector field, for example the gradient of a Morse function (our own remark).
+**How the definition helps.** The outward condition keeps zeros off the boundary throughout a straight-line homotopy between outward fields. Homotopy invariance of total index permits comparison with an outward Morse gradient, whose index sum is χ(M) by Morse theory (our own argument). A constant nonzero field on a disk has index sum zero although the disk has Euler characteristic one (our own example).
 
 **Wikipedia:** [Poincaré–Hopf theorem](https://en.wikipedia.org/wiki/Poincar%C3%A9%E2%80%93Hopf_theorem). It says: “If M has a boundary, then we insist that v be pointing in the outward normal direction along the boundary and have no zeros on the boundary.”
 
@@ -2206,7 +2188,7 @@
 
 **Problem.** Let p from E to B be a submersion and f from A to B any smooth map. Then the fiber product of all pairs (a, e) with f(a) = p(e) is a smooth manifold. Its projection to A is a submersion.
 
-**How the definition helps.** With the local-projection definition, the fiber product is locally a product. In our own step, over a chart where p is the projection U × ℝᵏ → U, the fiber product is f⁻¹(U) × ℝᵏ. Its projection to A again forgets the ℝᵏ coordinates. In our own comparison, the derivative definition needs transversality and the implicit function theorem to build the fiber product. The nLab states the result but not this proof. In our own account, the work moves to the submersion theorem.
+**How the definition helps.** In projection charts for p, the fibre product looks locally like f⁻¹(U) × V, where V contains the free coordinates (our own proof). These charts give the fibre product its smooth structure. Projection to A forgets the V coordinate, so it is a submersion.
 
 **nLab:** [submersion](https://ncatlab.org/nlab/show/submersion). It says: “Moreover, submersions are stable under pullback.”
 
@@ -2222,7 +2204,7 @@
 
 **Problem.** Let f and g be transverse, and let X, Y and Z have no boundary. Then the set of pairs (x, y) with f(x) = g(y) is a submanifold of X × Y. When it is nonempty, its dimension is dim X + dim Y − dim Z.
 
-**How the definition helps.** The diagonal form reduces the theorem to the preimage theorem for one map and one submanifold. In our own proof, the set of pairs is the preimage of the diagonal under f × g. So it is a submanifold whose codimension is that of the diagonal, which is dim Z. The two forms agree because, by taking differences, directions normal to the diagonal correspond to tangent vectors of Z. The work goes into the preimage theorem, which follows from the rank theorem.
+**How the definition helps.** The diagonal form reduces the theorem to the preimage theorem for one map and one submanifold. In our own proof, the set of pairs is the preimage of the diagonal under f × g. So it is a submanifold whose codimension is that of the diagonal, which is dim Z. The two forms agree because, by taking differences, directions normal to the diagonal correspond to tangent vectors of Z.
 
 **nLab:** [transversal maps](https://ncatlab.org/nlab/show/transversal+maps). It says: “the differentials of f and g in these points span the entire tangent space at z”
 
@@ -2236,7 +2218,7 @@
 
 **Definition.** A smooth map f from M to N is a submersion if its derivative is onto at every point. It is proper if the preimage of every compact set is compact.
 
-**Problem.** Ehresmann's fibration theorem: a surjective proper submersion between manifolds is a locally trivial fibre bundle. All fibres over a connected base are then diffeomorphic.
+**Problem.** By Ehresmann’s theorem, a surjective proper submersion between smooth manifolds without boundary is a locally trivial smooth fibre bundle. All fibres over a connected base are then diffeomorphic.
 
 **How the definition helps.** Properness stops fibres from escaping to infinity, so the lifted flows that move one fibre to the next exist long enough. Without it, project the plane with the origin removed to the x-axis (our own example). That is a surjective submersion, but the fibre over 0 is two half-lines while the other fibres are whole lines. The proof lifts vector fields from the base and integrates them (our own sketch).
 
@@ -2250,11 +2232,11 @@
 
 *True by definition.* MSC 57R40 (Embeddings in differential topology), 58A05. arXiv math.DG, math.GT. Level 3: graduate.
 
-**Definition.** Call a smooth map an embedding when it is an immersion and a homeomorphism onto its image with the subspace topology. An immersion is a map whose derivative is injective at every point. Another definition asks that the image have slice charts, charts in which it is a coordinate subspace. The map must then be a diffeomorphism onto it.
+**Definition.** Call a smooth map an embedding when it is an immersion and a homeomorphism onto its image with the subspace topology. An immersion is a map whose derivative is injective at every point.
 
 **Problem.** A proper injective immersion is an embedding with closed image. Proper means that inverse images of compact sets are compact.
 
-**How the definition helps.** With this definition, only a point-set fact remains to check. In our own proof, a proper continuous map into a manifold is closed, because manifolds are locally compact and Hausdorff. A closed continuous injection is a homeomorphism onto its image, and that image is closed. The immersion condition is given. The work goes into the theorem that such embeddings have slice charts, which uses the rank theorem.
+**How the definition helps.** With this definition, only a point-set fact remains to check. In our own proof, a proper continuous map into a manifold is closed, because manifolds are locally compact and Hausdorff. A closed continuous injection is a homeomorphism onto its image, and that image is closed. The immersion condition is given.
 
 **nLab:** [embedding of differentiable manifolds](https://ncatlab.org/nlab/show/embedding+of+differentiable+manifolds). It says: “proper injective immersions are equivalently the closed embeddings”
 
@@ -2266,11 +2248,11 @@
 
 *True by definition. Confidence: medium.* MSC 57R40 (Embeddings in differential topology), 57R45. arXiv math.GT, math.DG. Level 3: graduate.
 
-**Definition.** For a compact manifold M, an embedding into N is the same as an injective immersion. Recast this as two avoidance conditions. The first jet, which records the derivative, must avoid the linear maps that are not injective. The pair of values at two distinct points must avoid the diagonal of N × N.
+**Definition.** For compact M, a smooth map M → N is an embedding if its derivative is injective everywhere and distinct points have distinct images.
 
 **Problem.** Let M be a compact manifold of dimension m without boundary, and N a manifold of dimension n &gt; 2m. Then smooth embeddings are dense among smooth maps M → N.
 
-**How the definition helps.** Both conditions say that a jet avoids a fixed set, so the jet transversality theorems apply directly. Avoiding a set is generic when its codimension exceeds the dimension of the source. In our own count, the non-injective derivatives have codimension n − m + 1, which exceeds m when n ≥ 2m. The diagonal has codimension n in N × N, which exceeds 2m, the dimension of the pairs of points. The work goes into jet transversality and multijet transversality, its version for values at several distinct points.
+**How the definition helps.** Jet and multijet transversality give generic avoidance of both forbidden sets (our own argument). Each deficient-rank stratum has codimension at least n − m + 1 &gt; m. On distinct pairs the diagonal has codimension n &gt; 2m. A transverse preimage of either kind must therefore be empty.
 
 **Wikipedia:** [Whitney embedding theorem](https://en.wikipedia.org/wiki/Whitney_embedding_theorem). It says: “any continuous function from an n-dimensional manifold to an m-dimensional manifold may be approximated by a smooth embedding provided m &gt; 2n”
 
@@ -2305,7 +2287,7 @@
 
 **Problem.** Let f: M → N be transverse to Z, and let W be the inverse image of Z. Then the normal bundle of W in M is isomorphic to the pullback by f of the normal bundle of Z.
 
-**How the definition helps.** With quotients, the derivative df itself gives the isomorphism, because df sends TW into TZ. In our own proof, df induces a map from TM/TW to TN/TZ at each point of W. Transversality makes this map onto. It is injective because TW is exactly the set of vectors that df sends into TZ. That formula, and the fact that W is a submanifold, come from the transverse preimage theorem, where the work is. With perpendicular vectors, df does not preserve perpendicularity, so one needs extra projections.
+**How the definition helps.** In our own proof, compose df on W with the quotient by TZ. Transversality makes this composite surjective on each fibre. The transverse preimage theorem identifies its kernel with TW, so it induces the required smooth bundle isomorphism.
 
 **nLab:** [normal bundle](https://ncatlab.org/nlab/show/normal+bundle). It says: “The normal bundle is fiberwise the quotient of the fiber of the tangent bundle of Y by the fiber of the tangent bundle of X”
 
@@ -2321,7 +2303,7 @@
 
 **Problem.** For any two Riemannian metrics on Y, the two perpendicular bundles of X are canonically isomorphic.
 
-**How the definition helps.** With the quotient definition no metric appears, so each perpendicular bundle needs only one comparison with the quotient. In our own proof, send each perpendicular vector to its class modulo TX. This is a linear bijection on each fibre, because each class has exactly one perpendicular representative. The map is smooth, so it is a bundle isomorphism. Composing one such map with the inverse of the other gives the canonical isomorphism.
+**How the definition helps.** Both perpendicular bundles map smoothly to the same quotient (our own argument). Each coset has a unique representative perpendicular to TX for each metric. Composing one identification with the inverse of the other gives the canonical isomorphism.
 
 **nLab:** [normal bundle](https://ncatlab.org/nlab/show/normal+bundle). It says: “The normal bundle is fiberwise the quotient of the fiber of the tangent bundle of Y by the fiber of the tangent bundle of X”
 
@@ -2333,11 +2315,11 @@
 
 *True by definition. Confidence: medium.* MSC 57R40 (Embeddings in differential topology), 58A05. arXiv math.DG, math.GT. Level 3: graduate.
 
-**Definition.** Call S ⊂ M an embedded submanifold when each point of S has a chart of M in which S is a coordinate slice. A coordinate slice is the set where the last few coordinates are zero. Another definition starts from an injective immersion that is a homeomorphism onto its image.
+**Definition.** Call S ⊂ M an embedded submanifold when each point of S has a chart of M in which S is a coordinate slice. A coordinate slice is the set where the last few coordinates are zero.
 
 **Problem.** Let F: N → M be smooth with image inside an embedded submanifold S. Then F is smooth as a map into S.
 
-**How the definition helps.** With slice charts, the charts of S are the slice charts with the zero coordinates dropped. In our own proof, F is continuous into S because S has the subspace topology. In a slice chart, F into S is F into M followed by dropping the zero coordinates, so it is smooth. The theorem fails for an injective immersion that is not a homeomorphism, such as a figure-eight curve. The work goes into the slice chart theorem, which builds slice charts from the other definition by the rank theorem.
+**How the definition helps.** With slice charts, the charts of S are the slice charts with the zero coordinates dropped. In our own proof, F is continuous into S because S has the subspace topology. In a slice chart, F into S is F into M followed by dropping the zero coordinates, so it is smooth.
 
 **nLab:** [embedding of differentiable manifolds](https://ncatlab.org/nlab/show/embedding+of+differentiable+manifolds). It says: “For each point σ ∈ Σ there is a coordinate chart”
 
@@ -2349,11 +2331,11 @@
 
 *True by definition.* MSC 57R56 (Topological quantum field theories (aspects of differential topology)). arXiv math.QA, math.GT. Level 3: graduate.
 
-**Definition.** A topological field theory Z is a tensor-preserving functor from bordisms to vector spaces. A bordism is a manifold whose boundary is split into an incoming part and an outgoing part, and composition glues them. A state-sum construction instead defines values on closed manifolds by sums over labelled triangulations.
+**Definition.** An oriented topological field theory is a symmetric monoidal functor from the oriented bordism category to vector spaces over a field. Composition glues bordisms, and the functor sends disjoint unions to tensor products.
 
 **Problem.** Let f be an orientation-preserving diffeomorphism of a closed manifold Σ. Glue the two ends of Σ × \[0, 1\] by f to get the mapping torus T(f). Then Z(T(f)) is the trace of the linear map Z(f) on Z(Σ).
 
-**How the definition helps.** The functor definition turns gluing the two ends into a trace. The mapping torus is the cylinder of f composed with two bordisms that bend Σ back on itself (our own explanation). These bending bordisms make Z(Σ) and the space of Σ with reversed orientation dual to each other. Applying Z to the composite gives the trace of Z(f) (our own). The work moves into this duality and into identifying the glued manifold with the mapping torus. For f the identity, this gives Z(Σ × S¹) = dim Z(Σ).
+**How the definition helps.** The functor definition turns gluing the two ends into a trace. The mapping torus is the cylinder of f composed with two bordisms that bend Σ back on itself (our own explanation). These bending bordisms make Z(Σ) and the space of Σ with reversed orientation dual to each other. Applying Z to the composite gives the trace of Z(f) (our own).
 
 **Wikipedia:** [Topological quantum field theory](https://en.wikipedia.org/wiki/Topological_quantum_field_theory). It says: “Z(Σf) = Trace Σ(f)”
 
@@ -2367,11 +2349,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 57R56 (Topological quantum field theories (aspects of differential topology)), 18M05. arXiv math.QA, math.AT. Level 3: graduate.
 
-**Definition.** A topological quantum field theory (TQFT) assigns algebraic data to manifolds and cobordisms (manifolds whose boundary is split into an incoming and an outgoing part). A framed n-dimensional TQFT with values in a category 𝒞 is a symmetric monoidal functor from the framed cobordism category Bordₙ to 𝒞. A morphism of TQFTs is a symmetric monoidal natural transformation between two such functors.
+**Definition.** A fully extended framed n-dimensional topological quantum field theory is a symmetric monoidal functor from framed Bordₙ to a symmetric monoidal (∞,n)-category 𝒞. A morphism of theories is a symmetric monoidal natural transformation.
 
 **Problem.** Every morphism between two framed n-dimensional TQFTs with values in 𝒞 is invertible. So two such theories are either equivalent or have no morphism between them.
 
-**How the definition helps.** The cobordism hypothesis identifies framed TQFTs with the core of the fully dualizable part of 𝒞, which is an ∞-groupoid, so every morphism is invertible. A more elementary reason, our own reading, is that every object of Bordₙ has a dual. A monoidal natural transformation between monoidal functors out of a category with duals is always invertible. Morphisms that are not invertible appear only on subcategories, which leads to field theories with defects (Schommer-Pries).
+**How the definition helps.** The cobordism hypothesis identifies the category of these theories with the ∞-groupoid of fully dualizable objects of 𝒞 (our own explanation). Every morphism in this groupoid has an inverse up to equivalence.
 
 **nLab:** [cobordism hypothesis](https://ncatlab.org/nlab/show/cobordism+hypothesis). It says: “In particular, any two of them are either equivalent or have no morphism between them.”
 
@@ -2385,11 +2367,11 @@
 
 *True by definition. Confidence: medium.* MSC 57R56 (Topological quantum field theories (aspects of differential topology)). arXiv math.QA, math.GT. Level 3: graduate.
 
-**Definition.** Let a topological field theory be a tensor-preserving functor Z from oriented bordisms to all vector spaces. A bordism is a manifold whose boundary is split into an incoming part and an outgoing part. Some definitions instead require finite-dimensional values from the start.
+**Definition.** An oriented topological field theory is a symmetric monoidal functor from oriented bordisms to vector spaces over a field. It sends disjoint unions to tensor products and gluing to composition.
 
 **Problem.** Every state space Z(Σ) of such a field theory is finite-dimensional, although the target allows all vector spaces.
 
-**How the definition helps.** The functor definition sends the two bent cylinders on Σ to an evaluation pairing and a coevaluation copairing for Z(Σ) (our own explanation). The coevaluation map sends 1 to a finite sum of tensors vᵢ ⊗ wᵢ. The zigzag identity, which says that pairing after copairing gives the identity, writes every vector of Z(Σ) as a combination of the vᵢ (our own). The work moves into checking that the two bent cylinders compose to a straight cylinder. So the finite dimension in other definitions is a consequence, not an extra condition.
+**How the definition helps.** Bent cylinders give evaluation and coevaluation maps satisfying the duality identities (our own argument). Coevaluation sends 1 to a finite sum of elementary tensors. The duality identity then expresses every state as a linear combination of the first factors.
 
 **nLab:** [functorial field theory](https://ncatlab.org/nlab/show/functorial+field+theory). It says: “For genuine topological field theories, all spaces of quantum states are finite dimensional”
 
@@ -2403,9 +2385,9 @@
 
 *True by definition.* MSC 57R56 (Topological quantum field theories (aspects of differential topology)). arXiv math.AT. Level 3: graduate.
 
-**Definition.** A spin structure on a closed oriented surface gives a quadratic refinement q of the mod 2 intersection form on first homology. That is, q(x+y) = q(x) + q(y) + x·y. Its Arf invariant is ∑ᵢ q(aᵢ)q(bᵢ) modulo 2 for a symplectic basis aᵢ, bᵢ. The Arf theory gives the surface the sign +1 for invariant 0 and −1 for invariant 1.
+**Definition.** A spin structure on a closed oriented surface determines q on first homology modulo two, satisfying q(x+y) = q(x)+q(y)+x·y for all x,y. For any symplectic basis (aᵢ,bᵢ), set Arf(q) = ∑ᵢ q(aᵢ)q(bᵢ) modulo two. The Arf theory assigns the sign (−1)ᴬʳᶠ⁽ᑫ⁾.
 
-**Problem.** For spin surfaces Σ and Σ′, the sign of the connected sum Σ \# Σ′ in the Arf theory is the product of the signs of Σ and Σ′.
+**Problem.** For closed connected spin surfaces Σ and Σ′, the Arf sign of Σ \# Σ′ equals the product of their Arf signs.
 
 **How the definition helps.** The quadratic description lets a connected sum use the two original bases together. Our own check uses cycles on opposite sides of the joining circle, which have zero intersection. Their contributions to the Arf invariant therefore add modulo two, and their signs multiply. The geometric work identifies spin structures with these refinements and proves compatibility with gluing.
 
@@ -2440,11 +2422,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 57R56 (Topological quantum field theories (aspects of differential topology)), 18M05. arXiv math.QA, math.AT. Level 3: graduate.
 
-**Definition.** A 2d topological quantum field theory (TQFT) in the sense of Atiyah is a symmetric monoidal functor Z from 2Cob to vector spaces. In 2Cob, the objects are closed oriented 1-manifolds (unions of circles), and the morphisms are oriented surfaces between them (cobordisms). The pair of pants gives a product and a coproduct on the vector space Z(S¹) of the circle. The cup gives a unit, and the cap gives a trace.
+**Definition.** A 2d topological quantum field theory (TQFT) in the sense of Atiyah is a symmetric monoidal functor Z from 2Cob to vector spaces. In 2Cob, the objects are closed oriented 1-manifolds (unions of circles), and the morphisms are oriented surfaces between them (cobordisms).
 
 **Problem.** Two-dimensional TQFTs are equivalent to commutative Frobenius algebras. The equivalence sends Z to Z(S¹) with the product from the pair of pants and the trace from the cap.
 
-**How the definition helps.** A TQFT is a monoidal functor, so the classification needs only generators and relations for 2Cob. Abrams proved that 2Cob is the PROP for commutative Frobenius algebras. A PROP is a monoidal category whose monoidal functors are exactly the algebras of one structure. The Frobenius law is the relation that sews two pairs of pants together.
+**How the definition helps.** Abrams’s presentation of oriented two-dimensional bordisms gives exactly the generators and relations of a commutative Frobenius algebra. A symmetric monoidal functor sends the circle to that algebra and gluing to its operations (our own explanation). Conversely, the relations make these assignments independent of the decomposition of a surface.
 
 **nLab:** [Frobenius algebra](https://ncatlab.org/nlab/show/Frobenius+algebra), [functorial field theory](https://ncatlab.org/nlab/show/functorial+field+theory). It says: “The PROP for commutative Frobenius algebras is 2Cob, as noted by many people and formally proved in Abrams (1996).”
 
@@ -2459,11 +2441,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 57R60 (Homotopy spheres, Poincaré conjecture), 57R80. arXiv math.GT, math.AT. Level 3: graduate.
 
-**Definition.** A homotopy n-sphere is a closed smooth n-manifold homotopy equivalent to the n-sphere. Two are h-cobordant if together they bound a compact manifold. Each must include into it as a homotopy equivalence. Θₙ is the set of h-cobordism classes, with connected sum as the operation.
+**Definition.** An oriented homotopy n-sphere is a closed oriented smooth manifold homotopy equivalent to Sⁿ. An oriented h-cobordism joins two such spheres by a compact oriented cobordism whose two boundary inclusions are homotopy equivalences. Define Θₙ as their oriented h-cobordism classes under connected sum.
 
 **Problem.** Kervaire and Milnor showed that Θₙ is a finite abelian group for every n ≠ 3. For example, Θ₇ has order 28, so there are 28 oriented smooth structures on the 7-sphere.
 
-**How the definition helps.** The h-cobordism relation is coarse enough that every class has an inverse, the same sphere with reversed orientation. So the classes form a group, which homotopy theory can compute. By Smale's h-cobordism theorem, for n ≥ 5 this group also counts oriented smooth structures on the n-sphere. Kervaire and Milnor related Θₙ to the stable homotopy groups of spheres, and computing those stays hard.
+**How the definition helps.** Oriented h-cobordism makes connected sum a group operation with orientation reversal as inverse (our own explanation). Kervaire and Milnor’s finiteness theorem and their calculation in dimension seven give the stated orders. The h-cobordism theorem identifies the seven-dimensional classes with oriented diffeomorphism classes.
 
 **Wikipedia:** [Exotic sphere](https://en.wikipedia.org/wiki/Exotic_sphere). It says: “Provided n ≠ 4, this monoid is a group and is isomorphic to the group Θₙ of h-cobordism classes of oriented homotopy n-spheres, which is finite and abelian.”
 
@@ -2495,11 +2477,11 @@
 
 *Rules out counterexamples.* MSC 57R60 (Homotopy spheres, Poincaré conjecture), 57R55. arXiv math.GT. Level 3: graduate.
 
-**Definition.** The generalized Poincaré conjecture asks for a homeomorphism to the sphere: a continuous map with a continuous inverse. It does not ask for a diffeomorphism, which must be smooth in both directions.
+**Definition.** A homeomorphism is a continuous bijection with continuous inverse. An exotic n-sphere is a smooth manifold homeomorphic to Sⁿ but admitting no diffeomorphism to Sⁿ.
 
 **Problem.** Every homotopy n-sphere is homeomorphic to the n-sphere. A homotopy n-sphere is a closed n-manifold with the homotopy type of the n-sphere.
 
-**How the definition helps.** Because the theorem asks only for a homeomorphism, exotic spheres are not counterexamples. An exotic sphere is a smooth manifold that is homeomorphic but not diffeomorphic to a sphere. Milnor found one in dimension 7 in 1956 and first thought that it was a counterexample. The smooth version in dimension 4 is still open.
+**How the definition helps.** Milnor’s exotic seven-sphere satisfies the required topological conclusion even though its smooth structure differs. The generalized Poincaré theorem supplies the homeomorphism for arbitrary homotopy spheres (our own explanation).
 
 **Wikipedia:** [Exotic sphere](https://en.wikipedia.org/wiki/Exotic_sphere), [Homotopy sphere](https://en.wikipedia.org/wiki/Homotopy_sphere). It says: “At first, I thought I'd found a counterexample to the generalized Poincaré conjecture in dimension seven. But careful study showed that the manifold really was homeomorphic to S⁷.”
 
@@ -2514,7 +2496,7 @@
 
 *True by definition. Confidence: medium.* MSC 57R70 (Critical points and critical submanifolds in differential topology), 58E05. arXiv math.GT, math.AT. Level 3: graduate.
 
-**Definition.** The Morse complex of a Morse function has one generator for each critical point, placed in degree equal to its index. The index is the number of negative directions of the matrix of second derivatives. Its homology equals singular homology, which is built from continuous maps of simplices.
+**Definition.** Choose a Morse–Smale gradient and coherent orientations for a Morse function on a closed manifold. Over a fixed field, the degree-k chains have one basis vector per critical point with k negative Hessian eigenvalues. The differential counts oriented unparametrized negative gradient trajectories between critical points whose indices differ by one.
 
 **Problem.** For a Morse function on a closed manifold, let cₖ be the number of critical points of index k. Then the alternating sum of the cₖ equals the Euler characteristic.
 
@@ -2534,11 +2516,11 @@
 
 *True by definition. Confidence: medium.* MSC 57R70 (Critical points and critical submanifolds in differential topology), 58E05. arXiv math.GT, math.AT. Level 3: graduate.
 
-**Definition.** The Morse complex of a Morse function has one generator for each critical point, placed in degree equal to its index. The index is the number of negative directions of the matrix of second derivatives. Its homology equals singular homology, which is built from continuous maps of simplices.
+**Definition.** Choose a Morse–Smale gradient and coherent orientations for a Morse function on a closed manifold. Over a fixed field, the degree-k chains have one basis vector per critical point with k negative Hessian eigenvalues. The differential counts oriented unparametrized negative gradient trajectories between critical points whose indices differ by one.
 
-**Problem.** Suppose that a Morse function on a closed manifold has only critical points of even index. Then, for each k, the number of critical points of index k equals the k-th Betti number, the dimension of the k-th homology group.
+**Problem.** Suppose a Morse function on a closed manifold has only critical points of even index. For each k, the number of index-k critical points equals the k-th Betti number.
 
-**How the definition helps.** The Morse complex turns the theorem into a count of degrees. In our own proof, the differential lowers degree by one, so it maps even degrees to odd degrees, where there are no generators. So the differential is zero, and homology equals the chain groups. The work goes into building the Morse complex and proving that its homology is singular homology.
+**How the definition helps.** Every differential meets a zero odd-degree chain group, so all differentials vanish (our own proof). Homology therefore has one basis vector per critical point in its degree. The Morse homology theorem identifies this homology with singular homology.
 
 **Wikipedia:** [Morse homology](https://en.wikipedia.org/wiki/Morse_homology). It says: “the boundary maps in the Morse and cellular complexes correspond”
 
@@ -2550,11 +2532,11 @@
 
 *True by definition.* MSC 57R70 (Critical points and critical submanifolds in differential topology), 58E05. arXiv math.GT, math.AT. Level 3: graduate.
 
-**Definition.** The Morse complex of a Morse function has one generator for each critical point, placed in degree equal to its index. The index is the number of negative directions of the matrix of second derivatives. Its homology equals singular homology, which is built from continuous maps of simplices.
+**Definition.** Choose a Morse–Smale gradient and coherent orientations for a Morse function on a closed manifold. Over a fixed field, the degree-k chains have one basis vector per critical point with k negative Hessian eigenvalues. The differential counts oriented unparametrized negative gradient trajectories between critical points whose indices differ by one.
 
-**Problem.** For a Morse function on a closed manifold, the number of critical points of index k is at least the k-th Betti number. That number is the dimension of the k-th homology group.
+**Problem.** For a Morse function on a closed manifold, the number of index-k critical points is at least the k-th Betti number.
 
-**How the definition helps.** In the Morse complex, homology in degree k is a quotient of a subspace of a chain group with one generator per critical point. Over a field, its dimension is therefore at most the number of those generators. Wikipedia makes this point: the inequalities follow by counting generators. The work goes into the theorem that Morse homology equals singular homology. In our own summary, older proofs attach one handle for each critical point, or use Witten's deformation of the Laplace operator on forms.
+**How the definition helps.** Degree-k homology is a quotient of a subspace of degree-k Morse chains (our own argument). Its dimension cannot exceed the number of generators. The Morse homology theorem identifies it with singular homology.
 
 **Wikipedia:** [Morse homology](https://en.wikipedia.org/wiki/Morse_homology). It says: “From the fact that the Morse homology is isomorphic to the singular homology, the Morse inequalities follow by considering the number of generators”
 
@@ -2570,11 +2552,11 @@
 
 *True by definition. Confidence: medium.* MSC 57R70 (Critical points and critical submanifolds in differential topology), 58K05, 57R45. arXiv math.GT, math.DG. Level 3: graduate.
 
-**Definition.** A first jet of a function records the point, the value and the first derivative there. Call f Morse when its first-jet map is transverse to the set of jets with zero derivative. Transverse means that, where they meet, the two tangent spaces together span the whole tangent space. The usual definition asks that the matrix of second derivatives be invertible at each critical point.
+**Definition.** The first jet of a smooth real function records its point, value and derivative. Call the function Morse if its first-jet map is transverse to the submanifold of jets with zero derivative.
 
 **Problem.** On a compact manifold without boundary, Morse functions form an open dense set of smooth functions. Here two functions are close when they and all their derivatives are uniformly close.
 
-**How the definition helps.** With the jet definition, density is a direct case of Thom's jet transversality theorem. That theorem says that maps whose jets are transverse to a fixed submanifold form a dense set. Openness holds because transversality to a closed set is an open condition when the source is compact. In a chart, the zero-derivative jets are cut out by the n partial derivatives. So in our own check, transversality says that their derivative matrix, the Hessian, is invertible. Thus the two definitions agree, and the work goes into the jet transversality theorem.
+**How the definition helps.** Thom’s jet transversality theorem gives density. The zero-derivative submanifold is closed and the source is compact, so transversality is open. In coordinates the transverse derivative is the Hessian at a critical point, giving the usual nondegeneracy test (our own check).
 
 **nLab:** [Morse function](https://ncatlab.org/nlab/show/Morse+function). It says: “The function f is called a Morse function if every critical point of f is regular”
 
@@ -2588,11 +2570,11 @@
 
 *True by definition. Confidence: medium.* MSC 57R70 (Critical points and critical submanifolds in differential topology), 58E05. arXiv math.GT, math.AT. Level 3: graduate.
 
-**Definition.** The unstable manifold of a critical point is the set of points whose negative gradient lines come out of that point. Take a metric that is Euclidean in Morse coordinates near the critical points. Then these unstable manifolds are the cells of a cell structure, and the Morse differential is its cellular boundary map. The usual definition counts, with signs, the gradient lines between critical points whose indices differ by one.
+**Definition.** Choose a Morse–Smale negative gradient on a closed manifold with a Euclidean metric in Morse coordinates near each critical point. Its unstable cells consist of points converging to their respective critical points in backward time. Define the Morse differential as the cellular boundary for these oriented cells.
 
 **Problem.** On a closed manifold, take a Morse function and a metric of that kind whose stable and unstable manifolds meet transversely. Then the Morse differential applied twice gives zero.
 
-**How the definition helps.** With the cellular definition, the theorem is the identity ∂∂ = 0 that holds in every cellular chain complex. The usual proof compactifies the spaces of gradient lines between critical points whose indices differ by two. Their ends are broken lines that cancel in pairs, and showing this needs a gluing theorem. In our own account, the work moves into two theorems. The unstable manifolds must form a cell structure, and its boundary map must equal the signed count. Wikipedia names this cellular comparison as one proof that Morse homology equals singular homology.
+**How the definition helps.** Every cellular boundary squares to zero, so the cellular definition gives the identity immediately. The cellular comparison theorem identifies its coefficients with signed counts of gradient trajectories (our own explanation).
 
 **Wikipedia:** [Morse homology](https://en.wikipedia.org/wiki/Morse_homology). It says: “the boundary maps in the Morse and cellular complexes correspond”
 
@@ -2606,9 +2588,9 @@
 
 **Definition.** A critical point of a smooth function f is a point where its derivative is zero. It is nondegenerate if the Hessian, the matrix of second derivatives, is invertible there. A Morse function has only nondegenerate critical points.
 
-**Problem.** Let f be a Morse function on a compact manifold. When a passes a critical value with one critical point of index k, the sublevel set {f ≤ a} changes up to homotopy by attaching a k-cell.
+**Problem.** Let f be a Morse function on a compact manifold without boundary. Crossing a critical value containing one critical point of index k changes the sublevel set up to homotopy by attaching one k-cell.
 
-**How the definition helps.** Nondegeneracy gives the Morse lemma, so near each critical point f is −x₁² − … − xₖ² + xₖ₊₁² + … + xₙ² in suitable coordinates. So the change in topology is a single cell. The counterexample is f(x) = x³ on ℝ, where 0 is a critical point but the sublevel sets do not change. Morse functions are open and dense, so the condition loses nothing.
+**How the definition helps.** At a nondegenerate critical point, the Morse lemma gives a quadratic normal form with exactly k negative squares after subtracting the critical value. The Morse attachment theorem gives the corresponding k-cell (our own explanation). For x³ on ℝ, crossing zero leaves both sublevel sets contractible despite the critical point.
 
 **Wikipedia:** [Morse theory](https://en.wikipedia.org/wiki/Morse_theory). It says: “One must take care to make the critical points non-degenerate. To see what can pose a problem, let M = ℝ and let f(x) = x³.”
 
@@ -2619,15 +2601,15 @@
 
 ### Cobordism, a coarser relation than diffeomorphism, gives a computable classification
 
-**Remember:** Ask what bounds, not what is the same, and Thom computes everything.
+**Remember:** A disjoint union that bounds identifies two unoriented cobordism classes.
 
 *Makes the theorem clean to state or prove.* MSC 57R75 (\\(\\mathrm\\)- and \\(\\mathrm\\)-cobordism), 55N22. arXiv math.AT, math.GT. Level 3: graduate.
 
-**Definition.** Two closed n-manifolds are cobordant when together they form the boundary of a compact (n+1)-manifold. The cobordism classes form a group under disjoint union, and a ring under product.
+**Definition.** Two closed smooth n-manifolds are unoriented cobordant if their disjoint union is the boundary of a compact smooth (n+1)-manifold. Disjoint union adds classes of the same dimension, and Cartesian product multiplies classes in the graded cobordism ring.
 
-**Problem.** Thom showed that the unoriented cobordism ring is a polynomial ring over ℤ/2. It has one generator in each degree not of the form 2ᵏ − 1. A closed manifold bounds if and only if all its Stiefel–Whitney numbers vanish.
+**Problem.** Thom showed that the unoriented cobordism ring is a polynomial ring over ℤ/2. It has one generator in each positive degree not of the form 2ᵏ − 1. A closed manifold bounds if and only if all its Stiefel–Whitney numbers vanish.
 
-**How the definition helps.** Cobordism forgets enough that the classes become homotopy groups of a Thom space, which homotopy theory can compute. A Thom space collapses everything far from the zero section of a vector bundle to one point. Classification up to diffeomorphism is undecidable in dimension 4 and above (our own remark), but up to cobordism the answer is complete and explicit. The hard step is the Thom construction, which turns manifolds into maps to a Thom space.
+**How the definition helps.** Cobordism makes bounding equivalent to representing zero (our own explanation). Pontryagin–Thom identifies the graded groups with stable homotopy groups of the unoriented Thom spectrum. Thom’s computation gives the polynomial generators and shows that Stiefel–Whitney numbers detect the zero class.
 
 **Wikipedia:** [Cobordism](https://en.wikipedia.org/wiki/Cobordism). It says: “The cobordism class \[M\] ∈ 𝔑ₙ of a closed unoriented n-dimensional manifold M is determined by the Stiefel–Whitney characteristic numbers of M”
 
@@ -2641,11 +2623,11 @@
 
 *True by definition. Confidence: medium.* MSC 57R75 (\\(\\mathrm\\)- and \\(\\mathrm\\)-cobordism), 55N22. arXiv math.AT. Level 3: graduate.
 
-**Definition.** An oriented bordism class over X is represented by a closed oriented manifold M with a map f: M → X. Two such maps are bordant when they extend over a compact oriented manifold whose boundary is the first source and the second with reversed orientation. The spectrum definition instead uses stable homotopy groups of a Thom spectrum.
+**Definition.** An oriented bordism class over X is represented by a closed oriented manifold M with a map f: M → X. Two such maps are bordant when they extend over a compact oriented manifold whose boundary is the first source and the second with reversed orientation.
 
 **Problem.** Homotopic maps from the same closed oriented manifold to X represent the same oriented bordism class over X.
 
-**How the definition helps.** With the geometric definition, a homotopy is itself a bordism. In our own proof, a homotopy is a map from the cylinder M × \[0, 1\]. Its oriented boundary is M at one end and M with reversed orientation at the other. With the spectrum definition, a map from a manifold gives a class only through the Pontryagin–Thom construction. That construction turns it into a map to the Thom spectrum. The real work of the geometric theory is elsewhere, in the collar theorem. It gives each boundary a product neighbourhood, so bordisms can be glued and bordism is transitive.
+**How the definition helps.** With the geometric definition, a homotopy is itself a bordism. In our own proof, a homotopy is a map from the cylinder M × \[0, 1\]. Its oriented boundary is M at one end and M with reversed orientation at the other.
 
 **nLab:** [bordism homology theory](https://ncatlab.org/nlab/show/bordism+homology+theory). It says: “Atiyah's geometric model for bordism homology groups defines them as equivalence classes of maps of manifolds.”
 
@@ -2663,7 +2645,7 @@
 
 **Problem.** The genus defined by a multiplicative sequence is multiplicative on products of manifolds. It vanishes on oriented boundaries.
 
-**How the definition helps.** A multiplicative sequence makes genus values multiply because the tangent bundle of a product is the sum of the two pulled-back tangent bundles. In our own calculation, the rational Pontryagin product rule joins the two lists of formal factors. Evaluation on the product manifold then multiplies the separate evaluations. Abstractly, a genus is already required to be multiplicative, but that requirement does not prove a formula defines one. The work shifts to the Pontryagin product rule and to showing that Pontryagin numbers vanish on boundaries.
+**How the definition helps.** Our own calculation uses the product tangent bundle to join the two lists of Pontryagin factors. Only the top degrees on both factors contribute to evaluation, so the values multiply. On an oriented boundary the stable tangent bundle extends over the bounding manifold. Its characteristic class therefore pairs trivially with the boundary fundamental class.
 
 **Wikipedia:** [Genus of a multiplicative sequence](https://en.wikipedia.org/wiki/Genus_of_a_multiplicative_sequence). It says: “The conditions on Φ can be rephrased as saying that Φ is a ring homomorphism from the cobordism ring of manifolds (with additional structure) to another ring.”
 
@@ -2675,7 +2657,7 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 57S15 (Compact Lie groups of differentiable transformations), 57S20, 22F05. arXiv math.DG, math.GT. Level 3: graduate.
 
-**Definition.** An action of a Lie group G on a manifold X is proper if the map G × X → X × X, (g, x) ↦ (g·x, x), is proper. A map is proper when the preimage of every compact set is compact. For a compact group, every smooth action is proper.
+**Definition.** A smooth action of G on X is proper if (g,x) ↦ (g·x,x) has compact preimage for every compact subset of X × X.
 
 **Problem.** For a smooth proper action of a Lie group G on a manifold X, the fixed locus Xᴳ is a smooth submanifold. The fixed locus is the set of points fixed by every element of G.
 
@@ -2693,11 +2675,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 57K10 (Knot theory), 20F36. arXiv math.GT. Level 4: research.
 
-**Definition.** Milnor's link-homotopy lets each component of a link pass through itself, but never through another component. Up to link-homotopy, pure braids form a group, the homotopy braid group. Partial conjugations are a specific family of conjugation moves on pure braids, defined in the paper.
+**Definition.** A link-homotopy is a homotopy of maps from ordered oriented circles into three-space during which distinct components have disjoint images at every time. Each component may intersect itself.
 
-**Problem.** Every link is link-homotopic to the closure of a pure braid. Two pure braids have link-homotopic closures exactly when partial conjugations relate them in the homotopy braid group.
+**Problem.** Every ordered oriented link is link-homotopic to the closure of a pure braid. Two such braids have link-homotopic closures exactly when partial conjugations relate them in the homotopy braid group.
 
-**How the definition helps.** Allowing a component to cross itself kills all knotting of single components, so only the linking between components remains (our own remark). So the classification of links up to link-homotopy becomes a question about orbits in one group, following Habegger and Lin. Graff uses this to give a geometric proof of Levine's classification of 4-component links, and to classify algebraically split 5-component links. The hard part is to understand the orbits of the partial conjugations.
+**How the definition helps.** Allowing self-crossings while keeping components apart gives the equivalence relation on both sides (our own explanation). The Habegger–Lin classification identifies its closure classes with orbits under partial conjugations.
 
 **Paper or page:** [On braids and links up to link-homotopy](https://arxiv.org/abs/2210.01539), [On braids and links up to link-homotopy](https://arxiv.org/abs/2210.01539). It says: “Any n-component link is link-homotopic to the closure of an n-component pure braid.”
 
@@ -2706,53 +2688,17 @@
 - [E. Graff, On braids and links up to link-homotopy, arXiv:2210.01539 (2023)](https://arxiv.org/abs/2210.01539)
 - [Habegger, Lin, The classification of links up to link-homotopy, J. Amer. Math. Soc. (1990)](https://doi.org/10.1090/s0894-0347-1990-1026062-0)
 
-### Slice-torus axioms prove a slice-Bennequin bound for every such invariant at once
-
-**Remember:** Prove it from the axioms once, and every slice-torus invariant obeys.
-
-*True by definition. Confidence: medium.* MSC 57K10 (Knot theory), 57K18. arXiv math.GT. Level 4: research.
-
-**Definition.** Following Livingston, a slice-torus invariant is additive and concordance-invariant. It is at most the slice genus, and equals the genus on positive torus knots. The slice genus is the least genus of a smooth surface in the 4-ball with the knot as boundary. The self-linking number sl(β) of a braid is its writhe, the signed crossing count, minus its number of strands.
-
-**Problem.** For every slice-torus invariant ν and every braid β representing an ℓ-component link L, sl(β) ≤ 2ν(L) − ℓ.
-
-**How the definition helps.** The axioms are the properties that proofs of such bounds use, so a bound proved from them holds for every slice-torus invariant at once. The work moves into building one invariant with these properties, such as τ or s (our own remark). One such invariant already gives the Milnor conjecture on the slice genus of torus knots (our own remark).
-
-**Paper or page:** [Slice-torus link invariants, combinatorial invariants, and positivity conditions](https://arxiv.org/abs/2008.06921). It says: “For each braid β representing an ℓ-component link L, and any slice-torus link invariant ν, we have sl(β) ≤ 2ν(L) − ℓ.”
-
-**Sources:**
-
-- [C. Collari, Slice-torus link invariants, combinatorial invariants, and positivity conditions, Bull. London Math. Soc. 53 (2021) 1072-1092, arXiv:2008.06921](https://arxiv.org/abs/2008.06921)
-
-### Knot-type knotoids hold all of classical knot theory inside knotoid theory
-
-**Remember:** Cut a knot open in one region and nothing about it is lost.
-
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 57K12 (Generalized knots (virtual knots, welded knots, quandles, etc.)). arXiv math.GT. Level 4: research.
-
-**Definition.** A knotoid is an arc diagram on the sphere with two free end points. Moves may never pass a strand across an end point. A knotoid is knot-type when both end points lie in the same region, so that they can be joined without a new crossing. The knotoid spectrum of an open curve in space is the set of knotoids seen in its projections.
-
-**Problem.** Two knots are equivalent if and only if the knot-type knotoids in their spectra are equivalent.
-
-**How the definition helps.** Joining the end points of a knot-type knotoid inside their common region gives a well-defined knot (our own summary of Turaev). Turaev showed that this map is a bijection between knot-type knotoids on the sphere and knots, and the theorem follows. So knotoid tools for open curves can be checked against classical knot theory. The new information lies in the knotoids that are not knot-type.
-
-**Paper or page:** [On the neighborhood of knots](https://arxiv.org/abs/2410.15593). It says: “Let K₁,K₂ denote the embeddings of two knots in 3-space. K₁ and K₂ are equivalent knots if and only if the knot-type knotoids in their spectra are equivalent.”
-
-**Sources:**
-
-- [On the neighborhood of knots, arXiv:2410.15593 (2024)](https://arxiv.org/abs/2410.15593)
-
 ### Kuperberg's minimal surface lets Floer homology be defined for virtual knots
 
 **Remember:** Pick the smallest surface, and stabilization stops being a problem.
 
 *Makes the theorem clean to state or prove.* MSC 57K12 (Generalized knots (virtual knots, welded knots, quandles, etc.)). arXiv math.GT. Level 4: research.
 
-**Definition.** A virtual knot is a knot in a thickened closed oriented surface, up to isotopy, surface diffeomorphisms and stabilization. Stabilization adds or removes a handle away from the knot. Kuperberg proved that each virtual knot has a unique representative of minimal genus.
+**Definition.** A virtual knot is a knot in a thickened closed oriented surface, up to isotopy, surface diffeomorphisms and stabilization. Stabilization adds or removes a handle away from the knot. A minimal representative realizes the least genus among all equivalent surface representatives.
 
 **Problem.** The authors' Heegaard Floer homology of knots in thickened surfaces changes under stabilization. Evaluated on Kuperberg's minimal genus representative, it is nevertheless an invariant of virtual knots.
 
-**How the definition helps.** Kuperberg's theorem gives each virtual knot a canonical surface, so any invariant of knots in thickened surfaces, evaluated there, is a virtual knot invariant. Evaluating on an arbitrary representative fails, because the Floer homology changes under stabilization. The hard part moves into Kuperberg's uniqueness theorem.
+**How the definition helps.** Kuperberg’s uniqueness theorem identifies any two minimal representatives up to surface equivalence. Their surface-knot Floer invariants therefore agree (our own explanation).
 
 **Wikipedia:** [Virtual knot](https://en.wikipedia.org/wiki/Virtual_knot). It says: “a virtual knot is a generalization of knots in 3-dimensional Euclidean space, R³, to knots in thickened surfaces Σ × \[0,1\] modulo an equivalence relation called stabilization/destabilization.”
 
@@ -2769,11 +2715,11 @@
 
 *True by definition. Confidence: medium.* MSC 57K12 (Generalized knots (virtual knots, welded knots, quandles, etc.)), 57K45. arXiv math.GT. Level 4: research.
 
-**Definition.** A quandle is a set with an operation where x ∗ x = x, right multiplications are bijections, and right self-distributivity holds. The three axioms match the three Reidemeister moves. A coloring of a diagram labels each arc by a quandle element, with the quandle rule at each crossing. A singular marked diagram is a link diagram with extra marked vertices and singular vertices that encodes an immersed surface in 4-space by its cross-sections.
+**Definition.** A quandle is a set Q with x∗x=x, bijective right translations and (x∗y)∗z=(x∗z)∗(y∗z) for every x,y,z in Q. A diagram coloring assigns elements of Q to arcs according to the crossing and vertex rules for oriented singular marked diagrams.
 
 **Problem.** The number of quandle colorings of an oriented singular marked diagram is an invariant of the oriented immersed surface-link that it presents.
 
-**How the definition helps.** A coloring count is unchanged by each move that the quandle axioms respect, and the axioms are chosen for exactly this (Proposition 7.1). So invariance only needs a list of moves relating any two diagrams of a surface. The main work of the paper is that list, a minimal generating set of moves for immersed surfaces (Theorem 6.1). Once it is known, the invariance (Corollary 7.2) is a direct check.
+**How the definition helps.** Proposition 7.1 gives bijections of colorings under the generating diagram moves (our own summary). Theorem 6.1 connects any two diagrams presenting the same immersed surface-link by these moves. Composing the bijections preserves the count.
 
 **Paper or page:** [Minimal generating sets of moves for surfaces immersed in the four-space](https://arxiv.org/abs/2208.08244). It says: “The number of quandle colorings \#ColQ(D) of an oriented singular marked diagram D is an invariant of an oriented surface-link ℒ presented by D”
 
@@ -2787,11 +2733,11 @@
 
 *True by definition.* MSC 57K12 (Generalized knots (virtual knots, welded knots, quandles, etc.)), 53D10. arXiv math.GT, math.SG. Level 4: research.
 
-**Definition.** A rack is a set with an operation whose right multiplications are bijections and which is right self-distributive. These two axioms are the second and third Reidemeister moves. A generalised Legendrian rack adds two maps, u and d, used where an arc passes an up cusp or a down cusp. A front diagram is the projection of a Legendrian link to the (x, z)-plane, which has cusps but no vertical tangents.
+**Definition.** A rack has bijective right translations and satisfies (x∗y)∗z=(x∗z)∗(y∗z) for all x,y,z. A generalized Legendrian rack adds unary maps u,d commuting with right translations and satisfying x∗u(y)=x∗d(y)=x∗y. Require u(d(x∗x))=d(u(x∗x))=x for every x.
 
 **Problem.** The generalised Legendrian rack of a front diagram, up to isomorphism, is an invariant of oriented Legendrian links up to Legendrian isotopy.
 
-**How the definition helps.** The axioms on (u, d) are chosen so that each Legendrian Reidemeister move gives an isomorphic rack, so invariance (Theorem 4.3) is nearly by definition. The real work moves into the theorem, due to Świątkowski (our attribution), that fronts of Legendrian isotopic links are related by those moves. Racks, not quandles, fit here because a Legendrian front has no free first Reidemeister move (our own remark).
+**How the definition helps.** The rack and cusp identities give isomorphic presentations on either side of every oriented front move (our own explanation). The Legendrian Reidemeister theorem connects fronts of isotopic links by these moves.
 
 **Paper or page:** [Generalised Legendrian racks of Legendrian links](https://arxiv.org/abs/2301.06854), [Generalised Legendrian racks of Legendrian links](https://arxiv.org/abs/2301.06854). It says: “A generalised Legendrian rack is a rack equipped with a Legendrian structure, which is a pair of maps encoding the information of Legendrian Reidemeister moves together with up and down cusps in the front diagram of an oriented Legendrian link.”
 
@@ -2806,11 +2752,11 @@
 
 *True by definition.* MSC 57K12 (Generalized knots (virtual knots, welded knots, quandles, etc.)). arXiv math.GT. Level 4: research.
 
-**Definition.** A virtual link diagram is a planar diagram with ordinary crossings and extra virtual crossings. A virtual crossing is a circled double point, not a real crossing. Diagrams are equal up to Reidemeister moves and moves that slide strands through virtual crossings. The second definition is a link in a thickened closed oriented surface, up to isotopy, surface diffeomorphisms and adding or removing handles.
+**Definition.** A virtual diagram marks each crossing as classical or virtual. Virtual isotopy is generated by classical Reidemeister moves and detours replacing arcs meeting only virtual crossings, with every new intersection marked virtual.
 
 **Problem.** Two virtual link diagrams are virtually isotopic exactly when their surface links are equivalent. Equivalence allows isotopy in the thickened surface, orientation-preserving surface diffeomorphisms and handle stabilization.
 
-**How the definition helps.** Once the two definitions agree, statements about virtual links can be proved with surfaces and checked with diagrams. To get a surface, thicken the diagram and add a handle at each virtual crossing (our own summary). In this way the paper makes an Alexander-type polynomial of knots in thickened surfaces into a virtual knot invariant. The work moves into the theorem, due to Kauffman and to Carter, Kamada and Saito (our own attribution for the second group).
+**How the definition helps.** Detours change how a surface link is drawn in the plane (our own explanation). The surface correspondence theorem of Kauffman and Carter, Kamada and Saito identifies virtual isotopy with stable surface equivalence in both directions.
 
 **Paper or page:** [New invariants for virtual knots via spanning surfaces](https://arxiv.org/abs/2207.08129). It says: “Two virtual link diagrams are virtually isotopic if and only if their surface embeddings are equivalent up to isotopy in the thickened surfaces, orientation-preserving diffeomorphisms of the surfaces, and one-handle stabilizations and destabilizations.”
 
@@ -2824,11 +2770,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: low.* MSC 57K12 (Generalized knots (virtual knots, welded knots, quandles, etc.)), 57K10. arXiv math.GT. Level 4: research.
 
-**Definition.** A string link is a set of disjoint arcs in a cylinder with fixed end points on the top and bottom discs. Welded diagrams are virtual knot diagrams with one more allowed move, which lets an over-arc pass a virtual crossing. Meilhan and Yasuhara defined wq-concordance: welded concordance together with surgery along w-trees of degree at least q (our own summary). A w-tree is a decorated tree in their arrow calculus that acts like an iterated commutator of meridians (our own summary).
+**Definition.** Fix a positive integer q. Welded concordance and surgeries on w-trees of degree at least q generate wq-concordance of welded string links. The degree counts the tails of the tree (our own summary).
 
-**Problem.** Two classical string links have equal Milnor invariants of length at most q exactly when they are wq-concordant as welded string links (our own reading of the abstract).
+**Problem.** Two classical string links have equal Milnor invariants through length q exactly when they are wq-concordant as welded string links (our own reading).
 
-**How the definition helps.** Welded diagrams keep exactly the group and the peripheral system of a diagram, which is what Milnor invariants read (our own summary). The main theorem says that the peripheral system modulo the q-th lower central series term is complete for wq-concordance. Classical string links sit inside welded string links, which gives the statement. The work moves into the arrow calculus of welded diagrams.
+**How the definition helps.** The degree cutoff gives a single equivalence relation for all Milnor invariants through length q (our own explanation). Meilhan and Yasuhara’s classification applies to classical string links viewed as welded string links.
 
 **Paper or page:** [A diagrammatical characterization of Milnor invariants](https://arxiv.org/abs/2201.01499). It says: “we describe when two string links have equal Milnor invariants of length ≤ q and when a link has trivial Milnor invariants of lenght ≤ q. This will be done through the use of welded knot theory”
 
@@ -2842,11 +2788,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 57K12 (Generalized knots (virtual knots, welded knots, quandles, etc.)), 57K45. arXiv math.GT. Level 4: research.
 
-**Definition.** Satoh's tube map sends a virtual knot diagram to a ribbon torus knot, a knotted torus in 4-space of a simple kind. A virtual diagram may have virtual crossings, which are marked crossings that are not real. Each classical crossing becomes one tube passing through another tube, and virtual crossings are ignored. Welded (w-) equivalence is virtual equivalence plus one extra move, which lets an over-arc slide past a virtual crossing.
+**Definition.** Welded equivalence is generated by virtual diagram equivalence and the move interchanging consecutive overcrossings along the same overpassing strand. Satoh’s Tube construction thickens the diagram into a ribbon torus in four-space.
 
 **Problem.** If two virtual diagrams are welded equivalent, the tube map sends them to isotopic ribbon torus knots. The knot group and knot quandle of a welded diagram equal those of its tube.
 
-**How the definition helps.** The extra welded move is invisible in 4-space, because there the tubes involved can be slid past each other (our own explanation). So the tube map is well defined on welded knots and not only on virtual knots (Theorem 5). The group and quandle statement is Theorem 6. Whether isotopic tubes force welded equivalence is a separate question (our own remark).
+**How the definition helps.** The extra overcrossing move gives isotopic tubes in four-space (our own explanation). Satoh’s Theorem 5 establishes invariance under welded equivalence. Theorem 6 identifies the corresponding groups and quandles.
 
 **Paper or page:** [Some generalizations of Satoh's Tube map](https://arxiv.org/abs/2103.08766), [Some generalizations of Satoh's Tube map](https://arxiv.org/abs/2103.08766). It says: “If K and K′ are w-equivalent, then Tube(K) and Tube(K′) are isotopic through a stable equivalence of ribbon links.”
 
@@ -2861,11 +2807,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 57K14 (Knot polynomials), 57K12. arXiv math.GT. Level 4: research.
 
-**Definition.** A linkoid is a link diagram in which some components are arcs with two free end points instead of closed loops. Barkataki and Panagiotou define its Jones polynomial by a Kauffman bracket state sum, which adds terms over all ways to smooth the crossings. They correct it by the writhe, the signed count of crossings. A linkoid is link-type when each arc can be closed without new crossings.
+**Definition.** A linkoid is a link diagram allowing arc components with free endpoints. It is link-type if disjoint closing arcs join the corresponding endpoint pairs without meeting the diagram except at those endpoints.
 
 **Problem.** For a link-type linkoid, the Jones polynomial of Barkataki and Panagiotou equals the Jones polynomial of the link obtained by closing its arcs.
 
-**How the definition helps.** If the ends can be joined without new crossings, the state sum equals that of the closed link, so agreement (Theorem 3.1) is close to built in. The real work is to show that the linkoid polynomial does not change under the moves of linkoid diagrams. For open curves in space, averaging over projections gives a continuous function of the coordinates (Proposition 4.1). It tends to the Jones polynomial of the closed link as the end points come together.
+**How the definition helps.** Closing adds no crossings, so each open smoothing corresponds to a smoothing of the closed diagram (our own explanation). The endpoint pairings count precisely the additional circles formed by closure. The writhe stays the same, so Theorem 3.1 gives equality of the normalized brackets.
 
 **Paper or page:** [The Jones polynomial of collections of open curves in 3-space](https://arxiv.org/abs/2205.03474). It says: “show that this is a well-defined single variable polynomial that is a topological invariant, which, for link-type linkoids, it coincides with that of the corresponding link.”
 
@@ -2880,11 +2826,11 @@
 
 *True by definition. Confidence: medium.* MSC 57K14 (Knot polynomials), 20F36. arXiv math.GT, math.QA. Level 4: research.
 
-**Definition.** Closing a braid joins its corresponding ends, and Alexander's theorem gives such a description of every oriented link. Send the braid to the Temperley–Lieb algebra, an algebra of planar diagrams with a loop factor δ. For an n-strand braid, multiply the trace of its image by δⁿ⁻¹ and correct for the signed crossing count. The Kauffman bracket instead sums smoothings of a link diagram.
+**Definition.** Use the normalized Temperley–Lieb trace with loop value δ = −A² − A⁻² and braid generator image A·1 + A⁻¹eᵢ. For an n-strand braid β of writhe w, set J(β) = (−A³)⁻ʷ δⁿ⁻¹ tr(ρ(β)).
 
 **Problem.** The corrected trace is independent of the braid chosen to close to a given oriented link. After the Jones change of variable it equals the Jones polynomial.
 
-**How the definition helps.** A normalized Markov trace is built to be unchanged under the moves that preserve braid closures (our own). The rule tr(ab) = tr(ba) handles conjugation (our own). Adding a strand and one crossing multiplies the scaled trace by a fixed factor, which the crossing-count correction cancels (our own). Markov's theorem says these moves connect all braids with equivalent closures, and proving it carries the work (our own).
+**How the definition helps.** Cyclicity preserves the trace under conjugation (our own calculation). Positive and negative stabilization multiply the scaled trace by −A³ and its inverse, respectively, cancelling the writhe correction. Markov’s theorem gives independence of the braid, and the bracket trace formula identifies the result with Jones after substituting t = A⁻⁴.
 
 **Wikipedia:** [Jones polynomial](https://en.wikipedia.org/wiki/Jones_polynomial). It says: “Take the braid word σ obtained previously from L and compute δⁿ⁻¹ tr ρ(σ) where tr is the Markov trace.”
 
@@ -2903,7 +2849,7 @@
 
 **Problem.** The absolute value of the Alexander polynomial at −1 is a square for every topologically slice knot.
 
-**How the definition helps.** Local flatness rules out a cone singularity and gives the hypothesis of the Fox–Milnor factorization, in our own explanation. This theorem writes the Alexander polynomial as f(t)f(1/t), up to sign and a power of t. At −1 the two factors agree, so the absolute value is a square. In our own counterexample, the trefoil bounds the disk formed by coning it to the ball’s centre. Its determinant is 3, so this disk cannot be locally flat.
+**How the definition helps.** Fox–Milnor factorization for locally flat slice disks writes the Alexander polynomial as f(t)f(1/t) up to a signed monomial. At −1 the factors agree, so the absolute value is a square (our own calculation). The trefoil has determinant three but bounds a cone disk. Local flatness excludes that disk at its cone point (our own counterexample).
 
 **Wikipedia:** [Slice knot](https://en.wikipedia.org/wiki/Slice_knot). It says: “It follows that the knot's determinant (= Δ(−1)) is a square number.”
 
@@ -2935,11 +2881,11 @@
 
 *True by definition.* MSC 57K16 (Finite-type and quantum invariants, topological quantum field theories (TQFT)). arXiv math.GT. Level 4: research.
 
-**Definition.** At a double point, where two strands meet, extend a knot invariant by v(K×) = v(K₊) − v(K₋). Here the two knots on the right resolve the meeting as crossings of opposite sign. An invariant has degree at most n if this extension vanishes on knots with n + 1 double points. Its chord diagram pairs the two preimages of each meeting on the parameter circle.
+**Definition.** At each double point recursively extend a knot invariant by v(K×) = v(K₊) − v(K₋), using the positive and negative resolutions. Its degree is at most n if the extension vanishes on every knot with n+1 double points. The chord diagram pairs the two preimages of each double point on the parameter circle.
 
 **Problem.** For an invariant of degree at most n, its value on a singular knot with n double points depends only on the chord diagram.
 
-**How the definition helps.** The difference definition makes an ordinary crossing change cost one extra double point, whose value is zero (our own). The geometric step identifies two singular knots with the same chord diagram up to ordinary crossing changes and isotopy (our own). They are embeddings of the same graph with matched branches at each double point (our own). One arranges the double-point neighborhoods first, then deforms the connecting arcs while allowing crossings away from those neighborhoods (our own). Unlike the original approach through the space of singular knots, this definition makes the crossing-change calculation explicit (our own).
+**How the definition helps.** The difference definition makes an ordinary crossing change cost one extra double point, whose value is zero (our own). The geometric step identifies two singular knots with the same chord diagram up to ordinary crossing changes and isotopy (our own). They are embeddings of the same graph with matched branches at each double point (our own). One arranges the double-point neighborhoods first, then deforms the connecting arcs while allowing crossings away from those neighborhoods (our own).
 
 **nLab:** [Vassiliev invariant](https://ncatlab.org/nlab/show/Vassiliev+invariant). It says: “Let v be a Vassiliev invariant of degree ≤ n. Then the value of v on a singular knot with n distinct double points depends only on the chord diagram of the singular knot, and not on the knot itself.”
 
@@ -2954,11 +2900,11 @@
 
 *True by definition.* MSC 57K18 (Homology theories in knot theory (Khovanov, Heegaard-Floer, etc.)), 57K14. arXiv math.GT. Level 4: research.
 
-**Definition.** Each resolution D replaces every crossing by one of two smoothings, leaving k circles. Assign to D a tensor product of k copies of a vector space V with one basis vector in each degree ±1. If r counts 1-smoothings and n₊, n₋ count positive and negative crossings, put this group in degree r − n₋. Increase its internal degrees by r + n₊ − 2n₋.
+**Definition.** For a resolution with k circles, take V⊗ᵏ, where V has basis degrees 1 and −1. With r one-smoothings and n₊ positive and n₋ negative crossings, place it in homological degree r−n₋ and shift internal degree by r+n₊−2n₋. Sum these groups over all resolutions.
 
 **Problem.** The graded Euler characteristic of unreduced Khovanov homology equals the Jones state sum normalized to give q + q⁻¹ on the unknot.
 
-**How the definition helps.** The chain groups are defined so that their graded dimensions reproduce the writhe-corrected Kauffman bracket, the diagram state sum for Jones (our own). One circle contributes q + q⁻¹, the sum of q raised to each basis degree (our own). A smoothing contributes the product of its circle factors with the sign from chain degree and the power from the internal shift (our own). The graded Euler characteristic is this alternating sum of graded dimensions, and it is unchanged on passing to homology (our own). The work is defining a differential that preserves internal degree and squares to zero, then proving invariance under the local diagram moves (our own).
+**How the definition helps.** The chain groups are defined so that their graded dimensions reproduce the writhe-corrected Kauffman bracket, the diagram state sum for Jones (our own). One circle contributes q + q⁻¹, the sum of q raised to each basis degree (our own). A smoothing contributes the product of its circle factors with the sign from chain degree and the power from the internal shift (our own). The graded Euler characteristic is this alternating sum of graded dimensions, and it is unchanged on passing to homology (our own).
 
 **Wikipedia:** [Khovanov homology](https://en.wikipedia.org/wiki/Khovanov_homology). It says: “The graded Euler characteristic of H(L) turns out to be the Jones polynomial of L.”
 
@@ -2976,9 +2922,9 @@
 
 **Definition.** The fine curve graph of a surface has one vertex for each essential simple closed curve, meaning one that bounds no disc. Vertices are actual curves, not isotopy classes of curves. Two vertices are joined by an edge when the curves are disjoint.
 
-**Problem.** For a closed surface of genus at least 2, the automorphism group of the fine curve graph is naturally isomorphic to the homeomorphism group of the surface.
+**Problem.** For a closed orientable surface of genus at least two, its homeomorphism group is naturally isomorphic to the automorphism group of its fine curve graph.
 
-**How the definition helps.** Because each vertex is a real curve, every homeomorphism gives an automorphism, and isotopy is no longer divided out. For the ordinary curve graph, Ivanov's theorem gives only the mapping class group (our own remark). The hard direction is that every automorphism comes from exactly one homeomorphism. Long, Margalit, Pham, Verberne and Yao proved it, and Le Roux and Wolff extend it to more general surfaces.
+**How the definition helps.** Homeomorphisms act directly on actual curves and preserve disjointness (our own explanation). Long, Margalit, Pham, Verberne and Yao proved that each graph automorphism arises from exactly one homeomorphism.
 
 **Paper or page:** [Automorphisms of some variants of fine graphs](https://arxiv.org/abs/2210.05460), [Automorphisms of the fine 1-curve graph](https://arxiv.org/abs/2309.16041). It says: “Later Long, Margalit, Pham, Verberne and Yao proved that for a closed surface of genus g ⩾ 2, the automorphism group of the fine graph is naturally isomorphic to the homeomorphism group of the surface.”
 
@@ -2994,11 +2940,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 57K30 (General topology of 3-manifolds), 57R90, 57K20. arXiv math.GT. Level 4: research.
 
-**Definition.** A homology cylinder over a surface Σ is a 3-manifold that looks like Σ × \[0,1\] to homology. It has two copies of Σ in its boundary, and both inclusions are isomorphisms on homology. Stacking two of them gives a third. Two homology cylinders are homology cobordant when they bound a 4-manifold whose inclusions are isomorphisms on homology.
+**Definition.** A homology cylinder is a compact oriented cobordism from Σ to itself whose two boundary markings induce integral homology isomorphisms. For surfaces with boundary, the markings agree along their common boundary. Homology cobordism requires a compact oriented cobordism respecting the markings, with both cylinder inclusions inducing integral homology isomorphisms.
 
-**Problem.** Homology cylinders over Σ, up to homology cobordism, form a group under stacking. The mapping class group of Σ and the concordance group of string links both map into this group.
+**Problem.** Homology cylinders over Σ, up to homology cobordism, form a group under stacking. Mapping cylinders give a homomorphism from the mapping class group, and string-link exteriors give one for the corresponding punctured disk.
 
-**How the definition helps.** Up to homology cobordism, a cylinder stacked with its upside-down copy is trivial, so inverses exist (our own summary of Garoufalidis and Levine). Mapping classes give homology cylinders through their mapping cylinders, and string links through their exteriors (our own remark). So invariants of both groups can be extended at once. Song extends Johnson homomorphisms, Milnor invariants and Orr invariants in this way.
+**How the definition helps.** Up to homology cobordism, a cylinder stacked with its upside-down copy is trivial, so inverses exist (our own summary of Garoufalidis and Levine). Mapping classes give homology cylinders through their mapping cylinders, and string links through their exteriors (our own remark).
 
 **Paper or page:** [Homology cobordism group of homology cylinders and invariants related to lower central series](https://arxiv.org/abs/2012.13165). It says: “The homology cobordism group of homology cylinders is a generalization of both the mapping class group of surfaces and the string link concordance group.”
 
@@ -3013,9 +2959,9 @@
 
 *Makes the theorem clean to state or prove.* MSC 57K31 (Invariants of 3-manifolds (including skein modules, character varieties)), 33B30, 11G55. arXiv math.GT, math.NT. Level 4: research.
 
-**Definition.** A flattening of an ideal tetrahedron of shape z picks integers p and q and uses the edge logarithms log z + pπi and −log(1−z) + qπi. The third edge logarithm makes the sum zero. A strong flattening of a triangulation makes the signed logarithms cancel around each edge and along closed normal paths around each vertex. The branch shifts must also have even total parity along every closed normal path.
+**Definition.** For shape z, choose integers p,q and edge parameters log z+pπi, −log(1−z)+qπi and minus their sum. A strong flattening has zero signed log sum around each edge and along each closed normal path in a vertex link. It also has zero parity around edges and along every closed normal path.
 
-**Problem.** Take an ordered ideal triangulation of an oriented complete cusped hyperbolic 3-manifold of finite volume, with its complete shapes and a strong flattening. The signed sum of Li₂(z) + log(z)log(1−z)/2 + πi(p log(1−z) + q log z)/2 − π²/6 is then i times the volume minus the Chern–Simons invariant in Neumann’s convention, modulo π²ℤ.
+**Problem.** Consider an ordered ideal triangulation of a complete oriented cusped hyperbolic three-manifold of finite volume, with complete shapes and a strong flattening. Put R = Li₂(z) + log(z)log(1−z)/2 + πi(p log(1−z)+q log z)/2 − π²/6. The signed sum of R equals i times volume minus the Chern–Simons invariant modulo π²ℤ in Neumann’s convention.
 
 **How the definition helps.** The branch indices let the complex volume be written as one sum over tetrahedra (our own terms). The lifted five-term relation makes the sum independent of the triangulation. The work lies in finding strong flattenings and in identifying the sum with the Cheeger–Chern–Simons class.
 
@@ -3031,7 +2977,7 @@
 
 *Rules out counterexamples.* MSC 57K31 (Invariants of 3-manifolds (including skein modules, character varieties)), 11G55, 33B30. arXiv math.GT, math.NT. Level 4: research.
 
-**Definition.** Start with symbols \[z,p,q\], where z is a complex tetrahedron shape outside {0,1} and p,q are integer logarithm branch indices. Impose the five-term relations from five tetrahedra whose signed edge logarithms cancel at every edge. Neumann’s extended pre-Bloch group also imposes \[z,p,q\]+\[z,r,s\]=\[z,p,s\]+\[z,r,q\]. This last equality is the transfer relation.
+**Definition.** Start with the abelian group on \[z,p,q\] for complex z outside {0,1} and integers p,q, modulo Neumann’s lifted five-term relations. In the extended pre-Bloch group also impose \[z,p,q\]+\[z,r,s\]=\[z,p,s\]+\[z,r,q\] for every z and all integers p,q,r,s.
 
 **Problem.** The map from Neumann’s group with only the lifted five-term relations to the extended pre-Bloch group has kernel cyclic of order two. Its generator is \[z,1,1\]+\[z,0,0\]−\[z,1,0\]−\[z,0,1\], independent of z.
 
@@ -3049,11 +2995,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 57K31 (Invariants of 3-manifolds (including skein modules, character varieties)), 57K14. arXiv math.GT. Level 4: research.
 
-**Definition.** Let N be a 3-manifold and φ a class in its first cohomology. The twisted Alexander polynomial is built like the Alexander polynomial of the infinite cyclic cover given by φ. But the homology has coefficients twisted by a representation of the fundamental group, for example through a finite group.
+**Definition.** For integral φ and a finite quotient α of π₁N onto G, form first homology with coefficients ℤ\[G\]\[t,t⁻¹\]. Each loop g acts by left multiplication by α(g) times t raised to φ(g). The twisted Alexander polynomial is the module order, up to a signed power of t.
 
-**Problem.** Let N be a compact orientable irreducible 3-manifold with empty or toroidal boundary, and φ a class in its first cohomology. Then N fibres over the circle in the direction φ exactly when every twisted Alexander polynomial through a finite group is monic of the degree that the Thurston norm of φ predicts.
+**Problem.** Let N be compact, orientable and irreducible with empty or toroidal boundary, and let φ be a nonzero primitive integral first cohomology class. It fibres in direction φ exactly when every finite quotient α gives a monic twisted Alexander polynomial of the Friedl–Vidussi degree.
 
-**How the definition helps.** Twisting by all representations through finite groups gives the invariant enough information to see fibring. A non-fibred knot can have a monic Alexander polynomial of degree twice its genus, so the untwisted conditions are not sufficient (our own remark). What stays hard is the proof of sufficiency, which fills the paper. As a result, S¹ × N carries a symplectic structure only if N fibres over the circle.
+**How the definition helps.** The finite quotients let one state a single test (our own explanation). For quotient G, the required degree is \|G\| times the Thurston norm plus (1+b₃(N)) times the divisibility of φ restricted to ker α. Friedl and Vidussi prove that these tests characterize fibering.
 
 **Paper or page:** [Twisted Alexander polynomials detect fibered 3-manifolds](https://arxiv.org/abs/0805.1234). It says: “In this paper we show that the conditions on twisted Alexander polynomials are not only necessary but also sufficient for a 3-manifold to be fibered.”
 
@@ -3067,7 +3013,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 57K32 (Hyperbolic 3-manifolds), 52B45. arXiv math.GT, math.KT. Level 4: research.
 
-**Definition.** For an oriented complete cusped hyperbolic three-manifold of finite volume, let β be its rational Bloch invariant. Compute β by adding signed tetrahedron shapes from a triangulation with vertices at infinity. Complex conjugation acts on each shape and hence on β. Set β⁻ equal to half the difference between β and its conjugate.
+**Definition.** For an oriented complete cusped hyperbolic three-manifold of finite volume, let β be the rational Bloch class obtained by summing signed ideal tetrahedron shapes. Define β⁻ = (β−conj(β))/2, where conjugation acts on each shape.
 
 **Problem.** Reversing the orientation preserves β⁻. This part of the Bloch invariant gives the class for cutting and reassembling polyhedra when reflections are allowed.
 
@@ -3088,7 +3034,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 57K32 (Hyperbolic 3-manifolds), 52B45, 19F27. arXiv math.GT, math.KT. Level 4: research.
 
-**Definition.** For each manifold, its invariant trace field is generated over ℚ by the squared traces of matrices representing its hyperbolic holonomy. Choose a common number field K containing both trace fields and closed under complex conjugation. Each embedding of K into ℂ sends the manifold’s rational Bloch class to a class with a signed volume. Take one volume per conjugate pair of nonreal embeddings, using the same choices for both manifolds, to form the Borel regulator vector.
+**Definition.** Choose a conjugation-stable number field K containing both invariant trace fields, generated by the squared holonomy traces. Fix one embedding K → ℂ from each conjugate pair of nonreal embeddings. The Borel regulator vector lists the signed volumes of the rational Bloch class under those embeddings.
 
 **Problem.** Suppose every embedding of K ∩ ℝ into ℂ has real image. Two complete oriented hyperbolic three-manifolds of finite volume are stably scissors congruent exactly when their vectors agree. Stable scissors congruence permits adding the same polyhedron to both manifolds before cutting and reassembling polyhedral pieces.
 
@@ -3128,7 +3074,7 @@
 
 **Problem.** Complete connected hyperbolic three-manifolds without boundary and of finite volume are isometric if their fundamental groups are isomorphic. An isometry preserves all distances.
 
-**How the definition helps.** Finite volume excludes the following family of complete metrics with the same fundamental group, in our own example. Identify points of hyperbolic three-space under the iterates of a translation along a fixed geodesic. Each quotient has infinite volume and fundamental group ℤ. The shortest closed geodesic has the translation length, so different lengths give different metrics up to isometry. Mostow–Prasad rigidity supplies the theorem for finite volume.
+**How the definition helps.** Finite volume excludes cyclic quotients of hyperbolic three-space by translations along one geodesic (our own example). Each has infinite volume and fundamental group ℤ. Different translation lengths give different shortest closed geodesic lengths, hence nonisometric quotients. Mostow–Prasad rigidity proves the finite-volume conclusion.
 
 **nLab:** [Mostow rigidity theorem](https://ncatlab.org/nlab/show/Mostow+rigidity+theorem). It says: “then this structure is unique up to isometry, and in fact it is uniquely determined already by the fundamental group π₁(Σ).”
 
@@ -3144,7 +3090,7 @@
 
 *True by definition.* MSC 57K32 (Hyperbolic 3-manifolds), 52B45. arXiv math.GT, math.KT. Level 4: research.
 
-**Definition.** An ideal tetrahedron has four vertices on the sphere at infinity in hyperbolic space. Its ordered shape z is the fourth vertex after a fractional linear transformation sends the first three to 0, ∞, 1. Form the rational vector space on shape symbols \[z\]. For five distinct ordered vertices, set the alternating sum obtained by deleting each vertex to zero.
+**Definition.** For four distinct ordered ideal vertices, define \[z\] using the fourth coordinate after sending the first three to 0, ∞, 1 by a Möbius transformation. The rational pre-Bloch group has generators \[z\] for complex z outside {0,1}. For every five distinct ordered ideal vertices, impose the alternating deletion sum as a relation.
 
 **Problem.** A bipyramid with five distinct vertices at infinity splits into either two or three tetrahedra. With the induced vertex orders and orientation signs, both subdivisions give the same sum in this space, the rational pre-Bloch group.
 
@@ -3220,7 +3166,7 @@
 
 **Problem.** Cut along an essential embedded two-sided surface and reglue by a finite-order isometry of its neighborhood that preserves orientation and sides. This generalized mutation preserves the ordinary Bloch class.
 
-**How the definition helps.** The quotient discards precisely the finite-order difference produced by the cut and regluing (our own). Neumann expresses that difference as the class of the mapping torus, formed by joining the ends of a surface cylinder using the symmetry. A finite cover is a surface times a circle, and its holonomy kills the circle. Its class therefore vanishes, so the original difference has finite order. The Bloch–Wigner theorem compares this homological quotient with the group defined by tetrahedron shapes (our own).
+**How the definition helps.** The quotient discards precisely the finite-order difference produced by the cut and regluing (our own). Neumann expresses that difference as the class of the mapping torus, formed by joining the ends of a surface cylinder using the symmetry. A finite cover is a surface times a circle, and its holonomy kills the circle. Its class therefore vanishes, so the original difference has finite order.
 
 **nLab:** [Bloch group](https://ncatlab.org/nlab/show/Bloch+group). It says: “The fundamental class of a hyperbolic 3-manifold X canonically gives an element in the Bloch group”
 
@@ -3234,7 +3180,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 57K32 (Hyperbolic 3-manifolds). arXiv math.GT. Level 4: research.
 
-**Definition.** Dehn filling replaces a torus end of a three-manifold by a solid torus. A flattening shifts tetrahedron shape logarithms by integer multiples of πi. Require zero signed log sums around edges and along closed normal paths near unfilled ends, and zero parity along every closed normal path. Such paths cross faces away from vertices, and parity counts the signed shifts modulo two.
+**Definition.** For each ideal tetrahedron, a flattening shifts two shape logarithms by integral multiples of πi and chooses the third to make their sum zero. Require zero signed log sums around edges and along closed normal paths in every unfilled vertex link. Require zero parity around edges and along every closed normal path.
 
 **Problem.** At each filled end, also require zero log sum along normal loops that contract in the added solid torus. For Neumann’s degree-one triangulation of a hyperbolic filling, these flattenings exist. Their signed tetrahedron sum gives the filled manifold’s extended Bloch class.
 
@@ -3256,7 +3202,7 @@
 
 **Problem.** For a closed oriented surface of genus at least two, the mapping torus of an orientation-preserving pseudo-Anosov map is hyperbolic. A mapping torus glues the two ends of the surface times an interval by the map.
 
-**How the definition helps.** Pseudo-Anosov stretching excludes the identity gluing and its persistent closed curves, in our own explanation. Thurston’s hyperbolization theorem supplies a complete metric of curvature −1 on the mapping torus. In our own counterexample, identity gluing gives a surface times a circle. A noncontractible simple closed curve times the circle gives a subgroup ℤ² in its fundamental group. A closed hyperbolic three-manifold cannot have such a subgroup.
+**How the definition helps.** Pseudo-Anosov stretching excludes the identity gluing, and Thurston’s hyperbolization theorem gives the hyperbolic metric. Identity gluing produces a surface times a circle (our own example). An essential simple closed curve times the circle gives a subgroup ℤ², impossible in a closed hyperbolic three-manifold group.
 
 **Paper or page:** [Cusp geometry of fibered 3-manifolds](https://arxiv.org/abs/1108.5748v2). It says: “For every orientation-preserving, pseudo-Anosov homeomorphism φ : F → F, the mapping torus Mφ is a hyperbolic 3–manifold”
 
@@ -3268,7 +3214,7 @@
 
 *Rules out counterexamples.* MSC 57K32 (Hyperbolic 3-manifolds), 20J06. arXiv math.GT. Level 4: research.
 
-**Definition.** Truncate the single torus end of a complete oriented hyperbolic three-manifold of finite volume to obtain a compact core with boundary. Its holonomy represents loops in the discrete isometry group G = PSL(2, ℂ). Choose coordinates so boundary loops act by translations in P = (ℂ, +). Map the core’s relative orientation class into H₃(G, P), the integral homology that permits boundaries in P.
+**Definition.** Let C be the truncated core of an oriented complete finite-volume hyperbolic three-manifold with one torus cusp. Conjugate holonomy so the cusp group acts by translations in P = (ℂ,+) inside discrete G = PSL(2,ℂ). The relative holonomy class is the image of \[C,∂C\] in H₃(G,P;ℤ) under this map of pairs.
 
 **Problem.** For an oriented basis of torus loops with translations a and b, the boundary of this class is a ∧ b. In the figure-eight knot complement this boundary is nonzero, so the class cannot come from absolute homology H₃(G).
 
@@ -3343,7 +3289,7 @@
 
 **Definition.** A trisection splits a closed 4-manifold X into three 4-dimensional 1-handlebodies, which are boundary connected sums of copies of S¹ × B³. Each pair of pieces meets in a 3-dimensional handlebody, and all three meet in one closed surface. The spine is the union of the three 3-dimensional handlebodies.
 
-**Problem.** Every closed smooth oriented 4-manifold X has a trisection, and any two trisections of X become isotopic after enough stabilizations. The spine of any trisection determines X up to diffeomorphism.
+**Problem.** Every connected closed smooth oriented 4-manifold X has a trisection, and any two trisections of X become isotopic after enough stabilizations. The spine of any trisection determines X up to diffeomorphism.
 
 **How the definition helps.** By Laudenbach and Poénaru, a 4-dimensional 1-handlebody can be glued on in essentially one way, so the spine fixes the 4-manifold (our own remark). The spine is fixed by three families of curves on the central surface (our own remark). Existence and uniqueness up to stabilization are the 4-dimensional versions of the Heegaard and Reidemeister–Singer theorems. The hard work moves into their proofs, which Gay and Kirby did with Morse 2-functions (our own remark).
 
@@ -3360,11 +3306,11 @@
 
 *Rules out counterexamples.* MSC 57K41 (Invariants of 4-manifolds (including Donaldson and Seiberg-Witten invariants)), 58J05. arXiv math.GT, math.DG. Level 4: research.
 
-**Definition.** The perturbed Seiberg–Witten equations add a self-dual 2-form η to the curvature equation. This equation says that the self-dual part F⁺ of the curvature of the connection A equals η plus a term in the spinor. Let Π be the subspace of self-dual forms that are F⁺ for some connection; its codimension is b₊(M), the number of positive eigenvalues of the intersection form on H²(M). One chooses η outside Π.
+**Definition.** Fix a spinᶜ structure and a metric on a closed oriented four-manifold. Its reducible wall Π consists of the self-dual curvatures F⁺ of all unitary connections on the determinant line. Choose a self-dual perturbation η outside this affine subspace, using the same imaginary-valued convention as for curvature.
 
-**Problem.** Let M be a compact oriented 4-manifold with b₊(M) ≥ 1, and choose η outside Π. Then the perturbed Seiberg–Witten equations have no reducible solutions, the solutions with zero spinor.
+**Problem.** Let M be a closed oriented 4-manifold with b₊(M) ≥ 1, and choose η outside Π. Then the perturbed Seiberg–Witten equations have no reducible solutions, the solutions with zero spinor.
 
-**How the definition helps.** A good choice of η rules out the solutions at which the moduli space can be singular. At a reducible solution the gauge group does not act freely, so the unperturbed moduli space can be singular there. With η outside Π, a reducible solution would need F⁺ = η, which is impossible. When b₊(M) ≥ 2, any two good perturbations are joined by a path, so the invariant does not depend on η.
+**How the definition helps.** A reducible solution has zero spinor, so its quadratic spinor term vanishes. The curvature equation then requires F⁺ = η, contrary to η lying outside Π. The wall has codimension b₊, so such perturbations exist when b₊ ≥ 1 (our own explanation).
 
 **nLab:** [Seiberg-Witten moduli space](https://ncatlab.org/nlab/show/Seiberg-Witten+moduli+space). It says: “If b₊(M) ≥ 1, then a perturbation η ∈ Ω₊²(M) ∖ Π ≠ ∅ forces solutions of the perturbed Seiberg-Witten equations with ψ = 0 to fulfill F<sub>A</sub>⁺ = η, which is not possible due to η ∉ Π.”
 
@@ -3376,9 +3322,9 @@
 
 **Remember:** Two solutions can appear together without changing their signed sum.
 
-*Rules out counterexamples.* MSC 57K41 (Invariants of 4-manifolds (including Donaldson and Seiberg-Witten invariants)), 53C07. arXiv math.DG, math-ph. Level 4: research.
+*True by definition.* MSC 57K41 (Invariants of 4-manifolds (including Donaldson and Seiberg-Witten invariants)), 53C07. arXiv math.DG, math-ph. Level 4: research.
 
-**Definition.** Fix a spinᶜ structure of expected dimension zero on a closed connected oriented smooth four-manifold. This structure specifies the bundles for the Seiberg–Witten equations. A homology orientation chooses an orientation of the first real cohomology together with a maximal positive subspace of the intersection form. It assigns a sign to each isolated regular solution modulo changes of frame.
+**Definition.** Fix a spinᶜ structure of expected dimension zero on a closed connected oriented smooth four-manifold. Orient the direct sum of its first real cohomology and a maximal positive subspace of its intersection form. The signed count sums the resulting orientation signs of all gauge classes of solutions for generic data.
 
 **Problem.** If the intersection form has at least two positive directions, the signed count of Seiberg–Witten solutions is the same for every generic metric and perturbation.
 
@@ -3392,11 +3338,11 @@
 
 ### Smoothness diagonalizes definite intersection forms
 
-**Remember:** A smooth closed four-manifold cannot carry the definite E₈ form.
+**Remember:** Smooth coordinate changes exclude the topological manifold with definite E₈ intersection form.
 
 *Rules out counterexamples.* MSC 57K41 (Invariants of 4-manifolds (including Donaldson and Seiberg-Witten invariants)), 57R10. arXiv math.GT. Level 4: research.
 
-**Definition.** A smooth 4-manifold has Euclidean charts with smooth changes of coordinates. A topological 4-manifold only requires continuous changes of coordinates with continuous inverses. The intersection form counts signed intersections of two-dimensional homology classes, and it is definite when all nonzero classes have squares of the same sign.
+**Definition.** A smooth four-manifold has charts to open subsets of ℝ⁴ with smooth transition maps. The integral intersection form pairs degree-two homology classes modulo torsion by signed intersection. It is definite if all nonzero classes have strictly positive square or all have strictly negative square.
 
 **Problem.** Donaldson's theorem. If a closed, oriented, simply connected smooth 4-manifold has definite intersection form, some integer basis makes the form diagonal.
 
@@ -3414,11 +3360,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 57M10 (Covering spaces and low-dimensional topology), 54F15. arXiv math.AT, math.GN. Level 4: research.
 
-**Definition.** A continuum is a compact, metrizable, connected space. A regular cover is a covering map that comes from the free action of a group. The compact universal cover of a continuum is the inverse limit of all continua that regularly cover it.
+**Definition.** Fix a basepoint of a compact connected metrizable space X. Its compact universal cover is the inverse limit of its pointed connected compact regular covers, with based covering maps over X as bonding maps.
 
 **Problem.** Every continuum has a compact universal cover, even one such as a solenoid that has no classical universal cover. It is unique among generalized universal covers by compactly simply connected continua.
 
-**How the definition helps.** Because the cover is defined as a limit over all compact regular covers, it exists for every continuum almost by construction. The paper must still show that these covers form an inverse system and that the limit is metrizable. A continuum is compactly simply connected when the inverse limit of the deck groups of its finite covers is trivial. Most of the work moves into the uniqueness theorem.
+**How the definition helps.** The inverse limit gives a single candidate even for a solenoid (our own explanation). The compact universal covering theorem supplies the inverse system, the continuum properties of its limit, and uniqueness among compactly simply connected generalized covers.
 
 **Paper or page:** [Every Continuum has a Compact Universal Cover](https://arxiv.org/abs/2109.02152). It says: “We define the compact universal cover of a compact, metrizable connected space (i.e. a continuum) X to be the inverse limit of all continua that regularly cover X.”
 
@@ -3430,13 +3376,13 @@
 
 **Remember:** Keep only the lifting that covering theory uses; drop even covering of neighbourhoods.
 
-*Rules out counterexamples. Confidence: medium.* MSC 57M10 (Covering spaces and low-dimensional topology), 55Q05. arXiv math.AT, math.GN. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 57M10 (Covering spaces and low-dimensional topology), 55Q05. arXiv math.AT, math.GN. Level 4: research.
 
-**Definition.** Brazas defines a semicovering map as a local homeomorphism with continuous unique lifting of paths and of homotopies of paths. That means each path and each homotopy of paths lifts in exactly one way, and the lift depends continuously on it. Every covering map is a semicovering.
+**Definition.** A semicovering is a local homeomorphism that lifts based paths and based path homotopies uniquely and continuously for every chosen lift of the basepoint. Continuity uses the compact-open topologies on the corresponding mapping spaces.
 
-**Problem.** Let f = g ∘ h, where the middle space and the base are path connected. If two of f, g and h are semicoverings, then so is the third.
+**Problem.** Let f = g ∘ h be continuous maps between nonempty spaces, with path-connected middle space and base. If two of f, g and h are semicoverings, so is the third.
 
-**How the definition helps.** Semicoverings drop the even-covering condition but keep the lifting properties that classical covering theory uses. So the 2-out-of-3 rule follows from the uniqueness and continuity of lifts. Covering maps fail even closure under composition. Spanier composes a trivial covering with countably infinite fibre with a coproduct of coverings over a countable product of circles, and the composite is not locally trivial.
+**How the definition helps.** Unique continuous lifting makes the induced maps on based path and homotopy spaces homeomorphisms. These compose and cancel, and path connectedness lets one choose the required starting lifts (our own explanation of Brazas’s theorem). Ordinary covers can fail closure under composition because their composite need not evenly cover any neighborhood of a point.
 
 **nLab:** [covering space](https://ncatlab.org/nlab/show/covering+space). It says: “Semicoverings satisfy the "2 out of 3 rule". I.e,, if f=g h and two of f,g,h are semicoverings , then so is the third. This is not true for covering maps.”
 
@@ -3451,11 +3397,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 57Q10 (Simple homotopy type, Whitehead torsion, Reidemeister-Franz torsion, etc.), 57K31, 57R15. arXiv math.GT, math.SG. Level 4: research.
 
-**Definition.** Milnor's torsion of a 3-manifold is defined only up to multiplication by a unit ± h, with h in the first homology. Turaev refined it with extra data, Euler structures, which correspond to spin-c structures. The refined torsion is a function on spin-c structures, with only a sign ambiguity left. A spin-c structure is a lift of the tangent bundle's structure group that the Seiberg–Witten equations need.
+**Definition.** An Euler structure on a closed oriented three-manifold is an equivalence class of nowhere-zero tangent fields under homotopy outside a ball. Such structures correspond to spinᶜ structures and specify the homology translation in Turaev’s refinement of torsion.
 
-**Problem.** For a closed oriented 3-manifold with positive first Betti number, the Seiberg–Witten invariant equals Turaev's refined torsion as a function on spin-c structures, up to one overall sign.
+**Problem.** Fix compatible chambers when the first Betti number is one. On a closed oriented connected three-manifold with positive first Betti number, Seiberg–Witten and Turaev torsion agree as functions on spinᶜ structures up to overall sign.
 
-**How the definition helps.** To equal a function on spin-c structures, the torsion must itself be such a function, which Turaev's refinement gives (our own explanation). Meng and Taubes showed that the Seiberg–Witten invariant equals Milnor torsion up to the unit ambiguity. Turaev then matched the two as functions on spin-c structures (our own attribution). The quoted theorem records this for the Euler characteristic of Wang's monopole Floer homology.
+**How the definition helps.** Euler structures specify the common argument of the two functions (our own explanation). Turaev’s refinement of the Meng–Taubes comparison gives equality with compatible conventions.
 
 **Paper or page:** [Monopoles and Landau-Ginzburg Models III: A Gluing Theorem](https://arxiv.org/abs/2010.04318). It says: “is independent of the auxiliary data (gY, gΣ; ω, λ, μ) and is equal to the Minor-Turaev torsion T(Y) up to an overall sign ambiguity.”
 
@@ -3488,11 +3434,11 @@
 
 *True by definition.* MSC 57R15 (Specialized structures on manifolds (spin manifolds, framed manifolds, etc.)), 55R40, 53C27. arXiv math.AT, math.DG. Level 4: research.
 
-**Definition.** The fractional Pontryagin class ½p₁ is a map BSpin(n) → B³U(1), so a degree-4 integral class whose double is the first Pontryagin class p₁. The classifying space BString(n) is the homotopy fiber of this map (the homotopy version of the preimage of a point). A string structure on a spin manifold X is a lift of its classifying map X → BSpin(n) to BString(n).
+**Definition.** Let λ represent the universal degree-four integral spin class ½p₁, and define BString(n) as its homotopy fibre. For a fixed spin classifying map f on X, a string structure is a homotopy lift of f to BString(n).
 
 **Problem.** A spin manifold X has a string structure exactly when ½p₁(X) = 0. The string structures on X form the homotopy fiber of ½p₁ on X.
 
-**How the definition helps.** BString is defined as a homotopy fiber, so the string structures on X form a homotopy fiber too. In detail, the mapping-space functor H(X, −), which takes maps from X, preserves homotopy limits. So the space of string structures on X is the homotopy fiber of ½p₁ on X. So a string structure exists if and only if the class ½p₁(X) is trivial. The real content is elsewhere. It lies in building concrete models of the String group or String 2-group, and in the smooth refinement ½𝐩₁ with connections.
+**How the definition helps.** A lift is precisely a choice of nullhomotopy of λ ∘ f (our own explanation). Such choices exist exactly when ½p₁(X) vanishes. Mapping out of X preserves homotopy fibres, giving the stated space of choices.
 
 **nLab:** [string structure](https://ncatlab.org/nlab/show/string+structure). It says: “The 2-groupoid of string structure on X is the homotopy fiber of ½𝐩₁<sup>X</sup>”
 
@@ -3505,9 +3451,9 @@
 
 **Remember:** Fusion remembers how loops were cut into paths.
 
-*Rules out counterexamples. Confidence: medium.* MSC 57R15 (Specialized structures on manifolds (spin manifolds, framed manifolds, etc.)), 53C27. arXiv math.AT, math.DG. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 57R15 (Specialized structures on manifolds (spin manifolds, framed manifolds, etc.)), 53C27. arXiv math.AT, math.DG. Level 4: research.
 
-**Definition.** A loop spin structure lifts the bundle of spin frames along loops through a central circle extension of the loop group. A fusion structure multiplies the circle fibers for paired frame paths with common endpoints, cancelling their shared path. This multiplication is smooth, associative and compatible with the lifted group action.
+**Definition.** Lift the looped spin frame bundle through the basic central circle extension of the loop spin group. For paths a,b with common endpoints, let Lₐᵦ denote the circle fibre over a followed by reversed b. Fusion gives smooth, associative, action-compatible isomorphisms Lₐᵦ ⊗ Lᵦ𝒸 → Lₐ𝒸 for all triples of paths sharing both endpoints.
 
 **Problem.** Let M be a spin manifold of dimension three or at least five. Its free loop space admits a fusion spin structure exactly when M admits a string structure, a trivialization of half its first Pontryagin class.
 
@@ -3541,9 +3487,9 @@
 
 **Remember:** A constant base loop contributes no tangent to the curvature integral.
 
-*Makes the theorem clean to state or prove.* MSC 57R18 (Topology and geometry of orbifolds), 81T30. arXiv math.DG, hep-th. Level 4: research.
+*True by definition.* MSC 57R18 (Topology and geometry of orbifolds), 81T30. arXiv math.DG, hep-th. Level 4: research.
 
-**Definition.** A gerbe is a geometric representative of a degree-three class. Integrating a gerbe with connection around each loop gives a holonomy line with connection on loop space. The inertia orbifold keeps loops that stay at one point in a local chart and may close by a symmetry.
+**Definition.** In an orbifold chart U with group G, inertia consists of pairs (x,g) with g·x=x. A chart symmetry h sends (x,g) to (h·x,hgh⁻¹). These pairs represent constant loops closed by a symmetry.
 
 **Problem.** The holonomy line of an orbifold gerbe has flat connection on the inertia orbifold, even when the gerbe has nonzero curvature.
 
@@ -3556,31 +3502,13 @@
 - [Ernesto Lupercio and Bernardo Uribe, Holonomy for gerbes over orbifolds (2006), §5](https://doi.org/10.1016/j.geomphys.2005.08.006)
 - [Ernesto Lupercio and Bernardo Uribe, An introduction to gerbes on orbifolds (2004), §§3–4](https://doi.org/10.5802/ambp.190)
 
-### Angular forms compute secondary Euler numbers
-
-**Remember:** Lift the fundamental cycle and integrate the angular form.
-
-*True by definition.* MSC 57R20 (Characteristic classes and numbers in differential topology), 53C05. arXiv math.DG, math.AT. Level 4: research.
-
-**Definition.** Use the canonical angular form determined by the metric connection on an oriented even-rank bundle. It integrates to one on each oriented unit sphere and its derivative is the pulled-back Euler form in the convention used here.
-
-**Problem.** For a rank-2n bundle over a closed oriented (2n−1)-manifold, the differential Euler number equals the angular form integrated along any unit section, modulo integers.
-
-**How the definition helps.** A section lifts the fundamental cycle exactly, so the sphere-bundle formula for the Euler character needs no correction chain. Our own explanation replaces the universal character with this lift formula. Cheeger and Simons prove agreement and show that changing the lift changes the integral by an integer.
-
-**nLab:** [secondary characteristic class](https://ncatlab.org/nlab/show/secondary+characteristic+class). It says: “If that curvature form happens to vanish, the corresponding Chern-Simons form itself becomes closed, and now itself represents a cohomology class, in one degree lower.”
-
-**Sources:**
-
-- [Jeff Cheeger and James Simons, Differential characters and geometric invariants (1985), §3](https://math.mit.edu/juvitop/pastseminars/notes_2019_Fall/cheeger-simons.pdf)
-
 ### Antipodes force flat Euler two-torsion
 
 **Remember:** Antipodes negate the fiber form without changing the base cycle.
 
 *True by definition.* MSC 57R20 (Characteristic classes and numbers in differential topology), 53C05. arXiv math.DG, math.AT. Level 4: research.
 
-**Definition.** For a flat oriented Euclidean bundle, extend the normalized volume form of its unit spheres by zero on horizontal directions. Define the flat Euler class by integrating this form modulo integers on homology classes lifting cycles from the base.
+**Definition.** For a flat oriented Euclidean rank-r bundle, extend normalized fibre volume on the unit sphere bundle to vanish on horizontal arguments. Evaluate its flat Euler class on each integral (r−1)-cycle by integrating over any homology lift of its class, modulo integers.
 
 **Problem.** For every flat oriented Euclidean bundle of odd rank at least three, twice the flat Euler class is zero.
 
@@ -3596,13 +3524,13 @@
 
 **Remember:** Zero curvature leaves room for torsion in the integral class.
 
-*Rules out counterexamples.* MSC 57R20 (Characteristic classes and numbers in differential topology), 57R30. arXiv math.DG, math.AT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 57R20 (Characteristic classes and numbers in differential topology), 57R30. arXiv math.DG, math.AT. Level 4: research.
 
-**Definition.** A flat differential character assigns values modulo integers to homology classes. Its integral characteristic class is, up to sign, the coboundary of a real lift of those values.
+**Definition.** A flat degree-k differential character is a homomorphism from integral homology in degree k−1 to ℝ/ℤ. Its integral characteristic class is, up to sign, the Bockstein of the corresponding cohomology class.
 
 **Problem.** A smooth codimension-two foliation can have a normal plane bundle whose squared first Pontryagin class is nonzero integrally, although its adapted curvature form vanishes.
 
-**How the definition helps.** The flat character retains torsion through the coboundary of its real lift. Our own example takes a flat complex line with generating order-three holonomy over the standard nine-dimensional lens space with fundamental group of order three. Its horizontal leaves have that line as their normal bundle along the zero section. There the squared Pontryagin class equals the fourth power of the first Chern class, a generator of the integral degree-eight cohomology group ℤ/3.
+**How the definition helps.** A flat character allows zero curvature with nonzero torsion characteristic class (our own example). Take the total space of the flat line with generator holonomy over the nine-dimensional lens space with fundamental group ℤ/3. The horizontal foliation restricts along the zero section to a normal bundle equal to that line. Its squared Pontryagin class restricts to c₁⁴, which generates degree-eight integral cohomology ℤ/3.
 
 **Paper or page:** [Characteristic classes for flat Diff(M)-foliations](https://arxiv.org/abs/2311.09160). It says: “is injective for all ℓ ≥ 0.”
 
@@ -3724,13 +3652,13 @@
 
 **Remember:** Curvature cannot see which torsion class you added.
 
-*Rules out counterexamples.* MSC 57R20 (Characteristic classes and numbers in differential topology), 53C08. arXiv math.DG, math.AT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 57R20 (Characteristic classes and numbers in differential topology), 53C08. arXiv math.DG, math.AT. Level 4: research.
 
-**Definition.** A Cheeger–Simons characteristic class assigns values modulo integers to cycles. Its definition pairs a polynomial in the curvature with an integral class that the polynomial represents over the reals.
+**Definition.** A degree-2k Cheeger–Simons input for G pairs an invariant degree-k polynomial P with u ∈ H²ᵏ(BG; ℤ). The real image of u must equal the Chern–Weil class of P.
 
 **Problem.** For the cyclic group of order two, the zero polynomial admits two distinct natural differential characteristic classes of degree two.
 
-**How the definition helps.** The integral class distinguishes choices that give the same curvature. In our own example, the group’s classifying space has two integral degree-two classes, both zero over the reals. The Cheeger–Simons theorem supplies a natural differential class for each pair.
+**How the definition helps.** In our own example, H²(BG; ℤ) has order two and both classes map to zero over ℝ. The Cheeger–Simons theorem refines each pair to a natural differential class with the specified integral class, so the two refinements differ.
 
 **nLab:** [Cheeger-Simons homomorphism](https://ncatlab.org/nlab/show/Cheeger-Simons+homomorphism). It says: “the Cheeger-Simons homomorphism refines this to an assignment of secondary characteristic classes in ordinary differential cohomology to principal connections”
 
@@ -3744,7 +3672,7 @@
 
 *True by definition.* MSC 57R20 (Characteristic classes and numbers in differential topology), 53C08, 58J28. arXiv math.DG, math.AT. Level 4: research.
 
-**Definition.** A degree-four differential character assigns numbers modulo integers to three-cycles. For a smooth family of closed oriented surfaces, integrate this character over the fibers to define the Chern–Simons line with connection on the base.
+**Definition.** A degree-four differential character is a homomorphism h from smooth integral three-cycles to ℝ/ℤ satisfying h(∂c) = ∫<sub>c</sub> ω modulo integers for every smooth four-chain c. One fixed four-form ω serves for all c. Fiber integration along closed oriented surfaces gives the degree-two character of the Chern–Simons line.
 
 **Problem.** Parallel transport around a loop in the base equals exp(2πi h), where h is the original character evaluated on the surface family over that loop.
 
@@ -3762,11 +3690,11 @@
 
 *True by definition.* MSC 57R20 (Characteristic classes and numbers in differential topology), 53C08. arXiv math.DG, math.AT. Level 4: research.
 
-**Definition.** Each point of a principal bundle picks a frame for the bundle pulled back to its total space. In this frame the Chern–Simons form compares the given connection with the trivial connection.
+**Definition.** For a principal bundle π:P → M, the tautological section of π\*P = P ×<sub>M</sub> P sends each p to (p,p). It defines the trivial reference connection used to transgress the pulled-back connection.
 
 **Problem.** On the total space, the differential characteristic class evaluates on cycles by integrating this Chern–Simons form modulo integers. A global section gives the same formula on the base.
 
-**How the definition helps.** The chosen frame makes the reference connection trivial, so its positive-degree characteristic class vanishes. Our own explanation uses the connection-change formula to replace a universal class calculation with a single integral.
+**How the definition helps.** In our own argument, the trivial framed connection has zero positive-degree differential characteristic class by naturality from a point. The connection-change formula therefore gives integration of the transgression form modulo integers. Pullback along any global section gives the base formula.
 
 **nLab:** [secondary characteristic class](https://ncatlab.org/nlab/show/secondary+characteristic+class). It says: “Using refined Chern-Weil theory the notions of curvature characteristic forms and their Chern-Simons forms are unified into the notion of cocycles in ordinary differential cohomology.”
 
@@ -3782,7 +3710,7 @@
 
 *True by definition.* MSC 57R20 (Characteristic classes and numbers in differential topology), 57R30. arXiv math.DG, math.AT. Level 4: research.
 
-**Definition.** The truncated Weil algebra for codimension q sets curvature polynomials of form degree above 2q equal to zero. Its closed generators cᵢ have degree 2i, and its odd generators satisfy dyᵢ = cᵢ.
+**Definition.** For codimension q, take the polynomial algebra on c₁,…,c<sub>q</sub> tensored with the exterior algebra on y₁,…,y<sub>q</sub> over ℝ. Give cᵢ degree 2i and yᵢ degree 2i−1, with dcᵢ = 0 and dyᵢ = cᵢ. Quotient by the ideal generated by curvature monomials of degree above 2q.
 
 **Problem.** For a smooth foliation with a framed normal bundle, a polynomial c of degree at most 2q gives a secondary class whenever degree(cᵢc) exceeds 2q. The class is represented in the algebra by yᵢc.
 
@@ -3803,7 +3731,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 57R20 (Characteristic classes and numbers in differential topology), 55R40. arXiv math.DG, math.AT. Level 4: research.
 
-**Definition.** A flat principal bundle has transition functions that are locally constant. Its classifying map therefore takes values in the classifying space of the structure group with the discrete topology.
+**Definition.** A flat principal G-bundle has a specified reduction to locally constant transition functions. Equivalently, its flat atlas has locally constant transition functions on every overlap, and compatible flat atlases define the same structure.
 
 **Problem.** Choose a positive-degree integral characteristic class and a curvature polynomial representing it over the reals. One universal secondary class then gives every flat bundle’s secondary class by pullback.
 
@@ -3821,7 +3749,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 57R20 (Characteristic classes and numbers in differential topology), 57R30, 55R40. arXiv math.DG, math.AT. Level 4: research.
 
-**Definition.** A framed Haefliger structure records local transverse coordinate changes near points, together with a basis of the normal bundle varying smoothly over the manifold. Its classifying map records these data up to extension over an interval.
+**Definition.** A smooth codimension-q Haefliger cocycle assigns local maps to ℝᑫ and smooth overlap maps into the étale groupoid of local diffeomorphism germs. Each germ carries one local value to the other, and the germs compose on triple overlaps. A framing trivializes the rank-q bundle glued by their derivatives.
 
 **Problem.** Every secondary class from the truncated Weil algebra of a framed foliation comes by pullback from the framed Haefliger classifying space.
 
@@ -3840,11 +3768,11 @@
 
 *True by definition. Confidence: low.* MSC 57R30 (Foliations in differential topology; geometric theory), 18F40, 18N60. arXiv math.DG, math.CT. Level 4: research.
 
-**Definition.** Differential cohesion is an axiomatic setting for differential geometry with higher stacks. In it, a foliation of X is a map X → X//𝒟 onto a higher stack, the leaf space. The map must be a 1-epimorphism (the higher-stack version of a surjection) and a formally smooth morphism (the analogue of a submersion). The leaves are the fibres over the points of the leaf space.
+**Definition.** In differential cohesion, a foliation of X is a formally smooth 1-epimorphism X → X//𝒟 to its higher leaf stack. Its leaves are the fibers over points.
 
 **Problem.** In differential cohesion, every foliation is simple. Its leaves are the fibres of a formally smooth epimorphism onto its leaf space, which is a higher stack. For an étale foliation groupoid, these are the traditional leaves.
 
-**How the definition helps.** A smooth higher stack can serve as the leaf space when a manifold cannot, and the quotient map onto it is always a submersion. Classically, only simple foliations come from a submersion onto a manifold, because a general leaf space is not Hausdorff. The work goes into checking that the foliation groupoid gives back the traditional leaves when it is étale. For a general Lie groupoid, the leaves can keep isotropy groups that are not discrete.
+**How the definition helps.** The defining map already exhibits each leaf as a fiber. In our own groupoid description, the fiber over a represented point projects onto its orbit, the traditional leaf in the étale presentation.
 
 **nLab:** [foliation](https://ncatlab.org/nlab/show/foliation). It says: “Because the quotient map to the leaf space of a general foliation is always a submersion/formally smooth morphism, just not always onto a manifold, but onto a higher space.”
 
@@ -3854,15 +3782,15 @@
 
 ### Flexible sheaves are defined so that the h-principle follows
 
-**Remember:** If restrictions lift homotopies, true and formal solutions agree up to homotopy.
+**Remember:** Restrictions of sections over compact sets lift homotopies of disks.
 
-*True by definition. Confidence: medium.* MSC 57R42 (Immersions in differential topology), 18F20. arXiv math.DG, math.GT. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 57R42 (Immersions in differential topology), 18F20. arXiv math.DG, math.GT. Level 4: research.
 
-**Definition.** A sheaf here assigns to each open set a space of solutions, for example immersions. Gromov calls it flexible when restriction from a larger compact set to a smaller one is a fibration, a map with the homotopy lifting property. The h-principle says that the inclusion of true solutions into formal solutions is a weak homotopy equivalence. A formal solution satisfies only the pointwise, algebraic part of the condition.
+**Definition.** A continuous sheaf on a polyhedron is flexible if every inclusion K ⊂ L of compact subsets induces a Serre fibration of section spaces. Sections over compact sets are germs of sections on neighborhoods.
 
 **Problem.** Every flexible sheaf on a polyhedron satisfies the parametric h-principle.
 
-**How the definition helps.** Flexibility isolates the one property that the extension argument needs, so the h-principle follows in one general theorem. The paper reads a flexible sheaf as a fibrant object of a model structure, an object that behaves well in an abstract homotopy theory. The work then moves into reducing concrete problems to flexible sheaves (our own). For example, open conditions that diffeomorphisms preserve satisfy the h-principle on open manifolds (Theorem 0.9).
+**How the definition helps.** Gromov’s flexible sheaf theorem uses homotopy lifting for these restrictions to establish the parametric h-principle.
 
 **Paper or page:** [Fibration structure for Gromov h-principle](https://arxiv.org/abs/2102.03449), [Fibration structure for Gromov h-principle](https://arxiv.org/abs/2102.03449). It says: “Any flexible sheaf on a polyhedron satisfies the parametric h-principle.”
 
@@ -3877,11 +3805,11 @@
 
 *True by definition.* MSC 57R56 (Topological quantum field theories (aspects of differential topology)), 81T45. arXiv math.QA, math.GT. Level 4: research.
 
-**Definition.** For a finite group G and a closed manifold M, consider principal G-bundles on M, which here are G-covering spaces. Define Z(M) as the sum, over isomorphism classes of bundles P, of 1/\|Aut P\|. This sum is the groupoid cardinality of the groupoid of bundles. The based formula instead counts homomorphisms from π₁(M, x) into G and divides by \|G\|.
+**Definition.** For finite G and closed M, the untwisted value Z(M) sums 1/\|Aut(P)\| over isomorphism classes of principal G-bundles P on M.
 
 **Problem.** Let M be a connected closed manifold and G a finite group. The untwisted Dijkgraaf–Witten value of M does not depend on a basepoint. It equals \|Hom(π₁(M, x), G)\| / \|G\| for every basepoint x.
 
-**How the definition helps.** The bundle count never mentions a basepoint, so independence is built in (our own explanation). The work moves into a dictionary between bundles and homomorphisms. Transport around loops turns a bundle into a homomorphism π₁(M, x) → G, and isomorphisms become conjugation by G (our own). The nLab formula \|X\|/\|G\| for the cardinality of an action groupoid then gives the based formula. Freed and Quinn build the finite-group theory from such groupoid counts (our own summary of the source).
+**How the definition helps.** The bundle count uses no basepoint (our own observation). For connected M, monodromy identifies the bundle groupoid with the action groupoid for conjugation on Hom(π₁(M,x),G) (our own explanation). The quoted cardinality formula gives the stated quotient.
 
 **nLab:** [Dijkgraaf-Witten theory](https://ncatlab.org/nlab/show/Dijkgraaf-Witten+theory), [groupoid cardinality](https://ncatlab.org/nlab/show/groupoid+cardinality). It says: “then the cardinality of the action groupoid X//G is \|X\|/\|G\|.”
 
@@ -3896,7 +3824,7 @@
 
 *True by definition.* MSC 57R56 (Topological quantum field theories (aspects of differential topology)), 81T45. arXiv math.AT. Level 4: research.
 
-**Definition.** Let X = Spec A be an affine derived symplectic stack, a space described by a commutative differential graded algebra with a symplectic form. In the correspondence theory of Theorem C, gluing means taking a derived fiber product. For affine spaces, its algebra of functions is a derived tensor product.
+**Definition.** Derived sewing composes correspondences over their common boundary by homotopy fiber product. For affine derived schemes Spec B and Spec C over Spec R, this product has function algebra B ⊗ᴸ<sub>R</sub> C.
 
 **Problem.** Take the oriented two-dimensional theory of Theorem C with point value X and the canonical trivialization of its Serre automorphism. It assigns to the circle Spec of the Hochschild chains of A.
 
@@ -3918,7 +3846,7 @@
 
 **Problem.** For oriented three-dimensional bordisms, the gauge groupoid of a gluing is equivalent to the homotopy pullback of the two bundle groupoids over their common boundary.
 
-**How the definition helps.** The homotopy pullback records two bundles together with an isomorphism between their boundary restrictions. Its arrows are pairs of bundle isomorphisms respecting that match. Bundles glue along the chosen isomorphism, which proves the sewing rule. The cited theorem extends this rule to surfaces and bordisms with labeled defects.
+**How the definition helps.** In our own argument, the homotopy pullback records two bundles and an isomorphism of their boundary restrictions. Its arrows are pairs of bundle isomorphisms respecting that identification. Gluing bundles and their arrows along collars gives the inverse to restriction up to natural isomorphism.
 
 **Paper or page:** [A geometrical description of untwisted Dijkgraaf-Witten TQFT with defects](https://arxiv.org/abs/2410.18049v1). It says: “to a stratified surface Σ with defect data its gauge groupoid”
 
@@ -3954,7 +3882,7 @@
 
 **Problem.** Let X be the space of fully dualizable objects in a symmetric monoidal (∞,n)-category. These objects have duals and the successive adjoints needed to evaluate bordisms down to points. Evaluation at a point identifies fully extended oriented n-dimensional field theories with homotopy fixed points for the framing rotation action on X.
 
-**How the definition helps.** A homotopy fixed point records how a point value stays compatible with every change of oriented frame. The oriented cobordism hypothesis proves that these choices suffice to reconstruct the theory on every bordism.
+**How the definition helps.** In our own explanation, equivariance records compatibility with changes of oriented frame. The oriented cobordism hypothesis identifies these choices with fully extended oriented theories.
 
 **nLab:** [cobordism hypothesis](https://ncatlab.org/nlab/show/cobordism+hypothesis). It says: “a homotopy fixed point is not just a property. It is additional structure.”
 
@@ -3968,11 +3896,11 @@
 
 *True by definition.* MSC 57R56 (Topological quantum field theories (aspects of differential topology)). arXiv math.AT. Level 4: research.
 
-**Definition.** A bordism category has closed manifolds as objects and manifolds between them as arrows. Its groupoid completion formally makes every arrow invertible. An invertible complex field theory assigns a line to each object and an isomorphism to each arrow.
+**Definition.** The groupoid completion of a category universally inverts every arrow. Every functor from the category to a groupoid extends uniquely up to natural isomorphism across the completion.
 
 **Problem.** Every such theory factors through the groupoid completion. On the component containing the empty manifold, a character of its automorphism group determines the underlying functor up to isomorphism. For the structured bordism categories of the cited theorem, that group is the cut-and-paste group.
 
-**How the definition helps.** Groupoid completion replaces a list of sewing maps by invertible arrows with a universal factorization property. Our own explanation chooses paths from the empty manifold to all objects in its component. The remaining data form an action on a line, hence a homomorphism to the nonzero complex numbers. The cited theorem identifies the automorphism group. Reconstructing the full theory also requires its tensor structure.
+**How the definition helps.** In our own argument, an invertible theory lands in the groupoid of lines and isomorphisms, so it factors through the completion. The empty manifold’s component is equivalent to its one-object automorphism groupoid. A functor on that groupoid amounts to a line with a character. The cited theorem identifies the group.
 
 **Paper or page:** [SKK groups of manifolds and non-unitary invertible TQFTs](https://arxiv.org/abs/2504.07917v1). It says: “π₁(‖Bordξₙ₋₁,ₙ‖) ≅ π₁(‖N Cobξₙ₋₁,ₙ‖) ≅ SKK(Cobξₙ₋₁,ₙ) = SKKξₙ.”
 
@@ -3984,9 +3912,9 @@
 
 **Remember:** Gluing four line maps in either pairing gives the same product.
 
-*Rules out counterexamples.* MSC 57R56 (Topological quantum field theories (aspects of differential topology)). arXiv math.AT. Level 4: research.
+*True by definition.* MSC 57R56 (Topological quantum field theories (aspects of differential topology)). arXiv math.AT. Level 4: research.
 
-**Definition.** An invertible complex topological field theory assigns lines to boundaries and invertible linear maps to bordisms, the manifolds joining boundaries. The cut-and-paste group adds closed manifolds by disjoint union. Its exchange relation uses two incoming pieces and two outgoing pieces with the same identified boundary.
+**Definition.** An invertible complex topological field theory is a symmetric monoidal functor from the bordism category to complex lines and linear isomorphisms.
 
 **Problem.** The product of the two closed values stays unchanged when the incoming pieces exchange outgoing partners. Thus closed values define a homomorphism from the cut-and-paste group to the nonzero complex numbers.
 
@@ -4004,11 +3932,11 @@
 
 *True by definition.* MSC 57R56 (Topological quantum field theories (aspects of differential topology)). arXiv math.GT, math.QA. Level 4: research.
 
-**Definition.** Fix a closed oriented surface and a maximal subspace L of its real first homology on which the intersection pairing vanishes. A weighted mapping cylinder records a mapping class f, an orientation-preserving diffeomorphism up to isotopy, and an integer. Composing (f,m) after (g,n) gives (fg,m+n+μ(L,fL,fgL)). Here μ is the Maslov index, the signature of the form on three subspaces in the Gilmer–Masbaum convention.
+**Definition.** Fix a Lagrangian L in the real first homology of a closed oriented surface. A weighted mapping cylinder consists of a mapping class f and an integer m. Its product with (g,n) is (fg,m+n+μ(L,fL,fgL)), using the Gilmer–Masbaum Maslov index.
 
 **Problem.** For the surface theories of Gilmer and Masbaum, the operators assigned to weighted mapping cylinders form a linear representation of the extended mapping class group.
 
-**How the definition helps.** Including the sewing correction in the group law turns projective composition into ordinary composition. The cocycle identity says that either grouping of three cylinders gives the same weight. The field-theory sewing theorem identifies the corresponding scalar factor in the operators.
+**How the definition helps.** The Maslov cocycle identity makes the group law associative. In our own explanation, the sewing theorem contributes exactly the scalar encoded by the extra Maslov weight, so operators compose linearly.
 
 **Paper or page:** [Some remarks on the Maslov index](https://arxiv.org/abs/2105.04337v3). It says: “The Maslov index is a 2-cocycle”
 
@@ -4023,7 +3951,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 57R56 (Topological quantum field theories (aspects of differential topology)). arXiv math.AT. Level 4: research.
 
-**Definition.** A planar open bordism is a surface drawn between ordered lists of intervals, with boundaries allowed between the input and output intervals. A Frobenius algebra has a unital associative product and a counital coassociative coproduct. Its coproduct commutes with multiplication on the left and on the right.
+**Definition.** A Frobenius algebra object has a unital associative multiplication m and a counital coassociative comultiplication Δ. They satisfy Δm = (m ⊗ id)(id ⊗ Δ) = (id ⊗ m)(Δ ⊗ id).
 
 **Problem.** For a monoidal target C, evaluation on one interval gives an equivalence between monoidal functors from planar open bordisms and Frobenius algebras in C.
 
@@ -4041,11 +3969,11 @@
 
 *True by definition.* MSC 57R56 (Topological quantum field theories (aspects of differential topology)). arXiv math.AT. Level 4: research.
 
-**Definition.** Fix a scalar for each diffeomorphism class of closed oriented n-manifolds. For each boundary, form free vector spaces on bordisms into it from the empty boundary and out of it to the empty boundary. Pair basis elements by evaluating the closed manifold obtained by gluing. On each side, quotient by the vectors pairing to zero with the whole opposite space.
+**Definition.** For each boundary, take free vector spaces on incoming and outgoing bordisms to and from the empty boundary. Pair basis bordisms by the assigned scalar of their closed gluing, and extend bilinearly. Quotient each space by all vectors pairing to zero with every opposite vector.
 
 **Problem.** The induced pairing has zero left and right radicals. Gluing another bordism gives a well-defined linear map between the quotients.
 
-**How the definition helps.** Taking the quotient builds nondegeneracy into the state spaces. The free spaces can contain distinct combinations with identical evaluations against every test. Our own sewing check uses associativity of gluing to move a bordism across the pairing. This makes the induced maps well defined. A full field theory also requires compatibility with tensor products.
+**How the definition helps.** The quotient kills exactly the vectors invisible to all tests, so both radicals vanish. In our own argument, testing after gluing equals testing against the composite bordism by associativity. Thus gluing preserves the radical and descends to the quotient.
 
 **Paper or page:** [Universal construction in monoidal and non-monoidal settings, the Brauer envelope, and pseudocharacters](https://arxiv.org/abs/2303.02696v1). It says: “is nondegenerate.”
 

@@ -80,7 +80,7 @@
 
 ### The continuous spectrum sees failures of surjectivity missed by eigenvalues
 
-**Remember:** A map can miss outputs even when it never identifies two inputs.
+**Remember:** Every output is approximable, some output is missed, and the kernel is zero.
 
 *Makes the theorem clean to state or prove.* MSC 47A10 (Spectrum, resolvent). arXiv math.FA. Level 2: later undergraduate.
 
@@ -104,7 +104,7 @@
 
 **Problem.** The numerical range of a complex square matrix is convex.
 
-**How the definition helps.** The projection formula turns the two-dimensional numerical range into a linear image of a sphere (our own). The rank-one projections in two dimensions form a sphere inside the three-dimensional real affine space of trace-one Hermitian matrices (our own). Its image in the plane is a filled ellipse, a segment, or a point (our own). Any two unit vectors span a space of dimension at most two (our own). Projecting A back onto that space preserves x\*Ax there, so the segment joining the two values lies in the numerical range (our own).
+**How the definition helps.** Compress A to the span of the unit vectors giving any two numerical values, preserving both values (our own). In dimension two the rank-one projections form a sphere in the real affine space of trace-one Hermitian matrices (our own). The map P ↦ trace(AP) sends this sphere onto a filled ellipse, segment, or point (our own). Its image therefore contains the joining segment, and dimension one gives a single value (our own).
 
 **Wikipedia:** [Numerical range](https://en.wikipedia.org/wiki/Numerical_range). It says: “The image of a 2-sphere under a linear projection is a filled ellipse.”
 
@@ -120,7 +120,7 @@
 
 **Problem.** If A is normal, meaning AA\* = A\*A, its ε-pseudospectrum consists exactly of numbers at distance at most ε from an eigenvalue.
 
-**How the definition helps.** The inverse-norm definition reduces the neighborhood formula to reading diagonal entries in an orthonormal eigenbasis (our own). The spectral theorem supplies that basis for normal matrices (our own). The inverse norm is the largest reciprocal distance from z to an eigenvalue (our own). For the two-by-two matrix with only an upper-right 1, the only eigenvalue is zero (our own). At z = 1/2 the inverse has an entry of magnitude 4, so ε = 1/3 disproves the neighborhood formula there (our own).
+**How the definition helps.** The spectral theorem diagonalizes A in an orthonormal basis (our own). Off the spectrum, the resolvent norm is therefore the largest reciprocal distance to an eigenvalue (our own). It is at least 1/ε exactly when the nearest eigenvalue is at distance at most ε, with eigenvalues already included by definition (our own).
 
 **Wikipedia:** [Pseudospectrum](https://en.wikipedia.org/wiki/Pseudospectrum). It says: “The ε-pseudospectrum of a matrix A consists of all eigenvalues of matrices which are ε-close to A:”
 
@@ -210,7 +210,7 @@
 
 ### Commuting with the adjoint makes the two kernels agree
 
-**Remember:** Equal squared norms mean the same vectors go to zero.
+**Remember:** A normal operator commutes with its adjoint, so their output lengths agree.
 
 *Rules out counterexamples.* MSC 47B15 (Hermitian and normal operators (spectral measures, functional calculus, etc.)), 47A05. arXiv math.FA. Level 2: later undergraduate.
 
@@ -226,7 +226,7 @@
 
 ### Self-adjointness gives real spectrum beyond eigenvalues
 
-**Remember:** An imaginary shift stays away from zero and leaves no missing directions.
+**Remember:** A self-adjoint operator can move across the inner product unchanged.
 
 *Rules out counterexamples.* MSC 47B15 (Hermitian and normal operators (spectral measures, functional calculus, etc.)), 47A10. arXiv math.FA. Level 2: later undergraduate.
 
@@ -250,7 +250,7 @@
 
 **Problem.** The adjoint T\* of a linear operator T on a Hilbert space is a well-defined, single-valued operator exactly when T is densely defined.
 
-**How the definition helps.** A continuous functional on a dense subspace has exactly one continuous extension, so the vector z is unique. On a domain that is not dense, many vectors z represent the same functional, and T\* would be a multivalued relation. What stays hard is the domain of T\*: it can be the zero subspace even when T is densely defined.
+**How the definition helps.** In our own argument, density gives each bounded functional on the domain a unique continuous extension to the Hilbert space. The Riesz representation theorem gives its unique representing vector. Without density, every vector perpendicular to the domain represents the zero functional.
 
 **Wikipedia:** [Unbounded operator](https://en.wikipedia.org/wiki/Unbounded_operator). It says: “The denseness of the domain is necessary and sufficient for the existence of the adjoint (if X and Y are Hilbert spaces) and the transpose; see the sections below.”
 
@@ -268,7 +268,7 @@
 
 **Problem.** A densely defined linear operator on a complex Hilbert space has a densely defined adjoint if and only if it is closable.
 
-**How the definition helps.** In our own proof, closability excludes a limit (0,y) of graph points with y nonzero. Taking the orthogonal complement of the graph twice identifies these vertical limits with vectors y perpendicular to the adjoint domain. Only y = 0 qualifies exactly when that domain is dense. Our own counterexample sends a polynomial in L²\[0,1\] to the constant function equal to its value at zero. The polynomials (1 − x)ⁿ converge to zero in norm, but their images all equal one.
+**How the definition helps.** In our own proof, closability excludes every nonzero vertical graph limit (0,y). The graph orthogonality identity identifies these y, together with zero, as the orthogonal complement of the adjoint domain. That complement vanishes exactly when the domain is dense. For polynomial evaluation f ↦ f(0)·1 on L²\[0,1\], the inputs (1−x)ⁿ tend to zero while their outputs stay one.
 
 **Paper or page:** [Densely-Defined Linear Operator is Closable iff Adjoint is Densely-Defined](https://proofwiki.org/wiki/Densely-Defined_Linear_Operator_is_Closable_iff_Adjoint_is_Densely-Defined). It says: “A densely-defined linear operator on a complex Hilbert space is closable if and only if its adjoint is also densely-defined.”
 
@@ -280,11 +280,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 47A05 (General (adjoints, conjugates, products, inverses, domains, ranges, etc.)), 47B25. arXiv math.FA, math.SP. Level 3: graduate.
 
-**Definition.** An operator is closed when its graph is closed. It is densely defined when its domain is dense. For such an operator the adjoint T\* is again densely defined, so T\*\* exists.
+**Definition.** A linear operator T on a Hilbert space H is closed if its graph is closed in H × H. It is densely defined if its domain is dense in H.
 
 **Problem.** An operator T on a Hilbert space is closed and densely defined if and only if T\*\* = T.
 
-**How the definition helps.** The proof sees the graph of T\* as the orthogonal complement of the rotated graph of T. Taking the complement twice gives the closure of the graph. This is the graph itself exactly when T is closed. Outside the class, T\*\* may not exist, or it is only the closure of T.
+**How the definition helps.** In our own proof, the graph of the adjoint is the orthogonal complement of a rotation of the original graph. For closed densely defined T, the adjoint domain is dense, and taking the complement twice recovers the original graph. Conversely, existence of T\*\* as an operator requires density, and its graph is closed.
 
 **Wikipedia:** [Unbounded operator](https://en.wikipedia.org/wiki/Unbounded_operator). It says: “An operator T is closed and densely defined if and only if T\*\* = T.”
 
@@ -298,7 +298,7 @@
 
 *True by definition.* MSC 47A05 (General (adjoints, conjugates, products, inverses, domains, ranges, etc.)). arXiv math.FA. Level 3: graduate.
 
-**Definition.** Give the domain of T the graph norm ‖x‖ + ‖Tx‖, not just ‖x‖. It measures both the input and the output. The graph is the set of pairs (x, Tx).
+**Definition.** For a linear operator T between normed spaces, its graph norm on its domain is ‖x‖ + ‖Tx‖.
 
 **Problem.** For a linear operator between Banach spaces, the domain is complete in graph norm exactly when the operator has a closed graph.
 
@@ -312,7 +312,7 @@
 
 ### Partial isometries give every bounded operator a polar decomposition
 
-**Remember:** Shifts are not unitary times positive, but they are partial isometry times positive.
+**Remember:** Preserve lengths perpendicular to the kernel.
 
 *Rules out counterexamples.* MSC 47A05 (General (adjoints, conjugates, products, inverses, domains, ranges, etc.)), 47A68. arXiv math.FA. Level 3: graduate.
 
@@ -320,7 +320,7 @@
 
 **Problem.** Every bounded operator A between complex Hilbert spaces factors as A = U\|A\|, with U a partial isometry. The factorization is unique when the initial space of U is the closure of the range of \|A\|.
 
-**How the definition helps.** A partial isometry leaves room for operators whose kernel and cokernel have different sizes. For the one-sided shift S, \|S\| is the identity, so S = U\|S\| forces U = S, which is not unitary. So S has no polar decomposition with a unitary factor. The square root \|A\| still needs the continuous functional calculus (our own).
+**How the definition helps.** In our own proof, ‖Ax‖ = ‖\|A\|x‖ makes \|A\|x ↦ Ax a well-defined isometry. Extend it continuously to the range closure and set it to zero on the orthogonal complement. These prescriptions force uniqueness for the stated initial space. The unilateral shift has absolute value I, so its factor must be the shift itself, which is not onto.
 
 **Wikipedia:** [Polar decomposition](https://en.wikipedia.org/wiki/Polar_decomposition). It says: “The operator U must be weakened to a partial isometry, rather than unitary, because of the following issues.”
 
@@ -334,9 +334,9 @@
 
 **Definition.** On bounded operators on a Hilbert space, the weak operator topology is the weakest topology that makes each map T ↦ ⟨Tx, y⟩ continuous. The strong operator topology instead makes each map T ↦ Tx continuous for the norm of the Hilbert space.
 
-**Problem.** Taking the adjoint T ↦ T\* is continuous for the weak operator topology. It is not continuous for the strong operator topology.
+**Problem.** On an infinite-dimensional Hilbert space, taking adjoints is continuous in the weak operator topology and discontinuous in the strong operator topology.
 
-**How the definition helps.** The weak tests are symmetric under the adjoint, because ⟨T\*x, y⟩ is the complex conjugate of ⟨Ty, x⟩. So T ↦ T\* turns each test into the conjugate of another test, and it is continuous. The strong topology has no such symmetry. The powers Bⁿ of the backward shift tend strongly to zero, but their adjoints are isometries and do not. Wikipedia says the continuity is an immediate consequence of the definition; the counterexample is our own.
+**How the definition helps.** In the weak operator topology, each test of T\* is the complex conjugate of the test of T with the two vectors exchanged. For our own counterexample, let B act as the backward shift on a copy of ℓ² and as zero on its orthogonal complement. Then Bⁿ tends strongly to zero, while its adjoint preserves lengths on that copy.
 
 **Wikipedia:** [Weak operator topology](https://en.wikipedia.org/wiki/Weak_operator_topology). It says: “The adjoint operation T → T\*, as an immediate consequence of its definition, is continuous in WOT.”
 
@@ -348,11 +348,11 @@
 
 *Rules out counterexamples.* MSC 47A07 (Forms (bilinear, sesquilinear, multilinear)). arXiv math.FA. Level 3: graduate.
 
-**Definition.** A nonnegative quadratic form assigns an energy q(x) to each vector in its domain. It is closed if the domain is complete in the norm √(‖x‖² + q(x)). It is closable if xₙ → 0 and q(xₙ − xₘ) → 0 together imply q(xₙ) → 0. The first limit uses the ambient norm, and the second takes both indices to infinity.
+**Definition.** A nonnegative quadratic form q on a linear subspace D of a Hilbert space is closed if D is complete in the norm x↦√(‖x‖²+q(x)). It is closable if every sequence xₙ∈D with xₙ→0 and q(xₙ−xₘ)→0 as n,m→∞ satisfies q(xₙ)→0.
 
-**Problem.** Let T be a densely defined operator between Hilbert spaces. The form with energy ‖Tx‖² has a closed extension exactly when the closure of the graph of T remains single-valued.
+**Problem.** Let T be a densely defined linear operator between Hilbert spaces and put q(x)=‖Tx‖² on dom T. Then q has a closed extension exactly when the closure of the graph of T is single-valued.
 
-**How the definition helps.** The energy test rules out exactly the extra outputs at zero that could make the closed graph multivalued. In our own argument, if xₙ tends to zero and Txₙ tends to y, the test forces y = 0. Conversely, completeness makes every Cauchy sequence of outputs converge, so single-valuedness gives the energy test. The graph closure then supplies the closed extension of the form. For our own counterexample, take T to evaluate a smooth function in L²(0,1) at the midpoint. Narrow bumps of height one tend to zero in L² while their outputs stay one.
+**How the definition helps.** In our own proof, a closed form extension forces the closability test by completeness in its form norm. The test excludes precisely the nonzero limits of Txₙ when xₙ→0, since Cauchy output sequences converge. A single-valued graph closure then defines a closed operator whose energy extends q. Midpoint evaluation on smooth L² functions fails the test on shrinking bumps of height one.
 
 **Paper or page:** [A generalized Birman-Schwinger principle and applications to one-dimensional Schrödinger operators with distributional potentials](https://arxiv.org/abs/2507.02251v2). It says: “Then the form 𝔞ₜ is closed (resp., closable) in ℋ₁ if and only if T is closed (resp., closable).”
 
@@ -368,7 +368,7 @@
 
 **Problem.** The product T\*T is nonnegative and self-adjoint, with its usual product domain.
 
-**How the definition helps.** The energy form uses exactly the norm of the graph of T, so closedness of the graph gives closedness of the form. In our own proof, the form represents an operator at u when v ↦ ⟨Tv,Tu⟩ is bounded in the original norm. By the adjoint definition, this means Tu belongs to the domain of T\*. The representing vector is T\*Tu. The representation theorem for closed forms gives self-adjointness without computing the adjoint of the product.
+**How the definition helps.** The form norm equals the graph norm, so the closed graph makes the form closed. In our own argument, u in the form domain represents an operator input exactly when v ↦ ⟨Tv,Tu⟩ is norm-bounded. This says Tu belongs to the adjoint domain, and the representing vector is T\*Tu. The closed form representation theorem gives nonnegativity and self-adjointness.
 
 **Paper or page:** [A generalized Birman-Schwinger principle and applications to one-dimensional Schrödinger operators with distributional potentials](https://arxiv.org/abs/2507.02251v2). It says: “If T is closed, the unique nonnegative self-adjoint operator associated with 𝔞ₜ in ℋ₁ equals T\*T ≥ 0.”
 
@@ -376,11 +376,11 @@
 
 ### An operator that is not closed has the whole plane as spectrum
 
-**Remember:** Spectral theory of unbounded operators starts with closed operators, or nothing survives.
+**Remember:** A closed graph stays closed when you shift and interchange its coordinates.
 
 *Rules out counterexamples.* MSC 47A10 (Spectrum, resolvent), 47A05. arXiv math.SP, math.FA. Level 3: graduate.
 
-**Definition.** An operator T defined on a subspace of a Banach space is closed when its graph is a closed set. A complex number λ is in the spectrum of T when T − λ has no bounded inverse defined on the whole space.
+**Definition.** A linear operator T on a complex Banach space X is closed if its graph is closed in X × X. Its spectrum consists of all λ∈ℂ for which T−λI has no bounded inverse defined on X.
 
 **Problem.** If an operator T on a Banach space is not closed, then its spectrum is all of ℂ. If T is closed, λ is in the spectrum exactly when T − λ is not a bijection from its domain onto the space.
 
@@ -392,7 +392,7 @@
 
 ### Compact resolvents give discrete spectra
 
-**Remember:** Study the bounded inverse to find the unbounded spectrum.
+**Remember:** One shifted inverse sends bounded sets into sets with compact closure.
 
 *Makes the theorem clean to state or prove.* MSC 47A10 (Spectrum, resolvent). arXiv math.SP, math.FA. Level 3: graduate.
 
@@ -418,7 +418,7 @@
 
 **Problem.** Every bounded operator on a nonzero complex Banach space has nonempty spectrum. This generalizes the fact that every complex square matrix has an eigenvalue.
 
-**How the definition helps.** The invertibility definition puts more numbers in the spectrum than the eigenvalues, so the theorem becomes true. With eigenvalues only, it would be false: the right shift on ℓ² has no eigenvalues, but 0 is in its spectrum. If the spectrum were empty, the resolvent (T − λI)⁻¹ would be holomorphic and bounded on all of ℂ and zero at infinity. The vector-valued Liouville theorem would then make it zero everywhere, which is impossible.
+**How the definition helps.** In our own comparison, the right shift on ℓ² has no eigenvalues but fails surjectivity at zero. An empty spectrum would make the resolvent entire. Its norm tends to zero at infinity by the Neumann series. Liouville’s theorem would force the inverse to vanish everywhere.
 
 **Wikipedia:** [Spectrum (functional analysis)](https://en.wikipedia.org/wiki/Spectrum_%28functional_analysis%29). It says: “In fact every bounded linear operator on a complex Banach space must have a non-empty spectrum.”
 
@@ -432,9 +432,9 @@
 
 **Definition.** Let A be a closed linear operator on a Banach space. Give its domain the graph norm ‖u‖ + ‖Au‖, which makes the domain a Banach space on which A − zI is bounded.
 
-**Problem.** A closed operator with a bounded shifted inverse has compact resolvent exactly when the unit ball of its domain in the graph norm has compact closure in the space.
+**Problem.** Let A be closed with a bounded, everywhere-defined shifted inverse. It has compact resolvent exactly when its graph-norm domain unit ball has compact closure in the ambient space.
 
-**How the definition helps.** With the graph norm, A − zI gives a bounded bijection from the domain onto the space whenever z lies outside the spectrum (our own). Its inverse is bounded by the bounded inverse theorem (our own). Composing that inverse with the domain inclusion gives the usual shifted inverse (our own). Thus the usual inverse is compact exactly when the inclusion sends the domain unit ball to a set with compact closure (our own).
+**How the definition helps.** In our own proof, A−zI is a bounded isomorphism from the graph-norm domain onto the ambient space at a resolvent point z. Composing its inverse with the domain inclusion gives the shifted inverse on the ambient space. Conversely, composing that shifted inverse with A−zI gives the inclusion. Thus either map is compact exactly when the other is.
 
 **Paper or page:** [Conditions for sectoriality and compactness of the resolvent for a non-self-adjoint Sturm--Liouville operator with singular distributional potential](https://arxiv.org/abs/2503.16172v1). It says: “‖L₀y‖ + ‖y‖ ≤ 1”
 
@@ -450,7 +450,7 @@
 
 **Problem.** Every spectral point of a self-adjoint operator is an approximate eigenvalue.
 
-**How the definition helps.** Self-adjointness rules out a missing range direction, which can defeat approximate eigenvectors. In our own proof, suppose ‖(T − λI)x‖ has a positive lower bound on unit vectors, for a real spectral point λ. Then T − λI is injective with closed range, and the orthogonal complement of the range is the kernel of the adjoint, which is zero. So the range is the whole space, which contradicts that λ is spectral. Our own counterexample: the right shift on ℓ² has 0 in its spectrum but no approximate eigenvectors for 0, since it preserves norms.
+**How the definition helps.** Self-adjointness gives real spectrum and rules out a missing range direction at any real λ where T−λI is bounded below. In our own proof, that bound gives a closed range and zero kernel. The range is dense because its orthogonal complement equals that kernel, so the shift has a bounded inverse. The right shift on ℓ² preserves lengths but misses a direction at zero.
 
 **Paper or page:** [Element of Spectrum of Densely-Defined Linear Operator not in Residual Spectrum is Approximate Eigenvalue/Corollary](https://proofwiki.org/wiki/Element_of_Spectrum_of_Densely-Defined_Linear_Operator_not_in_Residual_Spectrum_is_Approximate_Eigenvalue/Corollary). It says: “Then λ is an approximate eigenvalue of (D(T), T).”
 
@@ -466,7 +466,7 @@
 
 **Problem.** For a self-adjoint operator, the essential spectrum excludes isolated eigenvalues with finite-dimensional eigenspaces. Weyl’s criterion says that λ belongs to this spectrum exactly when λ has a singular sequence.
 
-**How the definition helps.** Weak convergence forces the projection onto any fixed finite-dimensional eigenspace to tend to zero in norm. At an isolated eigenvalue, the spectral gap bounds the remaining component by a constant times the residual norm. Both components would vanish, which contradicts unit norm. In our own comparison, repeating a single unit eigenvector passes the residual test alone. Weyl’s criterion also proves existence of singular sequences throughout the essential spectrum.
+**How the definition helps.** Weak convergence excludes repeating one unit eigenvector, our own example of satisfying only the residual test. At an isolated eigenvalue of finite multiplicity, weak convergence makes the eigenspace projection vanish in norm. The spectral gap bounds the remaining component by a constant times the residual, contradicting unit norm. Weyl’s criterion supplies the converse.
 
 **Wikipedia:** [Essential spectrum](https://en.wikipedia.org/wiki/Essential_spectrum). It says: “A number λ is in σₑₛₛ(T) if and only if there exists a sequence of unit vectors”
 
@@ -492,7 +492,7 @@
 
 ### Two-sided power bounds force scalars
 
-**Remember:** One spectral point forces a scalar only with both power bounds.
+**Remember:** One bound controls every power, forward and backward.
 
 *Rules out counterexamples.* MSC 47A10 (Spectrum, resolvent). arXiv math.SP. Level 3: graduate.
 
@@ -500,7 +500,7 @@
 
 **Problem.** An invertible bounded operator with bounded powers in both directions and singleton spectrum must be a scalar operator.
 
-**How the definition helps.** The backward bound excludes operators whose spectrum is one point but whose inverse powers grow. In our own example, V integrates a function from zero to x on L²(0,1); it has spectrum {0}, and exp(−V) is a contraction with spectrum {1}. Applied to the constant function one, exp(nV) dominates 1 + nx, so the backward powers have unbounded norms. Gelfand’s theorem proves that both bounds together force a scalar.
+**How the definition helps.** In our own example, let V be the Volterra integration operator on L²(0,1). It has spectrum {0}, and exp(−V) is a contraction with spectrum {1}. Applied to the constant function one, exp(nV) dominates 1+nx, so the negative powers are unbounded. Gelfand’s theorem gives the scalar conclusion under both power bounds.
 
 **Paper or page:** [Spectral decomposition of power-bounded operators: The finite spectrum case](https://arxiv.org/abs/2501.02769v1). It says: “Suppose further that the spectrum σ(a) = {λ} is a singleton. Then a = λe.”
 
@@ -512,11 +512,11 @@
 
 *True by definition.* MSC 47A15 (Invariant subspaces of linear operators), 60J05, 20C05. arXiv math.PR, math.FA. Level 3: graduate.
 
-**Definition.** Let a finite group G act on a space X, and let π be a probability measure on X that every group element preserves. The orbit average sends a function f to Qf(x) = (1/\|G\|) Σ f(gx), the sum over g in G. A function is invariant if f(gx) = f(x) for all g and x.
+**Definition.** For a measurable action of a finite group G preserving a probability measure π, define Qf(x) = ∑<sub>g∈G</sub> f(gx)/\|G\|. In L²(π), f is invariant if for each g∈G the equality f(gx)=f(x) holds almost everywhere.
 
 **Problem.** In L²(π), the space of square-integrable functions, Q is the orthogonal projection onto the invariant functions. As a Markov kernel, Q is also reversible with respect to π.
 
-**How the definition helps.** The definition is an average over the group, so the projection properties follow from reindexing the sum. Our own proof follows. Replacing x by hx permutes the terms of the sum, so Qf is invariant. An invariant f satisfies Qf = f, so Q² = Q. Because π is invariant, ∫ f(gx)h(x) dπ = ∫ f(x)h(g⁻¹x) dπ, so Q is self-adjoint. The paper's harder results use such averages to improve mixing of Markov chains.
+**How the definition helps.** In our own proof, multiplying by a fixed group element permutes the summands, so Qf is invariant. Since Q fixes every invariant function, it is a projection. Invariance of π and reindexing by g ↦ g⁻¹ give ⟨Qf,h⟩ = ⟨f,Qh⟩. This makes the projection orthogonal and gives detailed balance by testing indicators.
 
 **Paper or page:** [Group-averaged Markov chains: mixing improvement](https://arxiv.org/abs/2509.02996v2). It says: “Q is the projection operator onto V”
 
@@ -568,7 +568,7 @@
 
 **Problem.** A bounded Fredholm operator has finite-dimensional quotient by its range. The dimension of this quotient equals the dimension of the kernel of the adjoint.
 
-**How the definition helps.** Closed range lets each quotient class have exactly one representative orthogonal to the range (our own). These representatives form the kernel of the adjoint (our own). On the space of square-summable sequences, the diagonal operator with entries 1/n has both kernels zero (our own). Its range contains every finite sequence but omits the square-summable sequence (1/n), whose preimage would be the constant sequence (our own). Thus its range is dense and its quotient is nonzero (our own).
+**How the definition helps.** In our own proof, closed range gives each quotient class a unique representative perpendicular to the range. These representatives form the adjoint kernel, which is finite-dimensional. On ℓ² the diagonal operator with entries 1/n has both kernels zero and dense range. Its range omits (1/n), whose only possible preimage is the constant sequence one.
 
 **Paper or page:** [Perturbations of APS Boundary Conditions for Lorentzian Dirac Operators](https://arxiv.org/abs/2408.16696v3). It says: “Ker(T) and Ker(T\*) are finite dimensional and T has closed range”
 
@@ -580,11 +580,11 @@
 
 *True by definition.* MSC 47A53 ((Semi-) Fredholm operators; index theories), 47L20. arXiv math.FA. Level 3: graduate.
 
-**Definition.** An operator is Fredholm when its kernel and cokernel are finite-dimensional and its range is closed. The Calkin algebra is the algebra of bounded operators divided by the ideal of compact operators. Atkinson's theorem says that T is Fredholm exactly when its image in the Calkin algebra is invertible.
+**Definition.** On a Hilbert space, the Calkin algebra is the quotient of the bounded operators by the compact operators. By Atkinson’s theorem, a bounded operator is Fredholm exactly when its image in this quotient is invertible.
 
 **Problem.** If T is Fredholm and K is compact, then T + K is Fredholm with the same index. The index is the dimension of the kernel minus the dimension of the cokernel.
 
-**How the definition helps.** In the Calkin algebra, T and T + K have the same image, so if one is invertible, the other is too. Thus T + K is Fredholm with no further work. The work moves into Atkinson's theorem, which shows that this definition agrees with the classical one. Equality of the index still needs the fact that the index is constant along the path T + sK for s in \[0, 1\].
+**How the definition helps.** In our own proof, T+sK has the same quotient image as T for every s∈\[0,1\]. Atkinson’s theorem therefore makes every operator on the path Fredholm. Local constancy of the Fredholm index makes its endpoint values equal.
 
 **Wikipedia:** [Atkinson's theorem](https://en.wikipedia.org/wiki/Atkinson%27s_theorem), [Calkin algebra](https://en.wikipedia.org/wiki/Calkin_algebra), [Fredholm operator](https://en.wikipedia.org/wiki/Fredholm_operator). It says: “In other words, an operator T ∈ L(H) is Fredholm, in the classical sense, if and only if its projection in the Calkin algebra is invertible.”
 
@@ -615,11 +615,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 47A53 ((Semi-) Fredholm operators; index theories), 47B07. arXiv math.FA. Level 3: graduate.
 
-**Definition.** A Fredholm operator is a bounded operator T between Banach spaces whose kernel and cokernel are finite-dimensional. The cokernel is the target space divided by the range of T. The index of T is dim ker T − dim coker T.
+**Definition.** A bounded linear operator between Banach spaces is Fredholm if its range is closed and its kernel and cokernel are finite-dimensional. The cokernel is the target space divided by the range. The index is the kernel dimension minus the cokernel dimension.
 
 **Problem.** Small or compact changes to a Fredholm operator keep it Fredholm with the same index. In particular, for K compact and λ ≠ 0, λI − K is injective exactly when it is surjective.
 
-**How the definition helps.** The index is an integer that small and compact changes cannot move, and index 0 makes injective and surjective the same. The article states that the index is locally constant on the open set of Fredholm operators. After division by λ, the operator I − K is a compact perturbation of the identity, so it has index 0. This gives the Fredholm alternative, the infinite-dimensional form of the rank–nullity theorem.
+**How the definition helps.** Index zero equates the kernel and cokernel dimensions, so either vanishes exactly when the other does. Openness of the Fredholm set and local constancy of the index give stability under small norm changes. In our own deduction, Atkinson’s theorem keeps T+sK Fredholm for compact K and 0≤s≤1, so the index stays constant. Taking T=λI and perturbation −K gives the stated alternative.
 
 **Wikipedia:** [Fredholm operator](https://en.wikipedia.org/wiki/Fredholm_operator), [Fredholm alternative](https://en.wikipedia.org/wiki/Fredholm_alternative). It says: “If a Fredholm operator is modified slightly, it stays Fredholm and its index remains the same.”
 
@@ -637,7 +637,7 @@
 
 **Problem.** If self-adjoint operators converge in norm resolvent, a finite limit of their spectral points belongs to the limit spectrum. Strong resolvent convergence does not suffice.
 
-**How the definition helps.** Norm convergence keeps every sufficiently late term invertible whenever the limit is invertible (our own). A number λ is outside the spectrum exactly when I − (λ − i)(A − iI)⁻¹ is invertible (our own). This bounded test still works when λ varies with the operator (our own). Projections onto successive basis vectors converge strongly to zero while all have the eigenvalue 1 (our own). The shifted inverses also converge strongly because each is a fixed linear combination of the identity and its projection (our own).
+**How the definition helps.** In our own proof, λ is outside the spectrum exactly when I−(λ−i)(A−iI)⁻¹ is invertible. Norm resolvent convergence and λₙ→λ give norm convergence of these tests, and invertibility is open. Successive coordinate projections on ℓ² all have eigenvalue one but converge strongly to zero. Their shifted inverses converge strongly too, since each equals the same scalar identity plus a fixed multiple of its projection.
 
 **Paper or page:** [Diverging eigenvalues in domain truncations of Schrödinger operators with complex potentials](https://arxiv.org/abs/2107.10557v1). It says: “converge to T∞ in the norm resolvent sense (hence there is no spectral pollution)”
 
@@ -649,11 +649,11 @@
 
 *True by definition.* MSC 47A60 (Functional calculus for linear operators), 46L05. arXiv math.OA, math.FA. Level 3: graduate.
 
-**Definition.** Let a be a normal element of a unital C\*-algebra, so a commutes with its adjoint a\*. Let σ(a) be its spectrum. The continuous functional calculus of a is the unique unital homomorphism from C(σ(a)) that preserves adjoints and sends the coordinate z to a. Another definition sets f(a) as a limit of polynomials in a and a\*, chosen to approximate f by polynomials in z and z̄.
+**Definition.** Let a be a normal element of a unital C\*-algebra A. Its continuous functional calculus is the unique unital \*-homomorphism C(σ(a)) → A sending the coordinate function to a.
 
 **Problem.** Let f be continuous on σ(a) and let g be continuous on σ(f(a)). Then (g ∘ f)(a) = g(f(a)).
 
-**How the definition helps.** Uniqueness does the work, because the map g ↦ (g ∘ f)(a) is a unital homomorphism that preserves adjoints. It sends the coordinate function to f(a), so it is the calculus of f(a). This needs σ(f(a)) = f(σ(a)), so that g ∘ f is defined on σ(a). That fact is the spectral mapping theorem. The remaining work is existence, by the Gelfand representation of commutative C\*-algebras, and uniqueness, by the Stone–Weierstrass theorem. The nLab proves existence and uniqueness; the composition argument is our own.
+**How the definition helps.** In our own proof, spectral mapping gives σ(f(a)) = f(σ(a)), so composition with f is defined on C(σ(f(a))). The map g ↦ (g ∘ f)(a) is a unital \*-homomorphism sending the coordinate to f(a). Uniqueness identifies it with the calculus of f(a).
 
 **nLab:** [functional calculus](https://ncatlab.org/nlab/show/functional+calculus). It says: “To see uniqueness, notice that any other morphism with these properties coincides with φ on all polynomials in ι and ῑ.”
 
@@ -665,11 +665,11 @@
 
 *True by definition.* MSC 47A60 (Functional calculus for linear operators). arXiv math.SP. Level 3: graduate.
 
-**Definition.** The spectral measure of a self-adjoint operator A assigns an orthogonal projection to each Borel set. Borel sets form the smallest collection containing the open sets and closed under complements and countable unions. For real Borel functions f, define f(A) by integrating f against this measure.
+**Definition.** Let E be the spectral measure of a self-adjoint operator A. For a real Borel function f, the Borel functional calculus defines f(A) as the spectral integral ∫ f dE. In particular, the spectral projection for B is the operator obtained from its indicator 𝟙<sub>B</sub>.
 
 **Problem.** The spectral projection of f(A) for a Borel set B equals the spectral projection of A for the inverse image of B under f.
 
-**How the definition helps.** In the multiplication model, applying an indicator after f simply tests membership in the inverse image. The spectral theorem represents A as multiplication by a real function. It represents f(A) by composing that function with f. In our own deduction, taking the indicator of B gives exactly the same multiplier as taking the indicator of its inverse image under f. The spectral theorem supplies the model even when f is unbounded.
+**How the definition helps.** In our own deduction, 𝟙<sub>B</sub> ∘ f equals the indicator of the inverse image of B. The spectral theorem represents A by multiplication and evaluates Borel functions by composition. The two indicators therefore give the same projection.
 
 **Wikipedia:** [Borel functional calculus](https://en.wikipedia.org/wiki/Borel_functional_calculus). It says: “this is multiplication by the composition of h with f.”
 
@@ -715,11 +715,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 47A70 ((Generalized) eigenfunction expansions of linear operators; rigged Hilbert spaces), 46A11. arXiv math.FA, math-ph. Level 3: graduate.
 
-**Definition.** A rigged Hilbert space (or Gelfand triple) is a chain Φ ⊂ ℋ ⊂ Φ′. Here Φ is a dense subspace of the Hilbert space ℋ with a finer topology, usually nuclear (such as Schwartz space), and Φ′ is the space of continuous antilinear functionals on Φ. A generalized eigenvector of an operator A is an F in Φ′ with A′F = λF. Here A′ is the extension of A to Φ′ by duality.
+**Definition.** A rigged Hilbert space consists of a dense locally convex space Φ continuously embedded in a Hilbert space H, with continuous antilinear dual Φ′. The inner product embeds H in Φ′. For a symmetric operator A acting continuously on Φ, a generalized eigenvector is a nonzero F∈Φ′ satisfying F(Aφ)=λF(φ) for every φ∈Φ.
 
-**Problem.** Take Φ to be the Schwartz space in L²(ℝ). Then the position and momentum operators, which have no eigenvectors in L²(ℝ), have complete systems of generalized eigenvectors in Φ′. These are the delta functions and the plane waves, with ⟨x\|x′⟩ = δ(x − x′) and ∫\|λ⟩⟨λ\| dμ(λ) = id.
+**Problem.** For the Schwartz test space in L²(ℝ), position and momentum have complete systems of generalized eigenvectors in Φ′. These are point masses and plane waves, respectively, with delta normalization and a resolution of the identity. Neither operator has an eigenvector in L²(ℝ).
 
-**How the definition helps.** The larger space Φ′ contains the eigenvectors that ℋ lacks, so the physicists' statement becomes true there. In ℋ, Xψ = xψ forces ψ = 0 almost everywhere, and eⁱᵏˣ is not square-integrable. The real content is the nuclear spectral theorem of Gel'fand–Kostyuchenko and Maurin, which needs Φ to be nuclear. The choice of Φ matters: a bad test space gives spurious eigenvalues or loses the eigenvectors.
+**How the definition helps.** The continuous dual contains point evaluation and integration against plane waves. In our own argument, a position eigenfunction would be supported on a singleton, while a momentum eigenfunction would have constant modulus. Neither gives a nonzero L² eigenfunction. The nuclear spectral theorem supplies generalized eigenvector expansions, realized here by point evaluation and Fourier inversion.
 
 **nLab:** [rigged Hilbert space](https://ncatlab.org/nlab/show/rigged+Hilbert+space). It says: “by enlarging the given Hilbert space ℋ to a space of generalized vectors in which the missing eigenvectors do exist”
 
@@ -738,7 +738,7 @@
 
 **Problem.** Let T be compact and let A and B be bounded, with the product ATB defined. Then sₙ(ATB) ≤ ‖A‖ sₙ(T) ‖B‖ for every n.
 
-**How the definition helps.** If L has rank less than n, so does ALB, and ‖ATB − ALB‖ ≤ ‖A‖ ‖T − L‖ ‖B‖. Taking the infimum over L gives the bound. The work moves to the theorem that the two definitions agree. It says that the best approximation of rank less than n cuts off the singular value expansion of T. For matrices this is the Eckart–Young theorem. With the spectral definition, the bound needs a minimax argument for eigenvalues. Wikipedia gives the infimum formula, and the comparison is our own.
+**How the definition helps.** In our own proof, multiplying a rank-less-than-n operator L by A and B leaves its rank below n. The estimate ‖ATB−ALB‖ ≤ ‖A‖‖T−L‖‖B‖ passes to the infimum over L. Truncating the singular value expansion gives the equivalence with the spectral definition.
 
 **Wikipedia:** [Singular value](https://en.wikipedia.org/wiki/Singular_value). It says: “σₙ(T) = inf { ‖T−L‖ : L is an operator of finite rank &lt; n }.”
 
@@ -750,11 +750,11 @@
 
 *Rules out counterexamples.* MSC 47B07 (Linear operators defined by compactness properties). arXiv math.FA. Level 3: graduate.
 
-**Definition.** Call a bounded operator on a Hilbert space sequentially compact when it sends every weakly convergent sequence to a norm-convergent sequence. The usual definition of a compact operator asks that bounded sets have images with compact closure.
+**Definition.** A bounded Hilbert space operator is completely continuous if it sends every weakly convergent sequence to a norm-convergent sequence. It is compact if the image of each bounded set has compact closure.
 
 **Problem.** A bounded operator on a Hilbert space is compact exactly when it sends weakly convergent sequences to norm-convergent ones. So the identity on an infinite-dimensional Hilbert space is not compact.
 
-**How the definition helps.** The sequence test detects failure of compactness using any infinite orthonormal sequence (our own). That sequence tends weakly to zero but stays at norm one (our own). Every bounded sequence in a Hilbert space has a weakly convergent subsequence (our own). This fact gives the reverse implication from the sequence test to compactness and explains weak compactness of the unit ball (our own).
+**How the definition helps.** In our own proof, compactness gives norm-convergent subsequences from every subsequence of the images of a weakly convergent sequence. Each norm limit equals the unique weak limit, so the full image sequence converges in norm. Conversely, every bounded Hilbert space sequence has a weakly convergent subsequence, whose images then converge in norm. The identity fails this test on an infinite orthonormal sequence, which converges weakly to zero.
 
 **nLab:** [compact operator](https://ncatlab.org/nlab/show/compact+operator). It says: “For Hilbert spaces and more generally for reflexive Banach spaces, the two notions are equivalent.”
 
@@ -766,7 +766,7 @@
 
 *True by definition.* MSC 47B10 (Linear operators belonging to operator ideals (nuclear, \\(p\\)-summing, in the Schatten-von Neumann classes, etc.)). arXiv math.FA. Level 3: graduate.
 
-**Definition.** For a bounded operator between separable Hilbert spaces, sum the squared absolute values of its matrix entries in orthonormal bases. If the sum is finite, its square root is the Hilbert–Schmidt norm. An equivalent definition sums the squared singular values, the eigenvalues of √(T\*T), before taking the square root.
+**Definition.** For a bounded operator between separable Hilbert spaces, sum the squared absolute values of its matrix entries in orthonormal bases. The operator is Hilbert–Schmidt if this sum is finite, and its square root is the Hilbert–Schmidt norm.
 
 **Problem.** The adjoint of a Hilbert–Schmidt operator is Hilbert–Schmidt with the same norm.
 
@@ -778,7 +778,7 @@
 
 ### Defining the Fredholm determinant by eigenvalues makes its zeros detect non-invertibility
 
-**Remember:** A convergent product of nonzero factors cannot be zero.
+**Remember:** Multiply one plus each eigenvalue, counting multiplicity.
 
 *True by definition. Confidence: medium.* MSC 47B10 (Linear operators belonging to operator ideals (nuclear, \\(p\\)-summing, in the Schatten-von Neumann classes, etc.)), 45B05. arXiv math.FA, math.SP. Level 3: graduate.
 
@@ -786,7 +786,7 @@
 
 **Problem.** For a trace-class operator T, det(I + T) = 0 exactly when I + T has no bounded inverse.
 
-**How the definition helps.** With the eigenvalue definition the proof is short. Weyl's inequality bounds Σ\|λ\| by the sum of the singular values, so the product converges. It is then zero only if some factor 1 + λ is zero. Because T is compact, I + T fails to be invertible exactly when −1 is an eigenvalue of T. The hard work moves to Lidskii's theorem, which shows that the eigenvalue product agrees with the other definitions, such as Fredholm's series. The nLab states the result in Fredholm's setting; the comparison of definitions is our own.
+**How the definition helps.** In our own proof, Weyl’s inequality gives ∑\|λ\| ≤ ‖T‖₁. Absolute summability makes the product of 1+λ nonzero unless one factor vanishes. By compactness, −1 belongs to the spectrum exactly when it is an eigenvalue. Thus the product detects precisely when I+T fails to be invertible.
 
 **nLab:** [Fredholm determinant](https://ncatlab.org/nlab/show/Fredholm+determinant). It says: “and d is an entire function of λ such that d(λ) ≠ 0 iff the integral equation has a unique solution.”
 
@@ -805,7 +805,7 @@
 
 **Problem.** For a trace-class operator T and a bounded operator B on a Hilbert space, tr(TB) = tr(BT).
 
-**How the definition helps.** For finite-rank T, write T as a finite sum of maps v ↦ fᵢ(v)xᵢ, and then both traces equal Σ fᵢ(Bxᵢ). Both sides are continuous in T for the trace norm, because ‖TB‖₁ and ‖BT‖₁ are at most ‖T‖₁‖B‖. Finite-rank operators are dense by definition, so the identity holds for all trace-class T. The work moves to the theorem that the completion equals the usual trace class, with the same trace. With the usual definition, the proof uses the polar decomposition or a computation with two bases. Wikipedia states the density; the rest is our own account.
+**How the definition helps.** In our own proof, a rank-one map v ↦ f(v)x gives trace f(Bx) in either order. Linearity gives cyclicity for all finite-rank operators. The trace is continuous in trace norm, and multiplication by B on either side has norm at most ‖B‖ in that norm. Density now extends cyclicity to the completion.
 
 **Wikipedia:** [Trace class](https://en.wikipedia.org/wiki/Trace_class). It says: “the space of all finite-rank operators is a dense subspace”
 
@@ -821,7 +821,7 @@
 
 **Problem.** The Fredholm determinant of I + zK is complex differentiable on the whole plane.
 
-**How the definition helps.** The exterior powers give coefficients with a factorial bound, so the series converges on every bounded disk. Write M for the sum of the singular values. The main estimate bounds the absolute nth coefficient by Mⁿ/n!. A separate theorem identifies this series with the product over eigenvalues.
+**How the definition helps.** In our own argument, the exterior-power trace is bounded in absolute value by the sum of products of n distinct indexed singular values. In the expansion of ‖K‖₁ⁿ each such product occurs at least n! times, counting ordered index choices. Thus the determinant series converges absolutely on every bounded disk by comparison with exp(\|z\|‖K‖₁).
 
 **nLab:** [Fredholm determinant](https://ncatlab.org/nlab/show/Fredholm+determinant). It says: “This is often considered as an analytic function of a perturbation parameter λ.”
 
@@ -851,7 +851,7 @@
 
 *True by definition.* MSC 47B10 (Linear operators belonging to operator ideals (nuclear, \\(p\\)-summing, in the Schatten-von Neumann classes, etc.)), 45B05. arXiv math.FA. Level 3: graduate.
 
-**Definition.** For operators on a Hilbert space, the trace norm sums the singular values, the eigenvalues of √(A∗A). Define det(I + A) by continuous extension from finite-rank operators in this norm. A kernel-based definition instead integrates a series of determinants.
+**Definition.** For a compact operator on a Hilbert space, the trace norm is the sum of its singular values, possibly infinite. On operators A of finite trace norm, det(I+A) is the trace-norm continuous extension of the finite-rank determinant. For finite-rank A, compute the determinant on any finite-dimensional subspace containing its range.
 
 **Problem.** If A and B have finite trace norm, the Fredholm determinant of (I + A)(I + B) is the product of their determinants.
 
@@ -873,7 +873,7 @@
 
 **Problem.** For a trace-class operator T, the sum Σₖ ⟨Teₖ, eₖ⟩ converges absolutely to a number that does not depend on the orthonormal basis (eₖ).
 
-**How the definition helps.** The class is chosen so that the trace is well defined. For a general bounded operator, the diagonal sum can diverge, or it can change when the basis is reordered or rotated (our own remark). Lidskii's theorem, that the trace equals the sum of the eigenvalues, is the hard part, and the definition does not give it.
+**How the definition helps.** In our own proof, write T=U\|T\| by polar decomposition and put S=√\|T\|. The defining sum gives ‖S‖²<sub>HS</sub> &lt; ∞, so both S and US are Hilbert–Schmidt. For every orthonormal basis, ⟨Te,e⟩=⟨Se,SU\*e⟩, and Cauchy–Schwarz gives absolute summability since SU\* is also Hilbert–Schmidt. Parseval’s identity makes the resulting Hilbert–Schmidt inner product independent of the basis.
 
 **Wikipedia:** [Trace class](https://en.wikipedia.org/wiki/Trace_class). It says: “a trace-class operator is a linear operator for which a trace may be defined, such that the trace is a finite number independent of the choice of basis used to compute the trace.”
 
@@ -889,7 +889,7 @@
 
 **Problem.** The product of two Hilbert–Schmidt operators is trace class, meaning its singular values are summable.
 
-**How the definition helps.** In our own proof, the Hilbert–Schmidt condition bounds the sum of the trace norms of rank-one terms for the product AB. Insert an orthonormal basis between the factors. Each basis vector e contributes one term with trace norm ‖Ae‖ ‖B∗e‖, where B∗ is the adjoint. Both sequences of norms are square summable, so Cauchy–Schwarz gives a finite sum. Our own counterexample is the compact diagonal operator with entries 1/√n. Its square has entries 1/n, whose sum diverges.
+**How the definition helps.** In our own proof, inserting an orthonormal basis between A and B expands AB into rank-one terms. Their trace norms are ‖Ae‖‖B\*e‖, summable by Cauchy–Schwarz and the two Hilbert–Schmidt bounds. Thus the expansion converges in trace norm. The compact diagonal operator with entries 1/√n fails the square-sum condition, and its square has divergent trace norm ∑1/n.
 
 **Wikipedia:** [Hilbert–Schmidt operator](https://en.wikipedia.org/wiki/Hilbert%E2%80%93Schmidt_operator). It says: “The product of two Hilbert–Schmidt operators has finite trace-class norm”
 
@@ -919,7 +919,7 @@
 
 **Definition.** Let A be a bounded self-adjoint operator on a complex Hilbert space, and let v be a unit vector. The spectral theorem assigns each Borel set B a projection E(B) onto the part of the space with spectral values in B. Define the measure μ by μ(B) = ‖E(B)v‖².
 
-**Problem.** For nonreal z, ⟨(A − zI)⁻¹v, v⟩ equals the integral of 1/(λ − z) against μ.
+**Problem.** Use an inner product linear in its first argument. For nonreal z, ⟨(A−zI)⁻¹v,v⟩ equals the integral of 1/(λ−z) against μ.
 
 **How the definition helps.** The measure records the weights needed to integrate any function of the spectral variable against v (our own). For a matrix, these are squared lengths of projections onto eigenspaces (our own). The spectral theorem extends that sum to an integral even when eigenvectors do not span the space (our own). Applying it to the reciprocal function gives the stated inverse formula (our own).
 
@@ -939,7 +939,7 @@
 
 **Problem.** For a bounded normal operator, the Riesz projection onto an isolated part of the spectrum is an orthogonal projection.
 
-**How the definition helps.** The continuous functional calculus preserves products and adjoints, and χ² = χ = χ̄, so χ(A) is a self-adjoint idempotent. A self-adjoint idempotent is an orthogonal projection. The work is to show that the contour integral equals χ(A). This holds because the holomorphic and continuous functional calculi agree on functions that are holomorphic near the spectrum. For an operator that is not normal, the contour integral is still idempotent but need not be self-adjoint. The nLab states the result; the argument is our own.
+**How the definition helps.** In our own proof, χ²=χ and χ̄=χ make χ(A) a self-adjoint idempotent, hence an orthogonal projection. The holomorphic calculus agrees with the continuous calculus on functions holomorphic near the spectrum. Extending χ locally by constants therefore identifies χ(A) with the contour projection.
 
 **nLab:** [Riesz projection](https://ncatlab.org/nlab/show/Riesz+projection). It says: “is an orthogonal projection, and it coincides with the spectral projection”
 
@@ -951,11 +951,11 @@
 
 *True by definition.* MSC 47B25 (Linear symmetric and selfadjoint operators (unbounded)), 81Q10, 47D03. arXiv math.FA, math-ph. Level 3: graduate.
 
-**Definition.** A symmetric operator H on a Hilbert space satisfies ⟨Hx, y⟩ = ⟨x, Hy⟩ for all x and y in its domain, which is a dense subspace. H is essentially self-adjoint if its closure is self-adjoint. Equivalently, H has exactly one self-adjoint extension.
+**Definition.** A densely defined operator H on a complex Hilbert space is symmetric if ⟨Hx,y⟩=⟨x,Hy⟩ for every x,y in its domain. It is essentially self-adjoint if its closure is self-adjoint. Equivalently, it has exactly one self-adjoint extension.
 
-**Problem.** Let H be a symmetric Hamiltonian given on a dense domain of nice functions. There is exactly one unitary time evolution exp(−itĤ) whose generator Ĥ extends H exactly when H is essentially self-adjoint.
+**Problem.** A densely defined symmetric Hamiltonian H has exactly one strongly continuous unitary evolution exp(−itĤ) with Ĥ extending H exactly when H is essentially self-adjoint.
 
-**How the definition helps.** By Stone's theorem, strongly continuous one-parameter unitary groups correspond one to one with self-adjoint operators, their generators. So a unique time evolution means a unique self-adjoint extension, which is the definition. Von Neumann's criterion makes this checkable: both deficiency indices, the dimensions of the kernels of H\* − i and H\* + i, must be zero. The article notes that P²/2m − X⁴ on smooth rapidly decaying functions is not essentially self-adjoint, matching a classical particle that escapes to infinity in finite time.
+**How the definition helps.** In our own argument, Stone’s theorem pairs each strongly continuous unitary group with a unique self-adjoint Hamiltonian. Therefore uniqueness of the evolution is exactly uniqueness of the self-adjoint extension. The deficiency index theorem equates this with self-adjointness of the closure.
 
 **Wikipedia:** [Self-adjoint operator](https://en.wikipedia.org/wiki/Self-adjoint_operator), [Extensions of symmetric operators](https://en.wikipedia.org/wiki/Extensions_of_symmetric_operators), [Stone's theorem on one-parameter unitary groups](https://en.wikipedia.org/wiki/Stone%27s_theorem_on_one-parameter_unitary_groups). It says: “A symmetric operator A is said to be essentially self-adjoint if the closure of A is self-adjoint. Equivalently, A is essentially self-adjoint if it has a unique self-adjoint extension.”
 
@@ -974,7 +974,7 @@
 
 **Problem.** The Friedrichs extension theorem says that every nonnegative densely defined symmetric operator has a nonnegative self-adjoint extension. It exists even when the deficiency indices are not zero.
 
-**How the definition helps.** The completed form space H₁ turns the extension problem into the Riesz representation theorem on a Hilbert space. The hard step is to show that the inclusion of the domain into the Hilbert space extends to an injective map on H₁. Then H₁ can be seen as a subspace. The Riesz theorem then defines a self-adjoint operator A whose form is Q, and A − I extends T. For the Laplacian on a bounded domain this gives the Dirichlet boundary condition (our own example).
+**How the definition helps.** In our own argument, completing the energy form gives a closed form once its natural map into the original Hilbert space is shown injective. Closability of the nonnegative symmetric operator’s form supplies that step. The closed form representation theorem gives a self-adjoint operator for Q. Subtracting I gives a nonnegative extension of T.
 
 **Wikipedia:** [Friedrichs extension](https://en.wikipedia.org/wiki/Friedrichs_extension). It says: “This extension is particularly useful in situations where an operator may fail to be essentially self-adjoint or whose essential self-adjointness is difficult to show.”
 
@@ -988,9 +988,9 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 47B25 (Linear symmetric and selfadjoint operators (unbounded)), 47A60. arXiv math.FA, math.SP. Level 3: graduate.
 
-**Definition.** A spectral measure, also called a resolution of the identity, is a map E from Borel subsets of the real line to orthogonal projections on a Hilbert space. It is countably additive. A self-adjoint operator is then written as A = ∫ λ E(dλ): A is an integral of the values λ, each weighted by a projection.
+**Definition.** A spectral measure on ℝ assigns an orthogonal projection E(B) to each Borel set B, with E(ℝ)=I. For every disjoint sequence Bₙ and vector x, ∑ E(Bₙ)x converges in norm to E(⋃ Bₙ)x.
 
-**Problem.** Self-adjoint operators on a Hilbert space, bounded or unbounded, correspond one to one with spectral measures E on the real line, by A = ∫ λ E(dλ).
+**Problem.** Self-adjoint operators on a complex Hilbert space correspond bijectively to spectral measures on ℝ through A=∫λ E(dλ). This includes bounded and unbounded operators.
 
 **How the definition helps.** Spectral measures do not need eigenvectors, so the theorem can cover operators that have none. In infinite dimensions, a self-adjoint operator need not have a basis of eigenvectors. For example, multiplication by x on L²\[0,1\] has no eigenvectors. The proof is still real work, and the page sketches one route through the Gelfand representation.
 
@@ -1006,11 +1006,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 47B25 (Linear symmetric and selfadjoint operators (unbounded)), 47A20. arXiv math.SP, math.FA. Level 3: graduate.
 
-**Definition.** Let A be a closed, densely defined symmetric operator. Its Cayley transform is W(A) = (A − i)(A + i)⁻¹, defined on the range of A + i. It is an isometry on its closed domain. The deficiency indices are the dimensions of the orthogonal complements of its domain and its range.
+**Definition.** For a densely defined symmetric operator A on a complex Hilbert space, use its closure S. Its Cayley transform (S−iI)(S+iI)⁻¹ maps ran(S+iI) isometrically onto ran(S−iI). The deficiency indices are the dimensions of the orthogonal complements of these two ranges.
 
 **Problem.** Von Neumann's theorem says that a densely defined symmetric operator has a self-adjoint extension exactly when its two deficiency indices are equal. It has exactly one when both are zero.
 
-**How the definition helps.** The transform replaces an unbounded problem with a problem about isometries, which is plain geometry. An isometry with a closed domain extends to a unitary operator exactly when the complements of its domain and range have the same dimension. A is self-adjoint exactly when W(A) is unitary, and symmetric extensions of A match isometric extensions of W(A). So the extension question becomes a count of dimensions. What stays hard is to compute the deficiency indices for a given differential operator (our own). This needs a study of the solutions of A\*u = ±iu (our own).
+**How the definition helps.** In our own argument, the Cayley correspondence turns self-adjoint extensions into unitary extensions of this isometry. Extending it requires a unitary map between the orthogonal complements of its domain and range. Such maps exist exactly when the dimensions match, and the choice is unique exactly when both complements vanish.
 
 **Wikipedia:** [Extensions of symmetric operators](https://en.wikipedia.org/wiki/Extensions_of_symmetric_operators), [Cayley transform](https://en.wikipedia.org/wiki/Cayley_transform). It says: “finding self-adjoint extensions, with various requirements, of symmetric operators is equivalent to finding unitary extensions of suitable partial isometries.”
 
@@ -1028,7 +1028,7 @@
 
 **Problem.** Every self-adjoint operator on a Hilbert space is unitarily equivalent to multiplication by a real function on an L² space. So it has real spectrum and a functional calculus.
 
-**How the definition helps.** Requiring A = A\* excludes the bad choices of domain, and it is exactly the hypothesis that the spectral theorem needs. By the Hellinger–Toeplitz theorem, a symmetric operator defined on the whole space is bounded, so unbounded observables need a smaller domain. The article's example is A = −i d/dx on L²\[0, 1\]. With f(0) = f(1) = 0 it is symmetric but not essentially self-adjoint, and it has no eigenvectors; with f(0) = f(1) it is essentially self-adjoint, with eigenbasis exp(2πinx).
+**How the definition helps.** Self-adjointness gives exactly the domain equality required by the multiplication form of the spectral theorem. For −i d/dx on L²\[0,1\], take the Sobolev domain H¹₀(0,1). Its adjoint acts on all of H¹(0,1), so this symmetric operator fails the domain test. In our own comparison, the periodic domain {f∈H¹(0,1) ∣ f(0)=f(1)} does equal its adjoint domain.
 
 **Wikipedia:** [Self-adjoint operator](https://en.wikipedia.org/wiki/Self-adjoint_operator), [Hellinger–Toeplitz theorem](https://en.wikipedia.org/wiki/Hellinger%E2%80%93Toeplitz_theorem). It says: “Although the distinction between a symmetric operator and a (essentially) self-adjoint operator is subtle, it is important since self-adjointness is the hypothesis in the spectral theorem.”
 
@@ -1046,7 +1046,7 @@
 
 **Problem.** If two self-adjoint operators commute in this sense, all bounded Borel functions of them commute, and so do their unitary groups.
 
-**How the definition helps.** The definition asks the spectral projections to commute, and this excludes Nelson's counterexample to the naive definition. The naive definition asks that ABx = BAx on a common dense domain on which both operators are essentially self-adjoint. Nelson's example on the two-sheeted Riemann surface of √z gives A = −i∂ₓ and B = −i∂ᵧ that commute on such a domain, while exp(itA) and exp(isB) do not commute. With commuting spectral projections, the spectral theorem makes all bounded Borel functions of A and B commute.
+**How the definition helps.** Commuting spectral projections give commuting simple spectral integrals and, by uniform approximation, commuting bounded Borel functions. This includes the unitary groups. Nelson’s differential operators commute on a common invariant core, yet their unitary groups fail to commute. The spectral projection condition excludes this example.
 
 **nLab:** [unbounded operator](https://ncatlab.org/nlab/show/unbounded+operator). It says: “Nelson's example shows that the rather involved definition of commutativity of two unbounded operators is well motivated, because a more naive one will have unwanted consequences.”
 
@@ -1080,7 +1080,7 @@
 
 **Problem.** Every square integrable kernel on the unit square defines a Hilbert–Schmidt operator. Its Hilbert–Schmidt norm equals the L² norm of the kernel.
 
-**How the definition helps.** Using the basis sum turns the Hilbert–Schmidt norm calculation into Parseval’s identity for the kernel (our own). For each x, sum the squared coefficients of k(x,·) in the conjugate basis (our own). Integrating this sum over x gives the squared L² norm of k (our own). Tonelli’s theorem permits the exchange of sum and integral because the terms are nonnegative (our own). This avoids finding the singular values, whose squared sum also gives the squared Hilbert–Schmidt norm (our own).
+**How the definition helps.** In our own proof, Parseval’s identity gives ∑ₑ \|(Ke)(x)\|² = ∫₀¹ \|k(x,y)\|² dy for almost every x, using the conjugate basis. Tonelli’s theorem exchanges summation and integration of these nonnegative terms. The result is precisely the equality of the squared norms.
 
 **Wikipedia:** [Hilbert–Schmidt operator](https://en.wikipedia.org/wiki/Hilbert%E2%80%93Schmidt_operator). It says: “with kernel k is a Hilbert–Schmidt operator and ‖K‖HS = ‖k‖₂.”
 
@@ -1110,9 +1110,9 @@
 
 **Definition.** An operator A on a Banach space is dissipative if ‖(λ − A)x‖ ≥ λ‖x‖ for all λ &gt; 0 and x in its domain. In a Hilbert space this means that the real part of ⟨Ax, x⟩ is at most 0. A is maximally dissipative if, also, λ₀ − A is onto for some λ₀ &gt; 0.
 
-**Problem.** The Lumer–Phillips theorem says that A generates a contraction semigroup exactly when A is densely defined and maximally dissipative. Then u′ = Au is well posed with ‖u(t)‖ ≤ ‖u(0)‖.
+**Problem.** A linear operator A on a Banach space generates a strongly continuous contraction semigroup exactly when it is densely defined and maximally dissipative. The evolution u′=Au then has a unique mild solution for each initial vector, with ‖u(t)‖ ≤ ‖u(0)‖.
 
-**How the definition helps.** Dissipativity is an energy estimate on A itself, and it is often one integration by parts. For the Laplacian with zero boundary values, ⟨Δu, u⟩ = −‖∇u‖² ≤ 0 (our own). The definition is built so that the resolvent bound of the Hille–Yosida theorem follows at once, once λ − A is onto (our own). So one checks an inequality for A, not estimates for its inverse. The remaining work is the range condition, which is usually an existence problem for an elliptic equation (our own).
+**How the definition helps.** In our own argument, dissipativity gives ‖(λI−A)⁻¹‖ ≤ 1/λ whenever λI−A is onto. The Lumer–Phillips theorem turns dissipativity and surjectivity at one positive parameter into generation of a contraction semigroup. Applying that semigroup to the initial vector gives the norm bound.
 
 **Wikipedia:** [Lumer–Phillips theorem](https://en.wikipedia.org/wiki/Lumer%E2%80%93Phillips_theorem), [C0-semigroup](https://en.wikipedia.org/wiki/C0-semigroup). It says: “Of more practical importance are however the much easier to verify conditions given by the Lumer–Phillips theorem.”
 
@@ -1126,7 +1126,7 @@
 
 *True by definition.* MSC 47D03 (Groups and semigroups of linear operators), 44A10. arXiv math.FA. Level 3: graduate.
 
-**Definition.** Let T(t) be a uniformly continuous semigroup on a complex Banach space, with generator A. Its resolvent (λI − A)⁻¹ is the Laplace transform ∫₀<sup>∞</sup> exp(−λt)T(t) dt.
+**Definition.** A uniformly continuous semigroup on a complex Banach space consists of bounded operators T(t), t≥0, satisfying T(0)=I and T(s+t)=T(s)T(t) for all s,t≥0. It satisfies ‖T(t)−I‖→0 as t↓0. Its generator is the norm limit of (T(t)−I)/t as t↓0.
 
 **Problem.** Suppose ‖T(t)‖ ≤ M exp(ωt) and Re λ &gt; ω. Then for each integer n ≥ 1, (λI − A)⁻ⁿ = ∫₀<sup>∞</sup> tⁿ⁻¹/(n − 1)! · exp(−λt)T(t) dt.
 
@@ -1142,11 +1142,11 @@
 
 *True by definition.* MSC 47D06 (One-parameter semigroups and linear evolution equations). arXiv math.FA. Level 3: graduate.
 
-**Definition.** Subordination averages a semigroup S over time, by Sμ(t)x = ∫ S(s)x dμₜ(s). Here μₜ are measures on \[0, ∞) of total mass at most one, with μₛ₊ₜ the convolution of μₛ and μₜ.
+**Definition.** Let S be a semigroup and μₜ subprobability measures on \[0,∞), indexed by t≥0, with μ₀ the unit mass at zero. Require μₛ₊ₜ=μₛ∗μₜ for every s,t≥0, where ∗ denotes convolution. The subordinate operators are Sμ(t)x = ∫ S(r)x dμₜ(r).
 
-**Problem.** Let S be a uniformly bounded, strongly continuous semigroup on a Banach space. If μₜ tends to the unit mass at zero as t decreases to zero, tested against continuous functions of compact support, then the averages Sμ(t) form a uniformly bounded, strongly continuous semigroup.
+**Problem.** Let S be a uniformly bounded, strongly continuous semigroup on a Banach space. Suppose μₜ converges to unit mass at zero against continuous compactly supported functions as t↓0. Then the operators Sμ(t) form a uniformly bounded, strongly continuous semigroup.
 
-**How the definition helps.** Averaging over time makes composition into addition of the two integration variables. In our own proof, interchange the integrals and use the original semigroup law. Convolution then gives the measure at the sum of the times. The mass bound gives uniform boundedness, and concentration at zero gives strong continuity. The cited theorem constructs the measures from a function specifying their Laplace transforms.
+**How the definition helps.** In our own proof, composing averages gives a double integral with operator S(r+s), so convolution gives the semigroup law. Total mass at most one preserves the uniform operator bound. Convergence to unit mass at zero concentrates the measures there, where S(r)x tends to x. This gives strong continuity at zero and hence everywhere by the semigroup law.
 
 **Paper or page:** [Final State Observability in Banach spaces with applications to Subordination and Semigroups induced by L{é}vy processes](https://arxiv.org/abs/2202.05835v2). It says: “is again a bounded C₀-semigroup on X.”
 
@@ -1158,11 +1158,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 47D06 (One-parameter semigroups and linear evolution equations). arXiv math.FA. Level 3: graduate.
 
-**Definition.** Take a closed operator A on a Banach space X and the problem u′ = Au, u(0) = x. A continuous function u is a mild solution if each integral of u from 0 to t lies in the domain of A. Also, A applied to that integral must equal u(t) − x. A classical solution must be differentiable and stay in the domain of A.
+**Definition.** For a closed linear operator A on a Banach space X, a mild solution with initial vector x∈X is a continuous map u:\[0,∞)→X. For every t≥0 its integral v(t)=∫₀ᵗ u(s) ds belongs to the domain of A and satisfies Av(t)=u(t)−x.
 
 **Problem.** Let A be a closed operator. Every starting point x in X has a unique mild solution exactly when A generates a strongly continuous semigroup T(t). The solution is then u(t) = T(t)x.
 
-**How the definition helps.** The mild solution integrates the equation once, so it asks nothing of the starting point and makes sense for every x. Then the solution map x ↦ u(t) is defined on the whole space, and it is the semigroup T(t). Classical solutions exist only for x in the domain of A, so the classical version needs the extra condition that the resolvent set of A is not empty. The hard work moves to generation theorems, such as the Hille–Yosida theorem.
+**How the definition helps.** The integrated equation requires only v(t) to lie in the operator domain, so it accommodates every initial vector. In our own account, the semigroup well-posedness theorem identifies existence and uniqueness of these mild solutions with generation. When A generates T, integration of its orbits gives the defining identity for u(t)=T(t)x.
 
 **Wikipedia:** [C0-semigroup](https://en.wikipedia.org/wiki/C0-semigroup). It says: “Any classical solution is a mild solution. A mild solution is a classical solution if and only if it is continuously differentiable.”
 
@@ -1178,7 +1178,7 @@
 
 **Definition.** A one-parameter semigroup is a family of bounded operators T(t), t ≥ 0, with T(0) = I and T(s + t) = T(s)T(t). It is strongly continuous when t ↦ T(t)x is continuous for each vector x. Its generator A is the derivative of T(t)x at t = 0, where this exists.
 
-**Problem.** The Hille–Yosida theorem: a closed densely defined operator A generates a strongly continuous semigroup with ‖T(t)‖ ≤ M exp(ωt) exactly when every real λ &gt; ω is in its resolvent set and ‖(λ − A)⁻ⁿ‖ ≤ M/(λ − ω)ⁿ for all n ≥ 1.
+**Problem.** Let A be closed and densely defined on a Banach space, with M≥1 and ω real. It generates a strongly continuous semigroup bounded by M exp(ωt) exactly when the following resolvent conditions hold. Every real λ&gt;ω lies in the resolvent set, and ‖(λI−A)⁻ⁿ‖ ≤ M/(λ−ω)ⁿ for every integer n≥1.
 
 **How the definition helps.** Continuity in the operator norm is too strong, because a uniformly continuous semigroup has a bounded generator. The heat equation and the wave equation have unbounded generators, so they need the weaker, vector-by-vector continuity (our own examples). With strong continuity, the generator is closed and densely defined, and the resolvent is the Laplace transform of the semigroup (our own). What stays hard is to build the semigroup from A, which uses the Yosida approximation by bounded operators (our own).
 
@@ -1198,7 +1198,7 @@
 
 **Problem.** If P has order at most k and Q has order at most l, then PQ has order at most k + l.
 
-**How the definition helps.** The commutator definition reduces the composition bound to the product rule for one commutator, in our own proof. The identity \[PQ, f\] = \[P, f\]Q + P\[Q, f\] puts each additional commutator on one factor. After k + l + 1 steps, every term applies too many commutators to P or to Q, so it vanishes. Our own comparison is with the coordinate proof, which expands each partial derivative of a product. The work moves into showing that the commutator and coordinate definitions identify the same operators.
+**How the definition helps.** In our own proof, \[PQ,f\]=\[P,f\]Q+P\[Q,f\] assigns each commutator to one factor. After k+l+1 commutators, every term exceeds the allowed count for P or Q and vanishes. The equivalence with the coordinate definition identifies this bound with the usual differential order.
 
 **Wikipedia:** [Differential operator](https://en.wikipedia.org/wiki/Differential_operator). It says: “This characterization of linear differential operators shows that they are particular mappings between modules over a commutative algebra, allowing the concept to be seen as a part of commutative algebra.”
 
@@ -1228,11 +1228,11 @@
 
 *True by definition.* MSC 47H09 (Contraction-type mappings, nonexpansive mappings, \\(A\\)-proper mappings, etc.), 47H10. arXiv math.OC, math.FA. Level 3: graduate.
 
-**Definition.** A map T on a Hilbert space is λ-averaged when T = (1 − λ)I + λN for some λ in (0,1) and nonexpansive N. A map N is nonexpansive when ‖Nx − Ny‖ ≤ ‖x − y‖.
+**Definition.** For 0&lt;λ&lt;1, a map T:H→H on a Hilbert space is λ-averaged if T=(1−λ)I+λN for some nonexpansive map N:H→H. Nonexpansiveness means ‖Nx−Ny‖ ≤ ‖x−y‖ for all x,y∈H.
 
 **Problem.** A finite composition of averaged maps on a Hilbert space is averaged. If the maps have a common fixed point, the fixed points of the composition are exactly the common fixed points.
 
-**How the definition helps.** Averaging forces a strict loss of distance to any common fixed point whenever a step moves, so a cycle must stand still at every step. The squared-distance identity for averaged maps gives this loss, by our own calculation. A composition that returns to its starting point therefore never moved, by our own argument. Nonexpansive maps alone fail: a reflection R composed with itself fixes every point, but R fixes only a hyperplane.
+**How the definition helps.** In our own proof, expand the composition as a convex combination of nonexpansive compositions, with positive identity weight ∏ᵢ(1−λᵢ). Grouping the other terms gives an averaged map. At a common fixed point p, the squared-norm identity gives ‖Tx−p‖² ≤ ‖x−p‖²−((1−λ)/λ)‖Tx−x‖² for each step. Thus a cycle must fix every intermediate point, while common fixed points plainly remain fixed.
 
 **Paper or page:** [Unrestricted Douglas-Rachford algorithms for solving convex feasibility problems in Hilbert space](https://arxiv.org/abs/2204.00275v2). It says: “then Fix(T) = ⋂ᵢ₌₁ⁿ Fix(Tᵢ).”
 
@@ -1246,7 +1246,7 @@
 
 *True by definition.* MSC 47H09 (Contraction-type mappings, nonexpansive mappings, \\(A\\)-proper mappings, etc.), 47H10. arXiv math.OC, math.FA. Level 3: graduate.
 
-**Definition.** A map T on a Hilbert space is firmly nonexpansive if ‖Tx − Ty‖² ≤ ⟨Tx − Ty, x − y⟩ always. A map is nonexpansive if it never increases the distance between two points.
+**Definition.** A map T:H→H on a Hilbert space is firmly nonexpansive if ‖Tx−Ty‖² ≤ Re⟨Tx−Ty,x−y⟩ for every x,y∈H. A map is nonexpansive if it never increases the distance between two points.
 
 **Problem.** On a Hilbert space, T is firmly nonexpansive exactly when T = ½(Id + N) for some nonexpansive map N.
 
@@ -1264,11 +1264,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 47A06 (Linear relations (multivalued linear operators)). arXiv math.FA. Level 4: research.
 
-**Definition.** A linear relation on a Banach space X is a linear subspace of X × X. A pseudo-resolvent is a family of bounded linear maps on X satisfying R(λ) − R(μ) = (λ − μ)R(λ)R(μ).
+**Definition.** A linear relation on a Banach space X is a linear subspace of X × X. A pseudo-resolvent on a scalar set Ω assigns each λ∈Ω a bounded linear map R(λ):X→X. For every λ,μ∈Ω it satisfies R(λ)−R(μ)=(λ−μ)R(λ)R(μ).
 
 **Problem.** On any nonempty parameter set, each pseudo-resolvent R comes from a unique closed linear relation L. At every λ, R(λ) is the inverse of L − λI.
 
-**How the definition helps.** A relation lets us reverse the graph of R(λ) even when several inputs have the same output. Take all pairs (R(λ)x, x + λR(λ)x). Reversing a closed graph and applying this shift preserve closedness. The resolvent identity makes the result independent of λ. In our own example, the zero family gives all pairs (0,x).
+**How the definition helps.** In our own proof, reversing and shifting the graph forces L to consist of the pairs (R(λ)x,x+λR(λ)x) for x∈X. These operations preserve closedness. The resolvent identity gives R(μ)(x+(λ−μ)R(λ)x)=R(λ)x, so every such pair also occurs at μ. Interchanging λ and μ gives equality.
 
 **Paper or page:** [A pseudo-resolvent approach to abstract differential-algebraic equations](https://arxiv.org/abs/2312.02303v1). It says: “is closed and independent of the particular choice of λ”
 
@@ -1286,29 +1286,11 @@
 
 **Problem.** On a nonzero complex Hilbert space, the operators nI converge in norm resolvent to the self-adjoint relation consisting of all pairs (0,y).
 
-**How the definition helps.** The vertical relation accepts zero input with every output, so its inverse sends every input to zero (our own). The relation is self-adjoint because it is the inverse of the self-adjoint zero operator (our own). Subtracting any scalar times the input leaves this relation unchanged (our own). The resolvents of nI are (n − z)⁻¹I and converge to zero (our own). No ordinary operator on a nonzero space has the zero operator as its resolvent (our own).
+**How the definition helps.** In our own proof, reversing the vertical relation gives the zero operator, so the relation is self-adjoint by the adjoint rule for inverses. Shifting the relation leaves every pair (0,y) unchanged. At i its resolvent is therefore zero, while the resolvent of nI is (n−i)⁻¹I, which tends to zero in norm.
 
 **Paper or page:** [Sequences of operators, monotone in the sense of contractive domination](https://arxiv.org/abs/2401.00312v1). It says: “In fact, Hₙ → H∞ in the strong resolvent sense or, equivalently, in the strong graph sense.”
 
 **Sources:** none listed. No primary source with a working link was found.
-
-### Defining the spectrum as a support makes it nonempty and proves Gelfand–Mazur
-
-**Remember:** A nonzero module cannot live on the empty set.
-
-*True by definition.* MSC 47A10 (Spectrum, resolvent), 46H05, 46A16. arXiv math.FA. Level 4: research.
-
-**Definition.** An endomorphism T of a liquid complex vector space V makes V a ℂ\[T\]-module. For a closed set Z ⊂ ℂ, an idempotent algebra cuts out the category C(Z) of modules supported on Z. The spectrum of T is the smallest closed Z with V in C(Z).
-
-**Problem.** Every endomorphism of a nonzero complex quasi-Banach space has a nonempty compact spectrum. Hence every quasi-Banach field over ℂ is ℂ itself, and ℂ is algebraically closed.
-
-**How the definition helps.** With the spectrum defined as a support, nonemptiness only says that a nonzero object is not supported on the empty set. The category over the empty set is zero (Proposition 5.14 of the complex notes). The usual proof uses Liouville's theorem and a bounded linear functional, which Lᵖ for p &lt; 1 lacks (our own). The work moves to Theorem 5.1, which identifies the space of these supports with ℂ using Ostrowski's elementary theorem on multiplicative seminorms.
-
-**nLab:** [Gelfand-Mazur theorem](https://ncatlab.org/nlab/show/Gelfand-Mazur+theorem). It says: “the only complex Banach algebra which is also a field is the algebra of complex numbers ℂ”
-
-**Sources:**
-
-- [Dustin Clausen, Peter Scholze, Condensed Mathematics and Complex Geometry, lecture notes, University of Bonn (2022)](https://people.mpim-bonn.mpg.de/scholze/Complex.pdf)
 
 ### Koszul Laplacians test joint spectra
 
@@ -1316,11 +1298,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 47A13 (Several-variable operator theory (spectral, Fredholm, etc.)). arXiv math.SP. Level 4: research.
 
-**Definition.** For commuting bounded operators T₁, …, Tₙ on a Hilbert space and λ ∈ ℂⁿ, the Koszul complex is a chain of Hilbert spaces whose maps are alternating sums of the Tⱼ − λⱼI. The point λ lies outside the Taylor spectrum when this chain is exact. At each stage, with incoming map B and outgoing map C, the Laplacian is BB\* + C\*C.
+**Definition.** For commuting bounded operators Tⱼ on H and λ∈ℂⁿ, the Koszul differential on H⊗Λᵏℂⁿ is ∑ⱼ(Tⱼ−λⱼI)⊗ιⱼ. Here ιⱼ contracts with the jth coordinate vector. A point lies outside the Taylor spectrum if each outgoing kernel equals the incoming range, with zero maps at the ends.
 
-**Problem.** A point lies outside the Taylor spectrum exactly when all these Laplacians have bounded inverses.
+**Problem.** A point lies outside the Taylor spectrum exactly when at every stage the Laplacian BB\*+C\*C has a bounded inverse. Here B is the incoming differential and C the outgoing differential.
 
-**How the definition helps.** The Laplacian puts both tests at a stage of the chain into one positive operator, with energy ‖B\*x‖² + ‖Cx‖² on x (our own argument). Exactness closes the ranges, and the closed range theorem then bounds this energy below by a positive multiple of ‖x‖². Conversely, an invertible Laplacian preserves the kernel of C and acts there as BB\*. So each kernel vector of C lies in the range of B.
+**How the definition helps.** In our own proof, the energy of the Laplacian at x is ‖B\*x‖²+‖Cx‖². Exactness closes all ranges, and the closed range theorem bounds this energy below on the orthogonal summands ran B and (ker C)⊥. Conversely, ker C reduces the Laplacian because CB=0. Its invertible restriction there equals BB\*, so every vector in ker C belongs to ran B.
 
 **Paper or page:** [Spectral mapping theorem and the Taylor spectrum](https://arxiv.org/abs/2404.17907v1). It says: “if and only if Dₖ\*Dₖ + Dₖ₊₁Dₖ₊₁\* is invertible for all k.”
 
@@ -1372,7 +1354,7 @@
 
 **Problem.** A sequence has a unitary moment dilation exactly when all its finite Toeplitz block matrices are positive semidefinite.
 
-**How the definition helps.** The dilation turns each block matrix into a matrix of inner products. In our own proof, its quadratic form on vectors x₀ through xₙ equals the squared norm of x₀ + Ux₁ + ⋯ + Uⁿxₙ. This proves positivity. Starting from positive matrices instead requires constructing the larger space. Their quadratic forms give an inner product after removing zero-length vectors, and completion gives the Hilbert space. Shifting integer indices gives its unitary.
+**How the definition helps.** In our own proof, the Toeplitz quadratic form equals ‖∑ⱼ Uʲxⱼ‖², so it is nonnegative. Conversely, use the Toeplitz form on finitely supported vectors indexed by the integers, quotient by its null space, and complete. Translation preserves the form in both directions and therefore induces a unitary. The copy at index zero embeds isometrically, and the prescribed blocks give its compressed moments.
 
 **Paper or page:** [Operator moment dilations as block operators](https://arxiv.org/abs/2302.13873v2). It says: “Then the following are equivalent: (i) {Aₙ}ₙ≥₀ admits a unitary/isometric dilation.”
 
@@ -1390,7 +1372,7 @@
 
 **Problem.** Adding an inessential operator to a Fredholm operator preserves Fredholmness.
 
-**How the definition helps.** In our own proof, the defining test gives exactly the inverse needed after factoring out the original Fredholm operator. Atkinson’s theorem says a Fredholm operator F has an invertible image f in the Calkin algebra. Choose S representing −f⁻¹ and write k for the image of K. Inessentiality makes I − SK Fredholm, so 1 + f⁻¹k is invertible. Its product with f is the image of F + K. Atkinson’s theorem now gives the conclusion.
+**How the definition helps.** In our own proof, Atkinson’s theorem makes the quotient image f of the Fredholm operator invertible. Choose a bounded S representing −f⁻¹ and write k for the image of K. Inessentiality and Atkinson’s theorem make 1+f⁻¹k invertible. Multiplication by f gives the invertible image f+k, so F+K is Fredholm.
 
 **Wikipedia:** [Strictly singular operator](https://en.wikipedia.org/wiki/Strictly_singular_operator). It says: “is called inessential whenever Idₓ − ST is a Fredholm operator”
 
@@ -1406,7 +1388,7 @@
 
 **Problem.** The parity index is constant under compact perturbations that preserve odd symmetry.
 
-**How the definition helps.** Our own explanation is that τ pairs the kernel with the cokernel, so the ordinary index cannot distinguish these operators. The parity index retains information that survives deformation. Our own account of the proof uses the symmetry on a finite-dimensional reduction to prove local constancy of parity.
+**How the definition helps.** In our own account, the parity index records kernel dimension modulo two because odd symmetry pairs the kernel with the cokernel. The mod-two index theorem gives local constancy for odd symmetric Fredholm operators. For a compact symmetry-preserving perturbation K, every D+tK remains Fredholm and odd symmetric for 0≤t≤1. Local constancy along this path gives the result.
 
 **Paper or page:** [On the Z<sub>2</sub>-valued index of elliptic odd symmetric operators on non-compact manifolds](https://arxiv.org/abs/2403.13999v3). It says: “indτ(D + K) = indτ D.”
 
@@ -1436,9 +1418,9 @@
 
 *True by definition.* MSC 47A75 (Eigenvalue problems for linear operators). arXiv math.SP. Level 4: research.
 
-**Definition.** On the real line let H₀ be minus the second derivative. Let V be a real distribution acting continuously on H¹, the space of square-integrable functions with square-integrable weak derivative. For λ &lt; 0, write R for the inverse square root of H₀ − λI. The Birman–Schwinger operator is −RVR, with V acting on products of test functions.
+**Definition.** On L²(ℝ), let H₀=−d²/dx² with domain H²(ℝ), and let V be a real distribution acting continuously on H¹(ℝ). For λ&lt;0 let R be the inverse square root of H₀−λI. Define B by ⟨f,Bg⟩=−V((Rf)̅·Rg) for all f,g∈L²(ℝ), conjugating the first factor.
 
-**Problem.** Form the Schrödinger operator H by adding V to the energy form of H₀. The eigenspace of H at λ and the eigenspace of −RVR at one have equal dimension.
+**Problem.** Let H be the Schrödinger operator obtained by adding V to the energy form of H₀. The eigenspaces of H at λ and of B at one have equal dimension.
 
 **How the definition helps.** Placing one inverse square root on each side of V makes the eigenvector correspondence reversible. The square root of H₀ − λI takes an eigenvector of H to a fixed vector of −RVR. Applying R takes that vector back. In our own account, the work lies in defining the sum through its energy form and verifying the operator domains.
 
@@ -1459,7 +1441,7 @@
 
 **Problem.** D is an entire function of λ. Without the exponential correction, the product of 1 + λμ over the eigenvalues μ of K can diverge.
 
-**How the definition helps.** The correction cancels the linear term, so the difference from the identity starts with K² (our own). The singular values of K are square-summable, which makes those of K² summable (our own). Controlling the higher terms in the same norm gives analyticity through the ordinary Fredholm determinant (our own). On \[0,1\], diagonal coefficients 1/n in an orthonormal basis define a square-integrable kernel (our own). Its uncorrected product at λ = 1 has partial products N + 1 (our own).
+**How the definition helps.** In our own proof, removing the linear term leaves K² times an operator-norm entire factor. Since K is Hilbert–Schmidt, K² is trace class, and the remainder is entire in trace norm. Fredholm determinant analyticity now gives the result. Diagonal coefficients 1/n in an orthonormal basis give a square-integrable kernel whose uncorrected product at λ=1 has partial products N+1.
 
 **Wikipedia:** [Hilbert–Schmidt integral operator](https://en.wikipedia.org/wiki/Hilbert%E2%80%93Schmidt_integral_operator). It says: “Hilbert–Schmidt integral operators are both continuous and compact.”
 
@@ -1477,7 +1459,7 @@
 
 **Problem.** Every such pair is T₀ = L₀ + S and T̃₀ = −L₀ + S in exactly one way. Here L₀ is skew-symmetric, so −L₀ is contained in its adjoint. S is bounded, self-adjoint and satisfies ⟨Su, u⟩ ≥ μ‖u‖².
 
-**How the definition helps.** The defining conditions make the decomposition almost a calculation: take S as half the sum and L₀ as half the difference. Formal adjointness makes half the sum symmetric and half the difference skew-symmetric. Boundedness and density let half the sum extend to a bounded self-adjoint operator on the whole space. The positivity condition gives the lower bound μ for S. This short proof is our own reading of Theorem 3.1 of the paper. The paper's main work is a separate result, the classification of closed realisations in the style of von Neumann extension theory.
+**How the definition helps.** In our own proof, addition forces S=(T₀+T̃₀)/2 on the common domain, and subtraction forces L₀=(T₀−T̃₀)/2. Formal adjointness makes S symmetric and L₀ skew-symmetric there. Boundedness and density extend S uniquely to a bounded self-adjoint operator everywhere. Its lower bound passes to the extension by continuity.
 
 **Paper or page:** [The von Neumann extension theory for abstract Friedrichs operators](https://arxiv.org/abs/2312.09618v2). It says: “we show that every abstract Friedrichs operator can be written as the sum of a skew-symmetric operator and a bounded self-adjoint strictly positive operator.”
 
@@ -1487,11 +1469,11 @@
 
 ### Boundary data classify self-adjoint extensions
 
-**Remember:** Equal deficiency indices let boundary values pair up.
+**Remember:** Two jointly onto boundary maps turn the adjoint identity into boundary pairings.
 
 *Makes the theorem clean to state or prove.* MSC 47B25 (Linear symmetric and selfadjoint operators (unbounded)), 81Q10. arXiv math-ph. Level 4: research.
 
-**Definition.** Start with a densely defined closed symmetric operator S. A boundary triple consists of a Hilbert space and two boundary maps on the domain of S\*. Together the maps attain every pair of boundary values and express the difference of the two inner products in the adjoint identity.
+**Definition.** Let S be closed, densely defined and symmetric on a complex Hilbert space. A boundary triple consists of a Hilbert space G and linear maps Γ₀,Γ₁:dom S\*→G with (Γ₀,Γ₁) onto G×G. For all f,g∈dom S\*, require ⟨S\*f,g⟩−⟨f,S\*g⟩=⟨Γ₁f,Γ₀g⟩−⟨Γ₀f,Γ₁g⟩.
 
 **Problem.** A boundary triple exists exactly when the eigenspaces of S\* at i and −i have equal dimension. For such a triple, prescribing the second boundary value as a self-adjoint operator of the first defines a self-adjoint extension.
 
@@ -1509,11 +1491,11 @@
 
 *True by definition.* MSC 47B25 (Linear symmetric and selfadjoint operators (unbounded)). arXiv math.SP. Level 4: research.
 
-**Definition.** Let S be a closed, densely defined symmetric operator with a boundedly invertible self-adjoint extension. Write N for the kernel of its adjoint S\*. A Birman parameter T is a self-adjoint operator on a closed subspace M of N. It specifies boundary conditions for an extension of S.
+**Definition.** Fix a boundedly invertible self-adjoint extension A of a closed densely defined symmetric operator S, and set N=ker S\*. Choose a self-adjoint parameter T on a closed subspace M⊆N. Its extension restricts S\* to dom S ⊕ {v+A⁻¹(Tv+w) ∣ v∈dom T, w∈N⊖M}.
 
 **Problem.** The extension and its Birman parameter have the same kernel as subspaces of the original Hilbert space.
 
-**How the definition helps.** The boundary condition tests each candidate zero mode directly with T. In our own proof, every candidate lies in N because the extension acts by S\*. For a vector v in N, the boundary condition requires v to belong to the domain of T and Tv to vanish. Thus exactly the vectors in the kernel of T survive. The Krein–Vishik–Birman theorem identifies these boundary conditions with self-adjoint extension domains.
+**How the definition helps.** In our own proof, S\* sends u+v+A⁻¹(Tv+w) to Su+Tv+w. These three outputs belong respectively to N⊥, M, and N⊖M, so a zero output forces each to vanish. Invertibility of A gives u=0, leaving precisely v∈ker T. The Krein–Vishik–Birman theorem supplies the domain formula.
 
 **Paper or page:** [On creating new essential spectrum by self-adjoint extension of gapped operators](https://arxiv.org/abs/2304.02579v3). It says: “ker Sₜ = ker T, and therefore Sₜ is injective ⇔ T is injective;”
 
@@ -1527,11 +1509,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 47B25 (Linear symmetric and selfadjoint operators (unbounded)), 47A20, 47A75. arXiv math.SP, math.FA. Level 4: research.
 
-**Definition.** Let S be a closed symmetric operator with adjoint S\*. A boundary triplet is a Hilbert space 𝒢 with linear maps Υ₀, Υ₁ from the domain of S\* to 𝒢, jointly onto 𝒢 × 𝒢. They satisfy the abstract Green formula ⟨S\*f, g⟩ − ⟨f, S\*g⟩ = ⟨Υ₁f, Υ₀g⟩ − ⟨Υ₀f, Υ₁g⟩. For solutions f of S\*f = λf, the γ-field γ(λ) maps Υ₀f to f, and the Weyl function M(λ) maps Υ₀f to Υ₁f.
+**Definition.** For closed densely defined symmetric S, a boundary triplet comprises a Hilbert space G and linear traces (Υ₀,Υ₁):dom S\*→G×G jointly onto G×G. For all f,g∈dom S\*, require ⟨S\*f,g⟩−⟨f,S\*g⟩=⟨Υ₁f,Υ₀g⟩−⟨Υ₀f,Υ₁g⟩. Off the spectrum of A₀=S\* restricted to ker Υ₀, γ(λ) inverts Υ₀ on ker(S\*−λI), and M(λ)=Υ₁γ(λ).
 
-**Problem.** Self-adjoint extensions AΘ of S correspond to self-adjoint linear relations Θ in 𝒢. Let A₀ be S\* restricted to ker Υ₀. For λ outside the spectrum of A₀, λ is an eigenvalue of AΘ exactly when Θ − M(λ) is not injective, and then ker(AΘ − λ) = γ(λ) ker(Θ − M(λ)).
+**Problem.** Self-adjoint extensions AΘ of S correspond to self-adjoint linear relations Θ in G. Outside the spectrum of A₀, λ is an eigenvalue of AΘ exactly when ker(Θ−M(λ)) is nonzero. Then ker(AΘ−λI)=γ(λ)ker(Θ−M(λ)).
 
-**How the definition helps.** The triplet moves each self-adjoint extension to a relation Θ in the small space 𝒢, so eigenvalues become a boundary equation. A linear relation is a subspace of 𝒢 × 𝒢, that is, a multivalued operator. For the Laplacian on an interval, Υ₀ and Υ₁ give boundary values and derivatives, and 𝒢 = ℂ² (our own example). The hard part is to build the trace maps and prove the Green formula for the operator at hand, as the paper does for the restricted fractional Laplacian (our own).
+**How the definition helps.** In our own deduction, the boundary triplet theorem gives the extension domain by requiring (Υ₀f,Υ₁f)∈Θ. Every solution of S\*f=λf has the unique form f=γ(λ)h. Its boundary pair is (h,M(λ)h), which lies in Θ exactly when h∈ker(Θ−M(λ)).
 
 **Paper or page:** [On Spectral Properties of Restricted Fractional Laplacians with Self-adjoint Boundary Conditions on a Finite Interval](https://arxiv.org/abs/2505.00094), [On Spectral Properties of Restricted Fractional Laplacians with Self-adjoint Boundary Conditions on a Finite Interval](https://arxiv.org/abs/2505.00094). It says: “λ ∈ σp(AΘ) if and only if 0 ∈ σp(Θ − M(λ)), and in this case ker(AΘ − λ) = γ(λ) ker(Θ − M(λ))”
 
@@ -1550,7 +1532,7 @@
 
 **Problem.** Let y belong to the range of S. Apply the inverse of any boundedly invertible self-adjoint extension to y, then project orthogonally onto that range. The result equals the reduced operator’s inverse at y.
 
-**How the definition helps.** The zero-extension description lets us project a solution without changing its output. In our own proof, the positive lower bound and closedness make the range of S closed. Its orthogonal complement is the kernel of the adjoint S\*. Write y = Sx. Every invertible extension sends y back to x under its inverse. Projecting x onto the range subtracts a kernel vector and gives the unique reduced solution. Krein’s theorem identifies this domain construction with the least nonnegative self-adjoint extension.
+**How the definition helps.** In our own proof, closedness and the positive lower bound make ran S closed, with orthogonal complement ker S\*. Write y=Sx, so the inverse of every invertible extension sends y to x. Projecting x onto ran S subtracts a vector of ker S\*, leaving the Krein extension’s output unchanged. The projected vector is therefore the unique reduced solution.
 
 **Paper or page:** [Some Remarks On Krein--von Neumann Extensions](https://arxiv.org/abs/2504.11718v2). It says: “let S̃ be any self-adjoint extension S such that 0 ∈ ρ(S̃).”
 
@@ -1558,7 +1540,7 @@
 
 ### Canonical factors invert Wiener–Hopf equations
 
-**Remember:** Invert the two factors in reverse order.
+**Remember:** Factor outside times inside, with bounded analytic inverses on both sides.
 
 *Rules out counterexamples.* MSC 47B35 (Toeplitz operators, Hankel operators, Wiener-Hopf operators), 45E10. arXiv math.FA. Level 4: research.
 
@@ -1574,31 +1556,13 @@
 
 - [A new systems theory perspective on canonical Wiener-Hopf factorization on the unit circle](https://arxiv.org/abs/2409.17324v3)
 
-### A boundary tuple matches dissipative Maxwell boundary conditions with boundary contractions
-
-**Remember:** Put both boundary traces in one Hilbert space, then use a contraction.
-
-*Makes the theorem clean to state or prove.* MSC 47B44 (Linear accretive operators, dissipative operators, etc.), 47B25, 35Q61. arXiv math.AP, math.FA. Level 4: research.
-
-**Definition.** A boundary triple describes the extensions of a symmetric operator through two boundary maps into one Hilbert space. For Maxwell's equations, the tangential traces of E and H lie in two different trace spaces that are dual to each other. The authors' boundary tuple uses a fixed isomorphism V and its adjoint to move both traces into L²ₜ(∂Ω), the square-integrable tangential fields on the boundary.
-
-**Problem.** Let Ω be a Lipschitz domain. An extension is m-dissipative exactly when its boundary condition is (I + K)V⁻¹(tangential H) + (I − K)V\#(tangential E) = 0 for a contraction K. This correspondence is one-to-one, and the extension is self-adjoint exactly when K is unitary.
-
-**How the definition helps.** Once both traces live in one Hilbert space, the abstract theory of boundary triples applies. That theory matches dissipative extensions with contractions. Here m-dissipative means that the operator generates a time evolution that does not increase energy. The paper must construct the identification V, using Riesz bases in the trace spaces. It then applies the result to impedance and Leontovich boundary conditions.
-
-**Paper or page:** [M-dissipative boundary conditions and boundary tuples for Maxwell operators](https://arxiv.org/abs/2110.04586v1). It says: “we construct Riesz bases in the trace spaces associated with the curl-operator and introduce a modified version of boundary triple adapted for the specifics of Maxwell equations, namely, to the mixed-order duality of the related trace spaces.”
-
-**Sources:**
-
-- [Matthias Eller, Illya M. Karabash, M-dissipative boundary conditions and boundary tuples for Maxwell operators, arXiv:2110.04586 (2021), Journal of Differential Equations 325 (2022), 82-118](https://arxiv.org/abs/2110.04586v1)
-
 ### Evolution semigroups put dichotomies in spectra
 
 **Remember:** Put the time shift into the operator before looking at its spectrum.
 
 *Makes the theorem clean to state or prove.* MSC 47D06 (One-parameter semigroups and linear evolution equations). arXiv math.FA. Level 4: research.
 
-**Definition.** An evolution family V(t,s) carries states from time s to time t, composing across intermediate times and acting as the identity at equal times. Its evolution semigroup acts on continuous trajectories vanishing at infinity with the rule (S(h)f)(t) = V(t,t−h)f(t−h). An exponential dichotomy splits each state space into stable and unstable subspaces that the evolution preserves. Stable states decay exponentially forward, and the evolution on unstable states has inverses that decay exponentially backward, with uniform bounds.
+**Definition.** For a strongly continuous evolution family V(t,s) on X with real s≤t, the evolution semigroup on C₀(ℝ,X) acts by (S(h)f)(t)=V(t,t−h)f(t−h) for h≥0. An exponential dichotomy uses uniformly bounded projections P(t) satisfying V(t,s)P(s)=P(t)V(t,s), with V(t,s) mapping ker P(s) bijectively onto ker P(t). For some C,α&gt;0, the stable restriction to ran P(s) and the inverse unstable restriction both have norm at most C exp(−α(t−s)) for every s≤t.
 
 **Problem.** Let V(t,s) be a strongly continuous evolution family on a complex Banach space with ‖V(t,s)‖ ≤ M exp(ω(t−s)) for s ≤ t. It has an exponential dichotomy exactly when the generator of its evolution semigroup has no spectrum on the imaginary axis.
 
@@ -1608,35 +1572,17 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
-### Weyl–Hörmander symbol classes are intersections of geometrically adapted modulation spaces
-
-**Remember:** Fit the window to the local metric before measuring the symbol.
-
-*Makes the theorem clean to state or prove.* MSC 47G30 (Pseudodifferential operators), 35S05, 42C15. arXiv math.AP, math.FA. Level 4: research.
-
-**Definition.** A Weyl–Hörmander class S(M, g) contains the symbols whose derivatives are bounded by a weight M. Sizes are measured in a metric g on position and frequency space. A short-time Fourier transform pairs a function with a window shifted in position and frequency. The geometric version adapts the window to g at each point, and a modulation space bounds these coefficients in a weighted norm.
-
-**Problem.** Each class S(M, g) is an intersection of the new modulation spaces. Equivalently, a symbol is in S(M, g) exactly when its operator acts with controlled growth on the shifted windows.
-
-**How the definition helps.** The adapted windows turn the derivative bounds into a test on coefficient sizes, so the theorem can be stated as an equality of function spaces. Our own observation is that a window of fixed shape cannot follow a metric that changes from point to point. The paper still has to prove both inclusions.
-
-**Paper or page:** [Characterisation of the Weyl-Hörmander classes by time-frequency shifts](https://arxiv.org/abs/2112.14461v2). It says: “We define new modulation spaces and achieve the characterisation of the Weyl-Hörmander classes by showing that they are intersections of such modulation spaces suitable for the time-frequency characterisation.”
-
-**Sources:**
-
-- [Stevan Pilipović, Bojan Prangoski, Characterisation of the Weyl-Hörmander classes by time-frequency shifts, arXiv:2112.14461 (2022)](https://arxiv.org/abs/2112.14461v2)
-
 ### Viewing PDHG and ADMM as proximal point steps gives one rate proof
 
-**Remember:** Change the weight, keep the same proof.
+**Remember:** The weighted step equals a saddle subgradient at the new point.
 
 *Makes the theorem clean to state or prove.* MSC 47J25 (Iterative procedures involving nonlinear operators), 90C33, 90C47. arXiv math.OC. Level 4: research.
 
-**Definition.** A saddle problem asks for min over x and max over λ of a convex-concave function L. A generic update picks the next point z so that the monotone operator of L at z balances P times the step to z. Here P is a fixed positive semidefinite matrix. The proximal point method uses P = I/η, and PDHG and ADMM use other choices of P.
+**Definition.** For a convex-concave saddle function L, put F(x,λ)=∂ₓL(x,λ) × ∂λ(−L)(x,λ), using convex subdifferentials. Given a fixed positive semidefinite matrix P, choose each iterate zᵢ=(xᵢ,λᵢ) to satisfy P(zᵢ₋₁−zᵢ)∈F(zᵢ). Write ‖u‖²<sub>P</sub>=⟨u,Pu⟩.
 
-**Problem.** The proximal point method (PPM), primal-dual hybrid gradient (PDHG) and the alternating direction method of multipliers (ADMM) share one bound. For the average of the first k iterates, the saddle gap is at most the squared P-distance from the start, divided by 2k.
+**Problem.** Consider proximal point, primal-dual hybrid gradient, and alternating direction method of multipliers iterations in this form. Let (x̄,λ̄) average the first k updated pairs. For every feasible z=(x,λ), the saddle gap L(x̄,λ)−L(x,λ̄) is at most ‖z₀−z‖²<sub>P</sub>/(2k).
 
-**How the definition helps.** Once each method is written as the same generic update with its own matrix P, one short proof covers all three. Monotonicity bounds each step's gap by a difference of consecutive squared P-distances, by our own explanation. Summed over k steps, these differences cancel except at the ends. Showing that each algorithm is an instance of the generic update is the remaining work, and the paper does it in separate lemmas.
+**How the definition helps.** The two subgradient inequalities bound each gap by ⟨P(zᵢ₋₁−zᵢ),zᵢ−z⟩. In our own calculation, twice this product is ‖zᵢ₋₁−z‖²<sub>P</sub>−‖zᵢ−z‖²<sub>P</sub>−‖zᵢ−zᵢ₋₁‖²<sub>P</sub>. Summing telescopes, and convexity and concavity bound the averaged gap by the mean gap. The paper identifies the update and metric for each method.
 
 **Paper or page:** [On a Unified and Simplified Proof for the Ergodic Convergence Rates of PPM, PDHG and ADMM](https://arxiv.org/abs/2305.02165v2), [On a Unified and Simplified Proof for the Ergodic Convergence Rates of PPM, PDHG and ADMM](https://arxiv.org/abs/2305.02165v2), [On a Unified and Simplified Proof for the Ergodic Convergence Rates of PPM, PDHG and ADMM](https://arxiv.org/abs/2305.02165v2). It says: “This viewpoint shows the equivalence of these three algorithms upto a norm change, and it leads to a four-line simple proof of their 𝒪(1/k) ergodic rates.”
 
@@ -1646,15 +1592,15 @@
 
 ### An operator-space spectral radius detects joint similarity to strict contractions
 
-**Remember:** Choose the norm from the operator space, and Rota's theorem holds jointly.
+**Remember:** Use one similarity for every entry and take the infimum of the tuple norms.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 47L25 (Operator spaces (= matricially normed spaces)), 47A13, 46L07. arXiv math.OA, math.FA. Level 4: research.
+*True by definition. Confidence: medium.* MSC 47L25 (Operator spaces (= matricially normed spaces)), 47A13, 46L07. arXiv math.OA, math.FA. Level 4: research.
 
-**Definition.** An operator space structure ℰ on ℂᵈ chooses a norm on d-tuples of n × n matrices for every n, in a compatible way. Shalit and Shamovich attach to ℰ a spectral radius ρℰ of a d-tuple X. Corollary 2.13 shows that ρℰ(X) is the infimum of ‖S⁻¹XS‖ over all invertible matrices S. For the minimal structure, the norm of a tuple is the largest norm of its entries.
+**Definition.** For a matrix tuple X=(X₁,…,X<sub>d</sub>) with operator space norm ℰ, use the similarity formula ρℰ(X)=inf<sub>S</sub> ‖(S⁻¹X₁S,…,S⁻¹X<sub>dS</sub>)‖ℰ. The infimum ranges over every invertible matrix S of the same size as the entries of X.
 
 **Problem.** A d-tuple X of matrices is jointly similar to a tuple of strict contractions in the norm of ℰ exactly when ρℰ(X) &lt; 1. This extends Rota's theorem, which says that one matrix is similar to a strict contraction exactly when its spectral radius is below 1.
 
-**How the definition helps.** The new spectral radius is tied to the norm of ℰ, so the condition ρℰ(X) &lt; 1 matches the similarity question exactly. The abstract says that the Rota–Strang joint spectral radius differs and lacks this property. For the row operator space, the result recovers the known condition for similarity to a strict row contraction.
+**How the definition helps.** In our own deduction, an infimum below one gives some simultaneous conjugate with norm below one. Conversely, such a conjugate bounds the infimum by its norm. Corollary 2.13 identifies the similarity formula with the authors’ spectral radius.
 
 **Paper or page:** [A spectral radius for matrices over an operator space](https://arxiv.org/abs/2501.01325), [A spectral radius for matrices over an operator space](https://arxiv.org/abs/2501.01325). It says: “related to the joint spectral radius considered by Rota and Strang but differs from it and has the advantage that ρℰ(X) &lt; 1 if and only if X is simultaneously similar to a tuple of strict contractions.”
 

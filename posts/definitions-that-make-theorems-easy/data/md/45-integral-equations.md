@@ -4,7 +4,7 @@
 
 *Rules out counterexamples.* MSC 45D05 (Volterra integral equations). arXiv math.CA, math.AP. Level 2: later undergraduate.
 
-**Definition.** A linear Volterra equation of the second kind writes u(t) as a known function plus λ times the integral of K(t,s)u(s) from 0 to t. The kernel K supplies the integration weights. A Fredholm equation uses fixed integration limits.
+**Definition.** A linear Volterra equation of the second kind on \[0,T\] has the form u(t) = f(t) + λ∫₀ᵗ K(t,s)u(s) ds. The given kernel K weights only times s ≤ t.
 
 **Problem.** On \[0,T\], assume the known function is continuous and K is continuous for 0 ≤ s ≤ t ≤ T. Each scalar λ gives exactly one continuous solution.
 
@@ -22,7 +22,7 @@
 
 *True by definition.* MSC 45B05 (Fredholm integral equations). arXiv math.CA. Level 3: graduate.
 
-**Definition.** Define the Fredholm determinant by its integral series in λ. Its coefficient of degree n integrates the determinant of the matrix with entries K(xᵢ,xⱼ), divided by n!. A kernel has separated rank at most r if it sums at most r products a(x)b(y).
+**Definition.** A kernel K on J×J has separated rank at most r if K(x,y) = ∑ⱼ₌₁ʳ aⱼ(x)bⱼ(y) throughout J×J. In the Fredholm determinant for I−λK, the coefficient of λⁿ is (−1)ⁿ/n! times the integral of det\[K(xᵢ,xⱼ)\] over Jⁿ.
 
 **Problem.** For a continuous separated kernel of rank at most r on a compact interval, the Fredholm determinant is a polynomial of degree at most r.
 
@@ -44,7 +44,7 @@
 
 **Problem.** On a closed bounded interval, expand a continuous symmetric positive definite kernel in eigenfunctions of its integral operator. The series converges absolutely and uniformly to the kernel.
 
-**How the definition helps.** Positivity makes every diagonal term a nonnegative eigenvalue times a square. In our own proof outline, the main step identifies the sum of these terms with the original diagonal. Continuity then gives uniform convergence there. Cauchy–Schwarz bounds the absolute tails everywhere by the diagonal tails. The cited indefinite kernel fails even to converge pointwise.
+**How the definition helps.** Positivity makes the diagonal partial sums increase, while the cited indefinite kernel can fail to converge even pointwise. Mercer’s diagonal identity gives their pointwise limit K(x,x) (our own outline). Dini’s theorem gives uniform convergence on the compact interval. Cauchy–Schwarz bounds each absolute off-diagonal tail by the geometric mean of the two diagonal tails.
 
 **Paper or page:** [Extending Mercer's expansion to indefinite and asymmetric kernels](https://arxiv.org/abs/2409.16453v2). It says: “there exists a continuous symmetric indefinite kernel Kₚₜ: \[a, b\] × \[a, b\] → ℝ with a Mercer's expansion that does not converge pointwise.”
 
@@ -60,9 +60,9 @@
 
 **Definition.** Write j ∗ u for the integral of j(t − s)u(s) from 0 to t. In the equation u + j ∗ u = g, the known function g may vary. Define one resolvent kernel r by r + j ∗ r = j.
 
-**Problem.** Assume j, r and g are integrable on every interval \[0,T\]. Then g − r ∗ g solves the equation and is unique up to equality almost everywhere.
+**Problem.** Assume j, r and g are integrable on every interval \[0,T\]. Then g − r ∗ g is the unique locally integrable solution up to equality almost everywhere.
 
-**How the definition helps.** The equation for r makes convolution by j and subtraction of convolution by r cancel in the composed rules (our own). Our own proof checks the composition in both orders by associativity. The work moves to proving that the resolvent exists and finding when it is integrable on the entire half-line (our own).
+**How the definition helps.** The identity r + j∗r = j cancels the extra terms when composing the two solution rules (our own). Associativity and commutativity of scalar convolution give the same cancellation in both orders. Thus subtracting convolution by r inverts addition of convolution by j.
 
 **Paper or page:** [Comparison between the Cauchy problem and the scattering problem for the Landau damping in the Vlasov-HMF equation](https://arxiv.org/abs/2103.15932v2). It says: “The solution f is then given by f(t) = g(t) − r ∗ g(t).”
 
@@ -78,7 +78,7 @@
 
 **Problem.** On the interior of a bounded interval, the derivative equals the limit of the squared-pole cutoff integral after subtracting 2f(x)/ε. Here ε is the length cut out on each side.
 
-**How the definition helps.** The derivative definition gives the squared-pole operator directly from the simple-pole operator. The work is to show agreement with the alternative cutoff definition. In our own calculation, differentiating the moving endpoints subtracts (f(x − ε) + f(x + ε))/ε. Smoothness lets us replace this by 2f(x)/ε with an error tending to zero. Our own check with f = 1 on \[−1,1\] gives finite part −2 at zero.
+**How the definition helps.** Differentiating the cutoff integral gives the squared-pole integral minus (f(x−ε)+f(x+ε))/ε from its moving endpoints (our own). Taylor expansion replaces this endpoint term by 2f(x)/ε with error O(ε). The omitted symmetric principal value equals ∫₀ᵋ (f(x+s)−f(x−s))/s ds. Its derivative is locally O(ε) by smoothness, justifying differentiation of the limit.
 
 **Wikipedia:** [Hadamard regularization](https://en.wikipedia.org/wiki/Hadamard_regularization). It says: “exists, then it may be differentiated with respect to x to obtain the Hadamard finite part integral as follows:”
 
@@ -90,7 +90,7 @@
 
 *True by definition.* MSC 45E05 (Integral equations with kernels of Cauchy type), 44A15. arXiv math.FA. Level 3: graduate.
 
-**Definition.** Define the Hilbert transform H on square-integrable functions by multiplying Fourier coefficients by −i at positive frequencies and i at negative frequencies. The usual integral definition removes a symmetric interval around the singularity before taking a limit.
+**Definition.** For f ∈ L²(ℝ), define Hf by multiplying its Fourier transform by −i on positive frequencies and by i on negative frequencies. The multiplier value at zero does not affect the L² function.
 
 **Problem.** Take complex constants a and b and consider aI + bH on square-integrable functions on the line. It is invertible exactly when a − ib and a + ib are both nonzero.
 
@@ -108,7 +108,7 @@
 
 **Definition.** On (−1,1), use densities p(t)/√(1 − t²) with polynomial numerator p. Record both the integral of the density and its finite Hilbert transform. The transform integrates the density against 1/(x − t), taking the limit after omitting equal lengths on both sides of x.
 
-**Problem.** Fix an integer n ≥ 0 and a real mass m. Let g be a polynomial of degree at most n. Then exactly one polynomial p of degree at most n + 1 gives a density p(t)/√(1 − t²) with mass m and finite Hilbert transform g.
+**Problem.** Fix an integer n ≥ 0, a real mass m, and a real polynomial g of degree at most n. Exactly one polynomial p of degree at most n+1 gives a density p(t)/√(1−t²) with mass m and finite Hilbert transform g.
 
 **How the definition helps.** Recording the mass determines the constant numerator that the transform cannot detect, since the transform annihilates 1/√(1 − t²). In our own calculation, a monic numerator of degree d ≥ 1 transforms to a polynomial of degree d − 1 with leading coefficient −π. So coefficient comparison determines all nonconstant terms, and the mass fixes the constant, which changes the mass by π times its value.
 
@@ -158,7 +158,7 @@
 
 **Problem.** Assume f and G are continuous and \|G(t,s,v) − G(t,s,w)\| ≤ L\|v − w\| whenever 0 ≤ s ≤ t ≤ T. For a &gt; L, iteration from any continuous input converges geometrically to the unique fixed point.
 
-**How the definition helps.** The weight puts the decaying factor exp(−a(t − s)) into the error integral. In our own estimate, integrating this factor gives at most 1/a. Thus each iteration shrinks the error by a factor at most L/a. The weighted norm is complete because it is equivalent to the supremum norm on this bounded interval. Banach’s fixed-point theorem now gives convergence.
+**How the definition helps.** The exponential weight inserts exp(−a(t−s)) into the error integral (our own). Its integral over 0 ≤ s ≤ t is at most 1/a, giving contraction factor L/a. The weighted norm is equivalent to the complete supremum norm. Banach’s fixed-point theorem gives uniqueness and geometric convergence.
 
 **Wikipedia:** [Banach fixed-point theorem](https://en.wikipedia.org/wiki/Banach_fixed-point_theorem). It says: “the most difficult part is typically to define X properly so that T(X) ⊆ X.”
 
@@ -192,7 +192,7 @@
 
 **Problem.** The fixed points correspond exactly to the solutions of a finite system of cubic equations. For positive fixed points, retain the vectors whose reconstructed functions are positive.
 
-**How the definition helps.** The kernel forces every fixed point into the span of the functions aⱼ. In our own derivation, substitute the coordinate sum for u and equate coefficients. Each coefficient must equal the integral of bⱼ times the cube of that sum. Conversely these equations reconstruct a fixed point. The remaining work is solving the cubic system.
+**How the definition helps.** The separated kernel puts every fixed point in the span of the independent output functions aⱼ (our own). Writing u = ∑ cᵢaᵢ gives the cubic equations cⱼ = ∫₀¹ bⱼ(y)(∑ cᵢaᵢ(y))³ dy. Conversely, each solution reconstructs a fixed point, whose coordinates are unique by independence.
 
 **Paper or page:** [On positive fixed points of operator of Hammerstein type with degenerate kernel and Gibbs Measures](https://arxiv.org/abs/2306.08496v1). It says: “The Hammerstein’s operator H₃ has a nontrivial positive fixed point iff the cubic operator P has a nontrivial positive fixed point,”
 
@@ -208,7 +208,7 @@
 
 **Definition.** On a real Hilbert space, call F monotone if ⟨F(u) − F(w),u − w⟩ ≥ 0 for every u,w. For maps F and K on this space, introduce v = F(u). Replace u + K(F(u)) = 0 by the zero equation for A(u,v) = (F(u) − v,K(v) + u).
 
-**Problem.** If F and K are monotone, then A is monotone for the sum of the coordinate inner products. If ⟨F(u) − F(w), u − w⟩ ≥ η₁‖u − w‖² and the same holds for K with η₂ &gt; 0, then A satisfies this bound with min{η₁, η₂}.
+**Problem.** Monotone F and K give a monotone A for the product inner product. Suppose each map M ∈ {F,K} satisfies ⟨M(u)−M(w),u−w⟩ ≥ η<sub>M</sub>‖u−w‖² for every u,w, with η<sub>M</sub> &gt; 0. Then A satisfies the same bound on the product space with constant min{η<sub>F</sub>,η<sub>K</sub>}.
 
 **How the definition helps.** The opposite signs cancel the two cross terms in the pairing for A. In our own calculation, only the original pairings for F and K remain. Their lower bounds add. The remaining task is to solve the product equation using these separate bounds.
 
@@ -242,11 +242,11 @@
 
 *Rules out counterexamples.* MSC 45P05 (Integral operators), 47B10. arXiv math.FA. Level 3: graduate.
 
-**Definition.** Represent an integral operator on L²(\[a,b\]) by a continuous kernel K when one exists. Two continuous kernels that agree almost everywhere agree everywhere. Call an operator trace class if its singular values have finite sum.
+**Definition.** A continuous kernel for T on L²(\[a,b\]) is a continuous K on \[a,b\]² satisfying (Tf)(x) = ∫ₐᵇ K(x,y)f(y) dy almost everywhere for every f. The operator is trace class if the sum of its singular values is finite.
 
 **Problem.** For a trace-class integral operator with a continuous kernel, the trace equals ∫ₐᵇ K(x,x) dx.
 
-**How the definition helps.** Continuity makes the diagonal values recoverable from averages on small squares. Our own counterexample takes K equal to one on the diagonal and zero elsewhere. Its operator has trace zero, but its diagonal integral equals b − a. Our own proof uses projections onto functions constant on short intervals. Their traces converge to the operator trace, while the square averages converge to the diagonal values.
+**How the definition helps.** Continuity makes the diagonal integral a limit of traces of compressions to functions constant on small intervals (our own). Uniform continuity controls the difference between each square average and its diagonal values. The projections approach the identity strongly, so the compressed trace-class operators converge in trace norm. A kernel equal to one only on the diagonal represents zero but has diagonal integral b−a.
 
 **Paper or page:** [Numerical Fredholm determinants for matrix-valued kernels on the real line](https://arxiv.org/abs/2507.22875v1). It says: “Then Tr(𝒦) = ∫ₐᵇ K(x,x) dx.”
 
@@ -258,7 +258,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 45P05 (Integral operators). arXiv math.FA. Level 3: graduate.
 
-**Definition.** Let K(x,y) ≥ 0 and choose strictly positive weights p(x) and q(y). Require ∫K(x,y)q(y)dy ≤ Ap(x) and ∫K(x,y)p(x)dx ≤ Bq(y) almost everywhere, with finite constants A and B.
+**Definition.** For a nonnegative measurable kernel K, Schur weights are strictly positive finite measurable functions p and q satisfying two bounds for finite A,B ≥ 0. Require ∫K(x,y)q(y)dy ≤ Ap(x) for almost every x and ∫K(x,y)p(x)dx ≤ Bq(y) for almost every y.
 
 **Problem.** Integrating K(x,y)f(y) in y defines an operator of norm at most √(AB) on square-integrable functions. For K(x,y) = 1/(x + y) on the positive half-line, choose p(x) = 1/√x and q(y) = 1/√y.
 
@@ -296,7 +296,7 @@
 
 **Problem.** The regularized solution exists uniquely for any data. Its change is at most 1/(2√λ) times the norm of the data change.
 
-**How the definition helps.** The penalty adds λI to K\*K, where K\* denotes the adjoint. This gives a positive lower bound and makes the equation for the minimizer uniquely solvable. In our own stability proof, a singular value σ contributes a gain of σ/(σ² + λ). The spectral theorem bounds the full gain by the supremum of this expression, namely 1/(2√λ).
+**How the definition helps.** Adding λI to K\*K makes the normal operator invertible, even for K = 0, where unregularized minimizers are arbitrary. In our own proof, the normal equation for data difference g and solution difference v gives ‖Kv‖² + λ‖v‖² = Re⟨Kv,g⟩. Completing the square gives λ‖v‖² ≤ ‖g‖²/4.
 
 **Paper or page:** [Moore-Penrose inverse and applications to linear equations](https://arxiv.org/abs/2110.01332v3). It says: “has a unique global minimizer”
 
@@ -308,7 +308,7 @@
 
 *Rules out counterexamples.* MSC 45E10 (Integral equations of the convolution type (Abel, Picard, Toeplitz and Wiener-Hopf type)), 45D05. arXiv math.FA. Level 4: research.
 
-**Definition.** Fix finite a &lt; b and 0 &lt; β &lt; 1. For a ≤ p ≤ b, integrate K(p,t)f(t)/(p − t)ᵝ from a to p. Require K and ∂K/∂p to be continuous for a ≤ t ≤ p ≤ b. Require K(p,p) ≠ 0 for every p.
+**Definition.** Fix finite a &lt; b and 0 &lt; β &lt; 1. Require K and its first partial derivative in p to be continuous on a ≤ t ≤ p ≤ b, with K(p,p) always nonzero. The Abel operator integrates K(p,t)f(t)/(p − t)ᵝ from a to p for almost every p.
 
 **Problem.** These integrals determine any square-integrable solution up to equality almost everywhere.
 
@@ -326,11 +326,11 @@
 
 *True by definition.* MSC 45L05 (Theoretical approximation of solutions to integral equations), 45E10, 65R20. arXiv math.NA. Level 4: research.
 
-**Definition.** Take distinct positive nodes x₀,…,xₙ and a scalar transform K nonzero at each node. Start divided differences with the values K(xⱼ). For each longer list, subtract the value omitting the last node from the value omitting the first, then divide by the endpoint spacing. In the lower triangular matrix, entry (i,j) uses nodes xⱼ through xᵢ, with negative sign for even i − j and positive sign otherwise.
+**Definition.** Take distinct positive nodes x₀,…,xₙ with K nonzero at each node. Start with D(j,j) = K(xⱼ) and set D(i,j) = (D(i,j+1) − D(i−1,j))/(xᵢ − xⱼ) for j &lt; i. Define A(K) as lower triangular with entries (−1)ⁱ⁻ʲ⁺¹D(i,j) for j ≤ i.
 
 **Problem.** The lower triangular matrix for 1/K is the inverse of the matrix for K.
 
-**How the definition helps.** Divided differences encode the product rule needed to invert the weights without solving one row at a time. In our own sign check, write A(K) for the signed matrix. The divided-difference product rule gives A(K)A(L) = −A(KL). Since A(1) = −I, taking L = 1/K gives I. The proof depends on the product rule, which sums over every possible split of a node list.
+**How the definition helps.** The divided-difference product rule sums over the same splits as triangular matrix multiplication. Our own sign check gives A(K)A(L) = −A(KL). Taking L = 1/K gives the identity because A(1) = −I.
 
 **Paper or page:** [Generalized convolution quadrature based on the trapezoidal rule](https://arxiv.org/abs/2305.11134v1). It says: “the relation φₙ = ∑ⱼ₌₀ⁿ (−1)ⁿ⁻ʲ⁺¹ gⱼ ⟨xⱼ,…,xₙ⟩ 𝒦 can be inverted”
 

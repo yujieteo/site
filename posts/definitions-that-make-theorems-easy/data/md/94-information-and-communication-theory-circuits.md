@@ -18,7 +18,7 @@
 
 **Remember:** Extend to even weight, so a distance of three becomes four.
 
-*Rules out counterexamples.* MSC 94B05 (Linear codes (general theory)). arXiv cs.IT. Level 1: early undergraduate.
+*True by definition.* MSC 94B05 (Linear codes (general theory)). arXiv cs.IT. Level 1: early undergraduate.
 
 **Definition.** In a binary Hamming code the smallest number of positions separating two codewords is three. Its extension appends one bit to make the number of ones even.
 
@@ -36,7 +36,7 @@
 
 **Remember:** Each flip toggles parity, and two toggles cancel.
 
-*Rules out counterexamples.* MSC 94B05 (Linear codes (general theory)). arXiv cs.IT. Level 1: early undergraduate.
+*True by definition.* MSC 94B05 (Linear codes (general theory)). arXiv cs.IT. Level 1: early undergraduate.
 
 **Definition.** Define an even parity code by appending one bit to make the sum of all bits even. Check a received word by adding all its bits modulo two.
 
@@ -108,7 +108,7 @@
 
 *True by definition.* MSC 94A17 (Measures of information, entropy). arXiv math.IT, cs.IT. Level 2: later undergraduate.
 
-**Definition.** The conditional entropy H(Y\|X) is the average, over the values x of X, of the entropy of Y given X = x. Equivalently, it is the expectation of −log p(y\|x).
+**Definition.** For discrete X and Y, H(Y\|X) is the mean of H(Y\|X = x), with each positive-probability x weighted by its probability.
 
 **Problem.** The joint entropy splits as H(X,Y) = H(X) + H(Y\|X). For many variables, the joint entropy is the sum of each entropy conditioned on the ones before.
 
@@ -142,7 +142,7 @@
 
 **Remember:** Split the joint probability ratio into a marginal ratio and a conditional ratio.
 
-*Makes the theorem clean to state or prove.* MSC 94A17 (Measures of information, entropy). arXiv cs.IT. Level 2: later undergraduate.
+*True by definition.* MSC 94A17 (Measures of information, entropy). arXiv cs.IT. Level 2: later undergraduate.
 
 **Definition.** For positive probability laws p and q on a finite set, relative entropy averages log₂(p/q) under p. Conditional relative entropy compares two joint laws of X and Y. It averages the relative entropies between the conditional laws of Y, weighting each X by its probability under the first law.
 
@@ -176,7 +176,7 @@
 
 *True by definition.* MSC 94A17 (Measures of information, entropy). arXiv cs.IT. Level 2: later undergraduate.
 
-**Definition.** For finite random variables, mutual information measures the drop in the entropy of X after observing Y. Conditional mutual information measures the further drop after observing Z as well.
+**Definition.** For finite variables, I(X;Y) = H(X) − H(X\|Y). Conditional mutual information is I(X;Z\|Y) = H(X\|Y) − H(X\|Y,Z).
 
 **Problem.** Information about X from the pair (Y, Z) equals information from Y plus information from Z given Y.
 
@@ -208,11 +208,11 @@
 
 *True by definition. Confidence: medium.* MSC 94A17 (Measures of information, entropy). arXiv math.IT, cs.IT. Level 2: later undergraduate.
 
-**Definition.** The information content, or surprisal, of an event with probability p is I(p) = −log p. Entropy is the expected information content of a random outcome.
+**Definition.** For an event of probability 0 &lt; p ≤ 1, its surprisal is I(p) = −log p. Discrete entropy is the expected surprisal of the observed outcome.
 
 **Problem.** The information from two independent events is the sum of their information, and the entropy of independent random variables is additive. Conversely, every twice continuously differentiable decreasing I with I(1) = 0 and this additivity is a constant multiple of −log p.
 
-**How the definition helps.** Independent probabilities multiply, and the logarithm turns products into sums, so additivity holds by definition. The page shows that the listed properties force I(u) = k log u with k &lt; 0. So the definition is the only choice, and k only fixes the unit, such as bits or nats.
+**How the definition helps.** Taking logs of independent probabilities gives additive surprisal, and averaging gives additive entropy (our own). Conversely, differentiate I(uv) = I(u) + I(v) in v at one to obtain uI′(u) = I′(1) (our own). Integration using I(1) = 0 gives I(u) = I′(1) log u, with the natural logarithm (our own).
 
 **Wikipedia:** [Entropy (information theory)](https://en.wikipedia.org/wiki/Entropy_%28information_theory%29). It says: “In fact, the only possible values of I are I(u) = k log u for k&lt;0.”
 
@@ -230,7 +230,7 @@
 
 **Problem.** The uncertainty remaining about X given X̃ is at most h(p) + p log₂(M − 1) bits. Here p is the error probability, and h(p) is the entropy of a bit that equals one with probability p.
 
-**How the definition helps.** The flag leaves only one possible message after a correct guess and at most M − 1 after an error. Given both the guess and the message, the flag is known. The entropy chain rule therefore splits the remaining uncertainty into uncertainty about the flag and uncertainty after learning its value. In our own wording, the first term is at most h(p), since conditioning cannot increase average uncertainty. The second averages to at most p log₂(M − 1).
+**How the definition helps.** The flag is determined by X and X̃, so the chain rule gives H(X\|X̃) = H(E\|X̃) + H(X\|E,X̃). Conditioning bounds the first term by h(p) (our own). A correct guess determines X, while an error leaves at most M − 1 possibilities. Averaging gives at most p log₂(M − 1) for the second term (our own).
 
 **Wikipedia:** [Fano's inequality](https://en.wikipedia.org/wiki/Fano%27s_inequality). It says: “Consider H(E,X\|X̃). We can use the chain rule for entropies to expand this in two different ways”
 
@@ -274,9 +274,9 @@
 
 *True by definition.* MSC 94A17 (Measures of information, entropy), 62B10. arXiv math.IT, cs.IT. Level 2: later undergraduate.
 
-**Definition.** The mutual information I(X;Y) is the relative entropy (Kullback–Leibler divergence) of the joint distribution of X and Y from the product of their marginal distributions. Relative entropy measures how far one distribution is from another, and it is never negative.
+**Definition.** Mutual information is the relative entropy of the joint law from the product of its marginals. For discrete variables it averages log(p(x,y)/(p(x)p(y))) over pairs with positive joint probability.
 
-**Problem.** Mutual information is nonnegative, and it is zero exactly when X and Y are independent. As a result, H(X) ≥ H(X\|Y): on average, knowing Y never increases the uncertainty about X.
+**Problem.** Mutual information is nonnegative and vanishes exactly at independence. For discrete variables with finite H(X), this gives H(X) ≥ H(X\|Y).
 
 **How the definition helps.** Written as a relative entropy, mutual information inherits nonnegativity and its equality case from Gibbs' inequality, so both facts come for free. The page says that I(X;Y) is zero precisely when the joint distribution equals the product of the marginals. The identity I(X;Y) = H(X) − H(X\|Y) then turns nonnegativity into the statement that conditioning reduces entropy. What stays hard is Gibbs' inequality itself, which needs Jensen's inequality for the convex function −log.
 
@@ -292,11 +292,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 94A17 (Measures of information, entropy), 62B10. arXiv cs.IT. Level 2: later undergraduate.
 
-**Definition.** Mutual information I(X;Y) is the relative entropy (Kullback–Leibler divergence) of the joint distribution of X and Y from the product of their marginal distributions. Relative entropy measures how far one probability distribution is from another.
+**Definition.** Mutual information is the relative entropy of the joint law from the product of its marginals. This averages the log density ratio under the joint law and equals infinity if absolute continuity fails.
 
-**Problem.** For continuous variables, mutual information is the limit of discrete mutual information over finer and finer partitions, and it is unchanged by homeomorphisms of each variable. Differential entropy is not invariant: a change of units shifts it, and it can be negative.
+**Problem.** For real random variables, discrete mutual information converges to mutual information along refining finite partitions generating each Borel σ-algebra. Separate homeomorphisms preserve mutual information. Differential entropy, when finite, shifts under rescaling and can be negative.
 
-**How the definition helps.** Mutual information compares two distributions, so it does not depend on how you measure each variable. Differential entropy, the naive analogue of Shannon entropy, shifts by log 1000 when metres become millimetres. So, in our own words, theorems such as channel capacity for continuous channels can be stated with mutual information.
+**How the definition helps.** The relative entropy approximation theorem gives the partition limit, and homeomorphisms transport corresponding partitions bijectively (our own). For a density, rescaling by a positive factor a adds log a to differential entropy (our own). A uniform law on an interval shorter than one has negative differential entropy (our own).
 
 **Wikipedia:** [Differential entropy](https://en.wikipedia.org/wiki/Differential_entropy), [Kullback–Leibler divergence](https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence). It says: “Unlike the discrete analog, the differential entropy has an offset that depends on the units used to measure X.”
 
@@ -330,7 +330,7 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 94A17 (Measures of information, entropy). arXiv math.IT, cs.IT. Level 2: later undergraduate.
 
-**Definition.** The Shannon entropy of a distribution p on a finite set is H = −Σ p(x) log p(x). When p(x) = 0, the term 0 log 0 is taken to be 0, because p log p goes to 0 as p goes to 0.
+**Definition.** For a law p on a finite set, Shannon entropy is H(p) = −∑ₓ p(x) log p(x). Assign zero to each summand with p(x) = 0.
 
 **Problem.** With the convention, entropy is a continuous function on the whole set of probability distributions, including its boundary. Also, adding outcomes of probability zero does not change the entropy.
 
@@ -366,7 +366,7 @@
 
 **Problem.** The probability of T under P equals its probability under Q times 2 raised to −nD. Here D is the sum of Q(s) log₂(Q(s)/P(s)) over symbols s with positive frequency.
 
-**How the definition helps.** Grouping by frequency makes the probability ratio constant throughout each group. Our own calculation compares this with adding the probability of every word separately. A word of type Q contains nQ(s) copies of symbol s. Independence makes its log probability ratio under P versus Q equal to −nD. The common factor therefore comes outside the sum over words.
+**How the definition helps.** All words of type Q have the same probability ratio under P and Q (our own). Each contains nQ(s) copies of symbol s, so independence gives log₂(P(word)/Q(word)) = −nD (our own). Summing over T preserves that common factor (our own).
 
 **Wikipedia:** [Method of types](https://en.wikipedia.org/wiki/Method_of_types). It says: “The sets of sequences having empirical distribution Q, are called the type classes”
 
@@ -374,7 +374,7 @@
 
 ### Defined by mutual information, channel capacity adds over independent channels
 
-**Remember:** Two independent channels together carry exactly the sum of their capacities.
+**Remember:** Maximize mutual information over input distributions.
 
 *True by definition.* MSC 94A24 (Coding theorems (Shannon theory)), 94A40. arXiv math.IT, cs.IT. Level 2: later undergraduate.
 
@@ -382,7 +382,7 @@
 
 **Problem.** For two independent channels used side by side, the capacity of the product channel equals the sum of the two capacities.
 
-**How the definition helps.** The formula turns capacity into an optimization of mutual information, which splits over independent parts. Independent inputs give one inequality. For the other, the mutual information of the joint output of the product channel is at most the sum of the two. With the operational definition, as a best rate of reliable codes, the same fact would need a coding argument (our own).
+**How the definition helps.** Independent input laws give additive mutual information, hence the lower bound after taking suprema (our own). For arbitrary inputs, the chain rule and data processing give I(X₁,X₂;Y₁,Y₂) ≤ I(X₁;Y₁) + I(X₂;Y₂) for the product channel (our own). Each term is bounded by its channel capacity (our own).
 
 **Wikipedia:** [Channel capacity](https://en.wikipedia.org/wiki/Channel_capacity). It says: “Channel capacity is additive over independent channels. It means that using two independent channels in a combined manner provides the same theoretical capacity as using them independently.”
 
@@ -410,15 +410,15 @@
 
 ### Arithmetic codes as grid intervals stay within two bits of entropy
 
-**Remember:** A grid cell half as wide as the interval always fits.
+**Remember:** Fit a whole binary grid cell inside each block’s probability interval.
 
 *True by definition. Confidence: low.* MSC 94A29 (Source coding), 94A45. arXiv cs.IT. Level 2: later undergraduate.
 
-**Definition.** Give each source block of positive probability its own interval in \[0, 1), of length equal to the block's probability. Its codeword is the shortest binary word whose binary grid interval fits inside. The point description instead sends a single number inside the block's interval.
+**Definition.** Partition \[0,1) into half-open intervals, one per positive-probability block, each of length equal to its probability. Each binary word of length k represents the half-open dyadic interval of width 2⁻ᵏ starting at its binary fractional value. Choose any shortest word whose interval lies inside the block interval.
 
 **Problem.** For a finite source of fixed-length blocks, this code is a prefix code with expected length less than the block entropy plus two bits. In a prefix code no codeword begins another.
 
-**How the definition helps.** With codewords as grid intervals, the prefix property is just disjointness of intervals. A word begins another exactly when its grid interval contains the other's. A grid cell of width at most half the block interval always fits inside it. Its word is shorter than minus the logarithm of the probability, plus two. Averaging gives the bound. The work goes into showing that nested subdivision gives intervals of the right length, by the chain rule of probability. The proof is our own.
+**How the definition helps.** Disjoint block intervals give disjoint code intervals, excluding every prefix relation (our own). For block probability p, take k = ⌈−log₂ p⌉ + 1 (our own). Width 2⁻ᵏ ≤ p/2 ensures that the first grid cell starting inside the block interval fits entirely (our own). The shortest word therefore has length at most k &lt; −log₂ p + 2, giving the bound after averaging (our own).
 
 **Wikipedia:** [Arithmetic coding](https://en.wikipedia.org/wiki/Arithmetic_coding). It says: “Arithmetic coding achieves compression by subdividing the interval \[0, 1) into sub-intervals proportional to symbol probabilities.”
 
@@ -436,7 +436,7 @@
 
 **Problem.** The smallest fixed bit length for zero-error encoding of one source symbol is the Hartley entropy rounded up.
 
-**How the definition helps.** The definition counts the outcomes that the code must distinguish. Our own proof uses the fact that ℓ bits have exactly 2 to the power ℓ possible strings. Our own counterexample assigns probabilities 0.98, 0.01 and 0.01 to three symbols. Rounding Shannon entropy up gives one bit, which cannot encode all three. Our own comparison puts the work into finding the support, without estimating the individual probabilities.
+**How the definition helps.** Zero-error encoding requires a distinct bit string for every positive-probability outcome (our own). Exactly 2<sup>ℓ</sup> strings have length ℓ, so an assignment exists precisely when that count covers the support (our own). For three symbols of probabilities 0.98, 0.01 and 0.01, rounding Shannon entropy up gives only one bit (our own).
 
 **nLab:** [max-entropy](https://ncatlab.org/nlab/show/max-entropy). It says: “the logarithm of the number of outcomes with non-zero probability.”
 
@@ -448,11 +448,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 94A29 (Source coding), 94A24. arXiv cs.IT. Level 2: later undergraduate.
 
-**Definition.** Let H be the entropy of the source. The typical set is the set of length-n sequences x whose probability lies between 2 to the power −n(H+ε) and 2 to the power −n(H−ε).
+**Definition.** Fix a block length n, a tolerance ε &gt; 0 and a source with entropy H in bits. A positive-probability word x of length n is typical if \|−log₂ P(x)/n − H\| ≤ ε.
 
-**Problem.** Shannon's source coding theorem says that n independent symbols from a source of entropy H can be compressed into about nH bits with error probability tending to zero, and not into fewer.
+**Problem.** For independent identically distributed finite-alphabet symbols, fixed-length compression with vanishing block error is achievable at every rate above H bits per symbol. No rate below H permits vanishing block error.
 
-**How the definition helps.** The definition turns compression into counting. By the asymptotic equipartition property, the typical set has probability close to 1 and contains about 2 to the power nH sequences. So an index of the typical sequences takes about nH bits. You can code the other sequences crudely at little cost. For independent identically distributed symbols, the asymptotic equipartition property is just the weak law of large numbers. The harder step is to prove it for stationary ergodic sources (the Shannon–McMillan–Breiman theorem).
+**How the definition helps.** The weak law applied to symbol surprisals gives the typical set probability tending to one (our own). Each typical word has probability at least 2⁻ⁿ⁽ᴴ⁺ε⁾, so at most 2ⁿ⁽ᴴ⁺ε⁾ indices suffice (our own). At rate R &lt; H − ε, decoded typical words carry total probability at most 2ⁿᴿ2⁻ⁿ⁽ᴴ⁻ε⁾ (our own). Choosing ε smaller than the rate gap proves each claim (our own).
 
 **Wikipedia:** [Typical set](https://en.wikipedia.org/wiki/Typical_set), [Asymptotic equipartition property](https://en.wikipedia.org/wiki/Asymptotic_equipartition_property). It says: “it provides a theoretical means for compressing data, allowing us to represent almost all sequences Xⁿ using nH(X) bits on average, and, hence, justifying the use of entropy as a measure of information from a source.”
 
@@ -486,7 +486,7 @@
 
 **Problem.** The capacity of the binary erasure channel is 1 − p bits per use.
 
-**How the definition helps.** The marker splits the uncertainty calculation into a known bit and an erased bit. Our own derivation observes that seeing the marker leaves the original uncertainty, since erasure is independent of the input. Seeing a bit leaves zero uncertainty. The mean reduction is therefore 1 − p times the original uncertainty. A uniform bit has the largest uncertainty, one bit. The coding theorem identifies this information capacity with the highest rate achievable with arbitrarily small error over long blocks.
+**How the definition helps.** Observing a bit determines it, while observing the independent erasure marker leaves its original entropy H(X) (our own). Thus H(X\|Y) = pH(X) and I(X;Y) = (1 − p)H(X) (our own). A uniform input maximizes H(X) at one bit.
 
 **Wikipedia:** [Binary erasure channel](https://en.wikipedia.org/wiki/Binary_erasure_channel). It says: “The channel capacity of a BEC is 1−Pₑ, attained with a uniform distribution for X”
 
@@ -494,15 +494,15 @@
 
 ### McMillan's theorem lets prefix codes stand in for all decodable codes
 
-**Remember:** Restrict to prefix codes, because you lose nothing by it.
+**Remember:** A prefix tree can realize every uniquely decodable list of lengths.
 
 *Makes the theorem clean to state or prove.* MSC 94A45 (Prefix, length-variable, comma-free codes), 94A29. arXiv math.IT, cs.IT. Level 2: later undergraduate.
 
-**Definition.** A code is uniquely decodable when every string of code words splits into code words in only one way. A prefix code is a code in which no code word is the beginning of another one. Every prefix code is uniquely decodable.
+**Definition.** A code is uniquely decodable if every finite concatenation of codewords determines exactly one source sequence. A prefix code assigns distinct words to symbols and forbids any codeword from being a proper prefix of another.
 
 **Problem.** Take code word lengths ℓ₁, …, ℓₙ over an alphabet of size r. They belong to a uniquely decodable code if and only if the sum of r to the power −ℓᵢ is at most 1. The same lengths then belong to a prefix code.
 
-**How the definition helps.** Prefix codes are the leaves of a tree, so Kraft's inequality for them follows by counting leaves. McMillan's theorem extends the inequality to all uniquely decodable codes, so the narrower and simpler definition loses nothing. As a result, source coding results can be stated and proved with prefix codes alone. Prefix codes can also be decoded one word at a time, without waiting for later symbols (our own). What stays hard is McMillan's proof, which raises the Kraft sum to a high power and counts strings of each length.
+**How the definition helps.** McMillan’s inequality puts the lengths of every uniquely decodable code within Kraft’s bound. Kraft’s converse constructs a prefix tree with those lengths. Its leaves decode unambiguously, proving sufficiency (our own).
 
 **Wikipedia:** [Kraft–McMillan inequality](https://en.wikipedia.org/wiki/Kraft%E2%80%93McMillan_inequality). It says: “For every uniquely decodable code, there exists a prefix code with the same length distribution.”
 
@@ -550,11 +550,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 94A45 (Prefix, length-variable, comma-free codes), 94A29. arXiv cs.IT, math.IT. Level 2: later undergraduate.
 
-**Definition.** In a binary prefix code, no symbol’s bit string starts with another symbol’s entire bit string. Represent a string by a path from the root of a binary tree, taking the branch labeled by each bit. Symbols then occupy leaves, and path lengths give code lengths. Merge two sibling leaves by replacing them with a leaf carrying their combined probability.
+**Definition.** A binary prefix tree assigns symbols to distinct leaves and encodes each symbol by the edge labels along its root-to-leaf path. Merging sibling leaves replaces them by their parent with their combined probability.
 
 **Problem.** For finitely many positive symbol probabilities, Huffman’s repeated merging of the two smallest weights minimizes the mean binary prefix code length.
 
-**How the definition helps.** The tree makes merging two siblings change the mean length by exactly their combined probability. Our own proof starts with an optimal tree on at least two symbols. Every internal vertex has two children because removing a vertex with one child shortens some paths. Two deepest leaves share a parent. Swapping smaller probabilities onto deeper leaves never raises the mean length, so the two smallest probabilities can occupy those siblings. Their merged tree must be optimal since any improvement would also improve the original tree after splitting the leaf. Induction now proves the rule.
+**How the definition helps.** Splitting a merged leaf increases mean depth by exactly its combined probability (our own). An optimal tree has no unary nodes, so some deepest leaves are siblings (our own). Exchanging labels puts the two smallest weights there without increasing mean depth (our own). Any improvement after merging would improve the original tree after splitting, so induction proves optimality (our own).
 
 **Wikipedia:** [Huffman coding](https://en.wikipedia.org/wiki/Huffman_coding). It says: “equivalently, a tree with minimum weighted path length from the root”
 
@@ -584,7 +584,7 @@
 
 **Remember:** Adding a fixed message only rearranges the equally likely keys.
 
-*Rules out counterexamples.* MSC 94A60 (Cryptography). arXiv cs.CR, cs.IT. Level 2: later undergraduate.
+*True by definition.* MSC 94A60 (Cryptography). arXiv cs.CR, cs.IT. Level 2: later undergraduate.
 
 **Definition.** An additive pad encrypts a message by adding a key in a finite abelian group. The key is independent of the message. A one-time pad chooses the key uniformly and uses it once.
 
@@ -604,7 +604,7 @@
 
 *True by definition.* MSC 94A60 (Cryptography). arXiv cs.CR. Level 2: later undergraduate.
 
-**Definition.** In a finite cyclic group, fix an element g whose powers give the whole group. Define the discrete logarithm as the exponent class modulo the group size n, rather than as an unrestricted integer exponent.
+**Definition.** Fix a generator g of a finite cyclic group of order n. For every element a, its discrete logarithm to base g is the residue class of integers k satisfying gᵏ = a, modulo n.
 
 **Problem.** Every element has exactly one discrete logarithm class. The logarithm of a product is the sum of the logarithms modulo n.
 
@@ -620,7 +620,7 @@
 
 *True by definition.* MSC 94A60 (Cryptography), 68P25. arXiv cs.CR. Level 2: later undergraduate.
 
-**Definition.** To commit to a bit, the sender publishes a value computed from the bit and private randomness. Later the sender reveals information that lets the receiver verify the bit. Perfect hiding means both bits give the same distribution of public values. Perfect binding means no public value can be opened as both bits.
+**Definition.** In a bit commitment, the sender publishes a randomized value and later opens it by supplying evidence for the committed bit. Perfect hiding means the two bits induce identical distributions of public values. Perfect binding means no public value admits valid openings for both bits.
 
 **Problem.** Assume finitely many public values and perfect correctness, so every honest opening succeeds. Such a commitment cannot have both properties.
 
@@ -660,7 +660,7 @@
 
 **Problem.** In a perfectly secret scheme with finitely many values and exact decryption, the key entropy is at least the message entropy. This is Shannon's bound.
 
-**How the definition helps.** With the entropy definition the bound is a short chain. Secrecy leaves the full message entropy after the ciphertext is seen. Exact decryption leaves none once the key is also seen. So the key supplies all of the message entropy, and by the chain rule this is at most the key entropy. The work goes into proving that zero mutual information is the same as independence. The proof is our own; the quote states only the secrecy property of the one-time pad.
+**How the definition helps.** Perfect secrecy gives H(M\|C) = H(M), while exact decryption gives H(M\|C,K) = 0 (our own). Subtracting yields H(M) = I(M;K\|C) ≤ H(K\|C) ≤ H(K) (our own).
 
 **Wikipedia:** [One-time pad](https://en.wikipedia.org/wiki/One-time_pad). It says: “the ciphertext C gives absolutely no additional information about the plaintext.”
 
@@ -674,7 +674,7 @@
 
 *Rules out counterexamples.* MSC 94A62 (Authentication, digital signatures and secret sharing). arXiv cs.CR, math.IT. Level 2: later undergraduate.
 
-**Definition.** Choose a finite field with enough distinct nonzero points for all participants. Use the secret as the constant term of a polynomial of degree at most k − 1. Choose the other k − 1 coefficients independently and uniformly, independently of the secret. Each participant receives the polynomial’s value at their assigned point.
+**Definition.** Choose a finite field and assign distinct nonzero field elements to the participants. Form a polynomial of degree at most k − 1 with the secret as constant term and independent uniform coefficients otherwise, independent of the secret. Each share is the value at its participant’s point.
 
 **Problem.** For k ≥ 2, fewer than k shares give no information about the secret.
 
@@ -746,7 +746,7 @@
 
 **Problem.** Take a nonzero linear code with check matrix H. Its minimum distance equals the smallest number of linearly dependent columns of H.
 
-**How the definition helps.** With the kernel definition, a codeword is literally a list of coefficients of a dependence among the columns of H. So a codeword of weight w is a dependence among w columns, and conversely. For a linear code, the minimum distance is the smallest nonzero weight, since c − c′ is again a codeword. With only a generator matrix, one must first compute the check matrix as the space orthogonal to its rows. This comparison and the proof are our own.
+**How the definition helps.** A nonzero kernel vector gives a dependence on its support, so its weight bounds the smallest dependent set from above (our own). Conversely, a dependent set supplies a nonzero kernel vector supported within that set (our own). Thus the minima agree, and linearity identifies minimum nonzero weight with minimum distance (our own).
 
 **Wikipedia:** [Linear code](https://en.wikipedia.org/wiki/Linear_code). It says: “The distance d of a linear code C also equals the minimum number of linearly dependent columns of the check matrix H.”
 
@@ -780,7 +780,7 @@
 
 **Problem.** Choose a codeword uniformly. On any set of fewer positions than the dual distance, all patterns of field elements occur equally often.
 
-**How the definition helps.** The dual definition turns any missing pattern in a projection into a constraint on just those positions. Our own proof observes that a proper projected subspace has a nonzero vector orthogonal to it. Padding that vector with zeros gives a dual word with too few nonzero positions. The projection is therefore onto, and its fibers have equal size by linearity. This replaces the orthogonal-array definition, which asks us to count every pattern on each selection of positions.
+**How the definition helps.** A missing pattern makes the projected code a proper subspace, which has a nonzero orthogonal vector (our own). Padding that vector with zeros gives a dual word supported on fewer positions than the dual distance (our own). Thus the projection is onto, and its fibers have equal size by linearity (our own).
 
 **Wikipedia:** [Orthogonal array](https://en.wikipedia.org/wiki/Orthogonal_array). It says: “Then C⊥ (the orthogonal complement of the vector subspace C) is a (linear) OA(qⁿ⁻ᵐ, n, q, d − 1)”
 
@@ -792,7 +792,7 @@
 
 *True by definition.* MSC 94B05 (Linear codes (general theory)). arXiv math.IT. Level 2: later undergraduate.
 
-**Definition.** Take a linear code over a finite field with the ordinary dot product. Its hull consists of the codewords orthogonal to every codeword. Let G have a basis of codewords as its rows. Instead of constructing the dual separately, form the Gram matrix GGᵀ of dot products between basis rows.
+**Definition.** The hull of a linear code with the ordinary dot product consists of its codewords orthogonal to every codeword. For a matrix G whose rows form a code basis, GGᵀ is the Gram matrix of that basis.
 
 **Problem.** For a code of dimension k, the hull dimension equals k minus the rank of GGᵀ. The hull is zero exactly when GGᵀ is invertible.
 
@@ -808,11 +808,11 @@
 
 *True by definition. Confidence: medium.* MSC 94B05 (Linear codes (general theory)), 94B35. arXiv cs.IT. Level 2: later undergraduate.
 
-**Definition.** Define the binary Hamming code of order m by a check matrix. Its columns are all the nonzero binary columns of length m, each used once. The usual description is a systematic encoder, which keeps the message bits and appends parity bits.
+**Definition.** For a positive integer m, form a binary matrix H using each nonzero m-bit column exactly once. The binary Hamming code consists of the words x satisfying Hx = 0.
 
 **Problem.** Every binary word of length 2ᵐ − 1 is within one bit change of exactly one codeword. Codes with this property are called perfect.
 
-**How the definition helps.** With this check matrix, flipping bit j adds column j to the check result. So a word with check result zero is a codeword. A word with a nonzero result s becomes a codeword when we flip the one bit whose column is s. No other single flip works, because the columns are distinct and nonzero. The work goes into showing that this matrix gives the same code as the systematic encoder. Its columns contain an identity matrix, so the checks determine the parity bits. The proof and the comparison are our own.
+**How the definition helps.** Flipping bit j adds column j to Hx (our own). A zero result identifies a codeword, and any single flip then gives a nonzero result (our own). For a nonzero result, exactly one column equals that result, so exactly one flip makes it zero (our own).
 
 **Wikipedia:** [Hamming code](https://en.wikipedia.org/wiki/Hamming_code). It says: “The parity-check matrix H of a Hamming code is constructed by listing all columns of length m that are pair-wise independent.”
 
@@ -826,11 +826,11 @@
 
 *True by definition.* MSC 94B05 (Linear codes (general theory)), 94B65. arXiv math.IT. Level 2: later undergraduate.
 
-**Definition.** A linear code of length n and dimension k is maximum distance separable when its minimum distance attains the Singleton bound n − k + 1. Equivalently, every k columns of a generator matrix are linearly independent.
+**Definition.** A length-n linear code of dimension k is maximum distance separable if its minimum distance equals n − k + 1. Equivalently, every k columns of a generator matrix are linearly independent.
 
 **Problem.** If 0 &lt; k &lt; n, the dual of a maximum distance separable linear code is also maximum distance separable. The dual consists of all words orthogonal to the code.
 
-**How the definition helps.** The independent-column description turns a short dual word into a forbidden dependence. Our own argument starts with the usual distance definition. A nonzero combination of generator rows vanishes on k selected positions exactly when those k columns fail to span. Thus attaining the Singleton bound means every k columns are independent. A nonzero dual word gives a dependence among the columns at its nonzero positions, so it has at least k + 1 such positions. The dual has dimension n − k, so its Singleton bound gives the matching upper limit.
+**How the definition helps.** A nonzero dual word gives a dependence among the generator columns on its support (our own). Every set of at most k columns is independent, so this support has size at least k + 1 (our own). The dual has dimension n − k, so its Singleton bound is k + 1 (our own).
 
 **Wikipedia:** [Singleton bound](https://en.wikipedia.org/wiki/Singleton_bound). It says: “C⊥ is an MDS code.”
 
@@ -864,7 +864,7 @@
 
 **Problem.** A Reed–Solomon code of length n with 1 ≤ k ≤ n has minimum distance n − k + 1.
 
-**How the definition helps.** With the evaluation definition, two distinct codewords agree only where the difference polynomial vanishes, which is at most k − 1 points. A polynomial that vanishes at k − 1 of the points shows that the bound is attained. The work goes into proving that the two definitions agree when the points are the powers of a primitive field element. That proof uses the discrete Fourier transform over the field. The argument and the comparison are our own.
+**How the definition helps.** Distinct polynomials agree at most k − 1 times by the root bound, giving distance at least n − k + 1 (our own). For equality, compare zero with the product of the factors x − a over any k − 1 evaluation points a (our own). For k = 1 the empty product is one (our own).
 
 **Wikipedia:** [Reed–Solomon error correction](https://en.wikipedia.org/wiki/Reed%E2%80%93Solomon_error_correction). It says: “every codeword of the Reed–Solomon code is a sequence of function values of a polynomial of degree less than k.”
 
@@ -898,7 +898,7 @@
 
 **Problem.** Every cyclic code of length n over a finite field is generated by exactly one monic polynomial that divides xⁿ − 1. Monic means that the leading coefficient is one.
 
-**How the definition helps.** As an ideal, the code lifts to an ideal of the polynomial ring. The division algorithm shows that this ideal has one monic generator. This lifted ideal contains xⁿ − 1, so the generator divides xⁿ − 1. The work goes into the agreement of the two definitions. Rotation is multiplication by x, so closure under rotation and linearity gives closure under all polynomial multiples. The proof and the comparison are our own; the quote only says that cyclic codes link to ideals.
+**How the definition helps.** The inverse image of the code under reduction modulo xⁿ − 1 is an ideal containing xⁿ − 1 (our own). The polynomial division algorithm gives this ideal a unique monic generator, which must divide xⁿ − 1 (our own). Every monic divisor generating the code also generates this inverse image, proving uniqueness (our own).
 
 **Wikipedia:** [Cyclic code](https://en.wikipedia.org/wiki/Cyclic_code). It says: “Cyclic codes can be linked to ideals in certain rings.”
 
@@ -942,7 +942,7 @@
 
 *Rules out counterexamples.* MSC 94B20 (Burst-correcting codes), 94B15. arXiv cs.IT, math.IT. Level 2: later undergraduate.
 
-**Definition.** Represent a bit string by a polynomial with coefficients zero or one, using arithmetic modulo two. A cyclic redundancy check accepts exactly the multiples of a generator polynomial g of degree r ≥ 1. Require g to have constant term one. A burst is a nonzero error confined to consecutive bit positions.
+**Definition.** Over the binary field, a cyclic redundancy check accepts exactly the polynomial multiples of its generator g. Here g has degree r ≥ 1 and constant term one. A nonzero burst of length at most r has all its flipped bits within r consecutive positions.
 
 **Problem.** The check detects every nonzero burst confined to at most r consecutive positions.
 
@@ -994,7 +994,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 94B35 (Decoding). arXiv cs.IT, math.IT. Level 2: later undergraduate.
 
-**Definition.** A Reed–Solomon word records the values of a polynomial f of degree less than k at n distinct elements of a finite field. Instead of fitting f directly, look for a polynomial E that vanishes at the errors, and its product N = Ef. At each point require the value of N to be E times the received value.
+**Definition.** Let rᵢ be the received values at distinct field points aᵢ for a Reed–Solomon message polynomial f of degree below k. For error bound t, take polynomials E,N with deg E ≤ t and deg N &lt; k + t. The decoding equations require N(aᵢ) = E(aᵢ)rᵢ for every i.
 
 **Problem.** Suppose at most t errors occur and n − k is at least twice t. Solve for N of degree below k + t and E of degree at most t. Any nonzero solution gives f = N/E.
 
@@ -1026,7 +1026,7 @@
 
 *True by definition.* MSC 94B35 (Decoding), 94B05. arXiv cs.IT, math.IT. Level 2: later undergraduate.
 
-**Definition.** Take a matrix H over a finite field. Its kernel is a linear code C, and the syndrome of a column vector x is Hx. A coset is a translate of C. A generator matrix instead describes C by a basis.
+**Definition.** For a matrix H over a finite field, let C be its kernel. The syndrome of a column word x is Hx, and its coset is x + C.
 
 **Problem.** Two words have the same syndrome exactly when they belong to the same translate of C.
 
@@ -1078,7 +1078,7 @@
 
 **Problem.** Take a code of length n over q symbols with at least two words and minimum distance d. It has at most qⁿ⁻ᵈ⁺¹ words. This is the Singleton bound.
 
-**How the definition helps.** With the erasure description the bound is a count. Deleting d − 1 positions is injective, and the remaining n − d + 1 positions allow only qⁿ⁻ᵈ⁺¹ values. The work goes into the link between the two descriptions. Deleting d − 1 positions never merges two codewords, while deleting the d differing positions of a closest pair does. The proof is our own; the quote states only the recovery property of optimal codes.
+**How the definition helps.** Deleting d − 1 positions preserves a difference between every pair of distinct codewords (our own). This projection is injective into the qⁿ⁻ᵈ⁺¹ strings on the remaining positions, giving the size bound (our own).
 
 **Wikipedia:** [Erasure code](https://en.wikipedia.org/wiki/Erasure_code). It says: “any k out of the n code word symbols are sufficient to recover the original message”
 
@@ -1090,7 +1090,7 @@
 
 **Remember:** Each received word has room for L candidates.
 
-*Makes the theorem clean to state or prove.* MSC 94B65 (Bounds on codes), 94B35. arXiv math.IT. Level 2: later undergraduate.
+*True by definition.* MSC 94B65 (Bounds on codes), 94B35. arXiv math.IT. Level 2: later undergraduate.
 
 **Definition.** Instead of requiring one possible answer, allow up to L codewords within t changes of each received word. Such a code is called list decodable at radius t.
 
@@ -1112,7 +1112,7 @@
 
 **Problem.** A maximal code covers every word with balls of radius d − 1, where a ball contains words within that many changes of its center. Its size is at least the number of all words divided by the size of one such ball.
 
-**How the definition helps.** Inclusion maximality turns each omitted word into evidence that some codeword lies within d − 1 changes. The source chooses a code of maximum size, which has this property. Our own formulation needs only inclusion maximality. Each codeword covers the same number of words because relabeling symbols preserves distance. Counting the covered words with overlaps gives the bound.
+**How the definition helps.** If an omitted word lay at distance at least d from every codeword, adding it would preserve the distance rule (our own). Thus the radius-(d − 1) balls cover the entire space (our own). Each ball has the same size, so summing their sizes gives at least qⁿ, even with overlap (our own).
 
 **Wikipedia:** [Gilbert–Varshamov bound](https://en.wikipedia.org/wiki/Gilbert%E2%80%93Varshamov_bound). It says: “since otherwise we could add x to the code whilst maintaining the code's minimum Hamming distance d”
 
@@ -1128,7 +1128,7 @@
 
 **Problem.** For a binary code of length n with at least two words, let d be the smallest number of positions where two distinct words differ. If d &gt; n/2, the code size is at most 2d divided by 2d − n.
 
-**How the definition helps.** The signed representation turns a minimum distance into an upper bound on dot products. The usual proof counts disagreements across ordered pairs in two ways. Our own proof sums the M signed vectors and expands the squared length of their sum. The diagonal terms total Mn, and each of the M(M − 1) remaining terms is at most n − 2d. The squared length is nonnegative, which gives the stated bound.
+**How the definition helps.** Each pair of distinct signed words has dot product at most n − 2d. Our own proof sums the M vectors and expands the squared length. Nonnegativity gives 0 ≤ Mn + M(M − 1)(n − 2d). Rearranging yields M ≤ 2d/(2d − n).
 
 **Wikipedia:** [Plotkin bound](https://en.wikipedia.org/wiki/Plotkin_bound). It says: “The bound is proved by bounding the quantity ∑\[(x,y) ∈ C², x ≠ y\] d(x,y) in two different ways.”
 
@@ -1138,15 +1138,15 @@
 
 ### Causal conditioning splits feedback information
 
-**Remember:** Put each new symbol on just one side of the ledger.
+**Remember:** Predict each output from past and present inputs, each input from past outputs.
 
 *True by definition.* MSC 94A17 (Measures of information, entropy), 94A24. arXiv math.IT. Level 3: graduate.
 
-**Definition.** Directed information measures how much the source history through each time reduces uncertainty about the current output, given earlier outputs. Sum these average reductions in uncertainty over time. For delayed reverse information, exchange source and output and use only the strictly earlier output history to predict each source symbol.
+**Definition.** Write Xⁱ and Yⁱ for histories through time i, with empty histories at time zero. Forward directed information sums I(Xⁱ; Yᵢ ∣ Yⁱ⁻¹) over all times i. Delayed reverse information sums I(Yⁱ⁻¹; Xᵢ ∣ Xⁱ⁻¹) over the same times.
 
 **Problem.** For equal-length streams of finite-valued symbols, forward information plus delayed reverse information equals their mutual information, the average uncertainty either stream removes about the other.
 
-**How the definition helps.** Using the strict past in the reverse direction assigns each part of the shared information exactly once. Our own proof expands the joint probability by taking each source symbol immediately before its matching output. Divide by the product of the separate stream probabilities, then take the mean logarithm. This is the usual definition of mutual information. Grouping its terms by stream gives the two directed sums.
+**How the definition helps.** Our own proof applies the entropy chain rule in the order X₁, Y₁, X₂, Y₂, and so on. Subtract the resulting joint entropy from the sum of the two stream entropies. Grouping the differences by predicted symbol gives exactly the forward and delayed reverse sums.
 
 **Wikipedia:** [Directed information](https://en.wikipedia.org/wiki/Directed_information). It says: “except one conditions on "past" and "present" symbols yⁱ rather than all symbols yⁿ.”
 
@@ -1156,9 +1156,9 @@
 
 **Remember:** Count matching outputs to bound how far the hash is from uniform.
 
-*Makes the theorem clean to state or prove.* MSC 94A17 (Measures of information, entropy), 94A60. arXiv cs.CR, cs.IT. Level 3: graduate.
+*True by definition.* MSC 94A17 (Measures of information, entropy), 94A60. arXiv cs.CR, cs.IT. Level 3: graduate.
 
-**Definition.** Choose a function h uniformly from a finite family with the same finite output set. Apply h to two independent draws from one input distribution. Divide their match probability, averaged over h, by the match probability for two independent uniform outputs. Subtract one to obtain the collision bias ε.
+**Definition.** Choose h uniformly from a finite family of maps to the same set of m outputs. Independently of h, draw X and X′ independently from the same input law. The collision bias is ε = m Pr\[h(X) = h(X′)\] − 1.
 
 **Problem.** The mean total variation distance from uniform is at most ½ √ε. Total variation is half the sum of the absolute differences between outcome probabilities.
 
@@ -1194,11 +1194,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 94A17 (Measures of information, entropy). arXiv math.IT. Level 3: graduate.
 
-**Definition.** For a random vector with a density, its differential entropy is the mean negative logarithm of that density evaluated at the vector. When this mean is finite, match it with a Gaussian vector whose coordinates are independent and have equal variance. Their common variance is the entropy power.
+**Definition.** For a random vector X with density p in dimension n, differential entropy is the mean of −log p(X). If finite, match this entropy with that of an n-dimensional Gaussian having independent coordinates of equal variance. Their common variance is the entropy power.
 
 **Problem.** For independent Gaussian vectors with positive definite proportional covariances, the entropy power of their sum equals the sum of their entropy powers.
 
-**How the definition helps.** Entropy power expresses Gaussian entropy on a scale that adds when covariance matrices are proportional. The Gaussian entropy formula gives the entropy power as the nth root of the covariance determinant in dimension n. Our own calculation writes the two matrices as K and cK with c positive. Independence makes the sum’s covariance (1 + c)K. Its determinant root is therefore 1 + c times that of K.
+**How the definition helps.** The Gaussian entropy formula gives entropy power as the nth root of the covariance determinant. In our own calculation, the covariances K and cK give entropy powers N and cN. Independence gives covariance (1 + c)K for the sum, hence entropy power (1 + c)N.
 
 **Wikipedia:** [Entropy power inequality](https://en.wikipedia.org/wiki/Entropy_power_inequality). It says: “In particular, N(X) = \|K\|¹⁄ⁿ when X is normally distributed with covariance matrix K.”
 
@@ -1232,7 +1232,7 @@
 
 **Problem.** The Rényi divergences of orders in any open subinterval of (0, ∞) determine this ratio distribution on a finite set.
 
-**How the definition helps.** The ratio distribution turns each divergence order into a moment calculation. For order a ≠ 1, multiply the divergence by a − 1 to get the logarithm of the mean of (p/q)ᵃ under q. Our own finite-set proof writes that mean as a sum of exponential functions of a, one per distinct positive ratio. Distinct exponentials are linearly independent on any open interval, so the moments determine the positive ratios and their masses. The remaining mass belongs to zero.
+**How the definition helps.** For each order a ≠ 1, the divergence gives the moment of (p/q)ᵃ under q. Our own proof expands that moment as a sum of exponentials in a, weighted by the masses of the positive ratios. Linear independence of distinct exponentials on an open interval determines those ratios and weights uniquely. The remaining probability mass belongs to zero.
 
 **Paper or page:** [Sufficiency of Rényi divergences](https://arxiv.org/abs/2304.12989v6). It says: “Let p ≪ q be probability distributions on a measurable space X. Then there is a probability measure q̃ on (−∞,∞\]”
 
@@ -1268,7 +1268,7 @@
 
 **Problem.** Among densities with those same finite means and finite entropy, p\* uniquely maximizes entropy, provided its entropy is finite. Here entropy means the average of minus the log density.
 
-**How the definition helps.** The exponential form makes the entropy gap equal relative entropy, which cannot be negative (our own). Since log p\* is a constant plus a linear combination of the constrained functions, its average is the same under q and p\*, so H(p\*) − H(q) = D(q‖p\*) (our own). This is zero only when the densities agree almost everywhere, by Gibbs’ inequality (our own). The work shifts to finding coefficients that meet the means, which need not exist for arbitrary targets (our own).
+**How the definition helps.** Matching the prescribed means makes the entropy gap equal relative entropy (our own). The log density of p\* is a constant plus a linear combination of the constrained functions. Its means under q and p\* therefore coincide, giving H(p\*) − H(q) = D(q‖p\*) (our own). Gibbs’ inequality gives nonnegativity and permits equality only for densities equal almost everywhere (our own).
 
 **Wikipedia:** [Maximum entropy probability distribution](https://en.wikipedia.org/wiki/Maximum_entropy_probability_distribution). It says: “In the case of equality constraints, this theorem is proved with the calculus of variations and Lagrange multipliers.”
 
@@ -1284,7 +1284,7 @@
 
 **Problem.** Applying the same map to two distributions on a finite set cannot increase their relative entropy.
 
-**How the definition helps.** With the supremum definition, a test on the outputs composed with the map is a test on the inputs with the same value. So the output supremum runs over fewer tests and cannot be larger. The work goes into the Donsker–Varadhan theorem that the supremum equals the usual formula. For positive probabilities the best test is the logarithm of the ratio. The proof is our own; the page states the formula.
+**How the definition helps.** In our own proof, composing any output test with the map gives an input test with the same value. Taking suprema therefore gives the inequality. The Donsker–Varadhan formula identifies these suprema with relative entropy.
 
 **Wikipedia:** [Kullback–Leibler divergence](https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence). It says: “Donsker and Varadhan's variational formula”
 
@@ -1298,7 +1298,7 @@
 
 *True by definition. Confidence: medium.* MSC 94A17 (Measures of information, entropy). arXiv cs.IT. Level 3: graduate.
 
-**Definition.** Let p be a finite probability vector and let X be drawn from it. Let F(t) be the logarithm of the mean of p(X)ᵗ, so F(0) = 0. Then the Rényi entropy of order 1 + t is −F(t)/t, minus the slope of F from 0 to t. The usual formula is the logarithm of a sum of powers of the probabilities, divided by 1 − α.
+**Definition.** For X drawn from a finite probability vector p, set F(t) = log 𝔼\[p(X)ᵗ\]. For t ≥ −1 and t ≠ 0, the Rényi entropy of order 1 + t is −F(t)/t. At order one, use −F′(0), the Shannon entropy.
 
 **Problem.** Rényi entropy does not increase as its order α ≥ 0 grows, with Shannon entropy at order one.
 
@@ -1314,11 +1314,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 94A17 (Measures of information, entropy), 68P30. arXiv cs.IT, math.IT. Level 3: graduate.
 
-**Definition.** A representation U is drawn using only X. Mutual information measures how much observing one variable reduces uncertainty about another. The information bottleneck minimizes the mutual information between U and X for a required amount between U and Y. A statistic S of X is sufficient for Y when the conditional law of Y given X depends only on S.
+**Definition.** A statistic S of X is sufficient for Y if the conditional law of Y given X depends only on S. For each target r, the bottleneck minimizes I(U; X) subject to I(U; Y) ≥ r over representations U drawn using only X.
 
 **Problem.** For finite variables, replacing X by a sufficient statistic S leaves the information bottleneck trade-off with Y unchanged.
 
-**How the definition helps.** Sufficiency lets us replace any representation by one drawn using only the statistic. Draw the replacement from the original representation’s conditional law given S. The paper’s resampling lemma shows this preserves the joint law with Y. It also shows that the new representation carries no more information about X. Our own reverse direction uses any representation of S as a representation of X.
+**How the definition helps.** Sufficiency lets us resample a representation using only S. Draw the replacement from the conditional law of U given S. The resampling lemma preserves its joint law with Y and gives information cost at most I(U; X). Conversely, any representation drawn from S has the same cost when used through X (our own).
 
 **Paper or page:** [Separable Computation of Information Measures](https://arxiv.org/abs/2501.15301v1). It says: “the optimal U that achieves L\*IB(X, Y; β) satisfies U-S-X-Y.”
 
@@ -1352,11 +1352,11 @@
 
 *True by definition.* MSC 94A17 (Measures of information, entropy), 62B10. arXiv cs.IT, math.ST. Level 3: graduate.
 
-**Definition.** Let f be convex on the positive reals with f(1) = 0, and let p and q be densities relative to a common measure. The f-divergence D(P‖Q) integrates q·f(p/q), called the perspective of f. When exactly one density is zero, take the limit as that density decreases to zero. When both are zero, set the integrand to zero.
+**Definition.** Let p and q be probability densities under one measure, and let f be convex on the positive reals with f(1) = 0. Their f-divergence integrates q·f(p/q) wherever both densities are positive. Use the one-sided limit when exactly one density vanishes, and zero where both vanish.
 
 **Problem.** Mix two pairs (P₁, Q₁) and (P₂, Q₂) using the same weight λ between 0 and 1 for the first pair. The divergence of the mixed pair is at most λD(P₁‖Q₁) + (1 − λ)D(P₂‖Q₂).
 
-**How the definition helps.** The definition puts the convex part inside the integral, so the same inequality works for every f. For positive q, the ratio of mixed densities is an average of the separate ratios, with weights proportional to their contributions to q (our own). Convexity of f gives the pointwise bound, and integration gives the result (our own). The work shifts from separate proofs, such as the log-sum inequality for relative entropy, to that one convexity argument and its boundary limits (our own).
+**How the definition helps.** Convexity of the integrand gives joint convexity after integration. For positive densities, the mixed ratio averages the two ratios with weights proportional to their contributions to the mixed denominator (our own). Convexity of f gives the pointwise inequality, which extends to zero densities by the defining limits (our own).
 
 **Wikipedia:** [F-divergence](https://en.wikipedia.org/wiki/F-divergence). It says: “This follows from the convexity of the mapping (p,q) ↦ q f(p/q) on ℝ₊².”
 
@@ -1368,7 +1368,7 @@
 
 *True by definition.* MSC 94A17 (Measures of information, entropy), 28D20. arXiv cs.IT, math.PR. Level 3: graduate.
 
-**Definition.** A σ-algebra is a collection of events closed under complements and countable unions. Its entropy is the supremum of the entropies of its finite partitions, which split the space into disjoint events. A partition has entropy Σ −μ(A)·log μ(A) over its parts A, with zero terms set to zero. The alternative sum formula for a discrete variable uses the probabilities of its individual values.
+**Definition.** On a probability space with law μ, consider all finite partitions into events of a given σ-algebra. Its entropy is the supremum of −∑ μ(A) log μ(A) over those partitions, summing over parts A and counting zero-probability terms as zero.
 
 **Problem.** A smaller σ-algebra has at most the entropy of a larger one on the same probability space. Thus H(f(Y)) ≤ H(Y) for any measurable f, with each variable’s entropy taken for the events it determines.
 
@@ -1384,9 +1384,9 @@
 
 *Makes the theorem clean to state or prove.* MSC 94A17 (Measures of information, entropy). arXiv math.IT. Level 3: graduate.
 
-**Definition.** A tree model chooses one variable as its root and gives every other variable one parent. Multiply the root probability by the probability of each child given its parent. Measure the approximation error by relative entropy. This is the mean log ratio of original probability to model probability, averaged under the original law.
+**Definition.** Choose a rooted spanning tree on the variables. A tree model multiplies the root probability by one conditional probability per child, given its parent.
 
-**Problem.** For a finite joint law, a tree model has the least relative entropy error when its tree has the largest total edge weight, with each edge weighted by the mutual information of its pair. The model then uses the original root and conditional probabilities.
+**Problem.** For a finite joint law, a tree of maximum total pairwise mutual information minimizes relative entropy from the original law to the model. The model uses the original root and conditional probabilities.
 
 **How the definition helps.** The tree product turns the log probability into a sum with one term per child and one for the root. Our own fixed-tree argument minimizes each term separately using nonnegativity of relative entropy. Substituting the optimal probabilities leaves a constant minus the sum of edge weights. Thus a tree with maximum weight gives minimum error.
 
@@ -1402,11 +1402,11 @@
 
 *True by definition. Confidence: low.* MSC 94A24 (Coding theorems (Shannon theory)), 94A40. arXiv cs.IT. Level 3: graduate.
 
-**Definition.** The basic polar transform takes two fair bits U₁ and U₂. It sends U₁ + U₂ modulo two and U₂ over two uses of a channel. The first new channel goes from U₁ to both outputs, and the second from U₂ to both outputs together with U₁. The symmetric capacity of a channel is the mutual information of a fair input bit and the output.
+**Definition.** For independent fair bits U₁ and U₂, send U₁ + U₂ modulo two and U₂ through separate uses of the channel. Both new channels report both outputs, but the channel for U₂ also reports U₁. Symmetric capacity is the mutual information between a fair input bit and the channel output.
 
 **Problem.** For a binary-input memoryless channel, the two new channels have total symmetric capacity twice that of the original channel.
 
-**How the definition helps.** The second channel also sees U₁. So the two capacities are the two terms of the chain rule for the information that the outputs give about (U₁, U₂). The map from (U₁, U₂) to the channel inputs is invertible and the two uses are independent. So the total is twice the original capacity. The work goes into the decoder, which must recover U₁ before U₂ to use this definition. The proof is our own; Arıkan's paper states the result.
+**How the definition helps.** Revealing U₁ to the second channel supplies the conditioning in the mutual information chain rule (our own proof). Since the bits are independent, the capacities sum to the information both outputs give about the input pair. The transform is invertible and produces independent fair inputs, so independent channel uses give twice the original symmetric capacity.
 
 **Wikipedia:** [Polar code (coding theory)](https://en.wikipedia.org/wiki/Polar_code_%28coding_theory%29). It says: “which transforms the physical channel into virtual outer channels.”
 
@@ -1420,11 +1420,11 @@
 
 *True by definition.* MSC 94A24 (Coding theorems (Shannon theory)), 05C50. arXiv cs.IT, math.CO. Level 3: graduate.
 
-**Definition.** An orthonormal representation of a graph gives each vertex a unit vector, with orthogonal vectors for nonadjacent vertices. The Lovász number is the smallest, over such representations and unit vectors c, of the largest value of 1/(c·uᵢ)². An equivalent formula optimizes over positive semidefinite matrices.
+**Definition.** An orthonormal representation of a finite graph assigns each vertex i a real unit vector uᵢ, with nonadjacent vertices receiving orthogonal vectors. The Lovász number minimizes maxᵢ 1/(c·uᵢ)² over all such representations and unit vectors c, taking division by zero as infinity.
 
 **Problem.** Let G be the confusability graph of a channel, with edges between symbols the channel can confuse. Its Shannon capacity, the best number of distinguishable symbols per use, is at most the Lovász number.
 
-**How the definition helps.** With this definition, representations multiply under tensor products. Two words of a zero-error code differ in some position by nonadjacent symbols, so their tensor product vectors are orthogonal. Bessel's inequality for the tensor power of c then bounds the code size by the Lovász number to the power of the length. The work goes into the equivalence with the matrix formula, which makes the number computable. This is Lovász's own proof, in our words.
+**How the definition helps.** A distinguishing coordinate makes the tensor vectors of distinct codewords orthogonal (our own explanation of Lovász’s proof). For an optimal representation with Lovász number θ, each length-n codeword has squared overlap at least θ⁻ⁿ with the tensor power of c. Bessel’s inequality bounds the sum of the squared overlaps by one, giving at most θⁿ codewords and capacity at most θ.
 
 **Wikipedia:** [Lovász number](https://en.wikipedia.org/wiki/Lov%C3%A1sz_number). It says: “the Lovász number provides an upper bound on the Shannon capacity of graph”
 
@@ -1438,9 +1438,9 @@
 
 *True by definition. Confidence: medium.* MSC 94A24 (Coding theorems (Shannon theory)), 05C69. arXiv cs.IT, math.CO. Level 3: graduate.
 
-**Definition.** Use a graph whose edges join distinct channel inputs that the channel can confuse. Define a zero-error code of length n as an independent set in the n-th strong power of this graph. An independent set has no edges inside it. In the strong power, two distinct words are adjacent if in every position their symbols are equal or adjacent.
+**Definition.** Join distinct channel inputs when they can produce a common output. In the nth strong power, distinct words are adjacent when their symbols are equal or adjacent in every position. A zero-error code is an independent set in this graph, meaning a set containing no adjacent pair.
 
-**Problem.** For a memoryless channel with finite input and output sets, the zero-error rate (1/n) log α(Gⁿ) converges as n grows. Here α(Gⁿ) is the largest code of length n.
+**Problem.** For a memoryless channel with finite input and output sets, the zero-error rate (1/n) log α(Gⁿ) converges as n grows. Here α(Gⁿ) is the largest size of a code of length n.
 
 **How the definition helps.** With codes as independent sets, joining a code of length a and a code of length b gives a code of length a + b. So the largest code sizes are supermultiplicative, and Fekete's lemma gives convergence of the rates to their supremum. The work goes into checking that independent channel uses confuse two words exactly when each position is equal or confusable. The Wikipedia text gives the strong power model; the convergence argument is our own.
 
@@ -1460,7 +1460,7 @@
 
 **Problem.** Every maximal independent set of the sequence confusion graph is a product of maximal independent sets of the symbol confusion graph.
 
-**How the definition helps.** The rule for joining sequences makes independence a condition on each coordinate separately. Our own proof projects an independent set onto each coordinate. Each projection is independent, so their product is independent and contains the original set. A maximal set cannot grow, so it equals that product. Enlarging any one projection would enlarge the product, so every projection is maximal.
+**How the definition helps.** In our own proof, a conflict in any coordinate prevents two words from sharing an independent set. Hence each coordinate projection is independent, and their product is an independent superset. Maximality forces equality with that product. Enlarging any projection while keeping it independent would enlarge the product, so each projection is maximal.
 
 **Paper or page:** [Information Leakage in Zero-Error Source Coding: A Graph-Theoretic Perspective](https://arxiv.org/abs/2102.01908v1). It says: “Consider any maximal independent set T ∈ 𝓘ₘₐₓ(Γₜ). We have T = T₁ × T₂ × ⋯ × Tₜ”
 
@@ -1474,11 +1474,11 @@
 
 *True by definition. Confidence: low.* MSC 94A29 (Source coding), 94A45. arXiv cs.IT. Level 3: graduate.
 
-**Definition.** Define a complete dictionary as the leaves of a source tree in which each internal node has one child per source symbol. The list definition requires every infinite source string to begin with exactly one dictionary phrase.
+**Definition.** A finite complete dictionary consists of the root-to-leaf words in a finite tree where every internal node has one child for each source symbol.
 
 **Problem.** Take a memoryless source with at least two symbols, all of positive probability. Among complete dictionaries of the same size, the one built by always splitting the most probable leaf has the largest mean phrase length.
 
-**How the definition helps.** In the tree view, the mean phrase length is the sum of the probabilities of the internal nodes. The dictionary size fixes the number of internal nodes. Every ancestor is more probable than its descendants, so the most probable nodes form a tree, and greedy splitting finds them. The work goes into showing that complete dictionaries are exactly the leaf sets of such trees. The proof is our own; the page gives only the algorithm.
+**How the definition helps.** Our own proof counts the mean phrase length by summing the probabilities of reaching internal nodes. Each split adds the same number of leaves, so dictionary size fixes the number of splits. Every descendant is less probable than its ancestor. Thus the most probable unsplit node is an available leaf, and greedy splitting collects the largest possible sum.
 
 **Wikipedia:** [Tunstall coding](https://en.wikipedia.org/wiki/Tunstall_coding). It says: “The dictionary in question, D, is constructed as a tree of probabilities, in which each edge is associated to a letter from the input alphabet.”
 
@@ -1490,7 +1490,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 94A34 (Rate-distortion theory in information and communication theory). arXiv math.IT, cs.IT. Level 3: graduate.
 
-**Definition.** Fix a distribution on source symbols and a cost, called distortion, for each input and reproduction pair. A test channel assigns a distribution of reproductions to each input. Mutual information measures how much observing the reproduction reduces uncertainty about the input. Define the rate–distortion function by minimizing this information over test channels with mean distortion at most D.
+**Definition.** Fix a source distribution and a distortion cost for each source symbol and reproduction pair. A test channel assigns a probability distribution on reproductions to every source symbol. The rate–distortion function at D minimizes mutual information between source and reproduction over test channels with mean distortion at most D.
 
 **Problem.** For a finite source and a finite reproduction alphabet, the rate–distortion function is convex on its feasible distortion range.
 
@@ -1510,7 +1510,7 @@
 
 **Problem.** A finite-dimensional unital quantum channel cannot decrease the Shannon entropy of the eigenvalues of a density matrix.
 
-**How the definition helps.** Fixing the uniform state lets the same reference state measure entropy before and after the channel. Our own derivation uses quantum relative entropy, a measure of how well two states can be distinguished. Relative to the uniform state, it equals the logarithm of the dimension minus the entropy of the state. Lindblad’s inequality says a channel cannot increase relative entropy. Our own counterexample resets every state to a fixed state of entropy zero, even when the input has positive entropy.
+**How the definition helps.** Unitality keeps the uniform state fixed and excludes a channel that resets every input to one pure state (our own). Relative entropy from the uniform state equals log dimension minus the entropy of the eigenvalues. Lindblad’s inequality says applying the same channel to both states cannot increase relative entropy, so entropy cannot decrease (our own derivation).
 
 **nLab:** [unital quantum channel](https://ncatlab.org/nlab/show/unital+quantum+channel). It says: “is called unital if it preserves the maximally mixed quantum state.”
 
@@ -1524,11 +1524,11 @@
 
 *True by definition. Confidence: medium.* MSC 94A60 (Cryptography), 68P25. arXiv cs.CR, cs.CC. Level 3: graduate.
 
-**Definition.** Define a pseudorandom generator as an efficient map from n-bit seeds to 2n-bit strings whose output no efficient test can tell from uniform. The next-bit definition instead requires that no efficient algorithm predicts each output bit from the earlier ones.
+**Definition.** A length-doubling pseudorandom generator efficiently maps each n-bit seed to a 2n-bit string. For every probabilistic polynomial-time test, its acceptance probabilities on a uniform seed’s output and on uniform 2n-bit strings differ negligibly in n.
 
 **Problem.** Such a generator is a one-way function. That is, no efficient algorithm finds a seed for its output with non-negligible probability.
 
-**How the definition helps.** With the all-tests definition, any inverter gives a test at once. The test runs the inverter and checks that the generator maps its answer to the given string. On generator output it succeeds as often as the inverter does. On a uniform string it succeeds with probability at most 2⁻ⁿ, since at most 2ⁿ strings have seeds. With the next-bit definition, one first needs Yao's theorem that the two definitions agree. A generator that stretches by only one bit must first be iterated to double length. The proof is our own.
+**How the definition helps.** Our own proof uses an alleged inverter as a test by checking whether its proposed seed generates the test string. On generated strings the test succeeds exactly when inversion succeeds. On uniform strings it succeeds with probability at most 2⁻ⁿ because at most 2ⁿ strings have seeds. Pseudorandomness therefore forces inversion success to be negligible.
 
 **Wikipedia:** [Pseudorandom generator](https://en.wikipedia.org/wiki/Pseudorandom_generator). It says: “The pseudorandom generator theorem shows that cryptographically secure pseudorandom generators exist if and only if one-way functions exist.”
 
@@ -1540,11 +1540,11 @@
 
 *True by definition. Confidence: medium.* MSC 94A60 (Cryptography), 68P25. arXiv cs.CR, cs.CC. Level 3: graduate.
 
-**Definition.** Call an efficiently computable bit b(x) hard-core for f if no efficient test can tell the pair (f(x), b(x)) from (f(x), a fair coin). The usual definition says that no efficient algorithm predicts b(x) from f(x) much better than a fair guess.
+**Definition.** For uniform n-bit X, an efficiently computable bit b is hard-core for f if (f(X), b(X)) and (f(X), B) are computationally indistinguishable. Here B is an independent fair bit. Every probabilistic polynomial-time test must have negligible acceptance-probability difference as n grows.
 
 **Problem.** Let f be a length-preserving one-way permutation with hard-core bit b. Then x ↦ (f(x), b(x)) is a pseudorandom generator that stretches by one bit.
 
-**How the definition helps.** With the indistinguishability definition, the claim is almost immediate. Because f is a permutation, f(x) is uniform, so (f(x), fair coin) is uniform. The definition then says the output cannot be told from uniform. The work goes into showing that a test for the bit gives a predictor for it, so that the two definitions agree. The Goldreich–Levin theorem supplies a hard-core bit for a slightly modified permutation. The proof and the comparison are our own.
+**How the definition helps.** A permutation sends uniform X to uniform f(X), so appending an independent fair bit gives a uniform string. The hard-core definition makes the generator output computationally indistinguishable from that string (our own proof).
 
 **Wikipedia:** [Hard-core predicate](https://en.wikipedia.org/wiki/Hard-core_predicate). It says: “Hard-core predicates give a way to construct a pseudorandom generator from any one-way permutation.”
 
@@ -1552,15 +1552,15 @@
 
 ### Indistinguishability makes semantic security provable for real ciphers
 
-**Remember:** If you cannot tell two ciphertexts apart, you learn nothing from either.
+**Remember:** Choose two equal-length messages and guess which one the ciphertext encrypts.
 
 *True by definition.* MSC 94A60 (Cryptography), 68P25. arXiv cs.CR. Level 3: graduate.
 
-**Definition.** An encryption scheme is semantically secure if no efficient algorithm learns anything about a message from its ciphertext beyond its length. Efficient means probabilistic polynomial time. In the indistinguishability game, an adversary picks two messages of equal length and gets the encryption of one at random. The scheme is indistinguishable if no adversary guesses which one with probability much above one half.
+**Definition.** In the public-key game, a probabilistic polynomial-time adversary sees a fresh public key and chooses two equal-length messages. It receives a fresh encryption of the message selected by an independent fair bit and guesses that bit. Indistinguishability requires every such adversary’s success probability to differ negligibly from one half as the security parameter grows.
 
 **Problem.** Semantic security and indistinguishability are equivalent, as Goldwasser and Micali proved. So a proof that the indistinguishability game is hard for a scheme shows that it hides all partial information about its messages.
 
-**How the definition helps.** The indistinguishability game names one concrete task, so a security proof only has to show that this one task is hard. Semantic security speaks about every distribution of messages and every kind of partial information, which is hard to check directly. The work moves into the equivalence theorem. The game also forces encryption to use randomness, because a deterministic public-key scheme fails when the adversary encrypts both messages itself.
+**How the definition helps.** Goldwasser and Micali’s equivalence theorem reduces semantic security to this single guessing game. Semantic security requires that any efficiently obtainable message information can also be obtained with comparable success from the permitted prior information alone.
 
 **Wikipedia:** [Semantic security](https://en.wikipedia.org/wiki/Semantic_security). It says: “This latter definition is more common than the original definition of semantic security because it better facilitates proving the security of practical cryptosystems.”
 
@@ -1572,13 +1572,13 @@
 
 **Remember:** Smaller than one over every polynomial, even after polynomially many tries.
 
-*Makes the theorem clean to state or prove.* MSC 94A60 (Cryptography), 68Q15. arXiv cs.CR, cs.CC. Level 3: graduate.
+*True by definition.* MSC 94A60 (Cryptography), 68Q15. arXiv cs.CR, cs.CC. Level 3: graduate.
 
 **Definition.** A function μ on the natural numbers is negligible if, for every positive polynomial p, \|μ(n)\| &lt; 1/p(n) for all large n. Cryptography uses it to say that an attack succeeds with essentially zero probability, as a function of the key length n.
 
 **Problem.** If μ is negligible and p is a positive polynomial, then p(n)μ(n) is negligible. So an attack repeated polynomially many times still succeeds only with negligible probability.
 
-**How the definition helps.** The definition is matched to polynomial-time attackers, so negligible functions stay negligible after multiplication by any polynomial. A fixed bound such as 1/n² has no such closure property (our own example). For instance, n³ independent tries that each succeed with probability 1/n² succeed almost surely for large n (our own). This closure lets theorems say simply secure or not secure, with no constants to track.
+**How the definition helps.** To bound \|p(n)μ(n)\| by 1/q(n), apply negligibility of μ to the positive polynomial pq (our own proof). The resulting bound holds eventually for each positive polynomial q. The union bound now covers polynomially many attempts, each with success probability at most μ(n).
 
 **Wikipedia:** [Negligible function](https://en.wikipedia.org/wiki/Negligible_function). It says: “if an attack succeeds in violating a security condition only with negligible probability, and the attack is repeated a polynomial number of times, the success probability of the overall attack still remains negligible.”
 
@@ -1592,11 +1592,11 @@
 
 *True by definition.* MSC 94A60 (Cryptography), 68Q15. arXiv cs.CR, cs.CC. Level 3: graduate.
 
-**Definition.** A family of bit strings passes the next-bit test if no efficient algorithm predicts the next bit from the earlier bits noticeably better than chance. Yao's test, the general definition of pseudorandomness, asks that no efficient algorithm can tell the strings from truly random strings at all.
+**Definition.** Consider distributions on bit strings of polynomial length indexed by a security parameter n. Given a uniform random prefix length below the string length and the corresponding sampled prefix, each probabilistic polynomial-time predictor must have negligible advantage over chance. Advantage is its probability of correctly predicting the next bit minus one half.
 
 **Problem.** A family of bit strings that passes the next-bit test also passes Yao's test. So no efficient algorithm can tell it from truly random strings.
 
-**How the definition helps.** The next-bit test speaks about one kind of attacker only, so a proof for a concrete generator rules out one prediction task. The work moves into Yao's theorem, which uses a hybrid argument that walks from the real string to a random one, one bit at a time (our own summary). A distinguisher must notice some step, and that step gives a predictor.
+**How the definition helps.** Yao’s hybrid argument compares strings with progressively longer sampled prefixes and uniform suffixes (our own summary). A nonnegligible distinction between the endpoints yields a prediction advantage at a random prefix length, losing at most a polynomial factor.
 
 **Wikipedia:** [Next-bit test](https://en.wikipedia.org/wiki/Next-bit_test). It says: “The next-bit test is a particular case of Yao's test for random sequences, and passing it is therefore a necessary condition for passing Yao's test. However, it has also been shown a sufficient condition by Yao.”
 
@@ -1610,11 +1610,11 @@
 
 *True by definition. Confidence: medium.* MSC 94A60 (Cryptography), 68P25. arXiv cs.CR. Level 3: graduate.
 
-**Definition.** For public-key encryption, require that no efficient test can tell which of two chosen equal-length messages one challenge ciphertext encrypts. Semantic security instead says that the ciphertext gives no efficient advantage in learning anything about the message.
+**Definition.** After seeing a fresh public key, a probabilistic polynomial-time adversary chooses two equal-length messages. It sees one fresh encryption, selected by an independent fair bit, and guesses the bit. Single-challenge security requires every such adversary’s guessing advantage over chance to be negligible in the security parameter.
 
 **Problem.** Single-challenge indistinguishability implies indistinguishability for polynomially many challenges under the same public key. Each encryption uses fresh independent randomness.
 
-**How the definition helps.** Indistinguishability compares two experiments, so a chain of experiments that change one challenge at a time applies. This chain is called a hybrid argument. The public key lets a test make all the other encryptions itself, so single-challenge security bounds each step. Summing the steps gives the many-challenge bound. With semantic security as the definition, one first needs the theorem that the two definitions agree. The proof is our own; the quote states only the definition.
+**How the definition helps.** Our own hybrid proof switches the selected message in one challenge at a time. The public key lets the reduction encrypt all other messages with independent randomness. A nonnegligible total difference across polynomially many switches gives a nonnegligible single-challenge advantage by choosing a random switch.
 
 **Wikipedia:** [Ciphertext indistinguishability](https://en.wikipedia.org/wiki/Ciphertext_indistinguishability). It says: “an adversary will be unable to distinguish pairs of ciphertext based on the message that they encrypt.”
 
@@ -1624,15 +1624,15 @@
 
 ### Witness indistinguishability survives parallel repetition, unlike zero knowledge
 
-**Remember:** Weaker secrecy, stronger composition: witness indistinguishability survives running in parallel.
+**Remember:** Switch the witness and the verifier’s view stays indistinguishable.
 
-*Rules out counterexamples.* MSC 94A60 (Cryptography), 68Q10. arXiv cs.CR, cs.CC. Level 3: graduate.
+*True by definition.* MSC 94A60 (Cryptography), 68Q10. arXiv cs.CR, cs.CC. Level 3: graduate.
 
-**Definition.** In a proof of an NP statement, the prover holds a witness, such as a satisfying assignment of a formula. A proof is witness indistinguishable if no verifier can tell which of two valid witnesses the prover used. Zero knowledge asks for more: an efficient simulator that knows no witness can produce everything the verifier sees.
+**Definition.** For every efficient verifier and every true instance, compare its views when the prover uses either of two valid witnesses. Witness indistinguishability requires computational indistinguishability for every such witness pair and every auxiliary input, as the instance length grows.
 
-**Problem.** Witness indistinguishability is preserved when a proof is run many times in parallel. Zero knowledge is not always preserved in this way.
+**Problem.** Witness indistinguishability survives polynomially many parallel repetitions with independent prover randomness. Zero knowledge does not always survive parallel repetition.
 
-**How the definition helps.** Witness indistinguishability compares two runs that differ only in the witness, so many parallel runs can be changed one witness at a time (our own sketch of the Feige–Shamir proof). Zero knowledge has no such theorem. Goldreich and Krawczyk showed that some zero-knowledge proofs stop being zero knowledge when run in parallel (our own; not on the page). The price is that witness indistinguishability promises nothing when the statement has only one witness.
+**How the definition helps.** Our own summary of the Feige–Shamir argument changes the witness in one parallel copy at a time. A verifier with the witnesses as auxiliary input can simulate the other copies, so a noticeable overall difference would distinguish one copy. Goldreich and Krawczyk give the zero-knowledge counterexample (our own attribution).
 
 **Wikipedia:** [Witness-indistinguishable proof](https://en.wikipedia.org/wiki/Witness-indistinguishable_proof). It says: “Unlike zero-knowledge proofs, they remain secure when multiple proofs are being performed in parallel.”
 
@@ -1644,13 +1644,13 @@
 
 **Remember:** If prior knowledge cannot help, earlier proofs cannot help either.
 
-*Rules out counterexamples. Confidence: medium.* MSC 94A60 (Cryptography), 68Q10. arXiv cs.CR, cs.CC. Level 3: graduate.
+*True by definition. Confidence: medium.* MSC 94A60 (Cryptography), 68Q10. arXiv cs.CR, cs.CC. Level 3: graduate.
 
-**Definition.** An interactive proof is zero knowledge if, for each efficient verifier, an efficient simulator can produce the verifier's view from the true statement alone. No efficient test can tell the simulated view from the real one. In the auxiliary-input version, the verifier and the simulator also get an arbitrary string z, the verifier's prior knowledge. The simulation must work for every z.
+**Definition.** For each probabilistic polynomial-time verifier there must exist an efficient simulator that receives the true statement and the verifier’s auxiliary string. Its output must be computationally indistinguishable from the verifier’s real view for every true statement and auxiliary input.
 
 **Problem.** If a proof is zero knowledge with auxiliary input, then running it polynomially many times in sequence is still zero knowledge.
 
-**How the definition helps.** A verifier in a later run can treat everything it saw in earlier runs as prior knowledge (our own summary). So the auxiliary-input definition covers it, and the simulations can be chained. Goldreich and Oren proved this closure (our own; not on the page). They also showed that the definition without auxiliary input is not closed in this way, under a reasonable assumption (our own).
+**How the definition helps.** The auxiliary input can encode the verifier’s state after all earlier runs (our own summary). The simulator can therefore simulate the next run from that state. Goldreich and Oren’s sequential composition theorem justifies repeating this step polynomially many times (our own attribution).
 
 **Wikipedia:** [Zero-knowledge proof](https://en.wikipedia.org/wiki/Zero-knowledge_proof). It says: “The auxiliary string z in the definition plays the role of "prior knowledge" (including the random coins of V̂).”
 
@@ -1662,13 +1662,13 @@
 
 **Remember:** Balance every output across message positions to hide the message.
 
-*Rules out counterexamples.* MSC 94A62 (Authentication, digital signatures and secret sharing), 94A60. arXiv cs.CR. Level 3: graduate.
+*True by definition.* MSC 94A62 (Authentication, digital signatures and secret sharing), 94A60. arXiv cs.CR. Level 3: graduate.
 
-**Definition.** For each key, give each message a disjoint set of possible outputs, all of the same size. Call the table equitably ordered if each output occurs equally often in every message position across the keys.
+**Definition.** For a finite key table, assign every key-message pair a set of the same positive size, disjoint across messages for each key. The table is equitably ordered if, for each output, equally many keys allow that output for each message.
 
 **Problem.** Choose the key uniformly and independently of the message. Choose an output uniformly from its assigned set. Equitable ordering makes the output independent of the message.
 
-**How the definition helps.** Equal counts give each output the same conditional probability for every message. The paper applies this count to splitting designs, which arrange the output sets into blocks. Our own counterexample uses three keys, one for each pair from {1, 2, 3}. Assign the smaller element to the first message and the larger to the second. Every pair occurs, but output 1 reveals the first message.
+**How the definition helps.** Equal counts make each output equally likely under every message (our own counting argument). Its conditional probability is the number of keys allowing that output for the message divided by the key count and the common set size. Thus the output is independent of the message.
 
 **Paper or page:** [Splitting authentication codes with perfect secrecy: new results, constructions and connections with algebraic manipulation detection codes](https://arxiv.org/abs/2104.11076v2). It says: “If a splitting BIBD is equitably ordered, then it yields an authentication code with perfect secrecy.”
 
@@ -1682,11 +1682,11 @@
 
 *True by definition. Confidence: medium.* MSC 94A62 (Authentication, digital signatures and secret sharing), 94A17. arXiv cs.CR, cs.IT. Level 3: graduate.
 
-**Definition.** Define a perfect threshold scheme with threshold k by two entropy conditions. Fewer than k shares leave the secret's entropy unchanged. Any k shares leave it zero. The operational version says that too few shares give no information and enough shares recover the secret.
+**Definition.** For a secret S and n shares, fix a threshold k with 1 ≤ k ≤ n. A perfect threshold scheme requires H(S ∣ A) = H(S) for every collection A of fewer than k shares. It requires H(S ∣ A) = 0 for every collection of k shares.
 
 **Problem.** In a perfect threshold scheme with finitely many values, every share has entropy at least the entropy of the secret.
 
-**How the definition helps.** With the entropy definition the proof is one chain of inequalities. Add the chosen share to k − 1 others, and the secret's conditional entropy falls from its full value to zero. That fall is the information the share gives, which is at most the share's entropy. The work goes into showing that the entropy conditions match the operational ones. Zero conditional entropy means exact recovery, and unchanged entropy means independence. The proof and the comparison are our own; the quote states only the result.
+**How the definition helps.** In our own proof, choose any share X and a collection A of k − 1 other shares. Adding X drops the secret’s conditional entropy from H(S) to zero. This drop equals I(S; X ∣ A), which is at most H(X ∣ A) ≤ H(X).
 
 **Wikipedia:** [Secret sharing](https://en.wikipedia.org/wiki/Secret_sharing). It says: “Each share of the secret must be at least as large as the secret itself.”
 
@@ -1698,11 +1698,11 @@
 
 *True by definition. Confidence: medium.* MSC 94A62 (Authentication, digital signatures and secret sharing), 94A60. arXiv cs.CR. Level 3: graduate.
 
-**Definition.** Define a pseudorandom function family by this rule. No efficient test that queries the function on inputs of its choice can tell a random member from a uniform random function. The test may choose each query after seeing earlier answers.
+**Definition.** A pseudorandom function family consists of efficiently evaluated keyed functions with common finite input and output sets at each security parameter. Every probabilistic polynomial-time oracle test must have negligible acceptance-probability difference between a uniformly keyed member and a uniformly random function. The test may choose its queries adaptively.
 
 **Problem.** Use the function value as the tag of a message. Then no efficient attacker who can ask for tags of chosen messages can produce a valid tag for a new message, except with negligible probability. This needs tags long enough that guessing one is negligible.
 
-**How the definition helps.** The oracle definition lets the attack itself serve as a test. With a truly random function, the tag of a new message is uniform and independent of all answers seen. So a guess succeeds with probability one over the number of tags. A test that runs the attacker and checks its forgery would therefore detect any larger success. The work goes into constructing such families from pseudorandom generators, as Goldreich, Goldwasser and Micali did. The reduction is our own wording of the standard proof.
+**How the definition helps.** Our own reduction runs the attacker with the test oracle supplying tags, then checks the proposed fresh-message tag against that oracle. For a random function the fresh tag is independent and uniform, so guessing succeeds with probability one divided by the tag count. Pseudorandomness changes this negligible probability by at most a negligible amount.
 
 **Wikipedia:** [Pseudorandom function family](https://en.wikipedia.org/wiki/Pseudorandom_function_family). It says: “Constructing deterministic, memoryless authentication schemes”
 
@@ -1719,9 +1719,9 @@
 
 **Definition.** The weight enumerator of a binary code sums one monomial for each word. The monomial has a factor x for each zero and a factor y for each one, so it is a product of one-bit factors.
 
-**Problem.** For a binary linear code C, substitute x + y for x and x − y for y in its weight enumerator, then divide by the size of C. The result is the weight enumerator of the dual code, the words orthogonal to C.
+**Problem.** For a binary linear code C, substitute x + y and x − y for the respective variables in its weight enumerator. Dividing by \|C\| gives the enumerator of the dual, the words orthogonal to every word of C.
 
-**How the definition helps.** The polynomial records all weight counts in one substitution. Our own proof weights each binary word by multiplying x for every zero and y for every one. For a fixed word u, multiply each weight by the sign (−1) raised to the dot product with u. Summing over all words gives a factor x + y at each zero of u and x − y at each one. Averaging the signs over u in C leaves one on words orthogonal to C and zero elsewhere.
+**How the definition helps.** Our own proof averages a sign over u in C for each binary word v, taking +1 for orthogonal pairs and −1 otherwise. Character orthogonality makes this average one for dual words and zero otherwise. Weight each v by its monomial and sum first over v. Each coordinate contributes x + y or x − y according as the corresponding bit of u is zero or one.
 
 **Wikipedia:** [Enumerator polynomial](https://en.wikipedia.org/wiki/Enumerator_polynomial). It says: “W(C⊥;x,y) = (1/\|C\|) W(C;y−x,y+x).”
 
@@ -1737,11 +1737,11 @@
 
 *True by definition.* MSC 94B05 (Linear codes (general theory)). arXiv cs.IT. Level 3: graduate.
 
-**Definition.** The binary Reed–Muller code RM(r, m) lists the values of each polynomial of degree at most r on the binary m-dimensional cube. An equivalent recursive definition builds it from two shorter codes as the words (u, u + v).
+**Definition.** RM(r, m) consists of evaluation vectors of polynomials over the two-element field of total degree at most r at all binary m-tuples in fixed order.
 
 **Problem.** For 0 ≤ r &lt; m, the dual of RM(r, m) is RM(m − r − 1, m). The dual is the set of words orthogonal to every codeword.
 
-**How the definition helps.** With the evaluation definition, orthogonality becomes a sum over the cube of a product of two polynomials. That product has degree at most m − 1, so each of its monomials misses a variable and its values cancel in pairs. The two dimensions, the binomial sums up to r and up to m − r − 1, add to 2ᵐ, so orthogonality gives equality. The work goes into showing that squarefree monomials give independent evaluation words, and into relating the evaluation definition to the recursive one. The proof and the comparison are our own.
+**How the definition helps.** In our own proof, the dot product sums a polynomial product of degree at most m − 1 over the binary cube. Every monomial misses a variable, so its values cancel in pairs. Squarefree monomials of degree at most r give a basis for RM(r, m). Complementing variable sets shows the two code dimensions add to 2ᵐ, turning orthogonality into equality with the dual.
 
 **Wikipedia:** [Reed–Muller code](https://en.wikipedia.org/wiki/Reed%E2%80%93Muller_code). It says: “The dual code to RM(r,m) is RM(m-r-1,m).”
 
@@ -1757,7 +1757,7 @@
 
 **Problem.** For 2 ≤ d ≤ n, any two distinct words of this code differ in at least d positions.
 
-**How the definition helps.** The consecutive roots give enough independent equations to rule out a nonzero word with fewer than d nonzero symbols. Suppose a word has s such symbols, with 0 &lt; s &lt; d. The first s equations use consecutive powers of s distinct nonzero field elements, one for each occupied position. After dividing each column by its first entry, the determinant is a product of nonzero differences. All s symbols would have to vanish. Our own comparison replaces testing pairwise distances by testing zeros of word polynomials, since the difference of two codewords is a codeword.
+**How the definition helps.** A difference of codewords has the same prescribed roots, so it suffices to rule out nonzero differences of weight s &lt; d (our own). At occupied positions j, the first s root equations have columns consisting of powers one through s of αʲ. Dividing each column by αʲ gives a Vandermonde matrix on distinct nodes. Its nonzero determinant forces every coefficient to vanish.
 
 **Wikipedia:** [BCH code](https://en.wikipedia.org/wiki/BCH_code). It says: “A BCH code has minimal Hamming distance at least d.”
 
@@ -1767,13 +1767,13 @@
 
 **Remember:** Different twists force a code and its dual apart.
 
-*Rules out counterexamples.* MSC 94B15 (Cyclic codes), 94B05. arXiv math.IT. Level 3: graduate.
+*True by definition.* MSC 94B15 (Cyclic codes), 94B05. arXiv math.IT. Level 3: graduate.
 
 **Definition.** Take a linear code over a finite field. A twisted shift moves each entry right one place and wraps the last entry to the front multiplied by a nonzero λ. Call the code constacyclic when it is closed under this shift.
 
 **Problem.** If λ² ≠ 1, the only codeword orthogonal to every codeword under the ordinary dot product is zero.
 
-**How the definition helps.** Different twists let our own proof isolate a single coordinate in the sum of the code and its dual. The dual uses the inverse twist because shifting two vectors with opposite twists preserves their dot product. Given a nonzero shared word, shift while the last entry is zero, when both shifts agree. Once the last entry is nonzero, subtract the two shifts and rescale to obtain the first unit vector in the sum. The sum is now shift-invariant because the two shifts differ only by a multiple of that unit vector. Its shifts span the whole space, so the dimension formula forces zero intersection, a contradiction. With λ = 1, the binary code {00, 11} equals its dual.
+**How the definition helps.** In our own proof the dual uses inverse twist, since opposite twists preserve dot products. Shift a nonzero shared word until its last entry is nonzero, using identical shifts while that entry vanishes. Subtracting the next shifts puts the first unit vector in the sum, since λ ≠ λ⁻¹. The shifts differ only there, so the sum is shift-invariant and contains every unit vector, forcing zero intersection by dimensions.
 
 **Paper or page:** [The ℓ-intersection Pairs of Constacyclic and Conjucyclic Codes](https://arxiv.org/abs/2309.01985v1). It says: “such that λ² ≠ 1. Then C is an LCD code.”
 
@@ -1785,9 +1785,9 @@
 
 **Remember:** Each zero spends one unit of the pole budget.
 
-*Rules out counterexamples.* MSC 94B27 (Geometric methods (including applications of algebraic geometry) applied to coding theory), 94B65. arXiv math.IT. Level 3: graduate.
+*True by definition.* MSC 94B27 (Geometric methods (including applications of algebraic geometry) applied to coding theory), 94B65. arXiv math.IT. Level 3: graduate.
 
-**Definition.** Choose n distinct points with coordinates in a finite field on a smooth projective curve over that field. Assume the curve stays irreducible over the field’s algebraic closure. Form codewords by evaluating rational functions at those points. Allow poles only at other specified field points, with maximum orders totaling m.
+**Definition.** Choose n distinct rational points on a smooth projective geometrically irreducible curve over a finite field. At other specified rational points prescribe maximum pole orders totaling m. At the n chosen points, evaluate every rational function defined over the field that obeys these bounds and has no other poles.
 
 **Problem.** If m &lt; n, any two different codewords differ in at least n − m positions.
 
@@ -1803,7 +1803,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 94B65 (Bounds on codes). arXiv cs.IT, math.IT. Level 3: graduate.
 
-**Definition.** Give each symbol of a finite alphabet a nonnegative weight, with minimum zero and at least one positive weight. A word’s weight is the sum of its symbol weights. For y &gt; 0, assign each symbol of weight w a factor equal to y raised to w. Divide each factor by their sum F(y) to get the symbol probabilities.
+**Definition.** Give each symbol a nonnegative weight w, with minimum zero and some positive weight in the finite alphabet. For y &gt; 0, the tilted distribution assigns a symbol of weight w probability yʷ/F(y), where F(y) sums yʷ over all symbols. A word’s weight is the sum of its symbol weights.
 
 **Problem.** Let W/n lie strictly between zero and the mean symbol weight under uniform sampling. The number of length-n words of weight W is at most F(y)ⁿ divided by y raised to W. The best bound occurs when the mean symbol weight equals W/n.
 
@@ -1821,11 +1821,11 @@
 
 *True by definition. Confidence: medium.* MSC 94A17 (Measures of information, entropy). arXiv cs.IT, math.IT. Level 4: research.
 
-**Definition.** Define Sibson's α-mutual information of X and Y as a minimum of Rényi divergences of order α. The minimum runs from the joint law to each product of the law of X with a law of Y. Rényi divergence measures how far one distribution is from another. The equivalent closed formula uses powers and sums of the joint probabilities.
+**Definition.** For finite random variables X and Y, fix an order α &gt; 0. Sibson information is the minimum Rényi divergence from their joint law to Pₓ ⊗ Q over all laws Q on Y’s alphabet. At order one use relative entropy.
 
 **Problem.** Let X, Y and Z have finitely many values, with Z depending on X only through Y. Then for every order α &gt; 0, Sibson information between X and Z is at most that between X and Y.
 
-**How the definition helps.** With the minimum definition, data processing reduces to the same fact for Rényi divergence. Pass the joint law and each trial product law through the channel from Y to Z. The joint law becomes the law of X and Z, and a product law stays a product law. Divergence cannot increase, so the minimum cannot increase. The work goes into the data processing inequality for Rényi divergence and into the agreement with Sibson's closed formula. The proof is our own; the paper states the inequality.
+**How the definition helps.** Our own proof applies Rényi data processing to the channel that keeps X and sends Y to Z. It sends the joint law to the joint law of X and Z and every trial product to another admissible product. Starting with a minimizing product for Y therefore gives an admissible value for Z no larger than the original minimum.
 
 **Paper or page:** [Sibson α-Mutual Information and Its Variational Representations](https://arxiv.org/abs/2405.08352v2). It says: “Data processing inequality: Let X,Y,Z be three random variables jointly distributed”
 
@@ -1839,7 +1839,7 @@
 
 *True by definition.* MSC 94A24 (Coding theorems (Shannon theory)). arXiv math.IT. Level 4: research.
 
-**Definition.** A spectrum function assigns nonnegative numbers to finite graphs and sends the one-vertex graph to one. It adds under disjoint union and multiplies under strong product, where distinct tuples are adjacent when corresponding entries are equal or adjacent. Its value cannot decrease under a vertex map that sends distinct nonneighbors to distinct nonneighbors. The spectrum distance is the largest absolute difference between two graphs’ values over all such functions.
+**Definition.** A spectrum function assigns nonnegative values to finite graphs, gives one to the one-vertex graph, adds under disjoint union and multiplies under strong product. A vertex map preserving distinct nonneighbors must send a graph to one of at least equal value. Spectrum distance is the maximum absolute difference between the two graphs’ values over all spectrum functions.
 
 **Problem.** The absolute difference in Shannon capacities is at most the spectrum distance between two finite graphs.
 
@@ -1857,11 +1857,11 @@
 
 *Rules out counterexamples.* MSC 94A60 (Cryptography), 68Q06. arXiv cs.CR, cs.CC. Level 4: research.
 
-**Definition.** A black-box obfuscator rewrites a program so that its code reveals nothing beyond what one learns by running it on inputs. An indistinguishability obfuscator asks for less. If two circuits of the same size compute the same function, no efficient algorithm can tell their obfuscations apart.
+**Definition.** An indistinguishability obfuscator outputs a circuit of polynomially bounded size computing the input circuit’s function. For every pair of equal-size equivalent circuit families, their randomized obfuscations must be computationally indistinguishable as the security parameter grows. The inefficient variant allows unbounded computation when producing the circuit.
 
 **Problem.** Barak et al. showed that black-box obfuscation is impossible for some programs. Their counterexample does not apply to indistinguishability obfuscation, and an inefficient indistinguishability obfuscator exists for all circuits.
 
-**How the definition helps.** The weaker definition only compares programs with the same input–output behaviour, so the unobfuscatable programs of Barak et al. are no longer a counterexample. Those programs hide a secret that any code for them gives away. The inefficient obfuscator outputs the first circuit, in a fixed order, that computes the same function. Efficient candidates came much later, and Jain, Lin and Sahai built one from well-studied assumptions in 2020.
+**How the definition helps.** Revealing a property common to every implementation can violate black-box security while preserving indistinguishability (our own explanation). For an inefficient construction, enumerate circuits by increasing size with a fixed order for ties. Output the first equivalent circuit, testing equivalence by exhaustive evaluation. Equivalent circuits then give identical outputs.
 
 **Wikipedia:** [Indistinguishability obfuscation](https://en.wikipedia.org/wiki/Indistinguishability_obfuscation), [Black-box obfuscation](https://en.wikipedia.org/wiki/Black-box_obfuscation). It says: “Barak et al. constructed a family of unobfuscatable programs, for which an efficient attacker can always learn more from any obfuscated code than from black-box access.”
 
@@ -1875,11 +1875,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 94A60 (Cryptography), 68M25. arXiv cs.CR. Level 4: research.
 
-**Definition.** In Canetti's framework, a protocol is secure if it emulates an ideal functionality, an imagined trusted party that computes the right outputs. Emulation means that each real attacker has a simulated attacker against the ideal functionality, and no environment can tell the two worlds apart. The environment is any efficient program that gives inputs, reads outputs and talks with the attacker during the whole run.
+**Definition.** For each efficient real attacker, some efficient ideal attacker must simulate interaction with the ideal functionality. For every efficient environment supplying inputs, reading outputs and communicating with the attacker, the real and ideal output distributions must be computationally indistinguishable.
 
-**Problem.** The universal composition theorem says that a secure protocol stays secure as a part of any other protocol, next to any other protocols. Stand-alone definitions of security give no such guarantee.
+**Problem.** Under Canetti’s universal composition theorem, replacing ideal calls with a securely emulating protocol preserves security in efficient surrounding protocols satisfying the theorem’s session conditions. Stand-alone security alone gives no such guarantee.
 
-**How the definition helps.** Because the environment may be any efficient program, it can play the part of any larger system around the protocol. So a protocol that fools every environment also fools every surrounding system. Canetti's proof makes the rest of the system part of the environment (our own summary). The price is that some tasks, such as bit commitment, need set-up assumptions like a common reference string.
+**How the definition helps.** Canetti’s proof treats the surrounding computation as part of the distinguishing environment (our own summary). Universal quantification over environments then covers the larger execution under the composition theorem’s conditions.
 
 **Wikipedia:** [Universal composability](https://en.wikipedia.org/wiki/Universal_composability). It says: “Protocols remain secure even if arbitrarily composed with other instances of the same or other protocols.”
 
@@ -1893,11 +1893,11 @@
 
 *True by definition. Confidence: medium.* MSC 94B05 (Linear codes (general theory)), 94B65. arXiv cs.IT, math.IT. Level 4: research.
 
-**Definition.** Take n elements of the field with qᵐ elements that are linearly independent over the field with q elements, with k ≤ n ≤ m. A Gabidulin code of dimension k evaluates certain polynomials at these points. Each is a sum of multiples of x raised to 1, q, q², and so on up to qᵏ⁻¹. The matrix description uses a generator matrix whose rows are powers of the points.
+**Definition.** Let K be a finite extension of degree m of a field with q elements. Choose n points in K linearly independent over the smaller field, with 1 ≤ k ≤ n ≤ m. The Gabidulin code evaluates all polynomials ∑ᵢ aᵢ x<sup>(qⁱ)</sup> at these points, with 0 ≤ i &lt; k and coefficients in K.
 
 **Problem.** Every nonzero word of a Gabidulin code of dimension k has rank at least n − k + 1. The rank of a word is the dimension of the span of its entries over the small field.
 
-**How the definition helps.** With the polynomial definition, a codeword is the image of the points under a linear map. Such a polynomial is linear over the small field and has degree at most qᵏ⁻¹. So a nonzero one has a kernel of dimension at most k − 1. Rank and nullity on the span of the points give rank at least n − k + 1. The matrix description would need a determinant argument instead. The proof and the comparison are our own; the paper states only the distance.
+**How the definition helps.** In our own proof a nonzero evaluation polynomial is linear over the small field and has degree at most q<sup>(k−1)</sup>. Its kernel has at most that many elements, hence dimension at most k − 1. Rank and nullity on the n-dimensional evaluation span give image dimension at least n − k + 1.
 
 **Paper or page:** [On the list decodability of rank-metric codes containing Gabidulin codes](https://arxiv.org/abs/2103.07547v1). It says: “be a generalized Gabidulin code with minimum distance d = n − k + 1”
 
@@ -1909,11 +1909,11 @@
 
 *Rules out counterexamples.* MSC 94B10 (Convolutional codes). arXiv cs.IT, math.IT. Level 4: research.
 
-**Definition.** Work with polynomials over the integers modulo a prime power. An encoder with k independent rows maps a polynomial input u to the word uG of length n. Its image is the code. Call the code noncatastrophic if some encoder G has a polynomial right inverse.
+**Definition.** Over the polynomial ring with coefficients modulo a prime power, a k-row encoder G with independent rows generates all polynomial words uG. The code is noncatastrophic if it has such an encoder with a polynomial right inverse.
 
 **Problem.** The code has an exact polynomial parity check precisely when it is noncatastrophic. Here an exact check is a matrix with n rows and n − k independent columns whose left kernel equals the code.
 
-**How the definition helps.** A polynomial right inverse lets the encoder become part of an invertible change of coordinates. In those coordinates a parity check just reads the coordinates that must be zero. The work is the paper’s matrix completion theorem, which extends a right-invertible encoder to a square invertible matrix. Our own counterexample over the binary field is the image of the encoder ((1 + D), (1 + D)). Any polynomial parity check that vanishes on that image also vanishes on (1, 1), which is not in the image.
+**How the definition helps.** A polynomial right inverse allows the encoder rows to extend to an invertible square matrix by the paper’s completion theorem. In these coordinates an exact check reads the last n − k coordinates. The converse is the paper’s characterization of codes admitting exact polynomial parity checks.
 
 **Paper or page:** [Noncatastrophic convolutional codes over a finite ring](https://arxiv.org/abs/2104.06754v1). It says: “if and only if 𝒞 is noncatastrophic.”
 
@@ -1927,7 +1927,7 @@
 
 *True by definition.* MSC 94B60 (Other types of codes), 94B05. arXiv cs.IT, math.IT. Level 4: research.
 
-**Definition.** Lift a matrix A to its graph, the subspace of all pairs (x, xA). This is the row space of the block matrix \[I A\]. The rank distance of two matrices is the rank of their difference.
+**Definition.** For an m-by-n matrix A over a field, its graph consists of all pairs (x, xA) with x a row vector of length m. This is the row space of \[I A\]. The rank distance between two matrices of the same size over that field is the rank of their difference.
 
 **Problem.** For two matrices of the same size, the subspace distance between their graphs is twice their rank distance. The subspace distance of two spaces is the sum of their dimensions minus twice the dimension of their intersection.
 
@@ -1947,7 +1947,7 @@
 
 **Problem.** The shortest path distance between two words equals their phase-rotation distance. The latter minimizes the number of coordinate changes plus one if a common shift is used.
 
-**How the definition helps.** Graph edges let us count a sequence of moves by its path length. Our own proof compares this with the formula allowing just one common shift. Write each coordinate change as addition in that coordinate. These additions commute with common shifts, and all common shifts combine into at most one. The remaining coordinate changes cost at least the number of mismatched positions, which one change per mismatch attains.
+**How the definition helps.** Every path counts coordinate changes and common shifts as individual moves (our own proof). Coordinate additions commute with shifts, so all shifts combine into at most one. After fixing that shift, the remaining cost is at least the number of mismatches. Changing each mismatched coordinate once attains this cost.
 
 **Paper or page:** [The Eigenvalue Method in Coding Theory](https://arxiv.org/abs/2509.08917v1). It says: “coincides with the phase-rotation distance.”
 

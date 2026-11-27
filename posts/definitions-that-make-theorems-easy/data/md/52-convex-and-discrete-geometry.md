@@ -40,9 +40,9 @@
 
 *True by definition.* MSC 52A41 (Convex functions and convex programs in convex geometry). arXiv math.OC. Level 1: early undergraduate.
 
-**Definition.** The epigraph of a function f contains all pairs (x, t) with x in its domain and t ≥ f(x). Define f to be convex when this set contains the segment between any two of its points.
+**Definition.** Let f be a real function on a subset D of a real vector space. Its epigraph consists of all pairs (x,t) with x ∈ D and t ≥ f(x). The function is convex if its epigraph contains the segment between every two of its points.
 
-**Problem.** For a convex function, its value at a weighted average is at most the weighted average of its values. The weights are nonnegative and total one.
+**Problem.** For any finite list of domain points of a convex function, its value at their weighted average is at most their weighted average value. The weights are nonnegative and sum to one.
 
 **How the definition helps.** The epigraph turns the weighted sum in Jensen’s inequality into the height of one point. Repeatedly taking points on segments shows that every finite weighted average of graph points stays in the epigraph. In our own proof, reading off its height gives the usual numerical inequality.
 
@@ -127,11 +127,11 @@ a parallelogram.”
 
 *Rules out counterexamples.* MSC 52B20 (Lattice polytopes in convex geometry (including relations with commutative algebra and algebraic geometry)), 51M25. arXiv math.MG, math.CO. Level 1: early undergraduate.
 
-**Definition.** A simple polygon is a region bounded by one closed polygonal curve that does not cross itself. So it has one boundary piece and no holes. A lattice polygon has all its vertices at integer points.
+**Definition.** A simple lattice polygon is the bounded region enclosed by a polygonal loop with integer vertices that visits no point twice except its starting point.
 
 **Problem.** Pick's theorem: a simple lattice polygon with i lattice points inside and b on its boundary has area i + b/2 − 1.
 
-**How the definition helps.** Restricting to simple polygons makes area a function of i and b alone. A polygon with h holes, bounded by disjoint simple lattice polygons, has area i + b/2 + h − 1, so each hole adds one. The proof cuts the polygon into lattice triangles of area ½ and counts with Euler's formula, and the Euler characteristic is what changes with holes (our own reading).
+**How the definition helps.** A single simple boundary encloses no holes, so Pick’s formula needs only the interior and boundary counts. With h holes bounded by disjoint simple lattice loops, the area becomes i + b/2 + h − 1. In the lattice triangulation proof, Euler’s formula contributes the correction for holes (our own reading).
 
 **Wikipedia:** [Pick's theorem](https://en.wikipedia.org/wiki/Pick%27s_theorem). It says: “Generalizations to Pick's theorem to non-simple polygons are more complicated and require more information than just the number of interior and boundary vertices.”
 
@@ -145,7 +145,7 @@ a parallelogram.”
 
 *Makes the theorem clean to state or prove.* MSC 52A10 (Convex sets in \\(2\\) dimensions (including convex curves)), 52A40. arXiv math.MG. Level 2: later undergraduate.
 
-**Definition.** Steiner symmetrization slides each slice perpendicular to a fixed line until its midpoint lies on that line. It keeps the slice length unchanged.
+**Definition.** For a convex polygon and a fixed line, replace each nonempty perpendicular slice by the segment of equal length centered on that line. Keep the segment on the same perpendicular.
 
 **Problem.** Steiner symmetrization of a convex polygon preserves area and does not increase perimeter.
 
@@ -159,15 +159,15 @@ a parallelogram.”
 
 ### Support-function width gives perimeter π times the constant width
 
-**Remember:** Adding a body to its half-turn makes a disk with twice its perimeter.
+**Remember:** Opposite support values add to the same width in every direction.
 
 *True by definition.* MSC 52A10 (Convex sets in \\(2\\) dimensions (including convex curves)), 52A38. arXiv math.MG. Level 2: later undergraduate.
 
-**Definition.** A convex body is a compact convex set with interior. Its support function h(u) is the largest dot product u · x for points x in the body. Define its width in a unit direction u as h(u) + h(−u), the gap between its two supporting lines perpendicular to u. The body has constant width w if that gap is always w.
+**Definition.** For a planar compact convex set K with interior, its support function is h(u) = max{x·u ∣ x ∈ K}. Its width along a unit vector u is h(u) + h(−u). Constant width w means this sum equals w for every unit vector.
 
 **Problem.** A planar convex body of constant width w has perimeter πw.
 
-**How the definition helps.** Our own support-function calculation turns constant width into the statement that the sum with the reflected body is a disk. The sum consists of differences x − y of points of the body, so its largest dot product with u is h(u) + h(−u). That value is always w, which determines the disk of radius w. The work is in Cauchy’s perimeter formula, which gives perimeter by integrating the support function over all unit directions. The formula makes perimeter additive under these sums, so the body has half the disk’s perimeter.
+**How the definition helps.** Cauchy’s perimeter formula integrates width over directions through half a turn (our own calculation). Constant width makes the integrand w throughout an interval of length π, giving perimeter πw. Equivalently, adding the reflected body doubles perimeter and gives the disk of radius w.
 
 **Wikipedia:** [Barbier's theorem](https://en.wikipedia.org/wiki/Barbier%27s_theorem). It says: “the Minkowski sum of K and its 180° rotation is a disk with radius w and perimeter 2πw.”
 
@@ -179,7 +179,7 @@ a parallelogram.”
 
 *True by definition.* MSC 52A20 (Convex sets in \\(n\\) dimensions (including convex hypersurfaces)), 90C25. arXiv math.OC. Level 2: later undergraduate.
 
-**Definition.** For p in a convex set C, its normal cone contains the vectors v satisfying v·(z − p) ≤ 0 for all z in C. For nonempty closed convex C in Euclidean space, the nearest point to x is the unique p whose cone contains x − p.
+**Definition.** At p in a Euclidean convex set C, the normal cone consists of all vectors v satisfying v·(z−p) ≤ 0 for every z ∈ C.
 
 **Problem.** A point x outside a nonempty closed convex set in Euclidean space is strictly separated from it by a hyperplane. There is a positive gap between the value of the separating linear function at x and its values on the set.
 
@@ -195,7 +195,7 @@ a parallelogram.”
 
 *Makes the theorem clean to state or prove.* MSC 52A20 (Convex sets in \\(n\\) dimensions (including convex hypersurfaces)). arXiv math.MG. Level 2: later undergraduate.
 
-**Definition.** Represent hull points by weighted averages with nonnegative weights that sum to one. A weight of zero lets a shorter average fill a list of exactly d + 1 terms in ℝᵈ.
+**Definition.** The convex hull of X ⊆ ℝᵈ consists of all finite sums ∑ᵢλᵢxᵢ with xᵢ ∈ X, λᵢ ≥ 0 and ∑ᵢλᵢ = 1.
 
 **Problem.** The convex hull of a compact subset of Euclidean space is compact.
 
@@ -261,11 +261,11 @@ a parallelogram.”
 
 *True by definition.* MSC 52A20 (Convex sets in \\(n\\) dimensions (including convex hypersurfaces)). arXiv math.MG. Level 2: later undergraduate.
 
-**Definition.** The one-sided polar of a nonempty Euclidean set A consists of y such that x · y ≤ 1 for every x in A. For a polytope containing the origin inside, an equivalent description builds the dual polytope from rescaled facet normals.
+**Definition.** The one-sided polar of a Euclidean set A consists of all y satisfying x·y ≤ 1 for every x ∈ A.
 
 **Problem.** The one-sided polar of a set equals the one-sided polar of its convex hull.
 
-**How the definition helps.** The inequality definition lets one check a linear bound on generators alone. In our own proof, every convex combination preserves the upper bound of one. Conversely, a bound on the hull holds on the original set. For a full-dimensional polytope containing zero in its interior, one can also construct the polar from rescaled facet normals. That approach requires proving these normals generate precisely the set of valid inequalities.
+**How the definition helps.** A linear bound on A holds on every convex combination of its points because the weights are nonnegative and sum to one (our own proof). Conversely, a bound on the convex hull holds on A because the hull contains A.
 
 **Paper or page:** [One-Sided Polar of Convex Hull is One-Sided Polar of Original Set](https://proofwiki.org/wiki/One-Sided_Polar_of_Convex_Hull_is_One-Sided_Polar_of_Original_Set). It says: “(conv A)⊙ = A⊙”
 
@@ -399,7 +399,7 @@ a parallelogram.”
 
 **Problem.** In Euclidean dimension d &gt; 1, taking the radius-r polar twice fixes each radius-r ball body for r &gt; 0.
 
-**How the definition helps.** An intersection of balls already contains exactly what its defining balls force. In our own proof, taking the polar twice intersects every radius-r ball containing the set. These balls include every defining ball, so their intersection recovers the body. For two distinct points less than 2r apart, every containing ball also contains their segment. The double polar therefore adds points.
+**How the definition helps.** Taking the polar twice intersects every closed radius-r ball containing the set (our own proof). Every defining ball occurs among them, so the intersection recovers a ball body. For two distinct points less than 2r apart, every containing ball also contains their segment. Their double polar therefore adds points.
 
 **Paper or page:** [Selected topics from the theory of intersections of balls](https://arxiv.org/abs/2411.10302v2). It says: “(Aʳ)ʳ = A”
 
@@ -501,7 +501,7 @@ a parallelogram.”
 
 **Problem.** A set of d+2 points in general position in ℝᵈ has exactly one Radon partition up to exchanging its two parts.
 
-**How the definition helps.** General position gives an affine dependence that is unique up to scaling and has no zero weight (our own proof). Splitting its positive and negative weights gives the partition. Conversely, any Radon partition gives a dependence, so its signs fix the partition. Without general position, four collinear points A, B, C, D in order in the plane allow both AC against BD and AD against BC (our own counterexample).
+**How the definition helps.** General position gives a one-dimensional space of affine dependences, and every nonzero dependence uses all the points (our own proof). Its positive and negative weights normalize to intersecting convex combinations. Conversely, any Radon partition yields such a dependence, so the signs determine its parts. For four collinear plane points A,B,C,D in order, both AC against BD and AD against BC work (our own counterexample).
 
 **Wikipedia:** [Radon's theorem](https://en.wikipedia.org/wiki/Radon%27s_theorem). It says: “Then I and J form the required partition of the points into two subsets with intersecting convex hulls.”
 
@@ -555,7 +555,7 @@ a parallelogram.”
 
 ### Signed face projections cancel
 
-**Remember:** Project all faces with signs and each edge cancels.
+**Remember:** Project faces with signs so entering and leaving contributions cancel.
 
 *True by definition.* MSC 52A38 (Length, area, volume and convex sets (aspects of convex geometry)). arXiv math.MG. Level 2: later undergraduate.
 
@@ -575,7 +575,7 @@ a parallelogram.”
 
 *True by definition.* MSC 52A41 (Convex functions and convex programs in convex geometry), 90C25. arXiv math.OC. Level 2: later undergraduate.
 
-**Definition.** Call f m-strongly convex when f(θx + (1−θ)y) ≤ θf(x) + (1−θ)f(y) − (m/2)θ(1−θ)‖x − y‖² for all θ in \[0,1\].
+**Definition.** Fix m &gt; 0 and a real function f on a convex Euclidean domain. Strong convexity with modulus m requires the following inequality for every x,y in the domain and every θ ∈ \[0,1\]. It requires f(θx+(1−θ)y) ≤ θf(x)+(1−θ)f(y)−(m/2)θ(1−θ)‖x−y‖².
 
 **Problem.** On a convex subset of Euclidean space, f is m-strongly convex exactly when f(x) − (m/2)‖x‖² is convex. For differentiable f this is also equivalent to f(y) ≥ f(x) + ∇f(x)·(y − x) + (m/2)‖y − x‖². It is also equivalent to (∇f(x) − ∇f(y))·(x − y) ≥ m‖x − y‖².
 
@@ -593,11 +593,11 @@ a parallelogram.”
 
 *Rules out counterexamples.* MSC 52B05 (Combinatorial properties of polytopes and polyhedra (number of faces, shortest paths, etc.)), 06A07. arXiv math.MG, math.CO. Level 2: later undergraduate.
 
-**Definition.** A face of a convex polytope is its intersection with a closed half-space whose boundary plane misses its interior. This definition includes the empty set, as a face of dimension −1, and the polytope itself. The faces ordered by inclusion form the face lattice.
+**Definition.** A nonempty face of a convex polytope P consists of all maximizers on P of some linear function. A constant zero function gives P itself, and the empty set also counts as a face.
 
 **Problem.** The faces of a convex polytope form a lattice: every two faces have a greatest common lower face and a least common upper face. This lattice determines the combinatorial type of the polytope.
 
-**How the definition helps.** The empty face and the whole polytope act as the least and greatest elements that a lattice needs. Without the empty face, two vertices of a polytope would have no common lower face. Without the whole polytope, two opposite facets of a cube would have no common upper face (our own example). With both, the meet of two faces is their intersection, which is again a face. Two polytopes then count as the same type when their face lattices are isomorphic. Which lattices arise from polytopes is still a hard question (our own remark).
+**How the definition helps.** Nonempty intersections of finitely many faces maximize the sum of their defining functions (our own argument). The meet is the intersection, and the join intersects all faces containing both. Distinct vertices need the empty lower face, and opposite cube facets need the whole cube as an upper face (our own examples). Combinatorial equivalence means that the face lattices are isomorphic.
 
 **Wikipedia:** [Convex polytope](https://en.wikipedia.org/wiki/Convex_polytope). It says: “The definition of a face given above allows both the polytope itself and the empty set to be considered as faces, ensuring that every pair of faces has a join and a meet in the face lattice.”
 
@@ -612,7 +612,7 @@ a parallelogram.”
 
 *Rules out counterexamples.* MSC 52B05 (Combinatorial properties of polytopes and polyhedra (number of faces, shortest paths, etc.)). arXiv math.MG. Level 2: later undergraduate.
 
-**Definition.** An abstract polyhedron orders its faces by inclusion, with a least face of rank −1 and a greatest face of rank 3. Each immediate step increases rank by one. Between faces three or more ranks apart, the intermediate faces must connect by chains of comparable faces. The diamond rule requires exactly two intermediate faces between comparable faces two ranks apart.
+**Definition.** In the ranked face order of an abstract polyhedron, vertices, edges and polygon faces have ranks 0, 1 and 2. The whole polyhedron has rank 3. The diamond rule requires exactly two intermediate faces between every comparable pair two ranks apart.
 
 **Problem.** In an abstract polyhedron, every edge lies on exactly two polygon faces.
 
@@ -662,7 +662,7 @@ a parallelogram.”
 
 *Makes the theorem clean to state or prove.* MSC 52B05 (Combinatorial properties of polytopes and polyhedra (number of faces, shortest paths, etc.)), 52B11. arXiv math.MG. Level 2: later undergraduate.
 
-**Definition.** The moment curve sends t to (t, t², …, tᵈ). For d ≥ 2, the hull of at least d + 1 distinct points on this curve is a cyclic d-polytope.
+**Definition.** For d ≥ 2, the moment curve sends each real t to (t, t², …, tᵈ). A cyclic d-polytope is the convex hull of a finite set of at least d + 1 distinct points on this curve.
 
 **Problem.** Any nonempty subset of at most d/2 vertices of a cyclic d-polytope spans a face.
 
@@ -678,11 +678,11 @@ a parallelogram.”
 
 *Rules out counterexamples.* MSC 52B10 (Three-dimensional polytopes), 52C25. arXiv math.MG. Level 2: later undergraduate.
 
-**Definition.** Cauchy's theorem is stated only for convex polyhedra in three dimensions. Two polyhedra are combinatorially equivalent when they have the same face lattice, the pattern of how their vertices, edges and faces are glued.
+**Definition.** A convex polyhedron contains the whole segment joining any two of its points. Two polyhedra are combinatorially equivalent if a bijection between their faces of all dimensions preserves and reflects inclusion.
 
-**Problem.** Cauchy's rigidity theorem: two combinatorially equivalent convex polyhedra with congruent corresponding faces are congruent. So a convex polyhedron made of rigid plates joined by hinges cannot flex.
+**Problem.** Two combinatorially equivalent bounded convex polyhedra in three dimensions with congruent corresponding faces are congruent. Thus a convex polyhedron made of rigid plates joined by hinges cannot flex.
 
-**How the definition helps.** Convexity excludes counterexamples to both uniqueness and rigidity. Push in one vertex of a regular icosahedron, reflecting its pyramid of five faces inward, to get a different polyhedron with the same faces and gluing. Bricard's octahedra and Connelly's 1977 sphere are nonconvex polyhedra that flex while every face stays rigid.
+**How the definition helps.** Convexity excludes the inward dent obtained by reflecting one vertex cap of a regular icosahedron through its base plane. The dent preserves face shapes and incidences but changes the solid. Bricard’s octahedra and Connelly’s flexible sphere also lack convexity. Cauchy’s rigidity theorem supplies the proof for convex polyhedra.
 
 **Wikipedia:** [Cauchy's theorem (geometry)](https://en.wikipedia.org/wiki/Cauchy%27s_theorem_%28geometry%29). It says: “To see that convexity is necessary, consider a regular icosahedron. One can "push in" a vertex to create a nonconvex polyhedron that is still combinatorially equivalent to the regular icosahedron”
 
@@ -716,7 +716,7 @@ a parallelogram.”
 
 **Problem.** Nonempty polytopes are exactly the convex hulls of nonempty finite sets of points.
 
-**How the definition helps.** Boundedness excludes the half-line \[0, ∞), which extends farther than any finite list of generators (our own). The polytope representation theorem supplies both directions (our own). In particular, listing the finitely many corners still requires proving that their hull fills the bounded intersection (our own).
+**How the definition helps.** Boundedness removes the rays from the Minkowski–Weyl representation of a nonempty polyhedron as a finite convex hull plus a finitely generated cone (our own). Any nonzero cone generator would give an unbounded ray, as in \[0, ∞). Conversely, every finite convex hull is bounded and has a finite inequality description by the same theorem.
 
 **Wikipedia:** [Convex polytope](https://en.wikipedia.org/wiki/Convex_polytope). It says: “By requiring that the intersection of half-spaces results in a bounded set, the definition becomes equivalent to the vertex-representation.”
 
@@ -732,7 +732,7 @@ a parallelogram.”
 
 **Problem.** The image of a convex polytope under an affine map is a convex polytope. The sum of two convex polytopes is also a convex polytope, where the sum contains every sum of one point from each.
 
-**How the definition helps.** Our own proof uses the hull definition because affine maps preserve the weighted combinations that form the hull. For sums, multiply the weights from the two hulls to express each sum as a convex combination of pairwise sums of generating points. The converse follows by splitting each pairwise sum. With the inequality definition, a projection requires eliminating variables. The work that lets us switch descriptions is the Minkowski–Weyl theorem, which says that both define the same sets.
+**How the definition helps.** Affine maps preserve convex combinations, so the image is the hull of the generator images (our own proof). Multiplying weights from the two hulls expresses every sum as a convex combination of pairwise generator sums. Conversely, splitting such a combination gives one point from each hull. Minkowski–Weyl identifies the finite hulls with bounded polyhedra.
 
 **Wikipedia:** [Convex polytope](https://en.wikipedia.org/wiki/Convex_polytope). It says: “This is equivalent to defining a bounded convex polytope as the convex hull of a finite set of points”
 
@@ -764,7 +764,7 @@ a parallelogram.”
 
 **Problem.** For a point in a d-dimensional polytope, at most d + 1 vertices with weights prove membership. For a point outside it, one inequality from the given list proves nonmembership.
 
-**How the definition helps.** The two descriptions give different short proofs depending on where the point lies. For a point inside, check that the weights are nonnegative, sum to 1 and reproduce the point. For a point outside, check that it breaks the stated inequality. Our own count uses Carathéodory’s theorem, which limits how many vertices a convex combination needs in dimension d. The two checks need both descriptions to be available.
+**How the definition helps.** Convex combinations certify membership, while violated defining inequalities certify nonmembership. Check that the listed weights are nonnegative, sum to one, and give the proposed point. Carathéodory’s theorem bounds the required number of vertices by d + 1 (our own count). An outside point must violate at least one inequality because their common solution set is the polytope.
 
 **Wikipedia:** [Convex polytope](https://en.wikipedia.org/wiki/Convex_polytope). It says: “to show that it is not in the polytope, it is sufficient to present a single defining inequality that it violates”
 
@@ -806,13 +806,13 @@ a parallelogram.”
 
 ### Regularity by flag symmetry makes dual polytopes regular
 
-**Remember:** Reversing the order of faces gives matching flags in the dual.
+**Remember:** Regularity moves any flag to any other, and polarity reverses each flag.
 
 *True by definition.* MSC 52B15 (Symmetry properties of polytopes), 51M20. arXiv math.MG, math.CO. Level 2: later undergraduate.
 
 **Definition.** A flag is a chain of nested faces with one face of each dimension. A full-dimensional convex polytope is regular if a symmetry can send any flag to any other flag. The dual reverses face inclusion, so vertices become largest proper faces and the reverse.
 
-**Problem.** The dual of a regular convex polytope is regular.
+**Problem.** The polar dual of a regular convex polytope centered at its vertex average is regular.
 
 **How the definition helps.** Flag symmetry transfers directly, because duality sends flags to flags in reverse order (our own proof). Centre the polytope at the average of its vertices, so every symmetry is orthogonal and fixes the origin. Then the symmetries act on the polar dual and preserve the face correspondence. The work is proving this face correspondence, instead of testing the faces and vertex slices of the dual one by one.
 
@@ -822,7 +822,7 @@ a parallelogram.”
 
 ### Taking the polar leaves a centered polyhedron’s symmetry group unchanged
 
-**Remember:** A polar trades faces for vertices without losing orthogonal symmetries.
+**Remember:** A polar bounds every dot product by one, and orthogonal maps preserve dot products.
 
 *True by definition.* MSC 52B15 (Symmetry properties of polytopes), 20H15. arXiv math.GR, math.MG. Level 2: later undergraduate.
 
@@ -840,9 +840,9 @@ a parallelogram.”
 
 **Remember:** Every extra lattice class would put a fourth point in the triangle.
 
-*Makes the theorem clean to state or prove.* MSC 52B20 (Lattice polytopes in convex geometry (including relations with commutative algebra and algebraic geometry)), 52A10. arXiv math.MG. Level 2: later undergraduate.
+*True by definition.* MSC 52B20 (Lattice polytopes in convex geometry (including relations with commutative algebra and algebraic geometry)), 52A10. arXiv math.MG. Level 2: later undergraduate.
 
-**Definition.** An empty lattice triangle has three noncollinear integer vertices and no other integer points, even on its edges. A unimodular triangle has edge vectors at one vertex that form a basis of the integer lattice.
+**Definition.** An empty lattice triangle in ℝ² has three noncollinear vertices in ℤ² and no other points of ℤ², including on its edges. It is unimodular if its two edge vectors at one vertex form a basis of ℤ².
 
 **Problem.** An empty lattice triangle is unimodular and has area one half.
 
@@ -854,7 +854,7 @@ a parallelogram.”
 
 ### Lattice edge lengths make the planar lattice count quadratic
 
-**Remember:** Area scales quadratically and lattice boundary length scales linearly.
+**Remember:** The gcd of an edge’s coordinate changes counts its lattice steps.
 
 *Makes the theorem clean to state or prove.* MSC 52B20 (Lattice polytopes in convex geometry (including relations with commutative algebra and algebraic geometry)), 52A10. arXiv math.MG. Level 2: later undergraduate.
 
@@ -874,7 +874,7 @@ a parallelogram.”
 
 *True by definition.* MSC 52B20 (Lattice polytopes in convex geometry (including relations with commutative algebra and algebraic geometry)). arXiv math.CO. Level 2: later undergraduate.
 
-**Definition.** The order polytope of a finite partially ordered set has one coordinate in \[0, 1\] for each element. Require the coordinates to respect all comparisons in the order. A linear extension is a total order that keeps those comparisons.
+**Definition.** For a finite poset P, its order polytope consists of the order-preserving functions f from P to \[0,1\]. Thus f(a) ≤ f(b) whenever a ≤ b. A linear extension is a total order on P that preserves every comparison in P.
 
 **Problem.** For a partial order on n elements, n! times the order polytope’s volume counts its linear extensions.
 
@@ -888,7 +888,7 @@ a parallelogram.”
 
 ### Unimodular pieces count lattice volume
 
-**Remember:** Each unimodular piece counts once.
+**Remember:** Edges forming a lattice basis give one unit of normalized volume.
 
 *True by definition.* MSC 52B20 (Lattice polytopes in convex geometry (including relations with commutative algebra and algebraic geometry)). arXiv math.CO. Level 2: later undergraduate.
 
@@ -896,7 +896,7 @@ a parallelogram.”
 
 **Problem.** The normalized volume of a full-dimensional lattice polytope with a unimodular triangulation counts its top-dimensional simplices.
 
-**How the definition helps.** Normalized volume assigns one unit to each full-dimensional simplex in the triangulation. In our own calculation, ordinary volume requires dividing the absolute edge determinant by d! in dimension d, using lattice coordinates. The basis condition makes that determinant one in absolute value. Multiplying ordinary volume by d! removes the denominator, and additivity counts the pieces. Finding such a triangulation is a separate problem.
+**How the definition helps.** Each full-dimensional simplex in this triangulation has normalized volume one (our own). Their interiors are disjoint, so adding their volumes counts them (our own).
 
 **Paper or page:** [Flow polytopes for extensions of bipartite graphs](https://arxiv.org/abs/2509.26445v2). It says: “is equal to the number of maximal simplices”
 
@@ -912,9 +912,9 @@ a parallelogram.”
 
 **Definition.** The Dehn invariant of a polyhedron is the sum over its edges of (edge length) ⊗ (dihedral angle). The sum lives in the tensor product ℝ ⊗ (ℝ / 2πℚ) over the integers. So angles count only modulo rational multiples of π, and the expression is additive in each factor.
 
-**Problem.** Dehn's theorem, answering Hilbert's third problem: a cube and a regular tetrahedron of equal volume cannot be cut into finitely many polyhedral pieces and reassembled into each other.
+**Problem.** A cube and a regular tetrahedron of equal volume cannot be cut into finitely many polyhedral pieces and reassembled into each other.
 
-**How the definition helps.** The tensor product is built so that each step of a dissection leaves the sum unchanged. A new edge inside the solid has angles summing to 2π, and one on a face has angles summing to π, so both give zero; splitting an edge or angle is handled by additivity. The cube's dihedral angle π/2 gives invariant zero, while the tetrahedron's angle arccos(1/3) is not a rational multiple of π.
+**How the definition helps.** Dissection preserves the tensor sum by additivity in lengths and angles (our own). New edges contribute zero because their angles total π or 2π. Cube angles contribute zero, while Niven’s theorem gives arccos(1/3) ∉ πℚ (our own). The tetrahedron contributes six equal nonzero simple tensors, since both factors are rational vector spaces (our own).
 
 **Wikipedia:** [Dehn invariant](https://en.wikipedia.org/wiki/Dehn_invariant). It says: “in either case this rational multiple of π does not contribute to the Dehn invariant.”
 
@@ -929,11 +929,11 @@ a parallelogram.”
 
 *Rules out counterexamples.* MSC 52B70 (Polyhedral manifolds), 52B05. arXiv math.MG, math.GT. Level 2: later undergraduate.
 
-**Definition.** A polyhedron is taken to be a solid whose surface is topologically a sphere and whose faces are topologically disks. Every convex polyhedron is of this kind.
+**Definition.** Here a polyhedron has a finite polygonal surface homeomorphic to a sphere, and its vertices, edges and disk faces form a cell decomposition.
 
-**Problem.** Every polyhedron in this sense satisfies Euler's formula V − E + F = 2, where V, E and F count its vertices, edges and faces.
+**Problem.** Every such polyhedron satisfies V − E + F = 2. Here V, E and F count its vertices, edges and faces.
 
-**How the definition helps.** Cauchy's proof works for any surface that is a sphere made of disk faces, so with this definition the formula holds. The shapes it bars break the formula: V − E + F is 1 for the tetrahemihexahedron, −6 for the small stellated dodecahedron and 0 for toroidal polyhedra. Lakatos called this refusal to apply the theorem monster-barring. He preferred to read the hidden condition off the proof and build it into the theorem.
+**How the definition helps.** Cauchy’s proof applies to this decomposition of a sphere (our own). A toroidal polyhedron has Euler characteristic zero, and the sphere condition excludes it (our own).
 
 **Wikipedia:** [Proofs and Refutations](https://en.wikipedia.org/wiki/Proofs_and_Refutations), [Imre Lakatos](https://en.wikipedia.org/wiki/Imre_Lakatos), [Euler characteristic](https://en.wikipedia.org/wiki/Euler_characteristic). It says: “Lakatos termed the polyhedral counterexamples to Euler's formula monsters and distinguished three ways of handling these objects: Firstly, monster-barring, by which means the theorem in question could not be applied to such objects.”
 
@@ -967,7 +967,7 @@ a parallelogram.”
 
 **Problem.** The translates of the half-open parallelepiped by the lattice vectors are disjoint and cover ℝⁿ.
 
-**How the definition helps.** The half-open choice puts each point in exactly one translate, because each real number has one integer part and one remainder in \[0, 1). A point x₁b₁ + ⋯ + xₙbₙ lies in the translate indexed by the integer parts of x₁, …, xₙ, and in no other (our own proof). Closed parallelepipeds cover ℝⁿ but overlap on their boundaries.
+**How the definition helps.** Each coordinate xᵢ splits uniquely into its floor and a remainder in \[0,1) (our own). The floors specify a lattice translate, and the remainders specify the point within it. This proves both coverage and disjointness.
 
 **Wikipedia:** [Lattice (group)](https://en.wikipedia.org/wiki/Lattice_%28group%29). It says: “A lattice fills the whole of ℝⁿ with equal tiles, copies of the n-dimensional parallelepiped spanned by the basis vectors”
 
@@ -991,7 +991,7 @@ a parallelogram.”
 
 ### Hole-free triangulations have tree duals
 
-**Remember:** One boundary leaves no cycle in the graph of triangles.
+**Remember:** Without holes or added vertices, shared edges connect the triangles in a tree.
 
 *Rules out counterexamples.* MSC 52C20 (Tilings in \\(2\\) dimensions (aspects of discrete geometry)). arXiv cs.CG. Level 2: later undergraduate.
 
@@ -1011,11 +1011,11 @@ a parallelogram.”
 
 *True by definition.* MSC 52C22 (Tilings in \\(n\\) dimensions (aspects of discrete geometry)). arXiv cs.CG. Level 2: later undergraduate.
 
-**Definition.** In a power diagram, compare squared distance to each site minus its weight. In a Voronoi diagram, compare ordinary distances to the sites.
+**Definition.** At each point x, the power diagram assigns all sites p minimizing ‖x − p‖² − wₚ, where wₚ is the real weight of p. The ordinary Voronoi diagram assigns all nearest sites.
 
 **Problem.** Every power diagram of finitely many Euclidean sites is a flat slice of an ordinary Voronoi diagram in one higher dimension.
 
-**How the definition helps.** Encoding weights as heights turns the weighted comparison into an ordinary nearest-site test. In our own construction, choose K at least as large as every weight. Place the site of weight w at height √(K − w) above its original position. By Pythagoras, its squared distance from a point at height zero equals its power there plus K. Adding the same constant preserves all minimizers, including ties.
+**How the definition helps.** A suitable height turns power comparisons into ordinary squared-distance comparisons (our own). Choose K at least as large as every weight and lift each site p to height √(K − wₚ). At height zero its squared distance becomes ‖x − p‖² − wₚ + K. The common constant preserves every minimizer, including ties.
 
 **Wikipedia:** [Power diagram](https://en.wikipedia.org/wiki/Power_diagram). It says: “interpreted as a planar cross-section of an unweighted three-dimensional Voronoi diagram”
 
@@ -1033,7 +1033,7 @@ a parallelogram.”
 
 **Problem.** Each power cell for finitely many sites is a convex polyhedron, possibly empty or unbounded.
 
-**How the definition helps.** Subtracting weights after squaring makes every pairwise comparison linear in the unknown point. In our own calculation, expanding both squares cancels the common term ‖x‖². Each inequality therefore describes a closed half-space for distinct sites. Their intersection is a convex polyhedron. Subtracting weights from unsquared distances can give curved boundaries.
+**How the definition helps.** Subtracting weights after squaring makes every pairwise comparison linear in the unknown point (our own). Expanding both squares cancels the common term ‖x‖². Each remaining inequality describes a closed half-space because the sites are distinct. Their finite intersection is a convex polyhedron.
 
 **Wikipedia:** [Power diagram](https://en.wikipedia.org/wiki/Power_diagram). It says: “the intersection of the halfspaces bounded by the radical axes”
 
@@ -1047,7 +1047,7 @@ a parallelogram.”
 
 *True by definition.* MSC 52C22 (Tilings in \\(n\\) dimensions (aspects of discrete geometry)), 52B11. arXiv math.MG, cs.CG. Level 2: later undergraduate.
 
-**Definition.** Take a finite set of distinct points, called sites, in Euclidean space. For each other site, take the closed half-space on this site's side of their perpendicular bisector. Define the Voronoi cell of the site as the intersection of these half-spaces. The usual definition is the set of points at least as close to this site as to any other.
+**Definition.** Fix a site p in a finite set of distinct Euclidean sites. For every other site q, take the closed half-space containing p bounded by the perpendicular bisector of p and q. The intersection of these half-spaces is the Voronoi cell of p.
 
 **Problem.** Each Voronoi cell of a finite set of distinct sites is a convex polyhedron. The cell may be unbounded.
 
@@ -1067,7 +1067,7 @@ a parallelogram.”
 
 **Problem.** For any finite set of distinct plane sites, the closed-disk Gabriel graph has no crossing edges.
 
-**How the definition helps.** Counting boundary points blocks even a crossing with a right angle. In our own proof, two crossing segments are diagonals of a convex quadrilateral. Its angles sum to 360°, so some angle is at least 90°. Its vertex lies in the closed disk whose diameter joins its two neighbors. The open-disk rule admits both diagonals of a square.
+**How the definition helps.** The closed disk excludes a crossing even when the angle at a third site is exactly 90° (our own). Crossing diagonals form a convex quadrilateral with some angle at least 90°. That angle’s vertex lies in the closed disk on the opposite diagonal as diameter. The open-disk rule would admit both diagonals of a square.
 
 **Wikipedia:** [Gabriel graph](https://en.wikipedia.org/wiki/Gabriel_graph). It says: “The Gabriel graph is a subgraph of the Delaunay triangulation.”
 
@@ -1085,7 +1085,7 @@ a parallelogram.”
 
 **Problem.** For finitely many distinct plane sites, every spanning tree of least total length lies in the relative neighborhood graph.
 
-**How the definition helps.** Strict comparison rules out only edges that admit a cheaper replacement. In our own proof, removing a tree edge splits the tree into two parts. A third site closer to both ends gives a shorter edge between the parts. That replacement contradicts minimality. Allowing equal distances in the rejection test would delete every edge of an equilateral triangle.
+**How the definition helps.** A third site strictly closer to both endpoints would give a shorter spanning tree (our own). Deleting the edge separates its endpoints into two components. Joining the third site to the endpoint in the other component reconnects them at lower cost. Rejecting ties would instead delete every edge of an equilateral triangle.
 
 **Wikipedia:** [Relative neighborhood graph](https://en.wikipedia.org/wiki/Relative_neighborhood_graph). It says: “the Euclidean minimum spanning tree is a subgraph of it”
 
@@ -1099,11 +1099,11 @@ a parallelogram.”
 
 *Rules out counterexamples.* MSC 52A01 (Axiomatic and generalized convexity). arXiv math.CO. Level 3: graduate.
 
-**Definition.** A closure operation enlarges sets, preserves inclusions, and gives the same result when applied twice. A finite convex geometry has such an operation, with the empty set closed, and the anti-exchange rule. The rule says that for distinct x and y outside a closed set C, if y is in the closure of C plus x, then x is not in the closure of C plus y.
+**Definition.** On a finite set, a closure operator enlarges subsets, preserves inclusion and satisfies cl(cl(A)) = cl(A) for every subset A. A convex geometry requires cl(∅) = ∅ and anti-exchange. For distinct x,y outside any closed C, y ∈ cl(C ∪ {x}) implies x ∉ cl(C ∪ {y}).
 
-**Problem.** In a finite convex geometry, each closed set has a unique inclusion-minimal generator: a subset whose closure is that set and whose proper subsets do not generate it.
+**Problem.** In a finite convex geometry, each closed set has a unique inclusion-minimal generator. Its closure is the given set, and no proper subset has that closure.
 
-**How the definition helps.** Anti-exchange prevents one missing generator from being replaced by other points. Compare two minimal generators, remove a point x of the first that the second omits, and add points of the second until x enters the closure (our own proof). Just before that step, the next point and x would trade places, which anti-exchange forbids. Without the rule, take linear span on two parallel nonzero vectors: each one alone is a minimal generator of the pair.
+**How the definition helps.** Suppose minimal generators A and B have the same closure, with x ∈ A outside B (our own). Starting from A without x, add elements of B until x first enters the closure. Immediately before adding y, the closure C excludes both x and y, yet y ∈ cl(C ∪ {x}) because C ∪ {x} contains A. Anti-exchange forbids x ∈ cl(C ∪ {y}), a contradiction.
 
 **Paper or page:** [Cospanning characterizations of antimatroids and convex geometries](https://arxiv.org/abs/2107.08556v1). It says: “is uniquely generated if and only if the operator φ satisfies the anti-exchange property.”
 
@@ -1113,7 +1113,7 @@ a parallelogram.”
 
 ### Nondegenerate equilibria satisfy Euler’s formula
 
-**Remember:** A sphere has no isolated equilibria about its center.
+**Remember:** At equilibrium, nondegeneracy means the distance Hessian has no zero eigenvalue.
 
 *Rules out counterexamples.* MSC 52A15 (Convex sets in \\(3\\) dimensions (including convex surfaces)). arXiv math.MG. Level 3: graduate.
 
@@ -1139,7 +1139,7 @@ a parallelogram.”
 
 **Problem.** Two nonempty closed convex sets in Euclidean space have a closed sum if they have no opposite nonzero recession directions.
 
-**How the definition helps.** Opposite recession directions are the only way summands can escape while their sums converge. In our own proof, divide escaping summands by the norm of the first and take a convergent subsequence of directions. Convexity and closedness give rays in both limiting directions. Without escape, a convergent subsequence of summands realizes the limiting sum. In our own counterexample, adding the horizontal axis to the region y ≥ exp(x) gives the open upper half-plane.
+**How the definition helps.** Unbounded summands with convergent sums yield opposite nonzero recession directions (our own). After passing to a subsequence, dividing both summands by the first summand’s diverging norm gives opposite unit limits. Convexity and closedness give rays in those directions, so the hypothesis forces bounded summands and a subsequence realizing the limit. Without the hypothesis, the horizontal axis plus the region y ≥ exp(x) gives the open upper half-plane (our own).
 
 **Wikipedia:** [Recession cone](https://en.wikipedia.org/wiki/Recession_cone). It says: “Let nonempty closed convex sets A,B ⊂ ℝᵈ such that for any y ∈ recc(A) ∖ {0} then −y ∉ recc(B), then A + B is closed.”
 
@@ -1171,7 +1171,7 @@ a parallelogram.”
 
 **Problem.** Within a fixed Euclidean ball, every sequence of nonempty compact convex sets has a subsequence converging in Hausdorff distance. Its limit is again nonempty, compact and convex.
 
-**How the definition helps.** Support functions turn the selection problem into compactness of a family of functions on the unit sphere. If all sets lie in a ball of radius R about the origin, the support values are bounded by R and change by at most Rδ when the direction moves by δ (our own proof). Arzelà–Ascoli gives a uniformly convergent subsequence, and its limit is again a support function. The distance identity turns uniform convergence into Hausdorff convergence.
+**How the definition helps.** Support functions of bodies inside an origin-centered ball of radius R are uniformly bounded by R and R-Lipschitz on the unit sphere (our own). Arzelà–Ascoli gives a uniformly convergent subsequence. The homogeneous extension of its limit is finite and sublinear, hence represents a nonempty compact convex set by the support-function representation theorem. The distance identity gives Hausdorff convergence.
 
 **Wikipedia:** [Support function](https://en.wikipedia.org/wiki/Support_function). It says: “The mapping τ is an isometry between this cone, endowed with the Hausdorff metric, and a subcone of the family of continuous functions on Sⁿ⁻¹ with the uniform norm.”
 
@@ -1187,7 +1187,7 @@ a parallelogram.”
 
 **Problem.** For 2 ≤ k ≤ d + 1 in ℝᵈ, well-separated sets have no transversal of dimension k − 2 to their convex hulls. The converse also holds.
 
-**How the definition helps.** Strict separation turns a question about a flat meeting many hulls into a test on two groups at a time. Points chosen from k hulls on one (k − 2)-dimensional flat are affinely dependent, and splitting the dependence by sign breaks strict separation for some split (our own proof). Conversely, if some split has no strict separator, the two compact hulls meet. Writing the common point as a convex combination on each side gives k dependent representatives, which lie on a (k − 2)-dimensional flat.
+**How the definition helps.** A transversal gives k affinely dependent representatives, one from each hull (our own). Splitting a dependence by sign gives intersecting group hulls, which preclude strict separation. Conversely, a nonseparable split has intersecting compact group hulls by strict separation. Grouping convex coefficients by set gives dependent representatives, with arbitrary choices for unused sets, hence a transversal of dimension k − 2.
 
 **Paper or page:** [Well-Separation and Hyperplane Transversals in High Dimensions](https://arxiv.org/abs/2209.02319v1). It says: “are well-separated if and only if their convex hulls have no (k − 2)-transversal.”
 
@@ -1221,7 +1221,7 @@ a parallelogram.”
 
 **Problem.** For a full-dimensional convex polytope, the projection body is a zonotope. This means it consists of all sums obtained by choosing one point from each of finitely many segments.
 
-**How the definition helps.** Support functions turn Cauchy's projection formula into a sum of contributions from individual segments. In our own calculation, a facet of area a and outward unit normal v contributes a\|u · v\|/2 in direction u. This is the largest dot product with u on the segment joining −av/2 to av/2. Adding segments adds their support functions. Cauchy's formula and the fact that support functions determine convex bodies give the result.
+**How the definition helps.** Cauchy’s projection formula expresses the projection body’s support function as a sum of segment support functions (our own). Each facet of area a with outward unit normal v contributes a\|u · v\|/2 in direction u. This is the support function of the segment from −av/2 to av/2. Support functions add under Minkowski addition and determine compact convex sets, so the projection body equals the sum of these segments.
 
 **Wikipedia:** [Projection body](https://en.wikipedia.org/wiki/Projection_body). It says: “the support function of ΠK in the direction u is the (n – 1)-dimensional volume of the projection of K”
 
@@ -1235,11 +1235,11 @@ a parallelogram.”
 
 *True by definition.* MSC 52A39 (Mixed volumes and related topics in convex geometry), 52A22. arXiv math.MG. Level 3: graduate.
 
-**Definition.** For a compact convex set K with interior in ℝⁿ, thicken K to distance t ≥ 0 and measure the volume. Steiner’s formula says this volume is a polynomial in t of degree n. Define the quermassintegral Wⱼ(K) as its coefficient of tʲ divided by the number of ways to choose j objects out of n. This gives one family that includes volume and a constant multiple of surface area.
+**Definition.** For a convex body K in ℝⁿ, Steiner’s formula expresses the volume within distance t ≥ 0 of K as a polynomial in t. For 0 ≤ j ≤ n, the quermassintegral Wⱼ(K) is the coefficient of tʲ divided by the binomial coefficient n choose j.
 
 **Problem.** Rigid motions leave each Wⱼ unchanged. Scaling the body by s &gt; 0 multiplies Wⱼ by sⁿ⁻ʲ.
 
-**How the definition helps.** Both rules come from comparing coefficients of the thickened volumes (our own proof). Rigid motions preserve volume and carry each thickened set to the thickened image. Thickening sK by t equals thickening K by t/s and scaling by s, which multiplies volume by sⁿ, so the coefficient of tʲ gains the factor sⁿ⁻ʲ. The work is Steiner's theorem that the volume is a polynomial.
+**How the definition helps.** Rigid motions preserve each thickened volume and hence every coefficient (our own). Thickening sK by t scales the t/s-thickening of K by s. Its volume gains a factor sⁿ, while replacing t by t/s contributes s⁻ʲ to the coefficient of tʲ. Steiner’s formula supplies the volume polynomial.
 
 **Wikipedia:** [Hadwiger's theorem](https://en.wikipedia.org/wiki/Hadwiger%27s_theorem). It says: “The quermassintegrals Wⱼ : 𝕂ⁿ → ℝ are defined via Steiner's formula”
 
@@ -1273,7 +1273,7 @@ a parallelogram.”
 
 **Problem.** Among compact convex sets with interior and a given volume in ℝⁿ, a ball has the least surface area.
 
-**How the definition helps.** The derivative definition turns the Brunn–Minkowski inequality for volumes directly into a bound on surface area. Brunn–Minkowski says V(t)¹⁄ⁿ ≥ V(0)¹⁄ⁿ + t·vol(B)¹⁄ⁿ, where B is the unit ball. The two sides agree at zero, so the right derivative of V(t)¹⁄ⁿ at zero is at least vol(B)¹⁄ⁿ. For a ball the inequality for volumes is an equality at every t, so it attains the bound. The work lies in Brunn–Minkowski and in the Minkowski–Steiner formula, which matches the derivative to ordinary boundary area.
+**How the definition helps.** Brunn–Minkowski gives V(t)¹⁄ⁿ ≥ V(0)¹⁄ⁿ + t·vol(B)¹⁄ⁿ for the unit ball B (our own). Equality at zero bounds the right derivative below by vol(B)¹⁄ⁿ. For fixed V(0), the chain rule gives the same lower bound on V′(0) for every body, and balls attain it. The Minkowski–Steiner formula identifies V′(0) with boundary area.
 
 **Wikipedia:** [Brunn–Minkowski theorem](https://en.wikipedia.org/wiki/Brunn%E2%80%93Minkowski_theorem). It says: “This agrees with the usual meaning of surface area by the Minkowski-Steiner formula.”
 
@@ -1287,11 +1287,11 @@ a parallelogram.”
 
 *True by definition. Confidence: medium.* MSC 52A41 (Convex functions and convex programs in convex geometry), 90C25, 90C46. arXiv math.OC. Level 3: graduate.
 
-**Definition.** The Fenchel conjugate f⋆ takes a slope s to the supremum of ⟨s, x⟩ − f(x) over x. A function is μ-strongly convex if subtracting μ‖x‖²/2 leaves a convex function. A gradient is L-Lipschitz if it changes by at most L times the distance moved.
+**Definition.** For μ &gt; 0, a function f on Euclidean space is μ-strongly convex if subtracting μ‖x‖²/2 leaves a convex function. Its Fenchel conjugate f⋆(s) is the supremum of ⟨s,x⟩ − f(x) over x. A gradient is L-Lipschitz if the distance between gradient values never exceeds L times the distance between their arguments.
 
 **Problem.** Let f be proper, closed and convex on Euclidean space. Then f is μ-strongly convex exactly when f⋆ is differentiable with a 1/μ-Lipschitz gradient.
 
-**How the definition helps.** Defining strong convexity by subtracting a quadratic lets every equivalent condition for convexity give one for strong convexity, as the abstract says. The conjugate swaps each slope with the point where that slope touches f (our own explanation). Adding the two strong convexity inequalities at two touching points bounds how far the points move when the slope changes (our own argument). The converse direction uses the paper's part (ii) and the fact that f equals its biconjugate.
+**How the definition helps.** Subtracting the quadratic makes the subgradient of f strongly monotone, with constant μ (our own). Conjugacy inverts this subgradient relation, and strong convexity and closedness give a unique maximizer for every slope. Strong monotonicity bounds the resulting gradient’s Lipschitz constant by 1/μ. Conversely, the Baillon–Haddad theorem for f⋆ gives strong monotonicity of the inverse relation, hence strong convexity of f by biconjugacy (our own).
 
 **Paper or page:** [On the Fenchel Duality between Strong Convexity and Lipschitz Continuous Gradient](https://arxiv.org/abs/1803.06573v1). It says: “If f is closed and strong convex with parameter μ, then f⋆ has a Lipschitz continuous gradient with parameter 1/μ.”
 
@@ -1305,11 +1305,11 @@ a parallelogram.”
 
 *True by definition. Confidence: medium.* MSC 52A41 (Convex functions and convex programs in convex geometry), 49N15. arXiv math.OC. Level 3: graduate.
 
-**Definition.** Take functions f and g that never equal −∞ and are finite somewhere. The infimal convolution at x is the infimum of f(x − y) + g(y) over y. Assume that the infimum never equals −∞. Its strict epigraph, the set of points above its graph, is the set of all sums of points from the two strict epigraphs.
+**Definition.** Take functions f and g on ℝⁿ that never equal −∞ and are each finite somewhere. Their infimal convolution h satisfies h(x) = infᵧ(f(x − y) + g(y)). Assume h never equals −∞. Its strict epigraph consists of pairs (x,t) with t &gt; h(x).
 
 **Problem.** The conjugate of the infimal convolution is the sum of the two conjugates. Convexity is not required.
 
-**How the definition helps.** The strict-epigraph definition makes the identity a sum rule for support functions. In our own proof, the conjugate at p is the supremum of ⟨p, x⟩ − t over the strict epigraph. On a sum of sets, this supremum splits into the two separate suprema. Compared with the formula that takes an infimum over y, the set formula puts the addition in the definition. The work in relating the definitions is to check that every height strictly above the infimum admits a split into two strict heights.
+**How the definition helps.** Strict epigraphs add under infimal convolution, so their support values add (our own). The conjugate at p is the supremum of ⟨p,x⟩ − t over the strict epigraph. On the sum of the two epigraphs this supremum splits into the two conjugates.
 
 **Wikipedia:** [Convex conjugate](https://en.wikipedia.org/wiki/Convex_conjugate). It says: “The (strict) epigraph of the infimal convolution of two functions is the Minkowski sum of the (strict) epigraphs of those functions.”
 
@@ -1339,7 +1339,7 @@ a parallelogram.”
 
 *Rules out counterexamples.* MSC 52B05 (Combinatorial properties of polytopes and polyhedra (number of faces, shortest paths, etc.)). arXiv math.CO. Level 3: graduate.
 
-**Definition.** An abstract polytope orders faces by containment, with a least face, a greatest face, and ranks increasing by one at each immediate inclusion. Between two faces two ranks apart there must be exactly two intermediate faces. For larger rank gaps, any two intermediate faces must be linked by a sequence of intermediate faces with consecutive faces comparable.
+**Definition.** An abstract polytope is a partially ordered set with least and greatest faces whose maximal chains all have the same finite length. Every interval of rank difference two has exactly two intermediate faces. In each interval of greater rank difference, any two intermediate faces are joined by a sequence of intermediate faces with consecutive terms comparable.
 
 **Problem.** In an abstract polytope, a flag is a maximal chain of faces. Any two flags can be joined by single-face changes that keep their common faces fixed.
 
@@ -1351,13 +1351,13 @@ a parallelogram.”
 
 ### Setting f₋₁ = 1 for the empty face makes Dehn–Sommerville a symmetry
 
-**Remember:** Count the empty face once, and the h-numbers read the same backwards.
+**Remember:** Count the empty face, shift the face polynomial by minus one, and read its coefficients.
 
 *Makes the theorem clean to state or prove.* MSC 52B05 (Combinatorial properties of polytopes and polyhedra (number of faces, shortest paths, etc.)), 52B11. arXiv math.CO, math.MG. Level 3: graduate.
 
-**Definition.** For a d-dimensional simplicial polytope, fᵢ is the number of faces of dimension i, and one sets f₋₁ = 1 for the empty face. The h-vector is a fixed linear change of the f-vector that starts with h₀ = f₋₁.
+**Definition.** For a d-dimensional simplicial polytope, let fⱼ count its j-dimensional proper faces and put f₋₁ = 1. Define h₀,…,h<sub>d</sub> by the polynomial identity ∑ᵢ₌₀ᵈ hᵢ t<sup>(d−i)</sup> = ∑ᵢ₌₀ᵈ f\_(i−1)(t−1)<sup>(d−i)</sup>.
 
-**Problem.** Dehn–Sommerville equations: the h-vector of a d-dimensional simplicial polytope satisfies hₖ = h\_(d−k) for every k.
+**Problem.** The h-vector of a d-dimensional simplicial polytope satisfies hₖ = h\_(d−k) for every integer k from 0 to d.
 
 **How the definition helps.** With the empty face counted, Euler's relation and the other linear relations among face numbers become one family with one formula. Euler's formula alone would otherwise need a separate constant term. The h-vector turns the whole family into a single symmetry. Proving the symmetry still needs work, for example Euler's relation applied to every face figure (our own remark).
 
@@ -1373,11 +1373,11 @@ a parallelogram.”
 
 *True by definition. Confidence: medium.* MSC 52B11 (\\(n\\)-dimensional polytopes), 52A20. arXiv math.MG. Level 3: graduate.
 
-**Definition.** Let P be a polytope of full dimension with 0 in its interior. Each facet, a face of one lower dimension, has an inequality a · x ≤ 1 with one vector a. Define the polar as the convex hull of these vectors. The usual definition is the set of all y with y · x ≤ 1 for every x in P.
+**Definition.** Let P be a full-dimensional polytope with 0 in its interior. Each facet has a unique supporting inequality a · x ≤ 1 normalized in this way. The polar of P is the convex hull of all these vectors a.
 
 **Problem.** The facets of P correspond one to one with the vertices of its polar.
 
-**How the definition helps.** With the hull definition, the polar is the hull of one vector per facet, so its vertices come from facets. Each vector is a vertex, because a facet inequality is never implied by the others. The work goes into proving that this hull equals the usual polar, using the facet description of P and the separating hyperplane theorem (our own route).
+**How the definition helps.** The vertices of the hull come from the facet normals normalized as above (our own). Each normal is a vertex because its facet inequality is irredundant. The separating hyperplane theorem identifies this hull with the set of all y satisfying y · x ≤ 1 throughout P (our own).
 
 **Wikipedia:** [Dual polyhedron](https://en.wikipedia.org/wiki/Dual_polyhedron). It says: “The vertices of one polytope correspond to the (n−1)-dimensional elements, or facets, of the other”
 
@@ -1393,7 +1393,7 @@ a parallelogram.”
 
 **Problem.** The normal fan of a Minkowski sum is the common refinement of the two normal fans. Its cones are intersections of cones from the two fans.
 
-**How the definition helps.** Grouping directions by their maximizing faces lets us describe all faces of a sum in one statement. In our own proof, a direction maximizes on the sum exactly at sums of maximizers on the two polytopes. Directions choosing a given pair of faces therefore satisfy both sets of constraints. Intersecting the two normal cones records those simultaneous constraints. The face correspondence for polytopes identifies the resulting collection with the normal fan of the sum.
+**How the definition helps.** A direction maximizes on the Minkowski sum exactly at sums of maximizing points from each summand (our own). Directions maximizing on every point of F + G therefore form the intersection of the normal cones of F and G. The face correspondence for polytopes identifies all these intersections with the cones of the normal fan of the sum.
 
 **Wikipedia:** [Normal fan](https://en.wikipedia.org/wiki/Normal_fan). It says: “the set of linear functionals w such that the set of points x in P that maximize w(x) contains F”
 
@@ -1409,7 +1409,7 @@ a parallelogram.”
 
 **Problem.** Every nonempty face of a zonotope is a zonotope. In particular, each facet, a face of one lower dimension, is a zonotope.
 
-**How the definition helps.** With the cube-image definition, each face is the image of a face of the cube, which is again a cube. If ℓ is largest on the zonotope A(\[0, 1\]ⁿ) along a face, then A maps the face of the cube where ℓ ∘ A is largest onto that face (our own proof). The definition as a sum of segments would first need a description of the faces of such sums.
+**How the definition helps.** Every maximizing face of the image is the image of a maximizing face of the cube (our own). For an affine map A and linear functional ℓ, maximize ℓ ∘ A on the cube. Its maximizers form a cube face, and A sends that face onto all maximizers of ℓ on the zonotope.
 
 **Wikipedia:** [Zonotope](https://en.wikipedia.org/wiki/Zonotope). It says: “The facets of any zonotope are themselves zonotopes of one lower dimension.”
 
@@ -1425,7 +1425,7 @@ a parallelogram.”
 
 **Problem.** The Ehrhart polynomial of a nonempty lattice polytope has constant term 1.
 
-**How the definition helps.** If Ehrhart's theorem covers t = 0, the constant term is the value at t = 0, and counting gives 1. Ehrhart's theorem says that L(P, t) agrees with a polynomial in t, but many statements prove this only for t ≥ 1. So the work goes into proving that the polynomial also agrees at t = 0, for example through the generating function of L(P, t) (our own comparison).
+**How the definition helps.** Ehrhart’s theorem for closed lattice polytopes identifies the polynomial with the lattice count for every nonnegative integer dilation (our own). At zero the dilated nonempty polytope is {0}, so evaluating the polynomial gives constant term one.
 
 **Wikipedia:** [Ehrhart polynomial](https://en.wikipedia.org/wiki/Ehrhart_polynomial). It says: “When P is a closed convex polytope, L₀(P)=1.”
 
@@ -1441,7 +1441,7 @@ a parallelogram.”
 
 **Problem.** The coefficient h\*ᵢ of the Ehrhart h\*-polynomial of the polytope equals the number of half-open pieces with i removed facets.
 
-**How the definition helps.** Removing selected facets replaces inclusion-exclusion on boundaries with a count of independent integer coefficients. In a dilated unimodular piece, lattice points have nonnegative integer vertex coefficients summing to the dilation factor (our own proof). Each removed facet forces one coefficient to be positive, which shifts that piece's counting series by one degree. Summing the disjoint pieces gives the numerator.
+**How the definition helps.** In a unimodular simplex, lattice points at dilation t correspond to nonnegative integer vertex coefficients summing to t (our own). Each removed facet makes its opposite coefficient positive. With i removed facets, the generating series is zⁱ/(1 − z)<sup>(d+1)</sup>, including the constant term only for the simplex containing q. Adding over the partition gives the Ehrhart series, whose numerator counts pieces by their number of removed facets.
 
 **Paper or page:** [Ehrhart theory of cosmological polytopes](https://arxiv.org/abs/2412.01602v2). It says: “h⁎ᵢ(P) = \|{j ∈ \[m\] : \|vis<sub>q</sub>(Δⱼ)\| = i}\|”
 
@@ -1455,7 +1455,7 @@ a parallelogram.”
 
 *Rules out counterexamples.* MSC 52B20 (Lattice polytopes in convex geometry (including relations with commutative algebra and algebraic geometry)). arXiv math.CO. Level 3: graduate.
 
-**Definition.** A full-dimensional rational polytope with zero in its interior is rational reflexive if its polar has integer vertices. The polar is the set of vectors whose dot product with every point of the polytope is at most one. Its Ehrhart numerator is the lattice-count series times (1 − z<sup>q</sup>)<sup>(d+1)</sup>, where q is the least integer making the vertices integral.
+**Definition.** A full-dimensional rational polytope P in ℝᵈ containing zero in its interior is rational reflexive if its polar has integral vertices. Its polar consists of vectors y satisfying y · x ≤ 1 for every x in P. Its Ehrhart numerator is its lattice-count series times (1 − z<sup>q</sup>)<sup>(d+1)</sup>, where q is the least positive integer for which qP has integral vertices.
 
 **Problem.** The Ehrhart numerator of a rational reflexive polytope is palindromic. Its coefficients read the same in either direction.
 
@@ -1477,7 +1477,7 @@ a parallelogram.”
 
 **Problem.** Let f and g be nonzero polynomials over a field. The Newton polytope of fg is the Minkowski sum of their Newton polytopes. A Minkowski sum is the set of all sums of one point from each set.
 
-**How the definition helps.** Support functions turn the claim into one equation per direction u. Fix u, and let the top part of f be the sum of its terms with the largest value of u · e. The top part of fg is the product of the top parts of f and g, which is not zero because a polynomial ring over a field has no zero divisors (our own proof). Support functions add under Minkowski sums and determine compact convex sets, which finishes the proof.
+**How the definition helps.** Support functions reduce the claim to addition of maximal exponents in each direction u (our own). Keep in each factor only terms maximizing u · e. Their product is nonzero over a field, and every other product term has smaller weight. Thus the support functions add, which characterizes the Minkowski sum.
 
 **Wikipedia:** [Newton polytope](https://en.wikipedia.org/wiki/Newton_polytope). It says: “Newt(fg) = Newt(f) + Newt(g)”
 
@@ -1489,7 +1489,7 @@ a parallelogram.”
 
 *Rules out counterexamples.* MSC 52B20 (Lattice polytopes in convex geometry (including relations with commutative algebra and algebraic geometry)). arXiv math.CO. Level 3: graduate.
 
-**Definition.** A unimodular triangulation divides a lattice polytope into simplices whose edges from one vertex form a lattice basis in their span. To obtain the h-polynomial in dimension d, sum one term per face, including the empty face. For j vertices, use t raised to j times (1 − t) raised to d + 1 − j. The h\*-polynomial multiplies the series counting lattice points in integer dilations by the (d + 1)st power of (1 − t).
+**Definition.** A unimodular triangulation T divides a lattice d-polytope P into simplices whose edge vectors at one vertex form a basis of their span’s lattice. Its h-polynomial sums tʲ(1 − t)<sup>(d+1−j)</sup> over all faces, including the empty face, with j the face’s vertex count. The h\*-polynomial of P is (1 − t)<sup>(d+1)</sup> times the generating series counting lattice points in nonnegative integer dilations of P.
 
 **Problem.** For a unimodular triangulation, the h-polynomial of the triangulation equals the h\*-polynomial of the lattice polytope.
 
@@ -1509,7 +1509,7 @@ a parallelogram.”
 
 **Problem.** Suppose a lattice polytope has a unimodular triangulation. Then every lattice point in its dilation by a positive integer m is a sum of m original lattice points.
 
-**How the definition helps.** A lattice basis gives each lattice point of the dilation nonnegative integer vertex coefficients summing to m (our own proof). Emptiness alone is not enough: Reeve's tetrahedron with vertices 0, (1,0,0), (0,1,0) and (1,1,2) has (1,1,1) in its double, but no two vertices sum to it (our own counterexample). The work is constructing the unimodular triangulation.
+**How the definition helps.** Choose a simplex containing x/m for a lattice point x of the dilation (our own). Its lattice basis makes the scaled barycentric coefficients of x/m integers, nonnegative and summing to m. These coefficients express x as the required sum. Reeve’s empty tetrahedron with vertices 0, (1,0,0), (0,1,0), (1,1,2) contains (1,1,1) in its double, yet no two vertices sum to it (our own).
 
 **Wikipedia:** [Reeve tetrahedra](https://en.wikipedia.org/wiki/Reeve_tetrahedra). It says: “No other lattice points lie on the surface or in the interior of the tetrahedron.”
 
@@ -1527,7 +1527,7 @@ a parallelogram.”
 
 **Problem.** A proper nonempty vertex subset spans a face exactly when its complementary Gale vectors have a weighted sum of zero with every weight positive.
 
-**How the definition helps.** In our own proof, the kernel basis turns a supporting affine function into one linear equation among the complementary vectors. A function exposing the face takes value zero on its vertices and positive values elsewhere. Its values form a vector orthogonal to every kernel column, so the positive values give the required weights. Conversely, extend the weights by zeros. Orthogonality puts this vector in the original matrix’s row space, so an affine function realizes those values.
+**How the definition helps.** A supporting affine function has value zero exactly on the face vertices and positive values elsewhere (our own). Its value vector belongs to the augmented vertex matrix’s row space, so it annihilates the kernel basis. This gives a positive dependence on the complementary Gale vectors. Conversely, extending the weights by zeros gives a vector orthogonal to the kernel, hence the values of an affine function exposing the face.
 
 **Paper or page:** [Eigenpolytope Universality and Graphical Designs](https://arxiv.org/abs/2209.06349v2). It says: “if and only if I is the support of a positive dependence (circuit) of 𝒱.”
 
@@ -1545,7 +1545,7 @@ a parallelogram.”
 
 **Problem.** With disjoint truncations, each cutting off just one vertex, the resulting tensor in ℝ ⊗ (ℝ/πℚ) is independent of the horospheres.
 
-**How the definition helps.** Truncation replaces the infinite lengths with finite ones whose changes cancel in the angle quotient. Moving one horosphere changes all three adjacent lengths by the same amount. Their angles form a Euclidean triangle on the horosphere and sum to π. The total change therefore vanishes, extending the usual finite-edge formula to ideal vertices.
+**How the definition helps.** Moving one horosphere changes all three incident truncated lengths by the same amount (our own). The three dihedral angles are the angles of its Euclidean link triangle. Their sum is π, so the change contributes a tensor whose angle factor vanishes modulo πℚ.
 
 **Wikipedia:** [Dehn invariant](https://en.wikipedia.org/wiki/Dehn_invariant). It says: “The result does not depend on the choice of horospheres for the truncation, as long as each one cuts off only a single vertex of the given polyhedron.”
 
@@ -1564,7 +1564,7 @@ a parallelogram.”
 
 **Problem.** Take finitely many sites spanning ℝᵈ, with every d + 1 affinely independent and no d + 2 on one sphere. Among triangulations using precisely those sites, the Delaunay triangulation uniquely minimizes the energy.
 
-**How the definition helps.** Defining the energy by height makes the lowest possible surface minimize the integral. In our own argument, every interpolated surface lies above the lower boundary of the lifted convex hull. Its lower faces project to the Delaunay triangulation, whose simplices have circumspheres with no sites inside. This lifting theorem supplies the geometric step. General position makes the lower faces simplices, so any different triangulation raises the surface on an open set.
+**How the definition helps.** The lower boundary of the lifted convex hull gives a pointwise lower bound for every interpolated height (our own). The lifting theorem identifies its projected faces with Delaunay cells. General position makes these cells simplices, so only the Delaunay triangulation attains the lower boundary everywhere. Any different triangulation has greater height on an open set and hence greater energy.
 
 **Paper or page:** [Delaunay-like Triangulation of Smooth Orientable Submanifolds by L1-Norm Minimization](https://arxiv.org/abs/2203.06008v3). It says: “the triangulation of P that minimizes the Delaunay energy is unique and is the Delaunay complex of P.”
 
@@ -1599,11 +1599,11 @@ a parallelogram.”
 
 *Rules out counterexamples.* MSC 52C25 (Rigidity and flexibility of structures (aspects of discrete geometry)), 05C10. arXiv math.CO, math.MG. Level 3: graduate.
 
-**Definition.** A bar-and-joint framework is a graph whose vertices are points in the plane and whose edges are rods of fixed length. It is rigid when the only motions that keep all rod lengths are rigid motions of the whole plane. It is generically rigid when this holds for almost all choices of the points.
+**Definition.** A plane framework places the vertices of a finite graph in ℝ² and fixes its edge lengths. It is rigid if every continuous motion preserving edge lengths keeps the framework congruent to its initial placement. A graph is generically minimally rigid if almost every placement is rigid and deleting any edge destroys generic rigidity.
 
-**Problem.** Laman's theorem: a graph is generically minimally rigid in the plane exactly when it has 2\|V\| − 3 edges and every set V′ of at least two vertices spans at most 2\|V′\| − 3 edges.
+**Problem.** For a simple graph with n ≥ 2 vertices, generic minimal rigidity in the plane requires exactly 2n − 3 edges. Together with that count, the condition that every k ≥ 2 vertices span at most 2k − 3 edges is necessary and sufficient.
 
-**How the definition helps.** The word generically removes the special point positions, so rigidity depends only on the graph. Without it, the same graph can be rigid in one position and flexible in another. The complete bipartite graph K₃,₃ passes Laman's count and is generically rigid, but it flexes when one side lies on a line and the other on a perpendicular line (our own example). The hard part is the proof that the count is enough for generic positions.
+**How the definition helps.** Generic rigidity ignores exceptional placements, so Laman’s theorem can characterize it by counts in the graph alone (our own). K₃,₃ satisfies the counts but admits flexible placements with its two vertex classes on perpendicular lines (our own). Laman’s theorem supplies the sufficiency proof.
 
 **Wikipedia:** [https://en.wikipedia.org/wiki/Laman<sub>graph</sub>](https://en.wikipedia.org/wiki/https%3A//en.wikipedia.org/wiki/Laman_graph). It says: “if one places the vertices of a Laman graph in the Euclidean plane, in general position, there will in general be no simultaneous continuous motion of all the points, other than Euclidean congruences, that preserves the lengths of all the graph edges.”
 
@@ -1619,11 +1619,11 @@ a parallelogram.”
 
 *True by definition.* MSC 52C35 (Arrangements of points, flats, hyperplanes (aspects of discrete geometry)). arXiv cs.CG, math.MG. Level 3: graduate.
 
-**Definition.** Define the zonotope as a sum of segments from zero to nonzero generating vectors. For each vector, draw the hyperplane through zero perpendicular to it. A chamber is a connected region off all these hyperplanes.
+**Definition.** A zonotope is the Minkowski sum of finitely many segments from zero to nonzero generating vectors. For each vector, take its perpendicular hyperplane through zero. A chamber is a connected component of the complement of their union.
 
 **Problem.** Chambers of this arrangement correspond bijectively to vertices of the zonotope.
 
-**How the definition helps.** Writing the zonotope as a sum of segments lets each direction choose an endpoint of every segment independently. Within a chamber, the signs of the dot products fix every endpoint, which gives a unique maximizing vertex (our own proof). Different chambers choose different endpoints and so different vertices. Every vertex uniquely maximizes some linear function, and a small perturbation moves it off all the hyperplanes.
+**How the definition helps.** A direction inside a chamber strictly prefers one endpoint of each segment, so their sum is its unique maximizer (our own). Crossing to another chamber changes at least one choice, strictly lowering the original direction’s dot product with the new sum. Every vertex uniquely maximizes some linear functional, which can be perturbed off all the hyperplanes while retaining that maximizer.
 
 **Wikipedia:** [Zonotope](https://en.wikipedia.org/wiki/Zonotope). It says: “The Minkowski sum of a finite set of line segments in ℝᵈ forms a type of convex polytope called a zonotope.”
 
@@ -1639,7 +1639,7 @@ a parallelogram.”
 
 **Problem.** An affine map sends the relative algebraic interior onto the relative algebraic interior of the image, if the original relative algebraic interior is nonempty.
 
-**How the definition helps.** In our own proof, the equivalent segment test works directly because affine maps preserve segment parameters. For the converse, start from the image of a known algebraic interior point. Extend the segment from this image past the desired image point, unless the two already coincide. Lift the far endpoint to the convex set. The lifted segment stays in the algebraic interior until its far endpoint, so interpolation supplies the desired lift.
+**How the definition helps.** Affine maps preserve extensions of segments, so they send relative algebraic interior points to relative algebraic interior points (our own). Fix one such point a, and let y be an interior point of the image in the same relative algebraic sense. If y differs from the image of a, extend the segment beyond y and lift its far endpoint to b. The corresponding point strictly between a and b lies in the relative algebraic interior and maps to y.
 
 **Paper or page:** [A note on faces of convex sets](https://arxiv.org/abs/2404.00832v3). It says: “Then rai(α(K)) = α(rai(K)).”
 
@@ -1653,7 +1653,7 @@ a parallelogram.”
 
 *True by definition.* MSC 52A05 (Convex sets without dimension restrictions (aspects of convex geometry)). arXiv math.MG. Level 4: research.
 
-**Definition.** A face is a convex subset of a convex set. If an interior point of a segment in the set belongs to the face, both endpoints must belong to it. The smallest face containing x consists of x and each point y whose segment to x extends beyond x within the set.
+**Definition.** A face F of a convex set K is a convex subset containing both endpoints of every segment in K whose relative interior meets F. For x ∈ K, the smallest face through x consists of x and all y ∈ K for which \[y,x\] extends past x inside K.
 
 **Problem.** For convex sets K and L containing x, the smallest face of their intersection through x equals the intersection of their smallest faces through x.
 
@@ -1663,35 +1663,17 @@ a parallelogram.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
-### Support values turn minimal convex environmental contours into linear programs
-
-**Remember:** Pick a point for each direction, then take their convex hull.
-
-*Makes the theorem clean to state or prove.* MSC 52A20 (Convex sets in \\(n\\) dimensions (including convex hypersurfaces)), 52A40, 90C05. arXiv math.NA, math.OC. Level 4: research.
-
-**Definition.** The support value of a compact convex set B in a unit direction u is the largest value of b·u for b in B. The mean width of B is twice the average support value over all directions. With finitely many directions, the method picks one point per direction and takes their convex hull.
-
-**Problem.** With finitely many sampled directions, the least-mean-width compact convex set whose support value in each direction u is at least C(u) is the solution of a linear program. The sampled solutions converge as the sampled directions fill the sphere.
-
-**How the definition helps.** Support values make both the constraints and the mean-width objective linear in the unknowns (our own). The program has variables for the chosen points and their support values, with linear constraints linking them. The convex hull of the chosen points then has the right support value in each sampled direction. The remaining work bounds the error from checking only finitely many directions.
-
-**Paper or page:** [Minimal Convex Environmental Contours](https://arxiv.org/abs/2308.01753v2). It says: “We solve this problem by reformulating it as a linear programming problem.”
-
-**Sources:**
-
-- [Åsmund Hausken Sande, Johan S. Wind, Minimal Convex Environmental Contours, arXiv:2308.01753v2 (2024)](https://arxiv.org/abs/2308.01753v2)
-
 ### Vertex multiplicities give an optimal colored Tverberg theorem for prime powers
 
 **Remember:** At prime powers, let vertices be reused up to a fixed budget.
 
 *Makes the theorem clean to state or prove.* MSC 52A37 (Other problems of combinatorial convexity), 55M35. arXiv math.CO, math.AT. Level 4: research.
 
-**Definition.** Color the vertices of a simplex, and call a face rainbow if it has at most one vertex of each color. Give each vertex a multiplicity, the number of chosen faces allowed to contain it. For r = pᵏ with p prime, each of d + 1 colors has p − 1 vertices of each multiplicity 1, p, …, pᵏ⁻¹, and one extra color has one vertex of multiplicity one.
+**Definition.** A rainbow face uses at most one vertex per color, and each vertex’s multiplicity bounds the number of chosen faces containing it. Fix a prime p and a positive integer k. Each of d + 1 colors has p − 1 vertices of each multiplicity pʲ for 0 ≤ j &lt; k. One extra color has one vertex of multiplicity one.
 
-**Problem.** Let N = k(p − 1)(d + 1). Every continuous map from this N-dimensional simplex to ℝᵈ sends some r rainbow faces to sets with a common point. The faces may share vertices, but no vertex appears more often than its multiplicity.
+**Problem.** Let r = pᵏ and N = k(p − 1)(d + 1). Every continuous map from this N-dimensional simplex to ℝᵈ sends some r rainbow faces to sets with a common point. No vertex occurs in more faces than its multiplicity allows.
 
-**How the definition helps.** The multiplicities let the theorem be stated for prime powers, which the disjoint version does not reach. They also shrink the simplex to dimension k(p − 1)(d + 1), below the classical (r − 1)(d + 1). When k = 1 every multiplicity is one, the faces are disjoint, and the result is the theorem of Blagojević, Matschke and Ziegler for primes. The proof still needs multiple chessboard complexes and a degree theory for equivariant maps.
+**How the definition helps.** Multiplicity bounds state the prime-power result while allowing controlled overlap (our own). For k = 1 all bounds are one, so the faces are disjoint. For k &gt; 1 the dimension k(p − 1)(d + 1) is below (r − 1)(d + 1). The proof uses multiple chessboard complexes and equivariant degree theory (our own).
 
 **Paper or page:** [Optimal colored Tverberg theorems for prime powers](https://arxiv.org/abs/2005.11913v3). It says: “to compensate for this reduction by allowing vertices to repeatedly appear a controlled number of times in different rainbow simplices.”
 
@@ -1727,7 +1709,7 @@ a parallelogram.”
 
 **Problem.** For 0 &lt; r ≤ π/2, the spherical Reuleaux triangle has the least area among wide r-disk domains on the unit sphere.
 
-**How the definition helps.** Each wide r-disk domain comes with explicit disks whose centers lie inside it, which makes the class easier to work with (our own reading). Convex domains of constant width r are wide r-disk domains (our own reading of the abstract). So the bound gives what the abstract calls 'a new and elementary proof of the Blaschke-Leichtweiss theorem' for constant width.
+**How the definition helps.** The center condition states the area bound for intersections of disks without requiring a separate constant-width hypothesis (our own). The quoted spherical area theorem supplies the extremal bound for this wider class. Applying it to constant-width domains gives the Blaschke–Leichtweiss bound (our own).
 
 **Paper or page:** [On a strengthening of the Blaschke-Leichtweiss theorem](https://arxiv.org/abs/2101.00538v2). It says: “In this paper we extend this result to the family of wide r-disk domains of 𝕊², where 0 &lt; r ≤ π/2.”
 
@@ -1741,11 +1723,11 @@ a parallelogram.”
 
 *True by definition. Confidence: medium.* MSC 52B05 (Combinatorial properties of polytopes and polyhedra (number of faces, shortest paths, etc.)), 06A11. arXiv math.MG, math.CO. Level 4: research.
 
-**Definition.** An abstract polyhedron is a partially ordered set of vertices, edges and faces, ordered by containment. Some local conditions make it look like a polyhedron.
+**Definition.** An abstract polyhedron is a ranked poset with least and greatest elements whose maximal chains contain five elements. Every interval of rank difference two has exactly two intermediate elements. In every interval, any two maximal chains are connected by changes of one element at a time.
 
-**Problem.** Every abstract polyhedron has a dual: the same set with the order reversed. The dual has the same Euler characteristic V − E + F and the same orientability.
+**Problem.** Reversing the order of any abstract polyhedron gives its dual and preserves orientability. For finite abstract polyhedra it also preserves the Euler characteristic V − E + F.
 
-**How the definition helps.** For abstract polyhedra the dual is the same set with the order reversed, so the dual exists at once. For geometric polyhedra, the dual must be constructed, and for some definitions of non-convex polyhedra it cannot be realized as a polyhedron of the same kind. So the hard question moves to realization in space.
+**How the definition helps.** Reversing order preserves ranks in reverse order, the interval conditions and the single-face changes (our own). It exchanges vertices and faces and keeps edges, preserving V − E + F. The same maximal chains with the same adjacencies form the flag graph, whose bipartiteness characterizes orientability (our own).
 
 **Wikipedia:** [Polyhedron](https://en.wikipedia.org/wiki/Polyhedron). It says: “Abstract polyhedra also have duals, obtained by reversing the partial order defining the polyhedron to obtain its dual or opposite order.”
 
@@ -1759,11 +1741,11 @@ a parallelogram.”
 
 *True by definition.* MSC 52B45 (Dissections and valuations (Hilbert's third problem, etc.)), 19E99. arXiv math.KT, math.GT. Level 4: research.
 
-**Definition.** A scissors group records polyhedra subject to cutting and reassembly. The reduced Dehn map splits a simplex into a sum of tensors pairing a proper face with its spherical link of perpendicular directions. Start with a hyperbolic factor followed by spherical factors. Apply the splitting map to each factor in turn and take the alternating sum, called the cobar differential.
+**Definition.** The reduced Dehn map Δ sends a simplex to a sum of tensors of proper faces and their spherical links. On a tensor with one hyperbolic factor followed by spherical factors, the cobar differential applies Δ to each factor separately. Add the results with sign (−1)<sup>(i−1)</sup> for the factor in position i, counting from one.
 
 **Problem.** In Goncharov’s hyperbolic Dehn complex, applying two successive differentials gives zero.
 
-**How the definition helps.** The alternating signs pair each two-step splitting with an equal term of opposite sign (our own). Splittings of different factors commute. Within one factor, choosing two nested faces gives the same tensor in either order. This identity is coassociativity. Goncharov identifies the geometric Dehn complex with this algebraic cobar construction, which supplies the comparison with the face-by-face calculation.
+**How the definition helps.** Coassociativity pairs successive splits within a factor by their common nested face flag (our own). Splits in different factors commute. In both cases the two orders give opposite signs, so all terms cancel. Goncharov’s identification of the Dehn complex with this cobar construction transfers the cancellation (our own).
 
 **Wikipedia:** [Dehn invariant](https://en.wikipedia.org/wiki/Dehn_invariant). It says: “This algebraic view of the Dehn invariant can be extended to higher dimensions”
 
@@ -1777,11 +1759,11 @@ a parallelogram.”
 
 *True by definition.* MSC 52B45 (Dissections and valuations (Hilbert's third problem, etc.)). arXiv math.CO. Level 4: research.
 
-**Definition.** Work with rational coefficients in the polytope algebra of Euclidean dimension d, where translates have the same class and the empty set represents zero. When two polytopes have convex union, their classes sum to the class of their union plus that of their intersection. Multiplication takes all sums of one point from each polytope. For a nonempty polytope P, let p be the logarithm of its class, using the power series around one.
+**Definition.** In the rational polytope algebra, translates have equal classes, the empty set represents zero, and multiplication represents Minkowski addition. For polytopes with convex union, their classes sum to the union class plus the intersection class. For nonempty P with class a, define p = ∑ⱼ₌₁ᵈ (−1)<sup>(j+1)</sup>(a − 1)ʲ/j, where d is the ambient dimension.
 
 **Problem.** For nonnegative integer n, the class of nP is the finite exponential of np. Its dependence on n is polynomial of degree at most the ambient dimension.
 
-**How the definition helps.** Using the logarithm replaces repeated multiplication of polytope classes by ordinary multiplication of the logarithm by n. In our own calculation, the class of nP is the nth power of the class of P because multiplication adds polytopes. Subtract one from the class of P. McMullen's theorem says the (d + 1)st power of this difference vanishes. This makes the logarithm and exponential finite sums.
+**How the definition helps.** Multiplication represents Minkowski addition, so the class of nP is aⁿ (our own). McMullen’s nilpotence theorem gives (a − 1)<sup>(d+1)</sup> = 0, hence p<sup>(d+1)</sup> = 0. The finite logarithm and exponential are inverse, so aⁿ = exp(np), a polynomial in n of degree at most d.
 
 **Paper or page:** [A pithy look at the Polytope Algebra](https://arxiv.org/abs/2111.02820v1). It says: “⟦P⟧ⁿ = ⟦nP⟧”
 
@@ -1800,7 +1782,7 @@ a parallelogram.”
 
 **Problem.** For a closed oriented hyperbolic manifold of odd dimension, the sum of the simplex classes in a geodesic triangulation has zero generalized Dehn invariant.
 
-**How the definition helps.** Grouping terms by face makes the cancellation visible because its links tile a whole sphere. Each simplex incident to that face contributes its sector of normal directions. A closed manifold has no boundary faces, so every such sum vanishes. In dimension three the links record the usual edge angles. Goncharov’s construction shows that the face-and-link sum respects cutting relations.
+**How the definition helps.** Group the face-and-link tensors by each face of the triangulation (our own). Since the manifold has no boundary, the incident links tile the full sphere of normal directions. A full sphere represents zero in the reduced angular group, so every group of terms vanishes. Goncharov’s construction makes this sum compatible with the cutting relations (our own).
 
 **Wikipedia:** [Dehn invariant](https://en.wikipedia.org/wiki/Dehn_invariant). It says: “This algebraic view of the Dehn invariant can be extended to higher dimensions”
 
@@ -1814,7 +1796,7 @@ a parallelogram.”
 
 *Makes the theorem clean to state or prove.* MSC 52C07 (Lattices and convex bodies in \\(n\\) dimensions (aspects of discrete geometry)). arXiv math.MG. Level 4: research.
 
-**Definition.** The dual lattice consists of vectors taking integer dot products with the original lattice. Lattice width minimizes the range of these dot products over nonzero dual vectors. Lattice diameter maximizes chord length measured in steps of the shortest lattice vector along the chord. The polar contains all vectors whose dot product with every point of the body is at most one.
+**Definition.** For a lattice Λ, its dual consists of vectors taking integer dot products with every element of Λ. Lattice width minimizes directional span over nonzero dual vectors, while lattice diameter maximizes chord length in units of a primitive lattice step along its line. The polar consists of vectors whose dot product with every point of the body is at most one.
 
 **Problem.** For a full-dimensional origin-symmetric polytope, the lattice width directions are the polar polytope’s lattice diameter directions in the dual lattice.
 
@@ -1832,7 +1814,7 @@ a parallelogram.”
 
 *True by definition.* MSC 52C17 (Packing and covering in \\(n\\) dimensions (aspects of discrete geometry)). arXiv math.MG. Level 4: research.
 
-**Definition.** Consider a metric space whose isometries can send any point to any other and whose invariant volume is unique up to scale. A stationary random packing has a probability law unchanged by these isometries. Define its density as the probability that an open packing ball covers a fixed point. Its center intensity is the expected number of centers per unit volume.
+**Definition.** In a homogeneous metric space, a stationary packing by equal open balls has a law invariant under all isometries. Its density is the probability that a fixed point lies in a packing ball. Relative to an invariant volume unique up to scale, its center intensity is the expected number of centers per unit volume.
 
 **Problem.** For a stationary packing by equal open balls in a homogeneous space with invariant volume, density equals center intensity times one ball’s volume.
 
@@ -1850,32 +1832,14 @@ a parallelogram.”
 
 *Rules out counterexamples.* MSC 52C22 (Tilings in \\(n\\) dimensions (aspects of discrete geometry)). arXiv math.MG. Level 4: research.
 
-**Definition.** A weighted Voronoi cell contains the points minimizing distance to its site minus the site’s weight. A nondegenerate site strictly wins at its own location. A strictly convex norm has no line segment on the boundary of its unit ball.
+**Definition.** In a normed plane, assign each site p a real weight wₚ and score ‖x − p‖ − wₚ at x. Its cell consists of all x where its score is minimal, and it is nondegenerate if it wins strictly at p. A norm is strictly convex if its unit sphere contains no nontrivial segment.
 
 **Problem.** In a plane with a strictly convex norm, the interior of either cell of two distinct nondegenerate sites misses the other cell.
 
-**How the definition helps.** In our own proof, strict convexity makes a small move from a tie toward either site favor that site. Off the line of the sites this follows from strict triangle inequality. On the line, nondegeneracy forces a tie to lie between the sites, where the distances change in opposite directions. Our own counterexample uses the maximum norm and unweighted sites (−1,0) and (1,0). Both cells contain the open region y &gt; \|x\| + 1 because both distances equal y.
+**How the definition helps.** At a tie off the line through the sites, moving toward either site favors it by strict triangle inequality (our own). On the line, nondegeneracy puts any tie between the sites, where the distances change in opposite directions. Thus no tie is interior to either cell. In the maximum norm, unweighted sites (−1,0) and (1,0) tie throughout the open region y &gt; \|x\| + 1 (our own).
 
 **Paper or page:** [Non-Euclidean Erdős-Anning Theorems](https://arxiv.org/abs/2401.06328v3). It says: “the interior of Vᵢ is disjoint from Vⱼ, and vice versa.”
 
 **Sources:**
 
 - [Non-Euclidean Erdős-Anning Theorems (Lemma 7)](https://arxiv.org/abs/2401.06328v3)
-
-### Spherical and hyperbolic discrete Laplacians keep the smooth conformal eigenvalue equation
-
-**Remember:** Choose edge weights so the smooth eigenvalue equation survives discretization.
-
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 52C26 (Circle packings and discrete conformal geometry), 53C18. arXiv math.DG, math.MG. Level 4: research.
-
-**Definition.** On a triangulated surface of constant curvature k ∈ {1, −1}, the discrete Laplacian combines differences of vertex values along edges with edge weights. As in the Euclidean case, the weights contain cotangents of angle combinations. They are nonnegative exactly when the triangulation is Delaunay.
-
-**Problem.** On a simply connected triangulated surface of curvature k ∈ {1, −1}, a vertex function u satisfies Δu = −2ku exactly when u is the conformal factor of a discrete conformal vector field. This matches the smooth equation Δf = −2kf.
-
-**How the definition helps.** The weights are chosen so that the discrete operator satisfies the same eigenvalue equation as the smooth one, with no correction terms. A discrete conformal vector field is a vertex motion that changes each edge length at a rate set by u at its ends. The work is to relate these edge-length equations to motions of the vertices.
-
-**Paper or page:** [Discrete Laplacians -- spherical and hyperbolic](https://arxiv.org/abs/2408.04877v2). It says: “We show that the conformal factors of discrete conformal vector fields on a triangulated surface of curvature k ∈ {−1,1} are −2k-eigenfunctions of our discrete Laplacians, exactly as in the smooth setting.”
-
-**Sources:**
-
-- [Ivan Izmestiev, Wai Yeung Lam, Discrete Laplacians -- spherical and hyperbolic, Journal of the London Mathematical Society (2025); arXiv:2408.04877](https://arxiv.org/abs/2408.04877v2)

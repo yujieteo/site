@@ -22,7 +22,7 @@
 
 *True by definition.* MSC 80A05 (Foundations of thermodynamics and heat transfer), 80A10. arXiv physics.class-ph. Level 1: early undergraduate.
 
-**Definition.** The zeroth law says that two systems each in thermal equilibrium with a third are in equilibrium with each other. With reflexivity, this makes thermal equilibrium an equivalence relation.
+**Definition.** For an equilibrium state x, its thermal equilibrium class consists of every state in thermal equilibrium with x. Thermal equilibrium is reflexive and symmetric, and the zeroth law gives transitivity.
 
 **Problem.** There is a quantity, temperature, that is equal for two systems exactly when they are in thermal equilibrium.
 
@@ -56,7 +56,7 @@
 
 *True by definition.* MSC 80A19 (Diffusive and convective heat and mass transfer, heat flow). arXiv physics.class-ph. Level 1: early undergraduate.
 
-**Definition.** Define a layer’s thermal resistance as its temperature drop divided by the steady rate of heat flow through it. For a flat layer of thickness L, area A, and constant thermal conductivity k, this gives L/(kA). Conductivity measures heat transport within the material.
+**Definition.** For nonzero steady heat flow, a layer’s thermal resistance is its temperature drop divided by the heat flow rate. For a uniform flat layer of thickness L, area A and constant conductivity k, the resistance is L/(kA), including at zero flow by continuity.
 
 **Problem.** In steady one-dimensional conduction with no internal heat sources, the total resistance of layers in series equals the sum of their resistances. Perfect contact introduces no extra resistance.
 
@@ -76,7 +76,7 @@
 
 **Problem.** Let the controller return to its initial state, with a single bath at absolute temperature T taking up all exported entropy. Resetting the bit sends at least kT ln 2 of heat to the bath, where k is Boltzmann’s constant.
 
-**How the definition helps.** Our own entropy balance uses the reset definition to count exactly k ln 2 of lost memory entropy. The second law requires the bath to gain at least that much. In our own counterexample, an auxiliary blank bit takes the original value as the first bit resets. This reversible swap preserves their joint entropy.
+**How the definition helps.** In our own entropy balance, reset removes k ln 2 of memory entropy, which the bath must gain by the second law. An auxiliary blank bit could instead take the original value in a reversible swap. That bit would retain the information, violating the requirement that the bath take up all exported entropy.
 
 **Wikipedia:** [Landauer's principle](https://en.wikipedia.org/wiki/Landauer%27s_principle). It says: “erasure resets a memory that may be in either of two distinguishable physical states into a fixed state”
 
@@ -108,7 +108,7 @@
 
 **Definition.** Define specific enthalpy as h = u + Pv, where u and v are internal energy and volume per unit mass. The term Pv includes the work of pushing fluid into or out of a region at pressure P.
 
-**Problem.** Suppose fluid flows steadily through an insulated valve with negligible changes in speed and height. If no moving part exchanges work with the fluid, its specific enthalpy stays constant. An ideal gas with positive heat capacity then keeps its temperature.
+**Problem.** In the steady, insulated valve model, assume unchanged kinetic and gravitational energy per unit mass and no work except pressure work. Specific enthalpy then stays constant across the valve. An ideal gas of fixed composition with positive heat capacity also keeps its temperature.
 
 **How the definition helps.** In our own balance, enthalpy groups the internal energy and pressure work that travel together through the valve. Our own account puts the work in the steady flow energy balance. The temperature claim separately uses that ideal gas enthalpy depends only on temperature.
 
@@ -138,7 +138,7 @@
 
 *True by definition.* MSC 80A10 (Classical and relativistic thermodynamics). arXiv cond-mat.stat-mech. Level 2: later undergraduate.
 
-**Definition.** For one species in equilibrium, subtract TS and μN from internal energy U to obtain the grand potential Ω. Here T is temperature, S is entropy, and N counts particles. The chemical potential μ is the derivative of U with respect to N at fixed S and volume V. The new potential uses T, V and μ as independent variables.
+**Definition.** For a single species in equilibrium, the grand potential is Ω = U − TS − μN. Here U is internal energy, T temperature, S entropy, μ chemical potential, and N particle number.
 
 **Problem.** Suppose internal energy U is differentiable and scales linearly when entropy, volume and particle number all scale together. For this homogeneous bulk system, Ω = −PV, where P is pressure.
 
@@ -172,11 +172,11 @@
 
 *True by definition.* MSC 80A10 (Classical and relativistic thermodynamics), 82B30. arXiv cond-mat.stat-mech, math-ph. Level 2: later undergraduate.
 
-**Definition.** Extensive variables, such as entropy S, volume V and particle numbers Nᵢ, add up over the parts of a system. A system is homogeneous when its internal energy U(S, V, N₁, …) is first-order homogeneous. That means that multiplying all extensive variables by λ multiplies U by λ.
+**Definition.** Internal energy U is homogeneous of degree one if U(λS,λV,λN) = λU(S,V,N) for every λ &gt; 0 and every admissible state. Here S denotes entropy, V volume, and N the vector of particle numbers.
 
-**Problem.** Gibbs–Duhem equation: S dT − V dP + Σ Nᵢ dμᵢ = 0, where T is temperature, P pressure and μᵢ the chemical potentials. So the intensive variables cannot all change independently.
+**Problem.** For a homogeneous equilibrium system with twice differentiable internal energy, the intensive variables satisfy S dT − V dP + ∑ᵢ Nᵢ dμᵢ = 0. Temperature T, pressure P and chemical potentials μᵢ therefore cannot all vary independently.
 
-**How the definition helps.** Euler's theorem for homogeneous functions gives U = TS − PV + Σ μᵢNᵢ at once. Comparing its differential with the fundamental relation dU = T dS − P dV + Σ μᵢ dNᵢ leaves the Gibbs–Duhem equation. So the equation is nearly the definition of homogeneity. What stays hard is to justify extensivity for real matter, which needs forces of short range (our own).
+**How the definition helps.** Euler’s theorem gives U = TS − PV + ∑ᵢ μᵢNᵢ. Comparing its differential with dU = T dS − P dV + ∑ᵢ μᵢ dNᵢ cancels the extensive-variable differentials, leaving the stated relation.
 
 **Wikipedia:** [Gibbs–Duhem equation](https://en.wikipedia.org/wiki/Gibbs%E2%80%93Duhem_equation). It says: “The Gibbs−Duhem equation applies to homogeneous thermodynamic systems. It does not apply to inhomogeneous systems such as small thermodynamic systems”
 
@@ -184,15 +184,15 @@
 
 ### Measuring hotness by β = 1/kT puts negative temperatures above infinite ones
 
-**Remember:** Heat always flows from smaller β to larger β.
+**Remember:** Coldness is entropy slope divided by Boltzmann’s constant, and heat flows toward greater coldness.
 
 *Makes the theorem clean to state or prove.* MSC 80A10 (Classical and relativistic thermodynamics), 82B30. arXiv cond-mat.stat-mech, math-ph. Level 2: later undergraduate.
 
-**Definition.** Thermodynamic temperature is defined by 1/T = dS/dE, the change of entropy per change of energy. Thermodynamic beta, or coldness, is β = 1/(kT), where k is Boltzmann's constant. When entropy falls as energy rises, as in a system of spins with bounded energy, T is negative.
+**Definition.** For an equilibrium system, coldness β is (1/k)∂S/∂E with volume, particle numbers and other external parameters fixed. Here S is entropy, E energy, and k Boltzmann’s constant. Where temperature T is finite and nonzero, β = 1/(kT).
 
-**Problem.** Heat flows from the system with the smaller β to the system with the larger β, with no exceptions. Stated with T this fails, because a system at negative temperature is hotter than any system at positive temperature.
+**Problem.** Consider two internally equilibrated systems coupled weakly enough that their entropies add, exchanging only heat spontaneously. For unequal β, the entropy-increasing transfer goes from smaller β to larger β. Thus a negative-temperature system is hotter than any positive-temperature system in this sense.
 
-**How the definition helps.** When energy dE passes from system 1 to system 2, the total entropy changes by k(β₂ − β₁)dE (our own derivation). The second law needs this to be positive, so heat flows toward larger β. As the energy rises, β runs continuously from +∞ through 0 to −∞, while T jumps from +∞ to −∞. Negative temperature needs an upper bound on the energy, so ordinary gases cannot have it (our own).
+**How the definition helps.** In our own derivation, transferring energy dE from system 1 to system 2 changes total entropy by k(β₂ − β₁)dE. Its sign gives the direction of spontaneous heat exchange. Every negative β lies below every positive β, and β passes through zero where reciprocal temperature vanishes.
 
 **Wikipedia:** [Negative temperature](https://en.wikipedia.org/wiki/Negative_temperature). It says: “Because it avoids the abrupt jump from +∞ to −∞, β is considered more natural than T.”
 
@@ -223,11 +223,11 @@
 
 *Rules out counterexamples.* MSC 80A10 (Classical and relativistic thermodynamics), 82B30. arXiv cond-mat.stat-mech, math-ph. Level 2: later undergraduate.
 
-**Definition.** A perfect crystal of a pure substance is one with a unique ground state. So it has exactly one microstate at absolute zero.
+**Definition.** A perfect crystal has an ordered, defect-free lattice. A nondegenerate ground state means that exactly one quantum state has the lowest energy.
 
-**Problem.** For every perfect crystal, the entropy S tends to 0 as T tends to 0. For glasses and for crystals with frozen disorder, such as ice, the entropy near absolute zero stays positive.
+**Problem.** For a pure perfect crystal in equilibrium with a unique ground state and a gap to excitations, entropy tends to zero as temperature approaches zero. Glasses and crystals with frozen disorder retain residual entropy when several configurations retain nonzero limiting probabilities.
 
-**How the definition helps.** With a unique ground state, Boltzmann's formula S = k ln Ω, where Ω counts the microstates, gives k ln 1 = 0. So the law is nearly the definition of 'perfect'. The word 'perfect' excludes glasses and crystals with defects or frozen disorder, such as ice, which keep a residual entropy. Pauling explained the residual entropy of ice by the many ways to place its hydrogen atoms (our own, from Pauling's paper).
+**How the definition helps.** In our own argument, equilibrium occupation concentrates on the unique ground state as temperature falls, so its entropy tends to zero. Frozen disorder can preserve uncertainty among distinct configurations. Pauling’s count of hydrogen arrangements in disordered ice illustrates that residual entropy.
 
 **Wikipedia:** [Third law of thermodynamics](https://en.wikipedia.org/wiki/Third_law_of_thermodynamics). It says: “Some crystals form defects which cause a residual entropy. This residual entropy disappears when the kinetic barriers to transitioning to one ground state are overcome.”
 
@@ -259,7 +259,7 @@
 
 **Definition.** Define thermal effusivity as √(kc), where k is thermal conductivity and c is heat capacity per unit volume. Conductivity relates heat flow to a temperature gradient. Heat capacity measures the energy needed for a unit temperature rise.
 
-**Problem.** Two homogeneous half-spaces placed in perfect planar contact have constant interface temperature. With uniform initial temperatures and constant material properties, that temperature is the mean weighted by the two effusivities.
+**Problem.** Consider two homogeneous half-spaces with uniform initial temperatures and constant material properties in perfect planar contact, exchanging energy only by heat conduction. Their interface temperature stays constant at the mean of their initial temperatures weighted by their respective effusivities.
 
 **How the definition helps.** Effusivity gives each material’s weight in the formula for the shared contact temperature. In our own derivation, the heat equation gives each side’s heat flux as its effusivity times its temperature drop divided by √(πt). Matching the fluxes cancels the common time factor in our own calculation.
 
@@ -315,17 +315,17 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
-### Carathéodory's approach defines heat as energy change minus adiabatic work
+### Energy change minus work defines heat
 
 **Remember:** Heat is whatever energy change work does not explain.
 
 *True by definition. Confidence: medium.* MSC 80A05 (Foundations of thermodynamics and heat transfer), 80A10. arXiv physics.class-ph. Level 3: graduate.
 
-**Definition.** Internal energy U is measured by adiabatic work, which is work done through walls that let no heat pass. The heat Q into a body is defined as the part of ΔU that the work W done on the body does not account for. So Q = ΔU − W.
+**Definition.** For a closed body at rest, adiabatic work done on the body determines its internal energy change between equilibrium states. For any process between those states, define heat into the body by Q = ΔU − W, where W is work done on it.
 
-**Problem.** With heat defined this way, the first law ΔU = Q + W holds for every process without taking heat as a primitive notion.
+**Problem.** For every such process, the first law ΔU = Q + W holds without taking heat as a primitive quantity.
 
-**How the definition helps.** With heat defined this way, the energy balance of the first law holds by definition. Before Carathéodory, textbooks treated heat, temperature and thermal equilibrium as jointly primitive notions. In our own reading, the physical content moves into one claim. The claim is that the adiabatic work between two states does not depend on the path, so U is a function of state.
+**How the definition helps.** Rearranging the definition gives ΔU = Q + W. In our own reading, the physical input is that adiabatic work between the same states fixes the same energy change. The work W in the heat definition belongs to the actual process.
 
 **Wikipedia:** [Heat](https://en.wikipedia.org/wiki/Heat). It says: “Although Carathéodory himself did not state such a definition, following his work it is customary in theoretical studies to define heat”
 
@@ -357,7 +357,7 @@
 
 *True by definition.* MSC 80A10 (Classical and relativistic thermodynamics). arXiv physics.class-ph. Level 3: graduate.
 
-**Definition.** Consider a closed system with fixed composition and negligible changes in speed and height. Its surroundings have constant temperature T₀ and pressure P₀. Form U + P₀V − T₀S from internal energy U, volume V and entropy S. Define exergy by subtracting the value of this expression at equilibrium with the surroundings.
+**Definition.** For a closed system of fixed composition at rest, let T₀ and P₀ denote ambient temperature and pressure. Exergy is U + P₀V − T₀S minus its value at equilibrium with the surroundings. Here U, V, and S denote internal energy, volume, and entropy.
 
 **Problem.** When heat exchange is only with the environment at T₀, the exergy drop equals the useful work delivered plus T₀ times the entropy generated. Useful work excludes the work against ambient pressure.
 
@@ -409,7 +409,7 @@
 
 *True by definition.* MSC 80A22 (Stefan problems, phase changes, etc.). arXiv cond-mat.stat-mech. Level 3: graduate.
 
-**Definition.** Let c denote concentration, and integrate f(c) + κ\|∇c\|²/2 over space to define energy E, with κ positive. The second term penalizes concentration gradients. Define chemical potential μ so a small change δc gives first-order energy change ∫μ δc. For periodic boundaries, integration by parts gives μ = f′(c) − κΔc, where Δ is the Laplacian.
+**Definition.** For periodic concentration c, define E(c) = ∫\[f(c) + κ\|∇c\|²/2\] dV, with differentiable f and constant κ &gt; 0. For every smooth periodic variation h, the chemical potential μ satisfies ∫μh dV = \[dE(c + εh)/dε\]₍ε₌₀₎. Integration by parts gives μ = f′(c) − κΔc.
 
 **Problem.** Suppose concentration changes only by flow with flux −M∇μ, where M is a nonnegative coefficient measuring mobility. For a smooth solution with periodic boundaries, E cannot increase.
 
@@ -427,11 +427,11 @@
 
 *Rules out counterexamples.* MSC 80A22 (Stefan problems, phase changes, etc.). arXiv cond-mat.stat-mech. Level 3: graduate.
 
-**Definition.** Count independent chemical components instead of counting every species. Each independent equilibrium reaction removes one independent species count when there are no other composition constraints. The components give enough independent amounts to describe the composition of every phase.
+**Definition.** The component count C is the minimum number of independent chemical constituents needed to express every phase composition. With S species, reaction rank R, and no other composition constraints, C = S − R.
 
 **Problem.** At regular equilibrium with temperature and pressure as the only external controls, F = C − P + 2. Here C counts independent components and P counts phases. F counts freely variable properties, such as temperature or composition, that do not depend on system size.
 
-**How the definition helps.** Our own count uses independent components to give each phase C − 1 composition variables. Adding temperature and pressure and subtracting C(P − 1) independent equilibrium conditions gives the rule. In our own example, solid calcium carbonate, solid calcium oxide and carbon dioxide gas coexist. One reaction relates the three species, leaving two components and one freedom. Counting all three species would predict two freedoms.
+**How the definition helps.** In our own count for unconstrained phase compositions, P(C − 1) composition variables and two controls face C(P − 1) independent equilibrium conditions. This gives F = C − P + 2. For coexisting calcium carbonate, calcium oxide and carbon dioxide, one independent reaction leaves two components. Counting three species as independent would give two freedoms instead of one.
 
 **Wikipedia:** [Phase rule](https://en.wikipedia.org/wiki/Phase_rule). It says: “the minimum number of independent species necessary to define the composition of all phases of the system.”
 
@@ -443,7 +443,7 @@
 
 *True by definition.* MSC 80A22 (Stefan problems, phase changes, etc.). arXiv physics.class-ph. Level 3: graduate.
 
-**Definition.** Consider a material at rest that melts at a fixed temperature. Describe stored thermal energy per unit volume by its enthalpy, including the heat needed to melt a unit volume. At melting temperature this gives distinct values for solid and liquid.
+**Definition.** Let Hₛ(T) and Hₗ(T) denote the solid and liquid enthalpies per unit volume at temperature T. At the melting temperature Tₘ, set Hₗ(Tₘ) − Hₛ(Tₘ) = L, the latent heat of melting per unit volume. Use the enthalpy of the local phase as the conserved energy density.
 
 **Problem.** For smooth phases and a smooth melting front at the melting temperature, weak energy conservation gives the Stefan condition. The heat flux jump supplies the latent heat required to move the front.
 
@@ -455,7 +455,7 @@
 
 ### Heat polynomials satisfy diffusion automatically
 
-**Remember:** Choose basis functions that already solve the heat equation.
+**Remember:** Read heat polynomials from the exponential where one time derivative equals two space derivatives.
 
 *True by definition.* MSC 80A23 (Inverse problems in thermodynamics and heat transfer). arXiv math.NA, math-ph. Level 3: graduate.
 
@@ -463,7 +463,7 @@
 
 **Problem.** Every finite linear combination of heat polynomials solves the heat equation ∂ₜu = ∂ₓ²u.
 
-**How the definition helps.** Our own check shows that the generating function solves the heat equation for every z. Differentiating once in time or twice in space multiplies it by z². Comparing powers of z gives the equation for every basis polynomial. Ordinary powers of position alone lack this property. The paper still has to control how well the fitted polynomials recover the solution.
+**How the definition helps.** In our own calculation, differentiating exp(zx + z²t) once in time or twice in space multiplies it by z². Comparing coefficients gives the heat equation for every heat polynomial. Linearity extends it to every finite linear combination.
 
 **Paper or page:** [A collocation heat polynomials method for one-dimensional inverse Stefan problems](https://arxiv.org/abs/2410.19397v1). It says: “This method constructs an approximate solution as a linear combination of heat polynomials, which satisfies the heat equation, with the coefficients determined using the collocation method.”
 
@@ -478,7 +478,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 80A05 (Foundations of thermodynamics and heat transfer). arXiv cond-mat.stat-mech. Level 4: research.
 
-**Definition.** Write X ≺ Y if a process from X to Y can leave only a raised or lowered weight as an external change. Choose reference states A and B with A ≺ B and A inaccessible from B. For X between them, prepare independent portions of A and B in proportions 1 − λ and λ. Define S(X) as the supremum of λ for which that pair can reach X.
+**Definition.** Write X ≺ Y if a process from X to Y leaves only a weight displacement as an external change, possibly zero. Choose A ≺ B with no reverse process, and take X between them. S(X) is the supremum of fractions λ allowing combined portions (1 − λ)A and λB to reach X adiabatically.
 
 **Problem.** Assume the Lieb–Yngvason axioms for accessible processes and comparability of states in the relevant scaled and combined systems. On the calibrated interval, X ≺ Y exactly when S(X) ≤ S(Y).
 
@@ -489,25 +489,6 @@
 **Sources:**
 
 - [Elliott H. Lieb and Jakob Yngvason, The physics and mathematics of the second law of thermodynamics](https://doi.org/10.1016/s0370-1573(98)00082-9)
-
-### Convexity makes melting fronts unique
-
-**Remember:** Find one minimum instead of solving several coupled front equations.
-
-*Makes the theorem clean to state or prove.* MSC 80A22 (Stefan problems, phase changes, etc.). arXiv math.AP. Level 4: research.
-
-**Definition.** In Panov’s one-dimensional melting model, each boundary between phases moves a constant times the square root of time. Define a scalar function of these ordered constants whose partial derivatives give the heat balance equations at the boundaries.
-
-**Problem.** Assume an increasing initial temperature step, positive heat conductivities and diffusivities, and nonnegative heats of phase change. Exactly one solution has a temperature profile depending only on position divided by the square root of time.
-
-**How the definition helps.** The scalar function turns several heat balance equations into one minimization problem. Panov proves that the function attains a minimum and is strictly convex on the allowed region. Our own proof sketch observes that the minimum is therefore the only point where all partial derivatives vanish.
-
-**Paper or page:** [On self-similar solutions of a multi-phase Stefan problem](https://arxiv.org/abs/2401.15338v1). It says: “and it correspond to the minimum of strictly convex and coercive function”
-
-**Sources:**
-
-- [Evgeny Yu. Panov, On self-similar solutions of a multi-phase Stefan problem](https://arxiv.org/abs/2401.15338v1)
-- [Evgeny Yu. Panov, On self-similar solutions of a multi-phase Stefan problem](https://doi.org/10.4171/nnu90/11)
 
 ### Freezing time smooths front jumps
 

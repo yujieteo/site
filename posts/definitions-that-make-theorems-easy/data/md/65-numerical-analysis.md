@@ -84,11 +84,11 @@
 
 *True by definition. Confidence: medium.* MSC 65B05 (Extrapolation to the limit, deferred corrections), 65D32. arXiv math.NA. Level 2: later undergraduate.
 
-**Definition.** Let T(h) be the trapezoidal estimate with spacing h. Define a Romberg estimate as the value at zero of the polynomial in h² that interpolates T at k + 1 spacings. The usual definition is the recursive Romberg table, which combines neighbouring estimates to remove one error term at a time. Neville's algorithm shows that the two agree.
+**Definition.** For k + 1 distinct positive spacings hᵢ, let T(hᵢ) denote the trapezoidal estimates. The Romberg estimate is p(0), where p has degree at most k and satisfies p(hᵢ²) = T(hᵢ) for every i.
 
 **Problem.** Suppose T(h) = I + c₁h² + … + cₖh²ᵏ + O(h²ᵏ⁺²), where I is the integral. Take spacings h₀, …, hₖ that are fixed distinct multiples of h. Then the Romberg estimate differs from I by O(h²ᵏ⁺²).
 
-**How the definition helps.** With the interpolation definition, the polynomial part of the error disappears at once: interpolation of degree k in h² reproduces I + c₁h² + … + cₖh²ᵏ exactly, so its value at zero is I. The weights for the value at zero depend only on the ratios of the spacings, so the remainders add only O(h²ᵏ⁺²). The work goes into the Euler–Maclaurin formula, which gives the even-power expansion, and into Neville's algorithm. The argument is our own.
+**How the definition helps.** Interpolation reproduces the degree-k polynomial part in h², whose value at zero is I. Fixed spacing ratios give fixed interpolation weights, so the weighted remainders remain O(h²ᵏ⁺²). Neville’s algorithm computes this same value recursively. This argument is our own.
 
 **Wikipedia:** [Romberg's method](https://en.wikipedia.org/wiki/Romberg%27s_method). It says: “by applying Richardson extrapolation repeatedly on the trapezium rule or the rectangle rule”
 
@@ -122,7 +122,7 @@
 
 **Definition.** For k distinct nodes, the divided difference is the coefficient of degree k − 1 in their polynomial interpolant, including when that coefficient is zero. In Newton form, appending a node adds this new coefficient times the product of x minus each old node.
 
-**Problem.** Let f have n continuous derivatives on an interval containing n distinct nodes and a further point x. The interpolation error f(x) − p(x) equals f⁽ⁿ⁾(ξ) ∕ n! times the product of x minus each node, for some interior ξ.
+**Problem.** Let p interpolate f at n distinct nodes with degree less than n. Suppose x differs from the nodes and f has n continuous derivatives on an interval containing them and x. Then f(x) − p(x) equals f⁽ⁿ⁾(ξ) ∕ n! times the product of x minus each node, for some interior ξ.
 
 **How the definition helps.** Adding x as a node makes the error at x equal the single term added in Newton form. In our own proof, interpolation at x identifies the new value with f(x). The mean value theorem for divided differences supplies the derivative at a point ξ between the outermost points.
 
@@ -134,7 +134,7 @@
 
 **Remember:** A zero of multiplicity m uses up m degrees.
 
-*Rules out counterexamples.* MSC 65D05 (Numerical interpolation). arXiv math.NA. Level 2: later undergraduate.
+*True by definition.* MSC 65D05 (Numerical interpolation). arXiv math.NA. Level 2: later undergraduate.
 
 **Definition.** In Hermite interpolation, a node with multiplicity m prescribes a value and the first m − 1 derivatives. With N conditions in total, the interpolating polynomial must have degree less than N.
 
@@ -152,7 +152,7 @@
 
 *True by definition. Confidence: medium.* MSC 65D05 (Numerical interpolation), 41A05. arXiv math.NA. Level 2: later undergraduate.
 
-**Definition.** Take distinct nodes x₀, …, xₙ and the polynomial of degree at most n that interpolates f at them. Define f\[x₀, …, xₙ\] as its coefficient of xⁿ. The usual definition is recursive: f\[x₀, …, xₙ\] = (f\[x₁, …, xₙ\] − f\[x₀, …, xₙ₋₁\]) / (xₙ − x₀).
+**Definition.** Given n+1 distinct nodes x₀, …, xₙ, interpolate the data by the unique polynomial of degree at most n. Its coefficient of xⁿ defines the divided difference f\[x₀, …, xₙ\], including when that coefficient vanishes.
 
 **Problem.** f\[x₀, …, xₙ\] does not change when the nodes are permuted.
 
@@ -202,7 +202,7 @@
 
 *True by definition. Confidence: medium.* MSC 65D05 (Numerical interpolation). arXiv math.NA. Level 2: later undergraduate.
 
-**Definition.** Given distinct nodes x₀, x₁, …, write the interpolating polynomial in Newton’s basis. Its jth basis polynomial is (x − x₀)(x − x₁)⋯(x − xⱼ₋₁), and the 0th is one. The Lagrange form instead uses, for each node, the polynomial equal to one there and zero at the other nodes.
+**Definition.** For distinct nodes x₀, …, xₙ, the Newton form expands their interpolating polynomial in the basis N₀, …, Nₙ. Set N₀(x) = 1 and Nⱼ(x) = (x − x₀)⋯(x − xⱼ₋₁) for 1 ≤ j ≤ n.
 
 **Problem.** Adding a new distinct node at the end of the list adds one Newton term and leaves the earlier coefficients unchanged.
 
@@ -218,11 +218,11 @@
 
 *True by definition. Confidence: medium.* MSC 65D17 (Computer-aided design (modeling of curves and surfaces)), 41A10. arXiv cs.GR, math.NA. Level 2: later undergraduate.
 
-**Definition.** Define the point B(t) of a Bézier curve by de Casteljau's algorithm. Replace each adjacent pair of control points P and Q by (1 − t)P + tQ, and repeat until one point remains. The polynomial definition is B(t) = Σ C(n, i) (1 − t)ⁿ⁻ⁱ tⁱ Pᵢ, with Bernstein polynomial weights.
+**Definition.** Given control points P₀, …, Pₙ, replace each adjacent pair P, Q by (1 − t)P + tQ. Repeat with the same t until one point remains. That point defines the Bézier curve value B(t).
 
 **Problem.** For 0 ≤ t ≤ 1, the curve point B(t) lies in the convex hull of the control points.
 
-**How the definition helps.** With de Casteljau's definition, each step forms convex combinations, so no step can leave the hull. For 0 ≤ t ≤ 1, the weights 1 − t and t are nonnegative and sum to 1. With the Bernstein definition the proof is also short, since the weights are nonnegative and sum to 1 by the binomial theorem. The work goes into the theorem that the two definitions agree.
+**How the definition helps.** Every step takes a convex combination when 0 ≤ t ≤ 1. The hull contains the initial points and therefore every subsequent point, including B(t). This argument is our own.
 
 **Wikipedia:** [Bézier curve](https://en.wikipedia.org/wiki/B%C3%A9zier_curve). It says: “The convex hull of the Bézier polygon contains the Bézier curve.”
 
@@ -234,11 +234,11 @@
 
 *True by definition.* MSC 65D17 (Computer-aided design (modeling of curves and surfaces)). arXiv math.NA, cs.NA. Level 2: later undergraduate.
 
-**Definition.** Evaluate a Bézier curve by repeatedly interpolating between neighboring control points, using parameter s in \[0,1\] at each round. Arrange successive rounds in a triangle, with the original points across the top. Read its left edge down and its right edge up to obtain two new lists of control points. This replaces expanding and rescaling the coordinate polynomials.
+**Definition.** At parameter s, replace each adjacent pair P, Q by (1−s)P+sQ until one point remains. Stack the rows with the control points on top. Subdivision takes the left edge downwards and the right edge upwards as its two control lists.
 
 **Problem.** The new Bézier curves reproduce the original on \[0,s\] and \[s,1\], with each parameter rescaled to \[0,1\].
 
-**How the definition helps.** In our own proof, each edge records the results of mixing the split parameter with one endpoint parameter. Allow a separate parameter in each interpolation round. The result is affine in each parameter and symmetric because adjacent rounds commute. For the left piece, substitute st in every slot and expand each slot between 0 and s. The coefficients are precisely those of repeated interpolation at t using the left edge. Expanding between s and 1 gives the right edge in reverse row order.
+**How the definition helps.** The Bézier blossom gives the triangle edges by filling its slots with copies of 0 and s, or s and 1. In our own argument, symmetry makes only the counts matter. Affinity in each slot then evaluates the left edge curve at t as B(st). The same expansion gives B((1−t)s+t) on the right.
 
 **Wikipedia:** [De Casteljau's algorithm](https://en.wikipedia.org/wiki/De_Casteljau%27s_algorithm). It says: “Note that the intermediate points that were constructed are in fact the control points for two new Bézier curves, both exactly coincident with the old one.”
 
@@ -250,7 +250,7 @@
 
 *True by definition.* MSC 65D17 (Computer-aided design (modeling of curves and surfaces)), 41A20. arXiv math.NA, cs.NA. Level 2: later undergraduate.
 
-**Definition.** Start with positively weighted control points, the points used to construct the curve. Multiply each point by its weight and append the weight as a final coordinate. Construct the ordinary Bézier curve on these vectors by repeated linear interpolation between neighbors. Divide its first coordinates by its last to recover the rational curve.
+**Definition.** For control points Pᵢ with weights wᵢ &gt; 0, form vectors (wᵢPᵢ, wᵢ). Evaluate their ordinary Bézier curve by repeated linear interpolation. Dividing the first coordinates by the last gives the rational Bézier curve wherever that coordinate is nonzero.
 
 **Problem.** Applying a projective change of coordinates to a rational Bézier curve is equivalent to applying its linear matrix to the weighted control vectors. The statement holds wherever the resulting last coordinate is nonzero.
 
@@ -298,11 +298,11 @@
 
 *True by definition.* MSC 65D32 (Numerical quadrature and cubature formulas), 41A55. arXiv math.NA. Level 2: later undergraduate.
 
-**Definition.** Let w be a positive weight on an interval, and let pₙ be the degree-n orthogonal polynomial for w. Take the n roots of pₙ as nodes. Define the weights by integrating the interpolating polynomial of degree at most n − 1 through those nodes. The rival definition solves 2n nonlinear moment equations for the nodes and weights together.
+**Definition.** Let pₙ have degree n and be orthogonal to every polynomial of lower degree for a positive interval weight with finite moments. The Gaussian rule integrates the degree-below-n interpolant at the n roots of pₙ against that weight.
 
 **Problem.** The n-node Gaussian rule integrates every polynomial of degree at most 2n − 1 exactly.
 
-**How the definition helps.** With nodes at the roots, the degree count splits into two easy parts. Divide a polynomial h of degree at most 2n − 1 by pₙ to get h = q pₙ + r, with q and r of degree at most n − 1. The term q pₙ integrates to zero by orthogonality and vanishes at every node, and the rule is exact for r because r equals its own interpolant. The work goes into showing that pₙ has n distinct roots inside the interval.
+**How the definition helps.** Division by pₙ writes each polynomial of degree below 2n as qpₙ+r, with q and r of degree below n. Orthogonality makes the integral of qpₙ zero, and its samples also vanish. The rule integrates r exactly because r interpolates itself. Our own argument uses the orthogonal polynomial root theorem to obtain n distinct interior nodes.
 
 **Wikipedia:** [Gaussian quadrature](https://en.wikipedia.org/wiki/Gaussian_quadrature). It says: “This proves that for any polynomial h(x) of degree 2n − 1 or less, its integral is given exactly by the Gaussian quadrature sum.”
 
@@ -316,7 +316,7 @@
 
 *True by definition.* MSC 65D32 (Numerical quadrature and cubature formulas), 41A55. arXiv math.NA. Level 2: later undergraduate.
 
-**Definition.** An n-point Gaussian rule approximates an integral by a weighted sum of samples and integrates polynomials through degree 2n − 1 exactly. At each sample point, choose the polynomial of degree below n that equals one there and zero at all other sample points. Define the corresponding weight as the weighted integral of its square. The usual formula integrates the polynomial itself.
+**Definition.** Take an n-node Gaussian rule for a positive interval weight w. For each node i, let ℓᵢ have degree below n, value one there, and value zero at every other node. Its quadrature weight is the integral of wℓᵢ² over the interval.
 
 **Problem.** Every Gaussian weight is positive for a positive weight function on an interval with the required finite moments.
 
@@ -346,7 +346,7 @@
 
 **Remember:** A square can vanish at every node and still have positive area.
 
-*Rules out counterexamples.* MSC 65D32 (Numerical quadrature and cubature formulas), 65D30. arXiv math.NA. Level 2: later undergraduate.
+*True by definition.* MSC 65D32 (Numerical quadrature and cubature formulas), 65D30. arXiv math.NA. Level 2: later undergraduate.
 
 **Definition.** A quadrature rule with n nodes uses a weighted sum of n function values. Its node polynomial is the product of x minus each node.
 
@@ -476,7 +476,7 @@
 
 ### Energy minimization makes conjugate gradient residuals mutually perpendicular
 
-**Remember:** Each new residual is perpendicular to all earlier search spaces.
+**Remember:** Minimize energy over successive powers of A applied to the initial residual.
 
 *True by definition.* MSC 65F10 (Iterative numerical methods for linear systems). arXiv math.NA. Level 2: later undergraduate.
 
@@ -498,11 +498,11 @@
 
 *Rules out counterexamples.* MSC 65F10 (Iterative numerical methods for linear systems). arXiv math.NA. Level 2: later undergraduate.
 
-**Definition.** In Jacobi iteration, solve each equation for its diagonal variable using old values for all others. Call the matrix strictly row diagonally dominant when each diagonal magnitude exceeds the sum of the others in its row.
+**Definition.** Jacobi iteration solves each row for its diagonal variable using the previous iterate for every other variable. Strict row diagonal dominance means \|aᵢᵢ\| &gt; ∑ⱼ≠ᵢ \|aᵢⱼ\| for every row i.
 
 **Problem.** For a strictly row diagonally dominant matrix, Jacobi iteration converges to the solution from every starting vector.
 
-**How the definition helps.** Strict dominance bounds each new error by a fixed fraction of the largest old absolute error. In our own proof, take the largest ratio of the absolute off-diagonal row sum to the diagonal magnitude. This ratio is below one, so repeated steps drive the errors to zero. With rows (1,1,0), (0,1,1), (1,0,1), strictness fails and an all-ones error changes sign each step.
+**How the definition helps.** Strict dominance bounds every new absolute error by q times the largest old absolute error. In our own proof, q is the largest ratio (∑ⱼ≠ᵢ \|aᵢⱼ\|)/\|aᵢᵢ\|, so q &lt; 1. Iterating drives the error to zero. With rows (1,1,0), (0,1,1), (1,0,1), equality permits an all-ones error to alternate in sign.
 
 **Wikipedia:** [Jacobi method](https://en.wikipedia.org/wiki/Jacobi_method). It says: “A sufficient (but not necessary) condition for the method to converge is that the matrix A is strictly or irreducibly diagonally dominant.”
 
@@ -510,7 +510,7 @@
 
 ### Relaxing toward coordinate minima explains the safe interval for SOR
 
-**Remember:** Go past the minimum, but not as far as its mirror point.
+**Remember:** Move a positive fraction of the displacement to the minimum, always less than twice.
 
 *Rules out counterexamples.* MSC 65F10 (Iterative numerical methods for linear systems). arXiv math.NA. Level 2: later undergraduate.
 
@@ -582,7 +582,7 @@
 
 **Problem.** The minimum-length least-squares solution to Ax = b is A\*b divided by σ², where A\* denotes the adjoint.
 
-**How the definition helps.** In our own proof, writing A = σU replaces the usual least-squares equations with one orthogonal projection. The matrix UU\* projects onto the range of A, so the closest attainable value to b is UU\*b. Applying U\* and dividing by σ gives the unique least-squares solution perpendicular to the kernel. This is A\*b divided by σ². The singular value decomposition justifies the representation A = σU.
+**How the definition helps.** Write A = σU by singular value decomposition, with U a partial isometry. In our own proof, UU\* projects b onto the range, giving the nearest attainable vector UU\*b. Its unique preimage perpendicular to the kernel is U\*b/σ = A\*b/σ². Every other preimage adds a nonzero kernel vector and has greater length.
 
 **Paper or page:** [An Optimal Least-Square Solver For Scaled Partial-Isometric Linear Systems](https://arxiv.org/abs/2507.01434v1). It says: “A matrix A ∈ ℂᵐˣⁿ is a partial isometry iff all its non-zero singular values (if any) are 1.”
 
@@ -592,9 +592,9 @@
 
 **Remember:** Each input column uses only the new columns built so far.
 
-*Makes the theorem clean to state or prove.* MSC 65F25 (Orthogonalization in numerical linear algebra), 65F05. arXiv math.NA. Level 2: later undergraduate.
+*True by definition.* MSC 65F25 (Orthogonalization in numerical linear algebra), 65F05. arXiv math.NA. Level 2: later undergraduate.
 
-**Definition.** In Gram–Schmidt, subtract from each column its perpendicular projection onto the span of the preceding columns. The remainder is perpendicular to those columns, and dividing it by its length gives the next column of Q.
+**Definition.** Start with linearly independent columns. For each column in order, subtract its orthogonal projection onto the span of the earlier columns and divide the remainder by its length. The resulting unit vectors form the columns of Q.
 
 **Problem.** Every real matrix A with independent columns has a reduced factorization A = QR. The columns of Q are mutually perpendicular unit vectors, and R is upper triangular.
 
@@ -610,7 +610,7 @@
 
 *Rules out counterexamples.* MSC 65F25 (Orthogonalization in numerical linear algebra), 65G50. arXiv math.NA, cs.NA. Level 2: later undergraduate.
 
-**Definition.** To reflect a nonzero real vector x onto the first coordinate axis, choose a target of length ‖x‖. Give its first coordinate the opposite sign to x₁. If x₁ is zero, either sign works. Take the difference between x and the target as the normal to the reflecting plane.
+**Definition.** For a nonzero real vector x, choose a target ±‖x‖e₁ on the first axis with first coordinate opposite in sign to x₁. Either target works when x₁ = 0. The Householder normal is x minus this target.
 
 **Problem.** The first coordinate of the normal has absolute value \|x₁\| + ‖x‖, so forming it cannot subtract nearly equal positive magnitudes.
 
@@ -626,11 +626,11 @@
 
 *True by definition. Confidence: medium.* MSC 65F35 (Numerical computation of matrix norms, conditioning, scaling), 15A12. arXiv math.NA. Level 2: later undergraduate.
 
-**Definition.** For a differentiable map f with x and f(x) nonzero, define κ(f, x) = ‖J(x)‖ ‖x‖ / ‖f(x)‖. Here J(x) is the derivative matrix, and ‖J(x)‖ is its induced norm. The perturbation definition takes the worst ratio of relative output change to relative input change, in the limit of small changes. For differentiable f the two definitions agree.
+**Definition.** For a map f differentiable at x with x and f(x) nonzero, define κ(f,x) = ‖Df(x)‖‖x‖/‖f(x)‖. Use the operator norm induced by the input and output norms.
 
-**Problem.** Let x, f(x) and g(f(x)) be nonzero. Then κ(g ∘ f, x) ≤ κ(g, f(x)) κ(f, x).
+**Problem.** Suppose f is differentiable at x and g at f(x), with x, f(x), and g(f(x)) nonzero. Then κ(g ∘ f,x) ≤ κ(g,f(x))κ(f,x).
 
-**How the definition helps.** With the derivative formula, the result is the chain rule plus one norm bound. The derivative of g ∘ f at x is the product of the two derivatives, and the norm of the product is at most the product of the norms. Multiplying and dividing by ‖f(x)‖ makes the two factors appear. The work goes into the proof that the derivative formula equals the limit of worst ratios; the argument is our own.
+**How the definition helps.** The chain rule expresses the composite derivative as Dg(f(x))Df(x). Its norm is at most the product of the derivative norms. In our own calculation, inserting ‖f(x)‖/‖f(x)‖ gives the two relative condition numbers.
 
 **Wikipedia:** [Condition number](https://en.wikipedia.org/wiki/Condition_number). It says: “the maximum ratio of the fractional change in f(x) to any fractional change in x”
 
@@ -658,7 +658,7 @@
 
 *True by definition. Confidence: medium.* MSC 65F55 (Numerical methods for low-rank matrix approximation; matrix compression), 15A18. arXiv math.NA. Level 2: later undergraduate.
 
-**Definition.** For an n × n matrix M, define the kth singular value σₖ by a max-min. It is the maximum, over k-dimensional subspaces S, of the minimum of ‖Mx‖ over unit vectors x in S. The usual definition takes square roots of the eigenvalues of M\*M, in decreasing order. The min-max theorem shows that the two agree.
+**Definition.** For an n × n matrix M and 1 ≤ k ≤ n, consider each k-dimensional subspace S of the input space. Find the minimum of ‖Mx‖ over unit vectors x in S, using Euclidean norms. The kth singular value σₖ is the maximum of these minima over S.
 
 **Problem.** For 0 ≤ k &lt; n, the smallest Euclidean operator-norm distance from M to a matrix of rank at most k is σₖ₊₁.
 
@@ -676,11 +676,11 @@
 
 *Rules out counterexamples.* MSC 65G30 (Interval and finite arithmetic), 65G50. arXiv math.NA, cs.NA. Level 2: later undergraduate.
 
-**Definition.** A floating-point number is subnormal when it is smaller than the smallest normal number. It uses the lowest exponent with a leading digit 0, so it has fewer significant digits. Gradual underflow is the rule of the IEEE 754 standard that keeps these numbers. They fill the gap between zero and the smallest normal number with even spacing.
+**Definition.** A nonzero subnormal uses the lowest normal exponent with a significand smaller in magnitude than a normalized significand. Gradual underflow retains all such representable values, equally spaced between zero and the smallest positive normal value and symmetrically on the negative side.
 
-**Problem.** Let x and y be floating-point numbers with y/2 ≤ x ≤ 2y. Then x − y is a floating-point number, so the computed difference is exact. This is the Sterbenz lemma.
+**Problem.** Suppose finite floating-point numbers x and y share a format with gradual underflow and satisfy y/2 ≤ x ≤ 2y. Their difference is representable, so correctly rounded subtraction is exact.
 
-**How the definition helps.** With subnormal numbers, every small difference of nearby floating-point numbers has a representation, so no rounding is needed. The page gives the counterexample: the difference of the two smallest positive normal numbers is subnormal, and flushing it to zero gives a wrong result. Our own: with gradual underflow, x − y = 0 also implies x = y. The lemma does not remove catastrophic cancellation, since inputs that already carry errors can still give a difference with a large relative error.
+**How the definition helps.** By the Sterbenz lemma, the difference of these nearby values fits the available precision, including at the lowest exponent. The two smallest positive normal numbers differ by one subnormal spacing. Flushing that difference to zero loses exactness.
 
 **Wikipedia:** [Sterbenz lemma](https://en.wikipedia.org/wiki/Sterbenz_lemma). It says: “In floating-point number systems without subnormal numbers, such as CPUs in nonstandard flush-to-zero mode instead of the standard gradual underflow, the Sterbenz lemma does not apply.”
 
@@ -695,11 +695,11 @@
 
 *True by definition.* MSC 65G50 (Roundoff error), 65F35. arXiv math.NA. Level 2: later undergraduate.
 
-**Definition.** The backward error of a computed answer y\* is the smallest change Δx in the data such that the exact answer for x + Δx is y\*. An algorithm is backward stable when this is small for all inputs. The condition number of the problem is the worst-case ratio of the relative change in output to the relative change in input.
+**Definition.** For nonzero x and f(x), the relative backward error η is the infimum of ‖d‖/‖x‖ over perturbations satisfying f(x+d) = y\*. The relative condition number κ is the limit superior of (‖f(x+d)−f(x)‖/‖f(x)‖)/(‖d‖/‖x‖) as nonzero d tends to zero. Backward stability bounds η by a small multiple of unit roundoff for all admissible inputs.
 
 **Problem.** To first order, the relative error of the computed answer is at most the condition number times the relative backward error. So a backward stable algorithm is accurate on every well-conditioned problem.
 
-**How the definition helps.** The backward error moves the rounding into the data, and the condition number says how far a change in the data moves the answer. The bound then follows from the definition of the condition number. So the analysis of the algorithm and the analysis of the problem separate. What stays hard is the rounding analysis that shows a given algorithm, such as Householder QR factorization, is backward stable.
+**How the definition helps.** Each data perturbation producing y\* also produces its entire forward error. In our own argument, the limiting ratio bounds that relative error by (κ+o(1))η as η tends to zero for finite κ. Backward stability supplies the bound on η.
 
 **Wikipedia:** [Numerical stability](https://en.wikipedia.org/wiki/Numerical_stability), [Condition number](https://en.wikipedia.org/wiki/Condition_number). It says: “An algorithm is forward stable if its forward error divided by the condition number of the problem is small.”
 
@@ -727,7 +727,7 @@
 
 *Rules out counterexamples.* MSC 65H04 (Numerical computation of roots of polynomial equations). arXiv math.NA, cs.NA. Level 2: later undergraduate.
 
-**Definition.** Start with a nonconstant real polynomial and its derivative. Repeatedly divide the preceding polynomial by the current one and append the negative remainder. Stop before appending a zero remainder. At a given point, ignore zero values when counting sign changes in this sequence.
+**Definition.** Start with a nonconstant real polynomial and its derivative. Divide each preceding term by the current term and append the negative remainder, stopping when division gives remainder zero. At each evaluation point, count sign changes after omitting all zero values.
 
 **Problem.** For a polynomial without repeated roots and endpoints that are not roots, the drop in sign changes across the interval counts its real roots.
 
@@ -777,7 +777,7 @@
 
 **Definition.** Call g a contraction if one factor q bounds all its distance ratios. In symbols, \|g(x) − g(y)\| ≤ q\|x − y\| for every pair and some 0 ≤ q &lt; 1.
 
-**Problem.** Start anywhere in a closed interval that g maps into itself, and set xₙ₊₁ = g(xₙ). For n ≥ 1, the distance to the unique fixed point from xₙ is at most q\|xₙ − xₙ₋₁\| ∕ (1 − q).
+**Problem.** Let g map a closed interval into itself with contraction factor q, and iterate xₙ₊₁ = g(xₙ) from any point there. For n ≥ 1, the distance from xₙ to the unique fixed point is at most q\|xₙ − xₙ₋₁\|/(1 − q).
 
 **How the definition helps.** The contraction factor bounds each new step by q times the preceding step. In our own argument, the sum of those bounds is a geometric series starting with q\|xₙ − xₙ₋₁\|. The contraction theorem identifies the limit as the unique fixed point.
 
@@ -791,7 +791,7 @@
 
 *True by definition.* MSC 65L06 (Multistep, Runge-Kutta and extrapolation methods for ordinary differential equations). arXiv math.NA. Level 2: later undergraduate.
 
-**Definition.** For y′ = f(t,y), define the discrete step using the slope at the average of the old and new times and states. In forward Euler the slope instead uses the old time and state.
+**Definition.** For y′ = f(t,y), an implicit midpoint step of size h from (t,u) chooses v satisfying v − u = h f(t+h/2,(u+v)/2).
 
 **Problem.** Suppose a quadratic function of the state is constant along all solutions of a smooth differential equation. Every well-defined implicit midpoint step preserves that function exactly.
 
@@ -855,15 +855,15 @@
 
 ### Zero-stability makes consistent multistep methods converge
 
-**Remember:** Check the roots of ρ, and convergence comes for free.
+**Remember:** Keep every root in the closed unit disk and every boundary root simple.
 
-*Rules out counterexamples.* MSC 65L20 (Stability and convergence of numerical methods for ordinary differential equations), 65L06. arXiv math.NA. Level 2: later undergraduate.
+*Makes the theorem clean to state or prove.* MSC 65L20 (Stability and convergence of numerical methods for ordinary differential equations), 65L06. arXiv math.NA. Level 2: later undergraduate.
 
-**Definition.** A linear multistep method computes each new value from several earlier values. Its first characteristic polynomial ρ satisfies the root condition when all roots have modulus at most 1 and the roots of modulus 1 are simple. A method is zero-stable if and only if the root condition holds.
+**Definition.** For a constant-step linear multistep method, let αⱼ multiply yₙ₊ⱼ on the solution side of its recurrence. Its first characteristic polynomial is ρ(z) = ∑ⱼ αⱼzʲ. The root condition requires \|z\| ≤ 1 at every root of ρ and multiplicity one whenever \|z\| = 1.
 
-**Problem.** Take a consistent linear multistep method whose starting values converge. Its numerical solution converges as the step size goes to 0 if and only if the method is zero-stable. This is the Dahlquist equivalence theorem.
+**Problem.** Consider a consistent linear multistep method with convergent starting values on a fixed finite interval and a Lipschitz right-hand side. Convergence for every such initial-value problem as the step size tends to zero is equivalent to zero-stability.
 
-**How the definition helps.** Zero-stability is a condition on one polynomial, so a hard limit statement becomes an algebra check. The definition excludes methods whose errors in the starting values grow without bound. Our own counterexample: the explicit two-step method yₙ₊₂ + 4yₙ₊₁ − 5yₙ = h(4fₙ₊₁ + 2fₙ) is consistent, even of order 3, but ρ has the root −5, so small errors grow like 5ⁿ. What stays hard is the proof that zero-stability and consistency are enough.
+**How the definition helps.** The root condition characterizes zero-stability using only the recurrence coefficients. Our own example has characteristic polynomial (z−1)(z+5), so starting errors can excite a growing mode. The Dahlquist equivalence theorem supplies both directions of the convergence criterion.
 
 **Wikipedia:** [Linear multistep method](https://en.wikipedia.org/wiki/Linear_multistep_method). It says: “Then, the numerical solution converges to the exact solution as h → 0 if and only if the method is zero-stable. This result is known as the Dahlquist equivalence theorem”
 
@@ -877,9 +877,9 @@
 
 *Rules out counterexamples.* MSC 65M12 (Stability and convergence of numerical methods for initial value and initial-boundary value problems involving PDEs), 65M06. arXiv math.NA. Level 2: later undergraduate.
 
-**Definition.** The numerical domain of dependence of a computed value is the set of initial grid points that can affect it. For an update that uses a grid point and its two immediate neighbors, this set grows by one grid interval per time step.
+**Definition.** The numerical domain of dependence comprises the initial grid points that can affect a computed value. If every update uses only its point and its two neighbors, the domain extends at most one additional interval per step.
 
-**Problem.** Consider transport at constant speed on the line, with the ratio of time step to grid spacing fixed during refinement. If the wave crosses more than one grid interval per step, the method cannot converge for all smooth initial data.
+**Problem.** Consider constant-speed transport on the line with an explicit update using only each point and its two immediate neighbors. Keep the ratio of time step to grid spacing fixed during refinement. If the wave crosses more than one grid interval per step, the method cannot converge for all smooth initial data.
 
 **How the definition helps.** The definition bounds how far information can travel through the grid (our own argument). At fixed positive time the reachable interval misses the initial position supplying the exact value. Choose smooth initial data supported near that position and equal to one there. The method sees the same data as for zero input, although the exact values differ by one.
 
@@ -899,7 +899,7 @@
 
 **Problem.** If a variation-diminishing update keeps the two end values fixed, it preserves monotonicity on a finite grid.
 
-**How the definition helps.** One bound on the sum of absolute jumps replaces checking the sign of every updated jump (our own argument). The absolute difference between the endpoints is a lower bound for this sum. A monotone input attains that bound. Fixed endpoints and a variation-diminishing update force equality again, so every nonzero jump has the same sign. The remaining work is proving the variation bound for the update.
+**How the definition helps.** For monotone data, total variation equals the absolute difference between the endpoints. This difference bounds total variation from below for every grid profile. Fixed endpoints preserve the lower bound, and the update cannot increase variation. Equality forces every nonzero jump to have the original sign, completing our own argument.
 
 **Wikipedia:** [Total variation diminishing](https://en.wikipedia.org/wiki/Total_variation_diminishing). It says: “If uⁿ is monotonically increasing (or decreasing) in space, then so is uⁿ⁺¹.”
 
@@ -929,11 +929,11 @@
 
 *True by definition. Confidence: medium.* MSC 65D05 (Numerical interpolation), 41A05. arXiv math.NA. Level 3: graduate.
 
-**Definition.** Let L be polynomial interpolation at fixed nodes, viewed as a map on continuous functions with the supremum norm. Define the Lebesgue constant Λ as the operator norm of L. The formula definition takes the maximum of Σ \|ℓⱼ(x)\|. Here ℓⱼ is the cardinal polynomial, which is 1 at node j and 0 at the other nodes.
+**Definition.** On a compact interval, let L interpolate at n+1 distinct nodes by a polynomial of degree at most n. The Lebesgue constant Λ is the operator norm of L for the supremum norm on continuous functions.
 
 **Problem.** For every continuous f, ‖f − Lf‖ ≤ (1 + Λ) E(f). Here E(f) is the supremum-norm distance from f to polynomials of the interpolation degree.
 
-**How the definition helps.** With the operator-norm definition, the bound is Lebesgue's lemma, a three-line proof. L fixes every polynomial p of the interpolation degree. So f − Lf = (f − p) − L(f − p), and the triangle inequality gives (1 + Λ)‖f − p‖. Minimize over p. The cited paper's Lemma 2 is the theorem that the two definitions agree, also for complex nodes. The error bound itself is our own here.
+**How the definition helps.** Interpolation fixes every polynomial p of degree at most n, so f − Lf = (f − p) − L(f − p). In our own proof, the triangle inequality bounds its norm by (1 + Λ)‖f − p‖. Taking the infimum over p gives the result.
 
 **Paper or page:** [Chebyshev admissible meshes and Lebesgue constants of complex polynomial projections](https://arxiv.org/abs/2311.06511v1). It says: “the “Lebesgue constant” of Lₙ, that is its uniform norm”
 
@@ -949,7 +949,7 @@
 
 **Definition.** Choose a real function of distance and center one copy at each data site. Form the square matrix whose entry for two sites is the function evaluated at their distance. Call the kernel strictly positive definite if every nonzero real vector has positive quadratic form for every finite set of distinct sites.
 
-**Problem.** Any real values prescribed at finitely many distinct sites determine exactly one linear combination of the centered functions that takes those values.
+**Problem.** For a strictly positive definite kernel, any real values at finitely many distinct sites determine exactly one interpolating linear combination of the centered functions.
 
 **How the definition helps.** A vector in the null space would give a zero quadratic form, so the square interpolation matrix is invertible (our own). A constant kernel gives an all-ones matrix and cannot fit unequal data at two sites (our own). The work moves to proving positive definiteness for the chosen kernel (our own).
 
@@ -959,15 +959,15 @@
 
 ### Lobatto endpoints limit exactness
 
-**Remember:** Two fixed ends cost two degrees of exactness.
+**Remember:** Fix both ends and choose interior roots orthogonal for the two endpoint factors.
 
-*Rules out counterexamples.* MSC 65D32 (Numerical quadrature and cubature formulas). arXiv math.NA. Level 3: graduate.
+*True by definition.* MSC 65D32 (Numerical quadrature and cubature formulas). arXiv math.NA. Level 3: graduate.
 
-**Definition.** An integration rule estimates an integral by a weighted sum of function values at selected points, called nodes. A Gauss–Lobatto rule on \[a, b\], with a &lt; b, fixes both endpoints and chooses the other nodes for maximum polynomial exactness.
+**Definition.** The n-node Gauss–Lobatto rule on \[a,b\] includes both endpoints and integrates the degree-below-n interpolant. Its interior nodes are the roots of the degree-(n−2) orthogonal polynomial for weight (x−a)(b−x).
 
 **Problem.** Any such weighted sum with n ≥ 2 distinct nodes including both endpoints misses some polynomial of degree 2n − 2. The Gauss–Lobatto rule integrates every polynomial through degree 2n − 3 exactly.
 
-**How the definition helps.** Fixing both endpoints lets a polynomial of degree 2n − 2 vanish at every node without changing sign, our own. Multiply (x − a)(b − x) by the squared product of the interior node factors, our own. Its quadrature is zero but its integral is positive, our own. Attaining the lower degree requires choosing the interior nodes by orthogonality for the weight (x − a)(b − x), our own.
+**How the definition helps.** Our own upper bound uses (x−a)(b−x) times the squared interior node polynomial: every sample vanishes, but the integral is positive. For a polynomial of degree at most 2n−3, subtract its interpolant. The difference is divisible by the full node polynomial, with quotient of degree below n−2 unless the difference vanishes. Interior-node orthogonality makes its integral zero.
 
 **Wikipedia:** [Gaussian quadrature](https://en.wikipedia.org/wiki/Gaussian_quadrature). It says: “an n point Gauss-Lobatto rule is only accurate for polynomials up to degree 2n − 3.”
 
@@ -997,7 +997,7 @@
 
 *Rules out counterexamples.* MSC 65D32 (Numerical quadrature and cubature formulas), 41A55. arXiv math.NA. Level 3: graduate.
 
-**Definition.** On each coordinate interval \[0,1\], approximate integration by a weighted sum of function values. Require nonnegative weights that sum to one. For each point of the product grid, multiply the corresponding coordinate weights. This adds nonnegativity to the usual requirement of integrating constants exactly.
+**Definition.** In each coordinate of \[0,1\]ᵈ, choose a finite quadrature rule with nonnegative weights summing to one. The product rule uses every tuple of coordinate nodes and assigns it the product of their weights.
 
 **Problem.** Apply each coordinate rule to the function left after earlier exact integrations. If each such rule has uniform error at most ε, the full rule has error at most dε in d dimensions.
 
@@ -1033,9 +1033,9 @@
 
 **Definition.** In the unit cube, count sample points in each box running from the origin to a chosen upper corner. Include each lower face and exclude each upper face. Nonnegative local discrepancy means the fraction of points in every such box is at least its volume.
 
-**Problem.** Reflect the points and boxes through the center of the cube. For any nonnegative weighted sum of reflected box indicators, the sample mean bounds the integral from above.
+**Problem.** Suppose the sample has nonnegative local discrepancy, and reflect both its points and its anchored boxes through the cube’s center. For any nonnegative weighted sum of reflected box indicators, the reflected sample mean bounds the integral from above.
 
-**How the definition helps.** Each box indicator equals one inside its box and zero outside, so its sample mean is the fraction counted (our own explanation). Reflection preserves both the count and the volume. Multiplying by nonnegative weights and adding preserves the inequalities. In our own counterexample, a single point at ½ lacks nonnegative local discrepancy, and its sample mean for the indicator of (¾, 1\] is zero, below the integral ¼.
+**How the definition helps.** Reflection preserves each box count and volume, so each reflected indicator has sample mean at least its integral. Nonnegative weights preserve the inequality on summation. In our own counterexample, a single point at ½ misses (¾,1\], whose indicator has integral ¼.
 
 **Paper or page:** [Computable error bounds for quasi-Monte Carlo using points with non-negative local discrepancy](https://arxiv.org/abs/2309.04209v2). It says: “Let P̃ₙ have non-negative local discrepancy.”
 
@@ -1049,7 +1049,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 65D32 (Numerical quadrature and cubature formulas), 65F15. arXiv math.NA, cs.NA. Level 3: graduate.
 
-**Definition.** Use a positive weight on a bounded interval of positive length, with finite integral. Choose polynomials of degrees zero through n that are orthonormal for this weight. On polynomials of degree below n, multiply by x and project orthogonally back onto that space. In the degree-ordered basis this gives the Jacobi matrix, which has nonzero entries only on the main diagonal and its two neighboring diagonals.
+**Definition.** Take a positive integrable weight on a bounded interval of positive length. On polynomials of degree below n, multiply by x and project orthogonally back onto that space using the weighted inner product. The Jacobi matrix represents this operator in a degree-ordered orthonormal polynomial basis.
 
 **Problem.** The n sampling points of the Gaussian integration rule are the eigenvalues of the Jacobi matrix.
 
@@ -1071,7 +1071,7 @@
 
 **Problem.** If the augmented block is invertible, multiplying its inverse by B on the left and Bᵀ on the right gives W⁻¹.
 
-**How the definition helps.** The added term gives the entire action of M on the null space of A (our own argument). This avoids calculating the full inverse. For any y, choose z in that null space with Bz = W⁻¹y. Then Mz = Bᵀy, so applying B to M⁻¹Bᵀy gives W⁻¹y. The work lies in checking the bijection on the null space.
+**How the definition helps.** On the null space of A, the added term gives the entire action of M. In our own proof, for each y choose z there with Bz = W⁻¹y. Then Mz = Bᵀy, so BM⁻¹Bᵀy = Bz = W⁻¹y.
 
 **Paper or page:** [Augmentation-Based Preconditioners for Saddle-Point Systems with Singular Leading Blocks](https://arxiv.org/abs/2206.13624v1). It says: “B(A + BᵀWB)⁻¹Bᵀ = W⁻¹.”
 
@@ -1085,11 +1085,11 @@
 
 *True by definition.* MSC 65F10 (Iterative numerical methods for linear systems). arXiv math.NA. Level 3: graduate.
 
-**Definition.** On real coordinate space, choose a differentiable function whose graph lies above each tangent plane by at least a fixed positive multiple of squared distance. Write D(x,y) for the gap at y above the tangent plane at x. The usual Bregman projection minimizes D(x,z) over a nonempty closed convex set C. Equivalently, choose z in C satisfying D(z,y) + D(x,z) ≤ D(x,y) for every y in C.
+**Definition.** For differentiable strongly convex f on ℝⁿ, define D(x,y) = f(y)−f(x)−∇f(x)·(y−x). The Bregman projection of x onto a nonempty closed convex set C minimizes D(x,z) over z in C.
 
-**Problem.** Project onto selected equations and pick any exact solution. The error to that solution falls by at least the error from the old iterate to the new one.
+**Problem.** Project an iterate onto the solution set of selected linear equations. For every exact solution of the full system, the Bregman error decreases by at least the divergence from the old iterate to its projection.
 
-**How the definition helps.** The inequality defining the projection gives the error bound as soon as the chosen set contains every exact solution. In our own application, C imposes selected linear combinations of the original equations. The equivalence with minimization follows by expanding the three gaps and applying the first-order condition for a convex minimum.
+**How the definition helps.** In our own proof, let z project x and let y be any exact solution, so y belongs to C. The minimum condition gives (∇f(z)−∇f(x))·(y−z) ≥ 0. Expanding the divergences identifies this product with D(x,y)−D(x,z)−D(z,y), which gives the decrease.
 
 **Paper or page:** [Adaptively Sketched Bregman Projection Methods for Linear Systems](https://arxiv.org/abs/2112.14456v1). It says: “D<sub>f</sub><sup>{\\hat{x}\_\*}</sup>(\\hat{x},y)\\leq D<sub>f</sub><sup>x\_\*</sup>(x,y) - D<sub>f</sub><sup>x\_\*</sup>(x,\\hat{x}),\\quad \\forall y\\in C.”
 
@@ -1103,11 +1103,11 @@
 
 *True by definition. Confidence: medium.* MSC 65F10 (Iterative numerical methods for linear systems), 15A18. arXiv math.NA. Level 3: graduate.
 
-**Definition.** Let A be real symmetric positive definite, and solve Ax = b with exact solution x\*. Start from x₀ with residual r₀ = b − Ax₀, and let K(k) be the span of r₀, Ar₀, …, Aᵏ⁻¹r₀. Define the kth conjugate gradient iterate as the point of x₀ + K(k) that minimizes the energy norm √(eᵀAe) of the error e. The Hestenes–Stiefel algorithm computes these points with short recurrences instead.
+**Definition.** For real symmetric positive definite A, let r₀ = b−Ax₀ and let K(k) span r₀, Ar₀, …, Aᵏ⁻¹r₀ for k ≥ 1. The kth conjugate gradient iterate minimizes √(eᵀAe) over x in x₀+K(k), where e = x−A⁻¹b.
 
 **Problem.** If A has d distinct eigenvalues, exact conjugate gradients reach the solution in at most d steps.
 
-**How the definition helps.** With the minimization definition, it is enough to show that the exact correction lies in K(d). Let p be the polynomial of degree at most d − 1 with p(λ) = 1/λ at each distinct eigenvalue λ; since A is diagonalizable, p(A) = A⁻¹. So x\* − x₀ = A⁻¹r₀ = p(A)r₀ lies in K(d), and the minimizer at step d is x\*. The bound by distinct eigenvalues and its proof are our own; the work goes into proving that the short recurrences give the minimizers.
+**How the definition helps.** Interpolate 1/λ at the d distinct eigenvalues by a polynomial p of degree below d. The spectral theorem gives p(A) = A⁻¹, so the exact correction p(A)r₀ belongs to K(d). The minimum error there is zero. Our own distinct-eigenvalue bound uses the equivalence between these minimizers and the conjugate gradient recurrence.
 
 **Wikipedia:** [Conjugate gradient method](https://en.wikipedia.org/wiki/Conjugate_gradient_method). It says: “Conjugate gradient, assuming exact arithmetic, converges in at most n steps, where n is the size of the matrix of the system”
 
@@ -1121,11 +1121,11 @@
 
 *True by definition.* MSC 65F10 (Iterative numerical methods for linear systems). arXiv math.NA. Level 3: graduate.
 
-**Definition.** GMRES (the generalized minimal residual method) solves Ax = b from a first guess x₀. Let r₀ = b − Ax₀, and let Kₙ be the span of r₀, Ar₀, …, Aⁿ⁻¹r₀. Define the nth GMRES iterate xₙ as the point of x₀ + Kₙ with the smallest Euclidean residual ‖b − Axₙ‖. The algorithm computes this point with the Arnoldi process, which builds an orthonormal basis of Kₙ, and a small least-squares problem.
+**Definition.** For Ax = b and starting point x₀, set r₀ = b−Ax₀. Let K₀ = {0} and let Kₙ span r₀, Ar₀, …, Aⁿ⁻¹r₀ for n ≥ 1. A GMRES iterate xₙ minimizes ‖b−Ax‖₂ over x in x₀+Kₙ.
 
 **Problem.** In exact arithmetic, the GMRES residual norm never increases from one step to the next.
 
-**How the definition helps.** With the minimizer definition, the result is a comparison of two minima. The space Kₙ lies inside Kₙ₊₁, so xₙ is a candidate at step n + 1. Hence the best residual at step n + 1 is no larger. Wikipedia makes this argument. The work goes into the proof that the Arnoldi process and the small least-squares problem give this minimizer.
+**How the definition helps.** Each search space contains the preceding one. The old iterate therefore remains a candidate, and the minimum residual norm cannot increase.
 
 **Wikipedia:** [Generalized minimal residual method](https://en.wikipedia.org/wiki/Generalized_minimal_residual_method). It says: “Since every subspace is contained in the next subspace, the residual does not increase.”
 
@@ -1139,11 +1139,11 @@
 
 *True by definition. Confidence: medium.* MSC 65F15 (Numerical computation of eigenvalues and eigenvectors of matrices). arXiv math.NA. Level 3: graduate.
 
-**Definition.** Let A be Hermitian and v a starting vector. The Krylov vectors are v, Av, …, Aᵐ⁻¹v. Define the Lanczos vectors q₁, …, qₘ by applying Gram–Schmidt to them. The algorithm instead computes them by a three-term recurrence that keeps only two previous vectors.
+**Definition.** For a Hermitian matrix A, suppose v, Av, …, Aᵐ⁻¹v are linearly independent. The Lanczos vectors q₁, …, qₘ result from orthonormalizing these vectors in order by Gram–Schmidt.
 
 **Problem.** In exact arithmetic, while v, Av, …, Aᵐ⁻¹v stay independent, T = Q\*AQ is tridiagonal, where Q has the Lanczos vectors as columns. Tridiagonal means nonzero only on the main diagonal and the two next to it.
 
-**How the definition helps.** With the Krylov definition, the zero pattern of T follows from two facts. First, Aqⱼ lies in the span of q₁, …, qⱼ₊₁, so qᵢ\*Aqⱼ = 0 when i &gt; j + 1. Second, T is Hermitian, so the entries with j &gt; i + 1 vanish too. The work goes into showing that the three-term recurrence gives the Gram–Schmidt vectors; the argument is our own.
+**How the definition helps.** For j &lt; m, multiplying qⱼ by A puts it in the span of the first j+1 Krylov vectors. Thus qᵢ\*Aqⱼ vanishes whenever i &gt; j+1. Hermitian symmetry gives the zeros above the first superdiagonal. Our own proof uses the equivalence of these vectors with those from the Lanczos recurrence.
 
 **Wikipedia:** [Lanczos algorithm](https://en.wikipedia.org/wiki/Lanczos_algorithm). It says: “a tridiagonal real symmetric matrix T = V∗AV”
 
@@ -1157,7 +1157,7 @@
 
 *True by definition. Confidence: medium.* MSC 65F15 (Numerical computation of eigenvalues and eigenvectors of matrices), 15A42. arXiv math.NA. Level 3: graduate.
 
-**Definition.** Let A be a Hermitian matrix and V a trial subspace. Define the kth Ritz value θₖ(V) by a min-max. It is the minimum, over k-dimensional subspaces S of V, of the largest Rayleigh quotient x\*Ax / x\*x on S. The usual definition takes the eigenvalues of Q\*AQ, where the columns of Q are an orthonormal basis of V.
+**Definition.** For Hermitian A, a subspace V, and 1 ≤ k ≤ dim V, consider all k-dimensional subspaces S of V. For each S, maximize (x\*Ax)/(x\*x) over nonzero x in S. The kth Ritz value θₖ(V) is the minimum of those maxima.
 
 **Problem.** If V ⊆ W and k ≤ dim V, then θₖ(W) ≤ θₖ(V).
 
@@ -1173,7 +1173,7 @@
 
 *True by definition.* MSC 65F15 (Numerical computation of eigenvalues and eigenvectors of matrices), 15A22. arXiv math.NA. Level 3: graduate.
 
-**Definition.** For symmetric positive definite matrices A and B, define the kth generalized eigenvalue λₖ(A, B) by a min-max. It is the minimum, over k-dimensional subspaces, of the largest quotient xᵀAx / xᵀBx. The algebraic definition solves Av = λBv. The two agree by the ordinary min-max theorem, applied after a change of variables by the square root of B.
+**Definition.** Let A and B be real symmetric positive definite matrices of size n, with 1 ≤ k ≤ n. In each k-dimensional subspace, maximize (xᵀAx)/(xᵀBx) over nonzero x. The kth generalized eigenvalue λₖ(A,B) is the minimum of these maxima.
 
 **Problem.** If B̃ − B is positive semidefinite, then λₖ(A, B̃) ≤ λₖ(A, B) for every k.
 
@@ -1191,11 +1191,11 @@
 
 *True by definition. Confidence: medium.* MSC 65F15 (Numerical computation of eigenvalues and eigenvectors of matrices), 15A18. arXiv math.NA. Level 3: graduate.
 
-**Definition.** Define the ε-pseudospectrum Λ(A, ε) as the set of eigenvalues of all matrices A + E with ‖E‖ ≤ ε, in the Euclidean operator norm. The resolvent definition takes all z with ‖(zI − A)⁻¹‖ ≥ 1/ε, together with the eigenvalues of A. The two agree because the smallest perturbation that makes z an eigenvalue has norm equal to the smallest singular value of zI − A.
+**Definition.** For a complex square matrix A and ε ≥ 0, the ε-pseudospectrum Λ(A,ε) contains exactly the eigenvalues of matrices A+E with ‖E‖ ≤ ε. Here ‖E‖ is the Euclidean operator norm.
 
 **Problem.** If ‖A − B‖ ≤ δ, then Λ(B, ε) ⊆ Λ(A, ε + δ).
 
-**How the definition helps.** With the perturbation definition, the inclusion is the triangle inequality. Let z be an eigenvalue of B + E with ‖E‖ ≤ ε; then B + E = A + F with F = (B − A) + E and ‖F‖ ≤ ε + δ. From the resolvent definition, one would need a bound on how the resolvent norm changes with the matrix. The work goes into the theorem that the definitions agree; the argument is our own.
+**How the definition helps.** Every allowed perturbation of B gives a perturbation of A by adding B−A. Indeed, B+E = A+(B−A)+E. In our own argument, the triangle inequality gives ‖(B−A)+E‖ ≤ δ+ε, hence the inclusion.
 
 **Wikipedia:** [Pseudospectrum](https://en.wikipedia.org/wiki/Pseudospectrum). It says: “The ε-pseudospectrum of a matrix A consists of all eigenvalues of matrices which are ε-close to A”
 
@@ -1209,11 +1209,11 @@
 
 *True by definition.* MSC 65F20 (Numerical solutions to overdetermined systems, pseudoinverses). arXiv math.NA. Level 3: graduate.
 
-**Definition.** For a real matrix A and data b, first minimize (Ax − b)ᵀP(Ax − b). Among its minimizers, minimize xᵀQx. Both weights are symmetric positive semidefinite. Combine them in G = AᵀPA + Q.
+**Definition.** For a real matrix A and data b, choose symmetric positive semidefinite weights P and Q of the respective data and solution dimensions. First minimize (Ax−b)ᵀP(Ax−b), then minimize xᵀQx among those minimizers. Define G = AᵀPA+Q.
 
 **Problem.** Orthogonal projection onto the range of G preserves solutions. Adding any vector from the null space of G also preserves solutions.
 
-**How the definition helps.** Combining the weights makes their common invisible directions exactly the null space of G (our own argument). Indeed, zᵀGz is the sum of the two nonnegative quantities (Az)ᵀP(Az) and zᵀQz. It vanishes exactly when PAz and Qz both vanish. Adding such a z changes neither objective. Projecting onto the range of symmetric G removes just such a vector.
+**How the definition helps.** In our own proof, zᵀGz = (Az)ᵀP(Az)+zᵀQz vanishes exactly when PAz = 0 and Qz = 0. Adding any such z preserves both objectives. Projecting onto the range of symmetric G subtracts just such a null vector.
 
 **Paper or page:** [A new interpretation of the weighted pseudoinverse and its applications](https://arxiv.org/abs/2408.09412v1). It says: “conversally, if x ∈ ℛ(G) is a solution, then x + z is a solution for any z ∈ 𝒩(G)”
 
@@ -1245,9 +1245,9 @@
 
 *Makes the theorem clean to state or prove.* MSC 65F50 (Computational methods for sparse matrices), 65N22. arXiv math.NA, cs.NA. Level 3: graduate.
 
-**Definition.** Pair distinct mesh cells with distinct faces on their boundaries, using faces one dimension lower. Use the paired faces as rows and the paired cells as columns of the signed boundary matrix. Draw an arrow from pair i to another pair j when face i occurs in cell j. Call the matching acyclic if these arrows form no directed cycle.
+**Definition.** Match distinct oriented cells to distinct boundary faces of one lower dimension, with nonzero matched incidences. Draw i → j for distinct pairs whenever the face of pair i has nonzero incidence in the cell of pair j. The matching is acyclic if this graph has no directed cycle.
 
-**Problem.** For oriented mesh incidences with nonzero matched entries, the submatrix of an acyclic matching is triangular after ordering the pairs. It can be solved by back substitution.
+**Problem.** Use matched faces as rows and matched cells as columns of the signed boundary matrix. For an acyclic matching, ordering both by the same pair order makes the submatrix triangular with nonzero diagonal, permitting back substitution.
 
 **How the definition helps.** Acyclicity lets us order the pairs so every arrow points forward. In our own argument, each off-diagonal nonzero entry then lies above the diagonal. Matched entries give a nonzero diagonal, so back substitution solves the system.
 
@@ -1279,11 +1279,11 @@
 
 *True by definition.* MSC 65H04 (Numerical computation of roots of polynomial equations), 65F15, 15A18. arXiv math.NA. Level 3: graduate.
 
-**Definition.** Expand a degree-n polynomial in a basis that satisfies a three-term recurrence, like the Chebyshev polynomials. The generalized colleague matrix is a tridiagonal matrix from the recurrence plus a rank-one correction from the coefficients. Our own reading is that it is the matrix of multiplication by x modulo the polynomial, up to transposition.
+**Definition.** For a degree-n polynomial p, take the first n elements of its degree-ordered three-term recurrence basis. The generalized colleague matrix represents multiplication by x modulo p in this basis, up to transposition (our own interpretation).
 
 **Problem.** The eigenvalues of the generalized colleague matrix are the roots of the polynomial. So finding the roots of a function, once it is approximated by such a polynomial, becomes an eigenvalue problem.
 
-**How the definition helps.** In the ring of polynomials where p counts as zero, multiplication by x has the roots of p as its eigenvalues (our own). The recurrence gives the tridiagonal part, and reducing the top-degree term by p gives the rank-one correction (our own). So the theorem follows from the definition (our own). The paper’s work is to build well-conditioned bases on complex domains and a stable QR algorithm for these matrices.
+**How the definition helps.** If p(λ) = 0, evaluation at λ is a nonzero left eigenvector of multiplication by x modulo p (our own argument). If p(λ) ≠ 0, then x−λ is coprime to p and multiplication by x−λ is invertible modulo p. Thus the eigenvalues are exactly the roots, also after transposition. The recurrence gives the tridiagonal part, and reducing the last product modulo p supplies the rank-one correction.
 
 **Paper or page:** [Finding roots of complex analytic functions via generalized colleague matrices](https://arxiv.org/abs/2307.14494v3). It says: “The roots of the polynomial are the eigenvalues of the matrix C defined by the formula C = A + eₙ qᵀ,”
 
@@ -1302,7 +1302,7 @@
 
 **Problem.** If the range of B is dense in V′, the extended operator is an isometric isomorphism from the completion onto V′. So the extended equation has exactly one solution for each right-hand side, with norm equal to that of the data.
 
-**How the definition helps.** With the new norm, B preserves norms by definition, so the extension is an isometry (our own). The image of a complete space under an isometry is complete, hence closed (our own). A closed dense subspace is the whole space, so the extension is onto (our own). The real work moves to checking injectivity and density for each equation and to identifying the completed space. The paper treats elliptic, parabolic and hyperbolic equations this way.
+**How the definition helps.** The norm ‖Bu‖ makes B an isometry, and continuity extends this isometry to the completion. Its image is complete and therefore closed in V′. Density makes that image all of V′, proving existence, uniqueness, and equality of norms. This argument is our own.
 
 **Paper or page:** [A unified framework for the analysis, numerical approximation and model reduction of linear operator equations, Part I: Well-posedness in space and time](https://arxiv.org/abs/2508.05407v1). It says: “The main concept is completion and extension of operators starting from the strong form of the problem.”
 
@@ -1328,15 +1328,15 @@
 
 ### A-stability turns stiff solvers into a sharp order barrier
 
-**Remember:** Stable for every decaying mode means order two at most.
+**Remember:** Every starting mode must decay for every step size on the left half-plane.
 
 *Makes the theorem clean to state or prove.* MSC 65L20 (Stability and convergence of numerical methods for ordinary differential equations), 65L06, 65L04. arXiv math.NA. Level 3: graduate.
 
-**Definition.** Apply a method to the test equation y′ = λy with step h. The method is A-stable when its numerical solution goes to zero for every hλ with negative real part. So it copies the decay of every stable linear equation, however stiff (with very fast decaying parts).
+**Definition.** Apply the method with fixed step h &gt; 0 to y′ = λy. It is A-stable if every numerical solution tends to zero for every complex λ with Re(λ) &lt; 0, for all starting values.
 
-**Problem.** No explicit linear multistep method is A-stable. An A-stable linear multistep method has order at most 2, and among those the trapezoidal rule has the smallest error constant.
+**Problem.** No explicit linear multistep method is A-stable. An A-stable linear multistep method has order at most two, and the trapezoidal rule minimizes the error constant among those of order two.
 
-**How the definition helps.** A-stability replaces the vague wish to handle stiff equations with a property of one test equation, and a property of one rational function can be proved impossible. With this definition, Dahlquist could prove a sharp barrier. The barrier explains why stiff solvers use implicit Runge–Kutta methods or methods that are stable in a weaker sense. What stays hard is the proof of the barrier itself, which uses complex analysis of the stability function.
+**How the definition helps.** A-stability asks whether every mode of the test recurrence decays throughout the open left half-plane. The second Dahlquist barrier gives the explicit-method exclusion and the order bound. The order-two error-constant comparison is the accompanying extremal result.
 
 **Wikipedia:** [Linear multistep method](https://en.wikipedia.org/wiki/Linear_multistep_method), [Stiff equation](https://en.wikipedia.org/wiki/Stiff_equation). It says: “The second Dahlquist barrier states that no explicit linear multistep methods are A-stable. Further, the maximal order of an (implicit) A-stable linear multistep method is 2.”
 
@@ -1350,7 +1350,7 @@
 
 *True by definition.* MSC 65L20 (Stability and convergence of numerical methods for ordinary differential equations), 65L06. arXiv math.NA. Level 3: graduate.
 
-**Definition.** A forward Euler step adds the step length times the current slope to the current state. Write each Runge–Kutta stage, including the final update, as a weighted average of Euler steps from earlier states. The weights must be nonnegative and sum to one. The usual coefficient table can hide this representation.
+**Definition.** A forward Euler step adds its length times the current slope to the current state. In a convex Euler representation, each stage and the final output average forward Euler steps from earlier states. Each average has nonnegative weights summing to one.
 
 **Problem.** Suppose forward Euler cannot increase a chosen norm below a given step limit. The full update cannot increase the norm if every Euler substep satisfies that limit.
 
@@ -1366,7 +1366,7 @@
 
 *True by definition. Confidence: medium.* MSC 65L20 (Stability and convergence of numerical methods for ordinary differential equations), 65L04. arXiv math.NA. Level 3: graduate.
 
-**Definition.** A Runge–Kutta method computes intermediate values called stages, then combines their derivatives to update the solution. A stiffly accurate method uses its last stage as the output. For the test equation y′ = λy with step length h, write z = hλ. A-stability means the step never increases \|y\| when Re(z) ≤ 0.
+**Definition.** A Runge–Kutta method is stiffly accurate when its output weights equal the last row of its stage matrix A. Its output then equals its last stage. For y′ = λy and z = hλ, A-stability requires amplification of magnitude at most one throughout the closed left half-plane.
 
 **Problem.** Suppose a stiffly accurate method is A-stable and its matrix A of stage coefficients is invertible. Then it is L-stable, meaning its one-step amplification also tends to zero as \|z\| tends to infinity.
 
@@ -1382,7 +1382,7 @@
 
 *True by definition.* MSC 65L20 (Stability and convergence of numerical methods for ordinary differential equations), 15A60. arXiv math.NA. Level 3: graduate.
 
-**Definition.** For the Euclidean norm, define the logarithmic norm μ(A) as the largest eigenvalue of the Hermitian part (A + A\*)/2. Equivalently, μ(A) is the largest value of Re⟨x, Ax⟩ / ⟨x, x⟩. Dahlquist's original definition is the limit of (‖I + hA‖ − 1)/h as h decreases to 0.
+**Definition.** For a complex square matrix A with the Euclidean norm, its logarithmic norm μ(A) is the largest eigenvalue of (A+A\*)/2. Equivalently, μ(A) is the maximum of Re⟨x,Ax⟩ over unit vectors x.
 
 **Problem.** Every solution of x′ = Ax satisfies ‖x(t)‖ ≤ exp(μ(A)t) ‖x(0)‖ for t ≥ 0.
 
@@ -1398,7 +1398,7 @@
 
 *True by definition.* MSC 65M08 (Finite volume methods for initial value and initial-boundary value problems involving PDEs). arXiv math.NA. Level 3: graduate.
 
-**Definition.** Divide the domain into cells. Update each cell average by the net flux through its faces. Use one numerical flux value per interior face, added to one neighbour and subtracted from the other. A pointwise finite difference scheme instead approximates derivatives at grid points and need not have this structure.
+**Definition.** Divide the domain into cells and represent each cell’s content by its volume times its average. Update contents by the net numerical flux across their faces over the step. Use the same integrated flux with opposite signs for the two cells sharing each interior face.
 
 **Problem.** With no source terms, the total of the cell contents changes only by the fluxes through the outer boundary.
 
@@ -1410,15 +1410,15 @@
 
 ### Lax's equivalence theorem trades convergence for stability
 
-**Remember:** Consistency plus stability equals convergence.
+**Remember:** Bound every update power uniformly across grids up to each fixed time.
 
 *Makes the theorem clean to state or prove.* MSC 65M12 (Stability and convergence of numerical methods for initial value and initial-boundary value problems involving PDEs), 65M06. arXiv math.NA. Level 3: graduate.
 
-**Definition.** A problem is well-posed in Hadamard's sense when a solution exists, is unique, and depends continuously on the data. A finite difference scheme is consistent when it approximates the right equation as the grid shrinks. It is stable (Lax–Richtmyer stable) when the powers of its update operator stay uniformly bounded in norm.
+**Definition.** Let Sₕ be the linear update on a grid with time step τₕ. Lax–Richtmyer stability requires a common bound on ‖Sₕⁿ‖ for all admissible grids and all integers n with 0 ≤ nτₕ ≤ T. Such a bound must exist for each fixed T &gt; 0.
 
-**Problem.** For a consistent linear scheme for a well-posed linear initial value problem, the scheme converges to the true solution if and only if it is stable.
+**Problem.** A consistent linear finite difference scheme for a well-posed linear initial value problem converges if and only if it is stable.
 
-**How the definition helps.** The definitions split the hard question of convergence into two easier checks. The page says that consistency is straightforward to verify and that stability is much easier to show than convergence. Well-posedness is needed: for an ill-posed problem, such as the backward heat equation, no scheme could converge in a useful way. What stays hard is to prove stability for a given scheme.
+**How the definition helps.** Stability bounds the propagation of errors over every fixed time interval by a constant independent of the grid. Consistency controls the local approximation error on smooth exact solutions. The Lax–Richtmyer equivalence theorem relates these two properties to convergence for well-posed linear initial value problems.
 
 **Wikipedia:** [Lax equivalence theorem](https://en.wikipedia.org/wiki/Lax_equivalence_theorem), [Well-posed problem](https://en.wikipedia.org/wiki/Well-posed_problem). It says: “It states that for a linear consistent finite difference method for a well-posed linear initial value problem, the method is convergent if and only if it is stable.”
 
@@ -1446,15 +1446,15 @@
 
 ### Coercivity makes the Galerkin solution nearly the best approximation
 
-**Remember:** Coercivity on the big space passes to every subspace.
+**Remember:** Test in the trial space so its directions disappear from the error equation.
 
-*Makes the theorem clean to state or prove.* MSC 65N30 (Finite element, Rayleigh-Ritz and Galerkin methods for boundary value problems involving PDEs), 35A15. arXiv math.NA, math.AP. Level 3: graduate.
+*True by definition.* MSC 65N30 (Finite element, Rayleigh-Ritz and Galerkin methods for boundary value problems involving PDEs), 35A15. arXiv math.NA, math.AP. Level 3: graduate.
 
-**Definition.** A bilinear form a on a Hilbert space V is coercive when a(v, v) ≥ α‖v‖² for some α &gt; 0 and all v. It is continuous when \|a(v, w)\| ≤ γ‖v‖‖w‖. The Galerkin method solves the same equation a(uₕ, v) = L(v) only for v in a finite-dimensional subspace Vₕ.
+**Definition.** Let a be a bilinear form on a real Hilbert space. Require constants α,γ &gt; 0 satisfying a(v,v) ≥ α‖v‖² and \|a(v,w)\| ≤ γ‖v‖‖w‖ for every v,w. The Galerkin approximation uₕ of u in a finite-dimensional subspace Vₕ satisfies a(uₕ,v) = a(u,v) for every v in Vₕ.
 
 **Problem.** The error of the Galerkin solution is at most γ/α times the error of the best approximation of u from Vₕ. This is Céa's lemma, the basic error bound of the finite element method.
 
-**How the definition helps.** Coercivity holds on every subspace with the same constant α, so the error constant γ/α does not depend on the subspace. The one-line proof uses coercivity, continuity and the fact that a(u − uₕ, v) = 0 for every v in Vₕ. So the question of accuracy becomes a question of approximation theory: how well functions in Vₕ approximate u. Our own: mixed methods replace coercivity by a weaker inf-sup condition, which does not pass to subspaces.
+**How the definition helps.** Galerkin testing gives a(e,v) = 0 for every v in Vₕ, where e = u−uₕ. For each w in Vₕ, coercivity and continuity give α‖e‖² ≤ a(e,e) = a(e,u−w) ≤ γ‖e‖‖u−w‖. For nonzero error, divide by α‖e‖ and minimize over w. Zero error already satisfies the bound (our own argument).
 
 **Wikipedia:** [Céa's lemma](https://en.wikipedia.org/wiki/C%C3%A9a%27s_lemma). It says: “That is to say, the subspace solution uₕ is "the best" approximation of u in Vₕ, up to the constant γ/α.”
 
@@ -1468,11 +1468,11 @@
 
 *True by definition. Confidence: medium.* MSC 65N30 (Finite element, Rayleigh-Ritz and Galerkin methods for boundary value problems involving PDEs), 65D05. arXiv math.NA. Level 3: graduate.
 
-**Definition.** On a mesh of simplices that meet face to face, define a piecewise linear function by its values at the vertices. On each simplex it is the affine function with those vertex values, written in barycentric coordinates. Barycentric coordinates are the weights that write a point as an affine combination of the vertices. The alternative fixes monomial coefficients on each simplex and imposes matching conditions on shared faces.
+**Definition.** Assign one real value to each vertex of a conforming simplicial mesh. On each simplex, define the interpolant as the unique affine function taking those values at its vertices.
 
 **Problem.** On a conforming simplicial mesh, the piecewise linear function defined by vertex values is continuous.
 
-**How the definition helps.** With vertex values as the data, two neighbouring pieces agree on their shared face automatically. On the face, each piece restricts to an affine function fixed by the values at the face's vertices, and both pieces take the same values there. The work goes into the fact that vertex values fix exactly one affine function on a simplex. The continuity argument is our own.
+**How the definition helps.** On a shared face, both restrictions are affine and agree at every vertex. Those values determine an affine function uniquely on the face. The pieces therefore join continuously (our own argument).
 
 **Wikipedia:** [Barycentric coordinate system](https://en.wikipedia.org/wiki/Barycentric_coordinate_system). It says: “With above notation, the homogeneous barycentric coordinates of Aᵢ are all zero, except the one of index i.”
 
@@ -1484,11 +1484,11 @@
 
 *True by definition. Confidence: medium.* MSC 65N30 (Finite element, Rayleigh-Ritz and Galerkin methods for boundary value problems involving PDEs), 65N15. arXiv math.NA. Level 3: graduate.
 
-**Definition.** Let u solve a(u, v) = ℓ(v) for all v, where a is a symmetric coercive bilinear form and ℓ is a given linear functional. Coercive means a(v, v) ≥ c‖v‖² for some c &gt; 0, and a then defines the energy inner product. Define the Galerkin solution in a trial space as the energy-orthogonal projection of u onto that space. The usual definition solves a(uₕ, v) = ℓ(v) for every v in the trial space.
+**Definition.** Let a be a symmetric coercive bilinear form on a real trial space, with energy norm ‖v‖ₐ = √a(v,v). For a finite-dimensional subspace V, the Galerkin projection of u is the element uᵥ in V satisfying a(u−uᵥ,v) = 0 for every v in V.
 
 **Problem.** Let V₁ ⊆ V₂ be trial spaces with Galerkin solutions u₁ and u₂. Then ‖u − u₁‖² = ‖u − u₂‖² + ‖u₂ − u₁‖² in the energy norm.
 
-**How the definition helps.** With the projection definition, the identity is Pythagoras' theorem. The error u − u₂ is energy-orthogonal to V₂, and the correction u₂ − u₁ lies in V₂. Wikipedia derives this orthogonality by subtracting the two equations, which shows that the two definitions agree. The work is small here: that subtraction, plus existence from coercivity. The nested identity is our own.
+**How the definition helps.** The error u−u₂ is energy-orthogonal to V₂, which contains u₂−u₁. Applying Pythagoras to their sum gives the stated identity. Subtraction of the full and discrete Galerkin equations gives this orthogonality. The nested-space argument is our own.
 
 **Wikipedia:** [Galerkin method](https://en.wikipedia.org/wiki/Galerkin_method). It says: “The key property of the Galerkin approach is that the error is orthogonal to the chosen subspaces.”
 
@@ -1500,11 +1500,11 @@
 
 *True by definition. Confidence: medium.* MSC 65N30 (Finite element, Rayleigh-Ritz and Galerkin methods for boundary value problems involving PDEs), 65J10, 65N12. arXiv math.NA. Level 3: graduate.
 
-**Definition.** Take a bilinear form b and a linear functional ℓ. A Petrov–Galerkin method seeks a discrete trial function uₕ with b(uₕ, v) = ℓ(v) for all v in a discrete test space. The optimal test function Tu of u is the element of the full test space V with ⟨Tu, v⟩ = b(u, v) for all v. The optimal discrete test space is the set of all Tuₕ.
+**Definition.** Let b be a bounded bilinear form on a real trial space U and a real Hilbert test space V. For each u in U, its optimal test Tu satisfies ⟨Tu,v⟩ = b(u,v) for every v in V. A discrete trial space Uₕ uses the test space T(Uₕ).
 
-**Problem.** Suppose the continuous problem satisfies the inf-sup condition: the supremum of b(u, v)/‖v‖ over nonzero v in V is at least γ‖u‖ for every trial function u. Then the Petrov–Galerkin method with the optimal discrete test space satisfies the same condition with the same constant γ, so it is stable.
+**Problem.** Assume every nonzero u in U satisfies supᵥ≠₀ b(u,v)/‖v‖ ≥ γ‖u‖ with γ &gt; 0. Restricting trials to Uₕ and tests to T(Uₕ) preserves this bound with the same γ.
 
-**How the definition helps.** By definition, Tuₕ is the test function on which b(uₕ, ·) is largest relative to its norm (our own). Indeed b(uₕ, Tuₕ) = ‖Tuₕ‖², and the Riesz theorem gives ‖Tuₕ‖ = the supremum of b(uₕ, v)/‖v‖ over V (our own). Tuₕ lies in the discrete test space, so the discrete supremum equals the continuous one (our own). In practice T must be approximated, and keeping the bound then needs a separate argument (our own).
+**How the definition helps.** The Riesz representation theorem identifies the continuous supremum with ‖Tu‖. For each nonzero discrete trial u, the lower bound ensures Tu ≠ 0. Taking v = Tu in the discrete test space attains that supremum because b(u,Tu) = ‖Tu‖². This proof is our own.
 
 **Paper or page:** [Stabilization of isogeometric finite element method with optimal test functions computed from L₂ norm residual minimization](https://arxiv.org/abs/2411.15565v1). It says: “which guarantee automatic preservation of the inf-sup condition of the continuous formulation.”
 
@@ -1513,32 +1513,13 @@
 - [Marcin Łoś, Tomasz Służalec, Maciej Paszyński, Eirik Valseth, Stabilization of isogeometric finite element method with optimal test functions computed from L₂ norm residual minimization, arXiv:2411.15565v1 (2024)](https://arxiv.org/abs/2411.15565v1)
 - [Leszek Demkowicz, Jay Gopalakrishnan, A class of discontinuous Petrov–Galerkin methods. II. Optimal test functions, Numerical Methods for Partial Differential Equations (2010)](https://doi.org/10.1002/num.20640)
 
-### Projections that commute with derivatives give stable discrete Hodge Laplacians
-
-**Remember:** Find a potential in the full space, then project it.
-
-*True by definition. Confidence: medium.* MSC 65N30 (Finite element, Rayleigh-Ritz and Galerkin methods for boundary value problems involving PDEs), 58A10, 18G35. arXiv math.NA. Level 3: graduate.
-
-**Definition.** A Hilbert complex is a chain of Hilbert spaces V⁰, V¹, … with maps dᵏ between them, where two maps in a row give zero. Choose finite-dimensional subspaces Vₕᵏ such that each dᵏ sends Vₕᵏ into the next subspace. A bounded cochain projection is a bounded projection Πₕᵏ onto Vₕᵏ with dᵏΠₕᵏ = Πₕᵏ⁺¹dᵏ.
-
-**Problem.** Theorem 2 assumes an exact complex, where every element with zero derivative is a derivative, plus these projections and an approximation property. Then the discrete mixed problem for the Hodge Laplacian dd\* + d\*d has a unique solution. It is stable uniformly in the mesh size and converges at the best possible rate.
-
-**How the definition helps.** Commutation lets an exactness argument in the full spaces pass down to the discrete spaces (our own). If a discrete element vₕ has dvₕ = 0, exactness gives u in the full space with du = vₕ, and then d(Πₕu) = Πₕdu = vₕ (our own). Bounds on Πₕ then turn the continuous stability bound into a discrete one (our own). The hard step is to build bounded projections that commute, which the paper does with spline spaces (our own).
-
-**Paper or page:** [Structure-preserving Discretization of the Hessian Complex based on Spline Spaces](https://arxiv.org/abs/2109.05293v1). It says: “There exist Wⁱ-bounded projections Πₕⁱ ∶ Vⁱ → Vₕⁱ, which commute with the operators dⁱ.”
-
-**Sources:**
-
-- [Jeremias Arf, Bernd Simeon, Structure-preserving Discretization of the Hessian Complex based on Spline Spaces, arXiv:2109.05293v1 (2021)](https://arxiv.org/abs/2109.05293v1)
-- [Douglas N. Arnold, Richard S. Falk, Ragnar Winther, Finite element exterior calculus, homological techniques, and applications, Acta Numerica 15 (2006)](https://doi.org/10.1017/S0962492906210018)
-
 ### Trial gradients recover Galerkin
 
 **Remember:** Put trial gradients in the flux space and the projection disappears.
 
 *True by definition.* MSC 65N30 (Finite element, Rayleigh-Ritz and Galerkin methods for boundary value problems involving PDEs). arXiv math.NA. Level 3: graduate.
 
-**Definition.** For Poisson’s equation with zero boundary values, approximate the unknown function u and its gradient in separate finite-dimensional spaces. Choose the second space to contain the gradient of every function in the first.
+**Definition.** Take a conforming scalar trial space Vₕ with zero boundary values and a vector space Wₕ containing every trial gradient. Seek uₕ in Vₕ and σₕ in Wₕ satisfying ⟨σₕ−∇uₕ,τ⟩ = 0 for every τ in Wₕ. Require ⟨σₕ,∇v⟩ = ⟨f,v⟩ for every v in Vₕ, using the L² inner products.
 
 **Problem.** The computed gradient equals the gradient of the computed function. The latter function satisfies the standard Galerkin equations, which test Poisson’s equation against each trial function after integration by parts.
 
@@ -1550,35 +1531,17 @@
 
 - [Fleurianne Bertrand, Daniele Boffi, On the necessity of the inf-sup condition for a mixed finite element formulation](https://arxiv.org/abs/2206.06968v2)
 
-### Symplectic integrators almost exactly conserve a nearby shadow Hamiltonian
-
-**Remember:** A symplectic method solves the wrong problem almost exactly.
-
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 65P10 (Numerical methods for Hamiltonian systems including symplectic integrators), 37M15. arXiv math.NA, math.DS. Level 3: graduate.
-
-**Definition.** A numerical method for a Hamiltonian system is symplectic when each step preserves the symplectic form of phase space, as the true flow does. With one degree of freedom, this means that each step preserves area. The Verlet method is an example.
-
-**Problem.** Over very long times, the energy error of a symplectic method stays small and roughly constant, while non-symplectic methods such as Runge–Kutta methods drift. The precise theorem needs an analytic Hamiltonian and a small step. It holds for times exponentially long in one over the step size.
-
-**How the definition helps.** The method follows a nearby shadow Hamiltonian almost exactly, so it conserves that quantity and the true energy cannot drift far. So the definition turns a long-time error question into backward error analysis: which nearby problem does the method solve exactly? Our own: the shadow Hamiltonian comes from a series that in general diverges, and a truncation of it is conserved up to an error exponentially small in one over the step size. That estimate stays hard.
-
-**Wikipedia:** [Energy drift](https://en.wikipedia.org/wiki/Energy_drift), [Symplectic integrator](https://en.wikipedia.org/wiki/Symplectic_integrator). It says: “These integrators do not in fact reproduce the actual Hamiltonian mechanics of the system; instead, they reproduce a closely related "shadow" Hamiltonian whose value they conserve many orders of magnitude more closely.”
-
-**Sources:**
-
-- [E. Hairer, C. Lubich, G. Wanner, Geometric Numerical Integration, 2nd ed., Springer Series in Computational Mathematics 31 (2006)](https://doi.org/10.1007/3-540-30666-8)
-
 ### A reversibility check keeps implicit Hamiltonian Monte Carlo unbiased
 
 **Remember:** Keep only proposals that can retrace their steps.
 
 *Rules out counterexamples.* MSC 65C05 (Monte Carlo methods), 65C40, 65P10. arXiv math.NA, stat.CO. Level 4: research.
 
-**Definition.** Hamiltonian Monte Carlo proposes a move by numerically integrating Hamiltonian dynamics, then accepts or rejects it by the Metropolis rule. For nonseparable Hamiltonians the integrator is implicit, so its equation may have several solutions or none. The check runs the integrator again from the proposal after reversing momentum, and rejects the move unless this returns to the start.
+**Definition.** Let Φ be a deterministic numerical Hamiltonian step and R the momentum flip. Form the proposal map F = R∘Φ wherever the solver succeeds. Reject an undefined proposal or one failing F(F(x)) = x, and otherwise apply the Metropolis rule.
 
-**Problem.** Assume the numerical flow preserves volume and the momentum reversal is a smooth involution, a map that is its own inverse. Then the algorithm with the reversibility check leaves the target probability measure invariant.
+**Problem.** Suppose Φ preserves volume on its reversible branches and the momentum flip preserves volume and the Hamiltonian. The checked Metropolis update leaves the Hamiltonian target measure invariant.
 
-**How the definition helps.** The check restricts moves to those where the computed map is reversible up to momentum reversal, which is what the standard proof needs. Without the check, an implicit solver can pick a different solution branch on the way back (our own). Then forward and backward moves need not balance, and the chain can sample the wrong distribution (our own). The invariance proof also uses volume preservation and the Metropolis acceptance rule.
+**How the definition helps.** On accepted branches the check pairs each candidate with its reverse, and the proposal preserves volume. Metropolis acceptance therefore gives the paired moves equal probability flux under the target density. An implicit solver can otherwise choose different branches on return. This branch argument is our own.
 
 **Paper or page:** [Unbiasing Hamiltonian Monte Carlo algorithms for a general Hamiltonian function](https://arxiv.org/abs/2303.15918v2). It says: “We show here how to enforce the numerical reversibility, and thus unbiasedness, of HMC schemes in this context by introducing a reversibility check.”
 
@@ -1592,11 +1555,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 65G50 (Roundoff error). arXiv math.NA. Level 4: research.
 
-**Definition.** Describe a floating-point summation by its computational tree. The inputs are the leaves, and each inner node is one rounded addition. The height h is the largest number of additions on a path from a leaf to the root. Recursive summation has height n − 1, and pairwise summation has height about log₂ n.
+**Definition.** A binary summation tree places one input at each leaf and one rounded addition at each internal node. Its height h is the largest number of additions on any path from a leaf to the root.
 
 **Problem.** Assume each addition has relative rounding error at most u. Then the error of the computed sum is at most ((1 + u)ʰ − 1) Σ\|xⱼ\|.
 
-**How the definition helps.** The tree lets one bound cover every order of summation, through the height alone. Each input is multiplied by the rounding factors (1 + δ) on its path to the root. There are at most h such factors, so each coefficient differs from 1 by at most (1 + u)ʰ − 1. The cited paper's Theorem 2.4 gives the weaker bound (1 + u)ʰ h u Σ\|xⱼ\|. The sharper form above is our own argument. The work goes into choosing a summation order with small height.
+**How the definition helps.** Each input acquires one factor 1+δ per addition on its path, with \|δ\| ≤ u. Expanding that product shows its deviation from one is at most (1+u)ʰ−1. Multiplying by each input magnitude and summing proves our own bound.
 
 **Paper or page:** [Precision-aware Deterministic and Probabilistic Error Bounds for Floating Point Summation](https://arxiv.org/abs/2203.15928v1). It says: “If h is the height of the computational tree”
 
@@ -1610,11 +1573,11 @@
 
 *True by definition. Confidence: medium.* MSC 65G50 (Roundoff error). arXiv math.NA. Level 4: research.
 
-**Definition.** For nonzero numbers x and x̃ of the same sign, define Olver's relative precision rp(x̃, x) = \|ln(x̃/x)\|. The usual relative error is \|x̃ − x\| / \|x\|. Under the usual measure, errors of products do not add, because (1 + a)(1 + b) − 1 = a + b + ab.
+**Definition.** For nonzero real numbers x and x̃ of the same sign, Olver’s relative precision is rp(x̃,x) = \|ln(x̃/x)\|.
 
 **Problem.** If x̃₁ has the sign of x₁ and x̃₂ has the sign of x₂, then rp(x̃₁x̃₂, x₁x₂) ≤ rp(x̃₁, x₁) + rp(x̃₂, x₂).
 
-**How the definition helps.** With the logarithmic measure, the bound is the triangle inequality. The ratio for the product is the product of the ratios. The logarithm turns this product into a sum. The cited paper builds a mechanized error analysis on this measure. Its Theorem 4.1 bounds inner products with relative precision nu/(1 − u). The product rule above is our own statement. The work goes into converting the usual rounding model into bounds on rp.
+**How the definition helps.** The product ratio equals the product of the two positive input ratios. Its logarithm therefore equals the sum of their logarithms. Taking absolute values and applying the triangle inequality gives our own product bound.
 
 **Paper or page:** [Mechanizing Olver's Error Arithmetic](https://arxiv.org/abs/2510.13414v1). It says: “s ∼ s̃ ; rp(nu/(1 − u)),”
 
@@ -1628,11 +1591,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 65L06 (Multistep, Runge-Kutta and extrapolation methods for ordinary differential equations), 65L05, 16T30. arXiv math.NA. Level 4: research.
 
-**Definition.** A B-series expands a numerical step for an ordinary differential equation y′ = f(y) as a sum over rooted trees. Each tree contributes an elementary differential, which is a product of derivatives of f. A multi-index records only how many factors of each derivative order occur.
+**Definition.** A rooted-tree multi-index β is a finitely supported sequence of nonnegative integers β(k) satisfying ∑ₖ(1−k)β(k) = 1. Its elementary differential for y′ = f(y) is the product of β(k) copies of f⁽ᵏ⁾(y) over all k ≥ 0. A multi-index B-series groups terms by these derivative products.
 
-**Problem.** In one dimension, multi-indice B-series uniquely describe the Taylor expansions of local and affine equivariant maps. Affine equivariant means the method commutes with affine changes of variables. Substituting one such series into another gives a third, with coefficients from a product on multi-indices.
+**Problem.** In one dimension, multi-index B-series uniquely describe the Taylor expansions of local maps that commute with affine changes of variables. Substituting one such series into another gives a third, with coefficients determined by a product on multi-indices.
 
-**How the definition helps.** In one dimension, an elementary differential depends only on how many tree nodes have each number of children (our own). So many trees give the same term, and tree coefficients are not unique (our own). Multi-indices label exactly the distinct terms, which makes a uniqueness statement possible (our own). The substitution law becomes a coproduct formula on these labels. Proving the characterization still needs separate arguments.
+**How the definition helps.** In one dimension, every rooted tree with the same child counts gives the same derivative product (our own explanation). Distinct multi-indices give distinct monomials in the derivatives, so their coefficients are unique. The one-dimensional local affine-equivariant characterization supplies existence, and the multi-index substitution theorem gives the coefficient product.
 
 **Paper or page:** [Multi-indice B-series](https://arxiv.org/abs/2402.13971v3). It says: “The combinatorial shift away from rooted trees allows for a compressed description of numerical schemes.”
 
@@ -1646,7 +1609,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 65L06 (Multistep, Runge-Kutta and extrapolation methods for ordinary differential equations). arXiv math.NA. Level 4: research.
 
-**Definition.** A B-series writes a formal time step as a Taylor series indexed by rooted trees. Each branch records a derivative applied to the terms from its child branches. Use a unit coefficient for the unchanged starting value in each step.
+**Definition.** For a vector field f, set F(•)=f and F(\[t₁,…,tₖ\])=f⁽ᵏ⁾(F(t₁),…,F(tₖ)) for a root with those child trees. A B-series adds to y the formal sum of a(t)hⁿF(t)(y)/σ(t) over all nonempty unlabelled rooted trees t. Here n counts vertices, σ(t) counts root-preserving automorphisms, and a(t) is a scalar coefficient.
 
 **Problem.** The composition of two such steps is another B-series. Its coefficients come from cuts that split each tree into a connected part containing the root and the branches above it.
 
@@ -1667,11 +1630,11 @@
 
 *True by definition.* MSC 65L20 (Stability and convergence of numerical methods for ordinary differential equations), 65L12. arXiv math.NA. Level 4: research.
 
-**Definition.** Let D approximate differentiation on a grid, with symmetric positive definite weight matrix H. Suppose HD + DᵀH = qqᵀ − ppᵀ + S, where S is symmetric positive semidefinite. The vectors p and q evaluate a grid function at the left and right ends. Add H⁻¹ppᵀ to D to penalize the left boundary.
+**Definition.** Let p and q evaluate real grid vectors at the left and right ends. A real differentiation matrix D has weight H = Hᵀ &gt; 0 and satisfies HD + DᵀH = qqᵀ − ppᵀ + S with S positive semidefinite and symmetric. The left boundary penalty gives the matrix D + H⁻¹ppᵀ.
 
 **Problem.** Every eigenvalue of the modified matrix has nonnegative real part. Equality holds precisely when its eigenvector w satisfies pᵀw = qᵀw = 0 and Sw = 0.
 
-**How the definition helps.** The penalty changes the negative left boundary term into a positive square (our own argument). For an eigenpair (λ,w), twice Re(λ) times w\*Hw equals \|pᵀw\|² + \|qᵀw\|² + w\*Sw. Here w\* denotes conjugate transpose. All three terms are nonnegative, and the last vanishes exactly when Sw vanishes. The construction must supply D and H with the stated identity.
+**How the definition helps.** The penalty turns the negative boundary term into a positive square (our own argument). For an eigenpair (λ,w), twice Re(λ) times w\*Hw equals \|pᵀw\|² + \|qᵀw\|² + w\*Sw. All three terms are nonnegative, and the last vanishes exactly when Sw vanishes.
 
 **Paper or page:** [On an eigenvalue property of Summation-By-Parts operators](https://arxiv.org/abs/2201.01193v1). It says: “Then Re(λ) ≥ 0 with equality if and only if p₀ᵀw = pₙᵀw = 0 and Sw = 0.”
 
@@ -1685,11 +1648,11 @@
 
 *True by definition. Confidence: medium.* MSC 65L20 (Stability and convergence of numerical methods for ordinary differential equations), 65M12. arXiv math.NA. Level 4: research.
 
-**Definition.** A discrete gradient of an energy E is a map ∇̄E(x, y) with ∇̄E(x, y) · (y − x) = E(y) − E(x). It must equal ∇E(x) when y = x. A discrete gradient scheme takes steps yₙ₊₁ − yₙ = τ S ∇̄E(yₙ, yₙ₊₁), with step size τ &gt; 0 and a matrix S. The ordinary gradient at the midpoint lacks the exact identity unless E is quadratic.
+**Definition.** For differentiable E on ℝⁿ, a discrete gradient g satisfies g(x,y)·(y−x)=E(y)−E(x) for all x,y and g(x,x)=∇E(x) for every x. A discrete gradient step solves y−x=τSg(x,y) for the next state y.
 
 **Problem.** If S is negative semidefinite and τ &gt; 0, every step of the discrete gradient scheme satisfies E(yₙ₊₁) ≤ E(yₙ).
 
-**How the definition helps.** The defining identity turns the energy change into a quadratic form. E(yₙ₊₁) − E(yₙ) = ∇̄E · (yₙ₊₁ − yₙ) = τ ∇̄Eᵀ S ∇̄E ≤ 0. With an ordinary gradient, one would need a Taylor remainder bound and a small step. The cited paper's Theorem 2.2 proves this decrease for one rotational discrete gradient scheme for Oseen–Frank flows, with length preservation. The general argument above is our own. The work goes into building a consistent discrete gradient and solving the implicit step.
+**How the definition helps.** The defining identity gives E(y)−E(x)=τg(x,y)ᵀSg(x,y) (our own argument). This is nonpositive because τ is positive and S is negative semidefinite.
 
 **Paper or page:** [A second-order length-preserving and unconditionally energy stable rotational discrete gradient method for Oseen-Frank gradient flows](https://arxiv.org/abs/2308.12884v1). It says: “is length-preserving and energy stable”
 
@@ -1703,11 +1666,11 @@
 
 *True by definition. Confidence: medium.* MSC 65M06 (Finite difference methods for initial value and initial-boundary value problems involving PDEs), 65M12. arXiv math.NA. Level 4: research.
 
-**Definition.** A dual-pairing summation-by-parts operator is a pair of difference matrices D₊ and D₋ with a positive diagonal weight matrix H. On a periodic grid, H D₊ + (H D₋)ᵀ = 0, which mimics integration by parts. The upwind, or dissipative, version also requires ⟨u, (D₊ − D₋)u⟩ ≤ 0 in the H inner product. The operators are defined by these identities, not by their stencil coefficients.
+**Definition.** On a periodic grid, paired derivative approximations D₊ and D₋ satisfy HD₊=−D₋ᵀH for a positive diagonal matrix H. An upwind pair also satisfies uᵀH(D₊−D₋)u ≤ 0 for every real grid vector u.
 
-**Problem.** Discretize in space only a linear system with symmetric constant flux matrix A and weakly imposed periodic boundaries. Split the flux as (Au ± γu)/2, with γ the largest absolute eigenvalue of A (the global Lax–Friedrichs splitting). Then the H-weighted sum of squares of u does not increase in time.
+**Problem.** Consider a spatial discretization with constant symmetric flux matrix A and weak periodic boundary terms enforcing the periodic summation-by-parts identities. Apply D₋ to (Au+γu)/2 and D₊ to (Au−γu)/2, where γ is the largest absolute eigenvalue of A. The H-weighted sum of squares does not increase in time.
 
-**How the definition helps.** With the summation-by-parts identities, the energy method of the continuous problem carries over line by line. In the time derivative of the energy, the adjoint identity cancels the non-dissipative part of the flux term. What remains is a sum of γ⟨u, (D₊ − D₋)u⟩ terms, which are nonpositive by assumption. The work goes into building accurate operator pairs that satisfy the identities; the outline of the cancellation is our own.
+**How the definition helps.** The paired identity cancels the contribution of A because A is symmetric (our own argument). The energy derivative equals the sum of γuᵢᵀH(D₊−D₋)uᵢ over the solution components. Each summand is nonpositive.
 
 **Paper or page:** [A dual-pairing summation-by-parts finite difference framework for nonlinear conservation laws](https://arxiv.org/abs/2411.06629v2). It says: “∂ₜ ‖u‖<sub>H</sub>² = ∑ᵢ γᵢ⟨uᵢ, (D₊ − D₋)uᵢ⟩<sub>H</sub> ≤ 0”
 
@@ -1721,11 +1684,11 @@
 
 *True by definition.* MSC 65M06 (Finite difference methods for initial value and initial-boundary value problems involving PDEs), 65M12. arXiv math.NA. Level 4: research.
 
-**Definition.** Let D be a periodic difference matrix and H a positive diagonal weight matrix. The pair (D, H) is a summation-by-parts operator: ⟨u, Dv⟩ = −⟨Du, v⟩ in the H inner product, and D sends constant vectors to zero. Let f be the flux on the grid and F the discrete flux derivative in split form. The split form rewrites the derivative so that ⟨1, F⟩ = −⟨D1, f⟩.
+**Definition.** A periodic summation-by-parts derivative D with positive diagonal weight H satisfies D1=0 and HD=−DᵀH. Thus ⟨u,Dv⟩<sub>H</sub>=−⟨Du,v⟩<sub>H</sub> for all grid vectors u,v, where ⟨u,v⟩<sub>H</sub>=uᵀHv.
 
 **Problem.** In the paper's periodic split-form scheme, the H-weighted total of each solution component stays constant in time.
 
-**How the definition helps.** With the summation-by-parts identity, conservation reduces to differentiating a constant. The time derivative of each total is ⟨1, F⟩, up to sign, and the identity moves the derivative onto the constant vector 1. Since D1 = 0, the result is zero. The work goes into building split forms and periodic operators that satisfy the identity.
+**How the definition helps.** For each component, the paper’s split-form identity gives ⟨1,F⟩<sub>H</sub>=−⟨D1,f⟩<sub>H</sub> for flux f and discrete flux derivative F. Since D1=0, the spatial term contributes zero to the time derivative of the weighted total.
 
 **Paper or page:** [A dual-pairing summation-by-parts finite difference framework for nonlinear conservation laws](https://arxiv.org/abs/2411.06629v2). It says: “⟨1, Fᵢ(u, f(u), D)⟩<sub>H</sub> = −⟨D1, fᵢ⟩<sub>H</sub> = 0”
 
@@ -1733,53 +1696,17 @@
 
 - [A dual-pairing summation-by-parts finite difference framework for nonlinear conservation laws](https://arxiv.org/abs/2411.06629v2)
 
-### Indexing resonance schemes by forests gives a simple test for time symmetry
-
-**Remember:** Pair each forest coefficient with its time reverse.
-
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 65M12 (Stability and convergence of numerical methods for initial value and initial-boundary value problems involving PDEs), 65M70, 35Q55. arXiv math.NA. Level 4: research.
-
-**Definition.** Resonance-based integrators are time-stepping methods for nonlinear dispersive equations with rough data. They come from iterating Duhamel's formula, which writes the solution as the linear flow plus an integral of the nonlinear term. The paper writes each step as a sum over forests, which are collections of labelled trees. The labels record how the formula is iterated and which interpolation is used.
-
-**Problem.** If the forest coefficients of a resonance-based scheme satisfy one reversal identity, the scheme is symmetric. That is, a step backward in time exactly undoes a step forward.
-
-**How the definition helps.** With forest indices, symmetry becomes an identity between coefficients, so nobody needs to expand the whole scheme. In the identity, reversing time sends the labels a and χ to 1 − a and 1 − χ and changes the sign of the time step τ (our own reading). The condition is only sufficient. Building coefficients that satisfy it and keep high accuracy for rough data is separate work (our own).
-
-**Paper or page:** [Symmetric resonance based integrators and forest formulae](https://arxiv.org/abs/2305.16737v3). It says: “The forest formulae allow for a simple characterisation of symmetric schemes”
-
-**Sources:**
-
-- [Yvonne Alama Bronsard, Yvain Bruned, Georg Maierhofer, Katharina Schratz, Symmetric resonance based integrators and forest formulae, arXiv:2305.16737v3 (2025)](https://arxiv.org/abs/2305.16737v3)
-
-### Exactly divergence-free discrete velocities make velocity errors independent of pressure
-
-**Remember:** Velocities with zero divergence cannot feel a pure gradient force.
-
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 65N30 (Finite element, Rayleigh-Ritz and Galerkin methods for boundary value problems involving PDEs), 65N15, 35Q30. arXiv math.NA, math.AP. Level 4: research.
-
-**Definition.** In a staggered discontinuous Galerkin method, choose the discrete spaces so that the discrete velocity has exactly zero divergence. Its normal components then match across element edges and vanish on the boundary (our own reading).
-
-**Problem.** Consider the stationary Navier–Stokes equations on general polygonal meshes. Assume the solution is smooth and the divergence-free part of the force is small enough. Then the velocity error bound involves neither the pressure nor the Reynolds number.
-
-**How the definition helps.** A gradient force ∇φ pairs to zero with any velocity v that is divergence-free with no normal flow at the boundary (our own). Integration by parts gives ∫∇φ·v = −∫φ div v = 0 (our own). So pressure errors and the gradient part of the force drop out of the velocity error equation (our own). Stability and control of the nonlinear convection term still need separate proofs. The paper introduces a new convective term for this.
-
-**Paper or page:** [Pressure-robust staggered DG methods for the Navier-Stokes equations on general meshes](https://arxiv.org/abs/2107.09226v1). It says: “The exact divergence-free condition for the velocity is satisfied without any postprocessing. The resulting method is pressure-robust so that the pressure approximation does not influence the velocity approximation.”
-
-**Sources:**
-
-- [Dohyun Kim, Lina Zhao, Eric Chung, Eun-Jae Park, Pressure-robust staggered DG methods for the Navier-Stokes equations on general meshes, arXiv:2107.09226v1 (2021)](https://arxiv.org/abs/2107.09226v1)
-
 ### On a two-sided fracture mesh, every discrete boundary form is a trace
 
 **Remember:** Give each side of a crack its own copy of the boundary.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 65N30 (Finite element, Rayleigh-Ritz and Galerkin methods for boundary value problems involving PDEs), 58A10, 65N50. arXiv math.NA. Level 4: research.
 
-**Definition.** A fractured mesh cuts the adjacency between cells across chosen interior faces, which form the fracture. Each point on the fracture keeps its coordinates but gets one copy for each side. A trace restricts a discrete differential form in the volume to the boundary of this mesh.
+**Definition.** Choose fracture faces inside a mesh and remove cell adjacencies across them. At each fracture point, give each connected component of its incident cells a separate copy, using remaining face adjacencies through that point (our own). A trace restricts a discrete differential form to the resulting boundary.
 
-**Problem.** For edge and face elements (degrees 1 and 2), every discrete form on the boundary of the fractured mesh is the trace of one in the volume. For nodal elements (degree 0), this holds exactly when the fracture has no point contacts.
+**Problem.** For edge and face elements (degrees 1 and 2), every boundary form on the fractured mesh extends to the volume. For nodal elements (degree 0), this holds exactly when the fracture has no point contacts.
 
-**How the definition helps.** Two copies of each fracture point let a boundary form take different values on the two sides of the crack (our own). Traces of volume fields behave in the same way. The trace theorem is then a statement about this two-sided boundary. Roughly, a point contact is a vertex where fracture pieces touch only at that point (our own gloss). There, nodal values on the boundary need not extend to the volume. The proof still has to extend boundary degrees of freedom into the volume, using a local criterion.
+**How the definition helps.** Cutting face adjacencies lets the boundary distinguish different sides of a crack (our own). The paper’s trace theorem uses a local extension criterion for boundary degrees of freedom. At point contacts, boundary nodal values can disagree where a volume extension requires agreement (our own).
 
 **Paper or page:** [Fractured Meshes](https://arxiv.org/abs/2212.14222v1). It says: “Discrete d-differential forms on the virtually inflated mesh are characterized as the trace space of discrete d-differential forms in the surrounding volume.”
 
@@ -1793,9 +1720,9 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 65N30 (Finite element, Rayleigh-Ritz and Galerkin methods for boundary value problems involving PDEs), 35J15. arXiv math.NA. Level 4: research.
 
-**Definition.** Fix a point in a mesh cell and a linear partial differential equation of order m with smooth coefficients. A quasi-Trefftz polynomial of degree p makes the equation’s residual vanish at that point to Taylor order p − m. That is, the residual and all its derivatives up to that order are zero there.
+**Definition.** Fix a point c and a linear differential equation Lu=f of order m with smooth data. For p≥m, a quasi-Trefftz polynomial v has degree at most p and satisfies ∂ᵅ(Lv−f)(c)=0 for every multi-index α with \|α\|≤p−m.
 
-**Problem.** Assume the paper’s smoothness and non-degeneracy conditions. Prescribe the x₁-derivatives of orders 0 to m − 1 on the hyperplane through the point where x₁ is constant, as polynomials of suitable degree. Exactly one quasi-Trefftz polynomial has these data.
+**Problem.** Assume the coefficient of ∂₁ᵐ in L is nonzero at c. On the hyperplane x₁=c₁, prescribe each derivative ∂₁ʲv as a polynomial of degree at most p−j for 0≤j&lt;m. Exactly one quasi-Trefftz polynomial has these data.
 
 **How the definition helps.** Taylor conditions turn local solving into finitely many linear equations for polynomial coefficients (our own). Non-degeneracy lets these equations be solved for the higher x₁-derivatives one order at a time, as in the Cauchy–Kovalevskaya theorem (our own). This gives a simple algorithm to compute a basis. Stability and high-order convergence of the full method still need separate proofs.
 
@@ -1811,11 +1738,11 @@
 
 *True by definition. Confidence: medium.* MSC 65N30 (Finite element, Rayleigh-Ritz and Galerkin methods for boundary value problems involving PDEs), 76D07. arXiv math.NA. Level 4: research.
 
-**Definition.** A mixed finite element method approximates velocity and pressure in separate spaces. Choose the pressure space Qₕ to contain the divergence of every discrete velocity in Vₕ. The velocities must also have continuous normal components across shared faces, so each has a square-integrable divergence. Without the containment, the discrete constraint ∫ q div v = 0 for all q in Qₕ leaves div v nonzero in general.
+**Definition.** A divergence-conforming velocity space Vₕ has square-integrable divergence and matching normal components across shared faces. A compatible pressure space Qₕ contains div v for every v in Vₕ.
 
 **Problem.** Assume div Vₕ ⊆ Qₕ. Let a discrete velocity v satisfy ∫ q div v = 0 for all q in Qₕ. Then div v = 0.
 
-**How the definition helps.** With the containment, one test function settles the question. Take q = div v, so ∫ (div v)² = 0 and div v = 0. The paper's Lemma 2 states this result for its method on quadrilateral cells, with the containment on the reference cell. The work goes into building such spaces and mapping them to each cell so that the containment survives. The one-line test argument is our own.
+**How the definition helps.** The containment lets the discrete constraint test the divergence against itself (our own argument). Taking q=div v gives ∫(div v)²=0, so div v vanishes almost everywhere.
 
 **Paper or page:** [Design and analysis of an exactly divergence-free hybridized discontinuous Galerkin method for incompressible flows on meshes with quadrilateral cells](https://arxiv.org/abs/2306.05288v2). It says: “then discretely divergence-free functions are weakly divergence-free”
 
@@ -1829,11 +1756,11 @@
 
 *True by definition.* MSC 65N30 (Finite element, Rayleigh-Ritz and Galerkin methods for boundary value problems involving PDEs), 65N15. arXiv math.NA. Level 4: research.
 
-**Definition.** At each mesh node, replace a value outside the allowed interval by the nearer endpoint. This map is a nonlinear projection. The method seeks its finite element solution in the range of this projection, with a stabilizing term because the projection is not injective.
+**Definition.** The nodal clipping map replaces each nodal value t by min(b,max(a,t)), where \[a,b\] is that node’s allowed interval. The finite element method takes its solution from the range of this map.
 
 **Problem.** The numerical solution satisfies the known bounds at every node, by construction. For linear reaction-diffusion problems, it is also the best approximation in the energy norm among all nodally bound-preserving finite element functions.
 
-**How the definition helps.** Every function in the projection’s range satisfies the nodal bounds, so that part needs no proof. Between nodes, the bounds can fail for elements of higher degree (our own). The real work is to show that the stabilized problem has a unique solution. Its clipped part then solves a variational inequality, as in a discrete obstacle problem. The paper uses this to prove the best-approximation result.
+**How the definition helps.** Every value in the projection’s range satisfies its nodal bounds. For the paper’s linear reaction-diffusion scheme, the clipped solution satisfies the discrete obstacle variational inequality. This inequality characterizes the energy-norm projection of the exact solution onto the admissible set (our own explanation).
 
 **Paper or page:** [A Nodally Bound-Preserving Finite Element Method](https://arxiv.org/abs/2304.01067v1). It says: “The discrete problem involves a nonlinear projection operator mapping arbitrary nodal values into bound-preserving ones and seeks the numerical solution in the range of this projection.”
 

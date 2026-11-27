@@ -54,7 +54,7 @@
 
 *True by definition.* MSC 03B05 (Classical propositional logic). arXiv math.LO. Level 1: early undergraduate.
 
-**Definition.** An assignment gives each letter a truth value. The implication A → B is false only when A is true and B is false. A conclusion follows from premises when every assignment making all the premises true also makes the conclusion true.
+**Definition.** An assignment gives each letter a truth value. The implication A → B is false exactly when A is true and B is false. A conclusion follows from premises when every assignment making all the premises true also makes the conclusion true.
 
 **Problem.** B follows from a set of premises together with A exactly when A → B follows from those premises alone.
 
@@ -66,9 +66,9 @@
 
 ### True rows give a unique full disjunctive normal form
 
-**Remember:** One true row gives one clause.
+**Remember:** Take one full conjunction per true row, then join them with OR.
 
-*Makes the theorem clean to state or prove.* MSC 03B05 (Classical propositional logic). arXiv math.LO. Level 1: early undergraduate.
+*True by definition.* MSC 03B05 (Classical propositional logic). arXiv math.LO. Level 1: early undergraduate.
 
 **Definition.** A full disjunctive normal form joins distinct terms with OR. Each term joins all listed letters with AND in order, using each letter once, either plain or negated. An empty AND means true, and an empty OR means false.
 
@@ -92,7 +92,7 @@
 
 **Problem.** The traditional square of opposition says that 'all S are P' and 'no S are P' are contrary. It says that 'some S are P' and 'some S are not P' are subcontrary. Under the modern reading, these laws hold exactly when something is S.
 
-**How the definition helps.** The modern reading makes both universal statements true when nothing is S, so they are contrary only when S is not empty. In the same way, both particular statements are false when nothing is S, so they are subcontrary only then. The predicate-logic form shows each equivalence in one line. Our own remark: traditional logic assumed that every term applies to something (existential import), and with that assumption the whole square holds.
+**How the definition helps.** An element of S must either satisfy P or fail P (our own argument). It therefore falsifies one universal statement and witnesses one particular statement. If S is empty, both universals are true and both particulars are false.
 
 **Paper or page:** [Universal Affirmative and Universal Negative are Contrary iff First Predicate is not Vacuous](https://proofwiki.org/wiki/Universal_Affirmative_and_Universal_Negative_are_Contrary_iff_First_Predicate_is_not_Vacuous), [Particular Affirmative and Particular Negative are Subcontrary iff First Predicate is not Vacuous](https://proofwiki.org/wiki/Particular_Affirmative_and_Particular_Negative_are_Subcontrary_iff_First_Predicate_is_not_Vacuous). It says: “Using the symbology of predicate logic: ∃x: S(x) ⟺ ¬((∀x: S(x) ⟹ P(x)) ∧ (∀x: S(x) ⟹ ¬P(x)))”
 
@@ -173,13 +173,13 @@
 
 **Remember:** Pair them off: squares and integers match, so they are equally many.
 
-*Makes the theorem clean to state or prove.* MSC 03E10 (Ordinal and cardinal numbers). arXiv math.LO. Level 1: early undergraduate.
+*True by definition.* MSC 03E10 (Ordinal and cardinal numbers). arXiv math.LO. Level 1: early undergraduate.
 
 **Definition.** Two sets have the same cardinality if there is a one-to-one correspondence between them. A set is smaller than another if it maps one-to-one into it, but no one-to-one correspondence between them exists.
 
-**Problem.** The perfect squares and the positive integers have the same cardinality, although the squares are only part of the positive integers.
+**Problem.** The positive perfect squares and the positive integers have the same cardinality, although the positive squares form a proper subset.
 
-**How the definition helps.** Taking one-to-one correspondence as the meaning of equal size turns Galileo's paradox into a theorem, since each integer pairs with its own square. For infinite sets, a part can then have the same size as the whole. The same definition lets one prove that some infinite sets are strictly larger than others, such as the real numbers compared with the integers (our own).
+**How the definition helps.** The map sending each positive integer to its square is a one-to-one correspondence. Each positive square has exactly one positive square root (our own argument).
 
 **Wikipedia:** [Galileo's paradox](https://en.wikipedia.org/wiki/Galileo%27s_paradox). It says: “it is possible to define comparisons amongst infinite sets in a meaningful way (by which definition the two sets, integers and squares, have "the same size"), and that by this definition some infinite sets are strictly larger than others.”
 
@@ -193,7 +193,7 @@
 
 *True by definition.* MSC 03E10 (Ordinal and cardinal numbers). arXiv math.LO. Level 1: early undergraduate.
 
-**Definition.** Call a set countable if its elements can receive distinct natural number labels. An alternative is to list the elements using a function from the natural numbers that reaches each element.
+**Definition.** A set is countable if there is an injection from it into the natural numbers.
 
 **Problem.** Every subset of a countable set is countable, including the empty set.
 
@@ -241,11 +241,11 @@
 
 *True by definition.* MSC 03E20 (Other classical set theory (including functions, relations, and set algebra)), 06E20. arXiv math.LO, math.CO. Level 1: early undergraduate.
 
-**Definition.** The indicator function of a set takes the value 1 on the set and 0 elsewhere. For two subsets of a common set, define their symmetric difference by adding their indicator functions modulo two. This gives the usual set definition, (A ∖ B) ∪ (B ∖ A), because the sum is 1 exactly when one indicator is 1.
+**Definition.** For a subset A of a common set U, its indicator equals 1 on A and 0 elsewhere in U. The symmetric difference of two subsets consists of the points where their indicators sum to 1 modulo two.
 
 **Problem.** For any three subsets A, B and C of a common set, A Δ (B Δ C) = (A Δ B) Δ C.
 
-**How the definition helps.** The indicator definition makes the two sides sums of the same three numbers modulo two at each point. Addition modulo two is associative, so the two sets have the same indicator function. With the set formula, one can instead check the eight possible membership patterns (our own). The comparison goes through the two possible indicator values for each set. This argument uses ordinary classical membership, where every point is either in or out.
+**How the definition helps.** At each point, both sides add the same three indicators modulo two (our own argument). Associativity of this addition gives identical indicators and hence identical sets.
 
 **nLab:** [symmetric difference](https://ncatlab.org/nlab/show/symmetric+difference). It says: “The term symmetric difference, however, is usually used as the addition in a Boolean ring and so interpreted as an associative operation”
 
@@ -265,7 +265,7 @@
 
 **Problem.** Each element lies in its own equivalence class. So no class is empty and the classes cover S.
 
-**How the definition helps.** Reflexivity puts x in its own class, and symmetry and transitivity cannot do this alone. The false proof 'x R y gives y R x, so x R x' needs some y with x R y in the first place. ProofWiki's counterexample is the relation on {0, 1} that relates only 1 to 1: it is symmetric and transitive, but the class of 0 is empty. The fact that two classes are equal or disjoint still uses symmetry and transitivity.
+**How the definition helps.** Reflexivity puts each x in its own class, so the classes cover S and each class has a member. On {0, 1}, the relation containing only (1, 1) is symmetric and transitive (our own check). The class of 0 is empty because nothing relates to 0.
 
 **Paper or page:** [Symmetric and Transitive therefore Reflexive](https://proofwiki.org/wiki/Symmetric_and_Transitive_therefore_Reflexive), [Symmetric and Transitive Relation is not necessarily Reflexive](https://proofwiki.org/wiki/Symmetric_and_Transitive_Relation_is_not_necessarily_Reflexive), [Equivalence Class is not Empty](https://proofwiki.org/wiki/Equivalence_Class_is_not_Empty). It says: “Unless it is the case that ∀x ∈ S: ∃y ∈ S: x ℛ y, it is not necessarily the case that also y ℛ x, and so the reasoning does not follow.”
 
@@ -349,11 +349,11 @@
 
 *True by definition. Confidence: medium.* MSC 03E20 (Other classical set theory (including functions, relations, and set algebra)), 20M14. arXiv math.LO, math.GR. Level 1: early undergraduate.
 
-**Definition.** An integer is defined as a class of pairs (x, y) of natural numbers, where the pair stands for x − y. Two pairs (x₁, y₁) and (x₂, y₂) are equivalent when x₁ + y₂ = x₂ + y₁. Addition is done pair by pair.
+**Definition.** Take pairs of nonnegative integers and identify (a, b) with (c, d) exactly when a + d = c + b. An integer is one equivalence class, and addition adds representatives coordinate by coordinate.
 
 **Problem.** Addition of pairs gives a well-defined operation on the classes, and the result is a group that contains the natural numbers.
 
-**How the definition helps.** The equivalence uses only addition, so no subtraction in ℕ is needed to define the integers. Associativity and commutativity of integer addition then follow straight from those laws in ℕ. The class of (0, y) is the inverse of the class of (y, 0), so inverses exist by construction; this is our own remark. The work moves into the check that addition does not depend on the chosen pairs.
+**How the definition helps.** Adding the two equalities for equivalent representatives proves their sums equivalent (our own check). Associativity follows coordinate by coordinate, and \[(0, 0)\] is the identity. Swapping a pair gives its inverse because (a + b, b + a) represents zero. The map n ↦ \[(n, 0)\] preserves sums and is injective.
 
 **Paper or page:** [Integer Addition is Well-Defined](https://proofwiki.org/wiki/Integer_Addition_is_Well-Defined), [Inverse Completion of Natural Numbers](https://proofwiki.org/wiki/Inverse_Completion_of_Natural_Numbers). It says: “(x₁, y₁) ⊠ (x₂, y₂) ⟺ x₁ + y₂ = x₂ + y₁”
 
@@ -366,13 +366,13 @@
 
 **Remember:** The first element is in both sets, and that records which came first.
 
-*Makes the theorem clean to state or prove.* MSC 03E20 (Other classical set theory (including functions, relations, and set algebra)). arXiv math.LO. Level 1: early undergraduate.
+*True by definition.* MSC 03E20 (Other classical set theory (including functions, relations, and set algebra)). arXiv math.LO. Level 1: early undergraduate.
 
 **Definition.** Kuratowski (1921) defined the ordered pair as (a, b) = {{a}, {a, b}}.
 
 **Problem.** With this definition, (a, b) = (c, d) if and only if a = c and b = d.
 
-**How the definition helps.** With a set-theoretic definition, the axioms of set theory prove that pairs exist and have this characteristic property. Bourbaki's first edition instead took the pair as a primitive and assumed the property as an axiom. With pairs as sets, relations and functions are just sets of pairs. The shorter definition {a, {a, b}} also works, but its proof needs the axiom of regularity.
+**How the definition helps.** The intersection of the pair’s members is {a}, and their union is {a, b} (our own proof). Removing a from that union leaves {b} if b differs from a and leaves nothing if b equals a. Thus equal pairs determine equal coordinates, and equal coordinates give equal pairs by construction.
 
 **Wikipedia:** [Ordered pair](https://en.wikipedia.org/wiki/Ordered_pair). It says: “This can be done in several ways and has the advantage that existence and the characteristic property can be proven from the axioms that define the set theory.”
 
@@ -406,7 +406,7 @@
 
 **Problem.** For all m, n ≥ 0, including empty sets, there are exactly mⁿ mappings from an n-element set to an m-element set.
 
-**How the definition helps.** With mappings defined as relations, the empty cases follow from the definition and need no convention. From ∅ to any set there is exactly one mapping, the empty one, which matches m⁰ = 1. A relation from a nonempty set to ∅ is never a mapping, which matches 0ⁿ = 0 for n ≥ 1. Our own remark: the general count then follows by induction on n.
+**How the definition helps.** Each input needs exactly one output, so the product rule gives one factor of m per input (our own count). With no inputs the empty relation qualifies, giving the empty product 1. With inputs but no outputs, no relation qualifies.
 
 **Paper or page:** [Empty Mapping to Empty Set is Bijective](https://proofwiki.org/wiki/Empty_Mapping_to_Empty_Set_is_Bijective), [Empty Mapping is Injective](https://proofwiki.org/wiki/Empty_Mapping_is_Injective), [Relation to Empty Set is Mapping iff Domain is Empty](https://proofwiki.org/wiki/Relation_to_Empty_Set_is_Mapping_iff_Domain_is_Empty), [Cardinality of Set of All Mappings from Empty Set](https://proofwiki.org/wiki/Cardinality_of_Set_of_All_Mappings_from_Empty_Set). It says: “Let ν: ∅ → ∅ be an empty mapping. Then ν is a bijection.”
 
@@ -487,11 +487,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 03E20 (Other classical set theory (including functions, relations, and set algebra)), 03B10. arXiv math.LO. Level 1: early undergraduate.
 
-**Definition.** The intersection ⋂𝓕 of a family 𝓕 of subsets of a fixed set U is the set of points of U that lie in every member of 𝓕. For the empty family every point passes this test vacuously, so ⋂∅ = U.
+**Definition.** For a family 𝓕 of subsets of U, its intersection consists of all x ∈ U belonging to every member of 𝓕. Thus the empty intersection contains every point of U.
 
 **Problem.** For all families 𝓕 ⊆ 𝓖 of subsets of U, the empty family included, ⋂𝓖 ⊆ ⋂𝓕.
 
-**How the definition helps.** The convention ⋂∅ = U is what the definition gives vacuously, and it is the only value that keeps the rule true for 𝓕 = ∅. Without a fixed U, the empty intersection would be the class of all sets, which ProofWiki calls 'a paradoxical result' because that class is not a set.
+**How the definition helps.** A point meeting every requirement in 𝓖 also meets every requirement in its subfamily 𝓕 (our own argument). This includes an empty 𝓕 because it imposes no requirements.
 
 **Paper or page:** [Intersection is Decreasing](https://proofwiki.org/wiki/Intersection_is_Decreasing), [Intersection of Empty Set](https://proofwiki.org/wiki/Intersection_of_Empty_Set). It says: “Then 𝓕 ⊆ 𝓖 ⟹ ⋂𝓖 ⊆ ⋂𝓕, where by convention ⋂∅ = U.”
 
@@ -526,7 +526,7 @@
 
 **Problem.** Arithmetical induction: any set that contains o and is closed under s on N contains all of N.
 
-**How the definition helps.** N is the smallest set that contains o and is closed under s. A lemma in the text says this closure lies inside every such set. So induction is just the minimality clause of the definition. The work moves into existence. The text proves that a Dedekind algebra exists if a Dedekind infinite set exists. Such a set has an injection onto a proper subset of itself. That assumption is where the axiom of infinity enters (our own).
+**How the definition helps.** The closure of o under s lies inside every subset of N containing o and closed under s. For any X satisfying the induction hypotheses, X ∩ N is such a subset (our own argument). The closure equals N, so N ⊆ X.
 
 **Paper or page:** [Open Logic Project: Sets Functions Relations: Infinite](https://builds.openlogicproject.org/open-logic-complete.pdf), [Open Logic Project: Sets Functions Relations: Infinite](https://builds.openlogicproject.org/open-logic-complete.pdf), [Open Logic Project: Sets Functions Relations: Infinite](https://builds.openlogicproject.org/open-logic-complete.pdf). It says: “Let N, s, o comprise a Dedekind algebra. Then for any set X: if o ∈ X and (∀n ∈ N ∩ X) s(n) ∈ X, then N ⊆ X.”
 
@@ -540,11 +540,11 @@
 
 *Rules out counterexamples.* MSC 03B05 (Classical propositional logic). arXiv math.LO. Level 2: later undergraduate.
 
-**Definition.** The Open Logic text defines formulas by rules. ⊥, ⊤ and the propositional variables are formulas. If B and C are formulas, so are ¬B, (B ∧ C), (B ∨ C), (B → C) and (B ↔︎ C). So each binary connective brings its own brackets.
+**Definition.** Formulas are precisely the strings generated from propositional variables, ⊥ and ⊤ by these rules. From any formula B form ¬B. From any formulas B and C form (B ◦ C), where ◦ is ∧, ∨, → or ↔︎.
 
 **Problem.** Unique readability: every formula is built by these rules in exactly one way. So definitions by recursion on formulas, such as the truth value under a valuation, are well defined.
 
-**How the definition helps.** A count of brackets shows that no proper initial segment of a formula is a formula, so (B ∧ C) cannot also be read as (B′ ∨ C′) with different parts (our own outline). Without brackets, p ∧ q ∨ r has two readings, and with p false and r true they get different truth values (our own example). The lambda calculus chapter proves unique readability for terms in the same way.
+**How the definition helps.** The first symbol identifies an atom, a negation or a bracketed binary formula (our own argument). In the binary case the prefix lemma uniquely determines the first operand because no formula properly extends another as a prefix. The following connective and remaining operand are then fixed, and induction determines the subparses. Without brackets, p ∧ q ∨ r permits two parses (our own example).
 
 **Paper or page:** [Open Logic Project: Propositional Logic: Syntax And Semantics](https://builds.openlogicproject.org/open-logic-complete.pdf), [Open Logic Project: Propositional Logic: Syntax And Semantics](https://builds.openlogicproject.org/open-logic-complete.pdf), [Open Logic Project: Lambda Calculus: Syntax](https://builds.openlogicproject.org/open-logic-complete.pdf). It says: “No proper initial segment of a formula is a formula.”
 
@@ -576,11 +576,11 @@
 
 *Rules out counterexamples.* MSC 03B05 (Classical propositional logic). arXiv math.LO. Level 2: later undergraduate.
 
-**Definition.** In classical propositional natural deduction, a set is consistent if its formulas cannot prove a contradiction. It is maximal consistent if adding any missing formula makes it inconsistent.
+**Definition.** In classical propositional natural deduction, a set is consistent if no contradiction follows from its formulas. It is maximal consistent if it is consistent and adding any missing formula makes it inconsistent.
 
 **Problem.** Every consistent set of propositional formulas has a truth assignment that makes all its formulas true.
 
-**How the definition helps.** Maximality lets our own construction read each letter’s truth value from its membership in the set. The consistent set containing only “p or q” would give both letters false by this test. Extend the set to a maximal consistent one, then prove by induction that membership agrees with truth for every formula.
+**How the definition helps.** A maximal consistent set determines a valuation by declaring exactly its member letters true (our own construction). For {p ∨ q}, that rule alone makes both letters false. Lindenbaum’s lemma extends any consistent set to a maximal consistent set. The truth lemma identifies truth there with membership, so the valuation satisfies the original set.
 
 **Paper or page:** [Propositional Logic: Syntax And Semantics](https://builds.openlogicproject.org/open-logic-complete.pdf). It says: “If Γ is consistent then Γ is satisfiable.”
 
@@ -630,7 +630,7 @@
 
 **Problem.** If a first-order sentence is a semantic consequence of a set of premises, it is a semantic consequence of some finite subset.
 
-**How the definition helps.** A formal proof is finite, so a proof-theoretic consequence follows from finitely many premises by definition. The nLab proves compactness this way, with the completeness theorem and the finiteness of formal proofs. Completeness says that every semantic consequence has a formal proof. That proof uses only a finite subset of the premises. Soundness then makes the sentence a semantic consequence of that subset, in our own wording of the last step. So the real work is in the completeness theorem.
+**How the definition helps.** Completeness gives a formal proof from the premises. Its finitely many steps use only finitely many premises. Soundness makes the sentence a semantic consequence of those premises (our own wording).
 
 **nLab:** [compactness theorem](https://ncatlab.org/nlab/show/compactness+theorem). It says: “the essential finitude of the notion of formal proof”
 
@@ -652,35 +652,17 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
-### Henkin witnesses make the proof of the completeness theorem simple
-
-**Remember:** In a Henkin theory, everything that exists has a name.
-
-*Makes the theorem clean to state or prove.* MSC 03B10 (Classical first-order logic), 03C30. arXiv math.LO. Level 2: later undergraduate.
-
-**Definition.** A Henkin theory has a witness constant c(ψ) for each formula ψ(x). It also has the axiom ∃x ψ(x) → ψ(c(ψ)): if something satisfies ψ, then c(ψ) satisfies ψ. So every existential statement has a named witness.
-
-**Problem.** Gödel's completeness theorem says that every sentence that is true in all models of a theory T can be proved from T. Equivalently, every consistent theory has a model.
-
-**How the definition helps.** Witnesses let you build a model out of the closed terms of the language itself. Henkin adds witnesses, extends to a complete consistent theory by Lindenbaum's lemma, and takes the closed terms as the elements of the model. The witness axioms make this term model satisfy every existential statement that the theory proves, so it satisfies the theory. For uncountable languages, the extension step needs a form of the axiom of choice (our own remark).
-
-**Wikipedia:** [Gödel's completeness theorem](https://en.wikipedia.org/wiki/G%C3%B6del%27s_completeness_theorem). It says: “It was then simplified when Leon Henkin observed in his Ph.D. thesis that the hard part of the proof can be presented as the Model Existence Theorem (published in 1949).”
-
-**Sources:**
-
-- [Henkin, L. (1949). The completeness of the first-order functional calculus. Journal of Symbolic Logic 14, 159–166.](https://doi.org/10.2307/2267044)
-
 ### Nonempty domains keep the classical laws of logic valid
 
 **Remember:** Classical logic assumes that at least one thing exists.
 
 *Rules out counterexamples.* MSC 03B10 (Classical first-order logic), 03B60. arXiv math.LO. Level 2: later undergraduate.
 
-**Definition.** In standard first-order logic, every structure must have a nonempty domain, the set that the variables range over. Logics that also allow the empty domain are called inclusive logics. They are a kind of free logic.
+**Definition.** In standard first-order semantics, a structure has a domain D with at least one element. Each individual variable ranges over D.
 
-**Problem.** In logic with nonempty domains, ∀x φ → ∃x φ and ∃x (x = x) are valid, and (∀x φ) ∧ ψ is equivalent to ∀x (φ ∧ ψ) when x is not free in ψ. This last law gives prenex form, with all quantifiers at the front.
+**Problem.** With nonempty domains, ∀x φ → ∃x φ and ∃x (x = x) are valid. If x is not free in ψ, then (∀x φ) ∧ ψ is equivalent to ∀x (φ ∧ ψ). Such quantifier moves help put formulas in prenex form.
 
-**How the definition helps.** Each of these laws needs some individual to exist, so banning the empty domain makes them valid. In the empty domain every sentence ∀x φ is true and every sentence ∃x φ is false, so ∀x φ → ∃x φ fails. Free logics by Hailperin, Quine and others drop the convention and pay with a more careful proof system (our own remark on the cost).
+**How the definition helps.** Any domain element witnesses reflexivity and turns universal truth into an existential witness (our own argument). A fixed ψ has the same truth value at every choice of x, and at least one such choice exists. In an empty domain the first two laws fail, and false ψ makes the conjunction law fail.
 
 **Wikipedia:** [Empty domain](https://en.wikipedia.org/wiki/Empty_domain), [Free logic](https://en.wikipedia.org/wiki/Free_logic), [Prenex normal form](https://en.wikipedia.org/wiki/Prenex_normal_form). It says: “In traditional and classical logic, domains are restrictedly non-empty in order that certain theorems be valid.”
 
@@ -705,57 +687,23 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
-### Kripke's implication clause makes truth persist in intuitionistic models
-
-**Remember:** Implication looks at every future world, so what is known stays known.
-
-*Makes the theorem clean to state or prove.* MSC 03B20 (Subsystems of classical logic (including intuitionistic logic)), 03F55. arXiv math.LO. Level 2: later undergraduate.
-
-**Definition.** An intuitionistic Kripke model is a preordered set of worlds, ordered by w ≤ u, with a forcing relation ⊩. Atoms forced at w stay forced at every u ≥ w. A world w forces A → B if every u ≥ w that forces A also forces B, including w itself.
-
-**Problem.** In an intuitionistic Kripke model, every formula forced at a world is forced at all later worlds. So intuitionistic logic is sound for Kripke models, and excluded middle A ∨ ¬A fails in some model.
-
-**How the definition helps.** Because → and ¬ look at all later worlds, persistence holds for every formula by induction, and soundness follows. Our own example: take two worlds w ≤ u with p true only at u. Then w forces neither p nor ¬p, so excluded middle fails at w. Completeness, with models built from prime theories, is the remaining work (our own).
-
-**Wikipedia:** [Kripke semantics](https://en.wikipedia.org/wiki/Kripke_semantics). It says: “Intuitively, the additional requirement for w ⊩ A → B is to ensure the monotonicity even for compound propositions, i.e., for any proposition A, if w ≤ u and w ⊩ A, then u ⊩ A.”
-
-**Sources:**
-
-- [Kripke, S. A. (1965). Semantical analysis of intuitionistic logic I. In Formal Systems and Recursive Functions, Studies in Logic 40, 92–130.](https://doi.org/10.1016/S0049-237X(08)71685-9)
-
 ### Prime theories as worlds make the canonical intuitionistic model respect disjunction
 
 **Remember:** Kripke disjunction needs a witness, so the worlds must be prime.
 
-*True by definition.* MSC 03B20 (Subsystems of classical logic (including intuitionistic logic)), 03F55. arXiv math.LO. Level 2: later undergraduate.
+*Rules out counterexamples.* MSC 03B20 (Subsystems of classical logic (including intuitionistic logic)), 03F55. arXiv math.LO. Level 2: later undergraduate.
 
-**Definition.** A set of formulas is prime if it is consistent, contains every formula it proves, and contains B or C whenever it proves B ∨ C. In a Kripke model, a world makes B ∨ C true exactly when it makes B true or makes C true.
+**Definition.** A prime intuitionistic theory is consistent, contains everything it proves, and contains B or C whenever it contains B ∨ C. The canonical Kripke model orders these theories by inclusion and forces an atom exactly at theories containing it.
 
 **Problem.** Truth lemma: in the Kripke model whose worlds are the prime sets, a formula is true at a world exactly when that world's set proves it. With Lindenbaum's lemma this gives completeness of intuitionistic logic: if Γ does not prove A, some world makes Γ true and A false.
 
-**How the definition helps.** Primeness is exactly what the disjunction case of the truth lemma needs, since the Kripke clause asks for B or C (our own). Maximal consistent sets would not work, because each contains A or ¬A, so a model built only from them refutes no classical law (our own argument). Lindenbaum's lemma gives a prime extension of Γ that still does not prove A. The implication clause stays harder, because it needs prime extensions of each world's theory (our own).
+**How the definition helps.** Primeness gives precisely the disjunction step in the truth lemma (our own argument). A deductively closed theory generated by p ∨ q contains neither disjunct, so membership there cannot interpret Kripke disjunction. The prime extension lemma supplies the implication step by extending a world with B while avoiding C whenever it omits B → C. The same lemma extends Γ while avoiding A, so the truth lemma gives a countermodel.
 
 **Paper or page:** [Open Logic Project: Intuitionistic Logic: Soundness Completeness](https://builds.openlogicproject.org/open-logic-complete.pdf), [Open Logic Project: Intuitionistic Logic: Soundness Completeness](https://builds.openlogicproject.org/open-logic-complete.pdf). It says: “If Γ ⊬ A, there is a Γ\* ⊇ Γ such that Γ\* is prime and Γ\* ⊬ A.”
 
 **Sources:**
 
 - [The Open Logic Project, The Open Logic Text (complete build)](https://builds.openlogicproject.org/open-logic-complete.pdf)
-
-### A mapping property gives recursion on the natural numbers
-
-**Remember:** Choose a start and a step, and the natural numbers give one map.
-
-*True by definition.* MSC 03B30 (Foundations of classical theories (including reverse mathematics)). arXiv math.LO. Level 2: later undergraduate.
-
-**Definition.** Specify the natural numbers by zero, a successor operation S, and the following rule. Choose a set A, an element a of A, and a function f from A to itself. Exactly one function u from the natural numbers to A satisfies u(0) = a and u(S(n)) = f(u(n)).
-
-**Problem.** For any start a and step f on a set A, exactly one sequence starts at a and applies f at each step.
-
-**How the definition helps.** The two equations say exactly how to start a sequence and how to continue it. In our own comparison, starting from the Peano axioms requires a proof that the sequence exists. One constructs compatible finite sequences and joins them.
-
-**nLab:** [natural numbers object](https://ncatlab.org/nlab/show/natural+numbers+object). It says: “there is a unique morphism u : ℕ → A”
-
-**Sources:** none listed. No primary source with a working link was found.
 
 ### Church numerals express addition and multiplication by composing iterations
 
@@ -765,7 +713,7 @@
 
 **Definition.** The Church numeral for n is λf x. f(f(⋯(f x))), with n applications of f. A Scott numeral instead exposes the predecessor when its input is a successor.
 
-**Problem.** The terms λm n f x. m f (n f x) and λm n f x. m (n f) x send the Church numerals for m and n to the Church numerals for m + n and m × n.
+**Problem.** For Church numerals m and n, the term λf x. m f (n f x) represents their sum. The term λf x. m (n f) x represents their product.
 
 **How the definition helps.** Church numerals build in the iteration that arithmetic needs. The sum runs f first n times, then m more times, and the product repeats the n-fold iterate m times (our own). A construction with Scott numerals must instead supply the iteration (our own). The cost of the Church encoding appears in the predecessor, which the numeral does not expose directly (our own).
 
@@ -797,7 +745,7 @@
 
 *True by definition.* MSC 03B40 (Combinatory logic and lambda calculus), 68N18. arXiv cs.LO, math.LO. Level 2: later undergraduate.
 
-**Definition.** A Church-encoded list is its own right fold, a function that takes a combining operation c and an initial result n. Append l and r as λc n. l c (r c n), so the right list's fold becomes the left list's initial result. Ordinary lists instead use empty and prepend constructors.
+**Definition.** A Church list represents a finite sequence by its right fold. The empty sequence returns the seed, and prepending x combines x with the tail’s fold. For encoded lists l and r, define append(l, r) = λc n. l c (r c n).
 
 **Problem.** Folding an appended list equals folding the left list with the folded right list as its initial result.
 
@@ -813,11 +761,11 @@
 
 *True by definition.* MSC 03B40 (Combinatory logic and lambda calculus), 68N18. arXiv cs.LO, cs.PL. Level 2: later undergraduate.
 
-**Definition.** A Scott numeral supplies one case for zero and one for a successor. Zero is λz s. z, and the successor of n is λz s. s n. The successor case receives n directly. Church numerals instead represent a number by that many iterations of a function.
+**Definition.** Scott zero is Z = λz s. z. For each Scott numeral n, its successor is λz s. s n.
 
 **Problem.** For an input already in Scott numeral form, the predecessor takes at most four function-application reductions to return the encoded result.
 
-**How the definition helps.** The Scott definition hands the successor case its predecessor, so no traversal is needed. The term λn. n Z (λm. m), with Z the Scott zero, returns the predecessor in at most four reductions and sends zero to zero (our own). This counts reductions, not the cost of copying a large expression (our own). The Church predecessor instead advances a pair of successive values once per iteration, and Scott numerals move the work to operations such as addition (our own).
+**How the definition helps.** A Scott successor passes its stored predecessor to the chosen handler. Use λn. n Z I with I = λm. m (our own calculation). Applying it to a successor takes one reduction to insert the numeral, two to select and apply its handler, and one to remove I. For zero, the first three reductions return Z.
 
 **Wikipedia:** [Mogensen–Scott encoding](https://en.wikipedia.org/wiki/Mogensen%E2%80%93Scott_encoding). It says: “The key difference is that Scott's handler's argument is the number's own predecessor Scott numeral, unprocessed, whereas Church's folding / looping function's argument is the result of folding / looping over its predecessor.”
 
@@ -847,11 +795,11 @@
 
 *True by definition.* MSC 03B45 (Modal logic (including the logic of norms)). arXiv math.LO, cs.LO. Level 2: later undergraduate.
 
-**Definition.** Take a Kripke model and a set Γ of formulas closed under subformulas, and call two worlds equivalent when they make the same formulas of Γ true. A filtration through Γ is a model on the equivalence classes. It relates two classes when some of their worlds are related, and only when each □A in Γ that is true at the first has A true at the second.
+**Definition.** For a subformula-closed set Γ, group worlds agreeing on every formula in Γ and retain their truth values for atoms in Γ. A filtration on these classes includes every edge induced by an original edge. An edge from C to D requires A throughout D whenever □A belongs to Γ and holds throughout C.
 
 **Problem.** The basic modal logic K has the finite model property: every satisfiable formula has a finite model. The Open Logic text shows the same for S5.
 
-**How the definition helps.** By induction on formulas, the classes decide the truth of every formula in Γ (our own outline). Taking Γ as the n subformulas of one formula gives at most 2ⁿ classes, so a satisfiable formula has a finite model (our own count). What stays hard is that a filtration need not keep the properties of the accessibility relation (our own). The text shows that the coarsest filtration keeps symmetry, transitivity and the euclidean property when Γ is modally closed.
+**How the definition helps.** The filtration lemma preserves the chosen formula on the quotient by its n subformulas, which has at most 2ⁿ classes (our own count). For K take just the induced edges. For S5 take their equivalence closure (our own argument). Truth of each selected □A agrees across every induced edge in S5, hence along every path, and reflexivity then gives A at its endpoint.
 
 **Paper or page:** [Open Logic Project: Normal Modal Logic: Filtrations](https://builds.openlogicproject.org/open-logic-complete.pdf), [Open Logic Project: Normal Modal Logic: Filtrations](https://builds.openlogicproject.org/open-logic-complete.pdf), [Open Logic Project: Normal Modal Logic: Filtrations](https://builds.openlogicproject.org/open-logic-complete.pdf), [Open Logic Project: Normal Modal Logic: Filtrations](https://builds.openlogicproject.org/open-logic-complete.pdf). It says: “If M\* is a filtration of M through Γ, then for every A ∈ Γ and w ∈ W, we have M, w ⊩ A if and only if M\*, \[w\] ⊩ A.”
 
@@ -861,15 +809,15 @@
 
 ### The canonical model makes completeness of modal logic K immediate
 
-**Remember:** Let the worlds be the consistent theories, and truth is membership.
+**Remember:** Use maximal consistent worlds and send every boxed requirement to every successor.
 
 *True by definition.* MSC 03B45 (Modal logic (including the logic of norms)). arXiv math.LO, cs.LO. Level 2: later undergraduate.
 
-**Definition.** A normal modal logic L is a set of modal formulas that contains the axioms of K and is closed under its rules. The canonical model of L has as worlds the maximal L-consistent sets of formulas, that is, consistent sets that cannot grow. World w sees world v when every A with □A in w is in v. A propositional variable is true at w when it belongs to w.
+**Definition.** The canonical model of K takes maximal K-consistent sets of formulas as worlds. World w sees v exactly when v contains every A for which w contains □A. An atom holds at w exactly when w contains it.
 
 **Problem.** Completeness: every formula valid in all Kripke frames is provable in K. A Kripke frame is a set of worlds with an accessibility relation, and K is the smallest normal modal logic.
 
-**How the definition helps.** The accessibility relation is chosen so that the truth lemma holds: a formula is true at a world exactly when it belongs to that world. If K does not prove φ, Lindenbaum's lemma extends {¬φ} to a maximal consistent set, and φ fails at that world. For other logics, such as the provability logic GL, the canonical frame may lack the needed properties, and one uses other methods such as filtration (our own remark).
+**How the definition helps.** The canonical truth lemma identifies truth at each world with membership in its theory. If K does not prove φ, Lindenbaum’s lemma extends {¬φ} to a maximal K-consistent set. At that world φ fails, so φ is not valid on all frames (our own argument).
 
 **Wikipedia:** [Kripke semantics](https://en.wikipedia.org/wiki/Kripke_semantics). It says: “The main application of canonical models are completeness proofs. Properties of the canonical model of K immediately imply completeness of K with respect to the class of all Kripke frames.”
 
@@ -956,7 +904,7 @@
 
 **Problem.** A first-order theory with equality and arbitrarily large finite models has an infinite model.
 
-**How the definition helps.** Each finite group of size bounds has a largest required size, so some finite model of the theory satisfies them all. In our own argument, compactness gives one model satisfying the theory and every bound together. Its domain must be infinite.
+**How the definition helps.** Any finite collection of bounds holds in a sufficiently large finite model of the theory (our own argument). Compactness gives one model of the theory satisfying every bound. Its domain must be infinite.
 
 **Paper or page:** [Model Theory: Basics](https://builds.openlogicproject.org/open-logic-complete.pdf). It says: “If a set Γ of sentences has arbitrarily large finite models, then it has an infinite model.”
 
@@ -1022,7 +970,7 @@
 
 **Problem.** A substructure is elementary, meaning it agrees on every formula with parameters from it, exactly when it keeps witnesses.
 
-**How the definition helps.** Our own proof checks the condition only where an existential quantifier searches for an object. Basic formulas agree by restriction. Our own argument uses induction on formulas to pass from those two checks to agreement on every formula.
+**How the definition helps.** The witness test supplies the existential step in an induction comparing truth in the two structures (our own proof). Atomic formulas agree by restriction, and truth connectives preserve agreement. Conversely, elementarity transfers each true existence statement to the substructure, whose witness also satisfies the formula in the larger structure.
 
 **Wikipedia:** [Elementary equivalence](https://en.wikipedia.org/wiki/Elementary_equivalence). It says: “A substructure N of M is elementary if and only if it passes the Tarski–Vaught test”
 
@@ -1036,7 +984,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 03C07 (Basic properties of first-order languages and structures). arXiv math.LO. Level 2: later undergraduate.
 
-**Definition.** A diagram for a finite structure assigns one variable to each object. It records the constants, every function value, and whether each relation holds on each tuple. It requires distinct variables to take different values and requires every object to occur among those values.
+**Definition.** For a finite structure in a finite language, assign one variable per object (our own construction). Record all constant and function values, and record each relation or its negation on every tuple. Require distinct values for distinct variables and require every object to equal one of those values.
 
 **Problem.** In a finite first-order language with equality, each finite structure is characterized up to isomorphism by a single sentence.
 
@@ -1072,7 +1020,7 @@
 
 *Rules out counterexamples.* MSC 03C07 (Basic properties of first-order languages and structures). arXiv math.LO. Level 2: later undergraduate.
 
-**Definition.** A substructure contains the named constants and is closed under the functions of the larger structure. Its relations are exact restrictions, not just subsets of the old relations.
+**Definition.** A substructure restricts the larger structure’s functions and relations to a subdomain containing all named constants and closed under every function.
 
 **Problem.** If a universal sentence holds in a structure, it holds in every substructure. A universal sentence has only universal quantifiers at the front, followed by a formula with no quantifiers.
 
@@ -1088,11 +1036,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 03C07 (Basic properties of first-order languages and structures). arXiv math.LO. Level 2: later undergraduate.
 
-**Definition.** Tarski defines when a variable assignment s satisfies a formula φ in a structure M, written M, s ⊨ φ. The definition is by recursion on φ. A sentence (a formula with no free variables) is true if every assignment satisfies it; equivalently, if some assignment satisfies it.
+**Definition.** An assignment satisfies an atomic relation when the evaluated tuple belongs to it, and satisfies equality when the values coincide. Negation reverses satisfaction, and conjunction requires both parts. Universal quantification over x requires satisfaction under every reassignment of x. A sentence is true in the structure when every assignment satisfies it.
 
-**Problem.** Truth for a language with quantifiers has a recursive, formally correct definition that meets Convention T: the definition implies each sentence of the form "'P' is true if and only if P".
+**Problem.** Truth for a quantified first-order language has a recursive definition satisfying Convention T. For each sentence, the definition equates its truth with what that sentence asserts under the interpretation.
 
-**How the definition helps.** Satisfaction is defined for all formulas, so the recursion can pass through every quantifier step, and truth comes out as a special case. A recursion on sentences alone fails, because removing the quantifier from ∀x φ(x) leaves φ(x), which has a free variable and no truth value. What stays hard is Tarski's undefinability theorem: no formula of a language defines truth for that same language, so the truth predicate must live in a metalanguage (our own remark).
+**How the definition helps.** Assignments let the recursion evaluate the open formula left after removing a quantifier. The atomic and recursive clauses translate each sentence into its interpreted assertion in the metalanguage (our own argument). Induction on the sentence yields its Convention T equivalence.
 
 **Wikipedia:** [Semantic theory of truth](https://en.wikipedia.org/wiki/Semantic_theory_of_truth). It says: “Removing a quantifier from a sentence can produce a free variable, which is not a sentence and thus cannot have a truth value.”
 
@@ -1118,15 +1066,15 @@
 
 ### Countability relative to a model removes Skolem's paradox
 
-**Remember:** Countable means countable by a bijection that the model has.
+**Remember:** Countability inside a model needs an injection the model itself recognizes.
 
 *True by definition.* MSC 03C62 (Models of arithmetic and set theory), 03C15. arXiv math.LO. Level 2: later undergraduate.
 
-**Definition.** A set is countable inside a model M of set theory if M contains a bijection between the set and the natural numbers. So countability depends on the model.
+**Definition.** A model M regards a set a as countable if M satisfies the statement that a injects into its own natural numbers.
 
 **Problem.** If ZFC has a model, then by the Löwenheim–Skolem theorem it has a countable model. That model contains sets that it calls uncountable, and this is no contradiction.
 
-**How the definition helps.** Read inside the model, countability needs a bijection that the model contains. A set that the countable model calls uncountable has only countably many elements from outside, but the model contains no bijection between it and ω. Skolem made this point in 1922.
+**How the definition helps.** Downward Löwenheim–Skolem gives a countable model in the countable language of ZFC. ZFC proves that some sets are uncountable, so this model regards some set a as uncountable. Externally, a’s model-members form a subset of the countable domain (our own explanation). Internally, the model recognizes no injection from a into its natural numbers.
 
 **Wikipedia:** [Skolem's paradox](https://en.wikipedia.org/wiki/Skolem%27s_paradox). It says: “He explained that the countability of a set is not absolute, but relative to the model in which the cardinality is measured.”
 
@@ -1134,15 +1082,15 @@
 
 ### A formal definition of algorithm answers the Entscheidungsproblem
 
-**Remember:** To prove that no algorithm exists, first say what an algorithm is.
+**Remember:** A decider must halt on every sentence and accept exactly the valid ones.
 
 *Makes the theorem clean to state or prove.* MSC 03D10 (Turing machines and related notions), 03D35, 03B10. arXiv math.LO, cs.LO. Level 2: later undergraduate.
 
-**Definition.** An algorithm is defined as a Turing machine. An equivalent definition uses the functions that you can define in Church's λ-calculus.
+**Definition.** A decision algorithm for a property of encoded sentences is a Turing machine that halts on every sentence code. It accepts exactly the codes of sentences with that property.
 
 **Problem.** The Entscheidungsproblem of Hilbert and Ackermann has a negative answer: no algorithm decides whether a first-order statement is universally valid, that is, true in every interpretation.
 
-**How the definition helps.** A negative answer is a statement about all algorithms, so it needs a precise definition of algorithm, while a positive answer needs only one algorithm. Church (1935–36) and Turing (1936) gave such definitions, Turing showed that they are equivalent, and both proved that no algorithm decides validity. The claim that these definitions capture every intuitive algorithm is the Church–Turing thesis, and it is not a theorem.
+**How the definition helps.** The definition turns the decision problem into an existence claim about machines. The Church–Turing undecidability theorem for first-order validity rules out such a machine. Identifying this formal meaning of algorithm with effective calculation uses the Church–Turing thesis (our own distinction).
 
 **Wikipedia:** [Entscheidungsproblem](https://en.wikipedia.org/wiki/Entscheidungsproblem). It says: “Before the question could be answered, the notion of "algorithm" had to be formally defined.”
 
@@ -1153,15 +1101,15 @@
 
 ### A precise definition of computability lets you state unsolvability
 
-**Remember:** To prove that no algorithm exists, you must first say what an algorithm is.
+**Remember:** One machine must compute the required answer on every input.
 
 *Makes the theorem clean to state or prove.* MSC 03D10 (Turing machines and related notions), 03D35, 03B10. arXiv math.LO, cs.LO. Level 2: later undergraduate.
 
-**Definition.** Church and Turing each proposed a precise definition of an 'effectively calculable' function. Church used λ-definability and general recursion. Turing used Turing machines. The three definitions turned out to be equivalent.
+**Definition.** A numerical function is computable if some Turing machine halts with its value on every input in its domain and diverges elsewhere. For a decision problem, the function returns 1 for yes and 0 for no on every input.
 
 **Problem.** Hilbert's Entscheidungsproblem has a negative answer: no effective method decides whether a first-order formula is valid.
 
-**How the definition helps.** A precise definition turns 'no method exists' into a mathematical statement about every possible method. Rosser wrote in 1939 that such proofs presuppose a precise definition of 'effective', and with it Church and Turing proved the result in 1936. The Church–Turing thesis says that the formal notion captures the intuitive one, and it is not a theorem. Post warned that hiding it under a definition 'blinds us to the need of its continual verification'.
+**How the definition helps.** Coding formulas gives validity a yes-or-no function, so undecidability says that no machine computes that function (our own formulation). Church’s theorem establishes this for first-order validity. The Church–Turing thesis connects the machine definition to the informal idea of an effective method.
 
 **Wikipedia:** [Church–Turing thesis](https://en.wikipedia.org/wiki/Church%E2%80%93Turing_thesis). It says: “Clearly the existence of CC and RC \[meaning Church's and Rosser's proofs of the statement that there is no effective method for deciding truth\] presupposes a precise definition of 'effective'.”
 
@@ -1174,7 +1122,7 @@
 
 **Remember:** Try each length of computation before trying the next.
 
-*Makes the theorem clean to state or prove.* MSC 03D10 (Turing machines and related notions). arXiv math.LO. Level 2: later undergraduate.
+*True by definition.* MSC 03D10 (Turing machines and related notions). arXiv math.LO. Level 2: later undergraduate.
 
 **Definition.** A nondeterministic Turing machine can have several possible next moves, with finitely many choices at each step. It recognizes a word if some finite sequence of moves reaches acceptance, regardless of what other sequences do.
 
@@ -1190,7 +1138,7 @@
 
 **Remember:** Ask what a program does when it reads its own code.
 
-*Makes the theorem clean to state or prove.* MSC 03D10 (Turing machines and related notions). arXiv math.LO. Level 2: later undergraduate.
+*True by definition.* MSC 03D10 (Turing machines and related notions). arXiv math.LO. Level 2: later undergraduate.
 
 **Definition.** The self-halting set consists of the program codes e for which program e stops when given e as input. The ordinary halting problem allows the program code and its input to vary independently.
 
@@ -1224,11 +1172,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 03D20 (Recursive functions and relations, subrecursive hierarchies), 03D45. arXiv math.LO, cs.LO. Level 2: later undergraduate.
 
-**Definition.** A partial recursive (μ-recursive) function is built like a primitive recursive function, with one more operation. That operation is the unbounded search μ, which looks for the least input that makes a function zero and may never stop. So the function may be undefined at some inputs.
+**Definition.** A unary partial computable function is one computed by a program that halts with its value on every input in its domain and diverges elsewhere.
 
-**Problem.** The partial computable functions have one effective list, a universal function, that contains all of them. No effective list of total computable functions contains all total computable functions.
+**Problem.** The unary partial computable functions admit an effective list containing them all. No effective list consisting entirely of total unary computable functions contains them all.
 
-**How the definition helps.** A partial function can be undefined exactly where the diagonal argument needs a value, so the argument gives no contradiction. For total functions f₀, f₁, …, the diagonal g(n) = fₙ(n) + 1 is total and is missing from the list. For partial functions, if g is the entry fₑ, then fₑ(e) is simply undefined, and the Turing machine codes list everything. The price is that one cannot decide which entries are total (the halting problem).
+**How the definition helps.** A universal machine simulates the program with any given code, so its rows enumerate the partial computable functions. For an effective list of total functions, g(n) = fₙ(n) + 1 would be total computable and differ from each row (our own argument). For a partial list, g and row e can agree even at e if both diverge there.
 
 **Wikipedia:** [Primitive recursive function](https://en.wikipedia.org/wiki/Primitive_recursive_function). It says: “Note however that the partial computable functions (those that need not be defined for all arguments) can be explicitly enumerated, for instance by enumerating Turing machine encodings.”
 
@@ -1258,11 +1206,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 03D20 (Recursive functions and relations, subrecursive hierarchies), 03D45. arXiv math.LO, cs.LO. Level 2: later undergraduate.
 
-**Definition.** Programs are numbered by indices. A fixed point of a function F on indices is an index e such that the programs e and F(e) compute the same partial function. This can be true even if e ≠ F(e).
+**Definition.** Use an acceptable numbering of programs, with universal simulation and effective specialization of parameters. A fixed point of a transformation F is an index e such that e and F(e) compute the same partial function.
 
 **Problem.** Every total computable transformation of programs has a fixed point. This is Rogers's theorem, a form of Kleene's second recursion theorem.
 
-**How the definition helps.** Measuring 'fixed' by the function computed makes the theorem true for every total computable F. Many such F, for example F(e) = e + 1, have no index with e = F(e). The comparison uses ≃: both sides are undefined, or both are defined and equal. The short proof is a version of the Y combinator, and the theorem gives quines and other self-referential programs.
+**How the definition helps.** Equality of partial functions permits fixed points even for F(e) = e + 1, which changes every index (our own example). Rogers’s fixed-point theorem supplies such an index for each total computable F in an acceptable numbering. Agreement means identical domains and identical values wherever defined.
 
 **Wikipedia:** [Kleene's recursion theorem](https://en.wikipedia.org/wiki/Kleene%27s_recursion_theorem). It says: “Note that the comparison of in- and outputs here is not in terms of numerical values, but in terms of their associated partial recursive functions.”
 
@@ -1280,7 +1228,7 @@
 
 **Problem.** A nonempty set of natural numbers is computably enumerable exactly when it is the range of a primitive recursive function.
 
-**How the definition helps.** A fixed member gives the enumeration a valid answer even when a bounded test fails (our own). On input coding (x,t), return x if the program accepts x within t steps, and return the fixed member otherwise (our own). Decoding pairs and checking bounded runs require primitive recursive functions (our own). Conversely, searching the outputs recognizes their range, which contains at least the first output (our own).
+**How the definition helps.** A fixed member gives a valid fallback even when a bounded acceptance test fails (our own). Decode the input as (x,t), returning x if accepted within t steps and the fixed member otherwise. Pair decoding and bounded simulation are primitive recursive, and searching an enumeration recognizes its range (our own). The empty set has no possible fallback because every total enumeration has a first output.
 
 **Paper or page:** [Recursively Enumerable Set is Image of Primitive Recursive Function/Corollary](https://proofwiki.org/wiki/Recursively_Enumerable_Set_is_Image_of_Primitive_Recursive_Function/Corollary). It says: “Suppose S is non-empty. Then there exists a primitive recursive function f: ℕ → ℕ such that:”
 
@@ -1312,7 +1260,7 @@
 
 **Problem.** The intersection of two computably enumerable sets is computably enumerable. A set is computable if and only if it and its complement are computably enumerable.
 
-**How the definition helps.** With the domain definition, both proofs run programs side by side and need no special case for the empty set. For an intersection, run both programs on n and halt when both halt (our own). With the range definition, an empty intersection would need a separate clause. The range of a total function is never empty, which forces the clause 'or empty'. The page says the domain definition is preferred because it extends better to α-recursion theory. The proof that the definitions agree, by running all computations in parallel, is the remaining work.
+**How the definition helps.** The domain definition lets programs recognize sets by halting, even when they never halt on any input. For an intersection, halt once both programs halt (our own). For complementary domains, alternate steps until one program halts, deciding membership by which finishes (our own). Conversely, run a decider and halt only for the desired answer to recognize either side.
 
 **Wikipedia:** [Computably enumerable set](https://en.wikipedia.org/wiki/Computably_enumerable_set). It says: “The definition of a computably enumerable set as the domain of a partial function, rather than the range of a total computable function, is common in contemporary texts.”
 
@@ -1330,7 +1278,7 @@
 
 **Problem.** The intersection of two computably enumerable sets is computably enumerable. The preimage of a computably enumerable set under any total computable function is also computably enumerable.
 
-**How the definition helps.** The domain definition turns both claims into running one program after another. For the intersection, run both membership programs on the same input and halt after both finish. For a preimage, first compute the function value and then run the membership program on it. This account of the proofs is our own. With the listing definition, one instead runs both listings in alternating steps and outputs numbers once they appear on both lists. The comparison theorem moves that scheduling work to the proof that the domains themselves can be listed.
+**How the definition helps.** Both claims follow by running programs in sequence (our own argument). For an intersection, run both programs on the input and halt after both finish. For a preimage, compute the function value and run the membership program on that value.
 
 **Paper or page:** [Computability: Computability Theory, Theorem 1.1](https://builds.openlogicproject.org/open-logic-complete.pdf), [Computability: Computability Theory, Theorem 1.1](https://builds.openlogicproject.org/open-logic-complete.pdf). It says: “Suppose A and B are computably enumerable. Then so are A ∩ B and A ∪ B.”
 
@@ -1340,7 +1288,7 @@
 
 **Remember:** An increasing list can settle no by passing the target.
 
-*Rules out counterexamples.* MSC 03D25 (Recursively (computably) enumerable sets and degrees), 03D10. arXiv math.LO. Level 2: later undergraduate.
+*True by definition.* MSC 03D25 (Recursively (computably) enumerable sets and degrees), 03D10. arXiv math.LO. Level 2: later undergraduate.
 
 **Definition.** An increasing computable enumeration is a program that returns a natural number on every natural-number input. Its outputs strictly increase with the input, and their range is the set it lists.
 
@@ -1356,7 +1304,7 @@
 
 **Remember:** A program that stops on the opposite diagonal contradicts itself.
 
-*Makes the theorem clean to state or prove.* MSC 03D25 (Recursively (computably) enumerable sets and degrees), 03D10. arXiv math.LO. Level 2: later undergraduate.
+*True by definition.* MSC 03D25 (Recursively (computably) enumerable sets and degrees), 03D10. arXiv math.LO. Level 2: later undergraduate.
 
 **Definition.** A set is computably enumerable if some program halts exactly on its members. The self-halting set contains the codes of all programs that halt when given their own code.
 
@@ -1386,7 +1334,7 @@
 
 ### Rice's theorem needs properties that are semantic and nontrivial
 
-**Remember:** Rice's theorem is about what a program does, not how it is written.
+**Remember:** Behavior alone decides membership, and some programs qualify while others do not.
 
 *Rules out counterexamples.* MSC 03D35 (Undecidability and degrees of sets of sentences), 03D20. arXiv math.LO, cs.LO. Level 2: later undergraduate.
 
@@ -1394,7 +1342,7 @@
 
 **Problem.** Rice's theorem: every nontrivial semantic property of programs is undecidable.
 
-**How the definition helps.** Each condition removes a kind of property that is easy to decide. Syntactic properties, such as 'contains an if-then-else statement', are easy to decide. Trivial properties, which hold for all programs or for none, are also easy to decide. When both are excluded, a reduction from the halting problem works for every remaining property. The theorem does not stop static analysis that is sound but incomplete (it never accepts a bad program but may reject a good one), such as type systems. These decide stronger syntactic properties.
+**How the definition helps.** Semantic invariance lets a halting reduction vary program text without changing the property (our own outline). Complement the property if necessary so the everywhere-divergent function lacks it, and choose a program having it. Simulate the halting instance before running that program: the resulting program has the property exactly if the instance halts. Testing for an instruction in the text violates invariance, and constant properties violate nontriviality; both tests are decidable.
 
 **Wikipedia:** [Rice's theorem](https://en.wikipedia.org/wiki/Rice%27s_theorem). It says: “A semantic property is one about the program's behavior (for instance, "does the program terminate for all inputs?"), unlike a syntactic property”
 
@@ -1460,11 +1408,11 @@
 
 *True by definition. Confidence: medium.* MSC 03E10 (Ordinal and cardinal numbers). arXiv math.LO. Level 2: later undergraduate.
 
-**Definition.** Define a + b as the size of a disjoint union and ab as the size of a Cartesian product. A disjoint union tags each element with the set it came from. For natural numbers, the alternative defines + and × by recursion from the successor map, as in Peano arithmetic.
+**Definition.** For sets A and B of cardinalities a and b, define a + b as the size of their disjoint union. Tag each element by its summand position, even if A = B. Define ab as the size of A × B.
 
 **Problem.** For all cardinals a, b and c, a(b + c) = ab + ac.
 
-**How the definition helps.** With sets, the law needs only one bijection, from A × (B ⊔ C) to (A × B) ⊔ (A × C) (our own). It sends a pair (x, y) to the product that matches the tag of y (our own). Peano recursion proves the law for natural numbers by induction, using earlier laws of addition (our own). The set definition also covers infinite cardinals at no extra cost (our own). The work moves to checking that bijections between representatives give bijections between the sums and products (our own).
+**How the definition helps.** A pair with a tagged second entry can move its tag outside the pair (our own bijection). Send (x, (i, y)) to (i, (x, y)). Moving the tag back gives the inverse, so the two sets have the same cardinality.
 
 **Paper or page:** [Cardinal Product Distributes over Cardinal Sum](https://proofwiki.org/wiki/Cardinal_Product_Distributes_over_Cardinal_Sum). It says: “Let a, b and c be cardinals. Then: a(b + c) = ab + ac”
 
@@ -1482,7 +1430,7 @@
 
 **Problem.** Every Dedekind-infinite set contains a copy of the natural numbers, an infinite sequence without repeats. So the natural numbers can be built from such a set, without a circular definition of infinite.
 
-**How the definition helps.** The definition talks only about sets and maps, so it can define the natural numbers without circularity, as Dedekind did in his 1888 essay (our own). The cost is a new theorem: Dedekind-infinite is the same as not finite. That theorem needs a weak form of the axiom of choice, and ZF has models with infinite sets that are Dedekind-finite.
+**How the definition helps.** Choose an injection f of the set into itself that misses an element a (our own construction). The least subset containing a and closed under f forms a successor system. Its successor is injective, misses a, and satisfies induction by minimality, so Dedekind’s characterization identifies it with the natural numbers.
 
 **Wikipedia:** [Dedekind-infinite set](https://en.wikipedia.org/wiki/Dedekind-infinite_set). It says: “It is notable that this definition was the first definition of "infinite" that did not rely on the definition of the natural numbers”
 
@@ -1496,11 +1444,11 @@
 
 *True by definition. Confidence: medium.* MSC 03E10 (Ordinal and cardinal numbers), 03E25. arXiv math.LO. Level 2: later undergraduate.
 
-**Definition.** Assume the axiom of choice. The cardinal number of a set X is the least ordinal that is in bijection with X, called its initial ordinal. The infinite cardinals are the initial ordinals ω₀, ω₁, …, written ℵ₀, ℵ₁, ….
+**Definition.** Assuming choice, the cardinal of a set X is the least ordinal in bijection with X.
 
 **Problem.** With the axiom of choice, every set has a cardinal that is itself a set, and any two cardinals are comparable.
 
-**How the definition helps.** The definition makes each cardinal an ordinal, so it is a set, and the ordinal order compares any two cardinals (our own remark). The Frege–Russell cardinal, the class of all sets in bijection with X, is a proper class when X is nonempty. The definition needs choice, because a set without a well-order has no initial ordinal. Cardinal and ordinal arithmetic must then be kept apart: ℵ₀² = ℵ₀ but ω² &gt; ω.
+**How the definition helps.** The well-ordering theorem gives X a well-order and hence an ordinal of the same size (our own argument). Among that ordinal and its predecessors of the same size there is a least one. Ordinals are sets, and their usual order compares every pair.
 
 **Wikipedia:** [Cardinal number](https://en.wikipedia.org/wiki/Cardinal_number), [Ordinal number](https://en.wikipedia.org/wiki/Ordinal_number). It says: “The most commonly used (strong) cardinal assignment, which relies on the axiom of choice, is the von Neumann cardinal assignment”
 
@@ -1512,11 +1460,11 @@
 
 *True by definition. Confidence: medium.* MSC 03E10 (Ordinal and cardinal numbers). arXiv math.LO. Level 2: later undergraduate.
 
-**Definition.** For ordinals α and β, take the functions from β to α that are zero at all but finitely many places. Compare two such functions at the largest place where they differ. The order type of this set is α to the power β. The usual alternative defines the power by transfinite recursion on β.
+**Definition.** For ordinals α &gt; 0 and β, take all functions from β to α with finitely many nonzero values. Order distinct functions by their values at the greatest index where they differ. Their order type is α raised to β.
 
 **Problem.** If α &gt; 0, then α to the power β + γ equals α to the power β times α to the power γ.
 
-**How the definition helps.** With functions, the law is a bijection that splits each function at β (our own). A function on β + γ is a pair of finite-support functions, one on β and one on γ (our own). The part on γ holds the larger places, so it is compared first (our own). That is the order of the ordinal product, which compares the second factor first (our own). The recursive definition needs transfinite induction on γ instead (our own). The work moves to proving that this order is a well order and satisfies the recursion (our own).
+**How the definition helps.** Restriction to the two blocks splits each function into a pair, and concatenation recovers it (our own argument). Any difference in the γ block takes priority because that block comes last. This is exactly the ordinal product order, which compares second coordinates first.
 
 **Wikipedia:** [Ordinal arithmetic](https://en.wikipedia.org/wiki/Ordinal_arithmetic). It says: “This set is ordered lexicographically with the least significant position first”
 
@@ -1546,11 +1494,11 @@
 
 *Rules out counterexamples.* MSC 03E10 (Ordinal and cardinal numbers). arXiv math.LO. Level 2: later undergraduate.
 
-**Definition.** The Cantor normal form writes an ordinal α as a finite sum of terms. Each term is ω to the power β times c, where c is a nonzero natural number. The exponents β strictly decrease from left to right. The ordinal 0 is the empty sum.
+**Definition.** A Cantor normal form for α is a finite ordinal sum equal to α. Its terms have the form ωᵝ · c with strictly decreasing ordinal exponents β and positive integer coefficients c. The empty sum represents zero.
 
 **Problem.** Every ordinal has exactly one Cantor normal form. Two ordinals in normal form can be compared term by term, like numbers written in a base.
 
-**How the definition helps.** The two conditions remove every way to write the same ordinal twice, so the form behaves like a positional numeral. Without them, ω·1 + ω·1 and ω·2 would be two forms of the same ordinal (our own). Also, a term with coefficient 0 could be added anywhere (our own). With the conditions, two forms are compared lexicographically: first exponents, then first coefficients, and so on. The proof of Goodstein's theorem uses this form (our own). What stays limited is that the form does not reduce every ordinal to smaller ones. At ε₀, the least ordinal equal to ω to its own power, the first exponent is the ordinal itself.
+**How the definition helps.** Each nonzero remainder determines its largest fitting power ωᵝ and then its largest fitting finite coefficient (our own outline). Removing that initial block leaves a remainder below ωᵝ, so exponents decrease and the process terminates. The first differing exponent or coefficient decides comparison, with a proper prefix smaller than its extension. Allowing repeated exponents duplicates ω·2 as ω + ω, and zero coefficients insert arbitrary unused terms.
 
 **Wikipedia:** [Ordinal arithmetic](https://en.wikipedia.org/wiki/Ordinal_arithmetic). It says: “This decomposition of α is called the Cantor normal form of α, and can be considered the base-ω positional numeral system.”
 
@@ -1562,13 +1510,13 @@
 
 **Remember:** Ordinal powers use finitely many nonzero places, compared from the top.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 03E10 (Ordinal and cardinal numbers), 06A05. arXiv math.LO. Level 2: later undergraduate.
+*Rules out counterexamples. Confidence: medium.* MSC 03E10 (Ordinal and cardinal numbers), 06A05. arXiv math.LO. Level 2: later undergraduate.
 
 **Definition.** The lexicographic order compares two families at the least index where they differ, using the order of that factor. Cantor's ordinal power αᵝ uses only the functions from β to α with finitely many nonzero values. It compares two such functions at the greatest index where they differ.
 
 **Problem.** The finite-support functions from β to α, compared at the greatest differing place, form a well-order, so αᵝ is an ordinal. The full lexicographic product of infinitely many well-orders need not be well-ordered.
 
-**How the definition helps.** Finite support and comparison at the greatest differing place remove the infinite descending chains. Our own example: with infinitely many factors {0, 1}, let eₙ be 1 at place n and 0 elsewhere; comparing at the least differing place gives e₀ &gt; e₁ &gt; e₂ &gt; …. With finite support, two functions differ at only finitely many places, so a greatest differing place exists, and a short induction gives the well-order (our own remark). That this agrees with the recursive ordinal power is a separate theorem.
+**How the definition helps.** For β = 0 there is one function, and for α = 0 with β positive there are none (our own proof). Otherwise, at a successor exponent the last coordinate indexes a well-ordered sum of earlier powers. At limits, finite support gives a union of nested, well-ordered initial segments obtained by extending earlier functions by zeros. In the full binary product on ℕ, least-index comparison orders successive single 1s in an infinite descending chain (our own example).
 
 **Paper or page:** [Lexicographic Order of Family of Well-Ordered Sets is not necessarily Well-Ordered](https://proofwiki.org/wiki/Lexicographic_Order_of_Family_of_Well-Ordered_Sets_is_not_necessarily_Well-Ordered), [Lexicographic Order on Pair of Well-Ordered Sets is Well-Ordering](https://proofwiki.org/wiki/Lexicographic_Order_on_Pair_of_Well-Ordered_Sets_is_Well-Ordering). It says: “Then it is not necessarily the case that (D, ≼D) is also a well-ordered set.”
 
@@ -1615,11 +1563,11 @@
 
 *True by definition. Confidence: medium.* MSC 03E10 (Ordinal and cardinal numbers). arXiv math.LO. Level 2: later undergraduate.
 
-**Definition.** Define α + β as the order type of a copy of α followed by a copy of β. A well order is a total order in which every nonempty subset has a least element. Its order type records only the order, not the names of the elements. The usual alternative defines α + β by transfinite recursion on β, taking unions at limit ordinals.
+**Definition.** The ordinal sum α + β is the order type of disjoint copies of α and β with their original orders. Every point of the α copy precedes every point of the β copy.
 
 **Problem.** For all ordinals α, β and γ, (α + β) + γ = α + (β + γ).
 
-**How the definition helps.** With appended well orders, both groupings give the same three blocks in the same order (our own). So the identity map between them preserves the order, and the order types agree (our own). The recursive definition needs a proof by transfinite induction on γ instead (our own). The work moves to proving that appended well orders satisfy the recursion, including its rule at limits (our own).
+**How the definition helps.** Both groupings put the same three copies in order from α through β to γ (our own argument). Matching corresponding points of each copy gives an order-preserving bijection, so the order types agree.
 
 **Wikipedia:** [Ordinal arithmetic](https://en.wikipedia.org/wiki/Ordinal_arithmetic). It says: “every element of S is smaller than every element of T”
 
@@ -1631,11 +1579,11 @@
 
 *True by definition. Confidence: medium.* MSC 03E10 (Ordinal and cardinal numbers). arXiv math.LO. Level 2: later undergraduate.
 
-**Definition.** Define α + β by placing a copy of β after a copy of α. Take each ordinal to be the set of smaller ordinals, so β ≤ α means that β is an initial segment of α. The usual alternative defines addition by transfinite recursion on the second term.
+**Definition.** For ordinals α and β, α + β is the order type of a copy of α followed by a copy of β (our own).
 
 **Problem.** For any ordinals β ≤ α, there is exactly one ordinal γ with β + γ = α.
 
-**How the definition helps.** With appended orders, γ must be the order type of the tail of α after β, and that type works because α is β followed by its tail (our own). Any γ′ with β + γ′ = α is again the type of that tail, because a well order has at most one initial segment of each type (our own). The recursive definition needs transfinite induction for cancellation instead (our own).
+**How the definition helps.** The tail α ∖ β has the required order type γ (our own). Any isomorphism from β + γ′ onto α sends its first block onto β, so γ′ has that same tail type (our own).
 
 **Wikipedia:** [Ordinal arithmetic](https://en.wikipedia.org/wiki/Ordinal_arithmetic). It says: “Furthermore, one can define left subtraction for ordinals β ≤ α: there is a unique γ such that α = β + γ.”
 
@@ -1651,7 +1599,7 @@
 
 **Problem.** The set of all von Neumann natural numbers is the least infinite ordinal.
 
-**How the definition helps.** The successor construction makes each natural number the set of all earlier ones. Our own comparison with Peano arithmetic uses induction to establish this description. Their set then contains every predecessor and has the usual well-order of the natural numbers. Every smaller ordinal belongs to this set and is therefore finite.
+**How the definition helps.** Each successor contains exactly the earlier numbers, by induction (our own). Their set is therefore transitive, and membership gives its usual well-order (our own). It is infinite, and every smaller ordinal is one of its finite members (our own).
 
 **Paper or page:** [Set of Natural Numbers is Ordinal](https://proofwiki.org/wiki/Set_of_Natural_Numbers_is_Ordinal). It says: “The set of natural numbers ℕ is an ordinal.”
 
@@ -1685,7 +1633,7 @@
 
 **Problem.** Every set of ordinals has a supremum, or least upper bound, given by its union. The empty set has supremum zero.
 
-**How the definition helps.** Inclusion makes the union contain each given ordinal and lie inside every upper bound. Our own comparison uses sets of predecessors in place of abstract order types. The work is proving that membership well-orders the union and that it contains every predecessor of every member.
+**How the definition helps.** The ordinal union theorem makes the union an ordinal. Inclusion makes it an upper bound contained in every other upper bound (our own). The empty union is ∅, the ordinal zero (our own).
 
 **Paper or page:** [Union of Set of Ordinals is Ordinal](https://proofwiki.org/wiki/Union_of_Set_of_Ordinals_is_Ordinal). It says: “Then ⋃ A is an ordinal.”
 
@@ -1701,7 +1649,7 @@
 
 **Problem.** Every limit ordinal λ is the union of the ordinals below it: λ = ⋃λ.
 
-**How the definition helps.** Since an ordinal is the set of the ordinals below it, a supremum is a union, and the theorem is almost immediate. Our own sketch: for a limit λ, every β &lt; λ has β + 1 &lt; λ, so β lies in ⋃λ. For a successor α + 1 the union is only α, which is why the theorem needs a limit (our own). If ordinals were classes of isomorphic well-orders, suprema would need a separate construction (our own).
+**How the definition helps.** Every element of ⋃λ belongs to λ by transitivity (our own). Conversely, if β ∈ λ, its successor is at most λ and cannot equal the limit λ (our own). Thus β belongs to a member of λ (our own).
 
 **Paper or page:** [Limit Ordinal Equals its Union](https://proofwiki.org/wiki/Limit_Ordinal_Equals_its_Union), [Alternative Definition of Ordinal](https://proofwiki.org/wiki/Alternative_Definition_of_Ordinal). It says: “Let λ be a limit ordinal. Then: λ = ⋃λ where ⋃λ denotes the union of λ.”
 
@@ -1716,11 +1664,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 03E10 (Ordinal and cardinal numbers). arXiv math.LO. Level 2: later undergraduate.
 
-**Definition.** A von Neumann ordinal is a transitive set (a set that contains every element of its elements) that ∈ strictly well-orders. Each ordinal is the set of all smaller ordinals: 0 = ∅, n + 1 = n ∪ {n}, and ω = {0, 1, 2, …}.
+**Definition.** A von Neumann ordinal is a transitive set strictly well-ordered by membership. A set is transitive if it contains every element of each member (our own).
 
 **Problem.** Every well-ordered set is order-isomorphic to exactly one von Neumann ordinal, and that ordinal is a set, not a proper class.
 
-**How the definition helps.** Von Neumann picks one set from each class of isomorphic well-orders, so the order type is a set, while the Principia Mathematica order type is a class too large to be a set in ZF. The axiom of replacement gives existence. Uniqueness holds because no well-order is isomorphic to a proper initial segment of itself. The Burali-Forti paradox becomes the theorem that the ordinals form a proper class.
+**How the definition helps.** Each point of a well-order receives the set of values assigned to its predecessors (our own). Well-founded recursion and replacement give an isomorphism onto an ordinal (our own). Distinct ordinals cannot be isomorphic because one is a proper initial segment of the other (our own).
 
 **Wikipedia:** [Ordinal number](https://en.wikipedia.org/wiki/Ordinal_number), [Set-theoretic definition of natural numbers](https://en.wikipedia.org/wiki/Set-theoretic_definition_of_natural_numbers). It says: “Every well-ordered set S is order-isomorphic to exactly one ordinal, known as its order type.”
 
@@ -1732,11 +1680,11 @@
 
 *True by definition. Confidence: medium.* MSC 03E10 (Ordinal and cardinal numbers). arXiv math.LO. Level 2: later undergraduate.
 
-**Definition.** A von Neumann ordinal is a transitive set that is well ordered by membership. Transitive means that every element of a member is also a member. So each ordinal is the set of all smaller ordinals. The alternative treats ordinals as order types of well orders, without making them sets of their predecessors.
+**Definition.** A von Neumann ordinal is a transitive set strictly well-ordered by membership. Transitivity means that the set contains every element of each member (our own).
 
 **Problem.** There is no set of all ordinals.
 
-**How the definition helps.** With von Neumann ordinals, a set Ω of all ordinals would itself be an ordinal (our own). It is transitive, and membership well orders it (our own). Then Ω ∈ Ω, which is impossible because membership is a strict order on an ordinal (our own). The cited ProofWiki proof uses order types instead, and shows that the order type of all ordinals exceeds each ordinal. The work moves to proving that membership totally orders every set of ordinals (our own).
+**How the definition helps.** A set Ω of all ordinals would be transitive because every member of an ordinal is an ordinal (our own). The ordinal comparison theorem makes membership a well-order on any set of ordinals (our own). Thus Ω would itself be an ordinal and satisfy Ω ∈ Ω, contradicting strictness (our own).
 
 **Paper or page:** [Burali-Forti Paradox](https://proofwiki.org/wiki/Burali-Forti_Paradox). It says: “Hence the set of all ordinals is not an allowable set.”
 
@@ -1746,13 +1694,13 @@
 
 **Remember:** A well-order cannot be shifted, because its least element must stay put.
 
-*Makes the theorem clean to state or prove.* MSC 03E10 (Ordinal and cardinal numbers), 06A05. arXiv math.LO. Level 2: later undergraduate.
+*True by definition.* MSC 03E10 (Ordinal and cardinal numbers), 06A05. arXiv math.LO. Level 2: later undergraduate.
 
-**Definition.** A well-ordering is a total order in which every nonempty subset has a least element. An order isomorphism is a bijection that preserves the order in both directions.
+**Definition.** A well-order is a total order in which every nonempty subset has a least element. For a well-ordered class, require this for every nonempty subclass (our own). An order isomorphism is a bijection preserving order in both directions.
 
 **Problem.** Every order automorphism of a well-ordered set or class is the identity. So between two well-ordered sets there is at most one order isomorphism.
 
-**How the definition helps.** The least-element condition lets an induction fix every point in place. Our own sketch: take the least point a that φ moves. Then both φ(a) &lt; a and φ(a) &gt; a contradict the fact that φ is an order bijection. Our own example: the integers have no least element, and the shift n ↦ n + 1 is a nontrivial automorphism. Because the isomorphism is unique, 'the' isomorphism between two well-orders makes sense, and ordinals can be compared without any choices. The nLab adds that simulations, the order-preserving maps whose image is an initial segment, are also unique. The hard part, that any two well-orders are comparable, is a separate theorem.
+**How the definition helps.** If an automorphism moves any point, take the least moved point a (our own). It fixes every predecessor of a, so it preserves their complement and fixes its least point a (our own). Composing one isomorphism with the inverse of another gives an automorphism, hence the two agree (our own).
 
 **nLab:** [well-order](https://ncatlab.org/nlab/show/well-order). It says: “Note that any simulation of S in T must be unique.”
 
@@ -1829,15 +1777,15 @@
 
 ### Finite character makes the existence of a basis one line
 
-**Remember:** If finite pieces decide membership, a maximal member exists.
+**Remember:** Test membership by checking all finite subsets.
 
 *True by definition.* MSC 03E25 (Axiom of choice and related propositions), 15A03. arXiv math.LO. Level 2: later undergraduate.
 
-**Definition.** A family of sets has finite character if a set belongs to the family exactly when all of its finite subsets belong to it. The Teichmüller–Tukey lemma says that every member of such a family is contained in a maximal member.
+**Definition.** A family of subsets of a set has finite character if a subset belongs exactly when all its finite subsets belong.
 
 **Problem.** Every vector space has a basis.
 
-**How the definition helps.** Finite character builds the chain condition of Zorn's lemma into the definition, so each application only checks that membership depends on finite subsets. Linear independence has finite character, since it is a condition on finite linear combinations. So a maximal linearly independent set exists, and the page says it spans the space. Choice is still needed, but it is used once, inside the lemma, which over ZF is equivalent to the axiom of choice.
+**How the definition helps.** Linear independence has finite character because every linear relation involves finitely many vectors (our own). The Teichmüller–Tukey lemma therefore gives a maximal independent set, starting from the empty set. Any vector outside its span could be added while preserving independence, contradicting maximality (our own).
 
 **Wikipedia:** [Teichmüller–Tukey lemma](https://en.wikipedia.org/wiki/Teichm%C3%BCller%E2%80%93Tukey_lemma). It says: “This is a collection of finite character. Thus, a maximal set exists, which must then span V and be a basis for V.”
 
@@ -1869,11 +1817,11 @@
 
 *True by definition.* MSC 03E25 (Axiom of choice and related propositions). arXiv math.LO. Level 2: later undergraduate.
 
-**Definition.** Zorn's lemma says the following. Let P be a partially ordered set in which every chain has an upper bound in P. Then P has a maximal element. The empty set counts as a chain.
+**Definition.** A chain in a partially ordered set P is a subset whose elements are pairwise comparable. An upper bound of a chain C is an element of P above or equal to every member of C.
 
 **Problem.** Zorn's lemma needs no separate hypothesis that P is non-empty. Without the empty chain, the lemma would be false for the empty partially ordered set, which has no maximal element.
 
-**How the definition helps.** The empty chain must have an upper bound, so the hypothesis already says that P is non-empty. In practice one checks that P is non-empty and then checks the non-empty chains, as in the proofs that every vector space has a basis and every ring has a maximal ideal. Bourbaki's 'inductive' sets include non-emptiness for the same reason.
+**How the definition helps.** Every element of P bounds the empty chain. Requiring such a bound therefore requires an element of P. In the empty order, the condition on nonempty chains alone holds vacuously, yet no maximal element exists (our own).
 
 **Wikipedia:** [Zorn's lemma](https://en.wikipedia.org/wiki/Zorn%27s_lemma). It says: “property (1) is redundant, since property (2) says, in particular, that the empty chain has an upper bound in P, implying P is nonempty.”
 
@@ -1885,7 +1833,7 @@
 
 **Remember:** Choose the first element of each set.
 
-*Rules out counterexamples.* MSC 03E25 (Axiom of choice and related propositions), 03E10. arXiv math.LO. Level 2: later undergraduate.
+*True by definition.* MSC 03E25 (Axiom of choice and related propositions), 03E10. arXiv math.LO. Level 2: later undergraduate.
 
 **Definition.** A well-order is a total order in which each nonempty subset has a least element. A choice function on a family selects one element from each set in the family.
 
@@ -1899,15 +1847,15 @@
 
 ### Zorn's lemma packages transfinite induction into one condition to check
 
-**Remember:** Zorn's lemma: if no chain can climb forever, there is a top.
+**Remember:** Every chain has an upper bound, including the empty chain.
 
-*Makes the theorem clean to state or prove.* MSC 03E25 (Axiom of choice and related propositions). arXiv math.LO. Level 2: later undergraduate.
+*True by definition.* MSC 03E25 (Axiom of choice and related propositions). arXiv math.LO. Level 2: later undergraduate.
 
-**Definition.** A chain is a subset in which any two elements are comparable. A partially ordered set is inductive if every chain, including the empty chain, has an upper bound. Zorn's lemma says that every inductive set has a maximal element.
+**Definition.** A partially ordered set is inductive if every chain has an upper bound in the set, including the empty chain. A chain is a subset whose elements are pairwise comparable.
 
 **Problem.** Every vector space has a basis, and every nontrivial ring with 1 has a maximal ideal.
 
-**How the definition helps.** The lemma states once the conditions under which a step-by-step transfinite construction succeeds, so each proof only checks that chains have upper bounds. Kuratowski (1922) proved a version in order to remove transfinite numbers from proofs. The lemma is equivalent to the axiom of choice. It fails for classes: in the class of ordinals, every chain that is a set has an upper bound, but there is no maximal element.
+**How the definition helps.** Zorn’s lemma gives a maximal element once every chain has an upper bound. Chain unions preserve linear independence, and the empty set bounds the empty chain (our own). A maximal independent set spans because one could adjoin any vector outside its span (our own). Nonempty chain unions of proper ideals omit 1, and the zero ideal bounds the empty chain (our own).
 
 **Wikipedia:** [Zorn's lemma](https://en.wikipedia.org/wiki/Zorn%27s_lemma). It says: “Zorn's lemma tidies up the conditions a situation needs to satisfy in order for such an argument to work and enables mathematicians to not have to repeat the transfinite induction argument by hand each time”
 
@@ -1922,11 +1870,11 @@
 
 *Rules out counterexamples.* MSC 03E30 (Axiomatics of classical set theory and its fragments). arXiv math.LO. Level 2: later undergraduate.
 
-**Definition.** The axiom schema of separation lets you form {x ∈ A : φ(x)} only inside a set A that you already have. Unrestricted comprehension would form {x : φ(x)} for every property φ, and it is not allowed.
+**Definition.** For each set A and each set-theoretic formula φ(x) with fixed parameters, separation gives the set of exactly those x ∈ A satisfying φ(x).
 
-**Problem.** With separation in place of unrestricted comprehension, no set contains all sets: for every set A, the set {x ∈ A : x ∉ x} is not an element of A.
+**Problem.** With separation, no set contains all sets. For every set A, the subset {x ∈ A : x ∉ x} lies outside A.
 
-**How the definition helps.** Separation turns Russell's paradox into a proof that no set contains all sets. The Russell argument applied to {x ∈ A : x ∉ x} no longer gives a contradiction, but shows that this set is not in A. The cost is that the sets that comprehension gave for free must now come from pairing, union, power set, replacement and infinity. Separation does not prove that the theory is consistent (our own remark).
+**How the definition helps.** Apply separation inside A to obtain R = {x ∈ A : x ∉ x} (our own). If R belonged to A, its defining condition would give R ∈ R exactly when R ∉ R (our own). Thus R lies outside A (our own).
 
 **Wikipedia:** [Axiom schema of specification](https://en.wikipedia.org/wiki/Axiom_schema_of_specification), [Axiom of regularity](https://en.wikipedia.org/wiki/Axiom_of_regularity). It says: “Because restricting comprehension avoids Russell's paradox, several mathematicians including Zermelo, Fraenkel, and Gödel considered it the most important axiom of set theory.”
 
@@ -1938,13 +1886,13 @@
 
 **Remember:** Every nonempty set has a bottom element under membership.
 
-*Makes the theorem clean to state or prove.* MSC 03E30 (Axiomatics of classical set theory and its fragments), 03E10. arXiv math.LO. Level 2: later undergraduate.
+*Rules out counterexamples.* MSC 03E30 (Axiomatics of classical set theory and its fragments), 03E10. arXiv math.LO. Level 2: later undergraduate.
 
 **Definition.** The axiom of regularity says that every nonempty set A has an element that has no element in common with A. In other words, the membership relation ∈ is well-founded.
 
-**Problem.** With regularity, every set lies in some stage V(α) of the cumulative hierarchy, where each stage is the power set of the one before and limit stages are unions. So every set has an ordinal rank, and proofs by induction on membership (∈-induction) reach every set.
+**Problem.** Over the other ZF axioms, regularity places every set in some stage V(α) of the cumulative hierarchy. Every set has an ordinal rank, and induction on membership reaches every set.
 
-**How the definition helps.** Regularity lets every set be placed at a stage of the hierarchy, so induction on stages reaches every set. Over the other ZF axioms, regularity is equivalent both to ∈-induction and to the statement that the stages V(α) exhaust all sets. Without regularity, Quine atoms (sets x with x = {x}) are consistent, and they have no rank. The article notes that almost all ordinary mathematics does not need the axiom.
+**How the definition helps.** Regularity excludes a Quine atom x = {x}, whose only element meets x and which could have no ordinal rank (our own). Well-founded recursion assigns each set the supremum of its members’ successor ranks (our own). A set of rank α belongs to V(α + 1), and induction on rank gives membership induction (our own).
 
 **Wikipedia:** [Axiom of regularity](https://en.wikipedia.org/wiki/Axiom_of_regularity), [Well-founded relation](https://en.wikipedia.org/wiki/Well-founded_relation). It says: “However, regularity makes some properties of ordinals easier to prove; and it not only allows induction to be done on well-ordered sets but also on proper classes that are well-founded relational structures”
 
@@ -1954,15 +1902,15 @@
 
 ### One formula on the right turns Gentzen's LK into intuitionistic logic
 
-**Remember:** One formula on the right is all that separates intuitionistic from classical.
+**Remember:** An intuitionistic sequent has at most one conclusion.
 
 *Makes the theorem clean to state or prove.* MSC 03F05 (Cut-elimination and normal-form theorems), 03B20. arXiv math.LO. Level 2: later undergraduate.
 
-**Definition.** A sequent Γ ⊢ Δ says that the formulas in Γ together give at least one formula in Δ. The classical sequent calculus LK lets Δ hold any number of formulas. Gentzen's LJ uses the same rules, but Δ may hold at most one formula.
+**Definition.** In Gentzen’s intuitionistic sequent calculus LJ, each sequent Γ ⊢ Δ has a list of assumptions Γ and at most one conclusion in Δ.
 
 **Problem.** Intuitionistic logic has the disjunction property. If A ∨ B is provable with no assumptions, then A is provable or B is provable.
 
-**How the definition helps.** With one formula on the right, the last rule of a cut-free proof of ⊢ A ∨ B must introduce the ∨. So that proof comes from a proof of ⊢ A or of ⊢ B. Here the cut rule is the rule that uses a lemma, and a cut-free proof has no lemmas. In LK, the usual proof of A ∨ ¬A has A and ¬A on the right together before a contraction joins them (our own example). The single-formula restriction blocks this proof of excluded middle. The hard work is the cut-elimination theorem for LJ, which Gentzen proved in the same paper.
+**How the definition helps.** Gentzen’s cut-elimination theorem supplies a cut-free proof of the closed sequent ⊢ A ∨ B. With empty assumptions and one conclusion, the logical rule introducing that disjunction must choose a disjunct (our own). Its premise proves the chosen disjunct without assumptions (our own).
 
 **Wikipedia:** [Sequent calculus](https://en.wikipedia.org/wiki/Sequent_calculus), [Disjunction and existence properties](https://en.wikipedia.org/wiki/Disjunction_and_existence_properties). It says: “The resulting system is called LJ. It is sound and complete with respect to intuitionistic logic and admits a similar cut-elimination proof. This can be used in proving disjunction and existence properties.”
 
@@ -1996,9 +1944,9 @@
 
 **Definition.** In Peano's original axioms, the induction axiom is second-order: it speaks about all sets of numbers. It says that every set of numbers that contains 0 and is closed under successor contains all numbers.
 
-**Problem.** Any two models of the second-order Peano axioms are isomorphic, by a unique map that respects 0 and successor. So the theory is categorical.
+**Problem.** Under full second-order semantics, any two Peano models admit exactly one isomorphism preserving zero and successor.
 
-**How the definition helps.** Induction over all subsets removes every element that cannot be reached from 0 by taking successors. With the first-order induction schema, the compactness theorem gives non-standard models with infinite elements. Second-order induction excludes them, because their standard part contains 0, is closed under successor, and is not the whole model (our own explanation). The cost is that second-order logic with full semantics has no complete proof system (our own remark).
+**How the definition helps.** The finite iterates of successor from zero form a subset closed under successor, so induction exhausts the model (our own). This rules out the extra elements of nonstandard first-order models (our own). Injectivity of successor and the absence of a predecessor of zero make these iterates distinct (our own). An isomorphism must match corresponding iterates, and this matching works (our own).
 
 **Wikipedia:** [Peano axioms](https://en.wikipedia.org/wiki/Peano_axioms). It says: “any two models of the Peano axioms (including the second-order induction axiom) are isomorphic.”
 
@@ -2010,11 +1958,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 03F40 (Gödel numberings and issues of incompleteness), 03F30. arXiv math.LO. Level 2: later undergraduate.
 
-**Definition.** A Gödel numbering gives a unique natural number to each symbol, formula and proof of a formal language. Gödel coded a sequence of codes x₁, …, xₙ as one number. The number is 2 to the power x₁, times 3 to the power x₂, and so on, up to the nth prime pₙ to the power xₙ.
+**Definition.** A Gödel numbering effectively assigns distinct natural numbers to syntactic objects. In prime-power coding, encode a sequence of positive symbol codes as the product of successive primes raised to the corresponding codes (our own).
 
-**Problem.** Under a Gödel numbering, 'is a formula', 'is an axiom' and 'is a proof of' become primitive recursive relations between numbers. So arithmetic can state facts about its own provability, such as the Gödel sentence 'I am not provable'.
+**Problem.** With this coding and primitive recursive syntax, axiom tests and rule checks, formulahood, axiomhood and proof checking are primitive recursive. Sufficiently strong arithmetic can express provability and construct a sentence asserting its own unprovability.
 
-**How the definition helps.** The numbering lets a theory of arithmetic talk about its own syntax. Unique prime factorization lets one decode a number back into its sequence. Our own remark: what remains hard is the diagonal lemma, which builds a sentence that speaks about its own number, and showing that the theory proves enough about these relations.
+**How the definition helps.** Factoring a code recovers its symbols by bounded searches (our own). Primitive recursion checks its formation and each proof step (our own). Arithmetic represents these checks, and the diagonal lemma supplies the self-reference (our own).
 
 **Wikipedia:** [Gödel numbering](https://en.wikipedia.org/wiki/G%C3%B6del_numbering). It says: “syntactic properties of a statement—such as being a well-formed formula, being an axiom, or being provable—correspond to arithmetical properties of its Gödel number, so that questions about the system become questions about numbers.”
 
@@ -2028,11 +1976,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 03F40 (Gödel numberings and issues of incompleteness), 03F30. arXiv math.LO. Level 2: later undergraduate.
 
-**Definition.** Rosser's provability predicate says: "there is a proof of φ, and no smaller proof of ¬φ". Here proofs are compared by their code numbers. The Rosser sentence ρ says of itself that it is not provable in this sense.
+**Definition.** For a fixed proof coding, Rosser provability of φ means some proof code p proves φ and no smaller code proves ¬φ. A diagonal fixed point ρ asserts its own failure of Rosser provability (our own).
 
-**Problem.** Gödel–Rosser theorem: if a consistent, effectively axiomatized theory contains enough arithmetic, its Rosser sentence ρ is neither provable nor refutable. So the first incompleteness theorem needs only consistency, not ω-consistency.
+**Problem.** In any consistent, effectively axiomatized extension of Robinson arithmetic, the Rosser sentence is neither provable nor refutable. Consistency alone suffices.
 
-**How the definition helps.** With the Rosser predicate, both halves of the theorem follow from plain consistency. With Gödel's sentence, consistency shows only that the sentence is not provable, and Gödel needed ω-consistency to show that its negation is not provable. In a consistent theory the Rosser and ordinary predicates hold for the same formulas, but the theory proves different things about them. So the second incompleteness theorem needs the standard predicate, not Rosser's (our own remark).
+**How the definition helps.** A proof of ρ would have no earlier counterproof by consistency, and arithmetic verifies that finite check, contradicting ρ (our own). A proof of ¬ρ would exclude all later Rosser witnesses by definition (our own). Arithmetic could also check all earlier codes, finding no proof of ρ by consistency, and thus prove ρ (our own).
 
 **Wikipedia:** [Rosser's trick](https://en.wikipedia.org/wiki/Rosser%27s_trick). It says: “Rosser's trick is a method for proving a variant of Gödel's incompleteness theorems not relying on the assumption that the theory being considered is ω-consistent”
 
@@ -2051,7 +1999,7 @@
 
 **Problem.** For a well-founded relation ≺, induction along ≺ is valid, also in constructive mathematics without excluded middle.
 
-**How the definition helps.** With this definition, the induction principle is the definition itself, so it holds with no proof. The classical definition, that every inhabited subset has a minimal element, implies excluded middle as soon as some y ≺ x holds. The definition by no infinite descending sequence is too weak to be of much use constructively. Classically all three agree, but the step from no infinite descent to minimal elements uses dependent choice.
+**How the definition helps.** For any inductive property, its satisfying elements form an inductive subset (our own). Well-foundedness in this sense makes that subset all of S, without using excluded middle (our own).
 
 **nLab:** [well-founded relation](https://ncatlab.org/nlab/show/well-founded+relation). It says: “the infinite descent condition is too weak to be of much use in constructive mathematics. It is the inductive notion of well-foundedness that is just right.”
 
@@ -2067,9 +2015,9 @@
 
 **Definition.** The Lindenbaum–Tarski algebra of a theory T is the set of sentences, with two sentences identified when T proves each from the other. The logical connectives become the operations. For classical logic it is a Boolean algebra.
 
-**Problem.** Lindenbaum's lemma: every consistent theory extends to a complete consistent theory. In the Lindenbaum–Tarski algebra this says that every proper filter extends to an ultrafilter.
+**Problem.** Every consistent classical first-order theory extends to a complete consistent theory. In its Lindenbaum–Tarski algebra, this says that every proper filter extends to an ultrafilter.
 
-**How the definition helps.** Once provably equal sentences are identified, a deductively closed theory is a filter and a complete consistent theory is an ultrafilter. So Lindenbaum's lemma becomes the ultrafilter lemma for Boolean algebras, and the page says the two are equivalent. The same method gives Heyting algebras for intuitionistic logic and interior algebras for S4. It fails for logics such as S1, S2 and S3, where provably equivalent sentences can have provably different necessitations.
+**How the definition helps.** Deductively closed consistent extensions correspond to proper filters of sentence classes (our own). Deciding each sentence means the filter contains its class or its complement, exactly the ultrafilter condition (our own). The Boolean ultrafilter lemma now gives the extension.
 
 **Wikipedia:** [Lindenbaum–Tarski algebra](https://en.wikipedia.org/wiki/Lindenbaum%E2%80%93Tarski_algebra). It says: “Moreover, an ultrafilter in A corresponds to a complete consistent theory, establishing the equivalence between Lindenbaum's lemma and the ultrafilter lemma.”
 
@@ -2085,7 +2033,7 @@
 
 **Problem.** With the ε-axiom, ∃x P(x) is equivalent to P(εx.P(x)). For any family (Aᵤ) of inhabited sets, u ↦ εx.(x ∈ Aᵤ) is a choice function.
 
-**How the definition helps.** The ε-term names a witness, and quantifiers and choice functions need nothing more than a witness. So ∃ can be defined as P(εx.P(x)), and ∀ from ∃ by negation, with no separate quantifiers. This often gives global choice, one choice function for all inhabited sets at once. The cost is that the ε axioms are strong: with ε-extensionality, which says that equivalent properties give the same ε-term, they imply excluded middle.
+**How the definition helps.** If P has a witness, the ε-axiom gives P(εx.P(x)). Conversely, that term itself witnesses the existential statement (our own). Applying the same rule to membership in each inhabited Aᵤ gives the required choice function (our own).
 
 **nLab:** [choice operator](https://ncatlab.org/nlab/show/choice+operator). It says: “This has the advantage of also allowing the existential and universal quantifiers to be constructed explicitly, since ∃x translates to P(ε<sub>x</sub>(P(x))).”
 
@@ -2099,11 +2047,11 @@
 
 *Rules out counterexamples.* MSC 03B10 (Classical first-order logic). arXiv math.LO. Level 3: graduate.
 
-**Definition.** An extension by definitions adds a new symbol with one defining axiom in the old language. For a new relation symbol, the axiom says that it holds exactly when a fixed old formula holds. For a new function symbol, the old theory must first prove that each input has exactly one output that satisfies the defining formula.
+**Definition.** An explicit definition adds a fresh symbol using a formula of the old language. A relation symbol holds exactly on the tuples satisfying that formula. For a function symbol, the old theory must prove that each input tuple has exactly one output satisfying the formula.
 
 **Problem.** An extension by definitions proves no new sentences in the old language. In other words, it is a conservative extension.
 
-**How the definition helps.** The existence-and-uniqueness condition lets every model of the old theory interpret the new symbol, so no old model is lost (our own argument). The completeness theorem turns this argument about models into a statement about proofs. Without the condition, conservativity fails (our own example): adding a constant c with c·c = 2 to the theory of fields proves the old sentence ∃y (y·y = 2), which the theory of fields does not prove.
+**How the definition helps.** Each old model expands by interpreting the symbol as the specified relation or function (our own). Completeness therefore gives conservativity for old sentences (our own). Without the condition, adjoining a square root of 2 to field theory excludes the rational field and proves that such a root exists (our own).
 
 **Wikipedia:** [Extension by definition](https://en.wikipedia.org/wiki/Extension_by_definition). It says: “The fact that T' is a conservative extension of T shows that the defining axiom of R cannot be used to prove new theorems.”
 
@@ -2117,9 +2065,9 @@
 
 **Definition.** A higher inductive type is a type given by constructors for elements and also for equalities. The HoTT Book defines F(A) as such a type, with a map η : A → F(A), a multiplication, a unit and an inverse. It has one equality constructor for each group law, and a last constructor makes F(A) a set.
 
-**Problem.** F(A) is the free group on A: for every group G that is a set, group maps from F(A) to G correspond to functions from A to G.
+**Problem.** F(A) is the free group on A. For each set-level group G, restriction to generators identifies homomorphisms F(A) → G with functions A → G.
 
-**How the definition helps.** The constructors are exactly the group operations and the group laws, so the induction principle of F(A) is the universal property (our own). No words, reduced forms or cancellation arguments are needed (our own). The work moves into a second theorem, which shows for a set A that F(A) is a quotient of words where a letter next to its inverse cancels. In our own view, reduced words would need a way to decide whether two letters are equal, which a general set does not give.
+**How the definition helps.** The recursion rule extends any assignment on A by interpreting the operations in G and the equality constructors by its group laws (our own). Since G is a set, it satisfies the final constructor (our own). Induction makes this extension the unique homomorphism with the given generator values (our own).
 
 **Paper or page:** [HoTT Book: Hits](https://hott.github.io/book/hott-online-78-g0bb33d2.pdf), [HoTT Book: Hits](https://hott.github.io/book/hott-online-78-g0bb33d2.pdf). It says: “F(A) is the free group on A. In other words, for any (set) group G, composition with η : A → F(A) determines an equivalence”
 
@@ -2133,11 +2081,11 @@
 
 *True by definition. Confidence: medium.* MSC 03B38 (Type theory), 55P60. arXiv math.LO, math.AT. Level 3: graduate.
 
-**Definition.** An n-type is a type with no homotopy information above dimension n; sets are the 0-types. The n-truncation of A is the best approximation of A by an n-type. A type is n-connected if its n-truncation is contractible, that is, equivalent to a point.
+**Definition.** The n-truncation of A is an n-type with a map from A through which maps to every n-type factor uniquely up to coherent homotopy. A is n-connected if its n-truncation is equivalent to a point.
 
-**Problem.** A type A is n-connected exactly when every map from A to an n-type is constant.
+**Problem.** A type A is n-connected exactly when, for every n-type B, the constant-function map B → (A → B) is an equivalence.
 
-**How the definition helps.** By the universal property of truncation, maps from A to an n-type B match maps from the n-truncation of A to B. If the truncation is a point, such maps are the same as elements of B, that is, constant maps (our own outline). So the theorem follows almost at once from the definition. For n = 0, a connected type is one whose maps to every set are constant (our own example). What stays hard is to construct truncations and prove their universal property, which the book does with higher inductive types.
+**How the definition helps.** Truncation identifies maps A → B with maps from the truncation to B (our own). For a contractible truncation, evaluation at its center inverts the constant-function map (our own). Conversely, take B to be the truncation: its identity then equals a constant map, giving a contraction (our own).
 
 **Paper or page:** [HoTT Book: Hlevels](https://hott.github.io/book/hott-online-78-g0bb33d2.pdf), [HoTT Book: Hlevels](https://hott.github.io/book/hott-online-78-g0bb33d2.pdf). It says: “A type A is n-connected if and only if the map λb.λa.b : B → (A → B) is an equivalence for every n-type B. In other words, “every map from A to an n-type is constant”.”
 
@@ -2149,13 +2097,13 @@
 
 **Remember:** When paths are maps from an interval, pointwise paths make a path of functions.
 
-*Makes the theorem clean to state or prove.* MSC 03B38 (Type theory). arXiv math.LO, cs.LO. Level 3: graduate.
+*True by definition.* MSC 03B38 (Type theory). arXiv math.LO, cs.LO. Level 3: graduate.
 
-**Definition.** An interval type has two points 0 and 1 and a path between them. Its recursor, the rule that defines maps out of it, sends the two points to given values by judgmental equality. Judgmental (definitional) equality is equality that holds by definition and that the type checker sees directly. In cubical type theory, a path in a type is a map out of an interval of this kind.
+**Definition.** The higher inductive interval has endpoints 0 and 1 and a path s from 0 to 1. For each path p from b to c, interval recursion gives a function sending s to p. Its endpoint values compute judgmentally to b and c.
 
-**Problem.** In a type theory with such an interval type and the η rule for functions, function extensionality is a theorem: if f(x) = g(x) for all x : A, then f = g.
+**Problem.** In type theory with this interval and function η, pointwise equal functions are equal.
 
-**How the definition helps.** Because the computation rules hold by definition, swapping arguments turns a family of paths into one path of functions. A path from f(x) to g(x) for each x gives a map from the interval into A → B, whose ends are f and g judgmentally. The η rule, f = λx. f(x), finishes the proof. The nLab stresses that an interval with only typal computation rules does not imply function extensionality, because the needed step is then function extensionality itself.
+**How the definition helps.** For each x, interval recursion on the given path gives a function hₓ with endpoints f(x) and g(x) by computation (our own). Apply i ↦ (x ↦ hₓ(i)) to the interval path (our own). Function η identifies its endpoints with f and g (our own).
 
 **nLab:** [function extensionality](https://ncatlab.org/nlab/show/function+extensionality), [cubical type theory](https://ncatlab.org/nlab/show/cubical+type+theory). It says: “Postulating an interval type with judgmental computation rules for the point constructors of the interval type implies function extensionality.”
 
@@ -2164,35 +2112,17 @@
 - [Mike Shulman, An interval type implies function extensionality, Homotopy Type Theory blog (4 April 2011)](https://homotopytypetheory.org/2011/04/04/an-interval-type-implies-function-extensionality/)
 - [Cyril Cohen, Thierry Coquand, Simon Huber, Anders Mörtberg, Cubical Type Theory: a constructive interpretation of the univalence axiom, TYPES 2015, LIPIcs 69 (2018); arXiv:1611.02108](https://arxiv.org/abs/1611.02108)
 
-### Cauchy reals with limits as constructors embed into every complete Archimedean field
-
-**Remember:** Rationals and limits are the constructors, so maps out follow them.
-
-*True by definition. Confidence: medium.* MSC 03B38 (Type theory), 26E40, 03F60. arXiv math.LO, math.CA. Level 3: graduate.
-
-**Definition.** The HoTT Book defines the Cauchy reals ℝc as a higher inductive type, a type with constructors for equalities as well as for elements. It has a constructor for each rational number and a constructor lim that sends a Cauchy approximation to a real number. A Cauchy approximation is a family x indexed by positive rationals ε, with xδ and xε closer than δ + ε. An equality constructor makes two reals equal when they are ε-close for every ε.
-
-**Problem.** For every Cauchy complete Archimedean ordered field F, there is an embedding of ℝc into F. So ℝc is the smallest such field.
-
-**How the definition helps.** F has rationals and limits of Cauchy approximations, and these are exactly the constructors of ℝc, so the recursion principle of ℝc gives the map into F (our own outline). With classes of Cauchy sequences, a limit of reals first needs a chosen sequence for each real, which uses countable choice (our own). What stays hard is to define closeness together with ℝc, and to show that the map keeps the order and the field operations (our own).
-
-**Paper or page:** [HoTT Book: Reals](https://hott.github.io/book/hott-online-78-g0bb33d2.pdf), [HoTT Book: Reals](https://hott.github.io/book/hott-online-78-g0bb33d2.pdf). It says: “The Cauchy reals embed into every Cauchy complete archimedean ordered field.”
-
-**Sources:**
-
-- [The Univalent Foundations Program, Homotopy Type Theory: Univalent Foundations of Mathematics (the HoTT Book), Institute for Advanced Study (2013)](https://hott.github.io/book/hott-online-78-g0bb33d2.pdf)
-
 ### Contractible fibres make equivalence in type theory a mere proposition
 
 **Remember:** A family of propositions is itself a proposition, so fibrewise contractibility is a property.
 
 *True by definition.* MSC 03B38 (Type theory), 55U35. arXiv math.LO, math.AT. Level 3: graduate.
 
-**Definition.** In homotopy type theory, a path is evidence of equality between two elements of a type. A type is contractible if it has a centre with a path from that centre to each element. A function is an equivalence if each fibre is contractible. The fibre over y consists of pairs of an input x and a path from f(x) to y.
+**Definition.** The fiber of f over y consists of pairs (x, p) with p a path from f(x) to y. A function is an equivalence if each fiber has a center with a path from that center to every point.
 
-**Problem.** For any function, the type asserting that it is an equivalence is a mere proposition. This means any two witnesses of equivalence are equal.
+**Problem.** With function extensionality, the type asserting that a function is an equivalence is a mere proposition. Any two witnesses are equal.
 
-**How the definition helps.** The contractible-fibre definition turns the claim into a product of mere propositions, one for each fibre. Lemma 12.3 says any two witnesses of contractibility of a given type are equal. Function extensionality, which equates functions that agree at each input, gives equality for the whole family. A different test uses a quasi-inverse, a map back with paths making both composites equal to the appropriate identity. Those data need not form a mere proposition, as Theorem 2.3 shows. The work is in proving that both tests hold for the same functions, as Chapter 4 shows.
+**How the definition helps.** Witnesses form a dependent product, one contractibility witness per fiber (our own). Contractibility of a fixed type is a mere proposition (our own). Function extensionality turns these pointwise equalities into equality of witnesses (our own).
 
 **Paper or page:** [Equivalences, Lemma 5.3](https://hott.github.io/book/hott-online-78-g0bb33d2.pdf), [Logic, Lemma 12.3](https://hott.github.io/book/hott-online-78-g0bb33d2.pdf), [Equivalences, Theorem 2.3](https://hott.github.io/book/hott-online-78-g0bb33d2.pdf). It says: “For any f, the type isContr(f) is a mere proposition.”
 
@@ -2206,11 +2136,11 @@
 
 *True by definition. Confidence: medium.* MSC 03B38 (Type theory). arXiv math.LO. Level 3: graduate.
 
-**Definition.** Call a map an equivalence if each fiber has a chosen point and a path from it to every point. The fiber at y contains a point x and a path from its image to y. An alternative uses a map back with inverse laws up to paths.
+**Definition.** The fiber of f at y consists of pairs (x, p) with p a path from f(x) to y. A map is an equivalence if each fiber has a center with a path to every point.
 
 **Problem.** Pulling back an equivalence along any function gives an equivalence. Here a pullback keeps the path that witnesses agreement, as a homotopy pullback does.
 
-**How the definition helps.** With this definition, being an equivalence is a property of the fibers, and pulling back does not change fibers. Our own proof identifies the fiber of the pulled-back map at a point with the old fiber over its image. The contraction therefore carries over. With the inverse-up-to-paths definition, one must build an inverse of the pulled-back map and check its laws. The nLab notes that the two definitions agree, citing the HoTT book around Theorem 4.4.5.
+**How the definition helps.** The fiber of the pullback along g at z is equivalent to the original fiber at g(z) (our own). Transport its center and contraction across this equivalence to contract the new fiber (our own).
 
 **nLab:** [equivalence of types](https://ncatlab.org/nlab/show/equivalence+of+types). It says: “if all its pre-images are essentially unique, namely if all its fiber types are contractible types.”
 
@@ -2224,11 +2154,11 @@
 
 *True by definition.* MSC 03B38 (Type theory). arXiv math.LO. Level 3: graduate.
 
-**Definition.** In cubical type theory, a path is a function from an interval type, with given values at the two ends. A function f acts on a path p by the path i ↦ f(p(i)). With Martin-Löf identity types, one defines this action by path induction, the rule that reduces a claim about all paths to reflexivity paths.
+**Definition.** A cubical path from x to y is an interval function with endpoints x and y. A function f sends a path p to the path i ↦ f(p(i)) (our own).
 
 **Problem.** Applying g ∘ f to a cubical path gives, by computation alone, the same path as applying f and then g.
 
-**How the definition helps.** Both sides are the function i ↦ g(f(p(i))), so they agree by computation. With identity types, our own comparison proves only a path between the two sides, by path induction. The nLab says that cubical type theory defines paths as maps out of an interval primitive. The work moves into giving cubical paths composition and transport operations, so that they satisfy path induction up to a path.
+**How the definition helps.** Both actions compute to i ↦ g(f(p(i))), so their paths agree by computation (our own).
 
 **nLab:** [cubical type theory](https://ncatlab.org/nlab/show/cubical+type+theory), [cubical path type](https://ncatlab.org/nlab/show/cubical+path+type). It says: “maps out of an interval primitive is used to define cubical path types, rather than the inductive family of Martin-Löf identity types”
 
@@ -2242,11 +2172,11 @@
 
 *Rules out counterexamples.* MSC 03B38 (Type theory). arXiv math.LO, math.AT. Level 3: graduate.
 
-**Definition.** A function f : A → B is an equivalence if every fiber of f is contractible, that is, has a point to which every point is equal. Equivalently, f is bi-invertible: it has a left inverse and a separately given right inverse. These replace the naive definition, which asks for one two-sided inverse up to homotopy, a quasi-inverse.
+**Definition.** The fiber of f over y consists of pairs (x, p) with p a path from f(x) to y. An equivalence has a center and a path from it to every point in each fiber. Equivalently, f has separately specified left and right inverses up to homotopy.
 
 **Problem.** With either definition and function extensionality, the type isEquiv(f) is a mere proposition: any two of its elements are equal. So the equivalences form a subtype of A → B, and two equivalences are equal when their functions are equal.
 
-**How the definition helps.** With these definitions, a function can be an equivalence in only one way. The type of quasi-inverses is in general not a mere proposition (HoTT book, Theorem 4.1.3), unless one assumes axiom K or uniqueness of identity proofs, as the nLab says. So with the naive definition a function can be an equivalence in several ways. Quasi-inverses stay the easiest way to show that a given f is an equivalence.
+**How the definition helps.** Contractibility witnesses form a mere proposition for each fiber, and function extensionality preserves this property across the family (our own). Bi-invertibility gives an equivalent witness type. A single quasi-inverse with two homotopies can retain extra loop data, as for the identity on the circle (our own). Thus equality of underlying functions suffices for equality in the subtype (our own).
 
 **nLab:** [equivalence of types](https://ncatlab.org/nlab/show/equivalence+of+types). It says: “Moreover, at least if we assume function extensionality, the evident types of "homotopy isomorphisms" and of functions with contractible fibers are equivalent and are h-propositions.”
 
@@ -2261,11 +2191,11 @@
 
 *True by definition. Confidence: medium.* MSC 03B38 (Type theory), 03B40. arXiv math.LO, cs.LO. Level 3: graduate.
 
-**Definition.** Raw terms and types are not strings of symbols. They are well-founded labelled trees, defined as an inductive family with one constructor for variables and one constructor for each operator. Such a tree is called an abstract binding tree. Written strings such as (A × B) × C are only notation for these trees.
+**Definition.** For a fixed signature, raw terms form the inductive family generated by variables and one constructor per operator. Each constructor takes the subterms and binds the variables specified by its operator (our own).
 
 **Problem.** Raw terms satisfy an induction and a recursion principle over their constructors, and each term can be read in only one way.
 
-**How the definition helps.** If terms are an inductive type in the metatheory, the induction and recursion principles come with the definition, and unique readability is automatic. With strings of symbols, you must first prove that each well-formed string parses in exactly one way, and add parentheses to make this true. The nLab page says that a complete account still needs parsing from strings to trees, but that step is well understood and kept apart.
+**How the definition helps.** The inductive family supplies structural induction and recursion. Distinct constructors have disjoint images, and each constructor determines its arguments, giving unique readability of the tree (our own).
 
 **nLab:** [Initiality Project - Raw Syntax](https://ncatlab.org/nlab/show/Initiality+Project+-+Raw+Syntax). It says: “This way we obtain automatically an induction principle for defining functions by recursion and proving theorems by induction over the set of terms, which in the strings-of-symbols approach one has to prove by hand.”
 
@@ -2279,11 +2209,11 @@
 
 *True by definition. Confidence: medium.* MSC 03B38 (Type theory), 55U35. arXiv math.LO, math.AT. Level 3: graduate.
 
-**Definition.** To form the cofiber of f : A → B, add a new point to B. For every a in A, add a path from f(a) to the new point. This is a higher inductive type, one given by point and path constructors. The geometric construction instead glues the base of the cone on A to B along f.
+**Definition.** The cofiber of f : A → B is the higher inductive type freely generated by a copy of B and a basepoint. For each a ∈ A it has a path from the copy of f(a) to that basepoint (our own).
 
-**Problem.** A pointed map preserves the chosen point, here the new point. Pointed maps out of the cofiber correspond to maps g from B with a homotopy from g ∘ f to a constant map.
+**Problem.** Pointed maps from the cofiber into a pointed type Y correspond to maps g from B to Y with a specified homotopy. That homotopy takes g ∘ f to the constant map at the basepoint of Y.
 
-**How the definition helps.** The mapping rule of the constructors is exactly this data, so the correspondence holds by definition. Our own proof reads it off: give the image of B, of the new point and of each added path. The pointed condition fixes the image of the new point. Our own comparison uses the theorem that the geometric mapping cone has the same mapping rule up to homotopy.
+**How the definition helps.** The cofiber mapping rule asks where each point and path constructor goes (our own). Pointedness fixes the new point at the target basepoint, and the path images give exactly the specified homotopy (our own).
 
 **nLab:** [cofiber type](https://ncatlab.org/nlab/show/cofiber+type). It says: “the cofiber type takes the image of the function f:A → B and makes it contractible”
 
@@ -2297,11 +2227,11 @@
 
 *True by definition. Confidence: medium.* MSC 03B38 (Type theory), 55U35. arXiv math.LO, math.AT. Level 3: graduate.
 
-**Definition.** The wedge of pointed types A and B joins them at their basepoints, inside the product A × B. A pushout glues types along a common part with paths, not strict equations. Define the smash product as the pushout that collapses the wedge to a point. The geometric definition instead takes the quotient of the product by the wedge.
+**Definition.** For pointed types A and B, the wedge A ∨ B is their pushout over the point. Their smash product is the pushout of the two maps from A ∨ B to A × B and to the point. The first map includes each axis using the other basepoint (our own).
 
 **Problem.** Pointed maps from the smash product correspond to maps from the product with a specified homotopy to the constant map on the wedge.
 
-**How the definition helps.** The pushout's mapping rule is this data, so the correspondence holds by definition. Our own proof reads it off: a map on the product, the image of the collapsed point, and paths on the wedge. Our own comparison uses the theorem that the quotient computes the homotopy pushout when the wedge inclusion is a cofibration. A cofibration is an inclusion along which homotopies extend, as for well-pointed spaces.
+**How the definition helps.** The pushout mapping rule asks for a map on the product and a compatible map on the point (our own). Pointedness fixes the latter at the target basepoint, leaving precisely the specified homotopy on the wedge (our own).
 
 **nLab:** [smash product type](https://ncatlab.org/nlab/show/smash+product+type). It says: “The smash product type of two pointed types A,B can be defined as the pushout type of the span”
 
@@ -2315,11 +2245,11 @@
 
 *True by definition.* MSC 03B38 (Type theory). arXiv math.LO. Level 3: graduate.
 
-**Definition.** In homotopy type theory, 'there exists a unique x : X with P(x)' means that the dependent sum Σ(x : X) P(x) is contractible. This dependent sum is the type of pairs of an x and a proof of P(x). A contractible type has a center: a point to which every point is equal. So this kind of unique existence carries its witness.
+**Definition.** Unique existence of x satisfying P(x) means that the type of pairs (x, p), with p a witness of P(x), is contractible (our own). Contractibility supplies a center and a path from it to each point (our own).
 
-**Problem.** In Martin-Löf type theory with function extensionality, unique choice holds: if for each a the type Σ(y : B(a)) R(a, y) is contractible, then some function f satisfies R(a, f(a)) for every a.
+**Problem.** Assume function extensionality in Martin-Löf type theory. If each type of pairs (y, r) with y ∈ B(a) and r witnessing R(a, y) is contractible, some function f satisfies R(a, f(a)) everywhere.
 
-**How the definition helps.** With this definition, the center of contraction of each Σ(y : B(a)) R(a, y) gives the value of the function at a. The nLab says that whether unique choice is provable depends mostly on the notion of proposition used. It is not provable with the primitive propositions of observational type theory or Rocq, and it fails in the internal language of a tripos.
+**How the definition helps.** At each a, let f(a) be the first component of the center (our own). The second component witnesses R(a, f(a)) (our own).
 
 **nLab:** [principle of unique choice](https://ncatlab.org/nlab/show/principle+of+unique+choice). It says: “Whether unique choice is provable or not depends mostly on what notion of proposition is used. It is not provable using the primitive notion of proposition in OTT or Rocq.”
 
@@ -2334,11 +2264,11 @@
 
 *Rules out counterexamples.* MSC 03B38 (Type theory). arXiv math.LO, cs.LO. Level 3: graduate.
 
-**Definition.** A function f : A → B is an embedding if each map from x = y to f(x) = f(y) is an equivalence. It is surjective if each b in B merely has some a with f(a) = b; “merely” means that no particular a is named. It is injective if f(x) = f(y) implies x = y.
+**Definition.** A map f is an embedding if, for every x and y, its action on paths from x to y is an equivalence. It is surjective if the propositional truncation of every fiber is inhabited (our own). It is injective if equality of images implies equality of inputs (our own).
 
 **Problem.** Classically, a function is a bijection exactly when it is injective and surjective. In homotopy type theory, the same holds for all types when injective is replaced by embedding.
 
-**How the definition helps.** An embedding has fibres with at most one element, and surjectivity gives each fibre some element, so each fibre is contractible and f is an equivalence (our own). Injectivity alone fails for types that are not sets (our own). Our own counterexample is the map from the one-point type to the type of two-element sets: it is injective and surjective, but the swap of the two points is a second self-equality. For sets, embeddings and injections agree, so the classical statement returns (our own).
+**How the definition helps.** Embedding means every fiber is a mere proposition, so mere inhabitation gives a center and contraction (our own). Conversely, contractible fibers are inhabited propositions (our own). Under univalence, the point selecting the booleans in the type of merely two-element sets is injective and surjective (our own). The boolean swap gives a nonidentity loop at its image, so the map is no embedding (our own).
 
 **nLab:** [embedding of types](https://ncatlab.org/nlab/show/embedding+of+types). It says: “The analogue in dependent type theory of the concept of injection in set theory, embedding of topological spaces in topology, and embedding in category theory.”
 
@@ -2354,11 +2284,11 @@
 
 *Rules out counterexamples.* MSC 03B38 (Type theory), 03F25. arXiv math.LO. Level 3: graduate.
 
-**Definition.** In homotopy type theory, a type A is a mere proposition if any two of its elements are equal. Formally, the type Π(x y : A), x = y has an element: a function that gives, for all x and y in A, a proof that x = y. Logic is then done with these types only, not with all types.
+**Definition.** A type P is a mere proposition if every pair of elements of P admits a path between them.
 
-**Problem.** Excluded middle can be added to homotopy type theory with the univalence axiom without a contradiction. (The univalence axiom says that equivalent types are equal.)
+**Problem.** Excluded middle restricted to mere propositions is consistent with univalent type theory relative to the classical assumptions of its simplicial set model.
 
-**How the definition helps.** A mere proposition has no nontrivial automorphisms, so excluded middle for mere propositions avoids the clash with univalence. Suppose that you state excluded middle for all types (propositions as types). Then it gives a choice of element for every inhabited type, and this choice must commute with all automorphisms. Univalence makes the swap of the two booleans a nontrivial path, so this version contradicts univalence (HoTT Book). Restricting excluded middle to mere propositions removes this problem. The consistency of the restricted version comes from models, such as Voevodsky's simplicial set model built in classical set theory. That is the real work.
+**How the definition helps.** Restricting excluded middle to mere propositions removes the boolean swap counterexample. Choosing an element of every inhabited type would require a boolean fixed by the swap, by univalence (our own). Every self-equivalence of an inhabited mere proposition fixes its center (our own). The classical simplicial set model establishes relative consistency of the restricted principle with univalence (our own).
 
 **nLab:** [mere proposition](https://ncatlab.org/nlab/show/mere+proposition). It says: “the PAT version of excluded middle contradicts the univalence axiom, whereas the mere-propositional version does not”
 
@@ -2368,15 +2298,15 @@
 
 ### Higher inductive quotients map out by definition, and effectiveness becomes the theorem
 
-**Remember:** Constructors give maps out for free; proving effectiveness takes the real work.
+**Remember:** Add a point per input and a path per related pair, then truncate to sets.
 
 *True by definition. Confidence: medium.* MSC 03B38 (Type theory), 18A32. arXiv math.LO, cs.LO. Level 3: graduate.
 
-**Definition.** For a type A and a relation R whose values are mere propositions, the set-quotient A/R is a higher inductive type. Such a type has constructors for elements and for equalities. It has a map q : A → A/R and an equality q(a) = q(b) for each proof of R(a, b). A last constructor makes it a set, and A⫽R is the type of equivalence classes.
+**Definition.** For a proposition-valued relation R on A, its set-quotient is freely generated as a set by points q(a) for all a ∈ A. For each witness of R(a, b), it has a path from q(a) to q(b) (our own).
 
 **Problem.** Maps from A/R to a set correspond to maps from A that respect R. For an equivalence relation R, the quotient is effective: q(a) = q(b) holds exactly when R(a, b).
 
-**How the definition helps.** The constructors list exactly what a map out of the quotient must respect, so the universal property is the induction principle of A/R (our own). The work moves into effectiveness and into the comparison with the type of equivalence classes. Effectiveness is not automatic (our own). The constructors put in an equality for each proof of R(a, b), but they say nothing about other equalities. In our own reading of the book, the proof uses univalence for mere propositions, which says that two propositions that imply each other are equal.
+**How the definition helps.** Set-quotient recursion gives exactly the maps respecting the generating paths (our own). For an equivalence relation, quotient induction and propositional univalence let R(a, b) descend to a proposition depending on the quotient classes (our own). Transport reflexivity along an equality of classes to obtain R(a, b), while the path constructor gives the converse (our own).
 
 **Paper or page:** [HoTT Book: Set Math](https://hott.github.io/book/hott-online-78-g0bb33d2.pdf), [HoTT Book: Hits](https://hott.github.io/book/hott-online-78-g0bb33d2.pdf). It says: “Equivalence relations are effective and there is an equivalence A/R ≃ A⫽R.”
 
@@ -2390,11 +2320,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 03B38 (Type theory), 18C15. arXiv math.LO, cs.LO. Level 3: graduate.
 
-**Definition.** An ℕ-algebra is a type C with a point of C and a map from C to C. It is homotopy-initial (h-initial) if, for every other ℕ-algebra, the type of algebra maps into it is contractible. Contractible means it has exactly one element up to equality. W-types, the general inductive types of trees, use the same notion.
+**Definition.** An ℕ-algebra is a type with a chosen point and an endomorphism. An algebra is homotopy-initial if its structure-preserving maps to every algebra of the same signature form a contractible type. A contractible type has a center with a path to each point (our own).
 
-**Problem.** Any two h-initial ℕ-algebras are equal, so the type of h-initial ℕ-algebras is a mere proposition. The types that satisfy the rules for W-types, with computation rules up to equality, are exactly the h-initial algebras.
+**Problem.** In univalent type theory, any two homotopy-initial ℕ-algebras are equal, so their type is a mere proposition. For a W-type signature, induction with propositional computation holds exactly for homotopy-initial algebras.
 
-**How the definition helps.** A contractible type of maps is the homotopy-correct way to say “exactly one map”, so initiality becomes a property and not extra data. So two h-initial algebras are equal, not only isomorphic, and in our own reading this equality uses univalence. A single strictly unique map is not the right notion, because maps agree only up to paths (our own). In our own reading, the second theorem needs function extensionality.
+**How the definition helps.** Contractibility supplies maps in both directions and identifies their composites with the respective identities (our own). Univalence turns the resulting algebra equivalence into equality (our own). The homotopy-initiality characterization of W-types identifies their induction and computation rules with this same mapping condition (our own).
 
 **Paper or page:** [HoTT Book: Induction](https://hott.github.io/book/hott-online-78-g0bb33d2.pdf), [HoTT Book: Induction](https://hott.github.io/book/hott-online-78-g0bb33d2.pdf). It says: “Any two h-initial ℕ-algebras are equal. Thus, the type of h-initial ℕ-algebras is a mere proposition.”
 
@@ -2410,11 +2340,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 03B38 (Type theory). arXiv math.LO, cs.LO. Level 3: graduate.
 
-**Definition.** A pointed predicate over a pointed type (A, a₀) is a family of types R(b), for b in A, with an element r₀ of R(a₀). It is an identity system at a₀ if it has an induction principle like path induction, the basic rule for using equalities. So a statement about all b and all r in R(b) needs a proof only for a₀ and r₀. A type is contractible if it has exactly one element up to equality.
+**Definition.** A pointed family over (A, a₀) consists of types R(b) for b in A and a point r₀ in R(a₀). It is an identity system if every dependent family over pairs (b, r) admits induction from (a₀, r₀). Each value there must extend to a section whose value there equals the original value (our own).
 
 **Problem.** Being an identity system is equivalent to the map from a₀ = b to R(b) being an equivalence for every b. It is also equivalent to the type of pairs (b, r), with r in R(b), being contractible.
 
-**How the definition helps.** To find out what equality in a type means, one guesses a family R and proves one contractibility statement. The theorem then identifies R(b) with the type of equalities a₀ = b. The loops on the circle are one case. The book shows that a family of codes on the circle, with the point 0, is an identity system at the base point. Function extensionality, the principle that functions with equal values are equal, fits the same form, as the nLab notes. What stays hard is to guess R and to prove the contractibility (our own).
+**How the definition helps.** The fundamental theorem of identity types identifies this induction rule with contractibility of the total space of pairs (our own). It also identifies both conditions with fiberwise equivalence of the canonical map sending reflexivity to r₀ (our own).
 
 **nLab:** [identity system](https://ncatlab.org/nlab/show/identity+system). It says: “Identity systems are very useful in characterizing the extensionality principle of types such as function types, dependent function types, and Tarski universes.”
 
@@ -2426,15 +2356,15 @@
 
 ### In type theory, the axiom of choice is a theorem
 
-**Remember:** If a proof of 'there exists' gives the witness, choice just reads it off.
+**Remember:** A witness pair gives the chosen value first and its proof second.
 
 *True by definition.* MSC 03B38 (Type theory), 03E25. arXiv math.LO. Level 3: graduate.
 
-**Definition.** Under propositions as types, a statement is read as the type of its proofs. Then 'for all x : A there is y : B with R(x, y)' is the dependent product of dependent sums, Π(x : A) Σ(y : B) R(x, y). A dependent sum is a type of pairs of a y and a proof of R(x, y), and a dependent product is a type of functions whose output type can depend on the input. Here 'there is' means a dependent sum without truncation, so an element of it contains a chosen witness y.
+**Definition.** An untruncated existential witness for R(x, y) is a pair consisting of y and a proof of R(x, y). A dependent function witnessing this existence for every x assigns such a pair to each x (our own).
 
-**Problem.** The type-theoretic axiom of choice is provable: from an element of Π(x : A) Σ(y : B) R(x, y), one gets a function f : A → B with Π(x : A) R(x, f(x)).
+**Problem.** Given g assigning each x ∈ A a pair (y, r) with y ∈ B and r witnessing R(x, y), a choice function exists. It assigns f(x) ∈ B with a witness of R(x, f(x)) for every x.
 
-**How the definition helps.** The proof of 'there is' already contains the witness, so choice only has to take it out. For g in Π(x : A) Σ(y : B) R(x, y), the choice function is λx. π₁(g(x)), and its proof is λx. π₂(g(x)). The nLab says the name should therefore be 'principle of choice'. The usual axiom of choice comes back when 'there exists' is the propositional truncation, which forgets the witness, and that version does not follow from the rules.
+**How the definition helps.** Set f(x) to the first component of g(x) (our own). Its second component then has exactly the required type R(x, f(x)) (our own).
 
 **nLab:** [type theoretic axiom of choice](https://ncatlab.org/nlab/show/type+theoretic+axiom+of+choice), [axiom of choice](https://ncatlab.org/nlab/show/axiom+of+choice). It says: “Despite its name, the type theoretic axiom of choice is provable in dependent type theory from the inference rules of dependent product types, dependent sum types, and identity types”
 
@@ -2464,11 +2394,11 @@
 
 *Rules out counterexamples.* MSC 03B38 (Type theory), 03B40, 18C50. arXiv cs.LO, math.LO. Level 3: graduate.
 
-**Definition.** The Edinburgh logical framework LF is a small type theory for encoding other languages. It has dependent function types but no inductive types (types given by their constructors, which allow definition by cases). So you cannot define a function on an encoded type such as tm, the type of terms, by pattern matching on its argument. LF encodes a binder such as lambda as lam : (tm → tm) → tm, so the body of a lambda is an LF function.
+**Definition.** In the LF encoding of untyped lambda terms, tm is a base type with constants for application and abstraction (our own). Application takes two terms, and abstraction takes a function tm → tm, with LF binding its argument (our own).
 
-**Problem.** The adequacy theorem says that the encoding is faithful. There is a bijection between the syntax of the encoded language and the canonical LF terms (terms in full normal form) of the matching LF type. The bijection is compositional: it respects substitution.
+**Problem.** In contexts of term variables, untyped lambda terms up to renaming bound variables correspond bijectively to canonical LF terms of type tm for this signature. The correspondence respects substitution.
 
-**How the definition helps.** LF is too weak to define bad functions, so every LF function tm → tm stands for a real lambda body. Suppose that tm were an inductive type in LF. Then you could define a function tm → tm by cases on the shape of its argument and pass it to lam. The result would be an 'exotic term' that represents no real lambda term, and adequacy would fail. In LF the only definable functions tm → tm substitute their argument into a fixed term, so exotic terms do not exist. The price is that LF cannot express many functions, for example most functions nat → nat. You must also check properties such as the totality of a relation outside LF.
+**How the definition helps.** Canonical forms in this signature are variables, applications, or abstractions with a canonical body in an extended context (our own). LF has no case analysis on tm that could create an exotic binder inspecting its argument. Induction on canonical forms recovers each object term, and LF substitution implements its substitution (our own).
 
 **nLab:** [logical framework](https://ncatlab.org/nlab/show/logical+framework). It says: “In fact, this weakness is essential in order to guarantee "adequacy" of the HOAS encoding.”
 
@@ -2482,11 +2412,11 @@
 
 *True by definition. Confidence: medium.* MSC 03B38 (Type theory). arXiv math.LO. Level 3: graduate.
 
-**Definition.** A finite type is one equivalent to {1, …, n} for some n. Define a natural number as a finite type up to equivalence, the set truncation of the type of finite types. Set truncation keeps only whether two elements are equal and forgets how. Define addition there by disjoint sum.
+**Definition.** A finite type is merely equivalent to {1, …, n} for some natural number n. Represent its cardinality by its class in the set truncation of finite types. Define the sum of two classes by taking the class of their disjoint sum (our own).
 
 **Problem.** The cardinality of a disjoint sum of finite types is the sum of their cardinalities.
 
-**How the definition helps.** With this definition, the size of A + B is the class of A + B, which is the sum by definition. The nLab gives this definition of addition and the equivalence of ℕ with the set truncation. The usual definition starts from zero and successor and defines addition by recursion. Our own comparison then needs that finite types are classified by their size. It also needs an equivalence between {1, …, m + n} and the disjoint sum of {1, …, m} and {1, …, n}.
+**How the definition helps.** For finite A and B, the definition gives \[A\] + \[B\] = \[A + B\] (our own). The right side is precisely the cardinality of their disjoint sum (our own).
 
 **nLab:** [type of finite types](https://ncatlab.org/nlab/show/type+of+finite+types). It says: “The arithmetic operations and order relations on the natural numbers type can be defined by induction on set truncation”
 
@@ -2498,11 +2428,11 @@
 
 *True by definition.* MSC 03B38 (Type theory), 03B40, 68N18. arXiv cs.PL, cs.LO. Level 3: graduate.
 
-**Definition.** A parametrically polymorphic function is written once with a type variable. It works the same way at every type and does not inspect which type it is used at. In System F (the polymorphic lambda calculus), parametricity is the statement that such functions respect all relations between instances of the type variables.
+**Definition.** A family f indexed by sets A and B assigns an output in A to each pair in A × B. It is parametric if, for all relations on the respective input types, coordinatewise related pairs give outputs related by the first relation (our own).
 
-**Problem.** Every polymorphic function f : A × B → A satisfies α ∘ f = f ∘ (α × β) for all functions α and β, whatever its code.
+**Problem.** Every closed System F term of type ∀A B. A × B → A commutes with every pair of functions α : A → C and β : B → D. In symbols, α ∘ f₍A,B₎ = f₍C,D₎ ∘ (α × β).
 
-**How the definition helps.** A parametric function must act the same way at all types, so its type alone fixes a naturality law for it. This law is Wadler's free theorem. The real content is Reynolds' abstraction theorem, which must be proved for each language. The nLab notes that it fails in type theories with typecase, a construct that can inspect types.
+**How the definition helps.** Reynolds’ abstraction theorem gives relational parametricity. Apply it to the graphs of α and β: the outputs then lie in the graph of α, giving the stated equation (our own).
 
 **nLab:** [polymorphism](https://ncatlab.org/nlab/show/polymorphism). It says: “In type systems with parametric polymorphism, such as System F, there is a family of proofs for every polymorphic type signature which each give an algebraic law for any function with that signature.”
 
@@ -2516,11 +2446,11 @@
 
 *True by definition. Confidence: medium.* MSC 03B38 (Type theory), 18N55. arXiv math.LO, math.AT. Level 3: graduate.
 
-**Definition.** In homotopy type theory, a proposition is a type in which any two elements are equal. A type T is local for the unique function 𝟚 → 𝟙, from the booleans to the unit type, when precomposition with this function is an equivalence. In words, every pair of elements of T comes from a single element. The propositional truncation \[A\] of a type A, also called the bracket type, is the localization of A at 𝟚 → 𝟙: the universal local type that receives a map from A.
+**Definition.** A type T is local for 𝟚 → 𝟙 if its diagonal T → T × T is an equivalence. Define \[A\] as the localization: a local type receiving a map from A that induces equivalences on mapping types into every local type (our own).
 
 **Problem.** \[A\] is a proposition, and maps \[A\] → P to any proposition P correspond to maps A → P.
 
-**How the definition helps.** The types local for 𝟚 → 𝟙 are exactly the propositions, so the universal property of the localization is the one we want. A type is local exactly when any two of its elements are equal, which is our own reading; the nLab states the definition. The real work is the general existence of localizations as higher inductive types. This is the case n = −1 of n-truncation as localization at the map from the (n+1)-sphere to the point.
+**How the definition helps.** The diagonal is an equivalence exactly when every two points are equal, so the local types are exactly the mere propositions (our own). The localization is local, and its mapping rule applies to every such proposition (our own).
 
 **nLab:** [bracket type](https://ncatlab.org/nlab/show/bracket+type), [n-truncation modality](https://ncatlab.org/nlab/show/n-truncation+modality). It says: “By definition, the type of functions (𝟙 → \[A\]) → (𝟚 → \[A\]) is an equivalence of types.”
 
@@ -2534,11 +2464,11 @@
 
 *True by definition. Confidence: medium.* MSC 03B38 (Type theory), 68N15. arXiv cs.PL, cs.LO. Level 3: graduate.
 
-**Definition.** A Church pair of A and B is a family P indexed by sets R. For each R, it sends each map A × B → R to an element of R. Call P parametric if it preserves relations as R varies. The direct representation is an ordinary pair in A × B.
+**Definition.** A Church pair for sets A and B assigns an element of R to every set R and map h from A × B into R. It is parametric if pointwise related maps always give related outputs, for every relation between their target sets (our own).
 
 **Problem.** Every parametric Church pair is evaluation at one unique pair in A × B.
 
-**How the definition helps.** Parametricity lets the graph of each map do the work. Let p be P applied to the identity map of A × B. For any map h from A × B to R, the identity and h are related through the graph of h. Preservation puts p and P(h) in that graph, so P(h) = h(p). This proof is our own, and Wikipedia gives the idea of parametricity. The work moves to Reynolds's abstraction theorem, which shows that typed programs are parametric.
+**How the definition helps.** Take p as the value of P on the identity of A × B (our own). For every h, the identity and h are pointwise related by the graph of h (our own). Parametricity gives Pᵣ(h) = h(p), and evaluation at the identity forces uniqueness (our own).
 
 **Wikipedia:** [Parametricity](https://en.wikipedia.org/wiki/Parametricity). It says: “Parametricity is the abstract property enjoyed by the uniformly acting families”
 
@@ -2552,11 +2482,11 @@
 
 *True by definition.* MSC 03B38 (Type theory), 68N15. arXiv cs.PL, cs.LO. Level 3: graduate.
 
-**Definition.** Consider a family F with one function F(X) from X to X for each set X. Call F parametric if it preserves relations. If a relation between sets X and Y holds for x and y, it must hold for F(x) and F(y). A syntactic alternative shows that every closed program of this type normalizes to the identity.
+**Definition.** Let F assign a map Fₓ : X → X to every set X. For every relation R between sets X and Y, parametricity requires related inputs x and y to have related outputs Fₓ(x) and Fᵧ(y) (our own).
 
 **Problem.** Every parametric family F is the identity on each set.
 
-**How the definition helps.** Parametricity lets one tiny relation decide the output. Take x in X and the relation on X whose only pair is (x, x). Preservation forces the pair (F(x), F(x)) into this relation, so F(x) = x. This proof is our own, and Wikipedia gives the idea of parametricity. The work moves to Reynolds's abstraction theorem, which shows that typed programs are parametric.
+**How the definition helps.** For each x ∈ X, use the relation {(x, x)} on X (our own). Preservation forces (Fₓ(x), Fₓ(x)) into that singleton, hence Fₓ(x) = x (our own).
 
 **Wikipedia:** [Parametricity](https://en.wikipedia.org/wiki/Parametricity). It says: “parametricity is an abstract uniformity property enjoyed by parametrically polymorphic functions, which captures the intuition that all instances of a polymorphic function act the same way.”
 
@@ -2570,11 +2500,11 @@
 
 *True by definition.* MSC 03B38 (Type theory), 68N15. arXiv cs.PL, cs.LO. Level 3: graduate.
 
-**Definition.** Consider a family F that gives, for each set X, a function from X → X to X → X. Call F parametric if it preserves relations. If f and g send related inputs to related outputs, then F(f) and F(g) must do so too. A syntactic alternative studies closed programs of this type and their normal forms.
+**Definition.** For each set X, let Fₓ send endomorphisms of X to endomorphisms of X. Parametricity requires that whenever f and g preserve a relation R between their sets, Fₓ(f) and Fᵧ(g) also preserve R (our own).
 
 **Problem.** Every parametric family F acts as f ↦ fⁿ for one fixed natural number n.
 
-**How the definition helps.** Parametricity lets one well-chosen relation replace an analysis of all programs. Let n be F applied to successor on the natural numbers, evaluated at 0. For a set X, a function f and a point x, relate k to fᵏ(x). Successor and f respect this relation, and 0 is related to x. So F(f)(x) = fⁿ(x). This proof is our own, and Wikipedia states the result. The work moves to Reynolds's abstraction theorem, which shows that typed programs are parametric.
+**How the definition helps.** Let n = Fℕ(successor)(0) (our own). For any f : X → X and x ∈ X, relate each natural k to fᵏ(x) (our own). Successor and f preserve this relation, so their images under F send the related pair (0, x) to (n, fⁿ(x)) (our own). Thus Fₓ(f)(x) = fⁿ(x) (our own).
 
 **Wikipedia:** [Parametricity](https://en.wikipedia.org/wiki/Parametricity). It says: “the parametrically polymorphic functions of type ∀X. T(X) → T(X) are one-to-one with natural numbers.”
 
@@ -2584,15 +2514,15 @@
 
 ### Singleton induction makes extending a value from the center hold by definition
 
-**Remember:** A value at the center extends across the whole type.
+**Remember:** Singleton induction extends any value at the center to a section.
 
 *True by definition. Confidence: medium.* MSC 03B38 (Type theory). arXiv math.LO. Level 3: graduate.
 
-**Definition.** A type family over A assigns a type to each point of A, and a section chooses a value in each. Define a contractible type as a type with a point c that satisfies singleton induction. That rule extends any value at c to a section that returns that value at c. The usual definition instead gives a path from c to every point.
+**Definition.** A contractible type can be defined as a pointed type satisfying singleton induction. For every family over the type, each value at its center extends to a section taking that value there.
 
 **Problem.** Every type family over a contractible type has a section that takes a given value at the center.
 
-**How the definition helps.** The theorem is the defining rule, so nothing is left to prove. The nLab gives singleton induction as one of three equivalent definitions of a contractible type. With the usual definition, our own comparison moves the value along the given paths. That section returns the given value at c only after transport along the path from c to itself. So one must first adjust the paths so that this one is reflexivity.
+**How the definition helps.** Apply singleton induction to the given family and its chosen value. The computation rule gives the required equality at the center (our own).
 
 **nLab:** [contractible type](https://ncatlab.org/nlab/show/contractible+type). It says: “A contractible type is a pointed type which satisfies singleton induction.”
 
@@ -2604,11 +2534,11 @@
 
 *True by definition.* MSC 03B38 (Type theory). arXiv math.LO. Level 3: graduate.
 
-**Definition.** A coalgebra here is a state type S with an output map S → A and a next-state map S → S. Define streams of A as the terminal coalgebra. This means that every coalgebra has exactly one structure-preserving map into it. An alternative represents a stream as a function from natural numbers to A.
+**Definition.** A stream coalgebra on S has an output S → A and a next-state map S → S. Streams form a terminal such coalgebra: each coalgebra has exactly one map into it preserving output and next state (our own).
 
 **Problem.** Given an output and a next state for every state, exactly one map from states to streams respects both operations.
 
-**How the definition helps.** Terminality is exactly the claim of existence and uniqueness, so nothing is left to prove. The nLab says that coinductive types can be defined as terminal coalgebras in homotopy type theory. Our own comparison shows that functions from natural numbers have this property. It defines the n-th entry by recursion. It proves uniqueness by induction on n and function extensionality, which says that pointwise equal functions are equal.
+**How the definition helps.** A map into streams preserves the coalgebra operations exactly when its head gives the current output and its tail follows the next state (our own). Terminality supplies exactly one such map (our own).
 
 **nLab:** [coinductive type](https://ncatlab.org/nlab/show/coinductive+type). It says: “it is possible instead to dualize the alternative characterization of inductive types as initial algebras for a notion of coinductive types as terminal coalgebras”
 
@@ -2622,11 +2552,11 @@
 
 *True by definition. Confidence: medium.* MSC 03B38 (Type theory). arXiv math.LO, cs.LO. Level 3: graduate.
 
-**Definition.** A mere proposition is a type with at most one element up to equality. The subtype of A cut out by P is the type ∑ x:A P(x). Its elements are pairs of an x in A and a proof of P(x).
+**Definition.** Let P assign a mere proposition to each element of A. Its subtype consists of pairs (x, p) with x ∈ A and p ∈ P(x). A mere proposition has a path between every two of its elements.
 
 **Problem.** Two elements of a subtype are equal when their underlying elements of A are equal. So the subtype sits inside A like a subset.
 
-**How the definition helps.** Since P(x) has at most one element, the second part of a pair carries no information, so equality of pairs reduces to equality of first parts. If P(x) were an arbitrary type, two pairs with the same x and different proofs would be different elements (our own). For example, the type of groups with a chosen element is not a subtype of the type of groups (our own example). The proof uses only the description of equality in pair types (our own reading).
+**How the definition helps.** A path between first components transports the first proof into the second fiber (our own). That fiber is a mere proposition, so the transported proof equals the second proof (our own). The equality rule for dependent pairs now gives the required path (our own).
 
 **nLab:** [embedding of types](https://ncatlab.org/nlab/show/embedding+of+types). It says: “with the witness that π₁ is an embedding given by the fact that the membership relation x ∈ P is a proposition for all elements x:A and material subtypes P:A → Prop.”
 
@@ -2642,11 +2572,11 @@
 
 *True by definition. Confidence: medium.* MSC 03B38 (Type theory), 55P40, 55P35. arXiv math.LO, math.AT. Level 3: graduate.
 
-**Definition.** A higher inductive type is given by point constructors and path constructors. The suspension of X has two points, north and south, and one path from north to south for each point of X. Take north as the basepoint and assume X has a basepoint. The geometric definition instead collapses each end of the cylinder X × \[0, 1\] to a point.
+**Definition.** The suspension of X is freely generated by two poles and a path between them for each point of X. Orient all paths from north to south and choose north as basepoint (our own).
 
 **Problem.** Pointed maps preserve the chosen point. Pointed maps out of the suspension correspond naturally to pointed maps from X into the space of loops at the target's chosen point.
 
-**How the definition helps.** The mapping rule of the constructors is already the data of the adjunction, so only a basepoint correction remains. Our own proof uses that rule: a map out of the suspension is a value at each pole and a path for each meridian. The basepoint meridian identifies the south value with the north value. This turns each other meridian into a loop at the north value. Our own comparison uses the theorem that the geometric suspension has the same mapping rule up to homotopy.
+**How the definition helps.** Suspension recursion assigns images to the poles and paths to the meridians (our own). Pointedness fixes the north image, while the basepoint meridian identifies the south image with it (our own). Following each meridian image by the reversed basepoint meridian gives a loop, constant up to equality at the basepoint (our own). Conversely, use the target basepoint for both poles and the given loops for the meridians (our own).
 
 **nLab:** [suspension type](https://ncatlab.org/nlab/show/suspension+type). It says: “representing the meridians from the north to the south pole”
 
@@ -2660,11 +2590,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: low.* MSC 03B38 (Type theory), 55Q05. arXiv math.LO, math.AT. Level 3: graduate.
 
-**Definition.** A higher inductive type is a type given by generators for its points and also for its identifications (paths). The circle type S¹ is the higher inductive type generated by one point base : S¹ and one identification loop : base = base. Its induction principle says that to map out of S¹, one gives a point and a loop.
+**Definition.** The circle type is freely generated by a point base and a path loop from base to itself.
 
-**Problem.** The fundamental group of the circle is the integers. That is, the loop space Ω(S¹, base) is equivalent to ℤ.
+**Problem.** The loop space of the circle at base is equivalent to ℤ. Consequently its fundamental group is isomorphic to the additive group of integers.
 
-**How the definition helps.** With the circle defined by its generators, the statement is about a type, so it can be proved synthetically from the rules of homotopy type theory and univalence, as Licata and Shulman did. In our own summary of their proof, the induction principle of the circle builds a family of types over S¹ that plays the role of the universal cover, and univalence lets the loop act on ℤ as the successor map. That argument is the real work. The nLab does not claim that this proof is shorter than the classical one.
+**How the definition helps.** The circle’s mapping rule specifies a family over it by a type at base and a self-equivalence for the loop, using univalence (our own). The Licata–Shulman encode–decode proof takes ℤ and successor, then identifies loops with integer winding numbers (our own).
 
 **nLab:** [circle type](https://ncatlab.org/nlab/show/circle+type), [higher inductive type](https://ncatlab.org/nlab/show/higher+inductive+type), [fundamental group of the circle is the integers](https://ncatlab.org/nlab/show/fundamental+group+of+the+circle+is+the+integers). It says: “Using the univalence axiom, one can prove that the loop space \`base == base\` of the circle type is equivalent to the integers.”
 
@@ -2679,11 +2609,11 @@
 
 *True by definition.* MSC 03B38 (Type theory), 03E30, 03E70. arXiv math.LO, cs.LO. Level 3: graduate.
 
-**Definition.** A higher inductive type is a type given by constructors for elements and also for equalities. The HoTT Book defines V this way, and one constructor forces V to be a set. One constructor makes a set from a small type A and a map f : A → V, with the values of f as elements. A path constructor makes two such sets equal when each value of one map is a value of the other, and conversely.
+**Definition.** The hierarchy V is the higher inductive set freely generated by points sup(f) for maps f from small types into V. Its path constructor identifies sup(f) and sup(g) whenever each value of either map merely occurs among the values of the other (our own).
 
 **Problem.** V satisfies extensionality: two sets with the same elements are equal. More precisely, equality in V is exactly bisimulation.
 
-**How the definition helps.** Extensionality is one of the constructors of V, so two sets with the same elements are equal by definition. Two sets are bisimilar when each element of either one is bisimilar to some element of the other, and a lemma shows that this is exactly equality in V. Another approach divides a type of well-founded trees by bisimulation; here that step is part of the definition (our own comparison). What stays hard is the rest of the axioms: with the axiom of choice and a universe, the book shows that V is a model of ZFC.
+**How the definition helps.** Having the same elements supplies exactly the two directions required by the path constructor (our own). For bisimulation, induction on the generated sets converts matching bisimilar children into matching equal children (our own). Conversely, reflexivity of bisimulation and transport give bisimulation for equal sets (our own).
 
 **Paper or page:** [HoTT Book: Set Math](https://hott.github.io/book/hott-online-78-g0bb33d2.pdf), [HoTT Book: Set Math](https://hott.github.io/book/hott-online-78-g0bb33d2.pdf), [HoTT Book: Set Math](https://hott.github.io/book/hott-online-78-g0bb33d2.pdf). It says: “In type theory with AC and a universe 𝒰, the cumulative hierarchy V is a model of Zermelo–Fraenkel set theory with choice, ZFC.”
 
@@ -2697,11 +2627,11 @@
 
 *Rules out counterexamples.* MSC 03B38 (Type theory), 03E25. arXiv math.LO, cs.LO. Level 3: graduate.
 
-**Definition.** In homotopy type theory, a set is a type in which any two equalities between the same two elements are equal. The brackets ‖ ‖ turn a type into a mere proposition, so ‖Y(x)‖ says only that Y(x) has some element, without naming one. The axiom of choice takes a set X and a set Y(x) for each x. If each Y(x) has some element, then there merely exists a function that picks an element of each Y(x).
+**Definition.** A type is a set if any two paths with the same endpoints are equal. Set-indexed choice asserts that every family of merely inhabited sets indexed by a set merely admits a section. Mere inhabitation is propositional truncation: it asserts existence without specifying a witness.
 
 **Problem.** For a set X and a family of sets Y(x), the axiom of choice (∏ x:X ‖Y(x)‖) → ‖∏ x:X Y(x)‖ is consistent with univalence. If X may be any type, the statement is false.
 
-**How the definition helps.** The condition that X is a set removes the index types with hidden symmetries, and these are what break choice. In our own summary of the book's counterexample, X is the type of all two-element sets and Y(x) is the type of equalities from the standard one to x. Each Y(x) has some element, but a choice function would make X contractible, which univalence forbids because the swap of the two points is a nontrivial self-equality (our own). The consistency of the set version needs a model (our own).
+**How the definition helps.** Set indices exclude the univalent type of merely two-element sets, whose boolean point has the swap as a nonidentity loop (our own). Paths from that point to each index form merely inhabited sets (our own). A section would contract the index type and hence kill the swap (our own). The classical simplicial set model establishes relative consistency for set indices (our own).
 
 **Paper or page:** [HoTT Book: Logic](https://hott.github.io/book/hott-online-78-g0bb33d2.pdf), [HoTT Book: Logic](https://hott.github.io/book/hott-online-78-g0bb33d2.pdf). It says: “The axiom of choice is equivalent to the statement that for any set X and any Y : X → 𝒰 such that each Y(x) is a set, we have (∏ x:X ‖Y(x)‖) → ‖∏ x:X Y(x)‖.”
 
@@ -2717,7 +2647,7 @@
 
 **Definition.** An equivalence A ≃ B between types is a function with an inverse up to homotopy, defined so that being an equivalence is a property. Univalence is the axiom that equalities between types are the same as equivalences between them. Precisely, the map from equalities A = B in the universe 𝒰 to equivalences A ≃ B is itself an equivalence.
 
-**Problem.** Equivalence induction: to prove D(A, B, e) for all types A and B and every equivalence e : A ≃ B, it is enough to prove D(A, A, id) for every type A.
+**Problem.** Equivalence induction reduces any family D(A, B, e), indexed by types and equivalences between them, to the identity cases. A witness of D(A, A, id) for each A gives a witness in every case.
 
 **How the definition helps.** Univalence makes equivalences behave like equalities, and path induction reduces statements about all equalities to the reflexivity case. So a statement about all equivalences reduces to the identity case. For example, to show that a construction respects every equivalence, one checks the identity map (our own example). The nLab notes that equivalence induction is equal in strength to univalence, which in the book is an axiom.
 
@@ -2731,7 +2661,7 @@
 
 ### Univalence makes isomorphic structures equal
 
-**Remember:** Under univalence, type identifications are equivalences; structure identifications are structure-preserving equivalences.
+**Remember:** Univalence turns paths between carriers into equivalences preserving their group operations.
 
 *True by definition.* MSC 03B38 (Type theory). arXiv math.LO, math.AT. Level 3: graduate.
 
@@ -2751,15 +2681,15 @@
 
 ### Univalent categories make fully faithful, essentially surjective functors equivalences without choice
 
-**Remember:** In a univalent category, isomorphic objects are equal, so equality sees no more than isomorphism.
+**Remember:** Univalence turns each object isomorphism into a unique corresponding identification.
 
-*Rules out counterexamples.* MSC 03B38 (Type theory), 18A05. arXiv math.LO, math.CT. Level 3: graduate.
+*True by definition.* MSC 03B38 (Type theory), 18A05. arXiv math.LO, math.CT. Level 3: graduate.
 
-**Definition.** In homotopy type theory, a precategory is a category whose objects form a type and whose maps between two objects form a set. A precategory is univalent (or saturated) if the canonical map from identifications a = b of objects to isomorphisms a ≅ b is an equivalence of types. So in a univalent category, two objects are equal in exactly as many ways as they are isomorphic.
+**Definition.** A precategory is univalent if, for every pair of objects, the canonical function from their equality type to their isomorphism type is an equivalence.
 
 **Problem.** A fully faithful and essentially surjective functor whose domain is a univalent category is an equivalence of categories, with no choice principle.
 
-**How the definition helps.** In a univalent domain, isomorphic objects are equal, so any two preimages of an object, with their isomorphisms, are equal. So the type of preimages is a proposition, and its mere existence gives an actual preimage, which defines the inverse functor. For strict categories the statement is equivalent to the axiom of choice, and for precategories it is false. Every precategory is weakly equivalent to a univalent one, its Rezk completion, so nothing is lost.
+**How the definition helps.** Full faithfulness lifts the comparison between any two preimages equipped with target isomorphisms to a unique source isomorphism (our own). Source univalence identifies the two equipped preimages, making their type a mere proposition (our own). Essential surjectivity now supplies centers, and full faithfulness lifts arrows uniquely to give the inverse functor (our own).
 
 **nLab:** [univalent category](https://ncatlab.org/nlab/show/univalent+category), [Rezk completion](https://ncatlab.org/nlab/show/Rezk+completion). It says: “the statement "a fully faithful and essentially surjective functor is an equivalence" for strict categories is equivalent to the axiom of choice, for precategories it is just false, and for univalent categories it is just true.”
 
@@ -2778,7 +2708,7 @@
 
 **Problem.** The S and K rules are confluent. Any two terms obtained from one term by rewriting can be rewritten further to a common term.
 
-**How the definition helps.** Removing binders makes the rules ordinary tree rewrites, with no binding to track. Each left-hand pattern uses each variable once, and the patterns overlap only where a variable can stand for any term (our own). A general rewrite theorem gives confluence under these conditions (our own). The work moves to bracket abstraction, which translates a lambda binder into combinators. The rules do not by themselves simulate arbitrary reductions inside lambda binders (our own).
+**How the definition helps.** The S and K rules form an orthogonal rewrite system (our own). Their left sides use each variable once and have no nontrivial overlap at nonvariable positions (our own). The confluence theorem for orthogonal term rewriting gives a common reduct (our own).
 
 **nLab:** [combinatory logic](https://ncatlab.org/nlab/show/combinatory+logic). It says: “Since this move circumvents the necessity of variable management, combinatory logic is important for applications in computer science and linguistics.”
 
@@ -2796,7 +2726,7 @@
 
 **Problem.** With de Bruijn indices, two terms are α-equivalent exactly when they are syntactically equal, and substitution needs no renaming of bound variables.
 
-**How the definition helps.** With indices, α-equivalence is the same as syntactic equality by definition. With named variables, every operation on terms must handle α-conversion (renaming of bound variables). The article calls this 'cumbersome, inefficient, and often error-prone'. De Bruijn introduced the indices for automatic manipulation of formulas. He applied them to the Church–Rosser theorem. What remains is index shifting during substitution, which is easy to get wrong in a different way (our own remark).
+**How the definition helps.** Each bound occurrence records the surrounding binder it references, independently of that binder’s name. With free variables fixed, identical indexed trees therefore express exactly α-equivalence (our own). Substitution adjusts indices under binders without renaming them (our own).
 
 **Wikipedia:** [De Bruijn index](https://en.wikipedia.org/wiki/De_Bruijn_index). It says: “Terms written using these indices are invariant with respect to α-conversion, so the check for α-equivalence is the same as that for syntactic equality.”
 
@@ -2810,11 +2740,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 03B40 (Combinatory logic and lambda calculus), 68N18. arXiv cs.LO, cs.PL. Level 3: graduate.
 
-**Definition.** A β-redex is a subterm of the form (λx.M)N, which one β-step replaces by M with N put in for x. Parallel reduction M ⇒ M′ contracts any set of β-redexes in a term at the same time, including the empty set. Its reflexive transitive closure is the same relation as ↠β, which is β-reduction in any number of steps.
+**Definition.** Parallel β-reduction relates each variable to itself and extends under abstraction and application by reducing immediate subterms in parallel. Whenever M ⇒ M′ and N ⇒ N′, it also relates (λx.M)N to M′\[x := N′\], using capture-avoiding substitution. Take the least relation satisfying these rules (our own).
 
 **Problem.** The Church–Rosser theorem says: if a λ-term reduces to N₁ and to N₂, then N₁ and N₂ reduce to a common term.
 
-**How the definition helps.** Parallel reduction has the diamond property and single-step reduction does not, so the proof can tile diamonds. The diamond property means: if M ⇒ N₁ and M ⇒ N₂, then N₁ ⇒ P and N₂ ⇒ P for some term P. Single-step β-reduction lacks it, because one step can copy a redex several times (our own explanation). For parallel reduction, a simple induction on terms proves it. The relation ↠β is the transitive closure of parallel reduction, so tiling diamonds gives the Church–Rosser property of ↠β. This proof is due to Tait and Martin-Löf. Church and Rosser's 1936 proof, by 'finiteness of developments', was for the λI-calculus.
+**How the definition helps.** The complete-development lemma gives every parallel reduct of M a parallel step to the same complete development (our own). This diamond property extends to the reflexive transitive closure. That closure is ordinary many-step β-reduction, so the two reducts admit a common reduct.
 
 **Wikipedia:** [Church–Rosser theorem](https://en.wikipedia.org/wiki/Church%E2%80%93Rosser_theorem). It says: “We introduce a new reduction →∥ whose reflexive transitive closure is ↠β and which satisfies the diamond property.”
 
@@ -2832,7 +2762,7 @@
 
 **Problem.** Strong normalization: in the simply typed λ-calculus, every reduction sequence of a well-typed term ends.
 
-**How the definition helps.** The predicate is strengthened at function types so that it is preserved by application, which is exactly where a direct induction on terms breaks. By induction on the type, reducible terms are strongly normalizing and reducibility is kept under reduction. Then every well-typed term is reducible, by induction on the term with reducible terms put in for its free variables (our own remark). The method extends to System F with Girard's reducibility candidates (our own).
+**How the definition helps.** The arrow clause makes application preserve reducibility (our own). Tait’s reducibility lemma proves by type induction that reducibility implies strong normalization (our own). His substitution lemma proves by typing induction that substituting reducible terms for variables gives a reducible term (our own). Variables are reducible, so the identity substitution gives the result (our own).
 
 **nLab:** [logical relation](https://ncatlab.org/nlab/show/logical+relation). It says: “Although there is no precise definition, typically a logical relation (or logical predicate) corresponds to a family of (sometimes unary) relations defined by induction on types”
 
@@ -2846,11 +2776,11 @@
 
 *Rules out counterexamples.* MSC 03B40 (Combinatory logic and lambda calculus), 68N18. arXiv cs.LO, cs.PL. Level 3: graduate.
 
-**Definition.** A λ-term is in head normal form if it has the shape λx₁…xₙ. y M₁ … Mₖ, with a variable y at the head. A term with no head normal form is called unsolvable, and is treated as meaningless. Barendregt's Böhm trees give each term a meaning, with ⊥ for the meaningless parts.
+**Definition.** A head normal form has shape λx₁…xₙ. y M₁ … Mₖ, with variable y and n, k ≥ 0. A lambda term is unsolvable if no sequence of β-reductions takes it to a head normal form (our own).
 
 **Problem.** Equating all unsolvable terms, those without a head normal form, gives a consistent theory of the untyped λ-calculus. Equating all terms without a normal form, as Church proposed, is inconsistent.
 
-**How the definition helps.** A term with a head normal form can give a result when applied to suitable arguments, so only terms without one are truly useless. The term X = λx.xΩ has no normal form, yet X(KI) reduces to I, while Ω(KI) only reduces to itself. Equating λx.xKΩ and λx.xSΩ, which both lack a normal form, and applying both to K would give K = S (our own; Barendregt proves the inconsistency). Böhm trees make the consistent theory precise.
+**How the definition helps.** Böhm-tree semantics assigns ⊥ to every unsolvable term while distinguishing distinct head variables, giving consistency (our own). Let Ω = (λx.xx)(λx.xx), and let K and S be the standard combinators (our own). Both λx.xKΩ and λx.xSΩ lack normal forms, but applying them to K yields K and S respectively (our own). Equating K and S collapses the calculus by Böhm’s separation theorem for distinct closed βη-normal forms (our own).
 
 **Wikipedia:** [Böhm tree](https://en.wikipedia.org/wiki/B%C3%B6hm_tree). It says: “We thus see that not all non-normalizing terms are equivalent.”
 
@@ -2864,11 +2794,11 @@
 
 *True by definition. Confidence: medium.* MSC 03B45 (Modal logic (including the logic of norms)), 03B42, 68Q85. arXiv math.LO, cs.LO. Level 3: graduate.
 
-**Definition.** A Kripke model has worlds, accessibility relations (one per agent in epistemic logic), and a valuation of the variables at each world. A bisimulation between two models relates worlds that agree on all variables. If related worlds w₁ and w₂ are given, each successor of w₁ must be related to some successor of w₂, and conversely. The formula ◇A, 'possibly A', is true at a world when A is true at some successor.
+**Definition.** A bisimulation is a relation between worlds of two Kripke models such that related worlds agree on every propositional variable. For each accessibility relation, every successor of either related world must have a related successor of the other.
 
 **Problem.** Two worlds related by a bisimulation satisfy the same modal formulas.
 
-**How the definition helps.** The two back-and-forth clauses of a bisimulation are exactly what the induction step for the possibility operator ◇ needs (our own). The variable clause handles atomic formulas, and the connectives pass through (our own). So the theorem is a direct induction on formulas. Isomorphism would be too strict (our own example). A world with one successor and a world with two identical successors satisfy the same formulas, but they are not isomorphic. The converse is the hard part (our own). By the Hennessy–Milner theorem, it holds when each world has finitely many successors, but it fails in general.
+**How the definition helps.** Induct on the formula (our own). Related worlds agree on variables, and Boolean connectives preserve agreement (our own). For possibility, match a witnessing successor in either direction and use the induction hypothesis there (our own).
 
 **Paper or page:** [Open Logic Project: Applied Modal Logic: Epistemic Logic](https://builds.openlogicproject.org/open-logic-complete.pdf). It says: “If ⟨M₁, w₁⟩ ↔︎ ⟨M₂, w₂⟩, then for every formula A, we have that M₁, w₁ ⊩ A iff M₂, w₂ ⊩ A.”
 
@@ -2882,11 +2812,11 @@
 
 *True by definition. Confidence: medium.* MSC 03B45 (Modal logic (including the logic of norms)), 03G30. arXiv math.LO, math.CT. Level 3: graduate.
 
-**Definition.** Let W be a type of possible worlds. For a proposition P that depends on w : W, necessity □P is 'for all w, P' and possibility ◇P is 'there is w with P', each read again as a proposition that ignores the world. These come from the adjoint triple ∃ ⊣ W\* ⊣ ∀ of base change along the map from W to the point.
+**Definition.** For propositions P indexed by worlds W, define □P at each world as ∀w ∈ W, P(w). Define ◇P at each world as ∃w ∈ W, P(w).
 
-**Problem.** □ and ◇ satisfy the laws of S5: □ preserves implication, and □P → P, □P → □□P, P → ◇P and ◇P → □◇P hold.
+**Problem.** These operators satisfy □(P → Q) → (□P → □Q), □P → P, □P → □□P, P → ◇P, and ◇P → □◇P.
 
-**How the definition helps.** The adjunctions make □ a comonad and ◇ a monad, and their structure maps are the S5 laws. The counit □P → P is axiom T, the unit P → ◇P is its dual, and the comultiplication □P → □□P is axiom 4. ◇P ignores the world, so it holds in all worlds once it holds, which is axiom 5. The nLab calls this obvious but rarely written down; the check of each axiom is our own reading.
+**How the definition helps.** Universal statements specialize to the current world, which also witnesses existential introduction (our own). Applying implication at every world gives the distribution law (our own). Both modal statements ignore the current world, so either one, once true, holds necessarily (our own).
 
 **nLab:** [necessity and possibility](https://ncatlab.org/nlab/show/necessity+and+possibility), [S5 modal logic](https://ncatlab.org/nlab/show/S5+modal+logic). It says: “it is just the interpretation of the universal quantifier "for all" ∀ and of the existential quantifier "there exists" ∃.”
 
@@ -2901,11 +2831,11 @@
 
 *True by definition.* MSC 03C07 (Basic properties of first-order languages and structures), 06E15. arXiv math.LO. Level 3: graduate.
 
-**Definition.** Take the formulas in variables x, and identify two formulas that the theory T proves equivalent. These classes form a Boolean algebra. A complete type is an ultrafilter on this algebra, a consistent set that contains each formula or its negation. A basic open set consists of the types that contain a fixed formula.
+**Definition.** Fix a tuple of variables x in a classical first-order theory T. A complete x-type is an ultrafilter on the Boolean algebra of x-formulas modulo equivalence provable in T. For each formula φ, the types containing its class form a basic open set.
 
 **Problem.** The space of complete types of a first-order theory is compact.
 
-**How the definition helps.** With this definition, the type space is the Stone space of a Boolean algebra, and every Stone space is compact. The nLab says that the type space inherits this topology by Stone duality. Compactness of a Stone space comes from the ultrafilter lemma (our own account). If a type were instead the set of formulas that a tuple satisfies in some model, compactness would need the compactness theorem of logic, and the two definitions agree by the completeness theorem (our own account).
+**How the definition helps.** These basic opens give exactly the Stone topology of the formula algebra. The Stone compactness theorem, proved using the ultrafilter lemma, therefore gives compactness of the type space (our own).
 
 **nLab:** [type (in model theory)](https://ncatlab.org/nlab/show/type+%28in+model+theory%29). It says: “By Stone duality, the set of all complete x-types of a theory T inherits a Stone topology”
 
@@ -2915,13 +2845,13 @@
 
 **Remember:** Name every element, then record every true sentence about the names.
 
-*Makes the theorem clean to state or prove.* MSC 03C07 (Basic properties of first-order languages and structures), 03C30. arXiv math.LO. Level 3: graduate.
+*True by definition.* MSC 03C07 (Basic properties of first-order languages and structures), 03C30. arXiv math.LO. Level 3: graduate.
 
 **Definition.** Let M be a structure. Add a new constant symbol for each element of M. The elementary diagram of M is the set of all sentences in this larger language that are true in M.
 
-**Problem.** A structure N for the larger language is a model of the elementary diagram of M exactly when the map sending each element of M to its named value is an elementary embedding, a map that preserves and reflects every first-order formula.
+**Problem.** A structure N in the expanded language models the elementary diagram of M exactly when the named values define an elementary embedding M → N. This embedding preserves and reflects every first-order formula in the original language.
 
-**How the definition helps.** The diagram lists every true formula about the named elements, so a model of it satisfies them by definition, and the sentences saying that distinct names are unequal make the map injective (our own unpacking). Without the diagram, an elementary embedding is a condition on every formula, which is not a first-order theory. With the diagram, the compactness theorem applies to elementary extensions (our own account). For example, adding a type over M builds an elementary extension that realizes it (our own example).
+**How the definition helps.** Each formula on a tuple becomes a sentence by substituting that tuple’s names (our own). The diagram records either that sentence or its negation, so satisfaction agrees in both structures (our own). Named inequalities give injectivity, and conversely an elementary embedding preserves every diagram sentence (our own).
 
 **nLab:** [diagram of a first-order structure](https://ncatlab.org/nlab/show/diagram+of+a+first-order+structure). It says: “The elementary diagram of M, written EDiag(M), is the set of all ℒ-sentences possibly using constants cₘ which are true in M”
 
@@ -2933,11 +2863,11 @@
 
 *True by definition. Confidence: medium.* MSC 03C10 (Quantifier elimination, model completeness, and related topics), 03C60, 14A10. arXiv math.LO, math.AC. Level 3: graduate.
 
-**Definition.** A model M of a theory T is existentially closed if this holds. An existential statement with parameters from M that is true in some extension of M modelling T is already true in M. Robinson called a theory model complete if every embedding between its models is elementary, that is, preserves all first-order truths.
+**Definition.** A model M of T is existentially closed if every existential formula with parameters in M true in a T-extension already holds in M.
 
-**Problem.** Hilbert's weak Nullstellensatz: polynomials over an algebraically closed field K that generate a proper ideal have a common zero in K.
+**Problem.** By the weak Nullstellensatz, polynomials generating a proper ideal in K\[x₁, …, xₙ\] over an algebraically closed field K have a common zero in Kⁿ.
 
-**How the definition helps.** Existential closedness turns 'has a zero in some larger field' into 'has a zero in K'. A proper ideal of K\[x₁, …, xₙ\] lies in a maximal ideal m. The field K\[x₁, …, xₙ\]/m extends K and contains a common zero. So existential closedness puts a zero in K (our own outline of Robinson's proof). The work moves into a different theorem: the existentially closed fields are exactly the algebraically closed ones. This follows from model completeness of algebraically closed fields, which comes from quantifier elimination. The page lists algebraically closed fields as the model completion of the theory of fields.
+**How the definition helps.** A maximal ideal containing the proper ideal gives a quotient field where the residue classes of the variables form a common zero (our own). Hilbert’s basis theorem gives finitely many ideal generators, so existence of a common zero is existential (our own). Algebraically closed fields are existentially closed among fields by quantifier elimination for algebraically closed fields and existence of algebraic closures (our own). Thus the generators, and hence the original polynomials, have a common zero in K (our own).
 
 **Wikipedia:** [Existentially closed model](https://en.wikipedia.org/wiki/Existentially_closed_model), [Model complete theory](https://en.wikipedia.org/wiki/Model_complete_theory). It says: “If A is a subfield of B, then A is existentially closed in B if and only if every system of polynomials over A that has a solution in B also has a solution in A.”
 
@@ -2951,11 +2881,11 @@
 
 *True by definition. Confidence: medium.* MSC 03C10 (Quantifier elimination, model completeness, and related topics), 03C35, 20B07. arXiv math.LO. Level 3: graduate.
 
-**Definition.** A permutation group on a countable set is oligomorphic if it has finitely many orbits on n-tuples for each n. Its canonical structure has one relation symbol for each such orbit. This replaces a smaller, hand-chosen set of basic relations.
+**Definition.** A permutation group on a countable set is oligomorphic if it has finitely many orbits on n-tuples for every natural number n. Its canonical structure names each orbit by a relation interpreted as exactly that orbit (our own).
 
 **Problem.** The theory of the canonical structure of an oligomorphic permutation group eliminates quantifiers. That is, every formula is equivalent to a formula without quantifiers.
 
-**How the definition helps.** Every permutation in the group preserves every orbit relation, so each formula defines a union of orbits, and there are only finitely many orbits on n-tuples (our own argument). So a finite disjunction of orbit names is the equivalent quantifier-free formula. The nLab states that this canonical structure is ω-categorical. With a smaller choice of basic relations, quantifier elimination needs work: for the rationals with only their order, one extends finite partial isomorphisms step by step (our own example).
+**How the definition helps.** Every group element preserves each named orbit, so each parameter-free formula defines a union of orbits (our own). Finiteness makes that union a finite disjunction of orbit predicates, using false for the empty union (our own). The equivalence holds in the canonical structure and therefore belongs to its theory (our own).
 
 **nLab:** [omega-categorical structure](https://ncatlab.org/nlab/show/omega-categorical+structure). It says: “The canonical (orbit) structure induced by an oligomorphic (finitely many orbits in each power) permutation group on a countable set is ω-categorical.”
 
@@ -2969,9 +2899,9 @@
 
 **Definition.** A first-order theory T is substructure complete if the following holds for every model M of T and every substructure A ⊆ M. Take T together with the quantifier-free diagram of A (the quantifier-free facts about the elements of A). This theory describes the models of T into which A embeds, and it must be complete.
 
-**Problem.** A first-order theory T has quantifier elimination, every formula being equivalent in T to a quantifier-free formula, exactly when T is substructure complete.
+**Problem.** Allow empty common substructures when the language has no constants, and allow truth and falsity as quantifier-free sentences. Then a first-order theory eliminates quantifiers exactly when it is substructure complete.
 
-**How the definition helps.** Substructure completeness is a statement about models, so you can check it with model-theoretic tools, while quantifier elimination is a syntactic statement about all formulas. In our own reading, this is how quantifier elimination is often proved in practice, for example for algebraically closed fields and dense linear orders. The proof of the equivalence uses the compactness theorem to turn the semantic condition into an explicit quantifier-free equivalent.
+**How the definition helps.** Quantifier elimination reduces each sentence with names to a quantifier-free fact decided by the diagram (our own). Conversely, tuples sharing a quantifier-free type generate isomorphic substructures, so substructure completeness gives them the same full type (our own). Compactness converts this dependence into a quantifier-free equivalent for each formula (our own).
 
 **nLab:** [substructure complete theory](https://ncatlab.org/nlab/show/substructure+complete+theory). It says: “One wants an equivalent and purely semantic characterization of quantifier elimination.”
 
@@ -2985,11 +2915,11 @@
 
 *True by definition.* MSC 03C20 (Ultraproducts and related constructions), 18A30. arXiv math.LO, math.CT. Level 3: graduate.
 
-**Definition.** An ultrafilter U is a family of index sets, closed under supersets and finite intersections, with exactly one of each set and its complement. For each set A in U, take the product of the structures over the indices in A. The ultraproduct is the filtered colimit of these products, a gluing in which two tuples become equal if they agree on some set in U. The usual definition takes the quotient of the full product by agreement on a set in U.
+**Definition.** For structures indexed by I and an ultrafilter U on I, form the product over each index set in U. Define the ultraproduct as the filtered colimit of these products under restriction to smaller members of U.
 
 **Problem.** An ultraproduct of structures for one first-order language carries a canonical structure for that language.
 
-**How the definition helps.** Under the colimit definition the structure comes for free, because filtered colimits of sets commute with finite limits, as the nLab says. Each symbol has finite arity, so finite products and subsets describe it, and each product over a set in U carries the structure coordinate by coordinate. With the quotient definition, one checks by hand that each operation respects agreement on a set in U (our own account). Matching the colimit with the quotient needs every factor to be nonempty (our own account).
+**How the definition helps.** Each product interprets the language coordinatewise, and restrictions preserve these interpretations (our own). Filtered colimits in sets preserve finite products, so every finite-arity operation descends. Each relation holds on a tuple when its representatives satisfy it on some member of U (our own).
 
 **nLab:** [ultraproduct](https://ncatlab.org/nlab/show/ultraproduct). It says: “since the taking of filtered colimits commutes with finite limits in Set, we get a canonically induced structure on the ultraproduct”
 
@@ -3001,11 +2931,11 @@
 
 *Rules out counterexamples.* MSC 03C20 (Ultraproducts and related constructions), 08C15. arXiv math.LO. Level 3: graduate.
 
-**Definition.** A universal Horn sentence says that for all x, if finitely many atomic formulas hold, then one atomic formula holds. The conclusion may also be false, which forbids the premises from holding together. A reduced product uses a proper filter, a family of index sets closed under supersets and finite intersections that does not contain the empty set. An atomic formula holds in the reduced product when the set of coordinates where it holds lies in the filter.
+**Definition.** A universal Horn sentence universally quantifies an implication from a finite conjunction of atomic formulas to one atomic formula or falsity. In a reduced product modulo a proper filter, an atomic formula holds when its truth set belongs to the filter (our own).
 
 **Problem.** A universal Horn sentence that is true in every factor is true in their reduced product.
 
-**How the definition helps.** The premises hold on a common set in the filter, so the single conclusion holds there too; for a false conclusion, that set would be empty, which a proper filter excludes (our own argument). Two alternative conclusions are not preserved (our own counterexample). Take one one-element structure where only P holds and another where only Q holds: ∀x (P(x) ∨ Q(x)) holds in both but fails in their direct product. Wikipedia states the deep converse, that Horn sentences are exactly the sentences preserved under reduced products.
+**How the definition helps.** Intersect the finitely many premise truth sets to obtain a filter member where all premises hold (our own). The conclusion holds throughout this member, and falsity would force it to be empty, contradicting properness (our own). With two alternative conclusions P and Q, take singleton factors satisfying only P and only Q respectively (our own). Both satisfy ∀x (P(x) ∨ Q(x)), but their direct product satisfies neither disjunct at its sole point (our own).
 
 **Wikipedia:** [Horn clause](https://en.wikipedia.org/wiki/Horn_clause). It says: “From the model-theoretical point of view, Horn sentences are important since they are exactly (up to logical equivalence) those sentences preserved under reduced products”
 
@@ -3019,11 +2949,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 03C20 (Ultraproducts and related constructions). arXiv math.LO. Level 3: graduate.
 
-**Definition.** A filter on a set X is a collection of subsets of X that does not contain the empty set and is closed under finite intersections and supersets. An ultrafilter is a filter such that, for every subset A, either A or its complement belongs to it. An ultraproduct of a family of structures identifies two families of elements when they agree on a set in the ultrafilter.
+**Definition.** A proper filter on X contains X, excludes ∅ and is closed under finite intersections and supersets. It is an ultrafilter if it contains either A or its complement for every subset A of X. The ultraproduct identifies tuples whose agreement set belongs to the ultrafilter.
 
-**Problem.** Łoś's theorem says: a first-order formula holds in an ultraproduct exactly when it holds in a 'large' set of factors, that is, a set in the ultrafilter. In particular, an ultrapower of a model of a theory T is again a model of T. (An ultrapower is an ultraproduct of copies of one structure.)
+**Problem.** A first-order formula holds of an ultraproduct tuple exactly when its coordinate truth set belongs to the ultrafilter. In particular, an ultrapower of a model of T is again a model of T.
 
-**How the definition helps.** Only the disjunction step needs the ultrafilter condition; the other steps work for any proper filter. For any proper filter, the reduced product preserves finite limits, because filtered colimits commute with finite limits. Disjunction needs the ultrafilter, because a product of disjoint sums must collapse to one summand on a large set. The nLab proof shows that the ultraproduct functor is a pretopos morphism, and only this disjoint-sum step uses maximality.
+**How the definition helps.** An ultrafilter contains a truth set or its complement, making negation commute with the truth-set test. A proper filter on two indices containing only their union fails this test on either singleton (our own). Induct on formulas: atoms use the product interpretation, conjunction uses intersection, and existential quantifiers use coordinatewise choices of witnesses (our own). For constant factors, every sentence of T holds everywhere (our own).
 
 **nLab:** [ultrapower](https://ncatlab.org/nlab/show/ultrapower), [Łoś ultraproduct theorem](https://ncatlab.org/nlab/show/%C5%81o%C5%9B+ultraproduct+theorem). It says: “Here one needs all of the ultrafilter conditions, in particular one needs condition 4 in order to accommodate satisfaction of formulas involving instances of negation.”
 
@@ -3037,11 +2967,11 @@
 
 *True by definition.* MSC 03C30 (Other model constructions), 03C07. arXiv math.LO. Level 3: graduate.
 
-**Definition.** For each formula φ(y, x₁, …, xₙ), a Skolem function fᵩ picks a witness y for given x₁, …, xₙ. It does so whenever a witness exists in the model M. The Skolem hull of a subset A of M is the smallest set containing A and closed under all these functions.
+**Definition.** For each formula φ(y, x), choose a function on parameter tuples x returning a witness y whenever one exists in M, and any element otherwise. The Skolem hull of A is the least subset containing A and closed under these functions, including the nullary ones (our own).
 
 **Problem.** The downward Löwenheim–Skolem theorem: every structure M has an elementary substructure containing a given set A, of size at most \|A\| + \|σ\| + ℵ₀. Here σ is the language. An elementary substructure is a substructure with the same first-order truths about its elements.
 
-**How the definition helps.** The hull contains a witness for every existential statement with parameters in it, so the Tarski–Vaught test makes it elementary. Counting the functions bounds its size. Löwenheim's 1915 proof is usually seen as faulty. Skolem gave a correct proof in 1920 with what became Skolem normal form. The page notes that the choice of Skolem functions needs the axiom of choice. Skolem showed in 1922 how to get a weaker version without choice.
+**How the definition helps.** Closure supplies every existential witness required by the Tarski–Vaught test and includes the original operations through their defining equations (our own). There are at most \|σ\| + ℵ₀ witness functions, each of finite arity (our own). Iterating closure for countably many stages therefore gives the stated bound (our own).
 
 **Wikipedia:** [Löwenheim–Skolem theorem](https://en.wikipedia.org/wiki/L%C3%B6wenheim%E2%80%93Skolem_theorem), [Skolem normal form](https://en.wikipedia.org/wiki/Skolem_normal_form). It says: “The trick used in this proof is essentially due to Skolem, who introduced function symbols for the Skolem functions fᵩ into the language.”
 
@@ -3059,7 +2989,7 @@
 
 **Problem.** Morley's theorem says: a countable first-order theory that is categorical in one uncountable cardinal is categorical in every uncountable cardinal.
 
-**How the definition helps.** Veblen's notion is empty for first-order theories with infinite models, so the size must be fixed before uniqueness can mean anything. With κ-categoricity, Łoś could ask his question and Morley could answer it. For example, algebraically closed fields of characteristic 0 are categorical in every uncountable size but not in size ℵ₀ (our own example). The proof of Morley's theorem remains deep. It created stability theory, with Morley rank and totally transcendental theories.
+**How the definition helps.** Fixing the cardinal lets uniqueness at one size and uniqueness at another be compared (our own). Upward Löwenheim–Skolem rules out uniqueness across all sizes for a theory with an infinite model. Morley’s categoricity theorem supplies the transfer between uncountable sizes (our own).
 
 **Wikipedia:** [Categorical theory](https://en.wikipedia.org/wiki/Categorical_theory). It says: “By the upward Löwenheim–Skolem theorem, if a first-order theory has a model of infinite cardinality κ, then it has a model of any cardinality κ' &gt; κ. So it cannot be categorical.”
 
@@ -3078,7 +3008,7 @@
 
 **Problem.** Łoś–Vaught test: a satisfiable theory with no finite models that is κ-categorical for some infinite κ at least the size of its language is complete. So the theories of dense linear orders without endpoints and of algebraically closed fields of a fixed characteristic are complete.
 
-**How the definition helps.** Without finite models, every model can be moved to size κ while keeping its truths, and there it is unique. Finite models cannot be moved to a larger size, so they could disagree with the infinite ones. Counterexample (our own): the empty theory in the language of equality is categorical in every infinite size, but it does not decide whether there are exactly two elements. The work moves into checking categoricity for each theory.
+**How the definition helps.** Löwenheim–Skolem gives every infinite model an elementarily equivalent model of size κ (our own). Categoricity there forces agreement on all sentences, and completeness of first-order logic gives the result (our own). Finite models escape this argument. Pure equality without axioms is categorical in every infinite size but does not decide whether exactly two elements exist (our own).
 
 **Wikipedia:** [Łoś–Vaught test](https://en.wikipedia.org/wiki/%C5%81o%C5%9B%E2%80%93Vaught_test), [Categorical theory](https://en.wikipedia.org/wiki/Categorical_theory). It says: “Therefore, the theory is complete as all models are equivalent. The assumption that the theory have no finite models is necessary.”
 
@@ -3093,11 +3023,11 @@
 
 *True by definition. Confidence: medium.* MSC 03C40 (Interpolation, preservation, definability), 03B45. arXiv cs.LO, math.LO. Level 3: graduate.
 
-**Definition.** A logic has Craig interpolation if, whenever φ entails ψ, some formula θ in their shared symbols fits between them. That is, φ entails θ, and θ entails ψ. It has Beth definability if every symbol p that a formula φ fixes implicitly also has an explicit definition without p. Fixing p implicitly means that two models of φ that agree on all other symbols also agree on p.
+**Definition.** Craig interpolation means every entailment φ ⊨ ψ factors through a formula θ using only their shared nonlogical symbols. Thus φ ⊨ θ and θ ⊨ ψ. A formula implicitly fixes p if any two satisfying interpretations agreeing on all other symbols agree on p (our own).
 
-**Problem.** Every logic with Craig interpolation has Beth definability: each symbol that a formula fixes implicitly has an explicit definition without that symbol.
+**Problem.** For propositional logics with classical Boolean connectives and uniform renaming, Craig interpolation gives Beth definability. Every propositional symbol implicitly fixed by a formula has an explicit definition using its other symbols.
 
-**How the definition helps.** With interpolation as the property, Beth definability follows in a few lines (our own sketch). Copy φ(p) as φ(q) with a new symbol q, so that φ(p) and φ(q) together entail p → q. Put φ(p) and p on one side and φ(q) → q on the other, and an interpolant θ uses neither p nor q, so it is the explicit definition. The work then moves into interpolation itself, which for propositional dynamic logic needed a long tableau proof (our own remark).
+**How the definition helps.** Rename p to a fresh q in φ to obtain φ(q) (our own). Implicit determination gives φ(p) ∧ p ⊨ φ(q) → q (our own). An interpolant θ mentions neither p nor q (our own). Renaming q back to p gives φ(p) ⊨ p ↔︎ θ, the explicit definition (our own).
 
 **Paper or page:** [Interpolation for the two-way modal mu-calculus](https://arxiv.org/abs/2505.12899v3), [Propositional Dynamic Logic has Craig Interpolation: a tableau-based proof](https://arxiv.org/abs/2503.13276v1). It says: “The two-way modal μ-calculus has the Craig interpolation property and, as a corollary, the Beth definability property.”
 
@@ -3112,11 +3042,11 @@
 
 *True by definition.* MSC 03C40 (Interpolation, preservation, definability), 03C07. arXiv math.LO. Level 3: graduate.
 
-**Definition.** A set of elements of a model is definably closed if it is closed under functions definable without parameters. A function is definable if a formula defines its graph, and a function with no inputs is a definable constant. The definable closure of A is the smallest definably closed set that contains A. Another definition takes the elements that are the unique solution of a formula with parameters from A.
+**Definition.** A subset of a model is definably closed if it contains every unique solution of a formula with parameters from that subset. The definable closure of A is the intersection of all definably closed subsets containing A (our own).
 
 **Problem.** The definable closure of the definable closure of A equals the definable closure of A.
 
-**How the definition helps.** The smallest closed set containing an already closed set is that set itself, so idempotence holds by definition (our own argument). A smallest one exists because an intersection of definably closed sets is definably closed. With the unique-solution definition, idempotence needs a proof that joins the defining formulas and quantifies over the intermediate elements (our own account). The same work appears when one shows that the two definitions agree.
+**How the definition helps.** Intersections preserve this closure condition because all the defining parameters belong to every set in the intersection (our own). Thus the definable closure is already closed, and taking its closure again returns the same set (our own).
 
 **nLab:** [definable set](https://ncatlab.org/nlab/show/definable+set). It says: “there is the minimal definably closed subset B such that A ⊂ B ⊂ M, the definable closure B = dcl(A) of A”
 
@@ -3124,15 +3054,15 @@
 
 ### Ehrenfeucht–Fraïssé games turn inexpressibility into a winning strategy
 
-**Remember:** If Duplicator survives n rounds, no n-quantifier sentence tells the structures apart.
+**Remember:** Matching moves for n rounds preserves formulas of quantifier depth at most n.
 
 *Makes the theorem clean to state or prove.* MSC 03C40 (Interpolation, preservation, definability), 03C13. arXiv math.LO, cs.LO. Level 3: graduate.
 
 **Definition.** In the n-round game on structures A and B, Spoiler picks an element in either structure each round, and Duplicator answers in the other. Duplicator wins if the chosen elements satisfy the same atomic formulas in both structures.
 
-**Problem.** If Duplicator wins the n-round game on A and B, then A and B satisfy the same sentences with at most n nested quantifiers. So 'the finite linear order has even length' is not first-order definable.
+**Problem.** If Duplicator has a winning strategy for n rounds, the structures agree on every sentence of quantifier depth at most n. Consequently, no first-order sentence defines even length among finite linear orders.
 
-**How the definition helps.** A winning strategy turns inexpressibility into a combinatorial game. Our own example: linear orders of lengths at least 2ⁿ cannot be told apart in n rounds, so parity of length is not definable. The converse needs a finite language. Finding the winning strategy is the remaining work.
+**How the definition helps.** The Ehrenfeucht–Fraïssé game theorem matches each nested quantifier with one move (our own). With r rounds left, corresponding gaps have equal lengths or both have length at least 2ʳ − 1 (our own). Duplicator preserves this condition by matching short distances to the nearest end (our own). Thus even and odd lengths at least 2ⁿ agree through depth n (our own).
 
 **Wikipedia:** [Ehrenfeucht–Fraïssé game](https://en.wikipedia.org/wiki/Ehrenfeucht%E2%80%93Fra%C3%AFss%C3%A9_game). It says: “It is easy to prove that if Duplicator wins this game for all finite n, that is, 𝔄 ∼ 𝔅, then 𝔄 and 𝔅 are elementarily equivalent.”
 
@@ -3146,11 +3076,11 @@
 
 *True by definition. Confidence: medium.* MSC 03C45 (Classification theory, stability, and related concepts in model theory), 03C40. arXiv math.LO. Level 3: graduate.
 
-**Definition.** A first-order theory T has elimination of imaginaries if a tuple can code each definable set X. That is, there are a formula ψ(x, y) and a tuple c such that X is the set of m with ψ(m, c), and c is the only parameter that gives X. Shelah's theory T<sup>eq</sup> adds a new sort X/E and a projection from X to X/E for every definable equivalence relation E on a definable set X. A sort is a separate kind of element in a many-sorted language.
+**Definition.** For every parameter-free definable equivalence relation E on a definable domain of real tuples, Tᵉᵠ adds a quotient sort and its projection. Its elements are exactly the E-classes (our own).
 
 **Problem.** T<sup>eq</sup> eliminates imaginaries. It is a conservative extension of T, and it is universal among the theories that interpret T and eliminate imaginaries.
 
-**How the definition helps.** T<sup>eq</sup> contains every quotient by a definable equivalence relation by construction, so it eliminates imaginaries automatically. In a general theory, such quotients are not definable sets. Poizat showed that elimination of imaginaries gives a Galois theory in terms of closed subgroups of a profinite automorphism group. Makkai identified T<sup>eq</sup> with the pretopos completion of the syntactic category of T.
+**How the definition helps.** Pull a definable equivalence relation on imaginary tuples back along their projections to real representatives (our own). The resulting real quotient already has a sort, so its elements code the new classes (our own). Every T-model expands canonically by actual quotients, giving conservativity (our own). Any interpretation in a theory eliminating imaginaries extends by those quotient codes, uniquely up to definable isomorphism (our own).
 
 **nLab:** [elimination of imaginaries](https://ncatlab.org/nlab/show/elimination+of+imaginaries). It says: “Shelah found he needed to eliminate imaginaries in a universal way, so he found a way to conservatively interpret each theory T in a theory Tᵉᵠ which eliminated all the imaginaries of T.”
 
@@ -3164,11 +3094,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 03C45 (Classification theory, stability, and related concepts in model theory), 03C35. arXiv math.LO. Level 3: graduate.
 
-**Definition.** A structure is minimal if it is infinite and every subset of it that is definable with parameters is finite or cofinite. A definable set is strongly minimal if this stays true in every elementary extension, a larger structure with the same first-order truths about old elements.
+**Definition.** A definable set D is strongly minimal if it stays infinite in every elementary extension. There, every parameter-definable subset of D must be finite or cofinite in D. A complete theory is strongly minimal when its entire home sort has this property (our own).
 
 **Problem.** A model of a strongly minimal theory is determined up to isomorphism by one cardinal, its dimension. So such a theory in a countable language is categorical in every uncountable cardinality.
 
-**How the definition helps.** Because the condition survives extensions, algebraic closure gives a well-behaved dimension, like a basis of a vector space. The excluded case is a minimal structure whose elementary extensions are not minimal. Our own example: (ℕ, &lt;) is minimal. But an elementary extension has an infinite element a, and the elements below a form an infinite, coinfinite set. The page notes this cannot happen for o-minimality, where the whole theory is automatically o-minimal. The proof that dimension determines the model is Baldwin and Lachlan's work.
+**How the definition helps.** Strong minimality gives algebraic closure exchange and a unique nonalgebraic one-variable type over each parameter set (our own). The dimension theorem for strongly minimal theories then classifies models by the cardinality of an algebraic-closure basis (our own). In a countable language, uncountable models have dimension equal to their cardinality (our own). The minimal order (ℕ, &lt;) fails strong minimality: a nonstandard element cuts its extension into two infinite definable parts (our own).
 
 **Wikipedia:** [Strongly minimal theory](https://en.wikipedia.org/wiki/Strongly_minimal_theory), [O-minimal theory](https://en.wikipedia.org/wiki/O-minimal_theory). It says: “It is called a strongly minimal set if this is true even in all elementary extensions.”
 
@@ -3180,13 +3110,13 @@
 
 **Remember:** The monster realizes every small situation and extends every small symmetry.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 03C50 (Models with special properties (saturated, rigid, etc.)). arXiv math.LO. Level 3: graduate.
+*True by definition. Confidence: medium.* MSC 03C50 (Models with special properties (saturated, rigid, etc.)). arXiv math.LO. Level 3: graduate.
 
-**Definition.** Let T be a complete first-order theory. A monster model of T is a model 𝕄 of a large cardinality κ with two properties. It is κ-saturated: it realizes every type over a set of parameters of size less than κ. It is κ-homogeneous: every elementary map between small subsets extends to an automorphism of 𝕄.
+**Definition.** Fix a complete theory T and a model of large cardinality κ, calling sets of size below κ small. A monster model realizes every complete one-variable type over small parameter sets and extends every elementary map between small subsets to an automorphism.
 
-**Problem.** In a monster model, two tuples have the same type over a small set A exactly when some automorphism that fixes A moves one tuple to the other. Every small model of T embeds elementarily into it.
+**Problem.** Two small tuples in a monster model have the same type over a small set A exactly when an automorphism fixing A pointwise matches them. Every small model of T embeds elementarily into the monster.
 
-**How the definition helps.** Homogeneity gives the automorphism, and saturation lets one work inside one fixed structure, so a notion from syntax becomes a notion from geometry. Saturation also gives that a small family of definable sets with the finite intersection property has a nonempty intersection. The cost is an assumption about size, often an inaccessible cardinal, or a model that is a proper class.
+**How the definition helps.** Equality of types gives an elementary map on the tuple entries fixing A, which homogeneity extends to an automorphism (our own). Conversely, such an automorphism preserves all formulas over A (our own). Enumerate a small model and extend an elementary embedding one element at a time by realizing each next type using saturation (our own).
 
 **nLab:** [monster model](https://ncatlab.org/nlab/show/monster+model), [type (in model theory)](https://ncatlab.org/nlab/show/type+%28in+model+theory%29). It says: “The most important aspects of monster models are saturation and homogeneity: all types over parameter sets of a certain size are realized, and all elementary embeddings of subsets can be extended to automorphisms.”
 
@@ -3204,7 +3134,7 @@
 
 **Problem.** Any two saturated models of a complete theory with the same cardinality are isomorphic. Without the limit on the size of parameter sets, no infinite model would be saturated.
 
-**How the definition helps.** Small parameter sets make saturation possible, and then a back-and-forth argument gives uniqueness (our own summary of Morley and Vaught). The excluded counterexample is the type {x ≠ m : m ∈ M}, which is consistent by compactness but never realized in M. Existence of saturated models still needs set-theoretic assumptions or stability.
+**How the definition helps.** Small parameter sets let saturation extend a partial elementary bijection by one element in either direction (our own). Alternately include the next element from each model, taking unions at limit stages, to obtain the isomorphism (our own). Over an entire infinite model M, the inequalities x ≠ m for all m ∈ M are finitely satisfiable but unrealized (our own). Compactness extends them to a complete type, ruling out saturation over all of M (our own).
 
 **Wikipedia:** [Saturated model](https://en.wikipedia.org/wiki/Saturated_model). It says: “The reason we only require parameter sets that are strictly smaller than the model is trivial: without this restriction, no infinite model is saturated.”
 
@@ -3220,31 +3150,13 @@
 
 **Definition.** A type p is isolated if one formula consistent with the theory implies every formula in p. A model omits p if no tuple in it satisfies all formulas of p.
 
-**Problem.** In a countable language, a type that is not isolated is omitted by some countable model. This is used to build prime and atomic models.
+**Problem.** For a consistent theory in a countable language, any nonisolated type in finitely many variables is omitted by some at most countable model. This is used to build prime and atomic models.
 
-**How the definition helps.** In a complete theory, every model realizes an isolated type, so non-isolated is exactly the right condition (the page). The countable language lets a Henkin construction handle each formula in turn. The counterexample with an uncountable language is our own, a standard textbook exercise. Take ℵ₁ constants cᵢ, countably many constants dₙ, and the theory that says only that the cᵢ are distinct. The type {x ≠ dₙ : n ∈ ℕ} is not isolated, since a formula names only finitely many dₙ. Yet every model realizes it, because some cᵢ is not any dₙ. The proof itself is a careful Henkin construction.
+**How the definition helps.** In a complete theory, an isolating formula forces realization in every model, so the omission argument must exclude isolated types (our own). Without an isolating formula, each finite Henkin condition can be extended to make a given named tuple miss some formula of the type (our own). Countability lets the omitting types construction impose this requirement on every named tuple (our own).
 
 **Wikipedia:** [Type (model theory)](https://en.wikipedia.org/wiki/Type_%28model_theory%29). It says: “The omitting types theorem says that conversely if p is not isolated then there is a countable model omitting p (provided that the language is countable).”
 
 **Sources:** none listed. No primary source with a working link was found.
-
-### O-minimal structures give a topology without pathological sets
-
-**Remember:** In an o-minimal structure, every definable subset of the line is as simple as possible.
-
-*Rules out counterexamples. Confidence: low.* MSC 03C64 (Model theory of ordered structures; o-minimality). arXiv math.LO. Level 3: graduate.
-
-**Definition.** Take a structure on a dense linear order (R, &lt;) without endpoints. A set is definable if a first-order formula in the language of the structure, with parameters, describes it. The structure is o-minimal if its definable subsets of R are exactly the finite unions of points and open intervals; the intervals may be unbounded. The model example is the semialgebraic sets over ℝ, which are the sets described by polynomial equations and inequalities.
-
-**Problem.** In an o-minimal structure, every definable subset of Rⁿ is a finite union of simple pieces called cells. So definable sets have no pathologies such as space-filling curves, as Grothendieck's 'tame topology' asked.
-
-**How the definition helps.** The condition restricts only subsets of the line, but the nLab notes that 'quite a lot' can then be said about definable sets in all dimensions. People have proposed o-minimality as an axiomatic approach to Grothendieck's tame topology, which aims to exclude space-filling curves and the Banach–Tarski paradox. The cell decomposition theorem comes from the literature, not the nLab, and it is the real content and hard work. O-minimality also has applications in number theory through the Pila–Wilkie theorem.
-
-**nLab:** [o-minimal structure](https://ncatlab.org/nlab/show/o-minimal+structure), [tame topology](https://ncatlab.org/nlab/show/tame+topology). It says: “avoids 'pathological' objects like space-filling curves or counter-intuitive results like the Banach-Tarski paradox that occur in the traditional approach.”
-
-**Sources:**
-
-- [Lou van den Dries, Tame Topology and O-minimal Structures, London Mathematical Society Lecture Note Series 248, Cambridge University Press (1998)](https://doi.org/10.1017/CBO9780511525919)
 
 ### Requiring interval endpoints in the structure gives o-minimal sets their suprema
 
@@ -3252,9 +3164,9 @@
 
 *Rules out counterexamples.* MSC 03C64 (Model theory of ordered structures; o-minimality). arXiv math.LO. Level 3: graduate.
 
-**Definition.** An ordered structure is o-minimal if every definable subset of the line is a finite union of points and open intervals. The endpoints of the intervals lie in the structure or are ±∞. A weaker notion, weak o-minimality, allows finite unions of convex sets instead.
+**Definition.** An expansion of a dense linear order without endpoints is o-minimal if every parameter-definable unary set is a finite union of points and open intervals. Interval endpoints must belong to the order or be ±∞. Weak o-minimality allows arbitrary convex pieces instead.
 
-**Problem.** In an o-minimal structure, every nonempty definable set that is bounded above has a least upper bound.
+**Problem.** In an o-minimal structure, every nonempty definable subset of the underlying line that is bounded above has a least upper bound.
 
 **How the definition helps.** Because the endpoints lie in the structure, the supremum is the largest right endpoint or the largest isolated point (our own argument). A convex set need not have its endpoints in the structure, so the weaker definition loses this. Wikipedia's example is the real algebraic numbers with a new predicate for the numbers between 0 and π, which is weakly o-minimal but not o-minimal. That predicate defines a bounded set with no supremum in the structure, because π is not algebraic (our own remark).
 
@@ -3270,11 +3182,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 03C85 (Second- and higher-order model theory), 03B16. arXiv math.LO. Level 3: graduate.
 
-**Definition.** In standard semantics, second-order variables range over all subsets of the domain. In Henkin semantics, each model also gives its own collection of subsets, and set quantifiers range only over that collection. Often the collection is also required to satisfy the comprehension axioms.
+**Definition.** A Henkin model specifies a domain and, for each relation arity, a collection of relations on that domain. Relation quantifiers range over the specified collections, which satisfy the comprehension axioms of the chosen calculus (our own).
 
 **Problem.** With Henkin semantics, the standard first-order deductive system is sound, complete and effective for second-order logic. With standard semantics no such system exists, by Gödel's incompleteness theorem.
 
-**How the definition helps.** Henkin semantics is really many-sorted first-order logic, so first-order completeness applies. The price is that compactness and Löwenheim–Skolem come back too. So second-order Peano arithmetic is no longer categorical. Nonstandard sets of numbers appear, and the page says this cannot be fixed with more axioms.
+**How the definition helps.** Treat each relation collection as a separate first-order sort with an application relation (our own). First-order soundness and completeness apply to the resulting effective axiom system. Full semantics requires every relation and makes second-order arithmetic categorical, so effective completeness would enumerate all true arithmetic sentences (our own).
 
 **Wikipedia:** [Second-order logic](https://en.wikipedia.org/wiki/Second-order_logic). It says: “Henkin proved that the standard deductive system for first-order logic is sound, complete, and effective for second-order logic with Henkin semantics”
 
@@ -3288,11 +3200,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 03C95 (Abstract model theory). arXiv math.LO. Level 3: graduate.
 
-**Definition.** An abstract logic gives a class of sentences and a satisfaction relation between structures and sentences. It must meet closure conditions, such as having classical negation. This lets one compare first-order logic with its extensions.
+**Definition.** In the relational form of Lindström’s theorem, an abstract logic assigns sentences and isomorphism-invariant satisfaction to relational vocabularies. Each sentence depends on finitely many symbols, and satisfaction respects renaming and vocabulary expansion (our own). A regular logic here extends first-order logic and admits Boolean operations, existential quantification and relativization to unary predicates (our own).
 
-**Problem.** First-order logic is the strongest logic that has both the countable compactness property and the downward Löwenheim–Skolem property. Countable compactness means that a countable set of sentences has a model if every finite subset has one. The downward Löwenheim–Skolem property means that a sentence with an infinite model also has a countable model.
+**Problem.** Among these regular abstract logics, first-order logic is strongest with countable compactness and the downward Löwenheim–Skolem property. Countable compactness gives a model to each countable finitely satisfiable theory. Downward Löwenheim–Skolem gives a countable model to each sentence with an infinite model.
 
-**How the definition helps.** With logics as mathematical objects, 'the strongest logic with these properties' gets a precise meaning. Before this notion existed, the phrase had no precise meaning (our own remark). Lindström then proved a characterisation of first-order logic. Any abstract logic stronger than first-order logic loses compactness or the Löwenheim–Skolem property. The result started abstract model theory. Versions for modal logics followed later.
+**How the definition helps.** Comparing logics by definable classes of structures makes “strongest” precise (our own). Lindström’s theorem says every sentence of a qualifying extension already defines a first-order definable class (our own).
 
 **Wikipedia:** [Lindström's theorem](https://en.wikipedia.org/wiki/Lindstr%C3%B6m%27s_theorem). It says: “Lindström's theorem is perhaps the best known result of what later became known as abstract model theory, the basic notion of which is an abstract logic”
 
@@ -3310,7 +3222,7 @@
 
 **Problem.** Kleene's normal form theorem: every computable function f equals U(μx T(e, n, x)) for some index e. Here μx means the least x with the property.
 
-**How the definition helps.** Checking a given history is a bounded, step-by-step test, so T is primitive recursive and only the search for x needs unbounded μ. The theorem then follows by definition once T is built. The same T gives the halting set K = {e : ∃x T(e, 0, x)}. The page says K is Σ₁-complete: every computably enumerable set reduces to it. The work moves into coding Turing machine configurations as numbers.
+**How the definition helps.** Under standard computation coding, checking each step of a proposed finite halting history and reading its output are primitive recursive (our own). Choose an index computing f and search for the least valid history code (our own). Its output is f(n), and the search diverges exactly when the computation does (our own).
 
 **Wikipedia:** [Kleene's T predicate](https://en.wikipedia.org/wiki/Kleene%27s_T_predicate). It says: “By the theorem, the definition of every general recursive function f can be rewritten into a normal form such that the μ operator is used only once”
 
@@ -3328,7 +3240,7 @@
 
 **Problem.** Gödel's first incompleteness theorem: no sound, effectively axiomatized theory proves all true sentences of arithmetic.
 
-**How the definition helps.** The theorems of a sound effective theory form a computably enumerable set of truths, so productivity hands us a truth that is missing. The work moves into showing that the set of true sentences is productive, which the page states. It follows because the complement of the halting set reduces to it (our own). Myhill proved that productive sets are exactly those to which this complement reduces.
+**How the definition helps.** The productivity theorem for arithmetic truth gives a missing truth for every effective enumeration of truths (our own). Enumerate the arithmetic theorems of the given effective theory (our own). Soundness puts them all among the truths, so productivity supplies a true sentence outside the enumeration (our own).
 
 **Wikipedia:** [Creative and productive sets](https://en.wikipedia.org/wiki/Creative_and_productive_sets). It says: “whenever W is a recursively enumerable set of true sentences, there is at least one true sentence that is not in W.”
 
@@ -3347,7 +3259,7 @@
 
 **Problem.** Every simple set is computably enumerable but not computable.
 
-**How the definition helps.** If S were computable, its complement would be an infinite computably enumerable subset of itself, which the definition forbids. Post introduced simple sets for Post's problem, which asks for a computably enumerable set that is neither computable nor as hard as the halting problem. He showed that simple sets are not many-one complete, but some simple sets are Turing complete. So the hard part remained, and Friedberg and Muchnik needed the priority method to solve it.
+**How the definition helps.** Computable enumerability is part of simplicity. If S were computable, its infinite complement would itself be computably enumerable, contrary to the defining condition (our own).
 
 **Wikipedia:** [Simple set](https://en.wikipedia.org/wiki/Simple_set). It says: “He succeeded in the first part (which is obvious by definition), but for the other part, he managed only to prove nonexistence of a many-one reduction.”
 
@@ -3361,11 +3273,11 @@
 
 *Rules out counterexamples.* MSC 03D32 (Algorithmic randomness and dimension). arXiv math.LO. Level 3: graduate.
 
-**Definition.** An infinite binary sequence is Martin-Löf random if it lies in no effective null set. An effective null set is a set of measure zero that an algorithm can cover by open sets of smaller and smaller measure. Informally, a random sequence passes every Turing-computable test of randomness.
+**Definition.** For fair-coin measure, a Martin-Löf test is a uniformly computably enumerable sequence of open sets Uₙ with measure at most 2⁻ⁿ. A binary sequence is Martin-Löf random if, for every such test, it lies outside some Uₙ (our own).
 
-**Problem.** Almost every infinite binary sequence is Martin-Löf random. Every random sequence obeys each probability-one law whose exceptions form an effective null set, such as the law of large numbers and the law of the iterated logarithm.
+**Problem.** Almost every infinite binary sequence is Martin-Löf random. Every random sequence obeys every probability-one law with effectively null exceptions, including the large-number and iterated-logarithm laws for fair coin tosses.
 
-**How the definition helps.** Martin-Löf allowed only tests that an algorithm can describe, so there are few enough tests for random sequences to exist, and enough for them to obey the usual laws. Von Mises' collectives are too weak: Ville found one whose running frequency of ones stays at or below 1/2, which violates the law of the iterated logarithm. Asking for every probability-one law fails the other way, because each sequence y gives the law 'x ≠ y'. That this captures the intuitive idea of randomness is the Martin-Löf–Chaitin thesis, not a theorem.
+**How the definition helps.** Each test intersection has measure zero, and there are only countably many algorithms describing tests (our own). Their union is null, so almost every sequence passes every test (our own). Effective forms of the two probability laws cover their exceptions by such tests (our own). Allowing arbitrary null sets would exclude every sequence through its own singleton (our own).
 
 **Wikipedia:** [Algorithmically random sequence](https://en.wikipedia.org/wiki/Algorithmically_random_sequence). It says: “defined "Martin-Löf randomness" by only allowing laws of randomness that are Turing-computable.”
 
@@ -3383,7 +3295,7 @@
 
 **Problem.** Chaitin's constant Ω, the halting probability of a prefix-free universal machine, is a real number between 0 and 1.
 
-**How the definition helps.** The prefix-free condition keeps the sum at most 1, so Ω is a real number between 0 and 1 at once. Without the condition the sum can diverge. For example, suppose that a fixed fraction of the 2ⁿ programs of each length n halts; then each length adds the same positive amount (our own example). For a prefix-free set, Kraft's inequality gives that the sum is at most 1. Proving that Ω is random and not computable is the real work.
+**How the definition helps.** Distinct halting programs determine disjoint binary cylinders, of measures 2⁻ˡ for program length l (our own). Kraft’s inequality therefore bounds their sum by 1, and universality gives a halting program, so the sum is positive. Equality with 1 would let enumeration reach total weight above 1 − 2⁻ⁿ, deciding halting for all programs of length n (our own). This contradicts undecidability for a universal machine (our own).
 
 **Wikipedia:** [Chaitin's constant](https://en.wikipedia.org/wiki/Chaitin%27s_constant), [Kraft–McMillan inequality](https://en.wikipedia.org/wiki/Kraft%E2%80%93McMillan_inequality). It says: “The requirement that the domain be prefix-free, together with Kraft's inequality, ensures that this sum converges to a real number between 0 and 1.”
 
@@ -3397,11 +3309,11 @@
 
 *True by definition. Confidence: medium.* MSC 03D55 (Hierarchies of computability and definability), 03D25. arXiv math.LO, cs.LO. Level 3: graduate.
 
-**Definition.** A formula is Σ⁰₀ if all its quantifiers are bounded, of the form ∀x &lt; t or ∃x &lt; t. A set is Σ⁰₁ if it is defined by a block of unbounded existential quantifiers in front of a Σ⁰₀ formula.
+**Definition.** In first-order arithmetic, a bounded formula has only quantifiers bounded by terms independent of the quantified variable. A set is Σ⁰₁ if an existential block followed by a bounded formula defines membership (our own).
 
 **Problem.** A set of natural numbers is Σ⁰₁ if and only if it is computably enumerable, that is, some program lists its members. This is the first level of Post's theorem.
 
-**How the definition helps.** A bounded-quantifier formula can be checked by trying all cases. So a program can search for a witness, and a Σ⁰₁ set is computably enumerable at once. The other direction uses Kleene's T predicate, which says that a number codes a halting computation. It writes this predicate as existential quantifiers in front of a bounded core (our own link). The bounded quantifiers let the core check each step of a coded computation. Removing the bounded universal quantifier too, so that only polynomial equations remain, is the much harder theorem of Matiyasevich, Robinson, Davis and Putnam.
+**How the definition helps.** Bounded formulas are decidable, so searching witness tuples semidecides membership (our own). Conversely, membership in an enumerable set is witnessed by a finite accepting computation (our own). The arithmetic computation-coding lemma expresses existence of that history by existential quantifiers with a bounded check (our own).
 
 **Wikipedia:** [Arithmetical hierarchy](https://en.wikipedia.org/wiki/Arithmetical_hierarchy). It says: “The Σ⁰₁ sets of numbers are those definable by a formula of the form ∃n₁ ⋯ ∃nₖ ψ(n₁,…,nₖ,m) where ψ has only bounded quantifiers. These are exactly the recursively enumerable sets.”
 
@@ -3415,11 +3327,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 03D78 (Computation over the reals, computable analysis). arXiv math.LO, cs.LO. Level 3: graduate.
 
-**Definition.** A real number a is computable if there is an algorithm with this property: given a rational ε &gt; 0, it outputs a rational number r with \|r − a\| ≤ ε.
+**Definition.** A real a is computable if some algorithm returns a rational r with \|r − a\| ≤ ε for every positive rational error bound ε.
 
 **Problem.** With ε-approximations, one algorithm computes the sum and the product of any two computable reals from the programs that represent them. With decimal digits, no such algorithm exists.
 
-**How the definition helps.** Approximations of the inputs give approximations of the sum and product directly, but one digit of a sum may need a carry from arbitrarily far to the right. Turing's 1936 paper used decimal digits, and both definitions give the same set of numbers. Hirst showed that no algorithm converts an ε-approximation program into a digit program. What stays hard: no algorithm decides equality or order of computable reals.
+**How the definition helps.** Error bounds let one choose enough input precision for either operation (our own). Coarse input bounds suffice to estimate how multiplication amplifies errors. Decimal output can require deciding a carry from arbitrarily distant digits, which prevents uniform arithmetic.
 
 **Wikipedia:** [Computable number](https://en.wikipedia.org/wiki/Computable_number). It says: “This lack of uniformity is one reason why the contemporary definition of computable numbers uses ε approximations rather than decimal expansions.”
 
@@ -3434,11 +3346,11 @@
 
 *True by definition. Confidence: medium.* MSC 03D78 (Computation over the reals, computable analysis). arXiv cs.LO, math.LO. Level 3: graduate.
 
-**Definition.** A function on the real numbers is computable if an algorithm does the following. Given any sequence of approximations of the input, it produces approximations of the output to any required precision.
+**Definition.** A name for x is a rational sequence (qₙ) satisfying \|qₙ − x\| ≤ 2⁻ⁿ for every natural number n. A function f is computable if one algorithm, reading any name for any x, produces a name for f(x).
 
 **Problem.** Every computable function from ℝ to ℝ is continuous.
 
-**How the definition helps.** In our own sketch, the definition makes continuity almost automatic. The algorithm must produce each output approximation after it reads only finitely many input approximations. So a small enough change of the input cannot change that output approximation, and this is continuity. So discontinuous functions, such as a step function, are not computable. Differentiation of real functions is also not computable, because differentiation is discontinuous. The result suggests an analogy between computability and topology. Continuity does not settle everything: Myhill gave a computable function with a continuous derivative that is not computable.
+**How the definition helps.** Each output approximation depends on finitely many input terms (our own). Choose a name for x with strict error bounds throughout. Every sufficiently close point admits a name agreeing on those finitely many terms, so its output shares that approximation. The two output values thus differ by at most twice its error bound, which can be arbitrarily small.
 
 **Wikipedia:** [Computable analysis](https://en.wikipedia.org/wiki/Computable_analysis). It says: “One of the basic results of computable analysis is that every computable function from ℝ to ℝ is continuous.”
 
@@ -3468,11 +3380,11 @@
 
 *True by definition. Confidence: medium.* MSC 03E10 (Ordinal and cardinal numbers). arXiv math.LO. Level 3: graduate.
 
-**Definition.** For a nonzero limit ordinal α, cf(α) is the least ordinal δ with an unbounded nondecreasing map from δ to α. Unbounded means that the values have no upper bound below α. An ordinal is regular if it equals its own cofinality. The alternative takes the least size of an unbounded subset of α.
+**Definition.** For a nonzero limit ordinal α, cf(α) is the least ordinal admitting a nondecreasing map into α with unbounded image. An image is unbounded if it exceeds every ordinal below α. A nonzero limit ordinal is regular if it equals its cofinality.
 
 **Problem.** For every nonzero limit ordinal α, cf(α) is regular, that is, cf(cf(α)) = cf(α).
 
-**How the definition helps.** With maps, a short unbounded map into cf(α) composes with one into α (our own). If f maps cf(α) unboundedly into α and g maps a smaller δ unboundedly into cf(α), then f ∘ g maps δ unboundedly into α, which contradicts minimality. The nLab states the same equation constructively from its own definition. The work moves to proving that the subset definition gives the same value, which needs a recursive construction of an increasing sequence (our own).
+**How the definition helps.** Composing two nondecreasing unbounded maps gives another such map (our own). The least possible domain δ = cf(α) is a nonzero limit, since an empty or last value cannot witness unboundedness. A shorter witness for cf(δ) would therefore give a shorter witness for cf(α). The identity on δ witnesses the opposite bound.
 
 **nLab:** [cofinality](https://ncatlab.org/nlab/show/cofinality). It says: “In general, an ordinal number α such that ocf(α) = α is called regular, so every ordinal cofinality is regular.”
 
@@ -3482,13 +3394,13 @@
 
 **Remember:** A well-order is a relation for induction, where predecessors determine the element.
 
-*Rules out counterexamples. Confidence: medium.* MSC 03E10 (Ordinal and cardinal numbers), 03F65. arXiv math.LO. Level 3: graduate.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 03E10 (Ordinal and cardinal numbers), 03F65. arXiv math.LO. Level 3: graduate.
 
-**Definition.** A well-order on a set S is a relation ≺ that is transitive, extensional and well-founded. Extensional means that two elements with the same predecessors are equal. Well-founded means that you can prove statements by induction over ≺. Totality (any two elements are comparable) is not part of the definition.
+**Definition.** A constructive well-order is a transitive relation ≺ on a set S in which elements with identical predecessors coincide and induction holds. Induction means every subset P of S equals S if it contains each x whose predecessors all belong to P.
 
 **Problem.** With this definition, every well-ordered set has an ordinal, by well-founded recursion without excluded middle. Under excluded middle, the definition agrees with the classical one.
 
-**How the definition helps.** This definition keeps induction and recursion, which ordinals need, and drops totality, the part that forces excluded middle. The classical definition, a total order in which every inhabited subset has a least element, is too strong: if any set with two unequal elements has such an order, excluded middle follows. The proof that a transitive, extensional, well-founded relation is total uses excluded middle, so totality is lost constructively.
+**How the definition helps.** Well-founded recursion assigns each element the set of values assigned to its predecessors (our own). Extensionality makes this assignment injective, and transitivity makes its image an ordinal. Classical comparison of ordinals gives totality under excluded middle. Constructively, a classical well-order even on a set with two unequal elements would imply excluded middle.
 
 **nLab:** [well-order](https://ncatlab.org/nlab/show/well-order). It says: “A classically well-ordered set is a choice set, and so if any set with at least 2 unequal elements has a classical well-order, then excluded middle follows.”
 
@@ -3502,11 +3414,11 @@
 
 *Rules out counterexamples.* MSC 03E10 (Ordinal and cardinal numbers). arXiv math.LO. Level 3: graduate.
 
-**Definition.** A function f from ordinals to ordinals is normal if it is strictly increasing and continuous. Continuous means that at each limit ordinal γ, f(γ) is the supremum of f(ν) for ν &lt; γ.
+**Definition.** A function f on the ordinals is normal if it is strictly increasing and continuous at every nonzero limit. Continuity at γ means f(γ) = sup{f(ν) ∣ ν &lt; γ}.
 
 **Problem.** Every normal function has arbitrarily large fixed points. For example, the map from α to the α-th aleph number is normal. So some cardinals κ equal the κ-th aleph number.
 
-**How the definition helps.** Continuity lets one reach a fixed point as a limit. Start above any ordinal, apply f again and again, and take the supremum, which f must then fix. The function α ↦ α + 1 is strictly increasing but has no fixed point at all. It is excluded because it is not continuous at limit ordinals. Normal functions include β + α, β·α for β ≥ 1 and β to the power α for β ≥ 2, all in α. The aleph and beth functions are normal too. The fixed points of a normal function, listed in order, form a normal function again (our own), and Veblen built his hierarchy this way.
+**How the definition helps.** Continuity rules out the successor function, which jumps over the supremum at every nonzero limit. Start above any given ordinal and iterate f (our own). Strict increase gives f(α) ≥ α, so the iterates either stabilize or increase to a limit. Continuity makes that limit a fixed point.
 
 **Wikipedia:** [Normal function](https://en.wikipedia.org/wiki/Normal_function). It says: “But f(α) = α + 1 is not normal because it is not continuous at any limit ordinal”
 
@@ -3520,11 +3432,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 03E10 (Ordinal and cardinal numbers), 03E25. arXiv math.LO. Level 3: graduate.
 
-**Definition.** The Hartogs number of a set X is the least ordinal α that has no one-to-one map into X. Its existence is proved without the axiom of choice. For a well-orderable X, it is the successor cardinal of the size of X.
+**Definition.** The Hartogs number of X is the least ordinal that admits no injection into X.
 
 **Problem.** If any two cardinalities are comparable, then every set can be well-ordered. So trichotomy for cardinals is equivalent to the axiom of choice.
 
-**How the definition helps.** The definition gives, for every set X, a well-ordered set that does not inject into X, so comparability must go the other way. If trichotomy holds, X injects into its Hartogs number α, and the well-order of α pulls back to X. The work is in showing that the Hartogs number exists in ZF: collect the well-orderings of subsets of X, which form a set by power set and separation, and take their order types. Hartogs proved this in 1915.
+**How the definition helps.** Comparability forces X to inject into its Hartogs number (our own). Pulling back the ordinal order well-orders X. Hartogs’s theorem supplies the ordinal without choice, and the well-ordering theorem identifies well-orderability of every set with choice. Conversely, choice lets us compare sizes by comparing initial ordinals.
 
 **Wikipedia:** [Hartogs number](https://en.wikipedia.org/wiki/Hartogs_number). It says: “Conversely, trichotomy for cardinal numbers (the statement that any two cardinal numbers are comparable) thus implies that every set can be well-ordered, and hence implies the axiom of choice.”
 
@@ -3534,15 +3446,15 @@
 
 ### Regular cardinals defined by small unions keep small colimits small
 
-**Remember:** Form the disjoint union, then identify elements without making the set larger.
+**Remember:** Fewer than κ small sets still give a small disjoint union.
 
 *True by definition.* MSC 03E10 (Ordinal and cardinal numbers), 18A30. arXiv math.LO, math.CT. Level 3: graduate.
 
-**Definition.** Call an infinite cardinal κ regular if each disjoint union of fewer than κ sets, each smaller than κ, is smaller than κ. The alternative calls κ regular if its cofinality is κ. The cofinality of κ is the least size of a subset of κ with no upper bound below κ.
+**Definition.** An infinite cardinal κ is regular if every disjoint union of fewer than κ sets of size less than κ has size less than κ.
 
 **Problem.** Let κ be a regular cardinal. Every diagram of fewer than κ sets, each of size less than κ, has a colimit of size less than κ. A colimit glues the sets of a diagram together along its maps.
 
-**How the definition helps.** With the union definition, the colimit is a quotient of the disjoint union of the sets, and that union is already small (our own). A quotient of a set smaller than κ is no larger, since one can pick the least element of each class (our own). The nLab lists this colimit property among the equivalent definitions of a regular cardinal. The work moves to proving that the cofinality definition implies the union condition (our own). That step uses the axiom of choice and the fact that κ · κ = κ for infinite κ (our own).
+**How the definition helps.** The disjoint union of the diagram’s sets has size less than κ by regularity (our own). The colimit identifies elements of that union along the diagram’s maps. Well-order the union and send each equivalence class to its least element to obtain the same size bound.
 
 **nLab:** [regular cardinal](https://ncatlab.org/nlab/show/regular+cardinal). It says: “has all colimits (or just all coproducts) of size &lt; κ.”
 
@@ -3554,11 +3466,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 03E10 (Ordinal and cardinal numbers), 03E25. arXiv math.LO. Level 3: graduate.
 
-**Definition.** The cardinality of a set X is the set of all well-founded pure sets that are in bijection with X and have the least possible rank in the von Neumann hierarchy. A pure set is a set whose elements are sets, all the way down. The rank of a set is the stage of the von Neumann hierarchy at which it first appears.
+**Definition.** The Scott cardinal of X consists of all sets in bijection with X having the least rank among such sets.
 
 **Problem.** With the axiom of foundation and no axiom of choice, every set has a cardinality in this sense, which is a set. Two sets have the same cardinality exactly when they are in bijection.
 
-**How the definition helps.** Taking only the copies of least rank cuts a proper class down to a set, and this needs no choice. The naive definition, the isomorphism class of X, is a proper class. The usual definition, the least ordinal in bijection with X, needs the well-ordering theorem, so without choice it works only for well-orderable sets.
+**How the definition helps.** Foundation gives X a rank, so a least rank ρ among its copies exists (our own). All copies of rank ρ lie in the set V<sub>ρ+1</sub>, where separation collects them without choice. Sets in bijection have the same copies. Conversely, equal Scott cardinals share a copy, giving a bijection by composition.
 
 **nLab:** [cardinal number](https://ncatlab.org/nlab/show/cardinal+number). It says: “This will follow directly from the axiom of foundation; it will also follow from the axiom of choice, since then every set is isomorphic to a von Neumann ordinal.”
 
@@ -3572,11 +3484,11 @@
 
 *True by definition. Confidence: medium.* MSC 03E10 (Ordinal and cardinal numbers), 12J15. arXiv math.LO. Level 3: graduate.
 
-**Definition.** A sign expansion is a sequence of pluses and minuses indexed by the ordinals below some ordinal, its length. Gonshor defines surreal numbers as sign expansions. Compare two of them at their first difference, treating a missing sign as between minus and plus. Conway instead defines surreals as pairs of sets of earlier surreals and compares them recursively.
+**Definition.** A surreal number in sign form is a function from an ordinal to {−, +}. Compare distinct functions at their first difference, ordering minus below an absent sign and an absent sign below plus.
 
 **Problem.** Any two surreal numbers x and y satisfy exactly one of x &lt; y, x = y and y &lt; x.
 
-**How the definition helps.** With sign expansions, the order is a lexicographic order, which is total by its form (our own). Two different expansions differ at a first place, or one ends where the other continues, and the rule compares them there (our own). Wikipedia states this lexicographic rule. With Conway's pairs, equality is a defined relation, and totality needs an induction over both numbers (our own). The work moves to proving that sign expansions match Conway's numbers and order (our own).
+**How the definition helps.** Distinct expansions have a first difference because their positions are well-ordered (our own). The sign order decides exactly one direction there. Identical expansions give equality. The equivalence with Conway’s recursive presentation carries the remaining work.
 
 **Wikipedia:** [Surreal number](https://en.wikipedia.org/wiki/Surreal_number). It says: “For surreal numbers, define the binary relation &lt; to be lexicographic order”
 
@@ -3588,13 +3500,13 @@
 
 **Remember:** The natural sum adds ordinals like polynomials in ω.
 
-*Makes the theorem clean to state or prove.* MSC 03E10 (Ordinal and cardinal numbers). arXiv math.LO. Level 3: graduate.
+*True by definition.* MSC 03E10 (Ordinal and cardinal numbers). arXiv math.LO. Level 3: graduate.
 
-**Definition.** The natural (Hessenberg) sum α ⊕ β writes α and β in Cantor normal form, as sums of powers ωᵞ. It then adds the terms like polynomials, in decreasing order of exponent.
+**Definition.** Write both ordinals in Cantor normal form and use coefficient zero for each missing exponent. Their natural sum adds matching finite coefficients. Their natural product multiplies coefficients termwise across all pairs, naturally adds the paired exponents, and naturally sums the resulting monomials.
 
 **Problem.** The natural sum is commutative and associative, and the natural product distributes over it.
 
-**How the definition helps.** Adding like polynomials does not depend on the order of the summands, so the natural sum is commutative. Ordinary ordinal addition is not: 1 + ω = ω, but ω + 1 &gt; ω. The cost is continuity: 1 ⊕ n tends to ω as n grows, but 1 ⊕ ω = ω + 1. The natural operations agree with Conway's surreal-number arithmetic restricted to ordinals.
+**How the definition helps.** Coefficient addition gives commutativity and associativity of natural sum (our own). In a product, each coefficient distributes over a sum of coefficients at the same exponent. Collecting equal exponents gives distributivity of natural product.
 
 **Wikipedia:** [Ordinal arithmetic](https://en.wikipedia.org/wiki/Ordinal_arithmetic). It says: “The natural sum and product are commutative and associative, and natural product distributes over natural sum.”
 
@@ -3602,15 +3514,15 @@
 
 ### Analytic sets repair Lebesgue's false claim about projections of Borel sets
 
-**Remember:** Projections of Borel sets are not Borel, but they are analytic.
+**Remember:** Projecting a Borel set always gives an analytic set.
 
 *Makes the theorem clean to state or prove.* MSC 03E15 (Descriptive set theory), 28A05. arXiv math.LO, math.GN. Level 3: graduate.
 
-**Definition.** A subset of a Polish space is analytic if it is a continuous image of a Polish space. Equivalently, it is the projection onto X of a Borel subset of X × Y, for some Polish space Y. Luzin and his student Suslin defined these sets in 1917.
+**Definition.** A subset A of a Polish space X is analytic if it is a projection of a Borel set. The projection must be onto the first coordinate of X × Y for some Polish space Y.
 
 **Problem.** The projection of a Borel subset of the plane is analytic, though not always Borel. Analytic sets are universally measurable: measurable for the completion of every Borel probability measure.
 
-**How the definition helps.** The new class is closed under projection by definition, so the step that Lebesgue got wrong becomes true for analytic sets. Suslin found that some projections of Borel sets in the plane are not Borel. So probability arguments that take projections, such as for the first time a process enters a set, keep working up to null sets (our own). What stays hard is the measurability proof, which uses the Suslin operation and capacities.
+**How the definition helps.** The projection clause applies directly to Borel subsets of the plane (our own). Suslin found a projection that fails to be Borel. The universal measurability theorem for analytic sets supplies the measurability assertion.
 
 **Wikipedia:** [Mikhail Suslin](https://en.wikipedia.org/wiki/Mikhail_Suslin), [Analytic set](https://en.wikipedia.org/wiki/Analytic_set), [Universally measurable set](https://en.wikipedia.org/wiki/Universally_measurable_set). It says: “he found an error in an argument of Lebesgue, who believed he had proved that for any Borel set in ℝ², the projection onto the real axis was also a Borel set.”
 
@@ -3622,11 +3534,11 @@
 
 *True by definition.* MSC 03E15 (Descriptive set theory), 54H05. arXiv math.LO, math.GN. Level 3: graduate.
 
-**Definition.** An analytic set is the image of a Polish space under a continuous map. A Polish space is a space with a complete metric and a countable dense subset. The empty set counts as a Polish space. Another definition uses projections of closed subsets of the product with Baire space, the space of infinite sequences of natural numbers.
+**Definition.** A subset A of a Polish space is analytic if some continuous map from a Polish space has image A. A Polish space admits a complete compatible metric and has a countable dense subset.
 
 **Problem.** Let A be an analytic set, and let f be a continuous map from A into a Polish space. Then the image f(A) is analytic.
 
-**How the definition helps.** With this definition, the image of an analytic set is again a continuous image of a Polish space. If g maps a Polish space P onto A, then f ∘ g maps P onto f(A) (our own). With the projection definition, the witness space becomes the product of a Polish space with Baire space. Turning that back into Baire space needs the theorem that every nonempty Polish space is a continuous image of Baire space (our own). So the work moves into the proof that the two definitions agree (our own). Wikipedia states the closure under continuous images.
+**How the definition helps.** Composition preserves the continuous parametrization (our own). If g maps a Polish space continuously onto A, then f ∘ g maps that space continuously onto f(A).
 
 **Wikipedia:** [Analytic set](https://en.wikipedia.org/wiki/Analytic_set). It says: “closed under countable unions and intersections, continuous images, and inverse images”
 
@@ -3640,11 +3552,11 @@
 
 *True by definition.* MSC 03E15 (Descriptive set theory), 28A05. arXiv math.LO. Level 3: graduate.
 
-**Definition.** Call a subset of a Polish space Borel if both it and its complement are analytic. A set is analytic if it is a continuous image of a Polish space. A Polish space has a complete metric and a countable dense subset. The usual definition generates the Borel sets from the open sets by complements and countable unions.
+**Definition.** In a Polish space, call a set Borel if both it and its complement are analytic. A set is analytic if some continuous map from a Polish space has that set as its image.
 
 **Problem.** Let f be a measurable bijection between standard Borel spaces. Then the inverse of f is measurable. A standard Borel space has the Borel sets of some Polish topology as its measurable sets.
 
-**How the definition helps.** With this definition, the image of a Borel set is Borel as soon as it and its complement are analytic. Take a Borel set B. Its image f(B) is analytic, because it is the projection of the part of the graph of f over B, a Borel set (our own). Since f is a bijection, the image of the complement of B is the complement of f(B) (our own). Both sets are analytic, so f(B) is Borel by this definition. The work moves to Souslin's theorem that this definition agrees with the usual one. It also needs the fact that the graph of a measurable map is Borel.
+**How the definition helps.** A Borel bijection sends each Borel set and its complement to complementary analytic sets (our own). Each image projects from the Borel graph restricted to the corresponding domain set. The image is therefore Borel, which gives measurability of the inverse. Souslin’s theorem identifies this criterion with the usual Borel definition.
 
 **Wikipedia:** [Standard Borel space](https://en.wikipedia.org/wiki/Standard_Borel_space). It says: “a set that is both analytic and coanalytic is necessarily Borel”
 
@@ -3676,11 +3588,11 @@
 
 *True by definition.* MSC 03E15 (Descriptive set theory), 03E60. arXiv math.LO. Level 3: graduate.
 
-**Definition.** Say A reduces to B if the second player has a winning strategy in the Wadge game for A and B. The first player writes a sequence x of natural numbers, and the second writes a sequence y but may skip turns. The second player wins if y is infinite and x lies in A exactly when y lies in B. The alternative asks for a continuous map whose preimage of B is A.
+**Definition.** For subsets A and B of Baire space, players alternately write natural numbers forming x and y respectively. Only the second player may pass, and wins exactly when y is infinite and membership of x in A matches membership of y in B. A reduces to B if the second player has a winning strategy.
 
 **Problem.** Let A and B be Borel subsets of Baire space. Then A reduces to B, or B reduces to the complement of A.
 
-**How the definition helps.** With the game definition, a winning strategy for the second player is a reduction, so determinacy does most of the work. The game has a Borel payoff, so Borel determinacy gives a winner. If the second player wins, A reduces to B by definition. If the first player wins, that strategy turns each y into an x that lies outside A exactly when y lies in B, so B reduces to the complement of A (our own).
+**How the definition helps.** Borel determinacy gives one player a winning strategy because the payoff is Borel. A second-player win gives the first reduction by definition (our own). Otherwise feed any y without passes to the winning first-player strategy. Its replies form x continuously, with x outside A exactly when y belongs to B, giving the reverse reduction by the Wadge game characterization.
 
 **Wikipedia:** [Wadge hierarchy](https://en.wikipedia.org/wiki/Wadge_hierarchy). It says: “Since Borel determinacy is proved in ZFC, ZFC implies Wadge's lemma for Borel sets.”
 
@@ -3694,11 +3606,11 @@
 
 *True by definition.* MSC 03E15 (Descriptive set theory), 28A05. arXiv math.LO. Level 3: graduate.
 
-**Definition.** Take an increasing sequence of finite families of measurable sets, each closed under finite unions and complements, that generates all measurable sets and separates points. Each family splits the space into finitely many atoms, its smallest nonempty pieces. Require every nested sequence of atoms, one from each family, to have a point in common. The usual definition asks for a Polish topology whose Borel sets are the measurable sets.
+**Definition.** A measurable space is standard Borel if it admits a sequence of successively finer finite measurable partitions that separate points and generate its σ-algebra. Every nested choice of one part from each partition must have nonempty intersection.
 
 **Problem.** Every standard Borel space has a compact metrizable topology whose Borel sets are exactly its measurable sets.
 
-**How the definition helps.** With this definition, the compact topology is already visible in the data. Send each point to its sequence of atoms; the image is a closed subset of a countable product of finite discrete spaces, which is compact and metrizable. Point separation, the nested condition and the generating condition make this map a measurable isomorphism onto that closed set. The work moves to the converse, that every standard Borel space in the usual sense has such families, which the nLab derives from the classification by cardinality.
+**How the definition helps.** Send each point to its sequence of parts (our own). The nested sequences form a closed subset of the compact metrizable product of finite discrete partitions. Separation and nested intersection give a bijection, and generation makes its coordinate cylinders generate exactly the original σ-algebra. The classification of standard Borel spaces supplies such partitions under the usual definition.
 
 **nLab:** [standard Borel space](https://ncatlab.org/nlab/show/standard+Borel+space). It says: “The compatibility conditions are closed conditions, so K is a closed subspace of a countable product of finite discrete spaces.”
 
@@ -3710,11 +3622,11 @@
 
 *True by definition. Confidence: medium.* MSC 03E15 (Descriptive set theory), 54H05. arXiv math.LO. Level 3: graduate.
 
-**Definition.** An analytic subset of Baire space is the projection of a tree on pairs of natural numbers. Baire space is the space of infinite sequences of natural numbers. Such a tree is a set of pairs of finite sequences of equal length, closed under initial segments. A point x lies in the set if some y makes every initial segment of the pair (x, y) lie in the tree.
+**Definition.** A subset A of Baire space is analytic if some tree T on pairs of finite sequences of natural numbers represents A. Its nodes have coordinates of equal length and include every prefix of each node. A sequence x belongs to A exactly when some sequence y satisfies (x↾n, y↾n) ∈ T for every natural number n.
 
 **Problem.** Every analytic subset of Baire space is the preimage, under a continuous map, of the set of trees with an infinite branch. Trees on natural numbers form a space in which each basic open set fixes finitely many membership questions.
 
-**How the definition helps.** With the tree definition, each point already comes with its own tree of possible witnesses. Send x to the tree of finite sequences t that pair with the start of x to give a node of the tree; this map is continuous, since each membership question depends on finitely many terms of x (our own). This tree has an infinite branch exactly when x has a witness (our own). With the continuous-image definition, one must first find such a tree, which is the tree representation theorem stated on Wikipedia.
+**How the definition helps.** Fixing x gives a tree whose branches are precisely its witnesses (our own). Include a finite sequence t when (x↾n, t) belongs to T, where n is its length. Each membership test reads only n terms, so the map to trees is continuous. Its tree has a branch exactly when x belongs to A.
 
 **Wikipedia:** [Analytic set](https://en.wikipedia.org/wiki/Analytic_set). It says: “the projections of trees”
 
@@ -3728,11 +3640,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 03E15 (Descriptive set theory), 03E40. arXiv math.LO. Level 3: graduate.
 
-**Definition.** Code an analytic set of sequences by a tree on pairs of natural numbers, as the set of first coordinates of its branches. In a forcing extension, read the same tree again and allow its new branches. The alternative defines analytic sets as continuous images of Polish spaces, which does not say which set to take in the extension.
+**Definition.** A tree on pairs consists of pairs of equally long finite sequences of natural numbers and contains every prefix of each node. Its projection contains exactly the infinite sequences x admitting an infinite y whose paired prefixes all belong to the tree. In a forcing extension, interpret the same tree using the sequences in that extension.
 
 **Problem.** Let S and T be trees whose projections are disjoint. Then their projections stay disjoint in every forcing extension.
 
-**How the definition helps.** Tree codes give analytic sets a meaning in the extension, and they turn disjointness into a statement about one tree. Combine S and T into one tree of triples that share the first coordinate, whose branches are exactly common points with witnesses from both trees (our own). In the ground model this tree has no branch, so it has a rank function, a map to the ordinals that decreases along the tree. The rank function survives in the extension, so no new branch appears (our own).
+**How the definition helps.** The projections intersect exactly when a single tree of triples has a branch (our own). Its nodes (s,t,u) satisfy (s,t) ∈ S and (s,u) ∈ T. Ground-model disjointness makes this tree well-founded, so it has an ordinal rank decreasing along extensions. The rank persists after forcing and rules out any new branch.
 
 **Wikipedia:** [Analytic set](https://en.wikipedia.org/wiki/Analytic_set). It says: “the projections of trees”
 
@@ -3746,11 +3658,11 @@
 
 *True by definition.* MSC 03E20 (Other classical set theory (including functions, relations, and set algebra)), 06A15. arXiv math.LO, math.CT. Level 3: graduate.
 
-**Definition.** Preimage is right adjoint to direct image: f(A) ⊆ B exactly when A ⊆ f⁻¹(B). Preimage is also left adjoint to the map A ↦ T ∖ f(S ∖ A): f⁻¹(B) ⊆ A exactly when B ⊆ T ∖ f(S ∖ A).
+**Definition.** For f from S to T, the preimage of B ⊆ T consists of those x ∈ S satisfying f(x) ∈ B. Maps L and R between inclusion orders are adjoint if L(A) ⊆ B exactly when A ⊆ R(B) for every A and B.
 
 **Problem.** Preimage preserves all unions and intersections. Direct image preserves all unions but need not preserve intersections.
 
-**How the definition helps.** The two adjoint descriptions give both preservation laws at once. Left adjoints preserve joins, which are unions here, and right adjoints preserve meets, which are intersections here. The work lies in proving the two order tests from the usual preimage definition. Direct image is only a left adjoint: two distinct points with the same image give disjoint singletons whose images intersect (our own example).
+**How the definition helps.** Preimage has adjoints on both sides (our own). Direct image is its left adjoint, and A ↦ T ∖ f(S ∖ A) is its right adjoint. Left adjoints preserve unions and right adjoints preserve intersections. Distinct points with the same image give disjoint singletons whose images intersect.
 
 **Wikipedia:** [Galois connection](https://en.wikipedia.org/wiki/Galois_connection). It says: “If f : X → Y is a function, then for any subset M of X we can form the image”
 
@@ -3766,9 +3678,9 @@
 
 **Definition.** A hereditarily finite set is a finite set whose elements are hereditarily finite sets, starting from the empty set. Ackermann coded each such set by a natural number. The code of a set is the sum of 2 to the power of the codes of its elements.
 
-**Problem.** The natural numbers, with i an element of j exactly when the i-th binary digit of j is 1, form a model of Zermelo–Fraenkel set theory without the axiom of infinity.
+**Problem.** Define membership on natural numbers by reading the binary digits from position zero. With i belonging to j exactly when bit i of j is 1, they model Zermelo–Fraenkel set theory without infinity.
 
-**How the definition helps.** With this coding, membership becomes a simple arithmetic relation on binary digits. The coding is a bijection, so each natural number is exactly one hereditarily finite set. Extensionality holds because a number is fixed by its binary digits, and pairing and union become operations on binary digits (our own).
+**How the definition helps.** Ackermann coding transports the standard hereditarily finite model to the natural numbers (our own). Induction decodes n by collecting the sets coded by the positions of its 1-bits, numbering positions from zero. Those positions are smaller than n, and uniqueness of binary expansion makes decoding inverse to coding. Membership in the finite model therefore gives exactly the stated bit test.
 
 **Wikipedia:** [Hereditarily finite set](https://en.wikipedia.org/wiki/Hereditarily_finite_set). It says: “The Ackermann coding can be used to construct a model of finitary set theory in the natural numbers.”
 
@@ -3794,35 +3706,17 @@
 
 - [Mostowski, A. (1949). An undecidable arithmetical statement. Fundamenta Mathematicae 36, 143–164.](https://doi.org/10.4064/fm-36-1-143-164)
 
-### Limitation of size gives several set existence axioms
-
-**Remember:** A class is too big to be a set exactly when it matches everything.
-
-*Makes the theorem clean to state or prove.* MSC 03E30 (Axiomatics of classical set theory and its fragments). arXiv math.LO. Level 3: graduate.
-
-**Definition.** Classes are collections that may be too big to be sets. Von Neumann's axiom of limitation of size says that a class is a proper class (a class that is not a set) if and only if some function maps it onto the universe V of all sets.
-
-**Problem.** In von Neumann's class theory, the axiom of limitation of size implies the axioms of replacement, separation, union and global choice. Global choice means one choice function for all nonempty sets at once.
-
-**How the definition helps.** One principle about size does the work of several axioms. Von Neumann derived replacement, separation and global choice, and Lévy (1968) derived union. For global choice, the class of ordinals is a proper class, so it maps onto V, and this gives a well-order of V. Power set and infinity must still be assumed separately.
-
-**Wikipedia:** [Axiom of limitation of size](https://en.wikipedia.org/wiki/Axiom_of_limitation_of_size). It says: “Von Neumann's axiom implies the axioms of replacement, separation, union, and global choice.”
-
-**Sources:**
-
-- [von Neumann, J. (1925). Eine Axiomatisierung der Mengenlehre. Journal für die reine und angewandte Mathematik 154, 219–240.](https://doi.org/10.1515/crll.1925.154.219)
-
 ### A complete Boolean algebra gives quantified formulas a truth value
 
 **Remember:** Existential quantifiers are joins, so the joins must exist.
 
 *Makes the theorem clean to state or prove.* MSC 03E40 (Other aspects of forcing and Boolean-valued models), 03C90, 06E10. arXiv math.LO. Level 3: graduate.
 
-**Definition.** A Boolean-valued model gives each statement a truth value in a fixed Boolean algebra B, not just true or false. The value of ∃x φ(x) is the supremum of the values of φ(a) over all elements a. B must be complete, so that every subset has a supremum.
+**Definition.** A Boolean algebra B is complete if every subset has a supremum in B. Complements then also give every subset an infimum.
 
-**Problem.** For a complete Boolean algebra B, every formula of set theory gets a truth value in the Boolean-valued model Vᴮ, and every axiom of ZFC gets value 1.
+**Problem.** Over a ground model of ZFC, every set-theoretic formula with parameters in Vᴮ has a Boolean value for every complete Boolean algebra B. Every ZFC axiom has value 1.
 
-**How the definition helps.** Completeness lets ∃ and ∀ be the supremum and infimum of possibly infinite sets of values, so every formula gets a value by plain recursion. This gives forcing a semantics over V without countable transitive models or generic objects. Each forcing order has a completion, the regular open algebra, so no forcing is lost. What stays hard is computing the values of specific statements, such as the continuum hypothesis.
+**How the definition helps.** Completeness supplies the joins for existential quantifiers and the meets for universal quantifiers (our own). Together with the recursive clauses for atomic formulas and connectives, these give every formula a value. The Boolean-valued model theorem, over a ground model of ZFC, gives every ZFC axiom value 1.
 
 **Wikipedia:** [Boolean-valued model](https://en.wikipedia.org/wiki/Boolean-valued_model). It says: “The completeness of the Boolean algebra is required to define truth values for quantified formulas.”
 
@@ -3834,7 +3728,7 @@
 
 *True by definition. Confidence: medium.* MSC 03E40 (Other aspects of forcing and Boolean-valued models). arXiv math.LO. Level 3: graduate.
 
-**Definition.** Let B be a complete Boolean algebra, one in which every subset has a least upper bound. Each sentence φ has a Boolean value ‖φ‖ in B. A nonzero element p forces φ when p ≤ ‖φ‖. The usual alternative defines forcing directly on a partial order, by recursion on names and formulas.
+**Definition.** In a complete Boolean algebra B, a condition is a nonzero element. A condition p forces a sentence φ with Boolean value ‖φ‖ exactly when p ≤ ‖φ‖.
 
 **Problem.** Suppose every condition below p has a stronger condition that forces φ. Then p forces φ.
 
@@ -3852,11 +3746,11 @@
 
 *True by definition.* MSC 03E40 (Other aspects of forcing and Boolean-valued models). arXiv math.LO. Level 3: graduate.
 
-**Definition.** Call a forcing order proper if it keeps stationary every stationary family of countable subsets of every uncountable set. A family is stationary if it meets every closed unbounded family of countable subsets. The usual definition asks for conditions that are generic over countable elementary submodels of a large structure. Shelah proved that the two definitions agree.
+**Definition.** A forcing order is proper if it preserves every stationary family of countable subsets of every uncountable set (our own formulation). A family is stationary if it meets every family unbounded under inclusion and closed under unions of increasing sequences of length ω.
 
 **Problem.** Let P be proper, and suppose P forces that Q is proper. Then the two-step iteration, P followed by Q, is proper.
 
-**How the definition helps.** With the preservation definition, properness passes through each step in turn. Take a stationary family S of countable subsets of an uncountable set X. P keeps S stationary and keeps X uncountable, and then Q keeps S stationary again (our own). We use all uncountable sets, not only regular cardinals as Wikipedia does, because regularity may fail after the first step (our own). The work moves to Shelah's theorem that the two definitions agree.
+**How the definition helps.** Apply preservation twice to the same family (our own). Proper forcing preserves ω₁, so an originally uncountable set X remains uncountable after forcing with P. Each originally stationary family on X remains stationary there, and Q preserves it again. Shelah’s characterization identifies this preservation condition with properness.
 
 **Wikipedia:** [Proper forcing axiom](https://en.wikipedia.org/wiki/Proper_forcing_axiom). It says: “forcing with P preserves stationary subsets”
 
@@ -3864,35 +3758,17 @@
 
 - [Thomas Jech, Set Theory (2003)](https://doi.org/10.1007/3-540-44761-X)
 
-### Finite supports keep iterated ccc forcing ccc, so ω₁ survives
-
-**Remember:** Finitely many active stages keep antichains countable.
-
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 03E40 (Other aspects of forcing and Boolean-valued models), 03E50. arXiv math.LO. Level 3: graduate.
-
-**Definition.** Forcing builds a larger model of set theory from a partial order of conditions. Iterated forcing repeats it along an ordinal. A forcing is ccc when every set of pairwise incompatible conditions is countable. A condition in a finite support iteration is a sequence of conditions that is trivial at all but finitely many stages.
-
-**Problem.** Martin's axiom together with the failure of the continuum hypothesis is consistent with ZFC. Martin's axiom says, roughly, that every ccc forcing problem with fewer than continuum many requirements has a solution.
-
-**How the definition helps.** Finite supports let the countable chain condition pass through limit stages, so the whole iteration is ccc and preserves all cardinals. Solovay and Tennenbaum introduced iterated forcing to build a model with no Suslin tree, which settles Suslin's problem about the real line. They also used it to force Martin's axiom with a large continuum. Each small instance of the axiom is met at some stage of the iteration (our own remark). For other preservation needs, Shelah later used countable supports with proper forcing.
-
-**Wikipedia:** [Iterated forcing](https://en.wikipedia.org/wiki/Iterated_forcing). It says: “Finite support iteration of c.c.c. forcings (see countable chain condition) are c.c.c. and thus preserve ω₁.”
-
-**Sources:**
-
-- [Solovay, R. M.; Tennenbaum, S. (1971). Iterated Cohen extensions and Souslin's problem. Annals of Mathematics 94, 201–245.](https://doi.org/10.2307/1970860)
-
 ### Perfect trees make the Sacks fusion lemma statable by splitting levels
 
 **Remember:** Keep each level of branching once it has been built.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 03E40 (Other aspects of forcing and Boolean-valued models). arXiv math.LO. Level 3: graduate.
 
-**Definition.** Take Sacks forcing conditions to be perfect binary trees, ordered by inclusion. A binary tree is a set of finite 0–1 strings closed under initial segments. It is perfect if every node has an extension whose two one-bit extensions are both in the tree. The alternative uses nonempty closed sets of infinite 0–1 sequences with no isolated points.
+**Definition.** A Sacks condition is a nonempty tree of finite binary strings, closed under prefixes, in which each node extends to a splitting node. A node splits if both one-bit extensions belong to the tree. Smaller trees are stronger conditions.
 
 **Problem.** A node is an nth splitting node if it splits and has exactly n splitting nodes strictly below it. Let p₀ ⊇ p₁ ⊇ p₂ ⊇ … be Sacks conditions where each pₙ₊₁ keeps every nth splitting node of pₙ, still splitting. Then the intersection of the pₙ is a perfect tree.
 
-**How the definition helps.** Trees give names to the levels of splitting, so the fusion condition can be written down. Take a node t of the intersection and choose n larger than the length of t; the nth splitting node of pₙ on a branch through t extends t (our own). Each later tree keeps this node as a splitting node, so both its one-bit extensions lie in the intersection (our own). The work moves to the match between perfect trees and perfect closed sets.
+**How the definition helps.** Keeping the nth splits also keeps every earlier split, since both sides extend to nth splits (our own). For any node t in the intersection choose n greater than its length. In pₙ some nth split extends t, and every later tree keeps that split and its two successors. Thus every node in the intersection extends to a split.
 
 **Wikipedia:** [List of forcing notions](https://en.wikipedia.org/wiki/List_of_forcing_notions). It says: “A tree p is stronger than q if p is contained in q.”
 
@@ -3910,7 +3786,7 @@
 
 **Problem.** Forcing with a ccc partial order preserves all cardinals. In particular, Cohen's forcing that adds ℵ₂ new real numbers keeps ℵ₁ and ℵ₂ as cardinals.
 
-**How the definition helps.** Under ccc, each value of a new function has only countably many possible values in the old model. So a new surjection between infinite ordinals gives one in the old model, and cardinals cannot collapse. The excluded case is finite partial functions from ω to ω₁, which add a bijection from ω onto ω₁. The hard part that stays is showing that Cohen's poset is ccc, by shrinking an uncountable family to conditions of one fixed size.
+**How the definition helps.** A maximal antichain deciding one ordinal value of a function name allows only countably many values under ccc (our own). For infinite domain size λ, the union of all these possibilities has size at most λ, ruling out a surjection onto a larger cardinal. Finite partial maps from ω to ω₁ violate ccc because assigning different values at zero gives an uncountable antichain. Their generic union surjects onto ω₁.
 
 **Wikipedia:** [Forcing (mathematics)](https://en.wikipedia.org/wiki/Forcing_%28mathematics%29), [Countable chain condition](https://en.wikipedia.org/wiki/Countable_chain_condition). It says: “In the theory of forcing, ccc partial orders are used because forcing with any generic set over such an order preserves cardinals and cofinalities.”
 
@@ -3928,7 +3804,7 @@
 
 **Problem.** If the order satisfies the splitting condition, then no filter that is generic over M lies in M. So M\[G\] is a proper extension of M.
 
-**How the definition helps.** Splitting makes the complement of any filter dense, so a generic filter in M would meet its own complement, which is absurd. Without splitting, a condition p may have only pairwise compatible extensions, and then a generic filter containing p can be defined inside M (our own example). The truth and definability lemmas are not touched by this condition.
+**How the definition helps.** Splitting makes the complement of any filter dense. At least one of two incompatible extensions of each condition must lie outside the filter (our own). A generic filter in M would have to meet its own complement. For the one-condition order, splitting fails and the entire order is already a generic filter in M.
 
 **Wikipedia:** [Forcing (mathematics)](https://en.wikipedia.org/wiki/Forcing_%28mathematics%29). It says: “Due to the splitting condition on ℙ, if G is a filter, then ℙ ∖ G is dense. If G ∈ M, then ℙ ∖ G ∈ M because M is a model of ZFC.”
 
@@ -3942,11 +3818,11 @@
 
 *True by definition.* MSC 03E45 (Inner models, including constructibility, ordinal definability, and core models), 03E35, 03E50. arXiv math.LO. Level 3: graduate.
 
-**Definition.** Gödel's constructible universe L is built in stages. Stage α+1 is the set of those subsets of stage α that a first-order formula with parameters defines over stage α. L is the union of all stages.
+**Definition.** Start with L₀ = ∅ and take unions of earlier stages at limit ordinals. At each successor stage, collect all subsets of the preceding stage definable over it by first-order formulas with parameters from it. The class L consists of the sets in these stages.
 
 **Problem.** The constructible universe L has a well-order of all its sets that a formula without parameters defines in L. So the axiom of choice holds in L, and if ZF is consistent, so is ZF with the axiom of choice.
 
-**How the definition helps.** Each set in L has a definition, and definitions can be listed in order, so L has an explicit well-order. Order the sets first by stage, then by the Gödel number of the formula, then by the parameters. So choice holds in L almost by construction, even if it fails in V. The generalized continuum hypothesis in L needs more work, namely Gödel's condensation argument.
+**How the definition helps.** At each stage the earlier well-order orders the finite parameter tuples of each fixed length (our own). Give each new set its least defining code, comparing formula numbers first and then parameter tuples lexicographically. This uniform recursion defines a parameter-free well-order in L, yielding choice. Gödel’s inner model theorem supplies ZF in L and hence the relative consistency conclusion.
 
 **Wikipedia:** [Constructible universe](https://en.wikipedia.org/wiki/Constructible_universe). It says: “Notice that this well-ordering can be defined within L itself by a formula of set theory with no parameters, only the free-variables x and y.”
 
@@ -3954,35 +3830,17 @@
 
 - [Gödel, K. (1938). The consistency of the axiom of choice and of the generalized continuum-hypothesis. Proceedings of the National Academy of Sciences 24, 556–557.](https://doi.org/10.1073/pnas.24.12.556)
 
-### Martin's axiom stops below the continuum because the continuum case is false
-
-**Remember:** Martin's axiom claims every case that could be true, and no more.
-
-*Rules out counterexamples.* MSC 03E50 (Continuum hypothesis and Martin's axiom), 03E40. arXiv math.LO. Level 3: graduate.
-
-**Definition.** MA(κ) says that for every ccc partial order and every family of at most κ dense subsets, some filter meets them all. A partial order is ccc when every set of pairwise incompatible elements is countable. Martin's axiom says MA(κ) for every κ &lt; 𝔠.
-
-**Problem.** MA(𝔠) is false, while MA(ℵ₀) is a theorem. Martin's axiom together with the failure of the continuum hypothesis is consistent with ZFC.
-
-**How the definition helps.** The bound κ &lt; 𝔠 removes the cases that are provably false, so the axiom can be consistent. MA(𝔠) fails for the open subsets of \[0, 1\]: 𝔠 dense sets force a filter to avoid every point while it shrinks to a point. The ccc condition also excludes a bad case: finite partial maps from ω to ω₁ give ℵ₁ dense sets that no filter meets (our own). The hard part is the consistency proof by iterated forcing.
-
-**Wikipedia:** [Martin's axiom](https://en.wikipedia.org/wiki/Martin%27s_axiom). It says: “Martin's axiom is then that MA(κ) holds for every κ for which it could: Martin's axiom (MA): MA(κ) holds for every κ&lt;𝔠.”
-
-**Sources:**
-
-- [Martin, D. A.; Solovay, R. M. (1970). Internal Cohen extensions. Annals of Mathematical Logic 2, 143–178.](https://doi.org/10.1016/0003-4843(70)90009-4)
-
 ### Grothendieck universes make every set small in a large enough universe
 
 **Remember:** A universe is a whole world of sets, closed under the usual constructions.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 03E55 (Large cardinals), 18A15. arXiv math.LO, math.CT. Level 3: graduate.
 
-**Definition.** A Grothendieck universe is a set U that contains the empty set and is transitive: every element of an element of U is also in U. U is also closed under power sets and under unions indexed by elements of U. The sets in U are called small. Grothendieck's axiom of universes says that every set lies in some universe.
+**Definition.** A Grothendieck universe U is a transitive set containing ∅ and closed under unordered pairs and power sets. For every I ∈ U and family (xᵢ) indexed by I with every xᵢ ∈ U, its union belongs to U. A set is U-small if it belongs to U.
 
-**Problem.** Under the axiom of universes, a large category such as the category of sets in a universe U is itself a set. So it is small relative to a larger universe, and theorems about small categories, such as the Yoneda lemma, apply to it.
+**Problem.** Under the axiom of universes, the category of U-small sets and their functions is small in some larger universe. Theorems about small categories, such as the Yoneda lemma, then apply to it there.
 
-**How the definition helps.** Universes make every large category small when you look at it from a bigger universe. So you can form, for example, presheaves on the category of sets in U without a paradox of Russell's type. The cost is a large-cardinal axiom: there must be arbitrarily large inaccessible cardinals. Also, every notion that depends on size, such as completeness, must be made relative to U.
+**How the definition helps.** The axiom puts U in a universe W (our own). Inside W, the objects form the set U, and closure under the universe operations collects all maps between them into a set. Thus W contains the category data.
 
 **nLab:** [Grothendieck universe](https://ncatlab.org/nlab/show/Grothendieck+universe). It says: “In other words, every set is small if your universe is large enough!”
 
@@ -3997,11 +3855,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 03E55 (Large cardinals). arXiv math.LO. Level 3: graduate.
 
-**Definition.** An elementary embedding j from the universe V into a transitive class M keeps the truth of every formula of set theory. Its critical point is the least ordinal κ with j(κ) ≠ κ. An uncountable cardinal κ is measurable if some ultrafilter on κ contains no one-element set and is closed under intersections of fewer than κ sets.
+**Definition.** An elementary embedding j from V into a transitive class M preserves and reflects every first-order formula with parameters under their images. Its critical point is the least ordinal κ with j(κ) ≠ κ.
 
 **Problem.** Let j be a nontrivial elementary embedding of V into a transitive class M. Then the critical point of j is a measurable cardinal.
 
-**How the definition helps.** With the embedding form, the ultrafilter comes for free: it is the family of sets A ⊆ κ with κ in j(A). Elementarity of j gives the closure under intersections of fewer than κ sets (our own). Conversely, an ultrapower of V by such an ultrafilter gives an embedding (our own). Stronger large cardinals are then stated by asking M to contain more of V (our own).
+**How the definition helps.** Use the family of all A ⊆ κ with κ ∈ j(A) (our own). Since κ &lt; j(κ), elementarity for complements and intersections makes this an ultrafilter. Every ordinal below κ stays fixed, so no singleton belongs and intersections indexed by shorter ordinals stay in the family. The standard critical-point lemma gives that κ is an uncountable cardinal.
 
 **Wikipedia:** [Critical point (set theory)](https://en.wikipedia.org/wiki/Critical_point_%28set_theory%29). It says: “If N is V, then κ (the critical point of j) is always a measurable cardinal”
 
@@ -4009,15 +3867,15 @@
 
 ### Measurable cardinals need non-principal ultrafilters and uncountability
 
-**Remember:** A measurable cardinal has a two-valued measure that ignores every single point.
+**Remember:** Ignore singletons and keep intersections of fewer than κ large sets.
 
 *Rules out counterexamples. Confidence: medium.* MSC 03E55 (Large cardinals). arXiv math.LO. Level 3: graduate.
 
-**Definition.** A cardinal κ is measurable if it is uncountable and carries a κ-complete non-principal ultrafilter. An ultrafilter is κ-complete if it contains the intersection of any fewer than κ of its sets, and non-principal if it contains no one-point set. Equivalently, there is a two-valued measure on all subsets of κ that gives every single point measure 0. In this measure, any union of fewer than κ null sets (sets of measure 0) is null.
+**Definition.** An uncountable cardinal κ is measurable if some ultrafilter on κ contains no singleton and contains every intersection of fewer than κ members.
 
 **Problem.** Every measurable cardinal κ is regular: it is not a union of fewer than κ sets, each of size less than κ.
 
-**How the definition helps.** Each of the two conditions removes a family of trivial examples. Principal ultrafilters exist on every set and are κ-complete, so without 'non-principal' every cardinal would be measurable, including singular ones such as ℵω (our own explanation). Non-principal ultrafilters on ℵ₀ are trivially ℵ₀-complete, so 'uncountable' is also needed (our own explanation). With both conditions, every set of size less than κ is null, so κ is not a union of fewer than κ smaller sets.
+**How the definition helps.** A principal ultrafilter would admit even singular cardinals such as ℵω (our own). Every singleton has its complement in the witnessing ultrafilter. Intersecting fewer than κ such complements shows that every small set has its complement in the ultrafilter. A cover by fewer than κ small sets would put the intersection of their complements in the ultrafilter, although that intersection is empty.
 
 **Wikipedia:** [Measurable cardinal](https://en.wikipedia.org/wiki/Measurable_cardinal). It says: “Equivalently, κ is a measurable cardinal if and only if it is an uncountable cardinal with a κ-complete, non-principal ultrafilter.”
 
@@ -4050,11 +3908,11 @@
 
 *True by definition. Confidence: medium.* MSC 03E55 (Large cardinals). arXiv math.LO. Level 3: graduate.
 
-**Definition.** Call an inaccessible cardinal κ weakly compact if a compactness theorem holds for the logic whose conjunctions and disjunctions may have fewer than κ terms. The theorem says that a set of κ sentences has a model if each subset of fewer than κ sentences has one. The usual definition asks that every two-coloring of pairs from κ have a one-color subset of size κ.
+**Definition.** Call an inaccessible cardinal κ weakly compact if the following holds for every theory of κ sentences in L<sub>κ,κ</sub>. If every subtheory of size less than κ has a model, so does the theory. The logic allows conjunctions, disjunctions and quantifier blocks of length less than κ.
 
 **Problem.** Let κ be weakly compact. Every tree of height κ whose levels all have fewer than κ nodes has a branch through every level.
 
-**How the definition helps.** With the compactness definition, a branch is just a model of a set of sentences. Use a predicate B on the nodes; say for each level that B holds of some node on it, and for each pair of incomparable nodes that B fails for one of them (our own). Any fewer than κ of these sentences mention only levels below some bound, and the predecessors of one node above that bound satisfy them (our own). Compactness gives a model, and the nodes where B holds form a branch.
+**How the definition helps.** A model can select compatible nodes at every level (our own). Give each node a propositional variable, require a disjunction at each level, and forbid selecting incomparable pairs. Fewer than κ constraints mention boundedly many levels by regularity, so the predecessors of a sufficiently high node satisfy them. Compactness selects a chain meeting every level.
 
 **Wikipedia:** [Weakly compact cardinal](https://en.wikipedia.org/wiki/Weakly_compact_cardinal). It says: “and every subset with less than κ elements has a model, then Σ has a model”
 
@@ -4066,11 +3924,11 @@
 
 *True by definition. Confidence: medium.* MSC 03E55 (Large cardinals). arXiv math.LO. Level 3: graduate.
 
-**Definition.** Call κ λ-supercompact if there is an elementary embedding j of the universe into a transitive class M, one containing the elements of its elements. Such an embedding preserves the truth of every formula, and its least moved ordinal, the critical point, must be κ. Require that j(κ) &gt; λ and that M contain every sequence of length λ of its elements. The alternative asks for a fine normal κ-complete ultrafilter on the subsets of λ of size less than κ.
+**Definition.** For cardinals κ ≤ λ, call κ λ-supercompact if some elementary embedding j from V into a transitive class M has critical point κ. Require j(κ) &gt; λ and require M to contain every λ-sequence of its elements.
 
 **Problem.** Suppose κ is λ-supercompact and κ ≤ μ ≤ λ. Then κ is μ-supercompact.
 
-**How the definition helps.** With the embedding definition, the witness for λ is already a witness for μ. A sequence of length μ can be padded to length λ, so M contains it, and j(κ) &gt; λ ≥ μ (our own). With the ultrafilter definition, one must push the ultrafilter along the map x ↦ x ∩ μ and check fineness and normality (our own). The work moves to the Reinhardt–Magidor theorem that the two definitions give the same notion.
+**How the definition helps.** The same embedding works because shorter sequences can be recovered from padded ones (our own). Pad any μ-sequence in M’s elements to length λ, then restrict the resulting member of M to μ inside M. The inequality j(κ) &gt; λ also gives j(κ) &gt; μ.
 
 **Paper or page:** [Prikry type forcings and the Bukovský-Dehornoy phenomena](https://arxiv.org/abs/2308.05553v1). It says: “if and only if there is an elementary embedding”
 
@@ -4084,11 +3942,11 @@
 
 *True by definition.* MSC 03E55 (Large cardinals). arXiv math.LO. Level 3: graduate.
 
-**Definition.** Call an uncountable regular cardinal κ strongly compact if every κ-complete filter extends to a κ-complete ultrafilter. A filter is κ-complete if it is closed under intersections of fewer than κ members. The alternative asks for a compactness theorem for the infinitary logic with conjunctions and quantifier blocks of fewer than κ terms.
+**Definition.** An uncountable regular cardinal κ is strongly compact if every proper κ-complete filter on any set extends to a κ-complete ultrafilter there. A filter is κ-complete if it contains every intersection of fewer than κ members.
 
 **Problem.** Every strongly compact cardinal κ is measurable. That means κ carries a κ-complete ultrafilter that contains no singleton.
 
-**How the definition helps.** With the filter extension definition, measurability needs only one well-chosen filter. Take the subsets of κ whose complements have fewer than κ elements; regularity of κ makes this filter κ-complete (our own). Extend it to a κ-complete ultrafilter, which contains the complement of each singleton and so no singleton (our own). With the logic definition, one must first build this ultrafilter from a set of sentences, which is the theorem that the two definitions agree (our own).
+**How the definition helps.** Apply filter extension to the subsets of κ with complements of size less than κ (our own). Regularity makes their filter κ-complete. An extending κ-complete ultrafilter contains the complement of every singleton, so it contains no singleton.
 
 **nLab:** [strongly compact cardinal](https://ncatlab.org/nlab/show/strongly+compact+cardinal). It says: “Strongly compact cardinals are measurable cardinals.”
 
@@ -4106,7 +3964,7 @@
 
 **Problem.** Every weakly compact cardinal is inaccessible. So, if ZFC is consistent, ZFC cannot prove that a weakly compact cardinal exists.
 
-**How the definition helps.** The partition property alone is true of ℵ₀ by the infinite Ramsey theorem, so the word uncountable is needed (our own). The tree property, an equivalent form, also holds for ℵ₀ by König's lemma (our own). With that condition, sums and power sets of smaller sizes cannot reach a weakly compact cardinal, so it is inaccessible. The page lists the equivalent forms only for uncountable κ.
+**How the definition helps.** Ramsey’s theorem gives the partition property at ℵ₀, which fails inaccessibility (our own). For uncountable cardinals, the Erdős–Tarski theorem on the partition property gives strong inaccessibility. An inaccessible κ gives a model Vκ of ZFC, so Gödel’s second incompleteness theorem yields the stated unprovability.
 
 **Wikipedia:** [Weakly compact cardinal](https://en.wikipedia.org/wiki/Weakly_compact_cardinal). It says: “a cardinal κ is defined to be weakly compact if it is uncountable”
 
@@ -4118,11 +3976,11 @@
 
 *True by definition.* MSC 03E60 (Determinacy principles), 54E52, 91A44. arXiv math.LO, math.GN. Level 3: graduate.
 
-**Definition.** Say a set A of natural number sequences has the Baire property if its Banach–Mazur game is determined in each basic open set. In this game the players take turns extending a finite sequence, and the first player wants the limit in A. The usual definition asks that A differ from an open set by a meager set, a countable union of nowhere dense sets. The two definitions agree on Baire space.
+**Definition.** A set A of natural number sequences has the Baire property if the following game is determined from every finite starting string. Players alternately append nonempty finite strings of natural numbers. The first player wins exactly when the resulting infinite sequence belongs to A.
 
 **Problem.** The axiom of determinacy implies that every set of natural number sequences has the Baire property. The axiom says that every infinite game with natural number moves has a winning strategy for one player.
 
-**How the definition helps.** With the game definition, the axiom of determinacy applies directly. Each finite sequence is coded by a natural number, so each local Banach–Mazur game is a game with natural number moves, and the axiom makes it determined (our own). The work moves to the theorem that this definition agrees with the usual one. Wikipedia states its two halves: the first player wins exactly when A is comeager in some nonempty open subset, and the second player wins exactly when A is meager.
+**How the definition helps.** Code each nonempty finite string by a natural number (our own). Determinacy then supplies a winning strategy in every starting position, as the game definition requires. The Banach–Mazur game characterization identifies this condition with differing from an open set by a meager set.
 
 **Wikipedia:** [Banach–Mazur game](https://en.wikipedia.org/wiki/Banach%E2%80%93Mazur_game). It says: “X is comeager in some non-empty open subset”
 
@@ -4134,13 +3992,13 @@
 
 **Remember:** A cut-free proof uses nothing that its conclusion does not already contain.
 
-*Makes the theorem clean to state or prove.* MSC 03F05 (Cut-elimination and normal-form theorems), 03F07. arXiv math.LO. Level 3: graduate.
+*True by definition.* MSC 03F05 (Cut-elimination and normal-form theorems), 03F07. arXiv math.LO. Level 3: graduate.
 
-**Definition.** In Gentzen's sequent calculus, a proof derives sequents Γ ⊢ Δ, which say that the formulas in Γ together give one of the formulas in Δ. Each logical rule adds one connective on one side of a sequent. The cut rule is the only rule whose premises contain a formula that is not in its conclusion. So a proof without cut has the subformula property: every formula in it is a subformula of a formula in the conclusion.
+**Definition.** A cut-free derivation in Gentzen’s sequent calculus is a proof tree with no use of the cut rule. Cut combines Γ ⊢ Δ,A and A,Π ⊢ Λ to conclude Γ,Π ⊢ Δ,Λ.
 
 **Problem.** In the sequent calculus without cut, the empty sequent ⊢, which stands for a contradiction, has no proof.
 
-**How the definition helps.** In the calculus without cut, consistency is immediate, because the conclusion of every rule contains at least one formula. So no rule can have the empty sequent as its conclusion. In a system with cut, this is not obvious. The real content is Gentzen's cut-elimination theorem (the Hauptsatz). It says that you can change every proof with cut into a proof without cut.
+**How the definition helps.** In pure cut-free Gentzen calculus, inspection of the last inference rules out the empty sequent (our own). Each initial sequent contains a formula. Each logical or structural rule requires a formula in its conclusion, except exchange, which can only permute existing formulas. Gentzen’s cut-elimination theorem transfers consistency to the calculus with cut.
 
 **nLab:** [subformula property](https://ncatlab.org/nlab/show/subformula+property), [sequent calculus](https://ncatlab.org/nlab/show/sequent+calculus). It says: “while it is not obvious in a cut-full system that the contradiction/empty sequent · ⊢ · is not derivable, it is a corollary of the subformula property that · ⊢ · is not derivable”
 
@@ -4154,11 +4012,11 @@
 
 *True by definition. Confidence: medium.* MSC 03F07 (Structure of proofs), 03F05. arXiv math.LO. Level 3: graduate.
 
-**Definition.** A sequent Γ ⇒ Δ lists assumptions Γ and possible conclusions Δ, here as multisets. Allow every sequent Γ, A ⇒ A, Δ as an axiom, with arbitrary extra formulas. Give each two-premise rule the same side formulas in both premises. Gentzen's calculus instead has the axiom A ⇒ A and an explicit weakening rule.
+**Definition.** Use sequents with multiset contexts and initial sequents Γ, A ⇒ A, Δ for every formula A and all contexts Γ and Δ. In each logical rule, copy the side contexts of the conclusion unchanged into every premise.
 
 **Problem.** In this calculus, suppose Γ ⇒ Δ has a proof of height n. Then Γ, C ⇒ Δ has a proof of height at most n.
 
-**How the definition helps.** The extra formula can ride along in every axiom and every shared context, so no rule has to change. Wikipedia says that the broader axiom makes weakening admissible, meaning that it proves no new sequents. Our own proof is an induction on height that adds C to every sequent in the tree. In Gentzen's calculus, weakening is a primitive rule instead. Negri and von Plato build their G3 calculi this way so that the structural rules become admissible.
+**How the definition helps.** Induct on proof height, adding C to the left context throughout (our own). Rename eigenvariables first so none occurs free in C. The enlarged leaves remain axioms, and each inference still has the required side contexts. The proof tree keeps its height.
 
 **Wikipedia:** [Sequent calculus](https://en.wikipedia.org/wiki/Sequent_calculus). It says: “Any weakening that appears in a derivation can then be moved to the beginning of the proof.”
 
@@ -4166,35 +4024,17 @@
 
 - [Negri and von Plato (2001), Structural Proof Theory, Cambridge University Press](https://doi.org/10.1017/CBO9780511527340)
 
-### The Dialectica translation puts every formula in ∃∀ form over System T
-
-**Remember:** Every formula becomes 'some functional beats every challenger'.
-
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 03F10 (Functionals in proof theory), 03F25, 03F55. arXiv math.LO. Level 3: graduate.
-
-**Definition.** Gödel's Dialectica interpretation maps each formula A of Heyting arithmetic to a formula ∃x ∀y A′(x, y) with A′ quantifier-free. Here x and y are functionals of System T, the theory of primitive recursive functionals of finite type. Such functionals may take functions as inputs. For A → B, the functionals turn witnesses of A into witnesses of B, and challenges to B into challenges to A.
-
-**Problem.** Heyting arithmetic, which is Peano arithmetic without excluded middle, is consistent relative to System T, a quantifier-free theory of functionals. The same then holds for Peano arithmetic.
-
-**How the definition helps.** Because every translated formula has the same ∃∀ shape, each proof rule becomes a construction of explicit terms of System T. So a proof of a contradiction in arithmetic would give a proof of 0 = 1 in System T. The Gödel–Gentzen negative translation first reduces Peano arithmetic to Heyting arithmetic. What stays hard is the consistency of System T itself, which needs induction up to the ordinal ε₀ (our own remark).
-
-**Wikipedia:** [Dialectica interpretation](https://en.wikipedia.org/wiki/Dialectica_interpretation). It says: “Gödel's motivation for developing the dialectica interpretation was to obtain a relative consistency proof for Heyting arithmetic (and hence for Peano arithmetic).”
-
-**Sources:**
-
-- [Gödel, K. (1958). Über eine bisher noch nicht benützte Erweiterung des finiten Standpunktes. Dialectica 12, 280–287.](https://doi.org/10.1111/j.1746-8361.1958.tb01464.x)
-
 ### Hereditary base notation lets ordinals prove Goodstein's theorem
 
 **Remember:** Replace the base by ω, and every Goodstein sequence goes down.
 
 *Makes the theorem clean to state or prove.* MSC 03F15 (Recursive ordinals and ordinal notations), 03F30, 03E10. arXiv math.LO. Level 3: graduate.
 
-**Definition.** To write a number in hereditary base-n notation, write it in base n. Then write each exponent in base n, and repeat until only numbers below n appear. A Goodstein sequence writes its current term in hereditary base n, replaces every n by n + 1, and subtracts 1.
+**Definition.** For a base b ≥ 2, expand a natural number in base b and recursively expand each exponent in the same way. Starting at base 2, each Goodstein step replaces every base symbol by the next base and subtracts one from the resulting positive number. Stop at zero.
 
-**Problem.** Goodstein's theorem: every Goodstein sequence reaches 0.
+**Problem.** Every Goodstein sequence reaches zero.
 
-**How the definition helps.** Every n appears in the notation, even in the exponents, so one can replace the base by the first infinite ordinal ω. Changing the base leaves this ordinal the same, and subtracting 1 makes it strictly smaller. So the sequence gives a strictly decreasing sequence of ordinals, which must stop. Ordinary base-n notation does not work, because the exponents themselves can exceed the base.
+**How the definition helps.** Reading each hereditary expression with ω for its base gives an ordinal unchanged by the base increase (our own). At any fixed base this reading preserves strict order, by comparison at the largest differing exponent, recursively through the exponents. Subtracting one therefore strictly decreases the ordinal. No infinite strictly decreasing sequence of ordinals exists.
 
 **Wikipedia:** [Goodstein's theorem](https://en.wikipedia.org/wiki/Goodstein%27s_theorem). It says: “This notation is very similar to usual base-n positional notation for natural numbers, but the usual notation does not suffice for the purposes of Goodstein's theorem.”
 
@@ -4209,11 +4049,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 03F30 (First-order arithmetic and fragments), 03C10, 03B25. arXiv math.LO. Level 3: graduate.
 
-**Definition.** Presburger arithmetic is the first-order theory of the natural numbers with 0, 1 and addition. Extend its language by the order &lt; and, for each n, a congruence predicate x ≡ y (mod n).
+**Definition.** Presburger arithmetic describes the natural numbers with 0, 1 and addition. Expand its language by the usual order and congruence modulo each integer n ≥ 2. Two numbers are congruent modulo n if n divides their difference.
 
 **Problem.** Presburger arithmetic is decidable and complete.
 
-**How the definition helps.** With the congruence predicates, each formula ∃x φ can be replaced by an equivalent formula without quantifiers, and quantifier-free sentences are easy to check. Without them, 'x is even' is ∃y (y + y = x) (our own example). No quantifier-free formula in 0, 1, + and &lt; says it. The new predicates are themselves definable, so no expressive power is added. The elimination step for linear inequalities with congruences is the remaining work.
+**How the definition helps.** Presburger’s quantifier-elimination theorem reduces every sentence effectively to a Boolean combination of closed arithmetic tests (our own). Evaluating those tests decides the sentence, and the theory proves the result of each test. The order and congruence predicates are definable using addition, so this applies to the original language.
 
 **Wikipedia:** [Presburger arithmetic](https://en.wikipedia.org/wiki/Presburger_arithmetic). It says: “The decidability of Presburger arithmetic can be shown using quantifier elimination, supplemented by reasoning about arithmetical congruence.”
 
@@ -4223,13 +4063,13 @@
 
 **Remember:** Seven axioms are enough to make logic itself undecidable.
 
-*Makes the theorem clean to state or prove.* MSC 03F30 (First-order arithmetic and fragments), 03D35. arXiv math.LO. Level 3: graduate.
+*True by definition.* MSC 03F30 (First-order arithmetic and fragments), 03D35. arXiv math.LO. Level 3: graduate.
 
-**Definition.** Robinson arithmetic Q is Peano arithmetic without the induction schema. It has seven axioms about zero, successor, addition and multiplication. A theory is essentially undecidable if every consistent extension of it is undecidable.
+**Definition.** A theory is finitely axiomatizable if a finite list of sentences has exactly its consequences. It is undecidable if no algorithm decides theoremhood for every input sentence.
 
 **Problem.** Church's theorem: no algorithm decides which first-order sentences are valid, that is, true in every structure.
 
-**How the definition helps.** Because Q has finitely many axioms, Q proves φ exactly when the sentence 'conjunction of Q's axioms implies φ' is valid (our own step). A decision method for validity would then decide Q, which is impossible. Peano arithmetic has infinitely many axioms, so it cannot be used this way directly. The remaining work is to show that all computable functions are representable in Q, that is, that Q proves each of their values.
+**How the definition helps.** Robinson arithmetic Q is both finitely axiomatizable and undecidable. Conjoin its seven axioms into a sentence θ (our own). By first-order completeness, Q proves φ exactly when θ → φ is valid. Deciding validity would therefore decide Q.
 
 **Wikipedia:** [Robinson arithmetic](https://en.wikipedia.org/wiki/Robinson_arithmetic). It says: “Q is important and interesting because it is a finitely axiomatized fragment of PA that is recursively incompletable and essentially undecidable.”
 
@@ -4243,11 +4083,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 03F40 (Gödel numberings and issues of incompleteness), 03D20. arXiv math.LO. Level 3: graduate.
 
-**Definition.** β(a, b, i) is the remainder of a divided by 1 + (i + 1)·b. The β lemma says this about every finite sequence a₀, …, aₙ. There are numbers a and b with β(a, b, i) = aᵢ for every i ≤ n.
+**Definition.** For natural numbers a, b and i, Gödel’s β(a,b,i) is the unique remainder of a upon division by 1 + (i + 1)b.
 
 **Problem.** Every primitive recursive function, built from simple functions by composition and recursion, is definable in the language of addition and multiplication. This lets Gödel's incompleteness theorem apply to Peano arithmetic without an exponent symbol.
 
-**How the definition helps.** With β, 'there is a sequence of values that obeys the recursion' becomes 'there are two numbers a and b', a first-order statement. The β function itself is defined with remainders, which only need + and ×. The β lemma is proved with the Chinese remainder theorem, since the numbers 1 + (i + 1)·b are pairwise coprime for a suitable b. Gödel used it in 1931 and named it in 1934.
+**How the definition helps.** The β lemma codes every finite computation history using two numbers (our own). Remainders are definable by addition, multiplication and a bound on the remainder. One can therefore quantify over a history, test its initial value and each recursive step, and read its last value. Basic functions and composition are already definable, so induction on primitive recursive constructions gives the result.
 
 **Wikipedia:** [Gödel's β function](https://en.wikipedia.org/wiki/G%C3%B6del%27s_%CE%B2_function). It says: “The β function is used, in particular, in showing that the class of arithmetically definable functions is closed under primitive recursion, and therefore includes all primitive recursive functions.”
 
@@ -4261,11 +4101,11 @@
 
 *True by definition.* MSC 03F40 (Gödel numberings and issues of incompleteness), 03F45. arXiv math.LO. Level 3: graduate.
 
-**Definition.** A provability predicate Prov(x) for a theory T must satisfy three conditions. If T proves φ, then T proves Prov(\#φ). T proves Prov(\#φ) → Prov(\#Prov(\#φ)). T proves that Prov(\#(φ → ψ)) and Prov(\#φ) give Prov(\#ψ).
+**Definition.** Write □φ for the assertion that T proves φ. The derivability conditions require, for every φ and ψ, that T prove □φ whenever T proves φ. They also require T to prove □(φ → ψ) → (□φ → □ψ) and □φ → □□φ.
 
-**Problem.** Gödel's second incompleteness theorem: a consistent theory T that contains enough arithmetic does not prove its own consistency.
+**Problem.** A consistent, computably axiomatized extension T of Peano arithmetic cannot prove its own standard consistency statement ¬□⊥.
 
-**How the definition helps.** Once Prov satisfies the conditions, the second theorem follows from the Gödel sentence by short modal reasoning. The same conditions give Löb's theorem. The work moves to showing that the standard predicate for Peano arithmetic satisfies the conditions, where the page says the main effort of Gödel's proofs lay. The second condition is the hardest (our own).
+**How the definition helps.** Löb’s theorem applies to the standard provability predicate by the derivability conditions and the diagonal lemma (our own). If T proved ¬□⊥, it would prove □⊥ → ⊥. Löb’s theorem would then give a proof of ⊥ in T, contrary to consistency.
 
 **Wikipedia:** [Hilbert–Bernays–Löb provability conditions](https://en.wikipedia.org/wiki/Hilbert%E2%80%93Bernays%E2%80%93L%C3%B6b_provability_conditions). It says: “The Hilbert–Bernays–Löb provability conditions, combined with the diagonal lemma, allow proving both of Gödel's incompleteness theorems shortly.”
 
@@ -4279,11 +4119,11 @@
 
 *True by definition.* MSC 03F50 (Metamathematics of constructive systems), 03F55, 03F30. arXiv math.LO. Level 3: graduate.
 
-**Definition.** In Kleene's 1945 realizability, a natural number realizes a formula of arithmetic. A realizer of A ∨ B says which side holds and realizes it. A realizer of ∃x A(x) is a pair of a witness n and a realizer of A(n). A realizer of A → B is the index of a computable function that turns realizers of A into realizers of B.
+**Definition.** In realizability with truth for Heyting arithmetic, an existential realizer codes a witness n and a realizer of its instance A(n). The truth clause also requires the instance itself to hold (our own variant).
 
 **Problem.** Heyting arithmetic is Peano arithmetic without the law of excluded middle. It has the existence property: if it proves a sentence ∃x A(x), then it proves A(n) for some numeral n.
 
-**How the definition helps.** Kleene's definition puts the witness inside the realizer of an existential sentence, so a proof of ∃x A(x) leads straight to a number n. Every theorem of Heyting arithmetic has a realizer. Plain realizability only shows that A(n) is realized; a variant that also asks for provability gives a proof of A(n) (our own remark). Realizability does not match provability exactly, since Rose found realized formulas that are not provable.
+**How the definition helps.** The formalized soundness theorem for realizability with truth extracts a closed realizer with a provable correctness assertion from an arithmetic proof (our own). For an existential sentence, evaluate its witness component to a numeral n. The truth clause in the correctness assertion yields a proof of A(n) in Heyting arithmetic.
 
 **Wikipedia:** [Realizability](https://en.wikipedia.org/wiki/Realizability), [Disjunction and existence properties](https://en.wikipedia.org/wiki/Disjunction_and_existence_properties). It says: “A pair (n,m) realizes a formula (∃ x)A(x) if and only if m is a realizer for A(n). Thus a realizer for an existential formula produces an explicit witness for the quantifier”
 
@@ -4301,7 +4141,7 @@
 
 **Problem.** In constructive mathematics, which does not assume excluded middle, a surjective image of a finitely indexed set is finitely indexed. A surjective image of a finite set need not be finite there.
 
-**How the definition helps.** With covering lists, the theorem is a composition, because a surjection after a surjection is a surjection (our own). With bijections, the image may have repeats that one cannot detect or remove (our own). For example, divide {0, 1} by the relation that makes 0 equal to 1 exactly when a proposition p holds; if the result were finite, its size would decide p (our own). The work moves to the nLab theorem that a finitely indexed set with decidable equality is finite.
+**How the definition helps.** Compose the covering list with the surjection to cover the image (our own). For the second claim, identify 0 and 1 in a two-element set exactly when a proposition p holds. A bijective enumeration of the quotient would decide equality of those two classes and hence decide p. Constructive logic does not decide arbitrary propositions.
 
 **nLab:** [finite set](https://ncatlab.org/nlab/show/finite+set). It says: “that is, it is a quotient set of a finite set.”
 
@@ -4313,11 +4153,11 @@
 
 *Rules out counterexamples.* MSC 03F65 (Other constructive mathematics), 26E40. arXiv math.LO, math.AC. Level 3: graduate.
 
-**Definition.** A Heyting field is a local ring with 0 ≠ 1 in which every element that is not invertible equals 0. Equivalently, the relation x \# y, meaning that x − y is invertible, is a tight apartness relation, and every element apart from 0 is invertible. Tight means that elements that are not apart are equal.
+**Definition.** A Heyting field is a commutative local ring with 0 ≠ 1 in which every element that lacks an inverse equals zero.
 
 **Problem.** In constructive mathematics, without the law of excluded middle, the located Dedekind real numbers form a Heyting field. They cannot be shown to form a field in the classical sense, nor a discrete field.
 
-**How the definition helps.** The definition asks for inverses only of elements that are positively apart from 0, and the real numbers can supply those. A discrete field, in which every element is 0 or invertible, would decide whether each real number is 0 (our own). Analysts of the Bishop school define 'field' in this way. The cost is that the axiom cannot be written in coherent logic, so fewer categories can interpret it.
+**How the definition helps.** A located real has an inverse precisely when its distance from zero exceeds some positive rational (our own). If no such bound exists, the real equals zero. Locatedness also gives locality, since at least one of x and 1 − x has distance from zero exceeding 1/3. Constructively, inequality with zero need not supply a positive distance bound, and a zero-or-invertible test would decide equality with zero.
 
 **nLab:** [Heyting field](https://ncatlab.org/nlab/show/Heyting+field), [field](https://ncatlab.org/nlab/show/field). It says: “This is how 'practising' constructive analysts of the Bishop school usually define the simple word 'field'. An advantage is that the (located Dedekind) real numbers form a Heyting field”
 
@@ -4332,11 +4172,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 03G05 (Logical aspects of Boolean algebras), 03F55, 03F25. arXiv math.LO. Level 3: graduate.
 
-**Definition.** Let L be a Heyting algebra, the algebraic form of intuitionistic propositional logic. Its regular elements, the x with ¬¬x = x, form a Boolean algebra L¬¬, and x ↦ ¬¬x is the universal map from L to a Boolean algebra. So the free Boolean algebra on a set S is Heyt(S)¬¬, where Heyt(S) is the free Heyting algebra on S.
+**Definition.** For a Heyting algebra H, its Boolean reflection consists of elements x satisfying ¬¬x = x. Evaluate each operation there by applying the Heyting operation and then taking double negation. The reflection map sends x to ¬¬x.
 
 **Problem.** Glivenko's theorem: p ⇒ q is a classical propositional tautology if and only if ¬¬p ⇒ ¬¬q is an intuitionistic tautology. More generally, p is a classical tautology if and only if its double negation translation pᴺ is an intuitionistic one.
 
-**How the definition helps.** Once the free Boolean algebra is described as Heyt(S)¬¬, the proof is three lines. A classical tautology is a statement 1 ≤ (p ⇒ q) in Heyt(S)¬¬. Double negation preserves meets and implication, so this is the same as 1 ≤ (¬¬p ⇒ ¬¬q) in Heyt(S). The work moves into three lemmas: L¬¬ is Boolean, ¬¬ is left adjoint to the inclusion, and ¬¬ preserves ∧ and ⇒.
+**How the definition helps.** The reflection of the free Heyting algebra is the free Boolean algebra. The reflection map therefore interprets each classical formula by its double-negation translation (our own). An implication holds classically exactly when the reflected value of its premise lies below the reflected value of its conclusion. That inequality is precisely intuitionistic validity of ¬¬p ⇒ ¬¬q.
 
 **nLab:** [double negation translation](https://ncatlab.org/nlab/show/double+negation+translation). It says: “To say p ⇒ q is a classical tautology means that 1 ≤ (p ⇒ q) holds when interpreted in Bool(S). But since Bool(S) = Heyt(S)\_¬¬, this is equivalent to saying that”
 
@@ -4348,7 +4188,7 @@
 
 *True by definition.* MSC 03G30 (Categorical logic, topoi), 18B25. arXiv math.LO, math.CT. Level 3: graduate.
 
-**Definition.** A geometric theory T has axioms that are geometric sequents. Define its classifying topos S\[T\] as a Grothendieck topos with a universal model U. Every model in a Grothendieck topos E is f\*(U) for an essentially unique geometric morphism f : E → S\[T\]. The explicit construction uses sheaves on a category built from the formulas of T.
+**Definition.** A classifying topos for a geometric theory T is a Grothendieck topos S\[T\] with a T-model U satisfying a universal property. For every Grothendieck topos E, pulling back U induces an equivalence between geometric morphisms E → S\[T\] and T-models in E.
 
 **Problem.** A geometric sequent holds in every model of T in every Grothendieck topos exactly when it holds in the universal model.
 
@@ -4366,11 +4206,11 @@
 
 *Rules out counterexamples.* MSC 03G30 (Categorical logic, topoi), 18C30, 18C10. arXiv math.LO, math.CT. Level 3: graduate.
 
-**Definition.** A cartesian theory is a first-order theory that uses only =, ⊤ (true), ∧ (and) and the existential quantifier ∃x.φ. It may use ∃x.φ only when φ is provably subterminal: φ(x) and φ(y) together prove x = y. So the theory uses ∃ only when the witness is unique.
+**Definition.** A cartesian theory uses sequents built from atomic formulas, truth, finite conjunction and existential quantification with provably unique witnesses whenever they exist. Each occurrence ∃x φ must satisfy the provable sequent φ(x) ∧ φ(y) ⊢ x = y, with the other variables held fixed.
 
 **Problem.** Every cartesian theory has a sound interpretation in any category with finite limits.
 
-**How the definition helps.** Because the witness is unique, the formula is already its own image, so no image factorization is needed. In general, ∃ is interpreted by an image factorization, an epimorphism followed by a monomorphism, which a category with only finite limits need not have. The subterminality condition makes the projection Γ × A → Γ, restricted to φ, a monomorphism. This is what lets cartesian logic be the internal logic of every finitely complete category.
+**How the definition helps.** Uniqueness makes the projection from the satisfying assignments to their context a monomorphism. Its image is therefore the same subobject. Unrestricted quantification could require the image of a projection that has no image in a category with finite limits. Finite limits interpret the remaining cartesian operations (our own).
 
 **nLab:** [cartesian logic](https://ncatlab.org/nlab/show/cartesian+logic). It says: “the existential quantifier is interpreted as an image factorization, but the subterminality side condition ensures the image exists even in an arbitrary category with finite limits.”
 
@@ -4384,7 +4224,7 @@
 
 *True by definition. Confidence: medium.* MSC 03G30 (Categorical logic, topoi), 18F10. arXiv math.CT, math.LO. Level 3: graduate.
 
-**Definition.** A geometric theory uses only conjunction, possibly infinite disjunction and existential quantifiers. The classifying topos of such a theory T is a Grothendieck topos S\[T\] with a universal model U. Every model of T in any Grothendieck topos E is the pullback of U along a geometric morphism from E to S\[T\], unique up to isomorphism.
+**Definition.** A classifying topos for a geometric theory T is a Grothendieck topos S\[T\] with a T-model U. For every Grothendieck topos E, pulling back U gives an equivalence between geometric morphisms E → S\[T\] and T-models in E.
 
 **Problem.** Let g from E to S\[T\] classify a model X in E, and let f be a geometric morphism from F to E. Then g∘f classifies the pulled-back model f\*X.
 
@@ -4400,11 +4240,11 @@
 
 *True by definition.* MSC 03G30 (Categorical logic, topoi), 18B25. arXiv math.LO, math.CT. Level 3: graduate.
 
-**Definition.** A topos is a category that behaves like a category of sheaves. The inverse image of a geometric morphism preserves finite limits and has a right adjoint. Geometric formulas use only true, false, finite ∧, arbitrary ∨ and ∃. Implication and ∀ appear only once, at the top level, in a sequent φ ⊢ ψ.
+**Definition.** Geometric formulas start with atomic formulas, including equality, and allow finite conjunctions, set-indexed disjunctions and existential quantification. A geometric sequent asserts that one such formula implies another for every assignment to their shared context.
 
 **Problem.** Inverse image along a geometric morphism sends models of a geometric theory to models and keeps geometric sequents true.
 
-**How the definition helps.** Each geometric connective is built from finite limits and colimits, which inverse images preserve (our own). The nLab notes that inverse images preserve finite limits by definition and all colimits as left adjoints. Conjunction is a pullback, disjunction is a union, and ∃ is an image (our own). Unions and images are built from finite limits and colimits (our own). Implication and ∀ are left out because inverse images do not preserve them in general (our own).
+**How the definition helps.** Inverse images preserve each operation used to interpret a geometric formula (our own). They preserve finite limits by definition and colimits because they have right adjoints. These constructions give conjunctions, unions and images, the last of which interpret existential quantification. Consequently inverse images preserve the subobject inclusions interpreting sequents and carry models to models.
 
 **nLab:** [geometric morphism](https://ncatlab.org/nlab/show/geometric+morphism), [geometric theory](https://ncatlab.org/nlab/show/geometric+theory). It says: “necessarily preserves all constructions in geometric logic.”
 
@@ -4418,11 +4258,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 03G30 (Categorical logic, topoi), 03B10, 18F10. arXiv math.LO, math.CT. Level 3: graduate.
 
-**Definition.** Coherent logic is the part of first-order logic built from finite 'and', finite 'or' and 'there exists', with axioms of the form 'φ implies ψ'. The Morleyization of a finitary first-order theory adds a new relation symbol for each first-order formula and for its negation. It also adds coherent axioms that make these relations mean what they should over classical logic. So the result is a coherent theory.
+**Definition.** Classical Morleyization names each formula by a predicate on its free variables and names its complement. Coherent axioms make the two names complementary and enforce the recursive clauses for atoms, conjunction, disjunction and existential quantification. Express the other classical connectives and universal quantification using these operations and complements.
 
 **Problem.** Gödel's completeness theorem: in classical first-order logic, a statement that holds in every model in Set is provable.
 
-**How the definition helps.** Morleyization moves a classical theory into coherent logic, where Deligne's theorem already gives completeness. Deligne's theorem says that every coherent topos has enough points, and the points of the classifying topos of a coherent theory are its models in Set. So models in Set detect provability in coherent logic. Over classical logic, a theory is equivalent to its Morleyization, so this gives classical completeness.
+**How the definition helps.** Morleyization expresses classical provability and satisfaction through a coherent theory. Deligne’s theorem gives its classifying topos enough points, and those points correspond to models in Set. Hence validity in all such models detects coherent provability. Translating back gives classical completeness.
 
 **nLab:** [coherent logic](https://ncatlab.org/nlab/show/coherent+logic). It says: “It follows that models in Set are sufficient to detect provability in coherent logic. By Morleyization, we can obtain from this the classical completeness theorem for first-order logic.”
 
@@ -4436,11 +4276,11 @@
 
 *True by definition.* MSC 03G30 (Categorical logic, topoi), 18A30. arXiv math.LO, math.CT. Level 3: graduate.
 
-**Definition.** Define ℕ as the initial set with a chosen point and a map to itself. Initial means that it has exactly one map to any other such set that preserves the point and the map. Such a structure is an algebra for the construction X ↦ 1 + X, which adds one new point to a set. The Peano axioms instead list separate conditions on zero and successor.
+**Definition.** Define (ℕ,0,s) as an initial set with a point and a self-map. For each pointed set (X,a) with self-map f, exactly one map h from ℕ to X satisfies h(0) = a and h∘s = f∘h.
 
 **Problem.** In ℕ, zero is not a successor, and the successor map is injective.
 
-**How the definition helps.** Lambek's lemma turns both claims into one fact: zero and successor together give a bijection from 1 + ℕ to ℕ (our own). The nLab states this lemma, that the structure map of an initial algebra is an isomorphism. Since 1 + ℕ is one new point plus a separate copy of ℕ, injectivity means that zero is not a successor and successor is injective (our own). The work moves to proving Lambek's lemma (our own).
+**How the definition helps.** Lambek’s lemma makes the structure map from the disjoint union 1 + ℕ to ℕ a bijection (our own). It sends the separate point to zero and acts by successor on the other summand. Injectivity separates zero from every successor and separates successors of distinct numbers.
 
 **nLab:** [initial algebra of an endofunctor](https://ncatlab.org/nlab/show/initial+algebra+of+an+endofunctor). It says: “If F has an initial algebra α: F(X) → X, then X is isomorphic to F(X) via α.”
 
@@ -4448,33 +4288,15 @@
 
 - [Joachim Lambek, A fixpoint theorem for complete categories (1968)](https://doi.org/10.1007/bf01110627)
 
-### Bidirectional typing confines type conversion to one rule
-
-**Remember:** Type equality is used in one place only: where synthesis switches to checking.
-
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 03B38 (Type theory), 18C50. arXiv math.LO, cs.LO. Level 4: research.
-
-**Definition.** Replace the typing judgment T : A by two judgments. T ⇒ A says that T synthesizes the type A, so T determines A. T ⇐ A says that T checks against the type A. The only way to derive T ⇐ B is the mode-switching rule: from T ⇒ A and A ≡ B, conclude T ⇐ B.
-
-**Problem.** The initiality theorem for dependent type theory: the syntax is the initial model, so each derivation has a well-defined meaning.
-
-**How the definition helps.** Bidirectional typing puts every use of type equality at one known step, so the semantics has fewer derivations to identify. In the usual presentation, the conversion rule can be applied anywhere and again and again, so one judgment has many derivations; the page calls identifying them the ickiest part of an initiality proof. With fully annotated terms, judgmental equality is used exactly when the mode switches. The full interpretation must still be built, so the theorem does not become trivial.
-
-**nLab:** [Initiality Project - Type Theory](https://ncatlab.org/nlab/show/Initiality+Project+-+Type+Theory), [bidirectional typechecking](https://ncatlab.org/nlab/show/bidirectional+typechecking). It says: “This variant doesn't help with typechecking algorithms, but it still factors out type conversion cleanly: the equality judgment is used when, and only when, the mode switches.”
-
-**Sources:**
-
-- [Jana Dunfield, Neel Krishnaswami, Bidirectional typing, ACM Computing Surveys 54(5) (2021), arXiv:1908.05839](https://arxiv.org/abs/1908.05839)
-
 ### Defining sets as a terminal coalgebra makes anti-foundation hold
 
 **Remember:** A graph decoration is a map into the terminal coalgebra, so it is unique.
 
 *True by definition. Confidence: medium.* MSC 03B38 (Type theory), 03E65, 18A30. arXiv math.LO, math.CT. Level 4: research.
 
-**Definition.** A coalgebra for the small powerset functor is a type X with a map that sends each x to a small subset of X. We read this subset as the members of x. A coalgebra is terminal if every other coalgebra has exactly one structure-preserving map into it. The paper builds such a terminal coalgebra V⁰∞ in homotopy type theory.
+**Definition.** A small-powerset coalgebra assigns each node a small set of children. A map preserves this structure if each image node has exactly the images of the original node’s children as its children. A terminal coalgebra receives exactly one such map from every coalgebra.
 
-**Problem.** In V⁰∞, Aczel's anti-foundation axiom holds: every graph has exactly one decoration. A decoration gives each node a set whose members are the sets given to its children.
+**Problem.** In V⁰∞, every graph with a small set of children at each node has exactly one decoration. A decoration assigns sets to nodes so that each assigned set has exactly the sets assigned to the children as members.
 
 **How the definition helps.** A graph is itself a coalgebra, because each node has a set of children. A decoration is then a coalgebra map into V⁰∞, so terminality gives exactly one decoration (our own account of the standard argument). The hard work is to build the terminal coalgebra and to show that its membership relation is extensional. The latest version of the paper notes that this construction needs propositional resizing, an extra axiom.
 
@@ -4490,11 +4312,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 03B38 (Type theory), 12J15, 03E10. arXiv math.LO. Level 4: research.
 
-**Definition.** Conway makes a surreal number from two sets of earlier numbers, the left and right options, with each left option less than each right option. Classically, two such forms count as the same number when each is ≤ the other, so numbers are equivalence classes. The HoTT Book defines the type NO and its order as a higher inductive type, which has constructors for equalities as well as for elements. One constructor makes a number from a cut, and an equality constructor gives x = y whenever x ≤ y and y ≤ x.
+**Definition.** The surreal type NO is generated jointly with its order. Each cut gives a number whenever every left option is strictly less than every right option. An identification constructor equates any x and y satisfying both x ≤ y and y ≤ x.
 
-**Problem.** Conway's simplicity theorem holds in NO as a true equality: if z lies strictly between the left and right options of x, and no option of z does, then x = z.
+**Problem.** Suppose z lies strictly between all left and right options of x, but no option of z does. Then x = z in NO.
 
-**How the definition helps.** The equality constructor makes Conway's two-sided ≤ into the equality of NO, so there is no separate quotient step. Classically, one must first define games and then show that each operation respects the equivalence (our own comparison). What stays hard is that NO and its order must be defined at the same time (our own). Even x ≤ x is a theorem in the book, Conway's Theorem 0.
+**How the definition helps.** Conway’s simplicity argument proves the two order inequalities for the indicated cut (our own). The identification constructor then turns those inequalities into equality in NO. This last step uses the identity type directly.
 
 **nLab:** [surreal number](https://ncatlab.org/nlab/show/surreal+number). It says: “In homotopy type theory, the surreal numbers can be defined as a higher inductive type, roughly following Conway's definition but imposing the "defined" notion of equality as the "actual" equality with an identification-constructor.”
 
@@ -4504,35 +4326,17 @@
 
 - [The Univalent Foundations Program, Homotopy Type Theory: Univalent Foundations of Mathematics (the HoTT Book), Institute for Advanced Study (2013)](https://hott.github.io/book/hott-online-78-g0bb33d2.pdf)
 
-### Fully annotated syntax lets plain recursion define the interpretation
-
-**Remember:** Each term carries its own type, so you can read its meaning from the term.
-
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 03B38 (Type theory), 18C50. arXiv math.LO, cs.LO. Level 4: research.
-
-**Definition.** Write each term with all its type information. For example, an application App(M, N) also records the Π-type (x:A)B of M, the type of dependent functions that M has. Then every term that has a type synthesizes a canonical type from its context and its own syntax.
-
-**Problem.** Initiality theorem, following Streicher: the syntax of a dependent type theory is the initial model among its categorical models. Initial means that it has exactly one structure-preserving map to every other model.
-
-**How the definition helps.** With full annotations, you can define the interpretation by plain recursion on raw terms, before type checking. First you define a partial interpretation this way, and then you show that it is total on derivable judgments. The project page says that it is at best unclear whether less annotated syntax works without a step that amounts to adding the annotations. The long part, the proof of totality, remains; it takes about 40 pages in Streicher.
-
-**nLab:** [Initiality Project - Overview](https://ncatlab.org/nlab/show/Initiality+Project+-+Overview). It says: “It is, at best, unclear whether any less than fully annotated syntax can be used in an initiality theorem without preprocessing that is tantamount to annotating it.”
-
-**Sources:**
-
-- [Thomas Streicher, Semantics of Type Theory: Correctness, Completeness and Independence Results, Birkhäuser (1991)](https://doi.org/10.1007/978-1-4612-0433-6)
-
 ### Groups as pointed connected 1-types let Nielsen–Schreier be stated in HoTT
 
-**Remember:** A subgroup is a covering space, so freeness means finding a spanning tree.
+**Remember:** Model the subgroup by a pointed connected cover of the group’s delooping.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 03B38 (Type theory), 55R35, 20E05. arXiv math.LO, math.AT. Level 4: research.
 
-**Definition.** In homotopy type theory, a group G can be given as a type BG that is pointed, connected and 1-truncated. 1-truncated means that it has no nontrivial paths between paths. The group is the type of loops at the base point. A subgroup then corresponds to a connected covering space over BG, that is, a family of sets indexed by BG.
+**Definition.** A delooping of G is a pointed connected type whose path types are sets and whose base-point loop group is isomorphic to G. A subgroup corresponds to a set-valued family over the delooping with connected total space and a chosen lift of the base point.
 
 **Problem.** In homotopy type theory, every finite index subgroup of a free group is free, without the axiom of choice. With the axiom of choice, every subgroup of a free group is free.
 
-**How the definition helps.** In this form, a subgroup is a covering space whose total space is a graph, so freeness reduces to finding a spanning tree. If the graph has a spanning tree, its realisation is the free group on the edges outside the tree. A spanning tree exists constructively when there are finitely many vertices and the edges form a set with decidable equality. In general the paper uses the axiom of choice to find one.
+**How the definition helps.** For a free group the delooping has a graph presentation, which lifts to a graph presenting the cover (our own). A spanning tree exhibits its loop group as free on the remaining edges. The paper proves the finite-index case constructively and uses choice for the general case.
 
 **Paper or page:** [On the Nielsen-Schreier Theorem in Homotopy Type Theory](https://arxiv.org/abs/2010.01187), [On the Nielsen-Schreier Theorem in Homotopy Type Theory](https://arxiv.org/abs/2010.01187). It says: “We give a formulation of the Nielsen-Schreier theorem (subgroups of free groups are free) in homotopy type theory using the presentation of groups as pointed connected 1-truncated types. We show the special case of finite index subgroups holds constructively”
 
@@ -4540,31 +4344,13 @@
 
 - [Andrew W. Swan, On the Nielsen-Schreier Theorem in Homotopy Type Theory, Logical Methods in Computer Science 18(1) (2022), arXiv:2010.01187](https://arxiv.org/abs/2010.01187)
 
-### Half 2-adjoint data make being an equivalence a property again
-
-**Remember:** At each level of coherence, ask for half, not all.
-
-*Rules out counterexamples. Confidence: medium.* MSC 03B38 (Type theory), 18N45. arXiv math.LO, math.CT. Level 4: research.
-
-**Definition.** In homotopy type theory, quasi-inverse data for a map f are an inverse g and homotopies gf ∼ id and fg ∼ id. A half adjoint equivalence adds one coherence. A half 2-adjoint equivalence (ish2adj) adds half of the next level of coherence.
-
-**Problem.** For any map f : A → B, the type of half 2-adjoint equivalence data for f is a proposition. So being an equivalence in this sense is a property, not extra structure.
-
-**How the definition helps.** Asking for only half of each new coherence makes the extra data contractible, that is, unique up to paths. Asking for both halves leaves free choices. The quasi-inverse data for the identity of the circle S¹ do not form a proposition. Full adjoint and full 2-adjoint data for the identity of the 2-sphere S² do not form one either, since S² has nontrivial 2-dimensional loops.
-
-**Paper or page:** [2-adjoint equivalences in homotopy type theory](https://arxiv.org/abs/2008.12433), [2-adjoint equivalences in homotopy type theory](https://arxiv.org/abs/2008.12433). It says: “For any f : A → B, the type ish2adj f is a proposition.”
-
-**Sources:**
-
-- [Daniel Carranza, Jonathan Chang, Chris Kapulkin and Ryan Sandford, 2-adjoint equivalences in homotopy type theory, Logical Methods in Computer Science 17(1) (2021), arXiv:2008.12433](https://arxiv.org/abs/2008.12433)
-
 ### In homotopy type theory, the epimorphisms are exactly the acyclic maps
 
-**Remember:** Homotopy epimorphisms are the maps whose fibers have contractible suspensions.
+**Remember:** Test epimorphisms by precomposition and acyclicity by suspending each fiber.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 03B38 (Type theory), 55P10. arXiv cs.LO, math.AT. Level 4: research.
 
-**Definition.** A map f : A → B of types is an epimorphism if composing with f is an embedding, the homotopy version of an injective map. The embedding goes from maps B → X to maps A → X, for every type X. A type is acyclic if its suspension, which glues two points along the type, is contractible, that is, equivalent to a point. A map is acyclic if all its fibers, the homotopy preimages of points, are acyclic.
+**Definition.** A map f is an epimorphism if precomposition with f on maps into X is an embedding for every type X. A map is an embedding if each of its fibers is a proposition. A map is acyclic if the suspension of each fiber is contractible.
 
 **Problem.** In homotopy type theory, a map of types is an epimorphism exactly when it is acyclic.
 
@@ -4584,9 +4370,9 @@
 
 **Definition.** System F is the polymorphic lambda calculus: a term of type ∀X.A can be used at type A with X replaced by any type. Atomic System F allows the replacement only by type variables, not by compound types.
 
-**Problem.** In atomic System F, the typable terms are exactly the simply typable terms, and type checking is decidable. In full System F, type checking is undecidable.
+**Problem.** For unannotated terms in atomic System F, typability coincides with simple typability, and checking against a given type is decidable. Checking unannotated terms against a given type in full System F is undecidable.
 
-**How the definition helps.** The restriction keeps polymorphism so weak that it disappears when one erases the quantifiers. The paper's Lemma 4.1 deletes each ∀ and sends each type variable to one base type, which maps every typing to a simply typed one. So typability is decidable, and the paper gives a separate algorithm for type checking with a given type (Theorem 4.2). Type inhabitation stays undecidable (Corollary 3.1).
+**How the definition helps.** Variable-only instantiation survives erasure to simple types (our own). Lemma 4.1 erases quantifiers and identifies type variables, while every simple typing already belongs to the fragment. Theorem 4.2 gives the separate algorithm for checking a specified type. Full System F admits compound instantiations and has undecidable Curry-style type checking.
 
 **Paper or page:** [What's Decidable about (Atomic) Polymorphism](https://arxiv.org/abs/2105.00748v1). It says: “In this paper we investigate System Fat, or atomic System F, a very weak predicative fragment of System F whose typable terms coincide with the simply typable ones. We show that the type-checking problem for Fat is decidable”
 
@@ -4596,15 +4382,15 @@
 
 ### Iterative sets give univalent foundations a universe that is a set
 
-**Remember:** A universe of sets that is itself a set can model type theory.
+**Remember:** At every node, an embedding indexes the children without repetitions.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 03B38 (Type theory), 03F65. arXiv cs.LO, math.LO. Level 4: research.
 
-**Definition.** An iterative set is a well-founded tree, as in Aczel's model of set theory in type theory. The children of each node are indexed by a type, and the indexing must be an embedding at every level, so no child repeats. The type of all iterative sets is written V⁰. The paper makes V⁰ a universe, in which each iterative set is the code of the type of its elements.
+**Definition.** An iterative set is a well-founded tree whose children at every node form a small family indexed by an embedding into the type of trees. Write V⁰ for the type of these trees and decode each tree as the indexing type of its children.
 
 **Problem.** The type V⁰ of iterative sets is an h-set, a type in which any two proofs of an equality are equal. It forms a category with families that models extensional type theory inside homotopy type theory. The type of all h-sets cannot play this role, since univalence makes it not an h-set.
 
-**How the definition helps.** V⁰ is itself an h-set, so it can serve as the strict universe of sets that internal models of type theory need (our own remark). Gylterud proved this in 2018. The paper makes V⁰ a locally cartesian closed category, which gives the category with families. This works in a small univalent type theory with W-types and without higher inductive types.
+**How the definition helps.** The embedding condition gives a universe of codes whose identity types are propositions, by Gylterud’s theorem (our own). Decoding a code supplies its type of elements. The paper constructs the category with families and the operations needed for extensional type theory. In the universe of all h-sets, univalence turns distinct automorphisms into distinct self-identifications.
 
 **Paper or page:** [The Category of Iterative Sets in Homotopy Type Theory and Univalent Foundations](https://arxiv.org/abs/2402.04893v1). It says: “This enables us to organize it into a category with families with the structure necessary to model extensional type theory internally in HoTT/UF.”
 
@@ -4618,11 +4404,11 @@
 
 *True by definition. Confidence: medium.* MSC 03B38 (Type theory), 03G30. arXiv math.LO, math.CT. Level 4: research.
 
-**Definition.** Represent a type over a context Γ as a pair (f, A). Here f, which the nLab calls a delayed substitution, is a map from Γ to some Δ, and A is a type over Δ. Substitution along a map g then only composes g with f. The usual representation pulls A back along each substitution, which is associative only up to isomorphism.
+**Definition.** A local universe type over Γ consists of a context Δ, a type A over Δ and a map f from Γ to Δ. Substitution along g replaces f by f∘g and keeps Δ and A.
 
-**Problem.** In the local universes model, essentially all type formers, such as dependent products, commute strictly with substitution. Forming a type before or after substitution gives the same type, not just an isomorphic one.
+**Problem.** Under the hypotheses of the Lumsdaine–Warren coherence theorem, the lifted type formers, including dependent products when present, commute strictly with substitution.
 
-**How the definition helps.** Substitution changes only the map f, so a type formed once over its own base cannot be disturbed by later substitution. The nLab says that Lumsdaine and Warren extend essentially all type formers to this representation. The work moves into that extension. Our own reading is that each new type must be formed over a suitable new base, which the paper builds from local universes.
+**How the definition helps.** A lifted type former acts on universal parameters, so substitution only changes their classifying map (our own). Associativity of composition gives strict agreement after substitution. The Lumsdaine–Warren coherence theorem constructs the lifts under its hypotheses on the original model.
 
 **nLab:** [categorical semantics of dependent type theory](https://ncatlab.org/nlab/show/categorical+semantics+of+dependent+type+theory). It says: “Type-theoretically, we can regard (f,A) as a type A with a "delayed substitution" f. This produces a split fibration (the chosen cartesian arrows are given by composition of morphisms in C), and it was proven by Lumsdaine &amp; Warren (2015) that essentially all type formers can be extended to it from E.”
 
@@ -4636,11 +4422,11 @@
 
 *True by definition.* MSC 03B38 (Type theory). arXiv math.LO, cs.LO. Level 4: research.
 
-**Definition.** In observational type theory, the equality type is not one inductive family for all types. Instead, each type gets its own definition of equality, by recursion on how the type is built.
+**Definition.** Observational type theory defines equality recursively on types. At a function type, equality compares outputs on equal inputs using the equality of the output type. In its specified universe of propositions, equality compares propositions by mutual implication.
 
 **Problem.** In observational type theory, function extensionality holds without extra axioms, and so does propositional extensionality for a specified universe of propositions. Function extensionality says that functions with equal values are equal.
 
-**How the definition helps.** Equality of functions is defined by their behaviour, so function extensionality holds by definition. A form of propositional extensionality, for a specified universe of propositions, is also built in. The cost is that this works only for types that behave like sets, the h-sets of homotopy type theory. Higher observational type theory studies the extension to higher types.
+**How the definition helps.** The function clause turns pointwise equality into function equality, using transport along input equalities (our own). In the specified universe, maps in both directions give equality of propositions by the proposition clause.
 
 **nLab:** [observational type theory](https://ncatlab.org/nlab/show/observational+type+theory). It says: “Since equality is defined type-by-type, OTT enjoys function extensionality, and a form of propositional extensionality at least for a specified universe of propositions”
 
@@ -4654,11 +4440,11 @@
 
 *True by definition. Confidence: medium.* MSC 03B38 (Type theory), 18N45, 18F20. arXiv math.LO, math.CT. Level 4: research.
 
-**Definition.** A category is univalent when isomorphic objects are equal, in the sense of the univalence principle. A category with families (CwF) is a model of dependent type theory: it is a category with a chosen context extension for each type. A representable map of presheaves only asks that such extensions exist.
+**Definition.** A category is univalent if, for every pair of objects, the canonical map from their identity type to their isomorphisms is an equivalence.
 
 **Problem.** If a category 𝒞 is univalent, the forgetful map from CwF structures to representable maps of presheaves on 𝒞 is an equivalence. So every representable map carries a unique choice of context extensions.
 
-**How the definition helps.** In a univalent category, a representing object is unique up to unique isomorphism, and isomorphism is equality. So a choice is no extra information (our own explanation). In a category that is not univalent, the two structures can differ, because one carries a choice and the other does not (our own).
+**How the definition helps.** For each required context extension, the representing object with its universal data is unique up to unique compatible isomorphism (our own). Univalence turns this into contractibility of the type of representing data whenever it is inhabited. Representability therefore supplies a unique choice at each context and type, giving the inverse to forgetting the choices.
 
 **Paper or page:** [Categorical structures for type theory in univalent foundations](https://arxiv.org/abs/1705.04310). It says: “If 𝒞 is a univalent category, then the forgetful map from CwF structures to representable maps of presheaves on 𝒞 is an equivalence. That is, any representable map of presheaves on 𝒞 carries a unique choice of representing data.”
 
@@ -4668,15 +4454,15 @@
 
 ### Pointed maps into a homogeneous type are equal when their functions are
 
-**Remember:** In a homogeneous type, the base point needs no extra care.
+**Remember:** Move the base point to each point by a chosen self-equivalence.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 03B38 (Type theory), 55Q05. arXiv math.AT, math.LO. Level 4: research.
 
-**Definition.** In homotopy type theory, a pointed type B is homogeneous when each point b of B has a self-equivalence of B. That equivalence must send the base point to b. Eilenberg–MacLane types and loop spaces are homogeneous.
+**Definition.** A pointed type B with base point b₀ is homogeneous if it comes with a family of self-equivalences eᵦ indexed by b ∈ B. Each eᵦ comes with a path from eᵦ(b₀) to b.
 
 **Problem.** Let B be homogeneous and let f, g : A → B be pointed maps. If f = g as plain functions, then f = g as pointed maps.
 
-**How the definition helps.** Homogeneity lets one move any point to the base point. So the base-point data can always be corrected afterwards, and only the plain functions need to agree. The lemma is due to Evan Cavallo, and it removes much coherence work in proofs about cohomology. The hard part is to show that the target type is homogeneous.
+**How the definition helps.** The chosen equivalences let a homotopy between the functions be adjusted to respect the pointing (our own). Cavallo’s lemma gives this adjustment for every homogeneous target. The adjusted homotopy gives equality of the pointed maps.
 
 **Paper or page:** [Symmetric Monoidal Smash Products in Homotopy Type Theory](https://arxiv.org/abs/2402.03523), [Computational Synthetic Cohomology Theory in Homotopy Type Theory](https://arxiv.org/abs/2401.16336). It says: “Let f ,g : A →⋆ B and let B be homogeneous. If f = g as plain functions, then f = g as pointed functions.”
 
@@ -4691,11 +4477,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 03B38 (Type theory), 03E10. arXiv cs.LO, math.LO. Level 4: research.
 
-**Definition.** In univalent type theory, a type-theoretic ordinal is a set with a relation &lt; that is proposition-valued, transitive, extensional and well-founded. A set-theoretic ordinal is a transitive set of transitive sets in the cumulative hierarchy V, which is the type of sets built inside type theory. Its order is membership. The univalence axiom says that equivalent types, and so isomorphic structures, are equal.
+**Definition.** A type-theoretic ordinal is a set with a proposition-valued, transitive, extensional and well-founded relation. A set-theoretic ordinal is a transitive set of transitive sets in the cumulative hierarchy V, ordered by membership.
 
 **Problem.** The type Ord of type-theoretic ordinals and the type 𝕍ᵒʳᵈ of set-theoretic ordinals are isomorphic as type-theoretic ordinals. So, by univalence, they are equal.
 
-**How the definition helps.** With univalence, an isomorphism of ordinals is already an equality, so the comparison needs only a map that preserves and reflects the order. The work moves into building that map: the paper's map Φ from Ord to V is injective and turns &lt; into membership (Lemma 28). What stays hard is size: Ψ(x) and the type of members of x are isomorphic but not equal, since they live in different universes (Corollary 46).
+**How the definition helps.** The ordinal comparison theorem supplies an order isomorphism between the two types of ordinals. Structure identity for ordinals then turns that isomorphism into an equality by univalence (our own). The comparison must establish that every set-theoretic ordinal occurs as an image, as well as identify the two orders.
 
 **Paper or page:** [Set-Theoretic and Type-Theoretic Ordinals Coincide](https://arxiv.org/abs/2301.10696v3). It says: “The ordinals Ord and 𝕍ᵒʳᵈ are isomorphic (as type-theoretic ordinals). Hence, by univalence, they are equal.”
 
@@ -4705,15 +4491,15 @@
 
 ### Two-level type theory adds strict equality to define semisimplicial types
 
-**Remember:** Use strict equality as scaffolding, then keep only the fibrant result.
+**Remember:** Use strict face identities to index fibrant families of simplices by their boundaries.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 03B38 (Type theory), 18N40. arXiv math.LO, cs.LO. Level 4: research.
 
-**Definition.** Two-level type theory has two layers. The inner layer holds the usual fibrant types of homotopy type theory, in which equality behaves like homotopy. The outer layer holds pretypes with a strict equality that is not fibrant. The outer layer is modelled on the strict structure of a model category that presents the homotopy theory.
+**Definition.** A strict n-truncated semisimplicial diagram assigns types to dimensions 0 through n and face maps dᵢ between consecutive dimensions. The maps satisfy dᵢ∘dⱼ = dⱼ₋₁∘dᵢ for i &lt; j wherever both composites exist, using outer strict equality. In the fibrant-family presentation, higher simplices are fibrant types indexed by their compatible boundaries.
 
 **Problem.** In two-level type theory with two natural numbers types, there is a fibrant type of n-truncated semisimplicial types for each n. A semisimplicial type is the type version of a semisimplicial set, a simplicial set without degeneracy maps.
 
-**How the definition helps.** The strict outer equality lets one state the simplicial identities strictly, instead of up to coherent homotopy. In plain homotopy type theory, that coherence is what blocks the definition. The nLab notes a limit: the untruncated semisimplicial types cannot be defined without extra rules.
+**How the definition helps.** Outer equality expresses boundary compatibility without an infinite list of higher coherences (our own). The finite-stage construction extends the previous data by fibrant families over those boundaries. The two-level construction proves fibrancy of the resulting type at each finite stage.
 
 **nLab:** [two-level type theory](https://ncatlab.org/nlab/show/two-level+type+theory). It says: “Two-level type theories (including HTS and ACK) were motivated to a large extent by the technical difficulties encountered in formalizing semisimplicial types in default homotopy type theory (HoTT).”
 
@@ -4727,11 +4513,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 03B38 (Type theory), 03F65. arXiv math.LO, cs.LO. Level 4: research.
 
-**Definition.** In homotopy type theory, a function f : A → B is weakly constant if f x = f y for all x, y : A. This does not ask for a value b with f = λx.b. So the identity function of the empty type is weakly constant.
+**Definition.** A function f from A to B is weakly constant if f(x) = f(y) for all x and y in A.
 
-**Problem.** A type A has split support, a map from its propositional truncation ‖A‖ to A, if and only if A has a weakly constant endomap. So A is a set exactly when each identity type x = y has a weakly constant endomap, and Hedberg's theorem follows: a type with decidable equality is a set.
+**Problem.** A type A has a map from its propositional truncation ‖A‖ to A exactly when it admits a weakly constant endomap. Consequently A is a set exactly when every identity type of A admits such an endomap. In particular, every type with decidable equality is a set.
 
-**How the definition helps.** Weak constancy is just enough to make the fixed points of f a proposition, and it needs no given point. For a weakly constant endomap f, the type Σ x, f x = x is a proposition equivalent to ‖A‖, and its first projection splits the support of A. For Hedberg's theorem, decidable equality gives a weakly constant endomap on each identity type, which sends every path to a chosen path when one exists. The fixed-point lemma is the real work.
+**How the definition helps.** The fixed-point lemma identifies the fixed-point type of a weakly constant endomap with ‖A‖ (our own). Projection gives the required map, and conversely a map from ‖A‖ gives a weakly constant endomap by composition with truncation. Applied to identity types, the fixed-point lemma gives the generalized Hedberg theorem. Decidable equality supplies the required endomaps by returning the chosen path whenever one exists.
 
 **nLab:** [weakly constant function](https://ncatlab.org/nlab/show/weakly+constant+function), [Hedberg's theorem](https://ncatlab.org/nlab/show/Hedberg%27s+theorem), [split support](https://ncatlab.org/nlab/show/split+support). It says: “A type A has split support if and only if it admits a weakly constant endomap f:A→A.”
 
@@ -4746,11 +4532,11 @@
 
 *True by definition. Confidence: medium.* MSC 03B38 (Type theory), 03F50. arXiv math.LO. Level 4: research.
 
-**Definition.** Aczel's W-type has an element sup(A, f) for each small type A and map f from A to the W-type. Aczel identifies two elements when they have the same members up to his inductive equivalence, and this gives sets. Here one uses the identity type instead. With univalence, sup(A, f) = sup(B, g) means, roughly, an equivalence between A and B that matches f with g.
+**Definition.** A multiset tree sup(A,f) has a small type A of occurrences and a subtree f(a) at each occurrence a. These well-founded trees form Aczel’s W-type, with equality given by its identity type. Membership z ∈ sup(A,f) is the type of pairs (a,p) with a ∈ A and p an identification of f(a) with z.
 
 **Problem.** With univalence, Aczel's W-type with its identity type is a model of multisets. In particular, two multisets x and y are equal exactly when, for every z, the types z ∈ x and z ∈ y are equivalent.
 
-**How the definition helps.** Equality given by equivalences of index types keeps track of how often each element occurs. Here z ∈ x is a type, and its size counts how often z occurs in x (our own gloss). Aczel's equivalence relation forgets the multiplicities, and this is why it gives sets. The work is to adapt the axioms of constructive set theory to multisets and to check them in the model.
+**How the definition helps.** Univalence identifies tree equality with an equivalence of occurrence types matching their subtrees (our own). Such an equivalence restricts to equivalences of the occurrence fibers at every z. Conversely, summing those fiber equivalences reconstructs the matching equivalence of occurrence types. The model construction verifies the remaining multiset axioms.
 
 **Paper or page:** [Multisets in Type Theory](https://arxiv.org/abs/1610.08027), [Multisets in Type Theory](https://arxiv.org/abs/1610.08027). It says: “Our investigation takes this W-type and instead considers the identity type on it, which can be computed from the Univalence Axiom. Our thesis is that this gives a model of multisets.”
 
@@ -4764,11 +4550,11 @@
 
 *Rules out counterexamples.* MSC 03B40 (Combinatory logic and lambda calculus), 68N18. arXiv math.LO, cs.LO. Level 4: research.
 
-**Definition.** A calculus of explicit substitutions adds a term M⟨x≔N⟩, which means 'M with N put in for x, not yet done'. Its rules push the substitution through the term one step at a time. The good definition gives no rule that combines two substitutions, such as (M⟨x≔N⟩)⟨y≔P⟩ → M⟨x≔N, y≔P⟩.
+**Definition.** An explicit substitution M⟨x≔N⟩ records a pending replacement of free occurrences of x in M by N. The Bloo–Rose calculus propagates substitutions through term constructors without a rule for composing nested substitutions.
 
-**Problem.** Preservation of strong normalization: in a calculus of explicit substitutions without a composition rule, every λ-term that is strongly normalizing in the ordinary λ-calculus stays strongly normalizing. In particular, every simply typed term has only finite reduction sequences.
+**Problem.** In the Bloo–Rose calculus, every ordinary λ-term that is strongly normalizing remains strongly normalizing under explicit substitution. In particular, every reduction sequence from a simply typed λ-term is finite.
 
-**How the definition helps.** Bloo and Rose proved that a calculus without any way to combine substitutions preserves strong normalization. A rule that swaps two substitutions allows infinite reduction sequences that only interchange substitutions. Melliès showed that even simultaneous substitutions with a composition rule allow infinite reductions of typed terms. The price is that an outer substitution must wait until the inner one has been pushed out of the head.
+**How the definition helps.** Omitting composition excludes the interacting substitutions used in Melliès’s typed counterexample (our own). Bloo and Rose prove preservation of strong normalization for their particular reduction rules. Simply typed terms satisfy the ordinary normalization hypothesis.
 
 **nLab:** [explicit substitution](https://ncatlab.org/nlab/show/explicit+substitution). It says: “such a rule is undesirable because it destroys the strong normalization property of the reduction system”
 
@@ -4784,11 +4570,11 @@
 
 *True by definition. Confidence: medium.* MSC 03B40 (Combinatory logic and lambda calculus), 03B38. arXiv math.LO, cs.LO. Level 4: research.
 
-**Definition.** Raw terms are indexed by the finite set V of variables that may occur free in them. A binder may only bind a set of variables X with V ∩ X = ∅, that is, X shares no names with V. So bound names never clash with declared free names. This is a local form of the Barendregt convention, the habit of choosing bound names different from all free names.
+**Definition.** A strongly scoped term has an index V containing every variable that may occur free in it. A binder in context V introduces names X disjoint from V, and its body has context V ∪ X.
 
 **Problem.** In strongly scoped syntax, the substitution M\[N/x\] never captures a free variable of N under a binder of M.
 
-**How the definition helps.** Capture cannot happen, because the types of the terms forbid it. The type Raw(V, s) declares the free variables V, and bound variables must be disjoint from V. To push N under a binder, the definition first weakens N by freshening the bound variables, and the typing forces that step. The cost is that weakening needs explicit renaming, and one must still prove that substitution respects α-equivalence.
+**How the definition helps.** Under substitution, each binder must be fresh for the output context, which contains the replacement’s free names (our own). Rename a conflicting binder and its bound occurrences before descending into its body. The disjointness condition then prevents the binder from capturing any free occurrence in the replacement.
 
 **nLab:** [Initiality Project - Raw Syntax](https://ncatlab.org/nlab/show/Initiality+Project+-+Raw+Syntax). It says: “Note that substitution is automatically "capture-avoiding" because of our "strong scoping" and local Barendregt convention.”
 
@@ -4796,36 +4582,17 @@
 
 - [Robert Harper, Practical Foundations for Programming Languages, 2nd ed., Cambridge University Press, 2016](https://doi.org/10.1017/CBO9781316576892)
 
-### The linear substitution calculus shows β-steps are a fair measure of time
-
-**Remember:** Substitute one occurrence at a time, in place, like a box in a proof net.
-
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 03B40 (Combinatory logic and lambda calculus), 68N18, 03D15. arXiv cs.LO, cs.CC. Level 4: research.
-
-**Definition.** The linear substitution calculus of Accattoli and Kesner is a λ-calculus with explicit substitutions, that is, substitutions written into the term as pending steps. These substitutions act 'at a distance': a redex (a part of the term that can reduce) may fire even with substitutions in between. Each substitution replaces one occurrence of a variable at a time.
-
-**Problem.** Leftmost-outermost β-reduction is a reasonable cost model: the number of β-steps measures time up to a polynomial.
-
-**How the definition helps.** The calculus gives a compact way to write shared computation, and that makes the proof short enough to do. One β-step may copy a large term, so most people expected β-steps not to be a fair measure of time. Accattoli and Dal Lago proved that they are, using the linear substitution calculus to express sharing. The calculus does not make the theorem trivial; it gives the language in which the proof fits.
-
-**nLab:** [explicit substitution](https://ncatlab.org/nlab/show/explicit+substitution). It says: “Beniamino Accattoli and Ugo Dal Lago showed that the answer is in fact "yes", and their proof uses the LSC in a crucial way, in particular its capability of succinctly expressing computation thanks to sharing.”
-
-**Sources:**
-
-- [B. Accattoli, U. Dal Lago, (Leftmost-outermost) beta reduction is invariant, indeed, Log. Methods Comput. Sci. 2016, arXiv:1601.01233](https://arxiv.org/abs/1601.01233)
-- [B. Accattoli, P. Barenbaum, D. Mazza, Distilling abstract machines, 2014, arXiv:1406.2370](https://arxiv.org/abs/1406.2370)
-
 ### An opremum detects modal irreducibility
 
 **Remember:** One element lies in every nontrivial filter closed under the modal operation.
 
 *True by definition.* MSC 03B45 (Modal logic (including the logic of norms)), 08B26. arXiv math.LO. Level 4: research.
 
-**Definition.** A modal algebra is a Boolean algebra with an operation □ that preserves finite meets and 1. A modal filter contains 1 and is closed upwards, under meets, and under □. An opremum is an element c strictly below 1 such that for every a strictly below 1, some finite meet a ∧ □a ∧ … ∧ □ⁿa is at most c.
+**Definition.** In a modal algebra, an opremum is an element c &lt; 1 satisfying the following condition. For every a &lt; 1 there is a natural number n such that a ∧ □a ∧ ⋯ ∧ □ⁿa ≤ c.
 
 **Problem.** A modal algebra is subdirectly irreducible exactly when it has an opremum. Subdirect irreducibility means there is a least congruence strictly larger than equality.
 
-**How the definition helps.** The inequality replaces a test over all congruences by a test on individual elements (our own explanation). The hard step identifies congruences with modal filters, ordered by inclusion. The filter generated by a consists of the elements above one of the displayed meets. Thus every filter larger than {1} contains the opremum, and the filter it generates is the least such filter. Conversely, any element below 1 in the least such filter satisfies the inequality.
+**How the definition helps.** The displayed inequality says exactly that c belongs to the modal filter generated by a (our own). Thus the filter generated by c is the least filter strictly above {1}. Conversely, any c &lt; 1 in such a least filter meets the definition. The congruence–filter correspondence identifies existence of that least filter with subdirect irreducibility.
 
 **Paper or page:** [Stable Canonical Rules and Formulas for Pre-transitive Logics via Definable Filtration](https://arxiv.org/abs/2510.22638v1). It says: “A modal algebra A is s.i. iff A has an opremum”
 
@@ -4839,11 +4606,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 03B45 (Modal logic (including the logic of norms)). arXiv cs.LO, math.LO. Level 4: research.
 
-**Definition.** Hybrid logic extends modal logic with nominals, which are symbols true at exactly one world. The operator @ᵢφ says that φ holds at the world named i, and the binder ↓x gives the current world the name x. A formula is pure if it contains no ordinary propositional variables; it may contain nominals.
+**Definition.** In hybrid logic, each nominal names exactly one world, @ᵢ evaluates at world i, and ↓x binds x to the current world. A pure sentence has no free state variables and contains no ordinary propositional variables.
 
-**Problem.** In hybrid logic with @ and ↓, the basic logic plus any set Σ of pure axioms is sound and strongly complete for the class of frames that Σ defines.
+**Problem.** The basic hybrid calculus with @ and ↓ plus any set Σ of pure sentences is sound and strongly complete for the frames satisfying Σ.
 
-**How the definition helps.** Nominals let a formula name worlds directly, so a pure axiom states a condition on frames (our own explanation). The completeness proof builds a model whose worlds all have names, and pure axioms stay true on its frame (our own explanation). In ordinary modal logic, by contrast, incomplete logics exist. Pure axioms also cover frame conditions that no modal formula defines, such as irreflexivity, @ᵢ¬◇i (our own example).
+**How the definition helps.** Pure sentences impose frame conditions independently of valuations of ordinary propositional variables (our own). The pure completeness theorem builds a named model for each consistent set of assumptions. Its frame validates the pure axioms because the construction enforces their instances under renaming.
 
 **Paper or page:** [Sahlqvist-Type Completeness Theory for Hybrid Logic with Binder](https://arxiv.org/abs/2207.01288v1), [Sahlqvist-Type Completeness Theory for Hybrid Logic with Binder](https://arxiv.org/abs/2207.01288v1). It says: “For any set Σ of pure ℒ(@,↓)-sentences, 𝐊ℋ(@,↓) + Σ is sound and strongly complete with respect to the class of frames defined by Σ.”
 
@@ -4858,11 +4625,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 03B47 (Substructural logics (including relevance, entailment, linear logic, Lambek calculus, BCK and BCI logics)), 03F25, 03F65. arXiv math.LO. Level 4: research.
 
-**Definition.** An affine proposition is a pair (P⁺, P⁻) of intuitionistic propositions that cannot both hold. P⁺ is the thesis and P⁻ is the antithesis. The connectives of affine logic (linear logic in which you may drop hypotheses) act on such pairs; for example, linear negation swaps the two parts. Additive conjunction gives (P⁺ ∧ Q⁺, P⁻ ∨ Q⁻).
+**Definition.** An affine proposition is a pair (P⁺,P⁻) of intuitionistic propositions with P⁺ ∧ P⁻ implying false. An entailment from P to Q requires a forward implication P⁺ → Q⁺ and a backward implication Q⁻ → P⁻. Linear negation exchanges the two components.
 
 **Problem.** The antithesis interpretation is sound: if Pᴸ ⊢ Qᴸ in affine logic, then P⁺ ⊢ Q⁺ and Q⁻ ⊢ P⁻ in intuitionistic logic.
 
-**How the definition helps.** One affine proof gives two constructive theorems at once, one about the thesis and one about the antithesis. The interpretation derives the pair (P⁺, P⁻) from one affine statement in a systematic way. For example, 'x is rational' and 'x is irrational', as ∀q, x \# q, come from one affine statement. It also explains why inequality and apartness both appear, from the two readings of transitivity of equality.
+**How the definition helps.** The order on pairs gives the two directions of every interpreted entailment (our own). The soundness theorem for the antithesis interpretation verifies that each affine inference preserves this order. Reading the two components of a derivable entailment gives the claimed intuitionistic sequents.
 
 **nLab:** [antithesis interpretation](https://ncatlab.org/nlab/show/antithesis+interpretation). It says: “The point of the antithesis interpretation is that the pair (P⁺, P⁻) may be derived systematically from a single statement Pᴸ in affine logic.”
 
@@ -4876,11 +4643,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 03B60 (Other nonclassical logic), 03B50, 03A05. arXiv math.LO. Level 4: research.
 
-**Definition.** Kripke's truth predicate is partial. Its extension is the set of sentences it calls true, and its anti-extension is the set it calls false. Some sentences, such as the liar ('this sentence is not true'), are in neither set. Kripke builds the predicate in stages, up to the least fixed point of a monotone evaluation under the strong Kleene rules (a logic with three values: true, false and undefined).
+**Definition.** A partial interpretation of truth consists of disjoint sets of sentence codes T and F. A truth assertion about a sentence is true for codes in T, false for codes in F, and undefined otherwise. Kripke’s jump evaluates sentences using these assignments and the strong Kleene rules to produce the next pair.
 
 **Problem.** Kripke's monotone construction reaches a least fixed point. This gives a language a consistent partial truth predicate for its own sentences, in which the liar has no truth value.
 
-**How the definition helps.** A partial predicate avoids the liar contradiction, because the liar never gets a value. Tarski's undefinability theorem rules out a total truth predicate inside the language. Each stage keeps every value given at earlier stages, so transfinite induction reaches a fixed point. The cost is that the language cannot truly say that the liar is not true, so the paradox comes back in the metalanguage (our own remark).
+**How the definition helps.** The liar cannot consistently receive either classical value, and strong Kleene evaluation leaves it undefined (our own). Start with both sets empty, iterate the monotone jump, and take unions at limit stages. Each strict increase assigns a previously unassigned sentence a value, so the sequence must stabilize. Monotonicity keeps every stage below every fixed point, proving leastness.
 
 **Wikipedia:** [Semantic theory of truth](https://en.wikipedia.org/wiki/Semantic_theory_of_truth). It says: “Based on partial logic (a logic of partially defined truth predicates instead of Tarski's logic of totally defined truth predicates), Kripke allows a language to contain its own truth predicate”
 
@@ -4894,11 +4661,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 03C13 (Model theory of finite structures), 18C15, 68Q19. arXiv cs.LO, math.CT. Level 4: research.
 
-**Definition.** For a relational structure A, the pebbling comonad ℙₖ builds the structure of finite plays of the k-pebble game on A. Each move puts one of k pebbles on an element. A comonad is a construction with maps 'extract' and 'duplicate' that satisfy unit and associativity laws. A coalgebra for it is a map A → ℙₖA that is compatible with these maps.
+**Definition.** A k-pebble play is a nonempty finite sequence of moves, each assigning one of k pebbles to an element of A. A coalgebra is a homomorphism α from A into its play structure ℙₖA satisfying ε∘α = id and δ∘α = ℙₖα∘α. Here ε returns the final element, and δ replaces each played element by the prefix ending there, keeping its pebble label.
 
 **Problem.** A relational structure A has a coalgebra A → ℙₖA if and only if its tree-width is at most k − 1.
 
-**How the definition helps.** Since the comonad is built from plays, a coalgebra consistently picks, for each element, a play that ends on it. This is the same data as a tree decomposition (our own summary). In the coKleisli category, maps are strategies in the game, and they capture fragments of k-variable logic. What stays hard is the combinatorial argument that matches coalgebras with decompositions for each new comonad.
+**How the definition helps.** The counit makes each assigned play end at its element, and coassociativity makes its prefixes agree with earlier assignments (our own). The pebbling coalgebra theorem identifies these assignments with pebble forest covers and proves their existence exactly at tree-width below k. The equivalence concerns existence on each side.
 
 **Paper or page:** [Lovász-Type Theorems and Game Comonads](https://arxiv.org/abs/2105.03274v1), [An invitation to game comonads](https://arxiv.org/abs/2407.00606v1), [The Pebble-Relation Comonad in Finite Model Theory](https://arxiv.org/abs/2110.08196v6). It says: “A σ-structure A admits a coalgebra structure α : A → ℙₖ(A) if, and only if, it has tree-width at most k−1.”
 
@@ -4909,59 +4676,23 @@
 - [Samson Abramsky, Luca Reggio, An invitation to game comonads, arXiv:2407.00606 (2024)](https://arxiv.org/abs/2407.00606v1)
 - [Yoàv Montacute, Nihil Shah, The Pebble-Relation Comonad in Finite Model Theory, Logical Methods in Computer Science 20(2) (2024), arXiv:2110.08196](https://arxiv.org/abs/2110.08196v6)
 
-### Ultracategories let one recover a coherent theory from its models
-
-**Remember:** An ultracategory is a category that knows how to take ultraproducts.
-
-*Makes the theorem clean to state or prove.* MSC 03C20 (Ultraproducts and related constructions), 03G30, 03C52. arXiv math.LO, math.CT. Level 4: research.
-
-**Definition.** An ultracategory is a category M with abstract ultraproduct functors ∫ − dμ : Mᴵ × βI → M for each set I, subject to coherence conditions. Here βI is the set of ultrafilters on I, so the functor takes an I-indexed family of objects and an ultrafilter μ and gives their ultraproduct. Ultrafunctors are functors that preserve these ultraproducts up to coherent isomorphism.
-
-**Problem.** Makkai's theorem: for every small pretopos P, evaluation from P to the category of ultrafunctors from Mod(P) to Set is an equivalence. So a coherent theory is recovered, up to Morita equivalence, from its models with their ultracategory structure.
-
-**How the definition helps.** The ultraproduct structure is exactly the extra data that makes the reconstruction theorem true. The bare category of models does not determine the theory: an equivalence of model categories need not come from an equivalence of syntactic pretoposes. The proof of Makkai's theorem is still hard, and Lurie later extended it to coherent toposes.
-
-**nLab:** [ultracategory](https://ncatlab.org/nlab/show/ultracategory). It says: “it becomes sufficient to reconstruct the theory up to Morita equivalence once it is endowed with the structure of an ultracategory.”
-
-**Sources:**
-
-- [Michael Makkai, Stone duality for first order logic, Advances in Mathematics 65 (1987) 97–170](https://doi.org/10.1016/0001-8708(87)90020-X)
-
 ### Beth definability for an infinitary logic gives Stone–Weierstrass
 
 **Remember:** Implicit definitions become explicit, and separating sublattices become dense.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 03C40 (Interpolation, preservation, definability), 08A65, 46E05. arXiv math.LO, math.RA. Level 4: research.
 
-**Definition.** A variety is a class of algebras defined by equations, and an infinitary variety may use operations with infinitely many arguments. The paper attaches an equational logic ⊨Δ to such a variety Δ. The Beth definability property says that if a theory fixes the meaning of a symbol uniquely, then some term defines the symbol explicitly.
+**Definition.** Term Beth definability means that every implicitly defined operation agrees with a term in its input variables wherever the defining theory holds. Implicit definition requires that any two outputs satisfying the theory for the same inputs coincide.
 
-**Problem.** Stone–Weierstrass theorem, lattice version: let X be a compact Hausdorff space and G a set of continuous real functions on X that contains 1 and separates points. If G is closed under scalar multiples, sums and maxima, then G is uniformly dense. This follows from the Beth definability property of ⊨Δ.
+**Problem.** Let G be a family of continuous real functions on a compact Hausdorff space X that contains the constant function 1 and separates points. If G is closed under real scalar multiples, sums and maxima, it is uniformly dense in the continuous real functions on X. This follows from Beth definability for the equational logic of Δ.
 
-**How the definition helps.** The logic is chosen so that the Stone–Weierstrass theorem becomes an instance of a general logical property. The paper shows that the Beth property is equivalent to this: every epimorphism in Δ is surjective. In our own reading, Δ is dual to compact Hausdorff spaces, and a separating set of functions gives an epimorphism, so it must be onto. The work moves to proving the Beth property.
+**How the definition helps.** The paper identifies Beth definability for its infinitary logic with surjectivity of epimorphisms in Δ. Its algebraic form of Stone–Weierstrass converts that surjectivity into uniform density of the separating function lattice. The translation between the two statements uses the paper’s representation of these algebras (our own).
 
 **Paper or page:** [Beth definability and the Stone-Weierstrass Theorem](https://arxiv.org/abs/2007.05281). It says: “We introduce an equational logic ⊨Δ associated with an infinitary variety Δ and show that the Stone-Weierstrass Theorem is a consequence of the Beth definability property of ⊨Δ, stating that every implicit definition can be made explicit.”
 
 **Sources:**
 
 - [Luca Reggio, Beth definability and the Stone-Weierstrass Theorem, arXiv:2007.05281 (2021)](https://arxiv.org/abs/2007.05281)
-
-### Positive logic lets hyperimaginaries be added as ordinary sorts
-
-**Remember:** Without built-in negation, quotients by infinite formulas become ordinary sorts.
-
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 03C45 (Classification theory, stability, and related concepts in model theory), 03C95. arXiv math.LO. Level 4: research.
-
-**Definition.** In positive logic, the basic formulas use only ∧, ∨ and ∃, and negation is added only where it is wanted. The models of interest are the existentially closed ones, in which every positive formula that holds in some extension already holds. A hyperimaginary is a class of an equivalence relation that is defined by an infinite set of formulas (a type-definable equivalence relation).
-
-**Problem.** In a thick positive NSOP₁ theory, Kim-independence over existentially closed models has its usual properties. Adding hyperimaginary sorts gives another such theory, so these results apply to hyperimaginaries.
-
-**How the definition helps.** Positive logic does not require the complement of a basic relation to be definable, so a type-definable relation may be basic (our own explanation). So adding hyperimaginary sorts gives another positive theory, and the abstract says this keeps NSOP₁ and other properties. In full first-order logic, a hyperimaginary cannot in general be a sort (our own). Thickness, that being an indiscernible sequence is type-definable, is the condition that remains.
-
-**Paper or page:** [Kim-independence in positive logic](https://arxiv.org/abs/2105.07788). It says: “a proper generalisation of first-order logic where negation is not built in, but can be added as desired. For example, an important application is that we can add hyperimaginary sorts to a positive theory to get another positive theory”
-
-**Sources:**
-
-- [Jan Dobrowolski and Mark Kamsma, Kim-independence in positive logic, Model Theory 1 (2022) 55–113, arXiv:2105.07788](https://arxiv.org/abs/2105.07788)
 
 ### Defining pseudofinite groups by finite-group sentences makes definable injections surjective
 
@@ -4973,7 +4704,7 @@
 
 **Problem.** In a pseudofinite group, every injective map from the group to itself that a formula defines, even with parameters, is surjective.
 
-**How the definition helps.** Under the first definition, the result holds as soon as it is written as one sentence true in all finite groups (our own). For a formula φ(x, y, z) with parameters z, the sentence says: for all z, if φ defines an injective map from the group to itself, then that map is surjective (our own). With the ultraproduct definition, one also needs Łoś's theorem to carry this sentence into the ultraproduct (our own). The work moves into showing that the two definitions agree.
+**How the definition helps.** Each formula gives one first-order sentence to which pseudofiniteness applies (our own). Quantify over every parameter tuple and assert that whenever the formula defines a total injective self-map, it defines a surjective one. Every finite group satisfies this sentence by counting. The pseudofinite group therefore satisfies it too.
 
 **Paper or page:** [A note on pseudofinite groups of finite centraliser dimension](https://arxiv.org/abs/2106.05698v1). It says: “Let G ≡ ∏ᵢ∈I Gᵢ/U be a pseudofinite group with cd(G) = k.”
 
@@ -4997,35 +4728,17 @@
 
 - [Commelin, Habegger and Huber, Exponential periods and o-minimality](https://aif.centre-mersenne.org/articles/10.5802/aif.3801/)
 
-### The many definitions of definable compactness agree in o-minimal structures
-
-**Remember:** In o-minimal geometry, curves, types and closed families give one compactness.
-
-*True by definition. Confidence: medium.* MSC 03C64 (Model theory of ordered structures; o-minimality), 54D30. arXiv math.LO, math.GN. Level 4: research.
-
-**Definition.** An o-minimal structure is an ordered structure in which every definable subset of the line is a finite union of points and intervals. A definable topological space is definably compact if every definable downward directed family of nonempty closed sets has nonempty intersection. Other versions ask that every definable type has a limit, or that every definable curve can be completed with a limit point.
-
-**Problem.** In an o-minimal structure, the closed-family and type versions of definable compactness agree for every definable topological space. The curve version follows from them, and is equivalent to them if the topology is Hausdorff or the structure has definable choice.
-
-**How the definition helps.** Once the definitions agree, each proof may use the definition that makes it easiest. Curves suit geometric arguments, types suit model-theoretic arguments, and closed families copy the finite intersection property (our own words). The work moves into the equivalence theorem, Theorem A of the paper. Over the real numbers, the paper deduces that definable compactness is the same as compactness.
-
-**Paper or page:** [Definable compactness in o-minimal structures](https://arxiv.org/abs/2405.07112). It says: “Specifically, we prove the equivalence of various definitions of definable compactness in the literature, including those in terms of definable curves, definable types, and definable downward directed families of closed sets.”
-
-**Sources:**
-
-- [Pablo Andújar Guerrero, Definable compactness in o-minimal structures, Model Theory 4 (2025) 101–130, arXiv:2405.07112](https://arxiv.org/abs/2405.07112)
-
 ### The geometric theory of natural numbers has only the standard model
 
 **Remember:** An infinite 'or' says each number is 0 followed by finitely many successors.
 
 *Rules out counterexamples. Confidence: medium.* MSC 03C75 (Other infinitary logic), 03G30, 03C35. arXiv math.LO, math.CT. Level 4: research.
 
-**Definition.** The geometric theory of the standard successor algebra has one sort N, a constant 0 and a function s. Its axioms say that s is injective and that 0 is not a successor. A third axiom uses an infinite disjunction (an infinite 'or'): every n equals 0, or s(0), or s(s(0)), and so on. Geometric logic is a logic that allows such infinite disjunctions.
+**Definition.** The standard successor theory has a sort N, a constant 0 and an injective successor s whose image omits 0. Its geometric covering axiom says that each element equals sⁿ(0) for some external natural number n, using a disjunction over all n.
 
-**Problem.** The classifying topos of this theory is Set. So in each Grothendieck topos the theory has exactly one model up to isomorphism, the natural numbers object, and the theory has no consistent quotient theories.
+**Problem.** Set classifies the standard successor theory. Every Grothendieck topos therefore has a unique model up to isomorphism, its natural numbers object, and the theory has no proper consistent quotient.
 
-**How the definition helps.** The infinite disjunction says what first-order axioms cannot say, that every number is reached from 0 in finitely many steps. So it rules out nonstandard models. Models in a topos E correspond to geometric morphisms from E to Set, and there is only one (our own gloss). Set has no nontrivial subtoposes, which is the sense in which the nLab calls the theory complete.
+**How the definition helps.** The covering axiom rules out elements beyond the numerals. Injectivity and omission of zero make distinct numeral subobjects disjoint, so the model is the coproduct of one terminal object per numeral (our own). This construction is preserved by inverse images and has only the identity endomorphism, giving classification by Set. Its only proper subtopos is degenerate.
 
 **nLab:** [geometric theory](https://ncatlab.org/nlab/show/geometric+theory). It says: “The classifying topos is Set. But due to the trivial subtopos lattice, theories classified by Set admit no consistent quotient theories; thus the geometric theory of natural numbers is complete!”
 
@@ -5035,15 +4748,15 @@
 
 ### Fullness is exactly what Łoś's theorem needs in Boolean-valued models
 
-**Remember:** Łoś needs one witness that reaches the supremum, and fullness supplies it.
+**Remember:** Finitely many witnesses cover the existential value, so each ultrafilter picks one.
 
 *True by definition. Confidence: medium.* MSC 03C90 (Nonclassical models (Boolean-valued, sheaf, etc.)), 03E40. arXiv math.LO. Level 4: research.
 
-**Definition.** A Boolean-valued model gives each formula a truth value in a complete Boolean algebra B, not only "true" or "false". The model is full if, for every formula φ(x), some element a has the whole value of ∃x φ(x). That is, the value of φ(a) equals the supremum of the values of φ(b) over all b. The mixing property is a stronger condition: elements can be glued along any antichain of B.
+**Definition.** A Boolean-valued model is full if finitely many instances attain each existential value jointly. For every formula φ(x) with parameters, the join of their values must equal ‖∃x φ(x)‖.
 
 **Problem.** A Boolean-valued model satisfies Łoś's theorem exactly when it is full. Łoś's theorem says that, for each ultrafilter G on B, the quotient by G satisfies φ(\[a\]) exactly when the value of φ(a) is in G.
 
-**How the definition helps.** The only hard step in a proof of Łoś's theorem is the existential quantifier, and fullness asks exactly for the witness that this step needs. The steps for ∧, ∨ and ¬ work in every Boolean-valued model, because an ultrafilter respects finite meets and complements (our own). Without fullness, the value of ∃x φ(x) can be in G while each value of φ(a) is outside G (our own). The paper also shows that the mixing property used in forcing is strictly stronger than fullness.
+**How the definition helps.** An ultrafilter containing a finite join contains one of its terms, giving a witness in the quotient (our own). Induction handles the Boolean connectives by the ultrafilter laws. Conversely, if no finite join suffices, the existential value and the complements of all instance values have the finite intersection property. An ultrafilter extending them violates the existential clause of Łoś’s theorem.
 
 **Paper or page:** [Boolean valued models, presheaves, and étalé spaces](https://arxiv.org/abs/2006.14852). It says: “We also give an exact topological characterization (the so called fullness property) of which boolean valued models satisfy Loś Theorem”
 
@@ -5057,11 +4770,11 @@
 
 *Rules out counterexamples.* MSC 03C90 (Nonclassical models (Boolean-valued, sheaf, etc.)), 06E10. arXiv math.LO. Level 4: research.
 
-**Definition.** A Boolean-valued model assigns formulas values in a complete Boolean algebra. The value of ∃x φ(x) is the join of the values of φ(a) over all a. The model has mixing if, for every family of pairwise disjoint nonzero elements bᵢ and elements aᵢ, some element a has bᵢ ≤ ‖a = aᵢ‖ for every i.
+**Definition.** Mixing in a Boolean-valued model requires a simultaneous choice for every family of elements aᵢ indexed by pairwise disjoint nonzero Boolean values bᵢ. Some element a must satisfy bᵢ ≤ ‖a = aᵢ‖ for every i.
 
 **Problem.** In a Boolean-valued model with mixing, every existential truth value equals the value given by some single witness.
 
-**How the definition helps.** Mixing combines witnesses from disjoint pieces into one witness with the full existential value. Choose a maximal disjoint family of pieces, each below the value of some witness; their join is the existential value (our own). Mix the chosen witnesses; the formula then holds for the mixed element on each piece (our own). Without mixing, give a predicate complementary nonzero values on two elements with ordinary equality: the existential value is 1, but neither element attains it (our own).
+**How the definition helps.** Choose maximal disjoint nonzero pieces, each below some witness value (our own). Their join is the existential value, since any uncovered part would meet another witness value. Mixing their witnesses produces an element whose formula value covers every piece and hence attains the join. Without mixing, a predicate on two ordinarily distinct elements can take complementary nonzero values, neither attaining their join.
 
 **Paper or page:** [Boolean valued models, presheaves, and étalé spaces](https://arxiv.org/abs/2006.14852v5). It says: “Assume that ℳ satisfies the κ-mixing property for some κ ≥ min {\|𝖡\|, \|M\|}. Then ℳ is full.”
 
@@ -5069,35 +4782,17 @@
 
 - [Boolean valued models, presheaves, and étalé spaces](https://arxiv.org/abs/2006.14852v5)
 
-### Free memo lookups make ramified recurrence feasible
-
-**Remember:** Charge nothing for memo lookups, and soundness follows.
-
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 03D15 (Complexity of computation (including implicit computational complexity)), 68Q25. arXiv cs.CC, cs.LO. Level 4: research.
-
-**Definition.** Ramified recurrence writes recursive functions with data split into tiers, so a recursion cannot feed its own output back as a recursion argument. In the memoizing cost model, looking up an already computed value costs nothing. A cost model is invariant when its time is polynomially related to the time of a Turing machine.
-
-**Problem.** The memoizing cost model is invariant. So every function defined by general ramified recurrence can be computed in polynomial time, which was an open problem in implicit computational complexity.
-
-**How the definition helps.** Memoization turns an exponential tree of recursive calls into a polynomial set of distinct calls (our own). So it is natural to charge only for new calls, and once this cost model is invariant, soundness is a corollary. The work moves into the invariance proof, which must simulate sharing and lookups on a real machine with polynomial overhead.
-
-**Paper or page:** [On Sharing, Memoization, and Polynomial Time (Long Version)](https://arxiv.org/abs/1501.00894). It says: “a natural cost model in which lookup for an already computed value has no cost is indeed invariant. As a corollary, we then prove that the most general notion of ramified recurrence is sound for polynomial time”
-
-**Sources:**
-
-- [Martin Avanzini, Ugo Dal Lago, On Sharing, Memoization, and Polynomial Time, arXiv:1501.00894 (2015)](https://arxiv.org/abs/1501.00894)
-
 ### Effective discontinuity gives the Weihrauch lattice a weakest discontinuous problem
 
-**Remember:** A uniform witness of discontinuity is the weakest kind of discontinuity.
+**Remember:** Continuously turn each candidate realizer’s code into an input where it fails.
 
-*True by definition. Confidence: medium.* MSC 03D30 (Other degrees and reducibilities in computability and recursion theory), 03D78. arXiv math.LO. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 03D30 (Other degrees and reducibilities in computability and recursion theory), 03D78. arXiv math.LO. Level 4: research.
 
-**Definition.** A problem is a multi-valued function, and Weihrauch reducibility compares problems by continuous pre-processing and post-processing. Roughly, a problem is effectively discontinuous if, from any proposed continuous solution method, one can compute an input on which that method fails. The discontinuity problem takes a code p of a partial continuous function and asks for any output different from that function's value at p.
+**Definition.** Fix a universal evaluator U for partial continuous functions on Baire space. A problem is effectively discontinuous if a continuous function sends every code p to a valid input name where U(p) fails as a realizer. Failure means divergence or failure to name an allowed output.
 
-**Problem.** The discontinuity problem is Weihrauch reducible to a problem exactly when that problem is effectively discontinuous. In ZF with dependent choice and the axiom of determinacy, every discontinuous problem is effectively discontinuous, so the discontinuity problem is the weakest discontinuous problem.
+**Problem.** Under continuous Weihrauch reducibility, the discontinuity problem reduces to a problem exactly when that problem is effectively discontinuous. In ZF with dependent choice and determinacy, the discontinuity problem is therefore the weakest discontinuous problem.
 
-**How the definition helps.** The definition asks for a uniform witness of discontinuity, and the discontinuity problem is the task of producing one. So the reduction is nearly built in (our own reading). The real work moves to showing that every discontinuous problem is effectively discontinuous, by Wadge-style games under the axiom of determinacy. With the full axiom of choice, there are problems that are discontinuous but not effectively so.
+**How the definition helps.** The uniform counterexample function is exactly what the paper’s reduction characterization extracts from a continuous Weihrauch reduction (our own). Its game determinacy theorem supplies such a function for every discontinuous problem under the stated axioms. Together the two theorems give the least discontinuous degree.
 
 **Paper or page:** [The Discontinuity Problem](https://arxiv.org/abs/2012.02143). It says: “We introduce the discontinuity problem, and we show that it is reducible exactly to the effectively discontinuous problems, defined in a suitable way.”
 
@@ -5105,54 +4800,17 @@
 
 - [Vasco Brattka, The Discontinuity Problem, Journal of Symbolic Logic 88(3) (2023) 1191–1212, arXiv:2012.02143](https://arxiv.org/abs/2012.02143)
 
-### Optimal oracles give Marstrand's theorem directly
-
-**Remember:** Optimal oracles carry exactly what a projection argument needs.
-
-*True by definition.* MSC 03D32 (Algorithmic randomness and dimension), 28A78. arXiv cs.CC, math.LO. Level 4: research.
-
-**Definition.** The effective dimension of a point measures how much information its digits hold for programs with an oracle A, a set of natural numbers. By the point-to-set principle, the Hausdorff dimension of E is the least, over all oracles A, of the supremum of these dimensions over E. An oracle that attains this least value is a Hausdorff oracle for E. It is optimal when, after adding any further oracle B, many points of E still keep almost full effective dimension (Proposition 4).
-
-**Problem.** If a planar set E has optimal oracles, then almost every orthogonal projection of E keeps its Hausdorff dimension, capped at 1. Every analytic set has optimal oracles.
-
-**How the definition helps.** The definition asks for the property that the pointwise proof of Marstrand's theorem uses, so the theorem holds for every set that has optimal oracles. The work moves into showing which sets have optimal oracles. Besides analytic sets, the paper covers sets whose Hausdorff and packing dimensions agree and sets with exact gauge functions. Under the axiom of choice and the continuum hypothesis, the paper builds sets with no optimal oracles.
-
-**Paper or page:** [Optimal Oracles for Point-to-Set Principles](https://arxiv.org/abs/2101.11152). It says: “One of the primary motivations of this definition is that, if E has optimal oracles, then the conclusion of Marstrand's projection theorem holds for E. We show that every analytic set has optimal oracles.”
-
-**Sources:**
-
-- [D. M. Stull, Optimal Oracles for Point-to-Set Principles, arXiv:2101.11152 (2021)](https://arxiv.org/abs/2101.11152)
-
-### Point-to-set principle computes Hausdorff dimension pointwise
-
-**Remember:** To bound a set's dimension, bound the information in its points.
-
-*Makes the theorem clean to state or prove.* MSC 03D32 (Algorithmic randomness and dimension), 28A78. arXiv cs.CC, math.LO. Level 4: research.
-
-**Definition.** An oracle A is a set of natural numbers that programs may query. The effective dimension dimᴬ(x) of a point x is the lower limit of Kᴬ(x↾r)/r as r grows. Here Kᴬ(x↾r) is the length of the shortest program with oracle A that prints x to r bits of precision. The point-to-set principle says that the Hausdorff dimension of E is the minimum over oracles A of the supremum of dimᴬ(x) over x in E.
-
-**Problem.** Davies's theorem: every Kakeya set in the plane, a set that contains a unit segment in every direction, has Hausdorff dimension 2.
-
-**How the definition helps.** The principle turns a statement about covers of a whole set into a statement about the information content of single points. To show that E has dimension at least s, take any oracle A and find points of E whose effective dimension relative to A comes arbitrarily close to s. Lutz and Lutz proved Davies's theorem this way (our own example). The hard part moves into the pointwise estimates, which can be delicate for projections (our own remark).
-
-**Paper or page:** [Optimal Oracles for Point-to-Set Principles](https://arxiv.org/abs/2101.11152), [Optimal Oracles for Point-to-Set Principles](https://arxiv.org/abs/2101.11152). It says: “The point-to-set principle characterizes the Hausdorff dimension of a subset E⊆ℝⁿ by the effective (or algorithmic) dimension of its individual points. This characterization has been used to prove several results in classical, i.e., without any computability requirements, analysis.”
-
-**Sources:**
-
-- [D. M. Stull, Optimal Oracles for Point-to-Set Principles, arXiv:2101.11152 (2021)](https://arxiv.org/abs/2101.11152)
-- [Jack H. Lutz, Neil Lutz, Algorithmic Information, Plane Kakeya Sets, and Conditional Dimension, ACM Transactions on Computation Theory (2018)](https://doi.org/10.1145/3201783)
-
 ### Church's thesis as an axiom gives synthetic proofs of Tennenbaum's theorem
 
 **Remember:** When every function is computable, "computable" needs no coding.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 03D75 (Abstract and axiomatic computability and recursion theory), 03B38, 03C62. arXiv math.LO. Level 4: research.
 
-**Definition.** In constructive type theory, every function that one can define can be shown computable from outside the theory. The authors add, as an axiom, a version of Church's thesis: every function from ℕ to ℕ is represented by a formula of Peano arithmetic. Computability arguments then talk about functions directly, with no machine model.
+**Definition.** The paper’s Church thesis requires a representing arithmetic formula for every function from ℕ to ℕ. For each input numeral, Peano arithmetic proves that the formula holds of exactly the numeral for its output.
 
 **Problem.** Assume Church's thesis and Markov's principle. Then a model of Peano arithmetic with decidable equality, whose elements some function can list, is the standard model. This is a synthetic form of Tennenbaum's theorem.
 
-**How the definition helps.** With Church's thesis as an axiom, 'computable function' just means 'function', so the proofs need no coding of machines. The condition that addition and multiplication are computable disappears, because every function counts as computable (our own reading). The authors make several classical proofs constructive and give one proof that is inherently constructive. The constructive setting also shows differences in the assumptions of the classical proofs.
+**How the definition helps.** The thesis replaces external computability conditions by internal functions on natural numbers (our own). An enumeration and decidable equality let the model’s operations be tracked on natural numbers. The paper’s constructive Tennenbaum theorem uses this representation with Markov’s principle to obtain standardness.
 
 **Paper or page:** [An Analysis of Tennenbaum's Theorem in Constructive Type Theory](https://arxiv.org/abs/2302.14699). It says: “assuming a version of Church's thesis, which expresses that any function on natural numbers is representable by a formula in PA. This assumption provides for a conveniently abstract setup to carry out rigorous computability arguments”
 
@@ -5166,11 +4824,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 03D78 (Computation over the reals, computable analysis), 54C56. arXiv math.LO, math.GN. Level 4: research.
 
-**Definition.** A compact set has computable type if every homeomorphic copy of it that is semicomputable is computable. Semicomputable means that an algorithm can list open balls that cover the complement of the copy. Strong computable type asks for the same relative to every oracle, that is, when the algorithm may use any extra information. The paper works more generally with pairs (X, A), where A lies inside X.
+**Definition.** A compact metrizable space X has strong computable type if every homeomorphic copy K in the Hilbert cube satisfies the following condition. For every oracle A enumerating all finite rational open covers of K, A can also enumerate all basic open balls meeting K.
 
 **Problem.** A compact space that is minimal with nonzero Čech cohomology in degree n has strong computable type.
 
-**How the definition helps.** The relativized notion can be characterized by topological invariants of low descriptive complexity, which gives general tools. If a space has a Σ⁰₂ invariant but no proper subset of it does, then the space has strong computable type. Nonzero Čech cohomology in degree n is such an invariant. Every connected compact n-manifold is minimal in this sense, so the known manifold results follow again.
+**How the definition helps.** The paper gives a criterion using a Σ⁰₂ invariant of compact sets (our own account). If X has the invariant and no proper compact subset has it, the criterion gives strong computable type. Its cohomology criterion applies this argument to nonvanishing Čech cohomology in the stated degree.
 
 **Paper or page:** [Strong computable type](https://arxiv.org/abs/2210.08309). It says: “We argue that the stronger, relativized version of computable type, is better behaved and prone to topological analysis. We obtain characterizations of strong computable type, related to the descriptive complexity of topological invariants, as well as purely topological criteria.”
 
@@ -5184,45 +4842,27 @@
 
 *True by definition. Confidence: medium.* MSC 03E05 (Other combinatorial set theory). arXiv math.LO. Level 4: research.
 
-**Definition.** Test stationarity of a family S of countable subsets of X with structures. S passes if each structure on X in a countable language has a countable elementary substructure whose universe lies in S. An elementary substructure satisfies the same first-order formulas, with parameters from itself, as the whole structure. The usual definition asks that S meet every closed unbounded family of countable subsets of X.
+**Definition.** A family S of countable subsets of X is stationary if it passes the following test. Every structure on X in a countable language must have an elementary substructure with universe in S. An elementary substructure agrees with the structure on all first-order formulas with parameters in its universe.
 
 **Problem.** Let S be a stationary family of countable subsets of X, and let Y be an uncountable subset of X. Then the infinite sets x ∩ Y, for x in S, form a stationary family on Y.
 
-**How the definition helps.** With the substructure test, a structure on Y can be tested through a structure on X. Extend the structure on Y to X, adding a predicate for Y and constants for countably many points of Y (our own). The test gives an elementary substructure N whose universe is in S, and N ∩ Y is an elementary substructure of the structure on Y, which the constants make infinite (our own). The work moves to the theorem that the test agrees with the closed unbounded definition.
+**How the definition helps.** Extend any given structure on Y to X, naming Y by a predicate and naming infinitely many distinct elements of Y by constants (our own). Stationarity supplies an elementary substructure with universe x ∈ S. Relativizing quantifiers to the predicate shows that x ∩ Y is elementary in the original structure. The named points make x ∩ Y infinite.
 
 **Wikipedia:** [Stationary set](https://en.wikipedia.org/wiki/Stationary_set). It says: “for any such structure M there is an elementary substructure of M that belongs to S”
 
 **Sources:** none listed. No primary source with a working link was found.
 
-### A trichotomous least element gives ordinal exponentiation a constructive list form
-
-**Remember:** Split off the bottom as 1 + α′, and exponentiation is built from lists.
-
-*Rules out counterexamples. Confidence: medium.* MSC 03E10 (Ordinal and cardinal numbers), 03F65. arXiv cs.LO, math.LO. Level 4: research.
-
-**Definition.** A least element ⊥ of an ordinal α is trichotomous if every element x satisfies ⊥ = x or ⊥ &lt; x. By the paper's Lemma 15, this holds exactly when α = 1 + α′ for an ordinal α′. For such α, the paper defines exp(α, β) concretely by lists of pairs, ordered lexicographically.
-
-**Problem.** Constructively, an exponentiation that satisfies the usual equations for all ordinal bases exists if and only if excluded middle holds. For bases with a trichotomous least element, the list construction satisfies the equations.
-
-**How the definition helps.** With a trichotomous least element, α splits as 1 + α′, so lists give an explicit construction (our own summary). The list construction meets the specification for such bases (Theorem 20) and agrees there with an abstract construction (Theorem 24). For such bases it also satisfies exp(α, β × γ) = exp(exp(α, β), γ) (Corollary 26). What stays hard is monotonicity in the base, which still implies excluded middle even for such bases (Proposition 34).
-
-**Paper or page:** [Constructive Ordinal Exponentiation](https://arxiv.org/abs/2501.14542v5), [Constructive Ordinal Exponentiation](https://arxiv.org/abs/2501.14542v5). It says: “There is an exponentiation operation exp : Ord × Ord → Ord satisfying the specification if and only if LEM holds.”
-
-**Sources:**
-
-- [Tom de Jong, Nicolai Kraus, Fredrik Nordvall Forsberg, Chuangjie Xu, Constructive Ordinal Exponentiation, Journal of the ACM (2026), arXiv:2501.14542](https://arxiv.org/abs/2501.14542v5)
-
 ### By construction, X cannot be mapped onto its Lindenbaum number
 
-**Remember:** Collect every ordinal X can be squashed onto; X cannot be squashed onto the collection.
+**Remember:** Start with zero and collect every ordinal X maps onto.
 
 *True by definition. Confidence: medium.* MSC 03E10 (Ordinal and cardinal numbers), 03E25. arXiv math.LO. Level 4: research.
 
-**Definition.** The Lindenbaum number ℵ\*(X) of a set X is the set of ordinals α that admit a surjection X → α. A quotient of X means the image of a surjection from X.
+**Definition.** For a set X, its Lindenbaum number ℵ\*(X) consists of 0 and every ordinal onto which X maps surjectively (our own convention).
 
 **Problem.** Without the axiom of choice, there is no surjection from X onto ℵ\*(X). So ℵ\*(X) is a well-ordered set that is not a quotient of X.
 
-**How the definition helps.** The definition collects all the ordinals that X maps onto, so the collection cannot be one of them. If X mapped onto ℵ\*(X), then ℵ\*(X) would be one of its own elements, so it would be order isomorphic to a proper initial segment of itself. For nonempty X, the ordinal 0 must be added for ℵ\*(X) to be an ordinal (our own remark). The harder facts compare ℵ\*(X) with the Hartogs number.
+**How the definition helps.** This collection is an ordinal because every smaller positive ordinal is a quotient of every larger ordinal (our own). A surjection from X onto ℵ\*(X) would therefore put ℵ\*(X) inside itself, which no ordinal permits.
 
 **nLab:** [Lindenbaum number](https://ncatlab.org/nlab/show/Lindenbaum+number). It says: “By construction, if there were a surjection function X → ℵ\*(X), then ℵ\*(X) would be order isomorphic to one of its own elements, and hence to a proper initial segment of itself, which is impossible.”
 
@@ -5240,7 +4880,7 @@
 
 **Problem.** Constructively, \|B\| ≤ \|A\| implies \|B\| ≤\* \|A\|, with no separate case for the empty set. Here \|B\| ≤ \|A\| means that there is an injection B → A.
 
-**How the definition helps.** With the subquotient definition, the implication is immediate: take B′ = B. With the classical definition, you must turn an injection B → A into a surjection A → B. That needs a case split on whether B is empty, and then a default value in B. The case split uses excluded middle (the rule that every statement is true or false). For inhabited B (a set B that has an element), excluded middle shows that the two definitions agree. So nothing classical is lost.
+**How the definition helps.** Take B′ = B and use the identity map onto B together with the given injection into A (our own). The same witnesses work when B is empty.
 
 **nLab:** [surjection](https://ncatlab.org/nlab/show/surjection). It says: “To make this definition less piecemeal and more constructive, one can define \|B\| ≤\* \|A\| to mean B is a subquotient of A, in other words one has a surjection B′ → B and an injection B′ → A.”
 
@@ -5248,15 +4888,15 @@
 
 ### Plump ordinals make x ≤ y &lt; z imply x &lt; z constructively
 
-**Remember:** A plump ordinal is closed under going down by ≤ and then down by &lt;.
+**Remember:** Every member is plump and brings all smaller or equal plump ordinals with it.
 
 *Rules out counterexamples.* MSC 03E10 (Ordinal and cardinal numbers), 03F65. arXiv math.LO. Level 4: research.
 
-**Definition.** An ordinal A is plump if two conditions hold. Every ordinal B &lt; A is plump. And whenever C ≤ B &lt; A with C plump, then C &lt; A. So the definition keeps only the ordinals on which the missing law holds all the way down.
+**Definition.** Define plumpness recursively. An ordinal A is plump if every B &lt; A is plump and every plump C ≤ B &lt; A satisfies C &lt; A.
 
 **Problem.** Without excluded middle, plump ordinals satisfy the law that x ≤ y &lt; z implies x &lt; z. If this law held for all constructive ordinals, excluded middle would follow.
 
-**How the definition helps.** The definition builds the missing law into the ordinals, so plump ordinals satisfy it by definition. For all ordinals, take z = 2, y = 1 and x = {0 \| P}, the set that contains 0 exactly when P holds; the law then decides P. The cost is that 2 is plump only if excluded middle holds, and the plump version of 2 is the set Ω of all truth values. The definition also needs power sets, so it does not obviously suit predicative mathematics.
+**How the definition helps.** The second condition gives x &lt; z whenever x is plump and x ≤ y &lt; z. For unrestricted ordinals, take y = 1, z = 2 and x = {0 ∣ P} for any proposition P (our own). Then x ≤ 1, but x &lt; 2 forces x = 0 or x = 1, deciding P (our own).
 
 **nLab:** [plump ordinal](https://ncatlab.org/nlab/show/plump+ordinal). It says: “However, Paul Taylor (Taylor) realized that this last property can be recovered by essentially "restricting to the subclass of ordinals z for which it holds hereditarily". These are the plump ordinals.”
 
@@ -5270,11 +4910,11 @@
 
 *True by definition.* MSC 03E15 (Descriptive set theory). arXiv math.LO. Level 4: research.
 
-**Definition.** A subset A of Baire space is universally Baire if it passes a test for every compact Hausdorff space Ω. For each continuous map f from Ω to Baire space, the preimage of A must have the Baire property in Ω. A set has the Baire property if it differs from an open set by a meager set, a countable union of nowhere dense sets. The alternative uses pairs of trees whose projections stay complementary in forcing extensions.
+**Definition.** A subset A of Baire space is universally Baire if it passes every compact Hausdorff test. For each compact Hausdorff space K and each continuous f from K to Baire space, f⁻¹(A) must have the Baire property. This means its symmetric difference with some open set is meager.
 
 **Problem.** Let g be a continuous map from Baire space to itself, and let A be universally Baire. Then the preimage of A under g is universally Baire.
 
-**How the definition helps.** With the compact-space definition, every test for the preimage is already a test for A. For f from Ω to Baire space, the preimage of g⁻¹(A) under f is the preimage of A under the continuous map g ∘ f, so it has the Baire property (our own). With the tree definition, one must build new tree pairs from a code for g (our own). The work moves to the Feng–Magidor–Woodin theorem that the two definitions agree.
+**How the definition helps.** Each continuous test map f for g⁻¹(A) gives a continuous test map g ∘ f for A. Since f⁻¹(g⁻¹(A)) equals (g ∘ f)⁻¹(A), it has the Baire property (our own). The Feng–Magidor–Woodin theorem identifies this definition with the tree formulation.
 
 **Wikipedia:** [Universally Baire set](https://en.wikipedia.org/wiki/Universally_Baire_set). It says: “the preimage of A under f has the property of Baire in Ω.”
 
@@ -5288,11 +4928,11 @@
 
 *True by definition.* MSC 03E15 (Descriptive set theory), 37A20. arXiv math.LO, math.DS. Level 4: research.
 
-**Definition.** A countable Borel equivalence relation is hyperfinite if it is an increasing union of Borel equivalence relations with finite classes. The alternative asks for one Borel bijection whose iterates have exactly the same orbits.
+**Definition.** A Borel equivalence relation is hyperfinite if it is the union of an increasing sequence of Borel equivalence relations with finite classes.
 
 **Problem.** Let a countable group G act in a Borel way on a standard Borel space. Suppose G is locally finite, meaning that each finitely generated subgroup is finite. Then the orbit relation is hyperfinite.
 
-**How the definition helps.** With the union definition, the group structure gives the finite approximations directly. Local finiteness writes G as an increasing union of finite subgroups Fₙ, and the orbit relation of each Fₙ is Borel with finite classes. These relations increase, and their union is the orbit relation of G. With the single-bijection definition, one would have to replace all the actions of the Fₙ by one Borel bijection (our own).
+**How the definition helps.** Enumerate G and let Fₙ be the finite subgroup generated by the first n elements (our own). Each Fₙ has a Borel orbit relation with finite classes. These relations increase and their union is the orbit relation of G.
 
 **Wikipedia:** [Hyperfinite equivalence relation](https://en.wikipedia.org/wiki/Hyperfinite_equivalence_relation). It says: “a filtration of the orbit equivalence relation of the action of G on X into finite Borel equivalence relations”
 
@@ -5306,11 +4946,11 @@
 
 *True by definition.* MSC 03E15 (Descriptive set theory), 37A20. arXiv math.LO, math.DS. Level 4: research.
 
-**Definition.** A countable Borel equivalence relation is hyperfinite if it is an increasing union of Borel equivalence relations whose classes are all finite. The alternative asks that it be the orbit relation of a single Borel bijection and its iterates.
+**Definition.** A Borel equivalence relation is hyperfinite if it is the union of an increasing sequence of Borel equivalence relations with finite classes.
 
 **Problem.** Let E be a hyperfinite Borel equivalence relation, and let F be a Borel equivalence relation contained in E. Then F is hyperfinite.
 
-**How the definition helps.** With the union definition, the approximations of the larger relation restrict to the smaller one. If E is the union of the finite relations Eₙ, then F is the union of the relations F ∩ Eₙ, each Borel with finite classes (our own). With the single-bijection definition, one must build a new Borel bijection whose orbits are the classes of F (our own). The work moves to the theorem that the two definitions agree.
+**How the definition helps.** Write E as the increasing union of finite-class Borel equivalence relations Eₙ (our own). The intersections F ∩ Eₙ are Borel equivalence relations with finite classes. They increase and their union is F.
 
 **Wikipedia:** [Hyperfinite equivalence relation](https://en.wikipedia.org/wiki/Hyperfinite_equivalence_relation). It says: “A subequivalence relation of a hyperfinite equivalence relation is hyperfinite.”
 
@@ -5324,11 +4964,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 03E15 (Descriptive set theory), 03E40. arXiv math.LO. Level 4: research.
 
-**Definition.** For each partial order used for forcing, a universally Baire set A comes with a pair of trees. In the ground model, the first coordinates of branches of the first tree form A, and those of the second tree form its complement. In every extension by that order, the two projections must stay complementary. The alternative tests whether continuous preimages from compact Hausdorff spaces have the Baire property.
+**Definition.** A set A of reals is universally Baire if every forcing order admits two ground-model trees whose projections are A and its complement. Their projections must remain complementary in every extension by that order. A tree projects to the first coordinates of its infinite branches.
 
 **Problem.** Take two tree pairs for the same universally Baire set A. In any forcing extension where both pairs stay complementary, the two first trees project to the same set.
 
-**How the definition helps.** Tree pairs give A a meaning in the extension, and the theorem says that this meaning does not depend on the pair. Combine the first tree of one pair with the second tree of the other; a branch would give a point in both A and its complement, so the ground model has no branch (our own). Its rank function survives forcing, so the first projection of one pair misses the second projection of the other in the extension (our own). Complementarity puts it inside the other first projection, and symmetry gives equality (our own).
+**How the definition helps.** Synchronize the first tree of one pair with the second tree of the other along their real coordinate (our own). The resulting tree has no ground-model branch because the projections are disjoint. Its ground-model rank function still excludes branches in the extension. Complementarity gives one inclusion between the first projections, and exchanging the pairs gives the reverse inclusion.
 
 **Paper or page:** [Uniformization and Internal Absoluteness](https://arxiv.org/abs/2108.09688v4). It says: “A set of reals A is universally Baire if and only if for every ordinal λ”
 
@@ -5343,11 +4983,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 03E25 (Axiom of choice and related propositions), 03F65, 03G30. arXiv math.LO, math.CT. Level 4: research.
 
-**Definition.** WISC stands for 'weakly initial set of covers'. It says: for every set X there is a set of surjections onto X such that every surjection onto X is refined by one of them. One surjection refines another when it factors through it. WISC says that the axiom of choice fails only in a small way.
+**Definition.** WISC says that every set X has a set of surjections onto it such that each surjection onto X admits a refinement from that set. A surjection refines another if it factors through the other over X.
 
 **Problem.** Assume WISC. Then the category of anafunctors between two small categories is essentially small, that is, equivalent to a small category. Every Grothendieck topos and every realizability topos inherits WISC from its base, so the result holds inside them too.
 
-**How the definition helps.** To make the anafunctor category small, you only need to replace each cover by one from a fixed set, and WISC gives exactly that. An anafunctor is defined only after you replace its source by a cover of its object set, so it needs no choice. Stronger principles such as COSHEP or SVC also give smallness, but they fail in some Grothendieck toposes, even over a model of ZFC. The stability result is a theorem of van den Berg.
+**How the definition helps.** WISC supplies a set of covers of the source object set sufficient to represent every anafunctor up to isomorphism (our own). For small categories, the functor data on each such cover form a set. Van den Berg’s inheritance theorem gives the same hypothesis inside the stated toposes.
 
 **nLab:** [WISC](https://ncatlab.org/nlab/show/WISC). It says: “any Grothendieck topos or realizability topos inherits WISC from its base topos of sets (even if the latter is constructive or even predicative); see van den Berg.”
 
@@ -5356,32 +4996,13 @@
 - [B. van den Berg, Predicative toposes, 2012, arXiv:1207.0959](https://arxiv.org/abs/1207.0959)
 - [B. van den Berg, I. Moerdijk, The axiom of multiple choice and models for constructive set theory, 2012, arXiv:1204.4045](https://arxiv.org/abs/1204.4045)
 
-### Forcing with sheaves makes the generic object exist by construction
-
-**Remember:** Do not look for a generic set outside the universe; build sheaves that contain one.
-
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 03E40 (Other aspects of forcing and Boolean-valued models), 18F10. arXiv math.LO, math.CT. Level 4: research.
-
-**Definition.** In structural set theory (set theory that describes sets by the functions between them), one replaces the forcing extension of a model V by the topos of sheaves on a suitable site in V. A topos is a category that behaves like the category of sets and has its own internal logic. This topos is the classifying topos of the theory of the wanted generic object G, that is, the topos that contains a universal model of that theory. So it contains a generic G in its internal logic.
-
-**Problem.** For a suitable site in a model V, the topos of sheaves contains a generic object in its internal logic, with no need for V to be countable. After a double-negation step, it gives a model in which, for example, the continuum hypothesis fails.
-
-**How the definition helps.** The sheaf topos is the classifying topos of the theory of G, so it contains a generic G by definition. In the material approach, the generic set does not in general exist unless V is countable, so one uses countable models, forcing semantics or Boolean-valued models. Kripke–Joyal semantics then plays the role of the forcing relation. The remaining work is to show that the topos has the wanted properties.
-
-**nLab:** [forcing](https://ncatlab.org/nlab/show/forcing), [Kripke-Joyal semantics](https://ncatlab.org/nlab/show/Kripke-Joyal+semantics). It says: “In structural set theory, this construction is simply that of the topos of sheaves on a suitable site, in the model V.”
-
-**Sources:**
-
-- [Paul J. Cohen, The independence of the Continuum Hypothesis, PNAS 50 (1963) 1143–1148](https://doi.org/10.1073/pnas.50.6.1143)
-- [Myles Tierney, Forcing Topologies and Classifying Topoi, in: Alex Heller, Myles Tierney (eds.), Algebra, Topology, and Category Theory: A Collection of Papers in Honor of Samuel Eilenberg, Academic Press (1976) 211–219](https://doi.org/10.1016/C2013-0-10841-0)
-
 ### Mathias's criterion makes infinite subsequences of Prikry sequences generic
 
 **Remember:** Every infinite subsequence still lies eventually in each measure-one set.
 
 *True by definition. Confidence: medium.* MSC 03E40 (Other aspects of forcing and Boolean-valued models), 03E55. arXiv math.LO. Level 4: research.
 
-**Definition.** Fix a normal measure U on a measurable cardinal κ, a κ-complete ultrafilter with an extra closure property. An increasing sequence with supremum κ is Prikry generic if, for each set in U, all but finitely many terms lie in it. Mathias proved that this matches the forcing definition. That definition asks the filter given by the sequence to meet every dense set of the ground model.
+**Definition.** Fix a ground model M with a normal measure U on κ. An increasing cofinal sequence of length ω in κ is Prikry generic over M if it lies eventually in every member of U.
 
 **Problem.** Every infinite subsequence of a Prikry generic sequence is Prikry generic over the same ground model.
 
@@ -5399,11 +5020,11 @@
 
 *True by definition.* MSC 03E55 (Large cardinals). arXiv math.LO. Level 4: research.
 
-**Definition.** Call δ a Woodin cardinal if each function f from δ to δ has a closure point κ &lt; δ with a suitable embedding. A closure point means that f(β) &lt; κ for all β &lt; κ. The embedding j goes from the universe into a transitive class M, has critical point κ, and M contains every set of rank below j(f)(κ). The alternative asks, for each subset A of the sets of rank below δ, for embeddings that preserve A up to high ranks.
+**Definition.** A cardinal δ is Woodin if each f ∶ δ→δ admits κ &lt; δ and an elementary embedding j ∶ V→M satisfying the following conditions. Here M is transitive, f\[κ\] ⊆ κ, and κ is the critical point of j. Every set of rank below j(f)(κ) belongs to M.
 
 **Problem.** Let δ be a Woodin cardinal, and let C be a club, a closed unbounded subset of δ. Closed means that C contains every limit below δ of its own points. Then C contains a measurable cardinal.
 
-**How the definition helps.** With this definition, a well-chosen f forces the closure point into C. Let f send each ordinal to the least point of C above it; a closure point κ of f is then a limit of points of C, so κ lies in C (our own). The critical point of an elementary embedding of the universe is measurable, so κ is measurable. The work moves to that fact about critical points and to the equivalence with the alternative definition.
+**How the definition helps.** Send each β &lt; δ to the least point of C above β (our own). Below the resulting κ, these values stay below κ and are cofinal there. Closure gives κ ∈ C, and the critical point of such an elementary embedding is measurable.
 
 **Wikipedia:** [Woodin cardinal](https://en.wikipedia.org/wiki/Woodin_cardinal). It says: “preceded by a stationary set of measurable cardinals”
 
@@ -5417,11 +5038,11 @@
 
 *True by definition. Confidence: medium.* MSC 03E55 (Large cardinals), 03E02. arXiv math.LO. Level 4: research.
 
-**Definition.** Call κ Ramsey if every structure containing κ, in a language with fewer than κ symbols, has a set of κ indiscernibles. A set is indiscernible if all increasing tuples of the same length from it satisfy the same formulas. The usual definition asks that each two-coloring of the finite subsets of κ have a homogeneous set of size κ. Homogeneous means that all its subsets of the same size get the same color.
+**Definition.** An uncountable cardinal κ is Ramsey if every structure on κ in a language of size less than κ has κ many order indiscernibles. Increasing tuples of order indiscernibles of equal length satisfy the same parameter-free formulas.
 
 **Problem.** Let κ be a Ramsey cardinal. Color the finite subsets of κ with fewer than κ colors. Then some set of size κ is homogeneous.
 
-**How the definition helps.** With the indiscernibles definition, each color becomes a relation symbol, and indiscernibility becomes homogeneity. For each length n and color c, add the relation of n-tuples whose set has color c (our own). This language has fewer than κ symbols, because κ is uncountable, and a set of κ indiscernibles gives all its increasing n-tuples the same color. The work moves to getting indiscernibles from two-color homogeneous sets.
+**How the definition helps.** For each positive arity and color, introduce a relation selecting tuples whose underlying set has that color (our own). The language has size less than κ. Indiscernibility makes each relation constant on increasing tuples of its arity, giving homogeneity.
 
 **Paper or page:** [Large cardinal ideals](https://arxiv.org/abs/2102.09591v1). It says: “Every structure 𝒜 in a language of size less than κ”
 
@@ -5433,13 +5054,13 @@
 
 **Remember:** Two elements that nothing can tell apart, step by step forever, are equal.
 
-*Rules out counterexamples. Confidence: medium.* MSC 03E65 (Other set-theoretic hypotheses and axioms), 03E20. arXiv math.LO. Level 4: research.
+*True by definition. Confidence: medium.* MSC 03E65 (Other set-theoretic hypotheses and axioms), 03E20. arXiv math.LO. Level 4: research.
 
-**Definition.** Let ≺ be a relation on a set. A bisimulation is a relation ∼ with this property: if x ∼ y, then every a ≺ x has some b ≺ y with a ∼ b, and every b ≺ y has some a ≺ x with a ∼ b. The relation ≺ is strongly extensional when every bisimulation is contained in equality.
+**Definition.** A bisimulation R on T matches predecessors whenever x R y. Each predecessor of x must relate by R to some predecessor of y, and conversely each predecessor of y must receive such a match. A relation on T is strongly extensional if every bisimulation on T relates only equal elements.
 
 **Problem.** A relation ≺ on T is strongly extensional exactly when any two simulations from any S into T are equal. A simulation is a map that preserves ≺ and sends the ≺-predecessors of x onto the ≺-predecessors of its image.
 
-**How the definition helps.** Strong extensionality forbids distinct elements that no bisimulation can tell apart, and this makes simulations unique. Weak extensionality, that two elements with the same predecessors are equal, is enough for well-founded relations but not in general. On {0, 1} with 0 ≺ 1 and 1 ≺ 0, the relation is weakly extensional, yet swapping 0 and 1 is a second simulation besides the identity. With strong extensionality, simulations are also injective, so these structures form a large poset.
+**How the definition helps.** For simulations f and g, the pairs (f(s), g(s)) form a bisimulation because both maps send predecessors onto predecessors (our own). Strong extensionality therefore gives f = g. Conversely, give any bisimulation its coordinatewise predecessor relation. Its projections are simulations, so uniqueness makes their values equal at every pair (our own).
 
 **nLab:** [extensional relation](https://ncatlab.org/nlab/show/extensional+relation). It says: “Note that there is at most one simulation from S to T; in fact, strong extensionality for T is equivalent to saying that any two simulations S ⇉ T are equal.”
 
@@ -5471,11 +5092,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 03F05 (Cut-elimination and normal-form theorems), 03F52. arXiv math.LO, cs.LO. Level 4: research.
 
-**Definition.** A display logic is a sequent calculus with enough structural connectives and structural rules to have the display property. Structural connectives join whole parts of a sequent, as the comma does. The display property: you can move any formula in a sequent to stand alone on the left or the right of an equivalent sequent.
+**Definition.** A sequent calculus has the display property if reversible structural rules can isolate any substructure as an entire side of a sequent. A display calculus has structural connectives and rules with this property.
 
-**Problem.** Belnap's theorem: every display logic whose rules satisfy eight natural conditions admits cut, so the cut rule can be removed from its proofs.
+**Problem.** Belnap’s cut-elimination theorem makes cut admissible in every display calculus satisfying his eight conditions.
 
-**How the definition helps.** Display logic replaces many separate cut-elimination proofs with one general theorem and a checklist. Because the cut formula A can always be displayed alone, the cut rule takes the simple form: from Γ ⊢ A and A ⊢ Δ, infer Γ ⊢ Δ. For a new logic, it is enough to check the eight conditions rule by rule. The hard part moves into the general theorem and into the design of structural rules that satisfy the conditions.
+**How the definition helps.** Displaying the cut formula gives one cut rule for all these calculi. Belnap’s theorem then reduces cut admissibility for a particular calculus to checking his conditions on its rules.
 
 **nLab:** [display logic](https://ncatlab.org/nlab/show/display+logic). It says: “Any display logic satisfying a list of eight natural conditions automatically satisfies cut admissibility.”
 
@@ -5489,11 +5110,11 @@
 
 *Rules out counterexamples.* MSC 03F07 (Structure of proofs), 06A07. arXiv math.LO, cs.LO. Level 4: research.
 
-**Definition.** The Tamari order on bracketings is generated by right reassociation, from (A · B) · C to A · (B · C). Zeilberger represents it by sequents, with a list of formulas on the left and one formula on the right. A focused proof must first break up a product at the left edge, and otherwise uses restricted right rules.
+**Definition.** In this Tamari calculus, a focused derivation expands a leftmost product by the left rule whenever possible. The right product rule requires its left premise to start with an atom, and identity applies only to atoms.
 
 **Problem.** Every provable sequent in this Tamari calculus has exactly one focused derivation.
 
-**How the definition helps.** The focusing restrictions exclude the reorderings of rules that give unrestricted proofs of one sequent many derivations. The paper's Lemma 1.18 proves that each sequent has at most one focused derivation. Its Proposition 1.8 puts every sequent into one of three kinds, so the rules leave no choice of rule. The work moves into showing that every derivable sequent has a focused derivation. The two results together give the quoted coherence theorem.
+**How the definition helps.** The restrictions exclude competing rule orders by determining the final rule from the sequent (our own). Zeilberger’s Lemma 1.18 gives uniqueness, and his focusing theorem gives existence for each provable sequent.
 
 **Paper or page:** [A sequent calculus for a semi-associative law](https://arxiv.org/abs/1803.10080v3). It says: “Every derivable sequent has exactly one focused derivation.”
 
@@ -5501,35 +5122,17 @@
 
 - [Noam Zeilberger (2019), A Sequent Calculus for a Semi-Associative Law, Logical Methods in Computer Science 15(1)](https://doi.org/10.23638/LMCS-15(1:9)2019)
 
-### Periodic sets of ordinals give GLP a usable class of complete models
-
-**Remember:** Keep Icard's topologies, but only allow periodic sets as values.
-
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 03F45 (Provability logics and related algebras (e.g., diagonalizable algebras)), 03E10. arXiv math.LO. Level 4: research.
-
-**Definition.** GLP is a provability logic with one modality for each natural number, for provability of increasing strength. In topological semantics, the n-th possibility operator sends a set to its set of limit points in the n-th topology. A general topological frame also fixes an algebra of subsets, and formulas may only take values in that algebra. Here the algebra consists of periodic sets of ordinals, which generalize ultimately periodic infinite binary words.
-
-**Problem.** GLP is sound and complete for a countable class of general topological frames on ordinals. These frames use Icard's ordinal topologies, with formula values restricted to periodic sets.
-
-**How the definition helps.** Restricting formula values to a well-chosen algebra of sets gives completeness for the same natural topologies. The key point is that the periodic sets are closed under the Boolean operations and under taking limit points. Without this restriction, GLP is complete only for highly non-constructive topologies. Completeness when every subset of the ordinal is allowed depends on large cardinal axioms and is still open.
-
-**Paper or page:** [Periodic frames](https://arxiv.org/abs/2407.10190). It says: “In this paper we define a natural class of countable general topological frames on ordinals for which GLP is sound and complete. The associated topologies are the same as the ordinal topologies introduced by Thomas Icard.”
-
-**Sources:**
-
-- [Lev D. Beklemishev and Yunsong Wang, Periodic frames, arXiv:2407.10190 (2024)](https://arxiv.org/abs/2407.10190)
-
 ### Proof nets forget the order of rules and keep only the links
 
 **Remember:** A proof net keeps which atoms are linked and forgets the order of rules.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 03F52 (Proof-theoretic aspects of linear logic and other substructural logics), 18M45. arXiv math.LO, cs.LO. Level 4: research.
 
-**Definition.** Multiplicative linear logic is the part of linear logic with only the connectives tensor (⊗) and par (⅋). A proof structure for it is a graph of the connectives of a sequent, with links that pair the occurrences of atomic formulas. A proof net is a proof structure that comes from a proof in the sequent calculus.
+**Definition.** In unit-free multiplicative linear logic, a proof structure consists of the sequent’s formula trees and a perfect matching of dual atomic occurrences. A proof net is a proof structure obtained from a cut-free sequent proof.
 
-**Problem.** Two sequent proofs that differ only in the order of rule applications give the same proof net. For formulas without units, a proof structure is a proof net exactly when each switching, which removes one of the two edges at each par, is a connected acyclic graph.
+**Problem.** Permuting independent rules in a cut-free sequent proof preserves its proof net. In unit-free multiplicative linear logic without Mix, a proof structure is a net exactly when every switching gives a connected acyclic graph. A switching keeps exactly one premise edge at each par.
 
-**How the definition helps.** Proof nets make the identity of proofs simple: two proofs are the same when they give equal nets (our own reading). Not every proof structure comes from a proof, so a correctness criterion must exclude the bad graphs. Girard and Danos–Regnier proved the switching criterion. Its proof is technical, and Danos and Regnier also showed that the criterion can be decided in polynomial time.
+**How the definition helps.** Permuting independent rules preserves the formula trees and the links between dual atoms (our own). The Danos–Regnier correctness theorem characterizes the resulting graphs by their switchings.
 
 **nLab:** [proof net](https://ncatlab.org/nlab/show/proof+net). It says: “can be viewed as graphical normal forms of proofs freed from 'the bureaucracy of syntax' (Girard).”
 
@@ -5544,11 +5147,11 @@
 
 *Rules out counterexamples.* MSC 03F55 (Intuitionistic mathematics), 03B38. arXiv math.LO, cs.LO. Level 4: research.
 
-**Definition.** In type theory, 'there exists' can mean two things. The dependent sum Σ carries a witness. Its propositional truncation ‖Σ‖ only says that a witness exists, and does not give one. The continuity principle says that every function ℕᴺ → ℕ (from infinite sequences of natural numbers to natural numbers) is continuous, and 'continuous' contains 'there exists a modulus'. A modulus at a sequence is a number n such that the value depends only on the first n terms.
+**Definition.** For f ∶ ℕᴺ → ℕ, a modulus at α is a natural number n with the following property. Every β agreeing with α on the first n terms satisfies f(β) = f(α). Truncated continuity requires, at every α, the propositional truncation of the type of such moduli, recording existence without selecting a witness.
 
-**Problem.** With 'there exists' read as a propositional truncation, the principle that all functions ℕᴺ → ℕ are continuous is consistent with intuitionistic type theory; it holds in Johnstone's topological topos. With untruncated Σ, the principle proves 0 = 1.
+**Problem.** Truncated continuity for every f ∶ ℕᴺ → ℕ holds in Johnstone’s topological topos, giving consistency with intuitionistic type theory. The untruncated principle implies 0 = 1.
 
-**How the definition helps.** Truncation states that a modulus exists without a function that picks one, and only the picking leads to a contradiction. Escardó and Xu showed that the untruncated version proves 0 = 1, because Σ turns 'each function has a modulus' into a function that picks one. For uniform continuity on Cantor space, the nLab says that the two versions are equivalent. So the problem is specific to Baire space ℕᴺ.
+**How the definition helps.** Truncation removes the operation that chooses a modulus for each function and input (our own). Escardó and Xu derive a contradiction from that choice operation. Johnstone’s topological topos supplies a model of the truncated principle.
 
 **nLab:** [Brouwer's continuity principle](https://ncatlab.org/nlab/show/Brouwer%27s+continuity+principle), [BHK interpretation](https://ncatlab.org/nlab/show/BHK+interpretation). It says: “The statement that all functions from the Baire space of sequences ℕ<sup>ℕ</sup> to the natural numbers have a choice of modulus of pointwise continuity is inconsistent.”
 
@@ -5556,33 +5159,17 @@
 
 - [Martín Escardó, Chuangjie Xu, The inconsistency of a Brouwerian continuity principle with the Curry–Howard interpretation, TLCA 2015, LIPIcs 38, 153–164](https://doi.org/10.4230/LIPIcs.TLCA.2015.153)
 
-### Lower reals make the extreme value theorem a fact about semicontinuity
-
-**Remember:** A lower real is known only from below, which is all a supremum needs.
-
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 03F60 (Constructive and recursive analysis), 26A15, 54D30. arXiv math.LO, math.CA. Level 4: research.
-
-**Definition.** A lower real number is given only by a lower cut: the set of rationals below it. The lower reals form the set \]−∞, ∞\], so they include ∞. In constructive mathematics, a lower real need not be located, that is, you may not be able to approximate it from above. Every inhabited set of lower reals (a set with at least one element) has a supremum.
-
-**Problem.** The extreme value theorem in this form says: a lower semicontinuous function from an inhabited compact space to the lower reals has a minimum. A function f is lower semicontinuous if the set where f &gt; a is open for each a. Dually, an upper semicontinuous function has a maximum.
-
-**How the definition helps.** The lower reals are defined so that every inhabited set has a supremum, so part of the work is free. The theorem then reduces to one claim: on a compact domain, the infimum exists and the function attains it. This shows that the theorem is really about semicontinuous functions, and the version for continuous real functions follows by applying it to f and to −f. Constructively, the statement holds in locale theory but fails for pointwise functions on a real interval.
-
-**nLab:** [extreme value theorem](https://ncatlab.org/nlab/show/extreme+value+theorem). It says: “Recall that the lower real numbers are more general than the real numbers in just the way needed to guarantee that any inhabited set of lower reals has a supremum”
-
-**Sources:** none listed. No primary source with a working link was found.
-
 ### Antisubalgebras give constructive quotients that keep an apartness
 
-**Remember:** An antisubalgebra lists what is positively outside the subalgebra.
+**Remember:** Apart outputs require apart inputs, and the anticongruence is open in the product apartness.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 03F65 (Other constructive mathematics), 08A30, 08A05. arXiv math.LO, math.RA. Level 4: research.
 
-**Definition.** Take an algebra with a tight apartness ≠, a positive way to say that two elements differ, and with strongly extensional operations. An antisubalgebra is a ≠-open subset A such that, whenever fᵢ(p₁, …, pₙ) ∈ A, some pⱼ ∈ A. Here ≠-open means that for each a ∈ A and each x, either x ∈ A or x ≠ a. Classically it is the complement of a subalgebra. An anticongruence is an apartness relation that is also an antisubalgebra of X × X.
+**Definition.** On an algebra X with tight apartness \# and strongly extensional operations, an anticongruence R is an apartness on X satisfying two conditions. For every p ∈ R and q ∈ X², either q ∈ R or some corresponding coordinates of p and q are apart. For every basic operation f, if f(a₁,…,aₙ) R f(b₁,…,bₙ), then aᵢ R bᵢ for some i.
 
 **Problem.** Without excluded middle, the quotient of an algebra by an anticongruence carries a tight apartness, and its operations stay strongly extensional. A normal subgroup or ideal alone does not give an apartness on the quotient.
 
-**How the definition helps.** An anticongruence gives the quotient its apartness directly, so you do not need excluded middle. For groups and rings, one builds the anticongruence from a normal antisubgroup or an antiideal. Properness also becomes a positive statement: an antiideal is proper when 1 ∈ A. In general you cannot go back from an arbitrary subalgebra to an antisubalgebra.
+**How the definition helps.** Identify x and y when ¬(x R y), and declare their classes apart when x R y (our own). Cotransitivity makes this independent of representatives, and the quotient apartness is tight by construction. The operation condition makes the operations descend and remain strongly extensional.
 
 **nLab:** [antisubalgebra](https://ncatlab.org/nlab/show/antisubalgebra). It says: “However, if we want the quotient algebra to inherit an apartness from the original algebra, then we need antisubgroups and antiideals.”
 
@@ -5600,7 +5187,7 @@
 
 **Problem.** Without countable choice, the quasidecidable propositions form a dominance that is closed under existential quantification over ℕ. The semidecidable propositions form one only under an extra axiom, such as countable choice.
 
-**How the definition helps.** The definition builds in closure under countable 'or', so it needs no extra axiom for that. For semidecidable propositions, ∃n. f(n) = 1 with f a binary sequence, closure under ∃ over ℕ is equivalent to Rosolini's dominance axiom, which follows from countable choice. That the quasidecidable propositions also form a dominance is a theorem (Bidlingmaier, Faissole and Spitters; Escardó). With countable choice, the two classes coincide.
+**How the definition helps.** The definition gives closure under countable existential quantification directly. The dominance theorem of Bidlingmaier, Faissole and Spitters supplies the further closure needed for a dominance. Countable choice supplies the corresponding closure for semidecidable propositions.
 
 **nLab:** [quasidecidable proposition](https://ncatlab.org/nlab/show/quasidecidable+proposition), [Smyth's dictionary](https://ncatlab.org/nlab/show/Smyth%27s+dictionary). It says: “unlike the set of semidecidable propositions, even in the absence of countable choice, the set of quasidecidable propositions is always an ℕ-overt dominance”
 
@@ -5614,11 +5201,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 03F65 (Other constructive mathematics), 03F60, 26E40. arXiv math.LO, math.CA. Level 4: research.
 
-**Definition.** An entire relation from X to Y relates each x to at least one y, so it is a kind of multivalued function. The axiom of fullness says that for sets X and Y there is a set of entire relations such that every entire relation contains one of them. This axiom is stronger than the function set axiom and weaker than the power set axiom.
+**Definition.** An entire relation R ⊆ X × Y relates every x ∈ X to some y ∈ Y. Fullness requires a set S of entire relations for every pair of sets X and Y. Every entire relation from X to Y must contain some member of S.
 
 **Problem.** With the axiom of fullness, the located Dedekind real numbers form a set, without the power set axiom, excluded middle or countable choice.
 
-**How the definition helps.** Fullness lets one use multivalued sequences in place of sequences, and these give the Dedekind reals with no choice. With only function sets, one gets the Cauchy reals as a subquotient of the set of functions ℕ → ℕ, and they equal the Dedekind reals only under weak countable choice. With fullness, one takes regular multivalued sequences from the set of enough entire relations from ℕ to ℕ, and their subquotient is the Dedekind reals. The nLab notes that the axiom is overkill for real numbers alone.
+**How the definition helps.** Fullness bounds the multivalued sequences needed to represent located cuts by a set of representatives (our own). One restricts a covering family of entire relations to regular multivalued sequences and identifies those representing the same cut. Using relations allows these approximations without choosing one value at each index.
 
 **nLab:** [axiom of fullness](https://ncatlab.org/nlab/show/axiom+of+fullness). It says: “it is strong enough to construct the set ℝ of (located Dedekind) real numbers from the set ℕ of natural numbers without assuming excluded middle or countable choice.”
 
@@ -5626,35 +5213,17 @@
 
 - [M. Shulman, Comparing material and structural set theories, arXiv:1808.05204 (2018)](https://arxiv.org/abs/1808.05204)
 
-### A general law of excluded middle characterizes semisimple logics
-
-**Remember:** Given an inconsistency lemma, semisimple means having a general excluded middle.
-
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 03G25 (Other algebras related to logic), 03B47. arXiv math.LO. Level 4: research.
-
-**Definition.** A logic is semisimple when every model is a subdirect product of simple models, that is, models with no non-trivial quotients. The general law of the excluded middle is a form of the law that does not mention any particular connective.
-
-**Problem.** Given a weak form of Raftery's inconsistency lemma, a logic is semisimple if and only if it has the general law of the excluded middle. This gives syntactic proofs of Kowalski and Kracht's characterizations of the semisimple FLew-algebras and Boolean algebras with operators.
-
-**How the definition helps.** The definition turns semisimplicity, an algebraic property, into a law that one can check by deriving formulas. So the older algebraic characterizations follow from short syntactic derivations. The same equivalence extends them to FLe-algebras and to Heyting algebras with operators. What stays hard is the general equivalence itself, and the inconsistency lemma must still be checked for each logic.
-
-**Paper or page:** [Semisimplicity, Glivenko theorems, and the excluded middle](https://arxiv.org/abs/2101.03528). It says: “this equivalence can be used to provide simple syntactic proofs of the theorems of Kowalski and Kracht characterizing the semisimple varieties of FLew-algebras and Boolean algebras with operators”
-
-**Sources:**
-
-- [Tomáš Lávička and Adam Přenosil, Semisimplicity, Glivenko theorems, and the excluded middle, arXiv:2101.03528 (2021)](https://arxiv.org/abs/2101.03528)
-
 ### An initial category with a natural numbers object gives IΣ₁'s total functions
 
-**Remember:** In the initial arithmetic category, every total map is primitive recursive.
+**Remember:** Zero starts the recursion, successor continues it, and parameters stay available.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 03G30 (Categorical logic, topoi), 03F30, 03D20. arXiv math.LO, math.CT. Level 4: research.
 
-**Definition.** A coherent category has finite limits, and images and unions that are stable under pullback; these model ∧, ∨ and ∃. A parametrised natural numbers object is an object N with a zero and a successor, for which definitions by primitive recursion with parameters have unique solutions. The paper's theory 𝕋 presents the initial coherent category with such an object.
+**Definition.** A parametrised natural numbers object N has zero 0 and successor s. For every a ∶ P→X and b ∶ P×X→X, there is a unique h ∶ P×N→X satisfying two equations. They are h(p,0) = a(p) and h(p,s(n)) = b(p,h(p,n)).
 
 **Problem.** The provably total functions of 𝕋 are exactly the primitive recursive functions. Since 𝕋 is the Π₂ fragment of IΣ₁, the same holds for IΣ₁, Peano arithmetic with induction only for Σ₁ formulas.
 
-**How the definition helps.** Initiality turns a question about all proofs into a question about one structure-preserving functor. The paper builds a category of primitive recursive data with the same structure, and initiality gives a functor into it. A provably total function of 𝕋 is a map Nⁿ → N, so it goes to a primitive recursive function. The work moves to proving that 𝕋 presents the initial category.
+**How the definition helps.** Initiality sends each definable numerical map to a map in the paper’s coherent category of primitive recursive data. Conversely, composition and parametrised recursion represent primitive recursive functions in 𝕋 (our own). The paper’s initiality and Π₂-fragment results transfer this characterization to IΣ₁.
 
 **Paper or page:** [Categorical Structure in Theory of Arithmetic](https://arxiv.org/abs/2304.05477). It says: “prove that 𝕋 presents the initial coherent category equipped with a parametrised natural number object. This allows us to derive the provably total functions in 𝕋 are exactly the primitive recursive ones”
 
@@ -5662,35 +5231,17 @@
 
 - [Lingyuan Ye, Categorical Structure in Theory of Arithmetic, arXiv:2304.05477 (2023)](https://arxiv.org/abs/2304.05477)
 
-### Arboreal categories give one proof of resource-preserving homomorphism preservation
-
-**Remember:** Axiomatize the game trees once, and preservation theorems follow everywhere.
-
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 03G30 (Categorical logic, topoi), 03C40, 03C13. arXiv math.LO, math.CT. Level 4: research.
-
-**Definition.** An arboreal category is a category with special objects called paths, such that every object is assembled from its paths in a tree-like way. It describes abstractly the tree-shaped unfoldings that are used in model comparison games. A resource is a measure of the complexity of sentences, such as quantifier rank or modal depth.
-
-**Problem.** In every arboreal category that satisfies the paper's axioms, an equi-resource homomorphism preservation theorem holds. A sentence preserved under homomorphisms is equivalent to an existential positive sentence that uses no more of the resource. The paper applies this to fragments of first-order, guarded and modal logic.
-
-**How the definition helps.** The axioms capture what the proof needs, so it is done once and then applied to each logic. The abstract says that the framework gives new homomorphism preservation results and improves known ones for first-order, guarded and modal logic. What stays hard is to check that the axioms hold for each logic and each resource.
-
-**Paper or page:** [Arboreal Categories and Equi-resource Homomorphism Preservation Theorems](https://arxiv.org/abs/2211.15808). It says: “We describe an axiomatic approach to equi-resource homomorphism preservation theorems based on the notion of arboreal category. This framework is then employed to establish novel homomorphism preservation results, and improve on known ones, for various logic fragments”
-
-**Sources:**
-
-- [Samson Abramsky and Luca Reggio, Arboreal Categories and Equi-resource Homomorphism Preservation Theorems, arXiv:2211.15808 (2024)](https://arxiv.org/abs/2211.15808)
-
 ### Equality in a hyperdoctrine is existential quantification along the diagonal
 
 **Remember:** x = y is the least relation that holds on the diagonal.
 
 *True by definition. Confidence: medium.* MSC 03G30 (Categorical logic, topoi), 18C10. arXiv math.LO, math.CT. Level 4: research.
 
-**Definition.** A first-order hyperdoctrine gives each object A a poset of predicates on A, and each map a substitution between these posets; left adjoints of substitution interpret ∃. In it, the equality predicate on A comes from the diagonal map δ : A → A × A. It is the left adjoint of substitution along δ, applied to the top predicate ⊤ (true). A hyperdoctrine with equality also asks for the Beck–Chevalley condition for the squares built from δ × B. This condition says that substitution and quantification commute.
+**Definition.** For an object A in a first-order hyperdoctrine with equality, let δ ∶ A → A × A be the diagonal. Define equality on A by ∃δ(⊤), where ∃δ is left adjoint to substitution along δ. The equality doctrine requires these adjunctions to satisfy the substitution laws in every parameter context.
 
 **Problem.** In a first-order hyperdoctrine with equality, this equality predicate gives a sound interpretation of first-order logic with equality, including reflexivity and substitution of equals.
 
-**How the definition helps.** Equality is not added as new structure: it is defined from the same left adjoints that interpret ∃. So its introduction and elimination rules are the unit and the universal property of this adjunction. The extra Beck–Chevalley condition makes this equality stable under substitution, and soundness needs that.
+**How the definition helps.** The adjunction makes equality the least predicate on pairs whose restriction to the diagonal is true. Its unit gives reflexivity, and elimination along the diagonal gives substitution of equals in context. The Beck–Chevalley condition makes the interpretation stable when parameters change.
 
 **nLab:** [first-order hyperdoctrine](https://ncatlab.org/nlab/show/first-order+hyperdoctrine). It says: “This assures that the equality predicate is well behaved in the sense that it allows a sound interpretation of first order logic with equality in the hyperdoctrine.”
 
@@ -5700,15 +5251,15 @@
 
 ### In a constructively well-pointed topos, internal truth is truth for global elements
 
-**Remember:** Constructively, 1 must also not split into two parts and must lift through epimorphisms.
+**Remember:** Global points detect subobjects, lift through covers, and choose a disjoint summand.
 
-*Rules out counterexamples. Confidence: medium.* MSC 03G30 (Categorical logic, topoi), 18B25, 03F65. arXiv math.LO, math.CT. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 03G30 (Categorical logic, topoi), 18B25, 03F65. arXiv math.LO, math.CT. Level 4: research.
 
-**Definition.** A topos is well-pointed if two conditions hold. First, the terminal object 1 is a generator: two maps out of A are equal when they agree on all global elements 1 → A. Second, 1 is not initial. In constructive mathematics one also asks that 1 be indecomposable (it does not split as a coproduct of two parts that are not initial) and projective (maps out of 1 lift through every epimorphism).
+**Definition.** A topos is constructively well-pointed if its terminal object is a noninitial, indecomposable, projective strong generator. Indecomposable means every binary coproduct decomposition has an initial summand. Projectivity lifts global elements through epimorphisms, and strong generation means a subobject containing every global element is the whole object.
 
 **Problem.** In a constructively well-pointed topos, a statement of the internal logic holds exactly when it holds for all global elements. So the topos behaves like a category of sets.
 
-**How the definition helps.** The two added conditions do for 'or' and 'there exists' what 'not initial' does for falsehood. If the metalogic has excluded middle, the two basic conditions already make the topos Boolean and two-valued, and they make internal truth equal to external truth. Without excluded middle these consequences do not follow, so the nLab adds that 1 is indecomposable and projective. Classically the added conditions follow from the first two, so the definition does not change.
+**How the definition helps.** Induction on formulas compares internal satisfaction with truth on global elements (our own). Strong generation detects subobjects, and noninitiality handles falsehood. Indecomposability handles alternatives together with strong generation, while projectivity supplies witnesses for existence.
 
 **nLab:** [well-pointed topos](https://ncatlab.org/nlab/show/well-pointed+topos). It says: “To maintain this logical result in constructive mathematics (that is, without excluded middle in the metalogic), one must add the following requirements:”
 
@@ -5723,11 +5274,11 @@
 
 *True by definition.* MSC 03G30 (Categorical logic, topoi), 03C07. arXiv math.LO, math.CT. Level 4: research.
 
-**Definition.** Present a model of a classical first-order theory T as a functor, a structure-preserving map, from the syntactic category of T to sets. The syntactic category has the definable sets of T as objects and the definable functions as maps. The functor sends each definable set to its set of solutions in the model. A natural transformation is a family of maps, one for each object, that commutes with every map of the category.
+**Definition.** The model functor of a classical first-order model sends each formula in context to its solution set and each definable function to its interpretation. A natural transformation assigns a map to each such solution set and commutes with every definable function.
 
-**Problem.** A family of maps between two such model functors is a natural transformation exactly when it preserves and reflects every formula. That is, it is an elementary embedding.
+**Problem.** The natural transformations between two such model functors are exactly those induced by elementary embeddings of their models.
 
-**How the definition helps.** Naturality along inclusions of definable sets already says that the maps preserve every formula. The nLab proves reflection with complements. If an element is not in a definable set X, it lies in ¬X, so its image lies in the image of ¬X, which is disjoint from the image of X. The work moves into building the syntactic category and showing that models are the functors that preserve its logical structure (our own account).
+**How the definition helps.** Naturality for coordinate projections forces each component to apply the underlying sort maps coordinatewise (our own). Inclusions of solution sets give preservation of formulas, and inclusions of their complements give reflection. Conversely, an elementary embedding preserves each definable function’s graph, so its restrictions form a natural transformation (our own).
 
 **nLab:** [elementary embedding](https://ncatlab.org/nlab/show/elementary+embedding). It says: “Elementary embeddings are natural transformations between these functors.”
 
@@ -5737,13 +5288,13 @@
 
 **Remember:** A pretopos already contains every sort that a model can see.
 
-*Rules out counterexamples.* MSC 03G30 (Categorical logic, topoi), 18E08, 03C40. arXiv math.LO, math.CT. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 03G30 (Categorical logic, topoi), 18E08, 03C40. arXiv math.LO, math.CT. Level 4: research.
 
-**Definition.** A coherent category is a category with finite limits, images and unions of subobjects, all stable under pullback; it can interpret coherent logic. A pretopos is a coherent category that also has disjoint finite coproducts and quotients of equivalence relations. Coherent theories correspond to pretoposes up to elimination of imaginaries, that is, up to adding sorts for such coproducts and quotients. A model is a pretopos morphism to Set.
+**Definition.** A pretopos is a coherent category with disjoint, pullback-stable finite coproducts and effective quotients of all internal equivalence relations. An effective quotient has the given relation as its kernel pair.
 
 **Problem.** Conceptual completeness (Makkai–Reyes) says this. Suppose an interpretation of coherent theories induces an equivalence of their categories of models. Then the theories are bi-interpretable up to elimination of imaginaries.
 
-**How the definition helps.** Passing to pretoposes adds the coproducts and quotients that coherent functors preserve anyway. For plain coherent categories the theorem is false. The embedding of a coherent category into its pretopos completion induces an equivalence of model categories, but in general it is not an equivalence. The theorem is still hard: Makkai and Reyes used model theory, and Pitts later gave a categorical proof by interpolation.
+**How the definition helps.** Pretopos completion adds sorts for finite coproducts and quotients without changing the category of set-valued models. The Makkai–Reyes conceptual completeness theorem turns the induced equivalence on models into an equivalence of the completed pretoposes. This gives bi-interpretability after adding those sorts.
 
 **nLab:** [conceptual completeness](https://ncatlab.org/nlab/show/conceptual+completeness). It says: “the conceptual completeness theorem can be rephrased by saying that pretoposes are conceptually complete, thus characterizing pretoposes as the conceptually complete (coherent) categories.”
 
@@ -5757,11 +5308,11 @@
 
 *True by definition. Confidence: medium.* MSC 03G30 (Categorical logic, topoi), 03D80. arXiv math.LO, math.CT. Level 4: research.
 
-**Definition.** The effective topos is a category with its own logic that uses natural numbers as codes, called realizers, for computational evidence. Its object that represents the natural numbers has each number realized by itself. On this kind of object, a tracking program converts any input realizer into a realizer of the output.
+**Definition.** A program tracks a function between realized sets if it halts on every realizer of each input and returns a realizer of the corresponding output. In the natural numbers object of the effective topos, the only realizer of n is n.
 
 **Problem.** Each map from the natural numbers object to itself in the effective topos gives a total computable function on ordinary natural numbers.
 
-**How the definition helps.** Program tracking gives a map on numbers a program that must return the output number itself (our own). Each input number is its own realizer, so the tracker must halt on every natural number (our own). In the ordinary category of sets, functions need not come with any such program (our own). The work lies in identifying the topos’s natural numbers object and proving that this tracked-map description applies to it (our own). The quoted internal result is stronger and needs the interpretation of the topos’s logic (our own).
+**How the definition helps.** On this object a tracker must halt on n and return f(n) for every n (our own). It therefore computes f everywhere. The work lies in the tracked-map description of maps between these objects in the effective topos (our own).
 
 **nLab:** [effective topos](https://ncatlab.org/nlab/show/effective+topos). It says: “it is provable that every total function from natural numbers to natural numbers is recursive”
 

@@ -54,7 +54,7 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 49J53 (Set-valued and variational analysis), 52A27, 90C25. arXiv math.OC. Level 2: later undergraduate.
 
-**Definition.** The normal cone of a convex set Ω at a point z contains the vectors v with ⟨v, y − z⟩ ≤ 0 for every y in Ω. These vectors make an obtuse or right angle with every move from z that stays in Ω.
+**Definition.** For a convex set Ω⊆ℝⁿ and z∈Ω, the normal cone at z consists of all v∈ℝⁿ satisfying ⟨v,y−z⟩≤0 for every y∈Ω.
 
 **Problem.** Take a nonempty closed convex set Ω in ℝⁿ and a point x. The nearest point of Ω to x is the point z of Ω whose normal cone contains x − z.
 
@@ -88,7 +88,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 49K05 (Optimality conditions for free problems in one independent variable). arXiv math.OC. Level 2: later undergraduate.
 
-**Definition.** For a smooth integrand L(x,y,y′), the momentum along a curve is p=∂L/∂y′. The integrated Euler–Lagrange equation says that p(x) minus the integral of ∂L/∂y from a to x stays constant.
+**Definition.** For a C¹ curve y on \[a,b\] and a smooth integrand L, evaluate p=∂L/∂y′ and q=∂L/∂y along y. Define the corrected momentum by m(x)=p(x)−∫ₐˣ q(s) ds.
 
 **Problem.** A continuously differentiable fixed-end stationary curve for a smooth integrand satisfies the integrated Euler–Lagrange equation. Its momentum is continuously differentiable even before one knows that the curve has a second derivative.
 
@@ -152,7 +152,7 @@
 
 *Rules out counterexamples.* MSC 49K05 (Optimality conditions for free problems in one independent variable). arXiv math.OC. Level 2: later undergraduate.
 
-**Definition.** A strong local minimum compares a curve with all fixed-end piecewise smooth curves uniformly close in height. A weak local minimum also requires their slopes to be uniformly close wherever defined.
+**Definition.** A fixed-end curve y is a strong local minimizer if some δ&gt;0 gives J\[z\]≥J\[y\] for every admissible piecewise smooth z with sup\|z−y\|&lt;δ. A weak local minimizer requires this comparison only when the slopes also differ by less than δ uniformly wherever defined.
 
 **Problem.** At each interior point of a smooth strong minimizer, the smooth integrand as a function of slope lies above its tangent line there.
 
@@ -226,24 +226,6 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
-### Travel time turns fastest descent into refraction
-
-**Remember:** Measure distance in seconds and the bead follows a light ray.
-
-*Makes the theorem clean to state or prove.* MSC 49K05 (Optimality conditions for free problems in one independent variable). arXiv math.OC. Level 2: later undergraduate.
-
-**Definition.** The travel time along a path is the integral of arc length divided by local speed. It equals optical length divided by the reference speed in the corresponding optical medium. A bead released from rest at depth zero has speed √(2gy) at depth y under constant gravity g.
-
-**Problem.** In uniform gravity without friction, the fastest descent from rest to a lower point off the vertical is a cycloid arc starting at a cusp.
-
-**How the definition helps.** The travel-time integral gives the bead and a light ray the same minimization problem when their speed profiles agree. In our own derivation, Snell’s law makes cos α divided by √y constant, where α measures the tangent angle from horizontal. Integrating this relation gives the cycloid. Proving it beats every competing path requires a global comparison.
-
-**Wikipedia:** [Brachistochrone curve](https://en.wikipedia.org/wiki/Brachistochrone_curve). It says: “Bernoulli noted that Snell's law of refraction gives a constant of the motion for a beam of light in a medium of variable density”
-
-**Sources:**
-
-- [Isaac Newton, De ratione temporis quo grave labitur (1697)](https://doi.org/10.1098/rstl.1695.0074)
-
 ### A regular integral constraint admits one constant multiplier
 
 **Remember:** One direction that changes the constraint is enough to repair the others.
@@ -302,9 +284,9 @@
 
 **Definition.** Fix a rule for choosing actions from the current state. Its Bellman update adds the expected immediate reward to γ times the expected trial value at the next state. The discount γ satisfies 0 ≤ γ &lt; 1.
 
-**Problem.** In a finite decision process with bounded rewards, the update shrinks the largest absolute difference between any two trial value functions by at least the factor γ. Its unique fixed point is the expected sum of discounted rewards.
+**Problem.** In a finite Markov decision process with bounded rewards, the maximum difference after the update is at most γ times the original maximum absolute difference. The unique fixed point gives the expected discounted reward sum from each state.
 
-**How the definition helps.** Discounting makes the expected next-step difference strictly smaller in maximum norm whenever the trial values differ (our own). The rewards cancel, and averaging cannot increase the largest absolute difference (our own). The contraction theorem gives uniqueness. Conditioning on the first reward shows that the expected discounted sum is a fixed point (our own). At γ = 1, a single state with zero reward makes every value a fixed point (our own).
+**How the definition helps.** Discounting contracts the update because rewards cancel and averaging cannot increase the maximum absolute difference (our own). The contraction theorem gives uniqueness. Conditioning on the first step verifies the discounted sum is a fixed point (our own). At γ = 1, one state with zero reward admits every value as a fixed point (our own).
 
 **Paper or page:** [On the Reinhardt Conjecture and Formal Foundations of Optimal Control](https://arxiv.org/abs/2208.04443v1). It says: “The operator Bπ is a contraction in the max norm on the space of functions S → ℝ.”
 
@@ -316,7 +298,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 49Q22 (Optimal transportation). arXiv math.OC. Level 2: later undergraduate.
 
-**Definition.** A transport plan is a probability measure on pairs of points whose two coordinate distributions are the given source and target. A transport map sends each source point to just one target point.
+**Definition.** A transport plan from μ to ν is a probability measure on pairs whose first and second marginals are μ and ν, respectively. A transport map is a measurable function T satisfying μ(T⁻¹(B)) = ν(B) for every measurable target set B.
 
 **Problem.** Any two probability measures on Euclidean spaces have a transport plan. They need not admit a transport map.
 
@@ -332,7 +314,7 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 49J15 (Existence theories for optimal control problems involving ordinary differential equations). arXiv math.OC. Level 3: graduate.
 
-**Definition.** On a finite interval, represent a relaxed control by a measure on pairs of times and actions. Its time coordinate has length measure as its distribution. Conditional on the time, actions can follow any probability distribution. An ordinary control concentrates that distribution on one action.
+**Definition.** Let I be a finite time interval and A the action space. A relaxed control is a positive Borel measure on I × A whose time marginal is length measure. An ordinary control uses a point mass at its chosen action at almost every time.
 
 **Problem.** For a compact metric action space, a weak limit of relaxed controls is again a relaxed control. Here weak convergence tests integrals of continuous functions of time and action. This compact-action version is our own.
 
@@ -348,7 +330,7 @@
 
 *True by definition.* MSC 49J15 (Existence theories for optimal control problems involving ordinary differential equations). arXiv math.OC. Level 3: graduate.
 
-**Definition.** An ordinary control picks one action at each time. A relaxed control picks a probability measure on the actions instead and averages the velocity and running cost against it.
+**Definition.** An ordinary control chooses an action measurably at each time. A relaxed control chooses a probability measure on actions at each time, measurably in time, and averages velocity and running cost against it.
 
 **Problem.** Every ordinary control has a relaxed form with the same trajectory and cost. Thus the relaxed infimum is no greater than the ordinary infimum.
 
@@ -386,7 +368,7 @@
 
 **Problem.** Suppose nonnegative costs on a complete metric space Γ-converge and meet this compactness requirement. Their minima converge to the minimum of F, and F attains it.
 
-**How the definition helps.** Compactness supplies a convergent subsequence of minimizers, which the Γ-limit can test. In our own proof, the lower bound applies to a subsequence realizing the lower limit of the minima. The upper bound follows by testing a sequence approaching any chosen point and then taking the infimum. In our own counterexample, the costs fₙ(x) = min(1, \|x − n\|) on ℝ have minima zero. Their Γ-limit is the constant one.
+**How the definition helps.** Compactness gives a convergent subsequence of minimizers along which the minima approach their lower limit (our own). The Γ lower bound at its limit and recovery sequences at every competitor prove attainment and convergence (our own). Without compactness, fₙ(x) = min(1, \|x − n\|) on ℝ has minimum zero but Γ-limit one (our own).
 
 **Paper or page:** [Phase transitions and minimal interfaces on manifolds with conical singularities](https://arxiv.org/abs/2403.07178). It says: “Then, $\\mathcal F\_\\infty $ has a minimizer and \\\[\\min<sub>X</sub> \\mathcal F\_\\infty = \\lim<sub>k\\rightarrow \\infty</sub> \\inf<sub>X</sub> \\mathcal F<sub>k</sub>.\\\]”
 
@@ -398,11 +380,11 @@
 
 *True by definition.* MSC 49J45 (Methods involving semicontinuity and convergence; relaxation). arXiv math.AP, math.OC. Level 3: graduate.
 
-**Definition.** For each open ball around x, take the infimum of each cost on that ball. Take the lower and upper limits of these numbers as the index increases. Then shrink the ball to x in both expressions. Their common value, when they agree at every x, defines the Γ-limit.
+**Definition.** At each x and radius r &gt; 0, let aₙ(r) be the infimum of cost Fₙ on the open ball B(x,r). As r decreases to zero, take the limits of liminfₙ aₙ(r) and limsupₙ aₙ(r). If these agree at every x, their common value defines the Γ-limit there.
 
 **Problem.** Let every term of a sequence equal the same nonnegative cost F on a metric space. Its Γ-limit is the largest lower semicontinuous cost below F. Lower semicontinuity means the value at a point cannot exceed the lower limit of nearby values.
 
-**How the definition helps.** Using neighborhoods instead of constructing sequences makes both limits equal the supremum of the ball infima. In our own proof, a ball with infimum above a threshold contains a smaller such ball around every interior point. This proves lower semicontinuity. Every lower semicontinuous cost below F lies below the formula, by applying its lower bounds on small balls. For our own example on the real line, give zero cost everywhere except at zero, where the cost is one. Its Γ-limit vanishes everywhere.
+**How the definition helps.** For a constant sequence, both expressions give the supremum of the ball infima (our own). If a ball has infimum above a threshold, every interior point has a smaller ball with the same bound (our own). This proves lower semicontinuity. Any lower semicontinuous minorant exceeding a threshold at x exceeds it on some ball there, so the formula dominates every minorant (our own).
 
 **Wikipedia:** [Γ-convergence](https://en.wikipedia.org/wiki/%CE%93-convergence). It says: “the largest lower semicontinuous functional below F”
 
@@ -418,7 +400,7 @@
 
 **Problem.** Suppose nonnegative costs Γ-converge to F. Adding the same finite nonnegative continuous function G to each cost gives Γ-limit F + G.
 
-**How the definition helps.** Along each convergent sequence, the added cost tends to the same value at the limit point. In our own proof, this preserves the lower bound and leaves each original matching sequence valid. In our own counterexample, let fₙ be zero only at 1/n and one elsewhere. Its Γ-limit F is zero only at zero and one elsewhere. Add G, which is zero at zero and one elsewhere. Then fₙ + G is at least one everywhere, but F + G is zero at zero.
+**How the definition helps.** Continuity gives G(xₙ) → G(x) whenever xₙ → x, preserving both Γ-convergence tests (our own). On ℝ let fₙ equal one except at 1/n, where it vanishes (our own). Its Γ-limit and the discontinuous perturbation G both equal one except at zero, where they vanish (our own). Every sum fₙ + G stays at least one, although F(0) + G(0) = 0 (our own).
 
 **Wikipedia:** [Γ-convergence](https://en.wikipedia.org/wiki/%CE%93-convergence). It says: “Γ-convergence is stable under continuous perturbations”
 
@@ -430,7 +412,7 @@
 
 *Rules out counterexamples.* MSC 49J45 (Methods involving semicontinuity and convergence; relaxation). arXiv math.OC. Level 3: graduate.
 
-**Definition.** Costs Gamma converge on a metric space when two tests hold at each point. Every sequence approaching that point has lower limiting cost at least the proposed value there. Some sequence approaching the same point has costs converging to that value. Pointwise convergence checks only constant sequences.
+**Definition.** Costs Fₙ Γ-converge to F on a metric space if two tests hold at every point x. Every sequence xₙ → x satisfies liminfₙ Fₙ(xₙ) ≥ F(x). Some sequence xₙ → x satisfies Fₙ(xₙ) → F(x).
 
 **Problem.** If costs Gamma converge on a metric space, every cluster point of their minimizers minimizes the limit cost.
 
@@ -446,7 +428,7 @@
 
 *True by definition.* MSC 49J45 (Methods involving semicontinuity and convergence; relaxation). arXiv math.AP, math.OC. Level 3: graduate.
 
-**Definition.** At x, compare the decrease max(0, F(x) − F(y)) with the distance d(x, y). The local slope takes the upper limit of this ratio as y approaches x. The global slope takes its supremum over every y ≠ x.
+**Definition.** For a finite function F on a metric space, set q(x,y) = max(0,F(x) − F(y))/d(x,y) for distinct points. The local slope is limsup as y approaches x of q(x,y), with value zero at isolated points. The global slope is the supremum over all y ≠ x, with value zero if none exist.
 
 **Problem.** Let F be finite, lower semicontinuous and convex along constant-speed shortest paths, in a space where such a path joins every pair of points. Then the local slope of F is lower semicontinuous.
 
@@ -466,7 +448,7 @@
 
 **Problem.** Increasing lower semicontinuous costs on a metric space Γ-converge to their pointwise supremum.
 
-**How the definition helps.** Lower semicontinuity lets each earlier cost bound the lower limit along every approaching sequence. In our own proof, taking the supremum gives the required lower bound. At each point the constant sequence attains the supremum in the limit. For our own counterexample, repeat a cost on the line that equals one at zero and zero elsewhere. The sequence 1/n approaches zero with cost zero, violating the lower bound for the pointwise limit.
+**How the definition helps.** Along every approaching sequence, lower semicontinuity of each earlier cost bounds the lower limit from below (our own). Taking the supremum gives the Γ lower bound, and the constant sequence recovers that supremum (our own). Without lower semicontinuity, repeat the cost on ℝ equal to one at zero and zero elsewhere (our own). The points 1/n approach zero with cost zero and violate the required lower bound there (our own).
 
 **Paper or page:** [A representation formula of the viscosity solution of the contact Hamilton-Jacobi equation and its applications](https://arxiv.org/abs/2101.00446). It says: “If Fₙ is an increasing sequence, then Γ-limₙ→∞ Fₙ = limₙ→∞ sc⁻ Fₙ = supₙ∈ℕ sc⁻ Fₙ.”
 
@@ -478,11 +460,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 49J45 (Methods involving semicontinuity and convergence; relaxation), 49J53. arXiv math.AP, math.OC. Level 3: graduate.
 
-**Definition.** Closed convex sets converge in the sense of Mosco when two tests hold. Every weak subsequential limit of points in the varying sets belongs to the limit set. Weak convergence means convergence of inner products against every fixed vector. Every limit-set point must also be a norm limit of points chosen from each successive set.
+**Definition.** Closed convex sets Cₙ in a Hilbert space converge to C in the sense of Mosco if two tests hold. Whenever nₖ increases and xₖ ∈ Cₙₖ converges weakly, its limit belongs to C. For every x ∈ C there exist xₙ ∈ Cₙ converging to x in norm.
 
 **Problem.** For nonempty closed convex sets in a Hilbert space, Mosco convergence makes the nearest point to any fixed x converge in norm.
 
-**How the definition helps.** The two tests bound the nearest distances from opposite sides. In our own proof, approximate the nearest limit-set point in norm to bound the distances from above. The projections are therefore bounded. Each weak subsequential limit belongs to the limit set and attains the minimum by weak lower semicontinuity of distance. Uniqueness gives weak convergence to that nearest point. Convergence of the distances upgrades weak convergence to norm convergence in a Hilbert space.
+**How the definition helps.** Norm approximation of the nearest point in C bounds the upper limit of the projection distances (our own). The projections are bounded, and every subsequence has a weakly convergent subsequence with limit in C (our own). Weak lower semicontinuity of distance and uniqueness identify every such limit as the nearest point and give convergence of distances (our own). Weak convergence and convergence of the norms of the displacements give norm convergence in Hilbert space (our own).
 
 **Paper or page:** [Stability of a class of action functionals depending on convex functions](https://arxiv.org/abs/2106.10908v1). It says: “J<sup>{f<sup>h</sup>}\_\\tau</sup> x \\rightarrow J<sup>f\_\\tau</sup> x.”
 
@@ -512,11 +494,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 49J45 (Methods involving semicontinuity and convergence; relaxation), 28A33. arXiv math.OC, math.AP. Level 3: graduate.
 
-**Definition.** Take a bounded sequence of functions fₙ. After passing to a subsequence, it has a Young measure: a probability measure νₓ on the values for each point x. For every continuous F, F(fₙ) then tends weak-\* to the function whose value at x is the average of F against νₓ.
+**Definition.** A uniformly bounded sequence of real functions fₙ on \[0,1\] generates a Young measure if a measurable family of probability measures νₓ describes its oscillations. Precisely, for every continuous F on ℝ, F(fₙ) converges weak-\* in L∞ to x ↦ ∫F(t) dνₓ(t) (our own).
 
-**Problem.** The Bolza problem minimizes the integral of (u′² − 1)² + u² over \[0, 1\], with u(0) = u(1) = 0. No function attains the infimum 0, but the relaxed problem attains it at u = 0 with Young measure ½δ₋₁ + ½δ₁ for u′ at every point (our own).
+**Problem.** For absolutely continuous u on \[0,1\] with zero endpoints, the Bolza energy integrates (u′² − 1)² + u². Its infimum is zero and no admissible function attains it. The relaxed problem attains zero at u = 0 with derivative distribution ½δ₋₁ + ½δ₁ everywhere (our own).
 
-**How the definition helps.** A minimizing sequence uses zigzags with slopes ±1 that get finer and finer, so u tends to 0 while u′ keeps oscillating. The ordinary weak limit of u′ is 0 and loses the information that \|u′\| = 1 (our own). The Young measure keeps it, as the page says. The hard part is to find out when a Young measure comes from a true function.
+**How the definition helps.** Equal-time zigzags with slopes ±1 and shrinking periods approach zero uniformly and generate the stated distribution (our own). The averaged derivative cost vanishes because both slopes have zero cost. Ordinary attainment would require both u = 0 everywhere and \|u′\| = 1 almost everywhere (our own).
 
 **Wikipedia:** [Young measure](https://en.wikipedia.org/wiki/Young_measure). It says: “This captures the essential features of all minimizing sequences to this problem, namely, their derivatives u′ₖ(x) will tend to concentrate along the minima {−1, 1} of the integrand”
 
@@ -530,11 +512,11 @@
 
 *True by definition.* MSC 49J52 (Nonsmooth analysis), 52A41. arXiv math.OC. Level 3: graduate.
 
-**Definition.** Let f be a convex function with a closed epigraph that is somewhere finite and never −∞. Its conjugate f⁎(p) is the supremum of ⟨p, z⟩ − f(z) over z. The equality test says that p is a subgradient of f at x exactly when f(x) + f⁎(p) = ⟨p, x⟩.
+**Definition.** Let f be a proper closed convex function on ℝⁿ. Its conjugate f⁎(p) is the supremum of ⟨p,z⟩ − f(z) over all z ∈ ℝⁿ. A subgradient at a point x of finite cost is a vector p satisfying f(z) ≥ f(x) + ⟨p,z − x⟩ for every z.
 
 **Problem.** A vector p is a subgradient of f at x exactly when x is a subgradient of f⁎ at p.
 
-**How the definition helps.** The equality test makes inversion immediate because it swaps x and p without changing the equation once the conjugate of f⁎ is f. Our own check of the test is that equality says x attains the supremum defining f⁎(p). This is the same as the affine support inequality for all z. Starting with the support definition instead requires rewriting its inequality in terms of the conjugate. The work for the reverse implication is the biconjugate theorem, which recovers f after taking the conjugate twice.
+**How the definition helps.** The support inequality says exactly that x attains the supremum for f⁎(p), or equivalently f(x) + f⁎(p) = ⟨p,x⟩ (our own). The biconjugate theorem gives f⁎⁎ = f, so applying the same test to f⁎ exchanges x and p (our own).
 
 **Wikipedia:** [Convex conjugate](https://en.wikipedia.org/wiki/Convex_conjugate). It says: “Furthermore, the equality holds only when p ∈ ∂f(x), where ∂f(x) is the subgradient.”
 
@@ -546,11 +528,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 49J52 (Nonsmooth analysis), 90C26. arXiv math.OC. Level 3: graduate.
 
-**Definition.** A function f is m-weakly convex if adding m‖x‖²/2 makes it convex. Its Moreau envelope with parameter ρ is the least value of f(y) + ρ‖y − x‖²/2 over y.
+**Definition.** For m ≥ 0, a function f on ℝⁿ is m-weakly convex if x ↦ f(x) + m‖x‖²/2 is convex. For ρ &gt; 0 its Moreau envelope at x is the infimum over y of f(y) + ρ‖y − x‖²/2.
 
-**Problem.** Let f be closed and m-weakly convex on ℝⁿ, and let ρ &gt; m. Then the envelope is continuously differentiable, the minimizing y is unique, and the gradient at x is ρ times x minus that y.
+**Problem.** Let f be proper, closed and m-weakly convex on ℝⁿ, with ρ &gt; m. For every x the envelope has a unique minimizer y, and the envelope is continuously differentiable with gradient ρ(x − y).
 
-**How the definition helps.** For ρ &gt; m the inner cost is strongly convex in y, so its one minimizer alone gives the derivative in x (our own explanation). The proof still has to show that the minimizer moves continuously with x. The condition ρ &gt; m is needed. For f(y) = −m‖y‖²/2 and ρ = m, the inner cost is linear in y and unbounded below unless x = 0 (our own example).
+**How the definition helps.** The inner cost is proper, closed and strongly convex, so it has a unique minimizer for every x (our own). The Moreau envelope differentiability theorem gives the stated gradient and its continuity.
 
 **Paper or page:** [A Proximal Descent Method for Minimizing Weakly Convex Optimization](https://arxiv.org/abs/2509.02804v1). It says: “the Moreau envelope fᵨ is continuously differentiable with gradient given by ∇fᵨ(x) = ρ(x − x̂),”
 
@@ -565,11 +547,11 @@
 
 *Rules out counterexamples.* MSC 49J52 (Nonsmooth analysis). arXiv math.OC. Level 3: graduate.
 
-**Definition.** The Clarke directional derivative takes the upper limit of forward difference quotients while the base point also approaches the point of interest. Its subgradients are the vectors whose inner products with directions never exceed these derivatives.
+**Definition.** For locally Lipschitz f on ℝⁿ, set f°(x,v) = limsup (f(y+hv) − f(y))/h as y → x and h ↓ 0. This is the Clarke directional derivative. A Clarke subgradient at x is a vector p satisfying ⟨p,v⟩ ≤ f°(x,v) for every v.
 
 **Problem.** Suppose a function on Euclidean space is locally Lipschitz, so nearby changes in value are bounded by a constant times distance. At each local minimum, zero is a Clarke subgradient even when a fixed-base directional derivative fails to exist.
 
-**How the definition helps.** The moving-base upper limit includes all forward quotients starting at the minimum, where every quotient is nonnegative. Thus the zero vector satisfies every direction test. In our own example, put f(0) = 0 and f(x) = \|x\|(2 + sin(log \|x\|)) elsewhere. Its derivative is bounded on both sides of zero, so the function is Lipschitz there. The right difference quotient oscillates at the minimum.
+**How the definition helps.** Using y = x at a local minimum gives nonnegative forward quotients for all sufficiently small steps in each direction (our own). Hence zero satisfies every subgradient inequality (our own). Set f(0) = 0 and f(x) = \|x\|(2 + sin(log \|x\|)) elsewhere (our own). Its bounded derivatives on each side give local Lipschitz continuity, but its right quotient oscillates at zero (our own).
 
 **Wikipedia:** [Clarke generalized derivative](https://en.wikipedia.org/wiki/Clarke_generalized_derivative). It says: “f°(x, v) = limsup\[y → x, h ↓ 0\] (f(y + hv) − f(y))/h,”
 
@@ -583,7 +565,7 @@
 
 *Rules out counterexamples.* MSC 49J52 (Nonsmooth analysis), 52A41. arXiv math.OC, math.FA. Level 3: graduate.
 
-**Definition.** A Banach space is a complete normed space. A function is lower semicontinuous if its value at any limit point is at most the lower limit of its values along the sequence. A subgradient at x is a continuous linear functional whose affine function through f(x) stays below f.
+**Definition.** A Banach space is a normed vector space in which every Cauchy sequence converges to a point of the space.
 
 **Problem.** A finite, lower semicontinuous convex function on a Banach space has a subgradient at every point. The claim fails on an incomplete normed space.
 
@@ -617,11 +599,11 @@
 
 *Rules out counterexamples.* MSC 49J53 (Set-valued and variational analysis), 49J52. arXiv math.OC. Level 3: graduate.
 
-**Definition.** The relative interior of a convex set is its interior in the smallest affine space containing it. Its normal cone at x contains the vectors that make a nonpositive inner product with every displacement from x into the set.
+**Definition.** The relative interior of a convex set is its interior within its affine hull. At x ∈ C, the normal cone of C consists of all vectors p satisfying ⟨p,y − x⟩ ≤ 0 for every y ∈ C.
 
 **Problem.** Suppose the relative interiors of two convex sets in Euclidean space meet. At every shared point, the normal cone of the intersection equals the sum of their normal cones.
 
-**How the definition helps.** The relative interior condition permits the rule that adds supporting slopes for a sum of convex functions. In our own derivation, represent each set by a cost equal to zero inside and infinity outside. Adding the costs represents intersection, and their supporting slopes are precisely the normal vectors. The rule for adding slopes supplies the difficult inclusion. In our own counterexample, two externally tangent closed disks meet at one point. Its normal cone fills the plane, but adding the two normal rays gives only a line.
+**How the definition helps.** Intersecting relative interiors permit the convex subgradient sum rule (our own). The indicator costs, zero inside each set and infinite outside, add to the indicator of the intersection (our own). Their subgradients are exactly the normal vectors, so the sum rule gives the formula (our own). Two externally tangent disks have opposite normal rays summing to a line, but their singleton intersection has every normal (our own).
 
 **Paper or page:** [Approximate optimality conditions and sensitivity analysis in nearly convex optimization](https://arxiv.org/abs/2410.04710v1). It says: “If ri Ω₁ ∩ ri Ω₂ ≠ ∅, then for each x̄ ∈ Ω₁ ∩ Ω₂”
 
@@ -639,7 +621,7 @@
 
 **Problem.** Minimize a smooth running cost with these linear dynamics, fixed endpoints, an open action set and no state constraints. If the system is controllable, it admits no abnormal multiplier. This fixed-endpoint version is our own.
 
-**How the definition helps.** Controllability makes orthogonality to every propagated input direction force the multiplier vector to vanish. In our own proof, suppose the cost scalar vanishes and call the vector p. Stationarity in the open action set gives pᵀB = 0 almost everywhere, hence everywhere by continuity. The multiplier equation becomes p′ = −Aᵀp. Repeated differentiation gives pᵀAB = 0 and all the remaining column conditions. The span condition forces p = 0, contradicting the maximum principle’s requirement that the multiplier pair be nonzero.
+**How the definition helps.** Controllability forces an abnormal adjoint p to vanish (our own). With zero cost multiplier, stationarity gives pᵀB = 0 almost everywhere, hence everywhere by continuity, and the adjoint satisfies p′ = −Aᵀp (our own). Differentiation gives pᵀAʲB = 0 for j = 0,…,n−1 (our own). These columns span the state space, contradicting the maximum principle’s nonzero multiplier requirement (our own).
 
 **Paper or page:** [Hidden regularity in singular optimal control of port-Hamiltonian systems](https://arxiv.org/abs/2305.03790). It says: “then the scalar multiplier in \\eqref{eq:the<sub>optimality</sub><sub>condition</sub>} satisfies λ₀ ≠ 0.”
 
@@ -673,7 +655,7 @@
 
 **Problem.** Consider a fixed continuous first-order equation H(x,∇u) = 0 on an open Euclidean set. If a sequence of viscosity subsolutions is uniformly bounded on each compact subset, its upper half-relaxed limit is a viscosity subsolution.
 
-**How the definition helps.** The joint limit allows points of contact with a smooth test to move as the index increases. In our own proof, make contact strict by adding a small quadratic centered at the contact point. Choose a subsequence approaching the limiting value and maximize each subsolution minus the test on a small closed ball. The maximizing points approach the strict contact point. Continuity of H then gives the test inequality there.
+**How the definition helps.** The joint limit lets contact points move while preserving the test inequality (our own). Make the contact strict with a centered quadratic, then choose a subsequence and points realizing the upper limit (our own). On a small closed ball, maximizers of the subsequence minus the test must approach that strict contact (our own). Eventually these maximizers are interior, so the test inequalities pass to the limit by continuity of H (our own).
 
 **Wikipedia:** [Viscosity solution](https://en.wikipedia.org/wiki/Viscosity_solution). It says: “More generally, the notions of viscosity sub- and supersolution are also conserved by half-relaxed limits.”
 
@@ -711,7 +693,7 @@
 
 **Problem.** Suppose f attains its constrained minimum m and some λ ≥ 0 satisfies infₓ(f(x) + λg(x)) = m. For every ρ &gt; λ, the penalized and constrained objectives have exactly the same minimizers.
 
-**How the definition helps.** The linear penalty makes the objective exceed the multiplier lower bound wherever g is positive. In our own proof, f(x) + λg(x) ≥ m everywhere, and the penalty vanishes at every feasible minimizer. For our own counterexample, minimize −x subject to x ≤ 0. Every quadratic penalty with positive weight ρ gives the infeasible minimizer 1/(2ρ). Establishing the multiplier bound requires a separate argument.
+**How the definition helps.** At every infeasible point the linear penalty strictly exceeds λg(x), so the penalized value exceeds m (our own). At feasible points the penalty vanishes, giving exactly the original minimizers (our own). For example, minimizing −x subject to x ≤ 0 gives a quadratic penalty with infeasible minimizer 1/(2ρ) for every ρ &gt; 0 (our own).
 
 **Wikipedia:** [Penalty method](https://en.wikipedia.org/wiki/Penalty_method). It says: “Common penalty functions in constrained optimization are the quadratic penalty function and the deadzone-linear penalty function.”
 
@@ -723,11 +705,11 @@
 
 *True by definition.* MSC 49N15 (Duality theory (optimization)), 90C46, 90C25. arXiv math.OC. Level 3: graduate.
 
-**Definition.** For the problem of minimizing f(x), choose a perturbation F(x, y) with F(x, 0) = f(x). Let v(y) be the infimum of F(x, y) over x. The perturbation dual takes the supremum at y = 0 of all affine functions lying below v.
+**Definition.** For an objective f on ℝⁿ, choose a perturbation F(x,y) with y ∈ ℝᵏ and F(x,0) = f(x). Set v(y) = infₓ F(x,y). The perturbation dual value is the supremum of a(0) over all affine functions a satisfying a(y) ≤ v(y) for every y.
 
 **Problem.** The perturbation dual value never exceeds the primal value v(0). The two are equal when v is convex, never −∞, finite at zero and lower semicontinuous at zero.
 
-**How the definition helps.** The affine-lower-bound definition makes weak duality immediate, because each affine bound lies below v at zero. The usual Lagrange dual instead puts multipliers on the constraints and minimizes over x. Our own connection is that shifting the constraints lets the multipliers serve as slopes of the affine bounds. The work for equality is the convex analysis theorem that recovers a closed convex function from its affine lower bounds.
+**How the definition helps.** Each affine lower bound lies below v at zero, giving weak duality. For equality, the finite-dimensional biconjugate theorem identifies the supremum of affine lower bounds with the closed convex envelope (our own). For convex v, lower semicontinuity at zero and finiteness there ensure that closing its epigraph preserves its value there (our own).
 
 **Wikipedia:** [Perturbation function](https://en.wikipedia.org/wiki/Perturbation_function). It says: “For any choice of perturbation function F weak duality holds.”
 
@@ -743,7 +725,7 @@
 
 **Definition.** Use the conditional probability of each hidden state given all past actions and observations as the new state. This probability vector, called the belief, replaces the full history.
 
-**Problem.** Consider a decision process with hidden states, finite sets of states, actions and observations, and finitely many decision times. For bounded additive rewards, an optimal rule uses only the current belief and time. Its value follows by maximizing expected current reward plus expected future value at each step.
+**Problem.** Consider a finite-horizon partially observed Markov decision process with finite state, action and observation sets and bounded additive Markov rewards. An optimal rule uses only the current belief and time. Its value follows by maximizing expected current reward plus expected future value at each step.
 
 **How the definition helps.** The belief gives the current expected reward and the probability of each next observation (our own). Bayes’ rule then gives the next belief using only the current belief, action and observation (our own). The work is proving this update and applying backward induction on the resulting decision process (our own).
 
@@ -779,7 +761,7 @@
 
 **Problem.** For 1 ≤ p &lt; q, probability measures on Euclidean space with qth moment at most K form a compact set in p-Wasserstein distance.
 
-**How the definition helps.** The higher moment bound controls both distant mass and its share of the pth moment. In our own proof, the mass outside radius R is at most K/R<sup>q</sup>, so Prokhorov’s theorem gives a weakly convergent subsequence. Outside radius R, the pth moment is at most K·R<sup>(p − q)</sup>, so pth moments converge too, and this with weak convergence gives Wasserstein convergence. Our own counterexample puts mass n⁻ᵖ at n and the rest at zero, so the weak limit loses the entire pth moment.
+**How the definition helps.** The qth moment bound gives mass at most K/Rᵠ outside radius R, hence tightness and a weakly convergent subsequence by Prokhorov’s theorem (our own). Lower semicontinuity preserves the qth moment bound in the limit (our own). Outside radius R, the pth moment is at most K·Rᵖ⁻ᵠ, giving moment convergence and therefore p-Wasserstein convergence (our own). Mass n⁻ᵖ at n and the rest at zero gives bounded pth moments but loses the entire moment in the weak limit (our own).
 
 **Paper or page:** [Viscosity Solutions of Fully second-order HJB Equations in the Wasserstein Space](https://arxiv.org/abs/2501.01612). It says: “Let K &gt; 0 and p₂ &gt; p₁ ≥ 1.”
 
@@ -791,7 +773,7 @@
 
 *True by definition.* MSC 49Q22 (Optimal transportation), 60B10. arXiv math.PR, math.FA. Level 3: graduate.
 
-**Definition.** Consider probability measures with finite mean distance from a fixed point of a complete separable metric space. A coupling is a pair (X, Y) with the two given laws. The Wasserstein distance W₁ is the infimum of the mean distance between X and Y over all couplings. The dual definition takes the supremum of differences of averages of functions that change by at most the distance between their inputs.
+**Definition.** Let μ and ν have finite first moments on a complete separable metric space. Their distance W₁ is the infimum of E\[d(X,Y)\] over jointly sampled X and Y with laws μ and ν. Its dual formula takes the supremum of ∫f dμ − ∫f dν over all real functions with Lipschitz constant at most one.
 
 **Problem.** Mix two pairs of probability measures with the same weight in each coordinate. The W₁ distance of the mixed pair is at most the weighted average of the two original distances.
 
@@ -861,7 +843,7 @@
 
 *True by definition. Confidence: medium.* MSC 49Q22 (Optimal transportation), 49N15. arXiv math.OC. Level 3: graduate.
 
-**Definition.** On finite source and target sets, assign real costs c(x,y) to pairs and real numbers a(x) to sources. Define b(y) as the minimum of c(x,y) − a(x) over all sources x. Thus b is the largest target function satisfying a(x) + b(y) ≤ c(x,y) for every pair. Call a pair tight when equality holds.
+**Definition.** On finite nonempty source and target sets, let c(x,y) be the real cost of each pair and a(x) a real source potential. Its cost transform is b(y) = minₓ(c(x,y) − a(x)). A pair is tight if a(x) + b(y) = c(x,y).
 
 **Problem.** A transport plan distributes nonnegative mass over pairs, with prescribed source and target totals. A plan supported on tight pairs has minimum cost among all plans with those totals.
 
@@ -881,7 +863,7 @@
 
 **Problem.** Let X and Y be Polish spaces, which are complete separable metric spaces. Let the cost c take values in \[0,∞\] and be continuous. A transport plan of finite cost is optimal exactly when it is concentrated on a c-cyclically monotone set.
 
-**How the definition helps.** The definition reduces optimality, a statement about all plans, to a test on finitely many pairs at a time. Necessity is easy, by our own account. A cheaper cycle on a set of positive mass would give a cheaper plan. Sufficiency is the hard direction. It is Pratelli's Theorem B, which turns the absence of finite improvements into global optimality.
+**How the definition helps.** Cyclical monotonicity expresses optimality through finite lists of pairs in one set carrying the plan. A cheaper cycle in the support would allow a cost-reducing reassignment by continuity (our own). Pratelli’s Theorem B supplies the converse for continuous costs, including infinite costs.
 
 **Paper or page:** [60 years of cyclic monotonicity: a survey](https://arxiv.org/abs/2308.07682v2). It says: “a finite transport plan γ ∈ Π(μ,ν) is optimal if and only if it is concentrated on a c-cyclically monotone set.”
 
@@ -896,33 +878,15 @@
 
 *True by definition.* MSC 49J45 (Methods involving semicontinuity and convergence; relaxation). arXiv math.AP, math.OC. Level 4: research.
 
-**Definition.** A locally absolutely continuous path x(t) in a metric space solves the evolution variational inequality for F and λ if the following holds for every point y. The function D(t) = d(x(t), y)² satisfies D′(t)/2 + λD(t)/2 ≤ F(y) − F(x(t)) for almost every t &gt; 0.
+**Definition.** A locally absolutely continuous metric-space path x solves the evolution variational inequality for F and λ if it satisfies this test. For every point y, set D(t) = d(x(t),y)². Then D′(t)/2 + λD(t)/2 ≤ F(y) − F(x(t)) must hold for almost every t &gt; 0.
 
-**Problem.** Let F be finite and lower semicontinuous. Any two solutions x and z of the evolution variational inequality for F and λ satisfy d(x(t), z(t)) ≤ exp(−λt)d(x(0), z(0)) for t ≥ 0.
+**Problem.** Let F be finite and lower semicontinuous, and let x and z be solutions continuous at their initial points. For every t ≥ 0 they satisfy d(x(t),z(t)) ≤ exp(−λt)d(x(0),z(0)).
 
-**How the definition helps.** The distance formulation gives opposite energy differences when each path serves as comparison for the other. For smooth convex energies it replaces the differential equation x′ = −∇F(x) when λ = 0. In our own proof outline, vary the two times independently before restricting to equal times. The energy terms cancel, and integrating the remaining differential inequality gives the bound. Existence of paths satisfying the comparison requires a separate theorem.
+**How the definition helps.** Each path supplies the comparison point for the other, giving opposite energy differences (our own). The standard doubling-of-variables argument first varies the two times independently and then restricts them to equal times (our own). The energies cancel, leaving D′ ≤ −2λD for D(t) = d(x(t),z(t))² (our own). Integration and continuity at time zero give the bound (our own).
 
 **Paper or page:** [Stability of a class of action functionals depending on convex functions](https://arxiv.org/abs/2106.10908v1). It says: “{\\mathsf{d}}(G<sub>t</sub><sup>f</sup> x<sub>0</sub>,G<sub>t</sub><sup>f</sup> x<sub>1</sub>)\\le e<sup>-\\lambda t</sup>{\\mathsf{d}}(x<sub>0</sub>,x<sub>1</sub>)\\quad \\text{for every $t\\in \[0,+\\infty )$}.”
 
 **Sources:** none listed. No primary source with a working link was found.
-
-### Tangential polyconvexity gives minimizers for elastic energies with surface terms
-
-**Remember:** Use only the derivative directions that the boundary has.
-
-*Makes the theorem clean to state or prove.* MSC 49J45 (Methods involving semicontinuity and convergence; relaxation), 74B20. arXiv math.AP. Level 4: research.
-
-**Definition.** An energy density is polyconvex if it is a convex function of all the minors of the derivative matrix. Tangential polyconvexity applies this to a surface energy on the boundary. It uses only the derivative along the boundary, a d × (d − 1) matrix, and its minors.
-
-**Problem.** Take a bulk energy that is polyconvex and a boundary energy that is tangentially polyconvex. Under the paper's growth and measurability conditions, the total energy has a minimizer in each nonempty admissible class of deformations. Each admissible deformation is injective almost everywhere.
-
-**How the definition helps.** Tangential polyconvexity lets the boundary energy use the same lower semicontinuity argument as the bulk energy. In our own explanation, that argument needs the minors to pass to weak limits, and the paper proves this for the tangential minors. The proof of injectivity is separate work.
-
-**Paper or page:** [Invertibility of Sobolev maps through approximate invertibility at the boundary and tangential polyconvexity](https://arxiv.org/abs/2503.01795v1). It says: “the energy density in ∂Ω is assumed to be tangentially polyconvex, a new type of polyconvexity on ∂Ω.”
-
-**Sources:**
-
-- [Carlos Mora-Corral, David Mur-Callizo, Invertibility of Sobolev maps through approximate invertibility at the boundary and tangential polyconvexity, arXiv:2503.01795 (2025)](https://arxiv.org/abs/2503.01795v1)
 
 ### A convex minimizer is unique exactly when a radial-cone kernel test passes
 
@@ -932,9 +896,9 @@
 
 **Definition.** Let C be a convex set and x a point of C. The radial cone of C at x is the set of all t(c − x) with c in C and t ≥ 0. Unlike the tangent cone, it does not add limits of these directions.
 
-**Problem.** Minimize f(Φx) + g(x), where Φ is linear, f is a smooth strictly convex loss and g is a convex penalty. Let x̄ be optimal and ȳ = −Φ\*∇f(Φx̄). Then x̄ is the unique solution exactly when the kernel of Φ meets the radial cone of ∂g\*(ȳ) at x̄ only in 0.
+**Problem.** Minimize f(Φx) + g(x) in Euclidean space with linear Φ, smooth strictly convex f and proper closed convex g. At a finite optimum x̄ put ȳ = −Φ\*∇f(Φx̄). The optimum is unique exactly when ker Φ meets the radial cone of ∂g\*(ȳ) at x̄ only in zero.
 
-**How the definition helps.** Each radial direction is an actual move inside the set ∂g\*(ȳ), so it gives a real second point. Here ∂g\*(ȳ) is the set of points where ȳ is a subgradient of g. Because f is strictly convex, all optima share the same value of Φx and lie in this set, by our own argument. So a second optimum is exactly a nonzero radial move that Φ sends to 0, by our own calculation. Computing the radial cone for a given penalty remains separate work, as the paper's low-rank section shows.
+**How the definition helps.** A nonzero radial direction reaches a second point after a positive step (our own). Strict convexity makes Φx identical at all optima, and optimality puts each in ∂g\*(ȳ) (our own). Conversely, every point of ∂g\*(ȳ) shares the supporting slope ȳ, so g changes there by its pairing with the displacement (our own). This pairing vanishes on ker Φ, making each such move another optimum (our own).
 
 **Paper or page:** [Solution uniqueness of convex optimization problems via the radial cone](https://arxiv.org/abs/2401.10346v1), [Solution uniqueness of convex optimization problems via the radial cone](https://arxiv.org/abs/2401.10346v1). It says: “Our characterizations of solution uniqueness are in terms of the radial cone.”
 
@@ -953,7 +917,7 @@
 
 **Problem.** Consider the paper’s finite-horizon decision process with finitely many states and a compact set of actions. For every original rule, successive updates of this distribution reproduce the joint distribution of final state and total reward.
 
-**How the definition helps.** Tracking the running total makes the final reward distribution accessible through updates at each step (our own). Start with zero reward and the original distribution of states. The work lies in finding rules based on state and running total that reproduce the distributions under a history-dependent rule (our own).
+**How the definition helps.** Condition the original rule’s action on the current state and running total to obtain a randomized rule on that pair (our own). Start with the original state law and running total zero. The conditioned rule reproduces the original one-step joint law, so induction reproduces the terminal distribution (our own).
 
 **Paper or page:** [Yet Another Distributional Bellman Equation](https://arxiv.org/abs/2505.21098v2). It says: “For every policy σ = (σₙ) in the original MDP model, there exists an action sequence π = (πₙ) in the lifted MDP”
 
@@ -985,7 +949,7 @@
 
 *True by definition. Confidence: medium.* MSC 49Q15 (Geometric measure and integration theory, integral and normal currents in optimization), 58E12. arXiv math.DG, math.AP. Level 4: research.
 
-**Definition.** A surface varifold measures area on pairs consisting of a point and an unoriented plane through it. It is stationary when every smooth, compactly supported vector field has zero integrated divergence along these planes. This divergence traces the field’s derivative in just the plane directions.
+**Definition.** A k-dimensional varifold on an open subset of ℝⁿ is a locally finite Radon measure on pairs (x,S) of locations and unoriented k-dimensional linear subspaces. It is stationary if ∫divₛ X(x) dV(x,S) = 0 for every smooth compactly supported vector field X. Here divₛ means the trace of the derivative in the directions of S.
 
 **Problem.** A weak limit of stationary surface varifolds is stationary.
 
@@ -997,24 +961,6 @@
 
 - [W. K. Allard, On the First Variation of a Varifold (1972)](https://doi.org/10.2307/1970868)
 
-### A jump-based transport distance makes nonlocal diffusion an entropy gradient flow
-
-**Remember:** Charge for mass that moves by jumps, and entropy descent is jump diffusion.
-
-*Makes the theorem clean to state or prove.* MSC 49Q22 (Optimal transportation), 35R09. arXiv math.AP. Level 4: research.
-
-**Definition.** The new distance between probability distributions is the least cost of moving mass along a path of distributions. Mass may jump directly between two points x and y. The cost of a jump uses the transition kernel η(x, y) and the logarithmic mean of the two densities. The logarithmic mean of a and b is (a − b) ∕ (log a − log b).
-
-**Problem.** For a suitable class of weak solutions, every solution of the nonlocal diffusion equation is a gradient flow of relative entropy for the new distance. A gradient flow is a curve of steepest descent, and relative entropy measures how far a distribution is from the reference distribution π.
-
-**How the definition helps.** The distance uses the same jumps as the equation, so steepest descent of the entropy gives back the equation. Our own explanation is that the logarithmic mean turns a difference of logarithms into a difference of densities. The paper still has to prove a chain rule for the entropy along curves.
-
-**Paper or page:** [Gradient flow structure for some nonlocal diffusion equations](https://arxiv.org/abs/2412.20969v3). It says: “we show that solutions to these nonlocal diffusion equations can be interpreted as gradient flows of the relative entropy with respect to a certain nonlocal Wasserstein-type metric defined in terms of η and π.”
-
-**Sources:**
-
-- [Andrew Warren, Gradient flow structure for some nonlocal diffusion equations, arXiv:2412.20969 (2025)](https://arxiv.org/abs/2412.20969v3)
-
 ### Adjacent costs split martingale transport
 
 **Remember:** A sum of pair costs can be minimized one pair at a time.
@@ -1025,7 +971,7 @@
 
 **Problem.** Consider finitely many distributions on the real line and continuous pair costs bounded below. Suppose each consecutive pair has a martingale transport of least finite cost. Then these pairwise optimizers can form one optimal transport over all times.
 
-**How the definition helps.** An additive cost depends only on the consecutive pairs, so the sum of their separate minima bounds every path cost below. In our own account, use each optimal pair’s conditional distribution of the next value to generate the next step. This constructs a joint distribution with all the chosen pairs. Each step preserves the current value in conditional mean even given the entire past. The construction attains the lower bound.
+**How the definition helps.** Additivity bounds the expected cost below by the sum of the pairwise minima (our own). Starting with the first marginal, sample each next value using the corresponding optimal pair’s conditional distribution given the current value (our own). This reproduces every chosen pair and preserves the conditional mean given the full past (our own). The resulting martingale attains the bound (our own).
 
 **nLab:** [transport plan](https://ncatlab.org/nlab/show/transport+plan). It says: “the measure r has p and q as marginals, in the sense that for all A ∈ 𝒜 and B ∈ ℬ,”
 
@@ -1034,24 +980,6 @@
 **Sources:**
 
 - [Remarks on multi-period martingale optimal transport](https://arxiv.org/abs/2506.05505)
-
-### Defining distance to fairness by optimal transport makes it a linear program
-
-**Remember:** Measure how much the data would have to move to reach fairness.
-
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 49Q22 (Optimal transportation), 62H30, 62G10. arXiv stat.ML, math.OC. Level 4: research.
-
-**Definition.** Optimal transport moves probability mass from one law to another and charges for the distance moved. The projection distance is the cheapest transport cost from the empirical law of the data to any law that satisfies the chosen group fairness condition.
-
-**Problem.** For the paper's binary classifier and group fairness condition, the projection distance equals the optimal value of a linear program. The program has one variable in \[0, 1\] for each data point.
-
-**How the definition helps.** Moving a point changes the classifier's output only if it crosses the decision boundary, so only the cheapest crossing matters (our own unpacking). The variable for each point is the fraction of its mass that crosses, at a cost of its distance to the boundary. The cost and the fairness condition are then linear in these fractions, as the program in the paper shows. Calibrating the test so that sampling noise does not look like unfairness still takes the paper's limit theorem.
-
-**Paper or page:** [Testing Group Fairness via Optimal Transport Projections](https://arxiv.org/abs/2106.01070v1). It says: “The projection distance 𝒫(P̂ᴺ) is equal to the optimal value of a linear program.”
-
-**Sources:**
-
-- [Nian Si, Karthyek Murthy, Jose Blanchet, Viet Anh Nguyen, Testing Group Fairness via Optimal Transport Projections, International Conference on Machine Learning 2021](https://arxiv.org/abs/2106.01070v1)
 
 ### Means fix binary martingale transport
 
@@ -1063,29 +991,11 @@
 
 **Problem.** Consider distributions on the real line for which a martingale coupling exists. If the destination takes only two values, the martingale coupling is unique.
 
-**How the definition helps.** The required mean fixes both probabilities once the two destinations are known. In our own proof, let the destinations be a &lt; b and the starting value be x. The conditional probability of b must equal (x − a)/(b − a), which determines the joint law. Our own counterexample gives both coordinates equal probabilities at −1 and 1. Both matching and swapping give couplings, but only matching preserves the conditional mean.
+**How the definition helps.** With destinations a &lt; b, preserving the mean forces the conditional probability of b to be (x − a)/(b − a) at source x (our own). Together with the source law this determines the coupling (our own). If both laws are uniform on {−1,1}, matching and swapping both preserve the marginals, but only matching preserves the conditional mean (our own).
 
 **Paper or page:** [Remarks on multi-period martingale optimal transport](https://arxiv.org/abs/2506.05505). It says: “the set of martingale couplings \\Pi<sub>M</sub>(\\mu<sub>X</sub>, \\mu<sub>Y</sub>) is a singleton.”
 
 **Sources:** none listed. No primary source with a working link was found.
-
-### Monotone multispecies flows have at most one steady state
-
-**Remember:** Two states with zero velocity cannot stay a positive distance apart.
-
-*True by definition.* MSC 49Q22 (Optimal transportation), 35Q49. arXiv math.AP. Level 4: research.
-
-**Definition.** Compare two states with n species by an optimal matching of each species' mass, with total squared distance W². Pair the difference of the velocity fields at matched points with the displacement between them. The flow is λ-monotone if minus this pairing is at least λ W².
-
-**Problem.** Let λ &gt; 0. Two steady states of a λ-monotone flow are equal. Under further conditions in the paper, a steady state exists and every solution approaches it exponentially fast.
-
-**How the definition helps.** Uniqueness follows straight from the definition. Here is our own one-line proof. At steady states both velocity fields are zero, so the pairing is zero. Then 0 ≥ λ W², so W = 0. Existence and the rate of convergence need separate work.
-
-**Paper or page:** [Monotone Multispecies Flows](https://arxiv.org/abs/2506.22947v2). It says: “We show that monotonicity implies the existence of and convergence to a unique steady state, convergence of the velocity fields and second moments, and contraction in the Wasserstein-2 metric, at rates dependent on λ.”
-
-**Sources:**
-
-- [Lauren Conger, Franca Hoffmann, Eric Mazumdar, Lillian J. Ratliff, Monotone Multispecies Flows, arXiv:2506.22947 (2025)](https://arxiv.org/abs/2506.22947v2)
 
 ### Path boundedness characterizes sets carrying transport potentials when costs can be infinite
 
@@ -1093,11 +1003,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 49Q22 (Optimal transportation), 26B25. arXiv math.OC. Level 4: research.
 
-**Definition.** Let G be a set of pairs (x,y), and let P be the set of first points x of pairs in G. A potential is a function φ on P with φ(x) − φ(z) ≥ c(x,y) − c(z,y) for (x,y) in G, z in P. Adding these bounds along a path of pairs in G bounds the change of φ between the path's ends. G is path bounded if, for any two pairs in G, the sums over all paths between them have a common upper bound.
+**Definition.** Let G consist of finite-cost pairs for a cost c valued in (−∞,∞\]. For a finite path (x₀,y₀),…,(xₙ,yₙ) in G, sum c(xᵢ,yᵢ) − c(xᵢ₊₁,yᵢ) over i &lt; n. Call G path bounded if each ordered pair of endpoints admits a finite upper bound on every such path sum (our own).
 
-**Problem.** Let the cost c take values in (−∞, ∞\]. A set of pairs has a potential of the paper's class exactly when it is path bounded. For finite costs, cyclic monotonicity implies path boundedness, and this recovers the classical theorem of Rockafellar and Rüschendorf.
+**Problem.** For such costs, G admits a supporting potential of the paper’s class exactly when G is path bounded. Support requires φ(x) − φ(z) ≥ c(x,y) − c(z,y) for each (x,y) ∈ G and each first coordinate z. For finite costs, cyclic monotonicity implies path boundedness and recovers the Rockafellar–Rüschendorf theorem.
 
-**How the definition helps.** Potential differences telescope along paths, so the two end values bound every path sum, in our own explanation. An infinite cost can remove a return constraint, so checking only cycles is not enough, in our own reading. The hard direction is building a potential from the bounds. The paper reduces that direction to solving a system of linear inequalities.
+**How the definition helps.** A supporting potential bounds each path increment by φ(xᵢ) − φ(xᵢ₊₁), so summing telescopes (our own). The paper proves the converse by solving the resulting system of inequalities. With finite costs one return edge closes the path, so cyclic monotonicity bounds its sum by the negative return increment (our own).
 
 **Paper or page:** [A Rockafellar-type theorem for non-traditional costs](https://arxiv.org/abs/2011.13263v4), [A Rockafellar-type theorem for non-traditional costs](https://arxiv.org/abs/2011.13263v4). It says: “We note that any set admitting a potential must be c-path-bounded, and this condition replaces c-cyclic monotonicity from the classical theory, i.e. when the cost is real-valued.”
 
@@ -1111,11 +1021,11 @@
 
 *True by definition.* MSC 49Q22 (Optimal transportation). arXiv cs.LG, math.OC. Level 4: research.
 
-**Definition.** Unbalanced optimal transport compares positive measures whose total masses may differ. Sliced unbalanced transport projects both measures onto each line through the origin. It then averages the one-dimensional unbalanced costs over all directions.
+**Definition.** For finite positive measures on ℝᵈ, project each measure by x ↦ ⟨θ,x⟩ for every unit direction θ. The sliced unbalanced cost is the integral of the one-dimensional unbalanced cost between these projections against uniform probability on the sphere.
 
 **Problem.** Suppose the one-dimensional unbalanced cost is non-negative, symmetric and definite. Suppose also that its pth root satisfies the triangle inequality for some p ≥ 1. Then the sliced cost on ℝᵈ has the same properties.
 
-**How the definition helps.** Each metric axiom for the sliced cost is an average of the same axiom on lines. Our own proof sketch of the triangle inequality adds Minkowski's inequality, the triangle inequality for pth-power averages. Definiteness needs one more fact. A finite measure is determined by its projections onto all lines, which is the Cramér–Wold theorem.
+**How the definition helps.** Integration preserves nonnegativity and symmetry, and Minkowski’s inequality gives the triangle inequality for the pth root (our own). Zero sliced cost gives equal projected laws for almost every direction (our own). Such directions are dense, and continuity of Fourier transforms extends equality to every direction (our own). The Cramér–Wold theorem then identifies the measures (our own).
 
 **Paper or page:** [Slicing Unbalanced Optimal Transport](https://arxiv.org/abs/2306.07176v2). It says: “Then, SUOT is respectively non-negative, symmetric and/or definite on ℳ₊(ℝᵈ) × ℳ₊(ℝᵈ).”
 
@@ -1129,7 +1039,7 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 49Q22 (Optimal transportation), 60B05, 52A41. arXiv math.PR, math.OC. Level 4: research.
 
-**Definition.** Classical optimal transport moves a law μ to a law ν at least total cost. Weak optimal transport, due to Gozlan, Roberto, Samson and Tetali, lets the cost at x depend on the whole conditional law πₓ of the destination. A barycentric cost depends only on the mean of πₓ, for example \|x − mean(πₓ)\|².
+**Definition.** For laws μ and ν, weak transport minimizes ∫C(x,πₓ) dμ(x) over joint laws π with marginals μ and ν. Here πₓ is the conditional destination law given x. The quadratic barycentric cost is C(x,πₓ) = \|x − ∫y dπₓ(y)\|².
 
 **Problem.** Take laws μ and ν on ℝᵈ with finite second moments and the quadratic barycentric cost. For an optimal coupling, the map x ↦ mean(πₓ) is unique μ-almost everywhere, is the gradient of a convex function, and is 1-Lipschitz. This is the Brenier–Strassen theorem of Gozlan and Juillet, in our own summary.
 
@@ -1149,11 +1059,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 49S05 (Variational principles of physics), 58A20, 58E30. arXiv math.DG, math-ph. Level 4: research.
 
-**Definition.** The horizontal de Rham complex of a field bundle is the de Rham complex in the spacetime directions, for forms that depend on the fields and their derivatives. The Euler–Lagrange complex extends this complex by two more maps: first the Euler–Lagrange derivative, which sends a Lagrangian to its equations of motion, then the Helmholtz operator. On a trivial vector bundle over Minkowski spacetime, this complex is exact (the image of each map is the kernel of the next).
+**Definition.** The Euler–Lagrange complex continues the horizontal differential on forms depending on fields and their derivatives. Its next maps send Lagrangians to Euler–Lagrange source forms and source forms to their Helmholtz obstructions. Exactness at source forms means the kernel of the second map equals the image of the first.
 
-**Problem.** On a trivial vector bundle over Minkowski spacetime, a system of partial differential equations is the Euler–Lagrange equation of some Lagrangian exactly when the Helmholtz operator sends its source form to zero. This solves the inverse problem of the calculus of variations.
+**Problem.** Consider a system represented by a source form on a trivial vector bundle over Minkowski spacetime. It comes from a Lagrangian exactly when the Helmholtz operator annihilates that form. This characterizes the inverse problem of the calculus of variations.
 
-**How the definition helps.** Exactness of the complex turns the inverse problem into a single check: the kernel of the Helmholtz operator is the image of the Euler–Lagrange derivative. The same exactness says that a Lagrangian with zero Euler–Lagrange form is a total derivative. The real content is the exactness theorem for the variational bicomplex (Anderson, theorem 5.1, cited on the page), which needs topological corrections for nontrivial bundles. The page does not name the inverse problem; that link is our own.
+**How the definition helps.** Exactness at source forms identifies those with zero Helmholtz obstruction as precisely the Euler–Lagrange forms. Anderson’s exactness theorem for the variational bicomplex supplies this property on the stated bundle. The connection to the inverse problem is our own.
 
 **nLab:** [A first idea of quantum field theory -- Lagrangians](https://ncatlab.org/nlab/show/A+first+idea+of+quantum+field+theory+--+Lagrangians). It says: “By definition of exact sequence, the Helmholtz operator detects whether a partial differential equation on field histories, induced by a variational differential form”
 

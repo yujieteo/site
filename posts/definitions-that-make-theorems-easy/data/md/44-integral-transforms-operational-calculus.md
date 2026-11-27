@@ -20,7 +20,7 @@
 
 *True by definition.* MSC 44A10 (Laplace transform). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** A unit impulse at time a is the measure assigning mass one to the point a. For a finite measure on \[0,∞), define its Laplace transform by integrating exp(−st) against it for Re s ≥ 0.
+**Definition.** The unit impulse at a ≥ 0 assigns mass one to every Borel set containing a and zero to every other Borel set. For a finite measure μ on \[0,∞), its Laplace transform at Re s ≥ 0 is ∫ exp(−st) dμ(t).
 
 **Problem.** For a ≥ 0, the Laplace transform of the unit impulse at time a is exp(−sa).
 
@@ -86,7 +86,7 @@
 
 *Rules out counterexamples.* MSC 44A10 (Laplace transform). arXiv math.CA. Level 3: graduate.
 
-**Definition.** For a two-sided Laplace transform, record the complex values s where the defining integral converges absolutely, together with its value there.
+**Definition.** For a measurable f on ℝ, the two-sided Laplace transform records F(s) = ∫ℝ exp(−st)f(t) dt together with its domain. This domain contains exactly the complex s for which ∫ℝ \|exp(−st)f(t)\| dt is finite.
 
 **Problem.** Suppose both two-sided transforms converge absolutely on one vertical line and agree there. Then their inputs agree almost everywhere. The formula 1/s alone admits two different inputs.
 
@@ -122,7 +122,7 @@
 
 **Problem.** For bounded continuous f, Aₙ(t) tends to f(t). This average equals the nth derivative of F at n/t multiplied by (−1)ⁿ(n/t)ⁿ⁺¹/n!.
 
-**How the definition helps.** The probability density turns inversion by high derivatives into averaging near t (our own). The gamma density has mean (n + 1)t/n and variance (n + 1)t²/n², so by Chebyshev's inequality its mass outside any fixed neighborhood of t tends to zero (our own). Continuity controls the average inside that neighborhood, and boundedness controls the rest (our own). Differentiating under the Laplace integral identifies the average with the derivative formula (our own).
+**How the definition helps.** The gamma density concentrates near t because its mean (n+1)t/n approaches t and its variance (n+1)t²/n² approaches zero (our own). Chebyshev’s inequality bounds the mass outside any fixed neighborhood. Continuity controls the error inside and boundedness controls the rest. Differentiating under the Laplace integral gives the derivative formula.
 
 **Paper or page:** [Multidimensional vector-valued Laplace transform and applications](https://arxiv.org/abs/2506.18909v1). It says: “Then the following Post-Widder inversion formula holds”
 
@@ -218,7 +218,7 @@
 
 **Remember:** Integrating powers of offset gives powers of the dot product.
 
-*Makes the theorem clean to state or prove.* MSC 44A12 (Radon transform). arXiv math.CA. Level 3: graduate.
+*True by definition.* MSC 44A12 (Radon transform). arXiv math.CA. Level 3: graduate.
 
 **Definition.** The Radon transform Rf(θ,t) integrates f over the hyperplane x · θ = t. The unit normal θ fixes a direction, and the signed offset t distinguishes slices on opposite sides of the origin.
 
@@ -236,7 +236,7 @@
 
 *True by definition. Confidence: medium.* MSC 44A12 (Radon transform). arXiv math.CA. Level 3: graduate.
 
-**Definition.** Fix a unit vector θ. To project a measure, send each point x and its mass to the real number x · θ. Define its Radon data in direction θ as this projected measure.
+**Definition.** For a finite Borel measure μ on ℝⁿ and unit vector θ, define the projected measure Pθμ on ℝ. For every Borel set E, put (Pθμ)(E) = μ({x ∈ ℝⁿ : x·θ ∈ E}). These are the Radon data in direction θ.
 
 **Problem.** For two finite measures, projecting their convolution gives the convolution of their projections.
 
@@ -270,7 +270,7 @@
 
 *Rules out counterexamples.* MSC 44A15 (Special integral transforms (Legendre, Hilbert, etc.)). arXiv math.CA. Level 3: graduate.
 
-**Definition.** The modified Hilbert transform of f at x integrates f(t) against (1/π)(1/(x − t) + 1/t) for \|t\| &gt; 1 and against (1/π)·1/(x − t) for \|t\| ≤ 1. The integral is a principal value: a symmetric interval about x is omitted, and its width tends to zero.
+**Definition.** Set c(t) = 1/t when \|t\| &gt; 1 and c(t) = 0 otherwise. The modified Hilbert transform at x integrates f(t)(1/(x−t)+c(t))/π over ℝ in the principal value sense. Omit \|t−x\| ≤ ε and let ε decrease to zero.
 
 **Problem.** For every bounded, locally Hölder continuous function f on ℝ, the modified Hilbert transform exists at every x.
 
@@ -288,7 +288,7 @@
 
 *True by definition.* MSC 44A15 (Special integral transforms (Legendre, Hilbert, etc.)). arXiv math.CA, math.AP. Level 3: graduate.
 
-**Definition.** Write r = exp(x) and fix a real c. Set g(x) = exp(cx)f(exp(x)). Define the normalized Mellin transform at c + iξ as the unitary Fourier transform of g at −ξ. The usual Mellin integral uses powers of r directly.
+**Definition.** Fix c ∈ ℝ and set g(x) = exp(cx)f(exp(x)). Define the normalized Mellin transform at c+iξ as the unitary Fourier transform of g at −ξ, using the negative Fourier phase.
 
 **Problem.** Suppose ∫₀∞ \|f(r)\|² exp(2c log r) dr/r is finite. The integral of the squared transform over ξ equals this same number.
 
@@ -306,7 +306,7 @@
 
 *True by definition.* MSC 44A15 (Special integral transforms (Legendre, Hilbert, etc.)). arXiv math.FA. Level 3: graduate.
 
-**Definition.** Use entire functions, meaning functions analytic on the whole complex plane. Integrate their squared absolute values against plane area with density exp(−\|z\|²)/π. Define the Bargmann transform by sending normalized Hermite function n on ℝ to zⁿ/√(n!), starting at n = 0. Its usual definition uses a Gaussian integral kernel.
+**Definition.** The Bargmann–Fock space consists of entire functions square integrable for the plane measure exp(−\|z\|²) dA(z)/π, with dA denoting area. For f with normalized Hermite coefficients cₙ, define its Bargmann transform by the sum of cₙzⁿ/√(n!) over n ≥ 0.
 
 **Problem.** The Bargmann transform is a unitary map onto the space of entire functions square integrable for the complex Gaussian weight.
 
@@ -324,7 +324,7 @@
 
 *True by definition.* MSC 44A15 (Special integral transforms (Legendre, Hilbert, etc.)). arXiv math.CA. Level 3: graduate.
 
-**Definition.** Fix a dimension d ≥ 2. Define the radial Hankel transform by applying the unitary Fourier transform to a function that depends only on distance from the origin. Keep only the resulting function of radius. The usual integral formula uses a Bessel function of order d/2 − 1.
+**Definition.** Fix an integer d ≥ 2 and a profile h square-integrable against rᵈ⁻¹ dr on (0,∞). Its radial Hankel transform is the radial profile of the unitary Fourier transform of x ↦ h(\|x\|) on ℝᵈ.
 
 **Problem.** Applying this transform twice recovers every radial profile square-integrable with respect to r to the power d − 1 times dr.
 
@@ -340,7 +340,7 @@
 
 **Remember:** The scaled kernel tends to the indicator of a single point.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 44A15 (Special integral transforms (Legendre, Hilbert, etc.)), 44A60. arXiv math.CA. Level 3: graduate.
+*True by definition. Confidence: medium.* MSC 44A15 (Special integral transforms (Legendre, Hilbert, etc.)), 44A60. arXiv math.CA. Level 3: graduate.
 
 **Definition.** For a finite positive measure on ℝ, define its Stieltjes transform by integrating 1/(t − z) against the measure for nonreal z. This includes measures assigning positive mass to individual points, called atoms.
 
@@ -362,7 +362,7 @@
 
 **Problem.** The measures with density pε approach μ as ε decreases to zero. This means their integrals against every continuous compactly supported function approach its integral against μ.
 
-**How the definition helps.** Keeping a positive height turns boundary inversion into averaging with a probability density (our own). The negative imaginary part divided by π gives the Poisson kernel ε/\[π((x − t)² + ε²)\]. This kernel has integral one in x, and its mass outside every fixed neighborhood of t tends to zero (our own). Thus averaging a continuous compactly supported function recovers its value at t (our own). Fubini’s theorem and bounded convergence give the asserted convergence of measures (our own).
+**How the definition helps.** The negative imaginary part gives convolution with the probability density Pε(u) = ε/\[π(u²+ε²)\] (our own). Its mass outside every fixed neighborhood of zero tends to zero. Averaging a continuous compactly supported test function therefore recovers its value pointwise with a uniform bound. Fubini’s theorem and bounded convergence give convergence against μ.
 
 **Wikipedia:** [Stieltjes transformation](https://en.wikipedia.org/wiki/Stieltjes_transformation). It says: “the smaller the value of ε, the less smoothing is applied.”
 
@@ -428,7 +428,7 @@
 
 *True by definition.* MSC 44A40 (Calculus of Mikusi?ski and other operational calculi). arXiv math.CA. Level 3: graduate.
 
-**Definition.** For continuous functions on nonnegative time, convolution integrates f(t − s)g(s) from 0 to t. Form fractions with a nonzero function as denominator, using convolution as multiplication. Identify fractions when their cross-products agree. Convolution with the constant function 1 integrates its input from zero to t.
+**Definition.** For continuous functions on \[0,∞), define (f∗g)(t) = ∫₀ᵗ f(t−s)g(s) ds. A convolution fraction f/g consists of two such functions with g not identically zero. Identify f/g with h/k when f∗k = h∗g, and multiply fractions by convolving numerators and denominators.
 
 **Problem.** The constant kernel 1 has an inverse in the convolution fraction field. Its product with that inverse is the unit, even though no continuous convolution kernel acts as the unit.
 
@@ -448,7 +448,7 @@
 
 **Problem.** If a probability measure on ℝ has an exponential moment, its nonnegative integer moments determine it among all probability measures on ℝ.
 
-**How the definition helps.** Exponential integrability gives a convergent power series for the Laplace transform near zero (our own). A second measure with the same moments also integrates cosh(εx), by its series of nonnegative even powers (our own). The transforms agree near zero and hence throughout their common vertical strip by analytic continuation (our own). On the imaginary axis, Fourier uniqueness identifies the measures (our own). The lognormal distribution, the law of the exponential of a nonconstant normal variable, has all moments but shares them with other distributions.
+**How the definition helps.** An exponential moment makes the Laplace transform analytic on a strip around the imaginary axis (our own). Any measure with matching moments integrates cosh(εx) by monotone convergence, so its transform is analytic there too. Their Taylor coefficients agree at zero, hence analytic continuation and Fourier uniqueness identify the laws. Without exponential integrability the lognormal law shares all moments with other laws.
 
 **Wikipedia:** [Log-normal distribution](https://en.wikipedia.org/wiki/Log-normal_distribution). It says: “However, the log-normal distribution is not determined by its moments.”
 
@@ -515,7 +515,7 @@
 
 *True by definition.* MSC 44A12 (Radon transform). arXiv math.FA. Level 4: research.
 
-**Definition.** A ridge with unit direction θ has the form r(x · θ), where its one-dimensional profile r may be a finite measure. Interpret a measure profile by integrating test functions over perpendicular hyperplanes before applying r to their offsets. Define the filtered transform by testing the ridge against the inverse Radon transform of smooth, rapidly decreasing Radon data.
+**Definition.** For a unit vector θ and finite measure r on ℝ, define the ridge distribution u by ⟨u,f⟩ = ∫ Rf(θ,t) dr(t). Here Rf integrates the Schwartz test f over each hyperplane x·θ = t. Its filtered Radon data act on each range test g = Rf by ⟨u,R⁻¹g⟩.
 
 **Problem.** For a finite measure profile, the filtered transform has an even measure representation. It places half the profile at θ and half its reflection at −θ.
 
@@ -531,7 +531,7 @@
 
 **Remember:** Pull the positive test back to the measured side.
 
-*Makes the theorem clean to state or prove.* MSC 44A12 (Radon transform). arXiv math.FA. Level 4: research.
+*True by definition.* MSC 44A12 (Radon transform). arXiv math.FA. Level 4: research.
 
 **Definition.** The Radon transform Rh integrates h over each hyperplane in ℝⁿ. A positive backprojection represents a weight w by a nonnegative measure on hyperplanes. For every nonnegative measurable h, integrating wh over space must equal integrating Rh against that measure.
 
@@ -551,7 +551,7 @@
 
 *True by definition.* MSC 44A15 (Special integral transforms (Legendre, Hilbert, etc.)), 42A50. arXiv math.CA, math.FA. Level 4: research.
 
-**Definition.** Extend a function on (0, T), with T &gt; 0, by odd reflection about zero and even reflection about T. Repeat with period 4T. Apply the periodic Hilbert transform, which shifts each positive-frequency sine to minus its cosine. Negate the result and restrict it to (0, T).
+**Definition.** For T &gt; 0, extend f on (0,T) by odd reflection about zero and even reflection about T to a 4T-periodic function. Apply the negative periodic Hilbert transform and restrict the result to (0,T). Use the convention that the periodic Hilbert transform sends each positive-frequency sine to minus its cosine.
 
 **Problem.** This reflected transform sends each sine with frequency (j + ½)π/T to the cosine of the same frequency, for every nonnegative integer j.
 

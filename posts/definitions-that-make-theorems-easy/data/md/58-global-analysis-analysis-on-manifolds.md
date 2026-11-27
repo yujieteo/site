@@ -40,7 +40,7 @@
 
 **Definition.** Let Iₓ be the ideal of smooth functions that vanish at the point x, and Iₓ² the span of products of two such functions. The cotangent space at x is the quotient Iₓ/Iₓ². The differential of f at x is the class of f − f(x).
 
-**Problem.** With the differential defined as the class of f − f(x) in Iₓ/Iₓ², the product rule d(fg) = f(x) dg + g(x) df holds at x. The same definition works in algebraic geometry as the Zariski cotangent space.
+**Problem.** At x, the differential satisfies d(fg) = f(x) dg + g(x) df. In algebraic geometry, the analogous quotient of the maximal ideal of the local ring by its square gives the Zariski cotangent space.
 
 **How the definition helps.** In this definition, the product rule is a one-line identity, which is our own computation. Write fg − f(x)g(x) = f(x)(g − g(x)) + g(x)(f − f(x)) + (f − f(x))(g − g(x)). The last term lies in Iₓ², so it vanishes in the quotient. What stays hard is the isomorphism with the dual of the tangent space, which needs Hadamard's lemma (our own summary).
 
@@ -68,15 +68,15 @@
 
 ### Hausdorff and paracompact manifolds have partitions of unity
 
-**Remember:** Locally like ℝⁿ is not enough; points must also separate and covers refine.
+**Remember:** Separate distinct points and refine every open cover locally finitely.
 
 *Rules out counterexamples. Confidence: medium.* MSC 58A05 (Differentiable manifolds, foundations), 54D20. arXiv math.DG, math.GT. Level 2: later undergraduate.
 
-**Definition.** A topological manifold is a space that is locally like ℝⁿ and is also Hausdorff and paracompact. Paracompact means that every open cover has a locally finite open refinement. Being locally like ℝⁿ does not imply being Hausdorff, so this is a real extra condition.
+**Definition.** Here a manifold is locally homeomorphic to ℝⁿ, and distinct points have disjoint neighborhoods. Every open cover must admit a locally finite open refinement.
 
-**Problem.** Every open cover of a smooth manifold has a subordinate smooth partition of unity. That is a family of smooth functions that sum to 1, each supported inside a set of the cover.
+**Problem.** Every open cover of a smooth manifold admits a subordinate smooth partition of unity. Its nonnegative functions have locally finite supports, each inside a cover member, and sum to one.
 
-**How the definition helps.** The two extra conditions make partitions of unity exist, so local constructions such as metrics and integrals glue on every manifold. The line with two origins is locally Euclidean but not Hausdorff, so the definition excludes it. In paracompact Hausdorff spaces, every open cover has a partition of unity, and smooth bump functions make it smooth. The existence proof is still a real argument, and the definition only makes it apply.
+**How the definition helps.** The line with two origins violates the separation condition. In our own summary, paracompactness and separation give a locally finite refinement by coordinate neighborhoods with smaller neighborhoods still covering. Choose subordinate smooth bumps positive on the smaller neighborhoods and divide by their sum.
 
 **nLab:** [topological manifold](https://ncatlab.org/nlab/show/topological+manifold), [partition of unity](https://ncatlab.org/nlab/show/partition+of+unity), [line with two origins](https://ncatlab.org/nlab/show/line+with+two+origins). It says: “Paracompact smooth manifolds admit locally finite smooth partitions of unity subordinate to any open cover”
 
@@ -120,15 +120,15 @@
 
 ### Second countability lets smooth functions determine maps of manifolds (Milnor's exercise)
 
-**Remember:** Countably many pieces keep a manifold visible from its functions.
+**Remember:** A countable base keeps real characters tied to points.
 
 *Rules out counterexamples.* MSC 58A05 (Differentiable manifolds, foundations), 54D70, 26E10. arXiv math.DG. Level 2: later undergraduate.
 
-**Definition.** Here a smooth manifold is finite-dimensional, paracompact and second countable. Second countability means that the topology has a countable base. For a Hausdorff manifold, this is the same as being paracompact with countably many connected components.
+**Definition.** A second-countable smooth manifold here is a finite-dimensional Hausdorff smooth manifold whose topology has a countable base.
 
-**Problem.** The functor that sends M to C∞(M), its algebra of smooth functions, goes from smooth manifolds to the opposite of the category of commutative ℝ-algebras. This functor is fully faithful: every algebra homomorphism C∞(N) → C∞(M) comes from a unique smooth map M → N.
+**Problem.** For finite-dimensional Hausdorff second-countable smooth manifolds M and N, every unital ℝ-algebra map C∞(N) → C∞(M) is pullback along a unique smooth map M → N.
 
-**How the definition helps.** Second countability excludes a set-theoretic pathology, and with it the theorem holds. Without it, a 0-dimensional manifold can have as many components as a measurable cardinal, a very large cardinal that ordinary set theory cannot prove to exist. Then there are algebra homomorphisms ℝᵀ → ℝˢ that do not come from any map of sets S → T. The case where M is a point, that every character of C∞(N) is evaluation at a point, is Milnor's exercise, and it still needs proof.
+**How the definition helps.** Second countability excludes discrete manifolds of measurable cardinality, where nonprincipal countably complete ultrafilters supply extra real characters. In our own argument, Milnor’s character theorem identifies each evaluation after a unital algebra homomorphism with evaluation at a unique source point. This gives the underlying map, and smooth coordinate functions localized by bump functions show it is smooth.
 
 **nLab:** [embedding of smooth manifolds into formal duals of R-algebras](https://ncatlab.org/nlab/show/embedding+of+smooth+manifolds+into+formal+duals+of+R-algebras), [topological manifold](https://ncatlab.org/nlab/show/topological+manifold). It says: “If one drops the second countability assumption on manifolds, allowing sets of connected components to have the cardinality of a measurable cardinal”
 
@@ -141,13 +141,13 @@
 
 **Remember:** A tangent vector is whatever obeys the product rule at a point.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 58A05 (Differentiable manifolds, foundations), 57R35. arXiv math.DG. Level 2: later undergraduate.
+*True by definition. Confidence: medium.* MSC 58A05 (Differentiable manifolds, foundations), 57R35. arXiv math.DG. Level 2: later undergraduate.
 
-**Definition.** Let M be a smooth manifold and x a point of M. A derivation at x is a linear map D from smooth functions on M to ℝ with D(fg) = D(f)·g(x) + f(x)·D(g). This is the product rule at the point x. The tangent space TₓM is the vector space of all derivations at x.
+**Definition.** For a smooth manifold M, TₓM consists of the ℝ-linear maps D:C∞(M) → ℝ satisfying D(fg) = g(x)D(f) + f(x)D(g) for all f,g.
 
 **Problem.** Define the differential of a smooth map φ by dφₓ(D)(f) = D(f ∘ φ). Then the chain rule d(ψ ∘ φ)ₓ = dψ\_φ(x) ∘ dφₓ holds.
 
-**How the definition helps.** The definition uses no charts, so there is no chart independence to check. With derivations, TₓM is a vector space at once, unlike with velocity classes of curves. The chain rule is then one line, because D(f ∘ ψ ∘ φ) can be read in two ways (our own remark). The work moves to showing that the derivations at a point of ℝⁿ are exactly the directional derivatives, which uses Taylor's theorem (our own remark).
+**How the definition helps.** In our own calculation, both sides applied to D and tested on f equal D(f ∘ ψ ∘ φ). Associativity of function composition proves the identity.
 
 **Wikipedia:** [Tangent space](https://en.wikipedia.org/wiki/Tangent_space). It says: “While the definition via the velocity of curves is intuitively the simplest, it is also the most cumbersome to work with.”
 
@@ -175,11 +175,11 @@
 
 *True by definition.* MSC 58A05 (Differentiable manifolds, foundations). arXiv math.DG. Level 2: later undergraduate.
 
-**Definition.** A tangent vector v at a point x of a manifold X is an equivalence class of smooth paths γᵥ : \[−ε, ε\] → X with γᵥ(0) = x. The differential df of a map f : X → Y sends the class of γ to the class of f ∘ γ.
+**Definition.** At x, consider smooth curves γ defined near zero with γ(0) = x. Two curves represent the same tangent vector when their coordinate velocities at zero agree in a chart at x. For smooth f, its differential sends \[γ\] to \[f ∘ γ\].
 
 **Problem.** For smooth maps f: X → Y and g: Y → Z, d(g ∘ f) = dg ∘ df. So differentiation is a functor on smooth manifolds.
 
-**How the definition helps.** With this definition, the chain rule is just associativity of composition. The vector d(g ∘ f)(v) is the class of (g ∘ f) ∘ γᵥ, and dg(df(v)) is the class of g ∘ (f ∘ γᵥ), the same path. Our reading of what remains is that df must be well defined on classes of curves and agree with the usual derivative. That is where ordinary calculus enters.
+**How the definition helps.** Both composite differentials give the class of g ∘ f ∘ γ. The identity map preserves every class. In our own check, the ordinary chain rule makes these operations independent of the chart and representative.
 
 **nLab:** [chain rule](https://ncatlab.org/nlab/show/chain+rule). It says: “If one thinks of a tangent vector v ∈ T<sub>x</sub> X to be an equivalence class of a smooth path γ<sub>v</sub> : \[−ε,ε\] → X, for some ε &gt; 0, with γ(0) = x, then the chain rule is the associativity”
 
@@ -187,7 +187,7 @@
 
 ### A radial integral gives the Poincaré lemma on star-shaped sets
 
-**Remember:** The constant end of a contraction pulls positive-degree forms back to zero.
+**Remember:** Pull back along radial segments, insert the time direction, and integrate.
 
 *True by definition.* MSC 58A10 (Differential forms in global analysis). arXiv math.DG. Level 2: later undergraduate.
 
@@ -223,11 +223,11 @@
 
 *True by definition. Confidence: medium.* MSC 58A10 (Differential forms in global analysis), 55N10. arXiv math.DG. Level 2: later undergraduate.
 
-**Definition.** A smooth k-cube in a manifold is a smooth map from \[0,1\]ᵏ to the manifold. Its boundary is the sum of its 2k faces, each with a sign. The face that fixes coordinate i at the value a, with a = 0 or 1, gets the sign (−1)ⁱ⁺ᵃ. A chain is a finite integer combination of cubes.
+**Definition.** A smooth k-cube is a smooth map from \[0,1\]ᵏ into the manifold. Its boundary sums the restrictions to faces xᵢ = a with coefficient (−1)ⁱ⁺ᵃ, for 1 ≤ i ≤ k and a ∈ {0,1}. Extend this operation linearly to finite integer sums of cubes.
 
 **Problem.** For every chain c of smooth cubes, the boundary of the boundary of c is zero.
 
-**How the definition helps.** The signs are chosen so that each face of a face appears twice, with opposite signs. In our own check, fixing coordinate i and then coordinate j gives the same cube as the other order, after renumbering. In our own check, the two signs differ by one factor of −1, so the pair cancels. In our own comparison, a definition by outward orientations on each face would need an argument about orientations instead. In our own account, the work moves to matching the signs with outward orientations, which Stokes' theorem needs.
+**How the definition helps.** In our own calculation, fixing two different coordinates in either order gives the same face. Removing the earlier coordinate lowers the later index by one. The two coefficients therefore have opposite signs and cancel.
 
 **Paper or page:** [Theorem 5.5. (The boundary of the boundary is empty)](https://venhance.github.io/napkin/Napkin.pdf). It says: “∂² = 0, in the sense that for any k-chain c we have ∂²(c) = 0.”
 
@@ -237,15 +237,15 @@
 
 ### Differential forms turn the classical integral theorems into one theorem
 
-**Remember:** Boundary integral of ω equals inside integral of dω: one formula for all.
+**Remember:** Integrate the form on the boundary and its exterior derivative inside.
 
 *Makes the theorem clean to state or prove.* MSC 58A10 (Differential forms in global analysis), 26B20. arXiv math.DG. Level 2: later undergraduate.
 
-**Definition.** A differential k-form on a manifold assigns to each point an alternating k-linear form on the tangent space there. You can integrate a k-form over an oriented k-dimensional manifold. The exterior derivative d takes k-forms to (k + 1)-forms.
+**Definition.** A smooth differential k-form assigns an alternating k-linear functional to each tangent space, with smooth coefficients in every chart.
 
 **Problem.** Let Ω be an oriented n-manifold with boundary and ω a compactly supported (n−1)-form on Ω. Then the integral of ω over ∂Ω equals the integral of dω over Ω. The fundamental theorem of calculus, Green's theorem, the Kelvin–Stokes theorem and the divergence theorem are its cases in dimensions 1, 2 and 3.
 
-**How the definition helps.** Differential forms make these four theorems into one statement. In vector calculus they are separate theorems about gradients, curls and divergences. With the exterior derivative, all three operators become d, and all four theorems become the one formula. Orientability and compact support are still needed, and rough domains need further work, for example Whitney's version.
+**How the definition helps.** The generalized Stokes theorem pairs a boundary integral with an integral of the exterior derivative. In our own explanation, choosing forms of the appropriate degrees recovers each classical formula.
 
 **Wikipedia:** [Generalized Stokes theorem](https://en.wikipedia.org/wiki/Generalized_Stokes_theorem). It says: “is a statement about the integration of differential forms on manifolds, which both simplifies and generalizes several theorems from vector calculus.”
 
@@ -323,7 +323,7 @@
 
 *True by definition.* MSC 58A10 (Differential forms in global analysis). arXiv math.DG. Level 2: later undergraduate.
 
-**Definition.** Define the exterior derivative d by its action on functions, its signed product rule, and the rule d² = 0. On functions it gives the ordinary differential. In a product of two forms, differentiating the second factor introduces a minus sign when the first has odd degree.
+**Definition.** The exterior derivative is the ℝ-linear operator of degree one on smooth forms that extends the ordinary differential of functions and satisfies d² = 0. For every p-form α and every form β, it satisfies d(α ∧ β) = dα ∧ β + (−1)ᵖα ∧ dβ.
 
 **Problem.** For every smooth map and smooth form, taking the exterior derivative before or after pullback gives the same form.
 
@@ -389,11 +389,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 58C35 (Integration on manifolds; measures on manifolds), 28A05. arXiv math.DG, math.CA. Level 2: later undergraduate.
 
-**Definition.** Let X be a smooth n-manifold. A subset A of X is null if its preimage under every coordinate chart is a Lebesgue-null subset of the chart's domain in ℝⁿ. A is full if each such preimage is full, that is, its complement in the chart's domain is null.
+**Definition.** In a smooth n-manifold, A is null if every chart sends its intersection with the chart domain to a Lebesgue-null set in ℝⁿ. A is full if its complement is null.
 
 **Problem.** On a smooth manifold, a set that is null in the charts of one atlas covering it is null in every chart. So null and full sets, and 'almost everywhere', make sense without a chosen measure.
 
-**How the definition helps.** Smooth transition maps carry null sets to null sets, so a set that is null in the charts of one atlas is null in every chart. The nLab says this fails for topological manifolds, because a homeomorphism of ℝⁿ need not keep Lebesgue-null sets null. The page asks whether C¹ is enough. Our own note says it is, since locally Lipschitz maps between open subsets of ℝⁿ carry null sets to null sets.
+**How the definition helps.** Smooth coordinate changes are locally Lipschitz and preserve null sets. In our own argument, second countability of each chart domain reduces its cover by atlas overlaps to a countable subcover. A countable union of null sets is null. A general homeomorphism can send a null set to a set of positive measure.
 
 **nLab:** [null subset](https://ncatlab.org/nlab/show/null+subset). It says: “If A is covered by an atlas (φᵢ: Uᵢ → X)ᵢ, then A is null or full as soon as φᵢ\*(A) is null/full in Uᵢ for every index i. … This fact depends on the smoothness and fails for topological manifolds.”
 
@@ -407,11 +407,11 @@
 
 *Rules out counterexamples.* MSC 58C35 (Integration on manifolds; measures on manifolds), 58A10. arXiv math.DG. Level 2: later undergraduate.
 
-**Definition.** An n-pseudoform on an n-manifold is like an n-form, but it gets an extra factor −1 when you change to coordinates of the opposite orientation. So in top degree it transforms by the absolute value of the Jacobian determinant, not by the determinant itself.
+**Definition.** A top-degree pseudoform assigns a coefficient ρₓ in each coordinate chart x. On every overlap with coordinates y, the coefficients satisfy ρᵧ(y) = ρₓ(x(y)) \|det(∂x/∂y)\|.
 
-**Problem.** For a continuous n-pseudoform on any n-manifold, orientable or not, the integral built from charts and a partition of unity does not depend on these choices. The integral is linear in the pseudoform.
+**Problem.** On any smooth n-manifold, chart integration of an absolutely integrable continuous n-pseudoform is independent of the charts and partition of unity. The integral is linear.
 
-**How the definition helps.** A pseudoform transforms by the absolute value of the Jacobian, exactly as the change-of-variables formula for Lebesgue integrals does. So the chart-by-chart integrals agree on overlaps. With an ordinary n-form, the same recipe depends on the orientation of each chart. Repairing this by taking the absolute value of the form on each chart makes the integral nonlinear.
+**How the definition helps.** In our own argument, the absolute Jacobian gives exactly the change-of-variables factor, including in a reflected chart. A common refinement compares partitions of unity, and linearity follows from summing ordinary integrals.
 
 **nLab:** [pseudoform](https://ncatlab.org/nlab/show/pseudoform), [integration of differential forms](https://ncatlab.org/nlab/show/integration+of+differential+forms), [volume form](https://ncatlab.org/nlab/show/volume+form). It says: “For a top-dimension pseudoform, this has the effect that at any given point, the form has a consistent sign regardless of the orientation of the coordinates.”
 
@@ -421,11 +421,11 @@
 
 ### Pullback integrals ignore changes of parameter that preserve orientation
 
-**Remember:** The form supplies the sign when the parameters change.
+**Remember:** Evaluate the form on ordered parameter velocities to retain the orientation sign.
 
 *True by definition.* MSC 58C35 (Integration on manifolds; measures on manifolds). arXiv math.DG. Level 2: later undergraduate.
 
-**Definition.** A k-form measures signed volume on k tangent vectors and changes sign when two vectors exchange places. To integrate it over a parametrized region, evaluate it on the k coordinate velocities and integrate over the parameter region.
+**Definition.** A smooth k-form assigns a smoothly varying alternating k-linear functional to each tangent space. Its integral over a parametrization c is the integral of its value on the ordered coordinate derivatives of c.
 
 **Problem.** For a convergent form integral, a smooth change of parameters with smooth inverse preserves the integral if it preserves orientation. It negates the integral if it reverses orientation.
 
@@ -461,11 +461,11 @@
 
 *True by definition. Confidence: medium.* MSC 58A05 (Differentiable manifolds, foundations), 57R55. arXiv math.DG, math.GT. Level 3: graduate.
 
-**Definition.** A smooth manifold with corners is modelled locally on \[0, ∞)ᵏ × ℝⁿ⁻ᵏ instead of only on ℝⁿ or a half-space. Points with k &gt; 1 are corners.
+**Definition.** A smooth n-manifold with corners is a second-countable Hausdorff space covered by charts onto relatively open subsets of \[0,∞)ᵏ × ℝⁿ⁻ᵏ, with 0 ≤ k ≤ n. Chart changes and their inverses extend smoothly near each point to Euclidean open sets.
 
 **Problem.** The product of two smooth manifolds with corners is a manifold with corners. For example, the square \[0,1\] × \[0,1\] is one. So is W × \[0,1\] when W is a cobordism, that is, a manifold whose boundary is two closed manifolds.
 
-**How the definition helps.** The local models \[0, ∞)ᵏ × ℝⁿ⁻ᵏ are closed under products, so the class is closed under products by definition. With only interiors and half-spaces, the product of two intervals fails at its four corners. Our own remark: this matters in cobordism theory, where one glues cobordisms and takes products with intervals. Without corners one must round them off, which needs extra choices. What stays hard is that there are several inequivalent notions of smooth maps between manifolds with corners.
+**How the definition helps.** In our own argument, multiplying two chart models concatenates their nonnegative coordinates and their unrestricted coordinates. Products of the smooth extensions give smooth extensions for the coordinate changes. This includes the four corner charts of the square.
 
 **Wikipedia:** [Manifold](https://en.wikipedia.org/wiki/Manifold). It says: “If in addition we are considering differentiable manifolds, then a square with interior is not a manifold with boundary. The four vertices are neither locally diffeomorphic to Euclidean space nor to Euclidean half-space.”
 
@@ -483,7 +483,7 @@
 
 **Problem.** For a surjective submersion with connected fibers, every basic form is the pullback of a unique form downstairs.
 
-**How the definition helps.** The first condition removes differentials along fibers, and the second makes the remaining coefficients locally constant along each fiber. Connectedness makes these coefficients constant on the whole fiber. In our own proof, local projection coordinates then give a smooth form downstairs. Surjectivity gives uniqueness. Our own counterexample projects two disjoint copies of the base onto one. A function taking different constants on the copies is basic but cannot come from downstairs.
+**How the definition helps.** In our own proof, horizontality leaves only base differentials, while invariance makes their coefficients locally constant along fibers. Connectedness gives one value per fiber, and local sections give smoothness and uniqueness downstairs. On two disjoint copies of the base, different constant functions give a basic function that cannot descend.
 
 **nLab:** [basic differential form](https://ncatlab.org/nlab/show/basic+differential+form). It says: “If the fibers of p are connected (otherwise the characterization given below is valid only locally in E)”
 
@@ -495,11 +495,11 @@
 
 *True by definition. Confidence: medium.* MSC 58A10 (Differential forms in global analysis), 57R25. arXiv math.DG. Level 3: graduate.
 
-**Definition.** Let X be a vector field, and let φₜ be its local flow, the maps that move each point for time t along X. The Lie derivative of a form ω along X is the derivative at t = 0 of φₜ\*ω. Here φₜ\*ω is the pullback, the form that evaluates ω on vectors pushed forward by φₜ. Another definition gives a formula in the coordinate components of ω and of X.
+**Definition.** For a smooth vector field X with local flow φₜ, define ℒₓω as the derivative of φₜ\*ω at t = 0.
 
 **Problem.** Write ℒ for the Lie derivative along a fixed vector field. Then ℒ(α∧β) = ℒα∧β + α∧ℒβ for all smooth forms α and β.
 
-**How the definition helps.** The flow definition makes the rule easy because pullback along each map φₜ preserves wedge products. In our own argument, differentiating φₜ\*α ∧ φₜ\*β at t = 0 gives the product rule, as for products of functions. In our own comparison, the coordinate formula needs a direct calculation with components instead. In our own account, the work moves to the existence of local flows. It also moves to computing the flow derivative in coordinates, which shows that the two definitions agree.
+**How the definition helps.** In our own argument, pullback gives φₜ\*(α ∧ β) = φₜ\*α ∧ φₜ\*β. Differentiating at zero gives the claimed rule by bilinearity.
 
 **nLab:** [Lie derivative](https://ncatlab.org/nlab/show/Lie+derivative). It says: “is the linearization of the pullback of ω along the flow”
 
@@ -513,7 +513,7 @@
 
 *True by definition.* MSC 58A10 (Differential forms in global analysis), 37C10. arXiv math.DS, math-ph. Level 3: graduate.
 
-**Definition.** A volume form μ specifies oriented volume on a smooth manifold. The Lie derivative ℒₓμ is the initial rate of change of μ when the flow of X pulls it back to the starting points. The divergence of X relative to μ satisfies ℒₓμ = (div X)μ. For standard Euclidean volume, the coordinate definition is ∑ᵢ ∂Xᵢ/∂xᵢ.
+**Definition.** For a smooth vector field X and a nowhere-zero top form μ, its divergence relative to μ is the unique function satisfying ℒₓμ = (div X)μ. Here ℒₓμ differentiates the flow pullback of μ at time zero.
 
 **Problem.** A smooth vector field has zero divergence relative to μ exactly when its flow preserves μ wherever it is defined.
 
@@ -533,7 +533,7 @@
 
 **Problem.** Taking a Lie derivative and taking an exterior derivative commute on smooth forms.
 
-**How the definition helps.** The flow definition lets us use the same pullback identity at every time. In our own proof, exterior differentiation commutes with smooth pullback and with differentiation in time. Differentiating the pullback identity gives the claim. Cartan’s alternative formula expresses the Lie derivative using exterior differentiation and insertion of the field into a form. Proving the pullback identity or deriving Cartan’s formula supplies the underlying work.
+**How the definition helps.** In our own proof, exterior differentiation commutes with pullback by each local flow map. It also commutes with time differentiation of smooth coefficients. Differentiating the pullback identity at zero gives the claim.
 
 **nLab:** [Lie derivative](https://ncatlab.org/nlab/show/Lie+derivative). It says: “the linearization of the pullback of ω along the flow exp(X −)”
 
@@ -545,7 +545,7 @@
 
 *Rules out counterexamples.* MSC 58A12 (de Rham theory in global analysis). arXiv math.DG. Level 3: graduate.
 
-**Definition.** Let d denote exterior differentiation of real differential forms. Choose a closed 3-form H, meaning dH = 0. Set Dα = dα + H ∧ α, where ∧ denotes the alternating product of forms. Both terms switch the parity of the degree.
+**Definition.** For a closed real three-form H, define D on the parity-graded space of smooth real forms by Dα = dα + H ∧ α. Closedness means dH = 0.
 
 **Problem.** The twisted exterior derivative has square zero and hence defines cohomology.
 
@@ -705,11 +705,11 @@
 
 *Rules out counterexamples.* MSC 58A17 (Pfaffian systems). arXiv math.DG. Level 3: graduate.
 
-**Definition.** A smooth plane field assigns a tangent subspace of fixed dimension to each point. Take all sums of alternating products having at least one factor a one-form that vanishes on those planes. These forms constitute an ideal. Call it closed under exterior differentiation when differentiating any member gives another member.
+**Definition.** For a smooth constant-rank distribution E, form the local exterior ideal generated by all one-forms vanishing on E. It is differential if d sends every local member back into the ideal.
 
 **Problem.** A local integral leaf is a submanifold whose tangent spaces equal the prescribed planes. Such a leaf passes through every point exactly when the ideal is closed under exterior differentiation.
 
-**How the definition helps.** Closure tests integrability by differentiating the one-forms that describe the planes. In our own explanation, evaluate such a derivative on two vector fields lying in the planes. The result equals minus the original form on their Lie bracket, which measures failure of their flows to commute. The Frobenius theorem constructs the local leaves when all these brackets stay in the planes. Our own counterexample uses the planes annihilated by dz − x dy. Its derivative −dx ∧ dy is nonzero on each plane.
+**How the definition helps.** For E-tangent fields X,Y and an annihilating one-form α, dα(X,Y) = −α(\[X,Y\]). Thus closure of the ideal means closure under brackets, the Frobenius integrability criterion. In our own counterexample, d(dz − x dy) is nonzero on the planes annihilated by dz − x dy.
 
 **nLab:** [exterior differential system](https://ncatlab.org/nlab/show/exterior+differential+system). It says: “Frobenius systems are in bijection with involutive subbundles of the tangent bundle of X”
 
@@ -721,11 +721,11 @@
 
 *True by definition. Confidence: medium.* MSC 58A25 (Currents in global analysis), 49Q15. arXiv math.DG. Level 3: graduate.
 
-**Definition.** A test form is a smooth differential form with compact support. A current is a continuous linear functional on test forms, and its boundary ∂T acts by ∂T(ω) = T(dω). The pushforward f♯T along a smooth map f acts by f♯T(ω) = T(f\*ω), where f\*ω is the pullback. The map f must be proper, meaning that preimages of compact sets are compact, so that f\*ω is again a test form.
+**Definition.** A k-current T is a continuous linear functional on compactly supported smooth k-forms. Its boundary acts by ∂T(ω) = T(dω). For a proper smooth map f, define f♯T(η) = T(f\*η), since properness preserves compact support under pullback.
 
 **Problem.** For a proper smooth map f and any current T, ∂(f♯T) = f♯(∂T).
 
-**How the definition helps.** With the duality definition, both sides apply T to forms that are equal. In our own step, one side gives T(f\*dω) and the other gives T(d f\*ω), and pullback commutes with d. In our own comparison, the image of a submanifold under f need not be a submanifold, so the geometric statement is hard even to state. Wikipedia says that Stokes' theorem motivates the duality definition of the boundary. In our own account, the work moves to Stokes' theorem and to the fact that d commutes with pullback.
+**How the definition helps.** In our own computation, the two sides act on ω by T(f\*(dω)) and T(d(f\*ω)). Pullback commutes with exterior differentiation, so the values agree.
 
 **Wikipedia:** [Current (mathematics)](https://en.wikipedia.org/wiki/Current_%28mathematics%29). It says: “we can define a boundary operator on arbitrary currents”
 
@@ -737,11 +737,11 @@
 
 *True by definition.* MSC 58A25 (Currents in global analysis). arXiv math.DG, math.FA. Level 3: graduate.
 
-**Definition.** A current of degree m is a continuous linear functional on smooth compactly supported differential m-forms. Define the boundary ∂T of a current T of degree m + 1 by (∂T)(ω) = T(dω), where d is the exterior derivative. For the current of integration over an oriented manifold with boundary, Stokes' theorem shows that ∂ gives integration over the geometric boundary.
+**Definition.** An m-current T is a continuous linear functional on compactly supported smooth m-forms. Its boundary acts on each compactly supported smooth (m−1)-form ω by (∂T)(ω) = T(dω).
 
 **Problem.** For every current T of degree at least two, ∂∂T = 0.
 
-**How the definition helps.** With the duality definition, (∂∂T)(ω) = T(ddω) = 0, because d ∘ d = 0 on forms. The work moves to Stokes' theorem, which shows that the definition agrees with the geometric boundary for integration currents. Without that theorem, the operator would not deserve the name boundary. Wikipedia gives the definition and its motivation by Stokes' theorem; the one-line proof is our own.
+**How the definition helps.** In our own calculation, testing the second boundary on ω gives T(d(dω)), which vanishes because d² = 0. Stokes’ theorem identifies this boundary with the geometric boundary for integration currents.
 
 **Wikipedia:** [Current (mathematics)](https://en.wikipedia.org/wiki/Current_%28mathematics%29). It says: “In view of this formula we can define a boundary operator on arbitrary currents”
 
@@ -765,15 +765,15 @@
 
 ### Diffeological spaces make spaces of smooth maps smooth again
 
-**Remember:** Say which maps into X are smooth, and let the rest follow.
+**Remember:** A family of smooth maps is a plot when its evaluation is smooth.
 
 *Makes the theorem clean to state or prove.* MSC 58A40 (Differential spaces), 18F15. arXiv math.DG, math.CT. Level 3: graduate.
 
-**Definition.** A diffeological space is a set X with a chosen set of maps U → X, called plots, for each open set U ⊂ ℝⁿ. The plots are the maps that count as smooth. Constant maps are plots, plots stay plots after composing with smooth maps V → U, and being a plot is a local condition.
+**Definition.** A map between diffeological spaces is smooth if it sends every plot to a plot. In the functional diffeology on C∞(X,Y), a parametrization p:U → C∞(X,Y) is a plot exactly when (u,x) ↦ p(u)(x) is smooth.
 
 **Problem.** Diffeological spaces form a cartesian closed category. The smooth maps X → Y form a diffeological space C∞(X, Y), and C∞(Z × X, Y) ≅ C∞(Z, C∞(X, Y)).
 
-**How the definition helps.** A plot U → C∞(X, Y) is by definition a smooth map U × X → Y, so the exponential law holds almost by definition. Smooth manifolds do not allow this, even when infinite-dimensional manifolds are allowed. For compact X, the diffeological structure on C∞(X, Y) agrees with the Fréchet manifold structure, and that comparison is a real theorem.
+**How the definition helps.** In our own argument, a family indexed by Z is smooth exactly when its evaluation on Z × X is smooth. Currying and evaluation are inverse, giving the exponential law. Componentwise plots give products, and the singleton is terminal.
 
 **nLab:** [diffeological space](https://ncatlab.org/nlab/show/diffeological+space), [manifold structure of mapping spaces](https://ncatlab.org/nlab/show/manifold+structure+of+mapping+spaces). It says: “The category of smooth manifolds is not cartesian closed, even when infinite-dimensional manifolds are allowed.”
 
@@ -788,11 +788,11 @@
 
 *True by definition.* MSC 58A40 (Differential spaces). arXiv math.DG. Level 3: graduate.
 
-**Definition.** A diffeological space specifies smooth parametrizations, called plots, on open subsets of Euclidean spaces. A map is smooth when it sends plots to plots. On a quotient, take the smallest collection of plots making the projection smooth, subject to the usual rules for plots.
+**Definition.** For a surjection π:X → Q from a diffeological space, p:U → Q is a quotient plot if it locally lifts through π to plots of X. Every point of U must have a neighborhood V with p restricted to V equal to π ∘ q for some plot q of X.
 
 **Problem.** A map out of a diffeological quotient is smooth exactly when its composite with the quotient map is smooth.
 
-**How the definition helps.** One can describe the quotient plots explicitly as parametrizations that locally lift to plots upstairs. This description turns the smoothness test into composition with a local lift. Our own proof uses the fact that smoothness can be tested locally. The work is showing that local lifts give exactly the smallest allowed collection. They include constant plots and remain plots after smooth changes of parameters and gluing.
+**How the definition helps.** In our own argument, if fπ is smooth, each local lift q makes fp locally the plot fπq. Plots glue, so f is smooth. Conversely, π sends plots to plots, so smooth f gives smooth fπ.
 
 **Paper or page:** [Diffeological Principal Bundles and Principal Infinity Bundles](https://arxiv.org/abs/2202.11023v4). It says: “is smooth if and only if f π is”
 
@@ -806,7 +806,7 @@
 
 *Rules out counterexamples.* MSC 58B10 (Differentiability questions for infinite-dimensional manifolds). arXiv math.DG, math.FA. Level 3: graduate.
 
-**Definition.** A Banach manifold uses charts in vector spaces with one complete norm. A Fréchet manifold allows a complete topology given by countably many seminorms, each of which can vanish on nonzero vectors.
+**Definition.** A smooth Banach manifold is a Hausdorff manifold with charts onto open subsets of Banach spaces and transition maps with continuous Fréchet derivatives of every order. A Banach space is a normed vector space complete for its norm.
 
 **Problem.** Every smooth vector field on a Banach manifold has a unique smooth local flow.
 
@@ -858,7 +858,7 @@
 
 **Remember:** Constants on separate components can differ without a Dirac commutator.
 
-*Makes the theorem clean to state or prove.* MSC 58B34 (Noncommutative geometry (à la Connes)), 46L87. arXiv math.OA, math-ph. Level 3: graduate.
+*True by definition.* MSC 58B34 (Noncommutative geometry (à la Connes)), 46L87. arXiv math.OA, math-ph. Level 3: graduate.
 
 **Definition.** On a finite disjoint union of closed Riemannian spin manifolds let D act by the Dirac operator on each component. Define spectral distance as the supremum of \|f(x) − f(y)\| over smooth real functions with ‖Df − fD‖ ≤ 1. Allow the value infinity.
 
@@ -897,7 +897,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 58B34 (Noncommutative geometry (à la Connes)), 46L87. arXiv math.OA, math-ph. Level 3: graduate.
 
-**Definition.** A resolvent of a self-adjoint operator D is an inverse such as (D + i)⁻¹. A nonunital spectral triple requires bounded commutators \[D,a\] and compact operators a(D + i)⁻¹ for every algebra element a. This local compactness test allows the full resolvent to lack compactness.
+**Definition.** A locally compact spectral triple consists of a faithfully represented ∗-algebra on a Hilbert space and a self-adjoint operator D. Each algebra element a preserves the domain of D, its commutator \[D,a\] extends boundedly, and a(D+i)⁻¹ is compact.
 
 **Problem.** On positive-dimensional Euclidean space let smooth compactly supported functions multiply square-integrable differential forms, and let D equal exterior differentiation plus its adjoint. These data form a locally compact spectral triple although (D + i)⁻¹ is not compact.
 
@@ -915,7 +915,7 @@
 
 *Rules out counterexamples.* MSC 58B34 (Noncommutative geometry (à la Connes)), 46L87. arXiv math.OA, math-ph. Level 3: graduate.
 
-**Definition.** Universal differential forms are formal products of algebra elements and symbols da subject to linearity, the product rule and d² = 0. For a spectral triple with operator D, represent da by the commutator \[D,a\] = Da − aD. Let K collect the kernels degree by degree. Define the represented calculus as universal forms modulo K + dK.
+**Definition.** For a spectral triple, represent each universal form a₀ da₁ ⋯ daₖ by a₀\[D,a₁\] ⋯ \[D,aₖ\]. Let K be the direct sum of the kernels in each degree. The represented differential calculus is the universal differential algebra modulo K + dK.
 
 **Problem.** The quotient inherits multiplication and a differential satisfying the graded product rule and d² = 0.
 
@@ -933,11 +933,11 @@
 
 *Rules out counterexamples.* MSC 58B34 (Noncommutative geometry (à la Connes)), 46L87. arXiv math.OA, math-ph. Level 3: graduate.
 
-**Definition.** In a unital spectral triple with operator D, a test is a self-adjoint a with ‖\[D,a\]‖ ≤ 1. The spectral distance between two states is the supremum of their absolute differences on the tests. Total boundedness asks that, for a fixed state μ, finitely many norm balls of radius ε cover the centered tests a − μ(a)1, for every ε &gt; 0.
+**Definition.** For a unital spectral triple, let B contain exactly the self-adjoint algebra elements a with ‖\[D,a\]‖ ≤ 1. Spectral distance is the supremum over B of the absolute difference of state evaluations. Fix a state μ and require a finite norm ε-net for {a − μ(a)1 : a ∈ B} for every ε &gt; 0.
 
 **Problem.** If the tests are totally bounded in this sense, spectral distance is a finite metric on states. It induces the weak star topology, pointwise convergence on the completed algebra.
 
-**How the definition helps.** Finite norm approximations turn pointwise convergence of states into uniform convergence on the centered tests (our own explanation). Centering leaves state differences unchanged, and the centered set is bounded. Conversely, rescaling elements with bounded commutator gives pointwise convergence on the dense algebra. States have norm one, so density extends convergence to its completion. With D = 0 on a two-point space, distinct states have infinite distance.
+**How the definition helps.** In our own proof, centering preserves state differences and total boundedness bounds the distance. Finite ε-nets and the unit norms of states turn pointwise convergence into uniform convergence on B. Conversely, rescaling tests gives pointwise convergence on the dense algebra, hence on its completion, and separates distinct states. With D = 0 on two points, distinct states have infinite distance.
 
 **Wikipedia:** [Spectral triple](https://en.wikipedia.org/wiki/Spectral_triple). It says: “topologizes the weak\* topology on the state space”
 
@@ -947,15 +947,15 @@
 
 ### Absolute differential forms give the triangle inequality for integrals
 
-**Remember:** An absolute form is what you integrate over an unoriented curve, like arc length \|dx\|.
+**Remember:** Changing a frame scales an absolute form by the absolute determinant.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 58C35 (Integration on manifolds; measures on manifolds), 58A10. arXiv math.DG. Level 3: graduate.
 
-**Definition.** An absolute p-form gives a number for each point and each list of p tangent vectors at that point. It is not linear. But on each oriented p-dimensional subspace it is multilinear, up to the sign that the orientation gives. You can integrate it over a p-dimensional submanifold without an orientation of that submanifold.
+**Definition.** An absolute p-form assigns a scalar to each ordered tangent p-frame and vanishes on dependent tuples. Changing a frame by an invertible matrix multiplies the scalar by the absolute determinant. For an ordinary p-form ω, taking the absolute value of every evaluation gives \|ω\|.
 
-**Problem.** For a form ω and an oriented submanifold R, \|∫ over R of ω\| ≤ ∫ over \|R\| of \|ω\|. Here \|ω\| is an absolute form, and \|R\| is R with its orientation forgotten.
+**Problem.** For an integrable p-form ω on an oriented p-dimensional submanifold R, \|∫<sub>R</sub> ω\| ≤ ∫\_\|R\| \|ω\|. Here \|R\| denotes the same submanifold with its orientation forgotten.
 
-**How the definition helps.** Absolute forms drop linearity but keep multilinearity on each oriented subspace, so they can be integrated on unoriented submanifolds. An ordinary form needs an oriented submanifold, and a pseudoform needs a transversely oriented one. So neither can even state the right side, nor give arc length \|dx\| on an unoriented curve. The framework is an nLab author's own, and continuous absolute p-forms are Gelfand's even p-densities.
+**How the definition helps.** The absolute determinant makes the density independent of orientation. In our own argument, the integral triangle inequality in oriented charts bounds the signed integral by the integral of the density.
 
 **nLab:** [absolute differential form](https://ncatlab.org/nlab/show/absolute+differential+form), [integration of differential forms](https://ncatlab.org/nlab/show/integration+of+differential+forms). It says: “I call these absolute forms. The term 'absolute' suggests a lack of additional required structure, in this case some sort of orientation on the domain of integration.”
 
@@ -991,7 +991,7 @@
 
 **Problem.** Inversion is smooth on the Fréchet manifold of smooth diffeomorphisms of a closed manifold.
 
-**How the definition helps.** The curve test replaces differentiation of the inversion operator by inversion of ordinary smooth families. The finite-dimensional implicit function theorem applied to f(t,y) = x gives smooth dependence of y on t and x. The mapping-space theorem identifying smooth curves with jointly smooth families supplies the remaining step.
+**How the definition helps.** In our own proof, the curve test reduces inversion to inverting a jointly smooth family f(t,y). The implicit function theorem makes the solution y of f(t,y) = x smooth in (t,x), since each spatial derivative is invertible. The mapping-space curve criterion now gives smooth inversion.
 
 **Wikipedia:** [Convenient vector space](https://en.wikipedia.org/wiki/Convenient_vector_space). It says: “inversion maps smooth curves to smooth curves”
 
@@ -1005,7 +1005,7 @@
 
 *True by definition.* MSC 58D15 (Manifolds of mappings), 58B10. arXiv math.DG, math.FA. Level 3: graduate.
 
-**Definition.** A local addition sends short vectors based at y to nearby points and sends the zero vector to y. The base and resulting point together give smooth coordinates near the diagonal. Around a smooth map f, these coordinates describe nearby maps by smooth vector fields along f.
+**Definition.** A local addition on N is a smooth map Σ from a neighborhood of the zero section in TN to N with Σ(0ᵧ) = y. With π the bundle projection, (π,Σ) must map that neighborhood diffeomorphically onto a neighborhood of the diagonal in N × N.
 
 **Problem.** For a closed manifold M and a finite-dimensional manifold N, the tangent bundle of the smooth mapping space identifies with smooth maps into TN. Here TN is the tangent bundle of N, and the fiber over f consists of smooth vector fields along f.
 
@@ -1019,7 +1019,7 @@
 
 ### Category bounds critical point counts
 
-**Remember:** Each isolated critical point can account for one contractible set.
+**Remember:** Count the fewest open sets covering the manifold that contract inside it.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 58E05 (Abstract critical point theory (Morse theory, Lyusternik-Shnirel'man theory, etc.) in infinite-dimensional spaces). arXiv math.DG. Level 3: graduate.
 
@@ -1042,11 +1042,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 58E05 (Abstract critical point theory (Morse theory, Lyusternik-Shnirel'man theory, etc.) in infinite-dimensional spaces). arXiv math.DG. Level 3: graduate.
 
-**Definition.** The Palais–Smale condition requires a convergent subsequence whenever function values stay bounded and derivative norms approach zero.
+**Definition.** A differentiable function satisfies the Palais–Smale condition if every sequence with bounded function values and derivative norms tending to zero has a convergent subsequence.
 
 **Problem.** Suppose a twice continuously differentiable Palais–Smale function on a complete Riemannian Hilbert manifold has no critical points with values in \[a,b\]. One can continuously deform {f ≤ b} onto {f ≤ a} while fixing {f ≤ a} throughout.
 
-**How the definition helps.** Compactness keeps the gradient norm uniformly positive in the band (our own). Otherwise a sequence with vanishing gradient norms would have a limit with zero gradient there (our own). Dividing the downward gradient by its squared norm gives bounded speed and lowers the value at unit rate until it reaches a (our own).
+**How the definition helps.** In our own proof, Palais–Smale bounds the gradient norm away from zero on the closed band, since a vanishing sequence would yield a critical point. The negative gradient divided by its squared norm has bounded speed and lowers the value at unit rate. Completeness allows the flow to reach level a, where we stop it. Without compactness, exp(x) on ℝ has no critical points, yet its nonempty sublevel at one cannot retract onto its empty sublevel at zero.
 
 **Wikipedia:** [Palais–Smale compactness condition](https://en.wikipedia.org/wiki/Palais%E2%80%93Smale_compactness_condition). It says: “In the calculus of variations, where one is typically interested in infinite-dimensional function spaces, the condition is necessary because some extra notion of compactness beyond simple boundedness is needed.”
 
@@ -1057,7 +1057,7 @@
 
 ### Compactness prevents mountain-pass escape
 
-**Remember:** A pass at infinity is not a critical point.
+**Remember:** At the pass height, vanishing derivatives force a convergent subsequence.
 
 *Rules out counterexamples.* MSC 58E05 (Abstract critical point theory (Morse theory, Lyusternik-Shnirel'man theory, etc.) in infinite-dimensional spaces). arXiv math.AP. Level 3: graduate.
 
@@ -1076,7 +1076,7 @@
 
 ### Fixed directions suffice for criticality
 
-**Remember:** Average a direction before testing the derivative.
+**Remember:** Fixed directions survive every symmetry, and averaging produces a fixed direction.
 
 *Makes the theorem clean to state or prove.* MSC 58E05 (Abstract critical point theory (Morse theory, Lyusternik-Shnirel'man theory, etc.) in infinite-dimensional spaces). arXiv math.AP. Level 3: graduate.
 
@@ -1095,7 +1095,7 @@
 
 ### Invertible Hessians give Morse coordinates
 
-**Remember:** No zero eigenvector does not mean a gap from zero.
+**Remember:** The Hessian must reach every covector with a bounded inverse.
 
 *Rules out counterexamples. Confidence: medium.* MSC 58E05 (Abstract critical point theory (Morse theory, Lyusternik-Shnirel'man theory, etc.) in infinite-dimensional spaces). arXiv math.DG. Level 3: graduate.
 
@@ -1171,7 +1171,7 @@
 
 **Definition.** For a fixed partition of time, a broken geodesic joins successive path values by shortest geodesics at constant speed on each interval.
 
-**Problem.** Consider fixed-endpoint paths of energy at most E on a compact Riemannian manifold without boundary, where energy integrates squared speed. For a sufficiently fine partition, this space deforms continuously onto its broken geodesics while fixing them throughout.
+**Problem.** Fix endpoints and an energy bound E for H¹ paths on a compact Riemannian manifold without boundary, with energy the integral of squared speed. For a sufficiently fine partition, this sublevel deformation retracts onto its broken geodesics in the H¹ topology.
 
 **How the definition helps.** Replacing each segment by its shortest geodesic preserves the joints and can only lower energy (our own). Replacing a growing initial portion of each segment gives a continuous deformation in the norm measuring the path and its first derivative (our own). The energy bound makes short portions uniformly short enough to have unique shortest replacements varying smoothly with their endpoints (our own).
 
@@ -1192,7 +1192,7 @@
 
 **Problem.** On a compact Riemannian manifold without boundary, a bumpy metric has finitely many closed unit-speed geodesics below each length bound, up to time shift.
 
-**How the definition helps.** Bumpiness isolates each periodic orbit by the implicit function theorem on a section transverse to the flow (our own). The positive injectivity radius bounds periods away from zero (our own). Compactness of unit tangent vectors and bounded periods would give a limiting periodic orbit for any infinite sequence, contradicting isolation (our own).
+**How the definition helps.** Bumpiness isolates periodic orbits by the transverse implicit function theorem (our own). The injectivity radius bounds positive periods away from zero. Compactness then forces any infinite sequence of distinct orbits with bounded periods to accumulate at a periodic orbit, contradicting isolation. Our own counterexample is the round sphere, whose great circles vary continuously with their planes.
 
 **Paper or page:** [Morse Index bound of simple closed geodesics on 2-spheres and strong Morse Inequalities](https://arxiv.org/abs/2303.00644). It says: “This induces a nontrivial Jacobi field of w and contradicts to the fact that the metric is bumpy.”
 
@@ -1203,7 +1203,7 @@
 
 ### Conjugate endpoints detect Hessian nullity
 
-**Remember:** A missed endpoint direction is a zero direction of the energy.
+**Remember:** Count initial velocity variations that leave the endpoint fixed to first order.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 58E10 (Variational problems in applications to the theory of geodesics (problems in one independent variable)). arXiv math.DG. Level 3: graduate.
 
@@ -1226,7 +1226,7 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 58E10 (Variational problems in applications to the theory of geodesics (problems in one independent variable)). arXiv math.DG. Level 3: graduate.
 
-**Definition.** A submanifold of minima is Morse–Bott if the second derivative has exactly the tangent directions as its kernel and is invertible across the submanifold.
+**Definition.** A submanifold C of minima is Morse–Bott if at every x ∈ C the Hessian has kernel TₓC. On the orthogonal complement of TₓC it must induce a bounded isomorphism to that complement’s continuous dual.
 
 **Problem.** For loops of square integrable speed on a closed Riemannian manifold, the constant loops form a Morse–Bott submanifold of energy minima.
 
@@ -1320,7 +1320,7 @@
 
 *True by definition.* MSC 58E12 (Variational problems concerning minimal surfaces (problems in two independent variables)). arXiv math.DG, math.AP. Level 3: graduate.
 
-**Definition.** A free boundary minimal surface in the unit ball has zero mean curvature and meets the sphere orthogonally along its boundary. A Steklov eigenfunction is harmonic inside, and its outward normal derivative equals a constant times its value along the boundary.
+**Definition.** A free boundary minimal immersion in the unit ball has zero mean curvature and meets the boundary sphere orthogonally along its boundary. A Steklov eigenfunction is a nonzero harmonic function whose outward normal derivative equals a constant times its boundary value.
 
 **Problem.** Each nonzero coordinate function of a compact free boundary minimal surface in the Euclidean unit ball has Steklov eigenvalue one for the induced metric.
 
@@ -1336,7 +1336,7 @@
 
 **Remember:** Test stability with constant speed, then count curvature.
 
-*Rules out counterexamples.* MSC 58E12 (Variational problems concerning minimal surfaces (problems in two independent variables)). arXiv math.DG, math.AP. Level 3: graduate.
+*True by definition.* MSC 58E12 (Variational problems concerning minimal surfaces (problems in two independent variables)). arXiv math.DG, math.AP. Level 3: graduate.
 
 **Definition.** A two-sided surface has a continuous unit normal. A minimal surface is stationary for area, meaning each smooth normal variation has zero first area derivative. It is stable when each such variation with compact support has nonnegative second area derivative.
 
@@ -1349,24 +1349,6 @@
 **Sources:**
 
 - [R. Schoen and S.-T. Yau, Existence of Incompressible Minimal Surfaces and the Topology of Three Dimensional Manifolds with Non-Negative Scalar Curvature (1979)](https://doi.org/10.2307/1971247)
-
-### Stability rules out nonplanar complete surfaces
-
-**Remember:** Complete stable minimal surfaces in three-dimensional Euclidean space are flat.
-
-*Rules out counterexamples.* MSC 58E12 (Variational problems concerning minimal surfaces (problems in two independent variables)). arXiv math.DG, math.AP. Level 3: graduate.
-
-**Definition.** A two-sided minimal surface has a continuous unit normal and zero mean curvature. It is stable if every smooth normal variation supported on a compact set has nonnegative second area derivative.
-
-**Problem.** The image of a connected, complete, two-sided stable minimal immersion without boundary in Euclidean three-space is a plane.
-
-**How the definition helps.** Stability bounds bending by the energy needed to vary the surface in its normal direction (our own explanation). The stable plane theorem uses completeness and this bound to show that the surface has no bending anywhere. The complete Enneper surface gives a counterexample without stability, since sufficiently large disks on it are unstable.
-
-**Paper or page:** [Minimal surfaces and the new main inequality](https://arxiv.org/abs/2301.00249v2). It says: “is unstable.”
-
-**Sources:**
-
-- [M. do Carmo and C. K. Peng, Stable complete minimal surfaces in ℝ³ are planes (1979)](https://doi.org/10.1090/s0273-0979-1979-14689-5)
 
 ### Strict convexity makes minimal graphs unique
 
@@ -1478,7 +1460,7 @@
 
 *True by definition. Confidence: medium.* MSC 58E20 (Harmonic maps, etc.). arXiv math.DG, math.AP. Level 3: graduate.
 
-**Definition.** On a Kähler manifold, the metric g and complex structure J give the closed area form ω(v,w) = g(Jv,w). For a surface map, define its antiholomorphic energy by integrating ½\|b − Ja\|². Here a and b are its derivatives along a positively oriented orthonormal frame.
+**Definition.** On a Kähler manifold, the Kähler form ω satisfies ω(v,w) = g(Jv,w). For a surface map u, its antiholomorphic energy integrates ½\|b − Ja\|² against surface area. Here a and b are the derivatives along a positively oriented orthonormal frame for a compatible surface metric.
 
 **Problem.** A holomorphic map from a closed Riemann surface to a Kähler manifold minimizes Dirichlet energy among all smoothly homotopic maps.
 
@@ -1514,7 +1496,7 @@
 
 **Definition.** On a fixed closed Riemannian surface, the Sacks–Uhlenbeck energy integrates (1 + \|du\|²)ᵅ, where du is the derivative and α exceeds one.
 
-**Problem.** For fixed α, continuous maps into a closed Riemannian manifold with uniformly bounded Sacks–Uhlenbeck energy have a uniformly convergent subsequence. All sufficiently late maps in that subsequence are homotopic to its limit.
+**Problem.** Fix α &gt; 1 and a closed Riemannian target. Consider Sobolev maps from the fixed surface with weak derivative in L²ᵅ, using continuous representatives. Every sequence with uniformly bounded Sacks–Uhlenbeck energy has a uniformly convergent subsequence, whose maps are eventually homotopic to its limit.
 
 **How the definition helps.** The higher power controls oscillation because the derivative exponent 2α exceeds the surface dimension (our own explanation). The Sobolev embedding bounds how fast the maps can vary, giving uniform convergence along a subsequence. Joining nearby values by short geodesics gives a continuous deformation to the limit. At α = 1, conformal automorphisms of the round sphere can concentrate at a point.
 
@@ -1581,11 +1563,11 @@
 
 *True by definition. Confidence: medium.* MSC 58J05 (Elliptic equations on manifolds, general theory), 35S05. arXiv math.AP, math.DG. Level 3: graduate.
 
-**Definition.** Let D be a first-order linear differential operator acting on sections of a vector bundle E over a smooth manifold. A section chooses a vector in the fiber Eₓ at each point x. Define the symbol of D on a differential df by the commutator \[D, f\], which acts on a section u as D(fu) − fD(u). The usual coordinate recipe replaces each first derivative by its matching covector component and discards terms without derivatives.
+**Definition.** Let D be a first-order linear differential operator on sections of a smooth vector bundle E. For x and ξ ∈ Tₓ\* M, choose a smooth function f with dfₓ = ξ. Its symbol satisfies σ<sub>D</sub>(x,ξ)u(x) = D(fu)(x) − f(x)Du(x) for every smooth section u.
 
 **Problem.** At each x, the commutator depends only on the differential df at x and acts linearly on the fiber Eₓ. So the first-order symbol does not depend on the choice of coordinates.
 
-**How the definition helps.** The commutator formula defines the symbol without choosing coordinates once we show that only df at x matters. In our own proof, first-order terms cancel in \[D, f\], so it acts by a linear map on each fiber. The product rule for commutators makes f ↦ \[D, f\] at x obey the Leibniz rule at x. It kills constants and products of functions vanishing at x, so only the linear part of f at x matters. The work moves into this check and matching the result with the usual coordinate formula.
+**How the definition helps.** The commutator uses only intrinsic operations (our own argument). In local coordinates, the product rule cancels every derivative of u and every term of order zero. The remaining terms depend linearly on dfₓ and u(x), so the formula gives the same fiber map in every chart.
 
 **nLab:** [symbol of a differential operator](https://ncatlab.org/nlab/show/symbol+of+a+differential+operator). It says: “where in the commutator on the right we regard multiplication by f as an endomorphism of Γ(E).”
 
@@ -1649,7 +1631,7 @@
 
 *True by definition.* MSC 58J20 (Index theory and related fixed-point theorems on manifolds), 58J28. arXiv math.DG, math-ph. Level 3: graduate.
 
-**Definition.** Let D be the twisted Dirac operator on a closed odd-dimensional Riemannian spin manifold. Its eta invariant η counts positive minus negative eigenvalues by analytic continuation. Define the reduced boundary invariant as (η + dim ker D)/2 in ℝ/ℤ.
+**Definition.** For the twisted boundary Dirac operator D, form η(s) = ∑ sign(λ)\|λ\|⁻ˢ over nonzero eigenvalues counted with multiplicity, initially for large real s. The reduced eta invariant modulo integers is the class of (η(0) + dim ker D)/2, using analytic continuation at zero.
 
 **Problem.** Take two compact spin fillings inducing the same oriented boundary metric, spin structure, and Hermitian bundle with unitary connection. Assume all data have product form near the boundary. Their integrals of the Dirac index density, the top-degree part of Â times the bundle’s Chern character, agree modulo integers.
 
@@ -1701,11 +1683,11 @@
 
 *True by definition.* MSC 58J20 (Index theory and related fixed-point theorems on manifolds). arXiv math.DG. Level 3: graduate.
 
-**Definition.** On a closed even-dimensional spin manifold, the spinor bundle splits into positive and negative parts. The chiral Dirac operator differentiates sections from the positive part to the negative part. Its index subtracts the kernel dimension of its adjoint from its own kernel dimension. The index theorem identifies this integer with the Â genus, a characteristic number calculated from the tangent bundle.
+**Definition.** On a closed even-dimensional Riemannian spin manifold, the chiral Dirac operator D⁺ restricts the spin Dirac operator to positive spinors. Its index is dim ker D⁺ minus dim ker (D⁺)⁎.
 
 **Problem.** A closed even-dimensional spin manifold that admits a metric of positive scalar curvature has zero Â genus.
 
-**How the definition helps.** Our own argument represents the Â genus by a kernel count, so it suffices to exclude zero modes. The Lichnerowicz formula gives D² = ∇\*∇ + R/4, where R is scalar curvature and ∇ differentiates spinors. The first term is nonnegative, and the second has a positive minimum on the closed manifold. Both chiral kernels vanish. The index theorem identifies their dimension difference with the Â genus.
+**How the definition helps.** The index theorem expresses the Â genus as the difference of the two chiral kernel dimensions (our own argument). The Lichnerowicz formula gives D² = ∇⁎∇ + R/4 for the full Dirac operator. Positive scalar curvature R makes its quadratic form strictly positive on nonzero spinors, so both kernels vanish.
 
 **nLab:** [Lichnerowicz formula](https://ncatlab.org/nlab/show/Lichnerowicz+formula). It says: “The crucial point of the formula is that it shows a scalar summand (i.e. 0th order derivative) proportional to the scalar curvature.”
 
@@ -1719,11 +1701,11 @@
 
 *True by definition.* MSC 58J20 (Index theory and related fixed-point theorems on manifolds). arXiv math.DG. Level 3: graduate.
 
-**Definition.** Use the chiral Dirac index on a closed spin four-manifold. Count its kernel and cokernel as quaternionic vector spaces, rather than as complex vector spaces. This keeps the extra symmetry of the spin representations in dimension four.
+**Definition.** On a closed Riemannian spin four-manifold, define the quaternionic index of the chiral Dirac operator as its quaternionic kernel dimension minus its quaternionic cokernel dimension.
 
 **Problem.** On a closed smooth spin four-manifold, the signature of the intersection form on second cohomology is divisible by 16.
 
-**How the definition helps.** Counting quaternionic dimensions makes the complex Dirac index even because each quaternionic dimension contributes two complex dimensions. The two spinor bundles have quaternionic structures, and the Dirac operator respects them. The index and signature theorems identify the complex index with minus one eighth of the signature.
+**How the definition helps.** Each quaternionic dimension contributes two complex dimensions, so the complex index is even (our own explanation). The spinor bundles carry quaternionic structures that the Dirac operator respects. The index and signature theorems identify the complex index with minus one eighth of the signature.
 
 **Wikipedia:** [Atiyah–Singer index theorem](https://en.wikipedia.org/wiki/Atiyah%E2%80%93Singer_index_theorem). It says: “In dimension 4 this result implies Rochlin's theorem that the signature of a 4-dimensional spin manifold is divisible by 16”
 
@@ -1733,15 +1715,15 @@
 
 ### Spin makes Â integral
 
-**Remember:** A Dirac index is an integer even when its characteristic formula uses fractions.
+**Remember:** Lift oriented frames through the spin double cover.
 
 *Rules out counterexamples.* MSC 58J20 (Index theory and related fixed-point theorems on manifolds). arXiv math.DG. Level 3: graduate.
 
-**Definition.** The Â genus evaluates a rational polynomial in the tangent bundle’s Pontryagin classes on a closed oriented manifold. These classes measure how the tangent spaces fit together. A spin structure lifts the oriented orthonormal frame bundle to the double cover of its rotation group. In even dimensions it gives a Dirac operator from positive to negative spinors.
+**Definition.** A spin structure on an oriented Riemannian n-manifold lifts its oriented orthonormal frame bundle through the double covering Spin(n) → SO(n).
 
 **Problem.** The Â genus of a closed spin manifold is an integer. The spin requirement excludes the complex projective plane, whose Â genus is −1/8.
 
-**How the definition helps.** The operator definition gives a difference of two finite dimensions. The Atiyah–Singer index theorem identifies this integer with the characteristic number. Our own calculation of the counterexample uses Â = −p₁/24 in dimension four and Pontryagin number 3 on ℂP².
+**How the definition helps.** The spin lift supplies the spinor bundles needed for the Dirac index (our own explanation). In even dimensions, the Atiyah–Singer theorem identifies the Â genus with the integer chiral index. In odd dimensions the Â polynomial has no top-degree term. The plane ℂP² has nonzero second Stiefel–Whitney class, so it lacks a spin lift, and its Pontryagin number 3 gives Â = −3/24.
 
 **Wikipedia:** [Atiyah–Singer index theorem](https://en.wikipedia.org/wiki/Atiyah%E2%80%93Singer_index_theorem). It says: “The Â genus is a rational number defined for any manifold, but is in general not an integer.”
 
@@ -1755,7 +1737,7 @@
 
 *True by definition.* MSC 58J20 (Index theory and related fixed-point theorems on manifolds). arXiv math.DG. Level 3: graduate.
 
-**Definition.** An elliptic symbol is the highest-order part of an operator, invertible at every nonzero cotangent vector. It defines a compactly supported K-theory class on the cotangent bundle, represented by bundles identified outside a compact set. A Euclidean embedding sends this class to one on the ambient cotangent bundle by the Thom construction in the normal directions. Bott periodicity identifies the resulting group with ℤ and gives the topological index.
+**Definition.** For an elliptic symbol on a closed manifold, take its compactly supported K-theory class on the cotangent bundle. Given a Euclidean embedding, push this class forward along the induced cotangent embedding by the normal Thom map and extension by zero. The topological index is the integer corresponding to this image under Bott periodicity.
 
 **Problem.** The topological index of a symbol on a closed manifold does not depend on the chosen Euclidean embedding.
 
@@ -1787,7 +1769,7 @@
 
 **Remember:** Divide by the ground state so the generator kills constants.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 58J35 (Heat and other parabolic equation methods for PDEs on manifolds). arXiv math.SP, math.DG. Level 3: graduate.
+*True by definition. Confidence: medium.* MSC 58J35 (Heat and other parabolic equation methods for PDEs on manifolds). arXiv math.SP, math.DG. Level 3: graduate.
 
 **Definition.** For H = Δ+V, take the nonnegative Laplacian Δ and a smooth real function V on a closed connected Riemannian manifold. Choose a positive eigenfunction h for the lowest eigenvalue λ. The ground state transform sends f to h⁻¹(H−λ)(hf) and weights volume by h².
 
@@ -1861,7 +1843,7 @@
 
 **Problem.** If Γ₂(f) ≥ KΓ(f) for all smooth f, then Γ(Pₜf) ≤ exp(−2Kt)PₜΓ(f) at every point and every time t ≥ 0.
 
-**How the definition helps.** The iterated energy collects exactly the terms from differentiating a heat average of the gradient energy. Set u = Pₜ₋ₛf and differentiate PₛΓ(u) to obtain 2PₛΓ₂(u). Positivity of heat flow gives the differential inequality, which integrates to the claim. The weighted Bochner formula connects this condition to a geometric curvature bound.
+**How the definition helps.** Differentiating a heat average produces exactly the two terms in Γ₂ (our own calculation). Set u = Pₜ₋ₛf and F(s) = PₛΓ(u) for 0 ≤ s ≤ t. Then F′(s) = 2PₛΓ₂(u) ≥ 2KF(s) because heat flow preserves positivity. Integrating gives F(0) ≤ exp(−2Kt)F(t).
 
 **Paper or page:** [A Bakry-Émery approach to Lipschitz transportation on manifolds](https://arxiv.org/abs/2310.02478). It says: “Γ(Pₜf) ≤ exp(−2ρt) Pₜ(Γ(f)).”
 
@@ -1905,11 +1887,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 58J40 (Pseudodifferential and Fourier integral operators on manifolds). arXiv math.AP. Level 3: graduate.
 
-**Definition.** A Fourier integral operator combines oscillations governed by a phase. Where its frequency derivative vanishes, pair the output derivative with the negative input derivative. These pairs form the canonical relation, a relation between output and input frequency directions.
+**Definition.** For a Fourier integral operator with nondegenerate homogeneous phase φ(x,y,θ), impose ∂θφ = 0 at nonzero θ. Its local canonical relation pairs (x,∂ₓφ) with (y,−∂ᵧφ) at those points.
 
 **Problem.** Suppose both directions in every pair are nonzero. For compactly supported distributions, every output wave front direction pairs with an input wave front direction.
 
-**How the definition helps.** The canonical relation lists the only routes by which a singular direction can reach the output. In our own explanation, wave front directions are those where localization fails to give rapid Fourier decay. Estimates for oscillatory kernels exclude all other routes.
+**How the definition helps.** The canonical relation records which input covectors can contribute to each output covector (our own explanation). The wave front mapping theorem for distribution kernels gives the inclusion because neither covector can vanish.
 
 **Paper or page:** [Ellipsoidal and hyperbolic Radon transforms; microlocal properties and injectivity](https://arxiv.org/abs/2212.00243v1). It says: “WF(Af) ⊂ C ∘ WF(f).”
 
@@ -1973,7 +1955,7 @@
 
 ### Strong ellipticity bounds energy below
 
-**Remember:** Nonzero is not enough for an energy lower bound.
+**Remember:** Require a positive real part on every unit covector.
 
 *Rules out counterexamples.* MSC 58J40 (Pseudodifferential and Fourier integral operators on manifolds). arXiv math.AP. Level 3: graduate.
 
@@ -1993,7 +1975,7 @@
 
 *True by definition.* MSC 58J45 (Hyperbolic equations on manifolds). arXiv math.DG. Level 3: graduate.
 
-**Definition.** Retarded and advanced Green operators solve a linear equation with forcing and restrict the response to the causal future and past, respectively. Green hyperbolicity requires these inverse operators for both the equation and its formal adjoint. Subtract the advanced operator from the retarded operator to define the causal propagator.
+**Definition.** For each smooth compactly supported section f, a retarded Green operator G satisfies PGf = GPf = f and supp(Gf) ⊆ J⁺(supp f). The advanced operator satisfies the same identities with the causal past J⁻ replacing the causal future J⁺. Their difference, retarded minus advanced, is the causal propagator.
 
 **Problem.** For a formally self-adjoint Green-hyperbolic operator on a globally hyperbolic spacetime, its causal propagator is formally skew adjoint. The adjoint identity is tested by integrating against compactly supported smooth sections.
 
@@ -2115,7 +2097,7 @@
 
 **Problem.** As t decreases to zero, tH(t) tends to area(X)/(4π).
 
-**How the definition helps.** The exponential weight turns the length terms in Selberg’s trace formula into rapidly decreasing Gaussians. In our own derivation, each length ℓ contributes a factor exp(−ℓ²/(4t)). The shortest length is positive, and the number of geodesics grows at most exponentially with length. Together these facts bound the total geodesic contribution. Integrating the identity term gives the stated limit.
+**How the definition helps.** The heat trace weights the geodesic terms in Selberg’s trace formula by Gaussians (our own derivation). Each positive length ℓ contributes a factor exp(−ℓ²/(4t)). A positive shortest length and at most exponential growth in geodesic counts make these terms negligible as t decreases to zero. The identity term is asymptotic to area(X)/(4πt).
 
 **Wikipedia:** [Selberg trace formula](https://en.wikipedia.org/wiki/Selberg_trace_formula). It says: “By suitable choices of the test function, the trace formula yields asymptotic information about eigenvalues of the Laplacian”
 
@@ -2127,7 +2109,7 @@
 
 **Remember:** The slowest remaining exponential reveals the next eigenvalue.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 58J50 (Spectral problems; spectral geometry; scattering theory on manifolds). arXiv math.SP, math.DG. Level 3: graduate.
+*True by definition. Confidence: medium.* MSC 58J50 (Spectral problems; spectral geometry; scattering theory on manifolds). arXiv math.SP, math.DG. Level 3: graduate.
 
 **Definition.** The heat trace at time t &gt; 0 sums exp(−tλ) over the eigenvalues λ of the nonnegative Laplacian, counting every copy.
 
@@ -2159,13 +2141,13 @@
 
 **Remember:** Equal class counts give equal dimensions of fixed eigenfunctions.
 
-*Makes the theorem clean to state or prove.* MSC 58J53 (Isospectrality). arXiv math.SP. Level 3: graduate.
+*True by definition.* MSC 58J53 (Isospectrality). arXiv math.SP. Level 3: graduate.
 
 **Definition.** Let a finite group G act freely by isometries on a closed hyperbolic surface X. Call subgroups H and J almost conjugate if they meet each conjugacy class of G in equal numbers.
 
 **Problem.** If H and J are almost conjugate, the quotient surfaces X/H and X/J have the same Laplace eigenvalues, including multiplicities.
 
-**How the definition helps.** Equal class counts give identical subgroup averages of every function constant on conjugacy classes. Our own proof applies this fact to the trace of each group element on a Laplace eigenspace. Averaging the group actions projects onto the functions fixed by the subgroup. The trace of this projection counts its dimension. These fixed functions descend to exactly the eigenfunctions on the quotient.
+**How the definition helps.** Equal class counts give equal subgroup averages of the character of each Laplace eigenspace (our own argument). Averaging the subgroup action projects onto its fixed vectors, so the averaged character gives their dimension. These vectors are precisely the lifts of the quotient eigenfunctions.
 
 **Wikipedia:** [Isospectral](https://en.wikipedia.org/wiki/Isospectral). It says: “are subgroups of G meeting each conjugacy class of G in the same number of elements”
 
@@ -2237,7 +2219,7 @@
 
 **Problem.** For a generic smooth map from a surface to a three-manifold, the four-point multijet is transverse to the diagonal and there are no quadruple points. Here generic means on a set containing a countable intersection of open dense sets in the smooth Whitney topology.
 
-**How the definition helps.** Restricting to distinct points gives a configuration space of dimension eight, too small to meet a codimension-nine diagonal transversely (our own explanation). Transversality means the derivative supplies all directions normal to the diagonal. The multijet transversality theorem gives genericity even though all four entries come from one map.
+**How the definition helps.** Requiring distinct source points removes the repeated tuple (x,x,x,x), which would give a coincidence for every map (our own explanation). The multijet transversality theorem gives transversality to the diagonal for generic maps. The configuration space has dimension eight, so a transverse map cannot meet the diagonal of codimension nine.
 
 **nLab:** [transversal maps](https://ncatlab.org/nlab/show/transversal+maps). It says: “Maps f: X → Z, g: Y → Z with dim(X)+dim(Y) &lt; dim(Z) are transversal iff their images are disjoint.”
 
@@ -2269,11 +2251,11 @@
 
 *True by definition.* MSC 58A03 (Topos-theoretic approach to differentiable manifolds), 58A10. arXiv math.DG, math.CT. Level 4: research.
 
-**Definition.** A smooth set is a sheaf on the site of Cartesian spaces ℝⁿ with smooth maps. Put simply, a smooth set says which maps from each ℝⁿ into it count as smooth, and these choices glue. The sheaf Ωⁿ, which sends ℝᵏ to the set of n-forms on ℝᵏ, is itself a smooth set. A differential n-form on any smooth set X is defined as a map X → Ωⁿ.
+**Definition.** For every Cartesian space U, let Ωⁿ(U) be the smooth n-forms on U, with pullback along every smooth map of Cartesian spaces. These sets and pullbacks define a sheaf Ωⁿ. An n-form on a smooth set X is a morphism of sheaves X → Ωⁿ.
 
 **Problem.** For every smooth set X, each differential n-form on X is the pullback of one universal n-form along a map X → Ωⁿ. For n ≥ 1, Ωⁿ is a smooth set but not a diffeological space.
 
-**How the definition helps.** Because forms on X are defined as maps into Ωⁿ, the first statement is the Yoneda lemma, which the nLab calls a big but useful tautology. Ωⁿ has only one point but many plots, so it is not determined by its points and is not diffeological. So only the larger category of smooth sets contains it. What does not hold by definition is that these forms agree with ordinary forms on manifolds, which uses the sheaf condition.
+**How the definition helps.** The identity map of Ωⁿ is its universal n-form. Pulling it back along any form α gives id ∘ α = α (our own explanation). For n ≥ 1, Ωⁿ has one point but distinct plots, including the zero and standard volume forms on ℝⁿ. A diffeological plot is determined by its underlying point map, so Ωⁿ cannot be diffeological.
 
 **nLab:** [geometry of physics -- smooth sets](https://ncatlab.org/nlab/show/geometry+of+physics+--+smooth+sets), [smooth set](https://ncatlab.org/nlab/show/smooth+set). It says: “This statement is of course in a way a big tautology. Nevertheless it is a very useful tautology to make explicit.”
 
@@ -2291,7 +2273,7 @@
 
 **Problem.** The Čech nerve of a differentiably good open cover is cofibrant in the projective local model structure on simplicial presheaves on Cartesian spaces. So it is a cofibrant resolution of the manifold.
 
-**How the definition helps.** Each level of the Čech nerve is a disjoint union of intersections, and each intersection is ℝⁿ, so each level is a coproduct of representable presheaves. That gives cofibrancy by the characterization of cofibrant objects in the projective model structure. With only contractible intersections, cofibrancy is not automatic, because a contractible open set need not be diffeomorphic to ℝⁿ (our own reading). The real work moves into showing that every paracompact smooth manifold has such a cover, using geodesically convex neighbourhoods.
+**How the definition helps.** Every nonempty intersection in the Čech nerve represents a Cartesian space. Degeneracies repeat adjacent indices, so each nondegenerate index tuple contributes a representable simplex attached along its boundary (our own explanation). These projective cell attachments give cofibrancy, which localizing preserves. The cover condition makes the augmentation a local weak equivalence.
 
 **nLab:** [good open cover](https://ncatlab.org/nlab/show/good+open+cover), [function algebras on infinity-stacks](https://ncatlab.org/nlab/show/function+algebras+on+infinity-stacks). It says: “The point is that with this definition, the Cech nerve C(U) ∈ \[ThCartSpᵒᵖ, sSet\]<sub>proj</sub> is cofibrant, by the characterization of cofibrant objects in the projective model structure.”
 
@@ -2301,15 +2283,15 @@
 
 ### Diffeology gives orbit spaces a tangent space equal to the stratified one
 
-**Remember:** Any quotient has plots, so any quotient has tangent spaces.
+**Remember:** Lift plots locally, then identify their tangent vectors under smooth reparametrization.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 58A05 (Differentiable manifolds, foundations), 57M60. arXiv math.DG. Level 4: research.
 
-**Definition.** A diffeological space is a set with a chosen family of maps from open sets of ℝⁿ, called plots, that behave like smooth maps. Every quotient of a manifold has one, the quotient diffeology. The internal tangent space at a point is built from the plots through that point.
+**Definition.** A plot in M/G is a map from a Euclidean open set that locally lifts smoothly to M. At an orbit q, take the direct sum of tangent spaces at basepoints of all plots through q. For each pointed smooth reparametrization φ with p = r ∘ φ, identify v in the p-summand with dφ(v) in the r-summand by linear quotient.
 
-**Problem.** For a proper Lie group action on M, the internal tangent space of M/G at an orbit, with the quotient diffeology, is isomorphic to its stratified tangent space. The stratification is by orbit type.
+**Problem.** Let a Lie group act properly on M and give M/G the quotient diffeology. At each orbit, the internal tangent space is isomorphic to the tangent space of its orbit-type stratum.
 
-**How the definition helps.** Diffeology gives every quotient a tangent space by definition, so the theorem can be stated with no special construction. The work moves into computing it, which is the content of the paper. The stratified tangent space is the tangent space of the orbit-type stratum, the set of orbits with the same symmetry type. For ℝ divided by x ↦ −x, the tangent space at 0 is therefore zero (our own).
+**How the definition helps.** This quotient defines a tangent space even at a singular orbit (our own explanation). The cited comparison theorem for proper actions identifies it with the tangent space of the orbit-type stratum.
 
 **Paper or page:** [The Structure of the Internal Tangent Space to a Point of the Orbit Space of a Manifold under a Proper Lie Group Action](https://arxiv.org/abs/2511.06415). It says: “the internal tangent space to \[x\]∈M/G viewed as a diffeological space with the quotient diffeology is isomorphic to the stratified tangent space to \[x\]∈M/G viewed as a stratified space with induced orbit-type stratification.”
 
@@ -2319,15 +2301,15 @@
 
 ### In derived manifolds, the cobordism cup product is always intersection
 
-**Remember:** Derived manifolds remember how badly two submanifolds fail to meet transversally.
+**Remember:** Intersect by homotopy pullback, even when the tangent spaces fail transversality.
 
 *Makes the theorem clean to state or prove.* MSC 58A05 (Differentiable manifolds, foundations), 14A30, 55N22. arXiv math.DG, math.AT. Level 4: research.
 
-**Definition.** A C∞-ring is a ring in which you can apply every smooth function ℝⁿ → ℝ, like the ring of smooth functions on a manifold. A derived smooth manifold is a space whose sheaf of functions is a homotopy C∞-ring instead of an ordinary one. Ordinary manifolds embed fully faithfully into derived ones. Homotopy pullbacks of A → X ← B always exist, also when A and B do not meet transversally.
+**Definition.** For smooth embeddings A → X and B → X, their derived intersection is the homotopy pullback in derived smooth manifolds.
 
-**Problem.** For any two submanifolds A and B of X, the derived intersection satisfies \[A\] ⌣ \[B\] = \[A ∩ B\] in the cobordism ring of X. No transversality is needed (Spivak).
+**Problem.** Let A and B be closed embedded submanifolds of X. In unoriented cobordism of X, their classes satisfy \[A\] ⌣ \[B\] = \[A ×ʰ<sub>X</sub> B\], even without transversality.
 
-**How the definition helps.** Derived intersections exist for every pair, so the formula needs no transversality. For ordinary manifolds it holds only after A and B are made transversal. Spivak's theorem says that derived smooth manifolds have the wanted properties, including agreement with ordinary intersections in the transversal case. Building the category and proving the theorem is the hard part.
+**How the definition helps.** The homotopy pullback supplies an intersection object for every pair of embeddings. Spivak’s cobordism theorem identifies its class with the product and recovers ordinary intersection for transverse embeddings (our own explanation).
 
 **nLab:** [derived smooth manifold](https://ncatlab.org/nlab/show/derived+smooth+manifold). It says: “By using derived smooth manifolds instead of ordinary smooth manifolds here, the condition that f be transversal to B could be dropped.”
 
@@ -2341,53 +2323,17 @@
 
 *Makes the theorem clean to state or prove.* MSC 58A10 (Differential forms in global analysis), 60J60, 53A45. arXiv math.PR, math.DG. Level 4: research.
 
-**Definition.** Let P be a smooth positive measure on an n-dimensional manifold, used as a volume form. Contracting with P turns a field of k-vectors into a differential form of degree n − k. A bivector field is an antisymmetric tensor field with two vector slots. Its P-curl, or rotationnel, turns it into a form, applies the exterior derivative, and turns the result back.
+**Definition.** On an oriented n-manifold with positive volume form P, define curlᴾ(A) for each bivector field A by ι<sub>curlᴾ(A)</sub>P = d(ι<sub>A</sub> P). For a vector field Y, define divᴾ(Y) by d(ι<sub>Y</sub> P) = divᴾ(Y)P.
 
-**Problem.** A Stratonovich diffusion with drift X and noise fields Yᵢ has P as a stationary measure exactly when, near each point, X is a P-curl plus ½ Σ (P-divergence of Yᵢ) Yᵢ. Globally, a term from de Rham cohomology is added.
+**Problem.** Consider a smooth Stratonovich diffusion with drift X and noises Yᵢ on a closed oriented n-manifold with volume form P and n ≥ 2. The measure P is stationary exactly when X − ½∑ᵢ divᴾ(Yᵢ)Yᵢ is locally a P-curl. Globally, one adds a vector field whose contraction with P represents the current’s de Rham cohomology class.
 
-**How the definition helps.** The P-curl is built from the exterior derivative d, and d∘d = 0, so every P-curl has zero P-divergence (our own). This is why a curl term in the drift leaves P unchanged (our own). Conversely, a divergence-free current gives a closed form, which is exact near each point by the Poincaré lemma (our own). Globally a closed form need not be exact, and Theorem B.1 adds a term for this.
+**How the definition helps.** The stationary equation says the corrected drift has zero P-divergence (our own explanation). Its contraction with P is therefore closed, and the Poincaré lemma makes it locally exact in dimension at least two. Subtracting a global representative of its cohomology class leaves an exact form.
 
 **Paper or page:** [A Unifying and Canonical Description of Measure-Preserving Diffusions](https://arxiv.org/abs/2105.02845v1), [A Unifying and Canonical Description of Measure-Preserving Diffusions](https://arxiv.org/abs/2105.02845v1). It says: “there is no need to introduce other structures such as a Riemannian metric, local coordinates, or a reference measure.”
 
 **Sources:**
 
 - [Alessandro Barp, So Takao, Michael Betancourt, Alexis Arnaudon, Mark Girolami, A Unifying and Canonical Description of Measure-Preserving Diffusions, arXiv:2105.02845 (2021)](https://arxiv.org/abs/2105.02845v1)
-
-### Exterior derivative defined as boundary flux gives Stokes without continuous derivatives
-
-**Remember:** Derivative as boundary flux per volume, so Stokes needs no continuous derivative.
-
-*Makes the theorem clean to state or prove. Confidence: low.* MSC 58A10 (Differential forms in global analysis), 26B20. arXiv math.DG, math.CA. Level 4: research.
-
-**Definition.** In one variable, f′(x) = L exactly when (f(b) − f(a))/(b − a) tends to L as intervals \[a, b\] around x shrink. That is a boundary integral divided by a volume. The paper calls a form derivable when it has a derivative Dω in this flux sense (our reading). A form differentiable at a point is derivable there, and Dω = dω.
-
-**Problem.** If ω is continuous on c(B) and differentiable on its interior, then the integral of ω over ∂c equals the integral of dω over c, whenever the right side exists.
-
-**How the definition helps.** A derivative defined from boundary integrals is already close to the statement of Stokes, so the proof needs no continuity of derivatives. The work moves into a mean value equality for forms on blocks, and into the theorem that Dω = dω where ω is differentiable. The higher-dimensional form of the definition is our reading (our own).
-
-**Paper or page:** [The exterior derivative and the mean value equality in ℝⁿ](https://arxiv.org/abs/2510.00999), [The exterior derivative and the mean value equality in ℝⁿ](https://arxiv.org/abs/2510.00999), [The exterior derivative and the mean value equality in ℝⁿ](https://arxiv.org/abs/2510.00999). It says: “If ω is continuous on c(B) and differentiable on c(B̊), then ∫∂c ω = ∫c dω, whenever the right-hand side integral exists.”
-
-**Sources:**
-
-- [D. Fadel, H. N. Sá Earp and T. S. R. Silva, The exterior derivative and the mean value equality in ℝⁿ, arXiv:2510.00999 (2025)](https://arxiv.org/abs/2510.00999)
-
-### Pullbacks of forms by Hölder maps give a simple Gromov non-embedding proof
-
-**Remember:** Define pullbacks by approximation, and Hölder maps obey the smooth rules.
-
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 58A10 (Differential forms in global analysis), 53C17. arXiv math.DG, math.MG. Level 4: research.
-
-**Definition.** The pullback f\*κ of a differential form κ by a map f normally needs derivatives of f. A map f is γ-Hölder when d(f(x), f(y)) ≤ C\|x − y\|ᵞ, and Lipschitz when γ = 1. For a γ-Hölder map f, the paper defines f\*κ as the limit of pullbacks by smooth or Lipschitz approximations of f. This limit exists when γ is large enough compared with the degree of the form and the smoothness of κ.
-
-**Problem.** Gromov's non-embedding theorem. For m ≥ n+1, no embedding of ℝᵐ into the Heisenberg group ℍⁿ is γ-Hölder with γ &gt; (n+1)/(n+2). The paper proves a generalization with a short proof.
-
-**How the definition helps.** With pullbacks defined for Hölder maps, the proof can use the calculus of forms that smooth maps allow, including change of variables and Stokes. The contact form of ℍⁿ is the one-form that vanishes on the allowed directions of motion (our own). The obstruction comes from pulling back this form and its derivative (our own). The analytic work moves into the existence of the limit pullback.
-
-**Paper or page:** [Hölder continuous mappings, differential forms and the Heisenberg groups](https://arxiv.org/abs/2503.11506), [Hölder continuous mappings, differential forms and the Heisenberg groups](https://arxiv.org/abs/2503.11506). It says: “The main applications are in the setting of the Heisenberg groups, where we provide a simple proof of a generalization of the Gromov non-embedding theorem”
-
-**Sources:**
-
-- [P. Hajłasz, J. Mirra and A. Schikorra, Hölder continuous mappings, differential forms and the Heisenberg groups, arXiv:2503.11506 (2025)](https://arxiv.org/abs/2503.11506)
 
 ### A second differential gives formality
 
@@ -2409,7 +2355,7 @@
 
 ### Equivalent metrics preserve reduced cohomology
 
-**Remember:** Equivalent norms have the same closed exact forms.
+**Remember:** Equivalent norms give the same closure of the exact forms.
 
 *True by definition.* MSC 58A14 (Hodge theory in global analysis). arXiv math.DG, math.AP. Level 4: research.
 
@@ -2475,7 +2421,7 @@
 
 **Remember:** A closed class has one shortest form.
 
-*Rules out counterexamples.* MSC 58A14 (Hodge theory in global analysis). arXiv math.DG, math.AP. Level 4: research.
+*True by definition.* MSC 58A14 (Hodge theory in global analysis). arXiv math.DG, math.AP. Level 4: research.
 
 **Definition.** An Lᵖ form has integrable pth power of its length. Reduced Lᵖ cohomology takes weakly closed forms modulo limits of derivatives of Lᵖ forms with Lᵖ derivative. Weak derivatives are defined by integration against smooth test forms.
 
@@ -2509,7 +2455,7 @@
 
 *True by definition.* MSC 58A20 (Jets in global analysis). arXiv math.DG. Level 4: research.
 
-**Definition.** An infinite jet records formal derivatives of every order at a point. An equation selects a space E of allowed jets. To prolong it, pair a jet of the unknown with a jet of data taking values in E. Keep the pair when differentiating the first jet formally gives the same repeated derivatives as including the second in the ambient jet space.
+**Definition.** Let i embed an equation E into the infinite jet bundle J∞Y of a bundle Y. Its infinite prolongation is the pullback of J∞i and the jet comultiplication J∞Y → J∞J∞Y. Thus a point is a pair whose two images in J∞J∞Y agree.
 
 **Problem.** Every parametrized family of formal solutions factors uniquely through the universal family over the infinite prolongation.
 
@@ -2527,11 +2473,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 58A30 (Vector distributions (subbundles of the tangent bundles)), 53C12. arXiv math.DG. Level 4: research.
 
-**Definition.** A singular distribution D assigns to each point a subspace of the tangent space, and its dimension may change from point to point. It is involutive if the bracket of two vector fields in D is again in D. It is integrable if through every point passes a submanifold whose tangent spaces are given by D.
+**Definition.** A smooth singular distribution D assigns tangent subspaces locally spanned by smooth vector fields. It is involutive if the bracket of any two local sections is a local section. It is integrable if every point lies on an immersed submanifold whose tangent space equals D at each of its points.
 
 **Problem.** Stefan–Sussmann theorem. A singular distribution D is integrable exactly when it is involutive and has constant rank along the integral curves of local sections of D.
 
-**How the definition helps.** The rank condition rules out a jump in dimension along a curve inside a leaf, so involutivity is then enough. The standard counterexample is the span of ∂ₓ and φ(x)∂ᵧ on the plane, where φ is smooth, zero for x ≤ 0 and positive for x &gt; 0 (our own). It is involutive, but its rank jumps from 1 to 2 along the x-axis, so no integral manifold passes through the origin (our own). The paper extends the theorem to manifolds with boundary.
+**How the definition helps.** Constant rank along section flows excludes a jump that cannot occur within an integral leaf. For example, on ℝ² take all horizontal directions at x ≤ 0 and the full tangent plane at x &gt; 0 (our own example). Local sections close under brackets, yet the horizontal flow crosses the rank jump. The Stefan–Sussmann criterion gives integrability once involutivity and rank constancy both hold.
 
 **Paper or page:** [A Stefan-Sussmann theorem for normal distributions on manifolds with boundary](https://arxiv.org/abs/2109.04845). It says: “The following are equivalent. D is integrable. D is involutive and has constant rank along the integral curves of local D-sections.”
 
@@ -2539,31 +2485,13 @@
 
 - [D. Perrella, D. Pfefferlé and L. Stoyanov, A Stefan-Sussmann theorem for normal distributions on manifolds with boundary, arXiv:2109.04845 (2021)](https://arxiv.org/abs/2109.04845)
 
-### Atlas-defined stratified spaces have products, so fiber bundles can be defined
-
-**Remember:** Charts multiply easily, so stratified bundles become possible.
-
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 58A35 (Stratified sets), 55R55. arXiv math.DG, math.GT. Level 4: research.
-
-**Definition.** A stratified space is a space cut into manifolds of different dimensions, called strata, that fit together in a controlled way. Thom–Mather spaces describe this fit by control data, which are tubular neighbourhoods with compatible projections and distance functions. A smooth atlas stratified space instead uses charts with smooth stratified changes of chart, as for manifolds.
-
-**Problem.** Smooth atlas stratified spaces are closed under cartesian products, so fiber bundles of such spaces can be defined. The class coincides with the class of Thom–Mather stratified spaces.
-
-**How the definition helps.** An atlas definition is local, so products of charts are charts, and products and bundles come almost for free (our own). The paper then proves that Thom–Mather spaces admit smooth stratified atlases, and that smooth atlas stratified spaces admit control data. So nothing is lost by the change of definition.
-
-**Paper or page:** [Smooth atlas stratified spaces, K-Homology Orientations, and Gysin maps](https://arxiv.org/abs/2505.14952), [Smooth atlas stratified spaces, K-Homology Orientations, and Gysin maps](https://arxiv.org/abs/2505.14952). It says: “We introduce smooth atlas stratified spaces. We show that this class is closed under cartesian products; consequently, it is possible to define fiber bundles of smooth atlas stratified spaces.”
-
-**Sources:**
-
-- [P. Albin, M. Banagl and P. Piazza, Smooth atlas stratified spaces, K-Homology Orientations, and Gysin maps, arXiv:2505.14952 (2025)](https://arxiv.org/abs/2505.14952)
-
 ### Plotwise triviality survives pullback
 
 **Remember:** Compose a test plot with the base map to test the pulled-back bundle.
 
 *True by definition.* MSC 58A40 (Differential spaces). arXiv math.DG. Level 4: research.
 
-**Definition.** A diffeological space specifies smooth parametrizations called plots. Test the bundle on plots with domains diffeomorphic to Euclidean spaces. Each pullback must be a product with the group, respecting its action. Any two points in one fiber must differ by a unique group element that depends smoothly on the pair.
+**Definition.** Let P → B be a smooth surjection invariant under a smooth right action of a diffeological group G. For every plot U → B with Euclidean domain, require a G-equivariant diffeomorphism of its pullback with U × G over U. Require also that the unique g satisfying pg = q depend smoothly on every pair (p,q) in the same fiber.
 
 **Problem.** Pulling a diffeological principal bundle back along a smooth map gives another principal bundle. Pullback assigns to each new base point the fiber over its image.
 
@@ -2581,11 +2509,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 58A50 (Supermanifolds and graded manifolds), 18A22. arXiv math.DG, math.CT. Level 4: research.
 
-**Definition.** A ℤ₂ⁿ-manifold has coordinates graded by n-tuples of bits with a corresponding sign rule. A graded point has only one ordinary point but can still carry formal coordinates of nonzero degree. The restricted functor of points records maps from these probes, with smooth structure on each space of maps.
+**Definition.** For a ℤ₂ⁿ-manifold M, its restricted functor of points assigns each graded point S the space of morphisms S → M. A graded point has one underlying point and finitely many formal coordinates of nonzero degrees. A morphism of probes acts by precomposition.
 
-**Problem.** The restricted functor of points is fully faithful. This means that its natural transformations with the required smoothness come from unique maps of the graded manifolds.
+**Problem.** The restricted functor of points for ℤ₂ⁿ-manifolds is fully faithful when each component of a natural transformation is smooth over the probe’s degree-zero scalar algebra. Each such transformation comes from a unique morphism of graded manifolds.
 
-**How the definition helps.** The graded probes retain coordinate information that an ordinary point cannot see. In our own words, they record values of formal coordinates instead of discarding them. The theorem still needs the smoothness condition on transformations. The work is to prove that such transformations reconstruct genuine maps.
+**How the definition helps.** Graded probes record formal coordinates as well as ordinary point values (our own explanation). The restricted functor-of-points theorem reconstructs the morphism from these probe values using smoothness over the degree-zero scalars.
 
 **Paper or page:** [The Schwarz-Voronov Embedding of ℤ₂ⁿ-Manifolds](https://arxiv.org/abs/1906.09834v2). It says: “We show that it is sufficient to consider ℤ₂ⁿ-points, i.e., trivial ℤ₂ⁿ-manifolds for which the reduced manifold is just a single point, as 'probes' when employing the functor of points.”
 
@@ -2595,15 +2523,15 @@
 
 ### On supermanifolds, integrate integral forms instead of top-degree forms
 
-**Remember:** On a supermanifold, integrate against a basis of 1-forms, not a top power.
+**Remember:** Use the Berezinian transformation law to integrate the highest odd-coordinate coefficient.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 58A50 (Supermanifolds and graded manifolds), 58C35. arXiv math.DG, math-ph. Level 4: research.
 
-**Definition.** A supermanifold has odd coordinates θ besides the usual ones, and odd coordinates anticommute. On a supermanifold, a volume element is a class of local bases of 1-forms, not a top-degree form. An integral form (the page says 'integrable form') is a pair of such a volume element and a multivector.
+**Definition.** On a smooth supermanifold, a Berezinian section has local coefficients that transform by the Berezinian of the coordinate change. A top integral form is such a section. Lower integral forms also carry multivector factors.
 
-**Problem.** On a supermanifold, integral forms have a well-defined integral, although there are no top-degree differential forms.
+**Problem.** On an oriented smooth supermanifold of positive odd dimension, every compactly supported top integral form has a well-defined integral. Ordinary differential forms have no top degree.
 
-**How the definition helps.** Integration needs only a form that is locally the wedge of a basis of 1-forms, not a top power. For an odd coordinate θ, dθ ∧ dθ is not zero, so wedge powers never stop and there is no top degree. Integral forms, built from such bases and multivectors, give a working integration theory.
+**How the definition helps.** The Berezin change-of-variables formula makes the local integrals agree across oriented charts (our own explanation). Locally, one integrates the coefficient of the product of all odd coordinates over the even coordinates. Powers of dθ for an odd coordinate θ can have arbitrarily high degree.
 
 **nLab:** [integration over supermanifolds](https://ncatlab.org/nlab/show/integration+over+supermanifolds). It says: “apparently for integration it is not really essential that a form is a top power, what is rather essential is that it is, locally, the wedge product of a basis of 1-forms.”
 
@@ -2617,7 +2545,7 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 58A50 (Supermanifolds and graded manifolds), 58A32. arXiv math.DG. Level 4: research.
 
-**Definition.** A graded bundle assigns positive integer weights to fiber coordinates. Full linearization spreads these weights across several vector bundle directions. A symmetric multiple vector bundle comes with compatible maps that permute those directions.
+**Definition.** A degree-k graded bundle has fiber coordinates of integer weights from 1 to k, with weight-preserving polynomial coordinate changes and base coordinates of weight zero. Full linearization replaces each weight-j coordinate by components indexed by j-element subsets of k directions. Permutations of those directions act on the resulting k-fold vector bundle.
 
 **Problem.** Full linearization and diagonalization give an equivalence of categories between graded bundles of degree k and symmetric k-fold vector bundles. The symmetry maps, indexed by the symmetric group, are part of the data.
 
@@ -2635,11 +2563,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 58B10 (Differentiability questions for infinite-dimensional manifolds), 46T05. arXiv math.DG, math.FA. Level 4: research.
 
-**Definition.** A local addition on a manifold M is a smooth way to add a small tangent vector to a point. Formally, it is a smooth map η from a neighbourhood of the zero section of the tangent bundle TM to M, with η(0ₚ) = p. Also, the map v ↦ (π(v), η(v)) must be a diffeomorphism onto a neighbourhood of the diagonal in M × M. Here π sends a tangent vector to its base point.
+**Definition.** A local addition is a smooth map η from an open neighborhood U of the zero section in TM to M. It satisfies η(0ₚ) = p for every p. The map v ↦ (π(v),η(v)) must map U diffeomorphically onto an open neighborhood of the diagonal, where π is the tangent bundle projection.
 
 **Problem.** Take a compact manifold N and a manifold M, possibly infinite-dimensional, that has a local addition. Then the space C∞(N, M) of smooth maps from N to M is a smooth manifold.
 
-**How the definition helps.** The local addition turns small vector fields along a map into nearby maps, and this gives the charts. Near a map g: N → M, a section f of the pullback bundle g\*TM gives the nearby map η ∘ f. So a chart comes from a convenient vector space of sections, in the sense of Kriegl and Michor. For finite-dimensional M, the exponential map of a Riemannian metric gives a local addition, and the analysis of the chart changes is done in Kriegl and Michor.
+**How the definition helps.** Applying the local addition pointwise turns sections along a map into nearby maps (our own explanation). At g: N → M, the chart parametrization sends each smooth section s of g\*TM valued in U to η ∘ s. The mapping-space theorem of Kriegl and Michor gives smooth chart changes in convenient calculus.
 
 **nLab:** [local addition](https://ncatlab.org/nlab/show/local+addition). It says: “if M is a manifold (possibly infinite dimensional) admitting a local addition, and if N is a compact manifold (possibly with boundary) then C<sup>∞</sup>(N,M) can be given the structure of a smooth manifold”
 
@@ -2707,11 +2635,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 58B32 (Geometry of quantum groups), 46L67, 46L55. arXiv math.QA, math.OA. Level 4: research.
 
-**Definition.** Let δ be a coaction of a compact quantum group G on a unital C\*-algebra A with fixed-point algebra B. Let O(G) be the Hopf \*-algebra of matrix coefficients. The Peter–Weyl subalgebra P is the set of a in A with δ(a) in the algebraic tensor product A ⊗ O(G). The coaction is Peter–Weyl–Galois when the canonical map p ⊗ q ↦ (p⊗1)δ(q), from P ⊗ P over B to P ⊗ O(G), is bijective.
+**Definition.** Let δ be a compact quantum group coaction on a unital C\*-algebra A, with fixed algebra B and matrix coefficient Hopf algebra O(G). Its Peter–Weyl algebra P consists of all a with δ(a) in the algebraic tensor product A ⊗ O(G). The Peter–Weyl–Galois condition requires bijectivity of P ⊗<sub>B</sub> P → P ⊗ O(G), given by p ⊗ q ↦ (p ⊗ 1)δ(q).
 
 **Problem.** A coaction of a compact quantum group on a unital C\*-algebra satisfies the Ellwood condition exactly when it is Peter–Weyl–Galois. So free actions on C\*-algebras are the same as principal comodule algebras at the algebraic level.
 
-**How the definition helps.** On the Peter–Weyl subalgebra, the analytic density condition becomes surjectivity of maps between finite-dimensional spectral pieces, as in the quoted theorem. Surjectivity then gives bijectivity by Schneider's criterion, since every comodule over the cosemisimple Hopf algebra O(G) is injective (our own). So all of Hopf–Galois algebra, such as strong connections, applies to every free C\*-action. The work moves into the theorem of Baum, De Commer and Hajac.
+**How the definition helps.** The Peter–Weyl algebra makes an algebraic bijectivity test available for the same coaction (our own explanation). The Baum–De Commer–Hajac theorem identifies this test with norm density of the span of (A ⊗ 1)δ(A) in the completed tensor product.
 
 **Paper or page:** [Part III, Free Actions of Compact Quantum Groups on C\*-Algebras](https://arxiv.org/abs/1701.05895). It says: “has dense range or, equivalently, is surjective. (c) The C\*-dynamical system (𝒜,G,α) satisfies the Ellwood condition.”
 
@@ -2726,11 +2654,11 @@
 
 *True by definition. Confidence: medium.* MSC 58B32 (Geometry of quantum groups), 16T05, 16D40. arXiv math.QA. Level 4: research.
 
-**Definition.** A principal comodule algebra is an H-Galois extension B ⊂ A whose multiplication B ⊗ A → A splits by a left B-linear, right H-colinear map. A strong connection is a map ω: H → A ⊗ A with ω(1) = 1 ⊗ 1, colinear on both sides, whose product is ε(h)1. For a Hopf algebra with bijective antipode, A is principal exactly when it has a strong connection.
+**Definition.** Let A have right coaction δ by a Hopf algebra H with bijective antipode, and let B be its coinvariant algebra. A strong connection is a unital linear map ℓ: H → A ⊗ A colinear for both coactions, using the antipode-induced left coaction. It lifts translation, meaning (m ⊗ id)(id ⊗ δ)ℓ(h) = 1 ⊗ h for every h, where m is multiplication.
 
-**Problem.** If A is a principal H-comodule algebra over B and V is a finite-dimensional H-comodule, the associated module A □ V is a finitely generated projective B-module. Here A □ V, the cotensor product, is the space of sections of the associated vector bundle.
+**Problem.** Let A be a principal right H-comodule algebra over B, where H has bijective antipode. For each finite-dimensional left H-comodule V, the associated left B-module A □ V is finitely generated projective.
 
-**How the definition helps.** The strong connection writes down an idempotent matrix with entries in B whose image is A □ V. So A □ V is a direct summand of a free B-module of finite rank (our own). The Galois condition alone gives no such formula. An example is the q-monopole line bundle on the Podleś sphere, given by a 2×2 idempotent. The work moves into the proof that principality gives a strong connection.
+**How the definition helps.** The strong-connection idempotent formula realizes the associated module as the image of a finite matrix over B (our own explanation). Principality supplies the strong connection used in that formula. An idempotent image is a direct summand of a finite free module.
 
 **Paper or page:** [Some interactions between Hopf Galois extensions and noncommutative rings](https://arxiv.org/abs/2103.12860). It says: “A is a principal H-comodule algebra if and only if it admits a strong connection form, that is, if there exists a map ω: H → A⊗A such that ω(1)=1⊗1,”
 
@@ -2746,9 +2674,9 @@
 
 **Definition.** Let δ: A → A ⊗ C(G) be a coaction of a compact quantum group G on a unital C\*-algebra A. It satisfies the Ellwood condition, and is called free, when the linear span of (A⊗1)δ(A) is dense in A ⊗ C(G). It replaces the pointwise condition that xg = x forces g = e.
 
-**Problem.** A continuous action of a compact group G on a compact Hausdorff space X is free exactly when the induced coaction on C(X) satisfies the Ellwood condition.
+**Problem.** Let a compact group G act continuously on a compact Hausdorff space X. The action is free exactly when the induced coaction on C(X) satisfies the Ellwood condition.
 
-**How the definition helps.** For A = C(X), the span of (A⊗1)δ(A) is the algebra of functions (x,g) ↦ f₁(x)f₂(xg). By the Stone–Weierstrass theorem it is dense exactly when (x,g) ↦ (x,xg) is injective, which is freeness (our own). So the condition states freeness with no reference to points. It then makes sense for noncommutative A and quantum G, where it defines a noncommutative principal bundle.
+**How the definition helps.** The span consists of finite sums of functions (x,g) ↦ f(x)h(xg) and forms a unital self-adjoint algebra (our own argument). It separates points exactly when (x,g) ↦ (x,xg) is injective, which means the action is free. Stone–Weierstrass then gives the equivalence with density.
 
 **Paper or page:** [Noncommutative numerable principal bundles from group actions on C\*-algebras](https://arxiv.org/abs/2203.14677). It says: “The G-action on X is free if and only if span{ f₁α₍·₎(f₂) : f₁,f₂∈C<sub>c</sub>(X) } is κ-dense in C(G,C(X)),”
 
@@ -2762,11 +2690,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 58B34 (Noncommutative geometry (à la Connes)), 46L51. arXiv math.OA. Level 4: research.
 
-**Definition.** A spectral triple (A, H, D) is an algebra A of operators on a Hilbert space H with a self-adjoint operator D. It is (p,∞)-summable when (1 + D²) raised to the power −p/2 is in the weak trace class L¹'∞. The regularity condition asks each heat trace Tr(T exp(−t²D²)) to be c(T)t⁻ᵖ plus an error, of order t¹⁻ᵖ in the paper's examples (our own reading).
+**Definition.** For a (p,∞)-summable spectral triple (A,H,D), require that every T ∈ A admit constants c(T) and ε &gt; 0. As t decreases to zero, require tᵖ Tr(T exp(−t²D²)) = c(T) + O(tᵋ).
 
 **Problem.** If two spectral triples meet the heat-trace condition, the integral of T₁ ⊗ T₂ on the product triple is the product of the integrals. This holds, with fixed Gamma-function constants, for every normalised trace on L¹'∞.
 
-**How the definition helps.** Heat traces multiply under tensor products, and the integral is read off from the leading term of the heat trace. So clean leading terms in both factors make the integrals multiply. The condition excludes a (1,∞)-summable triple where D has simple spectrum 0, 1, 2, …. There, U ⊗ U⁻¹ has a nonzero integral although U and U⁻¹ both integrate to 0.
+**How the definition helps.** On the product triple the heat traces multiply, so the normalized leading coefficients multiply (our own explanation). The heat-trace Fubini theorem converts each coefficient to the noncommutative integral with its dimension-dependent gamma factor. The cited unitary example violates multiplicativity, so its factors cannot both satisfy the heat condition.
 
 **Paper or page:** [Fubini theorem in noncommutative geometry](https://arxiv.org/abs/1612.04012), [Fubini theorem in noncommutative geometry](https://arxiv.org/abs/1612.04012). It says: “There exists a (1,∞)−summable spectral triple (𝒜,H,D) such that D has simple spectrum ℤ₊. 𝒜 is generated by a unitary operator U and is finite dimensional.”
 
@@ -2780,7 +2708,7 @@
 
 *True by definition. Confidence: medium.* MSC 58B34 (Noncommutative geometry (à la Connes)), 46L51, 47B10. arXiv math.OA, math.FA. Level 4: research.
 
-**Definition.** Take T in the weak trace class L¹'∞, and divide the sum of its first N eigenvalues by log N. Ponge defines τ(T) as the class of this sequence in ℓ∞/ℓ₀, the space of bounded sequences modulo the sequences that tend to 0.
+**Definition.** For T in the weak trace class ℒ₁,∞, order its eigenvalues by decreasing modulus with algebraic multiplicity, padding finite lists with zeros. For N ≥ 2, divide the sum of the first N eigenvalues by log N. Define τ(T) as the class of this sequence modulo sequences tending to zero.
 
 **Problem.** τ is a positive continuous linear trace on L¹'∞ that vanishes on the operators whose singular values are o(1/n). Every Dixmier trace is a generalised limit applied to τ, so every Dixmier trace has the same properties.
 
@@ -2798,11 +2726,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 58B34 (Noncommutative geometry (à la Connes)), 46L87, 19D55. arXiv math.OA, math.KT. Level 4: research.
 
-**Definition.** The smooth noncommutative torus A(θ) is generated by unitaries U and V with VU = exp(2πiθ) UV. It has a trace τ and derivations δ₁ and δ₂ with δ₁U = 2πiU, δ₁V = 0, δ₂U = 0 and δ₂V = 2πiV. Connes' cyclic 2-cocycle is φ(a₀, a₁, a₂) = (1/2πi) τ(a₀(δ₁a₁ δ₂a₂ − δ₂a₁ δ₁a₂)).
+**Definition.** On the smooth noncommutative torus, let τ extract the constant Fourier coefficient and let δ₁, δ₂ multiply mode UᵐVⁿ by 2πim, 2πin respectively. Define φ(a,b,c) = τ(a(δ₁b δ₂c − δ₂b δ₁c))/(2πi). For matrices, apply the derivations entrywise and compose τ with the ordinary matrix trace.
 
 **Problem.** For every projection e in matrices over A(θ), the Chern number φ(e, e, e) is an integer. By contrast, the trace τ(e) can be irrational, since τ takes the values ℤ + θℤ on K₀.
 
-**How the definition helps.** The Chern number is the index of a Fredholm operator built from δ₁ and δ₂, hence an integer (our own summary of Connes). The 0-cocycle τ is also a cyclic cocycle, but it has no such index meaning and takes irrational values. The quoted formula is the commutative case, where the pairing is the classical Chern number. The work went into Connes' index computation.
+**How the definition helps.** Connes’ index pairing identifies the Chern number with a Fredholm index and hence proves integrality (our own explanation). The canonical trace instead has range ℤ + θℤ on K₀, allowing irrational projection traces for irrational θ.
 
 **Wikipedia:** [Noncommutative torus](https://en.wikipedia.org/wiki/Noncommutative_torus). It says: “But as an ordered group, K₀ ≃ Z + θZ.”
 
@@ -2810,35 +2738,17 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
-### Connes' axioms for spectral triples characterise smooth compact manifolds
-
-**Remember:** List what a Dirac operator does, and the list gives back the manifold.
-
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 58B34 (Noncommutative geometry (à la Connes)), 46L87. arXiv math.OA, math.DG. Level 4: research.
-
-**Definition.** Connes lists five conditions on a spectral triple (A, H, D): dimension n, first order (\[\[D, a\], b\] = 0), regularity, finiteness and orientability. Orientability asks for a Hochschild cycle c, a formal sum of tensors in A, with π(c) = γ for even n and 1 for odd n. Each condition holds for the Dirac operator of a spin manifold.
-
-**Problem.** Let A be commutative, and let (A, H, D) meet these conditions and an absolute continuity condition. Then A is the algebra of smooth functions on a compact oriented smooth n-manifold.
-
-**How the definition helps.** The axioms put a smooth manifold into purely operator language, so the theorem becomes an exact match between two kinds of object. The work went into Connes' long proof, which uses the orientation cycle to build local coordinates from finitely many elements of A (our own).
-
-**Wikipedia:** [Noncommutative geometry](https://en.wikipedia.org/wiki/Noncommutative_geometry). It says: “Connes' reconstruction theorem states, roughly, that a commutative spectral triple satisfying appropriate regularity, finiteness and orientability hypotheses arises from a compact smooth manifold.”
-
-**Sources:**
-
-- [Alain Connes, On the spectral characterization of manifolds, Journal of Noncommutative Geometry 7 (2013)](https://doi.org/10.4171/JNCG/108)
-
 ### Connes' trace theorem turns the Dixmier trace into a local integral
 
 **Remember:** On a manifold, the Dixmier trace only sees the symbol of order −n.
 
 *Makes the theorem clean to state or prove.* MSC 58B34 (Noncommutative geometry (à la Connes)), 58J42, 46L51. arXiv math.OA, math.DG. Level 4: research.
 
-**Definition.** Connes defines the noncommutative integral of an operator in the weak trace class L¹'∞ as its Dixmier trace. A classical pseudodifferential operator P on a closed n-manifold M is an operator given by a symbol with an expansion in homogeneous terms. Its Wodzicki residue integrates the term of order −n of the symbol over the unit cosphere bundle.
+**Definition.** For a scalar classical pseudodifferential operator on a closed n-manifold, use the unnormalized residue convention. The residue integrates the degree −n homogeneous symbol term against the canonical cosphere density, without a factor of (2π)⁻ⁿ.
 
-**Problem.** If P has order −n, every Dixmier trace of P equals its Wodzicki residue divided by n(2π)ⁿ. So the Dixmier trace of f(1 + Δ) raised to the power −n/2 is a constant times the integral of f.
+**Problem.** On a closed n-manifold with n &gt; 0, each Dixmier trace of a classical scalar operator of order −n equals its unnormalized residue divided by n(2π)ⁿ. Thus the Dixmier trace of f(1 + Δ)⁻ⁿᐟ² is a constant times the integral of smooth f against Riemannian volume.
 
-**How the definition helps.** The Dixmier trace gives an integral for every spectral triple, so on a manifold it can be compared with a symbol integral. Both are traces on operators of order −n that vanish on operators of lower order (our own). For connected M with n ≥ 2, Wodzicki showed the residue is the only such trace (our own). The work went into that uniqueness theorem and into computing the constant.
+**How the definition helps.** Connes’ trace theorem identifies the Dixmier trace with the cosphere integral in this normalization (our own explanation). For f(1 + Δ)⁻ⁿᐟ² the leading symbol on the unit cosphere is f, so fiber integration gives a constant multiple of Riemannian volume.
 
 **Wikipedia:** [Singular trace](https://en.wikipedia.org/wiki/Singular_trace). It says: “Connes (1988) showed that Wodzicki's noncommutative residue (Wodzicki 1984) of a pseudodifferential operator on a manifold M of order -dim(M) is equal to its Dixmier trace.”
 
@@ -2853,11 +2763,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 58B34 (Noncommutative geometry (à la Connes)), 19K56, 58J20. arXiv math.OA, math.KT. Level 4: research.
 
-**Definition.** A spectral triple is an algebra A on a Hilbert space H with a self-adjoint D having compact resolvent and bounded commutators \[D, a\]. Its dimension spectrum is the set of poles of the functions z ↦ Tr(b\|D\|⁻ᶻ), for b built from A, \[D, A\] and commutators with \|D\|. The residue ⨍ b at z = 0 vanishes when b is trace class.
+**Definition.** Put δ(T) = \[\|D\|,T\] and let B be the algebra generated by δᵏ(a) and δᵏ(\[D,a\]) for every a ∈ A and k ≥ 0. The dimension spectrum collects the poles of the meromorphic continuations of Tr(b\|D\|⁻ᶻ) for b ∈ B, taking inverse powers off the kernel.
 
-**Problem.** Take a regular, finitely summable spectral triple with discrete dimension spectrum, and its Chern–Connes character, the cocycle that computes index pairings. This character is cohomologous to sums of residues ⨍ of products of a₀, iterated commutators \[D, aᵢ\] and negative powers of \|D\| (Connes–Moscovici).
+**Problem.** For a regular finitely summable spectral triple with simple discrete dimension spectrum, the Connes–Moscovici local cocycle represents the periodic Chern character. Its positive-degree components use residues of products of algebra elements, iterated commutators and powers of \|D\|. In even degree zero the formula also allows a finite-part term.
 
-**How the definition helps.** Residues ignore trace class operators, so only the leading, symbol-like terms of each expression contribute (our own). That is what local means here, and the dimension spectrum condition makes the residues exist (our own). For the Dirac operator on a spin manifold, the residues become integrals of local densities and give the Atiyah–Singer formula (our own summary). The work went into Connes and Moscovici's long proof that the residue cocycle is cohomologous to the character.
+**How the definition helps.** The dimension spectrum specifies where the zeta functions used in the cocycle can have poles (our own explanation). The Connes–Moscovici local index theorem proves that the resulting cocycle represents the Chern character.
 
 **Wikipedia:** [Spectral triple](https://en.wikipedia.org/wiki/Spectral_triple), [Noncommutative geometry](https://en.wikipedia.org/wiki/Noncommutative_geometry). It says: “The local index formula of Connes and Moscovici gives a way to compute index pairings for suitable spectral triples using local expressions in cyclic cohomology.”
 
@@ -2867,15 +2777,15 @@
 
 ### Dirac operators on matrix algebras make them converge to coadjoint orbits
 
-**Remember:** Build the metric from a Dirac operator, and convergence speaks about Dirac operators.
+**Remember:** Measure variation by the norm of the commutator with the Dirac operator.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 58B34 (Noncommutative geometry (à la Connes)), 46L89, 81R60. arXiv math.OA, math.MP. Level 4: research.
 
-**Definition.** Let 𝒜 be the functions on a coadjoint orbit, the orbit of a weight λ in the dual Lie algebra of a compact group G. Let ℬᵐ be the matrix algebra on the irreducible representation with highest weight mλ. Rieffel builds a Dirac operator D on each of them, with Lip-norm L(a) = ‖\[D, a\]‖, a kind of Lipschitz constant.
+**Definition.** For a Dirac operator D acting on a represented algebra, its commutator seminorm on a smooth element a is Lᴰ(a) = ‖\[D,a\]‖. Rieffel uses the corresponding Dirac operators on the orbit algebra and the matrix algebras for highest weights mλ.
 
-**Problem.** The matrix algebras ℬᵐ, with their Dirac Lip-norms, converge to the coadjoint orbit 𝒜 in Latrémolière's propinquity as m → ∞. For example, the fuzzy spheres converge to the 2-sphere.
+**Problem.** For an integral dominant weight λ of a compact connected semisimple Lie group, use Rieffel’s orbit and matrix Dirac Lip-norms. The matrix algebras for highest weights mλ converge to the algebra of continuous functions on the coadjoint orbit in Latrémolière’s propinquity. The fuzzy spheres give the two-sphere example.
 
-**How the definition helps.** A Lip-norm defined by ‖\[D, a\]‖ carries a Dirac operator, so metric convergence becomes a statement about Dirac operators. Physicists want to approximate the Dirac operator of the orbit by Dirac operators on matrix algebras. Rieffel's earlier Lip-norms came from the group action and had no Dirac operator behind them (our own). The work went into estimates showing that the length of a bridge, a common algebra that holds both ℬᵐ and 𝒜, tends to 0.
+**How the definition helps.** The commutator seminorms equip both the matrices and the orbit algebra with quantum metrics (our own explanation). Rieffel proves convergence by constructing bridges whose lengths tend to zero.
 
 **Paper or page:** [Dirac operators for matrix algebras converging to coadjoint orbits](https://arxiv.org/abs/2108.01136). It says: “Thus the sequence {(ℬᵐ, Lᴰᵐ)} of compact C\*-metric spaces converges to the compact C\*-metric space {(𝒜, Lᴰᴬ)} for Latrémolière's propinquity.”
 
@@ -2888,7 +2798,7 @@
 
 **Remember:** The Dirac eigenvalues are the group weights, with repetitions.
 
-*Makes the theorem clean to state or prove.* MSC 58B34 (Noncommutative geometry (à la Connes)), 46L87. arXiv math.OA, math-ph. Level 4: research.
+*True by definition.* MSC 58B34 (Noncommutative geometry (à la Connes)), 46L87. arXiv math.OA, math-ph. Level 4: research.
 
 **Definition.** On a discrete group take a real weight ℓ with finite absolute sublevel sets and bounded differences under each fixed left translation. Let D multiply square-summable functions by ℓ. Call D finitely summable if the sum of (1 + ℓ(g)²)⁻ˢ over all group elements converges for some s &gt; 0.
 
@@ -2904,15 +2814,15 @@
 
 ### Entire cyclic cohomology gives theta-summable spectral triples a Chern character
 
-**Remember:** Infinitely many components need a growth condition, and heat kernels supply it.
+**Remember:** Require finite heat trace at every positive time.
 
 *Makes the theorem clean to state or prove.* MSC 58B34 (Noncommutative geometry (à la Connes)), 19D55, 46L87. arXiv math.OA, math.KT. Level 4: research.
 
-**Definition.** A spectral triple is an algebra A on a Hilbert space H with a self-adjoint operator D that has bounded commutators with A. It is θ-summable if exp(−tD²) is trace class for every t &gt; 0, which is weaker than finite summability. Periodic cyclic cohomology allows only finitely many nonzero cocycle components, while Connes' entire cyclic cohomology allows infinitely many if their norms decay fast enough.
+**Definition.** An even spectral triple is θ-summable if Tr(exp(−tD²)) is finite for every t &gt; 0. The grading commutes with the algebra and anticommutes with D.
 
 **Problem.** For a θ-summable even spectral triple, the JLO cocycle Φₜ, built from heat operators exp(−stD²) and commutators \[D, a\], is an entire cyclic cocycle. Its class does not depend on t, and its pairing with an idempotent e is the index of D twisted by e.
 
-**How the definition helps.** Entire cyclic cohomology is built to hold cocycles like JLO, which have a nonzero component in every even degree (our own summary). Their components decay factorially, which is the growth that entire cyclic cohomology allows (our own summary). So a Chern character exists for θ-summable triples, as in infinite-dimensional models with no finite summability. The work went into the estimates of Jaffe, Lesniewski and Osterwalder and into Connes' proof that the pairing is the index.
+**How the definition helps.** θ-summability controls the heat operators in every simplex integral defining the JLO cochain (our own explanation). The JLO estimates give the entire growth bound and the cocycle identity. Homotopy invariance gives independence of positive t, and the JLO index pairing gives the twisted index.
 
 **Wikipedia:** [JLO cocycle](https://en.wikipedia.org/wiki/JLO_cocycle), [Spectral triple](https://en.wikipedia.org/wiki/Spectral_triple). It says: “The cohomology class defined by Φt(D) is independent of the value of t”
 
@@ -2927,9 +2837,9 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 58B34 (Noncommutative geometry (à la Connes)), 19K56, 19D55. arXiv math.OA, math.KT. Level 4: research.
 
-**Definition.** A Fredholm module (H, F) is a representation of A on a Hilbert space H with an operator F commuting with A modulo compact operators. It is p-summable if each \[F, a\] lies in the Schatten ideal Lᵖ, the compact operators whose singular values have summable p-th powers. For an even module with grading γ, F² = 1 and even n ≥ p − 1, set τₙ(a₀, …, aₙ) = c Tr(γF\[F,a₀\]⋯\[F,aₙ\]).
+**Definition.** In a normalized even Fredholm module, the algebra acts by even operators and F is an odd self-adjoint involution on the graded Hilbert space. For p ≥ 1, p-summability requires ∑ⱼ sⱼ(\[F,a\])ᵖ &lt; ∞ for every algebra element a, where sⱼ denotes the jth singular value.
 
-**Problem.** Each τₙ is a cyclic n-cocycle, and its pairing with an idempotent e is the index of eFe from eH₊ to eH₋. Here H₊ and H₋ are the ±1 eigenspaces of γ, and c is Connes' constant.
+**Problem.** For even n ≥ p − 1, put τₙ(a₀,…,aₙ) = cₙ Tr(γF\[F,a₀\]⋯\[F,aₙ\]), using the grading γ and Connes’ normalization cₙ. Then τₙ is a cyclic cocycle whose pairing with an idempotent e equals the index of eFe from eH₊ to eH₋.
 
 **How the definition helps.** Summability makes the product of n + 1 commutators trace class, by Hölder's inequality for Schatten ideals, so τₙ is defined (our own). The index of a Fredholm operator equals a trace of a power of its defect, and this trace is ⟨τₙ, e⟩ (our own summary). Without summability, F still gives a K-homology class but no finite trace formula. The work went into Connes' identification of the index with the trace formula.
 
@@ -2951,7 +2861,7 @@
 
 **Problem.** Assume complex conjugation followed by group inversion gives a real structure, so ℓ under inversion equals either ℓ everywhere or −ℓ everywhere. The first-order condition holds exactly when ℓ is constant or an additive homomorphism.
 
-**How the definition helps.** Right translations force each left translation difference of ℓ to be constant (our own calculation). Evaluating at the identity e shows that ℓ − ℓ(e) is additive. An even weight then has zero additive part, while an odd weight has zero constant part. Both resulting forms satisfy the commutator test. On the integers the even weight ℓ(n) = \|n\| fails it.
+**How the definition helps.** Commuting with right translations forces each left translation difference of ℓ to be constant (our own calculation). Evaluating at the identity e shows that ℓ − ℓ(e) is additive. Evenness forces the additive part to vanish, and oddness forces ℓ(e) = 0. Constants and homomorphisms both pass the test, whereas the even weight ℓ(n) = \|n\| on ℤ has nonconstant translation differences.
 
 **Paper or page:** [Real Spectral Triples on Crossed Products](https://arxiv.org/abs/2012.15698). It says: “satisfies the first order condition if and only if ℓ is either a constant or a homomorphism.”
 
@@ -2961,11 +2871,11 @@
 
 ### KO-dimension defines dimension mod 8 from three signs
 
-**Remember:** Three signs of J fix the dimension modulo 8.
+**Remember:** Read the signs of the real structure against itself, Dirac operator and grading.
 
 *Makes the theorem clean to state or prove.* MSC 58B34 (Noncommutative geometry (à la Connes)), 19K33, 46L87. arXiv math.OA, math.KT. Level 4: research.
 
-**Definition.** A real spectral triple has an antilinear unitary J with J² = ε and JD = ε′DJ. In the even case, also Jγ = ε″γJ, where γ is the grading and each sign is ±1. The KO-dimension is the number n mod 8 that Connes' table assigns to the triple of signs (ε, ε′, ε″).
+**Definition.** In Connes’ Euclidean convention, read ε and ε′ from J² = ε and JD = ε′DJ. In even degree read ε″ from Jγ = ε″γJ. The sign rows for degrees 0 through 7 are (+++), (+−), (−+−), (−+), (−++), (−−), (++−), (++).
 
 **Problem.** For a closed spin manifold of dimension n with its charge conjugation J, the KO-dimension is n mod 8. The definition also applies where classical dimension fails: the finite space of the Standard Model has KO-dimension 6 but classical dimension 0.
 
@@ -2987,7 +2897,7 @@
 
 **Problem.** Take a coamenable compact quantum group with a bi-invariant regular Lip-norm. Its Peter–Weyl truncations converge to it in Kerr's complete Gromov–Hausdorff distance as Λ grows to include every representation.
 
-**How the definition helps.** The compressions PaP do not form an algebra, so even the statement needs a distance between operator systems. With that distance, the truncations and the full algebra are objects of one kind. The work went into the choice of a state whose slice map nearly inverts the compression a ↦ PaP in Lip-norm. Coamenability is what makes such a state available (our own).
+**How the definition helps.** Compression preserves the adjoint and the unit on the compressed Hilbert space, but it need not preserve products. Kerr’s distance compares the resulting operator systems with the original algebra. The convergence proof uses a state whose slice map approximately inverts compression, using coamenability (our own explanation).
 
 **Paper or page:** [Convergence of Peter--Weyl Truncations of Compact Quantum Groups](https://arxiv.org/abs/2409.16698). It says: “We prove convergence of such nets in terms of Kerr's complete Gromov–Hausdorff distance. An important tool is the choice of an appropriate state whose induced slice map gives an approximate inverse of the compression map C(𝔾) ∋ a ↦ PaP in Lip-norm.”
 
@@ -2999,7 +2909,7 @@
 
 **Remember:** The Pauli matrices cancel the mixed terms in the square.
 
-*Makes the theorem clean to state or prove.* MSC 58B34 (Noncommutative geometry (à la Connes)), 46L87. arXiv math.OA, math-ph. Level 4: research.
+*True by definition.* MSC 58B34 (Noncommutative geometry (à la Connes)), 46L87. arXiv math.OA, math-ph. Level 4: research.
 
 **Definition.** Take self-adjoint operators D and E with compact resolvent, meaning their resolvents are compact. On separate Hilbert space factors form the closure of D ⊗ 1 ⊗ σ + 1 ⊗ E ⊗ τ. The two self-adjoint 2 × 2 matrices σ and τ square to the identity and satisfy στ = −τσ.
 
@@ -3019,11 +2929,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 58B34 (Noncommutative geometry (à la Connes)), 46L89. arXiv math.OA. Level 4: research.
 
-**Definition.** A compact quantum metric space is a C\*-algebra with a Lip-norm, a seminorm that plays the role of a Lipschitz constant. Rieffel's distance sees only self-adjoint elements and order, while Latrémolière's propinquity uses \*-homomorphisms and so keeps the multiplication. A Lip-norm L is C-strongly Leibniz when L(ab) ≤ ‖a‖L(b) + L(a)‖b‖ and L(a⁻¹) ≤ C‖a⁻¹‖²L(a) for invertible a.
+**Definition.** A propinquity tunnel from (A,L<sub>A</sub>) to (B,L<sub>B</sub>) uses a common quantum metric algebra with surjective \*-homomorphisms onto A and B inducing their quotient seminorms. The C-strongly Leibniz version uses tunnels in the same C-strongly Leibniz class.
 
 **Problem.** For each C ≥ 1, the C-strongly Leibniz propinquity is a metric on C-strongly Leibniz compact quantum metric spaces, up to full quantum isometry. So distance zero gives a \*-isomorphism that preserves the Lip-norms.
 
-**How the definition helps.** The propinquity is built from \*-homomorphisms, so distance zero gives a map that respects products, not just order. Rieffel's distance is zero between a C\*-algebra and its opposite algebra with the same Lip-norm, since both have the same self-adjoint part (our own). Phillips found a simple separable C\*-algebra that is not isomorphic to its opposite (our own). The work went into Latrémolière's proof that distance zero gives a full quantum isometry, which the strongly Leibniz class keeps (our own).
+**How the definition helps.** Tunnel maps preserve multiplication, which the full quantum isometry theorem recovers at distance zero (our own explanation). In Rieffel’s order-unit distance, an algebra and its opposite have identical ordered self-adjoint spaces with the same seminorm. Phillips’ example shows that an algebra need not be \*-isomorphic to its opposite.
 
 **Paper or page:** [The strongly Leibniz property and the Gromov--Hausdorff propinquity](https://arxiv.org/abs/2301.05692). It says: “For all C ≥ 1, the C-strongly Leibniz propinquity Λ\*SLC is a metric on 𝒮ℒC.”
 
@@ -3039,9 +2949,9 @@
 
 *Makes the theorem clean to state or prove.* MSC 58B34 (Noncommutative geometry (à la Connes)), 81T13, 81R60. arXiv math.MP, math.OA. Level 4: research.
 
-**Definition.** The spectral action of a spectral triple is Tr f(D/Λ), where f is a positive cutoff function and Λ is an energy scale. An almost commutative geometry is the product of a spin manifold M with a finite spectral triple F. Gauge and Higgs fields enter as inner fluctuations D + A + JAJ⁻¹, with A a sum of terms a\[D, b\] and J a charge conjugation.
+**Definition.** An almost commutative geometry combines a spin manifold with a finite spectral triple by taking their product. Its fluctuated spectral action is Tr f((D + A + JAJ⁻¹)/Λ), where J is charge conjugation and Λ &gt; 0. The self-adjoint one-form A is a finite sum of terms a\[D,b\] with a and b in the product algebra.
 
-**Problem.** Take F with algebra ℂ ⊕ ℍ ⊕ M₃(ℂ), and expand the fluctuated spectral action on M × F for large Λ. Among other terms, the expansion contains the Einstein–Hilbert action, a cosmological term and the bosonic Standard Model Lagrangian with the Higgs potential.
+**Problem.** Take the Standard Model finite spectral triple with algebra ℂ ⊕ ℍ ⊕ M₃(ℂ) and a closed Riemannian spin four-manifold M. For a smooth rapidly decreasing even cutoff with nonzero relevant moments, the fluctuated product spectral action has a large-Λ expansion. It contains the Einstein–Hilbert action, a cosmological term and the bosonic Standard Model Lagrangian with the Higgs potential.
 
 **How the definition helps.** The definition treats gauge and Higgs fields as parts of the Dirac operator, so the one gravity functional Tr f(D/Λ) already contains their actions. The work went into the heat-kernel expansion of the trace and into the choice of the finite space F (our own).
 
@@ -3053,7 +2963,7 @@
 
 ### Summability shows the free group C\*-algebra has no nontrivial projections
 
-**Remember:** An integer trapped between 0 and 1 must be 0 or 1.
+**Remember:** Summable tree commutators identify the canonical trace with an integer index.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 58B34 (Noncommutative geometry (à la Connes)), 46L80, 22D25. arXiv math.OA, math.KT. Level 4: research.
 
@@ -3067,35 +2977,17 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
-### Summable weights make AF algebras limits of their finite-dimensional pieces
-
-**Remember:** One Dirac operator for all levels lets the tail of β bound the distance.
-
-*Makes the theorem clean to state or prove.* MSC 58B34 (Noncommutative geometry (à la Connes)), 46L89, 46L35. arXiv math.OA. Level 4: research.
-
-**Definition.** Let A be a unital AF algebra, the closure of an increasing union of finite-dimensional algebras Aₙ, with a faithful trace τ. Christensen and Ivan set D = Σ aₙQₙ, where Qₙ projects onto the new part of L²(Aₙ) and aₙ comes from a summable β. The Lip-norm L(a) = ‖\[D, a\]‖, a kind of Lipschitz constant, makes A a compact quantum metric space.
-
-**Problem.** The Latrémolière propinquity, a distance between compact quantum metric spaces, from (A, L) to (Aₙ, L) is at most βₙ + βₙ₊₁ + ⋯. So the finite-dimensional algebras Aₙ converge to A.
-
-**How the definition helps.** Each Aₙ gets its Lip-norm by restricting the one commutator seminorm of D, so A and Aₙ are compared inside one space. Then the distance bound is just the tail of the summable sequence. The work went into the theorem of Christensen and Ivan that this D gives a compact quantum metric at all (our own).
-
-**Paper or page:** [Quantum Gromov-Hausdorff propinquity convergence of Christensen-Ivan quantum metrics on AF algebras](https://arxiv.org/abs/2312.16458), [Quantum Gromov-Hausdorff propinquity convergence of Christensen-Ivan quantum metrics on AF algebras](https://arxiv.org/abs/2312.16458). It says: “For every n ∈ ℕ, it holds that Λ((𝒜, Lτβ), (𝒜ₙ, Lτβ)) ≤ ∑ₖ₌ₙ∞ βₖ, where Λ is the quantum Gromov-Hausdorff propinquity”
-
-**Sources:**
-
-- [Quantum Gromov–Hausdorff propinquity convergence of Christensen–Ivan quantum metrics on AF algebras, arXiv:2312.16458](https://arxiv.org/abs/2312.16458)
-
 ### The entropy of a free fermion state is a spectral action
 
 **Remember:** Entropy adds over eigenvalues, so it is a spectral action.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 58B34 (Noncommutative geometry (à la Connes)), 81T75, 82B10. arXiv math.MP, math.OA. Level 4: research.
 
-**Definition.** Here a spectral action of an operator D is any trace Tr f(D) of a function f of D. Second quantization turns D on a one-particle space into a system of free fermions, one mode for each eigenvalue. With no chemical potential, the equilibrium state at inverse temperature β fills the mode λ with probability 1/(1 + eˣ), where x = βλ.
+**Definition.** For independent free fermion modes with one-particle energies λ, the equilibrium occupation probability at inverse temperature β &gt; 0 is p(λ) = 1/(1 + exp(βλ)). A spectral action sums a function of those energies with multiplicity whenever the sum converges.
 
-**Problem.** The von Neumann entropy of the equilibrium free fermion state equals Tr h(βD), with h(x) = log(1 + e⁻ˣ) + x/(1 + eˣ). So, when the heat trace of D has an expansion, the entropy has an expansion as β → 0.
+**Problem.** A free fermion Gibbs state with finite entropy and zero chemical potential has entropy Tr h(βD). Here h(x) = log(1 + e⁻ˣ) + x/(1 + eˣ). Under the heat-trace expansion and remainder bounds permitting termwise integration against the entropy kernel, entropy has an expansion as β decreases to zero.
 
-**How the definition helps.** A free fermion state is a product over the eigenmodes of D, so its entropy is a sum over eigenvalues. Each mode contributes −p log p − (1 − p) log(1 − p) with p = 1/(1 + eˣ), and this equals h(x) (our own). So the entropy is a trace Tr h(βD), a spectral action in the broad sense. The work went into computing the coefficients of its expansion from the heat trace of D.
+**How the definition helps.** Independence adds the binary entropies of the modes (our own zero-chemical-potential calculation). Substituting p(λ) into −p log p − (1−p)log(1−p) gives h(βλ). The heat-kernel representation of h transfers the heat expansion to the spectral action under the stated bounds.
 
 **Paper or page:** [Second Quantization and the Spectral Action](https://arxiv.org/abs/1903.09624). It says: “For μ&lt;0 we then have the following expansion for the entropy: 𝒮(ρf) = Tr(hβμ(βD))”
 
@@ -3106,11 +2998,11 @@
 
 ### The spectral action reduces to the Einstein–Hilbert action on manifolds
 
-**Remember:** Count eigenvalues of D below Λ, and get gravity.
+**Remember:** Sum a smooth cutoff over the rescaled Dirac eigenvalues.
 
 *Makes the theorem clean to state or prove.* MSC 58B34 (Noncommutative geometry (à la Connes)), 58J35, 81T75. arXiv math.MP, math.DG. Level 4: research.
 
-**Definition.** The spectral action of a spectral triple (A, H, D) is Tr f(D/Λ). Here f is a positive even cutoff function and Λ is an energy scale. It depends only on the spectrum of D.
+**Definition.** For the Dirac operator D of a closed spin manifold, choose a positive even Schwartz function f and an energy scale Λ &gt; 0. The spectral action is Tr f(D/Λ).
 
 **Problem.** For the Dirac operator of a closed spin 4-manifold, Tr f(D/Λ) has an expansion as Λ → ∞. Up to constants that depend on f, its Λ⁴ term is the volume and its Λ² term is the integral of the scalar curvature.
 
@@ -3126,13 +3018,13 @@
 
 **Remember:** Control the loss of derivatives before trying to invert the map.
 
-*Rules out counterexamples.* MSC 58C15 (Implicit function theorems; global Newton methods on manifolds), 58B10. arXiv math.FA, math.DG. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 58C15 (Implicit function theorems; global Newton methods on manifolds), 58B10. arXiv math.FA, math.DG. Level 4: research.
 
 **Definition.** On smooth periodic functions, let ‖f‖ₙ measure the largest absolute value of f and its first n derivatives. A tame map satisfies local bounds ‖P(f)‖ₙ ≤ Cₙ(1 + ‖f‖ₙ₊ᵣ) for large n with fixed r. Smooth tame maps obey such bounds for the map and all its derivatives, including their direction arguments.
 
 **Problem.** A smooth tame map between open sets of smooth periodic functions has smooth tame local inverses if its derivatives have smoothly tame inverses. This condition concerns the map sending a base function and a right-hand side to the solution of the linearized equation.
 
-**How the definition helps.** A fixed shift bounds the loss of derivatives, so smoothing can compensate for that loss during iteration. In our own account, Hamilton’s estimates prove that the resulting approximations converge. The hypotheses control the inverse derivative throughout a neighborhood.
+**How the definition helps.** Smooth tameness expresses the derivative loss as a fixed shift in the seminorm estimates (our own explanation). Hamilton’s Nash–Moser inverse function theorem uses smoothing to control this loss during iteration and gives the local inverse.
 
 **Wikipedia:** [Nash–Moser theorem](https://en.wikipedia.org/wiki/Nash%E2%80%93Moser_theorem). It says: “Then P is locally invertible, and each local inverse P⁻¹ is a smooth tame map.”
 
@@ -3200,7 +3092,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 58D05 (Groups of diffeomorphisms and homeomorphisms as manifolds). arXiv math.DG. Level 4: research.
 
-**Definition.** A principal bundle automorphism is a diffeomorphism of its total space commuting with the structure group action. An invariant metric measures lengths equally before and after that action. Moving each point along a short geodesic gives coordinates for diffeomorphisms near the identity.
+**Definition.** A principal bundle automorphism is a diffeomorphism Φ of the total space satisfying Φ(pg) = Φ(p)g for every point p and group element g.
 
 **Problem.** For a compact structure group and closed base, bundle automorphisms form a closed smooth subgroup of all diffeomorphisms of the total space. Its tangent vectors at the identity are exactly the smooth vector fields preserved by the structure group.
 
@@ -3238,7 +3130,7 @@
 
 **Definition.** The stabilizer of a configuration consists of the transformations fixing it. A slice is a local submanifold through the configuration, preserved by its stabilizer, whose translates cover a neighborhood. Only transformations in the stabilizer can move the slice to meet itself.
 
-**Problem.** Consider a Riemannian metric and a principal bundle connection over a closed manifold, with compact structure group. The pairs whose only symmetry is the identity form an open set.
+**Problem.** Consider a Riemannian metric and a principal bundle connection over a closed manifold, with compact structure group. Pairs fixed only by the identity bundle automorphism form an open set.
 
 **How the definition helps.** On the slice, any symmetry must carry the slice to meet itself, so it belongs to the original stabilizer. Elsewhere on its translates, stabilizers differ only by conjugation. In our own proof, the slice theorem replaces a separate search for new symmetries at every nearby pair.
 
@@ -3250,9 +3142,9 @@
 
 ### Smooth curves keep compact support
 
-**Remember:** A compact time interval needs only one compact support.
+**Remember:** In compact-support charts, bounded families share one compact support.
 
-*Rules out counterexamples.* MSC 58D05 (Groups of diffeomorphisms and homeomorphisms as manifolds), 46A13. arXiv math.DG. Level 4: research.
+*True by definition.* MSC 58D05 (Groups of diffeomorphisms and homeomorphisms as manifolds), 46A13. arXiv math.DG. Level 4: research.
 
 **Definition.** A compactly supported diffeomorphism equals the identity outside some compact set. Its usual group charts use compactly supported vector fields. Their topology is the locally convex inductive limit, the finest locally convex topology making each fixed-support space include continuously.
 
@@ -3272,11 +3164,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 58D05 (Groups of diffeomorphisms and homeomorphisms as manifolds). arXiv math.DG. Level 4: research.
 
-**Definition.** On the flat two-torus, the smooth volume-preserving group is the intersection of its Sobolev diffeomorphism groups of all sufficiently high integer orders. Each order controls square-integrable derivatives through that order. All these norms together give the smooth group its topology.
+**Definition.** For each integer s &gt; 2, let Gˢ be the Hˢ volume-preserving diffeomorphism group of the flat two-torus. The smooth group is their intersection, with the topology induced by all inclusions into Gˢ.
 
 **Problem.** For the kinetic-energy metric, the map taking a small initial velocity to its geodesic endpoint at time one has a local inverse. Both maps are continuously differentiable in the Fréchet sense on smooth data.
 
-**How the definition helps.** Taking the intersection of Sobolev spaces lets compatible local inverses give one inverse on smooth data. In our own account, the hard step is showing that one low-order neighborhood suffices at every higher order. This requires regularity estimates for the endpoint map and its derivative in both directions.
+**How the definition helps.** A compatible inverse on every Sobolev level gives an inverse on their intersection (our own explanation). The regularity theorem for the torus Euler exponential supplies a common neighborhood and preserves higher regularity in both directions. Its derivative estimates give continuous differentiability in the smooth topology.
 
 **Paper or page:** [Two-Point Boundary Value Problems on Diffeomorphism Groups](https://arxiv.org/abs/2110.12278). It says: “admits a well-defined exponential map which is a local C¹ꜰ-diffeomorphism at the identity.”
 
@@ -3308,11 +3200,11 @@
 
 *True by definition. Confidence: medium.* MSC 58D15 (Manifolds of mappings), 46T10. arXiv math.DG, math.FA. Level 4: research.
 
-**Definition.** A local addition on a generalized smooth space X is a smooth map η : TX → X with three properties. It sends each zero vector to its base point. Together with the projection TX → X, it identifies TX with an open neighbourhood of the diagonal in X × X. Its derivative at each zero vector is the identity. A locally additive space is a smooth space with a local addition, and a smooth space S is smoothly compact if C∞(S, U) is open in C∞(S, X) for every open U ⊆ X.
+**Definition.** For a smooth space X, write π for its tangent projection. A local addition is a smooth η: TX → X such that (π,η) identifies TX diffeomorphically with an open diagonal neighborhood. Each fiber map ηₓ sends 0 to x and has identity derivative there.
 
-**Problem.** Let X be a locally additive space and S a smoothly compact space. Then C∞(S, X) is again locally additive, and its tangent space is C∞(S, TX).
+**Problem.** If X admits a local addition and S is smoothly compact, C∞(S,X) admits a local addition. Its tangent bundle identifies with C∞(S,TX).
 
-**How the definition helps.** The categories of generalized smooth spaces are cartesian closed, so applying C∞(S, −) to η gives almost a local addition on C∞(S, X). The local addition of X gives T C∞(S, X) ≅ C∞(S, TX) by lifting families of tangent vectors to curves. The remaining step is that C∞(S, V) is open in C∞(S, X × X), for the neighbourhood V of the diagonal. Smoothly compact spaces are defined to be exactly those S for which this holds, so the work moves to deciding which spaces are smoothly compact.
+**How the definition helps.** The local addition identifies tangent vectors to the mapping space with smooth fields along maps (our own explanation). Applying C∞(S, −) then carries the local addition and its inverse to pointwise maps. Smooth compactness means C∞(S,U) is open in C∞(S,Y) for every smooth Y and open U ⊆ Y. This gives the required open diagonal neighborhood.
 
 **nLab:** [locally additive space](https://ncatlab.org/nlab/show/locally+additive+space). It says: “Let X be a locally kinematic space and S a smoothly compact space. Then C∞(S,X) is again a locally kinematic space.”
 
@@ -3324,7 +3216,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 58D15 (Manifolds of mappings), 58B10. arXiv math.DG, math.FA. Level 4: research.
 
-**Definition.** A local addition sends each small tangent vector at y to a nearby point, and sends zero to y. The base point and the resulting point together give smooth coordinates near the diagonal. A chart around a map g therefore describes nearby maps by vector fields along g.
+**Definition.** A local addition on M is a smooth map η from an open neighborhood of the zero section in TM to M. It satisfies η(0ₓ) = x for every x, and v ↦ (π(v),η(v)) maps its domain diffeomorphically onto a diagonal neighborhood. Here π is the tangent projection.
 
 **Problem.** Let X be a closed manifold and let M and N be smooth manifolds with local additions. Each smooth map f from M to N induces a smooth map g ↦ f ∘ g on smooth maps from X.
 
@@ -3342,7 +3234,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 58D15 (Manifolds of mappings), 58B10. arXiv math.DG, math.FA. Level 4: research.
 
-**Definition.** A submersion looks in local coordinates like a projection from a product onto one factor. A local addition gives coordinates near each point using short tangent vectors there. For a map p, compatible local additions send a vector and its derivative image to points related by p.
+**Definition.** Local additions η on M and θ on N are compatible with p: M → N if p(η(v)) = θ(Tp(v)) near the zero section. Each addition sends zero to its base point and, paired with tangent projection, gives a diffeomorphism onto a diagonal neighborhood.
 
 **Problem.** Let p be a smooth surjective submersion between Banach manifolds admitting smooth partitions of unity. For every closed manifold X, composition g ↦ p ∘ g is a submersion on smooth maps from X.
 
@@ -3360,7 +3252,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 58E05 (Abstract critical point theory (Morse theory, Lyusternik-Shnirel'man theory, etc.) in infinite-dimensional spaces). arXiv math.AP. Level 4: research.
 
-**Definition.** For a symmetric set avoiding zero, genus is the least k admitting a continuous odd map into ℝᵏ avoiding zero. Odd means h(−x) = −h(x), and genus is infinite if no k works. The kth genus level is the infimum of maxima on compact symmetric sets of genus at least k.
+**Definition.** For nonempty symmetric A avoiding zero, its genus is the least k ≥ 1 admitting a continuous odd map into punctured ℝᵏ. Odd means h(−x) = −h(x), with genus infinite if no k works and zero for the empty set. The kth level is the infimum of max f(A) over compact symmetric A avoiding zero with genus at least k.
 
 **Problem.** For an even continuously differentiable Hilbert space function f, suppose genus levels k through k+r coincide at finite c &lt; f(0). If every sequence with values approaching c and derivatives approaching zero has a convergent subsequence, the critical set there has genus at least r+1.
 
@@ -3489,7 +3381,7 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 58E20 (Harmonic maps, etc.). arXiv math.AP, math.DG. Level 4: research.
 
-**Definition.** For a smooth circle-valued map on the real line, extend both coordinates harmonically into the upper half-plane. Its half-energy is the Dirichlet energy of this extension, which integrates half the squared derivative. The map is half-harmonic if its half-energy has zero first derivative under every compactly supported variation along the circle.
+**Definition.** For a smooth circle-valued map u on ℝ, let U be its Poisson extension to the upper half-plane. Its half-energy is the integral of ½\|∇U\|² over that half-plane. A finite-half-energy map is half-harmonic if every smooth compactly supported variation through circle-valued maps has zero first variation of half-energy.
 
 **Problem.** A smooth map with finite half-energy is half-harmonic exactly when its extension’s outward normal derivative is perpendicular to the circle at each boundary value.
 
@@ -3523,11 +3415,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 58H05 (Pseudogroups and differentiable groupoids), 57R70. arXiv math.DG. Level 4: research.
 
-**Definition.** A Lie groupoid morphism to ℝ is a smooth function on the base that is constant on orbits, so its critical points form whole orbits. It is Morse if its Hessian is nondegenerate in the directions normal to each critical orbit. Two Lie groupoids are Morita equivalent when they describe the same quotient, or differentiable stack.
+**Definition.** A morphism to the unit groupoid on ℝ is a smooth real function on the base that is constant on each orbit. It is Morse if, at each critical point, its Hessian has kernel exactly the tangent space to the orbit.
 
 **Problem.** Being a Morse Lie groupoid morphism is invariant under Morita equivalence. So Morse functions on differentiable stacks are well defined.
 
-**How the definition helps.** Testing the Hessian only in normal directions ignores the directions in which an invariant function must be flat. With the usual test, a function constant on orbits of positive dimension is never Morse. Normal directions to orbits correspond under Morita equivalence, so the condition passes to the stack. The paper then proves a groupoid Morse lemma and Morse inequalities for certain separated stacks.
+**How the definition helps.** At corresponding critical points, Morita equivalence identifies the normal spaces and the Hessian forms they carry (our own explanation). Nondegeneracy therefore passes between presentations of the stack.
 
 **Paper or page:** [Morse theory on Lie groupoids](https://arxiv.org/abs/2207.07594), [Morse theory on Lie groupoids](https://arxiv.org/abs/2207.07594). It says: “In this paper we introduce Morse Lie groupoid morphisms and study their main properties. We show that this notion is Morita invariant which gives rise to a well defined notion of Morse function on differentiable stacks.”
 
@@ -3541,9 +3433,9 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 58H05 (Pseudogroups and differentiable groupoids), 18F20. arXiv math.DG, math.CT. Level 4: research.
 
-**Definition.** A Lie groupoid is a groupoid whose objects and arrows form manifolds, with smooth structure maps. A differentiable stack is a stack on smooth manifolds that a Lie groupoid G presents. It sends a test manifold to the groupoid of principal G-bundles over it.
+**Definition.** The stack presented by a Lie groupoid G assigns to each manifold S the groupoid of principal G-bundles over S and their isomorphisms. It acts on smooth maps by pullback. A differentiable stack is a stack equivalent to one of this form.
 
-**Problem.** Lie groupoids with bibundles as morphisms form a category equivalent to differentiable stacks. In particular, two Lie groupoids are Morita equivalent exactly when they present equivalent stacks.
+**Problem.** Lie groupoids with isomorphism classes of right-principal bibundles form a category equivalent to differentiable stacks with morphisms up to natural isomorphism. Two Lie groupoids are therefore Morita equivalent exactly when they present equivalent stacks.
 
 **How the definition helps.** On the stack, Morita equivalence becomes plain equivalence of stacks. For Lie groupoids, Morita equivalence is defined by bibundles, spaces with compatible actions of both groupoids. The equivalence of categories is cited to Blohmann and Carchedi. In our reading, this is why a statement made about the stack, such as an orbifold invariant, needs no separate check of Morita invariance.
 
@@ -3559,7 +3451,7 @@
 
 *True by definition.* MSC 58H05 (Pseudogroups and differentiable groupoids), 18N10. arXiv math.DG, math.CT. Level 4: research.
 
-**Definition.** A strict Lie 2-group can be described by a boundary homomorphism ∂ from H to G and a compatible G-action on H. Its objects are elements g of G, and each h gives an arrow from g to ∂(h)g. Transport identifies maps of a bundle fiber when a natural isomorphism relates them.
+**Definition.** A crossed module consists of a Lie group homomorphism ∂: H → G and a smooth G-action on H by automorphisms. For all g ∈ G and h,k ∈ H, it satisfies ∂(g·h) = g∂(h)g⁻¹ and ∂(h)·k = hkh⁻¹. In its strict Lie 2-group, h labels an arrow from g to ∂(h)g.
 
 **Problem.** For a quasi-principal 2-bundle with strict connection over a Lie groupoid, choosing a fiber object identifies thin loop transport values with elements of G/∂(H).
 
@@ -3570,25 +3462,6 @@
 **Sources:**
 
 - [Chatterjee and Chaudhuri, Parallel transport on a Lie 2-group bundle over a Lie groupoid along Haefliger paths, Proposition 5.17](https://arxiv.org/abs/2309.05355v1)
-
-### Stacky Lie groupoids make Lie's third theorem true for Lie algebroids
-
-**Remember:** If the quotient is not a manifold, keep it as a stack.
-
-*Makes the theorem clean to state or prove.* MSC 58H05 (Pseudogroups and differentiable groupoids), 18F20. arXiv math.DG. Level 4: research.
-
-**Definition.** A Lie algebroid is a vector bundle with a Lie bracket on its sections and a map to the tangent bundle, and it generalizes a Lie algebra. A stacky (étale) Lie groupoid is a groupoid object whose space of arrows may be a differentiable stack instead of a manifold.
-
-**Problem.** Every Lie algebroid integrates to an étale stacky Lie groupoid. In the nLab's words, étale stacky Lie groupoids correspond one-to-one with Lie algebroids (Tseng and Zhu).
-
-**How the definition helps.** When the space of arrows may be a stack, the quotient of A-paths by A-homotopies always exists as a differentiable stack. Not every Lie algebroid integrates to a Lie groupoid. Crainic and Fernandes found the obstruction in monodromy groups that come from π₂ of the leaves. The integrability problem does not go away, and it becomes the question of when the stack is a manifold.
-
-**nLab:** [Lie integration](https://ncatlab.org/nlab/show/Lie+integration). It says: “This correspondence provides a positive answer to Lie's third theorem for Lie algebroids.”
-
-**Sources:**
-
-- [Hsian-Hua Tseng, Chenchang Zhu, Integrating Lie algebroids via stacks, Compositio Math. 142 (2006) 251–270, arXiv:math/0405003](https://arxiv.org/abs/math/0405003)
-- [Marius Crainic, Rui Loja Fernandes, Integrability of Lie brackets, Ann. of Math. 157 (2003) 575–620, arXiv:math/0105033](https://arxiv.org/abs/math/0105033)
 
 ### Cone ellipticity excludes critical weights
 
@@ -3640,7 +3513,7 @@
 
 ### Symbol exactness makes de Rham elliptic
 
-**Remember:** Contract against a vector that the covector sends to one.
+**Remember:** At every nonzero covector, each symbol kernel equals the preceding image.
 
 *True by definition.* MSC 58J10 (Differential complexes). arXiv math.DG, math.AP. Level 4: research.
 
@@ -3678,7 +3551,7 @@
 
 *True by definition.* MSC 58J10 (Differential complexes). arXiv math.DG, math.SP. Level 4: research.
 
-**Definition.** For a smooth real function f, set dₜ = exp(−tf) d exp(tf). Here d is the exterior derivative, and the exponentials multiply forms pointwise. Equivalently, add t df ∧ ω to dω when differentiating a form ω.
+**Definition.** For a smooth real function f and a real parameter t, the Witten differential acts on smooth forms by dₜω = exp(−tf)d(exp(tf)ω). Here d denotes the exterior derivative.
 
 **Problem.** The Witten differential dₜ squares to zero. Its cohomology, the kernel modulo the preceding image, is isomorphic to de Rham cohomology.
 
@@ -3696,9 +3569,9 @@
 
 *True by definition.* MSC 58J20 (Index theory and related fixed-point theorems on manifolds), 58J30, 58J32. arXiv math.SP. Level 4: research.
 
-**Definition.** Let A(t), on a compact interval, be a continuously differentiable family of self-adjoint operators with compact resolvent and a common domain. The boundary operator D = d/dt − iA(t) takes initial values in the negative spectral space and final values in the nonnegative spectral space. Spectral flow counts the net number of eigenvalues that cross zero toward positive values.
+**Definition.** Spectral flow for a continuous self-adjoint Fredholm path uses a subdivision with a positive cutoff on each piece. The cutoff avoids the spectrum throughout its piece, and the spectral space for \[0,cutoff\] has finite rank there. Sum the final rank minus the initial rank of the spectral space for \[0,cutoff) over all pieces.
 
-**Problem.** Assume the boundary operators on all subintervals are Fredholm, with closed range and finite-dimensional kernel and cokernel. Then the index of D on \[r, t\] is the sum of its indices on \[r, s\] and on \[s, t\].
+**Problem.** Let A(t) be a continuously differentiable self-adjoint family with compact resolvent and common domain, and set D = d/dt − iA(t). Impose negative initial and nonnegative final spectral boundary conditions on each subinterval and assume each resulting operator is Fredholm. The index on \[r,t\] equals the sum of the indices on \[r,s\] and \[s,t\] for r ≤ s ≤ t.
 
 **How the definition helps.** Our own argument adds the crossing counts on adjacent time intervals. Ronge proves that each index equals its crossing count under the stated hypothesis. This avoids trying to glue bases for the kernels and cokernels at the cut.
 
@@ -3717,7 +3590,7 @@
 
 **Definition.** Let D be a Dirac operator on a Hermitian bundle over a complete Riemannian manifold, and Φ a self-adjoint potential whose commutator \[D, Φ\] is a bundle map. Φ dominates at infinity if Φ² ≥ (‖\[D, Φ\]‖ + c)I outside a compact set, for some c &gt; 0. The Callias operator is the self-adjoint doubled operator with off-diagonal entries D + iΦ and D − iΦ.
 
-**Problem.** If Φ dominates at infinity, the Callias operator is Fredholm. If the estimate holds everywhere, it is invertible, so in the odd symmetric case its parity index, the kernel dimension modulo two, vanishes.
+**Problem.** If Φ dominates at infinity, the Callias operator is Fredholm. Domination everywhere makes it invertible, so in the odd symmetric case the parity index of its off-diagonal operator vanishes.
 
 **How the definition helps.** Our own explanation uses the domination estimate to bound the square of the doubled operator below outside a compact set. The Fredholm proof uses local compactness to handle the compact set. In our own calculation, domination everywhere gives the bound globally and rules out a kernel for the operator and its adjoint. Our own counterexample is −i d/dx on ℝ, which is elliptic but has zero in its essential spectrum.
 
@@ -3752,7 +3625,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 58J20 (Index theory and related fixed-point theorems on manifolds), 19L10. arXiv math.DG, math-ph. Level 4: research.
 
-**Definition.** Let a compact Lie group G preserve a geometric family of Dirac operators on closed fibers, including its metrics and connections. Its equivariant Bismut superconnection combines the fiber operators with differentiation in parameter and group directions. At scale t &gt; 0, its Chern character is the graded trace of the heat operator of its square. The graded trace subtracts the odd trace from the even trace.
+**Definition.** For an even graded geometric Dirac family with a compact Lie group action preserving its data, write Bₜ for its equivariant Bismut superconnection. Its equivariant Chern character at scale t &gt; 0 is the even trace minus the odd trace of exp(−Bₜ²).
 
 **Problem.** Every principal G-bundle with connection produces an associated family by twisting the original family by that bundle. The Chern–Weil map sends the equivariant Chern character at scale t to the associated family’s Bismut Chern character at the same scale.
 
@@ -3770,11 +3643,11 @@
 
 *True by definition.* MSC 58J20 (Index theory and related fixed-point theorems on manifolds), 58J28. arXiv math.DG, math-ph. Level 4: research.
 
-**Definition.** On a closed odd-dimensional Riemannian spin manifold, twist the spin Dirac operator by each of two flat Hermitian bundles of equal rank. Flat means the unitary connection has zero curvature. For each operator D, put ξ(D) = (η(D) + dim ker D)/2, where η is the regularized difference between positive and negative eigenvalue counts. Subtract the second ξ from the first in ℝ/ℤ.
+**Definition.** For two equal-rank flat Hermitian bundles on a closed odd-dimensional Riemannian spin manifold, let D₁ and D₂ be their twisted spin Dirac operators. Their reduced eta difference is ξ(D₁) − ξ(D₂) in ℝ/ℤ, where ξ(D) = (η(D) + dim ker D)/2.
 
 **Problem.** This difference defines a homomorphism from spin bordism with the two specified flat bundles to ℝ/ℤ. Here a bordism must extend the spin structure and both flat connections, and addition means disjoint union.
 
-**How the definition helps.** Our own argument uses the equal ranks and zero curvatures to cancel the two local index forms. The Atiyah–Patodi–Singer theorem then says the remaining difference is an integer. Our own explanation puts additivity into the direct sum of Dirac spectra under disjoint union.
+**How the definition helps.** Equal ranks and flatness cancel the two local index integrals on a spin bordism (our own argument). The Atiyah–Patodi–Singer theorem therefore makes the total reduced eta difference on its oriented boundary an integer. Disjoint union adds spectra and hence adds the differences.
 
 **nLab:** [eta invariant](https://ncatlab.org/nlab/show/eta+invariant). It says: “as the boundary correction term for the index formula on a manifold with boundary”
 
@@ -3824,7 +3697,7 @@
 
 *Rules out counterexamples.* MSC 58J20 (Index theory and related fixed-point theorems on manifolds), 58J35. arXiv math-ph, math.AT. Level 4: research.
 
-**Definition.** Take a degree-zero 1\|1-dimensional Euclidean field theory with smooth index bundles in the sense of Berwick-Evans. Its partition form Z is the graded trace of heat evolution, subtracting the odd trace from the even trace. For λ &gt; 0, restrict to parameters where λ avoids the spectrum of the squared generator. The eigenspaces below λ then form a smooth finite-dimensional bundle and define a cutoff partition form.
+**Definition.** Consider a degree-zero 1\|1-dimensional Euclidean field theory with smooth index bundles in the sense of Berwick-Evans. For λ &gt; 0, its cutoff bundle uses the eigenspaces of the squared generator below λ wherever λ avoids the spectrum. The cutoff partition form is the partition form of the theory restricted to this bundle.
 
 **Problem.** On this open set, Z minus the cutoff partition form equals the exterior derivative of a differential form. The two closed forms therefore represent the same de Rham cohomology class.
 
@@ -3840,13 +3713,13 @@
 
 **Remember:** Allow changes near zero, but keep the signs far from zero.
 
-*Rules out counterexamples. Confidence: medium.* MSC 58J20 (Index theory and related fixed-point theorems on manifolds), 58J30. arXiv math.DG. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 58J20 (Index theory and related fixed-point theorems on manifolds), 58J30. arXiv math.DG. Level 4: research.
 
 **Definition.** A spectral section is a smooth family of orthogonal projections. Above a common spectral cutoff it keeps every eigenvector, and below the negative cutoff it discards every eigenvector. Between the cutoffs the projection can vary.
 
 **Problem.** Over a compact base, a smooth Dirac family on closed odd-dimensional spin fibers admits a spectral section exactly when its odd family index vanishes.
 
-**How the definition helps.** The adjustable middle band lets a smooth projection pass through individual zero crossings (our own explanation). Melrose and Piazza prove that vanishing of the index in K¹, the group classifying odd index families, suffices for a global choice.
+**How the definition helps.** A spectral section expresses a single global choice of positive spectral spaces with freedom near zero (our own explanation). The Melrose–Piazza spectral section theorem identifies the odd family index as the exact obstruction to that choice.
 
 **nLab:** [spectral flow](https://ncatlab.org/nlab/show/spectral+flow). It says: “the change of spectrum of an operator as that operator continuously varies with a parameter.”
 
@@ -3879,9 +3752,9 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 58J22 (Exotic index theories on manifolds), 19K56, 53C21. arXiv math.DG, math.KT. Level 4: research.
 
-**Definition.** Cut a complete Riemannian manifold M of odd dimension along a compact hypersurface N into two pieces. A Dirac operator D on M has a coarse index in the K-theory of the Roe algebra, an algebra of operators that move supports a bounded distance. The partitioned index is the integer obtained from it by a boundary map built from the two pieces.
+**Definition.** For a complete odd-dimensional Dirac manifold split by a compact separating hypersurface, take the coarse index of its Dirac operator. Its partitioned index is the image under the coarse Mayer–Vietoris boundary map, identified with an integer using compactness of the hypersurface.
 
-**Problem.** The partitioned index of D equals the index of the Dirac operator on N (Roe). So if N is spin and N × ℝ has a complete metric of uniformly positive scalar curvature, the Dirac operator on N has index zero.
+**Problem.** With the induced Dirac operator and boundary orientation on N, its index equals the partitioned index of D. If N is closed, even-dimensional and spin, a complete uniformly positive scalar curvature metric on N × ℝ forces its spin Dirac index to vanish.
 
 **How the definition helps.** The coarse index lives on all of M, so the partition only has to extract a number, and the hard analysis is done once. Uniformly positive scalar curvature makes D invertible, so its coarse index and hence the partitioned index vanish (our own). Applying this to N × ℝ, cut along N, gives the stated obstruction (our own).
 
@@ -3898,11 +3771,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 58J22 (Exotic index theories on manifolds), 58J20. arXiv math.DG, math.OA. Level 4: research.
 
-**Definition.** Let Γ act freely on a manifold M̃ with compact quotient, and let V be a closed Γ-invariant subspace of L²(M̃). The Γ-dimension of V is the integral, over a fundamental domain, of the trace of the kernel of the orthogonal projection onto V along the diagonal. It is a finite non-negative real number even when V is infinite-dimensional.
+**Definition.** For a Galois cover with deck group Γ, the Γ-dimension of a closed Γ-invariant L² subspace is the Γ-trace of its orthogonal projection. For a smoothing projection this trace integrates the diagonal fiber trace over a fundamental domain.
 
 **Problem.** Let D be an elliptic operator on a closed manifold M, and D̃ its lift to a Galois covering M̃ with group Γ. Then the Γ-dimension of the kernel of D̃ minus that of its adjoint equals the ordinary index of D (Atiyah's L²-index theorem).
 
-**How the definition helps.** Γ-dimension turns infinite-dimensional, Γ-invariant kernels into finite numbers, so an index on M̃ can be stated at all. Both indices are supertraces of heat operators, and they do not depend on time (our own). For small time, the heat kernels upstairs and downstairs agree near the diagonal to all orders, so the two indices agree (our own). Hence, for infinite Γ, a non-zero index of D forces infinitely many independent L² solutions of D̃ (our own).
+**How the definition helps.** The Γ-dimensions of the lifted elliptic kernels are finite, so their difference defines the covering index (our own explanation). Atiyah’s L²-index theorem identifies this difference with the index downstairs.
 
 **Wikipedia:** [Atiyah–Singer index theorem](https://en.wikipedia.org/wiki/Atiyah%E2%80%93Singer_index_theorem). It says: “it is possible to get a finite index using the dimension of a module over a von Neumann algebra; this index is in general real rather than integer valued.”
 
@@ -3934,7 +3807,7 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 58J28 (Eta-invariants, Chern-Simons invariants). arXiv math.DG. Level 4: research.
 
-**Definition.** The boundary Dirac operator has an eta invariant η, its regularized count of positive eigenvalues minus negative ones. Its reduced eta invariant ξ = (η + dim ker D)/2 also counts zero modes.
+**Definition.** For the self-adjoint boundary Dirac operator D, sum sign(λ)\|λ\|⁻ˢ over nonzero eigenvalues with multiplicities for large real s. Let η be its analytically continued value at zero. The reduced eta invariant is ξ = (η + dim ker D)/2.
 
 **Problem.** On a compact even-dimensional spin manifold with product metric near the boundary, impose the boundary condition that excludes all nonnegative modes. The chiral Dirac index equals the integral of the Â curvature form minus ξ.
 
@@ -3982,42 +3855,6 @@
 
 - [José Antonio Arciniega Nevárez, José Luis Cisneros-Molina and Agustín Romano Velázquez, Classification of indecomposable reflexive modules on quotient singularities through Atiyah–Patodi–Singer theory (2025)](https://arxiv.org/abs/2504.21204)
 
-### End-periodic eta forms recover invariants
-
-**Remember:** The form keeps the periodic correction and its family variation together.
-
-*True by definition.* MSC 58J28 (Eta-invariants, Chern-Simons invariants). arXiv math.DG. Level 4: research.
-
-**Definition.** On a manifold with a repeating end, the Fourier–Laplace transform replaces translation by one period with a complex phase. Taylor’s end-periodic eta form integrates the transformed family heat expression over these phases and positive times, retaining differential forms on the base.
-
-**Problem.** For end-periodic Dirac families with closed range and finite-dimensional kernel and cokernel, the degree-zero component equals the end-periodic eta invariant on each fiber.
-
-**How the definition helps.** Degree zero discards all differentiation across the base and leaves the single-fiber heat expression (our own explanation). Taylor proves convergence and compares this expression with the earlier scalar definition.
-
-**Paper or page:** [An index formula for families of end-periodic Dirac operators](https://arxiv.org/abs/2508.06029v1). It says: “is the fiberwise end-periodic eta invariant”
-
-**Sources:**
-
-- [Alex R. Taylor, An index formula for families of end-periodic Dirac operators](https://arxiv.org/abs/2508.06029v1)
-
-### Eta forms give adiabatic limits
-
-**Remember:** The eta form stores what remains after stretching the base.
-
-*Makes the theorem clean to state or prove.* MSC 58J28 (Eta-invariants, Chern-Simons invariants). arXiv math.DG. Level 4: research.
-
-**Definition.** The Bismut–Cheeger eta form records spectral asymmetry for a family of spin Dirac operators. It integrates a heat trace over positive times using a superconnection, an operator combining differentiation along fibers and across the base.
-
-**Problem.** For a spin fibration of closed manifolds with odd-dimensional total space and invertible fiber operators, the reduced eta invariant has a limit. As the base metric stretches, the limit equals the base integral of the eta form times Â, the base curvature polynomial.
-
-**How the definition helps.** The eta form collects the fiber contributions into one integrand (our own explanation). Invertibility removes the kernel term and the integer remainder in the adiabatic limit theorem. The theorem supplies the estimates needed to take the limit.
-
-**Paper or page:** [Eta Form and Spectral Sequence for the Composition of Fibrations](https://arxiv.org/abs/2305.19637v1). It says: “is invertible, then R = 0;”
-
-**Sources:**
-
-- [Bismut and Cheeger, η-invariants and their adiabatic limits (1989)](https://doi.org/10.1090/S0894-0347-1989-0966608-3)
-
 ### Eta measures the signature defect
 
 **Remember:** Signed spectral asymmetry supplies the missing boundary term.
@@ -4042,7 +3879,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 58J28 (Eta-invariants, Chern-Simons invariants), 58J52. arXiv math.DG, math-ph. Level 4: research.
 
-**Definition.** Take a compact odd-dimensional Riemannian spin manifold with a product collar, where the metric splits into normal and boundary parts. For its spin Dirac operator D, a self-adjoint spectral boundary condition gives the scalar exp(πi(η + dim ker D)). Here η is the regularized count of positive eigenvalues minus negative eigenvalues. This scalar represents an element of the dual boundary determinant line, built from top exterior powers of the two boundary spinor kernels.
+**Definition.** On a compact odd-dimensional spin manifold with product collar, the Dai–Freed phase belongs to the dual determinant line of the boundary chiral Dirac operator. In the frame specified by an admissible unitary spectral boundary choice T, its coordinate is exp(πi(η(Dₜ) + dim ker Dₜ)). Here Dₜ denotes the self-adjoint realization for T and η denotes its eta invariant.
 
 **Problem.** Cut a closed Riemannian spin manifold of odd dimension along a separating hypersurface with a product metric near the cut. Pair the two boundary line elements using opposite orientations. The result equals the original phase.
 
@@ -4080,9 +3917,9 @@
 
 *Makes the theorem clean to state or prove.* MSC 58J28 (Eta-invariants, Chern-Simons invariants), 58J20. arXiv math.DG, math-ph. Level 4: research.
 
-**Definition.** Let a finite group act freely on a closed odd-dimensional spin manifold, preserving its metric and spin structure with a chosen spin lift. For each nonzero eigenvalue λ of the spin Dirac operator, weight its sign by the trace of h on its eigenspace. Multiply each term by \|λ\|⁻ˢ, sum for large real s, and continue analytically to s = 0. The value there is the equivariant eta invariant at h.
+**Definition.** For an isometry h of a closed odd-dimensional Riemannian spin manifold, choose a spin lift commuting with the spin Dirac operator. Sum sign(λ)\|λ\|⁻ˢ tr(h\|Eλ) over distinct nonzero eigenvalues λ with eigenspaces Eλ, initially for large real s. The equivariant eta invariant at h is its analytic continuation evaluated at zero.
 
-**Problem.** For a nonidentity group element h, this invariant stays constant along every smooth path of invariant metrics with positive scalar curvature.
+**Problem.** Suppose a finite group acts freely with a chosen spin lift. For every nonidentity element h, its equivariant eta invariant stays constant along every smooth path of invariant metrics with positive scalar curvature.
 
 **How the definition helps.** Inserting h restricts the local variation formula to points fixed by h, and the free action leaves that set empty. Our own argument uses the spinor square formula to exclude zero eigenvalues throughout the path. The analytic work lies in the equivariant variation formula.
 
@@ -4112,11 +3949,11 @@
 
 ### Odd indices over points record eta
 
-**Remember:** An odd index can record a spectral phase instead of a rank.
+**Remember:** Add the zero modes to eta, halve, and keep the fractional part.
 
 *Makes the theorem clean to state or prove.* MSC 58J28 (Eta-invariants, Chern-Simons invariants), 19L50. arXiv math.DG, math.KT. Level 4: research.
 
-**Definition.** The odd differential analytic index over a point takes values in ℝ/ℤ, real numbers modulo integers. It uses a circle product to turn the family into an even-dimensional one. The reduced eta invariant halves the sum of the regularized spectral asymmetry and the kernel dimension.
+**Definition.** For a self-adjoint Spinᶜ Dirac operator D on a closed odd-dimensional manifold, let η(D) denote its eta invariant. Its reduced eta class is (η(D) + dim ker D)/2 modulo integers.
 
 **Problem.** For a closed odd-dimensional Riemannian Spinᶜ manifold, the index of a Hermitian bundle with unitary connection equals the reduced eta invariant modulo integers. The Dirac operator uses the chosen Spinᶜ connection, and the input has zero auxiliary form.
 
@@ -4158,7 +3995,7 @@
 
 **Problem.** For a smooth family of such Dirac operators, exp(2πiξ) is smooth even where the kernel changes dimension.
 
-**How the definition helps.** Our own calculation gives one crossing mode the same phase, −1, below, at, and above zero. For example, the circle operators −i d/dx + a acquire one zero mode at a = 0. Their unreduced eta invariants have distinct one-sided limits. Our own argument uses a local spectral cutoff to remove finitely many small modes. The smoothness theorem for the eta invariant with a cutoff carries the analytic work.
+**How the definition helps.** Each small eigenmode contributes −1 to the phase whether its eigenvalue is negative, zero, or positive (our own calculation). Omitting the kernel term changes this factor at a zero crossing, as for the twisted circle operators −i d/dx + a. A local spectral cutoff separates these finitely many modes, and the cutoff eta smoothness theorem handles the rest.
 
 **nLab:** [eta invariant](https://ncatlab.org/nlab/show/eta+invariant). It says: “In fact, this is a smooth section of the determinant line bundle as X varies.”
 
@@ -4208,7 +4045,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 58J30 (Spectral flows), 58J20. arXiv math.DG, math-ph. Level 4: research.
 
-**Definition.** Take a smooth periodic family A(t) of self-adjoint operators with compact resolvent and common dense domain with its graph norm. Assume smoothness in operator norm from this domain to the Hilbert space. A conjugate-linear isometry τ preserves the domain, satisfies τ² = −1, and obeys τA(t)τ⁻¹ = A(−t). For period 2π and invertible A(0) and A(π), define half spectral flow as the signed spectral flow from 0 to π modulo two.
+**Definition.** Take a smooth 2π-periodic self-adjoint compact-resolvent family A(t) with common graph-norm domain and invertible endpoints A(0), A(π). Suppose a domain-preserving antiunitary τ satisfies τ² = −I and τA(t)τ⁻¹ = A(−t), with smoothness measured from the domain to the Hilbert space. Its half spectral flow is the signed spectral flow on \[0,π\] reduced modulo two.
 
 **Problem.** The complex dimension of the kernel of d/dt + A(t) on periodic sections equals the half spectral flow modulo two.
 
@@ -4226,7 +4063,7 @@
 
 *True by definition.* MSC 58J30 (Spectral flows), 58J20. arXiv math.DG, math-ph. Level 4: research.
 
-**Definition.** Consider a path of self-adjoint elliptic families on closed fibers over a compact base. A spectral section projects onto all sufficiently positive modes and kills all sufficiently negative modes. Choose a continuous reference section P along the path and endpoint sections Q₀ and Q₁. Define higher spectral flow as \[Q₁ − P₁\] − \[Q₀ − P₀\] in K-theory, the group of formal differences of vector bundles.
+**Definition.** Along a path of self-adjoint elliptic families, choose a continuous spectral section P and endpoint spectral sections Q₀,Q₁. Such projections keep every eigenvector above a common cutoff R &gt; 0 and kill every eigenvector below −R. Higher spectral flow is \[Q₁ − P₁\] − \[Q₀ − P₀\], using the relative projection classes over the compact base.
 
 **Problem.** Suppose two paths share their middle endpoint section and a reference section along their concatenation. Then the higher spectral flow of the concatenation is the sum of their higher spectral flows.
 
@@ -4244,7 +4081,7 @@
 
 *Rules out counterexamples.* MSC 58J30 (Spectral flows), 19L50. arXiv math.DG, math.KT. Level 4: research.
 
-**Definition.** A taming adds operators with smooth integral kernels to a family of self-adjoint Dirac operators, making every member invertible. Spectral flow counts eigenvalues crossing zero around a loop, with a sign for the direction.
+**Definition.** A taming of a smooth self-adjoint Dirac family A is a smooth self-adjoint smoothing family Q such that every operator Aₓ + Qₓ is invertible.
 
 **Problem.** A smooth loop of Dirac operators on closed odd-dimensional fibers with nonzero spectral flow admits no taming.
 
@@ -4262,7 +4099,7 @@
 
 *True by definition.* MSC 58J30 (Spectral flows). arXiv math.SP, math.FA. Level 4: research.
 
-**Definition.** Consider a norm-continuous path of bounded self-adjoint operators with closed range and finite-dimensional kernel, called Fredholm operators. Divide the path into pieces, choosing a cutoff a &gt; 0 on each piece. The spectrum must avoid ±a, with only finitely many eigenvalues between them, counted with multiplicity, and no other spectrum there. Spectral flow sums the changes from start to finish in the number of eigenvalues in \[0, a) on each piece.
+**Definition.** For a norm-continuous bounded self-adjoint Fredholm path, choose a subdivision and a cutoff a &gt; 0 on each piece. Throughout that piece, ±a avoid the spectrum and the spectral projection onto \[−a,a\] has finite rank. Spectral flow sums the final rank minus the initial rank of the projection onto \[0,a) over these pieces.
 
 **Problem.** Spectral flow along two joined paths is the sum of their spectral flows.
 
@@ -4284,7 +4121,7 @@
 
 **Problem.** On a graded nilpotent Lie group, a positive Rockland operator of positive degree has a smooth heat kernel. On a compact lattice quotient, its heat kernel sums the covering kernel over all lifts of the source point.
 
-**How the definition helps.** Each lift carries the same initial value, so its kernel weight adds to the weights of the other lifts. Our own derivation splits the covering integral into translates of one region representing the quotient. Rapid kernel decay justifies the sum, and uniqueness identifies the resulting evolution with heat flow downstairs.
+**How the definition helps.** Heat-kernel theory for positive Rockland operators gives a smooth, rapidly decreasing kernel at each positive time. Our own derivation splits its convolution with the lifted function into integrals over lattice translates of one fundamental domain. Rapid decay permits summation, and uniqueness identifies the resulting kernel downstairs.
 
 **Paper or page:** [Asymptotics and zeta functions on compact nilmanifolds](https://arxiv.org/abs/2112.01246). It says: “Kₜ(ẋ,ẏ) = ∑<sub>γ ∈ Γ</sub> pₜ(y⁻¹γx),”
 
@@ -4327,24 +4164,6 @@
 **Sources:**
 
 - [Harold Donnelly, Spectrum and the Fixed Point Sets of Isometries. I (1976)](https://doi.org/10.1007/BF01436198)
-
-### A bracket-aware principal symbol is invertible exactly for maximally hypoelliptic operators
-
-**Remember:** Keep the leading terms in the directions that the fields and their brackets generate.
-
-*Makes the theorem clean to state or prove.* MSC 58J40 (Pseudodifferential and Fourier integral operators on manifolds), 35H10. arXiv math.AP. Level 4: research.
-
-**Definition.** Fix vector fields X₁, …, Xₘ on a manifold that satisfy Hörmander's condition: together with their repeated commutators they span every tangent space. The authors define a principal symbol for any linear differential operator that takes these fields and their commutators into account. The ordinary principal symbol keeps only the highest-order terms in all directions equally.
-
-**Problem.** A differential operator is maximally hypoelliptic exactly when its new principal symbol is invertible. Maximally hypoelliptic means that Pu controls all derivatives of u along words in the fields up to the order of P. This confirms a conjecture of Helffer and Nourrigat.
-
-**How the definition helps.** The new symbol gives a regularity test that can be stated as invertibility, in the same way that ellipticity is invertibility of the ordinary symbol. Our own example is Hörmander's sum of squares X₁² + … + Xₘ², whose ordinary symbol vanishes in directions the commutators supply. The theorem generalizes Hörmander's sum of squares theorem. Proving it needs a full pseudodifferential calculus adapted to the fields.
-
-**Paper or page:** [A pseudodifferential calculus for maximally hypoelliptic operators and the Helffer-Nourrigat conjecture](https://arxiv.org/abs/2201.12060v2). It says: “We show that for an arbitrary differential operator, its principal symbol is invertible if and only if the operator is maximally hypoelliptic.”
-
-**Sources:**
-
-- [Iakovos Androulidakis, Omar Mohsen, Robert Yuncken, A pseudodifferential calculus for maximally hypoelliptic operators and the Helffer-Nourrigat conjecture, arXiv:2201.12060 (2022)](https://arxiv.org/abs/2201.12060v2)
 
 ### Bolker injectivity blocks mirror artifacts
 
@@ -4418,35 +4237,17 @@
 
 - [Maxim Kontsevich and Simeon Vishik, Determinants of elliptic pseudo-differential operators (1994)](https://www.ihes.fr/~maxim/TEXTS/determinants_elliptic_11.pdf)
 
-### Shubin order yields compactness
-
-**Remember:** Compactness needs improvement in position as well as frequency.
-
-*Rules out counterexamples.* MSC 58J40 (Pseudodifferential and Fourier integral operators on manifolds). arXiv math.AP. Level 4: research.
-
-**Definition.** Shubin order controls growth in position and frequency together on a manifold approaching a cone as its radial coordinate r grows. Negative order requires decay at large distances as well as smoothing at high frequencies.
-
-**Problem.** Every negative-order Shubin operator is compact on the space of square-integrable functions for the cylindrical measure, which uses dr/r in the radial direction.
-
-**How the definition helps.** Joint decay rules out escape to infinity in either position or frequency. In our own explanation, compactness follows from the compact embedding for the corresponding spaces of weighted regularity. On the line, convolution with a nonzero smooth compactly supported function smooths inputs but carries their translates arbitrarily far apart.
-
-**Paper or page:** [A Shubin pseudodifferential calculus on asymptotically conic manifolds](https://arxiv.org/abs/2408.08169v2). It says: “The operator T is compact for μ &lt; 0.”
-
-**Sources:**
-
-- [Thomas Krainer, A Shubin Pseudodifferential Calculus on Asymptotically Conic Manifolds (2025)](https://doi.org/10.1007/s00041-025-10178-3)
-
 ### Spectral and heat-kernel fractional Laplacians differ only through lost heat mass
 
 **Remember:** If heat is conserved, the two definitions agree.
 
 *True by definition. Confidence: medium.* MSC 58J40 (Pseudodifferential and Fourier integral operators on manifolds), 35R11, 58J35. arXiv math.AP, math.DG. Level 4: research.
 
-**Definition.** The spectral fractional Laplacian applies λ ↦ λˢ to the spectrum of −Δ; it is a weighted time integral of f − exp(tΔ)f. The heat-kernel fractional Laplacian instead integrates f(x) − f(y) against a kernel built from the heat kernel pₜ(x, y). The mass-loss function 1 − ∫ pₜ(x, y) dy measures the heat that escapes to infinity. Stochastic completeness means that this function is zero.
+**Definition.** Let pₜ(x,y) be the minimal heat kernel on a Riemannian manifold M. Stochastic completeness means ∫<sub>M</sub> pₜ(x,y) dvol(y) = 1 for every x ∈ M and t &gt; 0. The mass loss is one minus this integral.
 
-**Problem.** On a complete Riemannian manifold, the discrepancy between the spectral and heat-kernel definitions of the fractional and logarithmic Laplacians is governed by the mass-loss function. So the two definitions agree on stochastically complete manifolds.
+**Problem.** On a complete Riemannian manifold, heat loss determines the difference between the spectral and heat-kernel formulas for the fractional and logarithmic Laplacians wherever both converge. On a stochastically complete manifold the formulas agree.
 
-**How the definition helps.** Writing both definitions through the heat semigroup turns the comparison into a one-line calculation (our own). The difference at x is f(x) times a time integral of the mass loss at x (our own). The paper's harder work is the pointwise integral formulas under a lower Ricci bound and the estimates on hyperbolic space.
+**How the definition helps.** At each time, subtract ∫<sub>M</sub> pₜ(x,y)(f(x) − f(y)) dvol(y) from f(x) − exp(tΔ)f(x). The difference equals f(x) times the mass loss (our own calculation). Integrating the discrepancy with the weight of the applicable formula gives zero when heat is conserved.
 
 **Paper or page:** [Logarithmic Laplacian on General Riemannian Manifolds](https://arxiv.org/abs/2506.19311v1). It says: “We further compare spectral versus heat kernel definitions of both fractional and logarithmic Laplacians, showing that their discrepancy is governed by the mass loss function and hence by stochastic completeness.”
 
@@ -4454,31 +4255,13 @@
 
 - [Rui Chen, Logarithmic Laplacian on General Riemannian Manifolds, arXiv:2506.19311v1 (2025)](https://arxiv.org/abs/2506.19311v1)
 
-### The cylindrical calculus keeps inverses
-
-**Remember:** An inverse can have a rapidly decreasing tail.
-
-*Rules out counterexamples.* MSC 58J40 (Pseudodifferential and Fourier integral operators on manifolds). arXiv math.AP. Level 4: research.
-
-**Definition.** On straight cylindrical ends, the translation-invariant calculus uses operators unchanged by translation far down each end. Their kernels vanish beyond a fixed input-to-output distance. The essentially translation-invariant calculus also admits smoothing remainders with rapid decay at infinity.
-
-**Problem.** On a manifold with compact core and straight cylindrical ends, any order-zero operator in the larger calculus invertible on square-integrable functions has its inverse there.
-
-**How the definition helps.** Allowing decaying tails removes a support obstruction to inversion. In our own example on the line, subtract convolution with a positive bump supported in \[1,2\] of integral below one from the identity. Its inverse sums all convolution powers and reaches arbitrarily far. The spectral invariance theorem proves that inverses stay in the larger class.
-
-**Paper or page:** [Layer potentials and essentially translation invariant pseudodifferential operators on manifolds with cylindrical ends](https://arxiv.org/abs/2308.06308v3). It says: “Then $T<sup>-1</sup>\\in {\\Psi\_{\\operatorname{ess}}<sup>\[-s-t\]</sup>}({\\mathfrak M} ; F, E)$.”
-
-**Sources:**
-
-- [Mirela Kohr, Victor Nistor and Wolfgang L. Wendland, Layer potentials and essentially translation invariant pseudodifferential operators on manifolds with cylindrical ends (2023)](https://arxiv.org/abs/2308.06308v3)
-
 ### The residue measures failed scaling
 
 **Remember:** Divide the scaling defect by log to read the residue.
 
 *True by definition.* MSC 58J40 (Pseudodifferential and Fourier integral operators on manifolds). arXiv math.AP, math.DG. Level 4: research.
 
-**Definition.** The tangent groupoid joins pairs of manifold points to tangent vectors at scale zero. A classical operator kernel extends to this family with a scaling law up to smooth error. In dimension d at order −d, the defect is the dilated kernel times the dth power of the scale factor, minus the original kernel.
+**Definition.** Let 𝕜 be an essentially homogeneous tangent-groupoid kernel of order −d extending a classical operator kernel on a d-dimensional manifold. For dilation factor s &gt; 0, its scaling defect is the smooth density sᵈ(αₛ)∗𝕜 − 𝕜, where (αₛ)∗ denotes pushforward by groupoid dilation.
 
 **Problem.** At each zero tangent vector, the scaling defect divided by the logarithm of the positive dilation factor gives the Wodzicki residue density. The dilation factor must differ from one.
 
@@ -4496,9 +4279,9 @@
 
 *Rules out counterexamples.* MSC 58J50 (Spectral problems; spectral geometry; scattering theory on manifolds). arXiv math.SP, math.DG. Level 4: research.
 
-**Definition.** A unit tangent vector is periodic if its geodesic returns with the same position and velocity after a positive time. Call the periodic directions negligible if they have zero measure for the natural volume on the unit tangent bundle. The leading Weyl term is (2π)⁻ⁿ times manifold volume, Euclidean unit ball volume, and λ to the power n/2, all multiplied together.
+**Definition.** A unit tangent vector is periodic if its geodesic returns to that vector after some positive time. Periodic directions are negligible if their set has Liouville measure zero in the unit tangent bundle.
 
-**Problem.** On a closed n-dimensional Riemannian manifold with negligible periodic directions, let N(λ) count Laplace eigenvalues at most λ with multiplicity. Its error from the leading Weyl term is little-o of λ to the power (n−1)/2 as λ tends to infinity.
+**Problem.** On a closed n-dimensional Riemannian manifold M with negligible periodic directions, let N(λ) count Laplace eigenvalues at most λ with multiplicity. As λ → ∞, N(λ) = (2π)⁻ⁿ vol(M) vol(Bⁿ) λ<sup>(n/2)</sup> + o(λ<sup>((n−1)/2)</sup>), where Bⁿ is the Euclidean unit ball.
 
 **How the definition helps.** The measure condition excludes round spheres, where every direction returns and large multiplicities force jumps of the same order as the proposed error scale. Our own comparison uses the continuity of the leading Weyl term across each jump. Dividing the error by the stated power must give a limit of zero. The sharper estimate requires the Duistermaat–Guillemin theorem relating periodic geodesics to the wave trace.
 
@@ -4514,7 +4297,7 @@
 
 *True by definition.* MSC 58J50 (Spectral problems; spectral geometry; scattering theory on manifolds). arXiv math.SP, math.DG. Level 4: research.
 
-**Definition.** On an infinite cone, define the Friedrichs Laplacian through the gradient energy of smooth functions supported away from the tip. Complete these functions in the norm whose square adds the energy to the squared L² norm.
+**Definition.** On an infinite cone, close the gradient energy form on compactly supported smooth functions away from the tip. Its form domain uses the norm √(‖u‖² + ‖∇u‖²), with both norms taken in L². The Friedrichs Laplacian is the nonnegative self-adjoint operator associated with this closed form.
 
 **Problem.** On an exact infinite cone, every radial dilation, normalized to preserve the L² norm, preserves the Friedrichs operator domain. For dilation U that evaluates functions at radius ρr, the Laplacian satisfies ΔU = ρ²UΔ.
 
@@ -4604,7 +4387,7 @@
 
 *True by definition.* MSC 58J52 (Determinants and determinant bundles, analytic torsion), 58J20. arXiv math.DG, math-ph. Level 4: research.
 
-**Definition.** Consider a smooth family of index-zero Cauchy–Riemann operators D on a complex bundle over a closed Riemann surface. These operators specify complex differentiation in the antiholomorphic direction. Use the line (det ker D)\* ⊗ det coker D, where det denotes top exterior power and the star denotes duality. Local finite-dimensional reductions give square matrices whose determinants define a section of this line.
+**Definition.** For an index-zero Cauchy–Riemann operator D on a closed Riemann surface, its determinant line is (det ker D)\* ⊗ det coker D. Here det denotes top exterior power and the star denotes duality. The determinant section of a smooth family is represented in each local finite-dimensional reduction by the determinant of the reduced square matrix.
 
 **Problem.** The determinant section vanishes precisely where an operator in the family is not invertible.
 
@@ -4622,7 +4405,7 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 58J52 (Determinants and determinant bundles, analytic torsion), 58J50. arXiv math.SP, math.DG. Level 4: research.
 
-**Definition.** In degree p, let Dₚ be the determinant obtained from positive eigenvalues of the Laplacian on differential p-forms by zeta regularization. This assigns a value to their infinite product using the derivative of their spectral zeta function. Analytic torsion multiplies the Dₚ raised to the powers −(−1)ᵖp/2.
+**Definition.** For each form degree p, let ζₚ(s) sum λ⁻ˢ over positive Laplace eigenvalues with multiplicity, initially for large real s. Set Dₚ = exp(−ζₚ′(0)) by analytic continuation. Analytic torsion is the product of Dₚ raised to −(−1)ᵖp/2 over all degrees p.
 
 **Problem.** On a closed oriented Riemannian manifold of even dimension, the analytic torsion of the ordinary differential forms equals one.
 
@@ -4634,31 +4417,13 @@
 
 - [Daniel Ray and Isadore Singer, R-Torsion and the Laplacian on Riemannian Manifolds (1971)](https://doi.org/10.1016/0001-8708(71)90045-4)
 
-### Local forms give determinant curvature
-
-**Remember:** The connection selects a curvature form within its cohomology class.
-
-*Makes the theorem clean to state or prove.* MSC 58J52 (Determinants and determinant bundles, analytic torsion). arXiv math.DG. Level 4: research.
-
-**Definition.** On the inverse determinant line of a spin Dirac family, use the dual Bismut–Freed connection. It differentiates sections using the low eigenspaces and a regularized contribution from the rest of the spectrum.
-
-**Problem.** For closed even-dimensional spin fibers, i/(2π) times the curvature of this connection equals the degree-two part of the fiber integral of Â. The form Â is a polynomial in the curvature along the fibers.
-
-**How the definition helps.** Choosing the connection specifies a particular curvature form within the first Chern class (our own explanation). The Bismut–Freed local index calculation identifies that form.
-
-**Wikipedia:** [Quillen metric](https://en.wikipedia.org/wiki/Quillen_metric). It says: “the agreement of this prediction with the curvature form was proven by Bismut and Freed.”
-
-**Sources:**
-
-- [Bismut and Freed, The analysis of elliptic families II (1986), Theorem 1.21](https://doi.org/10.1007/BF01206955)
-
 ### Odd genera give self-dual torsion
 
 **Remember:** Duality preserves odd coefficients and negates even ones.
 
 *True by definition.* MSC 58J52 (Determinants and determinant bundles, analytic torsion), 14G40. arXiv math.AG. Level 4: research.
 
-**Definition.** A generalized analytic torsion theory assigns metric corrections to direct images of complexes of vector bundles. Its additive genus is the real power series that measures its difference from homogeneous torsion, the reference theory. The classification theorem identifies each such theory with exactly one series.
+**Definition.** An additive genus here is the formal real power series S assigned to a generalized analytic torsion theory by the classification relative to homogeneous torsion. Such a genus is odd if S(−x) = −S(x) as formal series.
 
 **Problem.** A generalized analytic torsion theory agrees with its dual exactly when its additive genus is odd, including the requirement that its constant term vanish.
 
@@ -4694,7 +4459,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 58J52 (Determinants and determinant bundles, analytic torsion). arXiv math-ph. Level 4: research.
 
-**Definition.** For a Dirac operator with quaternionic symmetry, every eigenvalue has even complex multiplicity. Keep ξ, half the sum of the regularized signed eigenvalue count and the kernel dimension, modulo even integers.
+**Definition.** A self-adjoint Dirac operator D has quaternionic symmetry if an antiunitary J commutes with D and satisfies J² = −I. Its reduced eta class modulo two is (η(D) + dimℂ ker D)/2 in ℝ/2ℤ.
 
 **Problem.** For closed spin fibers of dimension 8k + 2 with real twisting bundle, transport around a loop in the Pfaffian line equals the limiting exp(−πiξ). Compute ξ on the total space as the base circle stretches, using the spin structure that extends across a disk.
 
@@ -4716,7 +4481,7 @@
 
 **Problem.** For smoothly varying Dolbeault operators on a fixed compact Riemann surface with fixed Hermitian data, the Quillen norm stays smooth when the kernel dimension changes.
 
-**How the definition helps.** The correction cancels the singular factor in the uncorrected norm (our own explanation). For multiplication by z on ℂ, a smooth constant frame has uncorrected norm 1/\|z\| away from zero. The correction contributes \|z\|, and Quillen proves smoothness of the remaining spectral product in the general case.
+**How the definition helps.** When a positive eigenvalue tends to zero, the spectral product compensates for the change in the kernel norm (our own explanation). For multiplication by z on ℂ, the determinant section has induced norm 1 away from zero and equals z times a smooth constant frame. The factor \|z\| therefore cancels the frame norm 1/\|z\|. Quillen proves smoothness of the remaining spectral product.
 
 **Wikipedia:** [Quillen metric](https://en.wikipedia.org/wiki/Quillen_metric). It says: “does not define a smooth Hermitian metric.”
 
@@ -4748,7 +4513,7 @@
 
 *Rules out counterexamples.* MSC 58J52 (Determinants and determinant bundles, analytic torsion). arXiv math.DG. Level 4: research.
 
-**Definition.** On the determinant line of cohomology, take the top exterior powers in even degrees and their duals in odd degrees. The Ray–Singer norm divides the norm of harmonic representatives by analytic torsion, a weighted product of regularized Laplacian determinants.
+**Definition.** The cohomology determinant line tensors the top exterior powers of even cohomology groups with the dual top exterior powers in odd degrees. Its Ray–Singer norm divides the harmonic norm by torsion T, where log T = ½∑ₚ(−1)ᵖpζₚ′(0). Here ζₚ is the spectral zeta function of the positive degree-p Laplace eigenvalues, counted with multiplicity.
 
 **Problem.** For a closed oriented Riemannian manifold with unitary flat coefficients, the Ray–Singer norm equals the Reidemeister norm computed from cellular cochains.
 
@@ -4766,9 +4531,9 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 58J52 (Determinants and determinant bundles, analytic torsion). arXiv math.SP, math.DG. Level 4: research.
 
-**Definition.** Let A be a positive self-adjoint operator with eigenvalues a₁, a₂, …. Its zeta function ζA(s) = Σ aₙ⁻ˢ converges for large Re s and continues analytically to s = 0. The zeta-regularized determinant of A is exp(−ζA′(0)).
+**Definition.** Let A have discrete positive eigenvalues aₙ counted with multiplicity, with ∑ₙ aₙ⁻ˢ convergent for large real s. If this sum continues meromorphically to a function ζ regular at zero, its zeta-regularized determinant is exp(−ζ′(0)). For a nonnegative Laplacian, omit the kernel before forming the product.
 
-**Problem.** Ray and Singer defined the analytic torsion of a closed Riemannian manifold from zeta-regularized determinants of its Laplacians on forms. Cheeger and Müller proved that it equals the Reidemeister torsion, an invariant computed from a triangulation (our own).
+**Problem.** Ray and Singer defined analytic torsion on closed Riemannian manifolds using regularized determinants of form Laplacians. For orthogonal flat coefficients, Cheeger and Müller identified the resulting norm on the cohomology determinant line with the Reidemeister norm from a triangulation (our own).
 
 **How the definition helps.** For a finite matrix, −ζ′(0) is the sum of the logarithms of the eigenvalues, so the definition extends the ordinary determinant (our own). For a Laplacian the eigenvalue product diverges, but ζ′(0) still exists, so determinants of operators become finite numbers. The hard work moves into theorems that compare the regularized value with other invariants, such as the Cheeger–Müller theorem (our own).
 
@@ -4836,13 +4601,13 @@
 
 **Remember:** The lower tangent space must fit inside every limiting upper tangent space.
 
-*Rules out counterexamples.* MSC 58K05 (Critical points of functions and mappings on manifolds). arXiv math.DG. Level 4: research.
+*True by definition.* MSC 58K05 (Critical points of functions and mappings on manifolds). arXiv math.DG. Level 4: research.
 
 **Definition.** A stratification divides a closed set into locally finitely many smooth pieces called strata, with their boundaries made of lower strata. Whitney condition A requires each limiting tangent plane from an approaching stratum to contain the tangent space of the stratum at the limit.
 
 **Problem.** For a compact source, smooth maps whose order-k jets meet every stratum transversely form an open set in the smooth topology. Here the stratified set lies in the space of jets, which record values and derivatives through order k, and satisfies Whitney condition A.
 
-**How the definition helps.** Condition A preserves the tangent directions needed for transversality when the meeting point moves between strata (our own explanation). Transversality means the jet map supplies all directions missing from the stratum’s tangent plane. Compactness lets this control persist over the whole source.
+**How the definition helps.** Whitney condition A transfers transversality across changes of stratum (our own explanation). If nearby maps failed transversality, compactness would give a convergent subsequence of failure points and limiting tangent planes. Each limiting plane contains the lower tangent space, which already spans the jet tangent space together with the limiting jet derivative. This contradicts failure of transversality along the subsequence.
 
 **Paper or page:** [Multiple-point residue formulas for holomorphic maps](https://arxiv.org/abs/2112.15502v1). It says: “the set of maps f: M → N whose k-jet is transversal to all strata of the stratification is open”
 
@@ -4956,7 +4721,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 58K60 (Deformation of singularities), 58K40. arXiv math.AG. Level 4: research.
 
-**Definition.** For a formal power series map at zero over ℂ, take all series perturbations modulo first-order source and target coordinate changes, including translations. A parameter family is infinitesimally versal if its parameter derivatives span this quotient.
+**Definition.** For a formal map f at zero over ℂ, quotient vector-valued series along f by all df(X) + Y ∘ f. Here X and Y are formal source and target vector fields, including constants. An unfolding is infinitesimally versal if its parameter derivatives at the original map span this complex quotient.
 
 **Problem.** If the quotient has finite dimension, its dimension is the minimum number of parameters for formal versality. Formal versality means every formal family of the map comes from parameter substitution and parameter-dependent source and target coordinate changes.
 

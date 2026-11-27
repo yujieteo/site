@@ -8,7 +8,7 @@
 
 **Problem.** Let u be harmonic on an open set V, and let φ map an open set U holomorphically into V. Then u∘φ is harmonic on U.
 
-**How the definition helps.** The local real part definition lets us use closure of holomorphic functions under composition. Near φ(z), write u as the real part of a holomorphic f; then near z, u∘φ is the real part of f∘φ (our own argument). This avoids the second-order chain rule. The work moves into the equivalence of the definitions, where ∂u/∂x − i∂u/∂y is holomorphic and a local primitive has real part u.
+**How the definition helps.** Holomorphic composition preserves the local real-part representation (our own). Near φ(z), write u = Re f for holomorphic f. Then u∘φ = Re(f∘φ) near z, as required (our own).
 
 **Wikipedia:** [Harmonic function](https://en.wikipedia.org/wiki/Harmonic_function). It says: “Conversely, any harmonic function u on an open subset Ω of ℝ² is locally the real part of a holomorphic function.”
 
@@ -20,7 +20,7 @@
 
 *Rules out counterexamples.* MSC 31A05 (Harmonic, subharmonic, superharmonic functions in two dimensions). arXiv math.CV. Level 2: later undergraduate.
 
-**Definition.** For a real harmonic function u in the plane, find its conjugate by integrating the field (−∂u/∂y, ∂u/∂x). This gives the imaginary part of a holomorphic function if the integral does not depend on the path. A simply connected domain is connected and every loop in it can shrink to a point.
+**Definition.** A harmonic conjugate of a real harmonic function u on a planar domain is a real function v such that u + iv is holomorphic. Equivalently, its gradient equals (−∂u/∂y, ∂u/∂x) throughout the domain (our own).
 
 **Problem.** On a simply connected planar domain, each real harmonic function has a single-valued harmonic conjugate, unique up to a constant.
 
@@ -40,7 +40,7 @@
 
 **Problem.** Let f be real and integrable on the unit circle. Its Poisson integral is the average of the kernel times f over the circle. This integral is harmonic inside the disc.
 
-**How the definition helps.** The real-part formula makes the Poisson integral the real part of one holomorphic function. Move the real part outside the integral, which is valid since f is real. The integral of the complex expression is holomorphic because its power series in z converges uniformly on each smaller closed disc before integration. This is our own argument and avoids computing second partial derivatives of the real kernel. The work goes into justifying the holomorphic integral and identifying the two kernel formulas by multiplying by the conjugate of the denominator.
+**How the definition helps.** The Poisson integral is the real part of a holomorphic integral (our own). Real boundary data let us take the real part after integration. The kernel’s complex power series converges uniformly on each smaller closed disk, so termwise integration gives a holomorphic function (our own).
 
 **Wikipedia:** [Poisson kernel](https://en.wikipedia.org/wiki/Poisson_kernel). It says: “is harmonic in D and has a radial limit that agrees with f almost everywhere on the boundary T of the disc.”
 
@@ -84,11 +84,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 31A05 (Harmonic, subharmonic, superharmonic functions in two dimensions), 30H10. arXiv math.CV, math.CA. Level 3: graduate.
 
-**Definition.** A function φ on a domain, with values in ℝ ∪ {−∞}, is subharmonic if it is upper semicontinuous and satisfies a comparison test. Upper semicontinuous means that its value at each point is at least the lim sup of nearby values. The test works on each closed ball in the domain. If a harmonic function h is at least φ on the boundary sphere, then h is at least φ inside.
+**Definition.** A function φ from a domain to ℝ ∪ {−∞} is subharmonic if it is upper semicontinuous and passes the following comparison test. On every closed interior ball, take any continuous h that is harmonic inside. If φ ≤ h on the boundary, then φ ≤ h throughout the ball.
 
 **Problem.** For a holomorphic function f, the function log\|f\| is subharmonic. So \|f\|ᵅ is subharmonic for every α &gt; 0.
 
-**How the definition helps.** Upper semicontinuity and the value −∞ are exactly what log\|f\| needs at the zeros of f. Away from the zeros, log\|f\| is harmonic (our own remark). At a zero it tends to −∞, so a definition with real values or with continuity would exclude it. With the wider definition, log\|f\| has the sub-mean-value property everywhere, which is how Jensen's formula enters (our own).
+**How the definition helps.** The value −∞ makes log\|f\| upper semicontinuous at zeros and gives the local circle mean inequality there automatically (our own). Elsewhere log\|f\| is locally harmonic, so it satisfies the local mean test everywhere (our own). Applying the increasing convex function t ↦ exp(αt) preserves the inequality by Jensen’s inequality, with exp(−∞) = 0 (our own).
 
 **Wikipedia:** [Subharmonic function](https://en.wikipedia.org/wiki/Subharmonic_function). It says: “If f is a holomorphic function, then φ(z) = log\|f(z)\| is a subharmonic function if we define the value of φ(z) at the zeros of f to be −∞.”
 
@@ -102,11 +102,11 @@
 
 *True by definition.* MSC 31A05 (Harmonic, subharmonic, superharmonic functions in two dimensions). arXiv math.CA. Level 3: graduate.
 
-**Definition.** On the unit disk, a continuous subharmonic function lies below every harmonic function that bounds it on the boundary of a smaller closed disk. A harmonic function has Laplacian zero. Its harmonic replacement on a smaller disk solves Laplace’s equation there with the original boundary values.
+**Definition.** For a continuous subharmonic function u on the unit disk, its harmonic replacement on a closed interior disk has two defining properties. It is continuous on the closed disk, agrees with u on the circle and is harmonic inside.
 
 **Problem.** If a continuous subharmonic function on the unit disk has any harmonic upper bound, it has a least harmonic upper bound.
 
-**How the definition helps.** Our own construction finds the least upper bound among harmonic functions by solving on increasing concentric disks. Each replacement bounds the original function and stays below every harmonic upper bound by comparison. Successive replacements therefore increase. Harnack’s convergence theorem makes their bounded increasing limit harmonic on the whole disk. The source gives the existence criterion on harmonic manifolds, including the hyperbolic plane. Its disk model has the same harmonic functions as the Euclidean disk.
+**How the definition helps.** Comparison puts each replacement above u and below every harmonic majorant (our own). On concentric disks increasing to the unit disk, comparison also makes successive replacements increase on their common domain (our own). A harmonic majorant bounds them above, so Harnack’s convergence theorem gives a harmonic limit (our own). The same bounds make it the least majorant (our own).
 
 **Paper or page:** [Boundary exceptional sets for radial limits of superharmonic functions on non-positively curved Harmonic manifolds of purely exponential volume growth](https://arxiv.org/abs/2309.05661). It says: “f has a least harmonic majorant on X.”
 
@@ -116,13 +116,13 @@
 
 **Remember:** Take the upper limit nearby to fill a downward hole.
 
-*Rules out counterexamples.* MSC 31A05 (Harmonic, subharmonic, superharmonic functions in two dimensions). arXiv math.CA. Level 3: graduate.
+*True by definition.* MSC 31A05 (Harmonic, subharmonic, superharmonic functions in two dimensions). arXiv math.CA. Level 3: graduate.
 
 **Definition.** A subharmonic function satisfies the circle mean inequality and is upper semicontinuous, meaning nearby values have upper limit at most its value. Take the supremum v of a sequence of such functions on a planar domain, uniformly bounded above on each compact subset. Replace v at each point by the limit of its suprema on shrinking disks centered there.
 
 **Problem.** The corrected supremum is subharmonic.
 
-**How the definition helps.** The upper limit repairs downward jumps while preserving comparison with harmonic functions in our own proof. If a harmonic function bounds the corrected supremum on a disk boundary, it bounds each original function throughout the disk. Continuity preserves that bound after taking nearby upper limits inside. This comparison characterizes subharmonicity. Our own example takes the larger of −1 and log\|z\|/n on the unit disk for each positive integer n. The supremum equals zero except at zero, where it equals −1.
+**How the definition helps.** Taking nearby upper limits preserves harmonic upper bounds and makes the supremum upper semicontinuous (our own). On a closed interior disk, any continuous harmonic comparison function dominating the corrected boundary values dominates every original function throughout (our own). Continuity preserves that bound under nearby upper limits inside, giving the comparison test for subharmonicity (our own).
 
 **Paper or page:** [Viscosity solutions to complex Hessian equations](https://arxiv.org/abs/1209.5343). It says: “where v⋆ is the upper semicontinuous regularization of v.”
 
@@ -138,7 +138,7 @@
 
 **Problem.** Every positive harmonic function on the disk is the Poisson integral of a unique finite positive boundary measure. For holomorphic functions with positive real part, that measure determines the function up to an imaginary constant.
 
-**How the definition helps.** Boundary measures include point masses, so the representation covers functions whose radial limits miss all their mass (our own). A point mass gives a positive Poisson kernel with radial limit zero almost everywhere (our own). Any integrable boundary density for that kernel would therefore vanish almost everywhere (our own). Existence uses weak limits of measures on expanding circles, and their Fourier coefficients give uniqueness (our own). A holomorphic function on the disk is determined by its real part up to an imaginary constant (our own).
+**How the definition helps.** Allowing boundary measures includes a point mass, whose Poisson kernel has radial limit zero almost everywhere (our own). The Poisson representation theorem gives existence and uniqueness of the measure (our own). Holomorphic functions with the same real part on the disk differ by an imaginary constant (our own).
 
 **Wikipedia:** [Positive harmonic function](https://en.wikipedia.org/wiki/Positive_harmonic_function). It says: “a positive harmonic function on the unit disc in the complex numbers is characterized as the Poisson integral of a finite positive measure on the circle.”
 
@@ -154,7 +154,7 @@
 
 **Problem.** A conformal bijection that extends to a homeomorphism of the closures preserves this capacity.
 
-**How the definition helps.** In our own proof, using the energy infimum makes it enough to transport each test function. Composing with the map multiplies squared gradient length by the squared magnitude of its derivative. This is also the area factor, so changing variables gives equal energies. The inverse map gives the reverse correspondence, and the two infima agree. The work is proving agreement with the charge computed from the harmonic voltage with the prescribed boundary values.
+**How the definition helps.** In our own proof, using the energy infimum makes it enough to transport each test function. Composing with the map multiplies squared gradient length by the squared magnitude of its derivative. This is also the area factor, so changing variables gives equal energies. The inverse map gives the reverse correspondence, and the two infima agree.
 
 **Wikipedia:** [Capacity of a set](https://en.wikipedia.org/wiki/Capacity_of_a_set). It says: “a variational characterization: C(Σ, S) is the infimum of the Dirichlet's energy functional”
 
@@ -206,7 +206,7 @@
 
 **Problem.** A conformal bijection f multiplies the conformal radius at a by \|f′(a)\|.
 
-**How the definition helps.** In our own proof, composing g with f gives a disk map for the image domain. The chain rule multiplies its derivative magnitude by \|f′(a)\|. Two choices of g differ by a disk rotation, so both give the same radius. The alternative uses the positive Green function G with logarithmic pole at a and zero boundary values. The work is proving that G(z) + log\|z − a\| tends to the logarithm of the disk derivative magnitude.
+**How the definition helps.** In our own proof, composing g with f gives a disk map for the image domain. The chain rule multiplies its derivative magnitude by \|f′(a)\|. Two choices of g differ by a disk rotation, so both give the same radius.
 
 **Paper or page:** [Two dimensional potential theory with a view towards vortex motion: Energy, capacity and Green functions](https://arxiv.org/abs/2405.19215v3). It says: “h₀(z) = h̃₀(w) + log \|f′(w)\|”
 
@@ -216,11 +216,11 @@
 
 ### Extremal length distinguishes annuli with different radius ratios
 
-**Remember:** Extremal length reads the annulus radius ratio without classifying its conformal maps.
+**Remember:** Maximize squared shortest weighted length divided by weighted area.
 
 *True by definition.* MSC 31A15 (Potentials and capacity, harmonic measure, extremal length and related notions in two dimensions), 30C75. arXiv math.CV. Level 3: graduate.
 
-**Definition.** To define the extremal length of a curve family, assign the domain a nonnegative measurable weight ρ with 0 &lt; ∫ρ² dA &lt; ∞. The weighted length of a curve is the line integral of ρ along it. For each weight take the infimum of these lengths, square it, and divide by ∫ρ² dA. The extremal length is the supremum of these quotients over all such weights.
+**Definition.** For a planar curve family Γ, take all nonnegative Borel weights ρ with 0 &lt; Aρ = ∫ρ² dA &lt; ∞. Let Lρ be the infimum over γ ∈ Γ of the weighted lengths ∫γ ρ ds. The extremal length of Γ is the supremum of Lρ²/Aρ over these weights.
 
 **Problem.** Let 0 &lt; r &lt; R &lt; ∞ and 0 &lt; r′ &lt; R′ &lt; ∞. Suppose there is a holomorphic bijection with holomorphic inverse between r &lt; \|z\| &lt; R and r′ &lt; \|z\| &lt; R′. Then R/r = R′/r′.
 
@@ -240,11 +240,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 31A15 (Potentials and capacity, harmonic measure, extremal length and related notions in two dimensions). arXiv math.CV. Level 3: graduate.
 
-**Definition.** In a bounded planar domain containing zero, the Green function with pole zero is harmonic away from zero and has a logarithmic singularity there. It has zero boundary values in the sense of potential theory. Extend it by zero outside the domain and average its values around each circle centered at zero.
+**Definition.** For a bounded planar domain D containing 0, let G be its positive Green function with pole 0. Extend G by zero outside D. Its circular average at radius r &gt; 0 is the average of G(reⁱᶿ) over 0 ≤ θ &lt; 2π.
 
 **Problem.** The circular average of the Green function is nonincreasing as the radius increases.
 
-**How the definition helps.** Circular averaging turns the Green function into a convex function of log radius on smooth domains. The cited proof obtains convexity from the circle mean inequality away from the pole. The average is nonnegative and eventually zero, so convexity makes it nonincreasing. Increasing smooth subdomains fill an arbitrary bounded domain. Their Green functions increase to its Green function, so their averages preserve the inequality.
+**How the definition helps.** The circle mean inequality gives convexity of the circular average in log r for smooth domains. This convex function is nonnegative and eventually zero, so it cannot increase. Along a smooth exhaustion, Green functions increase to G, and monotone convergence passes the inequality to its circular averages (our own).
 
 **Paper or page:** [On the Hardy number and the Bergman number of a planar domain](https://arxiv.org/abs/2504.04207). It says: “ψ₍D₎ is a convex function of log r, 0 &lt; r &lt; +∞.”
 
@@ -258,7 +258,7 @@
 
 *True by definition.* MSC 31A15 (Potentials and capacity, harmonic measure, extremal length and related notions in two dimensions). arXiv math.CV. Level 3: graduate.
 
-**Definition.** For a compact planar set K with connected complement, its Green function g is positive and harmonic off K. It extends continuously by zero to K. The logarithmic capacity of K is exp(−c), where c is the limit of g(z) − log\|z\| at infinity. For two such sets, let Γ be the supremum over the plane of the absolute difference of their Green functions.
+**Definition.** Take a compact planar K with connected complement and a Green function g with pole at infinity extending continuously by zero on K. Its logarithmic capacity is exp(−lim<sub>z→∞</sub>(g(z) − log\|z\|)). For two such sets, Γ is the supremum over the plane of the absolute difference between their extended Green functions.
 
 **Problem.** The logarithms of the capacities of two such sets differ by at most Γ.
 
@@ -274,7 +274,7 @@
 
 *True by definition.* MSC 31A15 (Potentials and capacity, harmonic measure, extremal length and related notions in two dimensions). arXiv math.CV. Level 3: graduate.
 
-**Definition.** Let K be compact in the plane with connected complement. Its exterior Green function g is positive and harmonic outside K, and g(z) − log\|z\| has a finite limit at infinity. Assume g extends continuously by zero on K. For ε &gt; 0 define Kε by g ≤ ε, using potential levels instead of ordinary distance.
+**Definition.** Take a compact planar set K with connected complement whose Green function g with pole at infinity extends continuously by zero on K. For each ε &gt; 0, its Green sublevel set Kε consists of all z with g(z) ≤ ε.
 
 **Problem.** The logarithmic capacity of Kε equals exp(ε) times the logarithmic capacity of K.
 
@@ -306,7 +306,7 @@
 
 ### Harmonic measures share null sets
 
-**Remember:** A boundary set invisible from one interior point is invisible from every interior point.
+**Remember:** Harmonic measure averages boundary values to recover the harmonic function at the starting point.
 
 *True by definition.* MSC 31A15 (Potentials and capacity, harmonic measure, extremal length and related notions in two dimensions). arXiv math.CA. Level 3: graduate.
 
@@ -348,7 +348,7 @@
 
 **Problem.** On a connected open set, a pointwise decreasing sequence of subharmonic functions has a subharmonic limit unless that limit is identically −∞.
 
-**How the definition helps.** Harmonic comparison passes to decreasing limits because a small margin makes a boundary bound hold for one term of the sequence (our own proof). Suppose the limit is below h on the boundary of a ball. Then the open sets where φₖ &lt; h + ε increase and cover the compact boundary, so one term is below h + ε on the boundary, hence inside. So the limit is below h + ε inside for every ε &gt; 0, while the condition Δφ ≥ 0 could not test a limit without classical derivatives.
+**How the definition helps.** A decreasing limit of upper semicontinuous functions is upper semicontinuous and inherits comparison (our own). Suppose the limit is ≤ h on a test ball’s boundary and fix ε &gt; 0. The increasing open sets {φₖ &lt; h + ε} cover the compact boundary, so one contains it. Comparison bounds that term and the limit by h + ε throughout, and ε is arbitrary (our own).
 
 **Wikipedia:** [Subharmonic function](https://en.wikipedia.org/wiki/Subharmonic_function). It says: “The limit of a decreasing sequence of subharmonic functions is subharmonic (or identically equal to −∞).”
 
@@ -376,11 +376,11 @@
 
 *True by definition.* MSC 31B05 (Harmonic, subharmonic, superharmonic functions in higher dimensions), 35J05. arXiv math.AP, math.CA. Level 3: graduate.
 
-**Definition.** Call a continuous function harmonic if its value at each point equals its average over every ball centered there and contained in the domain. The usual definition requires two continuous derivatives and Δu = 0, where Δ sums the pure second derivatives.
+**Definition.** A continuous real function on an open set is harmonic if it passes the following mean value test. On every closed ball inside the set, the volume average equals the value at its center.
 
 **Problem.** A bounded harmonic function on all of ℝⁿ is constant.
 
-**How the definition helps.** The mean value definition lets Nelson compare two function values by comparing the volumes of two overlapping balls. Take balls of the same radius around any two fixed points. As the radius grows, the fraction that lies in only one ball tends to zero. Boundedness makes the difference of their averages tend to zero, while each average equals the value at its center. The work moves into deriving the mean value property from Δu = 0 and proving the converse, our own comparison of the two definitions.
+**How the definition helps.** The mean value definition lets Nelson compare two function values by comparing the volumes of two overlapping balls. Take balls of the same radius around any two fixed points. As the radius grows, the fraction that lies in only one ball tends to zero. Boundedness makes the difference of their averages tend to zero, while each average equals the value at its center.
 
 **Wikipedia:** [Harmonic function](https://en.wikipedia.org/wiki/Harmonic_function). It says: “Given two points, choose two balls with the given points as centers and of equal radius.”
 
@@ -394,11 +394,11 @@
 
 *True by definition.* MSC 31B05 (Harmonic, subharmonic, superharmonic functions in higher dimensions), 35J05. arXiv math.AP, math.CA. Level 3: graduate.
 
-**Definition.** Call a continuous function harmonic if its value at each point equals its average over every ball centered there and contained in the domain. The usual definition requires two continuous derivatives and Δu = 0, where Δ sums the pure second derivatives.
+**Definition.** A continuous real function on an open set is harmonic if it passes the following mean value test. On every closed ball inside the set, the volume average equals the value at its center.
 
 **Problem.** Let V be a nonempty connected open set with compact closure inside a domain Ω. For every nonnegative harmonic u on Ω, Harnack’s inequality supᵥ u ≤ C infᵥ u holds with C depending only on V and Ω.
 
-**How the definition helps.** The mean value definition turns a comparison of two values into a comparison of integrals over nested balls (our own proof). If x and y are close, the small ball at y lies inside a ball three times as large at x. Nonnegativity and the volume ratio then give u(y) ≤ 3ⁿu(x). Compactness and connectedness of V let a finite chain of such balls join any two points, which gives a uniform constant.
+**How the definition helps.** The mean value property compares nearby values through nested balls (our own). Choose r &gt; 0 so every ball of radius 3r centered on the compact closure of V lies in Ω. For centers less than 2r apart, inclusion and nonnegativity give u(y) ≤ 3ⁿu(x) by comparing averages (our own). A finite cover by radius-r balls centered in V has connected overlap graph, giving a uniform chain bound (our own).
 
 **Wikipedia:** [Harmonic function](https://en.wikipedia.org/wiki/Harmonic_function). It says: “Then for every non-negative harmonic function u, Harnack's inequality supᵥ u ≤ C infᵥ u holds for some constant C that depends only on V and Ω.”
 
@@ -430,7 +430,7 @@
 
 **Problem.** Let n ≥ 3. A harmonic function on a punctured ball with smaller growth than the pole at the puncture extends to a harmonic function on the whole ball.
 
-**How the definition helps.** Smaller growth lets every positive multiple of the pole bound the error near the puncture (our own proof). Compare the function with the harmonic extension of its values on a smaller sphere. By the maximum principle on annuli, their difference is at most every positive multiple of the pole, so it is zero. The pole itself shows that growth of the same order can fail.
+**How the definition helps.** Smaller growth excludes the pole itself and lets ε times the pole dominate the absolute error near the puncture (our own). Subtract the harmonic extension of the values on a smaller sphere. On annuli the maximum principle bounds both signs of the difference by ε times the pole, for every ε &gt; 0 (our own). Sending ε to zero gives the extension (our own).
 
 **Wikipedia:** [Harmonic function](https://en.wikipedia.org/wiki/Harmonic_function). It says: “then f extends to a harmonic function on Ω”
 
@@ -442,11 +442,11 @@
 
 *True by definition.* MSC 31B05 (Harmonic, subharmonic, superharmonic functions in higher dimensions), 35B50. arXiv math.AP. Level 3: graduate.
 
-**Definition.** Call a continuous function harmonic if its value at each point equals its average over every ball centered there and contained in the domain. The usual definition requires two continuous derivatives and Δu = 0, where Δ sums the pure second derivatives.
+**Definition.** A continuous real function on an open set is harmonic if it passes the following mean value test. On every closed ball inside the set, the volume average equals the value at its center.
 
 **Problem.** If a harmonic function on a connected open set attains its global maximum at an interior point, it is constant.
 
-**How the definition helps.** The mean value definition makes the set of maximum points open, in our own proof. Around any maximum point, take a ball whose average must equal the maximum. Since the function never exceeds that value and is continuous, it equals the maximum throughout the ball. The set of maximum points is also closed by continuity. A connected set cannot split into two nonempty open sets, so the function is constant. The work moves into proving that the mean value property and the differential equation define the same functions.
+**How the definition helps.** The mean value property makes the set of maximum points open (our own). At such a point, continuity forces the whole ball to equal its maximum because its average equals that maximum. The maximum set is also closed by continuity, so connectedness makes it the whole domain (our own).
 
 **Wikipedia:** [Harmonic function](https://en.wikipedia.org/wiki/Harmonic_function). It says: “If U is connected, this means that f cannot have local maxima or minima, other than the exceptional case where f is constant.”
 
@@ -526,7 +526,7 @@
 
 *True by definition.* MSC 31B15 (Potentials and capacities, extremal length and related notions in higher dimensions), 46E35. arXiv math.AP. Level 3: graduate.
 
-**Definition.** For a compact set in a bounded open region, its relative p-capacity is the infimum of the cutoff energies. A cutoff vanishes at the outer boundary and is at least one near the set. Its energy integrates the pth power of its gradient magnitude. This formula measures energy directly instead of computing a charge distribution.
+**Definition.** Fix compact K in a bounded open set Ω and take 1 &lt; p &lt; ∞. Its relative p-capacity is the infimum of ∫Ω \|∇u\|ᵖ over all compactly supported Lipschitz functions u on Ω satisfying u ≥ 1 near K.
 
 **Problem.** Take two compact sets in a domain and 1 &lt; p &lt; ∞. The capacity of their union plus the capacity of their intersection cannot exceed their combined capacities.
 
@@ -548,7 +548,7 @@
 
 **Problem.** For 1 &lt; p &lt; ∞, a compact set inside a bounded open region has the same relative p-capacity as its boundary.
 
-**How the definition helps.** In our own proof, a boundary cutoff already equals one on both sides of the boundary. Set it to one throughout the interior. The result stays smooth and can only lose gradient energy. This gives one inequality, and inclusion gives the reverse. The variational formula lets us compare cutoffs directly without finding the charge distribution.
+**How the definition helps.** In our own proof, a boundary cutoff already equals one on both sides of the boundary. Set it to one throughout the interior. The result stays smooth and can only lose gradient energy. This gives one inequality, and inclusion gives the reverse.
 
 **Paper or page:** [Condenser capacities and capacitary potentials for unbounded sets, and global p-harmonic Green functions on metric spaces](https://arxiv.org/abs/2310.05702v2). It says: “If F is a bounded closed set and F ⊂ Ω, then capₚ(F,Ω) = capₚ(∂F,Ω).”
 
@@ -594,11 +594,11 @@
 
 *True by definition.* MSC 31B15 (Potentials and capacities, extremal length and related notions in higher dimensions). arXiv math.CA. Level 3: graduate.
 
-**Definition.** In ℝⁿ with n ≥ 3, test a compact set with compactly supported Lipschitz functions at least one on a neighborhood of the set. A Lipschitz function changes by at most a fixed multiple of distance. Its energy is the integral of its squared gradient. Newtonian capacity is the infimum of these energies.
+**Definition.** For compact K ⊂ ℝⁿ, n ≥ 3, take all compactly supported Lipschitz functions u satisfying u ≥ 1 on a neighborhood of K. Newtonian capacity in the variational normalization is the infimum of ∫ℝⁿ \|∇u\|² dx over these functions.
 
 **Problem.** The capacities of the union and intersection of two compact sets in dimension at least three sum to at most the sum of their capacities.
 
-**How the definition helps.** Our own proof uses the maximum of two tests for the union and their minimum for the intersection. Where the tests change order, their gradients change places, so the sum of the energies stays the same. Taking infima gives the inequality. The energy definition with the kernel \|x − y\|²⁻ⁿ needs a potential theory theorem to agree with this one.
+**How the definition helps.** Our own proof uses the maximum of two tests for the union and their minimum for the intersection. Where the tests change order, their gradients change places, so the sum of the energies stays the same. Taking infima gives the inequality.
 
 **Wikipedia:** [Capacity of a set](https://en.wikipedia.org/wiki/Capacity_of_a_set). It says: “The characterization of the capacity of a set as the minimum of an energy functional achieving particular boundary values”
 
@@ -642,11 +642,11 @@
 
 *True by definition.* MSC 31B20 (Boundary value and inverse problems for harmonic functions in higher dimensions). arXiv math.CA. Level 3: graduate.
 
-**Definition.** The Dirichlet energy of a real function is half the integral of its squared gradient. With boundary values fixed, define the solution as the function that minimizes this energy. The differential equation asks instead for a harmonic function, one whose Laplacian vanishes.
+**Definition.** On a bounded smooth domain Ω, the Dirichlet energy of u ∈ H¹(Ω) is ½∫Ω \|∇u\|². For prescribed boundary data, a minimizer has those boundary values in the trace sense and has least energy among all such functions (our own).
 
 **Problem.** On a bounded smooth connected domain, the harmonic function with given smooth boundary values is unique.
 
-**How the definition helps.** The energy definition lets our own proof test the midpoint of any two solutions. The midpoint has lower energy unless their gradients agree. Equal gradients on a connected domain make the difference constant. The common boundary values make that constant zero. Integration by parts identifies harmonic functions with minimizers.
+**How the definition helps.** Integration by parts identifies harmonic solutions with energy minimizers (our own). The midpoint of two minimizers has smaller energy unless their gradients agree almost everywhere (our own). Equal gradients on a connected domain give a constant difference, and equal boundary values make that constant zero (our own).
 
 **Wikipedia:** [Dirichlet energy](https://en.wikipedia.org/wiki/Dirichlet_energy). It says: “finding a function u that satisfies the boundary conditions and has minimal Dirichlet energy.”
 
@@ -654,15 +654,15 @@
 
 ### Perron's solution always exists, and regular points control the boundary
 
-**Remember:** Perron always gives a harmonic function; regular points get the right boundary values.
+**Remember:** Take the supremum of subharmonic functions allowed by every boundary upper limit.
 
 *Makes the theorem clean to state or prove.* MSC 31B20 (Boundary value and inverse problems for harmonic functions in higher dimensions), 31B15. arXiv math.AP, math.CA. Level 3: graduate.
 
-**Definition.** For a bounded domain and continuous boundary data φ, consider all subharmonic functions v with v ≤ φ on the boundary. The Perron solution is their pointwise supremum. A boundary point y is regular if it has a barrier. A barrier is a superharmonic function (the negative of a subharmonic one) that is 0 at y and positive elsewhere.
+**Definition.** For continuous data φ on the boundary of a bounded domain, take all subharmonic v satisfying limsup<sub>x→y</sub> v(x) ≤ φ(y) at every boundary point y. Their pointwise supremum inside the domain is the Perron solution. A boundary point is regular if, for every continuous datum, the Perron solution tends to the prescribed value there (our own).
 
 **Problem.** For every bounded domain and all continuous boundary data, the Perron solution is harmonic. It takes the prescribed value at each regular boundary point.
 
-**How the definition helps.** The Perron definition separates existence from boundary behaviour, so existence holds for every domain. The classical Dirichlet problem has no solution for some domains. Examples are the punctured disk (our own) and a domain with Lebesgue's spine in three dimensions (our own wording). With the split, these become statements about irregular boundary points, not failures of existence, and the hard part moves to Wiener's criterion.
+**How the definition helps.** The supremum defines an interior candidate even where some continuous boundary data admit no classical solution (our own). Perron’s theorem gives harmonicity inside, and regularity supplies convergence at the stated boundary points (our own).
 
 **Wikipedia:** [Perron method](https://en.wikipedia.org/wiki/Perron_method), [Lebesgue spine](https://en.wikipedia.org/wiki/Lebesgue_spine). It says: “The Perron solution u(x) is always harmonic; however, the values it takes on the boundary may not be the same as the desired boundary values φ(x).”
 
@@ -681,7 +681,7 @@
 
 **Problem.** For a bounded domain in ℝ³, an exterior closed ball meeting the closure only at one point makes that point regular. This means harmonic extensions of continuous data tend to the given value there.
 
-**How the definition helps.** In our own proof, the barrier criterion replaces a separate boundary estimate for each choice of continuous data. Let the exterior ball have center c and radius R. Then 1/R − 1/\|x − c\| is harmonic in the domain, positive on the closure except at the contact point, and bounded below away from contact. This function and its negative give upper and lower barriers.
+**How the definition helps.** The exterior ball supplies a barrier, so the barrier criterion gives regularity (our own). For center c and radius R, the function 1/R − 1/\|x − c\| is harmonic inside the domain (our own). It vanishes at contact and has a positive lower bound on the compact closure outside each neighborhood of contact (our own).
 
 **Paper or page:** [The Wiener criterion for fully nonlinear elliptic equations](https://arxiv.org/abs/2301.00960v1). It says: “there exist an upper barrier and a lower barrier at x₀.”
 
@@ -695,7 +695,7 @@
 
 *True by definition.* MSC 31C10 (Pluriharmonic and plurisubharmonic functions). arXiv math.CV. Level 3: graduate.
 
-**Definition.** An upper semicontinuous function has value at least its limiting upper value at each point. Call it plurisubharmonic if every holomorphic map from the unit disk pulls it back to a subharmonic function. This means each value is at most the average on every sufficiently small circle centered there, allowing the constant −∞. The usual test in complex Euclidean space uses only affine complex lines.
+**Definition.** An upper semicontinuous function u with values in ℝ ∪ {−∞} is plurisubharmonic if every holomorphic disk pulls it back to a subharmonic function. Here the disk maps into the domain of u, and the identically −∞ pullback is allowed.
 
 **Problem.** Composing a plurisubharmonic function with a holomorphic map gives a plurisubharmonic function, with the identically −∞ case allowed.
 
@@ -711,11 +711,11 @@
 
 *True by definition.* MSC 31C10 (Pluriharmonic and plurisubharmonic functions). arXiv math.CV. Level 3: graduate.
 
-**Definition.** Call a function upper semicontinuous when its value bounds all nearby limiting values from above. It is plurisubharmonic if it also satisfies the circle mean inequality on every disk in each complex line. This inequality bounds its center value by its boundary average. Smooth the function by averaging small translates with a smooth nonnegative weight of total mass one.
+**Definition.** A function u with values in ℝ ∪ {−∞} is plurisubharmonic on a complex domain if it is upper semicontinuous and passes every line-disk test. On each closed disk in a complex line inside the domain, its center value cannot exceed its circle average.
 
 **Problem.** Smoothing a plurisubharmonic function that is not identically minus infinity preserves plurisubharmonicity wherever the averaging neighborhood fits inside its connected domain.
 
-**How the definition helps.** The circle test survives averaging because each translated function satisfies the same inequality. Our own proof integrates these inequalities and interchanges the two averages. Local integrability justifies this step, and the smoothed function is continuous. The alternative definition tests positivity of the matrix of complex second derivatives, interpreted through integration for nonsmooth functions. The work lies in the equivalence with the circle test.
+**How the definition helps.** Averaging translated circle inequalities gives the circle inequality for the smoothing (our own). Local integrability permits interchanging averages, and convolution with the smooth weight gives continuity (our own).
 
 **Paper or page:** [Viscosity solutions to complex Hessian equations](https://arxiv.org/abs/1209.5343). It says: “If u is m-subharmonic in Ω then the standard regularization u ⋆ χε is also m-subharmonic in Ωε”
 
@@ -727,11 +727,11 @@
 
 *True by definition.* MSC 31C20 (Discrete potential theory). arXiv math.PR. Level 3: graduate.
 
-**Definition.** Consider a Markov chain on a countable set with one-step probabilities P(x,y). Choose a finite positive function h whose expected value after one step from x equals h(x). Such a function is harmonic for the chain. Define the transformed transition probability as P(x,y) times h(y)/h(x).
+**Definition.** For a Markov chain on a countable set with transitions P(x,y), choose a finite strictly positive h satisfying ∑ᵧ P(x,y)h(y) = h(x) for every x. Its h-transform has transitions P(x,y)h(y)/h(x).
 
 **Problem.** The transformed probabilities define a random walk. Its n-step transitions are the original n-step transitions times the same ratio of final to initial weights.
 
-**How the definition helps.** In our own calculation, the denominator at each intermediate state cancels the preceding numerator. Summing over paths gives the formula for any number of steps. Harmonicity ensures that the probabilities from each state sum to one. This replaces conditioning each path separately when h gives the positive probability of a future event from each state. That interpretation requires proving that conditioning on the event gives the stated one-step probabilities.
+**How the definition helps.** Harmonicity makes each transformed row sum to one (our own). Along a path, intermediate factors cancel, leaving the original path probability times the final-to-initial weight ratio (our own). Summing over all n-step paths with those endpoints gives the transition formula (our own).
 
 **Wikipedia:** [Doob's h-transform](https://en.wikipedia.org/wiki/Doob%27s_h-transform). It says: “the transition probabilities of the transformed process are explicitly given as functions of h”
 
@@ -743,11 +743,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 31C25 (Dirichlet forms), 60J46, 47D07. arXiv math.AP, math.PR. Level 3: graduate.
 
-**Definition.** A symmetric Dirichlet form is a closed quadratic energy that does not increase when values are clipped to the interval \[0, 1\]. Here closed means that the form's domain is complete in the energy norm. A sub-Markovian semigroup is a time evolution that sends functions with values in \[0, 1\] to functions with values in \[0, 1\].
+**Definition.** On real L², a symmetric Dirichlet form is a densely defined, closed, nonnegative symmetric form with the following clipping property. For every domain element u, clipping its values to \[0,1\] gives another domain element with no greater energy.
 
 **Problem.** Take a symmetric closed coercive form on L². The form has the clipping property exactly when the semigroup that it generates is sub-Markovian.
 
-**How the definition helps.** The definition converts the desired bound on an entire time evolution into one test on its energy. Our own explanation is that clipping cannot hurt either the energy or the squared distance to data already in range. The link between the clipping test and the flow still has to be proved.
+**How the definition helps.** Clipping combines the lower and upper bounds in one energy test (our own). The Beurling–Deny criterion equates this test with preservation of \[0,1\] by every operator in the generated semigroup (our own).
 
 **Paper or page:** [Equivalence of Sobolev norms with respect to weighted Gaussian measures](https://arxiv.org/abs/2009.13875v3). It says: “(ℰ,D(ℰ)) is a Dirichlet form on L²(E,μ). (S(t))ₜ≥₀ is a sub-Markovian semigroup on L²(E,μ).”
 
@@ -762,7 +762,7 @@
 
 *True by definition.* MSC 31C35 (Martin boundary theory). arXiv math.PR. Level 3: graduate.
 
-**Definition.** For a transient random walk, the expected number of visits to each state is finite. Write G(x,y) for the expected visits to y starting from x, including time zero. Assume every state can reach every other with positive probability. Fix a state o and define the Martin kernel by K(x,y) = G(x,y)/G(o,y).
+**Definition.** For an irreducible transient Markov chain, let G(x,y) count expected visits to y starting at x, including time zero. With a fixed state o, the Martin kernel is K(x,y) = G(x,y)/G(o,y).
 
 **Problem.** For a countable state space, every sequence of target states has a subsequence along which the Martin kernels converge at every starting state.
 
@@ -772,31 +772,13 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
-### Endpoint capacity detects critical sets
-
-**Remember:** The stricter endpoint norm detects sets that weaker norms miss.
-
-*Rules out counterexamples.* MSC 31B15 (Potentials and capacities, extremal length and related notions in higher dimensions), 46E35. arXiv math.AP. Level 4: research.
-
-**Definition.** Sobolev–Lorentz capacity measures the cost of covering a set by functions at least one on a neighborhood. Cost uses the function and its gradient, with each magnitude sorted from largest to smallest. The Lorentz indices p and q specify how to weight and combine these sorted values.
-
-**Problem.** For 1 &lt; p ≤ n, zero capacity at q = 1 forces zero Hausdorff measure in dimension n−p. This measure uses covers by small sets and sums their diameters to the power n−p.
-
-**How the definition helps.** The index q = 1 imposes a stronger smallness condition on covering functions. The paper proves the estimate connecting this cost to Hausdorff measure. For 1 &lt; p &lt; n and each larger q, it constructs a set of positive measure with arbitrarily small covering cost.
-
-**Paper or page:** [A note on Sobolev-Lorentz Capacity and Hausdorff measure](https://arxiv.org/abs/2506.22042v3), [A note on Sobolev-Lorentz Capacity and Hausdorff measure](https://arxiv.org/abs/2506.22042v3). It says: “Let E ⊂ ℝⁿ be such that γₚ,₁(E) = 0 then ℋⁿ⁻ᵖ(E) = 0.”
-
-**Sources:**
-
-- [Daniel Campbell. A note on Sobolev-Lorentz Capacity and Hausdorff measure. 2506.22042v3](https://arxiv.org/abs/2506.22042v3)
-
 ### Energy projections make balayage nonexpansive
 
 **Remember:** Projecting both charges cannot increase their energy distance.
 
 *True by definition.* MSC 31B15 (Potentials and capacities, extremal length and related notions in higher dimensions). arXiv math.CA. Level 4: research.
 
-**Definition.** A positive charge is a positive measure. For order α in dimension n, its Riesz potential integrates distance to the power α − n against the charge. Energy integrates the potential against the charge itself, and the energy distance is the square root of the energy of the difference. Sweeping selects the nearest positive finite-energy charge supported on a given closed set.
+**Definition.** In ℝⁿ with 0 &lt; α ≤ 2 &lt; n, Riesz energy uses the kernel \|x−y\| raised to α−n. The energy distance between two finite-energy charges is the square root of the energy of their difference. The sweep of a positive finite-energy charge onto a closed set minimizes this distance among positive finite-energy charges supported there.
 
 **Problem.** Fix a Riesz order greater than zero and at most two in Euclidean dimension n ≥ 3. Sweeping two positive finite-energy charges onto the same closed set cannot increase their energy distance.
 
@@ -814,11 +796,11 @@
 
 *True by definition.* MSC 31B15 (Potentials and capacities, extremal length and related notions in higher dimensions). arXiv math.CA. Level 4: research.
 
-**Definition.** In ℝⁿ take 0 &lt; α ≤ 2 with α &lt; n. The Riesz potential averages the kernel \|x−y\| raised to the power α−n against a positive measure at y. Energy is the integral of this potential against the same measure. A sweep onto a compact set is a positive finite-energy measure supported there whose potential matches the original there, except on sets of zero capacity.
+**Definition.** Take 0 &lt; α ≤ 2 with α &lt; n and a positive finite-energy measure μ on ℝⁿ. Its sweep onto compact K is the positive finite-energy measure supported on K whose α-Riesz potential agrees with μ’s on K outside a zero-capacity set. Such an exceptional set carries no nonzero positive finite-energy measure.
 
 **Problem.** For any positive finite-energy measure, sweeping onto nested compact sets gives the same result as sweeping directly onto the smaller set.
 
-**How the definition helps.** Matching potentials on the larger set gives the same match on the smaller set in our own proof. A set has zero capacity here if it carries no nonzero positive measure of finite energy. The two exceptional sets together still have zero capacity. Uniqueness therefore identifies the two sweeps. The cited theorem proves uniqueness and identifies the sweep with the nearest supported positive measure in the distance given by energy.
+**How the definition helps.** The first sweep already agrees in potential with μ on the smaller set except on a zero-capacity set (our own). The second sweep preserves this agreement because the union of two zero-capacity exceptions still has zero capacity (our own). Uniqueness of the supported measure with that potential identifies it with the direct sweep (our own).
 
 **Paper or page:** [Fractional harmonic measure in minimum Riesz energy problems with external fields](https://arxiv.org/abs/2311.18081). It says: “U⁽σᴬ⁾ = U⁽σ⁾ n.e. on A.”
 
@@ -826,49 +808,13 @@
 
 - [Fractional harmonic measure in minimum Riesz energy problems with external fields, Theorem 3.1](https://arxiv.org/abs/2311.18081)
 
-### Neumann capacity measures the effect of releasing a small Dirichlet patch
-
-**Remember:** Measure a patch by the change it makes, not by its area.
-
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 31B15 (Potentials and capacities, extremal length and related notions in higher dimensions), 35J25. arXiv math.AP. Level 4: research.
-
-**Definition.** Consider the conductivity equation div(γ∇u) = 0. One part of the boundary has zero voltage (a Dirichlet condition) and the rest has zero flux (a Neumann condition). Neumann capacity e(ω) is a number attached to a small patch ω of the zero-voltage part. By Lemma 4.1 of the paper, it is comparable to the squared H¹ norm of the solution of an auxiliary problem posed on ω.
-
-**Problem.** Work in dimension two or three. Switch a patch ω from zero voltage to zero flux, keeping it away from the zero-flux boundary. If e(ω) tends to zero, then along a subsequence the interior voltage changes by e(ω) times an explicit term, plus a smaller error.
-
-**How the definition helps.** Neumann capacity is chosen to be the size of the first correction, so the expansion can use e(ω) as the small parameter. For the reverse switch, from flux to voltage, the ordinary harmonic capacity plays this role. The hard part is to show that the correction converges along a subsequence to a nontrivial limit distribution.
-
-**Paper or page:** [Small perturbations in the type of boundary conditions for an elliptic operator](https://arxiv.org/abs/2106.07407v1). It says: “we introduce a notion of “Neumann capacity” to handle the latter.”
-
-**Sources:**
-
-- [Eric Bonnetier, Charles Dapogny, Michael S. Vogelius, Small perturbations in the type of boundary conditions for an elliptic operator, arXiv:2106.07407 (2021)](https://arxiv.org/abs/2106.07407v1)
-
-### Weighting an elliptic equation by distance gives harmonic measure on thin sets
-
-**Remember:** Raise conductivity near a thin boundary so the boundary can affect solutions.
-
-*Makes the theorem clean to state or prove.* MSC 31B15 (Potentials and capacities, extremal length and related notions in higher dimensions), 35J70. arXiv math.AP. Level 4: research.
-
-**Definition.** Let Γ ⊂ ℝⁿ be Ahlfors regular of dimension d &lt; n − 1. This means a ball of radius r centered on Γ meets it in measure about rᵈ, and d need not be an integer. Take L = −div A∇ off Γ, with the ellipticity bounds of A comparable to dist(·, Γ) to the power d + 1 − n. Harmonic measure at x is the measure on Γ whose integral of boundary data gives the solution at x.
-
-**Problem.** For such an operator, harmonic measure exists on Γ. It is doubling: doubling the radius of a boundary ball multiplies its mass by at most a fixed factor. It also satisfies change-of-pole formulas and a comparison principle.
-
-**How the definition helps.** Because d + 1 − n &lt; 0, the weight grows near Γ, and this lets solutions feel a boundary of high codimension. Our own comparison is the ordinary Laplacian in ℝ³ outside one point. There, bounded harmonic functions extend across the point, so the point carries no harmonic measure. The paper still proves trace theorems, a maximum principle, Harnack and Hölder estimates, and Green function bounds before it defines harmonic measure.
-
-**Paper or page:** [Elliptic theory for sets with higher co-dimensional boundaries](https://arxiv.org/abs/1702.05503v3). It says: “The aim of this manuscript is to develop a version of elliptic theory, associated to a linear PDE, which ultimately yields a notion analogous to that of the harmonic measure, for sets of codimension higher than 1.”
-
-**Sources:**
-
-- [Guy R. David, Joseph Feneuil, Svitlana Mayboroda, Elliptic theory for sets with higher co-dimensional boundaries, arXiv:1702.05503 (2023)](https://arxiv.org/abs/1702.05503v3)
-
 ### Countable unions preserve polarity
 
-**Remember:** Countably many sets of zero capacity still have zero capacity.
+**Remember:** Locally, one m-subharmonic function takes value minus infinity on the set.
 
 *True by definition.* MSC 31C15 (Potentials and capacities on other spaces). arXiv math.CV, math.AP. Level 4: research.
 
-**Definition.** On a compact Hermitian manifold, fix an integer m between one and the complex dimension. A set is locally m-polar if, near each point, it lies in the −∞ set of a local m-subharmonic function that is not identically −∞. Equivalently, the set has zero outer Hessian capacity, a size defined using positive measures from bounded test functions.
+**Definition.** Fix a compact Hermitian manifold of complex dimension n and an integer 1 ≤ m ≤ n. A set is locally m-polar if each point has a connected neighborhood U supporting an m-subharmonic function u not identically −∞. Require u = −∞ on the set throughout U.
 
 **Problem.** A countable union of locally m-polar Borel sets is locally m-polar.
 
@@ -886,11 +832,11 @@
 
 *True by definition.* MSC 31C15 (Potentials and capacities on other spaces). arXiv math.CV. Level 4: research.
 
-**Definition.** On a compact Kähler manifold, test μ with smooth potentials φ for which adding the complex second derivatives of φ keeps the metric nonnegative. Here μ is a probability measure. Each test has a geometric energy E(φ), independent of μ and normalized by E(0) = 0. The dual energy J(μ) is the supremum of E(φ) − ∫φ dμ over these tests.
+**Definition.** Fix a Kähler form ω on a compact manifold of complex dimension n, and set V = ∫ωⁿ. For smooth φ with ωφ = ω + ddᶜφ ≥ 0, set E(φ) = ∑<sub>j=0</sub>ⁿ ∫φ ωφʲ ∧ ωⁿ⁻ʲ / ((n+1)V). For a probability measure μ, its dual energy is J(μ) = supφ (E(φ) − ∫φ dμ) over those tests (our own).
 
 **Problem.** The dual energy is convex under mixtures of probability measures. Under weak convergence, meaning convergence of integrals of continuous functions, its value at the limit cannot exceed the lower limit of the energies.
 
-**How the definition helps.** The dual definition makes convexity immediate because each test depends affinely on the measure in our own proof. Each test also depends continuously on the measure, giving the lower limit inequality. The alternative formula uses a potential whose Monge–Ampère measure equals μ. For smooth potentials this measure comes from the volume of the modified metric. Identifying that formula with the supremum requires the variational theory.
+**How the definition helps.** Every test defines a continuous affine function of μ in the weak topology (our own). Their supremum is convex, and its strict upper level sets are unions of open sets, giving lower semicontinuity (our own).
 
 **Paper or page:** [Measures of finite energy in pluripotential theory: a synthetic approach](https://arxiv.org/abs/2307.01697). It says: “the functional Jω(·,ψ) : ℳ → \[0,+∞\] is convex and weakly lsc”
 
@@ -904,35 +850,17 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 31C25 (Dirichlet forms), 47A07, 47D07. arXiv math.FA, math.SP. Level 4: research.
 
-**Definition.** A closed quadratic form on L² is the energy q(u) = ‖√A u‖² of a self-adjoint operator A ≥ 0, with semigroup e⁻ᵗᴬ. The form satisfies the first Beurling–Deny criterion if q(\|u\|) ≤ q(u) for every u, so the semigroup keeps positive functions positive. The form is irreducible if no measurable set B, with B and its complement both of positive measure, splits it. Splitting means that the semigroup maps all functions on B to functions on B alone.
+**Definition.** For a densely defined closed nonnegative symmetric form q on real L², let Tₜ be its semigroup. The first Beurling–Deny criterion requires \|u\| in the domain and q(\|u\|) ≤ q(u) for every domain element u. Irreducibility means that only null or conull measurable B have L²(B) invariant under every Tₜ.
 
 **Problem.** Let q be an irreducible closed form that satisfies the first Beurling–Deny criterion. Then its kernel, the set of u with q(u) = 0, is at most one-dimensional. If the kernel is nonzero, it is spanned by a strictly positive function.
 
-**How the definition helps.** Irreducibility excludes the split case, in which the form is a sum of forms on disjoint pieces. In our own example, ∫\|u′\|² on two disjoint intervals vanishes on the indicator of each interval, so its kernel is two-dimensional. Positivity preservation lets one replace a ground state u by \|u\|, and irreducibility forces it to be positive everywhere. Two positive ground states cannot be orthogonal, so the kernel is one line (our own account of the Perron–Frobenius argument).
+**How the definition helps.** Irreducibility excludes the independent constants on two disjoint Neumann intervals (our own). The irreducible positivity-preserving semigroup theorem gives a simple lowest eigenvalue with an eigenfunction strictly positive almost everywhere whenever that eigenvalue exists (our own). A nonzero kernel makes zero that eigenvalue because q is nonnegative (our own).
 
 **Paper or page:** [(Weak) Hardy and Poincaré inequalities and criticality theory](https://arxiv.org/abs/2108.11681v1). It says: “let q be an irreducible closed quadratic form on Lᵖ(X,μ) satisfying the first Beurling-Deny criterion. Then ker q is at most one-dimensional and if ker q≠{0}, there exists a strictly positive h∈Lᵖ(X,μ) such that ker q=ℝh.”
 
 **Sources:**
 
 - [Marcel Schmidt, (Weak) Hardy and Poincaré inequalities and criticality theory, arXiv:2108.11681 (2021), Springer Proc. Math. Stat. (2022) 421–459](https://arxiv.org/abs/2108.11681v1)
-
-### Changing exterior data on a capacity-zero set leaves the Perron solution unchanged
-
-**Remember:** Sets of zero capacity are invisible to the solution.
-
-*Makes the theorem clean to state or prove.* MSC 31C45 (Other generalizations (nonlinear potential theory, etc.)), 35R11, 35J66. arXiv math.AP. Level 4: research.
-
-**Definition.** The paper studies nonlocal equations of fractional p-Laplace type, where data are prescribed on the whole exterior Ωᶜ of the domain Ω. The Sobolev capacity C₍s,p₎(E) measures how large a set E is for the fractional Sobolev space. The upper Perron solution is the infimum of the superharmonic functions that lie above the data outside Ω. The paper's new definition of Perron solutions accepts any exterior data g with values in \[−∞, ∞\].
-
-**Problem.** Let g be continuous on ℝⁿ and lie in the paper's Sobolev-type space for Ω. Let h be zero outside a set E with C₍s,p₎(E) = 0. Then the upper and lower Perron solutions of g + h agree, and P(g + h) = Pg in Ω.
-
-**How the definition helps.** The new Perron definition accepts arbitrary exterior data, so the perturbation h may take any values on E, even ±∞. Without it, P(g + h) would not be defined for such h. For Sobolev solutions the invariance is nearly free, because a set of zero capacity has zero volume (our own explanation). The real work is the theorem that Sobolev and Perron solutions coincide.
-
-**Paper or page:** [Perron solutions and boundary regularity for nonlocal nonlinear Dirichlet problems](https://arxiv.org/abs/2406.05994v3). It says: “This also implies invariance of the Perron solutions under perturbations on sets of zero fractional capacity.”
-
-**Sources:**
-
-- [Anders Björn, Jana Björn, Minhyun Kim, Perron solutions and boundary regularity for nonlocal nonlinear Dirichlet problems, arXiv:2406.05994v3 (2025)](https://arxiv.org/abs/2406.05994v3)
 
 ### Essential limits fix point values
 
@@ -942,7 +870,7 @@
 
 **Definition.** The essential infimum is the largest lower bound valid outside a set of measure zero. At each point, take the limit of the essential infima on shrinking balls. This rule chooses point values for functions otherwise specified only almost everywhere.
 
-**Problem.** Two superharmonic functions for the nonlocal operators in the paper agree everywhere if they agree almost everywhere. Superharmonic functions satisfy a lower comparison bound against solutions on interior subdomains.
+**Problem.** For the nonlocal operators under discussion, two superharmonic functions in Ω that agree almost everywhere on ℝⁿ agree at every point of Ω.
 
 **How the definition helps.** Essential infima ignore changes on sets of measure zero. In our own argument, almost-everywhere equality therefore gives equal limits on shrinking balls at every point. The cited theorem does the hard part by identifying each superharmonic function with that limit everywhere.
 
@@ -958,7 +886,7 @@
 
 *True by definition.* MSC 31C45 (Other generalizations (nonlinear potential theory, etc.)), 35R11. arXiv math.AP. Level 4: research.
 
-**Definition.** Consider the fractional p-Laplacian on a bounded domain, with 0 &lt; s &lt; 1 and 1 &lt; p &lt; ∞. A boundary point x₀ is regular if the upper Perron solution of every bounded exterior datum continuous at x₀ tends to the datum's value at x₀. The test datum at x₀ is the capped distance d(x) = min(1, \|x − x₀\|).
+**Definition.** Consider the fractional p-Laplacian on a bounded domain with 0 &lt; s &lt; 1 and 1 &lt; p &lt; ∞. Regularity at x₀ requires the upper Perron solution to approach g(x₀) for every bounded exterior datum g continuous at x₀. The test datum is d(x) = min(1, \|x − x₀\|).
 
 **Problem.** A boundary point x₀ is regular exactly when the upper Perron solution for the capped distance d tends to zero at x₀.
 
@@ -976,7 +904,7 @@
 
 *True by definition.* MSC 31C45 (Other generalizations (nonlinear potential theory, etc.)), 35R11. arXiv math.AP. Level 4: research.
 
-**Definition.** Around the boundary point, take the part of the closed radius-r ball outside the domain. Its capacity is the least fractional p-energy of cutoffs covering that part and vanishing outside the doubled ball. Divide by r to the power n−sp, raise to the power 1/(p−1), and integrate against dr/r near zero. The Wiener test asks whether this integral diverges.
+**Definition.** Fix a boundary point a and put Eᵣ = B̄(a,r) ∖ Ω. Let cᵣ be the infimum of ∬ \|u(x)−u(y)\|ᵖ/\|x−y\|ⁿ⁺ˢᵖ dx dy over smooth cutoffs supported in B(a,2r) with u ≥ 1 near Eᵣ. The Wiener test requires divergence of ∫₀¹ (cᵣ/rⁿ⁻ˢᵖ)¹⁄⁽ᵖ⁻¹⁾ dr/r.
 
 **Problem.** A regular point is one where solutions attain their prescribed continuous boundary values. Fix a bounded domain in dimension n, an order 0 &lt; s &lt; 1, and 1 &lt; p &lt; ∞. Symmetric kernels bounded above and below by positive multiples of \|x−y\| to the power −(n+sp) have the same regular points.
 

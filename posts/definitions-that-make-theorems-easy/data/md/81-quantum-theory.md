@@ -1,6 +1,6 @@
 ### Density operators give each part of an entangled system its own state
 
-**Remember:** Tracing out a partner leaves a density operator, never a vector.
+**Remember:** Trace out the other part to get the state for local measurements.
 
 *Makes the theorem clean to state or prove.* MSC 81P16 (Quantum state spaces, operational and probabilistic concepts), 81S22, 81P40. arXiv quant-ph. Level 2: later undergraduate.
 
@@ -8,7 +8,7 @@
 
 **Problem.** Every part of a composite quantum system has a state that gives the probabilities of all measurements on that part alone. With state vectors only, this fails: for an entangled pure state, no vector describes one part.
 
-**How the definition helps.** The partial trace of a density operator is again a density operator, so the class is closed under 'look at one part only'. The page gives two photons in the pure state (\|R,L⟩ + \|L,R⟩)/√2. Each photon alone has the completely mixed state I/2, so no vector describes it. What stays hard is that many different mixtures of pure states give one density operator.
+**How the definition helps.** The partial trace preserves positivity and trace one. In our own argument, its defining identity gives the same expectation for each local measurement effect as the joint state does. For the entangled pair (\|R,L⟩ + \|L,R⟩)/√2, each photon has state I/2, which has rank two.
 
 **Wikipedia:** [Density matrix](https://en.wikipedia.org/wiki/Density_matrix). It says: “In contrast, the motivation that inspired Landau was the impossibility of describing a subsystem of a composite quantum system by a state vector.”
 
@@ -19,11 +19,11 @@
 
 ### Schmidt form matches reduced spectra
 
-**Remember:** One amplitude list gives the nonzero eigenvalues on both sides.
+**Remember:** Pair orthonormal vectors across systems and square their shared amplitudes for either spectrum.
 
 *True by definition.* MSC 81P40 (Quantum coherence, entanglement, quantum correlations). arXiv quant-ph. Level 2: later undergraduate.
 
-**Definition.** A pure state of two systems is a unit vector in their tensor product. In separate orthonormal bases, its coefficients form a matrix. The Schmidt form chooses the bases so only matching indices have nonzero coefficients. These coefficients are the nonnegative singular values of the matrix.
+**Definition.** A Schmidt form of a finite-dimensional bipartite unit vector is an expansion ∑ᵢ sᵢ uᵢ ⊗ vᵢ with sᵢ &gt; 0. The vectors uᵢ form an orthonormal family in the first system, and the vectors vᵢ form one in the second.
 
 **Problem.** Ignoring either part of a finite-dimensional pure state gives a reduced state describing the other part. These two state matrices have the same nonzero eigenvalues, with multiplicities, and hence the same entropy.
 
@@ -37,13 +37,13 @@
 
 **Remember:** Transpose one side to get a test that transposing both sides misses.
 
-*Rules out counterexamples.* MSC 81P42 (Entanglement measures, concurrencies, separability criteria). arXiv quant-ph. Level 2: later undergraduate.
+*True by definition.* MSC 81P42 (Entanglement measures, concurrencies, separability criteria). arXiv quant-ph. Level 2: later undergraduate.
 
 **Definition.** A finite-dimensional quantum state has a positive semidefinite matrix of trace one. A separable state is a probability mixture of product states, whose matrices have the form A ⊗ B. In a fixed basis, partial transpose sends each A ⊗ B to A ⊗ Bᵀ and extends linearly.
 
 **Problem.** If a state is a mixture of product states, its partial transpose is positive semidefinite.
 
-**How the definition helps.** The mixture definition forces partial transpose to preserve positivity on every separable state. In our own argument, transposing B preserves its eigenvalues, so each transposed product remains positive semidefinite. Averaging preserves positivity. A negative eigenvalue therefore rules out separability. The converse requires a separate theorem and holds for dimensions 2 by 2 and 2 by 3, but fails in higher dimensions.
+**How the definition helps.** Partial transpose preserves positivity on each product state. In our own proof, Bᵀ has the same nonnegative eigenvalues as B, so A ⊗ Bᵀ is positive semidefinite. A probability mixture preserves positivity.
 
 **Wikipedia:** [Peres–Horodecki criterion](https://en.wikipedia.org/wiki/Peres%E2%80%93Horodecki_criterion). It says: “Note that the partial in the name implies that only part of the state is transposed.”
 
@@ -57,7 +57,7 @@
 
 *True by definition.* MSC 81Q05 (Closed and approximate solutions to the Schrödinger, Dirac, Klein-Gordon and other equations of quantum mechanics). arXiv quant-ph, math-ph. Level 2: later undergraduate.
 
-**Definition.** In units with mass, frequency and the reduced Planck constant equal to one, the lowering operator of the harmonic oscillator is a = (x + ip)/√2. The energy operator factors as H = a†a + ½.
+**Definition.** For the one-dimensional oscillator in units m = ω = ℏ = 1, define a = (x + ip)/√2 using position x and momentum p. Its adjoint is the raising operator, and the Hamiltonian factors as H = a†a + ½I.
 
 **Problem.** For the one-dimensional quantum harmonic oscillator, applying a† to an energy eigenfunction raises its energy by one unit. The eigenvalues form a single ladder starting at ½.
 
@@ -95,7 +95,7 @@
 
 **Problem.** Let E(x,y) be the mean product of the two signs at settings x and y. Every local model satisfies \|E(0,0) + E(0,1) + E(1,0) − E(1,1)\| ≤ 2.
 
-**How the definition helps.** One shared table lets all four correlations use the same random signs. In our own proof, the presampled signs A, B and C, D give A(C + D) + B(C − D) = ±2, because exactly one parenthesis vanishes. Averaging gives the bound. Our own counterexample has uniform outcome bits whose sum modulo two is the product of the setting bits, giving a sum of 4.
+**How the definition helps.** In our own proof, each observer presamples both local signs conditional on the shared information, using independent randomness across observers. Call the signs A,B for one observer and C,D for the other. Exactly one of C+D and C−D vanishes, so A(C+D)+B(C−D) equals ±2. Averaging excludes the uniform bit pairs with sum modulo two equal to the settings’ product, whose correlation sum is four.
 
 **Wikipedia:** [CHSH inequality](https://en.wikipedia.org/wiki/CHSH_inequality). It says: “the standard assumption of independence of the two sides, enabling us to obtain the joint probabilities of pairs of outcomes”
 
@@ -106,11 +106,11 @@
 
 ### Holonomy sees hidden solenoid flux
 
-**Remember:** Zero field on the path need not mean zero phase.
+**Remember:** Integrate the potential around the loop to get the transport phase.
 
 *Makes the theorem clean to state or prove.* MSC 81Q70 (Differential geometric methods, including holonomy, Berry and Hannay phases, Aharonov-Bohm effect, etc. in quantum theory). arXiv quant-ph, math-ph. Level 2: later undergraduate.
 
-**Definition.** Use the phase acquired by parallel transport of a charged wave around a loop. This phase, called holonomy, is exp(iqI/ℏ). Here I is the line integral of the magnetic potential and q is the charge. The alternative uses only the magnetic field along the path.
+**Definition.** For charge q and magnetic vector potential A, the holonomy around an oriented closed path C is the phase exp(iq∮<sub>C</sub> A·dℓ/ℏ).
 
 **Problem.** For a loop going once around an ideal solenoid, the phase is exp(iqΦ/ℏ), where Φ is the enclosed magnetic flux. The field on the loop can vanish.
 
@@ -128,7 +128,7 @@
 
 *Rules out counterexamples.* MSC 81T25 (Quantum field theory on lattices), 81R15. arXiv quant-ph, math-ph. Level 2: later undergraduate.
 
-**Definition.** On a finite ordered chain of two-state spins, let the lowering operator send the upper state to the lower state and kill the lower state. At each site multiply it by the product of the sign operators at all earlier sites. Each sign operator acts by +1 and −1 on the two states.
+**Definition.** Order the sites of a finite two-state spin chain. At site j, let Lⱼ send the upper state to the lower state and annihilate the lower state. Multiply Lⱼ by every earlier site's diagonal operator with entries +1 and −1 in that basis.
 
 **Problem.** Write aⱼ for the resulting operator at site j. Every pair satisfies aⱼaₖ + aₖaⱼ = 0 and aⱼaₖ\* + aₖ\*aⱼ = δⱼₖ I. Here δⱼₖ equals one for equal sites and zero otherwise.
 
@@ -146,11 +146,11 @@
 
 *True by definition. Confidence: medium.* MSC 81V72 (Particle exchange symmetries in quantum theory (general)), 81V73, 81V74. arXiv quant-ph, math-ph. Level 2: later undergraduate.
 
-**Definition.** N particles are indistinguishable if permuting their arguments leaves the quantum state unchanged. So each permutation σ multiplies the wavefunction by a complex factor s(σ).
+**Definition.** In this definition, N particles are indistinguishable when every permutation σ preserves the ray of their nonzero wavefunction ψ. Equivalently, permuting the arguments gives s(σ)ψ for a scalar of absolute value one.
 
 **Problem.** Indistinguishable particles in this sense are either bosons, with a symmetric wavefunction, or fermions, with an antisymmetric one.
 
-**How the definition helps.** With this definition, s is a one-dimensional representation of the symmetric group, and there are only two of those. Every transposition squares to the identity, so it gives s = ±1. The trivial representation gives bosons and the sign representation gives fermions. Para-statistics and anyons appear only when one changes the definition, to higher-dimensional representations or to the braid group.
+**How the definition helps.** The permutation factors form a one-dimensional representation. Every transposition squares to the identity, so its factor is ±1. In our own argument, conjugate transpositions have the same factor, and transpositions generate every permutation. Their common sign therefore gives either the symmetric or the antisymmetric law.
 
 **nLab:** [particle statistics](https://ncatlab.org/nlab/show/particle+statistics). It says: “The wavefunctions of ordinarily indistinguishable particles must, by definition, span 1-dimensional linear representations of the symmetric group and there are exactly two such, up to isomorphism”
 
@@ -180,7 +180,7 @@
 
 *True by definition.* MSC 81P15 (Quantum measurement theory, state operations, state preparations). arXiv quant-ph. Level 3: graduate.
 
-**Definition.** A quantum instrument assigns each outcome a linear map that remains positive even with an untouched auxiliary system. The map returns an unnormalized output state whose trace is the outcome probability. The sum of all outcome maps preserves trace. This replaces a separate normalized state update and probability formula.
+**Definition.** A finite-outcome quantum instrument assigns a completely positive linear map to each outcome, and the sum of its maps preserves trace. Complete positivity means that the map preserves positivity alongside every finite-dimensional identity map. Each output has trace equal to its outcome probability for a normalized input.
 
 **Problem.** Apply two finite-outcome instruments in order, with the second acting on the first instrument’s output. The composed outcome maps give the final states, and their traces give the joint probabilities.
 
@@ -198,11 +198,11 @@
 
 *Rules out counterexamples.* MSC 81P15 (Quantum measurement theory, state operations, state preparations), 81P16. arXiv quant-ph. Level 3: graduate.
 
-**Definition.** A POVM (positive-operator-valued measure) is a family of positive operators that add up to the identity; each operator stands for one outcome. A projective measurement is the special case in which every operator is an orthogonal projection. Busch's version of Gleason's theorem assigns probabilities to all POVM elements, not only to projections.
+**Definition.** A discrete POVM is a finite or countable family of positive operators summing to the identity in the weak operator sense. A noncontextual probability rule assigns each effect E, with 0 ≤ E ≤ I, one number in \[0,1\] independent of its measurement.
 
-**Problem.** Gleason's theorem says that every probability rule on outcomes, additive within each measurement, comes from a density operator by the Born rule. For projective measurements this needs dimension at least 3, but for POVMs it holds in every dimension.
+**Problem.** On a separable complex Hilbert space, every noncontextual probability rule summing to one on each discrete POVM has the form p(E) = tr(ρE). Here ρ is a density operator. For projective measurements alone, Gleason’s theorem requires dimension at least three, whereas the POVM result includes every dimension.
 
-**How the definition helps.** With POVMs the probability rule must be additive on many more families of outcomes. This forces the rule to be linear in the operator, which is almost the Born rule at once. For projections in dimension 2, the page gives a counterexample on the Bloch sphere. Fix a unit vector λ and give probability 1 to each outcome in its hemisphere and 0 to the others. This rule obeys Gleason's assumptions but comes from no density operator.
+**How the definition helps.** Comparing POVMs that split or combine an effect forces additivity whenever E + F ≤ I. In our own explanation, positivity then forces linear scaling, and Busch’s theorem gives the density operator. A qubit projection rule can choose one direction from each antipodal pair by hemisphere, breaking equatorial ties antipodally. Its zero-or-one values violate the Born rule, so it cannot extend to all POVMs.
 
 **Wikipedia:** [Gleason's theorem](https://en.wikipedia.org/wiki/Gleason%27s_theorem), [POVM](https://en.wikipedia.org/wiki/POVM). It says: “Unlike the original theorem of Gleason, the generalized version using POVMs also applies to the case of a single qubit.”
 
@@ -217,11 +217,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 81P16 (Quantum state spaces, operational and probabilistic concepts), 81R05, 81R25. arXiv quant-ph, math-ph. Level 3: graduate.
 
-**Definition.** A pure quantum state is a ray: a unit vector up to a phase factor, a complex number of absolute value 1. A symmetry acts on rays, so on vectors it gives a projective representation, U(g)U(h) = ω(g, h)U(gh), with a phase ω(g, h). By Wigner's theorem each symmetry is a unitary or antiunitary operator, fixed up to a phase.
+**Definition.** A pure state is a ray of unit vectors differing only by a scalar phase. In a projective unitary representation, representatives satisfy U(g)U(h) = ω(g,h)U(gh) for every g,h, with \|ω(g,h)\| = 1.
 
-**Problem.** Projective representations of the rotation group SO(3) can be chosen with phases ±1. They are the ordinary representations of its double cover SU(2), so spin one-half, where a full turn changes a vector's sign, is allowed.
+**Problem.** Each continuous projective unitary representation of SO(3) lifts to an ordinary unitary representation of its double cover SU(2). Representatives on SO(3) can therefore have multiplication phases in {+1,−1}, allowing a full turn to change a spin-one-half vector’s sign.
 
-**How the definition helps.** A phase changes no probability, so a rotation by 2π may act as −1 on vectors and still be the identity on states. The page states that for SO(3) and the Lorentz group the phases can be chosen as ±1, and as 1 on their universal covers. If states were vectors, only ordinary representations of SO(3) would be allowed, and these have integer spin only (our own).
+**How the definition helps.** A sign change preserves the ray. In our own explanation, the lifting theorem for projective rotation representations supplies the ordinary representation of SU(2). The two lifts of each rotation differ by a central element whose scalar action squares to the identity.
 
 **Wikipedia:** [Wigner's theorem](https://en.wikipedia.org/wiki/Wigner%27s_theorem). It says: “In the case of the Lorentz group and its subgroup the rotation group SO(3), phases can, for projective representations, be chosen such that ω(g, h) = ± 1.”
 
@@ -235,7 +235,7 @@
 
 *True by definition.* MSC 81P42 (Entanglement measures, concurrencies, separability criteria). arXiv quant-ph. Level 3: graduate.
 
-**Definition.** For a pure state of two finite systems, discard either system and take the entropy of the remaining state matrix. This entropy is the sum of −p log₂ p over its positive eigenvalues p. A mixed state can be a probability mixture of pure states in many ways. Its entanglement of formation is the infimum of their mean entropies over all such decompositions.
+**Definition.** For a bipartite pure state in finite dimensions, take the entropy ∑ₚ −p log₂ p over positive eigenvalues of either reduced state, counting multiplicities. Entanglement of formation is the infimum of the mean of this entropy over all pure-state probability mixtures representing the given state.
 
 **Problem.** Mixing two states cannot give more entanglement of formation than the weighted mean of their entanglements of formation.
 
@@ -253,11 +253,11 @@
 
 *True by definition.* MSC 81P42 (Entanglement measures, concurrencies, separability criteria), 81P48. arXiv quant-ph. Level 3: graduate.
 
-**Definition.** A state of a two-part system is a product state if it has the form ρ₁ ⊗ ρ₂. It is separable if it is a convex combination Σ pₖ ρ₁ᵏ ⊗ ρ₂ᵏ of product states, and entangled otherwise. Werner gave this definition in 1989.
+**Definition.** A bipartite state in finite dimensions is separable if it is a finite convex combination of products of local density operators. A state is entangled if it has no such decomposition.
 
 **Problem.** A state can be prepared from a product state by local operations and classical communication (LOCC) exactly when it is separable. So entanglement is the resource that these operations cannot create.
 
-**How the definition helps.** The definition lists exactly the states that local operations and messages make for free. Classical messages let the two sides share a random index k with probability pₖ (our own explanation). Each side then prepares its own state for that k, which gives the mixture Σ pₖ ρ₁ᵏ ⊗ ρ₂ᵏ. Conversely, local operations and messages only ever produce such mixtures.
+**How the definition helps.** In our own proof, one party samples the mixture index and sends it to the other. Each prepares its local state for that index. Conversely, on each complete branch of a local protocol, a product input stays a product. Forgetting the messages averages those products.
 
 **Wikipedia:** [Separable state](https://en.wikipedia.org/wiki/Separable_state). It says: “In terms of quantum channels, a separable state can be created from any other state using local actions and classical communication while an entangled state cannot.”
 
@@ -289,11 +289,11 @@
 
 *True by definition.* MSC 81P47 (Quantum channels, fidelity). arXiv quant-ph. Level 3: graduate.
 
-**Definition.** The diamond norm takes the largest trace-norm expansion when a linear map acts alongside an untouched system of any finite size. The trace norm is the sum of singular values. The ordinary induced trace norm tests the map on its input alone.
+**Definition.** A matrix map Φ has diamond norm the supremum of ‖(Φ ⊗ Iₙ)(X)‖₁ over n ≥ 1 and ‖X‖₁ ≤ 1. Here Iₙ acts identically on n-by-n matrices, and ‖X‖₁ sums the singular values.
 
 **Problem.** Tensoring a finite-dimensional linear map with an identity map does not change its diamond norm.
 
-**How the definition helps.** In our own explanation, attaching another idle system only changes the size of a system already allowed in the supremum. The reverse bound follows by holding the additional system in a fixed pure state. The stabilization theorem reduces the supremum to an auxiliary system no bigger than the map’s input. Our own example shows why the ordinary norm differs. Transpose preserves singular values, but transposing just one side of a maximally entangled pair gives a larger trace norm.
+**How the definition helps.** In our own proof, any test after adding an idle system is already a test with a larger auxiliary system. Conversely, tensor any original test input with a fixed pure state on the extra system. This preserves both trace norms.
 
 **Wikipedia:** [Diamond norm](https://en.wikipedia.org/wiki/Diamond_norm). It says: “The diamond norm is the trace norm of the output of a trivial extension of a linear map, maximized over all possible inputs with trace norm at most one.”
 
@@ -309,7 +309,7 @@
 
 **Problem.** A quantum channel between finite-dimensional systems cannot decrease the fidelity of two states.
 
-**How the definition helps.** With the purification definition, take two purifications that attain the maximum. Apply an isometry that models the channel together with its environment. The results purify the output states and have the same inner product, so the output fidelity is at least as large. The work goes into Uhlmann's theorem, which links this definition to the matrix formula, and Stinespring's theorem, which gives the isometry. The proof is our own.
+**How the definition helps.** In our own proof, choose purifications attaining the maximum on a common extension. Apply the channel’s Stinespring isometry to the system in both purifications. Including the environment gives purifications of the outputs with the original inner product. Maximizing over output purifications gives the inequality, and Uhlmann’s theorem identifies this maximum with the matrix formula.
 
 **Wikipedia:** [Fidelity of quantum states](https://en.wikipedia.org/wiki/Fidelity_of_quantum_states). It says: “the fidelity is the maximum overlap between purifications.”
 
@@ -341,7 +341,7 @@
 
 *True by definition.* MSC 81P47 (Quantum channels, fidelity). arXiv quant-ph. Level 3: graduate.
 
-**Definition.** A completely positive map preserves positive matrices even when it acts alongside an identity map of any finite size. A Kraus list represents it as a sum of terms EρE†, where the dagger denotes the adjoint. In a fixed input basis, the Choi matrix has block (i, j) equal to the map applied to matrix unit (i, j). A matrix unit has one entry equal to one and zeros elsewhere.
+**Definition.** A Kraus list for a matrix map Φ consists of operators Eₖ satisfying Φ(X) = ∑ₖ EₖXEₖ† for every input matrix X. In a fixed input basis, its Choi matrix has block (i,j) equal to Φ(\|i⟩⟨j\|).
 
 **Problem.** Any two Kraus lists for the same finite-dimensional map differ by unitary mixing after padding the shorter list with zeros.
 
@@ -363,7 +363,7 @@
 
 **Problem.** Choi's theorem: a linear map on n×n matrices is completely positive exactly when its Choi matrix is positive semidefinite. Then the map has the Kraus form ρ ↦ Σ Vᵢ ρ Vᵢ\*.
 
-**How the definition helps.** Complete positivity is the same as positivity of the Choi matrix, and a positive matrix factors as B\*B, which gives the Kraus operators directly. The page names the case that the definition excludes: matrix transposition is positive but not 2-positive. Applied to one block level of a positive 4×4 matrix, it gives a matrix with eigenvalue −1. So transposition cannot describe a physical process on one half of an entangled pair.
+**How the definition helps.** The Choi matrix applies id ⊗ φ to the positive matrix \|Ω⟩⟨Ω\|, where Ω = ∑ⱼ eⱼ ⊗ eⱼ in the standard basis. In our own argument, factor a positive Choi matrix into rank-one terms and reshape their vectors into Kraus operators. Each Kraus term preserves positivity alongside every identity map. Transposition fails this test because partially transposing a two-qubit Bell state produces a negative eigenvalue.
 
 **Wikipedia:** [Completely positive map](https://en.wikipedia.org/wiki/Completely_positive_map), [Choi's theorem on completely positive maps](https://en.wikipedia.org/wiki/Choi%27s_theorem_on_completely_positive_maps). It says: “The transposition of matrices is a standard example of a positive map that fails to be 2-positive.”
 
@@ -394,7 +394,7 @@
 
 *Rules out counterexamples.* MSC 81P50 (Quantum state estimation, approximate cloning). arXiv quant-ph. Level 3: graduate.
 
-**Definition.** A finite-dimensional state has a positive semidefinite matrix of trace one. Broadcasting uses one physical transformation to produce two outputs from an unknown member of a known family. Each output considered alone must have the original state matrix. The two outputs may be correlated.
+**Definition.** A channel broadcasts a family of states if, for every member ρ, both reduced states of the channel output equal ρ. The two outputs may be correlated.
 
 **Problem.** One channel broadcasts every state in a commuting family of finite-dimensional states.
 
@@ -412,7 +412,7 @@
 
 *True by definition.* MSC 81P73 (Computational stability and error-correcting codes for quantum computation and communication processing), 81P70. arXiv quant-ph, cs.IT. Level 3: graduate.
 
-**Definition.** Define a stabilizer code as the space of states fixed by every element of a commuting group of Pauli operators. Pauli operators are tensor products of the identity and the three Pauli matrices on single quantum bits. The older way to give a quantum code lists a basis of code states.
+**Definition.** A stabilizer code is the common +1 eigenspace of a commuting subgroup of the n-qubit Pauli group that excludes −I. Pauli group elements are tensor products of I, X, Y and Z multiplied by ±1 or ±i.
 
 **Problem.** If a Pauli error anticommutes with some stabilizer element, it sends the code space into a space orthogonal to it.
 
@@ -428,7 +428,7 @@
 
 *True by definition.* MSC 81P73 (Computational stability and error-correcting codes for quantum computation and communication processing). arXiv quant-ph. Level 3: graduate.
 
-**Definition.** A quantum code is a subspace with orthogonal projection P. An error list represents a channel by sending a state matrix ρ to the sum of EρE† over the list. The dagger denotes the adjoint. A recovery channel corrects the error if their composition restores every state supported on the code.
+**Definition.** For a code with orthogonal projection P, a list of error operators satisfies the Knill–Laflamme condition if every PA†BP is a scalar multiple of P. Here A and B range independently over the list.
 
 **Problem.** Suppose PA†BP is a scalar multiple of P for every pair A, B in a spanning list of errors. Every channel represented by errors in their linear span then admits recovery on the code.
 
@@ -442,7 +442,7 @@
 
 ### Valid stabilizers leave nonzero codes
 
-**Remember:** A valid stabilizer group always leaves room for a code.
+**Remember:** Exclude minus identity, then average the commuting Paulis to project onto their fixed space.
 
 *Rules out counterexamples. Confidence: medium.* MSC 81P73 (Computational stability and error-correcting codes for quantum computation and communication processing). arXiv quant-ph. Level 3: graduate.
 
@@ -468,7 +468,7 @@
 
 **Problem.** If the energy operator commutes with T and T² = −I, every finite-dimensional energy eigenspace has even dimension. Any eigenvector has an orthogonal partner at the same energy.
 
-**How the definition helps.** The antiunitary definition gives ⟨T²v, Tv⟩ = ⟨v, Tv⟩, while T² = −I makes the left side its negative. Thus Tv is orthogonal to v. Commutation gives Tv the same energy as v. The orthogonal complement of the pair is also preserved by T, so the pairing continues (our own). For a physical system, the work lies in finding its time reversal operator and checking its square and commutation rule (our own).
+**How the definition helps.** In our own proof, antiunitarity gives ⟨T²v,Tv⟩ = ⟨v,Tv⟩, while T² = −I gives its negative. Thus v and Tv are orthogonal, and commutation places both at the same energy. Their span and its orthogonal complement within the eigenspace are T-invariant. Repeating the pairing gives even dimension.
 
 **Wikipedia:** [Kramers' theorem](https://en.wikipedia.org/wiki/Kramers%27_theorem). It says: “If T : H → H is an antiunitary operator acting on a Hilbert space H satisfying T² = −1 and v a vector in H, then T v is orthogonal to v.”
 
@@ -482,7 +482,7 @@
 
 **Definition.** Replace each edge of a finite connected graph by an interval of positive finite length. Allow functions with square-integrable first derivatives on the edges and matching values at each vertex. Define the free Laplacian through the energy obtained by integrating the squared derivative magnitude over every edge.
 
-**Problem.** The zero eigenvalue of the free Laplacian on a connected compact metric graph is simple. Two disjoint intervals instead give two independent zero modes.
+**Problem.** The free Laplacian on a connected compact metric graph with at least one edge has a simple zero eigenvalue. Two disjoint intervals instead give two independent zero modes.
 
 **How the definition helps.** In our own proof, zero energy forces each edge function to be constant. Matching vertex values make the constants equal throughout a connected graph. Conversely, every constant has zero energy. The theorem associating an operator to this energy identifies zero-energy functions with its kernel.
 
@@ -552,7 +552,7 @@
 
 *True by definition.* MSC 81Q70 (Differential geometric methods, including holonomy, Berry and Hannay phases, Aharonov-Bohm effect, etc. in quantum theory), 53C05. arXiv quant-ph, math-ph. Level 3: graduate.
 
-**Definition.** Define the Berry phase factor as the holonomy of the eigenstate line along a loop of parameters. This means the complex scalar obtained by transporting a state around the loop using the connection, a rule for comparing nearby eigenstates. The state must belong to a simple eigenvalue separated from the rest of the spectrum along the loop.
+**Definition.** Along a smooth closed parameter path, let P(t) project onto a smooth isolated simple eigenstate line. Berry transport keeps a unit vector ψ(t) in that line and requires P(t)ψ′(t) = 0. The Berry phase factor is the scalar relating its final vector to its initial vector.
 
 **Problem.** The phase factor does not depend on how one chooses the phases of the eigenstates along the loop. The phase angle itself is only determined modulo 2π.
 
@@ -602,15 +602,15 @@
 
 ### Primitive channels forget their inputs
 
-**Remember:** Irreducible channels can cycle, but primitive channels converge.
+**Remember:** One fixed number of steps gives every input full rank.
 
 *Rules out counterexamples.* MSC 81S22 (Open systems, reduced dynamics, master equations, decoherence). arXiv quant-ph, math-ph. Level 3: graduate.
 
-**Definition.** A quantum channel transforms state matrices, which are positive semidefinite and have trace one. A finite-dimensional channel is primitive if some fixed power sends every state to a positive definite state. Its error operators are matrices E that express the channel as a sum of terms EρE†, with † denoting the adjoint. Irreducibility means these operators have no common nonzero proper invariant subspace.
+**Definition.** A finite-dimensional quantum channel is a completely positive trace-preserving linear map on matrices. It is primitive if some integer N ≥ 1 makes Φᴺ(ρ) positive definite for every state ρ, where Φ denotes the channel.
 
 **Problem.** Every primitive channel converges under iteration to one fixed full-rank state, regardless of its input.
 
-**How the definition helps.** Primitivity excludes the persistent cycles that irreducibility allows. In our own explanation, the quantum Perron–Frobenius theorem gives one simple eigenvalue at 1 and puts all other eigenvalues strictly inside the unit circle. Powers therefore converge to the fixed state. Our own irreducible example measures in a two-vector orthonormal basis and prepares the opposite basis state. The two basis states alternate forever.
+**How the definition helps.** Primitivity excludes cycles that retain rank-deficient states. In our own example, measuring in a two-vector basis and preparing the opposite basis state gives an irreducible channel that alternates forever on basis states. The quantum Perron–Frobenius theorem gives a full-rank stationary state, a simple eigenvalue one, and all other eigenvalues strictly inside the unit circle. Trace preservation then makes every input state converge to the stationary state.
 
 **Paper or page:** [Zero-error communication under discrete-time Markovian dynamics](https://arxiv.org/abs/2402.18703v3). It says: “∃ N ∈ ℕ such that ∀ ρ ∈ 𝕊𝒹(ℂ) and n ≥ N, Φⁿ(ρ) is of full rank.”
 
@@ -625,7 +625,7 @@
 
 *True by definition.* MSC 81S30 (Phase-space methods including Wigner distributions, etc. applied to problems in quantum mechanics). arXiv math-ph, hep-th. Level 3: graduate.
 
-**Definition.** Phase space records position and momentum together. Weyl quantization turns a function on this space into an operator by changing coordinates and taking a Fourier transform. For smooth functions that decay rapidly with all derivatives, the resulting integral kernels have the same regularity and decay. The Moyal product sends two functions to operators, composes them, and converts the resulting kernel back to a function.
+**Definition.** Let W denote Weyl quantization on smooth phase-space functions that decay rapidly with every derivative. Their Moyal product is f ⋆ g = W⁻¹(W(f)W(g)), where juxtaposition means operator composition.
 
 **Problem.** The Moyal product is associative on smooth rapidly decaying functions on phase space.
 
@@ -661,7 +661,7 @@
 
 *True by definition.* MSC 81S30 (Phase-space methods including Wigner distributions, etc. applied to problems in quantum mechanics). arXiv math-ph, quant-ph. Level 3: graduate.
 
-**Definition.** Take a normalized wave function ψ on the real line that decays rapidly with all its derivatives. Choose units with Planck’s reduced constant equal to one. Its Wigner function W(x,p) is the integral over y of exp(−ipy)ψ(x+y/2) times the complex conjugate of ψ(x−y/2), divided by 2π. This joint description of position x and momentum p can take negative values.
+**Definition.** Let ψ be a normalized smooth wavefunction on ℝ that decays rapidly with all derivatives, and use units ℏ = 1. Its Wigner function is W(x,p) = (2π)⁻¹∫ℝ exp(−ipy)ψ(x+y/2)conj(ψ(x−y/2)) dy, where conj denotes complex conjugation.
 
 **Problem.** Integrating the Wigner function over momentum gives the position probability density. Integrating over position gives the momentum probability density.
 
@@ -679,7 +679,7 @@
 
 *True by definition.* MSC 81T05 (Axiomatic quantum field theory; operator algebras), 81T20. arXiv math-ph, hep-th. Level 3: graduate.
 
-**Definition.** For a free scalar field, average the field against smooth functions of compact support. Define the commutator, the difference between the two product orders, by pairing these functions through i times the retarded minus advanced propagator. The retarded and advanced operators solve the wave equation with response confined to the causal future and past respectively. Use units with ℏ = 1.
+**Definition.** For real smooth compactly supported tests f,g, the free scalar field obeys \[φ(f),φ(g)\] = i⟨f,(Gᵣ−Gₐ)g⟩I in units ℏ = 1. The pairing integrates the product over spacetime. The retarded and advanced propagators Gᵣ and Gₐ have outputs supported in the causal future and past of the source, respectively.
 
 **Problem.** On a spacetime admitting a surface for complete initial data, these averaged fields commute when no causal path connects their supports.
 
@@ -701,7 +701,7 @@
 
 **Problem.** For a local net with this property, no nonzero bounded observable in a region with a nonempty spacelike open complement annihilates the vacuum.
 
-**How the definition helps.** An observable killing the vacuum kills its dense orbit under any commuting exterior algebra. Our own counterexample takes two matrix algebras acting on separate two-dimensional tensor factors. A unit product vector is cyclic for the full algebra. A nonzero projection on the first factor can still kill that vector. The Reeh–Schlieder theorem proves local cyclicity under the vacuum field axioms.
+**How the definition helps.** A local observable annihilating the vacuum annihilates its orbit under the commuting exterior algebra. Local cyclicity makes that orbit dense, so boundedness forces the observable to vanish. In our own counterexample, a product vector is cyclic for the full two-qubit matrix algebra, yet a nonzero one-qubit projection annihilates it. The Reeh–Schlieder theorem supplies local cyclicity under the vacuum field axioms.
 
 **nLab:** [Reeh-Schlieder theorem](https://ncatlab.org/nlab/show/Reeh-Schlieder+theorem). It says: “there cannot be a nonzero localized observable that annihilates the vacuum.”
 
@@ -713,9 +713,9 @@
 
 *Rules out counterexamples.* MSC 81T05 (Axiomatic quantum field theory; operator algebras). arXiv math-ph, math.OA. Level 3: graduate.
 
-**Definition.** Let U(x) = exp(iP·x) be a strongly continuous unitary representation of spacetime translations. Write p = (E,k) for a joint spectral value of its generators P, with energy E and spatial momentum k. The spectrum condition requires E ≥ ‖k‖ for every such p. For y = (s,v), use the pairing p·y = Es − ⟨k,v⟩.
+**Definition.** Let U(x) = exp(iP·x) be a strongly continuous unitary representation of spacetime translations. The spectrum condition requires E ≥ ‖k‖ for every joint spectral value p = (E,k) of P, using p·(s,v) = Es − ⟨k,v⟩.
 
-**Problem.** Every coefficient ⟨u,U(x)v⟩ is the continuous real boundary value of a bounded holomorphic function on the tube of complex translations x+iy with s &gt; ‖v‖.
+**Problem.** Each coefficient ⟨a,U(x)b⟩ extends continuously from real translations to the tube x+iy, where y = (s,v) and s &gt; ‖v‖. The extension is bounded and holomorphic inside the tube.
 
 **How the definition helps.** The forward cone makes exp(−p·y) at most one throughout the tube. Our own proof integrates exp(ip·z) against the finite spectral measure for u and v, and dominated convergence gives the boundary values. Our own counterexample is the character exp(ix₁), with zero energy and nonzero spatial momentum. Its continuation grows without bound as the first spatial coordinate of y tends to minus infinity.
 
@@ -729,11 +729,11 @@
 
 *True by definition.* MSC 81T05 (Axiomatic quantum field theory; operator algebras). arXiv math-ph, math.OA. Level 3: graduate.
 
-**Definition.** Let a unital observable algebra have time evolution αₜ by automorphisms. A ground state has a representation π with a unit vector Ω such that ω(a) = ⟨Ω,π(a)Ω⟩ and the vectors π(a)Ω span a dense subspace. A strongly continuous unitary group Uₜ must implement αₜ, fix Ω, and have nonnegative generator.
+**Definition.** A ground state ω for time evolution αₜ admits a representation π with cyclic unit vector Ω and ω(a) = ⟨Ω,π(a)Ω⟩ for every observable a. Cyclic means that the vectors π(a)Ω span a dense subspace. A strongly continuous unitary group must implement αₜ in π, fix Ω and have nonnegative generator.
 
 **Problem.** An automorphism that commutes with time evolution pulls any ground state back to a ground state.
 
-**How the definition helps.** Composing π with a symmetry of the algebra leaves the same unitary group available. Our own proof keeps Ω and composes π with the given automorphism. Surjectivity preserves the dense span, and commutation with αₜ preserves implementation. The generator therefore stays nonnegative. The cyclic representation tests energy without choosing a common Hamiltonian for all states.
+**How the definition helps.** In our own proof, composing π with the automorphism represents the pulled-back state using the same vector Ω. Surjectivity preserves cyclicity, and commutation with time evolution lets the same unitary group implement αₜ. Its generator remains nonnegative.
 
 **Paper or page:** [Ground state representations of some non-rational conformal nets](https://arxiv.org/abs/1807.11723v2). It says: “If α commutes with Ad U(τ(t)), then ω ∘ α is a ground state.”
 
@@ -765,7 +765,7 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 81T08 (Constructive quantum field theory). arXiv math-ph. Level 3: graduate.
 
-**Definition.** Let X be a centered real Gaussian random distribution on Euclidean space whose law is invariant under time reversal θ. Its reflected covariance on real smooth compactly supported positive-time tests is B(f,g) = 𝔼\[X(f ∘ θ)X(g)\]. Reflection positivity means 𝔼\[conj(F ∘ θ) F\] ≥ 0 for each bounded measurable function F of finitely many positive-time evaluations. Here conj denotes complex conjugation.
+**Definition.** Let X be a centered real Gaussian random distribution whose law is invariant under time reflection θ. For real smooth compactly supported positive-time tests f,g, its reflected covariance is B(f,g) = 𝔼\[X(f ∘ θ)X(g)\]. Reflection positivity requires 𝔼\[conj(F ∘ θ)F\] ≥ 0 for every bounded measurable function F of finitely many positive-time evaluations, with conj denoting complex conjugation.
 
 **Problem.** The law is reflection positive exactly when B(f,f) ≥ 0 for every such test f.
 
@@ -783,7 +783,7 @@
 
 *True by definition. Confidence: medium.* MSC 81T08 (Constructive quantum field theory). arXiv math-ph. Level 3: graduate.
 
-**Definition.** View the field as a random continuous linear functional on rapidly decreasing smooth functions on Euclidean space. Write θ for time reversal. A future test F is a bounded continuous function of finitely many field evaluations on smooth functions supported at positive times. Call a time-symmetric law reflection positive if 𝔼\[conj(F ∘ θ) F\] ≥ 0 for every future test, where conj means complex conjugation.
+**Definition.** A field is a random continuous linear functional on rapidly decreasing smooth test functions on Euclidean space. Let θ reverse time and let F range over bounded continuous functions of finitely many field evaluations on positive-time tests. A time-symmetric law is reflection positive if 𝔼\[conj(F ∘ θ)F\] ≥ 0 for every such F, with conj denoting complex conjugation.
 
 **Problem.** Any weak limit of such reflection-positive laws is reflection positive. The limit also satisfies the inequality for every bounded measurable function of its positive-time evaluations.
 
@@ -801,11 +801,11 @@
 
 *True by definition. Confidence: medium.* MSC 81T08 (Constructive quantum field theory). arXiv math-ph. Level 3: graduate.
 
-**Definition.** Let θ reverse time under a time-symmetric field law. Reflection positivity means 𝔼\[conj(F ∘ θ) F\] ≥ 0 for every bounded measurable future observation F, where conj means complex conjugation. Choose a bounded nonnegative future observation w. Multiply the law by the product w · (w ∘ θ) and divide by its expectation, assumed positive.
+**Definition.** Let θ reverse time under a time-symmetric field law, and choose a bounded nonnegative future observation w with Z = 𝔼\[w(w ∘ θ)\] &gt; 0. The split weight gives the new law density w(w ∘ θ)/Z relative to the original law. Reflection positivity requires 𝔼\[conj(F ∘ θ)F\] ≥ 0 for every bounded measurable future observation F, with conj denoting complex conjugation.
 
 **Problem.** If the original law is reflection positive, the weighted law is reflection positive.
 
-**How the definition helps.** The split weight changes the original test F into the future test wF. Our own proof applies the original inequality to wF and divides by the positive normalizing constant. A general symmetric weight gives no such factorization. The cited action splits formally. Applying this argument to a field model requires a measure with the stated density.
+**How the definition helps.** The split weight turns each reflected test for F into the original law’s reflected test for wF. In our own proof, wF remains a bounded future observation, so its reflected expectation is nonnegative. Dividing by Z preserves the inequality.
 
 **Wikipedia:** [Schwinger function](https://en.wikipedia.org/wiki/Schwinger_function). It says: “which only depends on φ on the positive half-space (φ₊), and S₋ which only depends upon φ on the negative half-space (φ₋)”
 
@@ -821,7 +821,7 @@
 
 **Problem.** The integrated Wick squares converge in L² of the probability law as the cutoff increases. The uncentered integrated squares diverge to infinity almost surely.
 
-**How the definition helps.** Subtracting the point variance centers each squared Fourier coefficient in the integral. Our own proof uses a real orthonormal Fourier basis with independent Gaussian coefficients. Their variances have divergent sum, but their squared variances have finite sum in two dimensions. The independent centered squares therefore have partial sums converging in mean square and almost surely. Adding back the divergent sum of variances gives the uncentered claim.
+**How the definition helps.** In our own proof, integrating the Wick subtraction centers the independent squared Gaussian coefficients in a real orthonormal Fourier basis. In two dimensions their original coefficient variances have divergent sum but summable squares. The centered squares thus have summable variances, so their partial sums converge in mean square and almost surely. Restoring the divergent sum of means gives almost sure divergence of the uncentered integrals.
 
 **Paper or page:** [An introduction to singular stochastic PDEs: Allen-Cahn equations, metastability and regularity structures](https://arxiv.org/abs/1901.07420). It says: “For every n ∈ ℕ, we have sup(N ≥ 1) 𝔼\[((1/L²) ∫Λ :φ(GFF,N)ⁿ(x): dx)²\] &lt; ∞.”
 
@@ -837,7 +837,7 @@
 
 **Definition.** Away from a magnetic source, a degree-two differential character assigns an additive phase in ℝ/ℤ to each smooth integral one-cycle. On a boundary, the phase equals the integral of the normalized magnetic field over the spanning chain, modulo integers.
 
-**Problem.** A magnetic field described by such a character has integer flux through every closed oriented surface. A monopole with normalized flux ½ through its surrounding sphere therefore admits no character.
+**Problem.** The normalized magnetic flux of such a character is an integer through every closed oriented surface in its domain. A monopole with normalized flux ½ through its surrounding sphere therefore admits no character.
 
 **How the definition helps.** In our own derivation, a closed surface has zero boundary, whose phase must be zero. Half the area form on a sphere of area one gives our own excluded example. The comparison theorem identifies these characters with circle bundles with connection.
 
@@ -860,7 +860,7 @@
 
 **Problem.** Under a gauge change, F becomes UFU⁻¹. Therefore the trace of F² does not change.
 
-**How the definition helps.** The commutator definition makes the transformation rule immediate because conjugation respects products and differences (our own). The coordinate definition instead writes F in terms of derivatives and products of the matrix terms. One must then check that the extra derivatives of U cancel (our own). The work goes into the transformation law for the matrix terms of D (our own). One must also show that the commutator multiplies by a matrix rather than differentiating the field.
+**How the definition helps.** In our own proof, conjugation carries DᵢDⱼ − DⱼDᵢ to U(DᵢDⱼ − DⱼDᵢ)U⁻¹. Squaring preserves conjugation, and cyclicity of the matrix trace gives the same trace. The connection transformation law supplies covariance of D, and the product rule makes its commutator a matrix acting at each point.
 
 **Wikipedia:** [Gauge covariant derivative](https://en.wikipedia.org/wiki/Gauge_covariant_derivative). It says: “Unlike the partial derivatives, the gauge covariant derivatives do not commute. However they almost do in the sense that the commutator is not an operator of order 2 but of order 0, i.e. is linear over functions:”
 
@@ -896,7 +896,7 @@
 
 **Problem.** For any positive scales μ and ν, T(ν) − T(μ) = 2π² log(ν/μ) δ₀, where δ₀ evaluates a test at zero.
 
-**How the definition helps.** In our own calculation, defining the extension by differentiation reduces the scale change to the Laplacian of \|x\|⁻². Subtracting the logarithms leaves the constant 2 log(ν/μ). The fundamental solution identity Δ\|x\|⁻² = −4π²δ₀ supplies the coefficient. Direct differentiation away from zero verifies that T(μ) extends the original kernel. This avoids choosing a separate subtraction on each test function.
+**How the definition helps.** In our own calculation, subtracting the logarithms leaves the constant 2 log(ν/μ). The scale difference is therefore −½ log(ν/μ) times Δ\|x\|⁻². The fundamental solution identity Δ\|x\|⁻² = −4π²δ₀ gives the coefficient.
 
 **nLab:** [differential renormalization](https://ncatlab.org/nlab/show/differential+renormalization). It says: “makes choices for defining time-ordered products/Feynman amplitudes at coincident interaction vertices.”
 
@@ -910,7 +910,7 @@
 
 *True by definition.* MSC 81T18 (Feynman diagrams). arXiv math-ph, hep-th. Level 3: graduate.
 
-**Definition.** Expand the unnormalized Gaussian expectation of the exponential of a formal scalar interaction by pairing field occurrences, as in the Gaussian moment formula. Divide by the factorial of each vertex degree and the factorial of each vertex multiplicity. A diagram pairs edge ends attached to vertices and keeps each external label fixed. Its automorphisms permute identical vertices and their edge ends while preserving all pairings and external labels.
+**Definition.** In the formal Gaussian expansion, divide by each vertex degree factorial and each identical-vertex multiplicity factorial, counting a degree factorial for every vertex. A diagram is an orbit of pairings of field occurrences under permutations of identical vertices and of their incident ends, with external labels fixed. Its automorphism group consists of the relabellings preserving one representative pairing.
 
 **Problem.** After coupling constants and covariance factors are removed, each diagram has coefficient 1/\|Aut(G)\|, where Aut(G) is its automorphism group.
 
@@ -926,7 +926,7 @@
 
 *True by definition.* MSC 81T18 (Feynman diagrams), 81Q30. arXiv hep-th, math-ph. Level 3: graduate.
 
-**Definition.** Treat positive parameter vectors that differ by a common scale as one ray. In n variables, let f have degree −n under scaling. Insert the radial vector x into the first slot of the coordinate volume form to obtain ω. Use fω as the Feynman integrand on rays.
+**Definition.** Identify positive parameter vectors x in ℝⁿ that differ by positive scaling. For f homogeneous of degree −n, insert the radial vector x into the first slot of the coordinate volume form to obtain ω. The projective integrand is the form on rays whose pullback is fω.
 
 **Problem.** For an absolutely convergent integral, choose any nonempty subset of the parameters and set their sum to one. With the orientation induced from the rays, integration gives the same value for every subset.
 
@@ -962,7 +962,7 @@
 
 *True by definition.* MSC 81T20 (Quantum field theory on curved space or space-time backgrounds). arXiv math-ph. Level 3: graduate.
 
-**Definition.** Use polynomial functions of a free scalar field before imposing its equation, with smooth compactly supported kernels for all derivatives. Let C contract the second field derivative with the symmetric Feynman kernel, the propagator used for time ordering. Set T = exp(ℏC/2), where ℏ is a formal parameter. Time-ordered multiplication sums all pairings between factors, weighting each contracted pair by ℏ times the same kernel.
+**Definition.** For regular off-shell polynomial field functionals, let C contract the second derivative with the symmetric Feynman kernel. Define T = exp(ℏC/2) with formal parameter ℏ. Time-ordered multiplication sums over all collections of disjoint cross-factor pairs, contracting each pair with ℏ times that kernel and multiplying the unpaired fields.
 
 **Problem.** For regular polynomial functionals F and G, the time-ordered product of TF and TG equals T(FG). Consequently the time-ordered product is associative.
 
@@ -1050,7 +1050,7 @@
 
 *True by definition.* MSC 81T40 (Two-dimensional field theories, conformal field theories, etc. in quantum mechanics). arXiv math-ph. Level 3: graduate.
 
-**Definition.** In Segal’s formulation, assign a state space to a circle and an operator to an annulus with parametrized boundary circles. Sewing matches an outgoing circle to an incoming one, and the operator assignment respects composition. Use the anomaly-free version, so this rule has no scalar correction. A presentation by local correlation functions does not start with these annulus operators.
+**Definition.** In an anomaly-free Segal theory, a parametrized circle has a state space and an annulus between two such circles has a linear operator. Sewing an outgoing circle to a matching incoming circle assigns the composite of the corresponding operators.
 
 **Problem.** Let T(t) denote the operator for a round annulus with radii exp(−t) and 1 and standard angular parametrizations. Then T(s + t) = T(s)T(t) for all s,t &gt; 0.
 
@@ -1068,11 +1068,11 @@
 
 *Rules out counterexamples.* MSC 81T45 (Topological field theories in quantum mechanics), 81T13. arXiv hep-th, math-ph. Level 3: graduate.
 
-**Definition.** In SU(2) Chern–Simons theory, the level k multiplies an action measuring a gauge field on an oriented three-dimensional space. SU(2) consists of two-by-two unitary matrices with determinant one. Normalize the action so a change of gauge of degree n shifts it by 2πkn. The quantum phase is the exponential of i times the action.
+**Definition.** In SU(2) Chern–Simons theory at level k, use the action normalization Sₖ(Aᵍ) − Sₖ(A) = 2πk deg(g) on closed oriented three-manifolds. The quantum phase of a connection A is exp(iSₖ(A)).
 
 **Problem.** On a closed oriented three-manifold the phase is invariant under changes of gauge at integer level. On the three-sphere, identified with SU(2), the identity map has degree one and reverses the phase at level one-half.
 
-**How the definition helps.** In our own calculation, integer level makes the extra phase exp(2πikn) equal to one for every integer degree n. The work lies in deriving the action shift and identifying n as the winding number of the gauge transformation.
+**How the definition helps.** In our own calculation, the phase gains the factor exp(2πik deg(g)), which equals one for every integer level. The identity map of SU(2) has degree one, so level one-half instead gives the factor −1. The winding-number formula for the action supplies the shift.
 
 **nLab:** [level (Chern-Simons theory)](https://ncatlab.org/nlab/show/level+%28Chern-Simons+theory%29). It says: “only for certain discrete choices of the scale (a global prefactor) of the Lagrangian.”
 
@@ -1088,7 +1088,7 @@
 
 *True by definition.* MSC 81T45 (Topological field theories in quantum mechanics), 81T13. arXiv hep-th, math-ph. Level 3: graduate.
 
-**Definition.** Start with a compact, simply connected simple gauge group and an invariant inner product at integral level. This normalization gives a degree-four differential class, which assigns phases to three-cycles. Integrating the universal class over a closed oriented surface gives the Chern–Simons line with connection on the space of surface connections.
+**Definition.** Fix a compact simply connected simple gauge group and a nonzero integral level with its normalized invariant inner product. The Chern–Simons line with connection over surface connections is the degree-two differential class obtained by integrating the universal degree-four class over the closed oriented surface.
 
 **Problem.** The normalized curvature of the Chern–Simons line is the symplectic form on the space of surface connections. On two variations it integrates their wedge product paired by the chosen inner product, with the level normalization.
 
@@ -1102,7 +1102,7 @@
 
 ### Unitary conjugation preserves spectral actions
 
-**Remember:** Unitary conjugation preserves the spectral action at every scale.
+**Remember:** Take the trace of a function of the scaled Dirac operator.
 
 *True by definition.* MSC 81T75 (Noncommutative geometry methods in quantum field theory), 58B34. arXiv math-ph, math.OA. Level 3: graduate.
 
@@ -1128,7 +1128,7 @@
 
 **Problem.** For two or more particles in the plane, every unit complex number gives a consistent scalar exchange phase. A phase descends to a permutation rule only if it is +1 or −1.
 
-**How the definition helps.** Braids retain the winding of an exchange, so two successive exchanges can carry a nontrivial phase. In our own construction, assign the same phase to each basic counterclockwise exchange of adjacent particles and its inverse to the reverse exchange. Both sides of each braid relation then have the same phase. A permutation rule also requires each basic exchange to square to the identity, leaving just the signs. The topological theorem identifies loops of unordered configurations of distinct points in the plane with braids up to deformation.
+**How the definition helps.** In our own construction, assign phase z to each basic counterclockwise adjacent exchange and z⁻¹ to its inverse. Both sides of every braid relation then have the same phase. The configuration-space braid group theorem identifies these rules with scalar exchange rules for planar particles. A permutation exchange squares to the identity, so descent requires z² = 1.
 
 **nLab:** [braid group statistics](https://ncatlab.org/nlab/show/braid+group+statistics). It says: “which allows one to regard any linear representation of the symmetric group also as a particular braid group representation.”
 
@@ -1146,7 +1146,7 @@
 
 **Problem.** The bosonic Fock space of a direct sum of two one-particle spaces is naturally unitarily isomorphic to the tensor product of their Fock spaces.
 
-**How the definition helps.** Counting particles in a combined basis gives exactly one occupation vector for each pair of occupation vectors in the two separate bases. In our own proof, take the union of orthonormal bases of the two one-particle spaces. Map each normalized occupation vector to the tensor product indexed by its two lists of counts. This matches orthonormal bases, so it extends to a unitary that does not depend on the chosen bases.
+**How the definition helps.** In our own proof, split each normalized occupation vector’s counts between orthonormal bases of the two summands. The resulting pairs index the tensor-product basis, giving a unitary. Within each pair of particle numbers, its inverse takes the normalized symmetrized product of the two factors. Symmetrization commutes with changes of basis, so the map is natural.
 
 **nLab:** [Fock space](https://ncatlab.org/nlab/show/Fock+space). It says: “In physics the symmetric tensor algebra on a space of quantum states of some quantum mechanical system is called its bosonic Fock space.”
 
@@ -1158,11 +1158,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 81P10 (Logical foundations of quantum mechanics; quantum logic (quantum-theoretic aspects)), 18B25, 46L30. arXiv quant-ph, math.OA. Level 4: research.
 
-**Definition.** The Bohr topos of a C\*-algebra A is the topos of presheaves on the commutative subalgebras of A. In it, A becomes an internal commutative C\*-algebra. Seen from outside, a state of this algebra is a quasi-state: a positive function on A with value 1 at the identity, linear on each commutative subalgebra.
+**Definition.** Use the covariant functor topos on the inclusion poset of unital commutative C\*-subalgebras of A. The internal algebra assigns C to each context C and inclusion to each inclusion. Its states correspond externally to families of states on all contexts that agree under restriction.
 
 **Problem.** Let A = B(H) for a separable Hilbert space H of dimension greater than 2. Then Gleason's theorem says that the quantum states on A are exactly the states of its internal commutative algebra in the Bohr topos.
 
-**How the definition helps.** A map that keeps the structure on each commutative subalgebra is the same as an internal map in the presheaf topos over those subalgebras. So the claim that every quasi-state is linear becomes a statement that quantum states are classical states inside the topos. Gleason's analytic argument is still the proof; the topos only gives it a clean form.
+**How the definition helps.** Compatibility makes the context states one probability assignment on projections, additive over every finite orthogonal family. In our own explanation, the generalized Gleason theorem for bounded finitely additive projection measures extends this assignment uniquely to a state on B(H). Each context state agrees with that extension on its self-adjoint elements by applying spectral approximation in a containing commutative von Neumann algebra. Conversely, every state restricts compatibly.
 
 **nLab:** [Bohr topos](https://ncatlab.org/nlab/show/Bohr+topos). It says: “Hence we have the following direct topos-theoretic equivalent reformulation of Gleason's theorem.”
 
@@ -1173,11 +1173,11 @@
 
 ### Kochen–Specker says the spectral presheaf has no global elements
 
-**Remember:** A hidden-variable assignment would be a point of quantum phase space; there is none.
+**Remember:** A global element would choose one character per context, agreeing on every overlap.
 
 *Makes the theorem clean to state or prove.* MSC 81P10 (Logical foundations of quantum mechanics; quantum logic (quantum-theoretic aspects)), 18B25, 46L05. arXiv quant-ph, math.OA. Level 4: research.
 
-**Definition.** Let B(H) be the algebra of bounded operators on a Hilbert space H. Its spectral presheaf assigns to each commutative subalgebra V its Gelfand spectrum, the set of nonzero multiplicative linear maps V → ℂ. To each inclusion of subalgebras it assigns the restriction map. It is a presheaf on the poset of commutative subalgebras, which is the setting of the Bohr topos.
+**Definition.** For every unital commutative von Neumann subalgebra V of B(H), the spectral presheaf takes as values the nonzero multiplicative linear maps V → ℂ. For each inclusion V ⊂ W it restricts characters of W to V.
 
 **Problem.** For a Hilbert space H of dimension greater than 2, the spectral presheaf of B(H) has no global elements. This is the Kochen–Specker theorem: no assignment of values to all observables keeps the functional relations between commuting observables.
 
@@ -1190,31 +1190,13 @@
 - [C. J. Isham, J. Butterfield, A topos perspective on the Kochen-Specker theorem: I. Quantum states as generalized valuations, International Journal of Theoretical Physics 37 (1998) 2669–2733; arXiv:quant-ph/9803055](https://arxiv.org/abs/quant-ph/9803055)
 - [Simon Kochen, Ernst Specker, The problem of hidden variables in quantum mechanics, Journal of Mathematics and Mechanics 17 (1967) 59–87](https://doi.org/10.1512/iumj.1968.17.17004)
 
-### Least projections above each effect give a unique spectral resolution
-
-**Remember:** Least covering projections let abstract effects have spectral cuts.
-
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 81P10 (Logical foundations of quantum mechanics; quantum logic (quantum-theoretic aspects)), 47B15. arXiv quant-ph, math.OA. Level 4: research.
-
-**Definition.** An effect algebra models quantum yes-or-no measurements with a partial sum for compatible alternatives. A compression base is a family of maps that act like the compressions a ↦ pap of operator algebras; each map corresponds to a projection. The algebra is spectral if every element has a least projection above it and a comparability rule holds.
-
-**Problem.** In an Archimedean spectral effect algebra, every element has a unique rational spectral resolution. This is a family of projections indexed by rational thresholds, like the spectral projections of a self-adjoint operator.
-
-**How the definition helps.** The definition supplies both a way to compare an element with a threshold and projections to record the result. In our own words, the cover selects a least projection instead of an arbitrary upper bound. It takes work to show that the resulting cuts fit together and are unique.
-
-**Paper or page:** [Spectral resolutions in effect algebras](https://arxiv.org/abs/2111.02166v3). It says: “It is shown that in a spectral archimedean effect algebra E, every a ∈ E admits a unique rational spectral resolution and its properties are studied.”
-
-**Sources:**
-
-- [Anna Jenčová, Sylvia Pulmannová, Spectral resolutions in effect algebras, arXiv:2111.02166v3 (2022), Quantum 6, 849 (2022)](https://arxiv.org/abs/2111.02166v3)
-
 ### Conditional min-entropy as guessing probability cannot drop when the evidence is processed
 
 **Remember:** Spoiling the evidence cannot improve the best guess.
 
 *True by definition. Confidence: medium.* MSC 81P17 (Quantum entropies), 81P47. arXiv quant-ph, cs.IT. Level 4: research.
 
-**Definition.** Take a classical label and a quantum system correlated with it. Define the conditional min-entropy as minus the logarithm of the best probability of guessing the label by measuring the system. The usual definition finds the smallest number for which a certain inequality between positive matrices holds.
+**Definition.** For a finite ensemble of states ρₓ with label probabilities pₓ, define Hₘᵢₙ(X\|B) = −log₂ max ∑ₓ pₓ tr(Mₓρₓ). The maximum ranges over all positive measurement operators Mₓ on B summing to the identity.
 
 **Problem.** A quantum channel applied to the guessing system cannot lower the label's conditional min-entropy.
 
@@ -1228,15 +1210,15 @@
 
 ### A graph test for independence that works in cyclic quantum causal models
 
-**Remember:** Cut the loops and account for the conditioning introduced by the cuts.
+**Remember:** Break cycles, then test separation while conditioning on every postselection node.
 
 *Makes the theorem clean to state or prove.* MSC 81P45 (Quantum information, communication, networks (quantum-theoretic aspects)), 62H22. arXiv quant-ph, cs.AI. Level 4: research.
 
-**Definition.** The probability rule splits edges to turn a graph with feedback into one without cycles. It replaces each split link by a transfer protocol and conditions on success. The p-separation rule tests ordinary graph separation in the resulting graphs, including the variables selected on.
+**Definition.** Choose edges whose removal breaks all directed cycles. Replace each chosen edge u → v by a fresh source feeding v and a postselection node receiving inputs from u and that source. X and Y are p-separated given Z if some such expansion d-separates them given Z and all postselection nodes.
 
 **Problem.** For the finite-dimensional causal models in the paper, p-separation characterizes the conditional independences forced by the graph.
 
-**How the definition helps.** The construction lets the graph test account for both the broken loops and the selection events. In our own words, ignoring those events would miss the dependencies that conditioning can create. The remaining work is to prove that the probability rule is independent of implementation and that every unblocked case has a model showing dependence.
+**How the definition helps.** In our own explanation, including the success events in the conditioning set lets ordinary d-separation account for selection. The paper’s soundness and completeness theorem identifies this graph test with conditional independence in every compatible model.
 
 **Paper or page:** [Cyclic quantum causal modelling with a graph separation theorem](https://arxiv.org/abs/2502.04168v2). It says: “We address these challenges by introducing a robust probability rule and a novel graph-separation property, p-separation, which we prove to be sound and complete for all such models.”
 
@@ -1244,35 +1226,17 @@
 
 - [Carla Ferradini, Victor Gitton, V. Vilasini, Cyclic quantum causal modelling with a graph separation theorem, arXiv:2502.04168v2 (2025)](https://arxiv.org/abs/2502.04168v2)
 
-### An optimization-defined divergence proves a chain rule for sandwiched Rényi divergence
-
-**Remember:** Optimize over a positive matrix, then pass to many copies.
-
-*Makes the theorem clean to state or prove.* MSC 81P45 (Quantum information, communication, networks (quantum-theoretic aspects)), 94A17, 47A64. arXiv quant-ph, math.IT. Level 4: research.
-
-**Definition.** A quantum Rényi divergence measures how different two quantum states are. The new divergence minimizes the trace of a positive matrix under a constraint. Its weighted geometric mean with the second state must dominate the first in matrix order. Regularization takes the limiting divergence per copy for many identical copies.
-
-**Problem.** For orders α above one, the regularization of the new divergence equals the sandwiched Rényi divergence. This gives a chain rule for the sandwiched divergence. It bounds the divergence between two channel outputs by the input divergence plus a channel term.
-
-**How the definition helps.** The optimization puts matrix inequalities in the definition, where they help prove the chain rule. In our own words, feasible matrices serve as witnesses for upper bounds. The main work is to prove the chain rule for the new divergence and identify its regularization. These steps let the argument reach the sandwiched divergence.
-
-**Paper or page:** [Defining quantum divergences via convex optimization](https://arxiv.org/abs/2007.12576v2). It says: “An important property of this new divergence is that its regularization is equal to the sandwiched (also known as the minimal) quantum Rényi divergence.”
-
-**Sources:**
-
-- [Hamza Fawzi, Omar Fawzi, Defining quantum divergences via convex optimization, arXiv:2007.12576v2 (2021), Quantum 5, 387 (2021)](https://arxiv.org/abs/2007.12576v2)
-
 ### Keeping the prior state makes the Petz recovery map compose correctly
 
 **Remember:** Keep the prior with the channel to compose inferences backwards.
 
 *Makes the theorem clean to state or prove.* MSC 81P45 (Quantum information, communication, networks (quantum-theoretic aspects)), 18A22. arXiv quant-ph, math.CT. Level 4: research.
 
-**Definition.** A quantum channel sends input states to output states. Here an arrow includes an input state as its prior and the channel's output as its target state. A retrodiction functor sends each arrow backwards and reverses the order of composition.
+**Definition.** Use finite-dimensional systems with faithful prior states as objects. An arrow Φ from ρ to σ is a quantum channel satisfying Φ(ρ) = σ. A retrodiction functor assigns a reverse arrow to each arrow, preserves identities and reverses composition.
 
 **Problem.** In the paper's category of quantum channels paired with states, the original Petz recovery map defines a retrodiction functor. Averaged rotated Petz maps, including the universal recovery map, do not respect composition.
 
-**How the definition helps.** Including the prior gives the backward rule the state it needs at each step. In our own words, the intermediate output of one channel becomes the prior for the next. The original Petz map still has to satisfy the functor laws. A rule that works for each channel separately need not satisfy them.
+**How the definition helps.** The intermediate state σ is both the first channel’s output and the next channel’s prior. In our own explanation, its square roots cancel their inverses when the two Petz maps compose in reverse order. The paper’s functoriality result verifies the original rule and shows that averaged rotations can violate composition.
 
 **Paper or page:** [Axioms for retrodiction: achieving time-reversal symmetry with a prior](https://arxiv.org/abs/2210.13531v2). It says: “such works defined time-reversal symmetry on the category of quantum channels alone, whereas we define it on the category of quantum channels and quantum states.”
 
@@ -1280,35 +1244,17 @@
 
 - [Arthur J. Parzygnat, Francesco Buscemi, Axioms for retrodiction: achieving time-reversal symmetry with a prior, arXiv:2210.13531v2 (2023), Quantum 7, 1013 (2023)](https://arxiv.org/abs/2210.13531v2)
 
-### A distinguished extension gives Dirac–Coulomb operators a min-max principle
-
-**Remember:** Pick the extension that fits the gap, and min-max finds its eigenvalues.
-
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 81Q10 (Selfadjoint operator theory in quantum theory, including spectral analysis), 47B25, 47A75. arXiv math.SP, math-ph. Level 4: research.
-
-**Definition.** The Dirac–Coulomb operator describes a relativistic electron near nuclei. It is symmetric on smooth functions vanishing near the nuclei but unbounded above and below. A block decomposition for an orthogonal splitting of the Hilbert space picks out one self-adjoint extension with a spectral gap, called distinguished.
-
-**Problem.** Suppose each nucleus has atomic number at most 137, with sign-changing potentials and any number of nuclei allowed. Then the eigenvalues of the distinguished extension in its gap are given by a min-max principle.
-
-**How the definition helps.** The extension is built from the block decomposition, so the min-max levels describe its spectrum in the gap (our own reading). The usual min-max principle needs an operator bounded below, which the Dirac operator is not. Earlier results needed technical conditions. The paper uses a geometric strategy with minimal assumptions.
-
-**Paper or page:** [Distinguished self-adjoint extension and eigenvalues of operators with gaps. Application to Dirac-Coulomb operators](https://arxiv.org/abs/2206.11679). It says: “In this paper we define a distinguished self-adjoint extension with a spectral gap and characterize its eigenvalues in that gap by a min-max principle. This has been done in the past under technical conditions.”
-
-**Sources:**
-
-- [Jean Dolbeault, Maria J. Esteban, Eric Séré, Distinguished self-adjoint extension and eigenvalues of operators with gaps. Application to Dirac-Coulomb operators, J. Spectr. Theory 13 (2023), no. 2, 491–524, arXiv:2206.11679](https://arxiv.org/abs/2206.11679)
-
 ### Metaplectic generators preserve oscillator levels
 
 **Remember:** Commuting symmetries preserve each energy level.
 
 *True by definition.* MSC 81R05 (Finite-dimensional groups and algebras motivated by physics and their representations), 81Q05. arXiv math-ph. Level 4: research.
 
-**Definition.** The isotropic harmonic oscillator has the same frequency in every direction. Linear changes of position and momentum preserving their standard symplectic form act on wavefunctions through a double cover, the metaplectic group. Each change has two lifts to this group. Differentiate the lifted unitary group action to obtain the quantum generators.
+**Definition.** For a unitary Lie algebra element X, lift t ↦ exp(tX) to the metaplectic group starting at the identity. Its quantum generator is the self-adjoint generator of the corresponding one-parameter unitary group on oscillator wavefunctions.
 
 **Problem.** The quantum generator for an element of the unitary Lie algebra preserves every eigenspace of the isotropic harmonic oscillator.
 
-**How the definition helps.** In our own proof, the oscillator evolution acts by scalar rotations on the classical coordinates, so its lifted flow commutes with every lifted unitary transformation. Differentiating preserves each oscillator energy space. This avoids computing commutators of unbounded differential operators directly. The work lies in identifying these generators with the operators obtained by quantizing the classical quadratic functions.
+**How the definition helps.** In our own proof, the isotropic oscillator flow is a scalar rotation commuting with exp(tX). The commutator of their lifts varies continuously in the discrete covering kernel and starts at the identity. Thus the lifted groups commute and preserve the oscillator energy spaces. Differentiating the action on each finite-dimensional energy space gives the claim.
 
 **Paper or page:** [Explicit Spectral Analysis for Operators Representing the unitary group 𝕌(d) and its Lie algebra 𝔲(d) through the Metaplectic Representation and Weyl Quantization](https://arxiv.org/abs/2412.18728v2). It says: “is essentially selfadjoint and it strongly commutes with H₀.”
 
@@ -1340,7 +1286,7 @@
 
 *Rules out counterexamples.* MSC 81R50 (Quantum groups and related algebraic methods applied to problems in quantum theory), 81R15. arXiv math-ph, quant-ph. Level 4: research.
 
-**Definition.** Let U be a unitary matrix whose entries are operators on a finite-dimensional Hilbert space K. Require the matrix formed by taking each entry’s adjoint to be unitary too. For an operator x on K, form U(I ⊗ x)U\*. Apply a state, a positive normalized linear functional, to the matrix index while leaving the operators on K in place.
+**Definition.** Let U = (Uᵢⱼ) be a unitary matrix with operator entries on a finite-dimensional space K. It is biunitary if (Uᵢⱼ\*) is also unitary, with the adjoint taken separately in each entry. For a state φ on the matrix index, the averaged map sends each x on K to (φ ⊗ id)(U(I ⊗ x)U\*).
 
 **Problem.** With both unitarity conditions, the averaged map preserves the ordinary trace on K. Without the second condition, swapping two equal-dimensional factors gives x ↦ φ(x)I, where φ is the averaging state.
 
@@ -1356,7 +1302,7 @@
 
 **Remember:** The vacuum picks a factor that moves with the inclusion.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 81T05 (Axiomatic quantum field theory; operator algebras). arXiv math-ph, math.OA. Level 4: research.
+*True by definition. Confidence: medium.* MSC 81T05 (Axiomatic quantum field theory; operator algebras). arXiv math-ph, math.OA. Level 4: research.
 
 **Definition.** Let N ⊂ M be a split inclusion of factors. Let the vector Ω be cyclic and separating for N, M and A = N ∨ M′. The canonical intermediate type I factor is F = N ∨ JNJ, where J is the modular conjugation of A for Ω.
 
@@ -1376,7 +1322,7 @@
 
 *True by definition.* MSC 81T05 (Axiomatic quantum field theory; operator algebras). arXiv math-ph, math.OA. Level 4: research.
 
-**Definition.** A net assigns an algebra of observables to each spacetime region. Represent a charge by a unital adjoint-preserving endomorphism ρ of the observable algebra. Outside some double cone, the region between two timelike separated events, ρ fixes every spacelike observable. Require an equivalent representative localized in each double cone, and define fusion by composition.
+**Definition.** A localized charge is a unital \*-endomorphism of the observable algebra that fixes every observable spacelike separated from some double cone. It is transportable if every double cone admits an equivalent representative localized there. Fusion is composition of these endomorphisms.
 
 **Problem.** Fusion of localized, transportable charge endomorphisms on a Haag-dual Minkowski net is strictly associative.
 
@@ -1412,11 +1358,11 @@
 
 *True by definition.* MSC 81T05 (Axiomatic quantum field theory; operator algebras). arXiv math-ph, math.OA. Level 4: research.
 
-**Definition.** Assign a unital algebra A(M) to each spacetime M and a unit-preserving algebra map to each allowed embedding, preserving composition and identities. Require compatible identifications A(M ⊔ N) ≅ A(M) ⊗ A(N). Under these identifications, embedding either component acts by a ↦ a ⊗ 1 or b ↦ 1 ⊗ b. This is the tensor product rule for a symmetric monoidal theory.
+**Definition.** A symmetric monoidal theory assigns unital algebras to spacetimes and unital algebra maps to allowed embeddings, preserving identities and composition. It identifies A(M ⊔ N) with A(M) ⊗ A(N) compatibly with embeddings. Component inclusions act by a ↦ a ⊗ 1 and b ↦ 1 ⊗ b.
 
 **Problem.** If two spacetime embeddings combine to an allowed embedding of their disjoint union, their observable images commute in the target algebra.
 
-**How the definition helps.** The tensor product rule puts the two source algebras in commuting tensor factors. Our own proof factors each embedding through the common disjoint union. There, a ⊗ 1 commutes with 1 ⊗ b, and the map to the target preserves products. An assignment defined only on connected spacetimes needs a separate locality axiom. Constructing the compatible tensor product maps for a given theory carries the work.
+**How the definition helps.** In our own proof, factor both embeddings through the embedding of their disjoint union. The component images a ⊗ 1 and 1 ⊗ b commute in the tensor product. The common map to the target preserves both product orders, so their images commute.
 
 **nLab:** [causally local net of observables](https://ncatlab.org/nlab/show/causally+local+net+of+observables). It says: “A local net is Einstein local precisely if it is a monoidal functor”
 
@@ -1432,7 +1378,7 @@
 
 **Problem.** Taking the fixed vectors of S gives a bijection between these maps and standard real subspaces.
 
-**How the definition helps.** In our own proof, the involution gives both parts of the decomposition directly. For each domain vector x, set u = (x + Sx)/2 and v = (x − Sx)/(2i), so both are fixed and x = u + iv. A vector fixed together with its imaginary multiple must vanish, and the closed graph makes the fixed space closed. Conversely, the unique decomposition defines S(u + iv) = u − iv, whose graph is closed because K is closed.
+**How the definition helps.** In our own proof, closedness of S makes its fixed real space K closed, and conjugate linearity gives K ∩ iK = {0}. Each domain vector x equals u + iv with fixed parts u = (x+Sx)/2 and v = (x−Sx)/(2i). Thus K + iK equals the dense domain. Conversely, unique decomposition defines S(u+iv) = u−iv, and closedness of K gives closedness of its graph.
 
 **Paper or page:** [The Bisognano-Wichmann property for non-unitary Wightman conformal field theories](https://arxiv.org/abs/2506.10625v1). It says: “induces a bijection between i) standard subspaces K of 𝒟, and 2) closed conjugate-linear involutions S”
 
@@ -1468,7 +1414,7 @@
 
 **Problem.** Suppose two observable algebra endomorphisms ρ and σ fix the spacelike exterior of the same double cone. Under Haag duality, every bounded T satisfying Tρ(a) = σ(a)T for all observables a belongs to the cone algebra.
 
-**How the definition helps.** Duality turns commutation with exterior observables into membership in the cone algebra. Our own proof substitutes an exterior observable for a, giving Ta = aT. Locality alone allows extra operators in the exterior commutant. Our own example assigns only scalar multiples of the identity to every region on a two-dimensional Hilbert space. Every matrix then intertwines the identity with itself, but the cone algebra contains only scalars.
+**How the definition helps.** Duality identifies the exterior commutant with the cone algebra. In our own proof, substituting any exterior observable a gives Ta = aT, so T belongs to that commutant. Our own counterexample assigns only scalars to every region on a two-dimensional Hilbert space. Every matrix then intertwines the identity endomorphism with itself, although only scalars belong to the cone algebra.
 
 **nLab:** [DHR superselection theory](https://ncatlab.org/nlab/show/DHR+superselection+theory). It says: “Conversely, under the assumption of Haag duality every DHR admissible representation ρ comes from an endomorphism this way.”
 
@@ -1484,9 +1430,9 @@
 
 **Definition.** A von Neumann algebra contains the identity and is closed under adjoints and weak operator limits. Weak convergence means convergence of every matrix element between fixed vectors. Two such algebras satisfy Haag duality when each consists of all bounded operators commuting with the other.
 
-**Problem.** If two unit vectors give the same expectations on the first algebra, Haag duality lets the second algebra carry one to the other. The operator is a partial isometry, meaning it preserves lengths on the subspace where it acts nontrivially.
+**Problem.** If two unit vectors give the same expectations on the first algebra, a partial isometry in the second carries one vector to the other. A partial isometry preserves lengths on the orthogonal complement of its kernel.
 
-**How the definition helps.** Haag duality puts every operator commuting with the first algebra in the second algebra. In our own proof, the map Aψ ↦ Aφ preserves inner products, because the expectations agree. Extended to the closed spans and by zero on the orthogonal complement, it commutes with the first algebra. Our own counterexample uses all matrices on one tensor factor and only scalars on the other. Scalars cannot rotate the second factor of a product vector.
+**How the definition helps.** Haag duality places the first algebra’s commutant in the second algebra. In our own proof, equal expectations make Aψ ↦ Aφ an isometry between the cyclic spans. Extend it by continuity and by zero on the orthogonal complement of the initial span’s closure. This intertwines the first algebra, whereas scalars alone on a second tensor factor cannot change its product vector.
 
 **Paper or page:** [Uniqueness of purifications is equivalent to Haag duality](https://arxiv.org/abs/2509.12911v1). It says: “has the Uhlmann property if and only if Haag duality holds.”
 
@@ -1500,11 +1446,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 81T05 (Axiomatic quantum field theory; operator algebras), 81T20, 46F10. arXiv math-ph, math.AP. Level 4: research.
 
-**Definition.** A microcausal polynomial observable on field histories is a polynomial whose coefficients are compactly supported distributions on Xⁿ (n copies of spacetime X). The wave front sets of these coefficients must contain no covector whose components all lie in the closed future cone, or all lie in the closed past cone. (The wave front set of a distribution records where it is singular and in which directions.)
+**Definition.** A microcausal polynomial field observable has compactly supported distributional coefficients on each spacetime power Xⁿ. No wave front tuple of a coefficient may have all components in the closed future cone or all in the closed past cone. These cones include zero, and the wave front set records singular positions and directions.
 
 **Problem.** On microcausal polynomial observables, the star product built from a Hadamard two-point function is well defined and associative. This gives the Wick algebra of a free quantum field.
 
-**How the definition helps.** The microcausal condition makes every product of distributions in the Wick algebra well defined. A product of distributions exists when their wave front sets satisfy Hörmander's criterion. The condition is chosen so that every product in the star product with a Hadamard distribution meets this criterion. It is still weak enough to include local observables, such as the point interactions of φ⁴ theory.
+**How the definition helps.** The exclusions ensure that Hadamard contractions satisfy Hörmander’s criterion for multiplying distributions. In our own explanation, associativity follows by expanding either bracketing into the same contractions among three polynomials. Polynomial degree makes each expansion finite.
 
 **nLab:** [microcausal polynomial observable](https://ncatlab.org/nlab/show/microcausal+polynomial+observable), [Weyl relation](https://ncatlab.org/nlab/show/Weyl+relation). It says: “The condition on the wave front is such that the product of distributions with a Hadamard distribution is well defined, so that the coresponding Moyal star product is well defined, which gives the Wick algebra.”
 
@@ -1519,11 +1465,11 @@
 
 *True by definition.* MSC 81T05 (Axiomatic quantum field theory; operator algebras). arXiv math-ph, math.OA. Level 4: research.
 
-**Definition.** A circle net assigns a unital operator algebra to each proper open interval, respecting inclusions. Take the adjoint algebra generated by these algebras subject to their internal relations and their inclusion relations. Give each element the supremum of its operator norms over compatible representations, discard elements of norm zero, and complete. This gives the universal C\*-algebra of the net.
+**Definition.** For a circle net, generate a unital \*-algebra from its interval algebras using their internal and inclusion relations. Give each element the supremum of its norms in all compatible Hilbert space representations. Quotient by the elements of seminorm zero and complete to obtain the universal C\*-algebra.
 
 **Problem.** Every compatible family of interval representations on one Hilbert space extends uniquely to a representation of the universal algebra.
 
-**How the definition helps.** The inclusion relations let any compatible family act on the generators. Our own proof bounds each finite sum of products by the corresponding sum of products of generator norms. The supremum therefore exists, and each family acts continuously for this norm. Agreement on the generators forces uniqueness. The vacuum representation alone gives only one norm and can lose other representations.
+**How the definition helps.** The relations let every compatible family represent the generators. In our own proof, the triangle inequality bounds each polynomial uniformly by a sum of products of generator norms. Each representation is contractive for the supremum seminorm, so it factors through the quotient and extends continuously. Density of the generator polynomials forces uniqueness.
 
 **Paper or page:** [Rotational KMS states and type I conformal nets](https://arxiv.org/abs/1608.08903v2). It says: “of the net 𝒜, there is a representation ρ of the algebra C\*(𝒜) constructed above”
 
@@ -1537,11 +1483,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 81T05 (Axiomatic quantum field theory; operator algebras), 81T15, 81T20. arXiv math-ph, hep-th. Level 4: research.
 
-**Definition.** Algebraic quantum field theory (AQFT) assigns an algebra of observables to each region of spacetime, and the Haag–Kastler axioms say how. Locally covariant perturbative AQFT uses these axioms, but it assigns to each causal region a formal power series star-algebra instead of a C\*-algebra. The power series are in Planck's constant and the coupling constant. The theory keeps the local net of algebras and does not ask for one global algebra.
+**Definition.** A perturbative local net assigns each causal region a unital \*-algebra over formal power series in ℏ and the coupling. Inclusions induce compatible unital embeddings, and observables from spacelike separated subregions commute in any common region.
 
-**Problem.** Epstein–Glaser causal perturbation theory gives interacting theories a causally local net of formal power series star-algebras. This works in 4 dimensions, on curved spacetimes, and with infrared divergences.
+**Problem.** On globally hyperbolic curved spacetimes, including in four dimensions, Epstein–Glaser perturbation theory constructs causally local interacting nets of formal power series algebras. The local construction applies even in the presence of infrared divergences.
 
-**How the definition helps.** Formal power series and local nets ask for less, and causal perturbation theory can supply that much. With formal power series algebras, Epstein–Glaser theory produces causally local nets automatically. Only the local nets are asked for, not their would-be global colimit, so the algebraic adiabatic limit defines the observables even with infrared divergences. This does not construct a vacuum state, and it does not solve the non-perturbative problem.
+**How the definition helps.** Local nets require compatible observables in bounded regions, where the interaction can have a compactly supported cutoff. Epstein–Glaser causal factorization and the algebraic adiabatic limit identify the local constructions for suitable different cutoffs. This defines perturbative observables even when infrared divergences obstruct a global limit.
 
 **nLab:** [perturbative algebraic quantum field theory](https://ncatlab.org/nlab/show/perturbative+algebraic+quantum+field+theory). It says: “considering these local nets instead of their would-be colimiting global algebra serves to define the perturbation theory even in the presence of infrared divergences”
 
@@ -1553,7 +1499,7 @@
 
 **Remember:** With strong additivity, a deleted point hides no observables.
 
-*Rules out counterexamples. Confidence: medium.* MSC 81T05 (Axiomatic quantum field theory; operator algebras). arXiv math-ph, math.OA. Level 4: research.
+*True by definition. Confidence: medium.* MSC 81T05 (Axiomatic quantum field theory; operator algebras). arXiv math-ph, math.OA. Level 4: research.
 
 **Definition.** A circle net assigns an algebra of bounded operators to each proper open interval, respecting inclusions. It is strongly additive if deleting any interior point leaves two intervals whose algebras generate the original von Neumann algebra. Generation here includes taking weak operator limits.
 
@@ -1575,7 +1521,7 @@
 
 **Problem.** In a complex Hilbert space, the symplectic complement of every standard closed real subspace is standard.
 
-**How the definition helps.** Real orthogonality exchanges density of a sum with vanishing of an intersection. Our own calculation identifies K′ ∩ iK′ with the real orthogonal complement of K + iK. Applying that identity to K′ gives K ∩ iK as the real orthogonal complement of K′ + iK′, since K′′ = K. The two conditions for standardness therefore exchange roles. Complex orthogonality would give the zero complement for every standard subspace.
+**How the definition helps.** In our own calculation, K′ ∩ iK′ is the real orthogonal complement of K + iK. Density of the latter makes the intersection zero. Applying the identity to K′ and using K′′ = K shows that the real orthogonal complement of K′ + iK′ vanishes. Hence that sum is dense, and K′ is standard.
 
 **Paper or page:** [The Bisognano-Wichmann property for non-unitary Wightman conformal field theories](https://arxiv.org/abs/2506.10625v1). It says: “If K is cyclic then K′ is separating, and if K′ is cyclic then K is separating.”
 
@@ -1587,7 +1533,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 81T05 (Axiomatic quantum field theory; operator algebras). arXiv math-ph, math.OA. Level 4: research.
 
-**Definition.** Let H be a closed real subspace of a complex Hilbert space. Its symplectic complement H′ consists of vectors k with Im ⟨k,h⟩ = 0 for every h ∈ H. On symmetric Fock space, which describes bosonic particles, let R(H) be the von Neumann algebra generated by Weyl unitaries W(h), h ∈ H. These obey W(h)W(k) = exp(−i Im ⟨h,k⟩)W(h+k).
+**Definition.** For a closed real subspace H, let H′ consist of all k satisfying Im ⟨k,h⟩ = 0 for every h ∈ H. On symmetric Fock space, R(H) is the von Neumann algebra generated by the Weyl operators W(h) for h ∈ H. They satisfy W(h)W(k) = exp(−i Im ⟨h,k⟩)W(h+k).
 
 **Problem.** The center of R(H) consists only of scalars exactly when H ∩ H′ = {0}.
 
@@ -1605,7 +1551,7 @@
 
 *True by definition.* MSC 81T05 (Axiomatic quantum field theory; operator algebras). arXiv math-ph, math.OA. Level 4: research.
 
-**Definition.** A wedge in Minkowski spacetime is a spacetime symmetry image of the region x₁ &gt; \|t\|. Its opposite wedge is its spacelike complement. Assign each wedge a von Neumann algebra, with opposite wedges receiving each other’s commutants, the operators commuting with the given algebra. Define the algebra of a bounded region by intersecting the algebras of all wedges containing it.
+**Definition.** A Minkowski wedge is a spacetime symmetry image of x₁ &gt; \|t\|, and its opposite is its spacelike complement. Assign von Neumann algebras to wedges so that opposite wedges have mutually commuting algebras equal to each other’s commutants. For every bounded region take the intersection of all wedge algebras whose wedges contain it.
 
 **Problem.** If two bounded regions lie in opposite wedges, their intersection-defined algebras commute.
 
@@ -1627,7 +1573,7 @@
 
 **Problem.** For m &gt; 0, the covariance with Fourier multiplier 1/(p² + m²)² is positive as an ordinary covariance but fails reflection positivity.
 
-**How the definition helps.** Reflection tests sums of positive times, which detects a negative determinant invisible in the ordinary covariance. In our own calculation, Fourier inversion gives K(t) proportional to (1 + mt) exp(−mt) for t &gt; 0. At distinct positive times s and t, the determinant has the sign of (1 + 2ms)(1 + 2mt) − (1 + ms + mt)². That expression equals −m²(s − t)². Smooth tests concentrated near the two times preserve a negative quadratic form.
+**How the definition helps.** In our own calculation, Fourier inversion gives K(t) proportional to (1+mt)exp(−mt) for t &gt; 0, with positive proportionality constant. For distinct positive s,t, the reflected two-point determinant has the sign of (1+2ms)(1+2mt)−(1+ms+mt)² = −m²(s−t)². Smooth tests concentrated near s and t therefore give a negative quadratic form. The original Fourier multiplier is nonnegative, so ordinary covariance positivity holds.
 
 **nLab:** [Osterwalder-Schrader theorem](https://ncatlab.org/nlab/show/Osterwalder-Schrader+theorem). It says: “Let θ : (x, t) ↦ (x, −t) be the time reflection. Then the content of the axiom is: 0 ≤ ⟨θA, A⟩\[L₂\].”
 
@@ -1645,7 +1591,7 @@
 
 **Problem.** For interior points x ≠ y in one half, the Neumann inverse kernel minus the Dirichlet inverse kernel equals 2C(θx,y). Neumann prescribes zero normal derivative and Dirichlet prescribes zero boundary value.
 
-**How the definition helps.** Even and odd extension give the two boundary kernels by adding or subtracting the same reflected kernel. Reflection preserves the Laplacian. The reflected source lies outside the chosen half, so both kernels solve the same interior equation. Uniqueness with the respective boundary conditions identifies the two inverses. Equation (9) confirms this sign.
+**How the definition helps.** In our own derivation, reflection commutes with the Laplacian, so adding or subtracting the reflected kernel preserves the interior source. The even sum has zero normal derivative, and the odd difference vanishes at the boundary. Uniqueness gives the Neumann and Dirichlet inverses respectively. Subtracting leaves twice the reflected kernel.
 
 **nLab:** [Osterwalder-Schrader theorem](https://ncatlab.org/nlab/show/Osterwalder-Schrader+theorem). It says: “Let θ : (x, t) ↦ (x, −t) be the time reflection.”
 
@@ -1659,11 +1605,11 @@
 
 *Rules out counterexamples.* MSC 81T08 (Constructive quantum field theory). arXiv math-ph, hep-th. Level 4: research.
 
-**Definition.** Reflection positivity requires a nonnegative pairing of each positive-time observable with its time-reflected complex conjugate. The pairing uses the Euclidean correlation functions, where time is treated as a spatial coordinate. Ordinary positivity pairs an observable with its complex conjugate without reflecting time.
+**Definition.** For positive-time observables F,G, the reflected form is their Euclidean pairing B(F,G) = 𝔼\[conj(F ∘ θ)G\], where θ reverses time. Reflection positivity requires B(F,F) ≥ 0 for every F in the complex vector space of tests.
 
 **Problem.** With reflection positivity, the reflected pairing defines a Hilbert space after quotienting its zero-norm vectors and completing.
 
-**How the definition helps.** In our own explanation, checking the squared norm is exactly the new positivity test. The quotient removes all null vectors by the Cauchy–Schwarz inequality. Our own counterexample to ordinary positivity alone is the time covariance cos(t − s). It is a positive covariance, but the reflected covariance cos(t + s) is negative on the diagonal at t = π⁄2. The Osterwalder–Schrader reconstruction theorem does the further work of recovering a relativistic theory under additional hypotheses.
+**How the definition helps.** In our own proof, reflection positivity gives a positive semidefinite form, so Cauchy–Schwarz makes every zero-norm test orthogonal to all tests. Quotienting by those tests gives an inner product, and completion gives a Hilbert space. Our own counterexample uses ordinary covariance cos(t−s), whose reflected diagonal cos(2t) equals −1 at t = π/2. Smooth tests concentrated there retain the negative sign.
 
 **nLab:** [reflection positivity](https://ncatlab.org/nlab/show/reflection+positivity). It says: “In quantum field theory reflection positivity is the incarnation of unitarity under Wick rotation via a form of the Osterwalder-Schrader theorem.”
 
@@ -1677,11 +1623,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 81T08 (Constructive quantum field theory). arXiv math-ph. Level 4: research.
 
-**Definition.** On a flat two-dimensional torus let μ(b) be the centered Gaussian field law with covariance (−Δ + b)⁻¹, where b &gt; 0. Here Δ is the Laplacian. Keep frequencies of length at most n, integrate the squared field, and subtract its mean under μ(b). Call the mean-square limit Q.
+**Definition.** On the flat two-dimensional torus let μ(b) be the centered Gaussian law with covariance (−Δ+b)⁻¹ for b &gt; 0. Truncate to frequencies of length at most n, integrate the squared field, and subtract its μ(b) expectation. Define Q as the mean-square limit of these centered integrals.
 
 **Problem.** For a,b &gt; 0, the density of μ(a) relative to μ(b) is exp(−(a − b)Q/2) divided by its μ(b) mean.
 
-**How the definition helps.** Centering every squared Fourier mode makes the infinite quadratic weight converge. For finitely many modes, the quoted Gaussian density formula changes each inverse variance from λ + b to λ + a, where λ is an eigenvalue of −Δ. Our own extension takes p &gt; 1 with b + p(a − b) &gt; 0. The logarithms of the p-th moments of the normalized densities are then bounded by a constant times ∑(λ + b)⁻², which converges in two dimensions. So the densities converge in mean.
+**How the definition helps.** Centering gives a convergent quadratic exponent, while each finite-mode density changes the inverse variance from λ+b to λ+a for each eigenvalue λ of −Δ. In our own extension, choose p &gt; 1 with b+p(a−b) &gt; 0. Gaussian integration bounds the log p-th moments of the unnormalized centered weights by a constant times ∑(λ+b)⁻², finite in two dimensions. Uniform integrability gives convergence in mean, so normalizing the limit recovers the density on every finite collection of modes.
 
 **Paper or page:** [An introduction to singular stochastic PDEs: Allen-Cahn equations, metastability and regularity structures](https://arxiv.org/abs/1901.07420). It says: “For $a&gt;0$, let $\\mu(a)$ be the Gaussian measure with covariance
 $(-\\Delta<sub>N</sub>+a)<sup>-1</sup>$. Then for any $\\mu(a)$-integrable random variable
@@ -1702,7 +1648,7 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *True by definition.* MSC 81T13 (Yang-Mills and other gauge theories in quantum field theory). arXiv math-ph, math.DG. Level 4: research.
 
-**Definition.** Use a compact connected Lie group with a metric invariant under left and right multiplication. Assign a group element to each edge of a graph dividing an oriented surface into disks, using its inverse for reverse traversal. Weight each face by the group heat kernel at its area, evaluated on the ordered product around its boundary. Multiply the face weights against independent Haar probability measures, the translation-invariant group measures on the edges.
+**Definition.** Use a compact connected Lie group with a bi-invariant metric and assign independent Haar-distributed elements to the edges of an oriented surface graph. Each disk face contributes the heat kernel at its area evaluated on the ordered boundary product, inverting edge elements for reverse traversal. Multiply these face factors to obtain the density relative to product Haar probability.
 
 **Problem.** Split one disk face into two disks of positive areas by adding an edge between existing vertices. Integrating over the new edge gives exactly the original density on the old edges.
 
@@ -1720,7 +1666,7 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *Makes the theorem clean to state or prove.* MSC 81T13 (Yang-Mills and other gauge theories in quantum field theory). arXiv hep-th, math-ph. Level 4: research.
 
-**Definition.** A self-dual two-form field has field strength equal to its dual. On a closed oriented spatial five-manifold, its flux shifts belong to degree-three differential cohomology, which records surface phases and curvature. Heisenberg quantization represents shifts by operators whose commutator on odd-order flat fields is their exponentiated integrated cup product.
+**Definition.** For a self-dual two-form field on a closed oriented spatial five-manifold M, flux shifts are degree-three differential cohomology classes. For flat shifts a,b of odd order, Heisenberg quantization prescribes the group commutator UₐUᵦUₐ⁻¹Uᵦ⁻¹ = exp(2πi∫<sub>M</sub> a∪b). The integral takes values in ℝ/ℤ.
 
 **Problem.** On the product of the lens space L(3,1) and the two-torus, two flat flux shifts have commutator exp(±2πi/3).
 
@@ -1738,7 +1684,7 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *True by definition.* MSC 81T15 (Perturbative methods of renormalization applied to problems in quantum field theory), 81T70. arXiv hep-th, math-ph. Level 4: research.
 
-**Definition.** Write the interaction I as a formal exponential E = exp(I/ℏ), where ℏ counts powers in the expansion. The quantum master equation then says DE = 0 for a linear operator D with D² = 0. A change in the rule for pairing fields acts on E by a linear map R.
+**Definition.** For an interaction I, form its formal exponential E = exp(I/ℏ). For a linear differential D satisfying D² = 0, the exponential form of the quantum master equation is DE = 0. A change of pairing acts linearly on E by a map R.
 
 **Problem.** If the change replaces D by D′ and D′R = RD, the transformed exponential solves the new quantum master equation.
 
@@ -1756,11 +1702,11 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *True by definition.* MSC 81T15 (Perturbative methods of renormalization applied to problems in quantum field theory). arXiv math-ph, hep-th. Level 4: research.
 
-**Definition.** In causal perturbation theory, a perturbative S-matrix is a map S that satisfies a list of axioms. It sends local interaction terms to formal power series of observables. The key axiom is causal factorization: if the support of O₁ is not in the past of the support of O₂, then S(O₁ + O₂) = S(O₁) S(O₂).
+**Definition.** A perturbative S-matrix maps local interactions to formal series of observables. Its causal factorization axiom requires S(F+G) = S(F)S(G) whenever no point of supp F lies in the causal past of supp G.
 
 **Problem.** Perturbative S-matrices satisfying these axioms exist, and each one factorizes over causally ordered regions.
 
-**How the definition helps.** Causal perturbation theory puts causal factorization into the definition, so you do not have to derive it from a path integral. The path integral is not well defined. The real work moves to an existence theorem: Epstein and Glaser construct solutions by induction. At each order they extend a distribution, defined away from a point, to that point, and this is where renormalization happens.
+**How the definition helps.** The axiom directly gives factorization for causally ordered interactions. The Epstein–Glaser existence theorem constructs perturbative S-matrices inductively by extending distributions across coincident points. This extension is the renormalization step.
 
 **nLab:** [A first idea of quantum field theory -- Interacting quantum fields](https://ncatlab.org/nlab/show/A+first+idea+of+quantum+field+theory+--+Interacting+quantum+fields), [causal perturbation theory](https://ncatlab.org/nlab/show/causal+perturbation+theory), [S-matrix](https://ncatlab.org/nlab/show/S-matrix). It says: “the axioms of causal perturbation theory directly prescribe the desired factorization property, without insisting that it derives from an actual integration.”
 
@@ -1778,7 +1724,7 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 **Problem.** For a character on a connected graded graph Hopf algebra, recursive subtraction using P gives a counterterm that preserves products. Here the degree counts loops and only scalars have degree zero.
 
-**How the definition helps.** In our own proof, closure of both spaces gives P(x)P(y) = P(P(x)y + xP(y) − xy). This identity supplies the product step in the subtraction recursion. Our own counterexample takes the complement spanned by z⁻¹ + 1 and all z⁻ᵏ with k ≥ 2. A graph without divergent proper subgraphs and with value z⁻¹ has counterterm −(z⁻¹ + 1). Its square lies outside the complement, so it cannot equal the recursively projected counterterm of the disjoint square.
+**How the definition helps.** In our own proof, multiplicative closure of both summands gives P(x)P(y) = P(P(x)y+xP(y)−xy), the identity needed for the subtraction recursion’s product step. Our own counterexample uses the complement spanned by z⁻¹+1 and the powers z⁻ᵏ for k ≥ 2. A primitive graph valued at z⁻¹ has counterterm −(z⁻¹+1). Its square lies outside that complement, whereas the recursively projected counterterm of the disjoint square lies inside.
 
 **nLab:** [Rota-Baxter algebra](https://ncatlab.org/nlab/show/Rota-Baxter+algebra), [renormalization](https://ncatlab.org/nlab/show/renormalization). It says: “P(x) P(y) = P(P(x) y) + P(x P(y)) + λ P(x y)”
 
@@ -1790,9 +1736,9 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 **Remember:** Factor the whole character before setting the regulator to zero.
 
-*True by definition.* MSC 81T15 (Perturbative methods of renormalization applied to problems in quantum field theory). arXiv math-ph, hep-th. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 81T15 (Perturbative methods of renormalization applied to problems in quantum field theory). arXiv math-ph, hep-th. Level 4: research.
 
-**Definition.** Use the Connes–Kreimer graph algebra, where disjoint union multiplies graphs and loop number grades them. A character assigns a Laurent series to each graph, preserves products, and sends the empty graph to one. Factor a character as C⁻¹ ⋆ R, where convolution ⋆ sums products over subgraphs and their contractions. On positive degrees C contains only negative powers, while R contains only nonnegative powers.
+**Definition.** Let φ be a Laurent-series character of the connected graded Connes–Kreimer graph Hopf algebra. A minimal-subtraction factorization is a pair of characters C and R satisfying φ = C⁻¹ ⋆ R under convolution. On positive degrees, C takes values in strict pole parts and R takes values in power series.
 
 **Problem.** Each character has a unique such factorization. In minimal subtraction, which removes pole terms, evaluating R at zero gives the renormalized character.
 
@@ -1864,11 +1810,11 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *True by definition. Confidence: medium.* MSC 81T15 (Perturbative methods of renormalization applied to problems in quantum field theory). arXiv math-ph, hep-th. Level 4: research.
 
-**Definition.** In massive Euclidean momentum subtraction, consider a connected graph that stays connected after any one internal edge is cut. A proper forest is a set of proper divergent subgraphs of this same type, every pair nested or disjoint. For each member γ, let T(γ) take the Taylor polynomial in its external momenta at zero through its superficial degree of divergence. This degree counts the net scaling power from loop measures, numerators and denominators.
+**Definition.** In massive Euclidean momentum subtraction, fix a connected graph that stays connected after any single internal edge cut. A proper forest consists of proper superficially divergent subgraphs with that connectivity property, every pair nested or disjoint. T(γ) takes the Taylor polynomial at zero in the external momenta through the superficial degree of divergence of γ.
 
-**Problem.** The recursively prepared graph integrand equals the sum over proper forests, including the empty forest, of the ordered products of −T(γ) applied to the integrand. Inner members act first. For an overall divergent graph G, applying 1 − T(G) gives the renormalized integrand.
+**Problem.** The recursively prepared integrand equals the sum over proper forests, including the empty forest. Each forest contributes its ordered product of −T(γ) acting on the integrand, innermost first. For an overall divergent graph G, applying 1 − T(G) gives the renormalized integrand.
 
-**How the definition helps.** In our own proof, the forest definition makes its maximal members exactly one admissible family in the recursive subtraction. These members are pairwise disjoint and each contains its own proper forest. Summing the inner forests and applying the maximal member’s subtraction recovers its recursive counterterm. The empty forest supplies the original integrand. Zimmermann’s convergence theorem is separate from this combinatorial identity.
+**How the definition helps.** In our own proof, each nonempty forest splits uniquely into its maximal members and the forests inside them. The maximal members are pairwise disjoint. Summing over their inner forests before applying each outer subtraction gives exactly the recursive counterterms. The empty forest contributes the original integrand.
 
 **nLab:** [renormalization](https://ncatlab.org/nlab/show/renormalization). It says: “for adding to a given amplitude in a certain recursive fashion further terms”
 
@@ -1878,11 +1824,11 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 ### Nested contractions make convolution associative
 
-**Remember:** Both orders of subtraction indexing count the same nested subgraphs.
+**Remember:** Two successive contractions record one nested pair of admissible subgraphs.
 
 *Makes the theorem clean to state or prove.* MSC 81T15 (Perturbative methods of renormalization applied to problems in quantum field theory). arXiv math-ph, hep-th. Level 4: research.
 
-**Definition.** In the Connes–Kreimer algebra, multiply graphs by disjoint union. The coproduct sums γ ⊗ G/γ over admissible subgraphs γ, including the empty and full terms. Each proper γ consists of disjoint divergent pieces surviving any single internal edge cut, and G/γ contracts each piece to its prescribed type. Convolution multiplies two linear graph rules by applying one to each tensor factor and summing their products.
+**Definition.** The Connes–Kreimer coproduct of G sums γ ⊗ G/γ over admissible subgraphs, including the empty and full terms. Each proper γ is a disjoint union of superficially divergent one-particle-irreducible pieces with allowed residues, and G/γ contracts each piece to its residue. Convolution applies one linear rule to each tensor factor and sums the ordered products.
 
 **Problem.** This coproduct is coassociative. Consequently convolution is associative for rules valued in an associative algebra.
 
@@ -1900,7 +1846,7 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *Rules out counterexamples.* MSC 81T15 (Perturbative methods of renormalization applied to problems in quantum field theory). arXiv math-ph, hep-th. Level 4: research.
 
-**Definition.** Consider meromorphic germs with linear poles at zero, meaning local functions whose denominators are products of linear forms. Fix an inner product on linear forms. A polar term divides a holomorphic numerator by powers of independent linear forms, with numerator variables orthogonal to those forms. Project along the span of polar terms onto holomorphic germs and evaluate at zero.
+**Definition.** Fix an inner product on linear forms and consider meromorphic germs at zero with linear poles. A polar term divides a holomorphic numerator by positive powers of independent linear forms, with all numerator variables orthogonal to those forms. The finite part projects onto holomorphic germs along the span of polar terms and evaluates at zero.
 
 **Problem.** This finite part preserves products of germs whose spaces of linear variables are orthogonal. No unital multiplicative map on all these germs can extend evaluation at zero.
 
@@ -1918,11 +1864,11 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *Rules out counterexamples.* MSC 81T15 (Perturbative methods of renormalization applied to problems in quantum field theory). arXiv math-ph, hep-th. Level 4: research.
 
-**Definition.** A graph character assigns numbers multiplicatively to disjoint unions and sends the empty graph to one. For a loop of characters Φ on a circle, write Φ = C⁻¹ ⋆ R using convolution, the group product. Require R to extend holomorphically across the closed interior and C across the closed exterior, including infinity. Require C at infinity to be the identity character.
+**Definition.** Let Φ be a loop of graph characters on a circle, with convolution product ⋆. A normalized factorization Φ = C⁻¹ ⋆ R requires character-valued holomorphic extensions of R across the closed interior and C across the closed exterior. The exterior includes infinity, where C must equal the identity character.
 
 **Problem.** Whenever such a factorization exists, it is unique. Without normalization, multiplying both factors on the left by the same constant character preserves Φ.
 
-**How the definition helps.** In our own proof, normalization fixes the only freedom left after the two holomorphic extensions agree. For another pair D,S, the identity D ⋆ C⁻¹ = S ⋆ R⁻¹ glues the exterior and interior ratios. On every graph their common extension is holomorphic on the sphere and hence constant. Its value at infinity is the identity. Existence is the separate factorization theorem.
+**How the definition helps.** In our own proof, normalization removes the common constant multiplier. For another pair D,S, the identity D ⋆ C⁻¹ = S ⋆ R⁻¹ glues the exterior and interior ratios. On each graph the resulting holomorphic function on the sphere is constant. At infinity the ratio equals the identity character.
 
 **nLab:** [Birkhoff decomposition](https://ncatlab.org/nlab/show/Birkhoff+decomposition), [renormalization](https://ncatlab.org/nlab/show/renormalization). It says: “a function of a matrix holomorphic on a neighborhood of an exterior of the disk including infinity and the circle itself.”
 
@@ -1972,11 +1918,11 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *Rules out counterexamples. Confidence: medium.* MSC 81T15 (Perturbative methods of renormalization applied to problems in quantum field theory), 81T05. arXiv math-ph. Level 4: research.
 
-**Definition.** Causal perturbation theory builds the perturbation series of a quantum field theory from causality conditions. In it, the interaction term is multiplied by a smooth function g with compact support in spacetime, called the adiabatic switching function. So the interaction is switched off smoothly outside a compact region.
+**Definition.** An adiabatic switching function is a smooth compactly supported spacetime function g multiplying the interaction density. For a bounded region, choose g equal to one on a neighborhood of its causal closure.
 
 **Problem.** The interacting observables of a bounded region can be computed with any switching function g equal to 1 near the causal closure of that region. Changing g away from the region gives an isomorphic algebra, so no limit g → 1 is needed.
 
-**How the definition helps.** The observables of a bounded region do not depend on g far away, so you never need to remove g. The limit g → 1 does not exist in general, because of infrared divergences, which come from long distances. Brunetti and Fredenhagen used this to get a causally local net of observables, the 'algebraic adiabatic limit'. It does not yet give the interacting vacuum state, which needs a separate weak adiabatic limit.
+**How the definition helps.** In our own explanation, compact support avoids the infrared divergences that can prevent a global limit g → 1. Causal factorization gives an isomorphism between the local algebras for any two such choices. Brunetti and Fredenhagen use these isomorphisms to construct the algebraic adiabatic limit.
 
 **nLab:** [causal perturbation theory](https://ncatlab.org/nlab/show/causal+perturbation+theory), [S-matrix](https://ncatlab.org/nlab/show/S-matrix), [A first idea of quantum field theory -- Interacting quantum fields](https://ncatlab.org/nlab/show/A+first+idea+of+quantum+field+theory+--+Interacting+quantum+fields). It says: “it was observed that in fact the algebra of observables on any bounded region may be computed with a g whose compact support contains the causal closure of that region.”
 
@@ -1987,15 +1933,15 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 ### The main theorem of perturbative renormalization says S-matrix schemes form a torsor
 
-**Remember:** Two renormalizations always differ by exactly one change of the interaction.
+**Remember:** Exactly one group element carries any chosen point to any other.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 81T15 (Perturbative methods of renormalization applied to problems in quantum field theory). arXiv math-ph, hep-th. Level 4: research.
 
-**Definition.** The S-matrix is the operator that gives scattering amplitudes. Causal perturbation theory defines a perturbative S-matrix by axioms, not by a path integral, and calls it an S-matrix scheme. The main axiom is causal factorization: if one interaction lies in the future of another, the S-matrix of their sum is the product of their S-matrices. A vertex redefinition changes the interaction by adding higher-order point interactions, called counterterms.
+**Definition.** A right torsor for a group G is a nonempty set X with a right G-action. For every x and y in X, exactly one element g of G satisfies x·g = y.
 
 **Problem.** S-matrix schemes that satisfy field independence exist, and a unique vertex redefinition relates any two of them. So they form a torsor over the Stückelberg–Petermann renormalization group of vertex redefinitions.
 
-**How the definition helps.** Because the axioms define the S-matrix, renormalization becomes a choice, and no infinite quantities appear. The choice is how to extend the time-ordered products to the diagonal, where points coincide. Vertex redefinitions form the Stückelberg–Petermann group, and a unique one relates any two schemes. Existence is the separate Epstein–Glaser construction, which uses the extension of distributions.
+**How the definition helps.** The torsor definition expresses the main renormalization theorem as a statement about the action by composition. In our own explanation, the Epstein–Glaser construction gives a scheme. The main theorem supplies the unique Stückelberg–Petermann redefinition between any two schemes.
 
 **nLab:** [renormalization](https://ncatlab.org/nlab/show/renormalization). It says: “states that any two choices of such (re-)normalizations are uniquely related by a re-definition of the interaction Lagrangian density which introduces further point interactions of higher order ("counter terms")”
 
@@ -2011,11 +1957,11 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *True by definition. Confidence: medium.* MSC 81T15 (Perturbative methods of renormalization applied to problems in quantum field theory). arXiv math-ph, hep-th. Level 4: research.
 
-**Definition.** A graph character assigns Laurent series to graphs and sends disjoint unions to products. Let A be the convolution inverse of a minimal-subtraction counterterm, so its positive-degree values contain only negative powers of the regulator z. On a graph of loop number n, let θ(t) multiply a value by exp(tzn). Define F(t) as the value at z = 0 of A⁻¹ ⋆ θ(t)A whenever this convolution has no poles on any graph.
+**Definition.** Let A be the convolution inverse of a minimal-subtraction counterterm character, with regulator z. On loop degree n, θ(t) multiplies values by exp(tzn). Define F(t) by evaluating A⁻¹ ⋆ θ(t)A at zero whenever every graph value is regular there.
 
 **Problem.** If these values exist for every real t, then F(t+s) = F(t) ⋆ F(s). On each graph of loop number n, the derivative at t = 0 equals n times the coefficient of z⁻¹ in A.
 
-**How the definition helps.** In our own proof, the scaled ratio composes before evaluation, and its derivative supplies a factor of z. Writing B(t) = A⁻¹ ⋆ θ(t)A gives B(t+s) = B(t) ⋆ θ(t)B(s), and evaluation at zero removes θ(t). At t = 0, products of two strict pole parts keep negative powers even after multiplication by z. So only the simple pole of A contributes. The Connes–Kreimer locality theorem supplies the needed regularity.
+**How the definition helps.** In our own proof, B(t) = A⁻¹ ⋆ θ(t)A satisfies B(t+s) = B(t) ⋆ θ(t)B(s). Evaluation at zero removes θ(t) from the regular factor B(s). Differentiating at zero time multiplies each degree-n value of A by zn. Products of two strict pole parts still lack a constant term after multiplication by z, leaving only the stated simple-pole coefficient.
 
 **nLab:** [renormalization](https://ncatlab.org/nlab/show/renormalization). It says: “its logarithmic derivative”
 
@@ -2029,7 +1975,7 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *True by definition.* MSC 81T15 (Perturbative methods of renormalization applied to problems in quantum field theory). arXiv math-ph, hep-th. Level 4: research.
 
-**Definition.** For an integer r ≥ 0, take smooth compactly supported tests on ℝᵈ whose derivatives through order r vanish at zero. Project onto this space by subtracting each test’s degree-r Taylor polynomial times a smooth cutoff equal to one near zero.
+**Definition.** For an integer r ≥ 0, take smooth compactly supported tests on ℝᵈ whose derivatives through order r vanish at zero. Project onto this space by subtracting each test’s degree-r Taylor polynomial times a smooth compactly supported cutoff equal to one near zero.
 
 **Problem.** Two extensions of the same distribution across zero agree on these tests if both have scaling degree at most d + r. Scaling degree is the infimum of s such that λˢu(λ·) tends to zero as λ decreases to zero.
 
@@ -2065,7 +2011,7 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *True by definition.* MSC 81T18 (Feynman diagrams), 14C30. arXiv hep-th, math.NT. Level 4: research.
 
-**Definition.** Use the affine construction of a graph integral, which represents the integration simplex and algebraic differential forms in one cohomology space. Here cohomology records integration classes relative to the boundary of the simplex. Fix integration over the simplex and let the differential form range over all classes. The resulting formal integrals span the graph’s affine motivic period space.
+**Definition.** Fix the affine relative cohomology of a graph G and its Betti class σ given by integration over the simplex. Its affine motivic period space is the span of the periods with frame σ and arbitrary de Rham frame in this cohomology.
 
 **Problem.** The motivic Galois coaction records algebraic symmetries by expanding a formal integral into pairs of coefficients and periods. Consider a scalar graph with logarithmic overall divergence and no divergent proper subgraph. Every period in the coaction on its affine motivic period space can be taken from that same space.
 
@@ -2084,9 +2030,9 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *Makes the theorem clean to state or prove.* MSC 81T18 (Feynman diagrams), 14C30. arXiv hep-th, math.NT. Level 4: research.
 
-**Definition.** A blow-up replaces a subspace by the directions approaching it. Blow up projective edge space along the coordinate subspaces specified by the graph polynomial. Remove the transformed zero set of that polynomial and retain the lifted coordinate boundary. The lifted integrand and simplex specify a relative period, an integral whose domain may end on that boundary.
+**Definition.** For a pair (X,D), a relative period pairs a relative de Rham class with a relative homology class of the same degree. A representative integration chain has boundary in D. For the graph blow-up, X omits the strict transform of the graph hypersurface and D is the remaining coordinate boundary, including exceptional components.
 
-**Problem.** Suppose the graph has twice as many edges as independent cycles, with strictly more than twice as many in every nonempty proper edge subset. Its projective Feynman integral equals this relative period.
+**Problem.** Suppose the graph has twice as many edges as independent cycles. Every nonempty proper edge subset must have more edges than twice its own cycle count. The projective Feynman integral then equals the relative period of the lifted integrand and simplex.
 
 **How the definition helps.** In our own description, the relative period records both the integrand and its allowed boundary. Rella’s blow-up theorem keeps the lifted simplex away from the transformed pole set. It also rules out poles along the new divisors. In our own argument, changing variables on the simplex interior now identifies the two integrals.
 
@@ -2103,13 +2049,13 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 **Remember:** Use the completed graph to compute the point count residue of any deletion.
 
-*True by definition.* MSC 81T18 (Feynman diagrams), 05C31. arXiv hep-th, math.CO. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 81T18 (Feynman diagrams), 05C31. arXiv hep-th, math.CO. Level 4: research.
 
-**Definition.** The c₂ invariant of a graph at a prime p is the number of zeros of its graph polynomial over the field of p elements, divided by p² and reduced modulo p. The Martin invariant of a 2k-regular graph counts its partitions into k spanning trees after deleting any vertex.
+**Definition.** Fix a prime p and a graph H with at least three vertices. Let N count the affine zeros of its Kirchhoff polynomial over the field with p elements. Define c₂(H) at p as N/p² reduced modulo p.
 
 **Problem.** Let G be a connected loopless four-regular graph with at least six vertices, and let p be prime. Then c₂(G ∖ v) is the same modulo p for every vertex v of G.
 
-**How the definition helps.** The completed graph supplies one integer for every deletion. Replace each edge of G by p−1 parallel edges. Panzer and Yeats prove that the Martin invariant of this graph, divided by 3p, gives the required residue modulo p. Their tree-partition theorem establishes that the count itself is independent of the vertex.
+**How the definition helps.** In our own explanation, the completion gives one Martin invariant common to all deletions. Panzer and Yeats relate each deletion’s c₂ residue to that invariant after replacing every edge by p−1 parallel copies. Their vertex-independence theorem then gives the same residue for every deletion.
 
 **Paper or page:** [Feynman symmetries of the Martin and c₂ invariants of regular graphs](https://arxiv.org/abs/2304.05299v2), [Feynman symmetries of the Martin and c₂ invariants of regular graphs](https://arxiv.org/abs/2304.05299v2), [Feynman symmetries of the Martin and c₂ invariants of regular graphs](https://arxiv.org/abs/2304.05299v2). It says: “For all primes p and any two vertices v,w of a 4-regular graph G, we have c₂⁽ᵖ⁾(G ∖ v) ≡ c₂⁽ᵖ⁾(G ∖ w) mod p.”
 
@@ -2123,7 +2069,7 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *Makes the theorem clean to state or prove.* MSC 81T18 (Feynman diagrams), 81Q30. arXiv hep-th, math-ph. Level 4: research.
 
-**Definition.** A primitive φ⁴ graph is a massless four-dimensional diagram with four-valent vertices whose edge count is twice its cycle count, while every nonempty proper edge subset has more edges than twice its cycle count. Its completion joins its four external ends to one new vertex. Its period is the integral left after removing the overall scale.
+**Definition.** Consider a connected massless four-dimensional φ⁴ graph with four external ends and twice as many internal edges as independent cycles. It is primitive if every nonempty proper internal edge subset has more edges than twice its cycle count. Its completion joins the four external ends at one new vertex.
 
 **Problem.** Deleting any vertex of the completion of a primitive φ⁴ graph gives a primitive φ⁴ graph. All these deletions have the same period.
 
@@ -2142,7 +2088,7 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *True by definition.* MSC 81T18 (Feynman diagrams), 05C31. arXiv hep-th, math-ph. Level 4: research.
 
-**Definition.** Orient a connected graph and omit one vertex column from its signed edge-by-vertex incidence matrix B. Form a block matrix with diagonal edge weights and a zero vertex block on its diagonal. Use B and −Bᵀ for the other blocks. A Dodgson polynomial is its signed determinant after deleting equally many edge rows and columns and setting specified surviving weights to zero.
+**Definition.** Orient a connected graph and omit one vertex column from its signed edge-by-vertex incidence matrix B. Form the block matrix with diagonal blocks diag(xₑ) and zero, upper right block B and lower left block −Bᵀ. A Dodgson polynomial takes its signed determinant after deleting equally many edge rows and columns and setting designated surviving weights to zero.
 
 **Problem.** If the deleted edge rows index a cut, meaning their removal disconnects the graph, the Dodgson polynomial vanishes.
 
@@ -2180,7 +2126,7 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 **Definition.** Form the graph matrix with diagonal edge weights, a zero vertex block, and opposite transposed incidence blocks recording the oriented edge ends. Omit one vertex from the incidence blocks. A Dodgson polynomial is a signed determinant after deleting equally many edge rows and columns and setting selected weights to zero.
 
-**Problem.** Let X be the matrix of a Dodgson polynomial, and let e and f be edges whose rows and columns survive in X. Set the weights of e and f to zero and order their rows and columns last. Then det(X) times the minor deleting both e and f equals the product of the two principal single-deletion minors minus the product of the two cross minors.
+**Problem.** Let e and f index distinct surviving edge rows and columns in the Dodgson matrix X. Set their weights to zero and place them last in matching order. Then det(X) times the double-deletion minor equals the product of the principal single-deletion minors minus the product of the cross minors.
 
 **How the definition helps.** The determinant definition turns the graph identity into the Desnanot–Jacobi identity for a single matrix. In our own explanation, the remaining work is matching the ordering signs when writing each minor as a Dodgson polynomial. A forest-sum definition would require a separate comparison with determinants.
 
@@ -2196,7 +2142,7 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *Rules out counterexamples. Confidence: medium.* MSC 81T18 (Feynman diagrams). arXiv math-ph, hep-th. Level 4: research.
 
-**Definition.** Assign Euclidean momentum vectors to the vertices of a finite connected massless graph with at least two vertices, with total momentum zero. A spanning two-forest uses every vertex and consists of two disjoint trees. Its weight is the squared norm of the total momentum in either tree. Define the second Symanzik polynomial by summing each forest’s weight times the product of the edge variables outside that forest.
+**Definition.** Give each vertex of a finite connected massless graph a Euclidean momentum, with total momentum zero and at least two vertices. Each spanning two-forest splits the vertices into two trees and has weight equal to the squared total momentum in either tree. The second Symanzik polynomial sums each forest’s weight times the product of the edge variables outside it.
 
 **Problem.** If every spanning two-forest has nonzero momentum across its split, the monomials that appear are exactly the complements of all spanning two-forests. Their exponent vectors have a convex hull whose edges are parallel to differences of coordinate vectors.
 
@@ -2214,11 +2160,11 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *True by definition.* MSC 81T18 (Feynman diagrams), 81Q30. arXiv hep-th, math-ph. Level 4: research.
 
-**Definition.** A spanning tree connects all vertices without a cycle. Define the first Symanzik polynomial Ψ by summing the product of weights outside each spanning tree. For a logarithmically divergent graph, its projective period integrates 1/Ψ² over positive edge weights with one weight fixed at one. Here logarithmic divergence means that the edge count equals twice the number of independent cycles.
+**Definition.** For a connected graph, the first Symanzik polynomial Ψ sums the product of weights outside each spanning tree. When the edge count equals twice the cycle count, the projective period integrates 1/Ψ² over positive weights with one weight fixed at one.
 
 **Problem.** A connected plane graph satisfying this count and having an absolutely convergent period has the same period as its plane dual. The dual has one vertex per face and one edge crossing each original edge.
 
-**How the definition helps.** The tree formula makes duality a change of integration variables. In our own proof, tree complements are exactly the dual spanning trees. Substituting reciprocal weights therefore gives the dual polynomial divided by the product of all weights. The change of volume cancels the square of that product in the integral. The comparison with the original momentum integral uses the projective parameter formula.
+**How the definition helps.** The tree formula turns duality into the reciprocal change of variables. In our own proof, complements of primal spanning trees are exactly dual spanning trees. Evaluating the primal polynomial at reciprocal weights therefore gives the dual polynomial divided by the product of the weights. The Jacobian cancels the square of this product in the integral.
 
 **Paper or page:** [Invariant Differential Forms on Complexes of Graphs and Feynman Integrals](https://arxiv.org/abs/2101.04419v4). It says: “where the sum is over all spanning trees T ⊂ G.”
 
@@ -2233,9 +2179,9 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *Rules out counterexamples.* MSC 81T18 (Feynman diagrams). arXiv math-ph, hep-th. Level 4: research.
 
-**Definition.** Take a connected graph with twice as many edges as independent cycles and at least one edge. Call it primitive if each nonempty proper edge subset has more edges than twice its number of independent cycles. Assign each edge a positive variable and define Ψ by summing, over spanning trees, the product of variables outside the tree. The period integrates 1/Ψ² over the simplex where the variables sum to one, using all but one variable as coordinates.
+**Definition.** Take a connected graph with at least one edge and twice as many edges as independent cycles. It is primitive if every nonempty proper edge subset has more edges than twice its own number of independent cycles.
 
-**Problem.** For a connected graph with twice as many edges as independent cycles, the period converges exactly when the graph is primitive.
+**Problem.** For such a graph, let Ψ sum the products of edge variables outside each spanning tree. Integrate 1/Ψ² over positive variables summing to one, using all but one variable as coordinates. This period converges exactly when the graph is primitive.
 
 **How the definition helps.** The definition checks exactly the boundary inequalities in the convergence theorem. The analytic work proves that these inequalities control every simultaneous approach to the boundary. In our own example, two pairs of parallel edges in a three-vertex chain have a divergent period. Either parallel pair has two edges and one independent cycle, so its inequality fails.
 
@@ -2251,11 +2197,11 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *Makes the theorem clean to state or prove.* MSC 81T18 (Feynman diagrams), 81Q30. arXiv hep-th, math-ph. Level 4: research.
 
-**Definition.** For an edge set S, add its propagator exponents, the powers of its denominator factors in the momentum integral. Subtract D/2 times its number of independent cycles, where D is the dimension, and call the result ω(S). If S contains all massive edges and one component contains all external momentum insertions, subtract ω(G) as well. Call the result the corrected power of S.
+**Definition.** For each edge set S of a diagram G in dimension D, let ω(S) sum its propagator exponents minus D/2 times its cycle count. Its corrected power equals ω(S) unless S contains every massive edge and one component contains every nonzero momentum insertion. In that case its corrected power is ω(S) − ω(G).
 
 **Problem.** Take a connected scalar diagram with positive real propagator exponents and Euclidean momenta. Assume no proper nonempty subset of nonzero incoming momenta sums to zero and the second Symanzik polynomial is nonzero. Its projective parameter integral converges if every nonempty proper edge set has positive corrected power.
 
-**How the definition helps.** The corrected power gives the exponent that tests convergence when a group of edge parameters approaches zero together. In our own explanation, order the parameters by size and rescale successive groups using ratios between zero and one. Each resulting endpoint integral has the form ∫₀¹ tʳ⁻¹ dt with r equal to a corrected power, up to bounded factors. Borinsky’s polynomial bounds and sector decomposition justify this reduction. Removing the single overall scale gives the projective integral tested here.
+**How the definition helps.** The corrected power tests the endpoint where the parameters of S approach zero together. In our own explanation, order the parameters and use ratios of successive parameters as coordinates. Borinsky’s polynomial bounds and sector decomposition reduce convergence to integrals of tʳ⁻¹ from zero to one. Positive corrected powers r make these integrals finite.
 
 **Paper or page:** [Tropical Monte Carlo quadrature for Feynman integrals](https://arxiv.org/abs/2008.12310v2), [Tropical Monte Carlo quadrature for Feynman integrals](https://arxiv.org/abs/2008.12310v2). It says: “A facet presentation of these polytopes is given by the supermodular functions”
 
@@ -2269,11 +2215,11 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *True by definition.* MSC 81T18 (Feynman diagrams). arXiv math-ph, hep-th. Level 4: research.
 
-**Definition.** A spanning tree connects every vertex without forming a cycle. Give each edge of a finite connected graph an indeterminate. Define its first Symanzik polynomial Ψ by summing, over spanning trees, the product of the indeterminates outside the tree. Multiply every indeterminate in a connected subgraph γ by t.
+**Definition.** For a finite connected graph G, give each edge an indeterminate. Its first Symanzik polynomial Ψ sums, over all spanning trees, the product of indeterminates outside the tree.
 
-**Problem.** The lowest power of t in Ψ is the number of independent cycles in γ. Its coefficient is Ψ(γ)Ψ(G/γ), where G/γ contracts γ to one vertex and discards its edges.
+**Problem.** Scale every edge variable of a connected subgraph γ by t. The lowest power of t in Ψ is the number of independent cycles in γ. Its coefficient is Ψ(γ)Ψ(G/γ), where G/γ contracts γ to one vertex and discards its edges.
 
-**How the definition helps.** In our own proof, the tree formula turns the lowest power into the smallest number of omitted edges of γ. A tree attains that minimum exactly when its restriction spans γ as a tree. Such trees correspond to pairs of spanning trees, one in γ and one in G/γ. Their monomials give the product formula. Identifying this tree sum with the denominator from loop integration is a separate theorem.
+**How the definition helps.** In our own proof, the power of t counts the omitted edges of γ. This count reaches its minimum exactly when the spanning tree restricts to a spanning tree of γ. Such trees correspond to pairs of spanning trees, one in γ and one in G/γ. Their monomials give the product formula.
 
 **Paper or page:** [Tropical Monte Carlo quadrature for Feynman integrals](https://arxiv.org/abs/2008.12310v2). It says: “z<sub>\\Psi \_G</sub>(\\gamma ) &amp;= \\ell (\\gamma )”
 
@@ -2325,11 +2271,11 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *Makes the theorem clean to state or prove.* MSC 81T18 (Feynman diagrams), 11M32. arXiv hep-th, math.NT. Level 4: research.
 
-**Definition.** A motivic period records algebraic data defining an integral as well as its value. The level-six f-alphabet represents such cyclotomic periods by weighted words and powers of 2πi. Cyclotomic periods here use repeated integrals at sixth roots of unity. The coaction, which records algebraic symmetries of periods, cuts these words into prefixes and suffixes.
+**Definition.** In the chosen level-six f-alphabet, expand a cyclotomic motivic period in weighted words with coefficients involving powers of 2πi. The coaction splits each word at every position into a prefix and the remaining suffix. Its final letter is the suffix of length one.
 
 **Problem.** Consider a primitive massless φ⁴ period, the scale-free integral of a four-valent graph with no divergent proper subgraph. If its motivic period belongs to the level-six algebra, no word ends in the weight-two letter f₂⁶.
 
-**How the definition helps.** The alphabet expresses a symmetry restriction as a ban on one final letter. That letter represents the dilogarithm at a primitive sixth root, up to the chosen normalization and powers of 2πi. The small graphs theorem excludes this dilogarithm among the period’s conjugates, the components exposed by the coaction.
+**How the definition helps.** In our own explanation, splitting immediately before a final letter exposes that letter as a coaction component. The small graphs theorem excludes the weight-two dilogarithm represented by f₂⁶ among the possible conjugates here.
 
 **Paper or page:** [An Introduction to Motivic Feynman Integrals](https://arxiv.org/abs/2009.00426v2), [The Galois coaction on φ⁴ periods](https://arxiv.org/abs/1603.04289v2). It says: “In other words, f₂⁶ cannot appear as the right-most letter in the f-alphabet representation.”
 
@@ -2363,7 +2309,7 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *Rules out counterexamples.* MSC 81T20 (Quantum field theory on curved space or space-time backgrounds). arXiv math-ph. Level 4: research.
 
-**Definition.** For a free real scalar field, subtract the local Hadamard parametrix from the product of fields at two nearby points. This kernel uses the metric and field equation to reproduce the singular part at short distances. Taking the resulting diagonal value defines the Wick square. Fix the subtraction length and any finite local curvature terms throughout.
+**Definition.** For a free real scalar field, fix the Hadamard subtraction length and the finite local curvature terms. Define the Wick square by subtracting the local geometric Hadamard parametrix from the point-split field product and taking the diagonal value with those terms included.
 
 **Problem.** Consider globally hyperbolic four-dimensional spacetimes with the same mass and curvature coupling. The Wick square commutes with orientation- and time-orientation-preserving isometric embeddings with causally convex image.
 
@@ -2381,11 +2327,11 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *True by definition.* MSC 81T20 (Quantum field theory on curved space or space-time backgrounds). arXiv math-ph, hep-th. Level 4: research.
 
-**Definition.** A two-point function records correlations between two field values. Its wave front set records where singularities occur and their directions. The Hadamard condition selects pairs of directions along light rays, future-directed at the first point and opposite after transport to the second. The field commutation rule fixes the antisymmetric part.
+**Definition.** The microlocal Hadamard condition specifies the wave front set of a two-point distribution. It consists exactly of pairs (x,k,y,−l) joined by null geodesic transport. Here k is a future-directed nonzero null covector tangent after raising its index, and l is its parallel transport from x to y.
 
 **Problem.** Consider the same free real scalar field on a globally hyperbolic spacetime, where a spatial slice determines evolution. Any two Hadamard two-point functions differ by a smooth function.
 
-**How the definition helps.** The chosen directions rule out every singularity of a symmetric difference. In our own proof, the common antisymmetric part cancels, so exchanging the two arguments preserves the difference. Every possible singular direction points toward the future in the first argument and toward the past in the second. Exchanging the arguments would reverse that requirement. An empty wave front set means the difference is smooth. Radzikowski proved that the direction condition agrees with the older local expansion of the singularity.
+**How the definition helps.** In our own proof, the field commutator fixes the antisymmetric part, so the difference is symmetric. Its possible singular directions point toward the future in the first argument and the past in the second. Symmetry exchanges the arguments, which rules out every such pair. The empty wave front set gives smoothness.
 
 **nLab:** [Hadamard distribution](https://ncatlab.org/nlab/show/Hadamard+distribution). It says: “the wave front set is one causal half that of the causal propagator”
 
@@ -2417,11 +2363,11 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *Rules out counterexamples.* MSC 81T20 (Quantum field theory on curved space or space-time backgrounds). arXiv math-ph. Level 4: research.
 
-**Definition.** On an oriented, time-oriented, globally hyperbolic four-dimensional spacetime, test the source-free Maxwell field with smooth compactly supported two-forms. For the universal theory identify tests differing by an exterior derivative or its formal adjoint applied to a compactly supported form. Its skew bilinear form determines the field commutator. The reduced theory also removes its radical, the classes pairing to zero with every test.
+**Definition.** Test the source-free Maxwell field on an oriented, time-oriented, globally hyperbolic four-dimensional spacetime with compactly supported smooth two-forms. The universal space quotients by sums of exterior derivatives and formal coderivatives of compactly supported smooth forms of the appropriate degrees. The reduced space further quotients by all classes whose skew pairing with every test class vanishes.
 
 **Problem.** Consider orientation- and time-orientation-preserving isometric embeddings with open, causally convex image, so causal curves between image points stay inside. The reduced Maxwell theory assigns injective maps to these embeddings, both for classical test classes and for their quantized field algebras.
 
-**How the definition helps.** Removing the radical forces any induced map preserving the skew form to be injective (our own explanation). A class mapping to zero pairs to zero with every source class and hence vanishes. Fewster and Lang identify the radical and prove that embeddings carry it into the target radical. Their quantization preserves these injections. In the universal theory a nonzero flux class can vanish when its region embeds in a larger spacetime.
+**How the definition helps.** In our own explanation, a class mapping to zero pairs to zero with every source class because the map preserves the skew form. It therefore vanishes in the reduced space. Fewster and Lang prove that embeddings preserve radicals and that quantization preserves the resulting injections. In the universal theory a nonzero flux class can disappear in a larger spacetime.
 
 **nLab:** [causally local net of observables](https://ncatlab.org/nlab/show/causally+local+net+of+observables). It says: “A causally local net of observables is a functor”
 
@@ -2457,7 +2403,7 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 **Problem.** A compactly supported change of the metric that preserves global hyperbolicity gives an automorphism of the original observable algebra. Global hyperbolicity ensures the spacetime admits a surface for complete initial data.
 
-**How the definition helps.** In our own construction, the time slice axiom makes each comparison through an unchanged region reversible. A past region gives an isomorphism from the old algebra to the new one. A future region gives an isomorphism back. Their composition compares the dynamics within the original algebra. The work lies in finding common Cauchy regions and verifying the axiom for the field equations.
+**How the definition helps.** In our own construction, each unchanged region contains Cauchy surfaces for both metrics, so its two inclusion maps are invertible. The past region thus identifies the old algebra with the new algebra. The future region identifies the new algebra with the old one. Composing these identifications gives the automorphism.
 
 **nLab:** [time slice axiom](https://ncatlab.org/nlab/show/time+slice+axiom). It says: “if whenever a causal inclusion of Lorentzian spaces O₁ ↪︎ O₂ is such that O₁ contains a Cauchy surface of O₂ then A(O₁ ↪︎ O₂) is an isomorphism.”
 
@@ -2475,7 +2421,7 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 **Problem.** Each compact oriented surface map whose boundary lies in the chosen submanifold has a scalar phase. On relative boundaries the phase in ℝ/ℤ integrates H over the filling and subtracts the integral of B over its cap.
 
-**How the definition helps.** The chosen trivialization evaluates the boundary line, turning the surface amplitude into a number. In our own derivation, the relative boundary of a filling C with cap D has surface chain ∂C − D and edge ∂D. Relative Stokes gives the two integrals with opposite signs. Constructing surface transport with its boundary line supplies the geometric input.
+**How the definition helps.** The chosen trivialization evaluates the boundary line and gives a scalar surface amplitude. In our own derivation, relative Stokes evaluates the phase on the surface chain ∂C − D using the filling C and cap D. It gives the integral of H over C minus the integral of B over D, modulo integers.
 
 **nLab:** [Wess-Zumino-Witten model](https://ncatlab.org/nlab/show/Wess-Zumino-Witten+model). It says: “their existence corresponds to a trivialization of the underlying BU(1)-principal 2-bundle (U(1)-bundle gerbe) of the restriction of the B-field to the brane.”
 
@@ -2486,11 +2432,11 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 ### Characters replace global brane potentials
 
-**Remember:** A character assigns the brane its phase directly.
+**Remember:** Evaluate the character on the brane cycle and exponentiate.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 81T30 (String and superstring theories; other extended objects (e.g., branes) in quantum field theory), 19L50. arXiv hep-th, math.KT. Level 4: research.
 
-**Definition.** A twisted differential K-character assigns a value modulo integers to each compatible geometric K-cycle, which represents a brane with orientation and coefficient data. Its boundary rule equates the value on a boundary with an integral of curvature data modulo integers.
+**Definition.** Fix a twisted differential K-character χ on the given spacetime. For every geometric K-cycle z compatible with the twist, define its Wess–Zumino phase to be exp(2πiχ(z)), where χ(z) belongs to ℝ/ℤ.
 
 **Problem.** In the twisted K-character model on compact simply connected spacetime, a Ramond–Ramond field assigns a Wess–Zumino phase to every compatible brane cycle. This phase exists even for a field with nonzero topological class.
 
@@ -2508,7 +2454,7 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *True by definition.* MSC 81T30 (String and superstring theories; other extended objects (e.g., branes) in quantum field theory), 19L50. arXiv hep-th. Level 4: research.
 
-**Definition.** A differential circle T-duality pair consists of two principal circle bundles with connection over one smooth manifold and a choice of geometric trivialization. This choice represents their differential cup product, the cohomology product that includes connection data, by a global three-form.
+**Definition.** Let P and Q be principal circle bundles with connection on the same smooth manifold. A differential T-duality pair in the cup-product model includes a geometric trivialization of the product of their differential first Chern classes. Such a trivialization identifies the product cocycle with one induced by a global three-form.
 
 **Problem.** Two circle bundles with fixed connections admit a differential T-duality pair exactly when their first Chern classes have zero integral cup product.
 
@@ -2527,9 +2473,9 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *Rules out counterexamples.* MSC 81T30 (String and superstring theories; other extended objects (e.g., branes) in quantum field theory), 81T40. arXiv hep-th. Level 4: research.
 
-**Definition.** Write each vector of a full lattice Λ in ℝᵈ × ℝᵈ as (x,y), with squared length ‖x‖² − ‖y‖² for the indefinite form. Evenness means every such length is an even integer, and self-duality means Λ equals its dual under this form. For Im τ &gt; 0, sum exp(πiτ‖x‖² − πiτ̄‖y‖²) over Λ. Divide by \|η(τ)\|²ᵈ, where the Dedekind eta function equals exp(πiτ/12) times the product of 1 − exp(2πinτ) over positive integers n.
+**Definition.** On ℝᵈ × ℝᵈ use the bilinear form B((x,y),(u,v)) = x·u − y·v. A full lattice Λ is even if B(a,a) belongs to 2ℤ for every a in Λ. It is self-dual if it consists exactly of the vectors b satisfying B(a,b) ∈ ℤ for every a in Λ.
 
-**Problem.** For an even self-dual lattice of signature (d,d), this partition function is unchanged by τ ↦ τ + 1 and τ ↦ −1/τ.
+**Problem.** For Im τ &gt; 0, sum exp(πiτ‖x‖² − πiτ̄‖y‖²) over (x,y) in Λ and divide by \|η(τ)\|²ᵈ, using the Dedekind eta function. For even self-dual Λ this partition function is invariant under τ ↦ τ + 1 and τ ↦ −1/τ.
 
 **How the definition helps.** Evenness makes every shift phase equal to one, and self-duality makes Fourier summation return the original lattice. The odd lattice with diagonal form (1,−1) contains a vector of squared length one (our own). Its term changes sign under the shift (our own). Poisson summation gives the inversion law for the lattice sum, and the eta factors cancel its powers of τ and τ̄.
 
@@ -2545,7 +2491,7 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *True by definition. Confidence: medium.* MSC 81T30 (String and superstring theories; other extended objects (e.g., branes) in quantum field theory), 53C08. arXiv hep-th. Level 4: research.
 
-**Definition.** A geometric T-duality correspondence matches two torus bundles on their fiber product. It identifies their gerbes, geometric objects with three-form curvature, after shifting the second by a two-form ρ built from the connections.
+**Definition.** On the fiber product of the two torus bundles, let ρ be the correspondence two-form determined by their connections. The gerbe isomorphism in a geometric T-duality correspondence identifies the first pulled-back gerbe with the second tensored with the trivial gerbe of curving ρ.
 
 **Problem.** On the fiber product, the first pulled-back curvature minus the second equals the exterior derivative dρ.
 
@@ -2563,7 +2509,7 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *Makes the theorem clean to state or prove.* MSC 81T30 (String and superstring theories; other extended objects (e.g., branes) in quantum field theory), 53C08. arXiv hep-th, math.DG. Level 4: research.
 
-**Definition.** A differential circle T-duality pair chooses a geometric trivialization representing the product of two circle bundles with connection by a three-form. Connection-preserving symmetries of the bundles identify equivalent choices.
+**Definition.** For two circle bundles with connection on one base, a differential T-duality pair chooses a geometric trivialization of their differential first Chern class product. The trivialization identifies that product with the differential cocycle of a global three-form. Equivalence allows connection-preserving automorphisms of both bundles.
 
 **Problem.** Fix two circle bundles with connection admitting a pair on a connected base, and write F and G for their curvatures. Degree-three differential cohomology acts transitively on equivalence classes of pairs, with kernel represented by aF + bG for real constants a and b.
 
@@ -2581,7 +2527,7 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *True by definition.* MSC 81T30 (String and superstring theories; other extended objects (e.g., branes) in quantum field theory), 14N35. arXiv math-ph, math.AG. Level 4: research.
 
-**Definition.** For the resolved conifold, sum the formal partition series in each admissible direction to obtain local functions on sectors of the coupling plane. A sector is an angular region where the chosen sum exists. Use the multiplicative jumps between normalized sums as changes of fiber coordinate for a complex line bundle.
+**Definition.** Let Zᵢ be the normalized sector sum of the resolved conifold partition series in admissible sector Uᵢ. For each overlap define the jump gᵢⱼ by the continuation relation Zᵢ = gᵢⱼ Zⱼ. The jump line bundle identifies (z,u) in chart j with (z,gᵢⱼ(z)u) in chart i.
 
 **Problem.** Assume Im(v/w) &gt; 0 for the conifold parameters v and w. The normalized sector sums then define a global section of the line bundle determined by the jumps.
 
@@ -2615,9 +2561,9 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 **Remember:** Group cochains survive on a point with symmetry.
 
-*Rules out counterexamples.* MSC 81T30 (String and superstring theories; other extended objects (e.g., branes) in quantum field theory), 53C08, 57R18. arXiv hep-th. Level 4: research.
+*True by definition.* MSC 81T30 (String and superstring theories; other extended objects (e.g., branes) in quantum field theory), 53C08, 57R18. arXiv hep-th. Level 4: research.
 
-**Definition.** An orbifold point with finite symmetry group G records sequences of group elements as successive symmetries of the point. The Deligne complex describes gerbes with connection using circle-valued functions on these sequences and differential forms.
+**Definition.** For the orbifold point with symmetry group G, the space of n successive arrows is Gⁿ. With finite G these spaces are discrete. A circle-valued gerbe cocycle is a function ω on G² satisfying ω(a,b)ω(ab,c) = ω(b,c)ω(a,bc) for every a,b,c in G.
 
 **Problem.** Gerbes with connection on this orbifold point are all flat. Their classes form H²(G,U(1)), the group of circle-valued two-cocycles modulo coboundaries.
 
@@ -2635,7 +2581,7 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *True by definition.* MSC 81T30 (String and superstring theories; other extended objects (e.g., branes) in quantum field theory), 53C08. arXiv hep-th, math.DG. Level 4: research.
 
-**Definition.** An invariant metric on a principal torus bundle splits into a metric on the base and inner products along the fibers. A connection specifies the horizontal directions orthogonal to those fibers.
+**Definition.** Given a connection on a principal torus bundle, a split invariant metric makes horizontal and vertical vectors orthogonal. Horizontally it pulls back a base metric. Vertically it uses an inner product on the torus Lie algebra varying smoothly over the base.
 
 **Problem.** Every differential T-duality correspondence between principal torus bundles admits invariant metrics that make it a geometric T-duality correspondence with the original connections.
 
@@ -2653,11 +2599,11 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *True by definition.* MSC 81T40 (Two-dimensional field theories, conformal field theories, etc. in quantum mechanics), 17B69. arXiv math.QA, math-ph. Level 4: research.
 
-**Definition.** On a sphere mark 0, 1 and ∞ with simple modules A, B and the graded dual of C. Blocks are linear functionals on their tensor product that vanish on the action of global meromorphic fields regular outside the marks. Define the fusion coefficient N(A,B,C) as the dimension of this space. The operator definition counts independent series that intertwine the field actions and combine A and B into C.
+**Definition.** On the sphere, label 0, 1 and ∞ by simple modules A, B and the graded dual of C, respectively. Conformal blocks are tensor-product functionals annihilating the action of every global meromorphic field regular outside the marks. The fusion coefficient N(A,B,C) is the dimension of this block space.
 
 **Problem.** Assume a simple complex vertex operator algebra with nonnegative integral weights, a one-dimensional vacuum space at weight zero, and an invariant nondegenerate pairing. Assume every module graded compatibly by nonnegative integers splits into simples and products of mode −2 span a subspace of finite codimension. On the free abelian group of simple labels, the product with coefficients N(A,B,C) is associative.
 
-**How the definition helps.** Both ways to multiply three labels compute the rank of the same four-point bundle. Split the four-point sphere into two spheres meeting at one point; factorization then sums products of two three-point dimensions over labels at the join. The two splittings give the two orders of multiplication. The vector bundle theorem makes the rank constant throughout the connected family, including both limits.
+**How the definition helps.** In our own explanation, both products compute the rank of the same four-point block bundle. At either nodal splitting, factorization sums products of three-point dimensions over the intermediate simple label. The two splittings give the two bracketings. The vector bundle theorem gives constant rank over the connected family, including both limits.
 
 **Paper or page:** [Applications of the factorization theorem of conformal blocks to vertex operator algebras](https://arxiv.org/abs/2508.01294v1), [Applications of the factorization theorem of conformal blocks to vertex operator algebras](https://arxiv.org/abs/2508.01294v1), [Applications of the factorization theorem of conformal blocks to vertex operator algebras](https://arxiv.org/abs/2508.01294v1). It says: “The multiplication on Fu(V) is associative.”
 
@@ -2671,7 +2617,7 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *Makes the theorem clean to state or prove.* MSC 81T40 (Two-dimensional field theories, conformal field theories, etc. in quantum mechanics), 81T50. arXiv hep-th, math-ph. Level 4: research.
 
-**Definition.** A gerbe with connection is a gauge field that assigns phases to closed oriented surfaces. An equivariant gerbe with connection extends this assignment to a target with a symmetry group, including compatible identifications under changes of gauge.
+**Definition.** For a symmetry group H acting on a target M, an equivariant Wess–Zumino field is a degree-three differential cohomology class on the differential quotient stack. Over each test manifold its fields are principal H-bundles with connection and sections of their associated M-bundles. Pullback along such a field gives a gerbe with connection up to isomorphism.
 
 **Problem.** On a closed oriented surface, an equivariant Wess–Zumino gerbe gives a gauge-invariant phase even for a nontrivial principal symmetry bundle. The field consists of a connection and a section of the bundle with the target as fiber.
 
@@ -2711,7 +2657,7 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 **Problem.** In the ribbon graph construction with a normalized special symmetric Frobenius algebra, inserting a split immediately followed by a merge preserves the correlator. The correlator is the vector assigned to the labelled surface.
 
-**How the definition helps.** The inserted piece represents m ∘ Δ, so normalized specialness makes it an identity strand. Our own counterexample takes ℂ\[x\]/(x²) with the linear functional sending x to one and 1 to zero. Here Δ(1) = 1 ⊗ x + x ⊗ 1, so mΔ(1) = 2x. No scalar rescaling turns this composite into the identity. The construction theorem relates these diagram identities to changes of triangulation.
+**How the definition helps.** The inserted piece represents m ∘ Δ, which normalized specialness makes the identity. Our own counterexample uses ℂ\[x\]/(x²) with trace ε(x) = 1 and ε(1) = 0. Here Δ(1) = 1 ⊗ x + x ⊗ 1 gives mΔ(1) = 2x. No scalar multiple of 2x equals the unit.
 
 **nLab:** [FRS-theorem on rational 2d CFT](https://ncatlab.org/nlab/show/FRS-theorem+on+rational+2d+CFT). It says: “triangulating the surface suitably, labelling the triangulation with a Frobenius algebra object internal to the modular tensor category”
 
@@ -2727,7 +2673,7 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 **Definition.** A Wess–Zumino character assigns additive phases in ℝ/ℤ to all smooth two-cycles in the target. On a boundary, its phase equals the integral of a fixed curvature three-form over the spanning chain modulo integers.
 
-**Problem.** Every map from a closed oriented surface has a phase for a fixed Wess–Zumino character, including maps that admit no filling in the target.
+**Problem.** Every smooth map from a closed oriented surface has a phase for a fixed Wess–Zumino character, including maps admitting no filling in the target.
 
 **How the definition helps.** Evaluation uses the image of a fundamental cycle of the surface. Changing that cycle adds a boundary within the surface, where every three-form vanishes. In our own example, the identity of the two-sphere cannot extend over an oriented filling because its fundamental class is nonzero. The comparison with the geometric surface phase uses the description by a gerbe, a gauge field that assigns phases to surfaces.
 
@@ -2744,7 +2690,7 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *True by definition.* MSC 81T40 (Two-dimensional field theories, conformal field theories, etc. in quantum mechanics), 17B69. arXiv math.QA, math-ph. Level 4: research.
 
-**Definition.** On a sphere mark 0, 1 and ∞ with simple modules A, B and the graded dual of C. Blocks are linear functionals on their tensor product that vanish on the action of global meromorphic fields regular outside the marks. Define the fusion coefficient N(A,B,C) as the dimension of this space. The operator definition counts independent series that intertwine the field actions and combine A and B into C.
+**Definition.** On the sphere, label 0, 1 and ∞ by simple modules A, B and the graded dual of C, respectively. Conformal blocks are tensor-product functionals annihilating the action of every global meromorphic field regular outside the marks. The fusion coefficient N(A,B,C) is the dimension of this block space.
 
 **Problem.** Assume a simple complex vertex operator algebra with nonnegative integral weights, a one-dimensional vacuum space at weight zero, and an invariant nondegenerate pairing. Assume every module graded compatibly by nonnegative integers splits into simples and products of mode −2 span a subspace of finite codimension. Then N(A,B,C) equals N(B,A,C).
 
@@ -2762,7 +2708,7 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *Makes the theorem clean to state or prove.* MSC 81T40 (Two-dimensional field theories, conformal field theories, etc. in quantum mechanics). arXiv math-ph, hep-th. Level 4: research.
 
-**Definition.** A conformal net assigns an algebra of observables to each interval and moves these algebras under angle-preserving changes of coordinates. On the line, the lifted symmetry action can distinguish a full turn from doing nothing. Require a full turn to multiply every state by the same scalar.
+**Definition.** Let U implement the lifted Möbius symmetries of a conformal net on the line. The scalar full-turn condition means that U assigns one scalar multiple of the identity operator to the lift of rotation through 2π.
 
 **Problem.** Under this condition, a conformal net on the line extends to a conformal net on the circle.
 
@@ -2780,7 +2726,7 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *True by definition.* MSC 81T40 (Two-dimensional field theories, conformal field theories, etc. in quantum mechanics), 17B69. arXiv math.QA, math-ph. Level 4: research.
 
-**Definition.** On a sphere mark 0, 1 and ∞ with simple modules A, B and the graded dual of C. Blocks are linear functionals on their tensor product that vanish on the action of global meromorphic fields regular outside the marks. Define the fusion coefficient N(A,B,C) as the dimension of this space. The operator definition counts independent series that intertwine the field actions and combine A and B into C.
+**Definition.** On the sphere, label 0, 1 and ∞ by simple modules A, B and the graded dual of C, respectively. Conformal blocks are tensor-product functionals annihilating the action of every global meromorphic field regular outside the marks. The fusion coefficient N(A,B,C) is the dimension of this block space.
 
 **Problem.** Assume a simple complex vertex operator algebra with nonnegative integral weights, a one-dimensional vacuum space at weight zero, and an invariant nondegenerate pairing. Assume every module graded compatibly by nonnegative integers splits into simples and products of mode −2 span a subspace of finite codimension. The algebra itself, as a module, is the identity for fusion.
 
@@ -2798,7 +2744,7 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *True by definition.* MSC 81T45 (Topological field theories in quantum mechanics), 81T13. arXiv math-ph, math.DG. Level 4: research.
 
-**Definition.** Fix SU(2) and level one, the normalization given by the second Chern class. The exponentiated Chern–Simons action on a compact oriented three-manifold takes values in a complex line attached to its boundary connection. These lines carry a connection whose curvature is a nonzero multiple of the boundary symplectic form.
+**Definition.** A horizontal trivialization of a complex line bundle with connection is a nowhere-zero section s satisfying ∇s = 0. For level-one SU(2) Chern–Simons theory, the exponentiated action assigns a vector in the line of the boundary connection to each bulk connection.
 
 **Problem.** Restrict flat connections to the boundary, identifying connections related by changes of frame. On the smooth irreducible loci of both spaces, restriction pulls the boundary symplectic form back to zero. Here irreducible means that only central changes of frame preserve the connection.
 
@@ -2816,11 +2762,11 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *True by definition.* MSC 81T45 (Topological field theories in quantum mechanics). arXiv math.QA. Level 4: research.
 
-**Definition.** For one boundary label, take finite-dimensional unital complex algebras A for intervals and C for circles, with C commutative. Each has a trace ε giving a nondegenerate symmetric pairing ε(ab). A unital map i from C into the center of A has adjoint j for these pairings. The Cardy condition requires i(j(a)) = ∑ᵢ eⁱaeᵢ for every a, using trace-dual bases of A.
+**Definition.** Take finite-dimensional unital complex algebras A and C with nondegenerate symmetric trace pairings, and require C to be commutative. Let j be the adjoint of a unital algebra homomorphism i from C to the center of A. The Cardy condition requires i(j(a)) = ∑ᵣ eʳaeᵣ for every a in A, using any trace-dual bases of A.
 
 **Problem.** The two decompositions of an annulus from an interval to an interval give the same operator on A.
 
-**How the definition helps.** The Cardy condition replaces a comparison of two surface decompositions with one algebraic axiom. Cutting along a circle gives i(j(a)). The interval cut gives the dual-basis sum. The classification theorem proves that these and the other sewing relations suffice.
+**How the definition helps.** The Cardy condition equates the two operators assigned to the annulus. In our own explanation, the circle cut gives i(j(a)), and the interval cut contracts the two ends using trace-dual bases. That contraction gives the sum in the defining equation.
 
 **Paper or page:** [Frobenius--Schur indicators for twisted Real representation theory and two dimensional unoriented topological field theory](https://arxiv.org/abs/2310.03566v1). It says: “The oriented Cardy condition”
 
@@ -2834,7 +2780,7 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *True by definition.* MSC 81T45 (Topological field theories in quantum mechanics), 81T13. arXiv hep-th, math-ph. Level 4: research.
 
-**Definition.** For a compact gauge group, a degree-four integral characteristic class assigns a topological invariant to each principal bundle. Its natural differential lift assigns phases to smooth three-cycles. On boundaries it integrates the corresponding polynomial in the connection curvature modulo integers.
+**Definition.** For a compact gauge group, fix an integral degree-four characteristic class and its curvature polynomial. Its differential character assigns to each bundle with connection a homomorphism from smooth three-cycles to ℝ/ℤ. On the boundary of every smooth four-chain, its value equals the integral of the curvature polynomial over that chain modulo integers.
 
 **Problem.** On any closed oriented three-manifold this lift defines a Chern–Simons phase, even for a nontrivial bundle. If the bundle and connection extend over an oriented filling, integrating the curvature polynomial there gives the same phase modulo integers.
 
@@ -2857,7 +2803,7 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 **Problem.** The oriented theory of ℂ\[x\] modulo x² with trace ε(1) = 0 and ε(x) = 1 has no unoriented extension.
 
-**How the definition helps.** The square condition tests whether the Möbius band can receive a consistent value. In our own calculation, p preserves the nilpotent line ℂx and its trace, so p(x) = x. The bases (1,x) and (x,1) are dual, giving Q² = 2x. Any square with zero constant term is zero here. The classification of unoriented surface theories supplies the square condition.
+**How the definition helps.** The necessary crosscap square condition has no solution in this algebra. In our own calculation, p preserves the nilpotent line ℂx and the trace, forcing p(x) = x. The dual bases (1,x) and (x,1) therefore require Q² = 2x. A square with zero constant term must come from a multiple of x, whose square is zero.
 
 **Paper or page:** [Frobenius--Schur indicators for twisted Real representation theory and two dimensional unoriented topological field theory](https://arxiv.org/abs/2310.03566v1). It says: “the equality Q² = ∑ᵢ p(aⁱ) aᵢ holds.”
 
@@ -2886,11 +2832,11 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 ### Dual lines glue Chern–Simons actions
 
-**Remember:** Opposite sides of a cut supply dual lines.
+**Remember:** Reversing the boundary gives the dual line, so the two action vectors pair.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 81T45 (Topological field theories in quantum mechanics), 81T13. arXiv math-ph, math.DG. Level 4: research.
 
-**Definition.** Fix SU(2) and level one, the normalization given by the second Chern class. On a compact oriented three-manifold with boundary, the exponentiated Chern–Simons action is a vector in a complex line determined by the boundary connection. Reversing the boundary orientation gives the dual line.
+**Definition.** For level-one SU(2) Chern–Simons theory, a boundary connection determines a complex action line. The exponentiated action of a compact oriented three-manifold with that boundary connection is a vector in this line. Reversing the boundary orientation assigns the dual line.
 
 **Problem.** Cut a closed oriented three-manifold along a separating closed oriented surface and restrict a smooth connection to both pieces. Pairing their two action vectors gives the exponentiated action on the closed manifold.
 
@@ -2912,7 +2858,7 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 **Problem.** The mixed action equals the torsion linking pairing of the two first Chern classes, the finite-order integral classes of the bundles.
 
-**How the definition helps.** The flat product formula replaces the differential product by an ordinary cup product. In our own derivation, take the loop-phase class of the first field and cup it with the second Chern class. Its integral is the linking pairing, using the sign convention in which the connecting map sends loop phases to Chern classes. A different lift changes the first factor by a real class, whose product with torsion vanishes.
+**How the definition helps.** The flat product formula reduces the mixed action to an ordinary cup product. In our own derivation, cup the first field’s loop-phase class with the first Chern class of the other bundle. Integration gives the linking pairing with the convention that the connecting map sends loop phases to first Chern classes. Changing the lift adds a real class, whose product with torsion vanishes.
 
 **nLab:** [Cheeger-Simons differential character](https://ncatlab.org/nlab/show/Cheeger-Simons+differential+character). It says: “information beyond the curvature characteristic form which represents the underlying characteristic class in de Rham cohomology”
 
@@ -2939,24 +2885,6 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 - [Robbert Dijkgraaf and Edward Witten, Topological gauge theories and group cohomology, section 5](https://doi.org/10.1007/BF02096988)
 
-### Spin-statistics for topological field theories follows from a sign-twisted duality structure
-
-**Remember:** Put the fermion sign into the rule for duals and adjoints.
-
-*Makes the theorem clean to state or prove.* MSC 81T45 (Topological field theories in quantum mechanics), 18M05. arXiv math-ph, math.CT. Level 4: research.
-
-**Definition.** A dagger reverses maps and acts like an adjoint. A fermionically dagger compact category also has dual objects, which describe reversed boundaries or dual vector spaces in the examples. Its compatibility rule between adjoints and duals includes a parity operation, which gives a minus sign on odd states.
-
-**Problem.** In the paper's unitary topological field theories on spin bordisms, a full spin rotation acts by fermion parity. These theories assign linear maps to spin spacetimes viewed as ways to connect their boundaries.
-
-**How the definition helps.** The modified duality rule puts the sign into the structure that a theory must preserve. In our own words, one can then apply a general functor theorem rather than proving a separate sign identity for each theory. The work moves to checking this structure on spin bordisms and on Hilbert spaces graded by parity.
-
-**Paper or page:** [The spin-statistics theorem for topological quantum field theories](https://arxiv.org/abs/2403.02282v2). It says: “The spin-statistics theorem for TQFTs emerges as a specific case of a more general result concerning symmetric monoidal dagger functors between fermionically dagger compact categories.”
-
-**Sources:**
-
-- [Luuk Stehouwer, The spin-statistics theorem for topological quantum field theories, arXiv:2403.02282v2 (2024)](https://arxiv.org/abs/2403.02282v2)
-
 ### The pentagon governs tetrahedron moves
 
 **Remember:** The two local triangulations are two routes around the associator pentagon.
@@ -2967,7 +2895,7 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 **Problem.** Fix the labels and face data on the boundary of a bipyramid in the Turaev–Viro state sum. The two-tetrahedron contraction equals the three-tetrahedron contraction summed over the new edge label with its quantum dimension.
 
-**How the definition helps.** Choosing associator coefficients as weights expresses the local move through the pentagon identity. That identity equates the two routes for rebracketing four factors. Our own description reads the intermediate labels as the indices summed in matrix multiplication. The proof identifies the trace pairings and dimension factors with the normalized contractions. Full triangulation invariance also needs the move introducing a vertex.
+**How the definition helps.** The pentagon identity equates two routes for rebracketing four tensor factors. In our own explanation, the associator coefficients turn these routes into the two local contractions. Summing over intermediate labels implements matrix multiplication, and the trace pairings give the quantum dimension on the internal edge.
 
 **nLab:** [Turaev-Viro model](https://ncatlab.org/nlab/show/Turaev-Viro+model). It says: “is a 3d TQFT construction induced from a spherical category/fusion category C.”
 
@@ -2985,7 +2913,7 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 **Problem.** The circle algebra of a unitary oriented surface theory has no nonzero nilpotent element, meaning an element whose power vanishes.
 
-**How the definition helps.** Unitarity makes multiplication by any element commute with its adjoint. Reflecting the pair of pants identifies that adjoint with multiplication by the reflected element, and the circle product is commutative. In our own proof, multiplication by a nilpotent is therefore both normal and nilpotent. The spectral theorem makes this operator zero. Applying it to the unit gives the original element.
+**How the definition helps.** In our own proof, reflecting the pair of pants makes the adjoint of multiplication by a equal multiplication by its reflected element. Commutativity therefore makes the multiplication operator normal. If a is nilpotent, this operator is nilpotent, so the spectral theorem makes it zero. Applying it to the unit gives a = 0.
 
 **nLab:** [unitary functorial field theory](https://ncatlab.org/nlab/show/unitary+functorial+field+theory). It says: “is called "unitary" if it is a dagger functor.”
 
@@ -3037,7 +2965,7 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *Makes the theorem clean to state or prove.* MSC 81T50 (Anomalies in quantum field theory). arXiv hep-th, math-ph. Level 4: research.
 
-**Definition.** The fermion Pfaffian line is the real line in which a fermion amplitude takes its value. Its connection transports the amplitude along paths of gauge fields and can record a sign around a loop.
+**Definition.** A flat real Pfaffian line over gauge fields modulo gauge transformations has parallel transport on its fibers. Its sign holonomy assigns each based loop the sign of the induced linear automorphism of the base fiber. Flatness makes this sign depend only on the loop’s homotopy class.
 
 **Problem.** For one four-dimensional Weyl fermion in the defining SU(2) representation, the flat Pfaffian line has transport −1 around a gauge loop on the four-sphere. The loop closes by a gauge transformation in the nonidentity component.
 
@@ -3074,11 +3002,11 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *Makes the theorem clean to state or prove.* MSC 81T50 (Anomalies in quantum field theory), 57R56. arXiv math-ph. Level 4: research.
 
-**Definition.** Let G be the quotient of Spin × SU(8) by the diagonal subgroup generated by (−1,−I). A G-structure lifts the oriented frame bundle together with its gauge data to G. Two closed G-manifolds are bordant when their oriented difference bounds a compact G-manifold. A bordism character sends disjoint unions to products of unit complex numbers.
+**Definition.** Let G be the quotient of Spin × SU(8) by the diagonal subgroup generated by (−1,−I). Closed five-dimensional G-manifolds are bordant if their oriented difference bounds a compact G-manifold with the given boundary structures. A bordism character is a group homomorphism from these bordism classes under disjoint union to U(1).
 
 **Problem.** Give the Wu manifold SU(3)/SO(3) the G-structure constructed by Debray and Yu. A character of five-dimensional G-bordism is trivial exactly when its value on this manifold is one.
 
-**How the definition helps.** A character on a cyclic group is determined by its value on one generator. Debray and Yu compute the bordism group as ℤ/2 and identify its generator. They then evaluate the anomaly of four-dimensional supergravity on that generator.
+**How the definition helps.** In our own argument, a homomorphism on a cyclic group is trivial exactly when it sends a generator to one. Debray and Yu compute the group as ℤ/2 and identify the indicated Wu manifold as its generator.
 
 **Paper or page:** [What bordism-theoretic anomaly cancellation can do for U](https://arxiv.org/abs/2210.04911v2). It says: “In this group, the anomaly field theory of 4d 𝒩 = 8 supergravity is trivial.”
 
@@ -3111,7 +3039,7 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *Rules out counterexamples.* MSC 81T50 (Anomalies in quantum field theory). arXiv hep-th, math-ph. Level 4: research.
 
-**Definition.** On an oriented brane, the manifold where an open string ends, W₃ measures the obstruction to defining complex spinors. A twisted spin-c structure identifies the surface gauge field carrying this obstruction with the one induced by the background B-field.
+**Definition.** On an oriented brane M, W₃ is the integral Bockstein of the second Stiefel–Whitney class of TM. A topological B-twisted spinᶜ structure identifies the spinᶜ lifting gerbe of TM with the background B-field gerbe restricted to M.
 
 **Problem.** A single boundary gauge line passes the topological Freed–Witten anomaly test exactly when W₃ plus the restricted integral B-field class vanishes.
 
@@ -3129,7 +3057,7 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *Makes the theorem clean to state or prove.* MSC 81T70 (Quantization in field theory; cohomological methods), 81T50. arXiv math-ph. Level 4: research.
 
-**Definition.** In a Batalin–Vilkovisky bulk theory with compatible Hamiltonian boundary data, assume the boundary symplectic form is exact and has degree zero. The boundary charge S has degree one and satisfies {S,S} = 0 for the induced Poisson bracket. Set Q(F) = {S,F} on local boundary functionals, integrals depending on finitely many derivatives. Degree-two cohomology consists of degree-two functionals killed by Q, modulo Q applied to degree-one functionals.
+**Definition.** Let S be the degree-one charge of an exact degree-zero boundary symplectic structure, satisfying {S,S} = 0. On local boundary functionals set Q(F) = {S,F}. Degree-two local cohomology consists of degree-two local functionals killed by Q, modulo Q applied to degree-one local functionals.
 
 **Problem.** At each order in perturbative quantization of this boundary charge, the obstruction defines a degree-two local cohomology class. The charge extends through that order exactly when this class vanishes.
 
@@ -3147,7 +3075,7 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *Makes the theorem clean to state or prove.* MSC 81T70 (Quantization in field theory; cohomological methods), 81T50. arXiv math-ph. Level 4: research.
 
-**Definition.** In perturbative Batalin–Vilkovisky quantization, one corrects a classical action S by a formal power series. Its odd Poisson bracket defines the degree-one differential Q(F) = {S,F} on local functionals, integrals of expressions involving finitely many derivatives. Degree-one BRST cohomology consists of degree-one functionals killed by Q, modulo Q applied to degree-zero local functionals.
+**Definition.** Let S be a degree-zero classical Batalin–Vilkovisky action satisfying {S,S} = 0 for the odd Poisson bracket. On local functionals set Q(F) = {S,F}. Degree-one BRST cohomology consists of degree-one local functionals killed by Q, modulo Q applied to degree-zero local functionals.
 
 **Problem.** In perturbative Batalin–Vilkovisky quantization, an order-by-order local obstruction lies in degree-one BRST cohomology. A zero class lets a local counterterm remove the obstruction at that order.
 
@@ -3183,7 +3111,7 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *True by definition.* MSC 81T70 (Quantization in field theory; cohomological methods). arXiv math.QA, math-ph. Level 4: research.
 
-**Definition.** Work over a characteristic-zero field with graded commutative algebras carrying derived Batalin–Vilkovisky differentials of the same degree convention. A morphism preserves the unit, is linear over formal series in t, and commutes with the differentials. Its cumulants are determined recursively by expanding the image of each product over set partitions into signed products of block cumulants. For n inputs, the definition requires divisibility by t to the power n − 1.
+**Definition.** For derived Batalin–Vilkovisky algebras over a characteristic-zero field, take a degree-zero unital linear map over formal power series commuting with the differentials. Define its cumulants recursively by expressing each product’s image as the sum over partitions of graded-signed products of block cumulants. The map is a morphism if its n-input cumulant is divisible by tⁿ⁻¹ for every n ≥ 1, where t is the formal parameter.
 
 **Problem.** The composite of two derived Batalin–Vilkovisky morphisms is again such a morphism.
 
@@ -3201,11 +3129,11 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *Makes the theorem clean to state or prove.* MSC 81T70 (Quantization in field theory; cohomological methods). arXiv math.QA, math-ph. Level 4: research.
 
-**Definition.** A unital prefactorization algebra F assigns vector spaces to opens and multilinear maps to disjoint insertions, including the empty insertion. Nested insertions compose, and permuting the inputs permutes their labels. Local constancy makes inclusion maps between disks invertible, counting the whole plane as a disk. To multiply in F(ℂ), transport two inputs to disjoint disks and insert them into the plane.
+**Definition.** A unital prefactorization algebra assigns vector spaces to opens and multilinear maps to all finite disjoint families of opens inside a larger open. These maps respect identities, permutations and nested insertions, including empty families. Local constancy requires an isomorphism for every disk inclusion into a disk, including the whole plane as an open disk.
 
 **Problem.** The plane value of a locally constant prefactorization algebra in complex vector spaces is a unital commutative algebra.
 
-**How the definition helps.** The two bracketings reduce to the same three-disk insertion (our own). Exchanging the two disks along a path leaves the operation unchanged, so the product is commutative (our own). The empty insertion gives the unit (our own). The work goes into using local constancy to show that disk placements give the same operation (our own).
+**How the definition helps.** In our own construction, invert the inclusion maps to transport two plane values into disjoint disks, then insert them into the plane. Local constancy makes the operation independent of placement, so exchanging disks preserves it. Both bracketings agree by composition of three-disk insertions. The empty insertion gives the unit.
 
 **Paper or page:** [A note on vertex algebras and Costello-Gwilliam factorization algebras](https://arxiv.org/abs/2408.00412v2). It says: “the linear space F(ℂ) has the structure of commutative algebra as follows”
 
@@ -3219,7 +3147,7 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *Makes the theorem clean to state or prove.* MSC 81T70 (Quantization in field theory; cohomological methods). arXiv math-ph. Level 4: research.
 
-**Definition.** An odd symplectic form pairs even and odd tangent directions nondegenerately. A Lagrangian is a submanifold whose tangent spaces equal their own orthogonal complements for this form. A half-density transforms by the square root of the volume change and induces an ordinary integration density on each Lagrangian. An exact half-density has the form Δτ, where Δ sums mixed even and odd derivatives in standard paired coordinates.
+**Definition.** On an odd symplectic manifold, a half-density transforms by the square root of the Berezinian and induces an integration density on an oriented Lagrangian. The canonical operator Δ sums mixed even and odd derivatives of the coefficient in paired Darboux coordinates. A half-density σ is exact if σ = Δτ for some half-density τ.
 
 **Problem.** Let L be an oriented Lagrangian without boundary in an odd symplectic manifold. If τ has compact support meeting L in a compact set, the integral of Δτ over L vanishes.
 
@@ -3273,7 +3201,7 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *True by definition.* MSC 81T70 (Quantization in field theory; cohomological methods). arXiv math-ph. Level 4: research.
 
-**Definition.** A half-density transforms by the square root of the volume change. On an odd symplectic space, the canonical operator Δ sums mixed even and odd derivatives in standard paired coordinates. The linear master equation for a half-density σ is Δσ = 0. On a product X × Y, integrate σ along an oriented Lagrangian L in Y, whose tangent spaces equal their symplectic orthogonal complements.
+**Definition.** On an odd symplectic manifold, the linear master equation for a half-density σ is Δσ = 0. In paired Darboux coordinates, Δ sums mixed even and odd derivatives of its coefficient. On a product X × Y, the fiber integral along an oriented Lagrangian L in Y integrates the Y half-density factor over L.
 
 **Problem.** Let L be compact and without boundary. Integrating a smooth solution over L gives a half-density on X that solves the linear master equation there.
 
@@ -3313,7 +3241,7 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 **Problem.** The canonical Batalin–Vilkovisky operator squares to zero on half-densities.
 
-**How the definition helps.** Half-densities give the same mixed-derivative formula in every standard chart, with no choice of volume (our own). Odd partial derivatives anticommute and square to zero, hence Δ² = 0 (our own). Coordinate independence is the substantive theorem. On functions, choosing volume exp(x₁θ₁θ₂) times standard volume gives a different operator via half the divergence of Hamiltonian vector fields (our own). Its square is a nonzero multiple of differentiation in x₂ (our own).
+**How the definition helps.** In our own calculation, odd partial derivatives anticommute and square to zero, so the mixed sum squares to zero. The coordinate-independence theorem makes this a global operator on half-densities. On functions, our own example uses volume exp(x₁θ₁θ₂) times the coordinate volume. Half the divergence of Hamiltonian vector fields then defines an operator whose square is a nonzero multiple of differentiation in x₂.
 
 **Paper or page:** [The canonical BV Laplacian on half-densities](https://arxiv.org/abs/2212.00451v2). It says: “There is a canonical BV operator Δ acting on half-densities”
 
@@ -3327,7 +3255,7 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *True by definition.* MSC 81T70 (Quantization in field theory; cohomological methods). arXiv math.QA, math-ph. Level 4: research.
 
-**Definition.** Start with a finite-dimensional Batalin–Vilkovisky complex and a contraction onto its homology that permits Gaussian integration over the complementary variables. A contraction gives projection and inclusion maps inverse up to chain homotopy. For a stable quantum master interaction m, define the transferred interaction as ħ log ⟨exp(m/ħ)⟩, where brackets denote normalized formal Gaussian integration. Stability requires 2g − 2 + n &gt; 0 for each vertex with genus g and n incident ends.
+**Definition.** Fix a finite-dimensional Batalin–Vilkovisky complex with a contraction onto homology permitting normalized formal Gaussian integration ⟨·⟩ over complementary variables. An interaction m is stable when each genus-g vertex with n incident ends satisfies 2g − 2 + n &gt; 0. For a stable quantum master interaction m, the transferred interaction is ħ log ⟨exp(m/ħ)⟩.
 
 **Problem.** The transferred interaction equals the sum over connected stable graphs G of the Gaussian contraction for G divided by the order of its automorphism group.
 
@@ -3345,7 +3273,7 @@ $F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
 
 *True by definition.* MSC 81T70 (Quantization in field theory; cohomological methods), 81T13. arXiv hep-th, math-ph. Level 4: research.
 
-**Definition.** In the classical Batalin–Vilkovisky construction, observables have integer degrees. Their odd Poisson bracket is a bilinear operation that raises total degree by one and satisfies the graded Jacobi identity. Choose an action S of degree zero satisfying {S,S} = 0. Define the operator d by df = {S,f}.
+**Definition.** Take a real or complex graded algebra of classical observables with a degree-one odd Poisson bracket. For a degree-zero action S satisfying the classical master equation {S,S} = 0, define df = {S,f} for every observable f.
 
 **Problem.** The differential squares to zero on the graded algebra of classical observables.
 

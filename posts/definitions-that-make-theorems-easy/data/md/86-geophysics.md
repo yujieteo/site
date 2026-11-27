@@ -2,7 +2,7 @@
 
 **Remember:** Positive N² means oscillation, while negative N² means exponential growth is possible.
 
-*Makes the theorem clean to state or prove.* MSC 86A10 (Meteorology and atmospheric physics), 86A05. arXiv physics.ao-ph. Level 2: later undergraduate.
+*True by definition.* MSC 86A10 (Meteorology and atmospheric physics), 86A05. arXiv physics.ao-ph. Level 2: later undergraduate.
 
 **Definition.** Let z measure height upward in a resting fluid with density ρ(z). Assume a displaced fluid parcel keeps its density, and use a constant positive reference density ρ₀ for inertia. Define the signed coefficient N² = −gρ′(z)/ρ₀, where g is gravitational acceleration.
 
@@ -74,7 +74,7 @@
 
 **Problem.** The spherical Lambert azimuthal map preserves area away from the point opposite its center.
 
-**How the definition helps.** Using chord length makes each map disk equal in area to its spherical cap (our own). On a sphere of radius R, a cap of angular radius θ has area 2πR²(1 − cos θ), which is π times the squared chord length (our own). Preserving bearing gives equal areas for sectors of caps (our own). Subtracting nested sectors then gives equal areas for the polar rectangles that determine area (our own).
+**How the definition helps.** Each disk has the same area as its spherical cap (our own). For sphere radius R and angular radius θ, the cap area equals π times the squared chord length, namely 2πR²(1 − cos θ) (our own). Bearings preserve sector fractions (our own). Subtracting nested sectors gives equal areas for polar rectangles, which determine area (our own).
 
 **Wikipedia:** [Lambert azimuthal equal-area projection](https://en.wikipedia.org/wiki/Lambert_azimuthal_equal-area_projection). It says: “It accurately represents area in all regions of the sphere, but it does not accurately represent angles.”
 
@@ -176,7 +176,7 @@
 
 **Problem.** Assume gravity balances the vertical pressure force and Earth’s rotation balances the horizontal pressure force. Away from the equator, the upper wind minus the lower wind follows thickness contours wherever their gradient is nonzero.
 
-**How the definition helps.** Taking the geopotential difference combines two wind formulas into one horizontal gradient (our own). At either pressure level, the balanced wind equals the geopotential gradient rotated through a right angle and divided by the local rotation parameter (our own). Subtracting at the same horizontal location gives the rotated thickness gradient, which is tangent to its contours (our own).
+**How the definition helps.** At each pressure level, rotate the geopotential gradient by a right angle and divide by the Coriolis parameter to obtain the balanced wind (our own). At a given horizontal location, both levels use the same parameter (our own). Subtraction therefore gives a rotated thickness gradient divided by that parameter, tangent to the thickness contour (our own).
 
 **Wikipedia:** [Thermal wind](https://en.wikipedia.org/wiki/Thermal_wind). It says: “the thermal wind flows along thickness or temperature contours”
 
@@ -204,11 +204,11 @@
 
 *True by definition.* MSC 86A05 (Hydrology, hydrography, oceanography). arXiv physics.geo-ph. Level 4: research.
 
-**Definition.** In the Horton–Strahler order of a binary river tree, headwaters have order one. At a junction the order is the larger incoming order, plus one if the two orders are equal. The ratio T(i, j), for i &lt; j, is the expected number of order-i side branches joining order-j branches, divided by the expected number of order-j branches.
+**Definition.** Headwaters have order one in a binary river tree. A junction takes the larger incoming order, adding one if the orders match. For i &lt; j, divide the expected count of order-i side branches entering order-j branches by the expected count of order-j branches to obtain T(i,j).
 
-**Problem.** Pruning removes the headwaters and joins segments left with one input. For a coordinated random tree, where T(i, j) does not depend on the maximum order, the ratios are unchanged by pruning exactly when they depend only on j − i.
+**Problem.** Pruning removes headwaters and joins segments left with one input. Assume the ratios T(i,j) are independent of maximum tree order whenever defined. Pruning preserves these ratios exactly when they depend only on j − i.
 
-**How the definition helps.** The order gap stays the same when pruning lowers each surviving order by one (our own). Thus the expected counts are invariant exactly when they are constant along each diagonal of the table of counts (our own). The work is to prove the order shift and use coordination to identify the table entries across tree sizes (our own).
+**How the definition helps.** Pruning lowers both surviving branch orders by one, so the pruned ratio at (i,j) equals the original ratio at (i+1,j+1) (our own). Coordination lets us compare these ratios across tree orders (our own). Invariance thus means the ratios are constant along each diagonal, indexed by j − i (our own).
 
 **Paper or page:** [Critical Tokunaga model for river networks](https://arxiv.org/abs/2106.02991v1). It says: “the Toeplitz property Tᵢ,ᵢ₊ₖ = Tₖ and Horton prune-invariance”
 
@@ -223,7 +223,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 86A05 (Hydrology, hydrography, oceanography), 65M08. arXiv physics.ao-ph. Level 4: research.
 
-**Definition.** For shallow water over a fixed bed, discharge per unit width is q = hu, and total head is E = u²/2 + g(h + b). Here h is depth, u velocity, b bed height and g gravity. The scheme reconstructs the flow from q and E instead of from depth and velocity.
+**Definition.** For water depth h and velocity u, discharge per unit width is q = hu. With bed height b and gravitational acceleration g, the scheme uses the energy per unit mass E = u²/2 + g(h + b). It reconstructs flow from q and E.
 
 **Problem.** In the paper's frictionless schemes for one-dimensional flow of positive depth, suppose q and E are constant across all cell and point data. Then every stored value has zero time derivative.
 
@@ -239,7 +239,7 @@
 
 **Remember:** Fix density and forbid hollow domains before asking gravity to identify a shape.
 
-*Rules out counterexamples.* MSC 86A22 (Inverse problems in geophysics). arXiv physics.geo-ph. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 86A22 (Inverse problems in geophysics). arXiv physics.geo-ph. Level 4: research.
 
 **Definition.** A density contrast is the difference between a body's density and the background density. The unknown body D lies in a known bounded region Ω whose closure has connected exterior. D is convex with piecewise smooth boundary, and its contrast f is known, integrable and positive on Ω.
 

@@ -54,11 +54,11 @@
 
 *Rules out counterexamples.* MSC 34A12 (Initial value problems, existence, uniqueness, continuous dependence and continuation of solutions to ordinary differential equations), 26A16. arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** A function f(t, y) is Lipschitz in y when there is a constant L with \|f(t, y₁) − f(t, y₂)\| ≤ L\|y₁ − y₂\|. The constant L does not depend on t.
+**Definition.** On a rectangle around (t₀,y₀), f is Lipschitz in y if one L≥0 satisfies \|f(t,y₁)−f(t,y₂)\|≤L\|y₁−y₂\| for every t,y₁,y₂ in the respective intervals.
 
 **Problem.** If f is continuous and Lipschitz in y, the initial value problem y′ = f(t, y), y(t₀) = y₀ has exactly one solution near t₀.
 
-**How the definition helps.** The Lipschitz condition makes the Picard integral operator a contraction on a short time interval, and the Banach fixed-point theorem gives exactly one fixed point. Without it uniqueness fails, because y²ᐟ³ is not Lipschitz near 0. For a ≠ 0, y′ = a y²ᐟ³ with y(0) = 0 has the solution y = 0. It also has the solution equal to (at/3)³ for t &lt; 0 and 0 for t ≥ 0. The result is only local: y′ = 1 + y² with y(0) = 0 has the solution tan t only for \|t\| &lt; π/2 (our own example).
+**How the definition helps.** On a sufficiently short interval, the Picard operator maps a closed ball of continuous functions into itself with contraction factor below one (our own argument). Banach’s fixed-point theorem gives local existence and uniqueness. Without the Lipschitz bound, y′=y²ᐟ³ admits both y=0 and y=(t/3)³ through (0,0).
 
 **Wikipedia:** [Picard–Lindelöf theorem](https://en.wikipedia.org/wiki/Picard%E2%80%93Lindel%C3%B6f_theorem). It says: “The uniqueness theorem does not apply because the derivative of the function f(y) = y²ᐟ³ is not bounded in the neighborhood of y = 0 and therefore it is not Lipschitz continuous, violating the hypothesis of the theorem.”
 
@@ -166,11 +166,11 @@
 
 *Rules out counterexamples.* MSC 34A05 (Explicit solutions, first integrals of ordinary differential equations), 34A12. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** A Riccati equation is a first-order equation dy/dt = a₀(t) + a₁(t) y + a₂(t) y². Its solutions may take values in the projective line ℝP¹ or ℂP¹, not only in the line ℝ or ℂ. The projective line is the line with one extra point at infinity.
+**Definition.** A projective Riccati equation uses the coordinate y=u/v on lines \[u:v\], with \[1:0\] representing infinity. In the finite chart it reads y′=a₀+a₁y+a₂y². In the other chart w=v/u it reads w′=−a₂−a₁w−a₀w².
 
 **Problem.** If the coefficients are continuous for all t, every solution with values in the projective line exists for all time. It depends on the initial value through a fractional linear map y(t) = (A(t)y(0) + B(t))/(C(t)y(0) + D(t)).
 
-**How the definition helps.** On the projective line the point at infinity is an ordinary point, so a blow-up only passes through it and the solution continues. On the ordinary line, dy/dt = 1 + y² gives y = tan t, which blows up in finite time. The equation is the projective form of a linear 2 × 2 system, whose solutions exist for all time (our own). So the flow acts by fractional linear maps, as linear equations act by affine maps (our own).
+**How the definition helps.** The system u′=a₁u+a₀v, v′=−a₂u induces the Riccati equation on lines (our own calculation). Its fundamental matrix exists and is invertible at every real time, so it sends lines to lines by fractional linear maps. For y′=1+y², the affine solution tan t reaches infinity, where the coordinate w continues through zero.
 
 **nLab:** [Riccati equation](https://ncatlab.org/nlab/show/Riccati+equation). It says: “solutions of Riccati equations can blow up in finite time; however, these solutions become defined for all time if we let y take values in the projective line rather than the affine line”
 
@@ -250,9 +250,9 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 34A12 (Initial value problems, existence, uniqueness, continuous dependence and continuation of solutions to ordinary differential equations). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** An integral solution with starting value x₀ satisfies x(t) = x₀ + ∫₀ᵗ f(s,x(s)) ds. For continuous f this describes the same curves as x′ = f(t,x) with x(0) = x₀. Assume f changes by at most L times the distance between states at each fixed time.
+**Definition.** A continuous curve x on \[0,T\] is an integral solution with initial state x₀ if x(t)=x₀+∫₀ᵗ f(s,x(s)) ds for every t∈\[0,T\].
 
-**Problem.** Let x and y start at x₀ and y₀ with continuous right sides f and g on \[0,T\]. If ‖f − g‖ ≤ ε throughout their common domain, then ‖x(t) − y(t)‖ ≤ (‖x₀ − y₀‖ + εt)exp(Lt).
+**Problem.** Let x,y solve the equations with continuous right sides f,g and initial states x₀,y₀ on \[0,T\]. Assume f is uniformly L-Lipschitz in the state and ‖f−g‖≤ε on their common domain. Then ‖x(t)−y(t)‖≤(‖x₀−y₀‖+εt)exp(Lt) for every t∈\[0,T\].
 
 **How the definition helps.** The integral form puts the initial separation and the accumulated error in the same bound (our own argument). Fix t and let d(s) denote the separation at time s. For s ≤ t the triangle inequality gives d(s) ≤ ‖x₀ − y₀‖ + εt + L∫₀ˢ d(r) dr. Grönwall’s inequality gives the stated bound.
 
@@ -268,7 +268,7 @@
 
 *True by definition.* MSC 34A12 (Initial value problems, existence, uniqueness, continuous dependence and continuation of solutions to ordinary differential equations). arXiv math.DS, math.AP. Level 2: later undergraduate.
 
-**Definition.** Write b for the velocity field. It has forward one-sided Lipschitz bound L if (b(x) − b(y)) · (x − y) ≤ L\|x − y\|² for every pair. This bounds the component that increases separation, whereas an ordinary Lipschitz bound controls the entire velocity difference.
+**Definition.** A velocity field b on a Euclidean domain has forward one-sided Lipschitz bound L if (b(x)−b(y))·(x−y)≤L‖x−y‖² for all states x,y there.
 
 **Problem.** Two solutions satisfy \|x(t) − y(t)\| ≤ exp(Lt)\|x(0) − y(0)\| for forward times where both exist. In particular they cannot split from the same starting point.
 
@@ -322,7 +322,7 @@
 
 *True by definition.* MSC 34A25 (Analytical theory of ordinary differential equations: series, transformations, transforms, operational calculus, etc.), 34A30. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** In a factorial-scaled formal series, the term with index k is aₖtᵏ/k!. A formal series records the coefficients without requiring convergence.
+**Definition.** A factorial-scaled formal power series has the form ∑ₖ₌₀<sup>∞</sup> aₖtᵏ/k!, where aₖ is the kth formal derivative at zero. Equality means equality of every coefficient.
 
 **Problem.** Suppose p and q have Taylor series at zero. For y″ + py′ + qy = 0, each choice of a₀ and a₁ determines exactly one formal solution.
 
@@ -410,7 +410,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 34A30 (Linear ordinary differential equations and systems), 34A12. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** Fix a time s in the interval of a homogeneous linear equation, whose right side is zero. The initial-data map sends each solution to its value and its derivatives through order n − 1 at s.
+**Definition.** For a real homogeneous linear equation of order n≥1, fix a time s in its interval. The initial-data map sends each real solution y to the vector of its first n derivative values at s, starting with y(s) at order zero.
 
 **Problem.** For an equation of order n with continuous coefficients and leading coefficient one, the initial-data map is a linear bijection onto ℝⁿ. Thus the real solution space has dimension n.
 
@@ -422,7 +422,7 @@
 
 ### One Wronskian value tests independence
 
-**Remember:** For two solutions of one linear equation, a single Wronskian value is enough.
+**Remember:** Take the determinant of both solutions’ value-and-slope columns at one point.
 
 *Rules out counterexamples.* MSC 34A30 (Linear ordinary differential equations and systems). arXiv math.DS. Level 2: later undergraduate.
 
@@ -494,13 +494,13 @@
 
 **Remember:** Weight a bound by the inverse of its expected growth.
 
-*Makes the theorem clean to state or prove.* MSC 34A40 (Differential inequalities involving functions of a single real variable), 26D10. arXiv math.CA. Level 2: later undergraduate.
+*True by definition.* MSC 34A40 (Differential inequalities involving functions of a single real variable), 26D10. arXiv math.CA. Level 2: later undergraduate.
 
 **Definition.** For continuous b ≥ 0 on \[0,T\], define the integrating factor w(t) = exp(−∫₀ᵗ b(s) ds). It multiplies a function by the reciprocal of its expected growth.
 
 **Problem.** If u is differentiable and u′ ≤ bu, then wu ≤ u(0). If continuous u satisfies u(t) ≤ a + ∫₀ᵗ b(s)u(s) ds for constant a ≥ 0, then wu ≤ a.
 
-**How the definition helps.** The weight cancels the growth term because w′ = −bw. Thus (wu)′ ≤ 0 in the differential case. For the integral case, call the right side v and observe that v′ = bu ≤ bv. Applying the differential bound to v gives wu ≤ wv ≤ a.
+**How the definition helps.** The weight satisfies w′=−bw, so (wu)′≤0 in the differential case (our own calculation). For the integral inequality, call the right side v. Then u≤v and v′=bu≤bv since b≥0. Applying the differential bound to v gives wu≤wv≤v(0)=a.
 
 **Wikipedia:** [Grönwall's inequality](https://en.wikipedia.org/wiki/Gr%C3%B6nwall%27s_inequality). It says: “Thus the derivative of the function u(t)/v(t) is non-positive”
 
@@ -534,7 +534,7 @@
 
 **Definition.** A homogeneous Neumann condition for −(py′)′ fixes the flux py′ to zero at both endpoints. Normalize the solution by requiring its integral on the interval to be zero.
 
-**Problem.** Assume p is positive and continuously differentiable, and f is continuous on a finite interval. The normalized problem −(py′)′ = f has exactly one solution if the integral of f is zero, and none otherwise.
+**Problem.** Let p be positive and continuously differentiable and f continuous on a closed interval \[a,b\] with a&lt;b. The normalized Neumann problem −(py′)′=f has exactly one solution if ∫ₐᵇ f(x) dx=0, and none otherwise.
 
 **How the definition helps.** Zero endpoint flux forces the integral of f to vanish, excluding even the constant load f = 1. In our own proof, the flux at x is minus the integral of f from the left endpoint to x. Dividing by p and integrating gives y up to a constant. The zero-mean condition fixes that constant.
 
@@ -544,7 +544,7 @@
 
 ### A shooting residual exposes the condition for a resonant load
 
-**Remember:** At resonance the missing endpoint condition becomes a test on the load.
+**Remember:** Shoot from zero with adjustable initial flux and read the value at the far endpoint.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 34B24 (Sturm-Liouville theory), 34B05. arXiv math.CA. Level 2: later undergraduate.
 
@@ -564,7 +564,7 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 34B24 (Sturm-Liouville theory), 34L15. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** For −(py′)′ + qy = λwy, the Rayleigh quotient divides the integral of p(y′)² + qy² by the integral of wy². Mixed trial functions vanish at the left endpoint. Dirichlet trial functions also vanish at the right endpoint.
+**Definition.** For a regular problem on \[a,b\], mixed trial functions belong to H¹(\[a,b\]) and vanish at a. Dirichlet trial functions also vanish at b. For nonzero real trial functions y, the Rayleigh quotient is ∫(p(y′)² + qy²) divided by ∫wy², with both integrals over \[a,b\].
 
 **Problem.** For a regular Sturm–Liouville problem, the nth Dirichlet eigenvalue lies strictly between mixed eigenvalues n and n + 1. The mixed conditions impose zero left value and zero right flux py′.
 
@@ -599,11 +599,11 @@
 
 *Rules out counterexamples.* MSC 34B24 (Sturm-Liouville theory), 34B09. arXiv math.CA, math.SP. Level 2: later undergraduate.
 
-**Definition.** A Sturm–Liouville problem is the equation (p y′)′ + q y = −λ w y on an interval. It is regular if the interval \[a, b\] is finite, p, p′, q and w are continuous, and p &gt; 0 and w &gt; 0. It also needs one separated boundary condition at each end: α₁ y(a) + α₂ y′(a) = 0 and β₁ y(b) + β₂ y′(b) = 0.
+**Definition.** Consider (py′)′ + qy = −λwy on a finite closed interval, with p, p′, q and w real and continuous and p,w positive. Regular separated conditions impose one nontrivial real homogeneous linear relation on y and y′ at each endpoint independently.
 
 **Problem.** For a regular problem, the eigenvalues are real, simple and increase to infinity. The normalized eigenfunctions form an orthonormal basis of the weighted L² space on \[a, b\].
 
-**How the definition helps.** The regularity conditions make the resolvent of the operator compact and self-adjoint, so the spectral theorem for compact operators applies (our own). Separated conditions make each eigenvalue simple, because only one solution up to a constant meets the condition at a (our own). The conditions exclude singular problems. For example, −y″ = λy on \[0, ∞) with y(0) = 0 has no square-integrable eigenfunctions, and its spectrum is the continuous set \[0, ∞) (our own).
+**How the definition helps.** The finite interval excludes the Dirichlet half-line example −y″ = λy, whose spectrum is purely continuous (our own). Regular separated conditions give a lower bound and a compact self-adjoint resolvent below the spectrum (our own). The compact spectral theorem gives completeness and divergence of the eigenvalues to infinity (our own). Initial value uniqueness makes each eigenspace one-dimensional (our own).
 
 **Wikipedia:** [Sturm–Liouville theory](https://en.wikipedia.org/wiki/Sturm%E2%80%93Liouville_theory). It says: “If the interval is unbounded, or if the coefficients have singularities at the boundary points, one calls L singular. In this case, the spectrum no longer consists of eigenvalues alone and can contain a continuous component.”
 
@@ -669,7 +669,7 @@
 
 *True by definition.* MSC 34B27 (Green's functions for ordinary differential equations), 34B05. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** On \[−π,π\], the Dirichlet Green function G(x,s) gives the response at x to a unit source at s with zero endpoint values. It is continuous at s and linear on each side. Its slope drops by one at s.
+**Definition.** For each interior source s on \[−π,π\], the Dirichlet Green function for −d²/dx² is continuous and piecewise linear in x. It vanishes at both endpoints, is linear on each side of s, and its right slope minus its left slope equals −1.
 
 **Problem.** For continuous f, the unique solution of −y″ = f with zero endpoint values is the integral of G(x,s)f(s) over s.
 
@@ -717,7 +717,7 @@
 
 **Remember:** A trajectory cannot spiral into an energy curve without sharing its energy.
 
-*Rules out counterexamples.* MSC 34C05 (Topological structure of integral curves, singular points, limit cycles of ordinary differential equations). arXiv math.DS. Level 2: later undergraduate.
+*True by definition.* MSC 34C05 (Topological structure of integral curves, singular points, limit cycles of ordinary differential equations). arXiv math.DS. Level 2: later undergraduate.
 
 **Definition.** A first integral is a continuously differentiable function H that stays constant on each trajectory. A regular level has nonzero gradient at each point under consideration. A limit cycle is a periodic orbit that another trajectory approaches in forward or backward time.
 
@@ -755,7 +755,7 @@
 
 **Problem.** A continuously differentiable autonomous planar field with such a weight on a simply connected open region has no nonconstant periodic orbit entirely inside it.
 
-**How the definition helps.** The weight gives the divergence a strict sign, while the weighted field stays tangent to any closed orbit. So the outward flux across the orbit is zero, while Green’s theorem makes it the nonzero integral of the divergence inside (our own). Simple connectedness keeps that interior in the region. On an annulus, take radial speed r − 1 and angular speed one (our own). The divergence 2 − 1/r is positive for r &gt; ½, yet the unit circle is periodic.
+**How the definition helps.** A strict divergence sign gives nonzero total divergence inside any proposed cycle, whose interior lies in the simply connected region. The weighted field is tangent along the cycle, so Green’s theorem gives zero total divergence instead (our own). On the annulus r &gt; ½, radial speed r − 1 and angular speed one give divergence 2 − 1/r &gt; 0. The unit circle is periodic there (our own).
 
 **Wikipedia:** [Bendixson–Dulac theorem](https://en.wikipedia.org/wiki/Bendixson%E2%80%93Dulac_theorem). It says: “has the same sign (≠ 0) almost everywhere in a simply connected region of the plane”
 
@@ -785,9 +785,9 @@
 
 *Makes the theorem clean to state or prove.* MSC 34C05 (Topological structure of integral curves, singular points, limit cycles of ordinary differential equations), 34C23. arXiv math.DS. Level 2: later undergraduate.
 
-**Definition.** In the complex equation z′ = (μ + i − \|z\|²)z, the real number μ is a parameter. The polar coordinates of a nonzero state z are its distance r from zero and its angle.
+**Definition.** For nonzero complex z, its polar radius is r = \|z\|. Its angle θ modulo 2π satisfies z = r(cos θ + i sin θ).
 
-**Problem.** For μ &gt; 0 this normal form has just one nonconstant periodic orbit, a stable circle of radius √μ. For μ ≤ 0 it has no nonconstant periodic orbit.
+**Problem.** For z′ = (μ + i − \|z\|²)z with real μ &gt; 0, the only nonconstant periodic orbit is a stable circle of radius √μ. For μ ≤ 0 there is no nonconstant periodic orbit.
 
 **How the definition helps.** The radius satisfies the scalar equation r′ = r(μ − r²), and the angle increases at speed one. In our own proof, a periodic orbit needs a constant positive radius because every other radius moves monotonically. For μ &gt; 0 the speed points toward √μ on both sides. For μ ≤ 0 every positive radius decreases.
 
@@ -813,7 +813,7 @@
 
 ### Turning along the boundary adds the enclosed equilibrium indices
 
-**Remember:** The cuts are crossed twice in opposite directions, so their turns cancel.
+**Remember:** Count direction turns along the boundary, using a small circle for each isolated zero.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 34C05 (Topological structure of integral curves, singular points, limit cycles of ordinary differential equations). arXiv math.DS. Level 2: later undergraduate.
 
@@ -837,7 +837,7 @@
 
 **Problem.** If p is positive and continuously differentiable and q is real and continuous, one positive solution makes the equation disconjugate on its interval. This means each nonzero real solution has at most one zero there.
 
-**How the definition helps.** Dividing by the positive solution preserves zeros and turns the second-order equation into a sign test for the quotient’s derivative. In our own proof, subtracting z times the equation for u from the equation for uz gives (pu²z′)′ = 0. Thus z is constant or strictly monotone, and a nonzero solution cannot vanish twice.
+**How the definition helps.** Dividing by the positive solution preserves every zero. In our own proof, substitute y = uz and subtract z times the equation for u. Multiplication by u gives (pu²z′)′ = 0. Thus z is constant or strictly monotone, so a nonzero solution cannot vanish twice.
 
 **Paper or page:** [Strict domain monotonicity of the principal eigenvalue and a characterization of lower boundedness for the Friedrichs extension of four-coefficient Sturm-Liouville operators](https://arxiv.org/abs/2201.05948v2). It says: “There exists a strictly positive solution”
 
@@ -853,7 +853,7 @@
 
 **Definition.** Let u solve u″ + au = 0 and let v solve v″ + bv = 0. The comparison Wronskian is W = uv′ − u′v. The coefficients a and b are continuous.
 
-**Problem.** If b &gt; a, every nonzero solution v has a zero strictly between any two consecutive zeros of a nonzero solution u.
+**Problem.** For real solutions and real continuous coefficients with b &gt; a throughout the interval, every nonzero v vanishes between consecutive zeros of nonzero u.
 
 **How the definition helps.** The Wronskian displays the strict coefficient order in the identity W′ = (a − b)uv. In our own proof, if v has no interior zero, choose signs so both solutions are positive between the consecutive zeros of u. Then W decreases, but the endpoint slopes require its value to go from nonpositive to nonnegative. For equal coefficients, u = v = sin x has no zero between 0 and π.
 
@@ -953,11 +953,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 34D20 (Stability of solutions to ordinary differential equations), 37C75. arXiv math.DS, math.CA. Level 2: later undergraduate.
 
-**Definition.** An equilibrium is Lyapunov stable if solutions that start near it stay near it for all later time. It is attractive if solutions that start near it converge to it. It is asymptotically stable if it is both stable and attractive.
+**Definition.** An equilibrium is stable if every neighborhood contains a smaller neighborhood whose trajectories stay in the first for all future time. It attracts locally if every trajectory starting in some neighborhood converges to it. Asymptotic stability requires both properties.
 
-**Problem.** Lyapunov's direct method says that a strict Lyapunov function near an equilibrium makes it asymptotically stable. Massera's converse theorem says that every asymptotically stable equilibrium of a smooth enough system has such a function (our own).
+**Problem.** For a smooth autonomous field on ℝⁿ, a strict local Lyapunov function implies asymptotic stability by Lyapunov’s direct method. Massera’s converse theorem gives such a function at every asymptotically stable equilibrium (our own).
 
-**How the definition helps.** The stability clause rules out equilibria that attract every orbit only after a large excursion. In Vinograd’s planar system of 1957, all orbits tend to the origin, but some that start very close first go far away (our own). A strict Lyapunov function traps orbits in small level sets and forbids this, so without the stability clause the converse theorem would be false (our own). The hard part is building the Lyapunov function in Massera’s theorem.
+**How the definition helps.** Stability excludes trajectories that start arbitrarily close but travel far before converging. Vinograd’s planar example has exactly these excursions despite attraction to the origin (our own). Small sublevels of a strict Lyapunov function prevent such excursions (our own). Massera’s converse theorem supplies the function when both stability and attraction hold (our own).
 
 **Wikipedia:** [Lyapunov stability](https://en.wikipedia.org/wiki/Lyapunov_stability). It says: “There are examples showing that attractivity does not imply asymptotic stability.”
 
@@ -970,11 +970,11 @@
 
 **Remember:** An orbit below the boundary’s lowest value cannot reach the boundary.
 
-*Rules out counterexamples.* MSC 34D20 (Stability of solutions to ordinary differential equations). arXiv math.DS. Level 2: later undergraduate.
+*True by definition.* MSC 34D20 (Stability of solutions to ordinary differential equations). arXiv math.DS. Level 2: later undergraduate.
 
 **Definition.** A local Lyapunov function V is continuously differentiable, zero at the equilibrium, and positive at other nearby points. Its value does not increase along nearby solutions.
 
-**Problem.** An equilibrium of a continuously differentiable field is stable if it has a local Lyapunov function. This means every sufficiently close initial point stays close for all future time.
+**Problem.** An equilibrium of a continuously differentiable field on an open subset of ℝⁿ is Lyapunov stable if it has a local Lyapunov function.
 
 **How the definition helps.** A nonincreasing Lyapunov value prevents a solution from reaching a sphere where every value is higher. In our own proof, the function has a positive minimum on each sufficiently small sphere. Continuity puts all sufficiently close starting points below that minimum. The trapped solutions stay in a compact ball, so they exist for all future time.
 
@@ -1016,15 +1016,15 @@
 
 ### Radially unbounded Lyapunov functions make asymptotic stability global
 
-**Remember:** Level sets must close up, or orbits slide off to infinity.
+**Remember:** When V grows without bound at infinity, every sublevel traps its trajectories.
 
 *Rules out counterexamples. Confidence: medium.* MSC 34D23 (Global stability of solutions to ordinary differential equations), 34D20, 93D30. arXiv math.DS, math.OC. Level 2: later undergraduate.
 
 **Definition.** A function V on ℝⁿ is radially unbounded if V(x) → ∞ whenever ‖x‖ → ∞. Then every sublevel set {V ≤ c} is bounded, and so compact if V is continuous (our own).
 
-**Problem.** Let V be positive definite, radially unbounded, and strictly decreasing along solutions away from the equilibrium. Then the equilibrium is globally asymptotically stable, so it attracts every starting point (the Barbashin–Krasovskii theorem).
+**Problem.** Consider a continuously differentiable autonomous field on ℝⁿ with equilibrium zero. A continuously differentiable, positive definite, radially unbounded V that strictly decreases along every nonstationary trajectory implies global asymptotic stability if zero is the sole equilibrium.
 
-**How the definition helps.** Radial unboundedness makes each sublevel set of V compact, so a solution that starts in it stays in a compact set. Then the local argument works everywhere. Without it, V can decrease along an orbit that runs off to infinity (our own). The page’s example f₂ = r²/(1 + r²) + (x₁ − x₂)², with r² = x₁² + x₂², is positive definite but stays below 1 on the line x₁ = x₂. So each sublevel set {f₂ ≤ c} with c ≥ 1 is unbounded, and a solution can escape inside it (our own).
+**How the definition helps.** Radial unboundedness makes every closed sublevel compact, and decrease keeps trajectories inside for all future time. The Barbashin–Krasovskii theorem gives global asymptotic stability (our own). For r² = x₁² + x₂², the positive definite function r²/(1 + r²) + (x₁ − x₂)² stays below one along the diagonal. Its unit sublevel therefore cannot supply the same bounded trap (our own).
 
 **Wikipedia:** [Radially unbounded function](https://en.wikipedia.org/wiki/Radially_unbounded_function), [Lyapunov function](https://en.wikipedia.org/wiki/Lyapunov_function), [LaSalle's invariance principle](https://en.wikipedia.org/wiki/LaSalle%27s_invariance_principle). It says: “are not radially unbounded since along the line x₁ = x₂, the condition is not verified even though the second function is globally positive definite.”
 
@@ -1052,7 +1052,7 @@
 
 *Rules out counterexamples.* MSC 34A12 (Initial value problems, existence, uniqueness, continuous dependence and continuation of solutions to ordinary differential equations). arXiv math.DS. Level 3: graduate.
 
-**Definition.** Bound differences in velocity by μ(r), where r is the distance between states. Use a continuous nondecreasing μ with μ(0) = 0 and μ(r) &gt; 0 for r &gt; 0. It is an Osgood modulus if the integral of 1/μ(r) diverges at zero.
+**Definition.** An Osgood modulus is continuous and nondecreasing on \[0,∞), vanishes at zero, and is positive elsewhere. Its reciprocal has divergent integral near zero. It bounds f if ‖f(t,x) − f(t,y)‖ ≤ μ(‖x − y‖) for all states x,y at each common time t, where μ denotes the modulus.
 
 **Problem.** For a continuous differential equation with this bound, two solutions with the same initial state agree forward wherever both exist.
 
@@ -1074,7 +1074,7 @@
 
 **Problem.** For continuous pairwise commuting coefficients, the evolution from time zero is exp(∫₀ᵗ A(s) ds).
 
-**How the definition helps.** Pairwise commutation lets A(t) commute with its integral, so the scalar rule for differentiating the exponential applies. Differentiation and the identity initial value then identify the evolution matrix by uniqueness (our own). Without commutation it fails: apply a smooth pulse of integral one times the matrix whose only nonzero entry is 1 at (1,2), then one times its transpose. The evolution matrix has diagonal entries 1 and 2, but the exponential of the integrated coefficient has equal diagonal entries (our own).
+**How the definition helps.** Pairwise commutation lets A(t) commute with its integral, so differentiation gives the equation and the identity initial value (our own). For a counterexample, take a smooth pulse of integral one times the matrix E whose only nonzero entry is E₁₂ = 1. Follow it with a disjoint pulse of integral one times its transpose. Evolution then has diagonal entries 1 and 2, while the exponential of the integral has equal diagonal entries (our own).
 
 **Wikipedia:** [Magnus expansion](https://en.wikipedia.org/wiki/Magnus_expansion). It says: “In the general case, however, the expression above is no longer the solution of the problem.”
 
@@ -1092,7 +1092,7 @@
 
 **Problem.** For a continuous real matrix A(t), the exterior product of k solutions of x′ = A(t)x solves the linear equation with the kth additive compound. Its Euclidean norm equals the volume of the parallelepiped spanned by the solutions.
 
-**How the definition helps.** The additive compound puts the product rule directly into the coefficient matrix for oriented volumes. In our own comparison, tracking every determinant of k selected coordinates separately requires differentiating each of its columns. Exterior products collect those determinants into one vector. The work of estimating its growth remains.
+**How the definition helps.** The product rule for the exterior product differentiates each solution in turn, giving exactly the additive compound equation. In our own proof, the squared exterior norm equals the Gram determinant, which gives the squared volume of the parallelepiped.
 
 **Paper or page:** [Compound matrices in systems and control theory](https://arxiv.org/abs/2103.15097v1). It says: “\\frac{d}{dt} \\Phi<sup>(k)</sup>(t)=A<sup>\[k\]</sup>(t) \\Phi<sup>(k)</sup>(t)”
 
@@ -1148,7 +1148,7 @@
 
 **Problem.** Carathéodory’s theorem: let f be continuous in y, measurable in t, and bounded near (t₀, y₀) by an integrable function of t. Then the initial value problem has a solution in the extended sense near t₀.
 
-**How the definition helps.** The extended definition asks for the equation only almost everywhere, so f need not be continuous in t. For y′ = H(t), with H the Heaviside step, the ramp function (0 for t &lt; 0, t for t ≥ 0) is a solution in the extended sense. It is not a classical solution, since it has a corner at 0. Peano’s theorem for continuous f becomes a special case. Uniqueness again needs a Lipschitz-type bound, now with an integrable constant k(t).
+**How the definition helps.** An almost-everywhere equation permits isolated times when the derivative fails to exist. For the Heaviside step H, the function max(t,0) satisfies y′ = H(t) away from zero and is absolutely continuous (our own). Carathéodory’s existence theorem supplies a solution under the stated measurability, continuity and integral bound (our own).
 
 **Wikipedia:** [Carathéodory's existence theorem](https://en.wikipedia.org/wiki/Carath%C3%A9odory%27s_existence_theorem). It says: “This suggests that the idea of a solution be extended to allow for solutions that are not everywhere differentiable, thus motivating the following definition.”
 
@@ -1160,11 +1160,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 34A60 (Ordinary differential inclusions), 34A36. arXiv math.CA, math.DS. Level 3: graduate.
 
-**Definition.** Filippov replaces x′ = f(x), for a locally bounded f, by the inclusion x′ ∈ F(x). Here F(x) is the closed convex hull of the values of f near x, ignoring sets of measure zero (our own). A Filippov solution is an absolutely continuous function that satisfies the inclusion at almost every time.
+**Definition.** For each radius r &gt; 0 and null set N, take the closed convex hull of f(B(x,r) ∖ N). Intersect all these hulls to obtain F(x) (our own). A Filippov solution is an absolutely continuous path satisfying x′(t) ∈ F(x(t)) almost everywhere.
 
-**Problem.** For locally bounded measurable f, a Filippov solution exists near every initial point. For x′ = −1 when x &gt; 0 and x′ = 1 when x ≤ 0, no Carathéodory solution has x(0) = 0, but x ≡ 0 is a Filippov solution (our own).
+**Problem.** Every locally bounded measurable field on ℝⁿ admits a local Filippov solution from each initial point. Take f(x) = −1 for x &gt; 0 and f(x) = 1 otherwise. From zero, x′ = f(x) has no forward Carathéodory solution, while x ≡ 0 is a Filippov solution (our own).
 
-**How the definition helps.** At the switching point, the convex hull contains both side values and all averages of them, including 0. So x ≡ 0 is a solution that slides along the surface (our own). Filippov’s construction gives exactly the closed convex values that the existence theorem for inclusions needs (our own). Convexity is the key condition: existence for non-convex F is still an active research area. Uniqueness is not automatic and needs extra conditions (our own).
+**How the definition helps.** At zero the essential values −1 and 1 give F(0) = \[−1,1\], which permits the constant path (our own). A Carathéodory solution could enter neither half-line from zero because its velocity there points back toward zero (our own). Staying at zero violates f(0) = 1 (our own). The differential inclusion existence theorem applies because F is upper semicontinuous and locally bounded with nonempty compact convex values (our own).
 
 **Wikipedia:** [Differential inclusion](https://en.wikipedia.org/wiki/Differential_inclusion). It says: “Differential inclusions can be used to understand and suitably interpret discontinuous ordinary differential equations, such as arise for Coulomb friction in mechanical systems and ideal switches in power electronics.”
 
@@ -1178,11 +1178,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 34B24 (Sturm-Liouville theory), 47E05. arXiv math.CA, math.SP. Level 3: graduate.
 
-**Definition.** Take a Sturm–Liouville expression τu = (−(pu′)′ + qu)/r on an interval (a, b) whose endpoints may be singular. At an endpoint in the limit circle case, every solution of τu = λu is square integrable near that endpoint. In the limit point case, for non-real λ, only a one-dimensional space of solutions is.
+**Definition.** Consider τu = (−(pu′)′ + qu)/r with real coefficients, p,r positive almost everywhere and 1/p,q,r locally integrable. For each nonreal λ, count independent solutions of τu = λu square integrable near the endpoint with weight r. Two means limit circle and one means limit point.
 
 **Problem.** The deficiency indices of the minimal operator are 2, 1 or 0 when both, one or neither endpoint is in the limit circle case. So the operator is self-adjoint with no boundary conditions at all exactly when both endpoints are in the limit point case.
 
-**How the definition helps.** The definition counts the square-integrable solutions at each endpoint, and the theorem shows that this count is the number of boundary conditions needed. In the limit point case, the Wronskian boundary term of any two functions in the maximal domain vanishes, so no condition is needed there. For −u″ + cx⁻²u on (0, ∞), the solutions near 0 are powers of x, and 0 is limit point exactly when c ≥ 3/4 (our own). The hard part is Weyl’s alternative, that the case is the same for every λ (our own).
+**How the definition helps.** Each limit-circle endpoint contributes one to each deficiency index, by Weyl’s endpoint theory (our own). At a limit-point endpoint the boundary form vanishes throughout the maximal domain, so that endpoint needs no boundary condition. The closed minimal operator is self-adjoint exactly when both deficiency indices vanish (our own).
 
 **Paper or page:** [The Jacobi operator on (−1,1) and its various m-functions](https://arxiv.org/abs/2307.12164v1), [On Sesquilinear Forms for Lower Semibounded (Singular) Sturm-Liouville Operators](https://arxiv.org/abs/2509.07205v1). It says: “In particular, Tₘᵢₙ = Tₘₐₓ is self-adjoint (i.e., Ṫₘᵢₙ is essentially self-adjoint) if and only if τ is in the limit point case at a and b.”
 
@@ -1248,7 +1248,7 @@
 
 *Rules out counterexamples.* MSC 34C45 (Invariant manifolds for ordinary differential equations), 34D10. arXiv math.DS. Level 3: graduate.
 
-**Definition.** A normally hyperbolic invariant manifold is carried onto itself by the flow, and the linearized flow along it preserves a splitting into tangent, stable and unstable directions. Stable directions contract forward in time, and unstable directions contract backward. Each contraction is uniformly exponential and dominates any tangent contraction in the same time direction.
+**Definition.** Along a normally hyperbolic invariant manifold, the linearized flow preserves a continuous splitting into tangent, stable and unstable bundles. Write S,T for the stable and tangent maps over time t ≥ 0. Uniform constants C,c &gt; 0 bound both ‖S‖ and ‖S‖‖T⁻¹‖ by Ce⁻ᶜᵗ, with identical bounds for unstable and tangent maps backward in time.
 
 **Problem.** A compact normally hyperbolic invariant manifold without boundary for a smooth flow persists as a nearby invariant manifold under sufficiently small continuously differentiable perturbations.
 
@@ -1268,7 +1268,7 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 34D09 (Dichotomy, trichotomy of solutions to ordinary differential equations), 34A30. arXiv math.DS, math.CA. Level 3: graduate.
 
-**Definition.** For x′ = A(t)x, let U(t,s) carry states from s to t. An exponential dichotomy gives complementary projections P(s) and Q(s) whose ranges travel with the flow. With fixed constants K, α &gt; 0, ‖U(t,s)P(s)‖ ≤ K exp(−α\|t − s\|) for t ≥ s, and ‖U(t,s)Q(s)‖ obeys the same bound for t ≤ s.
+**Definition.** An exponential dichotomy for evolution U(t,s) consists of complementary projections P(s), Q(s) whose ranges U(t,s) carries onto their counterparts at t. Some K,α &gt; 0 satisfy ‖U(t,s)P(s)‖ ≤ K exp(−α(t−s)) for all t ≥ s. For all t ≤ s they satisfy ‖U(t,s)Q(s)‖ ≤ K exp(−α(s−t)).
 
 **Problem.** Suppose x′ = A(t)x has an exponential dichotomy on the whole real line, with A continuous. For every bounded continuous f, the equation x′ = A(t)x + f(t) has exactly one bounded solution there.
 
@@ -1336,7 +1336,7 @@
 
 **Definition.** A contraction metric gives each tangent vector a length that can depend on its base point. The derivative of the flow carries each vector along its solution. After time t ≥ 0, each transported length is at most exp(−ct) times its initial length for one common c &gt; 0.
 
-**Problem.** In a connected open region that every forward solution stays in, measure distance by the infimum of lengths of piecewise smooth connecting paths inside the region. After time t, the distance between two solutions is at most exp(−ct) times their initial distance.
+**Problem.** Assume a differentiable forward flow preserves a connected open region with a contraction metric. Use the infimum of lengths of piecewise smooth connecting paths in the region as distance. After time t ≥ 0, the distance between two solutions is at most exp(−ct) times their initial distance.
 
 **How the definition helps.** Measuring distance by path length lets the tangent bound apply along every connecting path. In our own proof, push a path forward and integrate its tangent lengths. Taking the infimum over initial paths gives the distance bound without requiring a shortest path. Finding the contraction metric remains a separate problem.
 
@@ -1404,7 +1404,7 @@
 
 **Problem.** Let a continuous function have a continuous Caputo derivative of order α. For 0 &lt; β &lt; α &lt; 1, applying orders β then α − β gives order α.
 
-**How the definition helps.** Subtracting the initial value lets fractional integration recover f(t) − f(a) from the continuous derivative (our own). Fractional integrals add orders, so the order-β derivative is the order-(α − β) integral of the order-α derivative (our own). That integral vanishes at a, so the remaining Caputo derivative cancels it (our own). Without endpoint continuity, take f(t) = tᵝ on \[0,1\]: its order-β derivative is constant, while its order-α derivative grows without bound near zero (our own).
+**How the definition helps.** Fractional integration recovers f − f(a) from its continuous order-α derivative (our own). Adding integral orders expresses the order-β derivative as the order-(α − β) integral of that derivative (our own). This integral vanishes at a, so the remaining Caputo derivative cancels it (our own). For f(t) = tᵝ on \[0,1\], composition gives zero, while the order-α derivative diverges at zero (our own).
 
 **Paper or page:** [Semigroup property of fractional differential operators and its applications](https://arxiv.org/abs/2107.08914v1). It says: “Moreover, ᶜDₐ⁽ᵅ⁻ᵝ⁾f₁ = ᶜDₐᵅf”
 
@@ -1458,7 +1458,7 @@
 
 **Problem.** In a totally positive system, the number of sign changes in a nonzero solution cannot increase when zero entries are skipped.
 
-**How the definition helps.** Positive minors let the matrix theorem on sign changes apply at every forward step, and that theorem supplies the main proof. Positive entries alone are not enough: take the constant matrix with rows (0,1,1), (1,0,1) and (2,1,0), whose exponential has positive entries at every positive time (our own). From (1,−1,0), the third component starts with derivative 1. The signs become +, −, +, so one sign change becomes two (our own).
+**How the definition helps.** The variation-diminishing theorem for totally positive matrices applies to the evolution matrix on every forward interval. Positive entries alone allow the constant coefficient matrix with rows (0,1,1), (1,0,1) and (2,1,0), whose forward exponential has positive entries (our own). Starting at (1,−1,0), the third component has derivative one. The signs become +, −, +, increasing the count from one to two (our own).
 
 **Paper or page:** [Behavior of Totally Positive Differential Systems Near a Periodic Solution](https://arxiv.org/abs/2101.06027v1). It says: “Then s⁺(Ax) ≤ s⁻(x) for all x ∈ ℝⁿ ∖ {0}.”
 
@@ -1472,9 +1472,9 @@
 
 *True by definition.* MSC 34L40 (Particular ordinary differential operators (Dirac, one-dimensional Schrödinger, etc.)), 47B25, 47A07. arXiv math.SP, math.FA. Level 4: research.
 
-**Definition.** The potential q is a real 1-periodic distribution in the Sobolev space H⁻¹, such as a periodic sum of Dirac deltas. H⁻¹ is the dual of H¹, the space of functions with a square-integrable derivative. The form-sum operator is the self-adjoint operator given by the quadratic form ∫\|u′\|² + ⟨q, \|u\|²⟩ on H¹(ℝ).
+**Definition.** Let q be a real periodic distribution in H⁻¹ on the unit circle, extended periodically to ℝ. On H¹(ℝ) define the energy form h\[u\] = ∫\|u′\|² + ⟨q,\|u\|²⟩ using this extension. Its form-sum operator is the operator associated with h by the representation theorem.
 
-**Problem.** For a real 1-periodic potential q in H⁻¹, the form-sum operator for −u″ + qu on L²(ℝ) is self-adjoint and bounded below. The paper shows that five basic definitions of this operator, including the quasi-differential one, all agree.
+**Problem.** For real 1-periodic q in periodic H⁻¹, the form-sum operator for −u″ + qu on L²(ℝ) is self-adjoint and bounded below. The five definitions, including the quasi-differential definition, agree.
 
 **How the definition helps.** With the form definition, self-adjointness and a lower bound come from the representation theorem for closed forms that are bounded below. The real step is to show that ⟨q, \|u\|²⟩ is small compared with ∫\|u′\|², so the sum stays closed and bounded below (our own). The main work, Theorem 18, shows that the quasi-differential operators equal the form-sum operators. Corollary 15 shows that the minimal operator, the Friedrichs extension and the maximal operator also coincide.
 

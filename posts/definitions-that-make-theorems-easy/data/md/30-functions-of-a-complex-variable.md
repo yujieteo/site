@@ -8,7 +8,7 @@
 
 **Problem.** For all complex numbers z and w, \|zw\| = \|z\|\|w\|.
 
-**How the definition helps.** The conjugate definition makes the squared modulus of a product a rearrangement of factors. Conjugation sends zw to z̄w̄, so \|zw\|² = (z z̄)(w w̄) = \|z\|²\|w\|². Taking nonnegative square roots gives the result. With coordinates, one would instead expand the squares of the real and imaginary parts of zw (our own comparison). The work moves into showing from complex multiplication that conjugation respects products (our own explanation).
+**How the definition helps.** Conjugation respects multiplication, so \|zw\|² = (z z̄)(w w̄) = \|z\|²\|w\|² (our own). Taking nonnegative square roots gives the result (our own).
 
 **Wikipedia:** [Absolute value](https://en.wikipedia.org/wiki/Absolute_value). It says: “\|z\| = √(z · z̄).”
 
@@ -24,7 +24,7 @@
 
 **Problem.** Let f = u + iv be complex differentiable at a point. Then ∂u/∂x = ∂v/∂y and ∂u/∂y = −∂v/∂x at that point.
 
-**How the definition helps.** With this definition, the equations are just L(i) = iL(1) written in coordinates (our own). Here L(1) = ∂u/∂x + i∂v/∂x and L(i) = ∂u/∂y + i∂v/∂y (our own). Since iL(1) = −∂v/∂x + i∂u/∂x, comparing real and imaginary parts gives both equations (our own). The work moves into the lemma that the two definitions agree (our own). It holds because a real linear map that commutes with i is multiplication by one complex number (our own).
+**How the definition helps.** The two equations are the real and imaginary parts of L(i) = iL(1) (our own). Indeed, L(1) = uₓ + ivₓ and L(i) = uᵧ + ivᵧ (our own). Multiplication by i turns the first expression into −vₓ + iuₓ (our own). The equivalence with complex differentiability uses the fact that such a real linear map is multiplication by L(1) (our own).
 
 **Wikipedia:** [Cauchy–Riemann equations](https://en.wikipedia.org/wiki/Cauchy%E2%80%93Riemann_equations). It says: “the partial derivatives of u and v exist and satisfy the Cauchy–Riemann equations at that point.”
 
@@ -58,7 +58,7 @@
 
 **Problem.** The real and imaginary parts of a holomorphic function are harmonic. Their second partial derivatives in x and y sum to zero.
 
-**How the definition helps.** The Wirtinger definition makes harmonicity follow from a factorization. On twice continuously differentiable functions, the Laplacian, the sum of the two second partial derivatives, is 4DE. This factorization follows by expanding the product and canceling the equal mixed partial derivatives. Since Ef = 0, the Laplacian of f is zero, so both parts have zero Laplacian. This is our own calculation. The equivalence with the difference quotient uses real differentiability, and the power series theorem supplies the second derivatives.
+**How the definition helps.** The power series theorem gives continuous second derivatives, so the mixed partials agree (our own). Expanding the operators then gives the Laplacian as 4DE (our own). Since Ef = 0, the Laplacian of f vanishes, as do its real and imaginary parts’ Laplacians (our own).
 
 **Wikipedia:** [Wirtinger derivatives](https://en.wikipedia.org/wiki/Wirtinger_derivatives). It says: “The second Wirtinger derivative is also related with complex differentiation; ∂f/∂z̄ = 0 is equivalent to the Cauchy-Riemann equations in a complex form.”
 
@@ -74,7 +74,7 @@
 
 *True by definition.* MSC 30A10 (Inequalities in the complex plane), 30E20, 30B10. arXiv math.CV. Level 2: later undergraduate.
 
-**Definition.** For a holomorphic function f, one can define its nth Taylor coefficient at a by averaging f(a + r exp(iθ)) exp(−inθ) over all angles. Divide this average by the nth power of r. The usual definition divides the nth derivative at a by n!.
+**Definition.** Suppose f is holomorphic on a neighborhood of the closed disk with center a and radius r &gt; 0. For every integer n ≥ 0, its nth Taylor coefficient is the angular mean of f(a + reⁱᶿ)exp(−inθ) divided by rⁿ (our own). Here the mean uses uniform probability on 0 ≤ θ &lt; 2π (our own).
 
 **Problem.** Suppose f is holomorphic near a closed disk centered at a, with radius r and largest boundary magnitude M. Its nth Taylor coefficient at a has magnitude at most M divided by the nth power of r.
 
@@ -162,7 +162,7 @@
 
 **Problem.** Every holomorphic function on an open disk has an antiderivative defined throughout the disk.
 
-**How the definition helps.** With one series on the whole disk, integrating term by term gives an explicit antiderivative (our own). The series of aₙ(z − c)ⁿ⁺¹/(n + 1) has the same radius of convergence as the series for f, and differentiating it term by term gives back f (our own). The work moves into the theorem that a holomorphic function on a disk has one series valid on the whole disk, which rests on Cauchy's integral formula.
+**How the definition helps.** Integrating the centered Taylor series term by term divides each coefficient by its new positive exponent (our own). This preserves its radius of convergence, and termwise differentiation recovers f throughout the disk (our own). Cauchy’s integral formula supplies one Taylor expansion valid on the entire disk.
 
 **Wikipedia:** [Analyticity of holomorphic functions](https://en.wikipedia.org/wiki/Analyticity_of_holomorphic_functions). It says: “The argument, first given by Cauchy, hinges on Cauchy's integral formula and the power series expansion of the expression”
 
@@ -178,7 +178,7 @@
 
 **Problem.** For a power series of positive radius with positive log-convex coefficients, its reciprocal has nonpositive coefficients beyond the constant.
 
-**How the definition helps.** Nondecreasing ratios provide the comparisons needed to keep every later reciprocal coefficient nonpositive. Our own explanation uses the identity f(x)(1/f(x)) = 1. Comparing coefficients gives a recurrence, and Kaluza’s sign test follows by induction. Our own counterexample has coefficients 1, 1, ½, ¼, …. Its reciprocal has quadratic coefficient 1 − ½ = ½.
+**How the definition helps.** Nondecreasing ratios control the reciprocal coefficients bₙ by induction (our own). For n ≥ 2, subtract (aₙ/aₙ₋₁) times the degree n−1 product identity from the degree n identity (our own). This gives a₀bₙ = ∑ⱼ₌₁ⁿ⁻¹ ((aₙ/aₙ₋₁)aₙ₋₁₋ⱼ − aₙ₋ⱼ)bⱼ ≤ 0, starting from b₁ = −a₁/a₀² (our own). Without log-convexity, initial coefficients 1, 1, ½ give reciprocal quadratic coefficient ½ (our own).
 
 **Paper or page:** [On Kaluza's sign criterion for reciprocal power series](https://arxiv.org/abs/1010.5337v3). It says: “b₀ = 1/a₀ &gt; 0 and bₙ ≤ 0 for all n ∈ {1, 2, …}.”
 
@@ -226,7 +226,7 @@
 
 **Problem.** Every holomorphic function has complex derivatives of all orders, and those derivatives are holomorphic.
 
-**How the definition helps.** The power series definition makes each derivative analytic by termwise differentiation. The new series has the same radius of convergence, so we can repeat the step indefinitely. This is our own deduction from the equivalence of analyticity and complex differentiability. The hard part of that equivalence is Goursat’s theorem, which removes the continuity assumption from Cauchy’s integral theorem. Cauchy’s integral formula then gives the power series.
+**How the definition helps.** Termwise differentiation gives a power series with the same radius of convergence, so it applies repeatedly (our own). Cauchy’s integral formula supplies the local series for a holomorphic function. Each differentiated series is again holomorphic inside its disk of convergence (our own).
 
 **nLab:** [holomorphic function](https://ncatlab.org/nlab/show/holomorphic+function). It says: “The theorem that every continuously complex-differentiable function is analytic is soft and due to Augustin Cauchy; the theorem that every complex-differentiable function is continuously differentiable is hard and due essentially to Édouard Goursat”
 
@@ -244,7 +244,7 @@
 
 **Definition.** A Laurent series about a has one power series in z − a and another in 1/(z − a). The second has no constant term. Convergence requires the two sums to exist separately.
 
-**Problem.** If the Laurent series converges on an open set, its convergence set away from a has an annulus as its interior. The inner radius may be zero and the outer radius infinite.
+**Problem.** If a Laurent series about a converges on a nonempty open set, the interior of its convergence set away from a is an annulus. The inner radius may be zero and the outer radius infinite.
 
 **How the definition helps.** Separate convergence requires both disk tests to hold at once (our own). The first series gives an outer radius, and the reciprocal variable turns the second radius into an inner boundary (our own). Symmetric partial sums could hide cancellation between the two series (our own). The disk tests use the power series convergence theorem (our own).
 
@@ -274,7 +274,7 @@
 
 *Rules out counterexamples.* MSC 30B40 (Analytic continuation of functions of one complex variable), 30C15. arXiv math.CV. Level 2: later undergraduate.
 
-**Definition.** A direct analytic continuation extends a holomorphic function from a nonempty open set to a larger domain. A domain is open and connected, unlike an arbitrary open set.
+**Definition.** Let f be holomorphic on a nonempty open subset U of a domain D, a connected open set. A direct continuation to D is a holomorphic function F on D with F(z) = f(z) for every z in U.
 
 **Problem.** Two direct analytic continuations of the same holomorphic function to the same domain coincide.
 
@@ -288,15 +288,15 @@
 
 ### Germs turn multivalued functions such as log z into true functions
 
-**Remember:** Do not continue the value; continue the germ, and every branch gets its own point.
+**Remember:** Keep the local function with its base point to distinguish branches.
 
 *Makes the theorem clean to state or prove.* MSC 30B40 (Analytic continuation of functions of one complex variable), 30F99. arXiv math.CV. Level 2: later undergraduate.
 
-**Definition.** A germ of an analytic function at a point z₀ is its power series at z₀. The set of all germs gets a topology. In it, a basic open set is the set of germs of one analytic function at all points of a disc. A connected component of this space is a Riemann surface, and on it the analytic continuation of a function is one single-valued function.
+**Definition.** At a point a, two local holomorphic functions define the same germ if they agree on some neighborhood of a. Each holomorphic function on a disk gives a basic open set consisting of its germs at all points of that disk.
 
-**Problem.** Analytic continuation of a germ, such as a germ of log z or √z, is a single-valued holomorphic function on the connected component of the space of germs that contains it.
+**Problem.** Analytic continuation of a germ gives a single-valued holomorphic function on its component of the space of germs. Examples include germs of log z and √z away from zero.
 
-**How the definition helps.** On the space of germs, each branch of the function is a different point, so continuation can never give two values at one point. In the plane, continuing log z once around the origin changes its value by 2πi, so the result is a 'multivalued function'. On its component of the space of germs, the logarithm is one function f with exp(f(z)) = z. What stays hard is to decide when continuation along different paths gives the same result, which is the monodromy theorem.
+**How the definition helps.** Evaluate each germ at its base point to obtain one value (our own). On each basic open set the base point serves as coordinate, and evaluation gives the holomorphic function defining that set (our own).
 
 **Wikipedia:** [Analytic continuation](https://en.wikipedia.org/wiki/Analytic_continuation), [Riemann surface](https://en.wikipedia.org/wiki/Riemann_surface). It says: “The idea of finding the maximal analytic continuation of a function in turn led to the development of the idea of Riemann surfaces.”
 
@@ -330,7 +330,7 @@
 
 **Problem.** Let holomorphic functions converge uniformly on every compact subset of an open set. Their limit is holomorphic.
 
-**How the definition helps.** The triangle definition makes the proof a passage to the limit inside each contour integral. Uniform convergence on the triangle preserves the zero integral and gives continuity of the limit. The article gives this approach. The work moves into the equivalence of definitions. Goursat’s theorem gives zero integrals from complex differentiability, and Morera’s theorem gives the converse.
+**How the definition helps.** Local uniform convergence gives a continuous limit and preserves the integral on each triangle boundary (our own). Each such integral is zero by Goursat’s theorem, so Morera’s theorem gives holomorphicity (our own).
 
 **Wikipedia:** [Morera's theorem](https://en.wikipedia.org/wiki/Morera%27s_theorem). It says: “This in fact characterizes holomorphy, i.e. f is holomorphic on D if and only if the above conditions hold.”
 
@@ -346,7 +346,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 30C10 (Polynomials and rational functions of one complex variable), 30D30. arXiv math.CV. Level 2: later undergraduate.
 
-**Definition.** Represent a sphere point by a pair \[X:Y\], where multiplying both coordinates by the same nonzero number preserves the point. Represent a rational function by two homogeneous polynomials P and Q of degree d with no common projective zero. Homogeneous means every term has total degree d.
+**Definition.** A sphere point \[X:Y\] is a nonzero pair of complex numbers up to common nonzero scaling. A rational map sends \[X:Y\] to \[P(X,Y):Q(X,Y)\] for homogeneous polynomials of equal degree with no common projective zero.
 
 **Problem.** A nonconstant rational map of degree d takes each value exactly d times on the sphere, counting a root of order m as m preimages.
 
@@ -364,11 +364,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 30C10 (Polynomials and rational functions of one complex variable), 30F10. arXiv math.CV. Level 2: later undergraduate.
 
-**Definition.** A Möbius transformation is a map z ↦ (az + b)/(cz + d) with ad − bc ≠ 0. It acts on the Riemann sphere, which is the complex plane with one point ∞ added. When c ≠ 0, it sends −d/c to ∞ and ∞ to a/c. When c = 0, it fixes ∞.
+**Definition.** A sphere point \[X:Y\] is a nonzero complex pair up to common nonzero scaling. A Möbius transformation sends it to \[aX+bY:cX+dY\], where a, b, c and d are complex and ad − bc ≠ 0.
 
 **Problem.** The Möbius transformations form a group of bijections. Every one except the identity has exactly two fixed points, counted with multiplicity.
 
-**How the definition helps.** The added point ∞ gives each Möbius transformation a value at every point and a preimage of every point, so each one is a bijection. On the plane alone, z ↦ 1/z is undefined at 0 and never takes the value 0 (our own example). The condition ad − bc ≠ 0 excludes the constant maps. The fixed-point count works because a fixed point may be ∞.
+**How the definition helps.** Composition and inversion come from multiplying and inverting the coefficient matrices, so the maps form a group of bijections (our own). A fixed point satisfies cX² + (d−a)XY − bY² = 0 (our own). Except for the identity this quadratic is nonzero and has two projective roots counted with multiplicity (our own).
 
 **Wikipedia:** [Möbius transformation](https://en.wikipedia.org/wiki/M%C3%B6bius_transformation). It says: “Thus a Möbius transformation is always a bijective holomorphic function from the Riemann sphere to the Riemann sphere.”
 
@@ -396,11 +396,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 30C15 (Zeros of polynomials, rational functions, and other analytic functions of one complex variable (e.g., zeros of functions with bounded Dirichlet integral)), 30E20. arXiv math.CV. Level 2: later undergraduate.
 
-**Definition.** A zero of f at a has multiplicity k if f(z) = (z − a)ᵏ g(z) with g(a) ≠ 0. A pole of order m is a point where f(z) = (z − a)⁻ᵐ h(z) with h(a) ≠ 0. Counting with multiplicity means each zero or pole is counted k or m times.
+**Definition.** Near a, write f(z) = (z−a)ⁿg(z) off a, with n an integer and g holomorphic near a with g(a) ≠ 0. A positive n gives a zero of multiplicity n. A negative n gives a pole of order −n.
 
-**Problem.** Let f be meromorphic, with no zeros or poles on a simple closed contour C oriented counter-clockwise. Then (1/2πi) ∮ f′/f dz = Z − P. Here Z and P count the zeros and poles inside C with multiplicity.
+**Problem.** Let f be meromorphic on a neighborhood of a positively oriented simple closed piecewise smooth contour C and its interior. Suppose f has no zeros or poles on C. Then (1/(2πi)) ∮<sub>C</sub> (f′/f) dz counts interior zeros minus interior poles, with multiplicity.
 
-**How the definition helps.** At a zero of multiplicity k, f′/f has a simple pole with residue exactly k, so the residue theorem counts multiplicities directly. A count without multiplicity fails: for f(z) = z² on the unit circle, the integral is 2, but there is only one distinct zero (our own example). Multiplicity also makes the count stable under small changes of f, which is Rouché's theorem (our own).
+**How the definition helps.** Logarithmic differentiation gives f′/f = n/(z−a) + g′/g near each zero or pole (our own). The residue theorem sums these signed orders (our own).
 
 **Wikipedia:** [Argument principle](https://en.wikipedia.org/wiki/Argument_principle). It says: “where Z and P denote respectively the number of zeros and poles of f inside the contour C, with each zero and pole counted as many times as its multiplicity and order, respectively, indicate.”
 
@@ -416,7 +416,7 @@
 
 **Problem.** Let f be analytic near z₀ with f(z₀) = 0. If f is not zero on the whole of any neighbourhood of z₀, then some neighbourhood of z₀ has no other zero.
 
-**How the definition helps.** With the series definition, the local form of f is given, so one factorization proves the claim (our own). Some coefficient is nonzero, since otherwise f is zero on a whole disk; take the first one, aₘ, and write f(z) = (z − z₀)ᵐ g(z) (our own). Then g is a convergent power series with g(z₀) = aₘ ≠ 0, so g has no zeros near z₀ by continuity (our own). The work moves into the theorem that complex differentiable functions are analytic.
+**How the definition helps.** Factor the first nonzero Taylor term’s power of z−z₀ out of the series (our own). Such a term exists because f never vanishes on a whole neighborhood of z₀ (our own). The remaining series has nonzero constant term and stays nonzero near z₀ by continuity (our own).
 
 **nLab:** [analytic function](https://ncatlab.org/nlab/show/analytic+function). It says: “An analytic function is a function that is locally given by a converging power series.”
 
@@ -432,7 +432,7 @@
 
 **Problem.** Let f and g be analytic near z₀, and let neither be identically zero there. Then the order of fg at z₀ is the sum of the orders of f and g.
 
-**How the definition helps.** With the factorization definition, the proof is one multiplication (our own). Write f = (z − z₀)ᵐ f₁ and g = (z − z₀)ⁿ g₁ (our own). Then fg = (z − z₀)ᵐ⁺ⁿ f₁g₁, and f₁(z₀)g₁(z₀) ≠ 0 (our own). With the derivative definition, one needs the general Leibniz rule for the derivatives of fg (our own). The work moves into the theorem that the two definitions agree, which uses the Taylor series of f at z₀ (our own).
+**How the definition helps.** Multiplying the local factorizations adds their exponents (our own). The remaining analytic factor is nonzero at z₀ because both its factors are nonzero there (our own).
 
 **Wikipedia:** [Zeros and poles](https://en.wikipedia.org/wiki/Zeros_and_poles). It says: “(z − z₀)ⁿ f(z) is holomorphic and nonzero in a neighbourhood of z₀ (this is a consequence of the analytic property).”
 
@@ -466,7 +466,7 @@
 
 **Problem.** Möbius maps form a group under composition. The map for AB is the map for B followed by the map for A.
 
-**How the definition helps.** The projective-line definition makes composition ordinary matrix multiplication on lines. The identity and inverses also come from matrices, without separate cases at poles or ∞. Our own comparison uses z = x/y as the coordinate of the line through (x, y) when y ≠ 0. The remaining line represents ∞. In this coordinate a matrix with rows (a, b) and (c, d) gives the usual map z ↦ (az + b)/(cz + d).
+**How the definition helps.** Applying B and then A to a line gives its image under AB (our own). The identity matrix fixes every line, and the inverse matrix reverses the action (our own).
 
 **nLab:** [Moebius transformation](https://ncatlab.org/nlab/show/Moebius+transformation). It says: “Möbius transformations form a group under composition, isomorphic to the projective linear group”
 
@@ -530,11 +530,11 @@
 
 *Rules out counterexamples.* MSC 30C35 (General theory of conformal mappings). arXiv math.CV. Level 2: later undergraduate.
 
-**Definition.** A map is conformal at a point if it preserves angles between directed curves through the point, and also preserves orientation. Equivalently, its Jacobian matrix there is a positive multiple of a rotation matrix.
+**Definition.** A plane map is conformal at a point if it has a real derivative there equal to a positive multiple of a rotation. It is conformal on an open set if this holds at every point.
 
 **Problem.** A map on an open set in the plane is conformal if and only if it is holomorphic with nowhere-zero derivative.
 
-**How the definition helps.** A positive multiple of a rotation matrix is exactly multiplication by a nonzero complex number, so the condition is the Cauchy–Riemann equations in another form (our own explanation). Without orientation the theorem fails. Complex conjugation z ↦ z̄ keeps the size of angles but reverses their direction, and it is not holomorphic. Authors who allow orientation-reversing maps must add the antiholomorphic maps to the theorem.
+**How the definition helps.** A positive multiple of a rotation acts by multiplication by a nonzero complex number (our own). Such a real derivative gives a nonzero complex derivative, and conversely a nonzero complex derivative gives precisely this real derivative (our own). Complex conjugation preserves unsigned angles but reverses orientation, so its derivative fails the rotation condition (our own).
 
 **Wikipedia:** [Conformal map](https://en.wikipedia.org/wiki/Conformal_map). It says: “If U is an open subset of the complex plane ℂ, then a function f:U→ℂ is conformal if and only if it is holomorphic and its derivative is everywhere non-zero on U.”
 
@@ -550,7 +550,7 @@
 
 **Problem.** At any point where its derivative is nonzero, a holomorphic map preserves the angle between smooth curves with nonzero tangent vectors.
 
-**How the definition helps.** The matrix definition makes angle preservation a property of the derivative itself. Multiplication by a nonzero complex number rotates and scales both tangents by the same amounts. The chain rule gives the image tangents. The work moves into showing that this definition agrees with the complex difference quotient. The matrix entries express the Cauchy–Riemann equations when a real derivative exists.
+**How the definition helps.** The chain rule sends both tangents through the same derivative matrix (our own). Multiplication by a nonzero complex number rotates both through the same angle and scales both equally (our own).
 
 **Wikipedia:** [Cauchy–Riemann equations](https://en.wikipedia.org/wiki/Cauchy%E2%80%93Riemann_equations). It says: “Consequently, a function satisfying the Cauchy–Riemann equations, with a nonzero derivative, preserves the angle between curves in the plane.”
 
@@ -566,7 +566,7 @@
 
 **Problem.** An extremal disk map exists, and every such map is onto the disk. This gives a conformal equivalence between any proper simply connected plane domain and the disk.
 
-**How the definition helps.** Maximality rules out any construction that increases the derivative at a (our own). For an omitted value, move it to zero, take a holomorphic square root, and move the new image of a to zero (our own). Reversing these steps gives a disk map fixing zero that includes squaring, so Schwarz’s lemma gives strict contraction there (our own). Given one candidate, Montel’s and Hurwitz’s theorems yield an injective maximizer from a maximizing sequence (our own).
+**How the definition helps.** For b outside the domain, a branch of √(z−b) omits a disk around the negative of its value at a (our own). Inverting about that center and rescaling gives a bounded injection that can be normalized (our own). Montel’s and Hurwitz’s theorems give an injective maximizer since the limiting derivative is nonzero (our own). An omitted value permits recentering, taking a square root, and recentering again, increasing derivative magnitude by Schwarz’s lemma on the reverse map (our own).
 
 **Wikipedia:** [Riemann mapping theorem](https://en.wikipedia.org/wiki/Riemann_mapping_theorem). It says: “the desired mapping was obtained as the solution of an extremal problem.”
 
@@ -598,7 +598,7 @@
 
 **Problem.** A holomorphic function bounded near an isolated missing point extends holomorphically over that point.
 
-**How the definition helps.** For k ≥ 1, the circle integral bounds the coefficient of degree −k by Mrᵏ when \|f\| ≤ M (our own). Shrinking the radius r forces every negative-power coefficient to vanish (our own). The Laurent coefficient formula identifies these integrals with the coefficients obtained by matching powers (our own).
+**How the definition helps.** For k ≥ 1, the coefficient of degree −k has magnitude at most Mrᵏ when \|f\| ≤ M (our own). Sending r to zero kills all negative powers (our own). Laurent’s theorem now represents f by a power series that also converges at the missing point (our own).
 
 **Paper or page:** [Riemann Removable Singularities Theorem](https://proofwiki.org/wiki/Riemann_Removable_Singularities_Theorem). It says: “f is bounded in a deleted neighborhood of z₀.”
 
@@ -662,7 +662,7 @@
 
 **Definition.** The principal part at an isolated singularity a consists of the negative-power terms in the Laurent expansion about a. The function is holomorphic on a disk with only its center a removed.
 
-**Problem.** A zero principal part means the function extends holomorphically, while a finite nonempty principal part gives a pole. Infinitely many nonzero terms give an essential singularity.
+**Problem.** A zero principal part gives a removable singularity, and finitely many nonzero negative-power terms give a pole if any occur. Infinitely many nonzero negative-power terms give an essential singularity.
 
 **How the definition helps.** Removing the principal part leaves a Taylor series that extends across the center (our own). If the lowest exponent is −m, multiplying by (z − a)ᵐ gives a holomorphic function nonzero at a (our own). Uniqueness of the Laurent expansion rules out either behavior when infinitely many negative-power coefficients are nonzero (our own).
 
@@ -716,7 +716,7 @@
 
 **Problem.** Let f be holomorphic on an open set containing a simple, closed, piecewise smooth curve and all of its interior. The integral of f around the curve is zero.
 
-**How the definition helps.** The continuity condition lets Green’s theorem turn the curve integral into an area integral. Complex differentiability gives the Cauchy–Riemann equations, which relate the first partial derivatives and make the area integrand zero. Without continuity, Green’s theorem does not apply directly. Goursat proved vanishing for triangles without this assumption. Cauchy’s integral formula then gives a local power series, so the derivative is continuous after all.
+**How the definition helps.** A continuous complex derivative gives continuous first partial derivatives, so Green’s theorem applies (our own). The Cauchy–Riemann equations make both area integrands zero (our own). Goursat’s theorem removes the extra continuity assumption.
 
 **Wikipedia:** [Cauchy's integral theorem](https://en.wikipedia.org/wiki/Cauchy%27s_integral_theorem). It says: “Cauchy provided this proof, but it was later proven by Goursat without requiring techniques from vector calculus, or the continuity of partial derivatives.”
 
@@ -736,7 +736,7 @@
 
 **Problem.** Every nowhere-zero holomorphic function f on such a set has a holomorphic logarithm g, meaning exp(g) = f.
 
-**How the definition helps.** The primitive definition supplies a function h with derivative f′/f. The derivative of f·exp(−h) is zero, so this product is a nonzero constant, and adding a logarithm of that constant to h gives g (our own calculation). The work is proving that the two definitions agree. Cauchy’s theorem gives primitives on topologically simply connected domains.
+**How the definition helps.** The definition supplies a primitive h of f′/f. Differentiating f exp(−h) gives zero, so connectedness makes it a nonzero constant c (our own). Choose b with exp(b) = c, and h+b is a logarithm of f (our own).
 
 **Wikipedia:** [Riemann mapping theorem](https://en.wikipedia.org/wiki/Riemann_mapping_theorem). It says: “(3) ⇒ (4) by integrating f⁻¹ df/dz along γ from a to x to give a branch of the logarithm.”
 
@@ -750,7 +750,7 @@
 
 *True by definition.* MSC 30E20 (Integration, integrals of Cauchy type, integral representations of analytic functions in the complex plane), 30D30. arXiv math.CV. Level 2: later undergraduate.
 
-**Definition.** The residue of a function at an isolated singularity is the coefficient of 1/(z − a) in its Laurent series. One can instead define it by a small circle integral divided by 2πi.
+**Definition.** For f holomorphic on a punctured disk centered at a, its residue at a is the coefficient of (z−a)⁻¹ in its Laurent series. Equivalently, integrate f counterclockwise around a concentric circle inside the disk and divide by 2πi.
 
 **Problem.** If a function is holomorphic on a punctured disk, its derivative has zero residue at the center.
 
@@ -798,7 +798,7 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 30E20 (Integration, integrals of Cauchy type, integral representations of analytic functions in the complex plane). arXiv math.CV. Level 2: later undergraduate.
 
-**Definition.** A sequence converges locally uniformly on an open set if, on each compact subset, its largest absolute error tends to zero. Here a compact subset is closed and bounded and lies entirely in the open set.
+**Definition.** On an open set U, fₙ converges locally uniformly to f if its error tends uniformly to zero on every compact subset. Equivalently, sup{\|fₙ(x)−f(x)\| ∶ x ∈ K} tends to zero for each nonempty compact K inside U.
 
 **Problem.** A locally uniform limit of holomorphic functions is holomorphic. For each derivative order, the derivatives converge locally uniformly to that derivative of the limit.
 
@@ -814,11 +814,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 30E20 (Integration, integrals of Cauchy type, integral representations of analytic functions in the complex plane), 30F30. arXiv math.CV. Level 2: later undergraduate.
 
-**Definition.** The residue at infinity of f is defined as −Res(f(1/z)/z², 0). This is the residue of the form f(z) dz, written in the coordinate w = 1/z near infinity. The extra factor −1/z² comes from the change of variable dz = −dw/w².
+**Definition.** For f holomorphic outside some disk, its residue at infinity is the coefficient of w⁻¹ in −f(1/w)/w² near zero. The substitution w = 1/z gives f(z) dz = −f(1/w) dw/w².
 
 **Problem.** Let f be holomorphic on the plane except at finitely many isolated singular points. Then the sum of all its residues, including the residue at infinity, is zero.
 
-**How the definition helps.** A residue of a form does not depend on the coordinate. So one large circle measures the finite residues from inside and the residue at infinity from outside, with opposite orientation, and the two cancel. The naive definition, the residue of f(1/z) at 0, fails (our own example). For f(z) = 1/z, the residue at 0 is 1 and f(1/z) = z has residue 0, while the form definition gives −1 at infinity and a sum of 0.
+**How the definition helps.** On a large counterclockwise circle the residue theorem gives 2πi times the sum of the finite residues (our own). In the coordinate w = 1/z the same path circles zero clockwise, giving −2πi times the residue at infinity (our own).
 
 **Wikipedia:** [Residue at infinity](https://en.wikipedia.org/wiki/Residue_at_infinity), [Residue (complex analysis)](https://en.wikipedia.org/wiki/Residue_%28complex_analysis%29). It says: “the reason that we consider instead −(1/z²) f(1/z) is that one does not take residues of functions, but of differential forms”
 
@@ -916,7 +916,7 @@
 
 **Problem.** Let f be holomorphic with no zeros on a connected open set. It admits a holomorphic nth root exactly when its winding on every closed contour is a multiple of n.
 
-**How the definition helps.** Winding measures whether a chosen root returns to its starting value after a loop (our own proof). Integrate f′/f along a path from a fixed point, divide by n, and exponentiate. Changing paths preserves this factor precisely when every integral of f′/f around a loop is a multiple of 2πin. Multiplying by a root of the starting value gives the required root, using local antiderivatives and the exponential addition law (our own proof).
+**How the definition helps.** If f = gⁿ, its winding is n times the winding of g (our own). Conversely, fix a root at a base point and multiply it by exp((1/n)∫ f′/f) along a path to each point (our own). The winding condition makes this factor independent of the path (our own). Local primitives give holomorphicity, and logarithmic differentiation shows its nth power agrees with f everywhere (our own).
 
 **Paper or page:** [Theorem 4.1. (Existence of holomorphic nth roots)](https://venhance.github.io/napkin/Napkin.pdf). It says: “Then f has a holomorphic nth root if and only if (1/2πi) ∮γ (f′/f) dz ∈ nℤ for every contour γ in U.”
 
@@ -948,7 +948,7 @@
 
 **Problem.** Define Γ(s) by integrating exp((s − 1) log x − x) over real x &gt; 0. The resulting function is holomorphic where the real part of s is positive.
 
-**How the definition helps.** The triangle definition lets us prove holomorphy by changing the order of integration. For fixed x the integrand is holomorphic in s, so its integral around each triangle is zero. On a compact set of s with real parts between a &gt; 0 and b, the integrand is bounded by xᵃ⁻¹e⁻ˣ for x ≤ 1 and xᵇ⁻¹e⁻ˣ for x ≥ 1. These integrable bounds give continuity and justify the exchange by Fubini’s theorem (our own use of the article’s method).
+**How the definition helps.** For fixed x the integrand is entire in s, so its triangle integrals vanish (our own). On a compact parameter set take 0 &lt; a ≤ Re(s) ≤ b (our own). Bound the magnitude by xᵃ⁻¹e⁻ˣ below one and xᵇ⁻¹e⁻ˣ above one (our own). These integrable bounds give continuity by dominated convergence and permit Fubini’s theorem on every triangle boundary (our own).
 
 **Wikipedia:** [Morera's theorem](https://en.wikipedia.org/wiki/Morera%27s_theorem), [Gamma function](https://en.wikipedia.org/wiki/Gamma_function). It says: “Morera's theorem can also be used in conjunction with Fubini's theorem and the Weierstrass M-test to show the analyticity of functions defined by sums or integrals”
 
@@ -1000,7 +1000,7 @@
 
 **Problem.** Every rational function extends to a holomorphic map from the Riemann sphere to itself that sends its poles to ∞. Apart from the constant map to ∞, these are all the holomorphic maps from the sphere to itself.
 
-**How the definition helps.** On the sphere, a pole is an ordinary point whose image is ∞. On the plane, by contrast, a rational function is undefined at its poles. A Möbius map z ↦ (az + b)/(cz + d) with c ≠ 0 is undefined at one point of the plane and misses one value (our own remark). On the sphere, the Möbius maps are exactly its automorphisms.
+**How the definition helps.** At a rational function’s poles, its reciprocal is holomorphic and vanishes, as the target coordinate at infinity requires (our own). The source coordinate 1/z gives the same test at infinity (our own). Conversely, any holomorphic sphere map other than constant infinity is meromorphic with finitely many poles by compactness (our own). Subtracting their rational principal parts leaves a holomorphic complex-valued function on the compact sphere, hence a constant (our own).
 
 **Wikipedia:** [Riemann sphere](https://en.wikipedia.org/wiki/Riemann_sphere). It says: “For example, any rational function on the complex plane can be extended to a holomorphic function on the Riemann sphere, with the poles of the rational function mapping to infinity.”
 
@@ -1028,11 +1028,11 @@
 
 *True by definition. Confidence: medium.* MSC 30B40 (Analytic continuation of functions of one complex variable), 30F99. arXiv math.CV. Level 3: graduate.
 
-**Definition.** A germ at z records an analytic function near z, identifying two functions if they agree near z. Give the set of germs a topology using germs of a single function on a disc as basic open sets. Each such set projects to the disc by sending each germ to its center. The usual description of analytic continuation uses chains of overlapping discs along a path.
+**Definition.** Two analytic functions near z give the same germ at z if they agree on some neighborhood of z. For each analytic function on a disk, its germs over that disk form a basic open set projecting bijectively onto the disk.
 
 **Problem.** Let G be a simply connected open region in the plane. If a germ at a point of G continues along every path in G from that point, it extends to one holomorphic function on G.
 
-**How the definition helps.** The germ-space definition turns continuation into a continuous lift of a path, so it suffices to show that the endpoint germ survives a deformation. Each lift can be followed through finitely many basic open sets above discs, and nearby paths with the same endpoints use the same chain (our own explanation). Simple connectivity lets any two paths with the same endpoints deform into each other. So the endpoint germs depend only on the endpoint and form one holomorphic function.
+**How the definition helps.** Continuing a germ along a path lifts the path to the space of germs (our own). Finitely many overlapping disk charts cover the lift in succession, so nearby paths with fixed endpoints give the same endpoint germ (our own). The endpoint germ is therefore constant through any fixed-endpoint homotopy, and simple connectivity makes it independent of the path (our own). The resulting germs locally come from one analytic function in each chart, so their values define a holomorphic extension (our own).
 
 **Wikipedia:** [Analytic continuation](https://en.wikipedia.org/wiki/Analytic_continuation), [Monodromy theorem](https://en.wikipedia.org/wiki/Monodromy_theorem). It says: “In the above language this means that if G is a simply connected domain, and S is a sheaf whose set of base points contains G, then there exists an analytic function f on G whose germs belong to S.”
 
@@ -1046,11 +1046,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 30B50 (Dirichlet series, exponential series and other series in one complex variable), 42A38. arXiv math.NT, math.CA. Level 3: graduate.
 
-**Definition.** Fix T &gt; 0 and a positive integer N. Replace a sharp time cutoff by w(t/T), where w is smooth and rapidly decreasing. Define ŵ(ξ) by integrating w(u) exp(−iuξ) over the real line. Require ŵ to vanish whenever \|ξ\| ≥ T/N.
+**Definition.** Fix T &gt; 0 and a positive integer N, and weight time t by w(t/T) for a smooth rapidly decreasing function w. Define ŵ(ξ) as the integral of w(u) exp(−iuξ) over ℝ and require ŵ(ξ) = 0 for \|ξ\| ≥ T/N.
 
 **Problem.** For P(t) = ∑ over n ≤ N of a(n) exp(−it log n), the integral of w(t/T)\|P(t)\|² over ℝ equals Tŵ(0)∑ \|a(n)\|².
 
-**How the definition helps.** The narrow Fourier support removes every term coming from two different indices. In our own calculation, such a term samples ŵ at T log(m/n). Distinct positive integers at most N satisfy \|log(m/n)\| ≥ 1/N. Only the equal indices survive. The cited lemma uses Fourier decay and allows an error.
+**How the definition helps.** The cutoff kills all cross terms in the expanded square (our own). Each cross term samples ŵ at T log(m/n), whose magnitude as an argument is at least T/N for distinct indices (our own). Each diagonal term contributes Tŵ(0)\|a(n)\|² (our own). The cited estimate instead controls the cross terms by Fourier decay.
 
 **Paper or page:** [Extreme values of Dirichlet polynomials with multiplicative coefficients](https://arxiv.org/abs/2303.06739). It says: “M<sub>1</sub>(R, T) = T{\\hat\\Phi }(0) (1 + O(T<sup>-1</sup>) ) \\sum <sub>n\\leqslant X</sub> \|r<sub>f</sub>(n)\|<sup>2</sup>.”
 
@@ -1068,7 +1068,7 @@
 
 **Problem.** Put P(t) = ∑ a(n) exp(−it log n) and X = ∑ a(n)U(n), summing over 1 ≤ n ≤ N. For each real q &gt; 0, average the qth power of \|P(t)\| over \[0,T\]. As T grows, this approaches the expected qth power of \|X\|.
 
-**How the definition helps.** Independent prime phases turn the time average into an integral over a product of circles. Our own proof tests the phase distribution against products of integer powers of its coordinates. Each nonconstant product oscillates at a nonzero frequency because unique factorization makes the prime logarithms rationally independent. Its time average therefore vanishes. Weyl’s criterion now gives convergence for every continuous function of the phases, including the stated power.
+**How the definition helps.** The time-dependent prime phases become equidistributed on the product of their circles (our own). Unique factorization makes each nonconstant character oscillate at a nonzero frequency, so its time average tends to zero (our own). Weyl’s criterion gives the required average for the continuous function \|X\|ᵠ of those phases (our own).
 
 **Wikipedia:** [Equidistribution theorem](https://en.wikipedia.org/wiki/Equidistribution_theorem). It says: “equidistribution is equivalent to having a non-trivial estimate for the exponential sums formed with the sequence as exponents.”
 
@@ -1118,7 +1118,7 @@
 
 *True by definition.* MSC 30C10 (Polynomials and rational functions of one complex variable). arXiv math.CV. Level 3: graduate.
 
-**Definition.** A disk automorphism is a holomorphic bijection from the disk onto itself. A finite Blaschke product is a product of finitely many such maps times a constant of modulus one. The number of factors is its degree. The positive-degree products are exactly the proper holomorphic disk maps, meaning inverse images of compact sets are compact.
+**Definition.** A proper holomorphic disk map has compact inverse images of all compact subsets of the disk. Such maps are precisely the nonconstant finite products of disk automorphisms times a constant of modulus one. Their degree counts the factors, or equivalently the preimages of any disk point with multiplicity (our own).
 
 **Problem.** Precomposing or postcomposing a nonconstant finite Blaschke product with a disk automorphism preserves its class and degree.
 
@@ -1136,7 +1136,7 @@
 
 **Definition.** A sequence in the unit disk meets the Blaschke condition if the sum of its distances to the unit circle is finite. This is stronger than requiring no accumulation point inside the disk.
 
-**Problem.** A sequence in the disk, counted with repetitions, is the complete zero list of a nonzero bounded holomorphic function on the disk exactly when it satisfies the Blaschke condition.
+**Problem.** Count the points of a disk sequence with repetition. It is the complete zero list of a nonzero bounded holomorphic disk function exactly when it satisfies the Blaschke condition.
 
 **How the definition helps.** The finite sum rules out sequences that approach the circle too slowly (our own). The points 1 − 1/n for n ≥ 2 have no interior accumulation point, but their distances have divergent sum (our own). Jensen’s formula gives the necessary bound from the circular averages of the logarithm of the modulus (our own). Conversely, the sum ensures local uniform convergence of the normalized product with the prescribed zeros, after factoring out zeros at zero (our own).
 
@@ -1150,11 +1150,11 @@
 
 *True by definition. Confidence: medium.* MSC 30C45 (Special classes of univalent and multivalent functions of one complex variable (starlike, convex, bounded rotation, etc.)), 51B10. arXiv math.CV. Level 3: graduate.
 
-**Definition.** For distinct points z₁, z₂, z₃, z₄ approaching z, use the cross-ratio R = ((z₃ − z₁)(z₄ − z₂))/((z₃ − z₂)(z₄ − z₁)). Divide the cross-ratio of their images under f by R. The Schwarzian Sf at z is six times the coefficient of (z₁ − z₂)(z₃ − z₄) in the leading distortion term. The usual formula is Sf = (f″/f′)′ − ½(f″/f′)².
+**Definition.** For distinct nearby points put R = (z₃−z₁)(z₄−z₂)/((z₃−z₂)(z₄−z₁)), and let Rf denote the same ratio for their images. For locally injective holomorphic f, its Schwarzian at z is six times the limit of (Rf/R−1)/((z₁−z₂)(z₃−z₄)) as all four points approach z.
 
 **Problem.** Where the holomorphic functions and the composite are defined and their derivatives are nonzero, S(f∘g) = ((Sf)∘g)·(g′)² + Sg. In particular, Möbius maps have zero Schwarzian wherever finite.
 
-**How the definition helps.** The distortion definition gives the chain rule because the distortion ratio for a composite is the product of two ratios. The leading corrections add because each is already quadratic in the small differences. For f after g, the two differences each gain a factor of g′ to first order, giving the square in the formula. The article gives the expansion and its implication, and the multiplication step is our own explanation. The work moves into the Taylor calculation that identifies the coefficient with the differential formula.
+**How the definition helps.** Distortion ratios multiply under composition, so their first corrections add (our own). The two image differences each contribute a factor g′(z), giving the square in the chain rule (our own). Möbius transformations preserve the cross-ratio, so their correction vanishes (our own). Taylor expansion identifies the limit with (f″/f′)′ − ½(f″/f′)² (our own).
 
 **Wikipedia:** [Schwarzian derivative](https://en.wikipedia.org/wiki/Schwarzian_derivative). It says: “This immediately yields the chain rule S(f∘g) = ((Sf)∘g)·(g′)² + Sg.”
 
@@ -1186,7 +1186,7 @@
 
 **Problem.** De Branges's theorem, once the Bieberbach conjecture, says that every schlicht function has \|aₙ\| ≤ n for all n ≥ 2. The Koebe function z/(1 − z)², with aₙ = n, shows that the bound is sharp.
 
-**How the definition helps.** The normalization removes the freedom of scaling and translation, which would otherwise make the coefficients unbounded. Without it, cf is one-to-one for every c ≠ 0 and has coefficients caₙ, so no bound can hold (our own). The normalization also makes the class compact, since by Hurwitz's theorem a limit of one-to-one functions is one-to-one or constant (our own link). The hard part was the proof, which de Branges completed in 1985.
+**How the definition helps.** Normalization fixes the linear coefficient and removes arbitrary rescalings of the higher coefficients (our own). De Branges’s theorem gives the bound for this normalized class (our own). Expanding the Koebe function gives aₙ = n, attaining the bound (our own).
 
 **Wikipedia:** [De Branges's theorem](https://en.wikipedia.org/wiki/De_Branges%27s_theorem), [Hurwitz's theorem (complex analysis)](https://en.wikipedia.org/wiki/Hurwitz%27s_theorem_%28complex_analysis%29). It says: “The statement concerns the Taylor coefficients aₙ of a univalent function, i.e., a one-to-one holomorphic function that maps the unit disk into the complex plane, normalized as is always possible so that a₀=0 and a₁=1.”
 
@@ -1200,7 +1200,7 @@
 
 *True by definition.* MSC 30C62 (Quasiconformal mappings in the complex plane). arXiv math.CV. Level 3: graduate.
 
-**Definition.** For K ≥ 1, a plane homeomorphism is K-quasiconformal if it changes every curve family’s modulus by factors between 1/K and K. A nonnegative Borel density is admissible when its line integral along each locally rectifiable curve in the family is at least one. Modulus is the infimum of the area integrals of squared admissible densities. The differential definition bounds the ratio of the major and minor axes of infinitesimal ellipses.
+**Definition.** A nonnegative Borel density is admissible for a curve family Γ if its integral along every locally rectifiable member is at least one. The modulus mod Γ is the infimum of the area integrals of squared admissible densities. A plane homeomorphism f is K-quasiconformal if mod Γ/K ≤ mod f(Γ) ≤ K mod Γ for every curve family, with K ≥ 1.
 
 **Problem.** The composition of quasiconformal maps with bounds K and L has bound KL. The inverse of a map with bound K has bound K.
 
@@ -1212,31 +1212,13 @@
 
 - [Lars V. Ahlfors, Lectures on Quasiconformal Mappings, second edition (2006)](https://doi.org/10.1090/ulect/038)
 
-### Geometric and analytic quasiconformality agree, so each proof can choose
-
-**Remember:** Distortion of shapes and the Beltrami bound are the same condition.
-
-*True by definition. Confidence: medium.* MSC 30C62 (Quasiconformal mappings in the complex plane), 30F60. arXiv math.DG, math.CV. Level 3: graduate.
-
-**Definition.** In the geometric sense, a K-quasiconformal map is a homeomorphism that changes the conformal modulus of each quadrilateral by at most a factor K. The modulus is a conformal invariant, like the ratio of the sides of a rectangle. In the analytic sense, it is a homeomorphism with weak derivatives that satisfy \|∂f/∂z̄\| ≤ k\|∂f/∂z\| almost everywhere, where k = (K−1)/(K+1). The theorem adds that these derivatives are locally square-integrable.
-
-**Problem.** For a homeomorphism between plane domains, the geometric and the analytic definitions of K-quasiconformality are equivalent.
-
-**How the definition helps.** Each definition makes some theorems immediate, and the equivalence lets every proof use the easier one. With the geometric definition, the inverse of a K-quasiconformal map is K-quasiconformal by definition (our own). Compositions multiply the constants, also by definition (our own). The analytic definition links the maps to the Beltrami equation ∂f/∂z̄ = μ ∂f/∂z (our own). The work moves into the proof that the two definitions agree.
-
-**Paper or page:** [Survey on the Canonical Metrics on the Teichmüller Spaces and the Moduli Spaces of Riemann Surfaces](https://arxiv.org/abs/2405.00761). It says: “The geometric and the analytic definitions of K-quasiconformality are equivalent.”
-
-**Sources:**
-
-- [K. W. Chan, Survey on the Canonical Metrics on the Teichmüller Spaces and the Moduli Spaces of Riemann Surfaces, arXiv:2405.00761 (2024)](https://arxiv.org/abs/2405.00761)
-
 ### Matching Beltrami coefficients cancel distortion
 
 **Remember:** Equal infinitesimal distortions disappear when one map undoes the other.
 
 *True by definition. Confidence: medium.* MSC 30C62 (Quasiconformal mappings in the complex plane). arXiv math.CV. Level 3: graduate.
 
-**Definition.** An orientation-preserving quasiconformal map is a homeomorphism whose weak derivative distorts infinitesimal circles into ellipses of bounded axis ratio. Here the map has locally square-integrable weak derivatives, defined by integration by parts. Write its derivative almost everywhere as v ↦ av + bv̄, where the bar denotes conjugation. Its Beltrami coefficient b/a records the direction and size of the distortion.
+**Definition.** An orientation-preserving plane homeomorphism f is quasiconformal if it has locally square-integrable weak derivatives with \|f<sub>z</sub>̄\| ≤ k\|f<sub>z</sub>\| almost everywhere for some k &lt; 1. Its Beltrami coefficient is f<sub>z</sub>̄/f<sub>z</sub> wherever f<sub>z</sub> ≠ 0, with value zero elsewhere.
 
 **Problem.** Suppose two such maps on the same plane domain have equal Beltrami coefficients almost everywhere. Then one is the other followed by a holomorphic change of coordinates.
 
@@ -1250,15 +1232,15 @@
 
 ### Measurable Beltrami coefficients and Sobolev maps give the measurable Riemann mapping theorem
 
-**Remember:** Measurable distortion, weak derivatives: every such Beltrami equation has a solution.
+**Remember:** Bound the measurable coefficient and read the Beltrami equation in weak derivatives.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 30C62 (Quasiconformal mappings in the complex plane). arXiv math.CV. Level 3: graduate.
 
-**Definition.** A quasiconformal map is a homeomorphism that solves the Beltrami equation ∂f/∂z̄ = μ ∂f/∂z. Here μ is a measurable function with sup \|μ\| &lt; 1, and the derivatives are weak derivatives in the Sobolev space W1,2 (square-integrable first derivatives). To first order, such a map takes small circles to ellipses of bounded eccentricity.
+**Definition.** A quasiconformal map is an orientation-preserving homeomorphism with locally square-integrable weak first derivatives satisfying f<sub>z</sub>̄ = μf<sub>z</sub> almost everywhere. The coefficient μ is measurable and satisfies \|μ\| ≤ k almost everywhere for some k &lt; 1.
 
 **Problem.** Let D be a simply connected domain other than ℂ, and let μ be measurable on D with ‖μ‖∞ &lt; 1. Then a quasiconformal homeomorphism from D onto the unit disc solves the Beltrami equation for μ. This generalizes the Riemann mapping theorem from conformal to quasiconformal maps.
 
-**How the definition helps.** Measurable coefficients and weak derivatives give a class that is closed under the limits that the existence proof takes (our own). With only continuous coefficients and classical derivatives, such limits can leave the class (our own). In applications μ is often discontinuous, for example when an ellipse field is pulled back by a dynamical system (our own). The weaker definition lets such μ be used at all.
+**How the definition helps.** The weak equation makes sense for every measurable coefficient with the stated bound (our own). The measurable Riemann mapping theorem supplies a homeomorphic solution onto the disk. Setting μ = 0 recovers the conformal case (our own).
 
 **Wikipedia:** [Quasiconformal mapping](https://en.wikipedia.org/wiki/Quasiconformal_mapping). It says: “suppose that μ : D → ℂ is Lebesgue measurable and satisfies ‖μ‖∞&lt;1. Then there is a quasiconformal homeomorphism f from D to the unit disk which is in the Sobolev space W1,2(D)”
 
@@ -1273,11 +1255,11 @@
 
 *True by definition.* MSC 30C70 (Extremal problems for conformal and quasiconformal mappings, variational methods), 31A15. arXiv math.CV. Level 3: graduate.
 
-**Definition.** A density is a nonnegative Borel function on a plane domain. It is admissible if its integral along each locally rectifiable curve in the family is at least one. The modulus is the infimum of the area integrals of squared admissible densities. Extremal length is the supremum of squared minimum curve length divided by area over densities of positive finite area.
+**Definition.** A nonnegative Borel density is admissible for a curve family if its integral along every locally rectifiable member is at least one. The modulus of the family is the infimum of the area integrals of the squares of all admissible functions.
 
 **Problem.** The modulus of a countable union of curve families is at most the sum of their moduli.
 
-**How the definition helps.** The pointwise supremum of admissible densities meets every length requirement in the union (our own). Its square is at most the sum of their squares (our own). Choose densities with errors below ε/2ⁿ for family n, then let ε decrease to zero (our own). Rescaling densities to give minimum length one explains why modulus is the reciprocal of extremal length (our own).
+**How the definition helps.** The pointwise supremum of admissible densities meets every length requirement in the union (our own). Its square is at most the sum of their squares (our own). For finite total modulus, choose the nth density within ε/2ⁿ of its infimum, integrate the bound, and let ε decrease to zero (our own).
 
 **Paper or page:** [Divergent geodesics in the Universal Teichmüller space](https://arxiv.org/abs/2307.02775v1). It says: “Subadditivity: mod(⋃ᵢ₌₁…∞ Γᵢ) ≤ ∑ᵢ₌₁…∞ mod(Γᵢ).”
 
@@ -1323,11 +1305,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 30D15 (Special classes of entire functions of one complex variable and growth estimates), 42A38. arXiv math.CV, math.CA. Level 3: graduate.
 
-**Definition.** An entire function f has exponential type A if there is a constant C with \|f(ζ)\| ≤ C exp(A\|ζ\|) for all complex ζ. This measures growth in every complex direction by one number.
+**Definition.** An entire function has exponential type at most A if for every ε &gt; 0 some Cε bounds \|f(ζ)\| by Cε exp((A+ε)\|ζ\|) throughout ℂ.
 
-**Problem.** The Paley–Wiener theorem describes the Fourier transforms of L² functions supported in \[−A, A\]. They are exactly the entire functions of exponential type A that are square integrable over horizontal lines.
+**Problem.** For A ≥ 0 use the Fourier kernel exp(ixζ). Transforms of L² functions supported in \[−A,A\] are exactly the entire functions of exponential type at most A square-integrable on each horizontal line.
 
-**How the definition helps.** The number A in the growth bound is the size of the support, so a support condition becomes an equivalent growth condition in the complex plane. The forward direction is easy: \|exp(ixζ)\| ≤ exp(A\|ζ\|) for \|x\| ≤ A. The converse is the real content, and it needs contour shifts and growth estimates (our own summary).
+**How the definition helps.** The support bound controls complex growth because \|exp(ixζ)\| ≤ exp(A\|Im ζ\|) for \|x\| ≤ A (our own). On each horizontal line, Plancherel’s theorem gives square integrability (our own). The converse is the Paley–Wiener theorem.
 
 **Wikipedia:** [Paley–Wiener theorem](https://en.wikipedia.org/wiki/Paley%E2%80%93Wiener_theorem). It says: “Conversely, any entire function of exponential type A which is square-integrable over horizontal lines is the holomorphic Fourier transform of an L² function supported in \[−A,A\].”
 
@@ -1341,9 +1323,9 @@
 
 *Makes the theorem clean to state or prove.* MSC 30D15 (Special classes of entire functions of one complex variable and growth estimates), 30D20. arXiv math.CV. Level 3: graduate.
 
-**Definition.** Let M(r) be the maximum of \|f\| on the circle \|z\| = r. The order of an entire function f is the lim sup of log log M(r) / log r as r → ∞. For example, sin z, cos z and eᶻ have order 1.
+**Definition.** For a nonconstant entire function f, let M(r) be the maximum of \|f\| on \|z\| = r. Its order is the upper limit of log(log M(r))/log r as r tends to infinity. Assign nonzero constants order zero.
 
-**Problem.** Hadamard's theorem says that an entire function of finite order ρ is zᵐ exp(P(z)) times a product of elementary factors Eₚ(z/aₖ) over its zeros. Here P is a polynomial of degree at most ρ, and one integer p ≤ ρ serves for every factor.
+**Problem.** Every nonzero entire function of finite order ρ factors as zᵐ exp(P(z)) times a product of elementary factors Eₚ(z/aₖ). Here m is the zero order at zero, and the aₖ list all nonzero zeros with multiplicity. The polynomial P has degree at most ρ, and one nonnegative integer p ≤ ρ serves throughout.
 
 **How the definition helps.** One number that measures growth controls both free parts of the Weierstrass product, so the factorization has a short, rigid form. Weierstrass's general theorem leaves the entire function g in exp(g(z)) and the degrees pₙ uncontrolled. Finite order forces g to be a polynomial and lets one degree p work for all zeros. The hard part is the proof, which bounds the zeros by Jensen's formula (our own summary).
 
@@ -1359,9 +1341,9 @@
 
 **Definition.** Weierstrass's elementary factors are E₀(z) = 1 − z and Eₙ(z) = (1 − z) exp(z + z²/2 + … + zⁿ/n). Each one vanishes only at z = 1. For \|z\| ≤ 1 it satisfies \|1 − Eₙ(z)\| ≤ \|z\|ⁿ⁺¹, so it is very close to 1 near 0.
 
-**Problem.** Let aₙ be any sequence of nonzero complex numbers with \|aₙ\| → ∞. Then some entire function has zeros exactly at the aₙ, with multiplicity equal to the number of repeats. Every entire function is such a product times zᵐ and a nonvanishing factor exp(g(z)).
+**Problem.** For any sequence of nonzero complex numbers aₙ tending to infinity in modulus, some entire function has precisely those zeros with the listed multiplicities. Every nonzero entire function factors as zᵐ exp(g(z)) times an elementary-factor product over its nonzero zeros, with g entire.
 
-**How the definition helps.** An infinite product converges only if its factors tend to 1, and the elementary factors do this while keeping their one zero. The naive product of (1 − z/aₙ) can diverge; for aₙ = n it does, because the sum of 1/n diverges (our own example). The exponential correction cancels the first terms of log(1 − z), so Eₙ(z/aₙ) is within \|z/aₙ\|ⁿ⁺¹ of 1. A suitable choice of degrees then makes the product converge.
+**How the definition helps.** The exponential correction cancels the first terms of log(1−z), keeping each factor near one while retaining its zero (our own). On any fixed compact disk, eventually \|z/aₙ\| ≤ ½, so the errors for degree n have a summable geometric bound (our own). The product converges with exactly the prescribed zeros, and the remaining zero-free entire quotient has an entire logarithm (our own).
 
 **Wikipedia:** [Weierstrass factorization theorem](https://en.wikipedia.org/wiki/Weierstrass_factorization_theorem). It says: “The necessity of additional terms in the product is demonstrated when one considers ∏ₙ(z−cₙ) where the sequence {cₙ} is not finite. It can never define an entire function, because the infinite product does not converge.”
 
@@ -1373,11 +1355,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 30D30 (Meromorphic functions of one complex variable (general theory)), 30D35. arXiv math.CV. Level 3: graduate.
 
-**Definition.** Treat a meromorphic function as a holomorphic map into the Riemann sphere ℂ ∪ {∞}. Classify its behaviour at ∞ by the behaviour of f(1/z) at 0. An entire function that is not a polynomial has an essential singularity at ∞.
+**Definition.** A meromorphic function is a holomorphic map into the Riemann sphere, using 1/f as local coordinate at a pole. An isolated singularity is essential if the map has no holomorphic extension there as a sphere-valued map.
 
 **Problem.** Near an essential singularity, a meromorphic function takes every point of the Riemann sphere infinitely often, with at most two exceptions. So a nonconstant entire function misses at most one complex value.
 
-**How the definition helps.** On the sphere, poles are ordinary values, so the exceptional values of entire and meromorphic functions are counted in one way. An entire function never takes ∞, which uses up one of the two exceptions (our own step). An entire function that is not a polynomial has an essential singularity at ∞, so the Little theorem is a case of the Great one. The page gives 1/(1 − exp(1/z)), which takes ∞ infinitely often but misses 0 and 1.
+**How the definition helps.** Great Picard’s theorem allows at most two exceptions among sphere values near an essential singularity (our own). A nonpolynomial entire function has an essential singularity at infinity and already omits ∞, leaving at most one finite exception. Every nonconstant polynomial takes all finite values by the fundamental theorem of algebra (our own).
 
 **Wikipedia:** [Picard theorem](https://en.wikipedia.org/wiki/Picard_theorem). It says: “With this generalization, Little Picard Theorem follows from Great Picard Theorem because an entire function is either a polynomial or it has an essential singularity at infinity.”
 
@@ -1389,9 +1371,9 @@
 
 *Makes the theorem clean to state or prove.* MSC 30D35 (Value distribution of meromorphic functions of one complex variable, Nevanlinna theory). arXiv math.CV. Level 3: graduate.
 
-**Definition.** Let f be meromorphic and let a be a value. The counting function N(r, a, f) counts the solutions of f = a in the disc \|z\| &lt; r, with a logarithmic weight. The proximity function m(r, a, f) is the average over \|z\| = r of log⁺ 1/\|f − a\|. It measures how close f comes to a on the circle, and the characteristic is T(r, f) = m(r, ∞, f) + N(r, ∞, f).
+**Definition.** For each nonzero a-preimage z inside radius r, add log(r/\|z\|) with multiplicity to N(r,a), adding log r per occurrence at zero. Define m(r,a) as the circular mean of max(0,log(1/\|f−a\|)) for finite a, using max(0,log\|f\|) at infinity. The characteristic T(r,f) equals N(r,∞)+m(r,∞), where infinity-preimages are poles.
 
-**Problem.** The First Fundamental Theorem says that for every a on the Riemann sphere, T(r, f) = N(r, a, f) + m(r, a, f) + O(1).
+**Problem.** For every nonconstant meromorphic function f on the plane and every sphere value a, T(r,f) = N(r,a) + m(r,a) + O(1) as r grows.
 
 **How the definition helps.** The proximity term is designed so that Jensen's formula turns the sum into a quantity that does not depend on a. Counting alone does depend on a (our own example). The exponential function never takes the value 0, so N(r, 0) = 0, while N(r, 1) grows. But eᶻ comes very close to 0 on the left half of each circle, and m(r, 0) records this.
 
@@ -1407,11 +1389,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 30D35 (Value distribution of meromorphic functions of one complex variable, Nevanlinna theory). arXiv math.CV. Level 3: graduate.
 
-**Definition.** The Nevanlinna characteristic T(r) combines an integrated pole count with a circular average measuring large values. For each preimage z of a with 0 &lt; \|z\| &lt; r, add log(r/\|z\|) once per unit of multiplicity. A preimage at zero contributes its multiplicity times log r, giving the completed count N(r,a). The deficiency of a is one minus the upper limit of N(r,a)/T(r) as r tends to infinity.
+**Definition.** Count a-preimages inside radius r with multiplicity, weighting nonzero z by log(r/\|z\|) and zero by log r, to obtain N(r,a). Set T(r) equal to N(r,∞) plus the circular mean of max(0,log\|f\|). The deficiency of a is one minus the upper limit of N(r,a)/T(r) as r tends to infinity.
 
 **Problem.** For a transcendental meromorphic function on the plane, the sum of the deficiencies of all sphere values is at most two.
 
-**How the definition helps.** Deficiency expresses the shortfall for every value as a fraction of the same total growth (our own). For finitely many values, the Second Fundamental Theorem bounds the sum of the normalized shortfalls by two plus an error (our own). Along suitable radii tending to infinity outside the exceptional set, the error tends to zero (our own). Taking lower limits bounds the sum of deficiencies for every finite set (our own). The First Fundamental Theorem makes deficiencies nonnegative, so taking the supremum over finite sets proves the result (our own).
+**How the definition helps.** Every deficiency measures a shortfall relative to the same T(r) (our own). For finitely many values the Second Fundamental Theorem bounds the sum of normalized shortfalls by two plus an error (our own). Along suitable radii the error vanishes, so taking lower limits bounds the sum of those deficiencies by two (our own). The First Fundamental Theorem makes deficiencies nonnegative, hence the same bound holds for their full sum (our own).
 
 **Wikipedia:** [Nevanlinna theory](https://en.wikipedia.org/wiki/Nevanlinna_theory). It says: “The defect relation is one of the main corollaries”
 
@@ -1423,7 +1405,7 @@
 
 *True by definition.* MSC 30D35 (Value distribution of meromorphic functions of one complex variable, Nevanlinna theory). arXiv math.CV. Level 3: graduate.
 
-**Definition.** For a meromorphic function on a disk centered at zero, let A(t) be the spherical area covered by the disk of radius t. Count each image point once per preimage, with multiplicity, and divide by the area of the sphere. The Ahlfors–Shimizu characteristic at radius r is the integral of A(t)/t from zero to r. The usual Nevanlinna characteristic combines a pole count with a circular average measuring large values.
+**Definition.** For each radius t, let A(t) be the spherical area of the image disk counted with preimage multiplicity, divided by the sphere’s area. Here the source disk has center zero and radius t. The Ahlfors–Shimizu characteristic at r is the integral of A(t)/t from zero to r.
 
 **Problem.** Postcomposing a meromorphic function by a rotation of the sphere preserves its Ahlfors–Shimizu characteristic exactly.
 
@@ -1439,11 +1421,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 30D40 (Cluster sets, prime ends, boundary behavior), 30H10. arXiv math.CV, math.CA. Level 3: graduate.
 
-**Definition.** A path in the unit disc converges non-tangentially to a boundary point if it stays in a wedge at that point. The wedge is symmetric about the radius and has opening angle less than π. Radial approach is the simplest case.
+**Definition.** A path z(t) approaches a unit circle point ζ non-tangentially if z(t) tends to ζ inside the disk and \|z(t)−ζ\|/(1−\|z(t)\|) stays bounded near the endpoint.
 
-**Problem.** Let f be in the Hardy space Hᵖ of the disc, the holomorphic functions with bounded p-th means on circles, and let f₁ be its boundary function. At almost every boundary point, f(z) tends to f₁ along every non-tangential path.
+**Problem.** For 0 &lt; p &lt; ∞, let f be holomorphic on the disk with uniformly bounded circular means of \|f\|ᵖ. At almost every circle point, f tends to its radial boundary value along every non-tangential path.
 
-**How the definition helps.** Inside a wedge, the distance to the boundary is comparable to the distance to the point, so the Poisson kernel and a maximal function control the values. Tangential approach is excluded because it fails (our own). Littlewood showed in 1927 that for any curve tangent to the circle, some bounded holomorphic function has no limit along rotated copies of it at almost every point (our own). The hard part is the maximal function estimate.
+**How the definition helps.** The approach bound keeps the distance to the endpoint comparable to the distance to the circle (our own). Fatou’s non-tangential limit theorem then gives simultaneous convergence within every fixed approach angle (our own). Littlewood’s tangential approach examples give bounded holomorphic functions with no limit along rotated tangent curves at almost every endpoint (our own).
 
 **Wikipedia:** [Fatou's theorem](https://en.wikipedia.org/wiki/Fatou%27s_theorem). It says: “Let f ∈ Hᵖ(𝔻). Then for almost all θ ∈ \[0,2π\], lim (t→1) f(γ(t)) = f₁(eⁱᶿ) for every non-tangential limit γ converging to eⁱᶿ, where f₁ is defined as above.”
 
@@ -1457,11 +1439,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 30D40 (Cluster sets, prime ends, boundary behavior), 30C35. arXiv math.CV. Level 3: graduate.
 
-**Definition.** A prime end of a simply connected plane domain is an equivalence class of chains of cross-cuts. A cross-cut is an arc in the domain with both ends on the boundary. A chain is a nested sequence of cross-cuts that shrinks toward the boundary.
+**Definition.** A crosscut is an open Jordan arc inside the domain with distinct boundary endpoints. A null chain has crosscuts with disjoint closures and spherical diameters tending to zero, each separating its predecessor from its successor. Chains define the same prime end if each component beyond a crosscut eventually contains the other chain’s crosscuts, in both directions.
 
 **Problem.** Let f be a conformal bijection from the unit disc onto a simply connected domain B. Then f gives a bijection from the unit circle onto the prime ends of B.
 
-**How the definition helps.** Prime ends describe the boundary as seen from inside the domain, which is what the conformal map sees. Ordinary boundary points do not work in general (our own examples). In a disc slit along a radius, each slit point is reached from two sides and matches two points of the circle. In a comb-shaped domain, some boundary points cannot be reached by any path from inside.
+**How the definition helps.** Prime ends distinguish the two approaches to each interior point of a radial slit (our own). Carathéodory’s prime end theorem extends the conformal bijection to a homeomorphism from the closed disk onto the domain completed by prime ends (our own). Restricting that extension to the circle gives the stated bijection (our own).
 
 **Wikipedia:** [Prime end](https://en.wikipedia.org/wiki/Prime_end). It says: “If ƒ maps the unit disk conformally and one-to-one onto the domain B, it induces a one-to-one mapping between the points on the unit circle and the prime ends of B.”
 
@@ -1495,7 +1477,7 @@
 
 **Problem.** Montel's theorem says that a family of holomorphic functions on a domain, all omitting the same two complex values, is normal. Its meromorphic form says that omitting three points of the Riemann sphere is enough.
 
-**How the definition helps.** With the spherical distance, escape to infinity becomes one more allowed limit, so the theorem can hold with no exceptions. Without it the theorem is false (our own example). The constant functions fₙ = n, for n ≥ 2, all omit 0 and 1, and no subsequence converges to a finite function. In the spherical distance they converge to ∞.
+**How the definition helps.** Using spherical distance admits the constant limit ∞, which the sequence of constants fₙ = n needs (our own). For n ≥ 2 these functions omit 0 and 1 but have no finite subsequential limit (our own). Montel’s meromorphic theorem gives normality for three common omitted values. Holomorphic functions already omit ∞, so two distinct finite omissions suffice.
 
 **Wikipedia:** [Normal family](https://en.wikipedia.org/wiki/Normal_family), [Montel's theorem](https://en.wikipedia.org/wiki/Montel%27s_theorem). It says: “For a family of holomorphic functions, this reduces to requiring two values omitted by viewing each function as a meromorphic function omitting the value infinity.”
 
@@ -1541,11 +1523,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 30E20 (Integration, integrals of Cauchy type, integral representations of analytic functions in the complex plane), 46F20, 26A42. arXiv math.CV, math.CA. Level 3: graduate.
 
-**Definition.** Take the integral of φ(ζ)/(ζ − z) over a curve C through z. Its Cauchy principal value removes a small piece of C centred at z and lets the piece shrink. The two sides of the singularity cancel in the limit. On the real line this gives P(1/x).
+**Definition.** At z on a smooth contour C, omit the points ζ with \|ζ−z\| &lt; ε from the Cauchy integral. Its principal value is the limit of the remaining integral as ε decreases to zero, when that limit exists.
 
-**Problem.** Let Φ(z) be 1/(2πi) times the integral of φ(ζ)/(ζ − z) over a smooth simple closed curve C, with φ analytic on C. Its limits from inside and outside at z on C are the principal value of this integral plus ½φ(z) and minus ½φ(z). On the real line, 1/(x ± iε) tends to ∓iπδ(x) + P(1/x).
+**Problem.** For positively oriented smooth simple closed C and φ analytic near C, put Φ(w) = (1/(2πi))∮<sub>C</sub> φ(ζ)/(ζ−w) dζ off C. At z on C, its interior and exterior limits equal its normalized principal value plus ½φ(z) and minus ½φ(z), respectively. On ℝ, 1/(x±iε) tends distributionally to PV(1/x) ∓ iπδ₀ as ε decreases to zero.
 
-**How the definition helps.** The ordinary integral diverges at z, because 1/(ζ − z) is not integrable there, and the principal value is the symmetric limit that does exist. With it, each one-sided limit splits into a common average plus or minus half the density. The difference of the two limits is φ(z), the jump. This is the key step in Plemelj's 1908 solution of the Riemann–Hilbert problem. The hard part is the analysis for less smooth curves and data.
+**How the definition helps.** Subtracting φ(z) from the numerator removes the singularity, leaving the same regular contribution from both sides (our own). The constant part contributes its principal value plus or minus half its density by the Sokhotski–Plemelj formulas. Their real-line form gives the distributional identity (our own).
 
 **Wikipedia:** [Sokhotski–Plemelj theorem](https://en.wikipedia.org/wiki/Sokhotski%E2%80%93Plemelj_theorem). It says: “The Sokhotski–Plemelj formulas relate the limiting boundary values of these two analytic functions at a point z on C and the Cauchy principal value P of the integral”
 
@@ -1563,7 +1545,7 @@
 
 **Problem.** There are nonvanishing analytic functions inside and outside the circle whose inside boundary value divided by the outside value equals g. The outside function tends to one at infinity.
 
-**How the definition helps.** Taking logarithms turns the prescribed ratio into a difference of boundary values. In our own circle construction, the Cauchy boundary formula gives the inside value of C minus its outside value as ℓ. Exponentiating therefore gives the required ratio. The main theorem is the boundary formula, and zero winding permits the continuous logarithm.
+**How the definition helps.** The Cauchy integral of the logarithm has inside boundary value minus outside boundary value equal to ℓ by the Sokhotski–Plemelj formula (our own). Exponentiating each branch gives nonvanishing functions whose boundary ratio is exp(ℓ) = g (our own). The exterior integral tends to zero at infinity, so its exponential tends to one (our own).
 
 **Wikipedia:** [Riemann–Hilbert problem](https://en.wikipedia.org/wiki/Riemann%E2%80%93Hilbert_problem). It says: “the Sokhotski–Plemelj theorem gives the solution.”
 
@@ -1595,7 +1577,7 @@
 
 **Problem.** For a map π of degree N from S′ to S, the Euler characteristics satisfy χ(S′) = N·χ(S) − Σ(eₚ − 1). Equivalently, 2g(S′) − 2 = N(2g(S) − 2) + Σ(eₚ − 1).
 
-**How the definition helps.** The local form zⁿ says exactly how many sheets meet at a point, so the correction is a sum of local numbers. Away from ramification points the map is an N-sheeted covering, and Euler characteristics multiply by N. A point of index e is e sheets meeting in one point, so it removes e − 1 points from its fibre. The page checks the formula for ℘ on an elliptic curve, a double cover of the sphere with four points of index 2: 0 = 2·2 − 4.
+**How the definition helps.** Triangulate the target with all branch values among the vertices (our own). Every open edge and face has N lifts (our own). Over each vertex the indices sum to N, so each index e reduces the lifted vertex count by e−1 (our own). Taking vertices minus edges plus faces gives the formula (our own).
 
 **Wikipedia:** [Riemann–Hurwitz formula](https://en.wikipedia.org/wiki/Riemann%E2%80%93Hurwitz_formula). It says: “What the Riemann–Hurwitz formula does is to add in a correction to allow for ramification (sheets coming together).”
 
@@ -1613,7 +1595,7 @@
 
 **Problem.** The non-gaps at any point of a compact Riemann surface contain zero and are closed under addition. Exactly g positive integers are missing, where g is the genus, or number of handles.
 
-**How the definition helps.** Listing attainable pole orders turns multiplication of functions into addition of orders. The leading coefficients multiply, and the product acquires no other poles (our own). Increasing the allowed order by one adds at most one dimension, because one leading coefficient determines the new term (our own). Riemann–Roch gives dimension n + 1 − g for n &gt; 2g − 2 (our own). Subtract the one dimension of constants to count n − g attained positive orders through n, leaving g gaps (our own).
+**How the definition helps.** Multiplying two realizing functions adds their pole orders and introduces no other poles (our own). Each positive non-gap raises the dimension of the allowed function space by one, since its leading coefficient determines the new term (our own). For every sufficiently large n, Riemann–Roch gives dimension n+1−g (our own). Removing the constant dimension leaves n−g attained positive orders through n, hence exactly g gaps overall (our own).
 
 **Wikipedia:** [Weierstrass point](https://en.wikipedia.org/wiki/Weierstrass_point). It says: “Multiplication of functions gives the non-gaps a numerical semigroup structure”
 
@@ -1641,7 +1623,7 @@
 
 *True by definition.* MSC 30F30 (Differentials on Riemann surfaces). arXiv math.CV. Level 3: graduate.
 
-**Definition.** On a compact Riemann surface, integrating holomorphic differential forms along a path gives a linear functional on those forms. The functionals from closed paths are called periods. The Jacobian identifies two functionals when their difference is a period. The Abel–Jacobi map assigns each point the class obtained by integrating to it from a fixed base point.
+**Definition.** Integrating holomorphic differentials along a closed path gives a linear functional called a period. The Jacobian of a compact Riemann surface is the dual space of holomorphic differentials modulo these periods. The Abel–Jacobi map sends each point to the class of integration along a path from a fixed base point.
 
 **Problem.** The Abel–Jacobi map of a compact Riemann surface is independent of the integration path.
 
@@ -1657,11 +1639,11 @@
 
 *Rules out counterexamples.* MSC 30F40 (Kleinian groups (aspects of compact Riemann surfaces and uniformization)). arXiv math.CV. Level 3: graduate.
 
-**Definition.** Choose g pairs of disjoint simple closed curves on the sphere bounding 2g mutually disjoint disks. Pair them by Möbius transformations taking the exterior of one disk onto the interior of its partner. These transformations generate a Schottky group of rank g. On its domain of discontinuity, each compact set meets its image under only finitely many group elements.
+**Definition.** Choose 2g Jordan disks with disjoint closures on the sphere, paired by Möbius maps sending one exterior onto its partner’s interior. These g maps generate a Schottky group. The discontinuity domain is the largest invariant open set where, for each compact subset K, only finitely many group elements send K to intersect itself.
 
 **Problem.** The quotient of the domain of discontinuity of a rank g Schottky group is a compact Riemann surface of genus g. The quotient map is a holomorphic covering.
 
-**How the definition helps.** Restricting to this domain removes every point fixed by infinitely many group elements (our own). For the group generated by z ↦ 2z, these points are zero and infinity (our own). Inside the domain, only finitely many elements fix a point, and every nonidentity element has infinite order (our own). Thus only the identity fixes a point there, and the quotient map is a holomorphic covering (our own). Gluing the paired boundary curves of the region outside the disks gives a compact surface with g handles.
+**How the definition helps.** On this domain stabilizers are finite, hence trivial since every nonidentity Schottky element has infinite order (our own). For the group generated by z ↦ 2z this excludes zero and infinity (our own). A free, properly discontinuous action by Möbius maps gives a holomorphic covering (our own). Gluing the paired circles of the fundamental region gives a compact surface with g handles.
 
 **Wikipedia:** [Schottky group](https://en.wikipedia.org/wiki/Schottky_group). It says: “The corresponding quotient space Ω(G)/G is given by joining up the Jordan curves in pairs”
 
@@ -1673,7 +1655,7 @@
 
 *True by definition. Confidence: medium.* MSC 30F45 (Conformal metrics (hyperbolic, Poincaré, distance functions)), 51M10. arXiv math.CV, math.MG. Level 3: graduate.
 
-**Definition.** In the upper half-plane, the hyperbolic line through distinct p and q is an arc or a vertical ray perpendicular to the boundary. Let a and b be its boundary endpoints in the order a, p, q, b. Define the distance as log \|(q − a)(p − b)/((p − a)(q − b))\|, using a limit for an infinite endpoint. The usual distance minimizes lengths computed from \|dz\|/Im z.
+**Definition.** For distinct upper half-plane points p,q, take the perpendicular boundary semicircle or vertical line through both, with endpoints ordered a,p,q,b. Their distance is log\|(q−a)(p−b)/((p−a)(q−b))\|, using a limit at an infinite endpoint. Set the distance from a point to itself to zero.
 
 **Problem.** Every Möbius map with real coefficients and positive determinant preserves hyperbolic distance in the upper half-plane.
 
@@ -1689,7 +1671,7 @@
 
 *True by definition.* MSC 30F60 (Teichmüller theory for Riemann surfaces). arXiv math.CV. Level 3: graduate.
 
-**Definition.** A marking identifies a fixed closed oriented surface with a given Riemann surface. Compare two marked surfaces using orientation-preserving quasiconformal maps that respect their markings up to continuous deformation. Each map has a distortion bound K on the axis ratios of infinitesimal ellipses. Teichmüller distance is half the logarithm of the infimum of these bounds.
+**Definition.** A marking m is an orientation-preserving homeomorphism from a fixed closed oriented surface onto a Riemann surface. For markings m and n, compare quasiconformal maps f from the first surface onto the second with f∘m isotopic to n. Their Teichmüller distance is half the logarithm of the infimum of the maximal dilatations K(f) of these maps.
 
 **Problem.** Teichmüller distance satisfies the triangle inequality.
 
@@ -1735,15 +1717,15 @@
 
 ### Uniform separation prevents incompatible interpolation
 
-**Remember:** Discrete points can still be too close for bounded interpolation.
+**Remember:** At every point, bound the product of all other distances uniformly from below.
 
 *Rules out counterexamples.* MSC 30H05 (Spaces of bounded analytic functions of one complex variable). arXiv math.CV. Level 3: graduate.
 
-**Definition.** At each point of a disk sequence, multiply its pseudohyperbolic distances to all the other points. This distance is the modulus of the disk automorphism that sends one of the two points to zero, evaluated at the other. Uniform separation requires a positive lower bound on the products. It is stronger than having no accumulation point inside the disk.
+**Definition.** For unit disk points z,w, their pseudohyperbolic distance is d(z,w) = \|(z−w)/(1−w̄z)\|. A sequence (zₙ) is uniformly separated if some δ &gt; 0 satisfies ∏ₘ≠ₙ d(zₙ,zₘ) ≥ δ for every n.
 
 **Problem.** A sequence in the disk interpolates all bounded data by bounded holomorphic functions exactly when it is uniformly separated.
 
-**How the definition helps.** The product bound keeps every pair far enough apart for bounded holomorphic functions to tell them apart (our own). For n ≥ 2, pair 1 − 2⁻ⁿ with 1 − 2⁻ⁿ + 4⁻ⁿ; their pseudohyperbolic distances tend to zero (our own). Data equal to 0 on the first point and 1 on the second of each pair have no bounded interpolant, by the Schwarz–Pick lemma (our own). Carleson’s interpolation theorem proves that the product bound suffices.
+**How the definition helps.** Uniform separation excludes pairs whose pseudohyperbolic distances tend to zero (our own). For n ≥ 2, the pair 1−2⁻ⁿ and 1−2⁻ⁿ+4⁻ⁿ has this defect (our own). Assigning zero and one across each pair contradicts Schwarz–Pick for any bounded interpolant after rescaling (our own). Carleson’s interpolation theorem gives the full equivalence (our own).
 
 **Paper or page:** [Random Interpolating Sequences in the Polydisc and the Unit Ball](https://arxiv.org/abs/2012.05381v4). It says: “A sequence Z in 𝔻 is uniformly separated if and only if it is weakly separated and the measure μ<sub>Z</sub> := ∑ₙ∈ℕ (1 − \|zₙ\|²) δ<sub>z</sub>ₙ is a Carleson measure for H²(𝔻).”
 
@@ -1757,11 +1739,11 @@
 
 *Rules out counterexamples.* MSC 30H10 (Hardy spaces). arXiv math.CV. Level 3: graduate.
 
-**Definition.** Choose a positive boundary modulus whose logarithm is integrable on the unit circle. Its Poisson integral is the harmonic extension obtained by averaging those logarithms with the disk’s Poisson kernel. An outer function is the exponential of a holomorphic function with that real part.
+**Definition.** Let φ be positive almost everywhere on the unit circle with integrable logarithm. An outer function is exp(H), where H is holomorphic on the disk and Re H is the Poisson integral of log φ.
 
 **Problem.** Two outer functions on the disk with equal boundary modulus almost everywhere differ by a constant of modulus one. The statement fails for zero-free bounded holomorphic functions in general.
 
-**How the definition helps.** Prescribing the real part fixes its holomorphic completion up to a purely imaginary constant (our own). Exponentiating leaves only a constant factor of modulus one (our own). The zero-free function exp(−(1 + z)/(1 − z)) has boundary modulus one almost everywhere (our own). The fraction in the exponent is purely imaginary on the circle except at 1 (our own). It is nonconstant, so absence of zeros alone cannot give uniqueness (our own).
+**How the definition helps.** Equal boundary moduli give the same Poisson integral of their logarithm (our own). The holomorphic exponents then differ by an imaginary constant, so their exponentials differ by a constant phase (our own). The zero-free bounded function exp(−(1+z)/(1−z)) is nonconstant but has the same boundary modulus as 1 almost everywhere (our own).
 
 **Wikipedia:** [Hardy space](https://en.wikipedia.org/wiki/Hardy_space). It says: “some positive measurable function φ on the unit circle such that log(φ) is integrable on the circle”
 
@@ -1777,7 +1759,7 @@
 
 **Problem.** Let π map the disk onto a plane domain as a holomorphic covering, meaning it has separate inverse branches over each small neighborhood. At fixed p &gt; 0, every holomorphic disk map into that domain belongs to the Hardy space exactly when π does.
 
-**How the definition helps.** A harmonic upper bound for \|π\|ᵖ gives one for every test map by composition (our own). Each test map lifts to a holomorphic disk map because the disk is simply connected, and composing the bound with this lift keeps it harmonic (our own). Conversely, π itself is a test map (our own). The Poisson integral gives the equivalence with bounded circular means (our own).
+**How the definition helps.** If u majorizes \|π\|ᵖ harmonically, any holomorphic test map f lifts through π because the disk is simply connected (our own). For its holomorphic lift g, the harmonic function u∘g majorizes \|π∘g\|ᵖ = \|f\|ᵖ (our own). Conversely, π is itself a test map (our own). The harmonic-majorant characterization gives the circular-means criterion (our own).
 
 **Paper or page:** [The Hardy number and the Bergman number of a planar domain are equal](https://arxiv.org/abs/2409.09150v2). It says: “Let D ⊂ ℂ be a hyperbolic domain with universal covering map f<sub>D</sub> : 𝔻 → D. Then, for all α &gt; −1, h(D) = h(f<sub>D</sub>)”
 
@@ -1803,11 +1785,11 @@
 
 ### Modulus fixes normalized outer functions
 
-**Remember:** An outer function has no hidden inner factor.
+**Remember:** Extend the log modulus harmonically, choose its conjugate, and exponentiate.
 
 *Rules out counterexamples.* MSC 30H10 (Hardy spaces), 30J05. arXiv math.CV. Level 3: graduate.
 
-**Definition.** Start with a positive boundary function whose logarithm is integrable on the unit circle. Its Poisson extension is the harmonic function obtained by averaging that logarithm against the disk’s Poisson kernel. Choose the holomorphic function with this real part and imaginary part zero at the center. Its exponential, times any constant of modulus one, is an outer function.
+**Definition.** Choose a positive boundary function φ on the unit circle with integrable logarithm. Let H be holomorphic on the disk with real part the Poisson integral of log φ and imaginary part zero at the center. The outer functions with this modulus are c exp(H) for constants \|c\| = 1.
 
 **Problem.** Two outer functions with the same radial boundary modulus almost everywhere differ only by a constant of modulus one. If both are positive at zero, they agree.
 
@@ -1827,7 +1809,7 @@
 
 **Problem.** For \|z\| &lt; 1, evaluation at z on the interior function has operator norm 1/√(1 − \|z\|²).
 
-**How the definition helps.** The boundary coefficients turn evaluation into a sum of coefficients times successive powers of z (our own). Parseval identifies the function norm with the square-sum norm of its coefficients (our own). Cauchy–Schwarz bounds evaluation by the norm of the geometric sequence (our own). Choosing the coefficients as successive powers of the complex conjugate of z attains equality (our own). The Hardy boundary theorem identifies the two descriptions of the space (our own).
+**How the definition helps.** The Hardy boundary theorem writes evaluation as ∑ₙ≥₀ aₙzⁿ, and Parseval identifies the squared norm with ∑ₙ≥₀ \|aₙ\|² (our own). Cauchy–Schwarz gives the bound √(∑ₙ≥₀ \|z\|²ⁿ) = 1/√(1−\|z\|²) for unit vectors (our own). Coefficients proportional to the conjugates of zⁿ attain equality (our own).
 
 **Wikipedia:** [Hardy space](https://en.wikipedia.org/wiki/Hardy_space). It says: “the associated holomorphic function f of Hᵖ is given by f(z)=∑ₙ₌₀∞ aₙ zⁿ, \|z\| &lt; 1.”
 
@@ -1901,15 +1883,15 @@
 
 ### Hardy spaces of Dirichlet series do not depend on the chosen group
 
-**Remember:** Lift a Dirichlet series to a group, and any good group will do.
+**Remember:** Each frequency lifts to a character that agrees along the dense real line.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 30B50 (Dirichlet series, exponential series and other series in one complex variable), 42B30, 43A25. arXiv math.FA, math.CV. Level 4: research.
 
-**Definition.** A general Dirichlet series is a sum of aₙ e to the power −λₙs, for an increasing sequence of frequencies λₙ. A λ-Dirichlet group is a compact abelian group G with a continuous homomorphism from ℝ into G with dense image. Each map t ↦ e to the power −iλₙt must extend through it to a character of G. The space ℋₚ(λ) consists of the Dirichlet series whose coefficients are the Fourier coefficients of a function in Lᵖ(G) with spectrum in the frequencies.
+**Definition.** For frequencies λₙ, a λ-Dirichlet group is a compact abelian group G with a continuous dense-image homomorphism β from ℝ. Each frequency must have a character χₙ satisfying χₙ(β(t)) = exp(−iλₙt) for every t. In ℋₚ(λ), series coefficients are Fourier coefficients at χₙ of an Lᵖ(G) function supported spectrally on these characters, using its normalized Haar Lᵖ norm.
 
-**Problem.** For a frequency sequence λ, the space ℋₚ(λ) is the same for every λ-Dirichlet group G. For ordinary Dirichlet series, with λₙ = log n, the infinite torus is such a group, so ℋₚ equals the Hardy space of the infinite torus isometrically.
+**Problem.** For 1 ≤ p ≤ ∞ and a frequency sequence λ, every λ-Dirichlet group gives the same space ℋₚ(λ). For λₙ = log n, the infinite torus realizes this space isometrically as its Hardy space.
 
-**How the definition helps.** Defining the norm on a compact group, instead of on vertical lines in the complex plane, turns Dirichlet series into Fourier series on a group. Then tools of harmonic analysis apply, and the independence theorem says that the definition is sound. For ordinary Dirichlet series this is Bohr's idea of writing n⁻ˢ as a monomial in the variables p⁻ˢ, one for each prime p (our own remark).
+**How the definition helps.** The characters identify the same frequencies in each group, and the Dirichlet group independence theorem identifies their Hardy spaces isometrically. For log n, unique prime factorization gives a monomial in the torus coordinates for each integer n (our own). These monomials supply exactly the Hardy spectrum of the infinite torus (our own).
 
 **Paper or page:** [Hardy spaces of general Dirichlet series - a survey](https://arxiv.org/abs/1902.02073v1), [Hardy spaces of general Dirichlet series - a survey](https://arxiv.org/abs/1902.02073v1). It says: “ℋₚ(λ) is independent of the chosen λ-Dirichlet group G.”
 
@@ -1923,7 +1905,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 30C62 (Quasiconformal mappings in the complex plane). arXiv math.CV. Level 4: research.
 
-**Definition.** A quasiconformal map here is an orientation-preserving sphere homeomorphism with bounded distortion of infinitesimal circles into ellipses. Normalize it to fix 0, 1 and ∞. In plane coordinates its weak derivative, defined by integration by parts, has the form v ↦ av + bv̄ almost everywhere. Its Beltrami coefficient μ = b/a has modulus bounded almost everywhere by some constant less than one.
+**Definition.** A normalized quasiconformal sphere map is an orientation-preserving homeomorphism fixing 0, 1 and ∞ with locally square-integrable weak derivatives in coordinate charts. In plane coordinates these satisfy f<sub>z</sub>̄ = μf<sub>z</sub> almost everywhere for some measurable μ with essential supremum of \|μ\| below one. This μ is its Beltrami coefficient.
 
 **Problem.** Let k &gt; 0 be the smallest almost-everywhere bound on \|μ\|. The map occurs at parameter k in a family of injections indexed by the unit disk, starting with the identity at zero. Each point moves holomorphically with the parameter, a property called holomorphic motion.
 
@@ -1943,9 +1925,9 @@
 
 **Definition.** An inf-harmonic function is the pointwise infimum of a nonempty family of positive harmonic functions. A holomorphic motion starts at the identity, moves each point holomorphically with a disk parameter λ, and keeps distinct points distinct.
 
-**Problem.** Move a bounded plane set of positive diameter by a holomorphic motion, and denote its diameter at λ by d(λ). Fix 0 &lt; ρ &lt; 1 and choose M strictly above all diameters for \|λ\| &lt; ρ. Then h(λ) = log(M/d(λ)) lies between h(0)/C and C h(0), where C = (ρ + \|λ\|)/(ρ − \|λ\|).
+**Problem.** For a holomorphic motion of a bounded plane set of positive diameter, let d(λ) denote the moving diameter. Fix 0 &lt; ρ &lt; 1 and M greater than every d(λ) for \|λ\| &lt; ρ. Throughout that disk, h(λ) = log(M/d(λ)) lies between h(0)/C and Ch(0), with C = (ρ+\|λ\|)/(ρ−\|λ\|).
 
-**How the definition helps.** The infimum description transfers one harmonic estimate to a diameter even though that diameter need not be harmonic (our own). For each distinct moving pair, log(M/distance) is positive and harmonic because the difference is holomorphic and never zero (our own). Harnack’s inequality bounds each function at λ by its value at zero times factors 1/C and C (our own). Taking infima preserves both inequalities because C is independent of the pair (our own). Joint continuity on compact sets supplies a finite uniform diameter bound (our own).
+**How the definition helps.** The diameter is a supremum of pairwise distances, so h is the infimum of log(M/distance) over distinct moving pairs (our own). Each pair gives a positive harmonic function because the moving difference is holomorphic and never zero (our own). Harnack’s inequality gives both bounds with the same C for every pair (our own). Taking infima preserves both inequalities (our own).
 
 **Paper or page:** [Holomorphic motions, dimension, area and quasiconformal mappings](https://arxiv.org/abs/2302.07743v2). It says: “the map λ ↦ log(M/diam fλ(S)) is an inf-harmonic function on D(0,ρ).”
 
@@ -1959,7 +1941,7 @@
 
 *True by definition.* MSC 30C80 (Maximum principle, Schwarz's lemma, Lindelöf principle, analogues and generalizations; subordination). arXiv math.CV. Level 4: research.
 
-**Definition.** For a disk point a, write Tₐ(z) = (z − a)/(1 − āz), the disk automorphism sending a to zero. For a holomorphic disk map f, its hyperbolic difference at v is the quotient Tₐ(f(z))/Tᵥ(z), with a = f(v). Fill in its value at v by continuity. Ordinary divided differences use subtraction in place of these disk automorphisms.
+**Definition.** For a disk point a, write Tₐ(z) = (z − a)/(1 − āz), the disk automorphism sending a to zero. For a holomorphic disk map f, its hyperbolic difference at v is the quotient Tₐ(f(z))/Tᵥ(z), with a = f(v). Fill in its value at v by continuity.
 
 **Problem.** Suppose f maps the disk holomorphically into itself and is not a bijection. Its hyperbolic difference at any v never increases hyperbolic distance, the disk distance with length element 2\|dz\|/(1 − \|z\|²).
 
@@ -1973,15 +1955,15 @@
 
 ### Analytic capacity zero means removable for bounded holomorphic functions
 
-**Remember:** Ahlfors defined the capacity so that zero capacity means removable.
+**Remember:** Maximize the first coefficient at infinity among bounded normalized functions.
 
 *True by definition.* MSC 30C85 (Capacity and harmonic measure in the complex plane), 30H05. arXiv math.CV. Level 4: research.
 
-**Definition.** For a compact set K in the plane, consider holomorphic f on the complement of K with \|f\| ≤ 1 and f(∞) = 0. Let f′(∞) be the limit of z f(z) as z → ∞. The analytic capacity γ(K) is the supremum of \|f′(∞)\| over all such f. A set K is removable if every bounded holomorphic function on Ω minus K extends holomorphically to Ω, for every open Ω containing K.
+**Definition.** For compact K ⊂ ℂ, consider all holomorphic f on the sphere minus K with \|f\| ≤ 1 and f(∞) = 0. The analytic capacity γ(K) is the supremum of \|lim<sub>z→∞</sub> z f(z)\| over these functions. Removability means every bounded holomorphic function on Ω ∖ K extends holomorphically to Ω for every open Ω containing K.
 
 **Problem.** A compact set K in the plane is removable for bounded holomorphic functions exactly when its analytic capacity γ(K) is zero.
 
-**How the definition helps.** The capacity measures the largest normalized bounded function that lives outside K, so it is zero exactly when no such nonconstant function exists. That equivalence is easy. The work moves into a geometric description of the sets of zero capacity, which is Painlevé's problem. Zero length implies zero capacity, but Vitushkin and Garnett gave sets of positive length with zero capacity.
+**How the definition helps.** Removability forces bounded exterior functions to be constant by Liouville’s theorem (our own). Conversely, zero capacity forces each bounded exterior F to be constant. Testing a normalized multiple of (F(z)−F(a))/(z−a) gives F(a)=F(∞) (our own). A smooth cutoff and the Cauchy transform localize this global removability criterion to every neighborhood of K (our own).
 
 **Wikipedia:** [Analytic capacity](https://en.wikipedia.org/wiki/Analytic_capacity). It says: “It is easy to see that K is removable if and only if γ(K) = 0. However, analytic capacity is a purely complex-analytic concept, and much more work needs to be done in order to obtain a more geometric characterization.”
 
@@ -1996,7 +1978,7 @@
 
 *True by definition.* MSC 30D05 (Functional equations in the complex plane, iteration and composition of analytic functions of one complex variable), 37F50. arXiv math.CV, math.DS. Level 4: research.
 
-**Definition.** Let φ be an injective holomorphic disk map without an interior fixed point. Its centralizer consists of the injective holomorphic disk maps commuting with φ. A Koenigs coordinate h is an injective holomorphic change of variable that turns φ into translation by one. Thus h(φ(z)) = h(z) + 1.
+**Definition.** Let φ be an injective holomorphic disk self-map without an interior fixed point. Its centralizer consists of all injective holomorphic disk self-maps commuting with φ. A Koenigs coordinate is an injective holomorphic function h on the disk satisfying h(φ(z)) = h(z) + 1 everywhere.
 
 **Problem.** Suppose φ has attracting boundary point τ and let λ be the limit of (1 − \|φ(rτ)\|)/(1 − r) as r increases to one. Assume λ &lt; 1, or assume λ = 1 and successive iterates of a point approach each other in the disk’s hyperbolic distance. Then any two members of the centralizer commute.
 
@@ -2008,31 +1990,13 @@
 
 - [Centralizers of non-elliptic univalent self-maps and the embeddability problem in the unit disc, Proposition 4.3](https://arxiv.org/abs/2311.04134v3)
 
-### Pants-gluing hyperbolic structures make Teichmüller space work for infinite-type surfaces
-
-**Remember:** Only pants, no funnels, and big surfaces get a Teichmüller space.
-
-*Rules out counterexamples. Confidence: medium.* MSC 30F60 (Teichmüller theory for Riemann surfaces), 57K20. arXiv math.GT, math.CV. Level 4: research.
-
-**Definition.** A complete hyperbolic surface is Nielsen-convex when it equals its convex core, the smallest convex subsurface that holds all closed geodesics. This holds exactly when the surface is glued from hyperbolic pairs of pants, possibly with cusps. So the surface has no funnels or half-planes.
-
-**Problem.** The space of marked Nielsen-convex hyperbolic structures on a surface has a topology in which the mapping class group acts by homeomorphisms, also for surfaces of infinite type. For finite-type surfaces, this space is the usual Teichmüller space.
-
-**How the definition helps.** A complete hyperbolic structure can have funnels, which add extra parameters and make the space too big (our own example). Asking for Nielsen-convex structures excludes funnels and half-planes, so each structure is glued from pairs of pants. On finite-type surfaces the topology then agrees with that of Teichmüller space. What stays hard is the choice of topology for infinite-type surfaces.
-
-**Paper or page:** [A Moduli Space of Marked Hyperbolic Structures for Big Surfaces](https://arxiv.org/abs/2311.01551), [A Moduli Space of Marked Hyperbolic Structures for Big Surfaces](https://arxiv.org/abs/2311.01551). It says: “We define a topology on the marked moduli space and prove that it reduces to the usual Teichmüller space for finite type surfaces.”
-
-**Sources:**
-
-- [C. Tappu, A Moduli Space of Marked Hyperbolic Structures for Big Surfaces, arXiv:2311.01551 (2023)](https://arxiv.org/abs/2311.01551)
-
 ### Linear local connectivity is exactly what quasisymmetric spheres need
 
-**Remember:** No narrow necks at any scale makes a regular sphere round.
+**Remember:** Connect inside a larger ball and outside a smaller ball using one scale factor.
 
 *Makes the theorem clean to state or prove.* MSC 30L10 (Quasiconformal mappings in metric spaces), 54F65. arXiv math.CV, math.MG. Level 4: research.
 
-**Definition.** A metric space is linearly locally connected (LLC) with constant λ when two conditions hold for every ball B(a, r). Any two points in the ball can be joined by a connected set inside B(a, λr). Any two points outside the ball can be joined by a connected set outside B(a, r/λ). Ahlfors 2-regular means that balls of radius r have area between c·r² and C·r².
+**Definition.** A metric space is linearly locally connected if some λ ≥ 1 satisfies both tests for every ball B(a,r), r &gt; 0. Any two points inside the ball belong to a connected subset of B(a,λr). Any two points outside the ball belong to a connected subset outside B(a,r/λ).
 
 **Problem.** An Ahlfors 2-regular metric 2-sphere is quasisymmetrically equivalent to the round sphere exactly when it is linearly locally connected (Bonk and Kleiner). A quasisymmetric map distorts the ratios of distances from a point only by a controlled amount.
 
@@ -2051,9 +2015,9 @@
 
 *Makes the theorem clean to state or prove.* MSC 30L10 (Quasiconformal mappings in metric spaces), 30F10. arXiv math.CV, math.MG. Level 4: research.
 
-**Definition.** A metric surface is a metric space that is locally like the plane. Take one with locally finite area, meaning two-dimensional Hausdorff measure. For a quadrilateral, let M₁ and M₂ be the conformal moduli of the curves that join its two pairs of opposite sides. By Theorem 28, a surface without boundary is reciprocal exactly when M₁·M₂ ≤ κ for all quadrilaterals; in the plane, M₁·M₂ = 1.
+**Definition.** A metric surface without boundary is locally reciprocal if every point has a neighborhood U with the following bound. Some finite κ bounds M₁M₂ for every topological quadrilateral in U. Here M₁ and M₂ are the conformal moduli of the two curve families joining opposite sides inside the quadrilateral (our own).
 
-**Problem.** A metric surface with locally finite area admits a quasiconformal map from a complete Riemannian surface of constant curvature exactly when it is locally reciprocal. For simply connected surfaces without boundary, the model is the sphere, the plane or the disc (Rajala's theorem).
+**Problem.** A metric surface without boundary and with locally finite area admits quasiconformal uniformization by a complete constant-curvature Riemannian surface exactly when locally reciprocal. For simply connected surfaces, the model is the sphere, plane or disk.
 
 **How the definition helps.** A quasiconformal map changes the modulus of a curve family by at most a fixed factor. So a quasiconformal image of a Riemannian surface must have locally bounded modulus products, and the condition is necessary (our own). The theorem says that this necessary condition, in its local form, is also sufficient. The hard direction builds the map; Rajala did this first for metric spheres.
 

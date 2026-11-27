@@ -4,7 +4,7 @@
 
 *True by definition.* MSC 85A04 (General questions in astronomy and astrophysics). arXiv astro-ph.SR, astro-ph.GA. Level 1: early undergraduate.
 
-**Definition.** Flux is received power per unit area. Magnitude measures brightness on a scale where multiplying flux by 100 subtracts five magnitudes. Absolute magnitude is the magnitude an isotropic source would have at ten parsecs, a standard astronomical distance. Define the distance modulus as five times the base-ten logarithm of luminosity distance divided by ten parsecs.
+**Definition.** For bolometric luminosity L and observed flux F, define luminosity distance D by F = L/(4πD²). The distance modulus is 5 log₁₀(D/(10 parsecs)). Absolute magnitude uses the flux the same isotropic source would produce at ten parsecs.
 
 **Problem.** Sum the light over all wavelengths and assume transparent propagation. Apparent magnitude equals absolute magnitude plus the distance modulus.
 
@@ -36,9 +36,9 @@
 
 *True by definition.* MSC 85A04 (General questions in astronomy and astrophysics). arXiv astro-ph.SR, astro-ph.GA. Level 2: later undergraduate.
 
-**Definition.** Flux density per unit frequency measures received power per unit area and frequency interval. The AB magnitude scale uses a logarithm of the filter-averaged flux density and assigns zero magnitude to the same reference flux density in every filter. A color is the difference between magnitudes in two filters.
+**Definition.** For a normalized filter response, let F be its weighted average of flux density per unit frequency. For F &gt; 0, the AB magnitude is −2.5 log₁₀(F/F₀), using the same reference density F₀ of about 3631 janskys for every filter (our own). An AB color is the difference between two AB magnitudes.
 
-**Problem.** A source with constant flux density per unit frequency has zero AB color between any two properly calibrated filters.
+**Problem.** A source with positive constant flux density per unit frequency has zero AB color between any two properly calibrated filters.
 
 **How the definition helps.** The common reference makes a constant flux density yield the same magnitude in every filter. In our own calculation, every normalized filter average of that constant equals the constant itself. A reference star with a varying spectrum would instead establish different flux references across filters. Applying the AB definition to observations requires calibrating each filter.
 
@@ -184,7 +184,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 85A15 (Galactic and stellar structure). arXiv astro-ph.SR. Level 3: graduate.
 
-**Definition.** Model a spherical star in gravitational equilibrium by a pressure law P = Kρ⁽¹⁺¹⁄ⁿ⁾, with density ρ and constants K, n &gt; 0. Write d for central density and G for Newton’s gravitational constant. Use the dimensionless density variable θ = (ρ/d)¹⁄ⁿ. Measure radius in units of √((n + 1)K d⁽¹⁄ⁿ⁻¹⁾/(4πG)).
+**Definition.** For a spherical Newtonian polytrope with P = Kρ⁽¹⁺¹⁄ⁿ⁾, take K,n &gt; 0 and positive central density d. Define θ = (ρ/d)¹⁄ⁿ and dimensionless radius ξ = r/a. The length scale satisfies a² = (n + 1)K d⁽¹⁄ⁿ⁻¹⁾/(4πG), where a &gt; 0 and G is Newton’s gravitational constant.
 
 **Problem.** In Newtonian gravity, these stars share one scaled density profile for each index n. For 0 &lt; n &lt; 5, the first zero of θ gives the radius in the chosen units.
 
@@ -202,7 +202,7 @@
 
 *True by definition.* MSC 85A25 (Radiative transfer in astronomy and astrophysics). arXiv astro-ph.SR, astro-ph.HE. Level 3: graduate.
 
-**Definition.** Opacity measures how strongly matter blocks radiation per unit mass. At each frequency, weight reciprocal opacity by the temperature derivative of the thermal radiation spectrum. Divide the weighted integral by the integral of the weights, then take its reciprocal. This defines the Rosseland mean opacity.
+**Definition.** At temperature T &gt; 0, weight each frequency ν by w = ∂Bν(T)/∂T, where Bν is the Planck spectrum. For positive opacities κν and finite integrals, the Rosseland mean is ∫w dν divided by ∫(w/κν) dν over positive frequencies.
 
 **Problem.** Suppose photons travel only short distances between interactions and radiation is nearly in thermal equilibrium with nearby matter. In the diffusion approximation, the Rosseland mean gives the same total energy flux as the frequency-dependent law.
 
@@ -218,7 +218,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 85A35 (Statistical astronomy), 85A40. arXiv astro-ph.CO. Level 3: graduate.
 
-**Definition.** Represent a random map of the sky by spherical harmonics, the angular modes on a sphere. Each mode has a degree and an index within that degree. The angular power spectrum assigns each degree the mean squared magnitude of a coefficient at that degree for a sky with rotation-invariant statistics.
+**Definition.** Expand a square-integrable random sky in orthonormal spherical harmonics, writing aℓₘ for the coefficient of degree ℓ and order m. Its angular power spectrum is Cℓ = ∑ₘ 𝔼\[\|aℓₘ\|²\]/(2ℓ + 1), summing m from −ℓ through ℓ (our own).
 
 **Problem.** For a rotationally invariant random sky with zero mean and finite variance, harmonic coefficients are uncorrelated across distinct modes. Their variance depends only on degree.
 
@@ -272,7 +272,7 @@
 
 **Problem.** Suppose photons follow light rays of the spacetime metric and their number is conserved. Observed surface brightness summed over all frequencies equals emitted surface brightness divided by (1 + z)⁴. Here 1 + z is received wavelength divided by emitted wavelength.
 
-**How the definition helps.** Using separate distances for flux and apparent area turns dimming into a squared distance ratio. In our own derivation, dividing received flux by solid angle gives the squared ratio of angular diameter distance to luminosity distance. Etherington’s reciprocity theorem and photon conservation give that ratio as 1/(1 + z)².
+**How the definition helps.** For a small source patch, observed flux per solid angle equals emitted brightness times (Dₐ/Dₗ)² by the two distance definitions (our own). Etherington reciprocity and photon conservation give Dₗ = (1 + z)²Dₐ (our own). Substitution gives the factor (1 + z)⁻⁴ (our own).
 
 **Wikipedia:** [Etherington's reciprocity theorem](https://en.wikipedia.org/wiki/Etherington%27s_reciprocity_theorem). It says: “The Etherington distance-duality equation is the relationship between the luminosity distance of standard candles and the angular diameter distance.”
 

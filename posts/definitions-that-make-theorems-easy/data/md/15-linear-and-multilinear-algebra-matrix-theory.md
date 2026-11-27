@@ -36,7 +36,7 @@
 
 ### Finite linear combinations give the smallest containing subspace
 
-**Remember:** Every subspace containing the generators also contains their linear combinations.
+**Remember:** Intersect every subspace containing the generators to get the smallest one.
 
 *True by definition.* MSC 15A03 (Vector spaces, linear dependence, rank, lineability). arXiv math.RA. Level 1: early undergraduate.
 
@@ -92,9 +92,9 @@
 
 **Definition.** An indexed family of vectors, such as the columns of a matrix, is independent if no member is a combination of finitely many other members. A family with the same vector twice is therefore dependent. A set of vectors is independent if it is independent as a family indexed by itself.
 
-**Problem.** An n × n matrix is invertible if and only if its columns, as a family, are linearly independent. Equivalently, its determinant is nonzero.
+**Problem.** A square matrix over a field is invertible exactly when its indexed columns are linearly independent. Equivalently, its determinant is nonzero.
 
-**How the definition helps.** Treating the columns as a family counts a repeated column twice, so the independence test agrees with the determinant. Take the 2 × 2 matrix with both columns equal to v ≠ 0 (our own); its determinant is 0. The set of its columns is {v}, which is independent, so a set-based statement would be false, while the family (v, v) is dependent. What stays to prove is the link between independence and a nonzero determinant.
+**How the definition helps.** Indexing the columns retains repetitions, as the determinant test requires. Two copies of a nonzero plane vector give a singular matrix, although the singleton containing that vector is independent (our own). The determinant criterion for a basis supplies the equivalence (our own).
 
 **Wikipedia:** [Linear independence](https://en.wikipedia.org/wiki/Linear_independence). It says: “These two notions are not equivalent: the difference being that in a family we allow repeated elements, while in a set we do not.”
 
@@ -200,9 +200,9 @@
 
 **Definition.** A set of vectors is linearly independent if no nontrivial finite linear combination of them is zero. The empty set satisfies this vacuously, because it has no nontrivial linear combinations. The empty set also spans the zero space.
 
-**Problem.** Every vector space has a basis. Also, inside any spanning set, every independent set extends to a basis.
+**Problem.** Assume the axiom of choice. Every vector space has a basis. Any independent subset of a spanning set extends to a basis within that spanning set.
 
-**How the definition helps.** Because the empty set is independent, the zero space {0} is not an exception. Its basis is the empty set, and its dimension is 0. The same fact starts the proof with Zorn's lemma. That proof needs the collection of independent sets to be nonempty, and the empty set is in it. The theorem for infinite-dimensional spaces still needs the axiom of choice.
+**How the definition helps.** The empty set is independent and spans the zero space, so the theorem includes that space. Order the independent extensions inside the spanning set by inclusion (our own). Unions of chains remain independent, so Zorn’s lemma gives a maximal extension (our own). It spans because any generator outside its span could still be added (our own).
 
 **Wikipedia:** [Basis (linear algebra)](https://en.wikipedia.org/wiki/Basis_%28linear_algebra%29), [Dimension (vector space)](https://en.wikipedia.org/wiki/Dimension_%28vector_space%29). It says: “The set X is nonempty since the empty set is an independent subset of V”
 
@@ -230,7 +230,7 @@
 
 *Rules out counterexamples.* MSC 15A04 (Linear transformations, semilinear transformations). arXiv math.RA. Level 1: early undergraduate.
 
-**Definition.** An invertible linear map has a two-sided inverse, which undoes the map before or after it acts. A one-sided inverse need only undo it in one of those orders.
+**Definition.** Let T map V linearly to W. It is invertible if some linear map S from W to V satisfies ST = id<sub>V</sub> and TS = id<sub>W</sub>.
 
 **Problem.** A linear map has a two-sided linear inverse exactly when it is bijective, meaning one-to-one and onto.
 
@@ -260,15 +260,15 @@
 
 ### Homogeneity is needed in defining linear maps
 
-**Remember:** Additive is enough over ℚ or 𝔽ₚ, and nowhere else.
+**Remember:** A linear map preserves vector sums and multiplication by every scalar.
 
 *Rules out counterexamples.* MSC 15A04 (Linear transformations, semilinear transformations). arXiv math.RA. Level 1: early undergraduate.
 
-**Definition.** A linear map between vector spaces over a field F satisfies f(u+v) = f(u) + f(v). It also satisfies f(cu) = c f(u) for every scalar c. The first condition is additivity, the second is homogeneity. The prime subfield is the smallest subfield, ℚ or 𝔽ₚ.
+**Definition.** A map f between F-vector spaces is linear if f(u+v) = f(u)+f(v) and f(cu) = cf(u) for all vectors u,v and scalars c. These conditions are additivity and homogeneity, respectively.
 
 **Problem.** Over a prime field, ℚ or 𝔽ₚ, every additive map between vector spaces is linear. Over every other field, some additive map between vector spaces is not linear (Theorem 2.1).
 
-**How the definition helps.** Homogeneity rules out additive maps that ignore the scalars. Over a prime field, every scalar is built from 1 by sums, differences and quotients, so additivity gives homogeneity (our own reason). A familiar example of our own is complex conjugation on ℂ, which is additive but not ℂ-linear. For fields that are not prime, the abstract says homogeneity does not imply additivity either, so neither condition can be dropped.
+**How the definition helps.** An additive map preserves multiplication by integers and hence by every scalar in the prime field (our own). Otherwise choose a basis of F over its prime field containing 1 and some a outside that field (our own). Projection onto the 1-coordinate is additive, yet sends a to zero and 1 to one, violating F-homogeneity (our own).
 
 **Paper or page:** [On the independence of conditions in the linear mapping definition (revised)](https://arxiv.org/abs/2208.12648v3). It says: “If F=k, then every additive mapping U→V with vector F-spaces U, V, is F-homogeneous (and therefore F-linear). If F≠k, then there exist vector F-spaces U and V and additive mapping U→V, which is not F-homogeneous.”
 
@@ -286,7 +286,7 @@
 
 **Problem.** Every vector has a unique sum of a vector in the image of P and a vector in its kernel.
 
-**How the definition helps.** The identity P² = P gives the two components explicitly in our own proof. Write v = Pv + (v − Pv). The first term belongs to the image, and P sends the second to zero. Every image vector is fixed, so only zero belongs to both parts. Conversely, keeping one component of a direct sum gives a map that squares to itself.
+**How the definition helps.** Idempotence gives v = Pv + (v − Pv), with the first term in the image and the second in the kernel (our own). Every image vector is fixed by P, so the image meets the kernel only at zero (our own). Subtracting two decompositions now gives equality of their corresponding terms (our own).
 
 **nLab:** [idempotent](https://ncatlab.org/nlab/show/idempotent). It says: “it is an endomorphism e : X → X of some object X that "squares to itself”
 
@@ -402,11 +402,11 @@
 
 *True by definition. Confidence: medium.* MSC 15A15 (Determinants, permanents, traces, other special matrix functions). arXiv math.RA. Level 1: early undergraduate.
 
-**Definition.** The determinant is the unique function of the columns of a square matrix that is linear in each column, is 0 when two columns are equal, and is 1 on the identity. A function with the first two properties is called alternating multilinear. One can also define the determinant as the unique multiplicative function that is the product of the diagonal entries on triangular matrices.
+**Definition.** Fix a matrix size and a commutative ring with identity. The determinant is the unique function linear in each column, zero on repeated columns, and one at the identity matrix.
 
 **Problem.** The determinant is multiplicative: det(AB) = det(A)·det(B). Also, a matrix over a commutative ring is invertible exactly when its determinant is invertible.
 
-**How the definition helps.** With the alternating-multilinear definition, the product rule follows from uniqueness. Fix A: the function B ↦ det(AB) is alternating multilinear in the columns of B, so it equals det(A)·det(B) (our own summary). With the Leibniz formula, the product rule needs a long computation (our own remark). Wikipedia uses the multiplicative definition, under which the product rule holds by definition and the work moves to existence and uniqueness.
+**How the definition helps.** For fixed A, the function B ↦ det(AB) is alternating and multilinear in the columns of B (our own). Expansion in coordinate vectors gives det(AB) = det(A)det(B), since its value at I is det(A) (our own). An inverse for A therefore gives an inverse for det(A) (our own). Conversely, the adjugate identity gives A⁻¹ = det(A)⁻¹ adj(A) whenever det(A) is a unit (our own).
 
 **Wikipedia:** [Determinant](https://en.wikipedia.org/wiki/Determinant). It says: “The determinant can be also defined as the unique alternating multilinear form of the columns (or the rows) that takes the value 1 on the identity matrix.”
 
@@ -424,7 +424,7 @@
 
 **Problem.** For a linear operator A on a nontrivial finite-dimensional vector space over a field, det A does not depend on the basis.
 
-**How the definition helps.** Once det A is known not to depend on the basis, facts about operators come straight from the matrix case. An example is det(AB) = det A · det B. In our own proof, the lemma follows from det(P⁻¹MP) = det(P)⁻¹ det(M) det(P) = det M. So the work moves into the product rule for matrix determinants. The page asks for a nontrivial space, so the zero space is left out of this definition.
+**How the definition helps.** Basis change replaces M by P⁻¹MP, whose determinant equals det(P)⁻¹ det(M) det(P) = det(M) (our own). The product rule for matrix determinants gives the equality (our own).
 
 **Paper or page:** [Determinant of Linear Operator is Well Defined](https://proofwiki.org/wiki/Determinant_of_Linear_Operator_is_Well_Defined). It says: “Then the determinant det A of A is well defined, that is, does not depend on the choice of a basis of V.”
 
@@ -442,7 +442,7 @@
 
 **Problem.** Swapping two variables multiplies the product of the differences xⱼ − xᵢ, over all pairs i &lt; j, by −1.
 
-**How the definition helps.** With this definition, swapping two variables swaps two rows, and a determinant changes sign when two rows swap. The nLab gives this argument. With only the product, one must count the factors that change sign under the swap. That count is odd, but the variables between the two swapped ones need care. The work moves into the Vandermonde factorization, which says that the determinant equals the product of differences.
+**How the definition helps.** Swapping two variables swaps the corresponding rows, so alternation negates the determinant. The Vandermonde factorization identifies this determinant with the stated product of differences (our own).
 
 **nLab:** [Vandermonde determinant](https://ncatlab.org/nlab/show/Vandermonde+determinant). It says: “because this corresponds to swapping the corresponding rows of the Vandermonde matrix”
 
@@ -456,9 +456,9 @@
 
 **Definition.** The determinant of the 0 × 0 matrix, which has no entries, is 1. This follows from the conventions for the empty set and the empty product. The Leibniz formula has one term, for the empty permutation, and that term is an empty product.
 
-**Problem.** For every n ≥ 1, an n × n matrix A with nonzero determinant d has inverse (1/d) · adj(A). The entries of adj(A) are signed determinants of (n − 1) × (n − 1) submatrices.
+**Problem.** Over a field, every n × n matrix A with n ≥ 1 and nonzero determinant d has inverse d⁻¹ adj(A). The adjugate entries are signed determinants of submatrices obtained by deleting one row and one column.
 
-**How the definition helps.** With the empty determinant equal to 1, the adjugate of a 1 × 1 matrix \[d\] is \[1\], so the general formula gives the inverse \[1/d\]. Any other value would make the formula wrong for n = 1, which would then need its own rule. The page calls this an example of the coherency of the conventions. The real content is the general identity A · adj(A) = det(A) · I.
+**How the definition helps.** The empty determinant gives adj(\[d\]) = \[1\], so the same formula yields \[d⁻¹\] when n = 1. The adjugate identity A adj(A) = det(A)I gives the inverse formula in every positive size (our own).
 
 **Wikipedia:** [Determinant](https://en.wikipedia.org/wiki/Determinant). It says: “In the case n=1, the single entry of the adjugate matrix is the determinant of the empty matrix, which equals 1.”
 
@@ -500,11 +500,11 @@
 
 ### The adjugate works over any commutative ring, which proves Cayley–Hamilton
 
-**Remember:** Adjugate times matrix is determinant times identity, in every commutative ring.
+**Remember:** Delete the row and column, sign the minor, then transpose.
 
 *True by definition.* MSC 15A15 (Determinants, permanents, traces, other special matrix functions), 15A24. arXiv math.RA. Level 1: early undergraduate.
 
-**Definition.** The adjugate adj(M) of a square matrix M is the transpose of its matrix of cofactors. Each entry is a signed determinant of a smaller submatrix. It satisfies M · adj(M) = adj(M) · M = det(M) · I.
+**Definition.** For an n × n matrix M with n ≥ 1, adj(M) has entry (i,j) equal to (−1)ⁱ⁺ʲ times a minor. Take that minor by deleting row j and column i and taking the determinant, using one for the empty determinant.
 
 **Problem.** Every square matrix A over a commutative ring satisfies its own characteristic polynomial p(t) = det(tI − A). That is, p(A) = 0.
 
@@ -566,7 +566,7 @@
 
 ### Matrix exponentials solve linear systems
 
-**Remember:** Differentiate the series and one factor of A comes out.
+**Remember:** Start at the identity and evolve by multiplying on the left by A.
 
 *True by definition.* MSC 15A16 (Matrix exponential and similar functions of matrices). arXiv math.CA. Level 1: early undergraduate.
 
@@ -642,7 +642,7 @@
 
 **Problem.** A scalar λ is an eigenvalue of a square matrix A if and only if det(A − λI) = 0. So an n × n matrix has at most n eigenvalues.
 
-**How the definition helps.** The zero vector satisfies T(0) = λ · 0 for every λ, so allowing it would make every scalar an eigenvalue (our own). Asking for a nonzero v turns the question into whether A − λI has a nontrivial kernel, that is, whether a determinant of degree n in λ vanishes. The page adds the zero vector back by hand to make the eigenspace a subspace. What stays hard is finding the roots, which may not exist in the base field.
+**How the definition helps.** Allowing the zero vector would make every scalar an eigenvalue because A0 = λ0 for every λ (our own). A nonzero eigenvector exists precisely when A − λI has nonzero kernel, equivalently zero determinant. This determinant is a degree-n polynomial in λ, so it has at most n distinct roots (our own).
 
 **Wikipedia:** [Eigenvalues and eigenvectors](https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors). It says: “Equation (2) has a nonzero solution v if and only if the determinant of the matrix (A − λI) is zero.”
 
@@ -654,11 +654,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 15A18 (Eigenvalues, singular values, and eigenvectors), 15A20. arXiv math.RA. Level 1: early undergraduate.
 
-**Definition.** Let λ be an eigenvalue of a square matrix A. A generalized eigenvector of rank m for λ is a vector x with (A − λI)ᵐx = 0 but (A − λI)ᵐ⁻¹x ≠ 0. In words, the m-th power of A − λI sends x to 0, and no lower power does. Rank 1 gives an ordinary eigenvector.
+**Definition.** Fix an eigenvalue λ of a square matrix A. A nonzero vector x is a generalized eigenvector of rank m if m is the least positive integer satisfying (A − λI)ᵐx = 0.
 
-**Problem.** Every square matrix whose eigenvalues lie in the field is similar to a Jordan normal form; every complex matrix is an example. A Jordan normal form is a block diagonal matrix of Jordan blocks. A Jordan block has one eigenvalue λ on the diagonal, 1 just above the diagonal, and 0 elsewhere.
+**Problem.** Every square matrix whose characteristic polynomial splits over the field is similar to a Jordan normal form. This includes every complex square matrix. Each diagonal block has one eigenvalue along its diagonal, ones just above it, and zeros elsewhere.
 
-**How the definition helps.** Generalized eigenvectors supply the basis vectors that ordinary eigenvectors cannot. Our own example is the 2 × 2 matrix with rows (0, 1) and (0, 0), whose double eigenvalue 0 has only one independent eigenvector. The generalized eigenspace of each eigenvalue has dimension equal to its algebraic multiplicity. Jordan chains x, (A − λI)x, (A − λI)²x, … then give a basis of the whole space, so the theorem has no exceptions.
+**How the definition helps.** Generalized eigenvectors form chains even when ordinary eigenvectors fail to span (our own). On the generalized λ-eigenspace, A − λI maps each chain vector to its predecessor and the first to zero (our own). The Jordan chain decomposition theorem supplies a basis of such chains when the characteristic polynomial splits (our own).
 
 **Wikipedia:** [Generalized eigenvector](https://en.wikipedia.org/wiki/Generalized_eigenvector), [Jordan normal form](https://en.wikipedia.org/wiki/Jordan_normal_form). It says: “Using generalized eigenvectors, a set of linearly independent eigenvectors of A can be extended, if necessary, to a complete basis for V.”
 
@@ -690,9 +690,9 @@
 
 **Definition.** A matrix is in row echelon form if each nonzero row starts further right than the row above, and zero rows are at the bottom. It is in reduced row echelon form if, also, each leading entry is 1 and is the only nonzero entry in its column.
 
-**Problem.** Every matrix is row equivalent to exactly one matrix in reduced row echelon form. So two matrices of the same size are row equivalent exactly when they have the same reduced form.
+**Problem.** Over a field, every matrix is row equivalent to exactly one reduced row echelon matrix. Two matrices of the same size are row equivalent exactly when their reduced forms agree.
 
-**How the definition helps.** The two extra rules remove the freedoms that echelon forms still have. The page names them: scaling a row by a nonzero scalar, and adding a multiple of a row to a row above it. Making each pivot 1 removes the first, and clearing the entries above each pivot removes the second (our own). What remains is to prove that row equivalent reduced matrices are equal, for example by comparing the solution sets of the homogeneous systems (our own).
+**How the definition helps.** Scaling a pivot row or adding a later row to it can preserve echelon form while violating the reduced conditions (our own). Gaussian elimination gives existence (our own). In the common row space, possible leading positions of nonzero vectors are exactly the pivots (our own). Each reduced row is uniquely determined by its pivot coordinates, since their values are its coefficients in the reduced basis (our own).
 
 **Wikipedia:** [Row echelon form](https://en.wikipedia.org/wiki/Row_echelon_form). It says: “While a matrix may have several echelon forms, its reduced echelon form is unique.”
 
@@ -762,7 +762,7 @@
 
 **Problem.** For any complex z and w, \|zw\| = \|z\|\|w\|.
 
-**How the definition helps.** The matrix definition makes the result a consequence of multiplicativity of determinants. Take the nonnegative square root of det(AB) = det(A) det(B). The usual pair representation gives the same result by expanding a two-square identity. Our own comparison moves the work into checking that these matrices are closed under multiplication and that their product gives the pair rule. The determinant a² + b² identifies the matrix absolute value with the usual one.
+**How the definition helps.** Matrix multiplication represents complex multiplication, so det(AB) = det(A)det(B) gives the identity after taking nonnegative square roots. The determinant of the matrix for a + ib equals a² + b², the usual squared modulus (our own).
 
 **Wikipedia:** [Complex number](https://en.wikipedia.org/wiki/Complex_number). It says: “This isomorphism associates the square of the absolute value of a complex number with the determinant of the corresponding matrix, and the conjugate of a complex number with the transpose of the matrix.”
 
@@ -778,7 +778,7 @@
 
 **Problem.** For matrices of matching sizes, (AB)C = A(BC). With distributivity, this makes the n × n matrices a ring with the identity matrix as unit.
 
-**How the definition helps.** Composition of functions is associative for every kind of function, so the product that represents composition is associative too. The page says that a direct proof with the row-by-column formula needs straightforward but complicated manipulations of sums. With the composition view, the only work is to check that the row-by-column formula gives the matrix of the composite (our own). The same view explains why the product is not commutative: composition of maps is not commutative (our own). It also explains rotation matrices, whose product is the rotation by the sum of the angles (our own).
+**How the definition helps.** Composition is associative, so either grouping represents the same composite map. The identity map supplies the unit, and linearity gives both distributive laws for pointwise addition (our own).
 
 **Wikipedia:** [Matrix multiplication](https://en.wikipedia.org/wiki/Matrix_multiplication). It says: “This result also follows from the fact that matrices represent linear maps. Therefore, the associative property of matrices is simply a specific case of the associative property of function composition.”
 
@@ -872,7 +872,7 @@
 
 *Rules out counterexamples.* MSC 15A63 (Quadratic and bilinear forms, inner products). arXiv math.FA. Level 1: early undergraduate.
 
-**Definition.** An orthonormal basis consists of pairwise perpendicular unit vectors. A general basis need not have either property.
+**Definition.** An orthonormal basis is a spanning family of unit vectors in which vectors with different indices are perpendicular.
 
 **Problem.** In an orthonormal basis of a finite-dimensional real inner product space, the inner product equals the dot product of the coordinate lists.
 
@@ -962,7 +962,7 @@
 
 **Problem.** For all vectors u, v and w, u·(v + w) = u·v + u·w.
 
-**How the definition helps.** The coordinate definition gets distributivity from the real distributive law in each term. With the geometric definition, u·v is \|u\| times the signed length of the projection of v onto the line of u, so one must prove that signed projections add (our own). The work also moves into proving that the two definitions agree, for example with the law of cosines (our own).
+**How the definition helps.** Distributivity of real multiplication gives uᵢ(vᵢ + wᵢ) = uᵢvᵢ + uᵢwᵢ for every coordinate (our own). Summing over i proves the identity (our own). The law of cosines connects the coordinate and geometric definitions (our own).
 
 **Wikipedia:** [Dot product](https://en.wikipedia.org/wiki/Dot_product). It says: “The dot product may be defined algebraically or geometrically. The geometric definition is based on the notions of angle and distance (magnitude) of vectors. The equivalence of these two definitions relies on having a Cartesian coordinate system for Euclidean space.”
 
@@ -996,7 +996,7 @@
 
 **Problem.** For all a and b in ℝ³, the cross product a × b is orthogonal to both a and b.
 
-**How the definition helps.** The determinant definition turns each orthogonality check into a determinant with a repeated row. Set c = a or c = b to get zero. A coordinate proof multiplies out and cancels terms (our own). The work is in showing that the linear function c ↦ det(a, b, c) is the dot product with a unique vector. Its values on the three standard basis vectors give the usual coordinate formula (our own).
+**How the definition helps.** Setting c = a or c = b gives a repeated row, so both dot products vanish (our own). Existence and uniqueness follow because the values of c ↦ det(a,b,c) on the standard basis determine the three coordinates (our own).
 
 **Wikipedia:** [Cross product](https://en.wikipedia.org/wiki/Cross_product), [Triple product](https://en.wikipedia.org/wiki/Triple_product). It says: “The cross product is always orthogonal to both vectors, and has magnitude zero when the vectors are parallel”
 
@@ -1106,7 +1106,7 @@
 
 ### Defining rank by fewest rank-one summands bounds ranks of entrywise products
 
-**Remember:** Each pair of rank-one summands gives one rank-one summand.
+**Remember:** Each pair of rank-one summands contributes at most one rank-one term.
 
 *True by definition.* MSC 15A03 (Vector spaces, linear dependence, rank, lineability), 15A69. arXiv math.RA. Level 2: later undergraduate.
 
@@ -1114,7 +1114,7 @@
 
 **Problem.** For two matrices A and B of the same size over a field, rank(A ∘ B) ≤ rank(A) · rank(B). Here A ∘ B is the entrywise product.
 
-**How the definition helps.** With this definition, the bound comes from expanding a product of two sums. If A = ∑ xᵢyᵢᵀ with r terms and B = ∑ uⱼvⱼᵀ with s terms, then A ∘ B = ∑ (xᵢ ∘ uⱼ)(yᵢ ∘ vⱼ)ᵀ, a sum of rs rank-one terms. The usual proof sees A ∘ B as a submatrix of the Kronecker product. The work moves into the theorem that the two definitions of rank agree (proof steps our own).
+**How the definition helps.** Expand the entrywise product using rank-one decompositions of A and B (our own). Each pair xyᵀ and uvᵀ contributes the outer product (x ∘ u)(y ∘ v)ᵀ (our own). Discarding zero products leaves at most rank(A) · rank(B) rank-one terms (our own). The rank factorization theorem identifies the minimum summand count with column rank (our own).
 
 **Paper or page:** [Computational Resolution of Hadamard Product Factorization for 4 × 4 Matrices](https://arxiv.org/abs/2508.14901). It says: “rank(A ∘ B) ≤ rank(A) · rank(B).”
 
@@ -1126,11 +1126,11 @@
 
 *True by definition.* MSC 15A03 (Vector spaces, linear dependence, rank, lineability), 15A04. arXiv math.RA. Level 2: later undergraduate.
 
-**Definition.** Send a vector v to the functional on the dual space that evaluates each linear functional at v. This uses no basis. A basis-based identification instead sends each basis vector to the dual of its dual basis vector.
+**Definition.** For each vector space V, evaluation sends v ∈ V to the functional on V\* given by φ ↦ φ(v).
 
 **Problem.** Let f: V → W be any linear map. Applying f and then evaluation gives the same result as applying evaluation and then the double transpose of f. For finite-dimensional spaces, evaluation is an isomorphism.
 
-**How the definition helps.** With this definition, both routes send v to the functional ψ ↦ ψ(f(v)), so naturality is immediate. The basis-based identification fails this test for most maps, because it changes when the basis changes. The work moves into proving that evaluation is an isomorphism in finite dimension, by injectivity and equal dimensions (proof steps our own).
+**How the definition helps.** For each ψ ∈ W\*, both routes evaluate at ψ to give ψ(f(v)) (our own). In finite dimensions, a nonzero vector has some nonzero basis coordinate, so evaluation is injective (our own). The double dual has the same dimension as V, giving surjectivity (our own).
 
 **nLab:** [dual vector space](https://ncatlab.org/nlab/show/dual+vector+space). It says: “There is a natural transformation from V to its double dual:”
 
@@ -1320,7 +1320,7 @@
 
 *True by definition.* MSC 15A09 (Theory of matrix inversion and generalized inverses), 15A10. arXiv math.NA, math.RA. Level 2: later undergraduate.
 
-**Definition.** For a matrix A, define A⁺b in two steps. First project b orthogonally onto the range of A. Then take the unique preimage of that projection that is perpendicular to the kernel of A. The algebraic definition is the unique matrix X that satisfies the four Penrose equations, such as AXA = A and XAX = X.
+**Definition.** For a real or complex matrix A and target vector b, project b orthogonally onto the range of A. Define A⁺b as the unique preimage of this projection perpendicular to the kernel of A.
 
 **Problem.** For every vector b, the vector A⁺b minimizes ‖Ax − b‖. Among all minimizers, it is the unique one of least length.
 
@@ -1342,7 +1342,7 @@
 
 **Problem.** Every real or complex matrix, of any shape and rank, has exactly one pseudoinverse. Also, A⁺b is the least-squares solution of Ax = b with the smallest norm.
 
-**How the definition helps.** The two symmetry conditions remove all freedom, so every matrix, singular or rectangular, has exactly one pseudoinverse. An ordinary inverse exists only for square invertible matrices. A matrix that meets only AA⁺A = A is a generalized inverse, and generalized inverses always exist but are not unique.
+**How the definition helps.** The four Penrose equations apply to every matrix shape and rank. In a singular value decomposition, they uniquely prescribe reciprocals on positive singular values and zero on the remaining directions (our own). In those coordinates, least squares fixes the positive-singular-value components, and minimum norm sets every free component to zero (our own).
 
 **Wikipedia:** [Moore–Penrose inverse](https://en.wikipedia.org/wiki/Moore%E2%80%93Penrose_inverse). It says: “Generalized inverses always exist but are not in general unique. Uniqueness is a consequence of the last two conditions.”
 
@@ -1357,11 +1357,11 @@
 
 *True by definition. Confidence: medium.* MSC 15A12 (Conditioning of matrices), 65F35. arXiv math.NA. Level 2: later undergraduate.
 
-**Definition.** For an invertible matrix A and an induced matrix norm, the condition number is κ(A) = ‖A‖ ‖A⁻¹‖. The sensitivity definition takes the largest ratio of the relative error in the solution of Ax = b to the relative error in b.
+**Definition.** For an invertible matrix A with an induced matrix norm, define its condition number by κ(A) = ‖A‖ ‖A⁻¹‖.
 
 **Problem.** For invertible matrices A and B of the same size, κ(AB) ≤ κ(A)κ(B).
 
-**How the definition helps.** With the norm-product definition, the inequality is two uses of ‖XY‖ ≤ ‖X‖ ‖Y‖, once for ‖AB‖ and once for ‖(AB)⁻¹‖ = ‖B⁻¹A⁻¹‖. From the sensitivity definition, a direct proof would follow errors through two solves. The work goes into the theorem that the two definitions agree (argument our own).
+**How the definition helps.** Submultiplicativity bounds ‖AB‖ by ‖A‖ ‖B‖ and ‖(AB)⁻¹‖ by ‖B⁻¹‖ ‖A⁻¹‖. Multiplying gives the inequality (our own). The condition number also equals the worst relative amplification of perturbations in the right-hand side over all nonzero right-hand sides.
 
 **Wikipedia:** [Condition number](https://en.wikipedia.org/wiki/Condition_number). It says: “The condition number is defined more precisely to be the maximum ratio of the relative error in x to the relative error in b.”
 
@@ -1389,11 +1389,11 @@
 
 *True by definition.* MSC 15A15 (Determinants, permanents, traces, other special matrix functions), 15A75. arXiv math.RA. Level 2: later undergraduate.
 
-**Definition.** Let A act on the kth exterior power, the space of wedge products of k vectors. Define the kth characteristic coefficient of A as the trace of that action. The usual definition takes (−1)ᵏ times the coefficient of tⁿ⁻ᵏ in det(tI − A).
+**Definition.** For an endomorphism A of an n-dimensional vector space and 0 ≤ k ≤ n, define its kth characteristic coefficient as tr(∧ᵏA). The induced map ∧ᵏA applies A to every factor of a basis wedge and extends linearly.
 
 **Problem.** Let A be an n × n matrix. The coefficient of tⁿ⁻ᵏ in det(tI − A) is (−1)ᵏ times the sum of all k × k principal minors of A. A principal minor uses the same index set for its rows and its columns.
 
-**How the definition helps.** With this definition, the theorem only reads off a trace. The diagonal entries of the matrix of the kth exterior power are exactly the k × k principal minors. The work moves into showing that these traces are the coefficients of det(tI − A). For that, expand the action of tI − A on the top wedge and choose the k slots where A acts. Wikipedia states both facts. The proof steps are our own.
+**How the definition helps.** In the wedge basis, each diagonal entry of ∧ᵏA is the corresponding principal minor. Their sum gives the trace. Expanding the top wedge of tI − A selects k slots for −A and gives this trace times (−1)ᵏ at degree n − k (our own).
 
 **nLab:** [determinant](https://ncatlab.org/nlab/show/determinant). It says: “It is called the jth alternating power (of V).”
 
@@ -1407,11 +1407,11 @@
 
 *True by definition.* MSC 15A15 (Determinants, permanents, traces, other special matrix functions), 15A75. arXiv math.RA. Level 2: later undergraduate.
 
-**Definition.** Define the rth compound matrix of A as the matrix of the map that A induces on the rth exterior power. That power is spanned by wedge products of r vectors, which change sign when two vectors swap. Its basis is the ordered wedges of r basis vectors. The usual definition lists the r × r minors, the determinants of square submatrices, in a fixed order.
+**Definition.** For a matrix A in standard bases, its rth compound matrix represents ∧ʳA in the increasing-index wedge bases. The map ∧ʳA applies A to each factor of a basis wedge and extends linearly.
 
 **Problem.** Let A and B be matrices that can be multiplied. Each r × r minor of AB is a sum over the r-element index sets K. Each term is the minor of A with columns K times the minor of B with rows K.
 
-**How the definition helps.** With this definition, the compound matrix of AB belongs to a composite map, so it is the product of the two compound matrices. One entry of that product is the formula. The work moves into one lemma, that the matrix of the exterior power has the minors as entries. That lemma comes from expanding the image of a basis wedge and collecting signs. Wikipedia states the product rule and its link to Cauchy–Binet. The proof steps are our own.
+**How the definition helps.** Applying B and then A to each wedge factor gives ∧ʳ(AB) = (∧ʳA)(∧ʳB). Expanding a basis wedge shows that each matrix entry is the minor with the corresponding row and column sets. Ordinary matrix multiplication now gives the stated sum (argument our own).
 
 **Wikipedia:** [Compound matrix](https://en.wikipedia.org/wiki/Compound_matrix). It says: “It is closely related to, and is a strengthening of, the Cauchy–Binet formula.”
 
@@ -1429,7 +1429,7 @@
 
 **Problem.** Let a linear map A on V preserve a subspace W. Then det A is the determinant on W times the determinant of the induced map on V/W. In matrix terms, a block triangular matrix has determinant equal to the product of the determinants of its diagonal blocks.
 
-**How the definition helps.** With this definition, the theorem reduces to one natural isomorphism of lines that A respects. Join a wedge of a basis of W with a wedge of lifts of a basis of V/W; other lifts only add terms with too many vectors from W, which are zero. So the line for V is the tensor product of the lines for W and V/W, and A acts on each factor. The remaining work is showing that this determinant equals the permutation formula (steps our own).
+**How the definition helps.** Choose a basis of W followed by lifts of a basis of V/W. Wedging the images multiplies the first block by the determinant on W. Components in W from the lifted block vanish against that full wedge of W. The remaining quotient components contribute the determinant on V/W (our own).
 
 **nLab:** [determinant line](https://ncatlab.org/nlab/show/determinant+line). It says: “its determinant line is the 1-dimensional vector space”
 
@@ -1441,7 +1441,7 @@
 
 *True by definition.* MSC 15A15 (Determinants, permanents, traces, other special matrix functions), 15A75. arXiv math.RA. Level 2: later undergraduate.
 
-**Definition.** Wedging identifies an n-dimensional space V with the linear maps from its (n − 1)th exterior power to its top exterior power. Define the adjugate of T as composition on the right with the (n − 1)th exterior power of T, read through this identification. The usual definition is the transpose of the cofactor matrix.
+**Definition.** Let V be free of finite rank n ≥ 1 over a commutative ring with identity. For an endomorphism T, its adjugate sends v to the unique w satisfying w ∧ u = v ∧ (∧ⁿ⁻¹T)(u) for every u ∈ ∧ⁿ⁻¹V.
 
 **Problem.** For n × n matrices A and B over a commutative ring, with n ≥ 1, adj(AB) = adj(B) adj(A).
 
@@ -1461,7 +1461,7 @@
 
 **Problem.** For a differentiable path A(t) of invertible real matrices, (det A)′ = det A · tr(A⁻¹A′).
 
-**How the definition helps.** With this definition, the formula needs only the product rule for determinants. Write A(t + h) = A(t)(I + hA⁻¹A′) plus terms smaller than h, take determinants and read off the first-order term. The usual proof instead expands by cofactors and uses the adjugate. The work moves into showing that the derivative at the identity is the diagonal sum, since only the identity permutation gives a term of degree one in t (steps our own).
+**How the definition helps.** Factor out A(t) before differentiating the determinant (our own). The derivative of A(t)⁻¹A(t + h) at h = 0 is A(t)⁻¹A′(t). Determinant multiplicativity and the trace definition give the formula. In the permutation expansion at the identity, the linear term is the diagonal sum (our own).
 
 **Wikipedia:** [Jacobi's formula](https://en.wikipedia.org/wiki/Jacobi%27s_formula). It says: “the differential of det, evaluated at the identity matrix, is equal to the trace.”
 
@@ -1509,7 +1509,7 @@
 
 **Problem.** The minimal polynomial of the companion matrix of p is p itself.
 
-**How the definition helps.** With this definition, q(C) is multiplication by q, which is zero exactly when it sends the class of 1 to zero, that is, when p divides q. So the polynomials that kill C are the multiples of p. With only the matrix, one must instead show that e₁, Ce₁, …, Cⁿ⁻¹e₁ are independent. The work moves into checking that the matrix of C is the companion matrix (steps our own).
+**How the definition helps.** The map q(C) multiplies by q modulo p, so it vanishes exactly when q is zero modulo p (our own). Testing on the class of 1 gives necessity. The monic polynomial of least degree among the nonzero multiples of p is p itself.
 
 **Wikipedia:** [Companion matrix](https://en.wikipedia.org/wiki/Companion_matrix). It says: “the minimal polynomial of C(p) are equal to p(x).”
 
@@ -1517,11 +1517,11 @@
 
 ### Defined by power growth, spectral radius is submultiplicative for commuting matrices
 
-**Remember:** Powers of a commuting product split, so their growth rates multiply.
+**Remember:** For commuting matrices, the growth rate of product powers is at most multiplicative.
 
 *True by definition. Confidence: medium.* MSC 15A18 (Eigenvalues, singular values, and eigenvectors), 15A42. arXiv math.RA, math.NA. Level 2: later undergraduate.
 
-**Definition.** Fix an induced matrix norm. Define the spectral radius ρ(A) of a square complex matrix as the limit of the kth root of ‖Aᵏ‖ as k grows. The usual definition is the largest absolute value of an eigenvalue. Gelfand's formula says that they agree.
+**Definition.** For a square complex matrix A, define its spectral radius as limₖ→∞ ‖Aᵏ‖¹/ᵏ in any induced matrix norm. Gelfand’s formula identifies this limit with the largest absolute value of an eigenvalue.
 
 **Problem.** If two complex square matrices A and B commute, then ρ(AB) ≤ ρ(A)ρ(B).
 
@@ -1539,9 +1539,9 @@
 
 **Definition.** Define the kth singular value σₖ(A) as the distance, in operator norm, from A to the matrices of rank less than k. The operator norm of a matrix is the largest factor by which it stretches a unit vector. The usual definition takes the kth largest square root of an eigenvalue of A\*A, where A\* is the conjugate transpose.
 
-**Problem.** For matrices A and B of the same size, \|σₖ(A) − σₖ(B)\| is at most the operator norm of A − B, for every k.
+**Problem.** For real or complex m × n matrices A and B, \|σₖ(A) − σₖ(B)\| ≤ ‖A − B‖ in operator norm whenever 1 ≤ k ≤ min(m,n).
 
-**How the definition helps.** With this definition, the theorem is a general fact about the distance from a point to a fixed set. By the triangle inequality, that distance changes by at most how far the point moves. The work moves into the Eckart–Young–Mirsky theorem, which says that this distance is the usual singular value. The cited paper states that theorem. The short argument here is our own.
+**How the definition helps.** The triangle inequality bounds the change in distance to any fixed nonempty set by the distance between the two points (our own). Apply this to the set of matrices of rank less than k. The Eckart–Young–Mirsky theorem identifies the distance with the usual singular value.
 
 **Paper or page:** [Generalizing the SVD of a matrix under non-standard inner product and its applications to linear ill-posed problems](https://arxiv.org/abs/2312.10403). It says: “‖A − Âₖ‖₂ = σ̂ₖ₊₁.”
 
@@ -1609,7 +1609,7 @@
 
 *True by definition.* MSC 15A18 (Eigenvalues, singular values, and eigenvectors), 15A15. arXiv math.RA. Level 2: later undergraduate.
 
-**Definition.** Fix a square matrix A over a commutative ring with identity. Let matrix coefficients act by left multiplication on matrices. Let the polynomial variable act by right multiplication by A. These two actions commute, so they define a polynomial action.
+**Definition.** Fix a square matrix A over a commutative ring with identity. Define the action of a matrix polynomial ∑ CⱼXʲ on a matrix M of the same size by M ↦ ∑ CⱼMAʲ.
 
 **Problem.** Every square matrix over a commutative ring with identity satisfies its characteristic polynomial.
 
@@ -1631,7 +1631,7 @@
 
 **Problem.** Let A act on V and B act on W, both finite-dimensional. The minimal polynomial of A ⊕ B on V ⊕ W is the least common multiple of the minimal polynomials of A and B.
 
-**How the definition helps.** With this definition, the theorem becomes a statement about ideals. A polynomial kills A ⊕ B exactly when it kills both A and B, so the ideal for A ⊕ B is the intersection of the two ideals. In F\[t\], the least common multiple of two generators generates that intersection. The work moves into showing, by polynomial division, that the generator is the least-degree monic annihilator (steps our own).
+**How the definition helps.** The annihilator ideal of A ⊕ B is the intersection of the annihilator ideals of A and B. Indeed, polynomial evaluation acts separately on the two summands. Their monic least common multiple generates the intersection (our own).
 
 **Wikipedia:** [Minimal polynomial (linear algebra)](https://en.wikipedia.org/wiki/Minimal_polynomial_%28linear_algebra%29). It says: “any ideal is generated by a single polynomial, which is unique up to a unit in F\[t\].”
 
@@ -1713,7 +1713,7 @@
 
 *True by definition.* MSC 15A18 (Eigenvalues, singular values, and eigenvectors). arXiv math.RA. Level 2: later undergraduate.
 
-**Definition.** Choose distinct eigenvalues of a linear map T and fix one of them, λ. On the span of their eigenvectors, define its spectral projector as the product of (T − μI)/(λ − μ) over the other chosen eigenvalues μ.
+**Definition.** Fix a finite set S of distinct eigenvalues of T and choose λ ∈ S. On the span of their eigenspaces, define the λ-projector by multiplying (T − μI)/(λ − μ) over all μ ∈ S except λ.
 
 **Problem.** Nonzero eigenvectors for distinct eigenvalues of a linear map are linearly independent.
 
@@ -1751,7 +1751,7 @@
 
 **Problem.** The projectors sum to the identity, each satisfies Pᵢ² = Pᵢ, and PᵢPⱼ = 0 when i ≠ j. The range of Pᵢ is the generalized eigenspace for λᵢ, the kernel of (A − λᵢI) to the power mᵢ.
 
-**How the definition helps.** With this definition, the projector identities already hold among polynomials, so they need no basis. In F\[t\] modulo the minimal polynomial, a product of the rings modulo each factor, the eᵢ sum to 1, square to themselves and multiply to 0 in pairs. Substituting A carries these identities to the projectors. Divisibility then shows that Pᵢ maps into the generalized eigenspace and is the identity there (application our own).
+**How the definition helps.** The residue conditions give the projector identities modulo the minimal polynomial, so evaluation at A preserves them (our own). Multiplying eᵢ by the ith factor gives a multiple of the minimal polynomial, so that factor kills the range. Since eᵢ − 1 is divisible by the ith factor, Pᵢ fixes its kernel.
 
 **Paper or page:** [Interplay between the Chinese Remainder Theorem and the Lagrange Interpolation Formula](https://arxiv.org/abs/2408.07360). It says: “Let R be a commutative, unital ring. Suppose that A₁, …, Aₙ are pairwise coprime ideals in R”
 
@@ -1765,9 +1765,9 @@
 
 **Definition.** A linear map is potentially diagonalizable if it becomes diagonalizable after extending the field. This holds when its minimal polynomial is separable, with no repeated roots in an algebraic closure. A Jordan–Chevalley decomposition writes x = s + n with s potentially diagonalizable, n nilpotent and sn = ns.
 
-**Problem.** A linear map x has a Jordan–Chevalley decomposition if and only if its minimal polynomial is a product of separable polynomials. Then the decomposition is unique, and s and n are polynomials in x. Over a perfect field, such as ℚ or a finite field, every x has one.
+**Problem.** A finite-dimensional linear map x has a Jordan–Chevalley decomposition exactly when its minimal polynomial is a product of separable polynomials. Then the decomposition is unique, and s and n are polynomials in x. Over a perfect field, such as ℚ or a finite field, every x has one.
 
-**How the definition helps.** Asking that s be diagonalizable only over an extension lets the theorem hold over fields that do not contain the eigenvalues. A rotation by 90 degrees of ℝ² is potentially diagonalizable, though not diagonalizable over ℝ (our own). Over fields that are not perfect, the decomposition can still fail, as for multiplication by X on k\[X\]/((Xᵖ − a)²) over k = 𝔽ₚ(t), with a not a p-th power. The proof is a Newton-type iteration, which works because a separable q has no common factor with q′.
+**How the definition helps.** Potential diagonalizability lets the eigenvalues lie in an extension while both summands act over the original field. A real quarter-turn illustrates this distinction (our own). The Jordan–Chevalley theorem gives the criterion and uniqueness, using separability in the polynomial construction.
 
 **Wikipedia:** [Jordan–Chevalley decomposition](https://en.wikipedia.org/wiki/Jordan%E2%80%93Chevalley_decomposition). It says: “Then x admits a Jordan-Chevalley decomposition if and only if the minimal polynomial of x is a product of separable polynomials.”
 
@@ -1775,7 +1775,7 @@
 
 ### A common invariant flag triangularizes commuting matrices together
 
-**Remember:** Find one common eigenline, then lift the flag from the quotient.
+**Remember:** Every matrix preserves every step of the same complete chain of subspaces.
 
 *Makes the theorem clean to state or prove.* MSC 15A21 (Canonical forms, reductions, classification), 15A18. arXiv math.RA. Level 2: later undergraduate.
 
@@ -1793,7 +1793,7 @@
 
 ### A full invariant flag makes triangularization an induction
 
-**Remember:** Lift an invariant flag from the quotient by an eigenline.
+**Remember:** An invariant flag has one preserved subspace of each dimension, all nested.
 
 *Makes the theorem clean to state or prove.* MSC 15A21 (Canonical forms, reductions, classification). arXiv math.RA. Level 2: later undergraduate.
 
@@ -1811,7 +1811,7 @@
 
 ### A split square-free minimal polynomial forces diagonalizability
 
-**Remember:** A square-free annihilator leaves only blocks of size one.
+**Remember:** Diagonalizability requires every cyclic summand to have a linear elementary divisor.
 
 *Rules out counterexamples.* MSC 15A21 (Canonical forms, reductions, classification). arXiv math.RA. Level 2: later undergraduate.
 
@@ -1849,11 +1849,11 @@
 
 *Rules out counterexamples.* MSC 15A21 (Canonical forms, reductions, classification), 13C05. arXiv math.RA. Level 2: later undergraduate.
 
-**Definition.** A linear map A on a finite-dimensional space V makes V a module over the polynomial ring F\[X\]. Split V into cyclic subspaces, each spanned by the images of one vector under A. The invariant factors are the minimal polynomials of these pieces when each divides the next and none equals 1.
+**Definition.** Let A act as X on a finite-dimensional vector space over F. Write its F\[X\]-module as a direct sum of cyclic modules F\[X\]/(fᵢ), with each fᵢ monic and nonconstant. The invariant factors are the fᵢ in an ordering where each divides the next.
 
 **Problem.** Two square matrices over a field are similar if and only if they have the same invariant factors. Equivalently, they have the same rational canonical form, the block matrix of companion matrices of the invariant factors.
 
-**How the definition helps.** The divisibility rule picks one decomposition out of many, so it can be compared between matrices. Without it, cyclic pieces can split further: F\[X\]/(X(X−1)) and F\[X\]/(X) ⊕ F\[X\]/(X−1) are the same module, so one matrix has two lists (our own). Forbidding the factor 1 removes zero-dimensional pieces that could be added freely. The uniqueness comes from the structure theorem for finitely generated modules over a principal ideal domain.
+**How the definition helps.** The module structure theorem gives a unique ordered list of factors, which determines the module up to isomorphism. A module isomorphism is exactly a change of basis intertwining the two matrices (our own). Without divisibility, F\[X\]/(X(X−1)) could also give the list X, X−1 (our own). Allowing 1 would add arbitrary zero summands.
 
 **Wikipedia:** [Frobenius normal form](https://en.wikipedia.org/wiki/Frobenius_normal_form). It says: “in the list of associated minimal polynomials each one must divide the next (and the constant polynomial 1 is forbidden to exclude trivial cyclic subspaces).”
 
@@ -1897,9 +1897,9 @@
 
 **Remember:** Each chain adds one new kernel vector at each step until it ends.
 
-*Makes the theorem clean to state or prove.* MSC 15A21 (Canonical forms, reductions, classification), 15A18. arXiv math.RA. Level 2: later undergraduate.
+*True by definition.* MSC 15A21 (Canonical forms, reductions, classification), 15A18. arXiv math.RA. Level 2: later undergraduate.
 
-**Definition.** In a Jordan chain for λ, the map A − λI sends each basis vector to its predecessor and the first to zero. The chain length is the size of its Jordan block. For each power of A − λI, its kernel consists of the vectors that power sends to zero.
+**Definition.** A Jordan chain for λ is a nonempty sequence of nonzero vectors. The map A − λI sends the first vector to zero and each later vector to its predecessor. In a Jordan basis each chain gives one block of its length.
 
 **Problem.** When the characteristic polynomial splits, the increase in kernel dimension from power j − 1 to j counts the λ-blocks of size at least j. These counts for all eigenvalues and all positive j determine the Jordan form up to block order.
 
@@ -1949,7 +1949,7 @@
 
 **Definition.** Matrices commute in pairs when AB = BA for each pair A and B. An eigenbasis consists of eigenvectors, and a common eigenbasis works for every matrix in the family. A matrix is diagonalizable over its field when it has an eigenbasis over that field.
 
-**Problem.** A finite family of diagonalizable matrices over a field has a common eigenbasis exactly when the matrices commute in pairs.
+**Problem.** A finite family of diagonalizable matrices of the same size over one field has a common eigenbasis exactly when its matrices commute in pairs.
 
 **How the definition helps.** Commutation keeps each eigenspace of one matrix invariant under all the others (our own). Each restriction stays diagonalizable because its minimal polynomial divides the original one, so successive eigenspace decompositions give a common eigenbasis (our own). Conversely, diagonal matrices commute (our own). The projections (x,y) ↦ (x,0) and (x,y) ↦ (x + y,0) are diagonalizable but fail to commute (our own).
 
@@ -1981,7 +1981,7 @@
 
 *True by definition.* MSC 15A21 (Canonical forms, reductions, classification), 20K25. arXiv math.GR. Level 2: later undergraduate.
 
-**Definition.** A relation matrix has one row per abelian group generator and one column per defining relation. Its entries give the integer coefficients in each relation. In Smith normal form only diagonal entries can be nonzero, and the positive entries come first, each dividing the next.
+**Definition.** An integer relation matrix records one generator per row and the coefficients of one defining relation per column. Its Smith normal form is a diagonal matrix obtained by invertible integer row and column operations. Its nonzero diagonal entries are positive, precede all zeros, and each divides the next.
 
 **Problem.** Every finitely generated abelian group is a finite direct sum of infinite cyclic groups and finite cyclic groups. The finite orders can be chosen so that each divides the next.
 
@@ -1997,9 +1997,9 @@
 
 **Remember:** Once both spaces stop changing, one part dies and the other stays invertible.
 
-*Makes the theorem clean to state or prove.* MSC 15A21 (Canonical forms, reductions, classification). arXiv math.RA. Level 2: later undergraduate.
+*True by definition.* MSC 15A21 (Canonical forms, reductions, classification). arXiv math.RA. Level 2: later undergraduate.
 
-**Definition.** Define the stable kernel and stable image of a matrix as the eventual kernel and image of its powers. The kernel consists of the vectors sent to zero. The image consists of the vectors produced by applying the map.
+**Definition.** For a finite-dimensional endomorphism T, choose N such that ker(Tⁿ) and im(Tⁿ) are constant for all n ≥ N. The stable kernel is ker(Tᴺ), and the stable image is im(Tᴺ).
 
 **Problem.** Every finite-dimensional linear operator splits into a nilpotent restriction on its stable kernel and an invertible restriction on its stable image.
 
@@ -2019,7 +2019,7 @@
 
 **Problem.** If p(T) = 0, the minimal polynomial of T divides p. In particular, it divides the characteristic polynomial.
 
-**How the definition helps.** The generator definition makes divisibility immediate because every member of the ideal is a multiple of its generator. With the least-degree definition, divide p by the minimal polynomial and show that the remainder also evaluates to zero at T. Minimality forces that remainder to vanish, which is our own account of the comparison. That same division step proves that any ideal of the polynomial ring has a single generator. The claim about the characteristic polynomial still needs Cayley–Hamilton to put it in the ideal.
+**How the definition helps.** Every annihilating polynomial is a multiple of the monic generator by definition. Cayley–Hamilton says the characteristic polynomial belongs to that same ideal. Polynomial division identifies its monic generator with the least-degree monic annihilator (our own).
 
 **Wikipedia:** [Minimal polynomial (linear algebra)](https://en.wikipedia.org/wiki/Minimal_polynomial_%28linear_algebra%29). It says: “The minimal polynomial is thus defined to be the monic polynomial that generates I<sub>T</sub>.”
 
@@ -2031,11 +2031,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 15A21 (Canonical forms, reductions, classification), 13C05. arXiv math.RA. Level 2: later undergraduate.
 
-**Definition.** The rational canonical form of a square matrix A is a block diagonal matrix. Its blocks are companion matrices of the invariant factors of A. A companion matrix of a monic polynomial is the matrix of multiplication by X on F\[X\] modulo that polynomial.
+**Definition.** The rational canonical form of A over F is the block diagonal matrix of companion blocks for its invariant factors in divisibility order. For monic f of degree d, the companion block represents multiplication by X on F\[X\]/(f) in the basis 1, X, …, Xᵈ⁻¹.
 
 **Problem.** Let F be a subfield of L, and let A and B have entries in F. If A and B are similar over L, then they are already similar over F.
 
-**How the definition helps.** The rational canonical form uses no roots of polynomials, so the form computed over F is also the form over any larger field L. Two matrices similar over L therefore have the same form, so they are similar over F (our own). The Jordan form cannot give this, because it exists only where the characteristic polynomial splits. What stays hard is the uniqueness of the invariant factors, from the structure theorem for modules over F\[X\].
+**How the definition helps.** A basis giving the form over F remains a basis over L. The same monic block polynomials still divide one another, so uniqueness of rational canonical form identifies this as the form over L. Similarity over L therefore gives identical forms and hence similarity over F (our own).
 
 **Wikipedia:** [Frobenius normal form](https://en.wikipedia.org/wiki/Frobenius_normal_form). It says: “The Frobenius normal form does not reflect any form of factorization of the characteristic polynomial, even if it does exist over the ground field F. This implies that it is invariant when F is replaced by a different field”
 
@@ -2105,7 +2105,7 @@
 
 **Problem.** Let A and B be Hermitian matrices of the same size, with B − A positive semidefinite. Then λₖ(B) ≥ λₖ(A) for every k.
 
-**How the definition helps.** With this definition, the theorem needs only that minima and maxima keep inequalities. Since B − A is positive semidefinite, ⟨Bx, x⟩ ≥ ⟨Ax, x⟩ for every unit vector x. Taking the minimum over U, and then the maximum over U, keeps the inequality. The work moves into the Courant–Fischer theorem, which says that the max-min is the kth largest eigenvalue. Wikipedia states that theorem. This application is our own.
+**How the definition helps.** Positive semidefiniteness gives ⟨Bx,x⟩ ≥ ⟨Ax,x⟩ for every unit vector x. On each k-dimensional subspace, taking minima over its unit vectors preserves this inequality. Taking maxima over those subspaces preserves it again (application our own). The Courant–Fischer theorem identifies each result with the kth largest eigenvalue.
 
 **Wikipedia:** [Min-max theorem](https://en.wikipedia.org/wiki/Min-max_theorem). It says: “a result that gives a variational characterization of eigenvalues of compact Hermitian operators on Hilbert spaces.”
 
@@ -2129,7 +2129,7 @@
 
 ### Alternating forms have even rank over every field
 
-**Remember:** Alternating forms gain rank two directions at a time.
+**Remember:** An alternating form pairs every vector with itself to give zero.
 
 *Rules out counterexamples.* MSC 15A63 (Quadratic and bilinear forms, inner products). arXiv math.RA. Level 2: later undergraduate.
 
@@ -2171,7 +2171,7 @@
 
 **Problem.** In every basis that diagonalizes q, the numbers of positive and of negative diagonal entries are the same. This is Sylvester's law of inertia.
 
-**How the definition helps.** With this definition, the indices clearly do not depend on any basis. The work moves into showing that the positive index equals the count p of positive entries in a diagonalizing basis. Those basis vectors span a positive definite subspace of dimension p, and any larger subspace meets the span of the others, where q ≤ 0. The negative count follows in the same way for −q (proof steps our own).
+**How the definition helps.** The largest dimension of a positive definite subspace is independent of coordinates. In diagonal coordinates, the p positive directions span such a subspace. Every larger subspace meets the span of the remaining directions nontrivially, where q ≤ 0. Applying the same argument to −q gives the negative count (our own).
 
 **Wikipedia:** [Sylvester's law of inertia](https://en.wikipedia.org/wiki/Sylvester%27s_law_of_inertia). It says: “These dimensions are the positive and negative indices of inertia of q.”
 
@@ -2336,7 +2336,7 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 **Remember:** Send each factor to its image, then multiply in order.
 
-*Makes the theorem clean to state or prove.* MSC 15A69 (Multilinear algebra, tensor calculus). arXiv math.RA. Level 2: later undergraduate.
+*True by definition.* MSC 15A69 (Multilinear algebra, tensor calculus). arXiv math.RA. Level 2: later undergraduate.
 
 **Definition.** Define the tensor algebra as the direct sum of all tensor powers of V, starting with the scalar field in degree zero. Multiply tensors by concatenating their ordered lists of factors.
 
@@ -2358,7 +2358,7 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 *True by definition.* MSC 15A69 (Multilinear algebra, tensor calculus). arXiv math.RA. Level 2: later undergraduate.
 
-**Definition.** Define the trace of a linear map as contraction on its operator tensor. On a tensor w ⊗ λ that represents v ↦ λ(v)w, this returns λ(w).
+**Definition.** For a finite-dimensional vector space V, identify w ⊗ λ ∈ V ⊗ V∗ with the operator v ↦ λ(v)w. Define trace as the linear functional on operator tensors sending each w ⊗ λ to λ(w).
 
 **Problem.** For linear maps A and B from finite-dimensional spaces to themselves, tr(A ⊗ B) = tr(A) tr(B).
 
@@ -2390,15 +2390,15 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 ### Defining tensor products by a universal property makes basic facts automatic
 
-**Remember:** A linear map out of V ⊗ W is a bilinear map out of V × W.
+**Remember:** Bilinear maps on pairs factor uniquely through linear maps on tensors.
 
 *True by definition.* MSC 15A69 (Multilinear algebra, tensor calculus). arXiv math.RA. Level 2: later undergraduate.
 
-**Definition.** A tensor product of vector spaces V and W is a vector space V ⊗ W with a bilinear map from V × W to it. It must be universal: every bilinear map out of V × W is this map followed by exactly one linear map out of V ⊗ W.
+**Definition.** A tensor product of V and W is a space T with a bilinear map b from V × W to T. For every space Z and bilinear map f from V × W to Z, exactly one linear map g satisfies f = g ∘ b.
 
-**Problem.** The tensor product is unique up to a unique compatible isomorphism, so it does not depend on a choice of basis. Also V ⊗ W ≅ W ⊗ V and ℝ ⊗ ℝ ≅ ℝ.
+**Problem.** The tensor product is unique up to a unique compatible isomorphism, independent of basis. Also V ⊗ W ≅ W ⊗ V, and over ℝ we have ℝ ⊗ ℝ ≅ ℝ.
 
-**How the definition helps.** Any two spaces with the universal property are isomorphic by a unique compatible isomorphism, so basis independence is automatic. A construction with bases gives a different space for each pair of bases. To build a linear map out of V ⊗ W, one only gives a bilinear map out of V × W, which proves ℝ ⊗ ℝ ≅ ℝ without an awkward injectivity check. Existence still needs a construction, such as a quotient of a free vector space.
+**How the definition helps.** Universality gives compatible maps between any two tensor products in both directions. Their composites fix simple tensors, so uniqueness makes both composites identities. Swapping inputs twice likewise gives the identity. Over ℝ, multiplication has inverse r ↦ r ⊗ 1 because a ⊗ b = ab ⊗ 1 (arguments our own).
 
 **Wikipedia:** [Tensor product](https://en.wikipedia.org/wiki/Tensor_product). It says: “A consequence of this approach is that every property of the tensor product can be deduced from the universal property, and that, in practice, one may forget the method that has been used to prove its existence.”
 
@@ -2424,7 +2424,7 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 **Remember:** Change each vector coordinate by the inverse and each dual coordinate by the transpose.
 
-*Makes the theorem clean to state or prove.* MSC 15A69 (Multilinear algebra, tensor calculus). arXiv math.RA. Level 2: later undergraduate.
+*True by definition.* MSC 15A69 (Multilinear algebra, tensor calculus). arXiv math.RA. Level 2: later undergraduate.
 
 **Definition.** Define a mixed tensor as an element of a tensor product of vector spaces and their duals. A dual factor is a space of scalar-valued linear functions.
 
@@ -2442,7 +2442,7 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 *True by definition.* MSC 15A69 (Multilinear algebra, tensor calculus). arXiv math.RA. Level 2: later undergraduate.
 
-**Definition.** A dual slot holds a linear functional. Define contraction on a tensor of vectors and functionals by evaluating the chosen functional on the chosen vector. Keep all other slots unchanged and extend the rule linearly.
+**Definition.** On a simple tensor, contract a V∗ factor with a V factor by multiplying the remaining tensor by the functional’s value on the vector. Extend this rule linearly, interpreting the empty product as the scalar 1.
 
 **Problem.** Contraction is independent of the basis used for the tensor. In coordinates it sums over the shared index of a vector slot and its dual slot.
 
@@ -2456,11 +2456,11 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 **Remember:** Evaluate the functional, then scale the vector.
 
-*Makes the theorem clean to state or prove.* MSC 15A69 (Multilinear algebra, tensor calculus). arXiv math.RA. Level 2: later undergraduate.
+*True by definition.* MSC 15A69 (Multilinear algebra, tensor calculus). arXiv math.RA. Level 2: later undergraduate.
 
 **Definition.** A linear functional sends vectors to scalars by a linear rule. For λ in the dual space V∗ and w in W, let w ⊗ λ act on v by λ(v)w. This bilinear rule extends linearly to tensors.
 
-**Problem.** For vector spaces V and W over one field, W⊗V∗ identifies naturally with the maps V → W whose images have finite dimension.
+**Problem.** For vector spaces V and W over one field, W ⊗ V∗ identifies naturally with the linear maps V → W of finite rank.
 
 **How the definition helps.** A finite tensor sum produces outputs in the span of its listed vectors (our own). Conversely, the coordinates of a finite-rank map in an image basis give its tensor (our own). Write any tensor using independent output vectors by expanding in a basis of their span (our own). If its map vanishes, independence forces every coefficient functional to vanish (our own).
 
@@ -2490,7 +2490,7 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 *True by definition.* MSC 15A69 (Multilinear algebra, tensor calculus). arXiv math.RA. Level 2: later undergraduate.
 
-**Definition.** Define the tensor product U ⊗ V by its extension rule. Each bilinear map from U × V extends uniquely to a linear map from U ⊗ V. A bilinear map is linear in each input separately.
+**Definition.** A tensor product of U and V is a space T with a bilinear map b from U × V to T. For every space W and bilinear map B from U × V to W, exactly one linear map L satisfies B = L ∘ b.
 
 **Problem.** Linear maps U ⊗ V → W correspond naturally to linear maps U → Hom(V,W). Here Hom(V,W) is the space of linear maps V → W.
 
@@ -2574,7 +2574,7 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 *True by definition.* MSC 15A69 (Multilinear algebra, tensor calculus). arXiv math.RA. Level 2: later undergraduate.
 
-**Definition.** A multilinear map is linear in each input separately. Define a tensor product by requiring each multilinear map on its factors to extend uniquely to a linear map from the product.
+**Definition.** A tensor product of vector spaces comes with a multilinear map from their Cartesian product. Every multilinear map from that product to any vector space factors uniquely through this map by a linear map.
 
 **Problem.** Exactly one linear isomorphism from (U⊗V)⊗W to U⊗(V⊗W) sends every (u⊗v)⊗w to u⊗(v⊗w).
 
@@ -2586,7 +2586,7 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 ### A wedge product is zero exactly when the vectors are dependent
 
-**Remember:** Independent vectors have a nonzero wedge; dependent ones give zero.
+**Remember:** Repeating any vector factor makes a wedge vanish.
 
 *True by definition.* MSC 15A75 (Exterior algebra, Grassmann algebras), 15A03. arXiv math.RA. Level 2: later undergraduate.
 
@@ -2606,11 +2606,11 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 *Rules out counterexamples.* MSC 15A75 (Exterior algebra, Grassmann algebras), 15A03. arXiv math.RA. Level 2: later undergraduate.
 
-**Definition.** The exterior algebra imposes v ∧ v = 0 for every vector v. This is the alternating rule. The weaker antisymmetric rule says only v ∧ w = −w ∧ v.
+**Definition.** The exterior algebra of V is its tensor algebra modulo the ideal generated by v ⊗ v for every v ∈ V. Its kth exterior power is the part of degree k.
 
 **Problem.** For a vector space V of dimension n over any field, the k-th exterior power has dimension equal to the binomial coefficient n choose k. So the whole exterior algebra has dimension 2ⁿ and the top power is one-dimensional.
 
-**How the definition helps.** The alternating rule implies antisymmetry in every field, but the converse needs division by 2. In characteristic 2 the antisymmetric rule only says that wedges commute, so imposing only it would give the infinite-dimensional symmetric algebra (our own). With v ∧ v = 0, the count of basis elements gives the binomial dimensions in all characteristics.
+**How the definition helps.** The exterior basis theorem gives one basis wedge per increasing k-element index set, yielding the binomial count (our own). Summing over k counts all subsets, and only one uses all n indices. In characteristic two, antisymmetry alone allows arbitrary powers of one generator, yielding a polynomial algebra in dimension one (our own).
 
 **nLab:** [exterior algebra](https://ncatlab.org/nlab/show/exterior+algebra). It says: “If we can divide by 2, then the relations … imply …, while the converse holds in any characteristic.”
 
@@ -2656,7 +2656,7 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 **Remember:** Wedges of dual basis elements select just the matching basis wedges.
 
-*Makes the theorem clean to state or prove.* MSC 15A75 (Exterior algebra, Grassmann algebras). arXiv math.RA. Level 2: later undergraduate.
+*True by definition.* MSC 15A75 (Exterior algebra, Grassmann algebras). arXiv math.RA. Level 2: later undergraduate.
 
 **Definition.** Pair a wedge of k linear functionals with a wedge of k vectors using the determinant of their evaluation matrix. A repeated row or column makes the determinant zero, so the pairing extends linearly to exterior powers.
 
@@ -2766,11 +2766,11 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 *True by definition. Confidence: medium.* MSC 15A80 (Max-plus and related algebras), 05C38. arXiv math.CO, cs.DS. Level 2: later undergraduate.
 
-**Definition.** In the min-plus semiring, the sum is the minimum and the product is ordinary addition, with ∞ as zero. For a finite directed graph, put the cheapest edge cost from i to j in entry (i, j). Put ∞ where there is no edge.
+**Definition.** The min-plus semiring uses real numbers and ∞, with minimum as addition and ordinary addition as multiplication. For each ordered vertex pair of a finite directed graph, record the minimum edge cost, using ∞ for an empty set.
 
-**Problem.** Take the kth min-plus power of this matrix. Its entry (i, j) is the least cost of a walk from i to j with exactly k edges.
+**Problem.** Fix an integer k ≥ 0. Entry (i,j) of the kth min-plus power gives the minimum cost of a k-edge walk from i to j. An empty set of walks has minimum cost ∞.
 
-**How the definition helps.** In this semiring, a matrix product extends a walk by one edge and then takes the cheapest choice. Our own induction on k gives the result. Wikipedia says only that the Floyd–Warshall shortest-path algorithm is a computation over this algebra. Distributivity of + over minimum lets the matrix product work, and the rest of the argument is our own.
+**How the definition helps.** Multiplication adds the cost of the last edge and minimizes over its starting vertex (our own). The zeroth power costs zero for staying at a vertex and ∞ for changing vertices. Induction gives the stated minimum (our own).
 
 **Wikipedia:** [Semiring](https://en.wikipedia.org/wiki/Semiring). It says: “The Floyd–Warshall algorithm for shortest paths can thus be reformulated as a computation over a (min, +) algebra.”
 
@@ -2784,7 +2784,7 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 **Definition.** Record a relation between finite sets by a matrix of truth values. Use the Boolean semiring, which adds with OR and multiplies with AND, so 1 + 1 = 1.
 
-**Problem.** The Boolean product of the matrices of two relations is the matrix of their composite. The Boolean sum is the matrix of their union.
+**Problem.** For relations with matching intermediate sets, the Boolean product of their matrices represents composition. For relations on the same pair of sets, the Boolean sum represents union.
 
 **How the definition helps.** The rule 1 + 1 = 1 makes each entry say only whether a witness exists, which is what composition asks. Wikipedia states both facts for the Boolean semiring. In our own check, entry (i, k) of the product is the OR over j of (i R j AND j S k). With integer arithmetic, the entry counts witnesses, and one must round positive counts to one.
 
@@ -2802,7 +2802,7 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 **Problem.** The entrywise product of two positive semidefinite matrices of the same size is positive semidefinite. This entrywise product is also called the Hadamard or Schur product.
 
-**How the definition helps.** With this definition, the theorem is one line about tensor products. If M has entries ⟨vᵢ, vⱼ⟩ and N has entries ⟨wᵢ, wⱼ⟩, then ⟨vᵢ ⊗ wᵢ, vⱼ ⊗ wⱼ⟩ is the product of those entries. So the entrywise product is the Gram matrix of the vectors vᵢ ⊗ wᵢ. The usual proof writes each matrix as a sum of rank-one terms from its eigenvectors. The work moves into the theorem that the two definitions agree, which Wikipedia states. The tensor product step is our own.
+**How the definition helps.** The tensor product inner product multiplies the inner products of corresponding factors. Thus the Gram matrix of the vectors vᵢ ⊗ wᵢ is the entrywise product (our own). The equivalence of Gram matrices and positive semidefinite matrices completes the argument.
 
 **Wikipedia:** [Gram matrix](https://en.wikipedia.org/wiki/Gram_matrix). It says: “The Gram matrix is positive semidefinite, and every positive semidefinite matrix is the Gramian matrix for some set of vectors.”
 
@@ -2812,15 +2812,15 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 ### Irreducible nonnegative matrices have a simple positive Perron eigenvalue
 
-**Remember:** A strongly connected graph gives a simple Perron root and a positive eigenvector.
+**Remember:** Irreducibility means positive entries give a directed path between every ordered vertex pair.
 
 *Rules out counterexamples.* MSC 15B48 (Positive matrices and their generalizations; cones of matrices), 15A18. arXiv math.SP, math.RA. Level 2: later undergraduate.
 
-**Definition.** A nonnegative n × n matrix A is irreducible if its directed graph is strongly connected. Take n ≥ 2, to leave out the 1 × 1 zero matrix (our own). The graph has an edge from i to j when the entry in row i and column j is nonzero. Strongly connected means that every vertex can reach every other vertex.
+**Definition.** For a nonnegative square matrix A, draw an edge i → j whenever Aᵢⱼ &gt; 0. The matrix is irreducible if every vertex can reach every other vertex by a directed path.
 
-**Problem.** If A is nonnegative and irreducible, its spectral radius r, the largest absolute value of an eigenvalue, is itself a positive eigenvalue. It is a simple root of the characteristic polynomial, and it has an eigenvector with all entries strictly positive.
+**Problem.** For an irreducible nonnegative matrix of size n ≥ 2, the spectral radius is a positive eigenvalue (size restriction our own). It is a simple root of the characteristic polynomial and has an eigenvector with all entries strictly positive.
 
-**How the definition helps.** Irreducibility stops the matrix from splitting into blocks that do not talk to each other, so one eigenvector must be positive everywhere. For a general nonnegative matrix only a nonnegative eigenvector exists. The page's counterexample is the matrix with rows (0, 1) and (0, 0). Its largest eigenvalue is 0, which is a double root, and its eigenvector (1, 0) is not positive. This matrix is reducible, so the definition excludes it. What irreducibility does not give is a unique eigenvalue of largest absolute value: that needs the period to be 1.
+**How the definition helps.** Strong connectivity lets the irreducible Perron–Frobenius theorem give positivity and simplicity. The matrix with rows (0,1) and (0,0) has no path from the second vertex to the first. Its spectral radius is zero with multiplicity two, and its eigenvectors have zero second coordinate (our own).
 
 **Wikipedia:** [Perron–Frobenius theorem](https://en.wikipedia.org/wiki/Perron%E2%80%93Frobenius_theorem). It says: “However, Frobenius found a special subclass of non-negative matrices — irreducible matrices — for which a non-trivial generalization is possible.”
 
@@ -2834,11 +2834,11 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 *Rules out counterexamples.* MSC 15B48 (Positive matrices and their generalizations; cones of matrices), 15A18. arXiv math.SP, math.RA. Level 2: later undergraduate.
 
-**Definition.** A nonnegative matrix A is primitive if some power of A has all entries strictly positive. Primitive matrices are the same as irreducible matrices of period 1. The period is the greatest common divisor of the lengths of the closed paths in the graph of A.
+**Definition.** A nonnegative square matrix A is primitive if there is an integer m ≥ 1 such that every entry of Aᵐ is strictly positive.
 
 **Problem.** If A is primitive, its Perron eigenvalue r is strictly larger in absolute value than every other eigenvalue. So the powers of A, divided by rᵏ, settle down to a fixed limit.
 
-**How the definition helps.** Asking that one power be positive lets the proof for positive matrices run unchanged on that power. The page notes that an irreducible matrix of period h has h eigenvalues of largest absolute value. The matrix with rows (0, 1) and (1, 0) is irreducible with period 2. Its eigenvalues 1 and −1 have the same absolute value, so its powers alternate and do not converge (our own). Primitivity excludes exactly this case. For Markov chains, this is the step from irreducible to irreducible and aperiodic (our own).
+**How the definition helps.** Perron–Frobenius applies to primitive matrices, giving a simple Perron eigenvalue and strictly smaller moduli for all others. After division by rᵏ, the other Jordan blocks tend to zero and the Perron block stays fixed (our own). The matrix swapping two coordinates has eigenvalues 1 and −1, and its powers alternate (our own). No power is strictly positive.
 
 **Wikipedia:** [Perron–Frobenius theorem](https://en.wikipedia.org/wiki/Perron%E2%80%93Frobenius_theorem). It says: “All statements of the Perron–Frobenius theorem for positive matrices remain true for primitive matrices.”
 
@@ -2852,7 +2852,7 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 *True by definition.* MSC 15B99 (Special matrices), 53D05, 15A15. arXiv math.SG, math.RA. Level 2: later undergraduate.
 
-**Definition.** A symplectic matrix preserves a nondegenerate alternating form ω, a bilinear pairing with ω(v,v) = 0 and no unpaired direction. In matrix terms, MᵀΩM = Ω. In dimension 2n over the reals or complexes, the wedge product of n copies of ω is a nonzero volume form.
+**Definition.** Fix a nondegenerate alternating bilinear form ω on a real or complex vector space of dimension 2n. Nondegeneracy means that each nonzero v has some w with ω(v,w) ≠ 0. A matrix M is symplectic for ω if ω(Mv,Mw) = ω(v,w) for all v,w.
 
 **Problem.** Every real or complex symplectic matrix has determinant one.
 
@@ -2870,11 +2870,11 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 15A03 (Vector spaces, linear dependence, rank, lineability), 13C40. arXiv math.AC, math.RA. Level 3: graduate.
 
-**Definition.** Let A be an n × m matrix over a commutative ring R. Its McCoy rank is the largest t such that the ideal generated by the t × t minors of A has zero annihilator. The ideal of 0 × 0 minors is taken to be R. Over a field this is the usual rank.
+**Definition.** For a matrix over a nonzero commutative ring with identity, its McCoy rank is the largest minor size t satisfying the following condition. For each nonzero scalar, at least one t × t minor has nonzero product with that scalar. The empty minor equals 1 (formulation our own).
 
 **Problem.** Let R be a nonzero commutative ring and A an n × m matrix over R. Then Ax = 0 has a nonzero solution exactly when the McCoy rank of A is less than m.
 
-**How the definition helps.** Using annihilators of minor ideals, instead of asking for a nonzero minor, accounts for zero divisors, so the field theorem keeps its form. For example (our own), over ℤ/6 the 1 × 1 matrix (2) has a nonzero minor, yet 3 · 2 = 0 gives a nonzero solution. Its McCoy rank is 0, because 3 kills the minor. The definition of McCoy rank given here is our own statement; the quoted theorem only uses it.
+**How the definition helps.** McCoy’s theorem characterizes column dependence by a nonzero common annihilator of the maximal column-size minors, taking missing minors as zero. This gives the rank criterion even over rings with zero divisors. Over ℤ/6, the nonzero entry 2 has annihilator containing 3, so the matrix \[2\] has rank zero and kills \[3\] (our own).
 
 **Paper or page:** [The CRing Project, Various, Theorem 2.7 (McCoy)](https://math.uchicago.edu/~amathew/CRing.pdf), [The CRing Project, Various, Corollary 2.8](https://math.uchicago.edu/~amathew/CRing.pdf). It says: “If R is not the zero ring, the following are equivalent: (1) The columns α₁, …, αₘ are linearly dependent. (2) Equation … has a nontrivial solution. (3) rk(A) &lt; m.”
 
@@ -2908,7 +2908,7 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 **Problem.** If 0 ≤ C ≤ D and the kernels match, then D⁺ ≤ C⁺. Here the superscript plus denotes the pseudoinverse. The kernel condition is also necessary.
 
-**How the definition helps.** Matching kernels reduce the claim to positive definite matrices on the shared range, where inverses reverse order (our own). For a counterexample, take C = 0 and D = I: then C⁺ = 0 and D⁺ = I, so the order does not reverse (our own). For necessity, the original and reversed inequalities give opposite inclusions of the kernels (our own).
+**How the definition helps.** On the common range, both matrices are positive definite and inversion reverses order. Both pseudoinverses vanish on the common kernel. Under 0 ≤ C ≤ D, the two order inequalities imply opposite kernel inclusions because pseudoinversion preserves each kernel (our own). For C = 0 and D = I, the reversed inequality fails (our own).
 
 **Paper or page:** [Matrix monotonicity and concavity of the principal pivot transform](https://arxiv.org/abs/2302.04293v2). It says: “if 0 ≤ C ≤ D then D⁺ ≤ C⁺ if and only if ker C = ker D.”
 
@@ -2922,11 +2922,11 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 *True by definition.* MSC 15A15 (Determinants, permanents, traces, other special matrix functions), 15A75. arXiv math.RA. Level 3: graduate.
 
-**Definition.** On a space of dimension n, the wedge product pairs k-fold wedges with (n − k)-fold wedges, with values in the top exterior power. This pairing turns the action of A on (n − k)-fold wedges into a map on k-fold wedges. In a basis, its entries are signed complementary minors.
+**Definition.** Let V have dimension n, with 0 ≤ k ≤ n. The complementary wedge pairing sends (u,v) in ΛᵏV × Λⁿ⁻ᵏV to u ∧ v in ΛⁿV.
 
 **Problem.** Let A be an invertible n × n matrix, with k-element row set I, column set J, and complements I′ and J′. The minor of A⁻¹ on rows I and columns J equals ± the minor of A on rows J′ and columns I′, over det A. The sign is −1 raised to the sum of all indices in I and J.
 
-**How the definition helps.** With this definition, the theorem becomes the fact that A scales the wedge pairing by det A. So moving the action of A from one side of the pairing to the other gives det A times the action of A⁻¹. The work moves into two computations: complementary basis wedges pair to the sign of their joined index list, and the exterior power has minors as entries. The pairing form of the argument is our own.
+**How the definition helps.** Applying A to both arguments multiplies their wedge by det A (our own argument). Thus pairing u with Λⁿ⁻ᵏA(v) equals det A times pairing Λᵏ(A⁻¹)(u) with v. In the ordered wedge basis, exterior powers have minors as entries. Pairing complementary basis wedges gives the stated sign.
 
 **nLab:** [determinant](https://ncatlab.org/nlab/show/determinant). It says: “The determinant is the (essentially unique) universal alternating multilinear map.”
 
@@ -2940,11 +2940,11 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 *True by definition.* MSC 15A15 (Determinants, permanents, traces, other special matrix functions), 15A75. arXiv math.RA. Level 3: graduate.
 
-**Definition.** Work over a field of characteristic zero. For a 2n × 2n skew-symmetric A, let ω be the sum over i &lt; j of aᵢⱼ eᵢ ∧ eⱼ, with ∧ the alternating wedge. Define pf(A) by the rule that ωⁿ divided by n! equals pf(A) e₁ ∧ ⋯ ∧ e₂ₙ. The usual formula is a signed sum over the ways to split the indices into pairs.
+**Definition.** For a skew-symmetric 2n × 2n matrix A over a characteristic-zero field, put ω = ∑ᵢ&lt;ⱼ aᵢⱼ eᵢ ∧ eⱼ in the standard basis. Define pf(A) as the coefficient of e₁ ∧ ⋯ ∧ e₂ₙ in the wedge power ωⁿ/n!.
 
 **Problem.** For a 2n × 2n skew-symmetric matrix A and any 2n × 2n matrix B, pf(BABᵀ) = det(B) pf(A).
 
-**How the definition helps.** With this definition, the identity reduces to how B acts on wedges. Replacing A by BABᵀ is the same as replacing each eₖ in ω by the kth column fₖ of B. So ωⁿ becomes the same expression in the fₖ. Then f₁ ∧ ⋯ ∧ f₂ₙ = det(B) e₁ ∧ ⋯ ∧ e₂ₙ finishes the proof. Wikipedia gives this proof. The work moves into showing that the wedge definition agrees with the pairing formula. Each pairing appears n! times in ωⁿ, with the right sign.
+**How the definition helps.** Applying B to each factor of ω gives the bivector for BABᵀ. On its nth wedge power, B acts on the top exterior power by det(B). Comparing coefficients proves the identity.
 
 **Wikipedia:** [Pfaffian](https://en.wikipedia.org/wiki/Pfaffian). It says: “where ωⁿ denotes the wedge product of n copies of ω.”
 
@@ -2952,15 +2952,15 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 ### Defining trace by evaluation makes it survive extension of scalars
 
-**Remember:** Evaluation gives the same scalar before and after extending scalars.
+**Remember:** Evaluate each dual factor on its paired vector and add.
 
 *True by definition.* MSC 15A15 (Determinants, permanents, traces, other special matrix functions), 13C10. arXiv math.AC. Level 3: graduate.
 
-**Definition.** Let P be a finite projective module over a commutative ring R, a direct summand of a finite free module. Each endomorphism of P is a sum of maps x ↦ φ(x)p, with p in P and φ in the dual module P\*. Define the trace by sending each such term to φ(p). Where P has a basis, the usual definition adds the diagonal entries.
+**Definition.** Let P be a finitely generated projective module over a commutative ring R. Identify P ⊗ P\* with Endᵣ(P) by sending p ⊗ φ to the map x ↦ φ(x)p. The trace is the linear map sending each p ⊗ φ to φ(p).
 
 **Problem.** Let R → S be a map of commutative rings, and let f be an endomorphism of P. Then the trace of the extended map f ⊗ S on P ⊗ S is the image in S of the trace of f.
 
-**How the definition helps.** With this definition, both traces are the same evaluation, and evaluation commutes with any ring map. The usual definition needs local bases, so one would compare traces on many local pieces. The work moves into two facts: P ⊗ P\* is the module of endomorphisms of P, and the dual of P ⊗ S is P\* ⊗ S. This application is our own.
+**How the definition helps.** After scalar extension, each evaluation φ(p) becomes its image in S (our own argument). Adding these images gives the extended trace.
 
 **nLab:** [tensor contraction](https://ncatlab.org/nlab/show/tensor+contraction). It says: “by pairing by the evaluation map”
 
@@ -2972,11 +2972,11 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 *True by definition.* MSC 15A15 (Determinants, permanents, traces, other special matrix functions), 15A24. arXiv math.CO, math.RA. Level 3: graduate.
 
-**Definition.** Let P be an invertible leading square block of a matrix A. Form B whose (i, j) entry is the determinant of P bordered by row i and column j of A. Then B is det P times the Schur complement of P in A, the block left after eliminating P.
+**Definition.** Write A in block rows (P,C) and (D,E), with P square and invertible. The Schur complement of P is S = E − DP⁻¹C. Let Bᵢⱼ be the determinant of P bordered by the corresponding extra row i and column j of A.
 
 **Problem.** For ℓ ≥ 1, an ℓ × ℓ minor of B equals det Q times (det P)<sup>(ℓ−1)</sup>. Here Q is P bordered by the corresponding ℓ rows and ℓ columns of A.
 
-**How the definition helps.** Seeing B as one scaled Schur complement replaces many determinant expansions by a single block elimination (our own). Scaling contributes ℓ factors of det P, and block elimination gives det Q as det P times the selected Schur determinant. Both sides are polynomials in the entries, so equality extends to singular P.
+**How the definition helps.** Block elimination on each single border gives Bᵢⱼ = det(P) Sᵢⱼ (our own argument). On the selected ℓ borders, it gives det Q as det(P) times the corresponding minor of S. Scaling S by det(P) multiplies that minor by (det P)ˡ.
 
 **Paper or page:** [Sufficient conditions for total positivity, compounds, and Dodgson condensation](https://arxiv.org/abs/2405.06069v1). It says: “det B\[δ, γ\] = (det A\[α\])ˡ⁻¹ det A\[α ∪ δ, α ∪ γ\].”
 
@@ -2986,7 +2986,7 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 ### Symmetrization turns permanents into inner products
 
-**Remember:** Each matching of the two vector lists contributes once after normalization.
+**Remember:** Sum all tensor orders and divide by the square root of their number.
 
 *True by definition.* MSC 15A15 (Determinants, permanents, traces, other special matrix functions), 15A69. arXiv math.RA, math.CO. Level 3: graduate.
 
@@ -3008,7 +3008,7 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 15A15 (Determinants, permanents, traces, other special matrix functions), 19B99. arXiv math.RA, math.KT. Level 3: graduate.
 
-**Definition.** Let K be a division ring and K\* its group of nonzero elements. The Dieudonné determinant is a group homomorphism from GL(n, K) to the abelianization K\*/\[K\*, K\*\], which is K\* divided by its commutator subgroup. Two rules fix it. Scaling a row by a multiplies the value by the class of a, and adding a multiple of one row to another does not change the value.
+**Definition.** For a division ring K, the Dieudonné determinant maps GL(n,K) homomorphically to the multiplicative group K\* modulo its commutator subgroup. Adding a left multiple of one row to another preserves its value. Left-scaling a row by any a ∈ K\* multiplies its value by the class of a.
 
 **Problem.** Over a division ring K, there is a unique homomorphism from GL(n, K) to K\*/\[K\*, K\*\] that obeys the two row rules. So SL(n, K), the matrices of determinant 1, is defined, for example over the quaternions ℍ.
 
@@ -3026,7 +3026,7 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 *Makes the theorem clean to state or prove.* MSC 15A21 (Canonical forms, reductions, classification), 15B33. arXiv math.RA, math.NT. Level 3: graduate.
 
-**Definition.** Let A be a principal ideal domain, a domain where each ideal has one generator. Let θ solve a monic polynomial f over A that is irreducible over its fraction field K. A fractional ideal here is a nonzero finitely generated A\[θ\]-submodule of K(θ). Two such ideals represent one class if multiplication by a nonzero element of K(θ) takes one onto the other.
+**Definition.** Let θ satisfy a monic polynomial f over a principal ideal domain A, irreducible over the fraction field K. A fractional ideal is a nonzero finitely generated A\[θ\]-submodule of K(θ). Two ideals represent the same class when one is a nonzero scalar multiple of the other in K(θ).
 
 **Problem.** For n equal to the degree of f, these ideal classes classify n-by-n matrices over A with characteristic polynomial f up to similarity.
 
@@ -3062,7 +3062,7 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 *Rules out counterexamples.* MSC 15A39 (Linear inequalities of matrices), 15A09. arXiv math.FA. Level 3: graduate.
 
-**Definition.** Write a Hermitian matrix in blocks with top row A, B and bottom row B∗, D. The star denotes conjugate transpose. The pseudoinverse D⁺ inverts D on its range and acts as zero on its kernel. The generalized Schur complement is A − BD⁺B∗.
+**Definition.** Write a Hermitian matrix in block rows (A,B) and (B∗,D). Kernel compatibility means Bv = 0 for every v with Dv = 0. The generalized Schur complement is A − BD⁺B∗, where D⁺ inverts D on its range and vanishes on its kernel.
 
 **Problem.** The whole matrix is positive semidefinite exactly when three conditions hold. Both D and the generalized Schur complement must be positive semidefinite. Also, B must vanish on the kernel of D.
 
@@ -3076,11 +3076,11 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 ### Minimization makes Schur complements concave
 
-**Remember:** The minimum of an average is at least the average of the minima.
+**Remember:** Fix the first block and minimize the quadratic form over the second.
 
 *True by definition.* MSC 15A39 (Linear inequalities of matrices), 15A45. arXiv math.FA. Level 3: graduate.
 
-**Definition.** Start with a positive semidefinite Hermitian block matrix. Fix the first group of variables in its quadratic form and minimize over the second group. The Schur complement is the matrix of the resulting quadratic form. The usual elimination formula uses the inverse of the eliminated block on its range and zero on its kernel.
+**Definition.** For a positive semidefinite Hermitian matrix M in two fixed blocks, write q(x,y) for its quadratic form. Its Schur complement onto the first block is the Hermitian matrix S satisfying x∗Sx = minᵧ q(x,y) for every x.
 
 **Problem.** On positive semidefinite matrices split into fixed blocks, the Schur complement is concave. In other words, the complement of an average is at least the average of the complements in the positive semidefinite order.
 
@@ -3098,7 +3098,7 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 *True by definition.* MSC 15A45 (Miscellaneous inequalities involving matrices), 15A39. arXiv math.FA, math.OA. Level 3: graduate.
 
-**Definition.** For 0 ≤ λ ≤ 1, the weighted harmonic mean of 1 and t is the reciprocal of (1 − λ) + λ/t. Integrate these functions against a finite positive measure on \[0,1\]. For a positive definite matrix, apply the resulting function to its eigenvalues in an orthonormal eigenbasis.
+**Definition.** For t &gt; 0 and 0 ≤ λ ≤ 1, set hλ(t) = 1/((1 − λ) + λ/t). For a finite positive measure μ on \[0,1\], define f(t) = ∫ hλ(t) dμ(λ). Apply f to positive definite matrices by applying it to their eigenvalues in an orthonormal eigenbasis.
 
 **Problem.** The resulting function is operator monotone on positive definite matrices of every size. This means that if B − A is positive semidefinite, then so is f(B) − f(A).
 
@@ -3116,11 +3116,11 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 *True by definition.* MSC 15A66 (Clifford algebras, spinors), 35Q41, 81Q05. arXiv math-ph, hep-th. Level 3: graduate.
 
-**Definition.** Use four gamma matrices that anticommute in pairs, meaning that reversing the order of a distinct pair negates its product. The time matrix squares to the identity, and each space matrix squares to minus the identity. These are the Clifford relations for the flat spacetime metric with positive time sign. The free Dirac operator uses i times these matrices as derivative coefficients and subtracts the mass.
+**Definition.** For flat spacetime, choose four gamma matrices such that γμγν = −γνγμ for distinct indices. Require γ₀² = I and γⱼ² = −I for j = 1, 2, 3. The free Dirac operator with constant mass m is i∑μ γμ∂μ − mI.
 
 **Problem.** Each component of a solution to the free Dirac equation satisfies the Klein–Gordon wave equation with the same mass.
 
-**How the definition helps.** The Clifford definition makes the square of the gamma-matrix derivative equal to the wave operator (our own). Mixed derivatives cancel in pairs, and the squares supply the time and space signs (our own). Multiplying the Dirac operator by its partner with the opposite mass sign gives the negative of the Klein–Gordon operator (our own). The older equation imposes the second-order wave operator directly on each component. The work lies in finding matrices with the required relations to build the first-order factorization.
+**How the definition helps.** The Clifford definition makes the square of the gamma-matrix derivative equal to the wave operator (our own). Mixed derivatives cancel in pairs, and the squares supply the time and space signs (our own). Multiplying the Dirac operator by its partner with the opposite mass sign gives the negative of the Klein–Gordon operator (our own).
 
 **Wikipedia:** [Dirac equation](https://en.wikipedia.org/wiki/Dirac_equation). It says: “As a result, any solution to the Dirac equation is also automatically a solution to the Klein–Gordon equation.”
 
@@ -3134,11 +3134,11 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 *True by definition.* MSC 15A66 (Clifford algebras, spinors), 16S10. arXiv math.RA. Level 3: graduate.
 
-**Definition.** Start with a vector space V and a quadratic form Q on it. The Clifford algebra has a linear map i from V such that i(v)² = Q(v)1. Every linear map f from V into a unital algebra satisfying f(v)² = Q(v)1 extends uniquely to a unital algebra map from the Clifford algebra. The concrete construction instead divides the tensor algebra of words in V by the relations v² = Q(v)1.
+**Definition.** For a quadratic form Q on a vector space V, its Clifford algebra has a linear map i satisfying i(v)² = Q(v)1 for every v. Every linear map from V into a unital algebra satisfying the same relation factors uniquely through i by a unital algebra homomorphism.
 
 **Problem.** The Clifford algebra has an automorphism α sending i(v) to −i(v) and satisfying α² = 1. Over a field of characteristic other than two, its two eigenspaces give its even and odd parts.
 
-**How the definition helps.** The universal property gives α as soon as we see that negation preserves the square relation. Applying α twice fixes each i(v), so uniqueness says that α² is the identity. In characteristic other than two, any element is the sum of its parts fixed and negated by α. Since α preserves multiplication, a product has the parity given by multiplying the two signs. The work moves into constructing the algebra and proving the quotient has the universal property.
+**How the definition helps.** Negation preserves the square relation, so the universal property extends it to α. The square of α fixes every generator, hence equals the identity by uniqueness. Outside characteristic two, (x + α(x))/2 and (x − α(x))/2 give the even and odd components (our own calculation).
 
 **Wikipedia:** [Clifford algebra](https://en.wikipedia.org/wiki/Clifford_algebra). It says: “the linear map on V defined by v ↦ −v (reflection through the origin) preserves the quadratic form Q and so by the universal property of Clifford algebras extends to an algebra automorphism”
 
@@ -3154,7 +3154,7 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 **Problem.** For any norm and any nonnegative integer r, every tensor has a nearest tensor of border rank at most r. Ordinary rank can fail this test.
 
-**How the definition helps.** Our own proof uses the closed set of tensors of border rank at most r. A bounded minimizing sequence has a convergent subsequence whose limit attains the minimum. Take the standard basis e₁, e₂ of the real plane. The tensor e₂⊗e₁⊗e₁ + e₁⊗e₂⊗e₁ + e₁⊗e₁⊗e₂ has rank three and border rank two. Its distance to tensors of rank at most two is zero, and none attains that distance.
+**How the definition helps.** The border-rank bound defines a closed set, so a bounded minimizing sequence has a subsequence converging to a minimizer (our own proof). In the standard basis of ℝ², e₂⊗e₁⊗e₁ + e₁⊗e₂⊗e₁ + e₁⊗e₁⊗e₂ has rank three and border rank two. Its distance to rank at most two is zero, but no tensor of that rank attains it.
 
 **Wikipedia:** [Tensor rank decomposition](https://en.wikipedia.org/wiki/Tensor_rank_decomposition). It says: “Therefore, its border rank is 2, which is strictly less than its rank.”
 
@@ -3168,11 +3168,11 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 *True by definition.* MSC 15A69 (Multilinear algebra, tensor calculus), 15A78. arXiv math.RA, math.AC. Level 3: graduate.
 
-**Definition.** Define the nth symmetric power of V as the quotient of the n-fold tensor power that identifies tensors differing by a permutation of factors. Define the nth divided power of V as the subspace of n-fold tensors fixed by every permutation. In characteristic zero, averaging over permutations identifies the two. That fails when n! is zero in the field.
+**Definition.** Define the nth symmetric power of V as the quotient of the n-fold tensor power that identifies tensors differing by a permutation of factors. Define the nth divided power of V as the subspace of n-fold tensors fixed by every permutation.
 
 **Problem.** Over any field, the dual of the nth symmetric power of a finite-dimensional space V is the nth divided power of the dual space V\*.
 
-**How the definition helps.** With these definitions, the theorem is the fact that a functional on a quotient is a functional unchanged by the identifications. So a functional on the symmetric power is a functional on the tensor power that every permutation fixes. In finite dimension, the dual of the n-fold tensor power of V is the n-fold tensor power of V\*. Under that identification, the fixed functionals are the symmetric tensors in V\*. The nLab gives the invariant description of divided powers and states this duality. The steps are our own.
+**How the definition helps.** A functional descends to the symmetric quotient exactly when every permutation fixes it (our own argument). Finite-dimensional tensor duality identifies these functionals with the invariant tensors in the tensor power of V\*. Those tensors form the divided power.
 
 **nLab:** [divided power algebra](https://ncatlab.org/nlab/show/divided+power+algebra). It says: “We then have the relation (Sₙ(A\*))\* = Γₙ(A)”
 
@@ -3188,7 +3188,7 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 **Problem.** Every catalecticant rank bounds symmetric border rank from below. For the sth power of a sum of n variable squares, the order-s matrix gives the bound (s+n−1 choose s).
 
-**How the definition helps.** In our own proof, the derivative matrix turns a search over power decompositions into an ordinary matrix rank bound. All derivatives of one fixed order of a power of a linear form are multiples of the same lower power. A sum of r powers therefore has derivative matrix rank at most r. The bound survives limits because all larger minors vanish. For the quoted example, the separate calculation proves that the order-s derivative matrix has full rank.
+**How the definition helps.** Every order-k derivative of a power of one linear form is proportional to its remaining power (our own argument). Summing r powers gives catalecticant rank at most r. Larger minors still vanish in coefficientwise limits. For the stated power of the quadratic form, the separate full-rank calculation gives the displayed bound.
 
 **Paper or page:** [Upper bounds for the rank of powers of quadrics](https://arxiv.org/abs/2305.06470v3). It says: “rk(qₙˢ) ≥ brk(qₙˢ) ≥ rk(Catˢ(qₙˢ))”
 
@@ -3202,11 +3202,11 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 *True by definition.* MSC 15A69 (Multilinear algebra, tensor calculus), 13C05. arXiv math.AC. Level 3: graduate.
 
-**Definition.** Over a commutative ring, the tensor product M ⊗ N is defined by a universal property. Linear maps out of it match bilinear maps out of M × N, which are linear in each input. A construction divides the free module on pairs by the bilinearity relations.
+**Definition.** For modules M and N over a commutative ring, their tensor product carries a bilinear map from M × N. Every bilinear map from M × N into any module factors uniquely through it by a linear map.
 
 **Problem.** Let U be a submodule of M. Then (M/U) ⊗ N is the quotient of M ⊗ N by the image of U ⊗ N. This is the right exactness of tensoring with N.
 
-**How the definition helps.** With the universal property, the claim becomes a statement about bilinear maps, where it is clear. A bilinear map on (M/U) × N is a bilinear map on M × N that vanishes when the first input is in U. So both sides have the same universal property and are isomorphic. The Stacks Project proves right exactness in general. This argument is our own, and the existence of the tensor product still needs the construction.
+**How the definition helps.** Both quotients represent bilinear maps on M × N that vanish on U × N (our own argument). Such maps descend uniquely in their first input to M/U. The universal property therefore identifies the two modules.
 
 **Paper or page:** [Stacks Project, Algebra, Lemma 10.12.10](https://stacks.math.columbia.edu/tag/00DF). It says: “In other words, the functor − ⊗ᵣ N is right exact, in the sense that tensoring each term in the original right exact sequence preserves the exactness.”
 
@@ -3224,7 +3224,7 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 **Problem.** Let V and W be vector spaces. The nth exterior power of V ⊕ W is a direct sum over i + j = n. Each summand is the ith exterior power of V tensored with the jth exterior power of W.
 
-**How the definition helps.** With this definition, it is enough to give the signed tensor product of the two exterior algebras the same extension property. There, odd elements change sign when they pass each other, so v ⊗ 1 + 1 ⊗ w squares to zero and extends to an algebra map. Multiplication gives a map back, and both composites fix the generators, so they are inverse. With coordinates, one would instead match basis wedges and signs by hand (steps our own).
+**How the definition helps.** The graded tensor product of the exterior algebras has the extension property for V ⊕ W (our own argument). Its two generator families anticommute, so the sum of their images squares to zero. Wedge multiplication gives the inverse map because both composites fix every generator. Taking degree n gives the stated direct sum.
 
 **nLab:** [exterior algebra](https://ncatlab.org/nlab/show/exterior+algebra). It says: “the identity v ∧ v = 0 for all v ∈ V.”
 
@@ -3240,7 +3240,7 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 **Problem.** For a subspace W of V, the exterior algebra of V/W is the quotient of ΛV by the two-sided ideal generated by W.
 
-**How the definition helps.** With this definition, both algebras have the same extension property, so they are isomorphic. An algebra map out of ΛV modulo W is a linear map out of V that kills W and whose images square to zero, which is the same as one out of V/W. With coordinates, one must instead extend a basis of W to V and track the basis wedges. The work moves into showing that the algebra with the extension property exists (steps our own).
+**How the definition helps.** Both algebras have the same universal property (our own argument). Maps from the algebra quotient correspond to linear maps on V that vanish on W and have square-zero images. These factor uniquely through linear maps on V/W with square-zero images.
 
 **nLab:** [exterior algebra](https://ncatlab.org/nlab/show/exterior+algebra). It says: “Then the exterior algebra ΛV is generated by the elements of V using these operations:”
 
@@ -3256,7 +3256,7 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 **Problem.** The rule v ↦ v ⊗ 1 + 1 ⊗ v extends to an algebra map Δ from SV to SV ⊗ SV. This map is coassociative. Applying Δ again to the first tensor factor, or to the second, gives the same map into SV ⊗ SV ⊗ SV.
 
-**How the definition helps.** With this definition, two algebra maps out of SV are equal as soon as they agree on V. Both ways of applying Δ twice are algebra maps. Both send v to v ⊗ 1 ⊗ 1 + 1 ⊗ v ⊗ 1 + 1 ⊗ 1 ⊗ v, so they are equal. With polynomials, one would instead expand powers by the binomial theorem and compare coefficients. The work moves into proving that the polynomial algebra has the extension property. These steps are our own.
+**How the definition helps.** The generator rule is linear and its target is commutative, so it extends uniquely (our own argument). Both iterates are algebra maps. Each sends v to v ⊗ 1 ⊗ 1 + 1 ⊗ v ⊗ 1 + 1 ⊗ 1 ⊗ v. Uniqueness makes them equal.
 
 **nLab:** [symmetric algebra](https://ncatlab.org/nlab/show/symmetric+algebra). It says: “The symmetric algebra SV of a vector space is the free commutative algebra over V.”
 
@@ -3268,7 +3268,7 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 *True by definition.* MSC 15B33 (Matrices over special rings (quaternions, finite fields, etc.)), 15A63. arXiv math.RA, math.NT. Level 3: graduate.
 
-**Definition.** Use a degree-n extension of a finite field and choose a basis. For each extension element a, take the matrix of the bilinear form sending x and y to the field trace of axy. The field trace sums the images under all field embeddings that fix the base field. The usual matrix of multiplication by a need not be symmetric.
+**Definition.** Fix a basis for a degree-n extension L of a finite field k, with n ≥ 1. For each a ∈ L, define the matrix with entries Trᴸₖ(aeᵢeⱼ), where eᵢ and eⱼ are basis vectors.
 
 **Problem.** For every n, there is an n-dimensional space of n-by-n symmetric matrices over a given finite field whose nonzero members are invertible.
 
@@ -3304,7 +3304,7 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 *True by definition. Confidence: medium.* MSC 15B48 (Positive matrices and their generalizations; cones of matrices). arXiv math.RA, math.CO. Level 3: graduate.
 
-**Definition.** Draw a finite directed planar network without cycles, with sources and sinks on two boundary arcs. Order the two lists so disjoint paths preserve their order. Define each matrix entry as the sum of path weights between its source and sink. A path weight is the product of its edge weights.
+**Definition.** Take a finite acyclic directed planar network with weighted edges and sources and sinks on two boundary arcs. Order each list so every vertex-disjoint family matches its selected sources and sinks in order. Matrix entry (i,j) sums the products of edge weights along all paths from source i to sink j.
 
 **Problem.** A matrix is totally positive if every square submatrix has positive determinant. With positive edge weights, this holds exactly when every equally sized choice of sources and sinks admits vertex-disjoint connecting paths.
 
@@ -3322,11 +3322,11 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 *True by definition.* MSC 15B48 (Positive matrices and their generalizations; cones of matrices), 15A18. arXiv math.RA. Level 3: graduate.
 
-**Definition.** For an n-by-n real matrix, consider its exterior powers of orders 1 through n. The kth exterior power applies the matrix to each factor in an alternating product of k vectors. Its entries in the increasing-index basis are the k-by-k minors. Total positivity means every entry of every such matrix is strictly positive.
+**Definition.** A real n × n matrix is totally positive when every minor of every positive size is strictly positive. Equivalently, each exterior power from order one through n has strictly positive entries in the increasing-index wedge basis.
 
 **Problem.** A totally positive real square matrix has distinct positive eigenvalues.
 
-**How the definition helps.** Entrywise positivity lets the Perron–Frobenius theorem act on each exterior power (our own). It gives each power a simple positive eigenvalue strictly larger in modulus than all others. The spectrum of the kth power is the products of k distinct eigenvalues, so a tie in modulus at position k would give two dominant products. So the leading products are positive and distinct in modulus, and successive ratios give the positive, distinct eigenvalues.
+**How the definition helps.** Order the eigenvalues by decreasing modulus, counting multiplicity (our own proof). The kth exterior power has eigenvalues given by products over k distinct indices. Perron–Frobenius gives a unique simple dominant positive eigenvalue for each exterior power, ruling out ties at consecutive indices. Each leading product is positive, so successive quotients give positive eigenvalues.
 
 **nLab:** [totally positive matrix](https://ncatlab.org/nlab/show/totally+positive+matrix). It says: “Total positivity implies a number of remarkable properties; for example all eigenvalues are distinct and positive.”
 
@@ -3360,7 +3360,7 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 **Problem.** A nonsingular M-matrix has an entrywise nonnegative inverse.
 
-**How the definition helps.** In our own proof, the strict bound makes the inverse a convergent sum of nonnegative matrices. Expand (sI − B)⁻¹ as the geometric series in B/s divided by s. Convergence follows because the spectral radius of B/s is less than one. At equality the conclusion can fail. Take the two-by-two matrix B of ones and s = 2. Then (1,1) lies in the kernel of sI − B.
+**How the definition helps.** The strict inequality makes (sI − B)⁻¹ the sum of the convergent series ∑ₖ≥₀ (B/s)ᵏ/s (our own proof). Every term is entrywise nonnegative. At equality, taking B as the two-by-two matrix of ones and s = 2 gives a kernel containing (1,1).
 
 **Wikipedia:** [M-matrix](https://en.wikipedia.org/wiki/M-matrix). It says: “A is inverse-positive. That is, A⁻¹ exists and A⁻¹ ≥ 0.”
 
@@ -3378,7 +3378,7 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 **Problem.** For matrices A, X and Y of compatible sizes, rank(A − AX(Y\*AX)⁺Y\*A) = rank A − rank(Y\*AX). Here Y\*AX may be singular or even rectangular.
 
-**How the definition helps.** The pseudoinverse exists for every matrix, so the formula and the rank statement need no invertibility assumption. Directions that Y\*AX sends to zero add nothing to the correction (our own). The proof that the rank falls by exactly the rank of Y\*AX still takes work, through the range and null space of the projection A(BA)⁺B.
+**How the definition helps.** The pseudoinverse exists for every matrix, making the correction meaningful at every rank. Put M = Y\*AX and P = AXM⁺Y\*. On the range of A, P is a projection onto AX(range M\*) because M⁺MM⁺ = M⁺ (our own argument). This image has dimension rank M since AX is injective on range M\*, giving the stated rank loss.
 
 **Paper or page:** [Generalized Wedderburn Rank Reduction](https://arxiv.org/abs/2406.03992v1). It says: “We generalize the Wedderburn rank reduction formula by replacing the inverse with the Moore–Penrose pseudoinverse.”
 
@@ -3389,15 +3389,15 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 ### Quasideterminants give matrix inversion over noncommutative rings
 
-**Remember:** A quasideterminant is a determinant over a minor, written without commuting anything.
+**Remember:** Subtract the ordered row–inverse–column product from the corner entry.
 
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 15A15 (Determinants, permanents, traces, other special matrix functions), 15B33, 15A09. arXiv math.RA. Level 4: research.
+*True by definition. Confidence: medium.* MSC 15A15 (Determinants, permanents, traces, other special matrix functions), 15B33, 15A09. arXiv math.RA. Level 4: research.
 
-**Definition.** Let A = (aᵢⱼ) be an n × n matrix over a noncommutative ring, and B the matrix A without row i and column j. When B is invertible, the (i,j) quasideterminant is \|A\|ᵢⱼ = aᵢⱼ − Σ aᵢₗ (B⁻¹)ₗₖ aₖⱼ, summed over l ≠ j and k ≠ i.
+**Definition.** Delete row i and column j of a square matrix A over a unital ring to obtain B. Let r and c be the remaining portions of row i and column j, respectively. When B is invertible, define the quasideterminant \|A\|ᵢⱼ = aᵢⱼ − rB⁻¹c.
 
 **Problem.** If all n² quasideterminants of A exist and are invertible, then A is invertible, and the (i, j) entry of A⁻¹ is (\|A\|ⱼᵢ)⁻¹.
 
-**How the definition helps.** Quasideterminants are defined so that they give the entries of the inverse matrix directly. Over noncommutative rings, the classical determinant formulas disagree, so there is no useful determinant. The inverse formula gives noncommutative Cramer rules.
+**How the definition helps.** Permute row i and column j to the last positions (our own argument). Block elimination leaves B and the quasideterminant as invertible diagonal blocks. Back substitution gives the reciprocal quasideterminant as the last diagonal entry of the inverse. Undoing the permutations puts it in position (j,i).
 
 **nLab:** [quasideterminant](https://ncatlab.org/nlab/show/quasideterminant). It says: “If all the n² quasideterminants \|A\|ᵢⱼ exist and are invertible then the inverse matrix A⁻¹ of A exists in Mₙ(R) and (\|A\|ⱼᵢ)⁻¹ = (A⁻¹)ⁱⱼ.”
 
@@ -3430,7 +3430,7 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 15A22 (Matrix pencils), 15A54, 65H17. arXiv math.NA, math.RA. Level 4: research.
 
-**Definition.** A linearization represents a rational matrix by a larger matrix pencil A + λB, which is linear in λ. It must keep the original’s poles and zeros. It is strongly minimal if its coupling block rows and columns have full rank at every finite point and at infinity.
+**Definition.** Write a system pencil in block rows (A,B) and (−C,D), with A square and regular and transfer matrix D + CA⁻¹B. Strong minimality requires \[A B\] to have full row rank and the stacked blocks A,C to have full column rank at every finite point. At infinity apply the same tests to the coefficients of λ.
 
 **Problem.** Every rational matrix has a strongly minimal linearization, built from its Laurent expansion at infinity. If the matrix is Hermitian, skew-Hermitian, para-Hermitian or para-skew-Hermitian, the linearization can keep that structure.
 
@@ -3453,7 +3453,7 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 **Problem.** Consider x″ + Bx′ + Cx = f. A complete pair X, Z reduces the initial value problem to computing the matrix exponentials exp(Xt) and exp(Zt).
 
-**How the definition helps.** Invertibility of X − Z lets exp(Xt)a + exp(Zt)b match any initial position and velocity, since (X − Z)a = x′(0) − Zx(0) (our own). The paper writes the solution operator as (exp(Xt) − exp(Zt))(X − Z)⁻¹. For the scalar equation x″ = 0, the only solvent is 0, so no complete pair exists, and the solution x(0) + t x′(0) is not a sum of exponential solutions (our own).
+**How the definition helps.** The homogeneous solution exp(Xt)a + exp(Zt)b matches any initial data because (X − Z)a = x′(0) − Zx(0) (our own argument). Set b = x(0) − a. Convolving the forcing with (exp(Xt) − exp(Zt))(X − Z)⁻¹ adds the solution with zero initial data. For x″ = 0, the sole solvent is zero and exponentials alone miss nonconstant linear solutions (our own example).
 
 **Paper or page:** [A complete pair of solvents of a quadratic matrix pencil](https://arxiv.org/abs/2405.07210v1). It says: “Knowing a complete pair of solvents X and Z allows us to reduce the solution of the initial value problem to the calculation of two matrix exponentials”
 
@@ -3467,9 +3467,9 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 *Makes the theorem clean to state or prove.* MSC 15A60 (Norms of matrices, numerical range, applications of functional analysis to matrix theory), 90C26, 47A12. arXiv math.NA, math.OC. Level 4: research.
 
-**Definition.** For Hermitian matrices A₁, A₂, A₃, the joint numerical range is the set of triples (x\*A₁x, x\*A₂x, x\*A₃x) over unit vectors x. The sum of two generalized Rayleigh quotients depends on x only through this triple. The paper minimizes a rational function over these triples instead of over unit vectors.
+**Definition.** For three Hermitian matrices A₁, A₂, A₃ of the same size, their joint numerical range consists of all triples (x\*A₁x,x\*A₂x,x\*A₃x) with x\*x = 1.
 
-**Problem.** A unit vector minimizes the sum globally exactly when its triple minimizes globally over the joint numerical range. Every local minimizer on the range lifts to local minimizers on the sphere. The converse fails, so the new form removes some false local minima.
+**Problem.** Suppose the sum of generalized Rayleigh quotients is defined on the unit sphere and factors through this triple. A unit vector minimizes the sum globally exactly when its triple minimizes the induced objective globally. Every local minimum on the range lifts to local minima on the sphere, but the converse can fail.
 
 **How the definition helps.** The objective factors through the map from unit vectors to triples, and the range is exactly its image, so global minima match (our own). A local minimum on the range lifts because the map is continuous (our own). Some local minima on the sphere do not come from local minima on the range, and these disappear. The paper also uses convexity of the range to describe the optimum by a nonlinear eigenvalue problem.
 
@@ -3479,30 +3479,11 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 - [Ding Lu, Anshul Prajapati, Punit Sharma, Shreemayee Bora, Eigenvalue backward errors of Rosenbrock systems and optimization of sums of Rayleigh quotient, arXiv:2407.03784v1 (2024)](https://arxiv.org/abs/2407.03784v1)
 
-### Quadratic forms and twisted conjugation build Pin and Spin in every characteristic
-
-**Remember:** Use the quadratic form, not its bilinear form, and twist the conjugation by the grading.
-
-*Rules out counterexamples. Confidence: medium.* MSC 15A66 (Clifford algebras, spinors), 20G15. arXiv math.RA, math.GR. Level 4: research.
-
-**Definition.** The Clifford algebra Cl(M, q) of a module M with a quadratic form q is the tensor algebra of M modulo the relations v·v = q(v). Let α be the automorphism of the Clifford algebra that −1 on M induces. The Clifford group is the group of invertible elements x whose twisted conjugation y ↦ x y α(x)⁻¹ maps M to M.
-
-**Problem.** With these definitions, Pin and Spin are double covers of the orthogonal and special orthogonal groups. This works for any quadratic module, including in characteristic 2.
-
-**How the definition helps.** Using the quadratic form and twisted conjugation removes two failures of the naive construction. When 2 is not invertible, a quadratic form is not determined by its bilinear form, so a Clifford algebra built from the bilinear form is wrong. With ordinary conjugation, vectors act by negative reflections, and the map to the orthogonal group may fail to be surjective. With twisted conjugation, each vector v with q(v) invertible acts as the reflection in v.
-
-**nLab:** [Clifford algebra](https://ncatlab.org/nlab/show/Clifford+algebra). It says: “The Clifford group is sometimes defined without the twist in the conjugation, and this means the map to the orthogonal group may not be a surjection”
-
-**Sources:**
-
-- [H. Blaine Lawson, Marie-Louise Michelsohn, Spin geometry, Princeton Mathematical Series 38, Princeton University Press (1989)](https://doi.org/10.1515/9781400883912)
-- [William Kingdon Clifford, Applications of Grassmann's extensive algebra, American Journal of Mathematics 1 (1878) 350–358](https://doi.org/10.2307/2369379)
-
 ### Gradient zeros make geometric rank additive
 
 **Remember:** Separate variables make the gradient zero set a product.
 
-*Makes the theorem clean to state or prove.* MSC 15A69 (Multilinear algebra, tensor calculus). arXiv math.AG. Level 4: research.
+*True by definition.* MSC 15A69 (Multilinear algebra, tensor calculus). arXiv math.AG. Level 4: research.
 
 **Definition.** View a complex symmetric tensor of degree at least two as a homogeneous polynomial. Its symmetric geometric rank is the number of variables minus the dimension of the set where every first derivative vanishes. This difference in dimensions is called codimension.
 
@@ -3522,11 +3503,11 @@ M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
 
 *True by definition.* MSC 15B48 (Positive matrices and their generalizations; cones of matrices). arXiv math.RA. Level 4: research.
 
-**Definition.** A matrix is totally positive if every square submatrix has positive determinant. Its Γ-scaffolding records positive parameters on a rectangular grid with paths running left and down. Each matrix entry sums path weights from one row entrance to one column exit.
+**Definition.** In a rectangular grid, orient edges left and down, with each row entrance on the right and each column exit below. Assign a positive weight to every edge. Each entry of the path matrix sums the products of weights along directed paths from its row entrance to its column exit.
 
 **Problem.** Every totally positive matrix can gain a top row while keeping all minors positive.
 
-**How the definition helps.** In scaffolding coordinates, any positive row of parameters gives a valid top extension. In our own explanation, paths from old entrances cannot visit the new top row. The larger grid still has disjoint paths for each minor. The work lies in expressing minors as path sums and recovering positive grid parameters from the original matrix.
+**How the definition helps.** The positive grid parametrization theorem realizes every totally positive matrix as a path matrix of this grid. Add a top row with positive weights. Old paths cannot climb, and every minor of the larger grid admits disjoint paths (our own argument). The path determinant identity therefore makes every minor positive.
 
 **Paper or page:** [Scaffoldings of Totally Positive Matrices and Line Insertion](https://arxiv.org/abs/2109.06369v1). It says: “the matrix X′ obtained from X by adding \[x₀₁ x₀₂ ⋯ x₀ₙ\] above the first row is totally positive.”
 

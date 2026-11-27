@@ -8,7 +8,7 @@
 
 **Problem.** Superposing a rigid motion does not change Green–Lagrange strain. In particular, this strain vanishes for a pure rigid motion.
 
-**How the definition helps.** In our own argument, FᵀF measures squared lengths, which a rigid motion preserves. A translation leaves F unchanged, and a rotation R replaces it by RF. Since RᵀR = I, both give the same strain. The usual linear approximation keeps only the symmetric part of F − I. It gives nonzero strain for a planar half-turn because that approximation discards quadratic terms.
+**How the definition helps.** A rigid rotation R changes F to RF, and a translation leaves F unchanged (our own). Since RᵀR = I, the product FᵀF and hence the strain stay unchanged (our own). For a pure rigid motion FᵀF = I, giving zero strain (our own).
 
 **nLab:** [strain tensor](https://ncatlab.org/nlab/show/strain+tensor). It says: “the corresponding strain tensor expresses the deformation of the body in reaction to these forces.”
 
@@ -26,7 +26,7 @@
 
 **Problem.** In a smooth motion that conserves mass and has an invertible, orientation-preserving deformation map, density per reference volume stays fixed. Conversely, fixing this density enforces mass conservation for every material subregion.
 
-**How the definition helps.** In our own proof, using reference density turns conservation on moving regions into equality of integrals on fixed regions. The change-of-variables formula gives the volume determinant. If every parcel keeps its mass, the integrals agree on every reference region, so the continuous densities agree pointwise. Conversely, a time-independent reference density gives constant parcel mass by integration. The quoted paper illustrates the special case of constant reference density.
+**How the definition helps.** Reference density turns conservation on moving regions into equality of integrals over fixed regions (our own). Change of variables supplies the volume determinant (our own). Equality on every reference region implies pointwise equality of continuous densities (our own). Conversely, integrating a fixed reference density gives constant mass for every material region (our own).
 
 **Paper or page:** [Separable motions for self-gravitating hyperelastic matter](https://arxiv.org/abs/2506.02278v1). It says: “ρ(t, x(t, X)) det Dx(t, X) = ρ̄”
 
@@ -62,7 +62,7 @@
 
 **Problem.** Any three-times continuously differentiable Airy stress function generates a symmetric planar stress in equilibrium when there are no body forces.
 
-**How the definition helps.** In our own proof, Airy’s choice makes each force balance the difference of two equal mixed derivatives. Equilibrium requires zero net force on each small region. The converse requires integration. On a region where every loop contracts, the balance equations give a single-valued φ. A separate condition checks whether the resulting stress comes from an elastic displacement.
+**How the definition helps.** Airy’s formula makes each component of the stress divergence a difference of equal mixed third derivatives (our own). Thus the divergence vanishes, giving equilibrium without body forces, and both shear entries coincide by construction (our own).
 
 **Wikipedia:** [Stress functions](https://en.wikipedia.org/wiki/Stress_functions). It says: “σₓ = ∂²φ/∂y² ; σᵧ = ∂²φ/∂x² ; σₓᵧ = −∂²φ/(∂x ∂y) − (fₓy + fᵧx)”
 
@@ -108,7 +108,7 @@
 
 *True by definition.* MSC 74B20 (Nonlinear elasticity). arXiv physics.class-ph. Level 2: later undergraduate.
 
-**Definition.** A deformation map sends each material point to its current position, and F is its derivative. Nominal stress P measures force per unit reference area. A hyperelastic law gives P as the derivative of a single stored energy density W with respect to F. A general elastic law can specify P directly.
+**Definition.** Let F be the derivative of the deformation map. A nominal stress law P is hyperelastic if a single-valued stored energy density W exists with P(F) = ∂W/∂F at every admissible F.
 
 **Problem.** For continuously differentiable W, stress does zero net work per unit reference volume along any closed, piecewise smooth path of deformation gradients.
 
@@ -152,7 +152,7 @@
 
 ### Effective length unifies buckling loads
 
-**Remember:** Use the pinned formula after accounting for the ends.
+**Remember:** Half the first buckling moment’s wavelength gives the effective length.
 
 *Makes the theorem clean to state or prove.* MSC 74G60 (Bifurcation and buckling). arXiv physics.class-ph. Level 2: later undergraduate.
 
@@ -160,7 +160,7 @@
 
 **Problem.** For an ideal slender column, the first buckling load equals π² times bending stiffness divided by effective length squared. Clamping both ends gives four times the load for two pinned ends when all other properties agree.
 
-**How the definition helps.** The half-wavelength puts the same buckling formula to work for different supports, in our own explanation. The column equation makes the bending moment sinusoidal. The work is to enforce the end conditions and find the first mode. Two pinned ends give an effective length equal to the column length. Two clamped ends give half that length.
+**How the definition helps.** The column equation makes the bending moment sinusoidal with wave number equal to the square root of load divided by bending stiffness (our own). A half-wavelength therefore gives the stated load formula (our own). The first mode gives effective length equal to the column length for pinned ends and half that length for clamped ends (our own).
 
 **Wikipedia:** [Buckling](https://en.wikipedia.org/wiki/Buckling). It says: “the distance between inflection points on the displacement curve of the deflected column”
 
@@ -168,7 +168,7 @@
 
 ### Complementary energy gives displacement
 
-**Remember:** Differentiate complementary energy with respect to load to get displacement.
+**Remember:** Maximize load times displacement minus stored energy.
 
 *True by definition.* MSC 74G65 (Energy minimization in equilibrium problems in solid mechanics). arXiv physics.class-ph. Level 2: later undergraduate.
 
@@ -222,11 +222,11 @@
 
 *Rules out counterexamples.* MSC 74A05 (Kinematics of deformation), 74B05. arXiv math.AP, physics.class-ph. Level 3: graduate.
 
-**Definition.** A planar strain is compatible if it equals the symmetric gradient of a single-valued displacement. Denote the horizontal, vertical and off-diagonal strain entries by a, b and c. The Saint-Venant condition says that the second y derivative of a plus the second x derivative of b equals twice the mixed derivative of c.
+**Definition.** A planar strain is compatible if it equals the symmetric gradient of a single-valued displacement. For diagonal entries a,b and off-diagonal entry c, the Saint-Venant condition is ∂²a/∂y² + ∂²b/∂x² = 2∂²c/∂x∂y.
 
 **Problem.** A smooth planar strain satisfying the Saint-Venant condition on a simply connected region comes from a single-valued displacement. The local condition is not sufficient on an annulus.
 
-**How the definition helps.** In our own proof, when every loop contracts, integrating a curl-free field between two points gives a path-independent result. Apply this first to recover the local rotation and then to recover displacement. On an annulus, local displacements (θ, 0), with θ the polar angle, give the same smooth strain wherever their angle branches overlap. Continuing around the hole adds (2π, 0) to the displacement. Any other local displacement differs by an infinitesimal rigid motion, which cannot cancel that jump.
+**How the definition helps.** Simple connectivity makes curl-free fields integrable, first for the rotation and then for both displacement components (our own). On an annulus the local displacements (θ,0), using branches of polar angle, give the same strain on overlaps (our own). Continuing around the hole adds (2π,0) to displacement (our own). Any other displacement on the universal cover differs by one infinitesimal rigid motion in planar coordinates, which returns unchanged around the loop (our own).
 
 **Wikipedia:** [Compatibility (mechanics)](https://en.wikipedia.org/wiki/Compatibility_%28mechanics%29). It says: “Such an integration is possible if the Saint-Venant's tensor (or incompatibility tensor) R(ε) vanishes in a simply-connected body”
 
@@ -256,7 +256,7 @@
 
 *Rules out counterexamples.* MSC 74A10 (Stress). arXiv math.AP. Level 3: graduate.
 
-**Definition.** A stress assigns a force per unit length to each cut through a plane body. Define equilibrium by requiring internal and applied forces to do equal work on every smooth test displacement supported inside the body.
+**Definition.** Consider a planar stress σ and a point force b at x₀. Weak equilibrium requires ∫ σ:∇v dA = b·v(x₀) for every smooth compactly supported test displacement v. The colon sums products of corresponding matrix entries.
 
 **Problem.** Suppose the body is in equilibrium under one point force, and the stress is smooth elsewhere. Across any enclosing circle inside the body, the total outward stress force equals minus the applied force.
 
@@ -340,9 +340,9 @@
 
 *True by definition.* MSC 74B20 (Nonlinear elasticity). arXiv math.AP, physics.class-ph. Level 3: graduate.
 
-**Definition.** An elastic energy W(F) of the deformation gradient F is polyconvex if it is a convex function of the minors of F, the determinants of its square submatrices. It is rank-one convex if it is convex along every line whose direction matrix has rank one. A volume-only energy has the form W(F) = h(det F).
+**Definition.** A volume-only energy has W(F) = h(det F) for every real square matrix F of the chosen size. Polyconvexity means W(F) = g(M(F)) for some convex g, where M(F) lists all minors. Rank-one convexity requires convexity along every line with a rank-one direction.
 
-**Problem.** For W(F) = h(det F) on all real square matrices of a fixed size, polyconvexity, quasiconvexity and rank-one convexity of W are each equivalent to convexity of h.
+**Problem.** Suppose W(F) = h(det F) on all real square matrices of a fixed positive size. Polyconvexity, quasiconvexity and rank-one convexity of W are each equivalent to convexity of h.
 
 **How the definition helps.** In our own proof, convexity of h gives polyconvexity immediately because the determinant itself is a minor. The usual implications then give quasiconvexity and rank-one convexity. Conversely, vary the first diagonal entry of the identity matrix. The resulting rank-one test is exactly scalar convexity of h.
 
@@ -358,7 +358,7 @@
 
 *True by definition.* MSC 74C05 (Small-strain, rate-independent theories of plasticity (including rigid-plastic and elasto-plastic materials)). arXiv math.AP. Level 3: graduate.
 
-**Definition.** A convex dissipation potential assigns an energy cost to each rate of permanent deformation. Define the allowed driving forces at a rate as all slopes of planes supporting the potential there. This extends the derivative rule to rates where no single derivative exists.
+**Definition.** Let D be a convex dissipation potential. A force ξ is allowed at rate v if D(w) ≥ D(v) + ξ·(w − v) for every rate w. The flow law requires the negative stored-energy gradient to be an allowed force at the actual rate almost everywhere in time.
 
 **Problem.** Consider two solutions of the same flow law, with the same dissipation potential. At almost every time, the energy-gradient difference paired with the rate difference is nonpositive, taking both differences in the same order.
 
@@ -376,7 +376,7 @@
 
 *True by definition.* MSC 74C05 (Small-strain, rate-independent theories of plasticity (including rigid-plastic and elasto-plastic materials)). arXiv cond-mat.mtrl-sci. Level 3: graduate.
 
-**Definition.** A stress matrix lies in the Tresca elastic region when its largest and smallest eigenvalues differ by at most a fixed threshold. This replaces checking shear, the sideways force per unit area, on every plane.
+**Definition.** A symmetric stress matrix S belongs to the Tresca elastic region with threshold T ≥ 0 if its largest and smallest eigenvalues differ by at most T.
 
 **Problem.** A weighted average of two stress matrices within the Tresca elastic region stays within it when the weights are nonnegative and sum to one.
 
@@ -388,7 +388,7 @@
 
 ### Stiffer solids reduce boundary work
 
-**Remember:** A stiffer body cannot deliver more work under the same load.
+**Remember:** Maximize applied work minus stored energy to obtain half the equilibrium work.
 
 *True by definition.* MSC 74G65 (Energy minimization in equilibrium problems in solid mechanics). arXiv math.AP. Level 3: graduate.
 
@@ -410,9 +410,9 @@
 
 **Definition.** Represent the displacement in a plane by two scalar functions called potentials. Add the gradient of the first to the gradient of the second rotated through a right angle.
 
-**Problem.** In a uniform, isotropic linear elastic solid with no body force, at a fixed nonzero frequency, let the first potential solve the scalar wave equation at the compression speed and the second at the shear speed. Then the resulting displacement solves the elastic wave equation in the interior, though boundary conditions can still couple the two.
+**Problem.** Consider time-harmonic planar motion in a uniform isotropic linear elastic solid without body force, at a nonzero frequency. Suppose the two potentials satisfy the scalar wave equations for compression and shear at that frequency, respectively. Their combined displacement solves the interior elastic wave equation, although boundary conditions can couple them.
 
-**How the definition helps.** Each potential produces just one wave type, so each solves a scalar equation. In our own calculation, the gradient has zero curl and the rotated gradient has zero divergence. Their sum therefore solves the elastic wave equation. Recovering the potentials from a given displacement requires a decomposition theorem.
+**How the definition helps.** The gradient field has zero curl, and the rotated gradient field has zero divergence (our own). In the elastic wave operator these fields therefore use the compression and shear speeds respectively (our own). Spatial derivatives commute with the constant-coefficient scalar wave operators, so each field satisfies its elastic equation and their sum does too (our own).
 
 **Paper or page:** [A virtual element method for the solution of 2D time-harmonic elastic wave equations via scalar potentials](https://arxiv.org/abs/2303.10696v1). It says: “the decoupling of the elastic vector field into scalar Pressure (P-) and Shear (S-) waves via a suitable Helmholtz-Hodge decomposition.”
 
@@ -426,7 +426,7 @@
 
 **Definition.** An incompressible deformation has a derivative matrix with determinant one almost everywhere. To vary it, move each deformed point along a smooth velocity field with zero divergence. Assume the field and its first derivatives are bounded.
 
-**Problem.** Every such variation of an incompressible plate has deformation gradient of determinant one.
+**Problem.** Every such variation of an incompressible plate has deformation gradient of determinant one almost everywhere.
 
 **How the definition helps.** Composition multiplies determinants, so a volume-preserving flow keeps the deformation incompressible. The flow lemma supplies the work by differentiating the determinant along each trajectory. In our own comparison, adding the velocity times a small step preserves the constraint only to first order in general.
 
@@ -442,7 +442,7 @@
 
 *Rules out counterexamples.* MSC 74K20 (Plates). arXiv math.AP. Level 3: graduate.
 
-**Definition.** In a flat plate, let u denote displacement within the plane and w the height change. Start with the symmetric part of the derivative matrix of u. Add half the outer product of the gradient of w with itself to obtain membrane strain. Linear strain omits this height term.
+**Definition.** For a flat plate with in-plane displacement u and transverse displacement w, define membrane strain as (∇u + ∇uᵀ)/2 + (∇w ⊗ ∇w)/2. Here ⊗ denotes the outer product.
 
 **Problem.** Assume u has square-integrable weak derivatives through order one and w through order two on a planar open set. If membrane strain vanishes, the matrix of second derivatives of w has zero determinant almost everywhere.
 
@@ -460,11 +460,11 @@
 
 *True by definition.* MSC 74R10 (Brittle fracture), 74B20. arXiv physics.class-ph. Level 3: graduate.
 
-**Definition.** Choose x along a straight crack in a plane, and draw a contour from its lower face to its upper face around the tip. Rice’s J-integral integrates two terms along this contour in the undeformed body. Multiply stored energy per unit volume by the x component of the outward unit normal. Subtract the force per unit reference area on the contour dotted with the x derivative of displacement.
+**Definition.** Let Γ encircle a straight crack tip from lower to upper face, with x along the crack and outward unit normal n. Rice’s J-integral is ∫\_Γ \[W nₓ − (Pn)·∂u/∂x\] ds in reference coordinates. Here W is stored energy density, P is nominal stress and u is displacement.
 
 **Problem.** Assume the elastic energy depends smoothly on the deformation gradient alone, with the same law throughout the body. Assume equilibrium without body forces, zero force on both crack faces, and smooth fields away from the tip. Then contours enclosing the same tip give equal J-integrals if the region between them contains no other singularities.
 
-**How the definition helps.** In our own proof, subtracting stress work from the energy term makes the divergence of their difference vanish away from the tip. Energy density alone would leave its x derivative. The chain rule cancels that derivative against part of the stress work, and force balance cancels the rest. The divergence theorem compares the contours. The straight faces contribute zero because both traction and the x component of the normal vanish.
+**How the definition helps.** The flux in the J-integral has zero divergence away from the tip (our own). The chain rule cancels the energy derivative against the displacement second derivatives, and equilibrium cancels the stress divergence (our own). Both traction and nₓ vanish on the straight faces (our own). Applying the divergence theorem between contours therefore gives equal integrals (our own).
 
 **Wikipedia:** [J-integral](https://en.wikipedia.org/wiki/J-integral). It says: “If the faces of the crack do not have any surface tractions on them then the J-integral is also path independent.”
 
@@ -478,7 +478,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 74R10 (Brittle fracture). arXiv math.AP. Level 3: graduate.
 
-**Definition.** Index the states of a continuous, growing crack by their length, or by their area in three dimensions. This replaces elapsed time as the index for the path itself.
+**Definition.** Let Σ(t) be the crack state and L(t) its length in the plane or area in three dimensions. At each attained size s, the size-indexed path takes the value Σ(t) for any t satisfying L(t) = s.
 
 **Problem.** Suppose a nested crack grows continuously in size and gains positive size whenever its state changes. It has a unique path indexed by size that recovers the crack at every time.
 
@@ -514,9 +514,9 @@
 
 **Definition.** Pressure normalization restricts square-integrable stress fields on a bounded connected Lipschitz body to a closed linear subspace that excludes the constant identity matrix. The identity matrix is a constant pressure.
 
-**Problem.** On this subspace, the square-integral norm of the trace of the stress is at most a constant times the sum of two norms. These are the square-integral norm of its deviatoric part, the stress minus its scalar part, and the norm of its divergence against test fields that vanish on the boundary and have gradient norm at most one.
+**Problem.** For some constant C, every stress σ in this subspace satisfies ‖tr σ‖₂ ≤ C(‖dev σ‖₂ + ‖div σ‖₋₁). Here dev σ removes the scalar part, and ‖·‖₂ is the square-integral norm. The last norm tests against zero-boundary vector fields whose gradient has square-integral norm at most one.
 
-**How the definition helps.** The subspace excludes constant pressure, which both norms on the right miss. The identity matrix illustrates this obstruction in our own example. The estimate still requires a bound on the variable part of the trace and control of its mean.
+**How the definition helps.** The identity has nonzero trace, zero deviatoric part and zero divergence, so it violates the estimate (our own). The negative-norm Poincaré inequality controls the mean-zero trace through its gradient, using ∇tr σ = d(div σ − div dev σ) in dimension d (our own). Closedness and exclusion of the identity give a positive distance from it to the subspace, which controls the remaining constant part (our own).
 
 **Paper or page:** [Locking-free hybrid high-order method for linear elasticity](https://arxiv.org/abs/2404.02768v2). It says: “The subspace Σ₀ does not contain the identity matrix”
 
@@ -530,11 +530,11 @@
 
 *True by definition.* MSC 74J20 (Wave scattering in solid mechanics), 65N30. arXiv math.NA, math.AP. Level 4: research.
 
-**Definition.** Surround the obstacle by an artificial sphere. The Dirichlet-to-Neumann operator sends a displacement on the sphere to the traction, the surface force, of the outgoing elastic wave outside with that displacement. Imposing this relation on the sphere gives a transparent boundary condition for the region inside.
+**Definition.** For boundary displacement g on an artificial sphere, solve the homogeneous exterior elastic wave equation with trace g and the outgoing radiation condition. The Dirichlet-to-Neumann operator maps g to that solution’s traction, using the normal pointing out of the sphere.
 
 **Problem.** Take elastic scattering of an incident wave by a rigid obstacle in three dimensions. The problem on the unbounded exterior is equivalent to a boundary value problem in a bounded region, with the transparent condition on the sphere.
 
-**How the definition helps.** The operator packs everything about the outgoing exterior wave into one boundary relation. So an interior solution that satisfies it extends to the whole exterior by the outgoing wave with the same boundary values (our own). Conversely, an exterior solution satisfies the relation on the sphere by definition (our own). Computation needs a cut-off series for the operator. The paper shows that this truncation error decays exponentially in the cut-off.
+**How the definition helps.** Apply the operator to the scattered displacement, which satisfies the outgoing condition (our own). A bounded-domain solution extends by the unique outgoing exterior solution with matching trace, and the boundary condition matches their tractions (our own). Conversely, restricting the exterior scattering solution gives the same relation by definition (our own).
 
 **Paper or page:** [An adaptive finite element DtN method for the elastic wave scattering problem in three dimensions](https://arxiv.org/abs/2101.05835v1). It says: “By constructing a Dirichlet-to-Neumann (DtN) operator and introducing a transparent boundary condition, the scattering problem is reduced equivalently to a boundary value problem in a bounded domain.”
 
@@ -562,13 +562,13 @@
 
 ### Fracture compactness allows drifting pieces
 
-**Remember:** Crack energy need not bound how far a loose piece moves.
+**Remember:** Mark where displacement escapes to infinity, then test convergence on the remainder.
 
 *Makes the theorem clean to state or prove.* MSC 74R10 (Brittle fracture). arXiv math.AP. Level 4: research.
 
-**Definition.** A crack separates pieces of a body whose displacements may jump across their common boundary. Along a chosen subsequence, mark points where displacement magnitude tends to infinity. Require convergence in measure elsewhere, meaning that the volume with error above any fixed positive tolerance tends to zero.
+**Definition.** For a displacement subsequence uⱼ on U, define U∞ as the set where \|uⱼ\| tends to infinity. Convergence in measure to u elsewhere requires the following for every ε &gt; 0. The volume outside U∞ where \|uⱼ − u\| exceeds ε must tend to zero.
 
-**Problem.** Consider displacements in the paper’s brittle fracture space on a bounded open body. Assume uniformly bounded crack area and a uniform bound on the integral of the pth power of symmetric gradient magnitude, for fixed p &gt; 1. Some subsequence converges in measure outside its marked set, whose boundary has finite area in the measure-theoretic sense.
+**Problem.** Let uⱼ belong to the generalized special functions of bounded deformation class GSBDᵖ(U) on a bounded open body U, with p &gt; 1. Assume uniform bounds on crack area and on the integrals of the pth power of the symmetric strain magnitude. Some subsequence converges in measure outside its divergence set, which has finite perimeter in U.
 
 **How the definition helps.** Marking diverging points lets the theorem describe a finite limit on the rest of the body. The compactness theorem supplies the subsequence and the boundary bound. In our own example, a detached piece translates farther at each step without changing its strain or crack area.
 

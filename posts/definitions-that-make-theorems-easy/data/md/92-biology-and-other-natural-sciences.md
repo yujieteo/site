@@ -62,7 +62,7 @@
 
 **Problem.** For four distinct tips, sum the two distances in each of the three possible pairings. The largest sum occurs at least twice in any tree with nonnegative edge lengths.
 
-**How the definition helps.** Writing each distance as a sum over separating edges lets us compare the three pairings edge by edge (our own). An edge separating one tip from three contributes equally to all pairings (our own). All edges separating two tips from two give the same partition, since removing one leaves the others on one side (our own). Each adds twice its length to the two crossing pairings and zero to the third (our own). The converse requires reconstructing a tree from distances satisfying the four-point condition (our own).
+**How the definition helps.** Count each edge’s contribution to the three sums (our own). Edges separating one tip from three contribute equally, and edges separating none contribute zero (our own). All two-against-two edges induce the same split because tree edge splits are compatible (our own). Each adds twice its nonnegative length to both crossing pairings, so those sums tie for largest (our own).
 
 **Paper or page:** [Tropical Grassmannian and Tropical Linear Varieties from phylogenetic trees](https://arxiv.org/abs/1312.0752v2). It says: “the maximum of three number is achieved at least twice D({i,j}) + D({k,l}), D({i,k}) + D({j,l}) and D({i,l}) + D({j,k}).”
 
@@ -76,11 +76,11 @@
 
 *Rules out counterexamples.* MSC 92B20 (Neural networks for/in biological studies, artificial life and related topics). arXiv q-bio.NC. Level 2: later undergraduate.
 
-**Definition.** Each neuron has state +1 or −1. Each connection has the same weight in both directions, and no neuron connects to itself. Update one neuron to the sign of its weighted sum of neighboring states, keeping its state if the sum is zero. Visit every neuron repeatedly.
+**Definition.** A finite Hopfield network has states ±1, symmetric connection weights and no self-connections. Update one neuron at a time to the sign of its weighted input, keeping its state at zero input. Visit every neuron infinitely often.
 
 **Problem.** Every such update run eventually reaches a fixed state.
 
-**How the definition helps.** Updating a single neuron makes each flip strictly decrease one common energy (our own). Define energy as minus the sum of weight times endpoint states’ product over all undirected connections (our own). Symmetry makes the energy change equal to minus the weighted input times the change in state (our own). Finitely many states allow only finitely many flips, and repeated visits then ensure every neuron is stable (our own). Two positively connected neurons with opposite states swap forever under simultaneous updates (our own).
+**How the definition helps.** Take energy to be minus the sum over undirected edges of weight times the product of endpoint states (our own). Its change equals minus the updated neuron's input times its state change, so every flip strictly decreases energy (our own). Finiteness allows only finitely many flips, and repeated visits then imply stability (our own). Under simultaneous updates, two positively coupled neurons starting in opposite states swap forever (our own).
 
 **Wikipedia:** [Hopfield network](https://en.wikipedia.org/wiki/Hopfield_network). It says: “The constraint that weights are symmetric guarantees that the energy function decreases monotonically while following the activation rules.”
 
@@ -99,7 +99,7 @@
 
 **Problem.** Genetic distances add across adjacent intervals. If the crossover count has a Poisson distribution with mean d, the recombination fraction equals (1 − exp(−2d))/2.
 
-**How the definition helps.** Counting all crossovers makes distance additive because the interval counts add on each chromosome (our own). Taking expectations preserves that sum without requiring independent counts (our own). Inferring distance from the recombination fraction requires the count model (our own). Only odd counts switch the marker pairing (our own). Summing the odd Poisson probabilities gives the stated formula (our own).
+**How the definition helps.** Adjacent crossover counts add on each transmitted chromosome, so their expectations add without any independence assumption (our own). Only an odd count switches the marker pairing (our own). For a Poisson count N of mean d, E\[(−1)ᴺ\] = exp(−2d) equals one minus twice the odd-count probability (our own).
 
 **Wikipedia:** [Centimorgan](https://en.wikipedia.org/wiki/Centimorgan). It says: “the distance in centimorgans does not correspond exactly to the probability of genetic recombination.”
 
@@ -115,7 +115,7 @@
 
 **Problem.** In a deterministic random-mating model, D becomes (1 − c)D each generation. Here c is the fixed fraction of reproductive cells in which recombination separates the two positions. Assume no selection, mutation or migration.
 
-**How the definition helps.** Subtracting the independent baseline leaves a variable that the update simply multiplies (our own). The work is to derive the random-mating update for paired variants and show that recombination leaves the separate frequencies fixed (our own). The raw joint frequency would instead obey an update with an added constant (our own).
+**How the definition helps.** Recombination mixes the current joint frequency J with the independent pairing frequency pq (our own). Random mating gives J′ = (1 − c)J + cpq, while the separate frequencies p and q stay fixed (our own). Subtracting pq gives D′ = (1 − c)D (our own).
 
 **Wikipedia:** [Linkage disequilibrium](https://en.wikipedia.org/wiki/Linkage_disequilibrium). It says: “recombination is expected to decrease the value of D in each generation by a factor (1 - c)”
 
@@ -123,7 +123,7 @@
 
 ### Relative fitness isolates selection
 
-**Remember:** Relative fitness turns the change in weights into a covariance.
+**Remember:** Divide each ancestor’s descendant count by the mean descendant count.
 
 *True by definition.* MSC 92D15 (Problems related to evolution). arXiv q-bio.PE. Level 2: later undergraduate.
 
@@ -178,11 +178,11 @@
 
 ### Effective reproduction locates infection peaks
 
-**Remember:** The infected fraction peaks when effective reproduction falls to one.
+**Remember:** Divide transmission per infected individual by recovery per infected individual.
 
 *True by definition.* MSC 92D30 (Epidemiology). arXiv q-bio.PE. Level 2: later undergraduate.
 
-**Definition.** Consider a closed population where individuals progress from susceptible to infected to recovered. Let S and I be the susceptible and infected fractions, β the positive transmission rate, and γ the positive recovery rate. With both rates constant, the basic reproduction number is β/γ and the effective reproduction number is R = βS/γ.
+**Definition.** In the closed SIR model, susceptible and infected fractions satisfy S′ = −βSI and I′ = βSI − γI for constants β,γ &gt; 0. The effective reproduction number R = βS/γ compares the current per-infected transmission rate with the recovery rate.
 
 **Problem.** If I starts positive and R starts above one, I has a unique peak when R reaches one.
 
@@ -218,7 +218,7 @@
 
 *True by definition.* MSC 92B10 (Taxonomy, cladistics, statistics in mathematical biology), 92B15. arXiv q-bio.QM. Level 3: graduate.
 
-**Definition.** An independent contrast at a node of a rooted binary tree is the difference of its two child estimates, divided by the square root of their summed variances. These variances are conditional on the node's trait value. The node passes up the inverse-variance weighted mean of the two estimates, with variance equal to the reciprocal of the summed inverse variances plus the branch variance above.
+**Definition.** At the tips, use the observed traits with variances given by their branches. For child estimates x,y with variances a,b, record (x − y)/√(a+b) and pass their inverse-variance weighted mean upward. For the next comparison, add the intervening branch variance to ab/(a+b).
 
 **Problem.** Suppose changes on separate branches are independent centered Gaussian variables with variance proportional to positive branch length. The standardized differences are independent centered Gaussian variables with variance one.
 
@@ -232,15 +232,15 @@
 
 ### Spike edit costs vary continuously
 
-**Remember:** A small change in movement price makes only a small change in distance.
+**Remember:** Minimize unpaired spikes plus movement price times total paired displacement.
 
 *True by definition.* MSC 92C20 (Neural biology). arXiv q-bio.NC, q-bio.QM. Level 3: graduate.
 
-**Definition.** A spike train records the times when a neuron fires. Pair some spikes in one train with distinct spikes in the other, keeping their order. Charge one for each unpaired spike and q times the absolute time difference for each pair. The Victor–Purpura distance is the smallest total charge, equivalent to the least cost of inserting, deleting, and moving spikes.
+**Definition.** For two finite spike trains, pair any subsets of their spikes one-to-one in chronological order. The Victor–Purpura distance at q ≥ 0 minimizes the number of unpaired spikes plus q times total absolute timing displacement over all such pairings.
 
 **Problem.** For trains with at most one spike at each integer time from 0 to T, the distance is Lipschitz in q ≥ 0. Its change is at most T(T + 1) ÷ 2 times the absolute change in q.
 
-**How the definition helps.** Each matching gives a straight line in q whose slope is its total timing displacement (our own). With k pairs at distinct integer times from 0 to T, corresponding sorted times differ by at most T + 1 − k (our own). The total is at most k(T + 1 − k), bounded by T(T + 1)/2 for integers T ≥ 1 (our own). At T = 0 every slope is zero (our own). Taking the minimum preserves the common bound on changes (our own). The equivalence with edits uses the fact that uncrossing pairs never increases displacement (our own).
+**How the definition helps.** Each pairing gives an affine cost with slope equal to total displacement (our own). With k pairs, each ordered time differs from its partner by at most T+1−k, since both occupy the same rank (our own). Total displacement is at most k(T+1−k) ≤ T(T+1)/2 for integer T ≥ 1, and vanishes for T = 0 (our own). A minimum of functions with this common Lipschitz bound retains it (our own).
 
 **Paper or page:** [A Persistent Homology Pipeline for the Analysis of Neural Spike Train Data](https://arxiv.org/abs/2512.08637). It says: “Let 𝖲 and 𝖲′ be two spike trains over the time domain X = {0, 1, 2, …, T}. For any q,q′ ≥ 0, we have \|VP<sub>q</sub>(𝖲, 𝖲′) − VP<sub>q</sub>′(𝖲, 𝖲′)\| ≤ T(T+1)/2 \|q−q′\|”
 
@@ -276,7 +276,7 @@
 
 **Problem.** In a finite symmetric two-player game, every evolutionarily stable strategy is locally asymptotically stable under replicator dynamics. Each strategy’s share grows at a per capita rate equal to its payoff minus the population mean. Populations starting sufficiently close stay close and converge to the resident.
 
-**How the definition helps.** The extra test makes the resident outperform every sufficiently close mixture, including mixtures that tie against the resident alone (our own). For a counterexample, let a player score one only when both players choose B (our own). All-A is a Nash equilibrium, but a small positive share of B grows and moves away from it (our own). The work is to find a measure of distance to the resident that decreases because of the payoff advantage (our own).
+**How the definition helps.** Evolutionary stability gives the resident a payoff advantage over every distinct sufficiently close population mix (our own). Under replicator dynamics, the derivative of relative entropy from resident to population equals minus that advantage (our own). This strict local Lyapunov function proves attraction and stability (our own). If only mutual B earns one, all-A is Nash but a rare B grows (our own).
 
 **Wikipedia:** [Evolutionarily stable strategy](https://en.wikipedia.org/wiki/Evolutionarily_stable_strategy). It says: “the population of players who continue to play strategy S has an advantage when playing against T.”
 
@@ -291,7 +291,7 @@
 
 *Rules out counterexamples.* MSC 92E20 (Classical flows, reactions, etc. in chemistry), 92C42. arXiv q-bio.MN. Level 3: graduate.
 
-**Definition.** A reaction complex lists the molecules on one side of a reaction. Draw an arrow between the two complexes for each reaction. The network is weakly reversible if every arrow lies on a directed cycle. Its deficiency counts complexes minus connected components of the undirected graph minus the dimension spanned by reaction change vectors.
+**Definition.** Draw each reaction as an arrow between its reactant and product complexes. A network is weakly reversible if every arrow lies on a directed cycle. Its deficiency equals the number of complexes minus the number of undirected components minus the dimension spanned by reaction change vectors.
 
 **Problem.** Suppose each reaction rate equals a positive constant times the product of reactant concentrations raised to their reaction coefficients. Every weakly reversible network of deficiency zero then has a positive equilibrium where incoming and outgoing rates balance at each complex.
 
@@ -309,7 +309,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 92B10 (Taxonomy, cladistics, statistics in mathematical biology). arXiv q-bio.PE. Level 4: research.
 
-**Definition.** In a rooted binary ancestry network, a cherry consists of two leaves sharing a parent. A reticulated cherry has an edge from one leaf’s branching parent to the other leaf’s two-parent vertex. Delete one cherry leaf or cut that connecting edge, then suppress vertices with one parent and one child. An orchard network admits some sequence of these reductions to a single leaf.
+**Definition.** In a rooted binary network, delete a cherry leaf sharing its parent with another leaf, or reduce a reticulated cherry. The latter cuts the edge from one leaf’s branching parent to the other’s two-parent vertex. After suppressing unary vertices, including a unary root, a network is orchard if some such sequence reduces it to one leaf.
 
 **Problem.** Every maximal sequence of cherry reductions in an orchard network ends at one leaf.
 
@@ -327,7 +327,7 @@
 
 *True by definition.* MSC 92B10 (Taxonomy, cladistics, statistics in mathematical biology). arXiv q-bio.PE. Level 4: research.
 
-**Definition.** An evolutionary network is a rooted directed graph of parent-child relationships, with species at the tips. In the paper’s labeling, each node has a distinct integer label. Each parent contributes the set of labels of its children, and the resulting family of sets is called an expanding cover. A network is tree-child when every parent has a child with exactly one parent.
+**Definition.** In a network admitting the paper’s encoding, assign distinct labels to vertices and record one child-label set per parent. The network is tree-child if every parent has a child with exactly one parent.
 
 **Problem.** For networks admitting this encoding, the network is tree-child exactly when every set contains a label occurring only once in the cover.
 
@@ -345,11 +345,11 @@
 
 *True by definition.* MSC 92B10 (Taxonomy, cladistics, statistics in mathematical biology). arXiv q-bio.PE, q-bio.QM. Level 4: research.
 
-**Definition.** Fix the labels in a forest of unrooted trees with positive edge lengths and labels on every vertex of degree at most two. In the forest’s matrix, labels at path distance d have entry exp(−d). Disconnected pairs have entry zero, and diagonal entries equal one. Wald space consists of these matrices, with distinct labels on distinct vertices.
+**Definition.** Use forests with distinct labels on distinct vertices and labels on every vertex of degree at most two. Give edges positive lengths, and set the matrix entry for connected labels to exp(−d), where d is their path distance. Wald space consists of these matrices, with zero entries for disconnected labels.
 
 **Problem.** Wald space can shrink continuously to the matrix for isolated labels.
 
-**How the definition helps.** Matrix coordinates turn the contraction into straight lines ending at the identity matrix (our own). Multiply every off-diagonal entry by t, with 0 &lt; t &lt; 1 (our own). Move each label to the end of a new edge of length −log(t)/2 at its original vertex (our own). Remove any resulting unlabeled dead ends and combine edges at unlabeled vertices of degree two (our own). Every path between distinct connected labels gains exactly −log(t), giving the required matrix (our own). At t = 0 all labels are isolated (our own). The underlying theorem identifies the topology on forests described by edge lengths with the matrix topology (our own).
+**How the definition helps.** For 0 &lt; t &lt; 1, move every label onto a new pendant edge of length −ln(t)/2 (our own). Prune unlabeled dead ends and suppress unlabeled degree-two vertices, preserving distances between labels (our own). Every connected pair of distinct labels gains distance −ln(t), multiplying its correlation by t (our own). These matrices interpolate continuously between the original at t = 1 and isolated labels at t = 0 (our own).
 
 **Paper or page:** [Foundations of the Wald Space for Phylogenetic Trees](https://arxiv.org/abs/2209.05332). It says: “Conveyed by the homeomorphism φ, 𝒲 is star shaped as a subset ℝᴺˣᴺ with respect to F∞ and hence contractible.”
 
@@ -381,7 +381,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 92B25 (Biological rhythms and synchronization), 92C20. arXiv q-bio.NC. Level 4: research.
 
-**Definition.** Consider identical oscillators that send each other a pulse whenever their cycle position reaches one and returns to zero. At a fixed pulse strength, a pulse at position x changes it to F(x) = x + g(x). Here g gives the exact phase change. Assume F is increasing and differentiable up to the endpoints, with F(0) = 0 and F(1) = 1.
+**Definition.** Two identical oscillators advance uniformly in phase and pulse each other when they reach one and reset to zero. At fixed pulse strength the response F maps pre-pulse phase x to post-pulse phase x + g(x). Assume F increases, fixes both endpoints, and has derivatives on \[0,1\], using one-sided derivatives at the endpoints.
 
 **Problem.** For two such oscillators that advance uniformly between pulses, simultaneous firing attracts nearby phases if \|F′(0)F′(1)\| &lt; 1. It repels nearby phases if this product has absolute value above one.
 

@@ -88,7 +88,7 @@
 
 **Definition.** For a fully polarized beam at one frequency, record the two complex electric field amplitudes perpendicular to its direction of travel. A linear element that preserves full polarization acts on this pair by a Jones matrix. This replaces separate tracking of the polarization ellipse and phase.
 
-**Problem.** For a beam passing through a chain of linear elements, the chain’s Jones matrix is their product, with the first element on the right.
+**Problem.** For linear elements represented by Jones matrices in matching bases, the chain’s matrix is their product, with the first element on the right.
 
 **How the definition helps.** In our own explanation, multiplying matrices composes their actions on the field amplitudes. Our own calculation needs each element’s action on two basis inputs and matching bases between adjacent elements.
 
@@ -150,11 +150,11 @@
 
 ### The polarization matrix bounds the Stokes parameters
 
-**Remember:** A polarization imbalance cannot exceed the light that carries it.
+**Remember:** Average field outer products to obtain a positive matrix with intensity as its trace.
 
 *Rules out counterexamples.* MSC 78A10 (Physical optics). arXiv physics.optics. Level 2: later undergraduate.
 
-**Definition.** Represent the electric field perpendicular to the beam by a two-component complex vector. Average its outer product with its conjugate transpose to form the polarization matrix. Its trace is total intensity. The other Stokes parameters are the diagonal difference and twice the real and imaginary parts of one off-diagonal entry, using a fixed sign convention.
+**Definition.** For a complex transverse electric field vector E, the polarization matrix C is the average of EE†, where † denotes conjugate transpose. Its Stokes coordinates are tr C, C₁₁ − C₂₂, 2 Re C₁₂, and 2 Im C₁₂ in one sign convention.
 
 **Problem.** The length of the last three Stokes parameters cannot exceed total intensity. Every four-tuple with nonnegative intensity that meets this bound is realizable as a mixture of polarized beams.
 
@@ -170,7 +170,7 @@
 
 *True by definition.* MSC 78A25 (Electromagnetic theory (general)), 35Q61, 58A10. arXiv math-ph, physics.class-ph. Level 2: later undergraduate.
 
-**Definition.** Write the electromagnetic field strength as F = dA. Here A is a potential 1-form, which assigns a linear measurement to each spacetime direction. The exterior derivative d turns A into a 2-form, which measures oriented area elements. The vector formulation instead starts with separate electric and magnetic fields.
+**Definition.** Given a smooth electromagnetic potential one-form A on spacetime, its field strength is the two-form F = dA, where d denotes exterior differentiation.
 
 **Problem.** Every field strength F = dA satisfies the homogeneous Maxwell equations dF = 0. In vector form, magnetic fields have zero divergence, and a changing magnetic field induces electric circulation.
 
@@ -188,7 +188,7 @@
 
 *True by definition.* MSC 78A25 (Electromagnetic theory (general)), 83A05. arXiv math-ph, physics.class-ph. Level 2: later undergraduate.
 
-**Definition.** Combine the electric and magnetic fields into the electromagnetic tensor F, an antisymmetric array with two spacetime indices. The tensor formulation also combines charge and current densities into one spacetime vector. The usual vector formulation separates electric from magnetic and time from space.
+**Definition.** In inertial coordinates with x⁰ = ct, define the antisymmetric field tensor by F⁰ⁱ = E<sub>i</sub>/c and (F²³,F³¹,F¹²) = (B₁,B₂,B₃). Here i ranges over the three spatial indices, E is electric field, and B is magnetic field. The four-current is (cρ,j), with charge density ρ and current density j.
 
 **Problem.** The transformed fields and sources satisfy Maxwell’s equations in every inertial frame if they satisfy them in one. Lorentz transformations relate these frames and preserve the spacetime interval.
 
@@ -200,7 +200,7 @@
 
 ### The Lorenz gauge turns Maxwell's equations into wave equations
 
-**Remember:** One gauge choice, and the potentials obey plain wave equations.
+**Remember:** Set the four-divergence of the potential to zero to separate its wave equations.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 78A25 (Electromagnetic theory (general)), 78A40. arXiv physics.class-ph, math-ph. Level 2: later undergraduate.
 
@@ -208,7 +208,7 @@
 
 **Problem.** In the Lorenz gauge, Maxwell's equations for the potentials become separate inhomogeneous wave equations, one for φ and one for each component of A. Their sources are the charge density and the components of the current density, and the form is visibly Lorentz invariant.
 
-**How the definition helps.** The potentials are fixed only up to a gauge transformation, so we may impose one condition, and the Lorenz condition separates the equations while staying Lorentz invariant. The Coulomb gauge instead gives a scalar potential that responds instantly and is not Lorentz covariant. The Lorenz gauge still leaves some gauge freedom, by solutions of the wave equation, so it does not fix the gauge completely.
+**How the definition helps.** The Lorenz condition sets ∇·A + (1/c²)∂φ/∂t to zero. In our own derivation, this removes its gradient and time derivative from the potential equations, leaving a separate wave equation for each component. The four-divergence condition and the wave operator are Lorentz invariant.
 
 **Wikipedia:** [Gauge fixing](https://en.wikipedia.org/wiki/Gauge_fixing). It says: “It is unique among the constraint gauges in retaining manifest Lorentz invariance.”
 
@@ -240,7 +240,7 @@
 
 **Definition.** At each network connection, scale the incoming and outgoing wave amplitudes so that their squared magnitudes measure power. Use these amplitudes in place of voltages. The scattering matrix maps the incoming vector to the outgoing vector.
 
-**Problem.** A linear, lossless electromagnetic network with all power channels included has a unitary scattering matrix in these coordinates.
+**Problem.** A linear lossless network has a unitary scattering matrix when these amplitudes describe all power channels in independent, power-additive bases of equal finite dimension.
 
 **How the definition helps.** Power conservation becomes equality of the squared vector norms for every input. Our own explanation assumes independent channels whose powers add and equal finite numbers of incoming and outgoing channels. A square linear map preserving that norm is unitary.
 
@@ -256,7 +256,7 @@
 
 *True by definition.* MSC 78A05 (Geometric optics). arXiv physics.optics. Level 3: graduate.
 
-**Definition.** Describe each ray crossing a surface by its two position coordinates and two tangential direction components multiplied by the refractive index. The refractive index is the ratio of vacuum light speed to local light speed. The four-dimensional volume occupied by the bundle in these coordinates is its étendue.
+**Definition.** For refractive index n, define the étendue of a ray bundle crossing a surface as ∫n²\|cos θ\| dA dΩ over its rays. Here dA is surface area, dΩ is solid angle, and θ is the angle to the surface normal.
 
 **Problem.** At fixed frequency, lossless reversible propagation in isotropic geometric optics preserves the étendue of a ray bundle between transverse sections without clipping or splitting.
 
@@ -272,7 +272,7 @@
 
 *True by definition.* MSC 78A10 (Physical optics). arXiv physics.optics. Level 3: graduate.
 
-**Definition.** For incoherent light, intensities from independent object points add. Define the optical transfer function as the normalized Fourier transform of the intensity image of one point. The complex pupil function gives the amplitude and phase across the aperture.
+**Definition.** For incoherent imaging with a nonzero integrable point intensity response, the optical transfer function is its Fourier transform divided by its value at zero frequency. The complex pupil function specifies amplitude and phase across the aperture.
 
 **Problem.** In scalar imaging with the same point response everywhere, assume the point amplitude is the inverse Fourier transform of the pupil in scaled coordinates. Then the transfer function equals the pupil’s correlation with a shifted copy, divided by its squared norm.
 
@@ -288,7 +288,7 @@
 
 *True by definition.* MSC 78A25 (Electromagnetic theory (general)). arXiv physics.class-ph. Level 3: graduate.
 
-**Definition.** On oriented four-dimensional Lorentzian spacetime, combine the electric and magnetic components into one antisymmetric field F, a two-form. The metric defines the Hodge star ⋆, which exchanges complementary pairs of directions.
+**Definition.** On oriented four-dimensional Lorentzian spacetime, each two-form F has a unique Hodge dual ⋆F. It satisfies α ∧ ⋆F = ⟨α,F⟩ vol for every two-form α. Here ∧ is the exterior product, and the metric supplies the inner product and oriented volume form vol.
 
 **Problem.** If F solves the source-free Maxwell equations, so does ⋆F.
 
@@ -320,7 +320,7 @@
 
 *True by definition.* MSC 78A25 (Electromagnetic theory (general)), 35Q61. arXiv math-ph, physics.class-ph. Level 3: graduate.
 
-**Definition.** Package charge density and current density into a current 3-form J, which measures charge flux through three-dimensional slices of spacetime. The Maxwell source equation is d⋆F = J in units that absorb the coupling constant. Here F is the electromagnetic 2-form, d is the exterior derivative, and ⋆ is the Hodge star, a map built from the metric.
+**Definition.** In coordinates (t,x,y,z), the current three-form is J = ρ dx∧dy∧dz − dt∧(jₓ dy∧dz + jᵧ dz∧dx + j<sub>z</sub> dx∧dy). Here ρ denotes charge density and j denotes current density. In suitable units Maxwell’s source equation reads J = d⋆F, where F is field strength and ⋆ is the metric’s Hodge star.
 
 **Problem.** The Maxwell source equation implies local charge conservation, which is dJ = 0.
 
@@ -373,7 +373,7 @@
 
 *True by definition.* MSC 78A40 (Waves and radiation in optics and electromagnetic theory). arXiv physics.optics. Level 3: graduate.
 
-**Definition.** In four-dimensional spacetime, represent a vacuum plane wave by a potential with complex amplitude a and nonzero wave vector k. The spacetime inner product gives k·k = 0 and k·a = 0. Identify amplitudes that differ by a multiple of k because they give the same electric and magnetic fields.
+**Definition.** For a nonzero lightlike wave vector k in four-dimensional spacetime, take all complex amplitudes a satisfying k·a = 0 in the spacetime inner product. Identify two amplitudes exactly when their difference is a complex multiple of k.
 
 **Problem.** At each nonzero lightlike wave vector, the complex space of physical polarizations has dimension two.
 
@@ -389,7 +389,7 @@
 
 *Rules out counterexamples.* MSC 78A40 (Waves and radiation in optics and electromagnetic theory). arXiv physics.optics. Level 3: graduate.
 
-**Definition.** At a fixed positive frequency, choose the Maxwell field that travels outward from a current confined to a ball in empty space. Its far-field pattern gives the amplitude of the leading outgoing spherical wave in each direction.
+**Definition.** With time factor exp(−iωt) and wave number k &gt; 0, an outgoing electric field outside the source has E(rŝ) = exp(ikr)E∞(ŝ)/r + O(r⁻²). The remainder bound holds uniformly over unit directions ŝ as r grows, and E∞ is the far-field pattern.
 
 **Problem.** For a smooth current supported inside the ball, the far-field pattern vanishes exactly when the electric field vanishes outside the ball.
 
@@ -443,7 +443,7 @@
 
 **Definition.** For a scalar wave on a layer, record its value and spatial derivative at each end. The transfer matrix T maps the left pair to the right pair.
 
-**Problem.** Suppose the wave speed is positive and symmetric about the midpoint. Then T⁻¹ = STS, where S changes the sign of the derivative.
+**Problem.** Consider the scalar Helmholtz equation u″ + (ω/c)²u = 0 in a layer with positive speed c symmetric about its midpoint. Then T⁻¹ = STS, where S changes the sign of the derivative.
 
 **How the definition helps.** In these coordinates reflection exchanges the ends and changes just one sign. Our own proof applies T to the reflected solution, giving TST = S. Uniqueness for the wave equation makes T well defined.
 
@@ -477,7 +477,7 @@
 
 *True by definition.* MSC 78A50 (Antennas, waveguides in optics and electromagnetic theory). arXiv math.NA. Level 3: graduate.
 
-**Definition.** Write the field as a known oscillation times an unknown function called its envelope. For real k, multiply by exp(ikz) to pass from field to envelope at axial position z.
+**Definition.** At axial coordinate z and real wave number k, define the envelope of a field u by Mu = exp(ikz)u. For field operator A, the envelope operator is MAM⁻¹ on the transformed domain.
 
 **Problem.** If the original operator satisfies ‖Au‖ ≥ α‖u‖ in the paper’s integral square norms, the envelope operator satisfies the same bound, and conversely.
 
@@ -495,7 +495,7 @@
 
 *True by definition.* MSC 78A45 (Diffraction, scattering), 78M10. arXiv math.NA. Level 4: research.
 
-**Definition.** The transparent boundary map on a sphere around the obstacle sends the tangential electric field of an outgoing exterior wave to its magnetic boundary data. It is exact, unlike a local absorbing rule.
+**Definition.** For each admissible tangential electric trace on the sphere, solve the outgoing exterior Maxwell problem at the given frequency. The transparent boundary map returns the tangential magnetic trace of that solution, using the same normal on both sides.
 
 **Problem.** For time-harmonic Maxwell scattering, impose this map on the scattered field at the sphere. The resulting bounded problem has as its solution the restriction of the full solution.
 
@@ -549,7 +549,7 @@
 
 *True by definition.* MSC 78M10 (Finite element, Galerkin and related methods applied to problems in optics and electromagnetic theory). arXiv math.NA. Level 4: research.
 
-**Definition.** On a closed surface, choose mesh versions of gradient and curl so that curl after gradient gives zero. Define charge from the initial electric field and the accumulated current in the same mesh equations.
+**Definition.** Choose mesh gradient G and curl C satisfying CG = 0 on the closed surface. With adjoint G\* in the mesh inner products, define divergence D = −G\* and charge ρ(t) = DE(0) − ∫₀ᵗ DJ(s) ds. Here E is the mesh electric field and J is the projected current.
 
 **Problem.** As time varies continuously, the mesh electric field satisfies Gauss’s law. Its discrete divergence equals the charge at each time.
 
@@ -579,31 +579,13 @@
 
 - [Herbert Egger, Bogdan Radu — A Yee-like finite-element scheme for Maxwell's equations on unstructured grids](https://arxiv.org/abs/2306.01182v1)
 
-### Combined fields avoid false resonances
-
-**Remember:** An imaginary wavenumber removes false cavity resonances from the boundary equation.
-
-*Rules out counterexamples.* MSC 78M15 (Boundary element methods applied to problems in optics and electromagnetic theory). arXiv math.NA. Level 4: research.
-
-**Definition.** Describe the scattered field by electric and magnetic sources on the conductor’s surface. Combine their exterior boundary values with interior boundary values computed at a purely imaginary wave number.
-
-**Problem.** For a bounded perfect conductor with a locally Lipschitz graph as boundary, the paper’s combined equation has at most one solution per positive wave number.
-
-**How the definition helps.** The interior terms prevent a standing wave inside the conductor from creating a false solution of the boundary equation. Our own example is a spherical cavity at a frequency where it supports a standing wave. The proof uses exterior uniqueness and a positive lower bound for the interior operators.
-
-**Paper or page:** [An operator preconditioned combined field integral equation for electromagnetic scattering](https://arxiv.org/abs/2309.02289v3). It says: “has at most one solution”
-
-**Sources:**
-
-- [Van Chien Le, Kristof Cools — An operator preconditioned combined field integral equation for electromagnetic scattering](https://arxiv.org/abs/2309.02289v3)
-
 ### A discrete product preserves energy balance
 
 **Remember:** Use a product that respects the discrete derivative to keep the energy law.
 
 *True by definition.* MSC 78M20 (Finite difference methods applied to problems in optics and electromagnetic theory). arXiv physics.class-ph. Level 4: research.
 
-**Definition.** In Sushch’s model, store electromagnetic field values on oriented vertices, edges, faces, and cells of a spatial grid. Time stays continuous. Combine the values using the model’s cup product, a multiplication that respects the derivative product rule on the grid.
+**Definition.** On an oriented cubical grid, define the cup product of cochains by the tensor product of the interval rules, with the graded permutation signs. On each interval, two vertex cochains multiply pointwise. A vertex factor evaluates at the initial endpoint before an edge factor and at the final endpoint after it.
 
 **Problem.** For the paper’s spatially discrete Maxwell system in a vacuum with a current, energy loss equals outgoing flux plus work on the current.
 

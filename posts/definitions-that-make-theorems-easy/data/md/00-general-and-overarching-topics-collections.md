@@ -6,7 +6,7 @@
 
 **Definition.** Zeller's congruence numbers the months from March (3) to February (14). It counts January and February as months 13 and 14 of the previous year, so the leap day falls at the end of the year.
 
-**Problem.** For a Gregorian date with day d, month number m and adjusted year 100j + k (0 ≤ k &lt; 100), the weekday is d + ⌊13(m + 1)/5⌋ + k + ⌊k/4⌋ + ⌊j/4⌋ + 5j modulo 7. Remainders 0 through 6 give Saturday through Friday.
+**Problem.** Use Gregorian day d, March-based month m and adjusted year 100j + k (0 ≤ k &lt; 100). The weekday equals d + ⌊13(m + 1)/5⌋ + k + ⌊k/4⌋ + ⌊j/4⌋ + 5j modulo 7. Remainders 0 through 6 give Saturday through Friday.
 
 **How the definition helps.** Starting in March puts the variable day after every fixed month start (our own). The year term can then count past leap days and the month term can use only fixed offsets (our own). In our own check, the work is to match the offsets to the fixed month lengths and include the Gregorian century rule.
 
@@ -43,7 +43,7 @@
 
 *True by definition.* MSC 00A79 (Physics). arXiv math-ph. Level 3: graduate.
 
-**Definition.** Represent each base dimension, such as length or time, by a one-dimensional real vector space. A unit is a basis vector that assigns a numerical value to each quantity. A derived dimension records integer powers of the base dimensions, as in length divided by time squared. A bare numerical value omits this dimension information.
+**Definition.** Choose a one-dimensional real vector space and a basis vector (unit) for each base dimension. A derived unit takes the product of the chosen units raised to its dimension’s integer powers.
 
 **Problem.** Two choices of base units give isomorphic arithmetic on quantities. The change preserves addition within a dimension and multiplication across dimensions.
 

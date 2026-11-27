@@ -8,7 +8,7 @@
 
 **Problem.** When two differentiable plane curves meet away from the origin with nonzero velocities, inversion preserves their unsigned angle and reverses their oriented angle.
 
-**How the definition helps.** The derivative of inversion is a positive stretch times a reflection, so it keeps angle sizes and reverses orientation (our own calculation). Differentiating x/‖x‖² shows that it negates the radial part of a tangent vector and keeps the perpendicular part, then scales both by 1/‖x‖² (our own). This replaces a geometric angle chase by a derivative check (our own comparison).
+**How the definition helps.** Inversion has derivative equal to a reflection times a positive scalar, which preserves angle size and reverses orientation (our own). Differentiating the formula reverses the radial component, preserves the perpendicular component and scales both by 1/‖x‖² (our own).
 
 **Wikipedia:** [Inversive geometry](https://en.wikipedia.org/wiki/Inversive_geometry). It says: “The circle inversion map is anticonformal, which means that at every point it preserves angles and reverses orientation”
 
@@ -56,7 +56,7 @@
 
 **Problem.** For cyclic order A, B, C, D, the lengths obey AC × BD = AB × CD + BC × DA.
 
-**How the definition helps.** Cyclic order tells us which product belongs alone in Ptolemy’s equality. In our own counterexample, put A and B at the lower corners of a unit square. Put C directly above A and D directly above B. Then AC × BD is 1, but AB × CD + BC × DA is 3. The usual proof for vertices in cyclic order uses similar triangles.
+**How the definition helps.** Cyclic order identifies the diagonals in Ptolemy’s equality, whose usual proof uses similar triangles. For a unit square, put A and B at the bottom, with C above A and D above B (our own). This order gives AC × BD = 1 while AB × CD + BC × DA = 3 (our own).
 
 **Paper or page:** [Some Polynomial Conditions of Cyclic Quadrilaterals, Tilted Kites and Other Quadrilaterals](https://arxiv.org/abs/2302.10071v1). It says: “Let A, B, C, D be four points lying in counterclockwise or clockwise order on a circle, then P = 0.”
 
@@ -72,7 +72,7 @@
 
 **Problem.** In a triangle with sides a, b and c, let C be the angle between the sides of lengths a and b. Then c² = a² + b² − 2ab cos C.
 
-**How the definition helps.** The dot-product definition makes the cosine term appear when you expand the square of the third side. If u and v are the two sides from the same vertex, the third side has squared length (u − v)·(u − v). Expanding gives \|u\|² + \|v\|² − 2u·v, and substituting u·v = \|u\|\|v\| cos C gives the law. The classical angle gives a different starting point, and one proof drops a perpendicular and uses the Pythagorean theorem (our own comparison). The work moves into the Cauchy–Schwarz inequality and showing that the dot-product angle matches the geometric angle.
+**How the definition helps.** Expanding the squared distance between the endpoints gives the cosine term (our own). For side vectors u and v from their common vertex, the opposite side has squared length \|u\|² + \|v\|² − 2u·v (our own). Substitute u·v = \|u\|\|v\| cos C (our own). The geometric interpretation uses the agreement between the dot-product angle and the triangle angle (our own).
 
 **Wikipedia:** [Dot product](https://en.wikipedia.org/wiki/Dot_product), [Law of cosines](https://en.wikipedia.org/wiki/Law_of_cosines). It says: “In such a presentation, the notions of length and angle are defined by means of the dot product.”
 
@@ -90,7 +90,7 @@
 
 **Problem.** The vertices of a regular convex polygon lie on a single circle.
 
-**How the definition helps.** Equal angles give equal turns, so one rotation carries every edge to the next in our own proof. Choose the rotation through the exterior angle that takes the first vertex to the second. Equal turns give the next edge direction, and equal lengths give its endpoint. Repeating this argument puts every vertex at the same distance from the rotation center. A rhombus with opposite angles of 60° has equal sides but cannot be cyclic because those angles do not sum to 180°.
+**How the definition helps.** Equal turns and lengths make a single rotation carry each vertex to the next (our own). Choose the rotation through the exterior angle taking the first vertex to the second: it sends every edge vector to its successor (our own). Thus every vertex lies at the same distance from the rotation center (our own). A rhombus with opposite angles of 60° violates the cyclic requirement that opposite angles sum to 180° (our own).
 
 **Wikipedia:** [Regular polygon](https://en.wikipedia.org/wiki/Regular_polygon). It says: “All vertices of a regular polygon lie on a common circle”
 
@@ -150,15 +150,15 @@
 
 ### Signed lengths make the converse of Menelaus's theorem true
 
-**Remember:** With signs, Menelaus gives −1 and Ceva gives +1.
+**Remember:** Measure forward positively and backward negatively before multiplying the three ratios.
 
 *Makes the theorem clean to state or prove.* MSC 51M04 (Elementary problems in Euclidean geometries), 51A20. arXiv math.MG. Level 1: early undergraduate.
 
-**Definition.** Fix a direction on a line. A signed length between two points on the line is positive when it goes in that direction, and negative when it goes the other way.
+**Definition.** Fix an orientation on a line and use a unit coordinate increasing in that direction. The signed length AB is the coordinate of B minus the coordinate of A.
 
 **Problem.** Let D, E, F lie on the side lines BC, CA, AB of triangle ABC, away from the vertices. They are collinear if and only if (AF/FB)(BD/DC)(CE/EA) = −1, with signed lengths.
 
-**How the definition helps.** Signs separate the Menelaus case from the Ceva case, so the converse becomes true. With unsigned lengths the product is 1, but the converse is false: some non-collinear points also give product 1. With signs, collinear points give −1. Points whose lines to the opposite vertices meet in one point give +1, which is Ceva's theorem. The article adds that, when you write the two theorems with cross-ratios, they are projective duals.
+**How the definition helps.** Signed ratios distinguish collinearity from concurrence. Menelaus’s theorem gives product −1 exactly for collinear points, while Ceva’s theorem gives +1 for concurrent cevians (our own comparison). Taking absolute values loses this distinction, so the unsigned converse fails.
 
 **Wikipedia:** [Menelaus's theorem](https://en.wikipedia.org/wiki/Menelaus%27s_theorem). It says: “Note that the converse of the weaker, unsigned statement is not necessarily true.”
 
@@ -168,11 +168,11 @@
 
 ### The signed power of a point unifies secants and chords
 
-**Remember:** Outside, the power is the squared tangent length; inside, it is negative.
+**Remember:** Square the distance to the center and subtract the squared radius.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 51M04 (Elementary problems in Euclidean geometries). arXiv math.MG. Level 1: early undergraduate.
 
-**Definition.** Let a circle have centre O and radius r. The power of a point P with respect to the circle is Π(P) = \|PO\|² − r², the squared distance to the centre minus the squared radius. It is positive outside the circle, zero on it and negative inside.
+**Definition.** For a circle with center O and radius r, the power of P is Π(P) = \|PO\|² − r². It is positive outside, zero on the circle and negative inside.
 
 **Problem.** Take any line through P that meets the circle at S₁ and S₂. Then \|PS₁\|·\|PS₂\| = \|Π(P)\|, so the product does not depend on the line.
 
@@ -195,7 +195,7 @@
 
 **Problem.** The three medians of a triangle meet at one point. That point divides each median in the ratio 2 to 1 from the vertex.
 
-**How the definition helps.** Our own proof groups the vertex average into the formula G = ⅓A + ⅔·(B + C)/2. Thus G lies two thirds of the way along the median from A. The same grouping works for the other two medians. The average does not depend on the chosen origin because its weights sum to 1. Unlike the intersection definition, the vertex average gives a point before we prove that the medians meet.
+**How the definition helps.** Grouping the vertex average gives G = ⅓A + ⅔·(B + C)/2 (our own). This places G two thirds along the median from A, and cyclic regrouping gives the same point on every median (our own). Two distinct median lines meet only once (our own).
 
 **Wikipedia:** [Centroid](https://en.wikipedia.org/wiki/Centroid). It says: “The centroid divides each of the medians in the ratio 2:1, which is to say it is located ⅓ of the distance from each side to the opposite vertex”
 
@@ -209,11 +209,11 @@
 
 *True by definition.* MSC 51M04 (Elementary problems in Euclidean geometries), 51N10. arXiv math.MG. Level 1: early undergraduate.
 
-**Definition.** Write an interior point as a weighted average of the three vertices with positive weights summing to one. These are barycentric coordinates. Ordinary Cartesian coordinates do not single out the triangle's sides.
+**Definition.** Fix a nondegenerate triangle ABC and an interior point P. Its barycentric coordinates are the unique positive weights a,b,c satisfying a+b+c = 1 and P = aA+bB+cC.
 
 **Problem.** Join each vertex of a triangle to a point inside its opposite side. The three lines meet exactly when the three ratios of side segments, taken in cyclic order, multiply to one.
 
-**How the definition helps.** In barycentric coordinates, each side ratio is a quotient of vertex weights, so the cyclic product cancels (our own). For weights a, b, c at vertices A, B, C, the line from A meets BC at L with BL/LC = c/b (our own). This follows by normalizing the weights b and c to sum to one on BC (our own). Conversely, two prescribed ratios determine positive weights up to scale, and product one forces the third ratio (our own). Normalizing the weights gives the common point (our own).
+**How the definition helps.** The three side ratios are cyclic quotients of vertex weights, so their product is one (our own). Normalizing b and c on BC gives BL/LC = c/b for the line from A through the common point (our own). Conversely, two ratios determine positive weights up to scale, and product one forces the third ratio (our own). Normalizing all three weights gives the common point (our own).
 
 **Paper or page:** [Ceva's Theorem](https://proofwiki.org/wiki/Ceva's_Theorem). It says: “BL/LC × CM/MA × AN/NB = 1”
 
@@ -229,7 +229,7 @@
 
 **Problem.** In a nonequilateral triangle, the centroid is a third of the way from the circumcenter to the orthocenter.
 
-**How the definition helps.** In our own proof, the centroid is the vertex average, exactly one third of the vertex sum. To verify the orthocenter formula, call the vertex vectors a, b and c. The displacement from a to the sum is b + c. Its dot product with b − c vanishes because b and c have equal length. Thus the sum lies on the altitude from a, and the same argument works at the other vertices.
+**How the definition helps.** The centroid is the vertex average, one third of the proposed orthocenter vector (our own). With vertex vectors a,b,c, the displacement from a to their sum is b + c (our own). Its dot product with b − c vanishes because b and c have equal lengths (our own). Cycling the vertices puts the sum on all three altitudes (our own).
 
 **Paper or page:** [Position of Centroid on Euler Line](https://proofwiki.org/wiki/Position_of_Centroid_on_Euler_Line). It says: “OG : GH = 1 : 2”
 
@@ -245,7 +245,7 @@
 
 **Problem.** Congruent triangles have equal corresponding side lengths, median lengths, and angles. They also have equal perimeters and areas.
 
-**How the definition helps.** The isometry definition gives all corresponding distances at once, not just the sides named in the usual definition. Isometries preserve midpoints, so they carry each median to its matching median (our own explanation). Perimeters are sums of the side lengths. Angles and areas are also preserved because plane isometries are compositions of translations, rotations, and reflections. The work moves into proving those preservation facts and proving that equality of corresponding sides is enough to build an isometry (our own comparison).
+**How the definition helps.** An isometry preserves corresponding side lengths, hence their sum, the perimeter. It also preserves midpoints, so corresponding medians have equal lengths (our own). Plane isometries are compositions of translations, rotations and reflections, each preserving angle sizes and area (our own).
 
 **Wikipedia:** [Congruence (geometry)](https://en.wikipedia.org/wiki/Congruence_%28geometry%29). It says: “In this sense, the sentence "two plane figures are congruent" implies that their corresponding characteristics are congruent (or equal) including not just their corresponding sides and angles, but also their corresponding diagonals, perimeters, and areas.”
 
@@ -259,9 +259,9 @@
 
 **Definition.** In the Greek sense, a regular polyhedron is a convex solid with two more properties. Its faces are congruent regular polygons. The same number of faces meet at every vertex, arranged in the same way.
 
-**Problem.** There are exactly five regular polyhedra, the Platonic solids.
+**Problem.** Up to similarity, there are exactly five regular convex polyhedra, the Platonic solids.
 
-**How the definition helps.** Each condition in the definition removes solids that would change the count, and what is left is a short argument about angles. The condition on faces rules out the square pyramid. The condition on vertices rules out the triangular bipyramid, whose faces are all equal triangles. Convexity rules out the four Kepler–Poinsot star polyhedra, which meet the other conditions; with them the count is nine. Our own summary of the classical proof: with the full definition, at least three faces meet at each vertex, and their angles must add up to less than 360°. This leaves only five choices of face and number of faces at a vertex.
+**How the definition helps.** Congruent faces exclude the square pyramid, and equal vertex counts exclude the triangular bipyramid. Convexity requires the q regular p-gons meeting at each vertex to have total angle below 2π (our own). For p,q ≥ 3 this gives only (3,3), (3,4), (3,5), (4,3) and (5,3) (our own). The classical classification realizes each pair uniquely up to similarity (our own).
 
 **Wikipedia:** [Regular polyhedron](https://en.wikipedia.org/wiki/Regular_polyhedron). It says: “This definition rules out, for example, the square pyramid (since although all the faces are regular, the square base is not congruent to the triangular sides), or the shape formed by joining two tetrahedra together”
 
@@ -275,9 +275,9 @@
 
 **Definition.** A simple polygon is a closed chain of finitely many line segments that does not cross or touch itself. In other words, it is a Jordan curve made of line segments.
 
-**Problem.** The external angles of a simple n-gon add up to 2π. Its n − 3 diagonals can cut it into n − 2 triangles.
+**Problem.** The signed exterior angles of a counterclockwise simple n-gon sum to 2π. Some n − 3 of its diagonals divide it into n − 2 triangles.
 
-**How the definition helps.** The definition excludes polygons that cross themselves, and these break both statements. A pentagram turns around twice, so its external angles add up to 4π (our own example). For simple polygons, the two ears theorem gives the triangulation: cut off one ear, a triangle of three consecutive vertices inside the polygon, at a time.
+**How the definition helps.** Simplicity excludes the pentagram, whose signed turns sum to 4π in one orientation (our own). The two ears theorem lets us remove one triangular ear at a time until one triangle remains. Summing triangle angles gives interior angle sum (n − 2)π, hence signed exterior angle sum 2π (our own).
 
 **Wikipedia:** [Simple polygon](https://en.wikipedia.org/wiki/Simple_polygon). It says: “The sum of external angles of a simple polygon is 2π. Every simple polygon with n sides can be triangulated by n−3 of its diagonals”
 
@@ -323,7 +323,7 @@
 
 *True by definition.* MSC 51N10 (Affine analytic geometry). arXiv math.MG. Level 1: early undergraduate.
 
-**Definition.** For a point P and a nondegenerate triangle ABC, define the weight at A as the signed area of PBC divided by the signed area of ABC. Define the other two weights by cycling the letters. Signed area is positive for counterclockwise order and negative for clockwise order.
+**Definition.** For a nondegenerate triangle ABC, the weight of P at A is the signed area of PBC divided by that of ABC. Cycle A,B,C to obtain the other two weights. Signed area is positive for counterclockwise order, negative for clockwise order and zero for collinear vertices.
 
 **Problem.** A point is strictly inside a nondegenerate triangle exactly when all three of its barycentric coordinates are positive.
 
@@ -363,7 +363,7 @@
 
 **Problem.** Two distinct circles in the Euclidean plane share at most two points.
 
-**How the definition helps.** The coordinate definition gives every circle the same quadratic terms, so subtracting two circle equations cancels them. Distinct circles with the same center have different radii and cannot meet (our own). Otherwise the difference is a line containing all the common points, and on that line a circle equation is a quadratic with at most two roots (our own). The Pythagorean theorem matches the coordinate definition with the distance definition.
+**How the definition helps.** Subtracting the two circle equations cancels their common quadratic terms. Distinct concentric circles have different radii and share no points (our own). Otherwise the difference defines a line, and restricting either equation to that line gives a quadratic with at most two roots (our own). The Pythagorean theorem identifies the coordinate and distance definitions.
 
 **Paper or page:** [An analysis of Euclid's geometrical foundations](https://arxiv.org/abs/2501.17406). It says: “Distinct circles have at most two points in common.”
 
@@ -381,7 +381,7 @@
 
 **Problem.** A ray travelling parallel to the axis toward a parabola from its open side reflects through the focus.
 
-**How the definition helps.** Equal distances to the focus and the directrix give the mirror line (our own). Let H be the foot of the perpendicular from the contact point to the directrix. Every point of the parabola is at least as close to the focus as to H, with equality only at the contact point, so the perpendicular bisector of H and the focus is the tangent (our own). Reflection in this tangent exchanges the directions toward H and toward the focus (our own).
+**How the definition helps.** The focus and the directrix foot H of the contact point P are mirror images across their perpendicular bisector (our own). Every parabola point is at least as close to the focus as to H, with equality only at P (our own). The bisector thus supports the parabola at P and is its tangent (our own). Reflection sends the incoming direction toward H to the direction toward the focus (our own).
 
 **Paper or page:** [Focal Property of Parabola](https://proofwiki.org/wiki/Focal_Property_of_Parabola). It says: “The tangent to 𝒦 at P bisects the angle between the straight line PF and the straight line through P perpendicular to D.”
 
@@ -415,7 +415,7 @@
 
 **Problem.** Any match between two orthonormal frames in the Euclidean plane extends to a unique rigid motion.
 
-**How the definition helps.** A frame gives every point one coordinate pair, so matching frames gives a candidate motion: send each point to the point with the same coordinates in the other frame (our own). The distance formula shows that this map preserves distances. Any other motion must agree on the origin and the two unit endpoints, and distances to these three points fix both coordinates. This replaces physical superposition with the Pythagorean distance formula.
+**How the definition helps.** A frame assigns each point unique coordinates, so match points with equal coordinates in the two frames (our own). The distance formula makes this map an isometry (our own). Any extension agrees on the origin and both unit endpoints, and distances to these three points determine both coordinates (our own).
 
 **Paper or page:** [An analysis of Euclid's geometrical foundations](https://arxiv.org/abs/2501.17406). It says: “Any map as above between systems of axes (l, m) and (l′, m′) extends uniquely to a rigid motion of the plane.”
 
@@ -493,11 +493,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 51A05 (General theory of linear incidence geometry and projective geometries), 51A20, 51N15. arXiv math.MG. Level 2: later undergraduate.
 
-**Definition.** The theorem is stated in the real projective plane. This is the Euclidean plane with one point at infinity added for each direction of lines. Parallel lines meet at the point at infinity for their direction.
+**Definition.** Complete the Euclidean plane by adding one point for each direction of parallel lines. Extend each line through its direction point and put all direction points on one new line, the line at infinity.
 
-**Problem.** Desargues's theorem: if the three lines joining corresponding corners of two triangles meet in one point, then the three pairs of corresponding sides meet in three points on one line.
+**Problem.** Take two nondegenerate triangles in the real projective plane with six distinct vertices and distinct corresponding sides. If their three corresponding vertex joins are concurrent, the three corresponding side intersections are collinear.
 
-**How the definition helps.** In the projective plane every pair of lines meets, so one statement covers all cases. In the Euclidean plane, corresponding sides may be parallel, and the statement needs a list of special cases. The theorem does not hold in every abstract projective plane; it fails in the Moulton plane (our own example).
+**How the definition helps.** Every two distinct projective lines meet, so Desargues’s theorem includes parallel sides without a separate statement (our own). Parallel sides meet at their shared direction point.
 
 **Wikipedia:** [Desargues's theorem](https://en.wikipedia.org/wiki/Desargues%27s_theorem). It says: “Commonly, to remove these exceptions, mathematicians "complete" the Euclidean plane by adding points at infinity, following Jean-Victor Poncelet.”
 
@@ -509,9 +509,9 @@
 
 *Makes the theorem clean to state or prove.* MSC 51A05 (General theory of linear incidence geometry and projective geometries), 51A20, 14H50. arXiv math.MG, math.AG. Level 2: later undergraduate.
 
-**Definition.** State the theorem in the projective plane: the plane with a line at infinity added, so that any two lines meet. Parallel lines meet at infinity.
+**Definition.** The real projective plane extends the Euclidean plane by one point for each direction of parallel lines. Each original line contains its direction point, and a new line contains all direction points.
 
-**Problem.** Pascal's theorem: take six points on a conic and join them into a hexagon. The three points where opposite sides meet lie on one line, the Pascal line.
+**Problem.** Join six distinct points on a nondegenerate conic in the real projective plane in cyclic sequence to form a hexagon. The intersections of the three pairs of opposite sides lie on one line, the Pascal line.
 
 **How the definition helps.** In the projective plane, opposite sides always meet, so one statement covers every case. In the Euclidean plane, if one pair of opposite sides is parallel, the Pascal line must be stated as parallel to them. If two pairs are parallel, the third pair is too, and the Pascal line is the line at infinity. If the conic may be a pair of lines, Pappus's hexagon theorem becomes a special case.
 
@@ -543,9 +543,9 @@
 
 *True by definition.* MSC 51A05 (General theory of linear incidence geometry and projective geometries), 51A10. arXiv math.MG. Level 2: later undergraduate.
 
-**Definition.** A projective plane is a set of points and lines with three axioms. Any two distinct points lie on exactly one line. Any two distinct lines meet in exactly one point. Some four points have no three on one line.
+**Definition.** A projective plane has points, lines and an incidence relation. Every two distinct points lie on exactly one common line, and every two distinct lines meet at exactly one point. There exist four points with no three on one line.
 
-**Problem.** The principle of duality: suppose a statement about points, lines and incidence holds in every projective plane. Then the statement with the words 'point' and 'line' exchanged also holds.
+**Problem.** If an incidence statement holds in every projective plane, its dual also holds in every projective plane. The dual exchanges points with lines and reverses incidence.
 
 **How the definition helps.** The axioms treat points and lines the same way, so exchanging the words turns a proof into a proof. The second axiom is the dual of the first, and the dual of the third axiom is a theorem. So the dual of any projective plane is again a projective plane. The duality is between a plane and its dual, and some non-Desarguesian planes are not isomorphic to their duals.
 
@@ -559,11 +559,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 51A05 (General theory of linear incidence geometry and projective geometries), 51E15. arXiv math.MG, math.CO. Level 2: later undergraduate.
 
-**Definition.** A projective plane is a set of points and lines with three axioms. Any two distinct points lie on exactly one line. Any two distinct lines meet in exactly one point. There are four points, no three of which lie on one line.
+**Definition.** A projective plane has points and lines such that every two distinct points determine one line and every two distinct lines meet in one point. Four points must exist with no three on one line.
 
 **Problem.** In a projective plane, every line has the same number s + 1 of points, and every point lies on s + 1 lines. The number s is the order of the plane. A finite plane has s² + s + 1 points.
 
-**How the definition helps.** The four-point axiom removes the degenerate planes, where lines can have different sizes. One of these is the near-pencil: a point P off a line m, with lines through P to the points of m. There m can have many points while the other lines have two, so there is no single order (our own reading). With the four-point axiom, a short argument shows that all lines have the same size.
+**How the definition helps.** The four-point axiom excludes a near-pencil, where one long line and one external point give all other lines only two points (our own). It guarantees a point outside any two lines, and projection from that point bijects their point sets (our own). For any point, an external line similarly counts its incident lines (our own). In finite order s, counting one point and s others on each of its s + 1 lines gives s² + s + 1 (our own).
 
 **Wikipedia:** [Projective plane](https://en.wikipedia.org/wiki/Projective_plane). It says: “The last condition excludes the so-called degenerate cases”
 
@@ -593,7 +593,7 @@
 
 *True by definition.* MSC 51A20 (Configuration theorems in linear incidence geometry), 51A30, 51N15. arXiv math.MG. Level 2: later undergraduate.
 
-**Definition.** Work in a projective plane over a field with 1 + 1 ≠ 0. Call (A, B, C, D) harmonic if some complete quadrangle has two pairs of opposite sides meeting at A and B, and its last pair meeting line AB at C and D. The other definition asks for cross-ratio −1.
+**Definition.** In a projective plane over a field of characteristic different from two, a complete quadrangle consists of four points with no three collinear. Call four distinct collinear points A,B,C,D harmonic if a complete quadrangle witnesses the following incidences. Two opposite side pairs meet at A and B respectively, and the sides of the third pair meet AB at C and D respectively.
 
 **Problem.** A collineation is a bijection of the plane that maps lines to lines. Every collineation preserves harmonic quadruples.
 
@@ -605,7 +605,7 @@
 
 ### Counting lines as circles removes the exceptions in inversion
 
-**Remember:** A line is a circle of infinite radius that passes through infinity.
+**Remember:** Complete each line with infinity and count it as a circle.
 
 *Makes the theorem clean to state or prove.* MSC 51B10 (Möbius geometries), 30C20. arXiv math.MG, math.CV. Level 2: later undergraduate.
 
@@ -629,7 +629,7 @@
 
 **Problem.** Four distinct points lie on a generalized circle exactly when their cross-ratio is real.
 
-**How the definition helps.** The Möbius-image definition reduces the test to membership in the extended real line. Three points determine a unique generalized circle, since a real Möbius map can send any three distinct extended real points to 0, 1 and ∞. Thus the normalizing map sends that circle to the extended real line. The fourth image is not ∞ and is the cross-ratio. Our own proof uses the equivalence between the Möbius-image definition and the description by circles and lines.
+**How the definition helps.** Normalizing the first three points sends their generalized circle to the extended real line. Indeed, any three distinct extended real points admit a real Möbius normalization, and the complex normalization is unique (our own). Thus the fourth point belongs to that circle exactly when its normalized image is real, since that image differs from ∞ (our own).
 
 **nLab:** [Moebius transformation](https://ncatlab.org/nlab/show/Moebius+transformation). It says: “it turns out that the cross-ratio of a 4-tuple is a real number if and only if the four points lie on a circle (or a line which is a circle passing through ∞).”
 
@@ -647,7 +647,7 @@
 
 **Problem.** Möbius maps preserve the cross-ratio.
 
-**How the definition helps.** The normalization definition makes invariance a consequence of uniqueness. After applying a Möbius map M, precompose the original normalization with M⁻¹. The fourth point then has the same image. This is our own argument. The work is in proving that three-point normalization exists and is unique and that it gives the usual formula.
+**How the definition helps.** Uniqueness gives the normalization after applying any Möbius map M (our own). Compose the original normalization with M⁻¹ to send the transformed triple to 0, 1 and ∞ (our own). The transformed fourth point then has the same normalized image (our own).
 
 **nLab:** [Moebius transformation](https://ncatlab.org/nlab/show/Moebius+transformation). It says: “This motivates the following definition: given a 4-tuple (a, b, c, d) of distinct points in ℙ¹(k), its cross-ratio is”
 
@@ -661,34 +661,15 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 51F05 (Absolute planes in metric geometry), 51M05. arXiv math.MG. Level 2: later undergraduate.
 
-**Definition.** Absolute (or neutral) geometry is Euclidean geometry with the parallel postulate and all its alternatives removed. Traditionally it uses only Euclid's first four postulates, or modern equivalents such as Hilbert's axioms without the parallel axiom.
+**Definition.** In Hilbert’s formulation, absolute geometry uses the incidence, order, congruence and continuity axioms for the plane. It leaves the parallel axiom open.
 
-**Problem.** Every theorem of absolute geometry holds in both Euclidean and hyperbolic geometry. Examples are the exterior angle theorem and the Saccheri–Legendre theorem: the angle sum of a triangle is at most π.
+**Problem.** Every theorem of absolute geometry holds in both Euclidean and hyperbolic geometry. Examples include the exterior angle theorem and the Saccheri–Legendre bound of π on a triangle’s angle sum.
 
-**How the definition helps.** Naming the common part of the two geometries lets each of its theorems be proved once for both. Euclid's first 28 propositions and Proposition 31 avoid the parallel postulate, so they belong here. The bound π is the sharpest one possible without choosing a side, since Euclidean triangles reach it and hyperbolic triangles fall short (our own point).
+**How the definition helps.** Euclidean and hyperbolic planes satisfy the stated axioms, so every consequence holds in both (our own). The continuity assumptions here include the Archimedean axiom used for the angle-sum bound (our own).
 
 **Wikipedia:** [Absolute geometry](https://en.wikipedia.org/wiki/Absolute_geometry). It says: “The theorems of absolute geometry hold in hyperbolic geometry, which is a non-Euclidean geometry, as well as in Euclidean geometry.”
 
 **Sources:** none listed. No primary source with a working link was found.
-
-### Pasch's axiom supplies the order facts that Euclid used without stating
-
-**Remember:** A line that enters a triangle must also leave it.
-
-*Rules out counterexamples.* MSC 51F05 (Absolute planes in metric geometry), 51M05. arXiv math.MG. Level 2: later undergraduate.
-
-**Definition.** Let A, B, C be three points not on one line, and let a line a in their plane miss all three. Pasch's axiom says that if a meets the segment AB, then it also meets BC or AC.
-
-**Problem.** Pasch's axiom cannot be derived from Euclid's postulates. With it, the order facts that Euclid read off his figures, such as which side of a line a point lies on, become deductions.
-
-**How the definition helps.** Making the axiom explicit turns Euclid's diagram-based steps into real deductions. Pasch found its essential role in 1882 and brought order (betweenness) into the axioms. Hilbert put it into his group of order axioms; other systems derive it from a plane separation axiom.
-
-**Wikipedia:** [Pasch's axiom](https://en.wikipedia.org/wiki/Pasch%27s_axiom). It says: “In geometry, Pasch's axiom is a statement in plane geometry, used implicitly by Euclid, which cannot be derived from the postulates as Euclid gave them.”
-
-**Sources:**
-
-- [M. Pasch, Vorlesungen über neuere Geometrie, Teubner, Leipzig (1882; 2nd edition 1912)](http://quod.lib.umich.edu/cgi/t/text/text-idx?c=umhistmath;idno=ABV7607)
-- [V. Pambuccian, Why did Euclid not need the Pasch axiom?, Journal of Geometry 115 (2024)](https://doi.org/10.1007/s00022-024-00712-x)
 
 ### Conjugation gives the product of two plane reflections
 
@@ -780,7 +761,7 @@
 
 *True by definition.* MSC 51F25 (Orthogonal and unitary groups in metric geometry), 20G20. arXiv math.MG, math.RA. Level 2: later undergraduate.
 
-**Definition.** A quaternion has a real part and a three-dimensional vector part. A unit quaternion q acts on a vector v by qvq⁻¹, treating v as a quaternion with real part zero. For q = cos(θ/2) + sin(θ/2)u with unit vector u, this action turns through angle θ about u. Another representation uses orthogonal matrices with determinant one.
+**Definition.** A unit quaternion q rotates a vector v by qvq⁻¹, treating v as a quaternion with zero real part. For unit axis u and angle θ, the representing quaternion is cos(θ/2) + u sin(θ/2).
 
 **Problem.** For two rotations given by unit quaternions q and p, the product pq represents the rotation that applies q first. Unless it is the identity, the product’s vector part points along its axis.
 
@@ -800,7 +781,7 @@
 
 **Problem.** Take four distinct points P₁, P₂, P₃, P₄ with no three on a line. They lie on one circle exactly when the directed angle from P₃P₁ to P₃P₂ equals the directed angle from P₄P₁ to P₄P₂.
 
-**How the definition helps.** Directed angles merge the two ordinary-angle cases into one equality. With ordinary angles, the angles at P₃ and P₄ must be equal if the points lie on the same side of line P₁P₂, and must add to 180° if they lie on opposite sides. In the second case the directed turns differ by 180°, so counting modulo 180° makes them equal (our own explanation). The geometric work stays in the inscribed-angle theorem and its converse.
+**How the definition helps.** Directed angles merge the two ordinary-angle cases into one equality (our own explanation). On the same side of P₁P₂, the ordinary angles must agree. On opposite sides, they must sum to 180°, so their signed turns agree modulo 180°. The inscribed-angle theorem and its converse give the criterion.
 
 **Wikipedia:** [Ellipse](https://en.wikipedia.org/wiki/Ellipse), [Inscribed angle](https://en.wikipedia.org/wiki/Inscribed_angle). It says: “The four points are on a circle, if and only if the angles at P₃ and P₄ are equal.”
 
@@ -830,11 +811,11 @@
 
 *True by definition. Confidence: medium.* MSC 51M04 (Elementary problems in Euclidean geometries), 01A20. arXiv math.HO, math.MG. Level 2: later undergraduate.
 
-**Definition.** For positive magnitudes a, b, c and d, Eudoxus defines a : b = c : d to mean that, for all positive integers m and n, ma compares with nb in the same way as mc with nd. The comparison is less than, equal to or greater than. Unlike a definition by a common measuring unit, this works for magnitudes with no common unit.
+**Definition.** Take four positive magnitudes a, b, c, d, with a comparable to b and c comparable to d. Their ratios agree if every pair of positive integers m, n gives the same comparison for ma versus nb and mc versus nd. Each comparison gives &lt;, = or &gt;.
 
 **Problem.** Triangles with the same height have areas in the same ratio as their bases. This is Book VI, Proposition 1 of Euclid’s Elements.
 
-**How the definition helps.** Eudoxus's definition reduces the ratio claim to comparing whole-number multiples of bases and areas. Triangles on m copies and n copies of the two bases, with the same height, have m and n times the original areas. The longer base gives the larger area and equal bases give equal areas, which is exactly the definition of equal ratios (our own reading of Euclid's proof). A proof by common measuring units would not cover all pairs of bases.
+**How the definition helps.** Whole-number comparisons suffice by Eudoxus’s definition (our own reading). At fixed height, placing m equal bases end to end multiplies the triangle’s area by m, by additivity and equal-base equality. Thus each comparison of multiplied bases gives the same comparison of multiplied areas.
 
 **Wikipedia:** [Eudoxus of Cnidus](https://en.wikipedia.org/wiki/Eudoxus_of_Cnidus). It says: “This means that a/b = c/d if and only if the ratios n/m that are larger than a/b are the same as the ones that are larger than c/d, and likewise for "equal" and "smaller".”
 
@@ -882,11 +863,11 @@
 
 *Rules out counterexamples.* MSC 51M05 (Euclidean geometries (general) and generalizations), 51F05. arXiv math.MG. Level 2: later undergraduate.
 
-**Definition.** Hilbert's axiom groups for plane geometry include incidence, order, congruence, parallels, and continuity. The continuity group holds Archimedes' axiom and an axiom of line completeness. Together they say a line has no gaps, like the real numbers.
+**Definition.** A line is Dedekind complete if every nonempty set of its coordinates with an upper bound has a least upper bound.
 
-**Problem.** With the continuity axioms, the two circles in Euclid's first proposition meet. So an equilateral triangle can be built on any segment.
+**Problem.** In a Euclidean plane with complete coordinate lines, the two circles in Euclid’s first proposition meet. An equilateral triangle exists on every nonzero segment.
 
-**How the definition helps.** An axiom of continuity makes the circle-circle intersection a theorem, not a hidden assumption. The plane of rational points satisfies the incidence and order axioms, but in it the unit circles about (0, 0) and (1, 0) do not meet (our own example). Their meeting points would need the coordinate √3/2, which is not rational.
+**How the definition helps.** Completeness gives the positive square root of 3, which the rational line lacks (our own example). Choose coordinates making the segment endpoints (0, 0) and (1, 0). The point (1/2, √3/2) then has distance 1 from both endpoints.
 
 **Wikipedia:** [Euclidean geometry](https://en.wikipedia.org/wiki/Euclidean_geometry), [Hilbert's axioms](https://en.wikipedia.org/wiki/Hilbert%27s_axioms). It says: “His axioms, however, do not guarantee that the circles actually intersect, because they do not assert the geometrical property of continuity, which in Cartesian terms is equivalent to the completeness property of the real numbers.”
 
@@ -902,9 +883,9 @@
 
 **Definition.** An ideal vertex of a hyperbolic triangle is a point at infinity where two sides are limiting parallel: they get arbitrarily close but never meet. The angle at an ideal vertex is defined to be zero.
 
-**Problem.** In the hyperbolic plane of curvature −1, a triangle with angles A, B, C, ideal vertices allowed, has area π − A − B − C. So the ideal triangle, with three zero angles, has the maximal area π.
+**Problem.** In the hyperbolic plane of curvature −1, the area of a triangle with angles A,B,C is π−A−B−C, including triangles with ideal vertices. Three ideal vertices give the maximum area π.
 
-**How the definition helps.** Counting vertices at infinity, with angle zero, makes the bound π an attained maximum. Without them, area is bounded by π but no triangle reaches it. The area formula comes from Gauss–Bonnet or from Lambert's original argument.
+**How the definition helps.** Counting vertices at infinity, with angle zero, makes the bound π an attained maximum (our own explanation). Without them, every angle is positive. The area formula comes from Gauss–Bonnet.
 
 **Wikipedia:** [Hyperbolic triangle](https://en.wikipedia.org/wiki/Hyperbolic_triangle). It says: “The definition of a triangle can be generalized, permitting vertices on the ideal boundary of the plane while keeping the sides within the plane.”
 
@@ -932,7 +913,7 @@
 
 *True by definition.* MSC 51M09 (Elementary problems in hyperbolic and elliptic geometries), 51M10. arXiv math.MG. Level 2: later undergraduate.
 
-**Definition.** In the Beltrami–Klein disk model, points lie inside a disk and lines are its open chords. Distance comes from a ratio of distances to the boundary along each chord. In the Poincaré disk model, most lines are circular arcs that meet the boundary at right angles.
+**Definition.** In the Beltrami–Klein model, points are the interior points of a Euclidean disk. Lines are the open chords joining distinct boundary points.
 
 **Problem.** Through a point off a given line, infinitely many lines miss the given line in the hyperbolic plane.
 
@@ -946,7 +927,7 @@
 
 ### Moving a boundary endpoint to infinity straightens hyperbolic geodesics
 
-**Remember:** Send a boundary endpoint to infinity and a geodesic becomes vertical.
+**Remember:** Generalized circles include lines, so perpendicular boundary arcs include vertical geodesics.
 
 *Makes the theorem clean to state or prove.* MSC 51M09 (Elementary problems in hyperbolic and elliptic geometries), 51B10. arXiv math.MG. Level 2: later undergraduate.
 
@@ -962,13 +943,13 @@
 
 ### Proper spherical triangles keep sides and angles below π for polar duality
 
-**Remember:** Short sides, small angles, and every spherical rule applies.
+**Remember:** Choose short arcs, small angles, and poles facing the opposite vertices.
 
 *Rules out counterexamples. Confidence: medium.* MSC 51M09 (Elementary problems in hyperbolic and elliptic geometries), 51M10. arXiv math.MG. Level 2: later undergraduate.
 
-**Definition.** A proper spherical triangle has three vertices on the sphere joined by great-circle arcs, with every side and every angle less than π. Its polar triangle has as vertices the poles of the three side circles, on the same side as the opposite vertex.
+**Definition.** On the unit sphere, a proper triangle joins three vertices off a common great circle by shorter great-circle arcs and takes interior angles below π. Its polar vertices are the poles of the side circles on the same side as the respective opposite vertices.
 
-**Problem.** For a proper spherical triangle, 0 &lt; a + b + c &lt; 2π and π &lt; A + B + C &lt; 3π. Its polar triangle is again proper, with angles π − a, π − b, π − c and sides π − A, π − B, π − C.
+**Problem.** For a proper spherical triangle, the perimeter lies strictly between 0 and 2π, and the angle sum lies strictly between π and 3π. Its polar is proper, with angles π−a, π−b, π−c and opposite sides π−A, π−B, π−C.
 
 **How the definition helps.** The convention picks one triangle out of the several regions that three great circles cut out. Then the bounds hold and the polar triangle is again proper. So any identity for one triangle gives a dual identity by replacing A with π − a and a with π − A. Without the convention, the same three points bound triangles with a side longer than π, and the formulas need case changes (our own point).
 
@@ -1034,9 +1015,9 @@
 
 **Definition.** The elliptic plane is the sphere with each pair of antipodal (opposite) points made into one point. Its lines are the great circles, each counted once. Distance is the smaller angle between the corresponding lines through the centre.
 
-**Problem.** In the elliptic plane, any two distinct points lie on exactly one line, and any two lines meet in exactly one point.
+**Problem.** In the elliptic plane, any two distinct points lie on exactly one line, and any two distinct lines meet in exactly one point.
 
-**How the definition helps.** Gluing antipodal points removes the only pairs of points that lie on many great circles. On the sphere, two antipodal points lie on infinitely many great circles, so Euclid's first postulate fails there. The elliptic plane has no parallel lines, so it is a model where the parallel postulate fails. It is the real projective plane, so it is not orientable.
+**How the definition helps.** Each elliptic point represents a line through the sphere’s centre, and each elliptic line represents a plane through the centre (our own explanation). Two distinct such lines span exactly one plane. Two distinct such planes intersect in exactly one line.
 
 **Wikipedia:** [Elliptic geometry](https://en.wikipedia.org/wiki/Elliptic_geometry). It says: “For example, the first and fourth of Euclid's postulates, that there is a unique line between any two points and that all right angles are equal, hold in elliptic geometry.”
 
@@ -1050,7 +1031,7 @@
 
 **Definition.** An Archimedean solid is a convex polyhedron with regular faces whose symmetry group maps every vertex to every other vertex. This property is called vertex-transitive. The definition leaves out the Platonic solids, prisms and antiprisms.
 
-**Problem.** There are exactly thirteen Archimedean solids.
+**Problem.** Up to similarity, there are exactly thirteen Archimedean solids.
 
 **How the definition helps.** The global symmetry condition leaves out a solid that only looks the same at every vertex. The elongated square gyrobicupola has one triangle and three squares at every vertex, like the rhombicuboctahedron, but it is not vertex-transitive. Grünbaum showed that many authors gave the local definition but listed only thirteen solids.
 
@@ -1066,7 +1047,7 @@
 
 *True by definition.* MSC 51N10 (Affine analytic geometry), 08B99. arXiv math.MG, math.CT. Level 2: later undergraduate.
 
-**Definition.** One definition of an affine space gives, for each list of field elements summing to 1, an operation that combines a matching list of points. A weight of 1 on one point selects that point, and combinations of combinations multiply out. The other definition has a vector space acting by translations, with exactly one translation sending any point to any other.
+**Definition.** An affine space over a field is a nonempty set with an operation Cᵣ for every finite nonempty weight list r summing to one. A unit weight vector selects its indexed point. For every list x and compatible weight lists, Cᵣ(Cₛ₁(x), …, Cₛₙ(x)) equals Cₜ(x), where tⱼ = ∑ᵢ rᵢsᵢⱼ.
 
 **Problem.** For any finite list of points and weights summing to 1, their weighted combination, or barycentre, is unique and needs no choice of origin.
 
@@ -1100,7 +1081,7 @@
 
 *True by definition.* MSC 51N10 (Affine analytic geometry), 51M04. arXiv math.MG. Level 2: later undergraduate.
 
-**Definition.** Define an ellipse as the image of the unit circle under an invertible affine map x ↦ Ax + b. Alternatively, define it by requiring the sum of distances to two fixed points to stay constant.
+**Definition.** An ellipse is the image of the unit circle under an invertible affine map x ↦ Ax + b.
 
 **Problem.** The midpoints of all parallel chords in a given direction in an ellipse lie on a line through its centre.
 
@@ -1122,7 +1103,7 @@
 
 **Problem.** The four tangents at the ends of any two conjugate diameters of an ellipse bound a parallelogram of area 4ab. Here a and b are the semi-axis lengths.
 
-**How the definition helps.** The affine-image definition sends each unit-circle tangent square, of area 4, to a parallelogram of area 4ab, since the stretch by factors a and b multiplies areas by ab (our own calculation). Affine maps preserve parallel chords, midpoints and tangent lines. So they carry perpendicular circle diameters to conjugate ellipse diameters, and the inverse map gives the converse. The work lies in matching the descriptions of ellipses and conjugate diameters.
+**How the definition helps.** Stretching the unit circle along its axes by a and b multiplies every area by ab (our own calculation). The stretch and its inverse preserve tangents, midpoints and parallelism, so conjugate diameters correspond exactly to perpendicular circle diameters. Their four tangents bound a square of area 4 before the stretch and a parallelogram of area 4ab afterward.
 
 **Wikipedia:** [Ellipse](https://en.wikipedia.org/wiki/Ellipse). It says: “The parallelogram of tangents adjacent to the given conjugate diameters has the Area₁₂ = 4ab.”
 
@@ -1182,11 +1163,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 51N15 (Projective analytic geometry), 14H50. arXiv math.MG, math.AG. Level 2: later undergraduate.
 
-**Definition.** A non-degenerate conic is a set of points of the real projective plane. Their homogeneous coordinates satisfy a quadratic equation with an invertible symmetric matrix. The set must also have at least one real point.
+**Definition.** A real nondegenerate conic with real points consists of all projective points \[x\] satisfying xᵀQx = 0 for some fixed invertible symmetric real matrix Q. Its point set must be nonempty.
 
 **Problem.** A projective transformation carries any non-degenerate conic in the real projective plane to any other. Once a line at infinity is chosen, the conic is an ellipse, parabola or hyperbola as it misses, touches or crosses that line.
 
-**How the definition helps.** In the projective plane, the differences between the three types disappear. The two branches of a hyperbola join through two points at infinity, and a parabola closes up by touching the line at infinity. So one can speak of a conic without a type, and the type returns only when one line is chosen as the line at infinity.
+**How the definition helps.** One homogeneous equation describes all three affine types (our own explanation). Sylvester’s law of inertia reduces each indefinite Q, up to overall sign, to the same diagonal form. Choosing the line at infinity distinguishes the types by its intersections with the conic.
 
 **Wikipedia:** [Conic section](https://en.wikipedia.org/wiki/Conic_section). It says: “By extending the Euclidean plane to include a line at infinity, obtaining a projective plane, the apparent difference vanishes”
 
@@ -1214,11 +1195,11 @@
 
 *True by definition.* MSC 51N15 (Projective analytic geometry), 51A05. arXiv math.MG, math.AG. Level 2: later undergraduate.
 
-**Definition.** A projective point is a one-dimensional subspace of a vector space. In the projective plane from k³, a projective line consists of the points inside a two-dimensional subspace. Another construction adds one point at infinity for each direction in the affine plane.
+**Definition.** In the projective plane over a field k, points are the one-dimensional subspaces of k³. Each two-dimensional subspace defines a line consisting of all points it contains.
 
 **Problem.** Any two distinct lines of a projective plane over a field meet in exactly one point.
 
-**How the definition helps.** Our own proof reads the intersection of projective lines from the intersection of two vector subspaces. Two distinct two-dimensional subspaces span k³, so their intersection has dimension 2 + 2 − 3 = 1. This is one projective point. The work lies in the dimension formula and in identifying the subspace model with the plane built using points at infinity. The points-at-infinity construction instead has separate cases for crossing lines, parallel lines and the line at infinity.
+**How the definition helps.** Intersecting two projective lines amounts to intersecting their two-dimensional subspaces (our own proof). Distinct such subspaces span k³, so their intersection has dimension 2 + 2 − 3 = 1. This is exactly one projective point.
 
 **Wikipedia:** [Projective space](https://en.wikipedia.org/wiki/Projective_space). It says: “For example, in affine geometry, two distinct lines in a plane intersect in at most one point, while, in projective geometry, they intersect in exactly one point.”
 
@@ -1230,7 +1211,7 @@
 
 *True by definition.* MSC 51N15 (Projective analytic geometry), 51A50. arXiv math.MG, math.AG. Level 2: later undergraduate.
 
-**Definition.** Represent a point of the real projective plane by a nonzero vector up to scaling. Write a nonsingular conic with real points as xᵀMx = 0, with M symmetric and invertible. The polar of a point represented by p is the line pᵀMx = 0. A geometric construction uses the contact points of tangents from an exterior point.
+**Definition.** Represent each real projective point by a nonzero vector up to scaling. For a conic xᵀMx = 0 with M symmetric and invertible, the polar of \[p\] is the line pᵀMx = 0.
 
 **Problem.** La Hire’s theorem says that P lies on the polar of Q exactly when Q lies on the polar of P.
 
@@ -1260,7 +1241,7 @@
 
 ### The inverse conic matrix describes all its tangents
 
-**Remember:** The point equation uses Q, and the tangent equation uses its inverse.
+**Remember:** Read a line’s coefficients as the coordinates of its dual point.
 
 *Makes the theorem clean to state or prove.* MSC 51N15 (Projective analytic geometry), 51N35. arXiv math.MG. Level 2: later undergraduate.
 
@@ -1292,9 +1273,9 @@
 
 ### When do the three diagonal points lie on one line?
 
-**Remember:** The diagonal points become collinear exactly when two equals zero.
+**Remember:** Pair the four points and intersect the two joining lines to get a diagonal point.
 
-*Rules out counterexamples.* MSC 51N15 (Projective analytic geometry), 51A05. arXiv math.MG. Level 2: later undergraduate.
+*True by definition.* MSC 51N15 (Projective analytic geometry), 51A05. arXiv math.MG. Level 2: later undergraduate.
 
 **Definition.** Take four points in a projective plane over a field, with no three on a line. Each way of pairing the points gives two joining lines. Their intersection is a diagonal point of the four points.
 
@@ -1316,7 +1297,7 @@
 
 **Problem.** Any five distinct points of the real projective plane lie on a conic. When no three are collinear, the conic is unique and nonsingular.
 
-**How the definition helps.** Each point gives one homogeneous linear condition on the six coefficients, so five conditions leave a nonzero solution (our own). For uniqueness, the product of two lines through four of the points vanishes there but not at the fifth, and this shows the five conditions are independent. A singular real conic lies in at most two real lines, which cannot contain five points with no three collinear.
+**How the definition helps.** Five point conditions give five homogeneous linear equations in six coefficients, so a nonzero solution exists (our own). When no three points are collinear, pair four points and multiply the equations of their two joining lines. The product vanishes at those four but misses the fifth, so each condition is independent and the solution is unique up to scale. A singular real conic lies in at most two lines, which cannot cover all five points.
 
 **Wikipedia:** [Five points determine a conic](https://en.wikipedia.org/wiki/Five_points_determine_a_conic). It says: “Indeed, given any five points there is a conic passing through them, but if three of the points are collinear the conic will be degenerate (reducible, because it contains a line), and may not be unique”
 
@@ -1338,37 +1319,17 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
-### Projective spaces of dimension three or more come from skew fields
-
-**Remember:** From three dimensions up, the axioms force coordinates from a skew field.
-
-*Rules out counterexamples.* MSC 51A30 (Desarguesian and Pappian geometries), 51A25, 12K05. arXiv math.CO, math.RA. Level 3: graduate.
-
-**Definition.** A projective space is a set of points with lines, where two points lie on exactly one line. Every line has at least three points, and two lines in a common plane meet. Its dimension is one less than the least number of points that span it. A skew field is a ring in which every nonzero element has an inverse, but multiplication need not commute.
-
-**Problem.** Veblen–Young theorem: every projective space of dimension at least 3 is the space of lines through the origin of a vector space over a skew field.
-
-**How the definition helps.** The condition on dimension removes the only bad cases, so the axioms alone give coordinates. In dimension 2 there are planes that come from no skew field, such as the Moulton plane, where Desargues's theorem fails. In dimension 3 and higher, Desargues's theorem follows from the axioms by using a point outside the plane (our own summary). The hard work is to build the skew field from the points and lines.
-
-**Wikipedia:** [https://en.wikipedia.org/wiki/Non-Desarguesian<sub>plane</sub>](https://en.wikipedia.org/wiki/https%3A//en.wikipedia.org/wiki/Non-Desarguesian_plane). It says: “The theorem of Desargues is true in all projective spaces of dimension not 2; in other words, the only projective spaces of dimension not equal to 2 are the classical projective geometries over a field (or division ring).”
-
-**Paper or page:** [Interaction between skew-representability, tensor products, extension properties, and rank inequalities](https://arxiv.org/abs/2507.10709). It says: “Any projective space of dimension at least 3 is isomorphic to a projective space defined over a skew field.”
-
-**Sources:**
-
-- [Kristóf Bérczi, Boglárka Gehér, András Imolay, László Lovász, Carles Padró, Tamás Schwarcz, Interaction between skew-representability, tensor products, extension properties, and rank inequalities, arXiv:2507.10709 (2025)](https://arxiv.org/abs/2507.10709)
-
 ### Hermitian forms make Möbius maps preserve generalized circles
 
 **Remember:** A Möbius map changes the matrix of the form and preserves its determinant sign.
 
 *True by definition.* MSC 51B10 (Möbius geometries), 30C20. arXiv math.CV, math.MG. Level 3: graduate.
 
-**Definition.** Represent a point of the Riemann sphere by a nonzero vector w in ℂ², up to scaling. A generalized circle is the set where w\*Hw = 0, for a two-by-two Hermitian matrix H with det H &lt; 0. Here w\* is the conjugate transpose, and Hermitian means H\* = H. The usual definition lists ordinary circles and straight lines completed by ∞.
+**Definition.** Represent each point of the Riemann sphere by a nonzero vector w in ℂ² up to scaling. A generalized circle is the zero set of w\*Hw for a Hermitian matrix H with negative determinant. The star denotes conjugate transpose, and Hermitian means H\* = H.
 
 **Problem.** A Möbius map sends every generalized circle to a generalized circle.
 
-**How the definition helps.** The form definition makes the image another zero set of the same kind. Let G be an invertible matrix for the inverse map. Substitution gives the Hermitian matrix G\*HG, whose determinant is \|det G\|² det H and remains negative. This determinant check is our own calculation. Completing the square in an ordinary coordinate shows why the zero sets are exactly circles and lines completed by ∞.
+**How the definition helps.** Substituting the inverse Möbius matrix G gives another Hermitian matrix G\*HG (our own calculation). Its determinant equals \|det G\|² det H, so it remains negative. Completing the square identifies these zero sets with circles and with lines completed by ∞.
 
 **Wikipedia:** [Generalised circle](https://en.wikipedia.org/wiki/Generalised_circle). It says: “apply the inverse of the Möbius transformation 𝔊 = ℌ⁻¹ to the vector z in the implicit equation”
 
@@ -1376,7 +1337,7 @@
 
 ### Thickness excludes finite generalized pentagons
 
-**Remember:** Ordinary pentagons are too thin for the finite classification.
+**Remember:** Thickness requires at least three neighbors at every point and every line.
 
 *Rules out counterexamples.* MSC 51E12 (Generalized quadrangles and generalized polygons in finite geometry). arXiv math.CO. Level 3: graduate.
 
@@ -1398,11 +1359,11 @@
 
 *True by definition.* MSC 51E24 (Buildings and the geometry of diagrams). arXiv math.GR. Level 3: graduate.
 
-**Definition.** A building consists of chambers, its basic pieces, with specified types of adjacency. Its Weyl distance labels each ordered chamber pair by an element of a group generated by reflections. A gallery walks between adjacent chambers and records one generator per step. Word length counts the fewest generators needed to express a group element.
+**Definition.** For chambers A,B write w = δ(A,B) in a Coxeter system (W,S) with word length ℓ, requiring w = 1 exactly when A = B. For s ∈ S, each s-neighbor C of A satisfies δ(C,B) ∈ {w,sw}, necessarily sw if ℓ(sw)&gt;ℓ(w). For every A,B,s some s-neighbor C satisfies δ(C,B)=sw, where s-neighbors have Weyl distance s.
 
 **Problem.** The shortest gallery length is the word length of the Weyl distance. Every reduced expression, meaning a shortest generator word, is realized by a gallery.
 
-**How the definition helps.** In our own proof, the distance axioms turn each chamber step into a change of word length by at most one. This bounds gallery length from below. The existence axiom supplies a step removing the first generator of any shortest expression. Repeating reaches the destination in exactly the required number of steps. The equivalence with the geometric definition using overlapping copies of a reflection arrangement carries the work.
+**How the definition helps.** Each gallery step changes word length by at most one, so reaching the target requires at least ℓ(w) steps (our own proof). For any reduced expression of w, the existence axiom supplies a step removing its first generator. Repeat until the distance is 1 and the target chamber is reached.
 
 **nLab:** [building](https://ncatlab.org/nlab/show/building). It says: “If in addition l<sub>S</sub>(sw) = l<sub>S</sub>(w) + 1, then δ(C, B) = sw.”
 
@@ -1432,7 +1393,7 @@
 
 *True by definition. Confidence: medium.* MSC 51F30 (Lipschitz and coarse geometry of metric spaces), 54E35. arXiv math.MG. Level 3: graduate.
 
-**Definition.** The tight span of a metric space X consists of the pointwise minimal functions f with f(x) + f(y) ≥ d(x,y) for all x, y. It has the supremum distance, and each point x embeds as the function d(x,·). The other definition is the injective hull, the smallest space containing X in which short maps always extend.
+**Definition.** For a metric space (X,d), consider real functions on X satisfying f(x) + f(y) ≥ d(x,y) for every x,y. Its tight span consists of the pointwise minimal such functions, with supremum distance. Each x embeds as the function d(x,·).
 
 **Problem.** A short map, one that does not increase distances, from the tight span to itself that fixes each point of X is the identity.
 
@@ -1448,11 +1409,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 51F30 (Lipschitz and coarse geometry of metric spaces), 20F65. arXiv math.MG, math.GR. Level 3: graduate.
 
-**Definition.** A quasi-isometry is a map f between metric spaces that distorts distances by at most a factor A ≥ 1 plus B ≥ 0. In symbols, d(x,y)/A − B ≤ d(f(x),f(y)) ≤ A·d(x,y) + B. Also, every point of the target must lie within B of the image. The definition ignores all detail at bounded scale.
+**Definition.** A map f between metric spaces is a quasi-isometry if some constants A ≥ 1 and B ≥ 0 satisfy two conditions. For all x,y in the domain, d(x,y)/A − B ≤ d(f(x),f(y)) ≤ A·d(x,y) + B. Every target point lies within B of some image point.
 
 **Problem.** Švarc–Milnor lemma: let G act by isometries on a proper geodesic space X, properly discontinuously and with compact quotient. Then G is finitely generated and quasi-isometric to X.
 
-**How the definition helps.** Quasi-isometry ignores the gap between a discrete group and a continuous space, so the comparison has a short proof. Take a bounded set whose translates cover X (our own). The group elements that move it to a translate meeting it generate G, and word length then matches distance in X up to constants (our own). For example, the fundamental group of a closed hyperbolic surface is quasi-isometric to the hyperbolic plane.
+**How the definition helps.** The bounded error lets the orbit map compare a word metric on G with distance in X (our own explanation). Compact quotient puts every point within bounded distance of an orbit. The Švarc–Milnor lemma supplies finite generation and the two distance bounds.
 
 **Wikipedia:** [Quasi-isometry](https://en.wikipedia.org/wiki/Quasi-isometry), [Hyperbolic group](https://en.wikipedia.org/wiki/Hyperbolic_group). It says: “More generally, the Švarc–Milnor lemma states that if a group G acts properly discontinuously with compact quotient on a proper geodesic space X then G is quasi-isometric to X (meaning that any Cayley graph for G is).”
 
@@ -1466,11 +1427,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 51F99 (Metric geometry). arXiv math.MG. Level 3: graduate.
 
-**Definition.** A geodesic space has shortest paths between every pair of points. It is CAT(0) if each shortest-path triangle has internal distances no greater than those in a Euclidean triangle with matching side lengths. This defines nonpositive curvature using distances instead of derivatives.
+**Definition.** A geodesic metric space is CAT(0) if every geodesic triangle satisfies Euclidean comparison. Distances between any two side points cannot exceed distances between their counterparts in the Euclidean triangle with matching side lengths. Corresponding points have the same distances along corresponding sides from matching endpoints.
 
 **Problem.** If a real normed vector space with its norm distance is CAT(0), its norm comes from an inner product.
 
-**How the definition helps.** In our own proof, triangle comparison turns a geometric curvature condition into an inequality for lengths of sums and differences. Apply comparison at the midpoint of the segment joining two vectors, using zero as the third vertex. This gives one direction of the parallelogram identity. Applying the same inequality to the sum and difference gives the reverse direction. The Jordan–von Neumann theorem recovers the inner product from that identity.
+**How the definition helps.** Euclidean comparison at the midpoint of \[x,y\], with third vertex 0, gives ‖x+y‖² + ‖x−y‖² ≤ 2‖x‖² + 2‖y‖² (our own proof). Substituting x+y and x−y gives the reverse inequality. The resulting parallelogram identity gives an inner product by the Jordan–von Neumann theorem.
 
 **Wikipedia:** [CAT(k) space](https://en.wikipedia.org/wiki/CAT%28k%29_space). It says: “if a real normed vector space is a CAT(k) space for some real k, then it is an inner product space.”
 
@@ -1484,9 +1445,9 @@
 
 *Rules out counterexamples.* MSC 51F99 (Metric geometry). arXiv math.MG. Level 3: graduate.
 
-**Definition.** A metric space is hyperconvex if every family of closed balls satisfying the following pairwise bound has a common point. Each center distance must be at most the sum of the corresponding radii. A Rips face at scale r is a group of sites with all pairwise distances at most r. A Čech face requires their closed balls of radius r/2 in the ambient space to share a point.
+**Definition.** A metric space is hyperconvex if every family of closed balls has a common point whenever d(xᵢ,xⱼ) ≤ rᵢ + rⱼ for every pair. Here xᵢ and rᵢ denote centers and radii. At scale r, Rips faces require pairwise distances ≤ r, while Čech faces require a common point in the ambient closed balls of radius r/2.
 
-**Problem.** For any finite set of sites in a hyperconvex space and any r ≥ 0, the Rips complex and the Čech complex at scale r are equal.
+**Problem.** At every scale r ≥ 0, any finite set of sites in a hyperconvex space has identical Rips and Čech complexes.
 
 **How the definition helps.** Hyperconvexity turns the pairwise bounds for a Rips face into the common point required for a Čech face. Our own reverse argument uses the triangle inequality through that common point. Without hyperconvexity, the three vertices of a Euclidean equilateral triangle of side r &gt; 0 give a Rips face. Their closed balls of radius r/2 have no common point.
 
@@ -1515,7 +1476,7 @@
 
 ### Simple connectedness excludes flat cylinders
 
-**Remember:** Local flatness cannot see a loop around a cylinder.
+**Remember:** Contract every loop so comparison on the universal cover holds downstairs.
 
 *Rules out counterexamples.* MSC 51F99 (Metric geometry). arXiv math.MG. Level 3: graduate.
 
@@ -1523,7 +1484,7 @@
 
 **Problem.** A complete, simply connected, locally CAT(0) length space is CAT(0) everywhere.
 
-**How the definition helps.** Simple connectedness lets the global comparison theorem for the universal cover apply to the space itself. The universal cover is the simply connected space that locally copies the original space. The metric Cartan–Hadamard theorem proves triangle comparison on this cover. In our own example, opposite points on a circle around a flat cylinder have two shortest paths. CAT(0) comparison forces shortest paths to be unique.
+**How the definition helps.** Simple connectedness identifies the space with its universal cover, where the metric Cartan–Hadamard theorem gives global comparison. On a flat cylinder, opposite points on a circular cross section admit two shortest paths (our own example). CAT(0) comparison requires uniqueness, so the cylinder fails global comparison.
 
 **Paper or page:** [A Gentle Introduction to CAT(0) Spaces](https://arxiv.org/abs/2406.09883v1). It says: “then (X̃,d̃) is a (globally) CAT(0) space.”
 
@@ -1535,7 +1496,7 @@
 
 *True by definition.* MSC 51K05 (General theory of distance geometry). arXiv math.MG. Level 3: graduate.
 
-**Definition.** A correspondence pairs points of two spaces so that every point has a partner. Its distortion is the supremum of the absolute changes in pairwise distance. Gromov–Hausdorff distance is half the infimum of these distortions. Equivalently, embed both spaces without changing distances and minimize how far their points lie from the other space, taking an infimum.
+**Definition.** A correspondence R between nonempty compact metric spaces X,Y is a subset of X × Y projecting onto both spaces. Its distortion is the supremum of \|d(x,x′) − d(y,y′)\| over all (x,y),(x′,y′) in R. Their Gromov–Hausdorff distance is half the infimum of distortion over all correspondences.
 
 **Problem.** The diameters of two nonempty compact metric spaces differ by at most twice their Gromov–Hausdorff distance.
 
@@ -1547,15 +1508,15 @@
 
 ### Uniform covers give convergent subsequences
 
-**Remember:** A bound on size is not a bound on crowding.
+**Remember:** Bound every diameter and bound the number of covering balls at each radius.
 
 *Rules out counterexamples.* MSC 51K05 (General theory of distance geometry). arXiv math.MG. Level 3: graduate.
 
-**Definition.** A family is uniformly totally bounded if it meets two conditions. Its diameters have a common bound. At each positive radius, one finite number bounds how many balls suffice to cover any member. Gromov–Hausdorff distance measures how closely spaces can fit together inside a common metric space without changing their distances.
+**Definition.** A family of metric spaces is uniformly totally bounded if its diameters have a common finite bound and the following covering condition holds. For every ε &gt; 0 there is a finite N such that each member admits a cover by at most N balls of radius ε.
 
 **Problem.** A uniformly totally bounded family of nonempty compact metric spaces has compact closure for Gromov–Hausdorff distance.
 
-**How the definition helps.** The ball centers approximate each space by a finite set of uniformly bounded size at each scale (our own explanation). Gromov's theorem gives total boundedness of the family, and completeness of the space of compact metric spaces gives compact closure. A bound on diameters alone is not enough: finite spaces with all distances one have bounded diameter but no convergent subsequence as their size grows (our own counterexample).
+**How the definition helps.** At each radius, the centers approximate each member by a set of uniformly bounded size (our own explanation). Gromov’s compactness theorem gives total boundedness, and completeness gives compact closure. Finite spaces with all distinct points distance one have bounded diameter but no convergent subsequence as their sizes increase (our own example).
 
 **Paper or page:** [Lectures on Hausdorff and Gromov-Hausdorff Distance Geometry](https://arxiv.org/abs/2012.00756v1). It says: “There is a number D ≥ 0 and a function N : (0,∞) → ℕ such that for all X ∈ 𝒞 we have diam X ≤ D and cov(X,ε) ≤ N(ε).”
 
@@ -1563,7 +1524,7 @@
 
 ### Stating geometry in first-order logic makes it decidable
 
-**Remember:** Speak only of points, and a machine can settle every claim.
+**Remember:** Quantify over points and use only betweenness and equal distances.
 
 *Makes the theorem clean to state or prove.* MSC 51M05 (Euclidean geometries (general) and generalizations), 03C10, 03B25. arXiv math.LO, math.MG. Level 3: graduate.
 
@@ -1571,7 +1532,7 @@
 
 **Problem.** Tarski's elementary Euclidean geometry is consistent, complete and decidable. An algorithm decides, for every statement, whether it is provable or refutable.
 
-**How the definition helps.** Restricting the language to first order lets geometry be translated into the theory of real closed fields. Tarski's quantifier elimination for that theory then gives completeness and decidability. Every theorem in Book I of Euclid's Elements falls within this language. The cost is that statements about arbitrary sets of points, or about the natural numbers, cannot be made.
+**How the definition helps.** Coordinates translate first-order betweenness and equal distance into ordered field formulas (our own explanation). The real plane supplies a model, giving consistency. Tarski’s coordinatization and quantifier elimination for real closed fields give completeness and a decision procedure.
 
 **Wikipedia:** [Tarski's axioms](https://en.wikipedia.org/wiki/Tarski%27s_axioms). It says: “Using his axiom system, Tarski was able to show that the first-order theory of Euclidean geometry is consistent, complete and decidable”
 
@@ -1601,11 +1562,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 51A05 (General theory of linear incidence geometry and projective geometries), 51M35. arXiv math.MG. Level 4: research.
 
-**Definition.** A projective line in Buekenhout's sense is a set ℓ with at least 3 points, with a group Λ(p,q) of central collineations given for each pair of points p, q. These groups satisfy a few axioms. The line is Desarguesian if each Λ(p,q) acts transitively on ℓ ∖ {p,q}.
+**Definition.** Fix a projective line ℓ in Buekenhout’s sense, with its prescribed permutation groups Λ(p,q). It is Desarguesian if, for each pair (p,q), every two points outside {p,q} are related by some element of Λ(p,q).
 
 **Problem.** Every Desarguesian projective line in Buekenhout's sense comes from a division ring. So it embeds in a Desarguesian projective plane.
 
-**How the definition helps.** Buekenhout takes the central collineations as given data, so the theorem can be stated in dimension 1. In a projective plane, a central collineation fixes every point of one line and every line through one point. On a line there is no incidence structure to define them from. The coordinatization of the line still needs work.
+**How the definition helps.** The given permutation groups let transitivity express the Desarguesian condition on the line alone (our own explanation). Buekenhout’s coordinatization theorem supplies the division ring and hence the embedding.
 
 **nLab:** [projective line](https://ncatlab.org/nlab/show/projective+line). It says: “Conversely, every Desarguesian projective line arises from a division ring in this way.”
 
@@ -1619,35 +1580,17 @@
 
 *Makes the theorem clean to state or prove.* MSC 51F30 (Lipschitz and coarse geometry of metric spaces), 20F69, 20E26. arXiv math.GR, math.MG. Level 4: research.
 
-**Definition.** Coarse amenability, also called Yu's property A, is a large-scale form of amenability for metric spaces. A box space of a group G is a disjoint union of finite quotients G/Nₖ, placed far apart. Here the Nₖ form a decreasing chain of finite-index normal subgroups with trivial intersection. Coarse amenability at infinity asks for the property A estimates only outside finite sets, not on the whole space.
+**Definition.** Coarse amenability at infinity requires, for every R,ε &gt; 0, some S &gt; 0 such that every diameter bound L &gt; 0 admits a finite exceptional set K. Each finite subset outside K of diameter ≤ L must admit probability measures μₓ on that subset, one for each member x. Each μₓ is supported within S of x, and ‖μₓ−μᵧ‖₁ ≤ ε whenever d(x,y) ≤ R.
 
 **Problem.** Let G be finitely generated and residually finite, meaning its finite quotients separate its elements. Then G is coarsely amenable exactly when one box space, or equivalently every box space, is coarsely amenable at infinity.
 
-**How the definition helps.** The weaker definition asks only for local estimates, which the box space can supply whenever the group itself is coarsely amenable. Full coarse amenability is too strong, because a box space has it only when G is amenable (a known result, our own addition). For example, free groups are coarsely amenable, but their box spaces are not. The paper's work is to transfer the local estimates between the finite quotients and the group.
+**How the definition helps.** Each bounded region sufficiently far out in a box space lifts isometrically to the group (our own explanation). The order of the quantifiers allows the finite exceptions to depend on the region’s diameter. The box-space characterization theorem transfers the uniform estimates in both directions.
 
 **Paper or page:** [Coarse amenability at infinity](https://arxiv.org/abs/1812.11745v1). It says: “All (or equivalently one) box spaces of G are coarsely amenable at infinity.”
 
 **Sources:**
 
 - [Thibault Pillon, Coarse amenability at infinity, arXiv:1812.11745v1 (2018)](https://arxiv.org/abs/1812.11745v1)
-
-### Coarse cohomological dimension of metric spaces is invariant under coarse equivalence
-
-**Remember:** Measure dimension with resolutions that move data only boundedly.
-
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 51F30 (Lipschitz and coarse geometry of metric spaces), 18G20, 20J06. arXiv math.GR, math.MG. Level 4: research.
-
-**Definition.** A coarse embedding is a map between metric spaces that controls large distances in both directions, uniformly. A coarse equivalence is a coarse embedding whose image is within bounded distance of every point. Group cohomological dimension is the length of the shortest projective resolution of the trivial module. The paper defines coarse cohomological dimension of a metric space using projective resolutions over the space whose maps move data a bounded distance.
-
-**Problem.** Coarse cohomological dimension is monotone under coarse embeddings, so coarsely equivalent spaces have the same value. For a countable group, it equals the ordinary cohomological dimension whenever that is finite.
-
-**How the definition helps.** The definition uses only the metric, so a coarse embedding can act on the resolutions that compute it (our own explanation). This makes coarse invariance a statement about all metric spaces, not only groups. The paper still has to prove monotonicity, and to show that the metric definition gives the ordinary dimension for countable groups.
-
-**Paper or page:** [Coarse homological invariants of metric spaces](https://arxiv.org/abs/2411.04745v1). It says: “it is shown that coarse cohomological dimension is monotone under coarse embeddings, and hence is invariant under coarse equivalence.”
-
-**Sources:**
-
-- [Alexander Margolis, Coarse homological invariants of metric spaces, arXiv:2411.04745v1 (2024)](https://arxiv.org/abs/2411.04745v1)
 
 ### Equilateral comparisons detect diameter partitions
 
@@ -1657,9 +1600,9 @@
 
 **Definition.** A correspondence pairs points of two spaces so every point has a partner. Its distortion is the supremum of the absolute changes in pairwise distance. Gromov–Hausdorff distance is half the infimum of these distortions. An equilateral space has the same distance λ between any two distinct points.
 
-**Problem.** Let X be a bounded metric space of diameter D with at least m points, where m ≥ 2, and fix 0 &lt; λ &lt; D. Then X splits into m pieces of diameter below D exactly when its Gromov–Hausdorff distance to the m-point equilateral space with distance λ is below D/2.
+**Problem.** Let X have finite diameter D and at least m points, with m an integer ≥ 2 and 0 &lt; λ &lt; D. Write E for the m-point equilateral space of distance λ. Then X partitions into m pieces of diameter below D exactly when its Gromov–Hausdorff distance to E is below D/2.
 
-**How the definition helps.** The equilateral points serve as labels for pieces, so one distance bound tests a whole partition (our own proof). With distortion below D, the points matched to one label form a piece of diameter below D. Conversely, match each piece to its label. The error is below D within pieces, since there are finitely many, and at most max(λ, D − λ) between pieces.
+**How the definition helps.** Distortion below D makes each label’s fiber have diameter below D, since within-fiber distances are bounded by the distortion (our own proof). Assign each point one of its labels, discard empty pieces, and split pieces until there are m, possible since \|X\| ≥ m. Conversely, label a partition by its pieces. Within-piece errors have maximum below D, and between-piece errors are at most max(λ, D − λ) &lt; D.
 
 **Paper or page:** [Lectures on Hausdorff and Gromov-Hausdorff Distance Geometry](https://arxiv.org/abs/2012.00756v1). It says: “then X can be partitioned into m subsets having strictly smaller diameters if and only if”
 
@@ -1671,11 +1614,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 51M20 (Polyhedra and polytopes; regular figures, division of spaces), 55M25. arXiv math.MG. Level 4: research.
 
-**Definition.** Each face and each vertex figure of a polyhedron gets a density: the number of times it winds around its centre. This is 2 for a pentagram and 1 for a convex polygon. The polyhedron has a density D, the number of times it covers its circumscribed sphere.
+**Definition.** For a regular polyhedron, the density of a face or vertex figure is its unsigned winding number about its center. The solid’s density counts sheets above a generic point of its circumscribed sphere under radial projection, counting overlapping face regions with multiplicity.
 
 **Problem.** Cayley's formula d<sub>v</sub>·V − E + d<sub>f</sub>·F = 2D holds for all nine regular polyhedra, convex and star. Here d<sub>v</sub> is the vertex-figure density and d<sub>f</sub> is the face density.
 
-**How the definition helps.** Weighting each count by its density makes the formula measure how often the surface covers the sphere. The plain formula V − E + F = 2 fails for the small stellated dodecahedron and the great dodecahedron, which both give 12 − 30 + 12 = −6. For the small stellated dodecahedron, Cayley's form gives 12 − 30 + 2·12 = 6 = 2·3 (our own check). For convex polyhedra all densities are 1, so Euler's formula is a special case.
+**How the definition helps.** Cayley’s generalized Euler formula weights faces and vertices by winding number and uses the covering multiplicity on the right. For the small stellated dodecahedron this gives 12 − 30 + 2·12 = 6 = 2·3 (our own check). For convex regular polyhedra all densities equal one, giving Euler’s formula.
 
 **Wikipedia:** [Kepler–Poinsot polyhedron](https://en.wikipedia.org/wiki/Kepler%E2%80%93Poinsot_polyhedron), [Euler characteristic](https://en.wikipedia.org/wiki/Euler_characteristic). It says: “This version holds both for convex polyhedra (where the densities are all 1) and the non-convex Kepler–Poinsot polyhedra.”
 

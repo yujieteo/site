@@ -116,7 +116,7 @@
 
 *True by definition. Confidence: medium.* MSC 41A05 (Interpolation in approximation theory), 26A24. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** The usual divided difference f\[x₀, …, xₙ\] is a recursion of difference quotients on distinct nodes. Instead, define it as the integral of f⁽ⁿ⁾(t₀x₀ + … + tₙxₙ) over the simplex of weights tᵢ ≥ 0 with sum 1. Measured in the free weights t₁, …, tₙ, this simplex has volume 1/n!. This is the Hermite–Genocchi formula.
+**Definition.** For nodes x₀,…,xₙ in an interval where f has n continuous derivatives, integrate f⁽ⁿ⁾(∑ᵢtᵢxᵢ) over tᵢ≥0 with ∑ᵢtᵢ=1. Use ordinary volume in the free coordinates t₁,…,tₙ. This integral defines the order n divided difference.
 
 **Problem.** Let f have n continuous derivatives on an interval. Then its order n divided difference extends continuously to repeated nodes. When all n + 1 nodes equal x, its value is f⁽ⁿ⁾(x)/n!.
 
@@ -152,7 +152,7 @@
 
 *True by definition.* MSC 41A10 (Approximation by polynomials), 41A25. arXiv math.NA. Level 2: later undergraduate.
 
-**Definition.** Expand xⁿ in the Chebyshev polynomials Tⱼ, where Tⱼ(cos θ) = cos(jθ). Truncate this expansion at a chosen degree, in place of truncating in powers of x.
+**Definition.** For integers 0≤k≤n, expand xⁿ in the Chebyshev polynomials defined by Tⱼ(cos θ)=cos(jθ) for every real θ. Its truncation at k is the sum of the terms with j≤k.
 
 **Problem.** On \[−1, 1\], the maximum absolute error of this truncation of xⁿ equals the sum of the discarded Chebyshev coefficients.
 
@@ -186,7 +186,7 @@
 
 *True by definition. Confidence: medium.* MSC 41A15 (Spline approximation), 65D07. arXiv math.NA. Level 2: later undergraduate.
 
-**Definition.** A cubic spline is twice continuously differentiable and polynomial of degree at most three between successive knots. A spline interpolant matches the data at the knots. A natural spline has zero second derivative at both ends. Instead, prescribe the data function’s second derivative at each end.
+**Definition.** For knots a=x₀&lt;⋯&lt;xₙ=b with n≥1, a cubic spline is twice continuously differentiable and polynomial of degree at most three between successive knots. To interpolate f with prescribed endpoint second derivatives, require s(xᵢ)=f(xᵢ) at every knot, s″(a)=f″(a), and s″(b)=f″(b). A natural spline instead requires s″(a)=s″(b)=0.
 
 **Problem.** Prescribing the correct endpoint second derivatives makes the cubic spline interpolant reproduce every quadratic exactly. The natural spline fails even for f(x) = x².
 
@@ -204,7 +204,7 @@
 
 *Rules out counterexamples.* MSC 41A15 (Spline approximation), 65D07. arXiv math.NA. Level 2: later undergraduate.
 
-**Definition.** Take a function on an interval with finitely many interior jumps, continuous elsewhere and continuous from the left at each jump. At each jump b, add a step equal to zero for x ≤ b and one for x &gt; b. Weight it by the right limit minus the left limit. Approximate the remainder by continuous piecewise polynomials joined at selected points, called splines.
+**Definition.** Let f have finitely many interior jumps, be left-continuous there, and be continuous elsewhere on its interval. Define J as the sum over jumps b of (f(b+)−f(b)) times the indicator of x&gt;b. The approximant is J plus a continuous spline approximating f−J.
 
 **Problem.** The resulting approximant has exactly the same jumps as the input. On an interval, no sequence of continuous splines alone can approximate a unit step uniformly.
 
@@ -220,13 +220,13 @@
 
 **Remember:** The required zero is one order beyond the available degree.
 
-*Rules out counterexamples.* MSC 41A21 (Padé approximation). arXiv math.NA. Level 2: later undergraduate.
+*True by definition.* MSC 41A21 (Padé approximation). arXiv math.NA. Level 2: later undergraduate.
 
 **Definition.** Choose a ratio of polynomials with numerator degree at most m and denominator degree at most n. Require the denominator to be nonzero at the expansion point. A Padé approximant matches the first m + n + 1 Taylor coefficients of the target there.
 
 **Problem.** If a Padé approximant exists with these degree bounds and matching conditions, it is unique as a rational function.
 
-**How the definition helps.** The matching conditions force more vanishing coefficients than a nonzero difference numerator can have. In our own proof, cross-multiply two candidate fractions and subtract. The resulting polynomial has degree at most m + n and vanishes to order at least m + n + 1. It must be zero, so the fractions agree. In our own example, both zero and x match the constant coefficient of the zero function at zero. With m = 1 and n = 0, the second coefficient rules out x.
+**How the definition helps.** In our own proof, subtracting the two candidate fractions gives a numerator of degree at most m+n over a denominator nonzero at the expansion point. Matching m+n+1 coefficients forces that numerator to vanish to order at least m+n+1. Only the zero polynomial meets both bounds, so the fractions agree.
 
 **Wikipedia:** [Padé approximant](https://en.wikipedia.org/wiki/Pad%C3%A9_approximant). It says: “When it exists, the Padé approximant is unique as a formal power series for the given m and n.”
 
@@ -238,11 +238,11 @@
 
 *True by definition. Confidence: medium.* MSC 41A25 (Rate of convergence, degree of approximation), 41A36. arXiv math.NA. Level 2: later undergraduate.
 
-**Definition.** A modulus of continuity ω is a nondecreasing bound with \|f(s) − f(t)\| ≤ ω(\|s − t\|) and ω(δ) tending to zero with δ. Choose such a bound that is also concave.
+**Definition.** A concave modulus for f on \[0,1\] is a nonnegative, nondecreasing concave function ω on \[0,1\] with ω(0)=0 and ω(δ)→0 as δ↓0. It must satisfy \|f(s)−f(t)\|≤ω(\|s−t\|) for all s,t∈\[0,1\].
 
 **Problem.** At x in \[0, 1\], the degree n Bernstein polynomial averages f(K/n), where K counts successes in n independent trials with success probability x. For n ≥ 1, the absolute error is at most ω(√(x(1 − x)/n)).
 
-**How the definition helps.** A concave modulus lets one apply Jensen’s inequality to the average error bound (our own proof). The error is at most the average of ω(\|K/n − x\|). Concavity bounds this by ω at the mean absolute distance. That distance is at most the standard deviation of K/n, since its mean is x. The remaining calculation gives variance x(1 − x)/n.
+**How the definition helps.** In our own proof, the absolute error is at most the mean of ω(\|K/n−x\|). Jensen’s inequality bounds this mean by ω at the mean absolute distance. By Cauchy–Schwarz that distance is at most the standard deviation √(x(1−x)/n), since K/n has mean x. Monotonicity of ω gives the stated bound.
 
 **Wikipedia:** [Modulus of continuity](https://en.wikipedia.org/wiki/Modulus_of_continuity). It says: “A special role is played by concave moduli of continuity, especially in connection with extension properties, and with approximation of uniformly continuous functions.”
 
@@ -254,7 +254,7 @@
 
 *True by definition.* MSC 41A36 (Approximation by positive operators). arXiv math.NA. Level 2: later undergraduate.
 
-**Definition.** For n ≥ 1, draw n independent numbers uniformly from \[0,1\]. At input x, count a success whenever a draw is at most x. Define the Bernstein approximation as the expected value of f at the fraction of successes. This construction uses the same draws at every input in place of comparing separate polynomial sums.
+**Definition.** For an integer n≥1, draw n independent uniform numbers on \[0,1\]. For each x∈\[0,1\], let K(x) count how many of those same numbers are at most x. The nth Bernstein approximation at x is the expected value of f(K(x)/n).
 
 **Problem.** The Bernstein approximation of any nondecreasing function on \[0,1\] is nondecreasing.
 
@@ -274,7 +274,7 @@
 
 **Problem.** For n ≥ 1 and all real a and b, the Bernstein polynomial of a + bx is a + bx on \[0, 1\].
 
-**How the definition helps.** Expectation is linear, so the claim reduces to two facts: the expectation of a constant is that constant, and the expected value of K/n is x. With the sum formula, the same claim needs binomial identities for the total weight and for the mean. The work moves to checking that the expectation equals the sum, which is the binomial distribution formula. The proof steps are our own; the source notes only that Bernstein polynomials look like binomial expectations.
+**How the definition helps.** In our own proof, linearity gives E\[a+bK/n\]=a+bE\[K\]/n. Each trial has expected success count x, so E\[K\]=nx. Substitution gives a+bx at every x∈\[0,1\].
 
 **Wikipedia:** [Bernstein polynomial](https://en.wikipedia.org/wiki/Bernstein_polynomial). It says: “Here, we take advantage of the fact that Bernstein polynomials look like Binomial expectations.”
 
@@ -290,7 +290,7 @@
 
 **Problem.** For n ≥ 1, among monic polynomials of degree n, 2¹⁻ⁿTₙ has the smallest maximum absolute value on \[−1, 1\]. That maximum is 2¹⁻ⁿ.
 
-**How the definition helps.** The cosine definition shows at once that Tₙ takes the values ±1 alternately at the n + 1 points cos(kπ/n). Suppose a monic w of degree n had maximum below 2¹⁻ⁿ. Then 2¹⁻ⁿTₙ − w has degree at most n − 1 and alternates in sign at those n + 1 points. So it has n zeros and must be zero, which is impossible. Wikipedia gives this proof. The work goes into showing that cos(nθ) is a polynomial in cos θ, which gives the recurrence.
+**How the definition helps.** In our own argument, the normalized polynomial attains alternating values ±2¹⁻ⁿ at cos(kπ/n) for k=0,…,n and stays within those bounds everywhere on \[−1,1\]. Subtracting a monic rival with smaller maximum magnitude preserves the alternating signs at these points. The difference has at least n distinct zeros between consecutive points. Its leading terms cancel, so its degree is below n, contradicting those zeros and its nonzero endpoint values.
 
 **Wikipedia:** [Chebyshev polynomials](https://en.wikipedia.org/wiki/Chebyshev_polynomials). It says: “is the one of which the maximal absolute value on the interval \[−1, 1\] is minimal.”
 
@@ -302,11 +302,11 @@
 
 *True by definition. Confidence: medium.* MSC 41A58 (Series expansions (e.g., Taylor, Lidstone series, but not Fourier series)), 26A24. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** Let P be a polynomial of degree at most n. Call P an order n approximation of f at c if (f(x) − P(x))/\|x − c\|ⁿ → 0 as x → c. At most one such polynomial exists. The usual definition instead matches the derivatives of f at c up to order n.
+**Definition.** For an integer n≥0, an order n approximation to f at c is a polynomial P of degree at most n satisfying f(x)−P(x)=o(\|x−c\|ⁿ) as x→c.
 
 **Problem.** Let g be smooth near c and f smooth near g(c). Let Q and P be their order n Taylor polynomials at c and at g(c). Then the order n Taylor polynomial of f ∘ g at c is P(Q(x)) with powers of (x − c) above n dropped.
 
-**How the definition helps.** With the approximation definition, one only checks that the truncated P(Q(x)) approximates f(g(x)) to order n (our own). Since g is Lipschitz near c, f(g(x)) − P(g(x)) is negligible against \|x − c\|ⁿ, and since P has bounded slope, so is P(g(x)) − P(Q(x)) (our own). Dropping powers above n changes the result by O(\|x − c\|ⁿ⁺¹) (our own). The work moves into Taylor's theorem with the Peano remainder, which shows that the derivative polynomial is this unique best approximation.
+**How the definition helps.** In our own proof, local Lipschitz continuity of g gives f(g(x))−P(g(x))=o(\|x−c\|ⁿ). The slope of P is locally bounded near g(c), so P(g(x))−P(Q(x))=o(\|x−c\|ⁿ) as well. Truncating the composite polynomial adds only O(\|x−c\|ⁿ⁺¹) to the error. Taylor’s theorem with Peano remainder identifies this unique order n approximation with the Taylor polynomial.
 
 **nLab:** [Taylor's theorem](https://ncatlab.org/nlab/show/Taylor%27s+theorem). It says: “whose derivatives at c match those of f up to order k.”
 
@@ -320,11 +320,11 @@
 
 *True by definition. Confidence: medium.* MSC 41A58 (Series expansions (e.g., Taylor, Lidstone series, but not Fourier series)), 26A24. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** Fix a point c and n ≥ 0. Call two smooth functions equal to order n at c if their difference is (x − c)ⁿ⁺¹ times a smooth function. Define the order n Taylor polynomial of f as the one polynomial of degree at most n in the class of f. The usual definition is the sum of f⁽ᵏ⁾(c)(x − c)ᵏ/k! for k ≤ n.
+**Definition.** For an integer n≥0, two smooth functions near c agree to order n if their difference equals (x−c)ⁿ⁺¹ times a smooth function near c. The Taylor polynomial of order n is the unique polynomial of degree at most n agreeing with the function to that order.
 
-**Problem.** Let f and g be smooth near c. Multiply their order n Taylor polynomials at c and drop the powers above n. The result is the order n Taylor polynomial of fg.
+**Problem.** For smooth f and g near c, the order n Taylor polynomial of fg is the truncated product of their order n Taylor polynomials. Truncation discards all powers of (x−c) above n.
 
-**How the definition helps.** With classes, the claim says that multiplication respects the equivalence, which takes one line (our own). If f − P and g − Q are multiples of (x − c)ⁿ⁺¹, then so is fg − PQ = f(g − Q) + Q(f − P), and dropping powers above n from PQ adds another such multiple (our own). The work moves into Hadamard's lemma, which says that the remainder after the usual Taylor polynomial is (x − c)ⁿ⁺¹ times a smooth function. With the usual definition, one instead matches coefficients by the general Leibniz rule (our own).
+**How the definition helps.** In our own proof, write P and Q for the two Taylor polynomials. The identity fg−PQ=f(g−Q)+Q(f−P) expresses the difference as (x−c)ⁿ⁺¹ times a smooth function. Dropping higher powers of (x−c) adds another such multiple, so the truncated product represents fg. Iterating Hadamard’s lemma identifies this representative with the usual Taylor polynomial.
 
 **nLab:** [Hadamard lemma](https://ncatlab.org/nlab/show/Hadamard+lemma). It says: “the Taylor series of a smooth function on the real line around the origin has a remainder at order n”
 
@@ -350,9 +350,9 @@
 
 **Remember:** Use the increase in the exponent as the distance from the endpoint.
 
-*Makes the theorem clean to state or prove.* MSC 41A60 (Asymptotic approximations, asymptotic expansions (steepest descent, etc.)). arXiv math.CA. Level 2: later undergraduate.
+*True by definition.* MSC 41A60 (Asymptotic approximations, asymptotic expansions (steepest descent, etc.)). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** If h has its minimum at the left endpoint a, use s = h(x)−h(a) as the local coordinate. This measures the excess in the exponent rather than the distance x−a.
+**Definition.** Let h have a continuous derivative near its left endpoint a, with h′(a)&gt;0. The endpoint coordinate is s=h(x)−h(a) for x near a.
 
 **Problem.** Let h be continuously differentiable on \[a,b\], with its unique minimum at a and h′(a)&gt;0. For continuous g with g(a)≠0, ∫ₐᵇ exp(−λh(x))g(x) dx is asymptotic to exp(−λh(a))g(a)/(λh′(a)) as λ→∞.
 
@@ -366,7 +366,7 @@
 
 **Remember:** Measure the height above the minimum in square roots.
 
-*Makes the theorem clean to state or prove.* MSC 41A60 (Asymptotic approximations, asymptotic expansions (steepest descent, etc.)). arXiv math.CA. Level 2: later undergraduate.
+*True by definition.* MSC 41A60 (Asymptotic approximations, asymptotic expansions (steepest descent, etc.)). arXiv math.CA. Level 2: later undergraduate.
 
 **Definition.** Near a strict minimum x₀ of h with h″(x₀) &gt; 0, set u to the signed square root of 2(h(x)−h(x₀)). Take u negative to the left of x₀ and positive to its right.
 
@@ -380,11 +380,11 @@
 
 ### Ordered scales make asymptotic coefficients unique
 
-**Remember:** Divide by the first scale term where two expansions differ.
+**Remember:** Each scale shrinks against its predecessor, and each remainder shrinks against its last term.
 
-*Makes the theorem clean to state or prove.* MSC 41A60 (Asymptotic approximations, asymptotic expansions (steepest descent, etc.)). arXiv math.CA. Level 2: later undergraduate.
+*True by definition.* MSC 41A60 (Asymptotic approximations, asymptotic expansions (steepest descent, etc.)). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** An asymptotic scale is a sequence of functions near a limit point. Each is eventually nonzero, and the ratio of each to its predecessor tends to zero. An expansion in this scale assigns one constant coefficient to each function. After any truncation, the error divided by the last included scale function must tend to zero.
+**Definition.** An asymptotic scale consists of eventually nonzero functions φ₀, φ₁, … with φₖ₊₁/φₖ→0 for every k along the specified limit. Coefficients aₖ give an expansion of f if (f−∑ₖ₌₀ᴺ aₖφₖ)/φ<sub>N</sub> tends to zero for every integer N≥0.
 
 **Problem.** For a fixed scale, limit point and region, a function has at most one list of asymptotic coefficients.
 
@@ -404,7 +404,7 @@
 
 **Definition.** For x &gt; 0, the exponential integral E₁(x) integrates exp(−t)/t from x to infinity. Its normalized form F(x) = exp(x)E₁(x) integrates exp(−u)/(x+u) from zero to infinity after substituting u = t−x.
 
-**Problem.** The normalized integral has asymptotic terms (−1)ᵏ times k factorial divided by xᵏ⁺¹, for every k ≥ 0. The error after each truncation has the sign of the first omitted term and is smaller in absolute value.
+**Problem.** As x→∞, the normalized integral has asymptotic terms (−1)ᵏk!/xᵏ⁺¹ for every integer k≥0. Each truncation error has the first omitted term’s sign and smaller absolute value.
 
 **How the definition helps.** The fixed lower endpoint puts all dependence on x in one reciprocal with an exact finite geometric expansion. In our own proof, integrating its powers of u against exp(−u) gives factorials. The remainder equals the first omitted integral with an extra factor 1/(1+u/x), strictly between zero and one for u &gt; 0.
 
@@ -416,7 +416,7 @@
 
 **Remember:** Write the factorial as an integral and find its peak.
 
-*Makes the theorem clean to state or prove.* MSC 41A60 (Asymptotic approximations, asymptotic expansions (steepest descent, etc.)), 33B15. arXiv math.CA. Level 2: later undergraduate.
+*True by definition.* MSC 41A60 (Asymptotic approximations, asymptotic expansions (steepest descent, etc.)), 33B15. arXiv math.CA. Level 2: later undergraduate.
 
 **Definition.** For s &gt; 0, define Γ(s) as the integral from 0 to ∞ of t raised to s−1 times e⁻ᵗ. When s = n+1, use this integral instead of the product for n!.
 
@@ -432,11 +432,11 @@
 
 ### Truncated asymptotic expansions multiply like formal power series
 
-**Remember:** Multiply finite truncations and discard powers above the requested degree.
+**Remember:** At every degree, the error shrinks faster than the last power.
 
 *True by definition.* MSC 41A60 (Asymptotic approximations, asymptotic expansions (steepest descent, etc.)). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** A power asymptotic expansion at zero controls each finite truncation. After degree N, the error divided by x raised to N must tend to zero. The infinite formal series itself need not converge.
+**Definition.** A power series with coefficients aₖ is an asymptotic expansion of f at zero if (f(x)−∑ₖ₌₀ᴺ aₖxᵏ)/xᴺ→0 as x→0 for every integer N≥0.
 
 **Problem.** If f and g have power asymptotic expansions at zero, then fg has the expansion obtained by multiplying their formal series. This holds even if the series do not converge.
 
@@ -452,7 +452,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 41A60 (Asymptotic approximations, asymptotic expansions (steepest descent, etc.)), 33B15. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** A Laplace integral weights a function by exp(−xt). Write that function near zero as tᵅg(t), where α &gt; −1 and g has continuous derivatives there.
+**Definition.** A Laplace integral with endpoint power α has weight tᵅg(t) near t=0, where α&gt;−1. Its kernel is exp(−xt).
 
 **Problem.** Fix T &gt; 0 and let g be continuous on \[0,T\], with N+1 continuous derivatives near zero and Taylor coefficients cₖ there. As x→∞, ∫₀ᵀ exp(−xt)tᵅg(t) dt equals ∑ₖ₌₀ᴺ cₖΓ(α+k+1)/xᵅ⁺ᵏ⁺¹ plus O(x⁻ᵅ⁻ᴺ⁻²).
 
@@ -484,11 +484,11 @@
 
 ### Discrete projections match all samples
 
-**Remember:** Measure every sample error and leave none for the projection to miss.
+**Remember:** Project M samples onto M orthogonal sample directions.
 
 *True by definition.* MSC 41A05 (Interpolation in approximation theory), 65D05. arXiv math.NA. Level 3: graduate.
 
-**Definition.** At M points, represent each real function by its vector of sampled values. Take the inner product of two vectors by summing their coordinate products with positive weights. Choose M basis functions with nonzero, mutually orthogonal sample vectors. Fit the data by orthogonal projection using this inner product in place of an integral.
+**Definition.** Represent each function by its values at M distinct points, with inner product ⟨u,v⟩=∑ⱼwⱼuⱼvⱼ for fixed positive weights wⱼ. The discrete fit projects the data vector onto the span of M nonzero, mutually orthogonal sample vectors of basis functions.
 
 **Problem.** The projection formed from the M discrete inner products matches the data at all M sample points.
 
@@ -506,7 +506,7 @@
 
 *True by definition.* MSC 41A05 (Interpolation in approximation theory), 65D05. arXiv math.NA. Level 3: graduate.
 
-**Definition.** Fix a basis for the polynomials of degree below r on a bounded closed interval of positive length. At each of r points, record the basis values as one matrix row. Fekete points maximize the absolute determinant of this matrix over all point choices. The ith Lagrange polynomial has degree below r and takes value one at point i and zero at the others.
+**Definition.** Fix an integer r≥1 and a polynomial basis for degrees below r on a compact interval of positive length. Fekete points maximize \|det A\| over all r-tuples in the interval, where row i lists the basis values at point i.
 
 **Problem.** Each Lagrange basis polynomial for Fekete points has maximum absolute value one on the interval.
 
@@ -546,7 +546,7 @@
 
 **Problem.** For 1 ≤ p &lt; ∞, every function in Lᵖ(\[0, 1\]) has polynomial averages that converge to it in the Lᵖ norm.
 
-**How the definition helps.** For x and y in \[0, 1\], the difference x − y lies in \[−1, 1\], where the kernel is a polynomial, so the average is a polynomial in x (our own). The kernels have unit mass, and their mass outside every neighborhood of zero tends to zero. Continuity of translation in Lᵖ then gives convergence (our own). Polynomial kernels remove the need for a separate polynomial approximation of each smoothed function (our own).
+**How the definition helps.** For x,y∈\[0,1\], the kernel at x−y equals a polynomial in x, so integration against f(y) gives a polynomial (our own). The normalized kernels concentrate at zero because 1−t² decreases with \|t\| on their support (our own). Translation continuity in Lᵖ gives convergence of these unit-mass averages (our own).
 
 **nLab:** [approximation of the identity](https://ncatlab.org/nlab/show/approximation+of+the+identity). It says: “Hence f ∗ pₙ is polynomial.”
 
@@ -554,11 +554,11 @@
 
 ### Box averages preserve spline unity
 
-**Remember:** An average of the constant one stays one.
+**Remember:** Start with one unit box and average once for each degree.
 
 *True by definition.* MSC 41A15 (Spline approximation). arXiv math.NA. Level 3: graduate.
 
-**Definition.** Define a cardinal B-spline by convolving the indicator of \[0, 1) with itself repeatedly. Each step averages the lower-degree spline over a unit interval.
+**Definition.** For each integer p≥0, the cardinal B-spline of degree p is the convolution of p+1 copies of the indicator of \[0,1).
 
 **Problem.** For each degree, all the integer translates of the cardinal B-spline sum to 1 at every real x.
 
@@ -594,7 +594,7 @@
 
 **Definition.** Let χ be the indicator function of \[0, 1). Define the cardinal B-spline B of degree p as the convolution of p + 1 copies of χ. The usual definition uses the Cox–de Boor recursion on integer knots.
 
-**Problem.** B(x) equals 2 raised to −p times the sum over j from 0 to p + 1 of C(p + 1, j)·B(2x − j).
+**Problem.** For every real x, B(x)=2⁻ᵖ∑ⱼ₌₀ᵖ⁺¹ C(p+1,j)B(2x−j), where C(p+1,j) is a binomial coefficient.
 
 **How the definition helps.** With the convolution definition, the relation follows from one splitting of the box and the binomial theorem. Write χ(x) = χ(2x) + χ(2x − 1), a sum of two half boxes, and expand the (p + 1)-fold convolution of this sum. Each term is a shifted convolution power of the half box, which equals 2⁻ᵖB(2x − j). From the Cox–de Boor recursion, the relation needs an induction on the degree; these steps are our own.
 
@@ -608,11 +608,11 @@
 
 *True by definition. Confidence: medium.* MSC 41A15 (Spline approximation), 49K05. arXiv math.NA. Level 3: graduate.
 
-**Definition.** Take nodes x₀ &lt; x₁ &lt; ⋯ &lt; xₙ with n ≥ 1 and a data value at each node. Among functions on \[x₀, xₙ\] with square-integrable second derivative and these values, choose the one with the least integral of the squared second derivative. The usual definition asks for a piecewise cubic with two continuous derivatives and zero second derivative at both ends.
+**Definition.** Fix real data at nodes x₀&lt;⋯&lt;xₙ with n≥1. The least-bending interpolant minimizes the integral of \|s″\|² on \[x₀,xₙ\] among matching functions with absolutely continuous first derivative and square-integrable second derivative.
 
 **Problem.** The minimizer s has zero second derivative at x₀ and at xₙ.
 
-**How the definition helps.** The data do not fix the end slopes, so a minimizer cannot improve when an end slope changes. So the integral of s″h″ is zero for every allowed h that vanishes at the nodes. Integration by parts on each cubic piece leaves the boundary term s″(x₀)h′(x₀), and h′(x₀) is arbitrary, so s″(x₀) = 0. The usual definition imposes this condition by hand; these proof steps are our own.
+**How the definition helps.** Free end slopes give independent boundary terms in the first variation (our own). Stationarity gives ∫s″h″=0 for every variation vanishing at the nodes. Interior test functions give s⁽⁴⁾=0 weakly within each interval, so each piece is cubic or lower. Integration by parts with variations supported near either end leaves only ±s″h′ there, and the arbitrary slope forces s″=0.
 
 **Wikipedia:** [Spline (mathematics)](https://en.wikipedia.org/wiki/Spline_%28mathematics%29). It says: “Spline functions for interpolation are normally determined as the minimizers of suitable measures of roughness (for example integral squared curvature) subject to the interpolation constraints.”
 
@@ -638,7 +638,7 @@
 
 ### Imaginary-axis interpolation forces unit modulus
 
-**Remember:** Enough matches force the entire axis onto the unit circle.
+**Remember:** Match the exponential at 2n+1 distinct imaginary points for degrees at most n.
 
 *True by definition.* MSC 41A20 (Approximation by rational functions), 41A05. arXiv math.NA. Level 3: graduate.
 
@@ -646,7 +646,7 @@
 
 **Problem.** Any such rational function has absolute value one on the imaginary axis wherever it is defined.
 
-**How the definition helps.** Interpolation turns a condition on the whole imaginary axis into enough zeros to force a polynomial identity. In our own proof, write the fraction as P/Q and set z = it for real t. The difference \|P(it)\|² − \|Q(it)\|² is a polynomial in t of degree at most 2n. It vanishes at every match since the exponential has modulus one there. Its 2n + 1 distinct zeros force it to vanish identically. Constructing an interpolant with the required degrees is a separate problem.
+**How the definition helps.** In our own proof, write the reduced fraction as P/Q and form D(t)=\|P(it)\|²−\|Q(it)\|² for real t. Each match gives D(t)=0 because \|exp(it)\|=1. Its degree is at most 2n, so 2n+1 distinct zeros force D to vanish identically.
 
 **Paper or page:** [The error of Chebyshev approximations on shrinking domains](https://arxiv.org/abs/2410.04885v1). It says: “An (n,n)-rational function is unitary if and only if it interpolates the exponential function at ≥ 2n+1 nodes on the imaginary axis, counting multiplicity.”
 
@@ -654,9 +654,9 @@
 
 ### Alternating extremes certify optimality
 
-**Remember:** Every improvement would need too many sign changes.
+**Remember:** At n+2 ordered points, the largest errors alternate in sign.
 
-*Makes the theorem clean to state or prove.* MSC 41A50 (Best approximation, Chebyshev systems). arXiv math.NA. Level 3: graduate.
+*True by definition.* MSC 41A50 (Best approximation, Chebyshev systems). arXiv math.NA. Level 3: graduate.
 
 **Definition.** Take a continuous real function on a compact interval and a candidate polynomial of degree at most n. Call n + 2 increasing points alternating extremes if the error reaches its largest absolute value there with alternating signs.
 
@@ -678,7 +678,7 @@
 
 **Problem.** Among polynomials of degree at most n that have value 1 at a, the normalized kernel uniquely minimizes the integral of the squared polynomial.
 
-**How the definition helps.** The normalized kernel turns a point constraint into an orthogonal decomposition (our own). Integrating K(a, x) against any polynomial of degree at most n returns its value at a. Subtract the normalized kernel from any competitor to get a polynomial vanishing at a (our own). Reproduction makes the difference orthogonal to the normalized kernel, so its squared norm adds to the minimum (our own). This replaces solving constrained coefficient equations with proving the reproduction identity (our own).
+**How the definition helps.** The kernel reproduces evaluation at a by orthonormal expansion (our own). Subtracting the normalized kernel from a competitor gives a polynomial vanishing at a. Reproduction makes that difference orthogonal to the normalized kernel. Pythagoras gives the minimum, with equality only for zero difference.
 
 **Wikipedia:** [Christoffel–Darboux formula](https://en.wikipedia.org/wiki/Christoffel%E2%80%93Darboux_formula). It says: “In other words, the kernel is an integral operator that orthogonally projects each polynomial to the space of polynomials of degree up to n.”
 
@@ -710,7 +710,7 @@
 
 **Problem.** For a real Haar matrix, every data vector has a unique fit that minimizes the largest absolute residual.
 
-**How the definition helps.** The Haar condition lets any r rows determine the coefficients (our own argument). The midpoint of two best fits is also a best fit, and both fits agree on every row where the midpoint reaches its maximum error. If fewer than r rows did so, one could move slightly toward the data and improve the fit, so both fits agree on r rows and coincide. Without the Haar condition, the column (1, 0) fits (0, 1) equally well with any coefficient between −1 and 1.
+**How the definition helps.** Every r rows determine the coefficients, excluding the zero row in the column (1,0) that gives tied fits to (0,1) (our own). Full column rank makes the error coercive, so a best fit exists. At a midpoint of two best fits, fewer than r active rows would allow a small correction matching their residuals and reducing the error. Both fits agree on all active rows, so r such rows force equal coefficients.
 
 **Paper or page:** [On the algorithm of best approximation by low rank matrices in the Chebyshev norm](https://arxiv.org/abs/2201.12301v1). It says: “Then, for any vector a ∈ ℂⁿ the solution is unique if and only if the columns of the matrix V form a Chebyshev system.”
 
@@ -724,7 +724,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 41A80 (Remainders in approximation formulas), 65D32. arXiv math.NA. Level 3: graduate.
 
-**Definition.** View quadrature error as a linear operation L that subtracts the rule from the integral. Assume the rule is exact on polynomials of degree at most ν, with ν at least one. For fixed θ, truncate the νth power of x − θ by setting it to zero for x &lt; θ. Define the Peano kernel by applying L to this truncated power.
+**Definition.** Let L subtract a quadrature sum from the integral and vanish on polynomials through degree ν, for an integer ν≥1. Its Peano kernel is K(θ)=L(x↦max(x−θ,0) raised to ν).
 
 **Problem.** Suppose the function has ν + 1 continuous derivatives on the interval. The error is the integral of its last derivative times the Peano kernel, divided by ν factorial.
 
@@ -740,11 +740,11 @@
 
 *Rules out counterexamples.* MSC 41A05 (Interpolation in approximation theory), 41A63, 65D05. arXiv math.NA. Level 4: research.
 
-**Definition.** In a closed polygon, fit a polynomial to the given triangle averages. Require the triangles to share no positive area. Assume the averages determine exactly one polynomial in the chosen space. Each basis polynomial has average one on its own triangle and zero on the others.
+**Definition.** Choose positive-area triangles with disjoint interiors in a compact polygon and a polynomial space where every vector of triangle averages determines one polynomial. The ith basis polynomial has average one on triangle i and zero on every other triangle.
 
 **Problem.** Among continuous inputs of maximum absolute value at most one, take the supremum of the maximum absolute fitted value. It equals the largest pointwise sum of absolute basis values.
 
-**How the definition helps.** Disjoint interiors let continuous inputs take a separate sign on each triangle. In our own proof, choose a point where the sum is largest, give each triangle the sign of its basis polynomial there, and taper the signs to zero near the edges. The averages approach those signs, and the triangle inequality gives the upper bound. In our own example, fitting a line to averages on \[0, 2\] and \[1, 3\] gives a basis sum of three at either endpoint, but the overlap limits the amplification to two.
+**How the definition helps.** Disjoint interiors let continuous inputs approximate independent signs in their triangle averages (our own). At a point maximizing the basis sum, use each basis value’s sign on its triangle and taper to zero near edges. These averages approach the chosen signs, while the triangle inequality gives the upper bound. For line fits on overlapping intervals \[0,2\] and \[1,3\], shared samples limit amplification to two despite an endpoint basis sum of three.
 
 **Paper or page:** [Bivariate polynomial histopolation techniques on Padua, Fekete and Leja triangles](https://arxiv.org/abs/2506.03025v1). It says: “Then, the operator norm of the respective histopolation operator Πₘ satisfies ‖Πₘ‖ₒₚ = ℒₘ(𝒯ₘ).”
 
@@ -754,11 +754,11 @@
 
 ### Parity preserves disk coordinates
 
-**Remember:** Two sign flips leave the same disk point unchanged.
+**Remember:** Both flips preserve the even part and negate the odd part.
 
 *True by definition.* MSC 41A05 (Interpolation in approximation theory). arXiv math.NA. Level 4: research.
 
-**Definition.** Allow signed radii when interpolating on the unit disk. Replace a single formula in radius and angle by the sum of two functions. The first stays unchanged under either radius reversal or a half-turn. The second changes sign under each operation.
+**Definition.** On signed polar coordinates −1≤r≤1 and angles modulo 2π, write the interpolant as E+O. Each operation r↦−r or θ↦θ+π preserves E and negates O.
 
 **Problem.** The sum assigns the same value to (r, θ) and (−r, θ + π). At the center it has a single value if the first function there is independent of θ.
 
@@ -776,7 +776,7 @@
 
 *True by definition.* MSC 41A20 (Approximation by rational functions). arXiv math.NA. Level 4: research.
 
-**Definition.** Represent a rational function of modulus one on the imaginary axis by pairing each pole s with its reflection −s̄. The bar means complex conjugation. Replace separate numerator and denominator polynomials by a product of factors (z + s̄)/(z − s), times a constant of modulus one.
+**Definition.** A reflected-pole product has the form c∏ⱼ(z+s̄ⱼ)/(z−sⱼ), where \|c\|=1 and each sⱼ lies off the imaginary axis. The bar denotes complex conjugation.
 
 **Problem.** Take the best uniform approximation to exp(iωx) on \[−1, 1\] by such functions evaluated at ix, with numerator and denominator degrees at most n. For n ≥ 1 and 0 &lt; ω &lt; (n + 1)π, its modulus is below one throughout the open left half-plane.
 
@@ -794,11 +794,11 @@
 
 *True by definition.* MSC 41A25 (Rate of convergence, degree of approximation), 41A63. arXiv math.CA. Level 4: research.
 
-**Definition.** On a cone, a rotation in two spatial coordinates preserves each slice at fixed height t. Measure angular smoothness by repeated differences between a function and its rotation through θ/√t. A straight coordinate shift could leave the slice.
+**Definition.** Fix a height parameter 0&lt;t≤1 and two spatial axes of the cone. Let R rotate their coordinate plane by θ/√t and act on functions by composition. For a positive integer r, the angular difference is (I−R)ʳ, with I the identity.
 
 **Problem.** At positive heights up to one, the paper’s polynomial smoothing operator commutes with these angular differences. Its error satisfies the same angular smoothness bound as the input, up to a constant.
 
-**How the definition helps.** The difference uses rotations that preserve the smoothing kernel (our own explanation). Rotating both arguments together leaves the kernel unchanged, so each rotation passes through the smoothing integral. Taking repeated differences preserves this identity. Bounding the resulting error requires a uniform bound on the smoothing operator.
+**How the definition helps.** For each fixed angle, simultaneous rotation preserves the kernel and integration measure, so R commutes with polynomial smoothing L (our own). Hence D=(I−R)ʳ commutes with L. The identity D(f−Lf)=(I−L)Df bounds the error difference by (1+‖L‖)‖Df‖ in any rotation-invariant norm where L is uniformly bounded.
 
 **Paper or page:** [Best approximation by polynomials on the conic domains](https://arxiv.org/abs/2506.22916v1). It says: “For 1 ≤ p ≤ ∞, 1 ≤ i ≠ j ≤ d, and t ∈ (0, 1\], Δʳᵢ,ⱼ,θ/√t Lₙᵞ f = Lₙᵞ(Δʳᵢ,ⱼ,θ/√t f).”
 
@@ -808,11 +808,11 @@
 
 ### Reproduction cancels Taylor terms
 
-**Remember:** Reproducing Taylor polynomials leaves only their remainders.
+**Remember:** Reproduce the Taylor polynomial and control the weighted distances in its remainder.
 
-*Makes the theorem clean to state or prove.* MSC 41A25 (Rate of convergence, degree of approximation). arXiv math.NA. Level 4: research.
+*True by definition.* MSC 41A25 (Rate of convergence, degree of approximation). arXiv math.NA. Level 4: research.
 
-**Definition.** Let h be the largest distance from a point of a bounded domain to its nearest sample. Approximate f(x) by a weighted sum of samples that returns p(x) exactly for every polynomial p of degree at most m. Write d for each sample’s distance from x. Require the sum of absolute weights times dᵐ⁺¹ to be at most C hᵐ⁺¹, uniformly in x and h.
+**Definition.** For finite sample set X in a bounded domain Ω, let h=supₓ∈Ω minᵧ∈X \|x−y\|. The weighted sum ∑ᵧwᵧ(x)f(y) reproduces degree m if it equals p(x) for every polynomial p of degree ≤m when f=p. Require ∑ᵧ\|wᵧ(x)\|\|x−y\|ᵐ⁺¹≤Chᵐ⁺¹ with one constant C for all x and sample sets considered.
 
 **Problem.** Suppose f has bounded continuous derivatives through order m + 1 on a neighborhood of the closed convex hull of the domain and samples. Then the maximum error is at most a constant times hᵐ⁺¹.
 
@@ -830,7 +830,7 @@
 
 *True by definition.* MSC 41A81 (Weighted approximation). arXiv math.NA. Level 4: research.
 
-**Definition.** Measure error on the positive half-line by the supremum of its absolute value times a fixed positive weight. In a Laguerre polynomial expansion, replace a sharp cutoff by a linear filter T that tapers the higher coefficients. Choose integers 1 ≤ m &lt; n. The filter fixes degrees through n − m and returns polynomials of degree below n + m.
+**Definition.** Use the norm ‖g‖=supₓ w(x)\|g(x)\| on the positive half-line with a fixed positive weight w. For integers 1≤m&lt;n, take a bounded linear Laguerre filter T that fixes every polynomial of degree ≤n−m. Its outputs have degree &lt;n+m.
 
 **Problem.** Let Eₖ(f) be the least weighted error of f by polynomials of degree at most k, and let ‖T‖ be the operator norm of T. Then E<sub>n+m−1</sub>(f) ≤ ‖f − Tf‖ ≤ (1 + ‖T‖)E<sub>n−m</sub>(f) for every f in the weighted space.
 

@@ -1,14 +1,14 @@
 ### Defining cosh and sinh by exponentials makes their addition laws algebra
 
-**Remember:** The exponential addition law gives the hyperbolic addition laws.
+**Remember:** Half the sum gives cosine, and half the difference gives sine, for opposite exponents.
 
 *True by definition. Confidence: medium.* MSC 33B10 (Exponential and trigonometric functions), 26A09. arXiv math.CA. Level 1: early undergraduate.
 
-**Definition.** Define cosh t = (eᵗ + e⁻ᵗ)/2 and sinh t = (eᵗ − e⁻ᵗ)/2. The geometric definition takes (cosh t, sinh t) as the point on the right branch of x² − y² = 1. There, t is twice the signed area of the sector from (1, 0) to that point.
+**Definition.** For every real t, define cosh t = (eᵗ + e⁻ᵗ)/2 and sinh t = (eᵗ − e⁻ᵗ)/2.
 
 **Problem.** For real x and y, sinh(x + y) = sinh x cosh y + cosh x sinh y.
 
-**How the definition helps.** With exponential definitions, the identity is a polynomial identity in eˣ and eʸ (our own). Expanding the right side, the terms eˣ⁻ʸ and eʸ⁻ˣ cancel, and only eˣ⁺ʸ and e⁻ˣ⁻ʸ remain (our own). With the geometric definition, the work moves into an area calculation. For a point (p, q) on the hyperbola, twice the sector area equals ln(p + q), which gives the exponential formulas (our own).
+**How the definition helps.** The exponential addition law turns the formula into multiplication (our own). Expanding the right side cancels the mixed terms and leaves (exp(x + y) − exp(−x − y))/2. This equals sinh(x + y).
 
 **Wikipedia:** [Hyperbolic functions](https://en.wikipedia.org/wiki/Hyperbolic_functions). It says: “sinh(x + y) = sinh x cosh y + cosh x sinh y”
 
@@ -102,7 +102,7 @@
 
 *True by definition.* MSC 33B10 (Exponential and trigonometric functions), 97G60. arXiv math.CA, math.HO. Level 1: early undergraduate.
 
-**Definition.** On the unit circle centred at (0, 0), start at (1, 0) and turn through the angle θ in radians. Take counterclockwise turns as positive. Define cos θ as the horizontal coordinate of the endpoint and sin θ as the vertical coordinate. The right-triangle definition instead uses ratios of sides and starts with acute angles.
+**Definition.** Start at (1,0) on the unit circle and turn through θ radians, counting counterclockwise turns as positive. The endpoint has horizontal coordinate cos θ and vertical coordinate sin θ.
 
 **Problem.** For every real angle θ, cos²θ + sin²θ = 1.
 
@@ -202,15 +202,15 @@
 
 ### Exponential definitions make the cosine product-to-sum rule algebra
 
-**Remember:** Write everything as exponentials, multiply out, and read off the identity.
+**Remember:** Cosine averages opposite exponentials, so the four products pair into two cosines.
 
 *True by definition.* MSC 33B10 (Exponential and trigonometric functions), 30D20. arXiv math.CA, math.CV. Level 2: later undergraduate.
 
-**Definition.** Define the complex exponential by the series exp(z) = 1 + z + z²/2! + z³/3! + ⋯. For real x, define cos x = (exp(ix) + exp(−ix))/2. Define sin x = (exp(ix) − exp(−ix))/(2i), where i² = −1. The geometric definition instead uses the coordinates of a point on the unit circle.
+**Definition.** For each real x, define cos x = (exp(ix) + exp(−ix))/2, where i² = −1.
 
 **Problem.** For all real a and b, 2 cos a cos b = cos(a − b) + cos(a + b).
 
-**How the definition helps.** The exponential definition reduces the product of cosines to four products of exponentials. The law exp(u + v) = exp(u) exp(v) converts each product to a single exponential. Pairing exponents of opposite sign gives the two cosines (our own calculation). With the circle definition, one can instead add the formulas for cos(a + b) and cos(a − b). The work moves into proving the exponential law and showing that these formulas for sine and cosine give the circle coordinates (our own comparison).
+**How the definition helps.** Multiplying the two exponential averages gives four terms. The exponential addition law gives their exponents as i(a + b), −i(a + b), i(a − b), and −i(a − b). Pairing opposite exponents gives the two cosines with the required factor (our own calculation).
 
 **nLab:** [trigonometric function](https://ncatlab.org/nlab/show/trigonometric+function). It says: “The most useful modern approach to cos and sin comes from taking Euler's formula as a working definition”
 
@@ -224,11 +224,11 @@
 
 *True by definition.* MSC 33B10 (Exponential and trigonometric functions), 26A09. arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** Take the branch x &gt; 0 of the hyperbola x² − y² = 1. For a point on it, let t be twice the area between the ray from the origin, the hyperbola, and the horizontal axis. Give t a negative sign below the axis and define cosh t = x and sinh t = y. Another definition sets cosh t = (exp(t) + exp(−t))/2 and sinh t = (exp(t) − exp(−t))/2.
+**Definition.** On the right branch of x² − y² = 1, let t be twice the signed sector area from (1,0) to (x,y). Count area below the horizontal axis as negative. Define cosh t = x and sinh t = y.
 
 **Problem.** For every real t, cosh²t − sinh²t = 1.
 
-**How the definition helps.** The coordinate definition makes the identity the equation of the hyperbola. With the exponential definition, one instead expands and subtracts the two squares. The work moves into showing that the signed area gives the exponential formulas. With u = x + y, twice the signed area is the integral of 1/u from 1 to x + y, so x + y = exp(t) (our own).
+**How the definition helps.** The coordinates satisfy the hyperbola equation by construction. In our own comparison, putting u = x + y expresses twice the signed area as the integral of 1/u from 1 to x + y. This identifies x + y with exp(t).
 
 **Wikipedia:** [Hyperbolic functions](https://en.wikipedia.org/wiki/Hyperbolic_functions). It says: “Just as the points (cos t, sin t) form a circle with a unit radius, the points (cosh t, sinh t) form the right half of the unit hyperbola.”
 
@@ -276,7 +276,7 @@
 
 **Problem.** For every integer n and real x, (cos x + i sin x)ⁿ = cos nx + i sin nx.
 
-**How the definition helps.** The exponential definition makes de Moivre’s formula the integer power law exp(ix)ⁿ = exp(inx). This law follows from exp(u + v) = exp(u) exp(v). Negative powers work because exp(−u) = 1/exp(u). With the circle definition, another proof uses the angle-addition formulas and induction, then takes reciprocals for negative powers (our own). The exponent proof relies on the addition law for exp and on proving that the exponential definition gives the circle coordinates (our own).
+**How the definition helps.** The exponential definition makes the formula the integer power law exp(ix)ⁿ = exp(inx). Repeated multiplication proves this for positive n, and both sides equal one for n = 0. Taking reciprocals proves it for negative n because exp(−ix) = 1/exp(ix) (our own explanation).
 
 **nLab:** [trigonometric function](https://ncatlab.org/nlab/show/trigonometric+function). It says: “In other words: exp(i t) = cos(t) + i sin(t) (Euler).”
 
@@ -342,7 +342,7 @@
 
 **Problem.** For x, y &gt; 0, B(x + 1, y) = x B(x, y)/(x + y).
 
-**How the definition helps.** With the gamma quotient, the recurrence follows from Γ(s + 1) = sΓ(s) used twice (our own). The numerator gains a factor x, and the denominator gains a factor x + y (our own). With the integral definition, one instead integrates by parts and uses B(x, y) = B(x + 1, y) + B(x, y + 1) (our own). The work moves into the identity B(x, y) = Γ(x)Γ(y)/Γ(x + y). Wikipedia proves it by multiplying two gamma integrals and changing variables.
+**How the definition helps.** The gamma recurrence Γ(s + 1) = sΓ(s) applies twice in the defining quotient (our own). Raising x by one multiplies the numerator by x and the denominator by x + y. Their ratio gives the stated beta recurrence.
 
 **Wikipedia:** [Beta function](https://en.wikipedia.org/wiki/Beta_function). It says: “Β(z₁,z₂) = Γ(z₁)Γ(z₂)/Γ(z₁ + z₂)”
 
@@ -354,11 +354,11 @@
 
 *True by definition.* MSC 33B15 (Gamma, beta and polygamma functions). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** Let x be complex, other than 0, −1, −2, …. Define Γ(x) as the limit of k!·k raised to x − 1, over x(x + 1)⋯(x + k − 1), as k grows. The usual definition is Euler’s integral of t raised to x − 1 times exp(−t) over the positive half-line. That integral converges only when the real part of x is positive.
+**Definition.** Take complex x outside the nonpositive integers. Euler defines Γ(x) as the limit of k! kˣ⁻¹/\[x(x + 1)⋯(x + k − 1)\] as positive integers k increase.
 
 **Problem.** For every complex x other than 0, −1, −2, …, Γ(x + 1) = xΓ(x).
 
-**How the definition helps.** With Euler’s limit, the quotient of the finite expressions at x + 1 and at x is kx/(x + k), which tends to x. So the formula holds at once on the whole domain. The integral definition gives it by integration by parts only where the real part of x is positive, and continuation beyond needs the formula itself. The work moves to showing that the limit exists and equals the integral there (our own proof steps).
+**How the definition helps.** At x + 1, Euler’s finite expression equals its value at x multiplied by kx/(x + k). Taking limits gives the recurrence because the multiplier tends to x (our own proof). The work lies in establishing Euler’s limit and identifying it with the gamma integral on the right half-plane.
 
 **nLab:** [Gamma function](https://ncatlab.org/nlab/show/Gamma+function). It says: “the Gamma function satisfies the following translation formula”
 
@@ -366,7 +366,7 @@
 
 ### Log convexity gives Gauss's gamma multiplication law
 
-**Remember:** Shift the scaled product once so the middle factors cancel.
+**Remember:** Gamma is positive and log-convex, starts at one, and satisfies the factorial recurrence.
 
 *True by definition.* MSC 33B15 (Gamma, beta and polygamma functions). arXiv math.CA. Level 2: later undergraduate.
 
@@ -504,7 +504,7 @@
 
 **Problem.** The extension satisfies H(x+1)−H(x) = 1/(x+1) for all x ≥ 0. It agrees with the harmonic numbers at every nonnegative integer.
 
-**How the definition helps.** The logarithmic derivative changes the gamma multiplication law into the additive harmonic recurrence. In our own calculation, differentiating log Γ(t+1) = log t+log Γ(t) gives the required difference. The identity Γ′(1) = −γ and Γ(1) = 1 give H(0) = 0. The recurrence then recovers every integer harmonic number.
+**How the definition helps.** The logarithmic derivative turns the gamma recurrence into the harmonic recurrence (our own). Differentiating log Γ(t + 1) = log t + log Γ(t) gives the difference at t = x + 1. The identities Γ′(1) = −γ and Γ(1) = 1 give H(0) = 0. The recurrence then recovers every integer harmonic number.
 
 **Paper or page:** [Extension of Harmonic Number to Non-Integer Argument](https://proofwiki.org/wiki/Extension_of_Harmonic_Number_to_Non-Integer_Argument). It says: “H(x) = γ + Γ′(x+1)/Γ(x+1)”
 
@@ -532,11 +532,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 33B15 (Gamma, beta and polygamma functions). arXiv math.CV. Level 2: later undergraduate.
 
-**Definition.** The reciprocal gamma function is 1/Γ(z). It is entire of order 1. It has simple zeros at 0, −1, −2, … and no other zeros.
+**Definition.** Define R(z) = 1/Γ(z) wherever Γ is finite, and set R(z) = 0 at every pole of Γ. This entire extension is the reciprocal gamma function.
 
-**Problem.** For every complex z, 1/Γ(z) = z exp(γz) ∏ (1 + z/n) exp(−z/n), where γ is the Euler–Mascheroni constant. The reflection formula becomes 1/(Γ(z)Γ(1 − z)) = sin(πz)/π for all z (our own).
+**Problem.** For every complex z, R(z) equals z exp(γz) times the product of (1 + z/n)exp(−z/n) over positive integers n. Here γ is the Euler–Mascheroni constant. The reflection formula becomes R(z)R(1 − z) = sin(πz)/π everywhere (our own).
 
-**How the definition helps.** Turning the poles of Γ into zeros gives an entire function, so its identities hold at every point (our own explanation). For Γ itself, each formula must exclude the non-positive integers. As an entire function of order 1, 1/Γ is a Weierstrass product over its zeros. Weierstrass used this product in developing his factorization theorem.
+**How the definition helps.** At each gamma pole the reciprocal extends holomorphically with value zero. The Weierstrass product for reciprocal gamma gives the first identity, including these zeros. Euler’s reflection formula gives the second away from integers, and continuity gives it at integers (our own explanation).
 
 **Wikipedia:** [Reciprocal gamma function](https://en.wikipedia.org/wiki/Reciprocal_gamma_function). It says: “Since the gamma function is meromorphic and nonzero everywhere in the complex plane, its reciprocal is an entire function.”
 
@@ -548,7 +548,7 @@
 
 *True by definition.* MSC 33B20 (Incomplete beta and gamma functions (error functions, probability integral, Fresnel integrals)), 60G55. arXiv math.CA, math.PR. Level 2: later undergraduate.
 
-**Definition.** Fix a positive integer n and x ≥ 0. Let Q(n, x) be the chance that the nth event of a rate-one Poisson process comes after time x. In such a process the waiting times between events are independent and exponential with mean one. The usual definition is the integral of t raised to n − 1 times exp(−t) from x to infinity, divided by (n − 1)!.
+**Definition.** Fix a positive integer n and let Tₙ be the nth arrival time of a rate-one Poisson process. For every x ≥ 0, define Q(n,x) as the probability that Tₙ exceeds x.
 
 **Problem.** For each positive integer n and x ≥ 0, Q(n, x) equals the probability that a Poisson variable with mean x is less than n.
 
@@ -564,7 +564,7 @@
 
 *True by definition.* MSC 33B20 (Incomplete beta and gamma functions (error functions, probability integral, Fresnel integrals)). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** For a,b &gt; 0, integrate tᵃ⁻¹(1 − t)ᵇ⁻¹ from zero to x. Divide by its integral from zero to one to define the regularized incomplete beta function Iₓ(a,b). Another definition uses the Gauss hypergeometric series.
+**Definition.** For a,b &gt; 0 and 0 ≤ x ≤ 1, integrate tᵃ⁻¹(1 − t)ᵇ⁻¹ from zero to x. Divide by the integral of the same function from zero to one to obtain Iₓ(a,b).
 
 **Problem.** For 0 ≤ x ≤ 1, the two fractions satisfy Iₓ(a,b) + I₁₋ₓ(b,a) = 1.
 
@@ -598,7 +598,7 @@
 
 *True by definition.* MSC 33C05 (Classical hypergeometric functions, \\(\_2F<sub>1</sub>\\)). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** Write (a)ₙ for the product of n consecutive factors starting at a and increasing by one, with (a)₀ = 1. Define ₂F₁(a,b;c;z) by its power series with coefficient (a)ₙ(b)ₙ/((c)ₙ n!) at degree n. Another definition selects the solution of the Gauss differential equation that is analytic at zero and equals 1 there.
+**Definition.** For complex a, define (a)₀ = 1 and (a)ₙ = a(a + 1)⋯(a + n − 1) for positive integers n. Take complex a,b,c with c outside the nonpositive integers. For \|z\| &lt; 1, define ₂F₁(a,b;c;z) by the power series with coefficient (a)ₙ(b)ₙ/((c)ₙ n!) at degree n.
 
 **Problem.** For \|z\| &lt; 1 and c not a nonpositive integer, the derivative of ₂F₁(a,b;c;z) is (ab/c) ₂F₁(a+1,b+1;c+1;z).
 
@@ -614,7 +614,7 @@
 
 *True by definition.* MSC 33C05 (Classical hypergeometric functions, \\(\_2F<sub>1</sub>\\)). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** For positive u and v, B(u, v) is the integral of tᵘ⁻¹(1 − t)ᵛ⁻¹ over 0 &lt; t &lt; 1. For c &gt; b &gt; 0, Euler’s integral defines ₂F₁(a,b;c;z) as an average of (1 − zt)⁻ᵃ over 0 &lt; t &lt; 1. The weight is tᵇ⁻¹(1 − t)ᶜ⁻ᵇ⁻¹/B(b, c − b). The usual definition starts from a power series.
+**Definition.** For real a and c &gt; b &gt; 0, use the probability density proportional to tᵇ⁻¹(1 − t)ᶜ⁻ᵇ⁻¹ on (0,1). For real z ≤ 1 where the integral converges, Euler’s integral defines ₂F₁(a,b;c;z) as the average of (1 − zt)⁻ᵃ with this density.
 
 **Problem.** Take real a, b and c with c &gt; b &gt; 0 and c − a − b &gt; 0. Then ₂F₁(a,b;c;1) = Γ(c)Γ(c − a − b)/(Γ(c − a)Γ(c − b)).
 
@@ -748,7 +748,7 @@
 
 *True by definition.* MSC 33C45 (Orthogonal polynomials and functions of hypergeometric type (Jacobi, Laguerre, Hermite, Askey scheme, etc.)). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** For 0 &lt; θ &lt; π, define Tₙ(cos θ) = cos(nθ) and Uₙ(cos θ) = sin((n + 1)θ)/sin θ. These are the Chebyshev polynomials of the first and second kinds. Another definition builds each family by its recurrence in degree.
+**Definition.** Fix an integer n ≥ 0. For every 0 &lt; θ &lt; π, the Chebyshev polynomials satisfy Tₙ(cos θ) = cos(nθ) and Uₙ(cos θ) = sin((n + 1)θ)/sin θ. These values determine both polynomials.
 
 **Problem.** For n ≥ 1, the derivative of Tₙ is n Uₙ₋₁.
 
@@ -844,7 +844,7 @@
 
 *True by definition.* MSC 33C45 (Orthogonal polynomials and functions of hypergeometric type (Jacobi, Laguerre, Hermite, Askey scheme, etc.)). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** For each nonnegative integer n, define Tₙ as the unique polynomial with Tₙ(cos θ) = cos(nθ) for every real θ. Another common definition starts with T₀ = 1 and T₁ = x, then uses Tₙ₊₁ = 2xTₙ − Tₙ₋₁ for n ≥ 1.
+**Definition.** For each nonnegative integer n, define Tₙ as the unique polynomial with Tₙ(cos θ) = cos(nθ) for every real θ.
 
 **Problem.** For nonnegative integers m and n, Tₘ(Tₙ(x)) = Tₘₙ(x) for every real x.
 
@@ -856,15 +856,15 @@
 
 ### The generating function makes the Legendre recurrence a coefficient comparison
 
-**Remember:** Differentiate the generating function in t once and compare neighbouring coefficients.
+**Remember:** Read Legendre polynomials from the reciprocal square root of 1−2xt+t².
 
 *True by definition.* MSC 33C45 (Orthogonal polynomials and functions of hypergeometric type (Jacobi, Laguerre, Hermite, Askey scheme, etc.)). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** Define the nth Legendre polynomial Pₙ as the coefficient of tⁿ in 1/√(1 − 2xt + t²). Rodrigues’s formula instead defines Pₙ as the nth derivative of (x² − 1)ⁿ, divided by 2ⁿn!.
+**Definition.** For each integer n ≥ 0, Pₙ(x) is the coefficient of tⁿ in the expansion of (1−2xt+t²)⁻¹ᐟ² at t=0.
 
 **Problem.** For n ≥ 1, (n + 1)Pₙ₊₁(x) = (2n + 1)xPₙ(x) − nPₙ₋₁(x).
 
-**How the definition helps.** The generating function G satisfies (1 − 2xt + t²)·∂G/∂t = (x − t)G (our own). The recurrence is this equation read coefficient by coefficient. From Rodrigues’s formula, the recurrence needs a longer calculation with repeated derivatives. The work moves to showing that the two definitions agree, for example by orthogonality on \[−1, 1\] and the value one at x = 1 (our own).
+**How the definition helps.** Differentiating G=(1−2xt+t²)⁻¹ᐟ² gives (1−2xt+t²)∂G/∂t=(x−t)G (our own). Comparing coefficients of tⁿ gives the recurrence.
 
 **nLab:** [Legendre polynomial](https://ncatlab.org/nlab/show/Legendre+polynomial). It says: “Alternatively they can be defined via a generating function:”
 
@@ -876,11 +876,11 @@
 
 *True by definition.* MSC 33C45 (Orthogonal polynomials and functions of hypergeometric type (Jacobi, Laguerre, Hermite, Askey scheme, etc.)). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** Define Pₙ(u) as the coefficient of t to power n in 1/√(1 − 2tu + t²). Another definition uses repeated differentiation.
+**Definition.** For each integer n ≥ 0, Pₙ(u) is the coefficient of tⁿ in the expansion of (1−2tu+t²)⁻¹ᐟ² at t=0.
 
 **Problem.** Let two points be at distances a and r from the origin with 0 &lt; a &lt; r. For their angle θ at the origin, their reciprocal distance equals the sum of Pₙ(cos θ)(a/r)ⁿ/r over n ≥ 0.
 
-**How the definition helps.** Our own proof divides the distance formula by r and sets t = a/r and u = cos θ. The work is to show the defining power series converges for \|t\| &lt; 1 and agrees with the other definitions of Pₙ (our own).
+**How the definition helps.** The cosine rule gives the distance as r√(1−2tu+t²), with t=a/r and u=cos θ (our own). Taking the reciprocal gives the defining series divided by r, which converges because \|u\|≤1 and t&lt;1.
 
 **Wikipedia:** [Legendre polynomials](https://en.wikipedia.org/wiki/Legendre_polynomials). It says: “The left-hand side of the equation is the generating function for the Legendre polynomials.”
 
@@ -892,7 +892,7 @@
 
 *True by definition.* MSC 33C45 (Orthogonal polynomials and functions of hypergeometric type (Jacobi, Laguerre, Hermite, Askey scheme, etc.)). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** Define the Legendre polynomial of degree n as the coefficient of t to power n in 1/√(1 − 2tx + t²). An alternative uses Rodrigues's repeated derivatives.
+**Definition.** For each integer n ≥ 0, the Legendre polynomial Pₙ(x) is the coefficient of tⁿ in the expansion of (1−2tx+t²)⁻¹ᐟ² at t=0.
 
 **Problem.** The Legendre polynomial of degree n has value 1 at x = 1 and (−1) to power n at x = −1.
 
@@ -904,7 +904,7 @@
 
 ### Homogeneous harmonic polynomials give the spherical Laplacian eigenvalues
 
-**Remember:** The polynomial’s degree fixes its spherical eigenvalue.
+**Remember:** Restrict a homogeneous harmonic polynomial to the sphere and its degree determines the eigenvalue.
 
 *True by definition.* MSC 33C55 (Spherical harmonics), 35J05. arXiv math.AP. Level 2: later undergraduate.
 
@@ -928,7 +928,7 @@
 
 **Problem.** Increasing x by one multiplies the q-gamma function by (1−qˣ)/(1−q).
 
-**How the definition helps.** The product definition makes the shift remove exactly one denominator factor. In our own calculation, the common product factors cancel and the prefactor contributes 1/(1−q). This proves the shift law directly without evaluating an integral representation. The work lies in proving that the infinite products converge to nonzero limits. For x&gt;0 and 0&lt;q&lt;1, the deviations of their factors from one have finite geometric sums.
+**How the definition helps.** Shifting x to x+1 removes the denominator factor 1−qˣ (our own). The prefactor changes by 1/(1−q), giving the stated ratio. Cancellation is valid because the numerator and denominator products converge to nonzero limits by geometric summability.
 
 **Wikipedia:** [q-gamma function](https://en.wikipedia.org/wiki/q-gamma_function). It says: “The q-gamma function satisfies the functional equation”
 
@@ -1010,7 +1010,7 @@
 
 **Problem.** An elliptic function that is holomorphic on the whole plane is constant.
 
-**How the definition helps.** The period parallelogram is compact and contains a representative for every value, so the function is bounded. With only one period, eᶻ is an entire nonconstant counterexample (our own). The work is Liouville's theorem for bounded entire functions.
+**How the definition helps.** A closed period parallelogram contains a representative of every point modulo the lattice, so continuity bounds the entire function. Liouville’s theorem makes it constant (our own argument). The nonconstant entire function eᶻ has periods only in 2πiℤ, so it lacks two independent periods.
 
 **Wikipedia:** [Elliptic function](https://en.wikipedia.org/wiki/Elliptic_function). It says: “A holomorphic elliptic function is bounded since it takes on all of its values on the fundamental domain which is compact.”
 
@@ -1038,7 +1038,7 @@
 
 *True by definition.* MSC 33B15 (Gamma, beta and polygamma functions). arXiv math.CA. Level 3: graduate.
 
-**Definition.** For integers p ≥ 1 and real a &gt; (p − 1)/2, start with the product of p ordinary gamma values. Their arguments run from a to a − (p − 1)/2 in steps of −½. Multiply by π to the power p(p − 1)/4 to obtain multivariate gamma. Another definition integrates over real symmetric matrices with positive eigenvalues.
+**Definition.** For each integer p≥1 and real a&gt;(p−1)/2, multiply the p factors Γ(a−j/2) for j=0,…,p−1. Multiplying this product by π raised to p(p−1)/4 defines Γₚ(a).
 
 **Problem.** The ratio of multivariate gamma at a + ½ to its value at a is Γ(a + ½)/Γ(a − (p − 1)/2).
 
@@ -1072,11 +1072,11 @@
 
 *True by definition.* MSC 33B30 (Higher logarithm functions), 51M10. arXiv math.CA, math.GT. Level 3: graduate.
 
-**Definition.** An ideal hyperbolic tetrahedron has all four vertices at infinity. Let α, β and γ be the angles between faces meeting at one vertex, and let Λ(θ) be the integral of −log\|2 sin t\| from 0 to θ. The Bloch–Wigner dilogarithm D(z) is the volume Λ(α) + Λ(β) + Λ(γ) of the ideal tetrahedron with shape z.
+**Definition.** For 0&lt;θ&lt;π, define Λ(θ) as the integral of −log\|2 sin t\| from 0 to θ. For Im z&gt;0, the geometric definition of D(z) takes the volume of the ideal tetrahedron with ordered vertices ∞, 0, 1, z.
 
 **Problem.** For Im z&gt;0, let α, β and γ be the arguments of z, 1/(1−z) and 1−1/z. The Bloch–Wigner dilogarithm satisfies 2D(z)=D(exp(2iα))+D(exp(2iβ))+D(exp(2iγ)).
 
-**How the definition helps.** In our own terms, the angle formula already writes the volume as three real functions of one angle each. The Fourier series of Λ gives 2Λ(θ) = D(exp(2iθ)). In our own terms, the remaining work is the hyperbolic volume formula in angle coordinates.
+**How the definition helps.** The ideal tetrahedron volume formula gives D(z)=Λ(α)+Λ(β)+Λ(γ) for the three stated angles (our own argument). The Fourier series of Λ and the unit-circle Clausen identity give 2Λ(θ)=D(exp(2iθ)). Substitution gives the result.
 
 **Wikipedia:** [Clausen function](https://en.wikipedia.org/wiki/Clausen_function). It says: “The Lobachevsky function Λ or Л is essentially the same function with a change of variable”
 
@@ -1104,15 +1104,15 @@
 
 ### Equal angles maximize dilogarithm volume
 
-**Remember:** Equal angles give the largest ideal tetrahedron.
+**Remember:** Add one Lobachevsky value per angle, with the three angles summing to π.
 
 *True by definition.* MSC 33B30 (Higher logarithm functions), 51M10. arXiv math.CA, math.GT. Level 3: graduate.
 
-**Definition.** An ideal tetrahedron has its vertices on the boundary of hyperbolic space. Describe its shape by the three angles between faces meeting at one vertex. These positive angles sum to π. Its volume is Λ(α)+Λ(β)+Λ(γ), where Λ(θ) integrates −log\|2 sin t\| from 0 to θ.
+**Definition.** For 0≤θ≤π, let Λ(θ) be the integral of −log\|2 sin t\| from 0 to θ. For a positively oriented ideal tetrahedron, the three dihedral angles α, β, γ at one vertex are positive and sum to π. Its volume in these coordinates is Λ(α)+Λ(β)+Λ(γ).
 
 **Problem.** The Bloch–Wigner dilogarithm D, which gives signed volume at complex shape z, has a unique maximum on the upper half-plane at z=(1+i√3)/2.
 
-**How the definition helps.** Our own proof uses the angle formula to replace a complex maximization by a real one with a single linear constraint. The boundary has volume zero since Λ(π−θ)=−Λ(θ). At an interior maximum the three sines agree. Supplementary angles would leave no room for the third, so each angle equals π/3. The volume formula identifies this maximum with the maximum of D.
+**How the definition helps.** The angle sum makes volume vanish on the boundary, since Λ(π−θ)=−Λ(θ) (our own proof). Interior tetrahedra have positive volume, so the continuous volume function attains its maximum inside the closed angle triangle. Constrained differentiation equates the three sines, and their positive angles sum to π, so all three equal π/3. This angle triple gives the unique upper-half-plane shape z=(1+i√3)/2.
 
 **Paper or page:** [The Andersen-Kashaev volume conjecture for FAMED geometric triangulations](https://arxiv.org/abs/2410.10776v1). It says: “Let T be an ideal tetrahedron in ℍ³ with complex shape structure z. Then, its volume is given by Vol(T) = D(z)”
 
@@ -1142,11 +1142,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 33B30 (Higher logarithm functions), 11M06. arXiv math.NT, math.CA. Level 3: graduate.
 
-**Definition.** On the unit circle, define Pₙ(z) as the real part of Liₙ(z) for odd n and its imaginary part for even n. Here Liₙ denotes the polylogarithm of order n. Set c=1 for odd n and c=i for even n.
+**Definition.** For integers n≥2 and complex z with \|z\|=1, let Pₙ(z) be Re Liₙ(z) for odd n and Im Liₙ(z) for even n. Set c=1 in the odd case and c=i in the even case.
 
 **Problem.** Let χ be a primitive Dirichlet character modulo N with χ(−1) = (−1)ⁿ⁻¹, and let n ≥ 2. Then cΣχ̄(a)Pₙ(exp(2πia/N)) = τL(n,χ), where τ = Σχ̄(a)exp(2πia/N) and both sums run over residues a modulo N.
 
-**How the definition helps.** Pairing a with −a cancels the part of Liₙ that Pₙ drops, because χ has the matching parity (our own). Expanding the series and summing χ̄(a)exp(2πiak/N) over a gives the Gauss sum, so the full polylogarithm sum is τL(n,χ) (our own). With the wrong parity the identity fails: at n = 3 the odd character modulo 4 gives zero on the left, but its L-value is positive (our own).
+**How the definition helps.** Matching parity cancels the discarded component when residues a and −a are paired (our own argument). Expanding Liₙ leaves the primitive Gauss sum χ(k)τ at each index k, giving τL(n,χ). With n=3 the odd character modulo 4 gives zero on the left although its L-value is positive.
 
 **Paper or page:** [Clean Single-Valued Polylogarithms](https://arxiv.org/abs/2104.04344v2). It says: “where Clₙ(α) ≔ ℜₙ(Liₙ(eⁱᵅ)) denotes the Clausen function.”
 
@@ -1179,7 +1179,7 @@
 
 *True by definition.* MSC 33B30 (Higher logarithm functions), 11M32. arXiv math.NT. Level 3: graduate.
 
-**Definition.** A multiple polylogarithm can be written as repeated integration of forms dz/(z − a) along one path. Integrate their product over increasing times, one time for each letter a. A shuffle interleaves two letter sequences while preserving their internal orders.
+**Definition.** For a piecewise smooth path γ on \[0,1\] avoiding a₁,…,aₙ, put gⱼ(t)=γ′(t)/(γ(t)−aⱼ). The word integral integrates ∏ⱼ gⱼ(tⱼ) over 0&lt;t₁&lt;⋯&lt;tₙ&lt;1 with respect to all n times. A shuffle interleaves two words while preserving each word’s order.
 
 **Problem.** For a piecewise smooth path avoiding the poles, the product of two such integrals equals the sum over their shuffles.
 
@@ -1251,11 +1251,11 @@
 
 *True by definition.* MSC 33C05 (Classical hypergeometric functions, \\(\_2F<sub>1</sub>\\)). arXiv math.CV. Level 3: graduate.
 
-**Definition.** The regularized Gauss series gives zⁿ the coefficient (a)ₙ(b)ₙ/(n!·Γ(c+n)), with (a)ₙ = a(a+1)⋯(a+n−1). Here 1/Γ is entire and is zero at nonpositive integers. Away from those integers the series equals ₂F₁(a,b;c;z)/Γ(c).
+**Definition.** For \|z\|&lt;1 and complex a,b,c, the regularized Gauss series has coefficient (a)ₙ(b)ₙ(1/Γ)(c+n)/n! at zⁿ for every integer n≥0. Here (a)ₙ is the product of a+j over 0≤j&lt;n, with empty product one. The entire reciprocal gamma function vanishes at nonpositive integers.
 
 **Problem.** For fixed a and b and \|z\| &lt; 1, the regularized Gauss function is analytic in c on the whole complex plane. The ordinary ₂F₁ need not exist at c = 0, −1, −2 and so on.
 
-**How the definition helps.** In our own proof, every regularized coefficient uses the entire reciprocal gamma function and thus has no parameter poles. Our own account puts the work in proving uniform convergence on compact sets of c and showing agreement with ₂F₁/Γ(c) elsewhere. In our own example, ₂F₁(1,1;c;z) has a pole at c = 0 for real 0 &lt; z &lt; 1.
+**How the definition helps.** Each coefficient is entire in c because it uses reciprocal gamma (our own proof). On compact sets of c, the successive coefficient multiplier (a+n)(b+n)/((n+1)(c+n)) tends uniformly to one. Thus the series converges locally uniformly for \|z\|&lt;1 and defines an entire function of c. For a=b=1 and 0&lt;z&lt;1, the ordinary series has a pole at c=0 (our own example).
 
 **Wikipedia:** [Hypergeometric function](https://en.wikipedia.org/wiki/Hypergeometric_function). It says: “Dividing by the value Γ(c) of the gamma function, we have the limit”
 
@@ -1285,7 +1285,7 @@
 
 *True by definition.* MSC 33C10 (Bessel and Airy functions, cylinder functions, \\(\_0F<sub>1</sub>\\)). arXiv math.CA. Level 3: graduate.
 
-**Definition.** For x &gt; 0, the modified Bessel function K of order ν is half the integral of exp(−x cosh t + νt) over all real t. Pairing t with −t gives the usual integral of exp(−x cosh t)cosh(νt) over t &gt; 0. Another definition selects the decaying solution of the modified Bessel equation.
+**Definition.** For x&gt;0 and real order ν, define the modified Bessel function K of order ν by integrating exp(−x cosh t+νt)/2 over all real t.
 
 **Problem.** For each x &gt; 0, the logarithm of K at x is convex in the real order ν.
 
@@ -1319,7 +1319,7 @@
 
 **Definition.** A polynomial functional u assigns numbers linearly to polynomials. Define its derivative by u′(f) = −u(f′), and define multiplication by (φu)(f) = u(φf). The Pearson equation is (φu)′ = ψu, with φ(x) = ax² + bx + c and ψ(x) = px + q.
 
-**Problem.** Let mₙ = u(xⁿ) be the moments. The Pearson equation holds exactly when (na + p)mₙ₊₁ + (nb + q)mₙ + ncmₙ₋₁ = 0 for every n ≥ 0, where the last term is absent at n = 0.
+**Problem.** Write mₙ=u(xⁿ). The Pearson equation holds exactly when (na+p)mₙ₊₁+(nb+q)mₙ+ncmₙ₋₁=0 for every integer n≥0. At n=0, omit the last term.
 
 **How the definition helps.** In our own comparison, differentiating the test polynomial replaces integration by parts against a differentiable weight. Testing on each power of x gives the recurrence directly. Powers span the polynomials, so linearity gives the converse. Finding a functional that gives classical orthogonal polynomials is a separate problem.
 
@@ -1335,7 +1335,7 @@
 
 *True by definition.* MSC 33C45 (Orthogonal polynomials and functions of hypergeometric type (Jacobi, Laguerre, Hermite, Askey scheme, etc.)). arXiv math.CA. Level 3: graduate.
 
-**Definition.** Let w(x) be (1 − x) raised to α times (1 + x) raised to β, with α, β &gt; −1. Rodrigues’s formula defines P(n; α, β) as (−1)ⁿ/(2ⁿn!) times 1/w times the nth derivative of w·(1 − x²)ⁿ. The usual definition is a terminating Gauss hypergeometric series, a power series that stops after finitely many terms.
+**Definition.** Fix an integer n≥0 and real α,β&gt;−1. On −1&lt;x&lt;1, set w(x)=(1−x)ᵅ(1+x)ᵝ. The Jacobi polynomial P(n; α, β) agrees there with (−1)ⁿ/(2ⁿn!w(x)) times the nth derivative of w(x)(1−x²)ⁿ.
 
 **Problem.** For α, β &gt; −1, P(n; α, β)(−x) = (−1)ⁿP(n; β, α)(x).
 
@@ -1351,7 +1351,7 @@
 
 *True by definition.* MSC 33C45 (Orthogonal polynomials and functions of hypergeometric type (Jacobi, Laguerre, Hermite, Askey scheme, etc.)). arXiv math.CA. Level 3: graduate.
 
-**Definition.** For λ &gt; 0, define C(n; λ)(x) as the coefficient of tⁿ in (1 − 2xt + t²) raised to −λ. The alternative uses orthogonal polynomials for the weight (1 − x²) raised to λ − ½, normalized at x = 1. That value is 2λ(2λ + 1)⋯(2λ + n − 1)/n!, and one when n = 0.
+**Definition.** For λ&gt;0 and each integer n≥0, C(n; λ)(x) is the coefficient of tⁿ in the expansion of (1−2xt+t²) raised to −λ at zero.
 
 **Problem.** For n ≥ 1 and λ &gt; 0, the derivative of C(n; λ) is 2λ·C(n − 1; λ + 1).
 
@@ -1383,7 +1383,7 @@
 
 *True by definition.* MSC 33C60 (Hypergeometric integrals and functions defined by them (\\(E\\), \\(G\\), \\(H\\) and \\(I\\) functions)). arXiv math.CA. Level 3: graduate.
 
-**Definition.** Define Meijer’s G-function as a contour integral in s of exp(s log z) times a quotient of gamma products. The gamma arguments have the forms b − s, 1 − a + s, 1 − b + s and a − s. Here a runs over the upper parameters and b over the lower ones.
+**Definition.** For upper parameters a₁,…,aₚ and lower parameters b₁,…,b<sub>q</sub>, integrate exp(s log z) times a gamma quotient along an admissible Meijer contour, dividing by 2πi. Multiply Γ(bⱼ−s) for j≤m and Γ(1−aⱼ+s) for j≤n in the numerator. Multiply Γ(1−bⱼ+s) and Γ(aⱼ−s) over the remaining lower and upper indices respectively in the denominator.
 
 **Problem.** Fix a branch of log z. Then exp(h log z) times Meijer’s G-function equals the G-function with h added to every upper and lower parameter, wherever the integrals converge.
 
@@ -1399,7 +1399,7 @@
 
 *True by definition.* MSC 33C65 (Appell, Horn and Lauricella functions). arXiv math.CA. Level 3: graduate.
 
-**Definition.** For real c &gt; a &gt; 0, normalize the weight tᵃ⁻¹(1 − t)ᶜ⁻ᵃ⁻¹ to integrate to one over 0 &lt; t &lt; 1. Define F₁ by averaging the product of (1 − xt) to the power −b and (1 − yt) to the power −b′. Appell’s series instead sums over two indices, one for each variable.
+**Definition.** For c&gt;a&gt;0, take the probability density proportional to tᵃ⁻¹(1−t)ᶜ⁻ᵃ⁻¹ on (0,1). For real b,b′ and \|x\|,\|y\|&lt;1, define F₁(a;b,b′;c;x,y) as the mean of (1−xt) raised to −b times (1−yt) raised to −b′. Use principal powers.
 
 **Problem.** For real c &gt; a &gt; 0, b and b′ real, and \|x\| &lt; 1, F₁(a;b,b′;c;x,x) = ₂F₁(b + b′,a;c;x).
 
@@ -1433,7 +1433,7 @@
 
 *True by definition.* MSC 33D15 (Basic hypergeometric functions in one variable, \\(\_r\\phi<sub>s</sub>\\)). arXiv math.CA. Level 3: graduate.
 
-**Definition.** For 0 &lt; \|q\| &lt; 1 and \|z\| &lt; 1, define F(z) by multiplying (1 − aqʲz)/(1 − qʲz) over integers j ≥ 0.
+**Definition.** For complex a,q with 0&lt;\|q\|&lt;1, define F(z) on \|z\|&lt;1 as the product of (1−aqʲz)/(1−qʲz) over all integers j≥0.
 
 **Problem.** On \|z\| &lt; 1, this quotient of products equals the q-binomial series. Its coefficient of degree n is the product of the first n factors (1 − aqʲ)/(1 − qʲ⁺¹), starting at j = 0.
 
@@ -1463,7 +1463,7 @@
 
 ### Arithmetic–geometric means evaluate elliptic integrals
 
-**Remember:** Keep the integral unchanged until its integrand is constant.
+**Remember:** Iterate the arithmetic and geometric means until both inputs have the same limit.
 
 *Makes the theorem clean to state or prove.* MSC 33E05 (Elliptic functions and integrals). arXiv math.CA. Level 3: graduate.
 
@@ -1471,7 +1471,7 @@
 
 **Problem.** For 0 ≤ k &lt; 1, let K(k) be the complete elliptic integral of 1/√(1 − k² sin²t) over 0 ≤ t ≤ π/2. Then K(k) = π/(2M), where M is the arithmetic–geometric mean of 1 and √(1 − k²).
 
-**How the definition helps.** The common limit turns a sequence of equal integrals into one with a constant integrand. Landen’s transformation preserves the integral at each step. Our own limit argument bounds every integrand by the reciprocal of the smaller starting value. The work lies in proving the transformation and the convergence of the two means.
+**How the definition helps.** Landen’s transformation preserves the integral of 1/√(a²cos²t+b²sin²t) on \[0,π/2\] when a,b are replaced by their arithmetic and geometric means. Starting with a=1 and b=√(1−k²) gives K(k). Both means tend to M and every integrand is bounded by 1/b for the initial b (our own limit argument). Dominated convergence gives π/(2M).
 
 **Wikipedia:** [Landen's transformation](https://en.wikipedia.org/wiki/Landen%27s_transformation). It says: “In the limit, the integrand becomes a constant, so that integration is trivial”
 
@@ -1483,7 +1483,7 @@
 
 *True by definition.* MSC 33E05 (Elliptic functions and integrals), 33D65. arXiv math.CV. Level 3: graduate.
 
-**Definition.** For nonzero p and q with \|p\|, \|q\| &lt; 1, the elliptic gamma function Γ(z;p,q) is the product over m, n ≥ 0 of (1 − pᵐ⁺¹qⁿ⁺¹/z)/(1 − pᵐqⁿz). An alternative starts with a series for its logarithm on \|pq\| &lt; \|z\| &lt; 1.
+**Definition.** Fix nonzero complex p,q with \|p\|,\|q\|&lt;1. For z≠0 away from denominator zeros, define Γ(z;p,q) by multiplying (1−pᵐ⁺¹qⁿ⁺¹/z)/(1−pᵐqⁿz) over all nonnegative integers m,n. Interpret the result meromorphically on the punctured plane.
 
 **Problem.** As meromorphic functions of z ≠ 0, the elliptic gamma values at z and pq/z multiply to one.
 
@@ -1533,11 +1533,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 33E05 (Elliptic functions and integrals). arXiv math.CA. Level 3: graduate.
 
-**Definition.** Fix a lattice of complex periods, the integer combinations of two periods independent over the reals. The Weierstrass sigma function σ is the standard entire product with simple zeros at the lattice points and σ′(0) = 1. Translated factors place zeros at chosen points, while denominator factors place poles.
+**Definition.** Let Λ be the integer span of two complex numbers independent over ℝ. Define σ(u) as u times the product of (1−u/λ)exp(u/λ+u²/(2λ²)) over all nonzero λ∈Λ.
 
 **Problem.** For v outside the lattice, ℘(u) − ℘(v) equals −σ(u + v)σ(u − v) divided by σ(u)²σ(v)², as meromorphic functions of u.
 
-**How the definition helps.** Translated sigma factors encode the zeros and poles of the difference directly. As a function of u, ℘(u) − ℘(v) has zeros at ±v and a double pole at each lattice point. The ratio of the two sides is then periodic with no poles, so it is constant, and the leading term at u = 0 fixes it. The work lies in the period formulas for σ and the count of zeros with multiplicity (our own).
+**How the definition helps.** The translated sigma factors give zeros at ±v modulo Λ, counted twice when these points coincide (our own proof). The sigma period formulas make the proposed expression elliptic, with double poles at lattice points. The degree-two zero count gives ℘(u)−℘(v) the same zeros and poles, so the quotient is constant. Since σ is odd and σ′(0)=1, both sides have leading term 1/u² at zero.
 
 **Wikipedia:** [Weierstrass elliptic function](https://en.wikipedia.org/wiki/Weierstrass_elliptic_function). It says: “℘(u)−℘(v)=−σ(u+v)σ(u−v)/(σ(u)²σ(v)²).”
 
@@ -1553,7 +1553,7 @@
 
 **Problem.** ℘ is an even elliptic function with periods in Λ and a double pole at each lattice point. It satisfies (℘′)² = 4℘³ − g₂℘ − g₃, where g₂ and g₃ are Eisenstein sums of the lattice.
 
-**How the definition helps.** Each subtracted term makes the summand of size 1/\|λ\|³, so the series converges absolutely and can be rearranged. The plain sum of 1/(z − λ)² does not converge absolutely, because the sum of 1/\|λ\|² over a lattice diverges (our own). The normalization also makes ℘(z) − 1/z² vanish at z = 0, so the Laurent series has no constant term. Liouville’s theorem then gives the differential equation, with no ℘² term (our own).
+**How the definition helps.** Subtraction yields locally uniform absolute convergence off Λ, making evenness and the double poles visible (our own proof). Reindexing the derivative series makes ℘′ periodic, so translating ℘ by a lattice generator adds a constant, zero by evenness at its half-period. Write ℘(z)=z⁻²+az²+bz⁴+O(z⁶), where a=3∑λ⁻⁴ and b=5∑λ⁻⁶ over nonzero lattice points. Laurent expansion makes (℘′)²−4℘³+20a℘+28b entire and zero at zero, so periodicity and Liouville’s theorem make it identically zero.
 
 **Wikipedia:** [Weierstrass elliptic function](https://en.wikipedia.org/wiki/Weierstrass_elliptic_function), [Elliptic function](https://en.wikipedia.org/wiki/Elliptic_function). It says: “It is constructed in such a way that it has a pole of order two at every lattice point. The term −1/λ² is there to make the series convergent.”
 
@@ -1603,7 +1603,7 @@
 
 **Problem.** An elliptic function cannot have exactly one pole per period parallelogram if that pole is simple.
 
-**How the definition helps.** The two periods make the integrals along opposite sides of a period parallelogram cancel (our own). So the residues inside sum to zero, by the residue theorem, and a lone simple pole would have nonzero residue. With only one period the claim fails: cot z has one simple pole per period strip (our own).
+**How the definition helps.** Choose a translated period parallelogram whose edges avoid poles (our own proof). Periodicity cancels opposite edge integrals, so the residue theorem makes the enclosed residues sum to zero. A single simple pole has nonzero residue. The singly periodic function cot z has one simple pole per period strip (our own counterexample).
 
 **Wikipedia:** [Elliptic function](https://en.wikipedia.org/wiki/Elliptic_function). It says: “Every elliptic function has finitely many poles in ℂ/Λ and the sum of its residues is zero.”
 
@@ -1619,7 +1619,7 @@
 
 **Problem.** Every function periodic under this lattice and analytic except at poles is a rational expression in ℘ and ℘′.
 
-**How the definition helps.** The two coordinates separate the even and odd parts of any such function. ℘ takes equal values exactly at opposite points modulo periods, so every even function is a rational function of ℘ (our own). Dividing the odd part by ℘′ makes it even. The work lies in describing the fibers of ℘, including its repeated points.
+**How the definition helps.** Splitting into even and odd parts reduces the problem to describing even functions, since the odd part divided by ℘′ is even (our own). The degree-two map ℘ identifies the quotient by z↦−z with the Riemann sphere. Each even meromorphic function therefore descends to a meromorphic function on the sphere, hence a rational function of ℘.
 
 **Wikipedia:** [Elliptic function](https://en.wikipedia.org/wiki/Elliptic_function). It says: “Every elliptic function with respect to a given period lattice Λ can be expressed as a rational function in terms of ℘ and ℘′.”
 
@@ -1649,7 +1649,7 @@
 
 *True by definition. Confidence: medium.* MSC 33B30 (Higher logarithm functions), 11G55. arXiv math.CA, math.NT. Level 4: research.
 
-**Definition.** The single-valued polylogarithm Pₙ(z) starts from the sum over 0 ≤ k &lt; n of Bₖ(2 log\|z\|)ᵏLiₙ₋ₖ(z)/k!. It keeps the real part of this sum for odd n and the imaginary part for even n. Here Bₖ are the Bernoulli numbers with B₁ = −1/2, and Pₙ is extended continuously at exceptional arguments.
+**Definition.** For integers n≥2, sum Bₖ(2 log\|z\|)ᵏLiₙ₋ₖ(z)/k! over integers 0≤k&lt;n, using Bernoulli numbers with B₁=−1/2. For 0&lt;\|z\|&lt;1, Pₙ takes the real part for odd n and the imaginary part for even n. Use its single-valued real-analytic continuation away from 0 and 1 and its continuous limits there.
 
 **Problem.** For integers n,m≥2 and nonzero complex z, Pₙ(zᵐ) equals mⁿ⁻¹ times the sum of Pₙ(ωz) over all mth roots of unity ω.
 
@@ -1670,11 +1670,11 @@
 
 *True by definition.* MSC 33B30 (Higher logarithm functions), 11G55. arXiv math.NT, math.CA. Level 4: research.
 
-**Definition.** Write J(n,z) for the ordinary single-valued evaluation of the integral representing −Liₙ(1/z), where Liₙ is the order-n polylogarithm. For n&gt;1, form J(n,z)+log(\|z\|²)J(n−1,z)/n. Its real part for odd n, or imaginary part for even n, gives the clean value.
+**Definition.** For integer n&gt;1 and z≠0,1, put H=log\|z\|² and let Pⱼ denote Zagier’s single-valued polylogarithm. Start with Pₙ(z) and add (n−2k−1)H²ᵏPₙ₋₂ₖ(z)/(n(2k+1)!) for every integer 1≤k&lt;(n−1)/2. Multiply the result by 2(−1)ⁿ to define the clean value.
 
 **Problem.** At a root of unity z=exp(iθ) other than 1, the clean value equals 2(−1)ⁿClₙ(θ). Here Clₙ(θ) takes the real part of Liₙ(z) for odd n and the imaginary part for even n.
 
-**How the definition helps.** On the unit circle log\|z\|² = 0, so the clean correction term vanishes (our own). What remains is the parity part of the single-valued polylogarithm, which gives the Clausen value. The work lies in deriving the logarithmic correction from the projection that kills products (our own).
+**How the definition helps.** Every term containing H vanishes on the unit circle (our own calculation). In Zagier’s Bernoulli formula for Pₙ, every correction to the parity part of Liₙ also contains log\|z\|. This leaves precisely 2(−1)ⁿClₙ(θ).
 
 **Paper or page:** [Clean Single-Valued Polylogarithms](https://arxiv.org/abs/2104.04344v2). It says: “Then Iₙᶜˢᵛ(ξ(N)ᵃ) = 2(−1)ⁿ Clₙ(2πa/N)”
 
@@ -1711,7 +1711,7 @@
 
 **Problem.** The logarithmic Mahler measure of 1+x+y, the mean of log\|1+x+y\| on the unit torus, is D(exp(iπ/3))/π.
 
-**How the definition helps.** The integral definition evaluates the integral over an arc from its endpoints (our own). Jensen’s formula averages over y first, leaving the circle average of max(0, log\|1 + x\|), which is supported on the arc of arguments from −2π/3 to 2π/3. Substituting −x moves the endpoints to π/3 and 5π/3, where D takes opposite values. The Fourier series identifies the integral with the analytic dilogarithm.
+**How the definition helps.** Jensen’s formula averages over y and leaves max(0,log\|1+x\|) to average over x (our own proof). The positive arc runs from −2π/3 to 2π/3 in the argument of x. Replacing x by −x shifts it to \[π/3,5π/3\], so the integral is D(exp(iπ/3))−D(exp(5iπ/3)). The endpoint values are opposites, and dividing by 2π gives the stated measure.
 
 **Wikipedia:** [Mahler measure](https://en.wikipedia.org/wiki/Mahler_measure). It says: “m(1+x+y) = 3√3/(4π) L(χ₋₃,2)”
 
@@ -1748,7 +1748,7 @@
 
 **Problem.** The formula for R defines a single-valued function on this logarithm cover with values in ℂ/π²ℤ.
 
-**How the definition helps.** Keeping both branch indices lets the correction compensate for the jumps of the ordinary Rogers dilogarithm. Neumann checks each cut separately. The remaining changes are multiples of π², which represent zero in the stated quotient.
+**How the definition helps.** The integer indices cancel all variable-dependent jumps (our own account of Neumann’s cut calculation). Across the negative axis, the jump of log z offsets the change in p, leaving an integer multiple of qπ². Across (1,∞), the jump of Li₂ offsets the log z terms after q changes, leaving an integer multiple of pπ².
 
 **nLab:** [Bloch group](https://ncatlab.org/nlab/show/Bloch+group). It says: “Accordingly H₃ᵍʳᵖ(♭ PSL(2,ℂ), ℤ) itself is also called the extended Bloch group”
 
@@ -1760,13 +1760,13 @@
 
 **Remember:** A negative tropical sign chooses the complementary argument.
 
-*True by definition.* MSC 33B30 (Higher logarithm functions), 13F60. arXiv math.CA. Level 4: research.
+*Makes the theorem clean to state or prove.* MSC 33B30 (Higher logarithm functions), 13F60. arXiv math.CA. Level 4: research.
 
 **Definition.** The Rogers dilogarithm is L(u) = Li₂(u) + log(u)log(1−u)/2 for 0 &lt; u &lt; 1. Along a sequence of cluster mutations, put u = y/(1+y) at each step, where y is the value of the mutated coefficient at positive initial values. A step is negative when its tropical monomial, computed with coordinatewise minimum in place of addition, has nonpositive exponents, not all zero.
 
 **Problem.** Suppose the mutations return the initial matrix and coefficient variables up to the same permutation. Then the sum of L(u) over the other steps and of −L(1 − u) over the negative steps is zero.
 
-**How the definition helps.** The Rogers normalization turns complementary arguments into a constant sum, L(u)+L(1−u)=π²/6. Each negative step therefore subtracts π²/6 from the unsigned sum. The periodic mutation theorem evaluates that unsigned sum as π²/6 times the number of negative steps.
+**How the definition helps.** The signed arguments express the periodic mutation identity as a single sum (our own explanation). Rogers’s complement identity L(u)+L(1−u)=π²/6 makes each negative step subtract π²/6 from the unsigned sum. The periodic mutation theorem evaluates that sum as π²/6 times the number of negative steps.
 
 **nLab:** [dilogarithm](https://ncatlab.org/nlab/show/dilogarithm). It says: “the Bloch group, CFT, Liouville gravity, hyperbolic geometry and cluster transformations”
 
@@ -1786,7 +1786,7 @@
 
 **Problem.** The sum of L(xₙyₙ) over integers n≥0 is L(a)+L(b)−L((a−b)/(1−b)).
 
-**How the definition helps.** The pair update uses exactly the two arguments that carry over in Rogers’s five-term relation. So consecutive five-term relations telescope (our own). The recurrence gives xₙ → (a − b)/(1 − b) and yₙ → 0, which fixes the last term (our own).
+**How the definition helps.** The pair update passes the two remaining arguments of Rogers’s five-term relation to the next step, so the sum telescopes (our own). Both positive coordinates decrease, and (1−xₙ)/(1−yₙ) stays equal to (1−a)/(1−b). The limiting pair satisfies the update, forcing its smaller coordinate to vanish. The invariant then gives the remaining coordinate (a−b)/(1−b), and L extends continuously with L(0)=0.
 
 **Wikipedia:** [Dilogarithm](https://en.wikipedia.org/wiki/Dilogarithm). It says: “L(x)+L(y)=L(xy)+L(x(1−y)/(1−xy))+L(y(1−x)/(1−xy)).”
 
@@ -1798,7 +1798,7 @@
 
 ### Trilogarithm corrections make sums constant
 
-**Remember:** The corrected trilogarithm leaves just a constant in the three-term sum.
+**Remember:** Correct the real trilogarithm with one log times the dilogarithm and a cubic log term.
 
 *True by definition. Confidence: medium.* MSC 33B30 (Higher logarithm functions), 11G55. arXiv math.CA, math.NT. Level 4: research.
 
@@ -1820,7 +1820,7 @@
 
 *True by definition.* MSC 33C20 (Generalized hypergeometric series, \\(\_pF<sub>q</sub>\\)). arXiv math.CA. Level 4: research.
 
-**Definition.** Let Bₖ be the coefficient of degree k in (1 − x)ⁿ. In the constant-term-one convention, finite free multiplicative convolution multiplies corresponding coefficients and divides each product by Bₖ.
+**Definition.** Fix an integer n≥0 and polynomials with constant term one and degree at most n. Their finite free multiplicative convolution has coefficient aₖbₖ/Bₖ for 0≤k≤n, where aₖ,bₖ are their respective coefficients and Bₖ=(−1)ᵏ binom(n,k).
 
 **Problem.** Take two terminating hypergeometric polynomials, each with upper parameter −n, whose lower rising products are nonzero up to degree n. Their convolution is the hypergeometric polynomial with upper parameter −n and the two remaining parameter lists joined.
 
@@ -1838,11 +1838,11 @@
 
 *Rules out counterexamples.* MSC 33C47 (Other special orthogonal polynomials and functions), 42C05. arXiv math.CA. Level 4: research.
 
-**Definition.** An Angelesco system assigns a positive measure with finite moments and infinite support to each of several intervals with disjoint interiors. For measure j, require the polynomial to integrate to zero against each power from degree zero through nⱼ − 1.
+**Definition.** An Angelesco system has positive measures with finite moments and infinite supports contained in respective real intervals with disjoint interiors. For nonnegative integers n₁,…,nᵣ, require ∫xᵏP(x) dμⱼ(x)=0 for every j and integer 0≤k&lt;nⱼ.
 
 **Problem.** The polynomial with leading coefficient one and degree n₁ + ⋯ + nᵣ satisfying these conditions has exactly nⱼ simple zeros inside interval j.
 
-**How the definition helps.** Disjoint interiors let the degree count include each sign change only once (our own). If P had fewer than nⱼ sign changes inside interval j, the product of their linear factors would have degree below nⱼ. Orthogonality would then force the integral of this product times P to vanish, yet the integrand has constant sign and is not zero. Two identical measures at index (1,1) impose only one independent condition, so the conclusion fails (our own).
+**How the definition helps.** Disjoint interiors let the degree count include each sign change only once (our own proof). Fewer than nⱼ interior sign changes would give a product of their linear factors of degree below nⱼ. Its product with P has constant sign on interval j and nonzero integral by infinite support, contradicting orthogonality. Identical measures at index (1,1) show why the intervals must separate the counts.
 
 **Paper or page:** [Zeros of Multiple Orthogonal Polynomials: Location and Interlacing](https://arxiv.org/abs/2503.15122v1). It says: “Then Pₙ has exactly nⱼ zeros on each Γ̊ⱼ, and each zero is simple.”
 
@@ -1878,7 +1878,7 @@
 
 **Problem.** Let n be a normal list, and let n + eⱼ, which adds one to count j, also be normal. The Wronskian of their two polynomials vanishes at z exactly when multiplying every measure by (x − z)² destroys normality of n.
 
-**How the definition helps.** Normality turns a double-root condition into a uniqueness test on the measures. By normality the two polynomials span all solutions of the lower conditions up to degree N + 1 (our own). So the Wronskian vanishes at z exactly when some nonzero combination has a double root at z. Dividing by (x − z)² gives a solution of degree below N for the modified measures, and multiplication gives the converse.
+**How the definition helps.** Normality makes the square moment matrix at n invertible (our own proof). Thus the two monic polynomials of degrees N and N+1 span the kernel of the lower conditions through degree N+1. Their Wronskian vanishes at z exactly when a nonzero combination has a double zero there. Dividing by (x−z)² then gives a nonzero kernel vector for the modified square matrix, and multiplication reverses the argument.
 
 **Paper or page:** [Zeros of Multiple Orthogonal Polynomials: Location and Interlacing](https://arxiv.org/abs/2503.15122v1). It says: “Assume n and n + eⱼ are normal for μ.”
 
@@ -1892,7 +1892,7 @@
 
 *Rules out counterexamples.* MSC 33C47 (Other special orthogonal polynomials and functions). arXiv math.CA. Level 4: research.
 
-**Definition.** An Angelesco system assigns positive measures with infinite support and finite moments to disjoint closed intervals. For indices nⱼ, its polynomial is the monic P of degree n₁ + ⋯ + nᵣ with ∫PQ dμⱼ = 0 whenever Q has degree below nⱼ.
+**Definition.** Take positive measures μ₁,…,μᵣ with infinite supports contained in disjoint closed real intervals and with all moments finite. For nonnegative integers n₁,…,nᵣ, their Angelesco polynomial is monic of degree ∑ⱼnⱼ and satisfies ∫PQ dμⱼ=0 whenever deg Q&lt;nⱼ, for each j.
 
 **Problem.** The polynomial has exactly nⱼ simple zeros inside interval j for each j.
 
@@ -1928,11 +1928,11 @@
 
 *True by definition.* MSC 33D52 (Basic orthogonal polynomials and functions associated with root systems (Macdonald polynomials, etc.)). arXiv math.CA. Level 4: research.
 
-**Definition.** A difference operator forms a weighted sum of function values at shifted arguments. Define Macdonald polynomials as common eigenvectors of their commuting difference operators. Fix the scale by giving the leading symmetric monomial sum coefficient one.
+**Definition.** In N variables, the first Macdonald operator sums the q-shifts xᵢ↦qxᵢ, weighting shift i by the product of (txᵢ−xⱼ)/(xᵢ−xⱼ) over j≠i. For generic q,t and a partition λ of length at most N, P\_λ is its symmetric eigenpolynomial with eigenvalue ∑ᵢ q<sup>(λᵢ)</sup>t<sup>(N−i)</sup>, summing from i=1 to N. Pad λ with zeros and normalize its monomial symmetric function coefficient to one.
 
 **Problem.** For generic parameters, distinct labels have different lists of eigenvalues. The corresponding polynomials are orthogonal for the Macdonald inner product.
 
-**How the definition helps.** For each pair, one self-adjoint operator distinguishes their eigenvalues and therefore forces their inner product to vanish. Self-adjoint means the operator can move between the two arguments of the inner product. Our own comparison starts from the usual expansion, which allows only lower symmetric monomials after the leading one. The work lies in constructing the operators and identifying their eigenvectors with those polynomials.
+**How the definition helps.** Different partitions give different eigenvalues because the coefficients of distinct powers of t record their parts (our own argument). Self-adjointness for the Macdonald inner product gives (E\_λ−E\_μ)⟨P\_λ,P\_μ⟩=0. The first operator therefore distinguishes the joint eigenvalues and forces orthogonality.
 
 **Wikipedia:** [Macdonald polynomials](https://en.wikipedia.org/wiki/Macdonald_polynomials). It says: “for an algebra of commuting self-adjoint operators with 1-dimensional eigenspaces”
 
@@ -1980,11 +1980,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: low.* MSC 33E05 (Elliptic functions and integrals), 39A10, 14K20. arXiv math.NT, math.CV. Level 4: research.
 
-**Definition.** An elliptic function f is summable for a shift by s if f = g(z + s) − g(z) for an elliptic function g. Elliptic orbital residues are numbers computed from the poles of f, grouped by their orbits under the shift. A non-torsion point s is one whose multiples never return to zero on the curve.
+**Definition.** On a complex torus with additive coordinate z, fix a shift s such that ks≠0 on the torus for every positive integer k. For each shift orbit and each k≥1, sum the coefficients of (z−a)⁻ᵏ in the principal parts at its poles a. These finite sums are the orbital residues, and a summable function is a difference g(z+s)−g(z) with g elliptic.
 
 **Problem.** Let s be a non-torsion point and fix the normalizing choice the paper calls an analytic pinning. All orbital residues of an elliptic function f vanish exactly when f equals a summable function plus a + b(ζ(z + s) − ζ(z)) for constants a and b. Here ζ is the Weierstrass zeta function, with ζ′ = −℘.
 
-**How the definition helps.** The residues reduce summability to checking that a list of numbers is zero, up to two explicit terms (our own). The abstract calls the residues only a partial obstruction. The corollary shows what remains: a constant and one multiple of ζ(z + s) − ζ(z). That leftover part needs a separate test (our own).
+**How the definition helps.** The orbital sums collect exactly the principal-part coefficients that telescope under translation (our own explanation). The cited corollary with analytic pinning identifies the remaining terms as a constant and a multiple of ζ(z+s)−ζ(z).
 
 **Paper or page:** [Summability of Elliptic Functions via Residues](https://arxiv.org/abs/2503.22770). It says: “Dreyfus, Hardouin, Roques, and Singer introduced a notion of elliptic orbital residues, which altogether serve as a partial obstruction to summability for elliptic functions with respect to the shift by a non-torsion point over an elliptic curve.”
 

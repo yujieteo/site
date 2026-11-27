@@ -38,11 +38,11 @@
 
 *True by definition.* MSC 93B52 (Feedback control), 93B53. arXiv eess.SY, cs.SY. Level 2: later undergraduate.
 
-**Definition.** An observer estimates the state from the measured output and the known input. Write the combined equations using the true state and its estimation error in place of the true and estimated states.
+**Definition.** For state x and observer estimate x̂, the error coordinates are (x,e), where e = x − x̂.
 
 **Problem.** Consider x′ = Ax + Bu with output Cx. Use feedback u = −Kx̂ and an observer that corrects its model prediction by L(Cx − Cx̂). The combined eigenvalues are those of A − BK and A − LC, counted with multiplicity.
 
-**How the definition helps.** Subtracting the observer equation from the state equation isolates the error e = x − x̂ (our own). Its equation is e′ = (A − LC)e. The combined matrix is triangular in blocks, so its eigenvalues come from the diagonal blocks. Finding gains K and L that stabilize those blocks remains a separate design problem (our own).
+**How the definition helps.** In error coordinates, subtraction gives e′ = (A − LC)e, independent of x (our own). Substitution gives x′ = (A − BK)x + BKe (our own). The resulting block triangular matrix has the eigenvalues of its two diagonal blocks.
 
 **nLab:** [controllability and observability](https://ncatlab.org/nlab/show/controllability+and+observability). It says: “the design of a feedback controller and of a state observer are mutually independent.”
 
@@ -56,7 +56,7 @@
 
 *Rules out counterexamples.* MSC 93B52 (Feedback control), 93C05. arXiv eess.SY, cs.SY. Level 2: later undergraduate.
 
-**Definition.** A transfer function describes how a linear system converts input to output with zero initial state. A rational transfer function is proper when its numerator degree does not exceed its denominator degree. Strict properness requires a smaller numerator degree, or an identically zero transfer function. Its output then has no direct dependence on the current input.
+**Definition.** A scalar rational transfer function is strictly proper if it vanishes identically or its numerator has smaller degree than its denominator.
 
 **Problem.** Connect two proper finite-dimensional scalar linear time-invariant systems in feedback. If either transfer function is strictly proper, the current states and external inputs uniquely determine both current inputs.
 
@@ -72,7 +72,7 @@
 
 *Rules out counterexamples.* MSC 93C57 (Sampled-data control/observation systems), 93C80. arXiv eess.SY, cs.SY. Level 2: later undergraduate.
 
-**Definition.** For step size h &gt; 0, the bilinear transform replaces a continuous-time rate s by the discrete multiplier z = (1 + hs/2)/(1 − hs/2). Forward Euler uses z = 1 + hs instead.
+**Definition.** For step size h &gt; 0 and rate s ≠ 2/h, the bilinear transform gives the discrete multiplier z = (1 + hs/2)/(1 − hs/2).
 
 **Problem.** If every eigenvalue of a state matrix has negative real part, every transformed eigenvalue has magnitude below one for every positive step size.
 
@@ -84,7 +84,7 @@
 
 ### Minimum-phase systems compose reversibly
 
-**Remember:** Undo the last system first.
+**Remember:** Both the system and its inverse must be causal and stable.
 
 *Rules out counterexamples.* MSC 93C80 (Frequency-response methods in control theory), 93D25. arXiv eess.SY, cs.SY. Level 2: later undergraduate.
 
@@ -104,7 +104,7 @@
 
 *True by definition.* MSC 93E11 (Filtering in stochastic control theory), 93E10. arXiv eess.SY, cs.SY. Level 2: later undergraduate.
 
-**Definition.** For a Gaussian state, the precision matrix is the inverse covariance. The information vector is the precision matrix times the mean. Together they specify the quadratic and linear terms of the log density.
+**Definition.** For a Gaussian state with nonsingular covariance, the precision matrix is the inverse covariance. The information vector is the precision matrix times the mean.
 
 **Problem.** Start with a Gaussian prior and take linear measurements with centered Gaussian errors independent of each other and the state. Assume the prior and error covariances are nonsingular. Each measurement adds its own contribution to the precision matrix and information vector.
 
@@ -120,11 +120,11 @@
 
 *True by definition.* MSC 93B03 (Attainable sets, reachability), 93B24. arXiv math.OC. Level 3: graduate.
 
-**Definition.** A chain follows controlled trajectories for a prescribed minimum time per segment. It allows a small jump after each segment. A target is chain reachable if such chains reach it for every positive jump tolerance and minimum time.
+**Definition.** In a metric state space, y is chain reachable from x if every ε,T &gt; 0 admit a finite chain from x to y. Each link follows an admissible trajectory for at least T, then jumps a distance less than ε.
 
 **Problem.** The set of chain-reachable states from any fixed state is closed.
 
-**How the definition helps.** The last jump lets a chain reach a limit point directly (our own). Choose a reachable endpoint within half the allowed tolerance, then reach it with jumps smaller than half that tolerance (our own). Replacing the endpoint preserves the jump bound by the triangle inequality (our own). Exact reachability lacks this freedom (our own). Starting at 1, x′ = −x approaches zero without reaching it (our own).
+**How the definition helps.** A nearby chain endpoint can use its last jump to reach the limit point (our own). Choose an endpoint within ε/2 and reach it with jumps smaller than ε/2 and durations at least T (our own). The triangle inequality keeps the modified last jump below ε (our own).
 
 **Paper or page:** [Chain controllability of linear control systems](https://arxiv.org/abs/2312.14595v1). It says: “The chain controllable sets Cᶜ(x) and the chain reachable sets Rᶜ(x) are closed.”
 
@@ -142,7 +142,7 @@
 
 **Problem.** A linear observer estimates the state from the known input and measured output. An observer whose estimation error decays exponentially for every initial error exists exactly when the system is detectable.
 
-**How the definition helps.** An invisible initial error produces no output correction, so detectability requires precisely those errors to decay on their own (our own). For example, ẋ = x with zero output hides a growing error (our own). Sufficiency uses a separate theorem to choose the observer correction on the part that outputs can distinguish (our own).
+**How the definition helps.** An invisible error receives no correction, so it must decay on its own (our own). For example, x′ = x with zero output hides a growing error (our own). In the observability decomposition, detectability makes the unobservable block stable (our own). Observer pole placement stabilizes the observable block, giving exponential decay in the full triangular system (our own).
 
 **Wikipedia:** [Observability](https://en.wikipedia.org/wiki/Observability). It says: “A system is detectable if all the unobservable states are stable.”
 
@@ -176,7 +176,7 @@
 
 **Problem.** For a finite-dimensional time-invariant linear system, the Hankel rank equals the smallest state dimension that reproduces its input-output behavior.
 
-**How the definition helps.** The map passes through the present state, so its rank is at most the state dimension (our own). Its image can serve as the state space by shifting future outputs and adding the response to the newest input (our own). Any direct input-to-output term stays unchanged (our own). The work is to prove that these updates preserve the image and reproduce the input-output behavior (our own).
+**How the definition helps.** Every past input affects future outputs through the current state, so the Hankel rank bounds every realization’s dimension from below (our own). The Ho–Kalman realization theorem attains that bound with a state space of independent future responses (our own).
 
 **nLab:** [controllability and observability](https://ncatlab.org/nlab/show/controllability+and+observability). It says: “a system may be seen as giving rise to a map from an initial algebra to a terminal coalgebra which factors through it”
 
@@ -208,7 +208,7 @@
 
 **Definition.** At a point x of a closed set, take sequences of points y in the set tending to x. Divide each displacement y − x by a positive time step tending to zero. The tangent cone contains exactly the limits of these quotients.
 
-**Problem.** Assume the vector field is continuous and gives unique global solutions. Trajectories stay in a closed set exactly when the field lies in its tangent cone at each boundary point.
+**Problem.** Let a continuous vector field on ℝⁿ have unique global solutions. A closed set is forward invariant exactly when the field lies in its tangent cone at every boundary point.
 
 **How the definition helps.** The cone measures feasible first-order directions even when the equation for the boundary is flat (our own). For the set x³ ≤ 0, the derivative test at zero accepts x′ = 1, but the tangent cone rejects it (our own). The work goes into the tangency theorem, which turns local feasible directions and uniqueness into entire trajectories that stay inside (our own).
 
@@ -278,11 +278,11 @@
 
 *Rules out counterexamples.* MSC 93B52 (Feedback control), 93C05. arXiv math.OC, eess.SY. Level 3: graduate.
 
-**Definition.** For x′ = Ax + Bu, let Q and R be symmetric state and input cost matrices, with R positive definite. Write G = BR⁻¹Bᵀ. Consider symmetric solutions P of AᵀP + PA − PGP + Q = 0. A solution is stabilizing when A − GP has eigenvalues with negative real parts.
+**Definition.** Let Q and R be symmetric, with R positive definite, and set G = BR⁻¹Bᵀ. Consider the symmetric solutions P of AᵀP + PA − PGP + Q = 0. A solution stabilizes the system if every eigenvalue of A − GP has negative real part.
 
 **Problem.** At most one symmetric solution of this equation is stabilizing.
 
-**How the definition helps.** The stability requirement makes both matrix exponentials in the difference argument decay (our own). Let P and S be stabilizing solutions and write D = P − S (our own). Set U = A − GP and W = A − GS (our own). Subtraction gives UᵀD + DW = 0 (our own). Thus exp(tUᵀ)D exp(tW) is constant, yet tends to zero, so D = 0 (our own). For x′ = u with unit cost weights, both 1 and −1 solve the equation, but only 1 stabilizes (our own).
+**How the definition helps.** Stability forces the difference D = P − S of two stabilizing solutions to vanish (our own). Write U = A − GP and W = A − GS (our own). Subtracting gives UᵀD + DW = 0, so exp(tUᵀ)D exp(tW) stays constant at D but tends to zero (our own). With A = 0 and B = Q = R = 1, only 1 among the solutions ±1 stabilizes (our own).
 
 **Wikipedia:** [Algebraic Riccati equation](https://en.wikipedia.org/wiki/Algebraic_Riccati_equation). It says: “Though generally this system can have many solutions, it is usually specified that we want to obtain the unique stabilizing solution, if such a solution exists.”
 
@@ -310,9 +310,9 @@
 
 **Remember:** Judge progress at the end of each block.
 
-*Makes the theorem clean to state or prove.* MSC 93D15 (Stabilization of systems by feedback), 93B45. arXiv math.OC, eess.SY. Level 3: graduate.
+*True by definition.* MSC 93D15 (Stabilization of systems by feedback), 93B45. arXiv math.OC, eess.SY. Level 3: graduate.
 
-**Definition.** A generalized Lyapunov function V satisfies a‖x‖² ≤ V(x) ≤ b‖x‖² for positive constants a and b. From each allowed state x, some feasible block of m moves ends with V at most qV(x), where m and 0 &lt; q &lt; 1 are fixed. Intermediate state norms stay below c‖x‖ for a common constant c.
+**Definition.** Fix positive a,b,c, a positive integer m and 0 &lt; q &lt; 1. Require a‖x‖² ≤ V(x) ≤ b‖x‖² at every allowed x. Each such x admits a feasible m-step block with endpoint value at most qV(x) and all intermediate norms at most c‖x‖.
 
 **Problem.** Under these bounds, every allowed initial state has a trajectory that obeys the constraints and converges to zero.
 
@@ -342,7 +342,7 @@
 
 ### Joint spectral radius detects switching instability
 
-**Remember:** Stable pieces can make an unstable product.
+**Remember:** Take the limiting per-step growth of the largest product norm.
 
 *Rules out counterexamples.* MSC 93D23 (Exponential stability), 93C30. arXiv eess.SY, math.OC. Level 3: graduate.
 
@@ -350,7 +350,7 @@
 
 **Problem.** Uniform exponential decay means every k-step product has norm at most Cqᵏ, with common constants C &gt; 0 and 0 &lt; q &lt; 1. This holds exactly when the joint spectral radius is below one.
 
-**How the definition helps.** Mixed products enter the definition, so it detects growth that each matrix misses alone (our own). Take two 2 × 2 matrices with a single entry 2, in opposite off-diagonal positions (our own). Both square to zero, but their product has eigenvalue 4 (our own). Submultiplicativity gives the limit, and equivalence of norms makes it independent of the chosen norm (our own).
+**How the definition helps.** The limit captures the worst growth across all products (our own). For a limit below one, choose q strictly between the limit and one, then increase C to cover the finitely many short products (our own). Conversely, taking kth roots in Cqᵏ bounds the limit by q (our own). Two matrices with sole entries 2 in opposite off-diagonal positions square to zero, yet their product has eigenvalue 4 (our own).
 
 **Paper or page:** [Stability Analysis of Switched Linear Systems with Neural Lyapunov Functions](https://arxiv.org/abs/2312.08190v1), [Stability Analysis of Switched Linear Systems with Neural Lyapunov Functions](https://arxiv.org/abs/2312.08190v1). It says: “The corresponding switched linear system is stable if and only if ρ(Σ) &lt; 1.”
 
@@ -362,11 +362,11 @@
 
 *Rules out counterexamples.* MSC 93D25 (Input-output approaches in control theory), 93D20, 93A13. arXiv math.OC, eess.SY. Level 3: graduate.
 
-**Definition.** A control system x′ = f(x, u) is input-to-state stable if there are comparison functions β and γ with this property. For all starts, inputs and times, \|x(t)\| ≤ β(\|x₀\|, t) + γ(‖u‖∞). Here β(r, t) grows in r and tends to 0 in t, and γ grows from γ(0) = 0.
+**Definition.** For every initial state, essentially bounded input and t ≥ 0, require \|x(t)\| ≤ β(\|x₀\|,t) + γ(‖u‖∞). Choose continuous β and γ once, with γ and each β(·,t) strictly increasing from zero. For every r, β(r,t) decreases to zero as t tends to infinity.
 
 **Problem.** A cascade of input-to-state stable systems, where each one drives the next, is input-to-state stable. A cascade of systems that are only globally asymptotically stable with zero input need not be stable.
 
-**How the definition helps.** The estimate bounds each state by the size of its input, so the state of one system is a bounded input to the next and the bounds compose (our own). Stability with zero input says nothing about what a nonzero input does. In the page's counterexample x′ = −x + yx², y′ = −y, each part is stable alone, but x reaches infinity in finite time for large starts. The x-part is not input-to-state stable with y as its input (our own).
+**How the definition helps.** The input-to-state stability cascade theorem composes the two estimates, preserving decay of the initial-state term (our own). Zero-input stability alone allows x′ = −x + yx², y′ = −y. Both components decay alone, yet some positive starts give finite-time blowup.
 
 **Wikipedia:** [Input-to-state stability](https://en.wikipedia.org/wiki/Input-to-state_stability). It says: “In contrast to cascades of ISS systems, the cascade interconnection of 0-GAS systems is in general not 0-GAS.”
 
@@ -434,7 +434,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 93E11 (Filtering in stochastic control theory). arXiv eess.SY, math.OC. Level 3: graduate.
 
-**Definition.** The innovation is the observed signal minus the accumulated change predicted from earlier measurements. Its increment measures the new observation after subtracting its predicted drift, or expected rate of change.
+**Definition.** Suppose Y starts at zero and its observation drift is H(t)X(t) + h(t). Let X̂(t) denote the conditional mean given observations through t. The innovation is V(t) = Y(t) − ∫₀ᵗ(H(s)X̂(s) + h(s)) ds.
 
 **Problem.** Consider a continuous linear system with known initial state, deterministic coefficients, and additive Brownian noise with nonsingular observation noise covariance. The state estimate given the observations evolves by the predicted dynamics plus a gain times the innovation increment.
 
@@ -470,11 +470,11 @@
 
 *Rules out counterexamples.* MSC 93B11 (System structure simplification), 93C05. arXiv eess.SY, math.OC. Level 4: research.
 
-**Definition.** Consider the linear system x′ = Ax + Bu, where x is the state and u is the input. Assume exp(tA) tends exponentially to a matrix J as time t increases. The usual controllability Gramian integrates F(t)F(t)ᵀ from zero to infinity with F(t) = exp(tA)B. The modified Gramian uses F(t) = exp(tA)B − JB instead.
+**Definition.** For x′ = Ax + Bu, suppose exp(tA) tends exponentially to J. The modified controllability Gramian is P = ∫₀∞ F(t)F(t)ᵀ dt, where F(t) = (exp(tA) − J)B.
 
 **Problem.** The modified Gramian P is finite. It is the unique symmetric solution of AP + PAᵀ + (B − JB)(B − JB)ᵀ = 0 with JPJᵀ = 0.
 
-**How the definition helps.** The subtraction leaves only exponentially decaying modes, so the integral converges (our own). The usual integral diverges for x′ = u because its state response to an impulse is constant (our own). The work goes into deriving the matrix equation and proving its uniqueness on the projected space (our own).
+**How the definition helps.** Subtracting JB gives exponential decay, while the ordinary integrand for x′ = u stays constant (our own). Integrating the derivative of FFᵀ gives the equation, since F′ = AF and F tends to zero (our own). JF = 0 gives JPJᵀ = 0 (our own). For two solutions with difference D, exp(tA)D exp(tAᵀ) stays constant at D and tends to JDJᵀ = 0 (our own).
 
 **Paper or page:** [Gramian-Based Model Reduction of Directed Networks](https://arxiv.org/abs/1901.01285v2). It says: “are the unique symmetric solutions of the following sets of linear matrix equations”
 
@@ -488,11 +488,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 93B24 (Topological methods), 93C10. arXiv math.OC, math.DS. Level 4: research.
 
-**Definition.** A controlled chain follows pieces of controlled trajectories, each lasting at least a fixed time T, with small jumps between pieces. In a strong chain, a positive continuous function ε on the state space sets the allowed jump at each point. A strong chain control set is a maximal set in which strong chains join any two points. Each of its points also lies on a full controlled trajectory inside the set.
+**Definition.** Inside a strong chain control set, every point lies on a full controlled trajectory contained in the set. Every ordered pair admits a finite chain for every minimum duration T &gt; 0 and every positive continuous tolerance ε. Each segment lasts at least T and ends at z within distance less than ε(z) of the next point. Take a maximal set with these properties.
 
-**Problem.** Suppose a homeomorphism H carries the trajectories of one control system onto those of another. Then E is a strong chain control set of the first system exactly when H(E) is one of the second.
+**Problem.** Suppose a homeomorphism H carries controlled trajectories of one system onto those of another while preserving time. Then E is a strong chain control set exactly when H(E) is one.
 
-**How the definition helps.** A jump allowance that varies continuously with position can absorb the uneven stretching of a homeomorphism. For each continuous ε on the target there is a continuous δ on the source, so that a jump smaller than δ(x) maps to a jump smaller than ε(H(x)). With one constant allowance this fails on noncompact spaces, because H need not be uniformly continuous (our own).
+**How the definition helps.** A continuous jump allowance can absorb the varying distortion of a homeomorphism (our own). For each positive continuous target tolerance ε, the continuous minorant lemma gives a positive continuous source tolerance δ (our own). A jump from x shorter than δ(x) then maps to one shorter than ε(H(x)) (our own). Applying this in both directions preserves chain connectivity, full trajectories and maximality (our own).
 
 **Paper or page:** [Strong chain control sets and affine control systems](https://arxiv.org/abs/2407.18765v1), [Strong chain control sets and affine control systems](https://arxiv.org/abs/2407.18765v1). It says: “Then E⋆ is a strong chain control set in M if and only if H(E⋆) is a strong chain control set in N.”
 
@@ -506,7 +506,7 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 93C30 (Control/observation systems governed by functional relations other than differential equations (such as hybrid and switching systems)), 34A36. arXiv math.DS, math.OC. Level 4: research.
 
-**Definition.** A hybrid system follows differential equations between instantaneous resets. Glue each switching surface to its image under the reset. A hybrid Filippov solution is an absolutely continuous curve in the glued space. At a jump in velocity, it uses the closed convex hull of essential nearby velocities.
+**Definition.** Identify each point on a switching surface with its reset image. A hybrid Filippov solution is an absolutely continuous curve whose velocity almost everywhere belongs to the Filippov set of the glued field. At each point, intersect the closed convex hulls of nearby velocities over all neighborhood radii and all deletions of measure-zero sets.
 
 **Problem.** Under the paper's crossing assumptions, the hybrid Filippov solution is unique. Smooth approximations of the hybrid system converge to it uniformly in time, with error at most a constant times the smoothing width.
 
@@ -524,7 +524,7 @@
 
 *Rules out counterexamples.* MSC 93D15 (Stabilization of systems by feedback), 93C10. arXiv eess.SY, math.OC. Level 4: research.
 
-**Definition.** Start with a smooth function whose nonnegative values describe safe states. Given a test b, take the infimum of its time derivative over allowed controls and add α(b) to obtain the next test. Each α is an increasing function with α(0) = 0. The inner set contains states where every test, including the first, is nonnegative.
+**Definition.** Choose an initial smooth safety test b₀, a finite depth N, and increasing functions αᵢ vanishing at zero. For i &lt; N, define bᵢ₊₁(x) as αᵢ(bᵢ(x)) plus the infimum of the derivative of bᵢ over admissible inputs at x. The inner set consists of states satisfying bᵢ(x) ≥ 0 for every i from zero through N.
 
 **Problem.** Assume smooth tests and well-defined closed-loop solutions. Suppose a Lipschitz feedback uses allowed inputs and enforces b′ ≥ −α(b) for the final test throughout the inner set. Under the paper’s barrier hypotheses, trajectories starting there stay there throughout their existence.
 
@@ -542,9 +542,9 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 93D23 (Exponential stability), 93D30. arXiv cs.LG, math.OC. Level 4: research.
 
-**Definition.** A seminorm p acts like a norm but can be zero on nonzero vectors. Its kernel is the subspace where p is zero. Here the system xₖ₊₁ = Axₖ is stable in p if p(Aᵏx) ≤ cρᵏp(x) for some constants c and ρ &lt; 1.
+**Definition.** A seminorm p on a finite-dimensional complex vector space is nonnegative, absolutely homogeneous and subadditive. Its kernel consists of all x with p(x) = 0. Stability in p requires constants c &gt; 0 and ρ ∈ (0,1) satisfying p(Aᵏx) ≤ cρᵏp(x) for every x and integer k ≥ 0.
 
-**Problem.** The system is stable in p exactly when A maps the kernel into itself and the kernel contains every generalized eigenvector for eigenvalues with \|λ\| ≥ 1 (our own). The paper characterizes this stability through a Lyapunov equation with positive semidefinite matrices.
+**Problem.** Stability in p is equivalent to two kernel conditions (our own). A preserves the kernel, and the kernel contains all generalized eigenvectors with eigenvalues of modulus at least one (our own). The paper characterizes this stability through a Lyapunov equation with positive semidefinite matrices.
 
 **How the definition helps.** A seminorm ignores the directions in its kernel, so a system can be stable even when some modes never decay. For A = diag(2, ½) with p(x) = \|x₂\|, the first coordinate grows, but p(Aᵏx) = 2⁻ᵏp(x) (our own). The eigenvalue condition follows by passing to the quotient by the kernel, where p becomes a norm (our own).
 
@@ -578,9 +578,9 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 93E11 (Filtering in stochastic control theory), 93E15, 93B60. arXiv math.OC, cs.SY. Level 4: research.
 
-**Definition.** Eigenvalues λᵢ ≠ λⱼ of the state matrix form an eigenvalue cycle when (λᵢ/λⱼ)ⁿ = 1 for some positive integer n. So their ratio is a root of unity. The period of a cycle is the least such n, in our own wording.
+**Definition.** Group nonzero eigenvalues together when their ratio is a root of unity. A cycle’s period is the least positive integer n for which all its eigenvalues have the same nth power (our own).
 
-**Problem.** A Kalman filter loses each observation independently with probability pₑ, and (A,B) is controllable and (A,C) observable. Without eigenvalue cycles, the error stays mean-square bounded exactly when pₑ &lt; 1/\|λ\|², for λ the largest eigenvalue in size. With cycles, the threshold also depends on each cycle's period and on a number the paper computes from the cycle.
+**Problem.** Assume the paper’s intermittent Kalman model, independent observation erasures of probability pₑ, controllability of (A,B), and observability of (A,C). Without nontrivial cycles, mean-square error stays bounded exactly when pₑ &lt; 1/\|λ\|² for an eigenvalue λ of largest modulus. With cycles, the threshold also depends on their periods and the fewest erased residue classes that destroy observability within each cycle.
 
 **How the definition helps.** Cycles are the eigenvalue groups that can keep giving indistinguishable observations at the same recurring sample positions, in our own explanation. For example, a sensor that sums modes with eigenvalues a and −a sees aⁿ(x₁ + x₂) at every even time n, by our own example. If the odd samples are lost, the two modes cannot be separated. Proving the sharp threshold for general cycles is the hard part of the paper.
 
@@ -600,7 +600,7 @@
 
 **Problem.** Assume finitely many actions and finite expected stopping time under every rule from the fixed initial distribution. A finite nonnegative measure on nonterminal state and action pairs records visits exactly when it satisfies flow balance and vanishes outside reachable states (our own).
 
-**How the definition helps.** Requiring reachable support removes extra flow circulating on states that no rule can visit (our own). Flow balance equates visits at each state to initial mass plus incoming transitions (our own). The cited theorem decomposes a balanced measure into actual visits and a flow preserved by one transition. In a finite system, positive preserved flow gives a closed set where its rule stays forever (our own). If reachable, that set would let some rule avoid stopping with positive probability (our own).
+**How the definition helps.** Reachable support excludes balanced flow on an unreachable self-loop (our own). The decomposition theorem splits balanced flow into actual visits and a preserved flow. Positive preserved flow in a finite system yields a closed nonterminal class under its rule (our own). Reaching that class and following its rule would contradict finite expected stopping time (our own).
 
 **Paper or page:** [Absorbing Markov Decision Processes](https://arxiv.org/abs/2309.07059v2). It says: “i.e., there are no phantom measures.”
 

@@ -4,7 +4,7 @@
 
 *True by definition.* MSC 06A05 (Total orders). arXiv math.CO. Level 1: early undergraduate.
 
-**Definition.** Compare two tuples of a fixed finite length at their first unequal coordinate. A total order compares every pair, so this rule differs from requiring every coordinate to be at most its counterpart.
+**Definition.** Take two distinct tuples in a finite product of totally ordered sets. In lexicographic order, x precedes y if xᵢ &lt; yᵢ at the least index i where they differ.
 
 **Problem.** Lexicographic comparison of tuples from totally ordered sets gives a total order.
 
@@ -104,7 +104,7 @@
 
 ### The order dual gives every order theorem a second theorem free
 
-**Remember:** Turn the Hasse diagram upside down and every theorem still holds.
+**Remember:** Reverse every comparison to turn an order theorem into its dual.
 
 *True by definition.* MSC 06A06 (Partial orders, general). arXiv math.CO. Level 1: early undergraduate.
 
@@ -112,7 +112,7 @@
 
 **Problem.** If a statement holds for all partially ordered sets, then its dual statement also holds for all partially ordered sets. This is the duality principle.
 
-**How the definition helps.** The axioms of a partial order do not change when the order is reversed, so the dual of a partially ordered set is again one. A statement true for all partially ordered sets is then true for every dual, and read in the original set this is the dual statement. So each theorem about least upper bounds gives a theorem about greatest lower bounds with no new proof. The principle needs a class of orders closed under duals; Heyting algebras, for example, are not (our own).
+**How the definition helps.** Reversing all comparisons preserves the partial order axioms. Apply the original theorem to the dual order. Reading that conclusion in the original order gives the dual theorem.
 
 **Wikipedia:** [Duality (order theory)](https://en.wikipedia.org/wiki/Duality_%28order_theory%29). It says: “The importance of this simple definition stems from the fact that every definition and theorem of order theory can readily be transferred to the dual order.”
 
@@ -136,7 +136,7 @@
 
 ### Cover relations recover finite orders
 
-**Remember:** Follow upward steps to recover comparisons.
+**Remember:** Recover finite orders by chaining comparisons with nothing strictly between their endpoints.
 
 *Rules out counterexamples.* MSC 06A07 (Combinatorics of partially ordered sets). arXiv math.CO. Level 1: early undergraduate.
 
@@ -158,11 +158,11 @@
 
 *True by definition.* MSC 06A15 (Galois correspondences, closure operators (in relation to ordered sets)), 03E20. arXiv math.CO, math.LO. Level 1: early undergraduate.
 
-**Definition.** The transitive closure R⁺ of a relation R on a set S is the smallest transitive relation on S that contains R. The chain description says x R⁺ y when there is a finite chain x = s₀ R s₁ R … R sₙ = y with n ≥ 1.
+**Definition.** For a relation R on S, its transitive closure R⁺ is the smallest transitive relation on S containing R.
 
 **Problem.** Every relation has a transitive closure, and it is the chain relation.
 
-**How the definition helps.** With the smallest-relation definition, existence is immediate: the intersection of all transitive relations containing R is one, and S × S ensures the family is not empty. The work moves to the theorem that the chain relation is that smallest relation. The chain relation is transitive and lies inside every transitive relation that contains R, by induction on chain length.
+**How the definition helps.** Intersect all transitive relations on S containing R, including S × S. Their intersection contains R, is transitive and lies inside each such relation. In our own proof, positive-length finite R-chains define a transitive relation containing R because chains concatenate. Induction on length puts every chain’s endpoints in every transitive relation containing R.
 
 **Paper or page:** [Equivalence of Definitions of Transitive Closure of Relation/Union of Compositions is Smallest](https://proofwiki.org/wiki/Equivalence_of_Definitions_of_Transitive_Closure_of_Relation/Union_of_Compositions_is_Smallest), [Equivalence of Definitions of Transitive Closure of Relation/Finite Chain is Smallest](https://proofwiki.org/wiki/Equivalence_of_Definitions_of_Transitive_Closure_of_Relation/Finite_Chain_is_Smallest). It says: “Then ℛ⁺ is the smallest transitive relation on S that contains ℛ.”
 
@@ -181,7 +181,7 @@
 
 **Problem.** The two operations determine one order in which ∧ is greatest lower bound and ∨ is least upper bound.
 
-**How the definition helps.** Absorption makes the two order tests agree. Define x ≤ y when x ∧ y = x. Absorption makes this equivalent to x ∨ y = y. The operation laws then make ∧ the greatest lower bound and ∨ the least upper bound. Without absorption, both operations could be minimum on {0, 1}, giving opposite orders (our own).
+**How the definition helps.** Absorption makes x ∧ y = x equivalent to x ∨ y = y. Under this comparison, the operation laws make ∧ the greatest lower bound and ∨ the least upper bound. In our own counterexample, both operations take the minimum on {0, 1}, so the two tests give opposite orders.
 
 **nLab:** [lattice](https://ncatlab.org/nlab/show/lattice). It says: “Notice that the absorption laws guarantee that these two descriptions of ≤ agree.”
 
@@ -241,7 +241,7 @@
 
 ### Dedekind completeness is exactly what makes closed bounded sets compact
 
-**Remember:** In ℚ, the rationals between 0 and 2 are closed, bounded and not compact.
+**Remember:** Every nonempty set bounded above has a least upper bound, leaving no missing cut.
 
 *Rules out counterexamples.* MSC 06A05 (Total orders), 06B23, 54D30. arXiv math.GN. Level 2: later undergraduate.
 
@@ -249,7 +249,7 @@
 
 **Problem.** In a linearly ordered space, every closed and bounded subset is compact exactly when the order is Dedekind complete.
 
-**How the definition helps.** Dedekind completeness is the exact condition for the Heine–Borel property, not only one sufficient condition. Our own example: in ℚ, the set of rationals between 0 and 2 is closed and bounded. It is not compact, because a sequence of rationals that tends to √2 has no subsequence that converges in it. Our own remark: the direction from completeness to compactness copies the proof for \[a, b\] in ℝ.
+**How the definition helps.** Completeness fills the cuts that can prevent closed intervals from being compact. The ordered-space Heine–Borel theorem characterizes compactness of all closed bounded sets by this completeness property. In our own example, √2 splits the rational interval \[0, 2\] at a missing cut. Open rays ending short of the cut on either side cover that interval, but no finite selection covers it.
 
 **Paper or page:** [Heine-Borel iff Dedekind Complete](https://proofwiki.org/wiki/Heine-Borel_iff_Dedekind_Complete). It says: “every closed, bounded subset of X is compact.”
 
@@ -267,7 +267,7 @@
 
 **Problem.** In an ordered set S, every element is an upper bound of the empty set, so sup ∅ exists exactly when S has a least element. Hence ℝ, which has no least element, is Dedekind complete only because the definition skips the empty set.
 
-**How the definition helps.** The word nonempty removes the one subset that would make ℝ fail. With the nonempty clause, Dedekind completeness is self-dual: it is the same as asking for infima of nonempty sets bounded below. A Dedekind complete set with a top and a bottom is a complete lattice, with the bottom as sup ∅ and the top as inf ∅. Our own example: the extended real line is such a complete lattice.
+**How the definition helps.** Every element bounds ∅ above, so its least upper bound must be the least element of the whole order. Conversely, a least element is the least of those upper bounds. In our own example, ℝ has suprema for nonempty bounded-above subsets but has no least element.
 
 **Paper or page:** [Infimum of Empty Set is Greatest Element](https://proofwiki.org/wiki/Infimum_of_Empty_Set_is_Greatest_Element), [Supremum of Empty Set is Smallest Element](https://proofwiki.org/wiki/Supremum_of_Empty_Set_is_Smallest_Element), [Dedekind Completeness is Self-Dual](https://proofwiki.org/wiki/Dedekind_Completeness_is_Self-Dual), [Dedekind-Complete Bounded Ordered Set is Complete Lattice](https://proofwiki.org/wiki/Dedekind-Complete_Bounded_Ordered_Set_is_Complete_Lattice). It says: “Suppose that inf ∅, the infimum of the empty set, exists in S. Then ∀s ∈ S: s ⪯ inf ∅. That is, inf ∅ is the greatest element of S.”
 
@@ -280,11 +280,11 @@
 
 ### Excluding endpoints makes every countable dense order isomorphic to the rationals
 
-**Remember:** No ends and no gaps: every countable such order is ℚ.
+**Remember:** Place a point between any two ordered points, and leave both ends open.
 
 *Rules out counterexamples.* MSC 06A05 (Total orders), 03C15, 03C35. arXiv math.LO. Level 2: later undergraduate.
 
-**Definition.** A linear order is dense if between any two elements there is a third. It is unbounded if it has no least and no greatest element.
+**Definition.** A linear order is dense if for every x &lt; y there is a z with x &lt; z &lt; y. It has no endpoints if it has neither a least nor a greatest element.
 
 **Problem.** Every nonempty countable dense linear order without endpoints is isomorphic to the rational numbers. In model theory, the theory of such orders has exactly one countable model.
 
@@ -306,7 +306,7 @@
 
 **Problem.** In a finite partially ordered set, the largest number of pairwise incomparable points equals the fewest chains needed to partition the set. In a chain, every pair is comparable.
 
-**How the definition helps.** Matched edges link points into disjoint increasing chains, including isolated points. On n points, a maximum matching of m edges gives n − m chains. König’s theorem gives m vertices meeting every edge, leaving at least n − m original points with neither copy selected. These points are pairwise incomparable, so each needs its own chain.
+**How the definition helps.** In our own argument, a maximum matching of m edges links n points into n − m disjoint chains, counting isolated points. König’s theorem gives m vertices meeting every edge. At least n − m original points have neither copy among those vertices, so no two are comparable. Each chain contains at most one of these points, giving the reverse bound.
 
 **Wikipedia:** [Dilworth's theorem](https://en.wikipedia.org/wiki/Dilworth%27s_theorem). It says: “each edge in the graph contains at least one vertex in C and such that M and C have the same cardinality m”
 
@@ -323,9 +323,9 @@
 
 *Makes the theorem clean to state or prove.* MSC 06A07 (Combinatorics of partially ordered sets), 06A11. arXiv math.CO. Level 2: later undergraduate.
 
-**Definition.** In a locally finite poset, functions of pairs x ≤ y form the incidence algebra, with product (f∗g)(x, y) = ∑ f(x, z)g(z, y) over x ≤ z ≤ y. The zeta function is ζ(x, y) = 1 for x ≤ y. The Möbius function μ is the inverse of ζ under this product.
+**Definition.** In a locally finite poset, the zeta function has value 1 on every interval \[x, y\]. Convolution multiplies interval functions by (f ∗ g)(x, y) = ∑ f(x, z)g(z, y), summing over x ≤ z ≤ y. The Möbius function is the convolution inverse of the zeta function.
 
-**Problem.** Möbius inversion: in a poset where every element has finitely many elements below it, g(y) = ∑<sub>x≤y</sub> f(x) for all y exactly when f(y) = ∑<sub>x≤y</sub> μ(x, y) g(x) for all y. Inclusion–exclusion, classical Möbius inversion and the finite difference calculus are special cases.
+**Problem.** Suppose each element has finitely many predecessors, including itself. Then g(y) = ∑ f(x) for every y exactly when f(y) = ∑ μ(x, y)g(x) for every y, summing over x ≤ y throughout. Inclusion–exclusion, classical Möbius inversion and finite difference calculus are special cases.
 
 **How the definition helps.** Defining μ as the inverse of ζ turns all three results into special cases of one formula. For finite subsets ordered by inclusion, μ(S, T) = (−1)ᵏ with k the size of T ∖ S, so Möbius inversion is inclusion–exclusion. For positive integers ordered by divisibility, μ is the classical Möbius function. For the natural numbers in their usual order, Möbius inversion is the backward difference operator.
 
@@ -341,11 +341,11 @@
 
 *True by definition.* MSC 06A15 (Galois correspondences, closure operators (in relation to ordered sets)). arXiv math.CO, math.CT. Level 2: later undergraduate.
 
-**Definition.** A monotone Galois connection between partial orders A and B is a pair of maps, F from A to B and G back. They satisfy F(a) ≤ b exactly when a ≤ G(b). F is the lower adjoint and G the upper adjoint. The floor function is the upper adjoint of the inclusion of the integers into the real numbers.
+**Definition.** The floor of a real number x is the integer ⌊x⌋ satisfying m ≤ ⌊x⌋ exactly when m ≤ x for every integer m. This makes floor the upper adjoint of integer inclusion.
 
 **Problem.** For every real x and integer n, ⌊x + n⌋ = ⌊x⌋ + n.
 
-**How the definition helps.** The rule m ≤ x exactly when m ≤ ⌊x⌋, for integers m, turns each claim about floors into a chain of equivalences. Take any integer m (our own steps). Then m ≤ ⌊x + n⌋ exactly when m − n ≤ x, so exactly when m − n ≤ ⌊x⌋, so exactly when m ≤ ⌊x⌋ + n. Two integers with the same integers below them are equal, so the rule follows with no case analysis.
+**How the definition helps.** Integer translation preserves the test defining floor. In our own proof, m ≤ ⌊x + n⌋ holds exactly when m − n ≤ x. The floor test turns this into m − n ≤ ⌊x⌋, equivalently m ≤ ⌊x⌋ + n. The two integers therefore have the same integer lower bounds and are equal.
 
 **Wikipedia:** [Galois connection](https://en.wikipedia.org/wiki/Galois_connection). It says: “The well-known properties of the floor function, such as ⌊x+n⌋=⌊x⌋+n, can be derived by elementary reasoning from this Galois connection.”
 
@@ -363,7 +363,7 @@
 
 **Problem.** For every Galois connection, f and g restrict to inverse order-reversing bijections between the closed elements of P and of Q. The fundamental theorem of Galois theory and the correspondence between radical ideals and Zariski-closed sets are instances.
 
-**How the definition helps.** The bijection between closed elements takes two lines, so the shape of every correspondence theorem holds by definition. The real work in each case is to find the closed elements. For a finite Galois extension L/K, every intermediate field is closed because L is Galois over it, and every subgroup is closed by Artin's lemma. For k algebraically closed, the statement that the closed ideals are the radical ideals is the strong Nullstellensatz.
+**How the definition helps.** If g(f(p)) = p, then f(g(f(p))) = f(p), so f(p) is closed. The same argument for g shows the restrictions are inverse, and both reverse order. In our own examples, the fundamental theorem of Galois theory identifies the closed subgroups and fields for a finite Galois extension. Over an algebraically closed field, the strong Nullstellensatz identifies the closed ideals as the radical ideals.
 
 **nLab:** [Galois connection](https://ncatlab.org/nlab/show/Galois+connection), [Galois theory](https://ncatlab.org/nlab/show/Galois+theory), [Zariski topology](https://ncatlab.org/nlab/show/Zariski+topology). It says: “others reserve it for its restriction to its fixed points, where it becomes an adjoint equivalence.”
 
@@ -389,15 +389,15 @@
 
 ### Lower adjoints of Galois connections preserve all existing joins
 
-**Remember:** Lower adjoints keep joins, upper adjoints keep meets, by one line.
+**Remember:** Move the lower adjoint across the comparison to get the upper adjoint.
 
 *True by definition.* MSC 06A15 (Galois correspondences, closure operators (in relation to ordered sets)). arXiv math.CO, math.CT. Level 2: later undergraduate.
 
-**Definition.** In a monotone Galois connection, F is the lower adjoint and G the upper adjoint when F(a) ≤ b exactly when a ≤ G(b).
+**Definition.** Take maps F from poset A to poset B and G back. They are adjoint if F(a) ≤ b exactly when a ≤ G(b) for every pair (a, b). Here F is the lower adjoint and G the upper adjoint.
 
 **Problem.** A lower adjoint preserves every join that exists: F(sup S) = sup of the F(s) for s in S. For example, the image map of a function preserves unions.
 
-**How the definition helps.** The defining equivalence turns the claim into a statement about upper bounds, so the proof is one chain of equivalences. F(sup S) ≤ b holds exactly when sup S ≤ G(b), so exactly when s ≤ G(b) for every s in S, so exactly when F(s) ≤ b for every s (our own steps). The image map is the lower adjoint of the preimage map (our own example). Dually, upper adjoints preserve all existing meets.
+**How the definition helps.** Adjunction turns upper bounds of the images into upper bounds of the original set. In our own proof, F(sup S) ≤ b means sup S ≤ G(b), equivalently s ≤ G(b) for every s in S. By adjunction, this says exactly that b bounds every F(s) above. In our own example, direct image is left adjoint to preimage.
 
 **Wikipedia:** [Galois connection](https://en.wikipedia.org/wiki/Galois_connection), [Complete lattice](https://en.wikipedia.org/wiki/Complete_lattice). It says: “Another important property of Galois connections is that lower adjoints preserve all suprema that exist within their domain.”
 
@@ -427,11 +427,11 @@
 
 *True by definition. Confidence: medium.* MSC 06B05 (Structure theory of lattices), 06A15. arXiv math.RA. Level 2: later undergraduate.
 
-**Definition.** Take a lattice and two elements a and b in it. The map z ↦ z ∧ b goes from the interval \[a, a ∨ b\] to the interval \[a ∧ b, b\], and the map w ↦ a ∨ w goes back. In any lattice, these two maps are adjoint (a Galois connection). The lattice is modular if, for all a and b, these two maps are inverse to each other.
+**Definition.** For each pair a, b in a lattice, compare the intervals \[a, a ∨ b\] and \[a ∧ b, b\]. Send z in the first to z ∧ b and w in the second to a ∨ w. The lattice is modular if these maps are inverse for every pair.
 
 **Problem.** A lattice is modular exactly when its order dual is modular.
 
-**How the definition helps.** Reversing the order swaps the two intervals and the two maps, so the definition is unchanged (our own). The work moves into the proof that this definition agrees with the usual modular law: if a ≤ b, then (a ∨ z) ∧ b = a ∨ (z ∧ b). The nLab proves this equivalence in a few lines. Examples are the lattices of subspaces of a vector space and of normal subgroups of a group.
+**How the definition helps.** In our own proof, dualizing and exchanging a with b swaps the intervals and exchanges the maps. Inverse maps remain inverse in either order. The equivalence with the usual modular law justifies using this interval definition.
 
 **nLab:** [modular lattice](https://ncatlab.org/nlab/show/modular+lattice). It says: “This is perhaps the most memorable definition for a category theorist: it is a precise expression of the slogan given in the Idea section.”
 
@@ -445,11 +445,11 @@
 
 *True by definition.* MSC 06B23 (Complete lattices, completions). arXiv math.CO. Level 2: later undergraduate.
 
-**Definition.** A complete lattice is a partially ordered set in which every subset, the empty set included, has a least upper bound, its join, and a greatest lower bound, its meet.
+**Definition.** A complete lattice is a partially ordered set in which every subset, including ∅, has both a join and a meet.
 
 **Problem.** A partially ordered set in which every subset has a join is a complete lattice. Every subset then also has a meet.
 
-**How the definition helps.** The meet of a set X is simply the join of the set of all lower bounds of X. Each element of X is an upper bound of those lower bounds, so this join is below every element of X and is the greatest lower bound. The empty set is needed, since its join gives the least element. So a family of subsets that is closed under all intersections is a complete lattice (our own).
+**How the definition helps.** Take the join of all lower bounds of X. Each member of X bounds those lower bounds above, so their join still lies below each member of X. The join dominates every lower bound, making it the meet, even when X is empty.
 
 **Wikipedia:** [Completeness (order theory)](https://en.wikipedia.org/wiki/Completeness_%28order_theory%29), [Complete lattice](https://en.wikipedia.org/wiki/Complete_lattice). It says: “The best-known example is the existence of all suprema, which is in fact equivalent to the existence of all infima.”
 
@@ -465,7 +465,7 @@
 
 **Problem.** Every order-preserving map f from a complete lattice to itself has a fixed point. (Order-preserving means that x ≤ y implies f(x) ≤ f(y).) It even has a least and a greatest fixed point.
 
-**How the definition helps.** Completeness supplies the supremum that the proof needs. The supremum of all x with x ≤ f(x) is a fixed point, and in fact the greatest one. Tarski proved more: the fixed points form a complete lattice, which is never empty. Davis proved the converse: a lattice in which every order-preserving map has a fixed point is complete.
+**How the definition helps.** Completeness supplies the bounds in Tarski’s fixed-point theorem. The supremum of all x satisfying x ≤ f(x) gives the greatest fixed point. The dual construction gives the least fixed point (our own explanation).
 
 **Wikipedia:** [Knaster–Tarski theorem](https://en.wikipedia.org/wiki/Knaster%E2%80%93Tarski_theorem). It says: “If every order-preserving function f : L → L on a lattice L has a fixed point, then L is a complete lattice.”
 
@@ -502,7 +502,7 @@
 
 **Problem.** μf is the least fixed point of f. Moreover, Park induction holds: if f(x) ≤ x, then μf ≤ x.
 
-**How the definition helps.** The meet definition gives the induction rule immediately because a meet lies below every term in it. A different construction applies f repeatedly starting from the least element. That construction needs extra conditions or a way to continue past the finite stages. The work here lies in proving that μf actually is a fixed point. For every prefixed x, monotonicity gives f(μf) ≤ f(x) ≤ x, so f(μf) ≤ μf. Applying f gives f(f(μf)) ≤ f(μf), so f(μf) is prefixed and μf ≤ f(μf).
+**How the definition helps.** The meet μf lies below every prefixed point, which gives Park induction. For every prefixed x, monotonicity gives f(μf) ≤ f(x) ≤ x, hence f(μf) ≤ μf. Applying f again makes f(μf) prefixed, so μf ≤ f(μf). Thus μf is fixed and lies below every fixed point (our own proof).
 
 **Wikipedia:** [Knaster–Tarski theorem](https://en.wikipedia.org/wiki/Knaster%E2%80%93Tarski_theorem). It says: “⋀P = ⋀{ x ∈ L ∣ x ≥ f(x) } as the least fixpoint of f.”
 
@@ -534,7 +534,7 @@
 
 *True by definition. Confidence: medium.* MSC 06D05 (Structure and representation theory of distributive lattices), 01A60. arXiv math.CO, math.HO. Level 2: later undergraduate.
 
-**Definition.** In a lattice, two elements have a greatest lower bound, their meet ∧, and a least upper bound, their join ∨. A distributive lattice satisfies both distributive laws for these operations.
+**Definition.** A lattice is distributive if x ∧ (y ∨ z) = (x ∧ y) ∨ (x ∧ z) for every triple and the dual law also holds. The dual law exchanges ∧ and ∨.
 
 **Problem.** Every distributive lattice is modular. If a ≤ b, then (a ∨ z) ∧ b = a ∨ (z ∧ b).
 
@@ -572,7 +572,7 @@
 
 **Problem.** Every finite distributive lattice is isomorphic to the lattice of lower sets of its poset of join-irreducible elements. The bottom of the lattice matches the empty lower set.
 
-**How the definition helps.** Leaving the bottom out makes the map from lower sets to elements one-to-one, as leaving 1 out of the primes makes factorizations unique. Suppose the bottom counted as join-irreducible (our own example). Then the empty lower set and the set holding only the bottom would both map to the bottom. With the convention, each element corresponds to the set of join-irreducibles below it, and the bottom to the empty set. The theorem then uses distributivity to show that join-irreducible elements are join-prime. Infinite distributive lattices need more, such as Priestley duality.
+**How the definition helps.** Excluding the bottom keeps the empty lower set as its unique representative. Otherwise ∅ and the singleton containing the bottom would have the same join (our own example). Every element of a finite lattice is the join of its join-irreducibles below it. Distributivity makes these join-irreducibles join-prime, so joining a lower set recovers precisely its members below that join (our own argument).
 
 **Wikipedia:** [Birkhoff's representation theorem](https://en.wikipedia.org/wiki/Birkhoff%27s_representation_theorem). It says: “Equivalently, x is join-irreducible if it is neither the bottom element of the lattice (the join of zero elements) nor the join of any two smaller elements.”
 
@@ -586,7 +586,7 @@
 
 *True by definition.* MSC 06D05 (Structure and representation theory of distributive lattices). arXiv math.RA. Level 2: later undergraduate.
 
-**Definition.** The usual distributive law is x∧(y∨z) = (x∧y)∨(x∧z). An equivalent definition uses the median identity (a∧b)∨(a∧c)∨(b∧c) = (a∨b)∧(a∨c)∧(b∨c).
+**Definition.** A lattice satisfies the median definition of distributivity if (a∧b)∨(a∧c)∨(b∧c) = (a∨b)∧(a∨c)∧(b∨c) for every triple a, b, c.
 
 **Problem.** The order dual of a distributive lattice is distributive. Its order is reversed, so meet and join exchange roles.
 
@@ -604,11 +604,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 06E05 (Structure theory of Boolean algebras), 06B05. arXiv math.CO, math.LO. Level 2: later undergraduate.
 
-**Definition.** Let P be a partially ordered set with least element 0. An atom of P is an element a with 0 &lt; a and nothing strictly between 0 and a. So 0 is never an atom. Atoms are the order-theory version of one-element sets.
+**Definition.** In a partially ordered set with least element 0, an atom is an element a &gt; 0 with no element strictly between 0 and a.
 
 **Problem.** Every finite Boolean algebra is isomorphic to the power set of its set of atoms. So the number of elements of a finite Boolean algebra is a power of two.
 
-**How the definition helps.** Atoms are the nonzero minimal elements, so they behave exactly like the singletons of a power set. In a finite Boolean algebra, each element is the join of the atoms below it, and the map to that set of atoms is an isomorphism (our own). If 0 counted as an atom, a set of atoms with 0 and the same set without 0 would have the same join (our own). Infinite Boolean algebras can have no atoms, and then Stone's representation theorem is needed (our own).
+**How the definition helps.** In our own proof, excluding zero makes the empty set the unique atom set with join zero. Otherwise adjoining zero would preserve every join. Each element equals the join of its atoms, since any nonzero remainder above that join would contain another atom by finiteness. Distinct atoms meet at zero, so distributivity recovers exactly the selected atoms below their join.
 
 **Wikipedia:** [Atom (order theory)](https://en.wikipedia.org/wiki/Atom_%28order_theory%29), [Boolean algebra (structure)](https://en.wikipedia.org/wiki/Boolean_algebra_%28structure%29). It says: “It can be shown that every finite Boolean algebra is isomorphic to the Boolean algebra of all subsets of a finite set.”
 
@@ -650,7 +650,7 @@
 
 ### Distributivity makes complements unique, so negation is an operation
 
-**Remember:** Distributive lattices allow at most one complement per element.
+**Remember:** A complement meets its partner at zero and joins it at one.
 
 *Rules out counterexamples.* MSC 06E05 (Structure theory of Boolean algebras), 06B05. arXiv math.CO, math.LO. Level 2: later undergraduate.
 
@@ -658,7 +658,7 @@
 
 **Problem.** In a bounded distributive lattice, each element has at most one complement. So in a Boolean algebra, complementation is a well-defined operation.
 
-**How the definition helps.** Distributivity forces two complements of the same element to be equal. Let b and c both be complements of a (our own steps). Then b = b ∧ (a ∨ c) = (b ∧ a) ∨ (b ∧ c) = b ∧ c, and in the same way c = b ∧ c. The condition excludes lattices such as the diamond lattice M₃, where each middle element has two complements (our own).
+**How the definition helps.** Distribute the meet of one complement over the join of the element and its other complement. For complements b and c of a, this gives b = b∧(a∨c) = (b∧a)∨(b∧c) = b∧c (our own calculation). Swapping b and c gives c = b∧c. In our own counterexample, each middle element of the nondistributive diamond M₃ has two complements.
 
 **Wikipedia:** [Complemented lattice](https://en.wikipedia.org/wiki/Complemented_lattice). It says: “In bounded distributive lattices, complements are unique.”
 
@@ -666,7 +666,7 @@
 
 ### Maximal proper filters give the ultrafilter extension theorem
 
-**Remember:** Unions preserve proper filters along a chain.
+**Remember:** An ultrafilter is a proper filter that no larger proper filter contains.
 
 *True by definition.* MSC 06E05 (Structure theory of Boolean algebras), 03E25. arXiv math.LO. Level 2: later undergraduate.
 
@@ -702,11 +702,11 @@
 
 *True by definition. Confidence: medium.* MSC 06E05 (Structure theory of Boolean algebras), 03G05. arXiv math.LO, math.RA. Level 2: later undergraduate.
 
-**Definition.** A Boolean algebra has meet, join, complement and constants 0 and 1, as in the algebra of subsets. The free algebra on n generators allows any assignment of them to extend uniquely to a homomorphism. For finite n we can take its elements to be functions from n bits to one bit, with the operations applied to each value. The other construction takes expressions modulo the Boolean algebra laws.
+**Definition.** For finite n, represent the free Boolean algebra on n generators by all functions from {0,1}ⁿ to {0,1}. Use coordinate projections as generators and apply Boolean operations pointwise.
 
-**Problem.** The free Boolean algebra on n generators has 2 raised to the power 2ⁿ elements.
+**Problem.** For every nonnegative integer n, the free Boolean algebra on n generators has 2 raised to the power 2ⁿ elements.
 
-**How the definition helps.** The function definition reduces the count to choosing a bit for each of the 2ⁿ inputs. The work moves into proving that these functions really give the free algebra. In our own argument, each truth table is a join of elementary terms, one for each row with output 1. Each such term is the meet that chooses the variable or its complement in every position. The Boolean laws put every expression into this form, so its truth table determines it in every Boolean algebra.
+**How the definition helps.** A truth table chooses one output bit independently for each of 2ⁿ inputs. The work lies in proving this function algebra is free. In our own proof, each row corresponds to a meet choosing each variable or its complement according to that row. Disjunctive normal form identifies each Boolean expression with the join of the rows where it equals 1.
 
 **Wikipedia:** [Free Boolean algebra](https://en.wikipedia.org/wiki/Free_Boolean_algebra). It says: “Another way to see why the free Boolean algebra on an n-element set has 2<sup>2<sup>n</sup></sup> elements is to note that each element is a function from n bits to one.”
 
@@ -750,15 +750,15 @@
 
 ### Boolean rings make lattice ideals into ring ideals
 
-**Remember:** Turn the Boolean algebra into a ring, and ring theory does the rest.
+**Remember:** Meet multiplies and symmetric difference adds.
 
 *Makes the theorem clean to state or prove.* MSC 06E20 (Ring-theoretic properties of Boolean algebras), 06E15. arXiv math.CO, math.RA. Level 2: later undergraduate.
 
-**Definition.** A Boolean ring is a ring in which every element x satisfies x·x = x. A Boolean algebra becomes a Boolean ring with symmetric difference as addition and meet as multiplication. The two constructions are inverse to each other.
+**Definition.** For a Boolean algebra, define multiplication as meet and addition as symmetric difference, x + y = (x ∧ ¬y) ∨ (¬x ∧ y). A lattice ideal contains zero, is downward closed and contains joins of its pairs.
 
-**Problem.** A subset of a Boolean algebra is an order ideal exactly when it is a ring ideal of the associated Boolean ring. The same holds for prime ideals and for maximal ideals.
+**Problem.** A subset of a Boolean algebra is a lattice ideal exactly when it is an ideal of the associated Boolean ring. The same holds for prime ideals and for maximal ideals.
 
-**How the definition helps.** With this correspondence, the ring theory of ideals, quotients and prime ideals applies directly. For example, every prime ideal of a Boolean ring is maximal, since the quotient is an integral domain with x·x = x, so it is the field with two elements. This is what Stone needed to represent Boolean algebras as algebras of sets. What stays hard is to show that there are enough prime ideals, which needs the Boolean prime ideal theorem (our own).
+**How the definition helps.** In our own proof, x + y ≤ x ∨ y and xy ≤ x give the ring ideal conditions for a lattice ideal. Conversely, y ≤ x gives y = xy, and x ∨ y = x + y + xy gives closure under joins. Both primality tests use the same product, and both maximality tests use inclusion among proper ideals.
 
 **Wikipedia:** [Boolean ring](https://en.wikipedia.org/wiki/Boolean_ring), [Boolean algebra (structure)](https://en.wikipedia.org/wiki/Boolean_algebra_%28structure%29). It says: “Furthermore, a subset of a Boolean ring is a ring ideal (prime ring ideal, maximal ring ideal) if and only if it is an order ideal (prime order ideal, maximal order ideal) of the Boolean algebra.”
 
@@ -768,7 +768,7 @@
 
 ### Chain-complete posets give inflationary maps fixed points without choice
 
-**Remember:** Bourbaki–Witt is Zorn's lemma with the choice taken out.
+**Remember:** Move upward at each step and take the least upper bound at limits.
 
 *Makes the theorem clean to state or prove.* MSC 06A06 (Partial orders, general), 03E25. arXiv math.LO, math.CO. Level 3: graduate.
 
@@ -776,7 +776,7 @@
 
 **Problem.** If X is a chain-complete partially ordered set and f is an inflationary map on X, then f has a fixed point. The proof does not use the axiom of choice.
 
-**How the definition helps.** The theorem isolates the part of Zorn's lemma that needs no choice, so choice shrinks to one step. In a chain-complete set with no maximal element, a choice function picks some y &gt; x for each x. This gives an inflationary map with no fixed point, which is a contradiction. Applied to the chain-complete set of all chains of an order, this gives a maximal chain and hence Zorn's lemma.
+**How the definition helps.** Inflation makes successive iterates form a chain, and chain completeness supplies a value at each limit stage. The Bourbaki–Witt theorem shows that this iteration reaches a fixed point without choice. The map itself supplies each successor (our own explanation).
 
 **Wikipedia:** [Bourbaki–Witt theorem](https://en.wikipedia.org/wiki/Bourbaki%E2%80%93Witt_theorem). It says: “Note the above argument does not rely on the axiom of choice. (In the case of a proof of Zorn's lemma, Choice is used to define an inflationary map.)”
 
@@ -791,7 +791,7 @@
 
 *True by definition.* MSC 06A07 (Combinatorics of partially ordered sets), 05A19. arXiv math.CO. Level 3: graduate.
 
-**Definition.** A differential poset is a graded poset with a least element. The up operator U sends an element to the sum of the elements that cover it, and the down operator D sends it to the sum of the elements it covers. The poset is 1-differential when DU − UD = I.
+**Definition.** Take a graded poset with a least element and finite ranks. On formal sums, U sends each point to the sum of its upper covers, and D sums its lower covers. The poset is 1-differential if DU − UD is the identity.
 
 **Problem.** In a 1-differential poset, exactly n! paths go up n steps from the least element and then back down n steps to it. For partitions ordered by adding one box, this counts pairs of ways to build the same n-box shape.
 
@@ -827,13 +827,13 @@
 
 **Remember:** Euler's relation on every interval is the whole definition of Eulerian.
 
-*True by definition. Confidence: medium.* MSC 06A07 (Combinatorics of partially ordered sets), 52B05. arXiv math.CO. Level 3: graduate.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 06A07 (Combinatorics of partially ordered sets), 52B05. arXiv math.CO. Level 3: graduate.
 
-**Definition.** A graded poset has a rank function that goes up by one along each covering step. It is Eulerian if every nontrivial interval has as many elements of even rank as of odd rank. Equivalently, its Möbius function is μ(x, y) = (−1) raised to the rank difference.
+**Definition.** A finite graded poset with a bottom and a top is Eulerian if every nontrivial closed interval has equally many even-rank and odd-rank elements.
 
-**Problem.** For every Eulerian poset of rank d + 1, Stanley's toric h-vector satisfies the Dehn–Sommerville equations hₖ = h\_(d−k). Face lattices of polytopes, simplicial homology spheres and intervals of Bruhat orders are Eulerian.
+**Problem.** For every finite Eulerian poset of rank d + 1, Stanley’s toric h-vector satisfies hₖ = h\_(d−k) for 0 ≤ k ≤ d. Polytope face lattices, augmented face posets of simplicial homology spheres and finite Bruhat intervals are Eulerian.
 
-**How the definition helps.** The definition keeps exactly the property that the Dehn–Sommerville proof uses, so the proof works in the general setting (our own remark). For a polytope, each interval of the face lattice is itself a face lattice, so the even–odd balance is Euler's formula (our own remark). The empty face and the whole polytope must be included, or the intervals would not all be of this form. For simplicial polytopes the toric h-vector is the usual h-vector.
+**How the definition helps.** Interval balance supplies one hypothesis for Stanley’s generalized Dehn–Sommerville theorem. The theorem proves symmetry of the toric h-vector. In our own explanation, Euler’s formula supplies the balance on polytope face intervals.
 
 **Wikipedia:** [Eulerian poset](https://en.wikipedia.org/wiki/Eulerian_poset). It says: “The face lattice of a convex polytope, consisting of its faces, together with the smallest element, the empty face, and the largest element, the polytope itself, is an Eulerian lattice.”
 
@@ -847,11 +847,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 06A07 (Combinatorics of partially ordered sets), 03E05. arXiv math.CO, math.LO. Level 3: graduate.
 
-**Definition.** A quasi-order is a reflexive and transitive relation ≤. A well-quasi-order is a quasi-order in which every infinite sequence x₀, x₁, … has some i &lt; j with xᵢ ≤ xⱼ. This is stronger than being well-founded (having no infinite strictly descending chain). It also forbids infinite antichains, which are infinite sets of elements that are pairwise incomparable.
+**Definition.** A quasi-order is a reflexive and transitive relation ≤. It is a well-quasi-order if every infinite sequence contains indices i &lt; j with xᵢ ≤ xⱼ.
 
-**Problem.** If ≤ is a well-quasi-order on X, then the order on subsets of X, with A ≤⁺ B when each element of A is below some element of B, is well-founded.
+**Problem.** For subsets A and B of a well-quasi-order X, write A ≤⁺ B if every a in A lies below some b in B. This quasi-order on subsets is well-founded.
 
-**How the definition helps.** An infinite antichain can make the subset order descend forever, and a well-quasi-order has no infinite antichain. Our own example: an infinite antichain a₁, a₂, … gives the descending chain {a₁, a₂, …} &gt;⁺ {a₂, a₃, …} &gt;⁺ ⋯. So well-foundedness of the original order alone is not enough. The subset order need not itself be a well-quasi-order, which leads to better-quasi-orders (our own remark).
+**How the definition helps.** In our own counterexample, successive tails of an infinite antichain descend strictly under ≤⁺. For each subset in a putative descending chain, take its downward closure Dᵢ. These closures decrease strictly, so choose xᵢ in Dᵢ outside Dᵢ₊₁. No later xⱼ can dominate xᵢ, contradicting the sequence condition (our own proof).
 
 **Wikipedia:** [Well-quasi-ordering](https://en.wikipedia.org/wiki/Well-quasi-ordering). It says: “One can show that this quasiordering on P(X) need not be well-founded, but if one takes the original quasi-ordering to be a well-quasi-ordering, then it is.”
 
@@ -863,7 +863,7 @@
 
 *True by definition.* MSC 06A11 (Algebraic aspects of posets), 06A07. arXiv math.CO. Level 3: graduate.
 
-**Definition.** In the incidence algebra of a finite poset, write ζ = δ + η, where δ is the identity and η(x, y) = 1 when x &lt; y and 0 otherwise. The Möbius function μ is the inverse of ζ.
+**Definition.** In the incidence algebra of a finite poset, the Möbius function μ is the inverse of the zeta function ζ. Write ζ = δ + η, with δ the identity and η the indicator of strict comparison.
 
 **Problem.** For x &lt; y, μ(x, y) is the sum of the numbers of strict chains from x to y, with sign (−1) to their lengths. The length counts the steps in the chain.
 
@@ -884,11 +884,11 @@
 
 *True by definition.* MSC 06A11 (Algebraic aspects of posets), 06A07. arXiv math.CO. Level 3: graduate.
 
-**Definition.** Let P be a partially ordered set with finite intervals \[x, y\]. Multiply functions on comparable pairs by summing f(x, z)g(z, y) over z in \[x, y\]. The Möbius function μ is the two-sided inverse of the function ζ that equals 1 on all comparable pairs x ≤ y. Another definition starts with μ(x, x) = 1 and chooses μ(x, y) so that the sum of μ(x, z) over \[x, y\] is zero.
+**Definition.** In a poset with finite intervals, multiply integer-valued interval functions by summing f(x, z)g(z, y) over x ≤ z ≤ y. The Möbius function is the two-sided inverse of the constant interval function 1 under this product.
 
 **Problem.** For x &lt; y, both the sum of μ(x, z) and the sum of μ(z, y) over z in \[x, y\] vanish. Reversing the order exchanges the two arguments of μ.
 
-**How the definition helps.** The two-sided inverse definition gives both sums at once, because multiplying by ζ on either side gives zero off the diagonal. Reversing the order interchanges the factors in every product, so it also reverses the inverse identity (our own). Starting with one recursion leaves the opposite identity to prove (our own). The work moves into constructing the inverse. Each recursion constructs a one-sided inverse, and associativity makes the two inverses equal (our own).
+**How the definition helps.** Multiplying by the constant function 1 on either side gives the identity, which vanishes off the diagonal. These two products give the two sums. Reversing the order exchanges the factors and reverses each interval, so the inverse has its arguments reversed (our own argument).
 
 **nLab:** [Möbius inversion](https://ncatlab.org/nlab/show/M%C3%B6bius+inversion). It says: “A Möbius function of P is defined as an inverse to the zeta function with respect to the convolution product.”
 
@@ -906,7 +906,7 @@
 
 **Problem.** Two closure operators on the same partially ordered set are equal if they have the same closed elements.
 
-**How the definition helps.** The least-element definition makes uniqueness immediate because the set of closed elements already determines the choice. In adjoint terms, c(x) ≤ y exactly when x ≤ y for every closed y. Our own check uses order preservation to get c(x) ≤ c(y) = y when x ≤ y. The reverse follows from x ≤ c(x). This check is where the work lies when passing from the three laws to the least-element definition.
+**How the definition helps.** Each c(x) is the least closed element above x, so the closed elements determine it uniquely. Extensivity and idempotence make c(x) closed and above x. If a closed y lies above x, monotonicity gives c(x) ≤ c(y) = y (our own check).
 
 **Wikipedia:** [Galois connection](https://en.wikipedia.org/wiki/Galois_connection). It says: “Conversely, any closure operator c on some poset A gives rise to the Galois connection”
 
@@ -920,11 +920,11 @@
 
 *True by definition.* MSC 06A15 (Galois correspondences, closure operators (in relation to ordered sets)), 06B23. arXiv math.CO, math.RA. Level 3: graduate.
 
-**Definition.** A formal context is a relation between objects and attributes. A formal concept is a pair (A, B) in which B contains exactly the attributes shared by all objects in A. In turn, A contains exactly the objects that have every attribute in B. Equivalently, such a pair is maximal among pairs with every object related to every attribute.
+**Definition.** A formal context relates objects to attributes. A concept is a pair (A, B) where B consists of all attributes common to every object in A. The set A must consist of all objects having every attribute in B.
 
 **Problem.** The concepts of any formal context form a complete lattice when ordered by inclusion of their object sets. This means every family has a greatest lower bound and a least upper bound.
 
-**How the definition helps.** The closed-pair definition gives greatest lower bounds by intersecting the object sets. Each such set consists of every object satisfying some list of attributes. Intersecting these sets is the same as imposing all their lists together (our own explanation). Once all greatest lower bounds exist, the least upper bound is the greatest lower bound of all upper bounds. The work lies in checking the equivalence with maximal pairs, not in proving an independent lattice law for each operation.
+**How the definition helps.** Intersecting concept object sets imposes all their attribute requirements together, so the intersection is again a concept object set (our own argument). This intersection gives the greatest lower bound, including the full object set for an empty family. The meet of all upper bounds then gives each join.
 
 **Wikipedia:** [Formal concept analysis](https://en.wikipedia.org/wiki/Formal_concept_analysis). It says: “These meet and join operations satisfy the axioms defining a lattice, in fact a complete lattice.”
 
@@ -938,7 +938,7 @@
 
 *True by definition.* MSC 06A15 (Galois correspondences, closure operators (in relation to ordered sets)). arXiv math.RA. Level 3: graduate.
 
-**Definition.** A closure operator is an order-preserving map c with x ≤ c(x) and c(c(x)) = c(x). A monotone Galois connection consists of two maps f and g with f(x) ≤ y exactly when x ≤ g(y).
+**Definition.** For posets P and Q, take order-preserving maps f from P to Q and g back. They form a Galois connection if f(x) ≤ y exactly when x ≤ g(y) for every x in P and y in Q. A closure operator on P preserves order and satisfies x ≤ c(x) = c(c(x)) for every x.
 
 **Problem.** For any monotone Galois connection f, g, the round trip g∘f is a closure operator.
 
@@ -998,7 +998,7 @@
 
 **Problem.** Every such connection between the power sets of X and Y comes from exactly one relation between X and Y.
 
-**How the definition helps.** The adjunction definition forces F to send unions to intersections, which makes the relation formula unavoidable. Every set is a union of its singletons. Thus F(A) is the intersection of the sets F({x}) for x in A. The relation pairs x with y exactly when y lies in F({x}), and this determines G as well. The work lies in the general theorem that a left adjoint preserves joins, which are intersections in the reversed order.
+**How the definition helps.** A left adjoint preserves joins, so F turns unions into intersections in the reversed order. Each A is a union of singletons, hence F(A) is the intersection of their images. In our own reconstruction, relate x to y exactly when y belongs to F({x}). This forces the relation uniquely, and the adjunction gives x ∈ G(B) exactly when B ⊆ F({x}).
 
 **nLab:** [Galois connection](https://ncatlab.org/nlab/show/Galois+connection). It says: “Because f is a left adjoint, it takes colimits in P(X) (in this case, unions) to colimits in P(Y)ᵒᵖ, which are intersections in P(Y).”
 
@@ -1018,7 +1018,7 @@
 
 **Problem.** The MacNeille completion preserves all existing least upper bounds and greatest lower bounds.
 
-**How the definition helps.** Closing a union of principal lower sets uses exactly the common upper bounds of the original elements. If their least upper bound exists, closing the union gives all elements below that bound. In our own comparison, taking the union alone can omit the least upper bound itself. Intersections of principal lower sets already preserve greatest lower bounds. The remaining work proves that taking common bounds twice defines a closure operation.
+**How the definition helps.** In our own proof, the union of principal lower sets has the same upper bounds as its generators. If their join exists, the lower bounds of those upper bounds form precisely the principal lower set of that join. Intersecting principal lower sets gives all common lower bounds, precisely the principal lower set of the meet whenever it exists.
 
 **nLab:** [MacNeille completion](https://ncatlab.org/nlab/show/MacNeille+completion). It says: “preserves all least upper bounds (joins) and greatest lower bounds (meets) existing in L.”
 
@@ -1028,7 +1028,7 @@
 
 ### The Dedekind–MacNeille completion extends Dedekind cuts to every poset
 
-**Remember:** Cut any partial order like Dedekind cut ℚ, and get its smallest completion.
+**Remember:** Keep the sets equal to the common lower bounds of their upper bounds.
 
 *Makes the theorem clean to state or prove.* MSC 06B23 (Complete lattices, completions), 06A15. arXiv math.CO. Level 3: graduate.
 
@@ -1036,7 +1036,7 @@
 
 **Problem.** Every partially ordered set embeds in its Dedekind–MacNeille completion, a complete lattice that embeds in every complete lattice containing the order. For the rational numbers, the completion is the real numbers with −∞ and +∞ added.
 
-**How the definition helps.** MacNeille's cut, a set equal to the lower bounds of its upper bounds, has no special conditions, so it works for any partial order. Every element of the completion is a join of old elements and also a meet of old elements. For ℚ the two extra elements −∞ and +∞ come from the empty set and from all of ℚ. Dedekind excluded them by asking that both parts of a cut be nonempty.
+**How the definition helps.** Taking lower bounds after upper bounds defines a closure operation, so its fixed sets form a complete lattice. Principal lower sets embed the original order. In any complete lattice containing that order, send each cut to its join, whose original upper bounds recover the cut (our own proof). For ℚ, the proper nonempty cuts represent real numbers, while ∅ and ℚ supply the endpoints.
 
 **Wikipedia:** [Dedekind–MacNeille completion](https://en.wikipedia.org/wiki/Dedekind%E2%80%93MacNeille_completion). It says: “If the requirement that both sets be nonempty is removed, the construction also includes the two additional elements -∞ and +∞, yielding the extended real number line.”
 
@@ -1104,11 +1104,11 @@
 
 *True by definition.* MSC 06B35 (Continuous lattices and posets, applications), 68Q55. arXiv cs.LO, math.LO. Level 3: graduate.
 
-**Definition.** A directed set is nonempty, and any two members have an upper bound within it. A directed-complete partial order has a join for every directed subset. A map is Scott continuous if it preserves order and directed joins. The Scott topology uses upper sets that meet every directed set whose join they contain.
+**Definition.** A directed set is nonempty, and any two members have an upper bound within it. A directed-complete partial order has a join for every directed subset. A map is Scott continuous if it preserves order and directed joins.
 
 **Problem.** A map from a product of two directed-complete partial orders to another is Scott continuous exactly when it is Scott continuous in each variable separately.
 
-**How the definition helps.** The directed-join definition makes the proof a calculation in the two coordinates. A directed set of pairs has its join given by the joins in each coordinate, and separate continuity gives an iterated join over all pairs (our own). Directedness bounds every such pair by an original pair, so the join is unchanged (our own). In the ordinary product topology, separate continuity need not imply continuity (our own comparison).
+**How the definition helps.** In our own proof, separate continuity gives monotonicity in both coordinates and expands the image of a directed join into two successive joins. Every pair of coordinate indices has a common upper index, so the original diagonal values give the same join. Conversely, fixing either coordinate preserves directed joins, so joint continuity gives separate continuity.
 
 **Paper or page:** [Domain theory in univalent foundations I: Directed complete posets and Scott's D∞](https://arxiv.org/abs/2407.06952v3). It says: “A map f: D₁ × D₂ → E is Scott continuous if and only if the maps f(x,−): D₂ → E and f(−,y): D₁ → E are Scott continuous for every x: D₁ and y: D₂.”
 
@@ -1124,9 +1124,9 @@
 
 **Definition.** A directed set is nonempty, and any two members have an upper bound within it. A directed-complete partial order has a join for every directed subset. A Scott-continuous map preserves order and directed joins. An ideal is a directed lower set, so it contains everything below any of its members.
 
-**Problem.** Order the ideals of S by inclusion and send x to its principal ideal, the set of elements below x. Every order-preserving map f from S into a directed-complete order D then extends uniquely to a Scott-continuous map on the ideals.
+**Problem.** For a poset S, order its ideals by inclusion and embed each x as the principal ideal of elements below x. Every order-preserving map f from S into a directed-complete order D extends uniquely to a Scott-continuous map on these ideals.
 
-**How the definition helps.** The ideal definition makes the extension formula clear because each ideal is a directed union of principal ideals. Thus the extension must send an ideal I to the join of the values f(x) for x in I. Unlike the abstract definition by this extension property, the ideal construction gives the elements and their order explicitly. Our own proof checks that a directed union of ideals is an ideal, so joins are unions. The formula preserves these unions as joins, which proves that the extension exists (our own).
+**How the definition helps.** Each ideal is a directed union of principal ideals, so its image must be the join of their prescribed values. This join exists because f preserves order, and on the principal ideal of x it equals f(x). Directed unions of ideals are ideals, and taking the join over their union gives the join of their separate values (our own proof).
 
 **Paper or page:** [Predicative theories of continuous lattices](https://arxiv.org/abs/2006.05642v4). It says: “for any monotone function f: S → D to a dcpo D, there exists a unique Scott continuous function f̄: Idl(S) → D such that f̄ ∘ i<sub>S</sub> = f.”
 
@@ -1140,11 +1140,11 @@
 
 *True by definition. Confidence: medium.* MSC 06B35 (Continuous lattices and posets, applications), 54H12, 18B35. arXiv math.GN, cs.LO. Level 3: graduate.
 
-**Definition.** A directed set is a set in which any two elements have a common upper bound, and its join is its least upper bound. On a preordered set, a subset is Scott-open when its characteristic function into the truth values preserves directed joins. Concretely, a Scott-open set is upward closed, and any directed set whose join lies in it already meets it.
+**Definition.** A directed subset is nonempty and contains an upper bound for each pair of its members. A subset of a preorder is Scott-open if it is upward closed and meets every directed subset whose join exists and belongs to it.
 
-**Problem.** Give preorders the Scott topology. Then a map between preorders is continuous exactly when it preserves directed joins, and the truth values become the Sierpinski space.
+**Problem.** Between preorders with their Scott topologies, continuous maps are exactly the monotone maps preserving every existing directed join. The Scott topology on the ordered truth values gives the Sierpiński space.
 
-**How the definition helps.** The open sets are defined by the same property that the continuous maps should have, so the theorem is close to a tautology. The characteristic function of a preimage is the characteristic function of the open set composed with the map. So preimages of Scott-open sets are Scott-open exactly when these composites still preserve directed joins. Harder results still need real work, such as the theorem that the injective T₀-spaces are the continuous lattices.
+**How the definition helps.** Preserving order and directed joins makes preimages of Scott-open sets Scott-open. Conversely, complements of principal lower sets are Scott-open, so continuity forces monotonicity (our own proof). For directed D, any upper bound of f(D) has a principal lower set whose closed preimage contains D and hence its join. Thus f preserves the join, and on the two truth values only the upper singleton is open among singletons.
 
 **nLab:** [Scott topology](https://ncatlab.org/nlab/show/Scott+topology). It says: “This in fact ensures that, in general, the continuous functions between preorders with Scott topologies are precisely those (necessarily monotonic) functions between them which preserve directed joins (called Scott-continuous).”
 
@@ -1156,11 +1156,11 @@
 
 **Remember:** Continuous maps reach their least fixed point in ω steps from bottom.
 
-*Makes the theorem clean to state or prove.* MSC 06B35 (Continuous lattices and posets, applications), 47H10. arXiv cs.LO, math.LO. Level 3: graduate.
+*True by definition.* MSC 06B35 (Continuous lattices and posets, applications), 47H10. arXiv cs.LO, math.LO. Level 3: graduate.
 
 **Definition.** A directed-complete partial order is a partial order in which every directed subset has a least upper bound. A directed subset is a nonempty set in which any two elements have an upper bound inside the set. A function is Scott-continuous if it preserves the least upper bounds of directed subsets.
 
-**Problem.** Let L be a directed-complete partial order with a least element ⊥, and let f be Scott-continuous. Then f has a least fixed point, the least upper bound of ⊥, f(⊥), f(f(⊥)), and so on.
+**Problem.** Every Scott-continuous self-map f of a directed-complete partial order with least element ⊥ has a least fixed point. It is the least upper bound of the iterates starting at ⊥.
 
 **How the definition helps.** Continuity is defined as exactly the property that the proof uses at the limit step. The iterates ⊥, f(⊥), f(f(⊥)), … form an increasing chain with least upper bound m, and continuity gives f(m) = m. Any other fixed point is above every iterate, so it is above m. For a function that is only monotone, the iteration can need transfinitely many steps (our own).
 
@@ -1172,13 +1172,13 @@
 
 **Remember:** Count only the continuous functions, and D can be as big as D → D.
 
-*Rules out counterexamples.* MSC 06B35 (Continuous lattices and posets, applications), 03B40, 18C50. arXiv cs.LO, math.LO. Level 3: graduate.
+*Makes the theorem clean to state or prove.* MSC 06B35 (Continuous lattices and posets, applications), 03B40, 18C50. arXiv cs.LO, math.LO. Level 3: graduate.
 
-**Definition.** A domain, in Scott's sense, is a suitable partially ordered set in which directed subsets have suprema; a continuous lattice is an example. A directed subset is one in which any two elements have an upper bound in the subset. The maps between domains are the Scott-continuous functions, which preserve directed suprema. The function space \[D → D\] contains only these continuous functions.
+**Definition.** For a continuous lattice D, order the Scott-continuous maps from D to itself pointwise to form \[D → D\]. Such maps preserve order and suprema of nonempty directed subsets. A subset is directed if each pair of its elements has an upper bound within it.
 
 **Problem.** There is a domain D∞ with more than one point that is isomorphic to its own space \[D∞ → D∞\] of Scott-continuous functions. So D∞ is a model of the untyped lambda calculus in which not all terms are equal.
 
-**How the definition helps.** Allowing only continuous functions makes the function space small enough to match D. In the category of sets, Cantor's theorem allows only a one-point solution of D ≅ D ⇒ D, so all terms become equal. Restricting to continuous functions removes this cardinality obstruction. Building D∞ as an inverse limit is still real work, but the change in the meaning of 'function' makes a solution possible.
+**How the definition helps.** The function-space equation now ranges over Scott-continuous self-maps. Scott’s inverse-limit construction supplies a nontrivial continuous lattice satisfying the equation. In our own explanation, the isomorphism interprets application and abstraction, yielding a nontrivial model.
 
 **nLab:** [domain theory](https://ncatlab.org/nlab/show/domain+theory). It says: “In 1969, Dana Scott solved this problem topologically: the terms were interpreted as continuous functions on a suitable space D isomorphic to its own function space. This D is called a domain.”
 
@@ -1196,7 +1196,7 @@
 
 **Problem.** Every continuous complete lattice L is a retract of its ideal lattice, which is algebraic. This means there are join-preserving maps t and s in opposite directions with s(t(a)) = a for every a in L.
 
-**How the definition helps.** The adjoint definition supplies the two maps for the retract. The join map s is itself left adjoint to sending an element to the ideal below it, so both s and t preserve joins. Our own check uses t(a) ⊆ {x : x ≤ a} to get s(t(a)) ≤ a, and the adjunction rule with I = t(a) gives the reverse. The work lies in showing that the ideal lattice is algebraic and that the adjoint definition agrees with the way-below definition.
+**How the definition helps.** The left adjoint t preserves joins, as does s because s is left adjoint to the principal ideal map. Adjunction gives t(a) ⊆ ↓a and a ≤ s(t(a)), hence s(t(a)) = a (our own check). Each ideal is a directed union of principal ideals, which are compact because membership of their generator witnesses containment (our own argument).
 
 **nLab:** [continuous poset](https://ncatlab.org/nlab/show/continuous+poset). It says: “A poset P with directed joins is continuous if and only if ⋁: Idl(P) → P has its own left adjoint, which must be ⇓.”
 
@@ -1227,15 +1227,15 @@
 
 ### Modularity excludes Dilworth’s counterexamples
 
-**Remember:** Unique complements need modularity to force distributivity.
+**Remember:** Modularity transports a diamond’s competing complements into the whole lattice.
 
-*Rules out counterexamples.* MSC 06C05 (Modular lattices, Desarguesian lattices), 01A60. arXiv math.CO, math.HO. Level 3: graduate.
+*True by definition.* MSC 06C05 (Modular lattices, Desarguesian lattices), 01A60. arXiv math.CO, math.HO. Level 3: graduate.
 
 **Definition.** In a lattice, ∧ gives the greatest lower bound and ∨ the least upper bound of two elements. A complement of x meets x at the bottom element and joins x at the top element. The modular law requires (a ∨ z) ∧ b = a ∨ (z ∧ b) whenever a ≤ b.
 
 **Problem.** Every bounded modular lattice with exactly one complement for each element is distributive.
 
-**How the definition helps.** Without modularity the theorem fails, and modularity removes exactly these failures. Dilworth's theorem embeds every lattice, including the non-distributive pentagon, in a lattice with unique complements (our own example). That larger lattice contains the pentagon, so it is neither modular nor distributive. The positive result needs von Neumann's theorem that a modular lattice with unique complements is distributive.
+**How the definition helps.** In our own proof, the modular diamond criterion gives a diamond with bottom u and top v in any nondistributive modular lattice. A complement s of u gives a modular interval isomorphism from \[u,v\] onto \[0,v∧s\] by meeting with s. Write k = v∧s and choose a complement t of k. The two diamond complements extend to distinct global complements by joining with t, since meeting back with k recovers each by modularity.
 
 **Paper or page:** [On complemented, uniquely complemented and uniquely complemented nondistributive lattices (a historical and epistemological note about a mathematical mystery)](https://arxiv.org/abs/2308.04506). It says: “Every uniquely complemented modular lattice is distributive.”
 
@@ -1245,15 +1245,15 @@
 
 ### Orthomodularity excludes zero gaps
 
-**Remember:** If the part outside a vanishes, b is just a.
+**Remember:** Rebuild the larger element from the smaller one and its orthogonal remainder.
 
-*Rules out counterexamples.* MSC 06C15 (Complemented lattices, orthocomplemented lattices and posets). arXiv math.LO. Level 3: graduate.
+*True by definition.* MSC 06C15 (Complemented lattices, orthocomplemented lattices and posets). arXiv math.LO. Level 3: graduate.
 
 **Definition.** In a bounded lattice, write ∧ for greatest lower bound and ∨ for least upper bound. An ortholattice has an order-reversing operation x ↦ x′ with x″ = x and x ∧ x′ = 0. The orthomodular law says b = a ∨ (b ∧ a′) whenever a ≤ b.
 
 **Problem.** In an orthomodular lattice, if a ≤ b and b ∧ a′ = 0, then a = b.
 
-**How the definition helps.** The orthomodular law rebuilds b from a and the part of b below a′. If that part is zero, the law gives b = a. Our own counterexample is the ortholattice made of the two chains 0 &lt; a &lt; b &lt; 1 and 0 &lt; b′ &lt; a′ &lt; 1, with no other comparisons. There b ∧ a′ = 0 although a &lt; b.
+**How the definition helps.** The orthomodular law gives b = a ∨ (b ∧ a′) whenever a ≤ b. Substituting zero for b ∧ a′ gives b = a ∨ 0 = a (our own calculation).
 
 **Paper or page:** [Topological duality for orthomodular lattices](https://arxiv.org/abs/2208.07430v2). It says: “if a ≤ b and −a · b = 0, then a = b.”
 
@@ -1263,7 +1263,7 @@
 
 ### Orthomodularity keeps the part of the modular law Hilbert subspaces satisfy
 
-**Remember:** Quantum logic drops distributivity but keeps orthomodularity, which subspaces still obey.
+**Remember:** Split the larger subspace into the smaller one and its orthogonal remainder.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 06C15 (Complemented lattices, orthocomplemented lattices and posets), 03G12. arXiv math.LO, quant-ph. Level 3: graduate.
 
@@ -1271,7 +1271,7 @@
 
 **Problem.** The closed subspaces of a Hilbert space, with orthogonal complement, form an orthomodular lattice. In dimension at least 2 this lattice is not distributive, so it is not a Boolean algebra.
 
-**How the definition helps.** The orthomodular law asks for the modular law only in the case that closed subspaces still satisfy. If A and C are closed subspaces with A inside C, then C is the sum of A and the part of C orthogonal to A (our own). The full modular law fails for closed subspaces of an infinite-dimensional Hilbert space (our own). So quantum logic must weaken the modular law in this way.
+**How the definition helps.** Orthomodularity states exactly the decomposition supplied by orthogonal projection onto a closed subspace. For A ⊆ C, subtracting that projection from any vector in C leaves a vector in C orthogonal to A (our own argument). In a plane, three distinct lines violate distributivity because two span the plane while each meets the third only at zero (our own example).
 
 **Wikipedia:** [Complemented lattice](https://en.wikipedia.org/wiki/Complemented_lattice). It says: “A natural further weakening of this condition for orthocomplemented lattices, necessary for applications in quantum logic, is to require it only in the special case b = a⊥.”
 
@@ -1285,7 +1285,7 @@
 
 *True by definition.* MSC 06D10 (Complete distributivity), 06D50. arXiv math.LO. Level 3: graduate.
 
-**Definition.** A prime filter of a bounded distributive lattice is a proper filter that contains a or b whenever it contains a ∨ b. The canonical extension is the lattice of upward closed sets of prime filters, ordered by inclusion. Each lattice element becomes the set of prime filters that contain it.
+**Definition.** Order the prime filters of a bounded distributive lattice by inclusion. A prime filter is a proper filter containing a or b whenever it contains a ∨ b. The canonical extension consists of all upward closed subsets of this ordered set, ordered by inclusion.
 
 **Problem.** The canonical extension, formed from all upward closed sets of prime filters, is completely distributive. An intersection of unions equals the union of intersections obtained by choosing one set from each family.
 
@@ -1301,7 +1301,7 @@
 
 *True by definition.* MSC 06D20 (Heyting algebras (lattice-theoretic aspects)), 03G10. arXiv math.LO. Level 3: graduate.
 
-**Definition.** In a Heyting algebra, x ⇒ a is the largest y with x ∧ y ≤ a. Ordinary Heyting negation ¬x is x ⇒ 0, where 0 is the least element. Thus b ≤ ¬c holds exactly when b ∧ c = 0. This is symmetric in b and c, so b ≤ ¬c holds exactly when c ≤ ¬b.
+**Definition.** Heyting negation ¬x is the largest element disjoint from x. Equivalently, b ≤ ¬x holds exactly when b ∧ x = 0, for every b.
 
 **Problem.** Heyting negation satisfies ¬(x ∨ y) = ¬x ∧ ¬y. The reverse pattern ¬(x ∧ y) = ¬x ∨ ¬y can fail.
 
@@ -1317,11 +1317,11 @@
 
 *True by definition. Confidence: medium.* MSC 06D20 (Heyting algebras (lattice-theoretic aspects)). arXiv math.LO. Level 3: graduate.
 
-**Definition.** An upward closed set contains every point above any of its members, including the point itself. Define U → V to contain x when every member of U above x belongs to V. An order-preserving map f satisfies the back condition if every y ≥ f(x) equals f(z) for some z ≥ x.
+**Definition.** In a poset, an upward closed set contains every point above each of its members. For upward closed U and V, x belongs to U → V if every member of U above x belongs to V. A monotone map f satisfies the back condition if every y ≥ f(x) equals f(z) for some z ≥ x, for every x.
 
 **Problem.** For order-preserving maps, inverse image preserves this implication exactly when the map satisfies the back condition.
 
-**How the definition helps.** The back condition makes the points tested by implication above f(x) exactly the images of points above x. Our own proof compares this point test with preservation of the operation → on all upward closed sets. If some y ≥ f(x) fails to lift, take U to contain all points at or above y. Take V to contain only the points strictly above y. At f(x), y witnesses failure of implication. Above x, every image in U belongs to V, so implication holds after inverse image.
+**How the definition helps.** Monotonicity and the back condition make the images above x exactly the points above f(x), so both implication tests agree. Conversely, suppose y ≥ f(x) has no lift above x. Choose U = {t : t ≥ y} and V = {t : t &gt; y} (our own proof). The witness y defeats implication at f(x), but every image above x in U lies in V.
 
 **Paper or page:** [Etale algebras over finite Heyting algebras](https://arxiv.org/abs/2410.23442v1). It says: “f satisfies the ‘back’ condition of a p-morpism if and only if ↑f(x) ⊆ f∗(↑x).”
 
@@ -1373,7 +1373,7 @@
 
 **Problem.** The double negation sublocale is contained in every dense sublocale. Its opens form a Boolean algebra.
 
-**How the definition helps.** Using nuclei turns containment in every dense sublocale into a single inequality about opens. Our own calculation starts with any dense nucleus j. The opens j(a) and j(¬a) are disjoint because j preserves intersections and fixes the empty open. Since ¬a ≤ j(¬a), the open j(a) misses ¬a and therefore lies below ¬¬a. Larger nuclei give smaller sublocales, which yields the required inclusion. The remaining work shows that double negation is a dense nucleus and its fixed opens form a Boolean algebra.
+**How the definition helps.** In our own proof, any dense nucleus j satisfies j(a) ∧ j(¬a) = j(0) = 0. Since ¬a ≤ j(¬a), this gives j(a) ≤ ¬¬a. Larger nuclei define smaller sublocales, so the double negation sublocale lies inside every dense sublocale. The Booleanization theorem identifies double negation as a dense nucleus whose fixed opens form a Boolean algebra.
 
 **nLab:** [double negation](https://ncatlab.org/nlab/show/double+negation). It says: “it is the smallest dense sublocale of L, the intersection of all dense sublocales.”
 
@@ -1389,7 +1389,7 @@
 
 **Problem.** The fixed points of a nucleus form a frame in the inherited order. The map j onto these fixed points preserves finite meets and arbitrary joins.
 
-**How the definition helps.** The nucleus definition separates the two preservation laws, so there is no need to guess the operations on the fixed points. Meets of fixed points are unchanged, and a join of fixed points is j applied to their original join. The least fixed point above x is j(x), so j onto the fixed points is left adjoint to inclusion and preserves joins. It preserves finite meets by the nucleus laws. Since j is onto, distributivity passes to the fixed points. The work in the converse description lies in showing that every surjective frame map gives such a nucleus using its right adjoint.
+**How the definition helps.** The fixed points have inherited meets, and j(x) is the least fixed point above x. Thus j is left adjoint to inclusion and preserves joins into the fixed points (our own argument). It preserves binary meets by definition and fixes the top by extensivity. Since j is onto, the frame distributive law passes to its image.
 
 **nLab:** [nucleus](https://ncatlab.org/nlab/show/nucleus). It says: “Note that, by property (3) above, we may interpret j as a function j<sup>\*</sup>: L → L/j, which is a surjective frame homomorphism.”
 
@@ -1405,7 +1405,7 @@
 
 **Problem.** Every frame is a complete Heyting algebra. This means that for each x and z, there is a largest y such that x ∧ y ≤ z.
 
-**How the definition helps.** The frame law lets us find the largest candidate by taking the join of all candidates. Take the join of all y with x ∧ y ≤ z. The frame law shows that meeting this join with x still gives an element below z. The equivalent definition asks for this largest candidate directly. The general result is that a map on a complete lattice has a right adjoint exactly when it preserves all joins.
+**How the definition helps.** Take the join of all candidates y with x ∧ y ≤ z. By the frame law, meeting that join with x gives a join of elements below z. The join of the candidates is therefore a candidate and dominates every candidate (our own construction).
 
 **nLab:** [frame](https://ncatlab.org/nlab/show/frame). It says: “A frame is automatically a Heyting algebra.”
 
@@ -1433,11 +1433,11 @@
 
 *Rules out counterexamples.* MSC 06D50 (Lattices and duality). arXiv math.LO. Level 3: graduate.
 
-**Definition.** A Priestley space is compact and ordered. Whenever x is not below y, a set that is open, closed and upward closed contains x but misses y. The lattice dual to the space uses exactly these sets, with maps acting by inverse image.
+**Definition.** A Priestley space is a compact topological space with a partial order. Whenever x is not below y, some clopen upward set contains x and misses y. Clopen means both closed and open.
 
 **Problem.** A continuous order-preserving map between Priestley spaces is onto exactly when inverse image is injective on the open and closed upward sets.
 
-**How the definition helps.** Compactness and the separation axiom expose a missing point p through two clopen upward sets, where clopen means closed and open. In our own proof, finitely many clopen upward or downward neighbourhoods of p miss the whole image, by compactness. Their intersections give a clopen upward set U and a clopen downward set D, and the image misses U ∩ D. So U and U ∖ D differ at p but have equal inverse images. Without compactness this fails, for example for an infinite discrete space, ordered by equality, inside its one-point compactification (our own).
+**How the definition helps.** Surjections distinguish distinct subsets by inverse image. For a missing point p, compactness gives finitely many clopen upward or downward neighborhoods whose intersection misses the image (our own proof). Collecting upward and downward factors gives U and D, so U and U ∖ D differ at p but agree on the image. Without compactness, an infinite discrete equality-ordered space embeds densely in its equality-ordered one-point compactification (our own example).
 
 **Paper or page:** [On a Generalization of Heyting Algebras II](https://arxiv.org/abs/2409.10642v1). It says: “f is surjective iff f⁻¹∶ CU(Y, ≤ᵧ) → CU(X, ≤ₓ) is one-to-one”
 
@@ -1455,7 +1455,7 @@
 
 **Problem.** The category of bounded distributive lattices is dually equivalent to the category of Priestley spaces with continuous order-preserving maps. This extends Stone duality between Boolean algebras and Stone spaces.
 
-**How the definition helps.** The separation axiom makes the clopen up-sets detect the order, so they determine the space and its order (our own). The dual space of a lattice is its set of prime filters, ordered by inclusion (our own). Each lattice element becomes the clopen up-set of the prime filters that contain it (our own). The order stands in for the missing complements (our own).
+**How the definition helps.** The separation axiom lets clopen upward sets detect every failure of order (our own explanation). Priestley’s duality theorem identifies these sets with the elements of the dual bounded distributive lattice. In the other direction, prime filters ordered by inclusion give the dual space, with inverse image inducing the maps.
 
 **Wikipedia:** [Priestley space](https://en.wikipedia.org/wiki/Priestley_space). It says: “One of the main consequences of the duality theory for distributive lattices is that each of these categories is dually equivalent to the category of bounded distributive lattices.”
 
@@ -1489,7 +1489,7 @@
 
 **Problem.** The regular open algebra of a Stone space is the Boolean completion of its clopen algebra.
 
-**How the definition helps.** Using regular opens gives a complete Boolean algebra in which the clopen basis already generates every element. Our own check writes a regular open as the union of the clopens inside it. Joins of regular opens take the interior of the closure of the union. Here that operation returns the original regular open. The remaining work proves that regular opens form a complete Boolean algebra and that the stated property characterizes the completion.
+**How the definition helps.** The regular-open algebra theorem supplies a complete Boolean algebra with joins given by taking the interior of the closure of a union. Every regular open is the union of the clopen basis sets inside it. Taking the interior of that union’s closure returns the same regular open, so those clopens generate it by a join (our own check).
 
 **Wikipedia:** [Complete Boolean algebra](https://en.wikipedia.org/wiki/Complete_Boolean_algebra). It says: “a complete Boolean algebra containing A such that every element is the supremum of some subset of A.”
 
@@ -1539,7 +1539,7 @@
 
 **Problem.** In a commutative residuated lattice, x → (y → z) = (x · y) → z.
 
-**How the definition helps.** The order definition turns nested implications into successive multiplications. Our own proof tests whether an arbitrary t lies below each side. On the left this means y · (x · t) ≤ z. On the right it means (x · y) · t ≤ z. Associativity and commutativity identify the tests, so both sides have the same lower bounds. The work in using this definition is proving the required implication exists for each pair.
+**How the definition helps.** Residuation gives t ≤ x → (y → z) exactly when y · (x · t) ≤ z. Associativity and commutativity turn this product into (x · y) · t. Applying residuation again gives t ≤ (x · y) → z, so the two expressions have the same lower bounds (our own proof).
 
 **Paper or page:** [An alternative definition of tense operators on residuated lattices](https://arxiv.org/abs/2312.10876v1). It says: “x → (y → z) = (x · y) → z”
 
@@ -1557,7 +1557,7 @@
 
 **Problem.** In a residuated lattice, multiplication on either side preserves every join that exists. In particular, it distributes over binary joins and preserves the least element if there is one.
 
-**How the definition helps.** The residual definition shows multiplication by a fixed element as a left adjoint, and any left adjoint preserves joins. So distributivity is a general fact about adjoints, not a separate axiom. The work lies in establishing the residual rule for each example. In our own example, for ideals I and K of a commutative ring, the largest ideal J with IJ ⊆ K is the set of r with rI ⊆ K.
+**How the definition helps.** Each residual is right adjoint to multiplication on its corresponding side, so both multiplication maps preserve existing joins. Binary joins give distributivity, and the empty join gives preservation of the least element (our own explanation).
 
 **Wikipedia:** [Residuated lattice](https://en.wikipedia.org/wiki/Residuated_lattice). It says: “Note that distributivity x • (y ∨ z) = (x • y) ∨ (x • z) and x•0 = 0 are consequences of these axioms and so do not need to be made part of the definition.”
 
@@ -1575,7 +1575,7 @@
 
 **Problem.** In an integral idempotent quantale, the product is the greatest lower bound. Its order is a frame, so finite greatest lower bounds distribute over all least upper bounds.
 
-**How the definition helps.** A greatest unit bounds the product above, and idempotence puts it above every common lower bound. Multiplication preserves order, so xy ≤ x and xy ≤ y. If a ≤ x and a ≤ y, then a = aa ≤ xy. The quantale distributive law now gives the stated law for greatest lower bounds. Our own counterexample uses ordinary multiplication on the real interval \[0, 1\]. Its unit is greatest, but half times half is smaller than half.
+**How the definition helps.** Monotonicity and the greatest unit e give xy ≤ xe = x and xy ≤ ey = y. Each common lower bound a satisfies a = aa ≤ xy, so xy is the meet. The quantale law now distributes this meet over every join. In our own counterexample, ordinary multiplication on \[0, 1\] has greatest unit 1 but violates idempotence at ½.
 
 **nLab:** [quantale](https://ncatlab.org/nlab/show/quantale). It says: “If a monoid object in the cartesian category of posets is idempotent and affine, then the monoid multiplication is the meet operation.”
 
@@ -1597,22 +1597,6 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
-### Archimedean linearly ordered groups embed in ℝ
-
-**Remember:** Repeated addition must eventually break every fixed bound.
-
-*Rules out counterexamples.* MSC 06F15 (Ordered groups). arXiv math.GR. Level 3: graduate.
-
-**Definition.** A group order is invariant under translation on either side. In a total group order, the Archimedean condition says repeated addition of any positive element eventually exceeds each fixed bound.
-
-**Problem.** Every Archimedean totally ordered group is isomorphic as an ordered group to a subgroup of the additive real numbers.
-
-**How the definition helps.** The Archimedean condition excludes positive elements whose multiples stay below a fixed bound, an obstruction to embedding in the reals. In our own counterexample, order integer pairs by first coordinate, breaking ties by second coordinate. Every positive multiple of (0, 1) stays below (1, 0). Hölder’s theorem proves the hard direction by constructing a real-valued order embedding.
-
-**Wikipedia:** [Linearly ordered group](https://en.wikipedia.org/wiki/Linearly_ordered_group). It says: “is isomorphic to a subgroup of the additive group of real numbers,”
-
-**Sources:** none listed. No primary source with a working link was found.
-
 ### Interpolation splits ordered sums
 
 **Remember:** Interpolate once, then subtract to get the second piece.
@@ -1623,7 +1607,7 @@
 
 **Problem.** Let an ordered abelian group satisfy Riesz interpolation. Suppose y and z are nonnegative and 0 ≤ x ≤ y + z. Then x = u + v for some 0 ≤ u ≤ y and 0 ≤ v ≤ z.
 
-**How the definition helps.** Interpolation supplies the first summand from its four required bounds. Our own proof translates the bounds on v = x − u into bounds on u. Both 0 and x − z lie below both x and y. Interpolation therefore gives u between these two pairs. This replaces the usual choice of the greatest lower bound of x and y, which need not exist.
+**How the definition helps.** Interpolation produces u once the four desired bounds are expressed in the same order. In our own proof, both 0 and x − z lie below both x and y. Interpolate to get 0 ≤ u ≤ y and x − z ≤ u ≤ x. Then v = x − u satisfies 0 ≤ v ≤ z and x = u + v.
 
 **Wikipedia:** [Partially ordered group](https://en.wikipedia.org/wiki/Partially_ordered_group). It says: “there exists z ∈ G such that xᵢ ≤ z ≤ yⱼ.”
 
@@ -1635,88 +1619,15 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 06A05 (Total orders), 03F60, 12J15. arXiv math.LO, math.CA. Level 4: research.
 
-**Definition.** A pseudo-order on a set is a relation &lt; that is asymmetric (x &lt; y and y &lt; x never both hold), weakly linear and connected. Weakly linear means: if x &lt; z, then x &lt; y or y &lt; z, for every y. Connected means: if neither x &lt; y nor y &lt; x, then x = y. In classical logic, a pseudo-order is the same as a strict total order.
+**Definition.** A pseudo-order is an asymmetric relation &lt; satisfying two further conditions for all x, y, z. If x &lt; z, then x &lt; y or y &lt; z. If neither x &lt; y nor y &lt; x, then x = y.
 
 **Problem.** In constructive mathematics, the strict order &lt; on the real numbers, Dedekind or Cauchy, is a pseudo-order that extends the decidable order on ℚ. The order ≤ on the reals cannot be proved total.
 
-**How the definition helps.** The strict order &lt; on the reals is a pseudo-order, so 'the reals are linearly ordered' becomes true and useful. Constructively the order ≤ cannot be proved total, and in some classically invalid systems it is provably not total. The axioms of a pseudo-order are the de Morgan duals of those of a total order, so classically nothing changes.
+**How the definition helps.** The axioms let a known strict gap yield a comparison without requiring totality of ≤. For x &lt; z, choose rationals x &lt; r &lt; s &lt; z. Locatedness of y gives r &lt; y or y &lt; s, hence x &lt; y or y &lt; z (our own argument). Equality of real numbers follows from the absence of a strict separation in either direction.
 
 **nLab:** [pseudo-order](https://ncatlab.org/nlab/show/pseudo-order). It says: “Since the corresponding partial order ≤ cannot be proved total (and in some classically invalid versions of constructive mathematics can even be proved not total), &lt; is more directly useful than ≤ in constructive analysis.”
 
 **Sources:** none listed. No primary source with a working link was found.
-
-### Better-quasi-orders survive infinite constructions that break well-quasi-orders
-
-**Remember:** A better-quasi-order stays well-quasi-ordered when you build infinite things from it.
-
-*Rules out counterexamples.* MSC 06A07 (Combinatorics of partially ordered sets), 03E05. arXiv math.CO, math.LO. Level 4: research.
-
-**Definition.** A well-quasi-order is a reflexive and transitive relation with no infinite sequence in which no term is ≤ a later term. A better-quasi-order is one with no bad array: no map f from a barrier, a special infinite family of finite sets of natural numbers, with f(s) ≰ f(t) whenever t continues s. Every better-quasi-order is a well-quasi-order.
-
-**Problem.** Trees of height ω are well-quasi-ordered under the topological minor relation (Nash-Williams). Scattered linear orders, which contain no copy of the rationals, are well-quasi-ordered under embedding (Laver, Fraïssé's conjecture).
-
-**How the definition helps.** Better-quasi-orders survive the infinite constructions that break well-quasi-orders, so proofs can go through them. Rado gave a well-quasi-order that shows that many infinite operations do not preserve well-quasi-orders. Nash-Williams proved the tree result through a statement about better-quasi-orders, and Laver proved Fraïssé's conjecture in the same way. The cost is a much more complex definition.
-
-**Wikipedia:** [Better-quasi-ordering](https://en.wikipedia.org/wiki/Better-quasi-ordering). It says: “In a 1965 paper Crispin Nash-Williams formulated the stronger notion of better-quasi-ordering in order to prove that the class of trees of height ω is well-quasi-ordered under the topological minor relation.”
-
-**Sources:**
-
-- [C. St. J. A. Nash-Williams, On well-quasi-ordering infinite trees, Mathematical Proceedings of the Cambridge Philosophical Society 61 (1965) 697–720](https://doi.org/10.1017/S0305004100039062)
-- [Richard Rado, Partial well-ordering of sets of vectors, Mathematika 1 (1954) 89–95](https://doi.org/10.1112/S0025579300000565)
-
-### Generalised recursive atom orderings exist exactly when ordinary ones do
-
-**Remember:** The looser atom ordering proves CL-shellability with no loss.
-
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 06A07 (Combinatorics of partially ordered sets), 05E45. arXiv math.CO. Level 4: research.
-
-**Definition.** A bounded poset has a least and a greatest element, and an atom is an element just above the least one. A recursive atom ordering orders the atoms of the poset and of its intervals in a compatible way. A generalised recursive atom ordering asks for a looser form of this compatibility.
-
-**Problem.** A finite bounded poset has a generalised recursive atom ordering exactly when it has an ordinary one. So, by the theorem of Björner and Wachs, it is CL-shellable exactly when it has a generalised recursive atom ordering.
-
-**How the definition helps.** The generalised ordering is looser, and the theorem says it gives the same class of posets. So to show CL-shellability, it is enough to find the looser kind of ordering, which is easier in examples (our own remark). The work moves into the equivalence theorem, whose reordering procedure turns a generalised ordering into an ordinary one. The paper uses this to show that uncrossing posets are dual CL-shellable.
-
-**Paper or page:** [Generalized recursive atom ordering and equivalence to CL-shellability](https://arxiv.org/abs/2212.03949). It says: “A finite bounded poset is proven to admit such a generalized recursive atom ordering if and only if it admits a traditional recursive atom ordering.”
-
-**Sources:**
-
-- [Patricia Hersh and Grace Stadnyk, Generalized recursive atom ordering and equivalence to CL-shellability, Combinatorial Theory 4 (1) (2024); arXiv:2212.03949](https://arxiv.org/abs/2212.03949)
-
-### A new amicability for posets keeps Czédli's permutation theorem
-
-**Remember:** Change amicability for posets, keep it for lattices, and the theorem survives.
-
-*Makes the theorem clean to state or prove. Confidence: low.* MSC 06A11 (Algebraic aspects of posets), 08A30. arXiv math.CO, math.RA. Level 4: research.
-
-**Definition.** A tolerance is a reflexive and symmetric relation, and it is 2-uniform when each of its blocks has exactly two elements. Two relations permute when their two compositions are equal. Czédli's amicability of two tolerances uses joins and meets. The new amicability uses only the order and agrees with Czédli's in lattices.
-
-**Problem.** Two 2-uniform tolerances on a partially ordered set with no infinite chain permute exactly when they are amicable in the new sense. In lattices this is Czédli's theorem.
-
-**How the definition helps.** The new definition does not use lattice operations, so it makes sense in partially ordered sets, and it agrees with the old one in lattices. So the theorem extends and still contains the lattice case. The proof for partially ordered sets is new work (Theorem 3.3 of the paper).
-
-**Paper or page:** [A characterization of permutability of 2-uniform tolerances on posets](https://arxiv.org/abs/2402.09496). It says: “With this new definition we can prove that two tolerances on a poset containing no infinite chain permute if and only if they are amicable in the new sense.”
-
-**Sources:**
-
-- [Ivan Chajda and Helmut Länger, A characterization of permutability of 2-uniform tolerances on posets, arXiv:2402.09496 (2024)](https://arxiv.org/abs/2402.09496)
-
-### Galois connections give a short proof of bottleneck stability
-
-**Remember:** Write interleavings as Galois connections, and Rota's theorem moves diagrams for you.
-
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 06A15 (Galois correspondences, closure operators (in relation to ordered sets)), 55N31. arXiv math.AT, math.CO. Level 4: research.
-
-**Definition.** A Galois connection between posets P and Q is a pair of order-preserving maps f from P to Q and g from Q to P. They satisfy f(p) ≤ q exactly when p ≤ g(q). The paper writes interleavings and matchings as Galois connections. It defines the persistence diagram as a Möbius inversion of a rank function.
-
-**Problem.** Close persistence modules have close persistence diagrams. This bottleneck stability theorem has a short proof through Rota's Galois connection theorem.
-
-**How the definition helps.** Once the diagram is a Möbius inversion and an interleaving is a Galois connection, Rota's theorem says how the diagram changes under the connection. Rota's theorem relates the Möbius functions of two posets joined by a Galois connection (our own). That gives stability with little extra work. The hard part moves into the classical combinatorics of Möbius inversion.
-
-**Paper or page:** [Galois Connections in Persistent Homology](https://arxiv.org/abs/2201.06650). It says: “Second, it provides access to Rota's Galois connection theorem -- a powerful tool with many potential applications in applied topology. To illustrate this, we use Rota's Galois connection theorem to give a substantially easier proof of the bottleneck stability theorem.”
-
-**Sources:**
-
-- [Aziz Burak Gulen, Alexander McCleary, Galois Connections in Persistent Homology, arXiv:2201.06650 (2023)](https://arxiv.org/abs/2201.06650)
 
 ### Asking maps to preserve semidirected joins makes strictness automatic
 
@@ -1724,11 +1635,11 @@
 
 *True by definition. Confidence: medium.* MSC 06B35 (Continuous lattices and posets, applications), 68Q55. arXiv cs.LO, math.CT. Level 4: research.
 
-**Definition.** A pointed directed-complete order has a least element and a join for each directed subset. A subset is semidirected if each pair of its elements has an upper bound in the subset, so the empty set qualifies. Sterling calls a map inductive if it preserves joins of semidirected subsets. The usual definition asks for preservation of nonempty directed joins and of the least element as two separate conditions.
+**Definition.** A subset is semidirected if every pair of its members has an upper bound in the subset. A map between pointed directed-complete orders is inductive if it preserves suprema of all semidirected subsets, including ∅.
 
 **Problem.** Every inductive map between pointed directed-complete orders is strict, which means that it preserves the least element.
 
-**How the definition helps.** The empty set is semidirected and its join is the least element, so preserving that join is strictness. Sterling's Lemma 45 states that a Scott-continuous map is strict exactly when it is inductive. Scott-continuous means that the map preserves joins of directed subsets. The converse direction holds the real work. Our own remark is that, constructively, one cannot split each semidirected subset into an empty case and a nonempty case.
+**How the definition helps.** The empty subset is semidirected and its supremum is the least element. Preserving this supremum sends the least element of the domain to the least element of the codomain. Sterling’s Lemma 45 also identifies inductive maps with strict Scott-continuous maps.
 
 **Paper or page:** [Tensorial structure of the lifting doctrine in constructive domain theory](https://arxiv.org/abs/2312.17023v5). It says: “A Scott–continuous morphism between pointed dcpos is strict if and only if it is inductive, i.e. preserves suprema of semidirected subsets.”
 
@@ -1746,32 +1657,13 @@
 
 **Problem.** Let D be an algebraic dcpo, so every element is a directed join of the compact elements c ≪ c below it. Then x is strongly maximal exactly when, for each compact c, either c ≤ x or disjoint Scott opens contain c and x.
 
-**How the definition helps.** A compact element can take both places in the two-element test because it is way below itself. Our own converse uses the directed family of compact elements below b to choose c with a ≤ c ≤ b. If c ≤ x, then a ≪ x. Otherwise disjoint Scott opens separate c from x, and the open containing c also contains b.
+**How the definition helps.** Using a compact c for both arguments of the defining test gives the compact test since c ≪ c. Conversely, for a ≪ b, algebraicity supplies a compact c with a ≤ c ≤ b (our own proof). The compact test gives either c ≤ x, hence a ≤ c ≪ c ≤ x and a ≪ x, or disjoint neighborhoods of c and x. In the second case, upward closure puts b in the neighborhood of c.
 
 **Paper or page:** [Apartness, sharp elements, and the Scott topology of domains](https://arxiv.org/abs/2106.05064v5). It says: “An element x of an algebraic dcpo D is strongly maximal if and only if for every compact element c ∈ D either c ⊑ x or c and x are Hausdorff separated.”
 
 **Sources:**
 
 - [Apartness, sharp elements, and the Scott topology of domains](https://arxiv.org/abs/2106.05064v5)
-
-### On sharp elements of a domain the intrinsic apartness becomes tight
-
-**Remember:** Keep only the sharp points, and apartness works as on the reals.
-
-*Rules out counterexamples. Confidence: medium.* MSC 06B35 (Continuous lattices and posets, applications), 03F65. arXiv cs.LO, math.LO. Level 4: research.
-
-**Definition.** An apartness x \# y is a positive form of x ≠ y. It is tight if ¬(x \# y) implies x = y, and cotransitive if x \# y gives x \# z or z \# y. A dcpo is a partial order in which every directed family has a join; domains of partial results are dcpos. Roughly, an element is sharp if certain questions about its approximations can be decided; a lower real is sharp exactly when it is located.
-
-**Problem.** In a continuous dcpo, the intrinsic apartness is tight and cotransitive on the sharp elements. On a whole dcpo with some x strictly below some y, a tight apartness implies excluded middle.
-
-**How the definition helps.** Partial elements cause the failure, and sharp elements carry enough information to avoid it (our own summary). The intrinsic apartness is defined from the Scott topology, the natural topology of a dcpo. The strongly maximal elements of Smyth and Heckmann are sharp, so the result applies to them. What stays hard is checking sharpness in each example, such as the partial Dedekind reals.
-
-**Paper or page:** [Sharp Elements and Apartness in Domains](https://arxiv.org/abs/2112.14052v1). It says: “Although we cannot expect a tight or cotransitive apartness on nontrivial dcpos, we prove that the intrinsic apartness is both tight and cotransitive when restricted to the sharp elements of a continuous dcpo.”
-
-**Sources:**
-
-- [Tom de Jong, Sharp Elements and Apartness in Domains, EPTCS 351 (2021) 134–151, arXiv:2112.14052](https://doi.org/10.4204/EPTCS.351.9)
-- [Tom de Jong, Apartness, sharp elements, and the Scott topology of domains, Mathematical Structures in Computer Science 33 (2023) 573–604](https://doi.org/10.1017/S0960129523000282)
 
 ### The extension property makes retracts of continuous lattices continuous
 
@@ -1793,35 +1685,17 @@
 
 - [Dana Scott, Continuous lattices, in Toposes, Algebraic Geometry and Logic, Lecture Notes in Mathematics 274 (1972)](https://doi.org/10.1007/BFb0073967)
 
-### In localic groups every subgroup is closed
-
-**Remember:** Multiply on the locale product, and every subgroup becomes closed.
-
-*Rules out counterexamples.* MSC 06D22 (Frames, locales), 18F70, 54H11. arXiv math.GN, math.CT. Level 4: research.
-
-**Definition.** A locale is a space described only by its lattice of open sets, which may not have enough points. A localic group is a group object in the category of locales. It is a locale G with continuous maps for unit, inverse and multiplication G × G → G, where × is the product of locales. The locale product can differ from the product of topological spaces.
-
-**Problem.** Every overt localic subgroup of a localic group is weakly closed; an overt locale is one whose map to the point is open. In a Boolean topos (a setting where excluded middle holds), every localic subgroup is closed.
-
-**How the definition helps.** The localic proof uses a fact that fails for spaces: two dense sublocales always meet in a dense sublocale. For topological groups a subgroup need not be closed, for example ℚ in ℝ. The proof fails there because two dense subspaces can meet in a set that is not dense. The theorem shows that ℚ with addition is not a localic group, since the locale product ℚ × ℚ is larger than the space product.
-
-**nLab:** [localic group](https://ncatlab.org/nlab/show/localic+group), [Leinster2010](https://ncatlab.org/nlab/show/Leinster2010). It says: “But it is a theorem that every subgroup of a localic group is closed.”
-
-**Sources:**
-
-- [John Isbell, Igor Křiž, Aleš Pultr, Jiří Rosický, Remarks on localic groups, in Categorical Algebra and its Applications, Lecture Notes in Mathematics 1348, Springer, 1988, 154–172](https://doi.org/10.1007/BFb0081357)
-
 ### Interpreting locales, not spaces, in outer models keeps products
 
-**Remember:** Spaces lose products when they move between models; locales do not.
+**Remember:** Allow new filters, but test complete primeness on the old families.
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 06D22 (Frames, locales), 18F70, 03E40. arXiv math.LO, math.GN. Level 4: research.
 
-**Definition.** A locale is a lattice that behaves like the lattice of open sets of a space, but need not have points. Given a transitive model M of set theory, a locale in M has an interpretation, a topological space in the larger universe V. This extends Zapletal's interpretation of spaces.
+**Definition.** Interpret a ground-model frame L by its filters in the outer universe that are completely prime for all ground-model families. Thus if such a filter contains a ground-model family’s join, it contains some member. Give these filters the topology generated by the sets of filters containing each specified frame element.
 
 **Problem.** The interpretation of locales sends products of locales to products of spaces. Zapletal's interpretation of spaces does not commute with products.
 
-**How the definition helps.** Products of locales are defined by a universal property, and the interpretation sends every limit of locales to the limit of the spaces. For spaces the problem is real, because the localic product of the rationals with itself is not the open-set lattice of a space. A locale is regular exactly when all its interpretations are T₃, and compact exactly when they are all compact. The hard part is proving these matches (our own summary).
+**How the definition helps.** The frame of a localic product is a coproduct of frames in the ground model. The product interpretation theorem identifies its interpreted points with tuples of interpreted points, with the product topology. Zapletal’s space construction can lose this correspondence (our own comparison).
 
 **Paper or page:** [Locales as spaces in outer models](https://arxiv.org/abs/2411.05967), [Locales as spaces in outer models](https://arxiv.org/abs/2411.05967). It says: “We extend Zapletal's framework to instead interpret locales, a generalization of topological spaces which focuses on the structure of open sets. Our extension has a number of desirable properties; for instance, localic products always interpret as spatial products.”
 
@@ -1835,11 +1709,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 06D22 (Frames, locales), 03F65, 18F70. arXiv math.LO, math.GN. Level 4: research.
 
-**Definition.** A locale is a space described only by its lattice of open sets. An overlap algebra is a complete lattice of this kind with an extra relation, "x overlaps y". This relation is a positive way to say that the meet of x and y is not zero. It must satisfy a density axiom: if every element that overlaps x also overlaps y, then x ≤ y.
+**Definition.** Equip a frame with a predicate Pos. For every subset S, require Pos(⋁S) exactly when Pos(s) holds for some s in S. Define overlap by Pos(x ∧ y), and require x ≤ y whenever every element overlapping x also overlaps y.
 
 **Problem.** Every discrete locale, the powerset of a set, is an overlap algebra when two subsets overlap if they share an element. If excluded middle holds, overlap algebras are exactly the Boolean locales.
 
-**How the definition helps.** The overlap relation states 'the meet is inhabited' without negation, so it can hold for powersets without excluded middle. The definition avoids the powerset as a counterexample, since a powerset is a discrete locale but is not Boolean constructively (our own words). The definition does not make powersets Boolean. It replaces Booleanness by a positive property that powersets do have.
+**How the definition helps.** For subsets, take Pos to mean inhabited, so overlap means sharing an element. Singletons test inclusion, giving the density axiom (our own proof). Classically, Pos(x) means x ≠ 0: join preservation gives one direction and density the other. Density then forces x = ¬¬x, while in a Boolean frame nonzero meets distinguish x from y whenever x ≰ y (our own proof).
 
 **Paper or page:** [Overlap Algebras as Almost Discrete Locales](https://arxiv.org/abs/1601.04830). It says: “In fact, discrete locales are never Boolean constructively, except for the trivial locale. So, what is an almost discrete locale constructively? Our claim is that Sambin's overlap algebras have good enough features to deserve to be called that.”
 
@@ -1853,11 +1727,11 @@
 
 *True by definition.* MSC 06D22 (Frames, locales). arXiv math.CT. Level 4: research.
 
-**Definition.** A frame has all joins (least upper bounds), and binary meets (greatest lower bounds) distribute over them. A frame map preserves all joins and finite meets. A directed family is nonempty and contains an upper bound for each pair of members. Write a ≪ b if every directed family with join at least b contains a member above a.
+**Definition.** In a frame, a ≪ b means every nonempty directed family with join at least b contains a member above or equal to a. A family is directed if each pair has an upper bound in the family. A frame map is perfect if it preserves ≪.
 
 **Problem.** Let h be a frame map whose source frame is continuous, so each element is a directed join of elements way below it. If h preserves ≪, then its right adjoint g preserves directed joins.
 
-**How the definition helps.** Preservation of ≪ gives a witness in the directed family for each approximation. The cited lemma calls such maps perfect. In our own argument, a ≪ g(∨D) gives h(a) ≪ h(g(∨D)) ≤ ∨D, so h(a) ≤ d for some d in D, and so a ≤ g(d). Taking the join of these a gives g(∨D) ≤ ∨g(D), and monotonicity gives the reverse inequality.
+**How the definition helps.** Our own proof tests the desired inequality on approximations a ≪ g(∨D). Perfection gives h(a) ≪ h(g(∨D)) ≤ ∨D, so h(a) ≤ d for some d in D. Adjunction gives a ≤ g(d), and continuity gives g(∨D) ≤ ∨g(D) by joining all such a. Monotonicity gives the reverse inequality.
 
 **Paper or page:** [Canonical extensions of locally compact frames](https://arxiv.org/abs/1910.03542v1). It says: “The right adjoint of h preserves directed joins.”
 
@@ -1871,11 +1745,11 @@
 
 *True by definition.* MSC 06D30 (De Morgan algebras, ?ukasiewicz algebras (lattice-theoretic aspects)). arXiv math.LO. Level 4: research.
 
-**Definition.** Start with a reflexive, transitive relation and call y a successor of x when x is related to y. The rough set of a subset records two bounds. Its lower bound contains the points whose every successor belongs to the subset. Its upper bound contains the points with at least one successor there.
+**Definition.** For a reflexive transitive relation, the rough set of A is the pair (L,U) of its lower and upper bounds. A point belongs to L if every successor belongs to A, and to U if some successor belongs to A.
 
 **Problem.** The rough sets form a Nelson algebra, an algebra for reasoning with strong negation. Its Boolean elements, those whose join with their negation is the top element, are exactly the pairs with equal bounds.
 
-**How the definition helps.** Representing elements by two bounds turns the abstract Boolean test into a comparison of sets. In our own calculation the join takes unions in each coordinate, and strong negation swaps and complements the bounds. For bounds L ⊆ U, the lower coordinate of the join is L ∪ (complement of U). It fills the whole space exactly when U ⊆ L, and the upper coordinate always fills the space. The representation of the Nelson algebra by these pairs supplies the operation rules.
+**How the definition helps.** The rough-set representation theorem supplies the Nelson algebra operations. In our own calculation, strong negation sends (L,U) to (Uᶜ,Lᶜ), and join takes unions coordinatewise. Since L ⊆ U, the upper union is the whole space. The lower union L ∪ Uᶜ fills the space exactly when U ⊆ L.
 
 **Paper or page:** [Nelson algebras, residuated lattices and rough sets: A survey](https://arxiv.org/abs/2402.02606v2). It says: “The Boolean elements of the Nelson FLₑw-algebra ⟨RS; ∧, ∨, \*, ⇒, (∅,∅), (U,U)⟩ are the exact rough sets.”
 
@@ -1889,7 +1763,7 @@
 
 *True by definition.* MSC 06D35 (MV-algebras). arXiv math.RA. Level 4: research.
 
-**Definition.** An MV-algebra has operations modeled on the unit interval by negation 1 − t and truncated addition min(1, s + t). An element x is Boolean if adding it to itself leaves it unchanged. Localization at x is the universal map sending x to one. Every map preserving the operations and sending x to one must factor uniquely through it.
+**Definition.** In an MV-algebra A, an element x is Boolean when x ⊕ x = x. A localization at x is a homomorphism q sending x to one through which every homomorphism sending x to one factors uniquely.
 
 **Problem.** For a Boolean element x, localization is the quotient by the ideal generated by ¬x. This quotient imposes the single equation ¬x = 0.
 
@@ -1907,11 +1781,11 @@
 
 *True by definition.* MSC 06D35 (MV-algebras). arXiv math.CT, math.RA. Level 4: research.
 
-**Definition.** An MV-algebra has operations modeled by negation and truncated addition on the real unit interval. An ideal contains zero, contains everything below its members, and is closed under truncated addition. The radical is the intersection of the maximal proper ideals. The algebra is semisimple if its radical contains only zero.
+**Definition.** The radical of an MV-algebra is the intersection of all its maximal proper ideals. An MV-algebra is semisimple if its radical equals {0}.
 
 **Problem.** Every map from an MV-algebra A to a semisimple MV-algebra factors uniquely through A modulo its radical. The quotient is itself semisimple.
 
-**How the definition helps.** Defining the radical by maximal ideals gives a single quotient through which every map to a semisimple algebra must pass. Our own proof uses the theorem that the inverse image of each maximal target ideal is a maximal source ideal. Thus each such inverse image contains the radical. Its image therefore lies in every maximal target ideal, whose intersection is zero. The quotient property gives the unique factorization, and the ideal correspondence makes the quotient semisimple.
+**How the definition helps.** In our own proof, inverse images of maximal ideals under MV-homomorphisms are maximal. Thus a map to a semisimple target sends the source radical into every maximal target ideal, hence to zero. The quotient property gives unique factorization. By ideal correspondence, the maximal quotient ideals intersect in zero.
 
 **Paper or page:** [A Galois Theory and a Pretorsion Theory in MV-Algebras](https://arxiv.org/abs/2310.11006v1). It says: “given a morphism of MV-algebras g∶ A → i(B), where B is semisimple, we want to prove that there exists a unique morphism of MV-algebras g̃∶ S(A) → B”
 
@@ -1919,17 +1793,17 @@
 
 - [A Galois Theory and a Pretorsion Theory in MV-Algebras](https://arxiv.org/abs/2310.11006v1)
 
-### Overlap algebras let constructive powersets be complete Boolean algebras
+### Powersets form overlap algebras constructively
 
-**Remember:** Replace complements by overlaps, and powersets become Boolean again.
+**Remember:** Overlap respects meets, detects a member of any join, and distinguishes order.
 
 *Makes the theorem clean to state or prove.* MSC 06E75 (Generalizations of Boolean algebras), 03F65, 06B23. arXiv cs.LO, math.LO. Level 4: research.
 
-**Definition.** An overlap algebra is a complete lattice with a symmetric relation 'x overlaps y', a positive form of x ∧ y ≠ ⊥. If x overlaps y then x overlaps x ∧ y. An element overlaps a join exactly when it overlaps one of the joined elements. And x ≤ y holds as soon as everything that overlaps x also overlaps y.
+**Definition.** An overlap algebra is a complete lattice with a symmetric relation \# satisfying three laws for all x, y and families S. From x \# y infer x \# (x ∧ y), and require x \# ∨S exactly when some s in S satisfies x \# s. If every z overlapping x also overlaps y, require x ≤ y.
 
-**Problem.** Constructively, the powerset of a set is an overlap algebra, with A overlapping B when A ∩ B has an element, although it need not be a Boolean algebra. Classically, overlap algebras are exactly the complete Boolean algebras.
+**Problem.** Constructively, subsets overlap when their intersection contains an element. This makes every powerset an overlap algebra, although a powerset need not be Boolean. Classically, overlap algebras are exactly the complete Boolean algebras.
 
-**How the definition helps.** The definition replaces complements by a positive overlap relation, and the last axiom does the work of the complement. For a powerset, the last axiom holds constructively (our own check). For a in A, the set {a} overlaps A, so it overlaps B, so a is in B. What stays hard is the choice of morphisms, which the paper takes to be 'symmetrizable' maps.
+**How the definition helps.** In our own powerset check, intersection witnesses give symmetry, meet stability and the join law. Testing overlap with each singleton gives inclusion. Classically the overlap representation theorem identifies overlap with having nonzero meet in a complete Boolean algebra.
 
 **Paper or page:** [Overlap Algebras: a Constructive Look at Complete Boolean Algebras](https://arxiv.org/abs/1904.13320v3). It says: “Sambin's notion of an overlap algebra, although classically equivalent to that of a complete Boolean algebra, has powersets and other natural structures as instances.”
 
@@ -1939,15 +1813,15 @@
 
 ### Multiplicative filters form frames
 
-**Remember:** Generated joins allow finite products, and intersection can distribute through them.
+**Remember:** A filter contains the unit, all finite products, and everything above them.
 
 *True by definition.* MSC 06F07 (Quantales). arXiv math.RA. Level 4: research.
 
-**Definition.** A quantale has all least upper bounds, called joins, and an associative product distributing over them in each variable. Assume the product is commutative and its unit is greatest. A multiplicative filter contains the unit, is upward closed and is closed under products. Order these filters by inclusion.
+**Definition.** In a commutative quantale whose unit is greatest, a multiplicative filter is an upward closed subset containing the unit and closed under products. Order the filters by inclusion.
 
 **Problem.** The filters form a frame, meaning that binary intersections distribute over arbitrary joins.
 
-**How the definition helps.** Describing a generated filter by finite products lets us test the distributive law one element at a time. In our own proof, a member a of F and of the join lies above a finite product of factors x from the union. Replace each factor x by x ∨ a, which lies in F and in the filter that supplies x. Expanding gives the original product and terms containing a, all below a because the unit is greatest.
+**How the definition helps.** In our own proof, take a in F above a finite product of factors from the union of the joined filters. Replace each factor x by x ∨ a, now in F and its original filter. Distributing their product gives the old product and terms containing a, all at most a since the unit is greatest. Thus a belongs to the join of the intersections, and the reverse inclusion follows from monotonicity.
 
 **Paper or page:** [Commutative Quantale and Localization](https://arxiv.org/abs/2508.02991v1). It says: “ℱ · 𝒢 = ℱ ∩ 𝒢”
 

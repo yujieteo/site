@@ -58,7 +58,7 @@
 
 **Problem.** For every pair of distinct sequences, some nonnegative number of shifts makes their distance one. Every sequence has arbitrarily close neighbors that eventually reach this distance from it.
 
-**How the definition helps.** The shift moves the first difference to position 0 in exactly as many steps as its index (our own). The work is checking that this distance gives the product topology, where a long shared prefix means closeness (our own).
+**How the definition helps.** The shift moves the first difference to position zero in exactly as many steps as its index (our own). Changing just one arbitrarily late symbol gives arbitrarily close neighbors because the alphabet contains a second symbol.
 
 **Wikipedia:** [Expansive homeomorphism](https://en.wikipedia.org/wiki/Expansive_homeomorphism). It says: “such that, for any x ≠ y in X, there is an n ∈ ℕ such that d(fⁿ(x), fⁿ(y)) ≥ ε₀.”
 
@@ -200,7 +200,7 @@
 
 *True by definition.* MSC 37B20 (Notions of recurrence and recurrent behavior in topological dynamical systems), 37B02. arXiv math.DS. Level 2: later undergraduate.
 
-**Definition.** Let f be a continuous map from a metric space to itself. The ω-limit set of x consists of limits of its iterates along sequences of times tending to infinity. Equivalently, it is the intersection of the closures of the tails {fᵏ(x) \| k &gt; n}. For a continuous flow, a family of maps indexed by real time, the tails consist of points reached after time s.
+**Definition.** The ω-limit set of x consists of all limits of orbit points along times tending to positive infinity. Equivalently, intersect the closures of all forward orbit tails after time t, using integer times for iterates and real times for flows.
 
 **Problem.** In a compact metric space, the ω-limit set of any point is nonempty and compact. It is also connected for a continuous flow.
 
@@ -230,7 +230,7 @@
 
 **Remember:** Restart from where you are, not from when you started.
 
-*Makes the theorem clean to state or prove.* MSC 37C10 (Dynamics induced by flows and semiflows), 34A12. arXiv math.DS, math.CA. Level 2: later undergraduate.
+*True by definition.* MSC 37C10 (Dynamics induced by flows and semiflows), 34A12. arXiv math.DS, math.CA. Level 2: later undergraduate.
 
 **Definition.** For an autonomous equation x′ = f(x), whose right side does not use time, write Φₜ for its time-t flow map. It sends each starting state to the state reached after time t.
 
@@ -262,7 +262,7 @@
 
 **Remember:** Low values of V cannot climb out of a low sublevel.
 
-*Rules out counterexamples. Confidence: medium.* MSC 37C25 (Fixed points and periodic points of dynamical systems; fixed-point index theory; local dynamics). arXiv math.DS. Level 2: later undergraduate.
+*True by definition. Confidence: medium.* MSC 37C25 (Fixed points and periodic points of dynamical systems; fixed-point index theory; local dynamics). arXiv math.DS. Level 2: later undergraduate.
 
 **Definition.** On a compact interval with fixed point p, use a continuous Lyapunov function V with V(p) = 0 and V positive elsewhere. Require V(f(x)) ≤ V(x) near p.
 
@@ -326,7 +326,7 @@
 
 **Remember:** A return at time n allows only periods that divide n.
 
-*Makes the theorem clean to state or prove.* MSC 37C25 (Fixed points and periodic points of dynamical systems; fixed-point index theory; local dynamics). arXiv math.DS. Level 2: later undergraduate.
+*True by definition.* MSC 37C25 (Fixed points and periodic points of dynamical systems; fixed-point index theory; local dynamics). arXiv math.DS. Level 2: later undergraduate.
 
 **Definition.** The return count at time n counts points back at their starting position after n steps. A point’s least period is its first positive return time.
 
@@ -346,9 +346,9 @@
 
 **Definition.** An equilibrium u\* of du/dt = f(u) is hyperbolic if the Jacobian matrix of f at u\* has no eigenvalue with real part zero.
 
-**Problem.** Hartman–Grobman theorem: for smooth f, near a hyperbolic equilibrium, a homeomorphism carries the orbits of the flow onto those of its linearization dU/dt = AU. It also respects time.
+**Problem.** For a smooth vector field near a hyperbolic equilibrium, a local homeomorphism conjugates the flow to the flow of its Jacobian there. The homeomorphism preserves time while the trajectories stay in the conjugacy neighborhoods.
 
-**How the definition helps.** When no eigenvalue lies on the imaginary axis, small nonlinear terms cannot change which directions grow and which shrink. The condition excludes the cases where the linearization decides nothing. For example, u′ = u³ repels and u′ = −u³ attracts, but both linearize to u′ = 0 (our own). Even so, the page says that the conjugating map need not be smooth, nor even locally Lipschitz.
+**How the definition helps.** Hyperbolicity excludes neutral directions where higher powers can decide stability (our own). At zero, u′ = u³ repels and u′ = −u³ attracts, although both linearize to u′ = 0. The Hartman–Grobman theorem supplies the local time-preserving conjugacy.
 
 **Wikipedia:** [Hartman–Grobman theorem](https://en.wikipedia.org/wiki/Hartman%E2%80%93Grobman_theorem). It says: “hyperbolicity means that no eigenvalue of the linearization has real part equal to zero.”
 
@@ -514,9 +514,9 @@
 
 **Definition.** An invariant probability measure μ for a map T is ergodic if every invariant set has measure 0 or 1. Equivalently, μ is an extreme point of the convex set of invariant probability measures. That is, μ is not a proper average of two different invariant measures.
 
-**Problem.** Every continuous map of a compact metric space has an ergodic invariant probability measure. Every invariant probability measure is an average of ergodic ones, which is the ergodic decomposition.
+**Problem.** Every continuous self-map of a nonempty compact metric space has an ergodic invariant Borel probability measure. Every invariant Borel probability measure is an average of ergodic ones.
 
-**How the definition helps.** In the extreme-point form, both statements become convex geometry. The Krylov–Bogolyubov argument shows that the invariant measures form a nonempty compact convex set in the weak-\* topology. The Krein–Milman theorem gives an extreme point, and Choquet theory writes every invariant measure as an average of extreme points. The work lies in proving that the two definitions of ergodic agree.
+**How the definition helps.** The extreme-point characterization lets convex geometry give both results (our own). Krylov–Bogolyubov gives an invariant probability, and the set of invariant probabilities is compact, metrizable and convex in the weak topology. Krein–Milman gives an extreme point, and Choquet’s theorem represents every invariant probability as an average of extreme points.
 
 **Wikipedia:** [Ergodicity](https://en.wikipedia.org/wiki/Ergodicity). It says: “a measure is ergodic for T if and only if it is an extreme point of this convex set.”
 
@@ -532,9 +532,9 @@
 
 **Definition.** Let T be a measure-preserving map on a probability space. T is ergodic when every invariant measurable set has measure 0 or 1.
 
-**Problem.** For an ergodic map T and an integrable function f, the time average of f along the orbit of almost every point equals the integral of f over the space.
+**Problem.** For any integrable f on an ergodic probability system, its orbit averages converge almost everywhere to its integral.
 
-**How the definition helps.** Ergodicity leaves no invariant pieces, so the time average cannot differ from piece to piece and must be a constant. Birkhoff's theorem gives the limit almost everywhere for any measure-preserving map, and in general the limit is the conditional expectation on invariant sets (our own summary). A rotation of the circle by a rational angle shows that the limit can differ between invariant pieces. The hard part is the pointwise convergence itself.
+**How the definition helps.** Birkhoff’s theorem identifies the almost-everywhere limit with the conditional expectation given the invariant sets (our own). Ergodicity makes that expectation constant almost everywhere, and its integral equals the integral of f.
 
 **Wikipedia:** [Ergodic theory](https://en.wikipedia.org/wiki/Ergodic_theory), [Ergodicity](https://en.wikipedia.org/wiki/Ergodicity). It says: “In general the time average and space average may be different. But if the transformation is ergodic, and the measure is invariant, then the time average is equal to the space average almost everywhere.”
 
@@ -564,11 +564,11 @@
 
 *True by definition.* MSC 37A25 (Ergodicity, mixing, rates of mixing). arXiv math.DS. Level 3: graduate.
 
-**Definition.** One definition calls a probability-preserving map T weakly mixing if T × R is ergodic for every ergodic probability system R. Another requires the average over 0 ≤ k &lt; n of \|μ(A ∩ T⁻ᵏB) − μ(A)μ(B)\| to tend to zero for all measurable sets A and B.
+**Definition.** A probability-preserving map T is weakly mixing if T × R is ergodic for every ergodic probability system R, using the product measure.
 
 **Problem.** The product of two weakly mixing probability systems is weakly mixing.
 
-**How the definition helps.** The product definition proves closure under products by regrouping three factors (our own). Take any ergodic system R and weakly mixing systems T and S. First S × R is ergodic, and then T × (S × R) is ergodic. This is the same system as (T × S) × R up to regrouping coordinates. The work goes into proving equivalence with the definition that averages the absolute errors in event probabilities.
+**How the definition helps.** Regrouping products lets the defining test apply twice (our own). For any ergodic R and weakly mixing S, the product S × R is ergodic. For weakly mixing T, the product T × (S × R) is therefore ergodic. Regrouping gives (T × S) × R, as required.
 
 **Wikipedia:** [Mixing (mathematics)](https://en.wikipedia.org/wiki/Mixing_%28mathematics%29). It says: “Proposition. A dynamical system (X, μ, T) is weakly mixing if and only if, for any ergodic dynamical system (Y, ν, S), the system (X × Y, μ ⊗ ν, T × S) is also ergodic.”
 
@@ -584,7 +584,7 @@
 
 **Problem.** If two Koopman operators are related by an inner-product-preserving linear bijection that intertwines them, their probability systems are either both strongly mixing or neither is.
 
-**How the definition helps.** The function definition expresses mixing in terms that an equivalence of operators preserves (our own). In a mixing system, the fixed functions of U are exactly the constants. The equivalence carries fixed functions to fixed functions, so the other system also has only constant fixed functions. It therefore carries mean-zero functions to mean-zero functions and preserves the inner products that test mixing. The work goes into passing from sets to functions by approximating square-integrable functions with linear combinations of indicator functions.
+**How the definition helps.** The function criterion expresses strong mixing through inner products on the orthogonal complement of the constants (our own). Mixing makes the fixed space one-dimensional, since a fixed mean-zero function has zero squared norm by that criterion. An intertwining unitary therefore takes constants onto constants and their orthogonal complements onto each other. It preserves the tested inner products, and its inverse gives the converse.
 
 **Wikipedia:** [Mixing (mathematics)](https://en.wikipedia.org/wiki/Mixing_%28mathematics%29). It says: “is strongly mixing if, for any function f ∈ L²(X, μ), the sequence (f \\circ T<sup>n</sup>)<sub>n \\ge 0</sub> converges weakly to \\int<sub>X</sub> f \\, d \\mu”
 
@@ -652,7 +652,7 @@
 
 **Definition.** For a finite measurable partition Q, the symbolic name of x lists which piece contains x, Tx, T²x, and so on. A forward generator is a partition whose symbolic names separate points on a set of full measure. The equivalent event definition asks that the inverse images T⁻ⁿQ together generate all measurable events up to null sets.
 
-**Problem.** For a probability-preserving map on a standard Borel space, a forward generator with k pieces gives an isomorphism, up to null sets, with the one-sided shift on k symbols. The shift carries the law of the symbolic names.
+**Problem.** Consider a probability-preserving map on a standard Borel space with a forward generator of k pieces. Up to null sets, it is isomorphic to the one-sided k-symbol shift carrying the law of the names.
 
 **How the definition helps.** The symbolic definition makes the isomorphism a matter of inverting the naming map on a set of full measure (our own). The naming map commutes with time, because the name of Tx drops the first symbol from the name of x. A forward generator makes it one-to-one on an invariant Borel set of full measure, and the Lusin–Souslin theorem gives a measurable inverse. The work goes into this inverse theorem and the equivalence between separating points and generating events.
 
@@ -670,7 +670,7 @@
 
 **Problem.** The Bernoulli shifts on two and on three equally likely symbols are not isomorphic, because their Kolmogorov–Sinai entropies are log 2 and log 3.
 
-**How the definition helps.** The supremum runs over all partitions, so the number depends on no choice, and an isomorphism carries partitions to partitions. So isomorphic systems have equal entropy, nearly by definition. The two shifts have the same spectral invariants, so older tools could not tell them apart (our own). The hard part moves to computing the number, which Sinai's theorem reduces to one generating partition.
+**How the definition helps.** An isomorphism preserves the probabilities of all partition names and hence preserves the supremum (our own). Sinai’s generator theorem lets us use the coordinate partition for each shift. With k equally likely independent symbols, each length-n name has probability k⁻ⁿ, giving entropy n log k and rate log k.
 
 **Wikipedia:** [Measure-preserving dynamical system](https://en.wikipedia.org/wiki/Measure-preserving_dynamical_system). It says: “where the supremum is taken over all finite measurable partitions. A theorem of Yakov Sinai in 1959 shows that the supremum is actually obtained on partitions that are generators.”
 
@@ -685,7 +685,7 @@
 
 *True by definition.* MSC 37A35 (Entropy and other invariants, isomorphism, classification in ergodic theory), 28D20. arXiv math.DS. Level 3: graduate.
 
-**Definition.** For a probability-preserving map T and a finite partition Q, h(T, Q) is the growth rate per step of the Shannon entropy of the lists of pieces visited in n steps. The Kolmogorov–Sinai entropy h(T) is the supremum of h(T, Q) over all finite measurable partitions Q.
+**Definition.** For a probability-preserving map T and finite measurable partition Q, let Hₙ be the Shannon entropy of the first n partition labels along an orbit. Define h(T,Q) = limₙ→∞ Hₙ/n. The entropy h(T) is the supremum of these rates over all finite measurable partitions.
 
 **Problem.** Let T and S preserve probability measures. If a measure-preserving map π from T’s space to S’s satisfies π∘T = S∘π, then h(S) ≤ h(T).
 
@@ -701,9 +701,9 @@
 
 *True by definition. Confidence: medium.* MSC 37B02 (Dynamics in general topological spaces), 37C15, 54B35. arXiv math.DS. Level 3: graduate.
 
-**Definition.** Let f map a compact space X to itself. Its natural extension acts on backward orbits, the sequences (x₀, x₁, …) with f(xᵢ₊₁) = xᵢ. It sends such a sequence to (f(x₀), x₀, x₁, …). This map is a homeomorphism, and its inverse drops the first entry.
+**Definition.** For a continuous self-map f of a compact space X, take the sequences in X with f(xᵢ₊₁) = xᵢ for every i ≥ 0. Give this space the product subspace topology. The natural extension sends each sequence to (f(x₀), x₀, x₁, …).
 
-**Problem.** Let g map a compact space X onto Y and h map Y onto X continuously. Then the natural extensions of h∘g and g∘h are conjugate, even when h∘g and g∘h are not.
+**Problem.** Let g from X onto Y and h from Y onto X be continuous maps of compact spaces. The natural extensions of h∘g and g∘h are conjugate even when the composites themselves are not.
 
 **How the definition helps.** On backward orbits, g and h induce maps that are inverse to each other, so they give a conjugacy (our own proof). Send (x₀, x₁, …) to (g(x₁), g(x₂), …), and send (y₀, y₁, …) to (h(y₀), h(y₁), …). A direct check shows that these maps are inverse to each other and intertwine the two natural extensions. The hard work of the paper is choosing g and h for an arbitrary dendrite, a tree-like continuum, to get the pseudo-arc.
 
@@ -719,7 +719,7 @@
 
 *True by definition. Confidence: medium.* MSC 37B05 (Dynamical systems involving transformations and group actions with special properties (minimality, distality, proximality, expansivity, etc.)), 37B20. arXiv math.DS. Level 3: graduate.
 
-**Definition.** Devaney calls a map chaotic if it has sensitive dependence on initial conditions, is topologically transitive, and has dense periodic orbits. Transitive means that for any two nonempty open sets U and V, some iterate of U meets V.
+**Definition.** On an infinite metric space, a continuous map is Devaney chaotic exactly when it is transitive and its periodic points are dense. Transitivity means that for every two nonempty open sets U and V, some forward iterate of U meets V.
 
 **Problem.** On infinite metric spaces, Devaney chaos is preserved by topological conjugacy, although sensitive dependence alone depends on the metric.
 
@@ -733,7 +733,7 @@
 
 ### On compact spaces, expansivity does not depend on the metric
 
-**Remember:** On a compact space, expansivity belongs to the topology, not the metric.
+**Remember:** Every distinct pair separates by one fixed distance at some forward or backward time.
 
 *Rules out counterexamples. Confidence: medium.* MSC 37B05 (Dynamical systems involving transformations and group actions with special properties (minimality, distality, proximality, expansivity, etc.)). arXiv math.DS. Level 3: graduate.
 
@@ -753,11 +753,11 @@
 
 *True by definition.* MSC 37B10 (Symbolic dynamics), 37B40. arXiv math.DS. Level 3: graduate.
 
-**Definition.** A shift of finite type consists of sequences over a finite alphabet that avoid a fixed finite list of blocks. By treating sufficiently long blocks as letters, one can represent it as a shift on two-sided vertex walks in a finite directed graph. For a shift, the topological entropy is the limit of the log of the number of length-n blocks divided by n.
+**Definition.** For a finite directed graph with at most one edge per ordered vertex pair, its vertex shift consists of all bi-infinite vertex walks. The shift moves each walk one place left. Its entropy is limₙ→∞ log Bₙ/n, where Bₙ counts the distinct length-n vertex blocks.
 
 **Problem.** Suppose the graph has an edge and each vertex can reach every other vertex. Then its shift has entropy log λ, where λ is the largest positive eigenvalue of its adjacency matrix.
 
-**How the definition helps.** In the graph definition, counting blocks reduces to counting finite walks (our own). Every walk extends in both directions, so the number of blocks of length n + 1 is the sum of the entries of Aⁿ. The Perron–Frobenius theorem gives a positive vector v with A v = λv. Comparing v with the all-ones vector bounds that sum above and below by positive constants times λⁿ. The work goes into recoding the forbidden blocks as permitted edges and proving that block growth agrees with the general definition using open covers.
+**How the definition helps.** The graph turns block counting into walk counting (our own). Strong connectivity lets every walk extend both ways, so Bₙ₊₁ equals the sum of the entries of Aⁿ for the adjacency matrix A. Perron–Frobenius gives a positive vector v with Av = λv. Comparing v with the all-ones vector bounds Bₙ₊₁ above and below by positive constants times λⁿ.
 
 **Wikipedia:** [Topological entropy](https://en.wikipedia.org/wiki/Topological_entropy), [Subshift of finite type](https://en.wikipedia.org/wiki/Subshift_of_finite_type). It says: “Then h(σ)=log λ where λ is the largest positive eigenvalue of A.”
 
@@ -773,7 +773,7 @@
 
 **Problem.** The image of a sofic shift under a sliding block code is sofic.
 
-**How the definition helps.** The image definition makes closure under coding a matter of composing two maps (our own). Write the sofic shift X as ψ(Y), where Y has finite type. For a code φ on X, φ(X) = (φ∘ψ)(Y), and the composite is again a code. A definition by finite automata would instead have to show that a code preserves the property that a finite automaton accepts the block language.
+**How the definition helps.** Sliding block codes compose because their composite is continuous and commutes with the shift (our own). If X = ψ(Y) for a finite-type shift Y, then φ(X) = (φ∘ψ)(Y).
 
 **Wikipedia:** [Shift space](https://en.wikipedia.org/wiki/Shift_space). It says: “Λ is a sofic shift if it is the image of a shift of finite type under sliding block code”
 
@@ -809,7 +809,7 @@
 
 **Problem.** A shift is of finite type exactly when every sufficiently long allowed word is synchronizing.
 
-**How the definition helps.** A synchronizing overlap lets two allowed blocks join without introducing a forbidden pattern. In our own proof, a shared block longer than every forbidden word prevents a forbidden word from crossing both joins. Conversely, if every length-M word synchronizes, overlapping allowed length-(M + 1) blocks build every locally permitted word. Our own counterexample uses the even shift, which requires an even number of zeros between successive ones. An odd block of zeros allows a one on either side separately, but forbids both together.
+**How the definition helps.** A synchronizing overlap joins two allowed blocks into one (our own). In finite type, an overlap longer than every forbidden block keeps each potential obstruction within one original block. Conversely, synchronizing length-M overlaps join allowed length-(M + 1) blocks successively, so those local constraints suffice. In the even shift, arbitrarily long odd zero blocks accept a one on either side separately but forbid both together.
 
 **Paper or page:** [Computational complexity of problems for deterministic presentations of sofic shifts](https://arxiv.org/abs/2112.03484v2). It says: “A shift space X is an SFT if and only if there exists an integer M ≥ 0 such that every word w ∈ ℬ(X) with \|w\| ≥ M is intrinsically synchronizing for X.”
 
@@ -821,9 +821,9 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 37B20 (Notions of recurrence and recurrent behavior in topological dynamical systems), 37B35. arXiv math.DS. Level 3: graduate.
 
-**Definition.** An ε-chain from x to y follows the flow for pieces of time at least 1, with jumps smaller than ε between the pieces. A point x is chain recurrent if for every ε &gt; 0 there is an ε-chain from x back to x. This allows small errors, so it is weaker than ordinary recurrence.
+**Definition.** For ε &gt; 0, an ε-chain is a finite list x₀,…,xₙ with n ≥ 1. For each i &lt; n, some time t ≥ 1 carries xᵢ within distance less than ε of xᵢ₊₁. A point is chain recurrent if every ε &gt; 0 permits such a chain from it to itself.
 
-**Problem.** Conley's theorem: every flow on a compact metric space has a continuous complete Lyapunov function. It strictly decreases along orbits off the chain-recurrent set and is constant on each piece of that set (our own).
+**Problem.** Every continuous flow on a compact metric space admits a continuous complete Lyapunov function. It strictly decreases along orbits outside the chain-recurrent set and stays constant on each chain component (our own).
 
 **How the definition helps.** Chain recurrence counts orbits that return up to small errors, so the chain-recurrent set is closed and invariant (our own). Ordinary recurrent points need not form a closed set, so they give no clean split (our own). A point outside this set cannot return even with small jumps, so a function can decrease there (our own). Conley built the function from pairs of an attractor and its dual repeller, and the work moves to this construction (our own).
 
@@ -839,11 +839,11 @@
 
 *Rules out counterexamples.* MSC 37B25 (Stability of topological dynamical systems), 37B65. arXiv math.DS. Level 3: graduate.
 
-**Definition.** A homeomorphism is expansive if some fixed distance eventually separates any two distinct points in forward or backward time. It has shadowing if, for each tolerance, every two-sided sequence with sufficiently small step errors stays within that tolerance of a true orbit.
+**Definition.** A homeomorphism f is expansive if some c &gt; 0 lets an integer iterate separate each distinct pair by at least c. Shadowing means every ε &gt; 0 admits δ &gt; 0 with the following property. Every bi-infinite sequence satisfying d(f(xᵢ),xᵢ₊₁) &lt; δ admits y with d(fⁱ(y),xᵢ) &lt; ε for all integers i.
 
 **Problem.** An expansive homeomorphism with shadowing on a compact metric space is topologically stable. Each sufficiently nearby homeomorphism admits a continuous map close to the identity that intertwines it with the original system.
 
-**How the definition helps.** Expansivity rules out competing shadows, so following a perturbed orbit selects a single point. In our own proof, take a shadowing tolerance below half the separation distance. Two true shadows then stay closer than the separation distance at every time, so they coincide. Uniqueness makes the selected point intertwine the maps, and with compactness it depends continuously on the start. Without expansivity, a constant orbit of the identity on a Cantor set has arbitrarily close constant shadows.
+**How the definition helps.** Expansivity makes the shadow of each perturbed orbit unique at tolerance ε &lt; c/2 (our own). A sufficiently close homeomorphism produces step errors below δ, so shadowing supplies the orbit. Uniqueness makes the selection commute with time, and compactness gives continuity by taking convergent subsequences at tolerance ε with 2ε &lt; c. For the identity on a Cantor set, nearby constant orbits can shadow the same point.
 
 **Wikipedia:** [Expansive homeomorphism](https://en.wikipedia.org/wiki/Expansive_homeomorphism). It says: “such that for every pair of points x ≠ y in X there is an integer n such that”
 
@@ -859,7 +859,7 @@
 
 *True by definition.* MSC 37B30 (Index theory for dynamical systems, Morse-Conley indices). arXiv math.DS. Level 3: graduate.
 
-**Definition.** A compact invariant set S is isolated if it is the set of all full trajectories that stay in some compact neighborhood. An index pair is a pair of compact sets N₂ ⊆ N₁ such that N₁ ∖ N₂ isolates S and trajectories leave N₁ only through N₂, which they cannot leave inside N₁. The Conley index of S is the pointed homotopy type of N₁ with N₂ collapsed to a point.
+**Definition.** An index pair consists of compact sets L ⊆ N with S = Inv(closure(N ∖ L)) ⊆ int(N ∖ L), where Inv selects complete orbits. Each forward orbit from L stays in L while it stays in N, and every forward orbit leaving N first meets L. The Conley index is the pointed homotopy type of N/L, adding a separate basepoint when L is empty.
 
 **Problem.** If the Conley index is not the pointed homotopy type of a point, then S is nonempty.
 
@@ -877,7 +877,7 @@
 
 *True by definition.* MSC 37B40 (Topological entropy). arXiv math.DS. Level 3: graduate.
 
-**Definition.** For a finite open cover, an n-step name specifies a cover member at each of the first n times. The corresponding set consists of points that meet all n specifications. The cover entropy is the limit of log N(n) divided by n, where N(n) is the smallest number of these sets covering the space. Topological entropy is the supremum over finite open covers.
+**Definition.** For a finite open cover C, an n-step name specifies one cover member for each of the first n orbit positions. Let N(n) count the fewest names needed to cover every orbit. The entropy of C is limₙ→∞ log N(n)/n, and topological entropy is the supremum over all finite open covers.
 
 **Problem.** For a continuous map of a compact metric space, the entropy of its k-th iterate is k times its entropy for each positive integer k.
 
@@ -893,7 +893,7 @@
 
 *True by definition.* MSC 37B40 (Topological entropy). arXiv math.DS. Level 3: graduate.
 
-**Definition.** Let f be a continuous map from a compact metric space to itself. The distance up to time n is the maximum of d(fᵏx, fᵏy) over 0 ≤ k &lt; n. Let N(n, ε) be the largest number of points pairwise more than ε apart in this distance. The Bowen–Dinaburg entropy is the limit as ε decreases to zero of the limit superior of log N(n, ε)/n.
+**Definition.** For a continuous self-map f of a compact metric space, put dₙ(x,y) = max₀≤ₖ&lt;ₙ d(fᵏx,fᵏy). Let N(n,ε) be the largest size of a set whose distinct points have dₙ-distance greater than ε. The Bowen–Dinaburg entropy is the limit as ε decreases to zero of limsupₙ→∞ log N(n,ε)/n.
 
 **Problem.** Every isometry from a nonempty compact metric space to itself has zero topological entropy.
 
@@ -930,7 +930,7 @@
 
 *True by definition.* MSC 37C10 (Dynamics induced by flows and semiflows), 34C14. arXiv math.DS. Level 3: graduate.
 
-**Definition.** For a flow, choose a space of scalar functions on the states. A Koopman eigenfunction with exponent λ is a nonzero function whose value after time t equals exp(λt) times its initial value.
+**Definition.** For a flow Φ and a chosen space of scalar functions, a Koopman eigenfunction with exponent λ is a nonzero member u satisfying one identity. For every state x and time t, u(Φₜ(x)) = exp(λt)u(x).
 
 **Problem.** Suppose two such functions have exponents λ and μ. If their product belongs to the chosen space and is nonzero somewhere, it has exponent λ + μ.
 
@@ -948,9 +948,9 @@
 
 **Definition.** Two flows are topologically equivalent when a homeomorphism carries the oriented orbits of one onto those of the other, without having to respect time. A vector field is structurally stable if every small C¹ perturbation of it has a topologically equivalent flow.
 
-**Problem.** Andronov–Pontryagin criterion: a flow on the disk or the sphere is structurally stable exactly when it has finitely many equilibria and cycles, all hyperbolic, and no saddle-to-saddle connections.
+**Problem.** Consider C¹ vector fields on the sphere, or on the closed disk with the field transverse to its boundary. Structural stability holds exactly when equilibria and cycles are finite in number, all are hyperbolic, and no saddle connections occur.
 
-**How the definition helps.** The definition matches orbits by a continuous map and ignores time, so small changes of speed do no harm. A small perturbation of a limit cycle usually changes its period, and a time-respecting map cannot match cycles of different periods. So with that stricter notion, no system with a periodic orbit could be stable. The map must also be allowed to be only continuous, because a smooth conjugacy would keep the eigenvalues at an equilibrium (our own).
+**How the definition helps.** Orbit equivalence allows a perturbation to change a cycle’s period while preserving its oriented orbit (our own). The Andronov–Pontryagin criterion supplies the classification under these hypotheses.
 
 **Wikipedia:** [Structural stability](https://en.wikipedia.org/wiki/Structural_stability). It says: “Without these restrictions, no continuous time system with fixed points or periodic orbits could have been structurally stable.”
 
@@ -968,7 +968,7 @@
 
 **Problem.** The Lefschetz zeta function is the product of the factors det(I − tMᵢ), with exponent −1 for even i and +1 for odd i. So it is rational and does not change when f is continuously deformed.
 
-**How the definition helps.** Using Lefschetz numbers makes rationality a matrix calculation rather than a count of periodic points. The map fⁿ induces Mᵢⁿ, and summing the logarithm series over the eigenvalues of Mᵢ gives the determinant factor. Continuous deformation leaves every Mᵢ unchanged. Relating the traces to actual fixed points needs the Lefschetz fixed-point theorem.
+**How the definition helps.** Alternating traces give a determinant calculation (our own). The iterate fⁿ induces Mᵢⁿ, and the formal identity −log det(I − tMᵢ) = ∑ₙ≥₁ tr(Mᵢⁿ)tⁿ/n gives each factor. Homotopic maps induce the same homology maps, so deformation preserves the product.
 
 **Wikipedia:** [Lefschetz zeta function](https://en.wikipedia.org/wiki/Lefschetz_zeta_function). It says: “Thus it is a rational function. The polynomials occurring in the numerator and denominator are essentially the characteristic polynomials of the map induced by f on the various homology spaces.”
 
@@ -980,7 +980,7 @@
 
 *True by definition.* MSC 37C30 (Functional analytic techniques in dynamical systems; zeta functions, (Ruelle-Frobenius) transfer operators, etc.), 37C40. arXiv math.DS. Level 3: graduate.
 
-**Definition.** Let T be a measurable map of a space with a σ-finite measure m, such that preimages of null sets are null. The transfer operator L sends an integrable density h to the function with ∫ (Lh)g dm = ∫ h(g∘T) dm for every bounded measurable g. For an interval map with smooth invertible branches, another definition sums h(y)/\|T′(y)\| over the preimages y of x.
+**Definition.** Let T be measurable on a σ-finite measure space with measure m, and suppose preimages of null sets are null. For integrable h, its transfer Lh is the unique integrable function up to equality almost everywhere satisfying the following identity. For every bounded measurable g, ∫ (Lh)g dm = ∫ h(g∘T) dm.
 
 **Problem.** A probability density h gives a T-invariant measure h·m exactly when Lh = h almost everywhere.
 
@@ -1000,7 +1000,7 @@
 
 **Problem.** For an edge shift with adjacency matrix A, the zeta function is 1/det(I − zA). In particular, it is rational.
 
-**How the definition helps.** The edge definition turns periodic-point counts into traces of matrix powers (our own). A point fixed by Tⁿ is a closed edge walk of length n with a specified starting position. Its count is the trace of Aⁿ, where the matrix entries count edges between vertices. Summing the logarithm series over the eigenvalues gives the determinant formula. The work goes into recoding the forbidden blocks as a graph and proving that the recoding matches points fixed by each iterate.
+**How the definition helps.** The edge shift counts points fixed by Tⁿ as closed length-n edge walks with a specified start (our own). Their count is tr(Aⁿ) because each matrix entry counts edges between two vertices. The formal identity ∑ₙ≥₁ tr(Aⁿ)zⁿ/n = −log det(I − zA) now gives the result by exponentiation.
 
 **Wikipedia:** [Subshift of finite type](https://en.wikipedia.org/wiki/Subshift_of_finite_type), [Artin–Mazur zeta function](https://en.wikipedia.org/wiki/Artin%E2%80%93Mazur_zeta_function). It says: “For subshifts of finite type, the zeta function is a rational function of z”
 
@@ -1018,7 +1018,7 @@
 
 **Problem.** A normalized transfer operator for a map is a left inverse of composing a function with that map.
 
-**How the definition helps.** Normalization makes the total weight on each set of preimages exactly one. Our own calculation starts with a function f composed with the map T. At every preimage of y, this composition equals f(y), so its weighted sum is f(y). Without normalization, the same calculation multiplies f(y) by the total weight. Converting a given operator to this form can require a positive eigenfunction, whose existence is the substantial part of Ruelle’s theorem in its setting.
+**How the definition helps.** Every preimage of y has the same value f(y) under f∘T (our own). The weighted sum therefore equals f(y) times the sum of the weights, which is one.
 
 **Paper or page:** [Measurable multiresolution systems, endomorphisms, and representations of Cuntz relations](https://arxiv.org/abs/2304.14558v1). It says: “The adjoint operator Sσ\* is a transfer operator Sσ\*(g(f ∘ σ)) = f Sσ\*(g).”
 
@@ -1036,7 +1036,7 @@
 
 **Problem.** The Artin–Mazur zeta function is a power series with nonnegative integer coefficients.
 
-**How the definition helps.** Each factor of the product is a geometric series with coefficients 0 or 1. The coefficient of zᴺ involves only the finitely many orbits of length at most N, so it is a nonnegative integer. In the exponential form, the division by n hides this. The work moves to the equality of the two forms, which follows on taking logarithms, because an orbit of length d gives d fixed points of fⁿ whenever d divides n (our own).
+**How the definition helps.** Every orbit contributes a geometric series with coefficients zero and one (our own). Only finitely many orbits have length at most N, so the coefficient of zᴺ is a nonnegative integer. Taking formal logarithms recovers the exponential definition because a length-d orbit contributes d fixed points exactly when d divides n.
 
 **Wikipedia:** [Artin–Mazur zeta function](https://en.wikipedia.org/wiki/Artin%E2%80%93Mazur_zeta_function). It says: “Note that the zeta function is defined only if the set of fixed points is finite for each n.”
 
@@ -1050,11 +1050,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 37C50 (Approximate trajectories (pseudotrajectories, shadowing, etc.) in smooth dynamics), 37B65. arXiv math.DS. Level 3: graduate.
 
-**Definition.** An ε-pseudo-orbit of a map f is a sequence of points. Each point lies within ε of the image under f of the point before it.
+**Definition.** For a self-map f of a metric space, a two-sided ε-pseudo-orbit is a sequence indexed by all integers. It satisfies d(f(xᵢ),xᵢ₊₁) &lt; ε for every index i.
 
-**Problem.** Shadowing lemma: let Λ be a hyperbolic invariant set of a diffeomorphism f, with a suitable neighbourhood U. For every δ &gt; 0 there is ε &gt; 0 such that every ε-pseudo-orbit that stays in U stays within δ of some true orbit.
+**Problem.** Let Λ be a compact hyperbolic invariant set of a diffeomorphism f. Some neighborhood U of Λ has the following shadowing property. For every δ &gt; 0, some ε &gt; 0 lets a true orbit δ-shadow each ε-pseudo-orbit in U at every time.
 
-**How the definition helps.** The definition describes a computer orbit exactly, as a sequence with small errors at each step. In a chaotic system, rounding errors grow exponentially, so a computed orbit soon leaves the true orbit with the same start. Near a hyperbolic set, the stretching and shrinking directions let one correct all the errors at once by changing the start (our own). So the computed orbit follows some true orbit, and sensitivity is no contradiction.
+**How the definition helps.** A step error bound makes a computed trajectory a pseudo-orbit. The hyperbolic shadowing lemma supplies a true orbit that stays close at every time, possibly from a different starting point (our own).
 
 **Wikipedia:** [Shadowing lemma](https://en.wikipedia.org/wiki/Shadowing_lemma). It says: “every pseudo-orbit (which one can think of as a numerically computed trajectory with rounding errors on every step) stays uniformly close to some true trajectory”
 
@@ -1080,17 +1080,17 @@
 
 - [Invariant measures as obstructions to attractors in dynamical systems and their role in nonholonomic mechanics](https://arxiv.org/abs/2404.14156v1)
 
-### Transversality excludes saddle connections, so Morse–Smale flows are structurally stable
+### Transversality excludes fragile saddle connections in Morse–Smale flows
 
 **Remember:** Tilt the torus so saddles stop meeting, and the flow becomes stable.
 
 *Rules out counterexamples.* MSC 37D15 (Morse-Smale systems), 37C20, 37E35. arXiv math.DS. Level 3: graduate.
 
-**Definition.** A flow on a compact manifold is Morse–Smale if it has finitely many equilibria and periodic orbits, all hyperbolic, and every orbit tends to one of them. Also, their stable and unstable manifolds meet transversally. That is, at each meeting point their tangent spaces together span the whole tangent space.
+**Definition.** A smooth flow on a closed manifold is Morse–Smale if its nonwandering set consists of finitely many hyperbolic equilibria and periodic orbits, with transverse intersections. At every intersection of their stable and unstable manifolds, the two tangent spaces together span the ambient tangent space.
 
-**Problem.** Morse–Smale flows are structurally stable. On compact orientable surfaces, Peixoto's theorem says that a flow is structurally stable exactly when it is Morse–Smale.
+**Problem.** Morse–Smale flows on closed manifolds are structurally stable. On closed orientable surfaces, Peixoto’s theorem says that structural stability is equivalent to the Morse–Smale condition.
 
-**How the definition helps.** Transversal intersections persist under small perturbations, and non-transversal ones need not, so the condition removes the fragile cases. The standard bad case is the gradient flow of the height function on an upright torus, where an orbit runs from the upper saddle down to the lower saddle. A small tilt breaks this saddle connection, so the upright flow is not structurally stable (our own). The hard part is the proof by Palis and Smale that Morse–Smale flows are stable in every dimension (our own).
+**How the definition helps.** Transversality excludes a surface orbit joining two saddles because their one-dimensional invariant manifolds share its tangent line (our own). In the upright torus example, a small tilt breaks the saddle connection. The Palis–Smale theorem gives structural stability, and Peixoto’s theorem gives the converse on closed orientable surfaces (our own).
 
 **Wikipedia:** [Morse–Smale system](https://en.wikipedia.org/wiki/Morse%E2%80%93Smale_system), [Peixoto's theorem](https://en.wikipedia.org/wiki/Peixoto%27s_theorem). It says: “the stable and unstable manifolds of the saddle points do not intersect transversely, so the height function does not satisfy the Morse-Smale condition.”
 
@@ -1098,36 +1098,17 @@
 
 - [S. Smale, Morse inequalities for a dynamical system, Bulletin of the American Mathematical Society 66 (1960) 43–49](https://doi.org/10.1090/S0002-9904-1960-10386-2)
 
-### Axiom A demands dense periodic points, which hyperbolicity alone does not give
-
-**Remember:** Smale asked for dense periodic points, because hyperbolicity does not supply them.
-
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 37D20 (Uniformly hyperbolic systems (expanding, Anosov, Axiom A, etc.)), 37B10. arXiv math.DS. Level 3: graduate.
-
-**Definition.** A diffeomorphism f satisfies axiom A if its nonwandering set Ω(f) is compact and hyperbolic, and its periodic points are dense in Ω(f). A point is nonwandering if each of its neighbourhoods meets itself again under some iterate of f. Hyperbolic means that the tangent space splits into directions that f stretches and directions that f shrinks, at uniform rates.
-
-**Problem.** Bowen proved that the nonwandering set of an axiom A diffeomorphism carries a Markov partition. So, on a large subset of Ω(f), f is conjugate to a shift of finite type, a symbol shift defined by finitely many forbidden words.
-
-**How the definition helps.** Smale made density of periodic points a separate axiom, because in higher dimensions hyperbolicity alone does not give it. The page says that with it, Ω(f) is locally maximal, that is, the whole invariant set of some neighbourhood. Local maximality together with shadowing makes Markov partitions and the splitting of Ω(f) into basic pieces work (our own).
-
-**Wikipedia:** [Axiom A](https://en.wikipedia.org/wiki/Axiom_A). It says: “For surfaces, hyperbolicity of the nonwandering set implies the density of periodic points, but this is no longer true in higher dimensions.”
-
-**Sources:**
-
-- [S. Smale, Differentiable dynamical systems, Bulletin of the American Mathematical Society 73 (1967) 747–817](https://doi.org/10.1090/s0002-9904-1967-11798-1)
-- [R. Bowen, Markov partitions for axiom A diffeomorphisms, American Journal of Mathematics 92 (1970) 725–747](https://doi.org/10.2307/2373370)
-
 ### Markov rectangles give finite-type coding
 
 **Remember:** Compatible rectangles make consecutive steps enough to test a whole itinerary.
 
 *Makes the theorem clean to state or prove.* MSC 37D20 (Uniformly hyperbolic systems (expanding, Anosov, Axiom A, etc.)), 37B10. arXiv math.DS. Level 3: graduate.
 
-**Definition.** A Markov partition covers a hyperbolic set by small closed rectangles with disjoint interiors. Hyperbolicity splits local motion into uniformly contracting and expanding directions, and each rectangle follows those directions. At an interior transition, the map sends the contracting slice inside the next contracting slice and the expanding slice across the next expanding slice.
+**Definition.** A Markov partition covers a hyperbolic set by small closed local product rectangles, each the closure of its relative interior, with pairwise disjoint relative interiors. Whenever x ∈ int(R) and f(x) ∈ int(S), f maps the stable slice of R through x into its counterpart in S. It maps the unstable slice through x over the entire unstable slice of S through f(x).
 
 **Problem.** Let a diffeomorphism have a compact hyperbolic set made of the orbits that stay in a given neighborhood for all time. A sufficiently fine Markov partition codes this set by the shift on two-sided sequences of rectangles with allowed consecutive pairs. The coding map is continuous and onto, and it turns the shift into one step of the diffeomorphism.
 
-**How the definition helps.** The rectangle rules reduce the test for a whole itinerary to tests on adjacent pairs. In our own explanation, the slice conditions let compatible finite itineraries extend one step at a time, and compactness gives a point for each infinite itinerary. Small rectangles determine one point per itinerary, because distinct orbits eventually separate. Boundary points can still have several itineraries.
+**How the definition helps.** The slice conditions let compatible rectangle itineraries extend one step at a time (our own). Compactness realizes infinite itineraries, and expansivity gives one point per itinerary for sufficiently small rectangles. Agreement on longer central blocks forces closer points, giving continuity. Boundary points may have several itineraries, and Bowen’s coding theorem gives surjectivity.
 
 **Wikipedia:** [Markov partition](https://en.wikipedia.org/wiki/Markov_partition). It says: “the movement of a trajectory from one open cover to the next is determined only by the most recent cover, and not the history of the system.”
 
@@ -1147,7 +1128,7 @@
 
 **Problem.** Two such homeomorphisms f and g have equal rotation numbers if a continuous circle map h satisfies h∘f = g∘h. We require h to have a nondecreasing real lift H with H(x+1) = H(x)+1.
 
-**How the definition helps.** Averaging displacement over many steps removes the bounded error introduced by h. In our own argument, we choose lifts F and G so that H∘F = G∘H. The difference H(x)−x is periodic and bounded. The total displacements from x and H(x) therefore differ by a bounded amount, which vanishes after division by n in the limit. Poincaré’s theorem proves the limit exists and is independent of x.
+**How the definition helps.** Averaging displacement removes the bounded error from a coordinate change (our own). Choose lifts so H∘F = G∘H, hence H∘Fⁿ = Gⁿ∘H. Since H(x)−x is periodic and bounded, the two n-step displacements differ by a uniformly bounded amount. Dividing by n gives equality of the limits, whose existence and independence of x follow from Poincaré’s theorem.
 
 **Wikipedia:** [Rotation number](https://en.wikipedia.org/wiki/Rotation_number). It says: “The rotation number is invariant under topological conjugacy, and even monotone topological semiconjugacy”
 
@@ -1163,7 +1144,7 @@
 
 **Problem.** Let an orientation-preserving circle diffeomorphism have irrational rotation number and a positive derivative of bounded variation. Then it has no wandering interval, and a homeomorphism conjugates it to the rotation by its rotation number.
 
-**How the definition helps.** Bounded variation controls the accumulated stretching on disjoint intervals, which continuity of the derivative alone cannot do. In our own explanation, the logarithm of the derivative also has bounded variation, and its total variation bounds the distortion of an iterate on an interval with disjoint images. Denjoy's argument uses this bound to exclude wandering intervals and prove conjugacy. Denjoy also built a continuously differentiable example with irrational rotation number and a wandering interval.
+**How the definition helps.** Bounded variation controls distortion across disjoint images (our own). The positive continuous derivative has a positive minimum, so its logarithm also has bounded variation. On an interval with disjoint successive images, the variation of this logarithm bounds the log distortion of the iterate. Denjoy’s theorem gives conjugacy and excludes the wandering intervals present in his C¹ counterexample.
 
 **Wikipedia:** [Denjoy's theorem on rotation number](https://en.wikipedia.org/wiki/Denjoy%27s_theorem_on_rotation_number). It says: “a continuous function with bounded variation on the interval \[0,1).”
 
@@ -1181,7 +1162,7 @@
 
 **Problem.** The escape rate G exists for every complex polynomial of degree d ≥ 2 and satisfies G(P(z)) = dG(z). It vanishes exactly where the forward orbit is bounded.
 
-**How the definition helps.** Shifting the index by one in the limit gives the scaling law (our own). For convergence, the difference between log max(1, \|P(z)\|) and d log max(1, \|z\|) is bounded (our own). After division by dⁿ these differences sum absolutely (our own). The same bound makes G positive at sufficiently large \|z\| (our own). The scaling law then gives positivity at every escaping point (our own).
+**How the definition helps.** Shifting the index in the defining limit gives G(P(z)) = dG(z) (our own). Polynomial growth bounds \|log⁺\|P(z)\| − d log⁺\|z\|\| uniformly, where log⁺r = log max(1,r). The normalized increments thus have a summable geometric bound, giving convergence and a uniform bound on \|G(z) − log⁺\|z\|\|. Bounded orbits give zero directly, while unbounded orbits reach large points with positive G and hence have positive G by scaling.
 
 **Wikipedia:** [Julia set](https://en.wikipedia.org/wiki/Julia_set). It says: “those points whose orbits under iterations of f remain bounded.”
 
@@ -1199,7 +1180,7 @@
 
 **Problem.** Choose continuous maps independently from a fixed law on a compact parameter space, with continuous dependence on the parameter and point. On a compact metric state space, average contraction gives a unique stationary law, meaning one random step preserves it.
 
-**How the definition helps.** The joint-sample definition lets the same random map witness contraction of two updated laws. In our own proof, start with any joint sample and apply one independent map to both points. Take the infimum over joint samples to obtain the same contraction factor for laws. The equivalent definition using test functions conceals this joint sample. The fixed-point theorem gives existence and uniqueness because the space of laws is complete in this distance.
+**How the definition helps.** Applying the same independent random map to both coordinates contracts expected distance in every joint sample (our own). The updated coordinates have the updated laws, so taking the infimum gives the same contraction factor for Wasserstein distance. The space of probability laws on the compact metric state space is complete, so Banach’s fixed-point theorem gives exactly one stationary law.
 
 **Paper or page:** [The Hutchinson-Barnsley theory for generalized iterated function systems by means of infinite iterated function systems](https://arxiv.org/abs/2204.00373v2). It says: “is contractive in the Monge-Kantorovich metric with Lip(Mℛ) ≤ λ &lt; 1.”
 
@@ -1243,7 +1224,7 @@
 
 *Rules out counterexamples.* MSC 37J35 (Completely integrable finite-dimensional Hamiltonian systems, integration methods, integrability tests), 53D12. arXiv math.DS, math.SG. Level 3: graduate.
 
-**Definition.** A conserved function stays constant along the motion. Complete integrability in dimension 2n requires n conserved functions, independent on a dense open set, whose pairwise Poisson brackets vanish. This means that motion generated by each function preserves the others. A common level is regular if the differentials are independent throughout it.
+**Definition.** On a symplectic manifold of dimension 2n, complete integrability requires n smooth conserved functions whose differentials are independent on a dense open set. Every pair of these functions must have zero Poisson bracket. A common level is regular if the differentials are independent at every point of the level.
 
 **Problem.** Every regular common level of these functions is Lagrangian, meaning it has dimension n and the symplectic form vanishes on its tangent spaces.
 
@@ -1274,11 +1255,11 @@
 
 ### Rescaled contact forms expose Reeb motion
 
-**Remember:** Divide the contact form by the Hamiltonian to remove their common scaling.
+**Remember:** Scale the contact form to give its Hamiltonian field value one.
 
 *True by definition.* MSC 37J55 (Contact systems), 53D10. arXiv math.SG, math.DS. Level 3: graduate.
 
-**Definition.** A contact one-form η on an odd-dimensional space has derivative nondegenerate on the directions where η vanishes. Let X be the contact field generated by a smooth function H, with η(X) = −H. Wherever H is nonzero, choose the rescaled contact form −η/H.
+**Definition.** A contact form η on a (2n + 1)-manifold satisfies η ∧ (dη)ⁿ ≠ 0 everywhere. The contact Hamiltonian field X for H satisfies η(X) = −H and the Lie derivative of η along X equals aη for some smooth function a. Where H ≠ 0, set α = −η/H.
 
 **Problem.** Where H is nonzero, X is the Reeb field of −η/H. For a contact form α, its Reeb field R satisfies α(R) = 1 and dα(R,v) = 0 for every tangent vector v.
 
@@ -1312,11 +1293,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 37A44 (Relations between ergodic theory and number theory), 37A15, 37A35. arXiv math.DS. Level 4: research.
 
-**Definition.** Furstenberg's correspondence turns a set E of positive upper density in a group G into a measure-preserving action of G with a set A. Each finite intersection of translates of A has measure at most the upper density of the same intersection of translates of E. In our own reading, the paper's natural assumptions ask for equality, with densities that exist, and ask the translates of A to generate all measurable sets.
+**Definition.** Fix a Følner sequence along which all finite translate-intersection densities of E exist, with E of positive density. A correspondence system has a probability-preserving action and a measurable set A whose finite translate intersections have those same measures. The translates of A must generate the measurable sets modulo null sets (our own).
 
-**Problem.** For a countable amenable group, a correspondence system that meets these assumptions is isomorphic to the shift on the orbit closure of the indicator of E. So the system is unique up to measurable isomorphism.
+**Problem.** For a countable amenable group, every such system on a standard probability space is isomorphic to the shift on the orbit closure of E’s indicator. The shift carries the measure determined by those frequencies, so the system is unique up to measurable isomorphism.
 
-**How the definition helps.** The assumptions remove the two ways in which the system could fail to be unique. In our own explanation, without the generating condition, a product with any unrelated system also satisfies the correspondence. Without equality, the measures of the intersections are not fixed. Theorem 3.3 adds that two such systems are isomorphic exactly when all their intersection densities agree.
+**How the definition helps.** The translate indicators give a symbolic name for each point, and their joint law is fixed by the intersection densities (our own). Generation makes this coding a measure isomorphism for standard probability spaces. The indicator of E has these frequencies along the chosen sequence, giving the same law on its orbit closure. Without generation, a product with an unrelated system would have identical frequencies.
 
 **Paper or page:** [Uniqueness of a Furstenberg system](https://arxiv.org/abs/2005.07295v1). It says: “is unique up to a measurable isomorphism.”
 
@@ -1330,11 +1311,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 37B05 (Dynamical systems involving transformations and group actions with special properties (minimality, distality, proximality, expansivity, etc.)), 37A35. arXiv math.DS. Level 4: research.
 
-**Definition.** A factor map π from X to Y is a continuous surjection that respects the group action. Two points are Banach proximal if the upper Banach average of their distance along their orbits is zero. π is Banach proximal if every two points with the same image are Banach proximal.
+**Definition.** A factor map π is a continuous equivariant surjection. It is Banach proximal if, for every pair x,x′ with π(x) = π(x′), the following holds. Along every left Følner sequence Fₙ, the average of d(gx,gx′) over g ∈ Fₙ tends to zero.
 
 **Problem.** In our own reading, a factor map is topo-isomorphic if, for every invariant probability on X, π is a measure isomorphism after removing null sets. For compact metric actions of a countable amenable group, π is topo-isomorphic exactly when it is Banach proximal.
 
-**How the definition helps.** Banach proximality replaces a condition on all invariant measures with a condition on pairs of orbits. This is Theorem 8.1 of the paper. In our own explanation, take an invariant measure on pairs with the same image. Zero average distance forces that measure onto the diagonal. Then π separates points almost everywhere, so it is a measure isomorphism.
+**How the definition helps.** The pair condition measures whether distinct lifts remain separated on average (our own). Theorem 8.1 equates this condition with measure isomorphism for every invariant probability.
 
 **Paper or page:** [Mean equicontinuous factor maps](https://arxiv.org/abs/2411.15549v1), [Mean equicontinuous factor maps](https://arxiv.org/abs/2411.15549v1). It says: “We present that the notions of topo-isomorphy and Banach proximality coincide for all factor maps.”
 
@@ -1348,11 +1329,11 @@
 
 *Makes the theorem clean to state or prove. Confidence: medium.* MSC 37B05 (Dynamical systems involving transformations and group actions with special properties (minimality, distality, proximality, expansivity, etc.)), 37A35. arXiv math.DS. Level 4: research.
 
-**Definition.** A factor map π from X to Y is a continuous surjection that respects the group action. The fiber over y is the set π⁻¹(y). The mean diameter of a fiber is an upper average, over the group, of the diameters of the fibers along the orbit of y.
+**Definition.** For a continuous equivariant surjection π between compact metric systems, put D(y) = diam(π⁻¹(y)). The mean fiber diameter at y is the supremum, over left Følner sequences Fₙ, of the limsup of the averages of D(gy) on Fₙ. Each average uses normalized Haar measure on Fₙ.
 
-**Problem.** In our own reading, a factor map is regular if, for every invariant probability on Y, almost every fiber is a single point. For actions of amenable, locally compact, σ-compact groups, π is regular exactly when every fiber has mean diameter zero.
+**Problem.** A factor map is regular if almost every fiber is a singleton for each invariant probability on the target (our own). For compact metric actions of amenable locally compact σ-compact groups, regularity is equivalent to zero mean diameter at every fiber.
 
-**How the definition helps.** The mean diameter replaces a test over all invariant measures with a test along each orbit. This is Theorem 5.2 of the paper. In our own explanation, a fiber has diameter zero exactly when it is a single point. Averages along orbits then compare with integrals against invariant measures. The paper uses this test to prove that diam-mean equicontinuous actions are regular extensions of their maximal equicontinuous factor.
+**How the definition helps.** A fiber has diameter zero exactly when it is a singleton (our own). The paper’s Theorem 5.2 converts the invariant-measure condition into the stated test along every orbit.
 
 **Paper or page:** [Mean Diameter, Regularity and Diam-Mean Equicontinuity](https://arxiv.org/abs/2510.22484v1), [Mean Diameter, Regularity and Diam-Mean Equicontinuity](https://arxiv.org/abs/2510.22484v1). It says: “In the context of (not necessarily minimal) actions, we consider the mean diameter and use it to characterize regular factor maps.”
 
@@ -1364,47 +1345,29 @@
 
 **Remember:** Shift any differing coordinate into view.
 
-*Makes the theorem clean to state or prove.* MSC 37B05 (Dynamical systems involving transformations and group actions with special properties (minimality, distality, proximality, expansivity, etc.)), 37B02. arXiv math.DS. Level 4: research.
+*True by definition.* MSC 37B05 (Dynamical systems involving transformations and group actions with special properties (minimality, distality, proximality, expansivity, etc.)), 37B02. arXiv math.DS. Level 4: research.
 
-**Definition.** A set-valued map specifies a set of possible next points. Its orbit space consists of infinite sequences that follow those rules forward. The shift drops the first point of each sequence. Call the original map expansive if some fixed distance separates every pair of distinct allowed sequences at some coordinate.
+**Definition.** For a set-valued self-map F of a metric space, a right-infinite orbit satisfies xᵢ₊₁ ∈ F(xᵢ) for every i ≥ 0. The orbit shift drops x₀. Orbit expansivity means some c &gt; 0 lets every two distinct orbits differ by more than c in some coordinate.
 
 **Problem.** Suppose a set-valued map on a compact metric space has nonempty compact values and a closed graph. It is expansive on its right-infinite orbits exactly when their shift is positively expansive, which uses only forward iterates.
 
-**How the definition helps.** The orbit space turns a rule with many possible successors into one ordinary map on complete histories. Our own proof measures the distance between histories by summing bounded coordinate distances with weights ½, ¼, ⅛, and so on. Shifting a separating coordinate to the front makes its weight ½. Conversely, if all coordinates stay close, every shifted pair stays close in this metric. The closed graph makes the orbit space compact, so changing to another compatible metric preserves expansivity.
+**How the definition helps.** Use the weighted sum of coordinate distances, bounded first by one, with weights ½, ¼, ⅛, … (our own). Shifting a separating coordinate to the front retains half its bounded distance. Conversely, a shifted sum greater than c requires some coordinate distance greater than c. The closed graph gives a compact orbit space, where compatible metrics are uniformly equivalent.
 
 **Paper or page:** [Shadowing property for set-valued map and its inverse limit](https://arxiv.org/abs/2412.11221v2). It says: “Then F is expansive if and only if (Orbᵣ(X), σᵣF) is expansive.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
-### Sensitivity is redundant in Devaney chaos for stronger families of times
-
-**Remember:** Transitivity at the right times plus dense periodic points gives sensitivity.
-
-*True by definition. Confidence: medium.* MSC 37B05 (Dynamical systems involving transformations and group actions with special properties (minimality, distality, proximality, expansivity, etc.)), 37D45. arXiv math.DS. Level 4: research.
-
-**Definition.** For a family 𝓕 of sets of times, 𝓕-Devaney chaos asks for 𝓕-transitivity, dense periodic points and 𝓕-sensitivity. For the cofinite family, 𝓕-transitivity is mixing, so every open set meets every other open set at all large times. Cofinite sensitivity means that near each point some other point moves at least a fixed distance away at all large times.
-
-**Problem.** Let f be a uniformly continuous map of an infinite metric space without isolated points. For four families 𝓕 that include the cofinite one, 𝓕-transitivity and dense periodic points imply 𝓕-sensitivity. So sensitivity is redundant in 𝓕-Devaney chaos.
-
-**How the definition helps.** Defining the stronger chaos through 𝓕-transitivity lets the classical redundancy of sensitivity carry over to each family. The paper's Theorem 3.2 uses dense periodic points, like the classical result of Banks and others. For the cofinite family, our own shorter argument uses mixing only. Take two open sets at distance at least 3δ. For large n, the n-th image of any small neighborhood meets both, so some point of it moves at least δ from the image of the centre.
-
-**Paper or page:** [On stronger forms of Devaney chaos](https://arxiv.org/abs/2505.15286v1), [On stronger forms of Devaney chaos](https://arxiv.org/abs/2505.15286v1). It says: “𝓕-sensitivity is a redundant condition in the definition 𝓕-Devaney chaos.”
-
-**Sources:**
-
-- [Shital H. Joshi, Ekta Shah, On stronger forms of Devaney chaos, arXiv:2505.15286 (2025)](https://arxiv.org/abs/2505.15286v1)
-
 ### Stabilizers vary continuously on the universal irreducible extension of a flow
 
-**Remember:** Change the space, not the theorem, when stabilizers jump.
+**Remember:** The universal irreducible extension factors onto every irreducible extension over the original flow.
 
-*Rules out counterexamples. Confidence: medium.* MSC 37B05 (Dynamical systems involving transformations and group actions with special properties (minimality, distality, proximality, expansivity, etc.)), 22D05. arXiv math.GR, math.DS. Level 4: research.
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 37B05 (Dynamical systems involving transformations and group actions with special properties (minimality, distality, proximality, expansivity, etc.)), 22D05. arXiv math.GR, math.DS. Level 4: research.
 
 **Definition.** A G-flow is a continuous action of a topological group G on a compact Hausdorff space. An extension of a flow is irreducible if no proper closed subset of it maps onto the original space. The universal irreducible extension is the largest one: every irreducible extension of the flow is a factor of it.
 
 **Problem.** Let a locally compact group G act on a compact space X. The stabilizer map sends each point to the closed subgroup fixing it, with the Chabauty topology on closed subgroups. This map can fail to be continuous on X, but it is continuous on the universal irreducible extension of X.
 
-**How the definition helps.** Passing to the extension removes the points where stabilizers jump, so continuity holds without an extra assumption on the action. In our own example, the reflection x ↦ −x of \[−1, 1\] fixes 0 but no nearby point, so the stabilizer jumps at 0. The result generalizes Frolík's theorem on extremally disconnected compact spaces, where the closure of every open set is open. There, the fixed points of a homeomorphism form an open set. Proving continuity on the extension for every locally compact group is the work.
+**How the definition helps.** Universality selects one extension over X on which to state the stabilizer continuity theorem (our own). For reflection on \[−1,1\], the stabilizer jumps at zero. The cited theorem proves continuity on the universal irreducible extension for every locally compact group.
 
 **Paper or page:** [Continuity of the stabilizer map and irreducible extensions](https://arxiv.org/abs/2302.03083v2). It says: “This map is not continuous in general. We prove that if one passes from X to the universal irreducible extension of X, the stabilizer map becomes continuous.”
 
@@ -1418,11 +1381,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 37B05 (Dynamical systems involving transformations and group actions with special properties (minimality, distality, proximality, expansivity, etc.)), 46L55, 46L05. arXiv math.OA, math.DS. Level 4: research.
 
-**Definition.** A Γ-boundary is a compact space with a minimal, strongly proximal action of the group Γ, so that group elements push every probability measure close to a point mass. The Furstenberg boundary ∂FΓ is the universal Γ-boundary, which maps onto every other one. An action is topologically free when, for each g ≠ e, the fixed points of g form a set with empty interior.
+**Definition.** A Γ-boundary is a compact Hausdorff Γ-space where every orbit is dense and the weak-\* orbit closure of every probability measure contains a point mass. The Furstenberg boundary maps continuously and equivariantly onto every Γ-boundary and is itself a Γ-boundary. Topological freeness means that no nonidentity element fixes a nonempty open set pointwise.
 
-**Problem.** A discrete group Γ is C\*-simple, meaning its reduced C\*-algebra has no closed two-sided ideals except 0 and itself, exactly when Γ acts topologically freely on its Furstenberg boundary.
+**Problem.** A discrete group Γ is C\*-simple exactly when its action on the Furstenberg boundary is topologically free. C\*-simplicity means that the reduced group C\*-algebra has only the zero ideal and the whole algebra as closed two-sided ideals.
 
-**How the definition helps.** Our own reason: the universal boundary collects all boundary behaviour in one space, so simplicity becomes one question about one action. Kalantar and Kennedy proved this equivalence, and the cited theorem also credits Breuillard, Kalantar, Kennedy and Ozawa for further equivalent forms. A nontrivial amenable group has a one-point Furstenberg boundary, so the action is not free and the group is not C\*-simple (our own). The Furstenberg boundary is very large, so one usually checks an equivalent condition on a smaller, concrete boundary (our own).
+**How the definition helps.** The universal boundary selects one group action for the freeness test (our own). Kalantar and Kennedy’s boundary characterization identifies topological freeness of this action with C\*-simplicity.
 
 **Paper or page:** [Simplicity of crossed products of the actions of totally disconnected locally compact groups on their boundaries](https://arxiv.org/abs/2312.15754). It says: “(i) The reduced group C\*-algebra C\*λ(Γ) of Γ is simple. (ii) The reduced crossed product C(∂FΓ) ⋊ᵣ Γ is simple. (iii) The action Γ ↷ ∂FΓ is free.”
 
@@ -1442,7 +1405,7 @@
 
 **Problem.** The spacing shift Σₚ is topologically mixing exactly when P has finite complement in the positive integers.
 
-**How the definition helps.** The definition turns mixing into a statement about which gaps P allows. In our own proof, if Σₚ is mixing, then for all large n some sequence has 1s at places 0 and n, so n lies in P. Conversely, if P contains every n ≥ N, two allowed words placed at least N apart with 0s between them form an allowed word. The paper quotes this lemma from Banks.
+**How the definition helps.** Mixing the cylinder with a one at zero with itself forces n ∈ P for every sufficiently large n (our own). Conversely, if P contains all gaps above N, place any two allowed words more than N apart and fill every remaining site with zeros. Every cross-word gap then belongs to P, proving mixing.
 
 **Paper or page:** [On stronger forms of Devaney chaos](https://arxiv.org/abs/2505.15286v1). It says: “Σₚ mixing ⇔ P is co–finite.”
 
@@ -1456,7 +1419,7 @@
 
 *True by definition.* MSC 37B10 (Symbolic dynamics). arXiv math.DS. Level 4: research.
 
-**Definition.** A subgroup shift specifies which symbol configurations are allowed on the subgroup. Its free extension to the group permits a translated copy of any such configuration on each coset independently.
+**Definition.** Let H be a subgroup of G and Y a nonempty subshift of Aᴴ over a finite alphabet A. Its free extension consists of configurations x on G such that h ↦ x(gh) belongs to Y for every g ∈ G.
 
 **Problem.** The number of allowed patterns on a finite window in a free extension is the product of the counts on the parts in each coset.
 
@@ -1476,9 +1439,9 @@
 
 **Definition.** An irreducible sofic shift consists of label sequences along paths in a finite strongly connected graph. A word synchronizes if any allowed left and right contexts for it can occur together. A periodic sequence is receptive if two fixed synchronizing words can bracket every sufficiently long repetition of its shortest period block.
 
-**Problem.** In an irreducible sofic shift, a periodic point is receptive exactly when it is the image of a point with the same least period under a factor code from some irreducible shift of finite type. A factor code is a continuous onto map that commutes with the shift.
+**Problem.** Let w be a periodic point in an irreducible sofic shift Y. Receptivity of w means precisely that some factor code from an irreducible finite-type shift onto Y maps a point of equal least period to w. A factor code is a continuous surjection commuting with the shift.
 
-**How the definition helps.** Receptivity rules out a parity obstruction that can prevent a periodic point from lifting with its least period. Our own example uses the even shift, where successive ones enclose an even number of zeros. Every synchronizing word contains a one, since a block of zeros cannot determine the parity at both ends. Between fixed synchronizing ends, the all-zero point therefore permits only one parity of repeat counts. The cited theorem proves that receptivity suffices by constructing a suitable cover.
+**How the definition helps.** Receptivity excludes a parity obstruction to lifting the least period (our own). In the even shift, every synchronizing word contains a one because zero blocks alone leave the parity undetermined. Between two fixed synchronizing ends, the all-zero point therefore permits only one parity of repetition counts. The cited lifting theorem proves both directions.
 
 **Paper or page:** [Factorizable embeddings and the period of an irreducible sofic shift](https://arxiv.org/abs/2508.02554v2). It says: “Then, w is receptive if and only if there is an irreducible SFT X, a factor code π : X → Y and a periodic point x ∈ X with least period p such that π(x) = w.”
 
@@ -1492,11 +1455,11 @@
 
 *True by definition.* MSC 37B10 (Symbolic dynamics). arXiv math.DS. Level 4: research.
 
-**Definition.** In a shift space of symbol sequences, form a graph for each allowed word. Use separate vertices for letters that can precede or follow it. Join two vertices if those letters can occur together around the word. The shift is dendric if every such graph, including the empty word’s graph, is a tree.
+**Definition.** For each allowed word w, including the empty word, give its extension graph separate left and right vertex sets. A left letter a requires aw allowed, a right letter b requires wb allowed, and an edge between them requires awb allowed. A shift is dendric if every extension graph is a tree.
 
 **Problem.** In a dendric shift using d letters, there are exactly 1 + (d − 1)n words of length n.
 
-**How the definition helps.** The tree condition replaces a count of two-sided extensions with a count of vertices minus one. In our own calculation, summing edge counts over length-n words counts the length-(n + 2) words, and the vertices count the length-(n + 1) words twice. Subtracting one per tree makes the successive increases in the word count equal. Starting with one empty word and d single letters gives the formula.
+**How the definition helps.** Each extension tree has one fewer edge than vertices (our own). Write p(n) for the length-n word count. Summing the tree identity over those words gives p(n+2) = 2p(n+1) − p(n), since each edge records a two-sided extension. Thus every increment equals p(1) − p(0) = d − 1.
 
 **Paper or page:** [𝒮-adic characterization of minimal dendric shifts](https://arxiv.org/abs/2206.00333v4). It says: “then pₓ(n) = (pₓ(1) − 1)n + 1 for every n.”
 
@@ -1512,7 +1475,7 @@
 
 **Problem.** Take a nonempty finite family of maps from m copies of a nonempty complete metric space into that space, where m ≥ 1. Each map must shrink distances by a common factor 0 ≤ q &lt; 1 when inputs use the maximum distance. From any m nonempty compact starting sets, the updates converge in Hausdorff distance to the same compact set.
 
-**How the definition helps.** The maximum distance makes each group of m updates shrink the entire tuple by a factor of at most q. Our own proof bounds the distance between two new unions by q times the largest distance between corresponding input sets. Until m steps have passed, the tuple can still contain an original set. After m updates every coordinate satisfies the improved bound. Completeness of the space of nonempty compact sets and the contraction mapping theorem give the unique limit.
+**How the definition helps.** Over m updates the entire tuple contracts by q (our own). The Hausdorff distance between two new unions is at most q times the largest input distance, so the tuple distance never increases. After m updates all original coordinates have been replaced, and every distance is at most q times the initial maximum. The m-step contraction has a unique fixed tuple by completeness, and the one-step update preserves it, so its coordinates agree.
 
 **Paper or page:** [The Hutchinson-Barnsley theory for generalized iterated function systems by means of infinite iterated function systems](https://arxiv.org/abs/2204.00373v2). It says: “converges to A𝒮, the fractal attractor.”
 
@@ -1524,7 +1487,7 @@
 
 *True by definition. Confidence: medium.* MSC 37B40 (Topological entropy), 06F05. arXiv math.DS. Level 4: research.
 
-**Definition.** The paper defines an entropy space as a pre-ordered semigroup with a size function h. Elements stand for descriptions such as open covers, and the product combines two descriptions. A lower map λ acts on the space, like pulling a cover back by the dynamics. Our reading is that the axioms bound the size of a product by the sum of the sizes and stop λ from increasing size.
+**Definition.** For an update λ on descriptions with an associative product, form the length-n block α·λα·…·λⁿ⁻¹α of a description α. Let aₙ be its size under h. A sequence is subadditive if aₙ₊ₘ ≤ aₙ + aₘ for all positive integers n and m.
 
 **Problem.** For a description α, let aₙ be the size of the product of α, λα, …, λⁿ⁻¹α. Then aₙ/n converges to its infimum.
 
@@ -1542,11 +1505,11 @@
 
 *Rules out counterexamples.* MSC 37B40 (Topological entropy). arXiv math.DS. Level 4: research.
 
-**Definition.** A Bowen ball of length n contains points that stay within a chosen distance of its center during the first n observations. Cover the set with countably many such balls and give each length-n ball cost exp(−sn). For each distance, take the infimum of s ≥ 0 allowing arbitrarily cheap covers with arbitrarily large minimum length. Bowen entropy is the limit of these thresholds as the distance tends to zero.
+**Definition.** A length-n Bowen ball of radius r about x contains all y satisfying d(fⁱx,fⁱy) &lt; r for 0 ≤ i &lt; n. At radius r take the infimum of s ≥ 0 allowing, for every N and ε &gt; 0, a countable cover costing less than ε. Each ball must have length n ≥ N and costs exp(−sn). Bowen entropy is the limit of these infima as r decreases to zero.
 
 **Problem.** For a homeomorphism of a compact metric space, the Bowen entropy of a countable union equals the supremum of its members’ Bowen entropies.
 
-**How the definition helps.** Variable lengths let us combine arbitrarily cheap covers even when different members need different lengths. In our own proof, choose s above every member's entropy and give member j a budget of ε/2ʲ, so the union costs at most ε. Inclusion gives the reverse inequality. Our own comparison uses the full binary shift, whose countably many periodic points realize every finite word, so fixed-length counts grow exponentially though each point has zero entropy.
+**How the definition helps.** At a fixed radius and minimum length, separate budgets let us combine covers (our own). For s above the supremum of the entropies, give set j budget ε/2ʲ for j ≥ 1, yielding a cover costing at most ε. Inclusion gives the reverse inequality. Fixed-length counts fail this test because the countable periodic points of the full binary shift realize every word.
 
 **Paper or page:** [Entropy properties of mostly expanding partially hyperbolic diffeomorphisms](https://arxiv.org/abs/2401.12465v1). It says: “hₜₒₚ(f,Y) = supₙ hₜₒₚ(f,Yₙ), where Y = ⋃ₙ∈ℕ Yₙ ⊂ X.”
 
@@ -1578,7 +1541,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 37B40 (Topological entropy), 11R06. arXiv math.DS, math.NT. Level 4: research.
 
-**Definition.** Let R be the ring of integer Laurent polynomials in d variables. For a finitely generated torsion R-module M, the characteristic element is the product of its irreducible factors p, each raised to the length of M after inverting the elements coprime to p. It is defined up to a signed monomial.
+**Definition.** Let R be the integer Laurent polynomial ring in d variables and M a finitely generated torsion R-module. For each irreducible p up to associates, let ℓₚ be the module length after inverting every element outside the ideal (p). The characteristic element is the finite product of p raised to ℓₚ over positive lengths, up to a signed monomial.
 
 **Problem.** Let M be the quotient of Rⁿ by the image of a square matrix A with nonzero determinant. Multiplication by the variables gives commuting maps of the character group of M. Their topological entropy is the logarithmic Mahler measure of det A, the average of log\|det A\| over the unit torus.
 
@@ -1590,24 +1553,6 @@
 
 - [Lind, Schmidt and Ward, Mahler measure and entropy for commuting automorphisms of compact groups](https://doi.org/10.1007/BF01231517)
 
-### Shifts on orbit sequences define metric mean dimension for discontinuous maps
-
-**Remember:** Move along recorded orbits, even when the map itself jumps.
-
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 37B40 (Topological entropy), 37B10. arXiv math.DS. Level 4: research.
-
-**Definition.** Metric mean dimension measures how fast the complexity of orbits grows as the scale of resolution shrinks. For a closed set Γ in X × X, the shift acts on the space Γ(ℕ) of sequences whose consecutive pairs lie in Γ. For a discontinuous map, the paper uses a suitable shift of this kind, in our own reading with Γ built from the closure of the graph.
-
-**Problem.** For a continuous map, the new metric mean dimension agrees with the usual one. For a class of interval maps that includes the Gauss map, the upper metric mean dimension equals the upper box dimension of the set where the map breaks.
-
-**How the definition helps.** The shift on sequences is continuous even when the map is not, so the old definition applies to it. Theorem B shows that the two notions agree for continuous maps, which justifies the new definition. Theorem C treats the interval maps, with full equality when the box dimension exists.
-
-**Paper or page:** [Metric mean dimension via subshifts of compact type](https://arxiv.org/abs/2407.07682v2). It says: “Building upon this result, we extend the notion of metric mean dimension to discontinuous maps in terms of suitable subshifts.”
-
-**Sources:**
-
-- [Gustavo Pessil, Metric mean dimension via subshifts of compact type, arXiv:2407.07682 (2025)](https://arxiv.org/abs/2407.07682v2)
-
 ### A safe symbol makes a shift of finite type an absolute retract
 
 **Remember:** Overwrite every bad window with the safe symbol.
@@ -1618,7 +1563,7 @@
 
 **Problem.** Over a countable group, a shift of finite type with a safe symbol is an absolute retract for the class of subshifts. In particular it has the map extension property.
 
-**How the definition helps.** A safe symbol repairs any forbidden pattern without breaking an allowed one, which gives the retraction directly. In our own proof, given X containing Y, write s at every site of every window where a point of X shows a forbidden pattern. Windows that were forbidden now hold only s, and windows that were allowed stay allowed. Points of Y have no forbidden windows, so they do not change.
+**How the definition helps.** Use one finite defining window and list exactly the patterns on it that occur in Y (our own). Replace every site in a window showing an unlisted pattern with s. Each bad window becomes all s, while each originally listed window still occurs in Y by safety. This local equivariant rule fixes Y and takes all configurations into Y, giving the retraction and hence the map extension property.
 
 **Paper or page:** [An embedding theorem for multidimensional subshifts](https://arxiv.org/abs/2312.05650v5). It says: “with a safe symbol is an absolute retract for the class of subshifts, and in particular has the map extension property.”
 
@@ -1632,7 +1577,7 @@
 
 *Makes the theorem clean to state or prove.* MSC 37B51 (Multidimensional shifts of finite type), 37B10. arXiv math.DS. Level 4: research.
 
-**Definition.** A subshift Y has the map extension property if every shift-respecting continuous map into Y from a closed invariant subset of a subshift X extends to all of X. This is required whenever the symmetries of points of X permit it.
+**Definition.** A subshift Y has the map extension property if the following holds for every subshift X satisfying a stabilizer condition. Each x in X must have a point y in Y fixed by every group element fixing x. Every continuous equivariant map from a closed invariant subset of such an X into Y must extend continuously and equivariantly over X.
 
 **Problem.** A subshift over ℤ has the map extension property exactly when it is a topologically mixing shift of finite type. So the paper's embedding theorem over countable abelian groups, with targets that have this property, contains Krieger's embedding theorem.
 
@@ -1650,11 +1595,11 @@
 
 *Makes the theorem clean to state or prove.* MSC 37B65 (Approximate trajectories, pseudotrajectories, shadowing and related notions for topological dynamical systems), 37B20, 47A16. arXiv math.DS, math.FA. Level 4: research.
 
-**Definition.** A δ-pseudo-orbit is a sequence in which each point is within δ of the image of the one before. An operator has finite shadowing if, for each tolerance ε, some δ works for all finite δ-pseudo-orbits at once. Each such pseudo-orbit then stays within ε of a true orbit segment. On a topological vector space, "within" is measured by neighborhoods of zero.
+**Definition.** A continuous linear operator T has finite shadowing if every neighborhood U of zero admits a neighborhood V of zero with the following property. For every finite sequence with xᵢ₊₁ − Txᵢ ∈ V at each step, some y satisfies xᵢ − Tⁱy ∈ U at every index.
 
 **Problem.** Let T be a continuous linear operator on a topological vector space, with finite shadowing. Then T is chain recurrent exactly when it is topologically mixing. Chain recurrent means every point lies on closed pseudo-orbits of every small error.
 
-**How the definition helps.** Mixing is a statement about finite orbit pieces, so finite shadowing is exactly the hypothesis it needs. The paper proves the result on any topological vector space, where full shadowing can fail. In our own explanation, to go from an open set U to an open set V in n steps, build a pseudo-orbit of length n. Finite shadowing then turns it into a true orbit piece. The real work, also our own reading, is to build such pseudo-orbits for every large n from linearity and chain recurrence.
+**How the definition helps.** Finite shadowing turns a chain between two open sets into a true orbit segment if its endpoints have enough room (our own). The cited equivalence supplies chains of every sufficiently large length from linearity and chain recurrence and also gives the converse.
 
 **Paper or page:** [On Shadowing and Chain Recurrence in Linear Dynamics](https://arxiv.org/abs/2305.02714v2). It says: “Then the following assertions are equivalent: T is chain recurrent; T is transitive; T is ergodic; T is weakly mixing; T is mixing.”
 
@@ -1668,11 +1613,11 @@
 
 *True by definition.* MSC 37B65 (Approximate trajectories, pseudotrajectories, shadowing and related notions for topological dynamical systems), 37B20, 47A16. arXiv math.DS, math.FA. Level 4: research.
 
-**Definition.** A periodic pseudo-orbit repeats a closed chain of small-error steps forever. An operator has periodic shadowing if each periodic pseudo-orbit with small enough errors stays close to a true periodic orbit. The chain recurrent set CR(T) holds the points that lie on closed chains of every small error.
+**Definition.** Periodic shadowing means every zero neighborhood U admits a zero neighborhood V with the following property. Every periodic sequence with errors xᵢ₊₁−Txᵢ in V admits a periodic y with xᵢ−Tⁱy in U for every i ≥ 0. A chain recurrent point starts and ends a positive-length chain with every step error in V, for every zero neighborhood V.
 
 **Problem.** Let T be a continuous linear operator on a topological vector space with periodic shadowing. Then the periodic points of T are dense in CR(T).
 
-**How the definition helps.** Periodic shadowing turns each closed chain into a nearby periodic orbit, so density follows almost at once. The proof outline is our own. A point x in CR(T) lies on a closed chain of any small error. Repeating that chain gives a periodic pseudo-orbit through x. A true periodic orbit stays close to it, so a periodic point lies near x. The paper also proves that the restriction of T to CR(T) is mixing and Devaney chaotic.
+**How the definition helps.** Repeat a closed chain through x to obtain a periodic pseudo-orbit (our own). For any desired neighborhood of x, choose a symmetric zero neighborhood U small enough to stay inside it after translation by x. Use the corresponding error neighborhood V to build the chain, then shadow it by a periodic point lying in x + U.
 
 **Paper or page:** [Generalized Hyperbolicity, Stability and Expansivity for Operators on Locally Convex Spaces](https://arxiv.org/abs/2403.02843v2). It says: “Per(T) is dense in CR(T).”
 
@@ -1680,31 +1625,13 @@
 
 - [Nilson C. Bernardes, Blas M. Caraballo, Udayan B. Darji, Vinícius V. Fávaro, Alfred Peris, Generalized Hyperbolicity, Stability and Expansivity for Operators on Locally Convex Spaces, J. Funct. Anal. 288 (2025) 110696, arXiv:2403.02843](https://arxiv.org/abs/2403.02843v2)
 
-### Open maps of dynamical systems carry stable bounded trajectories to stable ones
-
-**Remember:** An open map carries nearby starting states onto a neighborhood downstairs.
-
-*Makes the theorem clean to state or prove.* MSC 37C75 (Stability theory for smooth dynamical systems), 37B25. arXiv math.DS. Level 4: research.
-
-**Definition.** A trajectory is stable if the map from initial state to trajectory is continuous there in the topology of uniform closeness over time. An open map of systems sends open sets to open sets and respects the evolution.
-
-**Problem.** An open map of the smooth dynamical systems in the paper sends a stable, bounded trajectory to a stable trajectory.
-
-**How the definition helps.** Writing stability as continuity turns preservation into a statement about maps between spaces of trajectories. In our own explanation, openness supplies a nearby source point for each nearby target point. The paper still needs boundedness to show that taking images preserves uniform closeness of trajectories.
-
-**Paper or page:** [Open Maps Preserve Stability](https://arxiv.org/abs/2304.07834v1), [Open Maps Preserve Stability](https://arxiv.org/abs/2304.07834v1). It says: “We thus define maps of dynamical systems and prove that a class of open maps preserve stability.”
-
-**Sources:**
-
-- [James Schmidt, Open Maps Preserve Stability, arXiv:2304.07834 (2023)](https://arxiv.org/abs/2304.07834v1)
-
 ### Isomorphic equivariant vector fields have the same stable relative equilibria
 
 **Remember:** Change the motion along symmetry orbits without changing how nearby orbits separate.
 
 *Makes the theorem clean to state or prove.* MSC 37C81 (Equivariant dynamical systems), 37C75. arXiv math.DS. Level 4: research.
 
-**Definition.** An equivariant vector field respects a symmetry group. Two such fields are isomorphic when their difference comes from a smoothly varying, equivariant infinitesimal symmetry. A relative equilibrium moves only along its symmetry orbit.
+**Definition.** For a smooth G-action, equivariant vector fields X and Y are isomorphic if there is a smooth map ψ to the Lie algebra of G. It must satisfy ψ(gx) = Ad(g)ψ(x), and Y(x) − X(x) must equal the velocity at zero of t ↦ exp(tψ(x))x. A relative equilibrium is a point whose trajectory stays in its group orbit.
 
 **Problem.** On a manifold with a proper symmetry action, isomorphic equivariant fields have the same stable relative equilibria. Stability here means that nearby trajectories stay near the symmetry orbit.
 
@@ -1716,31 +1643,13 @@
 
 - [Stefan Klajbor-Goderich, Nonlinear Stability of Relative Equilibria and Isomorphic Vector Fields, arXiv:1707.02828 (2018)](https://arxiv.org/abs/1707.02828v4)
 
-### Lipschitz hyperbolicity gives stable and unstable manifolds without derivatives
-
-**Remember:** Control the nonlinear remainder by its Lipschitz constant, not by its derivative.
-
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 37D05 (Dynamical systems with hyperbolic orbits and sets), 37D10, 37D15. arXiv math.AP, math.DS. Level 4: research.
-
-**Definition.** Let T be a continuous map on a Banach space with a fixed point x\*. The point is weakly hyperbolic if, near x\*, T is a bounded linear map L plus a small remainder N. The remainder satisfies N(0) = 0 and has small Lipschitz constant, and the spectrum of L avoids the unit circle. No derivative of T is required.
-
-**Problem.** At a weakly hyperbolic fixed point, the local stable and unstable sets are graphs of Lipschitz maps and meet only at x\*. T is a contraction on the stable set, and its inverse is a contraction on the unstable set.
-
-**How the definition helps.** The definition keeps exactly the hypotheses that the contraction proof of the stable manifold theorem uses, and drops differentiability. So the classical statement carries over to non-smooth perturbations. The work is in Theorem 2.5 of the paper, which builds the invariant graphs for a linear map plus a small Lipschitz perturbation. Our own sketch of that proof finds the graphs as fixed points of a contraction on sequences of iterates.
-
-**Paper or page:** [Lipschitz perturbations of Morse-Smale semigroups](https://arxiv.org/abs/1705.09947v1). It says: “To this end we define more general notions of hyperbolicity and transversality, which do not require differentiability.”
-
-**Sources:**
-
-- [M. C. Bortolan, C. A. E. N. Cardoso, A. N. Carvalho, L. Pires, Lipschitz perturbations of Morse-Smale semigroups, arXiv:1705.09947 (2017)](https://arxiv.org/abs/1705.09947v1)
-
 ### The topological Markov property makes Gibbs and étale Gibbs measures the same
 
 **Remember:** Agreement on a finite border makes a finite patch replacement local.
 
 *Makes the theorem clean to state or prove.* MSC 37D35 (Thermodynamic formalism, variational principles, equilibrium states for dynamical systems), 37B10, 37B51. arXiv math.DS. Level 4: research.
 
-**Definition.** A subshift is a closed set of symbol configurations preserved by shifts. Its topological Markov property allows a finite patch to be replaced when two configurations agree on a suitable finite border.
+**Definition.** A subshift has the topological Markov property if every finite set A of sites lies in a finite set B with the following property. Whenever configurations x and y agree on B ∖ A, using x on A and y elsewhere gives a configuration in the subshift.
 
 **Problem.** For a subshift with the topological Markov property, a Borel probability measure is Gibbs exactly when it is étale Gibbs. This holds for interactions whose energy differences converge absolutely for configurations that differ at finitely many sites.
 
@@ -1758,11 +1667,11 @@
 
 *Rules out counterexamples. Confidence: medium.* MSC 37F10 (Dynamics of complex polynomials, rational maps, entire and meromorphic functions; Fatou and Julia sets), 37F25. arXiv math.DS, math.CV. Level 4: research.
 
-**Definition.** A complex box map F sends each component of an open set U properly and holomorphically onto a disk component of a larger open set V. A component of U may equal a component of V. The filled set K(F) consists of the points that can be iterated forever. The no permutation condition forbids F to carry such whole components around in a cycle.
+**Definition.** A complex box map maps each domain disk properly and holomorphically onto one of finitely many disjoint range disks. A domain disk either equals its containing range disk or has compact closure inside it. The no permutation condition forbids cycles of whole range disks, and the filled set consists of points with every forward iterate defined.
 
 **Problem.** For a complex box map satisfying the no permutation condition, every connected component of its filled set is compact.
 
-**How the definition helps.** The no permutation condition forbids entire open domain disks from being carried around in a cycle. In our own example, the identity on an open disk has the whole disk as its filled set, which is not compact. In our own explanation, proving compactness still requires controlling the nested pieces containing a trapped orbit.
+**How the definition helps.** Without the condition, the identity on an open disk has that noncompact disk as its filled set (our own). With finitely many range disks, an itinerary must repeatedly enter a relatively compact domain disk or eventually cycle through whole disks. The condition rules out the cycle. Proper pullbacks then give nested itinerary pieces with each later closure eventually inside each earlier piece, so their intersection is compact (our own).
 
 **Paper or page:** [The dynamics of complex box mappings](https://arxiv.org/abs/2105.08654v2). It says: “each component of K(F) is compact;”
 
@@ -1776,7 +1685,7 @@
 
 *True by definition.* MSC 37J06 (General theory of finite-dimensional Hamiltonian and Lagrangian systems, Hamiltonian and Lagrangian structures, symmetries, invariants). arXiv math.DS. Level 4: research.
 
-**Definition.** On a phase space of dimension 2n, the symplectic form ω measures oriented areas of tangent pairs. Its n-fold wedge product combines those area measurements into a volume form. In canonical position and momentum coordinates this gives ordinary volume up to a fixed factor.
+**Definition.** On a symplectic manifold of dimension 2n with symplectic form ω, the symplectic volume form is ωⁿ/n!, the normalized n-fold wedge product of ω.
 
 **Problem.** Smooth Hamiltonian flows driven by continuous semimartingale noise, taken in the Stratonovich sense, preserve phase-space volume with probability one wherever a smooth local flow exists.
 
@@ -1796,28 +1705,10 @@
 
 **Definition.** A frequency vector ω in ℝᵈ is Diophantine if there are numbers γ, τ &gt; 0 with this property. For every nonzero integer vector k, \|ω · k\| is at least γ divided by ‖k‖ to the power τ. So ω is badly approximated by rational relations among its entries.
 
-**Problem.** KAM theorem: under a small enough perturbation of a non-degenerate integrable Hamiltonian system, the invariant tori with Diophantine frequencies survive.
+**Problem.** Near a regular torus of a real-analytic integrable Hamiltonian, assume the frequency map has invertible derivative and the torus has Diophantine frequency ω. Every sufficiently small analytic Hamiltonian perturbation on a fixed complex neighborhood retains an invariant torus with frequency ω.
 
-**How the definition helps.** The proof divides by the numbers ω · k, the small divisors, and the Diophantine bound keeps them from being too small (our own). They shrink only polynomially in ‖k‖, so a rapidly converging Newton method can beat them (our own). The condition excludes resonant tori, where ω · k = 0 for some k, and the page says that these break up under perturbation. When τ &gt; d − 1, almost every frequency vector is Diophantine (our own).
+**How the definition helps.** The Diophantine bound limits division by ω · k to polynomial growth in ‖k‖ (our own). It excludes a resonance ω · k = 0, where the corresponding Fourier equation can have no solution. The analytic KAM theorem uses this estimate in its iteration to obtain the perturbed torus.
 
 **Wikipedia:** [Kolmogorov–Arnold–Moser theorem](https://en.wikipedia.org/wiki/Kolmogorov%E2%80%93Arnold%E2%80%93Moser_theorem). It says: “Surviving tori meet the non-resonance condition, i.e., they have sufficiently irrational frequencies.”
 
 **Sources:** none listed. No primary source with a working link was found.
-
-### Observables that vanish on the constraint set have zero Eden bracket
-
-**Remember:** Project onto the allowed states before taking the bracket.
-
-*True by definition.* MSC 37J60 (Nonholonomic dynamical systems), 37J55. arXiv math-ph, math.SG. Level 4: research.
-
-**Definition.** The contact Eden bracket combines two observables of a mechanical system with dissipation and velocity constraints. One first pulls both observables back along a projection onto the allowed states, then takes a bracket there.
-
-**Problem.** A function that is constant on the allowed states has zero Eden bracket with every observable. So two extensions of an observable that agree on the allowed states give the same bracket.
-
-**How the definition helps.** The projection turns a function that vanishes on the allowed states into the zero function, so its bracket with anything is zero by bilinearity. In our own words, this is why the bracket depends only on values on the allowed states. The case of nonzero constants also uses the form of the bracket. The work moves to proving that the bracket gives the constrained motion.
-
-**Paper or page:** [The contact Eden bracket and the evolution of observables](https://arxiv.org/abs/2504.00997v1). It says: “Any function g on T∗Q × ℝ that is constant on ℳ × ℝ is a Casimir, i.e.,”
-
-**Sources:**
-
-- [V. M. Jiménez, M. De León, The contact Eden bracket and the evolution of observables, arXiv:2504.00997v1 (2025)](https://arxiv.org/abs/2504.00997v1)

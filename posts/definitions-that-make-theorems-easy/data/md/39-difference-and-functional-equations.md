@@ -38,7 +38,7 @@
 
 *True by definition.* MSC 39A06 (Linear difference equations). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** Let S shift a sequence forward one place, and let μ be a nonzero root of multiplicity r of a polynomial P. Replace the ordinary powers multiplying μⁿ by binomial coefficients, giving basis sequences bⱼ(n) = μⁿ times n choose j.
+**Definition.** For complex sequences, let S shift forward one place and let μ be a nonzero root of multiplicity r of a complex polynomial P. Set bⱼ(n) = μⁿ binom(n,j) for integers n,j ≥ 0, with binom(n,j) = 0 for j &gt; n.
 
 **Problem.** Let q be a polynomial of degree at most d. Then P(S)y = μⁿq(n) has exactly one solution in the span of the basis elements with indices r through r+d.
 
@@ -76,7 +76,7 @@
 
 **Problem.** Start at y(0) = 0 and set y(n+1) = A y(n) + Bⁿ for n ≥ 0. Then y(n) is the divided difference of tⁿ at A and B.
 
-**How the definition helps.** The polynomial gives one formula even when A equals B. Our own derivation starts with the zero polynomial at n = 0. Multiplying by A and adding Bⁿ gives every monomial of degree n exactly once. For distinct inputs the geometric sum gives the quoted quotient. For equal inputs all n summands agree when n ≥ 1.
+**How the definition helps.** The polynomial formula applies to all A and B (our own). It starts at zero, and multiplying by A and adding Bⁿ produces every degree-n monomial exactly once. Thus it obeys the specified recurrence and initial value.
 
 **Paper or page:** [Recurrence Relation where n+1th Term is A by nth term + B to the n](https://proofwiki.org/wiki/Recurrence_Relation_where_n+1th_Term_is_A_by_nth_term_+_B_to_the_n). It says: “(Aⁿ − Bⁿ)/(A − B) : A ≠ B   n Aⁿ⁻¹ : A = B”
 
@@ -92,7 +92,7 @@
 
 **Problem.** A sequence satisfies a constant-coefficient linear homogeneous recurrence from some index onward exactly when its ordinary generating function is rational.
 
-**How the definition helps.** Encoding the sequence as coefficients turns a shift of indices into multiplication by a power of z. In our own proof, multiply the series by the polynomial whose coefficients specify the recurrence. All but finitely many coefficients vanish, so the product is a polynomial. Conversely, write a rational series with a denominator nonzero at zero. Comparing coefficients above the numerator’s degree gives the recurrence.
+**How the definition helps.** A lag of k places corresponds to multiplication by zᵏ (our own). Multiplying by the recurrence polynomial cancels every sufficiently high coefficient, leaving a polynomial. Conversely, write a rational series as P/Q with Q(0) = 1. Coefficient comparison in Q times the series gives a homogeneous recurrence above the degree of P.
 
 **nLab:** [generating function](https://ncatlab.org/nlab/show/generating+function). It says: “A generating function is an element of R⟦z⟧, the rig of formal power series over the rig R”
 
@@ -126,7 +126,7 @@
 
 **Problem.** Let the forcing equal μ to the power n times a polynomial in n of degree at most s. If μ is nonresonant, the recurrence has exactly one particular solution of that same form and degree bound.
 
-**How the definition helps.** Nonresonance makes every diagonal entry of the matrix for P(S) nonzero. In our own proof, in the basis of μⁿ times the powers of n up to degree s, the shift S is triangular with diagonal μ. So P(S) is triangular with diagonal P(μ) and is invertible on that space. At resonance, yₙ₊₁ − yₙ = 1 has no constant solution.
+**How the definition helps.** On the basis μⁿ, nμⁿ, …, nˢμⁿ, the shift is triangular with diagonal μ (our own). Hence P(S) is triangular with nonzero diagonal P(μ), so it is invertible on this space. At resonance the equation yₙ₊₁ − yₙ = 1 has no constant solution.
 
 **Paper or page:** [Algebraic Modification of the Method of Undetermined Coefficients For Solving Nonhomogeneous Linear Difference Equations](https://arxiv.org/abs/2307.07182v1). It says: “and the system in question has a unique solution.”
 
@@ -144,7 +144,7 @@
 
 **Problem.** Let S shift a sequence forward by one index, and let I be the identity. For each positive integer d, the sequences uⱼ with 0 ≤ j &lt; d form a basis for solutions of (S − rI)ᵈu = 0.
 
-**How the definition helps.** Taking polynomial coefficients gives one basis even when the repeated root is zero. In our own construction, shifting n multiplies (r + t)ⁿ by r + t, so S − rI sends uⱼ to uⱼ₋₁, with u₋₁ = 0. After d repetitions, each uⱼ with j &lt; d becomes zero, so it is a solution. Their first d values form a triangular matrix with ones on the diagonal, so they realize all initial values.
+**How the definition helps.** The coefficient rule works even for r = 0 (our own). Shifting multiplies (r+t)ⁿ by r+t, so S − rI sends uⱼ to uⱼ₋₁ with u₋₁ = 0. Applying it d times kills every uⱼ with j &lt; d. Their first d values form a triangular matrix with unit diagonal, and those initial values determine each solution.
 
 **Wikipedia:** [Linear recurrence with constant coefficients](https://en.wikipedia.org/wiki/Linear_recurrence_with_constant_coefficients). It says: “the terms in this formula corresponding to the second and later occurrences of the same root are multiplied by increasing powers of n.”
 
@@ -206,7 +206,7 @@
 
 *True by definition.* MSC 39A13 (Difference equations, scaling (\\(q\\)-differences)). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** For 0 &lt; q &lt; 1 and x ≥ 0, sum f at x, qx, q²x, and later grid points. Give each value the weight equal to its grid spacing toward zero. This sum is the Jackson integral.
+**Definition.** For 0 &lt; q &lt; 1 and x &gt; 0, the Jackson integral from zero to x is ∑ₖ≥₀ (1−q)xqᵏ f(xqᵏ) whenever the series converges. At x = 0 its value is zero.
 
 **Problem.** Let f be continuous on \[0,A\], where A &gt; 0. Its Jackson integral F satisfies (F(x) − F(qx))/((1 − q)x) = f(x) for 0 &lt; x ≤ A.
 
@@ -226,7 +226,7 @@
 
 **Problem.** Suppose each Fₙ acts on the same complete normed vector space and reduces distances by a common factor less than one. If the values Fₙ(0) are uniformly bounded, the recurrence has exactly one bounded solution on all integer times.
 
-**How the definition helps.** Updating whole sequences turns bounded solutions into fixed points. In our own proof, the updated sequence has norm at most qM+B. Here M bounds the original sequence, q is the contraction factor and B bounds the norms of Fₙ(0). The update also reduces distances by the factor q. The contraction mapping theorem gives a unique fixed point because the bounded sequences form a complete space.
+**How the definition helps.** A bounded entire solution is exactly a fixed point of the sequence update (our own). If the old sequence is bounded by M and all ‖Fₙ(0)‖ by B, the new sequence is bounded by qM+B. The update contracts supremum distance by q, so the contraction mapping theorem on the complete space of bounded sequences gives exactly one fixed point.
 
 **Paper or page:** [Pullback and forward attractors of contractive difference equations](https://arxiv.org/abs/2205.06652v1). It says: “has a unique bounded entire solution”
 
@@ -262,7 +262,7 @@
 
 **Problem.** Write the finite boundary problem as Ly=N(y), where L is the invertible linear difference operator and N is continuous. A solution exists if applying the Green matrix to N maps a closed ball of possible sequences into itself.
 
-**How the definition helps.** The Green matrix turns the boundary equation into y=GN(y), a fixed-point equation. In our own formulation, G denotes the Green matrix. Brouwer’s fixed-point theorem applies because the ball is compact and convex and the map is continuous. The work lies in constructing G and bounding its action on the forcing. The cited theorem uses a bound on sums of absolute values of Green matrix entries.
+**How the definition helps.** Applying G = L⁻¹ turns the boundary equation into y = GN(y) (our own). The closed ball in the finite-dimensional sequence space is compact and convex. Brouwer’s theorem gives a fixed point because GN is continuous and maps the ball into itself.
 
 **Paper or page:** [Green's Functions and Existence of Solutions of Nonlinear Fractional Implicit Difference Equations with Dirichlet Boundary Conditions](https://arxiv.org/abs/2212.08851v1). It says: “has a solution defined on”
 
@@ -292,7 +292,7 @@
 
 *True by definition.* MSC 39A33 (Chaotic behavior of solutions of difference equations). arXiv math.DS. Level 2: later undergraduate.
 
-**Definition.** Represent the starting value x in \[0,1\] as sin² θ, with θ in \[0,π/2\]. Use the angle as the evolving variable instead of x.
+**Definition.** Define h(t) = sin² t for every real angle t. For a starting value x in \[0,1\], its initial angle is the unique θ in \[0,π/2\] satisfying h(θ) = x.
 
 **Problem.** After n applications of x ↦ 4x(1 − x), the value is sin²(2ⁿθ).
 
@@ -344,7 +344,7 @@
 
 **Problem.** Assuming the axiom of choice, a self-map of a set admits an Abel coordinate exactly when it has no periodic points.
 
-**How the definition helps.** Each step adds one to the coordinate, so a periodic point would force a positive integer to equal zero. For the converse, our own construction groups points whose forward orbits meet and chooses one reference point per group. If x after m steps meets the reference point after n steps, set h(x)=n−m. Two meetings with different step differences would repeat a point on the shared orbit. Thus h is well defined, and advancing x once increases h by one.
+**How the definition helps.** A periodic orbit cannot carry a coordinate that increases by one at every step. Conversely, choose a reference point r in each class of points whose forward orbits meet (our own). Whenever Tᵐx = Tⁿr, put h(x) = n−m. Two different offsets would force a repetition on the reference orbit, so h is well defined and advancing one step increases it by one.
 
 **Wikipedia:** [Abel equation](https://en.wikipedia.org/wiki/Abel_equation). It says: “The Abel equation has at least one solution on E if and only if for all x ∈ E and all n ∈ ℕ∗, fⁿ(x) ≠ x,”
 
@@ -376,7 +376,7 @@
 
 *Rules out counterexamples.* MSC 39B22 (Functional equations for real functions). arXiv math.CA. Level 2: later undergraduate.
 
-**Definition.** Here a continuous additive function on the reals satisfies f(x+y)=f(x)+f(y) and is continuous at zero. An additive function without that extra requirement need only respect rational scaling.
+**Definition.** A function f from ℝ to ℝ is additive if f(x+y) = f(x)+f(y) for all real x and y. Continuity at zero requires f(x) → f(0) as x → 0.
 
 **Problem.** Every additive real function continuous at zero has the form f(x)=cx.
 
@@ -450,7 +450,7 @@
 
 **Problem.** Take two complex sequences that satisfy constant-coefficient linear recurrences from some index onward. Their binomial convolution also satisfies such a recurrence from some index onward.
 
-**How the definition helps.** Factorial weights turn binomial convolution into ordinary multiplication of series. Our own proof uses the characterization of sequences satisfying an eventual linear recurrence with constant coefficients. Their exponential generating series are exactly the finite sums of polynomials times exponentials. Partial fractions of the ordinary generating series give this characterization. Products preserve this class, so the convolution satisfies another such recurrence.
+**How the definition helps.** Factorial weights turn binomial convolution into multiplication of exponential generating series (our own). Partial fractions of the ordinary generating series characterize eventual recurrence. It holds exactly when the exponential generating series is a finite sum of polynomials times exponentials. Products preserve that class, giving the required recurrence.
 
 **Paper or page:** [Binomial convolutions for rational power series](https://arxiv.org/abs/2304.10426v2). It says: “If {aₙ} and {bₙ} have rational generating functions then so does their binomial convolution.”
 
@@ -482,11 +482,11 @@
 
 *Rules out counterexamples.* MSC 39A06 (Linear difference equations). arXiv math.NT. Level 3: graduate.
 
-**Definition.** For a linear recurrence sequence over a field of characteristic zero, take its minimal recurrence polynomial P, and require all roots of P to be nonzero. The recurrence is nondegenerate if no ratio of distinct roots of P is a root of unity.
+**Definition.** Let P be the minimal recurrence polynomial of a linear recurrence sequence over a field of characteristic zero. Nondegeneracy here requires all roots to be nonzero and no ratio of distinct roots to be a root of unity.
 
 **Problem.** A nonzero sequence indexed by the nonnegative integers and satisfying such a nondegenerate linear recurrence has only finitely many zeros.
 
-**How the definition helps.** Nondegeneracy keeps distinct roots distinct after raising them to any common positive integer power. In our own argument, write the sequence as a sum of terms p(n)λⁿ, one for each root λ. On a progression of step d, the bases λᵈ stay distinct, so the restricted sequence cannot vanish identically. The Skolem–Mahler–Lech theorem supplies the hard step, that infinitely many zeros would contain an infinite arithmetic progression, and the degenerate example 1 − (−1)ⁿ vanishes at every even index (our own).
+**How the definition helps.** Distinct roots remain distinct after any common positive power (our own). On a progression of step d the exponential-polynomial terms therefore have distinct bases λᵈ and cannot cancel identically, by their linear independence. Skolem–Mahler–Lech says infinitely many zeros would contain an infinite arithmetic progression. Without nondegeneracy, 1 − (−1)ⁿ vanishes at every even index (our own).
 
 **Wikipedia:** [Skolem–Mahler–Lech theorem](https://en.wikipedia.org/wiki/Skolem%E2%80%93Mahler%E2%80%93Lech_theorem). It says: “is equal to the union of finitely many arithmetic progressions and a finite set.”
 
@@ -500,11 +500,11 @@
 
 *True by definition.* MSC 39A14 (Partial difference equations), 33C50. arXiv math.CA. Level 3: graduate.
 
-**Definition.** On a finite lattice, let a difference operator sum r(x,y)(f(x)−f(y)) over neighbors y with nonnegative rates r(x,y). In place of an unweighted sum of products, define the inner product by weighting each point x by w(x)&gt;0. Choose weights with w(x)r(x,y)=w(y)r(y,x).
+**Definition.** For real functions on a finite lattice, set Lf(x) = ∑ᵧ r(x,y)(f(x)−f(y)) with nonnegative neighbor rates, zero elsewhere. Positive weights are reversible if w(x)r(x,y) = w(y)r(y,x) for every pair. Use the inner product ⟨f,g⟩ = ∑ₓ w(x)f(x)g(x).
 
 **Problem.** The difference operator is self-adjoint for the inner product weighted by w. Every eigenvalue is real and nonnegative.
 
-**How the definition helps.** Balanced weights give the same coefficient to both directions of each edge. In our own proof, the weighted inner product of f with the operator applied to g becomes a sum over edges of w(x)r(x,y)(f(x)−f(y))(g(x)−g(y)). This is symmetric in f and g, so the operator is self-adjoint. Taking g = f gives a sum of squares, so the eigenvalues are nonnegative.
+**How the definition helps.** Reversibility pairs the two directions of each edge (our own). Consequently ⟨f,Lg⟩ sums w(x)r(x,y)(f(x)−f(y))(g(x)−g(y)) over unordered edges, counting each once. Symmetry gives self-adjointness, and setting g = f gives a sum of nonnegative squares.
 
 **Paper or page:** [Multivariate Hahn polynomials and difference equations](https://arxiv.org/abs/2305.09170v3). It says: “are real symmetric positive semi-definite matrices and the eigenvalues are real and non-negative.”
 
@@ -532,7 +532,7 @@
 
 ### Unit circle roots prevent shadowing
 
-**Remember:** Correct shrinking errors from the past and growing errors from the future.
+**Remember:** Hyperbolicity keeps every eigenvalue off the unit circle.
 
 *Rules out counterexamples.* MSC 39A30 (Stability theory for difference equations). arXiv math.DS. Level 3: graduate.
 
@@ -554,7 +554,7 @@
 
 *True by definition.* MSC 39A45 (Difference equations in the complex domain), 39B12. arXiv math.CA. Level 3: graduate.
 
-**Definition.** Let Tₛ(z)=u(s)f(z), where f is continuous on the complex plane. Fix a starting value z. Apply the maps from time s−n through time s−1 to z in chronological order. Define F(s) as the limit of these values as n tends to infinity.
+**Definition.** For continuous f on ℂ and a given scalar function u, put Tₛ(z) = u(s)f(z). For fixed z, define F(s) as the limit of Tₛ₋₁ ∘ ⋯ ∘ Tₛ₋ₙ(z) as n → ∞ whenever it exists.
 
 **Problem.** Suppose these limits exist at s and s+1 for the same starting value. Then F(s+1)=u(s)f(F(s)).
 
@@ -576,7 +576,7 @@
 
 **Problem.** Suppose the integral converges absolutely at z and h&gt;0. Applying the forward difference n times multiplies the integrand by (exp(−ht)−1)ⁿ for every positive integer n.
 
-**How the definition helps.** The integral representation replaces an expanding sum of shifted values by one factor per difference. In our own calculation, shifting z by h multiplies the integrand by exp(−ht). Subtraction supplies the factor exp(−ht)−1. Absolute convergence justifies subtraction at every step because h is positive. The remaining work is to establish the integral representation.
+**How the definition helps.** In our own calculation, shifting z to z+h multiplies the integrand by exp(−ht). Subtracting the original integrand gives the factor exp(−ht)−1 each time. Since h&gt;0 and t≥0, every shifted integral still converges absolutely.
 
 **Paper or page:** [On the convergence of Newton series and the asymptotics of finite differences](https://arxiv.org/abs/2404.04288v3). It says: “Suppose f has an inverse Laplace transform.”
 
@@ -612,7 +612,7 @@
 
 **Problem.** Near zero, the Koenigs function satisfies h(f(z))=λh(z). It has h′(0)=1, so it gives a locally invertible change of coordinates.
 
-**How the definition helps.** Defining h by normalized iterates turns composition with f into a shift of the index. In our own calculation, shifting leaves one factor of λ, so h(f(z))=λh(z). This gives the coordinate change directly, in place of solving Schröder’s equation for its coefficients. The work is to prove uniform convergence on compact sets near zero. The derivative of every normalized iterate at zero is one, and this convergence preserves derivatives there.
+**How the definition helps.** In our own calculation, composing the normalized iterate with f advances the index and leaves a factor of λ. Passing to the limit gives h(f(z))=λh(z). Koenigs’s theorem gives locally uniform convergence near zero, so the derivatives converge there too. Each normalized iterate has derivative one at zero, so h′(0)=1 and the inverse function theorem applies.
 
 **Wikipedia:** [Koenigs function](https://en.wikipedia.org/wiki/Koenigs_function). It says: “the uniform limit on compacta of the normalized iterates”
 
@@ -626,9 +626,9 @@
 
 *True by definition.* MSC 39B12 (Iteration theory, iterative and composite equations). arXiv math.DS. Level 3: graduate.
 
-**Definition.** Let F map \[a,b\] continuously and strictly increasingly into itself, with F(x) &gt; x for a ≤ x &lt; b. Choose a continuous increasing bijection h from \[a,F(a)\] onto \[0,1\]. Extend h by h(Fⁿ(x)) = h(x)+n, where Fⁿ means n successive applications.
+**Definition.** Let F be a continuous strictly increasing self-map of \[a,b\] with F(x)&gt;x for a≤x&lt;b. Choose a continuous increasing bijection h from \[a,F(a)\] onto \[0,1\]. For each integer n≥0 and each x∈\[a,F(a)\], set h(Fⁿ(x))=h(x)+n.
 
-**Problem.** Choose any c strictly between a and F(a). Some continuous strictly increasing map g from \[a,b\] into itself satisfies g(a) = c and g∘g = F.
+**Problem.** For every c strictly between a and F(a), some continuous strictly increasing self-map g of \[a,b\] satisfies g(a)=c and g∘g=F.
 
 **How the definition helps.** In the extended coordinate, one application of F adds one, so adding one half gives a square root. Our own construction chooses h(c) = 1/2. The endpoints Fⁿ(a) increase to b, so h becomes a continuous increasing bijection from \[a, b) onto \[0, ∞). Pulling translation by one half back through h defines g below b, and setting g(b) = b keeps g continuous.
 
@@ -644,9 +644,9 @@
 
 *True by definition.* MSC 39B22 (Functional equations for real functions), 39A70. arXiv math.CA. Level 3: graduate.
 
-**Definition.** Fix a positive integer p. Take a real function F of p real variables that is additive in each variable and unchanged by permutations. Define its diagonal function by f(x)=F(x,…,x). A difference with increment h sends f(x) to f(x+h)−f(x).
+**Definition.** For an integer p≥1, let F be a symmetric real function on ℝᵖ, additive in each variable. Its diagonal is f(x)=F(x,…,x), and its forward difference with increment h is Δₕf(x)=f(x+h)−f(x).
 
-**Problem.** Take p successive differences with arbitrary increments. For the diagonal function this gives p factorial times F applied to the p increments. All higher differences vanish.
+**Problem.** For any p real increments, taking their successive differences of f gives p! times F evaluated at those increments. All higher differences vanish.
 
 **How the definition helps.** The diagonal definition turns repeated differences into a count of occupied slots. In our own proof, expand by additivity, and note that each difference cancels the terms that miss its increment. After p differences, only the p! ways to put the increments into the slots survive, and symmetry gives each the same value. One further difference kills this constant.
 
@@ -658,11 +658,11 @@
 
 ### Fourier coefficients untangle Raabe equations
 
-**Remember:** The average keeps only frequencies divisible by the scale.
+**Remember:** Weight each Fourier coefficient by its absolute frequency to the nth power.
 
 *Makes the theorem clean to state or prove.* MSC 39B22 (Functional equations for real functions), 42A16. arXiv math.CA. Level 3: graduate.
 
-**Definition.** The Fourier coefficient at k measures the contribution of the wave with integer frequency k. For each nonzero k, multiply the coefficient by the absolute value of k to the power n. In the Raabe equation, the average of f((x+j)/a) over j=0,…,a−1 equals a to the power −n times f(x).
+**Definition.** For each integer k, the Fourier coefficient cₖ of f is ∫₀¹ f(x)exp(−2πikx) dx. For k≠0 set uₖ=\|k\|ⁿcₖ. The Raabe equation requires the average of f((x+j)/a) over j=0,…,a−1 to equal a⁻ⁿf(x) for every x.
 
 **Problem.** Let f be continuous and 1-periodic with mean zero. Take a positive integer n and an integer scale a≥2. The Raabe equation holds exactly when the rescaled coefficients at k and ak agree for every nonzero k.
 
@@ -674,72 +674,17 @@
 
 - [Characterization of the Bernoulli polynomials via the Raabe functional equation](https://arxiv.org/abs/2303.14492v1)
 
-### Twisted Mahler residues decide whether a rational function is a twisted difference
-
-**Remember:** Group poles by pth powers before checking for cancellation.
-
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 39A13 (Difference equations, scaling (\\(q\\)-differences)), 12H10. arXiv math.NT, math.CA. Level 4: research.
-
-**Definition.** Fix integers p &gt; 1 and λ. Write a rational function f in partial fractions. Group its poles into classes whose members are related by repeated pth powers or pth roots. The λ-twisted Mahler discrete residues are built from the partial-fraction coefficients along these classes.
-
-**Problem.** A rational function f over the paper's base field 𝕂 equals p<sup>λ</sup> g(xᵖ) − g(x) for some rational function g exactly when every λ-twisted Mahler discrete residue of f is zero.
-
-**How the definition helps.** The residues turn an equation with an unknown rational function g into a finite list of tests on f. In our own explanation, the substitution x ↦ xᵖ moves poles only within a class, so g can cancel f only class by class. In our own account, one direction is direct, and the harder direction builds g when all residues vanish. The case λ = 0 is the untwisted Mahler summability problem from the authors’ earlier work.
-
-**Paper or page:** [Twisted Mahler discrete residues](https://arxiv.org/abs/2308.16765v1). It says: “For λ ∈ ℤ, f(x) ∈ 𝕂(x) is λ-Mahler summable if and only if every λ-Mahler discrete residue of f is zero.”
-
-**Sources:**
-
-- [Carlos E. Arreche, Yi Zhang, Twisted Mahler discrete residues, arXiv:2308.16765v1 (2023). International Mathematics Research Notices IMRN 2024(23), 14259-14288, (2024)](https://arxiv.org/abs/2308.16765v1)
-
-### Mahler discrete residues decide Mahler summability
-
-**Remember:** All Mahler residues vanish exactly when f has the form g(xᵖ) − g(x).
-
-*Makes the theorem clean to state or prove. Confidence: medium.* MSC 39A20 (Multiplicative and other generalized difference equations), 39A45. arXiv math.NT, math.CA. Level 4: research.
-
-**Definition.** Fix an integer p &gt; 1. A rational function f(x) is Mahler summable if f(x) = g(xᵖ) − g(x) for some rational function g. Mahler discrete residues are vectors computed from f, one for each group of poles of f and each order k. Our own note: poles α and β share a group when α raised to pʳ equals β raised to pˢ for some r and s.
-
-**Problem.** A rational function f is Mahler summable exactly when all its Mahler discrete residues are zero.
-
-**How the definition helps.** Our own reason: the residues turn a search for an unknown g into a check that some vectors are zero. Our own analogy: a rational function is the derivative of a rational function exactly when all its ordinary residues are zero. The paper extends known discrete residues, which Chen and Singer introduced for the shift case (our own note), to the Mahler case. What stays hard is to find the right grouping of poles, so that the residues are complete (our own).
-
-**Paper or page:** [Mahler discrete residues and summability for rational functions](https://arxiv.org/abs/2202.09805). It says: “We construct Mahler discrete residues for rational functions and show that they comprise a complete obstruction to the Mahler summability problem”
-
-**Sources:**
-
-- [Carlos E. Arreche, Yi Zhang, Mahler discrete residues and summability for rational functions, Proceedings of ISSAC 2022, pp. 525-533, arXiv:2202.09805](https://arxiv.org/abs/2202.09805)
-- [Shaoshi Chen, Michael F. Singer, Residues and telescopers for bivariate rational functions, Advances in Applied Mathematics (2012)](https://doi.org/10.1016/j.aam.2012.04.003)
-
-### A radiation condition makes lattice wave problems uniquely solvable
-
-**Remember:** Keep the outgoing wave and rule out waves coming in from infinity.
-
-*Rules out counterexamples.* MSC 39A27 (Boundary value problems for difference equations), 39A14. arXiv math.AP. Level 4: research.
-
-**Definition.** The discrete Helmholtz equation is Δu + k²u = 0, where Δ is the difference Laplacian of the triangular lattice. A radiating solution also satisfies a radiation condition at infinity. This condition is a lattice form of the Sommerfeld condition and allows only outgoing waves far from the sources.
-
-**Problem.** Fix a wave number k with 0 &lt; k &lt; 2√2. Prescribe data on finitely many finite rows or columns of lattice sites. The exterior problem then has exactly one radiating solution.
-
-**How the definition helps.** The radiation condition removes the solutions that the equation and the finite data cannot tell apart. Our own example is a finite sum of lattice plane waves chosen to vanish at the finitely many data sites. It solves the problem with zero data, but it does not decay, so the condition excludes it. The paper proves uniqueness first and then builds the solution from difference potentials.
-
-**Paper or page:** [Propagation of Waves from Finite Sources Arranged in Line Segments within an Infinite Triangular Lattice](https://arxiv.org/abs/2405.18806v3). It says: “Consistent with a continuum theory, we employ the notion of radiating solution and establish a unique solvability result and Green's representation formula using difference potentials.”
-
-**Sources:**
-
-- [David Kapanadze, Zurab Vashakidze, Propagation of Waves from Finite Sources Arranged in Line Segments within an Infinite Triangular Lattice, arXiv:2405.18806 (2024)](https://arxiv.org/abs/2405.18806v3)
-
 ### Halving removes Kac–Bernstein parity terms
 
 **Remember:** If every element has a half, there is only one parity class.
 
 *Rules out counterexamples.* MSC 39B52 (Functional equations for functions with more general domains and/or ranges). arXiv math.CA. Level 4: research.
 
-**Definition.** Call an abelian group 2-divisible if every element is twice another element. The Kac–Bernstein equation asks that f(x+y)g(x−y) equal f(x)f(y)g(x)g(−y). In the positive version, both functions take only positive values.
+**Definition.** An abelian group G is 2-divisible if every x∈G equals 2y for some y∈G. Positive functions f,g on G satisfy the Kac–Bernstein equation if f(x+y)g(x−y)=f(x)f(y)g(x)g(−y) for every x,y∈G.
 
 **Problem.** Suppose two positive functions on a 2-divisible abelian group satisfy the Kac–Bernstein equation. Their logarithms have one shared quadratic part, separate additive parts and separate constants. A quadratic part Q satisfies Q(x+y)+Q(x−y)=2Q(x)+2Q(y).
 
-**How the definition helps.** When every element is a double, a function constant on each coset of the doubles must be constant everywhere. The cited classification gives exactly such an extra term in each logarithm. Our own counterexample on the integers sets f = 1 on even numbers, f = e on odd numbers and g = 1/f. Since x + y and x − y have the same parity, both sides equal one, but log f is bounded and nonconstant, so it is not of the form an² + bn + c.
+**How the definition helps.** On a 2-divisible group the doubles form the whole group, so the classification’s extra coset terms are constant. Our own example on ℤ takes f=e on odd integers, f=1 on even integers and g=1/f. Both sides equal one because x+y and x−y have the same parity and g is even. Yet log f is bounded and nonconstant, which no quadratic polynomial on ℤ can be.
 
 **Paper or page:** [Solution of the Kac--Bernstein functional equation on Abelian groups in the class of positive functions](https://arxiv.org/abs/2102.01592v1). It says: “the function r(x) is a constant on each of the cosets of the subgroup X⁽²⁾ in X.”
 
@@ -757,7 +702,7 @@
 
 **Problem.** For x,y &gt; 0 with x+y &lt; 1, put T(x,y) = f(x) + (1−x)ᵅ f(y/(1−x)). If \|T(x,y)−T(y,x)\| has a uniform finite bound ε, then T(x,y) = T(y,x) everywhere on this domain.
 
-**How the definition helps.** The new variables express the error through commuting differences and give it a bound that decays at large scales. Our own proof sets E(u,v,w) = Δ(v)F(u,w) − Δ(w)F(u,v). Substituting x = w/(u+v+w) and y = v/(u+v+w) gives \|E(u,v,w)\| ≤ ε(u+v+w)ᵅ. Commuting the differences gives Δ(s)E(u,v,w) = Δ(v)E(u,s,w) − Δ(w)E(u,s,v). As s grows, the right side tends to zero, while the left side tends to −E(u,v,w). Thus E vanishes, and taking u = 1−x−y, v = y and w = x proves the claim.
+**How the definition helps.** In our own proof the substitution (x,y)=(w,v)/(u+v+w) gives \|E(u,v,w)\|≤ε(u+v+w)ᵅ, where E(u,v,w)=Δ(v)F(u,w)−Δ(w)F(u,v). Commuting differences gives Δ(s)E(u,v,w)=Δ(v)E(u,s,w)−Δ(w)E(u,s,v), with differences acting on u. As s→∞ the bound sends all terms containing s to zero, leaving E(u,v,w)=0. Taking (u,v,w)=(1−x−y,y,x) recovers T(x,y)=T(y,x).
 
 **Paper or page:** [Hyperstability of a functional equation](https://arxiv.org/abs/1307.0631v1). It says: “Then, and only then, there exist c,d ∈ ℝ such that f(x) = cxᵅ + d(1−x)ᵅ − d”
 
