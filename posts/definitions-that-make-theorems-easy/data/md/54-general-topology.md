@@ -110,6 +110,38 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Adding coordinate distances makes distance itself Lipschitz
+
+**Remember:** Distance can change by at most the sum of the two endpoint moves.
+
+*True by definition. Confidence: medium.* MSC 54E35 (Metric spaces, metrizability), 54E40. arXiv math.GN. Level 1: early undergraduate.
+
+**Definition.** On pairs of points from a metric space, the sum metric adds the distances in the two coordinates. Unlike the maximum metric, it counts both changes in full.
+
+**Problem.** The distance function on pairs of points is 1-Lipschitz for the sum metric. This means that its change is at most the sum distance between the pairs.
+
+**How the definition helps.** Adding the two endpoint moves gives exactly the triangle inequality bound (our own). Move one endpoint, then the other, and reverse the moves to bound the absolute change (our own). Using the larger endpoint move instead gives a factor of two (our own).
+
+**Paper or page:** [Distance Function of Metric Space is Continuous](https://proofwiki.org/wiki/Distance_Function_of_Metric_Space_is_Continuous). It says: “Then the distance function d: A × A → ℝ is a continuous mapping.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Distance neighborhoods express every closed set as a countable intersection
+
+**Remember:** A closed set is the part that survives every narrowing distance neighborhood.
+
+*Makes the theorem clean to state or prove.* MSC 54E35 (Metric spaces, metrizability). arXiv math.GN. Level 1: early undergraduate.
+
+**Definition.** For a nonempty set A, the distance from x to A is the greatest lower bound of its distances to points of A. The radius-r neighborhood of A consists of points whose distance to A is less than r.
+
+**Problem.** Every nonempty closed set in a metric space is the intersection of its neighborhoods of radii 1, 1/2, 1/3, and so on. In particular, every closed set is a countable intersection of open sets.
+
+**How the definition helps.** A point belongs to every such neighborhood exactly when its distance to A is zero (our own). Then every ball about that point meets A, so closedness puts it in A (our own). The triangle inequality makes distance to A continuous, so each neighborhood is open (our own). For the empty set, intersect copies of the empty open set (our own).
+
+**Paper or page:** [Closed Set in Metric Space is G-Delta](https://proofwiki.org/wiki/Closed_Set_in_Metric_Space_is_G-Delta). It says: “Then F is a Gδ set of X.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Distance to a set needs no nearest point
 
 **Remember:** Distance to a set changes by at most the distance moved.
@@ -162,6 +194,76 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Restricted distances give the subspace open sets
+
+**Remember:** A ball in a subset is an original ball cut down to that subset.
+
+*True by definition. Confidence: medium.* MSC 54E35 (Metric spaces, metrizability), 54B05. arXiv math.GN. Level 1: early undergraduate.
+
+**Definition.** The metric on a subset A keeps the original distances between points in A. A set in A is open for this metric if it is a union of balls in A.
+
+**Problem.** The open sets in the restricted metric on A are exactly the intersections of A with open sets of the original space.
+
+**How the definition helps.** Writing open sets as unions of balls lets us intersect each ball with A (our own). A ball centered in A becomes a ball of the same radius in A (our own). Thus every relatively open set is A intersected with a union of original balls (our own). Conversely, each point of an original open set has a ball inside it, which restricts to a ball in A (our own).
+
+**Wikipedia:** [Metric space](https://en.wikipedia.org/wiki/Metric_space). It says: “An open set is a set which is a neighborhood of all its points.”
+
+**Paper or page:** [Subspace of Metric Space is Metric Space](https://proofwiki.org/wiki/Subspace_of_Metric_Space_is_Metric_Space). It says: “is a metric on H.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Small diameter covers make total boundedness pass to subsets
+
+**Remember:** Cut the cover down to a subset without enlarging any piece.
+
+*True by definition.* MSC 54E35 (Metric spaces, metrizability). arXiv math.GN. Level 1: early undergraduate.
+
+**Definition.** A space is totally bounded if, for every ε &gt; 0, finitely many sets of diameter less than ε cover it. Diameter is the least upper bound on all pairwise distances in a set.
+
+**Problem.** Every subset of a totally bounded metric space is totally bounded for the restricted metric.
+
+**How the definition helps.** Intersect each covering piece with the subset and discard empty pieces (our own). Each remaining piece keeps its diameter bound (our own). To recover a ball cover, center a radius-ε ball at one point of each piece (our own). Conversely, balls of radius ε/3 have diameter below ε (our own).
+
+**nLab:** [totally bounded space](https://ncatlab.org/nlab/show/totally+bounded+space). It says: “there is a finite open cover 𝒞 of X such that every set in 𝒞 has diameter less than ε.”
+
+**Paper or page:** [Subset of Totally Bounded Metric Space is Totally Bounded](https://proofwiki.org/wiki/Subset_of_Totally_Bounded_Metric_Space_is_Totally_Bounded). It says: “Then A is totally bounded.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Truncating distances keeps both the topology and completeness
+
+**Remember:** Cap large distances and keep all small distance tests.
+
+*Makes the theorem clean to state or prove.* MSC 54E35 (Metric spaces, metrizability), 54E50. arXiv math.GN. Level 1: early undergraduate.
+
+**Definition.** The truncated metric replaces each distance d(x, y) by min(1, d(x, y)). Its values are bounded by one.
+
+**Problem.** The truncated metric has the same open sets and preserves completeness.
+
+**How the definition helps.** Both metrics give the same balls of every radius below one (our own). These balls determine the open sets and the limits of sequences (our own). They also detect Cauchy sequences, whose later terms must become arbitrarily close together (our own). The triangle inequality survives because capping a sum at one gives at most the sum of the capped terms (our own).
+
+**Paper or page:** [Standard Bounded Metric is Metric/Topological Equivalence](https://proofwiki.org/wiki/Standard_Bounded_Metric_is_Metric/Topological_Equivalence). It says: “d̄ is topologically equivalent to d.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Unions of balls make arbitrary unions open
+
+**Remember:** A union of unions of balls is still a union of balls.
+
+*True by definition.* MSC 54E35 (Metric spaces, metrizability). arXiv math.GN. Level 1: early undergraduate.
+
+**Definition.** In a metric space, an open set is any union of open balls. The open ball of radius r about x contains exactly the points at distance less than r from x.
+
+**Problem.** Every union of open sets in a metric space is open.
+
+**How the definition helps.** The union just collects all the balls used by its members (our own). The work moves into proving the equivalent test that each point of an open set has a ball inside it (our own).
+
+**Wikipedia:** [Metric space](https://en.wikipedia.org/wiki/Metric_space). It says: “the open sets of M are exactly the unions of open balls.”
+
+**Paper or page:** [Union of Open Sets of Metric Space is Open](https://proofwiki.org/wiki/Union_of_Open_Sets_of_Metric_Space_is_Open). It says: “The union of a set of open sets of M is open in M.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Zero distance only between equal points makes limits unique
 
 **Remember:** Only a true metric tells two points apart, so limits are unique.
@@ -196,6 +298,22 @@
 **nLab:** [uniformly continuous map](https://ncatlab.org/nlab/show/uniformly+continuous+map). It says: “The concept of uniformly continuous map f is based on the same intuition but a different formalisation: first you pick how nearby you want the points to be, then you pick two points sufficiently nearby.”
 
 **Wikipedia:** [Uniform continuity](https://en.wikipedia.org/wiki/Uniform_continuity). It says: “In this setting, it is also true that uniformly continuous maps transform Cauchy sequences into Cauchy sequences.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Compactness makes the distance infimum attainable
+
+**Remember:** Compactness turns a sequence of nearly nearest points into a nearest point.
+
+*Rules out counterexamples.* MSC 54E45 (Compact (locally compact) metric spaces), 54E35. arXiv math.GN. Level 1: early undergraduate.
+
+**Definition.** A metric space is sequentially compact if every sequence has a subsequence converging to a point in the space. In metric spaces this is equivalent to compactness.
+
+**Problem.** Every point has a nearest point in each nonempty compact subset of a metric space.
+
+**How the definition helps.** Sequential compactness keeps a limit of nearly nearest points inside the set (our own). Choose points whose distances approach the greatest lower bound of all possible distances (our own). A subsequence converges in the set, and continuity of distance gives its limit that exact distance (our own). For the open interval (0, 1), distances to zero approach zero without reaching it (our own).
+
+**Paper or page:** [Distance from Point to Compact Set in Metric Space is Attained](https://proofwiki.org/wiki/Distance_from_Point_to_Compact_Set_in_Metric_Space_is_Attained). It says: “d(x, A) = d(x, α)”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -246,6 +364,22 @@
 **nLab:** [uniform convergence](https://ncatlab.org/nlab/show/uniform+convergence). It says: “every Cauchy sequence of functions converges uniformly.”
 
 **Paper or page:** [Sequence of Functions is Uniformly Cauchy iff Uniformly Convergent](https://proofwiki.org/wiki/Sequence_of_Functions_is_Uniformly_Cauchy_iff_Uniformly_Convergent). It says: “Let ⟨fₙ⟩ be a sequence of real functions S → ℝ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Uniform gaps make discrete metric spaces complete
+
+**Remember:** Below the common gap, two points must be the same.
+
+*Rules out counterexamples.* MSC 54E50 (Complete metric spaces), 54E35. arXiv math.GN. Level 1: early undergraduate.
+
+**Definition.** A metric space is uniformly discrete if all distances between different points have one positive lower bound. Ordinary discreteness only gives a positive gap around each individual point.
+
+**Problem.** Every uniformly discrete metric space is complete, meaning that every Cauchy sequence converges in the space. A discrete space can fail this test.
+
+**How the definition helps.** A Cauchy sequence eventually has every pair of terms closer than the common gap, so its terms eventually coincide (our own). In the usual distance, each point of {1, 1/2, 1/3, …} is isolated (our own). The displayed sequence is Cauchy but approaches zero outside the set (our own).
+
+**Wikipedia:** [Discrete space](https://en.wikipedia.org/wiki/Discrete_space). It says: “The topology underlying a metric space can be discrete, without the metric being uniformly discrete”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -314,6 +448,22 @@
 **Sources:**
 
 - [M. Zarycki, Quelque notions fondamentales de l'Analysis Situs au point de vue de l'Algèbre de la Logique, Fundamenta Mathematicae 9 (1927) 3–15](https://matwbn.icm.edu.pl/ksiazki/fm/fm9/fm912.pdf)
+
+### A countable local base lets sequences detect closure
+
+**Remember:** Pick one point from each shrinking neighborhood.
+
+*Rules out counterexamples.* MSC 54A20 (Convergence in general topology (sequences, filters, limits, convergence spaces, nets, etc.)), 54D70. arXiv math.GN. Level 2: later undergraduate.
+
+**Definition.** A space is first-countable if each point has a countable list of open neighborhoods. Every neighborhood of that point contains one from the list. Taking finite intersections lets us make the list decreasing.
+
+**Problem.** In a first-countable space, a point lies in the closure of a set exactly when some sequence from that set converges to it.
+
+**How the definition helps.** Choose a point of the set from each shrinking neighborhood of the closure point. The resulting sequence eventually enters every neighborhood. In our own counterexample, nonempty open sets in an uncountable space omit at most countably many points. Every neighborhood of x contains other points, yet removing all values of any sequence avoiding x leaves a neighborhood of x.
+
+**Wikipedia:** [First-countable space](https://en.wikipedia.org/wiki/First-countable_space). It says: “every first-countable space is a Fréchet-Urysohn space”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Bourbaki's limit of a function gives the chain rule without exceptions
 
@@ -405,6 +555,54 @@
 - [Cartan, H. (1937). Théorie des filtres. Comptes rendus de l'Académie des sciences 205, 595–598.](http://gallica.bnf.fr/ark:/12148/bpt6k3157c/f594.image)
 - [Kelley, J. L. (1950). Convergence in topology. Duke Mathematical Journal 17(3), 277–283.](https://doi.org/10.1215/S0012-7094-50-01726-1)
 
+### Coordinatewise continuity lets paths join points in a product
+
+**Remember:** Choose one path per coordinate and use the same time for all.
+
+*True by definition.* MSC 54B10 (Product spaces in general topology), 54D05. arXiv math.GN. Level 2: later undergraduate.
+
+**Definition.** A path is a continuous map from \[0,1\] with specified endpoints. Use the product topology, the coarsest topology that makes each coordinate projection continuous.
+
+**Problem.** A nonempty product is path-connected exactly when each factor is path-connected. A space is path-connected if every two points can be joined by a path.
+
+**How the definition helps.** The coordinate test makes a tuple of paths continuous as soon as each coordinate path is continuous. Our own proof uses the fact that basic product neighborhoods restrict only finitely many coordinates, so their preimages are finite intersections of open sets. Conversely, projecting a path between two tuples gives a path between their coordinates.
+
+**Paper or page:** [Product Space is Path-connected iff Factor Spaces are Path-connected](https://proofwiki.org/wiki/Product_Space_is_Path-connected_iff_Factor_Spaces_are_Path-connected). It says: “is a path-connected space”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Finite coordinate restrictions keep arbitrary products connected
+
+**Remember:** Changing finitely many coordinates reaches every basic open set.
+
+*Rules out counterexamples.* MSC 54B10 (Product spaces in general topology), 54D05. arXiv math.GN. Level 2: later undergraduate.
+
+**Definition.** In the product topology basic open sets restrict only finitely many coordinates. The box topology, in contrast, can restrict every coordinate at once.
+
+**Problem.** An arbitrary product of connected spaces is connected in the product topology.
+
+**How the definition helps.** Finite coordinate restrictions make tuples differing from a fixed tuple in finitely many places dense in any nonempty product. These tuples form a union of connected finite products sharing that fixed tuple, and their closure stays connected. In our own box-topology example on real sequences, changing each coordinate by less than one preserves both boundedness and unboundedness. Thus bounded and unbounded sequences give two disjoint nonempty open sets covering the space.
+
+**Wikipedia:** [Box topology](https://en.wikipedia.org/wiki/Box_topology). It says: “The box topology is neither compact nor connected”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Finite coordinate restrictions keep countable products second-countable
+
+**Remember:** Countably many finite choices still give a countable base.
+
+*Rules out counterexamples.* MSC 54B10 (Product spaces in general topology), 54D70. arXiv math.GN. Level 2: later undergraduate.
+
+**Definition.** A base is a family of open sets whose unions give all open sets. A space is second-countable if it has a countable base. In the product topology, a basic open set restricts finitely many coordinates to basic open sets of their factors.
+
+**Problem.** A countable product of second-countable spaces is second-countable.
+
+**How the definition helps.** Only countably many finite lists of coordinate restrictions can be drawn from the countable bases of countably many factors. These lists give a countable base for the product. Our own counterexample uses the box topology, which permits restrictions on every coordinate. For binary sequences this makes each singleton open, so any base must contain uncountably many singletons.
+
+**Paper or page:** [Countable Product of Second-Countable Spaces is Second-Countable](https://proofwiki.org/wiki/Countable_Product_of_Second-Countable_Spaces_is_Second-Countable). It says: “is also second-countable.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Finite restrictions in the product topology let Tychonoff's theorem hold
 
 **Remember:** Restrict finitely many coordinates, and compact factors give a compact product.
@@ -423,6 +621,22 @@
 
 - [Tychonoff, A. (1935). Über einen Funktionenraum. Mathematische Annalen 111, 762–766.](https://doi.org/10.1007/BF01472255)
 
+### Open rectangles make product projections open
+
+**Remember:** A nonempty open rectangle projects to an open side.
+
+*True by definition.* MSC 54B10 (Product spaces in general topology). arXiv math.GN. Level 2: later undergraduate.
+
+**Definition.** The product topology on X × Y takes unions of open rectangles as open sets. An open rectangle is U × V with U open in X and V open in Y.
+
+**Problem.** Each coordinate projection from X × Y to a factor sends open sets to open sets.
+
+**How the definition helps.** Every nonempty open rectangle projects onto an open side, and the empty rectangle projects onto the empty set. Images preserve unions, so this proves the theorem for every open set. Our own argument uses the fact that rectangles generate the coarsest topology making both projections continuous.
+
+**Paper or page:** [Projection from Product Topology is Open and Continuous](https://proofwiki.org/wiki/Projection_from_Product_Topology_is_Open_and_Continuous). It says: “are open and continuous.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The product topology makes maps into a product continuous coordinatewise
 
 **Remember:** Coarsest topology with continuous projections: continuity is checked one coordinate at a time.
@@ -439,6 +653,38 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Closed classes make a quotient space have closed points
+
+**Remember:** A point of the quotient stands for a whole class.
+
+*True by definition.* MSC 54B15 (Quotient spaces, decompositions in general topology), 54D10. arXiv math.GN. Level 2: later undergraduate.
+
+**Definition.** A space is T₁ if each singleton set is closed. In a quotient space a set is closed exactly when its preimage under the map to classes is closed.
+
+**Problem.** A quotient space is T₁ exactly when every class is closed in the original space.
+
+**How the definition helps.** A quotient point has its whole class as preimage, so testing closed points amounts to testing closed classes. Our own proof uses the closed-point form of T₁ separation. Its equivalence with the neighborhood test follows by taking complements of singletons.
+
+**Wikipedia:** [Quotient space (topology)](https://en.wikipedia.org/wiki/Quotient_space_%28topology%29). It says: “is a T₁ space if and only if every equivalence class of ∼ is closed in X.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Closed quotient maps preserve Hausdorff separation from compact spaces
+
+**Remember:** Remove the image of the complement to keep whole classes inside.
+
+*Rules out counterexamples.* MSC 54B15 (Quotient spaces, decompositions in general topology), 54D30. arXiv math.GN. Level 2: later undergraduate.
+
+**Definition.** A closed map sends every closed set to a closed set. A quotient map is an onto map under which a target set is open exactly when its preimage is open.
+
+**Problem.** A quotient of a compact Hausdorff space is Hausdorff exactly when the quotient map is closed.
+
+**How the definition helps.** Closedness makes target singletons closed images of singletons, so their preimages are closed classes. Normality separates two classes by disjoint open sets, and removing each complement’s image from the target gives disjoint open neighborhoods there. Conversely, closed subsets of a compact space have compact images, which are closed in a Hausdorff target. In our own counterexample, collapsing (0,1\] in \[0,1\] gives a quotient point whose singleton has a nonclosed preimage.
+
+**nLab:** [quotient projections out of compact Hausdorff spaces are closed precisely if the codomain is Hausdorff](https://ncatlab.org/nlab/show/quotient+projections+out+of+compact+Hausdorff+spaces+are+closed+precisely+if+the+codomain+is+Hausdorff). It says: “These are now clearly disjoint open neighbourhoods”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Closed relations give Hausdorff open quotients
 
 **Remember:** Closed pairs keep distinct quotient points apart when the quotient map is open.
@@ -452,6 +698,54 @@
 **How the definition helps.** In our own proof, closedness puts each inequivalent pair inside an open rectangle containing no equivalent pair. The two sides therefore have disjoint open images, as the Hausdorff condition requires. Our own counterexample is the line with two origins. Identify matching nonzero points in two copies of the real line. The quotient map is open, but any neighborhoods of the two origins intersect.
 
 **Paper or page:** [A converse theorem for hyperbolic surface spectra and the conformal bootstrap](https://arxiv.org/abs/2509.17935v1). It says: “Let Y be a topological space, and ∼ a closed equivalence relation on Y such that the quotient map Y → Y/∼ is open. Then Y/∼ is Hausdorff.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Joining the endpoints in the quotient topology gives a circle
+
+**Remember:** Glue the endpoints first, then let the interval trace the circle.
+
+*Makes the theorem clean to state or prove.* MSC 54B15 (Quotient spaces, decompositions in general topology), 54C05. arXiv math.GN. Level 2: later undergraduate.
+
+**Definition.** A quotient identifies each class of points as a single point. Its topology declares a set open exactly when its preimage under the map to classes is open.
+
+**Problem.** Identifying the endpoints of \[0,1\] gives a space homeomorphic to the unit circle in the plane.
+
+**How the definition helps.** The quotient turns a trip around the circle into a bijection because it identifies exactly the two endpoints. The quotient test gives continuity from the continuous parametrization t ↦ (cos(2πt), sin(2πt)). The quotient is compact as the continuous image of the interval. A continuous bijection from a compact space to a Hausdorff space has a continuous inverse.
+
+**nLab:** [quotient projections out of compact Hausdorff spaces are closed precisely if the codomain is Hausdorff](https://ncatlab.org/nlab/show/quotient+projections+out+of+compact+Hausdorff+spaces+are+closed+precisely+if+the+codomain+is+Hausdorff). It says: “the above map is in fact a homeomorphism”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Open or closed surjections recover the quotient topology
+
+**Remember:** An onto map sends a full preimage back to the original set.
+
+*True by definition.* MSC 54B15 (Quotient spaces, decompositions in general topology). arXiv math.GN. Level 2: later undergraduate.
+
+**Definition.** A quotient map is an onto map for which a set is open exactly when its preimage is open. The same test works with closed sets.
+
+**Problem.** An onto continuous map is a quotient map if it sends open sets to open sets or closed sets to closed sets.
+
+**How the definition helps.** An onto map sends the preimage of any set back onto that set. For an open map, an open preimage therefore gives an open set, and continuity gives the converse. The same argument works with closed sets by taking complements. Our own proof uses these tests to identify the finest topology making the map continuous.
+
+**Paper or page:** [Continuous Open Surjective Mapping is Quotient Mapping](https://proofwiki.org/wiki/Continuous_Open_Surjective_Mapping_is_Quotient_Mapping), [Continuous Closed Surjective Mapping is Quotient Mapping](https://proofwiki.org/wiki/Continuous_Closed_Surjective_Mapping_is_Quotient_Mapping). It says: “Then f is a quotient mapping.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The open preimage test makes quotient maps compose
+
+**Remember:** Apply the open preimage test twice.
+
+*True by definition.* MSC 54B15 (Quotient spaces, decompositions in general topology). arXiv math.GN. Level 2: later undergraduate.
+
+**Definition.** A quotient map is an onto map for which a set in the target is open exactly when its preimage is open. An onto continuous map need only satisfy one direction.
+
+**Problem.** The composite of two quotient maps is a quotient map.
+
+**How the definition helps.** A set is open exactly when its preimage under the second map is open, then exactly when its preimage under the composite is open. Our own proof uses this test instead of testing continuous maps out of the quotient. The two tests describe the same topology.
+
+**Paper or page:** [Composite of Quotient Mappings in Topology is Quotient Mapping](https://proofwiki.org/wiki/Composite_of_Quotient_Mappings_in_Topology_is_Quotient_Mapping). It says: “Then g ∘ f : S₁ → S₃ is a quotient mapping.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -576,6 +870,38 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Connected components partition a space as equivalence classes
+
+**Remember:** Two points belong together when one connected set contains both.
+
+*True by definition.* MSC 54D05 (Connected and locally connected spaces (general aspects)). arXiv math.GN. Level 2: later undergraduate.
+
+**Definition.** Call two points equivalent if some connected subset contains both. Define a connected component as a class for this relation, rather than as a maximal connected subset.
+
+**Problem.** Connected components partition the space and are exactly its maximal connected subsets.
+
+**How the definition helps.** Equivalence classes partition the space, so it suffices to justify the relation and identify its classes. Two connected sets sharing a point have connected union, which gives transitivity. The class of x is the union of all connected sets containing x, so it too is connected. In our own argument, maximality follows because every connected set containing x already lies in that union.
+
+**Paper or page:** [Equivalence of Definitions of Component/Equivalence Class equals Union of Connected Sets](https://proofwiki.org/wiki/Equivalence_of_Definitions_of_Component/Equivalence_Class_equals_Union_of_Connected_Sets), [Union of Connected Sets with Common Point is Connected](https://proofwiki.org/wiki/Union_of_Connected_Sets_with_Common_Point_is_Connected). It says: “Let C′ be the equivalence class of ∼ containing x.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Connected sets sharing a point have a connected union
+
+**Remember:** The common point forces the same constant on every piece.
+
+*True by definition.* MSC 54D05 (Connected and locally connected spaces (general aspects)). arXiv math.GN. Level 2: later undergraduate.
+
+**Definition.** A space is connected if every continuous map to two discrete points is constant. The two points are discrete because each singleton is open.
+
+**Problem.** A union of connected subsets with a common point is connected.
+
+**How the definition helps.** The common point forces every continuous map to the two discrete points to take the same constant value on each piece. It therefore has one value throughout the union. Our own proof uses the equivalence with the usual separation test. A nonconstant map splits the space into two disjoint nonempty open preimages.
+
+**Paper or page:** [Union of Connected Sets with Common Point is Connected](https://proofwiki.org/wiki/Union_of_Connected_Sets_with_Common_Point_is_Connected), [Equivalence of Definitions of Connected Topological Space/No Union of Separated Sets implies No Continuous Surjection to Discrete Two-Point Space](https://proofwiki.org/wiki/Equivalence_of_Definitions_of_Connected_Topological_Space/No_Union_of_Separated_Sets_implies_No_Continuous_Surjection_to_Discrete_Two-Point_Space). It says: “is a connected set of T.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Connectedness as no map onto two points makes continuous images connected
 
 **Remember:** Connected means you cannot map it onto two separate points.
@@ -640,6 +966,24 @@
 **How the definition helps.** In a Hausdorff space the image of a path is a Peano continuum, a compact, connected, locally connected metric space, and such continua are arc-connected (our own outline). The Hausdorff condition rules out the line with two origins. There a path joins the two origins, but no arc does, because an arc is Hausdorff and the two origins cannot be separated (our own explanation). The hard part is the proof that a Peano continuum is arc-connected.
 
 **Wikipedia:** [Connected space](https://en.wikipedia.org/wiki/Connected_space). It says: “Every Hausdorff space that is path-connected is also arc-connected; more generally this is true for a Δ-Hausdorff space, which is a space where each image of a path is closed.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Local path-connectedness makes connected components path-connected
+
+**Remember:** Open path components cannot split a connected space.
+
+*Rules out counterexamples.* MSC 54D05 (Connected and locally connected spaces (general aspects)). arXiv math.GN. Level 2: later undergraduate.
+
+**Definition.** A path is a continuous map from \[0,1\] that joins its endpoints. A set is path-connected if any two of its points can be joined by a path in the set. A space is locally path-connected if every open neighborhood of a point contains a path-connected open neighborhood of that point.
+
+**Problem.** In a locally path-connected space, the connected components are exactly the path components, the classes of points joined by paths.
+
+**How the definition helps.** Each path component is open because each of its points has a path-connected open neighborhood within it. Its complement is open as a union of other path components. A connected component cannot meet both sides, and every path-connected set is connected. Our own example is the connected but non-path-connected closure of the graph of sin(1/x) for 0 &lt; x ≤ 1.
+
+**nLab:** [locally path-connected space](https://ncatlab.org/nlab/show/locally+path-connected+space). It says: “The connected components of a locally path-connected space are the same as its path-connected components.”
+
+**Paper or page:** [Connected and Locally Path-Connected Implies Path Connected](https://proofwiki.org/wiki/Connected_and_Locally_Path-Connected_Implies_Path_Connected). It says: “Then T is path-connected.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -763,6 +1107,22 @@
 
 - [A. Tychonoff, Über die topologische Erweiterung von Räumen, Mathematische Annalen 102 (1930) 544–561](https://doi.org/10.1007/BF01782364)
 
+### Separating sets that miss each other's closures makes normality hereditary
+
+**Remember:** Sets closed and disjoint in a subspace miss each other’s closures.
+
+*Rules out counterexamples.* MSC 54D15 (Higher separation axioms (completely regular, normal, perfectly or collectionwise normal, etc.)), 54B05. arXiv math.GN. Level 2: later undergraduate.
+
+**Definition.** Normality separates disjoint closed sets by disjoint open neighborhoods. Complete normality asks for the same separation for any two sets that each miss the other's closure.
+
+**Problem.** Every subspace of a completely normal space is normal.
+
+**How the definition helps.** Disjoint sets closed in a subspace each miss the other’s closure in the whole space. Complete normality therefore separates them there, and intersecting the open neighborhoods with the subspace gives the required separation. Our own explanation uses the formula for closure in a subspace.
+
+**Paper or page:** [Completely Normal iff Every Subspace is Normal](https://proofwiki.org/wiki/Completely_Normal_iff_Every_Subspace_is_Normal), [Existence of Normal Space which is not Completely Normal](https://proofwiki.org/wiki/Existence_of_Normal_Space_which_is_not_Completely_Normal). It says: “every subspace of T is normal.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Full normality makes it easy to see that metric spaces are paracompact
 
 **Remember:** Stars are easy in metric spaces; Stone turned stars into local finiteness.
@@ -815,6 +1175,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Compactness and Hausdorff separation make continuous bijections reversible
+
+**Remember:** Closed sets leave compact and arrive closed.
+
+*Rules out counterexamples.* MSC 54D30 (Compactness), 54D10. arXiv math.GN. Level 2: later undergraduate.
+
+**Definition.** A compact space has a finite subcover for every open cover. A Hausdorff space gives distinct points disjoint open neighborhoods. A homeomorphism is a continuous bijection whose inverse is continuous.
+
+**Problem.** A continuous bijection from a compact space to a Hausdorff space is a homeomorphism.
+
+**How the definition helps.** A closed subset of the compact domain is compact, so its continuous image is compact and hence closed in the Hausdorff target. Thus the inverse is continuous. In our own counterexample, give two points all subsets as open sets in the domain, but only the empty and whole sets in the target. The identity is continuous, yet its inverse has a singleton as the preimage of an open singleton.
+
+**Paper or page:** [Continuous Bijection from Compact to Hausdorff is Homeomorphism](https://proofwiki.org/wiki/Continuous_Bijection_from_Compact_to_Hausdorff_is_Homeomorphism). It says: “Then f is a homeomorphism.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Compactness as closed projections gives a short proof of Tychonoff's theorem
 
 **Remember:** Compact means that projecting X away always keeps closed sets closed.
@@ -832,6 +1208,56 @@
 **Sources:**
 
 - [Maria Manuel Clementino, Walter Tholen, Tychonoff's theorem in a category, Proc. AMS 124 (1996) 3311–3314](https://doi.org/10.1090/S0002-9939-96-03435-1)
+
+### Hausdorff separation makes compact subsets closed
+
+**Remember:** Separate a point from finitely many neighborhoods to miss the whole compact set.
+
+*Rules out counterexamples.* MSC 54D30 (Compactness), 54D10. arXiv math.GN. Level 2: later undergraduate.
+
+**Definition.** A Hausdorff space gives distinct points disjoint open neighborhoods. This is stronger than the T₁ condition, which asks only that singletons be closed.
+
+**Problem.** Every compact subset of a Hausdorff space is closed.
+
+**How the definition helps.** Disjoint neighborhoods separate an outside point from each point of the compact set. Finitely many neighborhoods cover the compact set, so intersecting their partners gives an open neighborhood disjoint from it. In our own counterexample on ℕ, the closed sets are the finite sets and ℕ itself. Every subset is compact because one nonempty open set leaves only finitely many points uncovered, yet the even numbers are not closed.
+
+**Paper or page:** [Compact Subspace of Hausdorff Space is Closed](https://proofwiki.org/wiki/Compact_Subspace_of_Hausdorff_Space_is_Closed). It says: “Then C is closed in H.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### One ball radius works across a compact metric space
+
+**Remember:** Cover by half-size balls and take the smallest half-radius.
+
+*Makes the theorem clean to state or prove.* MSC 54D30 (Compactness), 54E35. arXiv math.GN. Level 2: later undergraduate.
+
+**Definition.** A Lebesgue number for an open cover of a metric space is a positive radius. The ball of that radius around each point must fit inside some member of the cover.
+
+**Problem.** Every open cover of a compact metric space has a Lebesgue number.
+
+**How the definition helps.** One radius expresses a uniform bound even though different points may use different cover members. For our own proof, choose a ball inside a cover member at each point, halve each radius, and take a finite subcover. The smallest radius in that finite collection works by the triangle inequality. In the empty space any positive radius works.
+
+**nLab:** [Lebesgue number lemma](https://ncatlab.org/nlab/show/Lebesgue+number+lemma). It says: “the open ball around x of radius δ is contained in Uᵢ”
+
+**Paper or page:** [Lebesgue's Number Lemma/Compact Space](https://proofwiki.org/wiki/Lebesgue's_Number_Lemma/Compact_Space). It says: “Then there exists a Lebesgue number for every open cover of M.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Open-cover compactness gives one tube around a whole slice
+
+**Remember:** Finitely many rectangles give one common width.
+
+*Rules out counterexamples.* MSC 54D30 (Compactness), 54B10. arXiv math.GN. Level 2: later undergraduate.
+
+**Definition.** A space is compact if every open cover has a finite subcover. A tube in X × Y is a set U × Y for U open in X.
+
+**Problem.** If Y is compact, an open set containing {x} × Y in the product contains a tube around that slice.
+
+**How the definition helps.** Compactness gives finitely many open rectangles covering the slice inside the given open set. Their first sides all contain x, so their intersection gives the required tube. In our own counterexample, let Y be the positive integers with every subset open. The union of (−1/n,1/n) × {n} contains the slice at zero, but no interval around zero works for every n.
+
+**Wikipedia:** [Tube lemma](https://en.wikipedia.org/wiki/Tube_lemma). It says: “there exists a tube in X × Y containing this slice and contained in N.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Open-cover compactness makes every product of compact spaces compact
 
@@ -889,6 +1315,38 @@
 
 - [P. Alexandroff, Über die Metrisation der im Kleinen kompakten topologischen Räume, Mathematische Annalen 92 (1924) 294–301](https://doi.org/10.1007/BF01448011)
 
+### Compact neighborhoods make the one-point extension Hausdorff
+
+**Remember:** To separate a point from infinity, enclose it in a compact neighborhood.
+
+*Rules out counterexamples.* MSC 54D35 (Extensions of spaces (compactifications, supercompactifications, completions, etc.)), 54D30, 54D45. arXiv math.GN. Level 2: later undergraduate.
+
+**Definition.** The one-point extension keeps the original open sets and adds one point ∞. Its open neighborhoods of ∞ are the complements, in the extended space, of closed compact subsets of the original space. A Hausdorff space is locally compact if each point lies inside the interior of a compact set.
+
+**Problem.** The one-point extension of a Hausdorff space is Hausdorff exactly when the original space is locally compact.
+
+**How the definition helps.** The interior of a compact neighborhood and its complement in the extension give disjoint open neighborhoods of the point and ∞. Conversely, the complement of an open neighborhood of ∞ is compact and contains any open set disjoint from that neighborhood. For example, the rational line has no compact neighborhood because each neighborhood contains a sequence tending to a missing irrational. This sequence argument is our own explanation.
+
+**Paper or page:** [Condition for Alexandroff Extension to be T2 Space](https://proofwiki.org/wiki/Condition_for_Alexandroff_Extension_to_be_T2_Space), [Alexandroff Extension of Rational Number Space is not Hausdorff](https://proofwiki.org/wiki/Alexandroff_Extension_of_Rational_Number_Space_is_not_Hausdorff). It says: “is a locally compact Hausdorff space.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Complements of compact sets determine the one-point compactification
+
+**Remember:** The compact subsets of the original space fix every neighborhood at infinity.
+
+*True by definition.* MSC 54D35 (Extensions of spaces (compactifications, supercompactifications, completions, etc.)), 54D30. arXiv math.GN. Level 2: later undergraduate.
+
+**Definition.** A one-point compactification adds one point to make a compact Hausdorff space in which the original space is dense and keeps its topology. In the explicit construction, open neighborhoods of the added point are complements of compact subsets of the original space.
+
+**Problem.** Any two compactifications of a noncompact space by a single point are homeomorphic by a map that fixes the original space.
+
+**How the definition helps.** Compactness and Hausdorff separation force the open neighborhoods of the added point to be exactly those in the explicit construction. Their complements are closed in the compactification and therefore compact. Conversely, a compact subset of the original space stays compact and hence closed in the compactification. The original space is open because the added singleton is closed, so its topology determines all remaining open sets.
+
+**nLab:** [one-point compactification](https://ncatlab.org/nlab/show/one-point+compactification). It says: “complements of closed, and hence compact closed, subsets”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### For Hausdorff spaces, all definitions of local compactness agree
 
 **Remember:** Add Hausdorff, and every version of local compactness says the same.
@@ -922,6 +1380,22 @@
 **Sources:**
 
 - [Franklin, S. P. (1965). Spaces in which sequences suffice. Fundamenta Mathematicae 57(1), 107–115.](https://doi.org/10.4064/fm-57-1-107-115)
+
+### A subbase gives fewer open sets to test for continuity
+
+**Remember:** Test the building blocks, not every open set.
+
+*True by definition.* MSC 54D70 (Base properties of topological spaces), 54C05. arXiv math.GN. Level 2: later undergraduate.
+
+**Definition.** A subbase is a family of open sets whose finite intersections form a base. A base is a family of open sets whose unions give every open set.
+
+**Problem.** A map is continuous if and only if the preimage of each subbasic open set is open.
+
+**How the definition helps.** Preimages preserve the unions and finite intersections that generate every open set. Thus checking the subbase suffices for the usual continuity test, which checks every open set in the target. Our own argument requires knowing that the chosen family generates the target topology.
+
+**nLab:** [topological base](https://ncatlab.org/nlab/show/topological+base). It says: “such that every open subset is a union of finitary intersections of subbasic ones.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### σ-locally finite bases make metrizability an if-and-only-if
 
@@ -992,6 +1466,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Small diameter covers keep total boundedness after taking closure
+
+**Remember:** Closing finitely many small pieces neither loses the cover nor enlarges their diameters.
+
+*True by definition.* MSC 54E35 (Metric spaces, metrizability), 54E50. arXiv math.GN. Level 2: later undergraduate.
+
+**Definition.** A space is totally bounded if it has finite covers by sets of arbitrarily small diameter. Diameter is the least upper bound on all distances between pairs of points in a set.
+
+**Problem.** The closure of a totally bounded subset of a metric space is totally bounded.
+
+**How the definition helps.** Using small pieces instead of open balls lets us close each piece without enlarging its diameter (our own). Their finite union is closed and contains the original set, so it covers the closure (our own). Diameter stays the same because distances between limits are limits of distances between points of the piece (our own).
+
+**Paper or page:** [Closure of Totally Bounded Subspace is Totally Bounded](https://proofwiki.org/wiki/Closure_of_Totally_Bounded_Subspace_is_Totally_Bounded). It says: “Then cl A is totally bounded.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Subtracting a base point's distances embeds metric spaces isometrically in bounded functions
 
 **Remember:** Distances to all points recover the distance between any pair.
@@ -1010,6 +1500,40 @@
 
 - [Alexey A. Tuzhilin, Lectures on Hausdorff and Gromov-Hausdorff Distance Geometry, arXiv:2012.00756v1 (2020)](https://arxiv.org/abs/2012.00756v1)
 
+### Minimum displacement gives strictly shrinking maps a fixed point
+
+**Remember:** At a point of minimum displacement, any further shrink would contradict minimality.
+
+*Rules out counterexamples.* MSC 54E40 (Special maps on metric spaces), 54E45, 47H10. arXiv math.GN. Level 2: later undergraduate.
+
+**Definition.** A strictly shrinking map f makes every distance between distinct points smaller. Its displacement at x is d(x, f(x)), the distance that x moves. Unlike a Banach contraction, the map need not shrink all distances by a common factor less than one.
+
+**Problem.** Every strictly shrinking self-map of a nonempty compact metric space has a unique fixed point, where its displacement is zero.
+
+**How the definition helps.** At a nonfixed point x, strict shrinking makes the displacement at f(x) smaller than the displacement at x (our own). The map never increases distances, so it is continuous and its displacement is continuous (our own). Compactness gives a point of minimum displacement, which must therefore be fixed (our own). Two different fixed points would keep their original distance (our own).
+
+**Wikipedia:** [Metric space](https://en.wikipedia.org/wiki/Metric_space). It says: “a map f: M → M admits a unique fixed point if d(f(x), f(y)) &lt; d(x, y)”
+
+**Sources:**
+
+- [Michael Edelstein, On Fixed and Periodic Points Under Contractive Mappings (1962)](https://doi.org/10.1112/jlms/s1-37.1.74)
+
+### One shrink factor keeps fixed points continuous in the parameter
+
+**Remember:** One shrink factor bounds how far a fixed point can move.
+
+*Makes the theorem clean to state or prove.* MSC 54E40 (Special maps on metric spaces), 54E50, 47H10. arXiv math.GN. Level 2: later undergraduate.
+
+**Definition.** A family of maps is uniformly contractive if one factor 0 ≤ q &lt; 1 works for every map in the family. For every pair, the distance between the images is at most q times the distance between the inputs.
+
+**Problem.** Let a family of self-maps on a nonempty complete metric space depend jointly continuously on the point and parameter. If it is uniformly contractive, its unique fixed point depends continuously on the parameter.
+
+**How the definition helps.** One factor q gives the same denominator 1 − q for every parameter (our own). Let x and y be the fixed points of two family members F and G (our own). The triangle inequality gives d(x, y) ≤ d(F(x), G(x)) + q d(x, y) (our own). Banach’s theorem gives the fixed points, and continuity in the parameter makes the first term tend to zero (our own).
+
+**Paper or page:** [Uniform Contraction Mapping Theorem](https://proofwiki.org/wiki/Uniform_Contraction_Mapping_Theorem). It says: “and the mapping g: N → M is continuous.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Uniform embeddings stay injective after completion
 
 **Remember:** Uniform control in both directions keeps new limit points distinct.
@@ -1023,6 +1547,122 @@
 **How the definition helps.** In our own proof, uniform continuity in both directions lets both maps extend by limits of Cauchy sequences. The completed image is its closure in the completed target. The two extensions remain inverses there because their compositions agree with the identity on dense subsets. Our own counterexample maps (0,1) into the unit circle by t ↦ exp(2πit). This uniformly continuous embedding sends both endpoints to 1 after completion.
 
 **Wikipedia:** [Uniform space](https://en.wikipedia.org/wiki/Uniform_space). It says: “whose inverse i⁻¹ : i(X) → X is also uniformly continuous”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Uniformly continuous maps preserve total boundedness
+
+**Remember:** A common input scale sends every small cover piece to a small image piece.
+
+*Rules out counterexamples.* MSC 54E40 (Special maps on metric spaces), 54E35. arXiv math.GN. Level 2: later undergraduate.
+
+**Definition.** A set is totally bounded if finitely many pieces of diameter less than ε cover it for each ε &gt; 0. A map is uniformly continuous if each output tolerance ε &gt; 0 admits one input radius δ &gt; 0. Points less than δ apart then have images less than ε apart.
+
+**Problem.** The image of a totally bounded metric space under a uniformly continuous map is totally bounded. Mere continuity does not suffice.
+
+**How the definition helps.** The common input scale makes every piece of one finite cover have small image diameter (our own). Use half the desired output bound so the supremum of image distances is still below that bound (our own). The diameter form avoids finding centers for image balls and agrees with the finite ball-cover test (our own). The continuous map x ↦ 1/x sends (0, 1) to an unbounded set (our own).
+
+**nLab:** [uniformly continuous map](https://ncatlab.org/nlab/show/uniformly+continuous+map). It says: “the distance in Y between f(a) and f(b) is less than ε whenever the distance in X between a and b is less than δ”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A uniform cover radius turns sequential compactness into compactness
+
+**Remember:** Find one radius for the cover, then cover by finitely many balls.
+
+*Makes the theorem clean to state or prove.* MSC 54E45 (Compact (locally compact) metric spaces), 54E35. arXiv math.GN. Level 2: later undergraduate.
+
+**Definition.** A Lebesgue number for an open cover of a metric space is a positive radius. Every ball of that radius must lie in some member of the cover.
+
+**Problem.** Every sequentially compact metric space is compact. That is, if every sequence has a subsequence converging in the space, every open cover has a finite subcover.
+
+**How the definition helps.** Use the common radius to turn a finite cover by balls into a finite subcover of the original cover. The Lebesgue number lemma gives the radius from sequential compactness. Finitely many balls of that radius suffice, since otherwise one could pick an infinite separated sequence (our own).
+
+**nLab:** [sequentially compact metric spaces are equivalently compact metric spaces](https://ncatlab.org/nlab/show/sequentially+compact+metric+spaces+are+equivalently+compact+metric+spaces). It says: “there exists a positive real number δ &gt; 0 such that for each x ∈ X there is iₓ ∈ I such that Bₓ°(δ) ⊂ Uᵢₓ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Compact sets have a positive gap from disjoint closed sets
+
+**Remember:** Closedness gives positive distances pointwise, and compactness makes their minimum positive.
+
+*Rules out counterexamples.* MSC 54E45 (Compact (locally compact) metric spaces), 54E35. arXiv math.GN. Level 2: later undergraduate.
+
+**Definition.** The distance between two nonempty sets is the infimum of their pairwise distances. This equals the infimum over one set of the distances to the other set.
+
+**Problem.** A nonempty compact set and a disjoint nonempty closed set have positive distance in any metric space. Two disjoint closed sets need not have positive distance.
+
+**How the definition helps.** Point-to-set distance turns the two-set problem into minimizing a positive continuous function on the compact set (our own). The work is to prove continuity of distance and use the extreme value theorem (our own). In the plane, the horizontal axis and the graph of y = e⁻ˣ are disjoint closed sets at distance zero (our own).
+
+**Paper or page:** [Distance between Disjoint Compact Set and Closed Set in Metric Space is Positive](https://proofwiki.org/wiki/Distance_between_Disjoint_Compact_Set_and_Closed_Set_in_Metric_Space_is_Positive). It says: “Then d(A, B) &gt; 0, where d(A, B) is the distance between A and B.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Finite grids explain why closed bounded Euclidean sets are compact
+
+**Remember:** A finite grid gives total boundedness, and closedness keeps the limits.
+
+*Rules out counterexamples.* MSC 54E45 (Compact (locally compact) metric spaces), 54E35. arXiv math.GN. Level 2: later undergraduate.
+
+**Definition.** A metric space is totally bounded if, for every ε &gt; 0, finitely many pieces of diameter less than ε cover it. The diameter is the least upper bound of the distances within a piece.
+
+**Problem.** In Euclidean space every bounded set is totally bounded, so every closed bounded set is compact. In general metric spaces a closed bounded set can fail to be compact.
+
+**How the definition helps.** Total boundedness measures exactly what a finite grid in a bounded box supplies (our own). Closedness gives completeness inside Euclidean space, so the metric compactness criterion finishes the proof (our own). The work moves into that criterion and the finite grid construction (our own). An infinite set with distance one between different points is closed and bounded in itself but fails the small-cover test (our own).
+
+**nLab:** [totally bounded space](https://ncatlab.org/nlab/show/totally+bounded+space). It says: “A subspace of a Cartesian space is totally bounded if and only if it is bounded.”
+
+**Paper or page:** [Bounded Subspace of Euclidean Space is Totally Bounded](https://proofwiki.org/wiki/Bounded_Subspace_of_Euclidean_Space_is_Totally_Bounded). It says: “Then M is totally bounded.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Sequential closedness keeps closed parts of a compact metric space compact
+
+**Remember:** Find a limit in the whole space, then keep it inside the closed part.
+
+*True by definition.* MSC 54E45 (Compact (locally compact) metric spaces), 54E35. arXiv math.GN. Level 2: later undergraduate.
+
+**Definition.** A metric space is sequentially compact if each sequence has a subsequence converging in the space. A subset is sequentially closed if it contains the limit of every convergent sequence of its points.
+
+**Problem.** Every closed subset of a compact metric space is compact.
+
+**How the definition helps.** Sequential compactness gives a convergent subsequence in the larger space, and sequential closedness keeps its limit in the subset (our own). The work moves into showing that these sequence tests agree with the open-cover and open-complement definitions (our own).
+
+**nLab:** [sequentially compact metric spaces are equivalently compact metric spaces](https://ncatlab.org/nlab/show/sequentially+compact+metric+spaces+are+equivalently+compact+metric+spaces). It says: “We need to show that it has a sub-sequence which converges.”
+
+**Paper or page:** [Closed Subspace of Compact Space is Compact](https://proofwiki.org/wiki/Closed_Subspace_of_Compact_Space_is_Compact). It says: “A closed subspace of a compact topological space is also compact.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Cauchy sequence classes extend uniformly continuous maps to the completion
+
+**Remember:** To extend a map, send the sequence to the limit of its images.
+
+*True by definition.* MSC 54E50 (Complete metric spaces), 54E40. arXiv math.GN. Level 2: later undergraduate.
+
+**Definition.** In a metric completion by Cauchy sequences, each point is a class of sequences whose corresponding terms approach one another. The distance between classes is the limit of the termwise distances.
+
+**Problem.** Every uniformly continuous map into a complete metric space extends uniquely and uniformly continuously to the metric completion of its domain.
+
+**How the definition helps.** Representing each new point by a sequence supplies the approximations usually chosen separately for that point (our own). Uniform continuity makes the image sequence Cauchy and gives equivalent representatives the same limit in the complete target (our own). Apply the original bound with half the output tolerance and half its input radius before passing to limits (our own). Density forces any continuous extension to take these same limits (our own).
+
+**Paper or page:** [Theorem 3.4. (Extending uniformly continuous functions)](https://venhance.github.io/napkin/Napkin.pdf). It says: “Then there exists a unique continuous function ψ̃: M → N such that”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Cauchy sequences supply their own limits in the completion
+
+**Remember:** Let each Cauchy sequence name the point it needs.
+
+*Makes the theorem clean to state or prove.* MSC 54E50 (Complete metric spaces). arXiv math.GN. Level 2: later undergraduate.
+
+**Definition.** In the Cauchy-sequence construction of a metric completion, identify sequences whose termwise distances tend to zero. A point is one such class, and the distance between classes is the limit of the termwise distances. Embed each original point as the class of its constant sequence.
+
+**Problem.** The classes form a complete metric space containing the original space isometrically and densely. Each original Cauchy sequence converges to its own class.
+
+**How the definition helps.** The distance from an original point to a sequence class is the limit of its distances to the terms (our own). The Cauchy condition therefore makes the embedded terms converge to their class, giving density (our own). For a Cauchy sequence of classes, approximate its nth class by an original point within 1/n (our own). These points are Cauchy, and their class is the limit once the distance formula is verified (our own).
+
+**Paper or page:** [Completion Theorem (Metric Space)/Lemma 3](https://proofwiki.org/wiki/Completion_Theorem_(Metric_Space)/Lemma_3). It says: “M̃ = (Ã, d̃) is a completion of M.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -1055,6 +1695,104 @@
 **How the definition helps.** Completeness depends on the metric, but 'some complete metric exists' is a property of the topology, so it passes along homeomorphisms. With the given metric the theorem would fail at once: the open interval (0, 1) is not complete, yet it is homeomorphic to ℝ. The irrationals are a Gδ set in ℝ, so they are Polish, although their usual metric is not complete. The rationals are not a Gδ set in ℝ, and they are not completely metrizable. The hard part is to build the new complete metric on a Gδ set, which is Alexandrov's theorem.
 
 **Wikipedia:** [Polish space](https://en.wikipedia.org/wiki/Polish_space), [Completely metrizable space](https://en.wikipedia.org/wiki/Completely_metrizable_space). It says: “The space (0,1) ⊂ R, the open unit interval, is not a complete metric space with its usual metric inherited from R, but it is completely metrizable since it is homeomorphic to R.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Finite small covers give Cauchy subsequences
+
+**Remember:** Keep infinitely many terms in one small piece at each scale.
+
+*Makes the theorem clean to state or prove.* MSC 54E50 (Complete metric spaces), 54E35. arXiv math.GN. Level 2: later undergraduate.
+
+**Definition.** A metric space is totally bounded if it has finite covers by pieces of arbitrarily small diameter. Diameter is the least upper bound on all distances within a piece.
+
+**Problem.** Every sequence in a totally bounded metric space has a Cauchy subsequence. If the space is also complete, every sequence has a convergent subsequence.
+
+**How the definition helps.** At each scale a finite cover has a piece containing infinitely many remaining terms (our own). Retain their indices and repeat with diameters below 1/n at step n (our own). Choose one retained index per step, always larger than the previous choice (our own). Each resulting tail lies in one small piece, so the subsequence is Cauchy and converges if the space is complete (our own).
+
+**Paper or page:** [Complete and Totally Bounded Metric Space is Sequentially Compact](https://proofwiki.org/wiki/Complete_and_Totally_Bounded_Metric_Space_is_Sequentially_Compact). It says: “Let M be complete and totally bounded. Then M is sequentially compact.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Nowhere dense singletons rule out a complete metric on the rationals
+
+**Remember:** Each rational point is nowhere dense, but together they fill the rational space.
+
+*Rules out counterexamples.* MSC 54E50 (Complete metric spaces), 54E52. arXiv math.GN. Level 2: later undergraduate.
+
+**Definition.** A set is nowhere dense if its closure contains no nonempty open set. This is stronger than having empty interior, since a set can be dense without containing an open set.
+
+**Problem.** No complete metric on the rational numbers has the same open sets as the usual distance.
+
+**How the definition helps.** Every singleton in the rationals is closed and contains no open neighborhood, so each is nowhere dense (our own). These singletons form a countable cover, which the Baire category theorem forbids in a nonempty complete metric space (our own). Any metric with the usual open sets preserves these facts (our own).
+
+**Wikipedia:** [Baire category theorem](https://en.wikipedia.org/wiki/Baire_category_theorem). It says: “every nonempty complete metric space with no isolated point is uncountable.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Shrinking diameters force a unique point in nested closed sets
+
+**Remember:** A shrinking diameter keeps every later choice close to every other later choice.
+
+*Makes the theorem clean to state or prove.* MSC 54E50 (Complete metric spaces). arXiv math.GN. Level 2: later undergraduate.
+
+**Definition.** The diameter of a nonempty set is the least upper bound on distances between its points. An unbounded set has infinite diameter.
+
+**Problem.** A metric space is complete exactly when every nested sequence of nonempty closed sets with diameters tending to zero has exactly one common point.
+
+**How the definition helps.** The shrinking diameters make any sequence of choices, one from each set, Cauchy. Completeness gives the limit, and closedness keeps it in each set. Two common points would have distance zero. For the converse, apply the property to the closures of the tails of a Cauchy sequence.
+
+**Wikipedia:** [Cantor's intersection theorem](https://en.wikipedia.org/wiki/Cantor%27s_intersection_theorem). It says: “the intersection of any nested family of non-empty closed subsets whose diameters tend to zero is non-empty”
+
+**Paper or page:** [Cantor's Intersection Theorem](https://proofwiki.org/wiki/Cantor's_Intersection_Theorem). It says: “there exists a unique x ∈ A such that”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The extension property identifies any two metric completions
+
+**Remember:** Extend the same original points in both directions, then compose.
+
+*True by definition.* MSC 54E50 (Complete metric spaces), 54E40. arXiv math.GN. Level 2: later undergraduate.
+
+**Definition.** A metric completion contains the original space as a dense isometric copy. It is complete and has an extension property for distance-preserving maps into complete metric spaces. Each such map extends to exactly one distance-preserving map on the completion.
+
+**Problem.** Any two metric completions are related by a unique distance-preserving bijection that fixes the original points.
+
+**How the definition helps.** Extending the original copy in both directions gives two maps whose composites extend the identity (our own). Uniqueness makes both composites identity maps (our own). The work lies in constructing extensions by limits of original points, whose pairwise distances converge to the distances of their limits (our own).
+
+**Wikipedia:** [Complete metric space](https://en.wikipedia.org/wiki/Complete_metric_space). It says: “The space M′ is determined up to isometry by this property”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Two-sided norm bounds transfer completeness from Euclidean space
+
+**Remember:** Two bounds let Cauchy sequences and their limits pass between norms.
+
+*True by definition.* MSC 54E50 (Complete metric spaces), 46B20. arXiv math.GN, math.FA. Level 2: later undergraduate.
+
+**Definition.** Two norms are equivalent if each is bounded by a constant times the other. This controls distances in both directions, not just which sets are open.
+
+**Problem.** Every finite-dimensional real or complex normed space is complete. Every finite-dimensional subspace of a normed space is therefore closed.
+
+**How the definition helps.** The two norm bounds transfer Cauchy sequences and their limits between the given norm and Euclidean coordinates (our own). The work lies in proving norm equivalence in finite dimensions and completeness of the real or complex coordinates (our own). Every complete metric subspace contains its limit points, so each finite-dimensional subspace is closed (our own).
+
+**Paper or page:** [Finite Dimensional Subspace of Normed Vector Space is Closed](https://proofwiki.org/wiki/Finite_Dimensional_Subspace_of_Normed_Vector_Space_is_Closed). It says: “Then W is closed.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Weighted distances make countable products of complete spaces complete
+
+**Remember:** Control a finite head and bound the tail by a geometric series.
+
+*Makes the theorem clean to state or prove.* MSC 54E50 (Complete metric spaces), 54E35. arXiv math.GN. Level 2: later undergraduate.
+
+**Definition.** Replace each coordinate distance d by d/(1 + d), which stays below one. The product metric adds these modified distances with weights 1/2ⁿ for coordinates numbered n = 1, 2, …. Unlike an unweighted maximum, the sum gives late coordinates uniformly small weight.
+
+**Problem.** A countable product of complete metric spaces is complete for this weighted product metric.
+
+**How the definition helps.** The weights make the total contribution beyond coordinate N at most 1/2ᴺ (our own). A Cauchy sequence is Cauchy in each coordinate because d/(1 + d) tends to zero exactly when d does (our own). Take each coordinate limit, then control finitely many coordinates and the remaining tail separately (our own). The metric inequality follows because t/(1 + t) is increasing and subadditive on nonnegative numbers (our own).
+
+**Wikipedia:** [Metric space](https://en.wikipedia.org/wiki/Metric_space). It says: “a metric on the topological product of countably many metric spaces can be obtained using the metric”
 
 **Sources:** none listed. No primary source with a working link was found.
 

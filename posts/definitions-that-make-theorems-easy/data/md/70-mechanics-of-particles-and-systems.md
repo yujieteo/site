@@ -46,6 +46,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### The damping ratio gives one threshold for oscillations
+
+**Remember:** Divide drag by twice the square root of mass times stiffness.
+
+*Makes the theorem clean to state or prove.* MSC 70J30 (Free motions in linear vibration theory). arXiv math-ph. Level 1: early undergraduate.
+
+**Definition.** For a mass m with a spring of stiffness k and a drag force −cq̇, define the damping ratio ζ=c/(2√(km)). Take m and k positive and c nonnegative.
+
+**Problem.** Every nonzero free motion crosses equilibrium repeatedly when ζ&lt;1. When ζ≥1, each nonzero free motion crosses equilibrium at most once.
+
+**How the definition helps.** The damping ratio puts the dividing line at one for every choice of mass and spring. In our own derivation, measuring time in units of √(m/k) gives the polynomial s²+2ζs+1 for exponential solutions. Below one, the solutions contain sines and cosines. At or above one, the real exponential solutions, including a time factor for a repeated root, allow at most one crossing.
+
+**Wikipedia:** [Damping](https://en.wikipedia.org/wiki/Damping). It says: “The damping ratio expresses the level of damping in a system relative to critical damping”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Inertia operators reveal principal axes
 
 **Remember:** Diagonalize the inertia operator to find the spin axes.
@@ -91,6 +107,22 @@
 **How the definition helps.** Choosing the center of mass as origin removes the cross term that an arbitrary origin would leave (our own). Projecting each displacement onto the plane perpendicular to the axes preserves its zero mass-weighted sum (our own). The squared shift then contributes Md² (our own).
 
 **Wikipedia:** [Parallel axis theorem](https://en.wikipedia.org/wiki/Parallel_axis_theorem). It says: “which is zero since the center of mass lies at the origin.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Effective potential makes a circular orbit a radial equilibrium
+
+**Remember:** Put angular kinetic energy beside potential energy before testing the radius.
+
+*Makes the theorem clean to state or prove.* MSC 70F05 (Two-body problems), 70H03. arXiv math-ph. Level 2: later undergraduate.
+
+**Definition.** For a particle of mass m in a central potential V(r), fix the magnitude ℓ of its angular momentum. The effective potential U(r)=V(r)+ℓ²/(2mr²) includes the kinetic energy due to turning about the center.
+
+**Problem.** For nonzero ℓ, circular orbits occur exactly at radii r&gt;0 where U′(r)=0. A strict local minimum gives radial stability at fixed ℓ, and U″&lt;0 at a critical point gives radial instability.
+
+**How the definition helps.** In our own derivation, conservation of angular momentum gives mr̈=−U′(r), the equation for motion in one dimension. Energy traps small radial motions near a strict minimum. Our own instability test uses the growing solution of the linearized equation when U″&lt;0.
+
+**Wikipedia:** [Effective potential](https://en.wikipedia.org/wiki/Effective_potential). It says: “A circular orbit may be either stable or unstable.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -276,6 +308,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Generalized momentum makes cyclic coordinates yield constants
+
+**Remember:** No dependence on position means no change in its momentum.
+
+*Makes the theorem clean to state or prove.* MSC 70H03 (Lagrange's equations), 70H33. arXiv math-ph. Level 2: later undergraduate.
+
+**Definition.** A coordinate q is cyclic if the Lagrangian L, the function integrated over time to give the action, is independent of q. Its generalized momentum is ∂L/∂q̇, where q̇ is the rate of change of q.
+
+**Problem.** Along every solution of Lagrange’s equations, the generalized momentum of a cyclic coordinate is constant.
+
+**How the definition helps.** In our own explanation, the cyclic coordinate removes the position derivative from Lagrange’s equation, leaving zero for the time derivative of its momentum. For a particle of mass m in a central potential, the polar angle θ is cyclic. Its momentum mr²θ̇ stays constant, giving the inverse-square angular rate in the source.
+
+**Paper or page:** [Derivative of Angular Component under Central Force](https://proofwiki.org/wiki/Derivative_of_Angular_Component_under_Central_Force). It says: “Then the rate of change of the angular coordinate of p is inversely proportional to the square of the radial coordinate of p.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Stationary action ignores total time derivatives at fixed endpoints
 
 **Remember:** A total derivative changes the action only by a fixed endpoint term.
@@ -289,6 +337,86 @@
 **How the definition helps.** Stationary action makes the added term irrelevant because its integral depends only on the fixed endpoints. The fundamental theorem of calculus gives the difference of f at those endpoints. The differential-equation formulation instead checks that the Euler–Lagrange operator sends this extra term to zero (our own). The work moves into the theorem that stationary paths are exactly the solutions of those equations (our own).
 
 **Wikipedia:** [Lagrangian mechanics](https://en.wikipedia.org/wiki/Lagrangian_mechanics). It says: “Both Lagrangians L and L′ produce the same equations of motion since the corresponding actions S and S′ are related via”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Independent momentum variations give Hamilton's equations
+
+**Remember:** Vary momentum and position separately to get one equation from each.
+
+*Makes the theorem clean to state or prove.* MSC 70H05 (Hamilton's equations). arXiv math-ph. Level 2: later undergraduate.
+
+**Definition.** For position q, momentum p and a smooth Hamiltonian H, the phase space action is ∫(p·q̇−H(t,q,p)) dt. It treats q and p as independent paths.
+
+**Problem.** With endpoint positions fixed, this action is stationary exactly when q̇=∂H/∂p and ṗ=−∂H/∂q.
+
+**How the definition helps.** Independent variations test the position and momentum equations separately. In our own derivation, varying p gives the velocity equation directly. Varying q and integrating by parts gives the momentum equation because the position variation vanishes at both ends.
+
+**Paper or page:** [Conditions for Functional to be Extremum of Two-variable Functional over Canonical Variable p](https://proofwiki.org/wiki/Conditions_for_Functional_to_be_Extremum_of_Two-variable_Functional_over_Canonical_Variable_p). It says: “Let J\[y,p\] = ∫ₐᵇ (−H(x,y,p) + py′) dx, where H is the Hamiltonian of J\[y\].”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Poisson brackets test conservation without solving for trajectories
+
+**Remember:** The bracket gives change from motion and the time derivative gives the rest.
+
+*Makes the theorem clean to state or prove.* MSC 70H05 (Hamilton's equations), 70H33. arXiv math-ph. Level 2: later undergraduate.
+
+**Definition.** The Poisson bracket {F,H} pairs each position derivative of F with the matching momentum derivative of H. It adds their products and subtracts the products with F and H swapped. The functions can also depend on time.
+
+**Problem.** A smooth quantity F is constant along every local Hamiltonian trajectory exactly when ∂F/∂t+{F,H}=0 throughout the domain.
+
+**How the definition helps.** In our own derivation, the bracket bundles the chain rule terms after Hamilton's equations replace the velocities. For the converse, existence of a local trajectory through every point at each time gives the equation throughout the domain.
+
+**Paper or page:** [Conditions for Function to be First Integral of Euler's Equations for Vanishing Variation](https://proofwiki.org/wiki/Conditions_for_Function_to_be_First_Integral_of_Euler's_Equations_for_Vanishing_Variation). It says: “Then a necessary and sufficient condition for Φ to be the first integral of Euler's Equations is ∂Φ/∂x + \[Φ,H\] = 0”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The velocity Legendre transform gives both Hamilton equations
+
+**Remember:** Trade velocity for momentum and the unwanted velocity derivatives cancel.
+
+*True by definition.* MSC 70H05 (Hamilton's equations), 70H03. arXiv math-ph. Level 2: later undergraduate.
+
+**Definition.** Define p as the velocity derivative of L(t,q,v). Where this map has a smooth inverse in v, define the Hamiltonian H(t,q,p)=p·v−L(t,q,v) using that inverse.
+
+**Problem.** Under this locally invertible change of variables, Lagrange's equations become q̇=∂H/∂p and ṗ=−∂H/∂q.
+
+**How the definition helps.** The transform collects the velocity terms that would otherwise appear when rewriting Lagrange’s equations in momentum coordinates. In our own derivation, derivatives of the substituted velocity cancel because ∂L/∂v=p. Thus ∂H/∂p=v and ∂H/∂q=−∂L/∂q. The inverse function theorem supplies the local inverse when the matrix of second velocity derivatives is nonsingular.
+
+**Paper or page:** [Euler's Equation for Vanishing Variation in Canonical Variables](https://proofwiki.org/wiki/Euler's_Equation_for_Vanishing_Variation_in_Canonical_Variables). It says: “Then the system (1) is transformed into: dyᵢ/dx = ∂H/∂pᵢ”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A generating function preserves Hamilton's equations through endpoint terms
+
+**Remember:** A generating function changes the action only at the endpoints.
+
+*True by definition.* MSC 70H15 (Canonical and symplectic transformations for problems in Hamiltonian and Lagrangian mechanics), 70H05. arXiv math-ph. Level 2: later undergraduate.
+
+**Definition.** A generating function F(t,q,Q) defines a change from (q,p,H) to (Q,P,K) by p=∂F/∂q, P=−∂F/∂Q and K=H+∂F/∂t. Use it where these equations define a smooth invertible change of position and momentum.
+
+**Problem.** The change defined by such a generating function sends solutions of Hamilton's equations for H to solutions for K.
+
+**How the definition helps.** The generating function replaces direct transformation of both Hamilton equations with a single total derivative. In our own calculation, the old action integrand minus the new one equals dF/dt. Its integral depends only on endpoints, so variations supported inside the time interval preserve stationarity. The remaining work is deriving Hamilton’s equations from stationarity and checking the change is invertible.
+
+**Wikipedia:** [Canonical transformation](https://en.wikipedia.org/wiki/Canonical_transformation). It says: “Both sets of variables must obey Hamilton's principle.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Stationary action includes motions that do not minimize it
+
+**Remember:** Motion needs zero first change, not least action.
+
+*Makes the theorem clean to state or prove.* MSC 70H25 (Hamilton's principle), 70H03. arXiv math-ph. Level 2: later undergraduate.
+
+**Definition.** The action of a particle of mass m&gt;0 in a smooth potential V is the time integral of m\|q̇\|²/2−V(q). A path has stationary action if every smooth fixed-end perturbation gives zero first derivative of the action.
+
+**Problem.** A smooth path satisfies Newton’s equation mq̈=−∇V exactly when its action is stationary. A stationary path can fail to minimize the action.
+
+**How the definition helps.** Stationarity tests the equation of motion one perturbation at a time. In our own derivation, integration by parts pairs −mq̈−∇V with each perturbation, so stationarity forces this coefficient to vanish. For the oscillator with m=1 and V(q)=q²/2, the zero path is stationary. Our own perturbation ε sin(πt/T) on \[0,T\] lowers its action whenever T&gt;π and ε≠0.
+
+**Wikipedia:** [Action (physics)](https://en.wikipedia.org/wiki/Action_%28physics%29). It says: “is stationary (a minimum, maximum, or a saddle point).”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -321,6 +449,38 @@
 **How the definition helps.** In the mass inner product, moving M⁻¹K between the two arguments gives the same expression uᵀKv (our own). The ordinary dot product need not have this symmetry (our own). The spectral theorem then gives an orthonormal basis of vibration patterns, each governed by one scalar oscillator equation (our own).
 
 **Wikipedia:** [Normal mode](https://en.wikipedia.org/wiki/Normal_mode), [Mass matrix](https://en.wikipedia.org/wiki/Mass_matrix). It says: “The modes are "normal" in the sense that they move independently.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The Rayleigh quotient gives the lowest vibration frequency
+
+**Remember:** The lowest frequency squared is the least restoring energy per unit inertia.
+
+*Makes the theorem clean to state or prove.* MSC 70J10 (Modal analysis in linear vibration theory). arXiv math-ph. Level 2: later undergraduate.
+
+**Definition.** For a nonzero displacement u, the vibration Rayleigh quotient is (u·Ku)/(u·Mu). Here K measures the restoring force and M measures inertia. Both are symmetric positive definite, meaning their quadratic forms are positive on nonzero displacements.
+
+**Problem.** For Mq̈+Kq=0, the least squared frequency of a vibration with fixed shape equals the minimum of the vibration Rayleigh quotient.
+
+**How the definition helps.** In our own calculation, the quotient is a weighted average of squared frequencies, so it cannot fall below the smallest. The spectral theorem supplies vibration shapes perpendicular in the mass inner product u·Mv. Choosing a shape with the lowest frequency attains the bound.
+
+**Wikipedia:** [Rayleigh quotient](https://en.wikipedia.org/wiki/Rayleigh_quotient). It says: “This is immediate after observing that the Rayleigh quotient is a weighted average of eigenvalues of M”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Positive stiffness removes the drifting zero mode
+
+**Remember:** Zero stiffness can leave free drift instead of an oscillation.
+
+*Rules out counterexamples.* MSC 70J25 (Stability for problems in linear vibration theory), 70J10. arXiv math-ph. Level 2: later undergraduate.
+
+**Definition.** A stiffness matrix K is positive definite if every nonzero displacement u has u·Ku&gt;0. Positive semidefinite stiffness instead allows this value to be zero. Assume symmetric K and a symmetric positive definite mass matrix M.
+
+**Problem.** Every solution of Mq̈+Kq=0 with positive definite stiffness is a sum of bounded sinusoidal motions.
+
+**How the definition helps.** In our own explanation, positive stiffness makes each squared frequency positive, so each normal coordinate solves an oscillator equation. The work is diagonalizing stiffness in coordinates where the mass matrix is the identity. Our own example is a freely translating mass with K=0, which can drift forever at constant nonzero speed.
+
+**Wikipedia:** [Normal mode](https://en.wikipedia.org/wiki/Normal_mode). It says: “The most general motion of a linear system is a superposition of its normal modes.”
 
 **Sources:** none listed. No primary source with a working link was found.
 

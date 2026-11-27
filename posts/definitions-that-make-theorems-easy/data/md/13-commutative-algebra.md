@@ -16,6 +16,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### The sum of coprime ideals makes their intersection a product
+
+**Remember:** Split one to write every common member as a sum of products.
+
+*True by definition.* MSC 13A15 (Ideals and multiplicative ideal theory in commutative rings). arXiv math.AC. Level 1: early undergraduate.
+
+**Definition.** Ideals I and J are coprime if their sum is the whole ring. Equivalently, 1 = u + v for some u in I and v in J. Their product IJ consists of finite sums of terms with one factor from each ideal.
+
+**Problem.** In a commutative ring with 1, the product of two coprime ideals equals their intersection.
+
+**How the definition helps.** Coprimality splits 1 as u + v, so any common element x splits as xu + xv (our own). Both terms belong to IJ because x belongs to both ideals (our own). In reverse, each term of a product of ideals belongs to both ideals (our own). For integers, the work moves to Bézout's identity, which gives the sum condition from coprimality (our own).
+
+**Paper or page:** [Product of Coprime Ideals equals Intersection](https://proofwiki.org/wiki/Product_of_Coprime_Ideals_equals_Intersection). It says: “Then their product equals their intersection: 𝔞𝔟 = 𝔞 ∩ 𝔟”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Prime characteristic makes Frobenius additive
 
 **Remember:** In prime characteristic, the middle binomial terms vanish.
@@ -82,6 +98,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Polynomial degree makes long division Euclidean over a field
+
+**Remember:** Long division stops at zero or a smaller degree.
+
+*Makes the theorem clean to state or prove.* MSC 13F07 (Euclidean rings and generalizations), 13F20. arXiv math.AC. Level 1: early undergraduate.
+
+**Definition.** A Euclidean size on an integral domain assigns a nonnegative integer to each nonzero element. For every dividend a and nonzero divisor b, some quotient q leaves a remainder a − bq of zero or of smaller size than b. For polynomials over a field, choose the degree as the size.
+
+**Problem.** The ring of polynomials in one variable over a field is a Euclidean domain.
+
+**How the definition helps.** Polynomial long division gives precisely the required inequality for degree (our own). The work moves to the division theorem, which uses inverses of nonzero leading coefficients to cancel the largest remaining term (our own).
+
+**Paper or page:** [Polynomial Forms over Field is Euclidean Domain](https://proofwiki.org/wiki/Polynomial_Forms_over_Field_is_Euclidean_Domain). It says: “Then F\[X\] is a Euclidean domain.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Formal power series need no convergence
 
 **Remember:** A formal power series is just its list of coefficients.
@@ -99,6 +131,56 @@
 **Sources:**
 
 - [I. Niven, Formal power series, The American Mathematical Monthly 76 (1969), 871–889, doi:10.1080/00029890.1969.12000359](https://doi.org/10.1080/00029890.1969.12000359)
+
+### Cancellation makes every finite integral domain a field
+
+**Remember:** On a finite set, an injective multiplication map must reach one.
+
+*True by definition.* MSC 13G05 (Integral domains). arXiv math.AC. Level 1: early undergraduate.
+
+**Definition.** An integral domain is a nonzero commutative ring with 1 where multiplication by a nonzero element sends distinct inputs to distinct outputs. Equivalently, two nonzero elements always have a nonzero product.
+
+**Problem.** Every finite integral domain is a field.
+
+**How the definition helps.** Multiplying by a nonzero element gives as many distinct outputs as inputs, so every element of the finite ring occurs (our own). The input giving 1 is an inverse (our own). To derive cancellation from the product rule, subtract equal products and factor out their common nonzero factor (our own).
+
+**Paper or page:** [Finite Ring with No Proper Zero Divisors is Field](https://proofwiki.org/wiki/Finite_Ring_with_No_Proper_Zero_Divisors_is_Field). It says: “Then R is a field.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A nontrivial idempotent splits a ring into two factors
+
+**Remember:** An idempotent and its complement pick out two independent factors.
+
+*Makes the theorem clean to state or prove.* MSC 13A15 (Ideals and multiplicative ideal theory in commutative rings). arXiv math.AC. Level 2: later undergraduate.
+
+**Definition.** An idempotent in a ring is an element e with e² = e. It is nontrivial if it is neither 0 nor 1.
+
+**Problem.** A commutative ring with 1 is a product of two nonzero rings exactly when it has a nontrivial idempotent.
+
+**How the definition helps.** The identities e² = e and e(1 − e) = 0 make multiplication by e and by 1 − e complementary projections (our own). The map sending r to (er, (1 − e)r) therefore preserves products and sums (our own). Adding the two entries gives its inverse, and both factor rings are nonzero (our own). Conversely, (1, 0) is a nontrivial idempotent in any product of two nonzero rings (our own).
+
+**Paper or page:** [Direct Product iff Nontrivial Idempotent](https://proofwiki.org/wiki/Direct_Product_iff_Nontrivial_Idempotent). It says: “contains an idempotent element”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Adjoining an inverse reduces the strong Nullstellensatz to the weak one
+
+**Remember:** An inverse exists exactly where the value is nonzero.
+
+*Makes the theorem clean to state or prove.* MSC 13A15 (Ideals and multiplicative ideal theory in commutative rings). arXiv math.AG. Level 2: later undergraduate.
+
+**Definition.** For a polynomial f over a field k, adjoining an inverse means adding a variable t and the equation ft = 1.
+
+**Problem.** Let I be an ideal in a polynomial ring in finitely many variables over an algebraically closed field. If f vanishes at every common zero of I, some positive power of f belongs to I.
+
+**How the definition helps.** The equation ft = 1 tests whether f is nonzero at any common zero of I (our own). There is no such point, so the weak Nullstellensatz puts 1 in the ideal generated by I and ft − 1 (our own). For nonzero f, substitute t = 1/f in this identity and clear denominators (our own). For the zero polynomial the conclusion holds immediately (our own).
+
+**nLab:** [Nullstellensatz](https://ncatlab.org/nlab/show/Nullstellensatz). It says: “Typically the way that the strong Nullstellensatz is proved is by reduction to the so-called "weak Nullstellensatz" by means of the "Rabinowitsch trick".”
+
+**Sources:**
+
+- [J. L. Rabinowitsch, Zum Hilbertschen Nullstellensatz, Mathematische Annalen 102 (1930), p. 520.](https://link.springer.com/article/10.1007/BF01782361)
 
 ### Asking for a 1 gives every nonzero ring a maximal ideal
 
@@ -137,6 +219,54 @@
 
 - [M. F. Atiyah and I. G. Macdonald, Introduction to Commutative Algebra, Addison-Wesley (1969), Proposition 1.10; reissued by CRC Press (2018)](https://doi.org/10.1201/9780429493621)
 
+### Ideal absorption makes multiplication work on quotient classes
+
+**Remember:** An ideal absorbs every error caused by changing a representative.
+
+*Rules out counterexamples.* MSC 13A15 (Ideals and multiplicative ideal theory in commutative rings). arXiv math.AC. Level 2: later undergraduate.
+
+**Definition.** In a commutative ring R, an ideal I is an additive subgroup that contains rx whenever x belongs to I and r belongs to R.
+
+**Problem.** In a commutative ring, the ideals are exactly the kernels of ring maps. In particular, the quotient map by an ideal has that ideal as its kernel.
+
+**How the definition helps.** Absorption keeps products in the same class when either representative changes by an element of I (our own). The quotient map therefore preserves multiplication and sends exactly I to zero (our own). Conversely, a ring map sends every multiple of a kernel element to zero (our own). For the additive subgroup ℤ inside ℚ, 0 and 1 represent the same class, but multiplying by ½ separates them (our own).
+
+**Paper or page:** [Kernel of Ring Homomorphism is Ideal](https://proofwiki.org/wiki/Kernel_of_Ring_Homomorphism_is_Ideal), [Quotient Ring is Ring](https://proofwiki.org/wiki/Quotient_Ring_is_Ring). It says: “The kernel of φ is an ideal of R₁.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Ideal cosets make the first ring isomorphism theorem immediate
+
+**Remember:** Equal outputs mean the inputs differ by a kernel element.
+
+*True by definition.* MSC 13A15 (Ideals and multiplicative ideal theory in commutative rings). arXiv math.AC, math.RA. Level 2: later undergraduate.
+
+**Definition.** For an ideal I of R, define the quotient ring R/I by its classes of representatives. Two representatives have the same class exactly when their difference lies in I. Add and multiply classes by adding and multiplying representatives.
+
+**Problem.** For a ring map φ from R, the quotient R/ker φ is isomorphic to the image of φ. The kernel ker φ is the set of elements that φ sends to zero.
+
+**How the definition helps.** Using classes makes the inputs with one output into a single element of the quotient (our own). Indeed, φ(a) equals φ(b) exactly when φ sends a − b to zero (our own). Sending each class to that output gives a bijection onto the image and preserves both ring operations (our own). The construction requires checking that the operations give the same classes for every choice of representatives (our own).
+
+**Paper or page:** [First Isomorphism Theorem/Rings](https://proofwiki.org/wiki/First_Isomorphism_Theorem/Rings). It says: “Im φ ≅ R / ker φ”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Ideal quotients give equations for the closure of a difference
+
+**Remember:** Multiply by equations for the part you want to remove.
+
+*Makes the theorem clean to state or prove.* MSC 13A15 (Ideals and multiplicative ideal theory in commutative rings). arXiv math.AG. Level 2: later undergraduate.
+
+**Definition.** The ideal quotient I : J consists of polynomials f such that fg belongs to I for every g in J. Write V(I) for the common zeros of I.
+
+**Problem.** Over an algebraically closed field, if I is radical, I : J is the vanishing ideal of V(I) outside V(J). Its zero set is the Zariski closure of that difference.
+
+**How the definition helps.** The products fg test f exactly at points where some g in J is nonzero (our own). At every other point the products vanish anyway (our own). The strong Nullstellensatz says that vanishing on V(I) is the same as belonging to I because I is radical (our own).
+
+**Wikipedia:** [Ideal quotient](https://en.wikipedia.org/wiki/Ideal_quotient). It says: “The ideal quotient corresponds to set difference in algebraic geometry.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Maximal ideals are exactly the ideals whose quotient is a field
 
 **Remember:** The whole ring and the trivial ring are too simple, and both are excluded.
@@ -153,6 +283,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Radical ideals leave no nonzero nilpotents in their quotients
+
+**Remember:** An element whose power vanishes in the quotient must already vanish there.
+
+*Rules out counterexamples.* MSC 13A15 (Ideals and multiplicative ideal theory in commutative rings). arXiv math.AC. Level 2: later undergraduate.
+
+**Definition.** In a commutative ring with 1, call an ideal radical if it contains every element that has a positive power in the ideal. Equivalently, the ideal equals its radical, the set of all elements with such a power. An element is nilpotent if some positive power is zero.
+
+**Problem.** The quotient ring R/I has no nonzero nilpotent elements exactly when I is radical.
+
+**How the definition helps.** The radical condition rules out exactly the representatives whose classes would be nonzero and nilpotent (our own). A class vanishes when its representative belongs to I, and its power vanishes when the corresponding power belongs to I (our own). For example, 2 is nonzero modulo 4 but its square is zero (our own).
+
+**Paper or page:** [Radical Ideal iff Quotient Ring is Reduced](https://proofwiki.org/wiki/Radical_Ideal_iff_Quotient_Ring_is_Reduced). It says: “the quotient ring R / J is a reduced ring.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The nilradical as an intersection of primes detects nilpotent coefficients
 
 **Remember:** Reduce modulo each prime, where every nonzero polynomial has nonzero powers.
@@ -166,6 +312,38 @@
 **How the definition helps.** The prime ideal definition lets us test nilpotence in quotient rings with no nonzero nilpotent polynomials. If f is nilpotent, its image modulo each prime is zero because the quotient is an integral domain, so each coefficient lies in every prime (our own proof). Conversely, a finite sum of nilpotent terms is nilpotent. The work behind the prime ideal definition uses Zorn’s lemma to find a prime avoiding every power of a nonnilpotent element.
 
 **Wikipedia:** [Nilradical of a ring](https://en.wikipedia.org/wiki/Nilradical_of_a_ring). It says: “The nilradical of a commutative ring is the intersection of all prime ideals.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The quotient mapping property makes successive ring quotients collapse
+
+**Remember:** Taking two quotients kills only what the larger ideal requires.
+
+*True by definition.* MSC 13A15 (Ideals and multiplicative ideal theory in commutative rings). arXiv math.AC, math.RA. Level 2: later undergraduate.
+
+**Definition.** The quotient by I has a map from R that sends I to zero. Every ring map from R that sends I to zero factors uniquely through this map.
+
+**Problem.** Let J and K be ideals of R with J contained in K. Then first quotienting by J and then by the image of K gives a ring isomorphic to R/K.
+
+**How the definition helps.** Both constructions have the same mapping property for maps that send K to zero (our own). Such a map factors first through R/J and then through the quotient by the image of K (our own). Uniqueness makes the resulting maps between the two constructions inverses (our own). The work lies in proving the mapping property for quotients built from classes (our own).
+
+**Paper or page:** [Third Isomorphism Theorem/Rings](https://proofwiki.org/wiki/Third_Isomorphism_Theorem/Rings). It says: “(2): (R / J) / (K / J) ≅ R / K”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Units generate the whole ring and avoid every maximal ideal
+
+**Remember:** A nonunit generates a proper ideal, which lies in a maximal ideal.
+
+*True by definition.* MSC 13A15 (Ideals and multiplicative ideal theory in commutative rings). arXiv math.AC. Level 2: later undergraduate.
+
+**Definition.** In a commutative ring with 1, the principal ideal (a) consists of all multiples of a. A unit has a multiplicative inverse, or equivalently, generates the whole ring. A maximal ideal is a proper ideal contained in no larger proper ideal.
+
+**Problem.** In a commutative ring with 1, an element is a unit exactly when it belongs to no maximal ideal.
+
+**How the definition helps.** A unit belongs to no proper ideal because its multiples include 1 (our own). A nonunit generates a proper ideal, so it lies in a maximal ideal (our own). The work moves to the theorem that every proper ideal lies in a maximal ideal (our own).
+
+**Paper or page:** [Element of Unital Commutative Algebra Invertible iff not Contained in Maximal Ideal](https://proofwiki.org/wiki/Element_of_Unital_Commutative_Algebra_Invertible_iff_not_Contained_in_Maximal_Ideal). It says: “there does not exist a maximal ideal M with a ∈ M.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -186,6 +364,22 @@
 **Sources:**
 
 - [ProofWiki, Maximal Ideal of Commutative and Unitary Ring is Prime Ideal](https://proofwiki.org/wiki/Maximal_Ideal_of_Commutative_and_Unitary_Ring_is_Prime_Ideal)
+
+### Preserving one makes field maps into nonzero rings injective
+
+**Remember:** A map that keeps one cannot send an invertible element to zero.
+
+*Rules out counterexamples.* MSC 13B10 (Morphisms of commutative rings). arXiv math.AC, math.RA. Level 2: later undergraduate.
+
+**Definition.** A unital ring map sends 1 to 1 as well as preserving addition and multiplication. Some definitions of ring map do not require this extra rule.
+
+**Problem.** Every unital ring map from a field into a nonzero ring is injective.
+
+**How the definition helps.** Preserving 1 rules out the zero map because 1 differs from 0 in the target (our own). Each nonzero field element has an inverse, and their images still multiply to 1 (our own). Thus only zero maps to zero, which makes the map injective (our own). Without the rule, the zero map from ℚ to ℚ gives a counterexample (our own).
+
+**Paper or page:** [Ring Homomorphism from Field is Monomorphism or Zero Homomorphism](https://proofwiki.org/wiki/Ring_Homomorphism_from_Field_is_Monomorphism_or_Zero_Homomorphism). It says: “φ is a monomorphism (that is, φ is injective)”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Sending 1 to 1 makes preimages of prime ideals prime
 
@@ -301,6 +495,38 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Inverting every nonzero element makes fraction fields the smallest extensions
+
+**Remember:** A map that keeps denominators nonzero already determines what fractions mean.
+
+*True by definition.* MSC 13B30 (Rings of fractions and localization for commutative rings). arXiv math.AC. Level 2: later undergraduate.
+
+**Definition.** For an integral domain D, the fraction field is a field containing D in which every element is a fraction of elements of D. Equivalently, every identity-preserving map from D to a commutative ring that makes all nonzero elements of D invertible extends uniquely to the fraction field.
+
+**Problem.** Every embedding of an integral domain into a field extends uniquely to an embedding of its fraction field.
+
+**How the definition helps.** An embedding into a field sends every nonzero element to a unit, so the mapping property gives the extension (our own). The extension is injective because it preserves 1 and its source is a field (our own). The work moves to constructing fractions and checking that a/b must map to the quotient of the two images (our own).
+
+**nLab:** [localization of a ring](https://ncatlab.org/nlab/show/localization+of+a+ring), [field of fractions](https://ncatlab.org/nlab/show/field+of+fractions). It says: “every field K ⊃ D contains the subfield isomorphic to Q(D)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Inverting outside a prime ideal leaves just one maximal ideal
+
+**Remember:** At a prime ideal, every fraction with numerator outside it is a unit.
+
+*Makes the theorem clean to state or prove.* MSC 13B30 (Rings of fractions and localization for commutative rings), 13A15. arXiv math.AC. Level 2: later undergraduate.
+
+**Definition.** A prime ideal P is a proper ideal such that a product in P must have a factor in P. To localize a commutative ring with 1 at P, allow fractions whose denominators lie outside P. Primality keeps products of denominators outside P.
+
+**Problem.** The localization of a commutative ring at a prime ideal has exactly one maximal ideal. It consists of the fractions whose numerator lies in that prime ideal.
+
+**How the definition helps.** A fraction with numerator outside P has an inverse obtained by swapping numerator and denominator (our own). The fractions with numerator in P form the kernel of the natural map to the fraction field of R/P (our own). They form a proper ideal that contains all nonunits, so it is the only maximal ideal (our own). The work moves to the construction of fractions and the mapping property of localization (our own).
+
+**nLab:** [localization of a commutative ring](https://ncatlab.org/nlab/show/localization+of+a+commutative+ring), [prime ideal](https://ncatlab.org/nlab/show/prime+ideal). It says: “an ideal in a commutative ring is (classically) prime iff its complement is multiplicatively closed”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The field of fractions puts ℚ in every characteristic-zero field
 
 **Remember:** Fractions go wherever their numerators and denominators already go.
@@ -351,6 +577,88 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Annihilator ideals classify cyclic modules
+
+**Remember:** One generator leaves only its annihilator to record.
+
+*Makes the theorem clean to state or prove.* MSC 13C05 (Structure, classification theorems for modules and ideals in commutative rings). arXiv math.AC. Level 2: later undergraduate.
+
+**Definition.** A cyclic module consists of the multiples of one generator. Its annihilator is the ideal of scalars that kill every element.
+
+**Problem.** A cyclic module over a commutative ring R is isomorphic to R modulo its annihilator ideal. Two cyclic R-modules are isomorphic exactly when their annihilator ideals agree.
+
+**How the definition helps.** The annihilator gives one ideal to compare across cyclic modules. In our own proof over a commutative ring, a scalar kills the generator exactly when it kills every multiple. Sending each scalar to its multiple of the generator gives a surjection with this kernel. The first isomorphism theorem gives the quotient, and isomorphisms preserve annihilators.
+
+**Wikipedia:** [Cyclic module](https://en.wikipedia.org/wiki/Cyclic_module). It says: “is a module over a ring that is generated by one element.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Invariant factors count the least number of module generators
+
+**Remember:** Reduce modulo one prime common to all factors to count generators.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 13C05 (Structure, classification theorems for modules and ideals in commutative rings). arXiv math.AC. Level 2: later undergraduate.
+
+**Definition.** Over a principal ideal domain R, the invariant factor decomposition writes a finitely generated module as a direct sum of nonzero cyclic modules R/(d). Each scalar d divides the next, and d = 0 gives a free copy of R.
+
+**Problem.** Over a principal ideal domain, the least size of a generating set equals the number of nonzero summands in the invariant factor decomposition.
+
+**How the definition helps.** The divisibility order lets one prime test every summand when the first scalar is nonzero. In our own proof, reduce modulo a prime dividing that scalar to obtain one field dimension per summand. If all scalars are zero, dimension over the fraction field gives the same lower bound. One generator per summand attains the bound, including zero generators for the zero module.
+
+**Paper or page:** [Theorem 4.1. (Structure theorem, invariant form)](https://venhance.github.io/napkin/Napkin.pdf). It says: “Let R be a PID and let M be any finitely generated R-module.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Polynomial scalar action makes a surjective endomorphism invertible
+
+**Remember:** Let the endomorphism act as x and find its inverse polynomial.
+
+*True by definition.* MSC 13C05 (Structure, classification theorems for modules and ideals in commutative rings). arXiv math.AC. Level 2: later undergraduate.
+
+**Definition.** An endomorphism f is a linear map from a module to itself. Turn the module into an R\[x\]-module by making x act as f.
+
+**Problem.** A surjective endomorphism of a finitely generated module over a commutative ring is an isomorphism.
+
+**How the definition helps.** Polynomial multiplication turns the search for an inverse map into the equation xM = M. In our own proof, express each generator as x times a linear combination of the generators. The adjugate matrix identity then gives a polynomial 1 − xq(x) that kills M. Thus f composed with q(f) in either order is the identity.
+
+**Paper or page:** [Corollary 2.4. (Vasconcelos-Strooker Theorem)](https://math.uchicago.edu/~amathew/CRing.pdf). It says: “is onto, then it is injective.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Rank over the fraction field adds in exact sequences
+
+**Remember:** Pass to fractions and add dimensions.
+
+*True by definition.* MSC 13C05 (Structure, classification theorems for modules and ideals in commutative rings). arXiv math.AC. Level 2: later undergraduate.
+
+**Definition.** Over an integral domain, the rank of a finitely generated module is the largest size of a linearly independent family. Equivalently, it is the dimension of the vector space obtained by allowing nonzero scalars as denominators.
+
+**Problem.** If A is a submodule of M and both are finitely generated over an integral domain, then rank(M) = rank(A) + rank(M/A).
+
+**How the definition helps.** The fraction-field definition turns our own rank calculation into the dimension formula for vector spaces. Localization preserves exactness, so the vector space for M/A is the quotient of the spaces for M and A. Clearing denominators relates linear independence over the fraction field to independence over the domain.
+
+**Paper or page:** [Proposition 10.9.12.](https://stacks.math.columbia.edu/tag/00CS). It says: “Then S⁻¹L → S⁻¹M → S⁻¹N is also exact.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The unit test for the Jacobson radical gives Nakayama’s lemma
+
+**Remember:** An invertible scalar cannot kill a nonzero module.
+
+*Rules out counterexamples.* MSC 13C05 (Structure, classification theorems for modules and ideals in commutative rings). arXiv math.AC. Level 2: later undergraduate.
+
+**Definition.** In a commutative ring R, the Jacobson radical consists of the elements a for which every 1 − ra has a multiplicative inverse. Equivalently, it is the intersection of all maximal ideals.
+
+**Problem.** If M is finitely generated and I is an ideal in the Jacobson radical, then IM = M implies M = 0. Also, any lifts of generators of M/IM generate M.
+
+**How the definition helps.** The radical condition makes every element of 1 + I invertible. The determinant trick applied to a finite generating family produces such an element killing M, so M vanishes. Applying this result to the quotient by the chosen lifts proves the generator statement. Our own counterexample takes I = (3) and M = ℤ/2ℤ, where multiplication by 3 is the identity.
+
+**Paper or page:** [Lemma 10.20.1.](https://stacks.math.columbia.edu/tag/00DV). It says: “If IM = M, M is finite, and I ⊂ rad(R), then M = 0.”
+
+**Sources:**
+
+- [Gorô Azumaya, On maximally central algebras, Nagoya Mathematical Journal 2 (1951), Theorem 1.](https://doi.org/10.1017/S0027763000010114)
+
 ### Over a nonzero commutative ring, finite free modules have one rank
 
 **Remember:** Free rank is well defined, except over the zero ring.
@@ -371,6 +679,70 @@
 
 - [The Stacks Project Authors, The Stacks Project, Tag 0FJ7 (Algebra, Lemma 10.15.8)](https://stacks.math.columbia.edu/tag/0FJ7)
 - [The Stacks Project Authors, The Stacks Project, Tag 01C9 (Modules, Lemma 17.14.4)](https://stacks.math.columbia.edu/tag/01C9)
+
+### Saturation makes submodules split over a principal ideal domain
+
+**Remember:** Saturation leaves a torsion-free quotient, so the free quotient splits.
+
+*Rules out counterexamples.* MSC 13C10 (Projective and free modules and ideals in commutative rings). arXiv math.AC. Level 2: later undergraduate.
+
+**Definition.** A submodule N of M over a domain is saturated if rm ∈ N implies m ∈ N for every nonzero r. This excludes 2ℤ inside ℤ, since twice 1 lies in 2ℤ but 1 does not.
+
+**Problem.** Every saturated submodule of a finitely generated module over a principal ideal domain is a direct summand. That means it has a complementary submodule with which it forms a direct sum.
+
+**How the definition helps.** Saturation makes the quotient torsion-free, so the structure theorem over a principal ideal domain makes this finitely generated quotient free. In our own proof, lift each quotient basis vector to the original module. Their span complements N. Without saturation, the quotient ℤ/2ℤ cannot embed back into ℤ because ℤ has no element of order two.
+
+**Wikipedia:** [Free module](https://en.wikipedia.org/wiki/Free_module). It says: “For a finitely generated module over a PID (such as Z), the properties free, projective, flat, and torsion-free are equivalent.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Finite presentations count generators and relations separately
+
+**Remember:** Over a Noetherian ring, the kernel supplies finitely many relations.
+
+*True by definition.* MSC 13E05 (Commutative Noetherian rings and modules). arXiv math.AC. Level 2: later undergraduate.
+
+**Definition.** A finite presentation describes a module using finitely many generators and finitely many relations. Equivalently, it expresses the module as a finite-rank free module modulo a finitely generated submodule.
+
+**Problem.** Every finitely generated module over a commutative Noetherian ring has a finite presentation.
+
+**How the definition helps.** The quotient description turns the search for relations into a question about one submodule. In our own reduction, choose a free basis indexed by the given generators and map each basis element to its generator. The kernel records exactly their relations. Over a Noetherian ring every submodule of a finitely generated module is finitely generated.
+
+**Paper or page:** [Lemma 10.51.1.](https://stacks.math.columbia.edu/tag/00IK). It says: “Any finite R-module is of finite presentation.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Maximal counterexamples give Noetherian induction
+
+**Remember:** A maximal counterexample has no larger counterexample.
+
+*True by definition. Confidence: medium.* MSC 13E05 (Commutative Noetherian rings and modules). arXiv math.AC. Level 2: later undergraduate.
+
+**Definition.** A module is Noetherian if every increasing chain of submodules eventually stops growing. Equivalently, every nonempty family of submodules contains a member that no other member strictly contains.
+
+**Problem.** Suppose a property passes to each submodule whenever all strictly larger submodules have it. Then every submodule of a Noetherian module has the property.
+
+**How the definition helps.** The maximal-member definition gives a counterexample with no strictly larger counterexample if induction fails. In our own module version, the induction step then proves the property for that very submodule. The work lies in proving that the maximal-member condition equals the chain condition.
+
+**Paper or page:** [Proposition 2.16. (Noetherian Induction Principle)](https://math.uchicago.edu/~amathew/CRing.pdf). It says: “Suppose the inductive step: if all ideals in F strictly larger than I ∈ F satisfy P, then I satisfies P.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Stabilizing chains makes Noetherian modules closed under extensions
+
+**Remember:** Track each chain inside the submodule and in the quotient.
+
+*True by definition.* MSC 13E05 (Commutative Noetherian rings and modules). arXiv math.AC. Level 2: later undergraduate.
+
+**Definition.** A module is Noetherian if every increasing chain of submodules eventually stops growing. An equivalent definition requires each submodule to have a finite generating set.
+
+**Problem.** For a submodule A of M, the module M is Noetherian exactly when A and M/A are both Noetherian.
+
+**How the definition helps.** The chain definition lets us test growth inside A and in M/A. In our own proof, once both chains stop, every new element has the same image as an earlier element. Their difference belongs to the earlier intersection with A, so the original chain also stops. Conversely, chains in A are chains in M, and chains in M/A lift to chains in M.
+
+**Paper or page:** [Proposition 2.6.](https://math.uchicago.edu/~amathew/CRing.pdf). It says: “is an exact sequence of modules, then M is noetherian if and only if M′, M″ are.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Factoring ideals instead of numbers makes factorization unique
 
@@ -408,6 +780,22 @@
 
 - [T. Motzkin, The Euclidean algorithm, Bulletin of the American Mathematical Society 55 (1949) 1142–1146](https://doi.org/10.1090/S0002-9904-1949-09344-8)
 
+### Squared complex distance makes Gaussian division Euclidean
+
+**Remember:** Round both coordinates of the quotient to make the remainder smaller.
+
+*Makes the theorem clean to state or prove.* MSC 13F07 (Euclidean rings and generalizations), 11R04. arXiv math.AC. Level 2: later undergraduate.
+
+**Definition.** For a Gaussian integer a + bi, with a and b integers, use the norm a² + b² as its Euclidean size. This norm is squared complex distance from zero, so it is an integer even when the distance is not.
+
+**Problem.** The Gaussian integers admit division with remainder using the squared-distance norm. For each nonzero divisor, one can choose a quotient whose remainder has smaller norm than the divisor.
+
+**How the definition helps.** Rounding both coordinates of α/β for β ≠ 0 gives a Gaussian integer q within squared distance 1/2 (our own). The remainder α − βq therefore has norm at most half the norm of β, so it is smaller (our own). The work moves to checking that the norm is multiplicative and the rounding errors have absolute value at most 1/2 (our own).
+
+**Paper or page:** [Gaussian Integers form Euclidean Domain](https://proofwiki.org/wiki/Gaussian_Integers_form_Euclidean_Domain). It says: “Then ν is a Euclidean valuation on ℤ\[i\].”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Principal ideal domains are exactly the domains with a Dedekind–Hasse norm
 
 **Remember:** Euclidean division, but you may first multiply a by any p.
@@ -425,6 +813,38 @@
 **Sources:**
 
 - [John Greene, Principal ideal domains are almost Euclidean, American Mathematical Monthly 104 (1997) 154–156](https://doi.org/10.1080/00029890.1997.11990615)
+
+### Principal ideals turn irreducible elements into primes
+
+**Remember:** In a principal ideal domain, a larger ideal would give a smaller factor.
+
+*True by definition.* MSC 13F10 (Principal ideal rings), 13F15. arXiv math.AC. Level 2: later undergraduate.
+
+**Definition.** In an integral domain, a principal ideal (d) is the set of multiples of d. Call a nonzero nonunit p irreducible when its only divisors are units and unit multiples of p. Equivalently, (p) is maximal among proper principal ideals.
+
+**Problem.** Every irreducible element of a principal ideal domain is prime. That is, if it divides a product, it divides at least one factor.
+
+**How the definition helps.** The ideal definition turns irreducibility into maximality when every ideal is principal (our own). Every maximal ideal is prime, so a product in (p) has a factor in (p) (our own). Membership in (p) means divisibility by p (our own). The equivalence of definitions uses the fact that d divides p exactly when (d) contains (p) (our own).
+
+**Paper or page:** [Principal Ideal of Principal Ideal Domain is of Irreducible Element iff Maximal/Forward Implication](https://proofwiki.org/wiki/Principal_Ideal_of_Principal_Ideal_Domain_is_of_Irreducible_Element_iff_Maximal/Forward_Implication). It says: “Then (p) is a maximal ideal of D.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A reduced fraction in a unique factorization domain cannot hide integrality
+
+**Remember:** Clearing a monic equation forces the denominator to divide a numerator power.
+
+*Rules out counterexamples.* MSC 13F15 (Commutative rings defined by factorization properties (e.g., atomic, factorial, half-factorial)), 13B22. arXiv math.AC. Level 2: later undergraduate.
+
+**Definition.** Write a fraction a/b in lowest terms when a and b have no common prime factor. An element is integral over R if it satisfies a polynomial equation over R whose leading coefficient is 1.
+
+**Problem.** Every unique factorization domain is integrally closed. That means every fraction integral over the domain already belongs to the domain.
+
+**How the definition helps.** Clearing denominators in the equation forces b to divide a power of a (our own). A prime factor of b would then divide a, which contradicts lowest terms (our own). Thus b has no prime factor and is invertible (our own). The work moves to factorization into primes, which lets us cancel all common factors (our own).
+
+**Paper or page:** [Unique Factorization Domain is Integrally Closed](https://proofwiki.org/wiki/Unique_Factorization_Domain_is_Integrally_Closed). It says: “Then A is integrally closed.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Ascending chain conditions guarantee that factorizations into irreducibles exist
 
@@ -445,6 +865,24 @@
 - [E. Noether, Idealtheorie in Ringbereichen, Mathematische Annalen 83 (1921) 24–66](https://doi.org/10.1007/BF01464225)
 - [A. Grams, Atomic rings and the ascending chain condition for principal ideals, Mathematical Proceedings of the Cambridge Philosophical Society 75 (1974) 321–329](https://doi.org/10.1017/S0305004100048532)
 
+### Content separates the two kinds of prime factors in polynomials
+
+**Remember:** Factor the content in the ring and the primitive part over the fraction field.
+
+*Makes the theorem clean to state or prove.* MSC 13F15 (Commutative rings defined by factorization properties (e.g., atomic, factorial, half-factorial)), 13F20. arXiv math.AC. Level 2: later undergraduate.
+
+**Definition.** The content of a nonzero polynomial over a unique factorization domain is a greatest common divisor of its coefficients. Dividing out the content leaves a primitive polynomial, whose coefficients have no common nonunit divisor.
+
+**Problem.** Every nonzero polynomial over a unique factorization domain factors into its content and primitive irreducible polynomials. This gives unique factorization in the polynomial ring, up to order and invertible factors.
+
+**How the definition helps.** Content separates constant prime factors from primitive factors of positive degree (our own). Unique factorization in the base ring determines the constant factors (our own). Gauss’s lemma transfers factorization of the primitive part to the fraction field, where polynomial factorization is unique (our own).
+
+**Wikipedia:** [Irreducible polynomial](https://en.wikipedia.org/wiki/Irreducible_polynomial). It says: “a non-zero constant and a finite number of non-constant irreducible primitive polynomials.”
+
+**Paper or page:** [Polynomials in Integers is Unique Factorization Domain](https://proofwiki.org/wiki/Polynomials_in_Integers_is_Unique_Factorization_Domain). It says: “Then ℤ\[X\] is a unique factorization domain.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Counting factorizations up to units makes them unique
 
 **Remember:** Units are the signs of a ring: they move freely between factors.
@@ -458,6 +896,40 @@
 **How the definition helps.** Uniqueness can only be true if factorizations that differ by units count as the same. For example (our own), 6 = 2·3 = (−2)·(−3) in ℤ, and 2 = (1+i)(1−i) = −i(1+i)² in the Gaussian integers. The definition does not make every ring a unique factorization domain. In ℤ\[√−5\], 6 = 2·3 = (1+√−5)(1−√−5) gives two truly different factorizations.
 
 **Wikipedia:** [Irreducible element](https://en.wikipedia.org/wiki/Irreducible_element), [Unique factorization domain](https://en.wikipedia.org/wiki/Unique_factorization_domain). It says: “If the irreducible factors of every non-zero non-unit element are uniquely defined, up to the multiplication by a unit, then the integral domain is called a unique factorization domain”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Prime exponents give greatest common divisors and least common multiples
+
+**Remember:** Take smaller exponents for common divisors and larger ones for common multiples.
+
+*True by definition.* MSC 13F15 (Commutative rings defined by factorization properties (e.g., atomic, factorial, half-factorial)). arXiv math.AC. Level 2: later undergraduate.
+
+**Definition.** In a unique factorization domain, fix one prime from each class of primes that differ by a unit factor. The exponent of that prime in a nonzero element is its number of copies in the factorization.
+
+**Problem.** Two nonzero elements of a unique factorization domain have a greatest common divisor and a least common multiple. Their prime exponents are the smaller and larger exponents, respectively.
+
+**How the definition helps.** Under this description, a divides b exactly when every prime exponent of a is at most its exponent in b (our own). Minimum exponents therefore give a common divisor that every common divisor divides (our own). Maximum exponents give the corresponding common multiple (our own). The work moves to proving that prime factorizations exist and are unique apart from order and unit factors (our own).
+
+**nLab:** [unique factorization domain](https://ncatlab.org/nlab/show/unique+factorization+domain). It says: “freely generated by irreducible principal ideals.”
+
+**Paper or page:** [UFD is GCD Domain](https://proofwiki.org/wiki/UFD_is_GCD_Domain). It says: “Then A is a GCD domain.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Prime factorizations are unique because primes divide individual factors
+
+**Remember:** Primality matches one factor at a time, and cancellation finishes the proof.
+
+*True by definition.* MSC 13F15 (Commutative rings defined by factorization properties (e.g., atomic, factorial, half-factorial)). arXiv math.AC. Level 2: later undergraduate.
+
+**Definition.** Call a domain factorial if every nonzero nonunit is a product of prime elements. A prime element is nonzero, is not invertible, and divides a product only if it divides a factor. The usual definition uses irreducible factors, which cannot split into two nonunits.
+
+**Problem.** A domain has unique factorization into irreducibles, apart from order and unit factors, exactly when every nonzero nonunit factors into primes. In particular, every principal ideal domain has unique factorization.
+
+**How the definition helps.** A prime in one factorization divides a prime in the other, so they differ by an invertible factor and cancel (our own). Repeating this step matches all factors (our own). Conversely, uniqueness lets us compare the factors of a nonzero product ab with those of pc whenever ab = pc (our own). For principal ideal domains, the remaining work proves that irreducibles are prime and that increasing chains of ideals stabilize (our own).
+
+**Paper or page:** [Lemma 10.120.13.](https://stacks.math.columbia.edu/tag/034V), [Euclid's Lemma for Unique Factorization Domain](https://proofwiki.org/wiki/Euclid's_Lemma_for_Unique_Factorization_Domain). It says: “A principal ideal domain is a unique factorization domain.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -515,6 +987,22 @@
 **Sources:**
 
 - [ProofWiki, Ring of Polynomial Forms is not necessarily Isomorphic to Ring of Polynomial Functions](https://proofwiki.org/wiki/Ring_of_Polynomial_Forms_is_not_necessarily_Isomorphic_to_Ring_of_Polynomial_Functions)
+
+### Setting x equal to a makes the polynomial factor theorem immediate
+
+**Remember:** Setting x equal to a sets every multiple of x minus a to zero.
+
+*True by definition.* MSC 13F20 (Polynomial rings and ideals; rings of integer-valued polynomials), 13A15. arXiv math.AC. Level 2: later undergraduate.
+
+**Definition.** For a commutative ring R with 1 and an element a of R, impose x = a by forming the quotient R\[x\]/(x − a). In this quotient, polynomials represent the same class when their difference is a multiple of x − a.
+
+**Problem.** Over a commutative ring with 1, a polynomial vanishes at a exactly when it is a multiple of x − a.
+
+**How the definition helps.** The relation x = a makes every polynomial equal to the constant given by its value at a (our own). Evaluation preserves constants and sends multiples of x − a to zero, so distinct constants remain distinct in the quotient (our own). Thus vanishing at a means precisely that the polynomial represents the zero class (our own). This replaces division with remainder by the construction of the quotient ring (our own).
+
+**Paper or page:** [Polynomial Factor Theorem](https://proofwiki.org/wiki/Polynomial_Factor_Theorem). It says: “ξ ∈ K: P(ξ) = 0 ⇔ P(x) = (x − ξ) Q(x)”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Dual numbers define the formal derivative of power series
 
@@ -602,6 +1090,90 @@
 - [ProofWiki, Null Ring iff Characteristic is One](https://proofwiki.org/wiki/Null_Ring_iff_Characteristic_is_One)
 - [ProofWiki, Characteristic of Field is Zero or Prime](https://proofwiki.org/wiki/Characteristic_of_Field_is_Zero_or_Prime)
 
+### Counting surviving monomials gives the Hilbert function
+
+**Remember:** Count monomials that division leaves untouched, one degree at a time.
+
+*Makes the theorem clean to state or prove.* MSC 13P10 (Gröbner bases; other bases for ideals and modules (e.g., Janet and border bases)), 14A10. arXiv math.AG. Level 2: later undergraduate.
+
+**Definition.** A homogeneous ideal has generators whose terms all have the same degree within each generator. Its quotient has a Hilbert function giving the vector space dimension in each degree. Standard monomials are those outside the ideal generated by the greatest monomials of all nonzero elements of the original ideal.
+
+**Problem.** For a homogeneous ideal, the Hilbert function in degree d equals the number of standard monomials of degree d, for any monomial order.
+
+**How the definition helps.** The standard monomials give a basis of the quotient, and each has a definite degree (our own). Thus the degree-d monomials in this basis count the dimension in degree d (our own). The basis theorem comes from polynomial division by a Gröbner basis (our own).
+
+**Wikipedia:** [Gröbner basis](https://en.wikipedia.org/wiki/Gr%C3%B6bner_basis). It says: “dᵢ is the number of monomials of degree i that are not multiple of any leading monomial in the Gröbner basis.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Elimination orders let a Gröbner basis keep only the desired variables
+
+**Remember:** If the largest monomial stays, the whole polynomial stays.
+
+*Makes the theorem clean to state or prove.* MSC 13P10 (Gröbner bases; other bases for ideals and modules (e.g., Janet and border bases)), 13A15. arXiv math.AG. Level 2: later undergraduate.
+
+**Definition.** An elimination order ranks every monomial containing a variable to be removed above every monomial using only retained variables. The elimination ideal consists of all polynomials in the original ideal using only the retained variables.
+
+**Problem.** Let G be a Gröbner basis over a field for an elimination order. The members of G using only retained variables form a Gröbner basis of the elimination ideal.
+
+**How the definition helps.** A polynomial whose greatest monomial uses only retained variables must use only those variables throughout (our own). Every nonzero polynomial in the elimination ideal has a greatest monomial divisible by a basis leading monomial (our own). That divisor uses only retained variables, so the corresponding basis member survives elimination (our own).
+
+**Wikipedia:** [Gröbner basis](https://en.wikipedia.org/wiki/Gr%C3%B6bner_basis). It says: “G ∩ K\[Y\] is a Gröbner basis of I ∩ K\[Y\]”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Leading monomial ideals explain why finite Gröbner bases exist
+
+**Remember:** Generate the monomial ideal first, then lift its generators.
+
+*Makes the theorem clean to state or prove.* MSC 13P10 (Gröbner bases; other bases for ideals and modules (e.g., Janet and border bases)), 13A15. arXiv math.AG. Level 2: later undergraduate.
+
+**Definition.** The leading monomial ideal of I is generated by the greatest monomial of each nonzero polynomial in I. A Gröbner basis is a list of polynomials in I whose greatest monomials generate that ideal.
+
+**Problem.** Every ideal of polynomials over a field in finitely many variables has a finite Gröbner basis for any monomial order.
+
+**How the definition helps.** A finite set of leading monomials generating the leading ideal supplies a finite Gröbner basis (our own). Hilbert’s basis theorem gives a finite subset of the original leading monomials that generates their ideal (our own). Choose one polynomial of I with each selected leading monomial (our own). Division by these polynomials leaves zero remainder on I (our own).
+
+**Paper or page:** [Hilbert's Basis Theorem/Corollary](https://proofwiki.org/wiki/Hilbert's_Basis_Theorem/Corollary). It says: “Then A\[x₁, …, xₙ\] is also a Noetherian ring.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Leading monomial ideals show why Buchberger’s algorithm stops
+
+**Remember:** Each new remainder strictly enlarges the monomial ideal.
+
+*Makes the theorem clean to state or prove.* MSC 13P10 (Gröbner bases; other bases for ideals and modules (e.g., Janet and border bases)). arXiv math.AG. Level 2: later undergraduate.
+
+**Definition.** Fix a monomial order, which chooses a greatest monomial in each polynomial. The leading monomial ideal of a list is the ideal generated by these greatest monomials.
+
+**Problem.** Buchberger’s algorithm terminates after finitely many additions to its starting list, for polynomials in finitely many variables over a field.
+
+**How the definition helps.** Each nonzero remainder added by Buchberger’s algorithm has a leading monomial outside the current leading monomial ideal. Each addition therefore enlarges the ideal. Dickson’s lemma says such a chain of monomial ideals must stop growing. A finite final list has only finitely many pairs to test (our own).
+
+**Wikipedia:** [Buchberger's algorithm](https://en.wikipedia.org/wiki/Buchberger%27s_algorithm). It says: “The algorithm terminates because it is consistently increasing the size of the monomial ideal generated by the leading terms of our set F”
+
+**Sources:**
+
+- [Bruno Buchberger, 1965 doctoral thesis, English translation in Journal of Symbolic Computation 41 (2006), pp. 475–511.](https://doi.org/10.1016/j.jsc.2005.09.007)
+
+### Leading monomials make division remainders unique
+
+**Remember:** Keep exactly the monomials the leading terms cannot divide.
+
+*True by definition.* MSC 13P10 (Gröbner bases; other bases for ideals and modules (e.g., Janet and border bases)), 13A15. arXiv math.AG. Level 2: later undergraduate.
+
+**Definition.** Fix an order of monomials in a polynomial ring over a field. The leading monomial is the greatest monomial present. A list in an ideal is a Gröbner basis if every nonzero ideal member has a leading monomial divisible by one from the list.
+
+**Problem.** Division by a Gröbner basis gives the same remainder for every polynomial in a given class modulo I. The monomials not divisible by any basis leading monomial give a vector space basis of the quotient.
+
+**How the definition helps.** A difference of two distinct remainders has no monomial divisible by a basis leading monomial, so it lies outside I (our own). Ordinary generators can give different remainders for the same class (our own). Division gives a remainder in every class, and uniqueness makes the surviving monomials linearly independent (our own).
+
+**Wikipedia:** [Gröbner basis](https://en.wikipedia.org/wiki/Gr%C3%B6bner_basis). It says: “the monomials that are irreducible by G form a basis of the F-vector space R/I.”
+
+**Sources:**
+
+- [Bruno Buchberger, 1965 doctoral thesis, English translation in Journal of Symbolic Computation 41 (2006), pp. 475–511.](https://doi.org/10.1016/j.jsc.2005.09.007)
+
 ### Making reduced Gröbner bases monic gives every ideal one canonical basis
 
 **Remember:** Scale to leading coefficient 1, and the Gröbner basis is unique.
@@ -620,6 +1192,72 @@
 
 - [B. Buchberger, Bruno Buchberger's PhD thesis 1965: An algorithm for finding the basis elements of the residue class ring of a zero dimensional polynomial ideal, Journal of Symbolic Computation (2006), English translation](https://doi.org/10.1016/j.jsc.2005.09.007)
 
+### Pairwise leading term cancellation gives Buchberger’s test
+
+**Remember:** Test the smallest clash between each pair of leading terms.
+
+*Makes the theorem clean to state or prove.* MSC 13P10 (Gröbner bases; other bases for ideals and modules (e.g., Janet and border bases)). arXiv math.AG. Level 2: later undergraduate.
+
+**Definition.** Fix a monomial order in a polynomial ring over a field. For two nonzero polynomials, multiply each by a term so both leading terms become their least common monomial multiple with coefficient 1. Their difference is the S-polynomial.
+
+**Problem.** A finite list of nonzero polynomials is a Gröbner basis of its ideal exactly when every pair’s S-polynomial reduces to zero by the list.
+
+**How the definition helps.** Any cancellation between two leading terms is a monomial multiple of the cancellation in their S-polynomial, up to a scalar (our own). If the tests pass, Buchberger’s proof uses them to rewrite sums whose greatest terms cancel (our own). The work is to split simultaneous cancellations into pairs and show that each rewrite lowers the order or removes a greatest term (our own).
+
+**Wikipedia:** [Gröbner basis](https://en.wikipedia.org/wiki/Gr%C3%B6bner_basis). It says: “This polynomial, called S-polynomial by Buchberger, is the difference of the one-step reductions of the least common multiple x²y of the leading monomials of g₁ and g₂”
+
+**Sources:**
+
+- [Bruno Buchberger, 1965 doctoral thesis, English translation in Journal of Symbolic Computation 41 (2006), pp. 475–511.](https://doi.org/10.1016/j.jsc.2005.09.007)
+
+### Well ordering keeps polynomial division from running forever
+
+**Remember:** Each division step must lower the largest remaining monomial.
+
+*Rules out counterexamples.* MSC 13P10 (Gröbner bases; other bases for ideals and modules (e.g., Janet and border bases)). arXiv math.AG. Level 2: later undergraduate.
+
+**Definition.** A monomial order ranks products of powers of the variables. It is a total order that respects multiplication and has no infinite strictly descending sequence.
+
+**Problem.** Multivariate polynomial division over a field terminates for any finite list of nonzero divisors and any monomial order.
+
+**How the definition helps.** Each step removes the greatest remaining monomial and replaces it only with smaller ones (our own). Multiplication compatibility guarantees this when a divisor is used, and well ordering forbids an endless descent (our own). Ranking x above x² above x³ instead makes division of x by x − x² repeat forever (our own).
+
+**Wikipedia:** [Monomial order](https://en.wikipedia.org/wiki/Monomial_order). It says: “monomial orders are often required to be well-orders, since this ensures the multivariate division procedure will terminate.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Evaluating the derivative at the roots gives the discriminant
+
+**Remember:** The two directions of each root pair produce one signed square.
+
+*True by definition.* MSC 13P15 (Solving polynomial systems; resultants), 12D05. arXiv math.AC. Level 2: later undergraduate.
+
+**Definition.** For a complex polynomial f with leading coefficient one, list its roots with repetitions. Its discriminant multiplies the squared differences over all pairs of list positions. The resultant of f and g multiplies the values of g at all positions.
+
+**Problem.** Let f be monic of degree n ≥ 2 over the complex numbers. Its discriminant equals the resultant of f and f′ times (−1) raised to n(n − 1)/2.
+
+**How the definition helps.** The product rule expresses f′ at each root as the product of its differences from all other list entries. In our own proof, multiplying over the list uses both orders of every pair, giving one minus sign per pair. Repeated entries give zero on both sides. The Sylvester determinant formula identifies this root product with the coefficient-based resultant.
+
+**Wikipedia:** [Resultant](https://en.wikipedia.org/wiki/Resultant). It says: “a₀⁻¹ (−1)⁽ⁿ⁽ⁿ⁻¹⁾⁄²⁾ resₓ(f(x), f′(x))”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Homogeneous resultants commute with substitutions that lower ordinary degrees
+
+**Remember:** Keep the matrix size fixed when the top coefficient disappears.
+
+*Rules out counterexamples.* MSC 13P15 (Solving polynomial systems; resultants). arXiv math.AC. Level 2: later undergraduate.
+
+**Definition.** A homogeneous polynomial of degree d in x and y uses terms whose exponents add to d. Set y = 1 in each of two such polynomials and form their Sylvester determinant. Define their homogeneous resultant using the original degrees, padding the coefficient lists with leading zeros when needed.
+
+**Problem.** Substituting into the coefficients of a homogeneous resultant gives the homogeneous resultant of the substituted forms, even when the ordinary degrees fall.
+
+**How the definition helps.** Fixed list lengths keep each coefficient in the same matrix position after substitution. Since a determinant uses only sums and products, substitution commutes with it. In our own example, tx + y and tx + 2y have resultant t, which becomes zero at t = 0. Setting y = 1 and rebuilding from the two resulting constants would give the empty determinant, equal to one.
+
+**Wikipedia:** [Resultant](https://en.wikipedia.org/wiki/Resultant). It says: “Res(φ(P), φ(Q)) = φ(Res(P,Q)).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Root differences make resultants detect common roots and multiply
 
 **Remember:** A product of root gaps is zero exactly when some gap is zero.
@@ -633,6 +1271,54 @@
 **How the definition helps.** The product definition makes a common root exactly a zero factor, and it makes multiplication split the factors into two groups. The root list of BC combines the lists of B and C, its degree adds and its leading coefficients multiply, giving the stated product. The work is to prove that this product equals the Sylvester determinant, so it can be computed from coefficients without finding roots. Taking the root product as the definition is our own framing.
 
 **Wikipedia:** [Resultant](https://en.wikipedia.org/wiki/Resultant). It says: “The resultant of two polynomials with coefficients in an integral domain is zero if and only if they have a common root in an algebraically closed field containing the coefficients.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The discriminant of a product separates within-factor and cross-factor differences
+
+**Remember:** Separate root pairs inside each factor from pairs across the factors.
+
+*True by definition.* MSC 13P15 (Solving polynomial systems; resultants), 12D05. arXiv math.AC. Level 2: later undergraduate.
+
+**Definition.** For polynomials with leading coefficient one, list the complex roots with their repetitions. The discriminant multiplies squared differences over all pairs of positions in one list. The resultant multiplies differences between entries in two lists, always subtracting the entry from the second list.
+
+**Problem.** For two such polynomials A and B, the discriminant of AB equals their two discriminants multiplied by the square of their resultant.
+
+**How the definition helps.** Every pair of positions in the combined list lies within one list or crosses between the two. The within-list pairs give the two discriminants, and the cross-list pairs give the squared resultant. Our own comparison uses the equivalence with coefficient-based definitions to identify these root products with their determinant formulas.
+
+**Wikipedia:** [Discriminant](https://en.wikipedia.org/wiki/Discriminant). It says: “discₓ(R) = discₓ(P) Resₓ(P,Q)² discₓ(Q)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The Sylvester determinant gives the degree in each coefficient list
+
+**Remember:** Count columns from each polynomial to read off its degree.
+
+*True by definition.* MSC 13P15 (Solving polynomial systems; resultants). arXiv math.AC. Level 2: later undergraduate.
+
+**Definition.** For polynomials A and B of positive degrees d and e, define the resultant as the determinant of the Sylvester matrix. Its first e columns list coefficients of A multiplied by x to powers from e − 1 down to zero. Its last d columns use B with powers from d − 1 down to zero.
+
+**Problem.** Every nonzero term of the resultant uses exactly e coefficients of A and d coefficients of B, counting repetitions.
+
+**How the definition helps.** Every term in the determinant takes one entry from each column. Exactly e columns contain coefficients of A and d contain coefficients of B. Our own comparison uses the root-product formula to connect this determinant with the other definition of the resultant.
+
+**Wikipedia:** [Resultant](https://en.wikipedia.org/wiki/Resultant). It says: “having e columns of aᵢ and d columns of bⱼ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The Sylvester determinant puts the resultant in the polynomial ideal
+
+**Remember:** A determinant times the constant polynomial lies in the matrix image.
+
+*True by definition.* MSC 13P15 (Solving polynomial systems; resultants). arXiv math.AC. Level 2: later undergraduate.
+
+**Definition.** Let A and B have positive degrees d and e over a commutative ring with identity. The Sylvester matrix sends the coefficients of U followed by those of V to the coefficients of AU + BV. Use descending powers in each list, with e slots for U and d for V, and define the resultant as the determinant.
+
+**Problem.** The resultant equals AU + BV for some U of degree below e and V of degree below d, allowing zero polynomials.
+
+**How the definition helps.** The matrix identity with the adjugate places the determinant times every coefficient vector in the image. In our own proof, take the vector for the constant 1. The adjugate is the transpose of the cofactor matrix, and its product with the original matrix is the determinant times the identity. The root-product formula requires a separate proof.
+
+**Wikipedia:** [Resultant](https://en.wikipedia.org/wiki/Resultant). It says: “the resultant of two polynomials belongs to the ideal generated by these polynomials.”
 
 **Sources:** none listed. No primary source with a working link was found.
 

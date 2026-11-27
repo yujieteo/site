@@ -80,6 +80,38 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### A section makes a short exact sequence a direct sum
+
+**Remember:** Subtract the section of the image to land in the kernel.
+
+*True by definition.* MSC 16D10 (General module theory in associative algebras). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** Suppose a surjective module map p from B to C has kernel A. A section is a linear map s from C to B with p(s(c)) = c for every c. The sequence splits if it admits a section.
+
+**Problem.** If s is a section of p, then B is isomorphic to A ⊕ C by an isomorphism carrying p to projection onto C.
+
+**How the definition helps.** A section supplies the C-coordinate inside B, so we need no separate search for a complementary submodule. Our own coordinate formula sends b to the pair (b − s(p(b)), p(b)). Its first entry lies in A because p kills the difference. The inverse sends (a,c) to a + s(c).
+
+**Paper or page:** [Lemma 12.5.10.](https://stacks.math.columbia.edu/tag/010G). It says: “Given a morphism s : C → B right inverse to B → C”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Composition series make module length additive
+
+**Remember:** Lift the quotient series and append it to the submodule series.
+
+*True by definition.* MSC 16D10 (General module theory in associative algebras). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** A composition series is a finite chain from zero to a module whose successive quotients are simple. A simple module is nonzero and has no nonzero proper submodule. Length counts the quotients in a composition series.
+
+**Problem.** If a submodule A and its quotient M/A have composition series, then M has length equal to the sum of their lengths.
+
+**How the definition helps.** Counting simple quotients lets us join two chains without searching for a longest chain. In our own construction, lift the quotient series to M and append it to the series for A. The lifted steps have the original simple quotients. The Jordan–Hölder theorem ensures every composition series gives the same count.
+
+**Paper or page:** [Lemma 10.52.3.](https://stacks.math.columbia.edu/tag/00IV). It says: “then the length of M is the sum of the lengths of M′ and M″.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Requiring 1x = x makes ℤ-modules exactly the abelian groups
 
 **Remember:** If 1 acts as the identity, n times x means x added n times.
@@ -93,6 +125,22 @@
 **How the definition helps.** The rule 1x = x forces 2x = x + x, 3x = x + x + x, and so on, so the addition fixes the ℤ-action. Without the rule, the zero action nx = 0 would be a second ℤ-module structure on every nonzero abelian group (our own). Little work is left: the result is nearly the definition.
 
 **Wikipedia:** [Module (mathematics)](https://en.wikipedia.org/wiki/Module_%28mathematics%29). It says: “every abelian group is a module over the ring of integers Z in a unique way.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The quotient property makes maps into a module left exact
+
+**Remember:** Maps that kill a submodule are exactly maps from the quotient.
+
+*True by definition.* MSC 16D10 (General module theory in associative algebras). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** The quotient B/A identifies elements whose difference lies in the submodule A. Equivalently, every linear map from B that kills A factors uniquely through the quotient map.
+
+**Problem.** For any module M, composition with the quotient map identifies maps from B/A to M with maps from B to M vanishing on A. This is left exactness of Hom(−, M).
+
+**How the definition helps.** The mapping property gives existence and uniqueness of the factorization directly. In our own explanation, restricting a map to A gives zero exactly when the map kills A. The work lies in proving the mapping property from the construction using cosets.
+
+**Paper or page:** [Proposition 3.4.](https://math.uchicago.edu/~amathew/CRing.pdf). It says: “is a left-exact contravariant functor.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -113,6 +161,38 @@
 **Sources:**
 
 - [E. Noether, Idealtheorie in Ringbereichen, Mathematische Annalen 83 (1921) 24–66](https://doi.org/10.1007/BF01464225)
+
+### Free modules keep only finite sums
+
+**Remember:** Finite support lets every basis assignment extend by a finite sum.
+
+*Rules out counterexamples.* MSC 16D40 (Free, projective, and flat modules and ideals in associative algebras). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** Over a nonzero ring R with identity, the free module on a set S uses functions S → R with finite support. This means only finitely many values are nonzero. Each basis function is 1 at its chosen point and 0 elsewhere.
+
+**Problem.** For any R-module M, every function S → M extends uniquely to a linear map from the free module.
+
+**How the definition helps.** Finite support makes each assigned image a finite sum of scalar multiples, and linearity forces that sum. In our own counterexample, take all integer sequences and identify sequences that differ in only finitely many places. The map sending each sequence to its class agrees with the zero map on every coordinate vector. The all-ones sequence has nonzero class.
+
+**Paper or page:** [Universal Property of Free Module on Set](https://proofwiki.org/wiki/Universal_Property_of_Free_Module_on_Set). It says: “Then there exists a unique R-module morphism”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Free modules turn generators into surjections
+
+**Remember:** Send the free basis to generators to get a surjection.
+
+*True by definition.* MSC 16D40 (Free, projective, and flat modules and ideals in associative algebras). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** The free module on a set S has one basis element for each member of S. Equivalently, each assignment on those elements extends uniquely to a linear map into any module over the same ring.
+
+**Problem.** A module is generated by a family indexed by S exactly when the induced map from the free module on S is onto.
+
+**How the definition helps.** The extension property gives the map without a coordinate formula. Its image consists of all finite linear combinations of the assigned elements. These fill the target precisely when the family generates it. Proving the extension property for the basis construction accounts for the work.
+
+**Paper or page:** [Characterisation of Spanning Set through Free Module Indexed by Set](https://proofwiki.org/wiki/Characterisation_of_Spanning_Set_through_Free_Module_Indexed_by_Set). It says: “Let Ψ: R⁽ᴵ⁾ → M be the morphism given by Universal Property of Free Module Indexed by Set.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Sums of simple modules stay semisimple under quotients
 

@@ -65,6 +65,54 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Consecutive blocks turn regrouping into taking a subsequence
+
+**Remember:** Short blocks of small terms keep intermediate sums close to endpoint sums.
+
+*Rules out counterexamples.* MSC 40A05 (Convergence and divergence of series and sequences). arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** Group a series into consecutive finite nonempty blocks that cover all its terms in order. The grouped series adds the total of each block as one term.
+
+**Problem.** Grouping a convergent real series into consecutive blocks preserves its sum. Conversely, convergence of the grouped series suffices if the block lengths are bounded and the original terms tend to zero.
+
+**How the definition helps.** Bounded block lengths and vanishing terms keep every partial sum close to the preceding block endpoint sum (our own). Thus a limit for the endpoint sums is also a limit for all partial sums (our own). In the forward direction, endpoint sums form a subsequence of the original partial sums and inherit their limit. Pairing consecutive terms in 1 − 1 + 1 − 1 + ⋯ shows why the converse needs a condition on the terms.
+
+**Wikipedia:** [Series (mathematics)](https://en.wikipedia.org/wiki/Series_%28mathematics%29). It says: “a subsequence of the partial sums of the original series”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Finite exceptions make sequence limits independent of order
+
+**Remember:** Reordering a finite set of exceptions keeps it finite.
+
+*True by definition.* MSC 40A05 (Convergence and divergence of series and sequences). arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** A real sequence converges to L if, for every ε &gt; 0, only finitely many indices have terms at distance at least ε from L.
+
+**Problem.** Reordering a convergent sequence or keeping any infinite selection of its terms in order preserves its limit. If the odd and even terms converge to the same limit, the full sequence does too.
+
+**How the definition helps.** Reordering the indices or selecting some of them leaves only finitely many exceptions for each ε (our own). Combining the odd and even exceptions also gives a finite set (our own). This agrees with the usual definition because finitely many exceptions all occur before some index, and each index has finitely many predecessors (our own).
+
+**Paper or page:** [Rearrangement of Convergent Sequence Converges to Same Limit](https://proofwiki.org/wiki/Rearrangement_of_Convergent_Sequence_Converges_to_Same_Limit). It says: “Let π : ℕ → ℕ be a permutation.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Finite sums taken from any indices make comparison immediate
+
+**Remember:** Every finite sum of the smaller terms has a larger counterpart.
+
+*True by definition.* MSC 40A05 (Convergence and divergence of series and sequences). arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** For a series of nonnegative terms, take the sums over all finite sets of indices. Define the series sum as their least upper bound if they are bounded, and as +∞ otherwise.
+
+**Problem.** If 0 ≤ aₙ ≤ bₙ at every index, the sum of the smaller terms is at most the sum of the larger terms. A finite sum for the larger series therefore guarantees convergence of the smaller series.
+
+**How the definition helps.** Each finite sum of smaller terms is bounded by the corresponding sum of larger terms (our own). Taking least upper bounds preserves this inequality, including when the larger sum is infinite (our own). For agreement with ordinary partial sums, each finite selection fits within some initial segment (our own). Nonnegativity makes its sum at most that initial sum, and the initial sums increase to their supremum (our own).
+
+**Paper or page:** [Positive-Term Generalized Sum Converges iff Supremum](https://proofwiki.org/wiki/Positive-Term_Generalized_Sum_Converges_iff_Supremum). It says: “x is the supremum of:”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Independent tails prevent false convergence
 
 **Remember:** Both tails must settle before their sums can be added.
@@ -81,6 +129,38 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Pairwise tail closeness makes one convergent subsequence enough
+
+**Remember:** One late term near the limit brings the whole tail close.
+
+*Rules out counterexamples.* MSC 40A05 (Convergence and divergence of series and sequences). arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** A sequence is Cauchy if for each positive ε, any two terms sufficiently far out differ by less than ε. This tests all late pairs, not just adjacent terms.
+
+**Problem.** A real Cauchy sequence with a subsequence converging to L also converges to L.
+
+**How the definition helps.** The Cauchy condition puts every sufficiently late term within ε/2 of one sufficiently late subsequence term (our own). Choose that term within ε/2 of L, so each late term lies within ε of L (our own). Small adjacent gaps alone allow repeated trips from zero to one and back, with step size 1/k on trip k (our own).
+
+**Paper or page:** [Convergent Subsequence of Cauchy Sequence/Metric Space](https://proofwiki.org/wiki/Convergent_Subsequence_of_Cauchy_Sequence/Metric_Space). It says: “Let xₙ be a Cauchy sequence in A.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Partial sums turn series convergence into a test of late blocks
+
+**Remember:** Small late blocks mean the partial sums stay close.
+
+*Rules out counterexamples.* MSC 40A05 (Convergence and divergence of series and sequences). arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** A series satisfies the Cauchy condition if, for every ε &gt; 0, all sufficiently late finite blocks have sums of magnitude below ε. A block consists of consecutive terms.
+
+**Problem.** A real series converges exactly when it satisfies the Cauchy condition. Its terms must then tend to zero.
+
+**How the definition helps.** Each block sum is the difference of two partial sums, so small late blocks make late partial sums close together (our own). Completeness of the real numbers makes this equivalent to convergence of the partial sums (our own). Single-term blocks show that individual terms must tend to zero (our own). In the harmonic series, the terms tend to zero but each block from n + 1 to 2n sums to at least 1/2 (our own).
+
+**Paper or page:** [Cauchy's Convergence Criterion for Series](https://proofwiki.org/wiki/Cauchy's_Convergence_Criterion_for_Series). It says: “\|aₙ₊₁ + aₙ₊₂ + ⋯ + aₘ\| &lt; ε”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Root tests accept zero terms
 
 **Remember:** Take roots when zero terms break the ratios.
@@ -94,6 +174,54 @@
 **How the definition helps.** Taking roots compares each term to a geometric term without dividing by another term (our own). Take terms that are zero at even indices and 2⁻ⁿ at odd indices (our own). Their ratios are undefined infinitely often (our own). The work is a geometric comparison below one, or showing that terms fail to tend to zero above one (our own).
 
 **Paper or page:** [Nth Root Test](https://proofwiki.org/wiki/Nth_Root_Test). It says: “If this limit is less than one, the series converges absolutely.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Tail bounds reveal the largest subsequential limit
+
+**Remember:** Each tail gets close to the upper limit somewhere.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 40A05 (Convergence and divergence of series and sequences), 26A03. arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** A tail consists of all terms from one index onward. Its supremum is its least upper bound. The upper limit of a bounded real sequence is the greatest lower bound of these tail suprema.
+
+**Problem.** The upper limit of a bounded real sequence is the largest limit of any of its convergent subsequences.
+
+**How the definition helps.** Every tail has terms arbitrarily close to its supremum, so it supplies candidates for a convergent subsequence (our own). The tail suprema decrease to the upper limit by the convergence theorem for bounded monotone sequences (our own). At step n, start beyond the previous index and beyond n, then choose a term within 1/n of that tail’s supremum (our own). These choices converge to the upper limit, and every tail supremum bounds every subsequence limit from above (our own).
+
+**Paper or page:** [Bolzano-Weierstrass Theorem](https://proofwiki.org/wiki/Bolzano-Weierstrass_Theorem). It says: “Every bounded sequence of real numbers has a convergent subsequence.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Two-sided bounds give the same convergence without a ratio limit
+
+**Remember:** Bound the ratio in both directions to compare both sums.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 40A05 (Convergence and divergence of series and sequences). arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** Two positive sequences have the same order of growth if their termwise ratios eventually stay between two fixed positive constants. The usual limit comparison test asks for a positive finite ratio limit instead.
+
+**Problem.** Two positive series whose terms have the same order of growth either both converge or both diverge.
+
+**How the definition helps.** The two bounds let us use direct comparison in both directions (our own). The work is proving the direct comparison test for nonnegative series and checking the two bounds (our own). A positive finite ratio limit supplies them, but alternating ratios of 1 and 2 also work (our own).
+
+**Paper or page:** [Limit Comparison Test](https://proofwiki.org/wiki/Limit_Comparison_Test). It says: “are either both convergent or both divergent.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Viewing a series as its partial sums makes telescoping immediate
+
+**Remember:** Successive differences recover the terms from their partial sums.
+
+*True by definition.* MSC 40A05 (Convergence and divergence of series and sequences). arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** Define a series by its partial sums, starting with an empty sum of zero. Its terms are the differences between consecutive partial sums, and its sum is the limit of the partial sums.
+
+**Problem.** The series of successive differences bₙ − bₙ₋₁ converges exactly when the real sequence beginning at b₀ converges. Its sum is the sequence limit minus b₀.
+
+**How the definition helps.** The partial sums of the differences are exactly the original terms minus b₀ (our own). Adding the first n differences cancels every intermediate term and leaves bₙ − b₀ (our own). Thus taking differences recovers the term list, while taking partial sums recovers the series in its alternative definition (our own).
+
+**Wikipedia:** [Series (mathematics)](https://en.wikipedia.org/wiki/Series_%28mathematics%29). It says: “Some authors directly identify a series with its sequence of partial sums.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -147,6 +275,24 @@
 
 - [Alfred Pringsheim, Ueber die Convergenz unendlicher Producte, Mathematische Annalen 33 (1888) 119–154](https://doi.org/10.1007/bf01444113)
 
+### Bounded multipliers preserve uniform convergence
+
+**Remember:** Bound both factors before passing to the product limit.
+
+*Rules out counterexamples.* MSC 40A30 (Convergence and divergence of series and sequences of functions). arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** A real function is bounded if one finite number bounds its absolute value at every input.
+
+**Problem.** Suppose real functions fₙ converge uniformly to f on a set. For every bounded real function g on that set, gfₙ converges uniformly to gf.
+
+**How the definition helps.** One bound M for \|g\| limits the product error to M times the original error everywhere (our own argument). A counterexample takes g(x) = x and fₙ(x) = 1/n on ℝ. The original errors tend uniformly to zero, but the product errors \|x\|/n are unbounded.
+
+**nLab:** [uniform convergence](https://ncatlab.org/nlab/show/uniform+convergence). It says: “What is uniform about this convergence is that the bound N(ε) is required to work for all x ∈ X (hence uniformly over x).”
+
+**Paper or page:** [Uniformly Convergent Sequence Multiplied with Function](https://proofwiki.org/wiki/Uniformly_Convergent_Sequence_Multiplied_with_Function). It says: “Let g: X → 𝕂 be bounded.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Power series converge locally uniformly
 
 **Remember:** Stay within the radius, with room to spare.
@@ -162,6 +308,40 @@
 **Wikipedia:** [Power series](https://en.wikipedia.org/wiki/Power_series). It says: “it converges uniformly on every compact subset of the disc of convergence.”
 
 **Paper or page:** [Power Series Converges Uniformly within Radius of Convergence](https://proofwiki.org/wiki/Power_Series_Converges_Uniformly_within_Radius_of_Convergence). It says: “Then S is uniformly convergent on D = {x: \|x − ξ\| ≤ ρ}.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Uniform continuity preserves uniform convergence under composition
+
+**Remember:** One threshold handles every input to the outer function.
+
+*Rules out counterexamples.* MSC 40A30 (Convergence and divergence of series and sequences of functions). arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** A function is uniformly continuous if each positive output tolerance has one input distance threshold. Any two inputs closer than that threshold give outputs within the tolerance.
+
+**Problem.** Let gₙ and g take values in the domain of a uniformly continuous function h. If gₙ → g uniformly, then h ∘ gₙ → h ∘ g uniformly.
+
+**How the definition helps.** One threshold for h works at every pair gₙ(x), g(x) (our own argument). Uniform convergence puts each such pair within this threshold once n is large enough. A counterexample uses h(t) = t² and gₙ(x) = x + 1/n on ℝ. The squared values differ from x² by 2x/n + 1/n², which is unbounded for each n.
+
+**Paper or page:** [Uniformly Continuous Function Preserves Uniform Convergence](https://proofwiki.org/wiki/Uniformly_Continuous_Function_Preserves_Uniform_Convergence). It says: “Let gₙ converge to g uniformly on X as n → ∞. Let f: A₁ → A₂ be uniformly continuous on A₁.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Uniform convergence lets the evaluation point move
+
+**Remember:** One error bound works even when the point moves.
+
+*Rules out counterexamples.* MSC 40A30 (Convergence and divergence of series and sequences of functions). arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** Uniform convergence to f means that each positive error tolerance has one cutoff index. After that index, every function differs from f by less than the tolerance everywhere.
+
+**Problem.** Suppose continuous functions fₙ converge uniformly to f on a metric space. If xₙ → x in that space, then fₙ(xₙ) → f(x).
+
+**How the definition helps.** Uniform convergence controls the error even at the moving point xₙ (our own argument). The uniform limit theorem gives continuity of f, so f(xₙ) tends to f(x). A counterexample uses xⁿ on \[0, 1\] at xₙ = 1 − 1/n. The sampled values tend to 1/e, while the pointwise limit at 1 equals 1.
+
+**nLab:** [uniform convergence](https://ncatlab.org/nlab/show/uniform+convergence). It says: “What is uniform about this convergence is that the bound N(ε) is required to work for all x ∈ X (hence uniformly over x).”
+
+**Paper or page:** [Uniformly Convergent Sequence Evaluated on Convergent Sequence](https://proofwiki.org/wiki/Uniformly_Convergent_Sequence_Evaluated_on_Convergent_Sequence). It says: “Let ⟨aₙ⟩ be a convergent sequence in K with limit a ∈ K.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -182,6 +362,22 @@
 **Sources:**
 
 - [Imre Lakatos, Mathematics, Science and Epistemology (Philosophical Papers vol. 2), Cambridge University Press (1978), chapter 3](https://doi.org/10.1017/CBO9780511624926)
+
+### Uniform limits keep uniform continuity
+
+**Remember:** One good approximant supplies a threshold for every pair.
+
+*Rules out counterexamples.* MSC 40A30 (Convergence and divergence of series and sequences of functions). arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** Uniform convergence uses one cutoff index for all points at each positive error tolerance. Uniform continuity uses one distance threshold for all pairs of points at each positive tolerance.
+
+**Problem.** The uniform limit of uniformly continuous real functions on a metric space is uniformly continuous.
+
+**How the definition helps.** Uniform convergence lets one function approximate the limit within a third of the tolerance everywhere (our own argument). Its uniform continuity makes its values at nearby points differ by less than another third. The proof adds the three errors by the triangle inequality. With only pointwise convergence, xⁿ on \[0, 1\] has a discontinuous limit.
+
+**nLab:** [uniform convergence](https://ncatlab.org/nlab/show/uniform+convergence). It says: “What is uniform about this convergence is that the bound N(ε) is required to work for all x ∈ X (hence uniformly over x).”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Cesàro averaging gives cycle means
 
@@ -231,6 +427,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Ignoring errors that vanish makes sequence limits preserve arithmetic
+
+**Remember:** Replace each convergent sequence with its constant representative.
+
+*True by definition. Confidence: medium.* MSC 40A05 (Convergence and divergence of series and sequences). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** Put two bounded sequences in the same class if their termwise difference tends to zero. Add and multiply classes by adding and multiplying their sequences term by term. Convergence to L means belonging to the class of the constant sequence L.
+
+**Problem.** The termwise sum and product of convergent real sequences converge to the sum and product of their limits, respectively.
+
+**How the definition helps.** Each convergent sequence shares a class with its constant limit, so class arithmetic reduces to arithmetic on constants (our own). Agreement with ordinary convergence follows because the difference from the constant sequence tends to zero (our own). The work is proving that changing representatives preserves sums and products (our own). Changing one factor adds its vanishing error times a bounded factor, which still tends to zero (our own).
+
+**Paper or page:** [Sum of Convergent Sequences in Topological Vector Space is Convergent](https://proofwiki.org/wiki/Sum_of_Convergent_Sequences_in_Topological_Vector_Space_is_Convergent). It says: “xₙ + yₙ → x + y”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Positive increments justify Stolz averages
 
 **Remember:** Positive steps make long slopes average the short slopes.
@@ -247,6 +459,90 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Summable changes in the weights give Dirichlet’s convergence test
+
+**Remember:** Move the differences onto the weights, where their magnitudes add.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 40A05 (Convergence and divergence of series and sequences). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** To weight a series, multiply each term by its own weight. The weights have finite total variation if the absolute differences between consecutive weights have a finite sum.
+
+**Problem.** Suppose a series has bounded partial sums and its weights have finite total variation. The weighted series converges if either the weights tend to zero or the original series converges.
+
+**How the definition helps.** Finite total variation makes the sum of partial sums times successive weight differences absolutely convergent, since the partial sums are bounded (our own). Summation by parts leaves only the last weight times the last partial sum to check (our own). This product tends to zero if the weights do (our own). Otherwise, when the original series converges, both factors converge because finite total variation makes the weights a Cauchy sequence (our own).
+
+**Wikipedia:** [Dirichlet's test](https://en.wikipedia.org/wiki/Dirichlet%27s_test). It says: “Since the magnitudes of the partial sums Bₙ are bounded by some M”
+
+**Sources:**
+
+- [P. G. L. Dirichlet, Démonstration d’un théorème d’Abel (1862), pp. 253–255](https://www.numdam.org/item/JMPA_1862_2_7__253_0/)
+
+### Tail bounds let the ratio test work without a ratio limit
+
+**Remember:** Bound every late ratio on one side of one.
+
+*Makes the theorem clean to state or prove.* MSC 40A05 (Convergence and divergence of series and sequences). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** A tail contains all ratios from one index onward. The upper limit is the greatest lower bound of the tail suprema, where each supremum is a least upper bound. The lower limit reverses these bounds, and both definitions allow infinite values.
+
+**Problem.** For eventually nonzero terms, form each ratio by dividing the next term’s magnitude by the current one. An upper limit below 1 guarantees absolute convergence, while a lower limit above 1 guarantees divergence.
+
+**How the definition helps.** An upper limit below 1 puts every sufficiently late ratio below one fixed positive number q &lt; 1 (our own). The remaining magnitudes are bounded by a geometric series with finite sum, so their series converges absolutely (our own). A lower limit above 1 puts every late ratio above 1, preventing the terms from tending to zero (our own).
+
+**Wikipedia:** [Ratio test](https://en.wikipedia.org/wiki/Ratio_test). It says: “cases where the limit L fails to exist, if limit superior and limit inferior are used.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Taking closed tails makes the set of subsequential limits closed
+
+**Remember:** Close each tail, then keep only the points in every tail.
+
+*True by definition.* MSC 40A05 (Convergence and divergence of series and sequences), 26A03. arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** Define a cluster point of a sequence as a point in the closure of every tail. A point lies in a tail's closure if every open interval around the point contains a term of that tail. A tail contains all terms from a given index onward.
+
+**Problem.** The cluster points of a real sequence form a closed set. They are exactly the limits of its convergent subsequences.
+
+**How the definition helps.** The cluster points form an intersection of closed sets, which is itself closed (our own). Each subsequence visits every interval around its limit arbitrarily late, so its limit belongs to every tail closure (our own). Conversely, choose successive terms within 1/n of a cluster point, always passing the last chosen index (our own). This proves agreement with the usual definition by subsequences (our own).
+
+**nLab:** [limit point](https://ncatlab.org/nlab/show/limit+point). It says: “the closure of A is the set of all adherent points of A”
+
+**Sources:**
+
+- [Walter Rudin, Principles of Mathematical Analysis, 3rd ed. (1976), Theorem 3.7](https://www.lehman.edu/faculty/rbettiol/lehman_teaching/2020mat320/baby_Rudin.pdf)
+
+### Absolute convergence makes improper integrals independent of gapped cutoffs
+
+**Remember:** If the whole absolute tail is small, any selection of it is small.
+
+*Rules out counterexamples. Confidence: medium.* MSC 40A10 (Convergence and divergence of integrals), 26A42. arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** An improper integral on \[a, ∞) converges absolutely when the integrals of \|f\| from a to R have a finite limit. For a finite union of bounded intervals, integrate by adding the integrals over its pieces with disjoint interiors.
+
+**Problem.** Suppose f is locally Riemann integrable and its improper integral on \[a, ∞) converges absolutely. Integrals over finite interval unions in \[a, ∞) approach this value uniformly as the initial segment they contain grows.
+
+**How the definition helps.** The absolute tail bounds every signed tail, so the Cauchy criterion gives ordinary improper convergence (our own). The same absolute tail bounds what any finite union containing the chosen initial interval can omit (our own). The ordinary integral of sin(x)/x on \[1, ∞) converges (our own). Adding only its positive half-waves far out can make the cut integrals arbitrarily large (our own).
+
+**Wikipedia:** [Improper integral](https://en.wikipedia.org/wiki/Improper_integral). It says: “unconditional convergence turns out to be equivalent to absolute convergence.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Cauchy tails make Dirichlet’s test a bound on one interval
+
+**Remember:** A bounded primitive multiplies a weight that tends to zero.
+
+*True by definition.* MSC 40A10 (Convergence and divergence of integrals), 26A42. arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** In the Cauchy form of improper convergence, integrals over \[u, v\] must tend uniformly to zero for v &gt; u as u grows. This replaces the limit of integrals taken from a fixed starting point.
+
+**Problem.** Let f be continuous on \[a, ∞) with a bounded primitive F, meaning F′ = f. If g is continuously differentiable, nonnegative, nonincreasing, and tends to zero, then the improper integral of fg converges.
+
+**How the definition helps.** The Cauchy definition replaces evaluation of a limit from a fixed endpoint with one estimate on every distant interval (our own). Let M bound \|F\| and integrate by parts on \[u, v\] (our own). The endpoint terms contribute at most M(g(u) + g(v)), and the remaining integral contributes at most M(g(u) − g(v)) (our own). The resulting bound 2Mg(u) tends to zero independently of v (our own).
+
+**Wikipedia:** [Dirichlet's test](https://en.wikipedia.org/wiki/Dirichlet%27s_test). It says: “An analogous statement for convergence of improper integrals is proven using integration by parts.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Improper integrals as suprema of partial areas make comparison immediate
 
 **Remember:** If every partial area of f is smaller, so is the supremum.
@@ -260,6 +556,22 @@
 **How the definition helps.** With the supremum definition, the claim is that a pointwise bound passes to suprema (our own). Each partial area of f is at most the matching partial area of g, so at most the supremum for g (our own). The usual definition first needs both one-sided limits to exist (our own). The work moves into showing that the definitions agree for f ≥ 0. Partial areas grow with the subinterval, and a bounded increasing function has a limit (our own).
 
 **Paper or page:** [Comparison Test for Improper Integral](https://proofwiki.org/wiki/Comparison_Test_for_Improper_Integral). It says: “If the improper integral of φ over I exists, then so does that of f.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Uniformly small tails let limits pass through improper integrals
+
+**Remember:** Control every far tail by the same bound.
+
+*Rules out counterexamples. Confidence: medium.* MSC 40A10 (Convergence and divergence of integrals), 26A42. arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** A tail integral starts at u and ends at some v &gt; u. Uniformly small integral tails mean every positive tolerance admits one cutoff beyond which all such integrals have absolute value below that tolerance. The same cutoff must work for every function in the sequence.
+
+**Problem.** Suppose locally Riemann integrable functions on \[a, ∞) converge uniformly to f on every closed bounded subinterval and have uniformly small integral tails. Their improper integrals exist and converge to the improper integral of f.
+
+**How the definition helps.** The tail condition gives the Cauchy test for each improper integral and passes to f on each finite tail interval (our own). Cut at one large point for every function, and use uniform convergence on the retained interval (our own). Without tail control, the functions equal to 1/n on \[0, n\] and zero elsewhere converge uniformly to zero but have integral one (our own).
+
+**Wikipedia:** [Riemann integral](https://en.wikipedia.org/wiki/Riemann_integral). It says: “The sequence (fₙ) converges uniformly to the zero function”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -361,6 +673,110 @@
 
 - [Mario A. Natiello and Hernán Gustavo Solari, On the removal of infinities from divergent series, Philosophy of Mathematics Education Journal 29 (2015) 1–11](https://hdl.handle.net/11336/46148)
 
+### A uniform error bound lets two limits change order
+
+**Remember:** A bound valid near x stays valid when the input tends to x.
+
+*Rules out counterexamples.* MSC 40A30 (Convergence and divergence of series and sequences of functions). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** Uniform convergence gives each positive error tolerance one cutoff index that works at every input. An accumulation point has other domain points arbitrarily close to it.
+
+**Problem.** Suppose real functions fₙ converge uniformly to f and each fₙ has a finite limit at the same accumulation point x. Then f has a limit at x, and it equals the limit of the individual limits.
+
+**How the definition helps.** Uniform convergence gives a common bound on differences between late functions that survives taking their limits at x (our own argument). In our own proof, the individual limits therefore form a Cauchy sequence and converge by completeness of the real numbers. Approximating f by one late function then gives that same limit at x. For xⁿ on (0, 1), the two orders of limits at 1 give 1 and 0.
+
+**nLab:** [uniform convergence](https://ncatlab.org/nlab/show/uniform+convergence). It says: “What is uniform about this convergence is that the bound N(ε) is required to work for all x ∈ X (hence uniformly over x).”
+
+**Sources:**
+
+- [Walter Rudin, Principles of Mathematical Analysis, 3rd ed. (1976), Theorem 7.11](https://www.lehman.edu/faculty/rbettiol/lehman_teaching/2020mat320/baby_Rudin.pdf)
+
+### Bounded variation keeps Abel multipliers from enlarging small tails
+
+**Remember:** Small partial sums stay small under weights with bounded total change.
+
+*Makes the theorem clean to state or prove.* MSC 40A30 (Convergence and divergence of series and sequences of functions), 30B10. arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** For a sequence of weights, its total variation is the sum of the magnitudes of the differences between consecutive weights. A common bound on this sum controls how much the weights change on any tail.
+
+**Problem.** A uniformly convergent series stays uniformly convergent under termwise multiplication by uniformly bounded weights with uniformly bounded total variation. In particular, if ∑ aₙ converges, then ∑ aₙxⁿ converges uniformly on \[0, 1\].
+
+**How the definition helps.** Total variation bounds all the weight differences that appear when summation by parts rewrites a tail. In our own proof, the largest absolute partial sum within the tail is multiplied by at most the weight bound plus the variation bound. Uniform convergence makes those partial sums uniformly small. For xⁿ on \[0, 1\], both the weights and their total variation are at most one.
+
+**Paper or page:** [Abel's Test for Uniform Convergence](https://proofwiki.org/wiki/Abel's_Test_for_Uniform_Convergence). It says: “∑ \|aₙ(z) − aₙ₊₁(z)\| is convergent with a sum which is bounded in K”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Compact tests capture local uniform convergence on open intervals
+
+**Remember:** A finite cover turns local bounds into one compact bound.
+
+*Makes the theorem clean to state or prove.* MSC 40A30 (Convergence and divergence of series and sequences of functions). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** Local uniform convergence means that every point has a neighborhood where convergence is uniform. Compact convergence means uniform convergence on each compact subset, which on the real line means a closed and bounded subset.
+
+**Problem.** On an open interval, local uniform convergence is equivalent to uniform convergence on every compact subset.
+
+**How the definition helps.** Compactness reduces the local bounds to finitely many, so the largest cutoff index works throughout the compact set. For the reverse implication, our own proof places each point inside a closed subinterval contained in the open interval. Uniform convergence on that closed subinterval gives the required neighborhood.
+
+**Paper or page:** [Local Uniform Convergence Implies Compact Convergence](https://proofwiki.org/wiki/Local_Uniform_Convergence_Implies_Compact_Convergence). It says: “Let fₙ converge locally uniformly to f : X → M. Then fₙ converges compactly to f.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Compactness gives Dini’s theorem one common index
+
+**Remember:** For nested open sets, a finite cover needs only the largest set.
+
+*Rules out counterexamples.* MSC 40A30 (Convergence and divergence of series and sequences of functions). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** A space is compact if every cover by open sets contains a finite subcover. A sequence is monotone at a point if its values there are nondecreasing or nonincreasing.
+
+**Problem.** Suppose continuous real functions on a compact space converge pointwise to a continuous function. If the sequence is monotone at every point, convergence is uniform.
+
+**How the definition helps.** Compactness turns the open sets where the error is below a fixed tolerance into a finite cover. Monotonicity makes these sets grow, so the largest selected set covers every point. Our own counterexample uses xⁿ on \[0, 1), where the pointwise limit is zero but the supremum stays one.
+
+**Wikipedia:** [Dini's theorem](https://en.wikipedia.org/wiki/Dini%27s_theorem). It says: “The continuity of the limit function cannot be inferred from the other hypothesis”
+
+**Paper or page:** [Dini's Theorem](https://proofwiki.org/wiki/Dini's_Theorem). It says: “Let fₙ converge pointwise to a continuous function f.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Equicontinuity upgrades convergence on a dense set to uniform convergence
+
+**Remember:** One distance threshold reduces uniform convergence to finitely many test points.
+
+*Rules out counterexamples.* MSC 40A30 (Convergence and divergence of series and sequences of functions), 54C35. arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** Uniform equicontinuity gives each positive error tolerance one distance threshold for all functions and all input pairs. A dense set has points arbitrarily close to every point of the domain.
+
+**Problem.** On a compact metric space, a uniformly equicontinuous sequence of real functions that converges pointwise on a dense subset converges uniformly everywhere.
+
+**How the definition helps.** The shared threshold lets a bound at one test point control all functions nearby. Compactness gives finitely many such test points from the dense set. In our own proof, convergence at these points makes late functions uniformly close there, and the triangle inequality extends the bound everywhere. Completeness of the real numbers then gives uniform convergence.
+
+**nLab:** [equicontinuous family of functions](https://ncatlab.org/nlab/show/equicontinuous+family+of+functions). It says: “Nevertheless, given a family of functions, we may have that f(x) is arbitrarily close to f(y) for every function f in the family at once whenever x is sufficiently close to y.”
+
+**Wikipedia:** [Arzelà–Ascoli theorem](https://en.wikipedia.org/wiki/Arzel%C3%A0%E2%80%93Ascoli_theorem). It says: “There exists an integer K such that each open interval Uⱼ, 1 ≤ j ≤ J, contains a rational xₖ with 1 ≤ k ≤ K.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Stieltjes weights give uniform limits an integral bound
+
+**Remember:** The total increase of α controls the whole integral error.
+
+*Makes the theorem clean to state or prove.* MSC 40A30 (Convergence and divergence of series and sequences of functions), 26A42. arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** A Riemann–Stieltjes sum weights each subinterval by the increase of a nondecreasing function α across it. Lower and upper sums use the infimum and supremum of the integrand on each subinterval. A bounded function is integrable when the supremum of its lower sums equals the infimum of its upper sums.
+
+**Problem.** For fixed nondecreasing α on \[a, b\], a uniform limit of functions Riemann–Stieltjes integrable with respect to α remains integrable. Its integral is the limit of their integrals.
+
+**How the definition helps.** The weights are nonnegative and always add to α(b) − α(a), just as ordinary interval lengths add to b − a. Our own proof bounds each upper or lower sum’s change by the uniform error times that total weight. The gap between the upper and lower integrals therefore vanishes, and the same bound gives convergence of the integrals.
+
+**Paper or page:** [Riemann-Stieltjes Integral of Constant Integrand](https://proofwiki.org/wiki/Riemann-Stieltjes_Integral_of_Constant_Integrand). It says: “∫ from a to b of f dα = cα(b) − cα(a)”
+
+**Sources:**
+
+- [Walter Rudin, Principles of Mathematical Analysis, 3rd ed. (1976), Theorem 7.16](https://www.lehman.edu/faculty/rbettiol/lehman_teaching/2020mat320/baby_Rudin.pdf)
+
 ### Summable norms give uniform convergence
 
 **Remember:** Sum the worst bounds first and every tail is small everywhere.
@@ -376,6 +792,40 @@
 **Wikipedia:** [Normal convergence](https://en.wikipedia.org/wiki/Normal_convergence). It says: “if the series of uniform norms of the terms of the series converges”
 
 **Paper or page:** [Weierstrass M-Test](https://proofwiki.org/wiki/Weierstrass_M-Test). It says: “Then ∑ from i = 1 to ∞ fᵢ converges uniformly on D.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Uniform convergence on a dense set extends across the domain
+
+**Remember:** A uniform bound on a dense set reaches every point.
+
+*True by definition.* MSC 40A30 (Convergence and divergence of series and sequences of functions). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** A subset is dense if every point is a limit of points from that subset. A sequence is uniformly Cauchy if each positive tolerance has a cutoff after which every two functions differ by less than that tolerance everywhere.
+
+**Problem.** If continuous real functions on a metric space converge uniformly on a dense subset, they converge uniformly on the whole space.
+
+**How the definition helps.** The uniform Cauchy criterion compares two functions already defined everywhere, without needing a candidate limit outside the dense set. In our own proof, continuity extends a bound of at most half the tolerance from the dense set to all points. Completeness of the real numbers turns the resulting uniform Cauchy bounds into uniform convergence.
+
+**Paper or page:** [Uniformly Convergent Sequence on Dense Subset](https://proofwiki.org/wiki/Uniformly_Convergent_Sequence_on_Dense_Subset). It says: “Let V be a Banach space.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Uniformly convergent sequences of continuous functions are equicontinuous
+
+**Remember:** Use the limit for the tail and check the head separately.
+
+*Rules out counterexamples.* MSC 40A30 (Convergence and divergence of series and sequences of functions), 54C35. arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** A family is equicontinuous at x if each positive tolerance has one neighborhood of x for the whole family. Throughout that neighborhood, each function differs from its value at x by less than the tolerance.
+
+**Problem.** A uniformly convergent sequence of continuous functions between metric spaces is equicontinuous at every point.
+
+**How the definition helps.** Uniform convergence lets one neighborhood from continuity of the limit control every sufficiently late function at x (our own argument). The proof spends one third of the tolerance on the limit and one third on each approximation error. Intersect this neighborhood with those supplied by continuity of the finitely many earlier functions. Pointwise convergence alone allows xⁿ on \[0, 1\], which fails equicontinuity at 1.
+
+**nLab:** [equicontinuous family of functions](https://ncatlab.org/nlab/show/equicontinuous+family+of+functions). It says: “Nevertheless, given a family of functions, we may have that f(x) is arbitrarily close to f(y) for every function f in the family at once whenever x is sufficiently close to y.”
+
+**Paper or page:** [Uniformly Convergent Sequence of Continuous Functions is Pointwise Equicontinuous](https://proofwiki.org/wiki/Uniformly_Convergent_Sequence_of_Continuous_Functions_is_Pointwise_Equicontinuous). It says: “Then ⟨fₙ⟩ is pointwise equicontinuous.”
 
 **Sources:** none listed. No primary source with a working link was found.
 

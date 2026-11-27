@@ -1,3 +1,19 @@
+### One representative per frequency class makes discrete interpolation unique
+
+**Remember:** Keep one wave from each class of indistinguishable sample patterns.
+
+*Rules out counterexamples.* MSC 42A15 (Trigonometric interpolation), 65T50. arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** On the grid of N points 2πj/N for j from 0 to N−1, group integer frequencies that differ by a multiple of N. Use frequencies 0 through N−1 as representatives, one wave exp(ikt) per group.
+
+**Problem.** Every list of N complex samples has exactly one interpolating trigonometric polynomial using these frequencies.
+
+**How the definition helps.** The frequency restriction removes ambiguities such as 1 and exp(iNt), which give identical samples on this grid (our own). The inverse discrete Fourier transform gives existence and uniqueness within the chosen frequency range (our own).
+
+**Wikipedia:** [Discrete Fourier transform](https://en.wikipedia.org/wiki/Discrete_Fourier_transform). It says: “aliasing implies that one could add N to any of the complex-sinusoid frequencies”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Even reflection cancels sines
 
 **Remember:** Even reflection keeps cosines and cancels sines.
@@ -11,6 +27,118 @@
 **How the definition helps.** In our own proof, even reflection makes each sine integrand odd and each cosine integrand even. Our own explanation puts any pointwise reconstruction work into the ordinary Fourier convergence theorem for the extended function.
 
 **Paper or page:** [Fourier Series for Even Function over Symmetric Range](https://proofwiki.org/wiki/Fourier_Series_for_Even_Function_over_Symmetric_Range). It says: “Let f(x) be an even real function defined on the interval (−λ, λ).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Fourier modes turn periodic heat flow into scalar decay
+
+**Remember:** Heat damps each nonconstant frequency at a rate set by its square.
+
+*Makes the theorem clean to state or prove.* MSC 42A16 (Fourier coefficients, Fourier series of functions with special properties, special Fourier series), 35K05. arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** For a smooth 2π-periodic initial temperature f, its Fourier heat evolution multiplies each Fourier coefficient at integer n by exp(−n²t). The coefficient is the average of f(x) exp(−inx) over one period.
+
+**Problem.** For t ≥ 0, the resulting Fourier series gives the unique smooth periodic solution of the heat equation uₜ = uₓₓ with initial temperature f.
+
+**How the definition helps.** Each wave has second derivative −n² times itself, so its coefficient must satisfy the ordinary equation c′ = −n²c (our own). The initial coefficient determines its solution uniquely (our own). Smooth data give coefficients that decay faster than any power, allowing termwise differentiation and recovery of the initial series (our own).
+
+**Wikipedia:** [Fourier series](https://en.wikipedia.org/wiki/Fourier_series). It says: “This application is possible because the derivatives of trigonometric functions fall into simple patterns.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Odd reflection turns half-range sine coefficients into full-range coefficients
+
+**Remember:** Reflect with a sign change to keep only sine terms.
+
+*True by definition.* MSC 42A16 (Fourier coefficients, Fourier series of functions with special properties, special Fourier series). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** For an integrable function f on (0,L), its odd extension equals f(x) at x and −f(x) at −x for 0 &lt; x &lt; L. Set the extension to zero at 0 and L, then repeat it with period 2L.
+
+**Problem.** The Fourier series of g has only sine terms. Their coefficients are twice the integrals of f(x) sin(nπx/L) over (0,L), divided by L.
+
+**How the definition helps.** Odd reflection cancels every cosine integral and doubles every sine integral from the positive half (our own). This choice avoids computing both sets of coefficients for a general extension (our own). Pointwise recovery requires a separate convergence theorem (our own).
+
+**Paper or page:** [Extension of Half-Range Fourier Sine Function to Symmetric Range](https://proofwiki.org/wiki/Extension_of_Half-Range_Fourier_Sine_Function_to_Symmetric_Range). It says: “bₙ = (2/λ) ∫₀<sup>λ</sup> f(x) sin(nπx/λ) dx”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Periodic complex waves turn differentiation into frequency multiplication
+
+**Remember:** Differentiating multiplies the coefficient by its frequency times i.
+
+*True by definition.* MSC 42A16 (Fourier coefficients, Fourier series of functions with special properties, special Fourier series). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** For a function f of period 2π, its Fourier coefficient at integer n is the average of f(x) exp(−inx) over one period.
+
+**Problem.** For a continuously differentiable 2π-periodic function f, the coefficient of f′ at n equals the coefficient of f at n times i·n.
+
+**How the definition helps.** Differentiation multiplies a complex wave by a constant, while it exchanges sine and cosine (our own). Integration by parts transfers the derivative to the wave, and periodicity cancels the boundary term (our own).
+
+**nLab:** [Fourier transform](https://ncatlab.org/nlab/show/Fourier+transform). It says: “The Fourier transform replaces the operator of differentiation d/dt by the operator of multiplication by the series {2πin}ₙ∈ℤ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Projecting onto complex waves recovers Fourier coefficients
+
+**Remember:** Average against the opposite wave to pick out one frequency.
+
+*True by definition.* MSC 42A16 (Fourier coefficients, Fourier series of functions with special properties, special Fourier series). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** For a function f of period 2π, its Fourier coefficient at integer n is the average of f(x) exp(−inx) over one period. This complex average combines the usual sine and cosine integrals.
+
+**Problem.** In a finite sum of waves exp(imx) with distinct integer frequencies m, the coefficient at n equals the multiplier of exp(inx). It is zero if that wave is absent.
+
+**How the definition helps.** The average against the opposite wave leaves only the matching term (our own). The work moves to orthogonality, since every nonconstant integer wave has average zero over a full period (our own).
+
+**nLab:** [Fourier transform](https://ncatlab.org/nlab/show/Fourier+transform). It says: “form an orthonormal basis of L₂(S¹, dt)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Reducing frequencies modulo the sample count gives the alias sum
+
+**Remember:** Frequencies that match on the grid add their coefficients.
+
+*Makes the theorem clean to state or prove.* MSC 42A16 (Fourier coefficients, Fourier series of functions with special properties, special Fourier series), 65T50. arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** On the grid x = 2πj/N for j from 0 through N−1, group frequencies whose differences are multiples of N. The discrete coefficient at k is the average of the samples multiplied by exp(−ikx).
+
+**Problem.** For samples of the sum of an absolutely convergent Fourier series, the discrete coefficient at k equals the sum of coefficients in its group.
+
+**How the definition helps.** Every wave in one class has the same sample values (our own). Absolute convergence allows regrouping, and orthogonality of the N distinct sampled waves picks out the class (our own).
+
+**Wikipedia:** [Discrete Fourier transform](https://en.wikipedia.org/wiki/Discrete_Fourier_transform). It says: “changing e⁻ⁱᵗ to e<sup>(i(N−1)t)</sup>”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Zero mean removes the constant that breaks Wirtinger’s inequality
+
+**Remember:** Remove the constant so every remaining frequency costs derivative energy.
+
+*Rules out counterexamples.* MSC 42A16 (Fourier coefficients, Fourier series of functions with special properties, special Fourier series). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** A 2π-periodic function has zero mean if its integral over a full period is zero. Equivalently, its Fourier coefficient at frequency zero vanishes.
+
+**Problem.** A real continuously differentiable 2π-periodic function with zero mean has ∫f² ≤ ∫(f′)² over one period. Equality holds exactly for linear combinations of sin x and cos x.
+
+**How the definition helps.** Zero mean removes nonzero constants, whose derivatives vanish although their squared integrals are positive (our own). Parseval’s identity turns differentiation into a weight n² on each squared coefficient (our own). Every remaining weight is at least one, and only the frequencies ±1 have weight one (our own).
+
+**Wikipedia:** [Wirtinger's inequality for functions](https://en.wikipedia.org/wiki/Wirtinger%27s_inequality_for_functions). It says: “and the fact that the average value of y is zero means that a₀ = 0.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Rescaling the distance to a jump gives the Gibbs profile
+
+**Remember:** Zoom by the number of terms to see the same overshoot profile.
+
+*Makes the theorem clean to state or prove.* MSC 42A20 (Convergence and absolute convergence of Fourier and trigonometric series). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** Use the periodic square wave equal to 1 on (0,π) and −1 on (−π,0), with period 2π. For its first N odd sine terms, measure distance from zero by t = 2Nx.
+
+**Problem.** At each fixed t ≥ 0, the sum at x = t/(2N) tends to (2/π) times the integral of sin(u)/u from 0 to t. At t = π the overshoot approaches about nine percent of the full jump.
+
+**How the definition helps.** The scaled distance turns the Fourier sum into a midpoint Riemann sum for sin u/u, with value one at zero (our own). The work moves to computing the square wave’s sine coefficients and evaluating the integral at π (our own).
+
+**Wikipedia:** [Gibbs phenomenon](https://en.wikipedia.org/wiki/Gibbs_phenomenon). It says: “this approximation error approaches a limit of about 9% of the jump”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -62,6 +190,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Even Fejér kernels give both sides of a jump equal weight
+
+**Remember:** An even kernel gives half its weight to each side.
+
+*Makes the theorem clean to state or prove.* MSC 42A24 (Summability and absolute summability of Fourier and trigonometric series), 42A20. arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** The Nth Fejér mean averages the Fourier partial sums of orders 0 through N−1. It averages translates of the function against the Fejér kernel, using circle measure of total mass one. This kernel equals the squared magnitude of the sum of exp(ijt) for j from 0 through N−1, divided by N.
+
+**Problem.** For an integrable periodic function with finite left and right limits at x, its Fejér means converge there to the average of those limits.
+
+**How the definition helps.** The kernel is even and has integral one, so each side has half the mass (our own). Pair values on opposite sides of the jump (our own). The work lies in the kernel formula, which makes the distant contribution vanish for integrable data (our own).
+
+**Wikipedia:** [Fejér's theorem](https://en.wikipedia.org/wiki/Fej%C3%A9r%27s_theorem). It says: “σₙ(x₀) → ½(f(x₀+0)+f(x₀−0)).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Poisson smoothing recovers continuous functions
 
 **Remember:** Poisson averaging keeps its mass while narrowing to the starting point.
@@ -96,6 +240,54 @@
 
 - [C. E. Shannon, Communication in the Presence of Noise (1949)](https://doi.org/10.1109/jrproc.1949.232969)
 
+### Complex exponentials swap differentiation and multiplication under the Fourier transform
+
+**Remember:** Differentiate the exponential in one variable to multiply by the other.
+
+*True by definition.* MSC 42A38 (Fourier and Fourier-Stieltjes transforms and other transforms of Fourier type). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** Define the Fourier transform on the line by integration against exp(−2πixξ). The single complex exponential replaces separate sine and cosine functions, which change into each other under differentiation.
+
+**Problem.** For a smooth rapidly decreasing function f with rapidly decreasing derivatives, the transform of f′ is 2πiξf̂(ξ). The derivative of f̂ is the transform of −2πixf(x).
+
+**How the definition helps.** In either variable the exponential differentiates to itself times a simple factor (our own). Integration by parts transfers the x derivative, and the decay of f removes the boundary term (our own). An integrable bound justifies differentiation in ξ (our own).
+
+**nLab:** [Fourier transform](https://ncatlab.org/nlab/show/Fourier+transform). It says: “interchanging coordinate multiplication with partial derivatives”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Complex waves turn translation into multiplication by a phase
+
+**Remember:** A shift in one domain multiplies by a wave in the other.
+
+*True by definition.* MSC 42A38 (Fourier and Fourier-Stieltjes transforms and other transforms of Fourier type). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** Define f̂(ξ) by integrating f(x) exp(−2πixξ) over the real line. This uses one complex wave instead of separate sine and cosine transforms.
+
+**Problem.** For integrable f, the transform of f(x−a) is exp(−2πiaξ)f̂(ξ). The transform of exp(2πiax)f(x) is f̂(ξ−a).
+
+**How the definition helps.** A complex wave turns a shift into one factor because exponentials turn sums into products (our own). Separate sine and cosine transforms would mix under translation (our own). Substitution gives the first formula, and combining the exponents gives the second (our own).
+
+**Paper or page:** [Properties of Fourier Transform/Translation](https://proofwiki.org/wiki/Properties_of_Fourier_Transform/Translation). It says: “Then: ĥ(s) = e<sup>(−2πix₀s)</sup> f̂(s)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Ignoring sets of measure zero makes the Fourier transform injective
+
+**Remember:** An integral cannot see a change on a set of measure zero.
+
+*Rules out counterexamples.* MSC 42A38 (Fourier and Fourier-Stieltjes transforms and other transforms of Fourier type). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** In L¹ on the real line, treat two integrable functions as the same if they agree almost everywhere. This means that the set of points where they differ has measure zero.
+
+**Problem.** Two L¹ functions with the same Fourier transform are equal as L¹ elements.
+
+**How the definition helps.** Changing a function on a set of measure zero leaves every Fourier integral unchanged (our own). For example, the indicator of a single point has the same transform as zero (our own). The converse uses Fourier inversion after Gaussian averaging and convergence of these averages in L¹ (our own).
+
+**Paper or page:** [Injectivity of Fourier transform over Lebesgue integrable functions](https://proofwiki.org/wiki/Injectivity_of_Fourier_transform_over_Lebesgue_integrable_functions). It says: “Fourier transform is injective over the space L¹(ℝᴺ)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Integrable transforms invert absolutely
 
 **Remember:** Both integrals are ordinary absolute integrals when both functions are integrable.
@@ -109,6 +301,22 @@
 **How the definition helps.** Absolute integrability of the transform bounds the inverse integral because its exponential kernel has modulus one (our own). For the indicator of \[−1,1\], the transform is sin(2πξ)/(πξ), whose absolute value has infinite integral (our own). Fourier inversion identifies the resulting continuous function with the original function almost everywhere (our own).
 
 **Wikipedia:** [Fourier inversion theorem](https://en.wikipedia.org/wiki/Fourier_inversion_theorem). It says: “Furthermore, we assume that the Fourier transform is also integrable.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Opposite signs make the two Fourier integrals adjoints
+
+**Remember:** Conjugation swaps the signs and puts the transform in the other slot.
+
+*True by definition.* MSC 42A38 (Fourier and Fourier-Stieltjes transforms and other transforms of Fourier type). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** For integrable f, let Ff and Gf be its integrals against exp(−2πixξ) and exp(2πixξ), respectively. For a pair of functions, write ⟨f,g⟩ for the integral of f times the complex conjugate of g.
+
+**Problem.** For smooth functions f and g that decay rapidly with all derivatives, ⟨Ff,g⟩ = ⟨f,Gg⟩. This says that G is the adjoint of F on these functions.
+
+**How the definition helps.** Choosing opposite signs makes the two waves complex conjugates (our own). This gives the adjoint identity directly, without first proving Fourier inversion (our own). Absolute integrability permits exchanging the two integrals (our own).
+
+**nLab:** [Fourier transform](https://ncatlab.org/nlab/show/Fourier+transform). It says: “∫\[k ∈ ℝⁿ\] f̂(k) · g(k) dⁿk = ∫\[x ∈ ℝⁿ\] f(x) · ĝ(x) dⁿx”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -130,6 +338,70 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Squared distances give the Fourier uncertainty inequality
+
+**Remember:** Use squared distances so an inner product gives a lower bound for spread.
+
+*Makes the theorem clean to state or prove.* MSC 42A38 (Fourier and Fourier-Stieltjes transforms and other transforms of Fourier type). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** For a nonnegative weight of integral one, its spread is the square root of the weighted mean squared distance from its mean. Use weights \|f\|² and \|f̂\|² for position and frequency, with Fourier wave exp(−2πixξ).
+
+**Problem.** Suppose f is smooth, f and all its derivatives decrease rapidly, and ∫\|f\|² = 1. The product of its position and frequency spreads is at least 1/(4π).
+
+**How the definition helps.** The squared-distance definition gives norms after multiplication by position and frequency (our own). Translate f and multiply by a complex wave to center both weights (our own). Plancherel replaces the frequency norm by ‖f′‖₂/(2π), and integration by parts gives 2 Re ⟨xf,f′⟩ = −1 (our own). Cauchy–Schwarz gives the lower bound (our own).
+
+**Wikipedia:** [Uncertainty principle](https://en.wikipedia.org/wiki/Uncertainty_principle). It says: “A nonzero function and its Fourier transform cannot both be sharply localized at the same time.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The Gaussian scale makes theta reciprocity a Poisson summation identity
+
+**Remember:** Poisson summation trades the Gaussian scale for its reciprocal.
+
+*True by definition.* MSC 42A38 (Fourier and Fourier-Stieltjes transforms and other transforms of Fourier type). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** For t &gt; 0, define Θ(t) as the sum of exp(−πtn²) over all integers n. This uses the Gaussian scale for the Fourier convention with exp(−2πixξ).
+
+**Problem.** The theta sum satisfies Θ(t) = Θ(1/t)/√t for every t &gt; 0.
+
+**How the definition helps.** Choosing π in the exponent makes the transformed Gaussian use precisely the reciprocal parameter 1/t (our own). Without that normalization, the parameter also acquires a factor of π² (our own). The Gaussian transform supplies the multiplier 1/√t, and Poisson summation equates the two integer sums (our own).
+
+**Wikipedia:** [Poisson summation formula](https://en.wikipedia.org/wiki/Poisson_summation_formula). It says: “One important such use of Poisson summation concerns theta functions: periodic summations of Gaussians.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Unit complex waves make Fourier transforms uniformly continuous
+
+**Remember:** The change in phase depends on the frequency step, not the starting frequency.
+
+*True by definition.* MSC 42A38 (Fourier and Fourier-Stieltjes transforms and other transforms of Fourier type). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** Define f̂(ξ) as the integral of f(x) exp(−2πixξ) over the real line. The single wave replaces separate sine and cosine integrals and has magnitude one.
+
+**Problem.** The Fourier transform of an integrable function on the real line is uniformly continuous.
+
+**How the definition helps.** A single complex wave factors out of the frequency difference with magnitude one (our own). This replaces separate sine and cosine difference estimates (our own). The error is bounded by the integral of \|f(x)\| times \|exp(−2πixh)−1\|, where h is the frequency step (our own). Dominated convergence sends this bound to zero with h (our own).
+
+**Wikipedia:** [Fourier transform](https://en.wikipedia.org/wiki/Fourier_transform). It says: “f̂ ∈ L∞ ∩ C₀(ℝ) is bounded, uniformly continuous”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Unit-mass Gaussian scaling gives a Fourier fixed point
+
+**Remember:** The Gaussian with π in its exponent transforms into itself.
+
+*True by definition.* MSC 42A38 (Fourier and Fourier-Stieltjes transforms and other transforms of Fourier type). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** Use the Fourier transform with wave exp(−2πixξ). Among the Gaussians exp(−ax²) with a &gt; 0, choose g(x) = exp(−πx²), whose integral is one.
+
+**Problem.** The Fourier transform of exp(−πx²) is exp(−πξ²).
+
+**How the definition helps.** The scale π makes the Gaussian and its transform satisfy the same differential equation (our own). The Fourier differentiation rules give ĝ′(ξ) = −2πξĝ(ξ) (our own). The Gaussian integral gives ĝ(0) = 1, so the solutions agree (our own).
+
+**Paper or page:** [Fourier Transform of Normal Function](https://proofwiki.org/wiki/Fourier_Transform_of_Normal_Function). It says: “Then: f̂(s) = √π e<sup>(−(πs)²)</sup>”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Dirichlet convolution makes convergence local
 
 **Remember:** Away from the point, only a fast oscillation remains in the kernel.
@@ -143,6 +415,22 @@
 **How the definition helps.** The kernel formula puts the vanishing difference and all frequency dependence in one integral (our own). The difference vanishes near zero shift, where sin(t/2) vanishes, so dividing by sin(t/2) leaves an integrable function (our own). The numerator oscillates at frequency n + ½ (our own). The Riemann–Lebesgue lemma then sends the integral to zero (our own).
 
 **Wikipedia:** [Dirichlet kernel](https://en.wikipedia.org/wiki/Dirichlet_kernel). It says: “The convolution of Dₙ(x) with any function f of period 2π is the nth-degree Fourier series approximation to f”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Positive kernels that concentrate recover functions in norm
+
+**Remember:** Average small translations and let the weight of large ones vanish.
+
+*Makes the theorem clean to state or prove.* MSC 42A85 (Convolution, factorization for one variable harmonic analysis), 42A20. arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** A positive approximate identity on the circle consists of nonnegative averaging kernels with integral one. Their mass outside each fixed neighborhood of zero tends to zero. The Lᵖ norm measures size by taking the pth root of the integral of \|f\|ᵖ.
+
+**Problem.** For 1 ≤ p &lt; ∞, averaging translates against these kernels recovers every function of finite Lᵖ norm in that norm. In particular, integrable functions with identical Fourier coefficients agree almost everywhere.
+
+**How the definition helps.** The definition gives little weight to large shifts, and small shifts change the function little in Lᵖ norm (our own). Together these bounds force the norm of the averaging error to zero (our own). Fejér kernels form such a family. Matching Fourier coefficients give identical Fejér averages and therefore the same L¹ limit (our own).
+
+**Wikipedia:** [Approximate identity](https://en.wikipedia.org/wiki/Approximate_identity). It says: “For example, the Fejér kernels of Fourier series theory give rise to an approximate identity.”
 
 **Sources:** none listed. No primary source with a working link was found.
 

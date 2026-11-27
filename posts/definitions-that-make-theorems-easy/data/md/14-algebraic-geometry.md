@@ -1,3 +1,99 @@
+### Adjoining an inverse makes each basic affine open affine
+
+**Remember:** Make nonzero into an equation by asking for an inverse.
+
+*Makes the theorem clean to state or prove.* MSC 14A10 (Varieties and morphisms). arXiv math.AG. Level 2: later undergraduate.
+
+**Definition.** A basic open set D(f) of an affine variety X consists of the points where f is nonzero. To adjoin an inverse to f, add a variable t and impose ft = 1.
+
+**Problem.** The basic open set D(f) is isomorphic to the affine set of pairs (x,t) with x in X and f(x)t = 1.
+
+**How the definition helps.** The equation ft = 1 turns a nonvanishing condition into a polynomial equation (our own). Projection forgets t, and its inverse sends x to (x, 1/f(x)) (our own). This inverse is regular because its denominator is nonzero throughout D(f) (our own).
+
+**Paper or page:** [Alg Geom: Quasi Proj, Theorem 5.2. (Distinguished open subsets of affines are affine)](https://venhance.github.io/napkin/Napkin.pdf). It says: “Define W = V(f₁, …, fₘ, y · f − 1) ⊆ 𝔸ⁿ⁺¹ where y is the (n+1)st coordinate of 𝔸ⁿ⁺¹. Then X ≅ W.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Affine charts reduce projective equations to ordinary polynomial equations
+
+**Remember:** Divide by the coordinate you know is nonzero.
+
+*True by definition.* MSC 14A10 (Varieties and morphisms). arXiv math.AG. Level 2: later undergraduate.
+
+**Definition.** A projective point is a nonzero coordinate vector up to multiplication by a nonzero scalar. Its ith affine chart consists of points whose ith coordinate is nonzero. In this chart, divide every coordinate by the ith coordinate.
+
+**Problem.** The n + 1 affine charts cover every variety in projective n-space. Setting the chosen coordinate to 1 gives ordinary polynomial equations for each piece.
+
+**How the definition helps.** Each point in a chart has a unique representative with the chosen coordinate equal to 1 (our own). Homogeneity makes the equations unaffected by rescaling as far as their zeros are concerned (our own). To combine the pieces, the work is to compare their coordinates by division wherever two charts overlap (our own).
+
+**Wikipedia:** [Projective variety](https://en.wikipedia.org/wiki/Projective_variety). It says: “Thus, X is an algebraic variety covered by (n+1) open affine charts X ∩ Uᵢ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Denominator ideals make regular functions on affine varieties polynomial
+
+**Remember:** A denominator ideal with no common zero contains 1.
+
+*Makes the theorem clean to state or prove.* MSC 14A10 (Varieties and morphisms). arXiv math.AG. Level 2: later undergraduate.
+
+**Definition.** Let r be a rational function, a fraction of polynomial functions on an irreducible affine variety. Define its denominator ideal as the set of polynomial functions g for which gr is polynomial.
+
+**Problem.** Over an algebraically closed field, a rational function regular everywhere on an irreducible affine variety is a polynomial function. Regular means that at each point it has some denominator that is nonzero there.
+
+**How the definition helps.** The denominator ideal has no common zero because a valid denominator is available at every point (our own). The weak Nullstellensatz puts 1 in the ideal, so r itself is polynomial (our own). The work moves from joining local formulas to the existence of zeros of proper ideals (our own).
+
+**Paper or page:** [Alg Geom: Zariski, Theorem 7.1. (Regular functions on distinguished open sets)](https://venhance.github.io/napkin/Napkin.pdf). It says: “In particular, 𝒪ᵥ(V) = 𝒪ᵥ(D(1)) ≅ ℂ\[V\].”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Descending chains give affine algebraic sets finitely many components
+
+**Remember:** If a split kept failing, it would give an endless descending chain.
+
+*Makes the theorem clean to state or prove.* MSC 14A10 (Varieties and morphisms). arXiv math.AG. Level 2: later undergraduate.
+
+**Definition.** A space is Noetherian if every descending chain of closed subsets eventually stops changing. A nonempty closed set is irreducible if it cannot split into two proper closed subsets.
+
+**Problem.** Every affine algebraic set is the union of finitely many irreducible components, the maximal irreducible closed subsets.
+
+**How the definition helps.** If a closed set were no finite union of irreducible sets, the descending chain condition would give a minimal such set (our own). It would split into two smaller closed sets, both finite unions of irreducible sets (our own). Discarding pieces contained in others leaves the maximal irreducible pieces (our own). Hilbert’s basis theorem gives the chain condition because smaller closed sets have larger vanishing ideals (our own).
+
+**nLab:** [noetherian topological space](https://ncatlab.org/nlab/show/noetherian+topological+space). It says: “Every noetherian topological space is a closed union of a finitely many irreducible topological spaces (its irreducible components).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Elimination ideals give the closure of a projection
+
+**Remember:** Keep the equations in the coordinates you keep.
+
+*Makes the theorem clean to state or prove.* MSC 14A10 (Varieties and morphisms), 13P10. arXiv math.AG. Level 2: later undergraduate.
+
+**Definition.** The elimination ideal consists of the polynomials in I involving only the retained coordinates y. The Zariski closure of a set is the smallest common zero set containing it.
+
+**Problem.** Over an algebraically closed field, the closure of the projection of V(I) onto y equals the zero set of I ∩ k\[y\]. Applying this to the graph of a polynomial parametrization gives equations for the closure of its image.
+
+**How the definition helps.** An equation in y holds on the projection exactly when it holds on the original set (our own). The strong Nullstellensatz says that some power then belongs to I, and that power still uses only y (our own). The system xy = 1 projects onto the line minus zero, so the projection itself need not be closed (our own).
+
+**Wikipedia:** [Gröbner basis](https://en.wikipedia.org/wiki/Gr%C3%B6bner_basis). It says: “the (Zariski closure of) the projection of the algebraic set defined by the ideal I into the Y-subspace is defined by the ideal I ∩ K\[Y\].”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Homogenizing the whole ideal removes false points at infinity
+
+**Remember:** At infinity, keep every equation that held before.
+
+*Rules out counterexamples.* MSC 14A10 (Varieties and morphisms). arXiv math.AG. Level 2: later undergraduate.
+
+**Definition.** To homogenize a polynomial, multiply its terms by powers of a new variable z until all terms have the same degree. The homogenized ideal is generated by homogenizing every polynomial in the ideal.
+
+**Problem.** The projective closure of an affine algebraic set is the projective zero set of the homogenization of its vanishing ideal.
+
+**How the definition helps.** Using every equation keeps exactly the homogeneous equations that vanish on the affine set in the chart z = 1 (our own). For example, y and xy − x generate the ideal of the origin (our own). Their homogenizations y and xy − xz both vanish at the extra point \[x:y:z\] = \[1:0:0\] (our own). The full ideal contains x, whose homogenization excludes that point (our own).
+
+**Wikipedia:** [Projective variety](https://en.wikipedia.org/wiki/Projective_variety). It says: “the defining ideal of this closure is the homogeneous ideal”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Irreducible spaces are nonempty, so prime radical ideals match irreducible varieties
 
 **Remember:** The whole ring is not prime; the empty set is not irreducible.
@@ -36,6 +132,104 @@
 
 - [Evan Chen, An Infinitely Large Napkin (open textbook)](https://venhance.github.io/napkin/Napkin.pdf)
 
+### Polynomial equations make polynomial maps Zariski continuous
+
+**Remember:** To pull back a zero set, substitute in its equations.
+
+*True by definition.* MSC 14A10 (Varieties and morphisms). arXiv math.AG. Level 2: later undergraduate.
+
+**Definition.** Use the Zariski topology on an affine variety. Its closed subsets are the common zeros of polynomial functions, rather than the closed sets from a distance.
+
+**Problem.** Every polynomial map between affine varieties is continuous for the Zariski topology.
+
+**How the definition helps.** Substituting the coordinate polynomials of the map into the target equations gives equations for their inverse image (our own). These are still polynomials, so the inverse image is closed (our own). The work is the closure of polynomials under substitution, not a distance estimate (our own).
+
+**nLab:** [Zariski topology](https://ncatlab.org/nlab/show/Zariski+topology). It says: “These subsets are called the Zariski closed subsets.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Polynomial functions give the coordinate ring as a quotient
+
+**Remember:** Quotient out exactly what vanishes.
+
+*True by definition.* MSC 14A10 (Varieties and morphisms). arXiv math.AG. Level 2: later undergraduate.
+
+**Definition.** Define the coordinate ring of an affine algebraic set X as the ring of polynomial functions restricted to X. Two polynomials count as the same function if they agree at every point of X.
+
+**Problem.** For an affine algebraic set X over a field k, its coordinate ring is the polynomial ring modulo the vanishing ideal I(X).
+
+**How the definition helps.** Two polynomials give the same function on X exactly when their difference belongs to I(X) (our own). Thus each polynomial function corresponds to one class in the quotient ring (our own). Starting from defining equations instead requires identifying their vanishing ideal, which the Nullstellensatz does over an algebraically closed field (our own).
+
+**Paper or page:** [Alg Geom: Zariski, Theorem 5.3. (Coordinate rings correspond to ideal)](https://venhance.github.io/napkin/Napkin.pdf). It says: “Then ℂ\[V\] ≅ ℂ\[x₁, …, xₙ\] / I.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Polynomial functions turn maps of affine varieties into reverse ring maps
+
+**Remember:** To pull a function back, substitute the map.
+
+*Makes the theorem clean to state or prove.* MSC 14A10 (Varieties and morphisms). arXiv math.AG. Level 2: later undergraduate.
+
+**Definition.** The coordinate ring k\[X\] consists of polynomial functions on the affine variety X over k. A map is polynomial if each output coordinate is a polynomial function.
+
+**Problem.** For affine varieties X and Y over an algebraically closed field k, polynomial maps X → Y correspond to k-algebra maps k\[Y\] → k\[X\].
+
+**How the definition helps.** Substitution along a polynomial map sends each function on Y to a function on X (our own). Conversely, a ring map fixing k sends the coordinates of Y to functions on X (our own). These images satisfy the equations of Y, so their values give a point of Y at each point of X (our own). The two constructions undo each other because the coordinates generate k\[Y\] (our own).
+
+**nLab:** [affine variety](https://ncatlab.org/nlab/show/affine+variety). It says: “the algebra can be recovered as the coordinate ring of the variety; this correspondence is an equivalence of categories, if the morphisms are properly defined.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Polynomial inverses keep a cusp from being an affine line
+
+**Remember:** A polynomial parametrization need not have a polynomial inverse.
+
+*Rules out counterexamples.* MSC 14A10 (Varieties and morphisms), 14H50. arXiv math.AG. Level 2: later undergraduate.
+
+**Definition.** An affine isomorphism is a polynomial map with a polynomial inverse. A map is polynomial if each output coordinate is a polynomial function.
+
+**Problem.** Over an algebraically closed field, the map t ↦ (t²,t³) is a polynomial bijection onto the cusp y² = x³. It is not an isomorphism.
+
+**How the definition helps.** Every polynomial in t² and t³ has zero linear coefficient (our own). The field is infinite, so such a polynomial cannot agree with t everywhere (our own). Yet every nonzero cusp point has the unique parameter y/x, and the origin has parameter zero (our own).
+
+**Wikipedia:** [Affine variety](https://en.wikipedia.org/wiki/Affine_variety). It says: “A morphism, or regular map, of affine varieties is a function between affine varieties that is polynomial in each coordinate:”
+
+**Sources:**
+
+- [Miles Reid, Undergraduate Algebraic Geometry, Corollary 4.5 and its example.](https://margalit.droppages.net/classes/math6421Fall2021/Reid.pdf)
+
+### Radical ideals give each affine algebraic set one ideal
+
+**Remember:** Taking powers changes equations, not their zeros.
+
+*Rules out counterexamples.* MSC 14A10 (Varieties and morphisms). arXiv math.AG. Level 2: later undergraduate.
+
+**Definition.** An ideal I is radical if f belongs to I whenever a positive power of f belongs to I. Use radical ideals, not arbitrary ideals, to represent sets of common zeros.
+
+**Problem.** Over an algebraically closed field, affine algebraic sets correspond to radical ideals in the polynomial ring. The correspondence reverses inclusion.
+
+**How the definition helps.** Radical ideals remove the ambiguity because an equation and its positive powers have the same zeros (our own). The ideals generated by x and x² have the same zeros, but only the first is radical (our own). The strong Nullstellensatz carries the work by identifying the vanishing ideal of each zero set with the radical of its defining ideal.
+
+**Paper or page:** [Alg Geom: Affine Var, Theorem 4.4. (Hilbert's Nullstellensatz)](https://venhance.github.io/napkin/Napkin.pdf). It says: “Given an affine variety V = V(I), the set of polynomials which vanish on all points of V is precisely √I.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Vanishing ideals give the smallest closed set containing the points
+
+**Remember:** Use every equation the points satisfy to get their closure.
+
+*True by definition.* MSC 14A10 (Varieties and morphisms). arXiv math.AG. Level 2: later undergraduate.
+
+**Definition.** The vanishing ideal I(S) consists of all polynomials that are zero at every point of S. A set is Zariski closed if it is the common zero set of some polynomials.
+
+**Problem.** The Zariski closure of any subset S of affine space is the common zero set of I(S).
+
+**How the definition helps.** The vanishing ideal collects every equation that a closed set containing S could impose (our own). Its common zeros therefore lie in every such closed set and include S (our own). This replaces intersecting all closed supersets with finding the equations that vanish on S (our own).
+
+**Paper or page:** [Zero Locus of Vanishing Ideal is Closure](https://proofwiki.org/wiki/Zero_Locus_of_Vanishing_Ideal_is_Closure). It says: “V(I(S)) = S̄”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Counting complex points at infinity makes Bézout's count exact
 
 **Remember:** Count complex points, points at infinity, and tangencies twice, and you always get mn.
@@ -53,6 +247,126 @@
 **Sources:**
 
 - [J.-P. Serre, Algèbre locale · multiplicités, Lecture Notes in Mathematics 11, Springer (1965; 3rd edition 1975)](https://doi.org/10.1007/978-3-540-37123-6)
+
+### Birational varieties share a field of rational functions
+
+**Remember:** Shrinking to a nonempty open set does not change rational functions.
+
+*True by definition. Confidence: medium.* MSC 14E05 (Rational and birational maps), 14A10. arXiv math.AG. Level 2: later undergraduate.
+
+**Definition.** On an irreducible variety, any two nonempty open sets meet. A rational function is represented on a nonempty open set by a regular function, locally a polynomial fraction with nonvanishing denominator. Two representatives agree as rational functions if they agree on some common nonempty open set.
+
+**Problem.** Two irreducible varieties over k are birational if they have isomorphic nonempty open subsets over k. Birational varieties have isomorphic fields of rational functions over k.
+
+**How the definition helps.** Every nonempty open set meets every other, so restricting representatives to any one of them gives the same field (our own). An isomorphism on these open sets pulls rational functions back and has an inverse pullback (our own). To compare this definition with polynomial fractions on affine varieties, use the fact that a regular function is locally a polynomial fraction (our own).
+
+**nLab:** [rational function on an affine variety](https://ncatlab.org/nlab/show/rational+function+on+an+affine+variety). It says: “A rational function is any element of the field of fractions of 𝒪(X), that is the function field of the variety.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Graded quotients make the plane Bézout count a dimension calculation
+
+**Remember:** Keep the equations and count what remains in large degrees.
+
+*Makes the theorem clean to state or prove.* MSC 14H50 (Plane and space curves), 14C17. arXiv math.AG. Level 2: later undergraduate.
+
+**Definition.** For homogeneous plane curve equations F and G over a field k, form the quotient of k\[x,y,z\] by the ideal they generate. Its Hilbert function in degree d is the dimension of its degree-d part over k.
+
+**Problem.** For curves over an algebraically closed field with no common component, this Hilbert function eventually equals the product of their degrees. This number is their total intersection multiplicity.
+
+**How the definition helps.** Multiplication by the second equation on the quotient by the first is injective because the equations are coprime (our own). Subtract the shifted dimensions for the two equations from the dimension of all forms, and add back their product’s contribution (our own). This gives a second difference of the quadratic monomial count, equal to mn in high degrees (our own). The remaining work identifies that dimension with the sum of local intersection multiplicities (our own).
+
+**Paper or page:** [Alg Geom: Bezout, Theorem 5.5. (Bézout's theorem)](https://venhance.github.io/napkin/Napkin.pdf). It says: “Then deg(I + (f)) = k deg I.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Keeping the equation on the curve makes the singularity test valid
+
+**Remember:** Check that the point lies on the curve before checking derivatives.
+
+*Rules out counterexamples.* MSC 14H50 (Plane and space curves). arXiv math.AG. Level 2: later undergraduate.
+
+**Definition.** Use a plane curve equation F with no repeated factor over an algebraically closed field. A point is singular if it lies on the curve and its local equation has no linear term in coordinates centered there.
+
+**Problem.** For a homogeneous plane curve equation F, a projective point is singular exactly when F and its three first partial derivatives vanish there.
+
+**How the definition helps.** In an affine chart the two remaining partial derivatives are the linear coefficients (our own). Euler’s identity for homogeneous polynomials recovers the third derivative once F and the other two derivatives vanish (our own). In characteristic p, all partial derivatives of xᵖ + yzᵖ⁻¹ vanish at \[1:0:0\], which is not on the curve (our own).
+
+**Wikipedia:** [Singular point of a curve](https://en.wikipedia.org/wiki/Singular_point_of_a_curve). It says: “The singular points are those points on the curve where both partial derivatives vanish”
+
+**Sources:**
+
+- [William Fulton, Algebraic Curves, §5.1, problem 5.1, and §3.1.](https://www.ms.uky.edu/~sohum/ma561/affgeom/CurveBook.pdf)
+
+### Local quotients let one count all affine intersections at once
+
+**Remember:** Keep both equations and the quotient adds the local counts.
+
+*Makes the theorem clean to state or prove.* MSC 14H50 (Plane and space curves), 14C17. arXiv math.AG. Level 2: later undergraduate.
+
+**Definition.** The local ring at P allows polynomial fractions with denominators that are nonzero at P. Define the intersection multiplicity at P as the dimension of this ring modulo the two curve equations.
+
+**Problem.** Take two affine plane curves over an algebraically closed field k, with no common component. Their total intersection multiplicity is the dimension of k\[x,y\] modulo their two equations.
+
+**How the definition helps.** The global quotient splits into the local quotients, so its dimension is the sum of their dimensions (our own). Finitely many intersection points and the Nullstellensatz make the global quotient finite dimensional (our own). The Chinese remainder theorem then splits this ring into one local ring for each intersection point (our own).
+
+**Wikipedia:** [Intersection number](https://en.wikipedia.org/wiki/Intersection_number). It says: “the dimension is dimension as a k-vector space.”
+
+**Sources:**
+
+- [William Fulton, Algebraic Curves, §3.3, property (9).](https://www.ms.uky.edu/~sohum/ma561/affgeom/CurveBook.pdf)
+
+### Local quotients preserve intersection multiplicity under coordinate changes
+
+**Remember:** The quotient keeps the two equations, not the choice of axes.
+
+*True by definition.* MSC 14H50 (Plane and space curves), 14C17. arXiv math.AG. Level 2: later undergraduate.
+
+**Definition.** At a point P of the affine plane over an algebraically closed field k, the local ring allows fractions with denominators nonzero at P. At an isolated intersection, the multiplicity is the dimension over k after imposing both curve equations in this ring.
+
+**Problem.** An invertible affine change of coordinates preserves the intersection multiplicity of two plane curves at corresponding isolated intersection points.
+
+**How the definition helps.** The coordinate change gives an isomorphism of the two quotients because it transports both equations and all allowed denominators (our own). Isomorphic vector spaces have the same dimension (our own). With the usual counting rules instead, the work is to prove that this quotient dimension agrees with their intersection number (our own).
+
+**Wikipedia:** [Intersection number](https://en.wikipedia.org/wiki/Intersection_number). It says: “the dimension is dimension as a k-vector space.”
+
+**Sources:**
+
+- [William Fulton, Algebraic Curves, §3.3, Theorem 3.](https://www.ms.uky.edu/~sohum/ma561/affgeom/CurveBook.pdf)
+
+### On a line the local quotient counts the root order
+
+**Remember:** On a line, intersection multiplicity is the usual root multiplicity.
+
+*True by definition.* MSC 14H50 (Plane and space curves), 14C17. arXiv math.AG. Level 2: later undergraduate.
+
+**Definition.** At a point P of the affine plane over an algebraically closed field k, the local ring allows fractions with denominators nonzero at P. At an isolated intersection, the multiplicity is the dimension over k after imposing both curve equations in this ring.
+
+**Problem.** At an intersection with a line outside the curve’s components, intersection multiplicity equals the root order of the curve equation restricted to the line.
+
+**How the definition helps.** Imposing the line equation leaves a single coordinate t, which we choose to vanish at the point (our own). If the root order is m, the restricted polynomial equals tᵐ times an invertible factor in the local ring (our own). The quotient therefore has basis 1, t, …, tᵐ⁻¹ and dimension m (our own). Theorem 3 in Fulton identifies this quotient definition with the usual intersection rules (our own).
+
+**Wikipedia:** [Algebraic curve](https://en.wikipedia.org/wiki/Algebraic_curve). It says: “The multiplicity of an intersection point is the multiplicity of the corresponding root.”
+
+**Sources:**
+
+- [William Fulton, Algebraic Curves, §3.3, Theorem 3.](https://www.ms.uky.edu/~sohum/ma561/affgeom/CurveBook.pdf)
+
+### The chord rule identifies flexes with points killed by three
+
+**Remember:** A triple tangent means the point adds to itself to give its inverse.
+
+*True by definition.* MSC 14H52 (Elliptic curves), 14H50. arXiv math.AG. Level 2: later undergraduate.
+
+**Definition.** A flex is a point where the tangent meets a smooth plane cubic with multiplicity three at that point. Choose a flex O as the group identity. The sum of two points is the inverse of the third intersection on their line, using the tangent for a repeated point.
+
+**Problem.** A point P on the smooth cubic is a flex if and only if P + P + P = O.
+
+**How the definition helps.** The tangent’s third point equals P exactly when doubling P gives its inverse (our own). Bézout’s theorem guarantees that the third point exists, counting multiplicity (our own). To find the inverse of a point, take the third point on its line through O, with the tangent used at O (our own). The work for using the rule as group addition lies in proving associativity (our own).
+
+**Wikipedia:** [Elliptic curve](https://en.wikipedia.org/wiki/Elliptic_curve). It says: “In the projective plane, each line will intersect a cubic at three points when accounting for multiplicity.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### The point at infinity gives the chord-tangent rule an identity
 

@@ -32,6 +32,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Real differentiability makes the Cauchy–Riemann test sufficient
+
+**Remember:** Check the linear approximation before checking its two columns.
+
+*Rules out counterexamples.* MSC 30A05 (Monogenic and polygenic functions of one complex variable). arXiv math.CV. Level 2: later undergraduate.
+
+**Definition.** A function is real differentiable at z if a real linear map approximates its change under small displacements h. The error divided by \|h\| must tend to zero as h tends to zero.
+
+**Problem.** Write f = u + iv and suppose f is real differentiable at a point. There f has a complex derivative exactly when its partial derivatives satisfy uₓ = vᵧ and uᵧ = −vₓ.
+
+**How the definition helps.** The equations force the real linear approximation to be multiplication by uₓ + ivₓ (our own proof). Partial derivatives alone miss the failure of f(x + iy) = xy/√(x² + y²), with f(0) = 0. Its partial derivatives vanish at zero, but the difference quotient along the diagonal has opposite one-sided limits (our own example).
+
+**Paper or page:** [Cauchy-Riemann Equations/Sufficient Condition](https://proofwiki.org/wiki/Cauchy-Riemann_Equations/Sufficient_Condition). It says: “u and v be differentiable in their entire domain”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The Wirtinger derivative test makes holomorphic functions harmonic
 
 **Remember:** One factor of the Laplacian already vanishes on holomorphic functions.
@@ -51,6 +67,74 @@
 **Sources:**
 
 - [W. Wirtinger, Zur formalen Theorie der Funktionen von mehr komplexen Veränderlichen, Mathematische Annalen 97 (1927), 357–375](https://doi.org/10.1007/BF01447872)
+
+### Circle averages give Cauchy’s bounds on Taylor coefficients
+
+**Remember:** The factor that selects a coefficient has magnitude one.
+
+*True by definition.* MSC 30A10 (Inequalities in the complex plane), 30E20, 30B10. arXiv math.CV. Level 2: later undergraduate.
+
+**Definition.** For a holomorphic function f, one can define its nth Taylor coefficient at a by averaging f(a + r exp(iθ)) exp(−inθ) over all angles. Divide this average by the nth power of r. The usual definition divides the nth derivative at a by n!.
+
+**Problem.** Suppose f is holomorphic near a closed disk centered at a, with radius r and largest boundary magnitude M. Its nth Taylor coefficient at a has magnitude at most M divided by the nth power of r.
+
+**How the definition helps.** The factor exp(−inθ) has magnitude one, so in our own proof the triangle inequality gives the bound directly. The work behind our own use of this definition is proving Cauchy’s formula and identifying its circle averages with Taylor coefficients.
+
+**Wikipedia:** [Cauchy's integral formula](https://en.wikipedia.org/wiki/Cauchy%27s_integral_formula). It says: “then the coefficients aₙ satisfy Cauchy's estimate”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Absolute convergence lets a power series change its center
+
+**Remember:** Recenter inside the radius and budget for both distances.
+
+*Makes the theorem clean to state or prove.* MSC 30B10 (Power series (including lacunary series) in one complex variable). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** For a power series ∑ aₙzⁿ, consider the radii r ≥ 0 where ∑ \|aₙ\|rⁿ is finite. Their least upper bound is the radius of convergence, with value ∞ if they are unbounded.
+
+**Problem.** A power series with radius R has a power series about each point a with \|a\| &lt; R. The new series agrees with the old sum throughout \|z − a\| &lt; R − \|a\|.
+
+**How the definition helps.** Absolute convergence allows the expanded terms to be grouped by powers of z − a. Our own proof writes z = a + (z − a) and expands each power by the binomial theorem. The sum of the absolute values is bounded by ∑ \|aₙ\|rⁿ with r = \|a\| + \|z − a\| &lt; R.
+
+**Wikipedia:** [Power series](https://en.wikipedia.org/wiki/Power_series). It says: “The series converges absolutely inside its disc of convergence”
+
+**Sources:**
+
+- [Walter Rudin, Principles of Mathematical Analysis, 3rd ed. (1976), Theorem 8.4](https://www.lehman.edu/faculty/rbettiol/lehman_teaching/2020mat320/baby_Rudin.pdf)
+
+### An everywhere convergent Taylor series exposes Liouville’s theorem
+
+**Remember:** A bounded entire series can keep only its constant term.
+
+*True by definition. Confidence: medium.* MSC 30B10 (Power series (including lacunary series) in one complex variable). arXiv math.CV. Level 2: later undergraduate.
+
+**Definition.** An entire function can be defined by a single power series that converges everywhere in the complex plane. Equivalently it is complex differentiable at every point of the plane.
+
+**Problem.** Every bounded entire function is constant.
+
+**How the definition helps.** One series gives the same coefficients at every radius (our own proof). Cauchy’s estimate bounds each positive-degree coefficient by the global bound divided by the radius raised to that degree. Letting the radius grow forces each such coefficient to vanish. The work lies in proving the global series representation and the coefficient estimate (our own proof).
+
+**Paper or page:** [Liouville's Theorem (Complex Analysis)](https://proofwiki.org/wiki/Liouville's_Theorem_(Complex_Analysis)). It says: “Let f: ℂ → ℂ be a bounded entire function. Then f is constant.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Complex differentiability on a disk gives a Taylor series
+
+**Remember:** A derivative at one point is not a Taylor series around it.
+
+*Rules out counterexamples.* MSC 30B10 (Power series (including lacunary series) in one complex variable). arXiv math.CV. Level 2: later undergraduate.
+
+**Definition.** Holomorphic at a point means complex differentiable throughout an open disk about that point. Differentiability at the point alone only tests difference quotients based at that point.
+
+**Problem.** A function holomorphic at a point has a power series expansion on some disk about that point.
+
+**How the definition helps.** The neighborhood condition gives a circle and its interior on which to use Cauchy’s formula (our own). Our own counterexample to using one derivative is f(z) = \|z\|², whose derivative exists at zero and nowhere else. The work is to derive the Taylor series from Cauchy’s formula (our own).
+
+**Wikipedia:** [Complex analysis](https://en.wikipedia.org/wiki/Complex_analysis). It says: “Complex functions that are differentiable at every point of an open subset Ω of the complex plane are said to be holomorphic on Ω.”
+
+**Paper or page:** [Holomorphic Function is Analytic](https://proofwiki.org/wiki/Holomorphic_Function_is_Analytic). It says: “Then f is complex analytic on D.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Differentiation preserves a power series radius
 
@@ -100,6 +184,38 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### One absolutely convergent boundary point controls the closed disk
+
+**Remember:** The boundary magnitudes bound the terms everywhere inside.
+
+*Rules out counterexamples.* MSC 30B10 (Power series (including lacunary series) in one complex variable), 40A30. arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** A power series centered at zero converges absolutely at a point if the sum of the magnitudes of its terms there is finite. The closed disk of radius R contains all points whose modulus, or distance from zero, is at most R.
+
+**Problem.** Suppose a power series converges absolutely at a point of modulus R. It converges uniformly to a continuous function on the closed disk of radius R.
+
+**How the definition helps.** Absolute convergence at one boundary point supplies a summable bound for the terms everywhere on the disk (our own argument). The proof applies the Weierstrass M-test, then uses continuity of uniform limits. The series ∑ zⁿ/n, starting at n = 1, converges at −1 and diverges at 1.
+
+**Wikipedia:** [Power series](https://en.wikipedia.org/wiki/Power_series). It says: “Absolute convergence at every point of the boundary”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Power series make holomorphic circle averages equal the center value
+
+**Remember:** Only the constant term survives a full turn.
+
+*True by definition.* MSC 30B10 (Power series (including lacunary series) in one complex variable). arXiv math.CV. Level 2: later undergraduate.
+
+**Definition.** A function is holomorphic if it has a complex derivative at each point of its open domain. Equivalently, it has a convergent power series near each point.
+
+**Problem.** A function holomorphic on an open set containing a closed disk equals its circle average at the disk center.
+
+**How the definition helps.** On a centered circle, every positive power averages to zero, leaving the constant term (our own proof). Cauchy’s formula gives a centered Taylor series valid on a slightly larger disk. Uniform convergence then allows averaging term by term (our own proof).
+
+**Paper or page:** [Mean Value Theorem for Holomorphic Functions](https://proofwiki.org/wiki/Mean_Value_Theorem_for_Holomorphic_Functions). It says: “f(z) = (1/2π) ∫₀²π f(z + r eⁱᶿ) dθ”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Power series make holomorphic functions differentiable to every order
 
 **Remember:** Differentiate the power series term by term to get another power series.
@@ -120,6 +236,56 @@
 
 - [É. Goursat, Sur la définition générale des fonctions analytiques, d'après Cauchy, Transactions of the American Mathematical Society 1 (1900), 14–16](https://doi.org/10.1090/S0002-9947-1900-1500519-7)
 
+### Two power series give Laurent series two convergence radii
+
+**Remember:** Test the positive powers in z − a and the negative powers in its reciprocal.
+
+*True by definition.* MSC 30B10 (Power series (including lacunary series) in one complex variable). arXiv math.CV. Level 2: later undergraduate.
+
+**Definition.** A Laurent series about a has one power series in z − a and another in 1/(z − a). The second has no constant term. Convergence requires the two sums to exist separately.
+
+**Problem.** If the Laurent series converges on an open set, its convergence set away from a has an annulus as its interior. The inner radius may be zero and the outer radius infinite.
+
+**How the definition helps.** Separate convergence requires both disk tests to hold at once (our own). The first series gives an outer radius, and the reciprocal variable turns the second radius into an inner boundary (our own). Symmetric partial sums could hide cancellation between the two series (our own). The disk tests use the power series convergence theorem (our own).
+
+**Wikipedia:** [Laurent series](https://en.wikipedia.org/wiki/Laurent_series). It says: “both the positive- and negative degree power series converge.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A bounded approach angle keeps Abel’s boundary limit valid
+
+**Remember:** Approach the boundary point directly enough for the series to follow.
+
+*Rules out counterexamples.* MSC 30B30 (Boundary behavior of power series in one complex variable; over-convergence), 30B10. arXiv math.CV. Level 2: later undergraduate.
+
+**Definition.** Fix M &gt; 1. The Stolz sector at 1 consists of points z in the open unit disk satisfying \|1−z\| ≤ M(1−\|z\|). This condition limits how closely an approach can follow the boundary circle.
+
+**Problem.** Suppose a power series about zero converges at 1. Its values inside any fixed Stolz sector tend to that same sum as z approaches 1.
+
+**How the definition helps.** The sector bounds the ratio \|1 − z\|/(1 − \|z\|) that multiplies the tail error after summation by parts (our own explanation). The cited counterexample converges at 1 but becomes unbounded near other boundary points arbitrarily close to 1.
+
+**Wikipedia:** [Abel's theorem](https://en.wikipedia.org/wiki/Abel%27s_theorem). It says: “provided that z → 1 entirely within a single Stolz sector”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A connected continuation domain makes analytic extensions unique
+
+**Remember:** Agreement on a small open set determines the extension throughout a connected domain.
+
+*Rules out counterexamples.* MSC 30B40 (Analytic continuation of functions of one complex variable), 30C15. arXiv math.CV. Level 2: later undergraduate.
+
+**Definition.** A direct analytic continuation extends a holomorphic function from a nonempty open set to a larger domain. A domain is open and connected, unlike an arbitrary open set.
+
+**Problem.** Two direct analytic continuations of the same holomorphic function to the same domain coincide.
+
+**How the definition helps.** The identity theorem applies across the whole continuation domain because it is connected (our own). On two disjoint disks, two extensions can agree on the first disk and be different constants on the second (our own). The work is the identity theorem, which follows from isolated zeros of nonzero holomorphic functions on a domain (our own).
+
+**nLab:** [analytic continuation](https://ncatlab.org/nlab/show/analytic+continuation). It says: “analytic continuation refers to the extension of the domain of an analytic function.”
+
+**Paper or page:** [Uniqueness of Analytic Continuation](https://proofwiki.org/wiki/Uniqueness_of_Analytic_Continuation). It says: “Let V be connected.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Germs turn multivalued functions such as log z into true functions
 
 **Remember:** Do not continue the value; continue the germ, and every branch gets its own point.
@@ -137,6 +303,22 @@
 **Sources:**
 
 - [H. Weyl, Die Idee der Riemannschen Fläche, Teubner, Leipzig, 1913](https://archive.org/details/dieideederrieman00weyluoft)
+
+### Real boundary values let analytic functions reflect across a line
+
+**Remember:** Conjugate the input and output, and join where the values are real.
+
+*Rules out counterexamples.* MSC 30B40 (Analytic continuation of functions of one complex variable), 30C35. arXiv math.CV. Level 2: later undergraduate.
+
+**Definition.** For a function f holomorphic on an upper half-disk, reflection assigns the complex conjugate of f(z̄) to each point z below the diameter. Here z̄ means the complex conjugate of z.
+
+**Problem.** If f extends continuously to the open diameter and takes real values there, reflection extends f holomorphically to the whole disk.
+
+**How the definition helps.** Real boundary values equal their conjugates, so the two halves fit together continuously (our own). Splitting triangles along the diameter gives zero boundary integrals, and Morera’s theorem gives holomorphicity (our own). Without real boundary values, the square root on the upper half-disk centered at zero need not extend holomorphically across zero (our own).
+
+**Wikipedia:** [Schwarz reflection principle](https://en.wikipedia.org/wiki/Schwarz_reflection_principle). It says: “which takes real values on the real axis.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Zero triangle integrals make locally uniform limits holomorphic
 
@@ -158,6 +340,24 @@
 
 - [É. Goursat, Sur la définition générale des fonctions analytiques, d'après Cauchy, Transactions of the American Mathematical Society 1 (1900), 14–16](https://doi.org/10.1090/S0002-9947-1900-1500519-7)
 
+### Homogeneous polynomials count every preimage of a rational map
+
+**Remember:** Count the roots of one homogeneous equation, even for the value infinity.
+
+*Makes the theorem clean to state or prove.* MSC 30C10 (Polynomials and rational functions of one complex variable), 30D30. arXiv math.CV. Level 2: later undergraduate.
+
+**Definition.** Represent a sphere point by a pair \[X:Y\], where multiplying both coordinates by the same nonzero number preserves the point. Represent a rational function by two homogeneous polynomials P and Q of degree d with no common projective zero. Homogeneous means every term has total degree d.
+
+**Problem.** A nonconstant rational map of degree d takes each value exactly d times on the sphere, counting a root of order m as m preimages.
+
+**How the definition helps.** Each target \[A:B\] gives a single homogeneous equation BP − AQ = 0 for its preimages (our own). Setting Y = 1 gives an ordinary polynomial whose finite roots count with multiplicity by the fundamental theorem of algebra (our own). If its degree is k, the homogeneous equation has a factor Y to the power d − k, accounting for infinity (our own).
+
+**nLab:** [Riemann sphere](https://ncatlab.org/nlab/show/Riemann+sphere). It says: “the complex projective line”
+
+**Wikipedia:** [Rational function](https://en.wikipedia.org/wiki/Rational_function). It says: “the maximum of the degrees of its constituent polynomials P and Q”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### On the Riemann sphere, Möbius maps become bijections with two fixed points
 
 **Remember:** Add one point at infinity and division by zero stops being an exception.
@@ -171,6 +371,22 @@
 **How the definition helps.** The added point ∞ gives each Möbius transformation a value at every point and a preimage of every point, so each one is a bijection. On the plane alone, z ↦ 1/z is undefined at 0 and never takes the value 0 (our own example). The condition ad − bc ≠ 0 excludes the constant maps. The fixed-point count works because a fixed point may be ∞.
 
 **Wikipedia:** [Möbius transformation](https://en.wikipedia.org/wiki/M%C3%B6bius_transformation). It says: “Thus a Möbius transformation is always a bijective holomorphic function from the Riemann sphere to the Riemann sphere.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### An interior accumulation point forces analytic functions to agree
+
+**Remember:** Zeros must gather where the function still has a Taylor series.
+
+*Rules out counterexamples.* MSC 30C15 (Zeros of polynomials, rational functions, and other analytic functions of one complex variable (e.g., zeros of functions with bounded Dirichlet integral)), 30B10. arXiv math.CV. Level 2: later undergraduate.
+
+**Definition.** An accumulation point of S is a point a where every disk centered at a contains some point of S other than a. For the identity theorem, a must lie inside the domain.
+
+**Problem.** Two holomorphic functions on a connected open set agree everywhere if their agreement set has an accumulation point inside it.
+
+**How the definition helps.** An interior accumulation point gives a Taylor series with no possible first nonzero term for the difference (our own). Our own counterexample is sin(1/z) on the punctured plane, where zeros gather at the missing point zero. The work goes into Taylor factorization and using connectedness to extend the agreement (our own).
+
+**Wikipedia:** [Identity theorem](https://en.wikipedia.org/wiki/Identity_theorem). It says: “if f = g on some S ⊆ D, where S has an accumulation point in D, then f = g on D.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -222,6 +438,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### An ordered triple fixes a Möbius transformation
+
+**Remember:** Three distinct lines fix a projective basis and hence fix the map.
+
+*True by definition.* MSC 30C20 (Conformal mappings of special domains), 30C10. arXiv math.CV. Level 2: later undergraduate.
+
+**Definition.** View sphere points as lines through the origin in ℂ². Define a Möbius transformation as the action of an invertible two-by-two complex matrix on these lines. Matrices differing by a common nonzero scalar give the same action.
+
+**Problem.** For any two ordered triples of distinct points on the Riemann sphere, exactly one Möbius map sends the first triple to the second in order.
+
+**How the definition helps.** The matrix definition turns the fractional linear interpolation problem into a choice of two basis vectors (our own). Choose vectors on the first two lines, then scale them so their sum lies on the third line (our own). Distinctness fixes their relative scale, so matching these bases gives a unique matrix up to scalar (our own). Identifying lines with sphere points recovers the fractional linear formula (our own).
+
+**nLab:** [Riemann sphere](https://ncatlab.org/nlab/show/Riemann+sphere). It says: “the complex projective line”
+
+**Wikipedia:** [Möbius transformation](https://en.wikipedia.org/wiki/M%C3%B6bius_transformation). It says: “for any two ordered triples of distinct points, there is a unique map that takes one triple to the other”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Möbius maps on complex lines compose by multiplying matrices
 
 **Remember:** Multiply the matrices to compose their Möbius maps.
@@ -239,6 +473,54 @@
 **Wikipedia:** [Riemann sphere](https://en.wikipedia.org/wiki/Riemann_sphere). It says: “Since they act on projective coordinates, two matrices yield the same Möbius transformation if and only if they differ by a nonzero factor. The group of Möbius transformations is the projective linear group PGL(2,C).”
 
 **Paper or page:** [Möbius Transformations form Group under Composition](https://proofwiki.org/wiki/Möbius_Transformations_form_Group_under_Composition). It says: “Let G be the set of Möbius transformations. Let ∘ denote the composition of mappings. Then (G, ∘) is a group.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The disk distance turns Schwarz–Pick into Schwarz at zero
+
+**Remember:** Move both marked points to zero, then apply Schwarz.
+
+*True by definition.* MSC 30C20 (Conformal mappings of special domains), 30C80, 30F45. arXiv math.CV. Level 2: later undergraduate.
+
+**Definition.** The disk map φₐ(z) = (z − a)/(1 − āz) sends a to zero, where ā denotes complex conjugation. The Poincaré distance from a to z is twice the inverse hyperbolic tangent of \|φₐ(z)\|.
+
+**Problem.** Every holomorphic self-map of the open unit disk decreases or preserves Poincaré distance. Equality at two distinct points forces the map to be a disk automorphism.
+
+**How the definition helps.** The distance formula lets Schwarz’s lemma compare ordinary radii after moving a and f(a) to zero (our own). Equality for distinct points makes the centered map a rotation, so the original map is a disk automorphism (our own). The work includes identifying this formula with the distance defined by shortest hyperbolic path length (our own).
+
+**Wikipedia:** [Schwarz lemma](https://en.wikipedia.org/wiki/Schwarz_lemma). It says: “decreases the distance of points in the Poincaré metric.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Factoring a zero gives a local power map
+
+**Remember:** A local root of the nonzero factor turns the function into a power.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 30C35 (General theory of conformal mappings), 30C15. arXiv math.CV. Level 2: later undergraduate.
+
+**Definition.** The order m of f(z) − f(a) at a is the exponent in f(z) − f(a) = (z − a)ᵐu(z). The factor u is holomorphic and nonzero at a.
+
+**Problem.** Near each point a of a nonconstant holomorphic function on a domain, a holomorphic coordinate w gives f(z) = f(a) + w(z)ᵐ. Consequently the function maps open sets to open sets.
+
+**How the definition helps.** The factorization gives the coordinate directly once u has a holomorphic mth root v on a small disk (our own). Set w(z) = (z − a)v(z), whose derivative at a is nonzero (our own). The inverse function theorem gives a local holomorphic inverse, and the power map sends disks centered at zero onto disks (our own).
+
+**Wikipedia:** [Open mapping theorem (complex analysis)](https://en.wikipedia.org/wiki/Open_mapping_theorem_%28complex_analysis%29). It says: “it sends open subsets of U to open subsets of ℂ”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Fixing a base point and direction makes the Riemann map unique
+
+**Remember:** Center the map and fix its direction, and no disk symmetry remains.
+
+*Rules out counterexamples.* MSC 30C35 (General theory of conformal mappings), 30C20. arXiv math.CV. Level 2: later undergraduate.
+
+**Definition.** Fix a point a in the domain. Call a conformal bijection to the unit disk normalized if f(a) = 0 and f′(a) is positive real. These conditions fix the image point and the direction of the derivative.
+
+**Problem.** For every proper simply connected plane domain and every point a in it, exactly one normalized conformal bijection to the disk exists.
+
+**How the definition helps.** Normalization excludes every disk symmetry except the identity (our own). Composing one normalized map with the inverse of another gives a disk automorphism fixing zero (our own). Schwarz’s lemma makes it a rotation, and its positive derivative forces the rotation angle to be zero (our own). Existence follows by centering and rotating a map supplied by the Riemann mapping theorem (our own).
+
+**Wikipedia:** [Riemann mapping theorem](https://en.wikipedia.org/wiki/Riemann_mapping_theorem). It says: “normalized such that f(a)=0 and f′(a)&gt;0.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -271,6 +553,156 @@
 **How the definition helps.** The matrix definition makes angle preservation a property of the derivative itself. Multiplication by a nonzero complex number rotates and scales both tangents by the same amounts. The chain rule gives the image tangents. The work moves into showing that this definition agrees with the complex difference quotient. The matrix entries express the Cauchy–Riemann equations when a real derivative exists.
 
 **Wikipedia:** [Cauchy–Riemann equations](https://en.wikipedia.org/wiki/Cauchy%E2%80%93Riemann_equations). It says: “Consequently, a function satisfying the Cauchy–Riemann equations, with a nonzero derivative, preserves the angle between curves in the plane.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The largest derivative forces a disk map to be onto
+
+**Remember:** A missing value lets a square root increase the derivative at the base point.
+
+*Makes the theorem clean to state or prove.* MSC 30C35 (General theory of conformal mappings), 30C70, 30D45. arXiv math.CV. Level 2: later undergraduate.
+
+**Definition.** Fix a point a in a simply connected plane domain other than the whole plane. Consider injective holomorphic maps into the unit disk that send a to zero. An extremal map maximizes the size of the derivative at a among these maps.
+
+**Problem.** An extremal disk map exists, and every such map is onto the disk. This gives a conformal equivalence between any proper simply connected plane domain and the disk.
+
+**How the definition helps.** Maximality rules out any construction that increases the derivative at a (our own). For an omitted value, move it to zero, take a holomorphic square root, and move the new image of a to zero (our own). Reversing these steps gives a disk map fixing zero that includes squaring, so Schwarz’s lemma gives strict contraction there (our own). Given one candidate, Montel’s and Hurwitz’s theorems yield an injective maximizer from a maximizing sequence (our own).
+
+**Wikipedia:** [Riemann mapping theorem](https://en.wikipedia.org/wiki/Riemann_mapping_theorem). It says: “the desired mapping was obtained as the solution of an extremal problem.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A mean square of Taylor terms rules out an interior maximum
+
+**Remember:** Every nonconstant Taylor term adds a positive amount to the mean square.
+
+*True by definition.* MSC 30C80 (Maximum principle, Schwarz's lemma, Lindelöf principle, analogues and generalizations; subordination), 30B10. arXiv math.CV. Level 2: later undergraduate.
+
+**Definition.** Instead of requiring a complex derivative at every point, describe a holomorphic function near each point by a convergent power series. Its mean square on a circle is the average of its squared magnitude over all angles.
+
+**Problem.** A nonconstant holomorphic function on a connected open set has no interior local maximum of its magnitude. If it extends continuously to a compact closure, its maximum magnitude is on the boundary.
+
+**How the definition helps.** The mean square separates the Taylor terms because products of different powers with their complex conjugates average to zero (our own proof). Every nonzero higher coefficient raises the mean square above the squared center value. The identity theorem ensures such a coefficient exists for a nonconstant function on a connected domain. The calculation uses uniform convergence on small circles (our own proof).
+
+**Paper or page:** [Maximum Modulus Principle](https://proofwiki.org/wiki/Maximum_Modulus_Principle). It says: “Then \|f\| does not have any maximum points in the interior of D.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Circle integrals make bounded singularities removable
+
+**Remember:** Shrinking the circle forces every negative-power coefficient of a bounded function to vanish.
+
+*True by definition.* MSC 30D30 (Meromorphic functions of one complex variable (general theory)), 30E20. arXiv math.CV. Level 2: later undergraduate.
+
+**Definition.** For f holomorphic on a punctured disk about a, define its Laurent coefficients by circle integrals. For degree n, integrate f(z) times (z − a) to the power −n−1 counterclockwise around any concentric circle inside the disk. Divide by 2πi.
+
+**Problem.** A holomorphic function bounded near an isolated missing point extends holomorphically over that point.
+
+**How the definition helps.** For k ≥ 1, the circle integral bounds the coefficient of degree −k by Mrᵏ when \|f\| ≤ M (our own). Shrinking the radius r forces every negative-power coefficient to vanish (our own). The Laurent coefficient formula identifies these integrals with the coefficients obtained by matching powers (our own).
+
+**Paper or page:** [Riemann Removable Singularities Theorem](https://proofwiki.org/wiki/Riemann_Removable_Singularities_Theorem). It says: “f is bounded in a deleted neighborhood of z₀.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Principal parts turn meromorphic functions on the sphere into rational functions
+
+**Remember:** Subtract every pole term, including the polynomial terms from infinity.
+
+*Makes the theorem clean to state or prove.* MSC 30D30 (Meromorphic functions of one complex variable (general theory)), 30F10, 30B10. arXiv math.CV. Level 2: later undergraduate.
+
+**Definition.** The principal part of a meromorphic function at a pole is the finite sum of negative powers in its Laurent series. At infinity, use the coordinate w = 1/z, so the principal part becomes a polynomial in z.
+
+**Problem.** Every meromorphic function on the Riemann sphere equals a constant plus the sum of its principal parts, including the part at infinity. Hence it is rational.
+
+**How the definition helps.** Subtracting all principal parts leaves a holomorphic function on the sphere, which is constant (our own). The parts at finite poles are rational and vanish at infinity, while the part at infinity is a polynomial (our own). The work is Laurent's theorem and compactness of the sphere, which gives only finitely many poles (our own).
+
+**nLab:** [Laurent series](https://ncatlab.org/nlab/show/Laurent+series). It says: “if all but finitely many negatively indexed terms are zero.”
+
+**Wikipedia:** [Riemann sphere](https://en.wikipedia.org/wiki/Riemann_sphere). It says: “the field of rational functions on the sphere”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Signed orders give the residues of logarithmic derivatives
+
+**Remember:** A power contributes its exponent to the residue of the logarithmic derivative.
+
+*Makes the theorem clean to state or prove.* MSC 30D30 (Meromorphic functions of one complex variable (general theory)), 30E20. arXiv math.CV. Level 2: later undergraduate.
+
+**Definition.** The signed order of a meromorphic function at a zero or pole a is the integer m in f(z) = (z − a)ᵐu(z). The factor u is holomorphic and nonzero at a. Zeros give positive orders and poles give negative orders.
+
+**Problem.** The residue of the logarithmic derivative f′/f at an isolated zero or pole of f is the signed order of f there.
+
+**How the definition helps.** The signed exponent lets one derivative calculation handle zeros and poles together (our own). Factoring the Laurent series gives u, and differentiation gives f′/f = m/(z − a) + u′/u (our own). The second term is holomorphic, so the residue is m (our own).
+
+**Paper or page:** [Proposition 5.1. (The logarithmic derivative)](https://venhance.github.io/napkin/Napkin.pdf). It says: “A pole at each zero of f whose residue is the multiplicity, and a pole at each pole of f whose residue is the negative of the pole's order.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The limit test makes essential singularities have dense images
+
+**Remember:** An omitted disk makes the reciprocal of a shifted function bounded.
+
+*Rules out counterexamples.* MSC 30D30 (Meromorphic functions of one complex variable (general theory)). arXiv math.CV. Level 2: later undergraduate.
+
+**Definition.** Call an isolated singularity essential if the function neither extends holomorphically nor tends to infinity there. The equivalent Laurent test asks for infinitely many nonzero negative powers.
+
+**Problem.** On every sufficiently small punctured disk about an essential singularity, the function takes values in every open disk in the complex plane.
+
+**How the definition helps.** The definition excludes both outcomes of missing a disk of values (our own). If f misses a disk centered at b, then 1/(f − b) is bounded and extends by the removable singularity theorem (our own). A nonzero extension value lets f extend, while a zero forces f to tend to infinity (our own).
+
+**Paper or page:** [Weierstrass-Casorati Theorem](https://proofwiki.org/wiki/Weierstrass-Casorati_Theorem). It says: “Let f have an essential singularity at a.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The principal part classifies isolated singularities
+
+**Remember:** Look at the negative powers to tell what sort of singularity you have.
+
+*Makes the theorem clean to state or prove.* MSC 30D30 (Meromorphic functions of one complex variable (general theory)), 30B10. arXiv math.CV. Level 2: later undergraduate.
+
+**Definition.** The principal part at an isolated singularity a consists of the negative-power terms in the Laurent expansion about a. The function is holomorphic on a disk with only its center a removed.
+
+**Problem.** A zero principal part means the function extends holomorphically, while a finite nonempty principal part gives a pole. Infinitely many nonzero terms give an essential singularity.
+
+**How the definition helps.** Removing the principal part leaves a Taylor series that extends across the center (our own). If the lowest exponent is −m, multiplying by (z − a)ᵐ gives a holomorphic function nonzero at a (our own). Uniqueness of the Laurent expansion rules out either behavior when infinitely many negative-power coefficients are nonzero (our own).
+
+**Wikipedia:** [Laurent series](https://en.wikipedia.org/wiki/Laurent_series). It says: “the series of terms with negative degree”
+
+**Paper or page:** [Existence of Laurent Series](https://proofwiki.org/wiki/Existence_of_Laurent_Series). It says: “Let f: B′(z₀, R) → ℂ be holomorphic.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Arc length bounds contour integrals
+
+**Remember:** Keep total length and discard direction to bound the integral.
+
+*True by definition. Confidence: medium.* MSC 30E20 (Integration, integrals of Cauchy type, integral representations of analytic functions in the complex plane), 30A10. arXiv math.CV. Level 2: later undergraduate.
+
+**Definition.** Define the length of a piecewise smooth path as the integral of its speed. Equivalently, join successive points along the path by straight segments and take the least upper bound of their total lengths.
+
+**Problem.** The magnitude of the contour integral of a continuous function is at most its largest magnitude on the path times the path length.
+
+**How the definition helps.** The triangle inequality bounds the integral by the integral of \|f\| times speed (our own proof). Replacing \|f\| by its maximum leaves that maximum times the length. The work is proving that integrated speed equals the least upper bound of chord sums (our own comparison).
+
+**Paper or page:** [Lemma 6.3. (ML estimation lemma)](https://venhance.github.io/napkin/Napkin.pdf). It says: “Then \|∮α f(z) dz\| ≤ ML.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Complex contour integrals keep direction but ignore speed
+
+**Remember:** The velocity carries both the speed and the direction.
+
+*True by definition.* MSC 30E20 (Integration, integrals of Cauchy type, integral representations of analytic functions in the complex plane). arXiv math.CV. Level 2: later undergraduate.
+
+**Definition.** A contour is a path made of smooth pieces. For a continuous function f, its contour integral along γ is the time integral of f(γ(t))γ′(t). The factor γ′(t) records both speed and direction.
+
+**Problem.** An increasing smooth change of parameter preserves a contour integral along the same path. Reversing the path changes the sign.
+
+**How the definition helps.** The velocity supplies the derivative required by the real substitution rule (our own proof). Reversing time reverses the integration limits. Using speed alone would instead give an arc length integral, unchanged on reversal (our own comparison).
+
+**nLab:** [line integral](https://ncatlab.org/nlab/show/line+integral). It says: “In particular, dz is interpreted as z′(t) dt.”
+
+**Paper or page:** [Contour Integral is Independent of Parameterization](https://proofwiki.org/wiki/Contour_Integral_is_Independent_of_Parameterization). It says: “Let C be a contour defined by a finite sequence C₁, …, Cₙ of directed smooth curves.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -312,6 +744,70 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Laurent coefficients make every derivative have zero residue
+
+**Remember:** The only power that could contribute is constant, and its derivative vanishes.
+
+*True by definition.* MSC 30E20 (Integration, integrals of Cauchy type, integral representations of analytic functions in the complex plane), 30D30. arXiv math.CV. Level 2: later undergraduate.
+
+**Definition.** The residue of a function at an isolated singularity is the coefficient of 1/(z − a) in its Laurent series. One can instead define it by a small circle integral divided by 2πi.
+
+**Problem.** If a function is holomorphic on a punctured disk, its derivative has zero residue at the center.
+
+**How the definition helps.** Differentiation lowers each exponent by one, but the degree-zero term differentiates to zero (our own). The work is Laurent's theorem and the rule that permits term-by-term differentiation on the punctured disk (our own).
+
+**nLab:** [residue](https://ncatlab.org/nlab/show/residue). It says: “the coefficient of (z − ζ)⁻¹”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Local circle integrals make the residue theorem a boundary sum
+
+**Remember:** Cut out each singularity and read off its circle integral.
+
+*True by definition.* MSC 30E20 (Integration, integrals of Cauchy type, integral representations of analytic functions in the complex plane), 30D30. arXiv math.CV. Level 2: later undergraduate.
+
+**Definition.** Define the residue at an isolated singularity as 1/(2πi) times the integral around a small counterclockwise circle. Cauchy's theorem makes it independent of the radius. The equivalent series definition selects the coefficient of 1/(z − a).
+
+**Problem.** Suppose f is holomorphic on and inside a piecewise smooth simple closed contour except for finitely many interior poles. The counterclockwise integral of f equals 2πi times the sum of their residues.
+
+**How the definition helps.** Each small circle integral already equals 2πi times its residue (our own). Remove a small disk around each pole and apply Cauchy’s theorem to the remaining region (our own). Its boundary integral vanishes, so the outer integral equals the sum of the counterclockwise circle integrals (our own). Integrating the Laurent series gives the equivalent coefficient formula (our own).
+
+**Paper or page:** [Theorem 4.3. (Cauchy's residue theorem)](https://venhance.github.io/napkin/Napkin.pdf). It says: “1/(2πi) ∮γ f(z) dz = ∑\[pole p\] Wind(γ, p) Res(f; p)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Local primitives make Morera’s test a segment calculation
+
+**Remember:** Zero triangle integrals turn a long integral into a short difference.
+
+*True by definition. Confidence: medium.* MSC 30E20 (Integration, integrals of Cauchy type, integral representations of analytic functions in the complex plane). arXiv math.CV. Level 2: later undergraduate.
+
+**Definition.** A local primitive of f is a function F on a small disk with complex derivative F′ = f. Having such a primitive near each point is equivalent to being holomorphic, usually defined by complex differentiability throughout an open set.
+
+**Problem.** A continuous function on an open set is holomorphic if its integral around the boundary of every solid triangle in that set vanishes.
+
+**How the definition helps.** The primitive criterion lets us construct F by integrating f along straight segments from a fixed point in a disk (our own proof). Zero triangle integrals turn F(w) − F(z) into the integral along the segment from z to w. Continuity then gives F′(z) = f(z). The remaining theorem says that a holomorphic derivative is itself holomorphic (our own proof).
+
+**Paper or page:** [Morera's Theorem](https://proofwiki.org/wiki/Morera's_Theorem). It says: “Then f is analytic on D.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Locally uniform convergence controls all complex derivatives
+
+**Remember:** Control the function on circles to control its derivatives inside.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 30E20 (Integration, integrals of Cauchy type, integral representations of analytic functions in the complex plane). arXiv math.CV. Level 2: later undergraduate.
+
+**Definition.** A sequence converges locally uniformly on an open set if, on each compact subset, its largest absolute error tends to zero. Here a compact subset is closed and bounded and lies entirely in the open set.
+
+**Problem.** A locally uniform limit of holomorphic functions is holomorphic. For each derivative order, the derivatives converge locally uniformly to that derivative of the limit.
+
+**How the definition helps.** Local uniform convergence gives one error bound on all small circles around points of a compact set (our own proof). Choose a common radius small enough to keep the circles in a larger compact subset of the domain. The holomorphic limit theorem and Cauchy’s derivative estimates then give convergence for each order (our own extension).
+
+**Paper or page:** [Derivative of Uniform Limit of Analytic Functions](https://proofwiki.org/wiki/Derivative_of_Uniform_Limit_of_Analytic_Functions). It says: “converges locally uniformly to f′.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Residues of forms make all residues on the sphere sum to zero
 
 **Remember:** Take residues of f(z) dz, not of f, and they sum to zero.
@@ -328,6 +824,120 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Symmetric principal values give real poles half a residue
+
+**Remember:** An upper semicircle around a real pole contributes a clockwise half-turn.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 30E20 (Integration, integrals of Cauchy type, integral representations of analytic functions in the complex plane). arXiv math.CV. Level 2: later undergraduate.
+
+**Definition.** Define the principal value of a real-line integral by cutting out equal intervals on both sides of each real pole. Take the limit as these gaps shrink and the outer endpoints tend to infinity.
+
+**Problem.** Suppose a rational function decays at least as fast as 1/\|z\|² at infinity and each real pole is simple. Its principal value equals 2πi times the upper-half-plane residue sum plus πi times the real residue sum.
+
+**How the definition helps.** Equal cutoffs let each removed interval match an upper semicircle, whose integral tends to −πi times the residue (our own). Only the simple pole term survives on that small arc (our own). The work is the residue theorem and the decay estimate on the large semicircle (our own).
+
+**Wikipedia:** [Cauchy principal value](https://en.wikipedia.org/wiki/Cauchy_principal_value). It says: “where the portion inside the disk of radius ε around the pole has been removed.”
+
+**Paper or page:** [Residue at Simple Pole](https://proofwiki.org/wiki/Residue_at_Simple_Pole). It says: “Let f have a simple pole at a.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Taylor coefficients evaluate residues after clearing a pole
+
+**Remember:** Clear the pole, then read Taylor coefficient number m minus one.
+
+*True by definition.* MSC 30E20 (Integration, integrals of Cauchy type, integral representations of analytic functions in the complex plane), 30D30. arXiv math.CV. Level 2: later undergraduate.
+
+**Definition.** Define the residue at a as the Laurent coefficient of 1/(z − a), rather than by a contour integral. A pole of order m clears on multiplication by the mth power of z − a.
+
+**Problem.** At a pole a of order m, the product of f with (z − a) to the power m extends holomorphically. The residue is its Taylor coefficient of degree m − 1.
+
+**How the definition helps.** Clearing the pole adds m to every exponent, so the residue term moves from degree −1 to degree m − 1 (our own). The work is Laurent expansion and its identification of the residue with the contour integral (our own).
+
+**Paper or page:** [Residue at Multiple Pole](https://proofwiki.org/wiki/Residue_at_Multiple_Pole). It says: “Let f have a single pole in D, of order N, at a.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The integral definition of winding makes products add their turns
+
+**Remember:** Multiplying loops adds the winding they have separately.
+
+*True by definition. Confidence: medium.* MSC 30E20 (Integration, integrals of Cauchy type, integral representations of analytic functions in the complex plane). arXiv math.CV. Level 2: later undergraduate.
+
+**Definition.** The winding number of a piecewise smooth loop γ avoiding zero counts its signed turns about zero. Its integral definition divides the time integral of γ′(t)/γ(t) by 2πi.
+
+**Problem.** For two such loops on the same time interval, the winding number of their pointwise product equals the sum of their winding numbers.
+
+**How the definition helps.** In our own proof the product rule splits the logarithmic derivative of the product into two summands. Integrating then adds the two winding numbers (our own). The work is showing that this integral measures the change of a continuous angle (our own).
+
+**Paper or page:** [Logarithmic Derivative of Product of Analytic Functions](https://proofwiki.org/wiki/Logarithmic_Derivative_of_Product_of_Analytic_Functions). It says: “(fg)′(z)/(fg)(z) = f′(z)/f(z) + g′(z)/g(z)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The integral winding number is constant between crossings
+
+**Remember:** An integer that changes continuously cannot change at all.
+
+*True by definition.* MSC 30E20 (Integration, integrals of Cauchy type, integral representations of analytic functions in the complex plane). arXiv math.CV. Level 2: later undergraduate.
+
+**Definition.** Define the winding number about a as the contour integral of 1/(z − a) divided by 2πi. Keep a off the fixed closed contour, so the denominator never vanishes.
+
+**Problem.** The winding number is constant on each connected region outside the image of a piecewise smooth loop. It is zero on the unbounded region.
+
+**How the definition helps.** The integral varies continuously as a moves off the contour because the denominator stays locally bounded away from zero (our own proof). Its values are integers, so it is constant on each connected region. Far away the integral tends to zero, fixing its value on the unbounded region. The work is identifying the integral with the total change of angle divided by 2π (our own comparison).
+
+**Wikipedia:** [Winding number](https://en.wikipedia.org/wiki/Winding_number). It says: “The winding numbers of the curve around two points in the same region are equal.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The triangle test makes parameter integrals holomorphic
+
+**Remember:** Check each triangle before taking the parameter integral.
+
+*True by definition.* MSC 30E20 (Integration, integrals of Cauchy type, integral representations of analytic functions in the complex plane). arXiv math.CV. Level 2: later undergraduate.
+
+**Definition.** One can define a holomorphic function on an open set as a continuous function whose integral around every solid triangle in the set vanishes. Cauchy’s and Morera’s theorems identify this test with complex differentiability.
+
+**Problem.** Let f(z, t) be jointly continuous on an open set of complex z times a compact real interval of t. If f is holomorphic in z for each t, its integral over t is holomorphic in z.
+
+**How the definition helps.** The triangle test lets us integrate the zero triangle integral for each t (our own proof). Joint continuity on compact sets gives continuity of the resulting function and allows the two integrations to change order. Morera’s theorem converts the resulting zero integrals into holomorphy (our own proof).
+
+**Wikipedia:** [Morera's theorem](https://en.wikipedia.org/wiki/Morera%27s_theorem). It says: “This in fact characterizes holomorphy, i.e. f is holomorphic on D if and only if the above conditions hold.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Winding divisible by n detects a holomorphic nth root
+
+**Remember:** Divide the turns by n before asking if the root closes.
+
+*Makes the theorem clean to state or prove.* MSC 30E20 (Integration, integrals of Cauchy type, integral representations of analytic functions in the complex plane). arXiv math.CV. Level 2: later undergraduate.
+
+**Definition.** A holomorphic nth root of f is a holomorphic function g whose nth power equals f, for a positive integer n. For a holomorphic f without zeros, its winding along a closed contour counts how many signed turns its values make around zero. This number equals the contour integral of f′/f divided by 2πi.
+
+**Problem.** Let f be holomorphic with no zeros on a connected open set. It admits a holomorphic nth root exactly when its winding on every closed contour is a multiple of n.
+
+**How the definition helps.** Winding measures whether a chosen root returns to its starting value after a loop (our own proof). Integrate f′/f along a path from a fixed point, divide by n, and exponentiate. Changing paths preserves this factor precisely when every integral of f′/f around a loop is a multiple of 2πin. Multiplying by a root of the starting value gives the required root, using local antiderivatives and the exponential addition law (our own proof).
+
+**Paper or page:** [Theorem 4.1. (Existence of holomorphic nth roots)](https://venhance.github.io/napkin/Napkin.pdf). It says: “Then f has a holomorphic nth root if and only if (1/2πi) ∮γ (f′/f) dz ∈ nℤ for every contour γ in U.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Winding number gives one Cauchy formula for all turns
+
+**Remember:** If a contour turns twice, Cauchy’s formula counts the value twice.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 30E20 (Integration, integrals of Cauchy type, integral representations of analytic functions in the complex plane). arXiv math.CV. Level 2: later undergraduate.
+
+**Definition.** The winding number of a closed piecewise smooth path γ about a point a off γ counts its signed turns around a. It equals the integral of 1/(z − a) along γ divided by 2πi.
+
+**Problem.** Let γ be a closed contour in a disk where f is holomorphic, and let a lie in the disk off γ. The integral of f(z)/(z − a) along γ equals 2πi times f(a) times the winding number about a.
+
+**How the definition helps.** Winding supplies one factor for every signed turn, including turns that cancel (our own extension). Subtracting f(a) from the numerator leaves a quotient that extends holomorphically at a. Cauchy’s theorem makes its integral zero, leaving f(a) times the defining winding integral (our own proof).
+
+**Paper or page:** [Theorem 6.1. (Cauchy's integral formula)](https://venhance.github.io/napkin/Napkin.pdf). It says: “Then for any point a in the interior of D, we have f(a) = (1/2πi) ∮γ f(z)/(z − a) dz.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Zero triangle integrals show the Gamma integral is holomorphic
 
 **Remember:** Swap the integrals to expose an inner contour integral equal to zero.
@@ -341,6 +951,42 @@
 **How the definition helps.** The triangle definition lets us prove holomorphy by changing the order of integration. For fixed x the integrand is holomorphic in s, so its integral around each triangle is zero. On a compact set of s with real parts between a &gt; 0 and b, the integrand is bounded by xᵃ⁻¹e⁻ˣ for x ≤ 1 and xᵇ⁻¹e⁻ˣ for x ≥ 1. These integrable bounds give continuity and justify the exchange by Fubini’s theorem (our own use of the article’s method).
 
 **Wikipedia:** [Morera's theorem](https://en.wikipedia.org/wiki/Morera%27s_theorem), [Gamma function](https://en.wikipedia.org/wiki/Gamma_function). It says: “Morera's theorem can also be used in conjunction with Fubini's theorem and the Weierstrass M-test to show the analyticity of functions defined by sums or integrals”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Zero winding around holes gives Cauchy’s theorem for arbitrary contours
+
+**Remember:** Check winding around missing points, not whether the whole domain has holes.
+
+*Rules out counterexamples.* MSC 30E20 (Integration, integrals of Cauchy type, integral representations of analytic functions in the complex plane). arXiv math.CV. Level 2: later undergraduate.
+
+**Definition.** A closed contour is a path made of smooth pieces that returns to its start. Its winding number about a point off the path counts signed turns around that point. A closed contour in an open set U is null homologous there if it winds zero times about every point outside U.
+
+**Problem.** If f is holomorphic on U, its integral around each null homologous contour in U is zero.
+
+**How the definition helps.** Zero winding excludes loops that count a missing point with nonzero weight. For example, integrating 1/z around the counterclockwise unit circle gives 2πi because the circle winds once around zero (our own calculation). The general Cauchy theorem proves that zero winding outside U suffices.
+
+**Wikipedia:** [Cauchy's integral theorem](https://en.wikipedia.org/wiki/Cauchy%27s_integral_theorem). It says: “the Cauchy integral theorem does not apply here since f(z) = 1/z is not defined (and is certainly not holomorphic) at z = 0.”
+
+**Paper or page:** [Cauchy-Goursat Theorem/Corollary 1](https://proofwiki.org/wiki/Cauchy-Goursat_Theorem/Corollary_1). It says: “Let Int C ⊆ U, where Int C denotes the interior of C.”
+
+**Sources:**
+
+- [L. V. Ahlfors, Complex Analysis, 3rd ed. (1979), chapter 4, §§4.3–4.5, including A. F. Beardon’s proof.](https://mccuan.math.gatech.edu/courses/6321/lars-ahlfors-complex-analysis-third-edition-mcgraw-hill-science_engineering_math-1979.pdf)
+
+### Zero winding detects a holomorphic logarithm on any domain
+
+**Remember:** A logarithm exists when no loop gains a full turn.
+
+*Makes the theorem clean to state or prove.* MSC 30E20 (Integration, integrals of Cauchy type, integral representations of analytic functions in the complex plane). arXiv math.CV. Level 2: later undergraduate.
+
+**Definition.** For a holomorphic function f without zeros, a holomorphic logarithm is a holomorphic function L satisfying exp(L) = f. The winding of f along a closed contour counts the signed turns of its values around zero. It equals the contour integral of f′/f divided by 2πi.
+
+**Problem.** A nonvanishing holomorphic function on a connected open set admits a holomorphic logarithm exactly when its winding is zero on every closed contour there.
+
+**How the definition helps.** Zero winding says that integrating f′/f between two points gives the same answer along every path (our own proof). This path integral gives a primitive L, meaning L′ = f′/f. Then f times exp(−L) has zero derivative, so adding a suitable constant to L gives a logarithm. Conversely, any logarithm has derivative f′/f, whose integral around a closed contour vanishes (our own proof).
+
+**Paper or page:** [Theorem 5.1. (Existence of logarithms)](https://venhance.github.io/napkin/Napkin.pdf). It says: “Then f has a logarithm if and only if (1/2πi) ∮γ (f′/f) dz = 0 for every contour γ in U.”
 
 **Sources:** none listed. No primary source with a working link was found.
 

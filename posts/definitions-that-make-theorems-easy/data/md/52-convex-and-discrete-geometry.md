@@ -16,6 +16,58 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### A nondecreasing outer function keeps convex compositions convex
+
+**Remember:** Preserving order lets the outer function preserve the inner bound.
+
+*Rules out counterexamples.* MSC 52A41 (Convex functions and convex programs in convex geometry). arXiv math.OC. Level 1: early undergraduate.
+
+**Definition.** A convex function is nondecreasing when larger inputs never give smaller outputs. Convexity alone only says that the graph lies at or below each chord between two graph points.
+
+**Problem.** Let f be convex and take values in an interval. If g is convex and nondecreasing on that interval, then g composed with f is convex.
+
+**How the definition helps.** A nondecreasing outer function preserves the upper bound from the inner chord. Convexity of the outer function then bounds the result by the outer chord. In our own counterexample, take g(t) = 1/t for t &gt; 0 and f(x) = 1 + x². Their composition peaks at zero, above the chord joining its values at −1 and 1.
+
+**nLab:** [convex function](https://ncatlab.org/nlab/show/convex+function). It says: “However, if f : I → ℝ is both monotone increasing and convex, then for any convex function g : D → I, the composite f ∘ g : D → ℝ is convex”
+
+**Paper or page:** [Convex Real Function Composed with Increasing Convex Real Function is Convex](https://proofwiki.org/wiki/Convex_Real_Function_Composed_with_Increasing_Convex_Real_Function_is_Convex). It says: “Then g ∘ f : I → ℝ is a convex function.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Epigraphs turn Jensen’s inequality into closure under averages
+
+**Remember:** Average points on the graph and stay above it.
+
+*True by definition.* MSC 52A41 (Convex functions and convex programs in convex geometry). arXiv math.OC. Level 1: early undergraduate.
+
+**Definition.** The epigraph of a function f contains all pairs (x, t) with x in its domain and t ≥ f(x). Define f to be convex when this set contains the segment between any two of its points.
+
+**Problem.** For a convex function, its value at a weighted average is at most the weighted average of its values. The weights are nonnegative and total one.
+
+**How the definition helps.** The epigraph turns the weighted sum in Jensen’s inequality into the height of one point. Repeatedly taking points on segments shows that every finite weighted average of graph points stays in the epigraph. In our own proof, reading off its height gives the usual numerical inequality.
+
+**nLab:** [convex function](https://ncatlab.org/nlab/show/convex+function). It says: “A function f : D → ℝ is convex if the set {(x, z) ∈ D × ℝ: z ≥ f(x)} is a convex subspace of D × ℝ.”
+
+**Paper or page:** [Jensen's Inequality (Real Analysis)](https://proofwiki.org/wiki/Jensen's_Inequality_(Real_Analysis)). It says: “Let λ₁, λ₂, …, λₙ ≥ 0 be real numbers, at least one of which is non-zero.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Triangular faces make Euler’s edge bound an equality
+
+**Remember:** Three sides per face turn Euler’s bound into an exact count.
+
+*Rules out counterexamples.* MSC 52B05 (Combinatorial properties of polytopes and polyhedra (number of faces, shortest paths, etc.)), 52B10. arXiv math.MG. Level 1: early undergraduate.
+
+**Definition.** A three-dimensional convex polytope is a solid formed as the convex hull of finitely many points. It is simplicial if every face of dimension two is a triangle.
+
+**Problem.** A three-dimensional convex polytope with V vertices has exactly 3V − 6 edges if and only if it is simplicial.
+
+**How the definition helps.** Triangular faces give 3F = 2E because every edge belongs to two faces, where F counts faces and E counts edges (our own). Euler’s formula V − E + F = 2 then gives E = 3V − 6 (our own). A face with more sides makes 3F smaller than 2E, so the same formula gives fewer edges (our own).
+
+**Wikipedia:** [Simplicial polytope](https://en.wikipedia.org/wiki/Simplicial_polytope). It says: “the polytope contains only triangular faces of any type.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Inclusive trapezoids simplify prismatoid faces
 
 **Remember:** A parallelogram still has a pair of parallel sides.
@@ -37,6 +89,38 @@ a parallelogram.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### A regular tetrahedron realizes every permutation of four vertices
+
+**Remember:** Permute coordinates to permute the tetrahedron’s vertices.
+
+*True by definition.* MSC 52B15 (Symmetry properties of polytopes), 20H15. arXiv math.GR, math.MG. Level 1: early undergraduate.
+
+**Definition.** In the coordinate model, a regular tetrahedron has the four coordinate unit vectors in four dimensions as vertices. They lie in the three-dimensional space where the coordinates sum to one.
+
+**Problem.** The full symmetry group of a regular tetrahedron is the group of all permutations of four vertices.
+
+**How the definition helps.** Permuting coordinates preserves distances and gives any desired permutation of the four vertices (our own). Distances to the four vertices determine each point in their three-dimensional space, so the symmetry is unique (our own). The model represents a regular tetrahedron because every pair of vertices has the same distance (our own).
+
+**nLab:** [Coxeter group](https://ncatlab.org/nlab/show/Coxeter+group). It says: “Aₙ is the isometry group of a regular n-simplex, and is identified with the symmetric group Sₙ₊₁”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Signed coordinate permutations give all cube symmetries
+
+**Remember:** Permute the three axes, then choose their signs.
+
+*True by definition.* MSC 52B15 (Symmetry properties of polytopes), 20H15. arXiv math.GR, math.MG. Level 1: early undergraduate.
+
+**Definition.** The coordinate cube consists of all points whose three coordinates lie between −1 and 1, including the endpoints. A signed coordinate permutation reorders the coordinates and independently changes any of their signs.
+
+**Problem.** The full cube symmetry group consists of the 48 signed coordinate permutations. Exactly 24 of them preserve orientation.
+
+**How the definition helps.** The six face centers are the positive and negative coordinate unit vectors, so a symmetry must permute the axes with signs (our own). Conversely, each signed permutation preserves the coordinate bounds (our own). There are six orders and eight sign choices, and changing one sign exchanges the two orientations (our own). This uses the fact that every cube symmetry fixes the center and therefore acts by an orthogonal matrix (our own).
+
+**nLab:** [Coxeter group](https://ncatlab.org/nlab/show/Coxeter+group). It says: “Bₙ = Cₙ is the isometry group of a regular n-cube {−1, 1}ⁿ”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Pick's formula needs simple polygons, since each hole adds one
 
 **Remember:** One boundary, no holes, and area is i plus b over two minus one.
@@ -55,6 +139,24 @@ a parallelogram.”
 
 - [J. E. Reeve, On the volume of lattice polyhedra, Proceedings of the London Mathematical Society 7 (1957) 378–395](https://doi.org/10.1112/plms/s3-7.1.378)
 
+### Centering slices preserves area without increasing perimeter
+
+**Remember:** Slide slices to preserve area, then average edges to save length.
+
+*Makes the theorem clean to state or prove.* MSC 52A10 (Convex sets in \\(2\\) dimensions (including convex curves)), 52A40. arXiv math.MG. Level 2: later undergraduate.
+
+**Definition.** Steiner symmetrization slides each slice perpendicular to a fixed line until its midpoint lies on that line. It keeps the slice length unchanged.
+
+**Problem.** Steiner symmetrization of a convex polygon preserves area and does not increase perimeter.
+
+**How the definition helps.** Centering keeps every slice length, so integration gives the same area (our own). Split the polygon into strips at every change of boundary slope (our own). Each new upper edge vector averages the old upper vector and the reflected lower vector, so its length cannot exceed their average length (our own). The new lower edge has the same length, and the two end slices retain theirs (our own).
+
+**Wikipedia:** [Symmetrization methods](https://en.wikipedia.org/wiki/Symmetrization_methods). It says: “by replacing each Ω ∩ Lₓ by a line centered at H and with length \|Ω ∩ Lₓ\|”
+
+**Sources:**
+
+- [Jakob Steiner, Einfache Beweise der isoperimetrischen Hauptsätze (1838).](https://www.e-rara.ch/zut/content/titleinfo/1368571)
+
 ### Support-function width gives perimeter π times the constant width
 
 **Remember:** Adding a body to its half-turn makes a disk with twice its perimeter.
@@ -71,6 +173,88 @@ a parallelogram.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### A nearest point supplies a strict separating hyperplane
+
+**Remember:** The line to the nearest point gives the separating normal.
+
+*True by definition.* MSC 52A20 (Convex sets in \\(n\\) dimensions (including convex hypersurfaces)), 90C25. arXiv math.OC. Level 2: later undergraduate.
+
+**Definition.** For p in a convex set C, its normal cone contains the vectors v satisfying v·(z − p) ≤ 0 for all z in C. For nonempty closed convex C in Euclidean space, the nearest point to x is the unique p whose cone contains x − p.
+
+**Problem.** A point x outside a nonempty closed convex set in Euclidean space is strictly separated from it by a hyperplane. There is a positive gap between the value of the separating linear function at x and its values on the set.
+
+**How the definition helps.** The normal inequality supplies a linear function bounded above on C without searching for a hyperplane. In our own calculation, z ↦ (x − p)·z attains its maximum over C at p. Its value at x exceeds that maximum by ‖x − p‖². The projection theorem identifies the nearest point with the point satisfying the normal inequality.
+
+**Paper or page:** [Strong Separation Theorem](https://proofwiki.org/wiki/Strong_Separation_Theorem). It says: “Then C and D can be strongly separated.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Allowing zero weights makes compact convex hulls compact
+
+**Remember:** Zero weights let every average use the same compact space.
+
+*Makes the theorem clean to state or prove.* MSC 52A20 (Convex sets in \\(n\\) dimensions (including convex hypersurfaces)). arXiv math.MG. Level 2: later undergraduate.
+
+**Definition.** Represent hull points by weighted averages with nonnegative weights that sum to one. A weight of zero lets a shorter average fill a list of exactly d + 1 terms in ℝᵈ.
+
+**Problem.** The convex hull of a compact subset of Euclidean space is compact.
+
+**How the definition helps.** With zero weights allowed, one continuous averaging map covers the whole hull (our own). Its domain is the product of d + 1 copies of the compact set and the compact simplex of weights (our own). The work moves to Carathéodory’s theorem, which bounds the number of points needed before padding with zeros (our own).
+
+**Wikipedia:** [Convex hull](https://en.wikipedia.org/wiki/Convex_hull). It says: “convex hulls of compact sets are compact.”
+
+**Paper or page:** [Carathéodory's Theorem (Convex Analysis)](https://proofwiki.org/wiki/Carathéodory's_Theorem_(Convex_Analysis)). It says: “In particular, x is a convex combination of at most l + 1 points of E.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Compactness keeps disjoint convex sets strictly apart
+
+**Remember:** A compact set cannot approach a disjoint closed set at infinity.
+
+*Rules out counterexamples.* MSC 52A20 (Convex sets in \\(n\\) dimensions (including convex hypersurfaces)), 90C25. arXiv math.OC. Level 2: later undergraduate.
+
+**Definition.** In Euclidean space a compact set is one that is closed and bounded. Two sets have a separating gap if some linear function has values uniformly higher on one than on the other by a positive amount.
+
+**Problem.** Two nonempty disjoint closed convex sets in Euclidean space admit strict separation with a gap if one is compact.
+
+**How the definition helps.** Compactness makes the distance to the other closed set attain a positive minimum. In our own proof, the segment between closest points gives a separating direction by the nearest point inequality. Without compactness, the closed convex regions y ≥ exp(x) and y ≤ 0 approach each other as x tends to −∞.
+
+**Paper or page:** [Hahn-Banach Separation Theorem/Normed Vector Space/Real Case/Compact Convex Set and Closed Convex Set](https://proofwiki.org/wiki/Hahn-Banach_Separation_Theorem/Normed_Vector_Space/Real_Case/Compact_Convex_Set_and_Closed_Convex_Set). It says: “Let A be a compact convex set. Let B be a closed convex set disjoint from A.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Directions at infinity detect exactly when convex sets are unbounded
+
+**Remember:** Shrink distant points to unit length to see a direction at infinity.
+
+*Makes the theorem clean to state or prove.* MSC 52A20 (Convex sets in \\(n\\) dimensions (including convex hypersurfaces)). arXiv math.MG. Level 2: later undergraduate.
+
+**Definition.** A recession direction v lets every point x in C move along x + sv for all s ≥ 0 without leaving C. These directions form the recession cone. The asymptotic cone consists of limits of points tₖxₖ with xₖ in C and positive tₖ tending to zero.
+
+**Problem.** A nonempty closed convex set in Euclidean space is bounded exactly when its recession cone contains only zero.
+
+**How the definition helps.** The limit definition makes boundedness force every scaled limit to be zero (our own). For an unbounded set, divide distant points by their lengths and take a convergent subsequence on the unit sphere (our own). The work moves to showing that the limit cone equals the recession cone for closed convex sets (our own).
+
+**Paper or page:** [Conic optimization techniques yield sufficient conditions for set-completely positive matrix completion under arrowhead specification pattern](https://arxiv.org/abs/2509.19348v1). It says: “A nonempty closed convex set 𝒞 ⊆ ℝⁿ is bounded if and only if 𝒞∞ = {o}.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Keeping the origin makes taking polars twice recover a set
+
+**Remember:** A second polar recovers the closed hull with zero included.
+
+*Rules out counterexamples.* MSC 52A20 (Convex sets in \\(n\\) dimensions (including convex hypersurfaces)). arXiv math.MG. Level 2: later undergraduate.
+
+**Definition.** In Euclidean space, the one-sided polar of A consists of vectors y satisfying x · y ≤ 1 for every x in A.
+
+**Problem.** Taking the one-sided polar twice gives the smallest closed convex set containing both A and zero. Thus it recovers any closed convex set containing zero.
+
+**How the definition helps.** Every defining inequality contains the origin, so a second polar cannot recover a set that leaves it out (our own). For example, the double polar of {1} on the real line is \[0, 1\] (our own). The work for the reverse inclusion is strict separation from the closed hull containing zero (our own). A positive separating bound can be scaled to one, and a zero bound can first be increased slightly (our own).
+
+**Paper or page:** [Bipolar Theorem/One-Sided Polar](https://proofwiki.org/wiki/Bipolar_Theorem/One-Sided_Polar). It says: “\\paren {A<sup>\\odot}\_\\odot</sup> = \\map {\\cl\_\\sigma} {\\map {\\operatorname {conv} } {A \\cup \\set { {\\mathbf 0}<sub>X</sub>} } }”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Polarity ignores convex combinations
 
 **Remember:** An upper bound on generators is the same bound on their averages.
@@ -84,6 +268,70 @@ a parallelogram.”
 **How the definition helps.** The inequality definition lets one check a linear bound on generators alone. In our own proof, every convex combination preserves the upper bound of one. Conversely, a bound on the hull holds on the original set. For a full-dimensional polytope containing zero in its interior, one can also construct the polar from rescaled facet normals. That approach requires proving these normals generate precisely the set of valid inequalities.
 
 **Paper or page:** [One-Sided Polar of Convex Hull is One-Sided Polar of Original Set](https://proofwiki.org/wiki/One-Sided_Polar_of_Convex_Hull_is_One-Sided_Polar_of_Original_Set). It says: “(conv A)⊙ = A⊙”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Polarity swaps closed convex hulls of unions with intersections
+
+**Remember:** A union pools the inequalities, so the polar intersects their solution sets.
+
+*Makes the theorem clean to state or prove.* MSC 52A20 (Convex sets in \\(n\\) dimensions (including convex hypersurfaces)). arXiv math.MG. Level 2: later undergraduate.
+
+**Definition.** The one-sided polar of A consists of vectors y obeying x · y ≤ 1 for all x in A. Each point of A provides one inequality rather than one candidate vertex.
+
+**Problem.** The polar of the intersection of any nonempty family of closed convex sets containing zero equals the closed convex hull of their polars’ union.
+
+**How the definition helps.** The polar turns a union into an intersection because each point in the union contributes its own inequality (our own). Apply this rule to the union of the polars of the given sets (our own). Taking polars again gives the result by the bipolar theorem, since each original set is closed, convex and contains zero (our own).
+
+**Paper or page:** [Intersection of One-Sided Polars is One-Sided Polar of Union](https://proofwiki.org/wiki/Intersection_of_One-Sided_Polars_is_One-Sided_Polar_of_Union). It says: “⋂₍A ∈ ℱ₎ A⊙ = (⋃₍A ∈ ℱ₎ A)⊙”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Radial projection identifies convex boundaries with spheres
+
+**Remember:** Every ray from inside meets the boundary once.
+
+*Makes the theorem clean to state or prove.* MSC 52A20 (Convex sets in \\(n\\) dimensions (including convex hypersurfaces)). arXiv math.MG. Level 2: later undergraduate.
+
+**Definition.** Radial projection from an interior point p sends each boundary point x to the unit vector along x − p. It describes the boundary by directions instead of by a surface equation.
+
+**Problem.** Radial projection maps the boundary of a compact convex set with nonempty interior in ℝᵈ onto the unit sphere for d ≥ 1. The map and its inverse are continuous.
+
+**How the definition helps.** Radial projection labels each boundary point by its direction from p (our own). Compactness gives a last point on each ray inside the set (our own). Convexity joins that point to a ball around p, putting all earlier points inside the interior (our own). The resulting continuous bijection has a continuous inverse because the boundary is compact and the sphere is Hausdorff (our own).
+
+**Paper or page:** [Boundary of Compact Convex Set with Nonempty Interior is Homeomorphic to Sphere](https://proofwiki.org/wiki/Boundary_of_Compact_Convex_Set_with_Nonempty_Interior_is_Homeomorphic_to_Sphere). It says: “Then, the boundary ∂C is homeomorphic to Sⁿ⁻¹, the unit n − 1-sphere.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Relative interior gives every nonempty convex set an inside
+
+**Remember:** Look for an inside in the space the set actually spans.
+
+*Rules out counterexamples.* MSC 52A20 (Convex sets in \\(n\\) dimensions (including convex hypersurfaces)). arXiv math.MG. Level 2: later undergraduate.
+
+**Definition.** The affine hull is the smallest translate of a vector subspace that contains the set. The relative interior consists of points with a neighborhood in that flat space lying entirely in the set.
+
+**Problem.** Every nonempty convex subset of Euclidean space has nonempty relative interior.
+
+**How the definition helps.** The affine hull has exactly the dimension spanned by differences of points in the set (our own). Choose a point and enough other points for their differences from it to form a basis (our own). Their convex hull is a simplex containing a relative neighborhood of its center, even in dimension zero (our own). In the plane, a segment has empty ordinary interior.
+
+**Wikipedia:** [Relative interior](https://en.wikipedia.org/wiki/Relative_interior). It says: “The interior of a line segment in an at least two-dimensional ambient space is empty”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Support values determine a closed convex set
+
+**Remember:** One support bound per direction recovers the whole closed set.
+
+*Makes the theorem clean to state or prove.* MSC 52A20 (Convex sets in \\(n\\) dimensions (including convex hypersurfaces)). arXiv math.MG. Level 2: later undergraduate.
+
+**Definition.** The support function gives, in each direction u, the least upper bound of u · x over the set. It may give +∞ if there is no finite bound.
+
+**Problem.** A nonempty closed convex set in Euclidean space is the intersection of the half-spaces given by its finite support bounds. In particular, its support function determines it uniquely.
+
+**How the definition helps.** Each finite support bound is an inequality satisfied by every point of the set (our own). An outside point violates one bound, by strict separation of a point from a closed convex set (our own). That separation theorem carries the work that the support function saves here (our own).
+
+**Paper or page:** [Closed Convex Set in terms of Bounded Linear Functionals](https://proofwiki.org/wiki/Closed_Convex_Set_in_terms_of_Bounded_Linear_Functionals). It says: “C = ⋂₍f ∈ X⋆₎ {x ∈ X : f(x) ≤ sup₍c ∈ C₎ f(c)}”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -125,6 +373,22 @@ a parallelogram.”
 
 - [R. Tyrrell Rockafellar, Convex Analysis, Princeton University Press (1970), §18](https://doi.org/10.1515/9781400873173)
 
+### Scaling an origin-symmetric convex body gives a norm
+
+**Remember:** The gauge measures how far you must enlarge the unit body.
+
+*Rules out counterexamples.* MSC 52A21 (Convexity and finite-dimensional Banach spaces (including special norms, zonoids, etc.) (aspects of convex geometry)), 52A20. arXiv math.MG. Level 2: later undergraduate.
+
+**Definition.** Let K be a compact convex set containing zero in its interior. The gauge of x is the smallest t ≥ 0 for which x belongs to tK. Here 0K means the singleton containing zero.
+
+**Problem.** The gauge of every origin-symmetric convex body is a norm with K as its closed unit ball.
+
+**How the definition helps.** Scaling gives homogeneity, and symmetry gives equal lengths to opposite vectors (our own). Convexity puts the sum of vectors from aK and bK in (a + b)K, which gives the triangle inequality (our own). Compactness gives attainment away from zero and boundedness excludes zero gauge for a nonzero vector (our own). The interval \[−1, 2\] gives different gauges for −1 and 1 (our own).
+
+**Paper or page:** [Minkowski Functional of Symmetric Convex Absorbing Set in Real Vector Space is Seminorm](https://proofwiki.org/wiki/Minkowski_Functional_of_Symmetric_Convex_Absorbing_Set_in_Real_Vector_Space_is_Seminorm). It says: “Then μA is a seminorm.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Ball bodies survive double polarity
 
 **Remember:** Apply ball polarity twice to recover the ball hull.
@@ -160,6 +424,72 @@ a parallelogram.”
 **Sources:**
 
 - [D. T. Lee and F. P. Preparata, An Optimal Algorithm for Finding the Kernel of a Polygon (1979)](https://doi.org/10.1145/322139.322142)
+
+### A compact member keeps infinite Helly intersections from escaping
+
+**Remember:** One compact member gives all the intersections a place to stay.
+
+*Rules out counterexamples.* MSC 52A35 (Helly-type theorems and geometric transversal theory), 52A20. arXiv math.MG. Level 2: later undergraduate.
+
+**Definition.** A compact set in Euclidean space is closed and bounded. For infinite Helly, take a family of closed convex sets with at least one compact member.
+
+**Problem.** A family of closed convex sets in ℝᵈ has a common point under two conditions. One member is compact and every subfamily of at most d + 1 sets meets.
+
+**How the definition helps.** The compact member gives a fixed place to intersect all the other sets (our own). Finite Helly says every finite selection meets, even after adding the compact member (our own). Inside that member, compactness gives a point in all these closed intersections (our own). Without compactness, the rays \[n, ∞) meet in every finite selection but have no common point (our own).
+
+**Wikipedia:** [Helly's theorem](https://en.wikipedia.org/wiki/Helly%27s_theorem). It says: “the intersection of all others with it are closed subsets of a fixed compact space”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Minimal empty families turn Helly’s theorem into one Radon step
+
+**Remember:** Delete each set once, then let Radon join the witnesses.
+
+*Makes the theorem clean to state or prove.* MSC 52A35 (Helly-type theorems and geometric transversal theory), 52A20. arXiv math.MG. Level 2: later undergraduate.
+
+**Definition.** A minimal empty-intersection family has no common point, but deleting any one set leaves a common point. This is smaller under inclusion, not necessarily smallest among all possible examples.
+
+**Problem.** In ℝᵈ, a finite minimal empty-intersection family of convex sets has at most d + 1 members.
+
+**How the definition helps.** For each set, minimality gives a witness in every other set but outside that one (our own). Given d + 2 witnesses, Radon’s theorem splits them into two groups whose convex hulls meet (our own). Each set contains one whole group and hence contains the meeting point, a contradiction (our own).
+
+**Wikipedia:** [Helly's theorem](https://en.wikipedia.org/wiki/Helly%27s_theorem). It says: “We prove the finite version, using Radon's theorem”
+
+**Sources:**
+
+- [Johann Radon, Mengen konvexer Körper, die einen gemeinsamen Punkt enthalten, Mathematische Annalen 83, 113–115 (1921).](https://link.springer.com/article/10.1007/BF01464231)
+
+### Zero weights show why Helly needs d plus one sets
+
+**Remember:** Any missing zero leaves a coordinate free to be one.
+
+*Makes the theorem clean to state or prove.* MSC 52A35 (Helly-type theorems and geometric transversal theory), 52B05. arXiv math.MG. Level 2: later undergraduate.
+
+**Definition.** The standard d-simplex consists of d + 1 nonnegative coordinates that sum to one. Its facets, the faces of dimension d − 1, each set one coordinate to zero.
+
+**Problem.** For every d ≥ 1, any d facets of the standard d-simplex share a point, but all d + 1 share none.
+
+**How the definition helps.** Setting a coordinate to zero makes each facet impose a different constraint (our own). Any d facets leave one coordinate free to equal one (our own). All d + 1 would force every coordinate to vanish, although their sum must equal one (our own). Thus checking only d convex sets at a time cannot guarantee a common point in dimension d (our own).
+
+**nLab:** [simplex](https://ncatlab.org/nlab/show/simplex). It says: “which omits the kth coordinate”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Fewest nonzero weights give Carathéodory’s bound
+
+**Remember:** Choose the fewest weights, then use a dependence to drop one.
+
+*Makes the theorem clean to state or prove.* MSC 52A37 (Other problems of combinatorial convexity), 52A20. arXiv math.MG. Level 2: later undergraduate.
+
+**Definition.** Define the convex hull by finite weighted averages with nonnegative weights that sum to one. The equivalent definition intersects all convex sets that contain the original set.
+
+**Problem.** Every point in the convex hull of a set in ℝᵈ is a weighted average of at most d + 1 points from that set.
+
+**How the definition helps.** The average formula lets us choose an expression with the fewest positive weights (our own). More than d + 1 points admit nonzero coefficients whose sum and weighted sum of points both vanish (our own). Add a multiple of these coefficients to the weights until one reaches zero (our own). This preserves the point and contradicts minimality (our own).
+
+**Paper or page:** [Carathéodory's Theorem (Convex Analysis)](https://proofwiki.org/wiki/Carathéodory's_Theorem_(Convex_Analysis)). It says: “In particular, x is a convex combination of at most l + 1 points of E.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### General position makes Radon partitions unique
 
@@ -204,6 +534,24 @@ a parallelogram.”
 **Sources:**
 
 - [Oleg R. Musin, Borsuk's conjecture for two-distance sets and its equivalent formulation for graphs, arXiv:2511.03668 (2025)](https://arxiv.org/abs/2511.03668v2)
+
+### Signed affine weights give Radon’s partition
+
+**Remember:** Move the negative weights across to get two equal averages.
+
+*Makes the theorem clean to state or prove.* MSC 52A37 (Other problems of combinatorial convexity), 52A20. arXiv math.MG. Level 2: later undergraduate.
+
+**Definition.** An affine dependence is a nonzero list of weights that sum to zero and give a zero weighted sum of the points. Unlike an ordinary linear dependence, it treats every choice of origin alike.
+
+**Problem.** Any d + 2 points in ℝᵈ can be split into two groups whose convex hulls meet.
+
+**How the definition helps.** The zero sum of the coefficients makes the positive and negative sides have equal total weight (our own). Dividing by that weight gives two averages at the same point, and unused points can join either group (our own). Such coefficients exist because appending a one gives d + 2 vectors in only d + 1 dimensions (our own).
+
+**Wikipedia:** [Radon's theorem](https://en.wikipedia.org/wiki/Radon%27s_theorem). It says: “the sum of the multipliers to be zero”
+
+**Sources:**
+
+- [Johann Radon, Mengen konvexer Körper, die einen gemeinsamen Punkt enthalten, Mathematische Annalen 83, 113–115 (1921).](https://link.springer.com/article/10.1007/BF01464231)
 
 ### Signed face projections cancel
 
@@ -274,6 +622,56 @@ a parallelogram.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Extreme points give a polytope its unique minimal generating set
+
+**Remember:** A true corner cannot be averaged away.
+
+*Makes the theorem clean to state or prove.* MSC 52B05 (Combinatorial properties of polytopes and polyhedra (number of faces, shortest paths, etc.)), 52A20. arXiv math.MG. Level 2: later undergraduate.
+
+**Definition.** A polytope is the convex hull of finitely many points. A vertex is an extreme point, a point that lies strictly between no two distinct points of the polytope.
+
+**Problem.** The vertices of a nonempty polytope form its unique smallest set of convex hull generators.
+
+**How the definition helps.** The segment test forces every generating set to contain each vertex (our own). An average of other points would place that vertex strictly between one point and the average of the rest (our own). For a nonextreme generator, expand both endpoints of its segment as averages of generators (our own). Its resulting weight is below one, so rearranging expresses it using the others and allows its removal (our own).
+
+**nLab:** [extreme point](https://ncatlab.org/nlab/show/extreme+point). It says: “those not in between any pair of points of the set.”
+
+**Paper or page:** [Extreme Point of Convex Set not contained in Convex Hull of Subset not containing Point](https://proofwiki.org/wiki/Extreme_Point_of_Convex_Set_not_contained_in_Convex_Hull_of_Subset_not_containing_Point). It says: “Then x ∉ conv C.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Reversing face inclusion swaps simple and simplicial polytopes
+
+**Remember:** A vertex with d facets becomes a facet with d vertices.
+
+*True by definition.* MSC 52B05 (Combinatorial properties of polytopes and polyhedra (number of faces, shortest paths, etc.)), 52B11. arXiv math.MG. Level 2: later undergraduate.
+
+**Definition.** A facet of a d-dimensional polytope is a face of dimension d − 1. A simple polytope has exactly d facets through each vertex. A simplicial polytope has exactly d vertices on each facet.
+
+**Problem.** The polar of a full-dimensional polytope with the origin inside is simplicial exactly when the original polytope is simple.
+
+**How the definition helps.** These two incidence counts exchange roles when face inclusion reverses (our own). For the polar, each vertex becomes a facet whose vertices correspond to the facets through the original vertex (our own). This correspondence uses the face-duality theorem for polars (our own). The usual simplex definition agrees because a facet needs d affinely independent vertices to span its affine space (our own).
+
+**Wikipedia:** [Simplicial polytope](https://en.wikipedia.org/wiki/Simplicial_polytope). It says: “It is topologically dual to simple polytopes.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The moment curve exposes small vertex sets as faces
+
+**Remember:** Put a double root at each vertex you want to expose.
+
+*Makes the theorem clean to state or prove.* MSC 52B05 (Combinatorial properties of polytopes and polyhedra (number of faces, shortest paths, etc.)), 52B11. arXiv math.MG. Level 2: later undergraduate.
+
+**Definition.** The moment curve sends t to (t, t², …, tᵈ). For d ≥ 2, the hull of at least d + 1 distinct points on this curve is a cyclic d-polytope.
+
+**Problem.** Any nonempty subset of at most d/2 vertices of a cyclic d-polytope spans a face.
+
+**How the definition helps.** On the moment curve, each polynomial of degree at most d is a constant plus a linear function of the coordinates (our own). Multiply the factors (t − s)² over the selected vertex parameters s (our own). The product vanishes there and is positive at all other vertices (our own). Its associated affine function therefore reaches its minimum exactly on the hull of the chosen vertices, making that hull a face (our own).
+
+**Wikipedia:** [Cyclic polytope](https://en.wikipedia.org/wiki/Cyclic_polytope). It says: “every set of at most d/2 vertices forms a face.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Cauchy's rigidity theorem needs the polyhedra to be convex
 
 **Remember:** A convex polyhedron cannot have a dent that pops in and out.
@@ -291,6 +689,38 @@ a parallelogram.”
 **Sources:**
 
 - [R. Connelly, A counterexample to the rigidity conjecture for polyhedra, Publ. Math. IHÉS 47 (1977) 333–338](https://doi.org/10.1007/BF02684342)
+
+### Projection through one facet draws polytope graphs without crossings
+
+**Remember:** Look through one face and draw what lies behind it.
+
+*Makes the theorem clean to state or prove.* MSC 52B10 (Three-dimensional polytopes), 52B35, 52B05. arXiv math.MG. Level 2: later undergraduate.
+
+**Definition.** A Schlegel diagram projects the boundary of a convex polytope onto the plane of one face, omitting that face’s interior. The viewpoint lies just beyond that face and strictly inside the half-spaces of every other face.
+
+**Problem.** Every three-dimensional convex polytope has a Schlegel diagram that draws its vertices and edges in the plane without crossings.
+
+**How the definition helps.** Projection draws each edge as a straight segment and separates it from nonincident edges (our own). The geometric work moves to choosing a viewpoint and showing each ray through the facet interior has just one far boundary point (our own). Convexity makes the part of each ray inside the polytope a single interval (our own).
+
+**Wikipedia:** [Schlegel diagram](https://en.wikipedia.org/wiki/Schlegel_diagram). It says: “through a point just outside one of its facets.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Boundedness makes finite half-space intersections finite convex hulls
+
+**Remember:** A finite convex hull cannot contain an infinite ray.
+
+*Rules out counterexamples.* MSC 52B11 (\\(n\\)-dimensional polytopes), 52B05. arXiv math.MG. Level 2: later undergraduate.
+
+**Definition.** A polytope is a bounded intersection of finitely many closed half-spaces, each given by a weak linear inequality. A polyhedron may use the same inequalities without the boundedness condition.
+
+**Problem.** Nonempty polytopes are exactly the convex hulls of nonempty finite sets of points.
+
+**How the definition helps.** Boundedness excludes the half-line \[0, ∞), which extends farther than any finite list of generators (our own). The polytope representation theorem supplies both directions (our own). In particular, listing the finitely many corners still requires proving that their hull fills the bounded intersection (our own).
+
+**Wikipedia:** [Convex polytope](https://en.wikipedia.org/wiki/Convex_polytope). It says: “By requiring that the intersection of half-spaces results in a bounded set, the definition becomes equivalent to the vertex-representation.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Finite convex hulls make affine images of polytopes polytopes
 
@@ -356,6 +786,24 @@ a parallelogram.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Flags count the symmetries of every Platonic solid
+
+**Remember:** Each edge belongs to four flags, and each flag names one symmetry.
+
+*True by definition.* MSC 52B15 (Symmetry properties of polytopes), 20H15. arXiv math.GR, math.MG. Level 2: later undergraduate.
+
+**Definition.** A flag consists of a vertex, an edge containing that vertex, and a face containing that edge. Define geometric regularity by the ability to carry any flag to any other by a symmetry.
+
+**Problem.** A Platonic solid with E edges has 4E symmetries, including orientation-reversing ones.
+
+**How the definition helps.** Flag transitivity makes every flag the image of one chosen flag (our own). A symmetry fixing that flag fixes its vertex, edge midpoint, face center and solid center (our own). These four points are noncoplanar, so only the identity fixes them all, giving one symmetry per flag and four flags per edge (our own). The geometric input is that each Platonic solid satisfies this flag definition of regularity (our own).
+
+**Wikipedia:** [Regular polytope](https://en.wikipedia.org/wiki/Regular_polytope). It says: “whose symmetry group acts transitively on its flags”
+
+**Paper or page:** [Tessellations of surfaces](https://arxiv.org/abs/2303.17263). It says: “Each Platonic solid admits a triangulation into right-angle triangles determined by barycentric subdivisions of its faces.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Regularity by flag symmetry makes dual polytopes regular
 
 **Remember:** Reversing the order of faces gives matching flags in the dual.
@@ -369,6 +817,54 @@ a parallelogram.”
 **How the definition helps.** Flag symmetry transfers directly, because duality sends flags to flags in reverse order (our own proof). Centre the polytope at the average of its vertices, so every symmetry is orthogonal and fixes the origin. Then the symmetries act on the polar dual and preserve the face correspondence. The work is proving this face correspondence, instead of testing the faces and vertex slices of the dual one by one.
 
 **Wikipedia:** [Regular polytope](https://en.wikipedia.org/wiki/Regular_polytope). It says: “The dual of a regular polytope is also a regular polytope.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Taking the polar leaves a centered polyhedron’s symmetry group unchanged
+
+**Remember:** A polar trades faces for vertices without losing orthogonal symmetries.
+
+*True by definition.* MSC 52B15 (Symmetry properties of polytopes), 20H15. arXiv math.GR, math.MG. Level 2: later undergraduate.
+
+**Definition.** Place the origin inside a convex polyhedron. Its polar consists of all vectors y such that x · y ≤ 1 for every point x in the polyhedron. The dot denotes the dot product.
+
+**Problem.** A convex polyhedron and its polar have exactly the same orthogonal symmetries. For example, a centered cube and its polar octahedron have the same symmetries.
+
+**How the definition helps.** The dot-product definition makes every orthogonal symmetry preserve the polar (our own). Applying this argument twice gives the converse because the polar of the polar is the original polyhedron (our own). This last theorem supplies the geometric step missing from a description that only exchanges vertices and faces (our own).
+
+**Wikipedia:** [Dual polyhedron](https://en.wikipedia.org/wiki/Dual_polyhedron). It says: “Duality preserves the symmetries of a polyhedron.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Empty lattice triangles give the smallest possible area
+
+**Remember:** Every extra lattice class would put a fourth point in the triangle.
+
+*Makes the theorem clean to state or prove.* MSC 52B20 (Lattice polytopes in convex geometry (including relations with commutative algebra and algebraic geometry)), 52A10. arXiv math.MG. Level 2: later undergraduate.
+
+**Definition.** An empty lattice triangle has three noncollinear integer vertices and no other integer points, even on its edges. A unimodular triangle has edge vectors at one vertex that form a basis of the integer lattice.
+
+**Problem.** An empty lattice triangle is unimodular and has area one half.
+
+**How the definition helps.** Emptiness rules out extra integer points in the entire parallelogram spanned by the triangle’s two edges (our own). The diagonal opposite their shared vertex divides it into two triangles exchanged by reflection through its midpoint (our own). The half-open parallelogram therefore contains only the origin after translating the shared vertex there (our own). It represents every lattice class modulo the edge vectors, so they form a basis and their triangle has area one half (our own).
+
+**Wikipedia:** [Pick's theorem](https://en.wikipedia.org/wiki/Pick%27s_theorem). It says: “a triangle with three integer vertices and no other integer points has area exactly ½”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Lattice edge lengths make the planar lattice count quadratic
+
+**Remember:** Area scales quadratically and lattice boundary length scales linearly.
+
+*Makes the theorem clean to state or prove.* MSC 52B20 (Lattice polytopes in convex geometry (including relations with commutative algebra and algebraic geometry)), 52A10. arXiv math.MG. Level 2: later undergraduate.
+
+**Definition.** A lattice polygon has vertices with integer coordinates. An edge with coordinate differences a and b has lattice length equal to the greatest common divisor of \|a\| and \|b\|.
+
+**Problem.** A convex lattice polygon has area A and total lattice edge length B. Its dilation by a positive integer n contains An² + Bn/2 + 1 lattice points.
+
+**How the definition helps.** Lattice length counts the integer points on an edge when its starting vertex is omitted (our own). Going around the polygon counts every boundary point once, and dilation by n multiplies each edge length by n (our own). Pick’s theorem gives the total point count as area plus half the boundary count plus one (our own). Dilation multiplies the area by n² (our own).
+
+**Wikipedia:** [Pick's theorem](https://en.wikipedia.org/wiki/Pick%27s_theorem). It says: “the number of integer points on its boundary”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -445,6 +941,22 @@ a parallelogram.”
 
 - [I. Lakatos, Proofs and Refutations: The Logic of Mathematical Discovery, Cambridge University Press (1976)](https://doi.org/10.1017/cbo9781139171472)
 
+### Closed bodies keep Minkowski’s lattice point at equality
+
+**Remember:** At the volume threshold, the lattice point may sit on the boundary.
+
+*Rules out counterexamples.* MSC 52C07 (Lattices and convex bodies in \\(n\\) dimensions (aspects of discrete geometry)), 52A20. arXiv math.MG. Level 2: later undergraduate.
+
+**Definition.** A convex body is a compact convex set with nonempty interior. In particular, it contains its boundary, unlike an open convex region.
+
+**Problem.** A convex body symmetric about zero contains a nonzero lattice point when its volume equals 2ᵈ times the volume of a lattice cell.
+
+**How the definition helps.** Closedness keeps a limiting lattice point on the boundary (our own). Enlarge the body by factors 1 + 1/n and apply the strict volume theorem to each copy (our own). Boundedness leaves finitely many lattice points, so one nonzero point recurs and its rescaled copies converge to it inside the original body (our own). The open cube (−1, 1)ᵈ attains the threshold but contains no nonzero integer point (our own).
+
+**Paper or page:** [Theorem 5.1. (Minkowski)](https://venhance.github.io/napkin/Napkin.pdf). It says: “The volume of S equals 2ⁿ d and S is compact”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Half-open parallelepipeds make lattice translates tile space without overlaps
 
 **Remember:** Each coordinate splits into an integer part and a remainder in \[0, 1).
@@ -458,6 +970,22 @@ a parallelogram.”
 **How the definition helps.** The half-open choice puts each point in exactly one translate, because each real number has one integer part and one remainder in \[0, 1). A point x₁b₁ + ⋯ + xₙbₙ lies in the translate indexed by the integer parts of x₁, …, xₙ, and in no other (our own proof). Closed parallelepipeds cover ℝⁿ but overlap on their boundaries.
 
 **Wikipedia:** [Lattice (group)](https://en.wikipedia.org/wiki/Lattice_%28group%29). It says: “A lattice fills the whole of ℝⁿ with equal tiles, copies of the n-dimensional parallelepiped spanned by the basis vectors”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Origin symmetry turns lattice differences into points of the body
+
+**Remember:** Halve the body, then subtract two points that match modulo the lattice.
+
+*Rules out counterexamples.* MSC 52C07 (Lattices and convex bodies in \\(n\\) dimensions (aspects of discrete geometry)), 52A20. arXiv math.MG. Level 2: later undergraduate.
+
+**Definition.** A convex body is a compact convex set with nonempty interior. It is symmetric about the origin if it contains −x whenever it contains x.
+
+**Problem.** Let a lattice consist of all integer combinations of a basis of ℝᵈ. An origin-symmetric convex body contains a nonzero lattice point if its volume exceeds 2ᵈ times the volume of the basis parallelepiped.
+
+**How the definition helps.** For u and v in the halved body, symmetry puts both 2u and −2v in the body (our own). Blichfeldt’s volume theorem gives two distinct such points whose difference belongs to the lattice (our own). Convexity puts their difference, the midpoint of 2u and −2v, in the body (our own). Without origin symmetry, the rectangle \[0.1, 0.9\] × \[−3, 3\] has area above four but misses every integer point (our own).
+
+**Paper or page:** [Theorem 5.1. (Minkowski)](https://venhance.github.io/napkin/Napkin.pdf). It says: “Let S ⊆ ℝⁿ be a convex set containing 0 which is centrally symmetric (meaning that x ∈ S ⇔ −x ∈ S).”
 
 **Sources:** none listed. No primary source with a working link was found.
 

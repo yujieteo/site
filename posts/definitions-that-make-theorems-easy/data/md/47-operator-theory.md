@@ -1,3 +1,99 @@
+### Surjectivity makes an isometry’s adjoint its inverse
+
+**Remember:** An isometry can undo its action everywhere only if it reaches everywhere.
+
+*Rules out counterexamples.* MSC 47A05 (General (adjoints, conjugates, products, inverses, domains, ranges, etc.)). arXiv math.FA. Level 2: later undergraduate.
+
+**Definition.** A unitary map is a surjective linear isometry between Hilbert spaces. A linear isometry preserves norms, but need not be surjective.
+
+**Problem.** The adjoint of a unitary map is its inverse.
+
+**How the definition helps.** In our own proof, surjectivity turns the left inverse given by the adjoint into a two-sided inverse. The polarization identity recovers inner products from norms, so ⟨Ux,Uy⟩ = ⟨x,y⟩ gives U∗U = I. The right shift on square-summable sequences inserts a zero first coordinate. Its adjoint deletes the first coordinate, so composing in the opposite order erases the original first coordinate.
+
+**Paper or page:** [Linear Transformation is Isomorphism iff Inverse Equals Adjoint](https://proofwiki.org/wiki/Linear_Transformation_is_Isomorphism_iff_Inverse_Equals_Adjoint). It says: “U is invertible and U⁻¹ = U∗, where U∗ denotes the adjoint of U.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Taking adjoints preserves the operator norm
+
+**Remember:** Swap the two unit vectors to see the same norm.
+
+*True by definition.* MSC 47A05 (General (adjoints, conjugates, products, inverses, domains, ranges, etc.)). arXiv math.FA. Level 2: later undergraduate.
+
+**Definition.** The operator norm of T is the supremum of ‖Tx‖ over the unit ball. On Hilbert spaces it also equals the supremum of \|⟨Tx,y⟩\| over both unit balls. The adjoint satisfies ⟨Tx,y⟩ = ⟨x,T∗y⟩.
+
+**Problem.** A bounded operator between Hilbert spaces and its adjoint have the same operator norm.
+
+**How the definition helps.** In our own proof, the two-vector formula gives the same supremum for T and its adjoint after exchanging x and y. Cauchy–Schwarz bounds the inner product by ‖Tx‖, and choosing y along a nonzero Tx attains that bound. This proves the two norm formulas agree.
+
+**Paper or page:** [Norm of Adjoint](https://proofwiki.org/wiki/Norm_of_Adjoint). It says: “\\norm A\_{\\map B {H, K} }<sup>2</sup> = \\norm {A<sup>\*}\_{\\map</sup> B {K, H} }<sup>2</sup>”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The adjoint turns a kernel into an orthogonal complement
+
+**Remember:** Moving across the inner product turns zero into perpendicular to the range.
+
+*True by definition.* MSC 47A05 (General (adjoints, conjugates, products, inverses, domains, ranges, etc.)). arXiv math.FA. Level 2: later undergraduate.
+
+**Definition.** Define T∗ by ⟨Tx,y⟩ = ⟨x,T∗y⟩ for all x and y, rather than by transposing a matrix. The orthogonal complement of a set consists of all vectors perpendicular to every vector in the set.
+
+**Problem.** For a bounded linear map T between Hilbert spaces, Tx = 0 exactly when x is perpendicular to every output of the adjoint.
+
+**How the definition helps.** In our own proof, the adjoint equation turns perpendicularity to every T∗y into perpendicularity of Tx to every y. Setting y = Tx shows that Tx must be zero. Conversely, Tx = 0 makes every test vanish. Riesz representation supplies the adjoint used in place of a matrix transpose.
+
+**Paper or page:** [Kernel of Linear Transformation is Orthocomplement of Image of Adjoint](https://proofwiki.org/wiki/Kernel_of_Linear_Transformation_is_Orthocomplement_of_Image_of_Adjoint). It says: “ker A = (im A∗)⊥”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The inner product definition turns adjoint existence into Riesz representation
+
+**Remember:** Move the map across the inner product, one test vector at a time.
+
+*True by definition.* MSC 47A05 (General (adjoints, conjugates, products, inverses, domains, ranges, etc.)). arXiv math.FA. Level 2: later undergraduate.
+
+**Definition.** Define the adjoint T∗ by ⟨Tx,y⟩ = ⟨x,T∗y⟩ for all x and y. Unlike a conjugate transpose of a matrix, this definition uses no basis.
+
+**Problem.** Every bounded linear map between Hilbert spaces has a unique bounded adjoint.
+
+**How the definition helps.** In our own proof, fixing y turns the adjoint equation into a request to represent the functional x ↦ ⟨Tx,y⟩. Take the inner product linear in its first variable. Riesz representation gives a unique vector T∗y for that functional, with norm at most ‖T‖‖y‖. Uniqueness gives linearity in y.
+
+**Paper or page:** [Existence and Uniqueness of Adjoint](https://proofwiki.org/wiki/Existence_and_Uniqueness_of_Adjoint). It says: “each bounded linear transformation between Hilbert spaces has a unique adjoint.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Invertibility makes polynomial spectral mapping a factorization
+
+**Remember:** Factor the polynomial and check the shifted operators one at a time.
+
+*Makes the theorem clean to state or prove.* MSC 47A10 (Spectrum, resolvent). arXiv math.FA. Level 2: later undergraduate.
+
+**Definition.** The spectrum σ(T) of a bounded operator consists of scalars λ for which T − λI has no bounded inverse. This extends the finite-dimensional description by eigenvalues.
+
+**Problem.** For a bounded operator T on a nonzero complex Banach space and a polynomial p, σ(p(T)) = p(σ(T)).
+
+**How the definition helps.** In our own proof, defining spectrum by invertibility lets us test p(T) − μI through its factors. For nonconstant p, factor p(z) − μ into linear factors over the complex numbers. The corresponding operator factors commute, so their product is invertible exactly when each factor is invertible. For constant p = c, both sides equal {c} because every operator on a nonzero complex Banach space has nonempty spectrum.
+
+**Paper or page:** [Spectral Mapping Theorem for Polynomials](https://proofwiki.org/wiki/Spectral_Mapping_Theorem_for_Polynomials). It says: “\\map {\\sigma<sub>A</sub>} {\\map p x} = p \\sqbrk {\\map {\\sigma<sub>A</sub>} x}”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The continuous spectrum sees failures of surjectivity missed by eigenvalues
+
+**Remember:** A map can miss outputs even when it never identifies two inputs.
+
+*Makes the theorem clean to state or prove.* MSC 47A10 (Spectrum, resolvent). arXiv math.FA. Level 2: later undergraduate.
+
+**Definition.** For a bounded operator T, λ lies in the continuous spectrum when T − λI is one-to-one with dense, proper range. Its outputs can approximate every vector, but they miss at least one. Here I denotes the identity.
+
+**Problem.** On ℓ², the space of square-summable sequences, the operator that divides coordinate n by n has zero in its continuous spectrum. Zero is not an eigenvalue.
+
+**How the definition helps.** The continuous spectrum records this failure of surjectivity even though no nonzero vector goes to zero. In our own example, every sequence with finitely many nonzero terms is in the range, so the range is dense. The output with coordinates 1/n has no square-summable preimage, since every input coordinate would have to be 1.
+
+**Wikipedia:** [Spectrum (functional analysis)](https://en.wikipedia.org/wiki/Spectrum_%28functional_analysis%29). It says: “is injective and has dense range, but is not surjective”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Rank one projectors show numerical range convexity
 
 **Remember:** Two vectors reduce numerical range convexity to a filled ellipse.
@@ -29,6 +125,118 @@
 **Wikipedia:** [Pseudospectrum](https://en.wikipedia.org/wiki/Pseudospectrum). It says: “The ε-pseudospectrum of a matrix A consists of all eigenvalues of matrices which are ε-close to A:”
 
 **Paper or page:** [Stability Analysis of a Simple Discretization Method for a Class of Strongly Singular Integral Equations](https://arxiv.org/abs/2302.13159v3). It says: “‖(λ𝕀 − AΩ)⁻¹‖ = dist(λ, 𝒞)⁻¹.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Compact operators cannot have bounded inverses in infinite dimension
+
+**Remember:** If a compact map were invertible, the identity would be compact too.
+
+*Rules out counterexamples.* MSC 47B07 (Linear operators defined by compactness properties). arXiv math.FA. Level 2: later undergraduate.
+
+**Definition.** A compact linear operator sends bounded sets to sets with compact closure. The spectrum consists of scalars λ for which T − λI has no bounded two-sided inverse, where I is the identity.
+
+**Problem.** Zero belongs to the spectrum of every compact operator on an infinite-dimensional complex Banach space.
+
+**How the definition helps.** In our own proof, compactness would force a bounded inverse to carry a compact set onto a set containing the closed unit ball. The ball would then be a closed subset of a compact set. Riesz’s lemma rules out a compact unit ball in infinite dimension. Without compactness, the identity is its own bounded inverse.
+
+**Paper or page:** [Spectrum of Compact Linear Operator on Infinite-Dimensional Banach Space contains Zero](https://proofwiki.org/wiki/Spectrum_of_Compact_Linear_Operator_on_Infinite-Dimensional_Banach_Space_contains_Zero). It says: “That is, T is not invertible as a bounded linear operator.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Compact self-adjoint operators have orthonormal eigenbases
+
+**Remember:** Compactness yields an eigenvector, and self-adjointness preserves its perpendicular space.
+
+*Rules out counterexamples.* MSC 47B07 (Linear operators defined by compactness properties). arXiv math.FA. Level 2: later undergraduate.
+
+**Definition.** A compact operator takes every bounded sequence to a sequence with a norm-convergent subsequence. A self-adjoint operator equals its adjoint, meaning ⟨Tx,y⟩ = ⟨x,Ty⟩.
+
+**Problem.** Every compact self-adjoint operator on a Hilbert space has an orthonormal basis of eigenvectors with real eigenvalues.
+
+**How the definition helps.** In our own proof, compactness enters through the fact that every nonzero compact self-adjoint operator has an eigenvector with nonzero eigenvalue. Self-adjointness preserves the perpendicular complement of a maximal orthonormal family of such eigenvectors and makes every eigenvalue real. This fact forces the operator to vanish on that complement, whose orthonormal basis completes the eigenbasis. Without compactness, multiplication by t on square-integrable functions on \[0,1\] has no eigenvectors.
+
+**Wikipedia:** [Spectral theorem](https://en.wikipedia.org/wiki/Spectral_theorem). It says: “Then there is an orthonormal basis of V consisting of eigenvectors of A. Each eigenvalue is real.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Compactness limits the dimension of nonzero eigenspaces
+
+**Remember:** Scaling by a nonzero eigenvalue cannot make an infinite unit ball compact.
+
+*Rules out counterexamples.* MSC 47B07 (Linear operators defined by compactness properties). arXiv math.FA. Level 2: later undergraduate.
+
+**Definition.** A compact operator sends bounded sets to sets with compact closure. This imposes more than a bounded operator, which only sends bounded sets to bounded sets.
+
+**Problem.** For a compact operator on a Hilbert space, every eigenspace for a nonzero eigenvalue is finite-dimensional.
+
+**How the definition helps.** In our own proof, compactness gives the closed unit ball of the eigenspace compact closure, since the operator simply rescales it by a nonzero number. The eigenspace is closed, so its closed unit ball is compact. Riesz’s lemma rules this out in infinite dimension. For the bounded identity on square-summable sequences, every vector belongs to the eigenspace at 1.
+
+**Paper or page:** [Nonzero Eigenvalue of Compact Operator has Finite Dimensional Eigenspace](https://proofwiki.org/wiki/Nonzero_Eigenvalue_of_Compact_Operator_has_Finite_Dimensional_Eigenspace). It says: “Then the eigenspace for λ has finite dimension.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Finite covers make operator norm limits of compact maps compact
+
+**Remember:** A uniform perturbation only enlarges the covering balls.
+
+*True by definition.* MSC 47B07 (Linear operators defined by compactness properties). arXiv math.FA. Level 2: later undergraduate.
+
+**Definition.** Into a Banach space, define a compact operator by requiring its unit ball image to have finite covers by balls of every positive radius. This is equivalent to requiring that the image have compact closure.
+
+**Problem.** An operator norm limit of compact operators into a Banach space is compact.
+
+**How the definition helps.** In our own proof, uniform error less than half the desired radius transfers a finite cover to the limit. Choose a compact operator within that error and cover its unit ball image by finitely many balls of half the desired radius. Doubling those radii covers the limit operator’s image. Completeness of the target makes finite covers at every positive radius equivalent to compact closure.
+
+**Paper or page:** [Space of Compact Linear Transformations is Banach Space](https://proofwiki.org/wiki/Space_of_Compact_Linear_Transformations_is_Banach_Space). It says: “is a Banach space with respect to this norm.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Relatively compact images survive composition on either side
+
+**Remember:** A bounded map preserves bounded input sets and compact output closures.
+
+*True by definition.* MSC 47B07 (Linear operators defined by compactness properties). arXiv math.FA. Level 2: later undergraduate.
+
+**Definition.** A linear map between normed spaces is compact if the image of every bounded set has compact closure. Equivalently, the images of any bounded sequence have a convergent subsequence.
+
+**Problem.** Composing a compact operator with a bounded linear operator on either side gives a compact operator whenever the spaces match.
+
+**How the definition helps.** In our own proof, the bounded-set definition lets us follow one set through both maps. A bounded linear map applied first preserves boundedness. Applied last, it takes the compact closure continuously to a compact set containing the closure of the final image. The equivalence with the sequence definition uses the sequence criterion for compactness in metric spaces.
+
+**nLab:** [compact operator](https://ncatlab.org/nlab/show/compact+operator). It says: “A linear operator is compact if it sends bounded subsets to relatively compact subsets.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Commuting with the adjoint makes the two kernels agree
+
+**Remember:** Equal squared norms mean the same vectors go to zero.
+
+*Rules out counterexamples.* MSC 47B15 (Hermitian and normal operators (spectral measures, functional calculus, etc.)), 47A05. arXiv math.FA. Level 2: later undergraduate.
+
+**Definition.** A bounded operator T on a Hilbert space is normal if it commutes with its adjoint, so T∗T = TT∗. This is weaker than self-adjointness, which requires T = T∗.
+
+**Problem.** A bounded normal operator and its adjoint have the same kernel, the set of vectors they send to zero.
+
+**How the definition helps.** In our own proof, commutation gives ‖Tx‖² = ⟨x,T∗Tx⟩ = ⟨x,TT∗x⟩ = ‖T∗x‖². Thus one norm vanishes exactly when the other does. Without commutation, the map (a,b) ↦ (b,0) and its adjoint (a,b) ↦ (0,a) have different coordinate axes as kernels.
+
+**Paper or page:** [Kernel of Normal Operator is Kernel of Adjoint](https://proofwiki.org/wiki/Kernel_of_Normal_Operator_is_Kernel_of_Adjoint). It says: “ker A = ker A∗”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Self-adjointness gives real spectrum beyond eigenvalues
+
+**Remember:** An imaginary shift stays away from zero and leaves no missing directions.
+
+*Rules out counterexamples.* MSC 47B15 (Hermitian and normal operators (spectral measures, functional calculus, etc.)), 47A10. arXiv math.FA. Level 2: later undergraduate.
+
+**Definition.** A bounded operator T on a complex Hilbert space is self-adjoint if ⟨Tx,y⟩ = ⟨x,Ty⟩ for every x and y. Its spectrum consists of the scalars λ for which T − λI has no bounded inverse.
+
+**Problem.** The spectrum of a bounded self-adjoint operator on a complex Hilbert space is real.
+
+**How the definition helps.** In our own proof, self-adjointness makes ⟨Tx,x⟩ real, so a nonreal shift satisfies ‖(T − λI)x‖ ≥ \|Im λ\|‖x‖. This follows by taking the imaginary part of the inner product with x and applying Cauchy–Schwarz. The bound gives closed range by completeness, and the same bound for the adjoint gives dense range because its kernel is zero. Thus the shift has a bounded inverse, whereas multiplication by i alone has spectrum {i}.
+
+**Paper or page:** [Spectrum of Self-Adjoint Bounded Linear Operator is Real](https://proofwiki.org/wiki/Spectrum_of_Self-Adjoint_Bounded_Linear_Operator_is_Real). It says: “σ(T) ⊆ ℝ”
 
 **Sources:** none listed. No primary source with a working link was found.
 

@@ -14,6 +14,76 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Empty transitions make regular languages closed under concatenation
+
+**Remember:** Jump to the second machine without using an input letter.
+
+*True by definition.* MSC 68Q45 (Formal languages and automata). arXiv cs.FL. Level 1: early undergraduate.
+
+**Definition.** An empty transition lets a finite automaton change state without reading a letter. A nondeterministic automaton can choose among moves. It accepts if some path from its start reads the whole word and ends in a marked state.
+
+**Problem.** The language formed by joining any word from one regular language to any word from another is regular.
+
+**How the definition helps.** An empty transition marks where one word ends and the next begins (our own). Use separate copies of the machines and start in the first (our own). Link each accepting state there to the second start by an empty transition, and mark only the second machine’s accepting states (our own). The usual model requires a proof that removing empty transitions preserves the accepted words (our own).
+
+**Wikipedia:** [Nondeterministic finite automaton](https://en.wikipedia.org/wiki/Nondeterministic_finite_automaton). It says: “A transition without consuming an input symbol is called an ε-transition”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Finite state runs expose the loops in regular languages
+
+**Remember:** A repeated state lets you repeat or skip the letters between its visits.
+
+*True by definition.* MSC 68Q45 (Formal languages and automata). arXiv cs.FL. Level 1: early undergraduate.
+
+**Definition.** A regular language is a set of words that a deterministic finite automaton accepts. This machine starts in one state and follows one arrow per letter. It accepts if the last state is marked for acceptance.
+
+**Problem.** Every word of length at least n accepted by a deterministic finite automaton with n states splits as uvw. The prefix uv has length at most n, v is nonempty, and all repetitions of v preserve acceptance.
+
+**How the definition helps.** The first n letters give n + 1 state visits, counting the start, so some state repeats (our own). The letters between those visits form a loop that can run any number of times (our own). Starting from a regular expression requires Kleene’s theorem to obtain an equivalent machine (our own).
+
+**Paper or page:** [Pumping Lemma for Regular Languages](https://proofwiki.org/wiki/Pumping_Lemma_for_Regular_Languages). It says: “∀ i ∈ ℕ₀: u · vⁱ · w ∈ L”
+
+**Sources:**
+
+- [M. O. Rabin and D. Scott, Finite Automata and Their Decision Problems (1959).](https://doi.org/10.1147/rd.32.0114)
+
+### Paired states give regular languages union and intersection
+
+**Remember:** Run both automata together and combine their answers at the end.
+
+*True by definition.* MSC 68Q45 (Formal languages and automata). arXiv cs.FL. Level 1: early undergraduate.
+
+**Definition.** A deterministic finite automaton has finitely many states and one move per letter from each state. It accepts a word if it ends in a marked state, and its accepted words form a regular language. The product starts in the pair of start states and updates both states on each letter.
+
+**Problem.** The union and intersection of two regular languages over the same alphabet are regular.
+
+**How the definition helps.** The pair records both machines’ answers after the same word (our own). Mark pairs with either state accepting for union, or both states accepting for intersection (our own). Induction on the number of letters proves each state follows its original machine (our own). Starting with regular expressions requires the theorem that they describe exactly the finite automaton languages (our own).
+
+**Wikipedia:** [Deterministic finite automaton](https://en.wikipedia.org/wiki/Deterministic_finite_automaton). It says: “the union/intersection of the languages recognized by two given DFAs.”
+
+**Sources:**
+
+- [M. O. Rabin and D. Scott, Finite Automata and Their Decision Problems (1959).](https://doi.org/10.1147/rd.32.0114)
+
+### Useful cycles characterize infinite regular languages
+
+**Remember:** An accepting path can repeat any cycle it visits.
+
+*Rules out counterexamples. Confidence: medium.* MSC 68Q45 (Formal languages and automata). arXiv cs.FL. Level 1: early undergraduate.
+
+**Definition.** In a finite automaton, call a state useful if some path from the start to an accepting state visits it. The useful subgraph keeps those states and the arrows between them.
+
+**Problem.** A deterministic finite automaton over a finite alphabet accepts infinitely many words exactly when its useful subgraph contains a directed cycle.
+
+**How the definition helps.** A useful cycle lies on an accepting path, so repeating it gives longer and longer accepted words (our own). Without a cycle, an accepting path visits each useful state at most once (our own). Bounded length allows only finitely many words over a finite alphabet (our own). A loop with no path to acceptance adds no accepted words (our own).
+
+**nLab:** [deterministic automaton](https://ncatlab.org/nlab/show/deterministic+automaton). It says: “In the usual interpretation if the automaton is in state q, and is 'given' the input σ, then it changes to being in state δ(q,σ).”
+
+**Sources:**
+
+- [M. O. Rabin and D. Scott, Finite Automata and Their Decision Problems (1959).](https://doi.org/10.1147/rd.32.0114)
+
 ### Mutual reachability removes cycles
 
 **Remember:** A cycle of groups would be one group.
@@ -364,6 +434,72 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Leftmost expansion keeps grammar ambiguity from counting rule orders
+
+**Remember:** Fix the expansion order so one parse tree counts once.
+
+*Rules out counterexamples.* MSC 68Q42 (Grammars and rewriting systems), 68Q45. arXiv cs.FL. Level 2: later undergraduate.
+
+**Definition.** A leftmost derivation always applies its next grammar rule to the first variable from the left. A parse tree records which rule expands each variable and the order of its children.
+
+**Problem.** For a given word, the parse trees of a context-free grammar correspond one-to-one with its leftmost derivations.
+
+**How the definition helps.** The leftmost rule fixes the order in which each parse tree expands (our own). After S → AB, expanding A or B first gives different unrestricted orders for the same tree (our own). Conversely, each leftmost step attaches the chosen rule’s children to one determined node, so it reconstructs a unique tree (our own).
+
+**Wikipedia:** [Ambiguous grammar](https://en.wikipedia.org/wiki/Ambiguous_grammar). It says: “only multiple leftmost derivations (or, equivalently, multiple parse trees) indicate ambiguity.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Productive variables make grammar emptiness decidable
+
+**Remember:** Mark a variable once it has a rule that can finish.
+
+*True by definition.* MSC 68Q42 (Grammars and rewriting systems), 68Q45. arXiv cs.FL. Level 2: later undergraduate.
+
+**Definition.** A variable is productive when it can generate a word with no variables left, possibly the empty word. Equivalently, start with no marks and mark a variable when some right side uses only letters and already marked variables.
+
+**Problem.** A context-free grammar generates a nonempty language exactly when marking reaches its start variable. This gives a decision procedure for grammar emptiness.
+
+**How the definition helps.** Marking calculates productivity without searching through derivations of unbounded length (our own). Repeat the marking rule until no mark changes, which takes only finitely many rounds (our own). Each mark builds a word from earlier marks, and every finite derivation tree gives marks from its leaves upward (our own).
+
+**Wikipedia:** [Context-free language](https://en.wikipedia.org/wiki/Context-free_language). It says: “Emptiness: Given a context-free grammar A, is L(A) = ∅ ?”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Reversing grammar rules reverses context-free languages
+
+**Remember:** Read each rule backwards to read the generated words backwards.
+
+*True by definition. Confidence: medium.* MSC 68Q42 (Grammars and rewriting systems), 68Q45. arXiv cs.FL. Level 2: later undergraduate.
+
+**Definition.** A context-free grammar replaces one variable at a time by a sequence of letters and variables. Its reversed grammar keeps the start variable and reverses the right side of every rule.
+
+**Problem.** The reversals of the words of any context-free language form a context-free language.
+
+**How the definition helps.** Reversing a string turns each rule application into an application of the reversed rule (our own). Reversing all steps therefore generates the reversed word, and reversing twice gives the converse (our own). Starting from a stack machine requires first finding an equivalent grammar (our own).
+
+**nLab:** [context-free grammar](https://ncatlab.org/nlab/show/context-free+grammar). It says: “R ⊆ X × (X + V)⋆ is a finite set of production rules”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A finite length bound makes regular language equivalence decidable
+
+**Remember:** A shortest disagreement never visits the same pair twice.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 68Q45 (Formal languages and automata). arXiv cs.FL. Level 2: later undergraduate.
+
+**Definition.** The symmetric difference of two languages contains words that belong to exactly one of them. For two deterministic finite automata over the same alphabet, recognize this difference using pairs of current states.
+
+**Problem.** Two deterministic automata with m and n states over one alphabet agree everywhere if they agree on all words shorter than mn.
+
+**How the definition helps.** A shortest disagreement traces a path through state pairs with no repeated pair (our own). Removing the segment between two visits would give a shorter disagreement with the same final pair (our own). There are only mn pairs, so this path uses fewer than mn letters (our own).
+
+**Wikipedia:** [Regular language](https://en.wikipedia.org/wiki/Regular_language). It says: “Alternatively, a regular language can be defined as a language recognised by a finite automaton.”
+
+**Sources:**
+
+- [M. O. Rabin and D. Scott, Finite Automata and Their Decision Problems (1959).](https://doi.org/10.1147/rd.32.0114)
+
 ### A zero threshold turns probabilities into reachability
 
 **Remember:** At zero, one positive path is enough.
@@ -381,6 +517,24 @@
 **Sources:**
 
 - [Merve Nur Cakir, Mehwish Saleemi, Karl-Heinz Zimmermann. On the Theory of Stochastic Automata. 2021.](https://arxiv.org/abs/2103.14423v1)
+
+### Binary grammar rules make context-free membership a finite search
+
+**Remember:** To match two variables, split the input into two shorter words.
+
+*True by definition.* MSC 68Q45 (Formal languages and automata), 68Q42. arXiv cs.FL. Level 2: later undergraduate.
+
+**Definition.** Chomsky normal form allows a grammar variable to produce two variables or one letter. The start variable may also produce the empty word and, in this convention, never appears on a right side.
+
+**Problem.** Membership in a context-free language is decidable. For a grammar in Chomsky normal form, a table of substrings suffices.
+
+**How the definition helps.** A two-variable rule splits a nonempty word into two shorter nonempty pieces (our own). Record which variables produce each substring, starting with single letters and then testing every split of each longer substring (our own). For empty input, check the start variable’s empty-word rule (our own). The general theorem uses the conversion of any context-free grammar to this form (our own).
+
+**Wikipedia:** [CYK algorithm](https://en.wikipedia.org/wiki/CYK_algorithm). It says: “The standard version of CYK operates only on context-free grammars given in Chomsky normal form (CNF).”
+
+**Sources:**
+
+- [D. H. Younger, Recognition and Parsing of Context-Free Languages in Time n³ (1967).](https://doi.org/10.1016/S0019-9958(67)80007-X)
 
 ### Complete deterministic automata recognize complements by swapping accepting states
 
@@ -448,6 +602,74 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Epsilon closure removes empty moves without adding states
+
+**Remember:** Fold empty moves into the next letter or the final acceptance check.
+
+*True by definition.* MSC 68Q45 (Formal languages and automata). arXiv cs.FL. Level 2: later undergraduate.
+
+**Definition.** The epsilon closure of a state is the set of states it can reach without reading input. It includes the state itself, since the machine can take no moves.
+
+**Problem.** A nondeterministic finite automaton with empty transitions has an equivalent one with the same states and no empty transitions.
+
+**How the definition helps.** Epsilon closure collects all moves available before a letter without introducing states for sets of possibilities (our own). From each state, allow every letter move available anywhere in its closure (our own). Mark that state accepting if its closure contains an original accepting state (our own). Splitting runs at letter moves proves equivalence without converting the machine to a deterministic one (our own).
+
+**Wikipedia:** [Nondeterministic finite automaton](https://en.wikipedia.org/wiki/Nondeterministic_finite_automaton). It says: “E(q) is known as the epsilon closure”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Keeping grammar variables on one side preserves regularity
+
+**Remember:** Keep every surviving variable at the same end.
+
+*Rules out counterexamples.* MSC 68Q45 (Formal languages and automata). arXiv cs.FL. Level 2: later undergraduate.
+
+**Definition.** In a strictly right-linear grammar, a variable may become a letter followed by a variable. It may also become just a letter or the empty word. A strictly left-linear grammar instead puts the variable before the letter in any rule that produces both.
+
+**Problem.** Strictly right-linear grammars generate exactly the regular languages. The same holds if all rules are strictly left-linear, but not if both forms may be mixed.
+
+**How the definition helps.** Each surviving rightmost variable acts as the current state of a finite automaton (our own). A letter-only rule leads to a final state, and an empty rule marks the current state accepting (our own). Translating transitions back gives the converse, and reversing words gives the left-linear case (our own). Mixing S → aT, T → Sb and S → ε generates equal blocks of a’s then b’s, a nonregular language (our own).
+
+**Wikipedia:** [Regular grammar](https://en.wikipedia.org/wiki/Regular_grammar). It says: “Hence, the right-regular grammars generate exactly all regular languages.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Leftmost derivations turn grammars into stack machines
+
+**Remember:** Keep the unread part of the derivation on the stack.
+
+*Makes the theorem clean to state or prove.* MSC 68Q45 (Formal languages and automata). arXiv cs.FL. Level 2: later undergraduate.
+
+**Definition.** A leftmost derivation always replaces the first remaining variable. A pushdown automaton is a finite-state machine that can read or change the top of a stack.
+
+**Problem.** Every context-free grammar has a nondeterministic pushdown automaton that accepts exactly the words the grammar generates.
+
+**How the definition helps.** Leftmost expansion puts the next symbol to process at the top of the stack (our own). Start with the grammar’s start variable and replace each top variable by a chosen rule’s right side, leftmost symbol uppermost (our own). Remove a top letter when it matches the next input letter, and accept when both input and stack are empty (our own). Completeness uses the fact that every generated word has a leftmost derivation (our own).
+
+**Wikipedia:** [Pushdown automaton](https://en.wikipedia.org/wiki/Pushdown_automaton). It says: “The derivation process of the grammar is simulated in a leftmost way.”
+
+**Sources:**
+
+- [N. Chomsky, Context-Free Grammars and Pushdown Storage (1962).](https://dspace.mit.edu/bitstream/handle/1721.1/53697/RLE_QPR_065_XVII.pdf)
+
+### Matched stack operations become context-free grammar rules
+
+**Remember:** One variable accounts for everything above one fixed stack level.
+
+*Makes the theorem clean to state or prove.* MSC 68Q45 (Formal languages and automata). arXiv cs.FL. Level 2: later undergraduate.
+
+**Definition.** A pushdown automaton stores symbols on a stack and can inspect only the top symbol. A removal variable \[p,A,q\] describes runs starting in state p with only A stacked and ending in state q with an empty stack. Its words are the inputs read during those runs.
+
+**Problem.** Every language accepted by a nondeterministic pushdown automaton has a context-free grammar.
+
+**How the definition helps.** The variable records the whole part of a run that removes one stack symbol (our own). If a move replaces A by several symbols, its rule lists their removal variables after any letter read (our own). Adjacent variables share the state where one removal ends and the next begins (our own). For a machine that accepts by final state, first convert it to acceptance by empty stack (our own).
+
+**Wikipedia:** [Pushdown automaton](https://en.wikipedia.org/wiki/Pushdown_automaton). It says: “one may construct a context-free grammar G such that N(M)=L(G).”
+
+**Sources:**
+
+- [N. Chomsky, Context-Free Grammars and Pushdown Storage (1962).](https://dspace.mit.edu/bitstream/handle/1721.1/53697/RLE_QPR_065_XVII.pdf)
+
 ### Nondeterministic automata recognize reversed regular languages by reversing transitions
 
 **Remember:** Reverse every arrow and swap the start and accepting states.
@@ -463,6 +685,24 @@
 **Wikipedia:** [Regular language](https://en.wikipedia.org/wiki/Regular_language). It says: “Given a nondeterministic finite automaton to recognize L, an automaton for Lᴿ can be obtained by reversing all transitions and interchanging starting and finishing states.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Path languages turn finite automata into regular expressions
+
+**Remember:** Allow one more intermediate state and count its return trips with a star.
+
+*Makes the theorem clean to state or prove.* MSC 68Q45 (Formal languages and automata). arXiv cs.FL. Level 2: later undergraduate.
+
+**Definition.** For two states, a restricted path language contains the words read along paths between them that use only specified states at intermediate visits. This restriction applies even if a path revisits an endpoint before it finishes.
+
+**Problem.** Every language recognized by a finite automaton can be written as a regular expression.
+
+**How the definition helps.** One newly allowed state splits a path through it into an approach, zero or more return trips, and a departure (our own). With no intermediate states, paths have at most one edge (our own). At each stage combine the old expressions by choice, joining and repetition, keeping paths that avoid the new state too (our own). After allowing every state, take the union from the start to all accepting states (our own).
+
+**Wikipedia:** [Kleene's algorithm](https://en.wikipedia.org/wiki/Kleene%27s_algorithm). It says: “going through a state" means entering and leaving it”
+
+**Sources:**
+
+- [S. C. Kleene, Representation of Events in Nerve Nets and Finite Automata (1956).](https://www2.fiit.stuba.sk/~kvasnicka/CognitiveScience/2.prednaska/kleene56representation%5B1%5D.pdf)
 
 ### Pushdown automata keep intersections with regular languages context-free
 
@@ -563,6 +803,22 @@
 **Sources:**
 
 - [Janusz A. Brzozowski, Derivatives of Regular Expressions](https://doi.org/10.1145/321239.321249)
+
+### Useful binary grammar rules make language finiteness decidable
+
+**Remember:** A useful cycle in a binary grammar keeps adding letters.
+
+*Rules out counterexamples.* MSC 68Q45 (Formal languages and automata), 68Q42. arXiv cs.FL. Level 2: later undergraduate.
+
+**Definition.** Use grammar rules producing two variables or one letter, allowing only the start variable to produce the empty word. Keep the start variable off all right sides. Draw arrows to each right-side variable using only rules occurring in derivations of completed words from the start.
+
+**Problem.** A context-free grammar in this form generates infinitely many words exactly when its graph contains a directed cycle.
+
+**How the definition helps.** Each trip around a useful cycle adds a side branch that can produce a nonempty word (our own). Without a cycle, successful derivation trees have bounded depth, so only finitely many words occur (our own). Without the rule restriction, S → S and S → a give a cycle but only one word (our own). After conversion to normal form, discard variables that cannot finish, then discard those unreachable in the remaining grammar (our own).
+
+**Wikipedia:** [Context-free language](https://en.wikipedia.org/wiki/Context-free_language). It says: “It is decidable whether such a language is finite”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### The least submonoid definition gives induction for word repetition
 

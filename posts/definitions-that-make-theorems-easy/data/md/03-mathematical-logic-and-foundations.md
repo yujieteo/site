@@ -1,3 +1,19 @@
+### Equal truth functions let equivalent formulas replace each other
+
+**Remember:** Same inputs and outputs mean the replacement changes nothing.
+
+*True by definition.* MSC 03B05 (Classical propositional logic). arXiv math.LO. Level 1: early undergraduate.
+
+**Definition.** A formula gives a truth function, a rule that returns true or false for each assignment of values to its letters. Two formulas are logically equivalent when their truth functions agree on every assignment to the letters in either formula.
+
+**Problem.** Replacing any subformula by a logically equivalent one leaves the whole propositional formula logically equivalent to the original.
+
+**How the definition helps.** Each operation uses only its inputs’ truth values, so replacing one input by an equal value preserves its output. Our own argument repeats this step from the replaced part to the whole formula. Defining equivalence through a proof of “if and only if” would instead require rules for replacing equivalent parts.
+
+**Wikipedia:** [Logical equivalence](https://en.wikipedia.org/wiki/Logical_equivalence). It says: “if they have the same truth value in every model.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### False rows build conjunctive normal form
 
 **Remember:** One clause rules out one false row.
@@ -13,6 +29,56 @@
 **Wikipedia:** [Conjunctive normal form](https://en.wikipedia.org/wiki/Conjunctive_normal_form). It says: “A CNF equivalent of a formula can be derived from its truth table.”
 
 **Paper or page:** [Existence of Conjunctive Normal Form of Statement](https://proofwiki.org/wiki/Existence_of_Conjunctive_Normal_Form_of_Statement). It says: “Any propositional formula can be expressed in conjunctive normal form (CNF).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Finite truth tables decide propositional validity
+
+**Remember:** Check only the letters you see.
+
+*True by definition.* MSC 03B05 (Classical propositional logic). arXiv math.LO. Level 1: early undergraduate.
+
+**Definition.** A truth table lists every way to give the letters in a formula true or false values. Each row also gives the resulting value of the formula.
+
+**Problem.** A propositional formula is valid, or true under every assignment, exactly when every row is true. Checking these finitely many rows decides validity.
+
+**How the definition helps.** Each row covers every assignment that matches it on the letters in the formula. Our own argument uses induction on how the formula is built to show that other letters cannot affect its value.
+
+**Paper or page:** [Propositional Logic: Syntax And Semantics](https://builds.openlogicproject.org/open-logic-complete.pdf). It says: “Suppose that v₁ and v₂ are valuations that agree on the propositional variables occurring in A”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Material implication turns a premise into an antecedent
+
+**Remember:** The same counterexample refutes both claims.
+
+*True by definition.* MSC 03B05 (Classical propositional logic). arXiv math.LO. Level 1: early undergraduate.
+
+**Definition.** An assignment gives each letter a truth value. The implication A → B is false only when A is true and B is false. A conclusion follows from premises when every assignment making all the premises true also makes the conclusion true.
+
+**Problem.** B follows from a set of premises together with A exactly when A → B follows from those premises alone.
+
+**How the definition helps.** Both sides fail exactly when an assignment makes every original premise and A true but makes B false. Our own comparison uses a proof system based on axioms, where moving a premise into an implication requires a deduction theorem.
+
+**Paper or page:** [Propositional Logic: Syntax And Semantics](https://builds.openlogicproject.org/open-logic-complete.pdf). It says: “Γ ⊨ A → B if and only if Γ ∪ {A} ⊨ B.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### True rows give a unique full disjunctive normal form
+
+**Remember:** One true row gives one clause.
+
+*Makes the theorem clean to state or prove.* MSC 03B05 (Classical propositional logic). arXiv math.LO. Level 1: early undergraduate.
+
+**Definition.** A full disjunctive normal form joins distinct terms with OR. Each term joins all listed letters with AND in order, using each letter once, either plain or negated. An empty AND means true, and an empty OR means false.
+
+**Problem.** Every rule assigning true or false to each row of a finite truth table has one full disjunctive normal form, up to term order.
+
+**How the definition helps.** Each term picks out exactly one row, since it specifies a value for every letter. Take the term for each true row. In our own uniqueness argument, omitting or adding any term changes its row’s value.
+
+**Wikipedia:** [Disjunctive normal form](https://en.wikipedia.org/wiki/Disjunctive_normal_form). It says: “The full DNF of a formula can be read off its truth table.”
+
+**Paper or page:** [Existence of Disjunctive Normal Form of Statement](https://proofwiki.org/wiki/Existence_of_Disjunctive_Normal_Form_of_Statement). It says: “Any propositional formula can be expressed in disjunctive normal form (DNF).”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -71,6 +137,38 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Binary indicators count every subset of a finite set
+
+**Remember:** Read membership as one binary digit per element.
+
+*True by definition.* MSC 03E10 (Ordinal and cardinal numbers). arXiv math.LO. Level 1: early undergraduate.
+
+**Definition.** Identify the power set of A, the set of all its subsets, with indicator functions on A. Each indicator has value 1 for members of its subset and 0 for the other elements.
+
+**Problem.** A set with n elements has exactly 2ⁿ subsets.
+
+**How the definition helps.** Each position of the indicator has two independent choices, so the finite product rule gives the count. In our own account, the work moves to proving the descriptions agree. Recover the subset by keeping the inputs where its indicator is 1.
+
+**Paper or page:** [Cardinality of Power Set of Finite Set](https://proofwiki.org/wiki/Cardinality_of_Power_Set_of_Finite_Set). It says: “\|𝒫(S)\| = 2ⁿ”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Counting by lists with repeats makes the rationals countable
+
+**Remember:** List every fraction and let repeats stay.
+
+*True by definition.* MSC 03E10 (Ordinal and cardinal numbers). arXiv math.LO. Level 1: early undergraduate.
+
+**Definition.** A set is countable if it is empty or is the range of a list indexed by the natural numbers. This allows repetition, unlike counting by a one-to-one list.
+
+**Problem.** The rational numbers form a countably infinite set.
+
+**How the definition helps.** In our own proof, repeated fractions do not matter because the list only needs to reach each rational. List integer pairs (p, q) with q positive by increasing \|p\| + q, in any order within each finite group. The fractions p/q cover all rationals, including the infinitely many integers. Keeping first appearances converts this list to a one-to-one list.
+
+**Paper or page:** [Rational Numbers are Countably Infinite](https://proofwiki.org/wiki/Rational_Numbers_are_Countably_Infinite). It says: “The set ℚ of rational numbers is countably infinite.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Measuring size by one-to-one correspondence settles Galileo's paradox
 
 **Remember:** Pair them off: squares and integers match, so they are equally many.
@@ -102,6 +200,38 @@
 **How the definition helps.** An injection on the whole set remains an injection on every subset. In our own comparison, a list indexed by all natural numbers cannot list the empty set. To recover the usual enumeration of an infinite subset, list its labels in increasing order.
 
 **Wikipedia:** [Countable set](https://en.wikipedia.org/wiki/Countable_set). It says: “A subset of a countable set is countable.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Two-valued functions turn Cantor’s diagonal into a bit flip
+
+**Remember:** Flip the entry where each row meets its own label.
+
+*True by definition. Confidence: medium.* MSC 03E10 (Ordinal and cardinal numbers). arXiv math.LO. Level 1: early undergraduate.
+
+**Definition.** The power set of A usually means the set of all subsets of A. Instead, use indicator functions on A that return 1 at members and 0 elsewhere.
+
+**Problem.** No function from A onto its power set exists. The power set is strictly larger than A.
+
+**How the definition helps.** Our own proof flips the bit at x in the indicator assigned to x, so the resulting indicator differs from every assigned one. This gives a missing subset because the inputs marked 1 recover a subset from any indicator. In the other direction, sending x to the set containing only x gives distinct subsets for distinct inputs.
+
+**Paper or page:** [Cantor's Theorem](https://proofwiki.org/wiki/Cantor's_Theorem). It says: “There is no surjection from a set S to its power set for any set S.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A product point supplies defaults for every coordinate projection
+
+**Remember:** Keep a default tuple and replace the coordinate you want.
+
+*Rules out counterexamples.* MSC 03E20 (Other classical set theory (including functions, relations, and set algebra)). arXiv math.LO. Level 1: early undergraduate.
+
+**Definition.** A point in an indexed Cartesian product assigns one allowed value to each coordinate. A coordinate projection reads the value at one specified coordinate. A right inverse assigns a product point to each allowed value so that the projection returns that value.
+
+**Problem.** If a Cartesian product is nonempty, each coordinate projection has a right inverse. Thus each projection maps onto its factor.
+
+**How the definition helps.** In our own construction, a fixed product point supplies defaults at all the other coordinates. Replace the specified coordinate by the desired value, and the projection returns it. Without a product point, the projection from {0} × ∅ to {0} misses its only target.
+
+**Paper or page:** [Projection is Surjection/Family of Sets](https://proofwiki.org/wiki/Projection_is_Surjection/Family_of_Sets). It says: “is a surjection.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -144,6 +274,40 @@
 - [ProofWiki, Symmetric and Transitive therefore Reflexive](https://proofwiki.org/wiki/Symmetric_and_Transitive_therefore_Reflexive)
 - [ProofWiki, Symmetric and Transitive Relation is not necessarily Reflexive](https://proofwiki.org/wiki/Symmetric_and_Transitive_Relation_is_not_necessarily_Reflexive)
 - [ProofWiki, Equivalence Class is not Empty](https://proofwiki.org/wiki/Equivalence_Class_is_not_Empty)
+
+### Fiber classes identify the quotient of a domain with its image
+
+**Remember:** One distinct output gives one class of inputs.
+
+*True by definition.* MSC 03E20 (Other classical set theory (including functions, relations, and set algebra)). arXiv math.LO. Level 1: early undergraduate.
+
+**Definition.** The image of a function is the set of values it takes. For each such value, its fiber consists of all inputs giving that value. We can form the quotient by taking these nonempty fibers as its elements.
+
+**Problem.** Sending each fiber to its output pairs every element of the quotient with exactly one element of the image, and vice versa.
+
+**How the definition helps.** Our own description already gives exactly one nonempty fiber for each output in the image. In the usual quotient, two inputs belong to the same class exactly when they give the same output. Thus those classes are exactly the nonempty fibers.
+
+**Paper or page:** [Constructive semigroups with apartness -- a state of the art](https://arxiv.org/abs/2304.07290). It says: “If f is surjective, then φ is a bijection, i.e. we have T ≅ S/ker f.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Flat tuples let Cartesian products be regrouped without changing coordinates
+
+**Remember:** Keep the coordinate labels and forget the parentheses.
+
+*True by definition.* MSC 03E20 (Other classical set theory (including functions, relations, and set algebra)). arXiv math.LO. Level 1: early undergraduate.
+
+**Definition.** Define a tuple as a function from coordinate labels to values. Combine tuples on disjoint label sets by joining their functions rather than nesting them as ordered pairs.
+
+**Problem.** Combining three blocks of labeled coordinates yields the same tuples in either grouping. Each of the usual nested Cartesian products is in bijection with this set of tuples.
+
+**How the definition helps.** In our own construction, combining coordinates takes the union of their sets of labeled pairs, and union is associative. Restricting the combined function to each block recovers its tuple. Pairing these tuples in the specified order recovers either nested product.
+
+**Wikipedia:** [Cartesian product](https://en.wikipedia.org/wiki/Cartesian_product). It says: “If a tuple is defined as a function on {1, 2, ..., n}”
+
+**Paper or page:** [Cartesian Product is not Associative](https://proofwiki.org/wiki/Cartesian_Product_is_not_Associative). It says: “A × (B × C) ≠ (A × B) × C”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Indicators split across disjoint unions
 
@@ -216,6 +380,22 @@
 
 - [Kuratowski, C. (1921). Sur la notion de l'ordre dans la Théorie des Ensembles. Fundamenta Mathematicae 2, 161–171.](https://doi.org/10.4064/fm-2-1-161-171)
 
+### Mapping sets of possible outputs makes relation composition associative
+
+**Remember:** Send the whole set of possible outputs into the next rule.
+
+*True by definition. Confidence: medium.* MSC 03E20 (Other classical set theory (including functions, relations, and set algebra)). arXiv math.LO. Level 1: early undergraduate.
+
+**Definition.** Treat a relation from A to B as a rule that assigns each input a subset of B, its possible outputs. On a set of inputs, take the union of all their possible outputs. Compose these rules as functions on sets of inputs.
+
+**Problem.** Composing three relations gives the same relation in either grouping.
+
+**How the definition helps.** In our own proof, the rules compose as ordinary functions, so regrouping changes nothing. Two successive rules collect exactly the outputs reachable through some intermediate value, as usual relation composition requires. Applying the resulting rule to each one-element set recovers every pair of the relation.
+
+**Paper or page:** [Composition of Relations is Associative](https://proofwiki.org/wiki/Composition_of_Relations_is_Associative). It says: “The composition of relations is an associative binary operation:”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Maps as relations make mⁿ count maps even between empty sets
 
 **Remember:** One map leaves the empty set, and none enters it from a nonempty set.
@@ -253,6 +433,54 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Reading sets as truth tests gives De Morgan’s laws
+
+**Remember:** Not every means at least one fails, and none means all fail.
+
+*True by definition.* MSC 03E20 (Other classical set theory (including functions, relations, and set algebra)). arXiv math.LO. Level 1: early undergraduate.
+
+**Definition.** Identify a subset of a fixed set U with its yes-or-no membership test. Union asks whether at least one test says yes, and intersection asks whether every test says yes. Complement reverses the answer.
+
+**Problem.** For any family of subsets of U, the complement of its intersection is the union of the complements. The complement of its union is the intersection of the complements.
+
+**How the definition helps.** Negating “all pass” gives “at least one fails,” and negating “at least one passes” gives “all fail.” Our own proof uses these rules of classical logic and the fact that identical membership tests describe the same set.
+
+**Paper or page:** [De Morgan's Laws (Set Theory)/Set Complement/Family of Sets/Complement of Intersection](https://proofwiki.org/wiki/De_Morgan's_Laws_(Set_Theory)/Set_Complement/Family_of_Sets/Complement_of_Intersection), [De Morgan's Laws (Set Theory)/Set Complement/Family of Sets/Complement of Union](https://proofwiki.org/wiki/De_Morgan's_Laws_(Set_Theory)/Set_Complement/Family_of_Sets/Complement_of_Union). It says: “be a family of sets, all of which are subsets of a universal set 𝕌.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Reversing a function graph tests for a two-sided inverse
+
+**Remember:** Turn the arrows around and check for one arrow per input.
+
+*True by definition.* MSC 03E20 (Other classical set theory (including functions, relations, and set algebra)). arXiv math.LO. Level 1: early undergraduate.
+
+**Definition.** The graph of a function f from A to B contains the pairs (a, f(a)). Its inverse relation contains those pairs in reverse order. A two-sided inverse is a function that undoes f in both orders.
+
+**Problem.** A function has a two-sided inverse exactly when every element of B occurs once as the first entry of a reversed pair.
+
+**How the definition helps.** Our own test reads the inverse directly from the reversed pairs. Each target must occur at least once because the inverse needs an output, and at most once because that output must be unique. Following a pair and then its reverse gives the starting value in either order.
+
+**Paper or page:** [Bijective Relation has Left and Right Inverse](https://proofwiki.org/wiki/Bijective_Relation_has_Left_and_Right_Inverse), [Bijection iff exists Mapping which is Left and Right Inverse](https://proofwiki.org/wiki/Bijection_iff_exists_Mapping_which_is_Left_and_Right_Inverse). It says: “Let ℛ⁻¹ be the inverse relation of ℛ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Tags let maps on overlapping sets combine without conflict
+
+**Remember:** The label tells you which rule to use.
+
+*Rules out counterexamples.* MSC 03E20 (Other classical set theory (including functions, relations, and set algebra)). arXiv math.LO. Level 1: early undergraduate.
+
+**Definition.** The disjoint union of an indexed family consists of pairs (i, x), where i labels a set and x belongs to that set. Unlike an ordinary union, it keeps a separate copy for each label.
+
+**Problem.** Suppose each set in the family has a function to the same target. Exactly one function on the disjoint union agrees with each given function on its labeled copy.
+
+**How the definition helps.** Each pair names exactly one function, so apply that function to its second entry. In our own example, two functions sending the same shared element to 0 and 1 cannot combine on the ordinary union.
+
+**nLab:** [disjoint union](https://ncatlab.org/nlab/show/disjoint+union). It says: “the set of all (ordered) pairs (i,a) with i in the index set I and a in Aᵢ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Taking the empty intersection as the whole set keeps intersection order-reversing
 
 **Remember:** Fewer sets to meet means a bigger intersection, and none gives everything.
@@ -271,6 +499,22 @@
 
 - [ProofWiki, Intersection is Decreasing](https://proofwiki.org/wiki/Intersection_is_Decreasing)
 - [ProofWiki, Intersection of Empty Set](https://proofwiki.org/wiki/Intersection_of_Empty_Set)
+
+### The cancellation tests make injections and surjections compose
+
+**Remember:** Cancel one map at a time.
+
+*True by definition. Confidence: medium.* MSC 03E20 (Other classical set theory (including functions, relations, and set algebra)). arXiv math.LO. Level 1: early undergraduate.
+
+**Definition.** An injection has distinct outputs for distinct inputs, and a surjection reaches every target. Left cancellation means f ∘ u = f ∘ v implies u = v for all compatible functions u and v. Right cancellation uses u ∘ f = v ∘ f instead.
+
+**Problem.** A composite of two injections is injective. A composite of two surjections is surjective.
+
+**How the definition helps.** In our own proof, canceling two functions in succession cancels their composite. Injections allow left cancellation because equal outputs have equal inputs, and surjections allow right cancellation because every target is reached. Conversely, two functions from a one-element set detect an injection failure. Two functions that differ only at a missed target detect a surjection failure.
+
+**Paper or page:** [Surjection iff Right Cancellable/Sufficient Condition](https://proofwiki.org/wiki/Surjection_iff_Right_Cancellable/Sufficient_Condition), [Injection iff Left Cancellable/Sufficient Condition](https://proofwiki.org/wiki/Injection_iff_Left_Cancellable/Sufficient_Condition). It says: “Then f is a surjection.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Defining the natural numbers as a closure makes induction true by definition
 
@@ -308,6 +552,58 @@
 
 - [The Open Logic Project, The Open Logic Text (complete build)](https://builds.openlogicproject.org/open-logic-complete.pdf)
 
+### Discharging an assumption makes the deduction theorem one rule
+
+**Remember:** Close the assumption and write an implication.
+
+*True by definition.* MSC 03B05 (Classical propositional logic). arXiv math.LO. Level 2: later undergraduate.
+
+**Definition.** In natural deduction, the rule for introducing A → B closes a proof of B under a temporary assumption A. That proof may leave A unused. Hilbert proofs instead use axioms and rules without that operation.
+
+**Problem.** In natural deduction, B is provable from given premises and A exactly when A → B is provable from the premises alone.
+
+**How the definition helps.** The rule for introducing → gives the forward direction in one step. Our own reverse step uses A and A → B to infer B. For Hilbert proofs, the work is an induction on the proof of B.
+
+**nLab:** [deduction theorem](https://ncatlab.org/nlab/show/deduction+theorem). It says: “it is the introduction rule for the implication/function type in natural deduction.”
+
+**Paper or page:** [First Order Logic: Axiomatic Deduction](https://builds.openlogicproject.org/open-logic-complete.pdf). It says: “Γ ∪ {A} ⊢ B if and only if Γ ⊢ A → B.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Maximal consistent sets supply satisfying truth assignments
+
+**Remember:** A maximal consistent set supplies a whole truth assignment.
+
+*Rules out counterexamples.* MSC 03B05 (Classical propositional logic). arXiv math.LO. Level 2: later undergraduate.
+
+**Definition.** In classical propositional natural deduction, a set is consistent if its formulas cannot prove a contradiction. It is maximal consistent if adding any missing formula makes it inconsistent.
+
+**Problem.** Every consistent set of propositional formulas has a truth assignment that makes all its formulas true.
+
+**How the definition helps.** Maximality lets our own construction read each letter’s truth value from its membership in the set. The consistent set containing only “p or q” would give both letters false by this test. Extend the set to a maximal consistent one, then prove by induction that membership agrees with truth for every formula.
+
+**Paper or page:** [Propositional Logic: Syntax And Semantics](https://builds.openlogicproject.org/open-logic-complete.pdf). It says: “If Γ is consistent then Γ is satisfiable.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Proof trees let one proof replace an assumption
+
+**Remember:** Replace an open assumption with its proof.
+
+*True by definition.* MSC 03B05 (Classical propositional logic). arXiv math.LO. Level 2: later undergraduate.
+
+**Definition.** In propositional natural deduction, a proof is a finite tree whose branches show the premises of each rule. Mark each temporary assumption with the rule that closes it. The other assumption leaves stay open.
+
+**Problem.** In propositional natural deduction, suppose one set of premises proves A and another set together with A proves B. The union of the two sets proves B.
+
+**How the definition helps.** A tree lets our own construction insert a proof of A exactly where another proof uses A as an open assumption. Replace each such leaf with a copy and give its discharge marks fresh labels. This preserves every rule and leaves only assumptions from the two original sets open. In a numbered list of proof lines, the same construction also requires updating references to earlier lines.
+
+**nLab:** [natural deduction](https://ncatlab.org/nlab/show/natural+deduction). It says: “we should annotate each bracket somehow to indicate which rule discharged that assumption.”
+
+**Paper or page:** [First Order Logic: Natural Deduction](https://builds.openlogicproject.org/open-logic-complete.pdf). It says: “If Γ ⊢ A and {A} ∪ Δ ⊢ B, then Γ ∪ Δ ⊢ B.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Valuations as points of a compact product space give propositional compactness
 
 **Remember:** A formula tests only finitely many coordinates.
@@ -337,6 +633,22 @@
 **How the definition helps.** A formal proof is finite, so a proof-theoretic consequence follows from finitely many premises by definition. The nLab proves compactness this way, with the completeness theorem and the finiteness of formal proofs. Completeness says that every semantic consequence has a formal proof. That proof uses only a finite subset of the premises. Soundness then makes the sentence a semantic consequence of that subset, in our own wording of the last step. So the real work is in the completeness theorem.
 
 **nLab:** [compactness theorem](https://ncatlab.org/nlab/show/compactness+theorem). It says: “the essential finitude of the notion of formal proof”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Fresh parameters make universal introduction sound
+
+**Remember:** An arbitrary object needs a name with no prior commitments.
+
+*Rules out counterexamples.* MSC 03B10 (Classical first-order logic), 03C07. arXiv math.LO. Level 2: later undergraduate.
+
+**Definition.** In natural deduction, universal introduction turns P(c) into ∀x P(x). Here c is a new name that occurs neither in the open assumptions nor in P(x).
+
+**Problem.** If the open assumptions entail P(c) for a fresh name c, they also entail ∀x P(x). Thus universal introduction preserves truth from the open assumptions.
+
+**How the definition helps.** Our own argument lets c name any object because changing its value leaves the open assumptions and P(x) unchanged. The substitution lemma identifies truth of P(c) with truth of P(x) at that object. Without freshness, assume P(c) in a two-object structure where only c satisfies P. The assumption holds there, but ∀x P(x) fails.
+
+**Paper or page:** [First Order Logic: Natural Deduction](https://builds.openlogicproject.org/open-logic-complete.pdf). It says: “If c is a constant not occurring in Γ or A(x) and Γ ⊢ A(c), then Γ ⊢ ∀x A(x).”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -377,6 +689,22 @@
 - [Quine, W. V. (1951). Mathematical Logic, revised edition. Harvard University Press.](https://doi.org/10.4159/9780674042469)
 - [Hailperin, T. (1957). A theory of restricted quantification I. Journal of Symbolic Logic 22, 19–35.](https://doi.org/10.2307/2964055)
 
+### Witness functions remove existential quantifiers without losing satisfiability
+
+**Remember:** Name the witness as a function of earlier choices.
+
+*Makes the theorem clean to state or prove.* MSC 03B10 (Classical first-order logic), 03C07. arXiv math.LO. Level 2: later undergraduate.
+
+**Definition.** First put all quantifiers at the front, using a different variable for each. A Skolem function names a choice of witness for an existential variable from the values of the earlier universal variables. Use a fresh function for each witness, or a fresh constant if there are no inputs.
+
+**Problem.** Every first-order sentence can be converted to a sentence with only universal quantifiers, all at the front. The new sentence uses an expanded language and is satisfiable exactly when the original is.
+
+**How the definition helps.** The functions let the new sentence name witnesses instead of quantifying over them. Our own proof first moves the quantifiers to the front, then chooses a witness for each tuple of earlier universal choices. A model of the new sentence supplies witnesses by evaluating the added functions.
+
+**Wikipedia:** [Skolem normal form](https://en.wikipedia.org/wiki/Skolem_normal_form). It says: “it is satisfiable if and only if the original one is satisfiable.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Kripke's implication clause makes truth persist in intuitionistic models
 
 **Remember:** Implication looks at every future world, so what is known stays known.
@@ -412,6 +740,22 @@
 **Sources:**
 
 - [The Open Logic Project, The Open Logic Text (complete build)](https://builds.openlogicproject.org/open-logic-complete.pdf)
+
+### A mapping property gives recursion on the natural numbers
+
+**Remember:** Choose a start and a step, and the natural numbers give one map.
+
+*True by definition.* MSC 03B30 (Foundations of classical theories (including reverse mathematics)). arXiv math.LO. Level 2: later undergraduate.
+
+**Definition.** Specify the natural numbers by zero, a successor operation S, and the following rule. Choose a set A, an element a of A, and a function f from A to itself. Exactly one function u from the natural numbers to A satisfies u(0) = a and u(S(n)) = f(u(n)).
+
+**Problem.** For any start a and step f on a set A, exactly one sequence starts at a and applies f at each step.
+
+**How the definition helps.** The two equations say exactly how to start a sequence and how to continue it. In our own comparison, starting from the Peano axioms requires a proof that the sequence exists. One constructs compatible finite sequences and joins them.
+
+**nLab:** [natural numbers object](https://ncatlab.org/nlab/show/natural+numbers+object). It says: “there is a unique morphism u : ℕ → A”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Church numerals express addition and multiplication by composing iterations
 
@@ -534,6 +878,210 @@
 - [D. Makinson, On some completeness theorems in modal logic, Zeitschrift für mathematische Logik und Grundlagen der Mathematik 12 (1966) 379–384](https://doi.org/10.1002/malq.19660120131)
 - [Kripke, S. A. (1963). Semantical analysis of modal logic I. Normal modal propositional calculi. Zeitschrift für mathematische Logik und Grundlagen der Mathematik 9, 67–96.](https://doi.org/10.1002/malq.19630090502)
 
+### Back-and-forth families turn two enumerations into an isomorphism
+
+**Remember:** Alternate adding one object from each side.
+
+*True by definition.* MSC 03C07 (Basic properties of first-order languages and structures). arXiv math.LO. Level 2: later undergraduate.
+
+**Definition.** A back-and-forth family is a nonempty set of bijections between finite subsets of two structures. Each bijection preserves and reflects all basic formulas on its inputs. Each can extend within the family to include any chosen object on either side.
+
+**Problem.** Two countable structures with such a family are isomorphic.
+
+**How the definition helps.** The two extension rules let our own construction build a global match one object at a time. Alternate between the two lists, extending the current map to include the next object. The union matches both lists exactly and respects each basic fact because that fact involves only finitely many objects. The work lies in finding the initial family of maps.
+
+**Paper or page:** [Model Theory: Basics](https://builds.openlogicproject.org/open-logic-complete.pdf). It says: “If M ≅ₚ N and M and N are enumerable, then M ≅ N.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Capture-free substitution preserves the meaning of term replacement
+
+**Remember:** Do not let a quantifier bind a letter you insert.
+
+*Rules out counterexamples.* MSC 03C07 (Basic properties of first-order languages and structures). arXiv math.LO. Level 2: later undergraduate.
+
+**Definition.** A term names an object once its variables have values. Capture-free substitution replaces x by a term only where x is free, outside the scope of a quantifier that binds x. First rename any bound variable that would bind an inserted variable, using a name absent from both expressions.
+
+**Problem.** Evaluating the formula after capture-free substitution gives the same truth value as assigning x the term’s value in the original formula.
+
+**How the definition helps.** Our own inductive proof uses renaming to keep the inserted variables tied to the original assignment. Our own counterexample replaces x by y in ∀y (x = y) without renaming. On a two-element set the naive result ∀y (y = y) is true, but the original is always false.
+
+**Paper or page:** [First Order Logic: Syntax And Semantics](https://builds.openlogicproject.org/open-logic-complete.pdf). It says: “Let M be a structure, A a formula, t′ a term, and s a variable assignment.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Elementary chains preserve truth at their union
+
+**Remember:** An elementary stage already has any witness it needs.
+
+*Rules out counterexamples.* MSC 03C07 (Basic properties of first-order languages and structures). arXiv math.LO. Level 2: later undergraduate.
+
+**Definition.** A chain of substructures is elementary when each stage agrees with every later stage on formulas with parameters from the earlier stage. An ordinary chain asks only that basic facts about elements already present agree.
+
+**Problem.** In an elementary chain, every stage is an elementary substructure of the union.
+
+**How the definition helps.** Our own argument sends a witness from a later stage back to the stage containing the parameters. Induction on formulas justifies evaluating the witness in that later stage. Our own counterexample uses initial segments of the natural numbers. Each finite stage has a greatest element, but their union does not.
+
+**nLab:** [elementary embedding](https://ncatlab.org/nlab/show/elementary+embedding). It says: “it is an injection f: M → N such that for any first-order formula φ written in the language of σ”
+
+**Sources:**
+
+- [Alfred Tarski and Robert L. Vaught, Arithmetical extensions of relational systems (1957), Theorem 1.9](https://www.numdam.org/item/CM_1956-1958__13__81_0/)
+
+### Existential quantifiers keep projections of definable sets definable
+
+**Remember:** To drop a coordinate, ask whether some value fits.
+
+*Rules out counterexamples.* MSC 03C07 (Basic properties of first-order languages and structures). arXiv math.LO. Level 2: later undergraduate.
+
+**Definition.** A definable set consists of the tuples that make some first-order formula true in a fixed structure. Allow quantifiers, not just basic facts combined with AND, OR, or NOT.
+
+**Problem.** Dropping one coordinate from all tuples in a definable set gives another definable set.
+
+**How the definition helps.** An existential quantifier asks whether any value for the missing coordinate completes the tuple. In our own counterexample, a graph has one edge and an isolated vertex, and the language has only equality and adjacency. Projecting the edge relation selects exactly the vertices with a neighbor. The only basic tests on x alone, equality with itself and adjacency to itself, give the same answers everywhere.
+
+**nLab:** [definable set](https://ncatlab.org/nlab/show/definable+set). It says: “evaluates to a truth value on each a = (a₁, …, aₙ) ∈ Mⁿ”
+
+**Paper or page:** [First Order Logic: Syntax And Semantics](https://builds.openlogicproject.org/open-logic-complete.pdf). It says: “M ⊨ ∃x B(x)\[s\] iff there is an x-variant s′ of s so that M ⊨ B(x)\[s′\].”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Finite size bounds let compactness produce an infinite model
+
+**Remember:** Ask for every finite size to force infinity.
+
+*Makes the theorem clean to state or prove.* MSC 03C07 (Basic properties of first-order languages and structures). arXiv math.LO. Level 2: later undergraduate.
+
+**Definition.** Express infinitude as a set of first-order sentences rather than one sentence. For each positive integer n, require n objects that differ in every pair.
+
+**Problem.** A first-order theory with equality and arbitrarily large finite models has an infinite model.
+
+**How the definition helps.** Each finite group of size bounds has a largest required size, so some finite model of the theory satisfies them all. In our own argument, compactness gives one model satisfying the theory and every bound together. Its domain must be infinite.
+
+**Paper or page:** [Model Theory: Basics](https://builds.openlogicproject.org/open-logic-complete.pdf). It says: “If a set Γ of sentences has arbitrarily large finite models, then it has an infinite model.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Finite size bounds show why infinitude needs infinitely many axioms
+
+**Remember:** No finite list of lower bounds forces infinity.
+
+*Makes the theorem clean to state or prove.* MSC 03C07 (Basic properties of first-order languages and structures). arXiv math.LO. Level 2: later undergraduate.
+
+**Definition.** A theory may use a set of sentences instead of a single sentence. With equality, axiomatize infinity by asking for n pairwise distinct objects for every positive integer n.
+
+**Problem.** No single first-order sentence, or finite list of sentences, characterizes infinite structures in a language with equality.
+
+**How the definition helps.** The size bounds let our own argument build a contradiction from any proposed sentence for infinitude. Add its negation to all the bounds. Each finite part has a sufficiently large finite model, so compactness gives an infinite model satisfying the negation. A finite list of proposed axioms would give one sentence by joining them with AND.
+
+**Paper or page:** [Model Theory: Basics](https://builds.openlogicproject.org/open-logic-complete.pdf). It says: “There is no sentence A of any first-order language that is true in structure M if and only if the domain M of the structure is infinite.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Forgetting unused symbols preserves truth in the smaller language
+
+**Remember:** Forget symbols, not objects.
+
+*Rules out counterexamples.* MSC 03C07 (Basic properties of first-order languages and structures). arXiv math.LO. Level 2: later undergraduate.
+
+**Definition.** A reduct keeps the same set of objects and the same meanings for the symbols of a smaller language. It forgets the other symbols rather than removing objects.
+
+**Problem.** An expanded structure and its reduct agree on every sentence in the smaller language.
+
+**How the definition helps.** Keeping the domain gives every quantifier the same choices, and keeping the old symbols gives every old term and relation the same meaning. Our own proof follows the construction of the sentence. Shrinking a two-object domain to one object would change the truth of “there exist two distinct objects.”
+
+**Paper or page:** [Model Theory: Basics](https://builds.openlogicproject.org/open-logic-complete.pdf). It says: “If an L-structure M is a reduct of an L′-structure M′, then for all L-sentences A, M ⊨ A iff M′ ⊨ A.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Isomorphisms preserve first-order truth by matching every choice
+
+**Remember:** Match objects and match facts in both directions.
+
+*Rules out counterexamples.* MSC 03C07 (Basic properties of first-order languages and structures). arXiv math.LO. Level 2: later undergraduate.
+
+**Definition.** An isomorphism is a bijection that respects the named constants and functions. It also preserves and reflects relations, unlike a bijective homomorphism that only preserves them.
+
+**Problem.** Isomorphic structures satisfy the same first-order sentences.
+
+**How the definition helps.** Our own argument matches each assignment and every choice for a quantified variable through the bijection. Our own counterexample is the identity map from an edgeless two-vertex graph to one with an edge. It is a bijective homomorphism, but the sentence saying that an edge exists distinguishes them. The work is induction on formulas, starting with exact agreement on basic facts.
+
+**Paper or page:** [Model Theory: Basics](https://builds.openlogicproject.org/open-logic-complete.pdf). It says: “If M ≅ M′ then M ≡ M′.”
+
+**Sources:**
+
+- [Alfred Tarski and Robert L. Vaught, Arithmetical extensions of relational systems (1957), Corollary 1.5](https://www.numdam.org/item/CM_1956-1958__13__81_0/)
+
+### Keeping witnesses is enough to test elementary substructures
+
+**Remember:** For each solvable formula, keep one solution.
+
+*Makes the theorem clean to state or prove.* MSC 03C07 (Basic properties of first-order languages and structures). arXiv math.LO. Level 2: later undergraduate.
+
+**Definition.** A substructure restricts all relations to a smaller domain that contains the constants and is closed under the functions. It passes the witness test if each solvable formula with one unknown and parameters from that domain has a solution there. The larger structure evaluates the formula in both cases.
+
+**Problem.** A substructure is elementary, meaning it agrees on every formula with parameters from it, exactly when it keeps witnesses.
+
+**How the definition helps.** Our own proof checks the condition only where an existential quantifier searches for an object. Basic formulas agree by restriction. Our own argument uses induction on formulas to pass from those two checks to agreement on every formula.
+
+**Wikipedia:** [Elementary equivalence](https://en.wikipedia.org/wiki/Elementary_equivalence). It says: “A substructure N of M is elementary if and only if it passes the Tarski–Vaught test”
+
+**Sources:**
+
+- [Alfred Tarski and Robert L. Vaught, Arithmetical extensions of relational systems (1957), Theorem 1.10](https://www.numdam.org/item/CM_1956-1958__13__81_0/)
+
+### Naming every object pins down a finite structure
+
+**Remember:** List the facts and leave no unnamed objects.
+
+*Makes the theorem clean to state or prove.* MSC 03C07 (Basic properties of first-order languages and structures). arXiv math.LO. Level 2: later undergraduate.
+
+**Definition.** A diagram for a finite structure assigns one variable to each object. It records the constants, every function value, and whether each relation holds on each tuple. It requires distinct variables to take different values and requires every object to occur among those values.
+
+**Problem.** In a finite first-order language with equality, each finite structure is characterized up to isomorphism by a single sentence.
+
+**How the definition helps.** The diagram lists enough facts to identify the whole structure once its variables have values. Our own construction joins the conditions with AND and says there exist values satisfying them all. Distinctness and exhaustion give a bijection, and the recorded facts make it an isomorphism.
+
+**nLab:** [diagram of a first-order structure](https://ncatlab.org/nlab/show/diagram+of+a+first-order+structure). It says: “adding to L new constant symbols cₘ for each m ∈ M”
+
+**Paper or page:** [First Order Logic: Models Theories](https://builds.openlogicproject.org/open-logic-complete.pdf). It says: “is true in structure M iff the domain M contains exactly n elements.”
+
+**Sources:**
+
+- [Herbert B. Enderton, A Mathematical Introduction to Logic, 2nd ed. (2001), Section 2.2, Exercise 17](https://www.cs.mcgill.ca/~akroit/math/logic/Enderton%20A%20Mathematical%20Introduction%20to%20Logic.pdf)
+
+### Negative facts make atomic diagrams describe embeddings
+
+**Remember:** Record what fails as well as what holds.
+
+*Rules out counterexamples.* MSC 03C07 (Basic properties of first-order languages and structures). arXiv math.LO. Level 2: later undergraduate.
+
+**Definition.** In a language with equality, the atomic diagram gives each object its own name. It lists every true equation or relation statement between named terms and the negation of every false one.
+
+**Problem.** A structure with these names satisfies the atomic diagram exactly when interpreting the names gives an embedding. An embedding preserves and reflects the basic facts.
+
+**How the definition helps.** The negative statements force different names for different objects to stay distinct and prevent false relations from becoming true. The positive statements preserve functions, constants, and true relations. Our own counterexample uses equality alone. Mapping two objects to one preserves every true equation.
+
+**nLab:** [diagram of a first-order structure](https://ncatlab.org/nlab/show/diagram+of+a+first-order+structure). It says: “into which M embeds as a substructure and elementary substructure, respectively.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Restricting relations makes universal sentences pass to substructures
+
+**Remember:** Keep the same facts on the remaining objects.
+
+*Rules out counterexamples.* MSC 03C07 (Basic properties of first-order languages and structures). arXiv math.LO. Level 2: later undergraduate.
+
+**Definition.** A substructure contains the named constants and is closed under the functions of the larger structure. Its relations are exact restrictions, not just subsets of the old relations.
+
+**Problem.** If a universal sentence holds in a structure, it holds in every substructure. A universal sentence has only universal quantifiers at the front, followed by a formula with no quantifiers.
+
+**How the definition helps.** Exact restriction keeps each basic statement true or false on every remaining tuple. Induction gives the same agreement for formulas built with AND, OR, and NOT, so checking fewer tuples preserves a universal sentence. Our own counterexample deletes the edge from a graph on two adjacent vertices. The sentence “every two distinct vertices are adjacent” then fails.
+
+**Wikipedia:** [Model theory](https://en.wikipedia.org/wiki/Model_theory). It says: “by restricting all functions and relations in σ to the subset.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Tarski defines satisfaction for all formulas to handle free variables
 
 **Remember:** Truth is satisfaction for formulas with no free variables.
@@ -549,6 +1097,24 @@
 **Wikipedia:** [Semantic theory of truth](https://en.wikipedia.org/wiki/Semantic_theory_of_truth). It says: “Removing a quantifier from a sentence can produce a free variable, which is not a sentence and thus cannot have a truth value.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### A new name above every numeral gives nonstandard arithmetic
+
+**Remember:** One new element exceeds every ordinary numeral.
+
+*Makes the theorem clean to state or prove.* MSC 03C62 (Models of arithmetic and set theory), 03C07. arXiv math.LO. Level 2: later undergraduate.
+
+**Definition.** True arithmetic is the set of all first-order sentences true of the natural numbers. Add a fresh name c and, for every ordinary numeral, a sentence that says c is larger.
+
+**Problem.** Some countable model satisfies all of true arithmetic but is not isomorphic to the natural numbers.
+
+**How the definition helps.** Naming one element lets our own argument impose every lower bound on that same element. Any finite list of bounds holds for some natural number, so compactness gives a model satisfying all bounds and true arithmetic. The downward Löwenheim–Skolem theorem gives a countable such model. After removing the name, its value still exceeds every ordinary numeral, which rules out an isomorphism with the natural numbers.
+
+**Paper or page:** [Model Theory: Basics](https://builds.openlogicproject.org/open-logic-complete.pdf). It says: “There are non-standard enumerable models of true arithmetic.”
+
+**Sources:**
+
+- [Herbert B. Enderton, A Mathematical Introduction to Logic, 2nd ed. (2001), Section 2.6](https://www.cs.mcgill.ca/~akroit/math/logic/Enderton%20A%20Mathematical%20Introduction%20to%20Logic.pdf)
 
 ### Countability relative to a model removes Skolem's paradox
 
@@ -604,6 +1170,54 @@
 - [Church, A. (1936). An unsolvable problem of elementary number theory. American Journal of Mathematics 58, 345–363.](https://doi.org/10.2307/2371045)
 - [Turing, A. M. (1937). On computable numbers, with an application to the Entscheidungsproblem. Proceedings of the London Mathematical Society (2) 42, 230–265.](https://doi.org/10.1112/plms/s2-42.1.230)
 
+### Finite accepting branches make nondeterministic computation simulable
+
+**Remember:** Try each length of computation before trying the next.
+
+*Makes the theorem clean to state or prove.* MSC 03D10 (Turing machines and related notions). arXiv math.LO. Level 2: later undergraduate.
+
+**Definition.** A nondeterministic Turing machine can have several possible next moves, with finitely many choices at each step. It recognizes a word if some finite sequence of moves reaches acceptance, regardless of what other sequences do.
+
+**Problem.** Every language recognized by a nondeterministic Turing machine is recognized by a deterministic Turing machine.
+
+**How the definition helps.** Acceptance has a finite witness even when other branches run forever (our own). A deterministic machine tests all possible runs in order of length and accepts when one reaches acceptance (our own). Each length has only finitely many runs, so the search eventually reaches every witness (our own).
+
+**Wikipedia:** [Nondeterministic Turing machine](https://en.wikipedia.org/wiki/Nondeterministic_Turing_machine). It says: “we can stop the entire simulation as soon as any branch reaches an accepting state.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Self-input exposes the contradiction in a halting decider
+
+**Remember:** Ask what a program does when it reads its own code.
+
+*Makes the theorem clean to state or prove.* MSC 03D10 (Turing machines and related notions). arXiv math.LO. Level 2: later undergraduate.
+
+**Definition.** The self-halting set consists of the program codes e for which program e stops when given e as input. The ordinary halting problem allows the program code and its input to vary independently.
+
+**Problem.** The self-halting set is undecidable, so the ordinary halting problem is undecidable too.
+
+**How the definition helps.** Self-input makes a proposed decision procedure answer for the very program that uses its answer (our own). Build a program that stops exactly when the procedure predicts its input code will run forever on itself (our own). On its own code, this program stops exactly when it runs forever (our own). An ordinary halting test would decide self-halting by using the same code for program and input (our own).
+
+**Paper or page:** [Turing Machines: Undecidability, Theorem 1.5. (Unsolvability of the Halting Problem)](https://builds.openlogicproject.org/open-logic-complete.pdf). It says: “The halting problem is unsolvable, i.e., the function h is not Turing computable.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Standard tape layouts let Turing machines compose
+
+**Remember:** Leave the tape as the next machine expects it.
+
+*True by definition.* MSC 03D10 (Turing machines and related notions). arXiv math.LO. Level 2: later undergraduate.
+
+**Definition.** A disciplined Turing machine preserves the left end marker and never moves past it. On halting, it uses one designated halt state and returns its head to the first input cell. We use the same tape format for a numerical output and the next numerical input.
+
+**Problem.** Joining disciplined machines for f and g computes g(f(x)) when g takes one numerical input.
+
+**How the definition helps.** The first machine leaves its answer in the starting layout for the second (our own). Start the second machine when the first halts, using separate state names (our own). An unrestricted machine may stop elsewhere, but every machine has a disciplined equivalent (our own).
+
+**Paper or page:** [Turing Machines: Machines Computations, Proposition 1.2.](https://builds.openlogicproject.org/open-logic-complete.pdf), [Turing Machines: Machines Computations, Proposition 1.3.](https://builds.openlogicproject.org/open-logic-complete.pdf). It says: “If M and M′ are disciplined and compute the functions f: ℕᵏ → ℕ and f′: ℕ → ℕ, respectively, then M ⌢ M′ is disciplined”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Partial functions escape the diagonal argument, so all programs can be listed
 
 **Remember:** Let programs run forever, and you can list all programs.
@@ -622,6 +1236,22 @@
 
 - [Ackermann, W. (1928). Zum Hilbertschen Aufbau der reellen Zahlen. Mathematische Annalen. (The counterexample: a total computable function that is not primitive recursive.)](https://doi.org/10.1007/BF01459088)
 
+### Program prefixes make fixed parameters computable from code
+
+**Remember:** Load the fixed arguments before running the original instructions.
+
+*Makes the theorem clean to state or prove.* MSC 03D20 (Recursive functions and relations, subrecursive hierarchies), 03D10. arXiv math.LO. Level 2: later undergraduate.
+
+**Definition.** A register machine runs a finite list of instructions on numbered cells holding natural numbers. Its program code encodes the instructions in order. Specializing a program fixes some initial input values and leaves the remaining inputs free.
+
+**Problem.** For fixed input counts, an algorithm takes a program code and fixed values and returns a specialized program code. The new program behaves on the remaining inputs as the original does with the fixed values supplied first.
+
+**How the definition helps.** Encoding instructions lets us insert fixed inputs without running the original program (our own). A prefix moves the remaining inputs to their expected cells and loads the fixed values (our own). Copy the original instructions, adjusting jumps to account for the prefix (our own). The coding must allow these list and address operations to be computed (our own).
+
+**Paper or page:** [Computability: Computability Theory, Theorem 1.1.](https://builds.openlogicproject.org/open-logic-complete.pdf). It says: “For each pair of natural numbers n and m, there is a primitive recursive function sᵐₙ”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The recursion theorem fixes the computed function, not the program number
 
 **Remember:** A fixed point is a program that does the same thing as its transform.
@@ -639,6 +1269,38 @@
 **Sources:**
 
 - [Kleene, S. C. (1938). On notation for ordinal numbers. Journal of Symbolic Logic 3, 150–155.](https://doi.org/10.2307/2267778)
+
+### A known member makes enumeration total without adding new values
+
+**Remember:** Return a known member whenever the proposed output fails its check.
+
+*Rules out counterexamples.* MSC 03D25 (Recursively (computably) enumerable sets and degrees), 03D20. arXiv math.LO. Level 2: later undergraduate.
+
+**Definition.** A set is computably enumerable if a program accepts exactly its members. A total enumeration gives a member on every natural-number input and lists every member. A primitive recursive enumeration uses zero, successor, input selection, composition and recursion on a natural number.
+
+**Problem.** A nonempty set of natural numbers is computably enumerable exactly when it is the range of a primitive recursive function.
+
+**How the definition helps.** A fixed member gives the enumeration a valid answer even when a bounded test fails (our own). On input coding (x,t), return x if the program accepts x within t steps, and return the fixed member otherwise (our own). Decoding pairs and checking bounded runs require primitive recursive functions (our own). Conversely, searching the outputs recognizes their range, which contains at least the first output (our own).
+
+**Paper or page:** [Recursively Enumerable Set is Image of Primitive Recursive Function/Corollary](https://proofwiki.org/wiki/Recursively_Enumerable_Set_is_Image_of_Primitive_Recursive_Function/Corollary). It says: “Suppose S is non-empty. Then there exists a primitive recursive function f: ℕ → ℕ such that:”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A uniform list keeps countable unions computably enumerable
+
+**Remember:** One recognizer for all indices makes a fair search possible.
+
+*Rules out counterexamples. Confidence: medium.* MSC 03D25 (Recursively (computably) enumerable sets and degrees), 03D10. arXiv math.LO. Level 2: later undergraduate.
+
+**Definition.** A sequence of sets is uniformly computably enumerable when one recognizer takes both the set number and the candidate member as input. It accepts exactly when that member is in the numbered set.
+
+**Problem.** The union of a uniformly computably enumerable sequence of sets is computably enumerable.
+
+**How the definition helps.** One recognizer can search all set numbers without needing a separate program for each (our own). At stage t, test indices through t for t steps each and accept if any test accepts (our own). Without uniformity, take any set B that no program recognizes (our own). At index e, choose {e} if e belongs to B and ∅ otherwise, giving decidable sets with union B (our own).
+
+**Paper or page:** [Computability: Computability Theory, Theorem 1.2.](https://builds.openlogicproject.org/open-logic-complete.pdf). It says: “A set S is computably enumerable if and only if there is a computable relation R(x,y) such that S = {x ∣ ∃y R(x,y)}.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Defining enumerable sets as domains removes the empty-set exception
 
@@ -674,6 +1336,54 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Increasing enumerations turn an infinite search into a decision
+
+**Remember:** An increasing list can settle no by passing the target.
+
+*Rules out counterexamples.* MSC 03D25 (Recursively (computably) enumerable sets and degrees), 03D10. arXiv math.LO. Level 2: later undergraduate.
+
+**Definition.** An increasing computable enumeration is a program that returns a natural number on every natural-number input. Its outputs strictly increase with the input, and their range is the set it lists.
+
+**Problem.** An infinite set of natural numbers is decidable exactly when it has an increasing computable enumeration.
+
+**How the definition helps.** An increasing list eventually reaches or passes any input, so it gives a membership test (our own). An unordered listing need never signal that a missing number will never appear (our own). For the converse, use the membership test to find the first member and then each larger member in turn (our own). Infinitude guarantees every search succeeds (our own).
+
+**Wikipedia:** [Computable set](https://en.wikipedia.org/wiki/Computable_set). It says: “A is computable if and only if it is either the image (or range) of a nondecreasing total computable function, or the empty set.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The universal list exposes a language no machine recognizes
+
+**Remember:** A program that stops on the opposite diagonal contradicts itself.
+
+*Makes the theorem clean to state or prove.* MSC 03D25 (Recursively (computably) enumerable sets and degrees), 03D10. arXiv math.LO. Level 2: later undergraduate.
+
+**Definition.** A set is computably enumerable if some program halts exactly on its members. The self-halting set contains the codes of all programs that halt when given their own code.
+
+**Problem.** The self-halting set is computably enumerable, but its complement is not.
+
+**How the definition helps.** Describing membership by halting makes a recognizer for the complement contradict its own behavior (our own). On its own code, it would halt exactly when it does not halt (our own). A simulator recognizes the self-halting set itself by running the input program on its own code (our own).
+
+**Paper or page:** [Computability: Computability Theory, Theorem 1.2.](https://builds.openlogicproject.org/open-logic-complete.pdf). It says: “The self-halting set K = {e ∣ φₑ(e)↓} is c.e. but not decidable.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Total computable reductions cannot hide nontermination
+
+**Remember:** A reduction must finish even when the answer is no.
+
+*Rules out counterexamples.* MSC 03D30 (Other degrees and reducibilities in computability and recursion theory), 03D10. arXiv math.LO. Level 2: later undergraduate.
+
+**Definition.** A many-one reduction from A to B is a computable function f defined on every input. It must satisfy x ∈ A exactly when f(x) ∈ B.
+
+**Problem.** Many-one reductions compose, and any set that reduces to a decidable set is itself decidable.
+
+**How the definition helps.** A total translation always reaches the next reduction or the final decider (our own). A partial translation could simulate the input and return 0 only on halting (our own). Treating divergence as a no answer would then reduce the undecidable halting set to the decidable set {0} (our own). Thus the work is showing that the translation finishes even on no inputs (our own).
+
+**Paper or page:** [Computability: Computability Theory, Proposition 1.1.](https://builds.openlogicproject.org/open-logic-complete.pdf). It says: “If A ≤ₘ B and B ≤ₘ C, then A ≤ₘ C.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Rice's theorem needs properties that are semantic and nontrivial
 
 **Remember:** Rice's theorem is about what a program does, not how it is written.
@@ -691,6 +1401,22 @@
 **Sources:**
 
 - [Rice, H. G. (1953). Classes of recursively enumerable sets and their decision problems. Transactions of the American Mathematical Society 74, 358–366.](https://doi.org/10.1090/s0002-9947-1953-0053041-6)
+
+### Adding an ordinal to itself as a member gives its successor
+
+**Remember:** Any larger ordinal must already contain the new member.
+
+*True by definition.* MSC 03E10 (Ordinal and cardinal numbers). arXiv math.LO. Level 2: later undergraduate.
+
+**Definition.** A von Neumann ordinal contains every member of each of its elements, and membership well-orders it. A well-order is a total order in which each nonempty subset has a first element. Form the successor of α by adjoining α to the set α.
+
+**Problem.** The successor of an ordinal α is the least ordinal strictly greater than α.
+
+**How the definition helps.** Every ordinal greater than α contains α and all its members, so it contains the proposed successor. Our own comparison with abstract order types checks directly that the new set is an ordinal. It contains every predecessor, and its one new element comes last in the well-order.
+
+**Paper or page:** [Successor of Element of Ordinal is Subset](https://proofwiki.org/wiki/Successor_of_Element_of_Ordinal_is_Subset). It says: “x ∈ y ⇔ x⁺ ⊆ y”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Cardinal powers as function sets make iterated powers multiply exponents
 
@@ -796,6 +1522,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Lists with repeats turn countable unions into countable grids
+
+**Remember:** Put each list on one row and read the grid.
+
+*True by definition.* MSC 03E10 (Ordinal and cardinal numbers). arXiv math.LO. Level 2: later undergraduate.
+
+**Definition.** A nonempty set is countable if a list indexed by natural numbers covers it. Unlike a one-to-one list, this list may repeat elements. The empty set also counts as countable.
+
+**Problem.** Assuming countable choice, the union of a sequence of countable sets is countable.
+
+**How the definition helps.** Repeats let us read one chosen list per nonempty set without checking whether two rows overlap. Countable choice lets us choose all these lists at once. Our own reading order visits positions by increasing row number plus column number, skipping empty rows. If every row is empty, the union is empty.
+
+**nLab:** [countable unions of countable sets are countable](https://ncatlab.org/nlab/show/countable+unions+of+countable+sets+are+countable). It says: “this requires the axiom of countable choice”
+
+**Paper or page:** [Countable Union of Countable Sets is Countable](https://proofwiki.org/wiki/Countable_Union_of_Countable_Sets_is_Countable). It says: “Then it can be proved that a countable union of countable sets is countable.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Nonzero coefficients and decreasing exponents make Cantor normal form unique
 
 **Remember:** No zero coefficients and no repeated powers, so each ordinal has one form.
@@ -897,6 +1641,56 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Successor sets make the natural numbers the first infinite ordinal
+
+**Remember:** Each natural number contains exactly the numbers before it.
+
+*True by definition.* MSC 03E10 (Ordinal and cardinal numbers). arXiv math.LO. Level 2: later undergraduate.
+
+**Definition.** A von Neumann ordinal contains every member of each of its elements, and membership well-orders it. This means membership orders its elements and each nonempty subset has a first element. Start at the empty set and form each natural number’s successor by adjoining that number to itself.
+
+**Problem.** The set of all von Neumann natural numbers is the least infinite ordinal.
+
+**How the definition helps.** The successor construction makes each natural number the set of all earlier ones. Our own comparison with Peano arithmetic uses induction to establish this description. Their set then contains every predecessor and has the usual well-order of the natural numbers. Every smaller ordinal belongs to this set and is therefore finite.
+
+**Paper or page:** [Set of Natural Numbers is Ordinal](https://proofwiki.org/wiki/Set_of_Natural_Numbers_is_Ordinal). It says: “The set of natural numbers ℕ is an ordinal.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Ternary digits zero and two avoid collisions when coding subsets
+
+**Remember:** Leave a gap between the digits so the tail cannot erase a difference.
+
+*Rules out counterexamples.* MSC 03E10 (Ordinal and cardinal numbers). arXiv math.LO. Level 2: later undergraduate.
+
+**Definition.** Encode a subset of the positive integers by a base-three fraction. Put 2 in position n if n belongs to the subset, and put 0 there otherwise.
+
+**Problem.** The real numbers and the power set of the natural numbers have the same cardinality.
+
+**How the definition helps.** At the first differing place, the digit gap is two units of that place, while all later digits together contribute at most one unit. Our own binary comparison is 0.0111… = 0.1000…. In the reverse direction, number the rationals and assign each real the indices of the rationals below it. A rational separates any two distinct reals, so this assignment is injective and the Schröder–Bernstein theorem gives a bijection.
+
+**Wikipedia:** [Cantor set](https://en.wikipedia.org/wiki/Cantor_set). It says: “it must admit a numeral representation consisting entirely of 0s and 2s.”
+
+**Paper or page:** [Cardinality of Power Set of Natural Numbers Equals Cardinality of Real Numbers](https://proofwiki.org/wiki/Cardinality_of_Power_Set_of_Natural_Numbers_Equals_Cardinality_of_Real_Numbers). It says: “The cardinality of the power set of the natural numbers is equal to the cardinality of the real numbers.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The union of any set of ordinals is its supremum
+
+**Remember:** For ordinals, take the union to get the least upper bound.
+
+*True by definition.* MSC 03E10 (Ordinal and cardinal numbers). arXiv math.LO. Level 2: later undergraduate.
+
+**Definition.** A von Neumann ordinal is a set well-ordered by membership and containing every member of each of its elements. A well-order gives every nonempty subset a first element. Compare these ordinals by inclusion.
+
+**Problem.** Every set of ordinals has a supremum, or least upper bound, given by its union. The empty set has supremum zero.
+
+**How the definition helps.** Inclusion makes the union contain each given ordinal and lie inside every upper bound. Our own comparison uses sets of predecessors in place of abstract order types. The work is proving that membership well-orders the union and that it contains every predecessor of every member.
+
+**Paper or page:** [Union of Set of Ordinals is Ordinal](https://proofwiki.org/wiki/Union_of_Set_of_Ordinals_is_Ordinal). It says: “Then ⋃ A is an ordinal.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Von Neumann ordinals make each limit ordinal the union of smaller ones
 
 **Remember:** Each ordinal is the set of smaller ordinals, so suprema are unions.
@@ -969,6 +1763,70 @@
 - [ProofWiki, Order Automorphism on Well-Ordered Class is Identity Mapping](https://proofwiki.org/wiki/Order_Automorphism_on_Well-Ordered_Class_is_Identity_Mapping)
 - [ProofWiki, Well-Ordered Classes are Isomorphic at Most Uniquely](https://proofwiki.org/wiki/Well-Ordered_Classes_are_Isomorphic_at_Most_Uniquely)
 
+### Intersecting equivalence relations gives the greatest common refinement
+
+**Remember:** Keep two points together only when both partitions do.
+
+*True by definition.* MSC 03E20 (Other classical set theory (including functions, relations, and set algebra)). arXiv math.LO. Level 2: later undergraduate.
+
+**Definition.** A partition splits a set into nonempty blocks, with each point in exactly one block. Its relation records the pairs of points in the same block. One partition refines another if each of its blocks lies inside a block of the other.
+
+**Problem.** The nonempty intersections of blocks from two partitions form a partition that refines both. Every partition refining both also refines this one.
+
+**How the definition helps.** Refinement means inclusion of the recorded pairs, so intersecting the two relations keeps the largest relation contained in both. In our own proof, the block of a point consists of the points sharing both its original blocks.
+
+**nLab:** [partition](https://ncatlab.org/nlab/show/partition). It says: “Refinement corresponds to implication between relations.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Appending at the end lets Zorn’s lemma give well-orders
+
+**Remember:** Never add a new predecessor to an old point.
+
+*Rules out counterexamples.* MSC 03E25 (Axiom of choice and related propositions), 03E10. arXiv math.LO. Level 2: later undergraduate.
+
+**Definition.** A well-order compares every pair and gives every nonempty subset a least element. An end extension preserves the old order and puts all new points after all old ones.
+
+**Problem.** Assuming Zorn’s lemma, every set admits a well-order.
+
+**How the definition helps.** In a chain of end extensions, a subset’s least point in any stage it meets remains its least point in the union. Thus the union gives each chain an upper bound, and Zorn’s lemma supplies a maximal well-ordered subset. Appending any missing point would extend it. In our own counterexample, ordering successively longer finite lists of natural numbers backwards gives a union with no least element.
+
+**nLab:** [Zorn's lemma](https://ncatlab.org/nlab/show/Zorn%27s+lemma). It says: “If C is a chain in the poset consisting of subsets Xα, then their union X is a well-order”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Choice on fibers gives right inverses to surjections
+
+**Remember:** To undo an onto map, pick one input for each output.
+
+*True by definition.* MSC 03E25 (Axiom of choice and related propositions), 03E20. arXiv math.LO. Level 2: later undergraduate.
+
+**Definition.** A surjection reaches every value in its target. A right inverse sends each target value back to an input that gives that value. The set of such inputs is the fiber over that value.
+
+**Problem.** The axiom of choice holds exactly when every surjection between sets has a right inverse.
+
+**How the definition helps.** Choosing one input in each fiber gives exactly the function required for a right inverse. The axiom of choice permits this selection for any family of nonempty sets. In our own converse proof, form all pairs (i, x) with x in the set labeled i. Sending each pair to i reaches every label, so a right inverse selects an element from every set.
+
+**nLab:** [axiom of choice](https://ncatlab.org/nlab/show/axiom+of+choice). It says: “The axiom of choice is then also the statement that all epimorphisms are split epimorphisms in the category Set of sets.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Defining products as choice functions exposes the axiom of choice
+
+**Remember:** A point in a product is one choice at every index.
+
+*True by definition.* MSC 03E25 (Axiom of choice and related propositions), 03E20. arXiv math.LO. Level 2: later undergraduate.
+
+**Definition.** The Cartesian product of an indexed family consists of functions that assign to each index an element of the corresponding set. For two indices, these functions are just ordered pairs written with coordinate labels.
+
+**Problem.** The axiom of choice is equivalent to saying that every Cartesian product of nonempty sets is nonempty.
+
+**How the definition helps.** A function choosing one element from every set is exactly an element of the product. In our own explanation, reading the same function either way proves both implications. For an empty family, the empty function belongs to the product.
+
+**Wikipedia:** [Axiom of choice](https://en.wikipedia.org/wiki/Axiom_of_choice). It says: “The Cartesian product of any collection of nonempty sets is nonempty.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Finite character makes the existence of a basis one line
 
 **Remember:** If finite pieces decide membership, a maximal member exists.
@@ -987,6 +1845,24 @@
 
 - [Tukey, J. W. (1940). Convergence and Uniformity in Topology. Annals of Mathematics Studies 2, Princeton University Press.](https://doi.org/10.1515/9781400882199)
 
+### Ordering chains by inclusion gives a maximal chain
+
+**Remember:** Use inclusion so nested chains have a union above them.
+
+*True by definition.* MSC 03E25 (Axiom of choice and related propositions), 06A06. arXiv math.LO. Level 2: later undergraduate.
+
+**Definition.** A chain is a subset in which every pair is comparable. For a given chain, order all chains containing it by inclusion.
+
+**Problem.** Assuming Zorn’s lemma, every chain in a partially ordered set lies in a maximal chain.
+
+**How the definition helps.** Ordering the extensions by inclusion lets their union bound every nonempty chain of extensions. Any two points of this union occur together in one extension, so they are comparable. The given chain bounds the empty chain of extensions. Zorn’s lemma now gives a maximal member, which is a maximal chain in the original order.
+
+**Wikipedia:** [Hausdorff maximal principle](https://en.wikipedia.org/wiki/Hausdorff_maximal_principle). It says: “a union of a totally ordered set of chains is a chain”
+
+**Paper or page:** [Zorn's Lemma implies Hausdorff's Maximal Principle](https://proofwiki.org/wiki/Zorn's_Lemma_implies_Hausdorff's_Maximal_Principle). It says: “Then Hausdorff's Maximal Principle holds.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The empty chain makes the set in Zorn's lemma non-empty
 
 **Remember:** The empty chain needs an upper bound too, so P cannot be empty.
@@ -1004,6 +1880,22 @@
 **Sources:**
 
 - [Max Zorn, A remark on method in transfinite algebra, Bulletin of the American Mathematical Society 41 (1935) 667–670](https://doi.org/10.1090/S0002-9904-1935-06166-X)
+
+### The least element rule turns a well-order into choices
+
+**Remember:** Choose the first element of each set.
+
+*Rules out counterexamples.* MSC 03E25 (Axiom of choice and related propositions), 03E10. arXiv math.LO. Level 2: later undergraduate.
+
+**Definition.** A well-order is a total order in which each nonempty subset has a least element. A choice function on a family selects one element from each set in the family.
+
+**Problem.** Every family of nonempty subsets of a well-ordered set has a choice function. If every set can be well-ordered, then every family of nonempty sets has a choice function.
+
+**How the definition helps.** The definition supplies one unique choice for each subset. The work moves to finding a well-order on the union of the family. In our own example, the usual order on the integers cannot supply a first element for the whole set.
+
+**Paper or page:** [Choice Function Exists for Well-Orderable Union of Sets](https://proofwiki.org/wiki/Choice_Function_Exists_for_Well-Orderable_Union_of_Sets). It says: “Let the union ⋃𝕊 be well-orderable.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Zorn's lemma packages transfinite induction into one condition to check
 

@@ -1,3 +1,67 @@
+### Sharing endpoint slopes joins Hermite pieces without corners
+
+**Remember:** Match heights and slopes to join the pieces smoothly.
+
+*True by definition.* MSC 65D07 (Numerical computation using splines). arXiv math.NA. Level 1: early undergraduate.
+
+**Definition.** A cubic Hermite spline uses a polynomial of degree at most three between each pair of neighboring nodes. At each node, both adjoining pieces use the same prescribed value and slope.
+
+**Problem.** The pieces form a continuously differentiable interpolant of the given values and slopes.
+
+**How the definition helps.** The matching values join the pieces, and the matching slopes join their derivatives. In our own argument, prescribing slopes rules out corners that can remain when only values match. Existence on each interval follows from the two-node Hermite interpolation theorem.
+
+**Wikipedia:** [Cubic Hermite spline](https://en.wikipedia.org/wiki/Cubic_Hermite_spline). It says: “The resulting spline will be continuous and will have continuous first derivative.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Centering Simpson’s interpolant makes the cubic term cancel
+
+**Remember:** The missing cubic is odd, so its integral is zero.
+
+*True by definition.* MSC 65D32 (Numerical quadrature and cubature formulas), 65D30. arXiv math.NA. Level 1: early undergraduate.
+
+**Definition.** Define Simpson’s one-panel rule as the integral of the quadratic interpolant at the endpoints and midpoint. Measure the variable from the midpoint, so the nodes are −h, 0 and h.
+
+**Problem.** Simpson’s one-panel rule is exact for every polynomial of degree at most three.
+
+**How the definition helps.** Centering the interpolation nodes makes the cubic interpolation error odd. In our own proof, the error vanishes at −h, 0 and h, so it is a constant multiple of x(x − h)(x + h). Its integral over the symmetric interval is zero. This proves exactness without testing the usual Simpson weights on four monomials.
+
+**Wikipedia:** [Simpson's rule](https://en.wikipedia.org/wiki/Simpson%27s_rule). It says: “The approximate equality in the rule becomes exact if f is a polynomial up to and including 3rd degree.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Integrating the interpolant gives exactness on low degree polynomials
+
+**Remember:** Integrate the interpolant and keep every polynomial it already reproduces.
+
+*True by definition.* MSC 65D32 (Numerical quadrature and cubature formulas), 65D30. arXiv math.NA. Level 1: early undergraduate.
+
+**Definition.** An interpolatory quadrature rule estimates an integral on a bounded interval using n distinct sample points. It integrates the polynomial of degree at most n − 1 that matches the sampled values.
+
+**Problem.** Every interpolatory rule with n distinct nodes integrates all polynomials of degree at most n − 1 exactly.
+
+**How the definition helps.** Each polynomial of degree at most n − 1 matches its own samples, so uniqueness makes it its own interpolant. In our own proof, integrating therefore gives the exact answer. Integrating each Lagrange basis polynomial gives the corresponding weight in the usual sum.
+
+**Wikipedia:** [Newton–Cotes formulas](https://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas). It says: “The weights can be computed as the integral of Lagrange basis polynomials.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Treating a residual as a data change gives exact backward error
+
+**Remember:** Change only the right side and the residual is the whole error.
+
+*True by definition. Confidence: medium.* MSC 65F35 (Numerical computation of matrix norms, conditioning, scaling). arXiv math.NA. Level 1: early undergraduate.
+
+**Definition.** For a proposed solution v to Ax = b, change only b so that v solves the new system exactly. The absolute right-side backward error is the smallest length of such a change, measured in a chosen vector norm.
+
+**Problem.** For a computed vector v and any vector norm, the absolute right-side backward error equals ‖b − Av‖.
+
+**How the definition helps.** Fixing A leaves exactly one possible change to b, namely Av − b. In our own argument, its norm equals the norm of the residual b − Av. Allowing A to change as well would give a different minimization problem.
+
+**Wikipedia:** [Residual (numerical analysis)](https://en.wikipedia.org/wiki/Residual_%28numerical_analysis%29). It says: “If the exact value of x is not known, the residual can be computed, whereas the error cannot.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Sign brackets certify bisection error
 
 **Remember:** Keep opposite signs and halve the error bound.
@@ -32,6 +96,56 @@
 
 - [Lewis Fry Richardson, The approximate arithmetical solution by finite differences of physical problems involving differential equations, with an application to the stresses in a masonry dam (1911).](https://doi.org/10.1098/rsta.1911.0009)
 
+### Periodized Bernoulli polynomials turn Euler–Maclaurin into integration by parts
+
+**Remember:** Repeat one polynomial on every unit interval to get the endpoint corrections.
+
+*Makes the theorem clean to state or prove.* MSC 65B15 (Euler-Maclaurin formula in numerical analysis), 41A60. arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** Let P₁(x) equal the fractional part of x minus ½. For j ≥ 2, choose continuous period-one Pⱼ with mean zero and derivative jPⱼ₋₁ between consecutive integers.
+
+**Problem.** Suppose m&lt;n are integers and f has 2p continuous derivatives on \[m,n\], with p≥1. Writing \[g\]=g(n)−g(m), Euler–Maclaurin gives f(m+1)+⋯+f(n) = ∫ₘⁿ f(x)dx+\[f\]/2+∑ⱼ₌₁ᵖ P₂ⱼ(0)\[f⁽²ʲ⁻¹⁾\]/(2j)!−∫ₘⁿ P₂ₚ(x)f⁽²ᵖ⁾(x)dx/(2p)!.
+
+**How the definition helps.** Periodic primitives turn each new correction into one more integration by parts. In our own derivation, P₁ gives the trapezoid error on each unit interval. Later integrations use the derivative rule between integers, and continuity cancels the interior boundary terms. Reflection about ½ and the zero means give Pⱼ(0)=0 for odd j≥3.
+
+**nLab:** [Euler-MacLaurin formula](https://ncatlab.org/nlab/show/Euler-MacLaurin+formula). It says: “It involves Bernoulli numbers.”
+
+**Paper or page:** [The Leray transform: distinguished measures, symmetries and polygamma inequalities](https://arxiv.org/abs/2401.17490v3). It says: “P₁(x) = B₁(x−⌊x⌋), B₁(x) = x−½ is the first Bernoulli polynomial”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Adding the evaluation point makes interpolation error one Newton term
+
+**Remember:** Append the point of interest and read off the one extra term.
+
+*True by definition.* MSC 65D05 (Numerical interpolation). arXiv math.NA. Level 2: later undergraduate.
+
+**Definition.** For k distinct nodes, the divided difference is the coefficient of degree k − 1 in their polynomial interpolant, including when that coefficient is zero. In Newton form, appending a node adds this new coefficient times the product of x minus each old node.
+
+**Problem.** Let f have n continuous derivatives on an interval containing n distinct nodes and a further point x. The interpolation error f(x) − p(x) equals f⁽ⁿ⁾(ξ) ∕ n! times the product of x minus each node, for some interior ξ.
+
+**How the definition helps.** Adding x as a node makes the error at x equal the single term added in Newton form. In our own proof, interpolation at x identifies the new value with f(x). The mean value theorem for divided differences supplies the derivative at a point ξ between the outermost points.
+
+**Wikipedia:** [Divided differences](https://en.wikipedia.org/wiki/Divided_differences). It says: “f\[x₀, …, xₙ\] = f⁽ⁿ⁾(ξ) ∕ n!”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Counting derivative data as repeated zeros makes Hermite interpolation unique
+
+**Remember:** A zero of multiplicity m uses up m degrees.
+
+*Rules out counterexamples.* MSC 65D05 (Numerical interpolation). arXiv math.NA. Level 2: later undergraduate.
+
+**Definition.** In Hermite interpolation, a node with multiplicity m prescribes a value and the first m − 1 derivatives. With N conditions in total, the interpolating polynomial must have degree less than N.
+
+**Problem.** Any such derivative data at distinct real nodes determine exactly one Hermite interpolating polynomial.
+
+**How the definition helps.** A difference between two interpolants has a zero of multiplicity m at each node with m prescribed values and derivatives. In our own proof, these multiplicities total N, so the degree bound forces the difference to vanish. The linear map from polynomial coefficients to data is therefore injective. Both spaces have dimension N, so it also reaches every data vector.
+
+**Wikipedia:** [Hermite interpolation](https://en.wikipedia.org/wiki/Hermite_interpolation). It says: “A theorem, commonly known as the Hermite interpolation theorem, asserts the existence and uniqueness of the resulting polynomial.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Divided differences as leading coefficients are symmetric in the nodes
 
 **Remember:** Reordering the data cannot change the unique interpolating polynomial.
@@ -47,6 +161,40 @@
 **Wikipedia:** [Divided differences](https://en.wikipedia.org/wiki/Divided_differences). It says: “Divided differences are symmetric”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Falling factorials make Newton’s forward interpolation triangular
+
+**Remember:** One forward difference drops the basis index by one.
+
+*True by definition.* MSC 65D05 (Numerical interpolation), 39A70. arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** The normalized falling factorial Fₖ(x) is x(x−1)⋯(x−k+1)/k! for k ≥ 1, with F₀(x) = 1. The forward difference is Δf(x) = f(x+1)−f(x).
+
+**Problem.** For data f(0), …, f(m), the unique interpolating polynomial of degree at most m has coefficient Δᵏf(0) on Fₖ for each k ≤ m.
+
+**How the definition helps.** Unlike ordinary powers, normalized falling factorials shift down one place under a forward difference. In our own proof, applying k differences and evaluating at zero leaves exactly the coefficient of Fₖ. Only the first k+1 data values enter that difference. Polynomial interpolation at distinct points supplies existence and uniqueness.
+
+**nLab:** [falling factorial](https://ncatlab.org/nlab/show/falling+factorial). It says: “it is the falling factorial xᵏ̲ that plays a role analogous to the ordinary power xᵏ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Normalizing barycentric weights removes apparent poles from interpolation
+
+**Remember:** Multiplying both sums by the node polynomial removes their poles.
+
+*True by definition.* MSC 65D05 (Numerical interpolation). arXiv math.NA. Level 2: later undergraduate.
+
+**Definition.** For distinct sample points, called nodes, let ω(x) be the product of the factors x − t over all nodes t. Give each node weight w(t) = 1 ∕ ω′(t). The barycentric interpolant divides the sum of f(t)w(t) ∕ (x − t) by the sum of w(t) ∕ (x − t).
+
+**Problem.** Away from the nodes, the barycentric quotient equals the Lagrange interpolating polynomial. At a node its limit equals the prescribed value there.
+
+**How the definition helps.** Multiplication by ω turns each fraction w(t) ∕ (x − t) into a polynomial that equals one at t and zero at every other node. In our own argument, these polynomials sum to one by uniqueness of interpolation. Their data-weighted sum is the usual Lagrange polynomial, which gives the stated limits.
+
+**Wikipedia:** [Lagrange polynomial](https://en.wikipedia.org/wiki/Lagrange_polynomial). It says: “This is called the second form or true form of the barycentric interpolation formula.”
+
+**Sources:**
+
+- [Jean-Paul Berrut and Lloyd N. Trefethen, Barycentric Lagrange Interpolation (2004)](https://doi.org/10.1137/S0036144502417715)
 
 ### Writing interpolants in Newton’s basis keeps old coefficients when nodes are added
 
@@ -112,6 +260,38 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Symmetric sampling makes the centered derivative second order
+
+**Remember:** Subtract opposite samples and the quadratic terms cancel.
+
+*True by definition.* MSC 65D25 (Numerical differentiation). arXiv math.NA. Level 2: later undergraduate.
+
+**Definition.** The centered difference quotient at x is \[f(x + h) − f(x − h)\] ∕ (2h). It samples equally far on both sides instead of using a one-sided difference.
+
+**Problem.** If f has three continuous derivatives near x, the centered difference quotient differs from f′(x) by at most a constant times h² for small h.
+
+**How the definition helps.** Sampling at opposite displacements gives equal quadratic terms, which cancel on subtraction. In our own proof, Taylor’s theorem bounds each remaining error by a constant times \|h\|³. Dividing by 2h leaves an error bounded by a constant times h². The one-sided quotient generally retains an error proportional to h.
+
+**Wikipedia:** [Finite difference](https://en.wikipedia.org/wiki/Finite_difference). It says: “However, the central (also called centered) difference yields a more accurate approximation.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Matching endpoint derivatives cancels trapezoid corrections at every order
+
+**Remember:** Periodic endpoints cancel all the boundary corrections.
+
+*Rules out counterexamples.* MSC 65D32 (Numerical quadrature and cubature formulas), 65B15, 41A60. arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** A smooth period-one function has continuous derivatives of every order and satisfies f(x+1) = f(x) for every x. Differentiation gives the same periodicity for each derivative.
+
+**Problem.** On \[0,1\], the trapezoidal rule with N equal panels has error O(N⁻²ᵖ) for every positive integer p when f is smooth and period-one.
+
+**How the definition helps.** Matching endpoint derivatives cancel every boundary correction in the Euler–Maclaurin formula. In our own application, the remainder is bounded by a constant times N⁻²ᵖ because the derivative of order 2p is bounded. For comparison, f(x) = x² gives error 1/(6N²).
+
+**Wikipedia:** [Euler–Maclaurin formula](https://en.wikipedia.org/wiki/Euler%E2%80%93Maclaurin_formula). It says: “the superior performance of the trapezoidal rule on smooth periodic functions”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Orthogonal-polynomial nodes make Gaussian quadrature exact through degree 2n − 1
 
 **Remember:** The part divisible by the node polynomial vanishes both ways.
@@ -146,6 +326,88 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### The node polynomial forces Gaussian quadrature nodes to be unique
+
+**Remember:** Multiply by the node polynomial and the whole sample sum vanishes.
+
+*Makes the theorem clean to state or prove.* MSC 65D32 (Numerical quadrature and cubature formulas), 65D30. arXiv math.NA. Level 2: later undergraduate.
+
+**Definition.** The node polynomial of a rule with n distinct sample points, called nodes is the product of x − t over its nodes t. A polynomial is orthogonal to lower degrees on \[−1,1\] if its product with every lower-degree polynomial integrates to zero there.
+
+**Problem.** On \[−1,1\] with weight one, exactly one rule with n nodes integrates every polynomial through degree 2n − 1 exactly, up to node order.
+
+**How the definition helps.** Multiplying by the node polynomial makes all sampled values zero. In our own argument, exactness therefore makes the node polynomial orthogonal to all lower degrees. Two such polynomials with leading coefficient one have a lower-degree difference orthogonal to itself, so they coincide. The nodes then determine the weights by interpolation, and Gauss–Legendre quadrature supplies existence.
+
+**Wikipedia:** [Gauss–Legendre quadrature](https://en.wikipedia.org/wiki/Gauss%E2%80%93Legendre_quadrature). It says: “is the unique choice that allows the quadrature rule to integrate degree 2n − 1 polynomials exactly.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The squared node polynomial sets the Gaussian exactness limit
+
+**Remember:** A square can vanish at every node and still have positive area.
+
+*Rules out counterexamples.* MSC 65D32 (Numerical quadrature and cubature formulas), 65D30. arXiv math.NA. Level 2: later undergraduate.
+
+**Definition.** A quadrature rule with n nodes uses a weighted sum of n function values. Its node polynomial is the product of x minus each node.
+
+**Problem.** On a bounded interval of positive length, suppose the integration weight is integrable and positive throughout. Every rule using n distinct nodes misses some polynomial of degree 2n.
+
+**How the definition helps.** The squared node polynomial vanishes at every sample but has positive weighted integral. In our own argument, this gives a counterexample for every choice of nodes and weights. The Gaussian quadrature theorem separately shows that a rule can integrate every polynomial through degree 2n − 1 exactly.
+
+**Wikipedia:** [Gaussian quadrature](https://en.wikipedia.org/wiki/Gaussian_quadrature). It says: “constructed to yield an exact result for polynomials of degree 2n − 1 or less”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Leading corner determinants detect zero pivots before LU factorization
+
+**Remember:** Each pivot reveals the determinant of one larger leading corner.
+
+*Rules out counterexamples.* MSC 65F05 (Direct numerical methods for linear systems and matrix inversion). arXiv math.NA. Level 2: later undergraduate.
+
+**Definition.** A leading principal minor is the determinant of the top-left square block of a matrix. Test all sizes of this block, not just the determinant of the whole matrix.
+
+**Problem.** An invertible matrix admits triangular factorization A = LU without row exchanges exactly when every leading principal minor is nonzero.
+
+**How the definition helps.** Each leading determinant records the product of the elimination pivots used up to that row. In our own argument, a nonzero preceding determinant makes the next pivot the ratio of two successive determinants. Thus nonzero leading determinants allow elimination to finish, and an invertible triangular factorization forces every such determinant to be nonzero. Swapping the rows of the two-dimensional identity gives an invertible matrix with first pivot zero.
+
+**Wikipedia:** [LU decomposition](https://en.wikipedia.org/wiki/LU_decomposition). It says: “it admits an LU (or LDU) factorization if and only if all its leading principal minors are nonzero”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Measuring lengths with A gives the Cholesky factor by Gram–Schmidt
+
+**Remember:** Use the matrix to measure angles, then make the basis perpendicular.
+
+*True by definition. Confidence: medium.* MSC 65F05 (Direct numerical methods for linear systems and matrix inversion). arXiv math.NA. Level 2: later undergraduate.
+
+**Definition.** For a symmetric positive definite matrix A, use the inner product ⟨u,v⟩ = uᵀAv instead of the usual dot product. The inner product measures lengths and perpendicularity.
+
+**Problem.** Every real symmetric positive definite matrix A factors as RᵀR with upper triangular R and a positive diagonal.
+
+**How the definition helps.** With the chosen inner product, A already lists the inner products of the standard basis vectors. In our own proof, apply Gram–Schmidt to those vectors in order and collect their new coordinates as columns of R. Each column uses only basis vectors built so far, and its diagonal entry is the positive length of its remainder. Ordinary coordinate dot products now give RᵀR = A without solving the usual elimination equations.
+
+**Paper or page:** [Characterisation of Real Symmetric Positive Definite Matrix/Necessary Condition](https://proofwiki.org/wiki/Characterisation_of_Real_Symmetric_Positive_Definite_Matrix/Necessary_Condition). It says: “there exists a nonsingular matrix C such that A = CᵀC.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Positive Cholesky diagonals remove the square root sign ambiguity
+
+**Remember:** Choose the positive square root at every diagonal entry.
+
+*Rules out counterexamples.* MSC 65F05 (Direct numerical methods for linear systems and matrix inversion). arXiv math.NA. Level 2: later undergraduate.
+
+**Definition.** For a real symmetric positive definite matrix A, write A = LLᵀ with L lower triangular. In the Cholesky factorization, require strictly positive diagonal entries in L.
+
+**Problem.** Whenever a real symmetric positive definite matrix has a Cholesky factor with positive diagonal, that factor is unique.
+
+**How the definition helps.** Positive diagonals force the signs when two possible factors are compared. In our own proof, their quotient L₂⁻¹L₁ is lower triangular and orthogonal, hence diagonal with entries ±1. Positivity forces the quotient to equal the identity, while omitting positivity allows both L and −L. Existence follows separately from elimination for positive definite matrices.
+
+**Wikipedia:** [Cholesky decomposition](https://en.wikipedia.org/wiki/Cholesky_decomposition). It says: “the lower triangular matrix is unique if we impose the diagonal to be strictly positive.”
+
+**Sources:**
+
+- [André-Louis Cholesky, Sur la résolution numérique des systèmes d’équations linéaires (1910 manuscript, reproduced in La méthode de Cholesky)](https://numdam.org/articles/10.24033/rhm.30/)
+
 ### Schur complements split definiteness tests
 
 **Remember:** Eliminate the first block to see the remaining energy.
@@ -163,6 +425,104 @@
 **Sources:**
 
 - [Emilie V. Haynsworth, Determination of the inertia of a partitioned Hermitian matrix (1968)](https://doi.org/10.1016/0024-3795(68)90050-5)
+
+### Unit diagonals remove the freedom to rescale LU factors
+
+**Remember:** A diagonal of ones fixes the scale of each column.
+
+*Rules out counterexamples.* MSC 65F05 (Direct numerical methods for linear systems and matrix inversion). arXiv math.NA. Level 2: later undergraduate.
+
+**Definition.** Use A = LU with a lower triangular L whose diagonal entries all equal one, and an upper triangular U. In an unnormalized split, the lower diagonal can contain any nonzero values.
+
+**Problem.** If an invertible matrix has such an LU factorization, its factors are unique.
+
+**How the definition helps.** Two factorizations L₁U₁ = L₂U₂ give L₂⁻¹L₁ = U₂U₁⁻¹. In our own proof, the left side is lower triangular with diagonal ones, while the right side is upper triangular. Both must equal the identity. Dropping the diagonal requirement permits both I = I·I and I = (2I)(I ∕ 2).
+
+**Wikipedia:** [LU decomposition](https://en.wikipedia.org/wiki/LU_decomposition). It says: “the LU factorization is also unique”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Coordinate minima make Gauss–Seidel decrease the energy
+
+**Remember:** Each coordinate update takes the bottom of a parabola.
+
+*True by definition. Confidence: medium.* MSC 65F10 (Iterative numerical methods for linear systems). arXiv math.NA. Level 2: later undergraduate.
+
+**Definition.** For symmetric positive definite A, define the energy F(x) = ½xᵀAx − bᵀx. A coordinate form of Gauss–Seidel minimizes F over one coordinate at a time, using all the latest values.
+
+**Problem.** For Ax = b, a full Gauss–Seidel sweep strictly lowers F unless the current vector already solves the system.
+
+**How the definition helps.** Each changed coordinate strictly lowers the energy because its update minimizes an upward-opening quadratic. In our own derivation, setting its derivative to zero solves the corresponding row with the latest coordinate values. This gives the usual Gauss–Seidel update. If a whole sweep changes nothing, every row already holds.
+
+**Wikipedia:** [Gauss–Seidel method](https://en.wikipedia.org/wiki/Gauss%E2%80%93Seidel_method). It says: “the algorithm converges to the solution”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Defining stationary steps by a splitting isolates the error multiplier
+
+**Remember:** The constant term disappears when you subtract the true solution.
+
+*Makes the theorem clean to state or prove.* MSC 65F10 (Iterative numerical methods for linear systems). arXiv math.NA. Level 2: later undergraduate.
+
+**Definition.** A stationary matrix iteration uses the same splitting A = M − N at every step, with A and M invertible. From a guess x, compute the next guess y by solving My = Nx + b.
+
+**Problem.** This iteration for Ax = b converges from every starting vector exactly when every eigenvalue of M⁻¹N has magnitude less than one.
+
+**How the definition helps.** The fixed splitting makes M⁻¹N multiply the error at every step. In our own argument, subtract the equation for the exact solution from the update equation. Convergence for every starting error means the powers of M⁻¹N tend to zero. The matrix-power theorem says this happens exactly when every eigenvalue has magnitude below one.
+
+**Wikipedia:** [Iterative method](https://en.wikipedia.org/wiki/Iterative_method). It says: “Basic examples of stationary iterative methods use a splitting of the matrix A”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Energy minimization makes conjugate gradient residuals mutually perpendicular
+
+**Remember:** Each new residual is perpendicular to all earlier search spaces.
+
+*True by definition.* MSC 65F10 (Iterative numerical methods for linear systems). arXiv math.NA. Level 2: later undergraduate.
+
+**Definition.** For real symmetric positive definite A, define the energy as F(x) = ½xᵀAx − bᵀx and the starting residual as r₀ = b − Ax₀. At step k, minimize F over x₀ plus the span of the first k vectors in the list r₀, Ar₀, A²r₀, and so on.
+
+**Problem.** In exact arithmetic, the residuals b − Ax from distinct conjugate gradient steps are mutually perpendicular.
+
+**How the definition helps.** At a minimum, every allowed direction is perpendicular to the gradient Ax − b, the negative residual. In our own proof, each earlier correction is a combination of earlier powers of A applied to r₀. Its residual equals r₀ minus A times that correction, so it belongs to the current span. Identifying these minimizers with the usual conjugate gradient recurrence takes a separate proof.
+
+**Wikipedia:** [Conjugate gradient method](https://en.wikipedia.org/wiki/Conjugate_gradient_method). It says: “proving the orthogonality of the residuals and conjugacy of the search directions”
+
+**Sources:**
+
+- [Magnus R. Hestenes and Eduard Stiefel, Methods of Conjugate Gradients for Solving Linear Systems (1952)](https://nvlpubs.nist.gov/nistpubs/jres/049/6/v49.n06.a08.pdf)
+
+### Moving the diagonal to the left exposes Jacobi contraction
+
+**Remember:** After diagonal scaling, the absolute off-diagonal row sums are below one.
+
+*Rules out counterexamples.* MSC 65F10 (Iterative numerical methods for linear systems). arXiv math.NA. Level 2: later undergraduate.
+
+**Definition.** In Jacobi iteration, solve each equation for its diagonal variable using old values for all others. Call the matrix strictly row diagonally dominant when each diagonal magnitude exceeds the sum of the others in its row.
+
+**Problem.** For a strictly row diagonally dominant matrix, Jacobi iteration converges to the solution from every starting vector.
+
+**How the definition helps.** Strict dominance bounds each new error by a fixed fraction of the largest old absolute error. In our own proof, take the largest ratio of the absolute off-diagonal row sum to the diagonal magnitude. This ratio is below one, so repeated steps drive the errors to zero. With rows (1,1,0), (0,1,1), (1,0,1), strictness fails and an all-ones error changes sign each step.
+
+**Wikipedia:** [Jacobi method](https://en.wikipedia.org/wiki/Jacobi_method). It says: “A sufficient (but not necessary) condition for the method to converge is that the matrix A is strictly or irreducibly diagonally dominant.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Relaxing toward coordinate minima explains the safe interval for SOR
+
+**Remember:** Go past the minimum, but not as far as its mirror point.
+
+*Rules out counterexamples.* MSC 65F10 (Iterative numerical methods for linear systems). arXiv math.NA. Level 2: later undergraduate.
+
+**Definition.** Let A be symmetric positive definite and set F(x) = ½xᵀAx − bᵀx. In successive over-relaxation, move each coordinate by ω times its displacement to the minimum of F along that coordinate.
+
+**Problem.** For every symmetric positive definite A, successive over-relaxation converges from all starting vectors if 0 &lt; ω &lt; 2.
+
+**How the definition helps.** A relaxed update multiplies the distance from the coordinate minimum by \|1 − ω\|, which is below one. In our own proof, every sweep away from the solution changes some coordinate and strictly lowers the quadratic energy. The linear sweep therefore contracts errors uniformly, since the error sphere eᵀAe = 1 is compact. At ω = 2, the scalar equation x = 0 gives iterates that alternate in sign.
+
+**Wikipedia:** [Successive over-relaxation](https://en.wikipedia.org/wiki/Successive_over-relaxation). It says: “proved that if A is symmetric and positive-definite then ρ(Lω) &lt; 1 for 0 &lt; ω &lt; 2.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Power iteration converges in direction
 
@@ -196,6 +556,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### QR separates the fitted part from the least squares residual
+
+**Remember:** Only the part of b along Q’s columns can be fitted.
+
+*True by definition.* MSC 65F20 (Numerical solutions to overdetermined systems, pseudoinverses). arXiv math.NA. Level 2: later undergraduate.
+
+**Definition.** For a real matrix A with independent columns, its reduced QR factorization writes A = QR. The columns of Q are perpendicular unit vectors spanning the column space of A, and R is square and upper triangular.
+
+**Problem.** The unique least squares solution minimizing ‖Ax − b‖₂ satisfies the triangular system Rx = Qᵀb.
+
+**How the definition helps.** The fitted part of b has coordinates Qᵀb in the basis given by Q. In our own proof, the Pythagorean theorem splits the squared error into ‖Rx − Qᵀb‖₂² and a fixed perpendicular contribution. Independent columns make R invertible, so the first term can reach zero. This gives a triangular system in place of the usual normal equations.
+
+**Wikipedia:** [Numerical linear algebra](https://en.wikipedia.org/wiki/Numerical_linear_algebra). It says: “This upper triangular system can then be solved for x.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Scaled adjoints solve least squares
 
 **Remember:** Reverse the length-preserving part and undo the scale.
@@ -209,6 +585,22 @@
 **How the definition helps.** In our own proof, writing A = σU replaces the usual least-squares equations with one orthogonal projection. The matrix UU\* projects onto the range of A, so the closest attainable value to b is UU\*b. Applying U\* and dividing by σ gives the unique least-squares solution perpendicular to the kernel. This is A\*b divided by σ². The singular value decomposition justifies the representation A = σU.
 
 **Paper or page:** [An Optimal Least-Square Solver For Scaled Partial-Isometric Linear Systems](https://arxiv.org/abs/2507.01434v1). It says: “A matrix A ∈ ℂᵐˣⁿ is a partial isometry iff all its non-zero singular values (if any) are 1.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Keeping each column span gives an upper triangular QR factor
+
+**Remember:** Each input column uses only the new columns built so far.
+
+*Makes the theorem clean to state or prove.* MSC 65F25 (Orthogonalization in numerical linear algebra), 65F05. arXiv math.NA. Level 2: later undergraduate.
+
+**Definition.** In Gram–Schmidt, subtract from each column its perpendicular projection onto the span of the preceding columns. The remainder is perpendicular to those columns, and dividing it by its length gives the next column of Q.
+
+**Problem.** Every real matrix A with independent columns has a reduced factorization A = QR. The columns of Q are mutually perpendicular unit vectors, and R is upper triangular.
+
+**How the definition helps.** Gram–Schmidt expresses each original column using only the perpendicular unit vectors built so far. In our own argument, their coefficients form a matrix R with zeros below its diagonal. Independence ensures every remainder has positive length.
+
+**nLab:** [Gram-Schmidt process](https://ncatlab.org/nlab/show/Gram-Schmidt+process). It says: “The orthonormal basis u₀, u₁, … produced as output is defined recursively by a) subtracting the orthogonal projection to the closed subspace generated by all previous vectors and b) normalizing.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -241,6 +633,22 @@
 **How the definition helps.** With the derivative formula, the result is the chain rule plus one norm bound. The derivative of g ∘ f at x is the product of the two derivatives, and the norm of the product is at most the product of the norms. Multiplying and dividing by ‖f(x)‖ makes the two factors appear. The work goes into the proof that the derivative formula equals the limit of worst ratios; the argument is our own.
 
 **Wikipedia:** [Condition number](https://en.wikipedia.org/wiki/Condition_number). It says: “the maximum ratio of the fractional change in f(x) to any fractional change in x”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The singular-value ratio shows that normal equations square conditioning
+
+**Remember:** Square both extreme stretches and the condition number squares too.
+
+*True by definition.* MSC 65F35 (Numerical computation of matrix norms, conditioning, scaling), 65F20. arXiv math.NA. Level 2: later undergraduate.
+
+**Definition.** For a matrix with independent columns, define its Euclidean condition number as its largest singular value divided by its smallest. Singular values measure how much the matrix stretches along its perpendicular principal directions.
+
+**Problem.** For a real matrix A with independent columns, the normal-equation matrix AᵀA has condition number κ(A)².
+
+**How the definition helps.** The singular-value definition reduces the calculation to the largest and smallest stretches. In our own proof, the singular value decomposition shows that the singular values of AᵀA are the squared singular values of A. Taking their ratio gives κ(A)². For invertible square matrices, the decomposition also proves agreement with the usual product of matrix and inverse norms.
+
+**Wikipedia:** [Condition number](https://en.wikipedia.org/wiki/Condition_number). It says: “κ(A) = σₘₐₓ(A) ∕ σₘᵢₙ(A),”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -297,6 +705,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Rounding to nearest halves the spacing bound
+
+**Remember:** The nearest endpoint is at most half a gap away.
+
+*Makes the theorem clean to state or prove.* MSC 65G50 (Roundoff error). arXiv math.NA. Level 2: later undergraduate.
+
+**Definition.** Round to a nearest representable number rather than always rounding down. Unit roundoff u is half the gap between 1 and the next larger representable number.
+
+**Problem.** Take a fixed-precision floating-point system of any base. Rounding a nonzero x in its normal finite range gives x(1 + δ) with \|δ\| ≤ u.
+
+**How the definition helps.** Rounding to nearest bounds the absolute error by half the local spacing. In our own proof, let B be the largest power of the base no greater than \|x\|. The spacing between adjacent numbers in that range is 2uB, so the absolute error is at most uB ≤ u\|x\|.
+
+**Paper or page:** [Mechanizing Olver's Error Arithmetic](https://arxiv.org/abs/2510.13414v1). It says: “ρ(x) = x(1 + δ)    \|δ\| ≤ u,”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Negative remainders make Sturm counts work
 
 **Remember:** Negate the remainder so interior zeros cannot change the count.
@@ -326,6 +750,106 @@
 **How the definition helps.** The quotient has a simple zero because differentiation lowers the multiplicity by one. In our own argument, the extended quotient is twice continuously differentiable and has derivative 1/m at the root. The local Newton convergence theorem for smooth simple roots then applies. For f(x) = x², the unmodified Newton step only halves the error.
 
 **Wikipedia:** [Newton's method](https://en.wikipedia.org/wiki/Newton%27s_method). It says: “Applying Newton's method to find the root of g(x) recovers quadratic convergence in many cases”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Measuring root conditioning against vertical shifts exposes the inverse slope
+
+**Remember:** A small slope makes a small vertical shift move the root far.
+
+*True by definition. Confidence: medium.* MSC 65H05 (Numerical computation of solutions to single equations). arXiv math.NA. Level 2: later undergraduate.
+
+**Definition.** Let r(t) be the nearby root of f(x) = t, so r(0) is the original root. Define the absolute condition number for vertical shifts as the limiting ratio \|r(t) − r(0)\| ∕ \|t\| as t tends to zero.
+
+**Problem.** If f is continuously differentiable near a real root r with f′(r) ≠ 0, the absolute condition number for vertical shifts is 1 ∕ \|f′(r)\|.
+
+**How the definition helps.** A vertical shift makes the displaced root a value of the local inverse of f. In our own argument, the limiting ratio is therefore the magnitude of the inverse derivative. The inverse function theorem gives that derivative because f′(r) ≠ 0. A double root behaves differently since the roots of x² = t move by √t for t &gt; 0.
+
+**Wikipedia:** [Wilkinson's polynomial](https://en.wikipedia.org/wiki/Wilkinson%27s_polynomial). It says: “The problem is ill-conditioned when the polynomial has a multiple root.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Successive differences bound the remaining fixed point error
+
+**Remember:** Each future step shrinks, so the last step bounds the distance left.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 65H05 (Numerical computation of solutions to single equations). arXiv math.NA. Level 2: later undergraduate.
+
+**Definition.** Call g a contraction if one factor q bounds all its distance ratios. In symbols, \|g(x) − g(y)\| ≤ q\|x − y\| for every pair and some 0 ≤ q &lt; 1.
+
+**Problem.** Start anywhere in a closed interval that g maps into itself, and set xₙ₊₁ = g(xₙ). For n ≥ 1, the distance to the unique fixed point from xₙ is at most q\|xₙ − xₙ₋₁\| ∕ (1 − q).
+
+**How the definition helps.** The contraction factor bounds each new step by q times the preceding step. In our own argument, the sum of those bounds is a geometric series starting with q\|xₙ − xₙ₋₁\|. The contraction theorem identifies the limit as the unique fixed point.
+
+**Paper or page:** [Banach Fixed-Point Theorem](https://proofwiki.org/wiki/Banach_Fixed-Point_Theorem). It says: “Then there exists a unique fixed point of f.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Taking the implicit midpoint preserves quadratic invariants exactly
+
+**Remember:** A quadratic changes by its midpoint derivative times the displacement.
+
+*True by definition.* MSC 65L06 (Multistep, Runge-Kutta and extrapolation methods for ordinary differential equations). arXiv math.NA. Level 2: later undergraduate.
+
+**Definition.** For y′ = f(t,y), define the discrete step using the slope at the average of the old and new times and states. In forward Euler the slope instead uses the old time and state.
+
+**Problem.** Suppose a quadratic function of the state is constant along all solutions of a smooth differential equation. Every well-defined implicit midpoint step preserves that function exactly.
+
+**How the definition helps.** A quadratic function changes by its gradient at the midpoint dotted with the displacement. In our own proof, the midpoint rule makes that displacement the step size times the vector field at the same point. Invariance makes the gradient perpendicular to that field, so the change vanishes. Forward Euler evaluates the field at the old point, where this argument does not apply.
+
+**Wikipedia:** [Midpoint method](https://en.wikipedia.org/wiki/Midpoint_method). It says: “the implicit method is the most simple collocation method, and, applied to Hamiltonian dynamics, a symplectic integrator.”
+
+**Sources:**
+
+- [G. J. Cooper, Stability of Runge-Kutta Methods for Trajectory Problems (1987)](https://doi.org/10.1093/imanum/7.1.1)
+
+### A reciprocal multiplier makes backward Euler damp every decaying mode
+
+**Remember:** With a decaying mode, the denominator has magnitude greater than one.
+
+*True by definition.* MSC 65L20 (Stability and convergence of numerical methods for ordinary differential equations). arXiv math.NA. Level 2: later undergraduate.
+
+**Definition.** Backward Euler takes its slope at the new endpoint of a step. For y′ = λy and step size h, the old value u and new value v satisfy v = u + hλv.
+
+**Problem.** Backward Euler is A-stable. For every complex λ with negative real part and every fixed step size h &gt; 0, its iterates tend to zero.
+
+**How the definition helps.** Using the new endpoint puts 1 − hλ in the denominator of the multiplier. In our own proof, its real part exceeds one, so the reciprocal has magnitude below one. Repeated steps give a geometric sequence tending to zero. Forward Euler instead multiplies by 1 + hλ, whose magnitude can exceed one.
+
+**Wikipedia:** [Backward Euler method](https://en.wikipedia.org/wiki/Backward_Euler_method). It says: “This includes the whole left half of the complex plane”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A scalar stability function advances each eigenmode independently
+
+**Remember:** One scalar multiplier is enough for each eigenvector.
+
+*Makes the theorem clean to state or prove.* MSC 65L20 (Stability and convergence of numerical methods for ordinary differential equations). arXiv math.NA. Level 2: later undergraduate.
+
+**Definition.** The stability function R of a Runge–Kutta method is the multiplier from one step on y′ = λy. Its argument is z = hλ, where h is the step size.
+
+**Problem.** Suppose A has a basis of eigenvectors and the intermediate equations have a unique solution. One step on y′ = Ay multiplies each eigenvector component by R(hλ), where λ is its eigenvalue.
+
+**How the definition helps.** In an eigenvector direction, A acts by multiplication by one number, λ. In our own argument, writing the intermediate equations in an eigenvector basis gives one scalar step for each component.
+
+**Paper or page:** [Optimizing multigrid reduction-in-time (MGRIT) and Parareal coarse-grid operators for linear advection](https://arxiv.org/abs/1910.03726v3). It says: “Let R(z) = P(z)/Q(z) denote the stability function”
+
+**Sources:**
+
+- [Optimizing multigrid reduction-in-time (MGRIT) and Parareal coarse-grid operators for linear advection, Lemma 1](https://arxiv.org/abs/1910.03726v3)
+
+### Defining stability by scalar decay rules out explicit Runge–Kutta methods
+
+**Remember:** A nonconstant polynomial cannot stay small along the whole negative axis.
+
+*Makes the theorem clean to state or prove.* MSC 65L20 (Stability and convergence of numerical methods for ordinary differential equations). arXiv math.NA. Level 2: later undergraduate.
+
+**Definition.** For y′ = λy, let R(z) multiply the current value after one step, with z = hλ. Call the method A-stable if \|R(z)\| &lt; 1 for every z with negative real part.
+
+**Problem.** No consistent explicit Runge–Kutta method is A-stable.
+
+**How the definition helps.** A-stability tests the entire negative real axis, where every nonconstant polynomial is unbounded. In our own proof, an explicit method uses only earlier stages, so its multiplier is a polynomial. Consistency means the multiplier agrees with the exact solution through its linear term, giving R′(0) = 1. The multiplier is therefore nonconstant.
+
+**Wikipedia:** [Runge–Kutta methods](https://en.wikipedia.org/wiki/Runge%E2%80%93Kutta_methods). It says: “The stability function of an explicit Runge–Kutta method is a polynomial, so explicit Runge–Kutta methods can never be A-stable.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -382,6 +906,22 @@
 **Sources:**
 
 - [Ami Harten, High resolution schemes for hyperbolic conservation laws (1983)](https://doi.org/10.1016/0021-9991(83)90136-5)
+
+### Equal square-root factors make discrete Fourier inversion an adjoint
+
+**Remember:** Put the same square-root factor on the way in and out.
+
+*True by definition.* MSC 65T50 (Numerical methods for discrete and fast Fourier transforms). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** Define the N-point discrete Fourier transform using matrix entries exp(−2πijk/N)/√N for indices j and k from 0 to N−1. This splits the usual factor of 1/N evenly between the forward and inverse transforms.
+
+**Problem.** The adjoint, the matrix formed by transposing and conjugating, inverts this discrete Fourier transform. The transform preserves the sum of squared magnitudes.
+
+**How the definition helps.** The scale gives every column length one, so orthogonality makes the adjoint the inverse (our own). The work moves to summing a geometric series to check that distinct columns are perpendicular (our own).
+
+**Wikipedia:** [DFT matrix](https://en.wikipedia.org/wiki/DFT_matrix). It says: “choice here makes the resulting DFT matrix unitary”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Lebesgue constants as operator norms bound interpolation error by best approximation
 

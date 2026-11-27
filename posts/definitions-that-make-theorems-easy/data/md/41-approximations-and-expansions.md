@@ -14,6 +14,86 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Rational polynomials give a countable dense set of approximants
+
+**Remember:** First approximate by a polynomial, then round its finitely many coefficients.
+
+*Makes the theorem clean to state or prove.* MSC 41A10 (Approximation by polynomials), 54C35. arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** A space is separable if it has a countable dense subset. In the uniform norm, dense means every function can be approximated to any error measured over the whole interval.
+
+**Problem.** The space of continuous real functions on a closed bounded interval is separable in the uniform norm. Polynomials with rational coefficients form a countable dense subset.
+
+**How the definition helps.** Rational coefficients give a countable collection that can approximate every real polynomial on the interval. Each power of x in a fixed polynomial is bounded there, so small coefficient changes give small uniform errors. The Weierstrass approximation theorem supplies the polynomial for each continuous function.
+
+**Wikipedia:** [Stone–Weierstrass theorem](https://en.wikipedia.org/wiki/Stone%E2%80%93Weierstrass_theorem). It says: “each polynomial function can be uniformly approximated by one with rational coefficients”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Bernstein averages do not amplify uniform error
+
+**Remember:** A weighted average cannot amplify the largest sample error.
+
+*True by definition.* MSC 41A36 (Approximation by positive operators), 41A10. arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** For x in \[0, 1\] and a positive integer n, the nth Bernstein polynomial averages the samples f(k/n) for 0 ≤ k ≤ n. Each weight is the probability of exactly k successes in n independent trials with success probability x.
+
+**Problem.** Applying Bernstein approximation of the same degree to two continuous functions on \[0, 1\] cannot increase their uniform distance.
+
+**How the definition helps.** The probability definition expresses the difference of the two polynomials as a weighted average of sample differences, with nonnegative weights totaling one. Its absolute value is at most the largest absolute sample difference. Our own proof uses the binomial theorem to verify that the weights in the usual polynomial formula sum to one.
+
+**Wikipedia:** [Bernstein polynomial](https://en.wikipedia.org/wiki/Bernstein_polynomial). It says: “The Bernstein basis polynomials of degree n form a partition of unity”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Relative error lets asymptotic equivalents multiply and divide
+
+**Remember:** Ratios near one are safe to multiply and divide.
+
+*True by definition.* MSC 41A60 (Asymptotic approximations, asymptotic expansions (steepest descent, etc.)). arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** Two functions f and g are asymptotically equivalent, written f ∼ g, if g is eventually nonzero and f/g tends to 1. Take all limits at the same point or at infinity.
+
+**Problem.** If f ∼ g and u ∼ v, then fu ∼ gv and f/u ∼ g/v.
+
+**How the definition helps.** The relative definition turns multiplication and division into the familiar limit laws for ratios. In our own calculation, f/g and u/v both approach 1, so their product and quotient do too. Both u and v are eventually nonzero. Measuring absolute differences would identify 2/x with 1/x at infinity, although their ratio stays at 2.
+
+**Wikipedia:** [Asymptotic analysis](https://en.wikipedia.org/wiki/Asymptotic_analysis). It says: “asymptotically equivalent functions to be freely exchanged in many algebraic expressions”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Uniform little o lets a growing sum preserve a small error
+
+**Remember:** One bound for a whole row also bounds its average.
+
+*Rules out counterexamples.* MSC 41A60 (Asymptotic approximations, asymptotic expansions (steepest descent, etc.)). arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** In row n of a triangular array, the entries are r(n,k) for k from 1 through n. They are uniformly o(1) if their largest absolute value tends to zero as n grows.
+
+**Problem.** If r(n,k) is uniformly o(1) for 1 ≤ k ≤ n, the row sum divided by n tends to zero.
+
+**How the definition helps.** One bound on the row controls its average because the absolute value of the average cannot exceed the largest absolute entry. In our own example, put 1 wherever k &gt; n/2 and 0 elsewhere. Each fixed column eventually contains only zeros, but the row averages approach ½.
+
+**nLab:** [uniform convergence](https://ncatlab.org/nlab/show/uniform+convergence). It says: “the bound N(ε) is required to work for all x ∈ X”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Unit-interval errors give a bound for the harmonic remainder
+
+**Remember:** Subtract one logarithm per term and bound the tail.
+
+*True by definition.* MSC 41A60 (Asymptotic approximations, asymptotic expansions (steepest descent, etc.)), 40A25. arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** For each positive integer k, let e(k) equal 1/k minus the integral of 1/x from k to k+1. Define the Euler–Mascheroni constant γ as the sum of all e(k).
+
+**Problem.** For the nth harmonic number Hₙ = 1 + ½ + ⋯ + 1/n, the difference Hₙ−log n−γ lies strictly between 0 and 1/n.
+
+**How the definition helps.** In our own proof, the sum from k = n onward equals γ−Hₙ+log n+1/n. Since 1/x decreases, each e(k) lies strictly between zero and 1/k−1/(k+1). Adding the upper bounds cancels consecutive fractions and gives 1/n. The resulting bound also identifies γ with the usual limit of Hₙ−log n.
+
+**Paper or page:** [Harmonic Number is Greater than Logarithm plus Gamma](https://proofwiki.org/wiki/Harmonic_Number_is_Greater_than_Logarithm_plus_Gamma). It says: “Hₙ &gt; ln n + γ”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Chebyshev grids nest under refinement
 
 **Remember:** The old angles become the even indices.
@@ -45,6 +125,26 @@
 **Wikipedia:** [Divided differences](https://en.wikipedia.org/wiki/Divided_differences). It says: “the divided difference can be expressed as an integral over a n-simplex Δₙ:”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Binomial averages give uniform polynomial approximation
+
+**Remember:** Sample near x, then average the function values.
+
+*Makes the theorem clean to state or prove.* MSC 41A10 (Approximation by polynomials), 41A36. arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** The Bernstein polynomial of a function f at x in \[0, 1\] is the expected value of f(K/n). Here K counts successes in n independent trials, each with success probability x. Expanding the average with the binomial probabilities gives a polynomial in x.
+
+**Problem.** The Bernstein polynomials of every continuous real function on \[0, 1\] converge uniformly to that function. By rescaling the interval, this gives the Weierstrass approximation theorem on any closed bounded interval.
+
+**How the definition helps.** The binomial average bounds the total weight of distant sample points by their probability. The variance of K/n is x(1 − x)/n ≤ 1/(4n), so Chebyshev’s inequality makes that probability uniformly small. In our own summary, boundedness controls the error at distant samples and uniform continuity controls it at nearby samples.
+
+**Wikipedia:** [Bernstein polynomial](https://en.wikipedia.org/wiki/Bernstein_polynomial). It says: “Bernstein polynomials look like Binomial expectations.”
+
+**Paper or page:** [Weierstrass Approximation Theorem](https://proofwiki.org/wiki/Weierstrass_Approximation_Theorem). It says: “Then f can be uniformly approximated on 𝕀 by a polynomial function to any given degree of accuracy.”
+
+**Sources:**
+
+- [S. Bernstein, Démonstration du théorème de Weierstrass fondée sur le calcul des probabilités (1912)](https://www.mn.uio.no/math/english/people/aca/michaelf/translations/bernstein_english.pdf)
 
 ### Positive Chebyshev tails peak together
 
@@ -230,6 +330,54 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### A Laplace kernel gives Stirling’s first correction
+
+**Remember:** Take the logarithm and read the first correction from its kernel.
+
+*True by definition.* MSC 41A60 (Asymptotic approximations, asymptotic expansions (steepest descent, etc.)), 33B15. arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** For n ≥ 1, Stirling’s logarithmic remainder is log(n!/Aₙ), where Aₙ = √(2πn)(n/e)ⁿ. Binet’s formula also gives it as ∫₀∞ exp(−nt)K(t) dt, with K(t) = (½−1/t+1/(exp(t)−1))/t.
+
+**Problem.** The logarithmic remainder is 1/(12n)+O(1/n³). The ratio of the factorial to its leading Stirling approximation is 1+1/(12n)+O(1/n²).
+
+**How the definition helps.** Binet’s integral makes the first correction the constant term of K at zero. In our own calculation, expanding exp(t) gives K(t) = 1/12+O(t²). Integrating these terms against exp(−nt) gives 1/(12n)+O(1/n³), since the tail away from zero decays exponentially. Exponentiating gives the factorial ratio.
+
+**Paper or page:** [Binet's Formula for Logarithm of Gamma Function/Formulation 1](https://proofwiki.org/wiki/Binet's_Formula_for_Logarithm_of_Gamma_Function/Formulation_1), [Stirling's Formula/Refinement](https://proofwiki.org/wiki/Stirling's_Formula/Refinement). It says: “A refinement of Stirling's Formula is:”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A phase-gap coordinate gives Laplace’s endpoint term
+
+**Remember:** Use the increase in the exponent as the distance from the endpoint.
+
+*Makes the theorem clean to state or prove.* MSC 41A60 (Asymptotic approximations, asymptotic expansions (steepest descent, etc.)). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** If h has its minimum at the left endpoint a, use s = h(x)−h(a) as the local coordinate. This measures the excess in the exponent rather than the distance x−a.
+
+**Problem.** Let h be continuously differentiable on \[a,b\], with its unique minimum at a and h′(a)&gt;0. For continuous g with g(a)≠0, ∫ₐᵇ exp(−λh(x))g(x) dx is asymptotic to exp(−λh(a))g(a)/(λh′(a)) as λ→∞.
+
+**How the definition helps.** The new coordinate makes the local exponential exactly exp(−λs) after removing exp(−λh(a)). In our own proof, h′(a)&gt;0 gives a local inverse and the transformed weight tends to g(a)/h′(a). Substituting u = λs and applying dominated convergence gives the leading term. Away from a, the gap above the minimum gives exponential decay.
+
+**Wikipedia:** [Watson's lemma](https://en.wikipedia.org/wiki/Watson%27s_lemma). It says: “Γ(a+1)/xᵃ⁺¹”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A square-root coordinate gives the Gaussian factor in Laplace’s method
+
+**Remember:** Measure the height above the minimum in square roots.
+
+*Makes the theorem clean to state or prove.* MSC 41A60 (Asymptotic approximations, asymptotic expansions (steepest descent, etc.)). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** Near a strict minimum x₀ of h with h″(x₀) &gt; 0, set u to the signed square root of 2(h(x)−h(x₀)). Take u negative to the left of x₀ and positive to its right.
+
+**Problem.** Suppose h has two continuous derivatives on \[a,b\] and its unique minimum is at x₀ inside this interval, with h″(x₀)&gt;0. For continuous g with g(x₀)≠0, ∫ₐᵇ exp(−λh(x))g(x) dx is asymptotic to exp(−λh(x₀))g(x₀)√(2π/(λh″(x₀))) as λ→∞.
+
+**How the definition helps.** The signed square root makes the exponent exactly quadratic near the minimum. In our own proof, Taylor’s theorem gives dx/du = 1/√h″(x₀) at zero. Rescaling u by √λ and integrating the Gaussian gives the stated factor. Outside this neighborhood, h exceeds its minimum by a fixed positive amount.
+
+**Paper or page:** [Cyclicity in Poletsky-Stessin Weighted Bergman Spaces](https://arxiv.org/abs/2507.03767v1). It says: “Assume that h ∈ C²\[a,b\] and h ≥ 0 has a unique global minimum at x₀ ∈ (a,b)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Ordered scales make asymptotic coefficients unique
 
 **Remember:** Divide by the first scale term where two expansions differ.
@@ -245,6 +393,72 @@
 **nLab:** [asymptotic expansion](https://ncatlab.org/nlab/show/asymptotic+expansion). It says: “This definition makes no statement about the behaviour as n → ∞.”
 
 **Wikipedia:** [Asymptotic expansion](https://en.wikipedia.org/wiki/Asymptotic_expansion). It says: “The asymptotic expansion of a function f(x) is unique for a specific region, scale and limit.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Shifting the exponential integral gives factorial terms and a remainder bound
+
+**Remember:** Move the endpoint to zero and expand the reciprocal.
+
+*True by definition.* MSC 41A60 (Asymptotic approximations, asymptotic expansions (steepest descent, etc.)), 33B15. arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** For x &gt; 0, the exponential integral E₁(x) integrates exp(−t)/t from x to infinity. Its normalized form F(x) = exp(x)E₁(x) integrates exp(−u)/(x+u) from zero to infinity after substituting u = t−x.
+
+**Problem.** The normalized integral has asymptotic terms (−1)ᵏ times k factorial divided by xᵏ⁺¹, for every k ≥ 0. The error after each truncation has the sign of the first omitted term and is smaller in absolute value.
+
+**How the definition helps.** The fixed lower endpoint puts all dependence on x in one reciprocal with an exact finite geometric expansion. In our own proof, integrating its powers of u against exp(−u) gives factorials. The remainder equals the first omitted integral with an extra factor 1/(1+u/x), strictly between zero and one for u &gt; 0.
+
+**Paper or page:** [Asymptotic Expansion for Exponential Integral Function/Formulation 1](https://proofwiki.org/wiki/Asymptotic_Expansion_for_Exponential_Integral_Function/Formulation_1). It says: “1 − 1!/x + 2!/x² − 3!/x³ + ⋯”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The gamma integral turns Stirling’s formula into Laplace’s method
+
+**Remember:** Write the factorial as an integral and find its peak.
+
+*Makes the theorem clean to state or prove.* MSC 41A60 (Asymptotic approximations, asymptotic expansions (steepest descent, etc.)), 33B15. arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** For s &gt; 0, define Γ(s) as the integral from 0 to ∞ of t raised to s−1 times e⁻ᵗ. When s = n+1, use this integral instead of the product for n!.
+
+**Problem.** As n tends to infinity, n! is asymptotic to √(2πn) times (n/e) raised to n.
+
+**How the definition helps.** The gamma integral gives the factorial a single peak where Laplace’s method applies. In our own proof, integration by parts gives Γ(n+1) = n!, and substituting t = nx gives the exponent −n(x−log x). The function x−log x has its unique minimum at 1 and second derivative 1 there. Outside a fixed neighborhood, its positive gap above 1 and the integrability of x exp(−x) bound the tails.
+
+**nLab:** [Gamma function](https://ncatlab.org/nlab/show/Gamma+function). It says: “Γ(x) = ∫₀∞ tˣ e⁻ᵗ dt/t”
+
+**Paper or page:** [Stirling's Formula](https://proofwiki.org/wiki/Stirling's_Formula). It says: “The factorial function can be approximated by the formula:”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Truncated asymptotic expansions multiply like formal power series
+
+**Remember:** Multiply finite truncations and discard powers above the requested degree.
+
+*True by definition.* MSC 41A60 (Asymptotic approximations, asymptotic expansions (steepest descent, etc.)). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** A power asymptotic expansion at zero controls each finite truncation. After degree N, the error divided by x raised to N must tend to zero. The infinite formal series itself need not converge.
+
+**Problem.** If f and g have power asymptotic expansions at zero, then fg has the expansion obtained by multiplying their formal series. This holds even if the series do not converge.
+
+**How the definition helps.** Finite truncations turn multiplication into polynomial arithmetic even when the corresponding infinite series diverge. In our own proof, both functions and their truncations stay bounded near zero. Each product involving a truncation error therefore remains negligible compared with x raised to N. Terms of degree above N in the polynomial product are negligible on the same scale.
+
+**nLab:** [asymptotic expansion](https://ncatlab.org/nlab/show/asymptotic+expansion). It says: “the truncation of the series at any finite order still provides a controlled approximation”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Writing the endpoint weight as a power gives Watson’s expansion
+
+**Remember:** Peel off the endpoint power before expanding the smooth factor.
+
+*Makes the theorem clean to state or prove.* MSC 41A60 (Asymptotic approximations, asymptotic expansions (steepest descent, etc.)), 33B15. arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** A Laplace integral weights a function by exp(−xt). Write that function near zero as tᵅg(t), where α &gt; −1 and g has continuous derivatives there.
+
+**Problem.** Fix T &gt; 0 and let g be continuous on \[0,T\], with N+1 continuous derivatives near zero and Taylor coefficients cₖ there. As x→∞, ∫₀ᵀ exp(−xt)tᵅg(t) dt equals ∑ₖ₌₀ᴺ cₖΓ(α+k+1)/xᵅ⁺ᵏ⁺¹ plus O(x⁻ᵅ⁻ᴺ⁻²).
+
+**How the definition helps.** Separating the endpoint power lets each Taylor term contribute a gamma integral. In our own derivation, substituting u = xt gives its coefficient. The Taylor error near zero is bounded by a constant times tᵅ⁺ᴺ⁺¹ after multiplication by tᵅ. Away from zero the exponential makes the remaining contribution exponentially small.
+
+**Wikipedia:** [Watson's lemma](https://en.wikipedia.org/wiki/Watson%27s_lemma). It says: “Γ(a+1)/xᵃ⁺¹”
 
 **Sources:** none listed. No primary source with a working link was found.
 

@@ -14,6 +14,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### A Bézout equation makes coprime factors cancel
+
+**Remember:** Multiply the equation for one by the factor you want to keep.
+
+*True by definition.* MSC 11A05 (Multiplicative structure; Euclidean algorithm; greatest common divisors). arXiv math.NT. Level 1: early undergraduate.
+
+**Definition.** Call integers a and b coprime when some integers x and y satisfy ax + by = 1. The usual definition asks that their greatest common divisor be 1.
+
+**Problem.** If a divides bc and a is coprime to b, then a divides c.
+
+**How the definition helps.** Both terms in c = acx + bcy are multiples of a, by our own use of the defining equation. Bézout’s identity does the work of showing that the equation for 1 exists whenever the greatest common divisor is 1.
+
+**Paper or page:** [Euclid's Lemma](https://proofwiki.org/wiki/Euclid's_Lemma). It says: “Then a ∣ c.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Common divisors explain Euclid’s algorithm
 
 **Remember:** Taking the remainder preserves all common divisors.
@@ -31,6 +47,22 @@
 **Sources:**
 
 - [Euclid, Elements, Book VII, Proposition 2, translated by Thomas L. Heath.](https://mathcs.clarku.edu/~djoyce/java/elements/bookVII/propVII2.html)
+
+### Defining the least common multiple by divisibility includes zero
+
+**Remember:** Least by divisibility still works when the only multiple is zero.
+
+*Makes the theorem clean to state or prove.* MSC 11A05 (Multiplicative structure; Euclidean algorithm; greatest common divisors). arXiv math.NT. Level 1: early undergraduate.
+
+**Definition.** Define the least common multiple as the nonnegative common multiple that divides every common multiple. Do not require it to be the smallest positive common multiple.
+
+**Problem.** For all nonnegative a and b, the common multiples are exactly the multiples of their least common multiple. If either input is zero, this least common multiple is zero.
+
+**How the definition helps.** The divisibility definition says at once that every common multiple is a multiple of the chosen number. In our own example, 0 and 6 have no positive common multiple, but 0 works under this definition. For positive inputs, the division algorithm shows that the smallest positive common multiple divides every common multiple.
+
+**nLab:** [least common multiple](https://ncatlab.org/nlab/show/least+common+multiple). It says: “if a\|c and b\|c, then d\|c.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Nonnegative integers make divisibility an order
 
@@ -112,6 +144,38 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Modular units make cancellation safe
+
+**Remember:** Cancel only when you can multiply by an inverse.
+
+*Rules out counterexamples.* MSC 11A07 (Congruences; primitive roots; residue systems). arXiv math.NT. Level 1: early undergraduate.
+
+**Definition.** A residue class modulo n groups integers with the same remainder on division by n. For n &gt; 1, a unit is a class you can multiply by another class to get 1.
+
+**Problem.** If a is a unit modulo n and ax ≡ ay modulo n, then x ≡ y modulo n.
+
+**How the definition helps.** Multiplying both sides by the inverse cancels a. In our own example modulo 6, doubling either 1 or 4 gives the class of 2. Cancellation fails because 2 has no inverse modulo 6.
+
+**Paper or page:** [Integer Coprime to Modulus iff Linear Congruence to 1 exists](https://proofwiki.org/wiki/Integer_Coprime_to_Modulus_iff_Linear_Congruence_to_1_exists). It says: “The linear congruence: ax ≡ 1 (mod m) has a solution x”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Modular units permute complete residue systems
+
+**Remember:** Multiplying by the inverse undoes every change of residue.
+
+*True by definition.* MSC 11A07 (Congruences; primitive roots; residue systems). arXiv math.NT. Level 1: early undergraduate.
+
+**Definition.** A complete residue system modulo n &gt; 1 lists one integer from each class of integers with the same remainder. Define a unit as a class with an inverse for multiplication modulo n.
+
+**Problem.** Multiplying each member of a complete residue system by a unit gives another complete residue system.
+
+**How the definition helps.** Multiplying by the inverse sends every residue class back to its starting point. Our own argument therefore gives a permutation without checking individual remainders. Bézout’s identity shows that having an inverse is equivalent to sharing no prime factor with n.
+
+**nLab:** [multiplicative group of integers modulo n](https://ncatlab.org/nlab/show/multiplicative+group+of+integers+modulo+n). It says: “This consists of all those elements k ∈ ℤ/n which are represented by coprime integers to n.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Only coprime residues return to one
 
 **Remember:** Only residues you can undo can return to one.
@@ -144,6 +208,56 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### A primitive root makes Euler’s criterion a parity test
+
+**Remember:** Even powers of a primitive root are exactly the squares.
+
+*True by definition.* MSC 11A15 (Power residues, reciprocity). arXiv math.NT. Level 1: early undergraduate.
+
+**Definition.** A primitive root g modulo an odd prime p is a residue whose powers list every nonzero residue. This gives a way to describe the nonzero squares as even powers of one fixed residue.
+
+**Problem.** A nonzero residue a modulo an odd prime p is a square exactly when aᵐ ≡ 1 modulo p, with m = (p − 1)/2.
+
+**How the definition helps.** Writing residues as powers of a primitive root turns the square test into an exponent test (our own argument). The squares are exactly the even powers. The power gᵐ squares to 1 but differs from 1, so it equals −1 modulo p. The proof uses the theorem that every prime modulus has a primitive root.
+
+**nLab:** [quadratic reciprocity law](https://ncatlab.org/nlab/show/quadratic+reciprocity+law). It says: “whose kernel is the set of squares in the multiplicative group (ℤ/p)∗”
+
+**Paper or page:** [Euler's Criterion/Quadratic Residue](https://proofwiki.org/wiki/Euler's_Criterion/Quadratic_Residue). It says: “a is a quadratic residue of p”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Centered remainders locate the primes where two is a square
+
+**Remember:** For two, count the even multiples in the upper half.
+
+*True by definition.* MSC 11A15 (Power residues, reciprocity). arXiv math.NT. Level 1: early undergraduate.
+
+**Definition.** For an odd prime p, the centered remainder is the representative between −p/2 and p/2. Unlike the least nonnegative remainder, it uses a negative sign for representatives in the upper half.
+
+**Problem.** For an odd prime p, 2 is a square modulo p exactly when p has remainder 1 or 7 upon division by 8.
+
+**How the definition helps.** Centering makes precisely the even numbers above p/2 negative in the list 2, 4, …, p − 1 (our own argument). Their count is (p − 1)/2 minus p/4 rounded down. Checking the four odd remainders modulo 8 gives an even count only for 1 and 7. Gauss’s lemma says an even count means 2 is a square.
+
+**Paper or page:** [Second Supplement to Law of Quadratic Reciprocity](https://proofwiki.org/wiki/Second_Supplement_to_Law_of_Quadratic_Reciprocity). It says: “p ≡ ±1 (mod 8)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Centered remainders turn Gauss’s lemma into a product
+
+**Remember:** Use centered remainders, then multiply their signs.
+
+*True by definition.* MSC 11A15 (Power residues, reciprocity). arXiv math.NT. Level 1: early undergraduate.
+
+**Definition.** For an odd prime p, the centered remainder of an integer is its unique representative strictly between −p/2 and p/2. For integers outside the multiples of p, the Legendre symbol is 1 for squares modulo p and −1 otherwise.
+
+**Problem.** For an odd prime p and an integer a coprime to p, put m = (p − 1)/2. The Legendre symbol equals the product of the signs of the centered remainders of a, 2a, …, ma.
+
+**How the definition helps.** Centered remainders expose the signs that ordinary positive remainders hide (our own argument). Their absolute values run from 1 to m because distinct indices in this range are neither equal nor opposite modulo p. Multiplying and cancelling 1⋯m gives aᵐ modulo p. Euler’s criterion identifies this power with the Legendre symbol.
+
+**Paper or page:** [Gauss's Lemma (Number Theory)](https://proofwiki.org/wiki/Gauss's_Lemma_(Number_Theory)). It says: “Let n denote the number of elements of S whose least positive residue modulo p is greater than p/2.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Prime moduli limit square roots
 
 **Remember:** Over a prime modulus, two square roots agree up to sign.
@@ -157,6 +271,22 @@
 **How the definition helps.** The product test forces every root to agree with a fixed root up to sign. In our own proof, if x and y have the same square, then p divides (x − y)(x + y). Thus y equals x or −x modulo p. Modulo 8, the four residues 1, 3, 5, and 7 all square to 1. Euclid’s lemma gives the product test from the usual divisor definition of a prime.
 
 **Wikipedia:** [Vieta's formulas](https://en.wikipedia.org/wiki/Vieta%27s_formulas). It says: “the quadratic polynomial P(x) = x²−1 has four roots (1, 3, 5, and 7)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Prime moduli make a positive symbol a square test
+
+**Remember:** One sign detects a square, but two minus signs can hide nonsquares.
+
+*Rules out counterexamples.* MSC 11A15 (Power residues, reciprocity). arXiv math.NT. Level 1: early undergraduate.
+
+**Definition.** For an odd prime p, the Legendre symbol gives 0 to multiples of p, +1 to nonzero squares modulo p, and −1 otherwise. The Jacobi symbol for an odd positive integer multiplies these signs over its prime factors, counting repetitions.
+
+**Problem.** For an odd prime p, a Jacobi symbol of +1 guarantees a square modulo p. This implication can fail for an odd composite modulus.
+
+**How the definition helps.** Restricting to primes leaves one sign, so two minus signs cannot cancel (our own argument). For example, 2 is a nonsquare modulo both 3 and 5, so its symbol modulo 15 is +1 (our own argument). A square modulo 15 would stay square modulo 3 (our own argument).
+
+**Wikipedia:** [Jacobi symbol](https://en.wikipedia.org/wiki/Jacobi_symbol). It says: “However, the Jacobi symbol equals +1 if, for example, a is a non-residue modulo exactly two of the prime factors of n.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -196,6 +326,22 @@
 
 - [A.-M. Legendre, Essai sur la théorie des nombres, Paris (1798), p. 186](https://archive.org/details/essaisurlathor00lege)
 
+### The power definition tests whether minus one is a square
+
+**Remember:** Minus one passes the power test exactly when the exponent is even.
+
+*True by definition.* MSC 11A15 (Power residues, reciprocity). arXiv math.NT. Level 1: early undergraduate.
+
+**Definition.** Let p be an odd prime and set m = (p − 1)/2. Define the Legendre symbol of a as the value in {−1, 0, 1} congruent to aᵐ modulo p. The other definition gives 1 for nonzero squares, −1 for nonsquares, and 0 for multiples of p.
+
+**Problem.** For an odd prime p, −1 is a square modulo p exactly when p has remainder 1 upon division by 4.
+
+**How the definition helps.** Put a = −1 in the power definition and check whether m is even (our own argument). Euler’s criterion carries the work of showing that the sign 1 still means a nonzero square (our own argument).
+
+**Paper or page:** [First Supplement to Law of Quadratic Reciprocity](https://proofwiki.org/wiki/First_Supplement_to_Law_of_Quadratic_Reciprocity). It says: “p ≡ 1 (mod 4)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Treating 0 separately gives equal numbers of quadratic residues and nonresidues
 
 **Remember:** Leave zero out, and residues are exactly half of the nonzero classes.
@@ -213,6 +359,54 @@
 **Sources:**
 
 - [K. Ireland and M. Rosen, A Classical Introduction to Modern Number Theory, 2nd ed., Springer, 1990](https://doi.org/10.1007/978-1-4757-2103-4)
+
+### Counting factor pairs below a hyperbola shortens the divisor sum
+
+**Remember:** Count both strips and subtract their shared square.
+
+*True by definition.* MSC 11A25 (Arithmetic functions; related numbers; inversion formulas). arXiv math.NT. Level 1: early undergraduate.
+
+**Definition.** Define the divisor count of n as the number of ordered positive integer pairs with ab = n. Each positive divisor a gives exactly one pair (a,n/a). The notation ⌊x⌋ means x rounded down.
+
+**Problem.** For a positive integer N, let m be √N rounded down. The total divisor count through N equals twice the sum of ⌊N/a⌋ for a = 1, …, m, minus m².
+
+**How the definition helps.** Every pair with ab ≤ N has a ≤ m or b ≤ m. Swapping a and b shows that the two regions contain the same number of pairs. Adding their counts includes the m by m square twice, so subtract m².
+
+**Wikipedia:** [Dirichlet hyperbola method](https://en.wikipedia.org/wiki/Dirichlet_hyperbola_method). It says: “the inner sum runs over all ordered pairs (x,y) of positive integers such that xy = k.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Ordered factorizations make Dirichlet convolution associative
+
+**Remember:** Both groupings count each ordered triple of factors once.
+
+*True by definition.* MSC 11A25 (Arithmetic functions; related numbers; inversion formulas). arXiv math.NT. Level 1: early undergraduate.
+
+**Definition.** An arithmetic function assigns a number to each positive integer. The Dirichlet convolution at n sums f(a)g(b) over ordered positive integer pairs with ab = n. The usual divisor formula writes b as n/a.
+
+**Problem.** For arithmetic functions f, g and h, both ways to group their Dirichlet convolutions give the same function.
+
+**How the definition helps.** The ordered pair definition makes either grouping sum over the same triples with abc = n (our own argument). The only work is matching an outer factor pair and an inner factor pair to one ordered triple (our own argument).
+
+**Paper or page:** [Dirichlet Convolution is Associative](https://proofwiki.org/wiki/Dirichlet_Convolution_is_Associative). It says: “(f ∗ g) ∗ h = f ∗ (g ∗ h)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Prime-power values make the Möbius function multiplicative
+
+**Remember:** On coprime inputs, join the lists of prime factors.
+
+*True by definition.* MSC 11A25 (Arithmetic functions; related numbers; inversion formulas). arXiv math.NT. Level 1: early undergraduate.
+
+**Definition.** Define the Möbius function by multiplying values for the prime powers in its input. Give exponent 1 the value −1 and each larger exponent the value 0. The empty product gives μ(1) = 1.
+
+**Problem.** If positive integers m and n share no prime factor, then μ(mn) = μ(m)μ(n).
+
+**How the definition helps.** Inputs with no shared prime contribute separate factors to the defining product (our own argument). Unique factorization gives the familiar rule. Repeated primes give zero, and otherwise each distinct prime changes the sign.
+
+**Paper or page:** [Möbius Function is Multiplicative](https://proofwiki.org/wiki/Möbius_Function_is_Multiplicative). It says: “The Möbius function μ is a multiplicative function”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Requiring f(1) = 1 makes multiplicative functions a group
 
@@ -232,6 +426,22 @@
 
 - [T. M. Apostol, Introduction to Analytic Number Theory, Springer, 1976](https://doi.org/10.1007/978-1-4757-5579-4)
 
+### Defining primes by invertibility gives the converse of Wilson’s theorem
+
+**Remember:** Each factor of an invertible product is invertible.
+
+*True by definition.* MSC 11A41 (Primes). arXiv math.NT. Level 1: early undergraduate.
+
+**Definition.** Call an integer n &gt; 1 prime if every nonzero remainder modulo n has a multiplicative inverse. An inverse is a number whose product with the original number leaves remainder 1.
+
+**Problem.** If n &gt; 1 and the product of 1 through n − 1 is congruent to −1 modulo n, then n is prime.
+
+**How the definition helps.** The product has an inverse, so every factor has one. In our own proof, an inverse for a factor is the product of the other factors times the inverse of the whole product. Bézout’s identity connects this test with the usual definition of a prime as having exactly two positive divisors.
+
+**Wikipedia:** [Modular arithmetic](https://en.wikipedia.org/wiki/Modular_arithmetic). It says: “every nonzero element has a multiplicative inverse, if and only if m is prime.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Leaving 1 out of the primes makes factorization unique
 
 **Remember:** 1 is the empty product, with no factors to equal, so it is not prime.
@@ -250,6 +460,22 @@
 
 - [Chris K. Caldwell, Angela Reddick, Yeng Xiong, Wilfrid Keller, The History of the Primality of One: A Selection of Sources, Journal of Integer Sequences 15 (2012), Article 12.9.8](https://cs.uwaterloo.ca/journals/JIS/VOL15/Caldwell2/cald6.html)
 
+### The product recurrence for Fermat numbers gives infinitely many primes
+
+**Remember:** Each new odd term leaves remainder two on division by every earlier term.
+
+*True by definition.* MSC 11A41 (Primes). arXiv math.NT. Level 1: early undergraduate.
+
+**Definition.** Define the first Fermat number as 3. Define each later one as 2 plus the product of all earlier ones. This replaces the usual power formula.
+
+**Problem.** There are infinitely many primes, since the Fermat numbers have pairwise disjoint sets of prime divisors.
+
+**How the definition helps.** By the recurrence, any common divisor of two terms divides 2, and all terms are odd. Each term therefore supplies a prime divisor that did not divide any earlier term. In our own comparison, the difference of squares gives the usual formula by induction. Term n is 1 plus 2 raised to 2ⁿ, starting at n = 0.
+
+**Wikipedia:** [Fermat number](https://en.wikipedia.org/wiki/Fermat_number). It says: “no two Fermat numbers share a common integer factor greater than 1.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Allowing the empty product lets prime factorization include the number 1
 
 **Remember:** The number 1 is the product of no primes.
@@ -263,6 +489,38 @@
 **How the definition helps.** The empty product lets one statement cover every positive integer, with no exceptions. The number 1 is the product of the empty list, and a prime p is the product of the list (p). Without these conventions, the theorem and its proof need separate cases for 1 and for the primes, as the page says. The real work still lies in uniqueness, through Euclid's lemma (our own remark).
 
 **Wikipedia:** [Empty product](https://en.wikipedia.org/wiki/Empty_product). It says: “As another example, the fundamental theorem of arithmetic says that every positive integer can be written uniquely as a product of primes. However, if we do not allow products with only 0 or 1 factors, then the theorem (and its proof) become longer.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Prime exponents make coprime factors of powers into powers
+
+**Remember:** If the factors share no primes, each exponent belongs to just one factor.
+
+*True by definition.* MSC 11A51 (Factorization; primality), 11A05. arXiv math.NT. Level 1: early undergraduate.
+
+**Definition.** The prime exponent of a positive integer at p counts the factors p in its prime factorization. For an integer k ≥ 2, define a perfect kth power by requiring every prime exponent to be divisible by k.
+
+**Problem.** If two positive integers share no prime factor and their product is a perfect kth power, each is a perfect kth power.
+
+**How the definition helps.** Each positive prime exponent in the product belongs entirely to one factor. Our own argument therefore gives the same divisibility by k in each factor. Unique factorization makes this test equivalent to writing the number as an integer raised to k.
+
+**Paper or page:** [Coprime Divisors of Square Number are Square](https://proofwiki.org/wiki/Coprime_Divisors_of_Square_Number_are_Square). It says: “Then both s and t are square.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Euclidean remainders stop continued fractions exactly at rationals
+
+**Remember:** A rational input runs the Euclidean algorithm on its denominator.
+
+*True by definition.* MSC 11A55 (Continued fractions). arXiv math.NT. Level 1: early undergraduate.
+
+**Definition.** For the regular continued fraction, take the greatest integer no larger than the current number as the next digit. Subtract that digit and stop if the remainder is zero. Otherwise repeat with the reciprocal of the remainder.
+
+**Problem.** The regular continued fraction of a real number terminates exactly when the number is rational.
+
+**How the definition helps.** The digit rule makes each new denominator smaller for a rational input (our own argument). Write the input as p/q with q positive and divide p by q with remainder r. A zero remainder ends the expansion, and otherwise the next input is q/r with 0 &lt; r &lt; q. Conversely, a finite sequence of integer additions and reciprocals gives a rational value.
+
+**nLab:** [continued fraction](https://ncatlab.org/nlab/show/continued+fraction). It says: “The expression is an infinite continued fraction if and only if the real number is irrational”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -295,6 +553,22 @@
 **How the definition helps.** Without a tail of nines, later digits cannot cancel the difference at the first differing place (our own). For example, 0.4999… and 0.5000… represent the same number without the rule (our own). The work in existence lies in choosing digits by successive rounding down and showing the partial values converge (our own).
 
 **Wikipedia:** [Decimal representation](https://en.wikipedia.org/wiki/Decimal_representation). It says: “decimal representations with a trailing infinite sequence of 9 are sometimes excluded.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Floor differences construct real digits in any integer base
+
+**Remember:** Round at each scale and subtract to read the next digit.
+
+*True by definition.* MSC 11A63 (Radix representation; digital problems), 26A03. arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** Choose an integer base b ≥ 2 and a real number x with 0 ≤ x &lt; 1. Start with x, multiply repeatedly by b, and record each value rounded down to an integer, including the initial zero. Each digit equals the next recorded integer minus b times the preceding one.
+
+**Problem.** Every real number from 0 up to but not including 1 has a base-b expansion for every integer b ≥ 2.
+
+**How the definition helps.** The weighted digit sum cancels every intermediate rounded value. Our own proof uses these rounded values directly instead of carrying a fractional remainder from step to step. Rounding bounds give digits from 0 through b − 1 and an error smaller than the last place value. Those place values tend to zero.
+
+**Paper or page:** [Existence of Base-N Representation](https://proofwiki.org/wiki/Existence_of_Base-N_Representation). It says: “Given a number x ∈ \[0, 1), there exists a representation of that number in a base-p positional system.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -485,6 +759,40 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Block counts split Bell numbers into Stirling numbers
+
+**Remember:** Sort the partitions by their numbers of blocks.
+
+*True by definition.* MSC 11B73 (Bell and Stirling numbers), 05A18, 05A15. arXiv math.CO. Level 1: early undergraduate.
+
+**Definition.** A set partition divides a set into nonempty groups, with each element in exactly one group. The Bell number B(n) counts all partitions of n elements. The Stirling number S(n,k) counts those with k groups.
+
+**Problem.** For n ≥ 0, B(n) is the sum of S(n,k) over 0 ≤ k ≤ n.
+
+**How the definition helps.** Every partition has exactly one group count, so adding the counts gives B(n). The empty set contributes once, with zero groups. In our own comparison, defining the numbers by recurrences requires proving that those recurrences count these partitions.
+
+**Paper or page:** [Bell Number as Summation over Lower Index of Stirling Numbers of the Second Kind](https://proofwiki.org/wiki/Bell_Number_as_Summation_over_Lower_Index_of_Stirling_Numbers_of_the_Second_Kind). It says: “Bₙ = ∑ₖ₌₀ⁿ {n brace k} where {n brace k} denotes a Stirling number of the second kind.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Coprime coordinates rule out primes with remainder three
+
+**Remember:** A forbidden prime would have to divide both coordinates.
+
+*Rules out counterexamples. Confidence: medium.* MSC 11D09 (Quadratic and bilinear Diophantine equations), 11A15, 11E25. arXiv math.NT. Level 1: early undergraduate.
+
+**Definition.** Call a sum a² + b² primitive if a and b have greatest common divisor 1. Unlike an unrestricted sum, it does not allow a prime to divide both coordinates.
+
+**Problem.** No prime with remainder 3 modulo 4 divides a primitive sum of two squares.
+
+**How the definition helps.** Coprimality prevents a prime dividing the sum from dividing both coordinates (our own argument). If p also divided b, it would divide a, so b has an inverse modulo p. Dividing by b² would make −1 a square modulo p, impossible for a prime with remainder 3 modulo 4. Without coprimality, 7 divides 7² + 49².
+
+**Wikipedia:** [Sum of two squares theorem](https://en.wikipedia.org/wiki/Sum_of_two_squares_theorem). It says: “2450 = 7² + 49².”
+
+**Sources:**
+
+- [L. Euler, De numeris, qui sunt aggregata duorum quadratorum (1758), E228](https://scholarlycommons.pacific.edu/euler-works/228/)
+
 ### Primitive Pythagorean triples correspond to coprime pairs of opposite parity
 
 **Remember:** Coprime m and n, one of them even, give each primitive triple once.
@@ -535,6 +843,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### An infinite prime valuation makes the product law include zero
+
+**Remember:** An infinite exponent keeps the same rule when a factor is zero.
+
+*Makes the theorem clean to state or prove.* MSC 11A05 (Multiplicative structure; Euclidean algorithm; greatest common divisors). arXiv math.NT. Level 2: later undergraduate.
+
+**Definition.** For a prime p and nonzero integer n, the p-adic valuation of n is the exponent of p in the prime factorization of \|n\|. Set the valuation of 0 to ∞, since every power of p divides 0.
+
+**Problem.** For any integers a and b, the p-adic valuation of ab is the sum of their p-adic valuations. Here adding any valuation to ∞ gives ∞.
+
+**How the definition helps.** If either factor is zero, the valuation of the product and the sum of the valuations both equal ∞. For nonzero factors, unique prime factorization shows that the exponents add. Our own comparison explains why the convention at zero gives one rule for all integers.
+
+**Wikipedia:** [p-adic valuation](https://en.wikipedia.org/wiki/p-adic_valuation). It says: “Zero has an infinite valuation.”
+
+**Paper or page:** [Characterization of P-adic Valuation on Integers](https://proofwiki.org/wiki/Characterization_of_P-adic_Valuation_on_Integers). It says: “∃ k ∈ ℤ: n = pʳ k : p ∤ k”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Defining the gcd as a generator gives Bézout’s identity
 
 **Remember:** The gcd lives in aℤ + bℤ, so it is some ax + by.
@@ -555,6 +881,38 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Generating multiples makes the greatest common divisor scale
+
+**Remember:** Scale the whole set of combinations and its generator scales too.
+
+*True by definition.* MSC 11A05 (Multiplicative structure; Euclidean algorithm; greatest common divisors). arXiv math.NT. Level 2: later undergraduate.
+
+**Definition.** For integers a and b, form every sum ax + by with integers x and y. Define their greatest common divisor as the nonnegative integer d whose multiples are exactly these sums.
+
+**Problem.** For integers a, b and c, the greatest common divisor of ca and cb is \|c\| times that of a and b.
+
+**How the definition helps.** Multiplying every sum by c gives exactly the sums formed from ca and cb. In our own argument, these are precisely the multiples of \|c\|d, including when c is zero. For inputs other than the pair (0, 0), Bézout’s identity connects this definition to the largest positive common divisor.
+
+**nLab:** [greatest common divisor](https://ncatlab.org/nlab/show/greatest+common+divisor). It says: “(gcd(a, b)) = (a) + (b).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Matrix form carries Bézout coefficients through Euclidean division
+
+**Remember:** The first row records how to make the last nonzero remainder.
+
+*True by definition.* MSC 11A05 (Multiplicative structure; Euclidean algorithm; greatest common divisors). arXiv math.NT. Level 2: later undergraduate.
+
+**Definition.** The matrix for a division with quotient q sends the column (a, b) to (b, a − qb). Start with the identity matrix and multiply each new step matrix on the left. Include the division with remainder zero.
+
+**Problem.** For positive inputs, the top row of the final matrix gives Bézout coefficients. These are integer weights that combine the inputs to give their greatest common divisor.
+
+**How the definition helps.** The first row tracks one integer combination of the inputs through every division. Our own matrix formulation replaces substitution backwards through the divisions. The Euclidean algorithm shows that the final column contains the greatest common divisor followed by zero.
+
+**Paper or page:** [Extended Euclidean Algorithm](https://proofwiki.org/wiki/Extended_Euclidean_Algorithm). It says: “computing two integers a and b such that a m + b n = d.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The divisibility definition makes the gcd associative
 
 **Remember:** Greatest lower bounds of three elements do not care about brackets.
@@ -571,6 +929,108 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### A sign and a power of five describe every odd class
+
+**Remember:** The sign handles the remainder modulo four, and powers of five handle the rest.
+
+*Makes the theorem clean to state or prove.* MSC 11A07 (Congruences; primitive roots; residue systems). arXiv math.NT. Level 2: later undergraduate.
+
+**Definition.** For k ≥ 3, assign each odd class x modulo 2ᵏ a sign s. Take s = 1 when x ≡ 1 modulo 4 and s = −1 otherwise. Its signed class sx is always 1 modulo 4.
+
+**Problem.** Every odd class modulo 2ᵏ has a unique expression as its sign times 5ᵗ with 0 ≤ t &lt; 2ᵏ⁻².
+
+**How the definition helps.** The sign reduces our own count to the 2ᵏ⁻² classes that are 1 modulo 4. Every power of 5 lies among them. The order theorem gives exactly 2ᵏ⁻² distinct powers, so they exhaust these classes.
+
+**Paper or page:** [Order of 5 in Units of Ring of Integers Modulo 2<sup>n</sup>](https://proofwiki.org/wiki/Order_of_5_in_Units_of_Ring_of_Integers_Modulo_2^n). It says: “The order of 5 in U is 2ⁿ⁻².”
+
+**Sources:**
+
+- [Carl Friedrich Gauss, Disquisitiones Arithmeticae (1801), articles 90–91](https://en.wikisource.org/wiki/Translation:Disquisitiones_Arithmeticae/Third_Section#Article_90)
+
+### Chinese remainder coordinates multiply root counts
+
+**Remember:** Count the roots in each coordinate and multiply those counts.
+
+*True by definition.* MSC 11A07 (Congruences; primitive roots; residue systems). arXiv math.NT. Level 2: later undergraduate.
+
+**Definition.** For coprime moduli m and n, represent a residue class modulo mn by its two classes modulo m and n. Add and multiply the two coordinates separately.
+
+**Problem.** For an integer polynomial, count the classes on which its value is zero. For coprime positive m and n, the count modulo mn equals the product of the counts modulo m and modulo n.
+
+**How the definition helps.** With our own application of these coordinates, a root is exactly a pair of roots, one in each coordinate. The Chinese remainder theorem does the work of showing that every pair comes from exactly one class modulo mn.
+
+**Wikipedia:** [Chinese remainder theorem](https://en.wikipedia.org/wiki/Chinese_remainder_theorem). It says: “one may do the same computation independently in each ℤ/nᵢℤ”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Discrete logarithms make power congruences linear
+
+**Remember:** Taking exponents turns a power into multiplication.
+
+*True by definition.* MSC 11A07 (Congruences; primitive roots; residue systems). arXiv math.NT. Level 2: later undergraduate.
+
+**Definition.** Choose a primitive root g modulo a prime p, so its powers give all nonzero classes. The discrete logarithm of a nonzero class is its exponent on g, taken modulo p − 1.
+
+**Problem.** Let k ≥ 1 be an integer and let d be the greatest common divisor of k and p − 1. For nonzero a modulo p, xᵏ ≡ a modulo p has d solutions if d divides its discrete logarithm, and none otherwise.
+
+**How the definition helps.** Let b and t label a and x. In our own notation, the power equation becomes kt ≡ b modulo p − 1. The primitive root theorem supplies the labels. The usual count for a linear congruence gives the result.
+
+**Wikipedia:** [Discrete logarithm](https://en.wikipedia.org/wiki/Discrete_logarithm). It says: “the discrete logarithm amounts to a group isomorphism”
+
+**Sources:**
+
+- [Carl Friedrich Gauss, Disquisitiones Arithmeticae (1801), article 60](https://en.wikisource.org/wiki/Translation:Disquisitiones_Arithmeticae/Third_Section#Article_60)
+
+### Return periods reduce the primitive root test to prime divisors
+
+**Remember:** Every proper divisor of d divides d divided by some prime.
+
+*True by definition.* MSC 11A07 (Congruences; primitive roots; residue systems). arXiv math.NT. Level 2: later undergraduate.
+
+**Definition.** For n &gt; 1, a unit is a class with a multiplicative inverse modulo n. Define its order as the positive integer whose multiples are exactly the exponents that return it to 1. Let d count all units modulo n.
+
+**Problem.** A unit generates every unit modulo n exactly when its power with exponent d/q differs from 1 for every prime divisor q of d.
+
+**How the definition helps.** In our own use of the divisibility definition, the exponent d/q gives 1 precisely when the order divides d/q. Every proper divisor of d divides one of those exponents, so the test rules out all shorter orders at once. The division algorithm proves the return times are all multiples of the first one. Lagrange’s theorem shows that the order divides d.
+
+**Wikipedia:** [Multiplicative order](https://en.wikipedia.org/wiki/Multiplicative_order). It says: “the order of a (mod n) always divides φ(n).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Simple roots have unique lifts modulo prime powers
+
+**Remember:** A nonzero derivative makes the next correction unique.
+
+*Rules out counterexamples.* MSC 11A07 (Congruences; primitive roots; residue systems). arXiv math.NT. Level 2: later undergraduate.
+
+**Definition.** Call a root a modulo a prime p simple if the polynomial derivative at a is nonzero modulo p. A lift is a root modulo a higher power of p that reduces to a.
+
+**Problem.** For a polynomial with integer coefficients, each simple root modulo p has a unique lift modulo every higher power of p.
+
+**How the definition helps.** The derivative at a simple root has an inverse modulo p, so the next correction is unique. Adding tpᵏ to a root modulo pᵏ changes the polynomial value by tpᵏ times its derivative modulo pᵏ⁺¹. For our own counterexample, the root 1 of x² − 1 modulo 2 lifts to both 1 and 3 modulo 4.
+
+**Wikipedia:** [Hensel's lemma](https://en.wikipedia.org/wiki/Hensel%27s_lemma). It says: “then this root can be lifted to a unique root modulo any higher power of p.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The Frobenius map makes Fermat’s theorem include zero
+
+**Remember:** A map that fixes 1 and preserves addition fixes every residue.
+
+*True by definition.* MSC 11A07 (Congruences; primitive roots; residue systems). arXiv math.NT. Level 2: later undergraduate.
+
+**Definition.** For a prime p, the Frobenius map sends each class modulo p to its pth power.
+
+**Problem.** For every prime p and every integer a, the pth power of a is congruent to a modulo p.
+
+**How the definition helps.** The Frobenius map fixes 1 and preserves addition, so it fixes every sum of copies of 1. These sums represent all classes modulo p, including zero. Our own comparison uses this map in place of multiplication in the group of nonzero classes. The binomial theorem proves additivity because p divides each intermediate binomial coefficient.
+
+**nLab:** [Fermat's little theorem](https://ncatlab.org/nlab/show/Fermat%27s+little+theorem). It says: “the preservation of addition follows easily from the binomial theorem”
+
+**Paper or page:** [Fermat's Little Theorem/Corollary 1](https://proofwiki.org/wiki/Fermat's_Little_Theorem/Corollary_1). It says: “If p is a prime number, then nᵖ ≡ n (mod p).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The group of modular units gives Euler’s theorem
 
 **Remember:** The order of an element divides the order of the group.
@@ -584,6 +1044,22 @@
 **How the definition helps.** The group definition lets Lagrange’s theorem show that the number of powers of a divides φ(n). Those powers form a subgroup of size k, where aᵏ is 1 modulo n. Since φ(n) is a multiple of k, raising a to φ(n) gives 1. The work moves into Lagrange’s theorem and into using Bézout’s identity to identify the invertible residues (our own).
 
 **Wikipedia:** [Euler's theorem](https://en.wikipedia.org/wiki/Euler%27s_theorem). It says: “Lagrange's theorem states that the order of any subgroup of a finite group divides the order of the entire group”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A product of differences gives Zolotarev’s sign
+
+**Remember:** Each difference contributes one copy of the multiplier.
+
+*True by definition.* MSC 11A15 (Power residues, reciprocity). arXiv math.NT. Level 2: later undergraduate.
+
+**Definition.** For a list of distinct numbers, multiply the later entry minus the earlier entry for every pair of positions. Define the sign of a permutation as the new product divided by the original product. This gives the same sign as counting reversals.
+
+**Problem.** Multiplication by a permutes the residues modulo an odd prime p whenever p does not divide a. Its sign is the Legendre symbol, which equals 1 for squares modulo p and −1 otherwise.
+
+**How the definition helps.** Multiplying each entry by a multiplies each difference by a modulo p (our own argument). There are p(p − 1)/2 differences, all nonzero modulo p. Fermat’s little theorem reduces the exponent to (p − 1)/2, and Euler’s criterion identifies the result. The difference product gives the usual permutation sign because exchanging two entries reverses its sign.
+
+**nLab:** [quadratic reciprocity law](https://ncatlab.org/nlab/show/quadratic+reciprocity+law). It says: “is the sign or signature of a permutation on ℤ/p given by multiplying by a.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -654,6 +1130,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Counting divisible integers makes the totient a Möbius sum
+
+**Remember:** Weight common divisors by Möbius values to test coprimality.
+
+*True by definition.* MSC 11A25 (Arithmetic functions; related numbers; inversion formulas). arXiv math.NT. Level 2: later undergraduate.
+
+**Definition.** Euler’s totient φ(n) counts integers from 1 to n with greatest common divisor 1 with n. The Möbius function μ has divisor sum 1 at 1 and 0 elsewhere. Use the sum of μ(d) over common divisors d to test whether two numbers have greatest common divisor 1.
+
+**Problem.** For each positive integer n, φ(n) is the sum of μ(d)·(n/d) over positive divisors d of n.
+
+**How the definition helps.** The common-divisor sum replaces the greatest-common-divisor test with weights that can be summed in either order (our own argument). The divisors common to k and n are exactly those dividing their greatest common divisor. Möbius cancellation therefore gives weight 1 exactly when that greatest common divisor is 1. Each divisor d of n contributes μ(d) once for each of its n/d multiples.
+
+**Paper or page:** [Euler Phi Function in terms of Möbius Function](https://proofwiki.org/wiki/Euler_Phi_Function_in_terms_of_Möbius_Function). It says: “∑ (d \| n) μ(d) n/d = φ(n)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Counting modular units makes Euler’s totient multiplicative
 
 **Remember:** Units of a product ring are pairs of units.
@@ -688,6 +1180,40 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Prime-power series turn convolution into ordinary multiplication
+
+**Remember:** Split each exponent independently and multiply the resulting series.
+
+*True by definition.* MSC 11A25 (Arithmetic functions; related numbers; inversion formulas). arXiv math.NT. Level 2: later undergraduate.
+
+**Definition.** A multiplicative function f has value 1 at 1 and satisfies f(ab) = f(a)f(b) when a and b share no prime. Encode its values at each prime p by a power series whose coefficient of degree k is f(pᵏ). The convolution of f and g at n sums f(a)g(b) over ordered positive factors with ab = n.
+
+**Problem.** The Dirichlet convolution of two multiplicative functions is multiplicative. Its series at each prime is the product of the input series at that prime.
+
+**How the definition helps.** Convolution splits each prime exponent between the two factors, just as series multiplication splits a degree (our own argument). Unique prime factorization ensures those choices are independent, so the full sum is the product of the coefficient sums (our own argument).
+
+**Paper or page:** [Dirichlet Convolution Preserves Multiplicativity](https://proofwiki.org/wiki/Dirichlet_Convolution_Preserves_Multiplicativity). It says: “Then their Dirichlet convolution f ∗ g is again multiplicative.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Prime-power sums multiply to give the Euler product
+
+**Remember:** An Euler product chooses one exponent for each prime.
+
+*Makes the theorem clean to state or prove.* MSC 11A25 (Arithmetic functions; related numbers; inversion formulas), 11M41. arXiv math.NT. Level 2: later undergraduate.
+
+**Definition.** A multiplicative function satisfies f(1) = 1 and multiplies on coprime inputs. For each prime p, define its local factor by summing f on powers of p, starting with 1.
+
+**Problem.** Suppose f is multiplicative and the sum of \|f(n)\| over positive integers converges. The sum of f(n) then equals the product of its local factors over all primes.
+
+**How the definition helps.** Expanding a finite product chooses one exponent per prime, so unique factorization gives each allowed integer once (our own argument). Absolute convergence lets the finite-prime sums tend to the full sum as more primes are included (our own argument).
+
+**Wikipedia:** [Euler product](https://en.wikipedia.org/wiki/Euler_product). It says: “the existence of such a formal Euler product expansion is a necessary and sufficient condition that a(n) be multiplicative”
+
+**Paper or page:** [Product Form of Sum on Completely Multiplicative Function](https://proofwiki.org/wiki/Product_Form_of_Sum_on_Completely_Multiplicative_Function). It says: “where the infinite product ranges over the primes.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Primitive root sums make the Möbius divisor sum vanish
 
 **Remember:** All nth roots of unity add to zero when n exceeds one.
@@ -701,6 +1227,22 @@
 **How the definition helps.** The primitive-root definition makes the divisor sum the sum of all nth roots of unity. Each root has one order d dividing n, the least positive power that gives 1. For n &gt; 1 their sum is zero, since the coefficient of xⁿ⁻¹ in xⁿ − 1 is zero (our own). In the usual formula, each distinct prime dividing n contributes a factor of 1 − 1 to the divisor sum (our own). Both definitions give the same divisor sums, which determine their values by induction on n (our own).
 
 **Wikipedia:** [Möbius function](https://en.wikipedia.org/wiki/M%C3%B6bius_function). It says: “each nth root of unity is a primitive dth root of unity for exactly one divisor d of n.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Square divisors give a count of squarefree integers
+
+**Remember:** Use Möbius weights on square divisors to count numbers without them.
+
+*True by definition.* MSC 11A25 (Arithmetic functions; related numbers; inversion formulas), 11N25. arXiv math.NT. Level 2: later undergraduate.
+
+**Definition.** A positive integer is squarefree when no prime square divides it. Its indicator, equal to 1 for squarefree integers and 0 otherwise, sums μ(d) over positive d whose square divides the integer. The Möbius function μ has divisor sum 1 at 1 and 0 at every larger integer.
+
+**Problem.** The fraction of squarefree integers among the first N positive integers tends to 6/π² as N grows.
+
+**How the definition helps.** The indicator turns divisibility tests into counts of multiples of d². Möbius cancellation on the square root of the largest square divisor proves the indicator formula. After division by N, replacing each rounded count by N/d² costs at most 1/√N in total. The resulting sums approach the absolutely convergent sum of μ(d)/d², which the Euler product and Basel sum evaluate as 6/π².
+
+**Wikipedia:** [Square-free integer](https://en.wikipedia.org/wiki/Square-free_integer). It says: “Q(x) = 6x/π² + O(√x).”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -735,6 +1277,22 @@
 **How the definition helps.** The product definition lets the first prime on one side divide some prime on the other side (our own). Two primes with this divisibility relation differ at most by a sign. Cancel that pair and repeat (our own). The work moves into Euclid’s lemma, which proves the product rule from the usual divisor definition, using Bézout’s identity.
 
 **Wikipedia:** [Euclid's lemma](https://en.wikipedia.org/wiki/Euclid%27s_lemma). It says: “It is used to define prime elements, a generalization of prime numbers to arbitrary commutative rings.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A repeating block fixes a quadratic irrational
+
+**Remember:** A repeating tail is a fixed point of its block map.
+
+*True by definition.* MSC 11A55 (Continued fractions). arXiv math.NT. Level 2: later undergraduate.
+
+**Definition.** Read each continued fraction digit a as the map t ↦ a + 1/t. Define the map of a block by composing its digit maps, instead of viewing the block only as a list.
+
+**Problem.** An irrational real number with an eventually periodic regular continued fraction satisfies a quadratic equation with integer coefficients.
+
+**How the definition helps.** The repeating tail t returns to itself under its block map (our own argument). Composing digit maps gives a fraction (At + B)/(Ct + D) with integer coefficients. Positive digits give C &gt; 0, so clearing the denominator gives a quadratic equation. Applying the initial digit maps keeps the irrational result in the same quadratic field.
+
+**Wikipedia:** [Periodic continued fraction](https://en.wikipedia.org/wiki/Periodic_continued_fraction). It says: “if x is a regular periodic continued fraction, then x is a quadratic irrational number.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -838,6 +1396,56 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Change of polynomial basis makes the Stirling matrices inverse
+
+**Remember:** Changing basis back undoes the first change.
+
+*True by definition.* MSC 11B73 (Bell and Stirling numbers), 05A10. arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** The nth falling factorial is x(x − 1)⋯(x − n + 1), with the zeroth equal to 1. Define signed first-kind Stirling numbers by expanding falling factorials in powers of x. Define second-kind Stirling numbers by expanding powers of x in falling factorials.
+
+**Problem.** For any degree bound, the two square tables of Stirling coefficients, from degree zero to that bound, are inverse matrices.
+
+**How the definition helps.** Each table undoes the change of basis made by the other. In our own proof, uniqueness of polynomial coefficients makes their product the identity matrix. Starting from counting definitions requires identifying the coefficients with signed counts of permutations by cycles and with counts of set partitions.
+
+**Paper or page:** [Inverse of Stirling's Triangle expressed as Matrix](https://proofwiki.org/wiki/Inverse_of_Stirling's_Triangle_expressed_as_Matrix). It says: “Then: A = B⁻¹ that is: B = A⁻¹”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Missing labels give the explicit second Stirling formula
+
+**Remember:** Subtract functions that miss labels, then forget the label names.
+
+*Makes the theorem clean to state or prove.* MSC 11B73 (Bell and Stirling numbers), 05A10, 05A18. arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** An onto function uses every target at least once. Define S(n,k) as the number of onto functions from n inputs to k labeled targets divided by k!.
+
+**Problem.** For positive integers n and k, k! S(n,k) equals the sum of (−1)ᵏ⁻ʲ (k choose j) jⁿ over j from 0 through k.
+
+**How the definition helps.** Counting onto functions lets inclusion–exclusion remove functions that miss a target. In our own count, a fixed set of j permitted targets allows jⁿ functions. Forgetting target names turns each onto function into a partition of the inputs, and every partition has k! labelings.
+
+**Wikipedia:** [Stirling numbers of the second kind](https://en.wikipedia.org/wiki/Stirling_numbers_of_the_second_kind). It says: “This can be derived by using inclusion-exclusion to count the surjections from n to k”
+
+**Paper or page:** [Sum over k of m choose k by -1<sup>m-k</sup> by k to the n](https://proofwiki.org/wiki/Sum_over_k_of_m_choose_k_by_-1^m-k_by_k_to_the_n). It says: “∑ₖ (m choose k) (−1)ᵐ⁻ᵏ kⁿ = m! {n brace m}”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### An integer basis describes all solutions of a linear equation
+
+**Remember:** One basis vector sets the answer and the other leaves it unchanged.
+
+*True by definition.* MSC 11D04 (Linear Diophantine equations), 11A05. arXiv math.NT. Level 2: later undergraduate.
+
+**Definition.** For integers a and b, not both zero, let d be their greatest common divisor. Choose u = (r, s) with ar + bs = d, and put v = (b/d, −a/d). Use integer coordinates h and t to write each pair as hu + tv.
+
+**Problem.** The equation ax + by = c has integer solutions exactly when d divides c. If so, all solution pairs are (c/d)u + tv with t any integer.
+
+**How the definition helps.** In our own coordinates, ax + by becomes hd, so the equation fixes h and leaves t free. Bézout’s identity supplies u. The matrix with columns u and v has determinant −1, so its inverse gives unique integer coordinates for every integer pair.
+
+**Paper or page:** [Solution of Linear Diophantine Equation](https://proofwiki.org/wiki/Solution_of_Linear_Diophantine_Equation). It says: “x = x₀ + (b/d)k, y = y₀ − (a/d)k”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Excluding square n gives Pell's equation infinitely many solutions
 
 **Remember:** Nonsquare n, so a fundamental solution generates them all.
@@ -872,6 +1480,56 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### The determinant of one period gives the Pell sign
+
+**Remember:** Each digit flips the determinant, and the determinant is the Pell norm.
+
+*True by definition.* MSC 11D09 (Quadratic and bilinear Diophantine equations), 11A55. arXiv math.NT. Level 2: later undergraduate.
+
+**Definition.** For a nonsquare integer D &gt; 1, let a be √D rounded down. Encode the repeating digit block of t = √D + a by multiplying the matrices \[\[b, 1\], \[1, 0\]\] in digit order. Each matrix represents the digit map u ↦ b + 1/u.
+
+**Problem.** Let x/y be the convergent formed from the first k digits of √D, where k is its shortest period length. Then x² − Dy² equals −1 for odd k and 1 for even k.
+
+**How the definition helps.** Each digit contributes determinant −1, so the period matrix has determinant (−1)ᵏ (our own argument). Its first column is (x + ay, y), since adding a changes only the initial digit. The matrix fixes t, whose quadratic equation is t² − 2at + a² − D = 0. Comparing coefficients gives second column ((D − a²)y, x − ay), so the determinant is x² − Dy².
+
+**Paper or page:** [Solution to Pell's Equation](https://proofwiki.org/wiki/Solution_to_Pell's_Equation). It says: “and all solutions of: x² − ny² = ±1 are given in this way.”
+
+**Sources:**
+
+- [H. W. Lenstra Jr., Solving the Pell equation, Algorithmic Number Theory (2008), pp. 1–24](https://doi.org/10.1017/9781139049801.002)
+
+### The quadratic norm makes Pell solutions close approximations
+
+**Remember:** The conjugate of a Pell solution is small because the norm has magnitude one.
+
+*True by definition.* MSC 11D09 (Quadratic and bilinear Diophantine equations), 11A55. arXiv math.NT. Level 2: later undergraduate.
+
+**Definition.** For integers x and y and a positive nonsquare integer D, define the norm of x + y√D as (x + y√D)(x − y√D). It equals x² − Dy².
+
+**Problem.** For positive integer solutions of x² − Dy² = ±1, x/y is a convergent of √D. A convergent is a fraction obtained by stopping its regular continued fraction.
+
+**How the definition helps.** The product definition makes \|x − y√D\| the reciprocal of x + y√D for either sign (our own argument). The approximation error is therefore 1/\[y²(x/y + √D)\]. Since x ≥ y and D ≥ 2, this is less than 1/(2y²). Legendre’s approximation theorem gives the conclusion, since any common divisor of x and y has square dividing 1.
+
+**Paper or page:** [Solution of Pell's Equation is a Convergent](https://proofwiki.org/wiki/Solution_of_Pell's_Equation_is_a_Convergent). It says: “Then a/b is a convergent of √n.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Counting Gaussian factors gives the two-square divisor formula
+
+**Remember:** Four units multiply the number of ways to distribute the prime factors.
+
+*True by definition.* MSC 11E25 (Sums of squares and representations by other particular quadratic forms), 11A25, 11D09. arXiv math.NT. Level 2: later undergraduate.
+
+**Definition.** For n &gt; 0, count ordered integer pairs (a,b) satisfying a² + b² = n, including zero and negative coordinates. Equivalently, count Gaussian integers a + bi with norm n, where the norm is a² + b².
+
+**Problem.** Let d₁ and d₃ count positive divisors of n with remainders 1 and 3 modulo 4. For n &gt; 0, the number of pairs is 4(d₁ − d₃).
+
+**How the definition helps.** Counting Gaussian integers turns each representation into independent factor choices and one of four unit choices (our own argument). A prime with remainder 1 modulo 4 splits into conjugate factors, giving e + 1 choices for exponent e. A prime with remainder 3 gives one choice for even e and none otherwise, while 2 always gives one. The divisor difference has these same factors because odd divisor signs multiply and even divisors contribute zero.
+
+**Wikipedia:** [Sum of squares function](https://en.wikipedia.org/wiki/Sum_of_squares_function). It says: “r₂(n) = 4(d₁(n) − d₃(n))”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Counting representations with order and signs gives Jacobi's four-square formula
 
 **Remember:** Count every sign and every order, and the count is a divisor sum.
@@ -890,6 +1548,56 @@
 
 - [M. D. Hirschhorn, A simple proof of Jacobi's four-square theorem, Proc. Amer. Math. Soc. 101 (1987) 436–438](https://doi.org/10.1090/S0002-9939-1987-0908644-9)
 
+### Gaussian divisors give the two-square theorem for primes
+
+**Remember:** A proper nonunit Gaussian divisor of p has norm p.
+
+*True by definition.* MSC 11E25 (Sums of squares and representations by other particular quadratic forms), 11D09. arXiv math.NT. Level 2: later undergraduate.
+
+**Definition.** A Gaussian integer is a complex number a + bi with integer coordinates. Its norm, the product with a − bi, is a² + b². Representing p by two squares now means finding a Gaussian integer of norm p.
+
+**Problem.** A prime is a sum of two integer squares exactly when it is 2 or has remainder 1 upon division by 4.
+
+**How the definition helps.** The norm definition turns a two-square representation into a factorization problem (our own argument). For p congruent to 1 modulo 4, the first supplement gives u with u² congruent to −1 modulo p. Then p divides (u + i)(u − i) but neither factor, so Gaussian unique factorization splits p into nonunits, necessarily of norm p. Finally, 2 = 1² + 1², and squares modulo 4 exclude primes with remainder 3.
+
+**Paper or page:** [Fermat's Two Squares Theorem](https://proofwiki.org/wiki/Fermat's_Two_Squares_Theorem). It says: “Then p can be expressed as the sum of two squares either: p = 2 or: p ≡ 1 (mod 4)”
+
+**Sources:**
+
+- [L. Euler, Demonstratio theorematis Fermatiani omnem numerum primum formae 4n+1 esse summam duorum quadratorum (1760), E241](https://scholarlycommons.pacific.edu/euler-works/241/)
+
+### Gaussian factorization gives uniqueness for prime two-square sums
+
+**Remember:** Switching Gaussian factors or rotating them does not change the squares.
+
+*True by definition.* MSC 11E25 (Sums of squares and representations by other particular quadratic forms), 11D09. arXiv math.NT. Level 2: later undergraduate.
+
+**Definition.** A Gaussian integer a + bi has integer coordinates and norm a² + b². Represent p = a² + b² by the factor pair a + bi and a − bi. Gaussian factors agree up to a unit when one is the other multiplied by 1, −1, i, or −i.
+
+**Problem.** If a prime is the sum of two positive squares, the two squares are unique up to order.
+
+**How the definition helps.** Gaussian unique factorization makes the two factors unique up to order and multiplication by units (our own argument). Each factor has prime norm p, so multiplicativity of the norm prevents a split into two nonunits. Multiplication by units and conjugation only change signs or exchange the coordinates.
+
+**Paper or page:** [Fermat's Two Squares Theorem/Uniqueness Lemma](https://proofwiki.org/wiki/Fermat's_Two_Squares_Theorem/Uniqueness_Lemma). It says: “Then that expression would be unique except for the order of the two summands.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Gaussian norms force even exponents at primes that stay prime
+
+**Remember:** A Gaussian prime equal to its conjugate appears twice in a norm.
+
+*True by definition.* MSC 11E25 (Sums of squares and representations by other particular quadratic forms), 11D09. arXiv math.NT. Level 2: later undergraduate.
+
+**Definition.** View a² + b² as the norm of the Gaussian integer a + bi, the product of that number with its conjugate. The norm of a product is the product of the norms.
+
+**Problem.** A positive integer is a sum of two integer squares exactly when every prime with remainder 3 modulo 4 has an even exponent.
+
+**How the definition helps.** Writing a sum of squares as a product with its conjugate forces certain prime factors to occur in pairs (our own argument). A prime with remainder 3 modulo 4 stays prime among Gaussian integers and appears equally often in conjugate factors. Conversely, each such even power is a square and hence a norm. Gaussian prime classification supplies norm p for every other prime, and multiplication combines the norms.
+
+**Wikipedia:** [Sum of two squares theorem](https://en.wikipedia.org/wiki/Sum_of_two_squares_theorem). It says: “its prime decomposition contains no factor pᵏ, where prime p ≡ 3 (mod 4) and k is odd.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Quaternion norms show that sums of four squares multiply
 
 **Remember:** Quaternion norms multiply, so sums of four squares multiply.
@@ -905,6 +1613,74 @@
 **Wikipedia:** [Euler's four-square identity](https://en.wikipedia.org/wiki/Euler%27s_four-square_identity). It says: “the absolute value of the product of two quaternions is equal to the product of their absolute values”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### A half-open lattice cell turns Blichfeldt’s theorem into overlap
+
+**Remember:** Fold the set into one cell and count overlaps.
+
+*Makes the theorem clean to state or prove.* MSC 11H16 (Nonconvex bodies). arXiv math.NT. Level 2: later undergraduate.
+
+**Definition.** A full lattice in Euclidean space consists of all integer combinations of a basis. Its half-open cell consists of combinations of that basis with coefficients in \[0, 1). Each point belongs to exactly one lattice translate of the cell.
+
+**Problem.** For a full lattice, every bounded measurable set of volume greater than the cell volume contains two distinct points differing by a lattice vector.
+
+**How the definition helps.** The half-open cell gives each point exactly one translated copy inside a common region of known volume. Cut the set along cell boundaries and translate each piece back into the cell. Translation preserves volume, so the pieces must overlap if their volumes add to more than the cell volume. Points from different pieces that land together differ by a nonzero lattice vector (our own formulation).
+
+**Wikipedia:** [Blichfeldt's theorem](https://en.wikipedia.org/wiki/Blichfeldt%27s_theorem). It says: “translate each of those pieces by an integer vector so that they all move into the same unit square.”
+
+**Sources:**
+
+- [H. F. Blichfeldt, A new principle in the geometry of numbers, with some applications, Transactions of the American Mathematical Society 15, 227–235 (1914).](https://doi.org/10.1090/S0002-9947-1914-1500976-6)
+
+### Scaled errors make convergents optimal below the next denominator
+
+**Remember:** Opposite coefficient signs make opposite convergent errors add, not cancel.
+
+*Makes the theorem clean to state or prove.* MSC 11J70 (Continued fractions and generalizations), 11A55. arXiv math.NT. Level 2: later undergraduate.
+
+**Definition.** A convergent is a fraction obtained by stopping a regular continued fraction. For a rational approximation a/b to an irrational number x, define its scaled error as \|bx − a\|.
+
+**Problem.** Let p/q and P/Q be successive convergents with q &lt; Q. Among integer pairs (a,b) with 0 &lt; b &lt; Q, the pair (p,q) minimizes the scaled error.
+
+**How the definition helps.** Scaling makes bx − a linear in the integer pair, so its values combine under addition (our own argument). The determinant ±1 makes (p,q) and (P,Q) an integer basis, and their signed errors have opposite signs. When 0 &lt; b &lt; Q, two nonzero coefficients must have opposite signs, so their error contributions add in magnitude. With just one coefficient, the pair is a positive multiple of (p,q).
+
+**Paper or page:** [Convergents are Best Approximations](https://proofwiki.org/wiki/Convergents_are_Best_Approximations). It says: “\|qₙ x − pₙ\| ≤ \|b x − a\|”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The next complete quotient gives the exact convergent error
+
+**Remember:** Keep the whole tail, and subtraction leaves the determinant.
+
+*True by definition.* MSC 11J70 (Continued fractions and generalizations), 11A55. arXiv math.NT. Level 2: later undergraduate.
+
+**Definition.** A convergent is the fraction obtained by stopping a regular continued fraction after finitely many digits. The next complete quotient t is the full remaining tail, starting with the next digit. For successive convergents r/s and p/q, retaining that tail gives x = (pt + r)/(qt + s).
+
+**Problem.** For irrational x, the error \|x − p/q\| equals 1/\[q(qt + s)\]. It is smaller than 1/(qQ), where Q is the next denominator.
+
+**How the definition helps.** Keeping the tail makes the numerator collapse when we subtract p/q (our own argument). The convergent recurrences give the tail formula and \|qr − ps\| = 1. The next denominator is q times the integer part of t, plus s. Since t is irrational, this denominator is smaller than qt + s.
+
+**Paper or page:** [Bound for Difference of Irrational Number with Convergent](https://proofwiki.org/wiki/Bound_for_Difference_of_Irrational_Number_with_Convergent). It says: “\|x − Cₙ\| &lt; 1/(qₙ qₙ₊₁)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Continuous averages reduce equidistribution to individual Fourier waves
+
+**Remember:** Test each wave, then approximate every continuous test by sums of waves.
+
+*Makes the theorem clean to state or prove.* MSC 11K06 (General theory of distribution modulo \\(1\\)), 42A10. arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** A real sequence is equidistributed modulo one if its sample averages for every continuous 1-periodic function tend to that function’s integral over \[0,1\]. Each sample average uses the first N sequence terms, with N tending to infinity.
+
+**Problem.** A real sequence is equidistributed modulo one exactly when its sample averages of exp(2πikx) tend to zero for every nonzero integer k.
+
+**How the definition helps.** With continuous test functions, it suffices to check a dense family of finite wave sums (our own). Fejér’s theorem gives uniform approximation, and continuous upper and lower approximations to interval indicators recover the counting definition (our own).
+
+**Paper or page:** [Theorem 1.2 (Weyl's criterion)](https://arxiv.org/abs/2509.06909v1). It says: “Then (xₙ) is uniformly distributed mod 1 if and only if for every non-zero v ∈ ℤᵏ, lim as N → ∞ of (1/N) ∑ₙ₌₁ᴺ e(v·xₙ) = 0,”
+
+**Sources:**
+
+- [Hermann Weyl, Über die Gleichverteilung von Zahlen mod. Eins (1916)](https://doi.org/10.1007/bf01475864)
 
 ### Primitive characters make every Gauss sum have absolute value √N
 
@@ -924,6 +1700,22 @@
 
 - [H. Davenport, Multiplicative Number Theory, 2nd ed., Graduate Texts in Mathematics 74, Springer, 1980](https://doi.org/10.1007/978-1-4757-5927-3)
 - [H. L. Montgomery and R. C. Vaughan, Multiplicative Number Theory I: Classical Theory, Cambridge University Press, 2006](https://doi.org/10.1017/CBO9780511618314)
+
+### The character form makes conjugation of the Gauss sum a sign
+
+**Remember:** Conjugate the exponential and the Legendre symbol supplies the sign.
+
+*True by definition.* MSC 11L05 (Gauss and Kloosterman sums; generalizations), 11A15. arXiv math.NT. Level 2: later undergraduate.
+
+**Definition.** For an odd prime p, set ζ = exp(2πi/p). Give each residue a weight χ(a), equal to 0 at zero, 1 at nonzero squares, and −1 elsewhere. Define the quadratic Gauss sum G as the sum of χ(a)ζᵃ over all residues modulo p.
+
+**Problem.** The quadratic Gauss sum satisfies G² = χ(−1)p.
+
+**How the definition helps.** In the weighted sum, conjugation replaces a by −a and multiplies G by χ(−1) (our own argument). Counting square roots and using the zero sum of all powers ζ⁰ through ζᵖ⁻¹ gives the usual sum of ζ raised to a². The magnitude theorem gives G times its conjugate as p, which yields the stated square.
+
+**nLab:** [quadratic reciprocity law](https://ncatlab.org/nlab/show/quadratic+reciprocity+law). It says: “S² = (−1/p) p.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Euler’s product shows zeta has no zeros where Re s &gt; 1
 
@@ -970,6 +1762,22 @@
 **How the definition helps.** With these base values, the formulas need no special cases. The pentagonal recurrence holds for every n ≥ 1. Its sum looks infinite, but it has only finitely many nonzero terms. The constant term 1 of the product ∏ 1/(1 − xᵏ) is also p(0) (our own remark). The deeper fact, Euler's pentagonal number theorem, still needs a real proof.
 
 **Wikipedia:** [Partition function (number theory)](https://en.wikipedia.org/wiki/Partition_function_%28number_theory%29). It says: “As base cases, p(0) is taken to equal 1, and p(k) is taken to be zero for negative k.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A quadratic quotient detects which odd primes stay Gaussian primes
+
+**Remember:** An odd prime stays prime exactly when minus one has no square root modulo it.
+
+*True by definition.* MSC 11R04 (Algebraic numbers; rings of algebraic integers), 13A15. arXiv math.NT, math.AC. Level 2: later undergraduate.
+
+**Definition.** View the Gaussian integers as ℤ\[x\]/(x² + 1), the polynomial ring with x² set equal to −1. This is equivalent to the usual ring of complex numbers a + bi with integer coordinates.
+
+**Problem.** An odd prime number p stays prime in the Gaussian integers exactly when it leaves remainder 3 on division by 4.
+
+**How the definition helps.** Presenting the ring by x² + 1 reduces primality of p to whether that quadratic is irreducible modulo p (our own). Indeed, the quotient by p has no zero divisors exactly when the quadratic has no root modulo p (our own). Checking the presentation requires showing that evaluation at i identifies exactly the multiples of x² + 1 with zero (our own). The remaining number theory says that −1 is a square modulo an odd prime exactly when the prime leaves remainder 1 modulo 4 (our own).
+
+**Wikipedia:** [Gaussian integer](https://en.wikipedia.org/wiki/Gaussian_integer). It says: “A positive integer is a Gaussian prime if and only if it is a prime number that is congruent to 3 modulo 4”
 
 **Sources:** none listed. No primary source with a working link was found.
 

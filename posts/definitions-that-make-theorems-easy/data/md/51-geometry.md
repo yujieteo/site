@@ -14,6 +14,38 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Parallel glides square to a translation of twice the distance
+
+**Remember:** Reflect twice and the slides add.
+
+*Rules out counterexamples.* MSC 51F15 (Reflection groups, reflection geometries). arXiv math.MG, math.GR. Level 1: early undergraduate.
+
+**Definition.** A glide reflection reflects the plane across a line and then shifts it by a nonzero vector parallel to that line.
+
+**Problem.** A glide reflection squared is a translation by twice its glide vector. In particular, a glide reflection has infinite order.
+
+**How the definition helps.** Reflection leaves the parallel shift vector unchanged, so repeating the motion adds the vector twice (our own). Every even positive power is a nonzero translation, so no positive power gives the identity (our own). A perpendicular shift instead reverses under reflection and cancels when the motion is repeated (our own).
+
+**Wikipedia:** [Glide reflection](https://en.wikipedia.org/wiki/Glide_reflection). It says: “two applications of the same glide reflection result in a double translation”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Squared distances give the affine form of every Euclidean isometry
+
+**Remember:** Three squared distances already specify the dot product.
+
+*True by definition. Confidence: medium.* MSC 51F20 (Congruence and orthogonality in metric geometry), 20H15. arXiv math.GR, math.MG. Level 1: early undergraduate.
+
+**Definition.** Define the dot product of vectors u and v as half the sum of their squared lengths minus half their squared distance. This replaces the sum of coordinate products with a distance formula.
+
+**Problem.** Every distance-preserving map from a finite-dimensional Euclidean space to itself is an orthogonal linear map followed by a translation.
+
+**How the definition helps.** The distance formula makes any distance-preserving map fixing the origin preserve dot products (our own). Subtract the image of the origin to obtain such a map (our own). The images of the coordinate unit vectors form a perpendicular unit basis, and dot products with them recover each original coordinate (our own). Expanding a squared distance proves that this definition agrees with the usual coordinate formula (our own).
+
+**nLab:** [orthogonal group](https://ncatlab.org/nlab/show/orthogonal+group). It says: “This is isomorphic to the group of n × n orthogonal matrices.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Cyclic order fixes Ptolemy’s diagonals
 
 **Remember:** Walk around the circle before you name the diagonals.
@@ -487,6 +519,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Point and line duality turns Pascal into Brianchon
+
+**Remember:** The line of Pascal becomes the point of Brianchon.
+
+*True by definition.* MSC 51A05 (General theory of linear incidence geometry and projective geometries), 51N15. arXiv math.MG. Level 2: later undergraduate.
+
+**Definition.** In the dual projective plane, each line represents a point and each point represents a line. Lines through one point become points on one line. The tangent lines to a nondegenerate conic represent points on a second conic, called its dual.
+
+**Problem.** Let the six sides of a real projective hexagon touch a nondegenerate conic at six distinct points. The three lines joining opposite vertices pass through one point.
+
+**How the definition helps.** The tangent sides become vertices on the dual conic, so they form the inscribed hexagon of Pascal’s theorem (our own). Pascal puts the three intersections of opposite sides on one line. In the original plane these intersections represent the three diagonals, and their common line represents a common point. This proof uses Pascal and the theorem that the tangents form a dual conic.
+
+**Wikipedia:** [Brianchon's theorem](https://en.wikipedia.org/wiki/Brianchon%27s_theorem). It says: “The polar reciprocal and projective dual of this theorem give Pascal's theorem.”
+
+**Sources:**
+
+- [C.-J. Brianchon, Mémoire sur les lignes du second ordre (1817), § XXXVI.](https://www.e-rara.ch/zut/download/pdf/15345060)
+
 ### Projective planes make the duality of points and lines a theorem
 
 **Remember:** Points and lines obey the same rules, so you can swap the words.
@@ -518,6 +568,24 @@
 **Wikipedia:** [Projective plane](https://en.wikipedia.org/wiki/Projective_plane). It says: “The last condition excludes the so-called degenerate cases”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Swapping points and lines gives the converse of Desargues
+
+**Remember:** Swap points and lines to reverse Desargues.
+
+*True by definition.* MSC 51A05 (General theory of linear incidence geometry and projective geometries), 51A20. arXiv math.MG. Level 2: later undergraduate.
+
+**Definition.** In the dual projective plane, each original line represents a point and each original point represents a line. An original point lies on an original line exactly when the corresponding dual line contains the corresponding dual point.
+
+**Problem.** Take two triangles in the real projective plane with six distinct vertices and distinct corresponding sides. If the corresponding sides meet at three distinct points on one line, the lines joining corresponding vertices pass through one point.
+
+**How the definition helps.** The dual plane turns the converse into the forward theorem (our own). There, corresponding vertex joins meet at one point, so Desargues puts the three corresponding side intersections on one line. Back in the original plane, this gives the required common point. The argument uses Desargues and the fact that the dual of the real projective plane is another real projective plane (our own).
+
+**Paper or page:** [Desargues' Theorem/Converse](https://proofwiki.org/wiki/Desargues'_Theorem/Converse). It says: “Then the lines AA′, BB′ and CC′ intersect in the point O.”
+
+**Sources:**
+
+- [C.-J. Brianchon, Mémoire sur les lignes du second ordre (1817), § XIII, note.](https://www.e-rara.ch/zut/download/pdf/15345060)
 
 ### The quadrangle definition makes collineations preserve harmonic quadruples
 
@@ -622,6 +690,40 @@
 - [M. Pasch, Vorlesungen über neuere Geometrie, Teubner, Leipzig (1882; 2nd edition 1912)](http://quod.lib.umich.edu/cgi/t/text/text-idx?c=umhistmath;idno=ABV7607)
 - [V. Pambuccian, Why did Euclid not need the Pasch axiom?, Journal of Geometry 115 (2024)](https://doi.org/10.1007/s00022-024-00712-x)
 
+### Conjugation gives the product of two plane reflections
+
+**Remember:** Two reflections cancel the bars and leave a turn or a shift.
+
+*True by definition.* MSC 51F15 (Reflection groups, reflection geometries). arXiv math.MG, math.GR. Level 2: later undergraduate.
+
+**Definition.** Let a mirror line pass through p at angle α to the real axis. Its complex reflection formula sends z to p + (cos 2α + i sin 2α)·w̄, where w = z − p. The bar changes the sign of the imaginary part.
+
+**Problem.** Two reflections in intersecting lines give a rotation about the intersection through twice the directed angle between the lines. Two reflections in parallel lines give a perpendicular translation by twice the displacement from the first line to the second.
+
+**How the definition helps.** Two conjugations cancel, and conjugation reverses the angle in the first complex multiplier (our own). Use the intersection as origin to read the resulting doubled angle (our own). For parallel lines, turn the axes so each mirror is horizontal and adds twice its signed height in the imaginary direction (our own). The work goes into deriving the complex reflection formula by rotating and shifting the real axis (our own).
+
+**Wikipedia:** [Dihedral group](https://en.wikipedia.org/wiki/Dihedral_group). It says: “Reflecting in one axis of symmetry followed by reflecting in another axis of symmetry produces a rotation through twice the angle between the axes.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The moved subspace gives the shortest orthogonal reflection factorization
+
+**Remember:** Each reflection can eliminate one moved direction.
+
+*Makes the theorem clean to state or prove.* MSC 51F15 (Reflection groups, reflection geometries). arXiv math.MG, math.GR. Level 2: later undergraduate.
+
+**Definition.** For an orthogonal linear map A on finite-dimensional Euclidean space, its moved subspace consists of all differences x − Ax. A linear reflection fixes a hyperplane through the origin and reverses its perpendicular direction.
+
+**Problem.** The least number of linear reflections giving A equals the dimension of its moved subspace.
+
+**How the definition helps.** A reflection changes each displacement along one direction, so the moved dimension changes by at most one (our own). For Ax ≠ x, the perpendicular bisector of x and Ax contains the origin and every vector fixed by A (our own). Reflecting Ax back to x therefore increases the fixed dimension by one (our own). The moved dimension drops by one each time, giving a factorization that attains the bound (our own).
+
+**Wikipedia:** [Cartan–Dieudonné theorem](https://en.wikipedia.org/wiki/Cartan%E2%80%93Dieudonn%C3%A9_theorem). It says: “is a composition of at most n reflections.”
+
+**Sources:**
+
+- [Noel Brady and Jon McCammond, Factoring Euclidean Isometries, 2015, Theorem 5.7](https://web.math.ucsb.edu/~jon.mccammond/papers/euclid-isom.pdf)
+
 ### Orthogonal determinant-one matrices make compositions of rotations into rotations
 
 **Remember:** Products of orthogonal matrices with determinant one still satisfy both conditions.
@@ -635,6 +737,40 @@
 **How the definition helps.** The matrix definition makes closure a direct check because products preserve both orthogonality and determinant one. Our own comparison puts the work into Euler’s rotation theorem, which identifies these matrices with turns about axes. In dimension three, the determinant condition forces an orthogonal matrix to have an eigenvalue of 1. The matrix fixes that axis and acts on the perpendicular plane as an ordinary plane rotation.
 
 **Wikipedia:** [Euler's rotation theorem](https://en.wikipedia.org/wiki/Euler%27s_rotation_theorem). It says: “It also means that the composition of two rotations is also a rotation.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Proper orthogonal maps in three dimensions must fix an axis
+
+**Remember:** In three dimensions a proper orthogonal map fixes a line.
+
+*Rules out counterexamples.* MSC 51F25 (Orthogonal and unitary groups in metric geometry), 20H15. arXiv math.GR, math.MG. Level 2: later undergraduate.
+
+**Definition.** Define a proper orthogonal map by a matrix A that preserves dot products and has determinant +1. Allowing determinant −1 would also admit maps that reverse handedness.
+
+**Problem.** Every nonidentity proper orthogonal map in three dimensions is a rotation about a unique axis through the origin.
+
+**How the definition helps.** Determinant one forces a fixed direction because nonreal eigenvalues come in conjugate pairs and all eigenvalues have absolute value one (our own). On the perpendicular plane the map is a rotation, which fixes no other direction unless the entire map is the identity (our own). Without the determinant condition, the map x ↦ −x fixes only the origin (our own).
+
+**Wikipedia:** [Euler's rotation theorem](https://en.wikipedia.org/wiki/Euler%27s_rotation_theorem). It says: “The eigenvector corresponding to this eigenvalue is the axis of rotation connecting the two systems.”
+
+**Sources:**
+
+- [Leonhard Euler, Formulae generales pro translatione quacunque corporum rigidorum, 1776](https://www.17centurymaths.com/contents/euler/e478tr.pdf)
+
+### Quaternion conjugation represents each rotation by exactly two signs
+
+**Remember:** Opposite unit quaternions always give the same rotation.
+
+*True by definition.* MSC 51F25 (Orthogonal and unitary groups in metric geometry), 20H15. arXiv math.GR, math.MG. Level 2: later undergraduate.
+
+**Definition.** Represent a spatial vector by a quaternion v with zero real part. Let a unit quaternion q act on v by conjugation, the map v ↦ qv q⁻¹.
+
+**Problem.** Each rotation of three-dimensional space about the origin is represented by exactly two unit quaternions, q and −q.
+
+**How the definition helps.** Conjugation makes the signs cancel, so q and −q act alike (our own). Two representatives differ by a unit quaternion commuting with all spatial vectors (our own). Commuting with the quaternion units i and j forces this factor to be real, hence 1 or −1 (our own). For unit axis u and angle θ, the axis-angle formula gives the representative cos(θ/2) + u sin(θ/2) (our own).
+
+**Wikipedia:** [Quaternions and spatial rotation](https://en.wikipedia.org/wiki/Quaternions_and_spatial_rotation). It says: “conjugation by q and by −q must produce the same rotational transformation”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -706,6 +842,40 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Halving from the orthocenter puts nine points on one circle
+
+**Remember:** Halve the circumcircle toward the orthocenter to find all nine points.
+
+*True by definition.* MSC 51M04 (Elementary problems in Euclidean geometries). arXiv math.MG. Level 2: later undergraduate.
+
+**Definition.** Let H be the orthocenter, where the three altitudes of a triangle meet. Its circumcircle is the circle through its vertices. Define the nine-point circle by taking the midpoint of HP for every point P on the circumcircle.
+
+**Problem.** The nine-point circle contains the side midpoints, the altitude feet, and the midpoints from H to the vertices.
+
+**How the definition helps.** Taking midpoints gives one circle immediately, since the construction halves all distances (our own). The three vertices give the three midpoints next to H. The points opposite the vertices across the circle give the side midpoints, by the vector formula for H (our own). Reflecting H across each side gives a circumcircle point by the inscribed-angle theorem, so its midpoint gives the altitude foot (our own).
+
+**Paper or page:** [Nine Point Circle Theorem](https://proofwiki.org/wiki/Nine_Point_Circle_Theorem). It says: “The nine points consisting of the feet of the altitudes, the midpoints of the sides, and the midpoints of the segments from the vertices to the orthocenter all lie on a single circle.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Inverting at a vertex makes Ptolemy a triangle inequality
+
+**Remember:** Invert at one vertex and apply the triangle inequality to the other three.
+
+*True by definition.* MSC 51M04 (Elementary problems in Euclidean geometries), 51B10. arXiv math.MG. Level 2: later undergraduate.
+
+**Definition.** Unit inversion about A sends each point X other than A to a point X′ on ray AX with AX × AX′ = 1.
+
+**Problem.** For four distinct plane points, AC × BD ≤ AB × CD + AD × BC. Equality holds exactly when C′ lies between B′ and D′.
+
+**How the definition helps.** Inversion turns Ptolemy’s inequality into B′D′ ≤ B′C′ + C′D′, the ordinary triangle inequality. Similar triangles give X′Y′ = XY/(AX × AY) when A, X and Y form a triangle (our own). On a line through A, the same formula follows by taking differences of signed reciprocals. Multiplying the triangle inequality by AB × AC × AD gives the result, with equality precisely when C′ lies between B′ and D′.
+
+**Wikipedia:** [Ptolemy's inequality](https://en.wikipedia.org/wiki/Ptolemy%27s_inequality). It says: “the triangle equality for these three points (from which Ptolemy's inequality may be derived) also becomes an equality.”
+
+**Paper or page:** [Ptolemy's Theorem](https://proofwiki.org/wiki/Ptolemy's_Theorem). It says: “AB × CD + AD × BC = AC × BD”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### A continuity axiom is needed so Euclid's two circles meet
 
 **Remember:** No gaps in the line, so circles cannot slip past each other.
@@ -740,6 +910,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Horizontal horocycles show why all horocycles are congruent
+
+**Remember:** Send the center to infinity, then scale the height.
+
+*True by definition.* MSC 51M09 (Elementary problems in hyperbolic and elliptic geometries). arXiv math.MG. Level 2: later undergraduate.
+
+**Definition.** In the upper half-plane, a horocycle based at a finite boundary point is a Euclidean circle inside the closed half-plane tangent there. Remove the point of contact. A horocycle based at infinity is a horizontal line.
+
+**Problem.** Any two horocycles in the hyperbolic plane are congruent, meaning an isometry takes one to the other.
+
+**How the definition helps.** Moving its boundary point to infinity turns a horocycle into a horizontal line (our own). A dilation then matches any two such lines. This uses the fact that real fractional linear maps with positive determinant preserve hyperbolic length and take circles through their pole to lines (our own).
+
+**Wikipedia:** [Horocycle](https://en.wikipedia.org/wiki/Horocycle). It says: “Any two horocycles are congruent, and can be superimposed by an isometry”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Klein chord lines give infinitely many parallels through a point
 
 **Remember:** Open chords through a point can miss a given chord in infinitely many directions.
@@ -758,6 +944,22 @@
 
 - [Eugenio Beltrami, Teoria fondamentale degli spazii di curvatura costante, Annali di Matematica Pura ed Applicata 2 (1868)](https://doi.org/10.1007/BF02419615)
 
+### Moving a boundary endpoint to infinity straightens hyperbolic geodesics
+
+**Remember:** Send a boundary endpoint to infinity and a geodesic becomes vertical.
+
+*Makes the theorem clean to state or prove.* MSC 51M09 (Elementary problems in hyperbolic and elliptic geometries), 51B10. arXiv math.MG. Level 2: later undergraduate.
+
+**Definition.** A generalized circle is either a Euclidean circle or a Euclidean line together with the point at infinity. In the upper half-plane, consider arcs of generalized circles meeting the boundary at right angles.
+
+**Problem.** The shortest paths in the Poincaré half-plane are segments of these arcs. They lie on semicircles centered on the boundary or on vertical lines.
+
+**How the definition helps.** Moving one boundary endpoint to infinity turns an orthogonal arc into a vertical line (our own). A real fractional linear map with positive determinant makes this change while preserving lengths and angles. On a vertical line the segment uniquely minimizes length because all paths cost at least the absolute change in log height. The proof also needs length preservation and the unique orthogonal arc through each pair of distinct points (our own).
+
+**Wikipedia:** [Poincaré half-plane model](https://en.wikipedia.org/wiki/Poincar%C3%A9_half-plane_model). It says: “Euclidean half-circles whose origin is on the x-axis”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Proper spherical triangles keep sides and angles below π for polar duality
 
 **Remember:** Short sides, small angles, and every spherical rule applies.
@@ -775,6 +977,54 @@
 **Sources:**
 
 - [I. Todhunter, Spherical Trigonometry, for the Use of Colleges and Schools, Macmillan (1878 edition)](https://archive.org/details/sphericaltrigon06todhgoog)
+
+### Scaling every direction equally preserves angles in the Poincaré disk
+
+**Remember:** Changing the scale at a point does not change its angles.
+
+*True by definition.* MSC 51M09 (Elementary problems in hyperbolic and elliptic geometries). arXiv math.MG. Level 2: later undergraduate.
+
+**Definition.** The Poincaré disk multiplies the Euclidean length of each tangent vector at z by 2/(1 − \|z\|²). This length rule also fixes the inner product used to measure angles.
+
+**Problem.** Two smooth curves meeting with nonzero tangent vectors in the Poincaré disk have the same hyperbolic and Euclidean angle.
+
+**How the definition helps.** At each point the disk rescales every direction equally, so the scale cancels from the angle formula (our own). Using this disk presents angle preservation directly, while the Klein model represents lines by straight chords. The work is proving that the disk’s length rule models the hyperbolic plane (our own).
+
+**Wikipedia:** [Beltrami–Klein model](https://en.wikipedia.org/wiki/Beltrami%E2%80%93Klein_model). It says: “This is in contrast to the Poincaré disk model, which is conformal.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The disk boundary gives exactly two limiting parallels
+
+**Remember:** Each endpoint gives one limiting parallel through the given point inside the disk.
+
+*True by definition.* MSC 51M09 (Elementary problems in hyperbolic and elliptic geometries). arXiv math.MG. Level 2: later undergraduate.
+
+**Definition.** In the Klein model, a line is an open straight chord of a disk. Its two boundary endpoints are ideal points, and distinct lines are limiting parallel if they share one.
+
+**Problem.** Through a point off a hyperbolic line there are exactly two lines limiting parallel to it.
+
+**How the definition helps.** Join the given point to each of the line’s two boundary endpoints (our own). Each join gives a distinct chord, and any limiting parallel must use one of the endpoints (our own). The work is verifying the chord model and its agreement with the intrinsic notion of limiting parallelism (our own).
+
+**Wikipedia:** [Beltrami–Klein model](https://en.wikipedia.org/wiki/Beltrami%E2%80%93Klein_model). It says: “Chords that meet on the boundary circle are limiting parallel lines.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The half-plane length rule makes vertical segments shortest
+
+**Remember:** Changing height costs at least the change in its logarithm.
+
+*True by definition.* MSC 51M09 (Elementary problems in hyperbolic and elliptic geometries). arXiv math.MG. Level 2: later undergraduate.
+
+**Definition.** In the upper half-plane y &gt; 0, measure a piecewise smooth path by integrating its Euclidean arc length divided by its height y. Distance is the greatest lower bound of these path lengths between two points.
+
+**Problem.** Between two points on a vertical line, the vertical segment is the unique shortest path, up to its parametrization. Its length is the absolute difference of the logarithms of their heights.
+
+**How the definition helps.** The half-plane length rule bounds each path’s length below by the total change in log height, taken in absolute value (our own). This follows because Euclidean arc length dominates absolute vertical change. The vertical segment attains the bound, and equality forces a constant horizontal coordinate and monotone height. The work in using this model is identifying its length rule with hyperbolic distance (our own).
+
+**Wikipedia:** [Poincaré half-plane model](https://en.wikipedia.org/wiki/Poincar%C3%A9_half-plane_model). It says: “straight Euclidean vertical rays”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Identifying antipodal points makes two points determine one line
 
@@ -878,6 +1128,54 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Three noncollinear points determine an affine transformation
+
+**Remember:** The first point sets the origin, and the other two set the directions.
+
+*Rules out counterexamples.* MSC 51N10 (Affine analytic geometry). arXiv math.MG. Level 2: later undergraduate.
+
+**Definition.** An affine transformation of the real plane has the form x ↦ Mx + b, with M an invertible linear map. An affine frame is an ordered triple of noncollinear points.
+
+**Problem.** Exactly one affine transformation sends any given affine frame to any other affine frame.
+
+**How the definition helps.** Noncollinearity makes the two differences from the first point a basis of the plane (our own). Matching that basis to the target basis determines one invertible linear map. Matching the first points then determines the translation. If the points lie on the horizontal axis, every map (x,y) ↦ (x,ky) with k ≠ 0 fixes them (our own).
+
+**Wikipedia:** [Affine transformation](https://en.wikipedia.org/wiki/Affine_transformation). It says: “the composition of a linear transformation of X (viewed as a vector space) and a translation of X.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A basis and its sum determine a projective map
+
+**Remember:** The sum fixes the relative scales of the three basis vectors.
+
+*True by definition.* MSC 51N15 (Projective analytic geometry), 51A05. arXiv math.MG. Level 2: later undergraduate.
+
+**Definition.** In the real projective plane, proportional nonzero vectors represent the same point. An ordered projective frame consists of the points represented by three basis vectors followed by their sum. An invertible linear map on vectors induces a projective map on points.
+
+**Problem.** Exactly one projective map takes one ordered frame to another. Equivalently, two ordered sets of four points with no three collinear determine one such map.
+
+**How the definition helps.** The linear map taking one chosen basis to the other also sends the first sum to the second (our own). A map fixing three basis points can scale their vectors independently, but fixing their sum forces all three scales to agree. A common scale fixes every projective point. When no three points lie on one line, the fourth has three nonzero coefficients, which can be absorbed into the basis vectors (our own).
+
+**nLab:** [projective frame](https://ncatlab.org/nlab/show/projective+frame). It says: “and such that p₀ = p(e₁+…+eₙ₊₁).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### An invertible conic matrix gives each point one tangent
+
+**Remember:** An invertible matrix gives a nonzero tangent equation at each conic point.
+
+*Rules out counterexamples.* MSC 51N15 (Projective analytic geometry), 51N35. arXiv math.MG. Level 2: later undergraduate.
+
+**Definition.** A real projective conic has equation pᵀQp = 0 in homogeneous coordinates, with Q symmetric. It is nondegenerate when Q is invertible. A tangent at a point gives a double root when we restrict the equation to that line.
+
+**Problem.** Every point p of a nondegenerate real projective conic has just one tangent, given by pᵀQx = 0.
+
+**How the definition helps.** Invertibility makes Qp nonzero, so pᵀQx = 0 defines exactly one line (our own). Along a line through p in direction v, the linear term is 2pᵀQv. It vanishes exactly for the stated line, where the root is double because a nondegenerate conic contains no line. For the conic xy = 0, every noncomponent line through the crossing gives a double root there (our own).
+
+**nLab:** [conic section](https://ncatlab.org/nlab/show/conic+section). It says: “the projective dual of p on C is its tangent line”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### In the projective plane, ellipse, parabola and hyperbola are one curve
 
 **Remember:** An ellipse misses the line at infinity, a parabola touches it, a hyperbola crosses it.
@@ -891,6 +1189,22 @@
 **How the definition helps.** In the projective plane, the differences between the three types disappear. The two branches of a hyperbola join through two points at infinity, and a parabola closes up by touching the line at infinity. So one can speak of a conic without a type, and the type returns only when one line is chosen as the line at infinity.
 
 **Wikipedia:** [Conic section](https://en.wikipedia.org/wiki/Conic_section). It says: “By extending the Euclidean plane to include a line at infinity, obtaining a projective plane, the apparent difference vanishes”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Preserving the line at infinity characterizes affine transformations
+
+**Remember:** Preserve the line at infinity and the remaining coordinates transform affinely.
+
+*True by definition.* MSC 51N15 (Projective analytic geometry), 51N10. arXiv math.MG. Level 2: later undergraduate.
+
+**Definition.** Real projective points have nonzero coordinate triples, with proportional triples representing the same point. The affine plane consists of the points \[x:y:1\], and the line at infinity consists of the points \[x:y:0\]. An invertible matrix on triples gives a projective transformation.
+
+**Problem.** A real projective transformation preserves the line at infinity exactly when it restricts to an invertible affine map on the remaining points. Every invertible affine map arises this way.
+
+**How the definition helps.** Preserving the line at infinity forces the last row of the matrix to be (0,0,c) with c ≠ 0 (our own). Divide by c to get a linear map plus a translation in the slice with last coordinate 1 (our own). Conversely, that same block matrix extends any invertible affine map (our own).
+
+**Wikipedia:** [Affine transformation](https://en.wikipedia.org/wiki/Affine_transformation). It says: “the projective transformations of that projective space that leave the hyperplane at infinity invariant”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -925,6 +1239,70 @@
 **Wikipedia:** [Pole and polar](https://en.wikipedia.org/wiki/Pole_and_polar). It says: “If a point P lies on the polar of a point Q, then Q lies on the polar of P. (La Hire's theorem)”
 
 **Paper or page:** [Reciprocal Property of Pole and Polar](https://proofwiki.org/wiki/Reciprocal_Property_of_Pole_and_Polar). It says: “if P lies on the polar of Q, then Q lies on the polar of P”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The cross-ratio classifies four points on a projective line
+
+**Remember:** Fix three points and read off the fourth.
+
+*True by definition.* MSC 51N15 (Projective analytic geometry). arXiv math.MG. Level 2: later undergraduate.
+
+**Definition.** On a real projective line, use the unique projective map that takes the first three of four distinct points to ∞, 0, and 1. The cross-ratio of the four points in that order is the new coordinate of the fourth.
+
+**Problem.** Two ordered quadruples of distinct points have equal cross-ratios exactly when a projective map matches them point for point.
+
+**How the definition helps.** Two quadruples with the same cross-ratio become identical after their first three points move to ∞, 0 and 1 (our own). Follow the first map by the inverse of the second to match the quadruples. Conversely, uniqueness of the three-point map forces matching quadruples to have the same fourth coordinate. The work lies in proving that uniqueness and existence and recovering the usual formula from signed differences (our own).
+
+**Wikipedia:** [Projective frame](https://en.wikipedia.org/wiki/Projective_frame). It says: “In the case of a projective line, a frame consists of three distinct points.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The inverse conic matrix describes all its tangents
+
+**Remember:** The point equation uses Q, and the tangent equation uses its inverse.
+
+*Makes the theorem clean to state or prove.* MSC 51N15 (Projective analytic geometry), 51N35. arXiv math.MG. Level 2: later undergraduate.
+
+**Definition.** In the dual projective plane, a line with equation ℓᵀx = 0 becomes the point represented by its coefficient column ℓ. Multiplying ℓ by a nonzero number represents the same line.
+
+**Problem.** For a real conic pᵀQp = 0 with Q symmetric and invertible, its tangent lines form the dual conic ℓᵀQ⁻¹ℓ = 0.
+
+**How the definition helps.** The dual coordinates turn the tangent at p into the point represented by Qp (our own). Substituting p = Q⁻¹ℓ into the original equation gives the dual equation. Conversely, each solution ℓ gives a point Q⁻¹ℓ whose tangent has coefficients ℓ. The work is deriving the tangent formula by expanding the quadratic along a line through p (our own).
+
+**Wikipedia:** [Conic section](https://en.wikipedia.org/wiki/Conic_section). It says: “Such an envelope is called a line conic (or dual conic).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The tangent completes projection from a point on a conic
+
+**Remember:** Count the tangent as the secant whose two points coincide.
+
+*Makes the theorem clean to state or prove.* MSC 51N15 (Projective analytic geometry). arXiv math.MG. Level 2: later undergraduate.
+
+**Definition.** On a nondegenerate real projective conic, choose a point P. Give every other point Q the line PQ as its parameter, and give P itself the tangent at P.
+
+**Problem.** This projection is a bijection from the conic to the lines through P.
+
+**How the definition helps.** Every line through P has a second intersection, counting P twice for the tangent (our own). The work is restricting the quadratic to that line, where one root is known (our own). A nondegenerate conic contains no whole line, so the restricted equation is not identically zero (our own). Without the tangent parameter, the projection leaves out one line (our own).
+
+**nLab:** [conic section](https://ncatlab.org/nlab/show/conic+section). It says: “the unique line L(p, q) incident to p and q intersects L in exactly one point”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### When do the three diagonal points lie on one line?
+
+**Remember:** The diagonal points become collinear exactly when two equals zero.
+
+*Rules out counterexamples.* MSC 51N15 (Projective analytic geometry), 51A05. arXiv math.MG. Level 2: later undergraduate.
+
+**Definition.** Take four points in a projective plane over a field, with no three on a line. Each way of pairing the points gives two joining lines. Their intersection is a diagonal point of the four points.
+
+**Problem.** The three diagonal points lie on one line exactly when 1 + 1 = 0 in the field.
+
+**How the definition helps.** In coordinates adapted to the four points, the determinant testing the diagonal points for collinearity is −2 (our own). Choose three coordinate unit vectors and their sum to represent the four points. The three pairings give (1,1,0), (1,0,1) and (0,1,1). Their determinant vanishes exactly when two equals zero, as it does in the seven-point Fano plane (our own).
+
+**nLab:** [projective plane](https://ncatlab.org/nlab/show/projective+plane). It says: “It satisfies Fano's axiom iff the characteristic of F is ≠ 2.”
 
 **Sources:** none listed. No primary source with a working link was found.
 

@@ -48,6 +48,200 @@
 
 - [ProofWiki, 1-Seminorm on Continuous on Closed Interval Real-Valued Functions is Norm](https://proofwiki.org/wiki/1-Seminorm_on_Continuous_on_Closed_Interval_Real-Valued_Functions_is_Norm)
 
+### The graph norm reduces the closed graph theorem to inversion
+
+**Remember:** Make the image part of the norm, then compare the two norms.
+
+*Makes the theorem clean to state or prove.* MSC 46A30 (Open mapping and closed graph theorems; completeness (including \\(B\\)-, \\(B<sub>r</sub>\\)-completeness)), 47A05. arXiv math.FA. Level 2: later undergraduate.
+
+**Definition.** For a linear map T from X into Y, define the graph norm by ‖x‖ + ‖Tx‖. Unlike the original norm on X, this measures the size of both x and its image.
+
+**Problem.** A linear map between Banach spaces is bounded if its graph, the set of pairs (x,Tx), is closed.
+
+**How the definition helps.** In our own proof, the graph norm turns a closed graph into a complete domain. The map x ↦ (x,Tx) preserves distances from this domain onto the closed graph in the complete product. The identity from the graph-norm domain to the original domain is a bounded bijection between Banach spaces. The bounded inverse theorem gives ‖x‖ + ‖Tx‖ ≤ C‖x‖, so T is bounded.
+
+**Paper or page:** [Closed Graph Theorem/Banach Space](https://proofwiki.org/wiki/Closed_Graph_Theorem/Banach_Space). It says: “is closed in the direct product X × Y equipped with the direct product norm”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The dual unit ball recovers the norm of every vector
+
+**Remember:** Test with functionals that never stretch, and one test reaches the norm.
+
+*Makes the theorem clean to state or prove.* MSC 46B10 (Duality and reflexivity in normed linear and Banach spaces). arXiv math.FA. Level 2: later undergraduate.
+
+**Definition.** The normed dual consists of the bounded linear scalar-valued maps, not all linear scalar-valued maps. Put f in its unit ball exactly when \|f(y)\| ≤ ‖y‖ for every vector y.
+
+**Problem.** The norm of a vector in a normed space is the supremum of \|f(x)\| over the dual unit ball.
+
+**How the definition helps.** In our own proof, the dual unit ball gives the upper bound \|f(x)\| ≤ ‖x‖ for every test. For nonzero x, the functional f(tx) = t‖x‖ attains the bound on the line through x. The Hahn–Banach theorem extends it to the whole space with the same norm.
+
+**Paper or page:** [Norm in terms of Normed Dual Space](https://proofwiki.org/wiki/Norm_in_terms_of_Normed_Dual_Space). It says: “$\\ds \\norm x = \\sup\_{f \\in B<sub>X<sup>\\ast</sub>^-}</sup> \\cmod {\\map f x}$”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The quotient norm identifies its dual with the annihilator
+
+**Remember:** Vanishing on the subspace means a functional sees only the coset.
+
+*Makes the theorem clean to state or prove.* MSC 46B10 (Duality and reflexivity in normed linear and Banach spaces). arXiv math.FA. Level 2: later undergraduate.
+
+**Definition.** The dual of a normed space consists of its bounded linear maps to scalars, called functionals. The annihilator of a subspace M consists of those functionals that vanish on M. The quotient norm of a coset x + M is the infimum of the norms of its representatives.
+
+**Problem.** For a closed subspace M of a normed space X, the dual of X/M and the annihilator of M are isometrically isomorphic. That is, they match by a linear bijection that preserves norms.
+
+**How the definition helps.** In our own proof, taking the infimum over representatives preserves the bound on a functional that vanishes on M. Such a functional takes one value throughout each coset, so it defines a functional on the quotient. Conversely, composing a quotient functional with the quotient map preserves its bound because the map never increases norms. The two constructions undo each other, so the norms agree.
+
+**Paper or page:** [Normed Dual Space of Normed Quotient Vector Space is Isometrically Isomorphic to Annihilator](https://proofwiki.org/wiki/Normed_Dual_Space_of_Normed_Quotient_Vector_Space_is_Isometrically_Isomorphic_to_Annihilator). It says: “(X/Y)∗ is isometrically isomorphic to Y⊥”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The operator norm makes bounded maps a complete space
+
+**Remember:** Take pointwise limits, then keep the same uniform error bound.
+
+*Makes the theorem clean to state or prove.* MSC 46B28 (Spaces of operators; tensor products; approximation properties), 47A05. arXiv math.FA. Level 2: later undergraduate.
+
+**Definition.** Define the operator norm of a bounded linear map T as the supremum of ‖Tx‖ over ‖x‖ ≤ 1. It measures error uniformly on the unit ball, unlike convergence tested on each vector separately.
+
+**Problem.** Bounded linear maps from a normed space to a Banach space form a Banach space in the operator norm.
+
+**How the definition helps.** In our own proof, the operator norm gives one error bound for the whole unit ball. For a Cauchy sequence of maps, completeness of the target gives a limit at each vector. The resulting map is linear, and the uniform error bound still holds after taking the pointwise limit. Thus the limit is bounded and the maps converge to it in operator norm.
+
+**nLab:** [Banach space](https://ncatlab.org/nlab/show/Banach+space). It says: “This will be a Banach space if (and, except for degenerate cases of V, only if) W is a Banach space.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Closed subspaces make distance a quotient norm
+
+**Remember:** Only vectors in a closed subspace have zero distance from it.
+
+*Rules out counterexamples.* MSC 46B99 (Normed linear spaces and Banach spaces; Banach lattices). arXiv math.FA. Level 2: later undergraduate.
+
+**Definition.** A coset x + M consists of all vectors x + m with m in the subspace M. Its quotient seminorm is the distance from x to M.
+
+**Problem.** For a closed subspace M of a normed space, distance to M defines a norm on the cosets.
+
+**How the definition helps.** In our own proof, closedness ensures that distance zero puts x in M, so only the zero coset has length zero. Scaling and the triangle inequality give the other norm laws. Without closedness, take M to consist of the finitely supported sequences in the space of square-summable sequences. Truncating a sequence with infinitely many nonzero terms shows that its coset can have length zero even when the sequence lies outside M.
+
+**Paper or page:** [Quotient Norm is Norm](https://proofwiki.org/wiki/Quotient_Norm_is_Norm). It says: “Then $\\norm {\\, \\cdot \\,}<sub>X/N</sub>$ is indeed a norm.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Completeness lets pointwise bounds control operator norms
+
+**Remember:** One bound per vector gives one bound for all operators on a Banach domain.
+
+*Rules out counterexamples.* MSC 46B99 (Normed linear spaces and Banach spaces; Banach lattices). arXiv math.FA. Level 2: later undergraduate.
+
+**Definition.** A Banach space is a normed space in which all Cauchy sequences converge. A family is pointwise bounded if the values at each fixed vector are bounded across the family.
+
+**Problem.** A pointwise bounded family of bounded linear operators from a Banach space into a normed space has uniformly bounded operator norms.
+
+**How the definition helps.** In our own proof, completeness lets the Baire category theorem give a common bound throughout some ball. Subtraction gives a bound near zero, and scaling gives a bound on the unit ball. For a counterexample, take finitely supported sequences with the supremum norm and use the functionals x ↦ nxₙ. Their values stay bounded at each fixed sequence, yet their norms grow as n.
+
+**Paper or page:** [From Uniform Boundedness to the Boundary Between Convergence and Divergence](https://arxiv.org/abs/2011.13871). It says: “Let X be a Banach space and let Y be a normed space. Consider a family F of bounded linear operators T : X → Y. If F is pointwise bounded, then it is uniformly bounded.”
+
+**Sources:**
+
+- [Stefan Banach and Hugo Steinhaus, Sur le principe de la condensation de singularités, Fundamenta Mathematicae 9 (1927), 50–61.](https://doi.org/10.4064/fm-9-1-50-61)
+
+### Quotient norms make the quotient map open
+
+**Remember:** Below the radius means some representative is inside the ball.
+
+*True by definition.* MSC 46B99 (Normed linear spaces and Banach spaces; Banach lattices). arXiv math.FA. Level 2: later undergraduate.
+
+**Definition.** The coset x + M consists of the vectors differing from x by an element of the closed subspace M. Its quotient norm is the infimum of the norms of those vectors. The quotient map sends x to x + M.
+
+**Problem.** The map sending vectors to cosets of a closed subspace is open in the quotient norm. That is, it sends open sets to open sets.
+
+**How the definition helps.** In our own proof, the infimum puts a coset inside an open ball exactly when some representative lies in the original ball. Our own argument translates this fact from balls around zero to balls around any point. Open sets are unions of such balls, so no completeness or open mapping theorem is needed.
+
+**Paper or page:** [Quotient Mapping Maps Unit Open Ball in Normed Vector Space to Unit Open Ball in Normed Quotient Vector Space](https://proofwiki.org/wiki/Quotient_Mapping_Maps_Unit_Open_Ball_in_Normed_Vector_Space_to_Unit_Open_Ball_in_Normed_Quotient_Vector_Space). It says: “\\map \\pi {B<sub>X</sub>} = B<sub>X/N</sub>”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The quotient norm lets close cosets lift to close vectors
+
+**Remember:** Choose short representatives of the differences between successive cosets.
+
+*Makes the theorem clean to state or prove.* MSC 46B99 (Normed linear spaces and Banach spaces; Banach lattices). arXiv math.FA. Level 2: later undergraduate.
+
+**Definition.** In a quotient by a closed subspace M, the coset x + M groups vectors that differ by an element of M. Define its norm as the infimum of the norms of all its representatives.
+
+**Problem.** The quotient of a Banach space by a closed subspace is again a Banach space.
+
+**How the definition helps.** In our own proof, the infimum lets us lift small differences between cosets to short vectors. From a Cauchy sequence of cosets, choose a subsequence whose successive differences have norms below 2⁻ⁿ at step n. Choose representatives of those differences with the same bounds and add them to a representative of the first coset. Completeness gives a limit whose coset is the subsequence limit and hence the limit of the Cauchy sequence.
+
+**Wikipedia:** [Quotient space (linear algebra)](https://en.wikipedia.org/wiki/Quotient_space_%28linear_algebra%29). It says: “If X is a Banach space and M is a closed subspace of X, then the quotient X/M is again a Banach space.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Dense orthonormal spans turn Bessel’s bound into equality
+
+**Remember:** A dense span leaves no part of the squared norm uncounted.
+
+*Makes the theorem clean to state or prove.* MSC 46C05 (Hilbert and pre-Hilbert spaces: geometry and topology (including spaces with semidefinite inner product)). arXiv math.FA. Level 2: later undergraduate.
+
+**Definition.** An orthonormal basis is a set of mutually perpendicular unit vectors whose finite linear combinations are dense. An orthonormal set without this density need not see every part of a vector.
+
+**Problem.** For a countable orthonormal basis of a Hilbert space, the sum of squared magnitudes of the inner products with a vector equals its squared norm.
+
+**How the definition helps.** In our own proof, dense span makes the error of projection onto the first n basis vectors tend to zero. Each projection gives the closest point in its span, so its error is at most that of any approximation there. Pythagoras expresses the squared norm as the partial coordinate sum plus the squared error. Taking the limit gives equality.
+
+**Wikipedia:** [Orthonormal basis](https://en.wikipedia.org/wiki/Orthonormal_basis). It says: “An orthonormal basis is an orthonormal system with the additional property that the linear span of S is dense in H.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Dense span lets every orthonormal set extend to a basis
+
+**Remember:** A Hilbert basis needs dense span, not finite formulas for every vector.
+
+*Makes the theorem clean to state or prove.* MSC 46C05 (Hilbert and pre-Hilbert spaces: geometry and topology (including spaces with semidefinite inner product)). arXiv math.FA. Level 2: later undergraduate.
+
+**Definition.** An orthonormal set consists of mutually perpendicular unit vectors. It is an orthonormal basis if finite linear combinations of its vectors approximate every vector arbitrarily closely.
+
+**Problem.** Every orthonormal set in a Hilbert space extends to an orthonormal basis.
+
+**How the definition helps.** Dense span makes a maximal orthonormal set a basis. Zorn’s lemma extends the given set to a maximal one. In our own argument, if its closed span misses a vector, subtract that vector’s orthogonal projection onto the span. Normalizing the nonzero perpendicular remainder would enlarge the set.
+
+**nLab:** [orthogonal basis](https://ncatlab.org/nlab/show/orthogonal+basis). It says: “any maximal orthogonal set (which must exist by an application of Zorn's lemma) is necessarily a basis in the topological sense.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Inner product tests give bounded sequences weakly convergent subsequences
+
+**Remember:** Test on a countable dense subset of the sequence’s closed span.
+
+*Makes the theorem clean to state or prove.* MSC 46C05 (Hilbert and pre-Hilbert spaces: geometry and topology (including spaces with semidefinite inner product)). arXiv math.FA. Level 2: later undergraduate.
+
+**Definition.** A sequence converges weakly to x if its inner products with each fixed test vector converge to the corresponding inner product with x. Norm convergence instead asks that the norm of the difference from x tend to zero.
+
+**Problem.** Every bounded sequence in a Hilbert space has a weakly convergent subsequence.
+
+**How the definition helps.** In our own proof, inner product tests on a countable dense subset of the sequence’s closed span suffice because the sequence is bounded. A diagonal subsequence gives convergence on those tests, and the uniform bound extends convergence to the whole span. Riesz representation gives the limiting vector there. Projecting any other test vector onto that span leaves all its inner products with the sequence unchanged.
+
+**Wikipedia:** [Weak convergence (Hilbert space)](https://en.wikipedia.org/wiki/Weak_convergence_%28Hilbert_space%29). It says: “every bounded sequence xₙ in a Hilbert space H contains a weakly convergent subsequence.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Orthogonal projection gives Bessel’s inequality
+
+**Remember:** For orthonormal coordinates, a partial sum only uses part of the squared norm.
+
+*True by definition.* MSC 46C05 (Hilbert and pre-Hilbert spaces: geometry and topology (including spaces with semidefinite inner product)). arXiv math.FA. Level 2: later undergraduate.
+
+**Definition.** The orthogonal projection of x onto a finite-dimensional subspace is the unique point p in it for which x − p is perpendicular to it. Equivalently, p is the closest point to x in the subspace.
+
+**Problem.** For a countable orthonormal set in an inner product space, the sum of squared coordinate magnitudes never exceeds the squared norm of the vector.
+
+**How the definition helps.** In our own proof, the perpendicular remainder makes the inequality an application of Pythagoras to each finite projection. The coordinates of the projection are the inner products with the chosen perpendicular unit vectors. Thus every partial sum is bounded by the squared norm of x, giving the same bound for the series. Pythagoras also proves that the perpendicular projection is the closest point.
+
+**Paper or page:** [Bessel's Inequality](https://proofwiki.org/wiki/Bessel's_Inequality). It says: “∑ₙ₌₁∞ \|⟨h,eₙ⟩\|² ≤ ‖h‖²”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Vanishing at infinity means continuous at the added point
 
 **Remember:** Small outside a compact set means near zero near the point at infinity.
@@ -67,6 +261,22 @@
 - [ProofWiki, Extension of Continuous Complex-Valued Function Vanishing at Infinity to Alexandroff Extension is Continuous](https://proofwiki.org/wiki/Extension_of_Continuous_Complex-Valued_Function_Vanishing_at_Infinity_to_Alexandroff_Extension_is_Continuous)
 - [ProofWiki, Space of Continuous Functions on Locally Compact Hausdorff Space Vanishing at Infinity is Banach Space](https://proofwiki.org/wiki/Space_of_Continuous_Functions_on_Locally_Compact_Hausdorff_Space_Vanishing_at_Infinity_is_Banach_Space)
 
+### Measuring derivatives as well makes the space of differentiable functions complete
+
+**Remember:** Keep the derivatives close, so the limit still has a derivative.
+
+*Rules out counterexamples.* MSC 46E15 (Banach spaces of continuous, differentiable or analytic functions). arXiv math.FA. Level 2: later undergraduate.
+
+**Definition.** For a continuously differentiable real function f on \[0,1\], its C¹ norm is sup\|f\| + sup\|f′\|. This norm measures uniform errors in both the function and its derivative.
+
+**Problem.** Continuously differentiable functions on \[0,1\] form a Banach space in the norm sup\|f\| + sup\|f′\|.
+
+**How the definition helps.** In our own proof, a Cauchy sequence in this norm has uniform limits for both the functions and their derivatives. The fundamental theorem of calculus identifies the second limit as the derivative of the first. With only the supremum norm, the smooth functions √((x − ½)² + 1/n) converge uniformly to \|x − ½\|, which has a corner.
+
+**Paper or page:** [Space of Continuously Differentiable on Closed Interval Real-Valued Functions with C<sup>1</sup> Norm is Banach Space](https://proofwiki.org/wiki/Space_of_Continuously_Differentiable_on_Closed_Interval_Real-Valued_Functions_with_C^1_Norm_is_Banach_Space). It says: “is a Banach space.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Separating points is all that Stone–Weierstrass needs
 
 **Remember:** To approximate everything, the algebra must tell every two points apart.
@@ -84,6 +294,22 @@
 **Sources:**
 
 - [M. H. Stone, Applications of the theory of Boolean rings to general topology, Trans. Amer. Math. Soc. 41 (1937), 375–481, doi:10.1090/S0002-9947-1937-1501905-7](https://doi.org/10.1090/S0002-9947-1937-1501905-7)
+
+### Defining Lᵖ by completion gives completeness for finite p
+
+**Remember:** Complete the simple functions, then identify the resulting limits.
+
+*True by definition.* MSC 46E30 (Spaces of measurable functions (\\(L<sup>p\\</sup>)-spaces, Orlicz spaces, Köthe function spaces, Lorentz spaces, rearrangement invariant spaces, ideal spaces, etc.)), 28A25. arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** For 1 ≤ p &lt; ∞, define Lᵖ as the norm completion of simple functions that vanish outside a set of finite measure. To get the norm, integrate the pth power of \|f\| and take the pth root. Identify functions that agree outside a null set before taking the completion.
+
+**Problem.** For 1 ≤ p &lt; ∞, Lᵖ is complete under its norm. Every sequence that is Cauchy in that norm has a limit in the space.
+
+**How the definition helps.** Taking the norm completion supplies limits for all Cauchy sequences by construction (our own). The work is identifying this completion with measurable functions of finite norm, up to equality almost everywhere (our own). Choose a subsequence with summable norms of consecutive differences (our own). The triangle inequality and monotone convergence bound the sum of absolute differences and its tails, giving convergence almost everywhere and in norm (our own).
+
+**Wikipedia:** [Lp space](https://en.wikipedia.org/wiki/Lp_space). It says: “By construction of the integral, the vector space of integrable simple functions is dense in Lᵖ(S, Σ, μ).”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Grading Lebesgue spaces by 1/p makes Hölder's inequality a graded multiplication
 

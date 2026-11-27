@@ -48,6 +48,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Homology degree turns odd sphere maps into a coincidence test
+
+**Remember:** An odd equator map has odd degree, but an extension forces zero.
+
+*Makes the theorem clean to state or prove.* MSC 55M25 (Degree, winding number), 55M20, 55N10. arXiv math.AT. Level 2: later undergraduate.
+
+**Definition.** The degree of a sphere map is the integer by which it multiplies the sphere’s top reduced homology group. This definition also works for a continuous map with no derivative.
+
+**Problem.** Every continuous map from the n-sphere to Euclidean n-space agrees at some pair of opposite points when n ≥ 1. Equivalently, no continuous odd map takes the n-sphere into the sphere one dimension lower.
+
+**How the definition helps.** A sphere map that extends over a ball has degree zero because the ball has zero reduced homology (our own). Without an antipodal coincidence, dividing f(x) − f(−x) by its length gives an odd map to the sphere one dimension lower (our own). Its restriction to the equator extends over a hemisphere (our own). The odd-degree theorem says this restriction has odd degree, a contradiction.
+
+**Wikipedia:** [Borsuk–Ulam theorem](https://en.wikipedia.org/wiki/Borsuk%E2%80%93Ulam_theorem). It says: “any odd map Sⁿ⁻¹ → Sⁿ⁻¹ has odd degree”
+
+**Sources:**
+
+- [Karol Borsuk, Drei Sätze über die n-dimensionale euklidische Sphäre, Fundamenta Mathematicae 20 (1933), 177–190](https://doi.org/10.4064/fm-20-1-177-190)
+
 ### Lifting the angle makes winding number an integer
 
 **Remember:** A closed path ends a whole number of turns from its starting angle.
@@ -61,6 +79,106 @@
 **How the definition helps.** The angle lift makes integrality immediate because the endpoint and start represent the same direction. Their real angles therefore differ by an integer number of turns. In our own comparison, the integral definition has the same value by differentiating the polar form along a piecewise smooth path. The work is proving that a continuous real angle exists once the starting angle is chosen.
 
 **Wikipedia:** [Winding number](https://en.wikipedia.org/wiki/Winding_number). It says: “all the fibers of p are of the form ρ₀ × (s₀ + ℤ) (so the above expression does not depend on the choice of the starting point). It is an integer because the path is closed.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Parity gives a degree even without orientations
+
+**Remember:** Count endpoints in pairs, without signs.
+
+*Makes the theorem clean to state or prove.* MSC 55M25 (Degree, winding number), 57R35. arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** Consider a smooth map between manifolds of equal dimension without boundary, with compact source and connected target. At a regular value, the derivative is invertible at each preimage. The degree modulo two records whether the number of preimages is even or odd.
+
+**Problem.** The degree modulo two is independent of the regular value and stays the same under smooth homotopy. It exists even when the manifolds have no orientation.
+
+**How the definition helps.** Counting parity makes the two ends of each interval cancel without orientation signs (our own). At a common regular value, the homotopy fiber is a compact curve whose boundary consists of the two end fibers (our own). Sard’s theorem and local constancy let us perturb a chosen value to one regular for the homotopy (our own). Smoothly moving one target point to another then proves independence of the regular value (our own).
+
+**Wikipedia:** [Degree of a continuous mapping](https://en.wikipedia.org/wiki/Degree_of_a_continuous_mapping). It says: “the manifolds need not be orientable”
+
+**Sources:**
+
+- [John Milnor, Topology from the Differentiable Viewpoint](https://people.dm.unipi.it/benedett/MILNOR-TDVPOINT.pdf)
+
+### Signed preimages make boundary extensions have degree zero
+
+**Remember:** A fiber interval contributes one point of each sign.
+
+*True by definition.* MSC 55M25 (Degree, winding number), 57R35. arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** For a smooth map between oriented manifolds of equal dimension without boundary, assume the source is compact and the target connected. Its degree counts preimages of a regular value with sign +1 or −1 as the derivative preserves or reverses orientation.
+
+**Problem.** Let a smooth map from the oriented boundary of a compact oriented manifold extend smoothly over that manifold. Its degree is zero for a connected oriented target without boundary of the same dimension as the source boundary.
+
+**How the definition helps.** Computing degree by signed preimages instead of top homology turns the calculation into counting interval endpoints (our own). Sard’s theorem supplies a value regular for both maps, whose inverse image under the extension is a compact oriented curve (our own). Its interval endpoints contribute opposite signs under the induced boundary orientation, and its circles contribute none (our own).
+
+**Paper or page:** [Extendability Theorem for Intersection Numbers/Corollary](https://proofwiki.org/wiki/Extendability_Theorem_for_Intersection_Numbers/Corollary). It says: “deg f = 0”
+
+**Sources:**
+
+- [Victor Guillemin and Alan Pollack, Differential Topology](https://web.math.ucsb.edu/~bigelow/books/guillemin_pollack.pdf)
+
+### Augmentation makes one suspension formula work in all degrees
+
+**Remember:** Remove the point contribution and suspension shifts every degree alike.
+
+*Makes the theorem clean to state or prove.* MSC 55N10 (Singular homology and cohomology theory). arXiv math.AT. Level 2: later undergraduate.
+
+**Definition.** Reduced homology adds a boundary map that sends each point to 1 in a copy of ℤ in degree −1. The suspension takes a cylinder on the space and collapses each end to its own point.
+
+**Problem.** For a nonempty space, suspension shifts reduced homology from degree n to n + 1 for every n ≥ 0. A sphere therefore has reduced homology ℤ in its dimension and zero in other nonnegative degrees.
+
+**How the definition helps.** Reduced homology vanishes on each contractible cone even in degree zero (our own). The complements of the two tips form an open cover, and their overlap deforms onto the original space (our own). The Mayer–Vietoris exact sequence for this cover then gives the degree shift (our own). Starting with two points gives the sphere calculation (our own).
+
+**Wikipedia:** [Mayer–Vietoris sequence](https://en.wikipedia.org/wiki/Mayer%E2%80%93Vietoris_sequence). It says: “with A and B contractible. Also, the intersection A ∩ B is homotopy equivalent to Y.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Cell boundaries turn surface homology into signed edge counts
+
+**Remember:** Opposite traversals cancel, while matching traversals give a two.
+
+*True by definition.* MSC 55N10 (Singular homology and cohomology theory), 57K20. arXiv math.AT. Level 2: later undergraduate.
+
+**Definition.** Cellular chains use one integer generator per cell in each dimension. For a polygon with paired edges and one vertex, its boundary records each edge traversal with a sign for its direction.
+
+**Problem.** The first integral homology of a connected sum of g ≥ 1 tori is free abelian of rank 2g. For k ≥ 1 projective planes, the connected sum has k − 1 free generators and one summand ℤ/2ℤ.
+
+**How the definition helps.** Cellular chains replace a triangulation by one polygon relation, since every edge begins and ends at the same vertex (our own). In the usual torus sum polygon, each edge appears twice in opposite directions and cancels (our own). For the projective plane sum, the boundary is twice the sum of all edges, and this sum can replace one generator (our own). The polygon descriptions and the cellular homology theorem justify the calculation (our own).
+
+**nLab:** [cellular homology](https://ncatlab.org/nlab/show/cellular+homology). It says: “Cellular homology is a very efficient tool for computing the ordinary homology groups of topological spaces which are CW complexes”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Chain homotopy makes homotopic maps agree on homology
+
+**Remember:** On a cycle the difference is a boundary.
+
+*True by definition.* MSC 55N10 (Singular homology and cohomology theory), 55U15. arXiv math.AT. Level 2: later undergraduate.
+
+**Definition.** A chain map commutes with the boundary operator ∂. Two chain maps are chain homotopic if their difference equals ∂P + P∂ for an operator P that raises degree by one.
+
+**Problem.** Homotopic continuous maps induce the same homomorphism on singular homology. In particular homotopy equivalences induce isomorphisms.
+
+**How the definition helps.** For a cycle z, its boundary ∂z vanishes, so the two images differ by the boundary ∂Pz (our own). Homology identifies cycles whose difference is a boundary (our own). To pass from a continuous deformation to this algebraic formula, the prism construction divides each moving simplex into higher-dimensional simplices (our own).
+
+**Paper or page:** [Homotopic Chain Maps Induce Equal Maps on Homology](https://proofwiki.org/wiki/Homotopic_Chain_Maps_Induce_Equal_Maps_on_Homology). It says: “Then f and g induce equal maps on homology.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Continuous simplices let every continuous map act on homology
+
+**Remember:** Compose each simplex with the map and keep its domain.
+
+*True by definition.* MSC 55N10 (Singular homology and cohomology theory), 55U15. arXiv math.AT. Level 2: later undergraduate.
+
+**Definition.** A singular simplex in X is any continuous map from a standard simplex to X. Unlike a simplex in a triangulation, its image may overlap itself or collapse.
+
+**Problem.** Every continuous map induces homomorphisms on singular homology. The identity induces the identity, and composition induces composition.
+
+**How the definition helps.** Composing a singular simplex with any continuous map immediately gives another singular simplex (our own). Composition respects faces, so it carries cycles to cycles and boundaries to boundaries (our own). For triangulations the direct construction would require simplicial maps (our own). The comparison theorem identifies simplicial and singular homology on a triangulated space (our own).
+
+**Paper or page:** [Homomorphism of Chain Complexes induces Homomorphism of Homology](https://proofwiki.org/wiki/Homomorphism_of_Chain_Complexes_induces_Homomorphism_of_Homology). It says: “Then for every n, f induces a morphism”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -82,6 +200,150 @@
 
 - [Allen Hatcher, Algebraic Topology, §2.1](https://pi.math.cornell.edu/~hatcher/AT/ATch2.pdf)
 
+### Local homology makes dimension visible at one point
+
+**Remember:** Remove a point to expose the dimension.
+
+*Makes the theorem clean to state or prove.* MSC 55N10 (Singular homology and cohomology theory). arXiv math.AT. Level 2: later undergraduate.
+
+**Definition.** Local homology at x means the relative homology of the space paired with the complement of x. Relative chains identify every chain avoiding x with zero.
+
+**Problem.** Homeomorphic nonempty open subsets of Euclidean spaces have the same dimension, which local homology detects at any point.
+
+**How the definition helps.** At a point of an open subset of Euclidean n-space, local homology is ℤ in degree n and zero elsewhere (our own). Excision reduces the calculation to a ball around the point (our own). For positive dimension the punctured ball deforms onto a sphere, and the exact sequence of the pair gives the result (our own). A homeomorphism preserves these groups, so it preserves the dimension (our own).
+
+**Wikipedia:** [Excision theorem](https://en.wikipedia.org/wiki/Excision_theorem). It says: “This follows from the excision theorem, the long exact sequence for the pair”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Opposite edge directions turn a surface orientation into a cycle
+
+**Remember:** Orient neighbors oppositely along each shared edge to cancel it.
+
+*Rules out counterexamples.* MSC 55N10 (Singular homology and cohomology theory), 57K20. arXiv math.AT. Level 2: later undergraduate.
+
+**Definition.** Orient a triangulated surface by choosing directions around its triangles so adjacent triangles induce opposite directions along their shared edge. Independent choices of directions need not fit together.
+
+**Problem.** For a connected closed triangulated surface, the second integral homology group is ℤ if the surface is orientable and zero otherwise. Here closed means compact and without boundary.
+
+**How the definition helps.** Compatible triangle orientations make every edge cancel in the sum of all triangles (our own). In any cycle, cancellation across an edge forces its two triangle coefficients to have equal magnitudes (our own). Every triangle connects to every other across edges, so a nonzero cycle gives compatible orientations and one common magnitude (our own). There are no three-dimensional chains whose boundaries could remove such a cycle (our own).
+
+**Wikipedia:** [Orientability](https://en.wikipedia.org/wiki/Orientability). It says: “neighboring edges are pointing in the opposite direction, then this determines an orientation of the surface.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Small singular chains make excision a quotient identity
+
+**Remember:** Keep simplices in one open set so the quotient cancels the other.
+
+*True by definition.* MSC 55N10 (Singular homology and cohomology theory). arXiv math.AT. Level 2: later undergraduate.
+
+**Definition.** For an open cover by U and V, call a singular chain small if each of its simplices lies in U or in V. General singular chains can contain simplices crossing between the two sets.
+
+**Problem.** Suppose open sets U and V cover X. Inclusion of (V, U ∩ V) into (X, U) induces isomorphisms on relative homology, which ignores chains in the second space.
+
+**How the definition helps.** Among small chains, ignoring simplices in U leaves precisely the simplices in V that do not lie entirely in the intersection (our own). This identifies the two relative chain groups and their boundary maps (our own). Repeated subdivision makes each finite chain small, and a chain homotopy shows that this preserves relative homology (our own).
+
+**Wikipedia:** [Excision theorem](https://en.wikipedia.org/wiki/Excision_theorem). It says: “subdivide the simplices in a relative cycle”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Sliding onto a subspace gives a homotopy equivalence
+
+**Remember:** A deformation retraction gives a way back and a way to slide back.
+
+*Rules out counterexamples.* MSC 55P10 (Homotopy equivalences in algebraic topology), 55Q05. arXiv math.AT. Level 2: later undergraduate.
+
+**Definition.** A retraction is a continuous map onto a subspace that fixes its points. A strong deformation retraction continuously moves each point to its image under the retraction while keeping the subspace fixed.
+
+**Problem.** Including a strong deformation retract gives a homotopy equivalence, a map with an inverse up to continuous deformation. It induces an isomorphism on fundamental groups at each base point in the subspace.
+
+**How the definition helps.** The inclusion and retraction compose to the identity one way and deform to it the other way (our own). An ordinary retraction can send a circle to a point and lose its nontrivial fundamental group (our own). The work is finding the deformation and showing that based homotopies induce equal homomorphisms (our own).
+
+**nLab:** [deformation retract](https://ncatlab.org/nlab/show/deformation+retract). It says: “Hence a deformation retract is a (left) homotopy equivalence where one of the two homotopies occuring is in fact an identity.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The mapping cylinder replaces any map by an inclusion
+
+**Remember:** Glue the bottom by the map and leave the top alone.
+
+*True by definition.* MSC 55P10 (Homotopy equivalences in algebraic topology). arXiv math.AT. Level 2: later undergraduate.
+
+**Definition.** To form the mapping cylinder of f from X to Y, glue the bottom of X × \[0, 1\] to Y by f. Leave the top as a separate copy of X.
+
+**Problem.** Every continuous map factors through its mapping cylinder as an inclusion followed by a retraction onto its target.
+
+**How the definition helps.** The separate top keeps distinct input points apart even when the original map identifies them (our own). Sliding each vertical segment to its bottom gives a continuous retraction because the slide respects the gluing (our own). The slide fixes the target throughout, so the retraction is a homotopy equivalence (our own).
+
+**nLab:** [mapping cylinder](https://ncatlab.org/nlab/show/mapping+cylinder). It says: “In particular every continuous function factors as a map into its mapping cylinder followed by a deformation retraction.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A group pushout makes disk attachments impose relations
+
+**Remember:** Gluing a disk kills its boundary loop.
+
+*Makes the theorem clean to state or prove.* MSC 55Q05 (Homotopy groups, general; sets of homotopy classes). arXiv math.AT. Level 2: later undergraduate.
+
+**Definition.** A group pushout starts with the free product of two groups, which allows words from both groups. It imposes exactly the relations that identify the two images of each element of a shared source group.
+
+**Problem.** Attaching a disk to a path-connected cell complex adds exactly one relation to its fundamental group. The loop along the disk boundary becomes the identity.
+
+**How the definition helps.** The disk has trivial fundamental group, so the pushout sets its boundary loop equal to the identity (our own). Van Kampen identifies this pushout with the new fundamental group (our own). Apply it to overlapping neighborhoods of the old space and the disk interior whose intersection deforms onto a circle (our own).
+
+**nLab:** [van Kampen theorem](https://ncatlab.org/nlab/show/van+Kampen+theorem). It says: “is a pushout square in Grp.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Collapsing a spanning tree makes a graph group free
+
+**Remember:** Collapse the routes between vertices and keep one loop per leftover edge.
+
+*True by definition.* MSC 55Q05 (Homotopy groups, general; sets of homotopy classes). arXiv math.AT. Level 2: later undergraduate.
+
+**Definition.** A spanning tree is a connected subgraph without cycles that contains every vertex. Form the quotient graph by identifying the whole tree with one point.
+
+**Problem.** A finite connected graph has free fundamental group with one generator per edge outside a spanning tree. For E edges and V vertices its rank is E − V + 1.
+
+**How the definition helps.** Collapsing the tree leaves one circle for each remaining edge, avoiding relations for the paths between vertices (our own). Before collapse, each generator follows tree paths to and from its chosen edge (our own). Collapsing a contractible cell subcomplex preserves homotopy type (our own). Van Kampen gives a free group on the resulting circles (our own).
+
+**Wikipedia:** [Fundamental group](https://en.wikipedia.org/wiki/Fundamental_group). It says: “the free product of the individual fundamental groups”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Collapsing one end turns null homotopies into extensions
+
+**Remember:** A homotopy to a constant can collapse its last time slice.
+
+*True by definition.* MSC 55Q05 (Homotopy groups, general; sets of homotopy classes), 55P10. arXiv math.AT. Level 2: later undergraduate.
+
+**Definition.** The cone on X is X × \[0, 1\] with all points at time 1 identified. Its base is the copy of X at time 0.
+
+**Problem.** A continuous map from a nonempty space deforms to a constant exactly when it extends continuously over the cone. For a sphere, this means it extends over the ball.
+
+**How the definition helps.** Collapsing the last time slice turns a deformation ending at one point into a map on the cone (our own). The quotient topology makes that map continuous (our own). Conversely, following each vertical segment through an extension gives the required deformation (our own). For a sphere the cone is a ball (our own).
+
+**nLab:** [cone](https://ncatlab.org/nlab/show/cone). It says: “is the space obtained by taking the X-shaped cylinder X × I, where I may be an interval object, and squashing one end down to a point.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Fixing loop endpoints lets concatenation define a group
+
+**Remember:** Hold the endpoints still so loops can multiply.
+
+*Rules out counterexamples.* MSC 55Q05 (Homotopy groups, general; sets of homotopy classes). arXiv math.AT. Level 2: later undergraduate.
+
+**Definition.** A based loop starts and ends at a chosen point. Based homotopy deforms one loop into another while keeping both endpoints there. Free homotopy allows the common endpoint to move.
+
+**Problem.** Based homotopy classes of loops form the fundamental group under concatenation, which follows one loop after another.
+
+**How the definition helps.** Fixed endpoints let the two deformations meet at the same point throughout (our own). On two circles joined at a point, write a and b for the trips around the circles (our own). Allowing the base point to move identifies b with aba⁻¹, yet multiplying each by b gives different free loop classes (our own). The group laws follow by changing speed and cancelling a path with its reverse (our own).
+
+**Paper or page:** [Homotopic Paths Implies Homotopic Composition](https://proofwiki.org/wiki/Homotopic_Paths_Implies_Homotopic_Composition). It says: “Then the concatenated paths f₁ ∗ g₁ and f₂ ∗ g₂ are homotopic.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Groupoids reveal every path component
 
 **Remember:** Keep paths between every pair and read off the components.
@@ -99,6 +361,22 @@
 **Sources:**
 
 - [Ronald Brown, Groupoids and Van Kampen’s Theorem (1967)](https://doi.org/10.1112/plms/s3-17.3.385)
+
+### Pointwise loop multiplication makes a group’s fundamental group abelian
+
+**Remember:** Multiply at the same time to see why loop order does not matter.
+
+*True by definition.* MSC 55Q05 (Homotopy groups, general; sets of homotopy classes). arXiv math.AT. Level 2: later undergraduate.
+
+**Definition.** A topological group has continuous multiplication and inversion. For loops at its identity, pointwise multiplication multiplies their values at each time. Concatenation instead traverses one loop and then the other.
+
+**Problem.** The fundamental group of a topological group at its identity is abelian.
+
+**How the definition helps.** Pointwise multiplication respects the two halves of concatenation, so the operations satisfy the interchange law (our own). Both operations on loop classes have the constant class as their identity (our own). The Eckmann–Hilton argument then shows that the two operations agree and commute.
+
+**nLab:** [Eckmann-Hilton argument](https://ncatlab.org/nlab/show/Eckmann-Hilton+argument). It says: “then the two structures actually coincide and the resulting monoid is commutative.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Van Kampen's theorem works for a set of base points
 
@@ -137,6 +415,38 @@
 
 - [Tammo tom Dieck, Algebraic Topology, EMS Textbooks in Mathematics (2008), Thm. 3.3.2](https://doi.org/10.4171/048)
 - [Jesper M. Møller, The fundamental group and covering spaces (2011), arXiv:1106.5650](https://arxiv.org/abs/1106.5650)
+
+### A simplicial approximation supplies a straight line homotopy
+
+**Remember:** The star condition keeps each straight segment inside a simplex.
+
+*True by definition.* MSC 55U10 (Simplicial sets and complexes in algebraic topology). arXiv math.AT. Level 2: later undergraduate.
+
+**Definition.** The open star of a vertex consists of the relative interiors of all simplices containing that vertex. A simplicial approximation chooses target vertices and extends linearly over each simplex. The open star of each chosen vertex must contain the image of the corresponding source star.
+
+**Problem.** The realization of a simplicial approximation is homotopic to the map it approximates. The homotopy fixes every point where the two maps agree.
+
+**How the definition helps.** The star condition puts both images of each point in one simplex, where the straight segment between them stays inside. These segments give a continuous deformation and keep points fixed wherever the images agree. Finding an approximation with this condition can require subdivision (our own).
+
+**nLab:** [simplicial approximation theorem](https://ncatlab.org/nlab/show/simplicial+approximation+theorem). It says: “This makes sense since if f(α) ∈ \|s\|, then \|φ\|(α) ∈ \|s\| and \|s\| is closed under convex combinations.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Alternating face signs make the boundary of a boundary zero
+
+**Remember:** Delete in either order and the signs cancel.
+
+*Rules out counterexamples.* MSC 55U10 (Simplicial sets and complexes in algebraic topology), 55N10. arXiv math.AT. Level 2: later undergraduate.
+
+**Definition.** Use integer sums of oriented simplices. The boundary of a positive-dimensional ordered simplex deletes each vertex in turn and adds the resulting faces with signs alternating from plus. A vertex has boundary zero.
+
+**Problem.** The simplicial boundary followed by another boundary is zero. Thus every boundary is a cycle, which means its own boundary is zero.
+
+**How the definition helps.** Each face two dimensions down occurs twice with opposite signs because the first deletion shifts one index (our own). With all signs positive, the second boundary of a triangle would count each vertex twice (our own).
+
+**Wikipedia:** [Simplicial homology](https://en.wikipedia.org/wiki/Simplicial_homology). It says: “we declare that each oriented simplex is equal to the negative of the simplex with the opposite orientation.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Defining the Lefschetz number by the diagonal class makes fixed points necessary
 

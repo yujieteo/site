@@ -1,3 +1,19 @@
+### Counting observations below a threshold gives order statistic laws
+
+**Remember:** The kth smallest is at most x when at least k observations are.
+
+*Makes the theorem clean to state or prove.* MSC 62G30 (Order statistics; empirical distribution functions), 60E05. arXiv math.PR. Level 1: early undergraduate.
+
+**Definition.** For 1 ≤ k ≤ n, the kth order statistic is the kth smallest of n observations. Each occurrence of a repeated value occupies its own place.
+
+**Problem.** Take n independent observations with the same distribution function F, where F(x) is the chance of a value at most x. The chance that the kth smallest is at most x equals the chance of at least k successes in n independent trials with probability F(x).
+
+**How the definition helps.** Counting repeated observations makes the rank test exactly a test on the number of values at or below x (our own). The binomial counting theorem supplies the tail probability, with no density or tie assumption (our own).
+
+**Wikipedia:** [Order statistic](https://en.wikipedia.org/wiki/Order_statistic). It says: “P(X₍ₖ₎ ≤ x) = P(there are at least k observations less than or equal to x)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### An envelope makes rejection sampling exact
 
 **Remember:** An envelope lets acceptance multiply the proposal back into the target.
@@ -50,6 +66,56 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Factored likelihood lets likelihood ratio tests use only sufficient statistics
+
+**Remember:** Both fits carry the same data-only factor, so the ratio forgets it.
+
+*True by definition.* MSC 62B05 (Sufficient statistics and fields), 62F03. arXiv math.ST. Level 2: later undergraduate.
+
+**Definition.** For countable data, the factorization criterion calls T sufficient when each data probability splits as h(x)g(θ,T(x)), with h independent of θ. This is equivalent to requiring the conditional data law given T to be independent of θ wherever defined.
+
+**Problem.** Compare the best likelihood under a null hypothesis with the best likelihood over the full model, using suprema if maxima are absent. If the full supremum is positive and finite, their ratio depends on the data only through T.
+
+**How the definition helps.** The same factor h multiplies both suprema, so it cancels from their ratio (our own). The work goes into the factorization theorem, which guarantees the product form from the conditional-law definition.
+
+**Wikipedia:** [Sufficient statistic](https://en.wikipedia.org/wiki/Sufficient_statistic). It says: “the likelihood's dependence on θ is only in conjunction with T(X).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Factoring the probability mass shows which statistic is sufficient
+
+**Remember:** On each set of equal statistics, the parameter factor cancels.
+
+*Makes the theorem clean to state or prove.* MSC 62B05 (Sufficient statistics and fields). arXiv math.ST. Level 2: later undergraduate.
+
+**Definition.** A statistic T is sufficient if one parameter-independent conditional law describes the data given each value of T whenever that value has positive probability. A factorization of the data probability has the form h(x)g(θ,T(x)), with nonnegative factors and h independent of the parameter θ.
+
+**Problem.** In a countable sample space, T is sufficient exactly when the joint mass function has this factorization.
+
+**How the definition helps.** When we fix T and normalize the masses, the parameter factor g cancels (our own). For the reverse implication, the work goes into writing each joint mass as a parameter-free conditional mass times the mass of T (our own).
+
+**Wikipedia:** [Sufficient statistic](https://en.wikipedia.org/wiki/Sufficient_statistic). It says: “the density ƒ can be factored into a product such that one factor, h, does not depend on θ and the other factor, which does depend on θ, depends on x only through T(x).”
+
+**Sources:**
+
+- [Halmos and Savage (1949), Application of the Radon-Nikodym Theorem to the Theory of Sufficient Statistics](https://doi.org/10.1214/aoms/1177730032)
+
+### Natural statistics add when exponential family observations are pooled
+
+**Remember:** Add the statistics because multiplying densities adds their exponents.
+
+*True by definition.* MSC 62B05 (Sufficient statistics and fields), 62E10. arXiv math.ST. Level 2: later undergraduate.
+
+**Definition.** An exponential family in natural parameters writes its density as h(x) exp\[η·T(x) − A(η)\]. The parameter vector η multiplies the data summary T(x) by a dot product, and A normalizes the density. A summary is sufficient if, given its value, the conditional law of the data no longer depends on the parameter.
+
+**Problem.** For independent observations from the same family member, the sum of their T values is sufficient for η. Its number of components stays fixed as the sample grows.
+
+**How the definition helps.** The exponent makes independent likelihood factors combine by adding their T values (our own). This gives the product form required by the factorization theorem, which establishes sufficiency without computing the conditional law directly (our own).
+
+**Wikipedia:** [Exponential family](https://en.wikipedia.org/wiki/Exponential_family). It says: “the dimension of the sufficient statistic does not grow with the data size”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Sufficiency makes the Rao–Blackwell estimator computable from the data
 
 **Remember:** Given a sufficient statistic, what is left of the data says nothing about θ.
@@ -87,6 +153,40 @@
 **Sources:**
 
 - [R. A. Fisher, Theory of Statistical Estimation, Mathematical Proceedings of the Cambridge Philosophical Society 22 (1925)](https://doi.org/10.1017/S0305004100009580)
+
+### Expected log likelihood curvature makes Fisher information add
+
+**Remember:** Add the log likelihoods and their expected curvatures add.
+
+*True by definition.* MSC 62B10 (Statistical aspects of information-theoretic topics), 62F10. arXiv math.ST. Level 2: later undergraduate.
+
+**Definition.** For a scalar parameter, Fisher information is the expected negative second derivative of the log likelihood. Its equivalent score formula uses the variance of the first derivative, called the score, under the conditions below.
+
+**Problem.** For independent observations, their Fisher information values add. Assume positive densities on fixed supports, integrable derivatives in the formulas, and permission to differentiate the normalization integrals twice under the integral sign.
+
+**How the definition helps.** Independence makes log likelihoods add, so their second derivatives and expectations add too (our own). The work goes into differentiating the density normalization twice to show that expected negative curvature equals score variance.
+
+**Wikipedia:** [Fisher information](https://en.wikipedia.org/wiki/Fisher_information). It says: “the Fisher information will necessarily be the sum of the single-sample Fisher information values, one for each single sample from its distribution.”
+
+**Sources:**
+
+- [Fisher (1922), On the Mathematical Foundations of Theoretical Statistics](https://doi.org/10.1098/rsta.1922.0009)
+
+### Averaging posterior loss makes Bayes decisions pointwise
+
+**Remember:** Choose the lowest loss after each observation, then average.
+
+*True by definition.* MSC 62C10 (Bayesian problems; characterization of Bayes procedures), 62F10. arXiv math.ST. Level 2: later undergraduate.
+
+**Definition.** Bayes risk averages estimation loss over the parameter and the data together. Posterior expected loss averages over the parameter conditional on the observed data.
+
+**Problem.** Suppose the data and possible estimates take finitely many values and loss is finite. Choosing an estimate with smallest posterior expected loss at every possible observation minimizes Bayes risk.
+
+**How the definition helps.** Conditioning writes Bayes risk as a weighted sum of posterior expected losses, one for each observation (our own). Each choice affects only its own term, whose weight is the observation’s probability (our own). The law of total expectation justifies replacing the original joint average by this sum (our own).
+
+**Wikipedia:** [Bayes estimator](https://en.wikipedia.org/wiki/Bayes_estimator). It says: “the estimator which minimizes the posterior expected loss E(L(θ, θ̂) \| x) for each x also minimizes the Bayes risk and therefore is a Bayes estimator.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Inverse inclusion weights recover totals
 
@@ -140,6 +240,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Pooling residual directions gives the exact two-sample t law
+
+**Remember:** Pool the squared residuals and count all their directions.
+
+*True by definition.* MSC 62E15 (Exact distribution theory in statistics), 62F03. arXiv math.ST. Level 2: later undergraduate.
+
+**Definition.** Pool both samples’ squared deviations from their respective means and divide the sum by n+m−2. This gives the pooled variance V, instead of an equal-weight average of the two sample variances. The pooled standard error is √\[V(1/n + 1/m)\].
+
+**Problem.** Take independent normal samples of sizes n and m, both at least two, with common positive variance. Subtract the true mean difference from the sample difference and divide by the pooled standard error to obtain Student’s t with n+m−2 degrees of freedom.
+
+**How the definition helps.** Dividing each residual sum of squares by the common variance gives independent chi-squared variables with n−1 and m−1 degrees of freedom (our own). Their sum supplies the denominator in the defining t ratio (our own). The normal-sample theorem supplies a standard normal numerator independent of that sum (our own).
+
+**Wikipedia:** [Student's t-test](https://en.wikipedia.org/wiki/Student%27s_t-test). It says: “the total sample size minus two (that is, n₁ + n₂ − 2) is the total number of degrees of freedom, which is used in significance testing.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The chi-squared ratio definition gives Student’s t its normal limit
 
 **Remember:** The chi-squared denominator tends to one, leaving the normal numerator.
@@ -153,6 +269,22 @@
 **How the definition helps.** The ratio definition reduces the limit to showing that the denominator tends to 1 (our own). V/ν has mean 1 and variance 2/ν, so Chebyshev's inequality makes it tend to 1 in probability (our own). Slutsky's theorem then replaces that factor by 1 in the limit (our own). The density proof instead studies both its normalizing constant and its power term (our own).
 
 **Wikipedia:** [Student's t-distribution](https://en.wikipedia.org/wiki/Student%27s_t-distribution). It says: “As the number of degrees of freedom grows, the t distribution approaches the normal distribution with mean 0 and variance 1.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The ratio definition gives the one-sample t law
+
+**Remember:** A normal numerator over an independent chi-squared scale gives Student’s t.
+
+*True by definition.* MSC 62E15 (Exact distribution theory in statistics), 62F03. arXiv math.ST. Level 2: later undergraduate.
+
+**Definition.** Student’s t with k degrees of freedom is the law of Z/√(V/k), where Z is standard normal. The variable V is the sum of k squared independent standard normals, all independent of Z. Use the divisor n−1 in the sample variance S².
+
+**Problem.** Let X̄ and S be the sample mean and standard deviation of n ≥ 2 independent observations from one normal distribution with positive variance. If the population mean is μ, then √n(X̄ − μ)/S has Student’s t law with n − 1 degrees of freedom.
+
+**How the definition helps.** The ratio definition identifies the law directly from the standardized mean and scaled variance, without calculating a new density (our own). The normal-sample theorem supplies independence and the chi-squared law of the scaled variance.
+
+**Wikipedia:** [Student's t-distribution](https://en.wikipedia.org/wiki/Student%27s_t-distribution). It says: “it is possible to show that these two random variables (the normally distributed one Z and the chi-squared-distributed one V) are independent.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -172,6 +304,155 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### A boundary null can break the chi-squared likelihood ratio law
+
+**Remember:** A one-sided boundary can erase half of a squared normal statistic.
+
+*Rules out counterexamples.* MSC 62F03 (Parametric hypothesis testing). arXiv math.ST. Level 2: later undergraduate.
+
+**Definition.** An interior null mean has an open interval of allowed means around it. The likelihood ratio statistic is twice the gain in log likelihood from fitting the mean freely within its allowed range.
+
+**Problem.** For independent normal observations with one unrestricted mean and known common positive variance, the statistic under a specified null mean has the one-degree chi-squared law. At null mean zero with only nonnegative means allowed, its law instead mixes a point mass at zero and that chi-squared law equally.
+
+**How the definition helps.** An interior mean allows the fit to move in either direction, so the statistic squares a standard normal variable under the null (our own). At the boundary, negative sample means give a fitted mean of zero and hence zero gain (our own). Symmetry assigns half the probability to each sign, while the squared value has the same law for both signs (our own).
+
+**Wikipedia:** [Wilks' theorem](https://en.wikipedia.org/wiki/Wilks%27_theorem). It says: “The theorem no longer applies when the true value of the parameter is on the boundary of the parameter space”
+
+**Sources:**
+
+- [Wilks (1938), The Large-Sample Distribution of the Likelihood Ratio for Testing Composite Hypotheses](https://doi.org/10.1214/aoms/1177732360)
+- [Chernoff (1954), On the Distribution of the Likelihood Ratio](https://doi.org/10.1214/aoms/1177728725)
+
+### A likelihood ratio cutoff makes the most powerful test
+
+**Remember:** Reject where the gain in power beats the cost in false rejections.
+
+*True by definition.* MSC 62F03 (Parametric hypothesis testing). arXiv math.ST. Level 2: later undergraduate.
+
+**Definition.** Let f₀ and f₁ be the data densities under two fixed hypotheses, the null and the alternative. A test has size equal to its null rejection probability and power equal to its alternative rejection probability. For c ≥ 0, the cutoff rule rejects when f₁ &gt; cf₀, accepts when f₁ &lt; cf₀, and may randomize on ties.
+
+**Problem.** At size α, the likelihood ratio cutoff test has greatest power among tests of size at most α. If c is positive and ties never occur under either law, the test is unique except on events of probability zero.
+
+**How the definition helps.** The cutoff maximizes the gain f₁ − cf₀ from rejecting at each outcome. Integrating gives the largest power minus c times size, without searching over whole tests (our own). Choosing the cutoff and tie probabilities to attain size α then gives greatest power. With no ties, changing the rule on a set of positive probability strictly reduces the integrated gain (our own).
+
+**Wikipedia:** [Neyman–Pearson lemma](https://en.wikipedia.org/wiki/Neyman%E2%80%93Pearson_lemma). It says: “then it is a uniformly most powerful (UMP) test in the set of level α tests.”
+
+**Sources:**
+
+- [Neyman and Pearson (1933), On the Problem of the Most Efficient Tests of Statistical Hypotheses](https://doi.org/10.1098/rsta.1933.0009)
+
+### An exponential family orders likelihood ratios by its natural statistic
+
+**Remember:** A larger natural parameter gives a larger likelihood ratio at larger statistics.
+
+*True by definition.* MSC 62F03 (Parametric hypothesis testing), 62E10. arXiv math.ST. Level 2: later undergraduate.
+
+**Definition.** A one-parameter exponential family in natural form writes the density as h(x) exp\[ηT(x) − A(η)\]. The parameter η multiplies the data summary T(x), and A makes the density integrate to one.
+
+**Problem.** Where h(x) is positive, the density at η₁ divided by the density at η₀ increases with T(x) whenever η₁ exceeds η₀.
+
+**How the definition helps.** The log of the density ratio equals (η₁ − η₀)T(x) plus a constant, so its slope is positive (our own). Exponentiation preserves this order (our own). The work lies in rewriting the model in natural form, which identifies the same ordering for every parameter pair (our own).
+
+**Wikipedia:** [Exponential family](https://en.wikipedia.org/wiki/Exponential_family). It says: “A one-parameter exponential family has a monotone non-decreasing likelihood ratio in the sufficient statistic T(x)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Fixing the margins makes Fisher’s exact test independent of nuisance probabilities
+
+**Remember:** Fix the margins, and the common success probability drops out.
+
+*True by definition.* MSC 62F03 (Parametric hypothesis testing), 62B05. arXiv math.ST. Level 2: later undergraduate.
+
+**Definition.** Fisher’s exact test for two groups fixes their sizes and conditions on the total number of successes. An upper-tail test rejects when the first group has unusually many successes among tables with these totals.
+
+**Problem.** For independent trials with the same success probability, conditioning on total successes gives the first group’s count the hypergeometric law of sampling without replacement. An upper-tail Fisher test therefore controls its false rejection probability at the chosen level.
+
+**How the definition helps.** Fixing total successes makes every placement of those successes equally likely, whatever the common success probability. Counting placements gives the conditional law. Choosing a rejection tail with probability at most α for every total also bounds the overall false rejection probability by α (our own).
+
+**Wikipedia:** [Fisher's exact test](https://en.wikipedia.org/wiki/Fisher%27s_exact_test). It says: “Fisher showed that conditional on the margins of the table, a is distributed as a hypergeometric distribution”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Profiling the variance makes the regression likelihood ratio an F test
+
+**Remember:** The two tests rank the same improvement in residual squared error.
+
+*True by definition.* MSC 62F03 (Parametric hypothesis testing), 62J10. arXiv math.ST. Level 2: later undergraduate.
+
+**Definition.** Profile likelihood means maximizing over parameters not being tested. For Gaussian regression, profile over the unknown error variance after fitting each of two nested predictor spaces. Partial F divides the improvement in squared error per added direction by the final squared error per residual direction.
+
+**Problem.** Take two nested linear models with fixed predictor spaces of dimensions p &lt; q &lt; n for n observations. With independent normal errors of common positive variance and positive residual error, likelihood ratio tests reject for large partial F.
+
+**How the definition helps.** After maximizing over variance, the likelihood ratio depends only on the ratio of the two residual sums of squares (our own). Each fitted variance equals its model’s residual sum of squares divided by n (our own). Substitution shows that a larger partial F gives a smaller null-to-full likelihood ratio (our own).
+
+**Wikipedia:** [F-test](https://en.wikipedia.org/wiki/F-test). It says: “Since F is a monotone function of the likelihood ratio statistic, the F-test is a likelihood ratio test.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Randomizing at the cutoff makes every test size attainable
+
+**Remember:** Randomize on the tie to hit the target size.
+
+*Rules out counterexamples. Confidence: medium.* MSC 62F03 (Parametric hypothesis testing). arXiv math.ST. Level 2: later undergraduate.
+
+**Definition.** A randomized test assigns a rejection probability between zero and one to each outcome. A cutoff test rejects above the cutoff, accepts below it, and can use a fixed rejection probability at the cutoff. Its size is its rejection probability under the null hypothesis.
+
+**Problem.** For a fixed null law on finitely many outcomes, a test that rejects large statistic values can attain any size from zero to one.
+
+**How the definition helps.** Randomization fills the gap between the null probabilities of exceeding and reaching the cutoff (our own). Choose a cutoff bracketing the desired size, then reject an appropriate fraction of ties (our own). For one fair coin toss, a deterministic test can attain only sizes zero, one half, and one (our own).
+
+**Wikipedia:** [Randomised decision rule](https://en.wikipedia.org/wiki/Randomised_decision_rule). It says: “A statistical test making use of a randomized decision rule is called a randomized test.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Total variation gives the smallest sum of testing errors
+
+**Remember:** Maximize the gain in rejection probability to minimize the sum of errors.
+
+*Makes the theorem clean to state or prove.* MSC 62F03 (Parametric hypothesis testing), 62B10. arXiv math.ST. Level 2: later undergraduate.
+
+**Definition.** Define total variation distance as the supremum of the absolute differences between two laws’ probabilities of the same event. A rejection region is the event on which a test rejects the null hypothesis.
+
+**Problem.** Suppose each hypothesis specifies one probability law. The smallest sum of the two error probabilities, rejecting a true null and accepting a false null, equals one minus total variation distance.
+
+**How the definition helps.** For any rejection region, the error sum equals one minus its probability gain from the null law to the alternative (our own). Taking the complement reverses the gain, so its largest value equals total variation distance (our own). Densities relative to the sum of the laws attain this gain on the region where the alternative density is larger (our own).
+
+**Paper or page:** [Detecting weighted hidden cliques](https://arxiv.org/abs/2506.21543v1). It says: “R(T⋆) = 1 − dₜᵥ(ℙ₀, ℙ₁) = 1 − ½𝔼₀\[\|L(X) − 1\|\]”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Gaussian log likelihood turns regression into least squares
+
+**Remember:** Taking logs exposes the squared residuals in the Gaussian density.
+
+*True by definition.* MSC 62F10 (Point estimation), 62J05. arXiv math.ST. Level 2: later undergraduate.
+
+**Definition.** The log likelihood is the logarithm of the observed data density, viewed as a function of the model parameters. In Gaussian linear regression, the observations have independent normal errors with a common variance.
+
+**Problem.** With fixed predictors and a fixed positive error variance, the maximum likelihood coefficient vectors are exactly the least squares coefficient vectors.
+
+**How the definition helps.** The Gaussian log likelihood is a constant minus a positive multiple of the sum of squared residuals (our own). The work goes into multiplying the normal densities and observing that the logarithm preserves the set of maximizers (our own).
+
+**Wikipedia:** [Maximum likelihood estimation](https://en.wikipedia.org/wiki/Maximum_likelihood_estimation). It says: “the ordinary least squares estimator for a linear regression model maximizes the likelihood when the random errors are assumed to have normal distributions with the same variance.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Including certain outcomes makes every Bernoulli estimate attainable
+
+**Remember:** All successes need a model that allows certain success.
+
+*Rules out counterexamples. Confidence: medium.* MSC 62F10 (Point estimation). arXiv math.ST. Level 2: later undergraduate.
+
+**Definition.** A Bernoulli model gives probability p to success and 1 − p to failure, with p in the closed interval \[0,1\]. The alternative log odds parameter log\[p/(1 − p)\] represents only 0 &lt; p &lt; 1 when finite.
+
+**Problem.** For a nonempty sample of independent Bernoulli trials with common parameter p, the observed success fraction maximizes likelihood even when all outcomes agree.
+
+**How the definition helps.** The closed parameter space includes the maximizing endpoint for a sample of identical outcomes (our own). The work goes into maximizing the log likelihood in mixed samples and checking monotonicity when all outcomes agree (our own). With only finite log odds, all successes would give a supremum but no maximum (our own).
+
+**Wikipedia:** [Bernoulli distribution](https://en.wikipedia.org/wiki/Bernoulli_distribution). It says: “0 ≤ p ≤ 1”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Median unbiasedness survives reparameterization
 
 **Remember:** A monotone map can swap the two tails but cannot change their probabilities.
@@ -188,6 +469,59 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### The natural parameter makes maximum likelihood match the observed mean
+
+**Remember:** The best fit makes the model’s average agree with the observed average.
+
+*True by definition.* MSC 62F10 (Point estimation), 62E10. arXiv math.ST. Level 2: later undergraduate.
+
+**Definition.** An exponential family in natural form has density h(x) exp\[ηT(x) − A(η)\]. The natural parameter η multiplies the data summary T(x), and A(η) normalizes the density.
+
+**Problem.** Take independent observations from one family member, all in its support, and let η range over an open interval. A parameter value maximizes likelihood exactly when its expected T equals the observed average of T.
+
+**How the definition helps.** The score, or derivative of the sample log likelihood, subtracts the total expected T from the total observed T (our own). The work goes into differentiating the log normalizer to get a mean from its first derivative and a variance from its second (our own). That nonnegative variance makes the log likelihood concave, so a zero score gives a maximum (our own).
+
+**Wikipedia:** [Exponential family](https://en.wikipedia.org/wiki/Exponential_family). It says: “f<sub>X</sub>{\\!(x\\mid\\theta)} = h(x) \\exp\\left\[\\theta \\cdot T(x) - A(\\theta)\\right\]”
+
+**Sources:**
+
+- [Murphy (2012), Machine Learning: A Probabilistic Perspective, section 9.2](https://www.mit.edu/~mcusi/reverb/Machine_Learning-_A_Probabilistic_Perspective.pdf)
+
+### The score identifies when an estimator reaches the information bound
+
+**Remember:** The bound is tight when the error points exactly along the score.
+
+*True by definition.* MSC 62F10 (Point estimation), 62B10. arXiv math.ST. Level 2: later undergraduate.
+
+**Definition.** The score is the derivative of the log density with respect to a scalar parameter. Its variance is the Fisher information I in a regular model. Here regularity means fixed support and valid differentiation under the integrals for total probability and the estimator’s mean.
+
+**Problem.** In a regular model, let an unbiased estimator have finite variance and let I be finite and positive. Its variance equals 1/I exactly when its error equals the score divided by I with probability one.
+
+**How the definition helps.** The logarithm turns differentiation of the estimator’s mean into covariance with the score. Unbiasedness makes that derivative one (our own). Cauchy–Schwarz then gives variance at least 1/I, with equality exactly when the centered estimator is proportional to the score (our own). Covariance one fixes the factor at 1/I (our own).
+
+**Wikipedia:** [Cramér–Rao bound](https://en.wikipedia.org/wiki/Cram%C3%A9r%E2%80%93Rao_bound). It says: “If we consider the covariance cov(V, T) of V and T, we have cov(V, T) = E(VT), because E(V) = 0.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Keeping the parameter values a test does not reject gives coverage
+
+**Remember:** An excluded value is a rejected null hypothesis.
+
+*True by definition.* MSC 62F25 (Parametric tolerance and confidence regions), 62F03. arXiv math.ST. Level 2: later undergraduate.
+
+**Definition.** Define the confidence set to contain each candidate parameter value whose point-null test does not reject. A point-null test treats that single value as true.
+
+**Problem.** If each test rejects its own true value with probability at most α, the resulting confidence set covers the truth with probability at least 1−α. Conversely, rejecting each value outside a set with that coverage gives tests with false rejection probability at most α.
+
+**How the definition helps.** Missing the true value is exactly the event of rejecting its test (our own). The work goes into building a level α test for each candidate and computing the set of candidates those tests keep (our own).
+
+**Wikipedia:** [Binomial proportion confidence interval](https://en.wikipedia.org/wiki/Binomial_proportion_confidence_interval). It says: “these intervals may be employed as significance tests, with identical results to the source test”
+
+**Sources:**
+
+- [Neyman (1937), Outline of a Theory of Statistical Estimation Based on the Classical Theory of Probability](https://doi.org/10.1098/rsta.1937.0005)
+- [Casella and Berger (2002), Statistical Inference, second edition, Theorem 9.2.2](https://pages.stat.wisc.edu/~shao/stat610/Casella_Berger_Statistical_Inference.pdf)
+
 ### Pivot inversion gives exact coverage
 
 **Remember:** Invert one probability statement to get confidence coverage.
@@ -203,6 +537,26 @@
 **Wikipedia:** [Pivotal quantity](https://en.wikipedia.org/wiki/Pivotal_quantity). It says: “A pivot need not be a statistic — the function and its value can depend on the parameters of the model, but its distribution must not.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Uniform order statistics turn binomial tail cutoffs into beta quantiles
+
+**Remember:** Binomial tails count how many uniform draws pass a cutoff.
+
+*True by definition.* MSC 62F25 (Parametric tolerance and confidence regions), 62F03. arXiv math.ST. Level 2: later undergraduate.
+
+**Definition.** For positive integers a and b, Beta(a,b) is the law of the ath smallest among a + b − 1 independent uniform draws on \[0,1\]. Its usual definition uses a density. A quantile at level u cuts off probability u in the lower tail of this continuous distribution.
+
+**Problem.** Observe k successes in n independent Bernoulli trials with common success probability, where 0 &lt; k &lt; n and 0 &lt; α &lt; 1. The equal-tailed Clopper–Pearson interval uses the α/2 quantile of Beta(k,n−k+1) below and the 1−α/2 quantile of Beta(k+1,n−k) above.
+
+**How the definition helps.** The kth uniform order statistic is at most p exactly when at least k draws are at most p (our own). This turns the two binomial tail equations into equations for beta cumulative probabilities (our own). The work moves to deriving the beta density of a uniform order statistic (our own).
+
+**Wikipedia:** [Order statistic](https://en.wikipedia.org/wiki/Order_statistic). It says: “the kth order statistic of the uniform distribution is a beta-distributed random variable.”
+
+**Paper or page:** [Unbiased Statistical Estimation and Valid Confidence Intervals Under Differential Privacy](https://arxiv.org/abs/2110.14465v2). It says: “\\Pr \\left( F<sub>B(c,n-c+1)</sub><sup>-1</sup> (\\alpha ) \\leq p \\right) \\geq 1 - \\alpha”
+
+**Sources:**
+
+- [Clopper and Pearson (1934), The Use of Confidence or Fiducial Limits Illustrated in the Case of the Binomial](https://doi.org/10.1093/biomet/26.4.404)
 
 ### Distinct tuples give unbiased averages
 
@@ -290,6 +644,38 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### An orthogonal fit gives the least variable linear unbiased estimate
+
+**Remember:** Extra unbiased weights are perpendicular, so they only add variance.
+
+*True by definition.* MSC 62J05 (Linear regression; mixed models), 62F10. arXiv math.ST. Level 2: later undergraduate.
+
+**Definition.** The least squares fit minimizes the sum of squared errors. Equivalently, it projects the response onto all linear combinations of the predictors, leaving a perpendicular error vector.
+
+**Problem.** Take fixed, linearly independent predictor columns and uncorrelated, zero-mean errors of common variance. For each linear combination of coefficients, least squares has minimum variance among linear unbiased estimators.
+
+**How the definition helps.** Projection gives least squares weights in the predictor span for any estimated coefficient combination (our own). Unbiasedness for every coefficient vector forces any competing linear estimate to add weights perpendicular to that span (our own). Under the error assumptions, variance equals the common variance times the squared length of the weights (our own). Pythagoras shows that adding perpendicular weights can only increase that length (our own).
+
+**Wikipedia:** [Gauss–Markov theorem](https://en.wikipedia.org/wiki/Gauss%E2%80%93Markov_theorem). It says: “The main idea of the proof is that the least-squares estimator is uncorrelated with every linear unbiased estimator of zero”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Counting residual directions gives an unbiased estimate of error variance
+
+**Remember:** Count one copy of the variance for each residual direction.
+
+*True by definition. Confidence: medium.* MSC 62J05 (Linear regression; mixed models), 62F10. arXiv math.ST. Level 2: later undergraduate.
+
+**Definition.** Define residual degrees of freedom as the dimension of the space perpendicular to the predictor span. An orthonormal basis uses perpendicular unit vectors, so each residual direction contributes one squared coordinate.
+
+**Problem.** In a fixed design, suppose the mean response lies in the predictor span of dimension p &lt; n, where n counts observations. With uncorrelated errors of common variance, dividing the residual sum of squares by n − p estimates that variance without bias.
+
+**How the definition helps.** Each perpendicular unit direction contributes one copy of the error variance in expectation (our own). Counting these directions gives n − p in the divisor instead of n. The projection theorem identifies the residual with the perpendicular part of the error (our own).
+
+**Wikipedia:** [Ordinary least squares](https://en.wikipedia.org/wiki/Ordinary_least_squares). It says: “The denominator, n−p, is the statistical degrees of freedom.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Least squares predictions stay unique
 
 **Remember:** Several coefficient vectors can describe the same closest point.
@@ -303,6 +689,41 @@
 **How the definition helps.** Defining the fit in the predictor span lets the orthogonal projection theorem give uniqueness directly. In our own argument, minimizing squared residuals means finding the closest achievable vector. Duplicate columns allow the same total coefficient to be split between them arbitrarily, as our own counterexample shows.
 
 **Wikipedia:** [Ordinary least squares](https://en.wikipedia.org/wiki/Ordinary_least_squares). It says: “When there is perfect multicollinearity, it is no longer possible to obtain unique estimates for the coefficients of the related regressors”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Projecting out other predictors preserves the selected regression coefficient
+
+**Remember:** Remove the other predictors from both sides before fitting the slope.
+
+*True by definition.* MSC 62J05 (Linear regression; mixed models), 62F10. arXiv math.ST. Level 2: later undergraduate.
+
+**Definition.** Define the least squares fit by projecting the response onto the span of the predictors, all their linear combinations. The residual is the difference between the response and its fit, perpendicular to that span. To remove other predictors, take residuals of both the response and the selected predictor against those other predictors.
+
+**Problem.** For linearly independent predictor columns, the selected coefficient equals the slope from fitting the response residual to the predictor residual through the origin (our own).
+
+**How the definition helps.** The selected predictor's residual is perpendicular to every other predictor, so only one coefficient acts in its direction (our own). Project the full fit onto that direction to read off the coefficient (our own). The work goes into the projection theorem, which identifies the closest fit with the one that leaves perpendicular residuals (our own).
+
+**Paper or page:** [A First Course in Causal Inference](https://arxiv.org/abs/2305.18793v2). It says: “The coefficient of x₁ in the OLS fit of y on (x₁, x₂, …, xₚ) equals the coefficient of x̃₁ in the OLS fit of y or ỹ on x̃₁”
+
+**Sources:**
+
+- [Frisch and Waugh (1933), Partial Time Regressions as Compared with Individual Trends](https://doi.org/10.2307/1907330)
+- [Lovell (1963), Seasonal Adjustment of Economic Time Series and Multiple Regression Analysis](https://doi.org/10.1080/01621459.1963.10480682)
+
+### Rescaling the errors turns generalized least squares into ordinary least squares
+
+**Remember:** Change coordinates so the errors have equal variance and no correlation.
+
+*True by definition.* MSC 62J05 (Linear regression; mixed models), 62F10. arXiv math.ST. Level 2: later undergraduate.
+
+**Definition.** Let Ω be the known positive definite covariance matrix of the errors, which collects their variances and covariances. Generalized least squares minimizes rᵀΩ⁻¹r for the residual vector r instead of minimizing the ordinary squared length rᵀr.
+
+**Problem.** Take a square factor C with Ω = CCᵀ, so C is invertible. Multiplying the response and every predictor by C⁻¹ gives an ordinary least squares problem with the same solutions and errors of identity covariance.
+
+**How the definition helps.** The weighted squared length is exactly the ordinary squared length of C⁻¹r (our own). The work goes into factoring the covariance matrix and transforming both sides of the model with that same factor.
+
+**Wikipedia:** [Generalized least squares](https://en.wikipedia.org/wiki/Generalized_least_squares). It says: “GLS is equivalent to applying ordinary least squares (OLS) to a linearly transformed version of the data.”
 
 **Sources:** none listed. No primary source with a working link was found.
 

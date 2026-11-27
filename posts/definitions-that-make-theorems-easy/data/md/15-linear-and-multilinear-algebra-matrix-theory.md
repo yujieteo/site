@@ -1,3 +1,57 @@
+### Basis coordinate maps classify spaces by dimension
+
+**Remember:** Equal dimensions give identical coordinate spaces.
+
+*True by definition.* MSC 15A03 (Vector spaces, linear dependence, rank, lineability). arXiv math.RA. Level 1: early undergraduate.
+
+**Definition.** Fix an ordered basis of a finite-dimensional space. Its coordinate map sends each vector to the list of coefficients that expresses it in that basis. Dimension counts the basis vectors.
+
+**Problem.** Two finite-dimensional vector spaces over the same field are isomorphic exactly when their dimensions agree. An isomorphism is a linear map with a linear inverse.
+
+**How the definition helps.** Equal dimensions give both spaces the same space of coordinate lists. Our own proof matches vectors with identical lists. The usual spanning and independence conditions ensure that each list gives exactly one vector and that these maps preserve addition and scaling. Conversely, an isomorphism takes a basis to a basis of the same size.
+
+**Paper or page:** [Same Dimensional Vector Spaces are Isomorphic](https://proofwiki.org/wiki/Same_Dimensional_Vector_Spaces_are_Isomorphic). It says: “That is, V and W are isomorphic.”
+
+**Sources:**
+
+- [Sheldon Axler, Linear Algebra Done Right, 4th ed., 3.70](https://linear.axler.net/LADR4e.pdf)
+
+### Direct sums rule out ambiguous projections onto summands
+
+**Remember:** Unique summand components make projection possible.
+
+*Rules out counterexamples.* MSC 15A03 (Vector spaces, linear dependence, rank, lineability). arXiv math.RA. Level 1: early undergraduate.
+
+**Definition.** A finite sum of subspaces is direct if the only way to obtain zero uses the zero vector from each subspace.
+
+**Problem.** In a finite direct sum, each vector has a unique component in each subspace. Keeping just that component gives a linear map called a projection.
+
+**How the definition helps.** Subtract two decompositions of the same vector and their components sum to zero, so the components agree. Adding or scaling decompositions adds or scales each component. Our own example uses the two axes and the diagonal in the plane. Each pair meets only at zero, yet (1, 1) is both a diagonal vector and the sum of the two unit axis vectors.
+
+**nLab:** [internal direct sum](https://ncatlab.org/nlab/show/internal+direct+sum). It says: “there is a unique I-tuple (nᵢ ∈ Nᵢ)”
+
+**Sources:**
+
+- [Sheldon Axler, Linear Algebra Done Right, 4th ed., 1.41–1.46](https://linear.axler.net/LADR4e.pdf)
+
+### Finite linear combinations give the smallest containing subspace
+
+**Remember:** Every subspace containing the generators also contains their linear combinations.
+
+*True by definition.* MSC 15A03 (Vector spaces, linear dependence, rank, lineability). arXiv math.RA. Level 1: early undergraduate.
+
+**Definition.** The span of S is the intersection of all subspaces containing S. A subspace contains zero and stays closed under addition and scalar multiplication.
+
+**Problem.** The span of S is the smallest subspace containing S.
+
+**How the definition helps.** The intersection lies inside every subspace containing S and still contains S. Our own comparison uses the usual description by finite sums of scalar multiples from S. Those sums form a subspace, including zero as the empty sum. Every subspace containing S contains all those sums.
+
+**Paper or page:** [Intersection of Set of Submodules containing Subset is Smallest Submodule](https://proofwiki.org/wiki/Intersection_of_Set_of_Submodules_containing_Subset_is_Smallest_Submodule). It says: “Then the intersection ⋂T is the smallest submodule of M containing S.”
+
+**Sources:**
+
+- [Sheldon Axler, Linear Algebra Done Right, 4th ed., 2.6](https://linear.axler.net/LADR4e.pdf)
+
 ### Images bound product rank
 
 **Remember:** A composition cannot gain independent outputs from either factor.
@@ -11,6 +65,22 @@
 **How the definition helps.** The outputs of AB lie in the image of A and come from applying A to the image of B (our own). A linear map cannot increase the dimension of a subspace (our own). The work moves to proving that image dimension equals the largest size detected by determinants (our own).
 
 **Wikipedia:** [Rank (linear algebra)](https://en.wikipedia.org/wiki/Rank_%28linear_algebra%29). It says: “rank(AB) ≤ min(rank(A), rank(B)).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Independent columns make the least-squares coefficients unique
+
+**Remember:** Unique coefficients need independent columns, even when the fitted vector is unique.
+
+*Rules out counterexamples.* MSC 15A03 (Vector spaces, linear dependence, rank, lineability), 15A63. arXiv math.RA. Level 1: early undergraduate.
+
+**Definition.** A matrix A has full column rank if its columns are linearly independent. In other words, Ax = 0 forces x = 0.
+
+**Problem.** For a real matrix A, every b has unique least-squares coefficients exactly when A has full column rank. These coefficients x minimize ‖Ax − b‖.
+
+**How the definition helps.** Independent columns give each fitted vector Ax only one set of coefficients (our own). The closest-point theorem supplies a unique closest vector in the column space for each b (our own). With dependent columns, some nonzero h satisfies Ah = 0, so x and x + h give the same fit (our own).
+
+**Wikipedia:** [Ordinary least squares](https://en.wikipedia.org/wiki/Ordinary_least_squares). It says: “the p columns of the matrix X are linearly independent”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -29,6 +99,24 @@
 **Wikipedia:** [Linear independence](https://en.wikipedia.org/wiki/Linear_independence). It says: “These two notions are not equivalent: the difference being that in a family we allow repeated elements, while in a set we do not.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Maximal independent sets give bases inside finite spanning sets
+
+**Remember:** Keep adding independent vectors until none remain.
+
+*True by definition.* MSC 15A03 (Vector spaces, linear dependence, rank, lineability). arXiv math.RA. Level 1: early undergraduate.
+
+**Definition.** Vectors are independent if only zero coefficients give a sum of zero. A basis is an independent set to which no further vector of the space can be added while preserving independence. Equivalently, its linear combinations give every vector in the space.
+
+**Problem.** If a finite spanning set contains an independent set, it contains a basis that extends that independent set.
+
+**How the definition helps.** Our own proof adds vectors from the finite spanning set while they preserve independence. A vector can be added exactly when it lies outside the span of the vectors already chosen. At the stopping point the span contains the entire spanning set, so it contains the whole space.
+
+**Paper or page:** [Vector Space has Basis Between Linearly Independent Set and Finite Spanning Set](https://proofwiki.org/wiki/Vector_Space_has_Basis_Between_Linearly_Independent_Set_and_Finite_Spanning_Set). It says: “Then there is a basis B for G such that H ⊆ B ⊆ F.”
+
+**Sources:**
+
+- [Sheldon Axler, Linear Algebra Done Right, 4th ed., 2.30–2.32](https://linear.axler.net/LADR4e.pdf)
 
 ### Minors show transposes preserve rank
 
@@ -50,6 +138,60 @@
 
 - [William P. Wardlaw, Row Rank Equals Column Rank, Mathematics Magazine 78 (2005), 316–318.](https://doi.org/10.1080/0025570X.2005.11953349)
 
+### Separate coordinate blocks make dimensions add in direct sums
+
+**Remember:** Put each basis in its own block and count all the vectors.
+
+*True by definition.* MSC 15A03 (Vector spaces, linear dependence, rank, lineability). arXiv math.RA. Level 1: early undergraduate.
+
+**Definition.** Define the external direct sum of finitely many spaces as tuples with one entry from each space. Add and scale in each entry separately.
+
+**Problem.** The dimension of a direct sum of finitely many finite-dimensional spaces equals the sum of their dimensions.
+
+**How the definition helps.** Each tuple has one independent block of coordinates for each space. Our own proof places each basis vector in its block and fills the other blocks with zeros. The resulting vectors form a basis because each tuple has a unique expansion. For a direct sum of subspaces, unique decomposition identifies their sum with this tuple space.
+
+**Paper or page:** [Dimension of Direct Product of Vector Spaces](https://proofwiki.org/wiki/Dimension_of_Direct_Product_of_Vector_Spaces). It says: “dim X = ∑ⱼ₌₁ⁿ dim Xⱼ”
+
+**Sources:**
+
+- [Sheldon Axler, Linear Algebra Done Right, 4th ed., 3.87–3.93](https://linear.axler.net/LADR4e.pdf)
+
+### Subspace sums include the mixed vectors that unions miss
+
+**Remember:** To join subspaces, take sums rather than just collecting vectors.
+
+*Rules out counterexamples.* MSC 15A03 (Vector spaces, linear dependence, rank, lineability). arXiv math.RA. Level 1: early undergraduate.
+
+**Definition.** The sum of subspaces U and W consists of all vectors u + w with u in U and w in W.
+
+**Problem.** The sum of two subspaces is the smallest subspace that contains both.
+
+**How the definition helps.** Any subspace containing U and W must contain every sum u + w. These sums form a subspace because addition and scaling keep them in the same set. Our own counterexample uses the two axes in the plane. Their union contains (1, 0) and (0, 1) but omits their sum.
+
+**Wikipedia:** [Linear subspace](https://en.wikipedia.org/wiki/Linear_subspace). It says: “U + W = {u + w : u ∈ U, w ∈ W}.”
+
+**Sources:**
+
+- [Sheldon Axler, Linear Algebra Done Right, 4th ed., 1.36 and 1.40](https://linear.axler.net/LADR4e.pdf)
+
+### The addition map turns the dimension of a sum into rank–nullity
+
+**Remember:** Count all pairs and subtract the pairs that cancel.
+
+*True by definition.* MSC 15A03 (Vector spaces, linear dependence, rank, lineability). arXiv math.RA. Level 1: early undergraduate.
+
+**Definition.** Define U + W as the image of the addition map (u, w) ↦ u + w. The input space consists of pairs in U × W. Equivalently, the sum is the smallest subspace containing U and W.
+
+**Problem.** For finite-dimensional subspaces U and W of one vector space, dim(U + W) + dim(U ∩ W) = dim U + dim W.
+
+**How the definition helps.** Our own proof defines the sum as the image of addition, so rank–nullity counts its dimension. The pairs giving zero are exactly (x, −x) with x in both subspaces. They form a copy of the intersection. The domain of addition has dimension dim U + dim W.
+
+**Paper or page:** [Rank Plus Nullity Theorem](https://proofwiki.org/wiki/Rank_Plus_Nullity_Theorem). It says: “dim Img φ + dim ker φ = dim G”
+
+**Sources:**
+
+- [Sheldon Axler, Linear Algebra Done Right, 4th ed., 2.43 and 3.21](https://linear.axler.net/LADR4e.pdf)
+
 ### The empty set is independent, so the zero space has a basis
 
 **Remember:** The zero space has the empty basis and dimension 0.
@@ -63,6 +205,56 @@
 **How the definition helps.** Because the empty set is independent, the zero space {0} is not an exception. Its basis is the empty set, and its dimension is 0. The same fact starts the proof with Zorn's lemma. That proof needs the collection of independent sets to be nonempty, and the empty set is in it. The theorem for infinite-dimensional spaces still needs the axiom of choice.
 
 **Wikipedia:** [Basis (linear algebra)](https://en.wikipedia.org/wiki/Basis_%28linear_algebra%29), [Dimension (vector space)](https://en.wikipedia.org/wiki/Dimension_%28vector_space%29). It says: “The set X is nonempty since the empty set is an independent subset of V”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Unique basis coordinates count vectors over finite fields
+
+**Remember:** Multiply the number of choices for each coordinate.
+
+*True by definition.* MSC 15A03 (Vector spaces, linear dependence, rank, lineability). arXiv math.RA. Level 1: early undergraduate.
+
+**Definition.** An ordered basis gives each vector exactly one list of coefficients. Every such list gives a vector by summing the corresponding multiples of basis vectors.
+
+**Problem.** A vector space of finite dimension n over a field with q elements has exactly qⁿ vectors.
+
+**How the definition helps.** Each of the n coordinates can take any of the q values, independently of the others. Our own comparison starts from the usual basis definition. Spanning gives a list for every vector, and independence makes that list unique.
+
+**Paper or page:** [Cardinality of Finite Vector Space](https://proofwiki.org/wiki/Cardinality_of_Finite_Vector_Space). It says: “\|V\| = \|K\|ᵈⁱᵐ ⱽ”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A two-sided inverse requires exactly one input per output
+
+**Remember:** An inverse must undo the map in both orders.
+
+*Rules out counterexamples.* MSC 15A04 (Linear transformations, semilinear transformations). arXiv math.RA. Level 1: early undergraduate.
+
+**Definition.** An invertible linear map has a two-sided inverse, which undoes the map before or after it acts. A one-sided inverse need only undo it in one of those orders.
+
+**Problem.** A linear map has a two-sided linear inverse exactly when it is bijective, meaning one-to-one and onto.
+
+**How the definition helps.** One inverse equation forces different inputs to have different outputs, and the other forces every output to occur. Our own example sends x to (x, 0). Taking the first coordinate undoes this inclusion, but reversing the order sends (0, 1) to zero. For a bijective linear map, uniqueness of each input makes the inverse preserve addition and scaling.
+
+**Paper or page:** [Inverse of Linear Transformation is Linear Transformation](https://proofwiki.org/wiki/Inverse_of_Linear_Transformation_is_Linear_Transformation). It says: “Then A⁻¹ is a linear transformation.”
+
+**Sources:**
+
+- [Sheldon Axler, Linear Algebra Done Right, 4th ed., 3.59, 3.63 and 3.68](https://linear.axler.net/LADR4e.pdf)
+
+### Finite linear combinations let linear maps carry spans to spans
+
+**Remember:** A linear map sends each combination to the same combination of the images.
+
+*True by definition.* MSC 15A04 (Linear transformations, semilinear transformations). arXiv math.RA. Level 1: early undergraduate.
+
+**Definition.** The span of S consists of all finite sums of scalar multiples of vectors in S, including the empty sum, zero.
+
+**Problem.** For a linear map T, the image of the span of S equals the span of the images of vectors in S.
+
+**How the definition helps.** Our own proof uses the same coefficients on both sides. Applying T to a sum gives the corresponding sum of images, and every such sum arises this way. Defining span as the smallest containing subspace requires first proving its finite-sum description.
+
+**Paper or page:** [Image of Generating Set of Vector Space under Linear Transformation is Generating Set of Image](https://proofwiki.org/wiki/Image_of_Generating_Set_of_Vector_Space_under_Linear_Transformation_is_Generating_Set_of_Image). It says: “Then T\[G\] be a generating set for T\[X\].”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -102,6 +294,60 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Identity maps between coordinate systems give the change-of-basis formula
+
+**Remember:** Convert to old coordinates, apply the map, then convert back.
+
+*True by definition.* MSC 15A04 (Linear transformations, semilinear transformations). arXiv math.RA. Level 1: early undergraduate.
+
+**Definition.** For two ordered bases of a finite-dimensional space, the change-of-basis matrix P converts new coordinates to old coordinates. It represents the identity map between these coordinate systems. Its columns give the new basis vectors in old coordinates.
+
+**Problem.** If A represents a linear operator in the old basis, then P⁻¹AP represents the same operator in the new basis.
+
+**How the definition helps.** Reading P⁻¹AP from right to left gives the three maps in order. Our own explanation replaces an entry-by-entry calculation with composition. Matrix multiplication represents composition when the intermediate coordinates use the same basis.
+
+**Paper or page:** [Change of Basis Matrix under Linear Transformation/Corollary](https://proofwiki.org/wiki/Change_of_Basis_Matrix_under_Linear_Transformation/Corollary). It says: “B = P⁻¹ A P”
+
+**Sources:**
+
+- [Sheldon Axler, Linear Algebra Done Right, 4th ed., 3.81–3.84](https://linear.axler.net/LADR4e.pdf)
+
+### Matrix entries count the dimension of the space of linear maps
+
+**Remember:** Each input basis vector contributes one column of independent choices.
+
+*True by definition.* MSC 15A04 (Linear transformations, semilinear transformations). arXiv math.RA. Level 1: early undergraduate.
+
+**Definition.** Fix bases for the domain and target. Define the matrix of a linear map to have one column per input basis vector, listing the coordinates of its image.
+
+**Problem.** Over one field, the space of linear maps from an n-dimensional domain to an m-dimensional target has dimension mn.
+
+**How the definition helps.** Our own count uses matrices with a single entry equal to one and all other entries zero. These matrices give one basis vector per entry. Passing from maps to matrices preserves addition and scaling. A map can take arbitrary values on a basis, and these values determine the map uniquely.
+
+**Paper or page:** [Dimension of Set of Linear Transformations](https://proofwiki.org/wiki/Dimension_of_Set_of_Linear_Transformations). It says: “dim ℒR(G, H) = n m”
+
+**Sources:**
+
+- [Sheldon Axler, Linear Algebra Done Right, 4th ed., 3.71–3.72](https://linear.axler.net/LADR4e.pdf)
+
+### Pointwise operations make linear maps a vector space
+
+**Remember:** Do the vector arithmetic separately at each input.
+
+*True by definition.* MSC 15A04 (Linear transformations, semilinear transformations). arXiv math.RA. Level 1: early undergraduate.
+
+**Definition.** Define the sum of linear maps T and S by (T + S)(x) = T(x) + S(x) at each input. Define scalar multiplication by (aT)(x) = aT(x). These definitions work without choosing matrix coordinates.
+
+**Problem.** The linear maps between two vector spaces over the same field form a vector space with these operations.
+
+**How the definition helps.** With operations at each input, every vector-space identity follows from the same identity for output vectors. Our own proof checks that sums and scalar multiples of linear maps still preserve linear combinations. A proof using matrix coordinates would also require choosing bases in finite dimensions.
+
+**Paper or page:** [Linear Mappings between Vector Spaces form Vector Space](https://proofwiki.org/wiki/Linear_Mappings_between_Vector_Spaces_form_Vector_Space). It says: “∀x ∈ X: (T + S)(x) ≔ T(x) + S(x)”
+
+**Sources:**
+
+- [Sheldon Axler, Linear Algebra Done Right, 4th ed., 3.5–3.6](https://linear.axler.net/LADR4e.pdf)
+
 ### Affine spaces include translated solution sets
 
 **Remember:** Subtract one solution to turn all the rest into solutions with zero right side.
@@ -131,6 +377,22 @@
 **How the definition helps.** An invertible left factor can be cancelled, so no solution is gained or lost (our own proof). The new system is EAx = Eb, and applying E⁻¹ gives back Ax = b. Each elementary row operation is left multiplication by an invertible elementary matrix, so the usual description is a special case (our own).
 
 **Paper or page:** [Elementary Row Operation on Augmented Matrix leads to Equivalent System of Simultaneous Linear Equations](https://proofwiki.org/wiki/Elementary_Row_Operation_on_Augmented_Matrix_leads_to_Equivalent_System_of_Simultaneous_Linear_Equations). It says: “Then S and S′ are equivalent.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Alternating multilinearity gives the determinant rules for row operations
+
+**Remember:** Repeated rows kill the extra term.
+
+*True by definition.* MSC 15A15 (Determinants, permanents, traces, other special matrix functions). arXiv math.RA. Level 1: early undergraduate.
+
+**Definition.** For square matrices of a fixed size, the determinant is the unique function with three properties. It is linear in each row separately, vanishes when two rows agree, and equals one on the identity matrix.
+
+**Problem.** Scaling a row scales the determinant, and swapping two rows negates it. Adding a multiple of one row to another leaves it unchanged.
+
+**How the definition helps.** Linearity gives the scaling rule and splits row addition into the original determinant and a term with repeated rows (our own). For the swap rule, put the same sum u + v in both row positions (our own). Expansion gives zero as the sum of the two determinants with u and v in opposite orders (our own). The signed permutation formula proves existence, and expanding each row in coordinate vectors proves uniqueness (our own).
+
+**Paper or page:** [Effect of Elementary Row Operations on Determinant](https://proofwiki.org/wiki/Effect_of_Elementary_Row_Operations_on_Determinant). It says: “Applying ERO 2 has no effect on det A.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -202,6 +464,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Linearity in each column gives Cramer’s rule
+
+**Remember:** The replaced column contributes only its coefficient on the missing column.
+
+*True by definition.* MSC 15A15 (Determinants, permanents, traces, other special matrix functions). arXiv math.RA. Level 1: early undergraduate.
+
+**Definition.** For square matrices of a fixed size, the determinant is the unique function with three properties. It is linear in each column separately, vanishes on repeated columns, and equals one on the identity matrix.
+
+**Problem.** If A is invertible and Ax = b, the ith entry of x is det Aᵢ divided by det A. Here Aᵢ is A with column i replaced by b.
+
+**How the definition helps.** Expanding the replacement column b as a weighted sum of the original columns gives one determinant per column. Only column i avoids a repetition, so det Aᵢ equals xᵢ times det A. Starting from the signed permutation formula requires proving these column rules (our own).
+
+**nLab:** [determinant](https://ncatlab.org/nlab/show/determinant). It says: “This follows straightforwardly from properties 1 and 2 above.”
+
+**Paper or page:** [Cramer's Rule](https://proofwiki.org/wiki/Cramer's_Rule). It says: “xᵢ = det Aᵢ / det A”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Rectangular products have equal traces
 
 **Remember:** Both traces add the same pairs of entries.
@@ -252,6 +532,38 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### The permutation sum expands determinants along any row or column
+
+**Remember:** Group the products by the entry they use in one row or column.
+
+*True by definition.* MSC 15A15 (Determinants, permanents, traces, other special matrix functions). arXiv math.RA. Level 1: early undergraduate.
+
+**Definition.** For a square matrix, select one entry per row and column and multiply the entries. Sum these products with a sign for each column order. An even number of swaps from the original order gives plus, and an odd number gives minus.
+
+**Problem.** Along any row or column, the determinant equals the sum of each entry times its cofactor. Delete the entry’s row and column for the smaller determinant, then negate it if the two indices sum to an odd number.
+
+**How the definition helps.** Group the products by their entry in one row or column to recover a smaller signed sum for each entry (our own). Moving that row and column to the front accounts for the cofactor sign (our own). Starting instead with first-row expansion requires induction to obtain the permutation formula (our own).
+
+**Paper or page:** [Laplace Expansion Theorem for Determinants](https://proofwiki.org/wiki/Laplace_Expansion_Theorem_for_Determinants). It says: “Thus the value of a determinant can be found either by: multiplying all the elements in a row by their cofactors and adding up the products”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The signed permutation sum makes transposition preserve determinants
+
+**Remember:** Transposing reverses each permutation but leaves its sign alone.
+
+*True by definition.* MSC 15A15 (Determinants, permanents, traces, other special matrix functions). arXiv math.RA. Level 1: early undergraduate.
+
+**Definition.** For a square matrix, select one entry per row and column and multiply the entries. Sum these products with a sign for each column order. An even number of swaps from the original order gives plus, and an odd number gives minus.
+
+**Problem.** Exchanging rows with columns to form the transpose of a square matrix preserves its determinant.
+
+**How the definition helps.** Transposition turns each choice of columns into the inverse rearrangement, with the same sign and product (our own). With a row-based definition, the work is to show that this signed sum gives the same determinant (our own).
+
+**Paper or page:** [Determinant of Transpose](https://proofwiki.org/wiki/Determinant_of_Transpose). It says: “det A = det Aᵀ”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Matrix exponentials solve linear systems
 
 **Remember:** Differentiate the series and one factor of A comes out.
@@ -285,6 +597,24 @@
 **Wikipedia:** [Change of basis](https://en.wikipedia.org/wiki/Change_of_basis). It says: “two matrices are similar if and only if they represent the same endomorphism on two different bases.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Characteristic roots give odd real matrices an eigenvalue
+
+**Remember:** A real polynomial of odd degree must cross zero.
+
+*True by definition.* MSC 15A18 (Eigenvalues, singular values, and eigenvectors). arXiv math.RA. Level 1: early undergraduate.
+
+**Definition.** For a real square matrix A, define its real eigenvalues as the real roots of det(tI − A), its characteristic polynomial. Equivalently, λ is a real eigenvalue if some nonzero real vector v satisfies Av = λv.
+
+**Problem.** Every real square matrix with an odd number of rows has a real eigenvalue.
+
+**How the definition helps.** The characteristic polynomial has odd degree, so its values have opposite signs far to the left and right (our own). The intermediate value theorem then gives a real root (our own). The work goes into showing that the polynomial has degree equal to the matrix order (our own). The determinant test for invertibility identifies its roots with eigenvalues in the vector sense (our own).
+
+**Wikipedia:** [Eigenvalues and eigenvectors](https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors). It says: “Therefore, any real matrix with odd order has at least one real eigenvalue”
+
+**Sources:**
+
+- [Sheldon Axler, Linear Algebra Done Right, 4th ed., §5B](https://linear.axler.net/LADR4e.pdf)
 
 ### Diagonal forms simplify powers
 
@@ -385,6 +715,24 @@
 **Paper or page:** [On the Column and Row Ranks of a Matrix](https://arxiv.org/abs/2112.06638v1). It says: “Q is m × n with orthonormal columns and R is an n × n upper triangular matrix”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### The image gives the smallest space through which a matrix factors
+
+**Remember:** Factor through the image and there is no wasted dimension.
+
+*True by definition.* MSC 15A23 (Factorization of matrices), 15A03. arXiv math.RA. Level 1: early undergraduate.
+
+**Definition.** The rank of a matrix is the dimension of its image, the space spanned by its columns. Another description counts nonzero rows after row reduction.
+
+**Problem.** Over a field, every m-by-n matrix of rank r factors as an m-by-r matrix times an r-by-n matrix. No such factorization has a smaller middle dimension.
+
+**How the definition helps.** A basis of the image supplies the columns of the first factor. The second factor lists the coordinates of each original column in that basis. Our own lower bound follows because the first factor must have enough columns to span the original image.
+
+**Wikipedia:** [Rank factorization](https://en.wikipedia.org/wiki/Rank_factorization). It says: “Every finite-dimensional matrix has a rank decomposition”
+
+**Sources:**
+
+- [Sheldon Axler, Linear Algebra Done Right, 4th ed., 3.56–3.58](https://linear.axler.net/LADR4e.pdf)
 
 ### Dot products reverse transpose order
 
@@ -502,6 +850,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Orthogonal residuals turn least squares into linear equations
+
+**Remember:** The best fit leaves an error perpendicular to each column.
+
+*True by definition.* MSC 15A63 (Quadratic and bilinear forms, inner products). arXiv math.RA. Level 1: early undergraduate.
+
+**Definition.** A least-squares fit is the vector Ax closest to b. Equivalently, it is the orthogonal projection of b onto the span of the columns of A. The error b − Ax is then perpendicular to each column.
+
+**Problem.** For a real matrix A, x minimizes ‖Ax − b‖ exactly when AᵀAx = Aᵀb, even if the columns are dependent.
+
+**How the definition helps.** The normal equations just collect the dot products of the error with all the columns (our own). The work moves to the closest-point theorem for orthogonal projections, which justifies this description (our own).
+
+**Wikipedia:** [Ordinary least squares](https://en.wikipedia.org/wiki/Ordinary_least_squares). It says: “projected orthogonally onto the linear subspace spanned by the columns of X”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Orthonormal coordinates preserve dot products
 
 **Remember:** Perpendicular unit axes let you multiply matching coordinates and add.
@@ -520,6 +884,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Projecting onto a line gives Cauchy–Schwarz
+
+**Remember:** A shadow cannot be longer than its vector.
+
+*True by definition.* MSC 15A63 (Quadratic and bilinear forms, inner products). arXiv math.RA. Level 1: early undergraduate.
+
+**Definition.** Define the projection of x onto the line through a unit vector e as p = ⟨x,e⟩e. Here the inner product ⟨x,e⟩ is linear in x.
+
+**Problem.** In a real or complex inner product space, \|⟨x,y⟩\| ≤ ‖x‖‖y‖. Equality holds exactly when one vector is a scalar multiple of the other.
+
+**How the definition helps.** The projection turns the inequality into a comparison between two lengths (our own). For nonzero y, take e = y/‖y‖ and check that x − p is perpendicular to e (our own). Pythagoras gives ‖x‖² = \|⟨x,e⟩\|² + ‖x − p‖², with equality in the bound exactly when x = p (our own). If y is zero, both sides vanish (our own).
+
+**Paper or page:** [Cauchy-Bunyakovsky-Schwarz Inequality/Inner Product Spaces](https://proofwiki.org/wiki/Cauchy-Bunyakovsky-Schwarz_Inequality/Inner_Product_Spaces). It says: “\|⟨x,y⟩\|² ≤ ⟨x,x⟩⟨y,y⟩”
+
+**Sources:**
+
+- [Sheldon Axler, Linear Algebra Done Right, 4th ed., 6.13–6.14](https://linear.axler.net/LADR4e.pdf)
+
 ### Quadratic forms make sums of positive definite matrices positive definite
 
 **Remember:** At each nonzero vector, the form of the sum adds two positive numbers.
@@ -535,6 +917,24 @@
 **Wikipedia:** [Definite matrix](https://en.wikipedia.org/wiki/Definite_matrix). It says: “If M and N are positive-definite, then the sum M + N is also positive-definite.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Strict positivity makes inner product length a norm
+
+**Remember:** A nonzero vector must have positive length.
+
+*Rules out counterexamples.* MSC 15A63 (Quadratic and bilinear forms, inner products). arXiv math.RA. Level 1: early undergraduate.
+
+**Definition.** A real inner product is a symmetric bilinear pairing with ⟨x,x⟩ &gt; 0 for every nonzero x. Symmetry means swapping the inputs gives the same number. Bilinearity means each input enters linearly.
+
+**Problem.** The length √⟨x,x⟩ from a real inner product is a norm. In particular, it vanishes only at zero.
+
+**How the definition helps.** Strict positivity gives positive length to every nonzero vector (our own). Measuring only the first coordinate would give (0,1) length zero (our own). Bilinearity makes length scale by the absolute value of a scalar (our own). The Cauchy–Schwarz inequality gives the triangle inequality when we expand ‖x + y‖² (our own).
+
+**nLab:** [inner product space](https://ncatlab.org/nlab/show/inner+product+space). It says: “The inner product is positive definite if it is both positive and definite, in other words if ‖x‖² &gt; 0 whenever x ≠ 0.”
+
+**Sources:**
+
+- [Sheldon Axler, Linear Algebra Done Right, 4th ed., 6.7–6.18](https://linear.axler.net/LADR4e.pdf)
 
 ### Symmetry makes quadratic form matrices unique
 
@@ -568,6 +968,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### The orthogonal residual gives the complementary projection
+
+**Remember:** The part you subtract is the other projection.
+
+*True by definition.* MSC 15A63 (Quadratic and bilinear forms, inner products). arXiv math.RA. Level 1: early undergraduate.
+
+**Definition.** For a subspace W, define its orthogonal complement W⊥ as all vectors perpendicular to W. Define the orthogonal projection P onto W by Px ∈ W and x − Px ∈ W⊥.
+
+**Problem.** In finite dimensions, I − P is the orthogonal projection onto W⊥, where I is the identity map.
+
+**How the definition helps.** Defining projection by the perpendicular remainder gives both projections from one split (our own). The candidate x − Px belongs to W⊥ and leaves remainder Px, which is perpendicular to W⊥ (our own). The orthogonal decomposition theorem guarantees that these conditions pick exactly one vector, without a second basis calculation (our own).
+
+**Paper or page:** [Orthogonal Projection onto Orthocomplement](https://proofwiki.org/wiki/Orthogonal_Projection_onto_Orthocomplement). It says: “Then: P₍A⊥₎ = I − Pₐ”
+
+**Sources:**
+
+- [Sheldon Axler, Linear Algebra Done Right, 4th ed., 6.55–6.57](https://linear.axler.net/LADR4e.pdf)
+
 ### The determinant definition makes the cross product orthogonal to both inputs
 
 **Remember:** A repeated row makes the determinant zero.
@@ -597,6 +1015,24 @@
 **How the definition helps.** The determinant definition gives both rules directly from the sign change for a row swap. A cyclic shift of three rows is two swaps, so the sign changes twice. Starting with the coordinate formula instead, one can check the same rules by comparing six terms (our own). Expanding the determinant along its first row proves that the two definitions agree.
 
 **Wikipedia:** [Triple product](https://en.wikipedia.org/wiki/Triple_product). It says: “The scalar triple product can also be understood as the determinant of the 3 × 3 matrix that has the three vectors either as its rows or its columns”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The volume definition gives cross products a reflection sign
+
+**Remember:** A reflection reverses the oriented volume, so the cross product picks up a sign.
+
+*True by definition.* MSC 15A72 (Vector and tensor algebra, theory of invariants). arXiv math.RA. Level 1: early undergraduate.
+
+**Definition.** Define the cross product in oriented Euclidean three-space by (u × v) · w = det(u,v,w) in a positive orthonormal basis. The dot product determines the vector from these values.
+
+**Problem.** For every orthogonal map Q, (Qu) × (Qv) = det(Q) Q(u × v). In particular, reflections add a minus sign to the ordinary vector transformation rule.
+
+**How the definition helps.** Testing against Qw turns the left side into a signed volume, which Q scales by det(Q) (our own). An orthogonal map preserves dot products, so the right side gives the same result for every Qw (our own). The work moves to checking that the volume definition gives the usual coordinate cross product (our own).
+
+**nLab:** [pseudovector representation](https://ncatlab.org/nlab/show/pseudovector+representation). It says: “the tensor product of representations of the vector representation V with the pseudoscalar representation”
+
+**Wikipedia:** [Cross product](https://en.wikipedia.org/wiki/Cross_product). It says: “is changed into its opposite by an odd permutation of the basis vectors.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -650,6 +1086,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Coset coordinates show how many dimensions a quotient removes
+
+**Remember:** A quotient drops the coordinates along the subspace.
+
+*True by definition.* MSC 15A03 (Vector spaces, linear dependence, rank, lineability). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** A coset of U groups together vectors whose differences lie in U. Extend a basis of U to a basis of V. A coset then has coordinates given by the coefficients on the added basis vectors.
+
+**Problem.** If V is finite-dimensional and U is a subspace, then dim(V/U) = dim V − dim U.
+
+**How the definition helps.** Our own proof counts one free coordinate for each added basis vector. Two vectors have the same added coordinates exactly when their difference belongs to U. Every list occurs, and addition and scaling act on these lists coordinate by coordinate. The basis extension theorem supplies the required basis.
+
+**Paper or page:** [Dimension of Quotient Vector Space](https://proofwiki.org/wiki/Dimension_of_Quotient_Vector_Space). It says: “dim Y + dim X/Y = dim X”
+
+**Sources:**
+
+- [Sheldon Axler, Linear Algebra Done Right, 4th ed., 2.32 and 3.105](https://linear.axler.net/LADR4e.pdf)
+
 ### Defining rank by fewest rank-one summands bounds ranks of entrywise products
 
 **Remember:** Each pair of rank-one summands gives one rank-one summand.
@@ -681,6 +1135,184 @@
 **nLab:** [dual vector space](https://ncatlab.org/nlab/show/dual+vector+space). It says: “There is a natural transformation from V to its double dual:”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Duals of quotients count the dimensions of annihilators
+
+**Remember:** Functionals blind to a subspace read only the quotient.
+
+*True by definition.* MSC 15A03 (Vector spaces, linear dependence, rank, lineability). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** The annihilator of U consists of all linear maps from V to its scalar field that vanish on U. Equivalently, these maps read only the class of their input in V/U.
+
+**Problem.** In an n-dimensional vector space, the annihilator of an m-dimensional subspace has dimension n − m.
+
+**How the definition helps.** Our own proof counts the annihilator as the dual space of V/U. A functional vanishing on U has one value on each class, and every functional on the quotient gives such a map. The quotient has dimension n − m, and a finite-dimensional space and its dual have equal dimensions.
+
+**Paper or page:** [Dimension of Annihilator on Algebraic Dual](https://proofwiki.org/wiki/Dimension_of_Annihilator_on_Algebraic_Dual). It says: “M° is an (n − m)-dimensional subspace of G∗.”
+
+**Sources:**
+
+- [Sheldon Axler, Linear Algebra Done Right, 4th ed., 3.105, 3.111 and 3.125](https://linear.axler.net/LADR4e.pdf)
+
+### Finite bases give a basis of coordinate functionals
+
+**Remember:** Finite bases need only finitely many coordinate readings.
+
+*Rules out counterexamples.* MSC 15A03 (Vector spaces, linear dependence, rank, lineability). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** The dual space consists of all linear maps to the scalar field. For each basis vector, its coordinate functional reads the coefficient of that vector.
+
+**Problem.** For a finite basis, its coordinate functionals form a basis of the dual space. For an infinite basis, they remain independent but do not span the full dual.
+
+**How the definition helps.** With finitely many coordinates, every functional is the sum of the coordinate functionals weighted by its values on the basis. Testing a combination on each basis vector proves independence. Our own counterexample assigns one to every vector of an infinite basis and extends linearly. Every finite combination of coordinate functionals vanishes on some basis vector.
+
+**nLab:** [dual vector space](https://ncatlab.org/nlab/show/dual+vector+space). It says: “However, if V has finite dimension, then B∗ is a basis of V∗.”
+
+**Sources:**
+
+- [Sheldon Axler, Linear Algebra Done Right, 4th ed., 3.4 and 3.112–3.116](https://linear.axler.net/LADR4e.pdf)
+
+### Finite support lets summand bases combine into one basis
+
+**Remember:** Finite support lets finite linear combinations reach every tuple.
+
+*Rules out counterexamples. Confidence: medium.* MSC 15A03 (Vector spaces, linear dependence, rank, lineability). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** Define the direct sum of a family of spaces as tuples with only finitely many nonzero entries. The direct product, by contrast, allows any tuple.
+
+**Problem.** If each space in a family has a chosen basis, the corresponding vectors in separate coordinates form a basis of the direct sum.
+
+**How the definition helps.** Only finitely many entries need expansion, and each uses finitely many basis vectors. Our own proof of independence checks each entry of a zero combination separately. In a product of infinitely many real lines, the all-ones tuple cannot be a finite sum of coordinate vectors.
+
+**nLab:** [direct sum](https://ncatlab.org/nlab/show/direct+sum). It says: “This makes it clear that the direct sum equals the direct product when there are only finitely many objects involved.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Quotient classes identify every complement with the same space
+
+**Remember:** Every class has exactly one representative in any given complement.
+
+*True by definition. Confidence: medium.* MSC 15A03 (Vector spaces, linear dependence, rank, lineability). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** The quotient V/U groups together vectors whose difference belongs to the subspace U. A complement W gives each vector exactly one expression u + w, with u in U and w in W.
+
+**Problem.** For any complement W of U in V, the quotient map restricts to an isomorphism from W onto V/U.
+
+**How the definition helps.** Our own proof uses w as the unique representative of its class in W. Thus the quotient map gives a linear bijection from W to the classes. Describing the quotient using a complement requires choosing one, which basis extension permits in finite dimensions.
+
+**Wikipedia:** [Quotient space (linear algebra)](https://en.wikipedia.org/wiki/Quotient_space_%28linear_algebra%29). It says: “The mapping that associates to v ∈ V the equivalence class \[v\] is known as the quotient map.”
+
+**Sources:**
+
+- [Sheldon Axler, Linear Algebra Done Right, 4th ed., 2.32 and 3.99–3.104](https://linear.axler.net/LADR4e.pdf)
+
+### Requiring a nonzero functional removes the whole space from hyperplanes
+
+**Remember:** One nonzero scalar equation removes exactly one dimension.
+
+*Rules out counterexamples.* MSC 15A03 (Vector spaces, linear dependence, rank, lineability). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** Define a linear hyperplane as the kernel of a nonzero linear functional, a linear map to the scalar field. Another definition uses codimension one, meaning the quotient has dimension one.
+
+**Problem.** A subspace H of V is a linear hyperplane exactly when V/H has dimension one.
+
+**How the definition helps.** A nonzero functional reaches the whole scalar field, so the quotient by its kernel is a line. Our own converse identifies the one-dimensional quotient with the scalar field and composes that identification with the quotient map. The zero functional shows why the restriction matters. Its kernel is all of V.
+
+**Paper or page:** [Kernel of Non-Zero Linear Functional has Codimension 1](https://proofwiki.org/wiki/Kernel_of_Non-Zero_Linear_Functional_has_Codimension_1). It says: “Then ker f has codimension 1.”
+
+**Sources:**
+
+- [Sheldon Axler, Linear Algebra Done Right, 4th ed., 3.104–3.108](https://linear.axler.net/LADR4e.pdf)
+
+### Separate summand coordinates split every functional on a direct sum
+
+**Remember:** A functional on a finite direct sum adds its values on the components.
+
+*True by definition. Confidence: medium.* MSC 15A03 (Vector spaces, linear dependence, rank, lineability). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** Define a direct sum by requiring a unique decomposition of each vector into its summand components. Its dual consists of the linear maps from the sum to the scalar field.
+
+**Problem.** The dual of a finite direct sum is canonically isomorphic to the direct sum of the dual spaces of its summands. The isomorphism takes a functional to its restrictions to the summands.
+
+**How the definition helps.** Unique decomposition lets us recover a functional by adding its values on the components. Our own comparison uses the usual zero-sum test for directness, which gives unique decomposition by subtracting two expressions for a vector. Given one functional per subspace, adding their values defines a linear functional because components add and scale separately.
+
+**nLab:** [internal direct sum](https://ncatlab.org/nlab/show/internal+direct+sum). It says: “there is a unique I-tuple (nᵢ ∈ Nᵢ)”
+
+**Sources:**
+
+- [Sheldon Axler, Linear Algebra Done Right, 4th ed., 1.41, 3.93 and 3.108](https://linear.axler.net/LADR4e.pdf)
+
+### Composing functionals with a map reveals the kernel of its dual
+
+**Remember:** A functional vanishes after composition exactly when it vanishes on the image.
+
+*True by definition.* MSC 15A04 (Linear transformations, semilinear transformations). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** A functional is a linear map to the scalar field. The dual map of T sends a functional f on the target to f ∘ T. The annihilator of a subspace consists of the functionals that vanish on it.
+
+**Problem.** For a linear map T between finite-dimensional spaces, the kernel of its dual map is the annihilator of its image.
+
+**How the definition helps.** The composite f ∘ T is zero exactly when f vanishes at every output of T. Our own comparison starts with the transpose matrix, formed by interchanging rows and columns. Showing that this matrix represents composition with T in the dual bases gives the same result in coordinates.
+
+**Paper or page:** [Kernel of Transpose of Linear Transformation is Annihilator of Image](https://proofwiki.org/wiki/Kernel_of_Transpose_of_Linear_Transformation_is_Annihilator_of_Image). It says: “is the annihilator of the image of u”
+
+**Sources:**
+
+- [Sheldon Axler, Linear Algebra Done Right, 4th ed., 3.118 and 3.128–3.132](https://linear.axler.net/LADR4e.pdf)
+
+### Counting dimensions after quotienting by the kernel gives rank–nullity
+
+**Remember:** Rank counts dimensions left after collapsing the kernel.
+
+*True by definition.* MSC 15A04 (Linear transformations, semilinear transformations). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** The kernel consists of the inputs a linear map sends to zero. Its dimension is the nullity. Define rank as the dimension of the quotient by the kernel, where inputs differing by a kernel vector form one class.
+
+**Problem.** For a linear map from a finite-dimensional space, its rank plus its nullity equals the dimension of its domain.
+
+**How the definition helps.** Our own proof now counts the dimensions removed and retained by the quotient. Extending a kernel basis to a domain basis shows that the added vectors give a basis of the quotient after taking classes. The first isomorphism theorem identifies the quotient with the image, whose dimension usually defines rank.
+
+**Paper or page:** [Rank Plus Nullity Theorem](https://proofwiki.org/wiki/Rank_Plus_Nullity_Theorem). It says: “dim Img φ + dim ker φ = dim G”
+
+**Sources:**
+
+- [Sheldon Axler, Linear Algebra Done Right, 4th ed., 3.21 and 3.104–3.107](https://linear.axler.net/LADR4e.pdf)
+
+### Functionals on the quotient explain the image of a dual map
+
+**Remember:** A functional comes from the target exactly when it ignores the kernel.
+
+*True by definition.* MSC 15A04 (Linear transformations, semilinear transformations). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** A functional is a linear map to the scalar field. The annihilator of the kernel consists of the functionals that vanish on all inputs T sends to zero. The dual map sends a functional f on the target to f ∘ T.
+
+**Problem.** For a linear map T between finite-dimensional spaces, the image of its dual map is the annihilator of its kernel.
+
+**How the definition helps.** Our own proof views a functional vanishing on the kernel as a functional on the quotient. The quotient identifies with the image of T, so the functional already has values there. Extend a basis of the image to the target and assign zero to the added vectors. Conversely, composing any target functional with T gives zero on the kernel.
+
+**Paper or page:** [Image of Transpose of Linear Transformation is Annihilator of Kernel](https://proofwiki.org/wiki/Image_of_Transpose_of_Linear_Transformation_is_Annihilator_of_Kernel). It says: “The image of uᵀ is the annihilator of ker u.”
+
+**Sources:**
+
+- [Sheldon Axler, Linear Algebra Done Right, 4th ed., 3.107 and 3.130](https://linear.axler.net/LADR4e.pdf)
+
+### Quotient maps group vectors that any map killing the subspace identifies
+
+**Remember:** A map that kills the subspace cannot tell its coset representatives apart.
+
+*True by definition.* MSC 15A04 (Linear transformations, semilinear transformations). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** A quotient of V by a subspace M comes with a linear map Q that sends M to zero. Every linear map T from V sending M to zero must have exactly one expression T = L ∘ Q with L linear.
+
+**Problem.** The space V/M of classes of vectors differing by elements of M satisfies this quotient property.
+
+**How the definition helps.** Our own proof uses the fact that T takes the same value on every vector in a class. Send the class of v to T(v). This rule preserves addition and scaling because classes inherit both operations from V. Every class has a representative, so the rule determines L uniquely.
+
+**Paper or page:** [Condition for Mapping from Quotient Vector Space to be Well-Defined](https://proofwiki.org/wiki/Condition_for_Mapping_from_Quotient_Vector_Space_to_be_Well-Defined). It says: “M ⊆ ker T”
+
+**Sources:**
+
+- [Sheldon Axler, Linear Algebra Done Right, 4th ed., 3.99–3.107](https://linear.axler.net/LADR4e.pdf)
 
 ### Defining the pseudoinverse geometrically makes it give the shortest least-squares solution
 
@@ -732,6 +1364,22 @@
 **How the definition helps.** With the norm-product definition, the inequality is two uses of ‖XY‖ ≤ ‖X‖ ‖Y‖, once for ‖AB‖ and once for ‖(AB)⁻¹‖ = ‖B⁻¹A⁻¹‖. From the sensitivity definition, a direct proof would follow errors through two solves. The work goes into the theorem that the two definitions agree (argument our own).
 
 **Wikipedia:** [Condition number](https://en.wikipedia.org/wiki/Condition_number). It says: “The condition number is defined more precisely to be the maximum ratio of the relative error in x to the relative error in b.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Alternating rows give the factors of the Vandermonde determinant
+
+**Remember:** Two equal inputs make equal rows, so their difference is a factor.
+
+*True by definition.* MSC 15A15 (Determinants, permanents, traces, other special matrix functions). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** Define the Vandermonde polynomial as the determinant whose ith row lists the powers of xᵢ from degree zero to n − 1. Use the determinant as a function linear in each row and zero on repeated rows.
+
+**Problem.** The Vandermonde determinant is the product of xⱼ − xᵢ over all pairs i &lt; j.
+
+**How the definition helps.** Equal inputs give equal rows and a zero determinant, so each difference divides the polynomial. These distinct factors together have the full degree of the determinant (our own). The term selecting the diagonal has coefficient one and fixes the overall sign and constant (our own). This avoids evaluating the whole signed permutation sum, though that formula still supplies the degree and coefficient (our own).
+
+**nLab:** [Vandermonde determinant](https://ncatlab.org/nlab/show/Vandermonde+determinant). It says: “since each of those values makes two rows equal (hence with zero determinant).”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -819,6 +1467,38 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### The exponential series gives the determinant from the trace
+
+**Remember:** Exponentiate the diagonal entries, then multiply them.
+
+*True by definition.* MSC 15A15 (Determinants, permanents, traces, other special matrix functions), 15A16. arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** Define the matrix exponential by the power series with terms Aᵏ/k! starting at k = 0. Unlike a definition by differential equations, this one computes each diagonal entry of a triangular matrix directly.
+
+**Problem.** For a real or complex square matrix A, det(exp(A)) = exp(tr(A)), where tr(A) is the sum of the diagonal entries.
+
+**How the definition helps.** In a complex triangular basis, each power raises the diagonal entries to that power, so the series exponentiates those entries (our own). Their product is the exponential of their sum (our own). The work goes into triangularization and showing the convergent series respects a change of basis (our own).
+
+**nLab:** [relation between determinant and trace](https://ncatlab.org/nlab/show/relation+between+determinant+and+trace). It says: “the determinant of its exponential equals the exponential of its trace”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Unit determinants detect invertibility even over rings
+
+**Remember:** The adjugate yields an inverse only when the determinant can be divided out.
+
+*Rules out counterexamples.* MSC 15A15 (Determinants, permanents, traces, other special matrix functions). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** A unit is an element with a multiplicative inverse in its ring. Over a field this means nonzero, but over a ring a nonzero element need not be a unit.
+
+**Problem.** A square matrix over a commutative ring with identity is invertible exactly when its determinant is a unit.
+
+**How the definition helps.** A unit determinant lets us divide the adjugate by the determinant to get the inverse (our own). The adjugate is the transpose of the matrix of cofactors, the signed smaller determinants (our own). The work goes into the adjugate identity and the determinant product rule, which also shows invertibility forces a unit determinant (our own). The matrix with sole entry 2 has nonzero determinant over the integers but no integer inverse (our own).
+
+**nLab:** [characteristic polynomial](https://ncatlab.org/nlab/show/characteristic+polynomial). It says: “Then there exists an n × n matrix Ã with entries in R, called the adjugate of A, such that AÃ = ÃA = det(A) · Iₙ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Companion maps defined as multiplication by x have minimal polynomial p
 
 **Remember:** A polynomial in the companion map multiplies by that polynomial.
@@ -869,6 +1549,60 @@
 
 - [L. Mirsky, Symmetric gauge functions and unitarily invariant norms (1960)](https://doi.org/10.1093/qmath/11.1.50)
 
+### Defining unitary maps by length puts their eigenvalues on the circle
+
+**Remember:** A unitary map can turn an eigenvector but cannot stretch it.
+
+*True by definition.* MSC 15A18 (Eigenvalues, singular values, and eigenvectors). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** Call a linear map from a finite-dimensional complex inner product space to itself unitary if it preserves length. The equivalent matrix definition says UᴴU = I, where Uᴴ is the conjugate transpose.
+
+**Problem.** Every eigenvalue of a unitary map has absolute value 1.
+
+**How the definition helps.** An eigenvector is stretched by the absolute value of its eigenvalue, and the definition forbids a change of length (our own). The work moves to showing that the length test and the matrix test agree (our own).
+
+**nLab:** [unitary operator](https://ncatlab.org/nlab/show/unitary+operator). It says: “U preserves the inner product ⟨·,·⟩ on the Hilbert space.”
+
+**Sources:**
+
+- [Sheldon Axler, Linear Algebra Done Right, 4th ed., 7.49 and 7.53–7.54](https://linear.axler.net/LADR4e.pdf)
+
+### Equal lengths make normal eigenspaces reduce the operator
+
+**Remember:** Normality makes a zero residual stay zero for the adjoint.
+
+*True by definition.* MSC 15A18 (Eigenvalues, singular values, and eigenvectors). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** A complex square matrix A is normal if ‖Ax‖ = ‖Aᴴx‖ for every x. Here Aᴴ is the conjugate transpose. The usual matrix test asks whether AAᴴ = AᴴA.
+
+**Problem.** For a normal complex matrix, each eigenspace and its orthogonal complement are mapped into themselves.
+
+**How the definition helps.** The length test makes a normal matrix and its adjoint send exactly the same vectors to zero (our own). The matrix test shows that A − λI is also normal, where I is the identity (our own). Thus Aᴴ acts by the conjugate of λ on the λ-eigenspace of A, so A preserves the perpendicular complement (our own). Polarization proves the two normality tests agree (our own).
+
+**Paper or page:** [Eigenspace for Normal Operator is Reducing Subspace](https://proofwiki.org/wiki/Eigenspace_for_Normal_Operator_is_Reducing_Subspace). It says: “Then ker(A − λ) is a reducing subspace for A.”
+
+**Sources:**
+
+- [Sheldon Axler, Linear Algebra Done Right, 4th ed., 7.20–7.22](https://linear.axler.net/LADR4e.pdf)
+
+### Generalized eigenspace dimensions bound ordinary eigenspace dimensions
+
+**Remember:** The ordinary eigenspace sits inside the generalized one.
+
+*True by definition.* MSC 15A18 (Eigenvalues, singular values, and eigenvectors). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** For a complex square matrix A, the generalized eigenspace for λ consists of vectors killed by some positive power of A − λI. Define the algebraic multiplicity of λ as the dimension of this space. The usual definition counts its repetitions as a root of det(tI − A).
+
+**Problem.** The geometric multiplicity of an eigenvalue, the dimension of its ordinary eigenspace, cannot exceed its algebraic multiplicity.
+
+**How the definition helps.** Every vector killed by A − λI is killed by a positive power of A − λI (our own). The work goes into showing that the generalized eigenspace dimension equals the root multiplicity, using the Jordan form (our own).
+
+**Wikipedia:** [Eigenvalues and eigenvectors](https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors). It says: “an eigenvalue's geometric multiplicity cannot exceed its algebraic multiplicity.”
+
+**Sources:**
+
+- [Sheldon Axler, Linear Algebra Done Right, 4th ed., §8B and Theorem 9.62](https://linear.axler.net/LADR4e.pdf)
+
 ### Letting matrices act on matrices makes the Cayley–Hamilton substitution legitimate
 
 **Remember:** Let coefficients act on the left and the variable on the right.
@@ -903,6 +1637,110 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Nonnegative eigenvalues select one matrix square root
+
+**Remember:** Choose the nonnegative root on every eigenspace.
+
+*Rules out counterexamples.* MSC 15A18 (Eigenvalues, singular values, and eigenvectors). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** A real symmetric matrix is positive semidefinite if all its eigenvalues are nonnegative. A positive semidefinite square root of A is a real symmetric positive semidefinite matrix B with B² = A.
+
+**Problem.** Every real symmetric positive semidefinite matrix has exactly one real symmetric positive semidefinite square root.
+
+**How the definition helps.** Nonnegativity forces the same scalar square root on each eigenspace of A (our own). The spectral theorem constructs a root by replacing every eigenvalue with its nonnegative square root (our own). Any candidate commutes with A, and diagonalizing its restriction to each eigenspace forces exactly those values (our own). Without the sign condition, \[1\] and \[−1\] both square to \[1\] (our own).
+
+**Wikipedia:** [Square root of a matrix](https://en.wikipedia.org/wiki/Square_root_of_a_matrix). It says: “there is exactly one positive semidefinite and symmetric matrix B such that A = BB”
+
+**Sources:**
+
+- [Sheldon Axler, Linear Algebra Done Right, 4th ed., 7.39](https://linear.axler.net/LADR4e.pdf)
+
+### Nonzero singular values count the rank
+
+**Remember:** Count the directions that are not sent to zero.
+
+*True by definition.* MSC 15A18 (Eigenvalues, singular values, and eigenvectors). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** In orthonormal bases, a real or complex matrix has a rectangular diagonal form with nonnegative diagonal entries. These entries are its singular values. Rank is the dimension of the image.
+
+**Problem.** The rank of A is the number of positive singular values, with repeats counted.
+
+**How the definition helps.** The diagonal form displays one independent image direction for each positive entry (our own). A zero entry contributes none (our own). The singular value decomposition justifies counting diagonal entries instead of computing the eigenvalues of AᴴA, where Aᴴ is the conjugate transpose (our own).
+
+**Wikipedia:** [Singular value decomposition](https://en.wikipedia.org/wiki/Singular_value_decomposition). It says: “equals the number of non-zero singular values”
+
+**Sources:**
+
+- [Sheldon Axler, Linear Algebra Done Right, 4th ed., 7.68–7.70](https://linear.axler.net/LADR4e.pdf)
+
+### Normal eigenvalues give singular values by absolute value
+
+**Remember:** Normal eigenvalues encode stretching in their absolute values.
+
+*True by definition.* MSC 15A18 (Eigenvalues, singular values, and eigenvectors). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** A complex square matrix A is normal if it commutes with its conjugate transpose Aᴴ. Its singular values are the nonnegative square roots of the eigenvalues of AᴴA.
+
+**Problem.** For a normal complex matrix, the singular values are the absolute values of its eigenvalues, counting repeats.
+
+**How the definition helps.** An orthonormal eigenbasis turns the product AᴴA into a diagonal matrix whose entries are the squared absolute values of the eigenvalues (our own). The spectral theorem supplies this basis for normal A, avoiding a second eigenvalue problem for AᴴA (our own).
+
+**Wikipedia:** [Singular value](https://en.wikipedia.org/wiki/Singular_value). It says: “its singular values are the absolute values of its eigenvalues”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Singular values show the largest stretch
+
+**Remember:** The most stretched direction is a singular vector.
+
+*True by definition.* MSC 15A18 (Eigenvalues, singular values, and eigenvectors). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** Singular values are the diagonal entries of the nonnegative diagonal form of a real or complex matrix in orthonormal bases. The operator norm is the largest Euclidean length of Ax over all unit vectors x.
+
+**Problem.** For a matrix with at least one row and one column, the largest singular value equals its operator norm.
+
+**How the definition helps.** In diagonal coordinates, each singular value scales one coordinate, and the changes of basis preserve length (our own). The largest value bounds every stretch and attains that bound along its coordinate axis (our own). The singular value decomposition supplies these coordinates in place of maximizing over all directions (our own).
+
+**Wikipedia:** [Singular value](https://en.wikipedia.org/wiki/Singular_value). It says: “is equal to the operator norm of T”
+
+**Sources:**
+
+- [Sheldon Axler, Linear Algebra Done Right, 4th ed., 7.82–7.88](https://linear.axler.net/LADR4e.pdf)
+
+### Spectral projectors separate eigenvectors with different eigenvalues
+
+**Remember:** A polynomial can keep one eigenspace and kill all the others.
+
+*True by definition.* MSC 15A18 (Eigenvalues, singular values, and eigenvectors). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** Choose distinct eigenvalues of a linear map T and fix one of them, λ. On the span of their eigenvectors, define its spectral projector as the product of (T − μI)/(λ − μ) over the other chosen eigenvalues μ.
+
+**Problem.** Nonzero eigenvectors for distinct eigenvalues of a linear map are linearly independent.
+
+**How the definition helps.** The product fixes each λ-eigenvector and sends each of the other chosen eigenvectors to zero (our own). Applying it to a linear relation isolates the coefficient of the λ-eigenvector, which must vanish (our own). Defining the projector by coordinates would already require the independence this polynomial construction proves (our own).
+
+**Paper or page:** [Eigenvectors Corresponding to Distinct Eigenvalues of Linear Operator are Linearly Independent](https://proofwiki.org/wiki/Eigenvectors_Corresponding_to_Distinct_Eigenvalues_of_Linear_Operator_are_Linearly_Independent). It says: “Then {x₁, …, xₙ} is a linearly independent set.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The adjoint swaps singular directions without changing singular values
+
+**Remember:** Swap the two orthonormal bases and keep the same stretches.
+
+*True by definition.* MSC 15A18 (Eigenvalues, singular values, and eigenvectors). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** Define a matrix’s singular values as the diagonal entries of its nonnegative diagonal form in orthonormal bases. The adjoint swaps the source and target of the map.
+
+**Problem.** A matrix and its adjoint have the same singular values, counting repeats and using the smaller matrix dimension for the list length.
+
+**How the definition helps.** In singular value coordinates, taking the adjoint simply transposes the real diagonal matrix and swaps the two bases (our own). The singular value decomposition supplies these coordinates, avoiding separate eigenvalue calculations for the two matrices (our own).
+
+**nLab:** [adjoint operator](https://ncatlab.org/nlab/show/adjoint+operator). It says: “given by passage to the complex conjugate transpose matrix”
+
+**Sources:**
+
+- [Sheldon Axler, Linear Algebra Done Right, 4th ed., 7.75](https://linear.axler.net/LADR4e.pdf)
+
 ### Defining projectors by the Chinese remainder theorem splits generalized eigenspaces
 
 **Remember:** A residue projector keeps one factor and kills the others.
@@ -935,6 +1773,76 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### A common invariant flag triangularizes commuting matrices together
+
+**Remember:** Find one common eigenline, then lift the flag from the quotient.
+
+*Makes the theorem clean to state or prove.* MSC 15A21 (Canonical forms, reductions, classification), 15A18. arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** A common full invariant flag is a chain of subspaces, one of each dimension, that every matrix preserves. This describes simultaneous triangularization without choosing coordinates.
+
+**Problem.** Pairwise commuting complex square matrices of the same size have a common full invariant flag. A basis built along this flag makes every matrix upper triangular.
+
+**How the definition helps.** A common flag gives a triangular basis for all the matrices by extending a basis at each step (our own). To start the flag, choose one eigenspace at a time inside the previously chosen space, which the remaining matrices preserve (our own). The work goes into finding an eigenvalue at each restriction and checking that commutation passes to the quotient (our own). Induction on the quotient by the common eigenline then supplies the rest of the flag (our own).
+
+**Wikipedia:** [Triangular matrix](https://en.wikipedia.org/wiki/Triangular_matrix). It says: “This can be proven by first showing that commuting matrices have a common eigenvector, and then inducting on dimension as before.”
+
+**Sources:**
+
+- [Kenneth Hoffman and Ray Kunze, Linear Algebra, 2nd ed., §6.5](https://math.ucr.edu/~mpierce/teaching/linear-algebra/docs/Hoffman%2CKunze-LinearAlgebra.pdf)
+
+### A full invariant flag makes triangularization an induction
+
+**Remember:** Lift an invariant flag from the quotient by an eigenline.
+
+*Makes the theorem clean to state or prove.* MSC 15A21 (Canonical forms, reductions, classification). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** A full invariant flag is a chain of subspaces, one of each dimension, that the map sends into themselves. Use the flag to describe triangularizability instead of looking for a change-of-basis matrix.
+
+**Problem.** A square matrix has a full invariant flag over its field exactly when its characteristic polynomial splits into linear factors there. In a basis built along this flag, the matrix is upper triangular.
+
+**How the definition helps.** A triangular basis is exactly a basis whose successive initial spans form a full invariant flag (our own). Take an eigenline and apply induction to the induced map on the quotient, whose characteristic polynomial has one fewer factor (our own). Lift the flag by taking inverse images under the quotient map (our own). The work is to prove the characteristic polynomial factors across the invariant line and the quotient (our own).
+
+**Wikipedia:** [Triangular matrix](https://en.wikipedia.org/wiki/Triangular_matrix). It says: “by taking the quotient space by the eigenvector and inducting to show that A stabilizes a flag”
+
+**Sources:**
+
+- [Sheldon Axler, Linear Algebra Done Right, 4th ed., §5C](https://linear.axler.net/LADR4e.pdf)
+
+### A split square-free minimal polynomial forces diagonalizability
+
+**Remember:** A square-free annihilator leaves only blocks of size one.
+
+*Rules out counterexamples.* MSC 15A21 (Canonical forms, reductions, classification). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** For a linear operator T on a finite-dimensional space over a field F, let x act as T. The elementary divisors are the powers of irreducible polynomials defining the cyclic summands of this F\[x\]-module.
+
+**Problem.** The operator is diagonalizable exactly when every elementary divisor is linear. Equivalently, its minimal polynomial is a product of distinct linear factors.
+
+**How the definition helps.** Linear elementary divisors exclude both repeated powers and irreducible factors of higher degree. Our own check observes that each quotient by x − λ has dimension one and supplies an eigenvector. Conversely, an eigenbasis gives precisely these summands, and the minimal polynomial is the least common multiple of their defining powers. On F\[x\]/(x²), multiplication by x is nonzero and squares to zero, so it cannot be diagonal.
+
+**Wikipedia:** [Jordan normal form](https://en.wikipedia.org/wiki/Jordan_normal_form). It says: “the Jordan normal form is concerned with representing M in terms of blocks associated to the elementary divisors.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Distinct irreducible factors make semisimplicity pass to restrictions and quotients
+
+**Remember:** A divisor cannot pick up a repeated factor.
+
+*True by definition.* MSC 15A21 (Canonical forms, reductions, classification). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** The minimal polynomial of a finite-dimensional operator is the polynomial of least degree with leading coefficient one that vanishes at the operator. Call the operator semisimple if this polynomial has no repeated irreducible factor. An irreducible factor cannot split into two factors of positive degree over the field.
+
+**Problem.** A semisimple operator remains semisimple on each invariant subspace and on the quotient by that subspace.
+
+**How the definition helps.** The original minimal polynomial vanishes on the restriction and the quotient, so both minimal polynomials divide it (our own). Neither divisor can acquire a repeated irreducible factor (our own). The equivalent definition requires every invariant subspace to have an invariant complement. Proving equivalence uses the decomposition into kernels associated with the irreducible factors (our own).
+
+**Wikipedia:** [Semisimple operator](https://en.wikipedia.org/wiki/Semisimple_operator). It says: “a linear operator is semisimple if its minimal polynomial is a product of distinct irreducible polynomials.”
+
+**Sources:**
+
+- [Kenneth Hoffman and Ray Kunze, Linear Algebra, 2nd ed., §7.5](https://math.ucr.edu/~mpierce/teaching/linear-algebra/docs/Hoffman%2CKunze-LinearAlgebra.pdf)
+
 ### Divisibility and no trivial factors make invariant factors unique
 
 **Remember:** Each factor divides the next, and no factor is 1.
@@ -948,6 +1856,156 @@
 **How the definition helps.** The divisibility rule picks one decomposition out of many, so it can be compared between matrices. Without it, cyclic pieces can split further: F\[X\]/(X(X−1)) and F\[X\]/(X) ⊕ F\[X\]/(X−1) are the same module, so one matrix has two lists (our own). Forbidding the factor 1 removes zero-dimensional pieces that could be added freely. The uniqueness comes from the structure theorem for finitely generated modules over a principal ideal domain.
 
 **Wikipedia:** [Frobenius normal form](https://en.wikipedia.org/wiki/Frobenius_normal_form). It says: “in the list of associated minimal polynomials each one must divide the next (and the constant polynomial 1 is forbidden to exclude trivial cyclic subspaces).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Invariant factors detect a cyclic vector
+
+**Remember:** The largest factor equals their product only for a single block.
+
+*True by definition.* MSC 15A21 (Canonical forms, reductions, classification). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** For a linear operator T, the invariant factors are the nonconstant monic polynomials defining its cyclic F\[x\]-module summands. Order them so that each divides the next.
+
+**Problem.** A linear operator on a nonzero finite-dimensional space has a cyclic vector exactly when its minimal and characteristic polynomials agree. A cyclic vector and its iterates under the operator span the space.
+
+**How the definition helps.** The invariant factors express both polynomials in one list, avoiding a separate search for a spanning vector. The structure theorem gives the last factor as the minimal polynomial, and the companion blocks give their product as the characteristic polynomial. Since each factor has positive degree, these agree exactly when the list has one entry. Our own check uses the class of 1 as a cyclic vector in that single block.
+
+**Wikipedia:** [Frobenius normal form](https://en.wikipedia.org/wiki/Frobenius_normal_form). It says: “When the minimal polynomial is identical to the characteristic polynomial (the case k = 1), the Frobenius normal form is the companion matrix of the characteristic polynomial.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Invariant factors give both matrix polynomials without determinant expansion
+
+**Remember:** Multiply the factors for the characteristic polynomial and keep the last for the minimal polynomial.
+
+*True by definition.* MSC 15A21 (Canonical forms, reductions, classification), 15A15. arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** Split the space into nonzero invariant subspaces, each spanned by the iterates of one vector. Choose a decomposition whose minimal polynomials form a list in which each divides the next. These polynomials are the invariant factors.
+
+**Problem.** For a nonempty matrix, the characteristic polynomial is the product of the invariant factors. The minimal polynomial is the last invariant factor.
+
+**How the definition helps.** The basis of iterates makes each block’s characteristic polynomial equal its minimal polynomial (our own). The characteristic polynomial of a block diagonal matrix is the product of those block polynomials (our own). A polynomial kills the matrix exactly when each block polynomial divides it, which makes the last factor the minimal polynomial (our own). The cyclic decomposition theorem supplies the ordered blocks and proves their factors unique (our own).
+
+**Wikipedia:** [Frobenius normal form](https://en.wikipedia.org/wiki/Frobenius_normal_form). It says: “the product of the invariant factors gives the characteristic polynomial.”
+
+**Sources:**
+
+- [Kenneth Hoffman and Ray Kunze, Linear Algebra, 2nd ed., §7.2](https://math.ucr.edu/~mpierce/teaching/linear-algebra/docs/Hoffman%2CKunze-LinearAlgebra.pdf)
+
+### Jordan chains make block sizes readable from kernel dimensions
+
+**Remember:** Each chain adds one new kernel vector at each step until it ends.
+
+*Makes the theorem clean to state or prove.* MSC 15A21 (Canonical forms, reductions, classification), 15A18. arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** In a Jordan chain for λ, the map A − λI sends each basis vector to its predecessor and the first to zero. The chain length is the size of its Jordan block. For each power of A − λI, its kernel consists of the vectors that power sends to zero.
+
+**Problem.** When the characteristic polynomial splits, the increase in kernel dimension from power j − 1 to j counts the λ-blocks of size at least j. These counts for all eigenvalues and all positive j determine the Jordan form up to block order.
+
+**How the definition helps.** Each chain contributes one new kernel dimension per power until the power reaches its length (our own). Blocks for other eigenvalues contribute nothing because the shifted map is invertible there (our own). Subtracting consecutive counts gives the number of blocks of each exact size (our own). The Jordan basis theorem supplies the chains (our own).
+
+**Wikipedia:** [Jordan normal form](https://en.wikipedia.org/wiki/Jordan_normal_form). It says: “The number of Jordan blocks corresponding to λᵢ of size at least j is dim ker(A − λᵢI)ʲ − dim ker(A − λᵢI)ʲ⁻¹.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Nilpotent powers make each Jordan block exponential a finite sum
+
+**Remember:** The scalar part gives a scalar exponential and the shift gives a finite sum.
+
+*True by definition.* MSC 15A21 (Canonical forms, reductions, classification), 15A16. arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** For a real or complex square matrix A, define exp(A) by the series with terms Aᵏ/k! starting at k = 0. Write a Jordan block as λI + N, where N sends each basis vector to its predecessor and the first to zero.
+
+**Problem.** The exponential of a Jordan block of size m at λ is exp(λ) times the first m terms of the exponential series for N.
+
+**How the definition helps.** The chain shift satisfies Nᵐ = 0, so only the first m terms of its exponential can survive (our own). The scalar matrix λI commutes with N, allowing their exponentials to multiply (our own). This series calculation replaces solving a chain of differential equations and uses the product rule for commuting matrix exponentials (our own).
+
+**Wikipedia:** [Matrix exponential](https://en.wikipedia.org/wiki/Matrix_exponential). It says: “the series terminates after a finite number of terms”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Polynomial scalar action gives rational canonical form
+
+**Remember:** Decompose the polynomial module, then read off its companion blocks.
+
+*True by definition.* MSC 15A21 (Canonical forms, reductions, classification). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** Let T be a linear operator on a finite-dimensional space over a field F. Make the space an F\[x\]-module by letting x act as T. For monic f of degree d, the companion matrix represents multiplication by x on F\[x\]/(f) in the basis 1, x, …, xᵈ⁻¹.
+
+**Problem.** Every linear operator on a finite-dimensional space over a field has a rational canonical form over that field. Its blocks are companions of nonconstant monic polynomials, each dividing the next.
+
+**How the definition helps.** The polynomial action turns the search for a matrix basis into decomposition of a module. The structure theorem over F\[x\] gives cyclic quotients with successive defining polynomials dividing one another. Our own dimension check excludes a free summand because F\[x\] has infinite dimension over F. The power bases of the quotients then give the companion blocks.
+
+**Wikipedia:** [Frobenius normal form](https://en.wikipedia.org/wiki/Frobenius_normal_form). It says: “Apply the structure theorem for finitely generated modules over a principal ideal domain to V, viewing it as an F\[X\]-module.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Preserved eigenspaces give commuting diagonalizable matrices a common basis
+
+**Remember:** A commuting matrix acts inside each eigenspace, not across them.
+
+*Rules out counterexamples.* MSC 15A21 (Canonical forms, reductions, classification), 15A18. arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** Matrices commute in pairs when AB = BA for each pair A and B. An eigenbasis consists of eigenvectors, and a common eigenbasis works for every matrix in the family. A matrix is diagonalizable over its field when it has an eigenbasis over that field.
+
+**Problem.** A finite family of diagonalizable matrices over a field has a common eigenbasis exactly when the matrices commute in pairs.
+
+**How the definition helps.** Commutation keeps each eigenspace of one matrix invariant under all the others (our own). Each restriction stays diagonalizable because its minimal polynomial divides the original one, so successive eigenspace decompositions give a common eigenbasis (our own). Conversely, diagonal matrices commute (our own). The projections (x,y) ↦ (x,0) and (x,y) ↦ (x + y,0) are diagonalizable but fail to commute (our own).
+
+**Wikipedia:** [Diagonalizable matrix](https://en.wikipedia.org/wiki/Diagonalizable_matrix). It says: “A set of diagonalizable matrices commutes if and only if the set is simultaneously diagonalizable.”
+
+**Sources:**
+
+- [Kenneth Hoffman and Ray Kunze, Linear Algebra, 2nd ed., §6.5](https://math.ucr.edu/~mpierce/teaching/linear-algebra/docs/Hoffman%2CKunze-LinearAlgebra.pdf)
+
+### Real Jordan blocks combine conjugate chains into one real block
+
+**Remember:** One real block records both members of a conjugate pair.
+
+*Makes the theorem clean to state or prove.* MSC 15A21 (Canonical forms, reductions, classification). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** For a nonreal eigenvalue, form a real Jordan block by replacing each entry with its matrix of multiplication on the complex plane. For a + bi, this matrix has rows (a, −b) and (b, a). For a real eigenvalue, keep the ordinary Jordan block.
+
+**Problem.** Every real square matrix has a real basis in which it is a direct sum of these real Jordan blocks.
+
+**How the definition helps.** Each nonreal chain and its conjugate give a real basis from the real parts and the negatives of the imaginary parts (our own). In that basis the action is exactly the real block action (our own). The work goes into complex Jordan form and choosing real chains on the real-eigenvalue spaces (our own).
+
+**Wikipedia:** [Jordan normal form](https://en.wikipedia.org/wiki/Jordan_normal_form). It says: “For a real matrix the nonreal eigenvectors and generalized eigenvectors can always be chosen to form complex conjugate pairs.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Smith normal form separates the cyclic factors
+
+**Remember:** One diagonal relation per generator gives one cyclic factor.
+
+*True by definition.* MSC 15A21 (Canonical forms, reductions, classification), 20K25. arXiv math.GR. Level 2: later undergraduate.
+
+**Definition.** A relation matrix has one row per abelian group generator and one column per defining relation. Its entries give the integer coefficients in each relation. In Smith normal form only diagonal entries can be nonzero, and the positive entries come first, each dividing the next.
+
+**Problem.** Every finitely generated abelian group is a finite direct sum of infinite cyclic groups and finite cyclic groups. The finite orders can be chosen so that each divides the next.
+
+**How the definition helps.** Each diagonal relation restricts just one generator, so the group splits into cyclic factors (our own explanation). A positive diagonal entry gives the order of its generator, and an unrestricted generator has infinite order. A general relation matrix mixes generators. The work lies in finding a finite presentation and applying the Smith theorem to change its two integer bases.
+
+**Paper or page:** [Theorem 7.1. (Smith normal form)](https://venhance.github.io/napkin/Napkin.pdf). It says: “Then we can select a pair of new bases for M and N such that T has only diagonal entries”
+
+**Sources:**
+
+- [H. J. S. Smith, On systems of linear indeterminate equations and congruences (1861)](https://doi.org/10.1098/rstl.1861.0016)
+
+### Stable kernels and images split a map at zero
+
+**Remember:** Once both spaces stop changing, one part dies and the other stays invertible.
+
+*Makes the theorem clean to state or prove.* MSC 15A21 (Canonical forms, reductions, classification). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** Define the stable kernel and stable image of a matrix as the eventual kernel and image of its powers. The kernel consists of the vectors sent to zero. The image consists of the vectors produced by applying the map.
+
+**Problem.** Every finite-dimensional linear operator splits into a nilpotent restriction on its stable kernel and an invertible restriction on its stable image.
+
+**How the definition helps.** The operator maps its stable image onto itself, so finite dimension makes this restriction invertible (our own). Every vector in the stable kernel dies under one fixed power, so the two spaces intersect only at zero (our own). Finite dimension makes both chains stabilize, and rank plus nullity gives the full dimension for their sum (our own).
+
+**Wikipedia:** [Fitting lemma](https://en.wikipedia.org/wiki/Fitting_lemma). It says: “To prove Fitting's lemma, we take an endomorphism f of M and consider the following two chains of submodules:”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -983,6 +2041,60 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Preserving initial spans gives Schur’s unitary triangularization
+
+**Remember:** Gram–Schmidt changes the basis without changing its initial spans.
+
+*True by definition.* MSC 15A23 (Factorization of matrices). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** Read an upper triangular matrix as preserving the span of the first k basis vectors for every k. This description replaces the test of looking for zeros below the diagonal.
+
+**Problem.** Every complex square matrix is upper triangular in some orthonormal basis.
+
+**How the definition helps.** The span definition shows that Gram–Schmidt keeps triangularity when it makes the original basis orthonormal (our own). The work moves to ordinary triangularization over the complex numbers and to the span property of Gram–Schmidt (our own).
+
+**Wikipedia:** [Schur decomposition](https://en.wikipedia.org/wiki/Schur_decomposition). It says: “unitarily similar to an upper triangular matrix”
+
+**Sources:**
+
+- [Sheldon Axler, Linear Algebra Done Right, 4th ed., 6.32 and 6.37–6.38](https://linear.axler.net/LADR4e.pdf)
+
+### Strict leading minor signs make the triangular positivity test work
+
+**Remember:** Each pivot is the ratio of two consecutive leading determinants.
+
+*Rules out counterexamples.* MSC 15A23 (Factorization of matrices). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** For a real symmetric matrix A, the triangular test for positive definiteness asks for A = LDLᵀ. Here L is lower triangular with ones on its diagonal, and D is diagonal with positive entries.
+
+**Problem.** A real symmetric matrix is positive definite exactly when every leading principal minor is positive. These minors are the determinants of its upper left square blocks.
+
+**How the definition helps.** In triangular form each leading determinant is the product of the corresponding initial entries of D (our own). Their consecutive ratios therefore give those entries, starting with the empty determinant 1 (our own). Elimination supplies the factorization when every leading determinant is nonzero, and xᵀAx = (Lᵀx)ᵀD(Lᵀx) gives the quadratic test (our own). Weak inequalities fail for the diagonal matrix with entries 0 and −1, whose leading determinants both vanish (our own).
+
+**Wikipedia:** [Sylvester's criterion](https://en.wikipedia.org/wiki/Sylvester%27s_criterion). It says: “the leading principal minors are positive: det Mₖ &gt; 0”
+
+**Sources:**
+
+- [George T. Gilbert, Positive Definite Matrices and Sylvester’s Criterion (1991)](https://doi.org/10.1080/00029890.1991.11995702)
+
+### Compression makes eigenvalue interlacing a restriction of subspaces
+
+**Remember:** Compression shrinks the collection of subspaces used to test eigenvalues.
+
+*True by definition.* MSC 15A42 (Inequalities involving eigenvalues and eigenvectors), 15A18. arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** The compression of a real symmetric matrix A to W sends x in W to the orthogonal projection of Ax onto W. Equivalently, it is the symmetric operator on W with quadratic form x ↦ xᵀAx.
+
+**Problem.** List the eigenvalues of A and its compression in increasing order, counting repeats. If their sizes are n and m, compressed eigenvalue k lies between original eigenvalues k and k + n − m.
+
+**How the definition helps.** The quadratic form description lets the compression reuse exactly the same test values on W (our own). Minimizing over fewer k-dimensional subspaces gives the lower bound (our own). Maximizing over fewer subspaces of dimension m − k + 1 gives the upper bound (our own). The min–max theorem identifies these two bounds with the indicated eigenvalues of A (our own).
+
+**Wikipedia:** [Min-max theorem](https://en.wikipedia.org/wiki/Min-max_theorem). It says: “When n − m = 1, we have αⱼ ≤ βⱼ ≤ αⱼ₊₁”
+
+**Sources:**
+
+- [Suk-Geun Hwang, Cauchy’s Interlace Theorem for Eigenvalues of Hermitian Matrices (2004)](https://doi.org/10.1080/00029890.2004.11920060)
+
 ### Variational eigenvalues make Hermitian eigenvalues increase under positive semidefinite perturbations
 
 **Remember:** Pointwise order survives a minimum and then a maximum.
@@ -998,6 +2110,56 @@
 **Wikipedia:** [Min-max theorem](https://en.wikipedia.org/wiki/Min-max_theorem). It says: “a result that gives a variational characterization of eigenvalues of compact Hermitian operators on Hilbert spaces.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Perpendicular heights give Hadamard’s determinant bound
+
+**Remember:** Each perpendicular height is at most the full column length.
+
+*True by definition.* MSC 15A45 (Miscellaneous inequalities involving matrices), 26D15. arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** The columns of a real square matrix form the edges of a solid called a parallelepiped. Define the absolute determinant as its volume. Compute the volume by multiplying each column’s perpendicular distance from the space spanned by earlier columns, starting with the first column’s length.
+
+**Problem.** The absolute determinant is at most the product of the column lengths. If no column is zero, equality holds exactly when the columns are pairwise perpendicular.
+
+**How the definition helps.** The Pythagorean theorem bounds each perpendicular height by its column’s length (our own). Equality for a nonzero column requires it to be perpendicular to all preceding columns (our own). The work goes into matching the volume definition with the alternating-sum formula, for example by orthogonalizing the columns (our own).
+
+**Paper or page:** [Exterior powers and pointwise creation operators](https://arxiv.org/abs/2004.11993). It says: “\|det(A)\| ≤ ∏ⱼ₌₁ⁿ (∑ᵢ₌₁ⁿ \|aᵢⱼ\|²)¹⁄²”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Alternating forms have even rank over every field
+
+**Remember:** Alternating forms gain rank two directions at a time.
+
+*Rules out counterexamples.* MSC 15A63 (Quadratic and bilinear forms, inner products). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** A bilinear form b is alternating if b(x,x) = 0 for every x. Skew symmetry only asks that b(x,y) = −b(y,x).
+
+**Problem.** Every alternating bilinear form on a finite-dimensional vector space has even rank.
+
+**How the definition helps.** The zero diagonal forces any pair with b(x,y) ≠ 0 to span a plane of rank two (our own). The work moves to splitting off that plane by its orthogonal complement and applying induction (our own). In the field with two elements, the skew-symmetric matrix \[1\] instead has rank one (our own).
+
+**nLab:** [bilinear form](https://ncatlab.org/nlab/show/bilinear+form). It says: “It is called alternating if ⟨x,x⟩ = 0 for all x ∈ V.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Complex polarization detects self-adjointness from diagonal values
+
+**Remember:** Over the complex numbers, the diagonal remembers every pair.
+
+*True by definition.* MSC 15A63 (Quadratic and bilinear forms, inner products). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** For a complex square matrix A, its quadratic form is q(x) = xᴴAx, where ᴴ means conjugate transpose. Polarization expresses the full pairing xᴴAy in terms of q. A is self-adjoint if A = Aᴴ.
+
+**Problem.** A complex matrix is self-adjoint exactly when xᴴAx is real for every x.
+
+**How the definition helps.** The diagonal pairing of Aᴴ is the complex conjugate of the diagonal pairing of A (our own). If the values are real, the two diagonal pairings agree, so polarization gives A = Aᴴ (our own). The work moves to the polarization identity, which uses the diagonal at x ± y and x ± iy (our own).
+
+**Paper or page:** [Operator is Hermitian iff Numerical Range is Real](https://proofwiki.org/wiki/Operator_is_Hermitian_iff_Numerical_Range_is_Real). It says: “∀ h ∈ ℋ: ⟨Ah,h⟩ℋ ∈ ℝ”
+
+**Sources:**
+
+- [Sheldon Axler, Linear Algebra Done Right, 4th ed., 7.13–7.14](https://linear.axler.net/LADR4e.pdf)
 
 ### Defining inertia indices as maximal definite dimensions proves Sylvester's law of inertia
 
@@ -1015,6 +2177,217 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Nondegeneracy gives the dimension of an orthogonal complement
+
+**Remember:** A nondegenerate form represents every linear functional exactly once.
+
+*Rules out counterexamples.* MSC 15A63 (Quadratic and bilinear forms, inner products). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** A symmetric bilinear form b on V is nondegenerate if only the zero vector pairs to zero with every vector. For a subspace W, its orthogonal complement W⊥ consists of all v satisfying b(v,w) = 0 for every w in W.
+
+**Problem.** For a nondegenerate symmetric bilinear form on a finite-dimensional space V, the dimension of W⊥ is the dimension of V minus the dimension of W.
+
+**How the definition helps.** The form identifies V with its space of linear functionals, so W⊥ corresponds to functionals vanishing on W (our own). The work moves to the fact that a functional on W extends to V, which follows by extending a basis (our own). For the pairing x₁y₁ on a plane, the second coordinate axis has the whole plane as its complement (our own).
+
+**nLab:** [bilinear form](https://ncatlab.org/nlab/show/bilinear+form). It says: “It is called nondegenerate if the mate V → V∗ = hom(V, k) is injective”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Polarization turns length preservation into inner product preservation
+
+**Remember:** Knowing the lengths of the sum and difference recovers the inner product.
+
+*True by definition.* MSC 15A63 (Quadratic and bilinear forms, inner products). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** In a real inner product space, the polarization formula recovers ⟨x,y⟩ as (‖x + y‖² − ‖x − y‖²)/4. A linear isometry is a linear map that preserves lengths.
+
+**Problem.** A linear isometry between real inner product spaces preserves all inner products.
+
+**How the definition helps.** The polarization formula expresses an inner product using only two lengths that the map preserves (our own). The work moves to deriving that formula by expanding the two squared lengths (our own).
+
+**Paper or page:** [Polarization Identity/Real Vector Space](https://proofwiki.org/wiki/Polarization_Identity/Real_Vector_Space). It says: “4⟨x,y⟩ = ‖x + y‖² − ‖x − y‖²”
+
+**Sources:**
+
+- [Sheldon Axler, Linear Algebra Done Right, 4th ed., 7.49](https://linear.axler.net/LADR4e.pdf)
+
+### Positive definiteness makes every subspace split off orthogonally
+
+**Remember:** No nonzero vector can belong to both halves of an orthogonal split.
+
+*Rules out counterexamples.* MSC 15A63 (Quadratic and bilinear forms, inner products). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** Use a positive definite inner product, so each nonzero vector x has ⟨x,x⟩ &gt; 0. The orthogonal complement W⊥ consists of vectors perpendicular to every vector in W.
+
+**Problem.** Let W be a subspace of a finite-dimensional real inner product space. Each vector has a unique expression w + z with w ∈ W and z ∈ W⊥.
+
+**How the definition helps.** Strict positivity forces the two subspaces to meet only at zero (our own). The dimension formula for orthogonal complements then makes their sum the whole space (our own). For the indefinite pairing x₁y₁ − x₂y₂, the line spanned by (1,1) is its own complement (our own).
+
+**nLab:** [inner product space](https://ncatlab.org/nlab/show/inner+product+space). It says: “if ‖x‖² &gt; 0 whenever x ≠ 0”
+
+**Sources:**
+
+- [Sheldon Axler, Linear Algebra Done Right, 4th ed., 6.46–6.52](https://linear.axler.net/LADR4e.pdf)
+
+### Pulling back both inputs gives matrix congruence
+
+**Remember:** A basis change must enter on both sides of the form.
+
+*True by definition.* MSC 15A63 (Quadratic and bilinear forms, inner products). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** A bilinear form takes two vectors and returns a scalar, linearly in each vector. Its matrix A in a basis is the unique matrix giving the value xᵀAy from the coordinate columns x and y.
+
+**Problem.** If the columns of S are the new basis vectors in old coordinates, the new matrix of the form is SᵀAS.
+
+**How the definition helps.** The coordinate definition changes both inputs at once, giving (Sx)ᵀA(Sy) = xᵀ(SᵀAS)y (our own). Expanding in the basis proves that this description agrees with filling the matrix one pair of basis vectors at a time (our own).
+
+**Paper or page:** [Matrix of Bilinear Form Under Change of Basis](https://proofwiki.org/wiki/Matrix_of_Bilinear_Form_Under_Change_of_Basis). It says: “Then its matrix relative to 𝓑 equals:
+M₍f,𝓑₎ = M₍𝓐,𝓑₎ᵀ M₍f,𝓐₎ M₍𝓐,𝓑₎”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Self-adjoint projections are exactly orthogonal projections
+
+**Remember:** A projection is orthogonal when it can switch sides in the inner product.
+
+*True by definition. Confidence: medium.* MSC 15A63 (Quadratic and bilinear forms, inner products). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** A projection is a linear map P with P² = P. It is orthogonal if every output is perpendicular to every vector it sends to zero. It is self-adjoint if ⟨Px,y⟩ = ⟨x,Py⟩ for all x and y.
+
+**Problem.** A projection on a finite-dimensional inner product space is orthogonal exactly when it is self-adjoint.
+
+**How the definition helps.** The adjoint identity makes every vector in the image perpendicular to every vector sent to zero (our own). Conversely, the perpendicular splitting makes ⟨Px,y⟩ and ⟨x,Py⟩ both equal ⟨Px,Py⟩ (our own). The work moves to the direct sum of the image and kernel for an arbitrary projection (our own).
+
+**nLab:** [orthogonal projection](https://ncatlab.org/nlab/show/orthogonal+projection). It says: “An orthogonal projection is a projection operator onto an orthogonal linear subspace in an inner product space.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The quadratic test detects positive eigenvalues
+
+**Remember:** Test the quadratic form along each eigenvector.
+
+*True by definition.* MSC 15A63 (Quadratic and bilinear forms, inner products), 15A18. arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** A real symmetric matrix A is positive definite when xᵀAx &gt; 0 for every nonzero x. This quadratic test replaces checking leading determinants.
+
+**Problem.** A real symmetric matrix is positive definite exactly when every eigenvalue is positive.
+
+**How the definition helps.** Testing an eigenvector makes the quadratic form its eigenvalue times its squared length (our own). Conversely, an orthonormal eigenbasis writes the form as a sum of squares weighted by eigenvalues (our own). The work moves to the real spectral theorem (our own).
+
+**Paper or page:** [Real Symmetric Positive Definite Matrix has Positive Eigenvalues](https://proofwiki.org/wiki/Real_Symmetric_Positive_Definite_Matrix_has_Positive_Eigenvalues). It says: “Then λ is real with λ &gt; 0.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The quadratic test keeps inverses positive definite
+
+**Remember:** Test the inverse by feeding its output back into the original form.
+
+*True by definition.* MSC 15A63 (Quadratic and bilinear forms, inner products). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** For a real symmetric matrix A, define positive definite by xᵀAx &gt; 0 for every nonzero x. This replaces tests on eigenvalues or determinants.
+
+**Problem.** A real symmetric positive definite matrix is invertible, and its inverse is positive definite.
+
+**How the definition helps.** The quadratic test for the inverse becomes the original test at y = A⁻¹x (our own). First, positivity rules out any nonzero vector in the kernel, so A is invertible (our own). Its inverse is symmetric, and for nonzero x we have xᵀA⁻¹x = yᵀAy &gt; 0 (our own). This substitution avoids finding the eigenvalues of the inverse (our own).
+
+**Wikipedia:** [Definite matrix](https://en.wikipedia.org/wiki/Definite_matrix). It says: “Every positive definite matrix is invertible and its inverse is also positive definite.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A basis of pairs makes tensor dimensions multiply
+
+**Remember:** One basis vector per pair makes the dimensions multiply.
+
+*True by definition.* MSC 15A69 (Multilinear algebra, tensor calculus). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** Choose bases for V and W. Model their tensor product by scalar functions on basis pairs that vanish except at finitely many pairs. The tensor of two basis vectors takes value one at their pair and zero elsewhere.
+
+**Problem.** If V and W have dimensions m and n, then V ⊗ W has dimension mn. Its basis consists of the tensors of all pairs of basis vectors.
+
+**How the definition helps.** The function equal to one at a single pair and zero elsewhere gives one basis vector for that pair (our own). The work moves to proving that bilinear maps extend uniquely from this coordinate construction (our own). This proof uses the unique extension of any values on pairs of basis vectors to a bilinear map (our own).
+
+**Wikipedia:** [Tensor product](https://en.wikipedia.org/wiki/Tensor_product). It says: “is the product of the dimensions of V and W.”
+
+**Paper or page:** [Tensor Product of Free Modules is Free](https://proofwiki.org/wiki/Tensor_Product_of_Free_Modules_is_Free). It says: “is a free A-module.”
+
+**Sources:**
+
+- [Sergei Winitzki, Linear Algebra via Exterior Products, version 1.3 (2020), §1.7.3](https://raw.githubusercontent.com/winitzki/linear-algebra-book/master/linalg.pdf)
+
+### Bilinearity lets tensor products distribute over direct sums
+
+**Remember:** A bilinear map out of a sum splits into two bilinear maps.
+
+*True by definition.* MSC 15A69 (Multilinear algebra, tensor calculus). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** A tensor product V ⊗ W comes with a map (v,w) ↦ v ⊗ w, linear in each input. Every map linear in each input extends uniquely to a linear map from this tensor product.
+
+**Problem.** The tensor product (U ⊕ V) ⊗ W is naturally isomorphic to (U ⊗ W) ⊕ (V ⊗ W).
+
+**How the definition helps.** A bilinear map on a direct sum splits into its two restrictions (our own). Conversely, adding any two such maps gives a bilinear map on the sum (our own). The tensor extension rule gives the displayed isomorphism without constructing an inverse on formal sums (our own).
+
+**Paper or page:** [Lemma 10.12.3.](https://stacks.math.columbia.edu/tag/00CY). It says: “induce unique isomorphisms”
+
+**Sources:**
+
+- [Sergei Winitzki, Linear Algebra via Exterior Products, version 1.3 (2020), §1.7.5](https://raw.githubusercontent.com/winitzki/linear-algebra-book/master/linalg.pdf)
+
+### Concatenation lets linear maps extend to algebra maps
+
+**Remember:** Send each factor to its image, then multiply in order.
+
+*Makes the theorem clean to state or prove.* MSC 15A69 (Multilinear algebra, tensor calculus). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** Define the tensor algebra as the direct sum of all tensor powers of V, starting with the scalar field in degree zero. Multiply tensors by concatenating their ordered lists of factors.
+
+**Problem.** Every linear map from V to an associative algebra with identity extends uniquely to an identity-preserving algebra map from the tensor algebra. Both algebras use the same scalar field.
+
+**How the definition helps.** Concatenation lets the extension send each tensor of vectors to the product of their images (our own). The tensor product theorem turns that multilinear product into a linear map in each degree (our own). Any extension must take these values, because products of vectors span each degree (our own).
+
+**nLab:** [symmetric algebra](https://ncatlab.org/nlab/show/symmetric+algebra). It says: “This monoid object is called the tensor algebra of V.”
+
+**Wikipedia:** [Tensor algebra](https://en.wikipedia.org/wiki/Tensor_algebra). It says: “can be uniquely extended to an algebra homomorphism from T(V) to A”
+
+**Paper or page:** [Lemma 10.12.4.](https://stacks.math.columbia.edu/tag/00CZ). It says: “there exists a unique R-module homomorphism”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Contracting each factor makes tensor product traces multiply
+
+**Remember:** The two pairs of slots contract separately.
+
+*True by definition.* MSC 15A69 (Multilinear algebra, tensor calculus). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** Define the trace of a linear map as contraction on its operator tensor. On a tensor w ⊗ λ that represents v ↦ λ(v)w, this returns λ(w).
+
+**Problem.** For linear maps A and B from finite-dimensional spaces to themselves, tr(A ⊗ B) = tr(A) tr(B).
+
+**How the definition helps.** On rank-one maps the trace of the tensor product evaluates each functional on its own vector (our own). The two evaluations multiply, and bilinearity extends this equality to sums (our own). This replaces summing diagonal entries with the theorem that every operator in finite dimension is a sum of rank-one maps (our own).
+
+**Wikipedia:** [Kronecker product](https://en.wikipedia.org/wiki/Kronecker_product). It says: “tr(A⊗B) = tr A tr B”
+
+**Paper or page:** [Trace in Terms of Dual Basis](https://proofwiki.org/wiki/Trace_in_Terms_of_Dual_Basis). It says: “tr f = ∑ᵢ₌₁ⁿ eᵢ∗(f(eᵢ))”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Contraction gives the same trace in every basis
+
+**Remember:** Evaluate the dual factor to get the trace without a basis.
+
+*True by definition.* MSC 15A69 (Multilinear algebra, tensor calculus). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** On a finite-dimensional space V, identify w ⊗ λ with the map v ↦ λ(v)w. Define trace by the linear extension of w ⊗ λ ↦ λ(w).
+
+**Problem.** For a linear map from V to itself, the sum of its matrix diagonal entries equals its contraction trace in every basis.
+
+**How the definition helps.** Evaluation defines the trace before any basis is chosen (our own). The work moves to identifying linear maps with tensors (our own). In a basis the tensor of A is the sum of Aeᵢ ⊗ eᵢ∗, so evaluation adds the diagonal entries (our own).
+
+**nLab:** [tensor contraction](https://ncatlab.org/nlab/show/tensor+contraction). It says: “The simplest case is the trace of a (1,1)-tensor”
+
+**Paper or page:** [Trace in Terms of Dual Basis](https://proofwiki.org/wiki/Trace_in_Terms_of_Dual_Basis). It says: “tr f = ∑ᵢ₌₁ⁿ eᵢ∗(f(eᵢ))”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Defining tensor products by a universal property makes basic facts automatic
 
 **Remember:** A linear map out of V ⊗ W is a bilinear map out of V × W.
@@ -1028,6 +2401,186 @@
 **How the definition helps.** Any two spaces with the universal property are isomorphic by a unique compatible isomorphism, so basis independence is automatic. A construction with bases gives a different space for each pair of bases. To build a linear map out of V ⊗ W, one only gives a bilinear map out of V × W, which proves ℝ ⊗ ℝ ≅ ℝ without an awkward injectivity check. Existence still needs a construction, such as a quotient of a free vector space.
 
 **Wikipedia:** [Tensor product](https://en.wikipedia.org/wiki/Tensor_product). It says: “A consequence of this approach is that every property of the tensor product can be deduced from the universal property, and that, in practice, one may forget the method that has been used to prove its existence.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Dividing by the factorial makes diagonal evaluation reversible
+
+**Remember:** The diagonal counts each ordering once, so divide by the factorial.
+
+*Rules out counterexamples.* MSC 15A69 (Multilinear algebra, tensor calculus). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** Choose coordinates on a finite-dimensional space over a field where k! has an inverse. To polarize a formal homogeneous polynomial P of degree k ≥ 1, expand P(t₁v₁ + ⋯ + tₖvₖ) in formal variables. Divide the coefficient of t₁ ⋯ tₖ by k!.
+
+**Problem.** Substituting the same vector of formal coordinates in every slot identifies symmetric k-linear forms with homogeneous polynomials of degree k. Polarization gives the inverse.
+
+**How the definition helps.** For a symmetric form, the extracted coefficient equals k! times that form (our own). In the other direction, setting all inputs equal gives the same factor by the multinomial theorem (our own). Without invertibility, the nonzero symmetric form B(v,w) = v₁w₂ + v₂w₁ has zero diagonal over the field with two elements (our own).
+
+**Wikipedia:** [Polarization of an algebraic form](https://en.wikipedia.org/wiki/Polarization_of_an_algebraic_form). It says: “polarization produces a unique symmetric multilinear form from which the original polynomial can be recovered by evaluating along a certain diagonal.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Dual factors give the mixed tensor change of coordinates
+
+**Remember:** Change each vector coordinate by the inverse and each dual coordinate by the transpose.
+
+*Makes the theorem clean to state or prove.* MSC 15A69 (Multilinear algebra, tensor calculus). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** Define a mixed tensor as an element of a tensor product of vector spaces and their duals. A dual factor is a space of scalar-valued linear functions.
+
+**Problem.** For a mixed tensor on one finite-dimensional space, let P list the new basis vectors as columns in old coordinates. Each vector coordinate column transforms by P⁻¹ and each dual coordinate column by Pᵀ.
+
+**How the definition helps.** Each factor changes by its own coordinate map, so the tensor product gives the whole rule (our own). The dual coordinates of a functional are its values on the new basis (our own). The work moves to proving that products of basis vectors and dual basis functions form a tensor basis (our own).
+
+**Wikipedia:** [Covariance and contravariance of vectors](https://en.wikipedia.org/wiki/Covariance_and_contravariance_of_vectors). It says: “the matrix that transforms the vector components must be the inverse of the matrix that transforms the basis vectors.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Evaluating a paired slot makes contraction basis free
+
+**Remember:** Evaluate the paired slots and keep the others.
+
+*True by definition.* MSC 15A69 (Multilinear algebra, tensor calculus). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** A dual slot holds a linear functional. Define contraction on a tensor of vectors and functionals by evaluating the chosen functional on the chosen vector. Keep all other slots unchanged and extend the rule linearly.
+
+**Problem.** Contraction is independent of the basis used for the tensor. In coordinates it sums over the shared index of a vector slot and its dual slot.
+
+**How the definition helps.** Evaluation needs no basis, so it defines one contraction map for all bases (our own). The work moves to showing that the rule extends linearly by the tensor product property (our own). Dual basis evaluation kills terms with unequal indices and gives one on the matching terms (our own).
+
+**nLab:** [tensor contraction](https://ncatlab.org/nlab/show/tensor+contraction). It says: “by pairing by the evaluation map”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Evaluating dual factors turns tensors into finite rank maps
+
+**Remember:** Evaluate the functional, then scale the vector.
+
+*Makes the theorem clean to state or prove.* MSC 15A69 (Multilinear algebra, tensor calculus). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** A linear functional sends vectors to scalars by a linear rule. For λ in the dual space V∗ and w in W, let w ⊗ λ act on v by λ(v)w. This bilinear rule extends linearly to tensors.
+
+**Problem.** For vector spaces V and W over one field, W⊗V∗ identifies naturally with the maps V → W whose images have finite dimension.
+
+**How the definition helps.** A finite tensor sum produces outputs in the span of its listed vectors (our own). Conversely, the coordinates of a finite-rank map in an image basis give its tensor (our own). Write any tensor using independent output vectors by expanding in a basis of their span (our own). If its map vanishes, independence forces every coefficient functional to vanish (our own).
+
+**Wikipedia:** [Tensor product](https://en.wikipedia.org/wiki/Tensor_product). It says: “(f⊗v)(u) = f(u)v.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Finite dimension makes all bilinear forms sums of separated terms
+
+**Remember:** One finite basis splits a bilinear form into finitely many products.
+
+*Rules out counterexamples. Confidence: medium.* MSC 15A69 (Multilinear algebra, tensor calculus). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** A separated bilinear form has the shape B(v,w) = λ(v)μ(w), where λ and μ are scalar-valued linear maps. Evaluation sends each tensor λ ⊗ μ to this form.
+
+**Problem.** If either input space is finite-dimensional, evaluation identifies V∗ ⊗ W∗ with all bilinear forms on V × W.
+
+**How the definition helps.** A finite basis in one input gives one separated term per basis vector (our own). Its dual basis reads off the coefficients uniquely (our own). For two spaces of finitely supported sequences, the dot product pairs each unit vector with a different coordinate functional (our own). These functionals are independent, whereas a finite separated sum produces only a finite-dimensional span (our own).
+
+**Paper or page:** [Lemma 10.12.8.](https://stacks.math.columbia.edu/tag/00DE). It says: “Homᵣ(M ⊗ᵣ N, P) ≅ Homᵣ(M, Homᵣ(N, P))”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Tensor products turn bilinear maps into maps that return maps
+
+**Remember:** Fixing one input gives a linear map in the other input.
+
+*True by definition.* MSC 15A69 (Multilinear algebra, tensor calculus). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** Define the tensor product U ⊗ V by its extension rule. Each bilinear map from U × V extends uniquely to a linear map from U ⊗ V. A bilinear map is linear in each input separately.
+
+**Problem.** Linear maps U ⊗ V → W correspond naturally to linear maps U → Hom(V,W). Here Hom(V,W) is the space of linear maps V → W.
+
+**How the definition helps.** The extension rule lets us replace a map on U ⊗ V by a bilinear map B (our own). Send u to the map v ↦ B(u,v), and evaluate to reverse this step (our own). The work moves to proving the extension rule for the space of formal tensor sums (our own).
+
+**Paper or page:** [Lemma 10.12.8.](https://stacks.math.columbia.edu/tag/00DE). It says: “Homᵣ(M ⊗ᵣ N, P) ≅ Homᵣ(M, Homᵣ(N, P))”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Tensoring images makes Kronecker ranks multiply
+
+**Remember:** The image of a tensor product is the tensor product of the images.
+
+*True by definition.* MSC 15A69 (Multilinear algebra, tensor calculus). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** Define A ⊗ B to represent the linear map that sends v ⊗ w to Av ⊗ Bw in the tensor product bases. The rank of a map is the dimension of its image.
+
+**Problem.** For matrices A and B over the same field, rank(A ⊗ B) = rank(A) rank(B).
+
+**How the definition helps.** The tensor map sends each input pair to a pair of image vectors, so these pairs span its image (our own). Every pair of image basis vectors has a pair of preimages (our own). Extending the image bases to target bases makes those pairs part of a tensor basis (our own). This uses the tensor basis theorem in place of row reduction on the block matrix (our own).
+
+**Wikipedia:** [Kronecker product](https://en.wikipedia.org/wiki/Kronecker_product). It says: “rank(A⊗B) = rank A rank B.”
+
+**Paper or page:** [Tensor Product of Free Modules is Free](https://proofwiki.org/wiki/Tensor_Product_of_Free_Modules_is_Free). It says: “is a free A-module.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Tensoring maps gives the Kronecker mixed product rule
+
+**Remember:** Each factor composes with its own partner.
+
+*True by definition.* MSC 15A69 (Multilinear algebra, tensor calculus). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** Define A ⊗ B as the matrix of the map v ⊗ w ↦ Av ⊗ Bw in the tensor product bases. The usual array definition replaces each entry of A with that entry times B.
+
+**Problem.** For matrices of compatible sizes, (A ⊗ B)(C ⊗ D) = (AC) ⊗ (BD).
+
+**How the definition helps.** Both maps send v ⊗ w to ACv ⊗ BDw, and these tensors span the input space (our own). The work moves to showing that the map on pairs extends linearly and gives the usual block array (our own).
+
+**Wikipedia:** [Kronecker product](https://en.wikipedia.org/wiki/Kronecker_product). It says: “(A⊗B)(C⊗D) = (AC)⊗(BD).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Tensoring split sums preserves injections
+
+**Remember:** A tensor product keeps each summand in its own place.
+
+*True by definition.* MSC 15A69 (Multilinear algebra, tensor calculus). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** A short exact sequence consists of an inclusion U → V followed by a surjection V → W whose kernel is U. It splits if V can be identified with U ⊕ W so those maps become inclusion and projection.
+
+**Problem.** Tensoring an exact sequence 0 → U → V → W → 0 with a vector space preserves exactness. Here exactness means that the image at each step equals the next kernel.
+
+**How the definition helps.** In a split sequence, tensoring preserves the inclusion and projection because tensor products distribute over direct sums (our own). Every short exact sequence of vector spaces splits by lifting a basis of W to V (our own). The splitting and distributivity replace a direct check of the kernel (our own).
+
+**Wikipedia:** [Tensor product](https://en.wikipedia.org/wiki/Tensor_product). It says: “every exact sequence is mapped to an exact sequence”
+
+**Paper or page:** [Lemma 10.12.3.](https://stacks.math.columbia.edu/tag/00CY). It says: “induce unique isomorphisms”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Tensoring triangular maps gives the Kronecker eigenvalues
+
+**Remember:** Tensor a triangular basis with another to multiply the diagonal entries.
+
+*True by definition.* MSC 15A69 (Multilinear algebra, tensor calculus). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** Define A ⊗ B as the matrix of the linear map that applies A and B to their own factors. Use paired basis vectors as the matrix basis.
+
+**Problem.** For square matrices A and B over an algebraically closed field, eigenvalues of A⊗B are the pairwise products, counted with multiplicity. If A is m × m and B is n × n, then det(A⊗B) = (det A)ⁿ(det B)ᵐ over any field.
+
+**How the definition helps.** List the pairs from two triangular bases in lexicographic order, comparing the first index first (our own). The tensor map is triangular in that basis, with pairwise products on its diagonal (our own). This replaces a characteristic polynomial calculation on the block matrix (our own). Triangular bases exist over an algebraic closure, and extending the field preserves determinants (our own).
+
+**Wikipedia:** [Kronecker product](https://en.wikipedia.org/wiki/Kronecker_product). It says: “λᵢ μⱼ”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Trilinear maps identify the two groupings of three tensor factors
+
+**Remember:** Three inputs give one tensor product whichever pair you group first.
+
+*True by definition.* MSC 15A69 (Multilinear algebra, tensor calculus). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** A multilinear map is linear in each input separately. Define a tensor product by requiring each multilinear map on its factors to extend uniquely to a linear map from the product.
+
+**Problem.** Exactly one linear isomorphism from (U⊗V)⊗W to U⊗(V⊗W) sends every (u⊗v)⊗w to u⊗(v⊗w).
+
+**How the definition helps.** Both groupings turn trilinear maps into linear maps by applying the extension rule twice (our own). The identity on triples therefore gives inverse maps between the groupings (our own). A construction from formal sums still needs a proof of the extension rule (our own).
+
+**Paper or page:** [Lemma 10.12.5.](https://stacks.math.columbia.edu/tag/00D0). It says: “are well-defined and are isomorphisms.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -1060,6 +2613,150 @@
 **How the definition helps.** The alternating rule implies antisymmetry in every field, but the converse needs division by 2. In characteristic 2 the antisymmetric rule only says that wedges commute, so imposing only it would give the infinite-dimensional symmetric algebra (our own). With v ∧ v = 0, the count of basis elements gives the binomial dimensions in all characteristics.
 
 **nLab:** [exterior algebra](https://ncatlab.org/nlab/show/exterior+algebra). It says: “If we can divide by 2, then the relations … imply …, while the converse holds in any characteristic.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Complementary wedges give the dual basis functionals
+
+**Remember:** Replace one factor to read just its coordinate.
+
+*True by definition.* MSC 15A75 (Exterior algebra, Grassmann algebras). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** For an ordered basis, let Ω be its top wedge. For position i, define a linear functional as the coefficient of Ω after replacing the ith factor with the input vector.
+
+**Problem.** The functionals given by these wedge coefficients form the dual basis. Each takes value one on its own basis vector and zero on the others.
+
+**How the definition helps.** Inserting another basis vector repeats a factor, so the wedge vanishes (our own). Inserting the original basis vector gives Ω (our own). Thus the wedge coefficient reads off the desired coordinate without solving a linear system (our own). The exterior basis theorem ensures that Ω spans the top power and is nonzero (our own).
+
+**nLab:** [dual vector space](https://ncatlab.org/nlab/show/dual+vector+space). It says: “bⁱ(bⱼ) = δⁱⱼ”
+
+**Sources:**
+
+- [Sergei Winitzki, Linear Algebra via Exterior Products, version 1.3 (2020), §2.3.3](https://raw.githubusercontent.com/winitzki/linear-algebra-book/master/linalg.pdf)
+
+### Complementary wedges reveal the sign of the squared Hodge star
+
+**Remember:** Taking the complement twice swaps two blocks of basis vectors.
+
+*True by definition.* MSC 15A75 (Exterior algebra, Grassmann algebras). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** Fix an oriented Euclidean space of dimension n with positive unit volume element vol. Define the Hodge star linearly by sending each increasing orthonormal basis wedge to its signed complement in a positive orthonormal basis. Choose the sign so the wedge followed by its complement gives vol.
+
+**Problem.** On the kth exterior power, applying the Hodge star twice multiplies by −1 if k and n − k are both odd. Otherwise it gives the identity.
+
+**How the definition helps.** Taking the complement twice swaps a block of k vectors past the other n − k vectors (our own). Each crossing contributes a minus sign (our own). The remaining work shows that the signed complement rule gives the unique map satisfying α ∧ ⋆β = ⟨α,β⟩ vol (our own).
+
+**Wikipedia:** [Exterior algebra](https://en.wikipedia.org/wiki/Exterior_algebra). It says: “scalar multiple of the identity”
+
+**Sources:**
+
+- [Sergei Winitzki, Linear Algebra via Exterior Products, version 1.3 (2020), §5.4.3](https://raw.githubusercontent.com/winitzki/linear-algebra-book/master/linalg.pdf)
+
+### Determinant pairing gives dual bases for exterior powers
+
+**Remember:** Wedges of dual basis elements select just the matching basis wedges.
+
+*Makes the theorem clean to state or prove.* MSC 15A75 (Exterior algebra, Grassmann algebras). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** Pair a wedge of k linear functionals with a wedge of k vectors using the determinant of their evaluation matrix. A repeated row or column makes the determinant zero, so the pairing extends linearly to exterior powers.
+
+**Problem.** For V of finite dimension, the kth exterior power of its dual is naturally the dual of the kth exterior power of V.
+
+**How the definition helps.** For increasing index lists, the evaluation determinant equals one when the lists match and zero otherwise (our own). Thus each wedge of dual basis vectors selects the corresponding basis wedge (our own). The exterior basis theorem supplies both bases (our own).
+
+**Wikipedia:** [Exterior algebra](https://en.wikipedia.org/wiki/Exterior_algebra). It says: “If V is finite-dimensional, then the latter is naturally isomorphic to ⋀ᵏ(V∗).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Exterior powers turn alternating forms into linear functionals
+
+**Remember:** Repeated vectors vanish before an alternating form sees them.
+
+*True by definition.* MSC 15A75 (Exterior algebra, Grassmann algebras). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** An alternating form is scalar-valued, linear in each input, and zero whenever two inputs agree. Form the kth exterior power by dividing the kth tensor power by the span of tensors with a repeated vector factor.
+
+**Problem.** Alternating k-linear forms on V correspond exactly to linear functionals on its kth exterior power.
+
+**How the definition helps.** Alternation kills every relation imposed in forming the quotient (our own). The tensor extension rule therefore gives a unique linear functional on the exterior power (our own). Conversely, evaluating any such functional on wedges gives an alternating form (our own). This avoids solving for the coefficients of a form in a basis (our own).
+
+**nLab:** [exterior algebra](https://ncatlab.org/nlab/show/exterior+algebra). It says: “the identity v ∧ v = 0 for all v ∈ V.”
+
+**Wikipedia:** [Exterior algebra](https://en.wikipedia.org/wiki/Exterior_algebra). It says: “most general" alternating operator”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Inserting into alternating forms makes contractions anticommute
+
+**Remember:** Repeated insertions vanish and swapping two insertions changes the sign.
+
+*True by definition.* MSC 15A75 (Exterior algebra, Grassmann algebras). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** The exterior powers of the dual are spaces of alternating forms when the original space is finite-dimensional. Define the interior product by inserting a vector in the first slot of a form. On forms of degree zero, it gives zero.
+
+**Problem.** Two interior products with the same vector give zero. For vectors v and w, performing their interior products in opposite orders changes the sign.
+
+**How the definition helps.** Two insertions occupy adjacent slots, so alternation gives both identities (our own). The alternative definition extends insertion from degree one by a signed product rule on wedges (our own). The work moves to identifying that operation with insertion on alternating forms (our own).
+
+**Wikipedia:** [Exterior algebra](https://en.wikipedia.org/wiki/Exterior_algebra). It says: “\\iota\_\\alpha\\circ \\iota\_\\alpha = 0.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Orthogonal wedge coordinates add squared projection volumes
+
+**Remember:** Wedge coordinates are signed projection volumes, so apply Pythagoras.
+
+*True by definition.* MSC 15A75 (Exterior algebra, Grassmann algebras). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** Choose an orthonormal basis in a real inner product space. Define the inner product on the kth exterior power by making its increasing wedges an orthonormal basis.
+
+**Problem.** The squared k-dimensional volume of a parallelepiped equals a sum over all k-dimensional coordinate planes. Each term is the squared volume of its orthogonal projection onto that plane.
+
+**How the definition helps.** Each wedge coordinate is a minor giving the signed volume of one coordinate projection (our own). Orthonormality makes the squared wedge length the sum of these squared coordinates (our own). Identifying squared wedge length with ordinary squared volume uses the Gram determinant formula for the edge vectors (our own).
+
+**Wikipedia:** [Exterior algebra](https://en.wikipedia.org/wiki/Exterior_algebra). It says: “magnitude of a k-blade”
+
+**Paper or page:** [Cauchy-Binet Formula/Example/Matrix by Transpose](https://proofwiki.org/wiki/Cauchy-Binet_Formula/Example/Matrix_by_Transpose). It says: “det(AAᵀ)”
+
+**Sources:**
+
+- [Sergei Winitzki, Linear Algebra via Exterior Products, version 1.3 (2020), §5.5.2](https://raw.githubusercontent.com/winitzki/linear-algebra-book/master/linalg.pdf)
+
+### The last nonzero exterior power detects rank
+
+**Remember:** The last surviving wedge counts independent output vectors.
+
+*True by definition.* MSC 15A75 (Exterior algebra, Grassmann algebras). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** The kth exterior power of a linear map A applies A to each factor of a wedge of k vectors. A wedge is zero exactly when its vectors are dependent.
+
+**Problem.** For a linear map between finite-dimensional spaces, its rank is the largest k for which its kth exterior power is nonzero. Its zeroth exterior power acts as the identity on scalars.
+
+**How the definition helps.** A wedge of k outputs survives exactly when those outputs are independent (our own). Every list of independent image vectors has preimages (our own). This replaces checking minors individually with the wedge dependence test, which follows from the exterior basis theorem (our own).
+
+**Wikipedia:** [Exterior algebra](https://en.wikipedia.org/wiki/Exterior_algebra). It says: “lesser exterior powers”
+
+**Sources:**
+
+- [Sergei Winitzki, Linear Algebra via Exterior Products, version 1.3 (2020), §2.3.5](https://raw.githubusercontent.com/winitzki/linear-algebra-book/master/linalg.pdf)
+
+### Commuting free generators give a monomial basis for symmetric powers
+
+**Remember:** Basis vectors serve as indeterminates, and total degree counts their factors.
+
+*True by definition.* MSC 15A78 (Other algebras built from modules). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** The symmetric algebra of V is the commutative algebra with identity freely generated by V. This means that linear maps from V into such algebras extend uniquely to algebra maps preserving the identity. Its kth symmetric power is the part of total degree k.
+
+**Problem.** For n ≥ 1 basis vectors and k ≥ 0, their degree k monomials form a basis of the kth symmetric power. Its dimension is the binomial coefficient (n + k − 1 choose k).
+
+**How the definition helps.** The extension rule is the same as substitution into a polynomial ring with the chosen basis as variables (our own). The dimension is then the number of degree k monomials. The work moves to proving the extension rule for the tensor algebra with commutation imposed (our own).
+
+**nLab:** [symmetric algebra](https://ncatlab.org/nlab/show/symmetric+algebra). It says: “of a vector space is the free commutative algebra over V.”
+
+**Wikipedia:** [Symmetric algebra](https://en.wikipedia.org/wiki/Symmetric_algebra). It says: “This binomial coefficient is the number of n-variable monomials of degree k.”
+
+**Paper or page:** [Lemma 10.13.1.](https://stacks.math.columbia.edu/tag/00DN). It says: “If M is a free R-module, so is each symmetric and exterior power.”
 
 **Sources:** none listed. No primary source with a working link was found.
 

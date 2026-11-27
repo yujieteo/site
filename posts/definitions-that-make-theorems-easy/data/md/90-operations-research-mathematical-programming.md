@@ -1,3 +1,21 @@
+### The segment definition makes every local convex minimum global
+
+**Remember:** A better point gives better points along the segment.
+
+*True by definition.* MSC 90C25 (Convex programming), 52A41. arXiv math.OC. Level 1: early undergraduate.
+
+**Definition.** A domain is convex if it contains the whole segment between any two of its points. A function on it is convex if its value along each segment never exceeds the corresponding height on the chord joining the graph points.
+
+**Problem.** If a convex function has its lowest nearby value at a point, it has its lowest value there on the entire convex domain.
+
+**How the definition helps.** The chord to any better point slopes down immediately. Our own proof follows this chord for an arbitrarily small distance, where convexity already forces a lower value. A second derivative test would first have to establish the chord inequality and would require extra smoothness.
+
+**nLab:** [convex function](https://ncatlab.org/nlab/show/convex+function). It says: “f(t x + (1−t) y) ≤ t f(x) + (1−t) f(y)”
+
+**Wikipedia:** [Convex optimization](https://en.wikipedia.org/wiki/Convex_optimization). It says: “every point that is local minimum is also a global minimum”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Generalized quantiles handle demand ties
 
 **Remember:** Choose the first stock level where the demand probability reaches the cost ratio.
@@ -120,6 +138,168 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Basis prices turn simplex optimality into strong duality
+
+**Remember:** Price the basic columns exactly and check the remaining columns.
+
+*True by definition.* MSC 90C05 (Linear programming), 90C46. arXiv math.OC. Level 2: later undergraduate.
+
+**Definition.** Consider maximizing c·x under Ax = b and x ≥ 0, with redundant equations removed. A basis selects enough independent columns to solve for their variables after setting all others to zero. Basis prices y match c on those columns, and the reduced costs are the entries of c − Aᵀy.
+
+**Problem.** A feasible basis with no positive reduced costs supplies a primal optimum and a dual optimum of equal value. In particular, a feasible linear program with finite optimum has a dual optimum of the same value.
+
+**How the definition helps.** Matching the basic objective coefficients with prices turns the simplex sign test into the dual inequalities Aᵀy ≥ c. In our own calculation, only basic variables can contribute to c·x, so c·x = y·Ax = y·b. Weak duality certifies both optima. Existence of such a basis for a feasible problem with finite optimum uses the finite simplex theorem.
+
+**Paper or page:** [Zero-Sum Games and Linear Programming Duality](https://arxiv.org/abs/2205.11196v6). It says: “then there exist feasible x and y with cᵀx = yᵀb, which are therefore optimal solutions.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Dual prices give supporting bounds on the optimal value
+
+**Remember:** The old prices still bound the new optimum.
+
+*True by definition.* MSC 90C05 (Linear programming), 90C46. arXiv math.OC. Level 2: later undergraduate.
+
+**Definition.** For maximizing c·x under Ax ≤ b and x ≥ 0, a shadow price vector y is an optimal solution of the dual. Its constraints Aᵀy ≥ c and y ≥ 0 do not depend on the resource limits b.
+
+**Problem.** Suppose the original linear program has finite optimum v(b) and an optimal dual vector y. If changed limits b′ give a feasible program, its optimum v(b′) is at most v(b) + y·(b′ − b).
+
+**How the definition helps.** Defining prices as optimal dual weights gives a bound even where the optimal value has no derivative. In our own proof, the old weights remain feasible because changing b only changes the dual objective. Weak duality bounds the new value by y·b′, and strong duality gives y·b = v(b).
+
+**Wikipedia:** [Shadow price](https://en.wikipedia.org/wiki/Shadow_price). It says: “the shadow price is the value of the Lagrange multiplier at the optimal solution”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Nonnegative artificial variables turn feasibility into a zero minimum
+
+**Remember:** Every artificial variable disappears exactly when their sum is zero.
+
+*True by definition.* MSC 90C05 (Linear programming). arXiv math.OC. Level 2: later undergraduate.
+
+**Definition.** For Ax = b with x ≥ 0, multiply each row with a negative right side by −1. In the resulting system, introduce artificial variables a ≥ 0 and write Ax + a = b. The auxiliary problem minimizes the sum of the entries of a.
+
+**Problem.** The original system has a solution exactly when this auxiliary linear program has minimum zero.
+
+**How the definition helps.** Nonnegative artificial variables can sum to zero only when the original equations hold. Conversely, our own check extends any original solution by setting a = 0. The auxiliary problem replaces the search for a starting solution with minimization from the known feasible point x = 0, a = b.
+
+**Wikipedia:** [Simplex algorithm](https://en.wikipedia.org/wiki/Simplex_algorithm). It says: “where the artificial variables are all zero.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Nonnegative constraint weights make weak linear duality immediate
+
+**Remember:** A weighted sum of valid upper bounds stays valid.
+
+*True by definition.* MSC 90C05 (Linear programming). arXiv math.OC. Level 2: later undergraduate.
+
+**Definition.** To form the dual of maximizing c·x under Ax ≤ b and x ≥ 0, use nonnegative row weights y. Keep only weights with Aᵀy ≥ c, and minimize their weighted bound b·y.
+
+**Problem.** Every feasible choice of dual weights gives an upper bound on the original maximization problem.
+
+**How the definition helps.** Defining dual variables as weights on valid upper bounds explains the usual transposed matrix inequality. In our own calculation, nonnegative y gives y·Ax ≤ y·b, while nonnegative x and Aᵀy ≥ c give c·x ≤ y·Ax. Finding weights that attain the best primal value requires strong duality when a finite optimum exists.
+
+**Wikipedia:** [Dual linear program](https://en.wikipedia.org/wiki/Dual_linear_program). It says: “upper bound on the objective.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Normalizing a nonnegative dependence gives Gordan’s alternative
+
+**Remember:** Normalize the dependence, then separate zero from the hull.
+
+*Makes the theorem clean to state or prove.* MSC 90C05 (Linear programming), 52A20. arXiv math.OC. Level 2: later undergraduate.
+
+**Definition.** The convex hull of a finite list consists of its weighted averages with nonnegative weights that sum to one. A nonzero list of nonnegative weights becomes such a list after division by its sum.
+
+**Problem.** For a nonempty finite list of real vectors of equal length, exactly one of two alternatives holds. Either nonnegative weights, not all zero, give weighted sum zero, or some vector has positive dot product with every listed vector.
+
+**How the definition helps.** Normalization turns the first alternative into membership of zero in the convex hull. In our own proof, a finite hull is compact, so strict separation supplies the positive dot products when zero lies outside. When zero lies inside, its dot product cannot equal a weighted average of strictly positive numbers.
+
+**Paper or page:** [Polytopes, polyhedra, and the Farkas lemma](https://arxiv.org/abs/2212.00221v2). It says: “There is a nonzero nonnegative vector x ∈ ℝⁿ such that A x = 0.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Paired columns make free variables yield dual equalities
+
+**Remember:** Opposite columns impose opposite bounds.
+
+*True by definition.* MSC 90C05 (Linear programming). arXiv math.OC. Level 2: later undergraduate.
+
+**Definition.** A free variable can take any real value. Represent it as u − v with u and v nonnegative. In the dual of a maximization problem with upper-bound constraints, each nonnegative variable requires its column price to cover its objective coefficient.
+
+**Problem.** A free variable in a maximization linear program gives an equality in its minimization dual. Variables restricted to be nonnegative still give inequalities.
+
+**How the definition helps.** The split puts opposite columns and opposite objective coefficients into the same dual rule. In our own calculation, a column a with coefficient c gives a·y ≥ c and −a·y ≥ −c, hence equality. Every real value has such a split, and constraints and objective depend only on the difference.
+
+**Wikipedia:** [Dual linear program](https://en.wikipedia.org/wiki/Dual_linear_program). It says: “becomes a constraint in the dual LP”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Positive basic variables rule out simplex cycling
+
+**Remember:** With no zero basic variables, an improving pivot actually moves.
+
+*Rules out counterexamples.* MSC 90C05 (Linear programming). arXiv math.OC. Level 2: later undergraduate.
+
+**Definition.** A simplex basis chooses independent columns and solves for their variables with all other variables zero. It is feasible if the solution is nonnegative, and nondegenerate if every basic variable is positive. A pivot exchanges a basic column for another column.
+
+**Problem.** If every feasible basis is nondegenerate, primal simplex with improving entering variables cannot cycle.
+
+**How the definition helps.** Positive basic variables allow a positive step in every improving pivot direction. In our own proof, every completed pivot therefore strictly increases the objective. Returning to a previous basis would repeat its objective value. With zero basic variables, the cited cycling examples show why this argument fails.
+
+**Wikipedia:** [Bland's rule](https://en.wikipedia.org/wiki/Bland%27s_rule). It says: “there are examples of degenerate linear programs, on which the original simplex algorithm cycles forever.”
+
+**Sources:**
+
+- [R. G. Bland, New Finite Pivoting Rules for the Simplex Method (1977).](https://doi.org/10.1287/moor.2.2.103)
+
+### The simplex dictionary makes the next step a ratio test
+
+**Remember:** Stop at the first basic variable to reach zero.
+
+*True by definition.* MSC 90C05 (Linear programming). arXiv math.OC. Level 2: later undergraduate.
+
+**Definition.** A simplex dictionary rewrites equality constraints by solving for selected variables, called basic variables, in terms of the others. All variables must stay nonnegative. At the starting solution the other variables are zero.
+
+**Problem.** Each decreasing basic variable gives a ratio equal to its starting value divided by its rate of decrease. The smallest ratio is the largest feasible step, and if no basic variable decreases, every step is feasible.
+
+**How the definition helps.** Each dictionary equation gives the distance to one nonnegativity constraint directly. In our own calculation, a basic variable starting at b and falling at rate a &gt; 0 permits steps up to b/a. The work lies in solving the original simultaneous equations for the basic variables.
+
+**Wikipedia:** [Simplex algorithm](https://en.wikipedia.org/wiki/Simplex_algorithm). It says: “minimum ratio test”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Transposing the constraint matrix twice recovers the primal
+
+**Remember:** Transpose twice and swap the roles twice.
+
+*True by definition.* MSC 90C05 (Linear programming). arXiv math.OC. Level 2: later undergraduate.
+
+**Definition.** Use the symmetric pair of dual rules for nonnegative variables. A maximization with upper bounds becomes a minimization with lower bounds, and a minimization with lower bounds becomes a maximization with upper bounds. Each rule transposes the constraint matrix and exchanges the objective coefficients with the constraint bounds.
+
+**Problem.** The dual of the dual of a linear program in this form is the original program.
+
+**How the definition helps.** Applying the paired rules twice restores each inequality direction and each coefficient vector. In our own calculation, the matrix returns because transposing twice gives the original matrix. Other sign conventions first require converting the variables and constraints to these forms.
+
+**Wikipedia:** [Dual linear program](https://en.wikipedia.org/wiki/Dual_linear_program). It says: “the dual of the dual is the primal.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Two nonnegative slack terms explain complementary slackness
+
+**Remember:** A sum of nonnegative products vanishes only term by term.
+
+*True by definition.* MSC 90C05 (Linear programming), 90C46. arXiv math.OC. Level 2: later undergraduate.
+
+**Definition.** Maximize c·x subject to Ax ≤ b and x ≥ 0. Its dual minimizes b·y subject to Aᵀy ≥ c and y ≥ 0. The two slack vectors b − Ax and Aᵀy − c measure the unused margins in the inequalities.
+
+**Problem.** When both programs have optima, a feasible pair is optimal exactly when every slack times its corresponding variable in the other program is zero.
+
+**How the definition helps.** Writing inequalities with explicit slacks turns the objective gap into a sum of nonnegative products. Our own expansion gives b·y − c·x = y·(b − Ax) + x·(Aᵀy − c). The sum vanishes exactly when every product vanishes. Strong duality identifies zero gap with optimality for a feasible pair.
+
+**Wikipedia:** [Dual linear program](https://en.wikipedia.org/wiki/Dual_linear_program). It says: “each primal variable corresponds to a dual slack variable, and each dual variable corresponds to a primal slack variable.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Total unimodularity makes every vertex of a linear program integral
 
 **Remember:** Determinants ±1 mean Cramer's rule never divides, so vertices are integers.
@@ -137,6 +317,70 @@
 **Sources:**
 
 - [A. J. Hoffman and J. B. Kruskal, Integral boundary points of convex polyhedra, in Linear Inequalities and Related Systems, Annals of Mathematics Studies 38 (1956), 223–246](https://doi.org/10.1515/9781400881987-014)
+
+### Affine equalities keep the feasible set convex
+
+**Remember:** A convex upper bound survives averaging, but a convex equality may not.
+
+*Rules out counterexamples.* MSC 90C25 (Convex programming), 52A41. arXiv math.OC. Level 2: later undergraduate.
+
+**Definition.** A convex program minimizes a convex function on a convex domain. Its inequalities have the form g(x) ≤ 0 with g convex. Its equalities have the form a·x = b.
+
+**Problem.** The feasible set of a convex program is convex.
+
+**How the definition helps.** An affine equality holds along a whole segment whenever it holds at both ends. In our own proof, convexity also keeps every inequality function below zero or equal to zero along that segment. Replacing the affine equality by x² = 1 admits −1 and 1 but excludes their midpoint.
+
+**Wikipedia:** [Convex optimization](https://en.wikipedia.org/wiki/Convex_optimization). It says: “the equality constraints are all linear”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### An epigraph variable makes a convex objective linear
+
+**Remember:** Move the curved objective into a constraint.
+
+*Makes the theorem clean to state or prove.* MSC 90C25 (Convex programming), 52A41. arXiv math.OC. Level 2: later undergraduate.
+
+**Definition.** The epigraph of f consists of the pairs (x, t) with t ≥ f(x). In the lifted problem, use t as the objective and add this epigraph condition to the old constraints.
+
+**Problem.** Every convex minimization problem has an equivalent convex formulation with a linear objective and one extra variable.
+
+**How the definition helps.** The smallest allowed height above any feasible x is exactly f(x). In our own proof, minimizing that height therefore gives the same greatest lower bound and the same minimizing choices of x. Convexity of f makes its epigraph convex, so the new problem still has convex constraints.
+
+**Wikipedia:** [Convex optimization](https://en.wikipedia.org/wiki/Convex_optimization). It says: “adding a single variable t”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Normal directions make nearest point projection nonexpansive
+
+**Remember:** Two normal inequalities show that projection cannot stretch distances.
+
+*True by definition.* MSC 90C25 (Convex programming), 52A20. arXiv math.OC. Level 2: later undergraduate.
+
+**Definition.** Projection onto a nonempty closed convex set C assigns to x its unique nearest point p. Equivalently, x − p is normal to C at p, meaning (x − p)·(z − p) ≤ 0 for every z in C.
+
+**Problem.** Nearest point projection onto a nonempty closed convex set in Euclidean space never increases distances.
+
+**How the definition helps.** Each projected point can serve as the test point in the other projection’s normal inequality. In our own proof, adding the inequalities gives ‖p − q‖² ≤ (x − y)·(p − q). The Cauchy–Schwarz inequality now gives ‖p − q‖ ≤ ‖x − y‖. The projection theorem supplies the equivalence with minimizing distance.
+
+**Paper or page:** [Metric Projection onto Closed Convex Set is 1-Lipschitz](https://proofwiki.org/wiki/Metric_Projection_onto_Closed_Convex_Set_is_1-Lipschitz). It says: “is 1-Lipschitz.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The Karush–Kuhn–Tucker conditions certify a convex minimum
+
+**Remember:** A stationary convex Lagrangian is already minimized.
+
+*Makes the theorem clean to state or prove.* MSC 90C25 (Convex programming), 90C46. arXiv math.OC. Level 2: later undergraduate.
+
+**Definition.** The Karush–Kuhn–Tucker conditions require feasibility, nonnegative inequality weights, and zero weight on each strict inequality. They require the Lagrangian to have zero gradient in the original variable. The Lagrangian is the objective plus the weighted constraint functions, with unrestricted weights for equalities.
+
+**Problem.** Assume a convex minimization on Euclidean space has differentiable objective and inequality functions, and affine equalities. Any point and multipliers satisfying the Karush–Kuhn–Tucker conditions then give a global minimizer.
+
+**How the definition helps.** The conditions collect exactly the checks needed to certify a minimum with one weighted function. Nonnegative inequality weights and affine equalities keep that function convex, so its zero gradient gives a global minimum. In our own proof, the weighted function equals the objective at the candidate and bounds it below at every feasible point.
+
+**Wikipedia:** [Karush–Kuhn–Tucker conditions](https://en.wikipedia.org/wiki/Karush%E2%80%93Kuhn%E2%80%93Tucker_conditions). It says: “the necessary conditions are also sufficient for optimality.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Strong quasiconvexity forbids tied minima
 
@@ -229,6 +473,22 @@
 
 - [A. Charnes and W. W. Cooper (1962), Programming with Linear Fractional Functionals](https://doi.org/10.1002/nav.3800090303)
 
+### A fixed return edge turns a flow into a circulation
+
+**Remember:** Send the required amount back on one fixed edge.
+
+*Makes the theorem clean to state or prove.* MSC 90C35 (Programming involving graphs or networks), 90C05. arXiv math.OC. Level 2: later undergraduate.
+
+**Definition.** A circulation keeps each edge flow within its bounds and balances incoming and outgoing flow at every vertex. To encode a required flow d from s to t, add a zero-cost edge from t to s. Set both bounds on this edge to d.
+
+**Problem.** A minimum-cost flow of fixed value has the same optimal cost as the resulting minimum-cost circulation. Feasible solutions correspond by adding or deleting the return edge.
+
+**How the definition helps.** The fixed return edge exactly balances the prescribed net flow at the two terminals. In our own proof, adding it gives a circulation and deleting it restores the required flow. Its zero cost makes these operations preserve the objective in both directions.
+
+**Wikipedia:** [Minimum-cost flow problem](https://en.wikipedia.org/wiki/Minimum-cost_flow_problem). It says: “forcing the total flow from s to t to also be d.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Consistent estimates settle vertices once
 
 **Remember:** One-edge consistency keeps search priorities from dropping along a path.
@@ -246,6 +506,22 @@
 **Sources:**
 
 - [P. E. Hart, N. J. Nilsson and B. Raphael (1968), A Formal Basis for the Heuristic Determination of Minimum Cost Paths](https://doi.org/10.1109/tssc.1968.300136)
+
+### Path flows turn maximum flow into path packing
+
+**Remember:** Send flow on paths and throw away cycles.
+
+*Makes the theorem clean to state or prove.* MSC 90C35 (Programming involving graphs or networks), 90C05. arXiv math.OC. Level 2: later undergraduate.
+
+**Definition.** A path flow assigns a nonnegative weight to a directed path from source to sink. A path packing chooses such weights so their sum on each edge is at most its capacity.
+
+**Problem.** In a finite directed network, the greatest total weight of a path packing equals the maximum flow value.
+
+**How the definition helps.** Path weights enforce flow balance automatically, since each path enters and leaves every intermediate vertex equally often. In our own construction, adding weighted paths respects capacity and gives flow value equal to their total weight. Conversely, the flow decomposition theorem splits a maximum flow into weighted paths and cycles. Removing cycles preserves its value and can only free capacity.
+
+**Paper or page:** [The Maxflow problem and a generalization to simplicial complexes](https://arxiv.org/abs/1212.1406v1). It says: “Let f be a flow on (G,c), then f can be decomposed as the sum of at most m s-t path-flows and cycle-flows.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Residual cycles certify cheapest flows
 
@@ -286,6 +562,22 @@
 
 - [Ford and Fulkerson, Maximal Flow Through a Network (1956)](https://doi.org/10.4153/cjm-1956-045-5)
 
+### A saddle point certifies primal and dual optimality
+
+**Remember:** At a saddle, the two orders meet at the same value.
+
+*True by definition.* MSC 90C46 (Optimality conditions and duality in mathematical programming), 90C25. arXiv math.OC. Level 2: later undergraduate.
+
+**Definition.** For constraints gᵢ(x) ≤ 0, the Lagrangian L is the objective f plus the constraint functions weighted by λᵢ ≥ 0. At a saddle point, x minimizes L with the weights fixed, and the weights maximize L with x fixed.
+
+**Problem.** A saddle point gives both a constrained minimum and dual weights that maximize the infimum of the Lagrangian. These two optimal values agree even without convexity.
+
+**How the definition helps.** The two saddle inequalities give bounds in opposite directions at the same point. In our own proof, a violated constraint would make L unbounded above as its weight grew. At a feasible x the maximum over weights equals f(x), while the minimum over x gives the dual value. Weak duality then certifies optimality, leaving existence of a saddle point as the separate issue.
+
+**Wikipedia:** [Karush–Kuhn–Tucker conditions](https://en.wikipedia.org/wiki/Karush%E2%80%93Kuhn%E2%80%93Tucker_conditions). It says: “is a saddle point”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Multipliers turn constraints into stationarity
 
 **Remember:** Subtract the right constraint gradients to cancel the objective gradient.
@@ -299,6 +591,22 @@
 **How the definition helps.** The Lagrangian combines feasibility and gradient balance in one equation saying that its derivative vanishes. Its derivatives in the weights give the constraints, and its derivatives in the original variables give gradient balance. The implicit function theorem identifies the tangent space with the kernel of the constraint derivative. Our own example, minimizing x subject to x² = 0, has a zero constraint gradient at zero, so no multiplier exists.
 
 **nLab:** [Lagrange multiplier](https://ncatlab.org/nlab/show/Lagrange+multiplier). It says: “Then there is a function(al) l in Y\* such that x is a critical point of the function F − l∘G.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Taking an infimum makes the Lagrange dual function concave
+
+**Remember:** The lower envelope of affine functions is concave.
+
+*True by definition.* MSC 90C46 (Optimality conditions and duality in mathematical programming), 90C25. arXiv math.OC. Level 2: later undergraduate.
+
+**Definition.** For inequality constraints gᵢ(x) ≤ 0, choose nonnegative weights λᵢ. Form the Lagrangian by adding the weighted constraints to the objective. The dual function takes its infimum, or greatest lower bound, over the original domain at each choice of weights.
+
+**Problem.** On a nonempty domain with finite objective and constraint values, the dual function is concave, even if the original problem lacks convexity. Its values can include −∞.
+
+**How the definition helps.** The infimum representation makes the region below the dual graph an intersection of half-spaces. Each fixed x gives one affine upper bound as a function of the weights. In our own proof, the intersection is convex, which is the geometric definition of concavity. Computing the infimum may still require solving a nonconvex problem.
+
+**Wikipedia:** [Duality (optimization)](https://en.wikipedia.org/wiki/Duality_%28optimization%29). It says: “it is a point-wise infimum of affine functions.”
 
 **Sources:** none listed. No primary source with a working link was found.
 

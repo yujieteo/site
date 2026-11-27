@@ -1,3 +1,166 @@
+### Allowing every diagram gives the true unknotting number
+
+**Remember:** The diagram with the fewest crossings need not be easiest to unknot.
+
+*Rules out counterexamples.* MSC 57K10 (Knot theory). arXiv math.GT. Level 1: early undergraduate.
+
+**Definition.** A crossing change swaps which strand passes over the other. The unknotting number is the fewest crossing changes needed to make a simple unknotted loop, allowing any starting diagram of the knot.
+
+**Problem.** Every diagram gives an upper bound on a knot’s unknotting number. A diagram with more crossings can give a better bound than a minimum-crossing diagram.
+
+**How the definition helps.** Allowing every starting diagram includes shortcuts that diagrams with the fewest crossings can miss. In Bleiler’s example, a ten-crossing diagram needs at least three changes, but a fourteen-crossing diagram of the same knot needs only two.
+
+**nLab:** [unknotting number](https://ncatlab.org/nlab/show/unknotting+number). It says: “The unknotting number of a knot does not necessarily occur in a minimal diagram.”
+
+**Sources:**
+
+- [Yasutaka Nakanishi, Unknotting numbers and knot diagrams with the minimum crossings (1983)](https://da.lib.kobe-u.ac.jp/da/kernel/0100489690/0100489690.pdf)
+- [Steven A. Bleiler, A note on unknotting number (1984)](https://doi.org/10.1017/S0305004100062381)
+
+### Descending diagrams give an upper bound on unknotting moves
+
+**Remember:** Choose the direction that already goes over more often.
+
+*True by definition.* MSC 57K10 (Knot theory). arXiv math.GT. Level 1: early undergraduate.
+
+**Definition.** Start away from the crossings and choose a direction around a knot drawing. The drawing is descending if you pass over at the first visit to each crossing.
+
+**Problem.** Any knot drawing with c crossings can become a descending drawing of the unknot by switching at most half its crossings.
+
+**How the definition helps.** The descending condition replaces a search over crossing changes with a count of first visits. In our own count, reversing direction switches which strand comes first at every crossing. One direction therefore needs at most half the crossings switched to give a descending diagram. The remaining geometric fact is that every descending diagram represents an unknotted loop.
+
+**nLab:** [unknotting number](https://ncatlab.org/nlab/show/unknotting+number). It says: “Let D be a diagram with c crossings, then changing at most c/2 crossings of D produces a diagram of the unknot.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Endpoint cycles count the components of a closed braid
+
+**Remember:** Follow a strand and then repeat from its ending label.
+
+*Makes the theorem clean to state or prove.* MSC 57K10 (Knot theory). arXiv math.GT. Level 1: early undergraduate.
+
+**Definition.** A braid consists of disjoint strands running from one row of points to another without turning back. Its endpoint permutation sends each starting position to the ending position of its strand. Close the braid by joining each ending position to the starting position with the same label.
+
+**Problem.** The components of a closed braid correspond one-for-one to the cycles of its endpoint permutation. In particular, the closure is a knot if the permutation is a single cycle.
+
+**How the definition helps.** The endpoint permutation records exactly where a trip along one strand continues after closure. In our own proof, repeatedly following the next label traces one component and returns to the starting label. Those labels form one cycle, and every label belongs to exactly one cycle.
+
+**nLab:** [braid group](https://ncatlab.org/nlab/show/braid+group). It says: “the order of the given points may come out permuted by a permutation”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Nonconstant tricolorings rule out the unknot
+
+**Remember:** One color always works, so it tells you nothing.
+
+*Rules out counterexamples.* MSC 57K10 (Knot theory). arXiv math.GT. Level 1: early undergraduate.
+
+**Definition.** A knot diagram shows a closed loop with each crossing marked over or under. Cut the drawing into arcs at its underpasses and color each arc, using all three colors. A tricoloring requires the three colors at each crossing to be all equal or all different.
+
+**Problem.** A knot with a tricoloring cannot be the unknot, the knot shaped like a plain circle. The trefoil has such a coloring.
+
+**How the definition helps.** Requiring all three colors rules out the plain circle, which has only one arc. The three local moves relating diagrams of the same knot preserve tricolorability. Giving the three arcs of the standard trefoil drawing different colors passes the crossing test.
+
+**nLab:** [colorable knot](https://ncatlab.org/nlab/show/colorable+knot). It says: “exactly three colours are used in the assignment”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Over and under marks recover the knot from a diagram
+
+**Remember:** A shadow needs height order at each crossing.
+
+*Rules out counterexamples.* MSC 57K10 (Knot theory). arXiv math.GT. Level 1: early undergraduate.
+
+**Definition.** A knot diagram projects a knot to the plane with crossings only where two branches meet at distinct angles. At each crossing, mark which branch lies higher in space.
+
+**Problem.** An over-and-under diagram determines a single knot type. One unmarked plane projection can represent both a trefoil and an unknot.
+
+**How the definition helps.** The marks give a strict height order that stays valid while one set of strand heights changes into another. In our own proof, move each height linearly between its two values, keeping the plane drawing fixed. No strands meet, and the resulting motion extends to the surrounding space. Switching one crossing in a trefoil drawing gives an unknotted loop with the same unmarked drawing.
+
+**nLab:** [link diagram](https://ncatlab.org/nlab/show/link+diagram). It says: “Which strand of the two intersecting at the double point is the 'over strand' and which is the 'under strand' is recorded”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Disk removal makes Euler characteristic of surface sums computable
+
+**Remember:** Each removed disk costs one, and gluing along a circle costs nothing.
+
+*True by definition.* MSC 57K20 (2-dimensional topology (including mapping class groups of surfaces, Teichmüller theory, curve complexes, etc.)). arXiv math.GT. Level 1: early undergraduate.
+
+**Definition.** To form the connected sum of two closed surfaces, remove the interior of one disk from each. Glue the two new boundary circles. The Euler characteristic is the number of vertices minus edges plus faces in a division of the surface into cells.
+
+**Problem.** The Euler characteristic of a connected sum of closed surfaces is the sum of their Euler characteristics minus two.
+
+**How the definition helps.** Counting vertices, edges and faces shows the contribution of each removed disk directly. Our own count uses matching subdivisions on the two boundary circles, with each disk initially a single face. Each disk costs one face, and identifying the circles removes equally many vertices and edges. The work behind this definition is proving that cell counts are independent of subdivision and agree with the definition using homology.
+
+**nLab:** [Euler characteristic](https://ncatlab.org/nlab/show/Euler+characteristic). It says: “the Euler characteristic of their connected sum is the sum of their separate Euler characteristics, minus 2”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Reflection across a cylinder makes two Möbius strips
+
+**Remember:** Two strips share the boundary of a reflected cylinder.
+
+*True by definition.* MSC 57K20 (2-dimensional topology (including mapping class groups of surfaces, Teichmüller theory, curve complexes, etc.)). arXiv math.GT. Level 1: early undergraduate.
+
+**Definition.** Build the Klein bottle by joining the two ends of a cylinder with a reflection of the end circle. Choose two opposite points exchanged by the reflection and cut the cylinder along the two lengthwise lines through them.
+
+**Problem.** The Klein bottle is the union of two Möbius strips glued along their single boundary circles.
+
+**How the definition helps.** The reflection preserves each semicircle between the cut points and exchanges its ends. Each semicircle traces a rectangle along the cylinder, so the end gluing makes that rectangle a Möbius strip. Our own cut shows that the two strips meet along their entire boundary circle. This construction avoids identifying the pieces by the classification of surfaces.
+
+**Wikipedia:** [Klein bottle](https://en.wikipedia.org/wiki/Klein_bottle). It says: “Dissecting the Klein bottle results in two Möbius strips.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The Möbius seam makes its boundary wrap twice
+
+**Remember:** One lap swaps edges, so the boundary needs two.
+
+*True by definition.* MSC 57K20 (2-dimensional topology (including mapping class groups of surfaces, Teichmüller theory, curve complexes, etc.)). arXiv math.GT. Level 1: early undergraduate.
+
+**Definition.** Make a Möbius strip by gluing the ends of a rectangle with a half twist. Join the top on one end to the bottom on the other and join the midpoints.
+
+**Problem.** The Möbius strip has one boundary circle. When the strip shrinks to its middle circle, the boundary goes around that circle twice.
+
+**How the definition helps.** The flipped seam joins the top edge to the bottom edge, making one boundary loop. Our own proof shrinks each crosswise segment to its midpoint, which respects the gluing. Each long edge then travels once around the centerline in the same direction. Using a rectangle avoids tracking the twist in a three-dimensional model.
+
+**Wikipedia:** [Möbius strip](https://en.wikipedia.org/wiki/M%C3%B6bius_strip). It says: “The Möbius strip can be continuously transformed into its centerline”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A torus level set counts link components
+
+**Remember:** Divide the winding numbers by their greatest common divisor to get a single strand.
+
+*True by definition.* MSC 57K10 (Knot theory). arXiv math.GT. Level 2: later undergraduate.
+
+**Definition.** Imagine the surface of a doughnut with two angle coordinates x and y, each measured in full turns. For positive integers p and q, the torus link consists of all points where qx − py is an integer.
+
+**Problem.** The torus link has gcd(p, q) components, where gcd means greatest common divisor. It is a knot exactly when p and q are coprime.
+
+**How the definition helps.** The equation describes all strands at once, while tracing a single winding path can miss components. In our own calculation, write d for the greatest common divisor and set u = (q/d)x − (p/d)y. Bézout’s identity supplies a second angle making these valid torus coordinates because the two coefficients of u are coprime. The equation becomes du = 0 modulo one, allowing d values of u and a whole circle at each value.
+
+**Wikipedia:** [Torus knot](https://en.wikipedia.org/wiki/Torus_knot). It says: “A torus link arises if p and q are not coprime”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Changing the cut leaves a closed braid unchanged
+
+**Remember:** A closed braid has no preferred place to cut it open.
+
+*True by definition.* MSC 57K10 (Knot theory). arXiv math.GT. Level 2: later undergraduate.
+
+**Definition.** Draw a braid as strands crossing a cylinder from one end to the other without turning back. Close the braid by identifying corresponding points at the two ends.
+
+**Problem.** Conjugate braids have equivalent closures. Conjugating a braid means placing a second braid before it and the inverse of that braid after it.
+
+**How the definition helps.** Joining the cylinder ends makes the order of the braid pieces cyclic. In our own proof, slide the cut until the extra braid meets its inverse, then cancel them. The cylinder with joined ends is a solid torus, whose standard placement in space gives the usual closure drawn with outside arcs.
+
+**Wikipedia:** [Markov theorem](https://en.wikipedia.org/wiki/Markov_theorem). It says: “their closures are equivalent links”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Framed links make the Kauffman bracket an invariant with no correction
 
 **Remember:** Remember the ribbon, and the twist count becomes part of the knot.
@@ -29,6 +192,76 @@
 **How the definition helps.** Ambient isotopy moves the space together with the knot, so the knotted part cannot be shrunk away. Plain isotopy only asks that the knot stay an embedding at every moment, so the knotted part can be contracted to a straight line. That contraction is not a homeomorphism of the surrounding space. Proving that two particular knots differ still needs invariants.
 
 **Wikipedia:** [Knot theory](https://en.wikipedia.org/wiki/Knot_theory), [Ambient isotopy](https://en.wikipedia.org/wiki/Ambient_isotopy). It says: “However, this definition would make every knot equivalent to the unknot, as the knotted portions can be "contracted" down to a straight line.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Oriented knots have a well-defined connected sum
+
+**Remember:** The arrows tell you which cut ends to join.
+
+*Rules out counterexamples.* MSC 57K10 (Knot theory). arXiv math.GT. Level 2: later undergraduate.
+
+**Definition.** To form the oriented connected sum, draw the two directed knots in separate disks. Remove a short arc on the outer face of each drawing. Join the ends by two disjoint arcs across the gap, without new crossings, so the directions continue.
+
+**Problem.** The oriented connected sum depends only on the oriented knot types, not the cut arcs or diagrams.
+
+**How the definition helps.** The directions select a joining that follows both knots as originally directed. Reversing just one direction can give a different knot even after we forget the directions. The remaining proof slides the cut along each knot and checks that changing either diagram preserves the result.
+
+**Wikipedia:** [Connected sum](https://en.wikipedia.org/wiki/Connected_sum). It says: “the oriented ambient isotopy class of the result is well-defined”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Oriented Seifert surfaces give an odd Euler characteristic
+
+**Remember:** One boundary and orientability make Euler characteristic odd.
+
+*Rules out counterexamples.* MSC 57K10 (Knot theory). arXiv math.GT. Level 2: later undergraduate.
+
+**Definition.** A Seifert surface for a directed knot is a compact, connected, oriented surface embedded in space whose boundary follows the knot’s direction. Its genus counts the handles after we cap its boundary with a disk. Its Euler characteristic counts vertices minus edges plus faces in a triangulation.
+
+**Problem.** A Seifert surface of genus g spanning one knot has odd Euler characteristic, equal to 1 − 2g.
+
+**How the definition helps.** Capping the single boundary circle gives a closed oriented surface, whose genus determines its Euler characteristic. In our own count, the cap adds one face, so removing it subtracts one from 2 − 2g. Without orientability, a Möbius strip spans a knot and has Euler characteristic zero.
+
+**Wikipedia:** [Seifert surface](https://en.wikipedia.org/wiki/Seifert_surface). It says: “A Seifert surface must be oriented.”
+
+**Paper or page:** [Möbius Strip has Euler Characteristic Zero](https://proofwiki.org/wiki/Möbius_Strip_has_Euler_Characteristic_Zero). It says: “Let M be a Möbius Strip. Then: χ(M) = 0”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Seifert circles and bands give a knot genus bound
+
+**Remember:** Count circles and crossings to bound the number of handles.
+
+*True by definition.* MSC 57K10 (Knot theory). arXiv math.GT. Level 2: later undergraduate.
+
+**Definition.** Knot genus is the smallest number of handles of any compact, connected, oriented surface in space bounded by the knot. In Seifert’s construction, reconnect the strands at each crossing to follow their directions without crossing. Fill the resulting circles with disks and restore each crossing with a twisted band.
+
+**Problem.** If a knot diagram has c crossings and smoothing them gives s circles, its knot genus is at most (c − s + 1)/2.
+
+**How the definition helps.** The disk-and-band surface bounds the minimum without a search over all spanning surfaces. Each disk adds one and each band subtracts one from its Euler characteristic, giving s − c. Our own calculation sets this equal to 1 − 2g for a surface with one boundary circle. Seifert’s construction ensures that the surface has no self-intersections and carries a consistent orientation.
+
+**Paper or page:** [Nudos y Superficies](https://arxiv.org/abs/2412.20945v1). It says: “se construye a partir de b bandas y d discos, entonces χ(F) = d − b”
+
+**Sources:**
+
+- [Herbert Seifert, Über das Geschlecht von Knoten (1935)](https://link.springer.com/article/10.1007/BF01448044)
+
+### Signed mixed crossings bound the cost of splitting links
+
+**Remember:** One mixed crossing change can fix at most one unit of linking.
+
+*True by definition.* MSC 57K10 (Knot theory). arXiv math.GT. Level 2: later undergraduate.
+
+**Definition.** For two directed link components, their linking number is half the signed crossing count between them. The absolute linking number of the whole link adds the absolute values for all pairs of components.
+
+**Problem.** Separating all components into disjoint balls requires at least the absolute linking number in crossing changes between different components.
+
+**How the definition helps.** Our own count uses the crossing formula because a switch changes one pair’s linking number by one. Taking absolute values before adding prevents cancellation between different pairs. A separated link has a drawing without crossings between components, so the sum must fall to zero. The work is showing that local diagram moves preserve the signed count, which can also be defined by intersections with a spanning surface.
+
+**nLab:** [linking number](https://ncatlab.org/nlab/show/linking+number). It says: “An R2 move removes or introduces two crossings of opposite sign”
+
+**Paper or page:** [Slice-torus link invariants, combinatorial invariants, and positivity conditions](https://arxiv.org/abs/2008.06921v3). It says: “If there exists a splitting sequence with m mixed crossing changes, then \|ℓk\|(L) ≤ m”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -104,6 +337,106 @@
 - [Louis H. Kauffman, State models and the Jones polynomial, Topology 26 (1987) 395–407](https://doi.org/10.1016/0040-9383(87)90009-7)
 - [Vaughan F. R. Jones, A polynomial invariant for knots via von Neumann algebras, Bulletin of the American Mathematical Society 12 (1985) 103–111](https://doi.org/10.1090/S0273-0979-1985-15304-2)
 
+### Seifert determinants make the Alexander polynomial blind to mirrors
+
+**Remember:** A mirror transposes and negates, but the Alexander determinant keeps its class.
+
+*True by definition.* MSC 57K14 (Knot polynomials), 57K10. arXiv math.GT. Level 2: later undergraduate.
+
+**Definition.** Choose loops representing a basis for the first homology group of an oriented surface spanning the knot. Its Seifert matrix V records how each loop links with a copy of each basis loop pushed slightly to the positive side. The Alexander polynomial is det(V − tVᵀ), up to sign and a power of t.
+
+**Problem.** A knot and its mirror have the same Alexander polynomial up to sign and a power of t.
+
+**How the definition helps.** In our own calculation, reflection changes the matrix V into −Vᵀ. Reflection reverses linking signs and exchanges the two sides of the surface, which transposes the matrix. A determinant equals its transpose, and negating a matrix changes its determinant by at most a sign. The work lies in the rule for exchanging sides and the agreement with the original definition from the knot group.
+
+**Wikipedia:** [Alexander polynomial](https://en.wikipedia.org/wiki/Alexander_polynomial). It says: “the Alexander polynomial of a knot is the same polynomial for the mirror image knot.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Smoothing states make Jones polynomials multiply under knot sum
+
+**Remember:** When you join two knots, one circle from each state becomes one circle.
+
+*True by definition.* MSC 57K14 (Knot polynomials), 57K10. arXiv math.GT. Level 2: later undergraduate.
+
+**Definition.** The Kauffman bracket sums one term for each choice of smoothing at every crossing. Weight the two choices by A and A⁻¹, and weight every circle after the first by −A² − A⁻². The Jones polynomial multiplies this sum by (−A³)⁻ʷ and substitutes t = A⁻⁴, with w the signed crossing sum.
+
+**Problem.** The Jones polynomial of a connected sum of knots is the product of their Jones polynomials.
+
+**How the definition helps.** A smoothing of the joined diagram amounts to choosing a smoothing independently on each side. In our own count, two circles merge, so the counts of circles after the first add. The signed crossing counts also add, making both the bracket and its correction multiply. The work lies in proving agreement with the original Jones polynomial.
+
+**Wikipedia:** [Bracket polynomial](https://en.wikipedia.org/wiki/Bracket_polynomial). It says: “adding a circle disjoint from the rest of the diagram multiplies the bracket”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The bracket makes mirroring invert the Jones variable
+
+**Remember:** A mirror swaps the two smoothing weights.
+
+*True by definition.* MSC 57K14 (Knot polynomials), 57K10. arXiv math.GT. Level 2: later undergraduate.
+
+**Definition.** The Kauffman bracket sums over ways to smooth all crossings, with weights A and A⁻¹ for the two smoothings. Each circle after the first contributes a factor −A² − A⁻². For the Jones polynomial, multiply by (−A³)⁻ʷ and use t = A⁻⁴, with w the signed crossing sum.
+
+**Problem.** The Jones polynomial of a mirror knot is the original Jones polynomial with t replaced by t⁻¹.
+
+**How the definition helps.** Reflection exchanges the two smoothings, so replacing A by A⁻¹ exchanges their weights and preserves the circle factor. Reflection also reverses the signed crossing count, giving the same substitution in the correction factor. The work lies in identifying the corrected bracket with the original Jones polynomial.
+
+**Wikipedia:** [Jones polynomial](https://en.wikipedia.org/wiki/Jones_polynomial). It says: “the Jones polynomial of its mirror image is given by substitution of t⁻¹ for t”
+
+**Sources:**
+
+- [Louis H. Kauffman, State models and the Jones polynomial (1987)](https://webhomes.maths.ed.ac.uk/~v1ranick/papers/kauffmanjones.pdf)
+
+### The Jones skein rule at one ignores crossing changes
+
+**Remember:** At one the smoothing term drops out.
+
+*True by definition.* MSC 57K14 (Knot polynomials), 57K10. arXiv math.GT. Level 2: later undergraduate.
+
+**Definition.** The Jones skein rule compares two directed diagrams differing at one crossing with the diagram obtained by smoothing that crossing along the arrows. Its equation is t⁻¹V(D₊) − tV(D₋) = (√t − 1/√t)V(D₀), where the subscripts denote positive, negative and smoothed crossings. The plain circle has value one.
+
+**Problem.** For a link with m components, setting √t equal to 1 gives the Jones polynomial the value (−2) raised to the power m − 1.
+
+**How the definition helps.** At t = 1 the smoothing term vanishes, so switching a crossing changes nothing. Our own reduction switches crossings to obtain an unlink with the same number of components. The bracket of that unlink is one factor −2 for each circle after the first. The main work is proving the skein rule and bracket give the same polynomial.
+
+**Wikipedia:** [Skein relation](https://en.wikipedia.org/wiki/Skein_relation). It says: “are sufficient to calculate the polynomial recursively”
+
+**Sources:**
+
+- [Louis H. Kauffman, State models and the Jones polynomial (1987)](https://webhomes.maths.ed.ac.uk/~v1ranick/papers/kauffmanjones.pdf)
+
+### An outside normal orients a closed surface in space
+
+**Remember:** The outside gives a normal, but a boundary can let the sides join.
+
+*True by definition.* MSC 57K20 (2-dimensional topology (including mapping class groups of surfaces, Teichmüller theory, curve complexes, etc.)). arXiv math.GT. Level 2: later undergraduate.
+
+**Definition.** For a smooth surface embedded in three-dimensional space, an orientation can be given by a continuous choice of unit normal. A unit normal is a length-one arrow perpendicular to the tangent plane.
+
+**Problem.** Every smooth compact connected surface embedded in three-dimensional space with no boundary is orientable.
+
+**How the definition helps.** The normal-vector definition lets us orient the whole surface by pointing outward everywhere. Our own argument uses the separation theorem for embedded closed surfaces to choose the outside consistently. The usual definition orients tangent planes, and the orientation of space identifies those choices with the two unit normals. An embedded Möbius strip has boundary and admits no such continuous normal.
+
+**Wikipedia:** [Surface (topology)](https://en.wikipedia.org/wiki/Surface_%28topology%29). It says: “the boundary of a solid”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Capping and counting boundary circles classifies compact surfaces
+
+**Remember:** Capping gives the closed type, but keep count of the caps.
+
+*Rules out counterexamples.* MSC 57K20 (2-dimensional topology (including mapping class groups of surfaces, Teichmüller theory, curve complexes, etc.)). arXiv math.GT. Level 2: later undergraduate.
+
+**Definition.** Cap each boundary circle of a compact connected surface by gluing on a disk. Record the resulting closed surface and the number of disks used.
+
+**Problem.** Two compact connected surfaces have the same topological type exactly when their capped surfaces have the same type and their boundary counts agree.
+
+**How the definition helps.** Capping leaves just one extra number to record because the positions of the removed disks do not matter. A continuous deformation can carry any collection of disjoint disks on a connected surface to any other collection of the same size. In our own example, a disk and an annulus both cap to a sphere, but their boundary counts differ.
+
+**Wikipedia:** [Surface (topology)](https://en.wikipedia.org/wiki/Surface_%28topology%29). It says: “An alternative classification of compact connected surfaces with boundary is by orientability, genus, and the number of boundary components.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Closed surfaces are classified by Euler characteristic and orientability
 
 **Remember:** Compact, no edge, connected: then Euler characteristic and orientability say everything.
@@ -121,6 +454,38 @@
 **Sources:**
 
 - [C. Thomassen, The Jordan–Schönflies theorem and the classification of surfaces, American Mathematical Monthly 99 (1992) 116–130](https://doi.org/10.2307/2324180)
+
+### Doubling the flipped seam gives a torus cover
+
+**Remember:** Two trips through a flipped seam restore orientation.
+
+*True by definition.* MSC 57K20 (2-dimensional topology (including mapping class groups of surfaces, Teichmüller theory, curve complexes, etc.)). arXiv math.GT. Level 2: later undergraduate.
+
+**Definition.** Build the Klein bottle from a cylinder by gluing its two circle ends with a reflection. Its orientation cover has two possible local orientations above each point.
+
+**Problem.** The torus is the orientation double cover of the Klein bottle.
+
+**How the definition helps.** The reflected seam reverses the local sense of clockwise, so crossing it switches orientation sheets. In our own construction we use two cylinders, one for each choice, and join them with a reflection at each seam. Two reflections cancel, leaving a cylinder with its ends joined without a twist, which is a torus. This describes the cover directly from the gluing, without classifying closed surfaces.
+
+**Wikipedia:** [Klein bottle](https://en.wikipedia.org/wiki/Klein_bottle). It says: “There is a 2-1 covering map from the torus to the Klein bottle”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Local orientations detect whether the double cover is connected
+
+**Remember:** Two separate sheets mean clockwise can be chosen everywhere.
+
+*True by definition.* MSC 57K20 (2-dimensional topology (including mapping class groups of surfaces, Teichmüller theory, curve complexes, etc.)). arXiv math.GT. Level 2: later undergraduate.
+
+**Definition.** The orientation double cover of a surface puts two choices of local orientation over every point. Nearby choices lie in the same sheet when they give the same sense of rotation in a common coordinate chart.
+
+**Problem.** The orientation double cover of a connected surface is connected exactly when the surface is nonorientable.
+
+**How the definition helps.** The cover turns the usual test for consistent clockwise choices in overlapping charts into a test for two separate sheets. A global choice and its opposite give those sheets. Conversely, each component of a disconnected double cover of a connected surface maps onto the surface, so each contains one choice per point. Our own argument lifts paths from the surface to show that each component reaches every point.
+
+**Wikipedia:** [Orientability](https://en.wikipedia.org/wiki/Orientability). It says: “Around each point of M there are two local orientations.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Polyhedra whose surface is a manifold are classified by Euler characteristic
 
@@ -170,6 +535,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### A polygon gluing gives the surface group relations
+
+**Remember:** Paired edges give generators, and the rim gives the relation.
+
+*True by definition.* MSC 57M05 (Fundamental group, presentations, free differential calculus), 57K20. arXiv math.GT. Level 2: later undergraduate.
+
+**Definition.** Present a closed surface by a polygon whose edges are paired, with all vertices glued to one point. Read the polygon boundary as a word in the directed pairs, using an inverse for an edge traversed against its arrow.
+
+**Problem.** The fundamental group of this surface has one generator per edge pair. Its single relation sets the boundary word equal to the identity.
+
+**How the definition helps.** The polygon replaces an analysis of all loops by a single boundary word. Its paired edges form a collection of circles meeting at one point, one circle for each generator. In our own argument, the van Kampen theorem says that filling the polygon imposes exactly the relation given by its boundary word. Finding the polygon and proving that theorem account for the topological work.
+
+**nLab:** [surface](https://ncatlab.org/nlab/show/surface). It says: “the attaching map is a representative in this free group of the composition of group commutators”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Knot complement groups are invariant without checking diagram moves
 
 **Remember:** A homeomorphism of complements gives an isomorphism of knot groups.
@@ -183,6 +564,54 @@
 **How the definition helps.** The complement definition makes invariance a direct consequence of how homeomorphisms act on fundamental groups. A homeomorphism that takes one knot to the other restricts to a homeomorphism of their complements. Starting with the diagram presentation, one can instead check the local diagram changes called Reidemeister moves (our own). The work in connecting the two definitions is the van Kampen computation, which assembles the complement group from pieces (our own).
 
 **Wikipedia:** [Knot group](https://en.wikipedia.org/wiki/Knot_group). It says: “Such a homeomorphism restricts onto a homeomorphism of the complements of the knots, and this restricted homeomorphism induces an isomorphism of fundamental groups.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The common torus gives the torus knot group relation
+
+**Remember:** The same curve winds p times on one side and q on the other.
+
+*True by definition.* MSC 57M05 (Fundamental group, presentations, free differential calculus), 57K10. arXiv math.GT. Level 2: later undergraduate.
+
+**Definition.** The standard torus divides the three-sphere into two solid tori, each shaped like a filled doughnut. For coprime positive integers p and q, the torus knot winds p times around one core circle and q times around the other.
+
+**Problem.** The group of loops around the (p, q) torus knot has generators x and y and just one relation, xᵖ = yᑫ.
+
+**How the definition helps.** The common torus gives one curve whose two winding counts supply the relation. In our own argument, remove a thin tube around the knot, leaving the solid torus pieces joined along an annulus. Its central loop represents the pth power on one side and the qth power on the other. The van Kampen theorem combines these two descriptions, avoiding a separate group calculation at every diagram crossing.
+
+**Wikipedia:** [Torus knot](https://en.wikipedia.org/wiki/Torus_knot). It says: “the knot group of a torus knot has the presentation”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Wirtinger generators give every knot group the same abelianization
+
+**Remember:** Once generators commute, follow the knot and every arc gets the same name.
+
+*True by definition.* MSC 57M05 (Fundamental group, presentations, free differential calculus), 57K10. arXiv math.GT. Level 2: later undergraduate.
+
+**Definition.** The knot group records loops in the space around a knot, identifying loops that deform into each other while fixing their base point. Its Wirtinger presentation gives each diagram arc between undercrossings a generator. Each crossing makes the two underpassing generators conjugate by the overpassing generator or its inverse.
+
+**Problem.** The abelianization of a knot group, formed by making all its elements commute, is the infinite cyclic group.
+
+**How the definition helps.** Making generators commute turns every crossing relation into equality of the two underpassing generators. In our own calculation, following the knot identifies every generator, with no relation left to impose finite order. The Wirtinger theorem proves that this diagram calculation gives the group defined by loops in space.
+
+**Wikipedia:** [Wirtinger presentation](https://en.wikipedia.org/wiki/Wirtinger_presentation). It says: “The abelianization of the group is the integers.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Closed lifts identify the subgroup of a covering
+
+**Remember:** The loops that return upstairs are the ones from upstairs.
+
+*Makes the theorem clean to state or prove.* MSC 57M10 (Covering spaces and low-dimensional topology), 55Q05. arXiv math.AT. Level 2: later undergraduate.
+
+**Definition.** The fiber over a point is the set of points that map to it. Monodromy lets a loop class act on that fiber by sending a starting point to the endpoint of its lift.
+
+**Problem.** For a covering, the loop classes that fix a chosen point form its monodromy stabilizer. This subgroup consists exactly of the classes of loops that project from loops upstairs based at that point.
+
+**How the definition helps.** A loop class fixes the chosen point exactly when its lift returns there (our own). Such a lift is a loop upstairs, and every loop upstairs lifts its own projection (our own). The path and homotopy lifting theorems make the endpoint independent of the representative (our own).
+
+**nLab:** [monodromy](https://ncatlab.org/nlab/show/monodromy). It says: “it is independent of the choice of γ in the given homotopy class of paths due to the homotopy-lifting property”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -221,6 +650,70 @@
 **Sources:**
 
 - [Allen Hatcher, Algebraic Topology, §1.3, Proposition 1.39](https://pi.math.cornell.edu/~hatcher/AT/ATch1.pdf)
+
+### Disjoint translates turn orbit maps into coverings
+
+**Remember:** Disjoint translates give distinct sheets.
+
+*Rules out counterexamples.* MSC 57M10 (Covering spaces and low-dimensional topology), 55Q05. arXiv math.AT. Level 2: later undergraduate.
+
+**Definition.** Suppose a group acts on a space by homeomorphisms. Each point has an open neighborhood disjoint from its translates by all nonidentity elements. The orbit space identifies points that differ by the action.
+
+**Problem.** The orbit map of such an action is a covering map. If the original space is path-connected and simply connected, the orbit space has fundamental group isomorphic to the acting group.
+
+**How the definition helps.** The disjoint translates give separate sheets above the image of each chosen neighborhood (our own). For a simply connected, path-connected covering space, lift endpoints classify loop classes (our own). Each endpoint is a unique translate of the starting point, and joining loops corresponds to multiplying group elements (our own). Free action alone fails for rational translations of the line because every orbit is dense (our own).
+
+**nLab:** [fundamental theorem of covering spaces](https://ncatlab.org/nlab/show/fundamental+theorem+of+covering+spaces). It says: “the automorphism group of the universal covering space of X coincides with the fundamental group π₁(X,x) itself”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Evenly covered neighborhoods guarantee lifts of whole paths
+
+**Remember:** A cover gives all sheets at once, not one at a time.
+
+*Rules out counterexamples.* MSC 57M10 (Covering spaces and low-dimensional topology). arXiv math.AT. Level 2: later undergraduate.
+
+**Definition.** A covering map is a continuous surjection for which every base point has an evenly covered open neighborhood. Its inverse image consists of disjoint open sheets, each mapped homeomorphically onto that neighborhood. A lift is a path upstairs that projects to the given path.
+
+**Problem.** Every path in the base of a covering map lifts uniquely once its starting point upstairs is chosen.
+
+**How the definition helps.** Each sheet supplies a single inverse for an entire path segment inside its neighborhood (our own). Compactness of the time interval gives a finite subdivision into such segments (our own). The local homeomorphism t ↦ exp(2πit) from (0, 2) onto the circle lacks this guarantee (our own). One positive turn starting upstairs at 1 would end at the missing point 2 (our own).
+
+**nLab:** [covering space](https://ncatlab.org/nlab/show/covering+space). It says: “by the triviality of the covering space over Uₓⱼ and the first argument above, there is a unique lift”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Pairs with matching images let coverings change base spaces
+
+**Remember:** Keep exactly the sheets lying over the image of each point.
+
+*Makes the theorem clean to state or prove.* MSC 57M10 (Covering spaces and low-dimensional topology). arXiv math.AT. Level 2: later undergraduate.
+
+**Definition.** Let p map a covering space E onto X, and let f map Y continuously to X. The pullback consists of pairs (y, e) with f(y) = p(e), with the topology inherited from Y × E. Its projection sends each pair to y.
+
+**Problem.** Pulling back a covering map along any continuous map gives a covering map over the new base.
+
+**How the definition helps.** Over the inverse image of an evenly covered neighborhood, each original sheet gives one new sheet (our own). If s sends a base point to its unique point on that sheet, the new sheet consists of pairs (y, s(f(y))) (our own). Projection is a homeomorphism there, with the displayed pair giving its continuous inverse (our own).
+
+**nLab:** [pullback bundle](https://ncatlab.org/nlab/show/pullback+bundle). It says: “the pullback bundle f∗ E → Y is (if it exists) simply the pullback of p along f, regarded as a bundle over Y.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Path classes build a simply connected covering space
+
+**Remember:** Paths with memory make every closed lift project to a trivial loop.
+
+*True by definition.* MSC 57M10 (Covering spaces and low-dimensional topology), 55Q05. arXiv math.AT. Level 2: later undergraduate.
+
+**Definition.** Take paths from a fixed point and identify paths that deform into each other with both endpoints fixed. Project each class to its endpoint. A basic neighborhood consists of all continuations inside a path-connected open set whose loops contract in the original space.
+
+**Problem.** A path-connected, locally path-connected space has a simply connected cover if every point has a neighborhood whose loops contract in the space.
+
+**How the definition helps.** The class of a path records exactly where its lift from the constant class ends (our own). Lifting initial segments reaches every class, so the model is path-connected (our own). A closed lift therefore projects to a loop that contracts, and lifting its contraction contracts the original loop (our own). The neighborhood condition makes endpoint projection a covering because continuations to the same nearby endpoint give the same class (our own).
+
+**nLab:** [universal covering space](https://ncatlab.org/nlab/show/universal+covering+space). It says: “whose points are homotopy classes of paths in X starting at x₀, with the projection X⁽¹⁾ → X projecting to the endpoint of a path.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Allowing the empty manifold makes it a manifold of every dimension
 
@@ -289,6 +782,253 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### The derivative frames regular fibers through a homotopy
+
+**Remember:** One target basis frames both ends and the fiber between.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 57R15 (Specialized structures on manifolds (spin manifolds, framed manifolds, etc.)), 57R35. arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** A normal framing chooses a smoothly varying basis of tangent directions modulo directions tangent to a submanifold. At a regular fiber, the derivative identifies this quotient with the tangent space at the target value.
+
+**Problem.** Take smoothly homotopic maps from a compact manifold without boundary to a sphere and choose one basis at a common regular value. A submanifold in the product with an interval joins the two fibers and carries a normal framing extending both induced framings.
+
+**How the definition helps.** One target basis specifies the framing along the entire joining fiber, including its ends (our own). Make the homotopy constant near the ends, then apply relative transversality to make the chosen value regular while preserving those collars (our own). The boundary preimage theorem gives the joining submanifold, and the derivative identifies its normal directions with the target tangent space (our own).
+
+**nLab:** [Pontryagin's theorem](https://ncatlab.org/nlab/show/Pontryagin%27s+theorem). It says: “regular pre-image of 0”
+
+**Sources:**
+
+- [John Milnor, Topology from the Differentiable Viewpoint](https://people.dm.unipi.it/benedett/MILNOR-TDVPOINT.pdf)
+
+### Boundary tangency keeps compact manifold flows complete
+
+**Remember:** Tangent arrows stay on the boundary.
+
+*Rules out counterexamples. Confidence: medium.* MSC 57R25 (Vector fields, frame fields in differential topology), 58A05. arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** A vector field on a manifold with boundary is tangent to the boundary if its arrows at boundary points lie in the boundary tangent spaces.
+
+**Problem.** On a compact smooth manifold with boundary, a smooth vector field tangent to the boundary has a flow for all real times.
+
+**How the definition helps.** Tangency gives a solution within the boundary, and uniqueness prevents any other trajectory from crossing it (our own). Local existence and compactness then extend every solution past any finite endpoint (our own). Without tangency, the constant field 1 on the closed unit interval exits at its right endpoint (our own).
+
+**nLab:** [flow of a vector field](https://ncatlab.org/nlab/show/flow+of+a+vector+field). It says: “Then v has a unique maximal flow”
+
+**Wikipedia:** [Vector field](https://en.wikipedia.org/wiki/Vector_field). It says: “On a compact manifold without boundary, every smooth vector field is complete.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Compact support prevents a flow from escaping in finite time
+
+**Remember:** Outside the support, flow lines stay put.
+
+*Rules out counterexamples.* MSC 57R25 (Vector fields, frame fields in differential topology), 58A05. arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** A vector field has compact support if the closure of the set where its arrows are nonzero is compact. A field is complete if its solution through every point exists for all real time.
+
+**Problem.** Every smooth vector field with compact support on a manifold without boundary is complete.
+
+**How the definition helps.** Uniqueness keeps each nonconstant trajectory inside the compact support because trajectories outside it are constant (our own). The continuation theorem extends a trajectory that stays in a compact set beyond any finite endpoint (our own). Without compact support, the equation x′ = x² starting at 1 has solution 1 ÷ (1 − t), which diverges at time one (our own).
+
+**Wikipedia:** [Vector field](https://en.wikipedia.org/wiki/Vector_field). It says: “In particular, compactly supported vector fields on a manifold are complete.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The flow definition of the bracket detects commuting flows
+
+**Remember:** Zero bracket means the first flow leaves the second field unchanged.
+
+*True by definition.* MSC 57R25 (Vector fields, frame fields in differential topology), 58A05. arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** The Lie bracket of fields X and Y is the derivative at time zero of Y pulled back along the flow of X. To pull back Y, move its arrows by the derivative of the inverse flow map.
+
+**Problem.** Two smooth vector fields with flows defined for all time have commuting flows exactly when their Lie bracket is zero.
+
+**How the definition helps.** The flow law transports the zero derivative at time zero to every later time (our own). The first flow then preserves the second field, and uniqueness of solutions makes it commute with the second flow (our own). Conversely, commuting flows preserve the second field and give zero derivative (our own). The comparison with the usual bracket uses the theorem that this derivative equals the commutator of the two directional derivatives (our own).
+
+**nLab:** [Lie derivative](https://ncatlab.org/nlab/show/Lie+derivative), [Lie bracket of vector fields](https://ncatlab.org/nlab/show/Lie+bracket+of+vector+fields). It says: “Alternatively, we can set \[u,v\] = ℒᵤ v = −ℒᵥ u”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Constant ends make smooth homotopies easy to join
+
+**Remember:** Pause at each end before joining two families.
+
+*True by definition.* MSC 57R35 (Differentiable mappings in differential topology), 58A05. arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** A smooth homotopy is a smooth family of maps from time zero to time one. In the constant-end convention, the family equals its initial map near zero and its final map near one.
+
+**Problem.** Smooth homotopy is an equivalence relation on smooth maps between two manifolds, including when the maps must stay fixed on a specified subset.
+
+**How the definition helps.** The two families agree with the middle map on a neighborhood of the join (our own). Constant families give reflexivity, and reversing time gives symmetry (our own). To match the usual definition, use a smooth change of time that stays at zero and one near the ends (our own).
+
+**Paper or page:** [Smooth Homotopy is an Equivalence Relation](https://proofwiki.org/wiki/Smooth_Homotopy_is_an_Equivalence_Relation). It says: “Then ∼ is an equivalence relation.”
+
+**Sources:**
+
+- [John Milnor, Topology from the Differentiable Viewpoint](https://people.dm.unipi.it/benedett/MILNOR-TDVPOINT.pdf)
+
+### Joint transversality excludes families with only bad parameters
+
+**Remember:** Test the parameter projection on the joint inverse image.
+
+*Rules out counterexamples.* MSC 57R35 (Differentiable mappings in differential topology), 58K05. arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** A family is jointly transverse to a submanifold if its derivatives in source and parameter directions together span all directions missing from the submanifold. Test this at each point the family maps into the submanifold.
+
+**Problem.** For a jointly transverse smooth family on manifolds without boundary, almost every parameter gives a transverse map. The exceptional parameters form a set of measure zero in local coordinates.
+
+**How the definition helps.** Joint transversality makes the full inverse image a manifold on which we can project to the parameter (our own). At a regular projection value, source directions alone supply all missing directions (our own). Sard’s theorem says the other parameter values have measure zero (our own). A family constantly equal to zero in ℝ fails transversality to the point zero for every parameter (our own).
+
+**nLab:** [transversal maps](https://ncatlab.org/nlab/show/transversal+maps). It says: “the differentials of f and g in these points span the entire tangent space at z in the sense that”
+
+**Sources:**
+
+- [Victor Guillemin and Alan Pollack, Differential Topology](https://web.math.ucsb.edu/~bigelow/books/guillemin_pollack.pdf)
+
+### Properness makes regular fiber counts locally constant
+
+**Remember:** Compact preimages keep extra inverse images from slipping away.
+
+*Rules out counterexamples.* MSC 57R35 (Differentiable mappings in differential topology). arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** A smooth map is proper if the inverse image of every compact set is compact. For manifolds of equal dimension, a value is regular if the derivative is invertible at every preimage.
+
+**Problem.** For a proper smooth map between manifolds of equal dimension without boundary, the number of preimages is finite and constant near each regular value.
+
+**How the definition helps.** Properness makes the discrete regular fiber compact, so finitely many local inverses cover it (our own). The complement of their open patches has closed image because the map is proper (our own). Avoiding that image excludes extra preimages nearby (our own). Without properness, t ↦ (cos t, sin t) on (0, 4π) hits (1, 0) once and nearby circle points twice (our own).
+
+**nLab:** [local diffeomorphism](https://ncatlab.org/nlab/show/local+diffeomorphism). It says: “f restricted to U is a diffeomorphism onto its image”
+
+**Sources:**
+
+- [John Milnor, Topology from the Differentiable Viewpoint](https://people.dm.unipi.it/benedett/MILNOR-TDVPOINT.pdf)
+
+### Regular values need not be hit for Sard’s theorem
+
+**Remember:** No preimages means no critical preimages.
+
+*Makes the theorem clean to state or prove.* MSC 57R35 (Differentiable mappings in differential topology), 58K05. arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** A target point is a regular value if the derivative maps onto the target tangent space at every preimage. A point outside the image satisfies this condition because it has no preimages.
+
+**Problem.** Every nonempty open part of the target contains a regular value of a smooth map between manifolds without boundary. If the source has lower dimension than the target, every regular value lies outside the image.
+
+**How the definition helps.** The definition counts every point that the map misses as regular (our own). Sard’s theorem supplies the hard part by showing that the critical values have measure zero (our own). With an image-only definition, even the inclusion of a line into a plane would have no regular values (our own).
+
+**nLab:** [Sard's theorem](https://ncatlab.org/nlab/show/Sard%27s+theorem). It says: “Then the set of critical values in N is a meager subset (alias first category subset) and a negligible subset (alias measure zero subset) of N.”
+
+**Paper or page:** [Generalizing Andreev's Theorem via circle patterns](https://arxiv.org/abs/2308.14386v2). It says: “has zero measure in N.”
+
+**Sources:**
+
+- [John Milnor, Topology from the Differentiable Viewpoint](https://people.dm.unipi.it/benedett/MILNOR-TDVPOINT.pdf)
+- [Arthur Sard, The measure of the critical values of differentiable maps (1942)](https://doi.org/10.1090/S0002-9904-1942-07811-6)
+
+### Regular values rule out crossing level sets
+
+**Remember:** Full rank makes a level set a coordinate slice.
+
+*Rules out counterexamples.* MSC 57R35 (Differentiable mappings in differential topology), 58A05. arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** A target point is a regular value if the derivative maps onto its whole tangent space at each preimage. The fiber is the set of all those preimages.
+
+**Problem.** For a smooth map between manifolds without boundary, each nonempty regular fiber is an embedded submanifold, locally a coordinate slice. Its dimension equals the source dimension minus the target dimension.
+
+**How the definition helps.** The rank condition lets the map serve as a coordinate projection near the fiber (our own). The inverse function theorem supplies those coordinates (our own). For a counterexample without the condition, the zero fiber of (x, y) ↦ xy is two crossing axes (our own).
+
+**nLab:** [regular value](https://ncatlab.org/nlab/show/regular+value). It says: “at a regular value q ∈ Y is a smooth manifold of X.”
+
+**Paper or page:** [Diffgeo: Manifolds](https://venhance.github.io/napkin/Napkin.pdf). It says: “Then M is a manifold of dimension n−m.”
+
+**Sources:**
+
+- [Victor Guillemin and Alan Pollack, Differential Topology](https://web.math.ucsb.edu/~bigelow/books/guillemin_pollack.pdf)
+
+### Regularity on the boundary rules out touching fibers
+
+**Remember:** Check the rank again using only boundary directions.
+
+*Rules out counterexamples. Confidence: medium.* MSC 57R35 (Differentiable mappings in differential topology), 57R40. arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** A target point is regular for a map if the derivative maps onto the target tangent space at every preimage. Regularity for the boundary restriction requires this even when only vectors tangent to the boundary are used.
+
+**Problem.** Let a smooth map have a source with boundary and a target without boundary. A nonempty fiber regular for both the map and its boundary restriction is an embedded manifold with boundary exactly on the source boundary.
+
+**How the definition helps.** Surjectivity along the boundary lets the map be a projection without using the half-space coordinate (our own). The inverse function theorem supplies those coordinates (our own). Without the boundary condition, the zero fiber of y − x² on y ≥ 0 touches the edge but has no boundary there (our own).
+
+**Paper or page:** [Bounded domains in the 3-dimensional space](https://arxiv.org/abs/2511.01278v1). It says: “the inverse image F⁻¹(z) is the domain with boundary (F\|∂M)⁻¹(z).”
+
+**Sources:**
+
+- [John Milnor, Topology from the Differentiable Viewpoint](https://people.dm.unipi.it/benedett/MILNOR-TDVPOINT.pdf)
+
+### Transversality gives intersections the expected dimension
+
+**Remember:** Spanning tangent spaces make codimensions add.
+
+*Rules out counterexamples.* MSC 57R35 (Differentiable mappings in differential topology), 57R40. arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** Two embedded submanifolds meet transversely if their tangent spaces together span the ambient tangent space at every common point. Codimension is the ambient dimension minus the submanifold dimension.
+
+**Problem.** In a smooth manifold without boundary, a nonempty transverse intersection of two embedded submanifolds without boundary is an embedded submanifold. Its codimension is the sum of their codimensions.
+
+**How the definition helps.** Transversality keeps the two sets of local defining equations independent at every common point (our own). The regular value theorem then gives one dimension lost per equation (our own). Without transversality, the surfaces z = 0 and z = xy meet in two crossing lines (our own).
+
+**Wikipedia:** [Transversality](https://en.wikipedia.org/wiki/Transversality). It says: “their separate tangent spaces at that point together generate the tangent space of the ambient manifold at that point”
+
+**Sources:**
+
+- [Victor Guillemin and Alan Pollack, Differential Topology](https://web.math.ucsb.edu/~bigelow/books/guillemin_pollack.pdf)
+
+### Closed embedded submanifolds admit smooth extensions
+
+**Remember:** Blend extensions with weights that stay inside their patches.
+
+*Rules out counterexamples.* MSC 57R40 (Embeddings in differential topology), 58A05. arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** An embedded submanifold looks in local coordinates like a slice where some coordinates vanish. It is closed if its complement is open in the ambient manifold.
+
+**Problem.** Every smooth real function on an embedded submanifold without boundary extends smoothly to the ambient manifold if the submanifold is closed as a subset.
+
+**How the definition helps.** Closedness supplies an open patch for every point outside the submanifold (our own). Extend the function in each slice chart by ignoring the extra coordinates, and use zero on the open complement (our own). A smooth partition of unity blends these extensions with locally finite weights summing to one and supported inside the patches (our own). Without closedness, 1 ÷ x on (0, 1) cannot extend continuously to ℝ (our own).
+
+**nLab:** [partition of unity](https://ncatlab.org/nlab/show/partition+of+unity). It says: “Paracompact smooth manifolds admit locally finite smooth partitions of unity subordinate to any open cover”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Second countability excludes the long line from the embedding theorem
+
+**Remember:** Every Euclidean subspace has a countable base.
+
+*Rules out counterexamples.* MSC 57R40 (Embeddings in differential topology), 58A05. arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** A space is second countable if it has a countable family of open sets whose unions give every open set. Smooth manifolds require this property, local Euclidean coordinates and disjoint neighborhoods for distinct points.
+
+**Problem.** Every finite-dimensional smooth manifold without boundary admits a smooth embedding into some Euclidean space. An embedding identifies the manifold smoothly with a submanifold carrying the topology inherited from that space.
+
+**How the definition helps.** The countable base rules out the long line, which has smooth local charts but no countable base (our own). Every Euclidean subspace inherits a countable base from rational balls (our own). Whitney’s embedding theorem carries the work of constructing an embedding under the manifold assumptions (our own).
+
+**nLab:** [Whitney embedding theorem](https://ncatlab.org/nlab/show/Whitney+embedding+theorem). It says: “It is easier to see that every smooth manifold embeds into the Euclidean space of some dimension”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Slice charts make smooth graphs embedded submanifolds
+
+**Remember:** Subtract the graph height to get a flat slice.
+
+*True by definition.* MSC 57R40 (Embeddings in differential topology), 58A05. arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** An embedded submanifold is a subset that ambient coordinates turn locally into a slice. In a slice, the extra coordinates are all zero.
+
+**Problem.** The graph of a smooth map between manifolds without boundary is an embedded submanifold of their product. Projection onto the source gives a smooth bijection with smooth inverse.
+
+**How the definition helps.** Subtracting the map in target coordinates turns its graph into a zero slice (our own). Adding the map back gives a smooth inverse to that coordinate change (our own). The constant rank theorem supplies the general equivalence of the slice and embedding definitions (our own).
+
+**nLab:** [submanifold](https://ncatlab.org/nlab/show/submanifold). It says: “For each point σ ∈ Σ there is a coordinate chart”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Tangent-map degree makes turning number invariant through immersed curves
 
 **Remember:** Nonzero velocity keeps the unit tangent map defined throughout the deformation.
@@ -302,6 +1042,22 @@
 **How the definition helps.** The degree definition gives invariance because a deformation through immersions continuously deforms the unit velocity map. Degree is constant under such a deformation. With the signed-curvature definition, our own comparison is that you must relate the integral to the net change in tangent angle. The work shifts to degree invariance and the agreement of the definitions. The converse is the hard direction of the Whitney–Graustein theorem, which classifies these immersions by turning number.
 
 **Wikipedia:** [Regular homotopy](https://en.wikipedia.org/wiki/Regular_homotopy). It says: “two immersions are regularly homotopic if and only if they have the same turning number – equivalently, total curvature; equivalently, if and only if their Gauss maps have the same degree/winding number.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The critical point condition makes the Hessian intrinsic
+
+**Remember:** Zero first derivatives remove the extra terms.
+
+*Rules out counterexamples.* MSC 57R70 (Critical points and critical submanifolds in differential topology), 58A05. arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** A critical point of a smooth real function is a point where its first derivative vanishes. In local coordinates, the Hessian matrix lists the second partial derivatives.
+
+**Problem.** At a critical point, the Hessian matrices in different coordinates represent the same symmetric bilinear form on tangent vectors. They have the same counts of positive and negative eigenvalues.
+
+**How the definition helps.** At a critical point, the zero first derivative cancels the extra term in the second derivative chain rule (our own calculation). The remaining term changes both vector inputs by the same invertible linear map. Equality of mixed partials gives symmetry, and Sylvester’s law of inertia preserves the sign counts. At zero, f(x) = x has second derivative zero in x but two in y when x = y + y².
+
+**nLab:** [Hessian](https://ncatlab.org/nlab/show/Hessian). It says: “descends to the tangent space at x, and is pronounced as the Hessian of φ at the critical point x.”
 
 **Sources:** none listed. No primary source with a working link was found.
 

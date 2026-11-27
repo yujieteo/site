@@ -14,6 +14,94 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### An extra parity bit separates single and double errors
+
+**Remember:** Extend to even weight, so a distance of three becomes four.
+
+*Rules out counterexamples.* MSC 94B05 (Linear codes (general theory)). arXiv cs.IT. Level 1: early undergraduate.
+
+**Definition.** In a binary Hamming code the smallest number of positions separating two codewords is three. Its extension appends one bit to make the number of ones even.
+
+**Problem.** The extended code can correct every single flip and report every double flip as an error.
+
+**How the definition helps.** Even parity makes each distance even, so every distance of three becomes four (our own argument). Larger distances cannot shrink. A single flip leaves exactly one codeword within one flip. Two flips leave none there, so the decoder reports an error.
+
+**Wikipedia:** [Hamming code](https://en.wikipedia.org/wiki/Hamming_code). It says: “Thus the decoder can detect and correct a single error and at the same time detect (but not correct) a double error.”
+
+**Sources:**
+
+- [Richard W. Hamming, Error Detecting and Error Correcting Codes (1950)](https://doi.org/10.1002/j.1538-7305.1950.tb00463.x)
+
+### Even parity detects exactly the odd numbers of bit flips
+
+**Remember:** Each flip toggles parity, and two toggles cancel.
+
+*Rules out counterexamples.* MSC 94B05 (Linear codes (general theory)). arXiv cs.IT. Level 1: early undergraduate.
+
+**Definition.** Define an even parity code by appending one bit to make the sum of all bits even. Check a received word by adding all its bits modulo two.
+
+**Problem.** An even parity code detects a pattern of bit flips exactly when the number of flips is odd.
+
+**How the definition helps.** Every bit flip switches the sum between even and odd (our own argument). Starting from an even sum, the check fails exactly after an odd number of flips. Two flips can change 000 into the accepted word 110.
+
+**Wikipedia:** [Parity bit](https://en.wikipedia.org/wiki/Parity_bit). It says: “the parity bit is selected so the total number of set bits (including the parity bit) is even”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The lightest nonzero word gives a linear code’s distance
+
+**Remember:** Subtract one codeword to turn a pair into a single nonzero word.
+
+*True by definition.* MSC 94B05 (Linear codes (general theory)). arXiv cs.IT. Level 1: early undergraduate.
+
+**Definition.** A linear code is a vector space of words over a finite field. A word’s weight counts its nonzero entries. Define the distance between two words as the weight of their difference.
+
+**Problem.** In a linear code containing two or more words, the smallest distance between distinct words equals the smallest weight of a nonzero codeword.
+
+**How the definition helps.** The differences between distinct codewords are exactly the nonzero codewords (our own argument). Subtraction stays inside the code, and every nonzero word is its own difference from zero. The distance agrees with counting mismatches because subtraction gives zero exactly where the symbols agree.
+
+**Wikipedia:** [Linear code](https://en.wikipedia.org/wiki/Linear_code). It says: “The non-zero codeword with the smallest weight has then the minimum distance to the zero codeword, and hence determines the minimum distance of the code.”
+
+**Paper or page:** [Minimum Distance of Linear Code is Smallest Weight of Non-Zero Codeword](https://proofwiki.org/wiki/Minimum_Distance_of_Linear_Code_is_Smallest_Weight_of_Non-Zero_Codeword). It says: “where w u denotes the weight of u.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Single edits make Hamming distance a metric
+
+**Remember:** Joining two replacement paths gives a path between their endpoints.
+
+*True by definition.* MSC 94B25 (Combinatorial codes). arXiv math.CO, cs.IT. Level 1: early undergraduate.
+
+**Definition.** The Hamming distance between two strings of equal length is the fewest single-symbol replacements that turn one into the other.
+
+**Problem.** Hamming distance is a metric. In particular, passing through a third string cannot shorten the distance.
+
+**How the definition helps.** Joining two sequences of replacements proves the triangle inequality (our own argument). Reversing a sequence preserves its length, and zero replacements work exactly when the strings agree. This agrees with counting mismatches because each differing position needs one replacement.
+
+**Paper or page:** [Hamming Distance is Distance Function](https://proofwiki.org/wiki/Hamming_Distance_is_Distance_Function). It says: “Then d defines a distance function in the sense of a metric space.”
+
+**Sources:**
+
+- [Richard W. Hamming, Error Detecting and Error Correcting Codes (1950)](https://doi.org/10.1002/j.1538-7305.1950.tb00463.x)
+
+### Odd repetition makes majority decoding unambiguous
+
+**Remember:** An odd number of binary votes always has a majority.
+
+*Rules out counterexamples.* MSC 94B30 (Majority codes), 94B05. arXiv cs.IT. Level 1: early undergraduate.
+
+**Definition.** An odd binary repetition code sends a bit as 2t + 1 copies, where t is a nonnegative integer. Majority decoding chooses the more frequent bit.
+
+**Problem.** Every received word is within t flips of exactly one word of the odd binary repetition code. Majority vote finds that word.
+
+**How the definition helps.** Odd length guarantees that one bit occurs at least t + 1 times (our own argument). Changing at most t bits therefore reaches its repeated word, while reaching the other takes at least t + 1 changes. With four copies, 0011 ties.
+
+**nLab:** [error correcting code](https://ncatlab.org/nlab/show/error+correcting+code). It says: “The simplest example is the repetition code, where the inclusion is the diagonal on the n-fold Cartesian product”
+
+**Wikipedia:** [Repetition code](https://en.wikipedia.org/wiki/Repetition_code). It says: “If the length of a binary repetition code is odd, then it's a perfect code.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Averaged conditional entropy makes the chain rule an identity
 
 **Remember:** Learn X first, then pay only for what remains of Y.
@@ -27,6 +115,90 @@
 **How the definition helps.** Because p(x,y) = p(x)p(y\|x), the logarithm splits into two terms, and taking expectations gives the chain rule at once. The entropy of Y given one fixed value of X satisfies no such rule (our own). The page warns that this one-value entropy can exceed H(Y), while the average never does.
 
 **Wikipedia:** [Conditional entropy](https://en.wikipedia.org/wiki/Conditional_entropy). It says: “The chain rule follows from the above definition of conditional entropy”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Block surprisal turns typicality into a sample average
+
+**Remember:** An independent block’s surprise is the sum of its symbols’ surprises.
+
+*True by definition.* MSC 94A17 (Measures of information, entropy). arXiv cs.IT. Level 2: later undergraduate.
+
+**Definition.** The surprisal of an observed block is −log₂ of its probability. Dividing by the block length gives the surprisal per symbol. Entropy is the mean surprisal of one symbol.
+
+**Problem.** For independent draws from the same finite source, the surprisal per symbol converges in probability to the entropy. For every positive tolerance, the chance of a larger deviation tends to zero.
+
+**How the definition helps.** Taking logarithms converts the product of symbol probabilities into a sum of individual surprisals (our own argument). Dividing by length gives their sample mean. The weak law of large numbers gives the limit without estimating individual block probabilities.
+
+**Wikipedia:** [Asymptotic equipartition property](https://en.wikipedia.org/wiki/Asymptotic_equipartition_property). It says: “The weak law of large numbers gives the asymptotic equipartition property with convergence in probability,”
+
+**Paper or page:** [Khinchin's Law](https://proofwiki.org/wiki/Khinchin's_Law). It says: “where ⟶ᵖ denotes convergence in probability.”
+
+**Sources:**
+
+- [Claude E. Shannon, A Mathematical Theory of Communication (1948)](https://people.math.harvard.edu/~ctm/home/text/others/shannon/entropy/entropy.pdf)
+
+### Conditional divergences make the relative entropy chain rule add
+
+**Remember:** Split the joint probability ratio into a marginal ratio and a conditional ratio.
+
+*Makes the theorem clean to state or prove.* MSC 94A17 (Measures of information, entropy). arXiv cs.IT. Level 2: later undergraduate.
+
+**Definition.** For positive probability laws p and q on a finite set, relative entropy averages log₂(p/q) under p. Conditional relative entropy compares two joint laws of X and Y. It averages the relative entropies between the conditional laws of Y, weighting each X by its probability under the first law.
+
+**Problem.** The relative entropy of two joint laws equals that of their X marginals plus their conditional relative entropy for Y given X.
+
+**How the definition helps.** Weighting by the first law makes the conditional term exactly the remainder after removing the contribution from X (our own argument). Factor each joint probability into the probability of X times the conditional probability of Y. Taking logarithms and averaging gives the two terms.
+
+**nLab:** [relative entropy](https://ncatlab.org/nlab/show/relative+entropy). It says: “S(p/q) := ∑ₖ₌₁ⁿ pₖ(log pₖ − log qₖ).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Conditional entropy turns mixing into an entropy increase
+
+**Remember:** With the label hidden, the outcome cannot get easier to predict.
+
+*True by definition.* MSC 94A17 (Measures of information, entropy). arXiv cs.IT. Level 2: later undergraduate.
+
+**Definition.** A mixture first chooses a label at random, then draws an outcome from the finite distribution with that label. The conditional entropy given the label is the weighted average of the component entropies.
+
+**Problem.** The entropy of a mixture of finite probability laws is at least the weighted average of their entropies.
+
+**How the definition helps.** The label turns the mixture bound into the inequality that conditioning cannot increase entropy on average (our own argument). Hiding the label gives the mixture entropy, and revealing it gives the weighted average.
+
+**Wikipedia:** [Entropy (information theory)](https://en.wikipedia.org/wiki/Entropy_%28information_theory%29). It says: “is concave in the probability mass function p”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Conditional information makes the mutual information chain rule telescope
+
+**Remember:** The entropy after the first observation cancels.
+
+*True by definition.* MSC 94A17 (Measures of information, entropy). arXiv cs.IT. Level 2: later undergraduate.
+
+**Definition.** For finite random variables, mutual information measures the drop in the entropy of X after observing Y. Conditional mutual information measures the further drop after observing Z as well.
+
+**Problem.** Information about X from the pair (Y, Z) equals information from Y plus information from Z given Y.
+
+**How the definition helps.** Adding the two drops cancels the entropy after observing Y (our own argument). Only the initial entropy and the entropy after both observations remain. The entropy chain rule identifies these drops with the usual mean log probability ratios.
+
+**Wikipedia:** [Conditional mutual information](https://en.wikipedia.org/wiki/Conditional_mutual_information). It says: “The chain rule (as derived above) provides two ways to decompose I(X;Y,Z):”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Cross entropy measures the cost of using the wrong probabilities
+
+**Remember:** Wrong probabilities add relative entropy to the average log cost.
+
+*True by definition.* MSC 94A17 (Measures of information, entropy). arXiv cs.IT. Level 2: later undergraduate.
+
+**Definition.** For finite probability laws p and q, cross entropy averages the cost −log₂ q(x) over draws from p. A possible outcome with q(x) = 0 has infinite cost. Using p for the prediction gives the entropy of p.
+
+**Problem.** The cross entropy of finite laws p and q equals the entropy of p plus the relative entropy from p to q. It equals the entropy of p only when q = p.
+
+**How the definition helps.** Subtracting the mean cost under correct predictions leaves the mean log₂ ratio p(x)/q(x) (our own argument). This is relative entropy, with infinite value when a possible outcome receives zero probability. Gibbs’ inequality gives the equality condition.
+
+**Wikipedia:** [Cross-entropy](https://en.wikipedia.org/wiki/Cross-entropy). It says: “H(p, q) = H(p) + Dₖₗ(p ∥ q),”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -132,6 +304,26 @@
 
 - [Shannon, C. E. (1948). A mathematical theory of communication. Bell System Technical Journal 27, 379–423.](https://doi.org/10.1002/j.1538-7305.1948.tb01338.x)
 
+### Normalizing the convex function makes relative entropy nonnegative
+
+**Remember:** Subtract the tangent at one to make every term nonnegative.
+
+*True by definition.* MSC 94A17 (Measures of information, entropy). arXiv cs.IT. Level 2: later undergraduate.
+
+**Definition.** For finite probability laws p and strictly positive q, define relative entropy as the sum of q times f(p/q) over outcomes. Use f(t) = t ln t − t + 1, with f(0) = 1.
+
+**Problem.** Relative entropy is nonnegative and is zero exactly when the two laws agree.
+
+**How the definition helps.** The adjusted function makes every summand nonnegative (our own argument). Strict convexity puts t ln t above its tangent t − 1 except at one. The adjustment leaves the usual log-ratio sum unchanged because both probability laws sum to one.
+
+**nLab:** [relative entropy](https://ncatlab.org/nlab/show/relative+entropy). It says: “S(p/q) := ∑ₖ₌₁ⁿ pₖ(log pₖ − log qₖ).”
+
+**Wikipedia:** [Kullback–Leibler divergence](https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence). It says: “Relative entropy is always non-negative”
+
+**Sources:**
+
+- [Solomon Kullback and Richard A. Leibler, On Information and Sufficiency (1951)](https://doi.org/10.1214/aoms/1177729694)
+
 ### The convention 0 log 0 = 0 makes entropy continuous
 
 **Remember:** An outcome that never happens adds no uncertainty.
@@ -145,6 +337,22 @@
 **How the definition helps.** The convention fills the only gap in the formula with its limit value, so entropy has no exceptions at the boundary of the simplex. Without it, the entropy of a point mass would be undefined (our own). The fact that entropy is zero exactly for a certain outcome would then need special cases (our own).
 
 **Wikipedia:** [Entropy (information theory)](https://en.wikipedia.org/wiki/Entropy_%28information_theory%29). It says: “the value of the corresponding summand ... is taken to be 0, which is consistent with the limit”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The uniform law turns an entropy bound into nonnegative divergence
+
+**Remember:** Subtract entropy from log₂ n to measure departure from uniformity.
+
+*True by definition.* MSC 94A17 (Measures of information, entropy). arXiv cs.IT. Level 2: later undergraduate.
+
+**Definition.** For probabilities p on n outcomes, entropy is the mean of −log₂ p over outcomes with positive probability. Relative entropy to the uniform law is the mean of log₂(np) over those same draws.
+
+**Problem.** Entropy on n outcomes is at most log₂ n bits. Equality holds exactly for the uniform law.
+
+**How the definition helps.** The constant reference probability turns relative entropy into exactly log₂ n minus entropy (our own argument). Gibbs’ inequality makes this gap nonnegative and gives equality exactly when the two laws agree.
+
+**Wikipedia:** [Entropy (information theory)](https://en.wikipedia.org/wiki/Entropy_%28information_theory%29). It says: “Uniform probability yields maximum uncertainty and therefore maximum entropy.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -181,6 +389,24 @@
 **Sources:**
 
 - [C. E. Shannon, A Mathematical Theory of Communication, Bell System Technical Journal 27 (1948)](https://doi.org/10.1002/j.1538-7305.1948.tb01338.x)
+
+### The information maximum gives a short channel coding converse
+
+**Remember:** Each use conveys at most C bits about the message.
+
+*Makes the theorem clean to state or prove.* MSC 94A24 (Coding theorems (Shannon theory)), 94A17. arXiv cs.IT. Level 2: later undergraduate.
+
+**Definition.** For a finite channel, mutual information measures how much observing the output reduces uncertainty about the input, in bits. Define information capacity C as the maximum of this quantity over input distributions.
+
+**Problem.** On a finite memoryless channel, codes sending equally likely messages at a fixed rate above C bits per use cannot achieve vanishing average error.
+
+**How the definition helps.** Maximizing over input laws gives the same upper bound C at every use (our own argument). Memorylessness means each output depends only on its own input. The entropy chain rule then bounds the information conveyed in n uses by nC. Fano’s inequality implies that vanishing error would require at least the message rate in bits of information per use in the limit.
+
+**Wikipedia:** [Noisy-channel coding theorem](https://en.wikipedia.org/wiki/Noisy-channel_coding_theorem). It says: “If R &gt; C, an arbitrarily small probability of error is not achievable.”
+
+**Sources:**
+
+- [Claude E. Shannon, A Mathematical Theory of Communication (1948)](https://people.math.harvard.edu/~ctm/home/text/others/shannon/entropy/entropy.pdf)
 
 ### Arithmetic codes as grid intervals stay within two bits of entropy
 
@@ -234,6 +460,22 @@
 
 - [Shannon, C. E. (1948). A mathematical theory of communication. Bell System Technical Journal 27, 379–423.](https://doi.org/10.1002/j.1538-7305.1948.tb01338.x)
 
+### Equal column sums let uniform input reach channel capacity
+
+**Remember:** Row symmetry fixes the noise entropy, and column symmetry makes the output uniform.
+
+*Rules out counterexamples. Confidence: medium.* MSC 94A40 (Channel models (including quantum) in information and communication theory), 94A17. arXiv cs.IT. Level 2: later undergraduate.
+
+**Definition.** A finite channel gives a row of output probabilities for each input. It is weakly symmetric if each row rearranges the same probabilities and all column sums are equal.
+
+**Problem.** A weakly symmetric channel with m possible outputs has capacity log₂ m minus the entropy of one row.
+
+**How the definition helps.** Row permutations fix the average noise entropy, and equal column sums make the output uniform under uniform input (our own argument). Uniform output attains the maximum entropy log₂ m. Maximizing output entropy minus noise entropy therefore gives the stated capacity. Two identical rows (¾, ¼) have zero capacity and show why the column condition matters.
+
+**Wikipedia:** [Binary symmetric channel](https://en.wikipedia.org/wiki/Binary_symmetric_channel). It says: “a uniform probability distribution of the input results in a uniform probability distribution of the output.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Erasure markers give capacity directly
 
 **Remember:** A visible erasure either loses the whole bit or loses nothing.
@@ -268,6 +510,40 @@
 
 - [B. McMillan, Two inequalities implied by unique decipherability, IRE Transactions on Information Theory 2 (1956)](https://doi.org/10.1109/TIT.1956.1056818)
 
+### Normalizing code lengths gives the entropy lower bound
+
+**Remember:** Normalize the code weights to split the excess length into two nonnegative terms.
+
+*True by definition.* MSC 94A45 (Prefix, length-variable, comma-free codes), 94A17. arXiv cs.IT. Level 2: later undergraduate.
+
+**Definition.** A binary prefix code has no codeword that begins with another codeword. Give each codeword of length ℓ the weight one half raised to the power ℓ. Divide each weight by their sum S to obtain probabilities q.
+
+**Problem.** For a finite source, every binary prefix code has mean length at least the source entropy in bits.
+
+**How the definition helps.** Normalization turns each length into −log₂ q minus log₂ S (our own argument). The mean length therefore exceeds entropy by the relative entropy from the source to q plus −log₂ S. Gibbs’ inequality makes the first term nonnegative, and Kraft’s inequality gives S ≤ 1.
+
+**Wikipedia:** [Kraft–McMillan inequality](https://en.wikipedia.org/wiki/Kraft%E2%80%93McMillan_inequality). It says: “it must have total measure less than or equal to one.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Rounding each surprise up keeps code length within one bit
+
+**Remember:** Round each surprise upward by less than one bit.
+
+*True by definition.* MSC 94A45 (Prefix, length-variable, comma-free codes), 94A17. arXiv cs.IT. Level 2: later undergraduate.
+
+**Definition.** For each symbol of a finite source, its surprise is −log₂ p bits, where p is its probability. Assume at least two symbols and positive probabilities throughout. A Shannon code assigns each symbol a length equal to its surprise rounded upward to an integer.
+
+**Problem.** A Shannon code exists with these lengths. Its mean length is at least the source entropy and less than the entropy plus one bit.
+
+**How the definition helps.** Rounding adds at least zero and less than one bit to each surprise (our own argument). Taking the mean preserves both bounds because entropy is the mean surprise. Each rounded length has binary weight at most p, so Kraft’s theorem supplies a prefix code.
+
+**Wikipedia:** [Shannon coding](https://en.wikipedia.org/wiki/Shannon_coding). It says: “Here ⌈x⌉ denotes the ceiling function (which rounds x up to the next integer value).”
+
+**Sources:**
+
+- [Claude E. Shannon, A Mathematical Theory of Communication (1948)](https://people.math.harvard.edu/~ctm/home/text/others/shannon/entropy/entropy.pdf)
+
 ### Trees make Huffman merging optimal
 
 **Remember:** Merge the two lightest leaves, then solve the smaller tree.
@@ -286,6 +562,58 @@
 
 - [David A. Huffman, A Method for the Construction of Minimum-Redundancy Codes (1952)](https://doi.org/10.1109/JRPROC.1952.273898)
 
+### A Diffie–Hellman mask makes ElGamal decrypt by cancellation
+
+**Remember:** Derive the same group element, then divide it out.
+
+*True by definition.* MSC 94A60 (Cryptography). arXiv cs.CR. Level 2: later undergraduate.
+
+**Definition.** In ElGamal encryption, the recipient publishes gˣ in a cyclic group generated by g and keeps x secret. The sender chooses a fresh exponent r and sends gʳ together with the group message multiplied by (gˣ)ʳ.
+
+**Problem.** ElGamal decryption recovers every message in the group by multiplying the masked message by the inverse mask.
+
+**How the definition helps.** Viewing the ciphertext as a message times a shared mask reduces decryption to cancellation (our own argument). The recipient computes the mask as (gʳ)ˣ. Diffie–Hellman agreement identifies this with (gˣ)ʳ, and multiplication by its inverse recovers the message.
+
+**Wikipedia:** [ElGamal encryption](https://en.wikipedia.org/wiki/ElGamal_encryption). It says: “and thus it is the same shared secret that was used by Bob in encryption.”
+
+**Sources:**
+
+- [Taher Elgamal, A Public Key Cryptosystem and a Signature Scheme Based on Discrete Logarithms (1985)](https://doi.org/10.1109/TIT.1985.1057074)
+
+### A uniform fresh key makes an additive pad perfectly secret
+
+**Remember:** Adding a fixed message only rearranges the equally likely keys.
+
+*Rules out counterexamples.* MSC 94A60 (Cryptography). arXiv cs.CR, cs.IT. Level 2: later undergraduate.
+
+**Definition.** An additive pad encrypts a message by adding a key in a finite abelian group. The key is independent of the message. A one-time pad chooses the key uniformly and uses it once.
+
+**Problem.** An additive pad has perfect secrecy for every message distribution exactly when its key is uniform. Perfect secrecy means that observing the ciphertext leaves the message probabilities unchanged.
+
+**How the definition helps.** Adding a message permutes the keys, so a uniform key produces uniform ciphertext for every message (our own argument). Conversely, take every message to have positive probability. Secrecy makes all translations of the key distribution identical, forcing all key values to have equal probability.
+
+**Wikipedia:** [One-time pad](https://en.wikipedia.org/wiki/One-time_pad). It says: “the ciphertext C gives absolutely no additional information about the plaintext.”
+
+**Sources:**
+
+- [Claude E. Shannon, Communication Theory of Secrecy Systems (1949)](https://doi.org/10.1002/j.1538-7305.1949.tb00928.x)
+
+### Exponent classes make discrete logarithms single valued and additive
+
+**Remember:** Products of group elements add their exponent classes.
+
+*True by definition.* MSC 94A60 (Cryptography). arXiv cs.CR. Level 2: later undergraduate.
+
+**Definition.** In a finite cyclic group, fix an element g whose powers give the whole group. Define the discrete logarithm as the exponent class modulo the group size n, rather than as an unrestricted integer exponent.
+
+**Problem.** Every element has exactly one discrete logarithm class. The logarithm of a product is the sum of the logarithms modulo n.
+
+**How the definition helps.** Exponent classes identify exactly the integers that give the same power (our own argument). Indeed, two powers agree exactly when the generator raised to the difference is the identity, which requires a multiple of n. The product law for powers now gives addition modulo n.
+
+**Wikipedia:** [Discrete logarithm](https://en.wikipedia.org/wiki/Discrete_logarithm). It says: “logᵦ a is unique only up to congruence modulo n”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Perfect hiding rules out perfect binding
 
 **Remember:** Identical commitment laws cannot have disjoint supports.
@@ -301,6 +629,26 @@
 **Wikipedia:** [Commitment scheme](https://en.wikipedia.org/wiki/Commitment_scheme). It says: “no commitment scheme can be at the same time perfectly binding and perfectly hiding”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Prime field coordinates make RSA decryption work for every message
+
+**Remember:** In each field, the powers undo each other and leave zero unchanged.
+
+*True by definition.* MSC 94A60 (Cryptography). arXiv cs.CR. Level 2: later undergraduate.
+
+**Definition.** Represent a residue modulo pq by its two remainders modulo distinct primes p and q. Define the RSA maps by powering both coordinates with e for encryption and d for decryption. Choose positive e and d so ed is one modulo both p − 1 and q − 1.
+
+**Problem.** RSA decryption recovers every residue modulo pq, including messages with a common factor with pq.
+
+**How the definition helps.** Prime coordinates separate the zero case from the nonzero case (our own argument). Zero stays zero under positive powers. For each nonzero coordinate, Fermat’s little theorem makes the combined power ed act as the identity. The Chinese remainder theorem identifies the coordinate pair with a unique residue modulo pq.
+
+**Wikipedia:** [RSA cryptosystem](https://en.wikipedia.org/wiki/RSA_cryptosystem). It says: “it suffices (and in fact is equivalent) to check that they are congruent mod p and mod q separately.”
+
+**Paper or page:** [Fermat's Little Theorem](https://proofwiki.org/wiki/Fermat's_Little_Theorem). It says: “nᵖ⁻¹ ≡ 1 mod p”
+
+**Sources:**
+
+- [R. L. Rivest, A. Shamir and L. Adleman, A Method for Obtaining Digital Signatures and Public-Key Cryptosystems (1978)](https://people.csail.mit.edu/rivest/Rsapaper.pdf)
 
 ### Zero-information secrecy needs at least as much key entropy as message entropy
 
@@ -355,6 +703,38 @@
 **Sources:**
 
 - [Mark N. Wegman and J. Lawrence Carter, New hash functions and their use in authentication and set equality (1981)](https://doi.org/10.1016/0022-0000(81)90033-7)
+
+### An identity block gives parity checks without solving equations
+
+**Remember:** The check matrix subtracts the extra symbols the message predicts.
+
+*True by definition.* MSC 94B05 (Linear codes (general theory)). arXiv cs.IT. Level 2: later undergraduate.
+
+**Definition.** A systematic encoder sends a message row u to the word (u, uP) over a finite field. Its check matrix is \[−Pᵀ \| I\], where Pᵀ is the transpose of P and I is the identity matrix.
+
+**Problem.** A row word belongs to this code exactly when multiplying it by the transposed check matrix gives zero.
+
+**How the definition helps.** For a word (u, v), the check computes v − uP (our own argument). It vanishes exactly when v contains the extra symbols prescribed by the encoder. Row reduction supplies systematic coordinates for a general linear code.
+
+**Wikipedia:** [Linear code](https://en.wikipedia.org/wiki/Linear_code). It says: “H = \[−Pᵀ \| Iₙ₋ₖ\] is a check matrix for C.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### An identity block lets systematic codes reveal their messages
+
+**Remember:** An identity block copies the message into the codeword.
+
+*True by definition. Confidence: medium.* MSC 94B05 (Linear codes (general theory)). arXiv cs.IT. Level 2: later undergraduate.
+
+**Definition.** A generator matrix encodes a message row by matrix multiplication. A systematic generator starts with an identity block, which copies the message into the first positions.
+
+**Problem.** Every linear code admits a systematic generator after a suitable reordering of positions. The first positions of an uncorrupted codeword then give the original message.
+
+**How the definition helps.** The identity block copies each message symbol directly (our own argument). For a general generator with independent rows, row reduction makes the pivot columns an identity matrix. Row operations preserve the code, and reordering moves those columns to the front.
+
+**Paper or page:** [Standard Generator Matrix for Linear Code/Examples/(3, 2) code in Z2](https://proofwiki.org/wiki/Standard_Generator_Matrix_for_Linear_Code/Examples/(3,_2)_code_in_Z2). It says: “G generates the linear code C:”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Codes as check-matrix kernels have distance equal to the fewest dependent columns
 
@@ -456,6 +836,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Ordering Hamming checks by field powers makes shifts preserve the code
+
+**Remember:** One position forward is multiplication by the same field element.
+
+*True by definition.* MSC 94B05 (Linear codes (general theory)). arXiv cs.IT. Level 2: later undergraduate.
+
+**Definition.** For r ≥ 2, label the coordinates by the nonzero elements of the field with 2ʳ elements. The binary Hamming code contains the words whose labels at positions containing ones sum to zero. Order the labels as successive powers of a generator of the nonzero elements.
+
+**Problem.** Every binary Hamming code is cyclic after a suitable reordering of its coordinates.
+
+**How the definition helps.** A cyclic shift multiplies every label by the same generator, so a zero sum stays zero (our own argument). The last label wraps around because the next power is one. The finite-field theorem supplies a generator, and writing the labels as binary vectors gives the usual Hamming check columns.
+
+**nLab:** [Hamming code](https://ncatlab.org/nlab/show/Hamming+code). It says: “A certain class of linear codes used for error correction in communication protocols.”
+
+**Wikipedia:** [Cyclic code](https://en.wikipedia.org/wiki/Cyclic_code). It says: “any binary Hamming code of the form Ham(r, 2) is equivalent to a cyclic code,”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Reed–Solomon codes as polynomial evaluations have distance n − k + 1
 
 **Remember:** Two low-degree polynomials agree only at roots of their difference.
@@ -474,6 +872,22 @@
 
 - [Irving S. Reed and Gustave Solomon, Polynomial Codes Over Certain Finite Fields (1960)](https://doi.org/10.1137/0108018)
 
+### A complementary factor gives one polynomial test for cyclic codes
+
+**Remember:** The check factor completes the generator to a multiple of the modulus.
+
+*True by definition.* MSC 94B15 (Cyclic codes), 94B05. arXiv cs.IT. Level 2: later undergraduate.
+
+**Definition.** A length-n cyclic code over a finite field consists of multiples of g modulo xⁿ − 1. Its check factor h satisfies gh = xⁿ − 1.
+
+**Problem.** A word polynomial c belongs to the cyclic code exactly when c times h has remainder zero modulo xⁿ − 1.
+
+**How the definition helps.** The check replaces division by g with multiplication by its complementary factor (our own argument). If c = ag, then ch = a(xⁿ − 1). Conversely, ch = a(xⁿ − 1) gives ch = agh, and cancellation gives c = ag. The generator theorem supplies g from the usual definition by cyclic shifts.
+
+**Wikipedia:** [Cyclic code](https://en.wikipedia.org/wiki/Cyclic_code). It says: “This must be a divisor of xⁿ − 1.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Cyclic codes as polynomial ideals have unique monic generators
 
 **Remember:** Rotating a word multiplies its polynomial by x.
@@ -487,6 +901,38 @@
 **How the definition helps.** As an ideal, the code lifts to an ideal of the polynomial ring. The division algorithm shows that this ideal has one monic generator. This lifted ideal contains xⁿ − 1, so the generator divides xⁿ − 1. The work goes into the agreement of the two definitions. Rotation is multiplication by x, so closure under rotation and linearity gives closure under all polynomial multiples. The proof and the comparison are our own; the quote only says that cyclic codes link to ideals.
 
 **Wikipedia:** [Cyclic code](https://en.wikipedia.org/wiki/Cyclic_code). It says: “Cyclic codes can be linked to ideals in certain rings.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Polynomial generators make cyclic code dimensions a degree count
+
+**Remember:** Count the coefficients in the multiplier, not the codewords.
+
+*True by definition.* MSC 94B15 (Cyclic codes), 94B05. arXiv cs.IT. Level 2: later undergraduate.
+
+**Definition.** Over a finite field, represent each length-n word by its coefficient polynomial of degree below n, allowing the zero polynomial. A cyclic code consists of multiples of a generator g modulo xⁿ − 1, where g divides xⁿ − 1.
+
+**Problem.** If g has degree d, a cyclic code of length n has dimension n − d.
+
+**How the definition helps.** The polynomial description gives one free coefficient for each possible multiplier degree below n − d (our own argument). Reducing a multiple modulo xⁿ − 1 preserves divisibility by g. Ordinary polynomial division then recovers the unique multiplier. The generator theorem converts the usual definition by closure under cyclic shifts into this description.
+
+**Wikipedia:** [Cyclic code](https://en.wikipedia.org/wiki/Cyclic_code). It says: “If the generator polynomial g has degree d then the rank of the code C is n−d.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Reversing the check factor generates the dual cyclic code
+
+**Remember:** Reversal turns coefficient matching into multiplication.
+
+*True by definition.* MSC 94B15 (Cyclic codes), 94B05. arXiv cs.IT. Level 2: later undergraduate.
+
+**Definition.** A cyclic code over a finite field has a generator g dividing xⁿ − 1. Its dual consists of the words whose dot product with every codeword is zero. The reciprocal of h = (xⁿ − 1)/g reverses the order of its coefficients.
+
+**Problem.** The dual is cyclic, and its generator is the reciprocal of h scaled to have leading coefficient one.
+
+**How the definition helps.** Reversing one word turns dot products with every cyclic shift into coefficients of one polynomial product (our own argument). Thus b belongs to the dual exactly when g(x)b(x⁻¹) vanishes modulo xⁿ − 1. Cancelling g before taking remainders says that b(x⁻¹) belongs to the multiples of h. Substituting x⁻¹ again reverses h up to a power of x, which is invertible modulo xⁿ − 1.
+
+**Wikipedia:** [Cyclic code](https://en.wikipedia.org/wiki/Cyclic_code). It says: “If C is a cyclic code, the dual code C⊥ is also a cyclic code.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -508,6 +954,40 @@
 
 - [W. W. Peterson and D. T. Brown, Cyclic Codes for Error Detection (1961)](https://doi.org/10.1109/JRPROC.1961.287814)
 
+### A factor of x plus one catches every odd bit error
+
+**Remember:** At x = 1, a binary polynomial reports its parity.
+
+*Rules out counterexamples.* MSC 94B20 (Burst-correcting codes), 94B05. arXiv cs.IT. Level 2: later undergraduate.
+
+**Definition.** A cyclic redundancy check treats bits as polynomial coefficients and adds them modulo two. The check accepts exactly the multiples of a chosen generator polynomial.
+
+**Problem.** A cyclic redundancy check with generator divisible by x + 1 detects every odd number of bit flips.
+
+**How the definition helps.** A generator with factor x + 1 forces every accepted polynomial to vanish at one (our own argument). An odd number of flipped coefficients changes that value by one, so the received word fails. Without this factor the generator itself has odd weight and passes undetected as an error whenever it fits the block.
+
+**Wikipedia:** [Cyclic redundancy check](https://en.wikipedia.org/wiki/Cyclic_redundancy_check). It says: “which adds to the code the ability to detect all errors affecting an odd number of bits.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A lightest error in each coset gives nearest decoding
+
+**Remember:** Find the lightest possible error, then subtract it.
+
+*True by definition.* MSC 94B35 (Decoding), 94B05. arXiv cs.IT. Level 2: later undergraduate.
+
+**Definition.** A coset is the set formed by adding one fixed word to every word of a linear code. Choose a coset leader of least weight in each coset, with weight counting nonzero symbols.
+
+**Problem.** Subtracting the leader of a received word’s coset gives a nearest codeword. Tied leaders may give different nearest codewords.
+
+**How the definition helps.** The coset lists exactly the errors obtained by subtracting each possible sent codeword from the received word (our own argument). Error weight counts changed positions, so minimizing weight selects a nearest codeword. Choosing one leader in advance settles ties and avoids repeating the search.
+
+**Wikipedia:** [Standard array](https://en.wikipedia.org/wiki/Standard_array). It says: “Choose any vector of minimum weight not already in the array.”
+
+**Paper or page:** [Element of Group is in Unique Coset of Subgroup/Left](https://proofwiki.org/wiki/Element_of_Group_is_in_Unique_Coset_of_Subgroup/Left). It says: “Let H be a subgroup of G.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Error locators linearize Reed–Solomon decoding
 
 **Remember:** Multiply by a polynomial that vanishes at every error.
@@ -521,6 +1001,22 @@
 **How the definition helps.** The error locator makes the fitting equations linear in the unknown coefficients. Our own proof takes E as the product of the linear factors at the error positions and sets N = Ef. For any solution, N − Ef has degree below k + t and at least n − t ≥ k + t distinct roots. Hence N = Ef, and every nonzero solution has E nonzero.
 
 **Paper or page:** [Code-based Cryptography: Lecture Notes](https://arxiv.org/abs/2304.03541v1). It says: “Then, N₁/E₁ = N₂/E₂ = f.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Rare independent bit flips make nearest decoding most likely
+
+**Remember:** When flips are rare, every extra difference makes a candidate less likely.
+
+*Rules out counterexamples.* MSC 94B35 (Decoding), 94B05. arXiv cs.IT. Level 2: later undergraduate.
+
+**Definition.** A binary symmetric channel flips each transmitted bit independently with probability p. Assume 0 &lt; p &lt; ½ and equally likely codewords.
+
+**Problem.** Given the received word, the most probable sent codewords are exactly those differing from it in the fewest positions.
+
+**How the definition helps.** Each extra mismatch multiplies the probability of the observed word by p/(1 − p), which is below one (our own argument). Equal prior probabilities make this ranking apply to the sent codewords after observation. At p = ½ every candidate ties, and above ½ the ranking reverses.
+
+**Wikipedia:** [Binary symmetric channel](https://en.wikipedia.org/wiki/Binary_symmetric_channel). It says: “D is called a maximum likelihood decoding function.”
 
 **Sources:** none listed. No primary source with a working link was found.
 

@@ -1,3 +1,71 @@
+### A product integrating factor turns a first-order recurrence into a sum
+
+**Remember:** Divide by the accumulated product to make the differences telescope.
+
+*True by definition.* MSC 39A06 (Linear difference equations). arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** For y(n+1) = a(n)y(n)+b(n), suppose each a(n) is nonzero. Let P(n) be the product of the first n multipliers, starting with a(0), and set P(0) = 1. The integrating factor is 1/P(n).
+
+**Problem.** The solution satisfies y(n)/P(n) = y(0) plus the sum of b(k)/P(k+1) over 0 ≤ k &lt; n.
+
+**How the definition helps.** Dividing by the accumulated product turns repeated substitution into addition. In our own proof, P(n+1) = a(n)P(n), so y(n+1)/P(n+1)−y(n)/P(n) equals b(n)/P(n+1). Adding these identities cancels every intermediate value.
+
+**Wikipedia:** [Recurrence relation](https://en.wikipedia.org/wiki/Recurrence_relation). It says: “the sum becomes an integral, and the product becomes the exponential function of an integral”
+
+**Sources:**
+
+- [Saber Elaydi, An Introduction to Difference Equations, 3rd ed., chapters 1–3](https://link.springer.com/book/10.1007/0-387-27602-5)
+
+### A reduced denominator gives the shortest eventual recurrence
+
+**Remember:** Cancel first to find the actual recurrence order.
+
+*True by definition.* MSC 39A06 (Linear difference equations), 05A15. arXiv math.CO, math.CA. Level 2: later undergraduate.
+
+**Definition.** For a sequence over a field with rational generating function, its reduced denominator is Q in P/Q after cancellation, normalized by Q(0) = 1. Its eventual recurrence order is the smallest lag bound in a homogeneous constant-coefficient recurrence valid from some index onward.
+
+**Problem.** The eventual recurrence order equals the degree of the reduced denominator Q. Degree zero means the sequence is eventually zero.
+
+**How the definition helps.** Cancellation leaves only the factors every recurrence must contain. In our own proof, a polynomial D with D(0) = 1 gives such a recurrence exactly when D times the series is a polynomial. Comparing coefficients gives this equivalence. Since P and Q share no factor, the condition holds exactly when Q divides D.
+
+**Wikipedia:** [Linear recurrence with constant coefficients](https://en.wikipedia.org/wiki/Linear_recurrence_with_constant_coefficients). It says: “can be expressed as a rational function”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Binomial basis shifts solve resonant exponential forcing
+
+**Remember:** Raise the binomial index by the multiplicity of the root.
+
+*True by definition.* MSC 39A06 (Linear difference equations). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** Let S shift a sequence forward one place, and let μ be a nonzero root of multiplicity r of a polynomial P. Replace the ordinary powers multiplying μⁿ by binomial coefficients, giving basis sequences bⱼ(n) = μⁿ times n choose j.
+
+**Problem.** Let q be a polynomial of degree at most d. Then P(S)y = μⁿq(n) has exactly one solution in the span of the basis elements with indices r through r+d.
+
+**How the definition helps.** Pascal’s identity makes S−μ lower the binomial index by one and multiply by μ, with b₀ sent to zero. In our own proof, applying this r times maps the proposed span bijectively onto the span with indices 0 through d. Write P(z) = (z−μ)ʳQ(z). On the smaller span Q(S) is triangular with nonzero diagonal Q(μ), hence invertible.
+
+**Paper or page:** [Algebraic Modification of the Method of Undetermined Coefficients For Solving Nonhomogeneous Linear Difference Equations](https://arxiv.org/abs/2307.07182v1). It says: “and is of multiplicity m, then the particular solution”
+
+**Sources:**
+
+- [Timofey Lomonosov, Algebraic Modification of the Method of Undetermined Coefficients For Solving Nonhomogeneous Linear Difference Equations](https://arxiv.org/abs/2307.07182v1)
+
+### Coprime characteristic factors split recurrence solutions into separate parts
+
+**Remember:** Split the polynomial into coprime factors to split its solutions.
+
+*True by definition.* MSC 39A06 (Linear difference equations). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** For sequences over a field, define the forward shift by (Sy)(n) = y(n+1). A polynomial P in this shift represents the constant-coefficient recurrence P(S)y = 0.
+
+**Problem.** Suppose P = QR, where the polynomials Q and R share no nonconstant factor. Every solution of P(S)y = 0 splits uniquely into solutions killed by Q(S) and R(S), respectively.
+
+**How the definition helps.** The shift turns a recurrence written term by term into an operator to which polynomial identities apply. In our own proof, the Euclidean algorithm gives UQ+VR = 1. Substituting S splits y into V(S)R(S)y and U(S)Q(S)y, killed respectively by Q(S) and R(S). The same identity sends any common solution to zero, proving uniqueness.
+
+**Wikipedia:** [Linear recurrence with constant coefficients](https://en.wikipedia.org/wiki/Linear_recurrence_with_constant_coefficients). It says: “the coefficients determine the characteristic polynomial”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Divided differences include equal parameters
 
 **Remember:** Use the polynomial, and equal parameters need no separate case.
@@ -30,6 +98,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Invertible steps make one Casoratian test enough
+
+**Remember:** An invertible step cannot erase independence.
+
+*Rules out counterexamples.* MSC 39A06 (Linear difference equations). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** Call a second-order recurrence y(n+2) = a(n)y(n+1)+b(n)y(n) nondegenerate if every b(n) is nonzero. The Casoratian of two solutions is the determinant of their two columns of values at n and n+1.
+
+**Problem.** Two solutions of a nondegenerate recurrence are linearly independent exactly when their Casoratian is nonzero at some index. In that case it is nonzero at every index.
+
+**How the definition helps.** Each step multiplies the Casoratian by −b(n), so a nonzero determinant stays nonzero in both directions. In our own proof, two starting values determine a solution, making independence at the starting index the usual determinant test. For y(n+2) = 0, even independent starting columns both become zero after two steps.
+
+**Paper or page:** [On Positivity and Minimality for Second-Order Holonomic Sequences](https://arxiv.org/abs/2007.12282v1). It says: “uₙvₙ₋₁ − uₙ₋₁vₙ = (u₀v₋₁ − u₋₁v₀)∏ₖ₌₁ⁿ (−aₖ)”
+
+**Sources:**
+
+- [Saber Elaydi, An Introduction to Difference Equations, 3rd ed., chapters 1–3](https://link.springer.com/book/10.1007/0-387-27602-5)
+
 ### Nonresonance makes polynomial forcing solvable
 
 **Remember:** Nonresonance keeps the solution in the same polynomial space as the forcing.
@@ -61,6 +147,40 @@
 **How the definition helps.** Taking polynomial coefficients gives one basis even when the repeated root is zero. In our own construction, shifting n multiplies (r + t)ⁿ by r + t, so S − rI sends uⱼ to uⱼ₋₁, with u₋₁ = 0. After d repetitions, each uⱼ with j &lt; d becomes zero, so it is a solution. Their first d values form a triangular matrix with ones on the diagonal, so they realize all initial values.
 
 **Wikipedia:** [Linear recurrence with constant coefficients](https://en.wikipedia.org/wiki/Linear_recurrence_with_constant_coefficients). It says: “the terms in this formula corresponding to the second and later occurrences of the same root are multiplied by increasing powers of n.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Transition matrices turn variable forcing into a sum of propagated inputs
+
+**Remember:** Move each input forward from the step when it arrives.
+
+*True by definition.* MSC 39A06 (Linear difference equations). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** For matrices A(n), define the transition matrix T(n,k) as A(n−1)⋯A(k) when n &gt; k, and the identity when n = k. It carries a state at step k to step n when there is no forcing.
+
+**Problem.** The solution of x(n+1) = A(n)x(n)+b(n) equals T(n,0)x(0) plus the sum of T(n,k+1)b(k) over 0 ≤ k &lt; n. No step matrix needs an inverse.
+
+**How the definition helps.** The ordered product records all later steps acting on one input, replacing repeated expansion of the recurrence. In our own proof, multiplying by A(n) advances every older contribution by one step. The new input enters with the identity matrix, which completes the induction.
+
+**Wikipedia:** [Recurrence relation](https://en.wikipedia.org/wiki/Recurrence_relation). It says: “with state vector x and transition matrix A”
+
+**Sources:**
+
+- [Saber Elaydi, An Introduction to Difference Equations, 3rd ed., chapters 1–3](https://link.springer.com/book/10.1007/0-387-27602-5)
+
+### Step partial sums turn weighted sums into one integral
+
+**Remember:** The weight changes on each step while the partial sum stays fixed.
+
+*True by definition.* MSC 39A12 (Discrete version of topics in analysis). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** For integers m &lt; n and values b(m+1), …, b(n), define the step function B(t) by adding b(k) over m &lt; k ≤ t. Its jump at k equals b(k).
+
+**Problem.** For continuously differentiable v on \[m,n\], the sum of b(k)v(k) over m &lt; k ≤ n equals B(n)v(n)−∫ₘⁿ B(t)v′(t) dt.
+
+**How the definition helps.** Extending partial sums as constant steps turns the integral on each interval into one difference of weights. In our own proof, the interval from k to k+1 contributes B(k)(v(k+1)−v(k)). Collecting the coefficients of v(k) gives the jumps of B and the final endpoint term.
+
+**Paper or page:** [On certain harmonic zeta functions](https://arxiv.org/abs/2403.07123v1). It says: “If {b₁,b₂,b₃,…} is a sequence of complex numbers and v(x) is a function with a continuous derivative for x &gt; α”
 
 **Sources:** none listed. No primary source with a working link was found.
 

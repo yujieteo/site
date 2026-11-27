@@ -100,6 +100,22 @@
 
 - [Wacław Sierpiński. Sur les fonctions d'ensemble additives et continues. Fundamenta Mathematicae 3 (1922), 240–246.](https://doi.org/10.4064/fm-3-1-240-246)
 
+### Carathéodory measurability includes every set of outer measure zero
+
+**Remember:** Removing an outer-null subset cannot change outer measure.
+
+*Rules out counterexamples.* MSC 28A12 (Contents, measures, outer measures, capacities). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** A set E is measurable for an outer measure if it splits every test set T additively. The outer measures of T ∩ E and T ∖ E must sum to that of T.
+
+**Problem.** The measure obtained by restricting an outer measure to its Carathéodory measurable sets is complete. That is, every subset of a measurable set of measure zero is measurable.
+
+**How the definition helps.** Every subset of an outer-null set passes the splitting test (our own). Its contribution is zero by monotonicity, and subadditivity shows that removing it cannot lower the outer measure (our own). A Borel-only definition misses some subsets of the measure-zero Cantor set (our own). Carathéodory’s theorem shows that the sets passing the test carry a measure (our own).
+
+**Paper or page:** [Measure Space arising from Outer Measure is Complete](https://proofwiki.org/wiki/Measure_Space_arising_from_Outer_Measure_is_Complete). It says: “is a complete measure space.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Carathéodory's measurability condition builds additivity into the definition
 
 **Remember:** A measurable set cuts every other set into two pieces whose sizes add up.
@@ -135,6 +151,38 @@
 **Sources:**
 
 - [H. Lebesgue, Intégrale, Longueur, Aire, Annali di Matematica Pura ed Applicata 7 (1902)](https://doi.org/10.1007/BF02420592)
+
+### Countable additivity gives continuity along increasing sets
+
+**Remember:** Split an increasing union into the pieces that enter at each step.
+
+*True by definition.* MSC 28A12 (Contents, measures, outer measures, capacities). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** A measure assigns nonnegative values, possibly infinite, to measurable sets and assigns zero to the empty set. On every countable disjoint union it adds the values of the pieces.
+
+**Problem.** For increasing measurable sets, the measure of their union is the limit of their measures, including an infinite limit.
+
+**How the definition helps.** Countable additivity turns the union into a sum whose partial sums are the measures of the increasing sets (our own). Each piece consists of the points that first enter at that step (our own). Conversely, finite additivity and continuity along increasing sets give countable additivity by taking successive finite unions of disjoint sets (our own).
+
+**Paper or page:** [Measure of Limit of Increasing Sequence of Measurable Sets](https://proofwiki.org/wiki/Measure_of_Limit_of_Increasing_Sequence_of_Measurable_Sets). It says: “Then: μ(E) = limₙ→∞ μ(Eₙ)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Countable additivity keeps the cover construction from lowering a premeasure
+
+**Remember:** A cover cannot cost less than the set it covers.
+
+*Rules out counterexamples.* MSC 28A12 (Contents, measures, outer measures, capacities). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** An algebra of sets contains the whole space and is closed under complements and finite unions. A premeasure assigns nonnegative values, possibly infinite, to its sets and assigns zero to the empty set. It adds the values of countably many disjoint sets whenever their union belongs to the algebra.
+
+**Problem.** The outer measure obtained by taking the infimum of total premeasure over countable covers agrees with the premeasure on the algebra.
+
+**How the definition helps.** Countable additivity bounds the cost from below after splitting the covered set into disjoint pieces, one per covering set (our own). Covering the set by itself gives the other bound (our own). For a counterexample, assign zero to finite subsets of ℕ and one to their complements (our own). This rule is finitely additive, but the singleton cover gives ℕ cost zero instead of one (our own).
+
+**Paper or page:** [Induced Outer Measure Restricted to Semiring is Pre-Measure](https://proofwiki.org/wiki/Induced_Outer_Measure_Restricted_to_Semiring_is_Pre-Measure). It says: “Then: μ∗∣𝒮 = μ”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Countable covers give the rationals measure zero, unlike Jordan content
 
@@ -209,6 +257,22 @@
 
 - [F. Hausdorff, Dimension und äußeres Maß, Mathematische Annalen 79 (1918)](https://doi.org/10.1007/BF01457179)
 
+### Open box covers give regularity of Lebesgue measure
+
+**Remember:** Combine an almost cheapest cover into one open set.
+
+*True by definition.* MSC 28A12 (Contents, measures, outer measures, capacities). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** Define Lebesgue outer measure by the infimum of total volumes of countable open box covers. Lebesgue measure agrees with outer measure on measurable sets.
+
+**Problem.** For each Lebesgue measurable set in ℝⁿ, its measure equals the infimum of the measures of its open supersets. It also equals the supremum of the measures of its compact subsets.
+
+**How the definition helps.** Every open box cover gives an open superset whose measure cannot exceed the cover cost (our own). Taking the infimum gives outer regularity directly, once the construction theorem identifies the box formula with Lebesgue measure (our own). Inside a closed bounded box, cover the complement by an open set of nearly the same measure (our own). What remains is compact, and increasing the boxes recovers the full measure (our own).
+
+**Wikipedia:** [Lebesgue measure](https://en.wikipedia.org/wiki/Lebesgue_measure). It says: “If A is a Lebesgue-measurable set, then it is "approximately open" and "approximately closed" in the sense of Lebesgue measure.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Right continuity gives Stieltjes measures
 
 **Remember:** Match right continuity with intervals that include their right endpoints.
@@ -238,6 +302,56 @@
 **How the definition helps.** Translating a cover by intervals gives a cover of the translated set with the same total length, so the infimum does not change. This argument is our own; the nLab gives only the cover formula. With the abstract extension, one instead needs the theorem that measures agreeing on intervals agree on Borel sets, in our own account. In both constructions, the real work is proving that Borel sets are measurable and that intervals get their length.
 
 **nLab:** [Lebesgue measure](https://ncatlab.org/nlab/show/Lebesgue+measure). It says: “\|B\| = inf {∑ⱼ₌₁∞ \|Iⱼ\| : B ⊆ ⋃ⱼ₌₁∞ Iⱼ}.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The cover formula gives the greatest outer measure below given costs
+
+**Remember:** Every cover bounds the measure from above.
+
+*True by definition. Confidence: medium.* MSC 28A12 (Contents, measures, outer measures, capacities). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** An outer measure assigns zero to the empty set, increases under inclusion, and bounds the measure of any countable union by the sum. Give each allowed covering set a nonnegative cost, with the empty set allowed at cost zero. The cover formula assigns each set the infimum of all countable cover costs, taking ∞ when no cover exists.
+
+**Problem.** The cover formula gives the greatest outer measure that is at most the given cost on each set in the family.
+
+**How the definition helps.** The infimum combines all the upper bounds that competing outer measures must obey (our own). Monotonicity and countable subadditivity bound each competitor by the cost of every cover (our own). Joining nearly cheapest covers proves countable subadditivity for the formula itself (our own). This constructs the greatest admissible outer measure without first finding the competing measures (our own).
+
+**Paper or page:** [Construction of Outer Measure](https://proofwiki.org/wiki/Construction_of_Outer_Measure). It says: “where the infimum of the empty set is +∞. Then μ∗ is an outer measure on X.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The cover formula gives the scaling law for Lebesgue measure
+
+**Remember:** Scaling the set scales every box in its cover.
+
+*True by definition.* MSC 28A12 (Contents, measures, outer measures, capacities). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** Define Lebesgue outer measure on ℝⁿ as the infimum of the total volumes of countable open box covers. Lebesgue measure agrees with outer measure on Lebesgue measurable sets.
+
+**Problem.** For every Borel set B in ℝⁿ and every t &gt; 0, Lebesgue measure satisfies λ(tB) = tⁿλ(B).
+
+**How the definition helps.** Dilation pairs the box covers in both directions and multiplies every box volume by tⁿ (our own). Taking the infimum therefore multiplies outer measure by tⁿ (our own). The construction theorem identifies this formula on Borel sets with the unique measure having the prescribed box volumes (our own).
+
+**nLab:** [Lebesgue measure](https://ncatlab.org/nlab/show/Lebesgue+measure). It says: “We define the Lebesgue outer measure as follows:”
+
+**Paper or page:** [Lebesgue Measure of Scalar Multiple](https://proofwiki.org/wiki/Lebesgue_Measure_of_Scalar_Multiple). It says: “Then: λⁿ(t · B) = tⁿ λⁿ(B)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Translation invariance and normalization make Lebesgue measure rotation invariant
+
+**Remember:** Compare the original and rotated measures on an unchanged ball.
+
+*True by definition.* MSC 28A12 (Contents, measures, outer measures, capacities). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** Define Borel Lebesgue measure as the translation-invariant Borel measure that gives the unit cube volume one. An equivalent construction uses covers by boxes with sides parallel to the axes.
+
+**Problem.** Every rotation or reflection about the origin preserves the Lebesgue measure of every Borel set in ℝⁿ.
+
+**How the definition helps.** An orthogonal map gives another translation-invariant measure and preserves the unit ball (our own). Uniqueness up to a constant makes the rotated measure a multiple of the original (our own). The unit ball has finite positive measure, so the factor is one (our own). The work goes into the uniqueness theorem, not into rotating axis-parallel box covers (our own).
+
+**Paper or page:** [Lebesgue Measure Invariant under Orthogonal Group](https://proofwiki.org/wiki/Lebesgue_Measure_Invariant_under_Orthogonal_Group). It says: “Then the pushforward measure M∗ λⁿ equals λⁿ.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -273,6 +387,104 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Completeness preserves measurability after changes on a null set
+
+**Remember:** A complete measure lets you change a function anywhere on a null set.
+
+*Rules out counterexamples.* MSC 28A20 (Measurable and nonmeasurable functions, sequences of measurable functions, modes of convergence), 28A12. arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** A complete measure makes every subset of a measurable set of measure zero measurable. An incomplete measure need not include those subsets in its domain.
+
+**Problem.** On a complete measure space, a real function that agrees with a measurable function outside a null set is measurable.
+
+**How the definition helps.** For each Borel set, its new inverse image combines the old inverse image outside the null set with a subset inside it (our own). Completeness makes that subset measurable (our own). Without completeness, the indicator of a nonmeasurable subset of a measurable null set agrees almost everywhere with zero (our own).
+
+**Wikipedia:** [Lebesgue measure](https://en.wikipedia.org/wiki/Lebesgue_measure). It says: “However, as a measure on only the Borel sets, it is not complete: a subset of a Borel set of measure zero need not itself be Borel.”
+
+**Paper or page:** [Function A.E. Equal to Measurable Function in Complete Measure Space is Measurable](https://proofwiki.org/wiki/Function_A.E._Equal_to_Measurable_Function_in_Complete_Measure_Space_is_Measurable). It says: “Then g is Σ-measurable.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Finite test sets give local convergence in measure
+
+**Remember:** Measure the bad sets one finite piece at a time.
+
+*Makes the theorem clean to state or prove.* MSC 28A20 (Measurable and nonmeasurable functions, sequences of measurable functions, modes of convergence). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** Local convergence in measure tests each measurable set of finite measure. On that set, the measure where the error exceeds any fixed positive threshold must tend to zero. Global convergence tests the whole space at once.
+
+**Problem.** Almost everywhere convergence of real measurable functions implies local convergence in measure on any measure space.
+
+**How the definition helps.** A finite test set lets us use continuity of measure for decreasing sets (our own). Within it, take the union of all error sets from index n onward (our own). These unions decrease to a null set, so their measures tend to zero (our own). On ℝ the indicators of \[n, n+1\] tend pointwise to zero, yet each interval has measure one (our own).
+
+**Wikipedia:** [Convergence in measure](https://en.wikipedia.org/wiki/Convergence_in_measure). It says: “if (fₙ) converges to f almost everywhere, then (fₙ) converges to f locally in measure.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Measurable level sets stay measurable under pointwise limits
+
+**Remember:** For a strict limit bound, leave a little room above the threshold.
+
+*True by definition.* MSC 28A20 (Measurable and nonmeasurable functions, sequences of measurable functions, modes of convergence). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** A real-valued function is measurable if every set where its value exceeds a rational threshold is measurable. This is equivalent to testing inverse images of all Borel sets.
+
+**Problem.** If real-valued measurable functions converge pointwise to a real-valued function, then their limit is measurable.
+
+**How the definition helps.** The threshold test expresses a limit level set using only countable unions and intersections (our own). The limit exceeds t exactly when all sufficiently late terms exceed some rational q &gt; t (our own). The generator theorem does the work of equating the threshold test with the test on all Borel sets (our own).
+
+**Paper or page:** [Pointwise Limit of Measurable Functions is Measurable](https://proofwiki.org/wiki/Pointwise_Limit_of_Measurable_Functions_is_Measurable). It says: “Then the pointwise limit limₙ→∞ fₙ: X → ℝ̄ is also Σ-measurable.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The subsequence test makes continuous functions preserve convergence in measure
+
+**Remember:** Follow each almost everywhere convergent subsequence through the continuous function.
+
+*True by definition.* MSC 28A20 (Measurable and nonmeasurable functions, sequences of measurable functions, modes of convergence). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** Convergence in measure means that for each positive threshold, the measure where the absolute error exceeds that threshold tends to zero. On a finite measure space, an equivalent test requires every subsequence to have a further subsequence converging to the same limit almost everywhere.
+
+**Problem.** On a finite measure space, suppose real measurable functions fₙ converge to a real function f in measure. For every continuous real function h, the functions h(fₙ) converge to h(f) in measure.
+
+**How the definition helps.** Continuity preserves ordinary limits at every point where the further subsequence converges (our own). The work moves to the subsequence criterion, which uses a choice of indices with summable error-set measures (our own). The usual definition instead tracks the measure of sets on which the error exceeds a fixed threshold (our own).
+
+**Wikipedia:** [Convergence in measure](https://en.wikipedia.org/wiki/Convergence_in_measure). It says: “converges to f locally in measure if and only if every subsequence has in turn a subsequence that converges to f almost everywhere.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Counting measure turns nonnegative series into integrals
+
+**Remember:** Counting measure gives each term of the series weight one.
+
+*Makes the theorem clean to state or prove.* MSC 28A25 (Integration with respect to measures and other set functions), 28A12. arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** Counting measure on ℕ gives a finite set its number of elements and an infinite set measure ∞. Each singleton thus has mass one.
+
+**Problem.** For any nonnegative function on ℕ, its integral for counting measure equals the sum of its values, even when the sum is infinite.
+
+**How the definition helps.** On a finite set, each value contributes exactly once because its singleton has mass one (our own). Monotone convergence does the work of passing from finite initial segments to the whole sum (our own).
+
+**Paper or page:** [Integral of Positive Function with respect to Counting Measure on Natural Numbers](https://proofwiki.org/wiki/Integral_of_Positive_Function_with_respect_to_Counting_Measure_on_Natural_Numbers). It says: “Then: ∫ f dμ = ∑ₙ₌₁<sup>∞</sup> f(n)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Differences of positive integrals make the signed integral linear
+
+**Remember:** Add the nonnegative pieces before subtracting their integrals.
+
+*True by definition.* MSC 28A25 (Integration with respect to measures and other set functions). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** For a real measurable f with finite integral of \|f\|, define ∫f as ∫f⁺ − ∫f⁻. Here f⁺ = max(f, 0) and f⁻ = max(−f, 0).
+
+**Problem.** The Lebesgue integral is linear on real integrable functions. If f = a − b with nonnegative integrable a and b, then ∫f = ∫a − ∫b.
+
+**How the definition helps.** Using arbitrary differences of nonnegative integrable functions avoids finding the positive and negative parts of each sum (our own). If f = a − b, then a + f⁻ = b + f⁺ (our own). Additivity for nonnegative integrals gives the same integral from either representation (our own). Add or scale the two terms separately, exchanging them when the scalar is negative (our own).
+
+**Paper or page:** [Integral of Integrable Function is Homogeneous](https://proofwiki.org/wiki/Integral_of_Integrable_Function_is_Homogeneous), [Integral of Integrable Function is Additive](https://proofwiki.org/wiki/Integral_of_Integrable_Function_is_Additive). It says: “Then λf is μ-integrable, and: ∫ λf dμ = λ ∫ f dμ”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Large-power norms find essential suprema
 
 **Remember:** Large powers detect every height that occurs on positive measure.
@@ -305,6 +517,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Testing a density on every measurable set makes it unique
+
+**Remember:** Test where one density is larger than the other.
+
+*Rules out counterexamples.* MSC 28A25 (Integration with respect to measures and other set functions), 28A12. arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** A density of a finite measure ν relative to μ is a nonnegative measurable function. Its integral over each measurable set equals the ν-measure of that set. Matching only the total mass does not define a density.
+
+**Problem.** Two densities of the same finite measure relative to the same measure μ are equal outside a μ-null set.
+
+**How the definition helps.** Testing where one density exceeds the other rules out a positive difference on a set of positive measure (our own). There the integrals agree and are finite, so the nonnegative difference vanishes almost everywhere (our own). Exchange the two densities to rule out the opposite difference (our own). Testing total mass alone would give the same answer for the indicators of either half of the unit interval (our own).
+
+**Paper or page:** [Radon-Nikodym Theorem](https://proofwiki.org/wiki/Radon-Nikodym_Theorem). It says: “then: g₁ = g₂ μ-almost everywhere.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The Lebesgue integral lets limits pass inside the integral
 
 **Remember:** Lebesgue slices the range, not the domain, so limits keep their integrals.
@@ -324,6 +552,70 @@
 - [H. Lebesgue, Intégrale, longueur, aire, Ann. Mat. Pura Appl. 7 (1902), 231–359, doi:10.1007/BF02420592](https://doi.org/10.1007/BF02420592)
 - [H. Lebesgue, Leçons sur l'intégration et la recherche des fonctions primitives, Gauthier-Villars, Paris, 1904](https://archive.org/details/leconegrarecher00leberich)
 
+### The lower-sum definition makes the Lebesgue integral monotone
+
+**Remember:** A higher function admits every lower test of a smaller one.
+
+*True by definition.* MSC 28A25 (Integration with respect to measures and other set functions). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** For a nonnegative measurable function, define its integral as the supremum of integrals of nonnegative simple functions below it. A simple function takes finitely many values, with a measurable set of points for each value.
+
+**Problem.** If nonnegative measurable functions f and g satisfy f ≤ g, then ∫f dμ ≤ ∫g dμ.
+
+**How the definition helps.** Every simple function below f also lies below g, so the supremum for g includes every test for f (our own). Defining the integral by limits instead requires proving that all increasing simple approximations give the same limit (our own).
+
+**Paper or page:** [Integral of Positive Measurable Function is Monotone](https://proofwiki.org/wiki/Integral_of_Positive_Measurable_Function_is_Monotone). It says: “This can be summarized by saying that ∫ · dμ is monotone.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The lower-test integral makes Markov’s bound a single comparison
+
+**Remember:** Use the threshold as a lower bound wherever the function reaches it.
+
+*True by definition.* MSC 28A25 (Integration with respect to measures and other set functions), 28A20. arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** For a nonnegative measurable function, the Lebesgue integral is the supremum of integrals of nonnegative simple functions below it. A simple function takes only finitely many values on measurable sets.
+
+**Problem.** For a nonnegative measurable function f and any t &gt; 0, the measure of {f ≥ t} is at most (∫f dμ)/t. In particular, convergence in Lᵖ implies convergence in measure for every finite p ≥ 1.
+
+**How the definition helps.** The function equal to t on {f ≥ t} and zero elsewhere is one of the simple functions below f (our own). Its integral already gives the required bound, without taking limits along simple approximations (our own). The equivalence of the two integral constructions justifies using either one (our own). Applying the bound to the pth power of the absolute error gives convergence in measure (our own).
+
+**Paper or page:** [Markov's Inequality](https://proofwiki.org/wiki/Markov's_Inequality). It says: “μ({x ∈ A : \|f(x)\| ≥ t}) ≤ (1/t) ∫ₐ \|f\| dμ”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Absolute integrability rules out conflicting orders in Fubini’s theorem
+
+**Remember:** Integrate the absolute value before trusting a change of order.
+
+*Rules out counterexamples.* MSC 28A35 (Measures and integrals in product spaces), 28A25. arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** A real measurable function is Lebesgue integrable if its absolute value has finite integral. A measure space is σ-finite if countably many sets of finite measure cover it.
+
+**Problem.** For an integrable function on a product of two σ-finite measure spaces, almost every slice in either direction is integrable. Both orders of integration give the integral over the product.
+
+**How the definition helps.** Absolute integrability makes both parts finite, so Tonelli’s theorem lets us integrate the positive and negative parts separately. On pairs of positive integers with counting measure, put 1 at (i,i), −1 at (i,i+1), and zero elsewhere (our own). Every row sums to zero, but the first column sums to one and all later columns sum to zero (our own).
+
+**Wikipedia:** [Fubini's theorem](https://en.wikipedia.org/wiki/Fubini%27s_theorem). It says: “Use the condition that the functions are integrable to write them as the difference of two positive integrable functions and apply Tonelli's theorem to each of these.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Measurable rectangles make every section of a product set measurable
+
+**Remember:** Taking a section commutes with complements and countable unions.
+
+*Rules out counterexamples.* MSC 28A35 (Measures and integrals in product spaces), 28A20. arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** The product σ-algebra is the smallest σ-algebra containing all rectangles with measurable sides. A σ-algebra is a nonempty family closed under complements and countable unions. A vertical section fixes the first coordinate.
+
+**Problem.** Every vertical or horizontal section of a set in the product σ-algebra is measurable in the corresponding factor.
+
+**How the definition helps.** Rectangles have measurable sections, and taking sections preserves complements and countable unions (our own). Thus the sets with measurable sections form a σ-algebra containing every rectangle (our own). Completion can break this conclusion for individual sections (our own). In the plane, every subset of a vertical line is Lebesgue measurable, even one whose vertical section is nonmeasurable (our own).
+
+**Paper or page:** [Vertical Section of Measurable Set is Measurable](https://proofwiki.org/wiki/Vertical_Section_of_Measurable_Set_is_Measurable). It says: “where Eₓ is the x-vertical section of E.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Requiring σ-finite measures makes Tonelli's theorem true
 
 **Remember:** σ-finite spaces can be cut into countably many finite pieces.
@@ -337,6 +629,24 @@
 **How the definition helps.** σ-finiteness rules out examples where the two iterated integrals differ. Take \[0, 1\] with Lebesgue measure and \[0, 1\] with counting measure, which is not σ-finite. The indicator of the diagonal x = y has iterated integral 0 in one order and 1 in the other. So no product measure can make Tonelli's theorem hold there.
 
 **Wikipedia:** [Fubini's theorem](https://en.wikipedia.org/wiki/Fubini%27s_theorem). It says: “This shows that Tonelli's theorem can fail for spaces that are not σ-finite no matter which product measure is chosen.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Testing box volumes identifies the product as Lebesgue measure
+
+**Remember:** A product of boxes is a box, and their volumes multiply.
+
+*True by definition.* MSC 28A35 (Measures and integrals in product spaces), 28A12. arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** Borel Lebesgue measure on Euclidean space is the unique measure that gives each half-open box its volume. A product measure gives a measurable rectangle the product of the measures of its sides.
+
+**Problem.** The product of Borel Lebesgue measures on ℝᵐ and ℝⁿ is Borel Lebesgue measure on ℝᵐ⁺ⁿ.
+
+**How the definition helps.** Each half-open box splits into a box in each factor, so the product measure gives it the prescribed volume (our own). Uniqueness from box volumes replaces a comparison of arbitrary box covers (our own). This uses the fact that the product of the Borel σ-algebras is the Euclidean Borel σ-algebra (our own).
+
+**Wikipedia:** [Product measure](https://en.wikipedia.org/wiki/Product_measure). It says: “the completion procedure is needed to extend the Borel measure into the Lebesgue measure, or to extend the product of two Lebesgue measures to give the Lebesgue measure on the product space.”
+
+**Paper or page:** [Existence and Uniqueness of Lebesgue Measure](https://proofwiki.org/wiki/Existence_and_Uniqueness_of_Lebesgue_Measure). It says: “Then Lebesgue measure, the extension of λⁿ to the Borel σ-algebra ℬ(ℝⁿ), exists and is unique.”
 
 **Sources:** none listed. No primary source with a working link was found.
 

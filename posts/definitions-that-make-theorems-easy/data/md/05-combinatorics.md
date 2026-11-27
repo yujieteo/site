@@ -48,6 +48,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Reading a permutation backward gives Eulerian symmetry
+
+**Remember:** Reading backward trades every fall for a rise.
+
+*True by definition.* MSC 05A05 (Permutations, words, matrices), 05A10. arXiv math.CO. Level 1: early undergraduate.
+
+**Definition.** A descent is a position whose next entry is smaller. Define A(n,k) to count permutations of the numbers 1 through n with exactly k descents.
+
+**Problem.** For n ≥ 1 and 0 ≤ k &lt; n, A(n,k) equals A(n,n − 1 − k).
+
+**How the definition helps.** Reversing a permutation exchanges its k descents with its n − 1 − k rises. Reversing again recovers the original permutation. In our own comparison, starting with the algebraic coefficients in Worpitzky’s identity requires proving that they count permutations by descents.
+
+**Wikipedia:** [Eulerian number](https://en.wikipedia.org/wiki/Eulerian_number). It says: “Fully reversing a permutation with k ascents creates another permutation in which there are n-k-1 ascents.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Binomial coefficients outside Pascal's triangle are zero
 
 **Remember:** There are no ways to choose −1 or n + 1 things from n things.
@@ -77,6 +93,40 @@
 **How the definition helps.** With the multiplicative definition, one formula covers both the finite binomial theorem and the infinite series. When α is a non-negative integer n, every term with k &gt; n contains the factor n − n = 0. So the series stops, and it gives the ordinary binomial theorem. For other α, for example α = −1, the series is truly infinite. Convergence for \|X\| &lt; 1 must still be proved separately (our own remark).
 
 **Wikipedia:** [Binomial coefficient](https://en.wikipedia.org/wiki/Binomial_coefficient). It says: “If α is a nonnegative integer n, then all terms with k &gt; n are zero, and the infinite series becomes a finite sum, thereby recovering the binomial formula.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Choosing letters makes the multinomial theorem a count of words
+
+**Remember:** Each factor chooses one letter, and the word records all choices.
+
+*True by definition.* MSC 05A10 (Factorials, binomial coefficients, combinatorial functions). arXiv math.CO. Level 1: early undergraduate.
+
+**Definition.** A multinomial coefficient counts words with specified numbers of copies of each letter. The factorial formula counts the same words by first treating all copies as distinct.
+
+**Problem.** In the nth power of a sum of distinct variables, each coefficient equals the multinomial coefficient for its exponents. The exponents are nonnegative integers with sum n.
+
+**How the definition helps.** Each factor supplies one letter, so its position in the word records exactly which variable we chose. In our own count, permuting identical letters leaves the word unchanged. Dividing n! by the factorial of each letter count therefore gives the coefficient.
+
+**nLab:** [multinomial coefficient](https://ncatlab.org/nlab/show/multinomial+coefficient). It says: “This number is the number of ways of drawing k₁ elements and then k₂ elements and so forth from n elements, all in an unordered way.”
+
+**Paper or page:** [Multinomial Theorem](https://proofwiki.org/wiki/Multinomial_Theorem). It says: “(n choose k₁, k₂, …, kₘ) = n!/(k₁! k₂! ⋯ kₘ!) denotes a multinomial coefficient.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Counting ordered blocks factors multinomial coefficients into binomial coefficients
+
+**Remember:** Choose each box from the elements that are still free.
+
+*True by definition.* MSC 05A10 (Factorials, binomial coefficients, combinatorial functions). arXiv math.CO. Level 1: early undergraduate.
+
+**Definition.** A multinomial coefficient counts divisions of a set into labeled boxes of specified sizes. Boxes may be empty.
+
+**Problem.** A multinomial coefficient is the product of the successive binomial coefficients for choosing each box from the elements still free.
+
+**How the definition helps.** Filling labeled boxes in order breaks one division into successive subset choices. Each binomial coefficient counts the choices for the next box. In our own argument, multiplying counts every division once because its boxes recover those choices. Using the factorial formula instead requires canceling the factorials of the remaining set sizes.
+
+**nLab:** [multinomial coefficient](https://ncatlab.org/nlab/show/multinomial+coefficient). It says: “This number is the number of ways of drawing k₁ elements and then k₂ elements and so forth from n elements, all in an unordered way.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -198,6 +248,22 @@
 
 - [Regula Krapf, Arrow-chasing in Pascal's triangle -- Visual proofs for summation formulas involving binomial coefficients](https://arxiv.org/abs/2508.16388)
 
+### Marking a member gives the binomial absorption identity
+
+**Remember:** Choose the member first or choose the subset first.
+
+*True by definition.* MSC 05A10 (Factorials, binomial coefficients, combinatorial functions), 05A19. arXiv math.CO. Level 1: early undergraduate.
+
+**Definition.** Define n choose k to count k-element subsets. A marked subset has one of its own elements singled out.
+
+**Problem.** For 1 ≤ k ≤ n, k times (n choose k) equals n times (n − 1 choose k − 1).
+
+**How the definition helps.** A marked subset can be chosen in either order. In our own count, choosing the subset first gives k possible marks. Choosing the mark first leaves k − 1 members to select from n − 1 elements. The factorial proof instead cancels the factors on both sides.
+
+**Wikipedia:** [Double counting (proof technique)](https://en.wikipedia.org/wiki/Double_counting_%28proof_technique%29). It says: “Double counting can also be used to prove the following identity related to binomial coefficient”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Setting 0! = 1 keeps the binomial formulas exact
 
 **Remember:** There is exactly one way to arrange nothing.
@@ -232,6 +298,22 @@
 
 - [D. E. Knuth, Two Notes on Notation, American Mathematical Monthly 99 (1992) 403–422](https://doi.org/10.1080/00029890.1992.11995869)
 
+### A fixed boundary edge turns triangulations into binary trees
+
+**Remember:** Follow the root triangle, then follow its two sides.
+
+*Makes the theorem clean to state or prove.* MSC 05A15 (Exact enumeration problems, generating functions). arXiv math.CO. Level 1: early undergraduate.
+
+**Definition.** A triangulation divides a convex polygon into triangles using diagonals that do not cross. Fix one boundary edge as the root and read the boundary clockwise. A full ordered binary tree has either no children or two ordered children at each vertex.
+
+**Problem.** For n ≥ 1, triangulations of a fixed convex polygon with n + 2 vertices correspond to full ordered binary trees with n branching vertices.
+
+**How the definition helps.** The triangle at the root edge gives two sides in boundary order, one for each child. In our own construction, continue into each smaller polygon and use a leaf for a side with no remaining triangle. In reverse, the number of branching vertices in the first subtree determines the third vertex along the boundary. Repeating this step recovers every diagonal.
+
+**Wikipedia:** [Catalan number](https://en.wikipedia.org/wiki/Catalan_number). It says: “The dark triangle is the root node, the light triangles correspond to internal nodes of the binary trees”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Balanced parentheses give the Catalan recurrence
 
 **Remember:** Split at the closing parenthesis that matches the very first opening.
@@ -261,6 +343,92 @@
 **How the definition helps.** The string definition makes every allocation a choice of bar positions (our own). The work lies in checking the correspondence in both directions, including empty runs at the ends and between two bars (our own).
 
 **Wikipedia:** [Stars and bars (combinatorics)](https://en.wikipedia.org/wiki/Stars_and_bars_%28combinatorics%29). It says: “In terms of configurations involving objects and bins, bins are now allowed to be empty.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Cycles give a short recurrence for derangements
+
+**Remember:** The marked element either pairs with one neighbor or joins a longer cycle.
+
+*Makes the theorem clean to state or prove.* MSC 05A15 (Exact enumeration problems, generating functions), 05A05. arXiv math.CO. Level 1: early undergraduate.
+
+**Definition.** A permutation rearranges a finite set. Following each element through repeated applications splits the set into loops called cycles. A derangement has no cycle of length one.
+
+**Problem.** Let D(n) count derangements of n elements, including D(0) = 1. For n ≥ 2, D(n) = (n − 1)(D(n − 2) + D(n − 1)).
+
+**How the definition helps.** The cycle containing a marked element tells us how to remove it while leaving a derangement. In our own proof, first choose its successor in n − 1 ways. For a two-element cycle, remove both elements and recover them by restoring the pair. For a longer cycle, remove only the marked element and recover it by inserting it before its chosen successor.
+
+**Paper or page:** [Recurrence Relation for Number of Derangements on Finite Set](https://proofwiki.org/wiki/Recurrence_Relation_for_Number_of_Derangements_on_Finite_Set). It says: “Dₙ = (n − 1)(Dₙ₋₁ + Dₙ₋₂) where D₁ = 0, D₂ = 1.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Derangements count permutations with exactly a given number of fixed points
+
+**Remember:** Choose exactly what stays, then move everything else.
+
+*Rules out counterexamples.* MSC 05A15 (Exact enumeration problems, generating functions), 05A05. arXiv math.CO. Level 1: early undergraduate.
+
+**Definition.** A fixed point is an element that a permutation leaves in place. A derangement has no fixed points. Write D(m) for the number of derangements on m elements, counting the empty permutation once.
+
+**Problem.** For 0 ≤ k ≤ n, exactly (n choose k) × D(n − k) permutations of n elements have k fixed points.
+
+**How the definition helps.** A derangement on the remaining elements guarantees that the selected points are the only fixed points. Each permutation determines its fixed points and its rearrangement of the rest. In our own example, fixing the first of three elements and allowing the identity on the other two would count three fixed points.
+
+**Wikipedia:** [Rencontres numbers](https://en.wikipedia.org/wiki/Rencontres_numbers). It says: “choose the k fixed points out of n”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Dyck paths give the Catalan formula by reflection
+
+**Remember:** Reflect the tail of each path that first steps above the diagonal.
+
+*Makes the theorem clean to state or prove.* MSC 05A15 (Exact enumeration problems, generating functions), 05A10. arXiv math.CO. Level 1: early undergraduate.
+
+**Definition.** A Dyck path runs from (0,0) to (n,n) using unit steps right or up and stays on or below the diagonal. The Catalan number C(n) counts these paths.
+
+**Problem.** For n ≥ 0, C(n) is (2n choose n) divided by n + 1.
+
+**How the definition helps.** The diagonal identifies exactly where to reflect a path that crosses it. Reflect the tail after its first visit to y = x + 1 across that line. Every path to (n − 1,n + 1) crosses that line, so the same reflection reverses the construction. In our own count, subtracting these paths gives the formula for n ≥ 1, and the empty path gives C(0) = 1.
+
+**nLab:** [Catalan number](https://ncatlab.org/nlab/show/Catalan+number). It says: “Cₙ = 1/(n+1) (2n choose n)”
+
+**Wikipedia:** [Catalan number](https://en.wikipedia.org/wiki/Catalan_number). It says: “The part of the bad path from P to (n, n) reflected across the line y = x + 1 is the rest of the reflected path.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Generating functions turn partial sums into a geometric factor
+
+**Remember:** Multiply by the series of ones to take running totals.
+
+*True by definition.* MSC 05A15 (Exact enumeration problems, generating functions). arXiv math.CO. Level 1: early undergraduate.
+
+**Definition.** A formal generating function stores the nth term of a sequence as the coefficient of zⁿ, starting at n = 0. To multiply two such series, collect products whose degrees add to the required degree.
+
+**Problem.** If A(z) generates the sequence a₀, a₁, …, then A(z)/(1−z) generates its partial sums. In particular, the harmonic numbers have generating function −log(1−z)/(1−z), with H₀ = 0.
+
+**How the definition helps.** The product rule collects a running total in one coefficient. In our own proof, multiply A(z) by 1+z+z²+⋯, the series for 1/(1−z). Each term through degree n contributes once to the coefficient of zⁿ. Integrating the geometric series gives −log(1−z), whose positive-degree coefficients are the reciprocals 1/n.
+
+**nLab:** [generating function](https://ncatlab.org/nlab/show/generating+function). It says: “Multiplying generating functions in the same variable gives”
+
+**Paper or page:** [Generating Function for Sequence of Partial Sums of Series](https://proofwiki.org/wiki/Generating_Function_for_Sequence_of_Partial_Sums_of_Series). It says: “Let {cₙ} denote the sequence of partial sums of s.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The last multiplication makes parenthesizations into binary trees
+
+**Remember:** The last multiplication is the root, and its factors are the two branches.
+
+*Makes the theorem clean to state or prove.* MSC 05A15 (Exact enumeration problems, generating functions). arXiv math.CO. Level 1: early undergraduate.
+
+**Definition.** A full ordered binary tree is a leaf or a root with a left and a right full binary tree. Its size is the number of vertices with children.
+
+**Problem.** For n ≥ 0, fully parenthesized products of n + 1 letters in fixed order correspond exactly to full ordered binary trees of size n.
+
+**How the definition helps.** The last multiplication gives the root its left and right factors. Each single letter gives a leaf. In our own inverse construction, label the leaves from left to right and multiply the two child expressions at each branching point.
+
+**nLab:** [Catalan number](https://ncatlab.org/nlab/show/Catalan+number). It says: “The mapping T ↦ m(T) defines a bijection from the set Binₙ of isomorphism clases of rooted planar binary trees with n internal vertices to the set Mag(x)ₙ of magma words with n+1 instances of x.”
+
+**Paper or page:** [Number of Distinct Parenthesizations on Word](https://proofwiki.org/wiki/Number_of_Distinct_Parenthesizations_on_Word). It says: “The number of distinct parenthesizations of wₙ is the Catalan number Cₙ₋₁”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -347,6 +515,22 @@
 **Sources:**
 
 - [P. R. Halmos, Naive Set Theory, Undergraduate Texts in Mathematics, Springer (1974)](https://doi.org/10.1007/978-1-4757-1645-0)
+
+### Nonempty blocks give the Stirling count for onto functions
+
+**Remember:** One nonempty block goes to each target element.
+
+*Rules out counterexamples.* MSC 05A18 (Partitions of sets), 11B73, 05A10. arXiv math.CO. Level 1: early undergraduate.
+
+**Definition.** A set partition splits its elements into disjoint, nonempty blocks. An onto function uses every element of its target.
+
+**Problem.** The number of onto functions from m inputs to n targets equals n! times the number of partitions of the inputs into n blocks.
+
+**How the definition helps.** Nonempty blocks ensure that each target receives an input. In our own proof, inputs with the same output form one block, and the n targets label these blocks in n! ways. Allowing an empty block would count functions that miss its target.
+
+**Paper or page:** [Cardinality of Set of Surjections](https://proofwiki.org/wiki/Cardinality_of_Set_of_Surjections). It says: “Let C be the number of surjections from S to T. Then: C = n! {m brace n} where {m brace n} denotes a Stirling number of the second kind.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### One partition of the empty set makes B₀ = 1
 
@@ -450,6 +634,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Missing symbol sets turn Latin rectangle completion into Hall’s theorem
+
+**Remember:** A new row is one distinct available symbol per column.
+
+*Rules out counterexamples.* MSC 05B15 (Orthogonal arrays, Latin squares, Room squares), 05D15. arXiv math.CO. Level 1: early undergraduate.
+
+**Definition.** A full-width Latin rectangle has n columns and uses n symbols, each once per row and at most once per column. Define each column’s available set to consist of the symbols not used in that column.
+
+**Problem.** Every full-width Latin rectangle with fewer than n rows can be completed to an n by n Latin square by adding rows.
+
+**How the definition helps.** Full width gives every column and every symbol the same number of available choices for the next row. With r rows filled, each column lacks n − r symbols and each symbol is missing from n − r columns. Our own count gives any j columns at least j available symbols together, so Hall’s theorem supplies another row. Without full width, rows (1,2) and (2,1) would both need symbol 3 in column three.
+
+**Paper or page:** [Hall's marriage theorem](https://arxiv.org/abs/2503.23159v1). It says: “A Latin rectangle can be extended to a Latin square by adding extra rows.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Counting labelled trees gives Cayley's formula nⁿ⁻²
 
 **Remember:** Name the vertices and the count becomes nⁿ⁻².
@@ -468,6 +668,38 @@
 
 - [R. Otter, The number of trees, Annals of Mathematics 49 (1948) 583–599](https://doi.org/10.2307/1969046)
 
+### Distinct edge weights force one cheapest spanning tree
+
+**Remember:** The lightest disagreement can replace a heavier edge.
+
+*Rules out counterexamples.* MSC 05C05 (Trees), 05C22. arXiv math.CO. Level 1: early undergraduate.
+
+**Definition.** A minimum spanning tree connects every vertex without cycles and has least total edge weight. In a graph with distinct edge weights, no two edges have the same weight.
+
+**Problem.** A finite connected graph with distinct edge weights has exactly one minimum spanning tree.
+
+**How the definition helps.** Distinct weights make the lightest edge belonging to just one of two cheapest trees strictly lighter than any other edge where they differ. Add it to the tree missing it. The resulting cycle contains an edge outside the first tree, and replacing that heavier edge lowers the total weight. Our own counterexample without distinct weights is a triangle with three equal edges.
+
+**Wikipedia:** [Minimum spanning tree](https://en.wikipedia.org/wiki/Minimum_spanning_tree). It says: “If each edge has a distinct weight then there will be only one, unique minimum spanning tree”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Finite branching makes an infinite tree have an infinite path
+
+**Remember:** At least one of finitely many branches must keep going forever.
+
+*Rules out counterexamples.* MSC 05C05 (Trees), 05C63. arXiv math.CO. Level 1: early undergraduate.
+
+**Definition.** A rooted tree has a chosen root. It is finitely branching if each vertex has only finitely many children, its neighbors one step farther from the root.
+
+**Problem.** An infinite finitely branching rooted tree contains an infinite path starting at its root.
+
+**How the definition helps.** With finitely many children, a vertex with infinitely many descendants must have a child with infinitely many descendants. In our own proof, repeating that choice from the root builds an infinite path. Our own counterexample is a root with infinitely many children, all of them leaves.
+
+**Paper or page:** [König's Tree Lemma](https://proofwiki.org/wiki/König's_Tree_Lemma). It says: “each with a finite number of children. Then T has a branch of infinite length.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Minimal connectivity gives a spanning tree
 
 **Remember:** Delete edges while keeping the graph connected until none can go.
@@ -481,6 +713,22 @@
 **How the definition helps.** The minimal-connectivity definition gives a tree by taking a connected subgraph with all vertices and the fewest edges (our own). Removing any edge would violate that choice, so it meets the definition. Starting with the no-cycle definition, one must also show that an edge on a cycle can be removed without losing connectivity. That fact and its converse are the work behind the equivalence of the definitions (our own).
 
 **Wikipedia:** [Tree (graph theory)](https://en.wikipedia.org/wiki/Tree_%28graph_theory%29). It says: “G is connected, but would become disconnected if any single edge is removed from G.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Parent edges count the edges of a forest
+
+**Remember:** Each vertex pays for one edge, except each root.
+
+*True by definition.* MSC 05C05 (Trees). arXiv math.CO. Level 1: early undergraduate.
+
+**Definition.** A forest is a graph without cycles. In each connected part, choose one vertex as the root. Every other vertex has a parent, its next neighbor on the unique path to the root.
+
+**Problem.** A finite forest with n vertices and c connected parts has n − c edges.
+
+**How the definition helps.** Rooting the forest gives each edge exactly one child to count. In our own proof, the unique path to the root identifies the parent and shows that every edge joins a child to its parent. Counting children now counts all vertices except the roots.
+
+**Paper or page:** [Number of Edges in Forest](https://proofwiki.org/wiki/Number_of_Edges_in_Forest). It says: “Then F contains n − m edges.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -534,6 +782,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Counting face sides makes the bipartite planar bound immediate
+
+**Remember:** Count both sides of each edge, even when a face touches both.
+
+*Rules out counterexamples.* MSC 05C10 (Planar graphs; geometric and topological aspects of graph theory). arXiv math.CO. Level 1: early undergraduate.
+
+**Definition.** A bipartite graph has two vertex parts, with every edge joining different parts. In a crossing-free drawing, the length of a face counts all edge sides on its boundary, including both sides of a bridge.
+
+**Problem.** A simple bipartite planar graph with v ≥ 3 vertices has at most 2v − 4 edges.
+
+**How the definition helps.** Alternating vertex parts force every face boundary in a connected drawing to have even length. With at least three vertices, simplicity rules out a two-sided face, so every face has at least four sides. Counting both sides of every edge and applying Euler’s formula gives the bound. In our own extension, join disconnected parts by bridges first, reversing their vertex parts as needed.
+
+**Wikipedia:** [Planar graph](https://en.wikipedia.org/wiki/Planar_graph). It says: “each edge contributes exactly two incidences.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Euler's formula for plane graphs needs connectedness, or a count of components
 
 **Remember:** Connected plane graphs, outer face included, always give V − E + F = 2.
@@ -584,6 +848,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Triangular faces force the maximal planar edge count
+
+**Remember:** Each triangular face contributes exactly three edge sides.
+
+*True by definition.* MSC 05C10 (Planar graphs; geometric and topological aspects of graph theory). arXiv math.CO. Level 1: early undergraduate.
+
+**Definition.** A plane triangulation is a connected simple graph drawn without crossings with three edges around every face, including the outer face. A simple planar graph is maximal planar if adding any missing edge between its vertices destroys planarity.
+
+**Problem.** Every plane drawing without crossings of a maximal planar graph with v ≥ 3 vertices has 3v − 6 edges and 2v − 4 faces.
+
+**How the definition helps.** Triangular faces give 3f = 2e by counting the sides of edges. Euler’s formula then gives both counts. The work moves to the face augmentation lemma, which shows that a maximal planar graph has only triangular faces.
+
+**Wikipedia:** [Planar graph](https://en.wikipedia.org/wiki/Planar_graph). It says: “All faces (including the outer one) are then bounded by three edges”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Shortest walks give graph distance
 
 **Remember:** Join two walks to bound the shortest one.
@@ -617,6 +897,22 @@
 **Sources:**
 
 - [T. R. Jensen and B. Toft, Graph Coloring Problems, Wiley (1994)](https://doi.org/10.1002/9781118032497)
+
+### Independent color classes give a lower bound on colors
+
+**Remember:** Divide the vertex count by the most one color can hold.
+
+*True by definition.* MSC 05C15 (Coloring of graphs and hypergraphs), 05C69. arXiv math.CO. Level 1: early undergraduate.
+
+**Definition.** A proper vertex coloring partitions vertices into color classes with no edge inside a class. Such a class is an independent set.
+
+**Problem.** Suppose a finite loopless graph has n ≥ 1 vertices, and its largest independent set has size α. Every proper coloring uses at least ⌈n⁄α⌉ colors.
+
+**How the definition helps.** Each color class has at most α vertices, so counting the classes gives the bound, our own argument. Our own account uses only the equivalence with assigning different colors at each edge.
+
+**Wikipedia:** [Graph coloring](https://en.wikipedia.org/wiki/Graph_coloring). It says: “every such class forms an independent set.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Reachability orders acyclic graphs
 
@@ -701,6 +997,22 @@
 **How the definition helps.** An edge set maximal without cycles must contain every bridge, since adding a missing bridge cannot create a cycle (our own). If an edge is not a bridge, delete it and choose a maximal cycle-free edge set in the remaining graph (our own). This set connects all vertices because otherwise an edge between two components could still be added (our own). It therefore gives a spanning tree that omits the deleted edge (our own).
 
 **Paper or page:** [Edge is Bridge iff in All Spanning Trees](https://proofwiki.org/wiki/Edge_is_Bridge_iff_in_All_Spanning_Trees). It says: “e belongs to every spanning tree for G.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Nonadjacent endpoints make Menger’s vertex separator exist
+
+**Remember:** An edge between the ends survives every internal vertex deletion.
+
+*Rules out counterexamples.* MSC 05C40 (Connectivity). arXiv math.CO. Level 1: early undergraduate.
+
+**Definition.** For two distinct nonadjacent vertices, a vertex separator is a set of other vertices whose removal leaves no path between the two.
+
+**Problem.** Fix two distinct nonadjacent vertices in a finite undirected graph. The minimum separator size equals the largest number of paths between them that share only their ends.
+
+**How the definition helps.** Nonadjacency makes a separator available because deleting all other vertices cuts every route, our own explanation. In the two-vertex complete graph there is one path but no internal separator, our own counterexample. Menger’s theorem still does the work of finding as many paths as the minimum separator permits.
+
+**Wikipedia:** [Menger's theorem](https://en.wikipedia.org/wiki/Menger%27s_theorem). It says: “the minimum number of vertices, distinct from x and y, whose removal disconnects x and y”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -790,6 +1102,194 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Complement pairs classify the largest intersecting families on 2k points
+
+**Remember:** When both halves have size k, each pair allows one choice.
+
+*True by definition.* MSC 05D05 (Extremal set theory). arXiv math.CO. Level 1: early undergraduate.
+
+**Definition.** Fix a ground set of size 2k, with k ≥ 1. Group its k-element subsets into pairs, each consisting of a set and its complement. An intersecting family has no two disjoint sets.
+
+**Problem.** An intersecting family of k-element subsets of a 2k-element set contains at most half the k-element subsets. Any choice of one from each complement pair attains the bound.
+
+**How the definition helps.** Our own partition replaces all disjointness tests with one choice per complement pair. Two disjoint k-element sets exhaust the 2k points, so they must be complements. Choosing one from each pair therefore attains the bound.
+
+**Paper or page:** [Stabilities of the Kleitman diameter theorem](https://arxiv.org/abs/2411.08325v2). It says: “Let $k \\geq 2$ and $n \\geq 2 k$ be integers. Let $\\mathcal{F} \\subseteq \\binom {\[n\]}{k}$ be an intersecting family. Then\\\[  \|\\mathcal{F}\|\\leq \\binom {n-1}{k-1}.  \\\]”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Coloring by differences turns Schur’s theorem into Ramsey’s theorem
+
+**Remember:** Three edges on a number line give two gaps and their sum.
+
+*True by definition.* MSC 05D10 (Ramsey theory). arXiv math.CO. Level 1: early undergraduate.
+
+**Definition.** Color the integers from 1 to N. On vertices 0 through N, color each edge with the color of the positive difference between its endpoints.
+
+**Problem.** For each positive number of colors c, some N forces x, y and x + y to share a color in every c-coloring of 1,…,N. The summands may be equal.
+
+**How the definition helps.** In our own difference coloring, the two shorter gaps of a triangle add to its longest gap. Ramsey’s theorem supplies a triangle whose three edges share one color when N is large enough.
+
+**Paper or page:** [Schur's Theorem (Ramsey Theory)](https://proofwiki.org/wiki/Schur's_Theorem_(Ramsey_Theory)). It says: “there exists a positive integer $S$ such that:
+ for every partition of the integers $\\set {1, \\ldots, S}$ into $r$ parts, one of the parts contains integers $x$, $y$ and $z$ such that:
+$$x + y = z$”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Counting bad sets gives an exponential Ramsey lower bound
+
+**Remember:** An average below one forces at least one zero.
+
+*True by definition.* MSC 05D10 (Ramsey theory), 05D40. arXiv math.CO. Level 1: early undergraduate.
+
+**Definition.** Color every pair of n vertices red or blue independently, with equal chances. The bad-set count is the number of k-vertex sets whose edges all share one color.
+
+**Problem.** For n ≥ k ≥ 2, let m = k(k − 1)/2. If (n choose k) &lt; 2ᵐ⁻¹, some coloring has no such set.
+
+**How the definition helps.** The bad-set count replaces a search through colorings with an average of zero-or-one counts. Each k-vertex set has m edges and only two single-color patterns among its 2ᵐ equally likely patterns. Adding these probabilities gives an average below one, so some coloring has count zero.
+
+**Wikipedia:** [Probabilistic method](https://en.wikipedia.org/wiki/Probabilistic_method). It says: “Color each edge independently with probability 1/2 of being red and 1/2 of being blue.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Mixed corners give Goodman’s lower bound on single-color triangles
+
+**Remember:** Every mixed triangle has exactly two mixed corners.
+
+*True by definition.* MSC 05D10 (Ramsey theory). arXiv math.CO. Level 1: early undergraduate.
+
+**Definition.** Color every pair of n vertices red or blue. A mixed corner consists of two edges of different colors sharing a vertex.
+
+**Problem.** Every such coloring has at least n(n − 1)(n − 5)/24 triangles with all three edges the same color.
+
+**How the definition helps.** Counting mixed corners at vertices replaces counting triangles one at a time. Each triangle using both colors gives two mixed corners. At each vertex the red and blue edge counts sum to n − 1, so their product is at most (n − 1)²/4. Our own subtraction removes at most n(n − 1)²/8 mixed triangles from the total of (n choose 3).
+
+**Wikipedia:** [Goodman's theorem](https://en.wikipedia.org/wiki/Goodman%27s_theorem). It says: “Every nonmonochromatic triangle contributes such a pair at exactly two of its vertices, while a monochromatic triangle contributes none.”
+
+**Sources:**
+
+- [A. W. Goodman, On sets of acquaintances and strangers at any party (1959)](https://doi.org/10.1080/00029890.1959.11989408)
+
+### Elementary symmetric products give Viète’s formulas at once
+
+**Remember:** Choose k roots and attach one minus sign for each.
+
+*True by definition.* MSC 05E05 (Symmetric functions and generalizations), 12D05. arXiv math.CO, math.AC. Level 1: early undergraduate.
+
+**Definition.** For a list of n roots, form the product (1 + r₁) ⋯ (1 + rₙ), treating the entries as variables. Its degree-k part is the elementary symmetric polynomial eₖ, the sum of products from all choices of k positions.
+
+**Problem.** A complex polynomial with leading coefficient 1 has coefficient (−1)ᵏeₖ at the term k places below its leading term. The list counts each root as often as it occurs.
+
+**How the definition helps.** In our own proof, choosing k root terms in (x − r₁) ⋯ (x − rₙ) selects exactly the products defining eₖ. Each choice contributes k minus signs. The fundamental theorem of algebra supplies the factorization.
+
+**nLab:** [elementary symmetric polynomial](https://ncatlab.org/nlab/show/elementary+symmetric+polynomial). It says: “Equivalently these are the degree-k summands in the polynomial (1+X₁)(1+X₂) ⋯ (1+Xₙ)”
+
+**Paper or page:** [Elementary Symmetric Function/Examples/Monic Polynomial](https://proofwiki.org/wiki/Elementary_Symmetric_Function/Examples/Monic_Polynomial). It says: “has coefficients which are parity operators times an elementary symmetric function”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Factorial weights give binomial inversion by canceling exponentials
+
+**Remember:** Multiply by exp(x) to transform, and by exp(−x) to reverse.
+
+*True by definition.* MSC 05A10 (Factorials, binomial coefficients, combinatorial functions), 05A15. arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** For a real sequence a, its exponential generating function sums a(n)xⁿ/n! over n ≥ 0. The ordinary generating function omits the factorial.
+
+**Problem.** Suppose b(n) is the sum of (n choose k) a(k) over 0 ≤ k ≤ n. Then a(n) is the sum of (n choose k) (−1)ⁿ⁻ᵏ b(k) over the same range.
+
+**How the definition helps.** Factorial weights turn the forward sum into multiplication by exp(x). In our own proof, multiplying by exp(−x) undoes this step because the exponentials have product one. Reading the product coefficient gives the alternating sum.
+
+**Wikipedia:** [Binomial transform](https://en.wikipedia.org/wiki/Binomial_transform). It says: “The binomial convolution arises naturally from the product of the exponential generating functions.”
+
+**Paper or page:** [Alternating Summation of Binomial Coefficient of Summation of Binomial Coefficient of Sequence](https://proofwiki.org/wiki/Alternating_Summation_of_Binomial_Coefficient_of_Summation_of_Binomial_Coefficient_of_Sequence). It says: “(−1)ⁿ bₙ = ∑ₛ₌₀ⁿ (n choose s) (−1)ˢ aₛ”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Function fibers explain the Stirling expansion of powers
+
+**Remember:** Group equal outputs first, then give the groups distinct outputs.
+
+*Makes the theorem clean to state or prove.* MSC 05A10 (Factorials, binomial coefficients, combinatorial functions), 05A18. arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** A fiber of a function is the set of inputs with a given output. Define S(n,k) to count partitions of n inputs into k nonempty blocks. The kth falling factorial is x(x − 1)⋯(x − k + 1), with the empty product equal to 1.
+
+**Problem.** For n ≥ 0, xⁿ is the sum of S(n,k) times the kth falling factorial of x, over 0 ≤ k ≤ n.
+
+**How the definition helps.** Nonempty fibers split a function into a partition and a choice of distinct outputs for its blocks. In our own proof, for positive integer x, the kth falling factorial counts those choices from x outputs. Summing over partitions counts all xⁿ functions. Equality at every positive integer implies equality of the two polynomials.
+
+**Wikipedia:** [Stirling numbers of the second kind](https://en.wikipedia.org/wiki/Stirling_numbers_of_the_second_kind). It says: “the numbers that arise when one expresses powers of an indeterminate x in terms of the falling factorials”
+
+**Paper or page:** [Stirling Numbers of the Second Kind/Examples/5th Power](https://proofwiki.org/wiki/Stirling_Numbers_of_the_Second_Kind/Examples/5th_Power). It says: “x⁵ = x⁵̲ + 10 x⁴̲ + 25 x³̲ + 15 x²̲ + x¹̲”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Sorting tied letters by position gives Worpitzky’s identity
+
+**Remember:** Ties can occur only where the sorted positions rise.
+
+*Makes the theorem clean to state or prove.* MSC 05A10 (Factorials, binomial coefficients, combinatorial functions), 05A19. arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** Define A(n,d) to count permutations of 1 through n with d descents. A descent is a step to a smaller entry. Sort word positions by their letters, breaking ties by original position.
+
+**Problem.** For positive integers n and x, summing A(n,d) × (x+n−1−d choose n) over 0 ≤ d &lt; n gives xⁿ. A binomial coefficient is zero when its upper number is smaller than its lower number.
+
+**How the definition helps.** Sorting by letter forces a strict increase in letter value wherever consecutive sorted positions decrease. In our own proof, subtracting the number of earlier forced increases leaves a nondecreasing list from 1 through x − d. Adding them back recovers the word for that position order. Counting these lists as multisets gives the binomial coefficient.
+
+**Wikipedia:** [Eulerian number](https://en.wikipedia.org/wiki/Eulerian_number). It says: “Worpitzky's identity expresses xⁿ as the linear combination of Eulerian numbers with binomial coefficients”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Additive size makes ordinary generating functions multiply
+
+**Remember:** Add sizes by multiplying powers.
+
+*Makes the theorem clean to state or prove.* MSC 05A15 (Exact enumeration problems, generating functions). arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** Each object has a nonnegative integer size. An ordinary generating function records the count of objects of size n as the coefficient of xⁿ. Give an ordered pair the sum of its two sizes.
+
+**Problem.** The series for ordered pairs is the product of the two classes’ series if both have finite counts at each size. For cumulative totals of a counting sequence with series A(x), the series is A(x)/(1 − x).
+
+**How the definition helps.** Adding sizes makes the power for a pair equal the product of the powers for its members. In our own proof, grouping pairs by their first size gives exactly the coefficient rule for series multiplication. For cumulative totals, pair each object with the nonnegative integer needed to reach the desired size. Those integers have series 1/(1 − x).
+
+**Wikipedia:** [Symbolic method (combinatorics)](https://en.wikipedia.org/wiki/Symbolic_method_%28combinatorics%29). It says: “The product of two combinatorial classes A and B is specified by defining the size of an ordered pair as the sum of the sizes of the elements in the pair.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Aperiodic necklaces let every class use the same divisor
+
+**Remember:** Exclude repeated words, then divide by the number of rotations.
+
+*Rules out counterexamples.* MSC 05A15 (Exact enumeration problems, generating functions), 05A05. arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** A necklace identifies words that differ only by a cyclic shift. Call a word aperiodic if it is not two or more copies of a shorter word.
+
+**Problem.** Fix a finite alphabet and n ≥ 1. The number of aperiodic necklaces of length n equals the number of aperiodic words of length n divided by n.
+
+**How the definition helps.** An aperiodic word has n different rotations, so each necklace accounts for n words. In our own proof, a rotation by j positions fixing the word makes it repeat a block of length gcd(n,j), the greatest common divisor. For example, AA has two starting positions but only one distinct rotation.
+
+**Wikipedia:** [Necklace (combinatorics)](https://en.wikipedia.org/wiki/Necklace_%28combinatorics%29). It says: “An aperiodic necklace of length n is a rotation equivalence class having size n”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Cycles without singletons give the derangement exponential series
+
+**Remember:** Remove singleton cycles before taking the exponential.
+
+*Makes the theorem clean to state or prove.* MSC 05A15 (Exact enumeration problems, generating functions), 05A05. arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** Define a derangement as an unordered collection of disjoint cycles of length at least two that use every label. A cycle gives the next element for each label in a loop.
+
+**Problem.** If D(n) counts derangements on n labels, its exponential generating function, the sum of D(n)xⁿ/n!, equals exp(−x)/(1 − x). Thus D(n) equals n! times the sum of (−1)ᵏ/k! over 0 ≤ k ≤ n.
+
+**How the definition helps.** Forbidding cycles of length one removes the term x from the series for a single cycle. In our own count, k distinct labels form (k − 1)! cycles, giving the remaining cycle series −log(1 − x) − x. The exponential formula counts unordered collections of these cycles by exponentiating their series.
+
+**Wikipedia:** [Exponential formula](https://en.wikipedia.org/wiki/Exponential_formula). It says: “the exponential generating function for structures on finite sets is the exponential of the exponential generating function for connected structures.”
+
+**Paper or page:** [Closed Form for Number of Derangements on Finite Set](https://proofwiki.org/wiki/Closed_Form_for_Number_of_Derangements_on_Finite_Set). It says: “Dₙ = n! ∑ₖ₌₀ⁿ (−1)ᵏ/k!”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Forbidding objects of size zero makes sequence and set constructions countable
 
 **Remember:** Nothing of size zero, or sequences pile up for free.
@@ -807,6 +1307,176 @@
 **Sources:**
 
 - [P. Flajolet and R. Sedgewick, Analytic Combinatorics, Cambridge University Press (2009)](https://doi.org/10.1017/CBO9780511801655)
+
+### Keeping cycle lengths makes Pólya’s color inventory a substitution
+
+**Remember:** Each cycle takes one color for all its positions.
+
+*Makes the theorem clean to state or prove.* MSC 05A15 (Exact enumeration problems, generating functions), 05E18. arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** A finite group permutes a finite set of positions. For each permutation, form a product with one factor uⱼ for each cycle of length j. The cycle index is the average of these products.
+
+**Problem.** For finitely many colors, substituting the sum of the jth powers of their variables for uⱼ gives the polynomial counting colorings up to symmetry. Each coefficient counts the classes with the color totals given by its exponents.
+
+**How the definition helps.** A coloring stays fixed under a permutation exactly when each cycle uses a single color. In our own account, a cycle of length j supplies j copies of its chosen color. For each set of totals, Burnside’s lemma counts classes by averaging the numbers of fixed colorings.
+
+**Wikipedia:** [Pólya enumeration theorem](https://en.wikipedia.org/wiki/P%C3%B3lya_enumeration_theorem). It says: “the function φ is constant on every cycle q of g.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Label choices become multiplication in exponential generating functions
+
+**Remember:** Divide by factorials so multiplication chooses the labels.
+
+*True by definition.* MSC 05A15 (Exact enumeration problems, generating functions), 05A10. arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** Suppose a(n) counts structures on any set of n labels and is finite. Its exponential generating function sums a(n)xⁿ/n! over n ≥ 0. An ordinary generating function omits the factorial.
+
+**Problem.** Multiplying two exponential generating functions counts ordered pairs of structures on disjoint label sets that together use all labels.
+
+**How the definition helps.** The factorial weights supply exactly the number of ways to choose labels for the first structure. In our own count, choosing k of n labels contributes n! divided by k!(n − k)!. Once the labels split, the two structures can be chosen independently.
+
+**nLab:** [generating function](https://ncatlab.org/nlab/show/generating+function). It says: “exponential generating functions (EGFs) apply to unordered sets (whose elements may be distinguished by having different labels).”
+
+**Paper or page:** [Product of Exponential Generating Functions](https://proofwiki.org/wiki/Product_of_Exponential_Generating_Functions). It says: “∀ n ∈ ℤ≥₀: cₙ = ∑ₖ∈ℤ (n choose k) aₖ bₙ₋ₖ”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Marked starts give the ballot probability even for repeated words
+
+**Remember:** Count starting positions even when two starts read the same votes.
+
+*Rules out counterexamples.* MSC 05A15 (Exact enumeration problems, generating functions), 05A05. arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** A rooted circular vote order includes a chosen starting position. A root is good when every nonempty prefix from that position has more A votes than B votes.
+
+**Problem.** Suppose A has p votes and B has q, with p &gt; q ≥ 0. In a uniformly random order, A stays strictly ahead with probability (p − q)/(p + q).
+
+**How the definition helps.** Marking positions lets the cycle lemma count exactly p − q good starts, even when some rotations read alike. In our own example, AABAAB has six positions but only three different rotations. A uniform starting position therefore succeeds with probability (p − q)/(p + q). Rotating a uniformly random vote order preserves its distribution.
+
+**Wikipedia:** [Bertrand's ballot theorem](https://en.wikipedia.org/wiki/Bertrand%27s_ballot_theorem). It says: “The cycle lemma asserts that any sequence of p A's and q B's, where p &gt; q, has precisely p-q dominating cyclic permutations.”
+
+**Paper or page:** [Bertrand's Ballot Theorem](https://proofwiki.org/wiki/Bertrand's_Ballot_Theorem). It says: “In other words, the probability that candidate A is always ahead of candidate B in the count is: (p − q)/(p + q)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Multiplicity bounds give one factor for each part size
+
+**Remember:** One factor chooses how many copies of one part size to use.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 05A15 (Exact enumeration problems, generating functions), 05A17. arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** A partition writes a nonnegative integer as a sum of positive integers, ignoring order. The multiplicity of k is the number of copies of k. Let b(k) be the largest allowed multiplicity, a nonnegative integer.
+
+**Problem.** The series whose coefficient of xⁿ counts these partitions is a product over all positive sizes k. Its factor for k is the sum of x raised to kj over integers 0 ≤ j ≤ b(k).
+
+**How the definition helps.** Multiplicities let us choose the number of copies of each size independently. In our own proof, choosing one term per factor specifies one partition, and multiplying the terms adds its parts in the exponent. Only sizes through n can contribute a positive part to degree n.
+
+**Wikipedia:** [Integer partition](https://en.wikipedia.org/wiki/Integer_partition). It says: “where m₁ is the number of 1's, m₂ is the number of 2's, etc.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Nonattacking rook placements make forbidden positions count correctly
+
+**Remember:** Only forbidden squares in different rows and columns can occur together.
+
+*Rules out counterexamples.* MSC 05A15 (Exact enumeration problems, generating functions). arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** On a square board, a permutation uses one square in each row and each column. The rook number r(k) counts choices of k forbidden squares in distinct rows and distinct columns.
+
+**Problem.** For an n × n board, the avoidance count equals the sum of (−1)ᵏr(k)(n − k)! for k from 0 to n.
+
+**How the definition helps.** Only forbidden squares in distinct rows and columns can occur together in a permutation. In our own proof, each compatible choice leaves (n − k)! ways to match the remaining rows and columns. Inclusion–exclusion alternately subtracts and adds these counts to exclude every permutation using a forbidden square.
+
+**Wikipedia:** [Rook polynomial](https://en.wikipedia.org/wiki/Rook_polynomial). It says: “rₖ(B) is the number of ways to place k non-attacking rooks on the board B.”
+
+**Sources:**
+
+- [I. Kaplansky and J. Riordan, The problem of the rooks and its applications, Duke Mathematical Journal 13 (1946), 259–268](https://doi.org/10.1215/S0012-7094-46-01324-5)
+
+### Nonempty labeled blocks give the Stirling generating functions
+
+**Remember:** Build ordered nonempty blocks, then forget their order.
+
+*Makes the theorem clean to state or prove.* MSC 05A15 (Exact enumeration problems, generating functions), 05A18. arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** An exponential generating function records each count on n labels with weight xⁿ/n!. A set partition is an unordered collection of nonempty blocks, each label used once.
+
+**Problem.** For k ≥ 0, partitions into k blocks have exponential generating function (exp(x) − 1)ᵏ/k!.
+
+**How the definition helps.** The series exp(x) − 1 counts one nonempty block because each positive label count contributes exactly one block. Our own proof uses the product rule for exponential generating functions to distribute labels among k ordered blocks. Each unordered partition occurs in k! orders.
+
+**Paper or page:** [Power Series Expansion for Integer Power of Exponential Function minus 1](https://proofwiki.org/wiki/Power_Series_Expansion_for_Integer_Power_of_Exponential_Function_minus_1). It says: “(eᶻ − 1)ⁿ = n! ∑ₖ∈ℤ {k brace n} zᵏ/k!”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A unique nearest pole gives one leading coefficient term
+
+**Remember:** A tie at the smallest distance can make coefficients oscillate.
+
+*Rules out counterexamples.* MSC 05A16 (Asymptotic enumeration). arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** For a rational generating function, poles are the zeros of the denominator left after cancellation. A dominant pole lies nearest zero, and it is unique if all other poles lie farther away.
+
+**Problem.** Let ρ be the unique dominant pole, of order m, and let C = lim as z → ρ of (1−z/ρ)ᵐ A(z). The nth coefficient is asymptotic to Cρ⁻ⁿnᵐ⁻¹/(m−1)!.
+
+**How the definition helps.** Every pole farther from zero contributes an exponentially smaller term. In our own derivation, partial fractions and the binomial series give the leading term at ρ. Its lower-order fractions contribute smaller powers of n. A tie can matter because 1/(1−z²) has poles at ±1 and coefficients alternating between 1 and 0.
+
+**Paper or page:** [Trees with flowers: A catalog of integer partition and integer composition trees with their asymptotic analysis](https://arxiv.org/abs/2402.16111v2). It says: “Suppose that f(z) has a single dominant singularity at α &gt; 0 which is a pole of order r ≥ 1.”
+
+**Sources:**
+
+- [Philippe Flajolet and Robert Sedgewick, Analytic Combinatorics, Theorem IV.9 and Note IV.26](https://ac.cs.princeton.edu/40complex/)
+
+### Normalized pole terms give exact rational coefficient formulas
+
+**Remember:** One pole of order m gives an exponential times a polynomial of degree m−1.
+
+*True by definition.* MSC 05A16 (Asymptotic enumeration), 39A06. arXiv math.CO, math.CA. Level 2: later undergraduate.
+
+**Definition.** For a rational function regular at zero, write each pole term at ρ as a constant times (1−z/ρ)⁻ʲ instead of (z−ρ)⁻ʲ. At a pole of order m the indices run from 1 through m, with a nonzero coefficient at m.
+
+**Problem.** For a rational power series, the coefficients eventually equal a sum of terms ρ⁻ⁿ times polynomials in n, one for each pole ρ. Each polynomial has degree one less than the order of its pole.
+
+**How the definition helps.** The normalized fractions have the form of the binomial series, so each pole gives its coefficients directly. In our own calculation, the nth coefficient of (1−z/ρ)⁻ʲ is ρ⁻ⁿ times the binomial coefficient n+j−1 choose j−1. Its polynomial factor has degree j−1, and the highest pole term has nonzero coefficient. Partial fractions supply the decomposition, whose polynomial part affects only finitely many coefficients.
+
+**Wikipedia:** [Generating function](https://en.wikipedia.org/wiki/Generating_function). It says: “we are able to extract an exact formula for the sequence by taking the partial fraction expansion of the last generating function.”
+
+**Sources:**
+
+- [Philippe Flajolet and Robert Sedgewick, Analytic Combinatorics, Theorem IV.9](https://doi.org/10.1017/CBO9780511801655)
+
+### The Catalan binomial quotient gives the coefficient growth
+
+**Remember:** The Catalan quotient is a central binomial coefficient divided by n+1.
+
+*True by definition.* MSC 05A16 (Asymptotic enumeration), 05A15. arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** Define the nth Catalan number Cₙ as (2n)! divided by the product (n!)²(n+1). Equivalently, Cₙ is the nth coefficient of the series T(z) with constant term 1 that satisfies T(z) = 1+zT(z)².
+
+**Problem.** The nth coefficient Cₙ of T(z) is asymptotic to 4ⁿ/(√π n√n).
+
+**How the definition helps.** The factorial quotient gives the growth directly from Stirling’s formula. In our own calculation, (2n)!/(n!)² is asymptotic to 4ⁿ/√(πn), and dividing by n+1 gives the result. Identifying that quotient with the series coefficient requires solving the quadratic equation and expanding its square root.
+
+**nLab:** [generating function](https://ncatlab.org/nlab/show/generating+function). It says: “The coefficient of zⁿ in T(z) is the nth Catalan number”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Zero padding makes subtraction of a staircase reversible for partitions
+
+**Remember:** Subtract the smallest possible list of distinct positive parts.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 05A17 (Combinatorial aspects of partitions of integers), 05A15. arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** A partition lists positive integers in decreasing or equal order. Represent a partition with at most k parts by adding trailing zeros until the list has length k.
+
+**Problem.** Fix nonnegative integers n and k. Partitions of n into k distinct parts correspond to partitions of n − k(k + 1)/2 into at most k parts.
+
+**How the definition helps.** Padding gives both lists exactly k positions, so our own map can add or subtract the same staircase. Subtract (k,k − 1,…,1) from the distinct parts to obtain a nonincreasing list with entries at least zero. Adding the staircase recovers distinct positive parts. For k = 0 the staircase is empty.
+
+**Wikipedia:** [Integer partition](https://en.wikipedia.org/wiki/Integer_partition). It says: “subtracting 1 from each part of such a partition yields a partition of n − M into at most M parts.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Set partitions make Stirling numbers nonnegative integers
 
@@ -840,6 +1510,54 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### A fixed point turns one design level into the next lower one
+
+**Remember:** Put the fixed point back to recover the old count.
+
+*True by definition. Confidence: medium.* MSC 05B05 (Combinatorial aspects of block designs). arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** In a t-design, every t-point subset appears in exactly λ blocks of size k. Its derived design at a point keeps only blocks through that point and then removes the point from them.
+
+**Problem.** For t ≥ 2, deriving at a point produces a (t−1)-design on v−1 points with block size k−1. Each (t−1)-point subset belongs to exactly λ blocks.
+
+**How the definition helps.** Our own derived blocks are counted by adding the fixed point to the requested subset. The resulting t-point subset belongs to exactly λ old blocks by the original balance condition. Removing the fixed point from a block is reversible, so that count is unchanged.
+
+**nLab:** [block design](https://ncatlab.org/nlab/show/block+design). It says: “the number of b ∈ B such that {x₁,…,xₛ} ⊂ b is independent of the choice of such a subset and equals λ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Complementing blocks preserves design balance and order
+
+**Remember:** A pair occurs in a new block when its old block misses both points.
+
+*True by definition.* MSC 05B05 (Combinatorial aspects of block designs). arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** A balanced design has v points and b blocks of size k. Each point belongs to r blocks, each distinct pair belongs to λ blocks, and the order is r − λ. The complement replaces each block by the points outside it.
+
+**Problem.** For 2 ≤ k ≤ v−2, the complement has block size v−k, point count b−r and pair count b−2r+λ. Both designs have the same order.
+
+**How the definition helps.** Complement membership makes the new pair count the number of old blocks missing both points. Inclusion and exclusion gives b − 2r + λ, while a single point has count b − r. Our own subtraction cancels b and gives the same order.
+
+**Wikipedia:** [Block design](https://en.wikipedia.org/wiki/Block_design). It says: “A 2-design and its complement have the same order.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Lines in a finite plane form a symmetric design
+
+**Remember:** One block through each pair gives one line through each pair.
+
+*True by definition.* MSC 05B05 (Combinatorial aspects of block designs), 05B25. arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** A balanced 2-design with parameters v, k, λ has v points, blocks of size k, and λ blocks through every pair of points. Interpret the blocks as lines, with incidence given by membership.
+
+**Problem.** For integers q ≥ 2, projective planes of order q are exactly the 2-designs with parameters (q²+q+1, q+1, 1).
+
+**How the definition helps.** Our own design description turns the unique line through two points into the requirement λ = 1. Counting through a point gives q + 1 lines there, and counting memberships gives as many lines as points. Symmetric design duality gives unique line intersections, and the sides of a triangle cover only 3q points, leaving a fourth point. Conversely, counting along the lines through a point of a projective plane gives q² + q + 1 points.
+
+**Wikipedia:** [Bruck–Ryser–Chowla theorem](https://en.wikipedia.org/wiki/Bruck%E2%80%93Ryser%E2%80%93Chowla_theorem). It says: “the design parameters are v = b = q² + q + 1, r = k = q + 1, λ = 1.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Requiring incomplete blocks makes Fisher's inequality true
 
 **Remember:** No block is everything, so a point is in more blocks than a pair.
@@ -858,6 +1576,152 @@
 
 - [R. A. Fisher, An examination of the different possible solutions of a problem in incomplete blocks, Annals of Eugenics 10 (1940) 52–75](https://doi.org/10.1111/j.1469-1809.1940.tb02237.x)
 
+### Square incidence makes even symmetric designs have square order
+
+**Remember:** An odd power of the order must be a square.
+
+*True by definition.* MSC 05B05 (Combinatorial aspects of block designs), 05B20. arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** A symmetric 2-design has v points and v blocks of size k, with every pair of points in λ blocks. Its square incidence matrix M has a one for membership and a zero elsewhere. The design has order k − λ.
+
+**Problem.** A symmetric balanced 2-design with even v has square order k − λ. Here v is the number of points and k is the block size.
+
+**How the definition helps.** Our own incidence matrix makes the determinant of MMᵀ the square of an integer. This product has diagonal k and all other entries λ. Its eigenvalue on constant vectors is k² by the row sums, and on the (v − 1)-dimensional perpendicular space it is k − λ. For even v, the odd multiplicity forces every prime exponent in k − λ to be even.
+
+**Paper or page:** [Invariants of Quadratic Forms and applications in Design Theory](https://arxiv.org/abs/2308.06008v2). It says: “If v is even then k − λ is the square of an integer.”
+
+**Sources:**
+
+- [S. Chowla and H. J. Ryser, Combinatorial problems (1950), Theorem 3](https://doi.org/10.4153/CJM-1950-009-8)
+
+### Transposing square incidence makes symmetric designs closed under duality
+
+**Remember:** Square incidence lets point-pair balance pass to block pairs.
+
+*True by definition.* MSC 05B05 (Combinatorial aspects of block designs), 05B20. arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** A symmetric 2-design has v points and v blocks of size k, with every distinct point pair in λ blocks. Its incidence matrix M marks membership with ones and all other entries with zeros. Interchanging points and blocks gives the dual design and transposes M.
+
+**Problem.** For 2 ≤ k &lt; v, the dual is a symmetric 2-design with the original parameters. In particular, any two distinct old blocks meet in λ points.
+
+**How the definition helps.** Our own matrix replaces counting common points of blocks with reversing the factors in MMᵀ. This product equals (k − λ)I + λJ, where I is the identity and J is all ones. Since k &gt; λ, the product is positive definite and M is invertible. All row and column sums equal k, so M commutes with J and conjugation gives MᵀM = MMᵀ.
+
+**Wikipedia:** [Block design](https://en.wikipedia.org/wiki/Block_design). It says: “in a symmetric design every two distinct blocks meet in λ points.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Third points turn products of Steiner systems into coordinate calculations
+
+**Remember:** A product triple gets its third point one coordinate at a time.
+
+*True by definition. Confidence: medium.* MSC 05B07 (Triple systems), 05B05. arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** In a Steiner triple system, each pair of points lies in a unique triple. Define x ⋆ y as its third point for distinct x and y, and set x ⋆ x = x. Apply this rule separately in the two coordinates of a product.
+
+**Problem.** The product of the point sets of any two Steiner triple systems carries a Steiner triple system.
+
+**How the definition helps.** Our own operation replaces a search for product triples with a coordinatewise calculation. The identities x⋆x = x, x⋆y = y⋆x and x⋆(x⋆y) = y hold in each coordinate. For distinct product points x and y, these identities give a third point distinct from both. Each pair in the resulting triple recovers its remaining point, so the triples form a Steiner system.
+
+**nLab:** [Steiner system](https://ncatlab.org/nlab/show/Steiner+system). It says: “such that every l-element subset of S is in precisely one block.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Choosing one point per group encodes orthogonal Latin squares
+
+**Remember:** Two choices from different groups name one block.
+
+*Makes the theorem clean to state or prove.* MSC 05B15 (Orthogonal arrays, Latin squares, Room squares), 05B05. arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** In a transversal design, each block takes one point from each of k disjoint groups of size n. Every pair from different groups belongs to exactly one block. Latin squares use every symbol once per row and column, and orthogonal squares display every ordered symbol pair once across corresponding cells.
+
+**Problem.** A transversal design with k groups of size n exists exactly when order n admits k − 2 mutually orthogonal Latin squares. Assume k ≥ 3.
+
+**How the definition helps.** Our own design definition lets each cell become one block listing its row, column and symbols, each in a separate group. The cross-group pair rule is precisely the row and column rule or the orthogonality rule, depending on the groups. Our own reverse construction uses the first two groups as cell coordinates and reads the remaining groups as square entries.
+
+**Paper or page:** [Combinatorial solutions to the Social Golfer Problem and Social Golfer Problem with Adjacent Group Sizes](https://arxiv.org/abs/2507.23376v2). It says: “The existence of a TD(k,n) is equivalent to the existence of k-2 MOLS of order n.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Disagreement classes complete an almost full set of orthogonal squares
+
+**Remember:** The missing square labels classes of completely different rows.
+
+*True by definition. Confidence: medium.* MSC 05B15 (Orthogonal arrays, Latin squares, Room squares). arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** Record each cell as a row of an orthogonal array, listing its two coordinates and its symbols in the given squares. Each pair of columns displays every possible ordered pair once. Call rows related if they are equal or disagree in every column.
+
+**Problem.** Any n − 2 mutually orthogonal Latin squares of order n can be extended to n − 1, for n ≥ 2.
+
+**How the definition helps.** Our own construction labels each cell by its class of mutually disagreeing rows to form the missing square. Each row agrees somewhere with n(n − 1) others. Two disagreeing rows share that whole neighbor set because each ordered choice of distinct columns specifies a different common neighbor. Hence disagreement or equality partitions rows into classes of size n, each using every symbol once in each old column.
+
+**Paper or page:** [New Nonuniform Group Divisible Designs and Mixed Steiner Systems](https://arxiv.org/abs/2510.24132v1). It says: “There exists a set of k-1 pairwise orthogonal Latin squares of order k if and only if there exists a set of k-2 pairwise orthogonal Latin squares of order k.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Finite field slopes give a full set of orthogonal Latin squares
+
+**Remember:** Two distinct slopes let two symbols recover one cell.
+
+*True by definition.* MSC 05B15 (Orthogonal arrays, Latin squares, Room squares). arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** Over the field of q elements, use field elements x and y as row and column labels. The slope square for nonzero a puts ax + y in cell (x,y).
+
+**Problem.** For each prime power q, the q − 1 slope squares are Latin because every row and column uses each symbol once. They are pairwise orthogonal, meaning every ordered symbol pair occurs once in corresponding cells.
+
+**How the definition helps.** Our own slope formulas replace the search for a cell with two linear equations. Subtracting equations with distinct slopes determines x, then either equation determines y. For a single square, fixing either coordinate makes the other run through every symbol because a is nonzero. Existence uses the finite-field theorem.
+
+**Wikipedia:** [Mutually orthogonal Latin squares](https://en.wikipedia.org/wiki/Mutually_orthogonal_Latin_squares). It says: “exists whenever q is a prime or prime power.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Missing symbol degrees give Ryser’s Latin rectangle completion test
+
+**Remember:** A color class gives one new column with no repeated symbol.
+
+*True by definition.* MSC 05B15 (Orthogonal arrays, Latin squares, Room squares), 05D15. arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** In a Latin rectangle, no symbol repeats within any row or column. Make a bipartite graph with the rows on one side and all n symbols on the other. Join each row to its missing symbols.
+
+**Problem.** Consider an r by s Latin rectangle on n symbols, where 1 ≤ r,s ≤ n. It extends to an n by n Latin square exactly when each symbol occurs at least r + s − n times.
+
+**How the definition helps.** Our own graph turns a new column into a set of edges with no shared endpoint. Each row lacks n − s symbols, and the threshold means each symbol is missing from at most n − s rows. The bipartite edge-coloring theorem splits the edges into n − s columns, after which full-width completion adds the remaining rows. A symbol missing from more rows could not enter them all in these columns.
+
+**Paper or page:** [Latin cubes with disjoint subcubes of two orders](https://arxiv.org/abs/2511.06768v1). It says: “Then L can be extended to an n × n latin square if and only if N(i) ≥ r + s − n for all i ∈ \[n\].”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Product symbols preserve orthogonality in Latin squares
+
+**Remember:** Paired symbols preserve the two independent Latin rules.
+
+*True by definition. Confidence: medium.* MSC 05B15 (Orthogonal arrays, Latin squares, Room squares). arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** A Latin square uses each symbol once in every row and column. Two squares are orthogonal if each ordered symbol pair occurs once when their cells are matched. The product of two squares pairs their rows, columns and corresponding entries.
+
+**Problem.** If orders m and n each admit t pairwise orthogonal Latin squares, order mn does too.
+
+**How the definition helps.** Our own paired entries replace the search for a larger square with two independent cell calculations. Pair corresponding squares from the two collections. Each row or column contains every symbol pair once by the Latin rule in each factor. For two product squares, the requested entries determine one cell in each factor by orthogonality, hence exactly one product cell.
+
+**nLab:** [Latin square](https://ncatlab.org/nlab/show/Latin+square). It says: “a square array of numbers from 1 to n such that each row and each column contains every number from 1 to n.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Recording cell coordinates makes the bound on orthogonal squares a count
+
+**Remember:** Two different cells can agree in at most one recorded column.
+
+*True by definition.* MSC 05B15 (Orthogonal arrays, Latin squares, Room squares). arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** A Latin square uses each symbol once per row and column. Two squares are orthogonal if every ordered symbol pair occurs once across corresponding cells. For several pairwise orthogonal squares, the orthogonal array lists each cell as one row containing its coordinates and its symbols in all the squares.
+
+**Problem.** A collection of mutually orthogonal Latin squares of order n has at most n − 1 squares when n ≥ 2.
+
+**How the definition helps.** The array turns orthogonality into a limit on agreement. Distinct rows agree in at most one column. For one fixed row, each column supplies n − 1 other rows agreeing there. Our own count bounds the number of columns by (n² − 1)/(n − 1), and two columns already hold the coordinates.
+
+**Wikipedia:** [Mutually orthogonal Latin squares](https://en.wikipedia.org/wiki/Mutually_orthogonal_Latin_squares). It says: “every ordered pair of symbols appears in exactly one row of A”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Triples make every conjugate of a Latin square Latin
 
 **Remember:** Permute rows, columns and symbols without changing the rule for pairs.
@@ -871,6 +1735,54 @@
 **How the definition helps.** The triple definition makes this immediate because it imposes the same rule on all three pairs of positions (our own). In the table definition, exchanging roles requires checking that the new entries are well defined and do not repeat. The work moves into the equivalence with the triple definition. Since there are n² triples and n² possible pairs in any two positions, uniqueness also gives existence (our own). This recovers the table and its row and column rules.
 
 **Wikipedia:** [Latin square](https://en.wikipedia.org/wiki/Latin_square). It says: “Altogether there are 6 possibilities including "do nothing", giving us 6 Latin squares called the conjugates (also parastrophes) of the original square.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Affine directions give cells and symbols for orthogonal Latin squares
+
+**Remember:** Two directions name a cell, and each remaining direction supplies a symbol.
+
+*True by definition.* MSC 05B25 (Combinatorial aspects of finite geometries), 05B15. arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** In an affine plane, a direction consists of a line and all lines parallel to it. Two directions label rows and columns, and each remaining direction labels cells by their line in that direction. Orthogonal Latin squares use each symbol once per row and column and each ordered pair once across corresponding cells.
+
+**Problem.** For n ≥ 2, affine planes of order n exist exactly when there are n−1 pairwise orthogonal Latin squares of order n.
+
+**How the definition helps.** Direction labels make any two lines in different directions determine one cell, giving the Latin and orthogonality rules. Conversely, use cells as points and group them by row, column or common symbol in each square. Orthogonality and the Latin rule allow two distinct cells to agree in at most one label. Our own count finds (n + 1)(n − 1) other cells through each cell, so every pair has a joining line.
+
+**Wikipedia:** [Affine plane (incidence geometry)](https://en.wikipedia.org/wiki/Affine_plane_%28incidence_geometry%29). It says: “construct a set of n − 1 mutually orthogonal latin squares.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Parallel classes become points in projective completion
+
+**Remember:** Parallel lines meet at the point named by their direction.
+
+*True by definition.* MSC 05B25 (Combinatorial aspects of finite geometries), 05B05. arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** In an affine plane of order n, each line has n points, and equal or disjoint lines form parallel classes. Add one point per class to all its lines. Add one line consisting of all new points.
+
+**Problem.** Every finite affine plane of order n ≥ 2 extends to a projective plane of order n. In the extension, any two lines meet once and any two points determine one line.
+
+**How the definition helps.** One point per direction supplies exactly the missing intersections between old parallel lines. Each old point lies on exactly one line of each direction, so it has a unique join to each new point. The new line joins any two new points. There are n + 1 directions, so every completed line has n + 1 points.
+
+**Wikipedia:** [Affine plane (incidence geometry)](https://en.wikipedia.org/wiki/Affine_plane_%28incidence_geometry%29). It says: “each of whose points is that point at infinity where an equivalence class of parallel lines meets.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Subspace incidence constructs a projective plane over every finite field
+
+**Remember:** Span joins two points, and intersection locates the meeting point of two lines.
+
+*True by definition. Confidence: medium.* MSC 05B25 (Combinatorial aspects of finite geometries), 05B05. arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** Over a finite field, take the points to be the one-dimensional subspaces of a three-dimensional vector space. Take lines to be its two-dimensional subspaces and use inclusion for incidence.
+
+**Problem.** For each prime power q, the subspace construction gives a plane with q + 1 points per line. Two points determine one line, two lines meet once, and some four points have no three on a line.
+
+**How the definition helps.** Our own construction replaces the two incidence axioms with span and intersection in three dimensions. Distinct point spaces span two dimensions, and distinct line spaces intersect in one dimension. Counting nonzero vectors up to scaling gives (q² − 1)/(q − 1) points per line. The coordinate axes and the span of (1,1,1) supply four suitable points over the field of q elements.
+
+**nLab:** [projective plane](https://ncatlab.org/nlab/show/projective+plane). It says: “As the set of lines through the origin in F³”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -968,6 +1880,38 @@
 - [ProofWiki, All Bases of Matroid have same Cardinality](https://proofwiki.org/wiki/All_Bases_of_Matroid_have_same_Cardinality)
 - [ProofWiki, Equivalence of Definitions of Matroid/Definition 1 implies Definition 4](https://proofwiki.org/wiki/Equivalence_of_Definitions_of_Matroid/Definition_1_implies_Definition_4)
 
+### Prüfer sequences count trees with prescribed degrees
+
+**Remember:** Each label appears once for every lost edge except its last.
+
+*True by definition.* MSC 05C05 (Trees), 05C30. arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** In a tree on n ≥ 2 numbered vertices, repeatedly remove the smallest labeled leaf, a vertex with one edge, and record its neighbor’s label. Stop when two vertices remain. The recorded labels form the Prüfer sequence.
+
+**Problem.** Take n ≥ 2 labeled vertices with prescribed positive degrees d₁ through dₙ totaling 2n − 2. The number of trees with those degrees is (n − 2)! divided by the product of all (dᵢ − 1)!.
+
+**How the definition helps.** Counting Prüfer sequences replaces counting trees because a label of degree d appears exactly d − 1 times. Arranging those repeated labels gives the factorial formula. The decoding theorem proves that each sequence represents exactly one tree.
+
+**Wikipedia:** [Prüfer sequence](https://en.wikipedia.org/wiki/Pr%C3%BCfer_sequence). It says: “For each node set its degree to the number of times it appears in the sequence plus 1.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A dual bond corresponds to one simple cycle
+
+**Remember:** A simple closed curve cuts the dual in two.
+
+*Makes the theorem clean to state or prove.* MSC 05C10 (Planar graphs; geometric and topological aspects of graph theory), 05C40. arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** A bond is a nonempty set of edges whose deletion disconnects a connected graph, but no proper subset does. In a plane dual, each face becomes a vertex and each edge joins its two neighboring faces. Count a loop and a pair of parallel edges as cycles.
+
+**Problem.** In a finite connected plane graph, the dual edges of any simple cycle form a bond. Every dual bond arises this way.
+
+**How the definition helps.** A simple cycle separates the faces into two connected regions, so precisely its dual edges join those regions. The Jordan curve theorem supplies the separation. Conversely, in our own argument, the edges of a dual bond have even degree at every original vertex and therefore split into cycles. One cycle already separates the dual, so minimality leaves only that cycle.
+
+**Wikipedia:** [Dual graph](https://en.wikipedia.org/wiki/Dual_graph). It says: “every simple cycle of G corresponds to a minimal cutset in the dual of G, and vice versa.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Euler's formula holds on every surface when each face is a disk
 
 **Remember:** Ask that every face is a disk, and vertices minus edges plus faces is fixed.
@@ -1005,6 +1949,22 @@
 - [L. Heffter, Ueber das Problem der Nachbargebiete, Mathematische Annalen 38 (1891) 477–508](https://doi.org/10.1007/BF01203357)
 - [J. R. Edmonds, A combinatorial representation for oriented polyhedral surfaces, Master's thesis, University of Maryland (1960)](https://hdl.handle.net/1903/24820)
 
+### Forbidden minors reduce planarity to two graphs
+
+**Remember:** Contract the stretched parts and look for just two graphs.
+
+*Makes the theorem clean to state or prove.* MSC 05C10 (Planar graphs; geometric and topological aspects of graph theory), 05C83. arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** A graph obtained by deleting vertices or edges and contracting edges is called a minor. Contracting an edge merges its ends, after which loops and duplicate edges may be discarded.
+
+**Problem.** A finite simple graph is planar exactly when neither K₅ nor K₃,₃ is a minor. K₅ joins every pair of five vertices, and K₃,₃ joins each of three vertices to each of three others.
+
+**How the definition helps.** Contraction turns each path of a subdivided obstruction back into one edge, so two fixed minors suffice. Kuratowski’s theorem finds one of the two subdivisions in every nonplanar graph. Conversely, both forbidden graphs are nonplanar and taking minors preserves planarity, completing our own reduction.
+
+**nLab:** [planar graph](https://ncatlab.org/nlab/show/planar+graph). It says: “Wagner's theorem that this is the case iff K₅, K₃,₃ are not graph minors of G”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Fáry's theorem holds for simple graphs, since parallel edges cannot be straight
 
 **Remember:** Two points fix one straight segment, so straight drawings need simple graphs.
@@ -1023,6 +1983,56 @@
 
 - [S. K. Stein, Convex maps, Proceedings of the American Mathematical Society 2 (1951) 464–466](https://doi.org/10.1090/S0002-9939-1951-0041425-5)
 - [W. T. Tutte, How to draw a graph, Proceedings of the London Mathematical Society 13 (1963) 743–767](https://doi.org/10.1112/plms/s3-13.1.743)
+
+### One universal vertex turns outerplanarity into planarity
+
+**Remember:** The added vertex marks the face that must touch every old vertex.
+
+*Makes the theorem clean to state or prove.* MSC 05C10 (Planar graphs; geometric and topological aspects of graph theory), 05C83. arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** The cone over a graph adds one new vertex adjacent to all its vertices. Outerplanarity asks for a crossing-free drawing with every vertex on the boundary of the outer face.
+
+**Problem.** A finite simple graph is outerplanar exactly when its cone can be drawn without crossings.
+
+**How the definition helps.** The new vertex records one face that touches every old vertex. In an outerplanar drawing, place it in the outer face and draw its edges there. Conversely, deleting it from a drawing of the cone merges the incident regions into one face touching every old vertex. Our own explanation uses that face as the outer face.
+
+**Wikipedia:** [Outerplanar graph](https://en.wikipedia.org/wiki/Outerplanar_graph). It says: “the graph formed from G by adding a new vertex, with edges connecting it to all the other vertices, is a planar graph.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Subdivisions let two forbidden graphs characterize planarity
+
+**Remember:** Bending an edge through extra vertices cannot remove a crossing obstruction.
+
+*Makes the theorem clean to state or prove.* MSC 05C10 (Planar graphs; geometric and topological aspects of graph theory). arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** A subdivision replaces each edge with a path whose internal vertices are new and belong to no other replacement path. K₅ joins every pair of five vertices. K₃,₃ joins each of three vertices to each of three others.
+
+**Problem.** A finite simple graph can be drawn without crossings exactly when it contains no subdivision of K₅ or K₃,₃ as a subgraph.
+
+**How the definition helps.** Subdivisions let the theorem name only two obstructions even when their edges stretch into paths. Our own example is K₃,₃ with every edge subdivided once, which contains neither ordinary obstruction. In our own account, the hard direction is finding one stretched obstruction in every nonplanar graph.
+
+**nLab:** [planar graph](https://ncatlab.org/nlab/show/planar+graph). It says: “G is planar iff it does not contain a subgraph that is an edge subdivision of K₅ or K₃,₃”
+
+**Sources:**
+
+- [Casimir Kuratowski, Sur le problème des courbes gauches en Topologie (1930)](https://doi.org/10.4064/fm-15-1-271-283)
+
+### The complement of a spanning tree gives a dual spanning tree
+
+**Remember:** Tree edges left out on one side make a tree on the other.
+
+*True by definition.* MSC 05C10 (Planar graphs; geometric and topological aspects of graph theory), 05C05. arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** The plane dual has a vertex for every face, including the outer face. Each original edge gives a dual edge joining the faces on its two sides. Given a tree connecting all original vertices, keep every dual vertex and only the dual edges corresponding to edges outside the tree.
+
+**Problem.** For a finite connected plane graph, the duals of the edges outside any spanning tree form a spanning tree of the dual.
+
+**How the definition helps.** Taking the complement turns the tree’s two defining properties into one another through cycle–bond duality. A dual cycle among selected edges would give an original cut missed by the tree. If the selected edges failed to connect the dual, they would miss a minimal cut whose original edges formed a cycle in the tree.
+
+**Wikipedia:** [Dual graph](https://en.wikipedia.org/wiki/Dual_graph). It says: “spanning trees are dual to the complements of spanning trees”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Landmark distances bound graph size
 
@@ -1060,6 +2070,22 @@
 
 - [Anouk E. Brose, Jesús A. De Loera, Gyivan Lopez-Campos, Antonio J. Torres, On Lattice Diameter Segments and A Discrete Borsuk Partition Problem, arXiv:2508.20009 (2025)](https://arxiv.org/abs/2508.20009)
 
+### Four face colors give three edge colors by subtraction
+
+**Remember:** Three different face colors produce three different nonzero edge labels.
+
+*True by definition.* MSC 05C15 (Coloring of graphs and hypergraphs), 05C10. arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** Use pairs of bits as four face colors, adding or subtracting each coordinate modulo two. Faces on opposite sides of an edge must have different colors. Label each edge by the difference between its face colors.
+
+**Problem.** Take a finite connected graph drawn without crossings, with three edges at each vertex and no edge whose removal disconnects it. Its faces admit a proper four-coloring exactly when its edges admit three colors with different colors at each vertex.
+
+**How the definition helps.** Three distinct face colors at a vertex give three distinct nonzero edge differences. Conversely, in our own proof, assign the three nonzero bit pairs to the edge colors. They sum to zero around each vertex, so adding around any simple closed curve crossing edges gives zero by summing over the enclosed vertices. Thus adding labels along crossings from a fixed face gives consistent face colors, different across each edge.
+
+**Wikipedia:** [Graph coloring](https://en.wikipedia.org/wiki/Graph_coloring). It says: “every planar cubic bridgeless graph admits a Tait coloring.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### In the four colour theorem, touching at a corner is not adjacency
 
 **Remember:** Countries touching only at a corner may share a colour.
@@ -1078,6 +2104,24 @@
 
 - [Kenneth Appel and Wolfgang Haken, Every planar map is four colorable. Part I: Discharging, Illinois Journal of Mathematics 21 (1977) 429–490](https://doi.org/10.1215/ijm/1256049011)
 - [Hud Hudson, Four colors do not suffice, The American Mathematical Monthly 110 (2003) 417–423](https://doi.org/10.1080/00029890.2003.11919979)
+
+### Regular completion turns bipartite edge coloring into perfect matchings
+
+**Remember:** Complete the degrees, peel off matchings, and discard the added edges.
+
+*True by definition.* MSC 05C15 (Coloring of graphs and hypergraphs), 05C70. arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** A proper edge coloring partitions edges into matchings, sets of edges with no shared endpoint. In a bipartite graph, edges run between two vertex parts. A regular completion adds vertices and edges until the parts have equal size and every vertex has the original maximum degree.
+
+**Problem.** If a finite bipartite graph has maximum degree Δ, its edges can be colored with Δ colors so that incident edges have different colors. Fewer colors cannot suffice.
+
+**How the definition helps.** Each perfect matching supplies one color and removes exactly one edge at every vertex. In our own construction, equalize the part sizes with isolated vertices and fill equal degree deficits across the parts, allowing parallel edges. Hall’s theorem supplies a perfect matching at each positive degree because every left subset has at least as many neighbors as vertices. Discarding the added edges gives the coloring, and a vertex of maximum degree needs every color.
+
+**Wikipedia:** [Graph coloring](https://en.wikipedia.org/wiki/Graph_coloring). It says: “equivalent to the problem of partitioning the edge set into k matchings.”
+
+**Paper or page:** [Total coloring graphs with large minimum degree](https://arxiv.org/abs/2507.05548). It says: “Every bipartite multigraph G satisfies χ′(G) = Δ(G).”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Vertex orders make the greedy colouring bound immediate
 
@@ -1208,6 +2252,22 @@
 
 - [D. J. Rose, Triangulated graphs and the elimination process, Journal of Mathematical Analysis and Applications 32 (1970) 597–609](https://doi.org/10.1016/0022-247X(70)90282-9)
 
+### Partitions into independent sets make the coloring count polynomial
+
+**Remember:** Partition first, then supply different names for the classes.
+
+*True by definition.* MSC 05C31 (Graph polynomials), 05C15. arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** Group proper colorings by their unlabeled color classes. A class is a nonempty set of vertices with no edges inside it. Write aₖ for the number of partitions into k such classes.
+
+**Problem.** For each nonnegative integer q, the number of proper colorings with q available colors is a polynomial in q. Its term for k classes is aₖ times the product of k descending factors starting at q.
+
+**How the definition helps.** Each partition into k classes needs k distinct color names, so it contributes q(q − 1)⋯(q − k + 1) colorings. For zero classes the product is one. Summing over all possible class counts gives the polynomial directly, our own comparison with deletion and contraction.
+
+**Wikipedia:** [Chromatic polynomial](https://en.wikipedia.org/wiki/Chromatic_polynomial). It says: “counts the number of partitions of the vertex set into k (non-empty) independent sets.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Tutte subset sums count forests and spanning edge sets
 
 **Remember:** Set a variable to one to keep only terms with exponent zero.
@@ -1243,6 +2303,24 @@
 **Sources:**
 
 - [W. T. Tutte, A contribution to the theory of chromatic polynomials, Canadian Journal of Mathematics 6 (1954) 80–91](https://doi.org/10.4153/CJM-1954-010-9)
+
+### Vertex weights reduce Turán’s edge bound to a weighted maximum
+
+**Remember:** Uniform weights count edges, and some optimal weights occupy a clique.
+
+*True by definition.* MSC 05C35 (Extremal problems in graph theory). arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** A clique is a set of vertices joined in every pair. Give the vertices nonnegative weights totaling one. The weighted edge sum adds the product of the two endpoint weights for each edge.
+
+**Problem.** A simple graph on n vertices without a clique of size r + 1 has at most (1 − 1/r)n²/2 edges for r ≥ 2.
+
+**How the definition helps.** Uniform weights turn the edge count divided by n² into a special case of the weighted edge sum. Our own explanation moves two nonadjacent vertices’ combined weight to the one with greater total neighbor weight. Each move preserves or increases the sum until the positive weights occupy a clique. On at most r vertices, the sum-of-squares inequality bounds the edge sum by (1 − 1/r)/2.
+
+**Paper or page:** [An edge-spectral Erdős-Stone-Simonovits theorem and its stability](https://arxiv.org/abs/2508.15271v1). It says: “\\sum <sub>ij \\in E(G)</sub> x<sub>ix</sub><sub>j</sub> \\le \\frac{1}{2}\\left( 1- \\frac{1}{r} \\right).”
+
+**Sources:**
+
+- [T. Motzkin and E. Straus, Maxima for graphs and a new proof of a theorem of Turán (1965)](https://doi.org/10.4153/CJM-1965-053-6)
 
 ### An edge boundary map gives the cycle space dimension
 
@@ -1296,6 +2374,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Blocks and cut vertices give a tree of attachments
+
+**Remember:** Blocks meet through cut vertices without forming a ring.
+
+*Makes the theorem clean to state or prove.* MSC 05C40 (Connectivity). arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** A block is a maximal 2-connected subgraph, a bridge with its endpoints, or an isolated vertex. Make a new graph with a vertex for each block and cut vertex. Join a block to each cut vertex it contains.
+
+**Problem.** For a finite connected graph, the resulting block-cut graph is a tree.
+
+**How the definition helps.** The block-cut graph records each attachment as an edge, so a circular chain of attachments would give a cycle. Paths in the original graph show that the block-cut graph is connected. In our own argument, blocks around a cycle remain connected as a union after any single vertex deletion. They would therefore belong to one block.
+
+**Wikipedia:** [Biconnected component](https://en.wikipedia.org/wiki/Biconnected_component). It says: “There is an edge in the block-cut tree for each pair of a block and an articulation point that belongs to that block.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Leaving K₀ out of connected graphs makes the exponential formula work
 
 **Remember:** Components are never empty, so the logarithm counts connected graphs.
@@ -1313,6 +2407,22 @@
 **Sources:**
 
 - [R. P. Stanley, Enumerative Combinatorics, Volume 2, Cambridge University Press (1999)](https://doi.org/10.1017/CBO9780511609589)
+
+### Open ears build exactly the two-connected graphs
+
+**Remember:** Each new path attaches at two different places.
+
+*Makes the theorem clean to state or prove.* MSC 05C40 (Connectivity). arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** An open ear decomposition builds the entire graph from a cycle by adding paths of unused edges. Each path has two distinct endpoints already present and only new vertices between them.
+
+**Problem.** A finite simple graph with at least three vertices stays connected after any single vertex deletion exactly when it has an open ear decomposition.
+
+**How the definition helps.** Two distinct attachments keep each new path connected to the surviving graph after any one vertex is removed. For our own converse, start with a cycle. Each remaining connected part must attach at two different vertices, or deleting its only attachment would disconnect it. A path through that part supplies another ear, and any remaining edge is itself an ear.
+
+**Wikipedia:** [Ear decomposition](https://en.wikipedia.org/wiki/Ear_decomposition). It says: “is 2-vertex-connected if and only if it has an open ear decomposition.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Requiring more than three vertices keeps the triangle out of Steinitz's theorem
 
@@ -1332,6 +2442,90 @@
 
 - [B. Grünbaum, Convex Polytopes, Graduate Texts in Mathematics 221, Springer (2003)](https://doi.org/10.1007/978-1-4613-0019-9)
 - [E. Steinitz, Polyeder und Raumeinteilungen, Encyclopädie der mathematischen Wissenschaften, Band 3 (Geometrie), Teil IIIAB12 (1922) 1–139](https://gdz.sub.uni-goettingen.de/dms/load/img/?PPN=PPN360609767&DMDID=dmdlog203)
+
+### Splitting vertices turns Menger’s vertex theorem into a flow theorem
+
+**Remember:** A one-unit gate lets only one path use a vertex.
+
+*True by definition.* MSC 05C40 (Connectivity), 05C21. arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** In a split network, replace each internal vertex by an entrance and an exit joined by a directed edge of capacity one. Keep the start s and finish t unsplit. Give each original edge capacity n, the vertex count, leading from its tail’s exit to its head’s entrance wherever those copies exist.
+
+**Problem.** Take distinct vertices s and t in a finite directed graph with no edge from s to t. The minimum number of internal vertices blocking all directed s-to-t paths equals the maximum number of such paths sharing only their ends.
+
+**How the definition helps.** One-unit gates enforce vertex disjointness and price each deleted vertex at one, our own reduction. A minimum cut can pay only for gates since deleting every internal vertex costs less than n, our own argument. Integral max-flow min-cut and the decomposition of flow into paths do the remaining work, our own account.
+
+**Wikipedia:** [Menger's theorem](https://en.wikipedia.org/wiki/Menger%27s_theorem). It says: “equal to the maximum number of pairwise internally disjoint paths from x to y.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The two Menger theorems put vertex connectivity below edge connectivity
+
+**Remember:** Paths that share no internal vertices share no edges either.
+
+*True by definition.* MSC 05C40 (Connectivity). arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** For each pair of distinct vertices, count the largest family of distinct paths between them sharing only their ends. Vertex connectivity is the smallest such count over all pairs. For edge connectivity, count paths sharing no edge instead.
+
+**Problem.** For a finite connected simple graph with at least two vertices, vertex connectivity is at most edge connectivity. Edge connectivity is at most the smallest vertex degree.
+
+**How the definition helps.** Internally disjoint paths are also edge-disjoint, so the path counts are ordered for each pair, our own comparison. No edge-disjoint family can use more paths than there are edges at its starting vertex, our own argument. The two global forms of Menger’s theorem identify these counts with connectivity measured by deletions, our own account.
+
+**Wikipedia:** [Connectivity (graph theory)](https://en.wikipedia.org/wiki/Connectivity_%28graph_theory%29). It says: “The edge-connectivity for a graph with at least 2 vertices is less than or equal to the minimum degree of the graph”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Two internally disjoint paths put a pair on a cycle
+
+**Remember:** Two routes with no common middle make one cycle.
+
+*True by definition.* MSC 05C40 (Connectivity). arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** In the path form of 2-connectivity, a graph has at least three vertices and each pair has two paths sharing only their endpoints. The deletion form instead asks that removing any single vertex leave the graph connected.
+
+**Problem.** A finite connected simple graph with at least three vertices is 2-connected exactly when every pair lies on a common cycle.
+
+**How the definition helps.** The two paths join into a cycle, and any cycle through the pair splits into two such paths, our own explanation. Our own account leaves equivalence with the deletion definition to the global vertex form of Menger’s theorem.
+
+**Wikipedia:** [Connectivity (graph theory)](https://en.wikipedia.org/wiki/Connectivity_%28graph_theory%29). It says: “for every set of k vertices in the graph there is a cycle that passes through all the vertices in the set.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Unit capacities turn edge Menger into max-flow min-cut
+
+**Remember:** One unit per edge buys one route per edge.
+
+*True by definition.* MSC 05C40 (Connectivity), 05C21. arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** In an undirected unit-capacity network, at most one unit of net flow can pass through each edge. Use a capacity-one arc in each direction and cancel any flow that goes both ways.
+
+**Problem.** Between any two distinct vertices in a finite undirected graph, the largest number of edge-disjoint paths equals the fewest edge deletions that separate them.
+
+**How the definition helps.** Unit capacities make a cut count edges and an integral flow count disjoint paths. The integral max-flow min-cut theorem does the work of equating the two. Cancellation and path decomposition turn its integral flow into undirected paths, our own explanation.
+
+**Wikipedia:** [Max-flow min-cut theorem](https://en.wikipedia.org/wiki/Max-flow_min-cut_theorem). It says: “the maximum number of edge-disjoint s-t paths in an undirected graph is equal to the minimum number of edges in an s-t cut-set.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Hamiltonian closure makes the degree criteria immediate
+
+**Remember:** Fill in safe edges until no eligible pair remains.
+
+*True by definition.* MSC 05C45 (Eulerian and Hamiltonian graphs). arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** For a simple graph with n vertices, repeatedly join nonadjacent vertices whose current degrees sum to at least n. Stop when no such pair remains to get its Hamiltonian closure.
+
+**Problem.** A finite simple graph on n ≥ 3 vertices has a cycle through every vertex if every nonadjacent pair has degree sum at least n. In particular, minimum degree at least n⁄2 suffices.
+
+**How the definition helps.** The degree condition makes the closure complete, where any ordering of the vertices gives a cycle through them all. The Bondy–Chvátal closure theorem says that adding the eligible edges preserves the existence of such a cycle. That theorem supplies the rerouting argument.
+
+**Wikipedia:** [Hamiltonian path](https://en.wikipedia.org/wiki/Hamiltonian_path). It says: “A graph is Hamiltonian if and only if its closure is Hamiltonian.”
+
+**Paper or page:** [Ore's Theorem](https://proofwiki.org/wiki/Ore's_Theorem), [Dirac's Theorem](https://proofwiki.org/wiki/Dirac's_Theorem). It says: “Then G is Hamiltonian.”
+
+**Sources:**
+
+- [J. A. Bondy and V. Chvátal, A method in graph theory (1976)](https://doi.org/10.1016/0012-365X(76)90078-9)
 
 ### An incidence factor makes the graph Laplacian positive semidefinite
 
@@ -1362,6 +2556,22 @@
 **How the definition helps.** The product definition makes the kernel easy to read because xᵀLx equals the squared length of Bᵀx (our own). Thus Lx = 0 exactly when Bᵀx = 0. The last condition says that x has equal values at the ends of every edge. Each component then contributes one free constant. With the usual definition, one can instead show that a vertex where x is largest forces its neighbours to have the same value (our own). The product proof moves the work into verifying the matrix factorization.
 
 **Wikipedia:** [Laplacian matrix](https://en.wikipedia.org/wiki/Laplacian_matrix). It says: “The number of connected components in the graph is the dimension of the nullspace of the Laplacian and the algebraic multiplicity of the 0 eigenvalue.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### An incidence matrix turns Kirchhoff’s determinant into a tree count
+
+**Remember:** One squared determinant counts one tree or nothing.
+
+*True by definition.* MSC 05C50 (Graphs and linear algebra (matrices, eigenvalues, etc.)), 05C05. arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** Orient each edge arbitrarily and give it a column with −1 at its tail and +1 at its head. All other entries are zero. Delete one vertex row to get the reduced incidence matrix B.
+
+**Problem.** For a finite simple graph with n ≥ 2 vertices, det(BBᵀ) counts the trees that contain every vertex and use only graph edges.
+
+**How the definition helps.** Factoring the reduced Laplacian as BBᵀ lets the Cauchy–Binet formula express its determinant as a sum over choices of n − 1 edges. Each term squares the determinant of the selected columns. A cycle makes those columns dependent, giving zero. For a tree, expanding at successive leaves gives determinant ±1.
+
+**Wikipedia:** [Kirchhoff's theorem](https://en.wikipedia.org/wiki/Kirchhoff%27s_theorem). It says: “the Laplacian L can be factored into the product of the incidence matrix and its transpose”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -1436,6 +2646,44 @@
 - [P. Erdős and A. Rényi, Asymmetric graphs, Acta Mathematica Academiae Scientiarum Hungaricae 14 (1963) 295–315](https://doi.org/10.1007/BF01895716)
 - [R. Rado, Universal graphs and universal functions, Acta Arithmetica 9 (1964) 331–340](https://doi.org/10.4064/aa-9-4-331-340)
 
+### Bridgeless cubic graphs have perfect matchings by counting odd cuts
+
+**Remember:** An odd component needs at least three edges out, not just one.
+
+*Rules out counterexamples.* MSC 05C70 (Edge subsets with special properties (factorization, matching, partitioning, covering and packing, etc.)), 05C40. arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** A cubic graph has degree three at every vertex. A bridge is an edge whose deletion increases the number of connected components. A bridgeless graph has no such edge.
+
+**Problem.** Every finite bridgeless cubic graph has a perfect matching, which matches every vertex exactly once.
+
+**How the definition helps.** Bridgelessness excludes a single exiting edge, while degree three forces an odd number of exits from any component of odd size after vertex deletion. Each such component therefore uses at least three edges to deleted vertices. Each deleted vertex supplies at most three, so the number of odd components never exceeds the number of deleted vertices. Tutte’s matching theorem now gives a perfect matching.
+
+**Wikipedia:** [Petersen's theorem](https://en.wikipedia.org/wiki/Petersen%27s_theorem). It says: “Every cubic, bridgeless graph contains a perfect matching.”
+
+**Sources:**
+
+- [Julius Petersen, Die Theorie der regulären graphs (1891)](https://doi.org/10.1007/BF02392606)
+
+### Cut capacities give Hall’s theorem and the exact matching size
+
+**Remember:** A cut pays for left vertices it leaves out and right neighbors it includes.
+
+*Makes the theorem clean to state or prove.* MSC 05C70 (Edge subsets with special properties (factorization, matching, partitioning, covering and packing, etc.)), 05C21. arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** A bipartite graph has two vertex parts and edges only between the parts. Its left deficiency d is the largest difference between the size of a left subset and its number of distinct neighbors. The empty subset gives difference zero.
+
+**Problem.** In a finite bipartite graph with m left vertices, the largest matching, a set of edges with no shared endpoints, has m − d edges. It covers every left vertex exactly when d = 0.
+
+**How the definition helps.** Deficiency measures the greatest shortage of neighbors, so at least d left vertices must go unmatched. In our own flow proof, give each left-to-right edge capacity m + 1 and each source or sink connection capacity one. For left subset S on the source side, a cheapest cut there costs m − \|S\| plus its number of neighbors. Integral max-flow min-cut gives a matching of the minimum cut size, m − d.
+
+**Wikipedia:** [Hall's marriage theorem](https://en.wikipedia.org/wiki/Hall%27s_marriage_theorem). It says: “The max-flow min-cut theorem”
+
+**Paper or page:** [Hall's Marriage Theorem/Finite Set](https://proofwiki.org/wiki/Hall's_Marriage_Theorem/Finite_Set). It says: “There exists an injection f: I → Y such that”
+
+**Sources:**
+
+- [Philip Hall, On Representatives of Subsets (1935)](https://doi.org/10.1112/jlms/s1-10.37.26)
+
 ### Domino tilings as perfect matchings make Hall's theorem decide tileability
 
 **Remember:** Each domino is one edge between a black and a white square.
@@ -1451,6 +2699,24 @@
 **Wikipedia:** [Domino tiling](https://en.wikipedia.org/wiki/Domino_tiling). It says: “Equivalently, it is a perfect matching in the grid graph formed by placing a vertex at the center of each square of the region”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Splitting heads and tails gives the even regular factorization
+
+**Remember:** Matching head copies and tail copies gives one arrival and one departure.
+
+*True by definition.* MSC 05C70 (Edge subsets with special properties (factorization, matching, partitioning, covering and packing, etc.)), 05C45. arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** In a graph where every degree is 2k, orient each component along a closed walk using every edge exactly once. Split each vertex into a left and a right copy. Replace each arrow by an edge from the left copy of its start to the right copy of its end.
+
+**Problem.** The edges of a finite 2k-regular simple graph, for k ≥ 1, partition into k spanning subgraphs of degree two.
+
+**How the definition helps.** Splitting each vertex turns a choice of one arrival and one departure there into a perfect matching of the copies. The closed walks exist by Euler’s circuit theorem and give every copy degree k. Kőnig’s edge-coloring theorem partitions the edges between copies into k perfect matchings. Each matching becomes a spanning subgraph with degree two at every original vertex.
+
+**Wikipedia:** [2-factor theorem](https://en.wikipedia.org/wiki/2-factor_theorem). It says: “the edges of G can be partitioned into k edge-disjoint 2-factors.”
+
+**Sources:**
+
+- [Julius Petersen, Die Theorie der regulären graphs (1891)](https://doi.org/10.1007/BF02392606)
 
 ### Allowing parallel edges makes deletion and contraction count spanning trees exactly
 
@@ -1560,6 +2826,142 @@
 
 - [Michael A. Bender and Martin Farach-Colton, The LCA Problem Revisited (2000)](https://doi.org/10.1007/10719839_9)
 
+### A bounded set size rules out nested sunflower counterexamples
+
+**Remember:** Without a size bound, a long nested family defeats the lemma.
+
+*Rules out counterexamples.* MSC 05D05 (Extremal set theory). arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** A sunflower consists of distinct sets whose pairwise intersections are all the same set, called the core. A family of rank at most k has no set larger than k.
+
+**Problem.** Take integers k ≥ 0 and r ≥ 3. A family of rank at most k with more than k!(r−1)ᵏ distinct sets contains a sunflower with r members.
+
+**How the definition helps.** Bounding rank excludes arbitrarily long nested families, which contain no three-set sunflower. Our own reduction pads each set to size k with private points, preserving pairwise intersections. For k ≥ 1, a maximal disjoint subfamily either supplies r petals or covers all sets with at most k(r − 1) points. Some point then occurs in more than (k − 1)!(r − 1)ᵏ⁻¹ sets, so deleting it permits induction.
+
+**Wikipedia:** [Sunflower (mathematics)](https://en.wikipedia.org/wiki/Sunflower_%28mathematics%29). It says: “the pairwise intersections must be the exact same set, not just the same size.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A uniform random chain turns the LYM inequality into an expectation
+
+**Remember:** A random chain can hit an antichain at most once.
+
+*True by definition.* MSC 05D05 (Extremal set theory). arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** Shuffle the n points uniformly. The empty set and successive initial sets of the shuffle form a chain. The Lubell mass of a family is the expected number of its sets on this chain.
+
+**Problem.** An antichain is a family in which no distinct member contains another. For an antichain of subsets of n points, summing 1/(n choose \|A\|) over its members A gives at most one.
+
+**How the definition helps.** Our own chain definition lets an antichain contribute zero or one on every draw. Our own count uses the fact that the first \|A\| points form a uniformly chosen \|A\|-element set. Linearity of expectation converts those hitting probabilities to the displayed sum.
+
+**Wikipedia:** [Lubell–Yamamoto–Meshalkin inequality](https://en.wikipedia.org/wiki/Lubell%E2%80%93Yamamoto%E2%80%93Meshalkin_inequality). It says: “Since this number is at most the total number of all permutations,”
+
+**Paper or page:** [A Relationship for LYM Inequalities between Boolean Lattices and Linear Lattices with Applications](https://arxiv.org/abs/2403.04817v1). It says: “If $\\mathcal{F} \\subseteq 2<sup>\[n\]</sup>$ is an antichain, then\\\[ l(\\mathcal{F}) = \\sum \_{F \\in \\mathcal{F}}\\frac{1}{{{n} \\choose {\|F\|}}} \\leq 1. \\\]”
+
+**Sources:**
+
+- [D. Lubell, A short proof of Sperner’s lemma (1966)](https://sites.math.rutgers.edu/~zeilberg/akherim/lubell1966.pdf)
+
+### Circular intervals reduce the Erdős–Ko–Rado bound to local pairs
+
+**Remember:** On any circle, intersecting k-intervals can contribute at most k hits.
+
+*True by definition.* MSC 05D05 (Extremal set theory). arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** In a cyclic order, a k-interval consists of k consecutive points, allowing a wrap past the end of the list. A star consists of all k-sets through one point. An intersecting family has no two disjoint sets.
+
+**Problem.** Suppose n ≥ 2k and k ≥ 1. Among intersecting families of k-element sets on n points, a star attains the maximum size (n−1 choose k−1).
+
+**How the definition helps.** Counting intervals in a random cyclic order replaces the whole family by a local count on one circle. Around any chosen family interval, the other candidates meeting it split into k − 1 disjoint pairs. At most k intervals can therefore belong to the family. Our own averaging uses probability n/(n choose k) for each member to appear as an interval.
+
+**Wikipedia:** [Erdős–Ko–Rado theorem](https://en.wikipedia.org/wiki/Erd%C5%91s%E2%80%93Ko%E2%80%93Rado_theorem). It says: “The two intervals that separate these elements are disjoint”
+
+**Sources:**
+
+- [G. O. H. Katona, A simple proof of the Erdős–Chao Ko–Rado theorem (1972)](https://real.mtak.hu/21117/1/paper_20.pdf)
+
+### Precedence events give Bollobás’s set pair inequality
+
+**Remember:** Cross intersections make two precedence events impossible together.
+
+*True by definition.* MSC 05D05 (Extremal set theory). arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** A Bollobás system consists of pairs (A,B) of finite disjoint sets. The first set of each pair meets the second set of every other pair. In a uniform random ordering of all points in the system, the event for (A,B) places all of A before all of B.
+
+**Problem.** For a finite Bollobás system, the sum of 1/(\|A\| + \|B\| choose \|A\|) over its pairs is at most one.
+
+**How the definition helps.** Our own ordering turns the cross intersections into disjoint events. If events for (A,B) and (C,D) both held, a point of A ∩ D would precede and follow a point of C ∩ B. The positions of A within A ∪ B are uniform, giving probability 1/(\|A\| + \|B\| choose \|A\|). Adding the disjoint probabilities gives at most one.
+
+**Paper or page:** [Some new Bollobás-type inequalities](https://arxiv.org/abs/2405.17639v2). It says: “\\sum <sub>i=1</sub><sup>m\\frac{1}{\\binom</sup> {\|A<sub>i</sub>\|+\|B<sub>i</sub>\|}{\|A<sub>i</sub>\|}}\\leqslant 1.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Symmetric chains give the largest family avoiding a long chain
+
+**Remember:** Every symmetric chain passes through as many middle layers as it can.
+
+*True by definition.* MSC 05D05 (Extremal set theory). arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** A layer consists of all subsets of one size among n points. A symmetric chain has nested sets of every size from a to n − a, one per size. A symmetric chain decomposition partitions all subsets into such chains.
+
+**Problem.** For 1 ≤ k ≤ n + 1, the k consecutive middle layers form a largest family without k + 1 strictly nested sets. Either central choice works in a tie.
+
+**How the definition helps.** Our own symmetric chains let each chain contribute at most k sets, or its full size if shorter. The k middle layers meet every chain in exactly that many sets and contain no longer chain. Our own argument uses the symmetric chain decomposition theorem to supply the partition.
+
+**Wikipedia:** [Sperner's theorem](https://en.wikipedia.org/wiki/Sperner%27s_theorem). It says: “the largest size of an r-chain-free family is the sum of the r largest binomial coefficients”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Weights from random maximal chains give Sperner’s bound
+
+**Remember:** A chain can hit an antichain only once.
+
+*True by definition.* MSC 05D05 (Extremal set theory), 06A06. arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** Order the elements of a finite set uniformly at random. Its first k elements form a subset for each k, including zero. Give each subset a weight equal to the probability that it occurs among these nested subsets.
+
+**Problem.** Among families of subsets of an n-element set with no member strictly containing another, the largest has as many members as the middle layer. That layer consists of all subsets of size ⌊n ∕ 2⌋.
+
+**How the definition helps.** The weights sum to at most one because the nested subsets can contain at most one family member. All k-element sets are equally likely to occur, and each ordering produces exactly one. Each middle-sized subset therefore has the smallest weight, since the middle size has the most subsets. Taking all subsets of that size attains the bound.
+
+**Wikipedia:** [Lubell–Yamamoto–Meshalkin inequality](https://en.wikipedia.org/wiki/Lubell%E2%80%93Yamamoto%E2%80%93Meshalkin_inequality). It says: “Each permutation may only be associated with a single set in A”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Color complements expose a parity improvement for Ramsey numbers
+
+**Remember:** An odd number of vertices cannot all have odd red degree.
+
+*True by definition.* MSC 05D10 (Ramsey theory), 05C55. arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** In a complete graph every pair of vertices has an edge. For red and blue edges, R(r,s) is the least vertex count forcing r vertices joined entirely in red or s joined entirely in blue. Form the red graph by keeping only red edges.
+
+**Problem.** For r,s ≥ 2, put a = R(r − 1,s) and b = R(r,s − 1). If a and b are even, then R(r,s) ≤ a + b − 1.
+
+**How the definition helps.** The red graph turns the color condition into a parity test on vertex degrees. With neither target present, a vertex has at most a − 1 red neighbors and b − 1 blue neighbors by the smaller Ramsey bounds. On a + b − 1 vertices, both bounds must be equalities. This would give an odd number of vertices odd red degree, although every red edge contributes twice to the degree sum.
+
+**Wikipedia:** [Ramsey's theorem](https://en.wikipedia.org/wiki/Ramsey%27s_theorem). It says: “are both even, the induction inequality can be strengthened to”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### One color per earlier vertex gives a monochromatic clique
+
+**Remember:** Choose vertices with one forward color, then keep a single color.
+
+*True by definition.* MSC 05D10 (Ramsey theory), 05C55. arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** In a complete graph every pair of vertices has an edge. Call an ordered list end-homogeneous if all edges from each vertex to later vertices have one color. Assign that color to the vertex and choose any color for a last vertex.
+
+**Problem.** For positive integers q and k, every sufficiently large complete graph with edges in q colors has k vertices joined entirely in one color. A countably infinite complete graph with finitely many edge colors has an infinite such set.
+
+**How the definition helps.** In an end-homogeneous list, vertices assigned the same color have every edge between them in that color. In our own proof, repeatedly choose a vertex and retain its largest remaining group of neighbors joined to it in one color. Enough starting vertices give a list of q(k − 1) + 1, so some k receive the same color. Starting with infinitely many vertices keeps some group infinite each time, and one assigned color occurs infinitely often.
+
+**Paper or page:** [Ramsey's Theorem](https://proofwiki.org/wiki/Ramsey's_Theorem), [Infinite Ramsey's Theorem](https://proofwiki.org/wiki/Infinite_Ramsey's_Theorem). It says: “In any coloring of the edges of a sufficiently large complete graph, one will find monochromatic complete subgraphs.”
+
+**Sources:**
+
+- [Frank P. Ramsey, On a Problem of Formal Logic (1930)](https://doi.org/10.1112/plms/s2-30.1.264)
+
 ### The infinite Hall theorem needs every set to be finite
 
 **Remember:** Infinitely many boys is fine if each boy knows only finitely many girls.
@@ -1578,6 +2980,56 @@
 
 - [Philip Hall, On representatives of subsets, Journal of the London Mathematical Society 10 (1935) 26–30](https://doi.org/10.1112/jlms/s1-10.37.26)
 - [M. Hall Jr., Distinct representatives of subsets, Bulletin of the American Mathematical Society 54 (1948) 922–926](https://doi.org/10.1090/S0002-9904-1948-09098-X)
+
+### Random circle multiplication finds a large sum free subset
+
+**Remember:** Two points in the middle third add outside it.
+
+*True by definition.* MSC 05D40 (Probabilistic methods in extremal combinatorics, including polynomial methods (combinatorial Nullstellensatz, etc.)). arXiv math.CO. Level 2: later undergraduate.
+
+**Definition.** For a real number x, keep each integer a whose product ax has fractional part strictly between 1/3 and 2/3. The fractional part is what remains after subtracting the largest integer at most ax.
+
+**Problem.** Every finite set of N positive integers has a sum-free subset of size at least N/3. In a sum-free set, x + y = z has no solution even if x = y.
+
+**How the definition helps.** Our own interval replaces testing every sum with one membership test per integer. Two retained fractional parts add to a number strictly between 2/3 and 4/3, outside the middle third even after subtracting one. For x uniform between zero and one, each positive integer a makes the fractional part of ax uniform there. The average number kept is N/3, so some choice keeps at least that many.
+
+**Paper or page:** [The largest (k, ℓ)-sum-free subsets](https://arxiv.org/abs/2001.05632v3). It says: “$A$ contains a $(k,\\ell )$-sum-free subsets of size at least $\\frac{1}{k+\\ell }N$.”
+
+**Sources:**
+
+- [P. Erdős, Extremal problems in number theory (1965)](https://renyi.hu/~p_erdos/1965-02.pdf)
+
+### A root product turns Newton’s identities into coefficient comparisons
+
+**Remember:** Differentiate the product once to recover every power sum.
+
+*True by definition.* MSC 05E05 (Symmetric functions and generalizations). arXiv math.CO, math.AC. Level 2: later undergraduate.
+
+**Definition.** For roots listed with repetition, define E(t) as the product of all factors 1 + rt. Define e(k) as its coefficient of degree k, with missing coefficients equal to zero. Define p(i) as the sum of the i-th powers of the roots.
+
+**Problem.** For every k ≥ 1, k e(k) equals the sum of (−1)ⁱ⁻¹ p(i)e(k − i) over i from 1 to k.
+
+**How the definition helps.** The product definition gives one fraction r/(1 + rt) per root in the logarithmic derivative E′(t)/E(t). In our own proof, expanding each fraction as a geometric series in t and multiplying by E(t) gives the identity by coefficient comparison. Expanding the original product recovers the usual definition of e(k) as a sum of products from k positions.
+
+**Paper or page:** [Newton-Girard Identities](https://proofwiki.org/wiki/Newton-Girard_Identities). It says: “k eₖ(X) = ∑ᵢ₌₁ᵏ (−1)ⁱ⁻¹ eₖ₋ᵢ(X) pᵢ(X)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Counting each rearranged monomial once gives a basis in every characteristic
+
+**Remember:** Count each rearranged term once, even if several permutations give it.
+
+*Rules out counterexamples.* MSC 05E05 (Symmetric functions and generalizations). arXiv math.CO, math.AC. Level 2: later undergraduate.
+
+**Definition.** Define a monomial symmetric polynomial as the sum of the distinct terms obtained by permuting the variables in one monomial. Do not count all permutations with repeats.
+
+**Problem.** Over any field, taking one monomial symmetric polynomial per group of rearranged terms gives a basis of the symmetric polynomials.
+
+**How the definition helps.** Counting distinct terms makes every coefficient in the group equal to one, even over a field with two elements. In our own proof, symmetry forces equal coefficients within each group, and different groups share no terms. Thus every symmetric polynomial has a unique expansion in the group sums. In our own two-variable example, counting both permutations of x₁x₂ gives 2x₁x₂ = 0.
+
+**Wikipedia:** [Symmetric polynomial](https://en.wikipedia.org/wiki/Symmetric_polynomial). It says: “These monomial symmetric polynomials form a vector space basis”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Elementary symmetric polynomials work over every ring, power sums need characteristic zero
 

@@ -1,3 +1,35 @@
+### The principal quadratic form keeps equation type fixed under coordinate changes
+
+**Remember:** Count the lines through the origin where the principal form vanishes.
+
+*Makes the theorem clean to state or prove.* MSC 35A30 (Geometric theory, characteristics, transformations in context of PDEs). arXiv math.AP. Level 2: later undergraduate.
+
+**Definition.** For a real equation in two variables, its principal form replaces uₓₓ, uₓᵧ and uᵧᵧ by ξ², ξη and η². A nonzero form is elliptic if it has no real zero direction, parabolic if it has one, and hyperbolic if it has two.
+
+**Problem.** A smooth coordinate change with smooth inverse preserves the type of a linear second-order equation at every point with nonzero principal form.
+
+**How the definition helps.** An invertible linear substitution pairs the old zero directions with the new ones (our own). The chain rule gives precisely this substitution in the second-order terms (our own).
+
+**Wikipedia:** [Partial differential equation](https://en.wikipedia.org/wiki/Partial_differential_equation). It says: “with the terms of the highest degree (a homogeneous polynomial, here a quadratic form) being most significant for the classification.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A nonpositive potential keeps the elliptic maximum principle valid
+
+**Remember:** A nonpositive potential cannot help sustain a positive interior peak.
+
+*Rules out counterexamples.* MSC 35B50 (Maximum principles in context of PDEs), 35J15. arXiv math.AP. Level 2: later undergraduate.
+
+**Definition.** In the operator Δu + qu, the potential q is the coefficient that multiplies u without differentiating it. Restrict to bounded potentials q that are nonpositive at every point.
+
+**Problem.** On a bounded domain, a twice differentiable function continuous to the boundary with Δu + qu ≥ 0 and nonpositive boundary values stays nonpositive.
+
+**How the definition helps.** At a positive interior maximum, both the Laplacian and the potential term are nonpositive (our own). A small exponential perturbation makes the operator inequality strict without moving a positive maximum to the boundary (our own). With q = 1 instead, sin(x) on \[0, π\] is positive inside and zero at both endpoints (our own).
+
+**Wikipedia:** [Maximum principle](https://en.wikipedia.org/wiki/Maximum_principle). It says: “the ordinary differential equation y″ + 2y = 0 has sinusoidal solutions, which certainly have interior maxima”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Weak solutions let kinked traveling waves satisfy the transport equation
 
 **Remember:** Move derivatives onto the test function and the traveling wave can have kinks.
@@ -30,6 +62,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### A positive integrating factor preserves the sign of transported data
+
+**Remember:** An exponential factor changes size but never changes sign.
+
+*True by definition.* MSC 35F10 (Initial value problems for linear first-order PDEs). arXiv math.AP. Level 2: later undergraduate.
+
+**Definition.** For linear transport with reaction coefficient a, use a factor along each characteristic, the path that follows the given velocity. Define the factor at time t as the exponential of the integral of a along that path from time zero.
+
+**Problem.** Consider a smooth solution of ∂ₜu + b·∇u + au = f with nonnegative initial data and forcing f. It stays nonnegative wherever a path leads back to the initial surface from a later time.
+
+**How the definition helps.** The positive factor turns the forced equation along each path into an integral of a nonnegative function (our own). The work moves to solving the characteristic path equation and applying the chain rule there (our own).
+
+**Wikipedia:** [Integrating factor](https://en.wikipedia.org/wiki/Integrating_factor). It says: “to bring the left-hand side under a common derivative”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Exponentiation turns nonlinear evolution into heat
 
 **Remember:** Evolve the exponential by heat, then take the logarithm.
@@ -48,6 +96,192 @@
 
 - [Julian D. Cole, On a quasi-linear parabolic equation occurring in aerodynamics (1951).](https://doi.org/10.1090/qam/42889)
 
+### Nondecreasing Burgers data keep characteristics from crossing
+
+**Remember:** If speeds increase from left to right, paths never overtake.
+
+*Rules out counterexamples.* MSC 35F25 (Initial value problems for nonlinear first-order PDEs). arXiv math.AP. Level 2: later undergraduate.
+
+**Definition.** For the inviscid Burgers equation ∂ₜu + u∂ₓu = 0, the characteristic from a starts with the constant speed f(a). Restrict the initial profile f to bounded, nondecreasing, continuously differentiable functions.
+
+**Problem.** For this class of initial data on the line, the inviscid Burgers equation has a continuously differentiable solution for every forward time.
+
+**How the definition helps.** The characteristic map a ↦ a + tf(a) has derivative at least one (our own). It is onto and has a differentiable inverse, which recovers u from its initial values (our own). The work moves to the characteristic equations, which also show how decreasing data can fail (our own). For f(a) = −sin(a), the slope at x = 0 blows up at time one (our own).
+
+**Wikipedia:** [Burgers' equation](https://en.wikipedia.org/wiki/Burgers%27_equation). It says: “This is an implicit relation that determines the solution of the inviscid Burgers' equation provided characteristics don't intersect.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Decay at infinity makes exterior harmonic boundary values unique
+
+**Remember:** Treat infinity as another boundary with value zero.
+
+*Rules out counterexamples.* MSC 35J05 (Laplace operator, Helmholtz equation (reduced wave equation), Poisson equation), 35J25. arXiv math.AP. Level 2: later undergraduate.
+
+**Definition.** An exterior Dirichlet solution is harmonic outside a bounded obstacle and takes the prescribed values continuously on its boundary. Require also that it tend to zero as distance from the origin tends to infinity.
+
+**Problem.** Outside a bounded obstacle in three dimensions, at most one harmonic function has the prescribed boundary values and tends to zero at infinity.
+
+**How the definition helps.** Decay bounds the difference of two solutions on every sufficiently large outer sphere (our own). The maximum principle gives the same bound throughout the enclosed exterior region (our own). Without decay, both zero and 1 − 1/r solve the zero boundary problem outside the unit ball (our own).
+
+**Wikipedia:** [Harmonic function](https://en.wikipedia.org/wiki/Harmonic_function). It says: “the solution approaches 0 as r approaches infinity”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Mean values make harmonic functions smooth
+
+**Remember:** A smooth radial average leaves a harmonic function unchanged.
+
+*True by definition.* MSC 35J05 (Laplace operator, Helmholtz equation (reduced wave equation), Poisson equation). arXiv math.AP. Level 2: later undergraduate.
+
+**Definition.** Call a continuous function harmonic if its value at each point equals its average on every sphere whose closed ball lies in the domain. The usual differential definition sets the sum of the pure second derivatives to zero.
+
+**Problem.** A continuous function with the harmonic mean value property has derivatives of every order in the interior.
+
+**How the definition helps.** A smooth radial weighted average is a mixture of sphere averages, so it returns the function itself (our own). Differentiate the smooth weight rather than the function (our own). The work moves to proving the mean value property for classical solutions (our own).
+
+**Wikipedia:** [Harmonic function](https://en.wikipedia.org/wiki/Harmonic_function). It says: “In other words, we can take the weighted average of u about a point and recover u(x).”
+
+**Sources:**
+
+- [Lawrence C. Evans, Partial Differential Equations, §2.2.3](https://moodle2.units.it/pluginfile.php/562772/mod_resource/content/1/Evans%20L.C.%20Ch2-b.pdf)
+
+### The Poisson kernel makes harmonic functions locally equal power series
+
+**Remember:** Expand the boundary weight to get a power series inside.
+
+*True by definition.* MSC 35J05 (Laplace operator, Helmholtz equation (reduced wave equation), Poisson equation). arXiv math.AP. Level 2: later undergraduate.
+
+**Definition.** In the unit ball, the Poisson kernel at x assigns a weight to each boundary point ζ. Divide the numerator 1 − \|x\|² by the distance \|x − ζ\| raised to the spatial dimension. Use surface area normalized to one.
+
+**Problem.** Every harmonic function on a Euclidean domain is real analytic, meaning it equals a convergent power series near each interior point.
+
+**How the definition helps.** The Poisson formula puts all dependence on the interior point into the boundary weight (our own). On a sufficiently small ball about the center, the binomial series for that weight converges absolutely and uniformly over the sphere (our own). Integrating its power series term by term gives the local expansion (our own).
+
+**Wikipedia:** [Poisson kernel](https://en.wikipedia.org/wiki/Poisson_kernel). It says: “P\[u\](x) = ∫ₛ u(ζ)P(x, ζ) dσ(ζ).”
+
+**Sources:**
+
+- [Sheldon Axler, Paul Bourdon and Wade Ramey, Harmonic Function Theory, Theorem 1.28](https://www.axler.net/HFT.pdf)
+
+### The squared gradient turns the Dirichlet problem into minimization
+
+**Remember:** A harmonic function is perpendicular in energy to zero-boundary changes.
+
+*True by definition.* MSC 35J05 (Laplace operator, Helmholtz equation (reduced wave equation), Poisson equation), 35J25. arXiv math.AP. Level 2: later undergraduate.
+
+**Definition.** Define Dirichlet energy as half the integral of the squared spatial gradient. Compare smooth functions with the same specified boundary values.
+
+**Problem.** On a smooth bounded domain, a smooth function with the specified boundary values minimizes Dirichlet energy exactly when it is harmonic.
+
+**How the definition helps.** For a harmonic function, expanding the squared gradient of a competitor leaves only a nonnegative energy difference (our own). Integration by parts cancels the cross term because the change vanishes on the boundary (our own). Conversely, varying a minimizer in each smooth direction of compact support gives zero first derivative, forcing its Laplacian to vanish (our own).
+
+**Wikipedia:** [Dirichlet's principle](https://en.wikipedia.org/wiki/Dirichlet%27s_principle). It says: “then u can be obtained as the minimizer of the Dirichlet energy”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Unit flux gives the planar Laplacian a point source
+
+**Remember:** Unit outward flux means one unit of point source.
+
+*True by definition.* MSC 35J05 (Laplace operator, Helmholtz equation (reduced wave equation), Poisson equation). arXiv math.AP. Level 2: later undergraduate.
+
+**Definition.** A planar point-source potential is harmonic away from the origin, where its Laplacian is zero. Normalize a radial potential by requiring its outward derivative to integrate to one around each centered circle.
+
+**Problem.** The normalized potential ln(r)/(2π), at distance r from the origin, satisfies ∫(ln(r)/(2π))Δφ = φ(0) for every smooth test function φ of compact support.
+
+**How the definition helps.** Unit flux turns the inner boundary integral into a circle average tending to φ(0) (our own). Green’s identity moves the Laplacian from φ to the potential outside that circle (our own). The remaining boundary term tends to zero because r ln(r) tends to zero (our own).
+
+**Paper or page:** [Fundamental Solution to 2D Laplace's Equation](https://proofwiki.org/wiki/Fundamental_Solution_to_2D_Laplace's_Equation). It says: “Then in the distributional sense: Δ(ln r/(2π)) = δ₍₀,₀₎”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Zero flux makes a harmonic sphere average constant
+
+**Remember:** No outward flux means the sphere average cannot change with radius.
+
+*True by definition.* MSC 35J05 (Laplace operator, Helmholtz equation (reduced wave equation), Poisson equation). arXiv math.AP. Level 2: later undergraduate.
+
+**Definition.** Call a twice continuously differentiable function harmonic if its net outward flux through every closed ball inside the domain is zero. Flux here means the surface integral of the outward derivative. The usual definition sets the sum of the pure second derivatives to zero.
+
+**Problem.** Each harmonic function equals its average on every sphere centered at the point, with the closed ball inside the domain.
+
+**How the definition helps.** The derivative of the sphere average with respect to radius is the flux divided by the sphere area (our own). Zero flux makes the average independent of radius, and shrinking the sphere gives the center value (our own). The divergence theorem equates this flux definition with the differential definition (our own).
+
+**Wikipedia:** [Laplace operator](https://en.wikipedia.org/wiki/Laplace_operator). It says: “the net flux of u through the boundary ∂V (also called S) of any smooth region V is zero”
+
+**Sources:**
+
+- [Lawrence C. Evans, Partial Differential Equations, §2.2.2](https://moodle2.units.it/pluginfile.php/562772/mod_resource/content/1/Evans%20L.C.%20Ch2-b.pdf)
+
+### A weighted image through the sphere gives the ball Green function
+
+**Remember:** Sphere inversion puts the image outside and fixes its weight.
+
+*True by definition.* MSC 35J08 (Green's functions for elliptic equations), 35J05. arXiv math.AP. Level 2: later undergraduate.
+
+**Definition.** For a noncentral source y in the three-dimensional unit ball, place its image at y/\|y\|². Give the image charge the opposite sign and magnitude 1/\|y\| times the original charge.
+
+**Problem.** The source and its weighted image together give the ball’s Dirichlet Green function. Their potential vanishes on the sphere and has exactly one unit source inside.
+
+**How the definition helps.** On the unit sphere the distance to the image is the distance to y divided by \|y\|, so the weighted potentials cancel (our own). The work moves to the distance identity and the fact that the free-space potential varies as the reciprocal of distance (our own).
+
+**Wikipedia:** [Kelvin transform](https://en.wikipedia.org/wiki/Kelvin_transform). It says: “the inversion of a point x in ℝⁿ is defined to be x\* = (R²/\|x\|²)x.”
+
+**Sources:**
+
+- [Lawrence C. Evans, Partial Differential Equations, §2.2.4](https://moodle2.units.it/pluginfile.php/562772/mod_resource/content/1/Evans%20L.C.%20Ch2-b.pdf)
+
+### An opposite mirror charge gives the half-space Green function
+
+**Remember:** Equal distances and opposite signs cancel on the plane.
+
+*True by definition.* MSC 35J08 (Green's functions for elliptic equations), 35J05. arXiv math.AP. Level 2: later undergraduate.
+
+**Definition.** For a point source above a plane, its image is an opposite point source at the mirror point below the plane. Their combined potential is the sum of their free-space potentials.
+
+**Problem.** In three dimensions, the combined potential gives the decaying Dirichlet Green function for the upper half-space. It vanishes on the plane and has just the original unit source inside.
+
+**How the definition helps.** The radial point-source values cancel on the plane, and the image introduces no source in the half-space (our own). The work moves to constructing the radial fundamental solution and proving uniqueness with decay at infinity (our own).
+
+**Wikipedia:** [Method of images](https://en.wikipedia.org/wiki/Method_of_images). It says: “boundary conditions are satisfied by combining a solution not restricted by the boundary conditions with its possibly weighted mirror image.”
+
+**Sources:**
+
+- [Lawrence C. Evans, Partial Differential Equations, §2.2.4](https://moodle2.units.it/pluginfile.php/562772/mod_resource/content/1/Evans%20L.C.%20Ch2-b.pdf)
+
+### Constant Green function flux leaves one unknown boundary average
+
+**Remember:** A unit source needs unit outward flux.
+
+*True by definition.* MSC 35J08 (Green's functions for elliptic equations), 35J05. arXiv math.AP. Level 2: later undergraduate.
+
+**Definition.** On a smooth bounded connected domain, choose a Green function with ΔG equal to a unit point source. Give G a constant outward derivative equal to one divided by the boundary area, rather than zero.
+
+**Problem.** A smooth harmonic function’s value at the source equals its boundary average minus a boundary integral. The integrand is G times the function’s outward derivative.
+
+**How the definition helps.** Constant flux turns the unknown boundary values into one average, and Green’s second identity gives the rest. The work moves to solving the compatible Neumann problem for the smooth correction to the point source (our own). Zero flux would contradict the divergence theorem because the point source has integral one.
+
+**Wikipedia:** [Green's identities](https://en.wikipedia.org/wiki/Green%27s_identities). It says: “A convenient choice is ∂G(y,η)/∂n = 1/𝒜”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Zero boundary values leave only one Green boundary term
+
+**Remember:** Set Green’s function to zero where the boundary data are known.
+
+*True by definition.* MSC 35J08 (Green's functions for elliptic equations), 35J05. arXiv math.AP. Level 2: later undergraduate.
+
+**Definition.** At each interior point x, define the Dirichlet Green function G by subtracting a harmonic correction from the point-source solution. The correction matches the point-source solution on the boundary, so G vanishes there.
+
+**Problem.** On a smooth bounded domain, suppose u is harmonic and smooth up to the boundary. Its value at x equals the boundary integral of u times the outward derivative of G, with ΔG a positive unit source.
+
+**How the definition helps.** The zero boundary value of G kills the term that uses the unknown normal derivative of the harmonic function. The work moves to solving the correction’s boundary problem and applying Green’s second identity around the point source (our own).
+
+**Wikipedia:** [Green's identities](https://en.wikipedia.org/wiki/Green%27s_identities). It says: “vanishes on the boundary of U”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Mean-zero normalization makes Neumann solutions unique
 
 **Remember:** Normal derivatives miss constants, so fix the mean.
@@ -64,6 +298,228 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### A positive Gaussian spreads nonzero heat everywhere at once
+
+**Remember:** The Gaussian gives positive weight even to distant heat.
+
+*True by definition.* MSC 35K05 (Heat equation). arXiv math.AP. Level 2: later undergraduate.
+
+**Definition.** For diffusivity one, the full-space heat kernel is the centered Gaussian density with variance 2t in each coordinate. Gaussian heat evolution averages the initial temperature against this weight centered at the observation point.
+
+**Problem.** For bounded continuous initial temperatures that are nonnegative and positive somewhere, Gaussian heat evolution is strictly positive everywhere at every positive time.
+
+**How the definition helps.** Every point receives a strictly positive weighted integral from the region where the initial temperature is positive (our own). The work goes into proving the Gaussian integral formula for the heat solution (our own).
+
+**Wikipedia:** [Heat kernel](https://en.wikipedia.org/wiki/Heat_kernel). It says: “which has the form of a time-varying Gaussian function”
+
+**Sources:**
+
+- [Lawrence C. Evans, Partial Differential Equations, §2.3.1](https://moodle2.units.it/pluginfile.php/562772/mod_resource/content/1/Evans%20L.C.%20Ch2-b.pdf)
+
+### A unit mass heat kernel conserves total heat
+
+**Remember:** Each point source gives back all its heat when integrated.
+
+*True by definition.* MSC 35K05 (Heat equation). arXiv math.AP. Level 2: later undergraduate.
+
+**Definition.** Use the full-space heat kernel with unit mass, so each point source contributes a Gaussian whose spatial integral is one. For general initial heat, add these Gaussians weighted by the initial temperature at each source point.
+
+**Problem.** For bounded, continuous, integrable initial data on all of Euclidean space, the Gaussian heat solution has the same spatial integral at every positive time.
+
+**How the definition helps.** Each translated Gaussian integrates to one, so a second integration returns the original total heat (our own). Absolute integrability lets us interchange the two integrals (our own). The Gaussian solution formula replaces a boundary flux estimate at infinity (our own).
+
+**nLab:** [heat equation](https://ncatlab.org/nlab/show/heat+equation). It says: “Its fundamental solution is called the heat kernel.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Concentrating Gaussian weights give back the initial temperature
+
+**Remember:** A unit heat weight contracts onto its starting point.
+
+*True by definition.* MSC 35K05 (Heat equation). arXiv math.AP. Level 2: later undergraduate.
+
+**Definition.** View the full-space heat kernel as an approximate identity, a family of nonnegative weights with total integral one. The integral outside any fixed neighborhood of the origin tends to zero as time tends to zero.
+
+**Problem.** Heat evolution by Gaussian averaging converges to bounded continuous initial data, uniformly on each compact set, as time tends to zero.
+
+**How the definition helps.** The concentrating weights give almost all their mass to points with temperatures close to the starting value (our own). Uniform continuity near each compact set controls nearby temperatures, and boundedness controls the Gaussian tail (our own). This argument replaces taking a time limit directly in the differential equation (our own).
+
+**nLab:** [heat kernel](https://ncatlab.org/nlab/show/heat+kernel). It says: “The fundamental solution of a heat equation is called the heat kernel.”
+
+**Sources:**
+
+- [Lawrence C. Evans, Partial Differential Equations, §2.3.1](https://moodle2.units.it/pluginfile.php/562772/mod_resource/content/1/Evans%20L.C.%20Ch2-b.pdf)
+
+### Matching corner data let the half-line heat solution stay continuous
+
+**Remember:** At a corner, the two prescribed temperatures must agree.
+
+*Rules out counterexamples.* MSC 35K05 (Heat equation), 35K20. arXiv math.AP. Level 2: later undergraduate.
+
+**Definition.** Call initial and boundary values compatible at a corner when both give the same value there. For zero endpoint temperature on the half-line, compatibility is f(0) = 0.
+
+**Problem.** On the closed half-line, take bounded continuous initial data and zero endpoint temperature. A continuous heat solution smooth in the interior exists exactly when the corner data agree.
+
+**How the definition helps.** Agreement makes the sign-reversing reflection of the initial function continuous across zero (our own). Full-line Gaussian averaging then recovers the initial value, and reflection forces the endpoint value for positive time (our own). Initial temperature one and endpoint temperature zero give incompatible limits at the corner (our own).
+
+**Wikipedia:** [Well-posed problem](https://en.wikipedia.org/wiki/Well-posed_problem). It says: “and suitable initial data f(x) (e.g. for which f(0) = f(1) = 0)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Nonnegative Robin coefficients keep the heat norm from growing
+
+**Remember:** A nonnegative Robin coefficient can only drain squared heat.
+
+*Rules out counterexamples.* MSC 35K05 (Heat equation), 35K20. arXiv math.AP. Level 2: later undergraduate.
+
+**Definition.** A homogeneous Robin condition requires the outward normal derivative plus α times the temperature to be zero. For a dissipative Robin condition, take α nonnegative. Measure size by half the integral of the squared temperature.
+
+**Problem.** For classical heat flow on a smooth bounded region with a dissipative Robin condition, the integral of the squared temperature never increases.
+
+**How the definition helps.** The sign of α makes the boundary contribution to the energy change nonpositive (our own). With diffusivity one, integration by parts gives the negative integral of \|∇u\|² minus the boundary integral of αu² (our own). On \[−1, 1\], α = −tanh(1) admits the growing solution exp(t) cosh(x) (our own).
+
+**Wikipedia:** [Robin boundary condition](https://en.wikipedia.org/wiki/Robin_boundary_condition). It says: “a weighted combination of Dirichlet boundary conditions and Neumann boundary conditions”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Projecting onto heat eigenfunctions separates even the forcing
+
+**Remember:** Each sine receives only its own part of the forcing.
+
+*True by definition.* MSC 35K05 (Heat equation). arXiv math.AP. Level 2: later undergraduate.
+
+**Definition.** For an interval with zero endpoint values, use the sine eigenfunctions of minus the second spatial derivative. Each has zero endpoint values and returns a fixed multiple of itself under that operator. Define a mode coefficient by taking the integral against its normalized sine.
+
+**Problem.** For a smooth solution of uₜ = κuₓₓ + f with zero endpoint values, each sine coefficient a satisfies a′ = −κλa + b. Here κ is the diffusivity, λ is the sine’s eigenvalue, and b is the corresponding coefficient of f.
+
+**How the definition helps.** Testing against a sine replaces the spatial derivative operator by multiplication by −λ (our own). Two integrations by parts leave no boundary terms because the sine and the solution vanish at both endpoints (our own).
+
+**Wikipedia:** [Separation of variables](https://en.wikipedia.org/wiki/Separation_of_variables). It says: “which are a sequence of linear differential equations that can be readily solved with, for instance, Laplace transform, or integrating factor.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Reflection builds both half-line heat boundary conditions
+
+**Remember:** Odd reflection fixes the value at zero, and even reflection fixes the slope.
+
+*True by definition.* MSC 35K05 (Heat equation). arXiv math.AP. Level 2: later undergraduate.
+
+**Definition.** For bounded continuous temperature data f on the closed half-line, even reflection assigns f(\|x\|) on the line. Odd reflection uses f(x) for x &gt; 0, −f(−x) for x &lt; 0, and zero at the origin.
+
+**Problem.** For positive time, full-line heat evolution of the odd reflection has value zero at the endpoint. Evolution of the even reflection has outward derivative zero there.
+
+**How the definition helps.** The even Gaussian heat weight preserves either reflection symmetry (our own). Odd functions vanish at the mirror, and differentiable even functions have zero derivative there (our own). The work moves to the full-line heat formula and its smoothness for positive time (our own).
+
+**Wikipedia:** [Heat equation](https://en.wikipedia.org/wiki/Heat_equation). It says: “it satisfies the homogeneous Dirichlet boundary conditions u(0, t) = 0.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The Gaussian integral smooths even bounded discontinuous heat data
+
+**Remember:** Differentiate the Gaussian, not the starting temperature.
+
+*True by definition.* MSC 35K05 (Heat equation). arXiv math.AP. Level 2: later undergraduate.
+
+**Definition.** Define full-space heat evolution by integrating the initial temperature against a shifted Gaussian with variance 2t. Unlike the differential equation alone, this formula puts all the derivatives on an explicit smooth weight.
+
+**Problem.** The Gaussian heat evolution of any bounded measurable initial data has derivatives of every order in space and time at positive times.
+
+**How the definition helps.** Only the Gaussian changes when the observation point or time changes (our own). The work moves to bounding each Gaussian derivative by an integrable weight near any fixed positive time (our own).
+
+**Wikipedia:** [Heat equation](https://en.wikipedia.org/wiki/Heat_equation). It says: “the jump is immediately smoothed out”
+
+**Sources:**
+
+- [Lawrence C. Evans, Partial Differential Equations, §2.3.1](https://moodle2.units.it/pluginfile.php/562772/mod_resource/content/1/Evans%20L.C.%20Ch2-b.pdf)
+
+### The parabolic boundary leaves the final temperature free
+
+**Remember:** For heat flow, check the initial slice and the sides.
+
+*Makes the theorem clean to state or prove.* MSC 35K05 (Heat equation). arXiv math.AP. Level 2: later undergraduate.
+
+**Definition.** For a closed space-time cylinder, the parabolic boundary consists of the initial slice and the spatial boundary at every time, including the final time.
+
+**Problem.** A classical heat solution continuous on a closed bounded cylinder attains its maximum somewhere on the parabolic boundary. Its initial and side values therefore determine at most one solution.
+
+**How the definition helps.** At a maximum away from this boundary the backward time derivative is nonnegative, even at the final time (our own). Subtract a small positive multiple of time to make the heat inequality strict and rule out such a maximum (our own). The work rests on the derivative test and the existence of a maximum on the closed bounded region (our own).
+
+**Wikipedia:** [Heat equation](https://en.wikipedia.org/wiki/Heat_equation). It says: “the maximum value that previously occurred in R”
+
+**Sources:**
+
+- [Lawrence C. Evans, Partial Differential Equations, §2.3.3](https://moodle2.units.it/pluginfile.php/562772/mod_resource/content/1/Evans%20L.C.%20Ch2-b.pdf)
+
+### Odd periodic extension gives a common period for fixed strings
+
+**Remember:** Two fixed-end reflections give one full wave period.
+
+*True by definition.* MSC 35L05 (Wave equation), 35L20. arXiv math.AP. Level 2: later undergraduate.
+
+**Definition.** Extend the initial displacement and velocity by odd reflection about each endpoint. For a string of length L this produces functions of spatial period 2L, each with zero average over one period.
+
+**Problem.** A classical wave on a string of length L with both ends fixed has time period 2L/c. Here c is the wave speed.
+
+**How the definition helps.** After time 2L/c the translated displacement samples repeat, and the extra periods in the velocity integral have zero average (our own). The work moves to d’Alembert’s formula and verifying that the two odd reflections enforce the fixed ends (our own).
+
+**Paper or page:** [D'Alembert's Formula](https://proofwiki.org/wiki/D'Alembert's_Formula). It says: “The above solution formula is called d'Alembert's formula.”
+
+**Sources:**
+
+- [Richard L. Herman, Introduction to Partial Differential Equations, §2.7](https://math.libretexts.org/Bookshelves/Differential_Equations/Introduction_to_Partial_Differential_Equations_%28Herman%29/02%3A_Second_Order_Partial_Differential_Equations/2.07%3A_dAlemberts_Solution_of_the_Wave_Equation)
+
+### Shrinking energy balls prove that waves travel at finite speed
+
+**Remember:** Shrink the ball at wave speed and its energy cannot grow.
+
+*Makes the theorem clean to state or prove.* MSC 35L05 (Wave equation). arXiv math.AP. Level 2: later undergraduate.
+
+**Definition.** For a wave of speed c, its energy density is half the sum of uₜ² and c²\|∇u\|². Its local energy at time t is the integral over the ball of radius c(T−t) centered at the observation point.
+
+**Problem.** Suppose two classical waves solve the same free wave equation throughout the shrinking balls until time T. Matching initial displacement and velocity on the starting ball gives equal displacement at its center at time T.
+
+**How the definition helps.** The shrinking boundary removes at least as much energy as wave flux can bring in (our own). The work is the moving-boundary derivative and the elementary inequality 2ab ≤ a² + b² (our own). Zero initial difference energy leaves the difference frozen at its zero initial value throughout the shrinking ball (our own).
+
+**Wikipedia:** [D'Alembert's formula](https://en.wikipedia.org/wiki/D%27Alembert%27s_formula). It says: “The characteristics of the PDE are x ± ct = const”
+
+**Sources:**
+
+- [Lawrence C. Evans, Partial Differential Equations, §2.4.3](https://moodle2.units.it/pluginfile.php/562772/mod_resource/content/1/Evans%20L.C.%20Ch2-b.pdf)
+
+### Spherical averaging leaves no wave tail in three dimensions
+
+**Remember:** In three dimensions, an impulse passes on a sphere without a tail.
+
+*Makes the theorem clean to state or prove.* MSC 35L05 (Wave equation). arXiv math.AP. Level 2: later undergraduate.
+
+**Definition.** The spherical mean at x and radius r is the integral over the sphere centered at x divided by its surface area.
+
+**Problem.** In three dimensions, take a unit-speed wave with zero initial displacement and smooth initial velocity. At time t its value depends only on the initial velocity on the sphere of radius t around the observation point.
+
+**How the definition helps.** A spherical mean uses only the values on its sphere (our own). Kirchhoff’s formula identifies displacement at positive time t with t times the spherical mean of the initial velocity at radius t (our own).
+
+**Wikipedia:** [Wave equation](https://en.wikipedia.org/wiki/Wave_equation). It says: “It does not depend upon data on the interior of this sphere.”
+
+**Sources:**
+
+- [Lawrence C. Evans, Partial Differential Equations, §2.4.1](https://moodle2.units.it/pluginfile.php/562772/mod_resource/content/1/Evans%20L.C.%20Ch2-b.pdf)
+
+### Starting each wave response with velocity handles a time-dependent force
+
+**Remember:** Start a fresh velocity impulse for each moment of forcing.
+
+*True by definition.* MSC 35L05 (Wave equation). arXiv math.AP. Level 2: later undergraduate.
+
+**Definition.** Define the response to an impulse at time s as a free wave starting then with zero displacement. Use the force at time s as its initial velocity and integrate the responses over earlier times.
+
+**Problem.** For smooth forcing on the line and zero initial displacement and velocity, the time integral of these responses solves the forced wave equation.
+
+**How the definition helps.** The first time derivative has no endpoint term because each fresh wave has zero displacement (our own). The second time derivative brings down the initial velocity as the force (our own). The work moves to the free wave formula and the conditions for differentiating under the time integral (our own).
+
+**Wikipedia:** [Duhamel's principle](https://en.wikipedia.org/wiki/Duhamel%27s_principle). It says: “That contribution comes from changing the velocity of the string by f(x, T) dT.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Wave coordinates split right and left
 
 **Remember:** Zero mixed derivative leaves one function of each coordinate.
@@ -77,6 +533,40 @@
 **How the definition helps.** In the moving coordinates, the wave equation says that one mixed derivative vanishes. Integrate once in each coordinate to obtain one profile for each direction. In our own explanation, the work lies in the chain rule that converts the original second derivatives into this mixed derivative.
 
 **Wikipedia:** [D'Alembert's formula](https://en.wikipedia.org/wiki/D%27Alembert%27s_formula). It says: “The general solution of this PDE is u(μ,η) = F(μ) + G(η)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Wave energy gives uniqueness from fixed boundary and initial data
+
+**Remember:** Zero wave energy keeps the difference frozen at zero.
+
+*True by definition.* MSC 35L05 (Wave equation). arXiv math.AP. Level 2: later undergraduate.
+
+**Definition.** Define wave energy as half the integral of the squared time derivative plus c² times the squared spatial gradient. Here c is the wave speed and the gradient collects the spatial derivatives.
+
+**Problem.** On a smooth bounded region, classical waves with the same fixed boundary values, initial displacement and initial velocity are equal.
+
+**How the definition helps.** The chosen weights cancel the interior terms when we differentiate the energy of the difference between two waves (our own). Integration by parts leaves a boundary term that vanishes because the two boundary values agree for all times (our own). The energy stays zero, so the waves have equal time derivatives and keep their initial displacement difference of zero (our own).
+
+**Wikipedia:** [Well-posed problem](https://en.wikipedia.org/wiki/Well-posed_problem). It says: “The energy method is useful for establishing both uniqueness”
+
+**Sources:**
+
+- [Lawrence C. Evans, Partial Differential Equations, §2.4.3](https://moodle2.units.it/pluginfile.php/562772/mod_resource/content/1/Evans%20L.C.%20Ch2-b.pdf)
+
+### Weak wave solutions accept even discontinuous initial displacement
+
+**Remember:** Test the equation without differentiating the displacement.
+
+*Makes the theorem clean to state or prove.* MSC 35L05 (Wave equation). arXiv math.AP. Level 2: later undergraduate.
+
+**Definition.** For wave speed c, a weak solution is a locally integrable displacement u satisfying ∫u(φₜₜ − c²φₓₓ) = 0. Integrate over space and positive time. Each smooth test function φ vanishes outside a compact set within that region.
+
+**Problem.** For initial displacement f integrable on bounded intervals of the line, u(x,t) = (f(x+ct) + f(x−ct))/2 is a weak solution. Against each smooth spatial test of bounded support, its initial displacement is f and its initial velocity is zero.
+
+**How the definition helps.** The weak identity lets smooth approximations pass to the limit under the integral (our own). The work moves to d’Alembert’s formula for smooth data and convergence of the approximations on bounded sets (our own).
+
+**Paper or page:** [Locally Integrable (f(x+ct) + f(x-ct))/2 is Weak Solution to Wave Equation](https://proofwiki.org/wiki/Locally_Integrable_(f(x+ct)_+_f(x-ct))/2_is_Weak_Solution_to_Wave_Equation). It says: “Then it has a weak solution of the form: u(x, t) ≔ (f(x + ct) + f(x − ct))/2”
 
 **Sources:** none listed. No primary source with a working link was found.
 

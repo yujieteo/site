@@ -1,3 +1,35 @@
+### Repeating a prescribed block makes periodic sequences dense
+
+**Remember:** Repeat the block and the shift returns to its start.
+
+*True by definition.* MSC 37B10 (Symbolic dynamics), 37C25. arXiv math.DS. Level 1: early undergraduate.
+
+**Definition.** The one-sided full shift allows every infinite sequence over a nonempty finite alphabet and deletes the first letter at each step. A prefix is a finite string of initial letters. Sharing longer prefixes makes sequences closer.
+
+**Problem.** Periodic sequences are dense in the full shift. This means every finite prefix occurs at the start of a sequence that repeats forever.
+
+**How the definition helps.** Describing closeness by prefixes reduces approximation to copying finitely many letters (our own). Repeat any prescribed nonempty prefix forever to obtain the required sequence (our own). The cylinder-basis theorem justifies testing prefixes in place of all open neighborhoods (our own).
+
+**Paper or page:** [Improved Bounds For Some Asymptotic Formulas for Counting Words in Shift Spaces](https://arxiv.org/abs/2207.13898v5). It says: “All the cylinders form a countable clopen basis.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Subtracting the identity finds a fixed point on a closed interval
+
+**Remember:** Subtract the diagonal to turn a fixed point into a zero.
+
+*Rules out counterexamples.* MSC 37C25 (Fixed points and periodic points of dynamical systems; fixed-point index theory; local dynamics), 37E05. arXiv math.DS. Level 1: early undergraduate.
+
+**Definition.** A closed bounded interval \[a, b\] contains both endpoints, with a ≤ b. A fixed point of a function f is a point x where f(x) = x.
+
+**Problem.** Every continuous map from a nonempty closed bounded interval to itself has a fixed point.
+
+**How the definition helps.** Including both endpoints gives f(a) − a ≥ 0 and f(b) − b ≤ 0 (our own). The intermediate value theorem gives a zero of the continuous function f(x) − x, hence a fixed point (our own). On the open interval (0, 1), the map x ↦ (x + 1)/2 has no fixed point (our own).
+
+**Paper or page:** [Brouwer's Fixed Point Theorem/One-Dimensional Version](https://proofwiki.org/wiki/Brouwer's_Fixed_Point_Theorem/One-Dimensional_Version). It says: “a continuous real function from a closed real interval to itself fixes some point of that interval.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Unfolding makes corner hits rational
 
 **Remember:** Reflect the table, and the ball travels straight.
@@ -16,6 +48,38 @@
 
 - [Periodic orbits for square and rectangular billiards](https://arxiv.org/abs/2410.18316v2)
 
+### A first differing symbol proves the full shift is sensitive
+
+**Remember:** The first difference eventually reaches the front.
+
+*True by definition.* MSC 37B10 (Symbolic dynamics), 37B05. arXiv math.DS. Level 2: later undergraduate.
+
+**Definition.** The one-sided full shift deletes the first symbol of an infinite sequence over a finite alphabet with at least two symbols. Equal sequences have distance zero. For distinct sequences, start with distance one and halve it for each matching initial symbol.
+
+**Problem.** For every pair of distinct sequences, some nonnegative number of shifts makes their distance one. Every sequence has arbitrarily close neighbors that eventually reach this distance from it.
+
+**How the definition helps.** The shift moves the first difference to position 0 in exactly as many steps as its index (our own). The work is checking that this distance gives the product topology, where a long shared prefix means closeness (our own).
+
+**Wikipedia:** [Expansive homeomorphism](https://en.wikipedia.org/wiki/Expansive_homeomorphism). It says: “such that, for any x ≠ y in X, there is an n ∈ ℕ such that d(fⁿ(x), fⁿ(y)) ≥ ε₀.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### All long graph walks give exactly the mixing shifts
+
+**Remember:** Mixing needs a connecting walk at every late time.
+
+*Rules out counterexamples.* MSC 37B10 (Symbolic dynamics), 37B05. arXiv math.DS. Level 2: later undergraduate.
+
+**Definition.** Describe a graph shift by the two-sided sequences of vertices joined by directed edges. Call the graph primitive if every ordered pair of vertices has a connecting walk of every sufficiently large length.
+
+**Problem.** Suppose every vertex of a finite directed graph occurs in a two-sided walk. Its shift is mixing, meaning every allowed block can follow any other at every sufficiently large separation, exactly when the graph is primitive.
+
+**How the definition helps.** A visit between two prescribed blocks is a walk joining their boundary vertices (our own). Conversely, mixing between open sets that fix just one vertex gives every sufficiently long walk (our own). A directed three-cycle is strongly connected but only allows returns at multiples of three, so it is not mixing (our own).
+
+**Wikipedia:** [Subshift of finite type](https://en.wikipedia.org/wiki/Subshift_of_finite_type). It says: “It consists of sequences whose transitions between consecutive letters are only those allowed by the graph.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Closed shift spaces stay closed under sliding block codes
 
 **Remember:** Compact domains give closed images, and commuting with the shift preserves invariance.
@@ -29,6 +93,70 @@
 **How the definition helps.** The topological definition reduces the proof to compactness and commutation with the shift (our own). A shift space is closed in the compact full shift, so its continuous image is compact and hence closed. The image is unchanged by the shift because the code commutes with it. The two definitions agree because open sets in the product topology are unions of sets that fix finitely many coordinates.
 
 **Wikipedia:** [Shift space](https://en.wikipedia.org/wiki/Shift_space). It says: “An equivalent way to define a shift space is to take a set of forbidden patterns”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Finite forbidden words make violations detectable in open sets
+
+**Remember:** One forbidden block rules out a whole open cylinder.
+
+*Rules out counterexamples.* MSC 37B10 (Symbolic dynamics). arXiv math.DS. Level 2: later undergraduate.
+
+**Definition.** A two-sided shift space consists of all sequences over a finite alphabet that avoid specified finite words everywhere. The shift moves each symbol one place left. A cylinder contains all sequences matching a given block at a specified position.
+
+**Problem.** A set of two-sided sequences is a shift space exactly when it is closed and invariant under shifts in both directions.
+
+**How the definition helps.** A forbidden word excludes an entire open cylinder, so the complement is open (our own). Conversely, each sequence outside a closed set belongs to a cylinder missing the set (our own). Shift invariance excludes that cylinder’s block at every position (our own). Binary sequences with finitely many ones illustrate why invariance alone is insufficient (our own).
+
+**Wikipedia:** [Shift space](https://en.wikipedia.org/wiki/Shift_space). It says: “the set of all infinite patterns that do not contain any forbidden finite pattern of F.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Fixed blocks make the full shift mix
+
+**Remember:** Far enough apart, two prescribed blocks never conflict.
+
+*True by definition.* MSC 37B10 (Symbolic dynamics), 37B05. arXiv math.DS. Level 2: later undergraduate.
+
+**Definition.** The one-sided full shift allows all infinite sequences over a nonempty finite alphabet and deletes the first symbol at each step. Its basic open sets, called cylinders, prescribe finite prefixes.
+
+**Problem.** The full shift is mixing. For any two nonempty open sets and each sufficiently large n, a sequence in the first enters the second after n steps.
+
+**How the definition helps.** Using cylinders turns a visit into two prefix requirements at specified positions (our own). For sufficiently large n the prefixes do not overlap, so one sequence can satisfy both (our own). This replaces estimates of distances between sequences with the fact that cylinders form a basis for the product topology (our own).
+
+**Paper or page:** [Improved Bounds For Some Asymptotic Formulas for Counting Words in Shift Spaces](https://arxiv.org/abs/2207.13898v5). It says: “All the cylinders form a countable clopen basis.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Overlapping blocks turn finite rules into a directed graph
+
+**Remember:** A longer symbol remembers the letters a local rule needs.
+
+*True by definition.* MSC 37B10 (Symbolic dynamics). arXiv math.DS. Level 2: later undergraduate.
+
+**Definition.** A shift of finite type allows all two-sided sequences over a finite alphabet that avoid a finite list of forbidden words. Choose m ≥ 1 so each forbidden word has length at most m + 1. The block code replaces each letter by the length-m block starting there.
+
+**Problem.** The block code gives a reversible, continuous correspondence between the original shift and a shift whose rules test only adjacent pairs. The correspondence respects each shift step.
+
+**How the definition helps.** Two consecutive blocks must overlap in m − 1 letters and together contain no forbidden word (our own). These pair tests catch every forbidden word because each fits in a window of length m + 1 (our own). Reading each block’s first letter reverses the code, and both readings use only finitely many letters per position (our own).
+
+**Wikipedia:** [Subshift of finite type](https://en.wikipedia.org/wiki/Subshift_of_finite_type). It says: “Up to a local recoding of letters, every subshift of finite type can be described by such a directed graph.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Ternary addresses turn a Cantor map into the full shift
+
+**Remember:** On the Cantor set, one step forgets the first ternary digit.
+
+*True by definition.* MSC 37B10 (Symbolic dynamics), 37E05. arXiv math.DS. Level 2: later undergraduate.
+
+**Definition.** A ternary address records a point of the middle-thirds Cantor set in base three using only digits 0 and 2. On this set let T(x) equal 3x on the left third and 3x − 2 on the right third.
+
+**Problem.** The ternary address matches T with the one-sided full shift, which deletes the first symbol of an infinite sequence. This correspondence is continuous and has a continuous inverse.
+
+**How the definition helps.** Multiplying by three moves the first digit before the decimal point, and the branch formula subtracts that digit (our own). The work lies in proving that the nested Cantor intervals match points continuously and uniquely with addresses in both directions (our own).
+
+**Paper or page:** [Cantor Space as Countably Infinite Product](https://proofwiki.org/wiki/Cantor_Space_as_Countably_Infinite_Product). It says: “Then A is homeomorphic to the Cantor space.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -82,6 +210,134 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Shifting the sequence makes limit sets invariant
+
+**Remember:** Shifting every time by the same amount keeps the sequence tending to infinity.
+
+*True by definition.* MSC 37B20 (Notions of recurrence and recurrent behavior in topological dynamical systems), 34C05. arXiv math.DS. Level 2: later undergraduate.
+
+**Definition.** For a flow Φ on a metric space, the ω-limit set consists of limits of positions Φₜ(x) at times tending to infinity. Equivalently, it is the intersection of the closures of all forward tails of the trajectory.
+
+**Problem.** For a continuous flow defined for every real time, every time map takes the ω-limit set onto itself.
+
+**How the definition helps.** The sequence definition lets us add the same time to every observation. In our own proof, continuity and the flow law send the old limit to the new one. Shifting by the opposite time gives equality. The equivalence with closed tails follows by choosing later and later positions within shrinking distances of the limit.
+
+**Wikipedia:** [Limit set](https://en.wikipedia.org/wiki/Limit_set). It says: “Both sets are f-invariant”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Flow maps compose because time shifts preserve autonomous solutions
+
+**Remember:** Restart from where you are, not from when you started.
+
+*Makes the theorem clean to state or prove.* MSC 37C10 (Dynamics induced by flows and semiflows), 34A12. arXiv math.DS, math.CA. Level 2: later undergraduate.
+
+**Definition.** For an autonomous equation x′ = f(x), whose right side does not use time, write Φₜ for its time-t flow map. It sends each starting state to the state reached after time t.
+
+**Problem.** If the equation has unique solutions for all real times, Φₜ ∘ Φₛ = Φₜ₊ₛ and Φ₋ₜ is the inverse of Φₜ.
+
+**How the definition helps.** The flow map lets us see both sides as the same solution with a new starting time, our own argument. Time independence makes a shifted solution obey the same equation, and uniqueness identifies the two paths, our own argument. Setting s = −t gives the inverse, since Φ₀ leaves every state unchanged.
+
+**nLab:** [flow of a vector field](https://ncatlab.org/nlab/show/flow+of+a+vector+field). It says: “This yields an action of the additive group (ℝ,+) of real numbers”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A full return makes cycle stability a fixed point test
+
+**Remember:** Check the slope after one full lap.
+
+*True by definition.* MSC 37C25 (Fixed points and periodic points of dynamical systems; fixed-point index theory; local dynamics), 37E05. arXiv math.DS. Level 2: later undergraduate.
+
+**Definition.** The return map of a cycle of least period n applies the original map n times. Its derivative at a cycle point is the multiplier of the cycle.
+
+**Problem.** If the multiplier has magnitude below 1 for a continuously differentiable interval map, nearby points approach the cycle. Above 1, each sufficiently close point outside the cycle eventually leaves a fixed neighborhood of it.
+
+**How the definition helps.** A point on the cycle is fixed by the return map, so the fixed point slope test applies (our own). The chain rule makes the multiplier the same product of slopes at every point of the cycle (our own). Continuity of the intervening steps gives attraction between returns (our own).
+
+**Wikipedia:** [Periodic point](https://en.wikipedia.org/wiki/Periodic_point). It says: “that it is attractive if \|fₙ′\| &lt; 1,”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A Lyapunov function that never rises keeps nearby points nearby
+
+**Remember:** Low values of V cannot climb out of a low sublevel.
+
+*Rules out counterexamples. Confidence: medium.* MSC 37C25 (Fixed points and periodic points of dynamical systems; fixed-point index theory; local dynamics). arXiv math.DS. Level 2: later undergraduate.
+
+**Definition.** On a compact interval with fixed point p, use a continuous Lyapunov function V with V(p) = 0 and V positive elsewhere. Require V(f(x)) ≤ V(x) near p.
+
+**Problem.** A continuous interval self-map with such a Lyapunov function has a stable fixed point at p. Every sufficiently close starting point stays as close to p as prescribed.
+
+**How the definition helps.** A sufficiently low sublevel set traps nearby points because V cannot increase there (our own). Outside any small neighborhood of p, compactness and strict positivity give V a positive minimum (our own). Choose a smaller positive bound so the whole sublevel set lies where V cannot increase (our own). Continuity at p puts every sufficiently close starting point inside this set (our own).
+
+**Wikipedia:** [Lyapunov function](https://en.wikipedia.org/wiki/Lyapunov_function). It says: “If V is a Lyapunov function, then the equilibrium is Lyapunov stable.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A slope away from unit magnitude decides fixed point stability
+
+**Remember:** A slope of magnitude one leaves the decision to higher terms.
+
+*Rules out counterexamples.* MSC 37C25 (Fixed points and periodic points of dynamical systems; fixed-point index theory; local dynamics), 37E05. arXiv math.DS. Level 2: later undergraduate.
+
+**Definition.** A fixed point p of a differentiable real map is hyperbolic if the slope at p has absolute value different from 1. This leaves out fixed points that are neutral to first order.
+
+**Problem.** For a continuously differentiable interval map, nearby points approach a hyperbolic fixed point if its slope has magnitude below 1. Above 1, every sufficiently close point other than the fixed point eventually leaves a fixed neighborhood of it.
+
+**How the definition helps.** The strict slope bound makes each nearby step shrink or expand the distance to p (our own). The derivative estimate gives a uniform factor below or above 1 (our own). At 0 both x ↦ x − x³ and x ↦ x + x³ have slope 1, but only the first attracts (our own).
+
+**Wikipedia:** [Periodic point](https://en.wikipedia.org/wiki/Periodic_point). It says: “a periodic point is hyperbolic if \|fₙ′\| ≠ 1,”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A transverse fixed point survives small parameter changes
+
+**Remember:** Different slopes keep the intersection from disappearing.
+
+*Rules out counterexamples. Confidence: medium.* MSC 37C25 (Fixed points and periodic points of dynamical systems; fixed-point index theory; local dynamics), 37E05. arXiv math.DS. Level 2: later undergraduate.
+
+**Definition.** A transverse fixed point is a point where the graph meets the diagonal with a different slope. Equivalently, the derivative of the displacement f(x) − x is nonzero there.
+
+**Problem.** Suppose an interval map varies continuously differentiably with position and one real parameter. Near an interior transverse fixed point, exactly one nearby fixed point varies continuously differentiably with the parameter.
+
+**How the definition helps.** The displacement has a simple zero, so the implicit function theorem supplies the branch (our own). The condition excludes the tangency in x ↦ x + λ + x², where two fixed points merge and disappear (our own).
+
+**Wikipedia:** [Saddle-node bifurcation](https://en.wikipedia.org/wiki/Saddle-node_bifurcation). It says: “two fixed points (or equilibria) of a dynamical system collide and annihilate each other.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Conjugacy preserves least periods by matching each step
+
+**Remember:** Match one step and every return time matches.
+
+*Rules out counterexamples.* MSC 37C25 (Fixed points and periodic points of dynamical systems; fixed-point index theory; local dynamics), 37C15. arXiv math.DS. Level 2: later undergraduate.
+
+**Definition.** A topological conjugacy between maps f and g is a continuous bijection h with continuous inverse satisfying h ∘ f = g ∘ h. The least period of a point counts its steps until first return.
+
+**Problem.** A topological conjugacy gives a bijection between the points of each least period for f and g.
+
+**How the definition helps.** Applying h after n steps of f equals applying g n times after h (our own). Injectivity means a return on either side is a return on the other (our own). An onto step-matching map alone can collapse a two-cycle to a fixed point (our own).
+
+**Wikipedia:** [Topological conjugacy](https://en.wikipedia.org/wiki/Topological_conjugacy). It says: “orbits of g are mapped to homeomorphic orbits of f through the conjugation.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Counting all returns separates points of each least period
+
+**Remember:** A return at time n allows only periods that divide n.
+
+*Makes the theorem clean to state or prove.* MSC 37C25 (Fixed points and periodic points of dynamical systems; fixed-point index theory; local dynamics). arXiv math.DS. Level 2: later undergraduate.
+
+**Definition.** The return count at time n counts points back at their starting position after n steps. A point’s least period is its first positive return time.
+
+**Problem.** If all return counts are finite, the time-n count sums the counts of points of each least period dividing n. Möbius inversion, the rule for reversing divisor sums, recovers each least-period count.
+
+**How the definition helps.** The division algorithm shows that a first return time divides every later return time (our own). Grouping by first return gives the divisor sum, and inversion does the subtraction without double counting (our own).
+
+**Wikipedia:** [Periodic point](https://en.wikipedia.org/wiki/Periodic_point). It says: “is called the prime period or least period of the point x.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Hyperbolic equilibria make the linearization a faithful picture of the flow
 
 **Remember:** No eigenvalue on the imaginary axis, so the linear part decides.
@@ -99,6 +355,108 @@
 **Sources:**
 
 - [P. Hartman, A lemma in the theory of structural stability of differential equations, Proceedings of the American Mathematical Society 11 (1960) 610–620](https://doi.org/10.1090/S0002-9939-1960-0121542-7)
+
+### Branch codes let the tent map inherit dense periodic points
+
+**Remember:** A repeating branch code gives a point that returns.
+
+*True by definition.* MSC 37E05 (Dynamical systems involving maps of the interval), 37B10. arXiv math.DS. Level 2: later undergraduate.
+
+**Definition.** The tent map T(x) = 2 min(x, 1 − x) on \[0, 1\] has two inverse branches. A binary sequence codes the point in the nested intervals obtained by following its successive branch choices.
+
+**Problem.** Periodic points of the tent map are dense, and each nonempty open interval reaches any other at every sufficiently late time. Both statements also hold for the logistic map x ↦ 4x(1 − x).
+
+**How the definition helps.** Deleting a branch choice applies T, so questions about interval visits become questions about finite blocks (our own). The branches halve lengths, giving a continuous coding onto the interval (our own). Repeating blocks gives periodic returns, and placing two blocks far apart gives visits at all sufficiently late times (our own). The stated conjugacy carries both conclusions to the logistic map (our own).
+
+**Wikipedia:** [Tent map](https://en.wikipedia.org/wiki/Tent_map). It says: “The tent map with parameter μ = 2 and the logistic map with parameter r = 4 are topologically conjugate”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Interval coverings turn a three-cycle into all least periods
+
+**Remember:** Close a loop of coverings to find a periodic orbit.
+
+*Makes the theorem clean to state or prove.* MSC 37E05 (Dynamical systems involving maps of the interval), 37C25. arXiv math.DS. Level 2: later undergraduate.
+
+**Definition.** Say a closed interval I covers J when f(I) contains J. A covering loop records such inclusions in order and ends back at the first interval.
+
+**Problem.** A continuous interval map with a cycle of least period three has a cycle of every positive integer least period.
+
+**How the definition helps.** The three cycle points bound adjacent intervals I and J whose coverings encode returns as loops (our own). I covers J, and J covers both, so the covering lemma realizes loops visiting I once or staying in J (our own). Away from the shared endpoint, a single I in a length-n loop forces least period n (our own). An endpoint orbit has period three and visits the outer point of I every three steps, forcing n = 3 for this itinerary (our own).
+
+**Paper or page:** [Forcing Minimal Interval Patterns as Interval Exchange Transformations](https://arxiv.org/abs/2408.09569v1). It says: “Given any f-loop of intervals α: I₁ → I₂ → … Iₖ₋₁ → Iₖ → I₁ of length k, there exists a periodic point x ∈ I₁”
+
+**Sources:**
+
+- [T. Y. Li and J. A. Yorke, Period Three Implies Chaos (1975)](https://doi.org/10.1080/00029890.1975.11994008)
+
+### Logarithms turn repeated stretching into average slopes
+
+**Remember:** Logarithms turn a product of step stretches into a sum.
+
+*True by definition.* MSC 37E05 (Dynamical systems involving maps of the interval), 37C25. arXiv math.DS. Level 2: later undergraduate.
+
+**Definition.** The Lyapunov exponent of an orbit is the limit, when it exists, of the logarithm of its n-step slope magnitude divided by n. The n-step slope is the derivative of the n-fold iterate at the starting point.
+
+**Problem.** For a differentiable interval map with nonzero slopes along an orbit, the exponent exists exactly when the average logarithmic slope magnitude converges. On an n-cycle it equals the logarithm of the absolute n-step derivative divided by n.
+
+**How the definition helps.** Taking logarithms turns the chain rule’s product of absolute slopes into a sum (our own). Dividing by the number of steps gives the average formula for the exponent (our own). Along a cycle the same finite list repeats, so its average converges (our own).
+
+**Wikipedia:** [Lyapunov exponent](https://en.wikipedia.org/wiki/Lyapunov_exponent). It says: “λ(x₀) = limₙ→∞ (1/n) ∑ᵢ₌₀ⁿ⁻¹ ln \|f′(xᵢ)\|”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Separated branch itineraries identify the logistic Cantor set
+
+**Remember:** Where the branches separate, each infinite address names one point.
+
+*True by definition. Confidence: medium.* MSC 37E05 (Dynamical systems involving maps of the interval), 37B10. arXiv math.DS. Level 2: later undergraduate.
+
+**Definition.** For f(x) = rx(1 − x) with r &gt; 4, the surviving points stay in \[0, 1\] forever. Their branch addresses record which of the two disjoint intervals mapping onto \[0, 1\] they visit at each step.
+
+**Problem.** The surviving points form a Cantor set, continuously matched in both directions with all infinite binary sequences. Applying f drops the first symbol.
+
+**How the definition helps.** Branch addresses turn each logistic step into deletion of one symbol (our own). Write x = sin²(πt/2) for t in \[0, 1\], where each inverse branch multiplies t-distances by at most 1/√r (our own). Thus nested branch intervals shrink to one point per address, while disjoint branches give one address per point (our own). Shared prefixes give nearby points, and each finite prefix selects a relatively open set of survivors (our own).
+
+**Wikipedia:** [Logistic map](https://en.wikipedia.org/wiki/Logistic_map). It says: “The set of initial conditions which remain within \[0,1\] form a Cantor set”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Sharkovskii’s order classifies the possible sets of least periods
+
+**Remember:** List odd multiples by powers of two, then count powers backward.
+
+*Makes the theorem clean to state or prove.* MSC 37E05 (Dynamical systems involving maps of the interval), 37C25. arXiv math.DS. Level 2: later undergraduate.
+
+**Definition.** Sharkovskii’s order starts with the odd numbers greater than one in increasing order. Next come those same lists multiplied successively by 2, 4, 8, and every higher power of two. The powers of two come last in decreasing order, ending at 1.
+
+**Problem.** For continuous maps from \[0, 1\] to itself, the possible sets of least periods are exactly the nonempty tails of Sharkovskii’s order. A least period counts steps until first return, and a tail contains everything following any of its members.
+
+**How the definition helps.** The order packages all period-forcing rules as one closure rule, and 3 comes first (our own). The work is proving the forcing rules and building a map for every tail (our own).
+
+**Paper or page:** [On Sets of Periodic Orbit Lengths in Finitely Presented Dynamical Systems](https://arxiv.org/abs/2510.10848v2). It says: “A set S ⊂ ℕ is the LPS of a continuous selfmap f on an interval I ⊂ ℝ if and only if S is a tail in the Sharkovskii ordering.”
+
+**Sources:**
+
+- [O. M. Sharkovskii, Coexistence of Cycles of a Continuous Map of the Line into Itself (1995 English translation of the 1964 paper)](https://doi.org/10.1142/s0218127495000934)
+
+### Subtracting known returns exposes the logistic map’s two-cycle
+
+**Remember:** Cancel the fixed-point factor before solving for a two-cycle.
+
+*True by definition.* MSC 37E05 (Dynamical systems involving maps of the interval), 37C25. arXiv math.DS. Level 2: later undergraduate.
+
+**Definition.** Let f(x) = rx(1 − x) on \[0, 1\]. Its period-two polynomial is the quotient of f(f(x)) − x by f(x) − x. Polynomial division defines it even at fixed points.
+
+**Problem.** For 0 &lt; r ≤ 4, the logistic map has exactly one two-cycle when r &gt; 3 and none when r ≤ 3. The cycle attracts for 3 &lt; r &lt; 1 + √6 and repels for 1 + √6 &lt; r ≤ 4.
+
+**How the definition helps.** Dividing out the fixed-point equation reduces the fourth-degree return equation to r²x² − r(r + 1)x + r + 1 = 0 (our own). Its discriminant is r²(r + 1)(r − 3), and the double root at r = 3 is fixed (our own). Above three, the quadratic formula gives two distinct nonfixed roots in \[0, 1\] (our own). Their sum and product give the two-step slope 4 + 2r − r², which determines the stated stability ranges (our own).
+
+**Wikipedia:** [Periodic point](https://en.wikipedia.org/wiki/Periodic_point). It says: “there are a pair of period-2 points which together form an attracting sequence”
+
+**Sources:**
+
+- [R. M. May, Simple mathematical models with very complicated dynamics (1976)](https://doi.org/10.1038/261459a0)
 
 ### Orbit averages give invariant probabilities
 

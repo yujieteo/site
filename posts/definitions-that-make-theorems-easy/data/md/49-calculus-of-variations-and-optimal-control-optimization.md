@@ -66,6 +66,216 @@
 
 - [Yuchen Lou, Shigeng Sun, Jorge Nocedal, Design Guidelines for Noise-Tolerant Optimization with Applications in Robust Design, arXiv:2401.15007v2 (2024)](https://arxiv.org/abs/2401.15007v2)
 
+### Endpoint momentum gives natural and moving boundary conditions
+
+**Remember:** At a free endpoint the first change vanishes along every allowed direction.
+
+*Makes the theorem clean to state or prove.* MSC 49K05 (Optimality conditions for free problems in one independent variable), 70H03. arXiv math.OC. Level 2: later undergraduate.
+
+**Definition.** For a smooth integrand L(x,y,v), let v=y′, p=∂L/∂v and H=vp−L. The endpoint term p δy−H δx measures the first change in the integral due to moving its upper end by (δx,δy).
+
+**Problem.** For a smooth stationary curve, the endpoint term vanishes along every allowed tangent direction at a freely sliding end. At a free height with x fixed, p=0.
+
+**How the definition helps.** The endpoint term combines horizontal and vertical motion in one expression. In our own derivation, integration by parts cancels the interior term along a stationary curve. Differentiating the moving integration limit accounts for the horizontal motion.
+
+**Paper or page:** [Simple Variable End Point Problem/Endpoints on Curves](https://proofwiki.org/wiki/Simple_Variable_End_Point_Problem/Endpoints_on_Curves). It says: “the following system of Euler and transversality equations”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Integrated momentum gives the Euler–Lagrange equation without second derivatives
+
+**Remember:** Subtract the accumulated position term before differentiating momentum.
+
+*Makes the theorem clean to state or prove.* MSC 49K05 (Optimality conditions for free problems in one independent variable). arXiv math.OC. Level 2: later undergraduate.
+
+**Definition.** For a smooth integrand L(x,y,y′), the momentum along a curve is p=∂L/∂y′. The integrated Euler–Lagrange equation says that p(x) minus the integral of ∂L/∂y from a to x stays constant.
+
+**Problem.** A continuously differentiable fixed-end stationary curve for a smooth integrand satisfies the integrated Euler–Lagrange equation. Its momentum is continuously differentiable even before one knows that the curve has a second derivative.
+
+**How the definition helps.** The integrated equation only uses the first derivative of the curve. In our own proof, integration by parts leaves the corrected momentum paired with h′ for every fixed-end direction h. Our own test takes h′ to be the corrected momentum minus its average. The resulting integral of a square is zero, so the corrected momentum is constant.
+
+**Paper or page:** [Necessary Condition for Integral Functional to have Extremum for given function/Lemma](https://proofwiki.org/wiki/Necessary_Condition_for_Integral_Functional_to_have_Extremum_for_given_function/Lemma). It says: “Then β(x) is differentiable. Furthermore: ∀ x ∈ \[a,b\]: β′(x) = α(x)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Jacobi fields rule out interior zeros at a minimum
+
+**Remember:** A Jacobi field vanishing at the start cannot vanish again inside a minimizing arc.
+
+*Makes the theorem clean to state or prove.* MSC 49K05 (Optimality conditions for free problems in one independent variable). arXiv math.OC. Level 2: later undergraduate.
+
+**Definition.** Suppose the second variation, the second derivative along a perturbation h, equals ∫(P h′²+Q h²) dx on \[a,b\], with smooth P,Q and P&gt;0. A point c&gt;a is conjugate to a if a nonzero solution of (P h′)′=Qh vanishes at a and c.
+
+**Problem.** If the second variation is nonnegative for all smooth fixed-end directions on \[a,b\], then no point in (a,b) is conjugate to a.
+
+**How the definition helps.** A conjugate point lets us cut the solution off at a zero, giving a test function h with zero second variation. In our own proof, smooth approximation allows this piecewise smooth test. Nonnegativity for h+εk forces the coefficient of ε to vanish for every smooth fixed-end k. Integration by parts gives a nonzero coefficient when k(c)≠0 because uniqueness forces h′(c)≠0 on the left.
+
+**Paper or page:** [Nonnegative Quadratic Functional implies no Interior Conjugate Points](https://proofwiki.org/wiki/Nonnegative_Quadratic_Functional_implies_no_Interior_Conjugate_Points). It says: “In other words, the open interval (a,b) contains no points conjugate to a.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Jacobi fields turn the second variation into a square
+
+**Remember:** Divide by a positive Jacobi field and the second variation becomes a square.
+
+*Makes the theorem clean to state or prove.* MSC 49K05 (Optimality conditions for free problems in one independent variable). arXiv math.OC. Level 2: later undergraduate.
+
+**Definition.** On \[a,b\], suppose the second derivative along each fixed-end perturbation h equals ∫(P h′²+Q h²) dx, with smooth P,Q and P&gt;0. A positive Jacobi field is a solution u of (P u′)′=Qu with u&gt;0 throughout \[a,b\].
+
+**Problem.** At a smooth stationary curve for a smooth integrand, such a field makes the second variation strictly positive in every nonzero fixed-end direction. The curve is then a strict local minimum among curves close in both height and slope.
+
+**How the definition helps.** In our own proof, substituting h=uw turns the second variation into ∫P u² w′² dx because the endpoint term vanishes. Positive lower bounds for P and u make this control ∫w′² dx. Since w vanishes at the ends, integration and Cauchy–Schwarz then bound ∫h′² dx by a constant times the second variation. Taylor’s theorem gives a smaller remainder when height and slope stay sufficiently close.
+
+**Paper or page:** [Sufficient Conditions for Weak Extremum](https://proofwiki.org/wiki/Sufficient_Conditions_for_Weak_Extremum). It says: “Let the strengthened Legendre's Condition hold. Let the strengthened Jacobi's Necessary Condition hold.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Linear scaling in velocity makes curve integrals ignore speed
+
+**Remember:** The speed factor from the velocity cancels the change of parameter.
+
+*Rules out counterexamples.* MSC 49K05 (Optimality conditions for free problems in one independent variable). arXiv math.OC. Level 2: later undergraduate.
+
+**Definition.** An integrand F(q,v) is positively homogeneous of degree one in velocity if F(q,sv)=sF(q,v) for every s&gt;0. It depends on the point and the velocity, but has no separate dependence on the curve parameter.
+
+**Problem.** The integral of such an integrand along a curve is unchanged by any smooth increasing change of parameter with positive derivative.
+
+**How the definition helps.** The scaling rule cancels the speed factor introduced by a change of parameter. In our own proof, the chain rule scales the velocity and substitution cancels this factor in the integral. Squared speed fails this test. Our own paths q(t)=t and q(t)=(t+t²)/2 both traverse \[0,1\] in unit time, but their squared-speed integrals are 1 and 13/12.
+
+**Paper or page:** [Necessary and Sufficient Condition for Integral Parametric Functional to be Independent of Parametric Representation](https://proofwiki.org/wiki/Necessary_and_Sufficient_Condition_for_Integral_Parametric_Functional_to_be_Independent_of_Parametric_Representation). It says: “and is a positive-homogeneous function of degree 1 in ẋ and ẏ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Strong minima exclude cheap changes with steep slopes
+
+**Remember:** A height limit still lets you test a steep slope briefly.
+
+*Rules out counterexamples.* MSC 49K05 (Optimality conditions for free problems in one independent variable). arXiv math.OC. Level 2: later undergraduate.
+
+**Definition.** A strong local minimum compares a curve with all fixed-end piecewise smooth curves uniformly close in height. A weak local minimum also requires their slopes to be uniformly close wherever defined.
+
+**Problem.** At each interior point of a smooth strong minimizer, the smooth integrand as a function of slope lies above its tangent line there.
+
+**How the definition helps.** Strong closeness permits a brief test at any slope. In our own derivation, a short steep segment followed by a gentle return detects any negative gap below the tangent. For L(v)=v²−v⁴ and zero endpoints, the zero curve minimizes among curves with slopes smaller than one in magnitude. Our own zigzags with slopes ±2 have arbitrarily small height and negative integral.
+
+**Wikipedia:** [Calculus of variations](https://en.wikipedia.org/wiki/Calculus_of_variations). It says: “Thus a strong extremum is also a weak extremum, but the converse may not hold.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The endpoint term gives both corner matching conditions
+
+**Remember:** At a movable join, both arcs must give the same endpoint work.
+
+*Makes the theorem clean to state or prove.* MSC 49K05 (Optimality conditions for free problems in one independent variable). arXiv math.OC. Level 2: later undergraduate.
+
+**Definition.** For a smooth integrand L(x,y,v), let v=y′, p=∂L/∂v and H=vp−L. The endpoint term p δy−H δx gives the contribution from moving an arc’s upper end by (δx,δy).
+
+**Problem.** If a stationary piecewise smooth curve has a freely movable interior corner, p and H agree across the corner.
+
+**How the definition helps.** In our own derivation, moving the corner changes one arc’s upper end and the other arc’s lower end. Their endpoint terms therefore enter with opposite signs. Independent horizontal and vertical movements force H and p to match separately.
+
+**Paper or page:** [Necessary Condition for Integral Functional to have Extremum for given Function/Non-differentiable at Intermediate Point](https://proofwiki.org/wiki/Necessary_Condition_for_Integral_Functional_to_have_Extremum_for_given_Function/Non-differentiable_at_Intermediate_Point). It says: “The last two equations are known as the Weierstrass-Erdmann corner conditions.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The first variation turns minimization into the Euler–Lagrange equation
+
+**Remember:** Move the derivative off the test function to see the equation.
+
+*Makes the theorem clean to state or prove.* MSC 49K05 (Optimality conditions for free problems in one independent variable). arXiv math.OC. Level 2: later undergraduate.
+
+**Definition.** A functional assigns a number to a curve, for example J\[y\]=∫L(x,y,y′) dx with smooth L. Its first variation in direction h is the derivative of J\[y+εh\] at ε=0. Its variational derivative is the continuous function G giving that derivative as ∫Gh dx whenever h vanishes near both ends.
+
+**Problem.** At a smooth fixed-end minimum, the variational derivative vanishes. Equivalently, ∂L/∂y = d(∂L/∂y′)/dx along the curve.
+
+**How the definition helps.** The first variation lets ordinary calculus test a minimum one direction at a time. Our own explanation puts the work in integration by parts, which identifies G. The fundamental lemma then says that a continuous G that pairs to zero with every test function must vanish.
+
+**Paper or page:** [Necessary Condition for Integral Functional to have Extremum for given function](https://proofwiki.org/wiki/Necessary_Condition_for_Integral_Functional_to_have_Extremum_for_given_function). It says: “Then a necessary condition for J\[y\] to have an extremum (strong or weak) for a given function y(x) is that y(x) satisfy Euler's equation”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The Lagrangian energy gives Beltrami's identity
+
+**Remember:** Subtract the integrand from slope times momentum to expose the constant.
+
+*Makes the theorem clean to state or prove.* MSC 49K05 (Optimality conditions for free problems in one independent variable), 70H03. arXiv math.OC. Level 2: later undergraduate.
+
+**Definition.** For the integrand L(x,y,v) with v=y′, define its energy as H=v∂L/∂v−L. Unlike mechanical energy, this definition does not require kinetic and potential terms.
+
+**Problem.** If the integrand does not depend on x explicitly, H is constant along every smooth Euler–Lagrange curve.
+
+**How the definition helps.** The energy packages the second-order equation into a first-order relation between y and its slope. In our own calculation, differentiating v∂L/∂v−L cancels the terms containing v′. The Euler–Lagrange equation cancels the terms containing y′, leaving −∂L/∂x.
+
+**Wikipedia:** [Calculus of variations](https://en.wikipedia.org/wiki/Calculus_of_variations). It says: “the Legendre transform of the Lagrangian”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The Weierstrass excess makes strong minimality a pointwise test
+
+**Remember:** Subtract an endpoint term so only the excess cost remains.
+
+*Makes the theorem clean to state or prove.* MSC 49K05 (Optimality conditions for free problems in one independent variable). arXiv math.OC. Level 2: later undergraduate.
+
+**Definition.** Fix a smooth slope field v(x,y) and write p=∂L/∂v at the field slope. The Weierstrass excess is the gap E=L(x,y,w)−L(x,y,v)−p(w−v) at a competing slope w. The Hilbert integral integrates p dy+(L−vp) dx along a curve, with L evaluated at the field slope.
+
+**Problem.** Suppose the Hilbert expression equals dS for a smooth function S on a strip and the excess is nonnegative there for every slope. Each curve following the field minimizes the original integral among fixed-end competitors in that strip.
+
+**How the definition helps.** In our own proof, subtracting the Hilbert integral leaves precisely the integral of the excess. The Hilbert integral equals the same endpoint difference for every competitor. Excess vanishes along the field and is nonnegative elsewhere, which proves the comparison. The work lies in finding a field and a function S with these properties.
+
+**Paper or page:** [Conditions for Strong Minimum of Functional](https://proofwiki.org/wiki/Conditions_for_Strong_Minimum_of_Functional). It says: “where E is Weierstrass E-Function. Then J has a strong minimum for γ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Travel time turns fastest descent into refraction
+
+**Remember:** Measure distance in seconds and the bead follows a light ray.
+
+*Makes the theorem clean to state or prove.* MSC 49K05 (Optimality conditions for free problems in one independent variable). arXiv math.OC. Level 2: later undergraduate.
+
+**Definition.** The travel time along a path is the integral of arc length divided by local speed. It equals optical length divided by the reference speed in the corresponding optical medium. A bead released from rest at depth zero has speed √(2gy) at depth y under constant gravity g.
+
+**Problem.** In uniform gravity without friction, the fastest descent from rest to a lower point off the vertical is a cycloid arc starting at a cusp.
+
+**How the definition helps.** The travel-time integral gives the bead and a light ray the same minimization problem when their speed profiles agree. In our own derivation, Snell’s law makes cos α divided by √y constant, where α measures the tangent angle from horizontal. Integrating this relation gives the cycloid. Proving it beats every competing path requires a global comparison.
+
+**Wikipedia:** [Brachistochrone curve](https://en.wikipedia.org/wiki/Brachistochrone_curve). It says: “Bernoulli noted that Snell's law of refraction gives a constant of the motion for a beam of light in a medium of variable density”
+
+**Sources:**
+
+- [Isaac Newton, De ratione temporis quo grave labitur (1697)](https://doi.org/10.1098/rstl.1695.0074)
+
+### A regular integral constraint admits one constant multiplier
+
+**Remember:** One direction that changes the constraint is enough to repair the others.
+
+*Rules out counterexamples.* MSC 49K21 (Optimality conditions for problems involving relations other than differential equations), 49K05. arXiv math.OC. Level 2: later undergraduate.
+
+**Definition.** An integral constraint K\[y\]=c is regular at y if some fixed-end perturbation gives a nonzero first derivative of K. This excludes constraints whose first derivative vanishes in every direction.
+
+**Problem.** Suppose smooth integral functionals J and K have fixed endpoints and K\[y\]=c is regular at a constrained minimum of J. Some constant λ makes the first derivative of J+λK vanish in every fixed-end direction.
+
+**How the definition helps.** In our own argument, regularity lets one direction correct the constraint by the implicit function theorem. Linearity then gives the multiplier because the first derivative vanishes on all first-order feasible directions. Our own counterexample uses J\[y\]=∫y dx with K\[y\]=∫y² dx=0 and zero endpoints. Only y=0 is feasible, but no finite λ makes J+λK stationary there.
+
+**Paper or page:** [Simplest Variational Problem with Subsidiary Conditions](https://proofwiki.org/wiki/Simplest_Variational_Problem_with_Subsidiary_Conditions). It says: “Then, if y = y(x) is not an extremal of K\[y\], there exists a constant λ such that y = y(x) is an extremal of the functional”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Tangent variations put constraint forces in the normal direction
+
+**Remember:** Constraint forces have no component along allowed displacements.
+
+*Makes the theorem clean to state or prove.* MSC 49K21 (Optimality conditions for problems involving relations other than differential equations), 70H03. arXiv math.OC. Level 2: later undergraduate.
+
+**Definition.** At fixed x, a tangent variation to g(x,y,z)=0 is a displacement perpendicular to the gradient in y and z. Assume g is smooth and this gradient never vanishes along the curve.
+
+**Problem.** At a smooth fixed-end extremum of ∫L(x,y,z,y′,z′) dx under this constraint, some function λ(x) makes ∫(L+λg) dx stationary.
+
+**How the definition helps.** Tangent variations test all directions perpendicular to the constraint gradient. In our own derivation, the implicit function theorem realizes local tangent variations by curves satisfying the constraint. After integration by parts, tests on arbitrarily short intervals force the coefficient to be normal at each point. A normal vector is a multiple of the gradient.
+
+**Paper or page:** [Simplest Variational Problem with Subsidiary Conditions for Curve on Surface](https://proofwiki.org/wiki/Simplest_Variational_Problem_with_Subsidiary_Conditions_for_Curve_on_Surface). It says: “not simultaneously vanish at any point of the surface g = 0.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Continuation values give a recursion for optimal reward
 
 **Remember:** Once the current state is fixed, only the remaining choices matter.

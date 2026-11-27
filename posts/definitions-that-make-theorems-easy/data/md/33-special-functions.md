@@ -16,6 +16,86 @@
 
 - [James McMahon, Hyperbolic Functions, John Wiley and Sons (1896).](https://archive.org/details/hyperbolicfuncti031883mbp)
 
+### Exponential sums make hyperbolic sine and cosine swap derivatives
+
+**Remember:** Differentiate and the sign on exp(−x) flips.
+
+*True by definition.* MSC 33B10 (Exponential and trigonometric functions). arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** The hyperbolic cosine is cosh x = (exp(x) + exp(−x))/2. The hyperbolic sine is sinh x = (exp(x) − exp(−x))/2.
+
+**Problem.** The derivative of cosh x is sinh x. The derivative of sinh x is cosh x.
+
+**How the definition helps.** Differentiation changes only the sign of the term exp(−x), so it exchanges the two formulas. Our own comparison uses the geometric definition, which measures position on the hyperbola by sector area. The work there is to express the coordinates in terms of that area.
+
+**Paper or page:** [Derivative of Hyperbolic Cosine](https://proofwiki.org/wiki/Derivative_of_Hyperbolic_Cosine). It says: “d(cosh x)/dx = sinh x”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Nonnegative inputs pick the plus root for inverse hyperbolic cosine
+
+**Remember:** A nonnegative input means its exponential is at least one.
+
+*Rules out counterexamples.* MSC 33B10 (Exponential and trigonometric functions). arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** For x ≥ 1, arcosh x is the unique t ≥ 0 with cosh t = x. Here cosh t = (exp(t) + exp(−t))/2.
+
+**Problem.** For x ≥ 1, arcosh x = ln(x + √(x² − 1)).
+
+**How the definition helps.** The restriction t ≥ 0 forces exp(t) ≥ 1 and selects the larger root. In our own calculation, y = exp(t) satisfies y² − 2xy + 1 = 0, so y = x + √(x² − 1). Taking logarithms gives t. Without the restriction, both 1 and −1 solve cosh t = cosh 1.
+
+**Wikipedia:** [Inverse hyperbolic functions](https://en.wikipedia.org/wiki/Inverse_hyperbolic_functions). It says: “arcosh x = ln(x + √(x² − 1))”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Polar form gives the exact periods of the complex exponential
+
+**Remember:** The real part sets the size and the imaginary part sets the angle.
+
+*True by definition. Confidence: medium.* MSC 33B10 (Exponential and trigonometric functions). arXiv math.CV. Level 1: early undergraduate.
+
+**Definition.** For real x and y, define exp(x + iy) as eˣ(cos y + i sin y). This polar form gives the distance from zero and the angle from the positive real axis. Another definition uses the exponential power series.
+
+**Problem.** The complex exponential maps onto the nonzero complex numbers. Two inputs give the same output exactly when they differ by an integer multiple of 2πi.
+
+**How the definition helps.** The polar definition assigns a distance and a direction to each exponent (our own). The distance determines x and the direction determines y up to full turns (our own). Our own comparison puts the work into polar coordinates and showing that the two definitions agree.
+
+**Paper or page:** [Period of Complex Exponential Function](https://proofwiki.org/wiki/Period_of_Complex_Exponential_Function). It says: “exp(z + 2kπi) = exp z”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The arctangent integral gives the Gregory series for π
+
+**Remember:** Integrate the geometric sum to get the alternating odd reciprocals.
+
+*True by definition.* MSC 33B10 (Exponential and trigonometric functions). arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** Define arctan x as the integral of 1/(1 + t²) from 0 to x. This replaces the definition as the inverse of tangent on (−π/2, π/2).
+
+**Problem.** For \|x\| ≤ 1, arctan x = x − x³/3 + x⁵/5 − ⋯. At x = 1 this gives π/4 = 1 − 1/3 + 1/5 − ⋯.
+
+**How the definition helps.** Our own proof integrates the finite geometric sum in −t². If the final integrand term has degree 2N, the integrated remainder has absolute value at most 1/(2N + 3) (our own). The work is to identify the integral with inverse tangent, whose derivative is 1/(1 + x²) (our own).
+
+**Paper or page:** [Gregory Series](https://proofwiki.org/wiki/Gregory_Series). It says: “θ = tan θ − ⅓ tan³ θ + ⅕ tan⁵ θ − ⋯”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The chosen cosine branch fixes the sign of its inverse derivative
+
+**Remember:** Choose angles with positive sine to get a negative derivative.
+
+*Rules out counterexamples.* MSC 33B10 (Exponential and trigonometric functions). arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** Define arccos as the inverse of cosine restricted to \[0,π\]. Without this restriction, the same cosine value can come from angles with opposite sines.
+
+**Problem.** For −1 &lt; x &lt; 1, the derivative of arccos x is −1/√(1 − x²).
+
+**How the definition helps.** The chosen angle has positive sine for −1 &lt; x &lt; 1, so its cosine has negative derivative. The inverse derivative rule gives −1/sin(arccos x), and the identity sin² θ + cos² θ = 1 gives the formula. In our own comparison, choosing angles in \[−π,0\] gives slope +1 at zero instead.
+
+**Wikipedia:** [Inverse trigonometric functions](https://en.wikipedia.org/wiki/Inverse_trigonometric_functions). It says: “This means that θ could be either π/2 or −π/2.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Unit-circle coordinates give the Pythagorean identity
 
 **Remember:** The squares of the coordinates of a point on the unit circle sum to one.
@@ -86,6 +166,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### An open strip makes the principal logarithm holomorphic
+
+**Remember:** A branch cut keeps the logarithm away from its jump.
+
+*Rules out counterexamples.* MSC 33B10 (Exponential and trigonometric functions). arXiv math.CV. Level 2: later undergraduate.
+
+**Definition.** Start with the open strip −π &lt; Im z &lt; π, where Im z is the imaginary part of z. The principal logarithm inverts the exponential on that strip. Its domain omits the nonpositive real ray.
+
+**Problem.** The principal logarithm is holomorphic on the slit plane and its derivative is 1/z.
+
+**How the definition helps.** The strip chooses one angle continuously for each point of the slit plane (our own explanation). At −1 the two limiting logarithms would be iπ from above and −iπ from below (our own example). The complex inverse function theorem gives the derivative because the exponential equals its own derivative and never vanishes (our own proof).
+
+**Wikipedia:** [Complex logarithm](https://en.wikipedia.org/wiki/Complex_logarithm). It says: “There is no continuous complex logarithm function defined on all of ℂ∗.”
+
+**Paper or page:** [Theorem 6.2. (Branch cut functions)](https://venhance.github.io/napkin/Napkin.pdf). It says: “There exist holomorphic functions”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Defining π through the exponential gives Euler’s identity
 
 **Remember:** π is where exp(it) first reaches −1, so exp(iπ) = −1 is the definition.
@@ -136,6 +234,38 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Logarithms modulo full turns turn every product into a sum
+
+**Remember:** Add logarithms as classes and keep no record of full turns.
+
+*True by definition.* MSC 33B10 (Exponential and trigonometric functions). arXiv math.CV. Level 2: later undergraduate.
+
+**Definition.** Define the logarithm of a nonzero complex number as the class of all its exponents. Two exponents belong to the same class when their difference is an integer multiple of 2πi.
+
+**Problem.** The logarithm class of a product is the sum of the logarithm classes of its nonzero factors.
+
+**How the definition helps.** Adding any two logarithms gives an exponent for the product by the exponential addition law (our own proof). Changing either choice adds only a multiple of 2πi. Choosing just the principal angle can lose a full turn when two angles of 3π/4 add (our own example).
+
+**Wikipedia:** [Complex logarithm](https://en.wikipedia.org/wiki/Complex_logarithm). It says: “the two sides can differ by an integer multiple of 2πi”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### One complex product gives both trigonometric addition laws
+
+**Remember:** Multiply once to add both angles.
+
+*True by definition.* MSC 33B10 (Exponential and trigonometric functions). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** Define cos t and sin t as the real and imaginary parts of exp(it), with i² = −1. This replaces the definition by coordinates on the unit circle.
+
+**Problem.** For real a and b, cos(a + b) = cos a cos b − sin a sin b. Also, sin(a + b) = sin a cos b + cos a sin b.
+
+**How the definition helps.** Multiplying the two complex exponentials adds their angles. In our own proof, the real part of the product gives the cosine formula and the imaginary part gives the sine formula. The work lies in proving the exponential addition law and identifying exp(it) with the unit-circle point at angle t.
+
+**Paper or page:** [Euler's Formula/Real Domain](https://proofwiki.org/wiki/Euler's_Formula/Real_Domain). It says: “eⁱᶿ = cos θ + i sin θ”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The exponential definition makes de Moivre’s formula an exponent law
 
 **Remember:** Raising exp(ix) to the n-th power just multiplies the angle by n.
@@ -151,6 +281,38 @@
 **nLab:** [trigonometric function](https://ncatlab.org/nlab/show/trigonometric+function). It says: “In other words: exp(i t) = cos(t) + i sin(t) (Euler).”
 
 **Wikipedia:** [De Moivre's formula](https://en.wikipedia.org/wiki/De_Moivre%27s_formula). It says: “One can derive de Moivre's formula using Euler's formula and the exponential law for integer powers”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The first cosine zero locates all the other zeros
+
+**Remember:** Fix the first zero and shift by half a turn.
+
+*True by definition.* MSC 33B10 (Exponential and trigonometric functions). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** Define π as twice the first positive zero of cosine. Cosine is the real part of exp(it) for real t, with i² = −1. The geometric definition instead uses the ratio of circumference to diameter.
+
+**Problem.** The real zeros of cosine are exactly (n + ½)π, where n ranges over all integers.
+
+**How the definition helps.** The first positive zero and evenness of cosine give a zero-free interval (−π/2,π/2). At π/2 the unit complex exponential equals ±i, so its square is −1 and shifting by π negates cosine. Our own proof translates the interval by integer multiples of π, leaving only its endpoints as zeros. The remaining work establishes the first zero and identifies π with the geometric constant.
+
+**Paper or page:** [Zeroes of Sine and Cosine/Cosine](https://proofwiki.org/wiki/Zeroes_of_Sine_and_Cosine/Cosine). It says: “x = (n + ½)π for some n ∈ ℤ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A centered beta integral gives gamma duplication
+
+**Remember:** Center the equal arguments to turn two factors into one square.
+
+*True by definition.* MSC 33B15 (Gamma, beta and polygamma functions). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** For x, y &gt; 0, the beta function is B(x,y) = ∫₀¹ tˣ⁻¹(1 − t)ʸ⁻¹ dt. It also equals Γ(x)Γ(y)/Γ(x + y), where Γ denotes the gamma function.
+
+**Problem.** For x &gt; 0, Γ(x)Γ(x + ½) = 2 to the power 1 − 2x times √π Γ(2x).
+
+**How the definition helps.** Centering the integral for B(x,x) makes its two power factors combine into a power of 1 − u². Our own proof sets t = (1 + u)/2, uses symmetry, then substitutes v = u². This gives B(x,x) = 2¹⁻²ˣ B(½,x). The gamma formula follows from the beta–gamma identity and Γ(½) = √π.
+
+**nLab:** [Euler beta function](https://ncatlab.org/nlab/show/Euler+beta+function). It says: “B(x,y) = ∫₀¹ tˣ⁻¹ (1 − t)ʸ⁻¹ dt = Γ(x)Γ(y)/Γ(x + y)”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -199,6 +361,152 @@
 **How the definition helps.** With Euler’s limit, the quotient of the finite expressions at x + 1 and at x is kx/(x + k), which tends to x. So the formula holds at once on the whole domain. The integral definition gives it by integration by parts only where the real part of x is positive, and continuation beyond needs the formula itself. The work moves to showing that the limit exists and equals the integral there (our own proof steps).
 
 **nLab:** [Gamma function](https://ncatlab.org/nlab/show/Gamma+function). It says: “the Gamma function satisfies the following translation formula”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Log convexity gives Gauss's gamma multiplication law
+
+**Remember:** Shift the scaled product once so the middle factors cancel.
+
+*True by definition.* MSC 33B15 (Gamma, beta and polygamma functions). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** Define Γ as the positive function on (0,∞) whose logarithm is convex, with Γ(1) = 1 and Γ(x + 1) = xΓ(x). Euler's alternative defines it by an integral.
+
+**Problem.** Fix an integer m ≥ 2 and a real number x &gt; 0. The product of Γ((x + j)/m) for j = 0,…,m − 1 equals (√(2π))ᵐ⁻¹ m⁽½⁻ˣ⁾ Γ(x).
+
+**How the definition helps.** Gamma’s uniqueness identifies a positive, logarithmically convex product once it satisfies the gamma recurrence and equals one at x = 1. Our own proof multiplies the stated product by mˣ and divides by its resulting value at 1. Shifting x by one cancels all but two gamma factors and multiplies this normalized function by x. Stirling’s formula for gamma at large inputs supplies the constant.
+
+**nLab:** [Gamma function](https://ncatlab.org/nlab/show/Gamma+function). It says: “\\prod<sub>j=0</sub><sup>N-1</sup> \\Gamma\\left(z+\\tfrac{j}{N}\\right) = (2\\pi)<sup>{\\tfrac{1}{2}</sup>(N-1)} \\cdot N<sup>{\\tfrac{1}{2}-Nz}</sup> \\cdot \\Gamma(Nz).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Shifting the gamma integral exposes its poles and residues
+
+**Remember:** At a pole, exactly one step contributes a zero denominator.
+
+*True by definition.* MSC 33B15 (Gamma, beta and polygamma functions). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** For complex z with positive real part, define Γ(z) = ∫₀∞ tᶻ⁻¹ exp(−t) dt. Elsewhere, use Γ(z) = Γ(z + m)/\[z(z + 1)⋯(z + m − 1)\] with a positive integer m large enough to reach that half-plane. Omit the nonpositive integers, where the denominator vanishes.
+
+**Problem.** The only poles of Γ are at −n for integers n ≥ 0, and all are simple. The coefficient of 1/(z + n) at −n is (−1) to the nth power divided by n!.
+
+**How the definition helps.** Near −n, shifting by n + 1 leaves just one vanishing factor, z + n. The numerator tends to Γ(1) = 1, and the remaining factors multiply to (−1)ⁿn!. Our own comparison uses shifts in place of an infinite product. The work is to prove analyticity of the integral and the recurrence that makes different shifts agree.
+
+**Paper or page:** [Residue of Gamma Function](https://proofwiki.org/wiki/Residue_of_Gamma_Function). It says: “Res Γ(−n) = (−1)ⁿ/n!”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The beta integral evaluates powers of sine and cosine
+
+**Remember:** Substitute the square of sine to read both parameters.
+
+*True by definition.* MSC 33B15 (Gamma, beta and polygamma functions). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** For x, y &gt; 0, the beta function is B(x,y) = ∫₀¹ tˣ⁻¹(1 − t)ʸ⁻¹ dt.
+
+**Problem.** For p, q &gt; −1, the integral of sinᵖ θ cosᑫ θ over \[0,π/2\] equals ½B((p + 1)/2,(q + 1)/2).
+
+**How the definition helps.** Setting t = sin² θ gives dt = 2 sin θ cos θ dθ, leaving exactly the two powers in the beta integral. Our own calculation also gives a gamma quotient once the identity B(x,y) = Γ(x)Γ(y)/Γ(x + y) is known.
+
+**nLab:** [Euler beta function](https://ncatlab.org/nlab/show/Euler+beta+function). It says: “B(x,y) = ∫₀¹ tˣ⁻¹ (1 − t)ʸ⁻¹ dt = Γ(x)Γ(y)/Γ(x + y)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The beta integral makes two shifted values add back
+
+**Remember:** Shifting the two arguments brings in t and 1 − t.
+
+*True by definition.* MSC 33B15 (Gamma, beta and polygamma functions). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** For x, y &gt; 0, the beta function is B(x,y) = ∫₀¹ tˣ⁻¹(1 − t)ʸ⁻¹ dt.
+
+**Problem.** For positive x and y, B(x + 1,y) + B(x,y + 1) = B(x,y).
+
+**How the definition helps.** Increasing x by one multiplies the integrand by t, while increasing y by one multiplies it by 1 − t. Their sum restores the original integrand. Our own comparison uses the alternative definition by gamma quotients, which requires proving the beta–gamma identity.
+
+**Paper or page:** [Beta Function of x+1 with y plus Beta Function of x with y+1](https://proofwiki.org/wiki/Beta_Function_of_x+1_with_y_plus_Beta_Function_of_x_with_y+1). It says: “Β(x + 1,y) + Β(x,y + 1) = Β(x,y)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The gamma integral gives its half value from the Gaussian
+
+**Remember:** At one half, substitute a square to cancel the root.
+
+*True by definition.* MSC 33B15 (Gamma, beta and polygamma functions). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** For x &gt; 0, define Γ(x) by integrating t to the power x − 1 times exp(−t) over t &gt; 0. Euler's alternative uses a limit of finite products.
+
+**Problem.** Γ(½) = √π.
+
+**How the definition helps.** Our own proof sets t = u², so Γ(½) becomes twice the integral of exp(−u²) over u &gt; 0. The work moves to computing the Gaussian integral, for example by using polar coordinates after squaring it (our own).
+
+**Paper or page:** [Gamma Function of One Half](https://proofwiki.org/wiki/Gamma_Function_of_One_Half). It says: “Γ(½) = √π”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The gamma integral makes its logarithm convex
+
+**Remember:** A weighted average of inputs gives a weighted product inside the integral.
+
+*True by definition.* MSC 33B15 (Gamma, beta and polygamma functions). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** For x &gt; 0, the gamma function is Γ(x) = ∫₀∞ tˣ⁻¹ exp(−t) dt. Euler’s alternative uses a limit of finite products.
+
+**Problem.** The logarithm of Γ is convex on (0,∞). Its graph lies below every line segment joining two points on the graph.
+
+**How the definition helps.** A weighted average of two inputs makes the integrand a product with the same two weights as exponents. Hölder’s inequality bounds its integral by the corresponding product of gamma values. Taking logarithms gives convexity. The work lies in Hölder’s inequality and convergence of the defining integral.
+
+**Paper or page:** [Log of Gamma Function is Convex on Positive Reals](https://proofwiki.org/wiki/Log_of_Gamma_Function_is_Convex_on_Positive_Reals). It says: “Then the composite mapping ln ∘ Γ is a convex function.”
+
+**Sources:**
+
+- [Walter Rudin, Principles of Mathematical Analysis, third edition (1976), Theorem 8.18(c).](https://www.lehman.edu/faculty/rbettiol/lehman_teaching/2020mat320/baby_Rudin.pdf)
+
+### The gamma product rules out zeros of gamma
+
+**Remember:** A finite reciprocal leaves gamma no place to vanish.
+
+*True by definition.* MSC 33B15 (Gamma, beta and polygamma functions). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** Define 1/Γ(z) by multiplying z exp(γz) by one factor for each positive integer n. The factor is (1 + z/n)exp(−z/n). The constant γ is the limit of 1 + 1/2 + ⋯ + 1/n − ln n.
+
+**Problem.** The gamma function has no zeros wherever it is defined in the complex plane.
+
+**How the definition helps.** Wherever Γ is defined, it is the reciprocal of a finite, nonzero product value, so it cannot vanish. Our own proof shifts the work to convergence of the product and its agreement with the reciprocal of Euler’s integral on the right half-plane.
+
+**Paper or page:** [Zeroes of Gamma Function](https://proofwiki.org/wiki/Zeroes_of_Gamma_Function). It says: “The Gamma function is never equal to 0.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The gamma quotient makes beta symmetric
+
+**Remember:** Swapping beta's arguments swaps the two factors.
+
+*True by definition.* MSC 33B15 (Gamma, beta and polygamma functions). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** For x &gt; 0, the gamma function is Γ(x) = ∫₀∞ tˣ⁻¹ exp(−t) dt. Define the beta function by B(x,y) = Γ(x)Γ(y)/Γ(x + y) for x, y &gt; 0.
+
+**Problem.** For positive x and y, B(x,y) = B(y,x).
+
+**How the definition helps.** Swapping x and y leaves the numerator and denominator unchanged. Our own comparison uses the alternative definition B(x,y) = ∫₀¹ tˣ⁻¹(1 − t)ʸ⁻¹ dt. A change of variables in a double integral identifies the two definitions.
+
+**Paper or page:** [Commutativity of Parameters of Beta Function](https://proofwiki.org/wiki/Commutativity_of_Parameters_of_Beta_Function). It says: “Β(x,y) = Β(y,x)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The logarithmic gamma derivative extends the harmonic recurrence
+
+**Remember:** Differentiate the gamma shift to get the harmonic shift.
+
+*True by definition.* MSC 33B15 (Gamma, beta and polygamma functions), 39B22. arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** For x ≥ 0, define H(x) as γ + Γ′(x+1)/Γ(x+1). Here γ is the Euler–Mascheroni constant and Γ is the gamma function, which extends the factorial. The usual sum of reciprocals defines H only at integers.
+
+**Problem.** The extension satisfies H(x+1)−H(x) = 1/(x+1) for all x ≥ 0. It agrees with the harmonic numbers at every nonnegative integer.
+
+**How the definition helps.** The logarithmic derivative changes the gamma multiplication law into the additive harmonic recurrence. In our own calculation, differentiating log Γ(t+1) = log t+log Γ(t) gives the required difference. The identity Γ′(1) = −γ and Γ(1) = 1 give H(0) = 0. The recurrence then recovers every integer harmonic number.
+
+**Paper or page:** [Extension of Harmonic Number to Non-Integer Argument](https://proofwiki.org/wiki/Extension_of_Harmonic_Number_to_Non-Integer_Argument). It says: “H(x) = γ + Γ′(x+1)/Γ(x+1)”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -316,6 +624,56 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Bessel functions of the second kind restore independence at integers
+
+**Remember:** Keep the limiting second solution when the two first-kind solutions coincide.
+
+*Rules out counterexamples.* MSC 33C10 (Bessel and Airy functions, cylinder functions, \\(\_0F<sub>1</sub>\\)). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** Write J(ν,x) for the first-kind Bessel function of order ν. For noninteger ν, define Y(ν,x) as \[cos(πν)J(ν,x) − J(−ν,x)\]/sin(πν). At integer orders take the limit in ν.
+
+**Problem.** For every real ν, J(ν,x) and Y(ν,x) are independent solutions of Bessel's equation on x &gt; 0. Neither is a constant multiple of the other.
+
+**How the definition helps.** The denominator sin(πν) cancels the factor that makes the determinant of J(ν,x) and J(−ν,x) vanish at integer orders. In our own argument, the resulting determinant JY′ − J′Y equals 2/(πx), with derivatives taken in x. At order zero the original pair would repeat J₀. The work lies in proving the determinant formula and passing to the limit in both solutions and their derivatives.
+
+**Wikipedia:** [Bessel function](https://en.wikipedia.org/wiki/Bessel_function). It says: “This means that the two solutions are no longer linearly independent.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### One generating function gives the Bessel order recurrence
+
+**Remember:** Differentiate in the coefficient variable to bring down the order.
+
+*True by definition.* MSC 33C10 (Bessel and Airy functions, cylinder functions, \\(\_0F<sub>1</sub>\\)). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** For integer n, define Jₙ(x) as the coefficient of t to power n in exp((x/2)(t − 1/t)). An alternative uses a separate series in x for each order.
+
+**Problem.** For integer n and real x, 2nJₙ(x) = x\[Jₙ₋₁(x) + Jₙ₊₁(x)\].
+
+**How the definition helps.** Our own proof applies t times the t derivative to the whole generating function. This multiplies the exponential by (x/2)(t + 1/t), so comparing coefficients gives the recurrence (our own). The work is to justify differentiation in the series and identify the coefficients with the usual Bessel series (our own).
+
+**Paper or page:** [Recurrence Formula for Bessel Function of the First Kind](https://proofwiki.org/wiki/Recurrence_Formula_for_Bessel_Function_of_the_First_Kind). It says: “Jₙ₊₁(x) = (2n/x)Jₙ(x) − Jₙ₋₁(x)”
+
+**Sources:**
+
+- [E. T. Whittaker and G. N. Watson, A Course of Modern Analysis, chapter XVII, “Bessel Functions,” pp. 355–385.](https://doi.org/10.1017/CBO9780511608759.018)
+
+### The Bessel generating function expands a plane wave
+
+**Remember:** Put the coefficient variable on the unit circle and rotate it.
+
+*True by definition.* MSC 33C10 (Bessel and Airy functions, cylinder functions, \\(\_0F<sub>1</sub>\\)). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** For integer n, define Jₙ(x) as the coefficient of tⁿ in the expansion of exp((x/2)(t − 1/t)). This expansion includes both positive and negative powers. The alternative starts with solutions of Bessel’s differential equation.
+
+**Problem.** For real x and θ, exp(ix cos θ) is the sum of iⁿJₙ(x) exp(inθ) over all integers n. Here i² = −1.
+
+**How the definition helps.** Our own proof sets t = i exp(iθ), so t − 1/t = 2i cos θ. The coefficient of exp(inθ) then has the required factor i to power n (our own). The work is to identify the defining coefficients with Bessel solutions and show the series converges absolutely on the unit circle (our own).
+
+**Wikipedia:** [Bessel function](https://en.wikipedia.org/wiki/Bessel_function). It says: “Another important relation for integer orders is the Jacobi–Anger expansion”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The Bessel generating function gives J₋ₙ = (−1)ⁿJₙ by one substitution
 
 **Remember:** Replacing t by −1/t swaps the orders.
@@ -331,6 +689,42 @@
 **Wikipedia:** [Bessel function](https://en.wikipedia.org/wiki/Bessel_function). It says: “is often defined via a Laurent series for a generating function:”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### The Bessel integral gives a uniform bound of one
+
+**Remember:** An average of cosines has absolute value at most one.
+
+*True by definition.* MSC 33C10 (Bessel and Airy functions, cylinder functions, \\(\_0F<sub>1</sub>\\)). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** For integer n, the Bessel function Jₙ(x) is the average of cos(nθ − x sin θ) over 0 ≤ θ ≤ π. An alternative defines each order n by its own power series.
+
+**Problem.** For every integer n and real x, \|Jₙ(x)\| ≤ 1.
+
+**How the definition helps.** An average of values in \[−1,1\] stays in \[−1,1\]. Our own comparison uses the integral representation theorem to identify this average with the Bessel power series.
+
+**Paper or page:** [Integral Representation of Bessel Function of the First Kind/Integer Order](https://proofwiki.org/wiki/Integral_Representation_of_Bessel_Function_of_the_First_Kind/Integer_Order). It says: “Jₙ(x) = (1/π) ∫₀ to π cos(nθ − x sin θ) dθ”
+
+**Sources:**
+
+- [E. T. Whittaker and G. N. Watson, A Course of Modern Analysis, chapter XVII, “Bessel Functions,” pp. 355–385.](https://doi.org/10.1017/CBO9780511608759.018)
+
+### The Bessel series turns order one half into sine
+
+**Remember:** Use gamma at half integers to uncover the sine coefficients.
+
+*True by definition.* MSC 33C10 (Bessel and Airy functions, cylinder functions, \\(\_0F<sub>1</sub>\\)), 33B15. arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** For x &gt; 0, define J of order ½ by summing a series over integers m ≥ 0. Its term is (−1)ᵐ(x/2)⁽²ᵐ⁺½⁾ divided by m! Γ(m + 3/2), where Γ denotes the gamma function. Another definition selects a solution of Bessel’s differential equation by its leading term near zero.
+
+**Problem.** For x &gt; 0, the first-kind Bessel function of order ½ equals √(2/(πx)) sin x.
+
+**How the definition helps.** Our own proof rewrites the gamma factor using Γ(½) = √π and the gamma shift rule. The resulting coefficient of x to power 2m + ½ is (−1)ᵐ √(2/π)/(2m + 1)! (our own). The work moves to evaluating gamma at half integers and identifying the series with the normalized differential equation solution (our own).
+
+**Wikipedia:** [Bessel function](https://en.wikipedia.org/wiki/Bessel_function). It says: “There are simple closed-form expressions for the Bessel functions of half-integer order in terms of the standard trigonometric functions”
+
+**Sources:**
+
+- [E. T. Whittaker and G. N. Watson, A Course of Modern Analysis, chapter XVII, “Bessel Functions,” pp. 355–385.](https://doi.org/10.1017/CBO9780511608759.018)
 
 ### Weighted differentiation lowers Bessel order
 
@@ -377,6 +771,38 @@
 **How the definition helps.** In our own proof, differentiating the generating function in x multiplies it by 2t. Comparing coefficients of tⁿ gives the factor 2n. Taylor expansion of exp(−(x − t)²) in t identifies the two definitions.
 
 **Paper or page:** [Generating Function for Hermite Polynomials](https://proofwiki.org/wiki/Generating_Function_for_Hermite_Polynomials), [Recurrence Formula for Hermite Polynomials using Derivative](https://proofwiki.org/wiki/Recurrence_Formula_for_Hermite_Polynomials_using_Derivative). It says: “dHₙ(x)/dx = 2n Hₙ₋₁(x)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Rodrigues's derivatives make Legendre polynomials orthogonal
+
+**Remember:** Move the derivatives onto the lower-degree polynomial until it vanishes.
+
+*True by definition.* MSC 33C45 (Orthogonal polynomials and functions of hypergeometric type (Jacobi, Laguerre, Hermite, Askey scheme, etc.)). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** Rodrigues's formula defines the Legendre polynomial of degree n by taking n derivatives of (x² − 1)ⁿ, then dividing by (2ⁿ)n!. Another definition uses the polynomial solution of Legendre's equation with value one at x = 1.
+
+**Problem.** The integral of a Legendre polynomial times any lower-degree polynomial over \[−1,1\] is zero.
+
+**How the definition helps.** Our own proof moves all n derivatives onto the lower-degree polynomial by integration by parts. The factor (x² − 1) to power n makes every boundary term zero (our own). The work is to identify Rodrigues's polynomials with the normalized solutions of Legendre's equation (our own).
+
+**nLab:** [Legendre polynomial](https://ncatlab.org/nlab/show/Legendre+polynomial). It says: “The Legendre polynomials form a complete system of orthogonal polynomials on the interval \[−1,1\]”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Rodrigues's formula reduces the Legendre norm to one beta integral
+
+**Remember:** Move the derivatives until only the leading coefficient is left.
+
+*True by definition.* MSC 33C45 (Orthogonal polynomials and functions of hypergeometric type (Jacobi, Laguerre, Hermite, Askey scheme, etc.)). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** Rodrigues's formula defines the Legendre polynomial of degree n by taking n derivatives of (x² − 1)ⁿ, then dividing by (2ⁿ)n!. Another definition uses a generating function.
+
+**Problem.** The integral of the square of the degree n Legendre polynomial over \[−1,1\] equals 2/(2n + 1).
+
+**How the definition helps.** Moving all n derivatives onto the second polynomial leaves only its leading coefficient times n!. In our own proof, the endpoint zeros cancel every boundary term. The leading coefficient is (2n)!/\[2ⁿ(n!)²\], and t = (1 + x)/2 reduces the remaining integral to a beta integral. Agreement with the generating-function definition follows from Rodrigues’s formula.
+
+**Paper or page:** [Length of Legendre Polynomial](https://proofwiki.org/wiki/Length_of_Legendre_Polynomial). It says: “‖Pₙ(x)‖ := √(2/(2n + 1))”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -444,6 +870,54 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### The Legendre generating function expands the point mass potential
+
+**Remember:** Take out the larger distance to see the generating function.
+
+*True by definition.* MSC 33C45 (Orthogonal polynomials and functions of hypergeometric type (Jacobi, Laguerre, Hermite, Askey scheme, etc.)). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** Define Pₙ(u) as the coefficient of t to power n in 1/√(1 − 2tu + t²). Another definition uses repeated differentiation.
+
+**Problem.** Let two points be at distances a and r from the origin with 0 &lt; a &lt; r. For their angle θ at the origin, their reciprocal distance equals the sum of Pₙ(cos θ)(a/r)ⁿ/r over n ≥ 0.
+
+**How the definition helps.** Our own proof divides the distance formula by r and sets t = a/r and u = cos θ. The work is to show the defining power series converges for \|t\| &lt; 1 and agrees with the other definitions of Pₙ (our own).
+
+**Wikipedia:** [Legendre polynomials](https://en.wikipedia.org/wiki/Legendre_polynomials). It says: “The left-hand side of the equation is the generating function for the Legendre polynomials.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The Legendre generating function gives both endpoint values
+
+**Remember:** At either endpoint, the square root leaves a geometric series.
+
+*True by definition.* MSC 33C45 (Orthogonal polynomials and functions of hypergeometric type (Jacobi, Laguerre, Hermite, Askey scheme, etc.)). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** Define the Legendre polynomial of degree n as the coefficient of t to power n in 1/√(1 − 2tx + t²). An alternative uses Rodrigues's repeated derivatives.
+
+**Problem.** The Legendre polynomial of degree n has value 1 at x = 1 and (−1) to power n at x = −1.
+
+**How the definition helps.** Our own proof sets x = ±1, so the generating function becomes 1/(1 ∓ t) near t = 0. The work is to show that these series coefficients are the same polynomials as those given by Rodrigues's formula (our own).
+
+**Paper or page:** [Particular Values of Legendre Polynomials/-1](https://proofwiki.org/wiki/Particular_Values_of_Legendre_Polynomials/-1). It says: “Pₙ(−1) = (−1)ⁿ”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Homogeneous harmonic polynomials give the spherical Laplacian eigenvalues
+
+**Remember:** The polynomial’s degree fixes its spherical eigenvalue.
+
+*True by definition.* MSC 33C55 (Spherical harmonics), 35J05. arXiv math.AP. Level 2: later undergraduate.
+
+**Definition.** A spherical harmonic of degree ℓ is the restriction to the unit sphere of a homogeneous harmonic polynomial in three variables. The polynomial satisfies Laplace’s equation, and multiplying its input by r &gt; 0 multiplies its value by the ℓth power of r.
+
+**Problem.** On the two-dimensional unit sphere, the spherical Laplacian sends each spherical harmonic of degree ℓ to itself times −ℓ(ℓ + 1).
+
+**How the definition helps.** The radial derivatives contribute ℓ(ℓ + 1) times the angular function, so the angular Laplacian must cancel that term (our own). The work moves to deriving the polar-coordinate formula for the ordinary Laplacian (our own).
+
+**Wikipedia:** [Spherical harmonics](https://en.wikipedia.org/wiki/Spherical_harmonics). It says: “spherical harmonics of degree ℓ are eigenfunctions of the Laplace–Beltrami operator with eigenvalue −ℓ(ℓ+1).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The q-gamma product telescopes under shifts
 
 **Remember:** Shifting x by one removes the first denominator factor.
@@ -476,6 +950,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### A symmetric lattice sum makes the Weierstrass function even
+
+**Remember:** Replace every lattice point by its negative, and the sum stays the same.
+
+*True by definition.* MSC 33E05 (Elliptic functions and integrals), 30D30. arXiv math.CV. Level 2: later undergraduate.
+
+**Definition.** Let Λ consist of all integer combinations of two complex numbers whose ratio is not real. Start the Weierstrass function ℘ at 1/z² for z outside Λ. Add 1/(z − λ)² − 1/λ² for each nonzero lattice point λ.
+
+**Problem.** The Weierstrass function satisfies ℘(−z) = ℘(z) off the lattice.
+
+**How the definition helps.** Negating z exchanges the terms indexed by λ and −λ and leaves 1/z² unchanged (our own). The lattice formula displays this symmetry directly, while the definition by inversion of an elliptic integral requires identifying the inverse function (our own). Absolute convergence justifies rearranging the sum (our own).
+
+**Paper or page:** [Weierstrass's Elliptic Function is Even in z](https://proofwiki.org/wiki/Weierstrass's_Elliptic_Function_is_Even_in_z). It says: “That is, Weierstrass's elliptic function is even in z.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Carlson’s first integral is symmetric
 
 **Remember:** Carlson’s first elliptic integral gives all three inputs the same role.
@@ -493,6 +983,38 @@
 **Sources:**
 
 - [B. C. Carlson, Numerical computation of real or complex elliptic integrals (1995)](https://doi.org/10.1007/bf02198293)
+
+### Elliptic functions take every value equally often modulo periods
+
+**Remember:** Count once per period cell, and opposite sides cancel.
+
+*Makes the theorem clean to state or prove.* MSC 33E05 (Elliptic functions and integrals), 30D30, 30E20. arXiv math.CV. Level 2: later undergraduate.
+
+**Definition.** For a meromorphic function with two periods whose ratio is not real, their integer combinations form a period lattice. Counting modulo this lattice means counting points that differ by a lattice shift only once.
+
+**Problem.** A nonconstant elliptic function takes every value on the sphere equally often modulo a chosen period lattice, counting multiplicities.
+
+**How the definition helps.** One period parallelogram counts each preimage once if its edges avoid poles and solutions of f(z) = b (our own). Opposite edge integrals of f′/(f − b) cancel by periodicity (our own). The argument principle therefore equates the count for any finite value b with the pole count, which counts infinity (our own).
+
+**Wikipedia:** [Elliptic function](https://en.wikipedia.org/wiki/Elliptic_function). It says: “takes on every value the same number of times”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Two independent periods force pole-free elliptic functions to be constant
+
+**Remember:** Two independent periods let one compact parallelogram bound the whole function.
+
+*Rules out counterexamples.* MSC 33E05 (Elliptic functions and integrals), 30D30. arXiv math.CV. Level 2: later undergraduate.
+
+**Definition.** An elliptic function is a meromorphic function on the complex plane with two periods whose ratio is not real. A period is a shift that preserves every function value.
+
+**Problem.** An elliptic function that is holomorphic on the whole plane is constant.
+
+**How the definition helps.** The period parallelogram is compact and contains a representative for every value, so the function is bounded. With only one period, eᶻ is an entire nonconstant counterexample (our own). The work is Liouville's theorem for bounded entire functions.
+
+**Wikipedia:** [Elliptic function](https://en.wikipedia.org/wiki/Elliptic_function). It says: “A holomorphic elliptic function is bounded since it takes on all of its values on the fundamental domain which is compact.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Euler’s product gives the Gamma reflection formula by cancellation
 

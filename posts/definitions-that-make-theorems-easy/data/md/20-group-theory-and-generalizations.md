@@ -17,6 +17,106 @@
 - [ProofWiki, Equivalence of Axiom Schemata for Groups](https://proofwiki.org/wiki/Equivalence_of_Axiom_Schemata_for_Groups)
 - [ProofWiki, Left Identity in Semigroup may not be Unique](https://proofwiki.org/wiki/Left_Identity_in_Semigroup_may_not_be_Unique)
 
+### An infinite cyclic group has no nonzero period
+
+**Remember:** A nonzero period makes the quotient finite.
+
+*True by definition.* MSC 20A05 (Axiomatics and elementary properties of groups). arXiv math.GR. Level 1: early undergraduate.
+
+**Definition.** A cyclic group consists of the integer powers of one element g. Equivalently, it is a quotient of the integers, with two exponents identified when they give the same power.
+
+**Problem.** Every infinite cyclic group is isomorphic to ℤ under addition.
+
+**How the definition helps.** In the quotient description, a repeated power would give a positive period m (our own). Division with remainder would then leave at most m different powers (our own). Thus in an infinite cyclic group the map sending each integer to its power is one-to-one and onto (our own). Adding exponents multiplies their powers, so this map preserves the group operation (our own).
+
+**nLab:** [cyclic group](https://ncatlab.org/nlab/show/cyclic+group). It says: “For n = 0 this subgroup is the trivial group, hence this quotient is just the integers itself”
+
+**Paper or page:** [Infinite Cyclic Group is Isomorphic to Integers](https://proofwiki.org/wiki/Infinite_Cyclic_Group_is_Isomorphic_to_Integers). It says: “Let G be an infinite cyclic group.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Closure under division gives a one-step subgroup test
+
+**Remember:** Divide a point by itself to find the identity.
+
+*True by definition.* MSC 20A05 (Axiomatics and elementary properties of groups). arXiv math.GR. Level 1: early undergraduate.
+
+**Definition.** Right division in a group sends a pair a, b to ab⁻¹. Closure under right division means that this result stays in the subset whenever a and b belong to it.
+
+**Problem.** A nonempty subset of a group is a subgroup exactly when it is closed under right division.
+
+**How the definition helps.** One division test recovers both usual subgroup tests, closure under products and closure under inverses (our own). Dividing a member by itself gives the identity (our own). Dividing the identity by a member gives its inverse (our own). Dividing a by the inverse of b gives the product ab (our own).
+
+**Paper or page:** [One-Step Subgroup Test using Subset Product](https://proofwiki.org/wiki/One-Step_Subgroup_Test_using_Subset_Product). It says: “HH⁻¹ ⊆ H”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Cosets as classes give Lagrange’s theorem by counting
+
+**Remember:** A group splits into equally sized copies of its subgroup.
+
+*True by definition.* MSC 20A05 (Axiomatics and elementary properties of groups). arXiv math.GR. Level 1: early undergraduate.
+
+**Definition.** For a subgroup H, define a left coset as a class of elements that differ by right multiplication by an element of H. The usual description lists the coset as gH, the set of products gh with h in H.
+
+**Problem.** The size of a finite group equals the size of any subgroup times its number of left cosets.
+
+**How the definition helps.** Defining cosets as classes puts every group element in exactly one coset (our own). The work lies in checking that right multiplication by subgroup elements gives an equivalence relation (our own). Multiplication by g pairs each member h of H with exactly one member gh of the coset gH (our own).
+
+**nLab:** [coset](https://ncatlab.org/nlab/show/coset). It says: “the set of equivalence classes of elements of G where two are regarded as equivalent if they differ by right multiplication with an element in H.”
+
+**Paper or page:** [Theorem 5.1. (Lagrange's theorem)](https://venhance.github.io/napkin/Napkin.pdf). It says: “Let G be a finite group, and let H be any subgroup. Then \|H\| divides \|G\|.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Cosets count the size of a subgroup product
+
+**Remember:** Count the distinct copies of K rather than all products.
+
+*Makes the theorem clean to state or prove.* MSC 20A05 (Axiomatics and elementary properties of groups). arXiv math.GR. Level 1: early undergraduate.
+
+**Definition.** The set product HK of two subgroups consists of all products hk with h in H and k in K. For each fixed h, these products form the left coset hK.
+
+**Problem.** For finite subgroups H and K, the size of HK is \|H\| · \|K\| divided by \|H ∩ K\|.
+
+**How the definition helps.** The set product groups all possible outputs into equally large cosets hK (our own). For a and b in H, aK equals bK exactly when b⁻¹a belongs to H ∩ K (our own). Thus H contributes one distinct coset per \|H ∩ K\| elements, and each coset has \|K\| elements (our own).
+
+**Paper or page:** [Order of Subgroup Product](https://proofwiki.org/wiki/Order_of_Subgroup_Product). It says: “\|HK\| = \|H\| \|K\| / \|H ∩ K\|”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Counting cosets makes indices multiply down a subgroup chain
+
+**Remember:** Count cosets inside each larger coset, then count the larger cosets.
+
+*True by definition.* MSC 20A05 (Axiomatics and elementary properties of groups). arXiv math.GR. Level 1: early undergraduate.
+
+**Definition.** A left coset gH consists of the products gh with h in the subgroup H. The index \[G:H\] counts distinct left cosets, even when both groups are infinite.
+
+**Problem.** For subgroups H ⊆ K ⊆ G with both indices \[G:K\] and \[K:H\] finite, \[G:H\] = \[G:K\] · \[K:H\].
+
+**How the definition helps.** Counting cosets groups the small cosets according to the larger coset containing them (our own). Multiplication by g pairs the H-cosets in K with the H-cosets in gK (our own). Each of the \[G:K\] larger cosets therefore contains \[K:H\] smaller ones, even when a ratio of group sizes is unavailable (our own).
+
+**nLab:** [index of a subgroup](https://ncatlab.org/nlab/show/index+of+a+subgroup). It says: “\|G : K\| · \|K : H\| = \|G : H\|”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Counting powers makes every group of prime order cyclic
+
+**Remember:** In prime size, a nonidentity element must generate the whole group.
+
+*True by definition.* MSC 20A05 (Axiomatics and elementary properties of groups). arXiv math.GR. Level 1: early undergraduate.
+
+**Definition.** Define the cyclic subgroup generated by g as the set of all integer powers of g. Define the order of g as the size of this subgroup, rather than by the first return to the identity.
+
+**Problem.** In a group of prime size, every element except the identity generates the whole group.
+
+**How the definition helps.** Defining order by subgroup size makes it a divisor of the group size by Lagrange’s theorem (our own). That theorem does the counting by splitting the group into equally large cosets (our own). A nonidentity element has at least two distinct powers, so its subgroup must have the full prime size (our own).
+
+**Paper or page:** [Prime Group is Cyclic](https://proofwiki.org/wiki/Prime_Group_is_Cyclic). It says: “Let G be a group whose order is p. Then G is cyclic.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Equal outputs identify kernel cosets
 
 **Remember:** Inputs have the same output exactly when they share a kernel coset.
@@ -30,6 +130,88 @@
 **How the definition helps.** Labeling each class by its common output gives an immediate bijection with the image. Our own proof multiplies classes by multiplying representatives. The output of a product is the product of the outputs, so this rule is well defined and preserves multiplication. Finally, f(a) = f(b) exactly when a⁻¹b lies in the kernel, so the classes are precisely its cosets.
 
 **Paper or page:** [First Isomorphism Theorem/Groups](https://proofwiki.org/wiki/First_Isomorphism_Theorem/Groups). It says: “Then: Img φ ≅ G₁ / ker φ where ≅ denotes group isomorphism.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Finite nonempty product closure is enough for a subgroup
+
+**Remember:** On a finite set, multiplication cannot miss a point if it never merges points.
+
+*Rules out counterexamples.* MSC 20A05 (Axiomatics and elementary properties of groups). arXiv math.GR. Level 1: early undergraduate.
+
+**Definition.** A subset of a group is closed under products if it contains ab whenever it contains a and b.
+
+**Problem.** A nonempty finite subset of a group is a subgroup if and only if it is closed under products.
+
+**How the definition helps.** Finiteness forces multiplication by each member to reach every member (our own). Indeed, product closure keeps the outputs inside, and cancellation makes them distinct (our own). For each member h, solving hx = h gives the identity, and then solving hy = 1 gives the inverse of h (our own). The positive integers are closed under addition but lack zero and additive inverses (our own).
+
+**Paper or page:** [Finite Subgroup Test](https://proofwiki.org/wiki/Finite_Subgroup_Test). It says: “Let H be a non-empty finite subset of G.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Power maps make images of cyclic groups cyclic
+
+**Remember:** Follow the power map through the next map.
+
+*True by definition.* MSC 20A05 (Axiomatics and elementary properties of groups), 20K01. arXiv math.GR. Level 1: early undergraduate.
+
+**Definition.** A cyclic group consists of the powers of one element, called a generator. Equivalently, it is the image of a map from the integers that turns addition into multiplication.
+
+**Problem.** The image of a cyclic group under a map preserving multiplication is cyclic. The image of its generator generates the new group.
+
+**How the definition helps.** The image definition lets us compose two maps that preserve the group operations (our own). The composite still starts at the integers, so its image is cyclic (our own). The first map sends 1 to the original generator, and the second sends that generator to the new one (our own).
+
+**nLab:** [cyclic group](https://ncatlab.org/nlab/show/cyclic+group). It says: “A cyclic group is a quotient group of the additive group of integers”
+
+**Paper or page:** [Homomorphic Image of Cyclic Group is Cyclic Group](https://proofwiki.org/wiki/Homomorphic_Image_of_Cyclic_Group_is_Cyclic_Group). It says: “is a cyclic group with generator ϕ(g).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Set products form subgroups when their factors can trade places
+
+**Remember:** Swap the middle sets to gather each subgroup with itself.
+
+*Rules out counterexamples.* MSC 20A05 (Axiomatics and elementary properties of groups). arXiv math.GR. Level 1: early undergraduate.
+
+**Definition.** For subgroups H and K, the set product HK consists of all products hk with h in H and k in K. The subgroups are permutable when HK = KH.
+
+**Problem.** For subgroups H and K, the set product HK is a subgroup exactly when HK = KH.
+
+**How the definition helps.** Permutability lets us group the factors in HKHK as HHKK, which equals HK (our own). The inverses of the elements of HK form KH, so equality gives closure under inverses too (our own). Conversely, if HK is a subgroup, taking all its inverses leaves it unchanged, so KH equals HK (our own).
+
+**Paper or page:** [Subset Product of Subgroups/Sufficient Condition](https://proofwiki.org/wiki/Subset_Product_of_Subgroups/Sufficient_Condition). It says: “Then H ∘ K is a subgroup of G.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The order of a power comes from its first multiple
+
+**Remember:** Multiply the exponents until you reach a multiple of the order.
+
+*True by definition.* MSC 20A05 (Axiomatics and elementary properties of groups). arXiv math.GR. Level 1: early undergraduate.
+
+**Definition.** The order of g is the least positive exponent that gives the identity, if such an exponent exists. Equivalently, it counts all distinct powers of g.
+
+**Problem.** If g has finite order n, then its mth power has order n/gcd(m,n) for every integer m. Here gcd means greatest common divisor.
+
+**How the definition helps.** The exponent definition reduces the order of the power to finding the least positive k for which n divides mk (our own). The work is ordinary divisibility after canceling the greatest common divisor of m and n (our own). To compare with counting the powers of g, use division with remainder to show they repeat exactly every n steps (our own).
+
+**Paper or page:** [Order of Power of Group Element](https://proofwiki.org/wiki/Order_of_Power_of_Group_Element). It says: “∀m ∈ ℤ: order(gᵐ) = n/gcd{m,n}”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The smallest subgroup definition makes generators determine homomorphisms
+
+**Remember:** Two maps that agree on generators agree on the group.
+
+*True by definition.* MSC 20A05 (Axiomatics and elementary properties of groups). arXiv math.GR. Level 1: early undergraduate.
+
+**Definition.** The subgroup generated by S is the smallest subgroup containing S. Equivalently, it consists of all finite products of elements of S and their inverses, including the empty product.
+
+**Problem.** Two homomorphisms, or maps that preserve multiplication, from G to the same group agree everywhere if they agree on a set generating G.
+
+**How the definition helps.** The smallest subgroup definition avoids writing each element as a product (our own). The maps preserve products and inverses, so the elements where they agree form a subgroup (our own). This subgroup contains the generators and therefore contains all of G (our own).
+
+**Paper or page:** [Homomorphism of Generated Group](https://proofwiki.org/wiki/Homomorphism_of_Generated_Group). It says: “Let ϕ: G → H and ψ: G → H be homomorphisms.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -52,6 +234,38 @@
 - [ProofWiki, Two-Step Subgroup Test](https://proofwiki.org/wiki/Two-Step_Subgroup_Test)
 - [ProofWiki, Empty Set is Submagma of Magma](https://proofwiki.org/wiki/Empty_Set_is_Submagma_of_Magma)
 - [ProofWiki, Monoid is not Empty](https://proofwiki.org/wiki/Monoid_is_not_Empty)
+
+### Two cosets leave no room for a nonnormal subgroup
+
+**Remember:** With two cosets, the only other coset is the complement.
+
+*Rules out counterexamples.* MSC 20A05 (Axiomatics and elementary properties of groups). arXiv math.GR. Level 1: early undergraduate.
+
+**Definition.** For a subgroup H, a left coset gH contains all products gh with h in H. A right coset Hg uses the products hg. The index counts distinct left cosets, and H is normal when gH equals Hg for every g.
+
+**Problem.** Every subgroup of index two is normal, even in an infinite group.
+
+**How the definition helps.** Two left cosets leave only the complement of H for the second coset (our own). Taking inverses pairs left cosets with right cosets, so the second right coset is also that complement (our own). Thus gH and Hg both equal H for g in H, and both equal its complement otherwise (our own).
+
+**Paper or page:** [Subgroup of Index 2 is Normal](https://proofwiki.org/wiki/Subgroup_of_Index_2_is_Normal). It says: “A subgroup of index 2 is always normal.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Numbering vertices gives two forms for every dihedral symmetry
+
+**Remember:** Choose the first vertex and the direction around the polygon.
+
+*True by definition.* MSC 20B05 (General theory for finite permutation groups), 20A05. arXiv math.GR. Level 1: early undergraduate.
+
+**Definition.** The dihedral group consists of the rotations and reflections of a regular polygon. Number its n vertices from 0 around the boundary, starting again at 0 after n − 1. In these labels its elements have the form x ↦ a + x or x ↦ a − x.
+
+**Problem.** For n ≥ 3, the dihedral group of a regular n-gon has 2n elements. Its rotations are the n translations of the labels and its reflections are the other n maps.
+
+**How the definition helps.** The numbered model separates a choice of starting point from a choice of direction, so there are 2n maps (our own). The work is to show that a symmetry preserves adjacency and is determined by where it sends vertices 0 and 1 (our own). Rotations and reflections realize all those choices (our own).
+
+**Paper or page:** [Order of Dihedral Group](https://proofwiki.org/wiki/Order_of_Dihedral_Group). It says: “The dihedral group Dₙ is of order 2n.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Transitive actions on inhabited sets are coset spaces
 
@@ -98,6 +312,38 @@
 **How the definition helps.** Each cycle returns to its starting position exactly at multiples of its length. Our own proof therefore takes the first positive multiple common to all lengths. To pass from a bijection to the cycle description, follow each unused letter until it returns. Finiteness and injectivity ensure that these cycles partition the set.
 
 **Paper or page:** [Order of Product of Disjoint Permutations](https://proofwiki.org/wiki/Order_of_Product_of_Disjoint_Permutations). It says: “Let π be a product of disjoint permutations of orders k₁, k₂, …, kᵣ. Then: \|π\| = lcm {k₁, k₂, …, kᵣ}”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Disjoint cycles are the orbits of repeated permutation
+
+**Remember:** Start anywhere on a loop and you get the same cycle.
+
+*True by definition.* MSC 20B30 (Symmetric groups), 20B05. arXiv math.GR. Level 1: early undergraduate.
+
+**Definition.** A permutation sends the points of a finite set to themselves, using each output exactly once. Its orbit through a point consists of all points reached by applying the permutation repeatedly, including the starting point.
+
+**Problem.** Every permutation of a finite set is a product of disjoint cycles. With fixed points included, the cycles are unique up to their order and choice of starting points.
+
+**How the definition helps.** Following an orbit constructs a cycle directly, without guessing factors of the permutation (our own). Finiteness forces a repeat, and unique predecessors force the first repeated point to be the starting point (our own). The orbits partition the set, so their cycles act on separate points and together give the permutation (our own). Each next point is prescribed, leaving only the starting point and the order of the cycles free (our own).
+
+**nLab:** [symmetric group](https://ncatlab.org/nlab/show/symmetric+group). It says: “The orbits of this action partition the set X into a disjoint union of cycles, called the cyclic decomposition of the permutation σ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Inversions show why adjacent swaps generate every permutation
+
+**Remember:** Fix one neighboring inversion and the total drops by one.
+
+*Makes the theorem clean to state or prove.* MSC 20B30 (Symmetric groups), 05A05. arXiv math.GR. Level 1: early undergraduate.
+
+**Definition.** Write a permutation as the list of its values on 1 through n. An inversion is a pair of positions where the earlier value exceeds the later one.
+
+**Problem.** Every permutation of {1, …, n} is a product of swaps of neighboring positions. The fewest such swaps needed equals its number of inversions.
+
+**How the definition helps.** Counting inversions gives a number that can be lowered exactly one step at a time (our own). An unsorted list has a neighboring pair out of order, and swapping that pair removes just its inversion (our own). The work is to check that all other pairs contribute the same total before and after any neighboring swap (our own). This also gives the lower bound, since any neighboring swap changes the count by only one (our own).
+
+**Paper or page:** [Transpositions of Adjacent Elements generate Symmetric Group](https://proofwiki.org/wiki/Transpositions_of_Adjacent_Elements_generate_Symmetric_Group). It says: “for 1 ≤ k &lt; n are a set of generators for Sₙ.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -235,6 +481,54 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Discreteness gives every frieze group a shortest positive shift
+
+**Remember:** Every period is a whole number of shortest shifts.
+
+*Rules out counterexamples.* MSC 20H15 (Other geometric groups, including crystallographic groups). arXiv math.GR, math.MG. Level 1: early undergraduate.
+
+**Definition.** A frieze group is a discrete group of plane symmetries whose translation vectors span one line. Discrete means that the identity is isolated, so nonzero translation lengths stay away from zero. Choose one direction along the line as positive.
+
+**Problem.** Every translation in a frieze group is an integer multiple of its shortest positive shift.
+
+**How the definition helps.** Discreteness bounds the positive shifts away from zero, and differences of any two shifts are again shifts (our own). A sequence of positive shifts approaching the lower bound must therefore eventually be constant (our own). Division with remainder then gives the generator, while the excluded rational shifts have no shortest one (our own).
+
+**Wikipedia:** [Frieze group](https://en.wikipedia.org/wiki/Frieze_group). It says: “The inclusion of the discrete condition is to exclude the group containing all translations”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Inverting rotations reveals the center of a dihedral group
+
+**Remember:** Only a rotation equal to its inverse can sit in the center.
+
+*True by definition.* MSC 20H15 (Other geometric groups, including crystallographic groups). arXiv math.GR, math.MG. Level 1: early undergraduate.
+
+**Definition.** The dihedral group consists of the symmetries of a regular polygon. A one-step rotation and one reflection generate it, and reflecting before and after a rotation reverses that rotation. The center consists of the symmetries that commute with every symmetry.
+
+**Problem.** For a polygon with n ≥ 3 sides, the center contains only the identity when n is odd. When n is even, it contains exactly the identity and the half-turn.
+
+**How the definition helps.** A rotation commutes with a reflection exactly when it equals its inverse (our own). No reflection commutes with the one-step rotation, which has order at least three (our own). The work goes into deriving the presentation from the polygon’s symmetries (our own).
+
+**Paper or page:** [Center of Dihedral Group](https://proofwiki.org/wiki/Center_of_Dihedral_Group). It says: “Dₙ = ⟨α, β: αⁿ = β² = e, βαβ = α⁻¹⟩”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The linear part makes translations the kernel of Euclidean motions
+
+**Remember:** Keep the matrix and forget the shift.
+
+*True by definition.* MSC 20H15 (Other geometric groups, including crystallographic groups). arXiv math.GR, math.MG. Level 1: early undergraduate.
+
+**Definition.** A Euclidean isometry preserves all distances. Write it as x ↦ Ax + b, where A is an orthogonal matrix, meaning it preserves dot products. The linear part is A.
+
+**Problem.** Taking linear parts gives every orthogonal matrix and respects composition. Its kernel, the set of motions sent to the identity matrix, consists exactly of translations.
+
+**How the definition helps.** Linear parts multiply when maps compose, and A = I leaves only a translation (our own). Every orthogonal matrix already acts with b = 0, so the map is onto (our own). The work goes into proving that every distance-preserving map has this form (our own).
+
+**Wikipedia:** [Euclidean group](https://en.wikipedia.org/wiki/Euclidean_group). It says: “the linear part of the isometry”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Finite cyclic groups have one model per order
 
 **Remember:** The first power that returns to the identity gives the modulus.
@@ -248,6 +542,22 @@
 **How the definition helps.** The quotient description identifies exponents exactly when their difference is a multiple of the first return time (our own). Send each integer to the corresponding power of a generator (our own). The powers before the first return are distinct and exhaust the group, so the first return time is n (our own). The kernel therefore consists of the multiples of n (our own). The first isomorphism theorem identifies the group with the additive integers modulo n (our own).
 
 **Paper or page:** [Cyclic Groups of Same Order are Isomorphic](https://proofwiki.org/wiki/Cyclic_Groups_of_Same_Order_are_Isomorphic). It says: “Two cyclic groups of the same order are isomorphic to each other.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Residues that are units generate the finite cyclic group
+
+**Remember:** To generate all residues, it is enough to reach one.
+
+*True by definition.* MSC 20K01 (Finite abelian groups), 20A05. arXiv math.GR. Level 1: early undergraduate.
+
+**Definition.** A cyclic group of size n consists of the powers of one generator. In its residue model, exponents become integers modulo n and multiplication becomes addition. A residue generates this group if adding and subtracting copies reaches every residue.
+
+**Problem.** The residue of k generates ℤ/nℤ exactly when the greatest common divisor of k and n is 1. Thus the group has φ(n) generators, the number of residues coprime to n.
+
+**How the definition helps.** In the residue model, reaching 1 by adding copies of k lets us reach every residue (our own). By Bézout’s identity, ak + bn = 1 has integer solutions exactly when k and n have greatest common divisor 1 (our own). Thus the generators are exactly the residues counted by φ(n) (our own).
+
+**Paper or page:** [Finite Cyclic Group has Euler Phi Generators](https://proofwiki.org/wiki/Finite_Cyclic_Group_has_Euler_Phi_Generators). It says: “Then Cₙ has φ(n) generators, where φ(n) denotes the Euler φ function.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -284,6 +594,22 @@
 **Sources:**
 
 - [ProofWiki, Index Laws for Monoids/Product of Indices](https://proofwiki.org/wiki/Index_Laws_for_Monoids/Product_of_Indices)
+
+### Commutators give a quotient through which all abelian images factor
+
+**Remember:** Killing every commutator makes every pair commute.
+
+*True by definition.* MSC 20A05 (Axiomatics and elementary properties of groups). arXiv math.GR. Level 2: later undergraduate.
+
+**Definition.** The abelianization of G is the quotient by the subgroup generated by all commutators x⁻¹y⁻¹xy. A commutator is the identity exactly when x and y commute.
+
+**Problem.** The abelianization is abelian. Every homomorphism from G to an abelian group factors uniquely through it.
+
+**How the definition helps.** The quotient construction enforces exactly the equalities needed to make elements commute (our own). Every map into an abelian group kills each commutator and therefore the subgroup they generate (our own). Conjugation preserves commutators, so this subgroup is normal (our own). The quotient mapping theorem now gives the unique factorization in the alternative definition by maps to abelian groups (our own).
+
+**nLab:** [abelianization](https://ncatlab.org/nlab/show/abelianization). It says: “The abelianization is an abelian group. Indeed, it is the universal abelian group induced by G, in the following sense:”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Defining quotients by their maps out makes the third isomorphism theorem automatic
 
@@ -349,6 +675,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### The smallest prime index forces a subgroup to be normal
+
+**Remember:** The only shared prime is p, and it occurs once in p factorial.
+
+*Rules out counterexamples.* MSC 20B05 (General theory for finite permutation groups), 20A05. arXiv math.GR. Level 2: later undergraduate.
+
+**Definition.** A subgroup H of index p has p left cosets. Each group element permutes them by left multiplication. The kernel of this action consists of the elements fixing every coset.
+
+**Problem.** A subgroup of a finite group is normal if its index p is the smallest prime divisor of the group’s order.
+
+**How the definition helps.** The coset action puts its image inside the permutations of p points (our own). Its size divides both the group size and p!, the product of the integers from 1 through p (our own). Their greatest common divisor is p, so the kernel has index at most p (our own). The kernel lies inside H, already of index p, so they coincide and H is normal (our own).
+
+**Wikipedia:** [Index of a subgroup](https://en.wikipedia.org/wiki/Index_of_a_subgroup). It says: “a subgroup of index p where p is the smallest prime factor of the order of G (if G is finite) is necessarily normal”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Primitive actions are exactly the actions on cosets of maximal subgroups
 
 **Remember:** No block to keep means no subgroup in between.
@@ -365,6 +707,40 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Cycle lengths classify conjugacy in the full symmetric group
+
+**Remember:** Match loops of equal lengths and relabel along each loop.
+
+*Rules out counterexamples.* MSC 20B30 (Symmetric groups), 20B05. arXiv math.GR. Level 2: later undergraduate.
+
+**Definition.** The cycle type of a permutation is the multiset of its cycle lengths, including fixed points as cycles of length one. A multiset records repetitions but not order. Conjugacy in the full symmetric group means relabeling by any permutation of the points.
+
+**Problem.** Two permutations of the same finite set are conjugate in its full symmetric group exactly when they have the same cycle type.
+
+**How the definition helps.** The cycle type forgets just the labels, and the full group allows every relabeling (our own). The work is to pair cycles of equal length and match the points in their cycle order (our own). In the group of even permutations on three points, the two cycles (123) and (132) are not conjugate.
+
+**Wikipedia:** [Alternating group](https://en.wikipedia.org/wiki/Alternating_group). It says: “The two permutations (123) and (132) are not conjugates in A₃, although they have the same cycle shape”
+
+**Paper or page:** [Conjugate of Cycle](https://proofwiki.org/wiki/Conjugate_of_Cycle). It says: “Then the conjugate πσπ⁻¹ is a cycle of length k.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Pairing swaps shows why three-point cycles generate even permutations
+
+**Remember:** Pair the swaps, then replace each pair by cycles of length three.
+
+*True by definition.* MSC 20B30 (Symmetric groups), 20B05. arXiv math.GR. Level 2: later undergraduate.
+
+**Definition.** Define an even permutation as one that can be written as a product of an even number of swaps. This replaces the equivalent test that the determinant of its permutation matrix equals +1.
+
+**Problem.** For n ≥ 3, the alternating group Aₙ of even permutations is generated by its cycles of length three.
+
+**How the definition helps.** The even-swap definition lets us group the swaps into pairs (our own). Equal swaps cancel, and two swaps sharing exactly one point form a three-cycle (our own). Between disjoint swaps (ab) and (cd), insert (bc)(bc) to obtain two pairs sharing a point (our own). Conversely, every three-cycle is a pair of swaps, so these products are even (our own).
+
+**Paper or page:** [Alternating Group is Generated by 3-Cycles](https://proofwiki.org/wiki/Alternating_Group_is_Generated_by_3-Cycles). It says: “Then Aₙ can be generated by the set of 3-cycles:”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The sign kernel makes the alternating group normal with index two
 
 **Remember:** The two signs give the two cosets of the kernel.
@@ -378,6 +754,54 @@
 **How the definition helps.** The kernel definition makes normality automatic and makes the index the number of signs. Determinants multiply, so sign is a homomorphism. The identity has sign 1 and a swap has sign −1, so both occur. This is our own account of the kernel argument. Starting with swaps, one must show that no permutation has both an even and an odd expression. The determinant comparison does that work because a product of k swaps has sign (−1)ᵏ.
 
 **Wikipedia:** [Parity of a permutation](https://en.wikipedia.org/wiki/Parity_of_a_permutation), [Alternating group](https://en.wikipedia.org/wiki/Alternating_group). It says: “It is the kernel of the signature group homomorphism sgn : Sₙ → {1, −1} explained under symmetric group.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### An invariant basis orbit identifies the regular representation
+
+**Remember:** One basis orbit with no repetitions gives the regular representation.
+
+*True by definition.* MSC 20C05 (Group rings of finite groups and their modules (group-theoretic aspects)). arXiv math.RT. Level 2: later undergraduate.
+
+**Definition.** Build the left regular representation on a basis indexed by the group elements. Each group element acts by left multiplication on the basis labels.
+
+**Problem.** A representation of a finite group is isomorphic to its left regular representation exactly when the group translates of one vector form a group-indexed basis.
+
+**How the definition helps.** The group-indexed basis gives the change of coordinates explicitly. In our own proof, send the basis vector labelled g to the translate by g of the chosen vector. This map carries one basis onto the other and respects the action on labels. Conversely, the translates of the identity basis vector form the regular basis.
+
+**Wikipedia:** [Representation theory of finite groups](https://en.wikipedia.org/wiki/Representation_theory_of_finite_groups). It says: “is isomorphic to the left-regular representation if and only if there exists”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### An invertible group order makes Maschke averaging work
+
+**Remember:** Divide by the group order to average a projection.
+
+*Rules out counterexamples.* MSC 20C05 (Group rings of finite groups and their modules (group-theoretic aspects)). arXiv math.RT. Level 2: later undergraduate.
+
+**Definition.** The order of a finite group is invertible in a field when the sum of that many copies of one has a multiplicative inverse.
+
+**Problem.** If the group order is invertible in the field, every invariant subspace of a finite-dimensional representation has an invariant complement.
+
+**How the definition helps.** Invertibility lets us average the group conjugates of a linear projection onto the subspace. In our own proof, the average still fixes the subspace and commutes with the group, so its kernel gives the complement. Over the field with two elements, let a group of order two swap two basis vectors. Their sum spans the only invariant line.
+
+**nLab:** [Maschke's theorem](https://ncatlab.org/nlab/show/Maschke%27s+theorem). It says: “If \|G\| · 1ₖ is invertible in k, then an exact sequence of k\[G\]-modules splits iff it splits after applying the forgetful functor”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Coset blocks give the induced character formula
+
+**Remember:** Only cosets fixed by an element contribute to its induced trace.
+
+*True by definition.* MSC 20C05 (Group rings of finite groups and their modules (group-theoretic aspects)). arXiv math.RT. Level 2: later undergraduate.
+
+**Definition.** To induce a representation of a subgroup H of a finite group G, put one copy of its space at each left coset. Choose one representative per coset. If gt = sh with representatives t and s and h in H, let g move the copy at tH to sH by h.
+
+**Problem.** If χ is the subgroup character, the induced character at g sums χ(t⁻¹gt) over representatives t of the left cosets fixed by g.
+
+**How the definition helps.** Only fixed cosets contribute diagonal blocks to the action matrix. In our own proof, a fixed coset tH contributes the trace of the subgroup element t⁻¹gt. This block description agrees with tensor-product induction because the coset representatives form a basis of the group algebra as a right subgroup-algebra module.
+
+**Wikipedia:** [Induced representation](https://en.wikipedia.org/wiki/Induced_representation). It says: “where the sum is taken over a system of representatives of the left cosets”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -399,6 +823,38 @@
 
 - [George Mackey, Induced representations of locally compact groups I, Annals of Math. 55 (1952) 101–139](https://doi.org/10.2307/1969423)
 
+### Group algebra modules extend group actions uniquely
+
+**Remember:** Make group elements a basis, then extend their action linearly.
+
+*True by definition.* MSC 20C05 (Group rings of finite groups and their modules (group-theoretic aspects)). arXiv math.RT. Level 2: later undergraduate.
+
+**Definition.** The group algebra over a field has the group elements as a basis. Multiply basis elements by the group law and extend multiplication by linearity. A module over this algebra is a linear action that respects multiplication and identity.
+
+**Problem.** Every linear group action extends uniquely to a unital module over the group algebra. Every such module restricts to a linear group action.
+
+**How the definition helps.** Using group elements as a basis leaves only one linear extension of their action. In our own proof, the module multiplication rule follows by expanding both sides on basis elements. Conversely, each basis element acts invertibly on a module because its group inverse acts as the inverse map.
+
+**Wikipedia:** [Group ring](https://en.wikipedia.org/wiki/Group_ring). It says: “As a ring, its addition law is that of the free module and its multiplication extends "by linearity" the given group law on the basis.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Inducing the trivial action gives the action on cosets
+
+**Remember:** One trivial line per coset gives one permuted basis vector.
+
+*True by definition.* MSC 20C05 (Group rings of finite groups and their modules (group-theoretic aspects)). arXiv math.RT. Level 2: later undergraduate.
+
+**Definition.** In the coset construction of induction, each left coset gets a copy of the subgroup representation. Use the one-dimensional trivial action, in which each subgroup element acts as one.
+
+**Problem.** Inducing the trivial representation from a subgroup gives the permutation representation on its left cosets.
+
+**How the definition helps.** The trivial action leaves the vector on each coset line unchanged while the group permutes the lines. In our own proof, the vector corresponding to one on each line gives a basis indexed by cosets. In tensor-product induction, multiplying a coset representative on the right by a subgroup element leaves the corresponding basis vector unchanged.
+
+**nLab:** [induced representation of the trivial representation](https://ncatlab.org/nlab/show/induced+representation+of+the+trivial+representation). It says: “is the permutation representation k\[G/H\] of the coset G-set G/H”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Representations as group algebra modules turn Maschke into Wedderburn structure
 
 **Remember:** The complex group algebra is one matrix algebra per irreducible representation.
@@ -416,6 +872,120 @@
 **Sources:**
 
 - [Maschke, H. (1898). Ueber den arithmetischen Charakter der Coefficienten der Substitutionen endlicher linearer Substitutionsgruppen. Mathematische Annalen 50, 492–498.](https://doi.org/10.1007/BF01444297)
+
+### Twisting the coset copies explains induction after restriction
+
+**Remember:** Move the action on each coset copy into the tensor factor.
+
+*True by definition.* MSC 20C05 (Group rings of finite groups and their modules (group-theoretic aspects)). arXiv math.RT. Level 2: later undergraduate.
+
+**Definition.** For a subgroup H of a finite group G, induction uses symbols \[g, v\] linear in the subgroup vector v. Impose \[gh, v\] = \[g, hv\] for h in H, and let G multiply the first entry on the left.
+
+**Problem.** Restricting a complex G-representation V to H and then inducing it gives ℂ\[G/H\] ⊗ V with the group acting on both factors. Here ℂ\[G/H\] is the permutation space of the left cosets.
+
+**How the definition helps.** The symbol relation gives a map to the tensor product without choosing coset representatives. In our own proof, send \[g, v\] to the basis vector for gH tensored with gv. Replacing g by gh and v by h⁻¹v leaves both factors unchanged, and left translation acts on both factors. The inverse sends the basis vector for gH tensored with w to \[g, g⁻¹w\].
+
+**Paper or page:** [Foams, iterated wreath products, field extensions and Sylvester sums](https://arxiv.org/abs/2107.07845v2). It says: “Consequently, the composition of restriction and induction functors is isomorphic to the functor of tensor product with the induced representation Indᴳₕ(k).”
+
+**Sources:**
+
+- [Mee Seong Im and Mikhail Khovanov, Foams, iterated wreath products, field extensions and Sylvester sums, Lemma 4.1](https://arxiv.org/abs/2107.07845v2)
+
+### A character detects its kernel at full degree
+
+**Remember:** Only identity actions give the full degree as trace.
+
+*True by definition. Confidence: medium.* MSC 20C15 (Ordinary representations and characters). arXiv math.RT. Level 2: later undergraduate.
+
+**Definition.** The character value at a group element is the trace of its action. Equivalently, it is the sum of the eigenvalues counted with multiplicity. The degree is the dimension of the representation.
+
+**Problem.** In a finite-dimensional complex representation of a finite group, an element acts as the identity exactly when its character value equals the degree.
+
+**How the definition helps.** Writing trace as an eigenvalue sum turns equality with the degree into equality in each real part. In our own proof, the matrix of an element of order m satisfies xᵐ − 1, so its eigenvalues are roots of unity. Each has real part at most one, with equality only at one. The polynomial has distinct roots, so the matrix is diagonalizable and all eigenvalues equal one exactly for the identity matrix.
+
+**Wikipedia:** [Representation theory of finite groups](https://en.wikipedia.org/wiki/Representation_theory_of_finite_groups). It says: “Since the trace of the identity matrix is the number of rows”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Algebraic closure removes nonscalar maps from Schur’s lemma
+
+**Remember:** An eigenvalue gives Schur’s lemma its scalar.
+
+*Rules out counterexamples.* MSC 20C15 (Ordinary representations and characters). arXiv math.RT. Level 2: later undergraduate.
+
+**Definition.** A field is algebraically closed if every nonconstant polynomial over it has a root in the field.
+
+**Problem.** Over an algebraically closed field, every linear map commuting with a finite-dimensional irreducible group action is a scalar multiple of the identity.
+
+**How the definition helps.** Algebraic closure gives the linear map an eigenvalue. In our own proof, its eigenspace is nonzero and invariant, so irreducibility makes it the whole space. Over the real numbers, rotation by a third of a turn generates an irreducible action on the plane. The rotation itself commutes with that action and is not scalar.
+
+**nLab:** [Schur's lemma](https://ncatlab.org/nlab/show/Schur%27s+lemma). It says: “are multiples c · id of the identity operator.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Averaging rank-one maps gives matrix coefficient orthogonality
+
+**Remember:** Average a single-entry map, then use Schur’s lemma.
+
+*True by definition.* MSC 20C15 (Ordinary representations and characters). arXiv math.RT. Level 2: later undergraduate.
+
+**Definition.** For representations U and V of a finite group G, define the average of a linear map A by summing V(g) A U(g⁻¹)/\|G\| over G. A matrix coefficient gives one entry of an action matrix as a function of g. Use bases orthonormal for inner products preserved by G.
+
+**Problem.** For pairwise inequivalent irreducible complex representations, distinct indexed coefficients are orthogonal under the group-average inner product. Each coefficient of a representation of dimension d has squared norm 1/d.
+
+**How the definition helps.** Averaging a matrix with one nonzero entry packages the coefficient inner products as entries of a single map. In our own proof, the average respects the actions because multiplying group elements permutes its terms. Schur’s lemma gives zero between distinct irreducibles and a scalar within one irreducible. Averaging preserves trace in the latter case, giving scalar 1/d for a diagonal matrix unit and zero otherwise.
+
+**Wikipedia:** [Schur orthogonality relations](https://en.wikipedia.org/wiki/Schur_orthogonality_relations). It says: “only valid for matrix elements of irreducible representations”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Averaging the action counts fixed vectors by trace
+
+**Remember:** Average the action, then take its trace to count fixed dimensions.
+
+*True by definition.* MSC 20C15 (Ordinary representations and characters). arXiv math.RT. Level 2: later undergraduate.
+
+**Definition.** For a complex representation of a finite group, the averaging operator is the sum of its action maps divided by the group order.
+
+**Problem.** For a finite-dimensional complex representation of a finite group, the dimension of its fixed subspace is the average of its character values.
+
+**How the definition helps.** The averaging operator measures the dimension of the fixed space without finding a basis for it. In our own proof, acting on the average permutes its terms, so its image consists of fixed vectors. It fixes those vectors and hence projects onto their space. Its trace equals both the dimension of that space and the average of the character values.
+
+**Wikipedia:** [Representation theory of finite groups](https://en.wikipedia.org/wiki/Representation_theory_of_finite_groups). It says: “Since the trace of the projection is the sum of all eigenvalues”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Character averages project onto each irreducible type
+
+**Remember:** Weight an action average by a character to select its type.
+
+*True by definition.* MSC 20C15 (Ordinary representations and characters), 20C05. arXiv math.RT. Level 2: later undergraduate.
+
+**Definition.** For an irreducible character χ of degree d, take a weighted sum of the action operators. The weight for g is d/\|G\| times the complex conjugate of χ(g).
+
+**Problem.** In any finite-dimensional complex representation of a finite group, this operator projects onto the sum of all irreducible subspaces with character χ.
+
+**How the definition helps.** The weights select one irreducible type without choosing a decomposition to define the projection. In our own proof, the weights are constant on conjugacy classes, so the operator commutes with the group. Maschke’s theorem splits the space into irreducibles, and Schur’s lemma makes the operator scalar on each. Its trace there, by character orthogonality, equals the summand’s dimension for the selected type and zero otherwise.
+
+**Wikipedia:** [Representation theory of finite groups](https://en.wikipedia.org/wiki/Representation_theory_of_finite_groups). It says: “The projection pⱼ: V → V(τⱼ) corresponding to the canonical decomposition is given by”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Character coordinates determine the whole representation
+
+**Remember:** Character coordinates count copies of the irreducible representations.
+
+*True by definition.* MSC 20C15 (Ordinary representations and characters). arXiv math.RT. Level 2: later undergraduate.
+
+**Definition.** A class function takes equal values on conjugate elements. The inner product of two complex class functions averages the first function times the complex conjugate of the second over the group.
+
+**Problem.** Two finite-dimensional complex representations of a finite group are isomorphic if and only if their characters agree.
+
+**How the definition helps.** The inner product recovers multiplicities directly from traces, avoiding a search for a change of basis. In our own proof, Maschke’s theorem splits each representation into irreducible summands. Schur orthogonality makes the inner product with each irreducible character count the summands of its type. Equal characters therefore give the same decomposition up to isomorphism.
+
+**nLab:** [character of a linear representation](https://ncatlab.org/nlab/show/character+of+a+linear+representation). It says: “in characteristic zero the character homomorphism is injective”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Conjugation turns maps of representations into fixed vectors
 
@@ -465,6 +1035,54 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Eigenvalue sums make character values algebraic integers
+
+**Remember:** A character value is a sum of roots of unity.
+
+*True by definition.* MSC 20C15 (Ordinary representations and characters). arXiv math.RT. Level 2: later undergraduate.
+
+**Definition.** The character of a representation gives the trace of each action matrix, equivalently the sum of its eigenvalues with multiplicity. An algebraic integer satisfies a polynomial with integer coefficients and leading coefficient one.
+
+**Problem.** Every character value of a finite-dimensional complex representation of a finite group is an algebraic integer.
+
+**How the definition helps.** Using eigenvalues in place of diagonal entries expresses the trace as a sum of algebraic integers. In our own proof, each eigenvalue of an element of order m satisfies xᵐ − 1 = 0. The theorem that algebraic integers are closed under addition finishes the proof.
+
+**Paper or page:** [Character of Representations over C are Algebraic Integers](https://proofwiki.org/wiki/Character_of_Representations_over_C_are_Algebraic_Integers). It says: “Then for all g ∈ G, it follows that χ(g) is an algebraic integer.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Full character modulus detects the group centre
+
+**Remember:** A central element acts by one phase on each irreducible.
+
+*True by definition. Confidence: medium.* MSC 20C15 (Ordinary representations and characters). arXiv math.RT. Level 2: later undergraduate.
+
+**Definition.** The normalized character of a nonzero complex representation is the trace divided by its degree. This is the average of the eigenvalues of the action.
+
+**Problem.** An element of a finite group is central exactly when every irreducible complex character has normalized value of absolute value one at that element.
+
+**How the definition helps.** Dividing the trace by the degree turns the scalar-action test into equality in the triangle inequality. In our own proof, a finite-order matrix is diagonalizable with eigenvalues on the unit circle, whose average has modulus one exactly when they coincide. Central elements act as scalars on irreducibles by Schur’s lemma. Conversely, scalar action on each irreducible summand commutes with the whole regular representation, which is faithful.
+
+**Wikipedia:** [Representation theory of finite groups](https://en.wikipedia.org/wiki/Representation_theory_of_finite_groups). It says: “these eigenvalues are all m-th roots of unity.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Grouping equivalent summands makes the decomposition canonical
+
+**Remember:** Group all copies of one type before asking for uniqueness.
+
+*True by definition.* MSC 20C15 (Ordinary representations and characters). arXiv math.RT. Level 2: later undergraduate.
+
+**Definition.** An irreducible representation is nonzero and has no nonzero proper subspace preserved by the group. Its isotypic component in a representation is the sum of all invariant subspaces isomorphic to it.
+
+**Problem.** Every finite-dimensional complex representation of a finite group is the direct sum of its isotypic components. This decomposition is unique, although a decomposition into individual irreducible copies need not be.
+
+**How the definition helps.** Taking all copies of each type defines the component independently of any chosen splitting. In our own proof, Maschke’s theorem first supplies a direct sum of irreducibles. Schur’s lemma makes each irreducible subspace project to zero on every summand of a different type. Thus the summands of its own type span exactly the component.
+
+**Wikipedia:** [Representation theory of finite groups](https://en.wikipedia.org/wiki/Representation_theory_of_finite_groups). It says: “This decomposition is uniquely determined. It is called the canonical decomposition.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Invariant forms explain the three Frobenius–Schur values
 
 **Remember:** At most one invariant form survives, so its symmetry decides the sign.
@@ -497,6 +1115,70 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Ordered pairs detect irreducibility of the permutation complement
+
+**Remember:** Two ordered-pair orbits mean one irreducible complement to constants.
+
+*True by definition. Confidence: medium.* MSC 20C15 (Ordinary representations and characters). arXiv math.RT. Level 2: later undergraduate.
+
+**Definition.** The permutation character of a finite group acting on a finite set X counts the points fixed by each element. In the complex space with basis X, the augmentation subspace consists of vectors whose coordinates sum to zero. Double transitivity means transitivity on ordered pairs of distinct points.
+
+**Problem.** For a transitive finite group action on at least two points, the augmentation subspace is irreducible exactly when the action is doubly transitive.
+
+**How the definition helps.** Counting fixed points instead of taking matrix traces makes the squared character count fixed ordered pairs. In our own proof, the orbit-counting lemma makes its average the number of orbits on ordered pairs. Transitivity gives one constant summand, so character orthogonality makes the augmentation character’s squared norm one less than this orbit count. Irreducibility means norm one, leaving exactly the diagonal and one orbit of distinct pairs.
+
+**nLab:** [permutation representation](https://ncatlab.org/nlab/show/permutation+representation). It says: “The characters of permutation representations are the Burnside marks of the underlying G-sets:”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Product groups have tensor products as their irreducibles
+
+**Remember:** On a direct product, take one irreducible from each factor.
+
+*Makes the theorem clean to state or prove.* MSC 20C15 (Ordinary representations and characters). arXiv math.RT. Level 2: later undergraduate.
+
+**Definition.** The outer tensor product of representations of G and H uses their tensor product space. The element (g, h) acts by g on the first factor and h on the second.
+
+**Problem.** The irreducible complex representations of a direct product of finite groups are exactly the outer tensor products of pairs of irreducibles.
+
+**How the definition helps.** The outer tensor product names a representation of the product group using one representation from each factor. In our own proof, its character multiplies the two characters, so character inner products factor as well. Schur orthogonality then gives distinct irreducibles for distinct pairs of irreducible types. These exhaust the possibilities because conjugacy classes of the product are pairs of conjugacy classes.
+
+**Wikipedia:** [Representation theory of finite groups](https://en.wikipedia.org/wiki/Representation_theory_of_finite_groups). It says: “This representation is called outer tensor product”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Quotient actions recover normal subgroups from character kernels
+
+**Remember:** The quotient’s irreducibles see everything outside the normal subgroup.
+
+*True by definition.* MSC 20C15 (Ordinary representations and characters). arXiv math.RT. Level 2: later undergraduate.
+
+**Definition.** For a normal subgroup N of G, inflate a complex representation of G/N by letting each g act as its coset gN. Its character kernel consists of the elements acting as the identity.
+
+**Problem.** Every normal subgroup N of a finite group G is the intersection of the kernels of the irreducible characters inflated from G/N.
+
+**How the definition helps.** Inflation makes each kernel the inverse image of a kernel in the quotient. In our own proof, the regular representation of G/N is faithful and splits into irreducibles by Maschke’s theorem. Every nonidentity coset therefore acts nontrivially on some irreducible summand. Taking inverse images turns the trivial intersection in the quotient into N.
+
+**Wikipedia:** [Character theory](https://en.wikipedia.org/wiki/Character_theory). It says: “Each normal subgroup of G is the intersection of the kernels of some of the irreducible characters of G.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Swapping tensor factors gives both square character formulas
+
+**Remember:** Use the swap to separate symmetric and exterior traces.
+
+*True by definition.* MSC 20C15 (Ordinary representations and characters). arXiv math.RT. Level 2: later undergraduate.
+
+**Definition.** For a finite-dimensional complex representation V, let S exchange the factors of V ⊗ V. Its +1 and −1 eigenspaces are the symmetric square and exterior square, respectively.
+
+**Problem.** For an element g of a finite group, the symmetric square has character value (χ(g)² + χ(g²))/2, where χ is the original character. The exterior square has value (χ(g)² − χ(g²))/2.
+
+**How the definition helps.** The swap separates the two squares by the projections (I + S)/2 and (I − S)/2. In our own proof, use an eigenbasis for g, which exists because g has finite order. The tensor square has trace χ(g)². After the swap, only pairs of identical basis vectors contribute to the trace, giving the sum of squared eigenvalues, χ(g²).
+
+**Wikipedia:** [Representation theory of finite groups](https://en.wikipedia.org/wiki/Representation_theory_of_finite_groups). It says: “These subspaces are G–invariant”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Tensor products make induction transitive
 
 **Remember:** Tensoring twice along a chain gives the same result as tensoring once.
@@ -513,6 +1195,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### The character norm tests irreducibility
+
+**Remember:** An irreducible character has exactly one unit of squared norm.
+
+*True by definition.* MSC 20C15 (Ordinary representations and characters). arXiv math.RT. Level 2: later undergraduate.
+
+**Definition.** For a finite group, a character’s squared norm is the average of its squared absolute values. A virtual character is an integer combination of irreducible complex characters.
+
+**Problem.** A finite-dimensional complex representation of a finite group is irreducible exactly when its character has squared norm one. A virtual character is irreducible exactly when it has squared norm one and positive value at the identity.
+
+**How the definition helps.** The group average converts a test on invariant subspaces into a sum of integer squares. In our own proof, Schur orthogonality makes the squared norm equal the sum of the squared irreducible coefficients. Norm one leaves just one coefficient, either +1 or −1. Maschke’s theorem gives nonnegative coefficients for representations, and positive value at the identity excludes the negative sign for virtual characters.
+
+**nLab:** [Schur orthogonality relation](https://ncatlab.org/nlab/show/Schur+orthogonality+relation). It says: “form an orthonormal basis of the space of class functions under this inner product”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The group algebra centre counts irreducible representations
 
 **Remember:** Each matrix algebra contributes one dimension to the centre.
@@ -526,6 +1224,56 @@
 **How the definition helps.** The group-algebra model lets both counts be read from the dimension of the centre of ℂ\[G\] (our own). The conjugacy class sums form a basis of the centre, so this dimension is the number of classes (our own). Maschke's theorem and the Wedderburn–Artin theorem split ℂ\[G\] into one full matrix algebra per irreducible representation, and each has a one-dimensional centre of scalars (our own). The character proof instead shows that the irreducible characters form a basis of the class functions (our own).
 
 **Wikipedia:** [Group ring](https://en.wikipedia.org/wiki/Group_ring). It says: “The center is equal to the set of class functions, that is the set of elements that are constant on each conjugacy class”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Weighting the character table makes column orthogonality automatic
+
+**Remember:** A square table with orthonormal rows has orthonormal columns.
+
+*True by definition.* MSC 20C15 (Ordinary representations and characters). arXiv math.RT. Level 2: later undergraduate.
+
+**Definition.** In a character table, rows record irreducible characters and columns record conjugacy classes. For each column, divide the class size by the group order. Scale the column by the square root of that ratio.
+
+**Problem.** The weighted complex character table of a finite group has orthonormal columns. Before weighting, distinct columns are orthogonal and each squared column norm equals the group order divided by its class size.
+
+**How the definition helps.** Weighting converts the character inner product into the ordinary inner product of rows. In our own proof, character orthogonality gives orthonormal rows. The table is square because there is one irreducible character per conjugacy class. A square matrix with orthonormal rows has orthonormal columns.
+
+**Wikipedia:** [Schur orthogonality relations](https://en.wikipedia.org/wiki/Schur_orthogonality_relations). It says: “this implies that the columns of the character table are orthogonal.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Abelian factors make solvable composition factors cyclic of prime order
+
+**Remember:** An abelian quotient with no room to refine has prime order.
+
+*True by definition.* MSC 20D10 (Finite solvable groups, theory of formations, Schunck classes, Fitting classes, \\(\\pi\\)-length, ranks). arXiv math.GR. Level 2: later undergraduate.
+
+**Definition.** A solvable group has a chain from the identity to the group with finitely many steps, each normal in the next, and abelian successive quotients. A composition series runs from the identity to the group with each subgroup normal in the next and all successive quotients simple. These quotients, called composition factors, are nontrivial and have no proper nontrivial normal subgroup.
+
+**Problem.** A finite group is solvable exactly when its composition factors are all cyclic of prime order. This statement holds for any composition series.
+
+**How the definition helps.** The chain definition makes solvability immediate whenever a composition series has cyclic factors of prime order (our own). Conversely, refine each finite abelian quotient until its factors are simple (our own). A finite simple abelian group is cyclic of prime order because every subgroup is normal (our own). Jordan–Hölder gives the same factors up to order and isomorphism in every composition series (our own).
+
+**nLab:** [solvable group](https://ncatlab.org/nlab/show/solvable+group). It says: “A group is solvable if it is a finite iterated group extension of an abelian group by abelian groups.”
+
+**Paper or page:** [Factors of Solvable Group are Prime](https://proofwiki.org/wiki/Factors_of_Solvable_Group_are_Prime). It says: “Then all factor groups of ℋ must be prime.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A semidirect product shows when order pq forces cyclicity
+
+**Remember:** A nontrivial twist needs an automorphism of order p.
+
+*Rules out counterexamples.* MSC 20D20 (Sylow subgroups, Sylow properties, \\(\\pi\\)-groups, \\(\\pi\\)-structure), 20E22. arXiv math.GR. Level 2: later undergraduate.
+
+**Definition.** In a semidirect product of cyclic groups of orders q and p, the order-p group acts on the order-q group by automorphisms. If the action fixes every element, the product is direct.
+
+**Problem.** Let p and q be primes with p &lt; q. Every group of order pq is cyclic if p does not divide q − 1.
+
+**How the definition helps.** The divisibility condition rules out every nontrivial action of the order-p subgroup on the order-q subgroup (our own). Sylow’s theorems give a normal cyclic subgroup of order q and a cyclic complement of order p (our own). Their semidirect product is direct because the automorphism group of the order-q subgroup has order q − 1, prime to p (our own). A direct product of cyclic groups of coprime orders is cyclic (our own).
+
+**Paper or page:** [Group of Order p q is Cyclic](https://proofwiki.org/wiki/Group_of_Order_p_q_is_Cyclic). It says: “Let p, q be primes such that p &lt; q and p does not divide q − 1.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -547,6 +1295,40 @@
 
 - [P. Hall, A note on soluble groups, Journal of the London Mathematical Society 3 (1928) 98–105](https://doi.org/10.1112/jlms/s1-3.2.98)
 
+### Fixed cosets put every p-subgroup in a conjugate Sylow subgroup
+
+**Remember:** A coset fixed by Q places Q inside that conjugate of P.
+
+*Makes the theorem clean to state or prove.* MSC 20D20 (Sylow subgroups, Sylow properties, \\(\\pi\\)-groups, \\(\\pi\\)-structure). arXiv math.GR. Level 2: later undergraduate.
+
+**Definition.** A Sylow p-subgroup P of a finite group G has order equal to the largest power of p dividing \|G\|. A coset gP is fixed by Q if multiplying it on the left by any element of Q leaves it unchanged.
+
+**Problem.** Every subgroup Q of p-power order lies inside a conjugate of P. In particular, all Sylow p-subgroups are conjugate.
+
+**How the definition helps.** A fixed coset gP says exactly that g⁻¹Qg lies inside P (our own). Orbit–stabilizer makes every orbit of Q with more than one coset divisible in size by p (our own). The number of cosets of P is prime to p, so at least one is fixed (our own). When Q has the same order as P, containment is equality (our own).
+
+**Paper or page:** [Second Sylow Theorem](https://proofwiki.org/wiki/Second_Sylow_Theorem). It says: “Then Q is a subset of a conjugate of P.”
+
+**Sources:**
+
+- [Ludwig Sylow, Théorèmes sur les groupes de substitutions (1872)](https://doi.org/10.1007/BF01442913)
+
+### Index prime to p makes Sylow subgroups survive quotients
+
+**Remember:** A quotient can merge cosets but the new index still divides the old.
+
+*True by definition.* MSC 20D20 (Sylow subgroups, Sylow properties, \\(\\pi\\)-groups, \\(\\pi\\)-structure). arXiv math.GR. Level 2: later undergraduate.
+
+**Definition.** For a prime p, a Sylow p-subgroup P of a finite group has p-power order and index prime to p. The index counts its left cosets.
+
+**Problem.** A surjective homomorphism of finite groups sends a Sylow p-subgroup to a Sylow p-subgroup.
+
+**How the definition helps.** The index test avoids computing the largest power of p in the quotient order (our own). The image of P has p-power order because its order divides \|P\| (our own). Its index equals the index of its full preimage, which contains P (our own). That index divides the index of P and so is prime to p (our own).
+
+**Paper or page:** [Quotient of Sylow P-Subgroup](https://proofwiki.org/wiki/Quotient_of_Sylow_P-Subgroup). It says: “Then PN/N is a Sylow p-subgroup of G/N.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Normal Hall subgroups always have a complement
 
 **Remember:** Coprime orders split the group into a semidirect product.
@@ -563,6 +1345,76 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Normal subgroups inherit every Sylow intersection
+
+**Remember:** Normality lets any Sylow choice in the larger group work.
+
+*Rules out counterexamples.* MSC 20D20 (Sylow subgroups, Sylow properties, \\(\\pi\\)-groups, \\(\\pi\\)-structure). arXiv math.GR. Level 2: later undergraduate.
+
+**Definition.** A normal subgroup N of G is one that every element of G sends to itself by conjugation. A Sylow p-subgroup has order equal to the largest power of p dividing the group order.
+
+**Problem.** Let N be normal in a finite group G. For every Sylow p-subgroup P of G, the intersection P ∩ N is a Sylow p-subgroup of N.
+
+**How the definition helps.** Normality keeps every conjugate of a Sylow subgroup of N inside N (our own). Sylow containment and conjugacy in G put one such conjugate inside P (our own). Thus P ∩ N contains a Sylow subgroup of N and itself has p-power order (our own). Without normality, two distinct order-two subgroups of the triangle symmetry group meet only at the identity (our own).
+
+**Paper or page:** [Intersection of Normal Subgroup with Sylow P-Subgroup](https://proofwiki.org/wiki/Intersection_of_Normal_Subgroup_with_Sylow_P-Subgroup), [Intersection of Sylow p-Subgroup with Subgroup not necessarily Sylow p-Subgroup](https://proofwiki.org/wiki/Intersection_of_Sylow_p-Subgroup_with_Subgroup_not_necessarily_Sylow_p-Subgroup). It says: “Then P ∩ N is a Sylow p-subgroup of N.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Normalizers measure the number of Sylow subgroups
+
+**Remember:** Count the cosets of the normalizer to count Sylow subgroups.
+
+*True by definition.* MSC 20D20 (Sylow subgroups, Sylow properties, \\(\\pi\\)-groups, \\(\\pi\\)-structure). arXiv math.GR. Level 2: later undergraduate.
+
+**Definition.** A Sylow p-subgroup P has order equal to the largest power of p dividing the group order. Its normalizer consists of the elements g with gPg⁻¹ = P.
+
+**Problem.** The number of Sylow p-subgroups in a finite group G equals the index of the normalizer of any one of them. It divides the index of that Sylow subgroup.
+
+**How the definition helps.** Viewing the normalizer as the subgroup fixing P turns counting distinct conjugates into counting left cosets (our own). Orbit–stabilizer gives that count, and Sylow conjugacy says it includes every Sylow p-subgroup (our own). Since the normalizer contains P, its index divides the index of P (our own).
+
+**Paper or page:** [Fifth Sylow Theorem](https://proofwiki.org/wiki/Fifth_Sylow_Theorem), [Third Sylow Theorem](https://proofwiki.org/wiki/Third_Sylow_Theorem). It says: “The number of Sylow p-subgroups of a finite group is a divisor of their common index.”
+
+**Sources:**
+
+- [Ludwig Sylow, Théorèmes sur les groupes de substitutions (1872)](https://doi.org/10.1007/BF01442913)
+
+### Rotating tuples gives Cauchy’s theorem
+
+**Remember:** Rotate tuples whose product is the identity to find elements of order p.
+
+*Makes the theorem clean to state or prove.* MSC 20D20 (Sylow subgroups, Sylow properties, \\(\\pi\\)-groups, \\(\\pi\\)-structure). arXiv math.GR. Level 2: later undergraduate.
+
+**Definition.** For a prime p, consider ordered lists of p group elements whose product is the identity. Rotation moves the first entry to the end and preserves the condition that the product equals the identity.
+
+**Problem.** If a prime p divides the order of a finite group G, then G contains an element of order p.
+
+**How the definition helps.** Rotation fixes exactly the constant product-one tuples, whose entries have pth power equal to the identity (our own). Every other tuple belongs to an orbit of size p because p is prime (our own). The total count is divisible by p because the first p − 1 entries are free and determine the last (our own). The fixed count is therefore divisible by p, so another constant tuple supplies a nonidentity entry of order p (our own).
+
+**Wikipedia:** [Cauchy's theorem (group theory)](https://en.wikipedia.org/wiki/Cauchy%27s_theorem_%28group_theory%29). It says: “as the last element must be the inverse of the product of those preceding elements.”
+
+**Paper or page:** [Cauchy's Group Theorem](https://proofwiki.org/wiki/Cauchy's_Group_Theorem). It says: “Then G has a subgroup of order p.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Translating subsets gives Sylow subgroups as stabilizers
+
+**Remember:** Translate subsets of Sylow size until an orbit has size prime to p.
+
+*Makes the theorem clean to state or prove.* MSC 20D20 (Sylow subgroups, Sylow properties, \\(\\pi\\)-groups, \\(\\pi\\)-structure). arXiv math.GR. Level 2: later undergraduate.
+
+**Definition.** Let q be the largest power of a prime p dividing the order of a finite group G. Translation sends a q-element subset S to gS. Its stabilizer consists of the elements g with gS = S.
+
+**Problem.** Some q-element subset has a stabilizer of order q. This stabilizer is a Sylow p-subgroup, a subgroup of the largest possible p-power order.
+
+**How the definition helps.** Translation lets us find a subgroup of order q by counting subsets (our own). Write \|G\| = qm and count subsets by the coefficient of degree q in (1 + x) raised to qm (our own). Modulo p, the qth power of 1 + x equals one plus the qth power of x, giving coefficient m (our own). An orbit of size prime to p has stabilizer order divisible by q and dividing q, since the stabilizer freely permutes the subset (our own).
+
+**Paper or page:** [First Sylow Theorem](https://proofwiki.org/wiki/First_Sylow_Theorem), [Group Action on Prime Power Order Subset/Stabilizer of Maximal Power Order Subset](https://proofwiki.org/wiki/Group_Action_on_Prime_Power_Order_Subset/Stabilizer_of_Maximal_Power_Order_Subset). It says: “That is, the set of all subsets of G whose cardinality is the power of a prime number.”
+
+**Sources:**
+
+- [Ludwig Sylow, Théorèmes sur les groupes de substitutions (1872)](https://doi.org/10.1007/BF01442913)
+
 ### Setting Φ(G) = G without maximal subgroups keeps Φ the non-generators
 
 **Remember:** An empty intersection of subgroups is the whole group.
@@ -576,6 +1428,22 @@
 **How the definition helps.** The convention is the usual rule that an empty intersection is everything, and it keeps the non-generator description true with no exception. In our own example, the Prüfer p-group has only finite proper subgroups, so it has no maximal subgroup. Every generating set of it is infinite, and removing one element leaves an infinite set that still generates the whole group (our own). So every element is a non-generator, and Φ(G) = G is the right answer.
 
 **Wikipedia:** [Frattini subgroup](https://en.wikipedia.org/wiki/Frattini_subgroup). It says: “For the case that G has no maximal subgroups, for example the trivial group {e} or a Prüfer group, it is defined by Φ(G)=G.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Cyclic reduction shows that free groups have no torsion
+
+**Remember:** A cyclically reduced word stays reduced when you repeat it.
+
+*Rules out counterexamples.* MSC 20E05 (Free nonabelian groups). arXiv math.GR. Level 2: later undergraduate.
+
+**Definition.** A reduced word has no neighboring inverse letters. A nonempty reduced word is cyclically reduced if its first and last letters are not inverses.
+
+**Problem.** In a free group, no nonidentity element has a positive power equal to the identity.
+
+**How the definition helps.** The endpoint condition prevents cancellation where one copy of the word meets the next (our own). A reduced word such as aba⁻¹ can lose letters there (our own). Conjugating away inverse endpoints turns any nonidentity element into a nonempty cyclically reduced word (our own). Every positive power of that word remains nonempty and reduced, so neither it nor the corresponding original power is the identity (our own).
+
+**Wikipedia:** [Free group](https://en.wikipedia.org/wiki/Free_group). It says: “A reduced word is called cyclically reduced if its first and last letter are not inverse to each other.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -696,6 +1564,110 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### The normal core measures when a coset action is faithful
+
+**Remember:** The core is what all cosets fail to see.
+
+*True by definition.* MSC 20E07 (Subgroup theorems; subgroup growth). arXiv math.GR. Level 2: later undergraduate.
+
+**Definition.** The normal core of a subgroup H is the intersection of all its conjugates in G. An action is faithful if no element other than the identity leaves every point in place.
+
+**Problem.** The elements acting trivially on all left cosets of H form the normal core of H. Thus the action is faithful exactly when the core is trivial.
+
+**How the definition helps.** Defining the core by intersecting conjugates makes fixing every coset a single membership test (our own). An element a fixes gH exactly when g⁻¹ag belongs to H (our own). Conjugation permutes the factors, and every normal subgroup inside H lies in each factor (our own).
+
+**Wikipedia:** [Core (group theory)](https://en.wikipedia.org/wiki/Core_%28group_theory%29). It says: “the normal core of any isotropy subgroup is precisely the kernel of the action.”
+
+**Paper or page:** [Stabilizer of Coset under Group Action on Coset Space](https://proofwiki.org/wiki/Stabilizer_of_Coset_under_Group_Action_on_Coset_Space). It says: “Then the stabilizer of aH under ∗ is given by:”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A longest subnormal chain gives a composition series
+
+**Remember:** Lengthen a subnormal chain until there is no room to insert a subgroup.
+
+*True by definition.* MSC 20E15 (Chains and lattices of subgroups, subnormal subgroups), 20E32. arXiv math.GR. Level 2: later undergraduate.
+
+**Definition.** In a subnormal chain, each subgroup is normal in the next. A composition series is a strict subnormal chain from the identity to the group, with no step that admits a strict insertion.
+
+**Problem.** Every finite group has a composition series. Its successive quotient groups are all nontrivial and simple.
+
+**How the definition helps.** Defining a composition series by the impossibility of inserting another subgroup makes any longest strict subnormal chain qualify (our own). A finite group has finitely many subgroups, so a longest chain exists (our own). The correspondence theorem identifies possible insertions with proper nontrivial normal subgroups of the quotient (our own). This recovers the usual definition by simple quotients, meaning quotients with no such normal subgroup (our own).
+
+**nLab:** [composition series](https://ncatlab.org/nlab/show/composition+series). It says: “is a subnormal series, (that is, a sequence of subgroups, each a normal subgroup of the next one)”
+
+**Paper or page:** [Finite Group has Composition Series](https://proofwiki.org/wiki/Finite_Group_has_Composition_Series). It says: “Then G has a composition series.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Full coset preimages recover subgroups of a quotient
+
+**Remember:** A subgroup above N must contain whole cosets.
+
+*Makes the theorem clean to state or prove.* MSC 20E15 (Chains and lattices of subgroups, subnormal subgroups), 20A05. arXiv math.GR. Level 2: later undergraduate.
+
+**Definition.** For a normal subgroup N of G, the quotient projection sends each g to its coset gN. The full preimage of a set of cosets contains every element of every coset in that set.
+
+**Problem.** Full preimages pair the subgroups of G/N with the subgroups of G containing N. This pairing preserves inclusion and normality in both directions.
+
+**How the definition helps.** A subgroup containing N contains the whole coset of each of its elements, so taking its image loses no membership information (our own). Taking the full preimage recovers the subgroup, and projecting a full preimage recovers the original cosets (our own). Both operations preserve inclusion (our own). The projection sends conjugates to conjugates and reaches every coset, so normality passes in both directions (our own).
+
+**Paper or page:** [Correspondence Theorem (Group Theory)](https://proofwiki.org/wiki/Correspondence_Theorem_(Group_Theory)). It says: “This bijection maps normal subgroups of G/N onto normal subgroups of G which contain N.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A homomorphic section turns a quotient into a semidirect product
+
+**Remember:** A section chooses one representative per coset and respects multiplication.
+
+*Rules out counterexamples.* MSC 20E22 (Extensions, wreath products, and other compositions of groups). arXiv math.GR. Level 2: later undergraduate.
+
+**Definition.** A surjective homomorphism q from G to H splits if there is a homomorphism s from H to G with q(s(h)) = h. Such an s is a section.
+
+**Problem.** If q splits, G is a semidirect product of its kernel and the image of the section.
+
+**How the definition helps.** The section gives a unique expression g = ns(q(g)), with n in the kernel (our own). Conjugation by the image of s gives the action in the semidirect product (our own). The hard part is finding a section that preserves multiplication (our own). Neither odd residue modulo four has order two, so reduction modulo two does not split (our own).
+
+**nLab:** [semidirect product group](https://ncatlab.org/nlab/show/semidirect+product+group). It says: “such that every element of H can be written uniquely in the form γg, for γ ∈ Γ and g ∈ G.”
+
+**Wikipedia:** [Semidirect product](https://en.wikipedia.org/wiki/Semidirect_product). It says: “a group G is isomorphic to a semidirect product of the two groups N and H”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### An action by automorphisms makes twisted multiplication associative
+
+**Remember:** An action combines successive twists in the same order as multiplication.
+
+*Rules out counterexamples.* MSC 20E22 (Extensions, wreath products, and other compositions of groups). arXiv math.GR. Level 2: later undergraduate.
+
+**Definition.** Let H act on N by automorphisms, which are invertible homomorphisms from N to itself. This means each h gives an automorphism φ(h) with φ(hk) = φ(h)φ(k). Multiply pairs by (n, h)(m, k) = (nφ(h)(m), hk).
+
+**Problem.** This multiplication is associative and makes N × H a group called the semidirect product.
+
+**How the definition helps.** Both ways of multiplying three pairs apply the same twist because φ(hk) = φ(h)φ(k) (our own). The work goes into choosing automorphisms that respect multiplication in H (our own). For example, doubling residues modulo five cannot be the action of a generator of order two (our own). Doubling twice is not the identity, so two such twists fail to cancel (our own).
+
+**nLab:** [semidirect product group](https://ncatlab.org/nlab/show/semidirect+product+group). It says: “but whose multiplication is twisted by ρ:”
+
+**Paper or page:** [Semidirect Product of Groups is Group](https://proofwiki.org/wiki/Semidirect_Product_of_Groups_is_Group). It says: “Then N ⋊φ H is a group.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Two normal factors with trivial intersection give a direct product
+
+**Remember:** Two normal factors commute when they share only the identity.
+
+*Rules out counterexamples.* MSC 20E22 (Extensions, wreath products, and other compositions of groups). arXiv math.GR. Level 2: later undergraduate.
+
+**Definition.** An internal direct product has a unique expression nh for each element, with n in N and h in H. The two subgroups commute element by element.
+
+**Problem.** If two normal subgroups N and H generate G and meet only in the identity, G is their internal direct product. The map (n, h) ↦ nh identifies it with the coordinatewise product.
+
+**How the definition helps.** Normality puts each commutator n⁻¹h⁻¹nh in both factors, so their trivial intersection forces n and h to commute (our own). Products nh therefore form a subgroup containing both factors, hence all of G (our own). Two expressions nh can agree only when their differences in the two factors give the same element of the intersection (our own). In a triangle, the rotations and one reflection generate all symmetries and meet trivially, but only the rotations form a normal factor (our own).
+
+**Paper or page:** [Conditions for Internal Group Direct Product](https://proofwiki.org/wiki/Conditions_for_Internal_Group_Direct_Product), [Internal Direct Product Theorem/General Result](https://proofwiki.org/wiki/Internal_Direct_Product_Theorem/General_Result). It says: “Then G is the internal group direct product of H and K”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Finitely generated residually finite groups never map onto themselves with a kernel
 
 **Remember:** A finite quotient catches each element that a self-surjection tries to kill.
@@ -713,6 +1685,38 @@
 **Sources:**
 
 - [Martin R. Bridson, Chasing finite shadows of infinite groups through geometry, arXiv:2504.11684v1 (2025)](https://arxiv.org/abs/2504.11684v1)
+
+### Conjugacy classes as orbits give the class equation
+
+**Remember:** Conjugates form an orbit whose stabilizer is the centralizer.
+
+*True by definition.* MSC 20E45 (Conjugacy classes for groups). arXiv math.GR. Level 2: later undergraduate.
+
+**Definition.** Let G act on itself by conjugation, so g sends x to gxg⁻¹. The conjugacy class of x is the set of points it can reach. Its centralizer is the subgroup of elements that commute with x.
+
+**Problem.** In a finite group, the class of x has size equal to the number of cosets of its centralizer. The group order is the sum of these sizes, one per class.
+
+**How the definition helps.** Viewing conjugates as an orbit turns the centralizer into the subgroup fixing x (our own). Instead of comparing conjugating elements in pairs, apply the orbit–stabilizer theorem, which matches orbit points with left cosets of that subgroup (our own). The orbits partition the group, so their sizes add up to its order (our own).
+
+**Paper or page:** [Number of Conjugates is Number of Cosets of Centralizer](https://proofwiki.org/wiki/Number_of_Conjugates_is_Number_of_Cosets_of_Centralizer), [Conjugacy Action on Group Elements is Group Action](https://proofwiki.org/wiki/Conjugacy_Action_on_Group_Elements_is_Group_Action). It says: “the number of different conjugates of a in G equals the number of different (left) cosets”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Adding relators presents the corresponding quotient group
+
+**Remember:** To kill more words, add them to the relator list.
+
+*True by definition.* MSC 20F05 (Generators, relations, and presentations of groups), 20E05. arXiv math.GR. Level 2: later undergraduate.
+
+**Definition.** A relator is a word in the generators that the presentation sets equal to the identity. The presented group is the quotient of the free group on the generators by the smallest normal subgroup containing the relators.
+
+**Problem.** Adding words to the relator list presents the quotient of the old group by the normal subgroup generated by those words.
+
+**How the definition helps.** In the quotient construction, adding relators enlarges the normal subgroup by exactly the added words and their conjugates (our own). Taking that quotient in two stages gives the stated group by the third isomorphism theorem (our own). In the alternative description by maps out, the same step requires maps to send the added words to the identity (our own).
+
+**Wikipedia:** [Presentation of a group](https://en.wikipedia.org/wiki/Presentation_of_a_group). It says: “take the quotient of Fₛ by the smallest normal subgroup that contains each element of R.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Defining presented groups by maps out shows defined generators change nothing
 
@@ -745,6 +1749,22 @@
 **How the definition helps.** Both sides are defined by maps out, so it is enough to match their maps to any group H. A function on the disjoint union of the Sᵢ is one function on each Sᵢ, and it kills all relators exactly when each part kills its own Rᵢ (our own). So it is one homomorphism from each Gᵢ, which is one homomorphism from the free product (our own). The work moves to showing that the free group quotient has this mapping property.
 
 **nLab:** [free product of groups](https://ncatlab.org/nlab/show/free+product+of+groups). It says: “If all the Gᵢ have group presentations, then their free product ⋆ᵢ Gᵢ has a group presentation as follows:”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Commutators act coordinatewise so direct products preserve solvability
+
+**Remember:** Take commutators in each coordinate until both coordinates reach the identity.
+
+*True by definition.* MSC 20F16 (Solvable groups, supersolvable groups). arXiv math.GR. Level 2: later undergraduate.
+
+**Definition.** A solvable group reaches the identity subgroup when we repeatedly take the subgroup generated by its commutators x⁻¹y⁻¹xy. In a direct product, multiplication is coordinatewise.
+
+**Problem.** A direct product of two solvable groups is solvable.
+
+**How the definition helps.** The derived-series test replaces the search for a chain with abelian factors by a calculation in each coordinate (our own). A commutator in the product is a pair of commutators (our own). Using identity elements in either coordinate recovers both commutator subgroups independently (our own). Thus every derived term is a product, and the two series eventually reach the identity (our own).
+
+**Paper or page:** [Direct Product of Solvable Groups is Solvable](https://proofwiki.org/wiki/Direct_Product_of_Solvable_Groups_is_Solvable). It says: “Then their (external) direct product G × H is also solvable.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -797,6 +1817,24 @@
 **Sources:**
 
 - [J. S. Milne, Fields and Galois Theory, course notes (2022), p. 45](https://www.jmilne.org/math/CourseNotes/FT.pdf)
+
+### The derived series passes solvability to subgroups and quotients
+
+**Remember:** Commutators stay in subgroups and pass through quotient maps.
+
+*True by definition.* MSC 20F16 (Solvable groups, supersolvable groups). arXiv math.GR. Level 2: later undergraduate.
+
+**Definition.** The derived series starts with the group and replaces each term by the subgroup generated by all commutators x⁻¹y⁻¹xy in that term. A group is solvable if this reaches the identity subgroup after finitely many steps.
+
+**Problem.** Subgroups and quotient groups of a solvable group are solvable.
+
+**How the definition helps.** The derived series tracks subgroups and quotients without requiring a separate chain of abelian factors for each group (our own). A homomorphism sends each commutator to the commutator of its images (our own). Each derived subgroup therefore lies in the corresponding original term under inclusion, and maps onto the corresponding quotient term under projection (our own). Once the original series reaches the identity, both other series have reached it (our own).
+
+**nLab:** [solvable group](https://ncatlab.org/nlab/show/solvable+group). It says: “A group is solvable if the series of groups produced by repeatedly taking the commutator subgroup, the derived series, terminates with the trivial group after finitely many steps.”
+
+**Paper or page:** [Subgroup of Solvable Group is Solvable](https://proofwiki.org/wiki/Subgroup_of_Solvable_Group_is_Solvable). It says: “Then H is solvable.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Defining nilpotent groups as iterated central extensions makes central extensions stay nilpotent
 
@@ -861,6 +1899,306 @@
 **How the definition helps.** The determinant of a product is the product of the determinants, so the determinant sign is a homomorphism (our own). The work moves to showing that the two signs agree (our own). Each simple reflection has determinant −1, so every word for w has length of the same parity as ℓ(w). The route through the Coxeter presentation is also short, but it needs the theorem that Weyl groups have that presentation (our own comparison).
 
 **Wikipedia:** [Coxeter group](https://en.wikipedia.org/wiki/Coxeter_group). It says: “the minimum number of uses of generators required to express a group element”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Missing Coxeter edges split the group into direct factors
+
+**Remember:** Disconnected components commute without mixing.
+
+*True by definition.* MSC 20F55 (Reflection and Coxeter groups (group-theoretic aspects)). arXiv math.GR, math.MG. Level 2: later undergraduate.
+
+**Definition.** A Coxeter diagram presents a group by generators that square to the identity. Each pair has a label m specifying the relation that its product raised to m equals the identity. A missing edge means m = 2, and an infinite label means no relation for that pair.
+
+**Problem.** A Coxeter group with a finite diagram is the direct product of the Coxeter groups of its connected components.
+
+**How the definition helps.** Across components all generators commute, and those are the only relations linking the components (our own). The presentation of the direct product has exactly these relations (our own). For a geometric reflection group, the work goes into proving that the diagram gives a full presentation (our own).
+
+**nLab:** [Coxeter group](https://ncatlab.org/nlab/show/Coxeter+group). It says: “the product of two Coxeter groups is specified by the disjoint union of their Coxeter diagrams.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Separating mirrors give word length in a finite reflection group
+
+**Remember:** Every separating mirror must be crossed once in a shortest path.
+
+*Makes the theorem clean to state or prove.* MSC 20F55 (Reflection and Coxeter groups (group-theoretic aspects)). arXiv math.GR, math.MG. Level 2: later undergraduate.
+
+**Definition.** For a finite group generated by real Euclidean reflections, a chamber is a connected region left after removing all reflection mirrors. Choose a chamber C and use the reflections in its walls as generators.
+
+**Problem.** The fewest generators needed to express an element g equals the number of mirrors separating C from its image gC.
+
+**How the definition helps.** Each letter crosses one wall, so each separating mirror costs a letter (our own). A suitably chosen straight segment crosses those mirrors once each and avoids intersections of mirrors (our own). The work goes into proving that the group acts freely and transitively on the chambers, so the path determines the required element (our own).
+
+**Wikipedia:** [Reflection group](https://en.wikipedia.org/wiki/Reflection_group). It says: “The reflections in the faces of a fixed fundamental "chamber" are generators”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Two mirrors encode a dihedral group by their angle
+
+**Remember:** Pair the mirrors to make the one-step rotation.
+
+*True by definition.* MSC 20F55 (Reflection and Coxeter groups (group-theoretic aspects)). arXiv math.GR, math.MG. Level 2: later undergraduate.
+
+**Definition.** A Coxeter presentation on two mirrors uses generators s and t with s² = t² = 1. For an angle π/m between the mirrors, impose the single extra relation (st)ᵐ = 1.
+
+**Problem.** For each integer m ≥ 2, the two-generator presentation gives the dihedral group of order 2m.
+
+**How the definition helps.** The defining relations reduce every word to a power of st or such a power followed by s (our own). Reducing the exponent modulo m leaves at most 2m words (our own). In the mirror model, st rotates by 2π/m, and composing its m powers with s gives m distinct reflections (our own). Thus all 2m words represent different elements (our own).
+
+**nLab:** [Coxeter group](https://ncatlab.org/nlab/show/Coxeter+group). It says: “where π/mᵢⱼ is the dihedral angle between Hᵢ and Hⱼ.”
+
+**Sources:**
+
+- [H. S. M. Coxeter, Discrete Groups Generated by Reflections, 1934](https://sites.math.washington.edu/~billey/classes/reflection.groups/references/Coxeter.1934.pdf)
+
+### A full period lattice makes the wallpaper point group finite
+
+**Remember:** A linear part has only finitely many places to send each basis vector.
+
+*Makes the theorem clean to state or prove.* MSC 20H15 (Other geometric groups, including crystallographic groups). arXiv math.GR, math.MG. Level 2: later undergraduate.
+
+**Definition.** Define the point group of a wallpaper group to be the linear parts of all its isometries. The translation lattice consists of the integer combinations of two independent period vectors.
+
+**Problem.** The wallpaper point group is finite and is isomorphic to the wallpaper group divided by its translation subgroup.
+
+**How the definition helps.** Each linear part sends a lattice basis vector to a lattice vector of the same length, leaving only finitely many choices (our own). Composition multiplies linear parts and the identity linear part is exactly a translation (our own). The work goes into proving the discrete periods form a lattice and that conjugating translations preserves it (our own).
+
+**nLab:** [wallpaper group](https://ncatlab.org/nlab/show/wallpaper+group). It says: “is generated by two linearly independent vectors”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Complex affine forms classify all plane isometries
+
+**Remember:** A complex coefficient records the turn, and a bar records the flip.
+
+*True by definition.* MSC 20H15 (Other geometric groups, including crystallographic groups). arXiv math.GR, math.MG. Level 2: later undergraduate.
+
+**Definition.** Use complex coordinates in the plane. The complex affine forms for isometries are z ↦ az + b and z ↦ a z̄ + b, where \|a\| = 1. The bar denotes conjugation, which reflects across the real axis.
+
+**Problem.** Every plane isometry is a translation, rotation, reflection or glide reflection. A glide reflection combines reflection with a nonzero shift along the mirror, and the identity counts as a zero translation.
+
+**How the definition helps.** In the first form, a = 1 gives a translation, and otherwise b/(1 − a) is a rotation center (our own). In the second form, choose axes in which the linear part is conjugation (our own). The vertical shift moves the mirror by half that shift, and the horizontal shift gives the glide (our own). The work goes into proving the two complex forms capture every distance-preserving map (our own).
+
+**Wikipedia:** [Euclidean plane isometry](https://en.wikipedia.org/wiki/Euclidean_plane_isometry). It says: “It can be shown that there are four types of Euclidean plane isometries.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Discreteness gives wallpaper groups a lattice of periods
+
+**Remember:** Two periods give a bounded cell, and discreteness keeps it finite.
+
+*Rules out counterexamples.* MSC 20H15 (Other geometric groups, including crystallographic groups). arXiv math.GR, math.MG. Level 2: later undergraduate.
+
+**Definition.** Define a wallpaper group as a discrete group of plane isometries with two independent translations. Discrete means the identity is isolated, so nonzero translations do not accumulate at zero.
+
+**Problem.** The translation vectors of a wallpaper group form a lattice. Every vector in it is an integer combination of two independent period vectors.
+
+**How the definition helps.** Discreteness separates distinct periods by a fixed positive distance, so only finitely many fit inside a bounded parallelogram (our own). Subtracting multiples of two independent periods moves every period into their parallelogram, so their integer combinations have finite index (our own). The structure theorem for finitely generated abelian groups then gives a basis of two periods (our own). Translations by rational pairs show why discreteness matters (our own).
+
+**Wikipedia:** [Wallpaper group](https://en.wikipedia.org/wiki/Wallpaper_group). It says: “contains two linearly independent translations”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Orbifold feature costs reduce wallpaper classification to one sum
+
+**Remember:** A wallpaper signature has total cost two.
+
+*Makes the theorem clean to state or prove.* MSC 20H15 (Other geometric groups, including crystallographic groups). arXiv math.GR, math.MG. Level 2: later undergraduate.
+
+**Definition.** An orbifold signature records the surface features left when wallpaper symmetries identify points. Each handle costs two, and each mirror boundary or crosscap, a patch formed by identifying opposite boundary points of a disk, costs one. A rotation center of order n off the mirrors costs 1 − 1/n, and a mirror corner of angle π/n costs half as much.
+
+**Problem.** Up to affine equivalence, the 17 wallpaper groups correspond exactly to the orbifold signatures with total cost 2.
+
+**How the definition helps.** The costs replace separate group calculations with a single sum equal to 2. Solving it gives seven signatures without mirrors and ten with mirrors (our own). The work goes into proving the cost rule and showing that each signature of cost 2 determines one wallpaper type (our own).
+
+**Wikipedia:** [Orbifold notation](https://en.wikipedia.org/wiki/Orbifold_notation). It says: “the 17 wallpaper groups are exactly those with the sum of the feature values equal to 2.”
+
+**Sources:**
+
+- [John H. Conway and Daniel H. Huson, The Orbifold Notation for Two-Dimensional Groups, 2002, Table II](https://doi.org/10.1023/A:1015851621002)
+
+### Orbit counting restricts the pole orders of finite rotation groups
+
+**Remember:** Count each rotation twice, once at each end of its axis.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 20H15 (Other geometric groups, including crystallographic groups). arXiv math.GR, math.MG. Level 2: later undergraduate.
+
+**Definition.** A pole is a unit vector fixed by a nonidentity member of a finite group G of rotations about the origin in three dimensions. Its orbit contains all its images under G. Its stabilizer contains all members of G fixing it.
+
+**Problem.** For nontrivial G, take one pole from each orbit and list the stabilizer sizes in increasing order. The possibilities are (n,n), (2,2,n), (2,3,3), (2,3,4) and (2,3,5), with n ≥ 2.
+
+**How the definition helps.** Poles count each nonidentity rotation twice, once at each end of its axis (our own). An orbit with stabilizer size m contains \|G\|/m poles, each fixed by m − 1 nonidentity rotations (our own). Dividing the total by \|G\| gives a sum of terms 1 − 1/m equal to 2 − 2/\|G\| (our own). Each term is at least one half, and checking the two-term and three-term sums gives the lists (our own).
+
+**Paper or page:** [H113: Action](https://venhance.github.io/napkin/Napkin.pdf). It says: “There is a natural bijection between 𝒪 and left cosets.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Rotation and reflection cosets classify finite plane point groups
+
+**Remember:** One reflection accounts for every symmetry outside the rotation subgroup.
+
+*Makes the theorem clean to state or prove.* MSC 20H15 (Other geometric groups, including crystallographic groups). arXiv math.GR, math.MG. Level 2: later undergraduate.
+
+**Definition.** A finite plane point group consists of finitely many distance-preserving linear maps of the plane, closed under products and inverses. The determinant distinguishes rotations from reflections.
+
+**Problem.** Every finite plane point group consists either of rotations generated by one rotation, or of these rotations and their products with one reflection. The latter groups are called dihedral.
+
+**How the definition helps.** Multiplying any two reflections gives a rotation, so one chosen reflection accounts for all the others (our own). In a finite rotation group, the smallest positive angle generates all angles by division with remainder (our own). If there is no positive angle, the rotation group contains only the identity (our own). A reflection reverses rotation angles, giving the dihedral multiplication rule (our own).
+
+**nLab:** [dihedral group](https://ncatlab.org/nlab/show/dihedral+group). It says: “It may be defined as the symmetry group of a regular n-gon in the plane.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Splitting the shift gives the screw axis of a motion
+
+**Remember:** Move the axis to absorb the sideways shift.
+
+*Makes the theorem clean to state or prove.* MSC 20H15 (Other geometric groups, including crystallographic groups). arXiv math.GR, math.MG. Level 2: later undergraduate.
+
+**Definition.** Define a screw displacement as rotation about a line followed by translation along it. Allow a zero angle or a zero translation.
+
+**Problem.** Every orientation-preserving isometry of Euclidean three-space is a screw displacement.
+
+**How the definition helps.** Moving the axis absorbs the part of the shift perpendicular to it (our own). For linear rotation A, moving its axis by p adds the shift (I − A)p (our own). Euler’s theorem supplies an axis, and for a nonzero rotation angle I − A is invertible on the perpendicular plane (our own). The remaining shift runs along the axis, while pure translations use zero angle (our own).
+
+**Wikipedia:** [Chasles' theorem (kinematics)](https://en.wikipedia.org/wiki/Chasles%27_theorem_%28kinematics%29). It says: “The displacement D of the center of mass can be decomposed into components parallel and perpendicular to the axis.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The lattice basis rules out fivefold wallpaper rotations
+
+**Remember:** Integer matrix entries leave only five possible rotation orders.
+
+*Rules out counterexamples.* MSC 20H15 (Other geometric groups, including crystallographic groups). arXiv math.GR, math.MG. Level 2: later undergraduate.
+
+**Definition.** The translation lattice of a wallpaper pattern consists of all vectors that shift the pattern onto itself. These are exactly the integer combinations of two independent period vectors, called a lattice basis.
+
+**Problem.** Every rotation preserving a wallpaper pattern has order 1, 2, 3, 4 or 6. The order counts how many repetitions first give the identity.
+
+**How the definition helps.** The linear part of a rotation preserves period vectors, so its matrix in a lattice basis has integer entries (our own). Its trace, the sum of its diagonal entries, is therefore an integer (our own). In perpendicular unit coordinates the same trace equals twice the cosine of the angle, giving the five orders (our own). A regular pentagon admits fivefold rotation because its symmetry group requires no such lattice (our own).
+
+**Wikipedia:** [Crystallographic restriction theorem](https://en.wikipedia.org/wiki/Crystallographic_restriction_theorem). It says: “In 2D and 3D every rotation is a planar rotation, and the trace is a function of the angle alone.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The shortest period reduces frieze classification to seven cases
+
+**Remember:** The horizontal glide offset is either zero or half a period.
+
+*Makes the theorem clean to state or prove.* MSC 20H15 (Other geometric groups, including crystallographic groups). arXiv math.GR, math.MG. Level 2: later undergraduate.
+
+**Definition.** In a frieze group, the translations are integer multiples of one shortest horizontal period. Its point group consists of the linear parts of its symmetries, which can reverse either coordinate direction.
+
+**Problem.** There are exactly seven frieze group types up to a change of scale and Euclidean coordinates.
+
+**How the definition helps.** Using the shortest period as one unit leaves only two possible glide offsets along a horizontal mirror (our own). Squaring the glide gives an integer translation, so its offset modulo one is zero or one half (our own). The trivial, vertical-reflection and half-turn point groups each give one type, while horizontal-reflection and full point groups each give two (our own). Choosing origins removes other offsets, and examples realize all seven types (our own).
+
+**Wikipedia:** [Frieze group](https://en.wikipedia.org/wiki/Frieze_group). It says: “There are seven frieze groups, listed in the summary table.”
+
+**Sources:**
+
+- [John H. Conway and Daniel H. Huson, The Orbifold Notation for Two-Dimensional Groups, 2002, Table IV](https://doi.org/10.1023/A:1015851621002)
+
+### Divisibility makes abelian invariant factors unique
+
+**Remember:** Sort prime powers by size and line up the largest ends.
+
+*Rules out counterexamples.* MSC 20K01 (Finite abelian groups). arXiv math.GR. Level 2: later undergraduate.
+
+**Definition.** The invariant-factor form for a finite abelian group uses only cyclic factors of order greater than one. Each order must divide the next.
+
+**Problem.** The finite cyclic orders in invariant-factor form are unique for each finite abelian group.
+
+**How the definition helps.** Divisibility forces the powers of each prime into increasing order, with missing powers only at the start (our own). The work goes into uniqueness of the prime-power factors and regrouping coprime orders by the Chinese remainder theorem (our own). Without divisibility, a cyclic group of order six also has cyclic factors of orders two and three (our own). Trivial factors could be inserted anywhere if they were allowed (our own).
+
+**Wikipedia:** [Finitely generated abelian group](https://en.wikipedia.org/wiki/Finitely_generated_abelian_group). It says: “are uniquely determined by G (here with a unique order).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Prime-power torsion identifies the parts of a finite abelian group
+
+**Remember:** Test which prime power sends an element to zero.
+
+*Makes the theorem clean to state or prove.* MSC 20K01 (Finite abelian groups), 20K10. arXiv math.GR. Level 2: later undergraduate.
+
+**Definition.** For a prime p, the p-primary subgroup of an abelian group consists of all elements killed by a power of p. Here a power kills an element if multiplying it by that power gives zero.
+
+**Problem.** In a finite abelian group, each element is uniquely a sum of one element from each p-primary subgroup, taking primes dividing the group order.
+
+**How the definition helps.** The test for membership picks out each subgroup without choosing generators. In our own proof, divide the group order by each of its maximal prime-power factors. These quotients have greatest common divisor one, so Bézout’s identity splits each element into primary parts. Multiplying by the quotient for p kills all other parts and acts invertibly on the p-primary subgroup.
+
+**Wikipedia:** [Torsion subgroup](https://en.wikipedia.org/wiki/Torsion_subgroup). It says: “the direct sum of its p-power torsion subgroups over all prime numbers p:”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Successive quotient sizes count cyclic factors
+
+**Remember:** Each cyclic factor contributes one factor of p until it vanishes.
+
+*Makes the theorem clean to state or prove.* MSC 20K01 (Finite abelian groups), 20K10. arXiv math.GR. Level 2: later undergraduate.
+
+**Definition.** Let A be a finite abelian group whose order is a power of a prime p. Its power subgroups are A, pA, p²A, and so on, formed by repeatedly multiplying every element by p. Each successive quotient divides one subgroup by the next.
+
+**Problem.** The sizes of the successive quotients determine how many cyclic factors of each order occur in a decomposition of A.
+
+**How the definition helps.** Each cyclic factor of order pᵉ contributes a factor of p to the first e quotient sizes and one thereafter (our own calculation). Thus if the kth quotient has size pᵈ, exactly d factors have order at least pᵏ. Subtract the count for the next quotient to count factors of order exactly pᵏ. The structure theorem supplies the decomposition into cyclic factors.
+
+**Wikipedia:** [Finitely generated abelian group](https://en.wikipedia.org/wiki/Finitely_generated_abelian_group). It says: “A primary cyclic group is one whose order is a power of a prime.”
+
+**Paper or page:** [Theorem 2.4. (Fundamental theorem of finitely generated abelian groups)](https://venhance.github.io/napkin/Napkin.pdf). It says: “This decomposition is unique up to permutation”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The integer quotient model lists all subgroups of a cyclic group
+
+**Remember:** Subgroups between nℤ and ℤ correspond to divisors of n.
+
+*True by definition.* MSC 20K01 (Finite abelian groups), 20A05. arXiv math.GR. Level 2: later undergraduate.
+
+**Definition.** Model a finite cyclic group of order n as ℤ/nℤ, the integers added modulo n. This replaces the description by powers of a chosen generator.
+
+**Problem.** For every positive divisor d of n, a cyclic group of order n has exactly one subgroup of order d. It has no other subgroups.
+
+**How the definition helps.** The quotient model lets us take all integer representatives of each subgroup at once (our own). These representatives form a subgroup of ℤ containing nℤ (our own). Division with remainder shows that they are exactly the multiples of their least positive member, which divides n (our own). For order d that member must be n/d, since its multiples give exactly d distinct residues (our own).
+
+**nLab:** [cyclic group](https://ncatlab.org/nlab/show/cyclic+group). It says: “this is the subgroup generated by n/d”
+
+**Paper or page:** [Bijection from Divisors to Subgroups of Cyclic Group](https://proofwiki.org/wiki/Bijection_from_Divisors_to_Subgroups_of_Cyclic_Group). It says: “Then ϕ is a bijection.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The torsion subgroup leaves a torsion-free quotient
+
+**Remember:** If a positive multiple is torsion, the original element is torsion.
+
+*Rules out counterexamples.* MSC 20K10 (Torsion groups, primary groups and generalized primary groups). arXiv math.GR. Level 2: later undergraduate.
+
+**Definition.** In an abelian group, the torsion subgroup T consists of all elements with a positive multiple equal to zero. A group is torsion-free if only zero has this property.
+
+**Problem.** For every abelian group A, the quotient A/T is torsion-free.
+
+**How the definition helps.** Any representative whose positive multiple is torsion already has finite order (our own). Indeed, a further positive multiple sends that representative to zero (our own). Thus a coset of finite order has a representative in T and is zero (our own). Commutativity makes T a subgroup, whereas two distinct reflections of a line have finite order and their product has infinite order (our own).
+
+**nLab:** [torsion subgroup](https://ncatlab.org/nlab/show/torsion+subgroup). It says: “is the subgroup of all those elements g ∈ G, which have finite order,”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Units modulo n are the automorphisms of a cyclic group
+
+**Remember:** Adding copies of one makes every map multiplication by one residue.
+
+*True by definition.* MSC 20K30 (Automorphisms, homomorphisms, endomorphisms, etc. for abelian groups), 20A05. arXiv math.GR. Level 2: later undergraduate.
+
+**Definition.** An automorphism is an invertible map from a group to itself that preserves its operation. Identify powers of a generator with their exponents modulo n, so multiplication becomes addition. A unit modulo n is a residue with a multiplicative inverse.
+
+**Problem.** The automorphism group of a cyclic group of order n is isomorphic to the multiplicative group of units modulo n.
+
+**How the definition helps.** In the integer quotient model, every homomorphism from the cyclic group to itself is multiplication by its value at 1 (our own). Composing these maps multiplies their residues, and a map has an inverse exactly when the residue does (our own). The work moves to matching the original cyclic group with ℤ/nℤ (our own).
+
+**Wikipedia:** [Cyclic group](https://en.wikipedia.org/wiki/Cyclic_group). It says: “This is the multiplicative group of units of the ring Z/nZ”
+
+**Paper or page:** [Order of Automorphism Group of Cyclic Group](https://proofwiki.org/wiki/Order_of_Automorphism_Group_of_Cyclic_Group). It says: “order(Aut Cₙ) = ϕ(n)”
 
 **Sources:** none listed. No primary source with a working link was found.
 

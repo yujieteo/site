@@ -126,6 +126,108 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Frenet coefficients determine a space curve up to rigid motion
+
+**Remember:** Curvature and torsion drive one moving frame.
+
+*True by definition.* MSC 53A04 (Curves in Euclidean and related spaces). arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** For a unit-speed space curve with positive curvature, let T be its velocity and N its acceleration divided by its length. Set B = T × N. Define curvature κ and torsion τ as the frame coefficients in T′ = κN and B′ = −τN.
+
+**Problem.** Given smooth functions κ &gt; 0 and τ on an interval, a smooth unit-speed space curve has those invariants. It is unique up to rotation and translation.
+
+**How the definition helps.** The frame coefficients give a linear system for T, N and B, since N′ = −κT + τB (our own). The existence and uniqueness theorem for linear systems gives a frame for each initial orientation (our own). Skew-symmetry of the coefficient matrix keeps all frame dot products constant (our own). Integrating T recovers the curve up to translation, without solving directly for its three coordinates (our own).
+
+**Wikipedia:** [Torsion of a curve](https://en.wikipedia.org/wiki/Torsion_of_a_curve). It says: “coefficients in the system of differential equations for the Frenet frame”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Positive curvature makes zero torsion a test for planarity
+
+**Remember:** Zero torsion keeps the binormal fixed.
+
+*Rules out counterexamples.* MSC 53A04 (Curves in Euclidean and related spaces). arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** For a unit-speed space curve with positive curvature, the acceleration never vanishes. Let T be the velocity and N the acceleration divided by its length. The binormal is B = T × N, and the torsion is −B′·N.
+
+**Problem.** On an interval, a smooth unit-speed space curve of positive curvature lies in a plane if and only if its torsion vanishes.
+
+**How the definition helps.** The binormal can change only along N, so zero torsion makes it constant (our own). Then every velocity is perpendicular to this fixed vector, and the curve stays in one plane (our own). Conversely, a plane curve of positive curvature has a constant binormal (our own). Without that curvature condition, smooth arcs in different planes can join along a straight segment where torsion is undefined (our own).
+
+**Wikipedia:** [Torsion of a curve](https://en.wikipedia.org/wiki/Torsion_of_a_curve). It says: “the torsion of a regular curve with non-vanishing curvature is identically zero”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Signed area gives an isoperimetric inequality even for crossings
+
+**Remember:** A crossing need not stop you from measuring signed area.
+
+*Makes the theorem clean to state or prove.* MSC 53A04 (Curves in Euclidean and related spaces). arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** Define the signed area A of a closed plane curve as half the integral of x dy − y dx once around it. This counts area with sign and multiplicity, without choosing an inside.
+
+**Problem.** For a smooth regular closed plane curve of length L, 4π\|A\| ≤ L². Thus a circle encloses the largest area among simple closed curves of a fixed length.
+
+**How the definition helps.** The area integral pairs the position with the rotated velocity, even at crossings (our own). Center the mean position at zero and use unit speed (our own). Then Cauchy–Schwarz and Wirtinger’s inequality for periodic functions with zero mean give \|A\| ≤ L²/(4π) (our own). Green’s theorem identifies signed area with ordinary area up to sign for simple curves (our own).
+
+**Wikipedia:** [Green's theorem](https://en.wikipedia.org/wiki/Green%27s_theorem). It says: “Green's theorem can be used to compute area by line integral.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Signed curvature determines a plane curve through inflections
+
+**Remember:** Signed curvature tells the tangent which way to turn.
+
+*True by definition.* MSC 53A04 (Curves in Euclidean and related spaces). arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** For a unit-speed plane curve, choose a continuous angle θ for its unit tangent. Define signed curvature as θ′, with distance along the curve as the variable. Unsigned curvature keeps only \|θ′\|.
+
+**Problem.** Every continuous function on an interval is the signed curvature of a twice continuously differentiable unit-speed plane curve. The curve is unique up to translation and rotation.
+
+**How the definition helps.** Signed curvature gives the derivative of the tangent angle, including the direction of each turn (our own). A continuous tangent along an interval admits a continuous angle (our own). Integrating curvature fixes that angle up to a rotation (our own). Integrating the resulting tangent fixes the curve up to a translation (our own).
+
+**Wikipedia:** [Curvature](https://en.wikipedia.org/wiki/Curvature). It says: “Curvature measures the angular rate of change of the direction of the tangent line”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Stationary curvature lets circles satisfy the four vertex theorem
+
+**Remember:** A circle has a vertex wherever you look.
+
+*Makes the theorem clean to state or prove.* MSC 53A04 (Curves in Euclidean and related spaces). arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** A vertex of a smooth regular plane curve is a point where signed curvature has derivative zero with respect to distance along the curve. Every local maximum or minimum counts, including points on an arc of constant curvature.
+
+**Problem.** Every smooth regular simple closed plane curve has at least four distinct vertices.
+
+**How the definition helps.** A circle has constant curvature, so every point qualifies without a separate case. The same rule keeps extrema on arcs of constant curvature (our own). The four vertex theorem still needs a global argument for curves whose curvature varies (our own).
+
+**Wikipedia:** [Four vertex theorem](https://en.wikipedia.org/wiki/Four_vertex_theorem). It says: “In a circle, every point is both a local maximum and a local minimum of curvature, so there are infinitely many vertices.”
+
+**Paper or page:** [Moon in a puddle and the four-vertex theorem](https://arxiv.org/abs/2107.08455v1). It says: “Any smooth regular simple plane curve is supported by its osculating circlines at 4 distinct points; two from inside and two from outside.”
+
+**Sources:**
+
+- [Anton Petrunin and Sergio Zamora Barrera, Moon in a Puddle and the Four-Vertex Theorem, Theorem 2](https://arxiv.org/abs/2107.08455v1)
+
+### The center formula makes osculating circles nest
+
+**Remember:** The centers move less than the radii change.
+
+*True by definition.* MSC 53A04 (Curves in Euclidean and related spaces). arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** On a smooth unit-speed plane curve γ with positive signed curvature κ, let N be the left unit normal. Define the osculating circle by its radius r = 1/κ and center γ + rN.
+
+**Problem.** On a smooth plane arc with positive signed curvature and κ′ nowhere zero, the osculating circles are pairwise disjoint and nested.
+
+**How the definition helps.** The center formula gives derivative r′N because N′ is −κ times the unit tangent (our own). The normal turns and r′ keeps one sign, so the centers move strictly less far apart than the radii differ (our own). Thus each larger disk contains the smaller circle in its interior (our own). Agreement with the usual circle of second-order contact follows by matching the tangent and acceleration (our own).
+
+**Paper or page:** [Variations on the Tait-Kneser theorem](https://arxiv.org/abs/2104.02170v2). It says: “The osculating circles of a vertex-free plane curve with non-vanishing curvature are disjoint and pairwise nested”
+
+**Sources:**
+
+- [Gil Bor, Connor Jackman and Serge Tabachnikov, Variations on the Tait–Kneser Theorem, Theorem 1.1](https://arxiv.org/abs/2104.02170v2)
+
 ### Turning angles as curvature make Fenchel's theorem hold for polygons
 
 **Remember:** A polygon's curvature is how far it turns at each corner.
@@ -145,6 +247,54 @@
 - [I. Izmestiev, Discrete curvature, Internationale Mathematische Nachrichten 250 (2022) 1–23, arXiv:2502.09353](https://arxiv.org/abs/2502.09353)
 - [W. Fenchel, Über Krümmung und Windung geschlossener Raumkurven, Mathematische Annalen 101 (1929) 238–252](https://doi.org/10.1007/bf01454836)
 
+### A continuous normal makes the Gauss map global
+
+**Remember:** A consistent choice of side gives one map to the sphere.
+
+*Rules out counterexamples.* MSC 53A05 (Surfaces in Euclidean and related spaces). arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** For a surface in three-dimensional space, define orientation as a continuous choice of unit normal. This replaces a choice of coordinate patches whose changes preserve orientation. The Gauss map sends each point to its chosen normal on the unit sphere.
+
+**Problem.** A regular surface admits a smooth Gauss map of unit normals exactly when it is orientable.
+
+**How the definition helps.** A continuous normal defines the Gauss map without matching signs between patches (our own). Locally it is a fixed sign times the smooth unit normal from a surface patch (our own). A Möbius strip is excluded because its normal flips on a trip around the middle (our own).
+
+**Wikipedia:** [Gauss map](https://en.wikipedia.org/wiki/Gauss_map). It says: “The Gauss map can be defined (globally) if and only if the surface is orientable”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### An infimum defines surface distance even without a shortest path
+
+**Remember:** Distances can approach a lower bound without reaching it.
+
+*Makes the theorem clean to state or prove.* MSC 53A05 (Surfaces in Euclidean and related spaces). arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** On a connected smooth surface, intrinsic distance is the greatest lower bound of lengths of piecewise smooth paths joining two points. A path may approach that length without attaining it.
+
+**Problem.** Intrinsic distance is a metric on a connected regular surface, even when no shortest path exists.
+
+**How the definition helps.** The lower bound assigns a distance even when no shortest path exists, as in the plane with its origin removed. Connected smooth surfaces admit piecewise smooth paths between any two points (our own). Constant paths, path reversal and the lower bound from straight-line distance give zero self-distance, symmetry and positive distance between distinct points (our own). Joining paths with lengths arbitrarily close to their lower bounds gives the triangle inequality (our own).
+
+**Wikipedia:** [Intrinsic metric](https://en.wikipedia.org/wiki/Intrinsic_metric). It says: “The Euclidean plane with the origin removed is not geodesic, but is still a length metric space.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Curvature as a Jacobian tells when the Gauss map inverts
+
+**Remember:** Nonzero curvature makes the normal a local coordinate.
+
+*True by definition.* MSC 53A05 (Surfaces in Euclidean and related spaces). arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** The Gauss map sends each surface point to its unit normal on the sphere. Define Gaussian curvature as the determinant of the derivative of this map, using the corresponding oriented tangent planes.
+
+**Problem.** The Gauss map of a smooth oriented surface is smoothly invertible near a point exactly when Gaussian curvature is nonzero there.
+
+**How the definition helps.** Nonzero determinant gives local invertibility by the inverse function theorem (our own). The chain rule gives the converse (our own). The work goes into identifying the determinant with the product of the two principal curvatures (our own).
+
+**Wikipedia:** [Gauss map](https://en.wikipedia.org/wiki/Gauss_map). It says: “determinant of the Gauss map is equal to Gaussian curvature”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Defining the normal as a distance gradient makes its derivative symmetric
 
 **Remember:** A normal defined as a gradient has a symmetric derivative.
@@ -163,6 +313,22 @@
 
 - [Eric W. Hester, Geoffrey M. Vasil, Orthogonal signed-distance coordinates and vector calculus near evolving curves and surfaces, arXiv:2302.02891v2 (2023), Proceedings of the Royal Society A: Mathematical, Physical and Engineering Sciences 479, no. 2277 (2023): 20230080](https://arxiv.org/abs/2302.02891v2)
 
+### Frame rotation measures parallel transport around a disk
+
+**Remember:** The turn around the rim adds up the curvature inside.
+
+*True by definition. Confidence: medium.* MSC 53A05 (Surfaces in Euclidean and related spaces). arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** Choose smooth perpendicular unit tangent vectors e and f in positive order on a surface patch. The one-form ω assigns each tangent vector v the number f·De(v), which measures how fast e turns toward f. Define the curvature form as −dω, using the exterior derivative d.
+
+**Problem.** Around the positively oriented boundary of a smooth disk, parallel transport rotates each nonzero tangent vector by the disk’s integrated Gaussian curvature, modulo 2π.
+
+**How the definition helps.** Relative to the chosen frame, the angle of a parallel vector changes at rate −ω along the path (our own). Stokes’ theorem turns the boundary integral of −ω into the disk integral of −dω (our own). The work goes into the Gauss equation, which identifies −dω with Gaussian curvature times the oriented area element (our own).
+
+**Wikipedia:** [Parallel transport](https://en.wikipedia.org/wiki/Parallel_transport). It says: “The angle by which it twists, α, is proportional to the area inside the loop.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Gaussian curvature as the Gauss map Jacobian makes total curvature a degree
 
 **Remember:** Integrating the normal map’s signed area change counts its degree.
@@ -176,6 +342,230 @@
 **How the definition helps.** With this definition, total curvature is the integral of the pulled-back sphere area form, which is 4π times the degree. The real work is in the degree formula for integrals of pulled-back forms (our own comparison). It also moves to the theorem that the derivative of the normal map is minus the shape operator (our own). The determinant of the shape operator is the product of the principal curvatures.
 
 **Wikipedia:** [Gauss map](https://en.wikipedia.org/wiki/Gauss_map). It says: “The Jacobian determinant of the Gauss map is equal to Gaussian curvature”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Geodesic energy makes Clairaut’s relation a conservation law
+
+**Remember:** When energy ignores the rotation angle, its momentum stays fixed.
+
+*True by definition.* MSC 53A05 (Surfaces in Euclidean and related spaces). arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** Define geodesics of constant speed as paths where the first derivative of energy vanishes under every smooth variation fixing both endpoints. Energy is half the integral of speed squared over a fixed time interval. On a surface of revolution its integrand is ½(u′² + ρ²φ′²), using meridian distance u, rotation angle φ and distance ρ from the axis.
+
+**Problem.** Along a unit-speed geodesic on a surface of revolution away from its axis, ρ sin ψ stays constant. Here ψ is the signed angle from the meridian to the geodesic tangent.
+
+**How the definition helps.** The energy integrand has no φ, so its Euler–Lagrange equation conserves ρ²φ′ (our own). At unit speed the signed component along the parallel is ρφ′ = sin ψ (our own). The work goes into showing that stationary energy gives the geodesic equation (our own).
+
+**Wikipedia:** [Clairaut's relation (differential geometry)](https://en.wikipedia.org/wiki/Clairaut%27s_relation_%28differential_geometry%29). It says: “ρ sin ψ is constant along γ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Inversion makes stereographic projection preserve angles
+
+**Remember:** An inversion reflects and rescales tangent vectors, so angles survive.
+
+*True by definition.* MSC 53A05 (Surfaces in Euclidean and related spaces). arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** Take the unit sphere and a pole N. Define stereographic projection onto the equatorial plane by spherical inversion centered at N. It sends a point P other than N to N + 2(P − N)/\|P − N\|².
+
+**Problem.** Stereographic projection preserves the angles at which smooth curves on the sphere cross.
+
+**How the definition helps.** The derivative of inversion is a reflection times a positive scale, which preserves angles (our own). The work goes into differentiating the inversion and checking that its image lies in the equatorial plane (our own). Since the image stays on the line through N and P, it agrees with projection by sight lines (our own).
+
+**Wikipedia:** [Stereographic projection](https://en.wikipedia.org/wiki/Stereographic_projection). It says: “Stereographic projection is conformal, meaning that it preserves the angles at which curves cross each other”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Normal acceleration picks out the great circles on a sphere
+
+**Remember:** On a sphere, geodesic acceleration points along a radius.
+
+*True by definition.* MSC 53A05 (Surfaces in Euclidean and related spaces). arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** Define a geodesic on a smooth surface in space as a parametrized curve whose acceleration is perpendicular to the tangent plane. Its speed is constant because velocity and acceleration are perpendicular.
+
+**Problem.** The nonconstant geodesics of a round sphere are great circles or arcs of great circles, with constant speed.
+
+**How the definition helps.** Radial acceleration keeps the cross product of position relative to the sphere’s center and velocity constant (our own). A nonconstant geodesic stays in the plane through the center perpendicular to this nonzero vector (our own). Conversely, a great circle at constant speed has radial acceleration (our own). Using shortest paths as the definition would also require the theorem that short geodesic arcs minimize length (our own).
+
+**nLab:** [geodesic](https://ncatlab.org/nlab/show/geodesic). It says: “on a 2-dimensional sphere, geodesics are arcs of great circles.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Normal projection gives Meusnier’s theorem for surface curves
+
+**Remember:** Only the part of acceleration along the surface normal counts.
+
+*True by definition.* MSC 53A05 (Surfaces in Euclidean and related spaces). arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** For a unit-speed curve γ on a surface, define normal curvature as γ″·n, where n is the chosen surface unit normal. The normal section is the surface’s intersection with the plane spanned by n and the tangent direction.
+
+**Problem.** Two smooth unit-speed curves through the same surface point with the same tangent line have the same normal curvature. That is the signed curvature of the normal section there.
+
+**How the definition helps.** Projection onto the surface normal removes the part of acceleration that can vary between curves (our own). Differentiating γ′·n = 0 gives γ″·n = −v·Dn(v), where v is the velocity and Dn(v) is the normal’s derivative along v (our own). Reversing v leaves that expression unchanged (our own). The normal section already accelerates along n, so projection gives its curvature signed relative to n (our own).
+
+**Wikipedia:** [Meusnier's theorem](https://en.wikipedia.org/wiki/Meusnier%27s_theorem). It says: “having the same tangent line at p also have the same normal curvature at p”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### One scalar in the shape operator forces a plane or sphere
+
+**Remember:** An umbilic surface has a fixed normal or a fixed center.
+
+*True by definition.* MSC 53A05 (Surfaces in Euclidean and related spaces). arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** Call a point umbilic when the shape operator, the negative derivative of the unit normal, multiplies every tangent vector by the same number. This replaces a test of all normal-section curvatures.
+
+**Problem.** A connected smooth oriented surface whose every point is umbilic lies in a plane or a sphere.
+
+**How the definition helps.** A scalar shape operator makes the normal derivative in every direction equal to −λ times the corresponding position derivative (our own). In patch coordinates, equality of mixed derivatives and independence of the two tangent directions force both derivatives of λ to vanish (our own). Connectedness makes λ constant, so when λ vanishes the surface has a fixed normal and lies in a plane (our own). Otherwise, position plus the unit normal divided by λ gives a fixed sphere center (our own).
+
+**Wikipedia:** [Umbilical point](https://en.wikipedia.org/wiki/Umbilical_point). It says: “The sphere is the only surface with non-zero curvature where every point is umbilic.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Projecting acceleration makes the two curvatures add in squares
+
+**Remember:** Tangential bending and normal bending meet at a right angle.
+
+*True by definition.* MSC 53A05 (Surfaces in Euclidean and related spaces). arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** For a unit-speed curve on a surface, define geodesic curvature as the length of the tangent-plane part of its acceleration. Define normal curvature in magnitude as the length of the perpendicular part.
+
+**Problem.** The square of the ordinary curvature of a unit-speed surface curve equals the sum of the squares of its geodesic and normal curvatures.
+
+**How the definition helps.** The two projections split acceleration into perpendicular parts, so their squared lengths add to the squared acceleration length (our own). At unit speed this is the square of ordinary curvature (our own). The alternative intrinsic definition measures bending using distances within the surface (our own). Identifying its derivative with tangential projection is the geometric step (our own).
+
+**Wikipedia:** [Geodesic curvature](https://en.wikipedia.org/wiki/Geodesic_curvature). It says: “the geodesic curvature is the norm of the projection of the covariant derivative”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Tangential projection makes parallel transport preserve dot products
+
+**Remember:** If both derivatives are normal, neither changes the tangent dot product.
+
+*True by definition.* MSC 53A05 (Surfaces in Euclidean and related spaces). arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** A tangent vector field along a surface curve is parallel when its ordinary derivative has zero tangential part. This replaces separate transport rules for each choice of surface coordinates.
+
+**Problem.** Two parallel tangent vector fields along a smooth surface curve keep the same dot product. Thus parallel transport preserves lengths and angles.
+
+**How the definition helps.** Each term in the derivative of the dot product pairs a normal vector with a tangent vector, so it vanishes (our own). The work goes into proving that projection gives the intrinsic derivative and that the transport equation has a unique solution (our own).
+
+**nLab:** [Levi-Civita connection](https://ncatlab.org/nlab/show/Levi-Civita+connection). It says: “which is equivalent to the preservation of the metric inner product of tangent vectors under parallel translation.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The first fundamental form measures all curve lengths and angles
+
+**Remember:** Keep the tangent dot product and keep lengths and angles.
+
+*True by definition.* MSC 53A05 (Surfaces in Euclidean and related spaces). arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** The first fundamental form takes the dot product of two tangent vectors to a surface. A smooth map between surfaces is a local isometry if its derivative preserves these dot products everywhere.
+
+**Problem.** A local isometry of regular surfaces preserves the lengths of curves and the angles at which curves meet.
+
+**How the definition helps.** The derivative sends a curve’s velocity to its image velocity, so preserving dot products preserves speed (our own). Integrating speed gives curve length (our own). The dot product of unit tangents gives the cosine of their angle (our own). This derivative test replaces separate length checks for every curve (our own).
+
+**Wikipedia:** [First fundamental form](https://en.wikipedia.org/wiki/First_fundamental_form). It says: “metric properties of a surface such as length and area”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The geodesic equation lets initial velocity determine the path
+
+**Remember:** One initial position and velocity determine one geodesic.
+
+*True by definition.* MSC 53A05 (Surfaces in Euclidean and related spaces). arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** On a smooth surface in space, define a geodesic as a parametrized curve whose acceleration is perpendicular to the tangent plane. Its speed is constant because its acceleration is perpendicular to its velocity.
+
+**Problem.** On a smooth surface, a point and an initial tangent vector determine a unique local geodesic.
+
+**How the definition helps.** In smooth surface coordinates, normal acceleration gives a smooth second-order differential equation for position (our own). The existence and uniqueness theorem for differential equations gives the local path from its starting point and velocity. Relating this equation to the shortest-path definition requires proving that sufficiently short geodesic arcs minimize length (our own).
+
+**Wikipedia:** [Geodesic](https://en.wikipedia.org/wiki/Geodesic). It says: “It has a unique solution, given an initial position and an initial velocity.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The induced metric gives the area of a surface patch
+
+**Remember:** The determinant of the dot-product matrix is the square of the area scale.
+
+*Makes the theorem clean to state or prove.* MSC 53A05 (Surfaces in Euclidean and related spaces), 58C35. arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** The induced metric measures tangent vectors using the surrounding Euclidean dot product. For the two coordinate tangent vectors of a surface chart, write E and G for their squared lengths and F for their dot product.
+
+**Problem.** For a smooth one-to-one chart with independent coordinate tangent vectors, the surface area is the integral of √(EG − F²) over the parameter region.
+
+**How the definition helps.** The induced metric gives the area of the tangent parallelogram using only dot products, even in higher ambient dimensions (our own). Base times height gives squared area EG − F² (our own). The surface area theorem justifies integrating this local area factor (our own).
+
+**nLab:** [volume form](https://ncatlab.org/nlab/show/volume+form). It says: “In local oriented coordinates, vol<sub>g</sub> = √\|det(g)\|, where det(g) is the determinant of the matrix of the coordinates of g.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The normal derivative tests whether a ruled surface develops flat
+
+**Remember:** Along a ruling, any twist makes Gaussian curvature strictly negative.
+
+*True by definition.* MSC 53A05 (Surfaces in Euclidean and related spaces). arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** A ruled surface is swept out by straight lines called rulings. Define a smooth surface as developable when its Gaussian curvature is zero. Use Gaussian curvature as the determinant of the negative derivative of its unit normal.
+
+**Problem.** A smooth regular ruled surface has nonpositive Gaussian curvature. It is developable exactly when its tangent plane stays fixed along each connected ruling.
+
+**How the definition helps.** Using the ruling as the first unit basis direction makes the first diagonal entry zero because a straight line has zero acceleration (our own). In a perpendicular unit basis the symmetric shape operator then has determinant −a², where a is its off-diagonal entry (our own). This vanishes exactly when the unit normal has zero derivative along the ruling (our own). Identifying zero Gaussian curvature with local flattening without stretching is a separate theorem (our own).
+
+**Wikipedia:** [Developable surface](https://en.wikipedia.org/wiki/Developable_surface). It says: “It is developable iff the tangent plane does not twist as you move along a ruling”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The shape operator gives Euler’s formula for normal curvature
+
+**Remember:** The two principal curvatures mix with squared direction cosines.
+
+*True by definition.* MSC 53A05 (Surfaces in Euclidean and related spaces). arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** The shape operator S is the negative derivative of the chosen unit normal. Define principal curvatures as its eigenvalues and principal directions as its unit eigenvectors. The normal curvature in a unit direction v is v·Sv.
+
+**Problem.** Take a perpendicular unit basis of principal directions with curvatures κ₁ and κ₂. At angle θ from the first direction, the normal curvature is κ₁ cos² θ + κ₂ sin² θ.
+
+**How the definition helps.** In principal directions the shape operator is diagonal, so v·Sv has no mixed term (our own). The components of v in this basis are cos θ and sin θ (our own). This replaces finding the extreme curvatures among all plane sections perpendicular to the surface (our own). The work is proving symmetry and identifying v·Sv with the curvature of the corresponding section, signed using the surface normal (our own).
+
+**Wikipedia:** [Principal curvature](https://en.wikipedia.org/wiki/Principal_curvature). It says: “Without reference to a particular orthonormal basis, the principal curvatures are the eigenvalues of the shape operator, and the principal directions are its eigenvectors.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Harmonic coordinates rule out closed minimal surfaces in space
+
+**Remember:** A harmonic coordinate cannot peak inside unless it is constant.
+
+*True by definition.* MSC 53A10 (Minimal surfaces in differential geometry, surfaces with prescribed mean curvature), 53A05. arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** Define a surface in three-dimensional Euclidean space as minimal when its three position coordinates are harmonic for the surface metric. That means each solves the Laplace equation for the surface.
+
+**Problem.** There is no nonempty smooth compact minimal surface without boundary in three-dimensional Euclidean space.
+
+**How the definition helps.** Harmonicity lets the maximum principle turn each coordinate’s maximum on a compact component into constancy throughout that component. Three constant coordinates describe a single point, which cannot be a regular surface (our own). Agreement with the zero mean curvature definition follows by computing the surface Laplacian of the position vector (our own).
+
+**Wikipedia:** [Minimal surface](https://en.wikipedia.org/wiki/Minimal_surface). It says: “there are no compact complete minimal surfaces in ℝ³”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Zero mean curvature forces nonpositive Gaussian curvature
+
+**Remember:** Opposite principal curvatures cannot have a positive product.
+
+*True by definition.* MSC 53A10 (Minimal surfaces in differential geometry, surfaces with prescribed mean curvature), 53A05. arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** The principal curvatures are the largest and smallest signed normal curvatures at a surface point. Their average is mean curvature, and their product is Gaussian curvature. Define a minimal surface by requiring zero mean curvature everywhere.
+
+**Problem.** A minimal surface in three-dimensional Euclidean space has nonpositive Gaussian curvature. It is zero only where both principal curvatures vanish.
+
+**How the definition helps.** Zero mean curvature makes the two principal curvatures opposites, so their product is nonpositive (our own). The first variation of area explains why the zero mean curvature condition is equivalent to stationary area (our own).
+
+**Wikipedia:** [Minimal surface](https://en.wikipedia.org/wiki/Minimal_surface). It says: “its mean curvature is equal to zero at all points.”
 
 **Sources:** none listed. No primary source with a working link was found.
 

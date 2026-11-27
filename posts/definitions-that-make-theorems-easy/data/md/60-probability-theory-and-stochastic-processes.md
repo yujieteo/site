@@ -14,6 +14,38 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Countable additivity makes probability continuous on nested events
+
+**Remember:** Add the new pieces at each step.
+
+*True by definition.* MSC 60A05 (Axioms; other general questions in probability). arXiv math.PR. Level 1: early undergraduate.
+
+**Definition.** A probability measure assigns each event a nonnegative number and assigns 1 to the whole space. Countable additivity says that the probability of a union of countably many disjoint events equals the sum of their probabilities.
+
+**Problem.** When each event contains the previous one, their probabilities approach the probability of their union. When each event lies inside the previous one, their probabilities approach the probability of their intersection.
+
+**How the definition helps.** Countable additivity sums the pieces that enter for the first time at each step (our own). The partial sums give the successive event probabilities, and taking complements gives the decreasing case (our own). Starting with finite additivity instead requires a continuity assumption to pass from finite partial unions to the full union (our own).
+
+**Paper or page:** [Probability of Limit of Sequence of Events/Increasing](https://proofwiki.org/wiki/Probability_of_Limit_of_Sequence_of_Events/Increasing). It says: “P(A) = limₙ→∞ P(Aₙ)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Indicators count how many events occur on average
+
+**Remember:** Count with zeros and ones, then average each one separately.
+
+*True by definition. Confidence: medium.* MSC 60A05 (Axioms; other general questions in probability). arXiv math.PR. Level 1: early undergraduate.
+
+**Definition.** An event indicator equals 1 when its event occurs and 0 otherwise. Define the count of events that occur as the sum of their indicators.
+
+**Problem.** For any finite list of events, the expected number that occur is the sum of their probabilities. The events need not be independent.
+
+**How the definition helps.** Writing the count as a sum lets us average each indicator without listing joint outcomes (our own). Linearity of expectation does the work, and each indicator’s average is its event probability (our own).
+
+**Paper or page:** [Integral of Characteristic Function](https://proofwiki.org/wiki/Integral_of_Characteristic_Function). It says: “The integral of the characteristic function of a measurable set over a measure space equals the measure of that set.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Mean squared deviation makes variance nonnegative and unchanged by shifts
 
 **Remember:** Squares cannot be negative, and shifting X also shifts its mean.
@@ -47,6 +79,22 @@
 **Sources:**
 
 - [A. Kolmogoroff, Grundbegriffe der Wahrscheinlichkeitsrechnung, Springer, 1933](https://doi.org/10.1007/978-3-642-49888-6)
+
+### Restricted probabilities become a probability measure after normalization
+
+**Remember:** Keep only the outcomes in B, then scale their total to one.
+
+*True by definition.* MSC 60A05 (Axioms; other general questions in probability). arXiv math.PR. Level 1: early undergraduate.
+
+**Definition.** For an event B with P(B) &gt; 0, the conditional probability of A given B is P(A ∩ B)/P(B). For equally likely outcomes in a finite space, this ratio counts the fraction of outcomes in B that also belong to A.
+
+**Problem.** For fixed B with P(B) &gt; 0, the conditional probabilities P(A given B) form a probability measure on the original events.
+
+**How the definition helps.** Restricting each event to B keeps disjoint pieces disjoint, so their probabilities still add (our own). Dividing by P(B) preserves these sums and gives the whole space probability one (our own).
+
+**Paper or page:** [Conditional Probability Defines Probability Space](https://proofwiki.org/wiki/Conditional_Probability_Defines_Probability_Space). It says: “Then (Ω, Σ, Q) is a probability space.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### The probability product rule makes independence symmetric even for null events
 
@@ -83,6 +131,86 @@
 **Sources:**
 
 - [ProofWiki, Equivalence of Definitions of Independent Events](https://proofwiki.org/wiki/Equivalence_of_Definitions_of_Independent_Events)
+
+### A squared deviation detects constancy with probability one
+
+**Remember:** Zero variance ignores changes on events of probability zero.
+
+*Rules out counterexamples.* MSC 60A10 (Probabilistic measure theory). arXiv math.PR. Level 1: early undergraduate.
+
+**Definition.** Variance is the mean squared distance from the mean. Call X constant almost surely if it equals some constant with probability one, even if it differs on outcomes of probability zero.
+
+**Problem.** If E\[X²\] is finite, X has zero variance exactly when it is constant almost surely.
+
+**How the definition helps.** A squared distance can average to zero even when it is positive on an event of probability zero (our own). A nonnegative variable averages to zero exactly when it vanishes with probability one (our own). For a uniform draw from \[0, 1\], set X to 1 at ½ and to 0 elsewhere (our own). Then X takes two values and has zero variance (our own).
+
+**Paper or page:** [Random Variable has Zero Variance iff Almost Surely Constant](https://proofwiki.org/wiki/Random_Variable_has_Zero_Variance_iff_Almost_Surely_Constant). It says: “That is, X is almost surely constant.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Averages on partition cells let known factors come out
+
+**Remember:** A factor known on a cell is constant throughout that cell.
+
+*True by definition.* MSC 60A10 (Probabilistic measure theory). arXiv math.PR. Level 1: early undergraduate.
+
+**Definition.** Split the outcomes into finitely many disjoint groups, each with positive probability. On each group, the conditional expectation of X equals the mean of X within that group, using probabilities rescaled to total one.
+
+**Problem.** Suppose E\[\|X\|\] is finite and Y takes one real value on each group. The conditional expectation of XY given the group equals Y times the conditional expectation of X given the group.
+
+**How the definition helps.** Within each group, Y is a constant multiplier in the weighted average (our own). To recover the general definition, multiply each group average by its group probability (our own). The result equals the integral of X over that group, and adding gives the same identity for every union of groups (our own).
+
+**Paper or page:** [Rule for Extracting Random Variable from Conditional Expectation of Product](https://proofwiki.org/wiki/Rule_for_Extracting_Random_Variable_from_Conditional_Expectation_of_Product). It says: “E\[XY ∣ G\] = Y E\[X ∣ G\] almost everywhere.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Centered products make uncorrelated variances add
+
+**Remember:** Zero covariance leaves only the individual variances.
+
+*True by definition.* MSC 60A10 (Probabilistic measure theory). arXiv math.PR. Level 1: early undergraduate.
+
+**Definition.** The covariance of X and Y is the average of (X − E\[X\])(Y − E\[Y\]). Two variables are uncorrelated when their covariance is zero.
+
+**Problem.** Suppose each variable in a finite list has a finite average square and each distinct pair is uncorrelated. The variance of their sum equals the sum of their variances.
+
+**How the definition helps.** With centered variables, expanding the square of their sum leaves one covariance for each ordered pair of distinct variables (our own). These terms vanish, leaving the individual variances (our own). Expanding one centered product also gives the usual formula E\[XY\] − E\[X\]E\[Y\] (our own).
+
+**Paper or page:** [Covariance of Sums of Random Variables](https://proofwiki.org/wiki/Covariance_of_Sums_of_Random_Variables). It says: “Cov(Σᵢ₌₁ⁿ Xᵢ, Σⱼ₌₁ⁿ Yⱼ) = Σᵢ₌₁ⁿ Σⱼ₌₁ⁿ Cov(Xᵢ, Yⱼ)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Centering at the mean splits squared prediction error
+
+**Remember:** Center at the mean and the mixed term disappears.
+
+*True by definition. Confidence: medium.* MSC 60A10 (Probabilistic measure theory). arXiv math.PR. Level 1: early undergraduate.
+
+**Definition.** A centered variable is X − E\[X\], the deviation of X from its mean. This choice of origin gives the deviation mean zero.
+
+**Problem.** If E\[X²\] is finite, the mean of X is the unique constant a that minimizes the expected squared error E\[(X − a)²\].
+
+**How the definition helps.** Using the centered variable makes the cross term disappear when we square X − a and average (our own). Writing m for the mean gives E\[(X − a)²\] = E\[(X − m)²\] + (m − a)² (our own). A direct expansion around zero requires completing the square in a to reach the same formula (our own).
+
+**Paper or page:** [First Central Moment is Zero](https://proofwiki.org/wiki/First_Central_Moment_is_Zero). It says: “Then the first central moment μ₁ of X is equal to 0.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Separate tail averages show that Cauchy variables have no mean
+
+**Remember:** Average both tails before subtracting them.
+
+*Rules out counterexamples.* MSC 60A10 (Probabilistic measure theory), 60E05. arXiv math.PR. Level 1: early undergraduate.
+
+**Definition.** To define a finite expectation, average the positive and negative parts separately and require both averages to be finite. The positive part is max(X, 0) and the negative part is max(−X, 0). Subtract the second average from the first.
+
+**Problem.** The standard Cauchy law, with density 1/(π(1 + x²)), has no expectation. Cutting the integral at equal distances on both sides of zero gives zero instead.
+
+**How the definition helps.** Separate averages prevent symmetric cutoffs from giving a false mean (our own). Each tail average diverges by the integral of x/(1 + x²) from zero to infinity (our own). Equal cutoffs cancel the two divergent tails, but the definition does not subtract infinity from infinity (our own).
+
+**Wikipedia:** [Cauchy distribution](https://en.wikipedia.org/wiki/Cauchy_distribution). It says: “The Cauchy distribution does not have finite moments of order greater than or equal to one”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Convergence in distribution ignores the jumps of the limit
 
@@ -134,6 +262,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Counting Bernoulli successes gives the binomial law and moments
+
+**Remember:** Count successes first, then read off their probabilities and moments.
+
+*True by definition.* MSC 60E05 (Probability distributions: general theory). arXiv math.PR. Level 1: early undergraduate.
+
+**Definition.** A binomial variable X counts successes in n independent trials with the same success probability p. The binomial coefficient C(n, k) counts ways to choose k of the n trials.
+
+**Problem.** For 0 &lt; p &lt; 1 and integers 0 ≤ k ≤ n, P(X = k) equals C(n, k) pᵏ (1 − p)ⁿ⁻ᵏ. The mean is np and the variance is np(1 − p).
+
+**How the definition helps.** Counting successes reduces X = k to choosing which k trials succeed (our own). Independence gives every such choice probability pᵏ (1 − p)ⁿ⁻ᵏ (our own). Each trial contributes 0 or 1, with mean p and variance p(1 − p) (our own). Adding independent contributions gives both moments directly from the trials instead of summing the probability formula (our own).
+
+**Paper or page:** [Probability Mass Function of Binomial Distribution](https://proofwiki.org/wiki/Probability_Mass_Function_of_Binomial_Distribution). It says: “The probability mass function (pmf) of a binomially distributed random variable X is equal to:”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Counting endpoints gives right continuity
 
 **Remember:** Count the point itself to get the limit from the right.
@@ -150,6 +294,38 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Counting trials to the last success adds geometric waits
+
+**Remember:** Break the wait at each success.
+
+*True by definition.* MSC 60E05 (Probability distributions: general theory). arXiv math.PR. Level 1: early undergraduate.
+
+**Definition.** A negative binomial wait counts trials through the rth success, where r is a positive integer. Trials are independent with the same success probability 0 &lt; p ≤ 1. A geometric wait counts trials through the next success.
+
+**Problem.** The negative binomial wait is distributed as a sum of r independent geometric waits with success probability p. Its mean is r/p for 0 &lt; p ≤ 1.
+
+**How the definition helps.** The waiting-time definition cuts the total into successive waits instead of starting from the probability formula (our own). Trial independence makes the probabilities of the prescribed blocks multiply (our own). A geometric wait has mean 1/p, so linearity gives the mean of the sum (our own).
+
+**Wikipedia:** [Negative binomial distribution](https://en.wikipedia.org/wiki/Negative_binomial_distribution). It says: “The expected total number of trials needed to see r successes is r/p.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Distribution function jumps give exact point probabilities
+
+**Remember:** The jump is exactly the mass at the point.
+
+*Makes the theorem clean to state or prove.* MSC 60E05 (Probability distributions: general theory). arXiv math.PR. Level 1: early undergraduate.
+
+**Definition.** The distribution function of a real random variable X is F(x) = P(X ≤ x). Its jump at x is F(x) minus the limit of F(y) as y approaches x from below.
+
+**Problem.** The jump of F at x equals P(X = x).
+
+**How the definition helps.** The at-or-below convention includes x, while the left limit counts only outcomes below x (our own). Continuity of probability along increasing events identifies that left limit (our own).
+
+**Paper or page:** [Left Limit of Distribution Function of Finite Borel Measure](https://proofwiki.org/wiki/Left_Limit_of_Distribution_Function_of_Finite_Borel_Measure). It says: “limᵧ→ₓ⁻ Fμ(y) = μ((−∞, x))”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Exponential minimum rates add
 
 **Remember:** The minimum exceeds a threshold exactly when every wait exceeds it.
@@ -163,6 +339,22 @@
 **How the definition helps.** The minimum lasts past t exactly when every wait lasts past t (our own). Independence turns that probability into a product of exponentials, so their rates add (our own). To recover the density, differentiate one minus the probability of lasting past t (our own).
 
 **Wikipedia:** [Exponential distribution](https://en.wikipedia.org/wiki/Exponential_distribution). It says: “is also exponentially distributed, with parameter λ = λ₁ + ⋯ + λₙ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Exponential tail probabilities cancel away elapsed time
+
+**Remember:** Divide two exponential tails and elapsed time cancels.
+
+*True by definition.* MSC 60E05 (Probability distributions: general theory). arXiv math.PR. Level 1: early undergraduate.
+
+**Definition.** Define an exponential wait of rate λ &gt; 0 by P(X &gt; t) = exp(−λt) for t ≥ 0. This uses the chance of still waiting, rather than a formula for the density.
+
+**Problem.** An exponential wait is memoryless. For s, t ≥ 0, P(X &gt; s + t given X &gt; s) equals P(X &gt; t).
+
+**How the definition helps.** The tail definition turns the conditional probability into the ratio exp(−λ(s + t))/exp(−λs) (our own). Subtracting exponents removes s, while a single derivative recovers the usual density from the tail (our own).
+
+**Wikipedia:** [Exponential distribution](https://en.wikipedia.org/wiki/Exponential_distribution). It says: “The exponential distribution and the geometric distribution are the only memoryless probability distributions.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -280,6 +472,38 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Generating function coefficients give every count probability
+
+**Remember:** The coefficient at degree k is the chance of count k.
+
+*True by definition.* MSC 60E10 (Characteristic functions; other transforms), 60E05. arXiv math.PR. Level 1: early undergraduate.
+
+**Definition.** The probability generating function of a nonnegative integer count X is the power series whose coefficient of degree k is P(X = k). The series converges for real inputs strictly between −1 and 1.
+
+**Problem.** Two nonnegative integer counts have the same law if their probability generating functions agree on an interval around zero.
+
+**How the definition helps.** Each coefficient is one count probability, so equality of series determines all those probabilities (our own). Differentiating at zero recovers each coefficient (our own). The usual definition averages s raised to X, and grouping outcomes by count gives this series (our own).
+
+**Paper or page:** [Probability Generating Function defines Probability Distribution](https://proofwiki.org/wiki/Probability_Generating_Function_defines_Probability_Distribution). It says: “∀ k ∈ ℕ: P(X = k) = P(Y = k)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Squared deviations turn Markov’s inequality into Chebyshev’s inequality
+
+**Remember:** Square the deviation before you apply Markov’s inequality.
+
+*True by definition.* MSC 60E15 (Inequalities; stochastic orderings). arXiv math.PR. Level 1: early undergraduate.
+
+**Definition.** The variance of X is the average of (X − μ)², where μ is its mean. This gives the same value as the difference E\[X²\] − μ².
+
+**Problem.** If X has mean μ and finite variance, the chance that \|X − μ\| ≥ t is at most Var(X)/t² for each t &gt; 0.
+
+**How the definition helps.** Mean squared deviation is exactly the expectation in Markov’s bound for the nonnegative variable (X − μ)² (our own). Using the difference E\[X²\] − μ² instead requires expanding the square to identify this expectation (our own).
+
+**Paper or page:** [Bienaymé-Chebyshev Inequality](https://proofwiki.org/wiki/Bienaymé-Chebyshev_Inequality). It says: “Pr(\|X − μ\| ≥ kσ) ≤ 1/k²”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Aperiodicity rules out the flip-flop chain and gives convergence
 
 **Remember:** An aperiodic chain does not keep a rhythm, so it can forget where it started.
@@ -313,6 +537,24 @@
 **Sources:**
 
 - [N. Metropolis, A. W. Rosenbluth, M. N. Rosenbluth, A. H. Teller and E. Teller, Equation of State Calculations by Fast Computing Machines, Journal of Chemical Physics 21 (1953)](https://doi.org/10.1063/1.1699114)
+
+### Transition matrix powers compose Markov chain steps
+
+**Remember:** Matrix multiplication sums over the states where you join two paths.
+
+*True by definition.* MSC 60J10 (Markov chains (discrete-time Markov processes on discrete state spaces)). arXiv math.PR. Level 1: early undergraduate.
+
+**Definition.** In a finite Markov chain, the current state determines the probabilities for the next step. If these rules stay fixed, the transition matrix P lists them by starting row and destination column.
+
+**Problem.** The transition matrix for n + m steps is the product of the matrices for n steps and m steps.
+
+**How the definition helps.** Representing the step probabilities by powers of P turns the composition rule into the addition rule for exponents (our own). To justify that representation, condition on the state after one step and sum over its possible values (our own). Repeating this calculation gives Pⁿ for n steps (our own).
+
+**nLab:** [Markov chain](https://ncatlab.org/nlab/show/Markov+chain). It says: “the probability of moving to the next state depends only upon the current state.”
+
+**Paper or page:** [Chapman-Kolmogorov Equation](https://proofwiki.org/wiki/Chapman-Kolmogorov_Equation). It says: “P⁽ⁿ ⁺ ᵐ⁾ = P⁽ⁿ⁾ P⁽ᵐ⁾”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Countable additivity blocks fair integer lotteries
 
@@ -366,6 +608,38 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Normalizing density slices gives conditional laws
+
+**Remember:** Divide each slice by its area.
+
+*Makes the theorem clean to state or prove.* MSC 60A10 (Probabilistic measure theory). arXiv math.PR. Level 2: later undergraduate.
+
+**Definition.** For real variables X and Y with joint density f, integrating f(x, y) over y gives the marginal density g(x) of X. Wherever 0 &lt; g(x) &lt; ∞, the conditional density of Y given X = x is f(x, y)/g(x).
+
+**Problem.** For measurable sets A and B, integrating P(Y ∈ B given X = x) times g(x) over A gives P(X ∈ A, Y ∈ B). Any measurable choice of conditional laws where g is zero or infinite gives the same probabilities.
+
+**How the definition helps.** Normalization turns each slice into a probability density even when the event X = x has probability zero (our own). Multiplying back by g cancels the normalization, and Tonelli’s theorem gives the joint probability by successive integration (our own).
+
+**Wikipedia:** [Conditional probability distribution](https://en.wikipedia.org/wiki/Conditional_probability_distribution). It says: “Also in this case it is necessary that fₓ(x) &gt; 0.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Product laws make expectations multiply under independence
+
+**Remember:** Independent coordinates can be averaged one at a time.
+
+*True by definition.* MSC 60A10 (Probabilistic measure theory). arXiv math.PR. Level 2: later undergraduate.
+
+**Definition.** Independent real variables have a joint law equal to the product of their separate laws. A product law assigns each rectangle A × B the probability P(X ∈ A) P(Y ∈ B).
+
+**Problem.** If independent real variables X and Y have finite expected absolute values, so does XY. Their expectations satisfy E\[XY\] = E\[X\] E\[Y\].
+
+**How the definition helps.** A product law lets us integrate first over one coordinate and then over the other (our own). Agreement on rectangles determines the whole law, connecting this definition to the usual independence test on pairs of events (our own). Tonelli’s theorem factors the average of \|XY\| into two finite averages, so Fubini’s theorem permits successive integration of XY (our own).
+
+**Paper or page:** [Expectation of Product of Independent Random Variables is Product of Expectations/Corollary](https://proofwiki.org/wiki/Expectation_of_Product_of_Independent_Random_Variables_is_Product_of_Expectations/Corollary). It says: “E\[XY\] = E\[X\] E\[Y\]”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The image measure definition of law gives the expectation formula
 
 **Remember:** Check the integral identity on indicators, then extend it by approximation.
@@ -379,6 +653,70 @@
 **How the definition helps.** The image measure definition makes both integrals equal P(X ∈ B) when g is the indicator of B (our own explanation). Additivity and monotone convergence extend this to all nonnegative g, and positive and negative parts handle integrable g (our own explanation). Computing the law of g(X) first can require a change of variables, which this proof avoids.
 
 **Wikipedia:** [Law of the unconscious statistician](https://en.wikipedia.org/wiki/Law_of_the_unconscious_statistician). It says: “However, in the framework of measure theory, the discrete case generalizes straightforwardly to general (not necessarily discrete) random elements”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A covariance matrix is a matrix of inner products
+
+**Remember:** A weighted sum of centered variables has a nonnegative squared length.
+
+*True by definition.* MSC 60E05 (Probability distributions: general theory). arXiv math.PR. Level 2: later undergraduate.
+
+**Definition.** Center each variable by subtracting its mean. The covariance matrix records the average product of each pair of centered variables, including each variable paired with itself.
+
+**Problem.** Every covariance matrix C of finitely many real variables with finite second moments is positive semidefinite. This means aᵀCa ≥ 0 for every real vector a.
+
+**How the definition helps.** The centered-product definition makes aᵀCa the average square of a weighted sum of centered variables (our own). Every square is nonnegative (our own). Expanding each centered product recovers the usual entry formula E\[XY\] − E\[X\]E\[Y\] (our own).
+
+**Wikipedia:** [Covariance matrix](https://en.wikipedia.org/wiki/Covariance_matrix). It says: “Any covariance matrix is symmetric and positive semi-definite and its main diagonal contains variances”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A quadratic exponent keeps affine sums of normals normal
+
+**Remember:** Multiplying normal transforms adds their means and variances.
+
+*True by definition.* MSC 60E05 (Probability distributions: general theory). arXiv math.PR. Level 2: later undergraduate.
+
+**Definition.** The moment generating function of X is M(t) = E\[exp(tX)\]. A normal law with mean μ and variance σ² &gt; 0 has M(t) = exp(μt + σ²t²/2) for every real t.
+
+**Problem.** Take finitely many independent normal variables Xᵢ with means μᵢ and positive variances σᵢ². For real b and real weights aᵢ, some nonzero, b + Σᵢ aᵢXᵢ is normal with mean b + Σᵢ aᵢμᵢ and variance Σᵢ aᵢ²σᵢ².
+
+**How the definition helps.** The transform turns a weighted sum into a product with a quadratic exponent (our own). Multiplication by exp(tb) adds a linear term for the shift (our own). Completing the square checks the transform against the usual density, and transform uniqueness identifies the result (our own).
+
+**Paper or page:** [Moment Generating Function of Normal Distribution](https://proofwiki.org/wiki/Moment_Generating_Function_of_Normal_Distribution). It says: “Mₓ(t) = exp(μt + ½σ²t²)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A shared rate makes independent gamma shapes add
+
+**Remember:** The same base lets you add the powers.
+
+*True by definition.* MSC 60E05 (Probability distributions: general theory). arXiv math.PR. Level 2: later undergraduate.
+
+**Definition.** The moment generating function of X is M(t) = E\[exp(tX)\]. A gamma law with positive shape α and positive rate β has M(t) = (1 − t/β)⁻ᵅ for t &lt; β.
+
+**Problem.** The sum of independent gamma variables with the same rate is gamma with that rate and the sum of their shapes.
+
+**How the definition helps.** A common rate gives both generating functions the same base, so multiplying them adds their shape parameters (our own). Uniqueness of moment generating functions identifies the law, while a substitution in the density integral gives the defining transform (our own).
+
+**Paper or page:** [Moment Generating Function of Gamma Distribution](https://proofwiki.org/wiki/Moment_Generating_Function_of_Gamma_Distribution). It says: “Mₓ(t) = (1 − t/β)⁻ᵅ, t &lt; β”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Counting ordered pairs makes Poisson variance equal its mean
+
+**Remember:** Remove repeated pairs before canceling factorials.
+
+*True by definition.* MSC 60E05 (Probability distributions: general theory). arXiv math.PR. Level 2: later undergraduate.
+
+**Definition.** For a count X, the second factorial moment is E\[X(X − 1)\]. The product X(X − 1) counts ordered pairs of different items, so the factorial moment is their average number.
+
+**Problem.** A Poisson variable of parameter λ &gt; 0 has mean and variance both equal to λ.
+
+**How the definition helps.** The factorial moment cancels two factors of the factorial in the Poisson probabilities (our own). The remaining sum is λ² times the total probability, and canceling one factor likewise gives mean λ (our own). Adding the repeated pairs gives E\[X²\] = λ² + λ, so subtracting the squared mean leaves λ (our own).
+
+**Paper or page:** [Expectation and Variance of Poisson Distribution equal its Parameter](https://proofwiki.org/wiki/Expectation_and_Variance_of_Poisson_Distribution_equal_its_Parameter). It says: “Then the expectation of X equals the variance of X, that is, λ itself.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -414,6 +752,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Generating functions show that Poisson means add
+
+**Remember:** Adding Poisson counts adds the coefficients in their exponents.
+
+*True by definition.* MSC 60E05 (Probability distributions: general theory). arXiv math.PR. Level 2: later undergraduate.
+
+**Definition.** A count’s probability generating function is the average of s raised to the count, for 0 &lt; s &lt; 1. Define the Poisson law of parameter λ &gt; 0 by the generating function exp(λ(s − 1)), rather than by its probability list.
+
+**Problem.** The sum of independent Poisson variables of means λ and μ is Poisson of mean λ + μ.
+
+**How the definition helps.** Independence multiplies the generating functions, so their exponents add (our own). Expanding the generating function recovers the usual probability list and the uniqueness of power series distinguishes the law (our own).
+
+**Paper or page:** [Sum of Independent Poisson Random Variables is Poisson](https://proofwiki.org/wiki/Sum_of_Independent_Poisson_Random_Variables_is_Poisson). It says: “X + Y ∼ Poisson(λ₁ + λ₂)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Product-measure convolution gives the law of independent sums
 
 **Remember:** Independence gives the product law, and addition gives the convolution.
@@ -427,6 +781,38 @@
 **How the definition helps.** The image measure definition makes the convolution exactly the law of the sum once independence gives the product law (our own explanation). With the older formulas, one instead sums joint probabilities or integrates the joint density (our own comparison). Comparing the definitions in the density case uses Fubini's theorem, which evaluates a product integral by integrating one variable at a time (our own explanation).
 
 **Wikipedia:** [Convolution](https://en.wikipedia.org/wiki/Convolution), [Convolution of probability distributions](https://en.wikipedia.org/wiki/Convolution_of_probability_distributions). It says: “This agrees with the convolution defined above when μ and ν are regarded as distributions”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Projecting a joint law gives its marginal laws
+
+**Remember:** Forget one coordinate to get the law of the other.
+
+*True by definition.* MSC 60E05 (Probability distributions: general theory). arXiv math.PR. Level 2: later undergraduate.
+
+**Definition.** The joint law of real variables X and Y assigns each measurable set of pairs the probability that (X, Y) belongs to it. The first marginal assigns a set A the joint probability of the strip consisting of pairs whose first coordinate belongs to A.
+
+**Problem.** Projecting the joint law onto the first coordinate gives the law of X. For a joint density, the marginal density of X is the integral over the second coordinate.
+
+**How the definition helps.** The strip in the marginal definition describes exactly the event X ∈ A (our own). With a joint density, Tonelli’s theorem computes its probability by integrating first over all second coordinates (our own). This gives the usual marginal density formula (our own).
+
+**nLab:** [joint and marginal probability](https://ncatlab.org/nlab/show/joint+and+marginal+probability). It says: “marginal distributions by pushing forward along the product projections.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Standardization makes correlation a cosine
+
+**Remember:** Correlation is the cosine between two unit deviations.
+
+*Rules out counterexamples.* MSC 60E05 (Probability distributions: general theory). arXiv math.PR. Level 2: later undergraduate.
+
+**Definition.** For a real variable with positive finite variance, standardizing means subtracting its mean and dividing by the square root of its variance. The Pearson correlation of two such variables is the expected product of their standardized values.
+
+**Problem.** Pearson correlation lies between −1 and 1. It reaches either endpoint exactly when the two standardized variables agree up to sign with probability one.
+
+**How the definition helps.** Standardizing gives both deviations length one, so the inner-product bound and its equality case apply (our own). The positive-variance rule excludes a constant variable, whose centered version has zero length and no angle (our own). The work moves to the Cauchy–Schwarz inequality (our own).
+
+**Paper or page:** [Square of Covariance is Less Than or Equal to Product of Variances](https://proofwiki.org/wiki/Square_of_Covariance_is_Less_Than_or_Equal_to_Product_of_Variances). It says: “Cov(X, Y)² ≤ Var(X) Var(Y)”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -459,6 +845,22 @@
 **How the definition helps.** The characteristic function turns addition inside the exponential into multiplication (our own explanation). Independence then lets us take the two expectations separately (our own explanation). Unlike a density calculation, this proof does not require either variable to have a density (our own comparison). To recover the law of the sum from the product, we need the uniqueness theorem for characteristic functions (our own explanation).
 
 **Wikipedia:** [Characteristic function (probability theory)](https://en.wikipedia.org/wiki/Characteristic_function_%28probability_theory%29). It says: “Characteristic functions are particularly useful for dealing with linear functions of independent random variables.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Exponential transforms make independent sums into products
+
+**Remember:** Addition inside the exponential becomes multiplication outside it.
+
+*True by definition.* MSC 60E10 (Characteristic functions; other transforms), 60E05. arXiv math.PR. Level 2: later undergraduate.
+
+**Definition.** The moment generating function M(t) of X is E\[exp(tX)\]. The exponential transform replaces the separate calculations of expected powers with one function.
+
+**Problem.** Suppose independent variables X and Y have finite moment generating functions on an open interval containing zero. On that interval, their product is the moment generating function of X + Y.
+
+**How the definition helps.** The exponential definition changes the sum in the exponent into a product before averaging (our own). The product rule for expectations of independent variables then gives the result without convolving their laws (our own).
+
+**Wikipedia:** [Moment generating function](https://en.wikipedia.org/wiki/Moment_generating_function). It says: “Mₛₙ(t) = Mₓ₁(a₁t) Mₓ₂(a₂t) ⋯ Mₓₙ(aₙt).”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -496,6 +898,154 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### The exponential series packs moments into one function
+
+**Remember:** Read the expected powers by differentiating at zero.
+
+*True by definition.* MSC 60E10 (Characteristic functions; other transforms), 60E05. arXiv math.PR. Level 2: later undergraduate.
+
+**Definition.** The moment generating function of X is M(t) = E\[exp(tX)\]. It encodes moments, the expected powers of X, in one function.
+
+**Problem.** If M is finite on an open interval around zero, its nth derivative at zero equals E\[Xⁿ\] for every positive integer n.
+
+**How the definition helps.** The exponential series puts E\[Xⁿ\] beside the nth power of t, divided by n factorial (our own). This replaces a separate integral for each moment with differentiation of one function (our own). Finite exponential averages on both sides of zero justify averaging the series term by term near zero (our own).
+
+**Paper or page:** [Moment in terms of Moment Generating Function](https://proofwiki.org/wiki/Moment_in_terms_of_Moment_Generating_Function). It says: “E\[Xⁿ\] = Mₓ⁽ⁿ⁾(0)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A constant limit makes convergence in law convergence in probability
+
+**Remember:** If the limit law is a single point, the observations must approach that point.
+
+*Rules out counterexamples.* MSC 60F05 (Central limit and other weak theorems), 60B10. arXiv math.PR. Level 2: later undergraduate.
+
+**Definition.** Random variables converge in law when the expectation of every bounded continuous function of them approaches its expectation under the limiting law. For a constant limit c, this last expectation is the function value at c.
+
+**Problem.** If random variables converge in law to a constant c, the chance of an error larger than any fixed positive distance tends to zero.
+
+**How the definition helps.** A continuous test can vanish at c and equal one everywhere at distance ε or more from c (our own). Use the smaller of one and \|x − c\|/ε, whose expectation bounds the error probability and tends to zero (our own). For a random limit this can fail because a fair random sign and its negative have the same law but always differ (our own).
+
+**Wikipedia:** [Convergence of random variables](https://en.wikipedia.org/wiki/Convergence_of_random_variables). It says: “when the limiting random variable X is a constant.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A transform turns the central limit theorem into a power limit
+
+**Remember:** Convert sums to products before taking the limit.
+
+*Makes the theorem clean to state or prove.* MSC 60F05 (Central limit and other weak theorems), 60E10. arXiv math.PR. Level 2: later undergraduate.
+
+**Definition.** The characteristic function of a random variable X is the average of exp(itX) for each real t, where i² = −1.
+
+**Problem.** Let independent observations have the same distribution, mean μ and finite positive variance σ². Their sum, centered by subtracting nμ and divided by σ√n, converges in distribution to the normal law with mean zero and variance one.
+
+**How the definition helps.** The characteristic function turns the sum of n independent observations into a product of n identical factors (our own). A second-order expansion using the variance gives exp(−t²/2) as the limit after centering and scaling (our own). Lévy’s continuity theorem converts this limit into convergence in distribution because it is the characteristic function of the standard normal law (our own).
+
+**Paper or page:** [Central Limit Theorem](https://proofwiki.org/wiki/Central_Limit_Theorem). It says: “that is, converges in distribution to a standard normal distribution.”
+
+**Sources:**
+
+- [David Williams, Probability with Martingales, Chapter 18](https://doi.org/10.1017/CBO9780511813658.022)
+
+### Tail failures multiply in the second Borel–Cantelli lemma
+
+**Remember:** Finitely many successes means a whole tail of failures.
+
+*Makes the theorem clean to state or prove.* MSC 60F15 (Strong limit theorems). arXiv math.PR. Level 2: later undergraduate.
+
+**Definition.** The limit inferior of a sequence of events is the union of the intersections of all events in each tail. It describes outcomes that belong to every event from some index onward.
+
+**Problem.** For independent events whose probabilities have infinite sum, the limit inferior of their complements has probability zero. Thus infinitely many events occur with probability one.
+
+**How the definition helps.** The limit inferior of the failure events splits the unwanted outcome into countably many tails (our own). Independence makes each finite block of failures a product (our own). The bound 1 − p ≤ exp(−p) forces each infinite tail to have probability zero (our own).
+
+**Paper or page:** [Second Borel-Cantelli Lemma](https://proofwiki.org/wiki/Second_Borel-Cantelli_Lemma). It says: “Then the probability that infinitely many of them occur is 1.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The set limit superior gives the first Borel–Cantelli lemma
+
+**Remember:** Infinitely often means at least once in every tail.
+
+*Makes the theorem clean to state or prove.* MSC 60F15 (Strong limit theorems). arXiv math.PR. Level 2: later undergraduate.
+
+**Definition.** The limit superior of a sequence of events contains the outcomes that occur in infinitely many of them. It is the intersection of all tail unions, where each union includes every event from one index onward.
+
+**Problem.** If the sum of the event probabilities is finite, their limit superior has probability zero.
+
+**How the definition helps.** The limit superior lies in every tail union, so each tail sum bounds its probability (our own). The union bound gives those upper bounds, and convergence of the series makes them tend to zero (our own).
+
+**Paper or page:** [Borel-Cantelli Lemma](https://proofwiki.org/wiki/Borel-Cantelli_Lemma). It says: “where limsup denotes limit superior of sets.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Weighted partial sums give the finite variance strong law
+
+**Remember:** Divide each centered step by its index before adding the steps.
+
+*Makes the theorem clean to state or prove.* MSC 60F15 (Strong limit theorems), 60G42. arXiv math.PR. Level 2: later undergraduate.
+
+**Definition.** Center each observation by subtracting the common mean. The weighted partial sum through n adds the first n centered observations after dividing each by its index.
+
+**Problem.** Sample means of independent variables with the same law and finite variance converge to their common mean with probability one.
+
+**How the definition helps.** Dividing step k by k divides its variance by k², so the increment variances have finite sum (our own). The weighted sums form a martingale with bounded second moments and therefore converge with probability one (our own). Kronecker’s lemma turns convergence of this weighted series into convergence of the centered sample means to zero (our own).
+
+**Wikipedia:** [Law of large numbers](https://en.wikipedia.org/wiki/Law_of_large_numbers). It says: “the sample average converges almost surely to the expected value”
+
+**Sources:**
+
+- [David Williams, Probability with Martingales, Sections 12.7–12.8](https://assets.cambridge.org/97805214/06055/frontmatter/9780521406055_frontmatter.pdf)
+
+### Tail events are independent of themselves
+
+**Remember:** Ignoring every finite beginning makes a tail event independent of itself for independent observations.
+
+*Makes the theorem clean to state or prove.* MSC 60F20 (Zero-one laws), 60A05. arXiv math.PR. Level 2: later undergraduate.
+
+**Definition.** A tail event is one that you can determine from the variables after any finite initial block. Formally it belongs to the intersection of the collections of events determined by each such tail.
+
+**Problem.** For a sequence of independent random variables, every tail event has probability zero or one.
+
+**How the definition helps.** The definition makes a tail event independent of the events from each finite initial block (our own). The monotone class theorem extends that independence to all events determined by the sequence (our own). This includes the tail event itself, so its probability is its own square (our own).
+
+**Wikipedia:** [Kolmogorov's zero–one law](https://en.wikipedia.org/wiki/Kolmogorov%27s_zero%E2%80%93one_law). It says: “Tail events are precisely those events whose occurrence can still be determined”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Mean square convergence gives the finite variance weak law
+
+**Remember:** The mean squared error is the step variance divided by the sample size.
+
+*Makes the theorem clean to state or prove.* MSC 60F25 (\\(L<sup>p\\</sup>)-limit theorems), 60F05. arXiv math.PR. Level 2: later undergraduate.
+
+**Definition.** A sequence converges in mean square to a number if its average squared distance from that number tends to zero. This is stronger than requiring only that large errors become unlikely.
+
+**Problem.** Sample means of independent variables with the same law and finite variance converge in mean square to their common mean. They also converge in probability.
+
+**How the definition helps.** Mean square convergence asks for one number, the expected squared error of the sample mean (our own). Independence makes this error equal to the common variance divided by the sample size (our own). Markov’s inequality then bounds the chance of any fixed positive error and gives convergence in probability.
+
+**Wikipedia:** [Convergence of random variables](https://en.wikipedia.org/wiki/Convergence_of_random_variables). It says: “converges in mean square (or in quadratic mean) to X.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A stopping time lets each included step keep its mean
+
+**Remember:** Decide whether to include a step before seeing its value.
+
+*Rules out counterexamples.* MSC 60G40 (Stopping times; optimal stopping problems; gambling theory), 60G50. arXiv math.PR. Level 2: later undergraduate.
+
+**Definition.** A stopping time is a nonnegative integer time T for which you know whether T ≤ n after seeing the first n steps. Thus before step k you know whether T ≥ k.
+
+**Problem.** For independent steps with the same law and finite absolute mean, stop using only the steps observed so far. If the stopping time has finite mean, the expected sum equals the step mean times the mean stopping time.
+
+**How the definition helps.** Before step k, the stopping rule already determines whether that step counts, independently of its value. Summing the mean contributions gives the formula because the inclusion probabilities sum to the mean stopping time (our own). Finite absolute mean and finite mean stopping time justify the exchange of sum and expectation (our own). Counting one fair toss only on tails gives zero heads despite a positive mean number of counted tosses (our own).
+
+**Wikipedia:** [Wald's equation](https://en.wikipedia.org/wiki/Wald%27s_equation). It says: “is a stopping time for a sequence of independent random variables”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Stopping times cannot see the future, so fair games stay fair
 
 **Remember:** A stopping time is a rule that a gambler can follow without knowing the future.
@@ -528,6 +1078,104 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Predictable bets preserve a martingale
+
+**Remember:** A fair bet needs a stake fixed before the outcome.
+
+*Rules out counterexamples.* MSC 60G42 (Martingales with discrete parameter). arXiv math.PR. Level 2: later undergraduate.
+
+**Definition.** A martingale has integrable values and zero expected change given all observations so far. A stake is predictable if those observations determine it before the next change. The gain equals the stake times the change.
+
+**Problem.** The running gains from bounded predictable stakes on a martingale form a martingale.
+
+**How the definition helps.** Predictability lets the stake come out of the conditional mean, leaving the next increment’s zero mean (our own). If the stake could depend on the next fair coin toss, betting only when it wins would give a positive mean gain (our own).
+
+**Paper or page:** [Introduction to Martingales](https://arxiv.org/abs/2407.11914v1). It says: “and X is a martingale, then so is C · X”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Diagonal coordinates make planar return probabilities squares
+
+**Remember:** In diagonal coordinates, one grid step is two independent fair signs.
+
+*True by definition.* MSC 60G50 (Sums of independent random variables; random walks), 60J10. arXiv math.PR. Level 2: later undergraduate.
+
+**Definition.** Write a square-grid walk at position (x,y) as the two diagonal coordinates x + y and x − y. Each step chooses one of the four nearest neighbors with equal probability, independently of earlier steps.
+
+**Problem.** After 2n steps the grid walk’s return probability equals the square of the fair line walk’s return probability. The grid walk therefore returns to its start with probability one.
+
+**How the definition helps.** Changing from ordinary to diagonal coordinates turns the four grid moves into four equally likely pairs of signs (our own). The two coordinates therefore walk independently, and a grid return requires both to return together (our own). The binomial formula and Stirling’s approximation give a line return probability proportional to 1/√n in the limit (our own). The squared probabilities have infinite sum, so the return criterion gives recurrence (our own).
+
+**Wikipedia:** [Random walk](https://en.wikipedia.org/wiki/Random_walk). It says: “where each variable is either 1 or −1, with a 50% probability for either value”
+
+**Sources:**
+
+- [Peter G. Doyle and J. Laurie Snell, Random Walks and Electric Networks, Section 2.3.6](https://math.dartmouth.edu/~doyle/docs/walkspdf/walks.pdf)
+
+### The first crossing splits a bound for the whole walk
+
+**Remember:** At the first crossing, the remaining independent steps cannot undo the squared bound in expectation.
+
+*Makes the theorem clean to state or prove.* MSC 60G50 (Sums of independent random variables; random walks), 60E15. arXiv math.PR. Level 2: later undergraduate.
+
+**Definition.** The first crossing time is the first step when the absolute partial sum meets or exceeds a chosen threshold. Set the time to infinity if the walk never crosses.
+
+**Problem.** Consider finitely many independent steps with mean zero and finite variance. The chance that any partial sum has absolute value at least t &gt; 0 is at most the sum of the variances divided by t².
+
+**How the definition helps.** The first crossing time splits the event into one piece for each possible crossing step (our own). On each piece, independence and mean zero kill the mixed term in the final square (our own). Summing bounds the crossing probability times the squared threshold by the expected final square (our own).
+
+**Wikipedia:** [Kolmogorov's inequality](https://en.wikipedia.org/wiki/Kolmogorov%27s_inequality). It says: “gives a bound on the probability that the partial sums of a finite collection of independent random variables exceed some specified bound.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Generating functions split Poisson counts into independent counts
+
+**Remember:** An independent mark replaces the single argument by a weighted average.
+
+*Makes the theorem clean to state or prove.* MSC 60G55 (Point processes (e.g., Poisson, Cox, Hawkes processes)), 60E10. arXiv math.PR. Level 2: later undergraduate.
+
+**Definition.** The joint probability generating function of counts U and V averages the product of s raised to U and t raised to V. Its coefficient for each pair of powers gives the probability of that pair of counts.
+
+**Problem.** Keep each event of a rate λ Poisson process independently with probability p. The kept and removed events form independent Poisson processes of rates pλ and (1 − p)λ.
+
+**How the definition helps.** A single mark contributes ps + (1 − p)t inside the original count’s generating function (our own). The Poisson generating function is exponential, so the result factors into one Poisson generating function per count (our own). Power series uniqueness and independence across disjoint time intervals then give the two independent processes (our own).
+
+**Paper or page:** [Mott's law for the v.r.h. random resistor network and for Mott's random walk](https://arxiv.org/abs/2301.06318v4). It says: “The p–thinning of PPP\[ρ\] is given by PPP\[pρ\].”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Subtracting the mean makes a Poisson count a martingale
+
+**Remember:** Subtract the average growth, and the next interval has mean zero.
+
+*True by definition.* MSC 60G55 (Point processes (e.g., Poisson, Cox, Hawkes processes)), 60G42. arXiv math.PR. Level 2: later undergraduate.
+
+**Definition.** A Poisson process of rate λ starts at zero and has independent counts on disjoint intervals. Each interval count has a Poisson distribution with mean λ times the interval length. The compensated count subtracts λt from the count at time t.
+
+**Problem.** The compensated count is a martingale, meaning that its conditional mean at a later time equals its current value given the observations so far.
+
+**How the definition helps.** The count definition gives a future increment independent of the past, and compensation makes its mean zero (our own). If you start from independent exponential waiting times, the work moves to proving the independent Poisson increment law (our own).
+
+**Wikipedia:** [Martingale (probability theory)](https://en.wikipedia.org/wiki/Martingale_%28probability_theory%29). It says: “the compensated Poisson process {Nₜ − λt : t ≥ 0} is a continuous-time martingale”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Uniform arrival times build Poisson counts on a fixed interval
+
+**Remember:** Draw the count first, then place the points independently.
+
+*True by definition.* MSC 60G55 (Point processes (e.g., Poisson, Cox, Hawkes processes)). arXiv math.PR. Level 2: later undergraduate.
+
+**Definition.** On an interval of length T, draw a Poisson count of mean λT. Given that count, draw that many independent uniform points and sort them to get arrival times.
+
+**Problem.** Given n arrivals of a positive-rate Poisson process in a fixed interval, their ordered times have the law of n sorted independent uniform draws.
+
+**How the definition helps.** The conditional law is the second step of the construction. The work moves to checking the count definition of a Poisson process (our own). Allocating the points among disjoint subintervals splits the Poisson total into independent Poisson counts with means proportional to their lengths (our own).
+
+**Wikipedia:** [Poisson point process](https://en.wikipedia.org/wiki/Poisson_point_process). It says: “For the homogeneous case in one dimension, all points are uniformly and independently placed in the window or interval W.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Defining Markov chains by conditional independence gives the data processing inequality
 
 **Remember:** Processing Y cannot tell you more about X than Y did.
@@ -544,6 +1192,78 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### A return cycle gives the stationary mass as a reciprocal
+
+**Remember:** One visit home per return cycle gives one over the mean cycle length.
+
+*True by definition.* MSC 60J10 (Markov chains (discrete-time Markov processes on discrete state spaces)). arXiv math.PR. Level 2: later undergraduate.
+
+**Definition.** A return cycle runs from a visit to state i up to, but excluding, the next visit to i. Its occupation law divides each state’s expected visit count during the cycle by the mean cycle length.
+
+**Problem.** In a chain where all states can reach each other, suppose the mean return time to i is finite. The cycle occupation law is stationary and gives i probability equal to the reciprocal of its mean return time.
+
+**How the definition helps.** Each cycle visits i exactly once, so its normalized count is one divided by the mean cycle length (our own). To recover the usual stationary law, shift the expected counts forward one step (our own). The shift removes the initial visit and adds the final visit at the same state, leaving all expected counts unchanged (our own).
+
+**Paper or page:** [Finite Markov chains and multiple orthogonal polynomials](https://arxiv.org/abs/2308.00182v4). It says: “in terms of the expected return times t̄ᵢ”
+
+**Sources:**
+
+- [Richard Weber, Markov Chains, Theorem 9.1 and its proof](https://www.dpmms.cam.ac.uk/~rrw1/markov/M.pdf)
+
+### Counting visits turns recurrence into a divergent sum
+
+**Remember:** Add return probabilities to get the expected number of visits.
+
+*Makes the theorem clean to state or prove.* MSC 60J10 (Markov chains (discrete-time Markov processes on discrete state spaces)). arXiv math.PR. Level 2: later undergraduate.
+
+**Definition.** For a chain started in a given state, the visit count adds its indicators of being in that state at each time. Count time zero and allow an infinite sum.
+
+**Problem.** A state is recurrent if a chain starting there returns with probability one. This holds exactly when the probabilities of being there at time n have infinite sum over n.
+
+**How the definition helps.** Averaging the visit count gives the sum of return probabilities by monotone convergence (our own). The strong Markov property makes the probability of at least k further visits the kth power of the first-return probability (our own). Thus the mean count is finite exactly when that first-return probability is less than one (our own).
+
+**nLab:** [Markov chain](https://ncatlab.org/nlab/show/Markov+chain). It says: “the probability of moving to the next state depends only upon the current state.”
+
+**Sources:**
+
+- [Richard Weber, Markov Chains, Theorem 5.3](https://www.dpmms.cam.ac.uk/~rrw1/markov/M.pdf)
+
+### Finite step hitting probabilities select the least solution
+
+**Remember:** Start at zero off the target so impossible hits stay impossible.
+
+*Rules out counterexamples.* MSC 60J10 (Markov chains (discrete-time Markov processes on discrete state spaces)). arXiv math.PR. Level 2: later undergraduate.
+
+**Definition.** A finite step hitting probability is the chance of visiting a target set by a fixed step, including time zero. Start with the target indicator, then update values outside the target by averaging over one more transition.
+
+**Problem.** For a discrete-time Markov chain on a countable state space, eventual hitting probabilities form the least nonnegative solution of the first-step equations. These equations set the value to one on the target and require one-step averages elsewhere.
+
+**How the definition helps.** The finite step probabilities start below every nonnegative solution and stay below it at each update (our own). Their increasing limit solves the equations by monotone convergence (our own). Minimality rejects the all-ones solution when an upward-biased walk can escape without hitting zero (our own).
+
+**nLab:** [Markov chain](https://ncatlab.org/nlab/show/Markov+chain). It says: “the probability of moving to the next state depends only upon the current state.”
+
+**Sources:**
+
+- [Richard Weber, Markov Chains, Theorem 3.4 and Example 3.5](https://www.dpmms.cam.ac.uk/~rrw1/markov/M.pdf)
+
+### Independent return gaps give the long run visit fraction
+
+**Remember:** Average the time per visit, then invert to get visits per unit time.
+
+*Makes the theorem clean to state or prove.* MSC 60J10 (Markov chains (discrete-time Markov processes on discrete state spaces)), 60F15. arXiv math.PR. Level 2: later undergraduate.
+
+**Definition.** A return gap is the number of steps between successive visits to a given state. Start measuring after the first visit, so every gap starts at the same state.
+
+**Problem.** Suppose all states can reach each other and every state has finite mean return time. From any start, each state’s fraction of visits converges with probability one to its stationary probability.
+
+**How the definition helps.** At each return the chain starts afresh, so the gaps are independent and have the same distribution (our own). The strong law makes their average converge to the mean return time (our own). Each observation time lies between successive visits, so the visit fraction tends to the reciprocal mean return time (our own). The return-cycle formula identifies that reciprocal with the stationary probability (our own).
+
+**nLab:** [Markov chain](https://ncatlab.org/nlab/show/Markov+chain). It says: “the probability of moving to the next state depends only upon the current state.”
+
+**Sources:**
+
+- [Richard Weber, Markov Chains, Theorem 10.2](https://www.dpmms.cam.ac.uk/~rrw1/markov/M.pdf)
+
 ### Irreducibility and positive recurrence give exactly one stationary distribution
 
 **Remember:** Finite mean return time means a unique stationary distribution.
@@ -557,6 +1277,38 @@
 **How the definition helps.** Positive recurrence gives each state a finite mean return time, whose inverse is the long-run fraction of time spent there, so the formula for π is almost forced. A chain with two absorbing states is not irreducible and has many stationary distributions (our own). The simple random walk on the integers is irreducible and recurrent but null recurrent, and it has no stationary distribution (our own). On a finite state space, irreducibility alone suffices.
 
 **Wikipedia:** [Markov chain](https://en.wikipedia.org/wiki/Markov_chain). It says: “If a finite Markov chain is irreducible, then all states are positive recurrent, and it has a unique stationary distribution given by πᵢ = 1/E\[Tᵢ\].”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Shifted averages give every finite chain a stationary law
+
+**Remember:** One transition changes only the two ends of the average.
+
+*Makes the theorem clean to state or prove.* MSC 60J10 (Markov chains (discrete-time Markov processes on discrete state spaces)). arXiv math.PR. Level 2: later undergraduate.
+
+**Definition.** A stationary law is a probability vector unchanged by one transition. Form a Cesàro average of the laws at times zero through n − 1, meaning their ordinary arithmetic mean.
+
+**Problem.** Every finite Markov chain has a stationary law, even when the laws at individual times do not converge.
+
+**How the definition helps.** One transition shifts the average by one time step, so the difference is two endpoint terms divided by n (our own). Compactness of the set of probability vectors on a finite state space gives a convergent subsequence of the averages (our own). Its limit is unchanged by a transition, even for the chain that alternates between two states (our own).
+
+**Wikipedia:** [Markov chain](https://en.wikipedia.org/wiki/Markov_chain). It says: “a left eigenvector e of P with eigenvalue of 1.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The fundamental matrix counts visits before absorption
+
+**Remember:** Add the probability of being in the state at each step.
+
+*True by definition.* MSC 60J10 (Markov chains (discrete-time Markov processes on discrete state spaces)). arXiv math.PR. Level 2: later undergraduate.
+
+**Definition.** Consider a finite Markov chain with a set that every state can reach and that the chain cannot leave. Let Q contain the transition probabilities between states outside this set. The fundamental matrix is the sum I + Q + Q² + ⋯, where I is the identity matrix.
+
+**Problem.** Starting at i outside the set, entry (i,j) gives the expected number of visits to j before entry, counting time zero.
+
+**How the definition helps.** Each term in the entry is the mean of an indicator that the chain visits j at that step (our own). Monotone convergence allows you to add these means, and the matrix geometric series recovers the inverse formula (our own).
+
+**Wikipedia:** [Absorbing Markov chain](https://en.wikipedia.org/wiki/Absorbing_Markov_chain). It says: “obtained by summing Qᵏ for all k (from 0 to ∞).”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -577,6 +1329,56 @@
 **Sources:**
 
 - [\[, ', E, u, g, e, n, i, a,  , F, r, a, n, c, o, ', ,,  , ', B, e, r, n, h, a, r, d,  , K, e, p, k, a, ', ,,  , ', J, u, a, n,  , J, .,  , L, .,  , V, e, l, á, z, q, u, e, z, ', \], Characterizing the detailed balance property by means of measurements in chemical networks](https://arxiv.org/abs/2402.12935v1)
+
+### Dividing out mean growth makes population size a martingale
+
+**Remember:** Remove the mean growth to get a population with fair increments.
+
+*True by definition.* MSC 60J80 (Branching processes (Galton-Watson, birth-and-death, etc.)), 60G42. arXiv math.PR. Level 2: later undergraduate.
+
+**Definition.** Start with one ancestor and let each individual independently draw a child count from the same law with finite positive mean m. The normalized population divides the size of generation n by mⁿ.
+
+**Problem.** The normalized population is a nonnegative martingale, so its expected next value given the past equals its current value. It converges to a finite limit with probability one.
+
+**How the definition helps.** Each generation multiplies the expected size by m given the current population, so the denominator cancels that factor (our own). Calculating that conditional mean uses independent reproduction (our own). The nonnegative martingale convergence theorem then gives a finite limit (our own).
+
+**Wikipedia:** [Branching process](https://en.wikipedia.org/wiki/Branching_process). It says: “the expected size of generation n equals μⁿ where μ is the expected number of children of each individual.”
+
+**Sources:**
+
+- [David Williams, Probability with Martingales, Sections 0.2–0.7](https://assets.cambridge.org/97805214/06055/frontmatter/9780521406055_frontmatter.pdf)
+
+### Removing the one-child case makes the extinction threshold exact
+
+**Remember:** A critical population dies out unless every parent has exactly one child.
+
+*Rules out counterexamples.* MSC 60J80 (Branching processes (Galton-Watson, birth-and-death, etc.)). arXiv math.PR. Level 2: later undergraduate.
+
+**Definition.** In a Galton–Watson process, each individual independently draws its child count from the same law. Exclude the law that gives every individual exactly one child.
+
+**Problem.** Start with one ancestor and suppose the mean child count is finite. Under this exclusion, extinction has probability one exactly when the mean is at most one.
+
+**How the definition helps.** Excluding the constant one-child law removes a population that survives forever despite having mean one. The offspring generating function averages s raised to the child count, and extinction probability is its smallest fixed point in \[0,1\] (our own). With mean at most one, convexity and the exclusion put the graph above the diagonal for s &lt; 1 in this interval (our own). With mean above one, the slope at one forces a smaller fixed point (our own).
+
+**Wikipedia:** [Galton–Watson process](https://en.wikipedia.org/wiki/Galton%E2%80%93Watson_process). It says: “the probability of final extinction is equal to 1 if E\[ξ₁\] ≤ 1”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The offspring generating function selects the extinction probability
+
+**Remember:** Iterate from zero to find the first fixed point, not just any fixed point.
+
+*Rules out counterexamples.* MSC 60J80 (Branching processes (Galton-Watson, birth-and-death, etc.)), 60E10. arXiv math.PR. Level 2: later undergraduate.
+
+**Definition.** The offspring generating function at s is the average of s raised to the number of children. Use values 0 ≤ s ≤ 1 and take s⁰ = 1 even at zero.
+
+**Problem.** Start with one ancestor and let each individual independently draw its child count from the same distribution. The extinction probability is the smallest number in \[0,1\] that the offspring generating function leaves unchanged.
+
+**How the definition helps.** The generating function advances extinction probabilities by one generation, since all child lines must die out. Start at zero and iterate to converge to the least fixed point by monotonicity and continuity (our own). The least fixed point rule rejects the root one when a population with mean offspring above one can survive (our own).
+
+**Wikipedia:** [Branching process](https://en.wikipedia.org/wiki/Branching_process). It says: “each of these lines must die out in m − 1 generations.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Condition on a σ-algebra, not on a single event of probability zero
 

@@ -1,3 +1,37 @@
+### Compatible charts give each atlas a unique completion
+
+**Remember:** Include every chart that agrees with the original atlas.
+
+*True by definition.* MSC 58A05 (Differentiable manifolds, foundations). arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** A smooth atlas covers a manifold by coordinate charts whose changes of coordinates are smooth in both directions. Its completion collects all charts that make smooth coordinate changes with the original charts wherever they overlap.
+
+**Problem.** Every smooth atlas extends to exactly one maximal smooth atlas.
+
+**How the definition helps.** Collecting all compatible charts specifies the candidate at once, instead of searching for a maximal extension (our own). Near each overlap point, the change between two new charts factors through an original chart, so it is smooth (our own). Any maximal extension must contain every chart in this collection (our own).
+
+**Wikipedia:** [Differentiable manifold](https://en.wikipedia.org/wiki/Differentiable_manifold). It says: “A differentiable atlas determines a maximal differentiable atlas, consisting of all charts which are differentiably compatible with the given atlas.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Curve velocities give tangent spaces their dimension
+
+**Remember:** A chart turns curve classes into ordinary vectors.
+
+*True by definition.* MSC 58A05 (Differentiable manifolds, foundations). arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** At a point, identify smooth curves through it when their velocities at time zero agree in a chart. A tangent vector is one such class of curves.
+
+**Problem.** At each point of a smooth n-dimensional manifold, any chart identifies its tangent space linearly with ℝⁿ.
+
+**How the definition helps.** Using curve velocities avoids constructing a basis of differential operators to compute the dimension (our own). A short straight line in the chart realizes any velocity, and equal velocities represent the same vector (our own). Add and scale velocities in coordinates (our own). The chain rule makes changes of coordinates linear and invertible, so these operations agree between charts (our own).
+
+**nLab:** [tangent bundle](https://ncatlab.org/nlab/show/tangent+bundle). It says: “to the set of tangent vectors at x”
+
+**Paper or page:** [Tangent Space is Vector Space](https://proofwiki.org/wiki/Tangent_Space_is_Vector_Space). It says: “Then Tₘ M is a real vector space of dimension n”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Defining cotangent vectors as I/I² makes the product rule automatic
 
 **Remember:** A covector is a function modulo second-order terms.
@@ -13,6 +47,24 @@
 **Wikipedia:** [Cotangent space](https://en.wikipedia.org/wiki/Cotangent_space). It says: “the cotangent space can be defined as the quotient space T\*ₓM = Iₓ/Iₓ² by showing that the two spaces are isomorphic to each other.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Half-space charts give the boundary its own smooth structure
+
+**Remember:** Restrict each half-space chart to its flat face.
+
+*True by definition.* MSC 58A05 (Differentiable manifolds, foundations), 57R40. arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** A smooth manifold with boundary uses coordinate charts in a closed half-space. Chart changes and their inverses must have smooth local extensions to open Euclidean sets. Boundary points have last coordinate zero.
+
+**Problem.** The nonempty boundary of a smooth n-dimensional manifold with boundary is a smooth manifold of dimension n − 1 without boundary.
+
+**How the definition helps.** Restricting half-space charts to their flat faces gives boundary charts directly, without constructing a separate atlas (our own). The inverse function theorem prevents a chart change from sending an interior point to the face (our own). Applying this to the inverse shows that both changes preserve the face, where their smooth extensions still restrict smoothly (our own).
+
+**nLab:** [manifold with boundary](https://ncatlab.org/nlab/show/manifold+with+boundary). It says: “A manifold with boundary is a topological space that is locally isomorphic either to an ℝⁿ or to a half-space”
+
+**Sources:**
+
+- [John Milnor, Topology from the Differentiable Viewpoint](https://people.dm.unipi.it/benedett/MILNOR-TDVPOINT.pdf)
 
 ### Hausdorff and paracompact manifolds have partitions of unity
 
@@ -31,6 +83,40 @@
 **Sources:**
 
 - [Ryszard Engelking, General Topology, Sigma Series in Pure Mathematics 6, Heldermann (1989), Chapter 5 (paracompact spaces)](https://www.heldermann.de/SSPM/SSPM06/sspm06.htm)
+
+### Outward vectors give boundary orientations without choosing a metric
+
+**Remember:** Place the outward vector first.
+
+*True by definition.* MSC 58A05 (Differentiable manifolds, foundations), 57R19. arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** An orientation consistently selects positive ordered bases in tangent spaces. In coordinates where the manifold has last coordinate nonnegative, an outward vector at its boundary has negative last component. A boundary basis is positive if placing an outward vector first gives a positive basis of the manifold.
+
+**Problem.** An oriented smooth manifold of dimension at least two induces an orientation on its boundary. This orientation does not depend on a metric or on the choice of outward vector.
+
+**How the definition helps.** Using any outward vector avoids choosing a perpendicular unit vector with a metric (our own). Outward vectors differ by positive scaling and addition of a boundary tangent vector, which preserve the determinant sign (our own). Half-space charts provide smooth local choices, so the signs specify an orientation (our own).
+
+**nLab:** [orientation](https://ncatlab.org/nlab/show/orientation). It says: “two bases are considered equivalent if the transformation matrix from one to the other has positive determinant”
+
+**Sources:**
+
+- [John Milnor, Topology from the Differentiable Viewpoint](https://people.dm.unipi.it/benedett/MILNOR-TDVPOINT.pdf)
+
+### Product charts make smoothness a componentwise test
+
+**Remember:** Check the two components in two charts.
+
+*True by definition.* MSC 58A05 (Differentiable manifolds, foundations), 57R35. arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** The product of two smooth manifolds uses the product topology and pairs of coordinate charts. Each product chart gives the coordinates in the two factors side by side.
+
+**Problem.** A map into a product of smooth manifolds is smooth exactly when both component maps are smooth.
+
+**How the definition helps.** Using paired charts reduces the usual smoothness test to two ordinary coordinate tests (our own). A Euclidean map is smooth exactly when each component is smooth (our own). Checking this for the changes of coordinates shows that the product charts fit together smoothly (our own).
+
+**nLab:** [product manifold](https://ncatlab.org/nlab/show/product+manifold). It says: “its underlying topological space is the product topological space and its charts are the Cartesian product of the given charts”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Second countability lets smooth functions determine maps of manifolds (Milnor's exercise)
 
@@ -67,6 +153,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Velocity coordinates make the tangent map smooth
+
+**Remember:** Record the point and its velocity in the same chart.
+
+*True by definition.* MSC 58A05 (Differentiable manifolds, foundations), 57R35. arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** A tangent bundle collects all the tangent vectors of a manifold, keeping each vector paired with its base point. In its bundle charts, record the base coordinates and the velocity in those coordinates.
+
+**Problem.** The derivative of a smooth map defines a smooth map between the tangent bundles.
+
+**How the definition helps.** Velocity coordinates turn the derivative defined using curves into ordinary matrix multiplication (our own). The output records the image point and the matrix of first derivatives times the input velocity (our own). Both depend smoothly on the inputs (our own). The chain rule makes the velocity coordinates agree under chart changes (our own).
+
+**nLab:** [tangent bundle](https://ncatlab.org/nlab/show/tangent+bundle). It says: “and then gluing these local constructions together via transition functions”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### With tangent vectors as classes of curves, the chain rule is associativity
 
 **Remember:** Push a curve forward by composing it with f.
@@ -80,6 +182,38 @@
 **How the definition helps.** With this definition, the chain rule is just associativity of composition. The vector d(g ∘ f)(v) is the class of (g ∘ f) ∘ γᵥ, and dg(df(v)) is the class of g ∘ (f ∘ γᵥ), the same path. Our reading of what remains is that df must be well defined on classes of curves and agree with the usual derivative. That is where ordinary calculus enters.
 
 **nLab:** [chain rule](https://ncatlab.org/nlab/show/chain+rule). It says: “If one thinks of a tangent vector v ∈ T<sub>x</sub> X to be an equivalence class of a smooth path γ<sub>v</sub> : \[−ε,ε\] → X, for some ε &gt; 0, with γ(0) = x, then the chain rule is the associativity”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A radial integral gives the Poincaré lemma on star-shaped sets
+
+**Remember:** The constant end of a contraction pulls positive-degree forms back to zero.
+
+*True by definition.* MSC 58A10 (Differential forms in global analysis). arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** An open set is star-shaped about a if every segment from a to a point of the set stays inside. Pull a form back along H(t,x) = a + t(x − a). Define K by inserting the time direction first and integrating from t = 0 to t = 1.
+
+**Problem.** If a smooth form ω of positive degree on this set is closed, meaning dω = 0, then d(Kω) = ω.
+
+**How the definition helps.** The radial integral supplies the unknown form directly, without solving for its coefficients (our own). The homotopy formula identifies dK + Kd with the final pullback minus the initial pullback. The final map is the identity, and the constant initial map kills every positive-degree form (our own). The formula itself requires the fundamental theorem of calculus (our own).
+
+**nLab:** [Poincaré lemma](https://ncatlab.org/nlab/show/Poincar%C3%A9+lemma). It says: “an explicit formula for a form λ with dλ = ω is given by”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Closed forms give the same line integral along deformed paths
+
+**Remember:** Stokes measures the change in the integral by the derivative on the swept strip.
+
+*Rules out counterexamples.* MSC 58A10 (Differential forms in global analysis). arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** A 1-form α is closed when its exterior derivative dα vanishes, a local condition. A smooth deformation with fixed endpoints moves one path into another without moving the start or finish.
+
+**Problem.** The integrals of a smooth closed 1-form along two paths agree if a smooth deformation connects the paths and keeps both endpoints fixed.
+
+**How the definition helps.** Closedness removes the term that measures the change of the integral during the deformation (our own). Stokes’s theorem identifies that change with the integral of dα over the swept square, since the endpoint edges stay fixed (our own). For α = x dy, the upper and lower semicircles from (1,0) to (−1,0) deform into each other in the plane (our own). Their integrals differ by π, the area of the unit disk (our own).
+
+**nLab:** [closed differential form](https://ncatlab.org/nlab/show/closed+differential+form). It says: “is called closed if the de Rham differential d ∶ Ωᵖ(X) → Ωᵖ⁺¹(X) sends it to zero”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -114,6 +248,138 @@
 **How the definition helps.** Differential forms make these four theorems into one statement. In vector calculus they are separate theorems about gradients, curls and divergences. With the exterior derivative, all three operators become d, and all four theorems become the one formula. Orientability and compact support are still needed, and rough domains need further work, for example Whitney's version.
 
 **Wikipedia:** [Generalized Stokes theorem](https://en.wikipedia.org/wiki/Generalized_Stokes_theorem). It says: “is a statement about the integration of differential forms on manifolds, which both simplifies and generalizes several theorems from vector calculus.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Nonzero top forms give a global test for orientability
+
+**Remember:** A top form gives every tangent basis a sign.
+
+*True by definition.* MSC 58A10 (Differential forms in global analysis). arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** A volume form on an n-dimensional manifold is a smooth n-form that is nonzero at every point. Declare an ordered tangent basis positive when the form evaluates to a positive number on it.
+
+**Problem.** A positive-dimensional smooth manifold is orientable exactly when it has a volume form. On a connected orientable manifold, the volume form and its negative give the two orientations.
+
+**How the definition helps.** One volume form assigns signs to all ordered tangent bases, replacing separate sign choices in overlapping charts (our own). Conversely, an orientation gives local volume forms that are positive on the same bases (our own). Combine them using smooth nonnegative weights that sum to one, called a partition of unity (our own). On a connected manifold the ratio of two volume forms is continuous and never zero, so its sign stays constant (our own).
+
+**nLab:** [volume form](https://ncatlab.org/nlab/show/volume+form). It says: “A volume form defines an orientation on X, the one relative to which it is positive definite.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### One exterior derivative explains two zero identities
+
+**Remember:** Gradient, curl, and divergence are successive uses of the same derivative.
+
+*True by definition.* MSC 58A10 (Differential forms in global analysis). arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** In Euclidean three-space, represent a vector F by its dot-product form, v ↦ F · v, or its flux form, (u,v) ↦ det(F,u,v). The exterior derivative d takes a function to its gradient’s dot-product form and a dot-product form to its curl’s flux form. Differentiating a flux form gives divergence times the usual volume form.
+
+**Problem.** In ℝ³, the curl of a smooth gradient is zero. The divergence of the curl of a smooth vector field is also zero.
+
+**How the definition helps.** Both identities now say that applying d twice gives zero (our own). This replaces two coordinate calculations with one cancellation of equal mixed derivatives and the identification of the three vector operators (our own).
+
+**Paper or page:** [Curl of Gradient is Zero](https://proofwiki.org/wiki/Curl_of_Gradient_is_Zero), [Divergence of Curl is Zero](https://proofwiki.org/wiki/Divergence_of_Curl_is_Zero). It says: “curl grad U = 𝟎”
+
+**Sources:**
+
+- [Michael Spivak, Calculus on Manifolds (1965), Chapter 5, The Classical Theorems](https://web.math.ucsb.edu/~bigelow/books/spivak.pdf)
+
+### Signed volume shows why curl reverses sign under reflection
+
+**Remember:** Reflection keeps dot products and reverses signed volumes.
+
+*True by definition.* MSC 58A10 (Differential forms in global analysis). arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** In oriented Euclidean three-space, let the dot-product form α send u to F · u. Define curl by dα(u,v) = det(curl F,u,v), where d is the exterior derivative and the determinant measures signed volume.
+
+**Problem.** Reversing the orientation negates the curl of a smooth field F. For a linear reflection R in a fixed orientation, the reflected field G satisfies G(Rx) = RF(x) and curl G(Rx) = −R(curl F(x)).
+
+**How the definition helps.** The signed-volume definition locates the sign in one determinant, avoiding a component-by-component calculation (our own). Reflection preserves dot products and reverses signed volumes. The proof also uses the rule that exterior differentiation commutes with pullback and the identification with coordinate curl (our own).
+
+**Wikipedia:** [Curl (mathematics)](https://en.wikipedia.org/wiki/Curl_%28mathematics%29). It says: “Although expressed in terms of coordinates, the result is invariant under proper rotations of the coordinate axes but the result inverts under reflection.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Star-shaped domains give divergence-free fields vector potentials
+
+**Remember:** A closed flux form on a star-shaped set has a primitive.
+
+*Rules out counterexamples.* MSC 58A10 (Differential forms in global analysis). arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** The flux form of F sends u,v to det(F,u,v). A vector potential for F is a field A with curl A = F. On a star-shaped set, every segment from one fixed point to any other point stays in the set.
+
+**Problem.** Every smooth field with zero divergence on a star-shaped open set in ℝ³ has a smooth vector potential.
+
+**How the definition helps.** The star-shaped domain lets the Poincaré lemma turn the closed flux form β of F into dα for a smooth 1-form α (our own). Writing α(u) = A · u gives curl A = F, since dα measures the flux of curl A (our own). On ℝ³ minus the origin, the field x/\|x\|³ has zero divergence but outward flux 4π across the unit sphere (our own). Stokes’s theorem gives zero flux for every curl across that sphere (our own).
+
+**nLab:** [Poincaré lemma](https://ncatlab.org/nlab/show/Poincar%C3%A9+lemma). It says: “for ω any closed form on X in positive degree”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The product rule makes exterior differentiation commute with pullback
+
+**Remember:** Check functions and their differentials, then use the product rule.
+
+*True by definition.* MSC 58A10 (Differential forms in global analysis). arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** Define the exterior derivative d by its action on functions, its signed product rule, and the rule d² = 0. On functions it gives the ordinary differential. In a product of two forms, differentiating the second factor introduces a minus sign when the first has odd degree.
+
+**Problem.** For every smooth map and smooth form, taking the exterior derivative before or after pullback gives the same form.
+
+**How the definition helps.** The product rule reduces the comparison to functions and coordinate differentials, avoiding a full coordinate expansion (our own). Pullback composes functions with the map, so the chain rule proves agreement on functions (our own). Each coordinate differential pulls back to a differential, whose next derivative vanishes by d² = 0 (our own).
+
+**nLab:** [pullback of a differential form](https://ncatlab.org/nlab/show/pullback+of+a+differential+form). It says: “Pullback of differential forms commutes with the de Rham differential”
+
+**Sources:**
+
+- [Michael Spivak, Calculus on Manifolds (1965), Theorem 4-10](https://web.math.ucsb.edu/~bigelow/books/spivak.pdf)
+
+### Wedge products give the divergence rule for cross products
+
+**Remember:** The wedge product rule supplies the minus sign in the cross product rule.
+
+*True by definition.* MSC 58A10 (Differential forms in global analysis). arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** Represent fields A and B by the forms α(u) = A · u and β(u) = B · u. Their wedge product evaluates on u,v as α(u)β(v) − α(v)β(u). This is the flux form of A × B, meaning its value is det(A × B,u,v).
+
+**Problem.** For smooth fields A and B in ℝ³, div(A × B) = B · curl A − A · curl B.
+
+**How the definition helps.** Representing the cross product by a wedge product replaces a coordinate expansion with one signed product rule (our own). That rule gives d(α ∧ β) = dα ∧ β − α ∧ dβ (our own). The left side measures divergence, while dα and dβ measure curl through oriented area (our own). Evaluating both sides on the standard basis gives the two dot products (our own).
+
+**Paper or page:** [Divergence of Vector Cross Product](https://proofwiki.org/wiki/Divergence_of_Vector_Cross_Product). It says: “div(A × B) = B · curl A − A · curl B”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A continuous unit normal makes signed surface flux well defined
+
+**Remember:** One continuous normal gives one sign for flux across the whole surface.
+
+*Rules out counterexamples.* MSC 58C35 (Integration on manifolds; measures on manifolds). arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** A unit normal is a vector of length one perpendicular to the tangent plane. Orient a smooth surface in ℝ³ by choosing a unit normal n continuously across it. The signed flux of a field F is the surface integral of F · n.
+
+**Problem.** The signed flux of a continuous field on a compact oriented surface is unchanged by reparametrizations that use the chosen normal.
+
+**How the definition helps.** The chosen normal gives F · n the same value wherever two charts meet (our own). The change-of-variables formula for surface area then gives the same integral in either chart (our own). On a Möbius strip, following a normal around the central loop reverses it, so a continuous choice fails (our own).
+
+**Wikipedia:** [Orientability](https://en.wikipedia.org/wiki/Orientability). It says: “For surfaces embedded in Euclidean space, an orientation is specified by the choice of a continuously varying surface normal n at every point.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Compactly supported primitives rule out boundary terms at infinity
+
+**Remember:** The primitive, not just its derivative, must vanish outside a compact set.
+
+*Rules out counterexamples.* MSC 58C35 (Integration on manifolds; measures on manifolds). arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** A smooth form α is a compactly supported primitive of ω if dα = ω and α vanishes outside a compact set.
+
+**Problem.** On an oriented smooth manifold without boundary, a form of degree equal to the dimension integrates to zero if it has a compactly supported primitive.
+
+**How the definition helps.** Compact support lets Stokes’s theorem turn the integral into one over the empty boundary (our own). On the real line, choose a smooth function equal to zero left of 0 and one right of 1 (our own). Its derivative vanishes outside \[0,1\] but integrates to one by the fundamental theorem of calculus (our own).
+
+**Paper or page:** [General Stokes' Theorem](https://proofwiki.org/wiki/General_Stokes'_Theorem). It says: “Let ω be a smooth (n − 1)-form with compact support on a smooth n-dimensional oriented manifold X.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -152,6 +418,42 @@
 **Sources:**
 
 - [Raoul Bott, Loring W. Tu, Differential Forms in Algebraic Topology, Graduate Texts in Mathematics 82, Springer (1982)](https://doi.org/10.1007/978-1-4757-3951-0)
+
+### Pullback integrals ignore changes of parameter that preserve orientation
+
+**Remember:** The form supplies the sign when the parameters change.
+
+*True by definition.* MSC 58C35 (Integration on manifolds; measures on manifolds). arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** A k-form measures signed volume on k tangent vectors and changes sign when two vectors exchange places. To integrate it over a parametrized region, evaluate it on the k coordinate velocities and integrate over the parameter region.
+
+**Problem.** For a convergent form integral, a smooth change of parameters with smooth inverse preserves the integral if it preserves orientation. It negates the integral if it reverses orientation.
+
+**How the definition helps.** The form includes the signed determinant of the parameter change, without a separate orientation factor (our own). Ordinary change of variables cancels the determinant’s magnitude and leaves its sign (our own).
+
+**Paper or page:** [Diffgeo: Stokes](https://venhance.github.io/napkin/Napkin.pdf). It says: “Let c be a k-cell, α a k-form, and φ a reparametrization.”
+
+**Sources:**
+
+- [Michael Spivak, Calculus on Manifolds (1965), Theorems 4-9 and 5-4](https://web.math.ucsb.edu/~bigelow/books/spivak.pdf)
+
+### Signed cube faces reduce Stokes to one variable at a time
+
+**Remember:** Each missing coordinate gives one upper face and one lower face.
+
+*True by definition.* MSC 58C35 (Integration on manifolds; measures on manifolds), 58A10. arXiv math.DG. Level 2: later undergraduate.
+
+**Definition.** Define a cube’s boundary as the signed sum of its coordinate faces. Keeping the other coordinates in order, give the upper face in direction i sign (−1)ⁱ⁻¹ and give the lower face the opposite sign. In the exterior derivative, place each coefficient’s differential before its coordinate factors.
+
+**Problem.** Let c be a smooth parametrized cube of dimension k, and let α be a smooth form of degree k − 1. The integral of dα over c equals the integral of α over its signed boundary.
+
+**How the definition helps.** The signed boundary builds in the signs that would otherwise need a separate orientation check on every face (our own). Only the coefficient missing coordinate i contributes on the two faces where that coordinate is fixed (our own). Fubini’s theorem and one-variable integration of its derivative give the upper value minus the lower value, with the prescribed sign (our own). Pullback carries this calculation to a parametrized cube because it commutes with exterior differentiation (our own).
+
+**Paper or page:** [Diffgeo: Stokes](https://venhance.github.io/napkin/Napkin.pdf). It says: “∫₍c₎ dα = ∫₍∂c₎ α.”
+
+**Sources:**
+
+- [Michael Spivak, Calculus on Manifolds (1965), Theorem 4-13](https://web.math.ucsb.edu/~bigelow/books/spivak.pdf)
 
 ### Manifolds with corners make products of manifolds with boundary smooth again
 
