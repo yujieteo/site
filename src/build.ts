@@ -95,6 +95,8 @@ async function renderSite(out: string, postsDir: string, posts: Post[]): Promise
     post.source = linkPapers(post, papers);
     writePost(out, post);
     for (const paper of papers) writePaper(out, post, paper);
+    // A post's data/ folder holds files its figures load, such as the index of a long list.
+    if (existsSync(`${postsDir}/${post.slug}/data`)) cpSync(`${postsDir}/${post.slug}/data`, `${out}/essays/${post.slug}/data`, { recursive: true });
   }
   const apis = posts.map((post) => postApi(post, postsDir));
   const all = writeNotes(out, notes);

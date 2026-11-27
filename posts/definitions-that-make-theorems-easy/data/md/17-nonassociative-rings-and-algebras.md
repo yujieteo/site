@@ -1,0 +1,539 @@
+### Alternating brackets exclude a characteristic two counterexample
+
+**Remember:** Alternation implies anticommutativity even when 2 is zero.
+
+*Rules out counterexamples. Confidence: medium.* MSC 17B01 (Identities, free Lie (super)algebras), 17B50. arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** Require a Lie bracket to be alternating, meaning \[x,x\] = 0 for every x. As usual, require bilinearity and the Jacobi identity, \[x,\[y,z\]\] + \[y,\[z,x\]\] + \[z,\[x,y\]\] = 0. The weaker condition \[x,y\] = −\[y,x\] is called anticommutativity. Over fields where 2 is nonzero, it is equivalent to alternation.
+
+**Problem.** Every Lie bracket is anticommutative. In characteristic two, anticommutativity and the Jacobi identity do not suffice for a Lie bracket.
+
+**How the definition helps.** Expanding \[x+y,x+y\] = 0 makes anticommutativity immediate. In characteristic two, anticommutativity only says that the bracket is symmetric. On a space with basis e,f over the field with two elements, set \[e,e\] = f and make all other basis brackets zero (our own). This bracket is symmetric and satisfies Jacobi because every bracket value is a multiple of f, which brackets to zero (our own). It is not alternating, so the weaker axiom would admit it (our own).
+
+**Wikipedia:** [Lie algebra](https://en.wikipedia.org/wiki/Lie_algebra). It says: “If the field does not have characteristic 2, then anticommutativity implies the alternating property, since it implies \[x,x\]=−\[x,x\].”
+
+**Paper or page:** [Lie Algebra is Anticommutative](https://proofwiki.org/wiki/Lie_Algebra_is_Anticommutative). It says: “Let L be a Lie algebra. Then L is anticommutative:”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Jacobi as a product rule gives the adjoint representation
+
+**Remember:** The product rule for brackets says that the adjoint operators preserve brackets.
+
+*True by definition.* MSC 17B01 (Identities, free Lie (super)algebras), 17B10. arXiv math.RA, math.RT. Level 2: later undergraduate.
+
+**Definition.** A Lie bracket is bilinear and satisfies \[x,x\] = 0 and the Jacobi identity. Write adₓ for the operator b ↦ \[x,b\]. Impose Jacobi in product-rule form, \[x,\[a,b\]\] = \[\[x,a\],b\] + \[a,\[x,b\]\]. The usual cyclic form says that \[x,\[a,b\]\] + \[a,\[b,x\]\] + \[b,\[x,a\]\] = 0.
+
+**Problem.** The map x ↦ adₓ preserves brackets, using the commutator AB − BA as the bracket of operators.
+
+**How the definition helps.** The product-rule axiom states exactly that x ↦ adₓ preserves brackets once we move the last term to the left (our own). The result is (adₓ adₐ − adₐ adₓ)(b) = \[\[x,a\],b\] (our own). The only work in replacing the cyclic axiom is using \[a,b\] = −\[b,a\] to rearrange its terms (our own).
+
+**nLab:** [Jacobi identity](https://ncatlab.org/nlab/show/Jacobi+identity). It says: “If the bracket \[−,−\] is skew-symmetric the Jacobi identity for all triples is equivalent to the Leibniz identity that for all x,a,b, the linear map adₓ = \[x,−\] : 𝔤 → 𝔤 is a derivation”
+
+**Wikipedia:** [Adjoint representation](https://en.wikipedia.org/wiki/Adjoint_representation). It says: “This last identity says that ad is a Lie algebra homomorphism; i.e., a linear mapping that takes brackets to brackets.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Ruling out abelian ideals makes the adjoint representation faithful
+
+**Remember:** The centre is an abelian ideal, so it vanishes.
+
+*True by definition.* MSC 17B20 (Simple, semisimple, reductive (super)algebras), 17B05. arXiv math.RT, math.RA. Level 2: later undergraduate.
+
+**Definition.** Call a finite-dimensional Lie algebra 𝔤 semisimple if it has no nonzero abelian ideal. An ideal I satisfies \[𝔤,I\] ⊆ I, and it is abelian when \[I,I\] = 0. In characteristic zero an equivalent definition requires a nondegenerate Killing form. This form pairs x and y by the trace of the product of the operators \[x,−\] and \[y,−\].
+
+**Problem.** For a semisimple Lie algebra 𝔤 in characteristic zero, the adjoint representation x ↦ \[x,−\] is injective.
+
+**How the definition helps.** The no-abelian-ideals definition rules out a nonzero centre immediately, since the centre is an abelian ideal. The centre is exactly the kernel of x ↦ \[x,−\] (our own). Starting with the Killing form, one instead shows that the centre pairs to zero with every element, then uses nondegeneracy (our own). The work moves to Cartan’s criterion, which connects nondegeneracy to the absence of nonzero solvable ideals (our own). A solvable ideal becomes zero after repeated bracketing with itself, so its last nonzero stage is an abelian ideal (our own).
+
+**Wikipedia:** [Semisimple Lie algebra](https://en.wikipedia.org/wiki/Semisimple_Lie_algebra). It says: “The center of a semisimple Lie algebra 𝔤 is trivial (since the center is an abelian ideal). In other words, the adjoint representation ad is injective.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Defining Cartan subalgebras as maximal toral makes the rank well defined
+
+**Remember:** Maximal toral, not maximal abelian, gives one rank for each algebra.
+
+*Rules out counterexamples.* MSC 17B05 (Structure theory for Lie algebras and superalgebras), 17B20. arXiv math.RA, math.RT. Level 3: graduate.
+
+**Definition.** A Cartan subalgebra is a nilpotent subalgebra, one where long enough brackets vanish, that is its own normalizer. The normalizer is the set of elements whose bracket with it stays in it. In a semisimple Lie algebra over an algebraically closed field of characteristic 0, this is the same as a maximal toral subalgebra. A subalgebra is toral if every element x has ad(x) diagonalizable.
+
+**Problem.** Over an algebraically closed field of characteristic 0, all Cartan subalgebras of a finite-dimensional Lie algebra are conjugate under automorphisms. So their common dimension, the rank, is an invariant.
+
+**How the definition helps.** Asking for diagonalizable elements, not just commuting ones, picks out a class of subalgebras that are all alike. Maximal abelian subalgebras do not have one dimension. The page gives sl₂ₙ(ℂ), whose Cartan subalgebras have dimension 2n − 1, but which has an abelian subalgebra of dimension n². One such subalgebra is the matrices with an n × n block in the top right corner and zeros elsewhere (our own). The conditions on the field matter too: over ℝ, the page says, sl₂(ℝ) has two Cartan subalgebras that are not conjugate. What stays hard is the conjugacy theorem itself.
+
+**Wikipedia:** [Cartan subalgebra](https://en.wikipedia.org/wiki/Cartan_subalgebra). It says: “The dimension of a Cartan subalgebra is not in general the maximal dimension of an abelian subalgebra, even for complex simple Lie algebras.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Fundamental weights make integral weights the integer combinations of a basis
+
+**Remember:** Coroots test integrality; fundamental weights are their dual basis.
+
+*True by definition.* MSC 17B10 (Representations of Lie algebras and Lie superalgebras, algebraic theory (weights)), 17B22. arXiv math.RT. Level 3: graduate.
+
+**Definition.** Let 𝔤 be a complex semisimple Lie algebra, with roots the nonzero weights of its adjoint representation. For a root α, the coroot is α∨ = 2α/(α, α). The fundamental weights ω₁, …, ωₙ are the basis dual to the simple coroots α₁∨, …, αₙ∨. A weight λ is algebraically integral if (λ, α∨) is an integer for every root α.
+
+**Problem.** A weight is algebraically integral if and only if it is an integer combination of the fundamental weights. It is dominant integral if also (λ, α∨) ≥ 0 for every positive root α. That holds exactly when these integers are all nonnegative.
+
+**How the definition helps.** The coefficient of λ on ωᵢ is (λ, αᵢ∨) by the dual basis property, so integrality on the simple coroots is integrality of the coefficients. The work moves into another fact: if λ is integral on the simple coroots, it is integral on all coroots. That holds because the simple coroots form a base of the dual root system, so every coroot is an integer combination of them (our own). The scaling 2α/(α, α) makes the coroots a root system too, with the same group of reflections, the Weyl group (our own). With this, the theorem of the highest weight indexes the irreducible representations by n-tuples of nonnegative integers (our own).
+
+**Wikipedia:** [Weight (representation theory)](https://en.wikipedia.org/wiki/Weight_%28representation_theory%29), [Root system](https://en.wikipedia.org/wiki/Root_system). It says: “An element λ is then algebraically integral if and only if it is an integral combination of the fundamental weights.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Induction gives Verma modules their universal property
+
+**Remember:** Induction turns a choice of highest weight vector into a module map.
+
+*True by definition.* MSC 17B10 (Representations of Lie algebras and Lie superalgebras, algebraic theory (weights)). arXiv math.RT. Level 3: graduate.
+
+**Definition.** Choose a diagonal subalgebra 𝔥 of a complex semisimple Lie algebra 𝔤 and a compatible choice of positive roots. The positive root spaces are the corresponding eigenspaces for bracketing with elements of 𝔥, and they form 𝔟 together with 𝔥. A weight λ, a linear form on 𝔥, defines a line ℂλ on which the positive root spaces act by zero. Define M(λ) as U(𝔤) ⊗ ℂλ over U(𝔟), where U denotes the associative algebra obtained by imposing xy − yx = \[x,y\].
+
+**Problem.** Every 𝔤-module generated by a vector of weight λ killed by the positive root spaces is a quotient of M(λ).
+
+**How the definition helps.** The induced definition gives the map by the tensor product's universal property, with no need to choose a basis (our own). Maps from M(λ) into V correspond to 𝔟-maps ℂλ → V, which select vectors of weight λ killed by the positive root spaces (our own). The map is onto when the selected vector generates V. A basis-first construction instead builds the module from ordered products of negative root vectors applied to one generator (our own). The work of producing this basis and showing M(λ) is nonzero lies in the Poincaré–Birkhoff–Witt theorem on ordered products in U(𝔤) (our own).
+
+**nLab:** [Verma module](https://ncatlab.org/nlab/show/Verma+module). It says: “Given a semisimple Lie algebra 𝔤 over a field F with Borel subalgebra 𝔟 ⊂ 𝔤 a Verma module is the induced module”
+
+**Wikipedia:** [Verma module](https://en.wikipedia.org/wiki/Verma_module). It says: “If V is any representation generated by a highest weight vector of weight λ, there is a surjective 𝔤-homomorphism W\_\\lambda\\to V.”
+
+**Sources:**
+
+- [D.-N. Verma, Structure of certain induced representations of complex semisimple Lie algebras, Bulletin of the American Mathematical Society 74 (1968) 160–167](https://doi.org/10.1090/s0002-9904-1968-11921-4)
+
+### Verma modules give an irreducible module of every highest weight
+
+**Remember:** Build the largest module of weight λ first, then cut it down.
+
+*Makes the theorem clean to state or prove.* MSC 17B10 (Representations of Lie algebras and Lie superalgebras, algebraic theory (weights)). arXiv math.RT. Level 3: graduate.
+
+**Definition.** Fix a complex semisimple Lie algebra 𝔤 with a Borel subalgebra 𝔟, made of a Cartan subalgebra 𝔥 and the positive root spaces. For a linear form λ on 𝔥, let 𝔟 act on a one-dimensional space by λ. The Verma module of weight λ is the module induced from this, U(𝔤) ⊗ over U(𝔟) of that line. U(𝔤) is the universal enveloping algebra.
+
+**Problem.** A highest weight is a weight above all other weights of the module, in the order set by the positive roots. A weight λ is dominant integral if 2(λ,α)/(α,α) is a nonnegative integer for each positive root α. The theorem of the highest weight says finite-dimensional irreducible representations match these weights, and its hardest part is existence.
+
+**How the definition helps.** The Verma module is defined by a universal property, so every module generated by a vector of highest weight λ is a quotient of it. The Verma module has a unique maximal submodule, so it has a unique irreducible quotient. That gives existence and uniqueness of an irreducible module of highest weight λ for every λ at once. The question then becomes only: for which λ is this quotient finite dimensional? The page says the answer is the dominant integral weights, and this step is the remaining real work. Weyl's original proof used compact groups and the character formula instead.
+
+**Wikipedia:** [Verma module](https://en.wikipedia.org/wiki/Verma_module), [Theorem of the highest weight](https://en.wikipedia.org/wiki/Theorem_of_the_highest_weight). It says: “In any case, the Verma module gives—for any λ, not necessarily dominant or integral—a representation with highest weight λ. The price we pay for this relatively simple construction is that Wλ is always infinite dimensional.”
+
+**Sources:**
+
+- [Verma, D.-N. (1968). Structure of certain induced representations of complex semisimple Lie algebras. Bulletin of the AMS 74, 160–167.](https://doi.org/10.1090/S0002-9904-1968-11921-4)
+- [Bernshtein, I. N., Gel'fand, I. M., Gel'fand, S. I. (1971). Structure of representations generated by vectors of highest weight. Functional Analysis and Its Applications 5, 1–8.](https://doi.org/10.1007/BF01075841)
+
+### Abelian Lie algebras are not simple, so semisimple means no abelian ideals
+
+**Remember:** The line is too simple to be simple.
+
+*Rules out counterexamples.* MSC 17B20 (Simple, semisimple, reductive (super)algebras), 17B05. arXiv math.RA, math.RT. Level 3: graduate.
+
+**Definition.** A simple Lie algebra is a non-abelian Lie algebra with no ideals other than 0 and itself. An ideal is a subspace I with \[x, y\] in I for every x in the algebra and y in I. A semisimple Lie algebra is a direct sum of simple ones.
+
+**Problem.** Over a field of characteristic 0, three conditions on a Lie algebra should agree. The algebra is a direct sum of simple ones; it has no nonzero abelian ideals; its Killing form, the trace form tr(ad x ad y), is nondegenerate. This equivalence includes Cartan's criterion.
+
+**How the definition helps.** Leaving out the one-dimensional Lie algebra makes 'direct sum of simples' the same as 'no abelian ideals'. The following example is our own. The one-dimensional algebra has no proper nonzero ideals, so by the bare condition it would be simple. Then ℝ would be semisimple, yet it is its own abelian ideal and its Killing form is zero. The exclusion is the same move as leaving 1 out of the primes, which is also our own comparison. What stays hard is Cartan's criterion and the Killing–Cartan classification of the simple algebras.
+
+**Wikipedia:** [Simple Lie algebra](https://en.wikipedia.org/wiki/Simple_Lie_algebra), [Semisimple Lie algebra](https://en.wikipedia.org/wiki/Semisimple_Lie_algebra). It says: “In algebra, a simple Lie algebra is a Lie algebra that is non-abelian and contains no nonzero proper ideals.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Chevalley's integral basis builds the finite groups of Lie type uniformly
+
+**Remember:** Integer structure constants let every simple Lie algebra make finite groups.
+
+*Makes the theorem clean to state or prove.* MSC 17B20 (Simple, semisimple, reductive (super)algebras), 20G40. arXiv math.RT, math.GR. Level 3: graduate.
+
+**Definition.** A Chevalley basis of a complex simple Lie algebra is a basis in which all the structure constants are integers. With it, exponentials of root elements make sense over any field. These generate the Chevalley group of that type over that field.
+
+**Problem.** For each complex simple Lie algebra and each finite field, the construction gives a finite group of that type. This group is simple apart from a few small cases. One construction gives the classical groups and the exceptional types E₆, E₇, E₈, F₄ and G₂.
+
+**How the definition helps.** One integral construction replaces a separate construction for each family, so existence and simplicity can be stated and proved for all types together. Before Chevalley's 1955 paper, groups of type G₂ and E₆ were known from Dickson's work. Chevalley's construction gave groups for all the exceptional Lie algebras. The twisted groups of Steinberg, Suzuki and Ree need extra automorphisms of the diagram or the field, so they are not covered directly. Some of the smallest groups are not perfect, so the simplicity theorem has a short list of exceptions.
+
+**Wikipedia:** [Group of Lie type](https://en.wikipedia.org/wiki/Group_of_Lie_type). It says: “Chevalley constructed a Chevalley basis (a sort of integral form but over finite fields) for all the complex simple Lie algebras”
+
+**Sources:**
+
+- [C. Chevalley, Sur certains groupes simples, Tôhoku Mathematical Journal 7 (1955) 14–66](https://doi.org/10.2748/tmj/1178245104)
+
+### Defining Lie algebras by Serre relations lifts diagram symmetries
+
+**Remember:** A symmetry of the relations permutes the generators.
+
+*True by definition.* MSC 17B20 (Simple, semisimple, reductive (super)algebras). arXiv math.RT. Level 3: graduate.
+
+**Definition.** Define the complex semisimple Lie algebra of a Cartan matrix by generators eᵢ, fᵢ, hᵢ and the Chevalley–Serre relations. The matrix records the pairings of simple roots with simple coroots. Another approach starts from the Lie algebra and reads these pairings from its root decomposition.
+
+**Problem.** Every permutation of the indices that preserves the Cartan matrix gives an automorphism of the Lie algebra. The automorphism permutes the generators eᵢ, fᵢ and hᵢ in the same way.
+
+**How the definition helps.** A permutation that preserves the matrix sends each defining relation to another defining relation. So it defines a map on the presented algebra, and its inverse permutation gives the inverse map. That is our own argument. The work goes into the theorem that the relations present the Lie algebra, so no further relations hold. Without the presentation, one would use the isomorphism theorem for semisimple Lie algebras, in our own comparison.
+
+**nLab:** [Cartan matrix](https://ncatlab.org/nlab/show/Cartan+matrix). It says: “In fact, 𝔤 is presented by generators eᵢ, fᵢ, hᵢ and the relations”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Starting each classical family at the right rank makes the list non-redundant
+
+**Remember:** Start B at two, C at three, D at four, and nothing repeats.
+
+*Makes the theorem clean to state or prove.* MSC 17B20 (Simple, semisimple, reductive (super)algebras), 17B22. arXiv math.RT, math.RA. Level 3: graduate.
+
+**Definition.** The four classical families of complex simple Lie algebras are Aₙ = slₙ₊₁, Bₙ = so₂ₙ₊₁, Cₙ = sp₂ₙ and Dₙ = so₂ₙ. The index n is the rank. By convention each family starts at a fixed lowest rank: 1, 2, 3 and 4.
+
+**Problem.** Every complex simple Lie algebra is exactly one of Aₙ, Bₙ, Cₙ, Dₙ with these ranges, or one of the five exceptional algebras. No algebra appears twice in the list, and every entry is simple.
+
+**How the definition helps.** The lower bounds on n remove exactly the small cases where two families meet or the algebra is not simple. The coincidences are so₃ ≅ sl₂, sp₂ ≅ sl₂, sp₄ ≅ so₅ and so₆ ≅ sl₄ (our own list). D₂ = so₄ is so₃ ⊕ so₃, so it is not simple, and D₁ = so₂ is abelian (our own). The page says that a lower start gives a redundant list with exceptional isomorphisms. With the bounds, the classification is a clean list with each algebra once. What stays hard is the classification itself, through root systems and Dynkin diagrams.
+
+**Wikipedia:** [Semisimple Lie algebra](https://en.wikipedia.org/wiki/Semisimple_Lie_algebra). It says: “The enumeration of the four families is non-redundant and consists only of simple algebras if n ≥ 1 for Aₙ, n ≥ 2 for Bₙ, n ≥ 3 for Cₙ, and n ≥ 4 for Dₙ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Reduced crystallographic root systems are exactly those that Dynkin diagrams classify
+
+**Remember:** Integer Cartan numbers and no doubled roots leave only A to G.
+
+*Rules out counterexamples.* MSC 17B22 (Root systems), 17B20. arXiv math.RT, math.RA. Level 3: graduate.
+
+**Definition.** A root system is a finite set of nonzero vectors that spans a Euclidean space. It is closed under the reflection in the hyperplane orthogonal to each of its vectors. It is reduced if the only multiples of a root α in the set are α and −α. It is crystallographic if 2(α,β)/(α,α) is an integer for all roots α and β.
+
+**Problem.** Every irreducible reduced crystallographic root system is one of Aₙ, Bₙ, Cₙ, Dₙ, E₆, E₇, E₈, F₄ or G₂. These are also exactly the root systems of the complex simple Lie algebras.
+
+**How the definition helps.** The two extra conditions limit the angles between roots to a short list, and that keeps the classification short. The page shows that the cosine of an angle between two roots must be half the square root of an integer. Without integrality, the ten unit vectors toward the vertices of a regular decagon pass the axioms (our own). They form type I₂(5), and H₃ and H₄ arise in the same way (our own). Without reducedness, the system BCₙ, which holds both eᵢ and 2eᵢ, is allowed (our own). Both conditions hold for the roots of a complex semisimple Lie algebra, so nothing that matters for Lie theory is lost. What stays hard is the case analysis on graphs that gives the list.
+
+**Wikipedia:** [Root system](https://en.wikipedia.org/wiki/Root_system). It says: “Other authors omit condition 2; then they call root systems satisfying condition 2 reduced. In this article, all root systems are assumed to be reduced and crystallographic.”
+
+**Sources:**
+
+- [Killing, W. (1888). Die Zusammensetzung der stetigen endlichen Transformationsgruppen. Mathematische Annalen 33, 1–48.](https://doi.org/10.1007/BF01444109)
+
+### Root reflections make the Weyl group visibly finite
+
+**Remember:** A linear map that fixes a spanning set is the identity.
+
+*True by definition.* MSC 17B22 (Root systems), 20F55. arXiv math.RT, math.GR. Level 3: graduate.
+
+**Definition.** A root system has a finite spanning set Φ of vectors in a Euclidean space. Reflection across the hyperplane perpendicular to any root permutes Φ. Define the Weyl group as the group generated by these reflections. For root systems from compact connected Lie groups, another description uses the quotient N(T)/T.
+
+**Problem.** The Weyl group of a root system is finite.
+
+**How the definition helps.** The reflection definition makes the Weyl group act by permutations of a finite set. Since the roots span, only the identity fixes all of them (our own). This puts the Weyl group inside a finite permutation group (our own). In the other description, T is a maximal connected abelian subgroup and N(T) is the group of elements that conjugate T to itself. The quotient proof shows that N(T) is compact and has T as its identity component (our own). Comparing the definitions requires the theorem that identifies the quotient with the reflection group (our own).
+
+**Wikipedia:** [Weyl group](https://en.wikipedia.org/wiki/Weyl_group). It says: “By the definition of a root system, each s\_\\alpha preserves Φ, from which it follows that W is a finite group.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Defining enveloping algebras as left adjoints makes them preserve free products
+
+**Remember:** Left adjoints preserve coproducts, and free products are coproducts.
+
+*True by definition.* MSC 17B35 (Universal enveloping (super)algebras), 18A40. arXiv math.RA, math.CT. Level 3: graduate.
+
+**Definition.** Define the universal enveloping algebra U(g) of a Lie algebra g by a universal property. Lie maps from g into an associative algebra A, with bracket ab − ba, match algebra maps U(g) → A. So U is left adjoint to the functor from associative algebras to Lie algebras. The explicit definition presents U(g) by generators x in g and relations xy − yx = \[x, y\].
+
+**Problem.** The enveloping algebra of a free product of Lie algebras is the free product of their enveloping algebras. A free product is the coproduct, so maps out of it are independent maps out of each factor.
+
+**How the definition helps.** Every left adjoint preserves coproducts, and both free products are coproducts in their categories. That is our own argument; the nLab quote gives only the adjunction. In our own account, the work moves to showing that the explicit presentation has the universal property. With the presentation alone, one would compare two presentations by hand.
+
+**nLab:** [universal enveloping algebra](https://ncatlab.org/nlab/show/universal+enveloping+algebra). It says: “which is the left adjoint to the forgetful functor”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Defining enveloping algebras universally makes direct sums give tensor products
+
+**Remember:** Commuting Lie summands become commuting tensor factors.
+
+*True by definition.* MSC 17B35 (Universal enveloping (super)algebras). arXiv math.RA. Level 3: graduate.
+
+**Definition.** Define the universal enveloping algebra U(g) of a Lie algebra g by a universal property. Lie maps from g into an associative algebra A, with bracket ab − ba, match algebra maps U(g) → A. The explicit definition presents U(g) inside the tensor algebra, the algebra of words in vectors.
+
+**Problem.** Over a field, the enveloping algebra of a direct sum g ⊕ h of Lie algebras is the tensor product U(g) ⊗ U(h).
+
+**How the definition helps.** Both sides have the same maps into any associative algebra A. These are pairs of maps from g and from h whose images commute, because \[g, h\] = 0 in the direct sum. That is our own argument. In our own account, the work moves to the universal property of the tensor product of algebras, which also uses commuting images. The usual proof without the universal property compares bases from the Poincaré–Birkhoff–Witt theorem, in our own comparison.
+
+**nLab:** [universal enveloping algebra](https://ncatlab.org/nlab/show/universal+enveloping+algebra). It says: “in the category of enveloping algebras of L, which implies that it is unique up to an isomorphism if it exists.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The Casimir tensor gives a basis-free central element
+
+**Remember:** The identity map makes no choice of basis.
+
+*True by definition. Confidence: medium.* MSC 17B35 (Universal enveloping (super)algebras), 17B10. arXiv math.RT. Level 3: graduate.
+
+**Definition.** Take a finite-dimensional complex Lie algebra 𝔤 with a nondegenerate symmetric bilinear form B. Assume B is invariant, so B(\[x,y\],z) + B(y,\[x,z\]) = 0. The identification with the dual given by B turns the identity on 𝔤 into a tensor in 𝔤 ⊗ 𝔤. Multiply the tensor factors in U(𝔤), the associative algebra generated by 𝔤 with xy − yx = \[x,y\].
+
+**Problem.** The resulting Casimir element is independent of the basis and commutes with every element of U(𝔤).
+
+**How the definition helps.** The tensor definition makes basis independence immediate because the identity map uses no basis (our own). The usual formula sums XᵢXⁱ for a basis Xᵢ and its B-dual basis Xⁱ (our own). The adjoint action, which acts by brackets on 𝔤, fixes the identity in the space of linear maps (our own). Since B is invariant, the corresponding tensor is fixed too (our own). Multiplication carries this action to commutators, so its image commutes with all the generators (our own). The work lies in comparing this tensor with the basis formula and in finding B (our own). For a semisimple Lie algebra, Cartan’s criterion ensures that its Killing form is nondegenerate.
+
+**Wikipedia:** [Casimir element](https://en.wikipedia.org/wiki/Casimir_element). It says: “Although the definition relies on a choice of basis for the Lie algebra, it is easy to show that Ω is independent of this choice.”
+
+**Sources:**
+
+- [H. Casimir and B. L. van der Waerden, Algebraischer Beweis der vollständigen Reduzibilität der Darstellungen halbeinfacher Liescher Gruppen, Mathematische Annalen 111 (1935) 1–12](https://doi.org/10.1007/bf01472196)
+
+### The enveloping algebra turns the diagonal into a coproduct
+
+**Remember:** The diagonal gives the coproduct without checking relations again.
+
+*True by definition.* MSC 17B35 (Universal enveloping (super)algebras), 16T05. arXiv math.RA, math.QA. Level 3: graduate.
+
+**Definition.** Let 𝔤 be a Lie algebra over a field k. Its enveloping algebra U(𝔤) comes with a map from 𝔤 that turns brackets into commutators xy − yx. Every linear map from 𝔤 to an associative algebra with this property extends uniquely to an algebra map from U(𝔤). A presentation instead uses generators from 𝔤 and imposes xy − yx = \[x,y\] as relations.
+
+**Problem.** The algebra U(𝔤) has a Hopf algebra structure, made of three compatible maps. Its coproduct defines tensor product actions, its counit defines the trivial action, and its antipode defines the action on dual spaces. The coproduct sends x in 𝔤 to x ⊗ 1 + 1 ⊗ x.
+
+**How the definition helps.** The universal property turns the diagonal 𝔤 → 𝔤 × 𝔤 into the coproduct once we identify U(𝔤 × 𝔤) with U(𝔤) ⊗ U(𝔤). That identification uses the fact that maps from the two factors have commuting images (our own). The diagonal and zero map yield the coproduct and counit identities (our own). The antipode extends x ↦ −x and reverses multiplication, so its cancellation identity holds on generators and then on products (our own). The presentation-based proof instead checks directly that the proposed maps respect the relations (our own).
+
+**nLab:** [universal enveloping algebra](https://ncatlab.org/nlab/show/universal+enveloping+algebra). It says: “The coproduct Δ: U(L) → U(L × L) ≅ U(L) ⊗ U(L) is induced by the diagonal map L → L × L”
+
+**Sources:**
+
+- [J. W. Milnor and J. C. Moore, On the structure of Hopf algebras, Annals of Mathematics 81 (1965) 211–264](https://doi.org/10.2307/1970615)
+
+### The universal enveloping algebra makes Lie algebra representations into modules
+
+**Remember:** A representation of 𝔤 is the same as a module over U(𝔤).
+
+*True by definition.* MSC 17B35 (Universal enveloping (super)algebras), 17B10. arXiv math.RT, math.RA. Level 3: graduate.
+
+**Definition.** The universal enveloping algebra U(𝔤) is the associative algebra generated by a Lie algebra 𝔤 with the rule xy − yx = \[x, y\]. It has a universal property. Every Lie algebra map from 𝔤 into an associative algebra, with the commutator as bracket, extends uniquely to an algebra map from U(𝔤).
+
+**Problem.** Representations of 𝔤 on V are the same as U(𝔤)-modules. So central elements of U(𝔤) act on every representation, and as scalars on finite-dimensional irreducible ones over ℂ. An example is the Casimir element, a fixed quadratic expression in a basis.
+
+**How the definition helps.** Taking the associative algebra to be End(V) in the universal property gives the extension of each representation at once. So all of ring and module theory, including induced modules and central characters, applies to Lie algebras. The Casimir element, which commutes with everything, is the tool for Weyl's complete reducibility theorem. The work moves into the Poincaré–Birkhoff–Witt theorem, which says that ordered monomials in a basis of 𝔤 form a basis of U(𝔤). Only that theorem shows that 𝔤 itself sits inside U(𝔤).
+
+**Wikipedia:** [Universal enveloping algebra](https://en.wikipedia.org/wiki/Universal_enveloping_algebra). It says: “The universal property of the enveloping algebra immediately implies that every representation of 𝔤 acting on a vector space V extends uniquely to a representation of U(𝔤).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Defining Lie algebras by dual-number points makes Lie commute with kernels
+
+**Remember:** A tangent vector of a kernel is a tangent vector killed by the map.
+
+*True by definition.* MSC 17B45 (Lie algebras of linear algebraic groups), 14L15. arXiv math.AG. Level 3: graduate.
+
+**Definition.** For a group scheme G over a field k, define Lie(G) as the kernel of G(k\[ε\]) → G(k). Here k\[ε\] adds an element ε with ε² = 0, and the map sets ε to zero. Another definition uses derivations of the coordinate ring that are invariant under left translations.
+
+**Problem.** Take a map of affine group schemes G → H over a field. The Lie algebra of its kernel is the kernel of the map of Lie algebras. Here the kernel is the scheme kernel, which may have nilpotent functions.
+
+**How the definition helps.** Both sides are the points of G over k\[ε\] that reduce to the identity and map to the identity in H. Milne gives this argument (his 12.12). In our own example, the map x ↦ xᵖ on the additive group in characteristic p has derivative zero. Its scheme kernel has Lie algebra k, but the kernel as a variety is trivial. So the statement needs the scheme kernel. The work goes into comparing points over k\[ε\] with invariant derivations (Milne §12e), in our own account.
+
+**nLab:** [affine group scheme](https://ncatlab.org/nlab/show/affine+group+scheme). It says: “This Lie algebra is also isomorphic to the Lie algebra of k-linear k-valued derivations of 𝒪(X).”
+
+**Sources:**
+
+- [J. S. Milne, Algebraic Groups, version 2.00 (2015), §12c, 12.12, and §12e](https://www.jmilne.org/math/CourseNotes/iAG200.pdf)
+
+### Dual numbers expose derivations in the automorphism group
+
+**Remember:** The coefficient of ε is the product rule.
+
+*True by definition.* MSC 17B45 (Lie algebras of linear algebraic groups), 17B40. arXiv math.AG, math.RA. Level 3: graduate.
+
+**Definition.** Over a field k, the dual numbers are the ring k\[ε\] with ε² = 0. For a group defined by polynomial equations, take solutions over the dual numbers that reduce to the identity at ε = 0. These solutions describe the tangent space at the identity and can detect tangent directions that ordinary curves miss (our own).
+
+**Problem.** Let A be a finite-dimensional unital associative k-algebra. The Lie algebra of its algebra automorphism group scheme consists of the derivations of A. These are linear maps D satisfying D(xy) = D(x)y + xD(y), with bracket given by the commutator of linear maps.
+
+**How the definition helps.** The dual-number definition makes each candidate 1 + εD, so one product expansion gives exactly the derivation rule. The inverse is 1 − εD, and the rule gives D(1) = 0, so no extra conditions remain (our own). The comparison with the usual algebraic tangent space is the linearization of polynomial equations at the identity (our own). Keeping the mixed term in the group commutator with two independent parameters gives the bracket DE − ED (our own). The same first-order method gives the trace-zero condition for SLₙ, the group of determinant-one matrices, by expanding its determinant (our own).
+
+**Wikipedia:** [Lie algebra](https://en.wikipedia.org/wiki/Lie_algebra). It says: “Indeed, writing out the condition that (1+εD)(xy) ≡ (1+εD)(x)·(1+εD)(y) (mod ε²) (where 1 denotes the identity map on A) gives exactly the definition of D being a derivation.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Invariant derivations give Lie algebras a pth power
+
+**Remember:** All the middle binomial coefficients vanish in characteristic p.
+
+*True by definition. Confidence: medium.* MSC 17B50 (Modular Lie (super)algebras), 14L15, 17B45. arXiv math.RA, math.AG. Level 3: graduate.
+
+**Definition.** Let G be an affine group scheme, a group given by a coordinate algebra that encodes its group operations. Use derivations of that algebra that commute with left translation over every commutative algebra over the ground field. A derivation is a linear map D with D(fg) = D(f)g + fD(g). The tangent-space model instead describes first-order directions at the identity.
+
+**Problem.** Over a field of characteristic p &gt; 0, the Lie algebra of an affine group scheme has a natural restricted Lie algebra structure. This adds a pth power operation with the laws of pth powers in an associative algebra.
+
+**How the definition helps.** In the derivation model, the power operation is Dᵖ, the composition of D with itself p times (our own). Applying the product rule repeatedly gives binomial coefficients, and all the middle coefficients vanish in characteristic p (our own). Thus Dᵖ is a derivation and still commutes with left translation (our own). The required identities follow from those for pth powers and commutators of linear operators (our own). The work that the tangent-space model hides is identifying a tangent vector at the identity with the derivation obtained by left translation (our own).
+
+**Wikipedia:** [Restricted Lie algebra](https://en.wikipedia.org/wiki/Restricted_Lie_algebra). It says: “When k has characteristic p&gt;0, then iterating a derivation p times yields a derivation, and this makes Derₖ(A) into a restricted Lie algebra.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### As codifferentials, L∞-algebras turn all higher Jacobi identities into D² = 0
+
+**Remember:** Put all the brackets into one differential D; the Jacobi identities become D² = 0.
+
+*Makes the theorem clean to state or prove.* MSC 17B55 (Homological methods in Lie (super)algebras), 18M70. arXiv math.QA, math.AT. Level 3: graduate.
+
+**Definition.** An L∞-algebra on a graded vector space 𝔤 is a coderivation D on the free graded cocommutative coalgebra ∨•𝔤. D must have degree −1 and satisfy D² = 0. A coderivation is the dual of a derivation: a map that obeys a Leibniz rule for the coproduct. The components of D are the brackets \[−\], \[−,−\], \[−,−,−\], and so on.
+
+**Problem.** The definition of an L∞-algebra by higher brackets needs an infinite family of generalized Jacobi identities with signs. We want a compact statement of these identities, and a simple notion of morphism.
+
+**How the definition helps.** One equation, D² = 0, holds all the higher Jacobi identities at once. Lada and Stasheff observed that the higher brackets extend uniquely to a coderivation on the cofree coalgebra. They also observed that the whole family of higher Jacobi identities is equivalent to D² = 0. Morphisms of L∞-algebras are then simply maps of differential graded coalgebras. For finite type (finite-dimensional in each degree), the dual is a semifree differential graded commutative algebra, the Chevalley–Eilenberg algebra. This links L∞-algebras with Sullivan models in rational homotopy theory. The sign bookkeeping does not disappear; it moves into the proof that the two definitions agree.
+
+**nLab:** [L-infinity-algebra](https://ncatlab.org/nlab/show/L-infinity-algebra). It says: “The higher Jacobi identity is equivalently the condition that D² = 0.”
+
+**Sources:**
+
+- [Tom Lada, Jim Stasheff, Introduction to sh Lie algebras for physicists, Int. J. Theor. Phys. 32 (1993), arXiv:hep-th/9209099](https://arxiv.org/abs/hep-th/9209099)
+- [Tom Lada, Martin Markl, Strongly homotopy Lie algebras, Comm. Algebra 23 (1995), arXiv:hep-th/9406095](https://arxiv.org/abs/hep-th/9406095)
+
+### Cohomology turns Weyl’s splitting problem into vanishing
+
+**Remember:** A zero extension class means a splitting that respects the action.
+
+*True by definition. Confidence: medium.* MSC 17B56 (Cohomology of Lie (super)algebras), 17B10, 17B20. arXiv math.RT. Level 3: graduate.
+
+**Definition.** An extension of V by W is a module E with submodule W and quotient V. Encode an extension by choosing a linear map s from V back into E that lifts each vector. The failure of s to respect the action gives a class in H¹(𝔤, Hom(V,W)), the first Lie algebra cohomology of the space of linear maps. This class records the failure up to changes of s.
+
+**Problem.** Weyl’s theorem says that each finite-dimensional module over a semisimple Lie algebra in characteristic zero splits into irreducible modules. Whitehead’s first lemma says H¹(𝔤,M) = 0 for every finite-dimensional module M under those hypotheses.
+
+**How the definition helps.** The extension class turns finding an invariant complement into asking whether one class vanishes (our own). For a submodule W of E, use V = E/W and set M to the space of linear maps V → W (our own). The action on M is x·f = x ∘ f − f ∘ x, with x acting on W and V (our own). Whitehead’s lemma makes the class zero, so one can adjust the lift to respect the action (our own). Its image is an invariant complement (our own). The direct proof instead constructs an invariant projection by a calculation with the Casimir operator, a central operator on representations (our own). The main work here lies in Whitehead’s lemma and in the comparison between extensions and cohomology classes (our own).
+
+**Wikipedia:** [Weyl's theorem on complete reducibility](https://en.wikipedia.org/wiki/Weyl%27s_theorem_on_complete_reducibility). It says: “The theorem is an easy consequence of Whitehead's lemma”
+
+**Sources:**
+
+- [C. Chevalley and S. Eilenberg, Cohomology theory of Lie groups and Lie algebras, Transactions of the American Mathematical Society 63 (1948) 85–124](https://doi.org/10.1090/s0002-9947-1948-0024908-8)
+
+### Defining Lie cohomology by exterior forms gives a commutative product
+
+**Remember:** A differential with the product rule passes the wedge product to cohomology.
+
+*True by definition.* MSC 17B56 (Cohomology of Lie (super)algebras). arXiv math.RA, math.KT. Level 3: graduate.
+
+**Definition.** For trivial coefficients, define Lie algebra cohomology as the cohomology of the exterior algebra on the dual space g\*. The differential extends the dual of the bracket, with a sign, by the graded product rule. The derived functor definition uses Ext groups over the enveloping algebra, the associative algebra that Lie algebra modules are modules over. Ext groups classify extensions of modules, and their Yoneda product splices extensions together.
+
+**Problem.** Lie algebra cohomology with trivial coefficients is a graded commutative ring. The product comes from the wedge product of forms.
+
+**How the definition helps.** The exterior algebra is graded commutative, and the differential obeys the product rule. So closed forms multiply to closed forms, and a boundary times a closed form is a boundary. That is our own argument. The nLab adds that d² = 0 holds exactly when the bracket satisfies the Jacobi identity. In our own account, the work moves to two comparisons. This complex must compute the Ext groups, and the wedge product must match the Yoneda product, whose commutativity is not obvious.
+
+**nLab:** [Chevalley-Eilenberg algebra](https://ncatlab.org/nlab/show/Chevalley-Eilenberg+algebra). It says: “the graded-commutative dg-algebra structures on ∧•𝔤∗ are precisely in bijection with Lie algebra structures on 𝔤”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Derived invariants give the cohomology long exact sequence
+
+**Remember:** The long exact sequence comes from the general theorem for derived functors.
+
+*True by definition.* MSC 17B56 (Cohomology of Lie (super)algebras), 18G15. arXiv math.RA, math.KT. Level 3: graduate.
+
+**Definition.** For a Lie algebra 𝔤 over a field k, the invariants of a module M are the vectors killed by all of 𝔤. Define Lie algebra cohomology as the right derived functors of invariants. To compute these, take invariants on an injective resolution, an exact sequence of injective modules starting with an embedding of M. The cochain definition instead uses alternating multilinear maps from copies of 𝔤 to M with a prescribed differential.
+
+**Problem.** A short exact sequence of 𝔤-modules gives a long exact sequence in Lie algebra cohomology.
+
+**How the definition helps.** With derived invariants, this is the general long exact sequence theorem for right derived functors (our own). The cochain proof instead checks that a short exact sequence of modules gives a short exact sequence of cochain complexes (our own). The comparison uses a free resolution of the trivial module over U(𝔤), the associative algebra that encodes the bracket by commutators (our own). The Poincaré–Birkhoff–Witt theorem on ordered products in U(𝔤) provides the basis needed to prove the resolution is exact (our own).
+
+**Wikipedia:** [Lie algebra cohomology](https://en.wikipedia.org/wiki/Lie_algebra_cohomology). It says: “Equivalently, these are the right derived functors of the left exact invariant submodule functor”
+
+**Sources:**
+
+- [C. Chevalley and S. Eilenberg, Cohomology theory of Lie groups and Lie algebras, Transactions of the American Mathematical Society 63 (1948) 85–124](https://doi.org/10.1090/s0002-9947-1948-0024908-8)
+
+### Realizations of singular Cartan matrices keep simple roots linearly independent
+
+**Remember:** Enlarge the space 𝔥 until the simple roots stop colliding.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 17B67 (Kac-Moody (super)algebras; extended affine Lie algebras; toroidal Lie algebras), 17B22. arXiv math.RA, math.RT. Level 3: graduate.
+
+**Definition.** A generalized Cartan matrix C is an n × n integer matrix of rank r, with 2 on the diagonal and nonpositive entries elsewhere. Also cᵢⱼ = 0 exactly when cⱼᵢ = 0. A realization is a complex vector space 𝔥 of dimension 2n − r with independent vectors αᵢ∨, the simple coroots. It also has independent linear forms αᵢ on 𝔥, the simple roots, with αᵢ(αⱼ∨) = cⱼᵢ.
+
+**Problem.** Every generalized Cartan matrix has a realization, unique up to isomorphism. The Kac–Moody algebra built from it by generators and relations splits into 𝔥 and root spaces, the common eigenspaces of 𝔥. Every root is a sum of simple roots with integer coefficients all of one sign.
+
+**How the definition helps.** Choosing the dimension 2n − r leaves room for both the simple roots and the simple coroots to be independent, even when C is singular. Take the affine matrix with rows (2, −2) and (−2, 2), of rank 1 (our own). On a space of dimension 2, its two simple roots would satisfy α₁ = −α₂ (our own). Then positive and negative roots could not be told apart. In a space of dimension 3, the two simple roots stay independent, so each root has one sign (our own). The root space decomposition is still a real theorem, proved in Kac's book (our own). What stays hard is the structure of the imaginary roots, which have no finite analogue (our own).
+
+**Wikipedia:** [Kac–Moody algebra](https://en.wikipedia.org/wiki/Kac%E2%80%93Moody_algebra). It says: “The vector space 𝔥 has dimension 2n − r … The sets {αᵢ} and {αᵢ∨} are linearly independent”
+
+**Sources:**
+
+- [Moody, R. V. (1967). Lie algebras associated with generalized Cartan matrices. Bulletin of the AMS 73, 217–222.](https://doi.org/10.1090/S0002-9904-1967-11688-4)
+- [Kac, V. G. (1968). Simple irreducible graded Lie algebras of finite growth. Mathematics of the USSR-Izvestiya 2.](https://doi.org/10.1070/IM1968v002n06ABEH000729)
+
+### Octonions are associative inside a suitably twisted graded category
+
+**Remember:** The octonions are associative once the surrounding category has the right associator.
+
+*True by definition. Confidence: medium.* MSC 17A75 (Composition algebras), 18M05, 18A50. arXiv math.RA, math.QA. Level 4: research.
+
+**Definition.** Start with the real group algebra of ℤ₂³, the group (ℤ/2)³ with 8 elements. Twist its multiplication by a function ω on pairs of group elements, where ω is not a 2-cocycle; the result is the octonions. The coboundary φ = ∂ω is a 3-cocycle on ℤ₂³ that is not identically 1. So φ defines a non-identity associator on the category of ℤ₂³-graded real vector spaces. (An associator is the isomorphism (U ⊗ V) ⊗ W ≅ U ⊗ (V ⊗ W) of a monoidal category.)
+
+**Problem.** People say that the Cayley–Dickson algebras 'lose nice properties'. For example, the octonions are not associative. We want to explain this claim.
+
+**How the definition helps.** Change the associator of the surrounding category, and the octonions become associative there. Albuquerque and Majid show that the quaternions come from a genuine 2-cocycle on ℤ₂², so they are associative. The octonions come from a twist ω whose coboundary is not identically 1, and the nLab calls it a nontrivial cocycle. Our own note: as a coboundary, it is trivial as a cohomology class, but as a function it is not identically 1, so the associator that it gives is not the identity. In the graded category with this associator, the octonions are an ordinary associative monoid object, so associativity holds by construction of the surrounding category. The nLab says that the similar pattern for the sedenions, with a 4-cocycle and a fusion 2-category, is not proven.
+
+**nLab:** [Cayley-Dickson construction](https://ncatlab.org/nlab/show/Cayley-Dickson+construction). It says: “In the case of the octonions, these are better regarded as associative up to a nontrivial cocycle.”
+
+**Sources:**
+
+- [H. Albuquerque, S. Majid, Quasialgebra structure of the octonions, J. Algebra 220 (1999) 188–224](https://doi.org/10.1006/jabr.1998.7850)
+
+### Category O keeps Verma modules while staying abelian and Noetherian
+
+**Remember:** Big enough for Verma modules, small enough to be abelian.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 17B10 (Representations of Lie algebras and Lie superalgebras, algebraic theory (weights)), 17B55. arXiv math.RT. Level 4: research.
+
+**Definition.** Let 𝔤 be a complex semisimple Lie algebra, a direct sum of simple Lie algebras such as sl(n, ℂ). Fix a Cartan subalgebra 𝔥, a maximal commutative subalgebra that acts diagonally, and the positive part 𝔫. Category O consists of the finitely generated 𝔤-modules that are direct sums of their weight spaces, the common eigenspaces of 𝔥. Each vector must also generate a finite-dimensional 𝔫-submodule.
+
+**Problem.** Category O is an abelian category with enough projectives: every object is a quotient of a projective one. Every object is Noetherian, so submodules are finitely generated, and has finite-dimensional weight spaces. It contains all Verma modules and all finite-dimensional modules (our own).
+
+**How the definition helps.** The three conditions are weak enough to admit the infinite-dimensional Verma modules but strong enough for finiteness properties. A Verma module is the largest module generated by one vector of a chosen highest weight (our own). The category of all 𝔤-modules is too large to give these properties, and finite-dimensional modules alone leave out the Verma modules (our own). Inside category O, one can ask how often each irreducible module occurs in a Verma module (our own). BGG reciprocity and the Kazhdan–Lusztig conjectures, now theorems, answer this question (our own). Computing these multiplicities stays hard, and the known proofs use geometry of the flag variety (our own).
+
+**Wikipedia:** [Category O](https://en.wikipedia.org/wiki/Category_O), [Verma module](https://en.wikipedia.org/wiki/Verma_module). It says: “Each module in category O has finite-dimensional weight spaces. … Each module in category O is a Noetherian module. … O is an abelian category.”
+
+**Sources:**
+
+- [Bernstein, I. N., Gelfand, I. M., Gelfand, S. I. (1976). Category of 𝔤-modules. Functional Analysis and Its Applications 10, 87–92.](https://doi.org/10.1007/BF01077933)
+- [Humphreys, J. E. (2008). Representations of Semisimple Lie Algebras in the BGG Category 𝒪. Graduate Studies in Mathematics 94, AMS.](https://doi.org/10.1090/gsm/094)
+
+### Root groupoids give Lie superalgebras a Weyl group substitute with Coxeter relations
+
+**Remember:** Let reflections move between root data, not only within one.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 17B22 (Root systems), 17B67, 20F55. arXiv math.RT, math.RA. Level 4: research.
+
+**Definition.** A groupoid is a category in which every map is invertible. The root groupoid has root data as objects; a root datum records a choice of simple roots and their pairings. Its maps are generated by reflections and other moves, subject to relations. A reflection may change the root data, so it can be a map between two different objects.
+
+**Problem.** Each connected component of the root groupoid has a graph called its skeleton, which generalizes the Cayley graph of the Weyl group. The paper proves that the skeleton has the Coxeter property. For Kac–Moody Lie algebras this recovers the fact that the Weyl group is a Coxeter group, one generated by reflections of order 2.
+
+**How the definition helps.** In a groupoid a reflection can start and end at different objects, so one graph can record the moves that change the root data. In our own explanation, odd reflections of Lie superalgebras change the root data. So a single group acting on one fixed root datum cannot record them. The groupoid makes the Coxeter statement possible to state. Proving the Coxeter property of the skeleton is still the paper's main work.
+
+**Paper or page:** [Root groupoid and related Lie superalgebras](https://arxiv.org/abs/2209.06253v4). It says: “We establish the Coxeter property of the skeleton generalizing in this way the fact that the Weyl group of a Kac-Moody Lie algebra is Coxeter.”
+
+**Sources:**
+
+- [Maria Gorelik, Vladimir Hinich, Vera Serganova, Root groupoid and related Lie superalgebras, arXiv:2209.06253 (2024)](https://arxiv.org/abs/2209.06253v4)
+
+### Borcherds algebras allow imaginary simple roots, so string-state Lie algebras qualify
+
+**Remember:** A Borcherds algebra is a Kac–Moody algebra with extra imaginary, freely generated directions.
+
+*Makes the theorem clean to state or prove.* MSC 17B67 (Kac-Moody (super)algebras; extended affine Lie algebras; toroidal Lie algebras), 17B69. arXiv math.RT, math.QA. Level 4: research.
+
+**Definition.** A Borcherds algebra (also called a generalized Kac–Moody algebra) is presented by generators and relations from a symmetric real matrix (aᵢⱼ), like a Kac–Moody algebra. The difference is that diagonal entries aᵢᵢ ≤ 0 are allowed, and these give imaginary simple roots. For an imaginary simple root there are no Serre relations of the usual form, only \[eᵢ, eⱼ\] = 0 when aᵢⱼ = 0. There are also no Weyl reflections for these roots.
+
+**Problem.** Find a class of Lie algebras that includes the Lie algebras of physical string states, such as the Monster Lie algebra. The class must keep the structure theory of Kac–Moody algebras. In particular, it must keep a denominator identity (an identity that equates a product over the positive roots with a sum).
+
+**How the definition helps.** Borcherds characterized his algebras by a property that the string-state Lie algebras have. His Theorem 3.1 says this: a graded Lie algebra with an almost positive definite contravariant form (a bilinear form for which the Chevalley involution gives the adjoint) is a Borcherds algebra, after you divide by a central kernel. On spaces of physical string states, this form is positive by the no-ghost theorem. So these Lie algebras, including the Monster Lie algebra, are Borcherds algebras, and their denominator identities follow. For the Monster Lie algebra, the denominator identity is the product formula for j(p) − j(q), where j is the modular j-function. Most of the structure theory of Kac–Moody algebras carries over, with an extra correction term from the imaginary roots. The hard inputs are the no-ghost theorem and the computation of the root spaces.
+
+**nLab:** [Borcherds algebra](https://ncatlab.org/nlab/show/Borcherds+algebra). It says: “More conceptually, Borcherds algebras are essentially characterized as the Lie algebras carrying an almost positive definite contravariant form”
+
+**Sources:**
+
+- [Richard Borcherds, Generalized Kac–Moody algebras, Journal of Algebra 115 (1988) 501–512](https://doi.org/10.1016/0021-8693(88)90275-X)
+- [Richard E. Borcherds, A characterization of generalized Kac–Moody algebras, Journal of Algebra 174 (1995) 1073–1079](https://doi.org/10.1006/jabr.1995.1167)
+- [Richard E. Borcherds, Monstrous moonshine and monstrous Lie superalgebras, Inventiones Mathematicae 109 (1992) 405–444](https://doi.org/10.1007/BF01232032)
+
+### In a formally real algebra, sums of squares give a partial order
+
+**Remember:** Zero is a sum of squares only in the trivial way.
+
+*True by definition. Confidence: medium.* MSC 17C55 (Finite-dimensional structures of Jordan algebras), 17C90, 13J25. arXiv math.RA, math.OA. Level 4: research.
+
+**Definition.** A ring A is formally real if a finite sum x₁² + … + xₙ² = 0 holds only when every xᵢ = 0. The nLab says that asking only that −1 is not a sum of squares can be too weak when the algebra has too little division. For fields, the two conditions agree (our own remark).
+
+**Problem.** Order the elements, for example the observables of a quantum system, by 'x ≤ y when y − x is a sum of squares'. Then classify the finite-dimensional formally real Jordan algebras. A Jordan algebra is a commutative algebra that is not always associative, like the symmetric matrices with the product (xy + yx)/2.
+
+**How the definition helps.** Formal reality is exactly the antisymmetry of this order. The relation 'y − x is a sum of squares' is always reflexive and transitive. Suppose x ≤ y and y ≤ x. Then 0 = (y − x) + (x − y) is a sum of squares, so formal reality forces y − x = 0. The nLab explains why weaker conditions, such as '−1 has no square root', are not enough. Jordan, von Neumann and Wigner used this definition to classify the finite-dimensional formally real Jordan algebras; that classification is real work.
+
+**nLab:** [formally real algebra](https://ncatlab.org/nlab/show/formally+real+algebra), [Jordan algebra](https://ncatlab.org/nlab/show/Jordan+algebra). It says: “The last condition (as in any formally real algebra) gives J a partial ordering: if we write x ≤ y when the element y − x is a sum of squares”
+
+**Sources:**
+
+- [Pascual Jordan, John von Neumann, Eugene Wigner, On an algebraic generalization of the quantum mechanical formalism, Annals of Mathematics 35 (1934) 29–64](https://doi.org/10.2307/1968117)

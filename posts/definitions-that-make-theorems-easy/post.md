@@ -10,21 +10,21 @@ summary: An AI model found and wrote the entries. A second pass checked them, an
 ---
 A good definition does part of the work of a theorem. Take the number 1. If 1 were a prime number, the factorization of 6 would not be unique: 6 = 2 · 3 = 1 · 2 · 3. So the definition of a prime leaves 1 out, and the theorem needs no exception.
 
-This page collects 3092 cases of this kind, in 54 subjects of the Mathematics Subject Classification. Each subject has its own page. They are listed under "Sections" at the end of this page. Each entry gives the definition in plain words, the problem it solves, how it solves it, a quote that supports it, and the original papers.
+This page collects 3092 cases of this kind, in 54 subjects of the Mathematics Subject Classification. Open an entry to read it. Each subject also has its own page, listed under "Sections" at the end. Each entry gives the definition in plain words, the problem it solves, how it solves it, a quote that supports it, and the original papers.
 
 ## How to read an entry
 
 Each entry has the same parts, in the same order:
 
 - **A line to remember.** One sentence that holds the definition in your head. It shows under the title.
-- **The kind of help.** There are three kinds, described below.
+- **The kind of help.** There are three kinds, described below. The colour of the dot shows the kind.
 - **Definition.** The definition in plain words.
 - **Problem.** The theorem or property that the definition is for.
 - **How the definition helps.** Why the definition makes the theorem easy, and what stays hard.
 - **Quote and pages.** A sentence from the nLab, Wikipedia, or a paper or page in the TheoremSearch data set that supports the entry, and links to the pages.
 - **Sources.** Papers on the definition or the theorem. Most are the original papers. A few are surveys, books or histories.
 
-The entries come from three places. 883 come from the [nLab](https://ncatlab.org/nlab/show/HomePage), a wiki on category theory and the mathematics around it. 1424 come from [Wikipedia](https://en.wikipedia.org/). 785 come from the [TheoremSearch data set](https://huggingface.co/datasets/uw-math-ai/theorem-search-dataset) ([paper](https://arxiv.org/abs/2602.05216)). It holds 1.34 million theorem statements from openly licensed arXiv papers, ProofWiki, the Stacks Project and some open textbooks.
+The entries come from three places. 883 come from the [nLab](https://ncatlab.org/nlab/show/HomePage), a wiki on category theory and the mathematics around it. 1424 come from [Wikipedia](https://en.wikipedia.org/). 785 come from the [TheoremSearch data set](https://huggingface.co/datasets/uw-math-ai/theorem-search-dataset) ([paper](https://arxiv.org/abs/2602.05216)). It holds 1.34 million theorem statements from openly licensed arXiv papers, ProofWiki, the Stacks Project and some open textbooks. Use the source menu to see one source at a time.
 
 ## Tags and order
 
@@ -34,7 +34,7 @@ Each entry has three tags:
 - **arXiv categories.** The [arXiv subject classes](https://arxiv.org/category_taxonomy), such as math.GN for general topology. The first one is the main category.
 - **A level.** Where a student usually first meets the definition: 1 is early undergraduate, 2 is later undergraduate, 3 is graduate, and 4 is research.
 
-The entries are always in the same order. They are sorted first by the main MSC subject, then by level, then by the finer MSC code, and then by title. So each subject page reads from the basic entries to the research ones.
+The entries are always in the same order. They are sorted first by the main MSC subject, then by level, then by the finer MSC code, and then by title. Any filter keeps this order. So when you filter by a tag, each subject reads from the basic entries to the research ones. "Copy as notes" copies the entries that match, in this order, as Markdown.
 
 ## Three kinds of help
 
@@ -73,6 +73,10 @@ The work had seven steps:
 Where an entry gives a counterexample or an argument that is not on the page, the entry says "our own". A source marked "link not checked" was not opened. Some entries have no source, because no primary source with a working link was found.
 
 The list is long, but it is not complete. It contains only cases where the page says, or clearly shows, that the definition does the work. Entries from research papers rest on the paper's abstract and theorem statements, not on a full reading of the paper. Each quote is copied from the page, but formulas are changed to plain symbols, and links and emphasis are removed. Nobody checked the entries by hand. An entry with medium or low confidence has weaker support. Read the linked papers before you rely on a claim.
+
+## Entries
+
+::figure kind=definitions alt="A list of 3092 entries with a search box, filters for kind, MSC2020 subject, arXiv category, level and source, and a button that copies the matching entries as notes." caption="Open an entry to read it. The filters are kept in the address, so a filtered list can be shared."
 
 ## 03 Mathematical logic and foundations
 
