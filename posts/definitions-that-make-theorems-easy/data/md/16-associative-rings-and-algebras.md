@@ -1157,6 +1157,24 @@
 
 - [Alex Martsinkovsky, The defect, the Malgrange functor, and linear control systems, arXiv:2403.13520 (2024)](https://arxiv.org/abs/2403.13520v1)
 
+### Circle gluing computes Hochschild chains
+
+**Remember:** Close the line into a circle to add the cyclic face.
+
+*Makes the theorem clean to state or prove.* MSC 16E40 ((Co)homology of rings and associative algebras (e.g., Hochschild, cyclic, dihedral, etc.)), 81T45. arXiv math-ph. Level 4: research.
+
+**Definition.** Let A be a unital associative algebra in chain complexes over a field, with differential obeying the product rule. Assign A to each oriented interval and its tensor powers to disjoint unions of intervals. Insert smaller intervals by multiplying in their spatial order. Extend to the circle by derived gluing over covers containing every finite subset in one member, retaining the chain maps and their homotopies.
+
+**Problem.** The resulting circle complex is quasi-isomorphic to the Hochschild chain complex of A, meaning the comparison induces isomorphisms on homology.
+
+**How the definition helps.** Gluing on the circle puts the last interval next to the first, explaining the wraparound multiplication in the Hochschild differential (our own). The other terms multiply successive neighbors, with the signs from the grading (our own). The proof identifies the gluing complex with the cyclic bar construction, whose degree-n terms have n + 1 tensor factors (our own).
+
+**Paper or page:** [Holomorphic field theories and higher algebra](https://arxiv.org/abs/2508.07443v1). It says: “extends to a factorization algebra on S¹”
+
+**Sources:**
+
+- [Owen Gwilliam, Brian R. Williams, Holomorphic field theories and higher algebra](https://arxiv.org/abs/2508.07443v1)
+
 ### Green sequences filter modules
 
 **Remember:** Each jump adds the next kind of filtration factor.

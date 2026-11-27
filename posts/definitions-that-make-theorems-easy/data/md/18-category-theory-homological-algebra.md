@@ -2592,6 +2592,61 @@
 - [Pavel Etingof, Dmitri Nikshych, Viktor Ostrik, On fusion categories, Annals of Math. 162 (2005) 581–642, arXiv:math/0203060](https://arxiv.org/abs/math/0203060)
 - [Pavel Etingof, Shlomo Gelaki, Dmitri Nikshych, Victor Ostrik, Tensor categories, Mathematical Surveys and Monographs 205, AMS (2015)](https://doi.org/10.1090/surv/205)
 
+### Loop actions diagonalize fusion
+
+**Remember:** An encircling loop acts by a scalar on each simple label.
+
+*True by definition.* MSC 18M20 (Fusion categories, modular tensor categories, modular functors), 81T40. arXiv math.QA, math-ph. Level 3: graduate.
+
+**Definition.** In a complex ribbon fusion category, the simple objects form a basis for the fusion algebra, whose multiplication records tensor products. A loop labelled U around a strand labelled V defines an operator on V. Define modularity by requiring this assignment to identify the fusion algebra with all natural endomorphisms of the identity functor. These are families of operators commuting with every morphism.
+
+**Problem.** Let S(i,j) be the trace of the double exchange of simple labels i and j, and let 1 denote the unit label. The functions i ↦ S(i,j)/S(1,j) identify the fusion algebra with a product of copies of ℂ, one per j.
+
+**How the definition helps.** Each family acts by a scalar on each simple object, so composing families multiplies their coordinates. Our own argument closes the strand labelled j to compute its scalar. Closing multiplies the scalar by the dimension S(1,j) and produces the linked-loop entry S(i,j). The work lies in identifying nested loops with tensor products and proving equivalence with invertibility of S.
+
+**nLab:** [modular tensor category](https://ncatlab.org/nlab/show/modular+tensor+category). It says: “straight V-line encircled by U-loop”
+
+**Sources:**
+
+- [Yi-Zhi Huang, Rigidity and modularity of vertex tensor categories](https://doi.org/10.1142/S0219199708003083)
+
+### Nondegeneracy excludes singular torus matrices
+
+**Remember:** A transparent simple object repeats the vacuum row up to a scalar.
+
+*Rules out counterexamples.* MSC 18M20 (Fusion categories, modular tensor categories, modular functors), 81T40. arXiv math.QA, math-ph. Level 3: graduate.
+
+**Definition.** Work in a complex ribbon fusion category, where objects split into finitely many types of simples and have tensor products, duals, exchanges and compatible twists. A simple object is transparent if exchanging it twice with every object gives the identity. Call the category modular when its tensor unit is its only transparent simple object up to isomorphism.
+
+**Problem.** For simple labels i and j, let S(i,j) be the categorical trace of their double exchange. The categorical trace closes the input and output lines into loops. The matrix S is invertible exactly when the category is modular.
+
+**How the definition helps.** Transparency makes one row of S a scalar multiple of the unit row. Our own calculation uses the identity double exchange, whose trace is the product of the two dimensions. In finite-dimensional complex super vector spaces, exchanging two odd vectors changes the sign. The odd line is therefore transparent and gives a second proportional row. The modularity criterion proves the converse implication.
+
+**nLab:** [modular tensor category](https://ncatlab.org/nlab/show/modular+tensor+category). It says: “the matrix (sⁱʲ) = (Uᵢ-circle threading through the Uⱼ -circle) is non-degenerate.”
+
+**Sources:**
+
+- [Vladimir Turaev, Modular Categories and 3-Manifold Invariants](https://doi.org/10.1142/S0217979292000876)
+- [Michael Müger, On the Structure of Modular Categories](https://doi.org/10.1112/s0024611503014187)
+
+### Sewing counts torus labels
+
+**Remember:** Cut one torus cycle and count one block per label.
+
+*True by definition.* MSC 18M20 (Fusion categories, modular tensor categories, modular functors), 81T40. arXiv math.QA, math-ph. Level 3: graduate.
+
+**Definition.** Use a modular functor that assigns finite-dimensional spaces to surfaces with boundaries marked by labels from a finite set. Cutting a circle gives a direct sum over labels, with dual labels on the two new boundary circles. Assume the space for a sphere with two holes has dimension one for dual labels and zero otherwise.
+
+**Problem.** The space assigned to the closed torus has dimension equal to the number of labels.
+
+**How the definition helps.** Our own argument cuts the torus into a sphere with two holes, so each summand has dimension one. The sewing axiom supplies one summand per label. A construction starting from fields must prove sewing and the two-point normalization before it can use this count.
+
+**nLab:** [modular functor](https://ncatlab.org/nlab/show/modular+functor). It says: “E respects sewing: if Xφ is obtained from X by cutting along a circle and giving the same label φ ∈ Φ to both resulting boundaries”
+
+**Sources:**
+
+- [Graeme Segal, The Definition of Conformal Field Theory](https://doi.org/10.1017/CBO9780511526398.019)
+
 ### Tannaka reconstruction works because the forgetful functor is kept
 
 **Remember:** Keep the forgetful functor, and the algebra comes back as its endomorphisms.
@@ -5018,6 +5073,60 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Cohomologous twists rescale tensor constraints
+
+**Remember:** A coboundary changes rebracketing by a change of tensor coordinates.
+
+*Makes the theorem clean to state or prove.* MSC 18M20 (Fusion categories, modular tensor categories, modular functors). arXiv math.QA. Level 4: research.
+
+**Definition.** Fix a finite group G and a normalized complex 3-cocycle ω, a function taking nonzero scalar values on triples satisfying the pentagon identity. In the twisted category of G-graded complex vector spaces, rebracketing homogeneous factors of degrees g,h,k multiplies by ω(g,h,k).
+
+**Problem.** Suppose normalized cocycles satisfy ω = (dμ)ω′ for a normalized function μ from pairs in G to nonzero complex numbers. Here dμ(g,h,k) = μ(h,k)μ(g,hk)/(μ(gh,k)μ(g,h)). The identity functor from the ω category to the ω′ category becomes a tensor equivalence with comparison scalars μ(g,h).
+
+**How the definition helps.** Writing the twist as a rebracketing scalar turns compatibility of the tensor maps into the displayed coboundary equation. The normalization makes comparison with the tensor unit automatic. The reciprocal scalars give the inverse equivalence.
+
+**Paper or page:** [Frobenius Monoidal Functors of Dijkgraaf-Witten Categories and Rigid Frobenius Algebras](https://arxiv.org/abs/2303.04493v2). It says: “which is the identity as a functor with monoidal structure given by”
+
+**Sources:**
+
+- [Frobenius Monoidal Functors of Dijkgraaf-Witten Categories and Rigid Frobenius Algebras](https://arxiv.org/abs/2303.04493v2)
+
+### Doubling cancels the surgery anomaly
+
+**Remember:** Combine a twist with its reverse to cancel the gluing scalar.
+
+*True by definition.* MSC 18M20 (Fusion categories, modular tensor categories, modular functors), 81T45. arXiv math.QA. Level 4: research.
+
+**Definition.** Let C be a complex modular fusion category, with finitely many simple labels and nondegenerate crossings. Double C by taking its tensor product with the category having the opposite crossings and inverse twists. The positive and negative Gauss sums weight squared quantum dimensions by each simple label’s twist or its inverse.
+
+**Problem.** Both Gauss sums of the double equal the global dimension of C, the sum of the squared quantum dimensions. With this dimension as normalization, the double has trivial surgery anomaly.
+
+**How the definition helps.** Reversing twists exchanges the two Gauss sums, so doubling gives the same product for either sign. Our own calculation separates the sum over pairs of simple labels into one sum for each factor. The modular Gauss-sum identity identifies their product with the global dimension. Identifying the double with the braided center uses the center factorization theorem.
+
+**Paper or page:** [Turaev-Viro TQFT and the Rank versus Genus Conjecture](https://arxiv.org/abs/2206.02650v1). It says: “Then Z(C) is an anomaly free modular category”
+
+**Sources:**
+
+- [Turaev-Viro TQFT and the Rank versus Genus Conjecture](https://arxiv.org/abs/2206.02650v1)
+
+### Encircling loops diagonalize torus fusion
+
+**Remember:** Evaluate an encircling loop on each simple color to read the eigenvalues.
+
+*True by definition.* MSC 18M20 (Fusion categories, modular tensor categories, modular functors). arXiv math.QA. Level 4: research.
+
+**Definition.** For a complex ribbon fusion category, the fusion algebra has a basis of simple labels and multiplies them by tensor product. Encircling a strand with a labeled loop gives an operator natural in the strand label. The loop definition of modularity requires this assignment to identify the fusion algebra with the algebra of natural endomorphisms of the identity functor.
+
+**Problem.** Let Sᵢⱼ denote the evaluation of two linked circles with labels i and j, and let 0 denote the tensor unit. In a modular category, fusion by each simple label i acts diagonally in one common basis, with entries Sᵢⱼ/S₀ⱼ indexed by j.
+
+**How the definition helps.** The loop definition turns fusion into multiplication of scalar functions on simple labels. Each natural operator acts by a scalar on a simple strand. Our own calculation closes the strand labeled j, multiplying that scalar by its quantum dimension S₀ⱼ and giving Sᵢⱼ. The equivalence with the usual invertible-matrix definition supplies the common basis.
+
+**nLab:** [modular tensor category](https://ncatlab.org/nlab/show/modular+tensor+category). It says: “modularity a non-degeneracy condition on the braiding given by an isomorphism of algebras”
+
+**Sources:**
+
+- [Verlinde, Fusion rules and modular transformations in 2D conformal field theory](https://doi.org/10.1016/0550-3213(88)90603-7)
+
 ### Frobenius–Perron dimension as a positive character makes it multiplicative
 
 **Remember:** A positive ring homomorphism already multiplies dimensions.
@@ -5035,6 +5144,45 @@
 **Sources:**
 
 - [Pavel Etingof, Dmitri Nikshych, and Viktor Ostrik, On fusion categories (2005)](https://doi.org/10.4007/annals.2005.162.581)
+
+### Local modules inherit braiding
+
+**Remember:** A crossing must respect the equation that moves the algebra action.
+
+*Rules out counterexamples.* MSC 18M20 (Fusion categories, modular tensor categories, modular functors). arXiv math.QA. Level 4: research.
+
+**Definition.** A modular fusion category has finitely many simple types, duals, twists and nondegenerate crossings. For a commutative algebra A in it, a right module M has an action from M ⊗ A to M. Call M local when crossing M and A twice before acting leaves that action unchanged.
+
+**Problem.** Let A be a connected commutative separable algebra with trivial twist in a unitary modular fusion category over ℂ. Connected means the unit occurs once, and separable means multiplication admits a section respecting both A-actions. Local modules form a modular category under tensor product over A.
+
+**How the definition helps.** Locality lets the crossing descend through the relations defining the tensor product over A. Those relations identify the action on one factor with the action on the other. Proving that the induced crossings are nondegenerate requires the modularity theorem for local modules.
+
+**Paper or page:** [Frobenius Monoidal Functors of Dijkgraaf-Witten Categories and Rigid Frobenius Algebras](https://arxiv.org/abs/2303.04493v2). It says: “of local modules over A in C is also modular.”
+
+**Sources:**
+
+- [Frobenius Monoidal Functors of Dijkgraaf-Witten Categories and Rigid Frobenius Algebras](https://arxiv.org/abs/2303.04493v2)
+
+### Modularity prevents singular torus rotation
+
+**Remember:** A transparent extra color gives the torus rotation a redundant row.
+
+*Rules out counterexamples.* MSC 18M20 (Fusion categories, modular tensor categories, modular functors), 81T45. arXiv math.QA. Level 4: research.
+
+**Definition.** In a complex ribbon fusion category, objects are sums of finitely many simple types, with tensor products, duals, crossings and compatible twists. A simple object is transparent if crossing it twice with any object acts as the identity. Modularity requires the tensor unit to be the only transparent simple type.
+
+**Problem.** The Hopf-link matrix evaluates two linked circles for each pair of simple labels. This matrix is invertible exactly when the category is modular.
+
+**How the definition helps.** Modularity excludes transparent labels whose rows are proportional to the unit row. In our own example, the two simple complex representations of the order-two group have dimension one. Their usual symmetric crossings give a matrix of ones. Proving that every singular matrix arises from nontrivial transparency requires the modularity criterion.
+
+**Wikipedia:** [Modular tensor category](https://en.wikipedia.org/wiki/Modular_tensor_category). It says: “a modular tensor category is a braided spherical fusion category with non-degenerate braiding.”
+
+**Paper or page:** [CFT Correlators for Cardy Bulk Fields via String-Net Models](https://arxiv.org/abs/1911.10147v2). It says: “A ribbon fusion category C is a modular tensor category if and only if the canonical functor Ξ is a braided equivalence.”
+
+**Sources:**
+
+- [Reshetikhin and Turaev, Invariants of 3-manifolds via link polynomials and quantum groups](https://link.springer.com/article/10.1007/BF01239527)
+- [Bruguières, Catégories prémodulaires, modularisations et invariants des variétés de dimension 3](https://doi.org/10.1007/s002080050011)
 
 ### Veined fusion categories give tetrahedral symmetry of 6j-symbols without pivotal structure
 

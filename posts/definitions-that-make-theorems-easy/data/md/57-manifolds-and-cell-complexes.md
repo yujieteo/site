@@ -1622,6 +1622,43 @@
 
 - [Michael Atiyah, Topological quantum field theory (1988)](https://doi.org/10.1007/BF02698547)
 
+### Quadratic refinements make spin signs multiply
+
+**Remember:** Connected sum puts the two quadratic forms side by side.
+
+*True by definition.* MSC 57R56 (Topological quantum field theories (aspects of differential topology)). arXiv math.AT. Level 3: graduate.
+
+**Definition.** A spin structure on a closed oriented surface determines a function q on its first homology over the two-element field. It satisfies q(x+y) = q(x)+q(y)+x·y, where the dot counts intersections modulo two. For a symplectic basis of paired cycles aᵢ,bᵢ, the Arf invariant is ∑ᵢ q(aᵢ)q(bᵢ) modulo two. The Arf theory assigns +1 for invariant zero and −1 for invariant one.
+
+**Problem.** The partition sign of the Arf theory multiplies under connected sum formed using disks with their bounding spin structures.
+
+**How the definition helps.** The quadratic description lets a connected sum use the two original bases together. Our own check uses cycles on opposite sides of the joining circle, which have zero intersection. Their contributions to the Arf invariant therefore add modulo two, and their signs multiply. The geometric work identifies spin structures with these refinements and proves compatibility with gluing.
+
+**Wikipedia:** [Arf invariant](https://en.wikipedia.org/wiki/Arf_invariant). It says: “The Arf invariant Arf(q) is defined to be the sum of the Arf invariants of the qᵢ.”
+
+**Sources:**
+
+- [Johnson, Spin Structures and Quadratic forms on Surfaces](https://math.mit.edu/~hrm/palestine/johnson-spin-structures.pdf)
+- [Runkel and Szegedy, Topological field theory on r-spin surfaces and the Arf-invariant](https://research-explorer.ista.ac.at/record/10176)
+
+### Sphere lines make connected sums multiply
+
+**Remember:** Cut a ball out and glue two scalar multiples together.
+
+*True by definition.* MSC 57R56 (Topological quantum field theories (aspects of differential topology)). arXiv math.AT. Level 3: graduate.
+
+**Definition.** Let Z be an oriented n-dimensional topological field theory over a field, with n at least two. Assume the state space of the (n−1)-sphere is one-dimensional and Z(Sⁿ) is nonzero. For a closed oriented n-manifold M, define F(M) = Z(M)/Z(Sⁿ).
+
+**Problem.** For closed connected oriented n-manifolds M and N, the normalized value satisfies F(M \# N) = F(M)F(N).
+
+**How the definition helps.** Dividing by the sphere value absorbs the scalar that appears when two punctured manifolds are glued. Our own calculation uses the two oppositely directed balls as a vector and a functional on the boundary line. Their pairing equals Z(Sⁿ), so both are nonzero. Expressing the punctured manifolds in those bases gives Z(Sⁿ)Z(M \# N) = Z(M)Z(N).
+
+**Paper or page:** [Turaev-Viro TQFT and the Rank versus Genus Conjecture](https://arxiv.org/abs/2206.02650v1). It says: “Z(Sⁿ) Z(M) = Z(M₀) Z(M₁).”
+
+**Sources:**
+
+- [Turaev-Viro TQFT and the Rank versus Genus Conjecture](https://arxiv.org/abs/2206.02650v1)
+
 ### Two-dimensional topological field theories are commutative Frobenius algebras
 
 **Remember:** The circle is a Frobenius algebra, so its image is one too.
@@ -2099,6 +2136,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Normalization cancels isolated surgery blowups
+
+**Remember:** A new isolated unknot adds its own factor to the denominator.
+
+*True by definition.* MSC 57K16 (Finite-type and quantum invariants, topological quantum field theories (TQFT)), 81T45. arXiv math.QA. Level 4: research.
+
+**Definition.** In the Reshetikhin–Turaev surgery formula, label each component of the framed link by the sum of simple labels weighted by their quantum dimensions. Write u and v for the nonzero evaluations of isolated unknots with framing +1 and −1. Divide the link evaluation by one factor u per positive eigenvalue and one factor v per negative eigenvalue of its linking matrix.
+
+**Problem.** The normalized Reshetikhin–Turaev surgery value is unchanged by adding or removing an isolated unknot of framing +1 or −1.
+
+**How the definition helps.** The normalized evaluation cancels exactly the factor that the unnormalized evaluation gains. An isolated positive unknot multiplies the numerator by u and adds a positive eigenvalue. An isolated negative unknot gives the corresponding factor v. Full surgery invariance also requires the separate handle-slide identity.
+
+**Wikipedia:** [Reshetikhin–Turaev invariant](https://en.wikipedia.org/wiki/Reshetikhin%E2%80%93Turaev_invariant). It says: “the first and second bracket ensure that RTᵣ(Mₗ) is invariant under blowing up/down”
+
+**Sources:**
+
+- [Reshetikhin and Turaev, Invariants of 3-manifolds via link polynomials and quantum groups](https://link.springer.com/article/10.1007/BF01239527)
+
 ### Vassiliev’s crossing difference makes top values depend on chord diagrams
 
 **Remember:** An ordinary crossing change introduces a double point beyond the allowed degree.
@@ -2268,6 +2323,24 @@
 
 - [Simon Donaldson, The Seiberg-Witten equations and 4-manifold topology, Bull. Amer. Math. Soc. 33 (1996) 45–70](https://doi.org/10.1090/S0273-0979-96-00625-8)
 
+### Signed monopole counts survive metric changes
+
+**Remember:** Two solutions can appear together without changing their signed sum.
+
+*Rules out counterexamples.* MSC 57K41 (Invariants of 4-manifolds (including Donaldson and Seiberg-Witten invariants)), 53C07. arXiv math.DG, math-ph. Level 4: research.
+
+**Definition.** Fix a spinᶜ structure of expected dimension zero on a closed connected oriented smooth four-manifold. This structure specifies the bundles for the Seiberg–Witten equations. A homology orientation chooses an orientation of the first real cohomology together with a maximal positive subspace of the intersection form. It assigns a sign to each isolated regular solution modulo changes of frame.
+
+**Problem.** If the intersection form has at least two positive directions, the signed count is the same for every generic metric and perturbation.
+
+**How the definition helps.** In our own proof, the signs make the two ends of every oriented interval cancel. Along a generic path between two choices, the solutions form a compact oriented one-manifold with boundary. Its oriented boundary represents the final count minus the initial count. Compactness, regularity and avoidance of solutions with extra symmetries are the analytic inputs.
+
+**Wikipedia:** [Seiberg–Witten invariants](https://en.wikipedia.org/wiki/Seiberg%E2%80%93Witten_invariants). It says: “the number of elements of the moduli space counted with signs.”
+
+**Sources:**
+
+- [Edward Witten, Monopoles and four-manifolds](https://doi.org/10.4310/mrl.1994.v1.n6.a13)
+
 ### Smoothness diagonalizes definite intersection forms
 
 **Remember:** A smooth closed four-manifold cannot carry the definite E₈ form.
@@ -2434,3 +2507,166 @@
 
 - [Robbert Dijkgraaf and Edward Witten, Topological gauge theories and group cohomology (1990)](https://doi.org/10.1007/BF02096988)
 - [Daniel Freed and Frank Quinn, Chern-Simons theory with finite gauge group (1993)](https://doi.org/10.1007/BF02096860)
+
+### Derived sewing turns circles into loops
+
+**Remember:** Glue the diagonal to itself to recover all the loops.
+
+*True by definition.* MSC 57R56 (Topological quantum field theories (aspects of differential topology)), 81T45. arXiv math.AT. Level 4: research.
+
+**Definition.** Let X = Spec A be an affine derived symplectic stack, a space described by a commutative differential graded algebra with a symplectic form. In the correspondence theory of Theorem C, gluing means taking a derived fiber product. For affine spaces, its algebra of functions is a derived tensor product.
+
+**Problem.** Use the oriented two-dimensional theory of Theorem C with point value X and the canonical trivialization of its Serre automorphism. This trivialization identifies the full rotation at a point with the identity. The circle value is Spec of the Hochschild chains of A.
+
+**How the definition helps.** Derived gluing computes the intersection of the diagonal with itself and retains its higher homology. Our own affine calculation gives the derived tensor product of A with itself over A ⊗ A. This is the Hochschild chain complex. The construction of the oriented theory proves that the two arcs use those diagonal correspondences.
+
+**Paper or page:** [Higher categories of push-pull spans, II: Matrix factorizations](https://arxiv.org/abs/2409.00219v2). It says: “Spec HC(A)”
+
+**Sources:**
+
+- [Higher categories of push-pull spans, II: Matrix factorizations](https://arxiv.org/abs/2409.00219v2)
+
+### Gauge spans compose under sewing
+
+**Remember:** Sew by matching boundary fields up to a chosen gauge isomorphism.
+
+*Makes the theorem clean to state or prove.* MSC 57R56 (Topological quantum field theories (aspects of differential topology)), 81T45. arXiv math.AT. Level 4: research.
+
+**Definition.** Fix a finite group G. The gauge groupoid of a manifold has principal G-bundles as objects and bundle isomorphisms as arrows. A bordism gives a span, a pair of restriction maps from its gauge groupoid to those of its boundaries.
+
+**Problem.** For oriented three-dimensional bordisms, the gauge groupoid of a gluing is equivalent to the homotopy pullback of the two bundle groupoids over their common boundary.
+
+**How the definition helps.** The homotopy pullback records two bundles together with an isomorphism between their boundary restrictions. Its arrows are pairs of bundle isomorphisms respecting that match. Bundles glue along the chosen isomorphism, which proves the sewing rule. The cited theorem extends this rule to surfaces and bordisms with labeled defects.
+
+**Paper or page:** [A geometrical description of untwisted Dijkgraaf-Witten TQFT with defects](https://arxiv.org/abs/2410.18049v1). It says: “to a stratified surface Σ with defect data its gauge groupoid”
+
+**Sources:**
+
+- [A geometrical description of untwisted Dijkgraaf-Witten TQFT with defects](https://arxiv.org/abs/2410.18049v1)
+
+### Graded Frobenius structures survive suspension
+
+**Remember:** A degree shift lowers the product degree and raises the coproduct degree.
+
+*Makes the theorem clean to state or prove.* MSC 57R56 (Topological quantum field theories (aspects of differential topology)). arXiv math.AT. Level 4: research.
+
+**Definition.** In Clivio’s planar construction, a (c,d)-graded Frobenius algebra is a monoidal representation of the graded planar graph bordism category pGCob(c,d). Such a representation assigns operations to graphs and respects disjoint union and gluing, including the signs specified by that category. The product has degree c and the coproduct has degree d.
+
+**Problem.** Let A be a graded abelian group and let ΣA raise every degree by one. Suspension bijects Frobenius structures of degrees (c,d) on A with structures of degrees (c−1,d+1) on ΣA.
+
+**How the definition helps.** The definition lets each operation keep the degree forced by its number of inputs and outputs. Our own check adds one degree per output and subtracts one per input. The cited theorem checks that the induced sign changes also preserve all the relations.
+
+**Paper or page:** [Graded Frobenius Algebras](https://arxiv.org/abs/2412.13909v2). It says: “Giving a (c,d)-graded (commutative or symmetric) Frobenius algebra structure on A := F(∗) ∈ ℤMod• is equivalent to giving a (c−1,d+1)-graded (commutative or symmetric) Frobenius algebra structure on ΣA.”
+
+**Sources:**
+
+- [Graded Frobenius Algebras](https://arxiv.org/abs/2412.13909v2)
+
+### Homotopy fixed points retain orientation choices
+
+**Remember:** A point fixed up to equivalence still needs a choice of how it is fixed.
+
+*Makes the theorem clean to state or prove.* MSC 57R56 (Topological quantum field theories (aspects of differential topology)). arXiv math.AT. Level 4: research.
+
+**Definition.** Let the rotation group SO(n) act on a space X. A homotopy fixed point is an equivariant map from a contractible free SO(n)-space to X.
+
+**Problem.** Let X be the space of fully dualizable objects in a symmetric monoidal (∞,n)-category. These objects have duals and the successive adjoints needed to evaluate bordisms down to points. Evaluation at a point identifies fully extended oriented n-dimensional field theories with homotopy fixed points for the framing rotation action on X.
+
+**How the definition helps.** A homotopy fixed point records how a point value stays compatible with every change of oriented frame. The oriented cobordism hypothesis proves that these choices suffice to reconstruct the theory on every bordism.
+
+**nLab:** [cobordism hypothesis](https://ncatlab.org/nlab/show/cobordism+hypothesis). It says: “a homotopy fixed point is not just a property. It is additional structure.”
+
+**Sources:**
+
+- [Lurie, On the Classification of Topological Field Theories](https://people.math.harvard.edu/~lurie/papers/cobordism.pdf)
+
+### Inverting bordisms exposes partition characters
+
+**Remember:** A theory that already inverts every bordism factors through the completion.
+
+*True by definition.* MSC 57R56 (Topological quantum field theories (aspects of differential topology)). arXiv math.AT. Level 4: research.
+
+**Definition.** A bordism category has closed manifolds as objects and manifolds between them as arrows. Its groupoid completion formally makes every arrow invertible. An invertible complex field theory assigns a line to each object and an isomorphism to each arrow.
+
+**Problem.** Every such theory factors through the groupoid completion. On the component containing the empty manifold, a character of its automorphism group determines the underlying functor up to isomorphism. For the structured bordism categories of the cited theorem, that group is the cut-and-paste group.
+
+**How the definition helps.** Groupoid completion replaces a list of sewing maps by invertible arrows with a universal factorization property. Our own explanation chooses paths from the empty manifold to all objects in its component. The remaining data form an action on a line, hence a homomorphism to the nonzero complex numbers. The cited theorem identifies the automorphism group. Reconstructing the full theory also requires its tensor structure.
+
+**Paper or page:** [SKK groups of manifolds and non-unitary invertible TQFTs](https://arxiv.org/abs/2504.07917v1). It says: “π₁(‖Bordξₙ₋₁,ₙ‖) ≅ π₁(‖N Cobξₙ₋₁,ₙ‖) ≅ SKK(Cobξₙ₋₁,ₙ) = SKKξₙ.”
+
+**Sources:**
+
+- [SKK groups of manifolds and non-unitary invertible TQFTs](https://arxiv.org/abs/2504.07917v1)
+
+### Lines turn sewing into scalar multiplication
+
+**Remember:** Gluing four line maps in either pairing gives the same product.
+
+*Rules out counterexamples.* MSC 57R56 (Topological quantum field theories (aspects of differential topology)). arXiv math.AT. Level 4: research.
+
+**Definition.** An invertible complex topological field theory assigns lines to boundaries and invertible linear maps to bordisms, the manifolds joining boundaries. The cut-and-paste group adds closed manifolds by disjoint union. Its exchange relation uses two incoming pieces and two outgoing pieces with the same identified boundary.
+
+**Problem.** The product of the two closed values stays unchanged when the incoming pieces exchange outgoing partners. Thus closed values define a homomorphism from the cut-and-paste group to the nonzero complex numbers.
+
+**How the definition helps.** The boundary line makes the exchange relation an identity between products of scalars. In our own calculation, choose a basis and write the incoming vectors as a,b and the outgoing functionals as c,d. The products (ca)(db) and (da)(cb) agree. The cited proposition proves that these exchanges generate the required relations.
+
+**Paper or page:** [SKK groups of manifolds and non-unitary invertible TQFTs](https://arxiv.org/abs/2504.07917v1). It says: “N₁ ∪ N₁′ + N₂ ∪ N₂′ ∼ N₁ ∪ N₂′ + N₂ ∪ N₁′”
+
+**Sources:**
+
+- [SKK groups of manifolds and non-unitary invertible TQFTs](https://arxiv.org/abs/2504.07917v1)
+
+### Maslov weights lift projective actions
+
+**Remember:** Record the gluing correction as part of the cylinder.
+
+*True by definition.* MSC 57R56 (Topological quantum field theories (aspects of differential topology)). arXiv math.GT, math.QA. Level 4: research.
+
+**Definition.** Fix a closed oriented surface and a maximal subspace L of its real first homology on which the intersection pairing vanishes. A weighted mapping cylinder records a mapping class f, an orientation-preserving diffeomorphism up to isotopy, and an integer. Composing (f,m) after (g,n) gives (fg,m+n+μ(L,fL,fgL)). Here μ is the Maslov index, the signature of the form on three subspaces in the Gilmer–Masbaum convention.
+
+**Problem.** For the surface theories of Gilmer and Masbaum, the operators assigned to weighted mapping cylinders form a linear representation of the extended mapping class group.
+
+**How the definition helps.** Including the sewing correction in the group law turns projective composition into ordinary composition. The cocycle identity says that either grouping of three cylinders gives the same weight. The field-theory sewing theorem identifies the corresponding scalar factor in the operators.
+
+**Paper or page:** [Some remarks on the Maslov index](https://arxiv.org/abs/2105.04337v3). It says: “The Maslov index is a 2-cocycle”
+
+**Sources:**
+
+- [Gilmer and Masbaum, Maslov index, Lagrangians, Mapping Class Groups and TQFT](https://doi.org/10.1515/form.2011.143)
+- [Some remarks on the Maslov index](https://arxiv.org/abs/2105.04337v3)
+
+### Ordered intervals allow noncommutative products
+
+**Remember:** Without a swap of inputs, a pair of pants need not commute.
+
+*Makes the theorem clean to state or prove.* MSC 57R56 (Topological quantum field theories (aspects of differential topology)). arXiv math.AT. Level 4: research.
+
+**Definition.** A planar open bordism is a surface drawn between ordered lists of intervals, with boundaries allowed between the input and output intervals. A Frobenius algebra has a unital associative product and a counital coassociative coproduct. Its coproduct commutes with multiplication on the left and on the right.
+
+**Problem.** For a monoidal target C, evaluation on one interval gives an equivalence between monoidal functors from planar open bordisms and Frobenius algebras in C.
+
+**How the definition helps.** Planar gluing keeps the order of inputs, so the classification can include products with ab different from ba. Our own example is the algebra of complex two-by-two matrices with trace pairing given by tracing the product. The proof identifies generators and relations for the planar surfaces.
+
+**Paper or page:** [Graded Frobenius Algebras](https://arxiv.org/abs/2412.13909v2). It says: “Funᵐᵒⁿ(Cob₂ᵖˡᵃⁿᵃʳ,C) → Frob(C)”
+
+**Sources:**
+
+- [Clivio, Graded Frobenius Algebras](https://academic.oup.com/qjmath/article-abstract/76/4/1105/8258596)
+
+### Radical quotients make sewing nondegenerate
+
+**Remember:** Two states agree when every possible gluing gives the same answer.
+
+*True by definition.* MSC 57R56 (Topological quantum field theories (aspects of differential topology)). arXiv math.AT. Level 4: research.
+
+**Definition.** Fix a scalar for each diffeomorphism class of closed oriented n-manifolds. For each boundary, form free vector spaces on bordisms into it from the empty boundary and out of it to the empty boundary. Pair basis elements by evaluating the closed manifold obtained by gluing. On each side, quotient by the vectors pairing to zero with the whole opposite space.
+
+**Problem.** The induced pairing has zero left and right radicals. Gluing another bordism gives a well-defined linear map between the quotients.
+
+**How the definition helps.** Taking the quotient builds nondegeneracy into the state spaces. The free spaces can contain distinct combinations with identical evaluations against every test. Our own sewing check uses associativity of gluing to move a bordism across the pairing. This makes the induced maps well defined. A full field theory also requires compatibility with tensor products.
+
+**Paper or page:** [Universal construction in monoidal and non-monoidal settings, the Brauer envelope, and pseudocharacters](https://arxiv.org/abs/2303.02696v1). It says: “is nondegenerate.”
+
+**Sources:**
+
+- [Universal construction in monoidal and non-monoidal settings, the Brauer envelope, and pseudocharacters](https://arxiv.org/abs/2303.02696v1)

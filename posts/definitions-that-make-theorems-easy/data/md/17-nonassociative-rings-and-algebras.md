@@ -591,6 +591,82 @@
 - [Moody, R. V. (1967). Lie algebras associated with generalized Cartan matrices. Bulletin of the AMS 73, 217–222.](https://doi.org/10.1090/S0002-9904-1967-11688-4)
 - [Kac, V. G. (1968). Simple irreducible graded Lie algebras of finite growth. Mathematics of the USSR-Izvestiya 2.](https://doi.org/10.1070/IM1968v002n06ABEH000729)
 
+### Locality and translation give skew symmetry
+
+**Remember:** Commute on the vacuum, then translate and cancel the common power.
+
+*True by definition.* MSC 17B69 (Vertex operators; vertex operator algebras and related structures), 81T40. arXiv math.QA, math-ph. Level 3: graduate.
+
+**Definition.** In the locality presentation of a vertex algebra, a state u has an operator series Y(u,z), called its field. For each pair of states, some nonnegative power of z − w kills the commutator of their fields. The translation operator T differentiates fields by commutator and kills the vacuum. Applying a field to the vacuum gives a power series whose constant term is its state.
+
+**Problem.** For all states u and v, skew symmetry gives Y(u,z)v = exp(zT)Y(v,−z)u.
+
+**How the definition helps.** Locality lets us exchange the two fields on the vacuum after clearing their poles. Our own calculation uses translation to write the field of v on the vacuum as exp(wT)v. Moving translations past fields changes their arguments by the corresponding shifts. After clearing poles we can set w to zero and cancel the common power of z. The formal Jacobi identity gives another presentation, whose equivalence requires a separate proof.
+
+**Wikipedia:** [Vertex operator algebra](https://en.wikipedia.org/wiki/Vertex_operator_algebra). It says: “(skew-symmetry) Y(u,z)v=eᶻᵀY(v,−z)u”
+
+**Sources:**
+
+- [Frenkel and Ben-Zvi, Vertex Algebras and Algebraic Curves](https://doi.org/10.1090/surv/088)
+
+### One character forces modular invariance
+
+**Remember:** One character and trivial translation force trivial modular action.
+
+*Rules out counterexamples.* MSC 17B69 (Vertex operators; vertex operator algebras and related structures), 81T40. arXiv math.QA, math-ph. Level 3: graduate.
+
+**Definition.** Take a simple rational complex vertex operator algebra isomorphic to its graded dual, with nonnegative integral weights and only the vacuum line at weight zero. Rationality means all admissible modules split into simples. Assume the span of mode −2 products has finite codimension. Call the algebra holomorphic when its vacuum module is its only simple module.
+
+**Problem.** The vacuum character counts weight multiplicities using q = exp(2πiτ), with each exponent shifted by minus the central charge divided by 24. For a holomorphic algebra whose central charge is divisible by 24, this character is invariant under the modular group.
+
+**How the definition helps.** Divisibility by 24 removes the scalar acquired under translation T taking τ to τ + 1. Zhu’s theorem and the single simple module make the character span a one-dimensional representation. Since T acts trivially, the relation S² = (ST)³ forces inversion S to act trivially. Our own counterexample uses the holomorphic vertex algebra of the E₈ lattice. Its central charge is eight, so translation acts by exp(−2πi/3).
+
+**Paper or page:** [Character Vectors of Strongly Regular Vertex Operator Algebras](https://arxiv.org/abs/2111.04616v3), [Character Vectors of Strongly Regular Vertex Operator Algebras](https://arxiv.org/abs/2111.04616v3). It says: “Then 𝔠𝔥\[V\] is a right Γ-submodule of 𝔉.”
+
+**Sources:**
+
+- [Cameron Franc, Geoffrey Mason, Character Vectors of Strongly Regular Vertex Operator Algebras](https://arxiv.org/abs/2111.04616v3)
+- [Yongchang Zhu, Modular invariance of characters of vertex operator algebras](https://doi.org/10.1090/s0894-0347-96-00182-8)
+- [Chongying Dong, Vertex Algebras Associated with Even Lattices](https://doi.org/10.1006/jabr.1993.1217)
+
+### Truncation excludes evaluation modules
+
+**Remember:** Without truncation, a current series need not act as a field.
+
+*Rules out counterexamples.* MSC 17B69 (Vertex operators; vertex operator algebras and related structures). arXiv math.QA. Level 3: graduate.
+
+**Definition.** Start with the centrally extended loop algebra of a finite-dimensional complex simple Lie algebra with a fixed invariant form. The level is the scalar by which the central element acts. A module is restricted if, for each current and each vector, all sufficiently high modes of that current kill the vector.
+
+**Problem.** At level k, restriction to current modes identifies modules of the universal affine vertex algebra with restricted modules of the centrally extended loop algebra.
+
+**How the definition helps.** Restrictedness is exactly the requirement that each current field have only finitely many pole terms on each vector. Our own counterexample evaluates loops at 1 on a nontrivial representation and gives the central element action zero. Every mode of a given current then acts by the same operator, violating truncation. The affine reconstruction theorem extends restricted current actions uniquely to fields for all states. Take the identity twist and ε = 0 in the cited proposition.
+
+**Paper or page:** [A unified construction of vertex algebras from infinite-dimensional Lie algebras](https://arxiv.org/abs/2203.16744v1). It says: “Γσ-equivariant φε-coordinated quasi Vℒ̂(𝔟)-modules are exactly restricted ℒ̂(𝔟,σ)-modules.”
+
+**Sources:**
+
+- [Fulin Chen, Xiaoling Liao, Shaobin Tan, Qing Wang, A unified construction of vertex algebras from infinite-dimensional Lie algebras](https://arxiv.org/abs/2203.16744v1)
+- [Edward Frenkel and David Ben-Zvi, Vertex Algebras and Algebraic Curves](https://doi.org/10.1090/surv/088)
+
+### Unimodularity removes extra modules
+
+**Remember:** Only the vacuum coset survives when the lattice equals its dual.
+
+*Rules out counterexamples.* MSC 17B69 (Vertex operators; vertex operator algebras and related structures), 81T40. arXiv math.QA, math-ph. Level 3: graduate.
+
+**Definition.** Use a positive definite even lattice L to build its lattice vertex operator algebra. Require L to be unimodular, so the lattice equals the dual lattice of vectors pairing integrally with L. Evenness by itself only requires that squared lengths are even integers.
+
+**Problem.** An even positive definite lattice gives a holomorphic vertex operator algebra exactly when it is unimodular. Here holomorphic means that the vacuum module is the only simple module with finite-dimensional weight spaces and weights bounded below.
+
+**How the definition helps.** Unimodularity leaves just one label in the classification of simple modules. Dong’s theorem labels them by cosets of L in its dual, with the zero coset giving the vacuum. Our own example takes a lattice generated by a vector of squared length two. Half that vector generates the dual, giving a second coset and a second simple module.
+
+**Wikipedia:** [Vertex operator algebra](https://en.wikipedia.org/wiki/Vertex_operator_algebra). It says: “Lattice vertex algebras are canonically attached to double covers of even integral lattices”
+
+**Sources:**
+
+- [Frenkel and Ben-Zvi, Vertex Algebras and Algebraic Curves](https://doi.org/10.1090/surv/088)
+- [Chongying Dong, Vertex Algebras Associated with Even Lattices](https://doi.org/10.1006/jabr.1993.1217)
+
 ### Parity signs give the supercommutator its Jacobi identity
 
 **Remember:** Two odd inputs change subtraction to addition.
@@ -889,6 +965,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Coalgebra conjugation preserves Koszul brackets
+
+**Remember:** Conjugate the operator once to transport all its brackets.
+
+*True by definition.* MSC 17B55 (Homological methods in Lie (super)algebras), 81T70. arXiv math.QA, math-ph. Level 4: research.
+
+**Definition.** Let A be a graded commutative unital algebra over a characteristic-zero field. Extend a homogeneous operator D killing 1 to the symmetric coalgebra by applying D to each factor in turn with the graded signs. Let E be the coalgebra automorphism whose component from n factors to one multiplies those factors. Define the Koszul brackets as the one-output components of K(D) = E⁻¹ D̃ E, where D̃ denotes the extension.
+
+**Problem.** For operators D and T killing 1, K(\[D,T\]) = \[K(D),K(T)\], where the bracket is the commutator with the graded sign.
+
+**How the definition helps.** Conjugation preserves commutators, so the definition avoids expanding a separate signed product formula for every bracket (our own). The initial extension preserves commutators because terms acting on different factors cancel (our own). Identifying the resulting components with the usual Koszul brackets requires expanding the automorphism and its inverse (our own).
+
+**Paper or page:** [Cumulants, Koszul brackets and homological perturbation theory for commutative BV∞ and IBL∞ algebras](https://arxiv.org/abs/2012.14812v1). It says: “is a morphism of graded Lie algebras.”
+
+**Sources:**
+
+- [Ruggero Bandiera, Cumulants, Koszul brackets and homological perturbation theory for commutative BV∞ and IBL∞ algebras](https://arxiv.org/abs/2012.14812v1)
+
 ### Curvature detects obstructed lifts
 
 **Remember:** Lift once, then test whether the curvature is a differential.
@@ -906,6 +1000,42 @@
 **Sources:**
 
 - [Generalized Positive Energy Representations of Groups of Jets](https://arxiv.org/abs/2211.10390)
+
+### Translation preserves higher bracket identities
+
+**Remember:** Changing the origin does not change the square.
+
+*True by definition.* MSC 17B55 (Homological methods in Lie (super)algebras). arXiv math.QA. Level 4: research.
+
+**Definition.** Over a characteristic-zero field, a curved higher Lie algebra has a formal degree-one vector field Q with Q² = 0 on its shifted space. Its Taylor coefficients are its brackets, including the constant curvature term. Twisting translates the origin to a degree-zero point v of the shifted space. Use a complete descending filtration respected by the brackets, with v in its first step.
+
+**Problem.** The translated vector field defines a curved higher Lie algebra on the same space.
+
+**How the definition helps.** Translation conjugates the operator, so its square stays zero (our own). This proves all the new higher bracket identities at once (our own). The work goes into comparing the translated Taylor coefficients with the usual bracket formulas (our own).
+
+**Paper or page:** [A Lie theoretic approach to the twisting procedure and Maurer-Cartan simplicial sets over arbitrary rings](https://arxiv.org/abs/2303.16706v1). It says: “The twisted differential Qᵛ is a coderivation and squares to zero.”
+
+**Sources:**
+
+- [Niek de Kleijn, Felix Wierstra, A Lie theoretic approach to the twisting procedure and Maurer-Cartan simplicial sets over arbitrary rings](https://arxiv.org/abs/2303.16706v1)
+
+### Twisting turns solutions into flatness
+
+**Remember:** Move the origin to a zero of the vector field.
+
+*True by definition.* MSC 17B55 (Homological methods in Lie (super)algebras). arXiv math.QA. Level 4: research.
+
+**Definition.** Over a characteristic-zero field, describe a curved higher Lie algebra by a formal degree-one vector field Q with Q² = 0 on the shifted space. Curvature means its constant term, and flatness means this term vanishes. Twisting translates the origin to a degree-zero point v in the shifted space. Use a complete descending filtration respected by the brackets, with v in the first filtration step so the Taylor series converge.
+
+**Problem.** The translated higher Lie algebra is flat exactly when v satisfies the Maurer–Cartan equation, the vanishing of the sum of the bracket terms at v.
+
+**How the definition helps.** The new constant term is Q evaluated at v, which is the Maurer–Cartan series (our own). The work goes into justifying the translation in the filtration and identifying its Taylor coefficients with the twisted brackets (our own).
+
+**Paper or page:** [A Lie theoretic approach to the twisting procedure and Maurer-Cartan simplicial sets over arbitrary rings](https://arxiv.org/abs/2303.16706v1). It says: “is flat if and only if v is a Maurer-Cartan element.”
+
+**Sources:**
+
+- [Niek de Kleijn, Felix Wierstra, A Lie theoretic approach to the twisting procedure and Maurer-Cartan simplicial sets over arbitrary rings](https://arxiv.org/abs/2303.16706v1)
 
 ### Manin triples expose duality
 
@@ -942,6 +1072,175 @@
 - [Richard Borcherds, Generalized Kac–Moody algebras, Journal of Algebra 115 (1988) 501–512](https://doi.org/10.1016/0021-8693(88)90275-X)
 - [Richard E. Borcherds, A characterization of generalized Kac–Moody algebras, Journal of Algebra 174 (1995) 1073–1079](https://doi.org/10.1006/jabr.1995.1167)
 - [Richard E. Borcherds, Monstrous moonshine and monstrous Lie superalgebras, Inventiones Mathematicae 109 (1992) 405–444](https://doi.org/10.1007/BF01232032)
+
+### Free orbits preserve irreducibility
+
+**Remember:** A free module orbit has no stabilizer labels to split it.
+
+*Rules out counterexamples.* MSC 17B69 (Vertex operators; vertex operator algebras and related structures), 81T40. arXiv math.QA. Level 4: research.
+
+**Definition.** Let a finite group G of automorphisms act on a simple complex vertex algebra V of countable dimension. Twisting a module by g means precomposing its field action with g. The stabilizer of a module consists of elements whose twists give isomorphic modules. Its orbit is free when only the identity stabilizes it.
+
+**Problem.** A simple V-module stays simple over the subalgebra fixed by G exactly when its orbit is free.
+
+**How the definition helps.** A free orbit leaves only one summand in the restriction theorem. That theorem decomposes the module using representations of a twisted group algebra of the stabilizer. For the trivial group this algebra is just ℂ. Our own counterexample uses the rank-one lattice algebra and its sign involution. Its nonzero even and odd eigenspaces are separate modules over the fixed algebra.
+
+**Paper or page:** [Orbifold theory for vertex algebras and Galois correspondence](https://arxiv.org/abs/2302.09474v1), [Orbifold theory for vertex algebras and Galois correspondence](https://arxiv.org/abs/2302.09474v1). It says: “Then M is an irreducible Vᴳ-module if and only if Gₘ = {1}.”
+
+**Sources:**
+
+- [Chongying Dong, Li Ren, Chao Yang, Orbifold theory for vertex algebras and Galois correspondence](https://arxiv.org/abs/2302.09474v1)
+
+### Inversion reverses the dual twist
+
+**Remember:** Reverse the coordinate, and you reverse the twist.
+
+*True by definition.* MSC 17B69 (Vertex operators; vertex operator algebras and related structures), 81T40. arXiv math.QA. Level 4: research.
+
+**Definition.** For a module M with finite-dimensional weight spaces and weights bounded below, take the direct sum of the dual weight spaces. To define its field for a state, first scale that state by −z⁻² raised to its integral weight. Apply exp(zL₁), where L₁ generates the infinitesimal change of coordinate, and evaluate the resulting field on M at 1/z. Transpose this operator to the graded dual.
+
+**Problem.** Let g be a finite-order automorphism of a complex vertex operator algebra. If fields on M acquire the twist g around zero, the fields on its graded dual have twist g⁻¹.
+
+**How the definition helps.** In our own argument inversion reverses a loop around zero, so it reverses the twist. The state correction contributes only integral powers of z. Transposing modes alone would miss the reversal. The theorem also verifies that the new fields satisfy the twisted module identities.
+
+**Paper or page:** [Twisted regular representations and bimodules in vertex operator algebra theory](https://arxiv.org/abs/2505.16464v1). It says: “(M′, Y\[M\]′) is a g⁻¹-twisted module”
+
+**Sources:**
+
+- [Yiyi Zhu, Twisted regular representations and bimodules in vertex operator algebra theory](https://arxiv.org/abs/2505.16464v1)
+
+### Jet coordinates generate Li’s graded algebra
+
+**Remember:** Negative modes become products of derivatives of degree-zero classes.
+
+*True by definition.* MSC 17B69 (Vertex operators; vertex operator algebras and related structures), 81T40. arXiv math.QA, math-ph. Level 4: research.
+
+**Definition.** In a complex vertex algebra, modes are the coefficient operators of a formal field. Assign weight k to a mode numbered −1 − k for k ≥ 0. Let F(p) span all strings of such modes acting on arbitrary states with total assigned weight at least p. Degree p consists of classes in F(p) modulo F(p + 1).
+
+**Problem.** Let R be the degree-zero quotient and form its jet algebra by adjoining formal derivatives subject to all differentiated relations. This algebra maps onto the graded algebra by a map preserving products and derivatives.
+
+**How the definition helps.** Our own argument expresses every spanning string as a product of derivatives of degree-zero classes. In a vertex algebra, mode −1 − k equals mode −1 of the kth derivative divided by k factorial. Thus degree zero generates the graded algebra under multiplication and differentiation. The defining property of the jet algebra gives the surjection. The filtration theorem supplies the commutative product and derivative.
+
+**Paper or page:** [Li filtrations of SUSY vertex algebras](https://arxiv.org/abs/2111.05734v1), [Li filtrations of SUSY vertex algebras](https://arxiv.org/abs/2111.05734v1). It says: “then φ extends to a surjective morphism”
+
+**Sources:**
+
+- [Shintarou Yanagida, Li filtrations of SUSY vertex algebras](https://arxiv.org/abs/2111.05734v1)
+
+### Li’s degree zero is Poisson
+
+**Remember:** The mode −2 quotient is the degree-zero part of the graded Poisson structure.
+
+*True by definition.* MSC 17B69 (Vertex operators; vertex operator algebras and related structures), 81T40. arXiv math.QA, math-ph. Level 4: research.
+
+**Definition.** In a complex vertex algebra, modes are the coefficient operators of a formal field. Assign weight k to a mode numbered −1 − k for k ≥ 0. Let F(p) span all strings of such modes acting on arbitrary states with total assigned weight at least p. Degree p consists of classes in F(p) modulo F(p + 1).
+
+**Problem.** The quotient by the span of mode −2 products is a Poisson algebra. Mode −1 gives its commutative product, and mode zero gives a Lie bracket satisfying the product rule.
+
+**How the definition helps.** The graded construction puts both operations on degree zero, where the Poisson identities already hold. Our own argument avoids checking those identities again on representatives of the quotient. The work lies in proving the graded identities and identifying F(1) with the span of mode −2 products.
+
+**Wikipedia:** [Zhu algebra](https://en.wikipedia.org/wiki/Zhu_algebra). It says: “The multiplication of the C₂-algebra is commutative”
+
+**Paper or page:** [Li filtrations of SUSY vertex algebras](https://arxiv.org/abs/2111.05734v1). It says: “is equal to the degree zero subspace E₀(V)/E₁(V) = V/E₁(V) ⊂ gr\[E\] V of the Li filtration.”
+
+**Sources:**
+
+- [Shintarou Yanagida, Li filtrations of SUSY vertex algebras](https://arxiv.org/abs/2111.05734v1)
+
+### Li’s graded fields lose poles
+
+**Remember:** Derivative degree makes singular products vanish in the leading operations.
+
+*True by definition.* MSC 17B69 (Vertex operators; vertex operator algebras and related structures), 81T40. arXiv math.QA, math-ph. Level 4: research.
+
+**Definition.** In a complex vertex algebra, modes are the coefficient operators of a formal field. Assign weight k to a mode numbered −1 − k for k ≥ 0. Let F(p) span all strings of such modes acting on arbitrary states with total assigned weight at least p. Degree p consists of classes in F(p) modulo F(p + 1).
+
+**Problem.** In the vertex algebra formed from these successive quotients, every field has zero singular part.
+
+**How the definition helps.** The filtration places every pole coefficient one step deeper than its expected degree. For inputs in F(r) and F(s), mode m ≥ 0 lands in F(r + s − m). Its expected degree is r + s − m − 1, so its class vanishes. Our own explanation uses derivative count in place of the original conformal weights. With conformal weights, taking a leading term need not kill a pole. Proving the bound and constructing the graded fields require the filtration theorem.
+
+**Paper or page:** [Li filtrations of SUSY vertex algebras](https://arxiv.org/abs/2111.05734v1), [Li filtrations of SUSY vertex algebras](https://arxiv.org/abs/2111.05734v1). It says: “is commutative if and only if a₍ₘ∣ᴹ₎b ∈ E\[r+s−m\]”
+
+**Sources:**
+
+- [Shintarou Yanagida, Li filtrations of SUSY vertex algebras](https://arxiv.org/abs/2111.05734v1)
+
+### Local constancy makes fields commute
+
+**Remember:** Constant disc maps leave no room for poles.
+
+*True by definition.* MSC 17B69 (Vertex operators; vertex operator algebras and related structures), 81T40. arXiv math.QA, math-ph. Level 4: research.
+
+**Definition.** A holomorphic prefactorization algebra on the plane assigns complex locally convex spaces to open sets. It assigns compatible multilinear products to disjoint open sets inside a larger one, with holomorphic dependence on insertion points. Local constancy means every inclusion between open discs induces an isomorphism.
+
+**Problem.** For such a locally constant algebra, the associated vertex algebra is commutative. This means all coefficients of negative powers in its fields vanish.
+
+**How the definition helps.** Local constancy makes the two-disc product independent of the separation after identifying disc spaces by inclusion. Our own argument reads the missing poles directly from that product. A description by formal fields would instead require checking their singular coefficients. The construction theorem identifies those coefficients with the ones obtained from disc products.
+
+**Paper or page:** [A note on vertex algebras and Costello-Gwilliam factorization algebras](https://arxiv.org/abs/2408.00412v2), [A note on vertex algebras and Costello-Gwilliam factorization algebras](https://arxiv.org/abs/2408.00412v2). It says: “then the vertex algebra 𝐕(ℱ) is commutative.”
+
+**Sources:**
+
+- [Yusuke Nishinaka, A note on vertex algebras and Costello-Gwilliam factorization algebras](https://arxiv.org/abs/2408.00412v2)
+
+### Rationality excludes triplet character anomalies
+
+**Remember:** Finite codimension alone does not make simple characters close under modular transformations.
+
+*Rules out counterexamples.* MSC 17B69 (Vertex operators; vertex operator algebras and related structures), 81T40. arXiv math.QA, math-ph. Level 4: research.
+
+**Definition.** Take a simple complex vertex operator algebra isomorphic to its graded dual, with nonnegative integral weights and only the vacuum line at weight zero. Require the span of mode −2 products to have finite codimension. Also require rationality, meaning that every admissible module splits as a sum of simple modules.
+
+**Problem.** For each simple module, its character sums its weight multiplicities against powers of q, shifting each exponent by minus the central charge divided by 24. With q = exp(2πiτ), their span is invariant under τ ↦ τ + 1 and τ ↦ −1/τ.
+
+**How the definition helps.** Rationality excludes the triplet example where the span of simple characters fails to close under inversion. Our own illustration uses the algebra W(2), which satisfies the finite codimension condition. Inversion introduces a function containing τ times a theta-function derivative outside the character span. Zhu’s modular invariance theorem proves closure under the stated hypotheses.
+
+**Wikipedia:** [Zhu algebra](https://en.wikipedia.org/wiki/Zhu_algebra). It says: “the triplet vertex operator algebra is C₂-cofinite but not rational.”
+
+**Paper or page:** [Character Vectors of Strongly Regular Vertex Operator Algebras](https://arxiv.org/abs/2111.04616v3), [Character Vectors of Strongly Regular Vertex Operator Algebras](https://arxiv.org/abs/2111.04616v3). It says: “Then 𝔠𝔥\[V\] is a right Γ-submodule of 𝔉.”
+
+**Sources:**
+
+- [Cameron Franc, Geoffrey Mason, Character Vectors of Strongly Regular Vertex Operator Algebras](https://arxiv.org/abs/2111.04616v3)
+- [Fuchs, Hwang, Semikhatov and Tipunin, Nonsemisimple Fusion Algebras and the Verlinde Formula](https://doi.org/10.1007/s00220-004-1058-y)
+- [Yongchang Zhu, Modular invariance of characters of vertex operator algebras](https://doi.org/10.1090/s0894-0347-96-00182-8)
+
+### Sewing proves field associativity
+
+**Remember:** Two sewings of one sphere give two expansions of one operation.
+
+*True by definition.* MSC 17B69 (Vertex operators; vertex operator algebras and related structures), 81T40. arXiv math.QA, math-ph. Level 4: research.
+
+**Definition.** A geometric vertex operator algebra assigns multilinear operations to spheres with marked inputs, one marked output and a local coordinate at each mark. At central charge zero its sewing axiom identifies gluing two spheres with composing their operations. The formal definition instead assigns an operator series Y(u,z) to each state u.
+
+**Problem.** Take states u, v, w and pair the output with any graded dual vector. The product Y(u,z₁)Y(v,z₂)w and iterate Y(Y(u,z₁ − z₂)v,z₂)w agree wherever \|z₁\| &gt; \|z₂\| &gt; \|z₁ − z₂\| &gt; 0.
+
+**How the definition helps.** Our own argument obtains both expressions by sewing the same four-point sphere in two ways. The inequalities put both sewing expansions inside their convergence regions. Huang’s equivalence theorem supplies convergence and identifies the geometric operations with the formal fields.
+
+**nLab:** [vertex operator algebra](https://ncatlab.org/nlab/show/vertex+operator+algebra). It says: “Composition of such spheres is by gluing along punctures.”
+
+**Sources:**
+
+- [Yi-Zhi Huang, Two-Dimensional Conformal Geometry and Vertex Operator Algebras](https://doi.org/10.1007/978-1-4612-4276-5)
+
+### Zhu’s algebra detects endomorphisms
+
+**Remember:** An endomorphism of a simple module is determined at its bottom.
+
+*Makes the theorem clean to state or prove.* MSC 17B69 (Vertex operators; vertex operator algebras and related structures), 81T40. arXiv math.QA, math.RA. Level 4: research.
+
+**Definition.** Write Y(a,z) for the field of a state a of weight h, and call the coefficient of z⁻¹ in a series its residue. Multiply Y(a,z)b by the hth power of 1 + z. Zhu’s algebra quotients the state space by the span of the residues after division by z². Its product uses the same residues after division by z.
+
+**Problem.** Let M be a simple admissible module, graded by nonnegative integers compatibly with the field modes, with nonzero degree zero. Restriction identifies its module endomorphism ring with the endomorphism ring of its degree-zero space over Zhu’s algebra.
+
+**How the definition helps.** Zhu’s algebra retains exactly the action on degree zero needed to recover a simple module. The class of a acts there by its mode numbered h − 1. Since degree zero generates the module, restriction is injective. Zhu induction extends each endomorphism of degree zero to the induced module. Its canonical simple quotient recovers M and carries the induced endomorphism.
+
+**Paper or page:** [Endomorphism property of vertex operator algebras over arbitrary fields](https://arxiv.org/abs/2211.16573v2), [Endomorphism property of vertex operator algebras over arbitrary fields](https://arxiv.org/abs/2211.16573v2). It says: “End\[V\](M) ≅ End\[A(V)\](M(0)).”
+
+**Sources:**
+
+- [Chao Yang, Jianqi Liu, Endomorphism property of vertex operator algebras over arbitrary fields](https://arxiv.org/abs/2211.16573v2)
+- [Yongchang Zhu, Modular invariance of characters of vertex operator algebras](https://doi.org/10.1090/s0894-0347-96-00182-8)
 
 ### Quadratic operators preserve Jordan invertibility
 

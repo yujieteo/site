@@ -1613,6 +1613,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Core and quotient split partitions
+
+**Remember:** Each quotient cell records one bead move of size t.
+
+*Makes the theorem clean to state or prove.* MSC 05A17 (Combinatorial aspects of partitions of integers), 11P84. arXiv math.CO, math.NT. Level 3: graduate.
+
+**Definition.** Write a partition as decreasing row lengths, allowing ties and padding with zeros. Put a bead at the length of row i minus i, starting at i = 1. For a positive integer t, separate the beads by residue modulo t and slide each toward smaller positions until no gaps remain below it. The packed positions encode the core, and the displacements in steps of t give one quotient partition per residue.
+
+**Problem.** The size of a partition is the size of its t-core plus t times the sum of the sizes of its t quotient partitions. The core and the t ordered quotient partitions determine the original partition.
+
+**How the definition helps.** The quotient records exactly how far each bead moved, so it gives both the size difference and a way to undo the moves. In our own argument, one step reduces the sum of the row lengths by t. Packing accounts for every step. To reconstruct each residue line, match beads in descending order and restore their recorded displacements. Identifying the packed partition with the usual core uses the correspondence between bead moves and removals of t boundary cells.
+
+**Wikipedia:** [Core partition](https://en.wikipedia.org/wiki/Core_partition). It says: “We call λ⁽ᵗ⁾ the t-core of λ”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Gapless log-concavity survives convolution
 
 **Remember:** No internal zeros lets adjacent inequalities control every pair of rows.

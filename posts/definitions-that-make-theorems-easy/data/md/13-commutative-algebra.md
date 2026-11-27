@@ -1608,6 +1608,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Perfect residue fields give Witt reduction modulo p
+
+**Remember:** Perfect residue fields make the Witt shift the same as divisibility by p.
+
+*Rules out counterexamples. Confidence: medium.* MSC 13F35 (Witt vectors and related rings), 11S85. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let W(k) be the ring of p-typical Witt vectors, infinite sequences with operations given by the Witt polynomials. Reduction takes the first entry. A perfect field of characteristic p is one where raising to the pth power is bijective.
+
+**Problem.** For a perfect field k of characteristic p, reduction identifies W(k)/pW(k) with k. In particular, for finite k this recovers the residue field of the unramified p-adic integer ring W(k). The identification fails for k = 𝔽ₚ(t).
+
+**How the definition helps.** Perfection supplies a pth root for each entry after the initial zero (our own argument). In characteristic p, multiplication by p raises every entry to its pth power and inserts zero at the front. Thus its image is exactly the kernel of reduction. Over the rational function field 𝔽ₚ(t), the vector (0, t, 0, …) gives a counterexample because t has no pth root. The multiplication formula uses the Witt polynomial identities (our own proof).
+
+**nLab:** [ring of Witt vectors](https://ncatlab.org/nlab/show/ring+of+Witt+vectors). It says: “the Verschiebung morphism coincides with the shift (a₀, a₁, …) ↦ (0, a₀, a₁, …)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Excellent rings shut out Nagata's badly behaved Noetherian rings
 
 **Remember:** Excellent rings are the Noetherian rings that behave like geometry expects.

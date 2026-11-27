@@ -919,6 +919,24 @@
 
 - [The spectral model of (Real) K-theory](https://arxiv.org/abs/2410.21606)
 
+### Superconnection Chern forms are closed
+
+**Remember:** The square commutes with its root, and a graded trace kills commutators.
+
+*True by definition.* MSC 19L10 (Riemann-Roch theorems, Chern characters), 58J20. arXiv math.DG, math-ph. Level 4: research.
+
+**Definition.** Split a finite-rank complex vector bundle into even and odd parts. A superconnection A reverses total parity on bundle-valued forms and satisfies A(αs) = dα·s + (−1)ᵏαA(s) for each scalar k-form α. Define its Chern form as the graded trace of exp(−A²). The graded trace subtracts the odd trace from the even trace.
+
+**Problem.** The Chern character form of a finite-rank superconnection is closed.
+
+**How the definition helps.** Our own calculation reduces closedness to the identity that A commutes with every power of its square. The graded product rule identifies the exterior derivative of the Chern form with the graded trace of that commutator. The transgression formula shows this definition gives the same cohomology class as the ordinary connection formula, with matching normalization.
+
+**Paper or page:** [The families analytic index for 1∣1-dimensional Euclidean field theories](https://arxiv.org/abs/2303.09207v1). It says: “When it exists, the Chern form of a Clₙ-linear superconnection 𝔸 is closed and has total degree n.”
+
+**Sources:**
+
+- [Daniel Quillen, Superconnections and the Chern character (1985)](https://doi.org/10.1016/0040-9383(85)90047-3)
+
 ### Connective K-theory modulo Bott gives integers
 
 **Remember:** Removing positive powers of Bott from connective K-theory leaves only the integers.

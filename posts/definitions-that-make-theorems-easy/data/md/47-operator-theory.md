@@ -1170,6 +1170,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Odd symmetry preserves kernel parity
+
+**Remember:** Odd symmetry makes the ordinary index zero but leaves kernel parity.
+
+*Makes the theorem clean to state or prove.* MSC 47A53 ((Semi-) Fredholm operators; index theories), 58J20. arXiv math.DG. Level 4: research.
+
+**Definition.** Let D be a bounded operator on a complex Hilbert space with closed range and finite-dimensional kernel and cokernel. Fix a conjugate-linear isometry τ with τ² = −1. Call D odd symmetric when τDτ⁻¹ = D\*, its adjoint. Define its parity index as dim ker D modulo two.
+
+**Problem.** The parity index is constant under compact perturbations that preserve odd symmetry.
+
+**How the definition helps.** Our own explanation is that τ pairs the kernel with the cokernel, so the ordinary index cannot distinguish these operators. The parity index retains information that survives deformation. Our own account of the proof uses the symmetry on a finite-dimensional reduction to prove local constancy of parity.
+
+**Paper or page:** [On the Z<sub>2</sub>-valued index of elliptic odd symmetric operators on non-compact manifolds](https://arxiv.org/abs/2403.13999v3). It says: “indτ(D + K) = indτ D.”
+
+**Sources:**
+
+- [Maxim Braverman and Ahmad Reza Haj Saeedi Sadegh, On the ℤ₂-valued index of elliptic odd symmetric operators on non-compact manifolds (2024)](https://doi.org/10.1007/s40316-024-00228-5)
+
 ### A shifted inverse detects eigenvectors
 
 **Remember:** Move the free inverse between the two square roots.

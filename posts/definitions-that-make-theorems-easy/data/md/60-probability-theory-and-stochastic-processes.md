@@ -962,6 +962,24 @@
 
 - [Doob, J. L. (1937). Stochastic processes depending on a continuous parameter. Transactions of the American Mathematical Society 42, 107–140. (Crossref confirms the paper; the Wikipedia article does not cite it.)](https://doi.org/10.1090/S0002-9947-1937-1501916-1)
 
+### Spectral atoms obstruct Gaussian ergodicity
+
+**Remember:** A frequency with positive mass leaves a shift-invariant random amplitude.
+
+*Rules out counterexamples.* MSC 60G10 (Stationary stochastic processes), 60G15. arXiv math.PR. Level 3: graduate.
+
+**Definition.** Let X be a real centered stationary Gaussian process on ℝ, continuous in mean square. Its spectral measure is the finite positive measure whose Fourier transform is the covariance as a function of the time difference.
+
+**Problem.** Time shifts are ergodic exactly when the spectral measure gives zero mass to each frequency. Ergodicity means every event invariant up to null sets under all shifts has probability zero or one. A nondegenerate Gaussian random constant has an atom at frequency zero and fails this test.
+
+**How the definition helps.** The spectral measure turns a condition on every invariant event into a test for individual frequencies. In our own explanation, an atom supplies a Gaussian frequency component whose squared amplitude is invariant and nonconstant. Conversely, expand square-integrable observations in orthogonal Gaussian polynomials. At positive degree, frequencies add and their distribution is described by repeated convolution of the spectral measure. Convolving an atomless finite measure never creates an atom at zero. The spectral representation and the completeness of the polynomial expansion supply the main work.
+
+**Paper or page:** [Langevin equation and fractional dynamics](https://arxiv.org/abs/1810.02412). It says: “A stationary Gaussian process is ergodic if and only if its spectral measure has no atoms.”
+
+**Sources:**
+
+- [Maruyama, The Harmonic Analysis of Stationary Stochastic Processes (1949)](https://doi.org/10.2206/kyushumfs.4.45)
+
 ### Stationarity on path space survives functions of whole paths
 
 **Remember:** A map that commutes with the shift preserves shift invariance of the law.
@@ -993,6 +1011,26 @@
 **Paper or page:** [Limit theorems for Gaussian fields via Chaos Expansions and Applications, Proposition 2.2.2](https://arxiv.org/abs/2406.15801v2). It says: “Then there exists an isonormal Gaussian field over H. Moreover, when X, X' are isonormal Gaussian field over H, they are equal in law.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Pairings recover ordinary Gaussian products
+
+**Remember:** Wick products have one degree even when ordinary powers mix degrees.
+
+*True by definition.* MSC 60G15 (Gaussian processes). arXiv math.PR. Level 3: graduate.
+
+**Definition.** For centered jointly Gaussian variables X₁,…,Xₙ, set S = t₁X₁ + ⋯ + tₙXₙ using formal variables t₁,…,tₙ. Their Wick product is the coefficient of t₁⋯tₙ in exp(S − Var(S)/2). The empty Wick product is one.
+
+**Problem.** The ordinary product is a sum over all ways to pair disjoint indices, including the empty pairing. Each term multiplies the covariances of the pairs by the Wick product of the remaining variables.
+
+**How the definition helps.** Restoring the factor exp(Var(S)/2) supplies exactly the missing pairs. Our own proof compares the coefficient of t₁⋯tₙ on both sides. Each quadratic term uses two indices, and no index can appear twice in this coefficient. The usual projection definition removes all lower polynomial degrees. Identifying the two definitions requires the orthogonality of Gaussian polynomials.
+
+**Wikipedia:** [Wick product](https://en.wikipedia.org/wiki/Wick_product). It says: “For the higher-order products the adjustment involves subtracting off lower order (ordinary) products of the random variables”
+
+**Paper or page:** [On a pinning model in correlated Gaussian random environments](https://arxiv.org/abs/2501.00445). It says: “Let $(\\omega \_n)<sub>n\\in \\mathbb N</sub>$ be Gaussian. Then\\\[ \\omega \_{\\boldsymbol {n}<sub>\\llbracket m\\rrbracket </sub>}=\\sum <sub>j=0</sub><sup>{</sup>\[\\frac{m}{2}\]}\\sum \_{\\substack {B\\subset \\llbracket m \\rrbracket \\\\ \|B\|=m-2j}}\\omega \_{\\boldsymbol {n}<sub>B</sub>}<sup>\\diamond</sup> \\mathbb {E}\[\\omega \_{\\boldsymbol {n}<sub>\\llbracket m \\rrbracket \\backslash B</sub>}\], \\\]”
+
+**Sources:**
+
+- [On a pinning model in correlated Gaussian random environments](https://arxiv.org/abs/2501.00445)
 
 ### Modifications let Kolmogorov's theorem give Brownian motion continuous paths
 
@@ -1351,6 +1389,61 @@
 
 - [J. F. C. Kingman, Poisson Processes, Oxford University Press (1992)](https://doi.org/10.1093/oso/9780198536932.001.0001)
 
+### Variance subtraction gives mass martingales
+
+**Remember:** Each independent layer contributes an exponential of conditional mean one.
+
+*True by definition.* MSC 60G57 (Random measures), 60G60. arXiv math.PR. Level 3: graduate.
+
+**Definition.** Add independent, jointly measurable, centered real Gaussian fields on a space with a fixed finite measure. After n layers let S be their sum at a point. Use the density exp(γS − γ²Var(S)/2) for fixed real γ.
+
+**Problem.** The integral of this density over any fixed measurable set forms a nonnegative martingale. Given the first n layers, the next integral has conditional mean equal to the current integral.
+
+**How the definition helps.** Variance subtraction makes the factor contributed by the next independent layer have mean one at each point. The uncorrected exponential also picks up a deterministic variance factor. Our own discrete version integrates the conditional identity using nonnegativity. Constructing a nonzero limiting mass requires additional estimates.
+
+**Paper or page:** [Subcritical Gaussian Multiplicative Chaos in the Wiener Space: Construction, Moments and Volume Decay](https://arxiv.org/abs/2211.08996). It says: “For every Borel set $A \\subset \\Omega $ and $\\gamma &gt;0$, $$ \\left ( \\int \_A \\exp \\left \\{ \\gamma {H}<sub>T</sub>(\\omega ) - \\frac {\\gamma ^2}{2}T (\\phi \\star \\phi )(0) \\right \\} \\d \\P \_0(\\omega ) \\right )<sub>T&gt;0</sub> $$ is a martingale.”
+
+**Sources:**
+
+- [Subcritical Gaussian Multiplicative Chaos in the Wiener Space: Construction, Moments and Volume Decay](https://arxiv.org/abs/2211.08996)
+
+### Boundary energy governs Gaussian shifts
+
+**Remember:** A shift preserves null sets exactly when it has finite zero-boundary energy.
+
+*Rules out counterexamples.* MSC 60G60 (Random fields). arXiv math.PR. Level 3: graduate.
+
+**Definition.** On a bounded smooth planar domain, the zero-boundary Gaussian free field is a centered Gaussian random distribution. Its covariance is the inverse of −Δ with zero boundary values, where Δ is the Laplacian. Complete the smooth compactly supported functions in the L² norm of their gradients to form the energy space.
+
+**Problem.** A deterministic distributional shift preserves the null sets of this field law exactly when it belongs to that energy space. In particular, a nonzero constant shift gives a mutually singular law.
+
+**How the definition helps.** The energy space includes the boundary condition that prevents a constant shift from qualifying. The Cameron–Martin theorem says that shifts preserving Gaussian null sets form a Hilbert space. Every shift outside it gives a mutually singular law, meaning the two laws concentrate on disjoint sets. Our own explanation identifies this space by expanding the inverse Laplacian in its eigenfunctions. A nonzero constant fails the zero boundary condition.
+
+**Wikipedia:** [Cameron–Martin theorem](https://en.wikipedia.org/wiki/Cameron%E2%80%93Martin_theorem). It says: “If $h\\not\\in H\_\\gamma$ the two measures are singular.”
+
+**Paper or page:** [Radial conformal welding in Liouville quantum gravity](https://arxiv.org/abs/2411.19810). It says: “the law of h under the reweighted measure agrees with the law of h + g under the unreweighted measure.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Energy projections split free fields
+
+**Remember:** The subdomain gets the orthogonal part that vanishes at its boundary.
+
+*True by definition.* MSC 60G60 (Random fields). arXiv math.PR. Level 3: graduate.
+
+**Definition.** On a bounded smooth planar domain D, complete the smooth compactly supported functions in the norm given by the L² length of their gradients. The zero-boundary Gaussian free field assigns jointly centered Gaussian variables to this space, with covariance given by the gradient inner product. For a smooth subdomain U with closure inside D, extend its energy space into that of D by zero.
+
+**Problem.** The field on D splits into two independent random distributions. One is the zero-boundary field on U extended by zero. The other agrees with the original field outside the closure of U and has zero Laplacian inside U.
+
+**How the definition helps.** The gradient inner product turns the split into two orthogonal projections. Orthogonal Gaussian coordinates are independent. The component from U has precisely its field covariance. In our own explanation, orthogonality to every test in U says that the other component has zero Laplacian there. Using the inverse Laplacian as covariance instead requires identifying the corresponding distribution with this energy-space field.
+
+**Paper or page:** [Quantum triangles and imaginary geometry flow lines](https://arxiv.org/abs/2211.04580). It says: “h₂ is the same as h outside U and harmonic inside U.”
+
+**Sources:**
+
+- [Quantum triangles and imaginary geometry flow lines](https://arxiv.org/abs/2211.04580)
+- [Sheffield, Gaussian free fields for mathematicians (2007), Section 2.6](https://doi.org/10.1007/s00440-006-0050-1)
+
 ### Defining stochastic exponentials by integrals preserves the local martingale property
 
 **Remember:** If the driver is a local martingale, its stochastic integral is one too.
@@ -1421,6 +1514,24 @@
 
 - [Stratonovich, R. L. (1966). A new representation for stochastic integrals and equations. SIAM Journal on Control 4, 362–371.](https://doi.org/10.1137/0304028)
 
+### Projecting Gaussian kernels gives conditioning
+
+**Remember:** Project each kernel argument to keep only what the observed noise can see.
+
+*True by definition.* MSC 60H07 (Stochastic calculus of variations and the Malliavin calculus). arXiv math.PR. Level 3: graduate.
+
+**Definition.** Let W assign jointly centered Gaussian variables to a real separable Hilbert space, with covariance equal to its inner product. Choose finitely many orthonormal directions and let P project onto their span. Every square-integrable function of W has an orthogonal expansion by Gaussian polynomial degree, with symmetric coefficient tensors. Define Γ(P) by applying P to every tensor argument and leaving constants unchanged.
+
+**Problem.** For every square-integrable function of W, Γ(P) gives its conditional expectation given the Gaussian coordinates in the chosen directions.
+
+**How the definition helps.** Projecting the tensors deletes exactly the terms involving unobserved Gaussian directions. Our own proof uses a basis starting with the observed directions. In the corresponding orthogonal polynomial basis, each positive-degree factor in an unobserved coordinate has mean zero and is independent of the observed coordinates. The work behind this alternative to conditional integration is completeness of the Gaussian polynomial expansion.
+
+**Paper or page:** [Feynman-Kac formula for the heat equation driven by time-homogeneous white noise potential](https://arxiv.org/abs/2108.12406). It says: “the second quantization operator $\\Gamma (A<sub>K</sub>)$ coincides with the conditional expectation $\\mathbb E\[\\bullet \|\\sigma (Z<sub>1</sub>,...,Z<sub>K</sub>)\]$”
+
+**Sources:**
+
+- [Feynman-Kac formula for the heat equation driven by time-homogeneous white noise potential](https://arxiv.org/abs/2108.12406)
+
 ### Weak solutions give Tanaka's equation a solution where strong solutions fail
 
 **Remember:** Choose the noise together with the solution, and Tanaka's equation solves.
@@ -1438,6 +1549,24 @@
 **Sources:**
 
 - [T. Yamada and S. Watanabe, On the uniqueness of solutions of stochastic differential equations, Journal of Mathematics of Kyoto University 11 (1971)](https://doi.org/10.1215/kjm/1250523691)
+
+### Test functions realize white noise
+
+**Remember:** White noise acts on tests, not on individual points.
+
+*Rules out counterexamples.* MSC 60H40 (White noise theory), 60G60. arXiv math.PR. Level 3: graduate.
+
+**Definition.** Work on ℝⁿ with n ≥ 1. A tempered distribution is a continuous linear functional on smooth test functions that decrease rapidly together with all their derivatives. Gaussian white noise is a random tempered distribution whose evaluations on real tests are jointly centered Gaussian with covariance equal to their L² inner product.
+
+**Problem.** Exactly one probability law has these properties. On each fixed nonempty open ball, the noise almost surely has no square-integrable representative.
+
+**How the definition helps.** Testing against smooth functions specifies the law even where square-integrable samples cannot exist. The Bochner–Minlos theorem turns the Gaussian characteristic function into a probability measure on distributions. Our own obstruction uses infinitely many orthonormal smooth tests supported in the ball. Their evaluations are independent standard normal variables, so the sum of their squares diverges almost surely. Bessel’s inequality bounds this sum for every square-integrable function.
+
+**Paper or page:** [Multiparameter Lévy white noise theory and applications](https://arxiv.org/abs/2510.25525). It says: “There exists a unique probability measure $\\mathbb {P}$ on ${\\cal B}({\\cal S}'({\\mathbb { R}}<sup>n</sup>))$ with the following property:\\\[ \\mathbb {E}\[e<sup>i\\langle \\cdot ,\\phi \\rangle </sup>\]:=\\int \\limits <sub>\\cal S'</sub>e<sup>i\\langle \\omega , \\phi \\rangle </sup>d\\mathbb {P}(\\omega )=e<sup>{-\\tfrac</sup> {1}{2} \\Vert \\phi \\Vert ^2};\\quad i=\\sqrt{-1} \\\]”
+
+**Sources:**
+
+- [Multiparameter Lévy white noise theory and applications](https://arxiv.org/abs/2510.25525)
 
 ### Harris chains carry Markov chain convergence to uncountable state spaces
 
@@ -1737,6 +1866,24 @@
 - [Jaynes, E. T. (1973). The well-posed problem. Foundations of Physics 3, 477–492.](https://doi.org/10.1007/BF00709116)
 - [A. Drory, Failure and uses of Jaynes' principle of transformation groups, Foundations of Physics 45 (2015) 439–460, arXiv:1503.09072](https://doi.org/10.1007/s10701-015-9876-7)
 
+### Variance normalization orders Gaussian masses
+
+**Remember:** Normalize each point to mean one before changing the covariances.
+
+*Makes the theorem clean to state or prove.* MSC 60E15 (Inequalities; stochastic orderings), 60G60. arXiv math.PR. Level 4: research.
+
+**Definition.** For a finite centered Gaussian vector X and fixed positive weights pⱼ, define its mass M(X) = ∑ⱼ pⱼ exp(Xⱼ − Var(Xⱼ)/2). Each normalized exponential has mean one.
+
+**Problem.** Suppose X and Y have the same index set and Cov(Xᵢ,Xⱼ) ≤ Cov(Yᵢ,Yⱼ) for every pair. Then 𝔼\[F(M(X))\] ≤ 𝔼\[F(M(Y))\] for every twice continuously differentiable convex F with bounded first and second derivatives.
+
+**How the definition helps.** Subtracting half the variance cancels every first-derivative term in the covariance comparison. Our own explanation interpolates linearly between the two covariance matrices. Gaussian integration by parts leaves terms proportional to the second derivative of F and the corresponding covariance increases. All remaining factors are nonnegative. Adding independent noise and passing to the limit covers singular covariance matrices.
+
+**Paper or page:** [Moment bounds for Gaussian multiplicative chaos with higher-dimensional singularities](https://arxiv.org/abs/2302.06097). It says: “Let $\\bm {X}$, $\\bm {Y}$ be two Gaussian vectors indexed by $T$ such that $\\bm {Y}$ dominates $\\bm {X}$ in covariance on $T<sup>2$</sup>. Then for any \\emph{convex} functional $F$ with subgaussian growth at infinity as well as in its first and second derivatives, and for any \\emph{positive} weights $\\{ p<sub>i</sub>\\} <sub>i\\in T</sub>$, \\begin{equation\*}  \\mathbb {E}\[F(\\sum <sub>i\\in T</sub>p<sub>ie</sub><sup>{X<sub>i</sub>-\\frac{1}{2}\\mathbb</sup> {E}\[X<sub>i</sub><sup>2</sup>\]})\]\\leq \\mathbb {E}\[F(\\sum <sub>i\\in T</sub>p<sub>ie</sub><sup>{Y<sub>i</sub>-\\frac{1}{2}\\mathbb</sup> {E}\[Y<sub>i</sub><sup>2</sup>\]})\]. \\end{equation\*}”
+
+**Sources:**
+
+- [Moment bounds for Gaussian multiplicative chaos with higher-dimensional singularities](https://arxiv.org/abs/2302.06097)
+
 ### Borel data structures give one de Finetti theorem for graphs and arrays
 
 **Remember:** Give every finite label set its own data space, then demand symmetry.
@@ -1917,6 +2064,29 @@
 **Sources:**
 
 - [S. Sheffield, Gaussian free fields for mathematicians, Probability Theory and Related Fields 139 (2007)](https://doi.org/10.1007/s00440-006-0050-1)
+
+### Wick products remove internal cumulants
+
+**Remember:** Remove each block's own cumulants before combining the blocks.
+
+*Makes the theorem clean to state or prove.* MSC 60G60 (Random fields). arXiv math.PR. Level 4: research.
+
+**Definition.** In a finite block of real field evaluations with moments of all orders, give each occurrence its own formal variable tⱼ. Set S = ∑ⱼ tⱼXⱼ. The Wick product is the coefficient of the product of all the variables in exp(S)/𝔼\[exp(S)\]. Expectations here act on coefficients, so the series need no convergence.
+
+**Problem.** The expected product of these Wick products equals a sum over partitions of the occurrences where each part meets at least two blocks. Each partition contributes the product of its parts’ joint cumulants. A part’s cumulant is its multilinear coefficient in log 𝔼\[exp(S)\] using only that part’s variables.
+
+**How the definition helps.** The denominator removes every term confined to one block from the logarithm of the joint generating series. Our own coefficient calculation then expands the exponential of the remaining terms. Choosing terms that use each variable once gives exactly the stated partitions. The logarithmic definition of cumulants supplies the coefficients.
+
+**Paper or page:** [A scaling limit of the parabolic Anderson model with exclusion interaction](https://arxiv.org/abs/2103.13479). It says: “One has the \`\`diagram formula"
+\\begin{equation}
+\\label{eq:diagram}
+{\\symb E}\\bigg(\\prod<sub>k=1</sub><sup>p</sup>\\Wick{\\prod<sub>i=1</sub><sup>m</sup>X<sub>(i,k)</sub>}\\bigg)
+= \\sum\_{\\pi\\in\\mathcal{P}M(M\\times P)}\\prod{B\\in\\pi}{\\symb E}c(X{B}).
+\\end{equation}”
+
+**Sources:**
+
+- [A scaling limit of the parabolic Anderson model with exclusion interaction](https://arxiv.org/abs/2103.13479)
 
 ### Measure-valued stochastic integrals allow a Fubini theorem with random mixing weights
 

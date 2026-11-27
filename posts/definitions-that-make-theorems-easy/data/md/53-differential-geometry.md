@@ -449,6 +449,148 @@
 - [P. A. M. Dirac, Quantised Singularities in the Electromagnetic Field, Proc. Roy. Soc. A 133 (1931) 60–72](https://doi.org/10.1098/rspa.1931.0130)
 - [Daniel S. Freed, Dirac Charge Quantization and Generalized Differential Cohomology, Surveys in Differential Geometry 7 (2000) 129–194, arXiv:hep-th/0011220](https://arxiv.org/abs/hep-th/0011220)
 
+### A curvature split bounds energy
+
+**Remember:** The unwanted part of curvature is exactly the excess energy.
+
+*True by definition.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 3: graduate.
+
+**Definition.** Fix an SU(n) bundle on a closed oriented Riemannian four-manifold. The Hodge star splits its curvature into parts F₊ and F₋ with eigenvalues +1 and −1. An anti-self-dual connection satisfies F₊ = 0.
+
+**Problem.** If the bundle admits an anti-self-dual connection, its absolute energy minimizers are exactly its anti-self-dual connections.
+
+**How the definition helps.** In our own proof, the splitting writes the energy as a bundle constant plus twice the integral of \|F₊\|². Here the energy is the integral of \|F\|². Chern–Weil theory shows that the integral of \|F₋\|² − \|F₊\|² depends only on the bundle.
+
+**nLab:** [Yang-Mills instanton](https://ncatlab.org/nlab/show/Yang-Mills+instanton). It says: “In SU(n)-Yang-Mills theory an instanton is a field configuration with non-vanishing second Chern class that minimizes the Yang-Mills energy.”
+
+**Wikipedia:** [Instanton](https://en.wikipedia.org/wiki/Instanton). It says: “Instantons are topologically nontrivial solutions of Yang–Mills equations that absolutely minimize the energy functional within their topological type.”
+
+**Sources:**
+
+- [Michael F. Atiyah, Nigel J. Hitchin and Isadore M. Singer, Self-duality in four-dimensional Riemannian geometry](https://doi.org/10.1098/rspa.1978.0143)
+
+### A frame removes gauge stabilizers
+
+**Remember:** A gauge symmetry that fixes one frame fixes every transported frame.
+
+*Rules out counterexamples.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 3: graduate.
+
+**Definition.** Choose one frame in one fiber of a principal bundle. Use only gauge transformations, or bundle changes of frame, that fix this frame. The ordinary gauge group need not fix it.
+
+**Problem.** On a connected base, the based gauge group acts freely on the space of smooth connections. The full gauge group need not act freely, since constant changes preserve the product connection on a trivial bundle.
+
+**How the definition helps.** In our own proof, fixing one frame determines every symmetry that preserves the connection. Such a symmetry commutes with parallel transport, so it fixes a transported frame over every point of the connected base. A bundle automorphism fixing a frame fixes its entire fiber.
+
+**nLab:** [parallel transport](https://ncatlab.org/nlab/show/parallel+transport). It says: “This means that we may identify connections on P with their parallel transport functors.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Anti-self-dual connections satisfy Yang–Mills
+
+**Remember:** Flip the curvature and let the Bianchi identity do the rest.
+
+*True by definition.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 3: graduate.
+
+**Definition.** On an oriented Riemannian four-manifold, let F be the curvature of a connection with compact structure group. The metric and orientation define the Hodge star ⋆ on two-forms. A connection is anti-self-dual if ⋆F = −F.
+
+**Problem.** Every smooth anti-self-dual connection is a Yang–Mills connection.
+
+**How the definition helps.** In our own calculation, anti-self-duality turns the Yang–Mills equation dₐ⋆F = 0 into the Bianchi identity dₐF = 0. Here dₐ differentiates forms using the connection. The identity holds for every connection, so the first-order condition implies the second-order equation.
+
+**nLab:** [Yang-Mills equation](https://ncatlab.org/nlab/show/Yang-Mills+equation). It says: “The Bianchi identity dₐFₐ = 0 and the Yang-Mills equation δₐFₐ = 0 combine to:”
+
+**Sources:**
+
+- [Michael F. Atiyah, Nigel J. Hitchin and Isadore M. Singer, Self-duality in four-dimensional Riemannian geometry](https://doi.org/10.1098/rspa.1978.0143)
+
+### Coulomb gauge restores Hessian ellipticity
+
+**Remember:** Coulomb gauge fills the symbol direction that gauge symmetry leaves empty.
+
+*Rules out counterexamples. Confidence: medium.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 3: graduate.
+
+**Definition.** At a smooth Yang–Mills connection A, write dₐ for the covariant exterior derivative and dₐ\* for its metric adjoint. The Hessian H is the linearization of the Yang–Mills equation with the energy normalized by one half. Coulomb gauge requires a variation a to satisfy dₐ\*a = 0. Define the gauge-fixed operator on all variations by H + dₐdₐ\*.
+
+**Problem.** On a closed Riemannian manifold of positive dimension with positive-dimensional compact structure group, the gauge-fixed operator is elliptic. Its principal symbol, which records its highest derivatives, equals \|ξ\|² times the identity at every nonzero covector ξ.
+
+**How the definition helps.** In our own proof, the added term supplies exactly the direction missing from the Hessian. The symbol of H acts by \|ξ\|² on variations perpendicular to ξ and vanishes on variations parallel to ξ. The added term acts by \|ξ\|² on parallel variations and vanishes on perpendicular ones. Their sum is invertible for ξ ≠ 0, which gives ellipticity.
+
+**nLab:** [Coulomb gauge](https://ncatlab.org/nlab/show/Coulomb+gauge). It says: “Then A is said to be in Coulomb gauge relative to A₀ if”
+
+**Paper or page:** [Compactness for Ω-Yang-Mills connections](https://arxiv.org/abs/2106.09131). It says: “then A is gauge equivalent to a connection (also denoted A) satisfying:”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Cylinder instantons follow Chern–Simons flow
+
+**Remember:** Remove the time component and duality becomes flow.
+
+*Makes the theorem clean to state or prove.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 3: graduate.
+
+**Definition.** Fix a closed oriented Riemannian three-manifold and a principal SU(2) bundle. On its product with an interval, temporal gauge sets the time component of a connection to zero. The remaining component is a path A(t) of spatial connections. Normalize the Chern–Simons functional so its gradient for the integral inner product is ⋆Fₐ.
+
+**Problem.** With time first in the product orientation, a connection in temporal gauge is anti-self-dual exactly when its path follows negative Chern–Simons gradient flow.
+
+**How the definition helps.** Temporal gauge turns the mixed curvature component into the time derivative of A. In our own sign convention, anti-self-duality gives ∂ₜA = −⋆Fₐ, where ⋆ is the spatial Hodge star. Parallel transport along the interval supplies temporal gauge. The first variation of Chern–Simons identifies the spatial curvature term with its gradient.
+
+**nLab:** [Yang-Mills instanton Floer homology](https://ncatlab.org/nlab/show/Yang-Mills+instanton+Floer+homology). It says: “the flow lines of S₍CS₎ correspond to the Yang-Mills instantons on Σ × \[0,1\].”
+
+**Sources:**
+
+- [Simon K. Donaldson, Floer Homology Groups in Yang-Mills Theory](https://doi.org/10.1017/CBO9780511543098)
+
+### Cylinder integration gives Chern–Simons transgression
+
+**Remember:** Integrate along the path and differentiate to get the endpoints.
+
+*True by definition.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 3: graduate.
+
+**Definition.** Join two connections on one principal bundle by their straight path. Regard this path as a connection on the product with \[0,1\], with zero interval component. Apply a conjugation-invariant homogeneous polynomial P to its curvature F. Define the relative Chern–Simons form by inserting the increasing interval direction into P(F) and integrating over the interval.
+
+**Problem.** The exterior derivative of this form equals P applied to the final curvature minus P applied to the initial curvature.
+
+**How the definition helps.** In our own proof, integration along the interval turns differentiation into subtraction of the two endpoint values. Stokes’ formula gives this identity because Chern–Weil theory makes P(F) closed. Using the usual polynomial expression for the relative form would require differentiating the connection along the path explicitly.
+
+**Paper or page:** [Rigid models for 2-gerbes I: Chern-Simons geometry](https://arxiv.org/abs/2209.05521). It says: “Given a k-form ξ on X × \[a,b\] we have d∫\[a,b\] ξ + ∫\[a,b\] dξ = ξ\|X×{b} − ξ\|X×{a}.”
+
+**Sources:**
+
+- [Shiing-Shen Chern and James Simons, Characteristic Forms and Geometric Invariants](https://doi.org/10.2307/1971013)
+
+### Local systems compute flat cohomology
+
+**Remember:** Parallel sections are the coefficients of flat de Rham theory.
+
+*Makes the theorem clean to state or prove.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 3: graduate.
+
+**Definition.** Let E be a smooth real or complex vector bundle with flat connection on a smooth manifold. Its covariant exterior derivative differentiates E-valued forms and squares to zero because the curvature vanishes. The parallel sections on open sets form a local system, a sheaf that looks constant on small balls.
+
+**Problem.** The cohomology of the flat de Rham complex is the cohomology of the parallel local system. In particular it does not require a metric on the base.
+
+**How the definition helps.** In our own proof, a parallel frame turns the differential on bundle-valued forms into ordinary differentiation of each component. The Poincaré lemma gives local exactness in positive degrees, and the kernel in degree zero consists of parallel sections. Partitions of unity make this a resolution whose global sections compute the cohomology of the local system.
+
+**Paper or page:** [Lie groups and Chern-Simons Theory](https://arxiv.org/abs/2207.11062). It says: “the homology on the chain complex described above is just the cohomology of M with local coefficients in V”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Nonzero vortices require strict area bounds
+
+**Remember:** A nonzero section uses some of the available area.
+
+*Rules out counterexamples.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 3: graduate.
+
+**Definition.** Fix a holomorphic line bundle L with a nonzero holomorphic section φ on a compact connected Riemann surface with area form ω. A Hermitian metric h gives the unique unitary connection compatible with the holomorphic structure. Its curvature F satisfies the vortex equation when iF = (τ − \|φ\|²)ω/2, with real parameter τ and norm from h.
+
+**Problem.** A vortex with nonzero section must satisfy 4π deg L &lt; τ times the area. If equality holds, a constant-curvature connection with the zero section solves the equations.
+
+**How the definition helps.** In our own proof, a nonzero section makes the integral of its squared norm strictly positive. The curvature formula gives ∫iF = 2π deg L, where deg L is the first Chern number. Integrating the vortex equation now gives the strict bound. At equality a constant-curvature metric solves the equation with the zero section.
+
+**Paper or page:** [Kähler-Yang-Mills Equations and Vortices](https://arxiv.org/abs/2309.15673). It says: “Assume that φ is not identically zero. For every fixed Kähler form ω, there exists a unique solution h of the vortex equations”
+
+**Sources:**
+
+- [Steven B. Bradlow, Vortices in holomorphic line bundles over closed Kähler manifolds](https://doi.org/10.1007/BF02097654)
+
 ### Polystability is exactly the condition for a Hermite–Einstein metric
 
 **Remember:** Sums of stable bundles of equal slope carry Hermite–Einstein metrics.
@@ -485,6 +627,58 @@
 **Sources:**
 
 - [A. A. Belavin, A. M. Polyakov, A. S. Schwartz, Yu. S. Tyupkin, Pseudoparticle solutions of the Yang-Mills equations, Physics Letters B 59 (1975) 85–87](https://doi.org/10.1016/0370-2693(75)90163-X)
+
+### Surface Hermite–Einstein connections are projectively flat
+
+**Remember:** Ignore scalar curvature only after passing to projective frames.
+
+*True by definition.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 3: graduate.
+
+**Definition.** Fix a Hermitian vector bundle on a Riemann surface with area form ω. A unitary connection is Hermite–Einstein if its curvature satisfies F = iλω Id for some real constant λ. Projective unitary frames identify orthonormal frames that differ by a common phase. A connection is projectively flat when its induced connection on projective frames has zero curvature.
+
+**Problem.** Every Hermite–Einstein connection on a Hermitian bundle over a compact Riemann surface is projectively flat. A positive-degree line bundle shows why one cannot conclude ordinary flatness.
+
+**How the definition helps.** In our own proof, passage to projective frames kills every imaginary scalar multiple of the identity. Thus the Hermite–Einstein equation on a curve forces projective curvature to vanish. For ordinary flatness the scalar itself must vanish. On a positive-degree line bundle its integral is nonzero by the curvature formula for the degree.
+
+**nLab:** [projectively flat connection](https://ncatlab.org/nlab/show/projectively+flat+connection). It says: “A connection on a bundle that is flat up to a central term.”
+
+**Sources:**
+
+- [Michael F. Atiyah and Raoul Bott, The Yang-Mills equations over Riemann surfaces](https://doi.org/10.1098/rsta.1983.0017)
+
+### Translation symmetry gives Bogomolny monopoles
+
+**Remember:** The removed direction becomes a field on the space that stays.
+
+*True by definition.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 3: graduate.
+
+**Definition.** Use the product metric on ℝ × Y for an oriented Riemannian three-manifold Y, with time first in the orientation. Pull a principal bundle back from Y. A translation-invariant connection on this bundle has the form A + φ dt. Here A is a spatial connection and φ is a section of its Lie algebra bundle.
+
+**Problem.** The lifted connection A + φ dt is anti-self-dual exactly when Fₐ = ⋆dₐφ on Y. Here ⋆ is the spatial Hodge star.
+
+**How the definition helps.** In our own calculation, translation invariance leaves just two curvature components, Fₐ and dₐφ ∧ dt. The four-dimensional Hodge star exchanges spatial and mixed forms. With the stated orientation, anti-self-duality therefore says Fₐ = ⋆dₐφ. This identifies the three-dimensional monopole equation with a symmetry restriction of the four-dimensional equation.
+
+**nLab:** [Bogomolny equation](https://ncatlab.org/nlab/show/Bogomolny+equation). It says: “The Bogomolny equations are differential equations re-expressing the equations of motion of self-dual Yang-Mills theory”
+
+**Wikipedia:** [Yang–Mills equations](https://en.wikipedia.org/wiki/Yang%E2%80%93Mills_equations). It says: “By requiring the anti-self-duality equations to be invariant under translations in a single direction of ℝ⁴, one obtains the Bogomolny equations”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Universal covers classify flat bundles
+
+**Remember:** Trivialize upstairs and record what deck transformations do.
+
+*Makes the theorem clean to state or prove.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 3: graduate.
+
+**Definition.** Fix a connected smooth manifold M, a base point and a Lie group G. Given a homomorphism ρ from the fundamental group to G, start with the product of the universal cover and G. Each loop class acts on the cover by its covering transformation and on G by left multiplication by its image under ρ. The product connection descends to the quotient.
+
+**Problem.** Isomorphism classes of flat principal bundles with connection over a connected smooth manifold correspond to conjugacy classes of fundamental group representations into the structure group.
+
+**How the definition helps.** The quotient construction turns each representation directly into a bundle with connection. For the inverse, pull a flat connection back to the simply connected cover. Flatness makes parallel transport independent of the path there, giving a parallel frame. In our own comparison, changing the initial frame conjugates the representation.
+
+**Paper or page:** [Equivariant gluing theory on regular instanton moduli spaces](https://arxiv.org/abs/2101.09425). It says: “Suppose B is connected, π : P → B is a principal G-bundle and A is a flat connection on P, then there exists a representation π₁(B) → G unique up to conjugation”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Synge's theorem needs orientability, which excludes the real projective plane
 
@@ -1570,6 +1764,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Zero area recovers cup multiplication
+
+**Remember:** Discard positive area to recover the cup product.
+
+*True by definition.* MSC 53D45 (Gromov-Witten invariants, quantum cohomology, Frobenius manifolds), 14N35. arXiv math.SG. Level 3: graduate.
+
+**Definition.** Use rational coefficients and formal powers of T with nonnegative real exponents, only finitely many below any fixed bound. In the small quantum product, pair the output with a third class by counting genus-zero curves through the three conditions. Each count uses the virtual class, which corrects for excess dimension, and carries the power of T given by its symplectic area.
+
+**Problem.** For a closed symplectic manifold, quotienting its small quantum cohomology ring by all series with zero constant term recovers its rational cohomology ring.
+
+**How the definition helps.** Weighting by area lets one extract ordinary multiplication by taking the constant coefficient (our own). An unweighted sum would lose that information (our own). Only constant curves have zero area. Their three marks fix the sphere, and all three evaluations return the same target point (our own). The degree-zero count therefore pairs the ordinary cup product with the third class (our own). Associativity of the full product requires a separate theorem (our own).
+
+**Wikipedia:** [Quantum cohomology](https://en.wikipedia.org/wiki/Quantum_cohomology). It says: “The only pseudoholomorphic curves in class A = 0 are constant maps, whose images are points.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Prequantum curvature turns Poisson brackets into operator commutators
 
 **Remember:** Curvature supplies the term that makes the commutator agree with the bracket.
@@ -1604,6 +1814,94 @@
 
 - [Urs Schreiber, Konrad Waldorf, Parallel Transport and Functors, J. Homotopy Relat. Struct. 4 (2009) 187–244, arXiv:0705.0452](https://arxiv.org/abs/0705.0452)
 - [A. Caetano, Roger Picken, An axiomatic definition of holonomy, Int. J. Math. 5 (1994) 835–848](https://doi.org/10.1142/S0129167X94000425)
+
+### Closed Spin(7) forms ensure Yang–Mills
+
+**Remember:** Close the four-form and the Bianchi identity takes over.
+
+*Rules out counterexamples.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 4: research.
+
+**Definition.** A Spin(7) structure is a four-form Φ on an eight-manifold that agrees pointwise with the standard Cayley form in some frame. It determines a metric and its Hodge star ⋆. A Spin(7) instanton is a connection whose curvature F satisfies Φ ∧ F = −⋆F. The defining form is closed when dΦ = 0.
+
+**Problem.** A Spin(7) instanton for a closed defining four-form satisfies the ordinary Yang–Mills equation. Without closedness, the same instanton equation need not imply the Yang–Mills equation.
+
+**How the definition helps.** In our own proof, closedness removes the extra term when we differentiate the instanton equation. The Bianchi identity dₐF = 0 then gives the Yang–Mills equation dₐ⋆F = 0. For our own counterexample, take a nonzero constant abelian curvature F in the instanton subspace of Euclidean eight-space. Choose a linear function u with du ∧ ⋆F nonzero. Rescaling lengths by exp(u) multiplies both Φ and ⋆F by exp(4u). The instanton equation survives, but the rescaled ⋆F has nonzero exterior derivative.
+
+**nLab:** [Spin(7)-instanton](https://ncatlab.org/nlab/show/Spin%287%29-instanton). It says: “On a Spin(7) manifold the differential 2-forms decompose into two irreducible representations, Λ₇ and Λ₂₁ under the action of Spin(7)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Ideal instantons retain lost charge
+
+**Remember:** Keep the missing charge at the points where curvature concentrates.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 4: research.
+
+**Definition.** On an oriented Riemannian four-manifold, an anti-self-dual connection has curvature equal to its negative Hodge star. For SU(2), its charge is the second Chern number, an integer attached to its bundle. An ideal instanton of charge k pairs such a connection with finitely many points carrying positive integer weights. Its connection charge and point weights sum to k.
+
+**Problem.** On a closed base, every sequence of smooth anti-self-dual connections of charge k has a subsequence converging to an ideal instanton. After changes of frame, the connections converge smoothly on compact sets away from the marked points. In units of one instanton, the energy measures converge weakly to the limiting energy measure plus the weighted point masses.
+
+**How the definition helps.** In our own account, the marked points give concentrated curvature energy a place in the limit. Uhlenbeck compactness gives convergence away from those points. Removal of singularities extends the limiting connection, and energy quantization gives the integer weights.
+
+**nLab:** [Donaldson invariant](https://ncatlab.org/nlab/show/Donaldson+invariant). It says: “corresponding to the positions of the instantons when shrinking their scale down and considering the limit”
+
+**Paper or page:** [4-Manifold Topology, Donaldson-Witten Theory, Floer Homology and Higher Gauge Theory Methods in the BV-BFV Formalism](https://arxiv.org/abs/2107.00304). It says: “the connection A extends to a smooth anti self-dual connection Ã in B⁴.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Laurent coefficients test flatness
+
+**Remember:** Put each equation in its own power of the parameter.
+
+*Makes the theorem clean to state or prove.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 4: research.
+
+**Definition.** On a complex vector bundle, take a connection D and two one-forms φ and ψ with values in bundle endomorphisms. Define D(ε) = D + ε⁻¹φ + εψ for every nonzero complex number ε. In wedge products, multiply the endomorphisms by composition.
+
+**Problem.** Every D(ε) is flat exactly when φ∧φ, ψ∧ψ, dᴰφ, dᴰψ and Fᴰ + φ∧ψ + ψ∧φ all vanish. Here Fᴰ is the curvature and dᴰ is the exterior derivative induced by D.
+
+**How the definition helps.** In our own calculation, the family puts each of the five equations in a separate power of ε. Expanding curvature gives powers from −2 through 2. A Laurent polynomial vanishes for every nonzero parameter exactly when each coefficient vanishes.
+
+**Paper or page:** [Nilpotent Higgs bundles and families of flat connections](https://arxiv.org/abs/2207.09581). It says: “Then flatness for all ε ∈ ℂ× is equivalent to the following set of equations:”
+
+**Sources:**
+
+- [Sebastian Schulz, Nilpotent Higgs bundles and families of flat connections](https://arxiv.org/abs/2207.09581)
+
+### Odd degree excludes reducible projectively flat connections
+
+**Remember:** Two parallel lines of equal degree cannot have odd total degree.
+
+*Rules out counterexamples. Confidence: medium.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 4: research.
+
+**Definition.** Fix a rank-two unitary bundle over a connected closed oriented three-manifold, and fix its determinant connection. Call the bundle admissible if its determinant has odd degree on some embedded closed oriented surface. Degree here means the first Chern number on that surface. A projectively flat connection has curvature proportional to the identity at every point.
+
+**Problem.** Every projectively flat connection on such a bundle is irreducible for determinant-one gauge transformations, meaning its stabilizer is just the center. A product bundle with the product connection shows what can fail without admissibility.
+
+**How the definition helps.** In our own proof, odd degree rules out a splitting into parallel lines. A noncentral determinant-one symmetry preserving the connection has two distinct eigenvalues, and parallel transport preserves its eigenlines. Scalar curvature gives the same curvature on both lines. The curvature formula makes their degrees equal on the chosen surface, so their sum is even.
+
+**Paper or page:** [Equivariant instanton homology](https://arxiv.org/abs/1907.01091). It says: “Suppose E is a nontrivial admissible bundle over a 3-manifold Y.”
+
+**Sources:**
+
+- [Simon K. Donaldson, Floer Homology Groups in Yang-Mills Theory](https://doi.org/10.1017/CBO9780511543098)
+
+### One charge adds eight virtual dimensions
+
+**Remember:** One more unit of charge adds eight virtual dimensions.
+
+*Makes the theorem clean to state or prove.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 4: research.
+
+**Definition.** At an connection whose curvature equals its negative Hodge star, linearize the curvature equation and impose orthogonality to infinitesimal changes of frame. The resulting linear operator has finite-dimensional kernel and cokernel on a closed four-manifold. Define the virtual dimension as its index, the kernel dimension minus the cokernel dimension.
+
+**Problem.** For SU(2) bundles over a fixed connected closed oriented four-manifold, increasing the second Chern number k by one increases the virtual dimension by eight.
+
+**How the definition helps.** The index assigns a dimension even when the space of solutions has singularities. The Atiyah–Singer index theorem gives 8k − 3(1 − b₁ + b₊). Here b₁ counts independent real cohomology classes of degree one, and b₊ counts positive directions of the intersection form. In our own comparison, changing k leaves both numbers fixed. At an irreducible solution with zero cokernel, the implicit function theorem identifies the index with the actual local dimension.
+
+**nLab:** [Donaldson invariant](https://ncatlab.org/nlab/show/Donaldson+invariant). It says: “dim ℳₖ₊₁ = dim ℳₖ + 8 holds under a change of the instanton number”
+
+**Sources:**
+
+- [Simon K. Donaldson, An application of gauge theory to four-dimensional topology](https://doi.org/10.4310/jdg/1214437665)
 
 ### Singular foliations as modules of vector fields always have holonomy groupoids
 
@@ -1973,6 +2271,25 @@
 
 - [Margaret Beck, Jonathan Jaquette, Hannah Pieper, The Maslov index, degenerate crossings and the stability of pulse solutions to the Swift-Hohenberg equation, arXiv:2403.04003 (2025)](https://arxiv.org/abs/2403.04003v4)
 
+### Monotonicity excludes Maslov-zero disk bubbles
+
+**Remember:** Positive area forces positive Maslov index.
+
+*Rules out counterexamples.* MSC 53D12 (Lagrangian submanifolds; Maslov index), 53D40. arXiv math.SG. Level 4: research.
+
+**Definition.** A Lagrangian is a half-dimensional submanifold on which the symplectic form vanishes. Call it monotone if every disk class with boundary on it has symplectic area equal to a fixed positive constant times its Maslov index. This integer measures how the tangent planes turn along the boundary. For an orientable Lagrangian it is even.
+
+**Problem.** Fix an almost complex structure compatible with the symplectic form and a compact orientable monotone Lagrangian. Every nonconstant holomorphic disk with boundary on it has Maslov index at least two. A stable holomorphic disk of total index two has at most one nonconstant disk component.
+
+**How the definition helps.** Monotonicity converts positive area into positive index, and orientability makes that index even (our own). Every nonconstant sphere bubble also contributes positive index because its area obeys the same relation in relative homotopy (our own). The indices add, so two nonconstant disk components would contribute at least four (our own). Auroux’s Lemma 5.4 gives a torus bounding a nonconstant index-zero disk when the defining loop passes through zero (our own example choice).
+
+**Paper or page:** [Cluster algebras and monotone Lagrangian tori](https://arxiv.org/abs/2401.00252v2). It says: “Suppose that L is a monotone Lagrangian submanifold of (X,ω).”
+
+**Sources:**
+
+- [Cluster algebras and monotone Lagrangian tori](https://arxiv.org/abs/2401.00252v2)
+- [Auroux, Mirror symmetry and T-duality in the complement of an anticanonical divisor](https://people.math.harvard.edu/~auroux/papers/slagmirror.pdf)
+
 ### Dual maps detect Lie algebroid morphisms
 
 **Remember:** The Poisson bracket reads the original bracket and anchor from linear functions.
@@ -2020,6 +2337,24 @@
 **nLab:** [coisotropic submanifold](https://ncatlab.org/nlab/show/coisotropic+submanifold). It says: “S ↪︎ X is coisotropic if the subalgebra of C∞(X) consisting of functions vanishing on S is closed under the Poisson bracket.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Scalar curvature permits Floer differentials
+
+**Remember:** Scalar curvature commutes with every Floer cochain.
+
+*Rules out counterexamples.* MSC 53D40 (Symplectic aspects of Floer homology and cohomology), 53D37. arXiv math.SG. Level 4: research.
+
+**Definition.** A Fukaya algebra encodes counts of disks with boundary on a Lagrangian, a half-dimensional submanifold where the symplectic form vanishes. Its operations take varying numbers of inputs, and its curvature is the operation with no inputs. Insert a degree-one cochain of positive filtration, meaning its coefficients have positive energy order, in all possible extra input slots. Call it weakly bounding if the resulting curvature is a scalar multiple of the strict multiplicative unit.
+
+**Problem.** In a complete filtered, strictly unital Fukaya algebra, twisting by a weak bounding cochain makes the one-input operation square to zero.
+
+**How the definition helps.** Scalar curvature removes the obstruction to squaring to zero (our own). The one-input algebra relation expresses the square as the signed difference of left and right multiplication by curvature (our own). For a scalar unit these terms cancel (our own). Constructing the disk operations and proving their relations requires separate work (our own).
+
+**Paper or page:** [Curved Fukaya algebras and the Dubrovin spectrum](https://arxiv.org/abs/2401.13603v1). It says: “if $D\\in \\operatorname{MC} ^B(L)$ then $(m<sup>1<sub>B</sup>,D</sub>)<sup>2=0$</sup>”
+
+**Sources:**
+
+- [Curved Fukaya algebras and the Dubrovin spectrum](https://arxiv.org/abs/2401.13603v1)
 
 ### Hypertight forms exclude holomorphic planes
 
@@ -2127,6 +2462,80 @@
 **Sources:**
 
 - [Lectures on Symplectic Geometry, Poisson Geometry, Deformation Quantization and Quantum Field Theory](https://arxiv.org/abs/2012.14662v1)
+
+### Formality gives associative star products
+
+**Remember:** Send a Poisson tensor through formality to get an associative product.
+
+*Makes the theorem clean to state or prove.* MSC 53D55 (Deformation quantization, star products), 17B55. arXiv math.QA, math-ph. Level 4: research.
+
+**Definition.** A Poisson tensor π defines a bracket on smooth functions satisfying the product rule and the Jacobi identity. A star product is ordinary multiplication plus a formal correction B by bilinear differential operators, with the resulting product associative. For operators, the Maurer–Cartan equation is dB + \[B,B\]/2 = 0. Here d brackets with ordinary multiplication, and the bracket is the signed difference of insertions.
+
+**Problem.** Every finite-dimensional smooth real Poisson manifold admits a star product whose commutator to first order is ħ times its Poisson bracket.
+
+**How the definition helps.** The same equation expresses Jacobi for ħπ and associativity for B, so a map preserving solutions transports the required identity (our own). Kontsevich’s formality theorem supplies such a map, with higher multilinear components correcting ordinary bracket preservation. Applying its Taylor series to ħπ gives B, and its linear component gives the prescribed first-order commutator (our own).
+
+**nLab:** [Kontsevich formality](https://ncatlab.org/nlab/show/Kontsevich+formality). It says: “there is an L-∞-algebra quasi-isomorphism from the dg-Lie algebra of polyvector fields”
+
+**Wikipedia:** [Kontsevich quantization formula](https://en.wikipedia.org/wiki/Kontsevich_quantization_formula). It says: “describes how to construct a generalized ★-product operator algebra from a given arbitrary finite-dimensional Poisson manifold.”
+
+**Sources:**
+
+- [Maxim Kontsevich, Deformation Quantization of Poisson Manifolds](https://doi.org/10.1023/B:MATH.0000027508.00421.bf)
+
+### Tangential products descend to constraints
+
+**Remember:** Two-sided vanishing ideals make extensions irrelevant.
+
+*Rules out counterexamples.* MSC 53D55 (Deformation quantization, star products). arXiv math.QA. Level 4: research.
+
+**Definition.** A star product is an associative formal deformation of ordinary multiplication of smooth functions. It is tangential to a submanifold when formal series vanishing there form a two-sided ideal. Thus multiplying such a series on either side still gives a series vanishing there.
+
+**Problem.** A tangential star product induces an associative product on the quotient by the vanishing ideal. For a closed embedded submanifold this quotient consists of formal smooth functions on that submanifold.
+
+**How the definition helps.** The ideal condition makes restriction independent of the extensions chosen for both factors, so associativity passes to the quotient (our own). The cited lemma proves this condition for a particular Gutt star product. On the symplectic plane, the Moyal product satisfies q ⋆ p − p ⋆ q = iħ (our own). Restricting to q = 0 kills q but preserves iħ, so this product cannot descend (our own).
+
+**Paper or page:** [Characteristic (Fedosov-)class of a twist constructed by Drinfel'd](https://arxiv.org/abs/1903.06416v1). It says: “The Gutt-star product of 𝔥 is tangential”
+
+**Sources:**
+
+- [Jonas Schnitzer, Characteristic (Fedosov-)class of a twist constructed by Drinfel'd](https://arxiv.org/abs/1903.06416v1)
+
+### Twist identities give associative products
+
+**Remember:** A twist compares the two ways to multiply three inputs.
+
+*True by definition.* MSC 53D55 (Deformation quantization, star products). arXiv math.QA, math-ph. Level 4: research.
+
+**Definition.** Let a bialgebra H act on a unital algebra A, with coproduct Δ describing the action on products and counit ε the action on scalars. A normalized twist is an invertible F in H ⊗ H satisfying (Δ ⊗ id)(F)(F ⊗ 1) = (id ⊗ Δ)(F)(1 ⊗ F). Applying ε to either factor gives 1. Define a ⋆ b by acting with F on a ⊗ b and multiplying the results.
+
+**Problem.** For any such action and twist, ⋆ is associative and has the original unit of A.
+
+**How the definition helps.** The twist equation identifies both triple products before evaluating them on individual algebra elements (our own). The counit equations preserve the unit (our own). Finding a twist for a prescribed product is a separate problem (our own).
+
+**Paper or page:** [Hopf Algebroid Twists for Deformation Quantization of Linear Poisson Structures](https://arxiv.org/abs/1605.01376v4). It says: “defines an associative 𝐤-algebra A⋆ = (A, ⋆) structure on A with the same unit”
+
+**Sources:**
+
+- [Zoran Škoda, Stjepan Meljanac, Hopf Algebroid Twists for Deformation Quantization of Linear Poisson Structures](https://arxiv.org/abs/1605.01376v4)
+
+### Wick products simplify holomorphic multiplication
+
+**Remember:** Put a holomorphic factor second to kill every correction.
+
+*True by definition.* MSC 53D55 (Deformation quantization, star products). arXiv math-ph. Level 4: research.
+
+**Definition.** A Sasakian manifold has a distinguished flow, called the Reeb flow, with complex coordinate directions transverse to it. In the cited construction, a quantum observable is a formal function killed by its operator Δ. Wick separation means each positive-order correction differentiates the first factor in holomorphic directions and the second in antiholomorphic directions.
+
+**Problem.** On any open domain, a Reeb-invariant transversely holomorphic function a is a quantum observable. Every quantum observable c satisfies c ⋆ a = ca. For a Reeb-invariant transversely antiholomorphic function a, the same theorem gives a ⋆ c = ac.
+
+**How the definition helps.** Separate derivative directions make every correction vanish on the indicated factor, without evaluating individual coefficients (our own). The construction must still prove this separation and show that Δ kills the indicated functions (our own).
+
+**Paper or page:** [Wick-type deformation quantization of contact metric manifolds](https://arxiv.org/abs/2311.12767v1). It says: “Moreover, the Wick property holds”
+
+**Sources:**
+
+- [Boris M. Elfimov, Alexey A. Sharapov, Wick-type deformation quantization of contact metric manifolds](https://arxiv.org/abs/2311.12767v1)
 
 ### Outer-minimizing starts make the weak flow's area grow exactly like eᵗ
 

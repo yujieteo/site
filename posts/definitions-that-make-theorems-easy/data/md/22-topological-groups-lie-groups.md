@@ -975,3 +975,19 @@
 **Paper or page:** [Representations of SL₂(F)](https://arxiv.org/abs/2404.11188). It says: “The smooth dual of iᴳ′₍B′₎(χ) is iᴳ′₍B′₎(χ⁻¹).”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Order selects Langlands quotients
+
+**Remember:** Order the exponents before taking the quotient.
+
+*Rules out counterexamples.* MSC 22E50 (Representations of Lie and linear algebraic groups over local fields), 11F70. arXiv math.RT, math.NT. Level 4: research.
+
+**Definition.** For GLₙ over a p-adic field, choose a subgroup of upper block triangular matrices. On each diagonal block choose an irreducible tempered representation, one satisfying the tempered decay bounds on matrix coefficients. Twist each by a real power of the absolute determinant, ordering the exponents from largest to smallest with no ties. Induce to the whole group with the square-root measure correction, obtaining a standard module.
+
+**Problem.** Each standard module has a unique irreducible quotient. Every irreducible smooth complex representation of GLₙ occurs this way, with unique ordered data up to isomorphism. Smooth means every vector has an open stabilizer.
+
+**How the definition helps.** The order selects which irreducible piece appears as a quotient (our own). For two one-dimensional trivial blocks with exponents ½ and −½, the standard order gives the trivial quotient (our own). Reversing them gives the Steinberg quotient, realized by locally constant functions on the projective line modulo constants (our own). The Langlands classification proves existence and uniqueness for the ordered data.
+
+**Paper or page:** [The local Langlands conjecture](https://arxiv.org/abs/2510.00632v1). It says: “admits a unique irreducible quotient J(P,σ,ν).”
+
+**Sources:** none listed. No primary source with a working link was found.

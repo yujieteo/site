@@ -1466,6 +1466,24 @@
 
 - [G. A. Elliott, On the classification of inductive limits of sequences of semisimple finite-dimensional algebras, Journal of Algebra 38 (1976), 29–44](https://doi.org/10.1016/0021-8693(76)90242-8)
 
+### Trivial dynamics turns thermal equilibrium into a trace
+
+**Remember:** With no time evolution, equilibrium means a trace.
+
+*Rules out counterexamples.* MSC 46L60 (Applications of selfadjoint operator algebras to physics). arXiv math.OA, math-ph. Level 3: graduate.
+
+**Definition.** Let αₜ describe time evolution by automorphisms of a unital operator algebra, and let β &gt; 0. The Kubo–Martin–Schwinger condition requires a bounded continuous function F on 0 ≤ Im z ≤ β for each pair A, B. It must be holomorphic inside, with F(t) = ω(Aαₜ(B)) and F(t+iβ) = ω(αₜ(B)A) for real t.
+
+**Problem.** For trivial time evolution, the Kubo–Martin–Schwinger states at positive inverse temperature are exactly the tracial states.
+
+**How the definition helps.** For constant dynamics the strip condition forces the two orders of multiplication to have equal expectation. Our own proof subtracts the constant lower boundary value and reflects the resulting function across that boundary. The identity theorem makes it zero throughout, so ω(AB) = ω(BA). Conversely, a trace supplies a constant strip function for each pair. Every state is stationary under trivial dynamics, including nontracial vector states on two-by-two matrices.
+
+**Wikipedia:** [Tomita–Takesaki theory](https://en.wikipedia.org/wiki/Tomita%E2%80%93Takesaki_theory). It says: “there is a bounded continuous function F in the strip”
+
+**Sources:**
+
+- [Rudolf Haag, Nicolaas M. Hugenholtz and Marinus Winnink, On the equilibrium states in quantum statistical mechanics](https://doi.org/10.1007/BF01646342)
+
 ### Defining K₀ of non-unital algebras by unitization matches compactly supported K-theory
 
 **Remember:** Scalar evaluation becomes restriction to the point at infinity.
@@ -2004,6 +2022,40 @@
 
 - [Arthur J. Parzygnat, Benjamin P. Russo, Non-commutative disintegrations: existence and uniqueness in finite dimensions, arXiv:1907.09689v2 (2021), J. Noncommut. Geom. 17 (2023), no. 3, pp. 899-955](https://arxiv.org/abs/1907.09689v2)
 
+### Relative modular entropy is nonnegative
+
+**Remember:** The relative modular operator has mean one.
+
+*True by definition.* MSC 46L53 (Noncommutative probability and statistics), 46L10. arXiv math.OA. Level 4: research.
+
+**Definition.** Represent faithful normal states φ and ψ on a von Neumann algebra M by unit vectors ξ and η in its standard positive cone. This cone selects a unique vector for each state that preserves bounded increasing suprema, and faithfulness means detecting every nonzero positive operator. Close the antilinear map xξ ↦ x\*η for x ∈ M, call its closure S, and set Δ = S\*S. The Araki relative entropy of φ with respect to ψ integrates −log λ against the spectral probability measure of Δ in ξ.
+
+**Problem.** The Araki relative entropy of any faithful normal state relative to another is nonnegative, even when it is infinite.
+
+**How the definition helps.** The definition gives a probability measure with mean one, so convexity of −log proves the bound. Indeed, the mean equals ‖Sξ‖² = ‖η‖² = 1. Our own proof integrates −log λ ≥ 1 − λ, allowing the integral to be infinite. The construction of Δ replaces the density matrix formula and extends it to algebras without a trace.
+
+**nLab:** [relative entropy](https://ncatlab.org/nlab/show/relative+entropy). It says: “is the relative modular operator of any cyclic and separating vector representatives”
+
+**Sources:**
+
+- [Huzihiro Araki, Relative Entropy of States of von Neumann Algebras](https://doi.org/10.2977/prims/1195191148)
+
+### Trace tests give entropy monotonicity
+
+**Remember:** A smaller algebra gives fewer entropy tests.
+
+*True by definition.* MSC 46L53 (Noncommutative probability and statistics). arXiv math.OA. Level 4: research.
+
+**Definition.** Let M be a weakly closed unital adjoint algebra of bounded operators with a faithful normal tracial state τ. Here τ detects nonzero positive elements, preserves bounded increasing suprema, and satisfies τ(ab) = τ(ba). For a normal state ω, define its entropy relative to τ as the supremum of ω(h) − log τ(exp h) over self-adjoint h ∈ M.
+
+**Problem.** Let N be a unital von Neumann subalgebra of M. If ω has finite entropy, restricting both ω and τ to N cannot increase that entropy.
+
+**How the definition helps.** Restricting the algebra reduces the set of tests in the supremum. Our own proof observes that exp h and its trace stay the same for every remaining test. The variational theorem identifies this supremum with τ(D log D), where the density D satisfies ω(a) = τ(Da).
+
+**Paper or page:** [Variational formulae for entropy-like functionals for states in von Neumann algebras](https://arxiv.org/abs/2510.07605v1). It says: “ω(h) − log τ(eʰ)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Finite free cumulants make repeated derivatives of random polynomials tend to Hermite
 
 **Remember:** Differentiation multiplies each finite free cumulant by a fixed power of k/N.
@@ -2042,6 +2094,60 @@
 
 - [Toke Meier Carlsen, Eun Ji Kang, A Cuntz–Krieger Uniqueness theorem for C\*-algebras of relative generalized Boolean dynamical systems, arXiv:2305.09232 (2023)](https://arxiv.org/abs/2305.09232)
 - [Alex Kumjian, David Pask, Iain Raeburn, Jean Renault, Graphs, groupoids, and Cuntz–Krieger algebras, J. Funct. Anal. (1997)](https://doi.org/10.1006/jfan.1996.3001)
+
+### Outer modular flow forgets states
+
+**Remember:** Quotient by inner conjugation to forget the state.
+
+*True by definition.* MSC 46L55 (Noncommutative dynamical systems), 46L10. arXiv math.OA. Level 4: research.
+
+**Definition.** Let M be a von Neumann algebra, a weakly closed unital algebra of bounded operators closed under adjoints. A faithful normal state detects nonzero positive operators and preserves bounded increasing suprema of positive operators. Its modular group σ is the canonical time evolution from Tomita–Takesaki theory. At each time, take the class of σₜ modulo conjugations by unitaries of M.
+
+**Problem.** The resulting homomorphism from real time to the outer automorphism group is independent of the faithful normal state.
+
+**How the definition helps.** The quotient identifies automorphisms that differ by a unitary conjugation inside M. Connes’s cocycle theorem shows that changing the state changes each modular automorphism by exactly such a conjugation. Comparing the original automorphisms requires that theorem. Equality of their classes then follows from the quotient definition.
+
+**Wikipedia:** [Tomita–Takesaki theory](https://en.wikipedia.org/wiki/Tomita%E2%80%93Takesaki_theory). It says: “independent of the choice of faithful state.”
+
+**Sources:**
+
+- [Alain Connes, Une classification des facteurs de type III](https://doi.org/10.24033/asens.1247)
+
+### The continuous core forgets states
+
+**Remember:** Changing the state only changes the implementing unitaries.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 46L55 (Noncommutative dynamical systems), 46L10. arXiv math.OA. Level 4: research.
+
+**Definition.** A faithful normal state detects nonzero positive operators and preserves bounded increasing suprema of positive operators. Its modular flow σ is the canonical time evolution on its von Neumann algebra M. The continuous core is the von Neumann crossed product in the regular representation, generated by M and time translation unitaries implementing σ. The dual action fixes M and multiplies the time translation unitaries by the corresponding characters of real time.
+
+**Problem.** The continuous cores built from two faithful normal states are isomorphic by a map that fixes the embedded algebra and respects the dual actions.
+
+**How the definition helps.** The crossed product includes implementing unitaries that can absorb the change in modular flow. Connes’s theorem gives unitaries uₜ in M relating the two flows by conjugation. Our own proof corrects each implementing unitary by uₜ, choosing the cocycle from the second flow to the first. The cocycle identity makes these corrected operators a unitary group. In the regular representations this change is implemented by pointwise unitary multiplication, giving a normal isomorphism. Correcting by elements of M leaves the character factors in the dual action unchanged.
+
+**Wikipedia:** [Tomita–Takesaki theory](https://en.wikipedia.org/wiki/Tomita%E2%80%93Takesaki_theory). It says: “the modular automorphisms differ by inner automorphisms”
+
+**Sources:**
+
+- [Alain Connes, Une classification des facteurs de type III](https://doi.org/10.24033/asens.1247)
+
+### Modular equilibrium recovers Gibbs states
+
+**Remember:** On all bounded operators, the density gives the Hamiltonian.
+
+*Makes the theorem clean to state or prove.* MSC 46L60 (Applications of selfadjoint operator algebras to physics), 82B10. arXiv math.OA, math-ph. Level 4: research.
+
+**Definition.** Let αₜ be a weakly continuous automorphism group on B(H), the bounded operators on a Hilbert space. At inverse temperature β &gt; 0, equilibrium requires a bounded continuous F on 0 ≤ Im z ≤ β for every A,B ∈ B(H). It must be holomorphic inside, with boundary values F(t) = ω(Aαₜ(B)) and F(t+iβ) = ω(αₜ(B)A). A faithful normal state has the form ω(A) = Tr(ρA) for a positive trace-one operator ρ with zero kernel.
+
+**Problem.** For a faithful normal equilibrium state, set K = −(log ρ)/β by spectral calculus. Then αₜ(A) = exp(itK)A exp(−itK), and exp(−βK) = ρ.
+
+**How the definition helps.** The two boundary values characterize time evolution, allowing the density operator to determine a generator. Takesaki’s uniqueness theorem identifies the dynamics with the reverse modular flow at time t/β. For B(H), the modular flow at time s is conjugation by exp(is log ρ). Our own calculation substitutes s = −t/β and obtains K. Adding a scalar to K gives the same dynamics.
+
+**Paper or page:** [Rotational KMS states and type I conformal nets](https://arxiv.org/abs/1608.08903v2). It says: “there exists positive, non-singular, selfadjoint operator H”
+
+**Sources:**
+
+- [Roberto Longo and Yoh Tanimoto, Rotational KMS States and Type I Conformal Nets](https://doi.org/10.1007/s00220-017-2969-8)
 
 ### Bipartite quantum graphs keep the classical spectral test
 

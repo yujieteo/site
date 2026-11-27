@@ -422,6 +422,115 @@
 
 - [Emilio Minichiello, Diffeological Principal Bundles and Principal Infinity Bundles](https://arxiv.org/abs/2202.11023v4)
 
+### Dirac commutators recover geodesic distance
+
+**Remember:** The Dirac operator measures the steepest slope of a function.
+
+*Makes the theorem clean to state or prove.* MSC 58B34 (Noncommutative geometry (à la Connes)), 46L87. arXiv math.OA, math-ph. Level 3: graduate.
+
+**Definition.** On a closed Riemannian spin manifold let D be the Dirac operator, the canonical first-order operator on spinor fields. Smooth real functions act on these fields by multiplication. Define spectral distance between x and y as the supremum of \|f(x) − f(y)\| over such functions with ‖Df − fD‖ ≤ 1.
+
+**Problem.** On a connected closed Riemannian spin manifold, spectral distance equals the infimum of the lengths of paths joining the points.
+
+**How the definition helps.** The commutator bound says exactly that the function has slope at most one (our own explanation). The Dirac commutator acts pointwise by Clifford multiplication, whose operator norm equals the length of the gradient. Integration along paths gives the upper bound. Smooth approximations to distance from x, with slope bounds tending to one, give the reverse inequality.
+
+**Wikipedia:** [Spectral triple](https://en.wikipedia.org/wiki/Spectral_triple). It says: “From the knowledge of these objects one is able to recover the original manifold as a metric space:”
+
+**Sources:**
+
+- [Connes, Noncommutative geometry and reality](https://doi.org/10.1063/1.531241)
+
+### Disconnected spin components have infinite distance
+
+**Remember:** Constants on separate components can differ without a Dirac commutator.
+
+*Makes the theorem clean to state or prove.* MSC 58B34 (Noncommutative geometry (à la Connes)), 46L87. arXiv math.OA, math-ph. Level 3: graduate.
+
+**Definition.** On a finite disjoint union of closed Riemannian spin manifolds let D act by the Dirac operator on each component. Define spectral distance as the supremum of \|f(x) − f(y)\| over smooth real functions with ‖Df − fD‖ ≤ 1. Allow the value infinity.
+
+**Problem.** The spectral distance between points in different components is infinite.
+
+**How the definition helps.** The commutator bound leaves the difference between component constants unrestricted (our own argument). The indicator of one component is smooth and commutes with D. Its multiples give arbitrarily large differences for points on different components.
+
+**Wikipedia:** [Spectral triple](https://en.wikipedia.org/wiki/Spectral_triple). It says: “In general, the Connes metric can indeed take the value ∞”
+
+**Sources:**
+
+- [Connes, Noncommutative geometry and reality](https://doi.org/10.1063/1.531241)
+
+### Invariant Dirac operators preserve distance
+
+**Remember:** An implementer commuting with D permutes the spectral distance tests.
+
+*True by definition.* MSC 58B34 (Noncommutative geometry (à la Connes)), 46L87. arXiv math.OA, math-ph. Level 3: graduate.
+
+**Definition.** Let a unital algebra of bounded operators act on a Hilbert space with self-adjoint operator D and bounded commutators \[D,a\] = Da − aD. A state is a positive linear functional taking the identity to one. Its spectral distance from another state is the supremum of their absolute differences on self-adjoint a satisfying ‖\[D,a\]‖ ≤ 1.
+
+**Problem.** Suppose a group acts on the algebra by unitary conjugations and each implementing unitary commutes with D. Its induced action on states preserves spectral distance, including infinite distances.
+
+**How the definition helps.** The commutator bound gives a set of distance tests that each unitary permutes (our own deduction from Lemma 3.11). Taking the supremum therefore gives the same value after conjugation. On compact spin manifolds, identifying this formula with the usual distance defined by path lengths requires a separate theorem.
+
+**Paper or page:** [Real Spectral Triples on Crossed Products](https://arxiv.org/abs/2012.15698). It says: “then the action is Lip-isometric in the sense that”
+
+**Sources:**
+
+- [Real Spectral Triples on Crossed Products](https://arxiv.org/abs/2012.15698)
+- [Connes, Noncommutative geometry and reality](https://doi.org/10.1063/1.531241)
+
+### Local compactness admits Euclidean Dirac operators
+
+**Remember:** Multiply by a compactly supported function before testing compactness.
+
+*Makes the theorem clean to state or prove.* MSC 58B34 (Noncommutative geometry (à la Connes)), 46L87. arXiv math.OA, math-ph. Level 3: graduate.
+
+**Definition.** A resolvent of a self-adjoint operator D is an inverse such as (D + i)⁻¹. A nonunital spectral triple requires bounded commutators \[D,a\] and compact operators a(D + i)⁻¹ for every algebra element a. This local compactness test allows the full resolvent to lack compactness.
+
+**Problem.** On positive-dimensional Euclidean space let smooth compactly supported functions multiply square-integrable differential forms, and let D equal exterior differentiation plus its adjoint. These data form a locally compact spectral triple although (D + i)⁻¹ is not compact.
+
+**How the definition helps.** Multiplication by a test function confines the resolvent output to a bounded region (our own explanation). The resolvent controls one square-integrable derivative, so compact Sobolev embedding gives compactness there. The commutator differentiates only the multiplier and is bounded. Translations of a fixed nonzero input give translated resolvent outputs with no convergent subsequence when the translations diverge.
+
+**Paper or page:** [The Connes character formula for locally compact spectral triples](https://arxiv.org/abs/1803.01551). It says: “is an even spectral triple satisfying”
+
+**Sources:**
+
+- [The Connes character formula for locally compact spectral triples](https://arxiv.org/abs/1803.01551)
+
+### The junk ideal lets differentiation descend
+
+**Remember:** Kill every invisible form and its differential.
+
+*Rules out counterexamples.* MSC 58B34 (Noncommutative geometry (à la Connes)), 46L87. arXiv math.OA, math-ph. Level 3: graduate.
+
+**Definition.** Universal differential forms are formal products of algebra elements and symbols da subject to linearity, the product rule and d² = 0. For a spectral triple with operator D, represent da by the commutator \[D,a\] = Da − aD. Let K collect the kernels degree by degree. Define the represented calculus as universal forms modulo K + dK.
+
+**Problem.** The quotient inherits multiplication and a differential satisfying the graded product rule and d² = 0.
+
+**How the definition helps.** Adding dK kills the derivative of every discarded form, so differentiation respects the quotient (our own explanation). The graded product rule makes K + dK a two-sided ideal. For a smooth real function f on a closed spin manifold, f df − df f represents zero. Its derivative represents 2\[D,f\]², nonzero wherever f has nonzero derivative.
+
+**Paper or page:** [On two notions of torsion and metric compatibility of connections in noncommutative geometry](https://arxiv.org/abs/2509.11888). It says: “is a ∗-differential calculus.”
+
+**Sources:**
+
+- [On two notions of torsion and metric compatibility of connections in noncommutative geometry](https://arxiv.org/abs/2509.11888)
+
+### Total boundedness gives weak star convergence
+
+**Remember:** A finite set of approximate tests controls all tests at once.
+
+*Rules out counterexamples.* MSC 58B34 (Noncommutative geometry (à la Connes)), 46L87. arXiv math.OA, math-ph. Level 3: graduate.
+
+**Definition.** Let D be the operator of a unital spectral triple, with bounded commutators \[D,a\] = Da − aD on a dense algebra. A state is a positive linear functional equal to one on the identity. Fix a state μ and take all self-adjoint tests a with ‖\[D,a\]‖ ≤ 1. At every tolerance ε &gt; 0, require finitely many norm balls of radius ε to cover the centered tests a − μ(a)1.
+
+**Problem.** Define spectral distance as the supremum of absolute state differences on the tests. Under this condition it is a finite metric inducing the weak star topology, meaning pointwise convergence on the completed algebra.
+
+**How the definition helps.** Finite norm approximations turn pointwise convergence of states into uniform convergence on the centered tests (our own explanation). Centering leaves state differences unchanged, and the centered set is bounded. Conversely, rescaling elements with bounded commutator gives pointwise convergence on the dense algebra. States have norm one, so density extends convergence to its completion. With D = 0 on a two-point space, distinct states have infinite distance.
+
+**Wikipedia:** [Spectral triple](https://en.wikipedia.org/wiki/Spectral_triple). It says: “topologizes the weak\* topology on the state space”
+
+**Sources:**
+
+- [Rieffel, Metrics on state spaces](https://doi.org/10.4171/DM/68)
+
 ### Absolute differential forms give the triangle inequality for integrals
 
 **Remember:** An absolute form is what you integrate over an unoriented curve, like arc length \|dx\|.
@@ -503,6 +612,114 @@
 **nLab:** [symbol of a differential operator](https://ncatlab.org/nlab/show/symbol+of+a+differential+operator). It says: “where in the commutator on the right we regard multiplication by f as an endomorphism of Γ(E).”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Eta phases forget the filling
+
+**Remember:** Two fillings can change the index integral only by an integer.
+
+*True by definition.* MSC 58J20 (Index theory and related fixed-point theorems on manifolds), 58J28. arXiv math.DG, math-ph. Level 3: graduate.
+
+**Definition.** Let D be the twisted Dirac operator on a closed odd-dimensional Riemannian spin manifold. Its eta invariant η counts positive minus negative eigenvalues by analytic continuation. Define the reduced boundary invariant as (η + dim ker D)/2 in ℝ/ℤ.
+
+**Problem.** Take two compact spin fillings inducing the same oriented boundary metric, spin structure, and Hermitian bundle with unitary connection. Assume all data have product form near the boundary. Their integrals of the Dirac index density, the top-degree part of Â times the bundle’s Chern character, agree modulo integers.
+
+**How the definition helps.** Our own argument uses that both integrals represent the same reduced boundary invariant modulo integers. The Atiyah–Patodi–Singer index theorem carries the work by identifying each difference with an integer index.
+
+**nLab:** [eta invariant](https://ncatlab.org/nlab/show/eta+invariant). It says: “as the boundary correction term for the index formula on a manifold with boundary”
+
+**Sources:**
+
+- [Michael F. Atiyah, Vijay K. Patodi and Isadore M. Singer, Spectral asymmetry and Riemannian Geometry. I (1975)](https://doi.org/10.1017/S0305004100049410)
+
+### Index characters vanish without fixed points
+
+**Remember:** Away from fixed points, the character has nothing to count.
+
+*Makes the theorem clean to state or prove.* MSC 58J20 (Index theory and related fixed-point theorems on manifolds). arXiv math.DG. Level 3: graduate.
+
+**Definition.** Let a compact Lie group act smoothly on a closed manifold and its complex vector bundles. An equivariant elliptic operator commutes with the action and has invertible highest-order symbol away from zero cotangent vectors. Its index character at g is the trace of g on the kernel minus its trace on the cokernel.
+
+**Problem.** If g fixes no point of the manifold, the index character at g vanishes.
+
+**How the definition helps.** The character allows the fixed-point theorem to speak about a particular group element, rather than just the identity. The equivariant index theorem gives a sum over its fixed components. Our own example is the Euler operator on two points exchanged by an involution. Its ordinary index is two, while the trace of the exchange is zero.
+
+**Wikipedia:** [Atiyah–Singer index theorem](https://en.wikipedia.org/wiki/Atiyah%E2%80%93Singer_index_theorem). It says: “Moreover, one gets generalizations of the Lefschetz fixed-point theorem, with terms coming from fixed-point submanifolds of the group G.”
+
+**Sources:**
+
+- [Michael F. Atiyah and Graeme Segal, The Index of Elliptic Operators II (1968)](https://doi.org/10.2307/1970716)
+
+### Positive scalar curvature kills the Dirac index
+
+**Remember:** Positive scalar curvature leaves the spin Dirac operator no zero modes.
+
+*True by definition.* MSC 58J20 (Index theory and related fixed-point theorems on manifolds). arXiv math.DG. Level 3: graduate.
+
+**Definition.** On a closed even-dimensional spin manifold, the spinor bundle splits into positive and negative parts. The chiral Dirac operator differentiates sections from the positive part to the negative part. Its index subtracts the kernel dimension of its adjoint from its own kernel dimension. The index theorem identifies this integer with the Â genus, a characteristic number calculated from the tangent bundle.
+
+**Problem.** A closed even-dimensional spin manifold that admits a metric of positive scalar curvature has zero Â genus.
+
+**How the definition helps.** Our own argument represents the Â genus by a kernel count, so it suffices to exclude zero modes. The Lichnerowicz formula gives D² = ∇\*∇ + R/4, where R is scalar curvature and ∇ differentiates spinors. The first term is nonnegative, and the second has a positive minimum on the closed manifold. Both chiral kernels vanish. The index theorem identifies their dimension difference with the Â genus.
+
+**nLab:** [Lichnerowicz formula](https://ncatlab.org/nlab/show/Lichnerowicz+formula). It says: “The crucial point of the formula is that it shows a scalar summand (i.e. 0th order derivative) proportional to the scalar curvature.”
+
+**Sources:**
+
+- [Michael F. Atiyah and Isadore M. Singer, The Index of Elliptic Operators I (1968)](https://doi.org/10.2307/1970715)
+
+### Quaternionic spinors force signature divisibility
+
+**Remember:** Each quaternionic spinor dimension counts twice over the complex numbers.
+
+*True by definition.* MSC 58J20 (Index theory and related fixed-point theorems on manifolds). arXiv math.DG. Level 3: graduate.
+
+**Definition.** Use the chiral Dirac index on a closed spin four-manifold. Count its kernel and cokernel as quaternionic vector spaces, rather than as complex vector spaces. This keeps the extra symmetry of the spin representations in dimension four.
+
+**Problem.** On a closed smooth spin four-manifold, the signature of the intersection form on second cohomology is divisible by 16.
+
+**How the definition helps.** Counting quaternionic dimensions makes the complex Dirac index even because each quaternionic dimension contributes two complex dimensions. The two spinor bundles have quaternionic structures, and the Dirac operator respects them. The index and signature theorems identify the complex index with minus one eighth of the signature.
+
+**Wikipedia:** [Atiyah–Singer index theorem](https://en.wikipedia.org/wiki/Atiyah%E2%80%93Singer_index_theorem). It says: “In dimension 4 this result implies Rochlin's theorem that the signature of a 4-dimensional spin manifold is divisible by 16”
+
+**Sources:**
+
+- [Michael F. Atiyah and Isadore M. Singer, The Index of Elliptic Operators I (1968)](https://doi.org/10.2307/1970715)
+
+### Spin makes Â integral
+
+**Remember:** A Dirac index is an integer even when its characteristic formula uses fractions.
+
+*Rules out counterexamples.* MSC 58J20 (Index theory and related fixed-point theorems on manifolds). arXiv math.DG. Level 3: graduate.
+
+**Definition.** The Â genus evaluates a rational polynomial in the tangent bundle’s Pontryagin classes on a closed oriented manifold. These classes measure how the tangent spaces fit together. A spin structure lifts the oriented orthonormal frame bundle to the double cover of its rotation group. In even dimensions it gives a Dirac operator from positive to negative spinors.
+
+**Problem.** The Â genus of a closed spin manifold is an integer. The spin requirement excludes the complex projective plane, whose Â genus is −1/8.
+
+**How the definition helps.** The operator definition gives a difference of two finite dimensions. The Atiyah–Singer index theorem identifies this integer with the characteristic number. Our own calculation of the counterexample uses Â = −p₁/24 in dimension four and Pontryagin number 3 on ℂP².
+
+**Wikipedia:** [Atiyah–Singer index theorem](https://en.wikipedia.org/wiki/Atiyah%E2%80%93Singer_index_theorem). It says: “The Â genus is a rational number defined for any manifold, but is in general not an integer.”
+
+**Sources:**
+
+- [Michael F. Atiyah and Isadore M. Singer, The Index of Elliptic Operators I (1968)](https://doi.org/10.2307/1970715)
+
+### Topological indices ignore the embedding
+
+**Remember:** Compare two embeddings after putting them in one larger Euclidean space.
+
+*True by definition.* MSC 58J20 (Index theory and related fixed-point theorems on manifolds). arXiv math.DG. Level 3: graduate.
+
+**Definition.** An elliptic symbol is the highest-order part of an operator, invertible at every nonzero cotangent vector. It defines a compactly supported K-theory class on the cotangent bundle, represented by bundles identified outside a compact set. A Euclidean embedding sends this class to one on the ambient cotangent bundle by the Thom construction in the normal directions. Bott periodicity identifies the resulting group with ℤ and gives the topological index.
+
+**Problem.** The topological index of a symbol on a closed manifold does not depend on the chosen Euclidean embedding.
+
+**How the definition helps.** Our own comparison puts both embeddings in one Euclidean product, where the index respects smooth deformations through embeddings. For embeddings i and j, first deform (i,0) to (i,j) by scaling j, then deform (i,j) to (0,j) by scaling i. The work lies in proving that the Thom construction respects composition, deformation, and the Bott identification.
+
+**Wikipedia:** [Atiyah–Singer index theorem](https://en.wikipedia.org/wiki/Atiyah%E2%80%93Singer_index_theorem). It says: “This map is independent of the embedding of X in Euclidean space.”
+
+**Sources:**
+
+- [Michael F. Atiyah and Isadore M. Singer, The Index of Elliptic Operators I (1968)](https://doi.org/10.2307/1970715)
 
 ### Causal subtraction gives skew adjoints
 
@@ -792,6 +1009,60 @@
 
 - [Andreas Kriegl, Peter W. Michor, The Convenient Setting of Global Analysis, AMS Mathematical Surveys and Monographs 53, 1997 (§42)](https://doi.org/10.1090/surv/053)
 
+### Dirac weights detect polynomial growth
+
+**Remember:** The Dirac eigenvalues are the group weights, with repetitions.
+
+*Makes the theorem clean to state or prove.* MSC 58B34 (Noncommutative geometry (à la Connes)), 46L87. arXiv math.OA, math-ph. Level 4: research.
+
+**Definition.** On a discrete group take a real weight ℓ with finite absolute sublevel sets and bounded differences under each fixed left translation. Let D multiply square-summable functions by ℓ. Call D finitely summable if the sum of (1 + ℓ(g)²)⁻ˢ over all group elements converges for some s &gt; 0.
+
+**Problem.** Finite summability holds exactly when the number of group elements with \|ℓ(g)\| ≤ R grows at most polynomially in R.
+
+**How the definition helps.** The diagonal definition turns the spectral trace directly into a sum over the group (our own explanation). Each element counted at radius R contributes at least (1 + R²)⁻ˢ, giving a polynomial bound. Conversely, group the weights between consecutive powers of two. With twice s greater than the growth exponent, the resulting geometric bound converges.
+
+**Paper or page:** [A Note on Twisted Crossed Products and Spectral Triples](https://arxiv.org/abs/2110.05345). It says: “is finitely summable iff G has polynomial growth w.r.t. the proper translation bounded function ℓ.”
+
+**Sources:**
+
+- [A Note on Twisted Crossed Products and Spectral Triples](https://arxiv.org/abs/2110.05345)
+
+### First order forces additive weights
+
+**Remember:** A multiplication operator commuting with every right translation has a constant multiplier.
+
+*Rules out counterexamples.* MSC 58B34 (Noncommutative geometry (à la Connes)), 46L87. arXiv math.OA, math-ph. Level 4: research.
+
+**Definition.** Let ℓ be a real function on a discrete group, with finite absolute sublevel sets and bounded differences under each left translation. Let D multiply by ℓ on square-summable functions, and let L and R denote left and right translations. The first-order condition requires each commutator \[D,L\] = DL − LD to commute with every R.
+
+**Problem.** Assume complex conjugation followed by group inversion gives a real structure, so ℓ under inversion equals either ℓ everywhere or −ℓ everywhere. The first-order condition holds exactly when ℓ is constant or an additive homomorphism.
+
+**How the definition helps.** Right translations force each left translation difference of ℓ to be constant (our own calculation). Evaluating at the identity e shows that ℓ − ℓ(e) is additive. An even weight then has zero additive part, while an odd weight has zero constant part. Both resulting forms satisfy the commutator test. On the integers the even weight ℓ(n) = \|n\| fails it.
+
+**Paper or page:** [Real Spectral Triples on Crossed Products](https://arxiv.org/abs/2012.15698). It says: “satisfies the first order condition if and only if ℓ is either a constant or a homomorphism.”
+
+**Sources:**
+
+- [Real Spectral Triples on Crossed Products](https://arxiv.org/abs/2012.15698)
+
+### Product Dirac operators add summability exponents
+
+**Remember:** The Pauli matrices cancel the mixed terms in the square.
+
+*Makes the theorem clean to state or prove.* MSC 58B34 (Noncommutative geometry (à la Connes)), 46L87. arXiv math.OA, math-ph. Level 4: research.
+
+**Definition.** Take self-adjoint operators D and E with compact resolvent, meaning their resolvents are compact. On separate Hilbert space factors form the closure of D ⊗ 1 ⊗ σ + 1 ⊗ E ⊗ τ. The two self-adjoint 2 × 2 matrices σ and τ square to the identity and satisfy στ = −τσ.
+
+**Problem.** Call an operator p-summable when the eigenvalues of (1 + D²)⁻¹ raised to the power p/2 have finite sum. If D is p-summable and E is q-summable for positive p and q, their product operator is (p + q)-summable.
+
+**How the definition helps.** Anticommutation cancels the mixed terms in the square, reducing the trace estimate to scalar eigenvalue sums (our own explanation). For eigenvalues x and y, the denominator 1 + x² + y² dominates both 1 + x² and 1 + y². Splitting the exponent into p/2 and q/2 bounds the double sum by the two finite sums multiplied together, up to matrix multiplicity. The paper applies this operator estimate to its crossed-product construction.
+
+**Paper or page:** [Real Spectral Triples on Crossed Products](https://arxiv.org/abs/2012.15698). It says: “is (p+q)-summable.”
+
+**Sources:**
+
+- [Real Spectral Triples on Crossed Products](https://arxiv.org/abs/2012.15698)
+
 ### Local additions make spaces of smooth maps manifold-like
 
 **Remember:** The space carries its own charts: each tangent vector v points to η(v).
@@ -897,6 +1168,116 @@
 
 - [Edward Witten, Supersymmetry and Morse theory (1982)](https://doi.org/10.4310/jdg/1214437492)
 
+### Boundary indices add by spectral flow
+
+**Remember:** Counting crossings turns a cut in time into a sum.
+
+*True by definition.* MSC 58J20 (Index theory and related fixed-point theorems on manifolds), 58J30, 58J32. arXiv math.SP. Level 4: research.
+
+**Definition.** Take self-adjoint operators A(t) with compact resolvent and common dense domain W on a compact time interval. Assume A varies continuously differentiably in operator norm from W, with its graph norm, to the Hilbert space. Use D = d/dt − iA(t) with initial values in the negative spectral space and final values in the nonnegative spectral space. Spectral flow counts net crossings through zero toward positive values, using finite spectral windows.
+
+**Problem.** Assume each such closed boundary operator has closed range and finite-dimensional kernel and cokernel. Its index, the kernel dimension minus the cokernel dimension, adds under subdivision.
+
+**How the definition helps.** Our own argument adds the crossing counts on adjacent time intervals. Ronge proves that each index equals its crossing count under the stated hypothesis. This avoids trying to glue bases for the kernels and cokernels at the cut.
+
+**Paper or page:** [Index Theory for Globally Hyperbolic Spacetimes](https://arxiv.org/abs/1910.10452v1). It says: “ind((D\|\[r,t\])ₐₚₛ) = ind((D\|\[r,s\])ₐₚₛ) + ind((D\|\[s,t\])ₐₚₛ)”
+
+**Sources:**
+
+- [Lennart Ronge, Index Theory for Globally Hyperbolic Spacetimes (2019)](https://arxiv.org/abs/1910.10452v1)
+- [Koen van den Dungen and Lennart Ronge, The APS-index and the spectral flow (2021)](https://files.ele-math.com/articles/oam-15-87.pdf)
+
+### Callias potentials restore Fredholmness
+
+**Remember:** A potential that dominates at infinity keeps zero out of the essential spectrum.
+
+*Rules out counterexamples.* MSC 58J20 (Index theory and related fixed-point theorems on manifolds), 58J05. arXiv math.DG, math-ph. Level 4: research.
+
+**Definition.** Let D be a Dirac operator on a finite-rank Hermitian bundle over a complete Riemannian manifold. Choose a smooth self-adjoint potential Φ whose commutator \[D,Φ\] = DΦ − ΦD acts by bundle maps. Require Φ² ≥ (‖\[D,Φ\]‖ + c)I outside a compact set, with c &gt; 0 and pointwise operator norm. Form the self-adjoint doubled operator with zero diagonal and off-diagonal entries D + iΦ and D − iΦ.
+
+**Problem.** The doubled operator has closed range and finite-dimensional kernel and cokernel. If the estimate holds everywhere, the doubled operator is invertible. In the odd symmetric case its parity index, the kernel dimension modulo two, therefore vanishes.
+
+**How the definition helps.** Our own explanation uses the domination estimate to bound the square of the doubled operator below outside a compact set. The Fredholm proof uses local compactness to handle the compact set. In our own calculation, domination everywhere gives the bound globally and rules out a kernel for the operator and its adjoint. Our own counterexample is −i d/dx on ℝ, which is elliptic but has zero in its essential spectrum.
+
+**Paper or page:** [On the Z<sub>2</sub>-valued index of elliptic odd symmetric operators on non-compact manifolds](https://arxiv.org/abs/2403.13999v3). It says: “If the essential support of F is empty, then indτ ℬ = 0.”
+
+**Sources:**
+
+- [Maxim Braverman and Ahmad Reza Haj Saeedi Sadegh, On the ℤ₂-valued index of elliptic odd symmetric operators on non-compact manifolds (2024)](https://doi.org/10.1007/s40316-024-00228-5)
+
+### Compact resolvent alone does not suffice
+
+**Remember:** A lower bound makes the two negative spectral spaces finite.
+
+*Rules out counterexamples.* MSC 58J20 (Index theory and related fixed-point theorems on manifolds), 58J32. arXiv math.SP. Level 4: research.
+
+**Definition.** On a compact time interval, let A(t) be self-adjoint with compact resolvent and common dense domain W. Assume A varies continuously differentiably in operator norm from W, with its graph norm, to the Hilbert space. Require A(t) ≥ cI for one real c independent of t. For D = d/dt − iA(t), take initial values in the negative spectral space and final values in the nonnegative spectral space.
+
+**Problem.** This closed boundary operator has closed range and finite-dimensional kernel and cokernel. Their dimension difference equals spectral flow, the net number of eigenvalues crossing zero toward positive values.
+
+**How the definition helps.** Our own explanation uses the common lower bound to make each negative spectral space finite-dimensional. Ronge identifies the boundary index with the index of a map between the negative endpoint spaces. He proves equality with spectral flow and gives a compact-resolvent family whose boundary operator fails to be Fredholm without the lower bound.
+
+**Paper or page:** [Index Theory for Globally Hyperbolic Spacetimes](https://arxiv.org/abs/1910.10452v1). It says: “If A is uniformly bounded from below and sp(A) is discrete with only finite multiplicities, Dₐₚₛ is Fredholm”
+
+**Sources:**
+
+- [Lennart Ronge, Index Theory for Globally Hyperbolic Spacetimes (2019)](https://arxiv.org/abs/1910.10452v1)
+- [Koen van den Dungen and Lennart Ronge, The APS-index and the spectral flow (2021)](https://files.ele-math.com/articles/oam-15-87.pdf)
+
+### Equivariant index forms pull back
+
+**Remember:** One equivariant form gives the index form for every associated family.
+
+*Makes the theorem clean to state or prove.* MSC 58J20 (Index theory and related fixed-point theorems on manifolds), 19L10. arXiv math.DG, math-ph. Level 4: research.
+
+**Definition.** Let a compact Lie group G preserve a geometric family of Dirac operators on closed fibers, including its metrics and connections. Its equivariant Bismut superconnection combines the fiber operators with differentiation in parameter and group directions. At scale t &gt; 0, its Chern character is the graded trace of the heat operator of its square. The graded trace subtracts the odd trace from the even trace.
+
+**Problem.** Every principal G-bundle with connection produces an associated family by twisting the original family by that bundle. The Chern–Weil map sends the equivariant Chern character at scale t to the associated family’s Bismut Chern character at the same scale.
+
+**How the definition helps.** One equivariant form specifies the index forms for all associated families through the Chern–Weil map, which substitutes the chosen connection and its curvature. Wedeen proves that this substitution gives the geometric superconnection of the associated family. Our own comparison uses that the construction respects the heat operator and graded trace.
+
+**Paper or page:** [Equivariant Chern Weil Forms and The Families Index Theorem](https://arxiv.org/abs/2208.05521v1). It says: “f<sub>S</sub><sup>\\ast</sup> \\operatorname{ch}(\\mathbb B<sup>t<sub>G</sub></sup>) = \\operatorname{ch}(\\mathbb B<sup>t<sub>Q</sub></sup>)”
+
+**Sources:**
+
+- [Richard Wedeen, Equivariant Chern Weil Forms and The Families Index Theorem (2022)](https://arxiv.org/abs/2208.05521v1)
+
+### Flat twists give bordism characters
+
+**Remember:** Subtract equal ranks and the local index term disappears.
+
+*True by definition.* MSC 58J20 (Index theory and related fixed-point theorems on manifolds), 58J28. arXiv math.DG, math-ph. Level 4: research.
+
+**Definition.** On a closed odd-dimensional Riemannian spin manifold, twist the spin Dirac operator by each of two flat Hermitian bundles of equal rank. Flat means the unitary connection has zero curvature. For each operator D, put ξ(D) = (η(D) + dim ker D)/2, where η is the regularized difference between positive and negative eigenvalue counts. Subtract the second ξ from the first in ℝ/ℤ.
+
+**Problem.** This difference defines a homomorphism from spin bordism with the two specified flat bundles to ℝ/ℤ. Here a bordism must extend the spin structure and both flat connections, and addition means disjoint union.
+
+**How the definition helps.** Our own argument uses the equal ranks and zero curvatures to cancel the two local index forms. The Atiyah–Patodi–Singer theorem then says the remaining difference is an integer. Our own explanation puts additivity into the direct sum of Dirac spectra under disjoint union.
+
+**nLab:** [eta invariant](https://ncatlab.org/nlab/show/eta+invariant). It says: “as the boundary correction term for the index formula on a manifold with boundary”
+
+**Sources:**
+
+- [Michael F. Atiyah, Vijay K. Patodi and Isadore M. Singer, Spectral asymmetry and Riemannian Geometry. I (1975)](https://doi.org/10.1017/S0305004100049410)
+
+### Spectral cutoffs handle jumping kernels
+
+**Remember:** A cutoff need only avoid its own level, not every crossing at zero.
+
+*Rules out counterexamples.* MSC 58J20 (Index theory and related fixed-point theorems on manifolds), 58J35. arXiv math-ph, math.AT. Level 4: research.
+
+**Definition.** Take a degree-zero 1\|1-dimensional Euclidean field theory with smooth index bundles in the sense of Berwick-Evans. Its partition form Z is the graded trace of heat evolution, subtracting the odd trace from the even trace. For λ &gt; 0, restrict to parameters where λ avoids the spectrum of the squared generator. The eigenspaces below λ then form a smooth finite-dimensional bundle and define a cutoff partition form.
+
+**Problem.** On this open set, Z minus the cutoff partition form equals the exterior derivative of a differential form. The two closed forms therefore represent the same de Rham cohomology class.
+
+**How the definition helps.** The cutoff retains a bundle of constant rank locally, even when eigenvalues cross zero. Our own example uses a two-state odd supercharge with off-diagonal entries t, whose kernel jumps at t = 0. The cutoff theorem gives the discarded contribution as the exterior derivative of an eta form.
+
+**Paper or page:** [The families analytic index for 1∣1-dimensional Euclidean field theories](https://arxiv.org/abs/2303.09207v1). It says: “The partition function of E and the partition function of the λ-cutoff theory are related by”
+
+**Sources:**
+
+- [Daniel Berwick-Evans, The families analytic index for 1∣1-dimensional Euclidean field theories (2023)](https://arxiv.org/abs/2303.09207v1)
+
 ### The heat supertrace counts index
 
 **Remember:** Subtract the odd trace and every positive eigenvalue cancels.
@@ -915,6 +1296,96 @@
 
 - [H. P. McKean Jr. and I. M. Singer, Curvature and the eigenvalues of the Laplacian (1967)](https://doi.org/10.4310/jdg/1214427880)
 - [Peter B. Gilkey, Curvature and the eigenvalues of the Laplacian for elliptic complexes (1973)](https://doi.org/10.1016/0001-8708(73)90119-9)
+
+### Eta phases sew along determinant lines
+
+**Remember:** On a manifold with boundary, the phase lives in a line.
+
+*Makes the theorem clean to state or prove.* MSC 58J28 (Eta-invariants, Chern-Simons invariants), 58J52. arXiv math.DG, math-ph. Level 4: research.
+
+**Definition.** Take a compact odd-dimensional Riemannian spin manifold with a product collar, where the metric splits into normal and boundary parts. For its spin Dirac operator D, a self-adjoint spectral boundary condition gives the scalar exp(πi(η + dim ker D)). Here η is the regularized count of positive eigenvalues minus negative eigenvalues. This scalar represents an element of the dual boundary determinant line, built from top exterior powers of the two boundary spinor kernels.
+
+**Problem.** Cut a closed Riemannian spin manifold of odd dimension along a separating hypersurface with a product metric near the cut. Pair the two boundary line elements using opposite orientations. The result equals the original phase.
+
+**How the definition helps.** The determinant line pairs the two boundary values without a choice of basis. Our own comparison is that two scalar eta computations would require compatible boundary choices. Dai and Freed prove that the line element is independent of those choices and that the contraction gives the uncut phase.
+
+**nLab:** [eta invariant](https://ncatlab.org/nlab/show/eta+invariant). It says: “These sections, given by the exponentiated eta invariant, satisfy the sewing law.”
+
+**Sources:**
+
+- [Xianzhe Dai and Daniel S. Freed, η-invariants and determinant lines (1994)](https://doi.org/10.1063/1.530747)
+
+### Free symmetries simplify eta variation
+
+**Remember:** No fixed points and no crossings mean no change in eta.
+
+*Makes the theorem clean to state or prove.* MSC 58J28 (Eta-invariants, Chern-Simons invariants), 58J20. arXiv math.DG, math-ph. Level 4: research.
+
+**Definition.** Let a finite group act freely on a closed odd-dimensional spin manifold, preserving its metric and spin structure with a chosen spin lift. For each nonzero eigenvalue λ of the spin Dirac operator, weight its sign by the trace of h on its eigenspace. Multiply each term by \|λ\|⁻ˢ, sum for large real s, and continue analytically to s = 0. The value there is the equivariant eta invariant at h.
+
+**Problem.** For a nonidentity group element h, this invariant stays constant along every smooth path of invariant metrics with positive scalar curvature.
+
+**How the definition helps.** Inserting h restricts the local variation formula to points fixed by h, and the free action leaves that set empty. Our own argument uses the spinor square formula to exclude zero eigenvalues throughout the path. The analytic work lies in the equivariant variation formula.
+
+**Paper or page:** [Equivariant Spectral Flow for Families of Dirac-type Operators](https://arxiv.org/abs/2403.00575v3). It says: “assume moreover that G acts freely on M and h ≠ e. Then, we have ηₕ(D₀) = ηₕ(D₁).”
+
+**Sources:**
+
+- [Peter Hochs and Aquerman Yanes, Equivariant spectral flow for families of Dirac-type operators (2025)](https://doi.org/10.2140/akt.2025.10.189)
+
+### Reduced eta stays smooth
+
+**Remember:** The kernel term makes a zero mode agree with either sign in the phase.
+
+*Rules out counterexamples.* MSC 58J28 (Eta-invariants, Chern-Simons invariants), 58J20. arXiv math.DG, math-ph. Level 4: research.
+
+**Definition.** Let D be the spin Dirac operator on a closed odd-dimensional Riemannian spin manifold. Its eta invariant η counts positive minus negative eigenvalues by analytic continuation. Define ξ = (η + dim ker D)/2 in ℝ/ℤ.
+
+**Problem.** For a smooth family of such Dirac operators, exp(2πiξ) is smooth even where the kernel changes dimension.
+
+**How the definition helps.** Our own calculation gives one crossing mode the same phase, −1, below, at, and above zero. For example, the circle operators −i d/dx + a acquire one zero mode at a = 0. Their unreduced eta invariants have distinct one-sided limits. Our own argument uses a local spectral cutoff to remove finitely many small modes. The smoothness theorem for the eta invariant with a cutoff carries the analytic work.
+
+**nLab:** [eta invariant](https://ncatlab.org/nlab/show/eta+invariant). It says: “In fact, this is a smooth section of the determinant line bundle as X varies.”
+
+**Sources:**
+
+- [Xianzhe Dai and Daniel S. Freed, η-invariants and determinant lines (1994)](https://doi.org/10.1063/1.530747)
+
+### Half spectral flow retains parity
+
+**Remember:** Counting only half the loop preserves crossing parity.
+
+*Makes the theorem clean to state or prove.* MSC 58J30 (Spectral flows), 58J20. arXiv math.DG, math-ph. Level 4: research.
+
+**Definition.** Take a smooth periodic family A(t) of self-adjoint operators with compact resolvent and common dense domain with its graph norm. Assume smoothness in operator norm from this domain to the Hilbert space. A conjugate-linear isometry τ preserves the domain, satisfies τ² = −1, and obeys τA(t)τ⁻¹ = A(−t). For period 2π and invertible A(0) and A(π), define half spectral flow as the signed spectral flow from 0 to π modulo two.
+
+**Problem.** The complex dimension of the kernel of d/dt + A(t) on periodic sections equals the half spectral flow modulo two.
+
+**How the definition helps.** In our own explanation, each upward crossing on one half has a downward partner on the other half. The full signed count vanishes, but counting only the first half retains parity. The index theorem identifies this parity with that of the periodic kernel.
+
+**Paper or page:** [The Z<sub>2</sub>-valued spectral flow of a symmetric family of Toeplitz operators](https://arxiv.org/abs/2409.15534v3). It says: “is equal to the half-spectral flow”
+
+**Sources:**
+
+- [Maxim Braverman and Ahmad Reza Haj Saeedi Sadegh, The ℤ₂-valued spectral flow of a symmetric family of Toeplitz operators (2026)](https://doi.org/10.4171/jst/605)
+
+### Higher spectral flow telescopes
+
+**Remember:** The common reference makes the middle endpoint cancel.
+
+*True by definition.* MSC 58J30 (Spectral flows), 58J20. arXiv math.DG, math-ph. Level 4: research.
+
+**Definition.** Consider a path of self-adjoint elliptic families on closed fibers over a compact base. A spectral section projects onto all sufficiently positive modes and kills all sufficiently negative modes. Choose a continuous reference section P along the path and endpoint sections Q₀ and Q₁. Define higher spectral flow as \[Q₁ − P₁\] − \[Q₀ − P₀\] in K-theory, the group of formal differences of vector bundles.
+
+**Problem.** When two paths admit a common reference on their concatenation, their higher spectral flows add if their chosen middle endpoint section agrees.
+
+**How the definition helps.** Our own calculation cancels the two middle difference classes because both use the same endpoint and reference projections. Each bracket compares finite-dimensional parts of two projections after removing their common high-energy part. This replaces following individual eigenvalues across the parameter space. The work lies in constructing spectral sections when possible and proving independence of the reference.
+
+**Paper or page:** [Equivariant Toeplitz index theory on odd-dimensional manifolds with boundary](https://arxiv.org/abs/2101.00193v3). It says: “The H-equivariant higher spectral flow of the pairs (D₀,Q₀) and (D₁,Q₁) can also be computed via an equivariant generalised total spectral section”
+
+**Sources:**
+
+- [Johnny Lim and Hang Wang, Equivariant Toeplitz index theory on odd-dimensional manifolds with boundary (2022)](https://doi.org/10.1007/s00209-022-03091-8)
 
 ### Spectral flow adds across joins
 
@@ -987,6 +1458,24 @@
 **Sources:**
 
 - [Rui Chen, Logarithmic Laplacian on General Riemannian Manifolds, arXiv:2506.19311v1 (2025)](https://arxiv.org/abs/2506.19311v1)
+
+### Determinant sections detect noninvertibility
+
+**Remember:** A finite determinant tells where its infinite-dimensional operator fails to invert.
+
+*True by definition.* MSC 58J52 (Determinants and determinant bundles, analytic torsion), 58J20. arXiv math.DG, math-ph. Level 4: research.
+
+**Definition.** Consider a smooth family of index-zero Cauchy–Riemann operators D on a complex bundle over a closed Riemann surface. These operators specify complex differentiation in the antiholomorphic direction. Use the line (det ker D)\* ⊗ det coker D, where det denotes top exterior power and the star denotes duality. Local finite-dimensional reductions give square matrices whose determinants define a section of this line.
+
+**Problem.** The determinant section vanishes precisely where an operator in the family is not invertible.
+
+**How the definition helps.** Our own argument uses a finite-dimensional square matrix in each local model. In our own comparison, the operator and matrix are invertible at exactly the same parameters. The work goes into the reduction and the determinant gluing theorem, which make these local sections agree.
+
+**nLab:** [determinant line bundle](https://ncatlab.org/nlab/show/determinant+line+bundle). It says: “Now one has a family ℒᴅ depending on D, which determines a holomorphic line bundle over 𝒜.”
+
+**Sources:**
+
+- [Daniel Quillen, Determinants of Cauchy-Riemann operators over a Riemann surface (1985)](https://doi.org/10.1007/BF01086022)
 
 ### Zeta regularization defines the determinant of a Laplacian
 

@@ -1096,6 +1096,38 @@
 - [H. von Mangoldt, Zu Riemanns Abhandlung 'Ueber die Anzahl der Primzahlen unter einer gegebenen Grösse', J. reine angew. Math. 114 (1895) 255–305](https://doi.org/10.1515/crll.1895.114.255)
 - [T. M. Apostol, Introduction to Analytic Number Theory, Springer, 1976](https://doi.org/10.1007/978-1-4757-5579-4)
 
+### Large characters locate repeated differences
+
+**Remember:** Make the large Fourier terms agree to get a positive count.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11B13 (Additive bases, including sumsets), 11B30. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let A occupy a fraction α &gt; 0 of a finite vector space over a prime field. A character sends vector addition to multiplication on the unit circle. Its Fourier coefficient for A is the sum of its conjugate values on A divided by the whole space’s size. Select characters whose coefficients have magnitude at least √(α³/2), and take the vectors where all selected characters equal 1.
+
+**Problem.** This common kernel is a subspace inside 2A − 2A, the set of sums a + b − c − d from A. Its codimension, the number of independent linear conditions defining it, is at most 2/α².
+
+**How the definition helps.** Selecting large coefficients lets us force their contributions to the representation count to have the same sign. In our own proof, Fourier inversion counts representations using fourth powers of the coefficient magnitudes, weighted by character values. On the common kernel every large term is nonnegative, and the constant term contributes α⁴. Parseval’s identity says the squared magnitudes sum to α. The threshold therefore bounds the combined magnitude of the small terms by α⁴/2 and the number of large terms by 2/α². The cited theorem gives a stronger codimension bound by a different argument.
+
+**Paper or page:** [A bilinear Bogolyubov-Ruzsa lemma with poly-logarithmic bounds](https://arxiv.org/abs/1808.04965v2). It says: “there exists a subspace V of 𝔽ⁿ of codimension O(log⁴ α⁻¹) such that V ⊆ 2A−2A.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Minimal growth controls repeated sums
+
+**Remember:** Use the least expensive subset at every addition.
+
+*True by definition.* MSC 11B13 (Additive bases, including sumsets), 11P70. arXiv math.NT. Level 3: graduate.
+
+**Definition.** For finite sets in an abelian group, X + B contains every sum of one element from each set. Given a nonempty finite set A, choose a nonempty subset X minimizing \|X + B\|/\|X\|. Write K for this minimum.
+
+**Problem.** Add j copies of B to X, where j is a positive integer. The resulting set has size at most \|X\| times K to the power j.
+
+**How the definition helps.** Choosing X by its smallest growth ratio lets one bound every later addition using the same K. Starting with A itself only gives a bound for the first addition. Petridis proved that \|C + X + B\| ≤ K\|C + X\| for every finite C. The proof uses minimality to control overlaps between translates of X. In our own derivation, take C successively as {0}, B, B + B, and so on.
+
+**Wikipedia:** [Plünnecke–Ruzsa inequality](https://en.wikipedia.org/wiki/Pl%C3%BCnnecke%E2%80%93Ruzsa_inequality). It says: “is a nonempty subset that minimizes the value of”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The stabilizer of a sumset extends Cauchy–Davenport to all abelian groups
 
 **Remember:** Measure sumsets against their stabilizer, and subgroups stop being counterexamples.
@@ -1115,6 +1147,72 @@
 **Sources:**
 
 - [Christian Reiher, On Lev's periodicity conjecture, arXiv:2408.15174 (2024)](https://arxiv.org/abs/2408.15174)
+
+### Independence keeps entropic distance nonnegative
+
+**Remember:** An independent difference cannot have less entropy than either summand.
+
+*Rules out counterexamples.* MSC 11B30 (Arithmetic combinatorics; higher degree uniformity). arXiv math.NT. Level 3: graduate.
+
+**Definition.** For a finite distribution with positive probabilities p, its entropy H is the sum of −p log p over its outcomes. Draw independent samples X′ and Y′ from two given distributions on an abelian group. Their entropic Ruzsa distance is H(X′ − Y′) − (H(X′) + H(Y′))/2.
+
+**Problem.** Entropic Ruzsa distance is nonnegative for any two finitely supported distributions on an abelian group.
+
+**How the definition helps.** Independent sampling rules out cancellation caused by using the same draw twice. In our own example, set Y = X for a fair bit on the two-element group. Their actual difference has entropy zero, giving distance −log 2. With independent draws, fixing either draw leaves the entropy of the other in the difference. Conditioning cannot increase entropy, so the difference has at least the larger individual entropy.
+
+**Paper or page:** [Marton's Conjecture in abelian groups with bounded torsion](https://arxiv.org/abs/2404.02244v2). It says: “if X,Y are independent, then H\[X\], H\[Y\] are both at most H\[X ± Y\].”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Quadratic phases preserve cube norms
+
+**Remember:** A quadratic phase cancels across the eight cube vertices.
+
+*True by definition.* MSC 11B30 (Arithmetic combinatorics; higher degree uniformity). arXiv math.NT. Level 3: graduate.
+
+**Definition.** An additive difference replaces P(x) by P(x + h) − P(x) for a chosen step h. Call exp(2πiP) a quadratic phase if P takes values modulo 1 and every third additive difference vanishes. The eighth power of the Gowers U³ norm averages products over x and three independent uniform steps. Include all eight subset sums of the steps added to x, conjugating the function values from odd-sized subsets.
+
+**Problem.** On a finite abelian group, multiplying a function by a quadratic phase does not change its Gowers U³ norm.
+
+**How the definition helps.** Defining quadratic phases by differences makes their eight factors cancel inside the norm. In our own calculation their product is the exponential of a signed third difference, hence equals 1. This avoids choosing coefficients for a quadratic formula. The cited representation theorem identifies these difference-defined phases with explicit quadratic formulas on groups of odd order.
+
+**Paper or page:** [An inverse theorem for the Gowers U³ norm](https://arxiv.org/abs/math/0503014v4). It says: “Conversely, all such functions x ↦ Mx · x + ξ · x + c are globally quadratic phase functions.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Regular Bohr sets absorb small shifts
+
+**Remember:** Small changes in radius control small shifts.
+
+*True by definition.* MSC 11B30 (Arithmetic combinatorics; higher degree uniformity). arXiv math.NT. Level 3: graduate.
+
+**Definition.** In a finite abelian group, a character sends sums to products on the unit circle. A Bohr set B contains the elements that d chosen characters all send within distance r of 1. Call B regular if scaling r by 1 + t changes its size by at most 100d\|t\| times its original size. Require this for d ≥ 1 and \|t\| ≤ 1/(100d).
+
+**Problem.** Take 0 &lt; ρ &lt; 1 and a shift x from the Bohr set with radius ρr. The uniform probabilities on B and B + x differ by at most 200ρd when we sum their absolute differences.
+
+**How the definition helps.** Regularity controls points gained by enlarging B, which an arbitrary radius need not do. In our own proof, both B and B + x fit inside the set of radius (1 + ρ)r. Their sizes agree, so their symmetric difference contains at most twice the number of added points. Regularity gives the bound for 100ρd ≤ 1. Otherwise the total difference between two probability distributions is at most 2. Finding a regular radius near a prescribed radius takes a separate lemma.
+
+**Paper or page:** [Sparse graph counting and Kelley-Meka bounds for binary systems](https://arxiv.org/abs/2311.12248v5). It says: “If B is a regular Bohr set of rank d”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Discrete logarithms build Sidon sets
+
+**Remember:** Equal exponent sums give equal products of monic linear factors at θ.
+
+*True by definition.* MSC 11B75 (Other combinatorial number theory). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let q be a prime power and h ≥ 2. Choose a generator θ of the multiplicative group of the field with qʰ elements. For each λ in its subfield with q elements, record the exponent a modulo qʰ − 1 such that θᵃ = θ − λ.
+
+**Problem.** The q exponents form a Sidon set of order h in the cyclic group of order q raised to h minus 1. This means an h-term sum, with repeats allowed, determines its summands up to order.
+
+**How the definition helps.** Taking exponents replaces a search for repeated sums by a polynomial identity. In our own proof, equal sums modulo qʰ − 1 give equal products at θ. Subtract the two monic degree-h products. Their difference has degree below h and vanishes at θ. Only the zero polynomial can do this because θ has degree h over the smaller field. Unique factorization then recovers the summands, including repetitions.
+
+**Paper or page:** [The Bose-Chowla argument for Sidon sets](https://arxiv.org/abs/2104.12711v3). It says: “is a classical Sidon set of order h modulo qʰ − 1 and cardinality q.”
+
+**Sources:**
+
+- [Melvyn B. Nathanson, The Bose–Chowla argument for Sidon sets](https://arxiv.org/abs/2104.12711v3)
 
 ### Positive genus makes Siegel's theorem on integral points exclude Pell equations
 
@@ -1153,6 +1251,22 @@
 - [A. Thue, Über Annäherungswerte algebraischer Zahlen, J. reine angew. Math. 135 (1909) 284–305](https://doi.org/10.1515/crll.1909.135.284)
 - [E. Bombieri and W. M. Schmidt, On Thue's equation, Invent. Math. 88 (1987) 69–81](https://doi.org/10.1007/BF01405092)
 
+### Hilbert symbols complete local classification
+
+**Remember:** The determinant counts factors, and the Hasse invariant pairs them.
+
+*Rules out counterexamples.* MSC 11E08 (Quadratic forms over local rings and fields), 11E95. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Over the p-adic numbers ℚₚ, write a nonsingular quadratic form as a sum of squares with nonzero coefficients. The Hilbert symbol (a,b) equals 1 if z² = ax² + by² has a nonzero solution over ℚₚ, and −1 otherwise. The Hasse invariant multiplies these signs over all unordered pairs of distinct coefficient positions.
+
+**Problem.** Two nondegenerate quadratic forms over ℚₚ are isometric exactly when their dimensions, determinant square classes, and Hasse invariants agree.
+
+**How the definition helps.** The extra sign retains the interactions between coefficients that the determinant loses (our own). Over ℚ₃, the diagonal triples (1, 1, 1) and (1, 3, 3) have equal determinant square classes (our own). Their Hasse invariants differ because the symbol of (3, 3) is −1 over ℚ₃ (our own). The local classification theorem does the work of proving that no further invariant is needed (our own).
+
+**Paper or page:** [The density of integral quadratic forms having a k-dimensional totally isotropic subspace](https://arxiv.org/abs/2212.10495v1), [The density of integral quadratic forms having a k-dimensional totally isotropic subspace](https://arxiv.org/abs/2212.10495v1). It says: “This is independent of the choice of diagonal form.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The Hilbert symbol turns quadratic reciprocity into one product formula
 
 **Remember:** At each place, the Hilbert symbol asks whether a conic has a point.
@@ -1170,6 +1284,54 @@
 **Sources:**
 
 - [J. Neukirch, Algebraic Number Theory, Springer (1999), p. 334](https://doi.org/10.1007/978-3-662-03983-0)
+
+### Hyperbolic planes localize Witt indices
+
+**Remember:** Split one plane and repeat the local test.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11E12 (Quadratic forms over global rings and fields), 11E81. arXiv math.NT. Level 3: graduate.
+
+**Definition.** A hyperbolic plane is the quadratic form xy. The Witt index counts the most such planes that split off in disjoint pairs of variables after a change of coordinates.
+
+**Problem.** Take a nonsingular quadratic form over a number field, a finite extension of ℚ. Its Witt index is the smallest index over all completions, formed using the field’s different absolute values.
+
+**How the definition helps.** Counting planes lets us repeat the local test for a single nonzero zero (our own). If every completion has one, the Hasse–Minkowski theorem gives one over the number field (our own). It supplies a hyperbolic plane, which splits off over the number field and every completion (our own). Witt cancellation lowers all the indices by one, so induction gives the minimum formula (our own).
+
+**Paper or page:** [The density of integral quadratic forms having a k-dimensional totally isotropic subspace](https://arxiv.org/abs/2212.10495v1), [The density of integral quadratic forms having a k-dimensional totally isotropic subspace](https://arxiv.org/abs/2212.10495v1). It says: “If (V₁,Q) and (V₂,Q) are regular and isometric, then (V₁⊥,Q) and (V₂⊥,Q) are also isometric.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Spinor genera classify indefinite forms
+
+**Remember:** A spinor genus remembers which local rotations lift.
+
+*Makes the theorem clean to state or prove.* MSC 11E12 (Quadratic forms over global rings and fields), 11E41. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Fix integral lattices in one nonsingular rational quadratic space. A rotation is a linear map preserving the form with determinant one. Two lattices share a proper spinor genus if a rational rotation followed by local rotations matches them over every ring of p-adic integers. Each local rotation must lift to the spin group, the algebraic double cover of the rotation group.
+
+**Problem.** A proper spinor genus of a nondegenerate indefinite integral form of rank at least three has exactly one proper integral isometry class.
+
+**How the definition helps.** The spinor genus restricts local rotations to ones that strong approximation can match on the lattices (our own). Indefiniteness makes the real spin group noncompact (our own). Strong approximation supplies one rational spin rotation with all the required local lattice images (our own). The resulting rational rotation identifies the integral lattices because their local images agree at every prime (our own).
+
+**Wikipedia:** [Spinor genus](https://en.wikipedia.org/wiki/Spinor_genus). It says: “An important result is that for indefinite forms of dimension at least three, each spinor genus contains exactly one proper equivalence class.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Genus equivalence becomes a square test
+
+**Remember:** Compose with the inverse and look for a square.
+
+*Makes the theorem clean to state or prove.* MSC 11E16 (General binary quadratic forms), 11E41. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Fix a negative fundamental discriminant, the discriminant of an imaginary quadratic field. For primitive positive definite binary quadratic forms of that discriminant, proper classes identify forms under determinant-one integer changes of variables. Gauss composition multiplies these classes. Genus characters are sign-valued homomorphisms whose joint values distinguish genera, the classes of forms equivalent over ℝ and every p-adic integer ring.
+
+**Problem.** Two classes are in the same genus exactly when the first composed with the inverse of the second is a square in the class group.
+
+**How the definition helps.** Genus characters replace separate local comparisons with homomorphisms from the class group to signs (our own). Equal signs mean that the quotient of the classes lies in their common kernel (our own). Gauss’s principal genus theorem identifies the common kernel with the subgroup of squares (our own).
+
+**Wikipedia:** [Genus of a quadratic form](https://en.wikipedia.org/wiki/Genus_of_a_quadratic_form). It says: “The principal genus, the genus containing the principal form, is precisely the subgroup C²”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Letting the middle coefficient be odd matches form discriminants with fields
 
@@ -1203,6 +1365,70 @@
 **How the definition helps.** Proper equivalence keeps a form apart from its mirror image, and the mirror image is the inverse class. With determinant −1 allowed, the form ax² + bxy + cy² is equivalent to ax² − bxy + cy² (our own). Under composition these two classes are inverses, so Lagrange's classes would merge each class with its inverse (our own). The page does not give this reason, but says that the Lagrange definition is inferior. The match with the narrow class group explains the factor of two for positive discriminants. Dedekind's ideals later made composition plain multiplication of ideals (our own).
 
 **Wikipedia:** [Binary quadratic form](https://en.wikipedia.org/wiki/Binary_quadratic_form). It says: “Lagrange used a different notion of equivalence, in which the second condition is replaced by αδ − βγ = ±1. Since Gauss it has been recognized that this definition is inferior to that given above.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Even self-dual lattices give modular symmetry
+
+**Remember:** Evenness gives translation and self-duality gives inversion.
+
+*Makes the theorem clean to state or prove.* MSC 11E45 (Analytic theory (Epstein zeta functions; relations with automorphic forms and functions)), 11H06. arXiv math.NT. Level 3: graduate.
+
+**Definition.** For a positive definite lattice, its theta series sums exp(πiz‖v‖²) over all lattice vectors v, where z has positive imaginary part. An even lattice has even integer squared lengths. A self-dual lattice equals the set of vectors whose dot products with all lattice vectors are integers.
+
+**Problem.** The theta series of an even self-dual positive definite lattice of rank n is a modular form of weight n/2 for the full modular group. This means it satisfies the translation and inversion laws and is holomorphic on the upper half-plane and at infinity.
+
+**How the definition helps.** The two lattice conditions match the two generators of the modular group (our own). Evenness fixes every exponential under z replaced by z + 1 (our own). Poisson summation turns inversion into the theta series of the dual, so self-duality closes the formula (our own). The analytic work goes into Poisson summation and the Fourier transform of a Gaussian (our own).
+
+**Wikipedia:** [Leech lattice](https://en.wikipedia.org/wiki/Leech_lattice). It says: “the theta function of an even unimodular lattice of rank n is actually a modular form of weight n/2 for the full modular group”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Dimension parity survives Witt equivalence
+
+**Remember:** A hyperbolic plane changes dimension by two.
+
+*True by definition.* MSC 11E81 (Algebraic theory of quadratic forms; Witt groups and rings). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Start with nonsingular quadratic forms over a field of characteristic different from two. Two forms represent the same Witt class if adding copies of the plane xy to each makes them equal after a change of variables. The Witt ring adds classes by summing forms in separate variables and multiplies classes by taking tensor products.
+
+**Problem.** Dimension modulo two is a surjective ring map from the Witt ring to the field with two elements. Its kernel, the fundamental ideal, is maximal.
+
+**How the definition helps.** Every discarded plane has even dimension, so parity descends to classes. It respects sum and product because dimensions add and multiply before taking the quotient (our own). The quadratic-form work is proving the stable equivalence agrees with having isometric anisotropic parts, the parts with no nonzero zeros (our own).
+
+**Wikipedia:** [Witt group](https://en.wikipedia.org/wiki/Witt_group). It says: “Although classes may contain spaces of different dimension, the parity of the dimension is constant across a class”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Isotropic Pfister forms split completely
+
+**Remember:** One zero makes the whole Pfister form split.
+
+*Rules out counterexamples.* MSC 11E81 (Algebraic theory of quadratic forms; Witt groups and rings). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Over a field of characteristic other than two, a Pfister form is a tensor product of binary forms x² − ay² with each a nonzero. In contrast, an arbitrary quadratic form of the same dimension need not have this tensor structure.
+
+**Problem.** A Pfister form that vanishes at a nonzero vector is hyperbolic. That is, it is an orthogonal sum of planes with form xy.
+
+**How the definition helps.** The tensor definition splits a Pfister form into two scaled copies of a shorter form φ (our own). In separate variables these copies give φ and −aφ (our own). If φ already splits into hyperbolic planes, so does each copy (our own). Otherwise induction says φ has no nonzero zero, so isotropy makes a a ratio of nonzero values of φ (our own). Pfister’s roundness theorem then gives a change of variables taking aφ to φ (our own). Diagonalizing φ pairs each square with its negative, giving hyperbolic planes (our own). The real form x² + y² + z² − t² has a nonzero zero but cannot split into two such planes (our own).
+
+**Wikipedia:** [Pfister form](https://en.wikipedia.org/wiki/Pfister_form). It says: “every isotropic Pfister form is in fact hyperbolic”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Nondegeneracy lets an isotropic vector split off a plane
+
+**Remember:** Pair an isotropic vector with a second vector to split off a plane.
+
+*Rules out counterexamples.* MSC 11E81 (Algebraic theory of quadratic forms; Witt groups and rings). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let Q be a quadratic form on a finite-dimensional vector space over a field of characteristic different from two. Two vectors u and v pair by B(u,v) = Q(u + v) − Q(u) − Q(v). Nondegeneracy means every nonzero vector pairs nontrivially with some vector. An isotropic vector is a nonzero vector where Q vanishes.
+
+**Problem.** A nondegenerate quadratic form has an isotropic vector exactly when it splits as xy plus a form in separate variables.
+
+**How the definition helps.** Nondegeneracy gives an isotropic vector u a partner v, which we scale so B(u,v) = 1 (our own). Replacing v by v − Q(v)u makes its value zero and preserves the pairing (our own). On their span the form is xy, so the span splits off by orthogonality (our own). The degenerate form Q(x,y) = x² vanishes at (0,1) but contains no such plane (our own).
+
+**Paper or page:** [The density of integral quadratic forms having a k-dimensional totally isotropic subspace](https://arxiv.org/abs/2212.10495v1). It says: “A regular quadratic space (V,Q) is isotropic if and only if V has a subspace V₀ such that the quadratic space (V₀,Q) is a hyperbolic plane.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -1294,6 +1520,70 @@
 - [E. Hecke, Über Modulfunktionen und die Dirichletschen Reihen mit Eulerscher Produktentwicklung. I, Math. Ann. 114 (1937)](https://doi.org/10.1007/BF01594160)
 - [J.-P. Serre, A Course in Arithmetic, Graduate Texts in Mathematics 7, Springer, 1973](https://doi.org/10.1007/978-1-4684-9884-4)
 
+### Cusp constants become residues
+
+**Remember:** Constant terms become residues when the cusp is filled in.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11F23 (Relations with algebraic geometry and topology), 11F11. arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** Use a torsion-free subgroup of finite index in the determinant-one integer matrices. Assume that, after moving each cusp to infinity by an integral modular substitution, its stabilizer consists of translations. The cusp is a boundary point, and its width h is the least positive translation in this stabilizer. A weight two form f gives the invariant differential f(τ)dτ.
+
+**Problem.** At each cusp, expand the transformed form in exp(2πiτ/h). The sum of its constant coefficients, each multiplied by its own cusp width, is zero.
+
+**How the definition helps.** Each weighted constant coefficient equals 2πi times the residue of the differential at that cusp (our own). Writing q = exp(2πiτ/h) gives dτ = h dq/(2πiq) (our own). Holomorphy of the form leaves at most a simple pole there (our own). The residue theorem on the compact curve gives the result (our own).
+
+**nLab:** [modular form](https://ncatlab.org/nlab/show/modular+form). It says: “Using the Kodaira-Spencer isomorphism one can show that the space of cusp forms of weight 2 are the differentials on the corresponding modular curve.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Sections add modular weights
+
+**Remember:** Multiplying sections adds the exponents of their tensor powers.
+
+*True by definition.* MSC 11F23 (Relations with algebraic geometry and topology), 11F11. arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** Use the space classifying complex elliptic curves together with their symmetries, and include the boundary point called the cusp. Each curve gives a line ω of translation-invariant differentials. A weight k form is a section of the kth tensor power of the extended line ω. The analytic definition instead prescribes how a function changes under modular substitutions.
+
+**Problem.** The product of forms of weights k and ℓ at the same level has weight k + ℓ. If one factor vanishes at every cusp, the product does too.
+
+**How the definition helps.** Tensoring the two sections adds their tensor powers and preserves vanishing at the cusps (our own). The work is identifying sections on the compactification with analytic forms that are holomorphic at the cusps (our own).
+
+**nLab:** [modular form](https://ncatlab.org/nlab/show/modular+form). It says: “A modular form of weight k is a section of ω⊗ᵏ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Weight two cusp forms give differentials
+
+**Remember:** A cusp zero cancels the simple pole in the differential.
+
+*True by definition.* MSC 11F23 (Relations with algebraic geometry and topology), 11F11. arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** Fix full level N ≥ 3 over ℂ, which records a basis of the points killed by N. The Hodge line assigns each elliptic curve its line of translation-invariant differentials and extends over the compact curve. A weight two form is a section of its tensor square. A cusp form vanishes at every cusp, a point added to compactify the curve.
+
+**Problem.** Weight two cusp forms on the compact complex modular curve are its holomorphic one-forms.
+
+**How the definition helps.** Vanishing at a cusp cancels the possible simple pole there (our own). The Kodaira–Spencer isomorphism identifies the squared Hodge line with differentials allowing simple poles at cusps. The usual analytic proof instead checks that f(τ)dτ extends in a local coordinate at each cusp (our own).
+
+**nLab:** [modular form](https://ncatlab.org/nlab/show/modular+form). It says: “Using the Kodaira-Spencer isomorphism one can show that the space of cusp forms of weight 2 are the differentials on the corresponding modular curve.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Hecke operators at distinct primes commute
+
+**Remember:** Translations in separate prime factors commute.
+
+*True by definition. Confidence: medium.* MSC 11F25 (Hecke-Petersson operators, differential operators (one variable)), 11F70. arXiv math.NT, math.RT. Level 3: graduate.
+
+**Definition.** Adeles collect the real and prime completions of the rational numbers. The adelic description realizes modular forms as functions on invertible two-by-two adelic matrices with specified symmetries. At a prime p outside the level, let K be the invertible two-by-two matrices over the p-adic integers. Split K diag(p,1) K into sets gK and sum the translations by their representatives g.
+
+**Problem.** Hecke operators at distinct primes outside the level commute on classical modular forms.
+
+**How the definition helps.** The moves at one prime leave the other prime factor alone (our own). Their sums therefore commute term by term (our own). The work is the adelic description of classical forms and the comparison of local translations with classical Hecke operators (our own).
+
+**nLab:** [automorphic form](https://ncatlab.org/nlab/show/automorphic+form). It says: “These are the adelic automorphic forms. They may be thought of as subsuming ordinary modular forms for all level structures.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Normalizing eigenforms by a(1) = 1 makes coefficients equal Hecke eigenvalues
 
 **Remember:** Set the first coefficient to one, and the coefficients become eigenvalues.
@@ -1313,6 +1603,352 @@
 - [E. Hecke, Über Modulfunktionen und die Dirichletschen Reihen mit Eulerscher Produktentwicklung. I, Math. Ann. 114 (1937)](https://doi.org/10.1007/BF01594160)
 - [E. Hecke, Über Modulfunktionen und die Dirichletschen Reihen mit Eulerscher Produktentwicklung. II, Math. Ann. 114 (1937)](https://doi.org/10.1007/BF01594180)
 - [L. J. Mordell, On Mr. Ramanujan's empirical expansions of modular functions, Proc. Cambridge Philos. Soc. 19 (1917) 117–124](https://archive.org/stream/proceedingsofcam1920191721camb#page/n133) (link not checked)
+
+### Quasimodularity preserves derivatives
+
+**Remember:** Allow the extra chain-rule term instead of losing derivatives.
+
+*Makes the theorem clean to state or prove.* MSC 11F25 (Hecke-Petersson operators, differential operators (one variable)), 11F37. arXiv math.NT. Level 3: graduate.
+
+**Definition.** For a determinant-one integer matrix with bottom row (c,d), remove the usual weight factor from the transformed holomorphic function f. A quasimodular form allows the result to be a polynomial in c/(cτ + d) with constant term f. Its coefficient functions are holomorphic, including in the Fourier coordinate at the cusp.
+
+**Problem.** Differentiation maps a weight k quasimodular form to a weight k + 2 quasimodular form. The ordinary modular forms are not closed under differentiation, as the derivative of E₄ shows.
+
+**How the definition helps.** The polynomial allows exactly the extra factors that the chain rule introduces (our own). Differentiation raises the weight by two and the polynomial degree by at most one. The ordinary weight-four Eisenstein series E₄ has a nonzero extra term, so its derivative fails the ordinary modular law (our own).
+
+**Wikipedia:** [Almost holomorphic modular form](https://en.wikipedia.org/wiki/Almost_holomorphic_modular_form). It says: “Ramanujan observed that the derivative of any quasimodular form is another quasimodular form.”
+
+**Paper or page:** [Quasimodular forms and modular differential equations which are not apparent at cusps: I](https://arxiv.org/abs/2103.04890v1). It says: “of quasimodular forms on Γ is closed under differentiation.”
+
+**Sources:**
+
+- [Don Zagier, Elliptic Modular Forms and Their Applications](https://doi.org/10.1007/978-3-540-74119-0_1)
+
+### Refinements select Hecke eigenlines
+
+**Remember:** A root chooses a direction in the two old copies.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11F25 (Hecke-Petersson operators, differential operators (one variable)), 11F85. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Start with a normalized cusp eigenform f of weight k and level N, so its first Fourier coefficient is one. For simplicity take trivial character and a prime p outside N. Write a for its pth Fourier coefficient. A refinement chooses one root α of the polynomial X² − aX + pᵏ⁻¹.
+
+**Problem.** At level Np, Uₚ replaces each nth Fourier coefficient by the coefficient at pn. If the roots differ, the span of f(τ) and f(pτ) has two Uₚ eigenlines. Each refinement labels the line with the chosen eigenvalue.
+
+**How the definition helps.** The chosen root specifies one eigenvalue and hence one line (our own). If β is the other root, the line with eigenvalue α is generated by f(τ) − β f(pτ) (our own). The work is computing Uₚ on this span and showing that its characteristic polynomial is the original pth Hecke polynomial (our own).
+
+**nLab:** [eigenvariety](https://ncatlab.org/nlab/show/eigenvariety). It says: “α is a root of the p-th Hecke polynomial.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Even self-dual lattices give modular theta series
+
+**Remember:** Even norms give translation and self-duality gives inversion.
+
+*Rules out counterexamples. Confidence: medium.* MSC 11F27 (Theta series; Weil representation; theta correspondences), 11F11. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let L be a positive definite lattice with integer inner products. Call L even if every squared length is even. Call it self-dual if it contains exactly the vectors in its real span having integer inner products with every lattice vector. Its theta series sums exp(πiτ⟨v,v⟩) over v in L for τ in the upper half-plane.
+
+**Problem.** For such a lattice of rank 8m with m a positive integer, the theta series is a scalar modular form of weight 4m for SL₂(ℤ). The odd self-dual lattice ℤ⁸ fails the translation rule.
+
+**How the definition helps.** Evenness fixes every summand under τ ↦ τ + 1, while self-duality returns the same lattice under inversion (our own). For ℤ⁸, translation changes the sign of the terms from vectors of squared length one (our own). Gaussian Poisson summation proves the inversion formula at −1/τ with weight 4m (our own). Translation and inversion generate the modular group, and positive definiteness gives holomorphy at infinity (our own).
+
+**nLab:** [Jacobi theta function](https://ncatlab.org/nlab/show/Jacobi+theta+function). It says: “By the Poisson summation formula the number-theoretic theta function θ(0,z) satisfies the following functional equation”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Poincaré series extract coefficients
+
+**Remember:** Average one mode to recover one coefficient.
+
+*True by definition. Confidence: medium.* MSC 11F30 (Fourier coefficients of automorphic forms), 11F11. arXiv math.NT. Level 3: graduate.
+
+**Definition.** For the full modular group and even weight k &gt; 2, start with the Fourier mode exp(2πinτ), where n is a positive integer. Sum its weight k transforms over left cosets of the subgroup that fixes infinity. This subgroup consists of integer translations together with the central sign. The resulting cusp form is the nth Poincaré series.
+
+**Problem.** Pair a cusp form with this series using the Petersson integral, linear in the cusp form, without dividing by the domain’s area. The result is its nth Fourier coefficient times Γ(k − 1) divided by (4πn) to the power k − 1. These series span the space of cusp forms.
+
+**How the definition helps.** Averaging one Fourier mode turns the integral over a modular domain into a strip integral against that mode (our own). This replaces integrating a general product by Fourier orthogonality, which selects one coefficient (our own). A cusp form orthogonal to every series then has all coefficients zero (our own). Absolute convergence justifies unfolding the sum for k &gt; 2 (our own).
+
+**Wikipedia:** [Poincaré series (modular form)](https://en.wikipedia.org/wiki/Poincar%C3%A9_series_%28modular_form%29). It says: “In general, the Poincaré series is, for n ≥ 1, a cusp form.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Diamond maps multiply markings
+
+**Remember:** Multiplying the marked point twice multiplies the two labels.
+
+*True by definition. Confidence: medium.* MSC 11F32 (Modular correspondences, etc.), 11F06. arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** A complex point of Y₁(N) represents an elliptic curve E with a point P of exact order N, up to isomorphism. For a unit d modulo N, send (E,P) to (E,dP). This defines the diamond map without choosing a matrix lifting d.
+
+**Problem.** The diamond maps compose according to multiplication of units modulo N. On the open curve, their orbits on complex points are the fibers of the map that remembers only the generated cyclic subgroup.
+
+**How the definition helps.** The marked point makes composition multiplication of integers modulo N (our own). All generators of one cyclic subgroup differ by a unit modulo N (our own). The work is identifying the marked moduli problems with their analytic quotients and matching the maps with the matrix operators (our own).
+
+**nLab:** [modular curve](https://ncatlab.org/nlab/show/modular+curve). It says: “the moduli space of complex elliptic curves equipped with a cyclic subgroup ℤ/nℤ”
+
+**Paper or page:** [A refined study of Mazur's Eisenstein theory](https://arxiv.org/abs/1809.05982v2). It says: “The diamond operator $\\langle j\\rangle \\, (j\\in \\mathbb F<sub>N</sub><sup>\\times </sup>)$ acts on $\[u,v\]'$ as follows:”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Dual isogenies make Fricke involutive
+
+**Remember:** Dualize the isogeny twice to recover it.
+
+*True by definition.* MSC 11F32 (Modular correspondences, etc.), 14G35. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Over ℂ, a point of Y₀(N) represents an elliptic curve and a quotient map φ with cyclic kernel of order N. Its dual is the reverse map whose composite with φ multiplies points by N. Define the Fricke map by sending φ to its dual.
+
+**Problem.** The Fricke map on Y₀(N) is an involution. It extends to an involution of its smooth compactification X₀(N).
+
+**How the definition helps.** Dualizing twice recovers φ, so the Fricke map squares to the identity (our own). The dual isogeny theorem gives this identity and preserves cyclic kernels (our own). The cited proposition identifies dualization with the classical map τ ↦ −1/(Nτ). An automorphism of a smooth curve extends to its smooth projective compactification (our own).
+
+**nLab:** [Hecke correspondence](https://ncatlab.org/nlab/show/Hecke+correspondence). It says: “sending (E,E′) to E and E′ respectively”
+
+**Paper or page:** [Coleman Integration on Modular Curves](https://arxiv.org/abs/2401.14513v1). It says: “where φ̂ is the dual isogeny of φ.”
+
+**Sources:**
+
+- [A. O. L. Atkin and J. Lehner, Hecke operators on Γ₀(m) (1970)](https://doi.org/10.1007/bf01359701)
+
+### Factorial powers isolate ordinary forms
+
+**Remember:** Factorial powers keep units and kill the rest.
+
+*True by definition.* MSC 11F33 (Congruences for modular and \\(p\\)-adic modular forms), 11F85. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let U be a Hecke operator preserving a finite free module over the p-adic integers. Its ordinary part is the largest direct summand on which U acts invertibly and whose complementary summand has powers tending to zero. Define the ordinary projector by taking the limit of the powers with exponents n!.
+
+**Problem.** The limit exists and is idempotent. Its image is the ordinary part, and it commutes with every operator that commutes with U.
+
+**How the definition helps.** Factorial exponents eventually select the identity on the invertible part and zero on the nilpotent part modulo each power of p (our own). This constructs the projector without factoring a characteristic polynomial (our own). The finite-module decomposition supplies those two parts, and reduction preserves the resulting projectors (our own). Every operator commuting with U commutes with the powers and their limit (our own).
+
+**Paper or page:** [Twisted Triple Product p-adic L-function for Finite Slope Families of Hilbert Modular Forms](https://arxiv.org/abs/2401.13230v2). It says: “is the ordinary projector $e<sub>n.o</sub> = \\lim <sub>n\\to \\infty </sub> U<sup>n!</sup>$.”
+
+**Sources:**
+
+- [Haruzo Hida, Galois representations into GL₂(ℤₚ\[\[X\]\]) attached to ordinary cusp forms (1986)](https://doi.org/10.1007/bf01390329)
+
+### Completions preserve quasimodular products
+
+**Remember:** Multiply the completions, then take the constant coefficient.
+
+*True by definition.* MSC 11F37 (Forms of half-integer weight; nonholomorphic modular forms), 11F11. arXiv math.NT. Level 3: graduate.
+
+**Definition.** At level one, let τ lie in the upper half-plane. A completion of weight k transforms with weight k and is a polynomial in 1/Im(τ) with holomorphic coefficients. Require these coefficients to extend holomorphically in the Fourier coordinate at infinity. Its constant coefficient defines a quasimodular form of weight k, and its degree is called the depth.
+
+**Problem.** The product of level-one quasimodular forms of weights k and ℓ is quasimodular of weight k + ℓ. Its depth, the degree of the completion, is at most the sum of the depths.
+
+**How the definition helps.** The constant coefficient of a product is the product of the constant coefficients (our own). The product of the two completions is modular and has degree at most the sum (our own). The work is the completion theorem, which identifies this definition with the polynomial transformation law (our own).
+
+**Wikipedia:** [Almost holomorphic modular form](https://en.wikipedia.org/wiki/Almost_holomorphic_modular_form). It says: “An almost holomorphic modular form is determined by its holomorphic part”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Half-integral weights compose
+
+**Remember:** Keep the square root in the group element.
+
+*True by definition. Confidence: medium.* MSC 11F37 (Forms of half-integer weight; nonholomorphic modular forms), 11F27. arXiv math.NT, math.RT. Level 3: graduate.
+
+**Definition.** Let γ be a real determinant-one matrix with bottom row (c,d), acting on the upper half-plane by fractional linear substitutions. Lift γ to a pair (γ,φ), where φ is holomorphic and φ(τ)² = cτ + d. Multiply (γ,φ) by (δ,ψ) using the root φ(δτ)ψ(τ). These pairs form the metaplectic double cover, with two lifts per matrix.
+
+**Problem.** For each integer k, transform f by evaluating it at γτ and dividing by φ(τ) to the power 2k + 1. These transformations give a right group action of weight k + ½.
+
+**How the definition helps.** The group law already multiplies the chosen roots in the order that a slash action needs (our own). Raising that factor to the odd power 2k + 1 preserves the law (our own). The work is identifying the group of pairs with the metaplectic cover (our own).
+
+**nLab:** [metaplectic group](https://ncatlab.org/nlab/show/metaplectic+group). It says: “double cover of the symplectic group”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Quadratic indices rule out negative terms
+
+**Remember:** A negative direction produces arbitrarily negative traces in its orbit.
+
+*Makes the theorem clean to state or prove.* MSC 11F46 (Siegel modular groups; Siegel and Hilbert-Siegel modular and automorphic forms). arXiv math.NT. Level 3: graduate.
+
+**Definition.** A Siegel modular form of degree g depends on a symmetric g-by-g complex matrix Z with positive definite imaginary part. Label its Fourier terms exp(2πi tr(TZ)) by symmetric matrices T with integer diagonal and half-integer off-diagonal entries. This groups the frequencies of the separate entries of Z into a quadratic form.
+
+**Problem.** Take a level-one holomorphic function that obeys the Siegel modular law in degree at least two. Its Fourier terms indexed by matrices with a negative direction vanish. In degree one, the modular function j has a pole at infinity.
+
+**How the definition helps.** The quadratic form groups frequencies into integral change-of-basis orbits whose coefficients have the same absolute value (our own). If T has a negative direction, rational approximation gives a primitive integer vector of negative value (our own). Extend it to an integer basis, then add large multiples of it to another basis vector (our own). The resulting traces tend to minus infinity, although the coefficient magnitudes stay fixed (our own). Boundedness on a period cell at imaginary part I forces those coefficients to vanish (our own).
+
+**Wikipedia:** [Siegel modular form](https://en.wikipedia.org/wiki/Siegel_modular_form). It says: “Corollary to this theorem is the fact that Siegel modular forms of degree g &gt; 1 have Fourier expansions and are thus holomorphic at infinity.”
+
+**Sources:**
+
+- [Max Koecher, Zur Theorie der Modulformen n-ten Grades. I](https://doi.org/10.1007/bf01180269)
+
+### Fourier slices become Jacobi forms
+
+**Remember:** The Fourier index is the index in the translation rule.
+
+*Makes the theorem clean to state or prove.* MSC 11F50 (Jacobi forms), 11F46. arXiv math.NT. Level 3: graduate.
+
+**Definition.** A classical Jacobi form is holomorphic in two variables τ and z, with τ in the upper half-plane. Its weight controls modular substitutions in τ, and its index controls the exponential factor when z shifts by integer combinations of τ and one. For index m, a Fourier term with frequencies n and r can occur only if 4mn ≥ r².
+
+**Problem.** A degree-two Siegel modular form depends on a symmetric two-by-two complex matrix with positive definite imaginary part. For a level-one form of weight k, expand in the last diagonal entry ω. For each integer m &gt; 0, the coefficient of exp(2πimω) is a Jacobi form of weight k and index m.
+
+**How the definition helps.** The Jacobi definition packages exactly how one Fourier slice transforms under the subgroup preserving the expansion direction (our own). A translation contributes the exponential for that slice's index (our own). The work is restricting the Siegel transformation law to this subgroup and checking the resulting Fourier support (our own).
+
+**Wikipedia:** [Jacobi form](https://en.wikipedia.org/wiki/Jacobi_form). It says: “Examples in two variables include Jacobi theta functions, the Weierstrass ℘ function, and Fourier–Jacobi coefficients of Siegel modular forms of genus 2.”
+
+**Sources:**
+
+- [Martin Eichler and Don Zagier, The Theory of Jacobi Forms (1985)](https://doi.org/10.1007/978-1-4684-9162-3)
+
+### Residue classes separate theta components
+
+**Remember:** Each residue class gets one coefficient function.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11F50 (Jacobi forms), 11F27. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Take a classical Jacobi form of positive integral index m. In its double Fourier expansion, let n be the modular frequency and r the elliptic frequency. Group terms by r modulo 2m and use one theta series for each group. Keep the remaining coefficients as functions of the modular variable.
+
+**Problem.** For a classical level-one Jacobi form of weight k and positive integer index m, the 2m coefficient functions are unique. Together they transform with weight k − ½ by the inverse transpose of the matrices transforming the theta series.
+
+**How the definition helps.** Separate frequencies into disjoint residue classes, so their coefficient functions cannot cancel between classes (our own). Translation by τ forces coefficients with equal 4mn − r² and equal r modulo 2m to agree (our own). The work is proving the theta transformation law and deducing the modular law for the coefficient vector (our own).
+
+**Paper or page:** [Hermitian Jacobi Forms Having Modules as their Index and Vector-Valued Jacobi Forms](https://arxiv.org/abs/2310.16508v1). It says: “are equivalent to the existence of a smooth function $F:\\mathcal{H}\\to \\mathbb {C}\[D\]$, which is then determined by $\\Phi $”
+
+**Sources:**
+
+- [Martin Eichler and Don Zagier, The Theory of Jacobi Forms (1985)](https://doi.org/10.1007/978-1-4684-9162-3)
+
+### Eisenstein symmetry gives functional equations
+
+**Remember:** The completed kernel carries its symmetry into the integral.
+
+*True by definition.* MSC 11F66 (Langlands \\(L\\)-functions; one variable Dirichlet series and functional equations), 11F67. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Take normalized level-one cusp eigenforms f and g of the same weight k, with first Fourier coefficient one. Such forms vanish at the boundary point called the cusp. Integrate yᵏf(τ) times the conjugate of g(τ) against the completed Eisenstein series using hyperbolic area, with y the imaginary part of τ. The completed series includes zeta and gamma factors and is symmetric under s ↦ 1 − s.
+
+**Problem.** The completed Rankin–Selberg L-function of two level-one cusp eigenforms of the same weight satisfies the symmetry s ↔︎ 1 − s in unitary normalization.
+
+**How the definition helps.** Only the Eisenstein series depends on s, so its symmetry passes directly to the integral. Unfolding integrates the defining sum over one strip and identifies the result with the completed coefficient series up to a constant. Continuing the Eisenstein series gives the meromorphic continuation needed to compare both sides.
+
+**Wikipedia:** [Rankin–Selberg method](https://en.wikipedia.org/wiki/Rankin%E2%80%93Selberg_method). It says: “The analytic continuation and functional equation then boil down to those of the Eisenstein series.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Cusp divisors add periods
+
+**Remember:** Shared endpoints cancel as terms of a divisor.
+
+*True by definition. Confidence: medium.* MSC 11F67 (Special values of automorphic \\(L\\)-series, periods of automorphic forms, cohomology, modular symbols), 11F75. arXiv math.NT. Level 3: graduate.
+
+**Definition.** A degree-zero divisor of rational cusps is a formal integer sum of points in ℚ ∪ {∞} whose coefficients sum to zero. A weight two modular symbol is an additive map from these divisors to complex numbers, invariant when the modular group under consideration moves the cusps. It assigns the pair (α,β) the value on β − α.
+
+**Problem.** For a weight two cusp form, write its period from α to β as P(α,β). Then P(α,β) + P(β,γ) = P(α,γ). These periods define a linear symbol invariant under the congruence subgroup.
+
+**How the definition helps.** Addition of endpoint divisors cancels the middle cusp, giving the path addition formula immediately (our own). The usual analytic description integrates the differential of a cusp form along paths between cusps (our own). Vanishing at the cusps gives convergence, and simple connectivity of the upper half-plane gives path independence (our own). Invariance of the differential gives invariance of the resulting symbol (our own).
+
+**Wikipedia:** [Modular symbol](https://en.wikipedia.org/wiki/Modular_symbol). It says: “Informally, {α,β} represents a homotopy class of paths from α to β in the upper half-plane.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Satake makes convolution commutative
+
+**Remember:** Turn convolution into multiplication of symmetric Laurent polynomials.
+
+*True by definition.* MSC 11F70 (Representation-theoretic methods; automorphic representations over local and global fields), 11F25. arXiv math.NT, math.RT. Level 3: graduate.
+
+**Definition.** Let K be the invertible integral matrices inside GLₙ over a p-adic field. The spherical Hecke algebra consists of compactly supported complex functions invariant under K on both sides, with convolution as multiplication. The Satake transform averages such a function along upper triangular matrices with diagonal entries one, after translation by a diagonal matrix. A factor depending on the diagonal matrix normalizes the average.
+
+**Problem.** The spherical Hecke algebra of GLₙ(F) is commutative.
+
+**How the definition helps.** The transform replaces convolution of functions by ordinary multiplication of symmetric Laurent polynomials, which allows negative exponents (our own). Directly comparing the two convolution integrals is unnecessary (our own). The Satake isomorphism proves that the transform preserves products and detects equality.
+
+**Paper or page:** [On the geometrization of the local Langlands correspondence](https://arxiv.org/abs/2408.16571v1). It says: “The map S induces an isomorphism”
+
+**Sources:**
+
+- [Ichirō Satake, Theory of spherical functions on reductive algebraic groups over p-adic fields (1963)](https://doi.org/10.1007/bf02684781)
+
+### Cyclotomic determinants detect abelian quotients
+
+**Remember:** Over ℚ, the full determinant sees every abelian quotient of the image.
+
+*Makes the theorem clean to state or prove.* MSC 11F80 (Galois representations), 11G05. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Combine an elliptic curve’s Galois actions on all points of finite order into one representation, called its adelic representation. Its matrices have entries in the profinite integers, which record compatible residues modulo every positive integer. The closed commutator subgroup is the smallest closed normal subgroup with abelian quotient.
+
+**Problem.** For an elliptic curve over ℚ, the kernel of the determinant on its adelic image equals the closed commutator subgroup of that image.
+
+**How the definition helps.** Taking all torsion orders together makes the determinant record the action on every root of unity (our own). At each order the Weil pairing identifies the determinant with the exponent of the action on roots of unity (our own). Kronecker–Weber identifies the field generated by all these roots with the maximal abelian extension of ℚ (our own). Its fixing subgroup is therefore the closed commutator subgroup, and its image remains the closed commutator subgroup in the adelic image (our own).
+
+**Paper or page:** [Degrees of points with rational j-invariant on X₀(n) and X₁(n)](https://arxiv.org/abs/2507.13199v1). It says: “Let $E$ be an elliptic curve defined over $\\Q$. Then, we have $\\cG<sub>E</sub> \\cap \\SL(\\Zhat) = \[\\cG<sub>E</sub>, \\cG<sub>E</sub>\]$.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Monodromy isolates infinite inertia
+
+**Remember:** Finite inertia is exactly the part left when monodromy vanishes.
+
+*True by definition.* MSC 11F80 (Galois representations), 11F85. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let K be a finite extension of ℚₚ and let ℓ be a different prime. Inertia is the subgroup of the Galois group acting trivially on the residue field. A Weil–Deligne description separates a continuous ℓ-adic representation into an action with finite inertia image and a compatible nilpotent operator N. The action uses the Weil group, consisting of elements inducing integer powers of Frobenius on residues.
+
+**Problem.** The original representation has finite inertia image exactly when N is zero.
+
+**How the definition helps.** The Weil–Deligne description puts the potentially infinite part of inertia into one operator (our own). On an open inertia subgroup the matrices are exp(tN), where the parameter t ranges over an open subgroup of ℤℓ (our own). Nilpotence makes the exponential a finite sum (our own). In characteristic zero its logarithm recovers tN, so a nonzero N gives infinitely many matrices (our own). Grothendieck’s monodromy theorem supplies this description of the original Galois action (our own).
+
+**nLab:** [Weil-Deligne representation](https://ncatlab.org/nlab/show/Weil-Deligne+representation). It says: “N is a nilpotent monodromy operator”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Residual semisimplification removes lattice dependence
+
+**Remember:** Every stable lattice gives the same simple factors after reduction.
+
+*Rules out counterexamples.* MSC 11F80 (Galois representations). arXiv math.NT. Level 3: graduate.
+
+**Definition.** A stable lattice is a free module over the coefficient field’s valuation ring that spans the representation and is preserved by Galois. Reduce its matrices modulo the maximal ideal. Semisimplification replaces that reduction by the direct sum of its irreducible factors.
+
+**Problem.** For a continuous representation over a finite extension of ℚₚ, all stable lattices have isomorphic semisimplified reductions. Their reductions can differ before this step.
+
+**How the definition helps.** Semisimplification keeps precisely the factors detected by characteristic polynomials (our own). The polynomials agree before reduction, so the Brauer–Nesbitt theorem gives the same irreducible factors afterwards (our own). For example, let each t in ℤₚ fix e and send f to f + te on a basis e, f (our own). This gives a local Galois action through its unramified ℤₚ quotient (our own). The lattice generated by e and f reduces to a nontrivial action (our own). On the lattice generated by e/p and f, every matrix reduces to the identity (our own).
+
+**Wikipedia:** [Brauer–Nesbitt theorem](https://en.wikipedia.org/wiki/Brauer%E2%80%93Nesbitt_theorem). It says: “the characteristic polynomials of ρ₁(g) and ρ₂(g) coincide for all g ∈ G, then ρ₁ and ρ₂ are isomorphic representations.”
+
+**Paper or page:** [Stable free lattices in residually reducible Galois deformations and control theorem of Selmer groups](https://arxiv.org/abs/2106.03608v2). It says: “the semi-simplification (T/ϖT)ˢˢ of the residual representation is decomposed into two distinct characters”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Semisimplification makes Frobenius traces decisive
+
+**Remember:** Traces remember the simple pieces and forget how they fit together.
+
+*Rules out counterexamples.* MSC 11F80 (Galois representations), 11F11. arXiv math.NT. Level 3: graduate.
+
+**Definition.** A representation describes a group action by linear maps. Choose a chain of invariant subspaces whose successive quotients have no proper nonzero invariant subspaces. Semisimplification takes the direct sum of those quotients.
+
+**Problem.** Consider two continuous representations of a number field’s Galois group over the same finite extension of ℚℓ. Suppose inertia, the group acting trivially on the residue field, acts trivially outside finitely many primes. Equal Frobenius traces outside finitely many primes imply isomorphic semisimplifications.
+
+**How the definition helps.** Semisimplification discards how the pieces fit together, which traces cannot detect (our own). The cited example has three representations with the same traces, but only one is a direct sum. At an unramified prime, Frobenius acts on residues by raising them to the residue field size (our own). Chebotarev density and continuity extend trace equality to the whole group (our own). In characteristic zero, traces determine a direct sum of simple representations up to isomorphism (our own).
+
+**Wikipedia:** [Brauer–Nesbitt theorem](https://en.wikipedia.org/wiki/Brauer%E2%80%93Nesbitt_theorem). It says: “Then the representation is uniquely determined by the values of the traces of ρ(Frobₚ)”
+
+**Paper or page:** [Eisenstein degeneration of Euler systems](https://arxiv.org/abs/2201.02078v2). It says: “there are exactly three isomorphism classes of continuous Galois representations”
+
+**Sources:**
+
+- [Eisenstein degeneration of Euler systems](https://arxiv.org/abs/2201.02078v2)
+
+### The Weil pairing gives the determinant
+
+**Remember:** On the determinant line, Galois acts on roots of unity.
+
+*True by definition.* MSC 11F80 (Galois representations), 11G05. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Write E\[n\] for the geometric points of an elliptic curve killed by a positive integer n. The Weil pairing pairs two such points with an nth root of unity. It is bilinear, alternating, and perfect, meaning that pairing with a point determines that point uniquely.
+
+**Problem.** For an elliptic curve over a number field, the determinant of each Galois element acting on E\[n\] gives its exponent on nth roots of unity.
+
+**How the definition helps.** Defining the determinant as the action on the exterior square lets the Weil pairing identify that action directly (our own). The exterior square records alternating bilinear products of two vectors (our own). In coordinates, pairing the images of two basis points raises their original pairing value to the matrix determinant (our own). Perfection makes this value a primitive root of unity (our own). The geometric work is constructing the pairing and proving it commutes with Galois action (our own).
+
+**Wikipedia:** [Weil pairing](https://en.wikipedia.org/wiki/Weil_pairing). It says: “With this definition it can be shown that w is alternating and bilinear,”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Defining L-factors by ℓ-adic cohomology makes isogenous elliptic curves share them
 
@@ -1350,6 +1986,22 @@
 
 - [Joseph H. Silverman, The Arithmetic of Elliptic Curves, Chapter X, §4 (2009)](https://doi.org/10.1007/978-0-387-09494-6)
 
+### Quadratic twists split odd torsion
+
+**Remember:** The twist supplies the minus part of the torsion.
+
+*Rules out counterexamples.* MSC 11G05 (Elliptic curves over global fields), 11F80. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let L/K be a quadratic extension of number fields and let σ be its nonidentity automorphism. The quadratic twist of an elliptic curve becomes isomorphic to the original curve over L. Under this identification σ acts on L-rational points by applying the original action and then negating the result.
+
+**Problem.** For any odd positive integer n, the points killed by n over L split as a direct sum. The two groups are the K-rational points killed by n on the original curve and on its quadratic twist.
+
+**How the definition helps.** The twist identifies its rational points with the points over L satisfying σP = −P (our own). The original curve supplies the points satisfying σP = P (our own). Since two is invertible modulo n, half the sum and half the difference of P and σP give the two components (our own). At n = 2 the signs agree (our own). All four points killed by two on y² = x³ − x remain rational over ℚ on every quadratic twist (our own).
+
+**Paper or page:** [The Effect of Quadratic Base Change on Torsion of Elliptic Curves](https://arxiv.org/abs/2310.03709v2). It says: “If n is an odd positive integer we have E(K(√d))\[n\] ≃ E(K)\[n\] ⊕ Eᵈ(K)\[n\].”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Requiring y ≠ 0 makes congruent numbers the curves of positive rank
 
 **Remember:** Ignore the three points with y = 0; any other point proves A congruent.
@@ -1370,6 +2022,38 @@
 
 - [Lorenz Halbeisen, Norbert Hungerbühler, A Theorem of Fermat on Congruent Number Curves, arXiv:1803.09604 (2018)](https://arxiv.org/abs/1803.09604)
 
+### Scheme kernels retain inseparable degrees
+
+**Remember:** Kernel rank counts geometric points with their multiplicities.
+
+*Rules out counterexamples. Confidence: medium.* MSC 11G05 (Elliptic curves over global fields), 14K02. arXiv math.NT. Level 3: graduate.
+
+**Definition.** An isogeny is a surjective homomorphism of elliptic curves with finite kernel. Its kernel as a group scheme is the entire fiber over zero, including multiplicities. Its rank counts that fiber by the dimension of its coordinate algebra over the base field.
+
+**Problem.** Over a global function field, the kernel rank equals the isogeny degree. This includes inseparable isogenies, where some fiber multiplicities exceed one.
+
+**How the definition helps.** Counting the full fiber retains the multiplicities that counting geometric points loses (our own). Relative Frobenius, the map given locally by taking pth powers in characteristic p, has degree p and only one geometric kernel point (our own). An isogeny is finite and flat, so every fiber has the same total multiplicity as the generic fiber (our own). The cited factorization uses the full subgroup scheme when constructing the quotient.
+
+**Paper or page:** [Explicit surjectivity of Galois representations of products of elliptic curves over function fields](https://arxiv.org/abs/2510.20910v3). It says: “Let H ⊆ ker(φ) be a subgroup scheme”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Squarefree conductors exclude additive reduction
+
+**Remember:** Smooth contributes zero, a node contributes one, and a cusp contributes more.
+
+*Rules out counterexamples.* MSC 11G05 (Elliptic curves over global fields), 11G40. arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** At each finite prime of a number field, choose an integral equation of the elliptic curve with smallest possible discriminant valuation. The curve is semistable if each such equation reduces to a smooth cubic or a cubic with an ordinary crossing. These cases are called good and multiplicative reduction. The remaining case is additive reduction.
+
+**Problem.** An elliptic curve over a number field is semistable exactly when its conductor ideal has no repeated prime factor.
+
+**How the definition helps.** Semistability allows exactly the reduction types with conductor exponent zero or one, in our own explanation. The conductor records ramification, the action of inertia on division points. The local conductor formula gives zero for good reduction and one for multiplicative reduction. Additive reduction contributes two plus a nonnegative term measuring wild ramification. In our own example, y² = x³ + 5 reduces to a cusp at five. Its conductor exponent there is two because the residue characteristic exceeds three.
+
+**Wikipedia:** [Conductor of an elliptic curve](https://en.wikipedia.org/wiki/Conductor_of_an_elliptic_curve). It says: “ε=0 for good reduction, ε=1 for multiplicative reduction and ε=2 for additive reduction.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The conductor of an elliptic curve is the level of its newform
 
 **Remember:** Bad primes of the curve become the level of its modular form.
@@ -1389,6 +2073,262 @@
 - [A. Wiles, Modular elliptic curves and Fermat's Last Theorem, Ann. of Math. 141 (1995) 443–551](https://doi.org/10.2307/2118559)
 - [C. Breuil, B. Conrad, F. Diamond and R. Taylor, On the modularity of elliptic curves over Q: wild 3-adic exercises, J. Amer. Math. Soc. 14 (2001) 843–939](https://doi.org/10.1090/S0894-0347-01-00370-8)
 
+### Torsors encode local failure
+
+**Remember:** No rational origin means a nonzero torsor class.
+
+*True by definition.* MSC 11G05 (Elliptic curves over global fields), 11R34. arXiv math.NT. Level 3: graduate.
+
+**Definition.** A torsor for an elliptic curve E is a curve with an E-action that becomes free and transitive over an algebraic closure. The Tate–Shafarevich group consists of torsor classes that have points over every completion of the base field. The identity class is E acting on itself by translation.
+
+**Problem.** A smooth projective geometrically integral genus-one curve over a number field has an associated elliptic curve, its Jacobian. If the curve has points everywhere locally but none globally, it gives a nonzero Tate–Shafarevich class of its Jacobian.
+
+**How the definition helps.** Using torsors makes triviality a point test because choosing a point identifies the curve with its acting group (our own). Local points place the class in the group, while the missing global point makes the class nonzero (our own). The work connects this description to the kernel of restriction in Galois cohomology and constructs the Jacobian action (our own). Selmer’s projective cubic in the quotation gives an example.
+
+**Wikipedia:** [Tate–Shafarevich group](https://en.wikipedia.org/wiki/Tate%E2%80%93Shafarevich_group). It says: “3x³ + 4y³ + 5z³ = 0”
+
+**Sources:**
+
+- [Lang and Tate, Principal Homogeneous Spaces Over Abelian Varieties](https://doi.org/10.2307/2372778)
+
+### Weil pairings identify Galois determinants
+
+**Remember:** Pair two basis vectors and watch the determinant act on roots of unity.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11G05 (Elliptic curves over global fields), 14H52. arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** The division points of an elliptic curve are the points killed by multiplication by a given integer. The Weil pairing pairs two such points to give a root of unity. For a prime ℓ, the Tate module records compatible division points at successive powers of ℓ.
+
+**Problem.** For an elliptic curve over a number field, each field automorphism fixing that field acts on the Tate module. Its determinant gives its exponent of action on the compatible roots of unity of ℓ-power order.
+
+**How the definition helps.** Pairing a basis converts a change of basis into raising a root of unity to the determinant, in our own explanation. At each finite level the pairing is bilinear and alternating, so expanding on two transformed basis vectors gives that exponent. The theorem behind this calculation says the pairing is perfect, respects field automorphisms, and agrees across levels. Perfection makes the value on a basis a primitive root, so its exponent determines the action.
+
+**Wikipedia:** [Weil pairing](https://en.wikipedia.org/wiki/Weil_pairing). It says: “giving rise to a non-degenerate pairing on the n-torsion.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Frobenius lines detect local isogenies
+
+**Remember:** At good reduction, a Frobenius eigenline is a rational isogeny kernel.
+
+*True by definition.* MSC 11G07 (Elliptic curves over local fields), 11F80. arXiv math.NT. Level 3: graduate.
+
+**Definition.** An isogeny is a surjective homomorphism of elliptic curves with finite kernel. In characteristic zero, specify a prime-degree isogeny up to target isomorphism by its kernel. This kernel is a line in the two-dimensional space of points killed by that prime. A line defined over the base field is one that all Galois elements preserve.
+
+**Problem.** Suppose an elliptic curve over ℚℓ has good reduction, meaning it stays smooth modulo ℓ. Let q be an odd prime different from ℓ. An isogeny of degree q exists over ℚℓ exactly when the Frobenius characteristic polynomial has square or zero discriminant modulo q.
+
+**How the definition helps.** Using kernels replaces a search for maps with a search for an invariant line (our own). Good reduction makes the torsion action factor through the residue field’s Galois group (our own). Its generator, Frobenius, raises residues to the ℓth power (our own). Its matrix preserves a line exactly when its quadratic characteristic polynomial has a root modulo q (our own). The geometric inputs are the good reduction theorem and the construction of the quotient curve (our own).
+
+**Paper or page:** [Local points on twists of X(p) with applications](https://arxiv.org/abs/2509.04294v3). It says: “Then E/ℚℓ admits a ℚℓ-isogeny of degree q if and only if (Δℓ/q) ∈ {0, 1}.”
+
+**Sources:**
+
+- [Local points on twists of X(p) with applications](https://arxiv.org/abs/2509.04294v3)
+
+### Inertia detects good reduction
+
+**Remember:** Good reduction means inertia fixes the entire prime-to-residue-characteristic Tate module.
+
+*True by definition.* MSC 11G07 (Elliptic curves over local fields), 11G40. arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** An elliptic curve has good reduction at a prime if it extends there to a smooth family of elliptic curves. Inertia consists of local field automorphisms that act trivially on the algebraic residue field. Choose a prime ℓ different from the residue characteristic. The ℓ-adic Tate module records compatible points killed by successive powers of ℓ.
+
+**Problem.** For an elliptic curve over a number field, its conductor ideal contains a prime factor exactly where the curve has bad reduction.
+
+**How the definition helps.** The inertia test describes good reduction using the same action that defines the conductor, in our own explanation. The conductor exponent adds the dimension lost to inertia and a nonnegative term measuring wild ramification. Both vanish when inertia acts trivially. Conversely, a zero exponent forces every vector to be fixed. The Néron–Ogg–Shafarevich theorem identifies this test with good reduction.
+
+**Paper or page:** [A proof of Néron--Ogg--Shafarevich criterion via its archimedean analogue](https://arxiv.org/abs/2302.13255v1). It says: “Then, A has good reduction if and only if ρ ∣ Iᴋ is trivial.”
+
+**Sources:**
+
+- [Jean-Pierre Serre and John Tate, Good Reduction of Abelian Varieties (1968)](https://doi.org/10.2307/1970722)
+
+### Tate quotients reveal triangular actions
+
+**Remember:** Roots of unity form the invariant line in Tate curve torsion.
+
+*True by definition.* MSC 11G07 (Elliptic curves over local fields), 14G22. arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** Let K be a local field with a discrete valuation, an integer measure of divisibility. Choose a nonzero q with positive valuation. Over each finite extension L, the Tate curve has group of points L× modulo the powers of q.
+
+**Problem.** Suppose an elliptic curve over K has split multiplicative reduction, meaning its reduced cubic has a node with two rational branches. For any prime ℓ different from the field characteristic, its points killed by ℓ have a basis giving triangular matrices for field automorphisms.
+
+**How the definition helps.** In the quotient description, raising a torsion representative to the ℓth power gives an integer power of q, in our own explanation. Its exponent modulo ℓ is independent of the representative and unchanged by field automorphisms fixing K. Taking an ℓth root of q shows that every exponent occurs. The kernel consists of the ℓth roots of unity. These roots give the first basis direction, and the quotient action is trivial. Tate’s uniformization theorem supplies this quotient presentation of the original curve.
+
+**nLab:** [Tate curve](https://ncatlab.org/nlab/show/Tate+curve). It says: “which may be thought of as the quotient of the multiplicative group by qℤ.”
+
+**Paper or page:** [The modular approach to Diophantine equations over totally real fields](https://arxiv.org/abs/2401.03099v1). It says: “Let $E=E<sub>q</sub>$ be a Tate curve as above. Then\\\[  \\overline{\\rho }<sub>E,N</sub> \\sim \\begin{pmatrix}  \\chi \_N 
+
+&amp;  \* 
+
+\\\\ 0 
+
+&amp;  1 
+
+\\end{pmatrix} .  \\\]”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The Tate quotient displays torsion
+
+**Remember:** Roots of unity give the submodule, and roots of q give the quotient.
+
+*True by definition. Confidence: medium.* MSC 11G07 (Elliptic curves over local fields), 11F80. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let K be a local field with a discrete valuation, and choose a nonzero element q of positive valuation. Describe the geometric points of the Tate elliptic curve by nonzero elements of an algebraic closure, identifying elements differing by a power of q.
+
+**Problem.** Let n be a positive integer invertible in K. The points killed by n map onto ℤ/nℤ with kernel the nth roots of unity. The Galois action on this extension records the obstruction to taking an nth root of q over K.
+
+**How the definition helps.** The quotient description replaces division on a cubic curve with taking nth powers (our own). If x represents a point killed by n, write xⁿ as a power of q and take its exponent modulo n (our own). The kernel consists of classes represented by roots of unity (our own). An nth root of q lifts the class of one, so its Galois conjugates describe the extension (our own). Tate’s uniformization theorem identifies the multiplicative quotient with the elliptic curve (our own).
+
+**nLab:** [Tate curve](https://ncatlab.org/nlab/show/Tate+curve). It says: “which may be thought of as the quotient of the multiplicative group by q⁽ℤ⁾.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Unramified tests can miss points
+
+**Remember:** Good reduction lets the Kummer test forget inertia.
+
+*Rules out counterexamples. Confidence: medium.* MSC 11G07 (Elliptic curves over local fields), 11S25. arXiv math.NT. Level 3: graduate.
+
+**Definition.** For an elliptic curve over a local field of odd residue characteristic, consider Galois cohomology classes on its points killed by two. The unramified test requires a class to vanish on inertia, the subgroup acting trivially on the residue field. The Kummer test requires the class to come from halving a local curve point.
+
+**Problem.** The two tests agree at good reduction, where the reduced curve stays smooth. They can differ at bad reduction even if inertia fixes every point killed by two.
+
+**How the definition helps.** The good reduction condition lets the unramified test detect exactly the classes obtained by halving points (our own). Doubling is invertible on the kernel of reduction, and Lang’s theorem gives vanishing first cohomology for the reduced curve over the residue field (our own). For a counterexample, choose an element π of valuation one and use the Tate curve with parameter π² (our own). Its multiplicative quotient identifies elements differing by powers of π², so its two-torsion is rational (our own). Halving the class of π requires a square root of an element of odd valuation and thus a ramified extension (our own).
+
+**Paper or page:** [Galois module structures and the Hasse principle in twist families via the distribution of Selmer groups](https://arxiv.org/abs/2508.14026v1). It says: “H¹ᵤᵣ(kᵥ,E\[2\]), otherwise.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Valuation counts Tate curve components
+
+**Remember:** Take the valuation and reduce it modulo the valuation of q.
+
+*True by definition. Confidence: medium.* MSC 11G07 (Elliptic curves over local fields), 14G20. arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** For a split multiplicative elliptic curve, the reduced cubic has a node with two branches defined over the residue field. Over a nonarchimedean local field K, Tate’s presentation identifies the curve’s points with K× modulo powers of a parameter q. Write v for the valuation normalized to take all integer values, with v(q) positive.
+
+**Problem.** The Néron model extends the elliptic curve to a smooth group over the valuation ring. The group of connected components of its special fiber is cyclic of order v(q).
+
+**How the definition helps.** Tate’s presentation turns the component map into the valuation modulo v(q), in our own explanation. Every residue class occurs because the valuation takes all integer values. Its kernel consists of classes represented by units, the elements of valuation zero. The geometric input identifies the units with points reducing to the identity component and identifies the quotient with the split component group.
+
+**Wikipedia:** [Tate curve](https://en.wikipedia.org/wiki/Tate_curve). It says: “there is an isomorphism of groups from k⁎/qℤ to this elliptic curve”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Drinfeld isogenies invert after localization
+
+**Remember:** Divide the dual isogeny by the scalar in the composite.
+
+*True by definition.* MSC 11G09 (Drinfel'd modules; higher-dimensional motives, etc.). arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** Let A = 𝔽q\[T\] act through additive polynomials on two Drinfeld modules. A map between them is an additive polynomial respecting these actions. In the isogeny category, allow division of such maps by any nonzero element of A.
+
+**Problem.** Assume A embeds in the base field through its scalar action. Then every isogeny, a nonzero map between the modules, has an inverse in the isogeny category.
+
+**How the definition helps.** In our own explanation, dividing the dual map by a single scalar gives the inverse immediately. The dual isogeny theorem supplies a map in the opposite direction whose composites in both orders act by the same nonzero a in A. Before division those composites need not be identities. After division by a they are.
+
+**Paper or page:** [Masser-Wüstholz bound for reducibility of Galois representations for Drinfeld modules of arbitrary rank](https://arxiv.org/abs/2303.12399). It says: “There exists a dual isogeny f̂∶ ψ → φ such that f ∘ f̂ = ψₐ and f̂ ∘ f = φₐ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Good reduction preserves prime-to-characteristic torsion
+
+**Remember:** Full degree and simple roots let every torsion point reduce uniquely.
+
+*Rules out counterexamples.* MSC 11G09 (Drinfel'd modules; higher-dimensional motives, etc.). arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** Let A = 𝔽q\[T\] act by additive polynomials over a complete discretely valued field. A Drinfeld module of rank r sends T to a polynomial of degree qʳ. It has good reduction if some choice of coordinate makes its coefficients integral and its leading coefficient a unit.
+
+**Problem.** Let a in A have nonzero image in the residue field. At good reduction, reducing coordinates gives a bijection between the points killed by a over the two algebraic closures.
+
+**How the definition helps.** In our own explanation, good reduction keeps the polynomial for a at full degree, while its derivative is the nonzero residue of a. Each reduced root is simple and lifts uniquely by Hensel’s lemma. For our own example, let τ(x) = xᑫ over the Laurent series field 𝔽q((T)). Send T to the operator T + τ + Tτ², where τ² means composition. The polynomial for T + 1 has q² distinct roots, but its reduction has only q. Only the q integral roots reduce.
+
+**Paper or page:** [Surjectivity of the adelic Galois Representation associated to a Drinfeld Module of prime rank](https://arxiv.org/abs/2111.04234). It says: “Then φ has good reduction if and only if the ℓ-adic Galois representation is unramified at 𝔭”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Lattice quotients give Drinfeld torsion
+
+**Remember:** The exponential sends fractions of periods to torsion points.
+
+*True by definition.* MSC 11G09 (Drinfel'd modules; higher-dimensional motives, etc.). arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** Let A = 𝔽q\[T\] act by additive polynomials on a Drinfeld module over the completed algebraic closure at infinity. Its exponential e is a surjective additive map with e(az) equal to the polynomial action of a on e(z). Its kernel Λ is the period lattice.
+
+**Problem.** For nonzero a in A, the points killed by a form the quotient a⁻¹Λ/Λ. In rank r, this gives r copies of A/(a).
+
+**How the definition helps.** In our own explanation, taking exponential coordinates replaces solving an additive polynomial by checking whether az belongs to Λ. Two solutions in these coordinates give the same point exactly when they differ by a period. Drinfeld uniformization supplies the surjective exponential and a lattice free of rank r over A.
+
+**Paper or page:** [A duality result about special functions in Drinfeld modules of arbitrary rank](https://arxiv.org/abs/2303.11468). It says: “There is an associated 𝔽q-linear exponential function expᴱ∶ Lie(E) → E(ℂ∞)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Rational Tate modules invert isogenies
+
+**Remember:** Allow division by ℓ to turn a reverse isogeny into an inverse after scaling.
+
+*True by definition. Confidence: medium.* MSC 11G10 (Abelian varieties of dimension \\(&gt; 1\\)), 14K15. arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** An abelian variety is a projective algebraic group. For a prime ℓ different from the field characteristic, take sequences of geometric points killed by successive powers of ℓ. Each point must equal ℓ times the next point. The rational Tate module allows division by ℓ in this group of sequences.
+
+**Problem.** Every isogeny between abelian varieties induces an isomorphism of rational Tate modules. An isogeny is a surjective group map with finite kernel.
+
+**How the definition helps.** Passing from the integral module to the rational module makes every nonzero integer invertible, in our own explanation. An isogeny has a reverse map whose composites in both directions multiply by the same positive integer. Divide the reverse map on rational modules by that integer. Constructing the reverse map uses the theorem that multiplication killing the kernel factors through the isogeny.
+
+**nLab:** [Tate module](https://ncatlab.org/nlab/show/Tate+module). It says: “of the directed diagram given by kernels of the endomorphisms of A defined by multiplication by pⁿ”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Frobenius degree gives Hasse’s bound
+
+**Remember:** Point count is a degree, and degrees cannot be negative.
+
+*True by definition. Confidence: medium.* MSC 11G20 (Curves over finite and local fields), 14G15. arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** An endomorphism of an elliptic curve is an algebraic map from the curve to itself preserving its group law. Give a nonconstant endomorphism its degree as a map, counting a generic fiber with multiplicities. Give the zero map degree zero. Frobenius F raises coordinates to the qth power over the field with q elements.
+
+**Problem.** The number N of rational points on an elliptic curve over the field with q elements satisfies \|N − q − 1\| ≤ 2√q.
+
+**How the definition helps.** Replacing a point count by the degree of F − 1 makes positivity give the bound, in our own explanation. Here 1 denotes the identity map. The kernel consists of the rational points, and each has multiplicity one because the differential of F − 1 is minus the identity. The main theorem needed says that degree is a quadratic form on endomorphisms. Thus the degree of aF + b equals qa² + (q + 1 − N)ab + b² for integers a and b. Nonnegativity for all such pairs forces the discriminant to be at most zero, giving the bound.
+
+**nLab:** [isogeny](https://ncatlab.org/nlab/show/isogeny). It says: “ker(Lang) = G(𝔽q).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Ample heights detect torsion
+
+**Remember:** An ample height cannot ignore a whole direction of an abelian variety.
+
+*Rules out counterexamples.* MSC 11G50 (Heights), 11G10. arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** An abelian variety is a projective algebraic group. A line bundle assigns a line to each point in a locally trivial family. Choose one preserved by inversion and ample, meaning that sections of some power embed the variety in projective space. Its canonical height measures arithmetic size and scales by n² when a point is multiplied by n.
+
+**Problem.** For points defined over a number field, the canonical height vanishes exactly at points of finite order.
+
+**How the definition helps.** Ampleness makes points of bounded height finite over the chosen number field, in our own explanation. This uses comparison with projective height and Northcott’s finiteness theorem. Every multiple of a point of height zero also has height zero, so two multiples must coincide. Conversely, the scaling law forces a point of finite order to have height zero. For our own counterexample, pull an ample symmetric bundle back from the first factor of a product of elliptic curves. Its height vanishes on the whole second factor, which can contain points of infinite order.
+
+**Wikipedia:** [Néron–Tate height](https://en.wikipedia.org/wiki/N%C3%A9ron%E2%80%93Tate_height). It says: “it vanishes only on torsion elements of the Mordell–Weil group A(K).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Complementary minors preserve subspace height
+
+**Remember:** Annihilators swap each set of columns for its complement.
+
+*Makes the theorem clean to state or prove.* MSC 11G50 (Heights), 11J87. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Over a number field K, write a basis of a subspace as matrix rows and collect its maximal minors into a vector. At each completion v of K, measure this vector by Euclidean length at infinity and maximum coordinate size elsewhere. Raise each norm to the local degree divided by the degree of K over ℚ. The logarithm of their product is the subspace height.
+
+**Problem.** A subspace and its annihilator have the same height in dual coordinate systems. The annihilator consists of linear functionals that vanish on the subspace.
+
+**How the definition helps.** Using all maximal minors turns annihilation into a permutation of the coordinates used to measure height (our own). Complementary minors agree up to signs and one common nonzero scalar (our own). Signs and permutations preserve every local norm (our own). The product formula says the weighted absolute values of the common scalar multiply to one (our own).
+
+**Paper or page:** [Diophantine approximation and the subspace theorem](https://arxiv.org/abs/2502.00731v1). It says: “Then one has h(W) = h(W⊥).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Heights from any generating sections make Weil heights pull back
 
 **Remember:** Pull back the sections, and the same projective coordinates measure the point.
@@ -1406,6 +2346,24 @@
 **Sources:**
 
 - [Marc Hindry and Joseph H. Silverman, Diophantine Geometry, Part B (2000)](https://doi.org/10.1007/978-1-4612-1210-2)
+
+### Local weights give absolute heights
+
+**Remember:** Weight each place by its degree before averaging over the field.
+
+*True by definition.* MSC 11G50 (Heights), 14G40. arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** A place of a number field is a choice of absolute value up to equivalence. At each place, extend the usual absolute value on ℚ there and take the logarithm of the largest projective coordinate size. Weight each logarithm by the degree of the completed field over the corresponding completion of ℚ. Sum and divide by the degree of the number field over ℚ.
+
+**Problem.** The absolute logarithmic height of a projective point is independent of the number field containing its coordinates. For an algebraic number α, use the point with coordinates (1, α).
+
+**How the definition helps.** The degree weights make each old contribution split into new contributions with the same total, in our own explanation. Above each place, the local extension degrees sum to the degree of the field extension. Division by the global degree cancels this factor, which an unnormalized sum would retain. The product formula also makes the sum unchanged when all coordinates are multiplied by one nonzero scalar.
+
+**Wikipedia:** [Height function](https://en.wikipedia.org/wiki/Height_function). It says: “It is typically defined to be the logarithm of the maximum absolute value of the vector of coprime integers”
+
+**Paper or page:** [Efficient resolution of Thue-Mahler equations](https://arxiv.org/abs/2207.14492v2). It says: “The absolute logarithmic height of an algebraic number α is independent of the number field L containing α.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Tate's doubling limit makes canonical heights pull back along homomorphisms
 
@@ -1444,6 +2402,24 @@
 - [André Néron, Quasi-fonctions et hauteurs sur les variétés abéliennes (1965)](https://doi.org/10.2307/1970644)
 - [Joseph H. Silverman, The Arithmetic of Elliptic Curves, Chapter VIII (2009)](https://doi.org/10.1007/978-0-387-09494-6)
 
+### Discriminant forms classify even overlattices
+
+**Remember:** Even extensions correspond to subgroups on which the discriminant form vanishes.
+
+*Makes the theorem clean to state or prove.* MSC 11H06 (Lattices and convex bodies (number-theoretic aspects)), 11E81. arXiv math.NT. Level 3: graduate.
+
+**Definition.** An integral lattice has integer pairings, and an even lattice has even self-pairings. For a nonsingular even lattice L, its dual L\* consists of rational vectors pairing integrally with L. The discriminant form on the finite group L\*/L takes half a representative’s self-pairing modulo the integers. An isotropic subgroup is one on which this form vanishes.
+
+**Problem.** Even lattices containing L with finite index in the same rational space correspond to isotropic subgroups of L\*/L. Up to isometries preserving L, they correspond to orbits of those subgroups under isometries of L.
+
+**How the definition helps.** The finite quadratic form makes evenness a test on cosets of L (our own). Every integral extension already lies in the dual, since its vectors pair integrally with L (our own). The correspondence theorem for subgroups of a quotient now supplies all candidates (our own). Polarization shows that zero values on a subgroup also give integral pairings (our own).
+
+**Paper or page:** [Derived equivalence of elliptic K3 surfaces and Jacobians](https://arxiv.org/abs/2303.16638v3). It says: “the set of O(T)-orbits of isotropic subgroups of Aₜ”
+
+**Sources:**
+
+- [Viacheslav V. Nikulin, Integral symmetric bilinear forms and some of their applications](https://doi.org/10.1070/im1980v014n01abeh001060)
+
 ### Even positive definite unimodular lattices need dimension divisible by 8
 
 **Remember:** Even norms make the theta series modular for everything, which forces eight.
@@ -1463,6 +2439,128 @@
 - [J.-P. Serre, A Course in Arithmetic, Graduate Texts in Mathematics 7, Springer, 1973](https://doi.org/10.1007/978-1-4684-9884-4)
 - [J. Milnor and D. Husemoller, Symmetric Bilinear Forms, Springer, 1973](https://doi.org/10.1007/978-3-642-88330-9)
 
+### Unit covolume gives a Hermite maximum
+
+**Remember:** Fix cell volume before maximizing the shortest length.
+
+*Makes the theorem clean to state or prove.* MSC 11H55 (Quadratic forms (reduction theory, extreme forms, etc.)), 11H31. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Normalize a Euclidean lattice by scaling until a fundamental cell has volume one. The Hermite invariant is the squared length of its shortest nonzero vector after this scaling. Without normalization, scaling alone makes shortest length unbounded.
+
+**Problem.** In each dimension, some lattice attains the maximum Hermite invariant. Equivalently, some lattice attains the best lattice sphere-packing density in that dimension.
+
+**How the definition helps.** Fixing cell volume puts the shortest-length function on a space where Mahler’s compactness theorem applies (our own). The cubic lattice has shortest length one, so it suffices to consider lattices with shortest length at least one (our own). Mahler’s theorem makes that set compact, and shortest length varies continuously there (our own). Packing balls of radius half the shortest length gives the corresponding density maximum (our own).
+
+**Wikipedia:** [Mahler's compactness theorem](https://en.wikipedia.org/wiki/Mahler%27s_compactness_theorem). It says: “The assertion of Mahler's theorem is equivalent to the compactness of the space of unit-covolume lattices in ℝⁿ whose systole is larger or equal than any fixed ε&gt;0.”
+
+**Sources:**
+
+- [Kurt Mahler, On lattice points in n-dimensional star bodies I. Existence theorems](https://doi.org/10.1098/rspa.1946.0072)
+
+### Primitive counting explains the zeta factor
+
+**Remember:** Every nonzero lattice vector has one primitive starting point.
+
+*Makes the theorem clean to state or prove.* MSC 11H60 (Mean value and transfer theorems). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Fix a bounded measurable function on ℝⁿ with compact support. Its primitive Siegel transform sums its values on nonzero lattice vectors that are never integer multiples k ≥ 2 of other lattice vectors. The ordinary transform sums over all nonzero vectors. Average over lattices with fundamental cell volume one, using the probability measure invariant under determinant-one linear maps.
+
+**Problem.** For dimension n at least two, the mean primitive transform equals the integral of the function divided by ζ(n). Here ζ(n) is the sum of the reciprocal n-th powers of the positive integers.
+
+**How the definition helps.** The primitive sum separates the first point on each lattice ray from its multiples (our own). Each positive integer dilation by k has an integral factor of 1 divided by the n-th power of k (our own). Invariance under determinant-one linear maps makes the averaged primitive counting measure a constant times Lebesgue measure (our own). Siegel’s mean value theorem for all nonzero lattice points fixes that constant (our own).
+
+**Paper or page:** [Inversion formulae for Siegel transforms](https://arxiv.org/abs/2104.11689v3), [Some measure-theoretical and dynamical properties of successive minima on the space of unimodular lattices](https://arxiv.org/abs/2212.14373v1). It says: “Then ∫ₓ f̂ dμₓ = (1/ζ(n)) ∫ℝⁿ f dm.”
+
+**Sources:**
+
+- [Carl Ludwig Siegel, A Mean Value Theorem in Geometry of Numbers](https://doi.org/10.2307/1969027)
+
+### Powered intervals give approximation dimension
+
+**Remember:** Keep the rational centers and shrink each interval by a power.
+
+*Makes the theorem clean to state or prove.* MSC 11J83 (Metric theory). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Write approximation as belonging to infinitely many intervals centered at reduced fractions p/q. Use intervals of diameter 2/q² to encode Dirichlet approximation. To make the test stricter, keep the centers and raise each diameter to a fixed power a greater than one.
+
+**Problem.** Let a be greater than one. The real numbers approximable infinitely often within the inverse 2a-th power of the denominator have Hausdorff dimension 1/a. Hausdorff dimension measures size by covers at small scales.
+
+**How the definition helps.** Powering the intervals lets one apply a theorem that converts full length measure into a dimension bound (our own). Dirichlet’s theorem gives full length measure for the original intervals (our own). The mass transference principle gives dimension at least 1/a for their powered counterparts (our own). Using slightly larger powers and taking their limit absorbs the fixed diameter factor (our own). On each bounded interval there are at most a constant times q relevant fractions of denominator q (our own). Their covering costs therefore sum to a finite number for every dimension above 1/a (our own).
+
+**Paper or page:** [Diophantine approximation in metric space](https://arxiv.org/abs/2105.06776v1). It says: “Let a &gt; 1 and for a ball B, denote by Bᵃ a ball of the same centre as B and of diameter (diam B)ᵃ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Independent bases prevent power cancellation
+
+**Remember:** Independent bases make irrational algebraic powers survive multiplication.
+
+*Rules out counterexamples.* MSC 11J86 (Linear forms in logarithms; Baker's method), 11J81. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Positive numbers are multiplicatively independent if no product of their integer powers equals one except with all exponents zero. Use real logarithms to define powers of positive bases. Distinctness of the bases alone does not imply this independence.
+
+**Problem.** Take multiplicatively independent positive algebraic bases and algebraic exponents. If at least one exponent is irrational, the product of those powers is transcendental.
+
+**How the definition helps.** Multiplicative independence turns the logarithms of the bases into a rationally independent family (our own). Baker’s theorem says such logarithms of algebraic numbers remain independent over the algebraic numbers. An algebraic product would add its logarithm to the family with an algebraic dependence (our own). Baker’s theorem would then put that logarithm in the rational span of the original logarithms (our own). Independence over the algebraic numbers forces each original exponent to equal its rational coefficient (our own). Without independence, 2 raised to 2√2 times 4 raised to −√2 equals one (our own).
+
+**Wikipedia:** [Baker's theorem](https://en.wikipedia.org/wiki/Baker%27s_theorem). It says: “In particular this number is nonzero, so 1 and λᵢ are linearly independent over the algebraic numbers.”
+
+**Sources:**
+
+- [Alan Baker, Linear forms in the logarithms of algebraic numbers](https://doi.org/10.1112/s0025579300003971)
+
+### Local ratios make approximation projective
+
+**Remember:** Divide out the size of the coordinates at every place.
+
+*Makes the theorem clean to state or prove.* MSC 11J87 (Schmidt Subspace Theorem and applications). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Over a number field K, a projective point represents a nonzero coordinate vector up to common scaling. At each place v, meaning a choice of absolute value, write Mᵥ for the largest absolute coordinate value. Normalize the absolute values so their product on each nonzero element of K equals one. The height H is the product of all Mᵥ.
+
+**Problem.** Choose d independent K-linear forms in d variables at each of finitely many places. Multiply the ratios \|L(x)\|ᵥ/Mᵥ over every chosen form and place. For fixed ε &gt; 0, the points where this product is below 1/Hᵈ⁺ᵋ lie in finitely many proper projective linear subspaces.
+
+**How the definition helps.** Each ratio removes the choice of coordinates, so the inequality applies directly to projective points (our own). Scaling multiplies the numerator and denominator by the same absolute value (our own). The height also stays fixed by the product formula (our own). The subspace theorem supplies the finite union, and its affine and projective versions are equivalent.
+
+**Paper or page:** [Diophantine approximation and the subspace theorem](https://arxiv.org/abs/2502.00731v1), [Diophantine approximation and the subspace theorem](https://arxiv.org/abs/2502.00731v1). It says: “The projective subspace theorem is equivalent to the affine subspace theorem.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### No zero subsums makes unit solutions finite
+
+**Remember:** Remove cancelling groups before counting solutions.
+
+*Rules out counterexamples.* MSC 11J87 (Schmidt Subspace Theorem and applications), 11D61. arXiv math.NT. Level 3: graduate.
+
+**Definition.** An S-unit is a nonzero element of a number field whose principal fractional ideal has prime factors only in a fixed finite set S. A solution of a linear equation in S-units is nondegenerate if no nonempty group of terms on the left sums to zero.
+
+**Problem.** Over a number field, a fixed linear equation in S-units with nonzero coefficients and right side one has finitely many nondegenerate solutions.
+
+**How the definition helps.** The condition removes groups that can vary independently because their terms cancel (our own). Take ℚ with 2 in S (our own). The equation x + y + z = 1 then has solutions (2ᵏ, −2ᵏ, 1) for every positive k (our own). The S-unit theorem, proved using the subspace theorem, carries the finiteness work (our own).
+
+**Paper or page:** [Sum of terms of recurrence sequences and S-units in the solution sets of norm form equations](https://arxiv.org/abs/2410.01688v1). It says: “has no vanishing subsums.”
+
+**Sources:**
+
+- [Jan-Hendrik Evertse, Hans Peter Schlickewei and Wolfgang M. Schmidt, Linear Equations in Variables which Lie in a Multiplicative Group](https://doi.org/10.2307/3062133)
+
+### Fourier tests reveal polynomial equidistribution
+
+**Remember:** Polynomial differences make Fourier averages easier to estimate.
+
+*True by definition.* MSC 11K06 (General theory of distribution modulo \\(1\\)), 11K31. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Uniform distribution modulo 1 means that the fraction of fractional parts in each interval tends to its length. In the equivalent Fourier test, average exp(2πihx) over the sequence for each nonzero integer h. Require each such average to tend to zero.
+
+**Problem.** The values of a real polynomial at the positive integers are uniformly distributed modulo 1 if some nonconstant coefficient is irrational.
+
+**How the definition helps.** The Fourier test replaces interval counts by averages whose phases have lower degree after differencing. In our own proof, split the indices into residue classes modulo a common denominator for the rational coefficients. On each class the rational terms are constant modulo 1, and the remaining polynomial has irrational leading coefficient. The van der Corput inequality reduces the degree by comparing terms a fixed distance apart. At degree one a geometric sum gives the limit. Weyl’s criterion justifies replacing the interval definition by these tests.
+
+**Wikipedia:** [Equidistributed sequence](https://en.wikipedia.org/wiki/Equidistributed_sequence). It says: “the sequence p(n) is uniformly distributed modulo 1.”
+
+**Sources:**
+
+- [Hermann Weyl, Über die Gleichverteilung von Zahlen mod. Eins](https://doi.org/10.1007/BF01475864)
+
 ### Equidistribution makes normal numbers a consequence of ergodicity
 
 **Remember:** A normal number visits intervals at the right frequencies under multiplication by its base.
@@ -1481,6 +2579,40 @@
 
 - [É. Borel, Les probabilités dénombrables et leurs applications arithmétiques, Rend. Circ. Mat. Palermo 27 (1909) 247–271](https://doi.org/10.1007/BF03019651)
 
+### Block tests expose hidden dependence
+
+**Remember:** Counting blocks catches dependencies that counting single points misses.
+
+*Rules out counterexamples.* MSC 11K36 (Well-distributed sequences and other variations), 11K06. arXiv math.NT. Level 3: graduate.
+
+**Definition.** For a fixed length k, form a point in the unit cube from each block of k consecutive fractional parts. Call the sequence completely uniformly distributed if, for every k, the fraction of these points in each box tends to its volume. Ordinary uniform distribution checks only k = 1.
+
+**Problem.** For almost every α &gt; 1, the sequence of positive integer powers of α is completely uniformly distributed modulo 1. For irrational α, its positive integer multiples are uniformly distributed but fail the block test at length two.
+
+**How the definition helps.** Testing adjacent terms together detects relations that disappear when each term is counted alone. For multiples of α, the second coordinate always equals the first plus α modulo 1. In our own argument, an open box away from this line receives no pairs, despite its positive area. The almost-everywhere theorem for powers requires separate estimates for the frequencies of blocks.
+
+**Wikipedia:** [Equidistributed sequence](https://en.wikipedia.org/wiki/Equidistributed_sequence). It says: “is completely uniformly distributed for almost all α &gt; 1”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Gauss averages give denominator growth
+
+**Remember:** The logarithm turns successive reciprocal tails into a sum.
+
+*True by definition.* MSC 11K50 (Metric theory of continued fractions). arXiv math.NT. Level 3: graduate.
+
+**Definition.** The Gauss map T sends irrational x between 0 and 1 to the fractional part of 1/x. It preserves the probability distribution with density 1/((1 + x) log 2). At each iterate record −log x, evaluated at the current point.
+
+**Problem.** Truncate the continued fraction of x after n digits following the integer part, and let qₙ be the reduced denominator. For almost every x between 0 and 1, (log qₙ)/n tends to π²/(12 log 2).
+
+**How the definition helps.** Recording logarithms turns denominator growth into a sum to which the ergodic theorem applies. In our own calculation, the reciprocal product of the first n iterates, starting at x, equals qₙ plus the previous denominator times the next iterate. This lies between qₙ and 2qₙ, so its logarithm differs from log qₙ by at most log 2. Ergodicity makes the average of the recorded values converge almost everywhere to their integral against the invariant density. That integral gives the stated constant.
+
+**nLab:** [continued fraction](https://ncatlab.org/nlab/show/continued+fraction). It says: “then τ is an ergodic transformation with respect to μ”
+
+**Wikipedia:** [Lévy's constant](https://en.wikipedia.org/wiki/L%C3%A9vy%27s_constant). It says: “The term “Lévy's constant” is sometimes used to refer to π²/(12 ln 2)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The Gauss map turns continued fraction digits into ergodic averages
 
 **Remember:** Read each digit as the first digit of the next state.
@@ -1498,6 +2630,22 @@
 **Sources:**
 
 - [C. Ryll-Nardzewski, On the ergodic theorems (II) (Ergodic theory of continued fractions), Studia Math. 12 (1951) 74–79](https://doi.org/10.4064/sm-12-1-74-79)
+
+### Matching parity prevents cancellation in theta series
+
+**Remember:** For an odd character, multiply by n so opposite integers add.
+
+*True by definition.* MSC 11M06 (\\(\\zeta (s)\\) and \\(L(s, \\chi)\\)). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Take a nontrivial multiplicative character χ of the invertible residues modulo q, extended by zero on other residues. Assume it does not come from a character at any proper divisor of q. Put a=0 if χ(−1)=1 and a=1 otherwise. For t&gt;0 define Θ(t) by summing χ(n) exp(−πn²t/q) over all integers, inserting a factor n when a=1.
+
+**Problem.** Put z=(s+a)/2 with Re s&gt;1. Integrating Θ(t) exp(z log t) against dt/(2t) on the positive axis gives Γ(z) exp(z log(q/π)) L(s,χ). Here L(s,χ) sums χ(n) exp(−s log n) over positive integers.
+
+**How the definition helps.** The extra factor makes the terms at n and −n agree instead of canceling (our own). Integrating the Gaussian term gives Γ((s+a)/2) and leaves the factor exp(−s log n) (our own). The integration is justified by absolute convergence for Re s &gt; 1 (our own). Beyond that region, the work moves to the theta transformation from Poisson summation (our own).
+
+**nLab:** [Dirichlet theta function](https://ncatlab.org/nlab/show/Dirichlet+theta+function). It says: “The Mellin transform of this is the completed Dirichlet L-function associated with χ”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Primitive characters give Dirichlet L-functions a clean functional equation
 
@@ -1552,6 +2700,56 @@
 
 - [B. Riemann, Ueber die Anzahl der Primzahlen unter einer gegebenen Grösse, Monatsberichte der Berliner Akademie, 1859](https://www.maths.tcd.ie/pub/HistMath/People/Riemann/Zeta/)
 
+### A product with nonnegative coefficients rules out a zero at one
+
+**Remember:** The product has positive square terms, so its convergence boundary cannot disappear.
+
+*True by definition. Confidence: medium.* MSC 11M20 (Real zeros of \\(L(s, \\chi)\\); results on \\(L(1, \\chi)\\)). arXiv math.NT. Level 3: graduate.
+
+**Definition.** A real Dirichlet character χ modulo q is multiplicative and periodic, taking values ±1 on invertible residues and zero elsewhere. Assume χ equals −1 somewhere. Instead of its series L(s,χ), with coefficients χ(n), take the product with the Riemann zeta function ζ(s). The product’s coefficient at n is the sum of χ(d) over divisors d of n.
+
+**Problem.** For every such character, L(1,χ) is nonzero.
+
+**How the definition helps.** Multiplication by ζ gives nonnegative coefficients, including a coefficient of at least one on every square (our own). Indeed, each prime-power coefficient sums successive powers of −1, 0, or 1 starting with one (our own). Multiplicativity gives the claim for all n (our own). The square terms force divergence at s=1/2 (our own). A zero at one would cancel the sole pole of ζ and make the product entire (our own). Landau’s theorem forces a singularity at the finite real boundary of convergence for a series with nonnegative coefficients (our own).
+
+**Wikipedia:** [Dirichlet L-function](https://en.wikipedia.org/wiki/Dirichlet_L-function). It says: “In his proof, Dirichlet showed that L(s,χ) is non-zero at s = 1.”
+
+**Paper or page:** [A note on prime number races and zero free regions for L functions](https://arxiv.org/abs/2001.00764v3). It says: “and has a singularity at σ𝒸.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Fourth powers exclude boundary zeros
+
+**Remember:** A boundary zero would make a nonnegative sum have a negative limit.
+
+*Rules out counterexamples.* MSC 11M26 (Nonreal zeros of \\(\\zeta (s)\\) and \\(L(s, \\chi)\\); Riemann and other hypotheses). arXiv math.NT. Level 3: graduate.
+
+**Definition.** For Re s&gt;1, let Φ(s) sum log(p) exp(−s log p) over primes p. Fix a real t≠0. Combine Φ(s+irt) for r from −2 to 2 with successive weights 1, 4, 6, 4, 1.
+
+**Problem.** The Riemann zeta function has no zero on Re s = 1.
+
+**How the definition helps.** These weights give each prime a nonnegative multiplier, the fourth power of 2 cos(t log(p)/2). Thus the weighted sum stays nonnegative for real s&gt;1. Multiplying by s−1 gives the limit 6−8μ−2ν as s decreases to one. Here μ and ν count zeros with multiplicity at 1+it and 1+2it, respectively. Nonnegativity forces μ=0. Computing the limit requires comparing the prime sum with the logarithmic derivative ζ′/ζ.
+
+**nLab:** [proof of the prime number theorem](https://ncatlab.org/nlab/show/proof+of+the+prime+number+theorem). It says: “from which, in conjunction with 1., 2., 3. above, we deduce 0 ≤ 6 − 8μ − 2ν, so that μ = 0.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Phase correction reveals critical zeros
+
+**Remember:** Remove the phase so that a sign change detects a zero.
+
+*True by definition.* MSC 11M26 (Nonreal zeros of \\(\\zeta (s)\\) and \\(L(s, \\chi)\\); Riemann and other hypotheses). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let Γ denote the gamma function, which extends the factorial by Γ(n+1)=n!. Define θ(t) as the imaginary part of the continuous log Γ(1/4+it/2), minus (t/2) log π. Choose the logarithm to be real at t=0. Multiply ζ(1/2+it) by exp(iθ(t)) to obtain Hardy’s Z(t).
+
+**Problem.** On the critical line Re s=1/2, Hardy’s Z takes real values and has the same zeros, with multiplicity, as the Riemann zeta function ζ. Opposite signs at two heights guarantee a zero between them.
+
+**How the definition helps.** The phase factor turns the functional equation into equality with the complex conjugate (our own). The factor never vanishes, so it cannot create or remove zeros (our own). The work moves to the functional equation and to finding points of opposite sign, as in proofs of infinitely many critical zeros (our own).
+
+**Wikipedia:** [Z function](https://en.wikipedia.org/wiki/Z_function). It says: “It follows from the functional equation of the Riemann zeta function that the Z function is real for real values of t.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The stuffle product makes multiple zeta values an algebra
 
 **Remember:** Define word multiplication to copy series multiplication, and the algebra comes free.
@@ -1570,6 +2768,72 @@
 
 - [Masataka Satoh, Generalized quasi-shuffle products, arXiv:2303.12386 (2023)](https://arxiv.org/abs/2303.12386)
 - [Michael E. Hoffman, The Algebra of Multiple Harmonic Series, Journal of Algebra (1997)](https://doi.org/10.1006/jabr.1997.7127)
+
+### Hurwitz zeta cancels character poles
+
+**Remember:** All residue classes have the same pole, so a zero character sum cancels it.
+
+*True by definition.* MSC 11M35 (Hurwitz and Lerch zeta functions). arXiv math.NT. Level 3: graduate.
+
+**Definition.** For a&gt;0 and Re s&gt;1, the Hurwitz zeta function ζ(s,a) sums exp(−s log(n+a)) over integers n≥0. A Dirichlet character χ modulo q is a multiplicative character of the invertible residues, extended by zero elsewhere. Its L-function sums χ(n) exp(−s log n) over positive integers.
+
+**Problem.** If χ differs from one on some invertible residue, its L-function extends holomorphically to the whole complex plane.
+
+**How the definition helps.** Grouping by residues replaces the original series with functions whose sole poles have identical residues (our own). Class r contributes χ(r)ζ(s,r/q) times exp(−s log q), for 1≤r≤q (our own). The character values sum to zero, so the residues cancel (our own). The analytic work lies in continuing each Hurwitz zeta function to the plane with only its simple pole at one.
+
+**Wikipedia:** [Hurwitz zeta function](https://en.wikipedia.org/wiki/Hurwitz_zeta_function). It says: “At s = 1, it has a simple pole with residue 1.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Gamma slopes make degrees additive
+
+**Remember:** Adding the gamma slopes makes degrees add when series multiply.
+
+*True by definition.* MSC 11M41 (Other Dirichlet series and zeta functions). arXiv math.NT. Level 3: graduate.
+
+**Definition.** In the Selberg class, each Dirichlet series F satisfies a symmetry relating its values at s and 1−s through gamma factors. Each factor has the form Γ(λs+μ), with λ&gt;0. Define the degree as twice the sum of these slopes λ, counting repetitions.
+
+**Problem.** If F and G are in the Selberg class, then the degree of FG is the sum of their degrees.
+
+**How the definition helps.** Multiplication joins the two lists of slopes, so their sums add. Counting factors alone can give different answers because the gamma multiplication formula can split a factor (our own). The work lies in proving that the slope sum has the same value for every permitted functional equation.
+
+**Wikipedia:** [Selberg class](https://en.wikipedia.org/wiki/Selberg_class). It says: “Since this sum is independent of the choice of functional equation, it is well-defined for any function F.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Nonnegative coefficients prevent cancellation in Dirichlet sums
+
+**Remember:** Nonnegative terms prevent large jumps from hiding in a small analytic remainder.
+
+*Rules out counterexamples.* MSC 11M45 (Tauberian theorems). arXiv math.NT. Level 3: graduate.
+
+**Definition.** A Dirichlet series F(s) sums a(n) exp(−s log n) over positive integers n. Require each coefficient a(n) to be nonnegative, so the partial sums never decrease.
+
+**Problem.** Suppose the series converges for Re s&gt;1. For some c&gt;0, suppose F(s)−c/(s−1) extends holomorphically across every point of Re s=1. Then the partial sum up to x, divided by x, tends to c.
+
+**How the definition helps.** Nonnegative coefficients prevent a large upward jump from disappearing at the next index (our own). Start with all coefficients equal to one (our own). For each k≥1, add 2ᵏ at index 2ᵏ and subtract it at the next index (our own). The paired corrections converge locally uniformly for Re s&gt;0 by the mean value estimate for exp(−s log x) (our own). The adjusted partial sums divided by their index alternate between two and one at these successive indices (our own). The Wiener–Ikehara theorem gives convergence of this ratio under the stated positivity and continuation hypotheses.
+
+**Wikipedia:** [Wiener–Ikehara theorem](https://en.wikipedia.org/wiki/Wiener%E2%80%93Ikehara_theorem). It says: “where a(n) is non-negative.”
+
+**Sources:**
+
+- [Norbert Wiener, Tauberian Theorems (1932)](https://doi.org/10.2307/1968102)
+
+### Repeated integration gives counting sums a faster decaying kernel
+
+**Remember:** Each integration adds one denominator and makes the contour integral decay faster.
+
+*True by definition. Confidence: medium.* MSC 11M45 (Tauberian theorems). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let A(X) sum complex coefficients a(n) over positive integers n≤X. For a positive integer k, integrate A from zero k times, each time taking X as the upper limit. Equivalently, multiply each included coefficient by (X−n) to the power k, divided by k factorial.
+
+**Problem.** Suppose F(s), the sum of a(n) exp(−s log n), converges absolutely on Re s=c&gt;0. The smoothed sum equals the upward integral of F(s) exp((s+k) log X)/\[s(s+1)⋯(s+k)\] along that line, divided by 2πi, for X&gt;0.
+
+**How the definition helps.** Each integration adds a denominator to the original counting kernel 1/s (our own). On a vertical line, the new kernel thus decays by k extra powers of the height (our own). Mellin inversion, which recovers a function from its integral transform, gives the formula (our own). Moving the line of integration and recovering the original count require further estimates (our own).
+
+**Paper or page:** [An Explicit Tauberian Theorem taking Averaged Inputs with an Application to Counting Abelian Number Fields](https://arxiv.org/abs/2508.20814v1). It says: “\\frac{\\Gamma (s)}{\\Gamma (s+k+1)} X<sup>s+k</sup>”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Taking the halfway value at jumps makes Riemann's explicit formula exact
 
@@ -1590,6 +2854,22 @@
 - [B. Riemann, Ueber die Anzahl der Primzahlen unter einer gegebenen Grösse, Monatsberichte der Berliner Akademie, 1859](https://www.maths.tcd.ie/pub/HistMath/People/Riemann/Zeta/)
 - [H. von Mangoldt, Zu Riemanns Abhandlung 'Ueber die Anzahl der Primzahlen unter einer gegebenen Grösse', J. reine angew. Math. 114 (1895) 255–305](https://doi.org/10.1515/crll.1895.114.255)
 
+### Vaughan’s cutoffs split prime sums
+
+**Remember:** Split the factors before expanding so each resulting sum has useful ranges.
+
+*True by definition.* MSC 11N05 (Distribution of primes). arXiv math.NT. Level 3: graduate.
+
+**Definition.** The Möbius weight μ(n) vanishes on multiples of prime squares and otherwise equals −1 raised to the number of prime factors. The weight Λ equals log p on positive powers of a prime p and zero elsewhere. Split each weight at its own cutoff, labeling the lower part s and the upper part ℓ. Divisor convolution f∗g sums f(d)g(n/d) over divisors d of n.
+
+**Problem.** Write 1 for the constant function one. Vaughan’s identity reads Λ = μₛ∗log + Λₛ − μₛ∗1∗Λₛ + μℓ∗1∗Λℓ.
+
+**How the definition helps.** The two cutoffs isolate a convolution with two long factors, a structure hidden in Λ=μ∗log (our own). Substitute log=1∗Λ only in the term containing long μ (our own). Where short Λ occurs, replace long μ by μ minus short μ (our own). The identity μ∗1=1 at n=1 and zero elsewhere removes the extra convolution there (our own). Estimating the four sums requires further work (our own).
+
+**Wikipedia:** [Vaughan's identity](https://en.wikipedia.org/wiki/Vaughan%27s_identity). It says: “four distinct sums based on the expansion of the logarithmic derivative of the Riemann zeta function”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Dirichlet density makes primes in progressions easy to measure
 
 **Remember:** Measure prime sets by their pole at s = 1, not by counting.
@@ -1608,6 +2888,54 @@
 
 - [P. G. L. Dirichlet, Beweis des Satzes, dass jede unbegrenzte arithmetische Progression ... unendlich viele Primzahlen enthält (1837), reprinted by Cambridge University Press](https://doi.org/10.1017/CBO9781139237321.012)
 
+### Dickman’s delay bounds smooth densities
+
+**Remember:** A sliding unit interval bounds the density by its previous value divided by u.
+
+*True by definition.* MSC 11N25 (Distribution of integers with specified multiplicative constraints). arXiv math.NT. Level 3: graduate.
+
+**Definition.** For fixed u≥1, consider integers up to x whose prime factors are at most exp((log x)/u). Their limiting proportion is the Dickman function ρ(u). An equivalent definition sets ρ=1 on \[0,1\] and continues it continuously by uρ′(u)=−ρ(u−1) for u&gt;1.
+
+**Problem.** For u ≥ 1, ρ(u) ≤ 1/⌊u⌋!, where ⌊u⌋ is the integer part of u.
+
+**How the definition helps.** The delay equation expresses uρ(u) as the integral of ρ from u−1 to u (our own). Both sides agree at one and have the same derivative thereafter (our own). A first zero would contradict that integral, so ρ stays positive and the equation makes it decreasing (our own). The integral is therefore at most ρ(u−1), and iteration gives the factorial bound (our own). Dickman’s density theorem establishes the equivalence with the counting definition.
+
+**Wikipedia:** [Dickman function](https://en.wikipedia.org/wiki/Dickman_function). It says: “The Dickman–de Bruijn function ρ(u) is a continuous function that satisfies the delay differential equation”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### New coordinates minimize Selberg’s sieve
+
+**Remember:** In the new coordinates, the best sieve weights follow from Cauchy–Schwarz.
+
+*True by definition.* MSC 11N35 (Sieves). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Choose a nonempty finite set D of squarefree integers containing every divisor of each member. For each prime p in D choose f(p)&gt;1, and multiply these values to define f on D, with f(1)=1. Define g similarly using g(p)=f(p)−1. For each r in D let y(r) sum λ(d)/f(d) over multiples d of r in D.
+
+**Problem.** Form the quadratic expression in real weights λ with matrix entries 1/f(lcm(d,e)), extending f multiplicatively to squarefree products of the chosen primes. Under λ(1)=1 its minimum is the reciprocal of the sum of 1/g(r) over D.
+
+**How the definition helps.** The divisor coordinates turn the original expression into the sum of g(r)y(r)² (our own). Indeed, f(gcd(d,e)) equals the sum of g(r) over common divisors r (our own). The coordinate change is invertible by back substitution, starting at the largest indices (our own). Write μ(r) for −1 raised to the number of prime factors of r (our own). Then λ(1) equals the sum of μ(r)y(r) by inclusion–exclusion (our own). Cauchy–Schwarz gives the bound, with equality when y(r) is proportional to μ(r)/g(r) (our own).
+
+**Wikipedia:** [Selberg sieve](https://en.wikipedia.org/wiki/Selberg_sieve). It says: “Let the function g be obtained from f by Möbius inversion”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Squares bound the Selberg sieve
+
+**Remember:** The square is one on survivors and never negative elsewhere.
+
+*True by definition.* MSC 11N35 (Sieves). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Choose finitely many primes and call an integer sifted if none divides it. Assign a real weight to each divisor of their product, with weight 1 at divisor 1. For each integer, add the weights of its divisors on this list and square the result.
+
+**Problem.** In any finite sample of positive integers, the sum of these squares bounds the number of sifted integers from above.
+
+**How the definition helps.** The square equals one on sifted integers and stays nonnegative everywhere else (our own). The usual inclusion–exclusion formula counts survivors exactly but uses alternating signs. Selberg chooses weights to keep the upper bound small. Applying it requires estimates for the number of sample elements divisible by each divisor (our own).
+
+**Wikipedia:** [Selberg sieve](https://en.wikipedia.org/wiki/Selberg_sieve). It says: “Selberg replaced the values of the Möbius function which arise in this by a system of weights which are then optimised to fit the given problem.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Ignoring finitely many exceptions gives Waring's problem its true constant G(k)
 
 **Remember:** Small stubborn numbers fix g(k); only large numbers fix G(k).
@@ -1625,6 +2953,76 @@
 **Sources:**
 
 - [G. H. Hardy and J. E. Littlewood, Some problems of 'Partitio Numerorum' IV: The singular series in Waring's problem and the value of the number G(k), Math. Z. 12 (1922) 161–188](https://doi.org/10.1007/BF01482074)
+
+### Power moments count integer solutions
+
+**Remember:** One frequency per degree enforces one equality per degree.
+
+*True by definition.* MSC 11P55 (Applications of the Hardy-Littlewood method). arXiv math.NT. Level 3: graduate.
+
+**Definition.** For positive integers N, k and s, let P be a polynomial with no constant term and coefficients α₁ through αₖ. Sum exp(2πiP(n)) over n from 1 to N. The Vinogradov mean value integrates the absolute value of this sum raised to power 2s over the unit cube of coefficients.
+
+**Problem.** Take two ordered s-tuples from 1 to N, and require their jth power sums to agree for every j from 1 to k. The mean value counts exactly these pairs. The full set of equalities survives a common integer translation of the entries.
+
+**How the definition helps.** A separate frequency for each power turns the integral into an exact count without enumerating solutions. In our own calculation, expanding the power introduces two ordered tuples. For each degree, integration gives one if the power sums agree and zero otherwise. The binomial theorem gives translation invariance of the equations because they include every lower degree. The difficult mean value theorem bounds the resulting count.
+
+**Wikipedia:** [Vinogradov's mean-value theorem](https://en.wikipedia.org/wiki/Vinogradov%27s_mean-value_theorem). It says: “An alternative analytic expression for Jₛ,ₖ(X) is”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Freiman models prevent false collisions
+
+**Remember:** A usable model preserves both equal sums and unequal sums.
+
+*Rules out counterexamples.* MSC 11P70 (Inverse problems of additive number theory, including sumsets), 11B30. arXiv math.NT. Level 3: graduate.
+
+**Definition.** A Freiman isomorphism of order 8 is a bijection that preserves and reflects equality of eight-term sums. Repeated summands are allowed. Unlike plain reduction modulo a prime, it cannot make two different sums agree. Write 8A − 8A for all differences between two eight-term sums from A.
+
+**Problem.** Let A be a finite nonempty set of integers, and let q be prime with q &gt; \|8A − 8A\|. Some subset of A of size at least \|A\|/8 is Freiman isomorphic of order 8 to a subset of ℤ/qℤ.
+
+**How the definition helps.** The definition lets every eight-term equality move between model and original without creating a false one, in our own words. Our own example is {0,1,3} modulo 5, where 0 + 1 and 3 + 3 acquire the same residue. Appending six zeros makes it an eight-term collision as well, in our own example. The hard work is the Ruzsa modeling lemma, which selects a large subset and a suitable map.
+
+**Wikipedia:** [Freiman's theorem](https://en.wikipedia.org/wiki/Freiman%27s_theorem). It says: “By the Ruzsa modeling lemma, there exists a subset A′ of A of cardinality at least \|A\|/8”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Eta shifts give partition inversion
+
+**Remember:** The shifted partition series is the reciprocal of eta.
+
+*True by definition.* MSC 11P82 (Analytic theory of partitions). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let P(q) be the generating function for integer partitions, so its coefficient at degree n is the partition count. Set q = exp(2πiτ) with τ in the upper half-plane. Replace P(q) by exp(−πiτ/12)P(q), the reciprocal of the Dedekind eta function.
+
+**Problem.** For t &gt; 0, P(exp(−2πt)) equals √t exp(π(1/t − t)/12) times P(exp(−2π/t)).
+
+**How the definition helps.** The exponential shift turns the partition series into the reciprocal of eta, whose inversion law exchanges t and 1/t. In our own calculation, substitute τ = it in that law to obtain η(i/t) = √t η(it). Substituting the partition series on each side gives the stated factor. The substantive theorem is the inversion law.
+
+**nLab:** [Dedekind eta function](https://ncatlab.org/nlab/show/Dedekind+eta+function). It says: “η(τ) = q¹⁄²⁴”
+
+**Wikipedia:** [Dedekind eta function](https://en.wikipedia.org/wiki/Dedekind_eta_function). It says: “η(−1/τ) = √(−iτ) η(τ).”
+
+**Sources:**
+
+- [G. H. Hardy and S. Ramanujan, Asymptotic Formulaae in Combinatory Analysis](https://doi.org/10.1112/plms/s2-17.1.75)
+
+### Crank classes explain partition congruences
+
+**Remember:** Equal crank classes explain why the partition count is divisible.
+
+*Makes the theorem clean to state or prove.* MSC 11P83 (Partitions; congruences and congruential restrictions), 05A17. arXiv math.NT. Level 3: graduate.
+
+**Definition.** The crank of a partition with no ones is its largest part. If there are ones, subtract their number from the number of parts larger than that number. The older rank subtracts the number of parts from the largest part.
+
+**Problem.** For each integer n ≥ 0, the crank splits the partitions of 5n + 4 equally into five residue classes modulo 5. It does the same for 7n + 5 modulo 7 and 11n + 6 modulo 11. Each partition count is therefore divisible by its modulus.
+
+**How the definition helps.** The crank states all three congruences as equalities of class sizes. The older rank fails modulo 11. In our own example, the partitions 4 + 1 + 1 and 3 + 3 both have rank 1. Andrews and Garvan proved the equalities using a series whose coefficients count partitions by crank. Adding the equal class sizes gives divisibility.
+
+**Wikipedia:** [Crank of a partition](https://en.wikipedia.org/wiki/Crank_of_a_partition). It says: “M(9, 11, 11n + 6) = M(10, 11, 11n + 6) = p(11n + 6) / 11”
+
+**Sources:**
+
+- [George E. Andrews and F. G. Garvan, Dyson’s crank of a partition](https://doi.org/10.1090/S0273-0979-1988-15637-6)
 
 ### Defining ideal norms by prime factorizations makes them multiply
 
@@ -1657,6 +3055,22 @@
 **Wikipedia:** [Field norm](https://en.wikipedia.org/wiki/Field_norm). It says: “is defined as the determinant of this linear transformation.”
 
 **Paper or page:** [An Infinitely Large Napkin: Alg Nt: Norm Trace](https://venhance.github.io/napkin/Napkin.pdf), [An Infinitely Large Napkin: Alg Nt: Norm Trace](https://venhance.github.io/napkin/Napkin.pdf). It says: “If α is an algebraic integer, its norm and trace are rational integers.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Index checks prevent false ramification
+
+**Remember:** Check the index before reading ramification from polynomial factors.
+
+*Rules out counterexamples.* MSC 11R04 (Algebraic numbers; rings of algebraic integers). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let θ be an algebraic integer generating a number field K. The subring ℤ\[θ\] has finite index in the full ring of integers. Call it maximal at p if the prime p does not divide that index.
+
+**Problem.** Suppose ℤ\[θ\] is maximal at p. Each distinct irreducible factor of the minimal polynomial modulo p gives one prime ideal above p. Its multiplicity gives that prime’s exponent in the factorization of (p).
+
+**How the definition helps.** The index condition makes the two rings agree after reduction modulo p (our own). The Dedekind–Kummer theorem then reads the prime ideals and their exponents from the polynomial factors. For θ = √5 the index is two, and its polynomial has a double root modulo two (our own). Yet two stays prime because the full ring has generator (1 + √5)/2 with irreducible polynomial modulo two (our own).
+
+**Paper or page:** [Theorem 6.3. (Factoring algorithm / Dedekind-Kummer theorem)](https://venhance.github.io/napkin/Napkin.pdf). It says: “In particular, if K is monogenic with 𝒪ₖ = ℤ\[θ\] then j=1 and the theorem applies for all primes p.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -1744,6 +3158,134 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Prime valuations count S-unit rank
+
+**Remember:** Each allowed prime adds one unit direction.
+
+*True by definition.* MSC 11R27 (Units and factorization). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Fix a finite set S of prime ideals in a number field. An S-unit is a nonzero field element whose principal fractional ideal uses only primes in S, with positive or negative exponents. Equivalently, it has an inverse in the ring allowing denominators only at S.
+
+**Problem.** The rank of the S-unit group is the ordinary unit rank plus the number of primes in S.
+
+**How the definition helps.** The prime factor definition gives one integer coordinate for each allowed prime (our own). All coordinates vanish exactly for the ordinary units (our own). The ideal class group, which identifies ideals differing by a scalar, is finite (our own). Each allowed prime therefore has a principal power, giving a nonzero multiple of its coordinate vector (our own). These vectors give the full additional rank (our own).
+
+**Wikipedia:** [S-unit](https://en.wikipedia.org/wiki/S-unit). It says: “An element x of K is an S-unit if the principal fractional ideal (x) is a product of primes in S (to positive or negative powers).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Unit regulators scale by index
+
+**Remember:** A subgroup of index m has a cell m times larger.
+
+*True by definition.* MSC 11R27 (Units and factorization). arXiv math.NT. Level 3: graduate.
+
+**Definition.** For each unit, record the logarithm of its absolute value at every real embedding and at one embedding per complex conjugate pair. Double the complex entries. The resulting vectors form a lattice in the hyperplane where the coordinates sum to zero. Its regulator is the volume of a fundamental cell divided by the square root of the number of coordinates.
+
+**Problem.** For a subgroup of the units modulo roots of unity of finite index m, the subgroup regulator is m times the full regulator.
+
+**How the definition helps.** The volume definition tiles a subgroup cell with m translates of a full lattice cell (our own). The common normalization factor cancels (our own). Dirichlet’s unit theorem identifies the logarithmic lattice with units modulo roots of unity (our own). Projecting away one coordinate recovers the usual determinant definition of the regulator (our own).
+
+**Wikipedia:** [Dirichlet's unit theorem](https://en.wikipedia.org/wiki/Dirichlet%27s_unit_theorem). It says: “The volume of a fundamental domain of this lattice is R√(r + 1).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Determinants detect relative integral bases
+
+**Remember:** One determinant line records whether an integral basis exists.
+
+*True by definition.* MSC 11R29 (Class numbers, class groups, discriminants). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let B and A be the rings of integers in a number field and a subfield. As an A-module, B splits into free summands and one nonzero ideal I of A. The Steinitz class is the class of I, where two ideals have the same class if they differ by a scalar.
+
+**Problem.** Consider the ring of integers of a finite number field extension. It has a basis over the base ring of integers exactly when its Steinitz class is trivial.
+
+**How the definition helps.** The decomposition leaves only one ideal summand that could prevent a basis (our own). A trivial class means that one element generates this ideal, completing the basis (our own). Conversely, the top exterior power of a free module is free, and the decomposition identifies that power with I (our own). This replaces a direct search for a basis with the structure theorem for modules over rings of integers (our own).
+
+**Wikipedia:** [Dedekind domain](https://en.wikipedia.org/wiki/Dedekind_domain). It says: “The Steinitz class for P over R is the class \[I\] of I in Cl(R): it is uniquely determined.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Differentials give the monogenic different
+
+**Remember:** Differentiate the defining relation to get the different.
+
+*True by definition.* MSC 11R29 (Class numbers, class groups, discriminants). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Suppose a ring B comes from a ring A by adjoining x and imposing one monic relation f(x) = 0. Formal differentiation gives the relation f′(x) dx = 0, with all elements of A treated as constants. In this presentation the Kähler different is the ideal generated by the coefficient of dx.
+
+**Problem.** Let L/K be an extension of number fields. Suppose α generates the integers of L over the integers of K and has minimal polynomial f. Then f′(α) generates the different.
+
+**How the definition helps.** The single defining relation gives a one-entry derivative matrix (our own). Its determinant is f′(α) (our own). The work lies in identifying the Kähler different with the usual different for these rings (our own). The usual definition inverts the ideal of elements pairing integrally with all integers under the field trace (our own).
+
+**Paper or page:** [Lemma 49.7.4.](https://stacks.math.columbia.edu/tag/0BVZ). It says: “The Kähler different of B over A is the ideal of B generated by det(∂fᵢ/∂xⱼ).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Discriminant classes are squared Steinitz classes
+
+**Remember:** The trace pairs two copies of the same line.
+
+*True by definition.* MSC 11R29 (Class numbers, class groups, discriminants). arXiv math.NT. Level 3: graduate.
+
+**Definition.** For number fields L/K, take the top exterior power of the integers of L over the integers of K. This rank-one module records how determinants change between local bases. Its ideal class, meaning its isomorphism class as a fractional ideal, is the Steinitz class.
+
+**Problem.** The relative discriminant of a number field extension represents the square of the Steinitz class of its ring of integers.
+
+**How the definition helps.** On the top exterior power, the trace determinant pairs two copies of the same module (our own). Its image is the discriminant ideal because local bases give the usual trace determinants (our own). The field trace pairing is nondegenerate, so the induced map from the tensor square is injective (our own). The discriminant ideal therefore represents the square of the module’s ideal class (our own).
+
+**Wikipedia:** [Different ideal](https://en.wikipedia.org/wiki/Different_ideal). It says: “indeed, it is the square of the Steinitz class for O<sub>L</sub> as a O<sub>K</sub>-module.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Norms give the discriminant tower law
+
+**Remember:** Take norms of the different tower law.
+
+*True by definition.* MSC 11R29 (Class numbers, class groups, discriminants). arXiv math.NT. Level 3: graduate.
+
+**Definition.** The trace dual consists of elements whose products with every integer of the larger field have integral trace. Its inverse ideal is the different. Define the relative discriminant as the ideal norm of the different. The ideal norm sends each prime to the prime below it raised to the degree of the residue field extension.
+
+**Problem.** In a tower L/K/S, raise the discriminant of K/S to \[L:K\]. Multiply by the norm from K to S of the discriminant of L/K to get the discriminant of L/S.
+
+**How the definition helps.** Taking ideal norms turns the different tower law directly into the discriminant tower law (our own). Norms compose, and extending an ideal from K to L then taking its norm raises it to the degree of L/K (our own). The work lies in the different tower law and in identifying the norm with the usual discriminant from trace determinants (our own).
+
+**Paper or page:** [Counting extensions of imaginary quadratic fields](https://arxiv.org/abs/2109.09848v1). It says: “Given a tower of number fields L/K/S then the relative discriminant of L/S can be computed as”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Root discriminants ignore unramified extensions
+
+**Remember:** The root cancels the extension degree.
+
+*True by definition.* MSC 11R29 (Class numbers, class groups, discriminants). arXiv math.NT. Level 3: graduate.
+
+**Definition.** On a basis of the ring of integers over ℤ, form the matrix of field traces of pairwise basis products. Its determinant is the field discriminant. For a number field of degree n, the root discriminant is the nth root of its absolute discriminant value.
+
+**Problem.** The root discriminant stays constant in extensions unramified at every finite prime. This means that no prime ideal acquires a repeated factor in the larger ring of integers.
+
+**How the definition helps.** Taking the degree root cancels the power in the ordinary discriminant tower law (our own). The relative discriminant is the unit ideal because no finite prime ramifies (our own). The tower law therefore raises the absolute discriminant value to the extension degree (our own).
+
+**Wikipedia:** [Discriminant of an algebraic number field](https://en.wikipedia.org/wiki/Discriminant_of_an_algebraic_number_field). It says: “The relation between relative discriminants in a tower of fields shows that the root discriminant does not change in an unramified extension.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Tameness gives different exponent e − 1
+
+**Remember:** Tame ramification contributes exactly its index minus one.
+
+*Rules out counterexamples.* MSC 11R29 (Class numbers, class groups, discriminants). arXiv math.NT. Level 3: graduate.
+
+**Definition.** In a number field extension, let e be the exponent of a prime ideal in the factorization of the prime below it. Ramification is tame there if the residue characteristic does not divide e. The different is the inverse ideal of elements whose products with all integers have integral trace.
+
+**Problem.** At a tame prime of ramification index e, the different has exponent e − 1.
+
+**How the definition helps.** Tameness keeps the leading coefficient e of the derivative nonzero in the residue field (our own). Complete at the prime and remove the unramified part, which contributes nothing to the different (our own). The remaining integer ring has a generator π of valuation one, where valuation counts prime factors (our own). Its minimal polynomial has degree e, and the base prime divides all lower coefficients (our own). At π the leading derivative term has valuation e − 1, strictly below every other term (our own). The generator theorem and the derivative formula for the different supply the main work (our own). In the wild extension ℚ₂(√2), the derivative 2√2 has valuation three although e equals two (our own).
+
+**Wikipedia:** [Different ideal](https://en.wikipedia.org/wiki/Different_ideal). It says: “The precise exponent to which a ramified prime P divides δ is termed the differential exponent of P and is equal to e − 1 if P is tamely ramified”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The different ideal shows exactly which primes ramify
 
 **Remember:** The different's prime factors are exactly the ramified primes upstairs.
@@ -1779,6 +3321,54 @@
 **Sources:**
 
 - [A. Fröhlich and M. J. Taylor, Algebraic Number Theory, Cambridge University Press, 1991](https://doi.org/10.1017/CBO9781139172165)
+
+### Trace determinants square lattice indices
+
+**Remember:** A basis change enters a trace determinant twice.
+
+*True by definition.* MSC 11R29 (Class numbers, class groups, discriminants). arXiv math.NT. Level 3: graduate.
+
+**Definition.** An order in a number field is a subring containing 1 that has full rank inside the ring of integers. Choose a ℤ-basis of the order. Its discriminant is the determinant of the matrix of field traces of pairwise basis products.
+
+**Problem.** If one order has index m in another order of the same field, its discriminant is m² times the larger order’s discriminant.
+
+**How the definition helps.** Using the trace matrix makes the basis change appear twice in one determinant (our own). If C expresses the smaller basis in the larger basis, the matrix changes from T to CᵀTC (our own). The lattice index theorem identifies the absolute determinant of C with m (our own). This avoids computing how each entry in the alternative matrix of field embeddings changes (our own).
+
+**Wikipedia:** [Discriminant of an algebraic number field](https://en.wikipedia.org/wiki/Discriminant_of_an_algebraic_number_field). It says: “The discriminant of an order in K with integral basis b₁,…,bₙ is defined in the same way.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Trace duals multiply in towers
+
+**Remember:** Trace maps compose, so trace duals multiply.
+
+*True by definition.* MSC 11R29 (Class numbers, class groups, discriminants). arXiv math.NT. Level 3: graduate.
+
+**Definition.** The trace dual for L/K consists of elements x of L for which every integer y of L gives an integral field trace Tr(xy). Its inverse fractional ideal is the different. A fractional ideal becomes an ordinary ideal after multiplication by a nonzero integer.
+
+**Problem.** In a tower L/K/F, the different of L/F is the product of the different of L/K and the extended different of K/F.
+
+**How the definition helps.** The trace dual turns the tower formula into two integral trace tests (our own). Traces compose, and the integers of L contain the integers of K (our own). Thus x passes the combined test exactly when every Tr(xy) from L to K belongs to the trace dual for K/F (our own). Locally that dual has one generator, which factors out of the test (our own). Inverting the resulting product gives the formula without computing generators from polynomial derivatives (our own).
+
+**Wikipedia:** [Different ideal](https://en.wikipedia.org/wiki/Different_ideal). It says: “In a tower of fields L/K/F the relative differents are related by δL/F = δL/K δK/F.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Unit signs explain narrow classes
+
+**Remember:** The only signs that disappear come from units.
+
+*Makes the theorem clean to state or prove.* MSC 11R29 (Class numbers, class groups, discriminants). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Fractional ideals are ideals with denominators allowed. In the ordinary class group, two such ideals represent the same class if one is a nonzero scalar multiple of the other. In the narrow class group, the scalar must also be positive under every real embedding.
+
+**Problem.** Forgetting positivity maps narrow classes onto ordinary classes. Its kernel is the group of sign patterns at the real embeddings modulo the signs of units.
+
+**How the definition helps.** Keeping positivity in the quotient leaves only the signs of a principal generator to track (our own). Two generators differ by a unit, so their signs agree modulo unit signs (our own). Weak approximation, which lets one prescribe signs at all real embeddings, gives every sign pattern (our own).
+
+**Wikipedia:** [Narrow class group](https://en.wikipedia.org/wiki/Narrow_class_group). It says: “where now Pₖ⁺ is the group of totally positive principal fractional ideals”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Decomposition groups turn counting prime factors into orbit counting
 
@@ -1832,6 +3422,74 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Artin and Hecke factors agree
+
+**Remember:** The same Frobenius value gives both factors wherever the units act trivially.
+
+*True by definition.* MSC 11R37 (Class field theory), 11S40. arXiv math.NT. Level 3: graduate.
+
+**Definition.** An idele is a tuple of nonzero local elements, almost all units. A Hecke character is a continuous multiplicative character of ideles that is trivial on global elements. Given a one-dimensional finite Galois character, define its Hecke character by composition with global reciprocity. Normalize local reciprocity so a generator of the maximal ideal acts on residues by arithmetic Frobenius.
+
+**Problem.** At every finite place of a number field, the Artin and Hecke Euler factors of these characters agree. An Euler factor is the local term in the product defining an L-function.
+
+**How the definition helps.** Composition with reciprocity makes both definitions use the same character value (our own). Local units map onto inertia, the subgroup acting trivially on residues (our own). If the character is nontrivial on inertia, both factors equal one (our own). Otherwise both use its value on arithmetic Frobenius, which raises residues to the size of the base residue field (our own). Compatibility of global and local reciprocity supplies the comparison (our own).
+
+**Wikipedia:** [Artin reciprocity](https://en.wikipedia.org/wiki/Artin_reciprocity). It says: “connects Artin L-functions associated to abelian extensions of a number field with Hecke L-functions”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Artin kernels turn composita into intersections
+
+**Remember:** The compositum keeps only the classes that fix both fields.
+
+*True by definition. Confidence: medium.* MSC 11R37 (Class field theory). arXiv math.NT. Level 3: graduate.
+
+**Definition.** An idele class is a tuple of nonzero elements of the completions, almost all units, modulo simultaneous multiplication by a global element. For a finite abelian extension of number fields, the Artin map sends each class to a Galois automorphism. Its kernel describes the subgroup of norms on idele classes.
+
+**Problem.** Take two finite abelian extensions of the same number field inside one algebraic closure. The norms on idele classes from their compositum form the intersection of their two norm subgroups.
+
+**How the definition helps.** The kernel description turns the norm identity into a fixed field test (our own). An automorphism fixes the compositum exactly when it fixes both fields (our own). Global reciprocity supplies the hard step by identifying each kernel with the image of the idele class norm (our own).
+
+**nLab:** [class field theory](https://ncatlab.org/nlab/show/class+field+theory). It says: “by relating them to the idele class group.”
+
+**Wikipedia:** [Class field theory](https://en.wikipedia.org/wiki/Class_field_theory). It says: “\\theta<sub>L/F</sub>: C<sub>F</sub>/{N<sub>L/F</sub>(C<sub>L</sub>)} \\to \\operatorname{Gal}(L/F),”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Brauer reciprocity forces even ramification
+
+**Remember:** Each nonsplit place contributes one half to a zero sum.
+
+*Makes the theorem clean to state or prove.* MSC 11R37 (Class field theory), 11S45. arXiv math.NT. Level 3: graduate.
+
+**Definition.** At each completion of ℚ, a quaternion algebra either becomes a matrix algebra or remains a division algebra. Call the former place split and the latter ramified. The local Brauer invariant records these cases by zero and one half respectively, modulo the integers.
+
+**Problem.** A quaternion algebra over ℚ ramifies at an even number of places, counting the real place when it is nonsplit.
+
+**How the definition helps.** The invariant converts a parity question into addition modulo the integers (our own). Only finitely many places ramify, and global Brauer reciprocity makes the sum of all local invariants zero (our own). Each ramified place contributes one half, so their number is even (our own). Reciprocity supplies the global step (our own).
+
+**Wikipedia:** [Quaternion algebra](https://en.wikipedia.org/wiki/Quaternion_algebra). It says: “The number of places where a quaternion algebra over the rationals ramifies is always even”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Cyclicity repairs the norm principle
+
+**Remember:** Cyclic extensions turn everywhere local norms into global norms.
+
+*Rules out counterexamples.* MSC 11R37 (Class field theory). arXiv math.NT. Level 3: graduate.
+
+**Definition.** A finite Galois extension is cyclic if one automorphism generates its Galois group. A norm is the product of the conjugates of a nonzero field element. At a place of the base field, a local norm is a norm from a completion of the extension above that place.
+
+**Problem.** An element of a number field that is a local norm everywhere from a finite cyclic extension is a global norm.
+
+**How the definition helps.** Cyclicity lets one test the norm equation by checking each completion. For a cyclic extension, the norm equation has a solution exactly when its associated cyclic algebra is a matrix algebra (our own). The local-global theorem for these algebras supplies the hard step (our own). Hasse found that 3 is a local norm everywhere from ℚ(√−3, √13) but is not a global norm.
+
+**Wikipedia:** [Hasse norm theorem](https://en.wikipedia.org/wiki/Hasse_norm_theorem). It says: “Hasse gave the counterexample that 3 is a local norm everywhere for the extension ℚ(√−3, √13)/ℚ but is not a global norm.”
+
+**Paper or page:** [A Projective Twist on the Hasse Norm Theorem](https://arxiv.org/abs/2410.11159v1). It says: “\\mathrm {HNP}<sub>K</sub>(L) holds whenever L/K is cyclic.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Moduli with real places let conductors tell real abelian fields apart
 
 **Remember:** Put the real place in the modulus to record whether signs matter.
@@ -1845,6 +3503,22 @@
 **How the definition helps.** A real place in the modulus records a sign condition, and that is exactly the ramification at infinity. The page says that a modulus encodes ramification data for abelian extensions. For a modulus of 1, the ray class group is the class group. For example, ℚ(ζ₅) has conductor 5 times ∞, and its real subfield ℚ(√5) has conductor 5 (our own). Without real places, every ray class field over ℚ would be real, so ℚ(ζ₅) would have no conductor (our own). What stays hard is the existence theorem of class field theory.
 
 **Wikipedia:** [Modulus (algebraic number theory)](https://en.wikipedia.org/wiki/Modulus_%28algebraic_number_theory%29), [Conductor (class field theory)](https://en.wikipedia.org/wiki/Conductor_%28class_field_theory%29). It says: “the conductor of K is then n if K is fixed by complex conjugation and n ∞ otherwise.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Ray moduli bound composita
+
+**Remember:** The stricter modulus maps onto both weaker ray class groups.
+
+*True by definition.* MSC 11R37 (Class field theory). arXiv math.NT. Level 3: graduate.
+
+**Definition.** An idele is a tuple of nonzero local elements, almost all units. Idele classes identify tuples that differ by a common global factor. A modulus prescribes congruences at finite primes and positivity at selected real places. Its ray class group divides the idele class group by local units satisfying these conditions, allowing unrestricted factors at the remaining infinite places.
+
+**Problem.** The compositum of two ray class fields lies in the ray class field for the least common multiple of their moduli.
+
+**How the definition helps.** Using one group for all moduli turns comparison of separate ideal groups into inclusion of subgroups. The least common multiple imposes both sets of conditions, so its subgroup lies in each original subgroup (our own). Class field theory reverses these inclusions, placing both fields inside the field for the least common multiple (our own).
+
+**Wikipedia:** [Ray class field](https://en.wikipedia.org/wiki/Ray_class_field). It says: “They are sometimes easier to handle theoretically because they are all quotients of a single group, and thus easier to compare.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -1865,6 +3539,22 @@
 **Sources:**
 
 - [Philipp Furtwängler, Allgemeiner Existenzbeweis für den Klassenkörper eines beliebigen algebraischen Zahlkörpers, Mathematische Annalen 63 (1906)](https://doi.org/10.1007/bf01448421)
+
+### Equal zeta functions fix class number times regulator
+
+**Remember:** Equal zeta functions force equal class number times regulator.
+
+*True by definition.* MSC 11R42 (Zeta functions and \\(L\\)-functions of number fields), 11R29. arXiv math.NT. Level 3: graduate.
+
+**Definition.** The Dedekind zeta function sums inverse powers of the sizes of the quotients by nonzero integral ideals. Two fields are arithmetically equivalent if these functions agree. Equivalently, almost every rational prime gives the same list of residue field degrees in both fields.
+
+**Problem.** Arithmetically equivalent number fields have the same class number times regulator. The class number counts ideal classes, and the regulator measures the volume of the lattice formed from logarithms of units.
+
+**How the definition helps.** The zeta function definition makes the two residues at one equal before any prime factorizations are compared (our own). The residue is the coefficient of the simple pole there (our own). The analytic class number formula expresses it using the class number, regulator, discriminant, roots of unity, and counts of real and complex embeddings (our own). The cited invariance theorem matches these other factors, leaving equal products (our own).
+
+**Paper or page:** [Notes on Explicit Constructions of Arithmetically Equivalent Global Function Fields via Torsion Points On Drinfeld Modules](https://arxiv.org/abs/2107.08250v1), [Stronger arithmetic equivalence](https://arxiv.org/abs/2104.01956v4). It says: “product of regulator and class-number reg(𝒪ₖ)hₖ = reg(𝒪ₗ)hₗ”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Integrating over ideles proves Hecke's functional equation by Poisson summation
 
@@ -1916,6 +3606,24 @@
 
 - [Jürgen Neukirch, Algebraic Number Theory, Chapter VII, §10 (1999)](https://doi.org/10.1007/978-3-662-03983-0)
 
+### Adele rings extend by tensoring
+
+**Remember:** An extension just tensors the adeles once more.
+
+*True by definition.* MSC 11R56 (Adèle rings and groups). arXiv math.NT. Level 3: graduate.
+
+**Definition.** A rational adele consists of a real number and one p-adic number for each prime p, integral at all but finitely many primes. Define the adele ring of K by tensoring the rational adele ring with K over ℚ. The usual construction takes tuples from the completions of K with the same integrality condition.
+
+**Problem.** For finite extensions L/K of number fields, the adele ring of L is L tensored over K with the adele ring of K.
+
+**How the definition helps.** The tensor definition makes the extension formula follow from associativity (our own). The work lies in identifying this ring with the usual ring of tuples (our own). Tensoring at each rational prime gives the product of the completions above it (our own). The corresponding rings of integers agree at all but finitely many primes (our own).
+
+**nLab:** [ring of adeles](https://ncatlab.org/nlab/show/ring+of+adeles). It says: “and the ring of adeles over k is the tensor product 𝔸ₖ ≔ k ⊗𝒪 𝔸𝒪.”
+
+**Wikipedia:** [Adele ring](https://en.wikipedia.org/wiki/Adele_ring). It says: “If L/K is a finite extension of number fields, then the adelic construction is compatible with extension of scalars.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Adeles turn two classical theorems of number theory into one compactness statement
 
 **Remember:** Adeles look at a number field at all places at once, real and p-adic.
@@ -1933,6 +3641,22 @@
 **Sources:**
 
 - [Tom Weston, The idelic approach to number theory, lecture notes (undated)](https://drive.google.com/file/d/1PK0lPR7yq-1s1aooX4ZLr_zY4s2Ej36z/view)
+
+### Finite ideles recover ideal classes
+
+**Remember:** Forget the local units and keep the prime exponents.
+
+*Makes the theorem clean to state or prove.* MSC 11R56 (Adèle rings and groups). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Complete a number field at each finite prime, allowing limits in the distance defined by that prime. A finite idele chooses a nonzero element in each completion, with prime exponent zero at all but finitely many primes. Components with exponent zero are local units.
+
+**Problem.** Divide the finite ideles by the tuples of local units and the nonzero field elements embedded diagonally. The result is the ordinary ideal class group, which identifies fractional ideals differing by a scalar.
+
+**How the definition helps.** The unit condition ensures that the prime exponents of an idele specify a finite product of prime powers (our own). Every fractional ideal occurs because it factors into prime powers and each local field has an element of exponent one (our own). The local units form the kernel, and diagonal elements map to principal ideals (our own).
+
+**Wikipedia:** [Adele ring](https://en.wikipedia.org/wiki/Adele_ring). It says: “so the ordinary ideal class group is recovered as a quotient of the idele class group.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Ideles with almost all unit coordinates have unique normalized representatives over ℚ
 
@@ -2020,6 +3744,38 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Trace pairings make adeles self-dual
+
+**Remember:** The trace pairing glues the local character groups together.
+
+*Makes the theorem clean to state or prove.* MSC 11R56 (Adèle rings and groups). arXiv math.NT. Level 3: graduate.
+
+**Definition.** An adele chooses an element in every completion of a number field, integral at all but finitely many finite primes. An additive character is a continuous homomorphism from addition to the unit circle. Pair two adeles by multiplying their components, taking the local field trace to the corresponding completion of ℚ, and applying its standard additive character. Multiply the resulting character values.
+
+**Problem.** This pairing identifies the additive adele group of a number field with its continuous character group.
+
+**How the definition helps.** The product pairing gives one global character for each adele (our own). At finite primes the standard rational character is trivial on the p-adic integers (our own). Almost every component product has integral trace, so only finitely many factors differ from one (our own). Every local character comes from a unique local multiplier by trace duality (our own). A continuous global character is trivial on local integers almost everywhere, where the trace dual of those integers equals the integers (our own). Its multipliers therefore form an adele, and duality for restricted products gives the topological isomorphism (our own).
+
+**nLab:** [ring of adeles](https://ncatlab.org/nlab/show/ring+of+adeles). It says: “The additive group 𝔸ₖ is Pontrjagin self-dual in the sense that the map ϕ: 𝔸ₖ → 𝔸ₖ∧ induced from the pairing ⟨−, −⟩ is an isomorphism onto the character group.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Invertible ideals give the Picard group of an order
+
+**Remember:** At a nonmaximal order, keep only ideals with inverses.
+
+*Rules out counterexamples.* MSC 11R65 (Class groups and Picard groups of orders). arXiv math.NT. Level 3: graduate.
+
+**Definition.** An order is a full-rank subring of a number field’s ring of integers containing 1. A fractional ideal is an ideal with denominators allowed. It is invertible if its product with some fractional ideal is the order. The Picard group consists of invertible fractional ideals modulo nonzero principal fractional ideals.
+
+**Problem.** The Picard group describes modules that have a one-element basis locally at every prime, up to isomorphism. Its multiplication corresponds to tensor product.
+
+**How the definition helps.** Restricting to invertible ideals makes cancellation valid even when the order lacks unique ideal factorization (our own). In ℤ\[2i\], the ideal I = 2ℤ\[i\] satisfies I² = 2I (our own). Cancellation would give I = 2ℤ\[2i\], although 2i belongs only to I (our own). The module description uses the theorem identifying invertibility with having a local basis of one element (our own).
+
+**Wikipedia:** [Dedekind domain](https://en.wikipedia.org/wiki/Dedekind_domain). It says: “For an arbitrary domain one may define the Picard group Pic(R) as the group of invertible fractional ideals Inv(R) modulo the subgroup of principal fractional ideals.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Defining ramification index as a group index makes ramification indices multiply
 
 **Remember:** Indices of nested groups multiply.
@@ -2070,6 +3826,44 @@
 
 - [Cahit Arf, Untersuchungen über reinverzweigte Erweiterungen diskret bewerteter perfekter Körper, Journal für die reine und angewandte Mathematik 181 (1940)](https://doi.org/10.1515/crll.1940.181.1)
 
+### Reduced poles give ramification breaks
+
+**Remember:** Remove p-divisible poles before reading the ramification break.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11S15 (Ramification and extension theory), 11S20. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let K be a Laurent series field over a finite field of characteristic p, with series variable t. A cyclic extension of degree p has an equation yᵖ − y = a. Translating y changes a by an element bᵖ − b. Choose a reduced parameter a, whose negative powers of t have exponents prime to p.
+
+**Problem.** If the reduced parameter has a pole, its largest pole order is the unique positive upper ramification break.
+
+**How the definition helps.** Reduction removes spurious poles, so the largest remaining pole order measures how long automorphisms act trivially modulo successive ideal powers (our own). For a pole of order m, the normalized extension valuation gives t value p and y value −m (our own). Since m is prime to p, some product of integer powers of t and y has valuation one (our own). Translating y by any nonzero prime-field constant changes that product by an element of valuation m + 1 (our own). Hence the sole lower break is m, and the upper numbering agrees up to that first break (our own).
+
+**Wikipedia:** [Artin–Schreier theory](https://en.wikipedia.org/wiki/Artin%E2%80%93Schreier_theory). It says: “is the splitting field of an Artin–Schreier polynomial”
+
+**Paper or page:** [Newton Polygons of Sums on Curves II: Variation in p-adic Families](https://arxiv.org/abs/2110.08657v1). It says: “p<sup>j-1</sup>\\max \\{  k p<sup>-v<sub>p</sub>(c<sub>k</sub>)</sup>: v<sub>p</sub>(c<sub>k</sub>) &lt; j \\}  &amp;  \\text{if } v<sub>p</sub>(c<sub>k</sub>) &lt; j \\text{ for some } k”
+
+**Sources:**
+
+- [Jean-Pierre Serre, Local Fields](https://doi.org/10.1007/978-1-4757-5673-9)
+
+### Swan conductors ignore tame twists
+
+**Remember:** Tame characters act trivially on every group the Swan conductor sees.
+
+*True by definition. Confidence: medium.* MSC 11S15 (Ramification and extension theory), 11S25. arXiv math.NT. Level 3: graduate.
+
+**Definition.** For a finite Galois extension of non-Archimedean local fields, the lower ramification groups measure how closely automorphisms fix the integers. The zeroth group is inertia, which fixes residues. The Swan conductor of a complex representation sums the codimensions of the fixed spaces for groups of positive index. Each term has weight equal to the group order divided by the inertia order.
+
+**Problem.** Twisting a complex representation of a finite local Galois group by a tame character leaves its Swan conductor unchanged.
+
+**How the definition helps.** Omitting the zeroth term makes the Swan conductor depend only on groups where a tame character is trivial (our own). Twisting multiplies each representing matrix by its character value, so every fixed space in the sum stays the same (our own). The full Artin conductor also counts the inertia term, which can change even for a twist of the trivial representation (our own). The conductor theorem proves integrality of the weighted sum (our own).
+
+**Wikipedia:** [Artin conductor](https://en.wikipedia.org/wiki/Artin_conductor). It says: “f(χ) − (χ(1) − χ(G₀))”
+
+**Sources:**
+
+- [Jean-Pierre Serre, Local Fields](https://doi.org/10.1007/978-1-4757-5673-9)
+
 ### Tame ramification is exactly what a projective ring of integers needs
 
 **Remember:** No wild ramification, and the integers form a projective Galois module.
@@ -2087,6 +3881,78 @@
 **Sources:**
 
 - [Emmy Noether, Normalbasis bei Körpern ohne höhere Verzweigung, Journal für die reine und angewandte Mathematik 167 (1932)](https://doi.org/10.1515/crll.1932.167.147)
+
+### Tame ramification makes trace surjective
+
+**Remember:** The trace of one is a unit across a tame totally ramified extension.
+
+*Rules out counterexamples.* MSC 11S15 (Ramification and extension theory). arXiv math.NT. Level 3: graduate.
+
+**Definition.** For a finite extension of p-adic fields, tame means the ramification index is prime to the residue characteristic p. The ramification index is the valuation of a generator of the base maximal ideal, measured in the extension.
+
+**Problem.** The trace on the rings of integers of a finite extension of p-adic fields is onto exactly when the extension is tame.
+
+**How the definition helps.** Tameness makes the totally ramified degree a unit, so the trace of one already generates the integer ring there (our own argument). Split the extension into an unramified stage and a totally ramified stage, where the degree equals the ramification index e. In the unramified stage, trace reduces to the surjective trace between finite residue fields. In the totally ramified stage, trace modulo the maximal ideal sends each residue a to ea. If p divides e, every trace from that stage lies in the intermediate maximal ideal. The unramified trace then lands in the base maximal ideal, proving necessity too (our own argument).
+
+**Wikipedia:** [Ramification (mathematics)](https://en.wikipedia.org/wiki/Ramification_%28mathematics%29). It says: “A finite generically étale extension B/A of Dedekind domains is tame if and only if the trace Tr: B → A is surjective.”
+
+**Sources:**
+
+- [Jean-Pierre Serre, Local Fields (1979)](https://doi.org/10.1007/978-1-4757-5673-9)
+
+### Tameness gives the different exponent
+
+**Remember:** A tame different has exponent one less than the ramification index.
+
+*Rules out counterexamples.* MSC 11S15 (Ramification and extension theory). arXiv math.NT. Level 3: graduate.
+
+**Definition.** The ramification index e measures how much the normalized valuation increases when restricted from the extension to the base field. A finite separable extension of non-Archimedean local fields is tame if its residue characteristic does not divide e. The different is the inverse of the fractional ideal dual to the extension integers under the trace pairing.
+
+**Problem.** For a tame finite Galois extension of non-Archimedean local fields, the different has exponent e − 1.
+
+**How the definition helps.** Tameness removes every higher-group term from the formula for the different exponent (our own). Hilbert’s formula sums the group orders minus one over inertia and the higher ramification groups (our own). Inertia acts trivially on residues and has order e, while all higher groups are trivial in the tame case (our own). In ℚ₂(√2), the integers have basis 1, √2, so the derivative 2√2 generates the different (our own). Its valuation is three, although e − 1 is one (our own).
+
+**Wikipedia:** [Different ideal](https://en.wikipedia.org/wiki/Different_ideal). It says: “is equal to e − 1 if P is tamely ramified”
+
+**Sources:**
+
+- [Jean-Pierre Serre, Local Fields](https://doi.org/10.1007/978-1-4757-5673-9)
+
+### Trace duality makes differents multiply
+
+**Remember:** Trace in stages to multiply the different ideals.
+
+*True by definition.* MSC 11S15 (Ramification and extension theory). arXiv math.NT. Level 3: graduate.
+
+**Definition.** For a finite separable extension L/K of local fields, define the inverse different as the trace dual of the integers. It consists of x in L whose trace after multiplication by any integer of L is integral in K. The different is the inverse fractional ideal.
+
+**Problem.** In a tower M/L/K of finite separable local field extensions, the different for M/K is the product of the two relative differents. Extend the different for L/K to the integers of M before multiplying.
+
+**How the definition helps.** The trace-dual definition converts the tower rule into two successive integrality tests (our own proof). Write O and P for the integer rings of L and M. Trace transitivity shows that x belongs to the inverse different for M/K exactly when Tr₍M/L₎(xP) lies in the trace dual of O. Indeed, P is closed under multiplication by O. If d generates that dual, the condition says x/d belongs to the inverse different for M/L. Invert the resulting ideal identity. Computing the different from a polynomial derivative instead requires a generator of the integer ring as an algebra (our own comparison).
+
+**Wikipedia:** [Different ideal](https://en.wikipedia.org/wiki/Different_ideal). It says: “In a tower of fields L/K/F the relative differents are related by δ₍L/F₎ = δ₍L/K₎ δ₍K/F₎.”
+
+**Sources:**
+
+- [Jean-Pierre Serre, Local Fields (1979)](https://doi.org/10.1007/978-1-4757-5673-9)
+
+### Trace duals make differents multiply
+
+**Remember:** Trace duals compose because traces compose.
+
+*True by definition. Confidence: medium.* MSC 11S15 (Ramification and extension theory). arXiv math.NT. Level 3: graduate.
+
+**Definition.** For a finite separable extension of local fields, an integer is a field element of nonnegative valuation. The inverse different contains exactly those x for which the trace of xy is a base-field integer for every extension-field integer y. The different is its inverse as a fractional ideal, an ideal allowing denominators.
+
+**Problem.** Consider a tower L/K/F of finite separable extensions of non-Archimedean local fields. The different of L/F equals the product of the different of L/K and the extended different of K/F.
+
+**How the definition helps.** The trace definition replaces a calculation with derivatives of defining polynomials by composition of traces (our own). Choose integral bases at both steps and their dual bases for the trace pairing (our own). Trace transitivity shows that products of dual basis elements form the dual basis to the product basis (our own). Thus the inverse differents multiply after extending the lower ideal to the top field (our own). Inverting the ideals gives the formula for differents (our own).
+
+**Wikipedia:** [Different ideal](https://en.wikipedia.org/wiki/Different_ideal). It says: “In a tower of fields L/K/F the relative differents are related by δ(L/F) = δ(L/K)δ(K/F).”
+
+**Sources:**
+
+- [Jean-Pierre Serre, Local Fields](https://doi.org/10.1007/978-1-4757-5673-9)
 
 ### Upper numbering makes ramification groups pass to quotients
 
@@ -2106,6 +3972,253 @@
 
 - [Jean-Pierre Serre, Local Fields, Graduate Texts in Mathematics 67, Springer (1979)](https://doi.org/10.1007/978-1-4757-5673-9)
 
+### Upper ramification indices rescale for subgroups
+
+**Remember:** Restrict upper groups by changing their indices, not their elements.
+
+*Makes the theorem clean to state or prove.* MSC 11S15 (Ramification and extension theory). arXiv math.NT. Level 3: graduate.
+
+**Definition.** For a finite Galois extension of local fields, the lower ramification groups measure how closely automorphisms fix the integers modulo successive ideal powers. Inertia is the group acting trivially on the residue field. For positive lower indices, integrate the reciprocal of each group’s index in inertia, starting at zero. This gives the upper index and leaves indices between −1 and zero unchanged.
+
+**Problem.** Let M/K be a finite Galois extension of local fields and L/K a Galois subextension. Write ψ for the inverse change of index for L/K. For u ≥ −1, intersecting the upper group at u with Gal(M/L) gives the upper group for M/L at ψ(u).
+
+**How the definition helps.** The upper indexing rules combine the subgroup rule for lower numbers and the quotient rule for upper numbers (our own). Our own explanation is that lower indices stay fixed when intersecting with the subgroup. Translating those indices to upper numbers in the two extensions gives the stated change of scale (our own). Herbrand’s quotient theorem is the substantive step behind this translation (our own).
+
+**Paper or page:** [Ramification groups of some finite Galois extensions of maximal nilpotency class over local fields of positive characteristic](https://arxiv.org/abs/2102.07928v4). It says: “Then we have $G<sup>i\\cap</sup> H=H<sup>\\psi (i)</sup>$ for all $i\\geq -1$.”
+
+**Sources:**
+
+- [Ramification groups of some finite Galois extensions of maximal nilpotency class over local fields of positive characteristic](https://arxiv.org/abs/2102.07928v4)
+- [Jean-Pierre Serre, Local Fields (1979)](https://doi.org/10.1007/978-1-4757-5673-9)
+
+### De Rham representations admit tensor products
+
+**Remember:** Tensor invariant bases to get another invariant basis.
+
+*True by definition.* MSC 11S20 (Galois theory), 14F30. arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** Let K be a finite extension of ℚₚ and V a finite-dimensional ℚₚ-vector space with continuous action of its absolute Galois group. Fontaine’s de Rham period field B carries a compatible action with fixed field K. Call V de Rham if extending its scalars to B gives a basis of Galois-fixed vectors.
+
+**Problem.** Tensor products of de Rham representations are de Rham. Their spaces of fixed vectors after extension to B tensor over K.
+
+**How the definition helps.** Tensoring two fixed bases gives a fixed basis for the tensor product (our own proof). In a fixed basis, a vector is fixed exactly when each coefficient belongs to K. This also identifies the space of periods, meaning the fixed vectors after extending scalars. The usual dimension test agrees because fixed vectors independent over K remain independent over B (our own explanation).
+
+**nLab:** [p-adic Hodge theory](https://ncatlab.org/nlab/show/p-adic+Hodge+theory). It says: “If the dimension of V is equal to the dimension of V₍dR₎, we say that V is de Rham.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Cartier duals detect missing roots
+
+**Remember:** Keep the Galois action on the roots when taking the dual.
+
+*Makes the theorem clean to state or prove.* MSC 11S25 (Galois cohomology). arXiv math.NT. Level 3: graduate.
+
+**Definition.** A finite Galois module is a finite abelian group with a continuous action of field automorphisms. Its Cartier dual consists of homomorphisms into the multiplicative group of a separable closure. Each automorphism acts on a homomorphism by applying its inverse to the input and itself to the output. For the constant module ℤ/nℤ, the dual thus consists of the nth roots of unity with their field action.
+
+**Problem.** Let K be a p-adic field and n a positive integer. The order of H²(K, ℤ/nℤ) is the number of nth roots of unity in K.
+
+**How the definition helps.** The Cartier dual makes the size of a cohomology group a count of roots in the base field (our own). Tate local duality identifies second Galois cohomology with the character group of the fixed points of the dual. These finite groups have the same size (our own). For n = 3 over ℚ₂, only one cube root is fixed, while a trivial action would fix all three (our own).
+
+**Paper or page:** [Duality for the condensed Weil-étale realisation of 1-motives over p-adic fields](https://arxiv.org/abs/2502.19910v2). It says: “Then we have a perfect cup-product pairing\\\[  \\H^ q(G<sub>F</sub>,N)\\otimes \\H^ {2-q}(G<sub>F</sub>,\\operatorname{Hom}(N,\\overline{F}<sup>\\times </sup>))\\rightarrow \\H^ 2(G<sub>F</sub>,\\overline{F}<sup>\\times </sup>)=\\mathbbm {Q}/\\mathbbm {Z}.  \\\]”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Norm-one tori count local norms
+
+**Remember:** The first cohomology of the norm-one torus counts missing norms.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11S25 (Galois cohomology), 11S31. arXiv math.NT. Level 3: graduate.
+
+**Definition.** For a finite separable extension L/K, view multiplication in L as an algebraic group over K. Its norm sends a nonzero element to the product of its conjugates. The norm-one torus T is the kernel of this map. A torus is an algebraic group that becomes a product of multiplicative groups over a separable closure.
+
+**Problem.** For a finite abelian extension L/K of non-Archimedean local fields, H¹(K, T) has order \[L:K\].
+
+**How the definition helps.** The kernel definition turns first Galois cohomology into a group measuring which elements fail to be norms (our own). The cohomology sequence sends each nonzero base element to the obstruction to solving its norm equation (our own). Hilbert’s theorem 90 and Shapiro’s lemma make this map onto, with kernel the norms (our own). Local reciprocity identifies the quotient with the Galois group, whose order is \[L:K\] (our own).
+
+**nLab:** [Galois cohomology](https://ncatlab.org/nlab/show/Galois+cohomology). It says: “Galois cohomology refers to the group cohomology of G with coefficients in a G-module naturally associated to L.”
+
+**Wikipedia:** [Local class field theory](https://en.wikipedia.org/wiki/Local_class_field_theory). It says: “the reciprocity map induces an isomorphism of the quotient group K×/N(L×)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Unramified classes are Frobenius quotients
+
+**Remember:** Remove inertia, then one Frobenius operator computes the group.
+
+*True by definition.* MSC 11S25 (Galois cohomology), 11F80. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let M be a finite abelian group with continuous action of the Galois group of a local field with finite residue field. Inertia is the subgroup acting trivially on the residue field. Call a first cohomology class unramified if it comes from the residue field’s Galois group acting on the inertia-fixed elements of M.
+
+**Problem.** Write A for the inertia-fixed subgroup and F for Frobenius, the map raising residues to the residue field size. The unramified first cohomology group is A modulo the image of F − 1.
+
+**How the definition helps.** Passing to the residue field leaves a group generated topologically by Frobenius (our own). A cocycle assigns values by the rule c(gh) = c(g) + g c(h), so its value at F determines it (our own). Every value in A works because a sufficiently large finite cyclic quotient accommodates both the action and the additive orders (our own). Changing the cocycle representative adds an element of (F − 1)A at F (our own). The inflation–restriction theorem identifies this description with classes that vanish on inertia (our own).
+
+**nLab:** [Selmer group](https://ncatlab.org/nlab/show/Selmer+group). It says: “the unramified local condition is defined as follows:”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Cup products invert swapped symbols
+
+**Remember:** Swapping two degree-one classes inverts their Hilbert symbol.
+
+*True by definition. Confidence: medium.* MSC 11S31 (Class field theory; \\(p\\)-adic formal groups), 11S25. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let K be a non-Archimedean local field containing a chosen primitive nth root of unity, with n prime to the field characteristic. The Kummer class of a nonzero element records how field automorphisms move an nth root. Define the Hilbert symbol using cup product, the multiplication of these cohomology classes. The chosen root and local invariant identify the resulting class with an nth root of unity.
+
+**Problem.** The nth Hilbert symbols of (a, b) and (b, a) multiply to one.
+
+**How the definition helps.** Cup product replaces comparison of two norm residue calculations by the sign rule for multiplying cohomology classes (our own). Swapping two degree-one classes negates their product, after exchanging the coefficient factors (our own). With the chosen root, that exchange acts trivially and negation becomes inversion (our own). Identifying this construction with the symbol defined by local reciprocity supplies the substantive comparison (our own).
+
+**Wikipedia:** [Hilbert symbol](https://en.wikipedia.org/wiki/Hilbert_symbol). It says: “skew symmetric: (a,b) = (b,a)⁻¹”
+
+**Sources:**
+
+- [Jean-Pierre Serre, Local Fields](https://doi.org/10.1007/978-1-4757-5673-9)
+
+### Fundamental classes make norms commute
+
+**Remember:** Compatible fundamental classes turn norm compatibility into the projection formula.
+
+*True by definition. Confidence: medium.* MSC 11S31 (Class field theory; \\(p\\)-adic formal groups), 11S25. arXiv math.NT. Level 3: graduate.
+
+**Definition.** For a finite Galois extension E/K of non-Archimedean local fields, its fundamental class is the Brauer class with local invariant 1/\[E:K\] modulo integers. Brauer classes describe central simple algebras up to passage to matrix algebras. Define inverse reciprocity by cup product with this class, a multiplication in group cohomology.
+
+**Problem.** Let L be intermediate between K and E. Inclusion of the two Galois groups induces a map after quotienting each group by its commutators. Under inverse reciprocity this is the norm map from L×/N(E×) to K×/N(E×), using norms from E to each base field.
+
+**How the definition helps.** Defining inverse reciprocity by multiplication makes norm compatibility an instance of the projection formula (our own). Restricting the fundamental class to the smaller Galois group gives its fundamental class. The projection formula lets the map back to the larger group pass through multiplication by that class (our own). On the two sides this map gives group inclusion after abelianization and the field norm, respectively (our own). The local invariant theorem and Tate’s cup product isomorphism justify the construction (our own).
+
+**Wikipedia:** [Class formation](https://en.wikipedia.org/wiki/Class_formation). It says: “the restriction (of cohomology classes) of a fundamental class is another fundamental class.”
+
+**Sources:**
+
+- [John Tate, The Higher Dimensional Cohomology Groups of Class Field Theory](https://doi.org/10.2307/1969801)
+- [Jean-Pierre Serre, Local Fields](https://doi.org/10.1007/978-1-4757-5673-9)
+
+### Lubin–Tate torsion extends cyclotomy
+
+**Remember:** Formal group torsion supplies the unit directions that cyclotomy misses.
+
+*Makes the theorem clean to state or prove.* MSC 11S31 (Class field theory; \\(p\\)-adic formal groups). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let K be a finite extension of ℚₚ and choose a generator π of its maximal ideal. A Lubin–Tate formal group describes addition and scalar multiplication by power series. Multiplication by π has linear coefficient π and reduces to raising to the residue field size. Its division tower adjoins all points killed by repeated multiplication by π.
+
+**Problem.** The division tower and the maximal unramified extension together generate the maximal abelian extension of K. If \[K:ℚₚ\] exceeds one, adjoining all roots of unity of p-power order to the maximal unramified extension gives a smaller field.
+
+**How the definition helps.** Choosing division by π supplies an action by the full unit group of K (our own). Lubin–Tate reciprocity identifies that group with the Galois group of the division tower (our own). Together with the maximal unramified extension, this gives every abelian extension. Up to finite index, the units have \[K:ℚₚ\] independent p-adic directions (our own). Roots of unity of p-power order yield at most one such direction, even over the maximal unramified extension (our own).
+
+**Paper or page:** [Théorie locale du corps de classes et (φ,Γ)-modules Lubin-Tate](https://arxiv.org/abs/2511.13986v1). It says: “L'extension Fⁿʳ · F∞ est l'extension abélienne maximale de F”
+
+**Sources:**
+
+- [Jonathan Lubin and John Tate, Formal Complex Multiplication in Local Fields](https://doi.org/10.2307/1970622)
+
+### Lubin–Tate torsion gives abelian extensions
+
+**Remember:** Torsion carries scalar multiplication, so Galois acts through units.
+
+*Makes the theorem clean to state or prove.* MSC 11S31 (Class field theory; \\(p\\)-adic formal groups), 11S15. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let K be a complete discretely valued field with finite residue field of size q. A uniformizer π generates the maximal ideal of its integer ring O. A Lubin–Tate formal group uses power series over O for addition and scalar multiplication. Multiplication by π has linear term πx and reduces to the qth power modulo π.
+
+**Problem.** For n ≥ 1, adjoining all points killed by πⁿ gives a totally ramified extension, meaning its ramification index equals its degree. Its Galois group is the unit group of O modulo πⁿ, that is, (O/πⁿO)ˣ.
+
+**How the definition helps.** Scalar multiplication puts the torsion points in a module whose automorphisms commute (our own explanation). The substantive steps prove this module is free of rank one over O/πⁿO and every unit occurs as a Galois action. A polynomial for a generating point gives the degree and total ramification (our own account).
+
+**Wikipedia:** [Lubin–Tate formal group law](https://en.wikipedia.org/wiki/Lubin%E2%80%93Tate_formal_group_law). It says: “The compositum of all fields formed by adjoining such modules to the original field gives the ramified part.”
+
+**Sources:**
+
+- [Jonathan Lubin and John Tate, Formal Complex Multiplication in Local Fields (1965)](https://doi.org/10.2307/1970622)
+
+### Openness rules out false norm groups
+
+**Remember:** A finite quotient must also be continuous to describe a class field.
+
+*Rules out counterexamples.* MSC 11S31 (Class field theory; \\(p\\)-adic formal groups). arXiv math.NT. Level 3: graduate.
+
+**Definition.** In local class field theory use open subgroups of finite index in the multiplicative group. Openness requires the subgroup to contain all units sufficiently close to one. Finite index alone does not impose this condition in positive characteristic.
+
+**Problem.** Open subgroups of finite index are precisely the norm subgroups of finite abelian extensions. Finite index subgroups need not be norm subgroups.
+
+**How the definition helps.** Openness excludes dense proper subgroups that a finite-index test accepts (our own). Take the Laurent series field over the field of p elements and divide its multiplicative group by pth powers (our own). The quotient is a vector space over the field of p elements (our own). Products over subsets of the factors 1 + tⁿ, with positive n prime to p, give uncountably many classes (our own). The first differing term in two products has degree prime to p, whereas pth powers have only degrees divisible by p (our own). A nonzero linear functional can thus vanish on the countable image of the dense rational function group (our own). Its kernel pulls back to a dense index p subgroup, whereas the local existence theorem requires openness (our own).
+
+**Wikipedia:** [Local class field theory](https://en.wikipedia.org/wiki/Local_class_field_theory). It says: “between open subgroups of finite index in the multiplicative group”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Primitive torsion polynomials are Eisenstein
+
+**Remember:** Removing the earlier torsion leaves an Eisenstein polynomial.
+
+*True by definition.* MSC 11S31 (Class field theory; \\(p\\)-adic formal groups), 11S15. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let π generate the maximal ideal of a non-Archimedean local field and let q be the residue field size. Choose f(X) = πX + Xᑫ as the power series for multiplication by π in a Lubin–Tate formal group. Primitive points of level n are the new roots of the nth iterate, for n ≥ 1.
+
+**Problem.** A primitive point of level n generates a totally ramified extension of degree (q − 1)qⁿ⁻¹.
+
+**How the definition helps.** Choosing this polynomial makes the equation for the new roots Eisenstein without computing their conjugates (our own). Dividing successive iterates gives π plus the preceding iterate raised to the power q − 1 (our own). This monic polynomial reduces to a pure power of X and its constant term is π (our own). Eisenstein’s criterion gives irreducibility, and adjoining a root gives total ramification, with unchanged residue field (our own). The degree follows by multiplying degrees under composition (our own).
+
+**Wikipedia:** [Lubin–Tate formal group law](https://en.wikipedia.org/wiki/Lubin%E2%80%93Tate_formal_group_law). It says: “If g is an Eisenstein polynomial, f(t) = tg(t) and F the Lubin–Tate formal group”
+
+**Sources:**
+
+- [Jonathan Lubin and John Tate, Formal Complex Multiplication in Local Fields](https://doi.org/10.2307/1970622)
+
+### Strict isomorphisms preserve division fields
+
+**Remember:** Changing coordinates changes torsion points but not their fields.
+
+*True by definition.* MSC 11S31 (Class field theory; \\(p\\)-adic formal groups). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Fix a generator π of the maximal ideal of a non-Archimedean local field. A Lubin–Tate formal module describes addition and multiplication by integers of the field through power series. A strict isomorphism is an invertible change of coordinate over those integers with linear coefficient one that respects both operations.
+
+**Problem.** For fixed π, every Lubin–Tate formal module generates the same field at each division level.
+
+**How the definition helps.** A coordinate change respecting multiplication by π identifies the division points without comparing their defining polynomials (our own). At level n these are the points killed by n successive multiplications by π (our own). Their positive valuations ensure the change of coordinate and its inverse converge in the fields generated by the points (our own). The two inclusions give equality of fields (our own). The substantial input is the existence of a strict isomorphism for a fixed π (our own).
+
+**Wikipedia:** [Lubin–Tate formal group law](https://en.wikipedia.org/wiki/Lubin%E2%80%93Tate_formal_group_law). It says: “All such group laws, for different choices of e satisfying these conditions, are strictly isomorphic.”
+
+**Sources:**
+
+- [Jonathan Lubin and John Tate, Formal Complex Multiplication in Local Fields](https://doi.org/10.2307/1970622)
+
+### Unit levels detect wild ramification
+
+**Remember:** Level one detects wild ramification, while level zero detects inertia.
+
+*Makes the theorem clean to state or prove.* MSC 11S31 (Class field theory; \\(p\\)-adic formal groups), 11S15. arXiv math.NT. Level 3: graduate.
+
+**Definition.** For a finite abelian extension of non-Archimedean local fields, the conductor exponent is the first unit level consisting entirely of norms. Level zero contains all units of the base field. For positive n, level n contains the units congruent to one modulo the nth power of the maximal ideal.
+
+**Problem.** The conductor exponent is zero for unramified extensions and one for ramified tame extensions. It is at least two for wild extensions.
+
+**How the definition helps.** Testing the first two unit levels distinguishes all three cases (our own). Local reciprocity maps units onto inertia, the group acting trivially on the residue field (our own). It maps level one onto wild inertia, the subgroup of inertia of order a power of the residue characteristic (our own). Trivial inertia means unramified, and nontrivial inertia means ramified (our own). Ramification is tame exactly when wild inertia is trivial (our own).
+
+**Wikipedia:** [Conductor (class field theory)](https://en.wikipedia.org/wiki/Conductor_%28class_field_theory%29). It says: “Equivalently, n is the smallest integer such that the local Artin map is trivial”
+
+**Sources:**
+
+- [Jean-Pierre Serre, Local Fields](https://doi.org/10.1007/978-1-4757-5673-9)
+
+### Unramified norms have divisible valuations
+
+**Remember:** An unramified norm has valuation divisible by the extension degree.
+
+*True by definition. Confidence: medium.* MSC 11S31 (Class field theory; \\(p\\)-adic formal groups). arXiv math.NT. Level 3: graduate.
+
+**Definition.** A non-Archimedean local field is complete for a discrete valuation and has finite residue field. Normalize the valuation so a generator of the maximal ideal has value one. For an unramified extension, define the Artin map by raising arithmetic Frobenius to that valuation. Arithmetic Frobenius acts on residues by raising them to the size of the base residue field.
+
+**Problem.** In the unramified extension of degree n of a non-Archimedean local field, the norms are exactly the elements with valuation divisible by n.
+
+**How the definition helps.** Writing the Artin image as a Frobenius power replaces a product of conjugates with a divisibility test (our own). Frobenius has order n, so its power is trivial exactly when n divides the valuation (our own). Local reciprocity identifies this kernel with the norm group (our own).
+
+**Wikipedia:** [Local class field theory](https://en.wikipedia.org/wiki/Local_class_field_theory). It says: “the reciprocity map induces an isomorphism of the quotient group K×/N(L×)”
+
+**Sources:**
+
+- [Helmut Hasse, Die Normenresttheorie relativ-Abelscher Zahlkörper als Klassenkörpertheorie im Kleinen](https://doi.org/10.1515/crll.1930.162.145)
+- [Jean-Pierre Serre, Local Fields](https://doi.org/10.1007/978-1-4757-5673-9)
+
 ### The Weil group makes the reciprocity map an isomorphism
 
 **Remember:** Allow only integer powers of Frobenius, and K× matches exactly.
@@ -2124,6 +4237,112 @@
 
 - [André Weil, Sur la théorie du corps de classes, Journal of the Mathematical Society of Japan 3 (1951)](https://doi.org/10.2969/jmsj/00310001)
 
+### Weil characters need not be periodic
+
+**Remember:** Discrete Frobenius powers allow arbitrary nonzero complex eigenvalues.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11S37 (Langlands-Weil conjectures, nonabelian class field theory), 11S20. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let K be a local field with residue field of size q. Its Weil group consists of absolute Galois automorphisms acting on the algebraic residue field by integer powers of Frobenius, the qth power map. Inertia is the kernel of this action. Give inertia its usual topology and make it an open subgroup.
+
+**Problem.** A complex character of the Weil group that is trivial on inertia can assign any nonzero complex number to Frobenius. It extends continuously to the absolute Galois group exactly when that number is a root of unity.
+
+**How the definition helps.** Making inertia open gives a discrete quotient ℤ, so its generator can have any nonzero complex character value (our own argument). The absolute Galois quotient is instead the inverse limit of all finite cyclic quotients of ℤ. A small arc around 1 in the unit circle contains no nontrivial subgroup. Continuity and compactness therefore force a character of this inverse limit to have finite image. Every root of unity gives a character through a finite cyclic quotient (our own argument).
+
+**nLab:** [Weil group](https://ncatlab.org/nlab/show/Weil+group). It says: “defined as the inverse image of Frobenius automorphisms”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Brauer invariants equate period and index
+
+**Remember:** The reduced denominator gives both the period and the index.
+
+*Makes the theorem clean to state or prove.* MSC 11S45 (Algebras and orders, and their zeta functions), 11S25. arXiv math.NT. Level 3: graduate.
+
+**Definition.** A central simple algebra is a finite-dimensional algebra with center the base field and no nontrivial two-sided ideals. Its Brauer class identifies matrix algebras over the same division algebra. The index is the square root of that division algebra’s dimension over its center. The period is the order of the class under tensor product.
+
+**Problem.** For a central simple algebra over a non-Archimedean local field, its period equals its index.
+
+**How the definition helps.** The local invariant turns both quantities into the denominator of one reduced fraction (our own). It identifies the Brauer group with the rationals modulo the integers, so that denominator is the period (our own). Extending scalars multiplies the invariant by the extension degree (our own). The unramified extension of degree equal to the denominator therefore splits the algebra, making it a matrix algebra (our own). The index divides every splitting degree, and the period divides the index (our own). The classification by local invariants supplies the essential theorem (our own).
+
+**Wikipedia:** [Brauer group](https://en.wikipedia.org/wiki/Brauer_group). It says: “the index of A is equal to the period of A.”
+
+**Sources:**
+
+- [Jean-Pierre Serre, Local Fields](https://doi.org/10.1007/978-1-4757-5673-9)
+
+### Scalar extension multiplies Brauer invariants
+
+**Remember:** Extending scalars multiplies the invariant by the extension degree.
+
+*True by definition. Confidence: medium.* MSC 11S45 (Algebras and orders, and their zeta functions), 11S25. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Over a non-Archimedean local field, identify two central simple algebras if matrix algebras over them are isomorphic. The resulting equivalence classes are Brauer classes. Represent a class by an unramified cyclic extension of degree n and an element u acting on that field by Frobenius conjugation. The invariant is the normalized valuation of uⁿ divided by n, taken modulo the integers.
+
+**Problem.** For any finite extension E/K of non-Archimedean local fields, the invariant of the restricted Brauer class is \[E:K\] times the original invariant.
+
+**How the definition helps.** The invariant replaces matrix calculations with multiplication by two field degrees (our own). Write it as the parameter valuation times the character value 1/n on arithmetic Frobenius (our own). Extending scalars multiplies the valuation by the ramification index, the factor by which normalized valuations change (our own). The new Frobenius is the old one raised to the residue field degree, multiplying the character value by that degree (our own). The two factors multiply to the extension degree (our own). The cyclic algebra classification and independence of the representative supply the hard steps (our own).
+
+**Wikipedia:** [Hasse invariant of an algebra](https://en.wikipedia.org/wiki/Hasse_invariant_of_an_algebra). It says: “The invariant map attaches the element k/n mod 1 to the class.”
+
+**Sources:**
+
+- [Jean-Pierre Serre, Local Fields](https://doi.org/10.1007/978-1-4757-5673-9)
+
+### Finite differences extract Mahler coefficients
+
+**Remember:** One difference lowers the binomial degree by one.
+
+*True by definition.* MSC 11S80 (Other analytic theory (analogues of beta and gamma functions, \\(p\\)-adic integration, etc.)). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let f be a continuous function from the p-adic integers ℤₚ to the p-adic numbers ℚₚ. Expand f in the binomial polynomials binom(x, n). The forward difference is Δf(x) = f(x + 1) − f(x).
+
+**Problem.** In the Mahler expansion of f, the coefficient of binom(x, n) is the nth forward difference of f at zero.
+
+**How the definition helps.** The binomial basis makes Δ lower the index by one, by Pascal’s identity (our own calculation). At zero, every positive-index basis polynomial vanishes. Applying Δ repeatedly therefore picks out one coefficient at a time (our own calculation). With ordinary powers, each difference mixes several degrees. Mahler’s theorem supplies the uniformly convergent expansion.
+
+**Wikipedia:** [Mahler's theorem](https://en.wikipedia.org/wiki/Mahler%27s_theorem). It says: “the coefficients aₙ = (Δⁿf)(0) → 0 in ℚₚ as n → ∞.”
+
+**Sources:**
+
+- [Kurt Mahler, An Interpolation Series for Continuous Functions of a p-adic Variable (1958)](https://doi.org/10.1515/crll.1958.199.23)
+
+### Kummer congruences determine measures
+
+**Remember:** Congruences on a dense set are continuity tests for the integral.
+
+*Makes the theorem clean to state or prove.* MSC 11S80 (Other analytic theory (analogues of beta and gamma functions, \\(p\\)-adic integration, etc.)). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let ℂₚ be the completed algebraic closure of the p-adic numbers. Write O for its elements of absolute value at most one. An integral measure on the p-adic units is a continuous ℂₚ-linear functional on continuous ℂₚ-valued functions that sends O-valued functions into O.
+
+**Problem.** Suppose continuous O-valued functions have dense ℂₚ-linear span, and assign each a value in O. These values come from a unique integral measure exactly when every finite ℂₚ-linear combination satisfies the following test. For every integer m, if the combined function takes values in pᵐO everywhere, the combined assigned value lies in pᵐO.
+
+**How the definition helps.** The functional definition turns the existence question into a bound on finite linear combinations (our own explanation). The test sends zero relations to zero and gives continuity on the span. Density and completeness then give a unique extension (our own argument).
+
+**Paper or page:** [On p-adic Measures for Quaternionic Modular Forms](https://arxiv.org/abs/2209.11822v3). It says: “is equivalent to the following Kummer congruences”
+
+**Sources:**
+
+- [On p-adic Measures for Quaternionic Modular Forms](https://arxiv.org/abs/2209.11822v3)
+
+### Trace duals locate character conductors
+
+**Remember:** The inverse different is the largest ideal the trace character kills.
+
+*True by definition. Confidence: medium.* MSC 11S80 (Other analytic theory (analogues of beta and gamma functions, \\(p\\)-adic integration, etc.)), 11S15. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let L/K be a finite separable extension of non-Archimedean local fields. Its inverse different consists of elements x such that the trace of xy is integral for every integer y of L. An additive character sends sums to products of complex numbers of absolute value one. Choose one on K whose largest fractional ideal of triviality is the integer ring, and compose it with the trace.
+
+**Problem.** The pulled-back additive character is trivial on a fractional ideal of L precisely when that ideal is contained in the inverse different.
+
+**How the definition helps.** The trace definition identifies the conductor directly, without computing a generator of the different (our own). The trace of a nonzero fractional ideal is a fractional ideal of K by linearity and separability (our own). The character kills this image exactly when it lies in the base integer ring (our own). Multiplying by any extension integer preserves the original ideal, so this integrality tests every pairing defining the inverse different (our own).
+
+**Wikipedia:** [Different ideal](https://en.wikipedia.org/wiki/Different_ideal). It says: “It plays a basic role in Pontryagin duality for p-adic fields.”
+
+**Sources:**
+
+- [Jean-Pierre Serre, Local Fields](https://doi.org/10.1007/978-1-4757-5673-9)
+
 ### Limits of powers make the Teichmüller lift multiplicative
 
 **Remember:** Limits preserve products, and one more power shifts the sequence.
@@ -2137,6 +4356,40 @@
 **How the definition helps.** With the limit definition, multiplicativity follows by taking limits of products of the powers. Taking the pth power shifts the sequence by one term, which proves the root equation (our own). The work moves into proving that congruence modulo pᵏ implies congruence of pth powers modulo pᵏ⁺¹ for k ≥ 1 (our own). Successive powers agree modulo increasing powers of p, so they converge, and the same estimate proves independence from a (our own). The root definition instead uses uniqueness to compare the lift of xy with the product of the lifts (our own).
 
 **Wikipedia:** [Teichmüller character](https://en.wikipedia.org/wiki/Teichm%C3%BCller_character). It says: “If x is an integer mod p, then ω(x) is the unique solution of ω(x)ᵖ = ω(x) that is congruent to x mod p.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Principal units have unique prime-to-p roots
+
+**Remember:** A principal unit has just one prime-to-p root with residue one.
+
+*Rules out counterexamples.* MSC 11S85 (Other nonanalytic theory). arXiv math.NT. Level 3: graduate.
+
+**Definition.** In a finite extension of the p-adic numbers, reduce each integer modulo the maximal ideal to obtain its residue. The principal units are the integers with residue one.
+
+**Problem.** For each positive integer m prime to p, raising to the mth power is an automorphism of the principal units of a p-adic field.
+
+**How the definition helps.** Restricting to principal units fixes the residue of the root in advance (our own proof). For a principal unit u, the equation xᵐ = u has the simple root 1 modulo the maximal ideal. Its derivative there is m, which is nonzero in the residue field. Hensel’s lemma lifts that root uniquely with the same residue. Among all units the assertion fails because −1 has no square root modulo 3 (our own example).
+
+**Paper or page:** [Duality for condensed cohomology of the Weil group of a p-adic field](https://arxiv.org/abs/2402.05565v1). It says: “For m coprime to p, the continuous homomorphism (−)ᵐ: 𝒰ₖⁿ → 𝒰ₖⁿ is an isomorphism of topological groups.”
+
+**Sources:**
+
+- [Duality for condensed cohomology of the Weil group of a p-adic field](https://arxiv.org/abs/2402.05565v1)
+
+### Negative Gauss sums lift multiplicatively
+
+**Remember:** Negating each Gauss sum absorbs the sign in the lifting formula.
+
+*Makes the theorem clean to state or prove.* MSC 11T24 (Other character sums and Gauss sums). arXiv math.NT. Level 3: graduate.
+
+**Definition.** A multiplicative character χ sends products to products, and an additive character ψ sends sums to products of complex numbers of absolute value one. Define the signed Gauss sum as the negative of the sum of χ(x)ψ(x) over nonzero field elements. Over an extension, evaluate χ on the norm, the product of conjugates, and ψ on the trace, their sum.
+
+**Problem.** For nontrivial characters over a finite field, the signed sum over an extension of degree n equals the nth power of the signed base sum.
+
+**How the definition helps.** In our own normalization, taking the negative absorbs the alternating sign in the Davenport–Hasse lifting theorem. That theorem supplies the relation between fields for the ordinary Gauss sums. Multiplying its formula by −1 gives precisely the nth power of the signed base sum.
+
+**Paper or page:** [Davenport and Hasse's theorems and lifts of multiplication matrices of Gaussian periods](https://arxiv.org/abs/2105.14872). It says: “Then, for any integer n ≥ 1, we have Gₙᵣ(ψ′) = (−1)ⁿ⁻¹Gᵣ(ψ)ⁿ”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -2194,6 +4447,40 @@
 
 - [Vitaly Bergelson, Andreu Ferré Moragues, An ergodic correspondence principle, invariant means and applications, arXiv:2003.03029 (2020)](https://arxiv.org/abs/2003.03029v2)
 
+### Intersective polynomials remove modular obstructions
+
+**Remember:** If a polynomial misses zero modulo q, multiples of q avoid its differences.
+
+*Rules out counterexamples.* MSC 11B05 (Density, gaps, topology), 11B30. arXiv math.NT. Level 4: research.
+
+**Definition.** An integer polynomial is intersective if it has a root modulo every positive integer.
+
+**Problem.** Suppose a set occupies a fixed positive fraction of {1, …, N} for arbitrarily large N. For every nonconstant intersective polynomial h, two distinct members have difference h(n) for some positive integer n.
+
+**How the definition helps.** Intersectivity excludes an obstruction from the multiples of any integer q. In our own argument, their differences are multiples of q, so they miss every value of a polynomial without a root modulo q. For example, no two even integers differ by 2n + 1. The cited density bound proves that removing all such obstructions suffices.
+
+**Paper or page:** [A maximal extension of the Bloom-Maynard bound for sets with no square differences](https://arxiv.org/abs/2303.03345v1). It says: “for any intersective polynomial h ∈ ℤ\[x\] of degree k”
+
+**Sources:**
+
+- [A maximal extension of the Bloom–Maynard bound for sets with no square differences](https://arxiv.org/abs/2303.03345v1)
+
+### Circle values extend cubic phases
+
+**Remember:** Cube differences see polynomial phases whose values are not signs.
+
+*Rules out counterexamples.* MSC 11B30 (Arithmetic combinatorics; higher degree uniformity). arXiv math.NT. Level 4: research.
+
+**Definition.** On a binary vector space, let P take values modulo 1. A difference in direction h replaces P(x) by P(x + h) − P(x). Say P has degree at most d if every sequence of d + 1 differences gives zero. Its phase is exp(2πiP), whereas a polynomial taking binary values gives a phase taking only signs.
+
+**Problem.** On the two-element group, set P(0) = 0 and P(1) = 1/8. This cubic has a phase that passes the fourth-difference test but cannot equal a constant times a sign-valued phase.
+
+**How the definition helps.** Circle-valued polynomials capture phases that pass the difference test even when sign-valued polynomials miss them. In our own calculation, successive unit differences at zero are 1/8, −1/4, 1/2 and 0 modulo 1. At one these differences have opposite signs, and any zero step gives zero. The ratio of the two phase values is exp(πi/4), which cannot occur between two signs. The cited theorem classifies these polynomials in every degree.
+
+**Paper or page:** [Non-classical polynomials and the inverse theorem](https://arxiv.org/abs/2107.07495v1). It says: “Then P : V → ℝ/ℤ is a non-classical polynomial of degree at most d if and only if it can be expressed in the form”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Entropic doubling contracts under homomorphisms
 
 **Remember:** Measure doubling with entropy, and homomorphisms can only shrink it.
@@ -2230,6 +4517,24 @@
 
 - [Pablo Candela, Notes on nilspaces: algebraic aspects, arXiv:1601.03693 (2017). Discrete Analysis, 2017:15, 59pp](https://arxiv.org/abs/1601.03693v3)
 
+### Sidon sets give error-correcting codes
+
+**Remember:** Repeated pair sums are exactly the short column relations that spoil the code.
+
+*Makes the theorem clean to state or prove.* MSC 11B75 (Other combinatorial number theory), 94B05. arXiv math.CO, math.NT. Level 4: research.
+
+**Definition.** In a binary vector space, call a set Sidon if its unordered pairs of distinct elements have distinct sums. Translate such a set to contain zero. Use its nonzero elements as the columns of a matrix over the field with two elements. A binary linear code is a subspace of such binary vectors.
+
+**Problem.** Let n &gt; t ≥ 2. A Sidon set of size n + 1 exists in the t-dimensional binary vector space exactly when a certain binary linear code exists. The code has length n, dimension n − t, and no nonzero word with fewer than five nonzero coordinates.
+
+**How the definition helps.** Using the set as matrix columns turns each short codeword into an equality of pair sums. In our own proof, distinct nonzero columns rule out relations of length one or two. Since the set contains zero, a relation of length three or four would repeat a pair sum. The matrix kernel therefore contains a code of dimension n − t with the required minimum weight. Conversely, write the given code as the kernel of a matrix with t rows. Its columns have no relation involving one to four distinct positions, so adjoining zero gives the required Sidon set.
+
+**Paper or page:** [Sidon sets, sum-free sets and linear codes](https://arxiv.org/abs/2304.07906v3). It says: “There is no Sidon set M ⊆ 𝔽₂ᵗ of size n + 1.”
+
+**Sources:**
+
+- [Sidon sets, sum-free sets and linear codes](https://arxiv.org/abs/2304.07906v3)
+
 ### Oriented quadratic algebras let twisted binary forms describe Picard groups
 
 **Remember:** Orient the algebra first, then the form classes give its ideal classes.
@@ -2247,6 +4552,22 @@
 **Sources:**
 
 - [William Dallaporta, Recovering the Picard group of quadratic algebras from Wood's binary quadratic forms, arXiv:2111.13422v5 (2024)](https://arxiv.org/abs/2111.13422v5)
+
+### Primitive values distinguish binary forms
+
+**Remember:** Use coprime inputs to tell primitive forms apart.
+
+*Rules out counterexamples.* MSC 11E16 (General binary quadratic forms). arXiv math.NT. Level 4: research.
+
+**Definition.** A binary quadratic form is a polynomial ax² + bxy + cy². An integral form is primitive if its coefficients have greatest common divisor one. Its primitive values come from integer pairs with coprime coordinates. Its discriminant is b² − 4ac.
+
+**Problem.** Primitive integral binary quadratic forms with nonsquare discriminants are equivalent if they have the same primitive values. Equivalence means an invertible integer change of variables.
+
+**How the definition helps.** Coprime inputs distinguish two inequivalent forms that represent the same integers when all inputs count (our own). The forms x² + xy + y² and x² + 3y² have the same ordinary values but different discriminants. The first represents 4 only when both coordinates are even, while the second gives 4 at (1,1) (our own). Fouvry and Koymans prove that equal primitive value sets force equivalence.
+
+**Paper or page:** [Binary quadratic forms with the same value set](https://arxiv.org/abs/2404.09575v2), [Binary quadratic forms with the same value set](https://arxiv.org/abs/2404.09575v2). It says: “Let F and G be two primitive quadratic forms, with non square discriminants and with F(ℤ²ₚᵣᵢₘ) = G(ℤ²ₚᵣᵢₘ).”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Forms with integer matrix need only 1 to 15 to be universal
 
@@ -2302,6 +4623,146 @@
 - [C. L. Siegel, Über die analytische Theorie der quadratischen Formen, Ann. of Math. 36 (1935) 527–606](https://doi.org/10.2307/1968644)
 - [J. H. Conway and N. J. A. Sloane, Low-dimensional lattices. IV. The mass formula, Proc. Roy. Soc. London A 419 (1988)](https://doi.org/10.1098/rspa.1988.0107)
 
+### Big theta quotients detect pairs
+
+**Remember:** Take the largest quotient with the desired first action.
+
+*True by definition.* MSC 11F27 (Theta series; Weil representation; theta correspondences), 11F70. arXiv math.NT, math.RT. Level 4: research.
+
+**Definition.** Over a p-adic field of odd residue characteristic, take an orthogonal group and a symplectic group acting together in the Weil representation. Use their covering groups when the action requires them. For an irreducible smooth complex representation π of the first group, take the largest quotient on which that group acts by copies of π. Write this quotient as π tensored with Θ(π), called the big theta lift.
+
+**Problem.** Take an irreducible smooth complex representation σ of the second group. The Weil representation surjects onto π tensored with σ exactly when Θ(π) surjects onto σ. Such a σ is unique up to isomorphism and is called the small theta lift.
+
+**How the definition helps.** The largest quotient collects all maps onto pairs with first factor π in a single representation (our own). Its defining property reduces testing each pair separately to testing quotients of Θ(π) (our own). Howe duality proves the further assertion that a nonzero big lift has a unique irreducible quotient.
+
+**Paper or page:** [Equal rank local theta correspondence as a strong Morita equivalence](https://arxiv.org/abs/2207.13484v3). It says: “Θ(π) is either zero or has a unique irreducible quotient, so that θ(π) is irreducible.”
+
+**Sources:**
+
+- [Wee Teck Gan and Shuichiro Takeda, A proof of the Howe duality conjecture](https://doi.org/10.1090/jams/839)
+
+### Transposition gives Hecke duality
+
+**Remember:** Duality swaps the two maps and replaces each isogeny by its dual.
+
+*Makes the theorem clean to state or prove.* MSC 11F60 (Hecke-Petersson operators, differential operators (several variables)), 11F41. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Use a Hilbert modular variety, which classifies abelian varieties with multiplication by a totally real number field. Assume p splits completely there and use the full integral matrix group at p. At a prime above p, define the normalized Hecke operator using pairs connected by an isogeny, a surjective homomorphism with finite kernel. Pull sections back along one projection, apply the normalized map between coefficient lines, and sum along the other projection.
+
+**Problem.** Serre duality pairs cohomology in complementary degrees on the compactified variety. The adjoint in weight (k,w) acts in weight (2 − k,−w), subtracting each component of k from two. The second group uses sections vanishing on the boundary.
+
+**How the definition helps.** Defining the operator through a correspondence lets duality interchange its pullback and trace (our own). The dual isogeny identifies the exchanged correspondence with the original one. The work is checking the normalized map on coefficient lines and identifying the dual line using Kodaira–Spencer (our own).
+
+**Paper or page:** [Higher Hida theory for Hilbert modular varieties in the totally split case](https://arxiv.org/abs/2106.05666v3). It says: “Since the correspondence X₀(𝔭) is isomorphic to its transpose, by sending the isogeny π to the isogeny πᴰ”
+
+**Sources:**
+
+- [Giada Grossi, Higher Hida theory for Hilbert modular varieties in the totally split case, Proposition 3.1.2](https://arxiv.org/abs/2106.05666v3)
+
+### Monodromy distinguishes Steinberg
+
+**Remember:** The Weil action can agree while monodromy differs.
+
+*Rules out counterexamples. Confidence: medium.* MSC 11F70 (Representation-theoretic methods; automorphic representations over local and global fields), 11F85. arXiv math.NT, math.RT. Level 4: research.
+
+**Definition.** The local Langlands correspondence assigns parameters to representations of GL₂ over a finite extension of the p-adic numbers. A parameter records a Weil group action, which encodes field symmetries, and a compatible operator N. This operator is nilpotent, meaning some power is zero.
+
+**Problem.** The trivial representation and the Steinberg representation have the same Weil action after decomposition into simple factors. Here Steinberg means locally constant complex functions on the projective line modulo constants. Their full parameters differ.
+
+**How the definition helps.** Keeping the operator separates two representations that otherwise have the same data (our own). The operator is zero for the trivial representation and has rank one for Steinberg (our own). The work lies in the local Langlands calculation of these two parameters (our own).
+
+**nLab:** [local Langlands conjecture](https://ncatlab.org/nlab/show/local+Langlands+conjecture). It says: “A Weil-Deligne representation is a pair (ρ₀,N)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Noninvariant characters induce cusp forms
+
+**Remember:** A character must move under conjugation to give a cusp form.
+
+*Rules out counterexamples.* MSC 11F70 (Representation-theoretic methods; automorphic representations over local and global fields), 11F41. arXiv math.NT, math.RT. Level 4: research.
+
+**Definition.** For a quadratic extension L of a number field F, a Hecke character is a continuous character of the idele class group of L. This group combines local multiplicative groups and identifies tuples differing by a global scalar. Call a character regular if the nonidentity automorphism of L over F changes it.
+
+**Problem.** Automorphic induction transfers the character to a representation of GL₂ over F. This representation is cuspidal, meaning its constant terms vanish, exactly when the character is regular.
+
+**How the definition helps.** Regularity removes exactly the characters whose induction splits as a sum of two characters (our own). For example, the trivial character induces the sum formed from the trivial character and the quadratic character attached to L over F (our own). The quadratic automorphic induction theorem proves the cuspidality criterion.
+
+**Paper or page:** [Vignéras orbifolds: isospectrality, regulators, and torsion homology](https://arxiv.org/abs/2407.07240v1). It says: “is cuspidal if and only if Ψ<sup>σ</sup> ≠ Ψ.”
+
+**Sources:**
+
+- [James Arthur and Laurent Clozel, Simple Algebras, Base Change, and the Advanced Theory of the Trace Formula (1989)](https://doi.org/10.1515/9781400882403)
+
+### Crystalline periods detect good reduction
+
+**Remember:** At the residue prime, test for a full set of crystalline periods.
+
+*Rules out counterexamples.* MSC 11F80 (Galois representations), 11G07. arXiv math.NT. Level 4: research.
+
+**Definition.** Let K be a finite extension of ℚₚ. A p-adic representation describes a continuous Galois action on a finite-dimensional ℚₚ-vector space. Call it crystalline if it has a Galois-fixed basis after extending scalars to Fontaine’s crystalline period ring. This ring supplies coefficients with their own Galois action.
+
+**Problem.** An elliptic curve over K has good reduction if it has a smooth elliptic model over the integers of K. This happens exactly when its rational Tate module, formed from compatible points of p-power order by extending scalars to ℚₚ, is crystalline.
+
+**How the definition helps.** The crystalline test allows the ramification that good elliptic curves can have at p (our own). The curve y² = x³ − x stays smooth modulo five (our own). Its determinant records the action on roots of unity of five-power order, which requires ramified extensions of ℚ₅ (our own). The crystalline comparison theorem proves necessity, and Coleman and Iovita prove sufficiency (our own).
+
+**nLab:** [p-adic Hodge theory](https://ncatlab.org/nlab/show/p-adic+Hodge+theory). It says: “We can also apply this construction with Bcrys instead of BdR; if the dimension stays the same we say that V is crystalline.”
+
+**Sources:**
+
+- [Coleman and Iovita, The Frobenius and monodromy operators for curves and abelian varieties](https://doi.org/10.1215/s0012-7094-99-09708-9)
+
+### Determinants retain small-characteristic information
+
+**Remember:** A trace keeps one coefficient, while a determinant law keeps them all.
+
+*Rules out counterexamples.* MSC 11F80 (Galois representations). arXiv math.NT. Level 4: research.
+
+**Definition.** A dimension-d determinant assigns a scalar to each element of the group algebra. It preserves products and the identity, and acts polynomially with degree d, homogeneously and compatibly after every extension of scalars. Its trace is the coefficient of t in the determinant of 1 + tx, viewed as a function of x. A trace pseudocharacter satisfies the trace identities for d-dimensional matrices.
+
+**Problem.** Over a commutative coefficient ring where d! is invertible, taking traces gives a bijection between dimension-d determinants and trace pseudocharacters. In small characteristic the trace can lose information.
+
+**How the definition helps.** The determinant retains coefficients that the trace alone can lose (our own). A cyclic cubic Galois group has a nontrivial character χ into the multiplicative group of the field of four elements (our own). Two copies of χ have zero trace, as do two trivial characters (our own). Their determinants differ because χ² is nontrivial (our own). The cited theorem supplies the reconstruction when d! is invertible.
+
+**Paper or page:** [On the relation between pseudocharacters and Chenevier's determinants](https://arxiv.org/abs/2402.18034v1). It says: “a bijection between A-valued d-dimensional determinants on R and A-valued d-dimensional pseudocharacters on R.”
+
+**Sources:**
+
+- [On the relation between pseudocharacters and Chenevier's determinants](https://arxiv.org/abs/2402.18034v1)
+
+### Frames make Galois lifts glue
+
+**Remember:** Fixed matrices glue entry by entry.
+
+*Rules out counterexamples.* MSC 11F80 (Galois representations). arXiv math.NT. Level 4: research.
+
+**Definition.** Let G be an inverse limit of finite groups, acting continuously by matrices over a finite field k of characteristic p. A framed lift gives matrices over a complete local ring that reduce to the original matrices over k. An unframed lift identifies matrices related by a basis change that reduces to the identity.
+
+**Problem.** Suppose each open subgroup of G has finitely many continuous homomorphisms to the group of order p. Use complete Noetherian local coefficient rings over the Witt vectors of k, the unramified p-adic integer ring with residue field k. Then one universal ring parametrizes framed lifts to all these rings with residue field k.
+
+**How the definition helps.** Keeping the basis lets two compatible lifts glue entry by entry (our own). The resulting matrices still satisfy the group law (our own). Without a frame, gluing also requires a choice of compatible basis changes (our own). Schlessinger’s criterion converts gluing and a finite number of first-order parameters into a universal ring (our own).
+
+**Paper or page:** [Deformation Theory of Galois Representations and the Taylor--Wiles Method](https://arxiv.org/abs/2510.12202v1). It says: “We call the representing ring of it the universal lifting ring or universal framed deformation ring”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Isogeny degrees determine pairing type
+
+**Remember:** A prime-to-p isogeny scales the Weil pairing by its degree.
+
+*True by definition.* MSC 11F80 (Galois representations), 11G05. arXiv math.NT. Level 4: research.
+
+**Definition.** Fix an elliptic curve over a number field and an odd prime p. The Weil pairing pairs points killed by p with values in the pth roots of unity. An isomorphism of torsion spaces raises pairing values to a fixed nonzero exponent, its multiplier. Call the isomorphism symplectic in type if rescaling it makes it preserve all pairing values.
+
+**Problem.** An isogeny is a surjective homomorphism of elliptic curves with finite kernel. An isogeny of degree n prime to p induces a torsion isomorphism of symplectic type exactly when n is a square modulo p.
+
+**How the definition helps.** Allowing rescaling turns exact preservation into a square test on the multiplier (our own). Multiplying the map by a scalar multiplies its exponent by that scalar squared (our own). Compatibility of the Weil pairing with the dual isogeny gives the multiplier n (our own). This compatibility supplies the geometric input (our own).
+
+**Paper or page:** [Local points on twists of X(p) with applications](https://arxiv.org/abs/2509.04294v3). It says: “is symplectic if (n/p) = 1 and anti-symplectic otherwise.”
+
+**Sources:**
+
+- [Local points on twists of X(p) with applications](https://arxiv.org/abs/2509.04294v3)
+
 ### Lifts modulo strict conjugation make the deformation tangent space first Galois cohomology
 
 **Remember:** The group law gives cocycles, and changes of basis give coboundaries.
@@ -2320,6 +4781,43 @@
 
 - [Barry Mazur, Deforming Galois representations, in Galois Groups over ℚ (1989)](https://doi.org/10.1007/978-1-4613-9649-9_7)
 
+### Oddness excludes nonmodular real representations
+
+**Remember:** Complex conjugation must have opposite signs in the two directions.
+
+*Rules out counterexamples.* MSC 11F80 (Galois representations), 11F11. arXiv math.NT. Level 4: research.
+
+**Definition.** The absolute Galois group of ℚ consists of the automorphisms of its algebraic closure fixing ℚ. A two-dimensional representation of this group is odd if complex conjugation has determinant −1. In odd characteristic its eigenvalues are then 1 and −1.
+
+**Problem.** Take a continuous odd representation over a finite field of odd characteristic that stays irreducible over the algebraic closure. Serre’s modularity theorem says it arises from a cuspidal modular eigenform, a modular form vanishing at the cusps and diagonalizing the Hecke operators.
+
+**How the definition helps.** Oddness imposes the determinant sign that modular forms require (our own). The cubic x³ − 4x + 1 has no rational root and has positive nonsquare discriminant 229 (our own). Its three roots are real, and its Galois group is the full permutation group on them (our own). Over the field of five elements, permuting three coordinates on the plane with coordinate sum zero gives an absolutely irreducible representation (our own). Complex conjugation acts trivially, so this representation fails the sign test (our own). Khare and Wintenberger prove modularity under the stated hypotheses (our own).
+
+**Wikipedia:** [Serre's modularity conjecture](https://en.wikipedia.org/wiki/Serre%27s_modularity_conjecture). It says: “Additionally, assume ρ is odd, meaning the image of complex conjugation has determinant -1.”
+
+**Sources:**
+
+- [Khare and Wintenberger, Serre’s modularity conjecture (I)](https://doi.org/10.1007/s00222-009-0205-7)
+- [Khare and Wintenberger, Serre’s modularity conjecture (II)](https://doi.org/10.1007/s00222-009-0206-6)
+
+### Reducibility ideals locate split traces
+
+**Remember:** One ideal detects every quotient with a split trace.
+
+*Makes the theorem clean to state or prove.* MSC 11F80 (Galois representations). arXiv math.NT. Level 4: research.
+
+**Definition.** Consider a two-dimensional Galois trace in a complete local ring where two is invertible. Such a trace satisfies the identities for traces of two-dimensional representations. Suppose its reduction modulo the maximal ideal is a sum of two distinct characters, meaning one-dimensional representations. Its reducibility ideal is the smallest ideal modulo which it splits into characters lifting those two.
+
+**Problem.** In the cited family of Galois traces attached to modular forms, the reducibility ideal equals the maximal ideal. Among nonzero quotient rings, only the residue field gives a split trace.
+
+**How the definition helps.** The smallest ideal turns a search for two characters into an inclusion test on ideals (our own). A quotient gives a split trace exactly when its defining ideal contains the reducibility ideal (our own). The hard step is the cited calculation of that ideal.
+
+**Paper or page:** [Eisenstein degeneration of Euler systems](https://arxiv.org/abs/2201.02078v2). It says: “The reducibility ideal of the pseudo-character t𝐟 is exactly 𝔪.”
+
+**Sources:**
+
+- [Eisenstein degeneration of Euler systems](https://arxiv.org/abs/2201.02078v2)
+
 ### Defining overconvergent forms as sheaf sections lets the weight vary p-adically
 
 **Remember:** Let the sheaf carry the weight so the weight can vary.
@@ -2337,6 +4835,179 @@
 **Sources:**
 
 - [Riccardo Brasca, p-adic families of modular forms for Hodge type Shimura varieties with non-empty ordinary locus, arXiv:2009.07150v1 (2020)](https://arxiv.org/abs/2009.07150v1)
+
+### Alternation forces a square order
+
+**Remember:** A perfect alternating pairing puts the finite group into pairs.
+
+*Rules out counterexamples.* MSC 11G05 (Elliptic curves over global fields), 11G40. arXiv math.NT. Level 4: research.
+
+**Definition.** The Tate–Shafarevich group measures whether a curve with an elliptic curve acting freely and transitively can have points everywhere locally but none globally. The Cassels–Tate pairing pairs its classes with values in ℚ/ℤ. A pairing is alternating if each element pairs to zero with itself.
+
+**Problem.** If the Tate–Shafarevich group of an elliptic curve over a number field is finite, its order is a square.
+
+**How the definition helps.** Alternation rules out an unpaired cyclic factor of order two (our own). Skew symmetry alone allows the generator of a group of order two to pair with itself to ½ modulo ℤ (our own). For elliptic curves, Cassels proves alternation, and duality makes the pairing perfect when the group is finite (our own). Perfect means each character into ℚ/ℤ comes from pairing with a unique element (our own). A maximal-order element then has a partner of equal order, and their two cyclic factors split off together (our own). Repeating this step gives square order (our own).
+
+**Wikipedia:** [Tate–Shafarevich group](https://en.wikipedia.org/wiki/Tate%E2%80%93Shafarevich_group). It says: “if the order of Ш is finite then it is a square.”
+
+**Sources:**
+
+- [Cassels, Arithmetic on Curves of Genus 1. IV. Proof of the Hauptvermutung](https://doi.org/10.1515/crll.1962.211.95)
+- [Poonen and Stoll, The Cassels–Tate Pairing on Polarized Abelian Varieties](https://doi.org/10.2307/121064)
+
+### Relaxed Selmer conditions pair with strict ones
+
+**Remember:** Opposite local conditions make the two dimension jumps add to half the local dimension.
+
+*Makes the theorem clean to state or prove.* MSC 11G05 (Elliptic curves over global fields), 11R34. arXiv math.NT. Level 4: research.
+
+**Definition.** Fix an elliptic curve over a number field and a prime p. Its p-Selmer group consists of global Galois cohomology classes on the points killed by p that locally come from dividing curve points by p. At one finite prime, the relaxed group allows every local class and the strict group requires zero. Both keep the usual conditions elsewhere.
+
+**Problem.** The relaxed dimension minus the strict dimension equals half the dimension of local first cohomology at the chosen prime. All dimensions use the field of p elements.
+
+**How the definition helps.** Allowing everything and allowing zero give opposite local conditions under the local duality pairing (our own). The usual condition pairs to zero with itself and has half the local dimension (our own). The two global dimension jumps give images in the usual local condition and its dual (our own). The cited orthogonality theorem makes these images exact annihilators, so their dimensions add to the dimension of the usual condition (our own).
+
+**Paper or page:** [Increasing the p-Selmer rank by twisting](https://arxiv.org/abs/2503.09207v3). It says: “The images of the two right-hand maps in the following exact sequences are orthogonal complements of each other under the sum of the local Tate pairings.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Exterior powers give determinant characters
+
+**Remember:** Take the top exterior power before passing to the Galois action.
+
+*True by definition. Confidence: medium.* MSC 11G09 (Drinfel'd modules; higher-dimensional motives, etc.). arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** A Drinfeld module describes an action of a function ring by additive polynomials. Its associated motive encodes that action in a module with a Frobenius operator. Define its determinant module by taking the highest nonzero exterior power of this motive and passing back to a Drinfeld module.
+
+**Problem.** At a prime different from the characteristic, the Galois action on the determinant module’s Tate module equals the determinant of the original Galois action. The Tate module records compatible points killed by powers of that prime.
+
+**How the definition helps.** In our own explanation, a linear transformation acts on the top exterior power by its determinant. The cited theorem realizes the resulting motive by a unique rank-one Drinfeld module up to isomorphism. Applying the linear calculation to torsion also requires the comparison between motives and Tate modules to preserve exterior powers.
+
+**Paper or page:** [Pour une définition commune des courbes elliptiques et modules de Drinfeld](https://arxiv.org/abs/2306.13160). It says: “Le $A$-motif $\\underline{D}$ provient d'un $A$-module de Drinfeld de rang $1$ et de caractéristique $\\delta<sub>E</sub>$. Ce module de Drinfeld est unique à isomorphisme près, et on le note $\\det E$.”
+
+**Sources:**
+
+- [Quentin Gazda and Damien Junger, Pour une définition commune des courbes elliptiques et modules de Drinfeld](https://arxiv.org/abs/2306.13160)
+
+### Frobenius determinants measure Drinfeld points
+
+**Remember:** Take the determinant of one minus Frobenius to measure rational torsion.
+
+*Makes the theorem clean to state or prove.* MSC 11G09 (Drinfel'd modules; higher-dimensional motives, etc.). arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Let A = 𝔽q\[T\]. A finite A-module splits into cyclic modules A/(h) with monic polynomials h. Use the product of these polynomials to measure the module, giving the monic generator of its Fitting ideal.
+
+**Problem.** For a Drinfeld module over a finite field, this polynomial measure of its rational points equals the monic multiple of its Frobenius polynomial at one. Frobenius raises coordinates to the field size. Its polynomial records its linear action on compatible prime-power torsion away from the characteristic.
+
+**How the definition helps.** In our own explanation, the polynomial measure records determinants of presentations and therefore lets one state a polynomial point-count formula. Rational points are the points fixed by Frobenius. Away from the characteristic, the quotient by one minus Frobenius on compatible torsion gives the corresponding part of the rational point module. The cited theorem gives the full polynomial, including its characteristic factor.
+
+**Paper or page:** [Convolutions of Goss and Pellarin L-series](https://arxiv.org/abs/2206.14931). It says: “Then\\\[  \\bigl\[ E(\\mathbb {F}<sub>f</sub>) \\bigr\]\_{\\mathsf{A}} = \\gamma \\cdot \\Char (\\tau ^d,T<sub>\\lambda </sub>(E),1),  \\\]where $\\gamma \\in \\mathbb {F}<sub>q</sub><sup>\\times </sup>$ forces the right-hand expression to be monic in\~ $t$.”
+
+**Sources:**
+
+- [Wei-Cheng Huang and Matthew A. Papanikolas, Convolutions of Goss and Pellarin L-series](https://arxiv.org/abs/2206.14931)
+
+### Frobenius polynomials classify Drinfeld isogeny classes
+
+**Remember:** The Frobenius polynomial determines the isogeny class over a finite field.
+
+*Makes the theorem clean to state or prove.* MSC 11G09 (Drinfel'd modules; higher-dimensional motives, etc.). arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Fix A = 𝔽q\[T\]. A Drinfeld module lets A act by additive polynomials, and its characteristic ideal is the kernel of the scalar map to the base field. At a different prime, collect compatible points killed by powers of that prime and invert the prime to form the rational Tate module. Define the Frobenius polynomial as the characteristic polynomial of the field-size power map on this space.
+
+**Problem.** Take two Drinfeld modules of the same rank and characteristic over the same finite field. Their Frobenius polynomials agree exactly when an isogeny, a nonzero map respecting both actions, exists over that field.
+
+**How the definition helps.** In our own explanation, one polynomial lets us state the classification as equality of two computable invariants. An isogeny identifies the rational Tate modules and carries one Frobenius action to the other. Conversely, Frobenius acts semisimply, so its polynomial determines the rational representation. The Tate isogeny theorem turns this linear comparison into an isogeny.
+
+**Paper or page:** [Traces of Hecke operators on Drinfeld modular forms for 𝔽q\[T\]](https://arxiv.org/abs/2407.04555). It says: “Then cφ(X) = cψ(X) if and only if φ is isogenous to ψ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Ideal classes classify rank one Drinfeld modules
+
+**Remember:** At rank one, period lattices become fractional ideals up to scaling.
+
+*True by definition.* MSC 11G09 (Drinfel'd modules; higher-dimensional motives, etc.), 11R58. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Fix a place called infinity on a smooth projective curve over a finite field. Let A consist of rational functions regular away from infinity. Work over the completed algebraic closure of the function field completed at infinity. Represent a rank-one Drinfeld module, an action of A by additive polynomials, by the kernel of its exponential, called its period lattice.
+
+**Problem.** The ideal class group acts freely and transitively on the rank one Drinfeld modules up to isomorphism.
+
+**How the definition helps.** In our own explanation, choosing a basis of the lattice’s one-dimensional span makes the lattice a fractional ideal of A. A fractional ideal becomes an ordinary ideal after multiplication by a nonzero element of A. Changing the basis scales the ideal, leaving precisely its ideal class. Multiplication of ideal classes now acts freely and transitively. Drinfeld’s uniformization theorem identifies lattices up to scaling with polynomial actions up to isomorphism.
+
+**Paper or page:** [Drinfeld Module and Weil pairing over Dedekind domain of class number two](https://arxiv.org/abs/2312.16919). It says: “The set of isomorphism classes of A-Drinfeld modules is the principle homogeneous space of the class group of A”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Lattice enlargement composes ideal isogenies
+
+**Remember:** Ideal isogenies enlarge the period lattice by inverse ideals.
+
+*True by definition.* MSC 11G09 (Drinfel'd modules; higher-dimensional motives, etc.). arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Take a Drinfeld module, an action of a curve’s coefficient ring A by additive polynomials. Here A consists of functions regular away from a chosen place at infinity. Over the completed algebraic closure at infinity, let Λ denote the kernel of the module’s exponential. For a nonzero ideal I of A, define the quotient using the larger lattice I⁻¹Λ.
+
+**Problem.** Taking the quotient for I and then for J gives the quotient for IJ up to isomorphism.
+
+**How the definition helps.** In our own explanation, enlarging the lattice twice gives J⁻¹I⁻¹Λ, exactly the lattice for IJ. Uniformization identifies the inclusion with an isogeny, a map of modules with finite kernel. Its kernel consists of the points killed by I. Normalizing the polynomial for this map can scale the target lattice, as the cited formula shows.
+
+**Paper or page:** [Drinfeld Module and Weil pairing over Dedekind domain of class number two](https://arxiv.org/abs/2312.16919). It says: “Then we have Λψ = Λφ · ∂(λ) I⁻¹.”
+
+**Sources:**
+
+- [Chuangqiang Hu and Xiao-Min Huang, Drinfeld Module and Weil pairing over Dedekind domain of class number two](https://arxiv.org/abs/2312.16919)
+
+### Forgetting signs lets twists share j
+
+**Remember:** A modular curve sees torsion bases only up to curve automorphisms.
+
+*Rules out counterexamples.* MSC 11G18 (Arithmetic aspects of modular and Shimura varieties), 11F80. arXiv math.NT. Level 4: research.
+
+**Definition.** An elliptic curve’s j-invariant determines it up to isomorphism over an algebraic closure. Let H be an open subgroup of the invertible two-by-two matrices over the profinite integers, which encode compatible residues modulo all positive integers. The modular curve X(H) records compatible torsion bases up to H and curve automorphisms. For j different from 0 and 1728, those automorphisms are identity and negation.
+
+**Problem.** Take an algebraic number j different from 0 and 1728 and an elliptic curve over ℚ(j) with that invariant. Some point of X(H) above j is rational over ℚ(j) exactly when a conjugate of ±H contains the curve’s Galois image on torsion.
+
+**How the definition helps.** Identifying opposite bases allows a basis class to be fixed even when Galois changes its sign (our own). A rational point requires some fixed class, which accounts for the choice of conjugate (our own). A quadratic twist changes the torsion action by signs, so it gives the same test (our own). Identifying the geometric points above j with basis classes supplies the geometric input (our own).
+
+**Paper or page:** [Degrees of points with rational j-invariant on X₀(n) and X₁(n)](https://arxiv.org/abs/2507.13199v1). It says: “there exists a point x ∈ Xᴴ(ℚ(j)) such that j(x) = j if and only if 𝒢ⱼ ≤ ±ℋ.”
+
+**Sources:**
+
+- [Degrees of points with rational j-invariant on X₀(n) and X₁(n)](https://arxiv.org/abs/2507.13199v1)
+
+### Component graphs count torus rank
+
+**Remember:** Each independent loop supplies one multiplicative direction in the Jacobian.
+
+*Makes the theorem clean to state or prove.* MSC 11G20 (Curves over finite and local fields), 14G20. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** A split semistable model extends a smooth curve to a family whose special fiber has only ordinary crossings. Its components, crossings and branches are all defined over the residue field. Its dual graph has one vertex per component and one edge per crossing, including loops.
+
+**Problem.** Take a smooth projective geometrically connected curve of positive genus over ℚ with split semistable reduction at a prime. Its Jacobian, which parametrizes divisor classes of degree zero, has torus rank equal to the number of independent loops in this graph. This rank counts multiplicative group factors in the connected part of its reduced group model.
+
+**How the definition helps.** The dual graph records exactly where line bundles must be glued across crossings, in our own explanation. Each crossing contributes one nonzero gluing scalar. Rescaling on each component changes these scalars, while a common rescaling does nothing. The remaining number of parameters is edges minus vertices plus one, the loop count for a connected graph. The geometric input identifies this gluing group with the torus in the special fiber of the Jacobian’s Néron model.
+
+**Paper or page:** [Normal distribution of bad reduction](https://arxiv.org/abs/2305.15874v1). It says: “the toric rank of Jac(C) is equal to m − c + 1”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Ramification scales node thickness
+
+**Remember:** An edge length is a valuation, so ramification multiplies it.
+
+*True by definition.* MSC 11G20 (Curves over finite and local fields), 14G20. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** A split semistable curve model has a reduced special fiber whose only singularities are crossings with two branches over the residue field. Draw a vertex for each component and an edge for each crossing. In completed local coordinates, write a crossing as xy = a. Give its edge length v(a), where the valuation v counts powers of a generator of the maximal ideal.
+
+**Problem.** Start with such a model over a complete discrete valuation ring. After a finite totally ramified extension of index e, the pulled-back model has the same graph with every length multiplied by e.
+
+**How the definition helps.** Measuring edges by valuations gives the new length directly from the old local equation, in our own explanation. The pulled-back equation is still xy = a. The new normalized valuation takes the value e times the old one on elements of the original field. The residue field stays the same, so the special fiber retains its crossings and components. The geometric input is the local equation for a node, which lets us compute lengths without resolving the new model.
+
+**Paper or page:** [Models of Bihyperelliptic Curves](https://arxiv.org/abs/2103.09730v1). It says: “with the same dual graph as 𝒞, but with the lengths of all edges multiplied by e.”
+
+**Sources:**
+
+- [Models of Bihyperelliptic Curves](https://arxiv.org/abs/2103.09730v1)
 
 ### Under semistability, invariant valuations determine the reduction graph of hyperelliptic curves
 
@@ -2374,6 +5045,22 @@
 
 - [Santiago Arango-Piñeros, Deewang Bhamidipati, Soumya Sankar, Frobenius distributions of low dimensional abelian varieties over finite fields, International Mathematics Research Notices 2024, no. 16, 11989-12020, arXiv:2306.02237](https://arxiv.org/abs/2306.02237)
 
+### Invariant metrics scale heights exactly
+
+**Remember:** An invariant metric turns pullback into exact multiplication of heights.
+
+*True by definition.* MSC 11G50 (Heights), 14G40. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** A line bundle assigns a line to each point of a variety. It is ample if sections of a power embed the variety in projective space. Fix an identification of its pullback under a map f with its qth tensor power, for an integer q greater than one. Give the lines norms at all places, or absolute values, of the number field so this identification preserves norms.
+
+**Problem.** For such a map on a projective variety over a number field, compatible norms give a canonical height h satisfying h(f(P)) = qh(P).
+
+**How the definition helps.** The invariant norms make pullback multiply the height exactly, in our own explanation. Arbitrary norms on the same bundle generally give this relation only up to bounded error. Heights pull back with maps and add when bundles are tensored. The existence theorem constructs the compatible norms by repeated pullback and normalization, starting with norms from an integral model outside finitely many places.
+
+**Paper or page:** [Specialization of canonical heights on abelian varieties](https://arxiv.org/abs/2110.07664v1). It says: “In particular, there exists a canonical height”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Counting primitive lattice flags proves Manin’s conjecture for flag varieties over ℚ
 
 **Remember:** Intersect with ℤⁿ to get one primitive chain.
@@ -2391,6 +5078,72 @@
 **Sources:**
 
 - [Tal Horesh, Yakov Karasik, Counting flags of primitive lattices, arXiv:2202.12724v1 (2022)](https://arxiv.org/abs/2202.12724v1)
+
+### Fourier signs bound lattice packing
+
+**Remember:** One sign controls the lattice and the other controls its dual.
+
+*Makes the theorem clean to state or prove.* MSC 11H31 (Lattice packing and covering (number-theoretic aspects)), 11H60. arXiv math.NT. Level 4: research.
+
+**Definition.** Take a smooth real function on Euclidean space depending only on distance from zero. Require the function and all its derivatives to decay faster than every inverse power of distance. Require its values at distances at least r &gt; 0 to be nonpositive and its Fourier transform to be nonnegative everywhere. Normalize their values at zero to the same positive number, using the Fourier kernel exp(−2πix·ξ).
+
+**Problem.** If such a function exists, any lattice packing by balls of radius r/2 has density at most the volume of one such ball. For a unit-covolume lattice with shortest length r, the bound is sharp.
+
+**How the definition helps.** The two sign conditions bound the lattice sum from above and the dual lattice sum from below (our own). Only the term at zero can contribute positively to the first sum for centers separated by at least r (our own). Every term in the second sum is nonnegative (our own). Poisson summation equates the first sum to the second divided by the fundamental cell volume (our own). The common positive value at zero therefore forces that volume to be at least one (our own).
+
+**Paper or page:** [Algebraic proof of modular form inequalities for optimal sphere packings](https://arxiv.org/abs/2406.14659v3). It says: “f(0) = f̂(0) &gt; 0”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Short vectors encode Littlewood’s conjecture
+
+**Remember:** Diagonal scaling turns small products into short lattice vectors.
+
+*Makes the theorem clean to state or prove.* MSC 11H46 (Products of linear forms), 11J13. arXiv math.NT. Level 4: research.
+
+**Definition.** For real α and β use the lattice of vectors (qα − p, qβ − r, q) with integer p, r, q. Act by positive diagonal maps of determinant one that expand the first two coordinates and contract the last. These maps leave the product of the three coordinates unchanged.
+
+**Problem.** For a real number t, let d(t) denote its distance to the nearest integer. Littlewood’s condition asks whether q d(qα)d(qβ) approaches zero along some sequence of positive integers q tending to infinity. For a fixed pair, this holds exactly when its lattice orbit has noncompact closure.
+
+**How the definition helps.** The diagonal maps preserve the coordinate product while allowing all three coordinates to become small together (our own). For a chosen small target, Dirichlet approximation gives a bounded positive multiplier that reduces the larger error below that target (our own). A sufficiently small initial product keeps the other error and the new product small (our own). The two expansion factors can now balance both errors against the shrinking denominator (our own). Conversely, sufficiently short vectors have nonzero denominator and small product (our own). Mahler’s compactness theorem identifies arbitrarily short vectors with failure of relative compactness (our own).
+
+**Wikipedia:** [Littlewood conjecture](https://en.wikipedia.org/wiki/Littlewood_conjecture). It says: “failure of Littlewood's conjecture corresponds to relative compactness of the orbit”
+
+**Sources:**
+
+- [Manfred Einsiedler, Anatole Katok and Elon Lindenstrauss, Invariant measures and the set of exceptions to Littlewood’s conjecture](https://doi.org/10.4007/annals.2006.164.513)
+
+### Shortest vectors test extreme packings
+
+**Remember:** Shortest vectors fix the form and balance its volume.
+
+*Makes the theorem clean to state or prove.* MSC 11H55 (Quadratic forms (reduction theory, extreme forms, etc.)), 11H31. arXiv math.NT. Level 4: research.
+
+**Definition.** Scale a positive definite quadratic form Q until its minimum on nonzero integer vectors equals one. For each minimizing column v, form the symmetric matrix vvᵀ. The form is perfect if these matrices span all symmetric matrices. It is eutactic if its inverse matrix is a sum of these matrices with strictly positive coefficients.
+
+**Problem.** A lattice packing has locally maximal density among lattice packings exactly when its form is perfect and eutactic.
+
+**How the definition helps.** Perfection and eutaxy replace comparisons with nearby packings by two linear tests on the shortest vectors (our own). Perfection rules out a nonzero change of the matrix that leaves all their squared lengths fixed (our own). Eutaxy expresses the inverse matrix using positive weights on those same vectors (our own). Voronoi’s theorem proves that together these tests characterize a local density maximum.
+
+**Paper or page:** [The lattice packing problem in dimension 9 by Voronoi's algorithm](https://arxiv.org/abs/2508.20719v1). It says: “is extreme if and only if it is perfect and eutactic.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Critical lattices detect Dirichlet improvement
+
+**Remember:** Better uniform approximation keeps the moving lattice away from the critical locus.
+
+*Makes the theorem clean to state or prove.* MSC 11J13 (Simultaneous homogeneous approximation, linear forms), 11H06. arXiv math.NT. Level 4: research.
+
+**Definition.** For x in ℝ², form the lattice of triples (p − qx, q), with p an integer pair and q an integer. At time s ≥ 0, multiply the first two coordinates by exp(s) and the last by exp(−2s). Measure a triple by the larger of its chosen plane norm and its last coordinate’s absolute value. The critical locus consists of lattices with fundamental cell volume one whose shortest nonzero vectors have the greatest possible length.
+
+**Problem.** Uniform improvement means some constant below the sharp universal bound works at every sufficiently large scale. It bounds T times the squared distance from qx to an integer pair for some integer q between 1 and T. This improvement holds exactly when the moving lattice eventually avoids a neighborhood of the critical locus.
+
+**How the definition helps.** The scaled lattice turns two size bounds into one shortest-vector test (our own). Mahler’s compactness theorem makes the lattices with shortest lengths bounded below a compact set (our own). Avoiding a neighborhood of the maximizers then leaves a uniform gap (our own).
+
+**Paper or page:** [Abundance of Dirichlet-improvable pairs with respect to arbitrary norms](https://arxiv.org/abs/2107.10298v2), [Abundance of Dirichlet-improvable pairs with respect to arbitrary norms](https://arxiv.org/abs/2107.10298v2). It says: “x ∈ DIν if and only if the forward aₛ-orbit of Λₓ eventually avoids an open neighborhood of ℒη”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Counting only reduced fractions frees multiplicative Khintchine from monotonicity
 
@@ -2433,6 +5186,40 @@
 - [R. J. Duffin, A. C. Schaeffer, Khintchine's problem in metric Diophantine approximation, Duke Mathematical Journal (1941)](https://doi.org/10.1215/s0012-7094-41-00818-9)
 - [Dimitris Koukoulopoulos, James Maynard, On the Duffin-Schaeffer conjecture, Annals of Mathematics (2020)](https://doi.org/10.4007/annals.2020.192.1.5)
 
+### Unshifted pair correlations force uniformity
+
+**Remember:** At zero shift the density pairs with itself.
+
+*Rules out counterexamples.* MSC 11K06 (General theory of distribution modulo \\(1\\)), 11K38. arXiv math.NT. Level 4: research.
+
+**Definition.** Take a sequence of points modulo 1 and a shift γ. Among the first N points, count ordered pairs of distinct indices whose difference lies within circular distance s/N of γ. Divide by N. Call the pair correlation Poissonian at γ if this ratio tends to 2s for every s &gt; 0.
+
+**Problem.** Poissonian pair correlation at zero forces uniform distribution. Each interval receives a limiting fraction of points equal to its length. For every nonzero shift modulo 1, some sequence has Poissonian pair correlation at that shift and fails uniform distribution.
+
+**How the definition helps.** At zero shift the pair count detects excess mass where a density overlaps itself. In our own example, sample independently from the density g(x) = 1 + ½ cos(2πx) on the unit interval. At shift 1/4 the average of g(x)g(x + 1/4) equals 1, since the sine and cosine terms integrate to zero. The cited formula therefore gives Poissonian pair correlation almost surely despite the uneven density. At zero shift the average of g² exceeds 1. The general implication at zero needs a separate pair-counting argument for sequences without a density.
+
+**Paper or page:** [On Inhomogeneous Poissonian Pair Correlations](https://arxiv.org/abs/2404.16542v1), [On Inhomogeneous Poissonian Pair Correlations](https://arxiv.org/abs/2404.16542v1). It says: “that has γ-PPC but is not uniformly distributed.”
+
+**Sources:**
+
+- [On Inhomogeneous Poissonian Pair Correlations](https://arxiv.org/abs/2404.16542v1)
+
+### Li’s variable circles critical zeros
+
+**Remember:** The critical line becomes the unit circle, and zeros become poles of a logarithmic derivative.
+
+*Makes the theorem clean to state or prove.* MSC 11M26 (Nonreal zeros of \\(\\zeta (s)\\) and \\(L(s, \\chi)\\); Riemann and other hypotheses). arXiv math.NT. Level 4: research.
+
+**Definition.** Let ξ denote the entire completion of the Riemann zeta function, whose zeros are precisely the nontrivial zeta zeros. Set φ(z)=ξ(1/(1−z)). Expand φ′(z)/φ(z) in a Taylor series about zero.
+
+**Problem.** The Riemann hypothesis holds exactly when this Taylor series has radius at least 1.
+
+**How the definition helps.** The change of variable sends each zero to 1−1/ρ, whose modulus is below 1 exactly when Re ρ &gt; 1/2 (our own). A zero there gives a pole of the logarithmic derivative, with nonzero residue (our own). The work uses the functional equation to pair zeros on opposite sides of the critical line (our own). Li’s stronger positivity criterion also needs the formula for the coefficients in terms of zeros (our own).
+
+**Wikipedia:** [Li's criterion](https://en.wikipedia.org/wiki/Li%27s_criterion). It says: “Hence, φ′(z)/φ(z) is holomorphic on the unit disk \|z\| &lt; 1”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Differentiation extends the shuffle algebra to all integers
 
 **Remember:** Use the derivation, the inverse of integration, to build the larger shuffle algebra.
@@ -2468,6 +5255,40 @@
 **Sources:**
 
 - [Jia Li, Jianqiang Zhao, Regularized double shuffle relations of μ-multiple Hurwitz zeta values, arXiv:2402.11689v1 (2024)](https://arxiv.org/abs/2402.11689v1)
+
+### Selberg factors telescope to Ruelle
+
+**Remember:** A shift by one cancels every geodesic factor except the first.
+
+*True by definition.* MSC 11M36 (Selberg zeta functions and regularized determinants; applications to spectral theory, Dirichlet series, Eisenstein series, etc. (explicit formulas)). arXiv math.NT. Level 4: research.
+
+**Definition.** On a closed oriented hyperbolic surface, take the lengths ℓ of oriented closed geodesics that are not repetitions of shorter ones. A geodesic is a path that is locally straight on the surface. Selberg’s Z(s) multiplies 1−exp(−(s+n)ℓ) over these geodesics and all integers n≥0. The Ruelle product R(s) uses only n=0.
+
+**Problem.** The Ruelle product is Z(s)/Z(s+1) for Re s &gt; 1 and extends meromorphically by that quotient.
+
+**How the definition helps.** Writing the Ruelle product as a quotient cancels every factor indexed by n≥1 (our own). Absolute convergence justifies this cancellation for Re s&gt;1 (our own). The quotient then gives continuation from Selberg’s theorem for Z, a step the original Ruelle product alone cannot justify (our own).
+
+**Wikipedia:** [Selberg zeta function](https://en.wikipedia.org/wiki/Selberg_zeta_function). It says: “where p runs over conjugacy classes of prime geodesics (equivalently, conjugacy classes of primitive hyperbolic elements of Γ)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Finite-field cancellation truncates Goss values
+
+**Remember:** Summing over each free coefficient kills high-degree terms at negative integers.
+
+*True by definition. Confidence: medium.* MSC 11M38 (Zeta and \\(L\\)-functions in characteristic \\(p\\)). arXiv math.NT. Level 4: research.
+
+**Definition.** Use polynomials over the field with q elements. In the degree expansion for Goss zeta, group the monic polynomials, those with leading coefficient one, by degree. At a negative integer −k, the degree d coefficient sums the kth powers of all monic polynomials of degree d.
+
+**Problem.** For k ≥ 1, only degrees at most k/(q−1) contribute to the Goss zeta value at −k.
+
+**How the definition helps.** Summing by degree exposes a separate sum over each free coefficient, which the ungrouped series hides (our own). In each expanded monomial, the field sum vanishes unless that coefficient’s exponent is a positive multiple of q−1 (our own). A degree d monic polynomial has d free coefficients (our own). A surviving monomial therefore needs total exponent at least d(q−1), while its total exponent is at most k (our own). The interpretation as a zeta value uses Goss’s continuation theorem (our own).
+
+**Wikipedia:** [Goss zeta function](https://en.wikipedia.org/wiki/Goss_zeta_function). It says: “is an analogue of the Riemann zeta function for function fields.”
+
+**Sources:**
+
+- [Jeffrey T. Sheats, The Riemann Hypothesis for the Goss Zeta Function for 𝔽q\[T\] (1998)](https://doi.org/10.1006/jnth.1998.2232)
 
 ### In the Selberg class, degree below 2 means a Dirichlet L-function
 
@@ -2507,6 +5328,24 @@
 - [Y. Zhang, Bounded gaps between primes, Ann. of Math. 179 (2014) 1121–1174](https://doi.org/10.4007/annals.2014.179.3.7)
 - [J. Maynard, Small gaps between primes, Ann. of Math. 181 (2015) 383–413](https://doi.org/10.4007/annals.2015.181.1.7)
 
+### Square-root weights expose prime bias
+
+**Remember:** At the central exponent, prime squares contribute a growing log log term.
+
+*Makes the theorem clean to state or prove.* MSC 11N13 (Primes in congruence classes). arXiv math.NT. Level 4: research.
+
+**Definition.** Give each odd prime p weight 1/√p. Among primes up to x, subtract the total for residue 1 modulo 4 from the total for residue 3.
+
+**Problem.** Assume all nontrivial zeros of the Dirichlet L-function for the nonprincipal character modulo 4 have real part 1/2. Outside an exceptional set, the weighted difference equals (log log x)/2 plus a constant and an error tending to zero. The integral of dx/x over that set is finite.
+
+**How the definition helps.** The chosen weights match the linear terms when one takes the logarithm of the prime product at s=1/2 (our own). The character takes opposite signs on residues 1 and 3, but its square equals one on both (our own). The quadratic terms therefore give half the sum of 1/p over odd primes (our own). Higher powers have a convergent sum, and the reciprocal prime sum grows as log log x plus a constant with vanishing error (our own). The paper controls the prime product outside the exceptional set.
+
+**Paper or page:** [Euler Products at the Centre and Applications to Chebyshev's Bias](https://arxiv.org/abs/2405.01512v1). It says: “for all x outside a set of finite logarithmic measure.”
+
+**Sources:**
+
+- [Arshay Sheth. Euler Products at the Centre and Applications to Chebyshev's Bias](https://arxiv.org/abs/2405.01512v1)
+
 ### Hypergraphs let one density formula cover every pattern of coprimality conditions
 
 **Remember:** Draw an edge wherever a common prime power is forbidden.
@@ -2524,6 +5363,96 @@
 **Sources:**
 
 - [Brian Sittinger, Vickie Chen, The Density of Tuples Restricted by Relatively r-Prime Conditions, arXiv:2106.14061v2 (2021)](https://arxiv.org/abs/2106.14061v2)
+
+### Fixed square divisors prevent Gaussian limits
+
+**Remember:** A fixed prime square makes every term in the random sum vanish.
+
+*Rules out counterexamples.* MSC 11N32 (Primes represented by polynomials; other multiplicative structures of polynomial values). arXiv math.NT. Level 4: research.
+
+**Definition.** A Rademacher random multiplicative function assigns fair independent signs to primes. It multiplies the signs on integers without repeated prime factors and vanishes elsewhere. Require that no prime square divides every value of the polynomial P.
+
+**Problem.** Let P be an irreducible integer quadratic or a product of at least two pairwise nonproportional integer linear factors, with positive leading coefficient. Sum f(P(n)) for 1≤n≤N with P(n)&gt;0, where f is the random function above. For some κ&gt;0, dividing by √(κN) gives convergence in distribution to a standard normal variable.
+
+**How the definition helps.** Excluding a fixed prime square rules out a random sum that vanishes identically (our own). For example, 4 divides every product n(n+1)(n+2)(n+3) (our own). The work lies in proving that enough values have no repeated prime factor and that the surviving terms have a normal limit (our own).
+
+**Paper or page:** [Random Chowla's Conjecture for Rademacher Multiplicative Functions](https://arxiv.org/abs/2409.05952v2). It says: “Suppose that there is no prime p for which p² ∣ P(n) for all n ∈ ℕ.”
+
+**Sources:**
+
+- [Jake Chinis, Besfort Shala. Random Chowla's Conjecture for Rademacher Multiplicative Functions](https://arxiv.org/abs/2409.05952v2)
+
+### Counting remainders continue Beurling zeta
+
+**Remember:** Subtract the linear count so that the smaller remainder sets the convergence line.
+
+*True by definition.* MSC 11N80 (Generalized primes and integers). arXiv math.NT. Level 4: research.
+
+**Definition.** Give each generalized prime a real size greater than one, with sizes tending to infinity. Let N(x) count unordered prime products of size at most x, counting the empty product and distinguishing factorizations. Set R(x)=N(x)−κ(x−1) for x≥1. The Beurling zeta function sums exp(−s log v) over these products, where v is their size.
+
+**Problem.** Suppose κ &gt; 0 and \|R(x)\| is bounded by a constant times x to the power θ, with θ &lt; 1. Then ζ extends to Re s &gt; θ, with only a simple pole at 1 of residue κ.
+
+**How the definition helps.** Subtracting the linear count isolates the pole that the original zeta series hides (our own). For Re s&gt;1, the linear term contributes κ/(s−1) (our own). Integration by parts expresses the remainder as s times the integral of R(x) exp(−s log x) against dx/x from one to infinity (our own). The growth bound makes this integral holomorphic for Re s&gt;θ (our own). The main arithmetic work lies in proving that growth bound (our own).
+
+**Paper or page:** [Distribution of Beurling primes and zeroes of the Beurling zeta function I. Distribution of the zeroes of the zeta function of Beurling](https://arxiv.org/abs/2012.09045v3). It says: “\|ζ(s) − κ/(s−1)\| ≤ A\|s\|/(σ−θ)”
+
+**Sources:**
+
+- [Szilárd Gy. Révész. Distribution of Beurling primes and zeroes of the Beurling zeta function I. Distribution of the zeroes of the zeta function of Beurling](https://arxiv.org/abs/2012.09045v3)
+
+### Prime labels preserve Möbius inversion
+
+**Remember:** Invert each labeled prime factor before combining products of equal size.
+
+*True by definition. Confidence: medium.* MSC 11N80 (Generalized primes and integers). arXiv math.NT. Level 4: research.
+
+**Definition.** Assign each prime label a real size greater than one, with sizes tending to infinity. Count unordered products of labels separately even when their sizes agree. Give a product Möbius weight zero if a label repeats and weight (−1)ᵏ otherwise, where k counts its labels. Include the empty product of size and weight one.
+
+**Problem.** Form the Beurling zeta series by summing exp(−s log v) over all products of size v, including multiplicities. Wherever this series converges absolutely, its reciprocal equals the same series with each term multiplied by its Möbius weight.
+
+**How the definition helps.** Distinct labels give each product exactly one factorization, so multiplying the inverse prime factors gives its Möbius weight (our own). For prime sizes 2 and 4, the prime of size 4 contributes −1, while the repeated factor 2 contributes zero (our own). Grouping only by size requires adding those contributions (our own). Absolute convergence justifies multiplying and regrouping the series (our own).
+
+**Wikipedia:** [Beurling zeta function](https://en.wikipedia.org/wiki/Beurling_zeta_function). It says: “A Beurling generalized integer is a number that can be written as a product of Beurling generalized primes.”
+
+**Paper or page:** [The average order of the Möbius function for Beurling primes](https://arxiv.org/abs/1901.06866v2). It says: “Here Mℙ(x) is the partial sum of the Möbius function over 𝒩 not exceeding x.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Real solution density makes positivity local
+
+**Remember:** A smooth zero with positive weight sends positive mass near zero.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11P55 (Applications of the Hardy-Littlewood method). arXiv math.NT. Level 4: research.
+
+**Definition.** Let F map ℝˢ smoothly to ℝʳ, and let w be a nonnegative smooth function with compact support. Integrate w over points whose images lie in a cube of side 2ε centered at zero. The real solution density is the limit of this integral divided by the cube’s volume as ε decreases to zero, when the limit exists.
+
+**Problem.** Assume F has derivative of rank r at every zero in the support of w. Then the normalized mass has a finite limit, which is positive if w is positive at any zero.
+
+**How the definition helps.** Measuring mass near zero makes positivity visible in a single neighborhood of a solution. In our own proof, the rank assumption gives local coordinates in which F selects the first r coordinates. Integration over the remaining coordinates gives a continuous density and a positive contribution wherever w is positive at a solution. Compactness lets finitely many neighborhoods cover the relevant zeros. The cited paper identifies a normalized integral with a real density in its particular quadratic setting.
+
+**Paper or page:** [Solving quadratic forms in restricted variables with the circle method](https://arxiv.org/abs/2505.17949v1). It says: “can be interpreted as a local density over the reals inside the compact set 𝔅.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Bailey pairs generate identity chains
+
+**Remember:** Keep the relation, and each new pair can start the next step.
+
+*Makes the theorem clean to state or prove.* MSC 11P84 (Partition identities; identities of Rogers-Ramanujan type), 11B65. arXiv math.NT, math.CO. Level 4: research.
+
+**Definition.** Fix a and q with all denominators below nonzero. Write (x;q)ₘ for the product of the m factors 1 − xqʲ with 0 ≤ j &lt; m. Two sequences α and β form a Bailey pair if the following rule holds for every n ≥ 0. Sum αᵣ divided by the product (q;q)ₙ₋ᵣ(aq;q)ₙ₊ᵣ over integers r from 0 to n to obtain βₙ.
+
+**Problem.** Bailey’s lemma transforms a Bailey pair into another pair at the same a and q, with free parameters for which the denominators do not vanish. One may iterate the limiting transformation to produce a chain of finite sum identities.
+
+**How the definition helps.** A Bailey pair records the exact relation that each successive application of the lemma requires. The lemma gives formulas for two new sequences and proves that they satisfy the same relation. The work lies in that finite summation identity. In our own reading, preservation of the relation explains why every output can serve as the next input.
+
+**Wikipedia:** [Bailey pair](https://en.wikipedia.org/wiki/Bailey_pair). It says: “This process can be iterated to produce an infinite sequence of Bailey pairs, called a Bailey chain.”
+
+**Paper or page:** [Truncated theta series from the Bailey lattice](https://arxiv.org/abs/2403.11608v2). It says: “If (αₙ, βₙ) is a Bailey pair relative to a, then so is (α′ₙ, β′ₙ)”
+
+**Sources:**
+
+- [W. N. Bailey, Identities of the Rogers-Ramanujan Type](https://doi.org/10.1112/plms/s2-50.1.1)
 
 ### Monic polynomials are Hermite equivalent exactly when their rings ℤ\[X\]∕(f) are isomorphic
 
@@ -2581,6 +5510,24 @@
 
 - [Ehsan Shahoseini, Ali Rajaei, Abbas Maarefparvar, Ostrowski quotients for finite extensions of number fields, Pacific J. Math. 321 (2022) 415-429, arXiv:2111.00442](https://arxiv.org/abs/2111.00442)
 
+### Galois sets identify completions
+
+**Remember:** Restrict the Galois action to read the local field factors.
+
+*Makes the theorem clean to state or prove.* MSC 11R32 (Galois theory). arXiv math.NT. Level 4: research.
+
+**Definition.** Let L be a finite Galois extension of ℚ with group G. For an intermediate field K fixed by H, the cosets H∖G represent the embeddings of K into L. For a prime of L above p, its decomposition group D consists of the automorphisms preserving that prime.
+
+**Problem.** For two intermediate fields, form the products of their completions above p. These products are isomorphic as ℚₚ-algebras exactly when their coset sets are isomorphic with the action of D.
+
+**How the definition helps.** Restricting the coset action to D records the local fields and their multiplicities together (our own). Each orbit supplies one completion, the field fixed by a point stabilizer inside the chosen completion of L (our own). The converse uses the correspondence between finite separable algebras and finite sets with Galois action (our own). The cited proposition applies this argument to fields whose coset actions have equal fixed-point counts for every element of G (our own).
+
+**Paper or page:** [Stronger arithmetic equivalence](https://arxiv.org/abs/2104.01956v4). It says: “if and only if \[H₁∖G\] and \[H₂∖G\] are isomorphic as D𝔭-sets.”
+
+**Sources:**
+
+- [Andrew V. Sutherland, Stronger arithmetic equivalence (Proposition 2.19)](https://arxiv.org/abs/2104.01956v4)
+
 ### Locally integrally equivalent number fields have isomorphic class groups
 
 **Remember:** Keep integer information at every prime, and the class group survives.
@@ -2598,6 +5545,76 @@
 **Sources:**
 
 - [Andrew V. Sutherland, Stronger arithmetic equivalence, arXiv:2104.01956v4 (2021). Discrete Anal. 2021, Paper No. 23, 23 pp](https://arxiv.org/abs/2104.01956v4)
+
+### Cartesian conditions preserve Selmer torsion
+
+**Remember:** Pull back the local tests to get the same test on torsion.
+
+*Makes the theorem clean to state or prove.* MSC 11R34 (Galois cohomology), 11F80. arXiv math.NT. Level 4: research.
+
+**Definition.** A Selmer group consists of global Galois cohomology classes whose restrictions satisfy chosen tests at each prime. Let T be a free module over a discrete valuation ring modulo πᵐ, where π generates the maximal ideal. Cartesian tests on the points killed by πⁱ are inverse images of the tests on T. On T modulo πⁱ, transport those tests by multiplication by π to the power m − i.
+
+**Problem.** Suppose the Galois group of the number field fixes no nonzero element of T modulo π. For 1 ≤ i ≤ m, both smaller Selmer groups identify with the subgroup killed by πⁱ in the Selmer group on T.
+
+**How the definition helps.** Pulling the tests back makes membership on the smaller module exactly membership of its image on T (our own). The absence of fixed vectors gives the needed injections through the exact sequences of Galois cohomology (our own). These sequences identify the image with the classes killed by πⁱ (our own). The cited theorem verifies the Cartesian property for a particular family of tests.
+
+**Paper or page:** [Bipartite Euler Systems for certain Galois Representations](https://arxiv.org/abs/2302.05181v1). It says: “The Selmer structure ℱ(𝔫) is cartesian for any 𝔫 ∈ 𝒩.”
+
+**Sources:**
+
+- [Bipartite Euler Systems for certain Galois Representations](https://arxiv.org/abs/2302.05181v1)
+
+### Unit cohomology detects capitulation
+
+**Remember:** A generator upstairs records the lost class through its conjugates.
+
+*Makes the theorem clean to state or prove.* MSC 11R34 (Galois cohomology), 11R29. arXiv math.NT. Level 4: research.
+
+**Definition.** For a finite Galois extension K/F, choose a finite set S containing all infinite places and all ramified finite primes of F. Form ideal classes using only prime factors outside S and identifying ideals differing by a principal ideal outside S. An S-unit is a nonzero element with prime exponent zero outside S. Upstairs, use the primes above S.
+
+**Problem.** The kernel of extension on S-ideal classes is the first cohomology of the Galois group acting on the S-units of K.
+
+**How the definition helps.** Ratios of conjugates encode a class that becomes principal upstairs without retaining its choice of generator (our own). If a generates the extended ideal outside S, each ratio g(a)/a is an S-unit (our own). These ratios satisfy c(gh) = c(g)g(c(h)) (our own). First cohomology groups such families modulo those obtained from S-units in place of a (our own). Hilbert’s Theorem 90 supplies a field element a for every family (our own). Its ideal outside S descends because no prime there ramifies (our own).
+
+**Paper or page:** [The S-relative Pólya groups and S-Ostrowski quotients of number fields](https://arxiv.org/abs/2312.09362v1). It says: “0 → Ker(ε<sub>K/F,S</sub>) → H¹(G,U<sub>K,S</sub>)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A torus detects common scales
+
+**Remember:** One cohomology class records whether all norms share a scale.
+
+*Makes the theorem clean to state or prove.* MSC 11R37 (Class field theory), 11S25. arXiv math.NT. Level 4: research.
+
+**Definition.** Take finite separable extensions of a number field K. Map a tuple of nonzero extension elements and one nonzero base scalar to their field norms multiplied by that common scalar. Let T be the kernel as an algebraic group over K. It is a torus, meaning it becomes a product of multiplicative groups over a separable closure.
+
+**Problem.** Suppose a tuple of nonzero base elements becomes a tuple of norms after common rescaling at each completion of K. The projective Hasse norm principle asks whether one scalar in K suffices. It holds exactly when the map from first Galois cohomology of T to the product of its local counterparts is injective.
+
+**How the definition helps.** The kernel torus assigns one obstruction class to the entire tuple, retaining the requirement of a common scalar (our own). The connecting map in Galois cohomology assigns this class, which vanishes exactly when the tuple has a preimage (our own). Hilbert’s theorem 90 shows that every class arises this way, both globally and locally (our own). Thus injectivity says that vanishing at every completion forces global vanishing (our own).
+
+**Paper or page:** [A Projective Twist on the Hasse Norm Theorem](https://arxiv.org/abs/2410.11159v1). It says: “{PHNP} \_K(L<sub>1</sub>, L<sub>2</sub>, \\ldots , L<sub>n</sub>) is true if and only if H<sup>1</sup>(L/K, \\mathbf {T}(L)) \\to \\prod <sub>w\\mid v</sub> H<sup>1</sup>(L<sub>w</sub>/K<sub>v</sub>, \\mathbf {T}(L<sub>w</sub>)) is injective.”
+
+**Sources:**
+
+- [Thomas Rüd, Alan Bu, A Projective Twist on the Hasse Norm Theorem](https://arxiv.org/abs/2410.11159v1)
+
+### Local unit intersections join ring class fields
+
+**Remember:** Intersect the subgroups to join the fields.
+
+*True by definition.* MSC 11R37 (Class field theory). arXiv math.NT. Level 4: research.
+
+**Definition.** Let K be an imaginary quadratic field with ring of integers O and units ±1. For a positive integer f, the order of conductor f is the subring ℤ + fO. Finite ideles are tuples of nonzero local elements that are units almost everywhere. Class field theory assigns the ring class field to the subgroup generated by diagonal elements of K× and the completed order’s local units.
+
+**Problem.** The smallest field containing the ring class fields of conductors f and g is the ring class field of their least common multiple.
+
+**How the definition helps.** The subgroup description turns the field calculation into an intersection (our own). Class field theory assigns the smallest field containing both to the intersection of their defining subgroups (our own). For an idele in both subgroups, the two diagonal factors differ by a unit of O (our own). Both possible units belong to every order (our own). At each rational prime, the intersection takes the smaller unit group, corresponding to the larger prime exponent in the conductor (our own). This computes the conductor without constructing generators for either field (our own).
+
+**Paper or page:** [CM Elliptic Curves: Volcanoes, Reality and Applications](https://arxiv.org/abs/2212.13316v1). It says: “The compositum of finitely many ring class fields of K is a ring class field of K.”
+
+**Sources:**
+
+- [CM Elliptic Curves: Volcanoes, Reality and Applications (Corollary 4.4)](https://arxiv.org/abs/2212.13316v1)
 
 ### Normalized Haar measure gives Riemann–Roch from Poisson summation
 
@@ -2634,3 +5651,147 @@
 **Sources:**
 
 - [Zhiguo Ding, Wei Xiong, Qifan Zhang, Exceptional extensions of local fields and the Carlitz--Wan conjecture, arXiv:2505.12877v1 (2025)](https://arxiv.org/abs/2505.12877v1)
+
+### Logarithmic coordinates diagonalize graded differentiation
+
+**Remember:** In the basis dt/t, differentiating a pole multiplies its coefficient by minus its order.
+
+*True by definition.* MSC 11S15 (Ramification and extension theory). arXiv math.NT. Level 4: research.
+
+**Definition.** In the Laurent series field k((t)), let k be a perfect field of characteristic p, so every element has a pth root. Write continuous differentials as multiples of dt/t. Filter both functions and differentials by allowing their coefficients to have poles of order at most n.
+
+**Problem.** On the quotient that retains only the coefficient of pole order n, differentiation acts by multiplication by −n in the basis dt/t.
+
+**How the definition helps.** Using dt/t keeps the coefficient at the same pole order (our own calculation). Differentiating t⁻ⁿ gives −n times t⁻ⁿ dt/t, so the induced map vanishes when p divides n. The basis dt would shift the order by one. The cited lemma also proves that the identification on these quotients is independent of the parameter.
+
+**Paper or page:** [Ramification groups of some finite Galois extensions of maximal nilpotency class over local fields of positive characteristic](https://arxiv.org/abs/2102.07928v4). It says: “The derivation d induces a morphism ∂ : Grₙ K → Grₙ Ω¹ₖ. We have ∂ = −n ⋅ μ.”
+
+**Sources:**
+
+- [Ramification groups of some finite Galois extensions of maximal nilpotency class over local fields of positive characteristic](https://arxiv.org/abs/2102.07928v4)
+
+### Drinfeld division points detect norms
+
+**Remember:** A zero symbol means the norm residue action fixes the division point.
+
+*True by definition.* MSC 11S31 (Class field theory; \\(p\\)-adic formal groups). arXiv math.NT. Level 4: research.
+
+**Definition.** Over a local field of positive characteristic, a formal Drinfeld module uses additive power series for scalar multiplication. Assume stable reduction of height one, as in the cited proposition, and that L contains all points killed by the chosen division map. For α in the maximal ideal, choose a division point ξ mapping to α. For nonzero β in L, the symbol subtracts ξ from its image under the automorphism assigned to β by local reciprocity.
+
+**Problem.** The formal Drinfeld norm residue symbol is zero exactly when β is a norm from the field obtained by adjoining ξ.
+
+**How the definition helps.** Defining the symbol as a difference replaces an explicit formula with a test for fixing one point (our own). The conjugates of ξ differ from ξ by division torsion, which already lies in L (our own). The Galois group therefore acts by translations and is abelian (our own). Local reciprocity says the elements acting trivially on L(ξ) are precisely its norms (our own).
+
+**Paper or page:** [The norm residue symbol for formal Drinfeld modules](https://arxiv.org/abs/2211.10368v1). It says: “β is a norm from L(ξ)”
+
+**Sources:**
+
+- [Marwa Ala Eddine, The norm residue symbol for formal Drinfeld modules](https://arxiv.org/abs/2211.10368v1)
+
+### Drinfeld symbols commute with norms
+
+**Remember:** An Artin action upstairs restricts to the action of the norm downstairs.
+
+*True by definition.* MSC 11S31 (Class field theory; \\(p\\)-adic formal groups). arXiv math.NT. Level 4: research.
+
+**Definition.** Over a local field of positive characteristic, a formal Drinfeld module uses additive power series for scalar multiplication. Assume stable reduction of height one, as in the cited proposition, and that L contains all points killed by the chosen division map. For α in the maximal ideal, choose a division point ξ mapping to α. For nonzero β in L, the symbol subtracts ξ from its image under the automorphism assigned to β by local reciprocity.
+
+**Problem.** Let M/L be finite separable, let α belong to the maximal ideal of L, and let β be nonzero in M. The symbol over M equals the symbol over L evaluated at α and the norm of β.
+
+**How the definition helps.** Using the same division point in both fields replaces comparison of explicit symbol formulas by restriction of automorphisms (our own). Local reciprocity says the automorphism attached to β restricts to the automorphism attached to its field norm (our own). Their displacements of ξ therefore agree (our own).
+
+**Paper or page:** [The norm residue symbol for formal Drinfeld modules](https://arxiv.org/abs/2211.10368v1). It says: “Then (\\alpha ,\\beta )<sub>M,n</sub> =(\\alpha ,\\operatorname {N}<sub>M\|L</sub>(\\beta ))<sub>L,n</sub>.”
+
+**Sources:**
+
+- [Marwa Ala Eddine, The norm residue symbol for formal Drinfeld modules](https://arxiv.org/abs/2211.10368v1)
+
+### Deleting one factor restores continuity
+
+**Remember:** Remove the factor whose exponent behaves discontinuously in the p-adic distance.
+
+*Rules out counterexamples.* MSC 11S40 (Zeta functions and \\(L\\)-functions), 11M41. arXiv math.NT. Level 4: research.
+
+**Definition.** Fix an odd prime p. Two integers are close in the p-adic distance when a high power of p divides their difference. For positive multiples n of p−1, multiply the Riemann zeta value ζ(1−n) by one minus p to the power n−1.
+
+**Problem.** These corrected values extend continuously in the p-adic variable n away from n=0, where the extension has a pole. For p=5, the original values have no continuous extension at n=4.
+
+**How the definition helps.** Removing the Euler factor avoids a discontinuity from taking powers of 5 (our own). Take n = 4 + 4·5ᵏ, so n tends to 4 in the 5-adic distance (our own). But 5 to the power n−1 tends to 0 along these indices (our own). The corrected values therefore force the uncorrected limit to be (1−5³)ζ(−3), not ζ(−3) (our own). The work moves to the Kubota–Leopoldt interpolation theorem, which uses Kummer’s congruences to control the corrected values (our own).
+
+**Wikipedia:** [P-adic L-function](https://en.wikipedia.org/wiki/P-adic_L-function). It says: “except that the Euler factor at p is removed, otherwise it would not be p-adically continuous.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Regularization bounds Bernoulli weights
+
+**Remember:** Subtract the rescaled Bernoulli weight to cancel the denominator N.
+
+*Rules out counterexamples.* MSC 11S80 (Other analytic theory (analogues of beta and gamma functions, \\(p\\)-adic integration, etc.)). arXiv math.NT. Level 4: research.
+
+**Definition.** Fix an odd prime p and positive integers d and c, with c ≥ 2 coprime to dp. At modulus N = dpⁿ, give each least nonnegative representative a the weight w(a) = a/N − 1/2. Let b represent c⁻¹a modulo N in the same range. The corrected weight is w(a) − cw(b).
+
+**Problem.** For odd p the regularized distribution is a bounded p-adic measure, even though the original Bernoulli distribution is not.
+
+**How the definition helps.** The correction puts a multiple of N in the numerator (our own calculation). The result is (a − cb)/N + (c − 1)/2, which belongs to the p-adic integers for odd p. The original weights add correctly under subdivision of residue classes, and multiplication by c permutes those subdivisions. The corrected weights therefore still add correctly and define a bounded measure (our own argument). With d = a = 1, the original weights have unbounded p-adic absolute value as n grows.
+
+**Paper or page:** [Dirichlet Series Expansions of p-adic L-Functions](https://arxiv.org/abs/2102.02851v3). It says: “Let p be a prime, c, d ∈ ℕ, and c ≥ 2 such that (c, dp) = 1.”
+
+**Sources:**
+
+- [Dirichlet Series Expansions of p-adic L-Functions](https://arxiv.org/abs/2102.02851v3)
+
+### Convolution lifts Gaussian periods
+
+**Remember:** Fourier transformation turns the lift of periods into a power of Gauss sums.
+
+*Makes the theorem clean to state or prove.* MSC 11T22 (Cyclotomy), 11T24. arXiv math.NT. Level 4: research.
+
+**Definition.** Let e ≥ 2 divide q − 1, and label the multiplicative cosets of the eth powers in 𝔽q by integers modulo e. On each coset, sum a fixed nontrivial additive character, a homomorphism from addition to complex multiplication. These sums define the Gaussian period function. In extensions, label cosets through the norm and lift the character through the trace, respectively the product and sum of conjugates.
+
+**Problem.** Over the degree n extension, the Gaussian period function equals the n-fold cyclic convolution of the base function times the sign (−1)ⁿ⁻¹.
+
+**How the definition helps.** In our own explanation, treating all periods as one function expresses their lifting law by one convolution power. Convolution at index i sums products of values over pairs of indices adding to i modulo e. Fourier transformation turns convolution into ordinary multiplication and transforms the periods into Gauss sums. The Davenport–Hasse theorem gives the signed power formula for those sums. Fourier inversion gives the claimed formula for periods.
+
+**Paper or page:** [Davenport and Hasse's theorems and lifts of multiplication matrices of Gaussian periods](https://arxiv.org/abs/2105.14872). It says: “is the n-fold product of ηᵣ with respect to the convolution product.”
+
+**Sources:**
+
+- [Akinari Hoshi and Kazuki Kanai, Davenport and Hasse's theorems and lifts of multiplication matrices of Gaussian periods](https://arxiv.org/abs/2105.14872)
+
+### Frobenius traces give Kloosterman recurrences
+
+**Remember:** A Kloosterman sum over an extension is the negative trace of a Frobenius power.
+
+*True by definition.* MSC 11T23 (Exponential sums), 14F20. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Fix a nonzero element a of a finite field and a nontrivial additive character ψ, a homomorphism from addition to complex multiplication. For each degree n extension, sum ψ(Tr(ax + 1/x)) over its nonzero elements x. The trace Tr adds the field conjugates. Represent these Kloosterman sums using a single cohomology space attached to the function ax + 1/x.
+
+**Problem.** Write S(n) for the sum in degree n. For n ≥ 1, it satisfies S(n+2) = −S(1)S(n+1) − bS(n), where b = (S(1)² + S(2))/2.
+
+**How the definition helps.** In our own deduction, the cohomology description gives all extension sums as negative traces of powers of one two-dimensional operator F. The cited calculation gives dimension two in degree one and zero elsewhere. The cohomological trace formula identifies each sum with −tr(Fⁿ), replacing a separate calculation in every field. The characteristic polynomial of F then gives the recurrence, with b equal to its determinant.
+
+**Paper or page:** [Matrix Kloosterman sums](https://arxiv.org/abs/2109.00762). It says: “\\\[\\dim H<sup>i<sub>c</sub></sup>(\\mathbb {A}<sup>1\\setminus</sup> \\mathbb {A}<sup>0</sup>,f\_\\alpha )=\\left \\{\\begin {array}{ll}2, &amp; \\mathrm {if\~} i=1,\\\\ 0, &amp; \\mathrm {if\~} i\\neq 1\\end {array}\\right .\\\]”
+
+**Sources:**
+
+- [Márton Erdélyi and Árpád Tóth, Matrix Kloosterman sums](https://arxiv.org/abs/2109.00762)
+
+### Character spaces isolate Jacobi factors
+
+**Remember:** Each character pair labels its own Frobenius eigenvalue.
+
+*Makes the theorem clean to state or prove.* MSC 11T24 (Other character sums and Gauss sums), 14G10. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Take the smooth projective Fermat curve with affine equation xᵐ + yᵐ = 1, where m is a prime power dividing q − 1. Multiplying either coordinate by an mth root of unity preserves the curve. Split its first étale cohomology, the vector space recording its zeta numerator, into spaces where these scalings act by fixed characters.
+
+**Problem.** Each pair χ, ψ of nontrivial multiplicative characters of 𝔽q with orders dividing m and nontrivial product labels a one-dimensional space. Frobenius acts there by −∑χ(x)ψ(1 − x), summing over 𝔽q and extending the characters by zero at zero.
+
+**How the definition helps.** In our own explanation, splitting by characters lets us specify which Jacobi sum belongs to each Frobenius eigenvalue. Frobenius preserves the spaces because all the scalings are defined over the base field. Computing their dimensions and identifying their eigenvalues with character sums still requires the cohomological point-count formula.
+
+**Paper or page:** [On the variation of the Frobenius in a non abelian Iwasawa tower](https://arxiv.org/abs/2203.16774). It says: “The eigenvalues of $\\sigma \_q$ on the eigenspace $M<sub>n</sub>(\\eta )$ are given by the Jacobi sum 
+
+\\\[ -J<sub>q</sub>(\\chi \_1,\\chi \_2) = -\\sum <sub>x \\in \\mathbb F<sub>q</sub></sub>\\chi \_1(x)\\chi \_2(1-x). \\\]”
+
+**Sources:**
+
+- [Asvin G, On the variation of the Frobenius in a non abelian Iwasawa tower](https://arxiv.org/abs/2203.16774)

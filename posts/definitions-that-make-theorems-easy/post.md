@@ -3,14 +3,14 @@ title: Definitions that make theorems easy
 date: 2026-11-27
 draft: false
 split: true
-summary: 5086 cases where a well-chosen definition makes a theorem easy to state or to prove. The cases come from the nLab, from Wikipedia, and from research papers and ProofWiki in the TheoremSearch data set.
+summary: 5495 cases where a well-chosen definition makes a theorem easy to state or to prove. The cases come from the nLab, from Wikipedia, and from research papers and ProofWiki in the TheoremSearch data set.
 summary: Each entry gives the definition in plain words, a line to remember it by, the problem it solves and how it solves it. It also gives a quote from the page or paper that supports it, and the original papers.
 summary: Some definitions make a result true by definition. Some rule out a known counterexample. Most let a theorem be stated with no exceptions, or make a long proof short.
 summary: An AI model found and wrote the entries. A second pass checked them, and a third pass rewrote them in plain English. Nobody checked them by hand.
 ---
 A good definition does part of the work of a theorem. Take the number 1. If 1 were a prime number, the factorization of 6 would not be unique: 6 = 2 · 3 = 1 · 2 · 3. So the definition of a prime leaves 1 out, and the theorem needs no exception.
 
-This page collects 5086 cases of this kind, in 63 subjects of the Mathematics Subject Classification. Open an entry to read it. Each subject also has its own page, listed under "Sections" at the end. Each entry gives the definition in plain words, the problem it solves, how it solves it, a quote that supports it, and the original papers.
+This page collects 5495 cases of this kind, in 63 subjects of the Mathematics Subject Classification. Open an entry to read it. Each subject also has its own page, listed under "Sections" at the end. Each entry gives the definition in plain words, the problem it solves, how it solves it, a quote that supports it, and the original papers.
 
 ## How to read an entry
 
@@ -24,7 +24,7 @@ Each entry has the same parts, in the same order:
 - **Quote and pages.** A sentence from the nLab, Wikipedia, or a paper or page in the TheoremSearch data set that supports the entry, and links to the pages.
 - **Sources.** Papers on the definition or the theorem. Most are the original papers. A few are surveys, books or histories.
 
-The entries come from three places. 1130 come from the [nLab](https://ncatlab.org/nlab/show/HomePage), a wiki on category theory and the mathematics around it. 2265 come from [Wikipedia](https://en.wikipedia.org/). 1691 come from the [TheoremSearch data set](https://huggingface.co/datasets/uw-math-ai/theorem-search-dataset) ([paper](https://arxiv.org/abs/2602.05216)). It holds 1.34 million theorem statements from openly licensed arXiv papers, ProofWiki, the Stacks Project and some open textbooks. Use the source menu to see one source at a time.
+The entries come from three places. 1229 come from the [nLab](https://ncatlab.org/nlab/show/HomePage), a wiki on category theory and the mathematics around it. 2373 come from [Wikipedia](https://en.wikipedia.org/). 1893 come from the [TheoremSearch data set](https://huggingface.co/datasets/uw-math-ai/theorem-search-dataset) ([paper](https://arxiv.org/abs/2602.05216)). It holds 1.34 million theorem statements from openly licensed arXiv papers, ProofWiki, the Stacks Project and some open textbooks. Use the source menu to see one source at a time.
 
 ## Tags and order
 
@@ -38,11 +38,11 @@ The entries are always in the same order. They are sorted first by the main MSC 
 
 ## Three kinds of help
 
-**True by definition** (2594 entries). The definition builds the result in. The [homotopy hypothesis](#the-homotopy-hypothesis-is-a-tautology-or-a-theorem-depending-on-definitions) says that ∞-groupoids are the same as spaces. If you define an ∞-groupoid to be a space, the hypothesis is "of course a tautology", as the nLab says. This kind of definition does not remove the work. It moves the work into a second theorem. That theorem says that the new definition agrees with the old one, or that the objects you care about meet the definition. Take [Weil cohomology](#weil-cohomology-gives-rationality-and-the-functional-equation-of-zeta-functions). The Lefschetz trace formula follows from the axioms. The hard part is to prove that ℓ-adic cohomology satisfies the axioms.
+**True by definition** (2779 entries). The definition builds the result in. The [homotopy hypothesis](#the-homotopy-hypothesis-is-a-tautology-or-a-theorem-depending-on-definitions) says that ∞-groupoids are the same as spaces. If you define an ∞-groupoid to be a space, the hypothesis is "of course a tautology", as the nLab says. This kind of definition does not remove the work. It moves the work into a second theorem. That theorem says that the new definition agrees with the old one, or that the objects you care about meet the definition. Take [Weil cohomology](#weil-cohomology-gives-rationality-and-the-functional-equation-of-zeta-functions). The Lefschetz trace formula follows from the axioms. The hard part is to prove that ℓ-adic cohomology satisfies the axioms.
 
-**Rules out counterexamples** (1157 entries). The definition adds a condition that removes a known bad case. Then the theorem holds with no exceptions. [Brown representability](#brown-representability-needs-connected-pointed-spaces) is false for spaces that are not connected. Freyd and Heller found a counterexample with Thompson's group F. If the definition asks for connected spaces with a base point, the theorem is true.
+**Rules out counterexamples** (1266 entries). The definition adds a condition that removes a known bad case. Then the theorem holds with no exceptions. [Brown representability](#brown-representability-needs-connected-pointed-spaces) is false for spaces that are not connected. Freyd and Heller found a counterexample with Thompson's group F. If the definition asks for connected spaces with a base point, the theorem is true.
 
-**Makes the theorem clean to state or prove** (1335 entries). The definition lets you state the theorem at all, or it makes a long argument short. Take the [compactly generated spaces](#compactly-generated-spaces-make-the-exponential-law-hold-for-all-spaces). For any two of them, maps X × Y → Z are the same as maps X → Map(Y, Z). For all topological spaces, this is true only for some X and Y. Another example is [Lawvere's fixed point theorem](#lawveres-fixed-point-theorem-gives-cantor-russell-and-gdel-from-one-definition). With it, the diagonal arguments of Cantor, Russell, Tarski and Gödel are one short argument. For Gödel and Tarski, you still must show that arithmetic meets the hypothesis.
+**Makes the theorem clean to state or prove** (1450 entries). The definition lets you state the theorem at all, or it makes a long argument short. Take the [compactly generated spaces](#compactly-generated-spaces-make-the-exponential-law-hold-for-all-spaces). For any two of them, maps X × Y → Z are the same as maps X → Map(Y, Z). For all topological spaces, this is true only for some X and Y. Another example is [Lawvere's fixed point theorem](#lawveres-fixed-point-theorem-gives-cantor-russell-and-gdel-from-one-definition). With it, the diagonal arguments of Cantor, Russell, Tarski and Gödel are one short argument. For Gödel and Tarski, you still must show that arithmetic meets the hypothesis.
 
 ## Patterns that repeat
 
@@ -76,7 +76,7 @@ The list is long, but it is not complete. It contains only cases where the page 
 
 ## Entries
 
-::figure kind=definitions alt="A list of 5086 entries with a search box, filters for kind, MSC2020 subject, arXiv category, level and source, and a button that copies the matching entries as notes." caption="Open an entry to read it. The filters are kept in the address, so a filtered list can be shared."
+::figure kind=definitions alt="A list of 5495 entries with a search box, filters for kind, MSC2020 subject, arXiv category, level and source, and a button that copies the matching entries as notes." caption="Open an entry to read it. The filters are kept in the address, so a filtered list can be shared."
 
 ## 00 General and overarching topics; collections
 
@@ -6655,6 +6655,22 @@ The list is long, but it is not complete. It contains only cases where the page 
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Core and quotient split partitions
+
+**Remember:** Each quotient cell records one bead move of size t.
+
+*Makes the theorem clean to state or prove.* MSC 05A17 (Combinatorial aspects of partitions of integers), 11P84. arXiv math.CO, math.NT. Level 3: graduate.
+
+**Definition.** Write a partition as decreasing row lengths, allowing ties and padding with zeros. Put a bead at the length of row i minus i, starting at i = 1. For a positive integer t, separate the beads by residue modulo t and slide each toward smaller positions until no gaps remain below it. The packed positions encode the core, and the displacements in steps of t give one quotient partition per residue.
+
+**Problem.** The size of a partition is the size of its t-core plus t times the sum of the sizes of its t quotient partitions. The core and the t ordered quotient partitions determine the original partition.
+
+**How the definition helps.** The quotient records exactly how far each bead moved, so it gives both the size difference and a way to undo the moves. In our own argument, one step reduces the sum of the row lengths by t. Packing accounts for every step. To reconstruct each residue line, match beads in descending order and restore their recorded displacements. Identifying the packed partition with the usual core uses the correspondence between bead moves and removals of t boundary cells.
+
+**Wikipedia:** [Core partition](https://en.wikipedia.org/wiki/Core_partition). It says: “We call λ⁽ᵗ⁾ the t-core of λ”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Gapless log-concavity survives convolution
 
 **Remember:** No internal zeros lets adjacent inequalities control every pair of rows.
@@ -11663,6 +11679,38 @@ The list is long, but it is not complete. It contains only cases where the page 
 - [H. von Mangoldt, Zu Riemanns Abhandlung 'Ueber die Anzahl der Primzahlen unter einer gegebenen Grösse', J. reine angew. Math. 114 (1895) 255–305](https://doi.org/10.1515/crll.1895.114.255)
 - [T. M. Apostol, Introduction to Analytic Number Theory, Springer, 1976](https://doi.org/10.1007/978-1-4757-5579-4)
 
+### Large characters locate repeated differences
+
+**Remember:** Make the large Fourier terms agree to get a positive count.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11B13 (Additive bases, including sumsets), 11B30. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let A occupy a fraction α &gt; 0 of a finite vector space over a prime field. A character sends vector addition to multiplication on the unit circle. Its Fourier coefficient for A is the sum of its conjugate values on A divided by the whole space’s size. Select characters whose coefficients have magnitude at least √(α³/2), and take the vectors where all selected characters equal 1.
+
+**Problem.** This common kernel is a subspace inside 2A − 2A, the set of sums a + b − c − d from A. Its codimension, the number of independent linear conditions defining it, is at most 2/α².
+
+**How the definition helps.** Selecting large coefficients lets us force their contributions to the representation count to have the same sign. In our own proof, Fourier inversion counts representations using fourth powers of the coefficient magnitudes, weighted by character values. On the common kernel every large term is nonnegative, and the constant term contributes α⁴. Parseval’s identity says the squared magnitudes sum to α. The threshold therefore bounds the combined magnitude of the small terms by α⁴/2 and the number of large terms by 2/α². The cited theorem gives a stronger codimension bound by a different argument.
+
+**Paper or page:** [A bilinear Bogolyubov-Ruzsa lemma with poly-logarithmic bounds](https://arxiv.org/abs/1808.04965v2). It says: “there exists a subspace V of 𝔽ⁿ of codimension O(log⁴ α⁻¹) such that V ⊆ 2A−2A.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Minimal growth controls repeated sums
+
+**Remember:** Use the least expensive subset at every addition.
+
+*True by definition.* MSC 11B13 (Additive bases, including sumsets), 11P70. arXiv math.NT. Level 3: graduate.
+
+**Definition.** For finite sets in an abelian group, X + B contains every sum of one element from each set. Given a nonempty finite set A, choose a nonempty subset X minimizing \|X + B\|/\|X\|. Write K for this minimum.
+
+**Problem.** Add j copies of B to X, where j is a positive integer. The resulting set has size at most \|X\| times K to the power j.
+
+**How the definition helps.** Choosing X by its smallest growth ratio lets one bound every later addition using the same K. Starting with A itself only gives a bound for the first addition. Petridis proved that \|C + X + B\| ≤ K\|C + X\| for every finite C. The proof uses minimality to control overlaps between translates of X. In our own derivation, take C successively as {0}, B, B + B, and so on.
+
+**Wikipedia:** [Plünnecke–Ruzsa inequality](https://en.wikipedia.org/wiki/Pl%C3%BCnnecke%E2%80%93Ruzsa_inequality). It says: “is a nonempty subset that minimizes the value of”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The stabilizer of a sumset extends Cauchy–Davenport to all abelian groups
 
 **Remember:** Measure sumsets against their stabilizer, and subgroups stop being counterexamples.
@@ -11682,6 +11730,72 @@ The list is long, but it is not complete. It contains only cases where the page 
 **Sources:**
 
 - [Christian Reiher, On Lev's periodicity conjecture, arXiv:2408.15174 (2024)](https://arxiv.org/abs/2408.15174)
+
+### Independence keeps entropic distance nonnegative
+
+**Remember:** An independent difference cannot have less entropy than either summand.
+
+*Rules out counterexamples.* MSC 11B30 (Arithmetic combinatorics; higher degree uniformity). arXiv math.NT. Level 3: graduate.
+
+**Definition.** For a finite distribution with positive probabilities p, its entropy H is the sum of −p log p over its outcomes. Draw independent samples X′ and Y′ from two given distributions on an abelian group. Their entropic Ruzsa distance is H(X′ − Y′) − (H(X′) + H(Y′))/2.
+
+**Problem.** Entropic Ruzsa distance is nonnegative for any two finitely supported distributions on an abelian group.
+
+**How the definition helps.** Independent sampling rules out cancellation caused by using the same draw twice. In our own example, set Y = X for a fair bit on the two-element group. Their actual difference has entropy zero, giving distance −log 2. With independent draws, fixing either draw leaves the entropy of the other in the difference. Conditioning cannot increase entropy, so the difference has at least the larger individual entropy.
+
+**Paper or page:** [Marton's Conjecture in abelian groups with bounded torsion](https://arxiv.org/abs/2404.02244v2). It says: “if X,Y are independent, then H\[X\], H\[Y\] are both at most H\[X ± Y\].”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Quadratic phases preserve cube norms
+
+**Remember:** A quadratic phase cancels across the eight cube vertices.
+
+*True by definition.* MSC 11B30 (Arithmetic combinatorics; higher degree uniformity). arXiv math.NT. Level 3: graduate.
+
+**Definition.** An additive difference replaces P(x) by P(x + h) − P(x) for a chosen step h. Call exp(2πiP) a quadratic phase if P takes values modulo 1 and every third additive difference vanishes. The eighth power of the Gowers U³ norm averages products over x and three independent uniform steps. Include all eight subset sums of the steps added to x, conjugating the function values from odd-sized subsets.
+
+**Problem.** On a finite abelian group, multiplying a function by a quadratic phase does not change its Gowers U³ norm.
+
+**How the definition helps.** Defining quadratic phases by differences makes their eight factors cancel inside the norm. In our own calculation their product is the exponential of a signed third difference, hence equals 1. This avoids choosing coefficients for a quadratic formula. The cited representation theorem identifies these difference-defined phases with explicit quadratic formulas on groups of odd order.
+
+**Paper or page:** [An inverse theorem for the Gowers U³ norm](https://arxiv.org/abs/math/0503014v4). It says: “Conversely, all such functions x ↦ Mx · x + ξ · x + c are globally quadratic phase functions.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Regular Bohr sets absorb small shifts
+
+**Remember:** Small changes in radius control small shifts.
+
+*True by definition.* MSC 11B30 (Arithmetic combinatorics; higher degree uniformity). arXiv math.NT. Level 3: graduate.
+
+**Definition.** In a finite abelian group, a character sends sums to products on the unit circle. A Bohr set B contains the elements that d chosen characters all send within distance r of 1. Call B regular if scaling r by 1 + t changes its size by at most 100d\|t\| times its original size. Require this for d ≥ 1 and \|t\| ≤ 1/(100d).
+
+**Problem.** Take 0 &lt; ρ &lt; 1 and a shift x from the Bohr set with radius ρr. The uniform probabilities on B and B + x differ by at most 200ρd when we sum their absolute differences.
+
+**How the definition helps.** Regularity controls points gained by enlarging B, which an arbitrary radius need not do. In our own proof, both B and B + x fit inside the set of radius (1 + ρ)r. Their sizes agree, so their symmetric difference contains at most twice the number of added points. Regularity gives the bound for 100ρd ≤ 1. Otherwise the total difference between two probability distributions is at most 2. Finding a regular radius near a prescribed radius takes a separate lemma.
+
+**Paper or page:** [Sparse graph counting and Kelley-Meka bounds for binary systems](https://arxiv.org/abs/2311.12248v5). It says: “If B is a regular Bohr set of rank d”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Discrete logarithms build Sidon sets
+
+**Remember:** Equal exponent sums give equal products of monic linear factors at θ.
+
+*True by definition.* MSC 11B75 (Other combinatorial number theory). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let q be a prime power and h ≥ 2. Choose a generator θ of the multiplicative group of the field with qʰ elements. For each λ in its subfield with q elements, record the exponent a modulo qʰ − 1 such that θᵃ = θ − λ.
+
+**Problem.** The q exponents form a Sidon set of order h in the cyclic group of order q raised to h minus 1. This means an h-term sum, with repeats allowed, determines its summands up to order.
+
+**How the definition helps.** Taking exponents replaces a search for repeated sums by a polynomial identity. In our own proof, equal sums modulo qʰ − 1 give equal products at θ. Subtract the two monic degree-h products. Their difference has degree below h and vanishes at θ. Only the zero polynomial can do this because θ has degree h over the smaller field. Unique factorization then recovers the summands, including repetitions.
+
+**Paper or page:** [The Bose-Chowla argument for Sidon sets](https://arxiv.org/abs/2104.12711v3). It says: “is a classical Sidon set of order h modulo qʰ − 1 and cardinality q.”
+
+**Sources:**
+
+- [Melvyn B. Nathanson, The Bose–Chowla argument for Sidon sets](https://arxiv.org/abs/2104.12711v3)
 
 ### Positive genus makes Siegel's theorem on integral points exclude Pell equations
 
@@ -11720,6 +11834,22 @@ The list is long, but it is not complete. It contains only cases where the page 
 - [A. Thue, Über Annäherungswerte algebraischer Zahlen, J. reine angew. Math. 135 (1909) 284–305](https://doi.org/10.1515/crll.1909.135.284)
 - [E. Bombieri and W. M. Schmidt, On Thue's equation, Invent. Math. 88 (1987) 69–81](https://doi.org/10.1007/BF01405092)
 
+### Hilbert symbols complete local classification
+
+**Remember:** The determinant counts factors, and the Hasse invariant pairs them.
+
+*Rules out counterexamples.* MSC 11E08 (Quadratic forms over local rings and fields), 11E95. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Over the p-adic numbers ℚₚ, write a nonsingular quadratic form as a sum of squares with nonzero coefficients. The Hilbert symbol (a,b) equals 1 if z² = ax² + by² has a nonzero solution over ℚₚ, and −1 otherwise. The Hasse invariant multiplies these signs over all unordered pairs of distinct coefficient positions.
+
+**Problem.** Two nondegenerate quadratic forms over ℚₚ are isometric exactly when their dimensions, determinant square classes, and Hasse invariants agree.
+
+**How the definition helps.** The extra sign retains the interactions between coefficients that the determinant loses (our own). Over ℚ₃, the diagonal triples (1, 1, 1) and (1, 3, 3) have equal determinant square classes (our own). Their Hasse invariants differ because the symbol of (3, 3) is −1 over ℚ₃ (our own). The local classification theorem does the work of proving that no further invariant is needed (our own).
+
+**Paper or page:** [The density of integral quadratic forms having a k-dimensional totally isotropic subspace](https://arxiv.org/abs/2212.10495v1), [The density of integral quadratic forms having a k-dimensional totally isotropic subspace](https://arxiv.org/abs/2212.10495v1). It says: “This is independent of the choice of diagonal form.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The Hilbert symbol turns quadratic reciprocity into one product formula
 
 **Remember:** At each place, the Hilbert symbol asks whether a conic has a point.
@@ -11737,6 +11867,54 @@ The list is long, but it is not complete. It contains only cases where the page 
 **Sources:**
 
 - [J. Neukirch, Algebraic Number Theory, Springer (1999), p. 334](https://doi.org/10.1007/978-3-662-03983-0)
+
+### Hyperbolic planes localize Witt indices
+
+**Remember:** Split one plane and repeat the local test.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11E12 (Quadratic forms over global rings and fields), 11E81. arXiv math.NT. Level 3: graduate.
+
+**Definition.** A hyperbolic plane is the quadratic form xy. The Witt index counts the most such planes that split off in disjoint pairs of variables after a change of coordinates.
+
+**Problem.** Take a nonsingular quadratic form over a number field, a finite extension of ℚ. Its Witt index is the smallest index over all completions, formed using the field’s different absolute values.
+
+**How the definition helps.** Counting planes lets us repeat the local test for a single nonzero zero (our own). If every completion has one, the Hasse–Minkowski theorem gives one over the number field (our own). It supplies a hyperbolic plane, which splits off over the number field and every completion (our own). Witt cancellation lowers all the indices by one, so induction gives the minimum formula (our own).
+
+**Paper or page:** [The density of integral quadratic forms having a k-dimensional totally isotropic subspace](https://arxiv.org/abs/2212.10495v1), [The density of integral quadratic forms having a k-dimensional totally isotropic subspace](https://arxiv.org/abs/2212.10495v1). It says: “If (V₁,Q) and (V₂,Q) are regular and isometric, then (V₁⊥,Q) and (V₂⊥,Q) are also isometric.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Spinor genera classify indefinite forms
+
+**Remember:** A spinor genus remembers which local rotations lift.
+
+*Makes the theorem clean to state or prove.* MSC 11E12 (Quadratic forms over global rings and fields), 11E41. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Fix integral lattices in one nonsingular rational quadratic space. A rotation is a linear map preserving the form with determinant one. Two lattices share a proper spinor genus if a rational rotation followed by local rotations matches them over every ring of p-adic integers. Each local rotation must lift to the spin group, the algebraic double cover of the rotation group.
+
+**Problem.** A proper spinor genus of a nondegenerate indefinite integral form of rank at least three has exactly one proper integral isometry class.
+
+**How the definition helps.** The spinor genus restricts local rotations to ones that strong approximation can match on the lattices (our own). Indefiniteness makes the real spin group noncompact (our own). Strong approximation supplies one rational spin rotation with all the required local lattice images (our own). The resulting rational rotation identifies the integral lattices because their local images agree at every prime (our own).
+
+**Wikipedia:** [Spinor genus](https://en.wikipedia.org/wiki/Spinor_genus). It says: “An important result is that for indefinite forms of dimension at least three, each spinor genus contains exactly one proper equivalence class.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Genus equivalence becomes a square test
+
+**Remember:** Compose with the inverse and look for a square.
+
+*Makes the theorem clean to state or prove.* MSC 11E16 (General binary quadratic forms), 11E41. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Fix a negative fundamental discriminant, the discriminant of an imaginary quadratic field. For primitive positive definite binary quadratic forms of that discriminant, proper classes identify forms under determinant-one integer changes of variables. Gauss composition multiplies these classes. Genus characters are sign-valued homomorphisms whose joint values distinguish genera, the classes of forms equivalent over ℝ and every p-adic integer ring.
+
+**Problem.** Two classes are in the same genus exactly when the first composed with the inverse of the second is a square in the class group.
+
+**How the definition helps.** Genus characters replace separate local comparisons with homomorphisms from the class group to signs (our own). Equal signs mean that the quotient of the classes lies in their common kernel (our own). Gauss’s principal genus theorem identifies the common kernel with the subgroup of squares (our own).
+
+**Wikipedia:** [Genus of a quadratic form](https://en.wikipedia.org/wiki/Genus_of_a_quadratic_form). It says: “The principal genus, the genus containing the principal form, is precisely the subgroup C²”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Letting the middle coefficient be odd matches form discriminants with fields
 
@@ -11770,6 +11948,70 @@ The list is long, but it is not complete. It contains only cases where the page 
 **How the definition helps.** Proper equivalence keeps a form apart from its mirror image, and the mirror image is the inverse class. With determinant −1 allowed, the form ax² + bxy + cy² is equivalent to ax² − bxy + cy² (our own). Under composition these two classes are inverses, so Lagrange's classes would merge each class with its inverse (our own). The page does not give this reason, but says that the Lagrange definition is inferior. The match with the narrow class group explains the factor of two for positive discriminants. Dedekind's ideals later made composition plain multiplication of ideals (our own).
 
 **Wikipedia:** [Binary quadratic form](https://en.wikipedia.org/wiki/Binary_quadratic_form). It says: “Lagrange used a different notion of equivalence, in which the second condition is replaced by αδ − βγ = ±1. Since Gauss it has been recognized that this definition is inferior to that given above.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Even self-dual lattices give modular symmetry
+
+**Remember:** Evenness gives translation and self-duality gives inversion.
+
+*Makes the theorem clean to state or prove.* MSC 11E45 (Analytic theory (Epstein zeta functions; relations with automorphic forms and functions)), 11H06. arXiv math.NT. Level 3: graduate.
+
+**Definition.** For a positive definite lattice, its theta series sums exp(πiz‖v‖²) over all lattice vectors v, where z has positive imaginary part. An even lattice has even integer squared lengths. A self-dual lattice equals the set of vectors whose dot products with all lattice vectors are integers.
+
+**Problem.** The theta series of an even self-dual positive definite lattice of rank n is a modular form of weight n/2 for the full modular group. This means it satisfies the translation and inversion laws and is holomorphic on the upper half-plane and at infinity.
+
+**How the definition helps.** The two lattice conditions match the two generators of the modular group (our own). Evenness fixes every exponential under z replaced by z + 1 (our own). Poisson summation turns inversion into the theta series of the dual, so self-duality closes the formula (our own). The analytic work goes into Poisson summation and the Fourier transform of a Gaussian (our own).
+
+**Wikipedia:** [Leech lattice](https://en.wikipedia.org/wiki/Leech_lattice). It says: “the theta function of an even unimodular lattice of rank n is actually a modular form of weight n/2 for the full modular group”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Dimension parity survives Witt equivalence
+
+**Remember:** A hyperbolic plane changes dimension by two.
+
+*True by definition.* MSC 11E81 (Algebraic theory of quadratic forms; Witt groups and rings). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Start with nonsingular quadratic forms over a field of characteristic different from two. Two forms represent the same Witt class if adding copies of the plane xy to each makes them equal after a change of variables. The Witt ring adds classes by summing forms in separate variables and multiplies classes by taking tensor products.
+
+**Problem.** Dimension modulo two is a surjective ring map from the Witt ring to the field with two elements. Its kernel, the fundamental ideal, is maximal.
+
+**How the definition helps.** Every discarded plane has even dimension, so parity descends to classes. It respects sum and product because dimensions add and multiply before taking the quotient (our own). The quadratic-form work is proving the stable equivalence agrees with having isometric anisotropic parts, the parts with no nonzero zeros (our own).
+
+**Wikipedia:** [Witt group](https://en.wikipedia.org/wiki/Witt_group). It says: “Although classes may contain spaces of different dimension, the parity of the dimension is constant across a class”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Isotropic Pfister forms split completely
+
+**Remember:** One zero makes the whole Pfister form split.
+
+*Rules out counterexamples.* MSC 11E81 (Algebraic theory of quadratic forms; Witt groups and rings). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Over a field of characteristic other than two, a Pfister form is a tensor product of binary forms x² − ay² with each a nonzero. In contrast, an arbitrary quadratic form of the same dimension need not have this tensor structure.
+
+**Problem.** A Pfister form that vanishes at a nonzero vector is hyperbolic. That is, it is an orthogonal sum of planes with form xy.
+
+**How the definition helps.** The tensor definition splits a Pfister form into two scaled copies of a shorter form φ (our own). In separate variables these copies give φ and −aφ (our own). If φ already splits into hyperbolic planes, so does each copy (our own). Otherwise induction says φ has no nonzero zero, so isotropy makes a a ratio of nonzero values of φ (our own). Pfister’s roundness theorem then gives a change of variables taking aφ to φ (our own). Diagonalizing φ pairs each square with its negative, giving hyperbolic planes (our own). The real form x² + y² + z² − t² has a nonzero zero but cannot split into two such planes (our own).
+
+**Wikipedia:** [Pfister form](https://en.wikipedia.org/wiki/Pfister_form). It says: “every isotropic Pfister form is in fact hyperbolic”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Nondegeneracy lets an isotropic vector split off a plane
+
+**Remember:** Pair an isotropic vector with a second vector to split off a plane.
+
+*Rules out counterexamples.* MSC 11E81 (Algebraic theory of quadratic forms; Witt groups and rings). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let Q be a quadratic form on a finite-dimensional vector space over a field of characteristic different from two. Two vectors u and v pair by B(u,v) = Q(u + v) − Q(u) − Q(v). Nondegeneracy means every nonzero vector pairs nontrivially with some vector. An isotropic vector is a nonzero vector where Q vanishes.
+
+**Problem.** A nondegenerate quadratic form has an isotropic vector exactly when it splits as xy plus a form in separate variables.
+
+**How the definition helps.** Nondegeneracy gives an isotropic vector u a partner v, which we scale so B(u,v) = 1 (our own). Replacing v by v − Q(v)u makes its value zero and preserves the pairing (our own). On their span the form is xy, so the span splits off by orthogonality (our own). The degenerate form Q(x,y) = x² vanishes at (0,1) but contains no such plane (our own).
+
+**Paper or page:** [The density of integral quadratic forms having a k-dimensional totally isotropic subspace](https://arxiv.org/abs/2212.10495v1). It says: “A regular quadratic space (V,Q) is isotropic if and only if V has a subspace V₀ such that the quadratic space (V₀,Q) is a hyperbolic plane.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -11861,6 +12103,70 @@ The list is long, but it is not complete. It contains only cases where the page 
 - [E. Hecke, Über Modulfunktionen und die Dirichletschen Reihen mit Eulerscher Produktentwicklung. I, Math. Ann. 114 (1937)](https://doi.org/10.1007/BF01594160)
 - [J.-P. Serre, A Course in Arithmetic, Graduate Texts in Mathematics 7, Springer, 1973](https://doi.org/10.1007/978-1-4684-9884-4)
 
+### Cusp constants become residues
+
+**Remember:** Constant terms become residues when the cusp is filled in.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11F23 (Relations with algebraic geometry and topology), 11F11. arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** Use a torsion-free subgroup of finite index in the determinant-one integer matrices. Assume that, after moving each cusp to infinity by an integral modular substitution, its stabilizer consists of translations. The cusp is a boundary point, and its width h is the least positive translation in this stabilizer. A weight two form f gives the invariant differential f(τ)dτ.
+
+**Problem.** At each cusp, expand the transformed form in exp(2πiτ/h). The sum of its constant coefficients, each multiplied by its own cusp width, is zero.
+
+**How the definition helps.** Each weighted constant coefficient equals 2πi times the residue of the differential at that cusp (our own). Writing q = exp(2πiτ/h) gives dτ = h dq/(2πiq) (our own). Holomorphy of the form leaves at most a simple pole there (our own). The residue theorem on the compact curve gives the result (our own).
+
+**nLab:** [modular form](https://ncatlab.org/nlab/show/modular+form). It says: “Using the Kodaira-Spencer isomorphism one can show that the space of cusp forms of weight 2 are the differentials on the corresponding modular curve.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Sections add modular weights
+
+**Remember:** Multiplying sections adds the exponents of their tensor powers.
+
+*True by definition.* MSC 11F23 (Relations with algebraic geometry and topology), 11F11. arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** Use the space classifying complex elliptic curves together with their symmetries, and include the boundary point called the cusp. Each curve gives a line ω of translation-invariant differentials. A weight k form is a section of the kth tensor power of the extended line ω. The analytic definition instead prescribes how a function changes under modular substitutions.
+
+**Problem.** The product of forms of weights k and ℓ at the same level has weight k + ℓ. If one factor vanishes at every cusp, the product does too.
+
+**How the definition helps.** Tensoring the two sections adds their tensor powers and preserves vanishing at the cusps (our own). The work is identifying sections on the compactification with analytic forms that are holomorphic at the cusps (our own).
+
+**nLab:** [modular form](https://ncatlab.org/nlab/show/modular+form). It says: “A modular form of weight k is a section of ω⊗ᵏ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Weight two cusp forms give differentials
+
+**Remember:** A cusp zero cancels the simple pole in the differential.
+
+*True by definition.* MSC 11F23 (Relations with algebraic geometry and topology), 11F11. arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** Fix full level N ≥ 3 over ℂ, which records a basis of the points killed by N. The Hodge line assigns each elliptic curve its line of translation-invariant differentials and extends over the compact curve. A weight two form is a section of its tensor square. A cusp form vanishes at every cusp, a point added to compactify the curve.
+
+**Problem.** Weight two cusp forms on the compact complex modular curve are its holomorphic one-forms.
+
+**How the definition helps.** Vanishing at a cusp cancels the possible simple pole there (our own). The Kodaira–Spencer isomorphism identifies the squared Hodge line with differentials allowing simple poles at cusps. The usual analytic proof instead checks that f(τ)dτ extends in a local coordinate at each cusp (our own).
+
+**nLab:** [modular form](https://ncatlab.org/nlab/show/modular+form). It says: “Using the Kodaira-Spencer isomorphism one can show that the space of cusp forms of weight 2 are the differentials on the corresponding modular curve.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Hecke operators at distinct primes commute
+
+**Remember:** Translations in separate prime factors commute.
+
+*True by definition. Confidence: medium.* MSC 11F25 (Hecke-Petersson operators, differential operators (one variable)), 11F70. arXiv math.NT, math.RT. Level 3: graduate.
+
+**Definition.** Adeles collect the real and prime completions of the rational numbers. The adelic description realizes modular forms as functions on invertible two-by-two adelic matrices with specified symmetries. At a prime p outside the level, let K be the invertible two-by-two matrices over the p-adic integers. Split K diag(p,1) K into sets gK and sum the translations by their representatives g.
+
+**Problem.** Hecke operators at distinct primes outside the level commute on classical modular forms.
+
+**How the definition helps.** The moves at one prime leave the other prime factor alone (our own). Their sums therefore commute term by term (our own). The work is the adelic description of classical forms and the comparison of local translations with classical Hecke operators (our own).
+
+**nLab:** [automorphic form](https://ncatlab.org/nlab/show/automorphic+form). It says: “These are the adelic automorphic forms. They may be thought of as subsuming ordinary modular forms for all level structures.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Normalizing eigenforms by a(1) = 1 makes coefficients equal Hecke eigenvalues
 
 **Remember:** Set the first coefficient to one, and the coefficients become eigenvalues.
@@ -11880,6 +12186,352 @@ The list is long, but it is not complete. It contains only cases where the page 
 - [E. Hecke, Über Modulfunktionen und die Dirichletschen Reihen mit Eulerscher Produktentwicklung. I, Math. Ann. 114 (1937)](https://doi.org/10.1007/BF01594160)
 - [E. Hecke, Über Modulfunktionen und die Dirichletschen Reihen mit Eulerscher Produktentwicklung. II, Math. Ann. 114 (1937)](https://doi.org/10.1007/BF01594180)
 - [L. J. Mordell, On Mr. Ramanujan's empirical expansions of modular functions, Proc. Cambridge Philos. Soc. 19 (1917) 117–124](https://archive.org/stream/proceedingsofcam1920191721camb#page/n133) (link not checked)
+
+### Quasimodularity preserves derivatives
+
+**Remember:** Allow the extra chain-rule term instead of losing derivatives.
+
+*Makes the theorem clean to state or prove.* MSC 11F25 (Hecke-Petersson operators, differential operators (one variable)), 11F37. arXiv math.NT. Level 3: graduate.
+
+**Definition.** For a determinant-one integer matrix with bottom row (c,d), remove the usual weight factor from the transformed holomorphic function f. A quasimodular form allows the result to be a polynomial in c/(cτ + d) with constant term f. Its coefficient functions are holomorphic, including in the Fourier coordinate at the cusp.
+
+**Problem.** Differentiation maps a weight k quasimodular form to a weight k + 2 quasimodular form. The ordinary modular forms are not closed under differentiation, as the derivative of E₄ shows.
+
+**How the definition helps.** The polynomial allows exactly the extra factors that the chain rule introduces (our own). Differentiation raises the weight by two and the polynomial degree by at most one. The ordinary weight-four Eisenstein series E₄ has a nonzero extra term, so its derivative fails the ordinary modular law (our own).
+
+**Wikipedia:** [Almost holomorphic modular form](https://en.wikipedia.org/wiki/Almost_holomorphic_modular_form). It says: “Ramanujan observed that the derivative of any quasimodular form is another quasimodular form.”
+
+**Paper or page:** [Quasimodular forms and modular differential equations which are not apparent at cusps: I](https://arxiv.org/abs/2103.04890v1). It says: “of quasimodular forms on Γ is closed under differentiation.”
+
+**Sources:**
+
+- [Don Zagier, Elliptic Modular Forms and Their Applications](https://doi.org/10.1007/978-3-540-74119-0_1)
+
+### Refinements select Hecke eigenlines
+
+**Remember:** A root chooses a direction in the two old copies.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11F25 (Hecke-Petersson operators, differential operators (one variable)), 11F85. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Start with a normalized cusp eigenform f of weight k and level N, so its first Fourier coefficient is one. For simplicity take trivial character and a prime p outside N. Write a for its pth Fourier coefficient. A refinement chooses one root α of the polynomial X² − aX + pᵏ⁻¹.
+
+**Problem.** At level Np, Uₚ replaces each nth Fourier coefficient by the coefficient at pn. If the roots differ, the span of f(τ) and f(pτ) has two Uₚ eigenlines. Each refinement labels the line with the chosen eigenvalue.
+
+**How the definition helps.** The chosen root specifies one eigenvalue and hence one line (our own). If β is the other root, the line with eigenvalue α is generated by f(τ) − β f(pτ) (our own). The work is computing Uₚ on this span and showing that its characteristic polynomial is the original pth Hecke polynomial (our own).
+
+**nLab:** [eigenvariety](https://ncatlab.org/nlab/show/eigenvariety). It says: “α is a root of the p-th Hecke polynomial.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Even self-dual lattices give modular theta series
+
+**Remember:** Even norms give translation and self-duality gives inversion.
+
+*Rules out counterexamples. Confidence: medium.* MSC 11F27 (Theta series; Weil representation; theta correspondences), 11F11. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let L be a positive definite lattice with integer inner products. Call L even if every squared length is even. Call it self-dual if it contains exactly the vectors in its real span having integer inner products with every lattice vector. Its theta series sums exp(πiτ⟨v,v⟩) over v in L for τ in the upper half-plane.
+
+**Problem.** For such a lattice of rank 8m with m a positive integer, the theta series is a scalar modular form of weight 4m for SL₂(ℤ). The odd self-dual lattice ℤ⁸ fails the translation rule.
+
+**How the definition helps.** Evenness fixes every summand under τ ↦ τ + 1, while self-duality returns the same lattice under inversion (our own). For ℤ⁸, translation changes the sign of the terms from vectors of squared length one (our own). Gaussian Poisson summation proves the inversion formula at −1/τ with weight 4m (our own). Translation and inversion generate the modular group, and positive definiteness gives holomorphy at infinity (our own).
+
+**nLab:** [Jacobi theta function](https://ncatlab.org/nlab/show/Jacobi+theta+function). It says: “By the Poisson summation formula the number-theoretic theta function θ(0,z) satisfies the following functional equation”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Poincaré series extract coefficients
+
+**Remember:** Average one mode to recover one coefficient.
+
+*True by definition. Confidence: medium.* MSC 11F30 (Fourier coefficients of automorphic forms), 11F11. arXiv math.NT. Level 3: graduate.
+
+**Definition.** For the full modular group and even weight k &gt; 2, start with the Fourier mode exp(2πinτ), where n is a positive integer. Sum its weight k transforms over left cosets of the subgroup that fixes infinity. This subgroup consists of integer translations together with the central sign. The resulting cusp form is the nth Poincaré series.
+
+**Problem.** Pair a cusp form with this series using the Petersson integral, linear in the cusp form, without dividing by the domain’s area. The result is its nth Fourier coefficient times Γ(k − 1) divided by (4πn) to the power k − 1. These series span the space of cusp forms.
+
+**How the definition helps.** Averaging one Fourier mode turns the integral over a modular domain into a strip integral against that mode (our own). This replaces integrating a general product by Fourier orthogonality, which selects one coefficient (our own). A cusp form orthogonal to every series then has all coefficients zero (our own). Absolute convergence justifies unfolding the sum for k &gt; 2 (our own).
+
+**Wikipedia:** [Poincaré series (modular form)](https://en.wikipedia.org/wiki/Poincar%C3%A9_series_%28modular_form%29). It says: “In general, the Poincaré series is, for n ≥ 1, a cusp form.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Diamond maps multiply markings
+
+**Remember:** Multiplying the marked point twice multiplies the two labels.
+
+*True by definition. Confidence: medium.* MSC 11F32 (Modular correspondences, etc.), 11F06. arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** A complex point of Y₁(N) represents an elliptic curve E with a point P of exact order N, up to isomorphism. For a unit d modulo N, send (E,P) to (E,dP). This defines the diamond map without choosing a matrix lifting d.
+
+**Problem.** The diamond maps compose according to multiplication of units modulo N. On the open curve, their orbits on complex points are the fibers of the map that remembers only the generated cyclic subgroup.
+
+**How the definition helps.** The marked point makes composition multiplication of integers modulo N (our own). All generators of one cyclic subgroup differ by a unit modulo N (our own). The work is identifying the marked moduli problems with their analytic quotients and matching the maps with the matrix operators (our own).
+
+**nLab:** [modular curve](https://ncatlab.org/nlab/show/modular+curve). It says: “the moduli space of complex elliptic curves equipped with a cyclic subgroup ℤ/nℤ”
+
+**Paper or page:** [A refined study of Mazur's Eisenstein theory](https://arxiv.org/abs/1809.05982v2). It says: “The diamond operator $\\langle j\\rangle \\, (j\\in \\mathbb F<sub>N</sub><sup>\\times </sup>)$ acts on $\[u,v\]'$ as follows:”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Dual isogenies make Fricke involutive
+
+**Remember:** Dualize the isogeny twice to recover it.
+
+*True by definition.* MSC 11F32 (Modular correspondences, etc.), 14G35. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Over ℂ, a point of Y₀(N) represents an elliptic curve and a quotient map φ with cyclic kernel of order N. Its dual is the reverse map whose composite with φ multiplies points by N. Define the Fricke map by sending φ to its dual.
+
+**Problem.** The Fricke map on Y₀(N) is an involution. It extends to an involution of its smooth compactification X₀(N).
+
+**How the definition helps.** Dualizing twice recovers φ, so the Fricke map squares to the identity (our own). The dual isogeny theorem gives this identity and preserves cyclic kernels (our own). The cited proposition identifies dualization with the classical map τ ↦ −1/(Nτ). An automorphism of a smooth curve extends to its smooth projective compactification (our own).
+
+**nLab:** [Hecke correspondence](https://ncatlab.org/nlab/show/Hecke+correspondence). It says: “sending (E,E′) to E and E′ respectively”
+
+**Paper or page:** [Coleman Integration on Modular Curves](https://arxiv.org/abs/2401.14513v1). It says: “where φ̂ is the dual isogeny of φ.”
+
+**Sources:**
+
+- [A. O. L. Atkin and J. Lehner, Hecke operators on Γ₀(m) (1970)](https://doi.org/10.1007/bf01359701)
+
+### Factorial powers isolate ordinary forms
+
+**Remember:** Factorial powers keep units and kill the rest.
+
+*True by definition.* MSC 11F33 (Congruences for modular and \\(p\\)-adic modular forms), 11F85. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let U be a Hecke operator preserving a finite free module over the p-adic integers. Its ordinary part is the largest direct summand on which U acts invertibly and whose complementary summand has powers tending to zero. Define the ordinary projector by taking the limit of the powers with exponents n!.
+
+**Problem.** The limit exists and is idempotent. Its image is the ordinary part, and it commutes with every operator that commutes with U.
+
+**How the definition helps.** Factorial exponents eventually select the identity on the invertible part and zero on the nilpotent part modulo each power of p (our own). This constructs the projector without factoring a characteristic polynomial (our own). The finite-module decomposition supplies those two parts, and reduction preserves the resulting projectors (our own). Every operator commuting with U commutes with the powers and their limit (our own).
+
+**Paper or page:** [Twisted Triple Product p-adic L-function for Finite Slope Families of Hilbert Modular Forms](https://arxiv.org/abs/2401.13230v2). It says: “is the ordinary projector $e<sub>n.o</sub> = \\lim <sub>n\\to \\infty </sub> U<sup>n!</sup>$.”
+
+**Sources:**
+
+- [Haruzo Hida, Galois representations into GL₂(ℤₚ\[\[X\]\]) attached to ordinary cusp forms (1986)](https://doi.org/10.1007/bf01390329)
+
+### Completions preserve quasimodular products
+
+**Remember:** Multiply the completions, then take the constant coefficient.
+
+*True by definition.* MSC 11F37 (Forms of half-integer weight; nonholomorphic modular forms), 11F11. arXiv math.NT. Level 3: graduate.
+
+**Definition.** At level one, let τ lie in the upper half-plane. A completion of weight k transforms with weight k and is a polynomial in 1/Im(τ) with holomorphic coefficients. Require these coefficients to extend holomorphically in the Fourier coordinate at infinity. Its constant coefficient defines a quasimodular form of weight k, and its degree is called the depth.
+
+**Problem.** The product of level-one quasimodular forms of weights k and ℓ is quasimodular of weight k + ℓ. Its depth, the degree of the completion, is at most the sum of the depths.
+
+**How the definition helps.** The constant coefficient of a product is the product of the constant coefficients (our own). The product of the two completions is modular and has degree at most the sum (our own). The work is the completion theorem, which identifies this definition with the polynomial transformation law (our own).
+
+**Wikipedia:** [Almost holomorphic modular form](https://en.wikipedia.org/wiki/Almost_holomorphic_modular_form). It says: “An almost holomorphic modular form is determined by its holomorphic part”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Half-integral weights compose
+
+**Remember:** Keep the square root in the group element.
+
+*True by definition. Confidence: medium.* MSC 11F37 (Forms of half-integer weight; nonholomorphic modular forms), 11F27. arXiv math.NT, math.RT. Level 3: graduate.
+
+**Definition.** Let γ be a real determinant-one matrix with bottom row (c,d), acting on the upper half-plane by fractional linear substitutions. Lift γ to a pair (γ,φ), where φ is holomorphic and φ(τ)² = cτ + d. Multiply (γ,φ) by (δ,ψ) using the root φ(δτ)ψ(τ). These pairs form the metaplectic double cover, with two lifts per matrix.
+
+**Problem.** For each integer k, transform f by evaluating it at γτ and dividing by φ(τ) to the power 2k + 1. These transformations give a right group action of weight k + ½.
+
+**How the definition helps.** The group law already multiplies the chosen roots in the order that a slash action needs (our own). Raising that factor to the odd power 2k + 1 preserves the law (our own). The work is identifying the group of pairs with the metaplectic cover (our own).
+
+**nLab:** [metaplectic group](https://ncatlab.org/nlab/show/metaplectic+group). It says: “double cover of the symplectic group”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Quadratic indices rule out negative terms
+
+**Remember:** A negative direction produces arbitrarily negative traces in its orbit.
+
+*Makes the theorem clean to state or prove.* MSC 11F46 (Siegel modular groups; Siegel and Hilbert-Siegel modular and automorphic forms). arXiv math.NT. Level 3: graduate.
+
+**Definition.** A Siegel modular form of degree g depends on a symmetric g-by-g complex matrix Z with positive definite imaginary part. Label its Fourier terms exp(2πi tr(TZ)) by symmetric matrices T with integer diagonal and half-integer off-diagonal entries. This groups the frequencies of the separate entries of Z into a quadratic form.
+
+**Problem.** Take a level-one holomorphic function that obeys the Siegel modular law in degree at least two. Its Fourier terms indexed by matrices with a negative direction vanish. In degree one, the modular function j has a pole at infinity.
+
+**How the definition helps.** The quadratic form groups frequencies into integral change-of-basis orbits whose coefficients have the same absolute value (our own). If T has a negative direction, rational approximation gives a primitive integer vector of negative value (our own). Extend it to an integer basis, then add large multiples of it to another basis vector (our own). The resulting traces tend to minus infinity, although the coefficient magnitudes stay fixed (our own). Boundedness on a period cell at imaginary part I forces those coefficients to vanish (our own).
+
+**Wikipedia:** [Siegel modular form](https://en.wikipedia.org/wiki/Siegel_modular_form). It says: “Corollary to this theorem is the fact that Siegel modular forms of degree g &gt; 1 have Fourier expansions and are thus holomorphic at infinity.”
+
+**Sources:**
+
+- [Max Koecher, Zur Theorie der Modulformen n-ten Grades. I](https://doi.org/10.1007/bf01180269)
+
+### Fourier slices become Jacobi forms
+
+**Remember:** The Fourier index is the index in the translation rule.
+
+*Makes the theorem clean to state or prove.* MSC 11F50 (Jacobi forms), 11F46. arXiv math.NT. Level 3: graduate.
+
+**Definition.** A classical Jacobi form is holomorphic in two variables τ and z, with τ in the upper half-plane. Its weight controls modular substitutions in τ, and its index controls the exponential factor when z shifts by integer combinations of τ and one. For index m, a Fourier term with frequencies n and r can occur only if 4mn ≥ r².
+
+**Problem.** A degree-two Siegel modular form depends on a symmetric two-by-two complex matrix with positive definite imaginary part. For a level-one form of weight k, expand in the last diagonal entry ω. For each integer m &gt; 0, the coefficient of exp(2πimω) is a Jacobi form of weight k and index m.
+
+**How the definition helps.** The Jacobi definition packages exactly how one Fourier slice transforms under the subgroup preserving the expansion direction (our own). A translation contributes the exponential for that slice's index (our own). The work is restricting the Siegel transformation law to this subgroup and checking the resulting Fourier support (our own).
+
+**Wikipedia:** [Jacobi form](https://en.wikipedia.org/wiki/Jacobi_form). It says: “Examples in two variables include Jacobi theta functions, the Weierstrass ℘ function, and Fourier–Jacobi coefficients of Siegel modular forms of genus 2.”
+
+**Sources:**
+
+- [Martin Eichler and Don Zagier, The Theory of Jacobi Forms (1985)](https://doi.org/10.1007/978-1-4684-9162-3)
+
+### Residue classes separate theta components
+
+**Remember:** Each residue class gets one coefficient function.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11F50 (Jacobi forms), 11F27. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Take a classical Jacobi form of positive integral index m. In its double Fourier expansion, let n be the modular frequency and r the elliptic frequency. Group terms by r modulo 2m and use one theta series for each group. Keep the remaining coefficients as functions of the modular variable.
+
+**Problem.** For a classical level-one Jacobi form of weight k and positive integer index m, the 2m coefficient functions are unique. Together they transform with weight k − ½ by the inverse transpose of the matrices transforming the theta series.
+
+**How the definition helps.** Separate frequencies into disjoint residue classes, so their coefficient functions cannot cancel between classes (our own). Translation by τ forces coefficients with equal 4mn − r² and equal r modulo 2m to agree (our own). The work is proving the theta transformation law and deducing the modular law for the coefficient vector (our own).
+
+**Paper or page:** [Hermitian Jacobi Forms Having Modules as their Index and Vector-Valued Jacobi Forms](https://arxiv.org/abs/2310.16508v1). It says: “are equivalent to the existence of a smooth function $F:\\mathcal{H}\\to \\mathbb {C}\[D\]$, which is then determined by $\\Phi $”
+
+**Sources:**
+
+- [Martin Eichler and Don Zagier, The Theory of Jacobi Forms (1985)](https://doi.org/10.1007/978-1-4684-9162-3)
+
+### Eisenstein symmetry gives functional equations
+
+**Remember:** The completed kernel carries its symmetry into the integral.
+
+*True by definition.* MSC 11F66 (Langlands \\(L\\)-functions; one variable Dirichlet series and functional equations), 11F67. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Take normalized level-one cusp eigenforms f and g of the same weight k, with first Fourier coefficient one. Such forms vanish at the boundary point called the cusp. Integrate yᵏf(τ) times the conjugate of g(τ) against the completed Eisenstein series using hyperbolic area, with y the imaginary part of τ. The completed series includes zeta and gamma factors and is symmetric under s ↦ 1 − s.
+
+**Problem.** The completed Rankin–Selberg L-function of two level-one cusp eigenforms of the same weight satisfies the symmetry s ↔︎ 1 − s in unitary normalization.
+
+**How the definition helps.** Only the Eisenstein series depends on s, so its symmetry passes directly to the integral. Unfolding integrates the defining sum over one strip and identifies the result with the completed coefficient series up to a constant. Continuing the Eisenstein series gives the meromorphic continuation needed to compare both sides.
+
+**Wikipedia:** [Rankin–Selberg method](https://en.wikipedia.org/wiki/Rankin%E2%80%93Selberg_method). It says: “The analytic continuation and functional equation then boil down to those of the Eisenstein series.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Cusp divisors add periods
+
+**Remember:** Shared endpoints cancel as terms of a divisor.
+
+*True by definition. Confidence: medium.* MSC 11F67 (Special values of automorphic \\(L\\)-series, periods of automorphic forms, cohomology, modular symbols), 11F75. arXiv math.NT. Level 3: graduate.
+
+**Definition.** A degree-zero divisor of rational cusps is a formal integer sum of points in ℚ ∪ {∞} whose coefficients sum to zero. A weight two modular symbol is an additive map from these divisors to complex numbers, invariant when the modular group under consideration moves the cusps. It assigns the pair (α,β) the value on β − α.
+
+**Problem.** For a weight two cusp form, write its period from α to β as P(α,β). Then P(α,β) + P(β,γ) = P(α,γ). These periods define a linear symbol invariant under the congruence subgroup.
+
+**How the definition helps.** Addition of endpoint divisors cancels the middle cusp, giving the path addition formula immediately (our own). The usual analytic description integrates the differential of a cusp form along paths between cusps (our own). Vanishing at the cusps gives convergence, and simple connectivity of the upper half-plane gives path independence (our own). Invariance of the differential gives invariance of the resulting symbol (our own).
+
+**Wikipedia:** [Modular symbol](https://en.wikipedia.org/wiki/Modular_symbol). It says: “Informally, {α,β} represents a homotopy class of paths from α to β in the upper half-plane.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Satake makes convolution commutative
+
+**Remember:** Turn convolution into multiplication of symmetric Laurent polynomials.
+
+*True by definition.* MSC 11F70 (Representation-theoretic methods; automorphic representations over local and global fields), 11F25. arXiv math.NT, math.RT. Level 3: graduate.
+
+**Definition.** Let K be the invertible integral matrices inside GLₙ over a p-adic field. The spherical Hecke algebra consists of compactly supported complex functions invariant under K on both sides, with convolution as multiplication. The Satake transform averages such a function along upper triangular matrices with diagonal entries one, after translation by a diagonal matrix. A factor depending on the diagonal matrix normalizes the average.
+
+**Problem.** The spherical Hecke algebra of GLₙ(F) is commutative.
+
+**How the definition helps.** The transform replaces convolution of functions by ordinary multiplication of symmetric Laurent polynomials, which allows negative exponents (our own). Directly comparing the two convolution integrals is unnecessary (our own). The Satake isomorphism proves that the transform preserves products and detects equality.
+
+**Paper or page:** [On the geometrization of the local Langlands correspondence](https://arxiv.org/abs/2408.16571v1). It says: “The map S induces an isomorphism”
+
+**Sources:**
+
+- [Ichirō Satake, Theory of spherical functions on reductive algebraic groups over p-adic fields (1963)](https://doi.org/10.1007/bf02684781)
+
+### Cyclotomic determinants detect abelian quotients
+
+**Remember:** Over ℚ, the full determinant sees every abelian quotient of the image.
+
+*Makes the theorem clean to state or prove.* MSC 11F80 (Galois representations), 11G05. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Combine an elliptic curve’s Galois actions on all points of finite order into one representation, called its adelic representation. Its matrices have entries in the profinite integers, which record compatible residues modulo every positive integer. The closed commutator subgroup is the smallest closed normal subgroup with abelian quotient.
+
+**Problem.** For an elliptic curve over ℚ, the kernel of the determinant on its adelic image equals the closed commutator subgroup of that image.
+
+**How the definition helps.** Taking all torsion orders together makes the determinant record the action on every root of unity (our own). At each order the Weil pairing identifies the determinant with the exponent of the action on roots of unity (our own). Kronecker–Weber identifies the field generated by all these roots with the maximal abelian extension of ℚ (our own). Its fixing subgroup is therefore the closed commutator subgroup, and its image remains the closed commutator subgroup in the adelic image (our own).
+
+**Paper or page:** [Degrees of points with rational j-invariant on X₀(n) and X₁(n)](https://arxiv.org/abs/2507.13199v1). It says: “Let $E$ be an elliptic curve defined over $\\Q$. Then, we have $\\cG<sub>E</sub> \\cap \\SL(\\Zhat) = \[\\cG<sub>E</sub>, \\cG<sub>E</sub>\]$.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Monodromy isolates infinite inertia
+
+**Remember:** Finite inertia is exactly the part left when monodromy vanishes.
+
+*True by definition.* MSC 11F80 (Galois representations), 11F85. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let K be a finite extension of ℚₚ and let ℓ be a different prime. Inertia is the subgroup of the Galois group acting trivially on the residue field. A Weil–Deligne description separates a continuous ℓ-adic representation into an action with finite inertia image and a compatible nilpotent operator N. The action uses the Weil group, consisting of elements inducing integer powers of Frobenius on residues.
+
+**Problem.** The original representation has finite inertia image exactly when N is zero.
+
+**How the definition helps.** The Weil–Deligne description puts the potentially infinite part of inertia into one operator (our own). On an open inertia subgroup the matrices are exp(tN), where the parameter t ranges over an open subgroup of ℤℓ (our own). Nilpotence makes the exponential a finite sum (our own). In characteristic zero its logarithm recovers tN, so a nonzero N gives infinitely many matrices (our own). Grothendieck’s monodromy theorem supplies this description of the original Galois action (our own).
+
+**nLab:** [Weil-Deligne representation](https://ncatlab.org/nlab/show/Weil-Deligne+representation). It says: “N is a nilpotent monodromy operator”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Residual semisimplification removes lattice dependence
+
+**Remember:** Every stable lattice gives the same simple factors after reduction.
+
+*Rules out counterexamples.* MSC 11F80 (Galois representations). arXiv math.NT. Level 3: graduate.
+
+**Definition.** A stable lattice is a free module over the coefficient field’s valuation ring that spans the representation and is preserved by Galois. Reduce its matrices modulo the maximal ideal. Semisimplification replaces that reduction by the direct sum of its irreducible factors.
+
+**Problem.** For a continuous representation over a finite extension of ℚₚ, all stable lattices have isomorphic semisimplified reductions. Their reductions can differ before this step.
+
+**How the definition helps.** Semisimplification keeps precisely the factors detected by characteristic polynomials (our own). The polynomials agree before reduction, so the Brauer–Nesbitt theorem gives the same irreducible factors afterwards (our own). For example, let each t in ℤₚ fix e and send f to f + te on a basis e, f (our own). This gives a local Galois action through its unramified ℤₚ quotient (our own). The lattice generated by e and f reduces to a nontrivial action (our own). On the lattice generated by e/p and f, every matrix reduces to the identity (our own).
+
+**Wikipedia:** [Brauer–Nesbitt theorem](https://en.wikipedia.org/wiki/Brauer%E2%80%93Nesbitt_theorem). It says: “the characteristic polynomials of ρ₁(g) and ρ₂(g) coincide for all g ∈ G, then ρ₁ and ρ₂ are isomorphic representations.”
+
+**Paper or page:** [Stable free lattices in residually reducible Galois deformations and control theorem of Selmer groups](https://arxiv.org/abs/2106.03608v2). It says: “the semi-simplification (T/ϖT)ˢˢ of the residual representation is decomposed into two distinct characters”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Semisimplification makes Frobenius traces decisive
+
+**Remember:** Traces remember the simple pieces and forget how they fit together.
+
+*Rules out counterexamples.* MSC 11F80 (Galois representations), 11F11. arXiv math.NT. Level 3: graduate.
+
+**Definition.** A representation describes a group action by linear maps. Choose a chain of invariant subspaces whose successive quotients have no proper nonzero invariant subspaces. Semisimplification takes the direct sum of those quotients.
+
+**Problem.** Consider two continuous representations of a number field’s Galois group over the same finite extension of ℚℓ. Suppose inertia, the group acting trivially on the residue field, acts trivially outside finitely many primes. Equal Frobenius traces outside finitely many primes imply isomorphic semisimplifications.
+
+**How the definition helps.** Semisimplification discards how the pieces fit together, which traces cannot detect (our own). The cited example has three representations with the same traces, but only one is a direct sum. At an unramified prime, Frobenius acts on residues by raising them to the residue field size (our own). Chebotarev density and continuity extend trace equality to the whole group (our own). In characteristic zero, traces determine a direct sum of simple representations up to isomorphism (our own).
+
+**Wikipedia:** [Brauer–Nesbitt theorem](https://en.wikipedia.org/wiki/Brauer%E2%80%93Nesbitt_theorem). It says: “Then the representation is uniquely determined by the values of the traces of ρ(Frobₚ)”
+
+**Paper or page:** [Eisenstein degeneration of Euler systems](https://arxiv.org/abs/2201.02078v2). It says: “there are exactly three isomorphism classes of continuous Galois representations”
+
+**Sources:**
+
+- [Eisenstein degeneration of Euler systems](https://arxiv.org/abs/2201.02078v2)
+
+### The Weil pairing gives the determinant
+
+**Remember:** On the determinant line, Galois acts on roots of unity.
+
+*True by definition.* MSC 11F80 (Galois representations), 11G05. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Write E\[n\] for the geometric points of an elliptic curve killed by a positive integer n. The Weil pairing pairs two such points with an nth root of unity. It is bilinear, alternating, and perfect, meaning that pairing with a point determines that point uniquely.
+
+**Problem.** For an elliptic curve over a number field, the determinant of each Galois element acting on E\[n\] gives its exponent on nth roots of unity.
+
+**How the definition helps.** Defining the determinant as the action on the exterior square lets the Weil pairing identify that action directly (our own). The exterior square records alternating bilinear products of two vectors (our own). In coordinates, pairing the images of two basis points raises their original pairing value to the matrix determinant (our own). Perfection makes this value a primitive root of unity (our own). The geometric work is constructing the pairing and proving it commutes with Galois action (our own).
+
+**Wikipedia:** [Weil pairing](https://en.wikipedia.org/wiki/Weil_pairing). It says: “With this definition it can be shown that w is alternating and bilinear,”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Defining L-factors by ℓ-adic cohomology makes isogenous elliptic curves share them
 
@@ -11917,6 +12569,22 @@ The list is long, but it is not complete. It contains only cases where the page 
 
 - [Joseph H. Silverman, The Arithmetic of Elliptic Curves, Chapter X, §4 (2009)](https://doi.org/10.1007/978-0-387-09494-6)
 
+### Quadratic twists split odd torsion
+
+**Remember:** The twist supplies the minus part of the torsion.
+
+*Rules out counterexamples.* MSC 11G05 (Elliptic curves over global fields), 11F80. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let L/K be a quadratic extension of number fields and let σ be its nonidentity automorphism. The quadratic twist of an elliptic curve becomes isomorphic to the original curve over L. Under this identification σ acts on L-rational points by applying the original action and then negating the result.
+
+**Problem.** For any odd positive integer n, the points killed by n over L split as a direct sum. The two groups are the K-rational points killed by n on the original curve and on its quadratic twist.
+
+**How the definition helps.** The twist identifies its rational points with the points over L satisfying σP = −P (our own). The original curve supplies the points satisfying σP = P (our own). Since two is invertible modulo n, half the sum and half the difference of P and σP give the two components (our own). At n = 2 the signs agree (our own). All four points killed by two on y² = x³ − x remain rational over ℚ on every quadratic twist (our own).
+
+**Paper or page:** [The Effect of Quadratic Base Change on Torsion of Elliptic Curves](https://arxiv.org/abs/2310.03709v2). It says: “If n is an odd positive integer we have E(K(√d))\[n\] ≃ E(K)\[n\] ⊕ Eᵈ(K)\[n\].”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Requiring y ≠ 0 makes congruent numbers the curves of positive rank
 
 **Remember:** Ignore the three points with y = 0; any other point proves A congruent.
@@ -11937,6 +12605,38 @@ The list is long, but it is not complete. It contains only cases where the page 
 
 - [Lorenz Halbeisen, Norbert Hungerbühler, A Theorem of Fermat on Congruent Number Curves, arXiv:1803.09604 (2018)](https://arxiv.org/abs/1803.09604)
 
+### Scheme kernels retain inseparable degrees
+
+**Remember:** Kernel rank counts geometric points with their multiplicities.
+
+*Rules out counterexamples. Confidence: medium.* MSC 11G05 (Elliptic curves over global fields), 14K02. arXiv math.NT. Level 3: graduate.
+
+**Definition.** An isogeny is a surjective homomorphism of elliptic curves with finite kernel. Its kernel as a group scheme is the entire fiber over zero, including multiplicities. Its rank counts that fiber by the dimension of its coordinate algebra over the base field.
+
+**Problem.** Over a global function field, the kernel rank equals the isogeny degree. This includes inseparable isogenies, where some fiber multiplicities exceed one.
+
+**How the definition helps.** Counting the full fiber retains the multiplicities that counting geometric points loses (our own). Relative Frobenius, the map given locally by taking pth powers in characteristic p, has degree p and only one geometric kernel point (our own). An isogeny is finite and flat, so every fiber has the same total multiplicity as the generic fiber (our own). The cited factorization uses the full subgroup scheme when constructing the quotient.
+
+**Paper or page:** [Explicit surjectivity of Galois representations of products of elliptic curves over function fields](https://arxiv.org/abs/2510.20910v3). It says: “Let H ⊆ ker(φ) be a subgroup scheme”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Squarefree conductors exclude additive reduction
+
+**Remember:** Smooth contributes zero, a node contributes one, and a cusp contributes more.
+
+*Rules out counterexamples.* MSC 11G05 (Elliptic curves over global fields), 11G40. arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** At each finite prime of a number field, choose an integral equation of the elliptic curve with smallest possible discriminant valuation. The curve is semistable if each such equation reduces to a smooth cubic or a cubic with an ordinary crossing. These cases are called good and multiplicative reduction. The remaining case is additive reduction.
+
+**Problem.** An elliptic curve over a number field is semistable exactly when its conductor ideal has no repeated prime factor.
+
+**How the definition helps.** Semistability allows exactly the reduction types with conductor exponent zero or one, in our own explanation. The conductor records ramification, the action of inertia on division points. The local conductor formula gives zero for good reduction and one for multiplicative reduction. Additive reduction contributes two plus a nonnegative term measuring wild ramification. In our own example, y² = x³ + 5 reduces to a cusp at five. Its conductor exponent there is two because the residue characteristic exceeds three.
+
+**Wikipedia:** [Conductor of an elliptic curve](https://en.wikipedia.org/wiki/Conductor_of_an_elliptic_curve). It says: “ε=0 for good reduction, ε=1 for multiplicative reduction and ε=2 for additive reduction.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The conductor of an elliptic curve is the level of its newform
 
 **Remember:** Bad primes of the curve become the level of its modular form.
@@ -11956,6 +12656,262 @@ The list is long, but it is not complete. It contains only cases where the page 
 - [A. Wiles, Modular elliptic curves and Fermat's Last Theorem, Ann. of Math. 141 (1995) 443–551](https://doi.org/10.2307/2118559)
 - [C. Breuil, B. Conrad, F. Diamond and R. Taylor, On the modularity of elliptic curves over Q: wild 3-adic exercises, J. Amer. Math. Soc. 14 (2001) 843–939](https://doi.org/10.1090/S0894-0347-01-00370-8)
 
+### Torsors encode local failure
+
+**Remember:** No rational origin means a nonzero torsor class.
+
+*True by definition.* MSC 11G05 (Elliptic curves over global fields), 11R34. arXiv math.NT. Level 3: graduate.
+
+**Definition.** A torsor for an elliptic curve E is a curve with an E-action that becomes free and transitive over an algebraic closure. The Tate–Shafarevich group consists of torsor classes that have points over every completion of the base field. The identity class is E acting on itself by translation.
+
+**Problem.** A smooth projective geometrically integral genus-one curve over a number field has an associated elliptic curve, its Jacobian. If the curve has points everywhere locally but none globally, it gives a nonzero Tate–Shafarevich class of its Jacobian.
+
+**How the definition helps.** Using torsors makes triviality a point test because choosing a point identifies the curve with its acting group (our own). Local points place the class in the group, while the missing global point makes the class nonzero (our own). The work connects this description to the kernel of restriction in Galois cohomology and constructs the Jacobian action (our own). Selmer’s projective cubic in the quotation gives an example.
+
+**Wikipedia:** [Tate–Shafarevich group](https://en.wikipedia.org/wiki/Tate%E2%80%93Shafarevich_group). It says: “3x³ + 4y³ + 5z³ = 0”
+
+**Sources:**
+
+- [Lang and Tate, Principal Homogeneous Spaces Over Abelian Varieties](https://doi.org/10.2307/2372778)
+
+### Weil pairings identify Galois determinants
+
+**Remember:** Pair two basis vectors and watch the determinant act on roots of unity.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11G05 (Elliptic curves over global fields), 14H52. arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** The division points of an elliptic curve are the points killed by multiplication by a given integer. The Weil pairing pairs two such points to give a root of unity. For a prime ℓ, the Tate module records compatible division points at successive powers of ℓ.
+
+**Problem.** For an elliptic curve over a number field, each field automorphism fixing that field acts on the Tate module. Its determinant gives its exponent of action on the compatible roots of unity of ℓ-power order.
+
+**How the definition helps.** Pairing a basis converts a change of basis into raising a root of unity to the determinant, in our own explanation. At each finite level the pairing is bilinear and alternating, so expanding on two transformed basis vectors gives that exponent. The theorem behind this calculation says the pairing is perfect, respects field automorphisms, and agrees across levels. Perfection makes the value on a basis a primitive root, so its exponent determines the action.
+
+**Wikipedia:** [Weil pairing](https://en.wikipedia.org/wiki/Weil_pairing). It says: “giving rise to a non-degenerate pairing on the n-torsion.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Frobenius lines detect local isogenies
+
+**Remember:** At good reduction, a Frobenius eigenline is a rational isogeny kernel.
+
+*True by definition.* MSC 11G07 (Elliptic curves over local fields), 11F80. arXiv math.NT. Level 3: graduate.
+
+**Definition.** An isogeny is a surjective homomorphism of elliptic curves with finite kernel. In characteristic zero, specify a prime-degree isogeny up to target isomorphism by its kernel. This kernel is a line in the two-dimensional space of points killed by that prime. A line defined over the base field is one that all Galois elements preserve.
+
+**Problem.** Suppose an elliptic curve over ℚℓ has good reduction, meaning it stays smooth modulo ℓ. Let q be an odd prime different from ℓ. An isogeny of degree q exists over ℚℓ exactly when the Frobenius characteristic polynomial has square or zero discriminant modulo q.
+
+**How the definition helps.** Using kernels replaces a search for maps with a search for an invariant line (our own). Good reduction makes the torsion action factor through the residue field’s Galois group (our own). Its generator, Frobenius, raises residues to the ℓth power (our own). Its matrix preserves a line exactly when its quadratic characteristic polynomial has a root modulo q (our own). The geometric inputs are the good reduction theorem and the construction of the quotient curve (our own).
+
+**Paper or page:** [Local points on twists of X(p) with applications](https://arxiv.org/abs/2509.04294v3). It says: “Then E/ℚℓ admits a ℚℓ-isogeny of degree q if and only if (Δℓ/q) ∈ {0, 1}.”
+
+**Sources:**
+
+- [Local points on twists of X(p) with applications](https://arxiv.org/abs/2509.04294v3)
+
+### Inertia detects good reduction
+
+**Remember:** Good reduction means inertia fixes the entire prime-to-residue-characteristic Tate module.
+
+*True by definition.* MSC 11G07 (Elliptic curves over local fields), 11G40. arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** An elliptic curve has good reduction at a prime if it extends there to a smooth family of elliptic curves. Inertia consists of local field automorphisms that act trivially on the algebraic residue field. Choose a prime ℓ different from the residue characteristic. The ℓ-adic Tate module records compatible points killed by successive powers of ℓ.
+
+**Problem.** For an elliptic curve over a number field, its conductor ideal contains a prime factor exactly where the curve has bad reduction.
+
+**How the definition helps.** The inertia test describes good reduction using the same action that defines the conductor, in our own explanation. The conductor exponent adds the dimension lost to inertia and a nonnegative term measuring wild ramification. Both vanish when inertia acts trivially. Conversely, a zero exponent forces every vector to be fixed. The Néron–Ogg–Shafarevich theorem identifies this test with good reduction.
+
+**Paper or page:** [A proof of Néron--Ogg--Shafarevich criterion via its archimedean analogue](https://arxiv.org/abs/2302.13255v1). It says: “Then, A has good reduction if and only if ρ ∣ Iᴋ is trivial.”
+
+**Sources:**
+
+- [Jean-Pierre Serre and John Tate, Good Reduction of Abelian Varieties (1968)](https://doi.org/10.2307/1970722)
+
+### Tate quotients reveal triangular actions
+
+**Remember:** Roots of unity form the invariant line in Tate curve torsion.
+
+*True by definition.* MSC 11G07 (Elliptic curves over local fields), 14G22. arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** Let K be a local field with a discrete valuation, an integer measure of divisibility. Choose a nonzero q with positive valuation. Over each finite extension L, the Tate curve has group of points L× modulo the powers of q.
+
+**Problem.** Suppose an elliptic curve over K has split multiplicative reduction, meaning its reduced cubic has a node with two rational branches. For any prime ℓ different from the field characteristic, its points killed by ℓ have a basis giving triangular matrices for field automorphisms.
+
+**How the definition helps.** In the quotient description, raising a torsion representative to the ℓth power gives an integer power of q, in our own explanation. Its exponent modulo ℓ is independent of the representative and unchanged by field automorphisms fixing K. Taking an ℓth root of q shows that every exponent occurs. The kernel consists of the ℓth roots of unity. These roots give the first basis direction, and the quotient action is trivial. Tate’s uniformization theorem supplies this quotient presentation of the original curve.
+
+**nLab:** [Tate curve](https://ncatlab.org/nlab/show/Tate+curve). It says: “which may be thought of as the quotient of the multiplicative group by qℤ.”
+
+**Paper or page:** [The modular approach to Diophantine equations over totally real fields](https://arxiv.org/abs/2401.03099v1). It says: “Let $E=E<sub>q</sub>$ be a Tate curve as above. Then\\\[  \\overline{\\rho }<sub>E,N</sub> \\sim \\begin{pmatrix}  \\chi \_N 
+
+&amp;  \* 
+
+\\\\ 0 
+
+&amp;  1 
+
+\\end{pmatrix} .  \\\]”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The Tate quotient displays torsion
+
+**Remember:** Roots of unity give the submodule, and roots of q give the quotient.
+
+*True by definition. Confidence: medium.* MSC 11G07 (Elliptic curves over local fields), 11F80. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let K be a local field with a discrete valuation, and choose a nonzero element q of positive valuation. Describe the geometric points of the Tate elliptic curve by nonzero elements of an algebraic closure, identifying elements differing by a power of q.
+
+**Problem.** Let n be a positive integer invertible in K. The points killed by n map onto ℤ/nℤ with kernel the nth roots of unity. The Galois action on this extension records the obstruction to taking an nth root of q over K.
+
+**How the definition helps.** The quotient description replaces division on a cubic curve with taking nth powers (our own). If x represents a point killed by n, write xⁿ as a power of q and take its exponent modulo n (our own). The kernel consists of classes represented by roots of unity (our own). An nth root of q lifts the class of one, so its Galois conjugates describe the extension (our own). Tate’s uniformization theorem identifies the multiplicative quotient with the elliptic curve (our own).
+
+**nLab:** [Tate curve](https://ncatlab.org/nlab/show/Tate+curve). It says: “which may be thought of as the quotient of the multiplicative group by q⁽ℤ⁾.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Unramified tests can miss points
+
+**Remember:** Good reduction lets the Kummer test forget inertia.
+
+*Rules out counterexamples. Confidence: medium.* MSC 11G07 (Elliptic curves over local fields), 11S25. arXiv math.NT. Level 3: graduate.
+
+**Definition.** For an elliptic curve over a local field of odd residue characteristic, consider Galois cohomology classes on its points killed by two. The unramified test requires a class to vanish on inertia, the subgroup acting trivially on the residue field. The Kummer test requires the class to come from halving a local curve point.
+
+**Problem.** The two tests agree at good reduction, where the reduced curve stays smooth. They can differ at bad reduction even if inertia fixes every point killed by two.
+
+**How the definition helps.** The good reduction condition lets the unramified test detect exactly the classes obtained by halving points (our own). Doubling is invertible on the kernel of reduction, and Lang’s theorem gives vanishing first cohomology for the reduced curve over the residue field (our own). For a counterexample, choose an element π of valuation one and use the Tate curve with parameter π² (our own). Its multiplicative quotient identifies elements differing by powers of π², so its two-torsion is rational (our own). Halving the class of π requires a square root of an element of odd valuation and thus a ramified extension (our own).
+
+**Paper or page:** [Galois module structures and the Hasse principle in twist families via the distribution of Selmer groups](https://arxiv.org/abs/2508.14026v1). It says: “H¹ᵤᵣ(kᵥ,E\[2\]), otherwise.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Valuation counts Tate curve components
+
+**Remember:** Take the valuation and reduce it modulo the valuation of q.
+
+*True by definition. Confidence: medium.* MSC 11G07 (Elliptic curves over local fields), 14G20. arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** For a split multiplicative elliptic curve, the reduced cubic has a node with two branches defined over the residue field. Over a nonarchimedean local field K, Tate’s presentation identifies the curve’s points with K× modulo powers of a parameter q. Write v for the valuation normalized to take all integer values, with v(q) positive.
+
+**Problem.** The Néron model extends the elliptic curve to a smooth group over the valuation ring. The group of connected components of its special fiber is cyclic of order v(q).
+
+**How the definition helps.** Tate’s presentation turns the component map into the valuation modulo v(q), in our own explanation. Every residue class occurs because the valuation takes all integer values. Its kernel consists of classes represented by units, the elements of valuation zero. The geometric input identifies the units with points reducing to the identity component and identifies the quotient with the split component group.
+
+**Wikipedia:** [Tate curve](https://en.wikipedia.org/wiki/Tate_curve). It says: “there is an isomorphism of groups from k⁎/qℤ to this elliptic curve”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Drinfeld isogenies invert after localization
+
+**Remember:** Divide the dual isogeny by the scalar in the composite.
+
+*True by definition.* MSC 11G09 (Drinfel'd modules; higher-dimensional motives, etc.). arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** Let A = 𝔽q\[T\] act through additive polynomials on two Drinfeld modules. A map between them is an additive polynomial respecting these actions. In the isogeny category, allow division of such maps by any nonzero element of A.
+
+**Problem.** Assume A embeds in the base field through its scalar action. Then every isogeny, a nonzero map between the modules, has an inverse in the isogeny category.
+
+**How the definition helps.** In our own explanation, dividing the dual map by a single scalar gives the inverse immediately. The dual isogeny theorem supplies a map in the opposite direction whose composites in both orders act by the same nonzero a in A. Before division those composites need not be identities. After division by a they are.
+
+**Paper or page:** [Masser-Wüstholz bound for reducibility of Galois representations for Drinfeld modules of arbitrary rank](https://arxiv.org/abs/2303.12399). It says: “There exists a dual isogeny f̂∶ ψ → φ such that f ∘ f̂ = ψₐ and f̂ ∘ f = φₐ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Good reduction preserves prime-to-characteristic torsion
+
+**Remember:** Full degree and simple roots let every torsion point reduce uniquely.
+
+*Rules out counterexamples.* MSC 11G09 (Drinfel'd modules; higher-dimensional motives, etc.). arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** Let A = 𝔽q\[T\] act by additive polynomials over a complete discretely valued field. A Drinfeld module of rank r sends T to a polynomial of degree qʳ. It has good reduction if some choice of coordinate makes its coefficients integral and its leading coefficient a unit.
+
+**Problem.** Let a in A have nonzero image in the residue field. At good reduction, reducing coordinates gives a bijection between the points killed by a over the two algebraic closures.
+
+**How the definition helps.** In our own explanation, good reduction keeps the polynomial for a at full degree, while its derivative is the nonzero residue of a. Each reduced root is simple and lifts uniquely by Hensel’s lemma. For our own example, let τ(x) = xᑫ over the Laurent series field 𝔽q((T)). Send T to the operator T + τ + Tτ², where τ² means composition. The polynomial for T + 1 has q² distinct roots, but its reduction has only q. Only the q integral roots reduce.
+
+**Paper or page:** [Surjectivity of the adelic Galois Representation associated to a Drinfeld Module of prime rank](https://arxiv.org/abs/2111.04234). It says: “Then φ has good reduction if and only if the ℓ-adic Galois representation is unramified at 𝔭”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Lattice quotients give Drinfeld torsion
+
+**Remember:** The exponential sends fractions of periods to torsion points.
+
+*True by definition.* MSC 11G09 (Drinfel'd modules; higher-dimensional motives, etc.). arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** Let A = 𝔽q\[T\] act by additive polynomials on a Drinfeld module over the completed algebraic closure at infinity. Its exponential e is a surjective additive map with e(az) equal to the polynomial action of a on e(z). Its kernel Λ is the period lattice.
+
+**Problem.** For nonzero a in A, the points killed by a form the quotient a⁻¹Λ/Λ. In rank r, this gives r copies of A/(a).
+
+**How the definition helps.** In our own explanation, taking exponential coordinates replaces solving an additive polynomial by checking whether az belongs to Λ. Two solutions in these coordinates give the same point exactly when they differ by a period. Drinfeld uniformization supplies the surjective exponential and a lattice free of rank r over A.
+
+**Paper or page:** [A duality result about special functions in Drinfeld modules of arbitrary rank](https://arxiv.org/abs/2303.11468). It says: “There is an associated 𝔽q-linear exponential function expᴱ∶ Lie(E) → E(ℂ∞)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Rational Tate modules invert isogenies
+
+**Remember:** Allow division by ℓ to turn a reverse isogeny into an inverse after scaling.
+
+*True by definition. Confidence: medium.* MSC 11G10 (Abelian varieties of dimension \\(&gt; 1\\)), 14K15. arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** An abelian variety is a projective algebraic group. For a prime ℓ different from the field characteristic, take sequences of geometric points killed by successive powers of ℓ. Each point must equal ℓ times the next point. The rational Tate module allows division by ℓ in this group of sequences.
+
+**Problem.** Every isogeny between abelian varieties induces an isomorphism of rational Tate modules. An isogeny is a surjective group map with finite kernel.
+
+**How the definition helps.** Passing from the integral module to the rational module makes every nonzero integer invertible, in our own explanation. An isogeny has a reverse map whose composites in both directions multiply by the same positive integer. Divide the reverse map on rational modules by that integer. Constructing the reverse map uses the theorem that multiplication killing the kernel factors through the isogeny.
+
+**nLab:** [Tate module](https://ncatlab.org/nlab/show/Tate+module). It says: “of the directed diagram given by kernels of the endomorphisms of A defined by multiplication by pⁿ”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Frobenius degree gives Hasse’s bound
+
+**Remember:** Point count is a degree, and degrees cannot be negative.
+
+*True by definition. Confidence: medium.* MSC 11G20 (Curves over finite and local fields), 14G15. arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** An endomorphism of an elliptic curve is an algebraic map from the curve to itself preserving its group law. Give a nonconstant endomorphism its degree as a map, counting a generic fiber with multiplicities. Give the zero map degree zero. Frobenius F raises coordinates to the qth power over the field with q elements.
+
+**Problem.** The number N of rational points on an elliptic curve over the field with q elements satisfies \|N − q − 1\| ≤ 2√q.
+
+**How the definition helps.** Replacing a point count by the degree of F − 1 makes positivity give the bound, in our own explanation. Here 1 denotes the identity map. The kernel consists of the rational points, and each has multiplicity one because the differential of F − 1 is minus the identity. The main theorem needed says that degree is a quadratic form on endomorphisms. Thus the degree of aF + b equals qa² + (q + 1 − N)ab + b² for integers a and b. Nonnegativity for all such pairs forces the discriminant to be at most zero, giving the bound.
+
+**nLab:** [isogeny](https://ncatlab.org/nlab/show/isogeny). It says: “ker(Lang) = G(𝔽q).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Ample heights detect torsion
+
+**Remember:** An ample height cannot ignore a whole direction of an abelian variety.
+
+*Rules out counterexamples.* MSC 11G50 (Heights), 11G10. arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** An abelian variety is a projective algebraic group. A line bundle assigns a line to each point in a locally trivial family. Choose one preserved by inversion and ample, meaning that sections of some power embed the variety in projective space. Its canonical height measures arithmetic size and scales by n² when a point is multiplied by n.
+
+**Problem.** For points defined over a number field, the canonical height vanishes exactly at points of finite order.
+
+**How the definition helps.** Ampleness makes points of bounded height finite over the chosen number field, in our own explanation. This uses comparison with projective height and Northcott’s finiteness theorem. Every multiple of a point of height zero also has height zero, so two multiples must coincide. Conversely, the scaling law forces a point of finite order to have height zero. For our own counterexample, pull an ample symmetric bundle back from the first factor of a product of elliptic curves. Its height vanishes on the whole second factor, which can contain points of infinite order.
+
+**Wikipedia:** [Néron–Tate height](https://en.wikipedia.org/wiki/N%C3%A9ron%E2%80%93Tate_height). It says: “it vanishes only on torsion elements of the Mordell–Weil group A(K).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Complementary minors preserve subspace height
+
+**Remember:** Annihilators swap each set of columns for its complement.
+
+*Makes the theorem clean to state or prove.* MSC 11G50 (Heights), 11J87. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Over a number field K, write a basis of a subspace as matrix rows and collect its maximal minors into a vector. At each completion v of K, measure this vector by Euclidean length at infinity and maximum coordinate size elsewhere. Raise each norm to the local degree divided by the degree of K over ℚ. The logarithm of their product is the subspace height.
+
+**Problem.** A subspace and its annihilator have the same height in dual coordinate systems. The annihilator consists of linear functionals that vanish on the subspace.
+
+**How the definition helps.** Using all maximal minors turns annihilation into a permutation of the coordinates used to measure height (our own). Complementary minors agree up to signs and one common nonzero scalar (our own). Signs and permutations preserve every local norm (our own). The product formula says the weighted absolute values of the common scalar multiply to one (our own).
+
+**Paper or page:** [Diophantine approximation and the subspace theorem](https://arxiv.org/abs/2502.00731v1). It says: “Then one has h(W) = h(W⊥).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Heights from any generating sections make Weil heights pull back
 
 **Remember:** Pull back the sections, and the same projective coordinates measure the point.
@@ -11973,6 +12929,24 @@ The list is long, but it is not complete. It contains only cases where the page 
 **Sources:**
 
 - [Marc Hindry and Joseph H. Silverman, Diophantine Geometry, Part B (2000)](https://doi.org/10.1007/978-1-4612-1210-2)
+
+### Local weights give absolute heights
+
+**Remember:** Weight each place by its degree before averaging over the field.
+
+*True by definition.* MSC 11G50 (Heights), 14G40. arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** A place of a number field is a choice of absolute value up to equivalence. At each place, extend the usual absolute value on ℚ there and take the logarithm of the largest projective coordinate size. Weight each logarithm by the degree of the completed field over the corresponding completion of ℚ. Sum and divide by the degree of the number field over ℚ.
+
+**Problem.** The absolute logarithmic height of a projective point is independent of the number field containing its coordinates. For an algebraic number α, use the point with coordinates (1, α).
+
+**How the definition helps.** The degree weights make each old contribution split into new contributions with the same total, in our own explanation. Above each place, the local extension degrees sum to the degree of the field extension. Division by the global degree cancels this factor, which an unnormalized sum would retain. The product formula also makes the sum unchanged when all coordinates are multiplied by one nonzero scalar.
+
+**Wikipedia:** [Height function](https://en.wikipedia.org/wiki/Height_function). It says: “It is typically defined to be the logarithm of the maximum absolute value of the vector of coprime integers”
+
+**Paper or page:** [Efficient resolution of Thue-Mahler equations](https://arxiv.org/abs/2207.14492v2). It says: “The absolute logarithmic height of an algebraic number α is independent of the number field L containing α.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Tate's doubling limit makes canonical heights pull back along homomorphisms
 
@@ -12011,6 +12985,24 @@ The list is long, but it is not complete. It contains only cases where the page 
 - [André Néron, Quasi-fonctions et hauteurs sur les variétés abéliennes (1965)](https://doi.org/10.2307/1970644)
 - [Joseph H. Silverman, The Arithmetic of Elliptic Curves, Chapter VIII (2009)](https://doi.org/10.1007/978-0-387-09494-6)
 
+### Discriminant forms classify even overlattices
+
+**Remember:** Even extensions correspond to subgroups on which the discriminant form vanishes.
+
+*Makes the theorem clean to state or prove.* MSC 11H06 (Lattices and convex bodies (number-theoretic aspects)), 11E81. arXiv math.NT. Level 3: graduate.
+
+**Definition.** An integral lattice has integer pairings, and an even lattice has even self-pairings. For a nonsingular even lattice L, its dual L\* consists of rational vectors pairing integrally with L. The discriminant form on the finite group L\*/L takes half a representative’s self-pairing modulo the integers. An isotropic subgroup is one on which this form vanishes.
+
+**Problem.** Even lattices containing L with finite index in the same rational space correspond to isotropic subgroups of L\*/L. Up to isometries preserving L, they correspond to orbits of those subgroups under isometries of L.
+
+**How the definition helps.** The finite quadratic form makes evenness a test on cosets of L (our own). Every integral extension already lies in the dual, since its vectors pair integrally with L (our own). The correspondence theorem for subgroups of a quotient now supplies all candidates (our own). Polarization shows that zero values on a subgroup also give integral pairings (our own).
+
+**Paper or page:** [Derived equivalence of elliptic K3 surfaces and Jacobians](https://arxiv.org/abs/2303.16638v3). It says: “the set of O(T)-orbits of isotropic subgroups of Aₜ”
+
+**Sources:**
+
+- [Viacheslav V. Nikulin, Integral symmetric bilinear forms and some of their applications](https://doi.org/10.1070/im1980v014n01abeh001060)
+
 ### Even positive definite unimodular lattices need dimension divisible by 8
 
 **Remember:** Even norms make the theta series modular for everything, which forces eight.
@@ -12030,6 +13022,128 @@ The list is long, but it is not complete. It contains only cases where the page 
 - [J.-P. Serre, A Course in Arithmetic, Graduate Texts in Mathematics 7, Springer, 1973](https://doi.org/10.1007/978-1-4684-9884-4)
 - [J. Milnor and D. Husemoller, Symmetric Bilinear Forms, Springer, 1973](https://doi.org/10.1007/978-3-642-88330-9)
 
+### Unit covolume gives a Hermite maximum
+
+**Remember:** Fix cell volume before maximizing the shortest length.
+
+*Makes the theorem clean to state or prove.* MSC 11H55 (Quadratic forms (reduction theory, extreme forms, etc.)), 11H31. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Normalize a Euclidean lattice by scaling until a fundamental cell has volume one. The Hermite invariant is the squared length of its shortest nonzero vector after this scaling. Without normalization, scaling alone makes shortest length unbounded.
+
+**Problem.** In each dimension, some lattice attains the maximum Hermite invariant. Equivalently, some lattice attains the best lattice sphere-packing density in that dimension.
+
+**How the definition helps.** Fixing cell volume puts the shortest-length function on a space where Mahler’s compactness theorem applies (our own). The cubic lattice has shortest length one, so it suffices to consider lattices with shortest length at least one (our own). Mahler’s theorem makes that set compact, and shortest length varies continuously there (our own). Packing balls of radius half the shortest length gives the corresponding density maximum (our own).
+
+**Wikipedia:** [Mahler's compactness theorem](https://en.wikipedia.org/wiki/Mahler%27s_compactness_theorem). It says: “The assertion of Mahler's theorem is equivalent to the compactness of the space of unit-covolume lattices in ℝⁿ whose systole is larger or equal than any fixed ε&gt;0.”
+
+**Sources:**
+
+- [Kurt Mahler, On lattice points in n-dimensional star bodies I. Existence theorems](https://doi.org/10.1098/rspa.1946.0072)
+
+### Primitive counting explains the zeta factor
+
+**Remember:** Every nonzero lattice vector has one primitive starting point.
+
+*Makes the theorem clean to state or prove.* MSC 11H60 (Mean value and transfer theorems). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Fix a bounded measurable function on ℝⁿ with compact support. Its primitive Siegel transform sums its values on nonzero lattice vectors that are never integer multiples k ≥ 2 of other lattice vectors. The ordinary transform sums over all nonzero vectors. Average over lattices with fundamental cell volume one, using the probability measure invariant under determinant-one linear maps.
+
+**Problem.** For dimension n at least two, the mean primitive transform equals the integral of the function divided by ζ(n). Here ζ(n) is the sum of the reciprocal n-th powers of the positive integers.
+
+**How the definition helps.** The primitive sum separates the first point on each lattice ray from its multiples (our own). Each positive integer dilation by k has an integral factor of 1 divided by the n-th power of k (our own). Invariance under determinant-one linear maps makes the averaged primitive counting measure a constant times Lebesgue measure (our own). Siegel’s mean value theorem for all nonzero lattice points fixes that constant (our own).
+
+**Paper or page:** [Inversion formulae for Siegel transforms](https://arxiv.org/abs/2104.11689v3), [Some measure-theoretical and dynamical properties of successive minima on the space of unimodular lattices](https://arxiv.org/abs/2212.14373v1). It says: “Then ∫ₓ f̂ dμₓ = (1/ζ(n)) ∫ℝⁿ f dm.”
+
+**Sources:**
+
+- [Carl Ludwig Siegel, A Mean Value Theorem in Geometry of Numbers](https://doi.org/10.2307/1969027)
+
+### Powered intervals give approximation dimension
+
+**Remember:** Keep the rational centers and shrink each interval by a power.
+
+*Makes the theorem clean to state or prove.* MSC 11J83 (Metric theory). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Write approximation as belonging to infinitely many intervals centered at reduced fractions p/q. Use intervals of diameter 2/q² to encode Dirichlet approximation. To make the test stricter, keep the centers and raise each diameter to a fixed power a greater than one.
+
+**Problem.** Let a be greater than one. The real numbers approximable infinitely often within the inverse 2a-th power of the denominator have Hausdorff dimension 1/a. Hausdorff dimension measures size by covers at small scales.
+
+**How the definition helps.** Powering the intervals lets one apply a theorem that converts full length measure into a dimension bound (our own). Dirichlet’s theorem gives full length measure for the original intervals (our own). The mass transference principle gives dimension at least 1/a for their powered counterparts (our own). Using slightly larger powers and taking their limit absorbs the fixed diameter factor (our own). On each bounded interval there are at most a constant times q relevant fractions of denominator q (our own). Their covering costs therefore sum to a finite number for every dimension above 1/a (our own).
+
+**Paper or page:** [Diophantine approximation in metric space](https://arxiv.org/abs/2105.06776v1). It says: “Let a &gt; 1 and for a ball B, denote by Bᵃ a ball of the same centre as B and of diameter (diam B)ᵃ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Independent bases prevent power cancellation
+
+**Remember:** Independent bases make irrational algebraic powers survive multiplication.
+
+*Rules out counterexamples.* MSC 11J86 (Linear forms in logarithms; Baker's method), 11J81. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Positive numbers are multiplicatively independent if no product of their integer powers equals one except with all exponents zero. Use real logarithms to define powers of positive bases. Distinctness of the bases alone does not imply this independence.
+
+**Problem.** Take multiplicatively independent positive algebraic bases and algebraic exponents. If at least one exponent is irrational, the product of those powers is transcendental.
+
+**How the definition helps.** Multiplicative independence turns the logarithms of the bases into a rationally independent family (our own). Baker’s theorem says such logarithms of algebraic numbers remain independent over the algebraic numbers. An algebraic product would add its logarithm to the family with an algebraic dependence (our own). Baker’s theorem would then put that logarithm in the rational span of the original logarithms (our own). Independence over the algebraic numbers forces each original exponent to equal its rational coefficient (our own). Without independence, 2 raised to 2√2 times 4 raised to −√2 equals one (our own).
+
+**Wikipedia:** [Baker's theorem](https://en.wikipedia.org/wiki/Baker%27s_theorem). It says: “In particular this number is nonzero, so 1 and λᵢ are linearly independent over the algebraic numbers.”
+
+**Sources:**
+
+- [Alan Baker, Linear forms in the logarithms of algebraic numbers](https://doi.org/10.1112/s0025579300003971)
+
+### Local ratios make approximation projective
+
+**Remember:** Divide out the size of the coordinates at every place.
+
+*Makes the theorem clean to state or prove.* MSC 11J87 (Schmidt Subspace Theorem and applications). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Over a number field K, a projective point represents a nonzero coordinate vector up to common scaling. At each place v, meaning a choice of absolute value, write Mᵥ for the largest absolute coordinate value. Normalize the absolute values so their product on each nonzero element of K equals one. The height H is the product of all Mᵥ.
+
+**Problem.** Choose d independent K-linear forms in d variables at each of finitely many places. Multiply the ratios \|L(x)\|ᵥ/Mᵥ over every chosen form and place. For fixed ε &gt; 0, the points where this product is below 1/Hᵈ⁺ᵋ lie in finitely many proper projective linear subspaces.
+
+**How the definition helps.** Each ratio removes the choice of coordinates, so the inequality applies directly to projective points (our own). Scaling multiplies the numerator and denominator by the same absolute value (our own). The height also stays fixed by the product formula (our own). The subspace theorem supplies the finite union, and its affine and projective versions are equivalent.
+
+**Paper or page:** [Diophantine approximation and the subspace theorem](https://arxiv.org/abs/2502.00731v1), [Diophantine approximation and the subspace theorem](https://arxiv.org/abs/2502.00731v1). It says: “The projective subspace theorem is equivalent to the affine subspace theorem.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### No zero subsums makes unit solutions finite
+
+**Remember:** Remove cancelling groups before counting solutions.
+
+*Rules out counterexamples.* MSC 11J87 (Schmidt Subspace Theorem and applications), 11D61. arXiv math.NT. Level 3: graduate.
+
+**Definition.** An S-unit is a nonzero element of a number field whose principal fractional ideal has prime factors only in a fixed finite set S. A solution of a linear equation in S-units is nondegenerate if no nonempty group of terms on the left sums to zero.
+
+**Problem.** Over a number field, a fixed linear equation in S-units with nonzero coefficients and right side one has finitely many nondegenerate solutions.
+
+**How the definition helps.** The condition removes groups that can vary independently because their terms cancel (our own). Take ℚ with 2 in S (our own). The equation x + y + z = 1 then has solutions (2ᵏ, −2ᵏ, 1) for every positive k (our own). The S-unit theorem, proved using the subspace theorem, carries the finiteness work (our own).
+
+**Paper or page:** [Sum of terms of recurrence sequences and S-units in the solution sets of norm form equations](https://arxiv.org/abs/2410.01688v1). It says: “has no vanishing subsums.”
+
+**Sources:**
+
+- [Jan-Hendrik Evertse, Hans Peter Schlickewei and Wolfgang M. Schmidt, Linear Equations in Variables which Lie in a Multiplicative Group](https://doi.org/10.2307/3062133)
+
+### Fourier tests reveal polynomial equidistribution
+
+**Remember:** Polynomial differences make Fourier averages easier to estimate.
+
+*True by definition.* MSC 11K06 (General theory of distribution modulo \\(1\\)), 11K31. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Uniform distribution modulo 1 means that the fraction of fractional parts in each interval tends to its length. In the equivalent Fourier test, average exp(2πihx) over the sequence for each nonzero integer h. Require each such average to tend to zero.
+
+**Problem.** The values of a real polynomial at the positive integers are uniformly distributed modulo 1 if some nonconstant coefficient is irrational.
+
+**How the definition helps.** The Fourier test replaces interval counts by averages whose phases have lower degree after differencing. In our own proof, split the indices into residue classes modulo a common denominator for the rational coefficients. On each class the rational terms are constant modulo 1, and the remaining polynomial has irrational leading coefficient. The van der Corput inequality reduces the degree by comparing terms a fixed distance apart. At degree one a geometric sum gives the limit. Weyl’s criterion justifies replacing the interval definition by these tests.
+
+**Wikipedia:** [Equidistributed sequence](https://en.wikipedia.org/wiki/Equidistributed_sequence). It says: “the sequence p(n) is uniformly distributed modulo 1.”
+
+**Sources:**
+
+- [Hermann Weyl, Über die Gleichverteilung von Zahlen mod. Eins](https://doi.org/10.1007/BF01475864)
+
 ### Equidistribution makes normal numbers a consequence of ergodicity
 
 **Remember:** A normal number visits intervals at the right frequencies under multiplication by its base.
@@ -12048,6 +13162,40 @@ The list is long, but it is not complete. It contains only cases where the page 
 
 - [É. Borel, Les probabilités dénombrables et leurs applications arithmétiques, Rend. Circ. Mat. Palermo 27 (1909) 247–271](https://doi.org/10.1007/BF03019651)
 
+### Block tests expose hidden dependence
+
+**Remember:** Counting blocks catches dependencies that counting single points misses.
+
+*Rules out counterexamples.* MSC 11K36 (Well-distributed sequences and other variations), 11K06. arXiv math.NT. Level 3: graduate.
+
+**Definition.** For a fixed length k, form a point in the unit cube from each block of k consecutive fractional parts. Call the sequence completely uniformly distributed if, for every k, the fraction of these points in each box tends to its volume. Ordinary uniform distribution checks only k = 1.
+
+**Problem.** For almost every α &gt; 1, the sequence of positive integer powers of α is completely uniformly distributed modulo 1. For irrational α, its positive integer multiples are uniformly distributed but fail the block test at length two.
+
+**How the definition helps.** Testing adjacent terms together detects relations that disappear when each term is counted alone. For multiples of α, the second coordinate always equals the first plus α modulo 1. In our own argument, an open box away from this line receives no pairs, despite its positive area. The almost-everywhere theorem for powers requires separate estimates for the frequencies of blocks.
+
+**Wikipedia:** [Equidistributed sequence](https://en.wikipedia.org/wiki/Equidistributed_sequence). It says: “is completely uniformly distributed for almost all α &gt; 1”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Gauss averages give denominator growth
+
+**Remember:** The logarithm turns successive reciprocal tails into a sum.
+
+*True by definition.* MSC 11K50 (Metric theory of continued fractions). arXiv math.NT. Level 3: graduate.
+
+**Definition.** The Gauss map T sends irrational x between 0 and 1 to the fractional part of 1/x. It preserves the probability distribution with density 1/((1 + x) log 2). At each iterate record −log x, evaluated at the current point.
+
+**Problem.** Truncate the continued fraction of x after n digits following the integer part, and let qₙ be the reduced denominator. For almost every x between 0 and 1, (log qₙ)/n tends to π²/(12 log 2).
+
+**How the definition helps.** Recording logarithms turns denominator growth into a sum to which the ergodic theorem applies. In our own calculation, the reciprocal product of the first n iterates, starting at x, equals qₙ plus the previous denominator times the next iterate. This lies between qₙ and 2qₙ, so its logarithm differs from log qₙ by at most log 2. Ergodicity makes the average of the recorded values converge almost everywhere to their integral against the invariant density. That integral gives the stated constant.
+
+**nLab:** [continued fraction](https://ncatlab.org/nlab/show/continued+fraction). It says: “then τ is an ergodic transformation with respect to μ”
+
+**Wikipedia:** [Lévy's constant](https://en.wikipedia.org/wiki/L%C3%A9vy%27s_constant). It says: “The term “Lévy's constant” is sometimes used to refer to π²/(12 ln 2)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The Gauss map turns continued fraction digits into ergodic averages
 
 **Remember:** Read each digit as the first digit of the next state.
@@ -12065,6 +13213,22 @@ The list is long, but it is not complete. It contains only cases where the page 
 **Sources:**
 
 - [C. Ryll-Nardzewski, On the ergodic theorems (II) (Ergodic theory of continued fractions), Studia Math. 12 (1951) 74–79](https://doi.org/10.4064/sm-12-1-74-79)
+
+### Matching parity prevents cancellation in theta series
+
+**Remember:** For an odd character, multiply by n so opposite integers add.
+
+*True by definition.* MSC 11M06 (\\(\\zeta (s)\\) and \\(L(s, \\chi)\\)). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Take a nontrivial multiplicative character χ of the invertible residues modulo q, extended by zero on other residues. Assume it does not come from a character at any proper divisor of q. Put a=0 if χ(−1)=1 and a=1 otherwise. For t&gt;0 define Θ(t) by summing χ(n) exp(−πn²t/q) over all integers, inserting a factor n when a=1.
+
+**Problem.** Put z=(s+a)/2 with Re s&gt;1. Integrating Θ(t) exp(z log t) against dt/(2t) on the positive axis gives Γ(z) exp(z log(q/π)) L(s,χ). Here L(s,χ) sums χ(n) exp(−s log n) over positive integers.
+
+**How the definition helps.** The extra factor makes the terms at n and −n agree instead of canceling (our own). Integrating the Gaussian term gives Γ((s+a)/2) and leaves the factor exp(−s log n) (our own). The integration is justified by absolute convergence for Re s &gt; 1 (our own). Beyond that region, the work moves to the theta transformation from Poisson summation (our own).
+
+**nLab:** [Dirichlet theta function](https://ncatlab.org/nlab/show/Dirichlet+theta+function). It says: “The Mellin transform of this is the completed Dirichlet L-function associated with χ”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Primitive characters give Dirichlet L-functions a clean functional equation
 
@@ -12119,6 +13283,56 @@ The list is long, but it is not complete. It contains only cases where the page 
 
 - [B. Riemann, Ueber die Anzahl der Primzahlen unter einer gegebenen Grösse, Monatsberichte der Berliner Akademie, 1859](https://www.maths.tcd.ie/pub/HistMath/People/Riemann/Zeta/)
 
+### A product with nonnegative coefficients rules out a zero at one
+
+**Remember:** The product has positive square terms, so its convergence boundary cannot disappear.
+
+*True by definition. Confidence: medium.* MSC 11M20 (Real zeros of \\(L(s, \\chi)\\); results on \\(L(1, \\chi)\\)). arXiv math.NT. Level 3: graduate.
+
+**Definition.** A real Dirichlet character χ modulo q is multiplicative and periodic, taking values ±1 on invertible residues and zero elsewhere. Assume χ equals −1 somewhere. Instead of its series L(s,χ), with coefficients χ(n), take the product with the Riemann zeta function ζ(s). The product’s coefficient at n is the sum of χ(d) over divisors d of n.
+
+**Problem.** For every such character, L(1,χ) is nonzero.
+
+**How the definition helps.** Multiplication by ζ gives nonnegative coefficients, including a coefficient of at least one on every square (our own). Indeed, each prime-power coefficient sums successive powers of −1, 0, or 1 starting with one (our own). Multiplicativity gives the claim for all n (our own). The square terms force divergence at s=1/2 (our own). A zero at one would cancel the sole pole of ζ and make the product entire (our own). Landau’s theorem forces a singularity at the finite real boundary of convergence for a series with nonnegative coefficients (our own).
+
+**Wikipedia:** [Dirichlet L-function](https://en.wikipedia.org/wiki/Dirichlet_L-function). It says: “In his proof, Dirichlet showed that L(s,χ) is non-zero at s = 1.”
+
+**Paper or page:** [A note on prime number races and zero free regions for L functions](https://arxiv.org/abs/2001.00764v3). It says: “and has a singularity at σ𝒸.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Fourth powers exclude boundary zeros
+
+**Remember:** A boundary zero would make a nonnegative sum have a negative limit.
+
+*Rules out counterexamples.* MSC 11M26 (Nonreal zeros of \\(\\zeta (s)\\) and \\(L(s, \\chi)\\); Riemann and other hypotheses). arXiv math.NT. Level 3: graduate.
+
+**Definition.** For Re s&gt;1, let Φ(s) sum log(p) exp(−s log p) over primes p. Fix a real t≠0. Combine Φ(s+irt) for r from −2 to 2 with successive weights 1, 4, 6, 4, 1.
+
+**Problem.** The Riemann zeta function has no zero on Re s = 1.
+
+**How the definition helps.** These weights give each prime a nonnegative multiplier, the fourth power of 2 cos(t log(p)/2). Thus the weighted sum stays nonnegative for real s&gt;1. Multiplying by s−1 gives the limit 6−8μ−2ν as s decreases to one. Here μ and ν count zeros with multiplicity at 1+it and 1+2it, respectively. Nonnegativity forces μ=0. Computing the limit requires comparing the prime sum with the logarithmic derivative ζ′/ζ.
+
+**nLab:** [proof of the prime number theorem](https://ncatlab.org/nlab/show/proof+of+the+prime+number+theorem). It says: “from which, in conjunction with 1., 2., 3. above, we deduce 0 ≤ 6 − 8μ − 2ν, so that μ = 0.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Phase correction reveals critical zeros
+
+**Remember:** Remove the phase so that a sign change detects a zero.
+
+*True by definition.* MSC 11M26 (Nonreal zeros of \\(\\zeta (s)\\) and \\(L(s, \\chi)\\); Riemann and other hypotheses). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let Γ denote the gamma function, which extends the factorial by Γ(n+1)=n!. Define θ(t) as the imaginary part of the continuous log Γ(1/4+it/2), minus (t/2) log π. Choose the logarithm to be real at t=0. Multiply ζ(1/2+it) by exp(iθ(t)) to obtain Hardy’s Z(t).
+
+**Problem.** On the critical line Re s=1/2, Hardy’s Z takes real values and has the same zeros, with multiplicity, as the Riemann zeta function ζ. Opposite signs at two heights guarantee a zero between them.
+
+**How the definition helps.** The phase factor turns the functional equation into equality with the complex conjugate (our own). The factor never vanishes, so it cannot create or remove zeros (our own). The work moves to the functional equation and to finding points of opposite sign, as in proofs of infinitely many critical zeros (our own).
+
+**Wikipedia:** [Z function](https://en.wikipedia.org/wiki/Z_function). It says: “It follows from the functional equation of the Riemann zeta function that the Z function is real for real values of t.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The stuffle product makes multiple zeta values an algebra
 
 **Remember:** Define word multiplication to copy series multiplication, and the algebra comes free.
@@ -12137,6 +13351,72 @@ The list is long, but it is not complete. It contains only cases where the page 
 
 - [Masataka Satoh, Generalized quasi-shuffle products, arXiv:2303.12386 (2023)](https://arxiv.org/abs/2303.12386)
 - [Michael E. Hoffman, The Algebra of Multiple Harmonic Series, Journal of Algebra (1997)](https://doi.org/10.1006/jabr.1997.7127)
+
+### Hurwitz zeta cancels character poles
+
+**Remember:** All residue classes have the same pole, so a zero character sum cancels it.
+
+*True by definition.* MSC 11M35 (Hurwitz and Lerch zeta functions). arXiv math.NT. Level 3: graduate.
+
+**Definition.** For a&gt;0 and Re s&gt;1, the Hurwitz zeta function ζ(s,a) sums exp(−s log(n+a)) over integers n≥0. A Dirichlet character χ modulo q is a multiplicative character of the invertible residues, extended by zero elsewhere. Its L-function sums χ(n) exp(−s log n) over positive integers.
+
+**Problem.** If χ differs from one on some invertible residue, its L-function extends holomorphically to the whole complex plane.
+
+**How the definition helps.** Grouping by residues replaces the original series with functions whose sole poles have identical residues (our own). Class r contributes χ(r)ζ(s,r/q) times exp(−s log q), for 1≤r≤q (our own). The character values sum to zero, so the residues cancel (our own). The analytic work lies in continuing each Hurwitz zeta function to the plane with only its simple pole at one.
+
+**Wikipedia:** [Hurwitz zeta function](https://en.wikipedia.org/wiki/Hurwitz_zeta_function). It says: “At s = 1, it has a simple pole with residue 1.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Gamma slopes make degrees additive
+
+**Remember:** Adding the gamma slopes makes degrees add when series multiply.
+
+*True by definition.* MSC 11M41 (Other Dirichlet series and zeta functions). arXiv math.NT. Level 3: graduate.
+
+**Definition.** In the Selberg class, each Dirichlet series F satisfies a symmetry relating its values at s and 1−s through gamma factors. Each factor has the form Γ(λs+μ), with λ&gt;0. Define the degree as twice the sum of these slopes λ, counting repetitions.
+
+**Problem.** If F and G are in the Selberg class, then the degree of FG is the sum of their degrees.
+
+**How the definition helps.** Multiplication joins the two lists of slopes, so their sums add. Counting factors alone can give different answers because the gamma multiplication formula can split a factor (our own). The work lies in proving that the slope sum has the same value for every permitted functional equation.
+
+**Wikipedia:** [Selberg class](https://en.wikipedia.org/wiki/Selberg_class). It says: “Since this sum is independent of the choice of functional equation, it is well-defined for any function F.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Nonnegative coefficients prevent cancellation in Dirichlet sums
+
+**Remember:** Nonnegative terms prevent large jumps from hiding in a small analytic remainder.
+
+*Rules out counterexamples.* MSC 11M45 (Tauberian theorems). arXiv math.NT. Level 3: graduate.
+
+**Definition.** A Dirichlet series F(s) sums a(n) exp(−s log n) over positive integers n. Require each coefficient a(n) to be nonnegative, so the partial sums never decrease.
+
+**Problem.** Suppose the series converges for Re s&gt;1. For some c&gt;0, suppose F(s)−c/(s−1) extends holomorphically across every point of Re s=1. Then the partial sum up to x, divided by x, tends to c.
+
+**How the definition helps.** Nonnegative coefficients prevent a large upward jump from disappearing at the next index (our own). Start with all coefficients equal to one (our own). For each k≥1, add 2ᵏ at index 2ᵏ and subtract it at the next index (our own). The paired corrections converge locally uniformly for Re s&gt;0 by the mean value estimate for exp(−s log x) (our own). The adjusted partial sums divided by their index alternate between two and one at these successive indices (our own). The Wiener–Ikehara theorem gives convergence of this ratio under the stated positivity and continuation hypotheses.
+
+**Wikipedia:** [Wiener–Ikehara theorem](https://en.wikipedia.org/wiki/Wiener%E2%80%93Ikehara_theorem). It says: “where a(n) is non-negative.”
+
+**Sources:**
+
+- [Norbert Wiener, Tauberian Theorems (1932)](https://doi.org/10.2307/1968102)
+
+### Repeated integration gives counting sums a faster decaying kernel
+
+**Remember:** Each integration adds one denominator and makes the contour integral decay faster.
+
+*True by definition. Confidence: medium.* MSC 11M45 (Tauberian theorems). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let A(X) sum complex coefficients a(n) over positive integers n≤X. For a positive integer k, integrate A from zero k times, each time taking X as the upper limit. Equivalently, multiply each included coefficient by (X−n) to the power k, divided by k factorial.
+
+**Problem.** Suppose F(s), the sum of a(n) exp(−s log n), converges absolutely on Re s=c&gt;0. The smoothed sum equals the upward integral of F(s) exp((s+k) log X)/\[s(s+1)⋯(s+k)\] along that line, divided by 2πi, for X&gt;0.
+
+**How the definition helps.** Each integration adds a denominator to the original counting kernel 1/s (our own). On a vertical line, the new kernel thus decays by k extra powers of the height (our own). Mellin inversion, which recovers a function from its integral transform, gives the formula (our own). Moving the line of integration and recovering the original count require further estimates (our own).
+
+**Paper or page:** [An Explicit Tauberian Theorem taking Averaged Inputs with an Application to Counting Abelian Number Fields](https://arxiv.org/abs/2508.20814v1). It says: “\\frac{\\Gamma (s)}{\\Gamma (s+k+1)} X<sup>s+k</sup>”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Taking the halfway value at jumps makes Riemann's explicit formula exact
 
@@ -12157,6 +13437,22 @@ The list is long, but it is not complete. It contains only cases where the page 
 - [B. Riemann, Ueber die Anzahl der Primzahlen unter einer gegebenen Grösse, Monatsberichte der Berliner Akademie, 1859](https://www.maths.tcd.ie/pub/HistMath/People/Riemann/Zeta/)
 - [H. von Mangoldt, Zu Riemanns Abhandlung 'Ueber die Anzahl der Primzahlen unter einer gegebenen Grösse', J. reine angew. Math. 114 (1895) 255–305](https://doi.org/10.1515/crll.1895.114.255)
 
+### Vaughan’s cutoffs split prime sums
+
+**Remember:** Split the factors before expanding so each resulting sum has useful ranges.
+
+*True by definition.* MSC 11N05 (Distribution of primes). arXiv math.NT. Level 3: graduate.
+
+**Definition.** The Möbius weight μ(n) vanishes on multiples of prime squares and otherwise equals −1 raised to the number of prime factors. The weight Λ equals log p on positive powers of a prime p and zero elsewhere. Split each weight at its own cutoff, labeling the lower part s and the upper part ℓ. Divisor convolution f∗g sums f(d)g(n/d) over divisors d of n.
+
+**Problem.** Write 1 for the constant function one. Vaughan’s identity reads Λ = μₛ∗log + Λₛ − μₛ∗1∗Λₛ + μℓ∗1∗Λℓ.
+
+**How the definition helps.** The two cutoffs isolate a convolution with two long factors, a structure hidden in Λ=μ∗log (our own). Substitute log=1∗Λ only in the term containing long μ (our own). Where short Λ occurs, replace long μ by μ minus short μ (our own). The identity μ∗1=1 at n=1 and zero elsewhere removes the extra convolution there (our own). Estimating the four sums requires further work (our own).
+
+**Wikipedia:** [Vaughan's identity](https://en.wikipedia.org/wiki/Vaughan%27s_identity). It says: “four distinct sums based on the expansion of the logarithmic derivative of the Riemann zeta function”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Dirichlet density makes primes in progressions easy to measure
 
 **Remember:** Measure prime sets by their pole at s = 1, not by counting.
@@ -12175,6 +13471,54 @@ The list is long, but it is not complete. It contains only cases where the page 
 
 - [P. G. L. Dirichlet, Beweis des Satzes, dass jede unbegrenzte arithmetische Progression ... unendlich viele Primzahlen enthält (1837), reprinted by Cambridge University Press](https://doi.org/10.1017/CBO9781139237321.012)
 
+### Dickman’s delay bounds smooth densities
+
+**Remember:** A sliding unit interval bounds the density by its previous value divided by u.
+
+*True by definition.* MSC 11N25 (Distribution of integers with specified multiplicative constraints). arXiv math.NT. Level 3: graduate.
+
+**Definition.** For fixed u≥1, consider integers up to x whose prime factors are at most exp((log x)/u). Their limiting proportion is the Dickman function ρ(u). An equivalent definition sets ρ=1 on \[0,1\] and continues it continuously by uρ′(u)=−ρ(u−1) for u&gt;1.
+
+**Problem.** For u ≥ 1, ρ(u) ≤ 1/⌊u⌋!, where ⌊u⌋ is the integer part of u.
+
+**How the definition helps.** The delay equation expresses uρ(u) as the integral of ρ from u−1 to u (our own). Both sides agree at one and have the same derivative thereafter (our own). A first zero would contradict that integral, so ρ stays positive and the equation makes it decreasing (our own). The integral is therefore at most ρ(u−1), and iteration gives the factorial bound (our own). Dickman’s density theorem establishes the equivalence with the counting definition.
+
+**Wikipedia:** [Dickman function](https://en.wikipedia.org/wiki/Dickman_function). It says: “The Dickman–de Bruijn function ρ(u) is a continuous function that satisfies the delay differential equation”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### New coordinates minimize Selberg’s sieve
+
+**Remember:** In the new coordinates, the best sieve weights follow from Cauchy–Schwarz.
+
+*True by definition.* MSC 11N35 (Sieves). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Choose a nonempty finite set D of squarefree integers containing every divisor of each member. For each prime p in D choose f(p)&gt;1, and multiply these values to define f on D, with f(1)=1. Define g similarly using g(p)=f(p)−1. For each r in D let y(r) sum λ(d)/f(d) over multiples d of r in D.
+
+**Problem.** Form the quadratic expression in real weights λ with matrix entries 1/f(lcm(d,e)), extending f multiplicatively to squarefree products of the chosen primes. Under λ(1)=1 its minimum is the reciprocal of the sum of 1/g(r) over D.
+
+**How the definition helps.** The divisor coordinates turn the original expression into the sum of g(r)y(r)² (our own). Indeed, f(gcd(d,e)) equals the sum of g(r) over common divisors r (our own). The coordinate change is invertible by back substitution, starting at the largest indices (our own). Write μ(r) for −1 raised to the number of prime factors of r (our own). Then λ(1) equals the sum of μ(r)y(r) by inclusion–exclusion (our own). Cauchy–Schwarz gives the bound, with equality when y(r) is proportional to μ(r)/g(r) (our own).
+
+**Wikipedia:** [Selberg sieve](https://en.wikipedia.org/wiki/Selberg_sieve). It says: “Let the function g be obtained from f by Möbius inversion”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Squares bound the Selberg sieve
+
+**Remember:** The square is one on survivors and never negative elsewhere.
+
+*True by definition.* MSC 11N35 (Sieves). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Choose finitely many primes and call an integer sifted if none divides it. Assign a real weight to each divisor of their product, with weight 1 at divisor 1. For each integer, add the weights of its divisors on this list and square the result.
+
+**Problem.** In any finite sample of positive integers, the sum of these squares bounds the number of sifted integers from above.
+
+**How the definition helps.** The square equals one on sifted integers and stays nonnegative everywhere else (our own). The usual inclusion–exclusion formula counts survivors exactly but uses alternating signs. Selberg chooses weights to keep the upper bound small. Applying it requires estimates for the number of sample elements divisible by each divisor (our own).
+
+**Wikipedia:** [Selberg sieve](https://en.wikipedia.org/wiki/Selberg_sieve). It says: “Selberg replaced the values of the Möbius function which arise in this by a system of weights which are then optimised to fit the given problem.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Ignoring finitely many exceptions gives Waring's problem its true constant G(k)
 
 **Remember:** Small stubborn numbers fix g(k); only large numbers fix G(k).
@@ -12192,6 +13536,76 @@ The list is long, but it is not complete. It contains only cases where the page 
 **Sources:**
 
 - [G. H. Hardy and J. E. Littlewood, Some problems of 'Partitio Numerorum' IV: The singular series in Waring's problem and the value of the number G(k), Math. Z. 12 (1922) 161–188](https://doi.org/10.1007/BF01482074)
+
+### Power moments count integer solutions
+
+**Remember:** One frequency per degree enforces one equality per degree.
+
+*True by definition.* MSC 11P55 (Applications of the Hardy-Littlewood method). arXiv math.NT. Level 3: graduate.
+
+**Definition.** For positive integers N, k and s, let P be a polynomial with no constant term and coefficients α₁ through αₖ. Sum exp(2πiP(n)) over n from 1 to N. The Vinogradov mean value integrates the absolute value of this sum raised to power 2s over the unit cube of coefficients.
+
+**Problem.** Take two ordered s-tuples from 1 to N, and require their jth power sums to agree for every j from 1 to k. The mean value counts exactly these pairs. The full set of equalities survives a common integer translation of the entries.
+
+**How the definition helps.** A separate frequency for each power turns the integral into an exact count without enumerating solutions. In our own calculation, expanding the power introduces two ordered tuples. For each degree, integration gives one if the power sums agree and zero otherwise. The binomial theorem gives translation invariance of the equations because they include every lower degree. The difficult mean value theorem bounds the resulting count.
+
+**Wikipedia:** [Vinogradov's mean-value theorem](https://en.wikipedia.org/wiki/Vinogradov%27s_mean-value_theorem). It says: “An alternative analytic expression for Jₛ,ₖ(X) is”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Freiman models prevent false collisions
+
+**Remember:** A usable model preserves both equal sums and unequal sums.
+
+*Rules out counterexamples.* MSC 11P70 (Inverse problems of additive number theory, including sumsets), 11B30. arXiv math.NT. Level 3: graduate.
+
+**Definition.** A Freiman isomorphism of order 8 is a bijection that preserves and reflects equality of eight-term sums. Repeated summands are allowed. Unlike plain reduction modulo a prime, it cannot make two different sums agree. Write 8A − 8A for all differences between two eight-term sums from A.
+
+**Problem.** Let A be a finite nonempty set of integers, and let q be prime with q &gt; \|8A − 8A\|. Some subset of A of size at least \|A\|/8 is Freiman isomorphic of order 8 to a subset of ℤ/qℤ.
+
+**How the definition helps.** The definition lets every eight-term equality move between model and original without creating a false one, in our own words. Our own example is {0,1,3} modulo 5, where 0 + 1 and 3 + 3 acquire the same residue. Appending six zeros makes it an eight-term collision as well, in our own example. The hard work is the Ruzsa modeling lemma, which selects a large subset and a suitable map.
+
+**Wikipedia:** [Freiman's theorem](https://en.wikipedia.org/wiki/Freiman%27s_theorem). It says: “By the Ruzsa modeling lemma, there exists a subset A′ of A of cardinality at least \|A\|/8”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Eta shifts give partition inversion
+
+**Remember:** The shifted partition series is the reciprocal of eta.
+
+*True by definition.* MSC 11P82 (Analytic theory of partitions). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let P(q) be the generating function for integer partitions, so its coefficient at degree n is the partition count. Set q = exp(2πiτ) with τ in the upper half-plane. Replace P(q) by exp(−πiτ/12)P(q), the reciprocal of the Dedekind eta function.
+
+**Problem.** For t &gt; 0, P(exp(−2πt)) equals √t exp(π(1/t − t)/12) times P(exp(−2π/t)).
+
+**How the definition helps.** The exponential shift turns the partition series into the reciprocal of eta, whose inversion law exchanges t and 1/t. In our own calculation, substitute τ = it in that law to obtain η(i/t) = √t η(it). Substituting the partition series on each side gives the stated factor. The substantive theorem is the inversion law.
+
+**nLab:** [Dedekind eta function](https://ncatlab.org/nlab/show/Dedekind+eta+function). It says: “η(τ) = q¹⁄²⁴”
+
+**Wikipedia:** [Dedekind eta function](https://en.wikipedia.org/wiki/Dedekind_eta_function). It says: “η(−1/τ) = √(−iτ) η(τ).”
+
+**Sources:**
+
+- [G. H. Hardy and S. Ramanujan, Asymptotic Formulaae in Combinatory Analysis](https://doi.org/10.1112/plms/s2-17.1.75)
+
+### Crank classes explain partition congruences
+
+**Remember:** Equal crank classes explain why the partition count is divisible.
+
+*Makes the theorem clean to state or prove.* MSC 11P83 (Partitions; congruences and congruential restrictions), 05A17. arXiv math.NT. Level 3: graduate.
+
+**Definition.** The crank of a partition with no ones is its largest part. If there are ones, subtract their number from the number of parts larger than that number. The older rank subtracts the number of parts from the largest part.
+
+**Problem.** For each integer n ≥ 0, the crank splits the partitions of 5n + 4 equally into five residue classes modulo 5. It does the same for 7n + 5 modulo 7 and 11n + 6 modulo 11. Each partition count is therefore divisible by its modulus.
+
+**How the definition helps.** The crank states all three congruences as equalities of class sizes. The older rank fails modulo 11. In our own example, the partitions 4 + 1 + 1 and 3 + 3 both have rank 1. Andrews and Garvan proved the equalities using a series whose coefficients count partitions by crank. Adding the equal class sizes gives divisibility.
+
+**Wikipedia:** [Crank of a partition](https://en.wikipedia.org/wiki/Crank_of_a_partition). It says: “M(9, 11, 11n + 6) = M(10, 11, 11n + 6) = p(11n + 6) / 11”
+
+**Sources:**
+
+- [George E. Andrews and F. G. Garvan, Dyson’s crank of a partition](https://doi.org/10.1090/S0273-0979-1988-15637-6)
 
 ### Defining ideal norms by prime factorizations makes them multiply
 
@@ -12224,6 +13638,22 @@ The list is long, but it is not complete. It contains only cases where the page 
 **Wikipedia:** [Field norm](https://en.wikipedia.org/wiki/Field_norm). It says: “is defined as the determinant of this linear transformation.”
 
 **Paper or page:** [An Infinitely Large Napkin: Alg Nt: Norm Trace](https://venhance.github.io/napkin/Napkin.pdf), [An Infinitely Large Napkin: Alg Nt: Norm Trace](https://venhance.github.io/napkin/Napkin.pdf). It says: “If α is an algebraic integer, its norm and trace are rational integers.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Index checks prevent false ramification
+
+**Remember:** Check the index before reading ramification from polynomial factors.
+
+*Rules out counterexamples.* MSC 11R04 (Algebraic numbers; rings of algebraic integers). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let θ be an algebraic integer generating a number field K. The subring ℤ\[θ\] has finite index in the full ring of integers. Call it maximal at p if the prime p does not divide that index.
+
+**Problem.** Suppose ℤ\[θ\] is maximal at p. Each distinct irreducible factor of the minimal polynomial modulo p gives one prime ideal above p. Its multiplicity gives that prime’s exponent in the factorization of (p).
+
+**How the definition helps.** The index condition makes the two rings agree after reduction modulo p (our own). The Dedekind–Kummer theorem then reads the prime ideals and their exponents from the polynomial factors. For θ = √5 the index is two, and its polynomial has a double root modulo two (our own). Yet two stays prime because the full ring has generator (1 + √5)/2 with irreducible polynomial modulo two (our own).
+
+**Paper or page:** [Theorem 6.3. (Factoring algorithm / Dedekind-Kummer theorem)](https://venhance.github.io/napkin/Napkin.pdf). It says: “In particular, if K is monogenic with 𝒪ₖ = ℤ\[θ\] then j=1 and the theorem applies for all primes p.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -12311,6 +13741,134 @@ The list is long, but it is not complete. It contains only cases where the page 
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Prime valuations count S-unit rank
+
+**Remember:** Each allowed prime adds one unit direction.
+
+*True by definition.* MSC 11R27 (Units and factorization). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Fix a finite set S of prime ideals in a number field. An S-unit is a nonzero field element whose principal fractional ideal uses only primes in S, with positive or negative exponents. Equivalently, it has an inverse in the ring allowing denominators only at S.
+
+**Problem.** The rank of the S-unit group is the ordinary unit rank plus the number of primes in S.
+
+**How the definition helps.** The prime factor definition gives one integer coordinate for each allowed prime (our own). All coordinates vanish exactly for the ordinary units (our own). The ideal class group, which identifies ideals differing by a scalar, is finite (our own). Each allowed prime therefore has a principal power, giving a nonzero multiple of its coordinate vector (our own). These vectors give the full additional rank (our own).
+
+**Wikipedia:** [S-unit](https://en.wikipedia.org/wiki/S-unit). It says: “An element x of K is an S-unit if the principal fractional ideal (x) is a product of primes in S (to positive or negative powers).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Unit regulators scale by index
+
+**Remember:** A subgroup of index m has a cell m times larger.
+
+*True by definition.* MSC 11R27 (Units and factorization). arXiv math.NT. Level 3: graduate.
+
+**Definition.** For each unit, record the logarithm of its absolute value at every real embedding and at one embedding per complex conjugate pair. Double the complex entries. The resulting vectors form a lattice in the hyperplane where the coordinates sum to zero. Its regulator is the volume of a fundamental cell divided by the square root of the number of coordinates.
+
+**Problem.** For a subgroup of the units modulo roots of unity of finite index m, the subgroup regulator is m times the full regulator.
+
+**How the definition helps.** The volume definition tiles a subgroup cell with m translates of a full lattice cell (our own). The common normalization factor cancels (our own). Dirichlet’s unit theorem identifies the logarithmic lattice with units modulo roots of unity (our own). Projecting away one coordinate recovers the usual determinant definition of the regulator (our own).
+
+**Wikipedia:** [Dirichlet's unit theorem](https://en.wikipedia.org/wiki/Dirichlet%27s_unit_theorem). It says: “The volume of a fundamental domain of this lattice is R√(r + 1).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Determinants detect relative integral bases
+
+**Remember:** One determinant line records whether an integral basis exists.
+
+*True by definition.* MSC 11R29 (Class numbers, class groups, discriminants). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let B and A be the rings of integers in a number field and a subfield. As an A-module, B splits into free summands and one nonzero ideal I of A. The Steinitz class is the class of I, where two ideals have the same class if they differ by a scalar.
+
+**Problem.** Consider the ring of integers of a finite number field extension. It has a basis over the base ring of integers exactly when its Steinitz class is trivial.
+
+**How the definition helps.** The decomposition leaves only one ideal summand that could prevent a basis (our own). A trivial class means that one element generates this ideal, completing the basis (our own). Conversely, the top exterior power of a free module is free, and the decomposition identifies that power with I (our own). This replaces a direct search for a basis with the structure theorem for modules over rings of integers (our own).
+
+**Wikipedia:** [Dedekind domain](https://en.wikipedia.org/wiki/Dedekind_domain). It says: “The Steinitz class for P over R is the class \[I\] of I in Cl(R): it is uniquely determined.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Differentials give the monogenic different
+
+**Remember:** Differentiate the defining relation to get the different.
+
+*True by definition.* MSC 11R29 (Class numbers, class groups, discriminants). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Suppose a ring B comes from a ring A by adjoining x and imposing one monic relation f(x) = 0. Formal differentiation gives the relation f′(x) dx = 0, with all elements of A treated as constants. In this presentation the Kähler different is the ideal generated by the coefficient of dx.
+
+**Problem.** Let L/K be an extension of number fields. Suppose α generates the integers of L over the integers of K and has minimal polynomial f. Then f′(α) generates the different.
+
+**How the definition helps.** The single defining relation gives a one-entry derivative matrix (our own). Its determinant is f′(α) (our own). The work lies in identifying the Kähler different with the usual different for these rings (our own). The usual definition inverts the ideal of elements pairing integrally with all integers under the field trace (our own).
+
+**Paper or page:** [Lemma 49.7.4.](https://stacks.math.columbia.edu/tag/0BVZ). It says: “The Kähler different of B over A is the ideal of B generated by det(∂fᵢ/∂xⱼ).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Discriminant classes are squared Steinitz classes
+
+**Remember:** The trace pairs two copies of the same line.
+
+*True by definition.* MSC 11R29 (Class numbers, class groups, discriminants). arXiv math.NT. Level 3: graduate.
+
+**Definition.** For number fields L/K, take the top exterior power of the integers of L over the integers of K. This rank-one module records how determinants change between local bases. Its ideal class, meaning its isomorphism class as a fractional ideal, is the Steinitz class.
+
+**Problem.** The relative discriminant of a number field extension represents the square of the Steinitz class of its ring of integers.
+
+**How the definition helps.** On the top exterior power, the trace determinant pairs two copies of the same module (our own). Its image is the discriminant ideal because local bases give the usual trace determinants (our own). The field trace pairing is nondegenerate, so the induced map from the tensor square is injective (our own). The discriminant ideal therefore represents the square of the module’s ideal class (our own).
+
+**Wikipedia:** [Different ideal](https://en.wikipedia.org/wiki/Different_ideal). It says: “indeed, it is the square of the Steinitz class for O<sub>L</sub> as a O<sub>K</sub>-module.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Norms give the discriminant tower law
+
+**Remember:** Take norms of the different tower law.
+
+*True by definition.* MSC 11R29 (Class numbers, class groups, discriminants). arXiv math.NT. Level 3: graduate.
+
+**Definition.** The trace dual consists of elements whose products with every integer of the larger field have integral trace. Its inverse ideal is the different. Define the relative discriminant as the ideal norm of the different. The ideal norm sends each prime to the prime below it raised to the degree of the residue field extension.
+
+**Problem.** In a tower L/K/S, raise the discriminant of K/S to \[L:K\]. Multiply by the norm from K to S of the discriminant of L/K to get the discriminant of L/S.
+
+**How the definition helps.** Taking ideal norms turns the different tower law directly into the discriminant tower law (our own). Norms compose, and extending an ideal from K to L then taking its norm raises it to the degree of L/K (our own). The work lies in the different tower law and in identifying the norm with the usual discriminant from trace determinants (our own).
+
+**Paper or page:** [Counting extensions of imaginary quadratic fields](https://arxiv.org/abs/2109.09848v1). It says: “Given a tower of number fields L/K/S then the relative discriminant of L/S can be computed as”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Root discriminants ignore unramified extensions
+
+**Remember:** The root cancels the extension degree.
+
+*True by definition.* MSC 11R29 (Class numbers, class groups, discriminants). arXiv math.NT. Level 3: graduate.
+
+**Definition.** On a basis of the ring of integers over ℤ, form the matrix of field traces of pairwise basis products. Its determinant is the field discriminant. For a number field of degree n, the root discriminant is the nth root of its absolute discriminant value.
+
+**Problem.** The root discriminant stays constant in extensions unramified at every finite prime. This means that no prime ideal acquires a repeated factor in the larger ring of integers.
+
+**How the definition helps.** Taking the degree root cancels the power in the ordinary discriminant tower law (our own). The relative discriminant is the unit ideal because no finite prime ramifies (our own). The tower law therefore raises the absolute discriminant value to the extension degree (our own).
+
+**Wikipedia:** [Discriminant of an algebraic number field](https://en.wikipedia.org/wiki/Discriminant_of_an_algebraic_number_field). It says: “The relation between relative discriminants in a tower of fields shows that the root discriminant does not change in an unramified extension.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Tameness gives different exponent e − 1
+
+**Remember:** Tame ramification contributes exactly its index minus one.
+
+*Rules out counterexamples.* MSC 11R29 (Class numbers, class groups, discriminants). arXiv math.NT. Level 3: graduate.
+
+**Definition.** In a number field extension, let e be the exponent of a prime ideal in the factorization of the prime below it. Ramification is tame there if the residue characteristic does not divide e. The different is the inverse ideal of elements whose products with all integers have integral trace.
+
+**Problem.** At a tame prime of ramification index e, the different has exponent e − 1.
+
+**How the definition helps.** Tameness keeps the leading coefficient e of the derivative nonzero in the residue field (our own). Complete at the prime and remove the unramified part, which contributes nothing to the different (our own). The remaining integer ring has a generator π of valuation one, where valuation counts prime factors (our own). Its minimal polynomial has degree e, and the base prime divides all lower coefficients (our own). At π the leading derivative term has valuation e − 1, strictly below every other term (our own). The generator theorem and the derivative formula for the different supply the main work (our own). In the wild extension ℚ₂(√2), the derivative 2√2 has valuation three although e equals two (our own).
+
+**Wikipedia:** [Different ideal](https://en.wikipedia.org/wiki/Different_ideal). It says: “The precise exponent to which a ramified prime P divides δ is termed the differential exponent of P and is equal to e − 1 if P is tamely ramified”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The different ideal shows exactly which primes ramify
 
 **Remember:** The different's prime factors are exactly the ramified primes upstairs.
@@ -12346,6 +13904,54 @@ The list is long, but it is not complete. It contains only cases where the page 
 **Sources:**
 
 - [A. Fröhlich and M. J. Taylor, Algebraic Number Theory, Cambridge University Press, 1991](https://doi.org/10.1017/CBO9781139172165)
+
+### Trace determinants square lattice indices
+
+**Remember:** A basis change enters a trace determinant twice.
+
+*True by definition.* MSC 11R29 (Class numbers, class groups, discriminants). arXiv math.NT. Level 3: graduate.
+
+**Definition.** An order in a number field is a subring containing 1 that has full rank inside the ring of integers. Choose a ℤ-basis of the order. Its discriminant is the determinant of the matrix of field traces of pairwise basis products.
+
+**Problem.** If one order has index m in another order of the same field, its discriminant is m² times the larger order’s discriminant.
+
+**How the definition helps.** Using the trace matrix makes the basis change appear twice in one determinant (our own). If C expresses the smaller basis in the larger basis, the matrix changes from T to CᵀTC (our own). The lattice index theorem identifies the absolute determinant of C with m (our own). This avoids computing how each entry in the alternative matrix of field embeddings changes (our own).
+
+**Wikipedia:** [Discriminant of an algebraic number field](https://en.wikipedia.org/wiki/Discriminant_of_an_algebraic_number_field). It says: “The discriminant of an order in K with integral basis b₁,…,bₙ is defined in the same way.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Trace duals multiply in towers
+
+**Remember:** Trace maps compose, so trace duals multiply.
+
+*True by definition.* MSC 11R29 (Class numbers, class groups, discriminants). arXiv math.NT. Level 3: graduate.
+
+**Definition.** The trace dual for L/K consists of elements x of L for which every integer y of L gives an integral field trace Tr(xy). Its inverse fractional ideal is the different. A fractional ideal becomes an ordinary ideal after multiplication by a nonzero integer.
+
+**Problem.** In a tower L/K/F, the different of L/F is the product of the different of L/K and the extended different of K/F.
+
+**How the definition helps.** The trace dual turns the tower formula into two integral trace tests (our own). Traces compose, and the integers of L contain the integers of K (our own). Thus x passes the combined test exactly when every Tr(xy) from L to K belongs to the trace dual for K/F (our own). Locally that dual has one generator, which factors out of the test (our own). Inverting the resulting product gives the formula without computing generators from polynomial derivatives (our own).
+
+**Wikipedia:** [Different ideal](https://en.wikipedia.org/wiki/Different_ideal). It says: “In a tower of fields L/K/F the relative differents are related by δL/F = δL/K δK/F.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Unit signs explain narrow classes
+
+**Remember:** The only signs that disappear come from units.
+
+*Makes the theorem clean to state or prove.* MSC 11R29 (Class numbers, class groups, discriminants). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Fractional ideals are ideals with denominators allowed. In the ordinary class group, two such ideals represent the same class if one is a nonzero scalar multiple of the other. In the narrow class group, the scalar must also be positive under every real embedding.
+
+**Problem.** Forgetting positivity maps narrow classes onto ordinary classes. Its kernel is the group of sign patterns at the real embeddings modulo the signs of units.
+
+**How the definition helps.** Keeping positivity in the quotient leaves only the signs of a principal generator to track (our own). Two generators differ by a unit, so their signs agree modulo unit signs (our own). Weak approximation, which lets one prescribe signs at all real embeddings, gives every sign pattern (our own).
+
+**Wikipedia:** [Narrow class group](https://en.wikipedia.org/wiki/Narrow_class_group). It says: “where now Pₖ⁺ is the group of totally positive principal fractional ideals”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Decomposition groups turn counting prime factors into orbit counting
 
@@ -12399,6 +14005,74 @@ The list is long, but it is not complete. It contains only cases where the page 
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Artin and Hecke factors agree
+
+**Remember:** The same Frobenius value gives both factors wherever the units act trivially.
+
+*True by definition.* MSC 11R37 (Class field theory), 11S40. arXiv math.NT. Level 3: graduate.
+
+**Definition.** An idele is a tuple of nonzero local elements, almost all units. A Hecke character is a continuous multiplicative character of ideles that is trivial on global elements. Given a one-dimensional finite Galois character, define its Hecke character by composition with global reciprocity. Normalize local reciprocity so a generator of the maximal ideal acts on residues by arithmetic Frobenius.
+
+**Problem.** At every finite place of a number field, the Artin and Hecke Euler factors of these characters agree. An Euler factor is the local term in the product defining an L-function.
+
+**How the definition helps.** Composition with reciprocity makes both definitions use the same character value (our own). Local units map onto inertia, the subgroup acting trivially on residues (our own). If the character is nontrivial on inertia, both factors equal one (our own). Otherwise both use its value on arithmetic Frobenius, which raises residues to the size of the base residue field (our own). Compatibility of global and local reciprocity supplies the comparison (our own).
+
+**Wikipedia:** [Artin reciprocity](https://en.wikipedia.org/wiki/Artin_reciprocity). It says: “connects Artin L-functions associated to abelian extensions of a number field with Hecke L-functions”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Artin kernels turn composita into intersections
+
+**Remember:** The compositum keeps only the classes that fix both fields.
+
+*True by definition. Confidence: medium.* MSC 11R37 (Class field theory). arXiv math.NT. Level 3: graduate.
+
+**Definition.** An idele class is a tuple of nonzero elements of the completions, almost all units, modulo simultaneous multiplication by a global element. For a finite abelian extension of number fields, the Artin map sends each class to a Galois automorphism. Its kernel describes the subgroup of norms on idele classes.
+
+**Problem.** Take two finite abelian extensions of the same number field inside one algebraic closure. The norms on idele classes from their compositum form the intersection of their two norm subgroups.
+
+**How the definition helps.** The kernel description turns the norm identity into a fixed field test (our own). An automorphism fixes the compositum exactly when it fixes both fields (our own). Global reciprocity supplies the hard step by identifying each kernel with the image of the idele class norm (our own).
+
+**nLab:** [class field theory](https://ncatlab.org/nlab/show/class+field+theory). It says: “by relating them to the idele class group.”
+
+**Wikipedia:** [Class field theory](https://en.wikipedia.org/wiki/Class_field_theory). It says: “\\theta<sub>L/F</sub>: C<sub>F</sub>/{N<sub>L/F</sub>(C<sub>L</sub>)} \\to \\operatorname{Gal}(L/F),”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Brauer reciprocity forces even ramification
+
+**Remember:** Each nonsplit place contributes one half to a zero sum.
+
+*Makes the theorem clean to state or prove.* MSC 11R37 (Class field theory), 11S45. arXiv math.NT. Level 3: graduate.
+
+**Definition.** At each completion of ℚ, a quaternion algebra either becomes a matrix algebra or remains a division algebra. Call the former place split and the latter ramified. The local Brauer invariant records these cases by zero and one half respectively, modulo the integers.
+
+**Problem.** A quaternion algebra over ℚ ramifies at an even number of places, counting the real place when it is nonsplit.
+
+**How the definition helps.** The invariant converts a parity question into addition modulo the integers (our own). Only finitely many places ramify, and global Brauer reciprocity makes the sum of all local invariants zero (our own). Each ramified place contributes one half, so their number is even (our own). Reciprocity supplies the global step (our own).
+
+**Wikipedia:** [Quaternion algebra](https://en.wikipedia.org/wiki/Quaternion_algebra). It says: “The number of places where a quaternion algebra over the rationals ramifies is always even”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Cyclicity repairs the norm principle
+
+**Remember:** Cyclic extensions turn everywhere local norms into global norms.
+
+*Rules out counterexamples.* MSC 11R37 (Class field theory). arXiv math.NT. Level 3: graduate.
+
+**Definition.** A finite Galois extension is cyclic if one automorphism generates its Galois group. A norm is the product of the conjugates of a nonzero field element. At a place of the base field, a local norm is a norm from a completion of the extension above that place.
+
+**Problem.** An element of a number field that is a local norm everywhere from a finite cyclic extension is a global norm.
+
+**How the definition helps.** Cyclicity lets one test the norm equation by checking each completion. For a cyclic extension, the norm equation has a solution exactly when its associated cyclic algebra is a matrix algebra (our own). The local-global theorem for these algebras supplies the hard step (our own). Hasse found that 3 is a local norm everywhere from ℚ(√−3, √13) but is not a global norm.
+
+**Wikipedia:** [Hasse norm theorem](https://en.wikipedia.org/wiki/Hasse_norm_theorem). It says: “Hasse gave the counterexample that 3 is a local norm everywhere for the extension ℚ(√−3, √13)/ℚ but is not a global norm.”
+
+**Paper or page:** [A Projective Twist on the Hasse Norm Theorem](https://arxiv.org/abs/2410.11159v1). It says: “\\mathrm {HNP}<sub>K</sub>(L) holds whenever L/K is cyclic.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Moduli with real places let conductors tell real abelian fields apart
 
 **Remember:** Put the real place in the modulus to record whether signs matter.
@@ -12412,6 +14086,22 @@ The list is long, but it is not complete. It contains only cases where the page 
 **How the definition helps.** A real place in the modulus records a sign condition, and that is exactly the ramification at infinity. The page says that a modulus encodes ramification data for abelian extensions. For a modulus of 1, the ray class group is the class group. For example, ℚ(ζ₅) has conductor 5 times ∞, and its real subfield ℚ(√5) has conductor 5 (our own). Without real places, every ray class field over ℚ would be real, so ℚ(ζ₅) would have no conductor (our own). What stays hard is the existence theorem of class field theory.
 
 **Wikipedia:** [Modulus (algebraic number theory)](https://en.wikipedia.org/wiki/Modulus_%28algebraic_number_theory%29), [Conductor (class field theory)](https://en.wikipedia.org/wiki/Conductor_%28class_field_theory%29). It says: “the conductor of K is then n if K is fixed by complex conjugation and n ∞ otherwise.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Ray moduli bound composita
+
+**Remember:** The stricter modulus maps onto both weaker ray class groups.
+
+*True by definition.* MSC 11R37 (Class field theory). arXiv math.NT. Level 3: graduate.
+
+**Definition.** An idele is a tuple of nonzero local elements, almost all units. Idele classes identify tuples that differ by a common global factor. A modulus prescribes congruences at finite primes and positivity at selected real places. Its ray class group divides the idele class group by local units satisfying these conditions, allowing unrestricted factors at the remaining infinite places.
+
+**Problem.** The compositum of two ray class fields lies in the ray class field for the least common multiple of their moduli.
+
+**How the definition helps.** Using one group for all moduli turns comparison of separate ideal groups into inclusion of subgroups. The least common multiple imposes both sets of conditions, so its subgroup lies in each original subgroup (our own). Class field theory reverses these inclusions, placing both fields inside the field for the least common multiple (our own).
+
+**Wikipedia:** [Ray class field](https://en.wikipedia.org/wiki/Ray_class_field). It says: “They are sometimes easier to handle theoretically because they are all quotients of a single group, and thus easier to compare.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -12432,6 +14122,22 @@ The list is long, but it is not complete. It contains only cases where the page 
 **Sources:**
 
 - [Philipp Furtwängler, Allgemeiner Existenzbeweis für den Klassenkörper eines beliebigen algebraischen Zahlkörpers, Mathematische Annalen 63 (1906)](https://doi.org/10.1007/bf01448421)
+
+### Equal zeta functions fix class number times regulator
+
+**Remember:** Equal zeta functions force equal class number times regulator.
+
+*True by definition.* MSC 11R42 (Zeta functions and \\(L\\)-functions of number fields), 11R29. arXiv math.NT. Level 3: graduate.
+
+**Definition.** The Dedekind zeta function sums inverse powers of the sizes of the quotients by nonzero integral ideals. Two fields are arithmetically equivalent if these functions agree. Equivalently, almost every rational prime gives the same list of residue field degrees in both fields.
+
+**Problem.** Arithmetically equivalent number fields have the same class number times regulator. The class number counts ideal classes, and the regulator measures the volume of the lattice formed from logarithms of units.
+
+**How the definition helps.** The zeta function definition makes the two residues at one equal before any prime factorizations are compared (our own). The residue is the coefficient of the simple pole there (our own). The analytic class number formula expresses it using the class number, regulator, discriminant, roots of unity, and counts of real and complex embeddings (our own). The cited invariance theorem matches these other factors, leaving equal products (our own).
+
+**Paper or page:** [Notes on Explicit Constructions of Arithmetically Equivalent Global Function Fields via Torsion Points On Drinfeld Modules](https://arxiv.org/abs/2107.08250v1), [Stronger arithmetic equivalence](https://arxiv.org/abs/2104.01956v4). It says: “product of regulator and class-number reg(𝒪ₖ)hₖ = reg(𝒪ₗ)hₗ”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Integrating over ideles proves Hecke's functional equation by Poisson summation
 
@@ -12483,6 +14189,24 @@ The list is long, but it is not complete. It contains only cases where the page 
 
 - [Jürgen Neukirch, Algebraic Number Theory, Chapter VII, §10 (1999)](https://doi.org/10.1007/978-3-662-03983-0)
 
+### Adele rings extend by tensoring
+
+**Remember:** An extension just tensors the adeles once more.
+
+*True by definition.* MSC 11R56 (Adèle rings and groups). arXiv math.NT. Level 3: graduate.
+
+**Definition.** A rational adele consists of a real number and one p-adic number for each prime p, integral at all but finitely many primes. Define the adele ring of K by tensoring the rational adele ring with K over ℚ. The usual construction takes tuples from the completions of K with the same integrality condition.
+
+**Problem.** For finite extensions L/K of number fields, the adele ring of L is L tensored over K with the adele ring of K.
+
+**How the definition helps.** The tensor definition makes the extension formula follow from associativity (our own). The work lies in identifying this ring with the usual ring of tuples (our own). Tensoring at each rational prime gives the product of the completions above it (our own). The corresponding rings of integers agree at all but finitely many primes (our own).
+
+**nLab:** [ring of adeles](https://ncatlab.org/nlab/show/ring+of+adeles). It says: “and the ring of adeles over k is the tensor product 𝔸ₖ ≔ k ⊗𝒪 𝔸𝒪.”
+
+**Wikipedia:** [Adele ring](https://en.wikipedia.org/wiki/Adele_ring). It says: “If L/K is a finite extension of number fields, then the adelic construction is compatible with extension of scalars.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Adeles turn two classical theorems of number theory into one compactness statement
 
 **Remember:** Adeles look at a number field at all places at once, real and p-adic.
@@ -12500,6 +14224,22 @@ The list is long, but it is not complete. It contains only cases where the page 
 **Sources:**
 
 - [Tom Weston, The idelic approach to number theory, lecture notes (undated)](https://drive.google.com/file/d/1PK0lPR7yq-1s1aooX4ZLr_zY4s2Ej36z/view)
+
+### Finite ideles recover ideal classes
+
+**Remember:** Forget the local units and keep the prime exponents.
+
+*Makes the theorem clean to state or prove.* MSC 11R56 (Adèle rings and groups). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Complete a number field at each finite prime, allowing limits in the distance defined by that prime. A finite idele chooses a nonzero element in each completion, with prime exponent zero at all but finitely many primes. Components with exponent zero are local units.
+
+**Problem.** Divide the finite ideles by the tuples of local units and the nonzero field elements embedded diagonally. The result is the ordinary ideal class group, which identifies fractional ideals differing by a scalar.
+
+**How the definition helps.** The unit condition ensures that the prime exponents of an idele specify a finite product of prime powers (our own). Every fractional ideal occurs because it factors into prime powers and each local field has an element of exponent one (our own). The local units form the kernel, and diagonal elements map to principal ideals (our own).
+
+**Wikipedia:** [Adele ring](https://en.wikipedia.org/wiki/Adele_ring). It says: “so the ordinary ideal class group is recovered as a quotient of the idele class group.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Ideles with almost all unit coordinates have unique normalized representatives over ℚ
 
@@ -12587,6 +14327,38 @@ The list is long, but it is not complete. It contains only cases where the page 
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Trace pairings make adeles self-dual
+
+**Remember:** The trace pairing glues the local character groups together.
+
+*Makes the theorem clean to state or prove.* MSC 11R56 (Adèle rings and groups). arXiv math.NT. Level 3: graduate.
+
+**Definition.** An adele chooses an element in every completion of a number field, integral at all but finitely many finite primes. An additive character is a continuous homomorphism from addition to the unit circle. Pair two adeles by multiplying their components, taking the local field trace to the corresponding completion of ℚ, and applying its standard additive character. Multiply the resulting character values.
+
+**Problem.** This pairing identifies the additive adele group of a number field with its continuous character group.
+
+**How the definition helps.** The product pairing gives one global character for each adele (our own). At finite primes the standard rational character is trivial on the p-adic integers (our own). Almost every component product has integral trace, so only finitely many factors differ from one (our own). Every local character comes from a unique local multiplier by trace duality (our own). A continuous global character is trivial on local integers almost everywhere, where the trace dual of those integers equals the integers (our own). Its multipliers therefore form an adele, and duality for restricted products gives the topological isomorphism (our own).
+
+**nLab:** [ring of adeles](https://ncatlab.org/nlab/show/ring+of+adeles). It says: “The additive group 𝔸ₖ is Pontrjagin self-dual in the sense that the map ϕ: 𝔸ₖ → 𝔸ₖ∧ induced from the pairing ⟨−, −⟩ is an isomorphism onto the character group.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Invertible ideals give the Picard group of an order
+
+**Remember:** At a nonmaximal order, keep only ideals with inverses.
+
+*Rules out counterexamples.* MSC 11R65 (Class groups and Picard groups of orders). arXiv math.NT. Level 3: graduate.
+
+**Definition.** An order is a full-rank subring of a number field’s ring of integers containing 1. A fractional ideal is an ideal with denominators allowed. It is invertible if its product with some fractional ideal is the order. The Picard group consists of invertible fractional ideals modulo nonzero principal fractional ideals.
+
+**Problem.** The Picard group describes modules that have a one-element basis locally at every prime, up to isomorphism. Its multiplication corresponds to tensor product.
+
+**How the definition helps.** Restricting to invertible ideals makes cancellation valid even when the order lacks unique ideal factorization (our own). In ℤ\[2i\], the ideal I = 2ℤ\[i\] satisfies I² = 2I (our own). Cancellation would give I = 2ℤ\[2i\], although 2i belongs only to I (our own). The module description uses the theorem identifying invertibility with having a local basis of one element (our own).
+
+**Wikipedia:** [Dedekind domain](https://en.wikipedia.org/wiki/Dedekind_domain). It says: “For an arbitrary domain one may define the Picard group Pic(R) as the group of invertible fractional ideals Inv(R) modulo the subgroup of principal fractional ideals.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Defining ramification index as a group index makes ramification indices multiply
 
 **Remember:** Indices of nested groups multiply.
@@ -12637,6 +14409,44 @@ The list is long, but it is not complete. It contains only cases where the page 
 
 - [Cahit Arf, Untersuchungen über reinverzweigte Erweiterungen diskret bewerteter perfekter Körper, Journal für die reine und angewandte Mathematik 181 (1940)](https://doi.org/10.1515/crll.1940.181.1)
 
+### Reduced poles give ramification breaks
+
+**Remember:** Remove p-divisible poles before reading the ramification break.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11S15 (Ramification and extension theory), 11S20. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let K be a Laurent series field over a finite field of characteristic p, with series variable t. A cyclic extension of degree p has an equation yᵖ − y = a. Translating y changes a by an element bᵖ − b. Choose a reduced parameter a, whose negative powers of t have exponents prime to p.
+
+**Problem.** If the reduced parameter has a pole, its largest pole order is the unique positive upper ramification break.
+
+**How the definition helps.** Reduction removes spurious poles, so the largest remaining pole order measures how long automorphisms act trivially modulo successive ideal powers (our own). For a pole of order m, the normalized extension valuation gives t value p and y value −m (our own). Since m is prime to p, some product of integer powers of t and y has valuation one (our own). Translating y by any nonzero prime-field constant changes that product by an element of valuation m + 1 (our own). Hence the sole lower break is m, and the upper numbering agrees up to that first break (our own).
+
+**Wikipedia:** [Artin–Schreier theory](https://en.wikipedia.org/wiki/Artin%E2%80%93Schreier_theory). It says: “is the splitting field of an Artin–Schreier polynomial”
+
+**Paper or page:** [Newton Polygons of Sums on Curves II: Variation in p-adic Families](https://arxiv.org/abs/2110.08657v1). It says: “p<sup>j-1</sup>\\max \\{  k p<sup>-v<sub>p</sub>(c<sub>k</sub>)</sup>: v<sub>p</sub>(c<sub>k</sub>) &lt; j \\}  &amp;  \\text{if } v<sub>p</sub>(c<sub>k</sub>) &lt; j \\text{ for some } k”
+
+**Sources:**
+
+- [Jean-Pierre Serre, Local Fields](https://doi.org/10.1007/978-1-4757-5673-9)
+
+### Swan conductors ignore tame twists
+
+**Remember:** Tame characters act trivially on every group the Swan conductor sees.
+
+*True by definition. Confidence: medium.* MSC 11S15 (Ramification and extension theory), 11S25. arXiv math.NT. Level 3: graduate.
+
+**Definition.** For a finite Galois extension of non-Archimedean local fields, the lower ramification groups measure how closely automorphisms fix the integers. The zeroth group is inertia, which fixes residues. The Swan conductor of a complex representation sums the codimensions of the fixed spaces for groups of positive index. Each term has weight equal to the group order divided by the inertia order.
+
+**Problem.** Twisting a complex representation of a finite local Galois group by a tame character leaves its Swan conductor unchanged.
+
+**How the definition helps.** Omitting the zeroth term makes the Swan conductor depend only on groups where a tame character is trivial (our own). Twisting multiplies each representing matrix by its character value, so every fixed space in the sum stays the same (our own). The full Artin conductor also counts the inertia term, which can change even for a twist of the trivial representation (our own). The conductor theorem proves integrality of the weighted sum (our own).
+
+**Wikipedia:** [Artin conductor](https://en.wikipedia.org/wiki/Artin_conductor). It says: “f(χ) − (χ(1) − χ(G₀))”
+
+**Sources:**
+
+- [Jean-Pierre Serre, Local Fields](https://doi.org/10.1007/978-1-4757-5673-9)
+
 ### Tame ramification is exactly what a projective ring of integers needs
 
 **Remember:** No wild ramification, and the integers form a projective Galois module.
@@ -12654,6 +14464,78 @@ The list is long, but it is not complete. It contains only cases where the page 
 **Sources:**
 
 - [Emmy Noether, Normalbasis bei Körpern ohne höhere Verzweigung, Journal für die reine und angewandte Mathematik 167 (1932)](https://doi.org/10.1515/crll.1932.167.147)
+
+### Tame ramification makes trace surjective
+
+**Remember:** The trace of one is a unit across a tame totally ramified extension.
+
+*Rules out counterexamples.* MSC 11S15 (Ramification and extension theory). arXiv math.NT. Level 3: graduate.
+
+**Definition.** For a finite extension of p-adic fields, tame means the ramification index is prime to the residue characteristic p. The ramification index is the valuation of a generator of the base maximal ideal, measured in the extension.
+
+**Problem.** The trace on the rings of integers of a finite extension of p-adic fields is onto exactly when the extension is tame.
+
+**How the definition helps.** Tameness makes the totally ramified degree a unit, so the trace of one already generates the integer ring there (our own argument). Split the extension into an unramified stage and a totally ramified stage, where the degree equals the ramification index e. In the unramified stage, trace reduces to the surjective trace between finite residue fields. In the totally ramified stage, trace modulo the maximal ideal sends each residue a to ea. If p divides e, every trace from that stage lies in the intermediate maximal ideal. The unramified trace then lands in the base maximal ideal, proving necessity too (our own argument).
+
+**Wikipedia:** [Ramification (mathematics)](https://en.wikipedia.org/wiki/Ramification_%28mathematics%29). It says: “A finite generically étale extension B/A of Dedekind domains is tame if and only if the trace Tr: B → A is surjective.”
+
+**Sources:**
+
+- [Jean-Pierre Serre, Local Fields (1979)](https://doi.org/10.1007/978-1-4757-5673-9)
+
+### Tameness gives the different exponent
+
+**Remember:** A tame different has exponent one less than the ramification index.
+
+*Rules out counterexamples.* MSC 11S15 (Ramification and extension theory). arXiv math.NT. Level 3: graduate.
+
+**Definition.** The ramification index e measures how much the normalized valuation increases when restricted from the extension to the base field. A finite separable extension of non-Archimedean local fields is tame if its residue characteristic does not divide e. The different is the inverse of the fractional ideal dual to the extension integers under the trace pairing.
+
+**Problem.** For a tame finite Galois extension of non-Archimedean local fields, the different has exponent e − 1.
+
+**How the definition helps.** Tameness removes every higher-group term from the formula for the different exponent (our own). Hilbert’s formula sums the group orders minus one over inertia and the higher ramification groups (our own). Inertia acts trivially on residues and has order e, while all higher groups are trivial in the tame case (our own). In ℚ₂(√2), the integers have basis 1, √2, so the derivative 2√2 generates the different (our own). Its valuation is three, although e − 1 is one (our own).
+
+**Wikipedia:** [Different ideal](https://en.wikipedia.org/wiki/Different_ideal). It says: “is equal to e − 1 if P is tamely ramified”
+
+**Sources:**
+
+- [Jean-Pierre Serre, Local Fields](https://doi.org/10.1007/978-1-4757-5673-9)
+
+### Trace duality makes differents multiply
+
+**Remember:** Trace in stages to multiply the different ideals.
+
+*True by definition.* MSC 11S15 (Ramification and extension theory). arXiv math.NT. Level 3: graduate.
+
+**Definition.** For a finite separable extension L/K of local fields, define the inverse different as the trace dual of the integers. It consists of x in L whose trace after multiplication by any integer of L is integral in K. The different is the inverse fractional ideal.
+
+**Problem.** In a tower M/L/K of finite separable local field extensions, the different for M/K is the product of the two relative differents. Extend the different for L/K to the integers of M before multiplying.
+
+**How the definition helps.** The trace-dual definition converts the tower rule into two successive integrality tests (our own proof). Write O and P for the integer rings of L and M. Trace transitivity shows that x belongs to the inverse different for M/K exactly when Tr₍M/L₎(xP) lies in the trace dual of O. Indeed, P is closed under multiplication by O. If d generates that dual, the condition says x/d belongs to the inverse different for M/L. Invert the resulting ideal identity. Computing the different from a polynomial derivative instead requires a generator of the integer ring as an algebra (our own comparison).
+
+**Wikipedia:** [Different ideal](https://en.wikipedia.org/wiki/Different_ideal). It says: “In a tower of fields L/K/F the relative differents are related by δ₍L/F₎ = δ₍L/K₎ δ₍K/F₎.”
+
+**Sources:**
+
+- [Jean-Pierre Serre, Local Fields (1979)](https://doi.org/10.1007/978-1-4757-5673-9)
+
+### Trace duals make differents multiply
+
+**Remember:** Trace duals compose because traces compose.
+
+*True by definition. Confidence: medium.* MSC 11S15 (Ramification and extension theory). arXiv math.NT. Level 3: graduate.
+
+**Definition.** For a finite separable extension of local fields, an integer is a field element of nonnegative valuation. The inverse different contains exactly those x for which the trace of xy is a base-field integer for every extension-field integer y. The different is its inverse as a fractional ideal, an ideal allowing denominators.
+
+**Problem.** Consider a tower L/K/F of finite separable extensions of non-Archimedean local fields. The different of L/F equals the product of the different of L/K and the extended different of K/F.
+
+**How the definition helps.** The trace definition replaces a calculation with derivatives of defining polynomials by composition of traces (our own). Choose integral bases at both steps and their dual bases for the trace pairing (our own). Trace transitivity shows that products of dual basis elements form the dual basis to the product basis (our own). Thus the inverse differents multiply after extending the lower ideal to the top field (our own). Inverting the ideals gives the formula for differents (our own).
+
+**Wikipedia:** [Different ideal](https://en.wikipedia.org/wiki/Different_ideal). It says: “In a tower of fields L/K/F the relative differents are related by δ(L/F) = δ(L/K)δ(K/F).”
+
+**Sources:**
+
+- [Jean-Pierre Serre, Local Fields](https://doi.org/10.1007/978-1-4757-5673-9)
 
 ### Upper numbering makes ramification groups pass to quotients
 
@@ -12673,6 +14555,253 @@ The list is long, but it is not complete. It contains only cases where the page 
 
 - [Jean-Pierre Serre, Local Fields, Graduate Texts in Mathematics 67, Springer (1979)](https://doi.org/10.1007/978-1-4757-5673-9)
 
+### Upper ramification indices rescale for subgroups
+
+**Remember:** Restrict upper groups by changing their indices, not their elements.
+
+*Makes the theorem clean to state or prove.* MSC 11S15 (Ramification and extension theory). arXiv math.NT. Level 3: graduate.
+
+**Definition.** For a finite Galois extension of local fields, the lower ramification groups measure how closely automorphisms fix the integers modulo successive ideal powers. Inertia is the group acting trivially on the residue field. For positive lower indices, integrate the reciprocal of each group’s index in inertia, starting at zero. This gives the upper index and leaves indices between −1 and zero unchanged.
+
+**Problem.** Let M/K be a finite Galois extension of local fields and L/K a Galois subextension. Write ψ for the inverse change of index for L/K. For u ≥ −1, intersecting the upper group at u with Gal(M/L) gives the upper group for M/L at ψ(u).
+
+**How the definition helps.** The upper indexing rules combine the subgroup rule for lower numbers and the quotient rule for upper numbers (our own). Our own explanation is that lower indices stay fixed when intersecting with the subgroup. Translating those indices to upper numbers in the two extensions gives the stated change of scale (our own). Herbrand’s quotient theorem is the substantive step behind this translation (our own).
+
+**Paper or page:** [Ramification groups of some finite Galois extensions of maximal nilpotency class over local fields of positive characteristic](https://arxiv.org/abs/2102.07928v4). It says: “Then we have $G<sup>i\\cap</sup> H=H<sup>\\psi (i)</sup>$ for all $i\\geq -1$.”
+
+**Sources:**
+
+- [Ramification groups of some finite Galois extensions of maximal nilpotency class over local fields of positive characteristic](https://arxiv.org/abs/2102.07928v4)
+- [Jean-Pierre Serre, Local Fields (1979)](https://doi.org/10.1007/978-1-4757-5673-9)
+
+### De Rham representations admit tensor products
+
+**Remember:** Tensor invariant bases to get another invariant basis.
+
+*True by definition.* MSC 11S20 (Galois theory), 14F30. arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** Let K be a finite extension of ℚₚ and V a finite-dimensional ℚₚ-vector space with continuous action of its absolute Galois group. Fontaine’s de Rham period field B carries a compatible action with fixed field K. Call V de Rham if extending its scalars to B gives a basis of Galois-fixed vectors.
+
+**Problem.** Tensor products of de Rham representations are de Rham. Their spaces of fixed vectors after extension to B tensor over K.
+
+**How the definition helps.** Tensoring two fixed bases gives a fixed basis for the tensor product (our own proof). In a fixed basis, a vector is fixed exactly when each coefficient belongs to K. This also identifies the space of periods, meaning the fixed vectors after extending scalars. The usual dimension test agrees because fixed vectors independent over K remain independent over B (our own explanation).
+
+**nLab:** [p-adic Hodge theory](https://ncatlab.org/nlab/show/p-adic+Hodge+theory). It says: “If the dimension of V is equal to the dimension of V₍dR₎, we say that V is de Rham.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Cartier duals detect missing roots
+
+**Remember:** Keep the Galois action on the roots when taking the dual.
+
+*Makes the theorem clean to state or prove.* MSC 11S25 (Galois cohomology). arXiv math.NT. Level 3: graduate.
+
+**Definition.** A finite Galois module is a finite abelian group with a continuous action of field automorphisms. Its Cartier dual consists of homomorphisms into the multiplicative group of a separable closure. Each automorphism acts on a homomorphism by applying its inverse to the input and itself to the output. For the constant module ℤ/nℤ, the dual thus consists of the nth roots of unity with their field action.
+
+**Problem.** Let K be a p-adic field and n a positive integer. The order of H²(K, ℤ/nℤ) is the number of nth roots of unity in K.
+
+**How the definition helps.** The Cartier dual makes the size of a cohomology group a count of roots in the base field (our own). Tate local duality identifies second Galois cohomology with the character group of the fixed points of the dual. These finite groups have the same size (our own). For n = 3 over ℚ₂, only one cube root is fixed, while a trivial action would fix all three (our own).
+
+**Paper or page:** [Duality for the condensed Weil-étale realisation of 1-motives over p-adic fields](https://arxiv.org/abs/2502.19910v2). It says: “Then we have a perfect cup-product pairing\\\[  \\H^ q(G<sub>F</sub>,N)\\otimes \\H^ {2-q}(G<sub>F</sub>,\\operatorname{Hom}(N,\\overline{F}<sup>\\times </sup>))\\rightarrow \\H^ 2(G<sub>F</sub>,\\overline{F}<sup>\\times </sup>)=\\mathbbm {Q}/\\mathbbm {Z}.  \\\]”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Norm-one tori count local norms
+
+**Remember:** The first cohomology of the norm-one torus counts missing norms.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11S25 (Galois cohomology), 11S31. arXiv math.NT. Level 3: graduate.
+
+**Definition.** For a finite separable extension L/K, view multiplication in L as an algebraic group over K. Its norm sends a nonzero element to the product of its conjugates. The norm-one torus T is the kernel of this map. A torus is an algebraic group that becomes a product of multiplicative groups over a separable closure.
+
+**Problem.** For a finite abelian extension L/K of non-Archimedean local fields, H¹(K, T) has order \[L:K\].
+
+**How the definition helps.** The kernel definition turns first Galois cohomology into a group measuring which elements fail to be norms (our own). The cohomology sequence sends each nonzero base element to the obstruction to solving its norm equation (our own). Hilbert’s theorem 90 and Shapiro’s lemma make this map onto, with kernel the norms (our own). Local reciprocity identifies the quotient with the Galois group, whose order is \[L:K\] (our own).
+
+**nLab:** [Galois cohomology](https://ncatlab.org/nlab/show/Galois+cohomology). It says: “Galois cohomology refers to the group cohomology of G with coefficients in a G-module naturally associated to L.”
+
+**Wikipedia:** [Local class field theory](https://en.wikipedia.org/wiki/Local_class_field_theory). It says: “the reciprocity map induces an isomorphism of the quotient group K×/N(L×)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Unramified classes are Frobenius quotients
+
+**Remember:** Remove inertia, then one Frobenius operator computes the group.
+
+*True by definition.* MSC 11S25 (Galois cohomology), 11F80. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let M be a finite abelian group with continuous action of the Galois group of a local field with finite residue field. Inertia is the subgroup acting trivially on the residue field. Call a first cohomology class unramified if it comes from the residue field’s Galois group acting on the inertia-fixed elements of M.
+
+**Problem.** Write A for the inertia-fixed subgroup and F for Frobenius, the map raising residues to the residue field size. The unramified first cohomology group is A modulo the image of F − 1.
+
+**How the definition helps.** Passing to the residue field leaves a group generated topologically by Frobenius (our own). A cocycle assigns values by the rule c(gh) = c(g) + g c(h), so its value at F determines it (our own). Every value in A works because a sufficiently large finite cyclic quotient accommodates both the action and the additive orders (our own). Changing the cocycle representative adds an element of (F − 1)A at F (our own). The inflation–restriction theorem identifies this description with classes that vanish on inertia (our own).
+
+**nLab:** [Selmer group](https://ncatlab.org/nlab/show/Selmer+group). It says: “the unramified local condition is defined as follows:”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Cup products invert swapped symbols
+
+**Remember:** Swapping two degree-one classes inverts their Hilbert symbol.
+
+*True by definition. Confidence: medium.* MSC 11S31 (Class field theory; \\(p\\)-adic formal groups), 11S25. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let K be a non-Archimedean local field containing a chosen primitive nth root of unity, with n prime to the field characteristic. The Kummer class of a nonzero element records how field automorphisms move an nth root. Define the Hilbert symbol using cup product, the multiplication of these cohomology classes. The chosen root and local invariant identify the resulting class with an nth root of unity.
+
+**Problem.** The nth Hilbert symbols of (a, b) and (b, a) multiply to one.
+
+**How the definition helps.** Cup product replaces comparison of two norm residue calculations by the sign rule for multiplying cohomology classes (our own). Swapping two degree-one classes negates their product, after exchanging the coefficient factors (our own). With the chosen root, that exchange acts trivially and negation becomes inversion (our own). Identifying this construction with the symbol defined by local reciprocity supplies the substantive comparison (our own).
+
+**Wikipedia:** [Hilbert symbol](https://en.wikipedia.org/wiki/Hilbert_symbol). It says: “skew symmetric: (a,b) = (b,a)⁻¹”
+
+**Sources:**
+
+- [Jean-Pierre Serre, Local Fields](https://doi.org/10.1007/978-1-4757-5673-9)
+
+### Fundamental classes make norms commute
+
+**Remember:** Compatible fundamental classes turn norm compatibility into the projection formula.
+
+*True by definition. Confidence: medium.* MSC 11S31 (Class field theory; \\(p\\)-adic formal groups), 11S25. arXiv math.NT. Level 3: graduate.
+
+**Definition.** For a finite Galois extension E/K of non-Archimedean local fields, its fundamental class is the Brauer class with local invariant 1/\[E:K\] modulo integers. Brauer classes describe central simple algebras up to passage to matrix algebras. Define inverse reciprocity by cup product with this class, a multiplication in group cohomology.
+
+**Problem.** Let L be intermediate between K and E. Inclusion of the two Galois groups induces a map after quotienting each group by its commutators. Under inverse reciprocity this is the norm map from L×/N(E×) to K×/N(E×), using norms from E to each base field.
+
+**How the definition helps.** Defining inverse reciprocity by multiplication makes norm compatibility an instance of the projection formula (our own). Restricting the fundamental class to the smaller Galois group gives its fundamental class. The projection formula lets the map back to the larger group pass through multiplication by that class (our own). On the two sides this map gives group inclusion after abelianization and the field norm, respectively (our own). The local invariant theorem and Tate’s cup product isomorphism justify the construction (our own).
+
+**Wikipedia:** [Class formation](https://en.wikipedia.org/wiki/Class_formation). It says: “the restriction (of cohomology classes) of a fundamental class is another fundamental class.”
+
+**Sources:**
+
+- [John Tate, The Higher Dimensional Cohomology Groups of Class Field Theory](https://doi.org/10.2307/1969801)
+- [Jean-Pierre Serre, Local Fields](https://doi.org/10.1007/978-1-4757-5673-9)
+
+### Lubin–Tate torsion extends cyclotomy
+
+**Remember:** Formal group torsion supplies the unit directions that cyclotomy misses.
+
+*Makes the theorem clean to state or prove.* MSC 11S31 (Class field theory; \\(p\\)-adic formal groups). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let K be a finite extension of ℚₚ and choose a generator π of its maximal ideal. A Lubin–Tate formal group describes addition and scalar multiplication by power series. Multiplication by π has linear coefficient π and reduces to raising to the residue field size. Its division tower adjoins all points killed by repeated multiplication by π.
+
+**Problem.** The division tower and the maximal unramified extension together generate the maximal abelian extension of K. If \[K:ℚₚ\] exceeds one, adjoining all roots of unity of p-power order to the maximal unramified extension gives a smaller field.
+
+**How the definition helps.** Choosing division by π supplies an action by the full unit group of K (our own). Lubin–Tate reciprocity identifies that group with the Galois group of the division tower (our own). Together with the maximal unramified extension, this gives every abelian extension. Up to finite index, the units have \[K:ℚₚ\] independent p-adic directions (our own). Roots of unity of p-power order yield at most one such direction, even over the maximal unramified extension (our own).
+
+**Paper or page:** [Théorie locale du corps de classes et (φ,Γ)-modules Lubin-Tate](https://arxiv.org/abs/2511.13986v1). It says: “L'extension Fⁿʳ · F∞ est l'extension abélienne maximale de F”
+
+**Sources:**
+
+- [Jonathan Lubin and John Tate, Formal Complex Multiplication in Local Fields](https://doi.org/10.2307/1970622)
+
+### Lubin–Tate torsion gives abelian extensions
+
+**Remember:** Torsion carries scalar multiplication, so Galois acts through units.
+
+*Makes the theorem clean to state or prove.* MSC 11S31 (Class field theory; \\(p\\)-adic formal groups), 11S15. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let K be a complete discretely valued field with finite residue field of size q. A uniformizer π generates the maximal ideal of its integer ring O. A Lubin–Tate formal group uses power series over O for addition and scalar multiplication. Multiplication by π has linear term πx and reduces to the qth power modulo π.
+
+**Problem.** For n ≥ 1, adjoining all points killed by πⁿ gives a totally ramified extension, meaning its ramification index equals its degree. Its Galois group is the unit group of O modulo πⁿ, that is, (O/πⁿO)ˣ.
+
+**How the definition helps.** Scalar multiplication puts the torsion points in a module whose automorphisms commute (our own explanation). The substantive steps prove this module is free of rank one over O/πⁿO and every unit occurs as a Galois action. A polynomial for a generating point gives the degree and total ramification (our own account).
+
+**Wikipedia:** [Lubin–Tate formal group law](https://en.wikipedia.org/wiki/Lubin%E2%80%93Tate_formal_group_law). It says: “The compositum of all fields formed by adjoining such modules to the original field gives the ramified part.”
+
+**Sources:**
+
+- [Jonathan Lubin and John Tate, Formal Complex Multiplication in Local Fields (1965)](https://doi.org/10.2307/1970622)
+
+### Openness rules out false norm groups
+
+**Remember:** A finite quotient must also be continuous to describe a class field.
+
+*Rules out counterexamples.* MSC 11S31 (Class field theory; \\(p\\)-adic formal groups). arXiv math.NT. Level 3: graduate.
+
+**Definition.** In local class field theory use open subgroups of finite index in the multiplicative group. Openness requires the subgroup to contain all units sufficiently close to one. Finite index alone does not impose this condition in positive characteristic.
+
+**Problem.** Open subgroups of finite index are precisely the norm subgroups of finite abelian extensions. Finite index subgroups need not be norm subgroups.
+
+**How the definition helps.** Openness excludes dense proper subgroups that a finite-index test accepts (our own). Take the Laurent series field over the field of p elements and divide its multiplicative group by pth powers (our own). The quotient is a vector space over the field of p elements (our own). Products over subsets of the factors 1 + tⁿ, with positive n prime to p, give uncountably many classes (our own). The first differing term in two products has degree prime to p, whereas pth powers have only degrees divisible by p (our own). A nonzero linear functional can thus vanish on the countable image of the dense rational function group (our own). Its kernel pulls back to a dense index p subgroup, whereas the local existence theorem requires openness (our own).
+
+**Wikipedia:** [Local class field theory](https://en.wikipedia.org/wiki/Local_class_field_theory). It says: “between open subgroups of finite index in the multiplicative group”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Primitive torsion polynomials are Eisenstein
+
+**Remember:** Removing the earlier torsion leaves an Eisenstein polynomial.
+
+*True by definition.* MSC 11S31 (Class field theory; \\(p\\)-adic formal groups), 11S15. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let π generate the maximal ideal of a non-Archimedean local field and let q be the residue field size. Choose f(X) = πX + Xᑫ as the power series for multiplication by π in a Lubin–Tate formal group. Primitive points of level n are the new roots of the nth iterate, for n ≥ 1.
+
+**Problem.** A primitive point of level n generates a totally ramified extension of degree (q − 1)qⁿ⁻¹.
+
+**How the definition helps.** Choosing this polynomial makes the equation for the new roots Eisenstein without computing their conjugates (our own). Dividing successive iterates gives π plus the preceding iterate raised to the power q − 1 (our own). This monic polynomial reduces to a pure power of X and its constant term is π (our own). Eisenstein’s criterion gives irreducibility, and adjoining a root gives total ramification, with unchanged residue field (our own). The degree follows by multiplying degrees under composition (our own).
+
+**Wikipedia:** [Lubin–Tate formal group law](https://en.wikipedia.org/wiki/Lubin%E2%80%93Tate_formal_group_law). It says: “If g is an Eisenstein polynomial, f(t) = tg(t) and F the Lubin–Tate formal group”
+
+**Sources:**
+
+- [Jonathan Lubin and John Tate, Formal Complex Multiplication in Local Fields](https://doi.org/10.2307/1970622)
+
+### Strict isomorphisms preserve division fields
+
+**Remember:** Changing coordinates changes torsion points but not their fields.
+
+*True by definition.* MSC 11S31 (Class field theory; \\(p\\)-adic formal groups). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Fix a generator π of the maximal ideal of a non-Archimedean local field. A Lubin–Tate formal module describes addition and multiplication by integers of the field through power series. A strict isomorphism is an invertible change of coordinate over those integers with linear coefficient one that respects both operations.
+
+**Problem.** For fixed π, every Lubin–Tate formal module generates the same field at each division level.
+
+**How the definition helps.** A coordinate change respecting multiplication by π identifies the division points without comparing their defining polynomials (our own). At level n these are the points killed by n successive multiplications by π (our own). Their positive valuations ensure the change of coordinate and its inverse converge in the fields generated by the points (our own). The two inclusions give equality of fields (our own). The substantial input is the existence of a strict isomorphism for a fixed π (our own).
+
+**Wikipedia:** [Lubin–Tate formal group law](https://en.wikipedia.org/wiki/Lubin%E2%80%93Tate_formal_group_law). It says: “All such group laws, for different choices of e satisfying these conditions, are strictly isomorphic.”
+
+**Sources:**
+
+- [Jonathan Lubin and John Tate, Formal Complex Multiplication in Local Fields](https://doi.org/10.2307/1970622)
+
+### Unit levels detect wild ramification
+
+**Remember:** Level one detects wild ramification, while level zero detects inertia.
+
+*Makes the theorem clean to state or prove.* MSC 11S31 (Class field theory; \\(p\\)-adic formal groups), 11S15. arXiv math.NT. Level 3: graduate.
+
+**Definition.** For a finite abelian extension of non-Archimedean local fields, the conductor exponent is the first unit level consisting entirely of norms. Level zero contains all units of the base field. For positive n, level n contains the units congruent to one modulo the nth power of the maximal ideal.
+
+**Problem.** The conductor exponent is zero for unramified extensions and one for ramified tame extensions. It is at least two for wild extensions.
+
+**How the definition helps.** Testing the first two unit levels distinguishes all three cases (our own). Local reciprocity maps units onto inertia, the group acting trivially on the residue field (our own). It maps level one onto wild inertia, the subgroup of inertia of order a power of the residue characteristic (our own). Trivial inertia means unramified, and nontrivial inertia means ramified (our own). Ramification is tame exactly when wild inertia is trivial (our own).
+
+**Wikipedia:** [Conductor (class field theory)](https://en.wikipedia.org/wiki/Conductor_%28class_field_theory%29). It says: “Equivalently, n is the smallest integer such that the local Artin map is trivial”
+
+**Sources:**
+
+- [Jean-Pierre Serre, Local Fields](https://doi.org/10.1007/978-1-4757-5673-9)
+
+### Unramified norms have divisible valuations
+
+**Remember:** An unramified norm has valuation divisible by the extension degree.
+
+*True by definition. Confidence: medium.* MSC 11S31 (Class field theory; \\(p\\)-adic formal groups). arXiv math.NT. Level 3: graduate.
+
+**Definition.** A non-Archimedean local field is complete for a discrete valuation and has finite residue field. Normalize the valuation so a generator of the maximal ideal has value one. For an unramified extension, define the Artin map by raising arithmetic Frobenius to that valuation. Arithmetic Frobenius acts on residues by raising them to the size of the base residue field.
+
+**Problem.** In the unramified extension of degree n of a non-Archimedean local field, the norms are exactly the elements with valuation divisible by n.
+
+**How the definition helps.** Writing the Artin image as a Frobenius power replaces a product of conjugates with a divisibility test (our own). Frobenius has order n, so its power is trivial exactly when n divides the valuation (our own). Local reciprocity identifies this kernel with the norm group (our own).
+
+**Wikipedia:** [Local class field theory](https://en.wikipedia.org/wiki/Local_class_field_theory). It says: “the reciprocity map induces an isomorphism of the quotient group K×/N(L×)”
+
+**Sources:**
+
+- [Helmut Hasse, Die Normenresttheorie relativ-Abelscher Zahlkörper als Klassenkörpertheorie im Kleinen](https://doi.org/10.1515/crll.1930.162.145)
+- [Jean-Pierre Serre, Local Fields](https://doi.org/10.1007/978-1-4757-5673-9)
+
 ### The Weil group makes the reciprocity map an isomorphism
 
 **Remember:** Allow only integer powers of Frobenius, and K× matches exactly.
@@ -12691,6 +14820,112 @@ The list is long, but it is not complete. It contains only cases where the page 
 
 - [André Weil, Sur la théorie du corps de classes, Journal of the Mathematical Society of Japan 3 (1951)](https://doi.org/10.2969/jmsj/00310001)
 
+### Weil characters need not be periodic
+
+**Remember:** Discrete Frobenius powers allow arbitrary nonzero complex eigenvalues.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11S37 (Langlands-Weil conjectures, nonabelian class field theory), 11S20. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let K be a local field with residue field of size q. Its Weil group consists of absolute Galois automorphisms acting on the algebraic residue field by integer powers of Frobenius, the qth power map. Inertia is the kernel of this action. Give inertia its usual topology and make it an open subgroup.
+
+**Problem.** A complex character of the Weil group that is trivial on inertia can assign any nonzero complex number to Frobenius. It extends continuously to the absolute Galois group exactly when that number is a root of unity.
+
+**How the definition helps.** Making inertia open gives a discrete quotient ℤ, so its generator can have any nonzero complex character value (our own argument). The absolute Galois quotient is instead the inverse limit of all finite cyclic quotients of ℤ. A small arc around 1 in the unit circle contains no nontrivial subgroup. Continuity and compactness therefore force a character of this inverse limit to have finite image. Every root of unity gives a character through a finite cyclic quotient (our own argument).
+
+**nLab:** [Weil group](https://ncatlab.org/nlab/show/Weil+group). It says: “defined as the inverse image of Frobenius automorphisms”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Brauer invariants equate period and index
+
+**Remember:** The reduced denominator gives both the period and the index.
+
+*Makes the theorem clean to state or prove.* MSC 11S45 (Algebras and orders, and their zeta functions), 11S25. arXiv math.NT. Level 3: graduate.
+
+**Definition.** A central simple algebra is a finite-dimensional algebra with center the base field and no nontrivial two-sided ideals. Its Brauer class identifies matrix algebras over the same division algebra. The index is the square root of that division algebra’s dimension over its center. The period is the order of the class under tensor product.
+
+**Problem.** For a central simple algebra over a non-Archimedean local field, its period equals its index.
+
+**How the definition helps.** The local invariant turns both quantities into the denominator of one reduced fraction (our own). It identifies the Brauer group with the rationals modulo the integers, so that denominator is the period (our own). Extending scalars multiplies the invariant by the extension degree (our own). The unramified extension of degree equal to the denominator therefore splits the algebra, making it a matrix algebra (our own). The index divides every splitting degree, and the period divides the index (our own). The classification by local invariants supplies the essential theorem (our own).
+
+**Wikipedia:** [Brauer group](https://en.wikipedia.org/wiki/Brauer_group). It says: “the index of A is equal to the period of A.”
+
+**Sources:**
+
+- [Jean-Pierre Serre, Local Fields](https://doi.org/10.1007/978-1-4757-5673-9)
+
+### Scalar extension multiplies Brauer invariants
+
+**Remember:** Extending scalars multiplies the invariant by the extension degree.
+
+*True by definition. Confidence: medium.* MSC 11S45 (Algebras and orders, and their zeta functions), 11S25. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Over a non-Archimedean local field, identify two central simple algebras if matrix algebras over them are isomorphic. The resulting equivalence classes are Brauer classes. Represent a class by an unramified cyclic extension of degree n and an element u acting on that field by Frobenius conjugation. The invariant is the normalized valuation of uⁿ divided by n, taken modulo the integers.
+
+**Problem.** For any finite extension E/K of non-Archimedean local fields, the invariant of the restricted Brauer class is \[E:K\] times the original invariant.
+
+**How the definition helps.** The invariant replaces matrix calculations with multiplication by two field degrees (our own). Write it as the parameter valuation times the character value 1/n on arithmetic Frobenius (our own). Extending scalars multiplies the valuation by the ramification index, the factor by which normalized valuations change (our own). The new Frobenius is the old one raised to the residue field degree, multiplying the character value by that degree (our own). The two factors multiply to the extension degree (our own). The cyclic algebra classification and independence of the representative supply the hard steps (our own).
+
+**Wikipedia:** [Hasse invariant of an algebra](https://en.wikipedia.org/wiki/Hasse_invariant_of_an_algebra). It says: “The invariant map attaches the element k/n mod 1 to the class.”
+
+**Sources:**
+
+- [Jean-Pierre Serre, Local Fields](https://doi.org/10.1007/978-1-4757-5673-9)
+
+### Finite differences extract Mahler coefficients
+
+**Remember:** One difference lowers the binomial degree by one.
+
+*True by definition.* MSC 11S80 (Other analytic theory (analogues of beta and gamma functions, \\(p\\)-adic integration, etc.)). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let f be a continuous function from the p-adic integers ℤₚ to the p-adic numbers ℚₚ. Expand f in the binomial polynomials binom(x, n). The forward difference is Δf(x) = f(x + 1) − f(x).
+
+**Problem.** In the Mahler expansion of f, the coefficient of binom(x, n) is the nth forward difference of f at zero.
+
+**How the definition helps.** The binomial basis makes Δ lower the index by one, by Pascal’s identity (our own calculation). At zero, every positive-index basis polynomial vanishes. Applying Δ repeatedly therefore picks out one coefficient at a time (our own calculation). With ordinary powers, each difference mixes several degrees. Mahler’s theorem supplies the uniformly convergent expansion.
+
+**Wikipedia:** [Mahler's theorem](https://en.wikipedia.org/wiki/Mahler%27s_theorem). It says: “the coefficients aₙ = (Δⁿf)(0) → 0 in ℚₚ as n → ∞.”
+
+**Sources:**
+
+- [Kurt Mahler, An Interpolation Series for Continuous Functions of a p-adic Variable (1958)](https://doi.org/10.1515/crll.1958.199.23)
+
+### Kummer congruences determine measures
+
+**Remember:** Congruences on a dense set are continuity tests for the integral.
+
+*Makes the theorem clean to state or prove.* MSC 11S80 (Other analytic theory (analogues of beta and gamma functions, \\(p\\)-adic integration, etc.)). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let ℂₚ be the completed algebraic closure of the p-adic numbers. Write O for its elements of absolute value at most one. An integral measure on the p-adic units is a continuous ℂₚ-linear functional on continuous ℂₚ-valued functions that sends O-valued functions into O.
+
+**Problem.** Suppose continuous O-valued functions have dense ℂₚ-linear span, and assign each a value in O. These values come from a unique integral measure exactly when every finite ℂₚ-linear combination satisfies the following test. For every integer m, if the combined function takes values in pᵐO everywhere, the combined assigned value lies in pᵐO.
+
+**How the definition helps.** The functional definition turns the existence question into a bound on finite linear combinations (our own explanation). The test sends zero relations to zero and gives continuity on the span. Density and completeness then give a unique extension (our own argument).
+
+**Paper or page:** [On p-adic Measures for Quaternionic Modular Forms](https://arxiv.org/abs/2209.11822v3). It says: “is equivalent to the following Kummer congruences”
+
+**Sources:**
+
+- [On p-adic Measures for Quaternionic Modular Forms](https://arxiv.org/abs/2209.11822v3)
+
+### Trace duals locate character conductors
+
+**Remember:** The inverse different is the largest ideal the trace character kills.
+
+*True by definition. Confidence: medium.* MSC 11S80 (Other analytic theory (analogues of beta and gamma functions, \\(p\\)-adic integration, etc.)), 11S15. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let L/K be a finite separable extension of non-Archimedean local fields. Its inverse different consists of elements x such that the trace of xy is integral for every integer y of L. An additive character sends sums to products of complex numbers of absolute value one. Choose one on K whose largest fractional ideal of triviality is the integer ring, and compose it with the trace.
+
+**Problem.** The pulled-back additive character is trivial on a fractional ideal of L precisely when that ideal is contained in the inverse different.
+
+**How the definition helps.** The trace definition identifies the conductor directly, without computing a generator of the different (our own). The trace of a nonzero fractional ideal is a fractional ideal of K by linearity and separability (our own). The character kills this image exactly when it lies in the base integer ring (our own). Multiplying by any extension integer preserves the original ideal, so this integrality tests every pairing defining the inverse different (our own).
+
+**Wikipedia:** [Different ideal](https://en.wikipedia.org/wiki/Different_ideal). It says: “It plays a basic role in Pontryagin duality for p-adic fields.”
+
+**Sources:**
+
+- [Jean-Pierre Serre, Local Fields](https://doi.org/10.1007/978-1-4757-5673-9)
+
 ### Limits of powers make the Teichmüller lift multiplicative
 
 **Remember:** Limits preserve products, and one more power shifts the sequence.
@@ -12704,6 +14939,40 @@ The list is long, but it is not complete. It contains only cases where the page 
 **How the definition helps.** With the limit definition, multiplicativity follows by taking limits of products of the powers. Taking the pth power shifts the sequence by one term, which proves the root equation (our own). The work moves into proving that congruence modulo pᵏ implies congruence of pth powers modulo pᵏ⁺¹ for k ≥ 1 (our own). Successive powers agree modulo increasing powers of p, so they converge, and the same estimate proves independence from a (our own). The root definition instead uses uniqueness to compare the lift of xy with the product of the lifts (our own).
 
 **Wikipedia:** [Teichmüller character](https://en.wikipedia.org/wiki/Teichm%C3%BCller_character). It says: “If x is an integer mod p, then ω(x) is the unique solution of ω(x)ᵖ = ω(x) that is congruent to x mod p.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Principal units have unique prime-to-p roots
+
+**Remember:** A principal unit has just one prime-to-p root with residue one.
+
+*Rules out counterexamples.* MSC 11S85 (Other nonanalytic theory). arXiv math.NT. Level 3: graduate.
+
+**Definition.** In a finite extension of the p-adic numbers, reduce each integer modulo the maximal ideal to obtain its residue. The principal units are the integers with residue one.
+
+**Problem.** For each positive integer m prime to p, raising to the mth power is an automorphism of the principal units of a p-adic field.
+
+**How the definition helps.** Restricting to principal units fixes the residue of the root in advance (our own proof). For a principal unit u, the equation xᵐ = u has the simple root 1 modulo the maximal ideal. Its derivative there is m, which is nonzero in the residue field. Hensel’s lemma lifts that root uniquely with the same residue. Among all units the assertion fails because −1 has no square root modulo 3 (our own example).
+
+**Paper or page:** [Duality for condensed cohomology of the Weil group of a p-adic field](https://arxiv.org/abs/2402.05565v1). It says: “For m coprime to p, the continuous homomorphism (−)ᵐ: 𝒰ₖⁿ → 𝒰ₖⁿ is an isomorphism of topological groups.”
+
+**Sources:**
+
+- [Duality for condensed cohomology of the Weil group of a p-adic field](https://arxiv.org/abs/2402.05565v1)
+
+### Negative Gauss sums lift multiplicatively
+
+**Remember:** Negating each Gauss sum absorbs the sign in the lifting formula.
+
+*Makes the theorem clean to state or prove.* MSC 11T24 (Other character sums and Gauss sums). arXiv math.NT. Level 3: graduate.
+
+**Definition.** A multiplicative character χ sends products to products, and an additive character ψ sends sums to products of complex numbers of absolute value one. Define the signed Gauss sum as the negative of the sum of χ(x)ψ(x) over nonzero field elements. Over an extension, evaluate χ on the norm, the product of conjugates, and ψ on the trace, their sum.
+
+**Problem.** For nontrivial characters over a finite field, the signed sum over an extension of degree n equals the nth power of the signed base sum.
+
+**How the definition helps.** In our own normalization, taking the negative absorbs the alternating sign in the Davenport–Hasse lifting theorem. That theorem supplies the relation between fields for the ordinary Gauss sums. Multiplying its formula by −1 gives precisely the nth power of the signed base sum.
+
+**Paper or page:** [Davenport and Hasse's theorems and lifts of multiplication matrices of Gaussian periods](https://arxiv.org/abs/2105.14872). It says: “Then, for any integer n ≥ 1, we have Gₙᵣ(ψ′) = (−1)ⁿ⁻¹Gᵣ(ψ)ⁿ”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -12761,6 +15030,40 @@ The list is long, but it is not complete. It contains only cases where the page 
 
 - [Vitaly Bergelson, Andreu Ferré Moragues, An ergodic correspondence principle, invariant means and applications, arXiv:2003.03029 (2020)](https://arxiv.org/abs/2003.03029v2)
 
+### Intersective polynomials remove modular obstructions
+
+**Remember:** If a polynomial misses zero modulo q, multiples of q avoid its differences.
+
+*Rules out counterexamples.* MSC 11B05 (Density, gaps, topology), 11B30. arXiv math.NT. Level 4: research.
+
+**Definition.** An integer polynomial is intersective if it has a root modulo every positive integer.
+
+**Problem.** Suppose a set occupies a fixed positive fraction of {1, …, N} for arbitrarily large N. For every nonconstant intersective polynomial h, two distinct members have difference h(n) for some positive integer n.
+
+**How the definition helps.** Intersectivity excludes an obstruction from the multiples of any integer q. In our own argument, their differences are multiples of q, so they miss every value of a polynomial without a root modulo q. For example, no two even integers differ by 2n + 1. The cited density bound proves that removing all such obstructions suffices.
+
+**Paper or page:** [A maximal extension of the Bloom-Maynard bound for sets with no square differences](https://arxiv.org/abs/2303.03345v1). It says: “for any intersective polynomial h ∈ ℤ\[x\] of degree k”
+
+**Sources:**
+
+- [A maximal extension of the Bloom–Maynard bound for sets with no square differences](https://arxiv.org/abs/2303.03345v1)
+
+### Circle values extend cubic phases
+
+**Remember:** Cube differences see polynomial phases whose values are not signs.
+
+*Rules out counterexamples.* MSC 11B30 (Arithmetic combinatorics; higher degree uniformity). arXiv math.NT. Level 4: research.
+
+**Definition.** On a binary vector space, let P take values modulo 1. A difference in direction h replaces P(x) by P(x + h) − P(x). Say P has degree at most d if every sequence of d + 1 differences gives zero. Its phase is exp(2πiP), whereas a polynomial taking binary values gives a phase taking only signs.
+
+**Problem.** On the two-element group, set P(0) = 0 and P(1) = 1/8. This cubic has a phase that passes the fourth-difference test but cannot equal a constant times a sign-valued phase.
+
+**How the definition helps.** Circle-valued polynomials capture phases that pass the difference test even when sign-valued polynomials miss them. In our own calculation, successive unit differences at zero are 1/8, −1/4, 1/2 and 0 modulo 1. At one these differences have opposite signs, and any zero step gives zero. The ratio of the two phase values is exp(πi/4), which cannot occur between two signs. The cited theorem classifies these polynomials in every degree.
+
+**Paper or page:** [Non-classical polynomials and the inverse theorem](https://arxiv.org/abs/2107.07495v1). It says: “Then P : V → ℝ/ℤ is a non-classical polynomial of degree at most d if and only if it can be expressed in the form”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Entropic doubling contracts under homomorphisms
 
 **Remember:** Measure doubling with entropy, and homomorphisms can only shrink it.
@@ -12797,6 +15100,24 @@ The list is long, but it is not complete. It contains only cases where the page 
 
 - [Pablo Candela, Notes on nilspaces: algebraic aspects, arXiv:1601.03693 (2017). Discrete Analysis, 2017:15, 59pp](https://arxiv.org/abs/1601.03693v3)
 
+### Sidon sets give error-correcting codes
+
+**Remember:** Repeated pair sums are exactly the short column relations that spoil the code.
+
+*Makes the theorem clean to state or prove.* MSC 11B75 (Other combinatorial number theory), 94B05. arXiv math.CO, math.NT. Level 4: research.
+
+**Definition.** In a binary vector space, call a set Sidon if its unordered pairs of distinct elements have distinct sums. Translate such a set to contain zero. Use its nonzero elements as the columns of a matrix over the field with two elements. A binary linear code is a subspace of such binary vectors.
+
+**Problem.** Let n &gt; t ≥ 2. A Sidon set of size n + 1 exists in the t-dimensional binary vector space exactly when a certain binary linear code exists. The code has length n, dimension n − t, and no nonzero word with fewer than five nonzero coordinates.
+
+**How the definition helps.** Using the set as matrix columns turns each short codeword into an equality of pair sums. In our own proof, distinct nonzero columns rule out relations of length one or two. Since the set contains zero, a relation of length three or four would repeat a pair sum. The matrix kernel therefore contains a code of dimension n − t with the required minimum weight. Conversely, write the given code as the kernel of a matrix with t rows. Its columns have no relation involving one to four distinct positions, so adjoining zero gives the required Sidon set.
+
+**Paper or page:** [Sidon sets, sum-free sets and linear codes](https://arxiv.org/abs/2304.07906v3). It says: “There is no Sidon set M ⊆ 𝔽₂ᵗ of size n + 1.”
+
+**Sources:**
+
+- [Sidon sets, sum-free sets and linear codes](https://arxiv.org/abs/2304.07906v3)
+
 ### Oriented quadratic algebras let twisted binary forms describe Picard groups
 
 **Remember:** Orient the algebra first, then the form classes give its ideal classes.
@@ -12814,6 +15135,22 @@ The list is long, but it is not complete. It contains only cases where the page 
 **Sources:**
 
 - [William Dallaporta, Recovering the Picard group of quadratic algebras from Wood's binary quadratic forms, arXiv:2111.13422v5 (2024)](https://arxiv.org/abs/2111.13422v5)
+
+### Primitive values distinguish binary forms
+
+**Remember:** Use coprime inputs to tell primitive forms apart.
+
+*Rules out counterexamples.* MSC 11E16 (General binary quadratic forms). arXiv math.NT. Level 4: research.
+
+**Definition.** A binary quadratic form is a polynomial ax² + bxy + cy². An integral form is primitive if its coefficients have greatest common divisor one. Its primitive values come from integer pairs with coprime coordinates. Its discriminant is b² − 4ac.
+
+**Problem.** Primitive integral binary quadratic forms with nonsquare discriminants are equivalent if they have the same primitive values. Equivalence means an invertible integer change of variables.
+
+**How the definition helps.** Coprime inputs distinguish two inequivalent forms that represent the same integers when all inputs count (our own). The forms x² + xy + y² and x² + 3y² have the same ordinary values but different discriminants. The first represents 4 only when both coordinates are even, while the second gives 4 at (1,1) (our own). Fouvry and Koymans prove that equal primitive value sets force equivalence.
+
+**Paper or page:** [Binary quadratic forms with the same value set](https://arxiv.org/abs/2404.09575v2), [Binary quadratic forms with the same value set](https://arxiv.org/abs/2404.09575v2). It says: “Let F and G be two primitive quadratic forms, with non square discriminants and with F(ℤ²ₚᵣᵢₘ) = G(ℤ²ₚᵣᵢₘ).”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Forms with integer matrix need only 1 to 15 to be universal
 
@@ -12869,6 +15206,146 @@ The list is long, but it is not complete. It contains only cases where the page 
 - [C. L. Siegel, Über die analytische Theorie der quadratischen Formen, Ann. of Math. 36 (1935) 527–606](https://doi.org/10.2307/1968644)
 - [J. H. Conway and N. J. A. Sloane, Low-dimensional lattices. IV. The mass formula, Proc. Roy. Soc. London A 419 (1988)](https://doi.org/10.1098/rspa.1988.0107)
 
+### Big theta quotients detect pairs
+
+**Remember:** Take the largest quotient with the desired first action.
+
+*True by definition.* MSC 11F27 (Theta series; Weil representation; theta correspondences), 11F70. arXiv math.NT, math.RT. Level 4: research.
+
+**Definition.** Over a p-adic field of odd residue characteristic, take an orthogonal group and a symplectic group acting together in the Weil representation. Use their covering groups when the action requires them. For an irreducible smooth complex representation π of the first group, take the largest quotient on which that group acts by copies of π. Write this quotient as π tensored with Θ(π), called the big theta lift.
+
+**Problem.** Take an irreducible smooth complex representation σ of the second group. The Weil representation surjects onto π tensored with σ exactly when Θ(π) surjects onto σ. Such a σ is unique up to isomorphism and is called the small theta lift.
+
+**How the definition helps.** The largest quotient collects all maps onto pairs with first factor π in a single representation (our own). Its defining property reduces testing each pair separately to testing quotients of Θ(π) (our own). Howe duality proves the further assertion that a nonzero big lift has a unique irreducible quotient.
+
+**Paper or page:** [Equal rank local theta correspondence as a strong Morita equivalence](https://arxiv.org/abs/2207.13484v3). It says: “Θ(π) is either zero or has a unique irreducible quotient, so that θ(π) is irreducible.”
+
+**Sources:**
+
+- [Wee Teck Gan and Shuichiro Takeda, A proof of the Howe duality conjecture](https://doi.org/10.1090/jams/839)
+
+### Transposition gives Hecke duality
+
+**Remember:** Duality swaps the two maps and replaces each isogeny by its dual.
+
+*Makes the theorem clean to state or prove.* MSC 11F60 (Hecke-Petersson operators, differential operators (several variables)), 11F41. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Use a Hilbert modular variety, which classifies abelian varieties with multiplication by a totally real number field. Assume p splits completely there and use the full integral matrix group at p. At a prime above p, define the normalized Hecke operator using pairs connected by an isogeny, a surjective homomorphism with finite kernel. Pull sections back along one projection, apply the normalized map between coefficient lines, and sum along the other projection.
+
+**Problem.** Serre duality pairs cohomology in complementary degrees on the compactified variety. The adjoint in weight (k,w) acts in weight (2 − k,−w), subtracting each component of k from two. The second group uses sections vanishing on the boundary.
+
+**How the definition helps.** Defining the operator through a correspondence lets duality interchange its pullback and trace (our own). The dual isogeny identifies the exchanged correspondence with the original one. The work is checking the normalized map on coefficient lines and identifying the dual line using Kodaira–Spencer (our own).
+
+**Paper or page:** [Higher Hida theory for Hilbert modular varieties in the totally split case](https://arxiv.org/abs/2106.05666v3). It says: “Since the correspondence X₀(𝔭) is isomorphic to its transpose, by sending the isogeny π to the isogeny πᴰ”
+
+**Sources:**
+
+- [Giada Grossi, Higher Hida theory for Hilbert modular varieties in the totally split case, Proposition 3.1.2](https://arxiv.org/abs/2106.05666v3)
+
+### Monodromy distinguishes Steinberg
+
+**Remember:** The Weil action can agree while monodromy differs.
+
+*Rules out counterexamples. Confidence: medium.* MSC 11F70 (Representation-theoretic methods; automorphic representations over local and global fields), 11F85. arXiv math.NT, math.RT. Level 4: research.
+
+**Definition.** The local Langlands correspondence assigns parameters to representations of GL₂ over a finite extension of the p-adic numbers. A parameter records a Weil group action, which encodes field symmetries, and a compatible operator N. This operator is nilpotent, meaning some power is zero.
+
+**Problem.** The trivial representation and the Steinberg representation have the same Weil action after decomposition into simple factors. Here Steinberg means locally constant complex functions on the projective line modulo constants. Their full parameters differ.
+
+**How the definition helps.** Keeping the operator separates two representations that otherwise have the same data (our own). The operator is zero for the trivial representation and has rank one for Steinberg (our own). The work lies in the local Langlands calculation of these two parameters (our own).
+
+**nLab:** [local Langlands conjecture](https://ncatlab.org/nlab/show/local+Langlands+conjecture). It says: “A Weil-Deligne representation is a pair (ρ₀,N)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Noninvariant characters induce cusp forms
+
+**Remember:** A character must move under conjugation to give a cusp form.
+
+*Rules out counterexamples.* MSC 11F70 (Representation-theoretic methods; automorphic representations over local and global fields), 11F41. arXiv math.NT, math.RT. Level 4: research.
+
+**Definition.** For a quadratic extension L of a number field F, a Hecke character is a continuous character of the idele class group of L. This group combines local multiplicative groups and identifies tuples differing by a global scalar. Call a character regular if the nonidentity automorphism of L over F changes it.
+
+**Problem.** Automorphic induction transfers the character to a representation of GL₂ over F. This representation is cuspidal, meaning its constant terms vanish, exactly when the character is regular.
+
+**How the definition helps.** Regularity removes exactly the characters whose induction splits as a sum of two characters (our own). For example, the trivial character induces the sum formed from the trivial character and the quadratic character attached to L over F (our own). The quadratic automorphic induction theorem proves the cuspidality criterion.
+
+**Paper or page:** [Vignéras orbifolds: isospectrality, regulators, and torsion homology](https://arxiv.org/abs/2407.07240v1). It says: “is cuspidal if and only if Ψ<sup>σ</sup> ≠ Ψ.”
+
+**Sources:**
+
+- [James Arthur and Laurent Clozel, Simple Algebras, Base Change, and the Advanced Theory of the Trace Formula (1989)](https://doi.org/10.1515/9781400882403)
+
+### Crystalline periods detect good reduction
+
+**Remember:** At the residue prime, test for a full set of crystalline periods.
+
+*Rules out counterexamples.* MSC 11F80 (Galois representations), 11G07. arXiv math.NT. Level 4: research.
+
+**Definition.** Let K be a finite extension of ℚₚ. A p-adic representation describes a continuous Galois action on a finite-dimensional ℚₚ-vector space. Call it crystalline if it has a Galois-fixed basis after extending scalars to Fontaine’s crystalline period ring. This ring supplies coefficients with their own Galois action.
+
+**Problem.** An elliptic curve over K has good reduction if it has a smooth elliptic model over the integers of K. This happens exactly when its rational Tate module, formed from compatible points of p-power order by extending scalars to ℚₚ, is crystalline.
+
+**How the definition helps.** The crystalline test allows the ramification that good elliptic curves can have at p (our own). The curve y² = x³ − x stays smooth modulo five (our own). Its determinant records the action on roots of unity of five-power order, which requires ramified extensions of ℚ₅ (our own). The crystalline comparison theorem proves necessity, and Coleman and Iovita prove sufficiency (our own).
+
+**nLab:** [p-adic Hodge theory](https://ncatlab.org/nlab/show/p-adic+Hodge+theory). It says: “We can also apply this construction with Bcrys instead of BdR; if the dimension stays the same we say that V is crystalline.”
+
+**Sources:**
+
+- [Coleman and Iovita, The Frobenius and monodromy operators for curves and abelian varieties](https://doi.org/10.1215/s0012-7094-99-09708-9)
+
+### Determinants retain small-characteristic information
+
+**Remember:** A trace keeps one coefficient, while a determinant law keeps them all.
+
+*Rules out counterexamples.* MSC 11F80 (Galois representations). arXiv math.NT. Level 4: research.
+
+**Definition.** A dimension-d determinant assigns a scalar to each element of the group algebra. It preserves products and the identity, and acts polynomially with degree d, homogeneously and compatibly after every extension of scalars. Its trace is the coefficient of t in the determinant of 1 + tx, viewed as a function of x. A trace pseudocharacter satisfies the trace identities for d-dimensional matrices.
+
+**Problem.** Over a commutative coefficient ring where d! is invertible, taking traces gives a bijection between dimension-d determinants and trace pseudocharacters. In small characteristic the trace can lose information.
+
+**How the definition helps.** The determinant retains coefficients that the trace alone can lose (our own). A cyclic cubic Galois group has a nontrivial character χ into the multiplicative group of the field of four elements (our own). Two copies of χ have zero trace, as do two trivial characters (our own). Their determinants differ because χ² is nontrivial (our own). The cited theorem supplies the reconstruction when d! is invertible.
+
+**Paper or page:** [On the relation between pseudocharacters and Chenevier's determinants](https://arxiv.org/abs/2402.18034v1). It says: “a bijection between A-valued d-dimensional determinants on R and A-valued d-dimensional pseudocharacters on R.”
+
+**Sources:**
+
+- [On the relation between pseudocharacters and Chenevier's determinants](https://arxiv.org/abs/2402.18034v1)
+
+### Frames make Galois lifts glue
+
+**Remember:** Fixed matrices glue entry by entry.
+
+*Rules out counterexamples.* MSC 11F80 (Galois representations). arXiv math.NT. Level 4: research.
+
+**Definition.** Let G be an inverse limit of finite groups, acting continuously by matrices over a finite field k of characteristic p. A framed lift gives matrices over a complete local ring that reduce to the original matrices over k. An unframed lift identifies matrices related by a basis change that reduces to the identity.
+
+**Problem.** Suppose each open subgroup of G has finitely many continuous homomorphisms to the group of order p. Use complete Noetherian local coefficient rings over the Witt vectors of k, the unramified p-adic integer ring with residue field k. Then one universal ring parametrizes framed lifts to all these rings with residue field k.
+
+**How the definition helps.** Keeping the basis lets two compatible lifts glue entry by entry (our own). The resulting matrices still satisfy the group law (our own). Without a frame, gluing also requires a choice of compatible basis changes (our own). Schlessinger’s criterion converts gluing and a finite number of first-order parameters into a universal ring (our own).
+
+**Paper or page:** [Deformation Theory of Galois Representations and the Taylor--Wiles Method](https://arxiv.org/abs/2510.12202v1). It says: “We call the representing ring of it the universal lifting ring or universal framed deformation ring”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Isogeny degrees determine pairing type
+
+**Remember:** A prime-to-p isogeny scales the Weil pairing by its degree.
+
+*True by definition.* MSC 11F80 (Galois representations), 11G05. arXiv math.NT. Level 4: research.
+
+**Definition.** Fix an elliptic curve over a number field and an odd prime p. The Weil pairing pairs points killed by p with values in the pth roots of unity. An isomorphism of torsion spaces raises pairing values to a fixed nonzero exponent, its multiplier. Call the isomorphism symplectic in type if rescaling it makes it preserve all pairing values.
+
+**Problem.** An isogeny is a surjective homomorphism of elliptic curves with finite kernel. An isogeny of degree n prime to p induces a torsion isomorphism of symplectic type exactly when n is a square modulo p.
+
+**How the definition helps.** Allowing rescaling turns exact preservation into a square test on the multiplier (our own). Multiplying the map by a scalar multiplies its exponent by that scalar squared (our own). Compatibility of the Weil pairing with the dual isogeny gives the multiplier n (our own). This compatibility supplies the geometric input (our own).
+
+**Paper or page:** [Local points on twists of X(p) with applications](https://arxiv.org/abs/2509.04294v3). It says: “is symplectic if (n/p) = 1 and anti-symplectic otherwise.”
+
+**Sources:**
+
+- [Local points on twists of X(p) with applications](https://arxiv.org/abs/2509.04294v3)
+
 ### Lifts modulo strict conjugation make the deformation tangent space first Galois cohomology
 
 **Remember:** The group law gives cocycles, and changes of basis give coboundaries.
@@ -12887,6 +15364,43 @@ The list is long, but it is not complete. It contains only cases where the page 
 
 - [Barry Mazur, Deforming Galois representations, in Galois Groups over ℚ (1989)](https://doi.org/10.1007/978-1-4613-9649-9_7)
 
+### Oddness excludes nonmodular real representations
+
+**Remember:** Complex conjugation must have opposite signs in the two directions.
+
+*Rules out counterexamples.* MSC 11F80 (Galois representations), 11F11. arXiv math.NT. Level 4: research.
+
+**Definition.** The absolute Galois group of ℚ consists of the automorphisms of its algebraic closure fixing ℚ. A two-dimensional representation of this group is odd if complex conjugation has determinant −1. In odd characteristic its eigenvalues are then 1 and −1.
+
+**Problem.** Take a continuous odd representation over a finite field of odd characteristic that stays irreducible over the algebraic closure. Serre’s modularity theorem says it arises from a cuspidal modular eigenform, a modular form vanishing at the cusps and diagonalizing the Hecke operators.
+
+**How the definition helps.** Oddness imposes the determinant sign that modular forms require (our own). The cubic x³ − 4x + 1 has no rational root and has positive nonsquare discriminant 229 (our own). Its three roots are real, and its Galois group is the full permutation group on them (our own). Over the field of five elements, permuting three coordinates on the plane with coordinate sum zero gives an absolutely irreducible representation (our own). Complex conjugation acts trivially, so this representation fails the sign test (our own). Khare and Wintenberger prove modularity under the stated hypotheses (our own).
+
+**Wikipedia:** [Serre's modularity conjecture](https://en.wikipedia.org/wiki/Serre%27s_modularity_conjecture). It says: “Additionally, assume ρ is odd, meaning the image of complex conjugation has determinant -1.”
+
+**Sources:**
+
+- [Khare and Wintenberger, Serre’s modularity conjecture (I)](https://doi.org/10.1007/s00222-009-0205-7)
+- [Khare and Wintenberger, Serre’s modularity conjecture (II)](https://doi.org/10.1007/s00222-009-0206-6)
+
+### Reducibility ideals locate split traces
+
+**Remember:** One ideal detects every quotient with a split trace.
+
+*Makes the theorem clean to state or prove.* MSC 11F80 (Galois representations). arXiv math.NT. Level 4: research.
+
+**Definition.** Consider a two-dimensional Galois trace in a complete local ring where two is invertible. Such a trace satisfies the identities for traces of two-dimensional representations. Suppose its reduction modulo the maximal ideal is a sum of two distinct characters, meaning one-dimensional representations. Its reducibility ideal is the smallest ideal modulo which it splits into characters lifting those two.
+
+**Problem.** In the cited family of Galois traces attached to modular forms, the reducibility ideal equals the maximal ideal. Among nonzero quotient rings, only the residue field gives a split trace.
+
+**How the definition helps.** The smallest ideal turns a search for two characters into an inclusion test on ideals (our own). A quotient gives a split trace exactly when its defining ideal contains the reducibility ideal (our own). The hard step is the cited calculation of that ideal.
+
+**Paper or page:** [Eisenstein degeneration of Euler systems](https://arxiv.org/abs/2201.02078v2). It says: “The reducibility ideal of the pseudo-character t𝐟 is exactly 𝔪.”
+
+**Sources:**
+
+- [Eisenstein degeneration of Euler systems](https://arxiv.org/abs/2201.02078v2)
+
 ### Defining overconvergent forms as sheaf sections lets the weight vary p-adically
 
 **Remember:** Let the sheaf carry the weight so the weight can vary.
@@ -12904,6 +15418,179 @@ The list is long, but it is not complete. It contains only cases where the page 
 **Sources:**
 
 - [Riccardo Brasca, p-adic families of modular forms for Hodge type Shimura varieties with non-empty ordinary locus, arXiv:2009.07150v1 (2020)](https://arxiv.org/abs/2009.07150v1)
+
+### Alternation forces a square order
+
+**Remember:** A perfect alternating pairing puts the finite group into pairs.
+
+*Rules out counterexamples.* MSC 11G05 (Elliptic curves over global fields), 11G40. arXiv math.NT. Level 4: research.
+
+**Definition.** The Tate–Shafarevich group measures whether a curve with an elliptic curve acting freely and transitively can have points everywhere locally but none globally. The Cassels–Tate pairing pairs its classes with values in ℚ/ℤ. A pairing is alternating if each element pairs to zero with itself.
+
+**Problem.** If the Tate–Shafarevich group of an elliptic curve over a number field is finite, its order is a square.
+
+**How the definition helps.** Alternation rules out an unpaired cyclic factor of order two (our own). Skew symmetry alone allows the generator of a group of order two to pair with itself to ½ modulo ℤ (our own). For elliptic curves, Cassels proves alternation, and duality makes the pairing perfect when the group is finite (our own). Perfect means each character into ℚ/ℤ comes from pairing with a unique element (our own). A maximal-order element then has a partner of equal order, and their two cyclic factors split off together (our own). Repeating this step gives square order (our own).
+
+**Wikipedia:** [Tate–Shafarevich group](https://en.wikipedia.org/wiki/Tate%E2%80%93Shafarevich_group). It says: “if the order of Ш is finite then it is a square.”
+
+**Sources:**
+
+- [Cassels, Arithmetic on Curves of Genus 1. IV. Proof of the Hauptvermutung](https://doi.org/10.1515/crll.1962.211.95)
+- [Poonen and Stoll, The Cassels–Tate Pairing on Polarized Abelian Varieties](https://doi.org/10.2307/121064)
+
+### Relaxed Selmer conditions pair with strict ones
+
+**Remember:** Opposite local conditions make the two dimension jumps add to half the local dimension.
+
+*Makes the theorem clean to state or prove.* MSC 11G05 (Elliptic curves over global fields), 11R34. arXiv math.NT. Level 4: research.
+
+**Definition.** Fix an elliptic curve over a number field and a prime p. Its p-Selmer group consists of global Galois cohomology classes on the points killed by p that locally come from dividing curve points by p. At one finite prime, the relaxed group allows every local class and the strict group requires zero. Both keep the usual conditions elsewhere.
+
+**Problem.** The relaxed dimension minus the strict dimension equals half the dimension of local first cohomology at the chosen prime. All dimensions use the field of p elements.
+
+**How the definition helps.** Allowing everything and allowing zero give opposite local conditions under the local duality pairing (our own). The usual condition pairs to zero with itself and has half the local dimension (our own). The two global dimension jumps give images in the usual local condition and its dual (our own). The cited orthogonality theorem makes these images exact annihilators, so their dimensions add to the dimension of the usual condition (our own).
+
+**Paper or page:** [Increasing the p-Selmer rank by twisting](https://arxiv.org/abs/2503.09207v3). It says: “The images of the two right-hand maps in the following exact sequences are orthogonal complements of each other under the sum of the local Tate pairings.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Exterior powers give determinant characters
+
+**Remember:** Take the top exterior power before passing to the Galois action.
+
+*True by definition. Confidence: medium.* MSC 11G09 (Drinfel'd modules; higher-dimensional motives, etc.). arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** A Drinfeld module describes an action of a function ring by additive polynomials. Its associated motive encodes that action in a module with a Frobenius operator. Define its determinant module by taking the highest nonzero exterior power of this motive and passing back to a Drinfeld module.
+
+**Problem.** At a prime different from the characteristic, the Galois action on the determinant module’s Tate module equals the determinant of the original Galois action. The Tate module records compatible points killed by powers of that prime.
+
+**How the definition helps.** In our own explanation, a linear transformation acts on the top exterior power by its determinant. The cited theorem realizes the resulting motive by a unique rank-one Drinfeld module up to isomorphism. Applying the linear calculation to torsion also requires the comparison between motives and Tate modules to preserve exterior powers.
+
+**Paper or page:** [Pour une définition commune des courbes elliptiques et modules de Drinfeld](https://arxiv.org/abs/2306.13160). It says: “Le $A$-motif $\\underline{D}$ provient d'un $A$-module de Drinfeld de rang $1$ et de caractéristique $\\delta<sub>E</sub>$. Ce module de Drinfeld est unique à isomorphisme près, et on le note $\\det E$.”
+
+**Sources:**
+
+- [Quentin Gazda and Damien Junger, Pour une définition commune des courbes elliptiques et modules de Drinfeld](https://arxiv.org/abs/2306.13160)
+
+### Frobenius determinants measure Drinfeld points
+
+**Remember:** Take the determinant of one minus Frobenius to measure rational torsion.
+
+*Makes the theorem clean to state or prove.* MSC 11G09 (Drinfel'd modules; higher-dimensional motives, etc.). arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Let A = 𝔽q\[T\]. A finite A-module splits into cyclic modules A/(h) with monic polynomials h. Use the product of these polynomials to measure the module, giving the monic generator of its Fitting ideal.
+
+**Problem.** For a Drinfeld module over a finite field, this polynomial measure of its rational points equals the monic multiple of its Frobenius polynomial at one. Frobenius raises coordinates to the field size. Its polynomial records its linear action on compatible prime-power torsion away from the characteristic.
+
+**How the definition helps.** In our own explanation, the polynomial measure records determinants of presentations and therefore lets one state a polynomial point-count formula. Rational points are the points fixed by Frobenius. Away from the characteristic, the quotient by one minus Frobenius on compatible torsion gives the corresponding part of the rational point module. The cited theorem gives the full polynomial, including its characteristic factor.
+
+**Paper or page:** [Convolutions of Goss and Pellarin L-series](https://arxiv.org/abs/2206.14931). It says: “Then\\\[  \\bigl\[ E(\\mathbb {F}<sub>f</sub>) \\bigr\]\_{\\mathsf{A}} = \\gamma \\cdot \\Char (\\tau ^d,T<sub>\\lambda </sub>(E),1),  \\\]where $\\gamma \\in \\mathbb {F}<sub>q</sub><sup>\\times </sup>$ forces the right-hand expression to be monic in\~ $t$.”
+
+**Sources:**
+
+- [Wei-Cheng Huang and Matthew A. Papanikolas, Convolutions of Goss and Pellarin L-series](https://arxiv.org/abs/2206.14931)
+
+### Frobenius polynomials classify Drinfeld isogeny classes
+
+**Remember:** The Frobenius polynomial determines the isogeny class over a finite field.
+
+*Makes the theorem clean to state or prove.* MSC 11G09 (Drinfel'd modules; higher-dimensional motives, etc.). arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Fix A = 𝔽q\[T\]. A Drinfeld module lets A act by additive polynomials, and its characteristic ideal is the kernel of the scalar map to the base field. At a different prime, collect compatible points killed by powers of that prime and invert the prime to form the rational Tate module. Define the Frobenius polynomial as the characteristic polynomial of the field-size power map on this space.
+
+**Problem.** Take two Drinfeld modules of the same rank and characteristic over the same finite field. Their Frobenius polynomials agree exactly when an isogeny, a nonzero map respecting both actions, exists over that field.
+
+**How the definition helps.** In our own explanation, one polynomial lets us state the classification as equality of two computable invariants. An isogeny identifies the rational Tate modules and carries one Frobenius action to the other. Conversely, Frobenius acts semisimply, so its polynomial determines the rational representation. The Tate isogeny theorem turns this linear comparison into an isogeny.
+
+**Paper or page:** [Traces of Hecke operators on Drinfeld modular forms for 𝔽q\[T\]](https://arxiv.org/abs/2407.04555). It says: “Then cφ(X) = cψ(X) if and only if φ is isogenous to ψ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Ideal classes classify rank one Drinfeld modules
+
+**Remember:** At rank one, period lattices become fractional ideals up to scaling.
+
+*True by definition.* MSC 11G09 (Drinfel'd modules; higher-dimensional motives, etc.), 11R58. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Fix a place called infinity on a smooth projective curve over a finite field. Let A consist of rational functions regular away from infinity. Work over the completed algebraic closure of the function field completed at infinity. Represent a rank-one Drinfeld module, an action of A by additive polynomials, by the kernel of its exponential, called its period lattice.
+
+**Problem.** The ideal class group acts freely and transitively on the rank one Drinfeld modules up to isomorphism.
+
+**How the definition helps.** In our own explanation, choosing a basis of the lattice’s one-dimensional span makes the lattice a fractional ideal of A. A fractional ideal becomes an ordinary ideal after multiplication by a nonzero element of A. Changing the basis scales the ideal, leaving precisely its ideal class. Multiplication of ideal classes now acts freely and transitively. Drinfeld’s uniformization theorem identifies lattices up to scaling with polynomial actions up to isomorphism.
+
+**Paper or page:** [Drinfeld Module and Weil pairing over Dedekind domain of class number two](https://arxiv.org/abs/2312.16919). It says: “The set of isomorphism classes of A-Drinfeld modules is the principle homogeneous space of the class group of A”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Lattice enlargement composes ideal isogenies
+
+**Remember:** Ideal isogenies enlarge the period lattice by inverse ideals.
+
+*True by definition.* MSC 11G09 (Drinfel'd modules; higher-dimensional motives, etc.). arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Take a Drinfeld module, an action of a curve’s coefficient ring A by additive polynomials. Here A consists of functions regular away from a chosen place at infinity. Over the completed algebraic closure at infinity, let Λ denote the kernel of the module’s exponential. For a nonzero ideal I of A, define the quotient using the larger lattice I⁻¹Λ.
+
+**Problem.** Taking the quotient for I and then for J gives the quotient for IJ up to isomorphism.
+
+**How the definition helps.** In our own explanation, enlarging the lattice twice gives J⁻¹I⁻¹Λ, exactly the lattice for IJ. Uniformization identifies the inclusion with an isogeny, a map of modules with finite kernel. Its kernel consists of the points killed by I. Normalizing the polynomial for this map can scale the target lattice, as the cited formula shows.
+
+**Paper or page:** [Drinfeld Module and Weil pairing over Dedekind domain of class number two](https://arxiv.org/abs/2312.16919). It says: “Then we have Λψ = Λφ · ∂(λ) I⁻¹.”
+
+**Sources:**
+
+- [Chuangqiang Hu and Xiao-Min Huang, Drinfeld Module and Weil pairing over Dedekind domain of class number two](https://arxiv.org/abs/2312.16919)
+
+### Forgetting signs lets twists share j
+
+**Remember:** A modular curve sees torsion bases only up to curve automorphisms.
+
+*Rules out counterexamples.* MSC 11G18 (Arithmetic aspects of modular and Shimura varieties), 11F80. arXiv math.NT. Level 4: research.
+
+**Definition.** An elliptic curve’s j-invariant determines it up to isomorphism over an algebraic closure. Let H be an open subgroup of the invertible two-by-two matrices over the profinite integers, which encode compatible residues modulo all positive integers. The modular curve X(H) records compatible torsion bases up to H and curve automorphisms. For j different from 0 and 1728, those automorphisms are identity and negation.
+
+**Problem.** Take an algebraic number j different from 0 and 1728 and an elliptic curve over ℚ(j) with that invariant. Some point of X(H) above j is rational over ℚ(j) exactly when a conjugate of ±H contains the curve’s Galois image on torsion.
+
+**How the definition helps.** Identifying opposite bases allows a basis class to be fixed even when Galois changes its sign (our own). A rational point requires some fixed class, which accounts for the choice of conjugate (our own). A quadratic twist changes the torsion action by signs, so it gives the same test (our own). Identifying the geometric points above j with basis classes supplies the geometric input (our own).
+
+**Paper or page:** [Degrees of points with rational j-invariant on X₀(n) and X₁(n)](https://arxiv.org/abs/2507.13199v1). It says: “there exists a point x ∈ Xᴴ(ℚ(j)) such that j(x) = j if and only if 𝒢ⱼ ≤ ±ℋ.”
+
+**Sources:**
+
+- [Degrees of points with rational j-invariant on X₀(n) and X₁(n)](https://arxiv.org/abs/2507.13199v1)
+
+### Component graphs count torus rank
+
+**Remember:** Each independent loop supplies one multiplicative direction in the Jacobian.
+
+*Makes the theorem clean to state or prove.* MSC 11G20 (Curves over finite and local fields), 14G20. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** A split semistable model extends a smooth curve to a family whose special fiber has only ordinary crossings. Its components, crossings and branches are all defined over the residue field. Its dual graph has one vertex per component and one edge per crossing, including loops.
+
+**Problem.** Take a smooth projective geometrically connected curve of positive genus over ℚ with split semistable reduction at a prime. Its Jacobian, which parametrizes divisor classes of degree zero, has torus rank equal to the number of independent loops in this graph. This rank counts multiplicative group factors in the connected part of its reduced group model.
+
+**How the definition helps.** The dual graph records exactly where line bundles must be glued across crossings, in our own explanation. Each crossing contributes one nonzero gluing scalar. Rescaling on each component changes these scalars, while a common rescaling does nothing. The remaining number of parameters is edges minus vertices plus one, the loop count for a connected graph. The geometric input identifies this gluing group with the torus in the special fiber of the Jacobian’s Néron model.
+
+**Paper or page:** [Normal distribution of bad reduction](https://arxiv.org/abs/2305.15874v1). It says: “the toric rank of Jac(C) is equal to m − c + 1”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Ramification scales node thickness
+
+**Remember:** An edge length is a valuation, so ramification multiplies it.
+
+*True by definition.* MSC 11G20 (Curves over finite and local fields), 14G20. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** A split semistable curve model has a reduced special fiber whose only singularities are crossings with two branches over the residue field. Draw a vertex for each component and an edge for each crossing. In completed local coordinates, write a crossing as xy = a. Give its edge length v(a), where the valuation v counts powers of a generator of the maximal ideal.
+
+**Problem.** Start with such a model over a complete discrete valuation ring. After a finite totally ramified extension of index e, the pulled-back model has the same graph with every length multiplied by e.
+
+**How the definition helps.** Measuring edges by valuations gives the new length directly from the old local equation, in our own explanation. The pulled-back equation is still xy = a. The new normalized valuation takes the value e times the old one on elements of the original field. The residue field stays the same, so the special fiber retains its crossings and components. The geometric input is the local equation for a node, which lets us compute lengths without resolving the new model.
+
+**Paper or page:** [Models of Bihyperelliptic Curves](https://arxiv.org/abs/2103.09730v1). It says: “with the same dual graph as 𝒞, but with the lengths of all edges multiplied by e.”
+
+**Sources:**
+
+- [Models of Bihyperelliptic Curves](https://arxiv.org/abs/2103.09730v1)
 
 ### Under semistability, invariant valuations determine the reduction graph of hyperelliptic curves
 
@@ -12941,6 +15628,22 @@ The list is long, but it is not complete. It contains only cases where the page 
 
 - [Santiago Arango-Piñeros, Deewang Bhamidipati, Soumya Sankar, Frobenius distributions of low dimensional abelian varieties over finite fields, International Mathematics Research Notices 2024, no. 16, 11989-12020, arXiv:2306.02237](https://arxiv.org/abs/2306.02237)
 
+### Invariant metrics scale heights exactly
+
+**Remember:** An invariant metric turns pullback into exact multiplication of heights.
+
+*True by definition.* MSC 11G50 (Heights), 14G40. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** A line bundle assigns a line to each point of a variety. It is ample if sections of a power embed the variety in projective space. Fix an identification of its pullback under a map f with its qth tensor power, for an integer q greater than one. Give the lines norms at all places, or absolute values, of the number field so this identification preserves norms.
+
+**Problem.** For such a map on a projective variety over a number field, compatible norms give a canonical height h satisfying h(f(P)) = qh(P).
+
+**How the definition helps.** The invariant norms make pullback multiply the height exactly, in our own explanation. Arbitrary norms on the same bundle generally give this relation only up to bounded error. Heights pull back with maps and add when bundles are tensored. The existence theorem constructs the compatible norms by repeated pullback and normalization, starting with norms from an integral model outside finitely many places.
+
+**Paper or page:** [Specialization of canonical heights on abelian varieties](https://arxiv.org/abs/2110.07664v1). It says: “In particular, there exists a canonical height”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Counting primitive lattice flags proves Manin’s conjecture for flag varieties over ℚ
 
 **Remember:** Intersect with ℤⁿ to get one primitive chain.
@@ -12958,6 +15661,72 @@ The list is long, but it is not complete. It contains only cases where the page 
 **Sources:**
 
 - [Tal Horesh, Yakov Karasik, Counting flags of primitive lattices, arXiv:2202.12724v1 (2022)](https://arxiv.org/abs/2202.12724v1)
+
+### Fourier signs bound lattice packing
+
+**Remember:** One sign controls the lattice and the other controls its dual.
+
+*Makes the theorem clean to state or prove.* MSC 11H31 (Lattice packing and covering (number-theoretic aspects)), 11H60. arXiv math.NT. Level 4: research.
+
+**Definition.** Take a smooth real function on Euclidean space depending only on distance from zero. Require the function and all its derivatives to decay faster than every inverse power of distance. Require its values at distances at least r &gt; 0 to be nonpositive and its Fourier transform to be nonnegative everywhere. Normalize their values at zero to the same positive number, using the Fourier kernel exp(−2πix·ξ).
+
+**Problem.** If such a function exists, any lattice packing by balls of radius r/2 has density at most the volume of one such ball. For a unit-covolume lattice with shortest length r, the bound is sharp.
+
+**How the definition helps.** The two sign conditions bound the lattice sum from above and the dual lattice sum from below (our own). Only the term at zero can contribute positively to the first sum for centers separated by at least r (our own). Every term in the second sum is nonnegative (our own). Poisson summation equates the first sum to the second divided by the fundamental cell volume (our own). The common positive value at zero therefore forces that volume to be at least one (our own).
+
+**Paper or page:** [Algebraic proof of modular form inequalities for optimal sphere packings](https://arxiv.org/abs/2406.14659v3). It says: “f(0) = f̂(0) &gt; 0”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Short vectors encode Littlewood’s conjecture
+
+**Remember:** Diagonal scaling turns small products into short lattice vectors.
+
+*Makes the theorem clean to state or prove.* MSC 11H46 (Products of linear forms), 11J13. arXiv math.NT. Level 4: research.
+
+**Definition.** For real α and β use the lattice of vectors (qα − p, qβ − r, q) with integer p, r, q. Act by positive diagonal maps of determinant one that expand the first two coordinates and contract the last. These maps leave the product of the three coordinates unchanged.
+
+**Problem.** For a real number t, let d(t) denote its distance to the nearest integer. Littlewood’s condition asks whether q d(qα)d(qβ) approaches zero along some sequence of positive integers q tending to infinity. For a fixed pair, this holds exactly when its lattice orbit has noncompact closure.
+
+**How the definition helps.** The diagonal maps preserve the coordinate product while allowing all three coordinates to become small together (our own). For a chosen small target, Dirichlet approximation gives a bounded positive multiplier that reduces the larger error below that target (our own). A sufficiently small initial product keeps the other error and the new product small (our own). The two expansion factors can now balance both errors against the shrinking denominator (our own). Conversely, sufficiently short vectors have nonzero denominator and small product (our own). Mahler’s compactness theorem identifies arbitrarily short vectors with failure of relative compactness (our own).
+
+**Wikipedia:** [Littlewood conjecture](https://en.wikipedia.org/wiki/Littlewood_conjecture). It says: “failure of Littlewood's conjecture corresponds to relative compactness of the orbit”
+
+**Sources:**
+
+- [Manfred Einsiedler, Anatole Katok and Elon Lindenstrauss, Invariant measures and the set of exceptions to Littlewood’s conjecture](https://doi.org/10.4007/annals.2006.164.513)
+
+### Shortest vectors test extreme packings
+
+**Remember:** Shortest vectors fix the form and balance its volume.
+
+*Makes the theorem clean to state or prove.* MSC 11H55 (Quadratic forms (reduction theory, extreme forms, etc.)), 11H31. arXiv math.NT. Level 4: research.
+
+**Definition.** Scale a positive definite quadratic form Q until its minimum on nonzero integer vectors equals one. For each minimizing column v, form the symmetric matrix vvᵀ. The form is perfect if these matrices span all symmetric matrices. It is eutactic if its inverse matrix is a sum of these matrices with strictly positive coefficients.
+
+**Problem.** A lattice packing has locally maximal density among lattice packings exactly when its form is perfect and eutactic.
+
+**How the definition helps.** Perfection and eutaxy replace comparisons with nearby packings by two linear tests on the shortest vectors (our own). Perfection rules out a nonzero change of the matrix that leaves all their squared lengths fixed (our own). Eutaxy expresses the inverse matrix using positive weights on those same vectors (our own). Voronoi’s theorem proves that together these tests characterize a local density maximum.
+
+**Paper or page:** [The lattice packing problem in dimension 9 by Voronoi's algorithm](https://arxiv.org/abs/2508.20719v1). It says: “is extreme if and only if it is perfect and eutactic.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Critical lattices detect Dirichlet improvement
+
+**Remember:** Better uniform approximation keeps the moving lattice away from the critical locus.
+
+*Makes the theorem clean to state or prove.* MSC 11J13 (Simultaneous homogeneous approximation, linear forms), 11H06. arXiv math.NT. Level 4: research.
+
+**Definition.** For x in ℝ², form the lattice of triples (p − qx, q), with p an integer pair and q an integer. At time s ≥ 0, multiply the first two coordinates by exp(s) and the last by exp(−2s). Measure a triple by the larger of its chosen plane norm and its last coordinate’s absolute value. The critical locus consists of lattices with fundamental cell volume one whose shortest nonzero vectors have the greatest possible length.
+
+**Problem.** Uniform improvement means some constant below the sharp universal bound works at every sufficiently large scale. It bounds T times the squared distance from qx to an integer pair for some integer q between 1 and T. This improvement holds exactly when the moving lattice eventually avoids a neighborhood of the critical locus.
+
+**How the definition helps.** The scaled lattice turns two size bounds into one shortest-vector test (our own). Mahler’s compactness theorem makes the lattices with shortest lengths bounded below a compact set (our own). Avoiding a neighborhood of the maximizers then leaves a uniform gap (our own).
+
+**Paper or page:** [Abundance of Dirichlet-improvable pairs with respect to arbitrary norms](https://arxiv.org/abs/2107.10298v2), [Abundance of Dirichlet-improvable pairs with respect to arbitrary norms](https://arxiv.org/abs/2107.10298v2). It says: “x ∈ DIν if and only if the forward aₛ-orbit of Λₓ eventually avoids an open neighborhood of ℒη”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Counting only reduced fractions frees multiplicative Khintchine from monotonicity
 
@@ -13000,6 +15769,40 @@ The list is long, but it is not complete. It contains only cases where the page 
 - [R. J. Duffin, A. C. Schaeffer, Khintchine's problem in metric Diophantine approximation, Duke Mathematical Journal (1941)](https://doi.org/10.1215/s0012-7094-41-00818-9)
 - [Dimitris Koukoulopoulos, James Maynard, On the Duffin-Schaeffer conjecture, Annals of Mathematics (2020)](https://doi.org/10.4007/annals.2020.192.1.5)
 
+### Unshifted pair correlations force uniformity
+
+**Remember:** At zero shift the density pairs with itself.
+
+*Rules out counterexamples.* MSC 11K06 (General theory of distribution modulo \\(1\\)), 11K38. arXiv math.NT. Level 4: research.
+
+**Definition.** Take a sequence of points modulo 1 and a shift γ. Among the first N points, count ordered pairs of distinct indices whose difference lies within circular distance s/N of γ. Divide by N. Call the pair correlation Poissonian at γ if this ratio tends to 2s for every s &gt; 0.
+
+**Problem.** Poissonian pair correlation at zero forces uniform distribution. Each interval receives a limiting fraction of points equal to its length. For every nonzero shift modulo 1, some sequence has Poissonian pair correlation at that shift and fails uniform distribution.
+
+**How the definition helps.** At zero shift the pair count detects excess mass where a density overlaps itself. In our own example, sample independently from the density g(x) = 1 + ½ cos(2πx) on the unit interval. At shift 1/4 the average of g(x)g(x + 1/4) equals 1, since the sine and cosine terms integrate to zero. The cited formula therefore gives Poissonian pair correlation almost surely despite the uneven density. At zero shift the average of g² exceeds 1. The general implication at zero needs a separate pair-counting argument for sequences without a density.
+
+**Paper or page:** [On Inhomogeneous Poissonian Pair Correlations](https://arxiv.org/abs/2404.16542v1), [On Inhomogeneous Poissonian Pair Correlations](https://arxiv.org/abs/2404.16542v1). It says: “that has γ-PPC but is not uniformly distributed.”
+
+**Sources:**
+
+- [On Inhomogeneous Poissonian Pair Correlations](https://arxiv.org/abs/2404.16542v1)
+
+### Li’s variable circles critical zeros
+
+**Remember:** The critical line becomes the unit circle, and zeros become poles of a logarithmic derivative.
+
+*Makes the theorem clean to state or prove.* MSC 11M26 (Nonreal zeros of \\(\\zeta (s)\\) and \\(L(s, \\chi)\\); Riemann and other hypotheses). arXiv math.NT. Level 4: research.
+
+**Definition.** Let ξ denote the entire completion of the Riemann zeta function, whose zeros are precisely the nontrivial zeta zeros. Set φ(z)=ξ(1/(1−z)). Expand φ′(z)/φ(z) in a Taylor series about zero.
+
+**Problem.** The Riemann hypothesis holds exactly when this Taylor series has radius at least 1.
+
+**How the definition helps.** The change of variable sends each zero to 1−1/ρ, whose modulus is below 1 exactly when Re ρ &gt; 1/2 (our own). A zero there gives a pole of the logarithmic derivative, with nonzero residue (our own). The work uses the functional equation to pair zeros on opposite sides of the critical line (our own). Li’s stronger positivity criterion also needs the formula for the coefficients in terms of zeros (our own).
+
+**Wikipedia:** [Li's criterion](https://en.wikipedia.org/wiki/Li%27s_criterion). It says: “Hence, φ′(z)/φ(z) is holomorphic on the unit disk \|z\| &lt; 1”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Differentiation extends the shuffle algebra to all integers
 
 **Remember:** Use the derivation, the inverse of integration, to build the larger shuffle algebra.
@@ -13035,6 +15838,40 @@ The list is long, but it is not complete. It contains only cases where the page 
 **Sources:**
 
 - [Jia Li, Jianqiang Zhao, Regularized double shuffle relations of μ-multiple Hurwitz zeta values, arXiv:2402.11689v1 (2024)](https://arxiv.org/abs/2402.11689v1)
+
+### Selberg factors telescope to Ruelle
+
+**Remember:** A shift by one cancels every geodesic factor except the first.
+
+*True by definition.* MSC 11M36 (Selberg zeta functions and regularized determinants; applications to spectral theory, Dirichlet series, Eisenstein series, etc. (explicit formulas)). arXiv math.NT. Level 4: research.
+
+**Definition.** On a closed oriented hyperbolic surface, take the lengths ℓ of oriented closed geodesics that are not repetitions of shorter ones. A geodesic is a path that is locally straight on the surface. Selberg’s Z(s) multiplies 1−exp(−(s+n)ℓ) over these geodesics and all integers n≥0. The Ruelle product R(s) uses only n=0.
+
+**Problem.** The Ruelle product is Z(s)/Z(s+1) for Re s &gt; 1 and extends meromorphically by that quotient.
+
+**How the definition helps.** Writing the Ruelle product as a quotient cancels every factor indexed by n≥1 (our own). Absolute convergence justifies this cancellation for Re s&gt;1 (our own). The quotient then gives continuation from Selberg’s theorem for Z, a step the original Ruelle product alone cannot justify (our own).
+
+**Wikipedia:** [Selberg zeta function](https://en.wikipedia.org/wiki/Selberg_zeta_function). It says: “where p runs over conjugacy classes of prime geodesics (equivalently, conjugacy classes of primitive hyperbolic elements of Γ)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Finite-field cancellation truncates Goss values
+
+**Remember:** Summing over each free coefficient kills high-degree terms at negative integers.
+
+*True by definition. Confidence: medium.* MSC 11M38 (Zeta and \\(L\\)-functions in characteristic \\(p\\)). arXiv math.NT. Level 4: research.
+
+**Definition.** Use polynomials over the field with q elements. In the degree expansion for Goss zeta, group the monic polynomials, those with leading coefficient one, by degree. At a negative integer −k, the degree d coefficient sums the kth powers of all monic polynomials of degree d.
+
+**Problem.** For k ≥ 1, only degrees at most k/(q−1) contribute to the Goss zeta value at −k.
+
+**How the definition helps.** Summing by degree exposes a separate sum over each free coefficient, which the ungrouped series hides (our own). In each expanded monomial, the field sum vanishes unless that coefficient’s exponent is a positive multiple of q−1 (our own). A degree d monic polynomial has d free coefficients (our own). A surviving monomial therefore needs total exponent at least d(q−1), while its total exponent is at most k (our own). The interpretation as a zeta value uses Goss’s continuation theorem (our own).
+
+**Wikipedia:** [Goss zeta function](https://en.wikipedia.org/wiki/Goss_zeta_function). It says: “is an analogue of the Riemann zeta function for function fields.”
+
+**Sources:**
+
+- [Jeffrey T. Sheats, The Riemann Hypothesis for the Goss Zeta Function for 𝔽q\[T\] (1998)](https://doi.org/10.1006/jnth.1998.2232)
 
 ### In the Selberg class, degree below 2 means a Dirichlet L-function
 
@@ -13074,6 +15911,24 @@ The list is long, but it is not complete. It contains only cases where the page 
 - [Y. Zhang, Bounded gaps between primes, Ann. of Math. 179 (2014) 1121–1174](https://doi.org/10.4007/annals.2014.179.3.7)
 - [J. Maynard, Small gaps between primes, Ann. of Math. 181 (2015) 383–413](https://doi.org/10.4007/annals.2015.181.1.7)
 
+### Square-root weights expose prime bias
+
+**Remember:** At the central exponent, prime squares contribute a growing log log term.
+
+*Makes the theorem clean to state or prove.* MSC 11N13 (Primes in congruence classes). arXiv math.NT. Level 4: research.
+
+**Definition.** Give each odd prime p weight 1/√p. Among primes up to x, subtract the total for residue 1 modulo 4 from the total for residue 3.
+
+**Problem.** Assume all nontrivial zeros of the Dirichlet L-function for the nonprincipal character modulo 4 have real part 1/2. Outside an exceptional set, the weighted difference equals (log log x)/2 plus a constant and an error tending to zero. The integral of dx/x over that set is finite.
+
+**How the definition helps.** The chosen weights match the linear terms when one takes the logarithm of the prime product at s=1/2 (our own). The character takes opposite signs on residues 1 and 3, but its square equals one on both (our own). The quadratic terms therefore give half the sum of 1/p over odd primes (our own). Higher powers have a convergent sum, and the reciprocal prime sum grows as log log x plus a constant with vanishing error (our own). The paper controls the prime product outside the exceptional set.
+
+**Paper or page:** [Euler Products at the Centre and Applications to Chebyshev's Bias](https://arxiv.org/abs/2405.01512v1). It says: “for all x outside a set of finite logarithmic measure.”
+
+**Sources:**
+
+- [Arshay Sheth. Euler Products at the Centre and Applications to Chebyshev's Bias](https://arxiv.org/abs/2405.01512v1)
+
 ### Hypergraphs let one density formula cover every pattern of coprimality conditions
 
 **Remember:** Draw an edge wherever a common prime power is forbidden.
@@ -13091,6 +15946,96 @@ The list is long, but it is not complete. It contains only cases where the page 
 **Sources:**
 
 - [Brian Sittinger, Vickie Chen, The Density of Tuples Restricted by Relatively r-Prime Conditions, arXiv:2106.14061v2 (2021)](https://arxiv.org/abs/2106.14061v2)
+
+### Fixed square divisors prevent Gaussian limits
+
+**Remember:** A fixed prime square makes every term in the random sum vanish.
+
+*Rules out counterexamples.* MSC 11N32 (Primes represented by polynomials; other multiplicative structures of polynomial values). arXiv math.NT. Level 4: research.
+
+**Definition.** A Rademacher random multiplicative function assigns fair independent signs to primes. It multiplies the signs on integers without repeated prime factors and vanishes elsewhere. Require that no prime square divides every value of the polynomial P.
+
+**Problem.** Let P be an irreducible integer quadratic or a product of at least two pairwise nonproportional integer linear factors, with positive leading coefficient. Sum f(P(n)) for 1≤n≤N with P(n)&gt;0, where f is the random function above. For some κ&gt;0, dividing by √(κN) gives convergence in distribution to a standard normal variable.
+
+**How the definition helps.** Excluding a fixed prime square rules out a random sum that vanishes identically (our own). For example, 4 divides every product n(n+1)(n+2)(n+3) (our own). The work lies in proving that enough values have no repeated prime factor and that the surviving terms have a normal limit (our own).
+
+**Paper or page:** [Random Chowla's Conjecture for Rademacher Multiplicative Functions](https://arxiv.org/abs/2409.05952v2). It says: “Suppose that there is no prime p for which p² ∣ P(n) for all n ∈ ℕ.”
+
+**Sources:**
+
+- [Jake Chinis, Besfort Shala. Random Chowla's Conjecture for Rademacher Multiplicative Functions](https://arxiv.org/abs/2409.05952v2)
+
+### Counting remainders continue Beurling zeta
+
+**Remember:** Subtract the linear count so that the smaller remainder sets the convergence line.
+
+*True by definition.* MSC 11N80 (Generalized primes and integers). arXiv math.NT. Level 4: research.
+
+**Definition.** Give each generalized prime a real size greater than one, with sizes tending to infinity. Let N(x) count unordered prime products of size at most x, counting the empty product and distinguishing factorizations. Set R(x)=N(x)−κ(x−1) for x≥1. The Beurling zeta function sums exp(−s log v) over these products, where v is their size.
+
+**Problem.** Suppose κ &gt; 0 and \|R(x)\| is bounded by a constant times x to the power θ, with θ &lt; 1. Then ζ extends to Re s &gt; θ, with only a simple pole at 1 of residue κ.
+
+**How the definition helps.** Subtracting the linear count isolates the pole that the original zeta series hides (our own). For Re s&gt;1, the linear term contributes κ/(s−1) (our own). Integration by parts expresses the remainder as s times the integral of R(x) exp(−s log x) against dx/x from one to infinity (our own). The growth bound makes this integral holomorphic for Re s&gt;θ (our own). The main arithmetic work lies in proving that growth bound (our own).
+
+**Paper or page:** [Distribution of Beurling primes and zeroes of the Beurling zeta function I. Distribution of the zeroes of the zeta function of Beurling](https://arxiv.org/abs/2012.09045v3). It says: “\|ζ(s) − κ/(s−1)\| ≤ A\|s\|/(σ−θ)”
+
+**Sources:**
+
+- [Szilárd Gy. Révész. Distribution of Beurling primes and zeroes of the Beurling zeta function I. Distribution of the zeroes of the zeta function of Beurling](https://arxiv.org/abs/2012.09045v3)
+
+### Prime labels preserve Möbius inversion
+
+**Remember:** Invert each labeled prime factor before combining products of equal size.
+
+*True by definition. Confidence: medium.* MSC 11N80 (Generalized primes and integers). arXiv math.NT. Level 4: research.
+
+**Definition.** Assign each prime label a real size greater than one, with sizes tending to infinity. Count unordered products of labels separately even when their sizes agree. Give a product Möbius weight zero if a label repeats and weight (−1)ᵏ otherwise, where k counts its labels. Include the empty product of size and weight one.
+
+**Problem.** Form the Beurling zeta series by summing exp(−s log v) over all products of size v, including multiplicities. Wherever this series converges absolutely, its reciprocal equals the same series with each term multiplied by its Möbius weight.
+
+**How the definition helps.** Distinct labels give each product exactly one factorization, so multiplying the inverse prime factors gives its Möbius weight (our own). For prime sizes 2 and 4, the prime of size 4 contributes −1, while the repeated factor 2 contributes zero (our own). Grouping only by size requires adding those contributions (our own). Absolute convergence justifies multiplying and regrouping the series (our own).
+
+**Wikipedia:** [Beurling zeta function](https://en.wikipedia.org/wiki/Beurling_zeta_function). It says: “A Beurling generalized integer is a number that can be written as a product of Beurling generalized primes.”
+
+**Paper or page:** [The average order of the Möbius function for Beurling primes](https://arxiv.org/abs/1901.06866v2). It says: “Here Mℙ(x) is the partial sum of the Möbius function over 𝒩 not exceeding x.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Real solution density makes positivity local
+
+**Remember:** A smooth zero with positive weight sends positive mass near zero.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 11P55 (Applications of the Hardy-Littlewood method). arXiv math.NT. Level 4: research.
+
+**Definition.** Let F map ℝˢ smoothly to ℝʳ, and let w be a nonnegative smooth function with compact support. Integrate w over points whose images lie in a cube of side 2ε centered at zero. The real solution density is the limit of this integral divided by the cube’s volume as ε decreases to zero, when the limit exists.
+
+**Problem.** Assume F has derivative of rank r at every zero in the support of w. Then the normalized mass has a finite limit, which is positive if w is positive at any zero.
+
+**How the definition helps.** Measuring mass near zero makes positivity visible in a single neighborhood of a solution. In our own proof, the rank assumption gives local coordinates in which F selects the first r coordinates. Integration over the remaining coordinates gives a continuous density and a positive contribution wherever w is positive at a solution. Compactness lets finitely many neighborhoods cover the relevant zeros. The cited paper identifies a normalized integral with a real density in its particular quadratic setting.
+
+**Paper or page:** [Solving quadratic forms in restricted variables with the circle method](https://arxiv.org/abs/2505.17949v1). It says: “can be interpreted as a local density over the reals inside the compact set 𝔅.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Bailey pairs generate identity chains
+
+**Remember:** Keep the relation, and each new pair can start the next step.
+
+*Makes the theorem clean to state or prove.* MSC 11P84 (Partition identities; identities of Rogers-Ramanujan type), 11B65. arXiv math.NT, math.CO. Level 4: research.
+
+**Definition.** Fix a and q with all denominators below nonzero. Write (x;q)ₘ for the product of the m factors 1 − xqʲ with 0 ≤ j &lt; m. Two sequences α and β form a Bailey pair if the following rule holds for every n ≥ 0. Sum αᵣ divided by the product (q;q)ₙ₋ᵣ(aq;q)ₙ₊ᵣ over integers r from 0 to n to obtain βₙ.
+
+**Problem.** Bailey’s lemma transforms a Bailey pair into another pair at the same a and q, with free parameters for which the denominators do not vanish. One may iterate the limiting transformation to produce a chain of finite sum identities.
+
+**How the definition helps.** A Bailey pair records the exact relation that each successive application of the lemma requires. The lemma gives formulas for two new sequences and proves that they satisfy the same relation. The work lies in that finite summation identity. In our own reading, preservation of the relation explains why every output can serve as the next input.
+
+**Wikipedia:** [Bailey pair](https://en.wikipedia.org/wiki/Bailey_pair). It says: “This process can be iterated to produce an infinite sequence of Bailey pairs, called a Bailey chain.”
+
+**Paper or page:** [Truncated theta series from the Bailey lattice](https://arxiv.org/abs/2403.11608v2). It says: “If (αₙ, βₙ) is a Bailey pair relative to a, then so is (α′ₙ, β′ₙ)”
+
+**Sources:**
+
+- [W. N. Bailey, Identities of the Rogers-Ramanujan Type](https://doi.org/10.1112/plms/s2-50.1.1)
 
 ### Monic polynomials are Hermite equivalent exactly when their rings ℤ\[X\]∕(f) are isomorphic
 
@@ -13148,6 +16093,24 @@ The list is long, but it is not complete. It contains only cases where the page 
 
 - [Ehsan Shahoseini, Ali Rajaei, Abbas Maarefparvar, Ostrowski quotients for finite extensions of number fields, Pacific J. Math. 321 (2022) 415-429, arXiv:2111.00442](https://arxiv.org/abs/2111.00442)
 
+### Galois sets identify completions
+
+**Remember:** Restrict the Galois action to read the local field factors.
+
+*Makes the theorem clean to state or prove.* MSC 11R32 (Galois theory). arXiv math.NT. Level 4: research.
+
+**Definition.** Let L be a finite Galois extension of ℚ with group G. For an intermediate field K fixed by H, the cosets H∖G represent the embeddings of K into L. For a prime of L above p, its decomposition group D consists of the automorphisms preserving that prime.
+
+**Problem.** For two intermediate fields, form the products of their completions above p. These products are isomorphic as ℚₚ-algebras exactly when their coset sets are isomorphic with the action of D.
+
+**How the definition helps.** Restricting the coset action to D records the local fields and their multiplicities together (our own). Each orbit supplies one completion, the field fixed by a point stabilizer inside the chosen completion of L (our own). The converse uses the correspondence between finite separable algebras and finite sets with Galois action (our own). The cited proposition applies this argument to fields whose coset actions have equal fixed-point counts for every element of G (our own).
+
+**Paper or page:** [Stronger arithmetic equivalence](https://arxiv.org/abs/2104.01956v4). It says: “if and only if \[H₁∖G\] and \[H₂∖G\] are isomorphic as D𝔭-sets.”
+
+**Sources:**
+
+- [Andrew V. Sutherland, Stronger arithmetic equivalence (Proposition 2.19)](https://arxiv.org/abs/2104.01956v4)
+
 ### Locally integrally equivalent number fields have isomorphic class groups
 
 **Remember:** Keep integer information at every prime, and the class group survives.
@@ -13165,6 +16128,76 @@ The list is long, but it is not complete. It contains only cases where the page 
 **Sources:**
 
 - [Andrew V. Sutherland, Stronger arithmetic equivalence, arXiv:2104.01956v4 (2021). Discrete Anal. 2021, Paper No. 23, 23 pp](https://arxiv.org/abs/2104.01956v4)
+
+### Cartesian conditions preserve Selmer torsion
+
+**Remember:** Pull back the local tests to get the same test on torsion.
+
+*Makes the theorem clean to state or prove.* MSC 11R34 (Galois cohomology), 11F80. arXiv math.NT. Level 4: research.
+
+**Definition.** A Selmer group consists of global Galois cohomology classes whose restrictions satisfy chosen tests at each prime. Let T be a free module over a discrete valuation ring modulo πᵐ, where π generates the maximal ideal. Cartesian tests on the points killed by πⁱ are inverse images of the tests on T. On T modulo πⁱ, transport those tests by multiplication by π to the power m − i.
+
+**Problem.** Suppose the Galois group of the number field fixes no nonzero element of T modulo π. For 1 ≤ i ≤ m, both smaller Selmer groups identify with the subgroup killed by πⁱ in the Selmer group on T.
+
+**How the definition helps.** Pulling the tests back makes membership on the smaller module exactly membership of its image on T (our own). The absence of fixed vectors gives the needed injections through the exact sequences of Galois cohomology (our own). These sequences identify the image with the classes killed by πⁱ (our own). The cited theorem verifies the Cartesian property for a particular family of tests.
+
+**Paper or page:** [Bipartite Euler Systems for certain Galois Representations](https://arxiv.org/abs/2302.05181v1). It says: “The Selmer structure ℱ(𝔫) is cartesian for any 𝔫 ∈ 𝒩.”
+
+**Sources:**
+
+- [Bipartite Euler Systems for certain Galois Representations](https://arxiv.org/abs/2302.05181v1)
+
+### Unit cohomology detects capitulation
+
+**Remember:** A generator upstairs records the lost class through its conjugates.
+
+*Makes the theorem clean to state or prove.* MSC 11R34 (Galois cohomology), 11R29. arXiv math.NT. Level 4: research.
+
+**Definition.** For a finite Galois extension K/F, choose a finite set S containing all infinite places and all ramified finite primes of F. Form ideal classes using only prime factors outside S and identifying ideals differing by a principal ideal outside S. An S-unit is a nonzero element with prime exponent zero outside S. Upstairs, use the primes above S.
+
+**Problem.** The kernel of extension on S-ideal classes is the first cohomology of the Galois group acting on the S-units of K.
+
+**How the definition helps.** Ratios of conjugates encode a class that becomes principal upstairs without retaining its choice of generator (our own). If a generates the extended ideal outside S, each ratio g(a)/a is an S-unit (our own). These ratios satisfy c(gh) = c(g)g(c(h)) (our own). First cohomology groups such families modulo those obtained from S-units in place of a (our own). Hilbert’s Theorem 90 supplies a field element a for every family (our own). Its ideal outside S descends because no prime there ramifies (our own).
+
+**Paper or page:** [The S-relative Pólya groups and S-Ostrowski quotients of number fields](https://arxiv.org/abs/2312.09362v1). It says: “0 → Ker(ε<sub>K/F,S</sub>) → H¹(G,U<sub>K,S</sub>)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A torus detects common scales
+
+**Remember:** One cohomology class records whether all norms share a scale.
+
+*Makes the theorem clean to state or prove.* MSC 11R37 (Class field theory), 11S25. arXiv math.NT. Level 4: research.
+
+**Definition.** Take finite separable extensions of a number field K. Map a tuple of nonzero extension elements and one nonzero base scalar to their field norms multiplied by that common scalar. Let T be the kernel as an algebraic group over K. It is a torus, meaning it becomes a product of multiplicative groups over a separable closure.
+
+**Problem.** Suppose a tuple of nonzero base elements becomes a tuple of norms after common rescaling at each completion of K. The projective Hasse norm principle asks whether one scalar in K suffices. It holds exactly when the map from first Galois cohomology of T to the product of its local counterparts is injective.
+
+**How the definition helps.** The kernel torus assigns one obstruction class to the entire tuple, retaining the requirement of a common scalar (our own). The connecting map in Galois cohomology assigns this class, which vanishes exactly when the tuple has a preimage (our own). Hilbert’s theorem 90 shows that every class arises this way, both globally and locally (our own). Thus injectivity says that vanishing at every completion forces global vanishing (our own).
+
+**Paper or page:** [A Projective Twist on the Hasse Norm Theorem](https://arxiv.org/abs/2410.11159v1). It says: “{PHNP} \_K(L<sub>1</sub>, L<sub>2</sub>, \\ldots , L<sub>n</sub>) is true if and only if H<sup>1</sup>(L/K, \\mathbf {T}(L)) \\to \\prod <sub>w\\mid v</sub> H<sup>1</sup>(L<sub>w</sub>/K<sub>v</sub>, \\mathbf {T}(L<sub>w</sub>)) is injective.”
+
+**Sources:**
+
+- [Thomas Rüd, Alan Bu, A Projective Twist on the Hasse Norm Theorem](https://arxiv.org/abs/2410.11159v1)
+
+### Local unit intersections join ring class fields
+
+**Remember:** Intersect the subgroups to join the fields.
+
+*True by definition.* MSC 11R37 (Class field theory). arXiv math.NT. Level 4: research.
+
+**Definition.** Let K be an imaginary quadratic field with ring of integers O and units ±1. For a positive integer f, the order of conductor f is the subring ℤ + fO. Finite ideles are tuples of nonzero local elements that are units almost everywhere. Class field theory assigns the ring class field to the subgroup generated by diagonal elements of K× and the completed order’s local units.
+
+**Problem.** The smallest field containing the ring class fields of conductors f and g is the ring class field of their least common multiple.
+
+**How the definition helps.** The subgroup description turns the field calculation into an intersection (our own). Class field theory assigns the smallest field containing both to the intersection of their defining subgroups (our own). For an idele in both subgroups, the two diagonal factors differ by a unit of O (our own). Both possible units belong to every order (our own). At each rational prime, the intersection takes the smaller unit group, corresponding to the larger prime exponent in the conductor (our own). This computes the conductor without constructing generators for either field (our own).
+
+**Paper or page:** [CM Elliptic Curves: Volcanoes, Reality and Applications](https://arxiv.org/abs/2212.13316v1). It says: “The compositum of finitely many ring class fields of K is a ring class field of K.”
+
+**Sources:**
+
+- [CM Elliptic Curves: Volcanoes, Reality and Applications (Corollary 4.4)](https://arxiv.org/abs/2212.13316v1)
 
 ### Normalized Haar measure gives Riemann–Roch from Poisson summation
 
@@ -13201,6 +16234,150 @@ The list is long, but it is not complete. It contains only cases where the page 
 **Sources:**
 
 - [Zhiguo Ding, Wei Xiong, Qifan Zhang, Exceptional extensions of local fields and the Carlitz--Wan conjecture, arXiv:2505.12877v1 (2025)](https://arxiv.org/abs/2505.12877v1)
+
+### Logarithmic coordinates diagonalize graded differentiation
+
+**Remember:** In the basis dt/t, differentiating a pole multiplies its coefficient by minus its order.
+
+*True by definition.* MSC 11S15 (Ramification and extension theory). arXiv math.NT. Level 4: research.
+
+**Definition.** In the Laurent series field k((t)), let k be a perfect field of characteristic p, so every element has a pth root. Write continuous differentials as multiples of dt/t. Filter both functions and differentials by allowing their coefficients to have poles of order at most n.
+
+**Problem.** On the quotient that retains only the coefficient of pole order n, differentiation acts by multiplication by −n in the basis dt/t.
+
+**How the definition helps.** Using dt/t keeps the coefficient at the same pole order (our own calculation). Differentiating t⁻ⁿ gives −n times t⁻ⁿ dt/t, so the induced map vanishes when p divides n. The basis dt would shift the order by one. The cited lemma also proves that the identification on these quotients is independent of the parameter.
+
+**Paper or page:** [Ramification groups of some finite Galois extensions of maximal nilpotency class over local fields of positive characteristic](https://arxiv.org/abs/2102.07928v4). It says: “The derivation d induces a morphism ∂ : Grₙ K → Grₙ Ω¹ₖ. We have ∂ = −n ⋅ μ.”
+
+**Sources:**
+
+- [Ramification groups of some finite Galois extensions of maximal nilpotency class over local fields of positive characteristic](https://arxiv.org/abs/2102.07928v4)
+
+### Drinfeld division points detect norms
+
+**Remember:** A zero symbol means the norm residue action fixes the division point.
+
+*True by definition.* MSC 11S31 (Class field theory; \\(p\\)-adic formal groups). arXiv math.NT. Level 4: research.
+
+**Definition.** Over a local field of positive characteristic, a formal Drinfeld module uses additive power series for scalar multiplication. Assume stable reduction of height one, as in the cited proposition, and that L contains all points killed by the chosen division map. For α in the maximal ideal, choose a division point ξ mapping to α. For nonzero β in L, the symbol subtracts ξ from its image under the automorphism assigned to β by local reciprocity.
+
+**Problem.** The formal Drinfeld norm residue symbol is zero exactly when β is a norm from the field obtained by adjoining ξ.
+
+**How the definition helps.** Defining the symbol as a difference replaces an explicit formula with a test for fixing one point (our own). The conjugates of ξ differ from ξ by division torsion, which already lies in L (our own). The Galois group therefore acts by translations and is abelian (our own). Local reciprocity says the elements acting trivially on L(ξ) are precisely its norms (our own).
+
+**Paper or page:** [The norm residue symbol for formal Drinfeld modules](https://arxiv.org/abs/2211.10368v1). It says: “β is a norm from L(ξ)”
+
+**Sources:**
+
+- [Marwa Ala Eddine, The norm residue symbol for formal Drinfeld modules](https://arxiv.org/abs/2211.10368v1)
+
+### Drinfeld symbols commute with norms
+
+**Remember:** An Artin action upstairs restricts to the action of the norm downstairs.
+
+*True by definition.* MSC 11S31 (Class field theory; \\(p\\)-adic formal groups). arXiv math.NT. Level 4: research.
+
+**Definition.** Over a local field of positive characteristic, a formal Drinfeld module uses additive power series for scalar multiplication. Assume stable reduction of height one, as in the cited proposition, and that L contains all points killed by the chosen division map. For α in the maximal ideal, choose a division point ξ mapping to α. For nonzero β in L, the symbol subtracts ξ from its image under the automorphism assigned to β by local reciprocity.
+
+**Problem.** Let M/L be finite separable, let α belong to the maximal ideal of L, and let β be nonzero in M. The symbol over M equals the symbol over L evaluated at α and the norm of β.
+
+**How the definition helps.** Using the same division point in both fields replaces comparison of explicit symbol formulas by restriction of automorphisms (our own). Local reciprocity says the automorphism attached to β restricts to the automorphism attached to its field norm (our own). Their displacements of ξ therefore agree (our own).
+
+**Paper or page:** [The norm residue symbol for formal Drinfeld modules](https://arxiv.org/abs/2211.10368v1). It says: “Then (\\alpha ,\\beta )<sub>M,n</sub> =(\\alpha ,\\operatorname {N}<sub>M\|L</sub>(\\beta ))<sub>L,n</sub>.”
+
+**Sources:**
+
+- [Marwa Ala Eddine, The norm residue symbol for formal Drinfeld modules](https://arxiv.org/abs/2211.10368v1)
+
+### Deleting one factor restores continuity
+
+**Remember:** Remove the factor whose exponent behaves discontinuously in the p-adic distance.
+
+*Rules out counterexamples.* MSC 11S40 (Zeta functions and \\(L\\)-functions), 11M41. arXiv math.NT. Level 4: research.
+
+**Definition.** Fix an odd prime p. Two integers are close in the p-adic distance when a high power of p divides their difference. For positive multiples n of p−1, multiply the Riemann zeta value ζ(1−n) by one minus p to the power n−1.
+
+**Problem.** These corrected values extend continuously in the p-adic variable n away from n=0, where the extension has a pole. For p=5, the original values have no continuous extension at n=4.
+
+**How the definition helps.** Removing the Euler factor avoids a discontinuity from taking powers of 5 (our own). Take n = 4 + 4·5ᵏ, so n tends to 4 in the 5-adic distance (our own). But 5 to the power n−1 tends to 0 along these indices (our own). The corrected values therefore force the uncorrected limit to be (1−5³)ζ(−3), not ζ(−3) (our own). The work moves to the Kubota–Leopoldt interpolation theorem, which uses Kummer’s congruences to control the corrected values (our own).
+
+**Wikipedia:** [P-adic L-function](https://en.wikipedia.org/wiki/P-adic_L-function). It says: “except that the Euler factor at p is removed, otherwise it would not be p-adically continuous.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Regularization bounds Bernoulli weights
+
+**Remember:** Subtract the rescaled Bernoulli weight to cancel the denominator N.
+
+*Rules out counterexamples.* MSC 11S80 (Other analytic theory (analogues of beta and gamma functions, \\(p\\)-adic integration, etc.)). arXiv math.NT. Level 4: research.
+
+**Definition.** Fix an odd prime p and positive integers d and c, with c ≥ 2 coprime to dp. At modulus N = dpⁿ, give each least nonnegative representative a the weight w(a) = a/N − 1/2. Let b represent c⁻¹a modulo N in the same range. The corrected weight is w(a) − cw(b).
+
+**Problem.** For odd p the regularized distribution is a bounded p-adic measure, even though the original Bernoulli distribution is not.
+
+**How the definition helps.** The correction puts a multiple of N in the numerator (our own calculation). The result is (a − cb)/N + (c − 1)/2, which belongs to the p-adic integers for odd p. The original weights add correctly under subdivision of residue classes, and multiplication by c permutes those subdivisions. The corrected weights therefore still add correctly and define a bounded measure (our own argument). With d = a = 1, the original weights have unbounded p-adic absolute value as n grows.
+
+**Paper or page:** [Dirichlet Series Expansions of p-adic L-Functions](https://arxiv.org/abs/2102.02851v3). It says: “Let p be a prime, c, d ∈ ℕ, and c ≥ 2 such that (c, dp) = 1.”
+
+**Sources:**
+
+- [Dirichlet Series Expansions of p-adic L-Functions](https://arxiv.org/abs/2102.02851v3)
+
+### Convolution lifts Gaussian periods
+
+**Remember:** Fourier transformation turns the lift of periods into a power of Gauss sums.
+
+*Makes the theorem clean to state or prove.* MSC 11T22 (Cyclotomy), 11T24. arXiv math.NT. Level 4: research.
+
+**Definition.** Let e ≥ 2 divide q − 1, and label the multiplicative cosets of the eth powers in 𝔽q by integers modulo e. On each coset, sum a fixed nontrivial additive character, a homomorphism from addition to complex multiplication. These sums define the Gaussian period function. In extensions, label cosets through the norm and lift the character through the trace, respectively the product and sum of conjugates.
+
+**Problem.** Over the degree n extension, the Gaussian period function equals the n-fold cyclic convolution of the base function times the sign (−1)ⁿ⁻¹.
+
+**How the definition helps.** In our own explanation, treating all periods as one function expresses their lifting law by one convolution power. Convolution at index i sums products of values over pairs of indices adding to i modulo e. Fourier transformation turns convolution into ordinary multiplication and transforms the periods into Gauss sums. The Davenport–Hasse theorem gives the signed power formula for those sums. Fourier inversion gives the claimed formula for periods.
+
+**Paper or page:** [Davenport and Hasse's theorems and lifts of multiplication matrices of Gaussian periods](https://arxiv.org/abs/2105.14872). It says: “is the n-fold product of ηᵣ with respect to the convolution product.”
+
+**Sources:**
+
+- [Akinari Hoshi and Kazuki Kanai, Davenport and Hasse's theorems and lifts of multiplication matrices of Gaussian periods](https://arxiv.org/abs/2105.14872)
+
+### Frobenius traces give Kloosterman recurrences
+
+**Remember:** A Kloosterman sum over an extension is the negative trace of a Frobenius power.
+
+*True by definition.* MSC 11T23 (Exponential sums), 14F20. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Fix a nonzero element a of a finite field and a nontrivial additive character ψ, a homomorphism from addition to complex multiplication. For each degree n extension, sum ψ(Tr(ax + 1/x)) over its nonzero elements x. The trace Tr adds the field conjugates. Represent these Kloosterman sums using a single cohomology space attached to the function ax + 1/x.
+
+**Problem.** Write S(n) for the sum in degree n. For n ≥ 1, it satisfies S(n+2) = −S(1)S(n+1) − bS(n), where b = (S(1)² + S(2))/2.
+
+**How the definition helps.** In our own deduction, the cohomology description gives all extension sums as negative traces of powers of one two-dimensional operator F. The cited calculation gives dimension two in degree one and zero elsewhere. The cohomological trace formula identifies each sum with −tr(Fⁿ), replacing a separate calculation in every field. The characteristic polynomial of F then gives the recurrence, with b equal to its determinant.
+
+**Paper or page:** [Matrix Kloosterman sums](https://arxiv.org/abs/2109.00762). It says: “\\\[\\dim H<sup>i<sub>c</sub></sup>(\\mathbb {A}<sup>1\\setminus</sup> \\mathbb {A}<sup>0</sup>,f\_\\alpha )=\\left \\{\\begin {array}{ll}2, &amp; \\mathrm {if\~} i=1,\\\\ 0, &amp; \\mathrm {if\~} i\\neq 1\\end {array}\\right .\\\]”
+
+**Sources:**
+
+- [Márton Erdélyi and Árpád Tóth, Matrix Kloosterman sums](https://arxiv.org/abs/2109.00762)
+
+### Character spaces isolate Jacobi factors
+
+**Remember:** Each character pair labels its own Frobenius eigenvalue.
+
+*Makes the theorem clean to state or prove.* MSC 11T24 (Other character sums and Gauss sums), 14G10. arXiv math.NT, math.AG. Level 4: research.
+
+**Definition.** Take the smooth projective Fermat curve with affine equation xᵐ + yᵐ = 1, where m is a prime power dividing q − 1. Multiplying either coordinate by an mth root of unity preserves the curve. Split its first étale cohomology, the vector space recording its zeta numerator, into spaces where these scalings act by fixed characters.
+
+**Problem.** Each pair χ, ψ of nontrivial multiplicative characters of 𝔽q with orders dividing m and nontrivial product labels a one-dimensional space. Frobenius acts there by −∑χ(x)ψ(1 − x), summing over 𝔽q and extending the characters by zero at zero.
+
+**How the definition helps.** In our own explanation, splitting by characters lets us specify which Jacobi sum belongs to each Frobenius eigenvalue. Frobenius preserves the spaces because all the scalings are defined over the base field. Computing their dimensions and identifying their eigenvalues with character sums still requires the cohomological point-count formula.
+
+**Paper or page:** [On the variation of the Frobenius in a non abelian Iwasawa tower](https://arxiv.org/abs/2203.16774). It says: “The eigenvalues of $\\sigma \_q$ on the eigenspace $M<sub>n</sub>(\\eta )$ are given by the Jacobi sum 
+
+\\\[ -J<sub>q</sub>(\\chi \_1,\\chi \_2) = -\\sum <sub>x \\in \\mathbb F<sub>q</sub></sub>\\chi \_1(x)\\chi \_2(1-x). \\\]”
+
+**Sources:**
+
+- [Asvin G, On the variation of the Frobenius in a non abelian Iwasawa tower](https://arxiv.org/abs/2203.16774)
 
 ## 12 Field theory and polynomials
 
@@ -15979,6 +19156,22 @@ The list is long, but it is not complete. It contains only cases where the page 
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Perfect residue fields give Witt reduction modulo p
+
+**Remember:** Perfect residue fields make the Witt shift the same as divisibility by p.
+
+*Rules out counterexamples. Confidence: medium.* MSC 13F35 (Witt vectors and related rings), 11S85. arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let W(k) be the ring of p-typical Witt vectors, infinite sequences with operations given by the Witt polynomials. Reduction takes the first entry. A perfect field of characteristic p is one where raising to the pth power is bijective.
+
+**Problem.** For a perfect field k of characteristic p, reduction identifies W(k)/pW(k) with k. In particular, for finite k this recovers the residue field of the unramified p-adic integer ring W(k). The identification fails for k = 𝔽ₚ(t).
+
+**How the definition helps.** Perfection supplies a pth root for each entry after the initial zero (our own argument). In characteristic p, multiplication by p raises every entry to its pth power and inserts zero at the front. Thus its image is exactly the kernel of reduction. Over the rational function field 𝔽ₚ(t), the vector (0, t, 0, …) gives a counterexample because t has no pth root. The multiplication formula uses the Witt polynomial identities (our own proof).
+
+**nLab:** [ring of Witt vectors](https://ncatlab.org/nlab/show/ring+of+Witt+vectors). It says: “the Verschiebung morphism coincides with the shift (a₀, a₁, …) ↦ (0, a₀, a₁, …)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Excellent rings shut out Nagata's badly behaved Noetherian rings
 
 **Remember:** Excellent rings are the Noetherian rings that behave like geometry expects.
@@ -17957,6 +21150,40 @@ The list is long, but it is not complete. It contains only cases where the page 
 
 - [James S. Milne, Étale Cohomology, Chapter III (1980)](https://doi.org/10.1515/9781400883981)
 
+### Crystalline Frobenius needs no lift
+
+**Remember:** Use all thickenings so Frobenius acts without choosing a lift.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology). arXiv math.AG, math.NT. Level 3: graduate.
+
+**Definition.** A thickening presents a scheme inside a larger scheme by an ideal of functions that vanish on it. Divided powers on that ideal obey the identities for xⁿ/n!, even when division by n! is impossible. Crystalline cohomology uses compatible local data on such thickenings, with their divided powers, over the chosen base.
+
+**Problem.** For a smooth scheme over 𝔽ₚ, absolute Frobenius induces a natural endomorphism on its crystalline cohomology over ℤₚ. No lift of Frobenius on a characteristic-zero model is required.
+
+**How the definition helps.** Using all thickenings gives pullback for maps of the original scheme (our own explanation). In characteristic p, raising functions to the pth power defines the absolute Frobenius map. Over 𝔽ₚ it fixes the base, so its pullback acts on crystalline cohomology. Computing this action through differential forms on a smooth lift uses the crystalline comparison theorem (our own explanation).
+
+**nLab:** [crystalline cohomology](https://ncatlab.org/nlab/show/crystalline+cohomology). It says: “Crystalline cohomology is the abelian sheaf cohomology with respect to the crystalline site of a scheme.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Divided power envelopes descend through quotients
+
+**Remember:** To kill a relation in an envelope, kill all its divided powers.
+
+*True by definition.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology). arXiv math.AG. Level 3: graduate.
+
+**Definition.** Divided powers on an ideal are operations that obey the identities for xⁿ/n!, even when division by n! is impossible. The envelope of J receives a map from its ring that sends J into a divided power ideal. Every such map respecting the base operations factors uniquely through the envelope.
+
+**Problem.** Let B′ → B be a surjection of algebras over a divided power base. For an ideal J of B containing the base divided power ideal, form the envelope of its inverse image in B′. The envelope in B is its quotient by all positive divided powers of elements of the kernel.
+
+**How the definition helps.** The universal property identifies which relations to impose without computing a presentation (our own explanation). A map factors through the quotient ring exactly when it kills the kernel of B′ → B. Respecting divided powers then forces it to kill every positive divided power of each kernel element. The work is proving these relations allow the operations to descend to the quotient envelope (our own argument).
+
+**Paper or page:** [Lemma 64.2.3.](https://stacks.math.columbia.edu/tag/07HB). It says: “where K′ is the ideal generated by the elements γ̄ₙ(k) for n ≥ 1 and k ∈ K.”
+
+**Sources:**
+
+- [The Stacks Project Authors, Lemma 64.2.3.](https://stacks.math.columbia.edu/tag/07HB)
+
 ### Defining π₁ by unramified Galois extensions makes the function-field Galois map surjective
 
 **Remember:** Restricting automorphisms to a Galois subextension gives a quotient.
@@ -18009,6 +21236,128 @@ The list is long, but it is not complete. It contains only cases where the page 
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Zeta coefficients count symmetric powers
+
+**Remember:** An effective zero-cycle is a multiset of geometric points fixed by Frobenius.
+
+*True by definition.* MSC 14G10 (Zeta functions and related questions in algebraic geometry (e.g., Birch-Swinnerton-Dyer conjecture)), 14G15. arXiv math.AG, math.NT. Level 3: graduate.
+
+**Definition.** Over a finite field, a closed point corresponds to an orbit of geometric points under Frobenius, the map raising coordinates to the field size. An effective zero-cycle assigns nonnegative multiplicities to finitely many closed points. Its degree counts geometric points with multiplicities. Define the zeta series by counting these cycles by degree.
+
+**Problem.** For a quasi-projective variety over a finite field, its nth zeta coefficient counts rational points of its nth symmetric power, which parametrizes unordered n-tuples.
+
+**How the definition helps.** In our own explanation, a rational unordered tuple is precisely a multiset that Frobenius preserves. Multiplicities are constant on each orbit, so such tuples correspond to effective zero-cycles of degree n. The symmetric power realizes unordered tuples as a quotient by permutations. Grouping extension point counts by Frobenius orbits recovers the usual exponential formula for the zeta series.
+
+**Paper or page:** [A MacDonald formula for zeta functions of varieties over finite fields](https://arxiv.org/abs/1707.03479). It says: “For X a quasi-projective variety over 𝔽q, Nᵣ(Symⁿ X) = φ(Nᵣ(X), N₂ᵣ(X), …, Nₙᵣ(X))”
+
+**Sources:**
+
+- [Jonathan Huang, A MacDonald formula for zeta functions of varieties over finite fields](https://arxiv.org/abs/1707.03479)
+
+### Zeta numerators count Jacobian points
+
+**Remember:** At one, the zeta numerator counts rational divisor classes of degree zero.
+
+*True by definition.* MSC 14G10 (Zeta functions and related questions in algebraic geometry (e.g., Birch-Swinnerton-Dyer conjecture)), 11G20. arXiv math.AG, math.NT. Level 3: graduate.
+
+**Definition.** Take a smooth projective geometrically connected curve over a field of size q. Its Jacobian parametrizes divisor classes of degree zero. Let F act on compatible prime-power torsion by raising point coordinates to the qth power. Write the zeta numerator as det(1 − tF) on the resulting rational vector space, using a prime different from the field characteristic.
+
+**Problem.** The value of this numerator at one equals the number of rational points of the Jacobian.
+
+**How the definition helps.** In our own explanation, setting t equal to one gives the determinant of the map whose kernel consists of rational points. The derivative of 1 − F is the identity, so its degree counts the points in this kernel. The degree theorem identifies that degree with the determinant on the Tate module. The cited comparison connects this calculation to the zeta function defined by counting points on the curve over extensions.
+
+**Paper or page:** [The Torelli locus and Newton polygons](https://arxiv.org/abs/2509.00998). It says: “The characteristic polynomial of the Frobenius endomorphism of Jac(C) is P(Jac(C)/𝔽q,T) = T²ᵍL(C/𝔽q,T⁻¹).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Brauer evaluations constrain rational points
+
+**Remember:** Evaluations of a global point must cancel across all places.
+
+*Makes the theorem clean to state or prove.* MSC 14G12 (Hasse principle, weak and strong approximation, Brauer-Manin obstruction), 14G05. arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** For a variety over a number field, consider a point in each completion, with integral coordinates outside finitely many primes on a fixed integral model. A Brauer class assigns each local point a class of algebras with a numerical invariant in ℚ/ℤ. The Brauer–Manin set keeps exactly the families for which these invariants sum to zero for every Brauer class.
+
+**Problem.** Every rational point gives a family in the Brauer–Manin set. An empty Brauer–Manin set therefore rules out a rational point even when points exist in every completion.
+
+**How the definition helps.** The sum tests whether all local evaluations could come from one global point, in our own explanation. At a global point each local evaluation comes from the same algebra class over the number field. Global reciprocity says its local invariants sum to zero. The cited theorem gives examples for each odd prime p over number fields containing a primitive pth root of unity. In those examples a single class of order p obstructs rational points.
+
+**Paper or page:** [Pullback Method with Applications to Severi-Brauer Fibrations](https://arxiv.org/abs/2410.15125v3). It says: “Moreover, the obstruction is captured by a single Brauer class of order p.”
+
+**Sources:**
+
+- [Pullback Method with Applications to Severi-Brauer Fibrations](https://arxiv.org/abs/2410.15125v3)
+
+### Tate–Shafarevich detects Hasse failures
+
+**Remember:** Keep the torsors that acquire an origin over every completion.
+
+*True by definition.* MSC 14G12 (Hasse principle, weak and strong approximation, Brauer-Manin obstruction), 11G10. arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** An abelian variety is a projective algebraic group. A torsor for it becomes a copy of the group acting by translations after extending the field. The Tate–Shafarevich group of the variety consists of torsor classes with points in every completion of the number field. These completions include real or complex fields at infinity and local fields at finite primes.
+
+**Problem.** Every torsor with points in all completions has a point over the number field exactly when the Tate–Shafarevich group vanishes.
+
+**How the definition helps.** The group collects exactly the torsors that pass every local test. A point over the number field supplies an origin and identifies the torsor with the group acting on itself. This is the zero class. Our own comparison uses the cohomological definition, which takes the kernel of restriction to all completions. The theorem classifying torsors by Galois cohomology identifies that kernel with the geometric description.
+
+**Wikipedia:** [Tate–Shafarevich group](https://en.wikipedia.org/wiki/Tate%E2%80%93Shafarevich_group). It says: “the group measures the extent to which the Hasse principle fails to hold for rational equations”
+
+**Sources:**
+
+- [Serge Lang and John Tate, Principal Homogeneous Spaces Over Abelian Varieties (1958)](https://doi.org/10.2307/2372778)
+
+### Connected groups have trivial finite-field torsors
+
+**Remember:** Connected groups cannot hide a torsor from a finite field.
+
+*Rules out counterexamples.* MSC 14G15 (Finite ground fields in algebraic geometry), 14G05. arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** A torsor for an algebraic group is a space that becomes a copy of the group acting by translations over an algebraic closure. Over a finite field, require the group to be smooth and to remain connected over the algebraic closure.
+
+**Problem.** Every torsor under a smooth connected algebraic group over a finite field has a rational point.
+
+**How the definition helps.** Connectedness rules out torsors like the quadratic field extension, in our own explanation. That extension gives a torsor for the disconnected group of order two and has no point over the base field. For a smooth connected group, Lang’s theorem says every group element over the algebraic closure has the form g⁻¹F(g). Here F raises coordinates to the field size. This formula lets us translate a torsor point to one fixed by F, hence defined over the finite field.
+
+**Wikipedia:** [Lang's theorem](https://en.wikipedia.org/wiki/Lang%27s_theorem). It says: “and, consequently, any G-bundle on Spec 𝔽q is isomorphic to the trivial one.”
+
+**Sources:**
+
+- [Serge Lang, Algebraic Groups Over Finite Fields (1956)](https://doi.org/10.2307/2372673)
+
+### Tensor products count Weil restriction points
+
+**Remember:** To count points of a Weil restriction, split the tensor product of fields.
+
+*True by definition.* MSC 14G15 (Finite ground fields in algebraic geometry), 11T30. arXiv math.AG, math.NT. Level 3: graduate.
+
+**Definition.** Define Weil restriction of X from a field extension L to k by the functor of points. On a k-algebra R, its points are the points of X over R ⊗ₖ L. This replaces writing equations in a chosen basis of L over k.
+
+**Problem.** Let X be quasi-projective over the degree d extension of 𝔽q. Let M count its points over the extension of 𝔽q of degree lcm(d,n). Over the degree n extension, its Weil restriction to 𝔽q has M raised to the power gcd(d,n) points.
+
+**How the definition helps.** In our own deduction, the functor gives the desired count as soon as the tensor product splits into fields. The tensor product has gcd(d,n) factors, each of degree lcm(d,n) over the base field. Their embeddings of the defining field differ by Frobenius, so all factors give equal counts. The representability theorem supplies a variety with this prescribed functor of points.
+
+**Wikipedia:** [Weil restriction](https://en.wikipedia.org/wiki/Weil_restriction). It says: “(In particular, the k-rational points of \\operatorname{Res}<sub>L/k</sub>X are the L-rational points of X.)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Group schemes retain supersingular torsion
+
+**Remember:** One geometric point can carry many copies in its coordinate algebra.
+
+*Makes the theorem clean to state or prove.* MSC 14G17 (Positive characteristic ground fields in algebraic geometry), 14H52. arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** For an elliptic curve in characteristic p, define the kernel of multiplication by pⁿ using its equations, including any repeated solutions. This finite group scheme has length equal to the vector space dimension of its coordinate algebra. Call the curve supersingular if the origin is its only geometric point killed by p. Geometric points use coordinates in an algebraic closure.
+
+**Problem.** For every positive integer n, this kernel has length p²ⁿ. On a supersingular elliptic curve, it has only one geometric point.
+
+**How the definition helps.** The group scheme records multiplicities, so one geometric point can account for the entire length, in our own explanation. The degree theorem says multiplication by pⁿ has degree p²ⁿ and every fiber has that length. On a supersingular curve, a point killed by pⁿ must already be the origin, by repeatedly using the assertion for p.
+
+**nLab:** [the Barsotti-Tate group of an abelian variety](https://ncatlab.org/nlab/show/the+Barsotti-Tate+group+of+an+abelian+variety). It says: “Then A(p) := ⋃ⱼ ker pʲ idₐ is a p-divisible group.”
+
+**Wikipedia:** [Supersingular elliptic curve](https://en.wikipedia.org/wiki/Supersingular_elliptic_curve). It says: “an elliptic curve is supersingular if and only if the group of geometric points of order p is trivial.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Berkovich spectra give p-adic analytic spaces that are locally connected
 
 **Remember:** A Berkovich point measures the size of functions, not just where they vanish.
@@ -18045,6 +21394,80 @@ The list is long, but it is not complete. It contains only cases where the page 
 
 - [John Tate, Rigid analytic spaces, Inventiones Mathematicae 12 (1971) 257–289](https://doi.org/10.1007/BF01403307)
 - [Brian Conrad, Several approaches to non-archimedean geometry, in: p-adic Geometry, University Lecture Series 45, AMS (2008)](https://math.stanford.edu/~conrad/papers/aws.pdf)
+
+### Torsion bases remove automorphisms
+
+**Remember:** A full torsion basis prevents any nonidentity change of coordinates.
+
+*Rules out counterexamples.* MSC 14G35 (Modular and Shimura varieties), 11F23. arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** Over ℂ, mark each elliptic curve with an ordered basis of its N-torsion, the points killed by N, for N ≥ 3. The j-invariant alone records the isomorphism class of a single unmarked curve.
+
+**Problem.** One universal marked family gives all full-level families by pullback, uniquely up to marked isomorphism. The j-line cannot serve that role for unmarked families.
+
+**How the definition helps.** Every automorphism preserving the marking fixes the entire torsion basis and must be the identity (our own). Without markings, one can glue a constant family along a connected double cover using negation (our own). For a curve with only the automorphisms ±1, this gives a nonconstant twist with constant j (our own). Constructing the parameter curve and its universal family still requires the full-level moduli theorem (our own).
+
+**nLab:** [modular curve](https://ncatlab.org/nlab/show/modular+curve). It says: “A modular curve is a moduli space of elliptic curves over the complex numbers equipped with level-n structure, for some n ∈ ℕ.”
+
+**Sources:**
+
+- [Nicholas M. Katz and Barry Mazur, Arithmetic Moduli of Elliptic Curves (1985)](https://doi.org/10.1515/9781400881710)
+
+### Arithmetic principal divisors have degree zero
+
+**Remember:** The finite and infinite contributions of a principal divisor cancel.
+
+*True by definition. Confidence: medium.* MSC 14G40 (Arithmetic varieties and schemes; Arakelov theory; heights), 11G50. arXiv math.NT, math.AG. Level 3: graduate.
+
+**Definition.** For the ring of integers of a number field, an arithmetic divisor assigns integer coefficients to finite primes and real coefficients to embeddings into ℂ. Only finitely many prime coefficients are nonzero, and conjugate embeddings have equal coefficients. Its degree sums each prime coefficient times the logarithm of its residue field size, then adds all embedding coefficients. A nonzero element a gives a principal divisor with prime coefficients its orders of vanishing and embedding coefficients −log\|σ(a)\| for each embedding σ.
+
+**Problem.** Adding a principal arithmetic divisor preserves the arithmetic degree.
+
+**How the definition helps.** Including the embedding coefficients makes their sum cancel the degree of the finite divisor, in our own explanation. Counting finite primes alone gives the logarithm of the absolute field norm of a. The product formula identifies that number with the sum of log\|σ(a)\| over all embeddings. Each complex conjugate pair contributes twice. The resulting degree therefore depends only on the divisor class.
+
+**nLab:** [arithmetic Chow group](https://ncatlab.org/nlab/show/arithmetic+Chow+group). It says: “pairs consisting of a codimension p subvariety of X together with a Green current for it.”
+
+**Sources:**
+
+- [Henri Gillet and Christophe Soulé, Arithmetic intersection theory (1990)](https://doi.org/10.1007/bf02699132)
+
+### Residue codes give evaluation duals
+
+**Remember:** The residue theorem turns a dot product into zero.
+
+*True by definition. Confidence: medium.* MSC 14G50 (Applications to coding theory and cryptography of arithmetic geometry), 11T71. arXiv math.AG. Level 3: graduate.
+
+**Definition.** On a smooth projective geometrically connected curve over a finite field, let D sum distinct rational points outside a divisor G. The evaluation code reads functions f at those points when div(f) + G is nonnegative. The residue code reads residues of differentials ω for which div(ω) is at least G − D. Here div lists zero and pole orders, and the residue reads the coefficient of the inverse local parameter in a differential.
+
+**Problem.** If 2g − 2 &lt; deg(G) &lt; deg(D), the residue code equals the ordinary dot-product dual of the evaluation code. Here g is the genus of the curve.
+
+**How the definition helps.** In our own explanation, the residue description turns each dot product into a sum of residues of the differential fω. At each evaluation point, the residue of fω equals the value of f times the residue of ω. The product has no poles elsewhere. The residue theorem makes their sum zero. Riemann–Roch gives complementary dimensions, so the residue code fills the entire orthogonal complement. The quoted theorem gives the dimensions in the indicated degree range.
+
+**Paper or page:** [Weierstrass Semigroup, Pure Gaps and Codes on Function Fields](https://arxiv.org/abs/2304.02128). It says: “Given the AG codes $C<sub>\\mathcal L</sub>(D, G)$ and $C<sub>\\Omega</sub>(D, G)$ with parameters $\[N, k, d\]$ and $\[N, k<sub>\\Omega</sub>, d<sub>\\Omega</sub>\]$ respectively, we have that if $2g-2&lt;{  deg}(G)&lt;N$, then
+$$
+k={  deg}(G)+1-g\\quad \\text{and}\\quad d\\geq N-{  deg}(G),
+$$
+and
+$$k<sub>\\Omega</sub>=N-{  deg}(G)-1+g\\quad \\text{and}\\quad d<sub>\\Omega</sub>\\geq {  deg}(G)-(2g-2).
+$$”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Stability removes blowup models
+
+**Remember:** Extra rational components with too few branches do not survive stabilization.
+
+*Rules out counterexamples.* MSC 14H10 (Families, moduli of curves (algebraic)), 14G20. arXiv math.AG, math.NT. Level 3: graduate.
+
+**Definition.** A model extends a curve from the fraction field of a discrete valuation ring to a proper flat family over the ring. Such a ring measures orders of vanishing in integer steps. For genus at least two, stability requires connected fibers with at most ordinary crossings. On each geometric fiber, every component of genus zero after normalization must contain at least three branches above crossings.
+
+**Problem.** A smooth projective geometrically connected curve of genus at least two has at most one stable model up to unique isomorphism fixing the original curve.
+
+**How the definition helps.** Stability excludes the extra models obtained by blowing up a smooth point of the special fiber, in our own explanation. For example, blowing up a rational smooth point inserts a projective line that meets the rest of the fiber only once. The new family still has only ordinary crossings, but this line violates stability. The uniqueness theorem for stable models handles all possible competing models.
+
+**Paper or page:** [Moduli Curves](https://stacks.math.columbia.edu/tag/0E97). It says: “there exists a unique isomorphism X → X′ of models.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Stable curves give the Deligne–Mumford compactification of the moduli of curves
 
@@ -18511,6 +21934,43 @@ The list is long, but it is not complete. It contains only cases where the page 
 - [Michel Demazure, Sous-groupes algébriques de rang maximum du groupe de Cremona, Annales scientifiques de l'École Normale Supérieure 3 (1970) 507–588](https://doi.org/10.24033/asens.1201)
 - [G. Kempf, F. Knudsen, D. Mumford, B. Saint-Donat, Toroidal Embeddings I, Lecture Notes in Mathematics 339 (1973)](https://doi.org/10.1007/BFb0070318)
 
+### Four marks give quantum associativity
+
+**Remember:** Two splittings of the same four marks give two bracketings.
+
+*Makes the theorem clean to state or prove.* MSC 14N35 (Gromov-Witten invariants, quantum cohomology, Gopakumar-Vafa invariants, Donaldson-Thomas invariants (algebro-geometric aspects)), 53D45. arXiv math.AG, math.SG. Level 3: graduate.
+
+**Definition.** On a smooth complex projective variety, pair the small quantum product of two cohomology classes with a third using the genus-zero three-point curve counts. These counts integrate the three incidence conditions against the virtual class, which corrects for excess dimension. Sum over curve classes with formal weights that multiply when the classes add. The ordinary intersection pairing uniquely determines the product.
+
+**Problem.** The small quantum product of a smooth complex projective variety is associative.
+
+**How the definition helps.** The three-point definition lets one state the four-point splitting identity as associativity (our own). Each bracketing gives the contribution from one way a four-marked sphere splits into two spheres (our own). The parameter space of stable four-marked spheres is a projective line, where the two boundary points have equal cohomology classes (our own). The splitting theorem identifies each boundary contribution with the corresponding pair of three-point counts (our own).
+
+**Paper or page:** [Gromov-Witten invariants in family and quantum cohomology](https://arxiv.org/abs/2408.06616v2). It says: “T<sub>i</sub>\*(T<sub>j</sub> \* T<sub>k</sub>)\\  =\\  (T<sub>i</sub> \*T<sub>j</sub>)\*T<sub>k</sub>.”
+
+**Sources:**
+
+- [Gromov-Witten invariants in family and quantum cohomology](https://arxiv.org/abs/2408.06616v2)
+- [Fulton and Pandharipande, Notes on stable maps and quantum cohomology](https://doi.org/10.1090/pspum/062.2/1492534)
+
+### Stability removes infinite component symmetries
+
+**Remember:** Three special points fix a contracted sphere.
+
+*Rules out counterexamples.* MSC 14N35 (Gromov-Witten invariants, quantum cohomology, Gopakumar-Vafa invariants, Donaldson-Thomas invariants (algebro-geometric aspects)), 53D45. arXiv math.AG. Level 3: graduate.
+
+**Definition.** Consider a map from a connected projective marked complex curve whose only singularities are nodes, where two branches cross. Marks are distinct smooth points. Call the map stable if only finitely many domain symmetries preserve it and every mark. On each smooth component obtained by separating the branches, count the marks and branches at nodes as special points.
+
+**Problem.** Stability holds exactly when every contracted genus-zero component has at least three special points and every contracted genus-one component has at least one. A component is contracted when its image is a point.
+
+**How the definition helps.** The special points rule out infinite symmetry groups on contracted components. A sphere with one attaching point still has infinitely many symmetries fixing that point (our own). Three points fix a sphere, and one point removes translations of a genus-one curve (our own). Higher-genus smooth curves already have finite symmetry groups (our own). On a nonconstant component, symmetries act faithfully on the finite function field extension over its image (our own).
+
+**Wikipedia:** [Stable map](https://en.wikipedia.org/wiki/Stable_map). It says: “The above stability condition is then equivalent to saying that the group of automorphisms of f is finite.”
+
+**Sources:**
+
+- [Fulton and Pandharipande, Notes on stable maps and quantum cohomology](https://doi.org/10.1090/pspum/062.2/1492534)
+
 ### Real radical ideals are determined by their real zeros
 
 **Remember:** A real radical ideal contains every polynomial that vanishes on its real zeros.
@@ -18729,6 +22189,24 @@ The list is long, but it is not complete. It contains only cases where the page 
 **Sources:**
 
 - [Jacob Lurie, Derived Algebraic Geometry V: Structured Spaces, 2009, arXiv:0905.0459](https://arxiv.org/abs/0905.0459)
+
+### Smooth hypersurfaces have contractible matrix factorizations
+
+**Remember:** Differentiate the square to find a homotopy.
+
+*Rules out counterexamples. Confidence: medium.* MSC 14B05 (Singularities in algebraic geometry), 81T30. arXiv math.AG. Level 4: research.
+
+**Definition.** For a nonzero complex polynomial W, a finite free matrix factorization consists of even and odd free polynomial modules of finite rank. A polynomial operator d exchanges the two modules and satisfies d² = W·1. Call the factorization contractible if some operator h exchanging the modules satisfies dh + hd = 1.
+
+**Problem.** If the hypersurface defined by W is smooth as a scheme, every finite free matrix factorization of W is contractible.
+
+**How the definition helps.** Smoothness excludes a common zero of W and all its partial derivatives (our own). Differentiating d² gives d(∂d) + (∂d)d = (∂W)·1 for each coordinate derivative ∂ (our own). Taking h = d/2 gives dh + hd = W·1 (our own). The Nullstellensatz expresses 1 as a polynomial combination of W and its derivatives, giving the required h (our own). For W = x², take both maps equal to x (our own). Evaluating at zero shows that no such h exists (our own).
+
+**nLab:** [matrix factorization](https://ncatlab.org/nlab/show/matrix+factorization). It says: “For example, matrix factorization categories are related to derived categories of singularities.”
+
+**Sources:**
+
+- [Orlov, Triangulated categories of singularities and equivalences between Landau-Ginzburg models](https://doi.org/10.1070/sm2006v197n12abeh003824)
 
 ### Total transforms preserve nodal gluing
 
@@ -19297,6 +22775,61 @@ The list is long, but it is not complete. It contains only cases where the page 
 
 - [Adrien Morin, Special values of L-functions on regular arithmetic schemes of dimension 1, arXiv:2108.00811v1 (2021)](https://arxiv.org/abs/2108.00811v1)
 
+### Frobenius perfection is universal
+
+**Remember:** First invert Frobenius, then complete so maps still land in prisms.
+
+*True by definition.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 14G45. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** A prism has a Frobenius lift φ from δ-operations and a locally principal ideal I generated locally by a nonzero divisor. It is derived complete at (p, I) and satisfies p ∈ I + φ(I)A. It is perfect when φ is invertible. Define its perfection by completing the direct limit along φ at (p, I).
+
+**Problem.** Every map from a prism to a perfect prism factors uniquely through its perfection.
+
+**How the definition helps.** The direct limit makes Frobenius invertible and forces the map to every perfect target (our own explanation). At stage n, compose the original map with the nth inverse power of the target Frobenius. These maps agree along the system, and completeness extends their common map to the completion (our own argument). The substantive theorem proves that this completed ring and its extended ideal form a perfect prism.
+
+**Paper or page:** [Galois representations, (φ, Γ)-modules and prismatic F-crystals](https://arxiv.org/abs/2104.12105v4). It says: “Moreover, it is the universal perfect prism over (A, I).”
+
+**Sources:**
+
+- [Galois representations, (φ, Γ)-modules and prismatic F-crystals](https://arxiv.org/abs/2104.12105v4)
+- [Bhargav Bhatt and Peter Scholze, Prisms and Prismatic Cohomology (2022)](https://doi.org/10.4007/annals.2022.196.3.5)
+
+### Overconvergence gives the affine line primitives
+
+**Remember:** Extra radius absorbs the denominators from integration.
+
+*Rules out counterexamples. Confidence: medium.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology), 11S80. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** A p-adic power series is overconvergent on the closed unit disc if it converges on a disc of radius greater than one. For the affine line over 𝔽ₚ, Monsky–Washnitzer cohomology uses these series over ℚₚ and their differentials. Its first group consists of forms f(x) dx modulo derivatives of overconvergent functions.
+
+**Problem.** Every overconvergent one-form in one variable over ℚₚ has an overconvergent primitive. Thus the first Monsky–Washnitzer cohomology of the affine line over 𝔽ₚ vanishes.
+
+**How the definition helps.** Extra radius pays for the denominators introduced by integration (our own proof). Dividing the coefficient of degree n − 1 by n increases its p-adic absolute value by at most n. Shrinking the convergence radius slightly absorbs that factor while keeping the radius greater than one. On the unit disc alone, take the series with coefficient pᵏ in degree p²ᵏ − 1 for k ≥ 1 and zero elsewhere. Those coefficients tend to zero, but integration gives coefficients p⁻ᵏ, which do not. This series therefore has no convergent primitive on the closed unit disc (our own example).
+
+**nLab:** [Monsky-Washnitzer cohomology](https://ncatlab.org/nlab/show/Monsky-Washnitzer+cohomology). It says: “Monsky-Washnitzer cohomology is a cohomology theory for affine algebraic schemes over fields of positive characteristic.”
+
+**Sources:**
+
+- [Paul Monsky and Gerard Washnitzer, Formal Cohomology I (1968)](https://doi.org/10.2307/1970571)
+
+### Prismatic cohomology preserves derived pushouts
+
+**Remember:** A left adjoint carries a derived pushout to a derived pushout.
+
+*True by definition.* MSC 14F30 (\\(p\\)-adic cohomology, crystalline cohomology). arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** Fix a bounded prism (A, I), a base ring with a lift of the pth power map and a distinguished ideal. Derived rings retain higher relations in operations such as tensor product. For a derived A/I-algebra R, form the universal complete derived δ-ring over A receiving a map from R after reduction modulo I. Here δ records the correction between the chosen Frobenius lift and the pth power.
+
+**Problem.** The derived prismatic construction preserves pushouts, which join two algebras along a common algebra. Form the pushouts in the corresponding complete derived categories.
+
+**How the definition helps.** The universal mapping property describes maps out of either construction by the same pair of compatible maps (our own proof). This gives the pushout formula directly. The comparison theorem identifies the result on p-complete animated algebras with Bhatt and Scholze’s derived prismatic cohomology. Animated algebras here are derived commutative rings modeled by simplicial commutative rings.
+
+**Paper or page:** [Derived δ-Rings and Relative Prismatic Cohomology](https://arxiv.org/abs/2303.17447v1). It says: “is left adjoint to $- \\otimes <sub>A</sub> \\overline{A}$.”
+
+**Sources:**
+
+- [Derived δ-Rings and Relative Prismatic Cohomology](https://arxiv.org/abs/2303.17447v1)
+
 ### Defining periods by integrals over semi-algebraic sets makes them a ring
 
 **Remember:** Multiply periods by taking the product of their domains.
@@ -19390,6 +22923,42 @@ The list is long, but it is not complete. It contains only cases where the page 
 
 - [Aravind Asok, Affine representability of quadrics revisited, arXiv:2104.08208 (2022)](https://arxiv.org/abs/2104.08208v2)
 
+### Witt Frobenius handles field extensions
+
+**Remember:** Witt Frobenius keeps the point counts from extensions of degrees divisible by r.
+
+*True by definition.* MSC 14G10 (Zeta functions and related questions in algebraic geometry (e.g., Birch-Swinnerton-Dyer conjecture)), 14G15. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** For a variety over a finite field, let Z be its zeta series. Its nth ghost coordinate is the coefficient of tⁿ in tZ′/Z and counts points over the extension of degree n. On integral series with constant term one, the rth Witt Frobenius takes coordinate rn as its new coordinate n.
+
+**Problem.** For each positive integer r, the rth Witt Frobenius gives the zeta series after extending the base field by degree r.
+
+**How the definition helps.** In our own explanation, the coordinate shift reads the required point counts directly from the original series. An extension of degree n over the new field has degree rn over the original field. The Witt construction realizes this shift on integral series, where all the coordinates together determine the series.
+
+**Paper or page:** [A MacDonald formula for zeta functions of varieties over finite fields](https://arxiv.org/abs/1707.03479). It says: “Moreover, the Frobenius operator Frᵣ on W(ℤ) corresponds to base change”
+
+**Sources:**
+
+- [Jonathan Huang, A MacDonald formula for zeta functions of varieties over finite fields](https://arxiv.org/abs/1707.03479)
+
+### Witt multiplication matches variety products
+
+**Remember:** Multiply point counts to multiply zeta functions in the Witt ring.
+
+*True by definition.* MSC 14G10 (Zeta functions and related questions in algebraic geometry (e.g., Birch-Swinnerton-Dyer conjecture)), 14G15. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** For a variety over a finite field, its zeta series Z has integer coefficients and constant term one. Its nth ghost coordinate, the coefficient of tⁿ in tZ′/Z, counts points over the extension of degree n. Define Witt multiplication of series by multiplying their ghost coordinates term by term.
+
+**Problem.** The zeta function of a product of varieties over a finite field is the Witt product of their zeta functions.
+
+**How the definition helps.** In our own explanation, a point of a product is a pair, so its two point counts multiply in every extension. Witt multiplication therefore gives the product variety’s zeta series directly. Constructing this multiplication on integral series takes work. There the ghost coordinates determine the series uniquely.
+
+**Paper or page:** [A MacDonald formula for zeta functions of varieties over finite fields](https://arxiv.org/abs/1707.03479). It says: “For X and Y ∈ Var(𝔽q), the zeta function X ×𝔽q Y is given by the Witt product”
+
+**Sources:**
+
+- [Jonathan Huang, A MacDonald formula for zeta functions of varieties over finite fields](https://arxiv.org/abs/1707.03479)
+
 ### The reciprocity obstruction exactly describes strong approximation on classifying varieties of tori
 
 **Remember:** Test the reciprocity pairing before asking for a rational approximation.
@@ -19445,6 +23014,22 @@ The list is long, but it is not complete. It contains only cases where the page 
 - [Peter Scholze, Perfectoid spaces, Publ. Math. IHÉS 116 (2012), arXiv:1111.4914](https://arxiv.org/abs/1111.4914)
 - [Lucas Mann, A p-adic 6-functor formalism in rigid-analytic geometry, arXiv:2206.02022](https://arxiv.org/abs/2206.02022)
 
+### Frobenius descent identifies sections with eigenvectors
+
+**Remember:** A twist turns a fixed-section condition into an eigenvalue condition.
+
+*True by definition. Confidence: medium.* MSC 14G45 (Perfectoid spaces and mixed characteristic), 14F30. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** The analytic Fargues–Fontaine curve over ℚₚ identifies points of a period space Y along orbits of its Frobenius automorphism φ. A line bundle looks locally like one copy of the ring of functions. For integer n, define the twist of degree n by gluing the trivial line bundle along these orbits with action p⁻ⁿφ.
+
+**Problem.** Global sections of the twist n on the analytic Fargues–Fontaine curve are functions f on Y that satisfy φ(f) = pⁿf.
+
+**How the definition helps.** Gluing along the orbit makes a global section exactly a function fixed by the specified action (our own explanation). Its equation p⁻ⁿφ(f) = f gives the eigenvalue immediately. In the algebraic construction, the eigenvectors instead form the graded ring used to construct the curve. The work here lies in constructing the period space and descending the bundle to its quotient (our own comparison).
+
+**nLab:** [Fargues-Fontaine curve](https://ncatlab.org/nlab/show/Fargues-Fontaine+curve). It says: “The (relative) Fargues-Fontaine curve $X<sub>S</sub>$ is then defined to be $Y<sub>S</sub>/\\phi<sub>S</sub><sup>{\\mathbb{Z}}$</sup>, where $\\phi<sub>S</sub>$ is the Frobenius on $S$.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Perfectoid fields share their Galois group with their tilt
 
 **Remember:** Tilting moves to characteristic p but keeps the Galois group.
@@ -19481,6 +23066,42 @@ The list is long, but it is not complete. It contains only cases where the page 
 
 - [Peter Scholze, Perfectoid spaces, arXiv:1111.4914](https://arxiv.org/abs/1111.4914)
 
+### Tilted line bundles encode tensor roots
+
+**Remember:** A single bundle is only the first term of an untilting tower.
+
+*Makes the theorem clean to state or prove.* MSC 14G45 (Perfectoid spaces and mixed characteristic). arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** A line bundle looks locally like one copy of the ring of functions. Its isomorphism class belongs to the Picard group, whose multiplication is tensor product. Tilting a perfectoid space X gives a characteristic-p space whose invertible functions correspond locally to sequences of invertible functions on X. Each function is the pth power of the next.
+
+**Problem.** Suppose the ring of global functions of the perfectoid space X is itself perfectoid. The Picard group of its tilt is the group of sequences of line bundle classes on X linked by pth tensor power.
+
+**How the definition helps.** The description of tilted functions turns each gluing function for a line bundle into a sequence (our own explanation). Its coordinates glue line bundles on X whose classes satisfy the required tensor relations. The hard direction starts with classes and produces compatible gluing data. The perfectoid hypothesis on global functions removes the obstruction to doing this (our own explanation).
+
+**Paper or page:** [Untilting Line Bundles on Perfectoid Spaces](https://arxiv.org/abs/2102.04354v3). It says: “Then θ : Pic X♭ → lim Pic X is an isomorphism.”
+
+**Sources:**
+
+- [Untilting Line Bundles on Perfectoid Spaces](https://arxiv.org/abs/2102.04354v3)
+
+### Even stabilizers preserve Weil pairings
+
+**Remember:** Give each non-separating node an even stabilizer to retain the pairing.
+
+*Rules out counterexamples.* MSC 14H10 (Families, moduli of curves (algebraic)), 14H40. arXiv math.AG. Level 4: research.
+
+**Definition.** A twisted curve can have a finite cyclic symmetry group at an ordinary crossing, called a node. Consider proper connected twisted curves without marked points over an algebraically closed field of characteristic different from two. At a node the group acts by inverse factors on the branches, and its order is prime to the characteristic. Require even order whenever separating the branches leaves the curve connected.
+
+**Problem.** The Weil pairing pairs line bundles whose tensor squares are trivial. It detects every nontrivial such bundle exactly when the even-order condition holds.
+
+**How the definition helps.** The parity condition excludes precisely the crossings that cause degeneracy, by Proposition 5.9. For our own example, identify two distinct points of a smooth projective curve to form one ordinary node. Separating its branches recovers the connected original curve. Give this node the trivial stabilizer, of order one. The criterion then says the pairing degenerates.
+
+**Paper or page:** [Weil pairing on twisted curves](https://arxiv.org/abs/2310.09012v1). It says: “The Weil pairing on 𝒳 is non-degenerate if and only if the stabilizers of the non-separating nodes are of even order”
+
+**Sources:**
+
+- [Weil pairing on twisted curves](https://arxiv.org/abs/2310.09012v1)
+
 ### Disconnected curves keep Galois closures inside the theory
 
 **Remember:** Drop connectedness, and Galois closures of curves stay curves.
@@ -19498,6 +23119,22 @@ The list is long, but it is not complete. It contains only cases where the page 
 **Sources:**
 
 - [Alexandros Konstantinou, Adam Morgan, On Galois covers of curves and arithmetic of Jacobians, arXiv:2407.18258 (2024)](https://arxiv.org/abs/2407.18258)
+
+### Reduced pole orders determine genus
+
+**Remember:** Reduce the poles before reading the ramification from their orders.
+
+*Rules out counterexamples.* MSC 14H30 (Coverings of curves, fundamental group), 11G20. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** In characteristic p, an Artin–Schreier cover of the line has an equation yᵖ − y = f(x). Translating y by h(x) changes f by hᵖ − h. Over the algebraic closure, choose a reduced equation, meaning that every pole order is prime to p.
+
+**Problem.** For a connected degree p cover of the projective line in this form, its genus satisfies 2g = (p − 1)(∑(m + 1) − 2). Sum over the geometric poles of order m.
+
+**How the definition helps.** In our own explanation, reduction makes each pole order m equal to the local ramification jump, the index where the ramification group changes. For our own example in odd characteristic, xᵖ + x² reduces to x + x² by subtracting xᵖ − x. The jump at infinity is two. The ramification theorem gives each pole a contribution of (p − 1)(m + 1) in the Riemann–Hurwitz genus formula.
+
+**Paper or page:** [A Mass Formula For Artin--Schreier Curves Over Finite Fields](https://arxiv.org/abs/2203.10187). It says: “Let π be an Artin–Schreier cover with equation yᵖ − y = u(x)”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### G-normal models give curves with group scheme actions a unique good model
 
@@ -19590,6 +23227,38 @@ The list is long, but it is not complete. It contains only cases where the page 
 
 - [Gaëtan Borot, Vincent Bouchard, Nitin Kumar Chidambaram, Reinier Kramer, Sergey Shadrin, Taking limits in topological recursion, arXiv:2309.01654 (2025)](https://arxiv.org/abs/2309.01654v2)
 
+### Saturation recovers torsion sections
+
+**Remember:** A section is torsion when a multiple of its class lands in T.
+
+*True by definition.* MSC 14J27 (Elliptic surfaces, elliptic or Calabi-Yau fibrations), 14J28. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** Take a projective complex K3 surface, a simply connected surface with a nowhere vanishing holomorphic two-form. Suppose it fibers in elliptic curves and has a section choosing their origins. Among divisor classes modulo deformation in connected algebraic families, let T be generated by the zero section and all fiber components. Its saturation contains exactly the classes with a positive integer multiple in T.
+
+**Problem.** The sections of finite order form a group isomorphic to the saturation of T modulo T.
+
+**How the definition helps.** Saturation turns finite order in a quotient into a membership test before taking the quotient, in our own explanation. Shioda identifies the group of sections with divisor classes modulo T. A class in that quotient has finite order precisely when a positive multiple belongs to T. Thus the saturation gives the answer without computing addition of sections.
+
+**Paper or page:** [Elliptic fibrations on toric K3 hypersurfaces and mirror symmetry derived from Fano polytopes](https://arxiv.org/abs/2208.01465v2). It says: “Let MW(π, O)ₜₒᵣ be the torsion part of MW(π, O). Then, MW(π, O)ₜₒᵣ ≃ T̂/T.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Trivial lattices reveal section rank
+
+**Remember:** Remove the zero section and fiber classes to count independent sections.
+
+*Makes the theorem clean to state or prove.* MSC 14J27 (Elliptic surfaces, elliptic or Calabi-Yau fibrations), 14J28. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** Take a projective complex K3 surface, a simply connected surface with a nowhere vanishing holomorphic two-form. Assume its general fibers are elliptic curves and a section chooses their origins. Identify divisors up to algebraic equivalence, which allows deformation in connected algebraic families. The zero section and all fiber components generate a subgroup of these classes called the trivial lattice.
+
+**Problem.** The group of sections has rank equal to the rank of the divisor class group modulo algebraic equivalence minus the trivial lattice rank.
+
+**How the definition helps.** The trivial lattice collects the classes that disappear when divisors are converted into sections, in our own explanation. Restrict a divisor to the generic fiber and subtract its degree times the chosen origin. Shioda’s theorem identifies the resulting quotient group with the sections. Taking ranks gives the formula.
+
+**Paper or page:** [Elliptic fibrations on toric K3 hypersurfaces and mirror symmetry derived from Fano polytopes](https://arxiv.org/abs/2208.01465v2). It says: “There is an isomorphism MW(π, O) ≃ NS(S)/T of groups.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The stricter definition of irreducible symplectic variety forces half-dimensional Lagrangian fibrations
 
 **Remember:** Demand one generating two-form on every cover branched only in codimension two.
@@ -19628,6 +23297,24 @@ The list is long, but it is not complete. It contains only cases where the page 
 - [Edoardo Ballico, Francesco Malaspina, Qregularity and an Extension of Evans-Griffiths Criterion to Vector Bundles on Quadrics, arXiv:0802.0451v1 (2008)](https://arxiv.org/abs/0802.0451v1)
 - [H. Knörrer, Cohen-Macaulay modules on hypersurface singularities I, Inventiones Mathematicae (1987)](https://doi.org/10.1007/bf01405095)
 
+### Néron models survive smooth pullback
+
+**Remember:** Smooth tests over the new base are smooth tests over the old one.
+
+*True by definition.* MSC 14K15 (Arithmetic ground fields for abelian varieties), 14G20. arXiv math.AG, math.NT. Level 4: research.
+
+**Definition.** Start with a smooth space over a dense open part U of a base S. Assume functions on S are determined by their restrictions to U. A Néron model extends the space smoothly over S and separates distinct limits. For every smooth family over S, each map from its restriction over U extends uniquely to the model.
+
+**Problem.** A smooth change of base preserves the Néron model.
+
+**How the definition helps.** The extension property lets us test the new model without constructing it again, in our own explanation. A smooth family over the new base is smooth over S because smooth maps compose. Extend its map using the original model, then pair the extension with the map to the new base. Uniqueness follows from uniqueness over S. Constructing a model with the extension property remains a separate existence problem.
+
+**Paper or page:** [Néron models of Jacobians over bases of arbitrary dimension](https://arxiv.org/abs/2103.06917v3). It says: “If X is the Néron model of Xᵤ, then X′ is the Néron model of Xᵤ′.”
+
+**Sources:**
+
+- [Néron models of Jacobians over bases of arbitrary dimension](https://arxiv.org/abs/2103.06917v3)
+
 ### Right-invariant derivations are determined by their values at the identity
 
 **Remember:** Evaluate at the identity and use translations to recover the rest.
@@ -19663,6 +23350,134 @@ The list is long, but it is not complete. It contains only cases where the page 
 **Sources:**
 
 - [Jarosław Buczyński, Hanieh Keneshlou, Cactus scheme, catalecticant minors, and scheme theoretic equations, arXiv:2410.21908 (2024)](https://arxiv.org/abs/2410.21908v1)
+
+### Central differences give genus recursions
+
+**Remember:** A symmetric shift connects each genus to the earlier ones.
+
+*Makes the theorem clean to state or prove.* MSC 14N35 (Gromov-Witten invariants, quantum cohomology, Gopakumar-Vafa invariants, Donaldson-Thomas invariants (algebro-geometric aspects)), 81T30. arXiv math.AG. Level 4: research.
+
+**Definition.** The resolved conifold is the total space of two copies of the degree minus one line bundle over the projective line. Let Fᵍ(t) generate its positive-degree genus-g curve counts, with degree d weighted by exp(2πidt). Form the free energy by summing λ²ᵍ⁻²Fᵍ(t) over all genera g ≥ 0.
+
+**Problem.** Put D = (1/2π)d/dt. For g ≥ 1, the sum over 1 ≤ j ≤ g + 1 of D²ʲFᵍ⁺¹⁻ʲ divided by (2j)! equals zero.
+
+**How the definition helps.** Combining the genera in one series turns a symmetric shift in t into a recursion (our own). Adding the shifts by λ/(2π) and −λ/(2π) cancels the odd derivatives (our own). At order λ²ᵍ only the second derivative involves genus g (our own). The difference equation for the resolved conifold supplies the substantive theorem.
+
+**Paper or page:** [Intrinsic non-perturbative topological strings](https://arxiv.org/abs/2102.07776v2). It says: “For every g ≥ 1 the difference equation gives a recursive differential equation”
+
+**Sources:**
+
+- [Intrinsic non-perturbative topological strings](https://arxiv.org/abs/2102.07776v2)
+
+### Convexity removes genus-zero bundle obstructions
+
+**Remember:** When first cohomology vanishes, sections make an ordinary bundle.
+
+*Rules out counterexamples.* MSC 14N35 (Gromov-Witten invariants, quantum cohomology, Gopakumar-Vafa invariants, Donaldson-Thomas invariants (algebro-geometric aspects)). arXiv math.AG. Level 4: research.
+
+**Definition.** A stable map is a map from a marked nodal curve with finitely many symmetries preserving the marks and map. Call a vector bundle E convex if every genus-zero stable map f from C has H¹(C, f\*E) = 0. This cohomology group measures obstructions to extending sections of the pulled-back bundle.
+
+**Problem.** Let a regular section of a convex bundle E on a smooth complex projective variety X cut out a smooth locus Y of expected codimension. Fix the marks and ambient curve class in genus zero. The sum of pushed-forward virtual cycles from Y equals the ambient virtual cycle capped with the top Chern class of the bundle of sections.
+
+**How the definition helps.** Convexity makes the spaces of sections form a vector bundle on the space of maps (our own). Its fiber at f is H⁰(C, f\*E) (our own). The induced section vanishes exactly on maps into Y (our own). Without convexity the obstruction group can survive, as it does for the degree minus two line bundle on the projective line (our own). A virtual cycle corrects for excess dimension, and the virtual zero locus theorem gives the asserted intersection formula (our own).
+
+**Paper or page:** [Quantum Lefschetz without curves](https://arxiv.org/abs/2403.01011v1). It says: “When the complex is a single bundle we recover results of Kim-Kresch-Pantev.”
+
+**Sources:**
+
+- [Coates and Givental, Quantum Riemann–Roch, Lefschetz and Serre](https://doi.org/10.4007/annals.2007.165.15)
+
+### Degree-zero division matches stable pairs
+
+**Remember:** Divide out freely moving points before comparing curve counts.
+
+*Makes the theorem clean to state or prove.* MSC 14N35 (Gromov-Witten invariants, quantum cohomology, Gopakumar-Vafa invariants, Donaldson-Thomas invariants (algebro-geometric aspects)), 81T30. arXiv math.AG. Level 4: research.
+
+**Definition.** Donaldson–Thomas theory counts curves that may carry extra points, using intersection classes that correct for excess dimension. Divide the generating series by its points-only series to define the reduced series. The denominator has constant term one. A stable pair consists of a curve sheaf without point-supported subsheaves and a section generating it away from finitely many points.
+
+**Problem.** Let X be a toric Calabi–Yau three-orbifold with transverse type A singularities, locally cyclic quotients with opposite weights across the singular curve. Restrict to curve classes whose generic stabilizer representations are multiples of the regular representation. Then the reduced Donaldson–Thomas series equals the stable-pair series.
+
+**How the definition helps.** Division removes the points-only factor before the two curve series are compared (our own). The stabilizer is the local symmetry group, and its regular representation permutes a basis indexed by its elements (our own). The proof compares normalized local series at torus fixed points and glues their contributions (our own).
+
+**Paper or page:** [The orbifold DT/PT vertex correspondence](https://arxiv.org/abs/2302.02342v4). It says: “DT′ₘᵣ(𝒳) = PTₘᵣ(𝒳).”
+
+**Sources:**
+
+- [The orbifold DT/PT vertex correspondence](https://arxiv.org/abs/2302.02342v4)
+- [Maulik, Nekrasov, Okounkov and Pandharipande, Gromov–Witten theory and Donaldson–Thomas theory, I](https://doi.org/10.1112/s0010437x06002302)
+
+### Logarithmic types split degeneration counts
+
+**Remember:** Keep contact orders to split a limiting count by type.
+
+*Makes the theorem clean to state or prove.* MSC 14N35 (Gromov-Witten invariants, quantum cohomology, Gopakumar-Vafa invariants, Donaldson-Thomas invariants (algebro-geometric aspects)), 53D45. arXiv math.AG. Level 4: research.
+
+**Definition.** Consider a projective degeneration over a smooth curve whose smooth central components meet like coordinate hyperplanes. A logarithmic stable map records how a limiting curve meets those components. Its type records the graph of domain components, their target strata, their curve classes and the contact orders along branches. A rigid type has no continuous freedom in its limiting graph once the base parameter is fixed.
+
+**Problem.** Fix the genus, marks and curve class. The virtual class of maps to the central fiber equals the sum of the pushed-forward virtual classes for rigid types, with positive rational weights. A virtual class is the cycle that gives the expected intersection counts.
+
+**How the definition helps.** The type records exactly which limiting maps contribute to each term (our own). The degeneration formula supplies the weights and proves the equality of cycles. Intersecting that equality with incidence conditions gives the corresponding numerical formula (our own).
+
+**Paper or page:** [Gromov-Witten theory, degenerations, and the tautological ring](https://arxiv.org/abs/2510.04779v1). It says: “The constant mγ is a positive rational number.”
+
+**Sources:**
+
+- [Gromov-Witten theory, degenerations, and the tautological ring](https://arxiv.org/abs/2510.04779v1)
+
+### Multiple covers isolate primitive counts
+
+**Remember:** One multiple-cover series can record infinitely many degrees.
+
+*True by definition.* MSC 14N35 (Gromov-Witten invariants, quantum cohomology, Gopakumar-Vafa invariants, Donaldson-Thomas invariants (algebro-geometric aspects)), 81T30. arXiv math.AG. Level 4: research.
+
+**Definition.** The resolved conifold is the total space of two degree minus one line bundles on the projective line, taken in direct sum. Write its positive-degree genus-zero curve series as a sum of multiple-cover series, one for each degree d ≥ 1. The degree-d series has coefficient 1/k³ in degree kd for each positive integer k and zero elsewhere. The coefficient multiplying that series is the degree-d genus-zero Gopakumar–Vafa number.
+
+**Problem.** For the resolved conifold, the genus-zero Gopakumar–Vafa number is one in degree one and zero in every higher degree.
+
+**How the definition helps.** The whole genus-zero curve series is one basis element, the trilogarithm (our own). Each basis element starts with coefficient 1 in its own degree, so the coefficients are unique (our own). The work goes into the multiple-cover computation for maps to the exceptional rational curve (our own).
+
+**Paper or page:** [Intrinsic non-perturbative topological strings](https://arxiv.org/abs/2102.07776v2). It says: “F̃₀(t) = Li₃(q).”
+
+**Sources:**
+
+- [Aspinwall and Morrison, Topological field theory and rational curves](https://doi.org/10.1007/bf02096768)
+- [Intrinsic non-perturbative topological strings](https://arxiv.org/abs/2102.07776v2)
+
+### Purity excludes isolated stable-pair points
+
+**Remember:** Any points a stable pair records must lie on its curve.
+
+*Rules out counterexamples.* MSC 14N35 (Gromov-Witten invariants, quantum cohomology, Gopakumar-Vafa invariants, Donaldson-Thomas invariants (algebro-geometric aspects)). arXiv math.AG. Level 4: research.
+
+**Definition.** On a smooth projective threefold, a stable pair consists of a coherent sheaf F supported on a curve and a section s. Require that the section generate F except at finitely many points. Also require purity, meaning that F contains no nonzero subsheaf supported on finitely many points.
+
+**Problem.** The local functions killing s form the same ideal as the local functions killing all of F. Thus the section defines the full support curve, including its scheme structure.
+
+**How the definition helps.** Purity forces a function killing the section to kill the entire sheaf (our own). Multiplying F by that function gives a subsheaf supported where the section fails to generate F (our own). That finite support forces the subsheaf to vanish (our own). Conversely, every function killing F kills its section (our own). An ideal sheaf can instead describe a curve together with an isolated point (our own).
+
+**Paper or page:** [Explicit formulae for rank zero DT invariants and the OSV conjecture](https://arxiv.org/abs/2203.10617v1). It says: “$F$ is a \\emph {pure} 1-dimensional sheaf, and $s \\colon \\mathcal O \_X \\rightarrow F$ has zero-dimensional cokernel.”
+
+**Sources:**
+
+- [Pandharipande and Thomas, Curve counting via stable pairs in the derived category](https://doi.org/10.1007/s00222-009-0203-9)
+
+### Representable maps exclude extra stabilizers
+
+**Remember:** The source cannot carry more symmetry than its image.
+
+*Rules out counterexamples.* MSC 14N35 (Gromov-Witten invariants, quantum cohomology, Gopakumar-Vafa invariants, Donaldson-Thomas invariants (algebro-geometric aspects)), 14D23. arXiv math.AG. Level 4: research.
+
+**Definition.** A twisted curve can have finite symmetry groups at marks and nodes. For a map between complex orbifolds, representability means that it injects every point’s symmetry group into the symmetry group at its image. Require this condition on the maps used to count curves in an orbifold.
+
+**Problem.** A representable map from a twisted curve to an ordinary scheme has trivial symmetry groups at every mark and node.
+
+**How the definition helps.** Injectivity forces each domain group to be trivial because a scheme has trivial point symmetry groups (our own). Without representability, one can put a cyclic symmetry group of any order at a mark of a three-marked sphere mapping to a point (our own).
+
+**Paper or page:** [Intrinsic mirror symmetry and Frobenius structure theorem via Gromov-Witten theory of root stacks](https://arxiv.org/abs/2403.05376v1). It says: “We further require the top horizontal morphism to be representable.”
+
+**Sources:**
+
+- [Abramovich, Graber and Vistoli, Gromov-Witten theory of Deligne-Mumford stacks](https://doi.org/10.1353/ajm.0.0017)
 
 ## 15 Linear and multilinear algebra; matrix theory
 
@@ -22666,6 +26481,24 @@ The list is long, but it is not complete. It contains only cases where the page 
 
 - [Alex Martsinkovsky, The defect, the Malgrange functor, and linear control systems, arXiv:2403.13520 (2024)](https://arxiv.org/abs/2403.13520v1)
 
+### Circle gluing computes Hochschild chains
+
+**Remember:** Close the line into a circle to add the cyclic face.
+
+*Makes the theorem clean to state or prove.* MSC 16E40 ((Co)homology of rings and associative algebras (e.g., Hochschild, cyclic, dihedral, etc.)), 81T45. arXiv math-ph. Level 4: research.
+
+**Definition.** Let A be a unital associative algebra in chain complexes over a field, with differential obeying the product rule. Assign A to each oriented interval and its tensor powers to disjoint unions of intervals. Insert smaller intervals by multiplying in their spatial order. Extend to the circle by derived gluing over covers containing every finite subset in one member, retaining the chain maps and their homotopies.
+
+**Problem.** The resulting circle complex is quasi-isomorphic to the Hochschild chain complex of A, meaning the comparison induces isomorphisms on homology.
+
+**How the definition helps.** Gluing on the circle puts the last interval next to the first, explaining the wraparound multiplication in the Hochschild differential (our own). The other terms multiply successive neighbors, with the signs from the grading (our own). The proof identifies the gluing complex with the cyclic bar construction, whose degree-n terms have n + 1 tensor factors (our own).
+
+**Paper or page:** [Holomorphic field theories and higher algebra](https://arxiv.org/abs/2508.07443v1). It says: “extends to a factorization algebra on S¹”
+
+**Sources:**
+
+- [Owen Gwilliam, Brian R. Williams, Holomorphic field theories and higher algebra](https://arxiv.org/abs/2508.07443v1)
+
 ### Green sequences filter modules
 
 **Remember:** Each jump adds the next kind of filtration factor.
@@ -23581,6 +27414,82 @@ The list is long, but it is not complete. It contains only cases where the page 
 - [Moody, R. V. (1967). Lie algebras associated with generalized Cartan matrices. Bulletin of the AMS 73, 217–222.](https://doi.org/10.1090/S0002-9904-1967-11688-4)
 - [Kac, V. G. (1968). Simple irreducible graded Lie algebras of finite growth. Mathematics of the USSR-Izvestiya 2.](https://doi.org/10.1070/IM1968v002n06ABEH000729)
 
+### Locality and translation give skew symmetry
+
+**Remember:** Commute on the vacuum, then translate and cancel the common power.
+
+*True by definition.* MSC 17B69 (Vertex operators; vertex operator algebras and related structures), 81T40. arXiv math.QA, math-ph. Level 3: graduate.
+
+**Definition.** In the locality presentation of a vertex algebra, a state u has an operator series Y(u,z), called its field. For each pair of states, some nonnegative power of z − w kills the commutator of their fields. The translation operator T differentiates fields by commutator and kills the vacuum. Applying a field to the vacuum gives a power series whose constant term is its state.
+
+**Problem.** For all states u and v, skew symmetry gives Y(u,z)v = exp(zT)Y(v,−z)u.
+
+**How the definition helps.** Locality lets us exchange the two fields on the vacuum after clearing their poles. Our own calculation uses translation to write the field of v on the vacuum as exp(wT)v. Moving translations past fields changes their arguments by the corresponding shifts. After clearing poles we can set w to zero and cancel the common power of z. The formal Jacobi identity gives another presentation, whose equivalence requires a separate proof.
+
+**Wikipedia:** [Vertex operator algebra](https://en.wikipedia.org/wiki/Vertex_operator_algebra). It says: “(skew-symmetry) Y(u,z)v=eᶻᵀY(v,−z)u”
+
+**Sources:**
+
+- [Frenkel and Ben-Zvi, Vertex Algebras and Algebraic Curves](https://doi.org/10.1090/surv/088)
+
+### One character forces modular invariance
+
+**Remember:** One character and trivial translation force trivial modular action.
+
+*Rules out counterexamples.* MSC 17B69 (Vertex operators; vertex operator algebras and related structures), 81T40. arXiv math.QA, math-ph. Level 3: graduate.
+
+**Definition.** Take a simple rational complex vertex operator algebra isomorphic to its graded dual, with nonnegative integral weights and only the vacuum line at weight zero. Rationality means all admissible modules split into simples. Assume the span of mode −2 products has finite codimension. Call the algebra holomorphic when its vacuum module is its only simple module.
+
+**Problem.** The vacuum character counts weight multiplicities using q = exp(2πiτ), with each exponent shifted by minus the central charge divided by 24. For a holomorphic algebra whose central charge is divisible by 24, this character is invariant under the modular group.
+
+**How the definition helps.** Divisibility by 24 removes the scalar acquired under translation T taking τ to τ + 1. Zhu’s theorem and the single simple module make the character span a one-dimensional representation. Since T acts trivially, the relation S² = (ST)³ forces inversion S to act trivially. Our own counterexample uses the holomorphic vertex algebra of the E₈ lattice. Its central charge is eight, so translation acts by exp(−2πi/3).
+
+**Paper or page:** [Character Vectors of Strongly Regular Vertex Operator Algebras](https://arxiv.org/abs/2111.04616v3), [Character Vectors of Strongly Regular Vertex Operator Algebras](https://arxiv.org/abs/2111.04616v3). It says: “Then 𝔠𝔥\[V\] is a right Γ-submodule of 𝔉.”
+
+**Sources:**
+
+- [Cameron Franc, Geoffrey Mason, Character Vectors of Strongly Regular Vertex Operator Algebras](https://arxiv.org/abs/2111.04616v3)
+- [Yongchang Zhu, Modular invariance of characters of vertex operator algebras](https://doi.org/10.1090/s0894-0347-96-00182-8)
+- [Chongying Dong, Vertex Algebras Associated with Even Lattices](https://doi.org/10.1006/jabr.1993.1217)
+
+### Truncation excludes evaluation modules
+
+**Remember:** Without truncation, a current series need not act as a field.
+
+*Rules out counterexamples.* MSC 17B69 (Vertex operators; vertex operator algebras and related structures). arXiv math.QA. Level 3: graduate.
+
+**Definition.** Start with the centrally extended loop algebra of a finite-dimensional complex simple Lie algebra with a fixed invariant form. The level is the scalar by which the central element acts. A module is restricted if, for each current and each vector, all sufficiently high modes of that current kill the vector.
+
+**Problem.** At level k, restriction to current modes identifies modules of the universal affine vertex algebra with restricted modules of the centrally extended loop algebra.
+
+**How the definition helps.** Restrictedness is exactly the requirement that each current field have only finitely many pole terms on each vector. Our own counterexample evaluates loops at 1 on a nontrivial representation and gives the central element action zero. Every mode of a given current then acts by the same operator, violating truncation. The affine reconstruction theorem extends restricted current actions uniquely to fields for all states. Take the identity twist and ε = 0 in the cited proposition.
+
+**Paper or page:** [A unified construction of vertex algebras from infinite-dimensional Lie algebras](https://arxiv.org/abs/2203.16744v1). It says: “Γσ-equivariant φε-coordinated quasi Vℒ̂(𝔟)-modules are exactly restricted ℒ̂(𝔟,σ)-modules.”
+
+**Sources:**
+
+- [Fulin Chen, Xiaoling Liao, Shaobin Tan, Qing Wang, A unified construction of vertex algebras from infinite-dimensional Lie algebras](https://arxiv.org/abs/2203.16744v1)
+- [Edward Frenkel and David Ben-Zvi, Vertex Algebras and Algebraic Curves](https://doi.org/10.1090/surv/088)
+
+### Unimodularity removes extra modules
+
+**Remember:** Only the vacuum coset survives when the lattice equals its dual.
+
+*Rules out counterexamples.* MSC 17B69 (Vertex operators; vertex operator algebras and related structures), 81T40. arXiv math.QA, math-ph. Level 3: graduate.
+
+**Definition.** Use a positive definite even lattice L to build its lattice vertex operator algebra. Require L to be unimodular, so the lattice equals the dual lattice of vectors pairing integrally with L. Evenness by itself only requires that squared lengths are even integers.
+
+**Problem.** An even positive definite lattice gives a holomorphic vertex operator algebra exactly when it is unimodular. Here holomorphic means that the vacuum module is the only simple module with finite-dimensional weight spaces and weights bounded below.
+
+**How the definition helps.** Unimodularity leaves just one label in the classification of simple modules. Dong’s theorem labels them by cosets of L in its dual, with the zero coset giving the vacuum. Our own example takes a lattice generated by a vector of squared length two. Half that vector generates the dual, giving a second coset and a second simple module.
+
+**Wikipedia:** [Vertex operator algebra](https://en.wikipedia.org/wiki/Vertex_operator_algebra). It says: “Lattice vertex algebras are canonically attached to double covers of even integral lattices”
+
+**Sources:**
+
+- [Frenkel and Ben-Zvi, Vertex Algebras and Algebraic Curves](https://doi.org/10.1090/surv/088)
+- [Chongying Dong, Vertex Algebras Associated with Even Lattices](https://doi.org/10.1006/jabr.1993.1217)
+
 ### Parity signs give the supercommutator its Jacobi identity
 
 **Remember:** Two odd inputs change subtraction to addition.
@@ -23879,6 +27788,24 @@ The list is long, but it is not complete. It contains only cases where the page 
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Coalgebra conjugation preserves Koszul brackets
+
+**Remember:** Conjugate the operator once to transport all its brackets.
+
+*True by definition.* MSC 17B55 (Homological methods in Lie (super)algebras), 81T70. arXiv math.QA, math-ph. Level 4: research.
+
+**Definition.** Let A be a graded commutative unital algebra over a characteristic-zero field. Extend a homogeneous operator D killing 1 to the symmetric coalgebra by applying D to each factor in turn with the graded signs. Let E be the coalgebra automorphism whose component from n factors to one multiplies those factors. Define the Koszul brackets as the one-output components of K(D) = E⁻¹ D̃ E, where D̃ denotes the extension.
+
+**Problem.** For operators D and T killing 1, K(\[D,T\]) = \[K(D),K(T)\], where the bracket is the commutator with the graded sign.
+
+**How the definition helps.** Conjugation preserves commutators, so the definition avoids expanding a separate signed product formula for every bracket (our own). The initial extension preserves commutators because terms acting on different factors cancel (our own). Identifying the resulting components with the usual Koszul brackets requires expanding the automorphism and its inverse (our own).
+
+**Paper or page:** [Cumulants, Koszul brackets and homological perturbation theory for commutative BV∞ and IBL∞ algebras](https://arxiv.org/abs/2012.14812v1). It says: “is a morphism of graded Lie algebras.”
+
+**Sources:**
+
+- [Ruggero Bandiera, Cumulants, Koszul brackets and homological perturbation theory for commutative BV∞ and IBL∞ algebras](https://arxiv.org/abs/2012.14812v1)
+
 ### Curvature detects obstructed lifts
 
 **Remember:** Lift once, then test whether the curvature is a differential.
@@ -23896,6 +27823,42 @@ The list is long, but it is not complete. It contains only cases where the page 
 **Sources:**
 
 - [Generalized Positive Energy Representations of Groups of Jets](https://arxiv.org/abs/2211.10390)
+
+### Translation preserves higher bracket identities
+
+**Remember:** Changing the origin does not change the square.
+
+*True by definition.* MSC 17B55 (Homological methods in Lie (super)algebras). arXiv math.QA. Level 4: research.
+
+**Definition.** Over a characteristic-zero field, a curved higher Lie algebra has a formal degree-one vector field Q with Q² = 0 on its shifted space. Its Taylor coefficients are its brackets, including the constant curvature term. Twisting translates the origin to a degree-zero point v of the shifted space. Use a complete descending filtration respected by the brackets, with v in its first step.
+
+**Problem.** The translated vector field defines a curved higher Lie algebra on the same space.
+
+**How the definition helps.** Translation conjugates the operator, so its square stays zero (our own). This proves all the new higher bracket identities at once (our own). The work goes into comparing the translated Taylor coefficients with the usual bracket formulas (our own).
+
+**Paper or page:** [A Lie theoretic approach to the twisting procedure and Maurer-Cartan simplicial sets over arbitrary rings](https://arxiv.org/abs/2303.16706v1). It says: “The twisted differential Qᵛ is a coderivation and squares to zero.”
+
+**Sources:**
+
+- [Niek de Kleijn, Felix Wierstra, A Lie theoretic approach to the twisting procedure and Maurer-Cartan simplicial sets over arbitrary rings](https://arxiv.org/abs/2303.16706v1)
+
+### Twisting turns solutions into flatness
+
+**Remember:** Move the origin to a zero of the vector field.
+
+*True by definition.* MSC 17B55 (Homological methods in Lie (super)algebras). arXiv math.QA. Level 4: research.
+
+**Definition.** Over a characteristic-zero field, describe a curved higher Lie algebra by a formal degree-one vector field Q with Q² = 0 on the shifted space. Curvature means its constant term, and flatness means this term vanishes. Twisting translates the origin to a degree-zero point v in the shifted space. Use a complete descending filtration respected by the brackets, with v in the first filtration step so the Taylor series converge.
+
+**Problem.** The translated higher Lie algebra is flat exactly when v satisfies the Maurer–Cartan equation, the vanishing of the sum of the bracket terms at v.
+
+**How the definition helps.** The new constant term is Q evaluated at v, which is the Maurer–Cartan series (our own). The work goes into justifying the translation in the filtration and identifying its Taylor coefficients with the twisted brackets (our own).
+
+**Paper or page:** [A Lie theoretic approach to the twisting procedure and Maurer-Cartan simplicial sets over arbitrary rings](https://arxiv.org/abs/2303.16706v1). It says: “is flat if and only if v is a Maurer-Cartan element.”
+
+**Sources:**
+
+- [Niek de Kleijn, Felix Wierstra, A Lie theoretic approach to the twisting procedure and Maurer-Cartan simplicial sets over arbitrary rings](https://arxiv.org/abs/2303.16706v1)
 
 ### Manin triples expose duality
 
@@ -23932,6 +27895,175 @@ The list is long, but it is not complete. It contains only cases where the page 
 - [Richard Borcherds, Generalized Kac–Moody algebras, Journal of Algebra 115 (1988) 501–512](https://doi.org/10.1016/0021-8693(88)90275-X)
 - [Richard E. Borcherds, A characterization of generalized Kac–Moody algebras, Journal of Algebra 174 (1995) 1073–1079](https://doi.org/10.1006/jabr.1995.1167)
 - [Richard E. Borcherds, Monstrous moonshine and monstrous Lie superalgebras, Inventiones Mathematicae 109 (1992) 405–444](https://doi.org/10.1007/BF01232032)
+
+### Free orbits preserve irreducibility
+
+**Remember:** A free module orbit has no stabilizer labels to split it.
+
+*Rules out counterexamples.* MSC 17B69 (Vertex operators; vertex operator algebras and related structures), 81T40. arXiv math.QA. Level 4: research.
+
+**Definition.** Let a finite group G of automorphisms act on a simple complex vertex algebra V of countable dimension. Twisting a module by g means precomposing its field action with g. The stabilizer of a module consists of elements whose twists give isomorphic modules. Its orbit is free when only the identity stabilizes it.
+
+**Problem.** A simple V-module stays simple over the subalgebra fixed by G exactly when its orbit is free.
+
+**How the definition helps.** A free orbit leaves only one summand in the restriction theorem. That theorem decomposes the module using representations of a twisted group algebra of the stabilizer. For the trivial group this algebra is just ℂ. Our own counterexample uses the rank-one lattice algebra and its sign involution. Its nonzero even and odd eigenspaces are separate modules over the fixed algebra.
+
+**Paper or page:** [Orbifold theory for vertex algebras and Galois correspondence](https://arxiv.org/abs/2302.09474v1), [Orbifold theory for vertex algebras and Galois correspondence](https://arxiv.org/abs/2302.09474v1). It says: “Then M is an irreducible Vᴳ-module if and only if Gₘ = {1}.”
+
+**Sources:**
+
+- [Chongying Dong, Li Ren, Chao Yang, Orbifold theory for vertex algebras and Galois correspondence](https://arxiv.org/abs/2302.09474v1)
+
+### Inversion reverses the dual twist
+
+**Remember:** Reverse the coordinate, and you reverse the twist.
+
+*True by definition.* MSC 17B69 (Vertex operators; vertex operator algebras and related structures), 81T40. arXiv math.QA. Level 4: research.
+
+**Definition.** For a module M with finite-dimensional weight spaces and weights bounded below, take the direct sum of the dual weight spaces. To define its field for a state, first scale that state by −z⁻² raised to its integral weight. Apply exp(zL₁), where L₁ generates the infinitesimal change of coordinate, and evaluate the resulting field on M at 1/z. Transpose this operator to the graded dual.
+
+**Problem.** Let g be a finite-order automorphism of a complex vertex operator algebra. If fields on M acquire the twist g around zero, the fields on its graded dual have twist g⁻¹.
+
+**How the definition helps.** In our own argument inversion reverses a loop around zero, so it reverses the twist. The state correction contributes only integral powers of z. Transposing modes alone would miss the reversal. The theorem also verifies that the new fields satisfy the twisted module identities.
+
+**Paper or page:** [Twisted regular representations and bimodules in vertex operator algebra theory](https://arxiv.org/abs/2505.16464v1). It says: “(M′, Y\[M\]′) is a g⁻¹-twisted module”
+
+**Sources:**
+
+- [Yiyi Zhu, Twisted regular representations and bimodules in vertex operator algebra theory](https://arxiv.org/abs/2505.16464v1)
+
+### Jet coordinates generate Li’s graded algebra
+
+**Remember:** Negative modes become products of derivatives of degree-zero classes.
+
+*True by definition.* MSC 17B69 (Vertex operators; vertex operator algebras and related structures), 81T40. arXiv math.QA, math-ph. Level 4: research.
+
+**Definition.** In a complex vertex algebra, modes are the coefficient operators of a formal field. Assign weight k to a mode numbered −1 − k for k ≥ 0. Let F(p) span all strings of such modes acting on arbitrary states with total assigned weight at least p. Degree p consists of classes in F(p) modulo F(p + 1).
+
+**Problem.** Let R be the degree-zero quotient and form its jet algebra by adjoining formal derivatives subject to all differentiated relations. This algebra maps onto the graded algebra by a map preserving products and derivatives.
+
+**How the definition helps.** Our own argument expresses every spanning string as a product of derivatives of degree-zero classes. In a vertex algebra, mode −1 − k equals mode −1 of the kth derivative divided by k factorial. Thus degree zero generates the graded algebra under multiplication and differentiation. The defining property of the jet algebra gives the surjection. The filtration theorem supplies the commutative product and derivative.
+
+**Paper or page:** [Li filtrations of SUSY vertex algebras](https://arxiv.org/abs/2111.05734v1), [Li filtrations of SUSY vertex algebras](https://arxiv.org/abs/2111.05734v1). It says: “then φ extends to a surjective morphism”
+
+**Sources:**
+
+- [Shintarou Yanagida, Li filtrations of SUSY vertex algebras](https://arxiv.org/abs/2111.05734v1)
+
+### Li’s degree zero is Poisson
+
+**Remember:** The mode −2 quotient is the degree-zero part of the graded Poisson structure.
+
+*True by definition.* MSC 17B69 (Vertex operators; vertex operator algebras and related structures), 81T40. arXiv math.QA, math-ph. Level 4: research.
+
+**Definition.** In a complex vertex algebra, modes are the coefficient operators of a formal field. Assign weight k to a mode numbered −1 − k for k ≥ 0. Let F(p) span all strings of such modes acting on arbitrary states with total assigned weight at least p. Degree p consists of classes in F(p) modulo F(p + 1).
+
+**Problem.** The quotient by the span of mode −2 products is a Poisson algebra. Mode −1 gives its commutative product, and mode zero gives a Lie bracket satisfying the product rule.
+
+**How the definition helps.** The graded construction puts both operations on degree zero, where the Poisson identities already hold. Our own argument avoids checking those identities again on representatives of the quotient. The work lies in proving the graded identities and identifying F(1) with the span of mode −2 products.
+
+**Wikipedia:** [Zhu algebra](https://en.wikipedia.org/wiki/Zhu_algebra). It says: “The multiplication of the C₂-algebra is commutative”
+
+**Paper or page:** [Li filtrations of SUSY vertex algebras](https://arxiv.org/abs/2111.05734v1). It says: “is equal to the degree zero subspace E₀(V)/E₁(V) = V/E₁(V) ⊂ gr\[E\] V of the Li filtration.”
+
+**Sources:**
+
+- [Shintarou Yanagida, Li filtrations of SUSY vertex algebras](https://arxiv.org/abs/2111.05734v1)
+
+### Li’s graded fields lose poles
+
+**Remember:** Derivative degree makes singular products vanish in the leading operations.
+
+*True by definition.* MSC 17B69 (Vertex operators; vertex operator algebras and related structures), 81T40. arXiv math.QA, math-ph. Level 4: research.
+
+**Definition.** In a complex vertex algebra, modes are the coefficient operators of a formal field. Assign weight k to a mode numbered −1 − k for k ≥ 0. Let F(p) span all strings of such modes acting on arbitrary states with total assigned weight at least p. Degree p consists of classes in F(p) modulo F(p + 1).
+
+**Problem.** In the vertex algebra formed from these successive quotients, every field has zero singular part.
+
+**How the definition helps.** The filtration places every pole coefficient one step deeper than its expected degree. For inputs in F(r) and F(s), mode m ≥ 0 lands in F(r + s − m). Its expected degree is r + s − m − 1, so its class vanishes. Our own explanation uses derivative count in place of the original conformal weights. With conformal weights, taking a leading term need not kill a pole. Proving the bound and constructing the graded fields require the filtration theorem.
+
+**Paper or page:** [Li filtrations of SUSY vertex algebras](https://arxiv.org/abs/2111.05734v1), [Li filtrations of SUSY vertex algebras](https://arxiv.org/abs/2111.05734v1). It says: “is commutative if and only if a₍ₘ∣ᴹ₎b ∈ E\[r+s−m\]”
+
+**Sources:**
+
+- [Shintarou Yanagida, Li filtrations of SUSY vertex algebras](https://arxiv.org/abs/2111.05734v1)
+
+### Local constancy makes fields commute
+
+**Remember:** Constant disc maps leave no room for poles.
+
+*True by definition.* MSC 17B69 (Vertex operators; vertex operator algebras and related structures), 81T40. arXiv math.QA, math-ph. Level 4: research.
+
+**Definition.** A holomorphic prefactorization algebra on the plane assigns complex locally convex spaces to open sets. It assigns compatible multilinear products to disjoint open sets inside a larger one, with holomorphic dependence on insertion points. Local constancy means every inclusion between open discs induces an isomorphism.
+
+**Problem.** For such a locally constant algebra, the associated vertex algebra is commutative. This means all coefficients of negative powers in its fields vanish.
+
+**How the definition helps.** Local constancy makes the two-disc product independent of the separation after identifying disc spaces by inclusion. Our own argument reads the missing poles directly from that product. A description by formal fields would instead require checking their singular coefficients. The construction theorem identifies those coefficients with the ones obtained from disc products.
+
+**Paper or page:** [A note on vertex algebras and Costello-Gwilliam factorization algebras](https://arxiv.org/abs/2408.00412v2), [A note on vertex algebras and Costello-Gwilliam factorization algebras](https://arxiv.org/abs/2408.00412v2). It says: “then the vertex algebra 𝐕(ℱ) is commutative.”
+
+**Sources:**
+
+- [Yusuke Nishinaka, A note on vertex algebras and Costello-Gwilliam factorization algebras](https://arxiv.org/abs/2408.00412v2)
+
+### Rationality excludes triplet character anomalies
+
+**Remember:** Finite codimension alone does not make simple characters close under modular transformations.
+
+*Rules out counterexamples.* MSC 17B69 (Vertex operators; vertex operator algebras and related structures), 81T40. arXiv math.QA, math-ph. Level 4: research.
+
+**Definition.** Take a simple complex vertex operator algebra isomorphic to its graded dual, with nonnegative integral weights and only the vacuum line at weight zero. Require the span of mode −2 products to have finite codimension. Also require rationality, meaning that every admissible module splits as a sum of simple modules.
+
+**Problem.** For each simple module, its character sums its weight multiplicities against powers of q, shifting each exponent by minus the central charge divided by 24. With q = exp(2πiτ), their span is invariant under τ ↦ τ + 1 and τ ↦ −1/τ.
+
+**How the definition helps.** Rationality excludes the triplet example where the span of simple characters fails to close under inversion. Our own illustration uses the algebra W(2), which satisfies the finite codimension condition. Inversion introduces a function containing τ times a theta-function derivative outside the character span. Zhu’s modular invariance theorem proves closure under the stated hypotheses.
+
+**Wikipedia:** [Zhu algebra](https://en.wikipedia.org/wiki/Zhu_algebra). It says: “the triplet vertex operator algebra is C₂-cofinite but not rational.”
+
+**Paper or page:** [Character Vectors of Strongly Regular Vertex Operator Algebras](https://arxiv.org/abs/2111.04616v3), [Character Vectors of Strongly Regular Vertex Operator Algebras](https://arxiv.org/abs/2111.04616v3). It says: “Then 𝔠𝔥\[V\] is a right Γ-submodule of 𝔉.”
+
+**Sources:**
+
+- [Cameron Franc, Geoffrey Mason, Character Vectors of Strongly Regular Vertex Operator Algebras](https://arxiv.org/abs/2111.04616v3)
+- [Fuchs, Hwang, Semikhatov and Tipunin, Nonsemisimple Fusion Algebras and the Verlinde Formula](https://doi.org/10.1007/s00220-004-1058-y)
+- [Yongchang Zhu, Modular invariance of characters of vertex operator algebras](https://doi.org/10.1090/s0894-0347-96-00182-8)
+
+### Sewing proves field associativity
+
+**Remember:** Two sewings of one sphere give two expansions of one operation.
+
+*True by definition.* MSC 17B69 (Vertex operators; vertex operator algebras and related structures), 81T40. arXiv math.QA, math-ph. Level 4: research.
+
+**Definition.** A geometric vertex operator algebra assigns multilinear operations to spheres with marked inputs, one marked output and a local coordinate at each mark. At central charge zero its sewing axiom identifies gluing two spheres with composing their operations. The formal definition instead assigns an operator series Y(u,z) to each state u.
+
+**Problem.** Take states u, v, w and pair the output with any graded dual vector. The product Y(u,z₁)Y(v,z₂)w and iterate Y(Y(u,z₁ − z₂)v,z₂)w agree wherever \|z₁\| &gt; \|z₂\| &gt; \|z₁ − z₂\| &gt; 0.
+
+**How the definition helps.** Our own argument obtains both expressions by sewing the same four-point sphere in two ways. The inequalities put both sewing expansions inside their convergence regions. Huang’s equivalence theorem supplies convergence and identifies the geometric operations with the formal fields.
+
+**nLab:** [vertex operator algebra](https://ncatlab.org/nlab/show/vertex+operator+algebra). It says: “Composition of such spheres is by gluing along punctures.”
+
+**Sources:**
+
+- [Yi-Zhi Huang, Two-Dimensional Conformal Geometry and Vertex Operator Algebras](https://doi.org/10.1007/978-1-4612-4276-5)
+
+### Zhu’s algebra detects endomorphisms
+
+**Remember:** An endomorphism of a simple module is determined at its bottom.
+
+*Makes the theorem clean to state or prove.* MSC 17B69 (Vertex operators; vertex operator algebras and related structures), 81T40. arXiv math.QA, math.RA. Level 4: research.
+
+**Definition.** Write Y(a,z) for the field of a state a of weight h, and call the coefficient of z⁻¹ in a series its residue. Multiply Y(a,z)b by the hth power of 1 + z. Zhu’s algebra quotients the state space by the span of the residues after division by z². Its product uses the same residues after division by z.
+
+**Problem.** Let M be a simple admissible module, graded by nonnegative integers compatibly with the field modes, with nonzero degree zero. Restriction identifies its module endomorphism ring with the endomorphism ring of its degree-zero space over Zhu’s algebra.
+
+**How the definition helps.** Zhu’s algebra retains exactly the action on degree zero needed to recover a simple module. The class of a acts there by its mode numbered h − 1. Since degree zero generates the module, restriction is injective. Zhu induction extends each endomorphism of degree zero to the induced module. Its canonical simple quotient recovers M and carries the induced endomorphism.
+
+**Paper or page:** [Endomorphism property of vertex operator algebras over arbitrary fields](https://arxiv.org/abs/2211.16573v2), [Endomorphism property of vertex operator algebras over arbitrary fields](https://arxiv.org/abs/2211.16573v2). It says: “End\[V\](M) ≅ End\[A(V)\](M(0)).”
+
+**Sources:**
+
+- [Chao Yang, Jianqi Liu, Endomorphism property of vertex operator algebras over arbitrary fields](https://arxiv.org/abs/2211.16573v2)
+- [Yongchang Zhu, Modular invariance of characters of vertex operator algebras](https://doi.org/10.1090/s0894-0347-96-00182-8)
 
 ### Quadratic operators preserve Jordan invertibility
 
@@ -26583,6 +30715,61 @@ The list is long, but it is not complete. It contains only cases where the page 
 - [Pavel Etingof, Dmitri Nikshych, Viktor Ostrik, On fusion categories, Annals of Math. 162 (2005) 581–642, arXiv:math/0203060](https://arxiv.org/abs/math/0203060)
 - [Pavel Etingof, Shlomo Gelaki, Dmitri Nikshych, Victor Ostrik, Tensor categories, Mathematical Surveys and Monographs 205, AMS (2015)](https://doi.org/10.1090/surv/205)
 
+### Loop actions diagonalize fusion
+
+**Remember:** An encircling loop acts by a scalar on each simple label.
+
+*True by definition.* MSC 18M20 (Fusion categories, modular tensor categories, modular functors), 81T40. arXiv math.QA, math-ph. Level 3: graduate.
+
+**Definition.** In a complex ribbon fusion category, the simple objects form a basis for the fusion algebra, whose multiplication records tensor products. A loop labelled U around a strand labelled V defines an operator on V. Define modularity by requiring this assignment to identify the fusion algebra with all natural endomorphisms of the identity functor. These are families of operators commuting with every morphism.
+
+**Problem.** Let S(i,j) be the trace of the double exchange of simple labels i and j, and let 1 denote the unit label. The functions i ↦ S(i,j)/S(1,j) identify the fusion algebra with a product of copies of ℂ, one per j.
+
+**How the definition helps.** Each family acts by a scalar on each simple object, so composing families multiplies their coordinates. Our own argument closes the strand labelled j to compute its scalar. Closing multiplies the scalar by the dimension S(1,j) and produces the linked-loop entry S(i,j). The work lies in identifying nested loops with tensor products and proving equivalence with invertibility of S.
+
+**nLab:** [modular tensor category](https://ncatlab.org/nlab/show/modular+tensor+category). It says: “straight V-line encircled by U-loop”
+
+**Sources:**
+
+- [Yi-Zhi Huang, Rigidity and modularity of vertex tensor categories](https://doi.org/10.1142/S0219199708003083)
+
+### Nondegeneracy excludes singular torus matrices
+
+**Remember:** A transparent simple object repeats the vacuum row up to a scalar.
+
+*Rules out counterexamples.* MSC 18M20 (Fusion categories, modular tensor categories, modular functors), 81T40. arXiv math.QA, math-ph. Level 3: graduate.
+
+**Definition.** Work in a complex ribbon fusion category, where objects split into finitely many types of simples and have tensor products, duals, exchanges and compatible twists. A simple object is transparent if exchanging it twice with every object gives the identity. Call the category modular when its tensor unit is its only transparent simple object up to isomorphism.
+
+**Problem.** For simple labels i and j, let S(i,j) be the categorical trace of their double exchange. The categorical trace closes the input and output lines into loops. The matrix S is invertible exactly when the category is modular.
+
+**How the definition helps.** Transparency makes one row of S a scalar multiple of the unit row. Our own calculation uses the identity double exchange, whose trace is the product of the two dimensions. In finite-dimensional complex super vector spaces, exchanging two odd vectors changes the sign. The odd line is therefore transparent and gives a second proportional row. The modularity criterion proves the converse implication.
+
+**nLab:** [modular tensor category](https://ncatlab.org/nlab/show/modular+tensor+category). It says: “the matrix (sⁱʲ) = (Uᵢ-circle threading through the Uⱼ -circle) is non-degenerate.”
+
+**Sources:**
+
+- [Vladimir Turaev, Modular Categories and 3-Manifold Invariants](https://doi.org/10.1142/S0217979292000876)
+- [Michael Müger, On the Structure of Modular Categories](https://doi.org/10.1112/s0024611503014187)
+
+### Sewing counts torus labels
+
+**Remember:** Cut one torus cycle and count one block per label.
+
+*True by definition.* MSC 18M20 (Fusion categories, modular tensor categories, modular functors), 81T40. arXiv math.QA, math-ph. Level 3: graduate.
+
+**Definition.** Use a modular functor that assigns finite-dimensional spaces to surfaces with boundaries marked by labels from a finite set. Cutting a circle gives a direct sum over labels, with dual labels on the two new boundary circles. Assume the space for a sphere with two holes has dimension one for dual labels and zero otherwise.
+
+**Problem.** The space assigned to the closed torus has dimension equal to the number of labels.
+
+**How the definition helps.** Our own argument cuts the torus into a sphere with two holes, so each summand has dimension one. The sewing axiom supplies one summand per label. A construction starting from fields must prove sewing and the two-point normalization before it can use this count.
+
+**nLab:** [modular functor](https://ncatlab.org/nlab/show/modular+functor). It says: “E respects sewing: if Xφ is obtained from X by cutting along a circle and giving the same label φ ∈ Φ to both resulting boundaries”
+
+**Sources:**
+
+- [Graeme Segal, The Definition of Conformal Field Theory](https://doi.org/10.1017/CBO9780511526398.019)
+
 ### Tannaka reconstruction works because the forgetful functor is kept
 
 **Remember:** Keep the forgetful functor, and the algebra comes back as its endomorphisms.
@@ -29009,6 +33196,60 @@ The list is long, but it is not complete. It contains only cases where the page 
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Cohomologous twists rescale tensor constraints
+
+**Remember:** A coboundary changes rebracketing by a change of tensor coordinates.
+
+*Makes the theorem clean to state or prove.* MSC 18M20 (Fusion categories, modular tensor categories, modular functors). arXiv math.QA. Level 4: research.
+
+**Definition.** Fix a finite group G and a normalized complex 3-cocycle ω, a function taking nonzero scalar values on triples satisfying the pentagon identity. In the twisted category of G-graded complex vector spaces, rebracketing homogeneous factors of degrees g,h,k multiplies by ω(g,h,k).
+
+**Problem.** Suppose normalized cocycles satisfy ω = (dμ)ω′ for a normalized function μ from pairs in G to nonzero complex numbers. Here dμ(g,h,k) = μ(h,k)μ(g,hk)/(μ(gh,k)μ(g,h)). The identity functor from the ω category to the ω′ category becomes a tensor equivalence with comparison scalars μ(g,h).
+
+**How the definition helps.** Writing the twist as a rebracketing scalar turns compatibility of the tensor maps into the displayed coboundary equation. The normalization makes comparison with the tensor unit automatic. The reciprocal scalars give the inverse equivalence.
+
+**Paper or page:** [Frobenius Monoidal Functors of Dijkgraaf-Witten Categories and Rigid Frobenius Algebras](https://arxiv.org/abs/2303.04493v2). It says: “which is the identity as a functor with monoidal structure given by”
+
+**Sources:**
+
+- [Frobenius Monoidal Functors of Dijkgraaf-Witten Categories and Rigid Frobenius Algebras](https://arxiv.org/abs/2303.04493v2)
+
+### Doubling cancels the surgery anomaly
+
+**Remember:** Combine a twist with its reverse to cancel the gluing scalar.
+
+*True by definition.* MSC 18M20 (Fusion categories, modular tensor categories, modular functors), 81T45. arXiv math.QA. Level 4: research.
+
+**Definition.** Let C be a complex modular fusion category, with finitely many simple labels and nondegenerate crossings. Double C by taking its tensor product with the category having the opposite crossings and inverse twists. The positive and negative Gauss sums weight squared quantum dimensions by each simple label’s twist or its inverse.
+
+**Problem.** Both Gauss sums of the double equal the global dimension of C, the sum of the squared quantum dimensions. With this dimension as normalization, the double has trivial surgery anomaly.
+
+**How the definition helps.** Reversing twists exchanges the two Gauss sums, so doubling gives the same product for either sign. Our own calculation separates the sum over pairs of simple labels into one sum for each factor. The modular Gauss-sum identity identifies their product with the global dimension. Identifying the double with the braided center uses the center factorization theorem.
+
+**Paper or page:** [Turaev-Viro TQFT and the Rank versus Genus Conjecture](https://arxiv.org/abs/2206.02650v1). It says: “Then Z(C) is an anomaly free modular category”
+
+**Sources:**
+
+- [Turaev-Viro TQFT and the Rank versus Genus Conjecture](https://arxiv.org/abs/2206.02650v1)
+
+### Encircling loops diagonalize torus fusion
+
+**Remember:** Evaluate an encircling loop on each simple color to read the eigenvalues.
+
+*True by definition.* MSC 18M20 (Fusion categories, modular tensor categories, modular functors). arXiv math.QA. Level 4: research.
+
+**Definition.** For a complex ribbon fusion category, the fusion algebra has a basis of simple labels and multiplies them by tensor product. Encircling a strand with a labeled loop gives an operator natural in the strand label. The loop definition of modularity requires this assignment to identify the fusion algebra with the algebra of natural endomorphisms of the identity functor.
+
+**Problem.** Let Sᵢⱼ denote the evaluation of two linked circles with labels i and j, and let 0 denote the tensor unit. In a modular category, fusion by each simple label i acts diagonally in one common basis, with entries Sᵢⱼ/S₀ⱼ indexed by j.
+
+**How the definition helps.** The loop definition turns fusion into multiplication of scalar functions on simple labels. Each natural operator acts by a scalar on a simple strand. Our own calculation closes the strand labeled j, multiplying that scalar by its quantum dimension S₀ⱼ and giving Sᵢⱼ. The equivalence with the usual invertible-matrix definition supplies the common basis.
+
+**nLab:** [modular tensor category](https://ncatlab.org/nlab/show/modular+tensor+category). It says: “modularity a non-degeneracy condition on the braiding given by an isomorphism of algebras”
+
+**Sources:**
+
+- [Verlinde, Fusion rules and modular transformations in 2D conformal field theory](https://doi.org/10.1016/0550-3213(88)90603-7)
+
 ### Frobenius–Perron dimension as a positive character makes it multiplicative
 
 **Remember:** A positive ring homomorphism already multiplies dimensions.
@@ -29026,6 +33267,45 @@ The list is long, but it is not complete. It contains only cases where the page 
 **Sources:**
 
 - [Pavel Etingof, Dmitri Nikshych, and Viktor Ostrik, On fusion categories (2005)](https://doi.org/10.4007/annals.2005.162.581)
+
+### Local modules inherit braiding
+
+**Remember:** A crossing must respect the equation that moves the algebra action.
+
+*Rules out counterexamples.* MSC 18M20 (Fusion categories, modular tensor categories, modular functors). arXiv math.QA. Level 4: research.
+
+**Definition.** A modular fusion category has finitely many simple types, duals, twists and nondegenerate crossings. For a commutative algebra A in it, a right module M has an action from M ⊗ A to M. Call M local when crossing M and A twice before acting leaves that action unchanged.
+
+**Problem.** Let A be a connected commutative separable algebra with trivial twist in a unitary modular fusion category over ℂ. Connected means the unit occurs once, and separable means multiplication admits a section respecting both A-actions. Local modules form a modular category under tensor product over A.
+
+**How the definition helps.** Locality lets the crossing descend through the relations defining the tensor product over A. Those relations identify the action on one factor with the action on the other. Proving that the induced crossings are nondegenerate requires the modularity theorem for local modules.
+
+**Paper or page:** [Frobenius Monoidal Functors of Dijkgraaf-Witten Categories and Rigid Frobenius Algebras](https://arxiv.org/abs/2303.04493v2). It says: “of local modules over A in C is also modular.”
+
+**Sources:**
+
+- [Frobenius Monoidal Functors of Dijkgraaf-Witten Categories and Rigid Frobenius Algebras](https://arxiv.org/abs/2303.04493v2)
+
+### Modularity prevents singular torus rotation
+
+**Remember:** A transparent extra color gives the torus rotation a redundant row.
+
+*Rules out counterexamples.* MSC 18M20 (Fusion categories, modular tensor categories, modular functors), 81T45. arXiv math.QA. Level 4: research.
+
+**Definition.** In a complex ribbon fusion category, objects are sums of finitely many simple types, with tensor products, duals, crossings and compatible twists. A simple object is transparent if crossing it twice with any object acts as the identity. Modularity requires the tensor unit to be the only transparent simple type.
+
+**Problem.** The Hopf-link matrix evaluates two linked circles for each pair of simple labels. This matrix is invertible exactly when the category is modular.
+
+**How the definition helps.** Modularity excludes transparent labels whose rows are proportional to the unit row. In our own example, the two simple complex representations of the order-two group have dimension one. Their usual symmetric crossings give a matrix of ones. Proving that every singular matrix arises from nontrivial transparency requires the modularity criterion.
+
+**Wikipedia:** [Modular tensor category](https://en.wikipedia.org/wiki/Modular_tensor_category). It says: “a modular tensor category is a braided spherical fusion category with non-degenerate braiding.”
+
+**Paper or page:** [CFT Correlators for Cardy Bulk Fields via String-Net Models](https://arxiv.org/abs/1911.10147v2). It says: “A ribbon fusion category C is a modular tensor category if and only if the canonical functor Ξ is a braided equivalence.”
+
+**Sources:**
+
+- [Reshetikhin and Turaev, Invariants of 3-manifolds via link polynomials and quantum groups](https://link.springer.com/article/10.1007/BF01239527)
+- [Bruguières, Catégories prémodulaires, modularisations et invariants des variétés de dimension 3](https://doi.org/10.1007/s002080050011)
 
 ### Veined fusion categories give tetrahedral symmetry of 6j-symbols without pivotal structure
 
@@ -31167,6 +35447,24 @@ The list is long, but it is not complete. It contains only cases where the page 
 **Sources:**
 
 - [The spectral model of (Real) K-theory](https://arxiv.org/abs/2410.21606)
+
+### Superconnection Chern forms are closed
+
+**Remember:** The square commutes with its root, and a graded trace kills commutators.
+
+*True by definition.* MSC 19L10 (Riemann-Roch theorems, Chern characters), 58J20. arXiv math.DG, math-ph. Level 4: research.
+
+**Definition.** Split a finite-rank complex vector bundle into even and odd parts. A superconnection A reverses total parity on bundle-valued forms and satisfies A(αs) = dα·s + (−1)ᵏαA(s) for each scalar k-form α. Define its Chern form as the graded trace of exp(−A²). The graded trace subtracts the odd trace from the even trace.
+
+**Problem.** The Chern character form of a finite-rank superconnection is closed.
+
+**How the definition helps.** Our own calculation reduces closedness to the identity that A commutes with every power of its square. The graded product rule identifies the exterior derivative of the Chern form with the graded trace of that commutator. The transgression formula shows this definition gives the same cohomology class as the ordinary connection formula, with matching normalization.
+
+**Paper or page:** [The families analytic index for 1∣1-dimensional Euclidean field theories](https://arxiv.org/abs/2303.09207v1). It says: “When it exists, the Chern form of a Clₙ-linear superconnection 𝔸 is closed and has total degree n.”
+
+**Sources:**
+
+- [Daniel Quillen, Superconnections and the Chern character (1985)](https://doi.org/10.1016/0040-9383(85)90047-3)
 
 ### Connective K-theory modulo Bott gives integers
 
@@ -34812,6 +39110,22 @@ The list is long, but it is not complete. It contains only cases where the page 
 **Wikipedia:** [Induced representation](https://en.wikipedia.org/wiki/Induced_representation). It says: “With the addition of the normalizing factors this induction functor takes unitary representations to unitary representations.”
 
 **Paper or page:** [Representations of SL₂(F)](https://arxiv.org/abs/2404.11188). It says: “The smooth dual of iᴳ′₍B′₎(χ) is iᴳ′₍B′₎(χ⁻¹).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Order selects Langlands quotients
+
+**Remember:** Order the exponents before taking the quotient.
+
+*Rules out counterexamples.* MSC 22E50 (Representations of Lie and linear algebraic groups over local fields), 11F70. arXiv math.RT, math.NT. Level 4: research.
+
+**Definition.** For GLₙ over a p-adic field, choose a subgroup of upper block triangular matrices. On each diagonal block choose an irreducible tempered representation, one satisfying the tempered decay bounds on matrix coefficients. Twist each by a real power of the absolute determinant, ordering the exponents from largest to smallest with no ties. Induce to the whole group with the square-root measure correction, obtaining a standard module.
+
+**Problem.** Each standard module has a unique irreducible quotient. Every irreducible smooth complex representation of GLₙ occurs this way, with unique ordered data up to isomorphism. Smooth means every vector has an open stabilizer.
+
+**How the definition helps.** The order selects which irreducible piece appears as a quotient (our own). For two one-dimensional trivial blocks with exponents ½ and −½, the standard order gives the trivial quotient (our own). Reversing them gives the Steinberg quotient, realized by locally constant functions on the projective line modulo constants (our own). The Langlands classification proves existence and uniqueness for the ordered data.
+
+**Paper or page:** [The local Langlands conjecture](https://arxiv.org/abs/2510.00632v1). It says: “admits a unique irreducible quotient J(P,σ,ν).”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -52593,6 +56907,24 @@ The list is long, but it is not complete. It contains only cases where the page 
 
 - [G. A. Elliott, On the classification of inductive limits of sequences of semisimple finite-dimensional algebras, Journal of Algebra 38 (1976), 29–44](https://doi.org/10.1016/0021-8693(76)90242-8)
 
+### Trivial dynamics turns thermal equilibrium into a trace
+
+**Remember:** With no time evolution, equilibrium means a trace.
+
+*Rules out counterexamples.* MSC 46L60 (Applications of selfadjoint operator algebras to physics). arXiv math.OA, math-ph. Level 3: graduate.
+
+**Definition.** Let αₜ describe time evolution by automorphisms of a unital operator algebra, and let β &gt; 0. The Kubo–Martin–Schwinger condition requires a bounded continuous function F on 0 ≤ Im z ≤ β for each pair A, B. It must be holomorphic inside, with F(t) = ω(Aαₜ(B)) and F(t+iβ) = ω(αₜ(B)A) for real t.
+
+**Problem.** For trivial time evolution, the Kubo–Martin–Schwinger states at positive inverse temperature are exactly the tracial states.
+
+**How the definition helps.** For constant dynamics the strip condition forces the two orders of multiplication to have equal expectation. Our own proof subtracts the constant lower boundary value and reflects the resulting function across that boundary. The identity theorem makes it zero throughout, so ω(AB) = ω(BA). Conversely, a trace supplies a constant strip function for each pair. Every state is stationary under trivial dynamics, including nontracial vector states on two-by-two matrices.
+
+**Wikipedia:** [Tomita–Takesaki theory](https://en.wikipedia.org/wiki/Tomita%E2%80%93Takesaki_theory). It says: “there is a bounded continuous function F in the strip”
+
+**Sources:**
+
+- [Rudolf Haag, Nicolaas M. Hugenholtz and Marinus Winnink, On the equilibrium states in quantum statistical mechanics](https://doi.org/10.1007/BF01646342)
+
 ### Defining K₀ of non-unital algebras by unitization matches compactly supported K-theory
 
 **Remember:** Scalar evaluation becomes restriction to the point at infinity.
@@ -53131,6 +57463,40 @@ The list is long, but it is not complete. It contains only cases where the page 
 
 - [Arthur J. Parzygnat, Benjamin P. Russo, Non-commutative disintegrations: existence and uniqueness in finite dimensions, arXiv:1907.09689v2 (2021), J. Noncommut. Geom. 17 (2023), no. 3, pp. 899-955](https://arxiv.org/abs/1907.09689v2)
 
+### Relative modular entropy is nonnegative
+
+**Remember:** The relative modular operator has mean one.
+
+*True by definition.* MSC 46L53 (Noncommutative probability and statistics), 46L10. arXiv math.OA. Level 4: research.
+
+**Definition.** Represent faithful normal states φ and ψ on a von Neumann algebra M by unit vectors ξ and η in its standard positive cone. This cone selects a unique vector for each state that preserves bounded increasing suprema, and faithfulness means detecting every nonzero positive operator. Close the antilinear map xξ ↦ x\*η for x ∈ M, call its closure S, and set Δ = S\*S. The Araki relative entropy of φ with respect to ψ integrates −log λ against the spectral probability measure of Δ in ξ.
+
+**Problem.** The Araki relative entropy of any faithful normal state relative to another is nonnegative, even when it is infinite.
+
+**How the definition helps.** The definition gives a probability measure with mean one, so convexity of −log proves the bound. Indeed, the mean equals ‖Sξ‖² = ‖η‖² = 1. Our own proof integrates −log λ ≥ 1 − λ, allowing the integral to be infinite. The construction of Δ replaces the density matrix formula and extends it to algebras without a trace.
+
+**nLab:** [relative entropy](https://ncatlab.org/nlab/show/relative+entropy). It says: “is the relative modular operator of any cyclic and separating vector representatives”
+
+**Sources:**
+
+- [Huzihiro Araki, Relative Entropy of States of von Neumann Algebras](https://doi.org/10.2977/prims/1195191148)
+
+### Trace tests give entropy monotonicity
+
+**Remember:** A smaller algebra gives fewer entropy tests.
+
+*True by definition.* MSC 46L53 (Noncommutative probability and statistics). arXiv math.OA. Level 4: research.
+
+**Definition.** Let M be a weakly closed unital adjoint algebra of bounded operators with a faithful normal tracial state τ. Here τ detects nonzero positive elements, preserves bounded increasing suprema, and satisfies τ(ab) = τ(ba). For a normal state ω, define its entropy relative to τ as the supremum of ω(h) − log τ(exp h) over self-adjoint h ∈ M.
+
+**Problem.** Let N be a unital von Neumann subalgebra of M. If ω has finite entropy, restricting both ω and τ to N cannot increase that entropy.
+
+**How the definition helps.** Restricting the algebra reduces the set of tests in the supremum. Our own proof observes that exp h and its trace stay the same for every remaining test. The variational theorem identifies this supremum with τ(D log D), where the density D satisfies ω(a) = τ(Da).
+
+**Paper or page:** [Variational formulae for entropy-like functionals for states in von Neumann algebras](https://arxiv.org/abs/2510.07605v1). It says: “ω(h) − log τ(eʰ)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Finite free cumulants make repeated derivatives of random polynomials tend to Hermite
 
 **Remember:** Differentiation multiplies each finite free cumulant by a fixed power of k/N.
@@ -53169,6 +57535,60 @@ The list is long, but it is not complete. It contains only cases where the page 
 
 - [Toke Meier Carlsen, Eun Ji Kang, A Cuntz–Krieger Uniqueness theorem for C\*-algebras of relative generalized Boolean dynamical systems, arXiv:2305.09232 (2023)](https://arxiv.org/abs/2305.09232)
 - [Alex Kumjian, David Pask, Iain Raeburn, Jean Renault, Graphs, groupoids, and Cuntz–Krieger algebras, J. Funct. Anal. (1997)](https://doi.org/10.1006/jfan.1996.3001)
+
+### Outer modular flow forgets states
+
+**Remember:** Quotient by inner conjugation to forget the state.
+
+*True by definition.* MSC 46L55 (Noncommutative dynamical systems), 46L10. arXiv math.OA. Level 4: research.
+
+**Definition.** Let M be a von Neumann algebra, a weakly closed unital algebra of bounded operators closed under adjoints. A faithful normal state detects nonzero positive operators and preserves bounded increasing suprema of positive operators. Its modular group σ is the canonical time evolution from Tomita–Takesaki theory. At each time, take the class of σₜ modulo conjugations by unitaries of M.
+
+**Problem.** The resulting homomorphism from real time to the outer automorphism group is independent of the faithful normal state.
+
+**How the definition helps.** The quotient identifies automorphisms that differ by a unitary conjugation inside M. Connes’s cocycle theorem shows that changing the state changes each modular automorphism by exactly such a conjugation. Comparing the original automorphisms requires that theorem. Equality of their classes then follows from the quotient definition.
+
+**Wikipedia:** [Tomita–Takesaki theory](https://en.wikipedia.org/wiki/Tomita%E2%80%93Takesaki_theory). It says: “independent of the choice of faithful state.”
+
+**Sources:**
+
+- [Alain Connes, Une classification des facteurs de type III](https://doi.org/10.24033/asens.1247)
+
+### The continuous core forgets states
+
+**Remember:** Changing the state only changes the implementing unitaries.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 46L55 (Noncommutative dynamical systems), 46L10. arXiv math.OA. Level 4: research.
+
+**Definition.** A faithful normal state detects nonzero positive operators and preserves bounded increasing suprema of positive operators. Its modular flow σ is the canonical time evolution on its von Neumann algebra M. The continuous core is the von Neumann crossed product in the regular representation, generated by M and time translation unitaries implementing σ. The dual action fixes M and multiplies the time translation unitaries by the corresponding characters of real time.
+
+**Problem.** The continuous cores built from two faithful normal states are isomorphic by a map that fixes the embedded algebra and respects the dual actions.
+
+**How the definition helps.** The crossed product includes implementing unitaries that can absorb the change in modular flow. Connes’s theorem gives unitaries uₜ in M relating the two flows by conjugation. Our own proof corrects each implementing unitary by uₜ, choosing the cocycle from the second flow to the first. The cocycle identity makes these corrected operators a unitary group. In the regular representations this change is implemented by pointwise unitary multiplication, giving a normal isomorphism. Correcting by elements of M leaves the character factors in the dual action unchanged.
+
+**Wikipedia:** [Tomita–Takesaki theory](https://en.wikipedia.org/wiki/Tomita%E2%80%93Takesaki_theory). It says: “the modular automorphisms differ by inner automorphisms”
+
+**Sources:**
+
+- [Alain Connes, Une classification des facteurs de type III](https://doi.org/10.24033/asens.1247)
+
+### Modular equilibrium recovers Gibbs states
+
+**Remember:** On all bounded operators, the density gives the Hamiltonian.
+
+*Makes the theorem clean to state or prove.* MSC 46L60 (Applications of selfadjoint operator algebras to physics), 82B10. arXiv math.OA, math-ph. Level 4: research.
+
+**Definition.** Let αₜ be a weakly continuous automorphism group on B(H), the bounded operators on a Hilbert space. At inverse temperature β &gt; 0, equilibrium requires a bounded continuous F on 0 ≤ Im z ≤ β for every A,B ∈ B(H). It must be holomorphic inside, with boundary values F(t) = ω(Aαₜ(B)) and F(t+iβ) = ω(αₜ(B)A). A faithful normal state has the form ω(A) = Tr(ρA) for a positive trace-one operator ρ with zero kernel.
+
+**Problem.** For a faithful normal equilibrium state, set K = −(log ρ)/β by spectral calculus. Then αₜ(A) = exp(itK)A exp(−itK), and exp(−βK) = ρ.
+
+**How the definition helps.** The two boundary values characterize time evolution, allowing the density operator to determine a generator. Takesaki’s uniqueness theorem identifies the dynamics with the reverse modular flow at time t/β. For B(H), the modular flow at time s is conjugation by exp(is log ρ). Our own calculation substitutes s = −t/β and obtains K. Adding a scalar to K gives the same dynamics.
+
+**Paper or page:** [Rotational KMS states and type I conformal nets](https://arxiv.org/abs/1608.08903v2). It says: “there exists positive, non-singular, selfadjoint operator H”
+
+**Sources:**
+
+- [Roberto Longo and Yoh Tanimoto, Rotational KMS States and Type I Conformal Nets](https://doi.org/10.1007/s00220-017-2969-8)
 
 ### Bipartite quantum graphs keep the classical spectral test
 
@@ -54361,6 +58781,24 @@ The list is long, but it is not complete. It contains only cases where the page 
 **Wikipedia:** [Strictly singular operator](https://en.wikipedia.org/wiki/Strictly_singular_operator). It says: “is called inessential whenever Idₓ − ST is a Fredholm operator”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Odd symmetry preserves kernel parity
+
+**Remember:** Odd symmetry makes the ordinary index zero but leaves kernel parity.
+
+*Makes the theorem clean to state or prove.* MSC 47A53 ((Semi-) Fredholm operators; index theories), 58J20. arXiv math.DG. Level 4: research.
+
+**Definition.** Let D be a bounded operator on a complex Hilbert space with closed range and finite-dimensional kernel and cokernel. Fix a conjugate-linear isometry τ with τ² = −1. Call D odd symmetric when τDτ⁻¹ = D\*, its adjoint. Define its parity index as dim ker D modulo two.
+
+**Problem.** The parity index is constant under compact perturbations that preserve odd symmetry.
+
+**How the definition helps.** Our own explanation is that τ pairs the kernel with the cokernel, so the ordinary index cannot distinguish these operators. The parity index retains information that survives deformation. Our own account of the proof uses the symmetry on a finite-dimensional reduction to prove local constancy of parity.
+
+**Paper or page:** [On the Z<sub>2</sub>-valued index of elliptic odd symmetric operators on non-compact manifolds](https://arxiv.org/abs/2403.13999v3). It says: “indτ(D + K) = indτ D.”
+
+**Sources:**
+
+- [Maxim Braverman and Ahmad Reza Haj Saeedi Sadegh, On the ℤ₂-valued index of elliptic odd symmetric operators on non-compact manifolds (2024)](https://doi.org/10.1007/s40316-024-00228-5)
 
 ### A shifted inverse detects eigenvectors
 
@@ -58610,6 +63048,148 @@ a parallelogram.”
 - [P. A. M. Dirac, Quantised Singularities in the Electromagnetic Field, Proc. Roy. Soc. A 133 (1931) 60–72](https://doi.org/10.1098/rspa.1931.0130)
 - [Daniel S. Freed, Dirac Charge Quantization and Generalized Differential Cohomology, Surveys in Differential Geometry 7 (2000) 129–194, arXiv:hep-th/0011220](https://arxiv.org/abs/hep-th/0011220)
 
+### A curvature split bounds energy
+
+**Remember:** The unwanted part of curvature is exactly the excess energy.
+
+*True by definition.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 3: graduate.
+
+**Definition.** Fix an SU(n) bundle on a closed oriented Riemannian four-manifold. The Hodge star splits its curvature into parts F₊ and F₋ with eigenvalues +1 and −1. An anti-self-dual connection satisfies F₊ = 0.
+
+**Problem.** If the bundle admits an anti-self-dual connection, its absolute energy minimizers are exactly its anti-self-dual connections.
+
+**How the definition helps.** In our own proof, the splitting writes the energy as a bundle constant plus twice the integral of \|F₊\|². Here the energy is the integral of \|F\|². Chern–Weil theory shows that the integral of \|F₋\|² − \|F₊\|² depends only on the bundle.
+
+**nLab:** [Yang-Mills instanton](https://ncatlab.org/nlab/show/Yang-Mills+instanton). It says: “In SU(n)-Yang-Mills theory an instanton is a field configuration with non-vanishing second Chern class that minimizes the Yang-Mills energy.”
+
+**Wikipedia:** [Instanton](https://en.wikipedia.org/wiki/Instanton). It says: “Instantons are topologically nontrivial solutions of Yang–Mills equations that absolutely minimize the energy functional within their topological type.”
+
+**Sources:**
+
+- [Michael F. Atiyah, Nigel J. Hitchin and Isadore M. Singer, Self-duality in four-dimensional Riemannian geometry](https://doi.org/10.1098/rspa.1978.0143)
+
+### A frame removes gauge stabilizers
+
+**Remember:** A gauge symmetry that fixes one frame fixes every transported frame.
+
+*Rules out counterexamples.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 3: graduate.
+
+**Definition.** Choose one frame in one fiber of a principal bundle. Use only gauge transformations, or bundle changes of frame, that fix this frame. The ordinary gauge group need not fix it.
+
+**Problem.** On a connected base, the based gauge group acts freely on the space of smooth connections. The full gauge group need not act freely, since constant changes preserve the product connection on a trivial bundle.
+
+**How the definition helps.** In our own proof, fixing one frame determines every symmetry that preserves the connection. Such a symmetry commutes with parallel transport, so it fixes a transported frame over every point of the connected base. A bundle automorphism fixing a frame fixes its entire fiber.
+
+**nLab:** [parallel transport](https://ncatlab.org/nlab/show/parallel+transport). It says: “This means that we may identify connections on P with their parallel transport functors.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Anti-self-dual connections satisfy Yang–Mills
+
+**Remember:** Flip the curvature and let the Bianchi identity do the rest.
+
+*True by definition.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 3: graduate.
+
+**Definition.** On an oriented Riemannian four-manifold, let F be the curvature of a connection with compact structure group. The metric and orientation define the Hodge star ⋆ on two-forms. A connection is anti-self-dual if ⋆F = −F.
+
+**Problem.** Every smooth anti-self-dual connection is a Yang–Mills connection.
+
+**How the definition helps.** In our own calculation, anti-self-duality turns the Yang–Mills equation dₐ⋆F = 0 into the Bianchi identity dₐF = 0. Here dₐ differentiates forms using the connection. The identity holds for every connection, so the first-order condition implies the second-order equation.
+
+**nLab:** [Yang-Mills equation](https://ncatlab.org/nlab/show/Yang-Mills+equation). It says: “The Bianchi identity dₐFₐ = 0 and the Yang-Mills equation δₐFₐ = 0 combine to:”
+
+**Sources:**
+
+- [Michael F. Atiyah, Nigel J. Hitchin and Isadore M. Singer, Self-duality in four-dimensional Riemannian geometry](https://doi.org/10.1098/rspa.1978.0143)
+
+### Coulomb gauge restores Hessian ellipticity
+
+**Remember:** Coulomb gauge fills the symbol direction that gauge symmetry leaves empty.
+
+*Rules out counterexamples. Confidence: medium.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 3: graduate.
+
+**Definition.** At a smooth Yang–Mills connection A, write dₐ for the covariant exterior derivative and dₐ\* for its metric adjoint. The Hessian H is the linearization of the Yang–Mills equation with the energy normalized by one half. Coulomb gauge requires a variation a to satisfy dₐ\*a = 0. Define the gauge-fixed operator on all variations by H + dₐdₐ\*.
+
+**Problem.** On a closed Riemannian manifold of positive dimension with positive-dimensional compact structure group, the gauge-fixed operator is elliptic. Its principal symbol, which records its highest derivatives, equals \|ξ\|² times the identity at every nonzero covector ξ.
+
+**How the definition helps.** In our own proof, the added term supplies exactly the direction missing from the Hessian. The symbol of H acts by \|ξ\|² on variations perpendicular to ξ and vanishes on variations parallel to ξ. The added term acts by \|ξ\|² on parallel variations and vanishes on perpendicular ones. Their sum is invertible for ξ ≠ 0, which gives ellipticity.
+
+**nLab:** [Coulomb gauge](https://ncatlab.org/nlab/show/Coulomb+gauge). It says: “Then A is said to be in Coulomb gauge relative to A₀ if”
+
+**Paper or page:** [Compactness for Ω-Yang-Mills connections](https://arxiv.org/abs/2106.09131). It says: “then A is gauge equivalent to a connection (also denoted A) satisfying:”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Cylinder instantons follow Chern–Simons flow
+
+**Remember:** Remove the time component and duality becomes flow.
+
+*Makes the theorem clean to state or prove.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 3: graduate.
+
+**Definition.** Fix a closed oriented Riemannian three-manifold and a principal SU(2) bundle. On its product with an interval, temporal gauge sets the time component of a connection to zero. The remaining component is a path A(t) of spatial connections. Normalize the Chern–Simons functional so its gradient for the integral inner product is ⋆Fₐ.
+
+**Problem.** With time first in the product orientation, a connection in temporal gauge is anti-self-dual exactly when its path follows negative Chern–Simons gradient flow.
+
+**How the definition helps.** Temporal gauge turns the mixed curvature component into the time derivative of A. In our own sign convention, anti-self-duality gives ∂ₜA = −⋆Fₐ, where ⋆ is the spatial Hodge star. Parallel transport along the interval supplies temporal gauge. The first variation of Chern–Simons identifies the spatial curvature term with its gradient.
+
+**nLab:** [Yang-Mills instanton Floer homology](https://ncatlab.org/nlab/show/Yang-Mills+instanton+Floer+homology). It says: “the flow lines of S₍CS₎ correspond to the Yang-Mills instantons on Σ × \[0,1\].”
+
+**Sources:**
+
+- [Simon K. Donaldson, Floer Homology Groups in Yang-Mills Theory](https://doi.org/10.1017/CBO9780511543098)
+
+### Cylinder integration gives Chern–Simons transgression
+
+**Remember:** Integrate along the path and differentiate to get the endpoints.
+
+*True by definition.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 3: graduate.
+
+**Definition.** Join two connections on one principal bundle by their straight path. Regard this path as a connection on the product with \[0,1\], with zero interval component. Apply a conjugation-invariant homogeneous polynomial P to its curvature F. Define the relative Chern–Simons form by inserting the increasing interval direction into P(F) and integrating over the interval.
+
+**Problem.** The exterior derivative of this form equals P applied to the final curvature minus P applied to the initial curvature.
+
+**How the definition helps.** In our own proof, integration along the interval turns differentiation into subtraction of the two endpoint values. Stokes’ formula gives this identity because Chern–Weil theory makes P(F) closed. Using the usual polynomial expression for the relative form would require differentiating the connection along the path explicitly.
+
+**Paper or page:** [Rigid models for 2-gerbes I: Chern-Simons geometry](https://arxiv.org/abs/2209.05521). It says: “Given a k-form ξ on X × \[a,b\] we have d∫\[a,b\] ξ + ∫\[a,b\] dξ = ξ\|X×{b} − ξ\|X×{a}.”
+
+**Sources:**
+
+- [Shiing-Shen Chern and James Simons, Characteristic Forms and Geometric Invariants](https://doi.org/10.2307/1971013)
+
+### Local systems compute flat cohomology
+
+**Remember:** Parallel sections are the coefficients of flat de Rham theory.
+
+*Makes the theorem clean to state or prove.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 3: graduate.
+
+**Definition.** Let E be a smooth real or complex vector bundle with flat connection on a smooth manifold. Its covariant exterior derivative differentiates E-valued forms and squares to zero because the curvature vanishes. The parallel sections on open sets form a local system, a sheaf that looks constant on small balls.
+
+**Problem.** The cohomology of the flat de Rham complex is the cohomology of the parallel local system. In particular it does not require a metric on the base.
+
+**How the definition helps.** In our own proof, a parallel frame turns the differential on bundle-valued forms into ordinary differentiation of each component. The Poincaré lemma gives local exactness in positive degrees, and the kernel in degree zero consists of parallel sections. Partitions of unity make this a resolution whose global sections compute the cohomology of the local system.
+
+**Paper or page:** [Lie groups and Chern-Simons Theory](https://arxiv.org/abs/2207.11062). It says: “the homology on the chain complex described above is just the cohomology of M with local coefficients in V”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Nonzero vortices require strict area bounds
+
+**Remember:** A nonzero section uses some of the available area.
+
+*Rules out counterexamples.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 3: graduate.
+
+**Definition.** Fix a holomorphic line bundle L with a nonzero holomorphic section φ on a compact connected Riemann surface with area form ω. A Hermitian metric h gives the unique unitary connection compatible with the holomorphic structure. Its curvature F satisfies the vortex equation when iF = (τ − \|φ\|²)ω/2, with real parameter τ and norm from h.
+
+**Problem.** A vortex with nonzero section must satisfy 4π deg L &lt; τ times the area. If equality holds, a constant-curvature connection with the zero section solves the equations.
+
+**How the definition helps.** In our own proof, a nonzero section makes the integral of its squared norm strictly positive. The curvature formula gives ∫iF = 2π deg L, where deg L is the first Chern number. Integrating the vortex equation now gives the strict bound. At equality a constant-curvature metric solves the equation with the zero section.
+
+**Paper or page:** [Kähler-Yang-Mills Equations and Vortices](https://arxiv.org/abs/2309.15673). It says: “Assume that φ is not identically zero. For every fixed Kähler form ω, there exists a unique solution h of the vortex equations”
+
+**Sources:**
+
+- [Steven B. Bradlow, Vortices in holomorphic line bundles over closed Kähler manifolds](https://doi.org/10.1007/BF02097654)
+
 ### Polystability is exactly the condition for a Hermite–Einstein metric
 
 **Remember:** Sums of stable bundles of equal slope carry Hermite–Einstein metrics.
@@ -58646,6 +63226,58 @@ a parallelogram.”
 **Sources:**
 
 - [A. A. Belavin, A. M. Polyakov, A. S. Schwartz, Yu. S. Tyupkin, Pseudoparticle solutions of the Yang-Mills equations, Physics Letters B 59 (1975) 85–87](https://doi.org/10.1016/0370-2693(75)90163-X)
+
+### Surface Hermite–Einstein connections are projectively flat
+
+**Remember:** Ignore scalar curvature only after passing to projective frames.
+
+*True by definition.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 3: graduate.
+
+**Definition.** Fix a Hermitian vector bundle on a Riemann surface with area form ω. A unitary connection is Hermite–Einstein if its curvature satisfies F = iλω Id for some real constant λ. Projective unitary frames identify orthonormal frames that differ by a common phase. A connection is projectively flat when its induced connection on projective frames has zero curvature.
+
+**Problem.** Every Hermite–Einstein connection on a Hermitian bundle over a compact Riemann surface is projectively flat. A positive-degree line bundle shows why one cannot conclude ordinary flatness.
+
+**How the definition helps.** In our own proof, passage to projective frames kills every imaginary scalar multiple of the identity. Thus the Hermite–Einstein equation on a curve forces projective curvature to vanish. For ordinary flatness the scalar itself must vanish. On a positive-degree line bundle its integral is nonzero by the curvature formula for the degree.
+
+**nLab:** [projectively flat connection](https://ncatlab.org/nlab/show/projectively+flat+connection). It says: “A connection on a bundle that is flat up to a central term.”
+
+**Sources:**
+
+- [Michael F. Atiyah and Raoul Bott, The Yang-Mills equations over Riemann surfaces](https://doi.org/10.1098/rsta.1983.0017)
+
+### Translation symmetry gives Bogomolny monopoles
+
+**Remember:** The removed direction becomes a field on the space that stays.
+
+*True by definition.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 3: graduate.
+
+**Definition.** Use the product metric on ℝ × Y for an oriented Riemannian three-manifold Y, with time first in the orientation. Pull a principal bundle back from Y. A translation-invariant connection on this bundle has the form A + φ dt. Here A is a spatial connection and φ is a section of its Lie algebra bundle.
+
+**Problem.** The lifted connection A + φ dt is anti-self-dual exactly when Fₐ = ⋆dₐφ on Y. Here ⋆ is the spatial Hodge star.
+
+**How the definition helps.** In our own calculation, translation invariance leaves just two curvature components, Fₐ and dₐφ ∧ dt. The four-dimensional Hodge star exchanges spatial and mixed forms. With the stated orientation, anti-self-duality therefore says Fₐ = ⋆dₐφ. This identifies the three-dimensional monopole equation with a symmetry restriction of the four-dimensional equation.
+
+**nLab:** [Bogomolny equation](https://ncatlab.org/nlab/show/Bogomolny+equation). It says: “The Bogomolny equations are differential equations re-expressing the equations of motion of self-dual Yang-Mills theory”
+
+**Wikipedia:** [Yang–Mills equations](https://en.wikipedia.org/wiki/Yang%E2%80%93Mills_equations). It says: “By requiring the anti-self-duality equations to be invariant under translations in a single direction of ℝ⁴, one obtains the Bogomolny equations”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Universal covers classify flat bundles
+
+**Remember:** Trivialize upstairs and record what deck transformations do.
+
+*Makes the theorem clean to state or prove.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 3: graduate.
+
+**Definition.** Fix a connected smooth manifold M, a base point and a Lie group G. Given a homomorphism ρ from the fundamental group to G, start with the product of the universal cover and G. Each loop class acts on the cover by its covering transformation and on G by left multiplication by its image under ρ. The product connection descends to the quotient.
+
+**Problem.** Isomorphism classes of flat principal bundles with connection over a connected smooth manifold correspond to conjugacy classes of fundamental group representations into the structure group.
+
+**How the definition helps.** The quotient construction turns each representation directly into a bundle with connection. For the inverse, pull a flat connection back to the simply connected cover. Flatness makes parallel transport independent of the path there, giving a parallel frame. In our own comparison, changing the initial frame conjugates the representation.
+
+**Paper or page:** [Equivariant gluing theory on regular instanton moduli spaces](https://arxiv.org/abs/2101.09425). It says: “Suppose B is connected, π : P → B is a principal G-bundle and A is a flat connection on P, then there exists a representation π₁(B) → G unique up to conjugation”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Synge's theorem needs orientability, which excludes the real projective plane
 
@@ -59731,6 +64363,22 @@ a parallelogram.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Zero area recovers cup multiplication
+
+**Remember:** Discard positive area to recover the cup product.
+
+*True by definition.* MSC 53D45 (Gromov-Witten invariants, quantum cohomology, Frobenius manifolds), 14N35. arXiv math.SG. Level 3: graduate.
+
+**Definition.** Use rational coefficients and formal powers of T with nonnegative real exponents, only finitely many below any fixed bound. In the small quantum product, pair the output with a third class by counting genus-zero curves through the three conditions. Each count uses the virtual class, which corrects for excess dimension, and carries the power of T given by its symplectic area.
+
+**Problem.** For a closed symplectic manifold, quotienting its small quantum cohomology ring by all series with zero constant term recovers its rational cohomology ring.
+
+**How the definition helps.** Weighting by area lets one extract ordinary multiplication by taking the constant coefficient (our own). An unweighted sum would lose that information (our own). Only constant curves have zero area. Their three marks fix the sphere, and all three evaluations return the same target point (our own). The degree-zero count therefore pairs the ordinary cup product with the third class (our own). Associativity of the full product requires a separate theorem (our own).
+
+**Wikipedia:** [Quantum cohomology](https://en.wikipedia.org/wiki/Quantum_cohomology). It says: “The only pseudoholomorphic curves in class A = 0 are constant maps, whose images are points.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Prequantum curvature turns Poisson brackets into operator commutators
 
 **Remember:** Curvature supplies the term that makes the commutator agree with the bracket.
@@ -59765,6 +64413,94 @@ a parallelogram.”
 
 - [Urs Schreiber, Konrad Waldorf, Parallel Transport and Functors, J. Homotopy Relat. Struct. 4 (2009) 187–244, arXiv:0705.0452](https://arxiv.org/abs/0705.0452)
 - [A. Caetano, Roger Picken, An axiomatic definition of holonomy, Int. J. Math. 5 (1994) 835–848](https://doi.org/10.1142/S0129167X94000425)
+
+### Closed Spin(7) forms ensure Yang–Mills
+
+**Remember:** Close the four-form and the Bianchi identity takes over.
+
+*Rules out counterexamples.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 4: research.
+
+**Definition.** A Spin(7) structure is a four-form Φ on an eight-manifold that agrees pointwise with the standard Cayley form in some frame. It determines a metric and its Hodge star ⋆. A Spin(7) instanton is a connection whose curvature F satisfies Φ ∧ F = −⋆F. The defining form is closed when dΦ = 0.
+
+**Problem.** A Spin(7) instanton for a closed defining four-form satisfies the ordinary Yang–Mills equation. Without closedness, the same instanton equation need not imply the Yang–Mills equation.
+
+**How the definition helps.** In our own proof, closedness removes the extra term when we differentiate the instanton equation. The Bianchi identity dₐF = 0 then gives the Yang–Mills equation dₐ⋆F = 0. For our own counterexample, take a nonzero constant abelian curvature F in the instanton subspace of Euclidean eight-space. Choose a linear function u with du ∧ ⋆F nonzero. Rescaling lengths by exp(u) multiplies both Φ and ⋆F by exp(4u). The instanton equation survives, but the rescaled ⋆F has nonzero exterior derivative.
+
+**nLab:** [Spin(7)-instanton](https://ncatlab.org/nlab/show/Spin%287%29-instanton). It says: “On a Spin(7) manifold the differential 2-forms decompose into two irreducible representations, Λ₇ and Λ₂₁ under the action of Spin(7)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Ideal instantons retain lost charge
+
+**Remember:** Keep the missing charge at the points where curvature concentrates.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 4: research.
+
+**Definition.** On an oriented Riemannian four-manifold, an anti-self-dual connection has curvature equal to its negative Hodge star. For SU(2), its charge is the second Chern number, an integer attached to its bundle. An ideal instanton of charge k pairs such a connection with finitely many points carrying positive integer weights. Its connection charge and point weights sum to k.
+
+**Problem.** On a closed base, every sequence of smooth anti-self-dual connections of charge k has a subsequence converging to an ideal instanton. After changes of frame, the connections converge smoothly on compact sets away from the marked points. In units of one instanton, the energy measures converge weakly to the limiting energy measure plus the weighted point masses.
+
+**How the definition helps.** In our own account, the marked points give concentrated curvature energy a place in the limit. Uhlenbeck compactness gives convergence away from those points. Removal of singularities extends the limiting connection, and energy quantization gives the integer weights.
+
+**nLab:** [Donaldson invariant](https://ncatlab.org/nlab/show/Donaldson+invariant). It says: “corresponding to the positions of the instantons when shrinking their scale down and considering the limit”
+
+**Paper or page:** [4-Manifold Topology, Donaldson-Witten Theory, Floer Homology and Higher Gauge Theory Methods in the BV-BFV Formalism](https://arxiv.org/abs/2107.00304). It says: “the connection A extends to a smooth anti self-dual connection Ã in B⁴.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Laurent coefficients test flatness
+
+**Remember:** Put each equation in its own power of the parameter.
+
+*Makes the theorem clean to state or prove.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 4: research.
+
+**Definition.** On a complex vector bundle, take a connection D and two one-forms φ and ψ with values in bundle endomorphisms. Define D(ε) = D + ε⁻¹φ + εψ for every nonzero complex number ε. In wedge products, multiply the endomorphisms by composition.
+
+**Problem.** Every D(ε) is flat exactly when φ∧φ, ψ∧ψ, dᴰφ, dᴰψ and Fᴰ + φ∧ψ + ψ∧φ all vanish. Here Fᴰ is the curvature and dᴰ is the exterior derivative induced by D.
+
+**How the definition helps.** In our own calculation, the family puts each of the five equations in a separate power of ε. Expanding curvature gives powers from −2 through 2. A Laurent polynomial vanishes for every nonzero parameter exactly when each coefficient vanishes.
+
+**Paper or page:** [Nilpotent Higgs bundles and families of flat connections](https://arxiv.org/abs/2207.09581). It says: “Then flatness for all ε ∈ ℂ× is equivalent to the following set of equations:”
+
+**Sources:**
+
+- [Sebastian Schulz, Nilpotent Higgs bundles and families of flat connections](https://arxiv.org/abs/2207.09581)
+
+### Odd degree excludes reducible projectively flat connections
+
+**Remember:** Two parallel lines of equal degree cannot have odd total degree.
+
+*Rules out counterexamples. Confidence: medium.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 4: research.
+
+**Definition.** Fix a rank-two unitary bundle over a connected closed oriented three-manifold, and fix its determinant connection. Call the bundle admissible if its determinant has odd degree on some embedded closed oriented surface. Degree here means the first Chern number on that surface. A projectively flat connection has curvature proportional to the identity at every point.
+
+**Problem.** Every projectively flat connection on such a bundle is irreducible for determinant-one gauge transformations, meaning its stabilizer is just the center. A product bundle with the product connection shows what can fail without admissibility.
+
+**How the definition helps.** In our own proof, odd degree rules out a splitting into parallel lines. A noncentral determinant-one symmetry preserving the connection has two distinct eigenvalues, and parallel transport preserves its eigenlines. Scalar curvature gives the same curvature on both lines. The curvature formula makes their degrees equal on the chosen surface, so their sum is even.
+
+**Paper or page:** [Equivariant instanton homology](https://arxiv.org/abs/1907.01091). It says: “Suppose E is a nontrivial admissible bundle over a 3-manifold Y.”
+
+**Sources:**
+
+- [Simon K. Donaldson, Floer Homology Groups in Yang-Mills Theory](https://doi.org/10.1017/CBO9780511543098)
+
+### One charge adds eight virtual dimensions
+
+**Remember:** One more unit of charge adds eight virtual dimensions.
+
+*Makes the theorem clean to state or prove.* MSC 53C07 (Special connections and metrics on vector bundles (Hermite-Einstein, Yang-Mills)). arXiv math.DG, math-ph. Level 4: research.
+
+**Definition.** At an connection whose curvature equals its negative Hodge star, linearize the curvature equation and impose orthogonality to infinitesimal changes of frame. The resulting linear operator has finite-dimensional kernel and cokernel on a closed four-manifold. Define the virtual dimension as its index, the kernel dimension minus the cokernel dimension.
+
+**Problem.** For SU(2) bundles over a fixed connected closed oriented four-manifold, increasing the second Chern number k by one increases the virtual dimension by eight.
+
+**How the definition helps.** The index assigns a dimension even when the space of solutions has singularities. The Atiyah–Singer index theorem gives 8k − 3(1 − b₁ + b₊). Here b₁ counts independent real cohomology classes of degree one, and b₊ counts positive directions of the intersection form. In our own comparison, changing k leaves both numbers fixed. At an irreducible solution with zero cokernel, the implicit function theorem identifies the index with the actual local dimension.
+
+**nLab:** [Donaldson invariant](https://ncatlab.org/nlab/show/Donaldson+invariant). It says: “dim ℳₖ₊₁ = dim ℳₖ + 8 holds under a change of the instanton number”
+
+**Sources:**
+
+- [Simon K. Donaldson, An application of gauge theory to four-dimensional topology](https://doi.org/10.4310/jdg/1214437665)
 
 ### Singular foliations as modules of vector fields always have holonomy groupoids
 
@@ -60134,6 +64870,25 @@ a parallelogram.”
 
 - [Margaret Beck, Jonathan Jaquette, Hannah Pieper, The Maslov index, degenerate crossings and the stability of pulse solutions to the Swift-Hohenberg equation, arXiv:2403.04003 (2025)](https://arxiv.org/abs/2403.04003v4)
 
+### Monotonicity excludes Maslov-zero disk bubbles
+
+**Remember:** Positive area forces positive Maslov index.
+
+*Rules out counterexamples.* MSC 53D12 (Lagrangian submanifolds; Maslov index), 53D40. arXiv math.SG. Level 4: research.
+
+**Definition.** A Lagrangian is a half-dimensional submanifold on which the symplectic form vanishes. Call it monotone if every disk class with boundary on it has symplectic area equal to a fixed positive constant times its Maslov index. This integer measures how the tangent planes turn along the boundary. For an orientable Lagrangian it is even.
+
+**Problem.** Fix an almost complex structure compatible with the symplectic form and a compact orientable monotone Lagrangian. Every nonconstant holomorphic disk with boundary on it has Maslov index at least two. A stable holomorphic disk of total index two has at most one nonconstant disk component.
+
+**How the definition helps.** Monotonicity converts positive area into positive index, and orientability makes that index even (our own). Every nonconstant sphere bubble also contributes positive index because its area obeys the same relation in relative homotopy (our own). The indices add, so two nonconstant disk components would contribute at least four (our own). Auroux’s Lemma 5.4 gives a torus bounding a nonconstant index-zero disk when the defining loop passes through zero (our own example choice).
+
+**Paper or page:** [Cluster algebras and monotone Lagrangian tori](https://arxiv.org/abs/2401.00252v2). It says: “Suppose that L is a monotone Lagrangian submanifold of (X,ω).”
+
+**Sources:**
+
+- [Cluster algebras and monotone Lagrangian tori](https://arxiv.org/abs/2401.00252v2)
+- [Auroux, Mirror symmetry and T-duality in the complement of an anticanonical divisor](https://people.math.harvard.edu/~auroux/papers/slagmirror.pdf)
+
 ### Dual maps detect Lie algebroid morphisms
 
 **Remember:** The Poisson bracket reads the original bracket and anchor from linear functions.
@@ -60181,6 +64936,24 @@ a parallelogram.”
 **nLab:** [coisotropic submanifold](https://ncatlab.org/nlab/show/coisotropic+submanifold). It says: “S ↪︎ X is coisotropic if the subalgebra of C∞(X) consisting of functions vanishing on S is closed under the Poisson bracket.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Scalar curvature permits Floer differentials
+
+**Remember:** Scalar curvature commutes with every Floer cochain.
+
+*Rules out counterexamples.* MSC 53D40 (Symplectic aspects of Floer homology and cohomology), 53D37. arXiv math.SG. Level 4: research.
+
+**Definition.** A Fukaya algebra encodes counts of disks with boundary on a Lagrangian, a half-dimensional submanifold where the symplectic form vanishes. Its operations take varying numbers of inputs, and its curvature is the operation with no inputs. Insert a degree-one cochain of positive filtration, meaning its coefficients have positive energy order, in all possible extra input slots. Call it weakly bounding if the resulting curvature is a scalar multiple of the strict multiplicative unit.
+
+**Problem.** In a complete filtered, strictly unital Fukaya algebra, twisting by a weak bounding cochain makes the one-input operation square to zero.
+
+**How the definition helps.** Scalar curvature removes the obstruction to squaring to zero (our own). The one-input algebra relation expresses the square as the signed difference of left and right multiplication by curvature (our own). For a scalar unit these terms cancel (our own). Constructing the disk operations and proving their relations requires separate work (our own).
+
+**Paper or page:** [Curved Fukaya algebras and the Dubrovin spectrum](https://arxiv.org/abs/2401.13603v1). It says: “if $D\\in \\operatorname{MC} ^B(L)$ then $(m<sup>1<sub>B</sup>,D</sub>)<sup>2=0$</sup>”
+
+**Sources:**
+
+- [Curved Fukaya algebras and the Dubrovin spectrum](https://arxiv.org/abs/2401.13603v1)
 
 ### Hypertight forms exclude holomorphic planes
 
@@ -60288,6 +65061,80 @@ a parallelogram.”
 **Sources:**
 
 - [Lectures on Symplectic Geometry, Poisson Geometry, Deformation Quantization and Quantum Field Theory](https://arxiv.org/abs/2012.14662v1)
+
+### Formality gives associative star products
+
+**Remember:** Send a Poisson tensor through formality to get an associative product.
+
+*Makes the theorem clean to state or prove.* MSC 53D55 (Deformation quantization, star products), 17B55. arXiv math.QA, math-ph. Level 4: research.
+
+**Definition.** A Poisson tensor π defines a bracket on smooth functions satisfying the product rule and the Jacobi identity. A star product is ordinary multiplication plus a formal correction B by bilinear differential operators, with the resulting product associative. For operators, the Maurer–Cartan equation is dB + \[B,B\]/2 = 0. Here d brackets with ordinary multiplication, and the bracket is the signed difference of insertions.
+
+**Problem.** Every finite-dimensional smooth real Poisson manifold admits a star product whose commutator to first order is ħ times its Poisson bracket.
+
+**How the definition helps.** The same equation expresses Jacobi for ħπ and associativity for B, so a map preserving solutions transports the required identity (our own). Kontsevich’s formality theorem supplies such a map, with higher multilinear components correcting ordinary bracket preservation. Applying its Taylor series to ħπ gives B, and its linear component gives the prescribed first-order commutator (our own).
+
+**nLab:** [Kontsevich formality](https://ncatlab.org/nlab/show/Kontsevich+formality). It says: “there is an L-∞-algebra quasi-isomorphism from the dg-Lie algebra of polyvector fields”
+
+**Wikipedia:** [Kontsevich quantization formula](https://en.wikipedia.org/wiki/Kontsevich_quantization_formula). It says: “describes how to construct a generalized ★-product operator algebra from a given arbitrary finite-dimensional Poisson manifold.”
+
+**Sources:**
+
+- [Maxim Kontsevich, Deformation Quantization of Poisson Manifolds](https://doi.org/10.1023/B:MATH.0000027508.00421.bf)
+
+### Tangential products descend to constraints
+
+**Remember:** Two-sided vanishing ideals make extensions irrelevant.
+
+*Rules out counterexamples.* MSC 53D55 (Deformation quantization, star products). arXiv math.QA. Level 4: research.
+
+**Definition.** A star product is an associative formal deformation of ordinary multiplication of smooth functions. It is tangential to a submanifold when formal series vanishing there form a two-sided ideal. Thus multiplying such a series on either side still gives a series vanishing there.
+
+**Problem.** A tangential star product induces an associative product on the quotient by the vanishing ideal. For a closed embedded submanifold this quotient consists of formal smooth functions on that submanifold.
+
+**How the definition helps.** The ideal condition makes restriction independent of the extensions chosen for both factors, so associativity passes to the quotient (our own). The cited lemma proves this condition for a particular Gutt star product. On the symplectic plane, the Moyal product satisfies q ⋆ p − p ⋆ q = iħ (our own). Restricting to q = 0 kills q but preserves iħ, so this product cannot descend (our own).
+
+**Paper or page:** [Characteristic (Fedosov-)class of a twist constructed by Drinfel'd](https://arxiv.org/abs/1903.06416v1). It says: “The Gutt-star product of 𝔥 is tangential”
+
+**Sources:**
+
+- [Jonas Schnitzer, Characteristic (Fedosov-)class of a twist constructed by Drinfel'd](https://arxiv.org/abs/1903.06416v1)
+
+### Twist identities give associative products
+
+**Remember:** A twist compares the two ways to multiply three inputs.
+
+*True by definition.* MSC 53D55 (Deformation quantization, star products). arXiv math.QA, math-ph. Level 4: research.
+
+**Definition.** Let a bialgebra H act on a unital algebra A, with coproduct Δ describing the action on products and counit ε the action on scalars. A normalized twist is an invertible F in H ⊗ H satisfying (Δ ⊗ id)(F)(F ⊗ 1) = (id ⊗ Δ)(F)(1 ⊗ F). Applying ε to either factor gives 1. Define a ⋆ b by acting with F on a ⊗ b and multiplying the results.
+
+**Problem.** For any such action and twist, ⋆ is associative and has the original unit of A.
+
+**How the definition helps.** The twist equation identifies both triple products before evaluating them on individual algebra elements (our own). The counit equations preserve the unit (our own). Finding a twist for a prescribed product is a separate problem (our own).
+
+**Paper or page:** [Hopf Algebroid Twists for Deformation Quantization of Linear Poisson Structures](https://arxiv.org/abs/1605.01376v4). It says: “defines an associative 𝐤-algebra A⋆ = (A, ⋆) structure on A with the same unit”
+
+**Sources:**
+
+- [Zoran Škoda, Stjepan Meljanac, Hopf Algebroid Twists for Deformation Quantization of Linear Poisson Structures](https://arxiv.org/abs/1605.01376v4)
+
+### Wick products simplify holomorphic multiplication
+
+**Remember:** Put a holomorphic factor second to kill every correction.
+
+*True by definition.* MSC 53D55 (Deformation quantization, star products). arXiv math-ph. Level 4: research.
+
+**Definition.** A Sasakian manifold has a distinguished flow, called the Reeb flow, with complex coordinate directions transverse to it. In the cited construction, a quantum observable is a formal function killed by its operator Δ. Wick separation means each positive-order correction differentiates the first factor in holomorphic directions and the second in antiholomorphic directions.
+
+**Problem.** On any open domain, a Reeb-invariant transversely holomorphic function a is a quantum observable. Every quantum observable c satisfies c ⋆ a = ca. For a Reeb-invariant transversely antiholomorphic function a, the same theorem gives a ⋆ c = ac.
+
+**How the definition helps.** Separate derivative directions make every correction vanish on the indicated factor, without evaluating individual coefficients (our own). The construction must still prove this separation and show that Δ kills the indicated functions (our own).
+
+**Paper or page:** [Wick-type deformation quantization of contact metric manifolds](https://arxiv.org/abs/2311.12767v1). It says: “Moreover, the Wick property holds”
+
+**Sources:**
+
+- [Boris M. Elfimov, Alexey A. Sharapov, Wick-type deformation quantization of contact metric manifolds](https://arxiv.org/abs/2311.12767v1)
 
 ### Outer-minimizing starts make the weak flow's area grow exactly like eᵗ
 
@@ -66787,6 +71634,43 @@ a parallelogram.”
 
 - [Michael Atiyah, Topological quantum field theory (1988)](https://doi.org/10.1007/BF02698547)
 
+### Quadratic refinements make spin signs multiply
+
+**Remember:** Connected sum puts the two quadratic forms side by side.
+
+*True by definition.* MSC 57R56 (Topological quantum field theories (aspects of differential topology)). arXiv math.AT. Level 3: graduate.
+
+**Definition.** A spin structure on a closed oriented surface determines a function q on its first homology over the two-element field. It satisfies q(x+y) = q(x)+q(y)+x·y, where the dot counts intersections modulo two. For a symplectic basis of paired cycles aᵢ,bᵢ, the Arf invariant is ∑ᵢ q(aᵢ)q(bᵢ) modulo two. The Arf theory assigns +1 for invariant zero and −1 for invariant one.
+
+**Problem.** The partition sign of the Arf theory multiplies under connected sum formed using disks with their bounding spin structures.
+
+**How the definition helps.** The quadratic description lets a connected sum use the two original bases together. Our own check uses cycles on opposite sides of the joining circle, which have zero intersection. Their contributions to the Arf invariant therefore add modulo two, and their signs multiply. The geometric work identifies spin structures with these refinements and proves compatibility with gluing.
+
+**Wikipedia:** [Arf invariant](https://en.wikipedia.org/wiki/Arf_invariant). It says: “The Arf invariant Arf(q) is defined to be the sum of the Arf invariants of the qᵢ.”
+
+**Sources:**
+
+- [Johnson, Spin Structures and Quadratic forms on Surfaces](https://math.mit.edu/~hrm/palestine/johnson-spin-structures.pdf)
+- [Runkel and Szegedy, Topological field theory on r-spin surfaces and the Arf-invariant](https://research-explorer.ista.ac.at/record/10176)
+
+### Sphere lines make connected sums multiply
+
+**Remember:** Cut a ball out and glue two scalar multiples together.
+
+*True by definition.* MSC 57R56 (Topological quantum field theories (aspects of differential topology)). arXiv math.AT. Level 3: graduate.
+
+**Definition.** Let Z be an oriented n-dimensional topological field theory over a field, with n at least two. Assume the state space of the (n−1)-sphere is one-dimensional and Z(Sⁿ) is nonzero. For a closed oriented n-manifold M, define F(M) = Z(M)/Z(Sⁿ).
+
+**Problem.** For closed connected oriented n-manifolds M and N, the normalized value satisfies F(M \# N) = F(M)F(N).
+
+**How the definition helps.** Dividing by the sphere value absorbs the scalar that appears when two punctured manifolds are glued. Our own calculation uses the two oppositely directed balls as a vector and a functional on the boundary line. Their pairing equals Z(Sⁿ), so both are nonzero. Expressing the punctured manifolds in those bases gives Z(Sⁿ)Z(M \# N) = Z(M)Z(N).
+
+**Paper or page:** [Turaev-Viro TQFT and the Rank versus Genus Conjecture](https://arxiv.org/abs/2206.02650v1). It says: “Z(Sⁿ) Z(M) = Z(M₀) Z(M₁).”
+
+**Sources:**
+
+- [Turaev-Viro TQFT and the Rank versus Genus Conjecture](https://arxiv.org/abs/2206.02650v1)
+
 ### Two-dimensional topological field theories are commutative Frobenius algebras
 
 **Remember:** The circle is a Frobenius algebra, so its image is one too.
@@ -67264,6 +72148,24 @@ a parallelogram.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Normalization cancels isolated surgery blowups
+
+**Remember:** A new isolated unknot adds its own factor to the denominator.
+
+*True by definition.* MSC 57K16 (Finite-type and quantum invariants, topological quantum field theories (TQFT)), 81T45. arXiv math.QA. Level 4: research.
+
+**Definition.** In the Reshetikhin–Turaev surgery formula, label each component of the framed link by the sum of simple labels weighted by their quantum dimensions. Write u and v for the nonzero evaluations of isolated unknots with framing +1 and −1. Divide the link evaluation by one factor u per positive eigenvalue and one factor v per negative eigenvalue of its linking matrix.
+
+**Problem.** The normalized Reshetikhin–Turaev surgery value is unchanged by adding or removing an isolated unknot of framing +1 or −1.
+
+**How the definition helps.** The normalized evaluation cancels exactly the factor that the unnormalized evaluation gains. An isolated positive unknot multiplies the numerator by u and adds a positive eigenvalue. An isolated negative unknot gives the corresponding factor v. Full surgery invariance also requires the separate handle-slide identity.
+
+**Wikipedia:** [Reshetikhin–Turaev invariant](https://en.wikipedia.org/wiki/Reshetikhin%E2%80%93Turaev_invariant). It says: “the first and second bracket ensure that RTᵣ(Mₗ) is invariant under blowing up/down”
+
+**Sources:**
+
+- [Reshetikhin and Turaev, Invariants of 3-manifolds via link polynomials and quantum groups](https://link.springer.com/article/10.1007/BF01239527)
+
 ### Vassiliev’s crossing difference makes top values depend on chord diagrams
 
 **Remember:** An ordinary crossing change introduces a double point beyond the allowed degree.
@@ -67433,6 +72335,24 @@ a parallelogram.”
 
 - [Simon Donaldson, The Seiberg-Witten equations and 4-manifold topology, Bull. Amer. Math. Soc. 33 (1996) 45–70](https://doi.org/10.1090/S0273-0979-96-00625-8)
 
+### Signed monopole counts survive metric changes
+
+**Remember:** Two solutions can appear together without changing their signed sum.
+
+*Rules out counterexamples.* MSC 57K41 (Invariants of 4-manifolds (including Donaldson and Seiberg-Witten invariants)), 53C07. arXiv math.DG, math-ph. Level 4: research.
+
+**Definition.** Fix a spinᶜ structure of expected dimension zero on a closed connected oriented smooth four-manifold. This structure specifies the bundles for the Seiberg–Witten equations. A homology orientation chooses an orientation of the first real cohomology together with a maximal positive subspace of the intersection form. It assigns a sign to each isolated regular solution modulo changes of frame.
+
+**Problem.** If the intersection form has at least two positive directions, the signed count is the same for every generic metric and perturbation.
+
+**How the definition helps.** In our own proof, the signs make the two ends of every oriented interval cancel. Along a generic path between two choices, the solutions form a compact oriented one-manifold with boundary. Its oriented boundary represents the final count minus the initial count. Compactness, regularity and avoidance of solutions with extra symmetries are the analytic inputs.
+
+**Wikipedia:** [Seiberg–Witten invariants](https://en.wikipedia.org/wiki/Seiberg%E2%80%93Witten_invariants). It says: “the number of elements of the moduli space counted with signs.”
+
+**Sources:**
+
+- [Edward Witten, Monopoles and four-manifolds](https://doi.org/10.4310/mrl.1994.v1.n6.a13)
+
 ### Smoothness diagonalizes definite intersection forms
 
 **Remember:** A smooth closed four-manifold cannot carry the definite E₈ form.
@@ -67599,6 +72519,169 @@ a parallelogram.”
 
 - [Robbert Dijkgraaf and Edward Witten, Topological gauge theories and group cohomology (1990)](https://doi.org/10.1007/BF02096988)
 - [Daniel Freed and Frank Quinn, Chern-Simons theory with finite gauge group (1993)](https://doi.org/10.1007/BF02096860)
+
+### Derived sewing turns circles into loops
+
+**Remember:** Glue the diagonal to itself to recover all the loops.
+
+*True by definition.* MSC 57R56 (Topological quantum field theories (aspects of differential topology)), 81T45. arXiv math.AT. Level 4: research.
+
+**Definition.** Let X = Spec A be an affine derived symplectic stack, a space described by a commutative differential graded algebra with a symplectic form. In the correspondence theory of Theorem C, gluing means taking a derived fiber product. For affine spaces, its algebra of functions is a derived tensor product.
+
+**Problem.** Use the oriented two-dimensional theory of Theorem C with point value X and the canonical trivialization of its Serre automorphism. This trivialization identifies the full rotation at a point with the identity. The circle value is Spec of the Hochschild chains of A.
+
+**How the definition helps.** Derived gluing computes the intersection of the diagonal with itself and retains its higher homology. Our own affine calculation gives the derived tensor product of A with itself over A ⊗ A. This is the Hochschild chain complex. The construction of the oriented theory proves that the two arcs use those diagonal correspondences.
+
+**Paper or page:** [Higher categories of push-pull spans, II: Matrix factorizations](https://arxiv.org/abs/2409.00219v2). It says: “Spec HC(A)”
+
+**Sources:**
+
+- [Higher categories of push-pull spans, II: Matrix factorizations](https://arxiv.org/abs/2409.00219v2)
+
+### Gauge spans compose under sewing
+
+**Remember:** Sew by matching boundary fields up to a chosen gauge isomorphism.
+
+*Makes the theorem clean to state or prove.* MSC 57R56 (Topological quantum field theories (aspects of differential topology)), 81T45. arXiv math.AT. Level 4: research.
+
+**Definition.** Fix a finite group G. The gauge groupoid of a manifold has principal G-bundles as objects and bundle isomorphisms as arrows. A bordism gives a span, a pair of restriction maps from its gauge groupoid to those of its boundaries.
+
+**Problem.** For oriented three-dimensional bordisms, the gauge groupoid of a gluing is equivalent to the homotopy pullback of the two bundle groupoids over their common boundary.
+
+**How the definition helps.** The homotopy pullback records two bundles together with an isomorphism between their boundary restrictions. Its arrows are pairs of bundle isomorphisms respecting that match. Bundles glue along the chosen isomorphism, which proves the sewing rule. The cited theorem extends this rule to surfaces and bordisms with labeled defects.
+
+**Paper or page:** [A geometrical description of untwisted Dijkgraaf-Witten TQFT with defects](https://arxiv.org/abs/2410.18049v1). It says: “to a stratified surface Σ with defect data its gauge groupoid”
+
+**Sources:**
+
+- [A geometrical description of untwisted Dijkgraaf-Witten TQFT with defects](https://arxiv.org/abs/2410.18049v1)
+
+### Graded Frobenius structures survive suspension
+
+**Remember:** A degree shift lowers the product degree and raises the coproduct degree.
+
+*Makes the theorem clean to state or prove.* MSC 57R56 (Topological quantum field theories (aspects of differential topology)). arXiv math.AT. Level 4: research.
+
+**Definition.** In Clivio’s planar construction, a (c,d)-graded Frobenius algebra is a monoidal representation of the graded planar graph bordism category pGCob(c,d). Such a representation assigns operations to graphs and respects disjoint union and gluing, including the signs specified by that category. The product has degree c and the coproduct has degree d.
+
+**Problem.** Let A be a graded abelian group and let ΣA raise every degree by one. Suspension bijects Frobenius structures of degrees (c,d) on A with structures of degrees (c−1,d+1) on ΣA.
+
+**How the definition helps.** The definition lets each operation keep the degree forced by its number of inputs and outputs. Our own check adds one degree per output and subtracts one per input. The cited theorem checks that the induced sign changes also preserve all the relations.
+
+**Paper or page:** [Graded Frobenius Algebras](https://arxiv.org/abs/2412.13909v2). It says: “Giving a (c,d)-graded (commutative or symmetric) Frobenius algebra structure on A := F(∗) ∈ ℤMod• is equivalent to giving a (c−1,d+1)-graded (commutative or symmetric) Frobenius algebra structure on ΣA.”
+
+**Sources:**
+
+- [Graded Frobenius Algebras](https://arxiv.org/abs/2412.13909v2)
+
+### Homotopy fixed points retain orientation choices
+
+**Remember:** A point fixed up to equivalence still needs a choice of how it is fixed.
+
+*Makes the theorem clean to state or prove.* MSC 57R56 (Topological quantum field theories (aspects of differential topology)). arXiv math.AT. Level 4: research.
+
+**Definition.** Let the rotation group SO(n) act on a space X. A homotopy fixed point is an equivariant map from a contractible free SO(n)-space to X.
+
+**Problem.** Let X be the space of fully dualizable objects in a symmetric monoidal (∞,n)-category. These objects have duals and the successive adjoints needed to evaluate bordisms down to points. Evaluation at a point identifies fully extended oriented n-dimensional field theories with homotopy fixed points for the framing rotation action on X.
+
+**How the definition helps.** A homotopy fixed point records how a point value stays compatible with every change of oriented frame. The oriented cobordism hypothesis proves that these choices suffice to reconstruct the theory on every bordism.
+
+**nLab:** [cobordism hypothesis](https://ncatlab.org/nlab/show/cobordism+hypothesis). It says: “a homotopy fixed point is not just a property. It is additional structure.”
+
+**Sources:**
+
+- [Lurie, On the Classification of Topological Field Theories](https://people.math.harvard.edu/~lurie/papers/cobordism.pdf)
+
+### Inverting bordisms exposes partition characters
+
+**Remember:** A theory that already inverts every bordism factors through the completion.
+
+*True by definition.* MSC 57R56 (Topological quantum field theories (aspects of differential topology)). arXiv math.AT. Level 4: research.
+
+**Definition.** A bordism category has closed manifolds as objects and manifolds between them as arrows. Its groupoid completion formally makes every arrow invertible. An invertible complex field theory assigns a line to each object and an isomorphism to each arrow.
+
+**Problem.** Every such theory factors through the groupoid completion. On the component containing the empty manifold, a character of its automorphism group determines the underlying functor up to isomorphism. For the structured bordism categories of the cited theorem, that group is the cut-and-paste group.
+
+**How the definition helps.** Groupoid completion replaces a list of sewing maps by invertible arrows with a universal factorization property. Our own explanation chooses paths from the empty manifold to all objects in its component. The remaining data form an action on a line, hence a homomorphism to the nonzero complex numbers. The cited theorem identifies the automorphism group. Reconstructing the full theory also requires its tensor structure.
+
+**Paper or page:** [SKK groups of manifolds and non-unitary invertible TQFTs](https://arxiv.org/abs/2504.07917v1). It says: “π₁(‖Bordξₙ₋₁,ₙ‖) ≅ π₁(‖N Cobξₙ₋₁,ₙ‖) ≅ SKK(Cobξₙ₋₁,ₙ) = SKKξₙ.”
+
+**Sources:**
+
+- [SKK groups of manifolds and non-unitary invertible TQFTs](https://arxiv.org/abs/2504.07917v1)
+
+### Lines turn sewing into scalar multiplication
+
+**Remember:** Gluing four line maps in either pairing gives the same product.
+
+*Rules out counterexamples.* MSC 57R56 (Topological quantum field theories (aspects of differential topology)). arXiv math.AT. Level 4: research.
+
+**Definition.** An invertible complex topological field theory assigns lines to boundaries and invertible linear maps to bordisms, the manifolds joining boundaries. The cut-and-paste group adds closed manifolds by disjoint union. Its exchange relation uses two incoming pieces and two outgoing pieces with the same identified boundary.
+
+**Problem.** The product of the two closed values stays unchanged when the incoming pieces exchange outgoing partners. Thus closed values define a homomorphism from the cut-and-paste group to the nonzero complex numbers.
+
+**How the definition helps.** The boundary line makes the exchange relation an identity between products of scalars. In our own calculation, choose a basis and write the incoming vectors as a,b and the outgoing functionals as c,d. The products (ca)(db) and (da)(cb) agree. The cited proposition proves that these exchanges generate the required relations.
+
+**Paper or page:** [SKK groups of manifolds and non-unitary invertible TQFTs](https://arxiv.org/abs/2504.07917v1). It says: “N₁ ∪ N₁′ + N₂ ∪ N₂′ ∼ N₁ ∪ N₂′ + N₂ ∪ N₁′”
+
+**Sources:**
+
+- [SKK groups of manifolds and non-unitary invertible TQFTs](https://arxiv.org/abs/2504.07917v1)
+
+### Maslov weights lift projective actions
+
+**Remember:** Record the gluing correction as part of the cylinder.
+
+*True by definition.* MSC 57R56 (Topological quantum field theories (aspects of differential topology)). arXiv math.GT, math.QA. Level 4: research.
+
+**Definition.** Fix a closed oriented surface and a maximal subspace L of its real first homology on which the intersection pairing vanishes. A weighted mapping cylinder records a mapping class f, an orientation-preserving diffeomorphism up to isotopy, and an integer. Composing (f,m) after (g,n) gives (fg,m+n+μ(L,fL,fgL)). Here μ is the Maslov index, the signature of the form on three subspaces in the Gilmer–Masbaum convention.
+
+**Problem.** For the surface theories of Gilmer and Masbaum, the operators assigned to weighted mapping cylinders form a linear representation of the extended mapping class group.
+
+**How the definition helps.** Including the sewing correction in the group law turns projective composition into ordinary composition. The cocycle identity says that either grouping of three cylinders gives the same weight. The field-theory sewing theorem identifies the corresponding scalar factor in the operators.
+
+**Paper or page:** [Some remarks on the Maslov index](https://arxiv.org/abs/2105.04337v3). It says: “The Maslov index is a 2-cocycle”
+
+**Sources:**
+
+- [Gilmer and Masbaum, Maslov index, Lagrangians, Mapping Class Groups and TQFT](https://doi.org/10.1515/form.2011.143)
+- [Some remarks on the Maslov index](https://arxiv.org/abs/2105.04337v3)
+
+### Ordered intervals allow noncommutative products
+
+**Remember:** Without a swap of inputs, a pair of pants need not commute.
+
+*Makes the theorem clean to state or prove.* MSC 57R56 (Topological quantum field theories (aspects of differential topology)). arXiv math.AT. Level 4: research.
+
+**Definition.** A planar open bordism is a surface drawn between ordered lists of intervals, with boundaries allowed between the input and output intervals. A Frobenius algebra has a unital associative product and a counital coassociative coproduct. Its coproduct commutes with multiplication on the left and on the right.
+
+**Problem.** For a monoidal target C, evaluation on one interval gives an equivalence between monoidal functors from planar open bordisms and Frobenius algebras in C.
+
+**How the definition helps.** Planar gluing keeps the order of inputs, so the classification can include products with ab different from ba. Our own example is the algebra of complex two-by-two matrices with trace pairing given by tracing the product. The proof identifies generators and relations for the planar surfaces.
+
+**Paper or page:** [Graded Frobenius Algebras](https://arxiv.org/abs/2412.13909v2). It says: “Funᵐᵒⁿ(Cob₂ᵖˡᵃⁿᵃʳ,C) → Frob(C)”
+
+**Sources:**
+
+- [Clivio, Graded Frobenius Algebras](https://academic.oup.com/qjmath/article-abstract/76/4/1105/8258596)
+
+### Radical quotients make sewing nondegenerate
+
+**Remember:** Two states agree when every possible gluing gives the same answer.
+
+*True by definition.* MSC 57R56 (Topological quantum field theories (aspects of differential topology)). arXiv math.AT. Level 4: research.
+
+**Definition.** Fix a scalar for each diffeomorphism class of closed oriented n-manifolds. For each boundary, form free vector spaces on bordisms into it from the empty boundary and out of it to the empty boundary. Pair basis elements by evaluating the closed manifold obtained by gluing. On each side, quotient by the vectors pairing to zero with the whole opposite space.
+
+**Problem.** The induced pairing has zero left and right radicals. Gluing another bordism gives a well-defined linear map between the quotients.
+
+**How the definition helps.** Taking the quotient builds nondegeneracy into the state spaces. The free spaces can contain distinct combinations with identical evaluations against every test. Our own sewing check uses associativity of gluing to move a bordism across the pairing. This makes the induced maps well defined. A full field theory also requires compatibility with tensor products.
+
+**Paper or page:** [Universal construction in monoidal and non-monoidal settings, the Brauer envelope, and pseudocharacters](https://arxiv.org/abs/2303.02696v1). It says: “is nondegenerate.”
+
+**Sources:**
+
+- [Universal construction in monoidal and non-monoidal settings, the Brauer envelope, and pseudocharacters](https://arxiv.org/abs/2303.02696v1)
 
 ## 58 Global analysis, analysis on manifolds
 
@@ -68026,6 +73109,115 @@ a parallelogram.”
 
 - [Emilio Minichiello, Diffeological Principal Bundles and Principal Infinity Bundles](https://arxiv.org/abs/2202.11023v4)
 
+### Dirac commutators recover geodesic distance
+
+**Remember:** The Dirac operator measures the steepest slope of a function.
+
+*Makes the theorem clean to state or prove.* MSC 58B34 (Noncommutative geometry (à la Connes)), 46L87. arXiv math.OA, math-ph. Level 3: graduate.
+
+**Definition.** On a closed Riemannian spin manifold let D be the Dirac operator, the canonical first-order operator on spinor fields. Smooth real functions act on these fields by multiplication. Define spectral distance between x and y as the supremum of \|f(x) − f(y)\| over such functions with ‖Df − fD‖ ≤ 1.
+
+**Problem.** On a connected closed Riemannian spin manifold, spectral distance equals the infimum of the lengths of paths joining the points.
+
+**How the definition helps.** The commutator bound says exactly that the function has slope at most one (our own explanation). The Dirac commutator acts pointwise by Clifford multiplication, whose operator norm equals the length of the gradient. Integration along paths gives the upper bound. Smooth approximations to distance from x, with slope bounds tending to one, give the reverse inequality.
+
+**Wikipedia:** [Spectral triple](https://en.wikipedia.org/wiki/Spectral_triple). It says: “From the knowledge of these objects one is able to recover the original manifold as a metric space:”
+
+**Sources:**
+
+- [Connes, Noncommutative geometry and reality](https://doi.org/10.1063/1.531241)
+
+### Disconnected spin components have infinite distance
+
+**Remember:** Constants on separate components can differ without a Dirac commutator.
+
+*Makes the theorem clean to state or prove.* MSC 58B34 (Noncommutative geometry (à la Connes)), 46L87. arXiv math.OA, math-ph. Level 3: graduate.
+
+**Definition.** On a finite disjoint union of closed Riemannian spin manifolds let D act by the Dirac operator on each component. Define spectral distance as the supremum of \|f(x) − f(y)\| over smooth real functions with ‖Df − fD‖ ≤ 1. Allow the value infinity.
+
+**Problem.** The spectral distance between points in different components is infinite.
+
+**How the definition helps.** The commutator bound leaves the difference between component constants unrestricted (our own argument). The indicator of one component is smooth and commutes with D. Its multiples give arbitrarily large differences for points on different components.
+
+**Wikipedia:** [Spectral triple](https://en.wikipedia.org/wiki/Spectral_triple). It says: “In general, the Connes metric can indeed take the value ∞”
+
+**Sources:**
+
+- [Connes, Noncommutative geometry and reality](https://doi.org/10.1063/1.531241)
+
+### Invariant Dirac operators preserve distance
+
+**Remember:** An implementer commuting with D permutes the spectral distance tests.
+
+*True by definition.* MSC 58B34 (Noncommutative geometry (à la Connes)), 46L87. arXiv math.OA, math-ph. Level 3: graduate.
+
+**Definition.** Let a unital algebra of bounded operators act on a Hilbert space with self-adjoint operator D and bounded commutators \[D,a\] = Da − aD. A state is a positive linear functional taking the identity to one. Its spectral distance from another state is the supremum of their absolute differences on self-adjoint a satisfying ‖\[D,a\]‖ ≤ 1.
+
+**Problem.** Suppose a group acts on the algebra by unitary conjugations and each implementing unitary commutes with D. Its induced action on states preserves spectral distance, including infinite distances.
+
+**How the definition helps.** The commutator bound gives a set of distance tests that each unitary permutes (our own deduction from Lemma 3.11). Taking the supremum therefore gives the same value after conjugation. On compact spin manifolds, identifying this formula with the usual distance defined by path lengths requires a separate theorem.
+
+**Paper or page:** [Real Spectral Triples on Crossed Products](https://arxiv.org/abs/2012.15698). It says: “then the action is Lip-isometric in the sense that”
+
+**Sources:**
+
+- [Real Spectral Triples on Crossed Products](https://arxiv.org/abs/2012.15698)
+- [Connes, Noncommutative geometry and reality](https://doi.org/10.1063/1.531241)
+
+### Local compactness admits Euclidean Dirac operators
+
+**Remember:** Multiply by a compactly supported function before testing compactness.
+
+*Makes the theorem clean to state or prove.* MSC 58B34 (Noncommutative geometry (à la Connes)), 46L87. arXiv math.OA, math-ph. Level 3: graduate.
+
+**Definition.** A resolvent of a self-adjoint operator D is an inverse such as (D + i)⁻¹. A nonunital spectral triple requires bounded commutators \[D,a\] and compact operators a(D + i)⁻¹ for every algebra element a. This local compactness test allows the full resolvent to lack compactness.
+
+**Problem.** On positive-dimensional Euclidean space let smooth compactly supported functions multiply square-integrable differential forms, and let D equal exterior differentiation plus its adjoint. These data form a locally compact spectral triple although (D + i)⁻¹ is not compact.
+
+**How the definition helps.** Multiplication by a test function confines the resolvent output to a bounded region (our own explanation). The resolvent controls one square-integrable derivative, so compact Sobolev embedding gives compactness there. The commutator differentiates only the multiplier and is bounded. Translations of a fixed nonzero input give translated resolvent outputs with no convergent subsequence when the translations diverge.
+
+**Paper or page:** [The Connes character formula for locally compact spectral triples](https://arxiv.org/abs/1803.01551). It says: “is an even spectral triple satisfying”
+
+**Sources:**
+
+- [The Connes character formula for locally compact spectral triples](https://arxiv.org/abs/1803.01551)
+
+### The junk ideal lets differentiation descend
+
+**Remember:** Kill every invisible form and its differential.
+
+*Rules out counterexamples.* MSC 58B34 (Noncommutative geometry (à la Connes)), 46L87. arXiv math.OA, math-ph. Level 3: graduate.
+
+**Definition.** Universal differential forms are formal products of algebra elements and symbols da subject to linearity, the product rule and d² = 0. For a spectral triple with operator D, represent da by the commutator \[D,a\] = Da − aD. Let K collect the kernels degree by degree. Define the represented calculus as universal forms modulo K + dK.
+
+**Problem.** The quotient inherits multiplication and a differential satisfying the graded product rule and d² = 0.
+
+**How the definition helps.** Adding dK kills the derivative of every discarded form, so differentiation respects the quotient (our own explanation). The graded product rule makes K + dK a two-sided ideal. For a smooth real function f on a closed spin manifold, f df − df f represents zero. Its derivative represents 2\[D,f\]², nonzero wherever f has nonzero derivative.
+
+**Paper or page:** [On two notions of torsion and metric compatibility of connections in noncommutative geometry](https://arxiv.org/abs/2509.11888). It says: “is a ∗-differential calculus.”
+
+**Sources:**
+
+- [On two notions of torsion and metric compatibility of connections in noncommutative geometry](https://arxiv.org/abs/2509.11888)
+
+### Total boundedness gives weak star convergence
+
+**Remember:** A finite set of approximate tests controls all tests at once.
+
+*Rules out counterexamples.* MSC 58B34 (Noncommutative geometry (à la Connes)), 46L87. arXiv math.OA, math-ph. Level 3: graduate.
+
+**Definition.** Let D be the operator of a unital spectral triple, with bounded commutators \[D,a\] = Da − aD on a dense algebra. A state is a positive linear functional equal to one on the identity. Fix a state μ and take all self-adjoint tests a with ‖\[D,a\]‖ ≤ 1. At every tolerance ε &gt; 0, require finitely many norm balls of radius ε to cover the centered tests a − μ(a)1.
+
+**Problem.** Define spectral distance as the supremum of absolute state differences on the tests. Under this condition it is a finite metric inducing the weak star topology, meaning pointwise convergence on the completed algebra.
+
+**How the definition helps.** Finite norm approximations turn pointwise convergence of states into uniform convergence on the centered tests (our own explanation). Centering leaves state differences unchanged, and the centered set is bounded. Conversely, rescaling elements with bounded commutator gives pointwise convergence on the dense algebra. States have norm one, so density extends convergence to its completion. With D = 0 on a two-point space, distinct states have infinite distance.
+
+**Wikipedia:** [Spectral triple](https://en.wikipedia.org/wiki/Spectral_triple). It says: “topologizes the weak\* topology on the state space”
+
+**Sources:**
+
+- [Rieffel, Metrics on state spaces](https://doi.org/10.4171/DM/68)
+
 ### Absolute differential forms give the triangle inequality for integrals
 
 **Remember:** An absolute form is what you integrate over an unoriented curve, like arc length \|dx\|.
@@ -68107,6 +73299,114 @@ a parallelogram.”
 **nLab:** [symbol of a differential operator](https://ncatlab.org/nlab/show/symbol+of+a+differential+operator). It says: “where in the commutator on the right we regard multiplication by f as an endomorphism of Γ(E).”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Eta phases forget the filling
+
+**Remember:** Two fillings can change the index integral only by an integer.
+
+*True by definition.* MSC 58J20 (Index theory and related fixed-point theorems on manifolds), 58J28. arXiv math.DG, math-ph. Level 3: graduate.
+
+**Definition.** Let D be the twisted Dirac operator on a closed odd-dimensional Riemannian spin manifold. Its eta invariant η counts positive minus negative eigenvalues by analytic continuation. Define the reduced boundary invariant as (η + dim ker D)/2 in ℝ/ℤ.
+
+**Problem.** Take two compact spin fillings inducing the same oriented boundary metric, spin structure, and Hermitian bundle with unitary connection. Assume all data have product form near the boundary. Their integrals of the Dirac index density, the top-degree part of Â times the bundle’s Chern character, agree modulo integers.
+
+**How the definition helps.** Our own argument uses that both integrals represent the same reduced boundary invariant modulo integers. The Atiyah–Patodi–Singer index theorem carries the work by identifying each difference with an integer index.
+
+**nLab:** [eta invariant](https://ncatlab.org/nlab/show/eta+invariant). It says: “as the boundary correction term for the index formula on a manifold with boundary”
+
+**Sources:**
+
+- [Michael F. Atiyah, Vijay K. Patodi and Isadore M. Singer, Spectral asymmetry and Riemannian Geometry. I (1975)](https://doi.org/10.1017/S0305004100049410)
+
+### Index characters vanish without fixed points
+
+**Remember:** Away from fixed points, the character has nothing to count.
+
+*Makes the theorem clean to state or prove.* MSC 58J20 (Index theory and related fixed-point theorems on manifolds). arXiv math.DG. Level 3: graduate.
+
+**Definition.** Let a compact Lie group act smoothly on a closed manifold and its complex vector bundles. An equivariant elliptic operator commutes with the action and has invertible highest-order symbol away from zero cotangent vectors. Its index character at g is the trace of g on the kernel minus its trace on the cokernel.
+
+**Problem.** If g fixes no point of the manifold, the index character at g vanishes.
+
+**How the definition helps.** The character allows the fixed-point theorem to speak about a particular group element, rather than just the identity. The equivariant index theorem gives a sum over its fixed components. Our own example is the Euler operator on two points exchanged by an involution. Its ordinary index is two, while the trace of the exchange is zero.
+
+**Wikipedia:** [Atiyah–Singer index theorem](https://en.wikipedia.org/wiki/Atiyah%E2%80%93Singer_index_theorem). It says: “Moreover, one gets generalizations of the Lefschetz fixed-point theorem, with terms coming from fixed-point submanifolds of the group G.”
+
+**Sources:**
+
+- [Michael F. Atiyah and Graeme Segal, The Index of Elliptic Operators II (1968)](https://doi.org/10.2307/1970716)
+
+### Positive scalar curvature kills the Dirac index
+
+**Remember:** Positive scalar curvature leaves the spin Dirac operator no zero modes.
+
+*True by definition.* MSC 58J20 (Index theory and related fixed-point theorems on manifolds). arXiv math.DG. Level 3: graduate.
+
+**Definition.** On a closed even-dimensional spin manifold, the spinor bundle splits into positive and negative parts. The chiral Dirac operator differentiates sections from the positive part to the negative part. Its index subtracts the kernel dimension of its adjoint from its own kernel dimension. The index theorem identifies this integer with the Â genus, a characteristic number calculated from the tangent bundle.
+
+**Problem.** A closed even-dimensional spin manifold that admits a metric of positive scalar curvature has zero Â genus.
+
+**How the definition helps.** Our own argument represents the Â genus by a kernel count, so it suffices to exclude zero modes. The Lichnerowicz formula gives D² = ∇\*∇ + R/4, where R is scalar curvature and ∇ differentiates spinors. The first term is nonnegative, and the second has a positive minimum on the closed manifold. Both chiral kernels vanish. The index theorem identifies their dimension difference with the Â genus.
+
+**nLab:** [Lichnerowicz formula](https://ncatlab.org/nlab/show/Lichnerowicz+formula). It says: “The crucial point of the formula is that it shows a scalar summand (i.e. 0th order derivative) proportional to the scalar curvature.”
+
+**Sources:**
+
+- [Michael F. Atiyah and Isadore M. Singer, The Index of Elliptic Operators I (1968)](https://doi.org/10.2307/1970715)
+
+### Quaternionic spinors force signature divisibility
+
+**Remember:** Each quaternionic spinor dimension counts twice over the complex numbers.
+
+*True by definition.* MSC 58J20 (Index theory and related fixed-point theorems on manifolds). arXiv math.DG. Level 3: graduate.
+
+**Definition.** Use the chiral Dirac index on a closed spin four-manifold. Count its kernel and cokernel as quaternionic vector spaces, rather than as complex vector spaces. This keeps the extra symmetry of the spin representations in dimension four.
+
+**Problem.** On a closed smooth spin four-manifold, the signature of the intersection form on second cohomology is divisible by 16.
+
+**How the definition helps.** Counting quaternionic dimensions makes the complex Dirac index even because each quaternionic dimension contributes two complex dimensions. The two spinor bundles have quaternionic structures, and the Dirac operator respects them. The index and signature theorems identify the complex index with minus one eighth of the signature.
+
+**Wikipedia:** [Atiyah–Singer index theorem](https://en.wikipedia.org/wiki/Atiyah%E2%80%93Singer_index_theorem). It says: “In dimension 4 this result implies Rochlin's theorem that the signature of a 4-dimensional spin manifold is divisible by 16”
+
+**Sources:**
+
+- [Michael F. Atiyah and Isadore M. Singer, The Index of Elliptic Operators I (1968)](https://doi.org/10.2307/1970715)
+
+### Spin makes Â integral
+
+**Remember:** A Dirac index is an integer even when its characteristic formula uses fractions.
+
+*Rules out counterexamples.* MSC 58J20 (Index theory and related fixed-point theorems on manifolds). arXiv math.DG. Level 3: graduate.
+
+**Definition.** The Â genus evaluates a rational polynomial in the tangent bundle’s Pontryagin classes on a closed oriented manifold. These classes measure how the tangent spaces fit together. A spin structure lifts the oriented orthonormal frame bundle to the double cover of its rotation group. In even dimensions it gives a Dirac operator from positive to negative spinors.
+
+**Problem.** The Â genus of a closed spin manifold is an integer. The spin requirement excludes the complex projective plane, whose Â genus is −1/8.
+
+**How the definition helps.** The operator definition gives a difference of two finite dimensions. The Atiyah–Singer index theorem identifies this integer with the characteristic number. Our own calculation of the counterexample uses Â = −p₁/24 in dimension four and Pontryagin number 3 on ℂP².
+
+**Wikipedia:** [Atiyah–Singer index theorem](https://en.wikipedia.org/wiki/Atiyah%E2%80%93Singer_index_theorem). It says: “The Â genus is a rational number defined for any manifold, but is in general not an integer.”
+
+**Sources:**
+
+- [Michael F. Atiyah and Isadore M. Singer, The Index of Elliptic Operators I (1968)](https://doi.org/10.2307/1970715)
+
+### Topological indices ignore the embedding
+
+**Remember:** Compare two embeddings after putting them in one larger Euclidean space.
+
+*True by definition.* MSC 58J20 (Index theory and related fixed-point theorems on manifolds). arXiv math.DG. Level 3: graduate.
+
+**Definition.** An elliptic symbol is the highest-order part of an operator, invertible at every nonzero cotangent vector. It defines a compactly supported K-theory class on the cotangent bundle, represented by bundles identified outside a compact set. A Euclidean embedding sends this class to one on the ambient cotangent bundle by the Thom construction in the normal directions. Bott periodicity identifies the resulting group with ℤ and gives the topological index.
+
+**Problem.** The topological index of a symbol on a closed manifold does not depend on the chosen Euclidean embedding.
+
+**How the definition helps.** Our own comparison puts both embeddings in one Euclidean product, where the index respects smooth deformations through embeddings. For embeddings i and j, first deform (i,0) to (i,j) by scaling j, then deform (i,j) to (0,j) by scaling i. The work lies in proving that the Thom construction respects composition, deformation, and the Bott identification.
+
+**Wikipedia:** [Atiyah–Singer index theorem](https://en.wikipedia.org/wiki/Atiyah%E2%80%93Singer_index_theorem). It says: “This map is independent of the embedding of X in Euclidean space.”
+
+**Sources:**
+
+- [Michael F. Atiyah and Isadore M. Singer, The Index of Elliptic Operators I (1968)](https://doi.org/10.2307/1970715)
 
 ### Causal subtraction gives skew adjoints
 
@@ -68396,6 +73696,60 @@ a parallelogram.”
 
 - [Andreas Kriegl, Peter W. Michor, The Convenient Setting of Global Analysis, AMS Mathematical Surveys and Monographs 53, 1997 (§42)](https://doi.org/10.1090/surv/053)
 
+### Dirac weights detect polynomial growth
+
+**Remember:** The Dirac eigenvalues are the group weights, with repetitions.
+
+*Makes the theorem clean to state or prove.* MSC 58B34 (Noncommutative geometry (à la Connes)), 46L87. arXiv math.OA, math-ph. Level 4: research.
+
+**Definition.** On a discrete group take a real weight ℓ with finite absolute sublevel sets and bounded differences under each fixed left translation. Let D multiply square-summable functions by ℓ. Call D finitely summable if the sum of (1 + ℓ(g)²)⁻ˢ over all group elements converges for some s &gt; 0.
+
+**Problem.** Finite summability holds exactly when the number of group elements with \|ℓ(g)\| ≤ R grows at most polynomially in R.
+
+**How the definition helps.** The diagonal definition turns the spectral trace directly into a sum over the group (our own explanation). Each element counted at radius R contributes at least (1 + R²)⁻ˢ, giving a polynomial bound. Conversely, group the weights between consecutive powers of two. With twice s greater than the growth exponent, the resulting geometric bound converges.
+
+**Paper or page:** [A Note on Twisted Crossed Products and Spectral Triples](https://arxiv.org/abs/2110.05345). It says: “is finitely summable iff G has polynomial growth w.r.t. the proper translation bounded function ℓ.”
+
+**Sources:**
+
+- [A Note on Twisted Crossed Products and Spectral Triples](https://arxiv.org/abs/2110.05345)
+
+### First order forces additive weights
+
+**Remember:** A multiplication operator commuting with every right translation has a constant multiplier.
+
+*Rules out counterexamples.* MSC 58B34 (Noncommutative geometry (à la Connes)), 46L87. arXiv math.OA, math-ph. Level 4: research.
+
+**Definition.** Let ℓ be a real function on a discrete group, with finite absolute sublevel sets and bounded differences under each left translation. Let D multiply by ℓ on square-summable functions, and let L and R denote left and right translations. The first-order condition requires each commutator \[D,L\] = DL − LD to commute with every R.
+
+**Problem.** Assume complex conjugation followed by group inversion gives a real structure, so ℓ under inversion equals either ℓ everywhere or −ℓ everywhere. The first-order condition holds exactly when ℓ is constant or an additive homomorphism.
+
+**How the definition helps.** Right translations force each left translation difference of ℓ to be constant (our own calculation). Evaluating at the identity e shows that ℓ − ℓ(e) is additive. An even weight then has zero additive part, while an odd weight has zero constant part. Both resulting forms satisfy the commutator test. On the integers the even weight ℓ(n) = \|n\| fails it.
+
+**Paper or page:** [Real Spectral Triples on Crossed Products](https://arxiv.org/abs/2012.15698). It says: “satisfies the first order condition if and only if ℓ is either a constant or a homomorphism.”
+
+**Sources:**
+
+- [Real Spectral Triples on Crossed Products](https://arxiv.org/abs/2012.15698)
+
+### Product Dirac operators add summability exponents
+
+**Remember:** The Pauli matrices cancel the mixed terms in the square.
+
+*Makes the theorem clean to state or prove.* MSC 58B34 (Noncommutative geometry (à la Connes)), 46L87. arXiv math.OA, math-ph. Level 4: research.
+
+**Definition.** Take self-adjoint operators D and E with compact resolvent, meaning their resolvents are compact. On separate Hilbert space factors form the closure of D ⊗ 1 ⊗ σ + 1 ⊗ E ⊗ τ. The two self-adjoint 2 × 2 matrices σ and τ square to the identity and satisfy στ = −τσ.
+
+**Problem.** Call an operator p-summable when the eigenvalues of (1 + D²)⁻¹ raised to the power p/2 have finite sum. If D is p-summable and E is q-summable for positive p and q, their product operator is (p + q)-summable.
+
+**How the definition helps.** Anticommutation cancels the mixed terms in the square, reducing the trace estimate to scalar eigenvalue sums (our own explanation). For eigenvalues x and y, the denominator 1 + x² + y² dominates both 1 + x² and 1 + y². Splitting the exponent into p/2 and q/2 bounds the double sum by the two finite sums multiplied together, up to matrix multiplicity. The paper applies this operator estimate to its crossed-product construction.
+
+**Paper or page:** [Real Spectral Triples on Crossed Products](https://arxiv.org/abs/2012.15698). It says: “is (p+q)-summable.”
+
+**Sources:**
+
+- [Real Spectral Triples on Crossed Products](https://arxiv.org/abs/2012.15698)
+
 ### Local additions make spaces of smooth maps manifold-like
 
 **Remember:** The space carries its own charts: each tangent vector v points to η(v).
@@ -68501,6 +73855,116 @@ a parallelogram.”
 
 - [Edward Witten, Supersymmetry and Morse theory (1982)](https://doi.org/10.4310/jdg/1214437492)
 
+### Boundary indices add by spectral flow
+
+**Remember:** Counting crossings turns a cut in time into a sum.
+
+*True by definition.* MSC 58J20 (Index theory and related fixed-point theorems on manifolds), 58J30, 58J32. arXiv math.SP. Level 4: research.
+
+**Definition.** Take self-adjoint operators A(t) with compact resolvent and common dense domain W on a compact time interval. Assume A varies continuously differentiably in operator norm from W, with its graph norm, to the Hilbert space. Use D = d/dt − iA(t) with initial values in the negative spectral space and final values in the nonnegative spectral space. Spectral flow counts net crossings through zero toward positive values, using finite spectral windows.
+
+**Problem.** Assume each such closed boundary operator has closed range and finite-dimensional kernel and cokernel. Its index, the kernel dimension minus the cokernel dimension, adds under subdivision.
+
+**How the definition helps.** Our own argument adds the crossing counts on adjacent time intervals. Ronge proves that each index equals its crossing count under the stated hypothesis. This avoids trying to glue bases for the kernels and cokernels at the cut.
+
+**Paper or page:** [Index Theory for Globally Hyperbolic Spacetimes](https://arxiv.org/abs/1910.10452v1). It says: “ind((D\|\[r,t\])ₐₚₛ) = ind((D\|\[r,s\])ₐₚₛ) + ind((D\|\[s,t\])ₐₚₛ)”
+
+**Sources:**
+
+- [Lennart Ronge, Index Theory for Globally Hyperbolic Spacetimes (2019)](https://arxiv.org/abs/1910.10452v1)
+- [Koen van den Dungen and Lennart Ronge, The APS-index and the spectral flow (2021)](https://files.ele-math.com/articles/oam-15-87.pdf)
+
+### Callias potentials restore Fredholmness
+
+**Remember:** A potential that dominates at infinity keeps zero out of the essential spectrum.
+
+*Rules out counterexamples.* MSC 58J20 (Index theory and related fixed-point theorems on manifolds), 58J05. arXiv math.DG, math-ph. Level 4: research.
+
+**Definition.** Let D be a Dirac operator on a finite-rank Hermitian bundle over a complete Riemannian manifold. Choose a smooth self-adjoint potential Φ whose commutator \[D,Φ\] = DΦ − ΦD acts by bundle maps. Require Φ² ≥ (‖\[D,Φ\]‖ + c)I outside a compact set, with c &gt; 0 and pointwise operator norm. Form the self-adjoint doubled operator with zero diagonal and off-diagonal entries D + iΦ and D − iΦ.
+
+**Problem.** The doubled operator has closed range and finite-dimensional kernel and cokernel. If the estimate holds everywhere, the doubled operator is invertible. In the odd symmetric case its parity index, the kernel dimension modulo two, therefore vanishes.
+
+**How the definition helps.** Our own explanation uses the domination estimate to bound the square of the doubled operator below outside a compact set. The Fredholm proof uses local compactness to handle the compact set. In our own calculation, domination everywhere gives the bound globally and rules out a kernel for the operator and its adjoint. Our own counterexample is −i d/dx on ℝ, which is elliptic but has zero in its essential spectrum.
+
+**Paper or page:** [On the Z<sub>2</sub>-valued index of elliptic odd symmetric operators on non-compact manifolds](https://arxiv.org/abs/2403.13999v3). It says: “If the essential support of F is empty, then indτ ℬ = 0.”
+
+**Sources:**
+
+- [Maxim Braverman and Ahmad Reza Haj Saeedi Sadegh, On the ℤ₂-valued index of elliptic odd symmetric operators on non-compact manifolds (2024)](https://doi.org/10.1007/s40316-024-00228-5)
+
+### Compact resolvent alone does not suffice
+
+**Remember:** A lower bound makes the two negative spectral spaces finite.
+
+*Rules out counterexamples.* MSC 58J20 (Index theory and related fixed-point theorems on manifolds), 58J32. arXiv math.SP. Level 4: research.
+
+**Definition.** On a compact time interval, let A(t) be self-adjoint with compact resolvent and common dense domain W. Assume A varies continuously differentiably in operator norm from W, with its graph norm, to the Hilbert space. Require A(t) ≥ cI for one real c independent of t. For D = d/dt − iA(t), take initial values in the negative spectral space and final values in the nonnegative spectral space.
+
+**Problem.** This closed boundary operator has closed range and finite-dimensional kernel and cokernel. Their dimension difference equals spectral flow, the net number of eigenvalues crossing zero toward positive values.
+
+**How the definition helps.** Our own explanation uses the common lower bound to make each negative spectral space finite-dimensional. Ronge identifies the boundary index with the index of a map between the negative endpoint spaces. He proves equality with spectral flow and gives a compact-resolvent family whose boundary operator fails to be Fredholm without the lower bound.
+
+**Paper or page:** [Index Theory for Globally Hyperbolic Spacetimes](https://arxiv.org/abs/1910.10452v1). It says: “If A is uniformly bounded from below and sp(A) is discrete with only finite multiplicities, Dₐₚₛ is Fredholm”
+
+**Sources:**
+
+- [Lennart Ronge, Index Theory for Globally Hyperbolic Spacetimes (2019)](https://arxiv.org/abs/1910.10452v1)
+- [Koen van den Dungen and Lennart Ronge, The APS-index and the spectral flow (2021)](https://files.ele-math.com/articles/oam-15-87.pdf)
+
+### Equivariant index forms pull back
+
+**Remember:** One equivariant form gives the index form for every associated family.
+
+*Makes the theorem clean to state or prove.* MSC 58J20 (Index theory and related fixed-point theorems on manifolds), 19L10. arXiv math.DG, math-ph. Level 4: research.
+
+**Definition.** Let a compact Lie group G preserve a geometric family of Dirac operators on closed fibers, including its metrics and connections. Its equivariant Bismut superconnection combines the fiber operators with differentiation in parameter and group directions. At scale t &gt; 0, its Chern character is the graded trace of the heat operator of its square. The graded trace subtracts the odd trace from the even trace.
+
+**Problem.** Every principal G-bundle with connection produces an associated family by twisting the original family by that bundle. The Chern–Weil map sends the equivariant Chern character at scale t to the associated family’s Bismut Chern character at the same scale.
+
+**How the definition helps.** One equivariant form specifies the index forms for all associated families through the Chern–Weil map, which substitutes the chosen connection and its curvature. Wedeen proves that this substitution gives the geometric superconnection of the associated family. Our own comparison uses that the construction respects the heat operator and graded trace.
+
+**Paper or page:** [Equivariant Chern Weil Forms and The Families Index Theorem](https://arxiv.org/abs/2208.05521v1). It says: “f<sub>S</sub><sup>\\ast</sup> \\operatorname{ch}(\\mathbb B<sup>t<sub>G</sub></sup>) = \\operatorname{ch}(\\mathbb B<sup>t<sub>Q</sub></sup>)”
+
+**Sources:**
+
+- [Richard Wedeen, Equivariant Chern Weil Forms and The Families Index Theorem (2022)](https://arxiv.org/abs/2208.05521v1)
+
+### Flat twists give bordism characters
+
+**Remember:** Subtract equal ranks and the local index term disappears.
+
+*True by definition.* MSC 58J20 (Index theory and related fixed-point theorems on manifolds), 58J28. arXiv math.DG, math-ph. Level 4: research.
+
+**Definition.** On a closed odd-dimensional Riemannian spin manifold, twist the spin Dirac operator by each of two flat Hermitian bundles of equal rank. Flat means the unitary connection has zero curvature. For each operator D, put ξ(D) = (η(D) + dim ker D)/2, where η is the regularized difference between positive and negative eigenvalue counts. Subtract the second ξ from the first in ℝ/ℤ.
+
+**Problem.** This difference defines a homomorphism from spin bordism with the two specified flat bundles to ℝ/ℤ. Here a bordism must extend the spin structure and both flat connections, and addition means disjoint union.
+
+**How the definition helps.** Our own argument uses the equal ranks and zero curvatures to cancel the two local index forms. The Atiyah–Patodi–Singer theorem then says the remaining difference is an integer. Our own explanation puts additivity into the direct sum of Dirac spectra under disjoint union.
+
+**nLab:** [eta invariant](https://ncatlab.org/nlab/show/eta+invariant). It says: “as the boundary correction term for the index formula on a manifold with boundary”
+
+**Sources:**
+
+- [Michael F. Atiyah, Vijay K. Patodi and Isadore M. Singer, Spectral asymmetry and Riemannian Geometry. I (1975)](https://doi.org/10.1017/S0305004100049410)
+
+### Spectral cutoffs handle jumping kernels
+
+**Remember:** A cutoff need only avoid its own level, not every crossing at zero.
+
+*Rules out counterexamples.* MSC 58J20 (Index theory and related fixed-point theorems on manifolds), 58J35. arXiv math-ph, math.AT. Level 4: research.
+
+**Definition.** Take a degree-zero 1\|1-dimensional Euclidean field theory with smooth index bundles in the sense of Berwick-Evans. Its partition form Z is the graded trace of heat evolution, subtracting the odd trace from the even trace. For λ &gt; 0, restrict to parameters where λ avoids the spectrum of the squared generator. The eigenspaces below λ then form a smooth finite-dimensional bundle and define a cutoff partition form.
+
+**Problem.** On this open set, Z minus the cutoff partition form equals the exterior derivative of a differential form. The two closed forms therefore represent the same de Rham cohomology class.
+
+**How the definition helps.** The cutoff retains a bundle of constant rank locally, even when eigenvalues cross zero. Our own example uses a two-state odd supercharge with off-diagonal entries t, whose kernel jumps at t = 0. The cutoff theorem gives the discarded contribution as the exterior derivative of an eta form.
+
+**Paper or page:** [The families analytic index for 1∣1-dimensional Euclidean field theories](https://arxiv.org/abs/2303.09207v1). It says: “The partition function of E and the partition function of the λ-cutoff theory are related by”
+
+**Sources:**
+
+- [Daniel Berwick-Evans, The families analytic index for 1∣1-dimensional Euclidean field theories (2023)](https://arxiv.org/abs/2303.09207v1)
+
 ### The heat supertrace counts index
 
 **Remember:** Subtract the odd trace and every positive eigenvalue cancels.
@@ -68519,6 +73983,96 @@ a parallelogram.”
 
 - [H. P. McKean Jr. and I. M. Singer, Curvature and the eigenvalues of the Laplacian (1967)](https://doi.org/10.4310/jdg/1214427880)
 - [Peter B. Gilkey, Curvature and the eigenvalues of the Laplacian for elliptic complexes (1973)](https://doi.org/10.1016/0001-8708(73)90119-9)
+
+### Eta phases sew along determinant lines
+
+**Remember:** On a manifold with boundary, the phase lives in a line.
+
+*Makes the theorem clean to state or prove.* MSC 58J28 (Eta-invariants, Chern-Simons invariants), 58J52. arXiv math.DG, math-ph. Level 4: research.
+
+**Definition.** Take a compact odd-dimensional Riemannian spin manifold with a product collar, where the metric splits into normal and boundary parts. For its spin Dirac operator D, a self-adjoint spectral boundary condition gives the scalar exp(πi(η + dim ker D)). Here η is the regularized count of positive eigenvalues minus negative eigenvalues. This scalar represents an element of the dual boundary determinant line, built from top exterior powers of the two boundary spinor kernels.
+
+**Problem.** Cut a closed Riemannian spin manifold of odd dimension along a separating hypersurface with a product metric near the cut. Pair the two boundary line elements using opposite orientations. The result equals the original phase.
+
+**How the definition helps.** The determinant line pairs the two boundary values without a choice of basis. Our own comparison is that two scalar eta computations would require compatible boundary choices. Dai and Freed prove that the line element is independent of those choices and that the contraction gives the uncut phase.
+
+**nLab:** [eta invariant](https://ncatlab.org/nlab/show/eta+invariant). It says: “These sections, given by the exponentiated eta invariant, satisfy the sewing law.”
+
+**Sources:**
+
+- [Xianzhe Dai and Daniel S. Freed, η-invariants and determinant lines (1994)](https://doi.org/10.1063/1.530747)
+
+### Free symmetries simplify eta variation
+
+**Remember:** No fixed points and no crossings mean no change in eta.
+
+*Makes the theorem clean to state or prove.* MSC 58J28 (Eta-invariants, Chern-Simons invariants), 58J20. arXiv math.DG, math-ph. Level 4: research.
+
+**Definition.** Let a finite group act freely on a closed odd-dimensional spin manifold, preserving its metric and spin structure with a chosen spin lift. For each nonzero eigenvalue λ of the spin Dirac operator, weight its sign by the trace of h on its eigenspace. Multiply each term by \|λ\|⁻ˢ, sum for large real s, and continue analytically to s = 0. The value there is the equivariant eta invariant at h.
+
+**Problem.** For a nonidentity group element h, this invariant stays constant along every smooth path of invariant metrics with positive scalar curvature.
+
+**How the definition helps.** Inserting h restricts the local variation formula to points fixed by h, and the free action leaves that set empty. Our own argument uses the spinor square formula to exclude zero eigenvalues throughout the path. The analytic work lies in the equivariant variation formula.
+
+**Paper or page:** [Equivariant Spectral Flow for Families of Dirac-type Operators](https://arxiv.org/abs/2403.00575v3). It says: “assume moreover that G acts freely on M and h ≠ e. Then, we have ηₕ(D₀) = ηₕ(D₁).”
+
+**Sources:**
+
+- [Peter Hochs and Aquerman Yanes, Equivariant spectral flow for families of Dirac-type operators (2025)](https://doi.org/10.2140/akt.2025.10.189)
+
+### Reduced eta stays smooth
+
+**Remember:** The kernel term makes a zero mode agree with either sign in the phase.
+
+*Rules out counterexamples.* MSC 58J28 (Eta-invariants, Chern-Simons invariants), 58J20. arXiv math.DG, math-ph. Level 4: research.
+
+**Definition.** Let D be the spin Dirac operator on a closed odd-dimensional Riemannian spin manifold. Its eta invariant η counts positive minus negative eigenvalues by analytic continuation. Define ξ = (η + dim ker D)/2 in ℝ/ℤ.
+
+**Problem.** For a smooth family of such Dirac operators, exp(2πiξ) is smooth even where the kernel changes dimension.
+
+**How the definition helps.** Our own calculation gives one crossing mode the same phase, −1, below, at, and above zero. For example, the circle operators −i d/dx + a acquire one zero mode at a = 0. Their unreduced eta invariants have distinct one-sided limits. Our own argument uses a local spectral cutoff to remove finitely many small modes. The smoothness theorem for the eta invariant with a cutoff carries the analytic work.
+
+**nLab:** [eta invariant](https://ncatlab.org/nlab/show/eta+invariant). It says: “In fact, this is a smooth section of the determinant line bundle as X varies.”
+
+**Sources:**
+
+- [Xianzhe Dai and Daniel S. Freed, η-invariants and determinant lines (1994)](https://doi.org/10.1063/1.530747)
+
+### Half spectral flow retains parity
+
+**Remember:** Counting only half the loop preserves crossing parity.
+
+*Makes the theorem clean to state or prove.* MSC 58J30 (Spectral flows), 58J20. arXiv math.DG, math-ph. Level 4: research.
+
+**Definition.** Take a smooth periodic family A(t) of self-adjoint operators with compact resolvent and common dense domain with its graph norm. Assume smoothness in operator norm from this domain to the Hilbert space. A conjugate-linear isometry τ preserves the domain, satisfies τ² = −1, and obeys τA(t)τ⁻¹ = A(−t). For period 2π and invertible A(0) and A(π), define half spectral flow as the signed spectral flow from 0 to π modulo two.
+
+**Problem.** The complex dimension of the kernel of d/dt + A(t) on periodic sections equals the half spectral flow modulo two.
+
+**How the definition helps.** In our own explanation, each upward crossing on one half has a downward partner on the other half. The full signed count vanishes, but counting only the first half retains parity. The index theorem identifies this parity with that of the periodic kernel.
+
+**Paper or page:** [The Z<sub>2</sub>-valued spectral flow of a symmetric family of Toeplitz operators](https://arxiv.org/abs/2409.15534v3). It says: “is equal to the half-spectral flow”
+
+**Sources:**
+
+- [Maxim Braverman and Ahmad Reza Haj Saeedi Sadegh, The ℤ₂-valued spectral flow of a symmetric family of Toeplitz operators (2026)](https://doi.org/10.4171/jst/605)
+
+### Higher spectral flow telescopes
+
+**Remember:** The common reference makes the middle endpoint cancel.
+
+*True by definition.* MSC 58J30 (Spectral flows), 58J20. arXiv math.DG, math-ph. Level 4: research.
+
+**Definition.** Consider a path of self-adjoint elliptic families on closed fibers over a compact base. A spectral section projects onto all sufficiently positive modes and kills all sufficiently negative modes. Choose a continuous reference section P along the path and endpoint sections Q₀ and Q₁. Define higher spectral flow as \[Q₁ − P₁\] − \[Q₀ − P₀\] in K-theory, the group of formal differences of vector bundles.
+
+**Problem.** When two paths admit a common reference on their concatenation, their higher spectral flows add if their chosen middle endpoint section agrees.
+
+**How the definition helps.** Our own calculation cancels the two middle difference classes because both use the same endpoint and reference projections. Each bracket compares finite-dimensional parts of two projections after removing their common high-energy part. This replaces following individual eigenvalues across the parameter space. The work lies in constructing spectral sections when possible and proving independence of the reference.
+
+**Paper or page:** [Equivariant Toeplitz index theory on odd-dimensional manifolds with boundary](https://arxiv.org/abs/2101.00193v3). It says: “The H-equivariant higher spectral flow of the pairs (D₀,Q₀) and (D₁,Q₁) can also be computed via an equivariant generalised total spectral section”
+
+**Sources:**
+
+- [Johnny Lim and Hang Wang, Equivariant Toeplitz index theory on odd-dimensional manifolds with boundary (2022)](https://doi.org/10.1007/s00209-022-03091-8)
 
 ### Spectral flow adds across joins
 
@@ -68591,6 +74145,24 @@ a parallelogram.”
 **Sources:**
 
 - [Rui Chen, Logarithmic Laplacian on General Riemannian Manifolds, arXiv:2506.19311v1 (2025)](https://arxiv.org/abs/2506.19311v1)
+
+### Determinant sections detect noninvertibility
+
+**Remember:** A finite determinant tells where its infinite-dimensional operator fails to invert.
+
+*True by definition.* MSC 58J52 (Determinants and determinant bundles, analytic torsion), 58J20. arXiv math.DG, math-ph. Level 4: research.
+
+**Definition.** Consider a smooth family of index-zero Cauchy–Riemann operators D on a complex bundle over a closed Riemann surface. These operators specify complex differentiation in the antiholomorphic direction. Use the line (det ker D)\* ⊗ det coker D, where det denotes top exterior power and the star denotes duality. Local finite-dimensional reductions give square matrices whose determinants define a section of this line.
+
+**Problem.** The determinant section vanishes precisely where an operator in the family is not invertible.
+
+**How the definition helps.** Our own argument uses a finite-dimensional square matrix in each local model. In our own comparison, the operator and matrix are invertible at exactly the same parameters. The work goes into the reduction and the determinant gluing theorem, which make these local sections agree.
+
+**nLab:** [determinant line bundle](https://ncatlab.org/nlab/show/determinant+line+bundle). It says: “Now one has a family ℒᴅ depending on D, which determines a holomorphic line bundle over 𝒜.”
+
+**Sources:**
+
+- [Daniel Quillen, Determinants of Cauchy-Riemann operators over a Riemann surface (1985)](https://doi.org/10.1007/BF01086022)
 
 ### Zeta regularization defines the determinant of a Laplacian
 
@@ -69576,6 +75148,24 @@ a parallelogram.”
 
 - [Doob, J. L. (1937). Stochastic processes depending on a continuous parameter. Transactions of the American Mathematical Society 42, 107–140. (Crossref confirms the paper; the Wikipedia article does not cite it.)](https://doi.org/10.1090/S0002-9947-1937-1501916-1)
 
+### Spectral atoms obstruct Gaussian ergodicity
+
+**Remember:** A frequency with positive mass leaves a shift-invariant random amplitude.
+
+*Rules out counterexamples.* MSC 60G10 (Stationary stochastic processes), 60G15. arXiv math.PR. Level 3: graduate.
+
+**Definition.** Let X be a real centered stationary Gaussian process on ℝ, continuous in mean square. Its spectral measure is the finite positive measure whose Fourier transform is the covariance as a function of the time difference.
+
+**Problem.** Time shifts are ergodic exactly when the spectral measure gives zero mass to each frequency. Ergodicity means every event invariant up to null sets under all shifts has probability zero or one. A nondegenerate Gaussian random constant has an atom at frequency zero and fails this test.
+
+**How the definition helps.** The spectral measure turns a condition on every invariant event into a test for individual frequencies. In our own explanation, an atom supplies a Gaussian frequency component whose squared amplitude is invariant and nonconstant. Conversely, expand square-integrable observations in orthogonal Gaussian polynomials. At positive degree, frequencies add and their distribution is described by repeated convolution of the spectral measure. Convolving an atomless finite measure never creates an atom at zero. The spectral representation and the completeness of the polynomial expansion supply the main work.
+
+**Paper or page:** [Langevin equation and fractional dynamics](https://arxiv.org/abs/1810.02412). It says: “A stationary Gaussian process is ergodic if and only if its spectral measure has no atoms.”
+
+**Sources:**
+
+- [Maruyama, The Harmonic Analysis of Stationary Stochastic Processes (1949)](https://doi.org/10.2206/kyushumfs.4.45)
+
 ### Stationarity on path space survives functions of whole paths
 
 **Remember:** A map that commutes with the shift preserves shift invariance of the law.
@@ -69607,6 +75197,26 @@ a parallelogram.”
 **Paper or page:** [Limit theorems for Gaussian fields via Chaos Expansions and Applications, Proposition 2.2.2](https://arxiv.org/abs/2406.15801v2). It says: “Then there exists an isonormal Gaussian field over H. Moreover, when X, X' are isonormal Gaussian field over H, they are equal in law.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Pairings recover ordinary Gaussian products
+
+**Remember:** Wick products have one degree even when ordinary powers mix degrees.
+
+*True by definition.* MSC 60G15 (Gaussian processes). arXiv math.PR. Level 3: graduate.
+
+**Definition.** For centered jointly Gaussian variables X₁,…,Xₙ, set S = t₁X₁ + ⋯ + tₙXₙ using formal variables t₁,…,tₙ. Their Wick product is the coefficient of t₁⋯tₙ in exp(S − Var(S)/2). The empty Wick product is one.
+
+**Problem.** The ordinary product is a sum over all ways to pair disjoint indices, including the empty pairing. Each term multiplies the covariances of the pairs by the Wick product of the remaining variables.
+
+**How the definition helps.** Restoring the factor exp(Var(S)/2) supplies exactly the missing pairs. Our own proof compares the coefficient of t₁⋯tₙ on both sides. Each quadratic term uses two indices, and no index can appear twice in this coefficient. The usual projection definition removes all lower polynomial degrees. Identifying the two definitions requires the orthogonality of Gaussian polynomials.
+
+**Wikipedia:** [Wick product](https://en.wikipedia.org/wiki/Wick_product). It says: “For the higher-order products the adjustment involves subtracting off lower order (ordinary) products of the random variables”
+
+**Paper or page:** [On a pinning model in correlated Gaussian random environments](https://arxiv.org/abs/2501.00445). It says: “Let $(\\omega \_n)<sub>n\\in \\mathbb N</sub>$ be Gaussian. Then\\\[ \\omega \_{\\boldsymbol {n}<sub>\\llbracket m\\rrbracket </sub>}=\\sum <sub>j=0</sub><sup>{</sup>\[\\frac{m}{2}\]}\\sum \_{\\substack {B\\subset \\llbracket m \\rrbracket \\\\ \|B\|=m-2j}}\\omega \_{\\boldsymbol {n}<sub>B</sub>}<sup>\\diamond</sup> \\mathbb {E}\[\\omega \_{\\boldsymbol {n}<sub>\\llbracket m \\rrbracket \\backslash B</sub>}\], \\\]”
+
+**Sources:**
+
+- [On a pinning model in correlated Gaussian random environments](https://arxiv.org/abs/2501.00445)
 
 ### Modifications let Kolmogorov's theorem give Brownian motion continuous paths
 
@@ -69965,6 +75575,61 @@ a parallelogram.”
 
 - [J. F. C. Kingman, Poisson Processes, Oxford University Press (1992)](https://doi.org/10.1093/oso/9780198536932.001.0001)
 
+### Variance subtraction gives mass martingales
+
+**Remember:** Each independent layer contributes an exponential of conditional mean one.
+
+*True by definition.* MSC 60G57 (Random measures), 60G60. arXiv math.PR. Level 3: graduate.
+
+**Definition.** Add independent, jointly measurable, centered real Gaussian fields on a space with a fixed finite measure. After n layers let S be their sum at a point. Use the density exp(γS − γ²Var(S)/2) for fixed real γ.
+
+**Problem.** The integral of this density over any fixed measurable set forms a nonnegative martingale. Given the first n layers, the next integral has conditional mean equal to the current integral.
+
+**How the definition helps.** Variance subtraction makes the factor contributed by the next independent layer have mean one at each point. The uncorrected exponential also picks up a deterministic variance factor. Our own discrete version integrates the conditional identity using nonnegativity. Constructing a nonzero limiting mass requires additional estimates.
+
+**Paper or page:** [Subcritical Gaussian Multiplicative Chaos in the Wiener Space: Construction, Moments and Volume Decay](https://arxiv.org/abs/2211.08996). It says: “For every Borel set $A \\subset \\Omega $ and $\\gamma &gt;0$, $$ \\left ( \\int \_A \\exp \\left \\{ \\gamma {H}<sub>T</sub>(\\omega ) - \\frac {\\gamma ^2}{2}T (\\phi \\star \\phi )(0) \\right \\} \\d \\P \_0(\\omega ) \\right )<sub>T&gt;0</sub> $$ is a martingale.”
+
+**Sources:**
+
+- [Subcritical Gaussian Multiplicative Chaos in the Wiener Space: Construction, Moments and Volume Decay](https://arxiv.org/abs/2211.08996)
+
+### Boundary energy governs Gaussian shifts
+
+**Remember:** A shift preserves null sets exactly when it has finite zero-boundary energy.
+
+*Rules out counterexamples.* MSC 60G60 (Random fields). arXiv math.PR. Level 3: graduate.
+
+**Definition.** On a bounded smooth planar domain, the zero-boundary Gaussian free field is a centered Gaussian random distribution. Its covariance is the inverse of −Δ with zero boundary values, where Δ is the Laplacian. Complete the smooth compactly supported functions in the L² norm of their gradients to form the energy space.
+
+**Problem.** A deterministic distributional shift preserves the null sets of this field law exactly when it belongs to that energy space. In particular, a nonzero constant shift gives a mutually singular law.
+
+**How the definition helps.** The energy space includes the boundary condition that prevents a constant shift from qualifying. The Cameron–Martin theorem says that shifts preserving Gaussian null sets form a Hilbert space. Every shift outside it gives a mutually singular law, meaning the two laws concentrate on disjoint sets. Our own explanation identifies this space by expanding the inverse Laplacian in its eigenfunctions. A nonzero constant fails the zero boundary condition.
+
+**Wikipedia:** [Cameron–Martin theorem](https://en.wikipedia.org/wiki/Cameron%E2%80%93Martin_theorem). It says: “If $h\\not\\in H\_\\gamma$ the two measures are singular.”
+
+**Paper or page:** [Radial conformal welding in Liouville quantum gravity](https://arxiv.org/abs/2411.19810). It says: “the law of h under the reweighted measure agrees with the law of h + g under the unreweighted measure.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Energy projections split free fields
+
+**Remember:** The subdomain gets the orthogonal part that vanishes at its boundary.
+
+*True by definition.* MSC 60G60 (Random fields). arXiv math.PR. Level 3: graduate.
+
+**Definition.** On a bounded smooth planar domain D, complete the smooth compactly supported functions in the norm given by the L² length of their gradients. The zero-boundary Gaussian free field assigns jointly centered Gaussian variables to this space, with covariance given by the gradient inner product. For a smooth subdomain U with closure inside D, extend its energy space into that of D by zero.
+
+**Problem.** The field on D splits into two independent random distributions. One is the zero-boundary field on U extended by zero. The other agrees with the original field outside the closure of U and has zero Laplacian inside U.
+
+**How the definition helps.** The gradient inner product turns the split into two orthogonal projections. Orthogonal Gaussian coordinates are independent. The component from U has precisely its field covariance. In our own explanation, orthogonality to every test in U says that the other component has zero Laplacian there. Using the inverse Laplacian as covariance instead requires identifying the corresponding distribution with this energy-space field.
+
+**Paper or page:** [Quantum triangles and imaginary geometry flow lines](https://arxiv.org/abs/2211.04580). It says: “h₂ is the same as h outside U and harmonic inside U.”
+
+**Sources:**
+
+- [Quantum triangles and imaginary geometry flow lines](https://arxiv.org/abs/2211.04580)
+- [Sheffield, Gaussian free fields for mathematicians (2007), Section 2.6](https://doi.org/10.1007/s00440-006-0050-1)
+
 ### Defining stochastic exponentials by integrals preserves the local martingale property
 
 **Remember:** If the driver is a local martingale, its stochastic integral is one too.
@@ -70035,6 +75700,24 @@ a parallelogram.”
 
 - [Stratonovich, R. L. (1966). A new representation for stochastic integrals and equations. SIAM Journal on Control 4, 362–371.](https://doi.org/10.1137/0304028)
 
+### Projecting Gaussian kernels gives conditioning
+
+**Remember:** Project each kernel argument to keep only what the observed noise can see.
+
+*True by definition.* MSC 60H07 (Stochastic calculus of variations and the Malliavin calculus). arXiv math.PR. Level 3: graduate.
+
+**Definition.** Let W assign jointly centered Gaussian variables to a real separable Hilbert space, with covariance equal to its inner product. Choose finitely many orthonormal directions and let P project onto their span. Every square-integrable function of W has an orthogonal expansion by Gaussian polynomial degree, with symmetric coefficient tensors. Define Γ(P) by applying P to every tensor argument and leaving constants unchanged.
+
+**Problem.** For every square-integrable function of W, Γ(P) gives its conditional expectation given the Gaussian coordinates in the chosen directions.
+
+**How the definition helps.** Projecting the tensors deletes exactly the terms involving unobserved Gaussian directions. Our own proof uses a basis starting with the observed directions. In the corresponding orthogonal polynomial basis, each positive-degree factor in an unobserved coordinate has mean zero and is independent of the observed coordinates. The work behind this alternative to conditional integration is completeness of the Gaussian polynomial expansion.
+
+**Paper or page:** [Feynman-Kac formula for the heat equation driven by time-homogeneous white noise potential](https://arxiv.org/abs/2108.12406). It says: “the second quantization operator $\\Gamma (A<sub>K</sub>)$ coincides with the conditional expectation $\\mathbb E\[\\bullet \|\\sigma (Z<sub>1</sub>,...,Z<sub>K</sub>)\]$”
+
+**Sources:**
+
+- [Feynman-Kac formula for the heat equation driven by time-homogeneous white noise potential](https://arxiv.org/abs/2108.12406)
+
 ### Weak solutions give Tanaka's equation a solution where strong solutions fail
 
 **Remember:** Choose the noise together with the solution, and Tanaka's equation solves.
@@ -70052,6 +75735,24 @@ a parallelogram.”
 **Sources:**
 
 - [T. Yamada and S. Watanabe, On the uniqueness of solutions of stochastic differential equations, Journal of Mathematics of Kyoto University 11 (1971)](https://doi.org/10.1215/kjm/1250523691)
+
+### Test functions realize white noise
+
+**Remember:** White noise acts on tests, not on individual points.
+
+*Rules out counterexamples.* MSC 60H40 (White noise theory), 60G60. arXiv math.PR. Level 3: graduate.
+
+**Definition.** Work on ℝⁿ with n ≥ 1. A tempered distribution is a continuous linear functional on smooth test functions that decrease rapidly together with all their derivatives. Gaussian white noise is a random tempered distribution whose evaluations on real tests are jointly centered Gaussian with covariance equal to their L² inner product.
+
+**Problem.** Exactly one probability law has these properties. On each fixed nonempty open ball, the noise almost surely has no square-integrable representative.
+
+**How the definition helps.** Testing against smooth functions specifies the law even where square-integrable samples cannot exist. The Bochner–Minlos theorem turns the Gaussian characteristic function into a probability measure on distributions. Our own obstruction uses infinitely many orthonormal smooth tests supported in the ball. Their evaluations are independent standard normal variables, so the sum of their squares diverges almost surely. Bessel’s inequality bounds this sum for every square-integrable function.
+
+**Paper or page:** [Multiparameter Lévy white noise theory and applications](https://arxiv.org/abs/2510.25525). It says: “There exists a unique probability measure $\\mathbb {P}$ on ${\\cal B}({\\cal S}'({\\mathbb { R}}<sup>n</sup>))$ with the following property:\\\[ \\mathbb {E}\[e<sup>i\\langle \\cdot ,\\phi \\rangle </sup>\]:=\\int \\limits <sub>\\cal S'</sub>e<sup>i\\langle \\omega , \\phi \\rangle </sup>d\\mathbb {P}(\\omega )=e<sup>{-\\tfrac</sup> {1}{2} \\Vert \\phi \\Vert ^2};\\quad i=\\sqrt{-1} \\\]”
+
+**Sources:**
+
+- [Multiparameter Lévy white noise theory and applications](https://arxiv.org/abs/2510.25525)
 
 ### Harris chains carry Markov chain convergence to uncountable state spaces
 
@@ -70351,6 +76052,24 @@ a parallelogram.”
 - [Jaynes, E. T. (1973). The well-posed problem. Foundations of Physics 3, 477–492.](https://doi.org/10.1007/BF00709116)
 - [A. Drory, Failure and uses of Jaynes' principle of transformation groups, Foundations of Physics 45 (2015) 439–460, arXiv:1503.09072](https://doi.org/10.1007/s10701-015-9876-7)
 
+### Variance normalization orders Gaussian masses
+
+**Remember:** Normalize each point to mean one before changing the covariances.
+
+*Makes the theorem clean to state or prove.* MSC 60E15 (Inequalities; stochastic orderings), 60G60. arXiv math.PR. Level 4: research.
+
+**Definition.** For a finite centered Gaussian vector X and fixed positive weights pⱼ, define its mass M(X) = ∑ⱼ pⱼ exp(Xⱼ − Var(Xⱼ)/2). Each normalized exponential has mean one.
+
+**Problem.** Suppose X and Y have the same index set and Cov(Xᵢ,Xⱼ) ≤ Cov(Yᵢ,Yⱼ) for every pair. Then 𝔼\[F(M(X))\] ≤ 𝔼\[F(M(Y))\] for every twice continuously differentiable convex F with bounded first and second derivatives.
+
+**How the definition helps.** Subtracting half the variance cancels every first-derivative term in the covariance comparison. Our own explanation interpolates linearly between the two covariance matrices. Gaussian integration by parts leaves terms proportional to the second derivative of F and the corresponding covariance increases. All remaining factors are nonnegative. Adding independent noise and passing to the limit covers singular covariance matrices.
+
+**Paper or page:** [Moment bounds for Gaussian multiplicative chaos with higher-dimensional singularities](https://arxiv.org/abs/2302.06097). It says: “Let $\\bm {X}$, $\\bm {Y}$ be two Gaussian vectors indexed by $T$ such that $\\bm {Y}$ dominates $\\bm {X}$ in covariance on $T<sup>2$</sup>. Then for any \\emph{convex} functional $F$ with subgaussian growth at infinity as well as in its first and second derivatives, and for any \\emph{positive} weights $\\{ p<sub>i</sub>\\} <sub>i\\in T</sub>$, \\begin{equation\*}  \\mathbb {E}\[F(\\sum <sub>i\\in T</sub>p<sub>ie</sub><sup>{X<sub>i</sub>-\\frac{1}{2}\\mathbb</sup> {E}\[X<sub>i</sub><sup>2</sup>\]})\]\\leq \\mathbb {E}\[F(\\sum <sub>i\\in T</sub>p<sub>ie</sub><sup>{Y<sub>i</sub>-\\frac{1}{2}\\mathbb</sup> {E}\[Y<sub>i</sub><sup>2</sup>\]})\]. \\end{equation\*}”
+
+**Sources:**
+
+- [Moment bounds for Gaussian multiplicative chaos with higher-dimensional singularities](https://arxiv.org/abs/2302.06097)
+
 ### Borel data structures give one de Finetti theorem for graphs and arrays
 
 **Remember:** Give every finite label set its own data space, then demand symmetry.
@@ -70531,6 +76250,29 @@ a parallelogram.”
 **Sources:**
 
 - [S. Sheffield, Gaussian free fields for mathematicians, Probability Theory and Related Fields 139 (2007)](https://doi.org/10.1007/s00440-006-0050-1)
+
+### Wick products remove internal cumulants
+
+**Remember:** Remove each block's own cumulants before combining the blocks.
+
+*Makes the theorem clean to state or prove.* MSC 60G60 (Random fields). arXiv math.PR. Level 4: research.
+
+**Definition.** In a finite block of real field evaluations with moments of all orders, give each occurrence its own formal variable tⱼ. Set S = ∑ⱼ tⱼXⱼ. The Wick product is the coefficient of the product of all the variables in exp(S)/𝔼\[exp(S)\]. Expectations here act on coefficients, so the series need no convergence.
+
+**Problem.** The expected product of these Wick products equals a sum over partitions of the occurrences where each part meets at least two blocks. Each partition contributes the product of its parts’ joint cumulants. A part’s cumulant is its multilinear coefficient in log 𝔼\[exp(S)\] using only that part’s variables.
+
+**How the definition helps.** The denominator removes every term confined to one block from the logarithm of the joint generating series. Our own coefficient calculation then expands the exponential of the remaining terms. Choosing terms that use each variable once gives exactly the stated partitions. The logarithmic definition of cumulants supplies the coefficients.
+
+**Paper or page:** [A scaling limit of the parabolic Anderson model with exclusion interaction](https://arxiv.org/abs/2103.13479). It says: “One has the \`\`diagram formula"
+\\begin{equation}
+\\label{eq:diagram}
+{\\symb E}\\bigg(\\prod<sub>k=1</sub><sup>p</sup>\\Wick{\\prod<sub>i=1</sub><sup>m</sup>X<sub>(i,k)</sub>}\\bigg)
+= \\sum\_{\\pi\\in\\mathcal{P}M(M\\times P)}\\prod{B\\in\\pi}{\\symb E}c(X{B}).
+\\end{equation}”
+
+**Sources:**
+
+- [A scaling limit of the parabolic Anderson model with exclusion interaction](https://arxiv.org/abs/2103.13479)
 
 ### Measure-valued stochastic integrals allow a Fubini theorem with random mixing weights
 
@@ -80729,6 +86471,144 @@ a parallelogram.”
 
 - [Christian Bär, Green-Hyperbolic Operators on Globally Hyperbolic Spacetimes](https://doi.org/10.1007/s00220-014-2097-7)
 
+### Complement cyclicity forces local faithfulness
+
+**Remember:** Cyclicity on the outside makes local action faithful.
+
+*Rules out counterexamples.* MSC 81T05 (Axiomatic quantum field theory; operator algebras). arXiv math-ph, math.OA. Level 3: graduate.
+
+**Definition.** A local net assigns operator algebras to regions, with commuting algebras for spacelike separated regions. Local cyclicity means that applying the algebra of any nonempty open region to the vacuum vector gives a dense set. Global cyclicity asks for density only when using the whole algebra.
+
+**Problem.** For a local net with this property, no nonzero bounded observable in a region with a nonempty spacelike open complement annihilates the vacuum.
+
+**How the definition helps.** An observable killing the vacuum kills its dense orbit under any commuting exterior algebra. Our own counterexample takes two matrix algebras acting on separate two-dimensional tensor factors. A unit product vector is cyclic for the full algebra. A nonzero projection on the first factor can still kill that vector. The Reeh–Schlieder theorem proves local cyclicity under the vacuum field axioms.
+
+**nLab:** [Reeh-Schlieder theorem](https://ncatlab.org/nlab/show/Reeh-Schlieder+theorem). It says: “there cannot be a nonzero localized observable that annihilates the vacuum.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Forward spectrum gives imaginary translations
+
+**Remember:** Future imaginary shifts damp every allowed momentum.
+
+*Rules out counterexamples.* MSC 81T05 (Axiomatic quantum field theory; operator algebras). arXiv math-ph, math.OA. Level 3: graduate.
+
+**Definition.** Let U(x) = exp(iP·x) be a strongly continuous unitary representation of spacetime translations. Write p = (E,k) for a joint spectral value of its generators P, with energy E and spatial momentum k. The spectrum condition requires E ≥ ‖k‖ for every such p. For y = (s,v), use the pairing p·y = Es − ⟨k,v⟩.
+
+**Problem.** Every coefficient ⟨u,U(x)v⟩ is the continuous real boundary value of a bounded holomorphic function on the tube of complex translations x+iy with s &gt; ‖v‖.
+
+**How the definition helps.** The forward cone makes exp(−p·y) at most one throughout the tube. Our own proof integrates exp(ip·z) against the finite spectral measure for u and v. Inside the tube, exponential decay dominates every polynomial in p locally uniformly, permitting differentiation. Dominated convergence gives the real boundary values. Our own counterexample takes the character exp(ix₁), with zero energy and nonzero spatial momentum. Its continuation grows without bound along future imaginary translations as the first spatial coordinate of y tends to minus infinity.
+
+**nLab:** [Wightman axioms](https://ncatlab.org/nlab/show/Wightman+axioms). It says: “The spectrum of the energy-momentum operator P is concentrated in the closed upper (forward) light cone V⁺.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Spectral ground states survive symmetries
+
+**Remember:** Change the observables, keep the positive generator.
+
+*True by definition.* MSC 81T05 (Axiomatic quantum field theory; operator algebras). arXiv math-ph, math.OA. Level 3: graduate.
+
+**Definition.** Let a unital observable algebra have time evolution αₜ by automorphisms. A ground state has a representation π with a unit vector Ω such that ω(a) = ⟨Ω,π(a)Ω⟩ and the vectors π(a)Ω span a dense subspace. A strongly continuous unitary group Uₜ must implement αₜ, fix Ω, and have nonnegative generator.
+
+**Problem.** An automorphism that commutes with time evolution pulls any ground state back to a ground state.
+
+**How the definition helps.** Composing π with a symmetry of the algebra leaves the same unitary group available. Our own proof keeps Ω and composes π with the given automorphism. Surjectivity preserves the dense span, and commutation with αₜ preserves implementation. The generator therefore stays nonnegative. The cyclic representation tests energy without choosing a common Hamiltonian for all states.
+
+**Paper or page:** [Ground state representations of some non-rational conformal nets](https://arxiv.org/abs/1807.11723v2). It says: “If α commutes with Ad U(τ(t)), then ω ∘ α is a ground state.”
+
+**Sources:**
+
+- [Yoh Tanimoto, Ground State Representations of Some Non-Rational Conformal Nets](https://doi.org/10.3390/sym10090415)
+
+### Split inclusions allow independent states
+
+**Remember:** A type I factor separates the two sets of observables.
+
+*Makes the theorem clean to state or prove.* MSC 81T05 (Axiomatic quantum field theory; operator algebras). arXiv math-ph, math.OA. Level 3: graduate.
+
+**Definition.** Let M ⊂ N be von Neumann algebras, meaning weakly closed unital adjoint-closed algebras of bounded operators. The inclusion is split if an intermediate algebra acts as all bounded operators on one tensor factor and identically on the other. Write N′ for the bounded operators commuting with N.
+
+**Problem.** Suppose M ⊂ N is split and φ and ψ are normal states on M and N′. Then their generated von Neumann algebra admits a normal state ω satisfying ω(ab) = φ(a)ψ(b) for a ∈ M and b ∈ N′.
+
+**How the definition helps.** The intermediate algebra puts M and N′ on separate tensor factors. Normal states are positive normalized linear functionals preserving suprema of bounded increasing families of positive operators. The split theorem identifies the algebra generated by M and N′ with their spatial tensor product. Our own deduction transfers the product of the given states across this identification.
+
+**nLab:** [split inclusion of von Neumann algebras](https://ncatlab.org/nlab/show/split+inclusion+of+von+Neumann+algebras). It says: “extends to a spatial isomorphism, the tensor product used here is the spatial tensor product.”
+
+**Sources:**
+
+- [Vincenzo Morinelli, Yoh Tanimoto and Mihály Weiner, Conformal Covariance and the Split Property](https://doi.org/10.1007/s00220-017-2961-3)
+
+### Reflected covariance tests Gaussian laws
+
+**Remember:** In a Gaussian law the reflected covariance controls every reflected test.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 81T08 (Constructive quantum field theory). arXiv math-ph. Level 3: graduate.
+
+**Definition.** Let X be a centered real Gaussian random distribution on Euclidean space whose law is invariant under time reversal θ. Its reflected covariance on real smooth compactly supported positive-time tests is B(f,g) = 𝔼\[X(f ∘ θ)X(g)\]. Reflection positivity means 𝔼\[conj(F ∘ θ) F\] ≥ 0 for each bounded measurable function F of finitely many positive-time evaluations. Here conj denotes complex conjugation.
+
+**Problem.** The law is reflection positive exactly when B(f,f) ≥ 0 for every such test f.
+
+**How the definition helps.** The covariance criterion replaces all bounded observations by tests linear in the field. Our own argument divides each exponential exp(iX(f)) by its mean. The matrix of reflected expectations then has entries exp(B(f,g)). Products taken entry by entry preserve positive semidefiniteness, so the exponential series preserves it too. Uniqueness of Fourier transforms gives density of these exponentials among square-integrable observations. Conversely, truncating a linear evaluation proves the covariance inequality.
+
+**nLab:** [Osterwalder-Schrader theorem](https://ncatlab.org/nlab/show/Osterwalder-Schrader+theorem). It says: “Let θ : (x, t) ↦ (x, −t) be the time reflection. Then the content of the axiom is: 0 ≤ ⟨θA, A⟩\[L₂\].”
+
+**Sources:**
+
+- [Arici, Becker, Ripken, Saueressig and van Suijlekom, Reflection positivity in higher derivative scalar theories (2018)](https://doi.org/10.1063/1.5027231)
+
+### Reflection positivity survives weak limits
+
+**Remember:** Weak convergence preserves each bounded continuous reflection test.
+
+*True by definition. Confidence: medium.* MSC 81T08 (Constructive quantum field theory). arXiv math-ph. Level 3: graduate.
+
+**Definition.** View the field as a random continuous linear functional on rapidly decreasing smooth functions on Euclidean space. Write θ for time reversal. A future test F is a bounded continuous function of finitely many field evaluations on smooth functions supported at positive times. Call a time-symmetric law reflection positive if 𝔼\[conj(F ∘ θ) F\] ≥ 0 for every future test, where conj means complex conjugation.
+
+**Problem.** Any weak limit of such reflection-positive laws is reflection positive. The limit also satisfies the inequality for every bounded measurable function of its positive-time evaluations.
+
+**How the definition helps.** Each reflected product is bounded and continuous, so its expectation passes to the weak limit. Our own proof uses these tests in place of all measurable future observations. Bounded continuous finite-coordinate tests approximate every square-integrable future observation in mean square. Time symmetry gives the same approximation error after reflection. This density argument recovers the measurable tests. The cited construction also needs a weakly convergent subsequence.
+
+**Paper or page:** [Stochastic quantization of two-dimensional P(Φ) Quantum Field Theory](https://arxiv.org/abs/2311.04137). It says: “is invariant under the Euclidean symmetries of the plane and reflection positive.”
+
+**Sources:**
+
+- [Stochastic quantization of two-dimensional P(Φ) Quantum Field Theory](https://arxiv.org/abs/2311.04137)
+
+### Split weights preserve reflection positivity
+
+**Remember:** Put one copy of the weight inside each half of the reflection test.
+
+*True by definition. Confidence: medium.* MSC 81T08 (Constructive quantum field theory). arXiv math-ph. Level 3: graduate.
+
+**Definition.** Let θ reverse time under a time-symmetric field law. Reflection positivity means 𝔼\[conj(F ∘ θ) F\] ≥ 0 for every bounded measurable future observation F, where conj means complex conjugation. Choose a bounded nonnegative future observation w. Multiply the law by the product w · (w ∘ θ) and divide by its expectation, assumed positive.
+
+**Problem.** If the original law is reflection positive, the weighted law is reflection positive.
+
+**How the definition helps.** The split weight changes the original test F into the future test wF. Our own proof applies the original inequality to wF and divides by the positive normalizing constant. A general symmetric weight gives no such factorization. The cited action splits formally. Applying this argument to a field model requires a measure with the stated density.
+
+**Wikipedia:** [Schwinger function](https://en.wikipedia.org/wiki/Schwinger_function). It says: “which only depends on φ on the positive half-space (φ₊), and S₋ which only depends upon φ on the negative half-space (φ₋)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Wick subtraction saves the square
+
+**Remember:** Subtract the expected square before summing the modes.
+
+*Rules out counterexamples.* MSC 81T08 (Constructive quantum field theory). arXiv math-ph. Level 3: graduate.
+
+**Definition.** On a flat two-dimensional torus, take the centered Gaussian field with covariance (−Δ + m²)⁻¹, where Δ is the Laplacian and m &gt; 0. Keep only Fourier frequencies of length at most n to get a function φₙ. Its Wick square at x is φₙ(x)² − 𝔼\[φₙ(x)²\].
+
+**Problem.** The integrated Wick squares converge in L² of the probability law as the cutoff increases. The uncentered integrated squares diverge to infinity almost surely.
+
+**How the definition helps.** Subtracting the point variance centers each squared Fourier coefficient in the integral. Our own proof uses a real orthonormal Fourier basis with independent Gaussian coefficients. Their variances have divergent sum, but their squared variances have finite sum in two dimensions. The independent centered squares therefore have partial sums converging in mean square and almost surely. Adding back the divergent sum of variances gives the uncentered claim.
+
+**Paper or page:** [An introduction to singular stochastic PDEs: Allen-Cahn equations, metastability and regularity structures](https://arxiv.org/abs/1901.07420). It says: “For every n ∈ ℕ, we have sup(N ≥ 1) 𝔼\[((1/L²) ∫Λ :φ(GFF,N)ⁿ(x): dx)²\] &lt; ∞.”
+
+**Sources:**
+
+- [An introduction to singular stochastic PDEs: Allen-Cahn equations, metastability and regularity structures](https://arxiv.org/abs/1901.07420)
+
 ### The covariant derivative commutator gives gauge-covariant field strength
 
 **Remember:** Conjugating two derivatives also conjugates their commutator.
@@ -80765,6 +86645,164 @@ a parallelogram.”
 
 - [Kenneth G. Wilson, Confinement of quarks, Physical Review D 10 (1974) 2445](https://doi.org/10.1103/PhysRevD.10.2445)
 
+### Differential extensions localize scale changes
+
+**Remember:** Changing the logarithm leaves only the Laplacian of a fundamental solution.
+
+*True by definition. Confidence: medium.* MSC 81T15 (Perturbative methods of renormalization applied to problems in quantum field theory). arXiv math-ph, hep-th. Level 3: graduate.
+
+**Definition.** The massless scalar bubble has kernel \|x\|⁻⁴ away from zero in four Euclidean dimensions, up to a constant set here to one. For μ &gt; 0, define its extension T(μ) as −¼ times the distributional Laplacian of log(μ²\|x\|²)/\|x\|². The function being differentiated is locally integrable, so its Laplacian acts on tests by moving both derivatives onto the test.
+
+**Problem.** For any positive scales μ and ν, T(ν) − T(μ) = 2π² log(ν/μ) δ₀, where δ₀ evaluates a test at zero.
+
+**How the definition helps.** In our own calculation, defining the extension by differentiation reduces the scale change to the Laplacian of \|x\|⁻². Subtracting the logarithms leaves the constant 2 log(ν/μ). The fundamental solution identity Δ\|x\|⁻² = −4π²δ₀ supplies the coefficient. Direct differentiation away from zero verifies that T(μ) extends the original kernel. This avoids choosing a separate subtraction on each test function.
+
+**nLab:** [differential renormalization](https://ncatlab.org/nlab/show/differential+renormalization). It says: “makes choices for defining time-ordered products/Feynman amplitudes at coincident interaction vertices.”
+
+**Sources:**
+
+- [Daniel Z. Freedman, Kenneth Johnson and José I. Latorre, Differential Regularization and Renormalization (1992)](https://doi.org/10.1016/0550-3213(92)90240-C)
+
+### Automorphisms count Wick pairings
+
+**Remember:** Divide by the permutations that leave the pairing unchanged.
+
+*True by definition.* MSC 81T18 (Feynman diagrams). arXiv math-ph, hep-th. Level 3: graduate.
+
+**Definition.** Expand the unnormalized Gaussian expectation of the exponential of a formal scalar interaction by pairing field occurrences, as in the Gaussian moment formula. Divide by the factorial of each vertex degree and the factorial of each vertex multiplicity. A diagram pairs edge ends attached to vertices and keeps each external label fixed. Its automorphisms permute identical vertices and their edge ends while preserving all pairings and external labels.
+
+**Problem.** After coupling constants and covariance factors are removed, each diagram has coefficient 1/\|Aut(G)\|, where Aut(G) is its automorphism group.
+
+**How the definition helps.** In our own proof, defining a diagram as an orbit of labelled pairings makes its coefficient an orbit count. The relabelling group has order equal to the product of all the factorials in the expansion. Its stabilizer is exactly Aut(G), so the orbit–stabilizer formula gives the coefficient.
+
+**Wikipedia:** [Feynman diagram](https://en.wikipedia.org/wiki/Feynman_diagram). It says: “the contribution of each Feynman diagram must be divided by the order of its group of automorphisms”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Wick ordering removes self-contractions
+
+**Remember:** Subtract each vertex variance before expanding the joint exponential.
+
+*Rules out counterexamples.* MSC 81T18 (Feynman diagrams). arXiv math-ph, hep-th. Level 3: graduate.
+
+**Definition.** Assign one centered variable to each vertex and assume the variables are jointly Gaussian. For a variable X, its nth Wick power is n! times the coefficient of tⁿ in exp(tX − t² Var(X)/2). A pairing groups all field occurrences into pairs and contributes the product of their covariances.
+
+**Problem.** The expectation of a product of Wick powers equals the sum over pairings that join different vertices. An ordinary square at a single vertex instead has expectation Var(X).
+
+**How the definition helps.** In our own proof, subtracting the variance term cancels all within-vertex terms in the joint Gaussian exponential. Its remaining quadratic terms pair different vertices. Comparing coefficients gives the claimed pairing formula, including the quoted two-vertex case.
+
+**Paper or page:** [Renormalising Feynman diagrams with multi-indices](https://arxiv.org/abs/2501.08151v3). It says: “Let X and Y be jointly Gaussian centred random variables. Then for any n,m ≥ 0 one has 𝔼\[Hₙ(X)Hₘ(Y)\] = δₘⁿ n!𝔼\[XY\]ⁿ”
+
+**Sources:**
+
+- [Yvain Bruned and Yingtong Hou, Renormalising Feynman diagrams with multi-indices](https://arxiv.org/abs/2501.08151v3)
+
+### Contractions turn time ordering into multiplication
+
+**Remember:** The second derivative supplies the contraction between the two factors.
+
+*True by definition.* MSC 81T20 (Quantum field theory on curved space or space-time backgrounds). arXiv math-ph. Level 3: graduate.
+
+**Definition.** Use polynomial functions of a free scalar field before imposing its equation, with smooth compactly supported kernels for all derivatives. Let C contract the second field derivative with the symmetric Feynman kernel, the propagator used for time ordering. Set T = exp(ℏC/2), where ℏ is a formal parameter. Time-ordered multiplication sums all pairings between factors, weighting each contracted pair by ℏ times the same kernel.
+
+**Problem.** For regular polynomial functionals F and G, the time-ordered product of TF and TG equals T(FG). Consequently the time-ordered product is associative.
+
+**How the definition helps.** The exponential collects all contractions in a single operator and turns the contraction sum into ordinary multiplication under its inverse (our own explanation). The product rule splits C into contractions within each factor and twice the contraction between factors. These operators commute, so their exponentials factor. The inverse is exp(−ℏC/2), and the series terminate on each polynomial.
+
+**nLab:** [Wick algebra](https://ncatlab.org/nlab/show/Wick+algebra). It says: “time-ordered product on regular polynomial observables isomorphic to pointwise product”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Field equations remove commutator degeneracy
+
+**Remember:** Only the field equation makes a test commute with every test.
+
+*Rules out counterexamples.* MSC 81T20 (Quantum field theory on curved space or space-time backgrounds). arXiv math-ph. Level 3: graduate.
+
+**Definition.** Let P be the real Klein–Gordon operator on a globally hyperbolic spacetime without boundary. Write E for its retarded solution operator minus its advanced one. Label a smeared field by a compactly supported smooth real function f, identifying f with f + Ph for every compactly supported smooth h.
+
+**Problem.** The integral of f times Eg against spacetime volume gives a well-defined nondegenerate skew bilinear form on these test classes.
+
+**How the definition helps.** The field equation removes precisely the tests that pair to zero with every other test (our own explanation). Formal self-adjointness of P makes E skew-adjoint on tests, so zero pairing against all g means Ef = 0. The exact sequence for the causal propagator identifies this kernel with the image of P on compactly supported tests. Before quotienting, every nonzero test Ph lies in the radical.
+
+**nLab:** [Green hyperbolic partial differential equation](https://ncatlab.org/nlab/show/Green+hyperbolic+partial+differential+equation). It says: “the quotient space of the compactly supported dual sections by the image of P:”
+
+**Sources:**
+
+- [Bär, Green-Hyperbolic Operators on Globally Hyperbolic Spacetimes](https://doi.org/10.1007/s00220-014-2097-7)
+
+### Hadamard kernels admit powers
+
+**Remember:** Future lightlike covectors add without cancelling.
+
+*Rules out counterexamples.* MSC 81T20 (Quantum field theory on curved space or space-time backgrounds), 35A27. arXiv math-ph. Level 3: graduate.
+
+**Definition.** The wave front set of a distribution records its singular points and directions. For a scalar Hadamard two-point function, these directions are exactly the pairs (k, −k′) along light rays. Here k is future-directed and lightlike, and parallel transport along the ray takes k to k′.
+
+**Problem.** On a globally hyperbolic spacetime without boundary, every positive integer power of a free scalar Hadamard two-point function exists as a distribution.
+
+**How the definition helps.** Future-directed covectors cannot sum to zero, so Hörmander’s multiplication theorem applies to every finite power (our own argument). The massless causal propagator in four-dimensional flat spacetime has both orientations. Near a nonzero point on the light cone it contains a delta distribution transverse to the cone. Squaring smooth approximations to that delta gives no distributional limit.
+
+**nLab:** [Hadamard distribution](https://ncatlab.org/nlab/show/Hadamard+distribution), [wavefront set](https://ncatlab.org/nlab/show/wavefront+set). It says: “the wave front set is one causal half that of the causal propagator:”
+
+**Sources:**
+
+- [Radzikowski, Micro-local approach to the Hadamard condition in quantum field theory on curved space-time](https://doi.org/10.1007/BF02100096)
+
+### Hadamard kernels restrict to Cauchy data
+
+**Remember:** Lightlike singular directions cannot be normal to a spacelike surface.
+
+*Makes the theorem clean to state or prove.* MSC 81T20 (Quantum field theory on curved space or space-time backgrounds), 35A27. arXiv math-ph. Level 3: graduate.
+
+**Definition.** The wave front set of a distribution records its singular points and directions. For a scalar Hadamard two-point function, these directions are exactly the pairs (k, −k′) along light rays. Here k is future-directed and lightlike, and parallel transport along the ray takes k to k′.
+
+**Problem.** Consider a free scalar field on a globally hyperbolic spacetime without boundary. Let Σ be a smooth spacelike surface meeting every inextendible causal curve exactly once. The Hadamard two-point function and its normal derivatives in either argument restrict to distributions on Σ × Σ.
+
+**How the definition helps.** The Hadamard condition rules out singular directions normal to Σ × Σ (our own argument). Each nonzero normal to Σ is timelike, whereas each singular pair has two nonzero lightlike entries. Differentiation adds no singular directions. Hörmander’s restriction theorem then gives the result.
+
+**nLab:** [Hadamard distribution](https://ncatlab.org/nlab/show/Hadamard+distribution). It says: “the wave front set is one causal half that of the causal propagator:”
+
+**Sources:**
+
+- [Radzikowski, Micro-local approach to the Hadamard condition in quantum field theory on curved space-time](https://doi.org/10.1007/BF02100096)
+
+### The commutator completes Hadamard directions
+
+**Remember:** The commutator supplies every singular direction that the transpose cannot supply.
+
+*True by definition.* MSC 81T20 (Quantum field theory on curved space or space-time backgrounds), 35A27. arXiv math-ph. Level 3: graduate.
+
+**Definition.** The wave front set records where a distribution is singular and in which directions. Let C consist of pairs (k, −k′) with k future-directed lightlike and k′ its parallel transport along a light ray. Test a scalar two-point distribution W by requiring its wave front set to lie in C.
+
+**Problem.** On a globally hyperbolic spacetime without boundary, let E be the Klein–Gordon causal propagator, the difference between its retarded and advanced solution operators. If W minus its transpose equals iE, the inclusion test implies that the wave front set of W equals C.
+
+**How the definition helps.** Transposition reverses the allowed time orientation, so only W can supply the future half of the commutator (our own argument). The wave front set of E contains every pair in C. Each such pair must occur in W or its transpose, since subtraction creates no singular directions. Radzikowski’s theorem connects this directional test to the traditional local expansion.
+
+**nLab:** [Hadamard distribution](https://ncatlab.org/nlab/show/Hadamard+distribution). It says: “the wave front set is one causal half that of the causal propagator:”
+
+**Sources:**
+
+- [Radzikowski, Micro-local approach to the Hadamard condition in quantum field theory on curved space-time](https://doi.org/10.1007/BF02100096)
+
+### Sewing gives an annulus semigroup
+
+**Remember:** Lengths add under sewing, so the operators multiply.
+
+*True by definition.* MSC 81T40 (Two-dimensional field theories, conformal field theories, etc. in quantum mechanics). arXiv math-ph. Level 3: graduate.
+
+**Definition.** In Segal’s formulation, assign a state space to a circle and an operator to an annulus with parametrized boundary circles. Sewing matches an outgoing circle to an incoming one, and the operator assignment respects composition. Use the anomaly-free version, so this rule has no scalar correction. A presentation by local correlation functions does not start with these annulus operators.
+
+**Problem.** Let T(t) denote the operator for a round annulus with radii exp(−t) and 1 and standard angular parametrizations. Then T(s + t) = T(s)T(t) for all s,t &gt; 0.
+
+**How the definition helps.** Sewing multiplies the radius ratios, so the composition axiom turns addition of lengths into multiplication of operators. Our own calculation rescales the second annulus to match the first along their common boundary. Constructing operators from local field data requires a separate sewing theorem.
+
+**nLab:** [conformal cobordism category](https://ncatlab.org/nlab/show/conformal+cobordism+category). It says: “One way to axiomatize conformal field theory (see there) in FQFT-style is as a suitable monoidal functor on a category of conformal cobordisms”
+
+**Sources:**
+
+- [Graeme Segal, The Definition of Conformal Field Theory](https://doi.org/10.1017/CBO9780511526398.019)
+
 ### Integer levels preserve Chern–Simons phases
 
 **Remember:** Integer levels make a winding change invisible to the phase.
@@ -80784,6 +86822,24 @@ a parallelogram.”
 **Sources:**
 
 - [Edward Witten, Quantum field theory and the Jones polynomial (1989)](https://doi.org/10.1007/BF01217730)
+
+### Unitary conjugation preserves spectral actions
+
+**Remember:** Unitary conjugation preserves the spectral action at every scale.
+
+*True by definition.* MSC 81T75 (Noncommutative geometry methods in quantum field theory), 58B34. arXiv math-ph, math.OA. Level 3: graduate.
+
+**Definition.** Let D be a self-adjoint Dirac operator and Λ a positive scale. For a bounded Borel function f such that f(D/Λ) is trace class, define the bosonic spectral action as Tr f(D/Λ). Trace class means the singular values have finite sum.
+
+**Problem.** Unitary conjugacy of two Dirac operators implies equality of their bosonic spectral actions at each scale where the trace exists.
+
+**How the definition helps.** The spectral formula makes invariance follow directly from invariance of the trace (our own argument). Applying f to a unitarily conjugated operator conjugates f(D/Λ) by the same unitary. The work in comparing this action with local curvature formulas lies in the asymptotic expansion of the trace.
+
+**nLab:** [spectral action](https://ncatlab.org/nlab/show/spectral+action). It says: “It is essentially a regularized heat kernel expansion of the Dirac operator-like operator in the spectral triple.”
+
+**Sources:**
+
+- [Chamseddine and Connes, The Spectral Action Principle](https://doi.org/10.1007/s002200050126)
 
 ### Braids allow arbitrary exchange phases
 
@@ -81019,6 +87075,42 @@ a parallelogram.”
 
 - [Quantum expanders and property (T) discrete quantum groups](https://arxiv.org/abs/2502.01974v1)
 
+### Canonical split entropy respects symmetry
+
+**Remember:** The vacuum picks a factor that moves with the inclusion.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 81T05 (Axiomatic quantum field theory; operator algebras). arXiv math-ph, math.OA. Level 4: research.
+
+**Definition.** Let N ⊂ M be weakly closed operator algebras with scalar centers and an intermediate algebra isomorphic to all bounded operators on a Hilbert space. Write A = N ∨ M′ for the algebra generated by N and the operators commuting with M. For B equal to N, M or A, require BΩ dense and xΩ = 0 to imply x = 0 for x ∈ B. Let J be the antiunitary in the polar decomposition of the closure of xΩ ↦ x\*Ω for x ∈ A.
+
+**Problem.** Set F = N ∨ JNJ and let D be the density matrix of the unit vector state of Ω restricted to F. A unitary carrying Ω, N and M to another such triple preserves the entropy −Tr(D log D), including infinite values.
+
+**How the definition helps.** The formula for F forces it to move with the two algebras and their vector. Our own proof conjugates the closed adjoint map by the given unitary. Uniqueness of polar decomposition carries J, hence F, to its counterpart. The split inclusion theorem identifies F as an intermediate type I factor, an algebra isomorphic to all bounded operators on one Hilbert space. The two restricted states then have density matrices with identical eigenvalues and multiplicities.
+
+**Paper or page:** [Modular Nuclearity and Entanglement measures](https://arxiv.org/abs/2110.05823v3). It says: “the canonical intermediate type I factors corresponding to the inclusions”
+
+**Sources:**
+
+- [Sergio Doplicher and Roberto Longo, Standard and split inclusions of von Neumann algebras](https://doi.org/10.1007/BF01388641)
+
+### Composition makes sector fusion associative
+
+**Remember:** Charges compose once they act on one algebra.
+
+*True by definition.* MSC 81T05 (Axiomatic quantum field theory; operator algebras). arXiv math-ph, math.OA. Level 4: research.
+
+**Definition.** A net assigns an algebra of observables to each spacetime region. Represent a charge by a unital adjoint-preserving endomorphism ρ of the observable algebra. Outside some double cone, the region between two timelike separated events, ρ fixes every spacelike observable. Require an equivalent representative localized in each double cone, and define fusion by composition.
+
+**Problem.** Fusion of localized, transportable charge endomorphisms on a Haag-dual Minkowski net is strictly associative.
+
+**How the definition helps.** Composition gives identical maps for both groupings of three charges. Our own comparison starts with representations on separate Hilbert spaces, which cannot in general be composed. The Doplicher–Haag–Roberts theorem realizes admissible representations as these endomorphisms under Haag duality. Here duality identifies each cone algebra with all bounded operators commuting with its spacelike exterior.
+
+**nLab:** [DHR category](https://ncatlab.org/nlab/show/DHR+category). It says: “left and right unitor and the associator are the identities”
+
+**Sources:**
+
+- [Sergio Doplicher, Rudolf Haag and John E. Roberts, Local observables and particle statistics I](https://doi.org/10.1007/BF01877742)
+
 ### Cyclic vacua remove invisible states
 
 **Remember:** A dense set of vacuum descendants leaves no room for an unseen sector.
@@ -81037,6 +87129,22 @@ a parallelogram.”
 
 - [Arthur S. Wightman, Quantum Field Theory in Terms of Vacuum Expectation Values (1956)](https://doi.org/10.1103/PhysRev.101.860)
 
+### Disjoint unions make observables commute
+
+**Remember:** Separate spacetime components land in separate tensor factors.
+
+*True by definition.* MSC 81T05 (Axiomatic quantum field theory; operator algebras). arXiv math-ph, math.OA. Level 4: research.
+
+**Definition.** Assign a unital algebra A(M) to each spacetime M and a unit-preserving algebra map to each allowed embedding, preserving composition and identities. Require compatible identifications A(M ⊔ N) ≅ A(M) ⊗ A(N). Under these identifications, embedding either component acts by a ↦ a ⊗ 1 or b ↦ 1 ⊗ b. This is the tensor product rule for a symmetric monoidal theory.
+
+**Problem.** If two spacetime embeddings combine to an allowed embedding of their disjoint union, their observable images commute in the target algebra.
+
+**How the definition helps.** The tensor product rule puts the two source algebras in commuting tensor factors. Our own proof factors each embedding through the common disjoint union. There, a ⊗ 1 commutes with 1 ⊗ b, and the map to the target preserves products. An assignment defined only on connected spacetimes needs a separate locality axiom. Constructing the compatible tensor product maps for a given theory carries the work.
+
+**nLab:** [causally local net of observables](https://ncatlab.org/nlab/show/causally+local+net+of+observables). It says: “A local net is Einstein local precisely if it is a monoidal functor”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Fixed vectors describe standard real subspaces
 
 **Remember:** Every vector in the domain splits into two fixed parts.
@@ -81054,6 +87162,42 @@ a parallelogram.”
 **Sources:**
 
 - [The Bisognano-Wichmann property for non-unitary Wightman conformal field theories](https://arxiv.org/abs/2506.10625v1)
+
+### Gaussian states factor across symplectic sums
+
+**Remember:** A sum of Gaussian exponents gives a product state.
+
+*True by definition.* MSC 81T05 (Axiomatic quantum field theory; operator algebras). arXiv math-ph, math.OA. Level 4: research.
+
+**Definition.** For a real symplectic space with alternating form β, use unitary generators satisfying W(h)W(k) = exp(−iβ(h,k))W(h+k). Take a real positive symmetric form α satisfying \|β(h,k)\|² ≤ α(h,h)α(k,k) for every h,k. The centered Gaussian state is the unique state on the generated Weyl C\*-algebra with expectation exp(−α(h,h)/2) on W(h).
+
+**Problem.** On a symplectic direct sum with block diagonal covariance, the Gaussian state is the product of the two component Gaussian states.
+
+**How the definition helps.** The expectation formula turns the sum of the two diagonal covariance terms into a product. Our own proof writes W(h+k) = W(h)W(k) for h and k in different summands, since their symplectic pairing vanishes. The formula therefore gives independent expectations on the two sets of generators. Linear extension and continuity give the product rule on their algebras. This replaces checking every mixed correlation with checking one covariance. The positivity theorem ensures that the generator formula defines a state.
+
+**Paper or page:** [Modular structure of the Weyl algebra](https://arxiv.org/abs/2111.11266v5). It says: “There exists a unique state $\\varphi \_\\alpha $ on $C<sup>\*</sup>(H)$”
+
+**Sources:**
+
+- [Roberto Longo, Modular Structure of the Weyl Algebra](https://doi.org/10.1007/s00220-022-04344-7)
+
+### Haag duality localizes charge intertwiners
+
+**Remember:** An operator commuting with the outside belongs inside.
+
+*Rules out counterexamples. Confidence: medium.* MSC 81T05 (Axiomatic quantum field theory; operator algebras). arXiv math-ph, math.OA. Level 4: research.
+
+**Definition.** A local net assigns algebras of bounded operators to spacetime regions, with commuting algebras for spacelike separated regions. A double cone is the region between two timelike separated events. Haag duality requires its algebra to contain exactly the bounded operators commuting with every observable in its spacelike exterior.
+
+**Problem.** Suppose two observable algebra endomorphisms ρ and σ fix the spacelike exterior of the same double cone. Under Haag duality, every bounded T satisfying Tρ(a) = σ(a)T for all observables a belongs to the cone algebra.
+
+**How the definition helps.** Duality turns commutation with exterior observables into membership in the cone algebra. Our own proof substitutes an exterior observable for a, giving Ta = aT. Locality alone allows extra operators in the exterior commutant. Our own example assigns only scalar multiples of the identity to every region on a two-dimensional Hilbert space. Every matrix then intertwines the identity with itself, but the cone algebra contains only scalars.
+
+**nLab:** [DHR superselection theory](https://ncatlab.org/nlab/show/DHR+superselection+theory). It says: “Conversely, under the assumption of Haag duality every DHR admissible representation ρ comes from an endomorphism this way.”
+
+**Sources:**
+
+- [Sergio Doplicher, Rudolf Haag and John E. Roberts, Local observables and particle statistics I](https://doi.org/10.1007/BF01877742)
 
 ### Haag duality localizes purification changes
 
@@ -81092,6 +87236,24 @@ a parallelogram.”
 - [Romeo Brunetti, Klaus Fredenhagen, Microlocal Analysis and Interacting Quantum Field Theories: Renormalization on Physical Backgrounds, Commun. Math. Phys. 208 (2000) 623–661, arXiv:math-ph/9903028](https://arxiv.org/abs/math-ph/9903028)
 - [Michael Dütsch, Klaus Fredenhagen, Algebraic Quantum Field Theory, Perturbation Theory, and the Loop Expansion, Commun. Math. Phys. 219 (2001) 5–30, arXiv:hep-th/0001129](https://arxiv.org/abs/hep-th/0001129)
 
+### One algebra collects net representations
+
+**Remember:** Glue the interval algebras before representing them.
+
+*True by definition.* MSC 81T05 (Axiomatic quantum field theory; operator algebras). arXiv math-ph, math.OA. Level 4: research.
+
+**Definition.** A circle net assigns a unital operator algebra to each proper open interval, respecting inclusions. Take the adjoint algebra generated by these algebras subject to their internal relations and their inclusion relations. Give each element the supremum of its operator norms over compatible representations, discard elements of norm zero, and complete. This gives the universal C\*-algebra of the net.
+
+**Problem.** Every compatible family of interval representations on one Hilbert space extends uniquely to a representation of the universal algebra.
+
+**How the definition helps.** The inclusion relations let any compatible family act on the generators. Our own proof bounds each finite sum of products by the corresponding sum of products of generator norms. The supremum therefore exists, and each family acts continuously for this norm. Agreement on the generators forces uniqueness. The vacuum representation alone gives only one norm and can lose other representations.
+
+**Paper or page:** [Rotational KMS states and type I conformal nets](https://arxiv.org/abs/1608.08903v2). It says: “of the net 𝒜, there is a representation ρ of the algebra C\*(𝒜) constructed above”
+
+**Sources:**
+
+- [Roberto Longo and Yoh Tanimoto, Rotational KMS States and Type I Conformal Nets](https://doi.org/10.1007/s00220-017-2969-8)
+
 ### Perturbative AQFT uses power series and local nets, not a global C\*-algebra
 
 **Remember:** Allow formal power series, and keep only the local algebras.
@@ -81110,6 +87272,110 @@ a parallelogram.”
 
 - [Romeo Brunetti, Klaus Fredenhagen, Microlocal Analysis and Interacting Quantum Field Theories: Renormalization on Physical Backgrounds, Commun. Math. Phys. 208 (2000) 623–661, arXiv:math-ph/9903028](https://arxiv.org/abs/math-ph/9903028)
 
+### Strong additivity repairs punctured intervals
+
+**Remember:** With strong additivity, a deleted point hides no observables.
+
+*Rules out counterexamples. Confidence: medium.* MSC 81T05 (Axiomatic quantum field theory; operator algebras). arXiv math-ph, math.OA. Level 4: research.
+
+**Definition.** A circle net assigns an algebra of bounded operators to each proper open interval, respecting inclusions. It is strongly additive if deleting any interior point leaves two intervals whose algebras generate the original von Neumann algebra. Generation here includes taking weak operator limits.
+
+**Problem.** Fix a point p on the circle. For a strongly additive net, the interval algebras avoiding p determine every interval algebra on the same Hilbert space.
+
+**How the definition helps.** Cutting at p expresses each missing algebra in terms of two known ones. Our own deduction takes the von Neumann algebra generated by those two algebras. Ordinary additivity applies to open covers, and the two pieces miss p. The quoted reconstruction theorem starts with different data and requires more work.
+
+**Paper or page:** [Ground state representations of some non-rational conformal nets](https://arxiv.org/abs/1807.11723v2). It says: “Isomorphism classes of strongly additive Möbius covariant nets”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Symplectic complements preserve standardness
+
+**Remember:** The symplectic complement swaps density and zero intersection.
+
+*True by definition.* MSC 81T05 (Axiomatic quantum field theory; operator algebras). arXiv math-ph, math.OA. Level 4: research.
+
+**Definition.** A closed real subspace K is standard if K + iK is dense and K ∩ iK = {0}. Define K′ using vanishing imaginary inner products with K, rather than complex orthogonality. This is the real orthogonal complement of iK.
+
+**Problem.** In a complex Hilbert space, the symplectic complement of every standard closed real subspace is standard.
+
+**How the definition helps.** Real orthogonality exchanges density of a sum with vanishing of an intersection. Our own calculation identifies K′ ∩ iK′ with the real orthogonal complement of K + iK. Applying that identity to K′ gives K ∩ iK as the real orthogonal complement of K′ + iK′, since K′′ = K. The two conditions for standardness therefore exchange roles. Complex orthogonality would give the zero complement for every standard subspace.
+
+**Paper or page:** [The Bisognano-Wichmann property for non-unitary Wightman conformal field theories](https://arxiv.org/abs/2506.10625v1). It says: “If K is cyclic then K′ is separating, and if K′ is cyclic then K is separating.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Symplectic kernels detect central observables
+
+**Remember:** A symplectic overlap gives central Weyl operators.
+
+*Makes the theorem clean to state or prove.* MSC 81T05 (Axiomatic quantum field theory; operator algebras). arXiv math-ph, math.OA. Level 4: research.
+
+**Definition.** Let H be a closed real subspace of a complex Hilbert space. Its symplectic complement H′ consists of vectors k with Im ⟨k,h⟩ = 0 for every h ∈ H. On symmetric Fock space, which describes bosonic particles, let R(H) be the von Neumann algebra generated by Weyl unitaries W(h), h ∈ H. These obey W(h)W(k) = exp(−i Im ⟨h,k⟩)W(h+k).
+
+**Problem.** The center of R(H) consists only of scalars exactly when H ∩ H′ = {0}.
+
+**How the definition helps.** The imaginary inner product controls the exchange phase, so its kernel identifies the central directions. Our own deduction uses Araki’s theorems that commutants correspond to symplectic complements and intersections of algebras correspond to intersections of closed real subspaces. Thus the center equals R(H ∩ H′). A nonzero vector gives a nonscalar Weyl unitary, while the zero subspace generates only scalars.
+
+**Paper or page:** [Modular structure of the Weyl algebra](https://arxiv.org/abs/2111.11266v5). It says: “ker β = H ∩ H′”
+
+**Sources:**
+
+- [Huzihiro Araki, Von Neumann Algebras of Local Observables for Free Scalar Field](https://doi.org/10.1063/1.1704063)
+
+### Wedge intersections preserve local commutation
+
+**Remember:** Use opposite wedges to separate bounded algebras.
+
+*True by definition.* MSC 81T05 (Axiomatic quantum field theory; operator algebras). arXiv math-ph, math.OA. Level 4: research.
+
+**Definition.** A wedge in Minkowski spacetime is a spacetime symmetry image of the region x₁ &gt; \|t\|. Its opposite wedge is its spacelike complement. Assign each wedge a von Neumann algebra, with opposite wedges receiving each other’s commutants, the operators commuting with the given algebra. Define the algebra of a bounded region by intersecting the algebras of all wedges containing it.
+
+**Problem.** If two bounded regions lie in opposite wedges, their intersection-defined algebras commute.
+
+**How the definition helps.** Each intersection is contained in the algebra of the corresponding separating wedge. Our own deduction uses the fact that these two wedge algebras commute. The work is to obtain wedge duality, for example from the Bisognano–Wichmann theorem for suitable vacuum fields. Our own point is that proving the bounded intersections contain observables other than scalars is a separate problem.
+
+**nLab:** [Bisognano-Wichmann theorem](https://ncatlab.org/nlab/show/Bisognano-Wichmann+theorem). It says: “the commutant of the algebra associated to a wedge is the algebra associated to the causal complement of the wedge.”
+
+**Sources:**
+
+- [Joseph J. Bisognano and Eyvind H. Wichmann, On the duality condition for quantum fields](https://doi.org/10.1063/1.522898)
+
+### Double poles fail reflection positivity
+
+**Remember:** A positive Fourier multiplier can still give a negative reflected test.
+
+*Rules out counterexamples.* MSC 81T08 (Constructive quantum field theory). arXiv math-ph. Level 4: research.
+
+**Definition.** For a centered stationary real Gaussian field on the time line, write K for its covariance kernel. Reflection positivity requires the kernel K(s + t) to have nonnegative quadratic form on real smooth tests supported at positive times.
+
+**Problem.** For m &gt; 0, the covariance with Fourier multiplier 1/(p² + m²)² is positive as an ordinary covariance but fails reflection positivity.
+
+**How the definition helps.** Reflection tests sums of positive times, which detects a negative determinant invisible in the ordinary covariance. In our own calculation, Fourier inversion gives K(t) proportional to (1 + mt) exp(−mt) for t &gt; 0. At distinct positive times s and t, the determinant has the sign of (1 + 2ms)(1 + 2mt) − (1 + ms + mt)². That expression equals −m²(s − t)². Smooth tests concentrated near the two times preserve a negative quadratic form.
+
+**nLab:** [Osterwalder-Schrader theorem](https://ncatlab.org/nlab/show/Osterwalder-Schrader+theorem). It says: “Let θ : (x, t) ↦ (x, −t) be the time reflection. Then the content of the axiom is: 0 ≤ ⟨θA, A⟩\[L₂\].”
+
+**Sources:**
+
+- [Arici, Becker, Ripken, Saueressig and van Suijlekom, Reflection positivity in higher derivative scalar theories (2018)](https://doi.org/10.1063/1.5027231)
+
+### Mirror parity identifies reflected covariance
+
+**Remember:** Odd extensions vanish at the mirror and even extensions have zero normal slope.
+
+*Makes the theorem clean to state or prove.* MSC 81T08 (Constructive quantum field theory). arXiv math-ph. Level 4: research.
+
+**Definition.** Let a distance-preserving reflection θ exchange two halves of a complete connected Riemannian manifold and fix their smooth common boundary pointwise. Write C(x,y) for the kernel of (−Δ + m²)⁻¹, where Δ is the Laplacian and m &gt; 0. Extend a function across the boundary evenly by copying its reflection, or oddly by negating its reflection.
+
+**Problem.** For interior points x ≠ y in one half, the Neumann inverse kernel minus the Dirichlet inverse kernel equals 2C(θx,y). Neumann prescribes zero normal derivative and Dirichlet prescribes zero boundary value.
+
+**How the definition helps.** Even and odd extension give the two boundary kernels by adding or subtracting the same reflected kernel. Reflection preserves the Laplacian. The reflected source lies outside the chosen half, so both kernels solve the same interior equation. Uniqueness with the respective boundary conditions identifies the two inverses. Equation (9) confirms this sign.
+
+**nLab:** [Osterwalder-Schrader theorem](https://ncatlab.org/nlab/show/Osterwalder-Schrader+theorem). It says: “Let θ : (x, t) ↦ (x, −t) be the time reflection.”
+
+**Sources:**
+
+- [Jaffe and Ritter, Reflection Positivity and Monotonicity (2008), Lemma 3](https://www.arthurjaffe.com/Assets/pdf/Reflection_Positivity.pdf)
+
 ### Reflection positivity gives nonnegative norms
 
 **Remember:** Reflect one argument before asking whether the pairing can be a norm.
@@ -81127,6 +87393,49 @@ a parallelogram.”
 **Sources:**
 
 - [Konrad Osterwalder and Robert Schrader, Axioms for Euclidean Green's functions (1973)](https://doi.org/10.1007/BF01645738)
+
+### Wick squares change field masses
+
+**Remember:** Change the mass in the precision and center the quadratic weight.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 81T08 (Constructive quantum field theory). arXiv math-ph. Level 4: research.
+
+**Definition.** On a flat two-dimensional torus let μ(b) be the centered Gaussian field law with covariance (−Δ + b)⁻¹, where b &gt; 0. Here Δ is the Laplacian. Keep frequencies of length at most n, integrate the squared field, and subtract its mean under μ(b). Call the mean-square limit Q.
+
+**Problem.** For a,b &gt; 0, the density of μ(a) relative to μ(b) is exp(−(a − b)Q/2) divided by its μ(b) mean.
+
+**How the definition helps.** Centering every squared Fourier mode makes the infinite quadratic weight converge. For finitely many modes the quoted Gaussian density formula changes each inverse variance from λ + b to λ + a. Here λ is the eigenvalue of −Δ. Our own extension chooses p &gt; 1 close enough to one that b + p(a − b) &gt; 0. The logarithms of the normalized densities’ p-th moments are bounded by a constant times ∑(λ + b)⁻², which converges in two dimensions. The densities therefore converge in mean and give the required law on every finite set of modes.
+
+**Paper or page:** [An introduction to singular stochastic PDEs: Allen-Cahn equations, metastability and regularity structures](https://arxiv.org/abs/1901.07420). It says: “For $a&gt;0$, let $\\mu(a)$ be the Gaussian measure with covariance
+$(-\\Delta<sub>N</sub>+a)<sup>-1</sup>$. Then for any $\\mu(a)$-integrable random variable
+$F(\\phi<sub>N</sub>)$ and any $b&gt;0$, one has
+\\begin{equation}
+{\\mathbb{E} \\rule{0pt}{9pt}}<sup>\\mskip1.5mu \\mu(a)</sup>\\bigl\[F(\\phi<sub>N</sub>) \\bigr\]
+= \\sqrt{\\mathfrak{D}N(a-b;b)} \\, \\biggexpecin{\\mu(b)}{\\exp\\biggl \\{-\\frac{a-b}2
+\\int{\\Lambda}\\Wick{\\phi<sub>N</sub>(x)<sup>2}\\6x</sup>  \\biggr \\}F(\\phi<sub>N</sub>)}\\;,
+\\end{equation}”
+
+**Sources:**
+
+- [An introduction to singular stochastic PDEs: Allen-Cahn equations, metastability and regularity structures](https://arxiv.org/abs/1901.07420)
+
+### Heat-kernel weights survive face subdivision
+
+**Remember:** Erase a new edge by adding the two heat times.
+
+*True by definition.* MSC 81T13 (Yang-Mills and other gauge theories in quantum field theory). arXiv math-ph, math.DG. Level 4: research.
+
+**Definition.** Use a compact connected Lie group with a metric invariant under left and right multiplication. Assign a group element to each edge of a graph dividing an oriented surface into disks, using its inverse for reverse traversal. Weight each face by the group heat kernel at its area, evaluated on the ordered product around its boundary. Multiply the face weights against independent Haar probability measures, the translation-invariant group measures on the edges.
+
+**Problem.** Split one disk face into two disks of positive areas by adding an edge between existing vertices. Integrating over the new edge gives exactly the original density on the old edges.
+
+**How the definition helps.** In our own calculation, the heat kernel makes integration over the new edge exactly composition of two heat operators. The new edge occurs once in each direction, so its group integral convolves the two face kernels. Heat operators compose by adding their times, and the two areas sum to the old area. This choice replaces a separate consistency proof for arbitrary face weights with the heat semigroup identity.
+
+**nLab:** [heat kernel](https://ncatlab.org/nlab/show/heat+kernel). It says: “The heat kernel K for P is then the kernel of an integral operator representing the heat operator:”
+
+**Sources:**
+
+- [Thierry Lévy, Yang-Mills measure on compact surfaces](https://doi.org/10.1090/memo/0790)
 
 ### Action exponentials transport master equations
 
@@ -81163,6 +87472,204 @@ a parallelogram.”
 **Sources:**
 
 - [Henri Epstein, Vladimir Glaser, The role of locality in perturbation theory, Annales de l'Institut Henri Poincaré A 19 (1973) 211](https://www.numdam.org/item/AIHPA_1973__19_3_211_0/)
+
+### Closed pole spaces preserve multiplication
+
+**Remember:** The pole space must multiply before counterterms can multiply.
+
+*Rules out counterexamples.* MSC 81T15 (Perturbative methods of renormalization applied to problems in quantum field theory). arXiv math-ph, hep-th. Level 4: research.
+
+**Definition.** Split Laurent series into power series and a complementary vector space closed under multiplication. Let P project onto the complement along the power series. A character assigns series to graphs and preserves disjoint unions as products.
+
+**Problem.** For a character on a connected graded graph Hopf algebra, recursive subtraction using P gives a counterterm that preserves products. Here the degree counts loops and only scalars have degree zero.
+
+**How the definition helps.** In our own proof, closure of both spaces gives P(x)P(y) = P(P(x)y + xP(y) − xy). This identity supplies the product step in the subtraction recursion. Our own counterexample takes the complement spanned by z⁻¹ + 1 and all z⁻ᵏ with k ≥ 2. A graph without divergent proper subgraphs and with value z⁻¹ has counterterm −(z⁻¹ + 1). Its square lies outside the complement, so it cannot equal the recursively projected counterterm of the disjoint square.
+
+**nLab:** [Rota-Baxter algebra](https://ncatlab.org/nlab/show/Rota-Baxter+algebra), [renormalization](https://ncatlab.org/nlab/show/renormalization). It says: “P(x) P(y) = P(P(x) y) + P(x P(y)) + λ P(x y)”
+
+**Sources:**
+
+- [Alain Connes and Dirk Kreimer, Renormalization in Quantum Field Theory and the Riemann-Hilbert Problem I (2000)](https://doi.org/10.1007/s002200050779)
+
+### Factorization separates subtraction from evaluation
+
+**Remember:** Factor the whole character before setting the regulator to zero.
+
+*True by definition.* MSC 81T15 (Perturbative methods of renormalization applied to problems in quantum field theory). arXiv math-ph, hep-th. Level 4: research.
+
+**Definition.** Use the Connes–Kreimer graph algebra, where disjoint union multiplies graphs and loop number grades them. A character assigns a Laurent series to each graph, preserves products, and sends the empty graph to one. Factor a character as C⁻¹ ⋆ R, where convolution ⋆ sums products over subgraphs and their contractions. On positive degrees C contains only negative powers, while R contains only nonnegative powers.
+
+**Problem.** Each character has a unique such factorization. In minimal subtraction, which removes pole terms, evaluating R at zero gives the renormalized character.
+
+**How the definition helps.** In our own words, the definition makes evaluation at zero possible on every graph simultaneously. The Connes–Kreimer theorem proves that both factors exist and preserve products. Its recursion for C recovers the usual subtraction of divergent subgraphs.
+
+**nLab:** [renormalization](https://ncatlab.org/nlab/show/renormalization). It says: “then the Birkhoff decomposition always exists and is given by the formula”
+
+**Sources:**
+
+- [Alain Connes and Dirk Kreimer, Renormalization in Quantum Field Theory and the Riemann-Hilbert Problem I (2000)](https://doi.org/10.1007/s002200050779)
+
+### Graph insertion gives a Lie bracket
+
+**Remember:** Independent insertions cancel in pairs when the bracket cycles.
+
+*Makes the theorem clean to state or prove.* MSC 81T15 (Perturbative methods of renormalization applied to problems in quantum field theory). arXiv math-ph, hep-th. Level 4: research.
+
+**Definition.** Use the Connes–Kreimer space of graphs that stay connected after any single internal edge is cut. Write x ⊳ y for the sum over insertions of y into x, matching external edge types at the insertion site. The right pre-Lie identity says (x ⊳ y) ⊳ z − x ⊳ (y ⊳ z) is symmetric in y and z.
+
+**Problem.** Graph insertion satisfies the right pre-Lie identity. Consequently the bracket \[x,y\] = x ⊳ y − y ⊳ x satisfies the Jacobi identity.
+
+**How the definition helps.** In our own proof, the pre-Lie identity packages the cancellations needed for the Jacobi identity into a single symmetry. Nested insertions cancel in the displayed difference. The remaining insertions occupy separate sites, so interchanging y and z pairs their terms. Expanding the cyclic sum of double brackets now gives zero.
+
+**nLab:** [pre-Lie algebra](https://ncatlab.org/nlab/show/pre-Lie+algebra), [renormalization](https://ncatlab.org/nlab/show/renormalization). It says: “It is a fun exercise to derive the Jacobi identity from equation \\eqref{identity}.”
+
+**Sources:**
+
+- [Alain Connes and Dirk Kreimer, Renormalization in Quantum Field Theory and the Riemann-Hilbert Problem I (2000)](https://doi.org/10.1007/s002200050779)
+
+### Heat-kernel interval maps compose
+
+**Remember:** Add the intervals and multiply their commuting contraction operators.
+
+*True by definition.* MSC 81T15 (Perturbative methods of renormalization applied to problems in quantum field theory). arXiv math-ph, hep-th. Level 4: research.
+
+**Definition.** For positive times a &lt; b, integrate Costello’s heat kernel propagator density from a to b to obtain P(a,b). Its contraction operator D(a,b) pairs two field factors using that kernel. For a formal interaction I define W(a,b,I) = ℏ log(exp(ℏD(a,b)) exp(I/ℏ)), with the usual factor ½ in D.
+
+**Problem.** For 0 &lt; a &lt; b &lt; c, Costello’s formal interaction series satisfy W(b,c,W(a,b,I)) = W(a,c,I). The identity extends to a = 0 for his renormalized interactions.
+
+**How the definition helps.** In our own proof, defining the interaction through its exponential turns successive contractions into multiplication of commuting operators. Integrals add across adjacent intervals, so D(a,c) = D(a,b) + D(b,c). Exponentiating this sum proves the finite-cutoff formula. Costello’s theorem constructs the renormalized limit and proves that evolution over the outer interval respects it.
+
+**nLab:** [renormalization](https://ncatlab.org/nlab/show/renormalization). It says: “Γᴿ(P(0,T′), I) = Γ(P(T,T′), Γᴿ(P(0,T), I))”
+
+**Sources:**
+
+- [Kevin Costello, Renormalization and Effective Field Theory (2011)](https://doi.org/10.1090/surv/170)
+
+### Hopf ideals preserve gauge identities
+
+**Remember:** Subtract on the quotient and the identities stay zero.
+
+*True by definition.* MSC 81T15 (Perturbative methods of renormalization applied to problems in quantum field theory). arXiv math-ph, hep-th. Level 4: research.
+
+**Definition.** Let H be a connected graded graph Hopf algebra, whose coproduct records subgraphs and their contractions. A graded Hopf ideal I is a graded ideal for which the Hopf algebra operations descend to H/I. A character is a product-preserving linear map that sends one to one.
+
+**Problem.** If a Laurent-series character kills I, both factors in its minimal-subtraction factorization kill I. This applies to the Slavnov–Taylor relations expressing gauge symmetry when they generate such an ideal.
+
+**How the definition helps.** In our own proof, passing to H/I makes the relations zero before any pole terms are subtracted. Factor the induced character there and compose both factors with the quotient map. Uniqueness identifies them with the factors on H. Van Suijlekom proves the Hopf ideal property for the gauge identities in his setting.
+
+**nLab:** [renormalization](https://ncatlab.org/nlab/show/renormalization). It says: “the relations between amplitudes to be preserved under renormalization must define a Hopf ideal in the Hopf algebra of graphs.”
+
+**Sources:**
+
+- [Walter van Suijlekom, Renormalization of Gauge Fields using Hopf Algebras](https://doi.org/10.1007/978-3-7643-8736-5_8)
+
+### Largest forest members recover recursion
+
+**Remember:** Group a forest by its largest members to read the recursion.
+
+*True by definition. Confidence: medium.* MSC 81T15 (Perturbative methods of renormalization applied to problems in quantum field theory). arXiv math-ph, hep-th. Level 4: research.
+
+**Definition.** In massive Euclidean momentum subtraction, consider a connected graph that stays connected after any one internal edge is cut. A proper forest is a set of proper divergent subgraphs of this same type, every pair nested or disjoint. For each member γ, let T(γ) take the Taylor polynomial in its external momenta at zero through its superficial degree of divergence. This degree counts the net scaling power from loop measures, numerators and denominators.
+
+**Problem.** The recursively prepared graph integrand equals the sum over proper forests, including the empty forest, of the ordered products of −T(γ) applied to the integrand. Inner members act first. For an overall divergent graph G, applying 1 − T(G) gives the renormalized integrand.
+
+**How the definition helps.** In our own proof, the forest definition makes its maximal members exactly one admissible family in the recursive subtraction. These members are pairwise disjoint and each contains its own proper forest. Summing the inner forests and applying the maximal member’s subtraction recovers its recursive counterterm. The empty forest supplies the original integrand. Zimmermann’s convergence theorem is separate from this combinatorial identity.
+
+**nLab:** [renormalization](https://ncatlab.org/nlab/show/renormalization). It says: “for adding to a given amplitude in a certain recursive fashion further terms”
+
+**Sources:**
+
+- [Wolfhart Zimmermann, Convergence of Bogoliubov’s Method of Renormalization in Momentum Space (1969)](https://doi.org/10.1007/bf01645676)
+
+### Nested contractions make convolution associative
+
+**Remember:** Both orders of subtraction indexing count the same nested subgraphs.
+
+*Makes the theorem clean to state or prove.* MSC 81T15 (Perturbative methods of renormalization applied to problems in quantum field theory). arXiv math-ph, hep-th. Level 4: research.
+
+**Definition.** In the Connes–Kreimer algebra, multiply graphs by disjoint union. The coproduct sums γ ⊗ G/γ over admissible subgraphs γ, including the empty and full terms. Each proper γ consists of disjoint divergent pieces surviving any single internal edge cut, and G/γ contracts each piece to its prescribed type. Convolution multiplies two linear graph rules by applying one to each tensor factor and summing their products.
+
+**Problem.** This coproduct is coassociative. Consequently convolution is associative for rules valued in an associative algebra.
+
+**How the definition helps.** In our own proof, indexing the coproduct by contractions makes both orders of iteration list the same nested pairs. For an admissible α inside G, contracting α identifies admissible β containing α with admissible subgraphs of G/α. Either iteration then records α, β/α and G/β. The graph theorem establishes this correspondence for the allowed divergence and external types.
+
+**nLab:** [renormalization](https://ncatlab.org/nlab/show/renormalization). It says: “there is secretly a natural Hopf algebra structure on the vector space whose basis consists of graphs”
+
+**Sources:**
+
+- [Alain Connes and Dirk Kreimer, Renormalization in Quantum Field Theory and the Riemann-Hilbert Problem I (2000)](https://doi.org/10.1007/s002200050779)
+
+### Orthogonal variables preserve finite-part multiplication
+
+**Remember:** Orthogonal variable spaces let finite parts multiply.
+
+*Rules out counterexamples.* MSC 81T15 (Perturbative methods of renormalization applied to problems in quantum field theory). arXiv math-ph, hep-th. Level 4: research.
+
+**Definition.** Consider meromorphic germs with linear poles at zero, meaning local functions whose denominators are products of linear forms. Fix an inner product on linear forms. A polar term divides a holomorphic numerator by powers of independent linear forms, with numerator variables orthogonal to those forms. Project along the span of polar terms onto holomorphic germs and evaluate at zero.
+
+**Problem.** This finite part preserves products of germs whose spaces of linear variables are orthogonal. No unital multiplicative map on all these germs can extend evaluation at zero.
+
+**How the definition helps.** In our own proof, orthogonality keeps every product involving a polar term in the polar subspace, including products of two polar terms. Only the two holomorphic parts contribute to evaluation. The decomposition theorem supplies the projection and its compatibility with orthogonal variables. In our own counterexample, x evaluates to zero although x times 1/x equals one.
+
+**Paper or page:** [Locality Galois groups of meromorphic germs in several variables](https://arxiv.org/abs/2301.02300v1). It says: “{\\mathcal{M}}\_{\\mathbb {K}}= {\\mathcal{M}}\_{\\mathbb {K}+}\\oplus {\\mathcal{M}}<sup>Q\_{\\mathbb</sup> {K}-}.”
+
+**Sources:**
+
+- [Li Guo, Sylvie Paycha and Bin Zhang, Locality Galois groups of meromorphic germs in several variables](https://arxiv.org/abs/2301.02300v1)
+
+### Outer normalization fixes Birkhoff factors
+
+**Remember:** Set the outer factor to one at infinity to fix constants.
+
+*Rules out counterexamples.* MSC 81T15 (Perturbative methods of renormalization applied to problems in quantum field theory). arXiv math-ph, hep-th. Level 4: research.
+
+**Definition.** A graph character assigns numbers multiplicatively to disjoint unions and sends the empty graph to one. For a loop of characters Φ on a circle, write Φ = C⁻¹ ⋆ R using convolution, the group product. Require R to extend holomorphically across the closed interior and C across the closed exterior, including infinity. Require C at infinity to be the identity character.
+
+**Problem.** Whenever such a factorization exists, it is unique. Without normalization, multiplying both factors on the left by the same constant character preserves Φ.
+
+**How the definition helps.** In our own proof, normalization fixes the only freedom left after the two holomorphic extensions agree. For another pair D,S, the identity D ⋆ C⁻¹ = S ⋆ R⁻¹ glues the exterior and interior ratios. On every graph their common extension is holomorphic on the sphere and hence constant. Its value at infinity is the identity. Existence is the separate factorization theorem.
+
+**nLab:** [Birkhoff decomposition](https://ncatlab.org/nlab/show/Birkhoff+decomposition), [renormalization](https://ncatlab.org/nlab/show/renormalization). It says: “a function of a matrix holomorphic on a neighborhood of an exterior of the disk including infinity and the circle itself.”
+
+**Sources:**
+
+- [Alain Connes and Dirk Kreimer, Renormalization in Quantum Field Theory and the Riemann-Hilbert Problem I (2000)](https://doi.org/10.1007/s002200050779)
+
+### Scaled prescriptions give a cocycle
+
+**Remember:** Compare prescriptions twice and the second change is conjugated by scaling.
+
+*True by definition.* MSC 81T15 (Perturbative methods of renormalization applied to problems in quantum field theory). arXiv math-ph, hep-th. Level 4: research.
+
+**Definition.** Let S assign a formal scattering operator to each local interaction, an interaction depending on fields and their derivatives at one point. Write λ·S for the prescription obtained by scaling spacetime and transforming the masses and inputs accordingly. Define Z(λ) as the unique local change of interaction satisfying λ·S = S ∘ Z(λ).
+
+**Problem.** Suppose positive scales act on the allowed prescriptions and their changes by conjugation. Then Z(λμ) = Z(λ) ∘ (λ·Z(μ)).
+
+**How the definition helps.** Defining the change by composition with S turns two successive scalings into a single change that uniqueness identifies. In our own derivation, apply λ to μ·S = S ∘ Z(μ) and substitute λ·S = S ∘ Z(λ). The main renormalization theorem supplies existence and uniqueness.
+
+**nLab:** [Stückelberg-Petermann renormalization group](https://ncatlab.org/nlab/show/St%C3%BCckelberg-Petermann+renormalization+group). It says: “cocycle property of running coupling constants”
+
+**Sources:**
+
+- [Romeo Brunetti, Michael Dütsch and Klaus Fredenhagen, Perturbative Algebraic Quantum Field Theory and the Renormalization Groups (2009)](https://doi.org/10.4310/atmp.2009.v13.n5.a7)
+
+### Singular complements fix counterterms
+
+**Remember:** A complement leaves no room for a finite shift.
+
+*Rules out counterexamples.* MSC 81T15 (Perturbative methods of renormalization applied to problems in quantum field theory). arXiv math-ph, hep-th. Level 4: research.
+
+**Definition.** In Costello’s heat kernel scheme, take the space of allowed functions of the cutoff ε. Split off the subspace of functions with finite limits at zero by choosing a linear complement. At each order require the counterterm, the coefficient subtracted before taking the limit, to lie in this complement.
+
+**Problem.** Once lower orders are fixed, exactly one allowed counterterm makes the coefficient at the next order finite. Without the complement condition, adding any finite local term at that order preserves finiteness.
+
+**How the definition helps.** In our own proof, two possible counterterms differ by an element of both summands, so they coincide. Without the restriction, a constant shift in a local interaction coefficient gives our own example of the ambiguity. Costello proves that the singular coefficient at each order actually comes from a local counterterm.
+
+**nLab:** [renormalization](https://ncatlab.org/nlab/show/renormalization). It says: “each counterterm is in the chosen $\\mathcal{A}<sub>\\gt 0</sub>$ as a function of $\\epsilon$;”
+
+**Sources:**
+
+- [Kevin Costello, Renormalization and Effective Field Theory (2011)](https://doi.org/10.1090/surv/170)
 
 ### Switching the interaction off far away avoids infrared divergences
 
@@ -81203,6 +87710,170 @@ a parallelogram.”
 - [Henri Epstein, Vladimir Glaser, The role of locality in perturbation theory, Annales de l'Institut Henri Poincaré A 19 (1973) 211](http://www.numdam.org/item/AIHPA_1973__19_3_211_0/)
 - [Romeo Brunetti, Klaus Fredenhagen, Microlocal Analysis and Interacting Quantum Field Theories: Renormalization on Physical Backgrounds, Communications in Mathematical Physics 208 (2000) 623–661, arXiv:math-ph/9903028](https://arxiv.org/abs/math-ph/9903028)
 
+### The simple pole determines running
+
+**Remember:** One factor of the regulator exposes the simple pole.
+
+*True by definition. Confidence: medium.* MSC 81T15 (Perturbative methods of renormalization applied to problems in quantum field theory). arXiv math-ph, hep-th. Level 4: research.
+
+**Definition.** A graph character assigns Laurent series to graphs and sends disjoint unions to products. Let A be the convolution inverse of a minimal-subtraction counterterm, so its positive-degree values contain only negative powers of the regulator z. On a graph of loop number n, let θ(t) multiply a value by exp(tzn). Define F(t) as the value at z = 0 of A⁻¹ ⋆ θ(t)A whenever this convolution has no poles on any graph.
+
+**Problem.** If these values exist for every real t, then F(t+s) = F(t) ⋆ F(s). On each graph of loop number n, the derivative at t = 0 equals n times the coefficient of z⁻¹ in A.
+
+**How the definition helps.** In our own proof, the scaled ratio composes before evaluation and its derivative supplies a factor of z. Writing B(t) = A⁻¹ ⋆ θ(t)A gives B(t+s) = B(t) ⋆ θ(t)B(s). Evaluating at zero removes θ(t) from the regular factor B(s). On each graph the constant coefficient is polynomial in t, so it can be differentiated directly. At t = 0, products involving two strict pole parts still have negative powers after multiplication by z. Only the simple pole of A contributes. The Connes–Kreimer locality theorem supplies regularity for counterterms independent of the scale.
+
+**nLab:** [renormalization](https://ncatlab.org/nlab/show/renormalization). It says: “its logarithmic derivative”
+
+**Sources:**
+
+- [Alain Connes and Dirk Kreimer, Renormalization in Quantum Field Theory and the Riemann-Hilbert Problem II (2001)](https://doi.org/10.1007/PL00005547)
+
+### Vanishing jets erase local counterterms
+
+**Remember:** Erase the jet and every local subtraction of that order disappears.
+
+*True by definition.* MSC 81T15 (Perturbative methods of renormalization applied to problems in quantum field theory). arXiv math-ph, hep-th. Level 4: research.
+
+**Definition.** For an integer r ≥ 0, take smooth compactly supported tests on ℝᵈ whose derivatives through order r vanish at zero. Project onto this space by subtracting each test’s degree-r Taylor polynomial times a smooth cutoff equal to one near zero.
+
+**Problem.** Two extensions of the same distribution across zero agree on these tests if both have scaling degree at most d + r. Scaling degree is the infimum of s such that λˢu(λ·) tends to zero as λ decreases to zero.
+
+**How the definition helps.** In our own words, choosing tests with vanishing derivatives removes every allowed change of extension at once. The structure theorem for distributions supported at one point expresses the difference as derivatives of the delta distribution. The scaling bound limits their orders to r. Each such derivative reads a derivative of the test at zero.
+
+**nLab:** [differential renormalization](https://ncatlab.org/nlab/show/differential+renormalization), [A first idea of quantum field theory -- Renormalization](https://ncatlab.org/nlab/show/A+first+idea+of+quantum+field+theory+--+Renormalization). It says: “Restricted to the image of this projector the relevant time-ordered product Tₖ has a unique extension to the origin”
+
+**Sources:**
+
+- [Romeo Brunetti and Klaus Fredenhagen, Microlocal Analysis and Interacting Quantum Field Theories (2000)](https://doi.org/10.1007/s002200050004)
+
+### Adjoints transport graph subtraction
+
+**Remember:** Transport insertion through the adjoint to transport subtraction back.
+
+*True by definition.* MSC 81T18 (Feynman diagrams). arXiv math-ph, hep-th. Level 4: research.
+
+**Definition.** In the Bruned–Hou diagram algebra, let Φ send each diagram to the monomial recording its number of vertices of each degree. Let P send that monomial back to the sum of diagrams formed by pairing its labelled edge ends, counted with their pairing multiplicities. A coproduct records extracted pieces in one factor and the contracted remainder in the other.
+
+**Problem.** For each allowed monomial m, expanding both factors of its extraction coproduct gives exactly the diagram coproduct of P(m).
+
+**How the definition helps.** In our own proof, choosing P as the weighted adjoint of Φ turns the insertion identity into the extraction identity. Insertion replaces vertices by diagrams with matching edge ends. The authors prove that Φ respects simultaneous insertion and that the symmetry-weighted inner products make extraction adjoint to insertion. Taking adjoints then proves the formula without separately counting all extractions.
+
+**Paper or page:** [Renormalising Feynman diagrams with multi-indices](https://arxiv.org/abs/2501.08151v3). It says: “(𝒫 ⊗ 𝒫) ∘ Δₘ(zᵝ) = Δ𝒻 ∘ 𝒫(zᵝ).”
+
+**Sources:**
+
+- [Yvain Bruned and Yingtong Hou, Renormalising Feynman diagrams with multi-indices](https://arxiv.org/abs/2501.08151v3)
+
+### Face tests bound sector denominators
+
+**Remember:** Testing every face detects cancellations near the boundary.
+
+*Rules out counterexamples.* MSC 81T18 (Feynman diagrams). arXiv math-ph, hep-th. Level 4: research.
+
+**Definition.** For a polynomial denominator p in positive edge variables, its Newton polytope is the convex hull of the exponents of its nonzero monomials. For each nonempty face, retain only terms whose exponents lie on it. Call p completely nonvanishing if every resulting polynomial, including p itself, has no zero on positive inputs.
+
+**Problem.** For such a denominator there is a constant C &gt; 0 with \|p(x)\| ≥ C M(x) at every positive input. Here M is the largest value of a monomial appearing in p after its coefficient is removed.
+
+**How the definition helps.** In our own words, testing every face also tests cancellations among the terms that dominate near a boundary. Borinsky proves the resulting uniform lower bound for use in estimating parametric Feynman integrals. Our own example p(x,y) = 1 + (x − y)² stays positive everywhere. Along x = y tending to infinity, its value stays one while M grows quadratically.
+
+**Paper or page:** [Tropical Monte Carlo quadrature for Feynman integrals](https://arxiv.org/abs/2008.12310v2). It says: “If $p \\in \\mathbb{C} \[x<sub>1</sub>, \\ldots , x<sub>n</sub>\]$ is completely non-vanishing on $\\mathbb{R} <sup>n</sup><sub>&gt;0</sub>$, then there is a constant $C&gt;0$ such that”
+
+**Sources:**
+
+- [Michael Borinsky, Tropical Monte Carlo quadrature for Feynman integrals](https://arxiv.org/abs/2008.12310v2)
+
+### Nonexceptional momenta preserve forest monomials
+
+**Remember:** A nonzero momentum across each split keeps its monomial.
+
+*Rules out counterexamples. Confidence: medium.* MSC 81T18 (Feynman diagrams). arXiv math-ph, hep-th. Level 4: research.
+
+**Definition.** Assign Euclidean momentum vectors to the vertices of a finite connected massless graph with at least two vertices, with total momentum zero. A spanning two-forest uses every vertex and consists of two disjoint trees. Its weight is the squared norm of the total momentum in either tree. Define the second Symanzik polynomial by summing each forest’s weight times the product of the edge variables outside that forest.
+
+**Problem.** If every spanning two-forest has nonzero momentum across its split, the monomials that appear are exactly the complements of all spanning two-forests. Their exponent vectors have a convex hull whose edges are parallel to differences of coordinate vectors.
+
+**How the definition helps.** In our own argument, nonzero momentum across every split gives every forest a positive weight. Distinct forests have distinct complements, so each contributes its own monomial. For the edge directions, use the basis polytope theorem for matroids, the finite sets with a basis exchange rule. Here the bases are the acyclic edge sets with two fewer edges than vertices. Taking complements reflects their polytope and preserves edge directions. In our own triangle example with momenta q, −q and zero, the forest isolating the zero-momentum vertex loses its monomial.
+
+**Paper or page:** [Tropical Monte Carlo quadrature for Feynman integrals](https://arxiv.org/abs/2008.12310v2). It says: “If we restrict to Euclidean and non-exceptional kinematics, then the Newton polytope of Ψ<sub>G</sub> and Φ<sub>G</sub> are generalized permutahedra.”
+
+**Sources:**
+
+- [Michael Borinsky, Tropical Monte Carlo quadrature for Feynman integrals](https://arxiv.org/abs/2008.12310v2)
+
+### Primitive graphs have convergent periods
+
+**Remember:** Remove the overall scale, but also forbid divergent subgraphs.
+
+*Rules out counterexamples.* MSC 81T18 (Feynman diagrams). arXiv math-ph, hep-th. Level 4: research.
+
+**Definition.** Take a connected graph with twice as many edges as independent cycles and at least one edge. Call it primitive if each nonempty proper edge subset has more edges than twice its number of independent cycles. Assign each edge a positive variable and define Ψ by summing, over spanning trees, the product of variables outside the tree. The period integrates 1/Ψ² over the simplex where the variables sum to one, using all but one variable as coordinates.
+
+**Problem.** The period converges exactly when the graph is primitive. Two pairs of parallel edges arranged in a three-vertex chain give a divergent period.
+
+**How the definition helps.** The definition checks exactly the boundary inequalities in the convergence theorem. The analytic work proves that these inequalities control every simultaneous approach to the boundary. In our own example, either parallel pair has two edges and one independent cycle, so its inequality fails.
+
+**Paper or page:** [An Introduction to Motivic Feynman Integrals](https://arxiv.org/abs/2009.00426v2). It says: “converges if and only if every proper subgraph $\\varnothing \\ne \\gamma \\subset G$ satisfies the condition $n<sub>\\gamma </sub> &gt; 2 l<sub>\\gamma </sub>$.”
+
+**Sources:**
+
+- [Claudia Rella, An Introduction to Motivic Feynman Integrals](https://arxiv.org/abs/2009.00426v2)
+
+### Tree complements expose leading scaling
+
+**Remember:** A spanning tree leaves at least one omitted edge per independent cycle.
+
+*True by definition.* MSC 81T18 (Feynman diagrams). arXiv math-ph, hep-th. Level 4: research.
+
+**Definition.** A spanning tree connects every vertex without forming a cycle. Give each edge of a finite connected graph an indeterminate. Define its first Symanzik polynomial Ψ by summing, over spanning trees, the product of the indeterminates outside the tree. Multiply every indeterminate in a connected subgraph γ by t.
+
+**Problem.** The lowest power of t in Ψ is the number of independent cycles in γ. Its coefficient is Ψ(γ)Ψ(G/γ), where G/γ contracts γ to one vertex and discards its edges.
+
+**How the definition helps.** In our own proof, the tree formula turns the lowest power into the smallest number of omitted edges of γ. A tree attains that minimum exactly when its restriction spans γ as a tree. Such trees correspond to pairs of spanning trees, one in γ and one in G/γ. Their monomials give the product formula. Identifying this tree sum with the denominator from loop integration is a separate theorem.
+
+**Paper or page:** [Tropical Monte Carlo quadrature for Feynman integrals](https://arxiv.org/abs/2008.12310v2). It says: “z<sub>\\Psi \_G</sub>(\\gamma ) &amp;= \\ell (\\gamma )”
+
+**Sources:**
+
+- [Michael Borinsky, Tropical Monte Carlo quadrature for Feynman integrals](https://arxiv.org/abs/2008.12310v2)
+- [Spencer Bloch, Hélène Esnault and Dirk Kreimer, On Motives Associated to Graph Polynomials (2006)](https://doi.org/10.1007/s00220-006-0040-2)
+
+### Causal embeddings preserve Hadamard kernels
+
+**Remember:** Causal convexity keeps the light rays joining two image points inside.
+
+*Makes the theorem clean to state or prove.* MSC 81T20 (Quantum field theory on curved space or space-time backgrounds). arXiv math-ph. Level 4: research.
+
+**Definition.** Consider an open isometric embedding between time-oriented, globally hyperbolic spacetimes without boundary. Require it to preserve time orientation and have causally convex image. Every causal curve joining two image points must then stay inside the image.
+
+**Problem.** Fix a real Klein–Gordon field with the same mass and curvature coupling on both spacetimes. Pulling a Hadamard two-point function back along the embedding gives a Hadamard two-point function on the smaller spacetime.
+
+**How the definition helps.** Causal convexity keeps each light ray joining image points inside, so restriction preserves the Hadamard condition (our own argument). That condition specifies pairs of singular directions related by parallel transport along light rays, with the first direction future-directed. Restriction to an open set retains precisely the singular directions there. Extending compactly supported tests by zero preserves positivity, and uniqueness of advanced and retarded solutions identifies the commutator.
+
+**nLab:** [causally local net of observables](https://ncatlab.org/nlab/show/causally+local+net+of+observables), [Hadamard distribution](https://ncatlab.org/nlab/show/Hadamard+distribution). It says: “the wave front set is one causal half that of the causal propagator:”
+
+**Sources:**
+
+- [Brunetti, Fredenhagen and Verch, The Generally Covariant Locality Principle](https://doi.org/10.1007/s00220-003-0815-7)
+- [Radzikowski, Micro-local approach to the Hadamard condition in quantum field theory on curved space-time](https://doi.org/10.1007/BF02100096)
+
+### Geometric subtraction makes Wick squares covariant
+
+**Remember:** Use the same local geometric subtraction on every spacetime.
+
+*Rules out counterexamples.* MSC 81T20 (Quantum field theory on curved space or space-time backgrounds). arXiv math-ph. Level 4: research.
+
+**Definition.** For a free real scalar field, subtract the local Hadamard parametrix from the product of fields at two nearby points. This kernel uses the metric and field equation to reproduce the singular part at short distances. Taking the resulting diagonal value defines the Wick square. Fix the subtraction length and any finite local curvature terms throughout.
+
+**Problem.** Consider globally hyperbolic four-dimensional spacetimes with the same mass and curvature coupling. The Wick square commutes with orientation- and time-orientation-preserving isometric embeddings with causally convex image.
+
+**How the definition helps.** The geometric subtraction agrees near corresponding points because an isometry preserves the local metric (our own explanation). The construction of the kernel and the existence of the diagonal restriction carry the analytic work. Subtracting a chosen state’s full two-point function can break this agreement. For example, shifting the flat vacuum by a classical solution adds the solution’s square on the diagonal, which can vary under translations.
+
+**nLab:** [perturbative algebraic quantum field theory](https://ncatlab.org/nlab/show/perturbative+algebraic+quantum+field+theory). It says: “The construction of Wick algebras of quantum observables of free fields on curved spacetimes via Hadamard distributions relies on the results of”
+
+**Sources:**
+
+- [Hollands and Wald, Local Wick Polynomials and Time Ordered Products of Quantum Fields in Curved Spacetime](https://doi.org/10.1007/s002200100540)
+
 ### Hadamard differences are smooth
 
 **Remember:** The difference has no singular direction left once symmetry reverses those directions.
@@ -81220,6 +87891,60 @@ a parallelogram.”
 **Sources:**
 
 - [Marek Radzikowski, Micro-local approach to the Hadamard condition in quantum field theory on curved space-time (1996)](https://doi.org/10.1007/BF02100096)
+
+### Hadamard pairings satisfy the spectrum condition
+
+**Remember:** Every singular direction in a pairing comes from an oriented light ray.
+
+*Makes the theorem clean to state or prove.* MSC 81T20 (Quantum field theory on curved space or space-time backgrounds). arXiv math-ph. Level 4: research.
+
+**Definition.** For a centered quasifree state, odd correlations vanish. Each even correlation sums over pairings of its arguments, taking one two-point function for each pair and preserving their order. The Hadamard condition pairs singular directions along light rays by parallel transport, with a future-directed first direction and a reversed second direction.
+
+**Problem.** For a free real Klein–Gordon field on a globally hyperbolic spacetime without boundary, every centered quasifree Hadamard state satisfies the microlocal spectrum condition. This condition bounds singular directions at all orders by sums of directed momenta carried by graph edges between arguments.
+
+**How the definition helps.** Each pairing gives a graph whose disjoint edges already have the required time orientation (our own explanation). The distributional tensor product places a permitted singular pair on each active edge and zero directions on the others. Adding the pairing terms creates no new singular directions. The analytic input is the wave front bound for tensor products.
+
+**nLab:** [quasi-free quantum state](https://ncatlab.org/nlab/show/quasi-free+quantum+state), [Hadamard distribution](https://ncatlab.org/nlab/show/Hadamard+distribution). It says: “its 2-point function determines all its n-point functions.”
+
+**Sources:**
+
+- [Brunetti, Fredenhagen and Köhler, The microlocal spectrum condition and Wick polynomials of free fields on curved spacetimes](https://doi.org/10.1007/BF02099626)
+
+### Removing Maxwell flux restores injectivity
+
+**Remember:** Remove flux classes that can disappear when a region is enlarged.
+
+*Rules out counterexamples.* MSC 81T20 (Quantum field theory on curved space or space-time backgrounds). arXiv math-ph. Level 4: research.
+
+**Definition.** On an oriented, time-oriented, globally hyperbolic four-dimensional spacetime, test the source-free Maxwell field with smooth compactly supported two-forms. For the universal theory identify tests differing by an exterior derivative or its formal adjoint applied to a compactly supported form. Its skew bilinear form determines the field commutator. The reduced theory also removes its radical, the classes pairing to zero with every test.
+
+**Problem.** Consider orientation- and time-orientation-preserving isometric embeddings with open, causally convex image, so causal curves between image points stay inside. The reduced Maxwell theory assigns injective maps to these embeddings, both for classical test classes and for their quantized field algebras.
+
+**How the definition helps.** Removing the radical forces any induced map preserving the skew form to be injective (our own explanation). A class mapping to zero pairs to zero with every source class and hence vanishes. Fewster and Lang identify the radical and prove that embeddings carry it into the target radical. Their quantization preserves these injections. In the universal theory a nonzero flux class can vanish when its region embeds in a larger spacetime.
+
+**nLab:** [causally local net of observables](https://ncatlab.org/nlab/show/causally+local+net+of+observables). It says: “A causally local net of observables is a functor”
+
+**Sources:**
+
+- [Fewster and Lang, Dynamical Locality of the Free Maxwell Field](https://link.springer.com/article/10.1007/s00023-015-0398-9)
+
+### Tensorial lapse rotation respects coordinates
+
+**Remember:** Rotate the normal tensor while keeping the chosen slicing fixed.
+
+*True by definition.* MSC 81T20 (Quantum field theory on curved space or space-time backgrounds). arXiv math-ph. Level 4: research.
+
+**Definition.** Fix a slicing by spacelike hypersurfaces of a Lorentzian metric g with negative time direction. Let n be its unit normal covector and θ a real angle. Rotating the lapse, which converts coordinate time to normal proper time, gives the complex metric g + (1 − exp(−2iθ)) n ⊗ n.
+
+**Problem.** For a fixed slicing, lapse rotation commutes with coordinate changes when they also transform the normal covector. It need not agree with a new rotation based on another slicing.
+
+**How the definition helps.** Writing the rotation with the normal covector makes its coordinate transformation law immediate (our own explanation). Pullback preserves tensor products and sums. The paper identifies this tensor with the coordinate formula that rotates the lapse. Two different inertial slicings of flat spacetime have different normal tensors and give different metrics whenever exp(−2iθ) differs from one.
+
+**Paper or page:** [Wick rotation in the lapse, admissible complex metrics, and foliation changing diffeomorphisms](https://arxiv.org/abs/2406.06047), [Wick rotation in the lapse, admissible complex metrics, and foliation changing diffeomorphisms](https://arxiv.org/abs/2406.06047). It says: “It is invariantly defined with respect to passive and active diffeomorphisms but depends on the choice of fiducial foliation.”
+
+**Sources:**
+
+- [Wick rotation in the lapse, admissible complex metrics, and foliation changing diffeomorphisms](https://arxiv.org/abs/2406.06047)
 
 ### Time slices compare spacetime dynamics
 
@@ -81239,6 +87964,114 @@ a parallelogram.”
 
 - [Romeo Brunetti, Klaus Fredenhagen and Rainer Verch, The Generally Covariant Locality Principle (2003)](https://doi.org/10.1007/s00220-003-0815-7)
 
+### Even self-dual lattices ensure modularity
+
+**Remember:** Even norms remove shift phases, and self-duality closes the Fourier transform.
+
+*Rules out counterexamples.* MSC 81T30 (String and superstring theories; other extended objects (e.g., branes) in quantum field theory), 81T40. arXiv hep-th. Level 4: research.
+
+**Definition.** Write each vector of a full lattice Λ in ℝᵈ × ℝᵈ as (x,y), with squared length ‖x‖² − ‖y‖² for the indefinite form. Evenness means every such length is an even integer, and self-duality means Λ equals its dual under this form. For Im τ &gt; 0, sum exp(πiτ‖x‖² − πiτ̄‖y‖²) over Λ. Divide by \|η(τ)\|²ᵈ, where the Dedekind eta function equals exp(πiτ/12) times the product of 1 − exp(2πinτ) over positive integers n.
+
+**Problem.** For an even self-dual lattice of signature (d,d), this partition function is unchanged by τ ↦ τ + 1 and τ ↦ −1/τ.
+
+**How the definition helps.** Evenness makes every shift phase equal to one, and self-duality makes Fourier summation return the original lattice. The odd lattice with diagonal form (1,−1) contains a vector of squared length one (our own). Its term changes sign under the shift (our own). Poisson summation gives the inversion law for the lattice sum, and the eta factors cancel its powers of τ and τ̄.
+
+**Paper or page:** [Non-Chiral Vertex Operator Algebra Associated To Lorentzian Lattices And Narain CFTs](https://arxiv.org/abs/2312.16296v2). It says: “is a modular invariant non-chiral CFT.”
+
+**Sources:**
+
+- [Non-Chiral Vertex Operator Algebra Associated To Lorentzian Lattices And Narain CFTs](https://arxiv.org/abs/2312.16296v2)
+
+### Jump factors glue partition functions
+
+**Remember:** Use each jump as a change of coordinates.
+
+*True by definition.* MSC 81T30 (String and superstring theories; other extended objects (e.g., branes) in quantum field theory), 14N35. arXiv math-ph, math.AG. Level 4: research.
+
+**Definition.** For the resolved conifold, sum the formal partition series in each admissible direction to obtain local functions on sectors of the coupling plane. A sector is an angular region where the chosen sum exists. Use the multiplicative jumps between normalized sums as changes of fiber coordinate for a complex line bundle.
+
+**Problem.** Assume Im(v/w) &gt; 0 for the conifold parameters v and w. The normalized sector sums then define a global section of the line bundle determined by the jumps.
+
+**How the definition helps.** Using the jump as a coordinate change makes neighboring sums describe the same section (our own). Gluing them as ordinary functions would require equality on every overlap (our own). The analytic work computes the jumps and proves their products agree on triple overlaps.
+
+**Paper or page:** [Mathematical structures of non-perturbative topological string theory: from GW to DT invariants](https://arxiv.org/abs/2109.06878v2). It says: “glue together into a section of ℒ.”
+
+**Sources:**
+
+- [Mathematical structures of non-perturbative topological string theory: from GW to DT invariants](https://arxiv.org/abs/2109.06878v2)
+
+### Cutting curves proves fusion associativity
+
+**Remember:** Both sums count the rank of the same bundle.
+
+*True by definition.* MSC 81T40 (Two-dimensional field theories, conformal field theories, etc. in quantum mechanics), 17B69. arXiv math.QA, math-ph. Level 4: research.
+
+**Definition.** On a sphere mark 0, 1 and ∞ with simple modules A, B and the graded dual of C. Blocks are linear functionals on their tensor product that vanish on the action of global meromorphic fields regular outside the marks. Define the fusion coefficient N(A,B,C) as the dimension of this space. The operator definition counts independent series that intertwine the field actions and combine A and B into C.
+
+**Problem.** Assume a simple complex vertex operator algebra with nonnegative integral weights, a one-dimensional vacuum space at weight zero, and an invariant nondegenerate pairing. Assume every module graded compatibly by nonnegative integers splits into simples and products of mode −2 span a subspace of finite codimension. On the free abelian group of simple labels, the product with coefficients N(A,B,C) is associative.
+
+**How the definition helps.** Both ways to multiply three labels compute the rank of the same four-point bundle. Let the four-point sphere split into two spheres meeting at one point. Factorization sums over simple labels at the join, pairing each label with its dual. Each summand contributes the product of two three-point dimensions. The two splittings give the two orders of multiplication. The vector bundle theorem makes the rank constant throughout the connected family, including both limits.
+
+**Paper or page:** [Applications of the factorization theorem of conformal blocks to vertex operator algebras](https://arxiv.org/abs/2508.01294v1), [Applications of the factorization theorem of conformal blocks to vertex operator algebras](https://arxiv.org/abs/2508.01294v1), [Applications of the factorization theorem of conformal blocks to vertex operator algebras](https://arxiv.org/abs/2508.01294v1). It says: “The multiplication on Fu(V) is associative.”
+
+**Sources:**
+
+- [Xu Gao, Jianqi Liu, Applications of the factorization theorem of conformal blocks to vertex operator algebras](https://arxiv.org/abs/2508.01294v1)
+
+### Projectively flat blocks give actions
+
+**Remember:** Transport lines around loops to get the mapping class action.
+
+*True by definition.* MSC 81T40 (Two-dimensional field theories, conformal field theories, etc. in quantum mechanics), 18M20. arXiv math-ph, math.QA. Level 4: research.
+
+**Definition.** A modular functor assigns a holomorphic vector bundle of conformal blocks to the moduli stack of labelled surfaces with parametrized boundary. The stack records surface symmetries as well as conformal structures. A projectively flat connection gives transport of lines in each fiber that depends only on the homotopy class of the path.
+
+**Problem.** For a connected surface with nonempty parametrized boundary and a nonzero block space, its mapping class group acts projectively on that space. This group consists of orientation-preserving diffeomorphisms fixing the boundary pointwise, modulo isotopy fixing the boundary.
+
+**How the definition helps.** Our own argument transports lines around loops, giving linear maps up to scalar that respect composition. The fundamental group of this moduli stack is the mapping class group. An assignment of separate spaces would supply no transport. The work lies in the theorem giving the bundle its projectively flat connection.
+
+**nLab:** [modular functor](https://ncatlab.org/nlab/show/modular+functor). It says: “this bundle carries a canonical projectively flat connection ∇Σ compatible with the sewing operation”
+
+**Sources:**
+
+- [Graeme Segal, The Definition of Conformal Field Theory](https://doi.org/10.1017/CBO9780511526398.019)
+
+### Specialness erases correlator bubbles
+
+**Remember:** A normalized special algebra erases a split followed by a merge.
+
+*Rules out counterexamples.* MSC 81T40 (Two-dimensional field theories, conformal field theories, etc. in quantum mechanics), 18M20. arXiv math.QA, math-ph. Level 4: research.
+
+**Definition.** In the ribbon diagrams for rational conformal field theory, a Frobenius algebra labels a merge by multiplication m and a split by comultiplication Δ. The Frobenius identity lets multiplication on either output of Δ pass to its input. Normalized specialness requires m ∘ Δ to be the identity on the algebra.
+
+**Problem.** In the ribbon graph construction with a normalized special symmetric Frobenius algebra, inserting a split immediately followed by a merge preserves the correlator. The correlator is the vector assigned to the labelled surface.
+
+**How the definition helps.** The inserted piece represents m ∘ Δ, so normalized specialness makes it an identity strand. Our own counterexample takes ℂ\[x\]/(x²) with the linear functional sending x to one and 1 to zero. Here Δ(1) = 1 ⊗ x + x ⊗ 1, so mΔ(1) = 2x. No scalar rescaling turns this composite into the identity. The construction theorem relates these diagram identities to changes of triangulation.
+
+**nLab:** [FRS-theorem on rational 2d CFT](https://ncatlab.org/nlab/show/FRS-theorem+on+rational+2d+CFT). It says: “triangulating the surface suitably, labelling the triangulation with a Frobenius algebra object internal to the modular tensor category”
+
+**Sources:**
+
+- [Fuchs, Runkel and Schweigert, TFT construction of RCFT correlators I: Partition functions](https://doi.org/10.1016/S0550-3213(02)00744-7)
+
+### Swapping points makes fusion commutative
+
+**Remember:** Swap the two inputs and count the same blocks.
+
+*True by definition.* MSC 81T40 (Two-dimensional field theories, conformal field theories, etc. in quantum mechanics), 17B69. arXiv math.QA, math-ph. Level 4: research.
+
+**Definition.** On a sphere mark 0, 1 and ∞ with simple modules A, B and the graded dual of C. Blocks are linear functionals on their tensor product that vanish on the action of global meromorphic fields regular outside the marks. Define the fusion coefficient N(A,B,C) as the dimension of this space. The operator definition counts independent series that intertwine the field actions and combine A and B into C.
+
+**Problem.** Assume a simple complex vertex operator algebra with nonnegative integral weights, a one-dimensional vacuum space at weight zero, and an invariant nondegenerate pairing. Assume every module graded compatibly by nonnegative integers splits into simples and products of mode −2 span a subspace of finite codimension. Then N(A,B,C) equals N(B,A,C).
+
+**How the definition helps.** In our own argument, exchanging the input points gives an isomorphism of the two block spaces. The map z ↦ 1 − z performs this exchange and fixes infinity. Transporting the local coordinates preserves dimension. The comparison theorem identifies these dimensions with the operator counts.
+
+**Paper or page:** [Applications of the factorization theorem of conformal blocks to vertex operator algebras](https://arxiv.org/abs/2508.01294v1), [Applications of the factorization theorem of conformal blocks to vertex operator algebras](https://arxiv.org/abs/2508.01294v1). It says: “The multiplication on Fu(V) is commutative.”
+
+**Sources:**
+
+- [Xu Gao, Jianqi Liu, Applications of the factorization theorem of conformal blocks to vertex operator algebras](https://arxiv.org/abs/2508.01294v1)
+
 ### Trivial turns let conformal nets descend
 
 **Remember:** A scalar full turn makes the lift invisible.
@@ -81257,6 +88090,96 @@ a parallelogram.”
 
 - [Wightman fields for two-dimensional conformal field theories with pointed representation category](https://arxiv.org/abs/2301.12310v3)
 
+### Vacuum insertion gives the fusion unit
+
+**Remember:** Erase a vacuum point to read off the fusion unit.
+
+*True by definition.* MSC 81T40 (Two-dimensional field theories, conformal field theories, etc. in quantum mechanics), 17B69. arXiv math.QA, math-ph. Level 4: research.
+
+**Definition.** On a sphere mark 0, 1 and ∞ with simple modules A, B and the graded dual of C. Blocks are linear functionals on their tensor product that vanish on the action of global meromorphic fields regular outside the marks. Define the fusion coefficient N(A,B,C) as the dimension of this space. The operator definition counts independent series that intertwine the field actions and combine A and B into C.
+
+**Problem.** Assume a simple complex vertex operator algebra with nonnegative integral weights, a one-dimensional vacuum space at weight zero, and an invariant nondegenerate pairing. Assume every module graded compatibly by nonnegative integers splits into simples and products of mode −2 span a subspace of finite codimension. The algebra itself, as a module, is the identity for fusion.
+
+**How the definition helps.** Removing the vacuum point turns the fusion coefficient into the dimension of a space of module maps. The vacuum insertion theorem permits this removal. In our own argument, the remaining two-point blocks are invariant pairings between the input and the graded dual of the output. These are module maps from input to output. For simple modules the dimension is one if they are isomorphic and zero otherwise. The same calculation works with either input occupied by the vacuum.
+
+**Paper or page:** [Applications of the factorization theorem of conformal blocks to vertex operator algebras](https://arxiv.org/abs/2508.01294v1), [Applications of the factorization theorem of conformal blocks to vertex operator algebras](https://arxiv.org/abs/2508.01294v1). It says: “The multiplication on Fu(V) has an identity.”
+
+**Sources:**
+
+- [Xu Gao, Jianqi Liu, Applications of the factorization theorem of conformal blocks to vertex operator algebras](https://arxiv.org/abs/2508.01294v1)
+
+### Boundary lines make flat restrictions isotropic
+
+**Remember:** A parallel action vector makes the pulled-back curvature vanish.
+
+*True by definition.* MSC 81T45 (Topological field theories in quantum mechanics), 81T13. arXiv math-ph, math.DG. Level 4: research.
+
+**Definition.** Fix SU(2) and level one, the normalization given by the second Chern class. The exponentiated Chern–Simons action on a compact oriented three-manifold takes values in a complex line attached to its boundary connection. These lines carry a connection whose curvature is a nonzero multiple of the boundary symplectic form.
+
+**Problem.** Restrict flat connections to the boundary, identifying connections related by changes of frame. On the smooth irreducible loci of both spaces, restriction pulls the boundary symplectic form back to zero. Here irreducible means that only central changes of frame preserve the connection.
+
+**How the definition helps.** The line-valued action is a nonzero parallel section over flat connections, so its pulled-back line curvature is zero. Our own comparison puts the work in the Chern–Simons variation formula and the identification of the line curvature with the boundary symplectic form.
+
+**Paper or page:** [Lie groups and Chern-Simons Theory](https://arxiv.org/abs/2207.11062). It says: “and therefore the induced symplectic form rₓ\* ω vanishes.”
+
+**Sources:**
+
+- [Daniel S. Freed, Classical Chern-Simons Theory, 1](https://doi.org/10.1006/aima.1995.1039)
+
+### Cardy makes annulus cuts agree
+
+**Remember:** An annulus gives the same map whether you cut across it or around it.
+
+*True by definition.* MSC 81T45 (Topological field theories in quantum mechanics). arXiv math.QA. Level 4: research.
+
+**Definition.** For one boundary label, take finite-dimensional unital complex algebras A for intervals and C for circles, with C commutative. Each has a trace ε giving a nondegenerate symmetric pairing ε(ab). A unital map i from C into the center of A has adjoint j for these pairings. The Cardy condition requires i(j(a)) = ∑ᵢ eⁱaeᵢ for every a, using trace-dual bases of A.
+
+**Problem.** The two decompositions of an annulus from an interval to an interval give the same operator on A.
+
+**How the definition helps.** The Cardy condition replaces a comparison of two surface decompositions with one algebraic axiom. Cutting along a circle gives i(j(a)). The interval cut gives the dual-basis sum. The classification theorem proves that these and the other sewing relations suffice.
+
+**Paper or page:** [Frobenius--Schur indicators for twisted Real representation theory and two dimensional unoriented topological field theory](https://arxiv.org/abs/2310.03566v1). It says: “The oriented Cardy condition”
+
+**Sources:**
+
+- [Frobenius--Schur indicators for twisted Real representation theory and two dimensional unoriented topological field theory](https://arxiv.org/abs/2310.03566v1)
+
+### Crosscap squares obstruct unoriented extensions
+
+**Remember:** Two crosscaps must equal the handle with one reversed circle.
+
+*Rules out counterexamples.* MSC 81T45 (Topological field theories in quantum mechanics). arXiv math.QA. Level 4: research.
+
+**Definition.** Start with a finite-dimensional commutative unital complex algebra with a trace ε such that ε(ab) pairs elements nondegenerately. An unoriented Frobenius algebra adds a trace-preserving algebra involution p and the Möbius band state Q. It requires p(Qa) = Qa for every a and Q² = ∑ᵢ p(aⁱ)aᵢ for trace-dual bases.
+
+**Problem.** The oriented theory of ℂ\[x\] modulo x² with trace ε(1) = 0 and ε(x) = 1 has no unoriented extension.
+
+**How the definition helps.** The square condition tests whether the Möbius band can receive a consistent value. In our own calculation, p preserves the nilpotent line ℂx and its trace, so p(x) = x. The bases (1,x) and (x,1) are dual, giving Q² = 2x. Any square with zero constant term is zero here. The classification of unoriented surface theories supplies the square condition.
+
+**Paper or page:** [Frobenius--Schur indicators for twisted Real representation theory and two dimensional unoriented topological field theory](https://arxiv.org/abs/2310.03566v1). It says: “the equality Q² = ∑ᵢ p(aⁱ) aᵢ holds.”
+
+**Sources:**
+
+- [Frobenius--Schur indicators for twisted Real representation theory and two dimensional unoriented topological field theory](https://arxiv.org/abs/2310.03566v1)
+
+### Dual lines glue Chern–Simons actions
+
+**Remember:** Opposite sides of a cut supply dual lines.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 81T45 (Topological field theories in quantum mechanics), 81T13. arXiv math-ph, math.DG. Level 4: research.
+
+**Definition.** Fix SU(2) and level one, the normalization given by the second Chern class. On a compact oriented three-manifold with boundary, the exponentiated Chern–Simons action is a vector in a complex line determined by the boundary connection. Reversing the boundary orientation gives the dual line.
+
+**Problem.** Cut a closed oriented three-manifold along a separating closed oriented surface and restrict a smooth connection to both pieces. Pairing their two action vectors gives the exponentiated action on the closed manifold.
+
+**How the definition helps.** In our own calculation, the dual lines supply a pairing independent of a boundary frame. Choose the same frame on both sides. The two integrals add under gluing, so their exponentials multiply. Freed’s boundary transformation law shows that changing the frame produces inverse factors on the two sides.
+
+**nLab:** [Chern-Simons theory](https://ncatlab.org/nlab/show/Chern-Simons+theory). It says: “take advantage of the higher gluing laws in order to compute geometric quantities.”
+
+**Sources:**
+
+- [Daniel S. Freed, Classical Chern-Simons Theory, 1](https://doi.org/10.1006/aima.1995.1039)
+
 ### Spin-statistics for topological field theories follows from a sign-twisted duality structure
 
 **Remember:** Put the fermion sign into the rule for duals and adjoints.
@@ -81274,6 +88197,276 @@ a parallelogram.”
 **Sources:**
 
 - [Luuk Stehouwer, The spin-statistics theorem for topological quantum field theories, arXiv:2403.02282v2 (2024)](https://arxiv.org/abs/2403.02282v2)
+
+### The pentagon governs tetrahedron moves
+
+**Remember:** The two local triangulations are two routes around the associator pentagon.
+
+*Makes the theorem clean to state or prove.* MSC 81T45 (Topological field theories in quantum mechanics). arXiv math.QA. Level 4: research.
+
+**Definition.** Use a spherical fusion category over ℂ, a category with finitely many simple labels, duals and equal left and right traces. The associator changes brackets in a triple tensor product. Its matrix coefficients, with the trace pairings on triangle spaces, supply the tetrahedron weights.
+
+**Problem.** Fix the labels and face data on the boundary of a bipyramid in the Turaev–Viro state sum. The two-tetrahedron contraction equals the three-tetrahedron contraction summed over the new edge label with its quantum dimension.
+
+**How the definition helps.** Choosing associator coefficients as weights expresses the local move through the pentagon identity. That identity equates the two routes for rebracketing four factors. Our own description reads the intermediate labels as the indices summed in matrix multiplication. The proof identifies the trace pairings and dimension factors with the normalized contractions. Full triangulation invariance also needs the move introducing a vertex.
+
+**nLab:** [Turaev-Viro model](https://ncatlab.org/nlab/show/Turaev-Viro+model). It says: “is a 3d TQFT construction induced from a spherical category/fusion category C.”
+
+**Sources:**
+
+- [Barrett and Westbury, Invariants of piecewise-linear 3-manifolds](https://doi.org/10.1090/S0002-9947-96-01660-1)
+
+### Unitary surface theories exclude nilpotents
+
+**Remember:** A normal nilpotent multiplication operator must vanish.
+
+*Rules out counterexamples.* MSC 81T45 (Topological field theories in quantum mechanics). arXiv math.QA. Level 4: research.
+
+**Definition.** A unitary oriented surface theory assigns finite-dimensional complex Hilbert spaces to closed curves and linear maps to oriented surfaces between them. Reversing a surface gives the Hilbert adjoint map. A pair of pants with two inputs defines multiplication on the circle space.
+
+**Problem.** The circle algebra of a unitary oriented surface theory has no nonzero nilpotent element, meaning an element whose power vanishes.
+
+**How the definition helps.** Unitarity makes multiplication by any element commute with its adjoint. Reflecting the pair of pants identifies that adjoint with multiplication by the reflected element, and the circle product is commutative. In our own proof, multiplication by a nilpotent is therefore both normal and nilpotent. The spectral theorem makes this operator zero. Applying it to the unit gives the original element.
+
+**nLab:** [unitary functorial field theory](https://ncatlab.org/nlab/show/unitary+functorial+field+theory). It says: “is called "unitary" if it is a dagger functor.”
+
+**Sources:**
+
+- [Zhu, The Hermitian axiom on two-dimensional topological quantum field theories](https://doi.org/10.1063/5.0121440)
+
+### One generator tests global anomalies
+
+**Remember:** A character of a cyclic bordism group is fixed by one value.
+
+*Makes the theorem clean to state or prove.* MSC 81T50 (Anomalies in quantum field theory), 57R56. arXiv math-ph. Level 4: research.
+
+**Definition.** Let G be the quotient of Spin × SU(8) by the diagonal subgroup generated by (−1,−I). A G-structure lifts the oriented frame bundle together with its gauge data to G. Two closed G-manifolds are bordant when their oriented difference bounds a compact G-manifold. A bordism character sends disjoint unions to products of unit complex numbers.
+
+**Problem.** Give the Wu manifold SU(3)/SO(3) the G-structure constructed by Debray and Yu. A character of five-dimensional G-bordism is trivial exactly when its value on this manifold is one.
+
+**How the definition helps.** A character on a cyclic group is determined by its value on one generator. Debray and Yu compute the bordism group as ℤ/2 and identify its generator. They then evaluate the anomaly of four-dimensional supergravity on that generator.
+
+**Paper or page:** [What bordism-theoretic anomaly cancellation can do for U](https://arxiv.org/abs/2210.04911v2). It says: “In this group, the anomaly field theory of 4d 𝒩 = 8 supergravity is trivial.”
+
+**Sources:**
+
+- [Arun Debray and Matthew Yu, What Bordism-Theoretic Anomaly Cancellation Can Do for U (2024)](https://link.springer.com/article/10.1007/s00220-024-04937-4)
+
+### Boundary obstructions live in degree two
+
+**Remember:** The square of a degree-one boundary charge has degree two.
+
+*Makes the theorem clean to state or prove.* MSC 81T70 (Quantization in field theory; cohomological methods), 81T50. arXiv math-ph. Level 4: research.
+
+**Definition.** In a Batalin–Vilkovisky bulk theory with compatible Hamiltonian boundary data, assume the boundary symplectic form is exact and has degree zero. The boundary charge S has degree one and satisfies {S,S} = 0 for the induced Poisson bracket. Set Q(F) = {S,F} on local boundary functionals, integrals depending on finitely many derivatives. Degree-two cohomology consists of degree-two functionals killed by Q, modulo Q applied to degree-one functionals.
+
+**Problem.** At each order in perturbative quantization of this boundary charge, the obstruction defines a degree-two local cohomology class. The charge extends through that order exactly when this class vanishes.
+
+**How the definition helps.** Passing to cohomology identifies errors that differ by an allowed local correction to the charge (our own). The square of the quantum charge has degree two, and the graded Jacobi identity makes its first uncancelled coefficient closed (our own). The boundary quantization theorem supplies the local obstruction complex (our own).
+
+**Paper or page:** [On Quantum Obstruction Spaces and Higher Codimension Gauge Theories](https://arxiv.org/abs/2008.08477v3). It says: “The obstruction space for quantization on the underlying boundary BFV manifold”
+
+**Sources:**
+
+- [Nima Moshayedi, On Quantum Obstruction Spaces and Higher Codimension Gauge Theories](https://arxiv.org/abs/2008.08477v3)
+
+### BRST cohomology detects quantum obstructions
+
+**Remember:** A closed anomaly is removable when its class vanishes.
+
+*Makes the theorem clean to state or prove.* MSC 81T70 (Quantization in field theory; cohomological methods), 81T50. arXiv math-ph. Level 4: research.
+
+**Definition.** In perturbative Batalin–Vilkovisky quantization, one corrects a classical action S by a formal power series. Its odd Poisson bracket defines the degree-one differential Q(F) = {S,F} on local functionals, integrals of expressions involving finitely many derivatives. Degree-one BRST cohomology consists of degree-one functionals killed by Q, modulo Q applied to degree-zero local functionals.
+
+**Problem.** In perturbative Batalin–Vilkovisky quantization, an order-by-order local obstruction lies in degree-one BRST cohomology. A zero class lets a local counterterm remove the obstruction at that order.
+
+**How the definition helps.** A counterterm changes the violation by a boundary, so its cohomology class is the test (our own). The work goes into proving the consistency equation that makes the violation closed and proving its locality (our own).
+
+**Paper or page:** [On Quantum Obstruction Spaces and Higher Codimension Gauge Theories](https://arxiv.org/abs/2008.08477v3). It says: “The obstruction space for a BV theory to be quantizable is given by”
+
+**Sources:**
+
+- [Nima Moshayedi, On Quantum Obstruction Spaces and Higher Codimension Gauge Theories](https://arxiv.org/abs/2008.08477v3)
+
+### Closed half-densities permit gauge changes
+
+**Remember:** Moving the integration surface changes a closed integrand by an exact one.
+
+*Makes the theorem clean to state or prove.* MSC 81T70 (Quantization in field theory; cohomological methods). arXiv math-ph. Level 4: research.
+
+**Definition.** A half-density transforms by the square root of the volume change and gives an integration density on each oriented Lagrangian. A Lagrangian has tangent spaces equal to their own orthogonal complements for the odd symplectic form. Call the half-density closed when the canonical operator Δ, the sum of mixed derivatives in standard paired coordinates, kills it.
+
+**Problem.** The integral of a closed half-density stays constant along a smooth Hamiltonian deformation of a compact oriented Lagrangian without boundary. A Hamiltonian deformation moves the surface by the vector field of a generating function.
+
+**How the definition helps.** Closure makes the derivative of the integral an integral of a Δ-exact half-density, which vanishes by the Batalin–Vilkovisky Stokes theorem (our own). The calculation uses the identity expressing Hamiltonian differentiation as the graded commutator of Δ with multiplication by the generator, up to sign (our own).
+
+**Paper or page:** [The canonical BV Laplacian on half-densities](https://arxiv.org/abs/2212.00451v2). It says: “If Δσ = 0 and ℒₜ is a smooth family of Lagrangian submanifolds of ℳ”
+
+**Sources:**
+
+- [Alberto S. Cattaneo, The canonical BV Laplacian on half-densities](https://arxiv.org/abs/2212.00451v2)
+
+### Cumulants make derived morphisms compose
+
+**Remember:** Cumulant orders add when you compose.
+
+*True by definition.* MSC 81T70 (Quantization in field theory; cohomological methods). arXiv math.QA, math-ph. Level 4: research.
+
+**Definition.** Work over a characteristic-zero field with graded commutative algebras carrying derived Batalin–Vilkovisky differentials of the same degree convention. A morphism preserves the unit, is linear over formal series in t, and commutes with the differentials. Its cumulants are determined recursively by expanding the image of each product over set partitions into signed products of block cumulants. For n inputs, the definition requires divisibility by t to the power n − 1.
+
+**Problem.** The composite of two derived Batalin–Vilkovisky morphisms is again such a morphism.
+
+**How the definition helps.** The cumulant definition turns composition into addition of exponents, avoiding separate product identities for each number of inputs (our own). For a partition into k blocks, the inner exponents total n − k and the outer exponent is k − 1 (our own). The partition formula for the cumulants of a composite supplies the substantive identity (our own).
+
+**Paper or page:** [Cumulants, Koszul brackets and homological perturbation theory for commutative BV∞ and IBL∞ algebras](https://arxiv.org/abs/2012.14812v1). It says: “the composition gf: A\[\[t\]\] → C\[\[t\]\] is a morphism of derived BV algebras.”
+
+**Sources:**
+
+- [Ruggero Bandiera, Cumulants, Koszul brackets and homological perturbation theory for commutative BV∞ and IBL∞ algebras](https://arxiv.org/abs/2012.14812v1)
+
+### Disk insertions give commutative multiplication
+
+**Remember:** Two disks multiply, and three disks settle associativity.
+
+*Makes the theorem clean to state or prove.* MSC 81T70 (Quantization in field theory; cohomological methods). arXiv math.QA, math-ph. Level 4: research.
+
+**Definition.** A unital prefactorization algebra F assigns vector spaces to opens and multilinear maps to disjoint insertions, including the empty insertion. Nested insertions compose, and permuting the inputs permutes their labels. Local constancy makes inclusion maps between disks invertible, counting the whole plane as a disk. To multiply in F(ℂ), transport two inputs to disjoint disks and insert them into the plane.
+
+**Problem.** The plane value of a locally constant prefactorization algebra in complex vector spaces is a unital commutative algebra.
+
+**How the definition helps.** The two bracketings reduce to the same three-disk insertion (our own). Exchanging the two disks along a path leaves the operation unchanged, so the product is commutative (our own). The empty insertion gives the unit (our own). The work goes into using local constancy to show that disk placements give the same operation (our own).
+
+**Paper or page:** [A note on vertex algebras and Costello-Gwilliam factorization algebras](https://arxiv.org/abs/2408.00412v2). It says: “the linear space F(ℂ) has the structure of commutative algebra as follows”
+
+**Sources:**
+
+- [Yusuke Nishinaka, A note on vertex algebras and Costello-Gwilliam factorization algebras](https://arxiv.org/abs/2408.00412v2)
+
+### Exact half-densities integrate to zero
+
+**Remember:** An exact half-density restricts to a total derivative.
+
+*Makes the theorem clean to state or prove.* MSC 81T70 (Quantization in field theory; cohomological methods). arXiv math-ph. Level 4: research.
+
+**Definition.** An odd symplectic form pairs even and odd tangent directions nondegenerately. A Lagrangian is a submanifold whose tangent spaces equal their own orthogonal complements for this form. A half-density transforms by the square root of the volume change and induces an ordinary integration density on each Lagrangian. An exact half-density has the form Δτ, where Δ sums mixed even and odd derivatives in standard paired coordinates.
+
+**Problem.** Let L be an oriented Lagrangian without boundary in an odd symplectic manifold. If τ has compact support meeting L in a compact set, the integral of Δτ over L vanishes.
+
+**How the definition helps.** The induced density makes the integral meaningful on each Lagrangian without choosing an ambient volume (our own). In coordinates adapted to L, integration by parts makes the integral of each compactly supported mixed derivative vanish (our own). Passing from local integrals to the intrinsic statement gives the Batalin–Vilkovisky Stokes theorem (our own).
+
+**Paper or page:** [The canonical BV Laplacian on half-densities](https://arxiv.org/abs/2212.00451v2). It says: “If σ = Δτ for some τ, then ∫ℒ σ = 0”
+
+**Sources:**
+
+- [Alberto S. Cattaneo, The canonical BV Laplacian on half-densities](https://arxiv.org/abs/2212.00451v2)
+
+### Exact shifts preserve master actions
+
+**Remember:** An exact change of a closed weight stays closed.
+
+*True by definition.* MSC 81T70 (Quantization in field theory; cohomological methods). arXiv math-ph. Level 4: research.
+
+**Definition.** Write W = exp(iS/ħ) for the invertible weight of an even action S. The quantum master equation says ΔW = 0, where Δ reverses parity and satisfies Δ² = 0. With an overall scalar absorbed into the generator, define an exact shift by δS = W⁻¹Δ(FW) for odd F.
+
+**Problem.** If ΔW = 0, replacing S by S + εδS preserves the quantum master equation modulo ε².
+
+**How the definition helps.** Using the weight turns the nonlinear variation of the action into the boundary δW = (i/ħ)Δ(FW) (our own). Applying Δ again gives zero (our own). Constructing Δ on the space of functionals and proving Δ² = 0 require separate work (our own).
+
+**Paper or page:** [The geometry of variations in Batalin-Vilkovisky formalism](https://arxiv.org/abs/1312.1262v1). It says: “the infinitesimal shift of the functional”
+
+**Sources:**
+
+- [Arthemy V. Kiselev, The geometry of variations in Batalin-Vilkovisky formalism](https://arxiv.org/abs/1312.1262v1)
+
+### Factorization algebras localize quantum defects
+
+**Remember:** Change the gluing at the defect, not the bulk away from it.
+
+*Makes the theorem clean to state or prove.* MSC 81T70 (Quantization in field theory; cohomological methods). arXiv math-ph. Level 4: research.
+
+**Definition.** A factorization algebra combines observables from disjoint opens and glues them over covers containing each finite subset in one member. A defect along D in M is another such algebra together with an isomorphism to the original algebra on M ∖ D.
+
+**Problem.** Consider a classical Batalin–Vilkovisky theory that locally uses differential forms with the exterior derivative in the directions normal to D. If its local boundary condition admits Batalin–Vilkovisky quantization, the resulting quantum observables form a defect along D.
+
+**How the definition helps.** The definition packages agreement of all observable operations away from D into one restriction isomorphism (our own). Constructing the algebra from a quantized boundary condition and proving that its observables glue are the substantive steps (our own).
+
+**Paper or page:** [Defects via Factorization Algebras](https://arxiv.org/abs/2208.01730v1). It says: “the quantum bulk-boundary system determines a factorization algebra”
+
+**Sources:**
+
+- [Ivan Contreras, Chris Elliott, Owen Gwilliam, Defects via Factorization Algebras](https://arxiv.org/abs/2208.01730v1)
+
+### Fiber integrals preserve master solutions
+
+**Remember:** Integrate a closed weight and get a closed weight.
+
+*True by definition.* MSC 81T70 (Quantization in field theory; cohomological methods). arXiv math-ph. Level 4: research.
+
+**Definition.** A half-density transforms by the square root of the volume change. On an odd symplectic space, the canonical operator Δ sums mixed even and odd derivatives in standard paired coordinates. The linear master equation for a half-density σ is Δσ = 0. On a product X × Y, integrate σ along an oriented Lagrangian L in Y, whose tangent spaces equal their symplectic orthogonal complements.
+
+**Problem.** Let L be compact and without boundary. Integrating a smooth solution over L gives a half-density on X that solves the linear master equation there.
+
+**How the definition helps.** Writing the equation for the weight turns preservation of solutions into commutation with integration (our own). The product operator splits into the operators on X and Y (our own). The first passes through the integral, and the Batalin–Vilkovisky Stokes theorem kills the integral of the second (our own).
+
+**Paper or page:** [BV Quantization](https://arxiv.org/abs/2307.07761v1). It says: “The BV fiber integral descends to a map”
+
+**Sources:**
+
+- [Alberto S. Cattaneo, Pavel Mnev, Michele Schiavina, BV Quantization](https://arxiv.org/abs/2307.07761v1)
+
+### Finite subsets determine factorization gluing
+
+**Remember:** Glue where whole finite configurations fit.
+
+*Rules out counterexamples.* MSC 81T70 (Quantization in field theory; cohomological methods). arXiv math-ph. Level 4: research.
+
+**Definition.** A Weiss cover of U contains each finite subset of U in a single member. A vector-space factorization algebra F combines inputs from disjoint opens and glues its vector spaces across Weiss covers. Gluing means taking the direct sum of the cover values and identifying images of vectors from pairwise overlaps.
+
+**Problem.** Let B be an open basis whose members inside each open U form a Weiss cover of U. The canonical map from their colimit to F(U) is an isomorphism. This colimit identifies vectors with their images under inclusions between basis members.
+
+**How the definition helps.** The basis elements form a cover in the topology used to define the algebra (our own). The cosheaf basis theorem computes the colimit from these elements (our own). The cover condition excludes a cover of two disjoint intervals by the intervals themselves (our own). That cover misses configurations with one point in each interval (our own).
+
+**Paper or page:** [A note on vertex algebras and Costello-Gwilliam factorization algebras](https://arxiv.org/abs/2408.00412v2). It says: “the family B(U) is a Weiss cover of U.”
+
+**Sources:**
+
+- [Yusuke Nishinaka, A note on vertex algebras and Costello-Gwilliam factorization algebras](https://arxiv.org/abs/2408.00412v2)
+
+### Half-densities give a square-zero Laplacian
+
+**Remember:** Odd derivatives anticommute, so their mixed sum squares to zero.
+
+*Rules out counterexamples.* MSC 81T70 (Quantization in field theory; cohomological methods). arXiv math-ph. Level 4: research.
+
+**Definition.** On a space with paired even and odd coordinates, a half-density transforms by the square root of the volume change. An odd symplectic form admits local coordinates pairing each even xᵢ with an odd θᵢ in the standard form. In these coordinates Δ acts on the half-density coefficient by summing the mixed derivatives in xᵢ and θᵢ.
+
+**Problem.** The canonical Batalin–Vilkovisky operator squares to zero on half-densities.
+
+**How the definition helps.** Half-densities give the same mixed-derivative formula in every standard chart, with no choice of volume (our own). Odd partial derivatives anticommute and square to zero, hence Δ² = 0 (our own). Coordinate independence is the substantive theorem. On functions, choosing volume exp(x₁θ₁θ₂) times standard volume gives a different operator via half the divergence of Hamiltonian vector fields (our own). Its square is a nonzero multiple of differentiation in x₂ (our own).
+
+**Paper or page:** [The canonical BV Laplacian on half-densities](https://arxiv.org/abs/2212.00451v2). It says: “There is a canonical BV operator Δ acting on half-densities”
+
+**Sources:**
+
+- [Alberto S. Cattaneo, The canonical BV Laplacian on half-densities](https://arxiv.org/abs/2212.00451v2)
+
+### Logarithms leave only connected graphs
+
+**Remember:** Take the logarithm to discard disconnected unions.
+
+*True by definition.* MSC 81T70 (Quantization in field theory; cohomological methods). arXiv math.QA, math-ph. Level 4: research.
+
+**Definition.** Start with a finite-dimensional Batalin–Vilkovisky complex and a contraction onto its homology that permits Gaussian integration over the complementary variables. A contraction gives projection and inclusion maps inverse up to chain homotopy. For a stable quantum master interaction m, define the transferred interaction as ħ log ⟨exp(m/ħ)⟩, where brackets denote normalized formal Gaussian integration. Stability requires 2g − 2 + n &gt; 0 for each vertex with genus g and n incident ends.
+
+**Problem.** The transferred interaction equals the sum over connected stable graphs G of the Gaussian contraction for G divided by the order of its automorphism group.
+
+**How the definition helps.** Taking the logarithm converts the expansion over all graphs into its connected part (our own). Pairing Gaussian variables gives edges, and the contraction factors multiply across disjoint components (our own). The exponential formula for unordered components accounts for their permutations and leaves each connected graph weighted by its own symmetry factor (our own). The formal integration theorem supplies the individual graph weights (our own).
+
+**Paper or page:** [Homotopy transfer for L-infinity structures and the BV-formalism](https://arxiv.org/abs/2408.12461v1). It says: “the combinatorial sum over connected stable graphs”
+
+**Sources:**
+
+- [James Maunder, Homotopy transfer for L-infinity structures and the BV-formalism](https://arxiv.org/abs/2408.12461v1)
 
 ### The master action gives a differential
 
