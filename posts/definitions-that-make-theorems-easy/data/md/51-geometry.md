@@ -1,3 +1,35 @@
+### Inversion preserves unsigned angles
+
+**Remember:** Inversion reflects and scales tangent directions without changing the size of their angles.
+
+*True by definition.* MSC 51B10 (Möbius geometries). arXiv math.MG. Level 1: early undergraduate.
+
+**Definition.** In the Euclidean plane, inversion in the unit circle sends each nonzero vector x to x/‖x‖². Geometrically, its image lies on the same ray at the reciprocal distance from the origin.
+
+**Problem.** When two differentiable plane curves meet away from the origin with nonzero velocities, inversion preserves their unsigned angle and reverses their oriented angle.
+
+**How the definition helps.** Our own calculation finds that the derivative of inversion is a positive stretch times a reflection. Our own calculation differentiates the formula to see that it negates the radial component and keeps the perpendicular component before scaling. Our own comparison shifts the work from a geometric angle chase to checking the derivative and matching the ray definition.
+
+**Wikipedia:** [Inversive geometry](https://en.wikipedia.org/wiki/Inversive_geometry). It says: “The circle inversion map is anticonformal, which means that at every point it preserves angles and reverses orientation”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Cyclic order fixes Ptolemy’s diagonals
+
+**Remember:** Walk around the circle before you name the diagonals.
+
+*Rules out counterexamples.* MSC 51M04 (Elementary problems in Euclidean geometries). arXiv math.MG. Level 1: early undergraduate.
+
+**Definition.** A cyclic quadrilateral has four distinct vertices on a circle. Name them in order around the circle so that AC and BD join opposite vertices.
+
+**Problem.** For cyclic order A, B, C, D, the lengths obey AC × BD = AB × CD + BC × DA.
+
+**How the definition helps.** Cyclic order tells us which product belongs alone in Ptolemy’s equality. In our own counterexample, put A and B at the lower corners of a unit square. Put C directly above A and D directly above B. Then AC × BD is 1, but AB × CD + BC × DA is 3. The usual proof for vertices in cyclic order uses similar triangles.
+
+**Paper or page:** [Some Polynomial Conditions of Cyclic Quadrilaterals, Tilted Kites and Other Quadrilaterals](https://arxiv.org/abs/2302.10071v1). It says: “Let A, B, C, D be four points lying in counterclockwise or clockwise order on a circle, then P = 0.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Defining angles by the dot product makes the law of cosines algebra
 
 **Remember:** Expand the square of a difference, and the cosine term appears.
@@ -13,6 +45,24 @@
 **Wikipedia:** [Dot product](https://en.wikipedia.org/wiki/Dot_product), [Law of cosines](https://en.wikipedia.org/wiki/Law_of_cosines). It says: “In such a presentation, the notions of length and angle are defined by means of the dot product.”
 
 **Paper or page:** [Law of Cosines](https://proofwiki.org/wiki/Law_of_Cosines). It says: “Then: c² = a² + b² − 2 a b cos C”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Equiangularity makes regular polygons cyclic
+
+**Remember:** Equal edges and equal turns close on a circle.
+
+*Rules out counterexamples.* MSC 51M04 (Elementary problems in Euclidean geometries). arXiv math.MG. Level 1: early undergraduate.
+
+**Definition.** Define a regular convex polygon to have equal sides and equal angles. Equal side lengths alone define an equilateral polygon.
+
+**Problem.** The vertices of a regular convex polygon lie on a single circle.
+
+**How the definition helps.** Equal angles give equal turns, so one rotation carries every edge to the next in our own proof. Choose the rotation through the exterior angle that takes the first vertex to the second. Equal turns give the next edge direction, and equal lengths give its endpoint. Repeating this argument puts every vertex at the same distance from the rotation center. A rhombus with opposite angles of 60° has equal sides but cannot be cyclic because those angles do not sum to 180°.
+
+**Wikipedia:** [Regular polygon](https://en.wikipedia.org/wiki/Regular_polygon). It says: “All vertices of a regular polygon lie on a common circle”
+
+**Paper or page:** [Regular Polygon is Cyclic](https://proofwiki.org/wiki/Regular_Polygon_is_Cyclic). It says: “Then P is a cyclic polygon.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -137,6 +187,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Vector sums fix Euler’s ratio
+
+**Remember:** The orthocenter is the vertex sum, and the centroid is its third.
+
+*True by definition.* MSC 51M04 (Elementary problems in Euclidean geometries). arXiv math.MG. Level 1: early undergraduate.
+
+**Definition.** Place the origin at the circumcenter, the point equally distant from the three vertices. Define the orthocenter by the sum of the three vertex vectors. Its usual definition uses the intersection of the three altitudes.
+
+**Problem.** In a nonequilateral triangle, the centroid is a third of the way from the circumcenter to the orthocenter.
+
+**How the definition helps.** In our own proof, the centroid is the vertex average, exactly one third of the vertex sum. To verify the orthocenter formula, call the vertex vectors a, b and c. The displacement from a to the sum is b + c. Its dot product with b − c vanishes because b and c have equal length. Thus the sum lies on the altitude from a, and the same argument works at the other vertices.
+
+**Paper or page:** [Position of Centroid on Euler Line](https://proofwiki.org/wiki/Position_of_Centroid_on_Euler_Line). It says: “OG : GH = 1 : 2”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Congruence by isometries preserves corresponding measurements
 
 **Remember:** A motion that keeps distances keeps everything built from distances.
@@ -203,6 +269,40 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Parallelogram diagonals share a midpoint
+
+**Remember:** Add half of each edge to reach the middle of either diagonal.
+
+*True by definition.* MSC 51N10 (Affine analytic geometry). arXiv math.MG. Level 1: early undergraduate.
+
+**Definition.** Start at a vertex p and take independent edge vectors u and v. The other vertices of the parallelogram are p + u, p + v, and p + u + v. The geometric definition asks for two pairs of parallel opposite sides.
+
+**Problem.** The diagonals of a parallelogram bisect each other. A quadrilateral whose diagonals bisect each other is a parallelogram.
+
+**How the definition helps.** Our own calculation gives the same sum for both pairs of diagonal endpoints, so their midpoints agree. Our own converse recovers the fourth vertex by rearranging that equality. Our own comparison moves the work into showing that the vector description is equivalent to the opposite-side condition.
+
+**Paper or page:** [Condition for Points in Complex Plane to form Parallelogram](https://proofwiki.org/wiki/Condition_for_Points_in_Complex_Plane_to_form_Parallelogram), [Quadrilateral with Bisecting Diagonals is Parallelogram](https://proofwiki.org/wiki/Quadrilateral_with_Bisecting_Diagonals_is_Parallelogram). It says: “Let the diagonals of ABCD bisect each other.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Positive weights locate triangle interiors
+
+**Remember:** Inside a triangle, all three vertex weights are positive.
+
+*True by definition.* MSC 51N10 (Affine analytic geometry). arXiv math.MG. Level 1: early undergraduate.
+
+**Definition.** For a nondegenerate triangle ABC, define the weight at A as the signed area of PBC divided by the signed area of ABC. Define the other two weights by cycling the letters. Signed area is positive for counterclockwise vertex order and negative for clockwise order.
+
+**Problem.** A point is strictly inside a nondegenerate triangle exactly when all three of its barycentric coordinates are positive.
+
+**How the definition helps.** In our own proof, a positive weight at A puts P on the same side of BC as A. The three weights therefore test the three open half-planes whose intersection is the triangle’s interior. To identify these ratios with the usual barycentric coordinates, observe that each ratio is an affine function of P. It equals one at its own vertex and zero at the others, so it returns the corresponding weight in a weighted average.
+
+**Wikipedia:** [Barycentric coordinate system](https://en.wikipedia.org/wiki/Barycentric_coordinate_system). It says: “they are all positive if and only if the point is strictly inside the simplex.”
+
+**Paper or page:** [Barycentric Coordinates of Point inside Triangle](https://proofwiki.org/wiki/Barycentric_Coordinates_of_Point_inside_Triangle). It says: “Let p be an arbitrary point inside T.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### A curved bisector is parabolic
 
 **Remember:** A radius shifts the tangent into a directrix.
@@ -220,6 +320,24 @@
 **Sources:**
 
 - [Sergiy Koshkin, Bisecting horn angles, Theorem 1](https://arxiv.org/abs/2206.09499v1)
+
+### Circle equations bound intersections
+
+**Remember:** Subtract two circle equations to get a line.
+
+*True by definition.* MSC 51N20 (Euclidean analytic geometry), 97G70. arXiv math.MG, math.HO. Level 1: early undergraduate.
+
+**Definition.** A circle consists of the points at a fixed positive distance from its center. In rectangular coordinates, define it instead by (x − a)² + (y − b)² = r², with center (a, b) and radius r.
+
+**Problem.** Two distinct circles in the Euclidean plane share at most two points.
+
+**How the definition helps.** The coordinate definition gives every circle the same quadratic terms, so subtracting two circle equations cancels them. In our own proof, distinct circles with the same center have different radii and cannot meet. Otherwise the difference gives a line containing all intersection points. Along that line, either circle equation becomes a quadratic in one variable, with at most two roots. The Pythagorean theorem identifies the coordinate definition with the distance definition.
+
+**Paper or page:** [An analysis of Euclid's geometrical foundations](https://arxiv.org/abs/2501.17406). It says: “Distinct circles have at most two points in common.”
+
+**Sources:**
+
+- [Peter M Johnson, An analysis of Euclid's geometrical foundations](https://arxiv.org/abs/2501.17406)
 
 ### Focal distances explain parabolic reflection
 
@@ -255,6 +373,40 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Orthonormal frames determine rigid motions
+
+**Remember:** Move the origin and carry both coordinate directions with it.
+
+*True by definition.* MSC 51N20 (Euclidean analytic geometry), 97G70. arXiv math.MG, math.HO. Level 1: early undergraduate.
+
+**Definition.** Use a point and two perpendicular unit vectors as a coordinate frame. Define a rigid motion as a map preserving distances, instead of relying on physical transport.
+
+**Problem.** Any match between two orthonormal frames in the Euclidean plane extends to a unique rigid motion.
+
+**How the definition helps.** A frame gives every point one coordinate pair, so matching frames supplies a candidate motion everywhere. In our own construction, send each point to the point with the same coordinates in the other frame. The distance formula shows this preserves distances. Any competing motion must agree on the origin and both unit endpoints. Distances to those three points determine both coordinates uniquely. This replaces physical superposition with the Pythagorean distance formula.
+
+**Paper or page:** [An analysis of Euclid's geometrical foundations](https://arxiv.org/abs/2501.17406). It says: “Any map as above between systems of axes (l, m) and (l′, m′) extends uniquely to a rigid motion of the plane.”
+
+**Sources:**
+
+- [Peter M Johnson, An analysis of Euclid's geometrical foundations](https://arxiv.org/abs/2501.17406)
+
+### Projection pairs rational points
+
+**Remember:** Project from the pole to trade rational pairs for rational numbers.
+
+*True by definition.* MSC 51N20 (Euclidean analytic geometry). arXiv math.MG. Level 1: early undergraduate.
+
+**Definition.** Project a point of the unit circle other than (0, 1) along a straight line through (0, 1) to the horizontal axis. Trigonometric coordinates instead use the sine and cosine of an angle.
+
+**Problem.** This projection gives a bijection between rational coordinate pairs on the circle other than (0, 1) and rational numbers on the axis.
+
+**How the definition helps.** In our own proof, projection uses only rational operations in both directions. The axis coordinate of (x, y) is t = x/(1 − y). Substituting x = t(1 − y) in the circle equation gives the known intersection y = 1. The other intersection has coordinates (2t/(1 + t²), (t² − 1)/(1 + t²)). The denominator is always positive. This gives rational coordinates directly, whereas angle coordinates require finding when sine and cosine are both rational.
+
+**Wikipedia:** [Stereographic projection](https://en.wikipedia.org/wiki/Stereographic_projection). It says: “The rational points on a circle correspond, under stereographic projection, to the rational points of the line.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Signed areas give the shoelace formula
 
 **Remember:** Interior edges cancel when you keep the signs.
@@ -284,6 +436,22 @@
 **How the definition helps.** Substituting the first formula into the second gives x + 2(q − p) (our own). The work moves to solving the midpoint equation for the image (our own).
 
 **Wikipedia:** [Point reflection](https://en.wikipedia.org/wiki/Point_reflection). It says: “The composition of two point reflections is a translation.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Unequal distance ratios give circles
+
+**Remember:** Ratio one gives a line, not an Apollonius circle.
+
+*Rules out counterexamples.* MSC 51N20 (Euclidean analytic geometry). arXiv math.MG. Level 1: early undergraduate.
+
+**Definition.** An Apollonius circle uses a fixed positive ratio other than one between distances to two distinct fixed points. The usual circle definition fixes a distance from a single center.
+
+**Problem.** In the Euclidean plane, take distinct points A and B and a positive number k ≠ 1. The points P satisfying PA = k·PB form a circle.
+
+**How the definition helps.** Our own calculation excludes ratio one so the squared-distance terms do not cancel. Our own counterexample at ratio one is the perpendicular bisector, not a circle. Our own calculation squares the equation and completes the square after dividing by 1 − k². Our own check gives radius k·AB divided by the absolute value of 1 − k², so the radius is positive.
+
+**Wikipedia:** [Circles of Apollonius](https://en.wikipedia.org/wiki/Circles_of_Apollonius). It says: “a circle could be defined as the set of points P that have a given ratio of distances”
 
 **Sources:** none listed. No primary source with a working link was found.
 

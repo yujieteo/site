@@ -32,6 +32,22 @@
 
 - [Euclid, Elements, Book VII, Proposition 2, translated by Thomas L. Heath.](https://mathcs.clarku.edu/~djoyce/java/elements/bookVII/propVII2.html)
 
+### Nonnegative integers make divisibility an order
+
+**Remember:** Keep one sign so mutual divisibility means equality.
+
+*Rules out counterexamples.* MSC 11A05 (Multiplicative structure; Euclidean algorithm; greatest common divisors). arXiv math.NT. Level 1: early undergraduate.
+
+**Definition.** Put the divisibility relation on the nonnegative integers, including zero. Say a divides b if b = ak for some nonnegative integer k.
+
+**Problem.** Divisibility is a partial order on the nonnegative integers.
+
+**How the definition helps.** Keeping one sign makes mutual divisibility force equality in our own proof. In our own counterexample on all integers, 2 and −2 divide each other but are not equal. The work moves to showing that two positive integer factors can multiply to 1 only if both are 1. In our own proof, zero divides only itself, so it causes no exception to antisymmetry.
+
+**nLab:** [greatest common divisor](https://ncatlab.org/nlab/show/greatest+common+divisor). It says: “The natural numbers 0, 1, 2, … are partially ordered by the divisibility relation”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Ordering by divisibility makes gcd(0,0) equal 0
 
 **Remember:** Everything divides 0, so 0 sits at the top of the divisibility order.
@@ -93,6 +109,54 @@
 **How the definition helps.** The divisibility definition turns compatibility with arithmetic into closure of multiples of m under addition and multiplication by integers. For sums, (a + c) − (b + d) = (a − b) + (c − d). For products, ac − bd = a(c − d) + d(a − b). So both differences are multiples of m (our own). With the remainder definition, one instead substitutes quotient-and-remainder expressions for the inputs and compares the output remainders. The division algorithm supplies the equivalence of the definitions.
 
 **Wikipedia:** [Modular arithmetic](https://en.wikipedia.org/wiki/Modular_arithmetic). It says: “Congruence modulo m is a congruence relation, meaning that it is an equivalence relation compatible with addition, subtraction, and multiplication.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Only coprime residues return to one
+
+**Remember:** Only residues you can undo can return to one.
+
+*Rules out counterexamples. Confidence: medium.* MSC 11A07 (Congruences; primitive roots; residue systems). arXiv math.NT. Level 1: early undergraduate.
+
+**Definition.** For a modulus m greater than 1, a unit is a residue with a multiplicative inverse. Equivalently, its representatives are coprime to m. Define the order of a unit as the least positive exponent that raises it to 1 modulo m.
+
+**Problem.** A residue has a positive power equal to 1 modulo m exactly when it is a unit.
+
+**How the definition helps.** An invertible residue lets us cancel equal powers until a positive power equals 1. In our own proof, two powers must agree because there are only finitely many residues. Conversely, if a positive power equals 1, the preceding power supplies an inverse. Bézout’s identity shows that a residue has an inverse exactly when it is coprime to the modulus. For example, the positive powers of 2 modulo 4 are 2 and then 0.
+
+**Paper or page:** [Integer has Multiplicative Order Modulo n iff Coprime to n](https://proofwiki.org/wiki/Integer_has_Multiplicative_Order_Modulo_n_iff_Coprime_to_n). It says: “Let the multiplicative order of a modulo n exist. Then: a ⟂ n that is, a and n are coprime.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Shared remainders make congruences compatible
+
+**Remember:** Check the modulus both congruences share.
+
+*Rules out counterexamples.* MSC 11A07 (Congruences; primitive roots; residue systems). arXiv math.NT. Level 1: early undergraduate.
+
+**Definition.** Two residue classes with different moduli are compatible if they agree modulo the greatest common divisor of those moduli. For coprime moduli this condition holds for every pair.
+
+**Problem.** Two congruences with positive moduli have one solution class modulo their least common multiple exactly when their residues are compatible.
+
+**How the definition helps.** Compatibility makes the difference of the two residues an integer combination of the moduli. In our own proof, Bézout’s identity supplies integers u and v with b − a = mu + nv. Then a + mu = b − nv solves both congruences. Any two solutions differ by a multiple of both moduli, hence by a multiple of their least common multiple. Without compatibility, even 0 modulo 4 and 1 modulo 6 have no common solution.
+
+**Wikipedia:** [Chinese remainder theorem](https://en.wikipedia.org/wiki/Chinese_remainder_theorem). It says: “has a solution if and only if gcd(nᵢ,nⱼ) divides aᵢ − aⱼ whenever i ≠ j.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Prime moduli limit square roots
+
+**Remember:** Over a prime modulus, two square roots agree up to sign.
+
+*Rules out counterexamples. Confidence: medium.* MSC 11A15 (Power residues, reciprocity). arXiv math.NT. Level 1: early undergraduate.
+
+**Definition.** Use the product test for a prime p greater than 1. If p divides a product, it divides at least one factor. The usual definition instead says that p is greater than 1 and has no positive divisors other than 1 and itself.
+
+**Problem.** For any prime p, a residue has at most two square roots modulo p.
+
+**How the definition helps.** The product test forces every root to agree with a fixed root up to sign. In our own proof, if x and y have the same square, then p divides (x − y)(x + y). Thus y equals x or −x modulo p. Modulo 8, the four residues 1, 3, 5, and 7 all square to 1. Euclid’s lemma gives the product test from the usual divisor definition of a prime.
+
+**Wikipedia:** [Vieta's formulas](https://en.wikipedia.org/wiki/Vieta%27s_formulas). It says: “the quadratic polynomial P(x) = x²−1 has four roots (1, 3, 5, and 7)”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -255,6 +319,22 @@
 - [Michel Dekking, Ad van Loon, On the representation of the natural numbers by powers of the golden mean, arXiv:2111.07544 (2021)](https://arxiv.org/abs/2111.07544)
 - [George Bergman, A Number System with an Irrational Base, Mathematics Magazine (1957)](https://doi.org/10.2307/3029218)
 
+### Place values give digit divisibility tests
+
+**Remember:** Replace the base by 1 or −1 before adding the digits.
+
+*True by definition. Confidence: medium.* MSC 11A63 (Radix representation; digital problems). arXiv math.NT. Level 1: early undergraduate.
+
+**Definition.** For an integer base b ≥ 2, read the digits of a nonnegative integer as polynomial coefficients. Start with the constant coefficient at the rightmost digit. Evaluating the polynomial at b gives the integer.
+
+**Problem.** A base-b integer is divisible by b − 1 exactly when its digit sum is. It is divisible by b + 1 exactly when its alternating digit sum is.
+
+**How the definition helps.** Place value turns a divisibility test on the whole digit string into a substitution in its polynomial. Our own generalization uses b ≡ 1 modulo b − 1 and b ≡ −1 modulo b + 1. Polynomial evaluation respects congruence, so those substitutions give the digit sum and the alternating digit sum. This replaces separate decimal tests with one calculation.
+
+**Paper or page:** [Divisibility by 11](https://proofwiki.org/wiki/Divisibility_by_11), [Divisibility by 9](https://proofwiki.org/wiki/Divisibility_by_9). It says: “a divisibility test for 11 is achieved by alternately adding and subtracting the digits and taking the result modulo 11.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Reading decimals as series makes 0.999… equal 1
 
 **Remember:** The series for 0.999… is geometric, and it sums to exactly 1.
@@ -268,6 +348,22 @@
 **How the definition helps.** The series definition turns 0.999… into a geometric series with ratio 1/10. Its sum is (9/10)/(1 − 1/10) = 1. A common proof instead multiplies 0.999… by 10 and subtracts 0.999… from the result. That proof needs a justification for arithmetic with infinite strings of digits (our own comparison). The series proof relies on the geometric sum formula, which uses the fact that (1/10)ⁿ tends to zero.
 
 **Wikipedia:** [0.999...](https://en.wikipedia.org/wiki/0.999...). It says: “A common development of decimal expansions is to define them as infinite series.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Remainder order gives decimal periods
+
+**Remember:** A remainder that returns starts the same digits again.
+
+*Makes the theorem clean to state or prove.* MSC 11A63 (Radix representation; digital problems). arXiv math.NT. Level 1: early undergraduate.
+
+**Definition.** In long division, use the current remainder to determine the next digit and remainder. Measure a repeating block by the first return to a remainder that is on the repeating part. The multiplicative order of 10 modulo m is the least positive exponent that makes its power congruent to 1.
+
+**Problem.** Take a reduced fraction a/q between 0 and 1. Remove all factors of 2 and 5 from q, and suppose the result m is greater than 1. The decimal period is the multiplicative order of 10 modulo m.
+
+**How the definition helps.** Multiplicative order measures exactly the first return of a remainder after the initial decimal digits. In our own proof, write q = dm, where d contains all factors of 2 and 5. Choose j so that d divides 10ʲ. After j digits the remainder is congruent to a × 10ʲ modulo q. It returns k digits later exactly when q divides a × 10ʲ × (10ᵏ − 1). Since a and 10 are coprime to m, this is equivalent to m dividing 10ᵏ − 1. Each remainder divided by q equals its decimal tail, so the least positive return time is the period.
+
+**Wikipedia:** [Repeating decimal](https://en.wikipedia.org/wiki/Repeating_decimal). It says: “the period equals r, where r is the multiplicative order of 10 mod n”
 
 **Sources:** none listed. No primary source with a working link was found.
 

@@ -16,6 +16,27 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Inclusive trapezoids simplify prismatoid faces
+
+**Remember:** A parallelogram still has a pair of parallel sides.
+
+*Makes the theorem clean to state or prove.* MSC 52B10 (Three-dimensional polytopes), 97G40. arXiv math.MG, math.HO. Level 1: early undergraduate.
+
+**Definition.** A trapezoid is a convex quadrilateral with at least one pair of parallel sides. The exclusive definition requires exactly one pair and keeps parallelograms separate.
+
+**Problem.** Suppose all vertices of a bounded, three-dimensional convex polyhedron lie in two parallel planes. Each polygonal face that lies in neither plane is a triangle or a trapezoid.
+
+**How the definition helps.** Including parallelograms among trapezoids lets one word cover all four-sided lateral faces. In our own proof, the plane of such a face cuts the two given planes in parallel lines. Each line contains at most two vertices because any point between two others cannot be a vertex. A four-sided face therefore has two vertices on each line, giving parallel opposite sides.
+
+**Wikipedia:** [Trapezoid](https://en.wikipedia.org/wiki/Trapezoid). It says: “Under an inclusive definition, a trapezoid is any quadrilateral with at least one pair of parallel sides.”
+
+**Paper or page:** [Lateral Face of Prismatoid is Triangle, Trapezium or Parallelogram](https://proofwiki.org/wiki/Lateral_Face_of_Prismatoid_is_Triangle,_Trapezium_or_Parallelogram). It says: “Then F is one of the following:
+a triangle
+a trapezium
+a parallelogram.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Pick's formula needs simple polygons, since each hole adds one
 
 **Remember:** One boundary, no holes, and area is i plus b over two minus one.
@@ -139,6 +160,32 @@
 **Sources:**
 
 - [D. T. Lee and F. P. Preparata, An Optimal Algorithm for Finding the Kernel of a Polygon (1979)](https://doi.org/10.1145/322139.322142)
+
+### General position makes Radon partitions unique
+
+**Remember:** One dependence with no zeros gives one split by signs.
+
+*Rules out counterexamples.* MSC 52A37 (Other problems of combinatorial convexity), 52C35. arXiv cs.CG. Level 2: later undergraduate.
+
+**Definition.** A Radon partition splits points into two groups whose convex hulls intersect. An affine dependence assigns weights, not all zero, whose sum and weighted sum of the points both vanish. General position here means that no d+1 points in ℝᵈ admit an affine dependence.
+
+**Problem.** A set of d+2 points in general position in ℝᵈ has exactly one Radon partition up to exchanging its two parts.
+
+**How the definition helps.** In our own proof, general position gives a unique dependence up to scaling, with no zero weight. Append a coordinate of one to each point. The resulting d+2 columns have rank d+1, and deleting any one leaves independent columns. Separate the positive and negative weights and normalize each group to obtain the same convex combination on both sides. Conversely, subtracting equal convex combinations gives a dependence, so its signs force the partition. Our own counterexample uses four collinear points A, B, C, D in that order in the plane. The splits AC against BD and AD against BC both work.
+
+**Wikipedia:** [Radon's theorem](https://en.wikipedia.org/wiki/Radon%27s_theorem). It says: “Then I and J form the required partition of the points into two subsets with intersecting convex hulls.”
+
+**Paper or page:** [Radon Partitions of Random Gaussian Polytopes](https://arxiv.org/abs/2507.05449). It says: “Then the following are equivalent:\\begin{enumerate} \\item $(A,B)$ is a Radon partition for $x<sub>1</sub>,\\ldots ,x<sub>N</sub>$, 
+
+\\item $F(A,B)\\cap V\\neq \\emptyset $, 
+
+\\item $C(A,B)\\cap V\\neq \\left\\{ 0\\right\\}  $. 
+
+\\end{enumerate}”
+
+**Sources:**
+
+- [Radon Partitions of Random Gaussian Polytopes](https://arxiv.org/abs/2507.05449)
 
 ### In a two-distance set, smaller-diameter pieces are exactly cliques
 
@@ -535,6 +582,22 @@
 **Sources:**
 
 - [Cospanning characterizations of antimatroids and convex geometries, Theorem 2.8](https://arxiv.org/abs/2107.08556v1)
+
+### Recession directions guard closed sums
+
+**Remember:** Escaping summands with a convergent sum leave opposite rays inside the two sets.
+
+*Rules out counterexamples.* MSC 52A20 (Convex sets in \\(n\\) dimensions (including convex hypersurfaces)), 49J53. arXiv math.OC. Level 3: graduate.
+
+**Definition.** A recession direction d keeps x + td in the set for every member x and every t ≥ 0. For a nonempty closed convex set, one ray in direction d suffices.
+
+**Problem.** Two nonempty closed convex sets in Euclidean space have a closed sum if they have no opposite nonzero recession directions.
+
+**How the definition helps.** Opposite recession directions are the only way summands can escape while their sums converge. In our own proof, divide escaping summands by the norm of the first and take a convergent subsequence of directions. Convexity and closedness give rays in both limiting directions. Without escape, a convergent subsequence of summands realizes the limiting sum. In our own counterexample, adding the horizontal axis to the region y ≥ exp(x) gives the open upper half-plane.
+
+**Wikipedia:** [Recession cone](https://en.wikipedia.org/wiki/Recession_cone). It says: “Let nonempty closed convex sets A,B ⊂ ℝᵈ such that for any y ∈ recc(A) ∖ {0} then −y ∉ recc(B), then A + B is closed.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Support functions turn set addition into ordinary addition
 

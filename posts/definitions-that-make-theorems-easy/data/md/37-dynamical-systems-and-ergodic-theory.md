@@ -1,3 +1,21 @@
+### Unfolding makes corner hits rational
+
+**Remember:** Reflect the table, and the ball travels straight.
+
+*True by definition.* MSC 37C83 (Dynamical systems with singularities (billiards, etc.)). arXiv math.DS. Level 1: early undergraduate.
+
+**Definition.** Measure slopes relative to the sides of a unit square. At each bounce, reflect the table across the wall and continue the ray straight into the reflected square.
+
+**Problem.** A ray that starts at a corner of a square with irrational slope never reaches a corner again.
+
+**How the definition helps.** In the unfolded table, hitting another corner means that the straight ray reaches a second integer lattice point (our own). Two such points determine a rational slope unless their line is vertical (our own). Equal angles at a bounce justify replacing the reflected path by this straight ray (our own).
+
+**Paper or page:** [Periodic orbits for square and rectangular billiards](https://arxiv.org/abs/2410.18316v2). It says: “If a billiard trajectory starts at a vertex with an irrational slope then it never terminates at a vertex on the square billiard.”
+
+**Sources:**
+
+- [Periodic orbits for square and rectangular billiards](https://arxiv.org/abs/2410.18316v2)
+
 ### Closed shift spaces stay closed under sliding block codes
 
 **Remember:** Compact domains give closed images, and commuting with the shift preserves invariance.
@@ -81,6 +99,22 @@
 **Sources:**
 
 - [P. Hartman, A lemma in the theory of structural stability of differential equations, Proceedings of the American Mathematical Society 11 (1960) 610–620](https://doi.org/10.1090/S0002-9939-1960-0121542-7)
+
+### Orbit averages give invariant probabilities
+
+**Remember:** Shifting a long orbit average changes only its two ends.
+
+*True by definition.* MSC 37A05 (Dynamical aspects of measure-preserving transformations). arXiv math.DS. Level 3: graduate.
+
+**Definition.** For a continuous map F on a nonempty compact metric space, start at x and iterate F. Give each of the first n orbit points mass 1/n, counting repeated visits. These orbit averages converge weakly when their integrals converge against every continuous test function.
+
+**Problem.** At least one subsequence of orbit averages converges weakly to a probability measure. Every such limit is invariant, meaning that applying F preserves its probabilities.
+
+**How the definition helps.** In our own proof, averaging a test function along the orbit makes a one-step shift cancel all but two terms. The first value disappears and one final value enters, each with weight 1/n. Continuous test functions are bounded here, so this difference tends to zero. Continuity of F lets us pass to the weak limit both before and after the shift. Weak compactness of probabilities on the compact space supplies a convergent subsequence. Individual orbit points need not converge.
+
+**Wikipedia:** [Krylov–Bogolyubov theorem](https://en.wikipedia.org/wiki/Krylov%E2%80%93Bogolyubov_theorem). It says: “Then F admits an invariant Borel probability measure.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### An ergodic square rules out nonconstant eigenfunctions
 
@@ -511,6 +545,24 @@
 **Sources:**
 
 - [S. M. Hammel, J. A. Yorke, C. Grebogi, Numerical orbits of chaotic processes represent true orbits, Bulletin of the American Mathematical Society 19 (1988) 465–469](https://doi.org/10.1090/S0273-0979-1988-15701-1)
+
+### Positive invariant volume excludes sinks
+
+**Remember:** A sink shrinks a neighborhood, but invariant volume cannot shrink.
+
+*Rules out counterexamples.* MSC 37C70 (Attractors and repellers of smooth dynamical systems and their topological structure), 37J60. arXiv math.DS. Level 3: graduate.
+
+**Definition.** Here an invariant volume has a smooth positive density and assigns the same volume to a set and its image under the flow. Allowing any invariant measure instead would include a point mass at an equilibrium.
+
+**Problem.** A smooth flow on a positive-dimensional manifold with a smooth positive invariant volume has no asymptotically stable equilibrium. Such an equilibrium attracts nearby points and keeps all sufficiently close starting points close for all future time.
+
+**How the definition helps.** A positive density gives every compact neighborhood positive volume and gives sufficiently small balls arbitrarily small volume (our own). Asymptotic stability eventually sends an entire compact neighborhood into any chosen small ball (our own). Volume preservation forbids this (our own). A damped pendulum still preserves a point mass at its stable equilibrium (our own).
+
+**Paper or page:** [Invariant measures as obstructions to attractors in dynamical systems and their role in nonholonomic mechanics](https://arxiv.org/abs/2404.14156v1). It says: “Then there are no invariant measures in the class 𝒜.”
+
+**Sources:**
+
+- [Invariant measures as obstructions to attractors in dynamical systems and their role in nonholonomic mechanics](https://arxiv.org/abs/2404.14156v1)
 
 ### Transversality excludes saddle connections, so Morse–Smale flows are structurally stable
 

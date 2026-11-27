@@ -1,3 +1,21 @@
+### Constants make maps preserve units
+
+**Remember:** A unit is an operation with no inputs.
+
+*Rules out counterexamples.* MSC 08A05 (Structure theory of algebraic structures). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** Treat a named constant as an operation on zero inputs. A homomorphism is a map that preserves each operation, including those with no inputs.
+
+**Problem.** Every homomorphism between monoids preserves the unit as well as multiplication.
+
+**How the definition helps.** Treating the unit as a constant makes unit preservation an instance of operation preservation. Multiplication alone allows the following map (our own example). Send the sole element of the trivial monoid to 0 in the multiplicative monoid {0, 1}. This preserves multiplication but sends the unit to 0.
+
+**Wikipedia:** [Universal algebra](https://en.wikipedia.org/wiki/Universal_algebra). It says: “if e is a constant (nullary operation)”
+
+**Sources:**
+
+- [Stanley Burris and H. P. Sankappanavar, A Course in Universal Algebra, Chapter II, §§1 and 6](https://www.math.uwaterloo.ca/~snburris/htdocs/UALG/univ-algebra2012.pdf)
+
 ### Compatible equivalences give algebra quotients
 
 **Remember:** Do the operation on representatives, then take the class.
@@ -13,6 +31,22 @@
 **Wikipedia:** [Congruence relation](https://en.wikipedia.org/wiki/Congruence_relation). It says: “A congruence relation on the structure is then defined as an equivalence relation that is also compatible.”
 
 **Paper or page:** [Absolute Value induces Equivalence not Compatible with Integer Addition](https://proofwiki.org/wiki/Absolute_Value_induces_Equivalence_not_Compatible_with_Integer_Addition). It says: “Then R is not a congruence relation for integer addition.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Quasi-identities capture cancellation
+
+**Remember:** Check the conditions and the conclusion one coordinate at a time.
+
+*Makes the theorem clean to state or prove.* MSC 08C15 (Quasivarieties). arXiv math.RA. Level 2: later undergraduate.
+
+**Definition.** A quasi-identity says that one equation follows whenever a finite list of equations holds. Unlike an ordinary identity, it may specify conditions before requiring the conclusion.
+
+**Problem.** Cancellative monoids form a quasivariety, a class defined by quasi-identities. They do not form a variety, a class defined by ordinary identities.
+
+**How the definition helps.** Conditional equations express both cancellation laws directly (our own monoid example). They read ax = ay ⇒ x = y and xa = ya ⇒ x = y. Ordinary equations pass to all quotients. Map the additive nonnegative integers onto {0, 1} under maximum by sending every positive integer to 1 and zero to 0. The source cancels, but the target has max(1,0) = max(1,1).
+
+**Wikipedia:** [Variety (universal algebra)](https://en.wikipedia.org/wiki/Variety_%28universal_algebra%29). It says: “However, they do form a quasivariety as the implication defining the cancellation property is an example of a quasi-identity.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -52,6 +86,38 @@
 
 - [Garrett Birkhoff and Orrin Frink, Representations of lattices by sets, Transactions of the American Mathematical Society (1948)](https://doi.org/10.1090/S0002-9947-1948-0027263-2)
 
+### Finite paths compute congruence joins
+
+**Remember:** Chain the links first and apply operations a coordinate at a time.
+
+*True by definition.* MSC 08A30 (Subalgebras, congruence relations). arXiv math.RA. Level 3: graduate.
+
+**Definition.** A congruence is an equivalence relation that respects each algebra operation. The join of several congruences is the least congruence containing them all. The path description connects two elements when a finite sequence joins them using steps from the given congruences.
+
+**Problem.** If each operation takes finitely many inputs, the path description gives the join of any family of congruences.
+
+**How the definition helps.** The path description makes minimality immediate because every equivalence containing the given relations contains all their paths (our own proof). Paths of length zero, reversed paths, and concatenated paths give an equivalence. The remaining work is compatibility with operations. Change one input along its path while holding the other inputs fixed. Each output step stays in the congruence used for that input step. Finitely many inputs give a finite output path.
+
+**Wikipedia:** [Congruence relation](https://en.wikipedia.org/wiki/Congruence_relation). It says: “A congruence relation on the structure is then defined as an equivalence relation that is also compatible.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Free generators recover natural operations
+
+**Remember:** Apply the operation to the free generators to read its term.
+
+*True by definition.* MSC 08A40 (Operations and polynomials in algebraic structures, primal algebras). arXiv math.LO. Level 3: graduate.
+
+**Definition.** A variety is a class of algebras specified by equations. For a positive integer n, choose one n-input operation on each algebra in the variety. The family is natural if all homomorphisms commute with the chosen operations. A free algebra on n generators admits a unique homomorphism extending each assignment of those generators.
+
+**Problem.** In a variety, every natural n-input operation is given by a term. The term is unique up to the equations that hold in the variety.
+
+**How the definition helps.** Representing input tuples by maps from one free algebra reduces the whole family to its value at the generators (our own explanation). The free algebra consists of terms identified whenever their equality holds throughout the variety. Choose a term representing the value at its generators. Naturality transports that value along the map determined by any input tuple, so the term represents the entire family. Constructing the free algebra from terms supplies the correspondence.
+
+**nLab:** [Malcev variety](https://ncatlab.org/nlab/show/Malcev+variety). It says: “may be identified with elements of F(n), the free T-algebra on n generators”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Majority operations reconstruct from pairs
 
 **Remember:** Three witnesses that miss different coordinates recover the full tuple.
@@ -83,6 +149,22 @@
 **How the definition helps.** Using all term operations makes the conclusion immediate because closure under basic operations is equivalent to closure under all terms. Our own argument applies the same check to relations respected by the operations and to maps that preserve them. The work is to express each chosen operation using the other list. For example, Boolean complement and meet can be built from NAND, the negation of meet. Our own check gives ¬x = x NAND x and x ∧ y = ¬(x NAND y). Such a nonempty subset contains 1 because x NAND ¬x = 1, and then contains 0 by complement.
 
 **Wikipedia:** [Clone (algebra)](https://en.wikipedia.org/wiki/Clone_%28algebra%29), [Functional completeness](https://en.wikipedia.org/wiki/Functional_completeness). It says: “If A and B are algebras with the same carrier such that every basic function of A is a term function in B and vice versa, then A and B have the same clone.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Matching endpoints lets graph limits carry composition
+
+**Remember:** Match endpoints before composing.
+
+*Makes the theorem clean to state or prove.* MSC 08A55 (Partial algebras). arXiv math.CT, math.LO. Level 3: graduate.
+
+**Definition.** An essentially algebraic theory permits operations on inputs that satisfy specified equations. For categories, composition is defined on pairs for which the target of the first equals the source of the second.
+
+**Problem.** Every diagram of small categories indexed by a small category has a limit. Its graph consists of the compatible tuples of objects and arrows.
+
+**How the definition helps.** The endpoint equation makes arrows composable in the limit exactly when they compose in every coordinate (our own proof). Compose them coordinate by coordinate. The resulting arrows still form a compatible tuple because the diagram maps preserve composition. Identities and the category laws also hold in each coordinate. The universal map into the graph limit then preserves identities and composition.
+
+**nLab:** [essentially algebraic theory](https://ncatlab.org/nlab/show/essentially+algebraic+theory). It says: “As the domains of the operations are given by the solutions to equations, they may be understood using the notion of equalizer.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -159,6 +241,78 @@
 
 - [Paolo Aglianó, Alex Citkin. Structural completeness in quasivarieties, Lemma 2.11.](https://arxiv.org/abs/2401.02754v1)
 
+### Malcev terms make reflexive relations equivalences
+
+**Remember:** The middle input cancels to reverse or join related pairs.
+
+*Rules out counterexamples.* MSC 08B05 (Equational logic, Mal'tsev conditions). arXiv math.RA. Level 3: graduate.
+
+**Definition.** A Malcev term is a three-input expression p with p(x,x,z) = z and p(x,z,z) = x. A compatible relation is closed under applying algebra operations to its pairs coordinate by coordinate.
+
+**Problem.** A reflexive compatible relation on an algebra with a Malcev term is an equivalence relation.
+
+**How the definition helps.** The two Malcev equations force a reflexive compatible relation to contain reversed pairs and composites. Apply p coordinate by coordinate to (x,x), (x,y), and (y,y) to obtain (y,x). Apply it to (x,y), (y,y), and (y,z) to obtain (x,z). Without the term, the two-element lattice gives a counterexample (our own). Its order respects minimum and maximum but fails symmetry.
+
+**nLab:** [Malcev variety](https://ncatlab.org/nlab/show/Malcev+variety). It says: “If T is a Malcev theory, then any internal reflexive relation in T-Alg is an internal equivalence relation.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Profinite powers detect finite groups
+
+**Remember:** Factorial powers test whether every element of a finite monoid has an inverse.
+
+*Makes the theorem clean to state or prove.* MSC 08B05 (Equational logic, Mal'tsev conditions). arXiv math.RA. Level 3: graduate.
+
+**Definition.** The ω-power of an element x in a finite monoid is the eventual value of x raised to n factorial. A profinite identity can use this kind of power instead of an ordinary finite word.
+
+**Problem.** A finite monoid is a group exactly when the ω-power of each element equals 1. Ordinary monoid identities cannot give this test.
+
+**How the definition helps.** The factorial exponent gives one test that works for every finite group order (our own argument). Powers eventually cycle, and sufficiently large factorials exceed the starting index and are multiples of the period. In a finite group the resulting power is 1. Conversely, a positive power equal to 1 supplies an inverse. For the ordinary-identity obstruction, take the product of cyclic groups of all finite orders. Their standard generators form a tuple whose nonnegative powers are all distinct. This submonoid maps onto {0,1} under maximum, so every identity common to finite groups holds in that nongroup.
+
+**Wikipedia:** [Variety (universal algebra)](https://en.wikipedia.org/wiki/Variety_%28universal_algebra%29). It says: “Namely, a class of finite monoids is a variety of finite monoids if and only if it can be defined by a set of profinite identities.”
+
+**Paper or page:** [Unveiling Eilenberg-type Correspondences: Birkhoff's Theorem for (finite) Algebras + Duality](https://arxiv.org/abs/1702.02822v1). It says: “Additionally, pseudovarieties of T–algebras are in one–to–one correspondence with pseudoequational T–theories on D₀.”
+
+**Sources:**
+
+- [Jan Reiterman, The Birkhoff theorem for finite algebras](https://doi.org/10.1007/BF02483902)
+
+### Distributivity rules out skew congruences
+
+**Remember:** The two projection kernels split each congruence into separate coordinate relations.
+
+*Rules out counterexamples. Confidence: medium.* MSC 08B10 (Congruence modularity, congruence distributivity). arXiv math.RA. Level 3: graduate.
+
+**Definition.** A congruence is an equivalence relation that respects algebra operations. An algebra has distributive congruences when intersections distribute over joins, where a join is the least congruence containing both relations.
+
+**Problem.** Suppose intersections distribute over joins of congruences on A × B. Then every congruence on A × B compares the two coordinates by separate congruences on A and B.
+
+**How the definition helps.** Distributivity reconstructs a congruence from its two coordinate conditions (our own proof). Let P and Q identify pairs with equal first and second coordinates, respectively. Their intersection is equality, so distributivity gives C = (C ∨ P) ∩ (C ∨ Q). The quotient correspondence theorem identifies the first join with a congruence on A and the second with one on B. Without distributivity, the diagonal subgroup in ℤ/2 × ℤ/2 gives a counterexample (our own). Its cosets compare the sum of the coordinates modulo two.
+
+**Paper or page:** [Cross-Relation is Congruence Relation](https://proofwiki.org/wiki/Cross-Relation_is_Congruence_Relation). It says: “The cross-relation ⊠ is a congruence relation on ⟨S₁ × S₂, ⊕⟩.”
+
+**Sources:**
+
+- [Grant A. Fraser and Alfred Horn, Congruence relations in direct products](https://doi.org/10.1090/S0002-9939-1970-0265258-1)
+
+### Majority terms make congruences distributive
+
+**Remember:** Fix the endpoints and use majority to bring the whole path into their class.
+
+*Rules out counterexamples.* MSC 08B10 (Congruence modularity, congruence distributivity). arXiv math.RA. Level 3: graduate.
+
+**Definition.** A majority term is an expression m that returns x whenever at least two inputs equal x. A congruence is an equivalence relation that respects every operation. Its meet with another congruence is their intersection. Their join connects elements by finite paths taking steps in either relation.
+
+**Problem.** If an algebra has a majority term, its congruences satisfy R ∩ (S ∨ T) = (R ∩ S) ∨ (R ∩ T).
+
+**How the definition helps.** The majority equations move a path into the common R-class of its endpoints (our own proof). Given endpoints x and z in that class, replace each vertex y by m(x,y,z). This vertex is related by R to m(x,y,x) = x. Each step retains its S or T relation, and both endpoints stay fixed. The reverse inclusion follows from containment. Without majority, the three order-two subgroups of the Klein four-group give congruences violating this law (our own example).
+
+**Wikipedia:** [Quotient (universal algebra)](https://en.wikipedia.org/wiki/Quotient_%28universal_algebra%29). It says: “In 1967 Bjarni Jónsson found the conditions for varieties having congruence lattices that are distributive”
+
+**Sources:**
+
+- [Stanley Burris and H. P. Sankappanavar, A Course in Universal Algebra, Chapter II, §12](https://www.math.uwaterloo.ca/~snburris/htdocs/UALG/univ-algebra2012.pdf)
+
 ### Closure under subalgebras and products gives free algebras
 
 **Remember:** Take all generated models together, then keep the part generated by the common inputs.
@@ -177,6 +331,24 @@
 
 - [G. Birkhoff, On the structure of abstract algebras, Mathematical Proceedings of the Cambridge Philosophical Society 31 (1935)](https://doi.org/10.1017/S0305004100013463)
 
+### Finite algebras generate locally finite varieties
+
+**Remember:** Finitely many inputs and outputs give finitely many term functions.
+
+*True by definition.* MSC 08B20 (Free algebras). arXiv math.RA. Level 3: graduate.
+
+**Definition.** A variety is a class of algebras specified by equations. The variety generated by A satisfies exactly the equations valid in A. An n-input term function evaluates an expression in the operations of A at each input tuple.
+
+**Problem.** Every finitely generated member of the variety generated by a finite algebra is finite.
+
+**How the definition helps.** Counting term functions gives a finite bound even though the list of formal expressions can be infinite (our own explanation). With n generators, the free algebra represents expressions up to the equations valid in A. Its elements therefore correspond to n-input term functions on A. A finite set has only finitely many functions of each fixed arity. Every member generated by n elements is a quotient of this free algebra.
+
+**Wikipedia:** [Locally finite variety](https://en.wikipedia.org/wiki/Locally_finite_variety). It says: “One calls a variety locally finite if every finitely generated algebra has finite cardinality”
+
+**Sources:**
+
+- [Stanley Burris and H. P. Sankappanavar, A Course in Universal Algebra, Chapter II, Theorems 10.15–10.16](https://www.math.uwaterloo.ca/~snburris/htdocs/UALG/univ-algebra2012.pdf)
+
 ### Free Steiner generators extend bijections
 
 **Remember:** Extend a bijection and its inverse from the free generators.
@@ -194,6 +366,54 @@
 **Sources:**
 
 - [Silvia Barbina, Enrique Casanovas. Endomorphisms of free Steiner quasigroups, Corollary 2.10.](https://arxiv.org/abs/2412.06055v3)
+
+### Pairing makes finite free bases interchangeable
+
+**Remember:** One free generator supplies two free coordinates.
+
+*True by definition.* MSC 08B20 (Free algebras). arXiv math.RA. Level 3: graduate.
+
+**Definition.** A Jónsson–Tarski algebra has a pairing operation that maps ordered pairs bijectively onto its elements. Two operations recover the coordinates of each pair. In a free algebra, each assignment of generator images extends uniquely to a map preserving the operations.
+
+**Problem.** The free Jónsson–Tarski algebras on any two nonempty finite sets are isomorphic.
+
+**How the definition helps.** Defining a free basis by arbitrary choices of images turns generator replacement into the pairing bijection (our own proof). Replace a generator by its two coordinates. Pairing recovers the old generator, and taking coordinates recovers both replacements. The defining property of a free algebra extends the assignments to inverse homomorphisms. This avoids building a separate correspondence between all expressions on the two bases. Repetition connects every positive finite number of generators.
+
+**nLab:** [Jónsson-Tarski algebra](https://ncatlab.org/nlab/show/J%C3%B3nsson-Tarski+algebra). It says: “Any two Jónsson-Tarski algebras freely generated from finite non empty sets are isomorphic.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Common sections make set coequalizers work
+
+**Remember:** A common section lets a relation change one input while holding the others fixed.
+
+*Rules out counterexamples.* MSC 08B25 (Products, amalgamated products, and other kinds of limits and colimits). arXiv math.CT, math.RA. Level 3: graduate.
+
+**Definition.** Two parallel homomorphisms form a reflexive pair if some map is a right inverse to both. Their coequalizer identifies their paired outputs, and every map identifying those outputs factors uniquely through it.
+
+**Problem.** Consider algebras defined by equations using operations with finitely many inputs. For a reflexive pair, the underlying set of its coequalizer is the set quotient identifying the paired outputs.
+
+**How the definition helps.** The common right inverse lets a relation step change one input while holding the others fixed (our own proof). Lift each fixed input along that inverse before applying the operation. Chaining such steps shows that the generated equivalence respects every operation. Without a common right inverse, take two maps from the free monoid on x to the free monoid on a and b. Send x to a under one map and to b under the other (our own example). The set quotient identifies a and b but keeps ab and bb distinct, so multiplication fails on classes.
+
+**nLab:** [cocompleteness of varieties of algebras](https://ncatlab.org/nlab/show/cocompleteness+of+varieties+of+algebras). It says: “If T is a finitary monad defined on a cocomplete cartesian closed category X, then T preserves reflexive coequalizers”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Malcev terms match quotient classes
+
+**Remember:** Three corners force the fourth, so each quotient class has a matching class.
+
+*Makes the theorem clean to state or prove.* MSC 08B26 (Subdirect products and subdirect irreducibility). arXiv math.RA. Level 3: graduate.
+
+**Definition.** A subdirect product is a subalgebra of a product whose projections reach both factors. A Malcev variety is a class defined by equations with an expression p satisfying p(x,x,z) = z and p(x,z,z) = x.
+
+**Problem.** Take a subdirect product of two algebras in a Malcev variety. Its pairs match exactly the classes that correspond under an isomorphism between quotients of the two factors.
+
+**How the definition helps.** The Malcev equations fill a rectangle from three corners, forcing the subdirect product to match whole classes (our own proof). Apply p to (a,u), (b,u), and (b,v) to obtain (a,v). On each side, relate two elements if they share a partner. The rectangle rule makes this an equivalence and gives each class exactly one partner class. Closure under the operations ensures they pass to the classes and respect the matching. Thus the matching is an isomorphism.
+
+**Wikipedia:** [Goursat's lemma](https://en.wikipedia.org/wiki/Goursat%27s_lemma). It says: “It can be stated more generally in a Goursat variety (and consequently it also holds in any Maltsev variety)”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### One pair detects subdirect irreducibility
 
@@ -230,6 +450,40 @@
 **Sources:**
 
 - [Garrett Birkhoff. Subdirect unions in universal algebra (1944).](https://doi.org/10.1090/S0002-9904-1944-08235-9)
+
+### Regular epimorphisms recover algebra surjections
+
+**Remember:** A universal quotient cannot have a proper image.
+
+*Rules out counterexamples.* MSC 08C05 (Categories of algebras). arXiv math.RA. Level 3: graduate.
+
+**Definition.** An epimorphism is a map e such that ge = he implies g = h. A regular epimorphism is a quotient map specified by two parallel maps u and v. It satisfies eu = ev, and every map f with fu = fv factors uniquely through e. A variety is a class of algebras specified by equations.
+
+**Problem.** In every variety of algebras, a homomorphism is surjective exactly when it is a regular epimorphism.
+
+**How the definition helps.** The unique factorization through the quotient forces every target element into the image (our own proof). Factor e through its image. The map to the image already equalizes u and v, so it factors through e. Uniqueness makes the resulting map a right inverse to the image inclusion. Conversely, a surjection is the universal quotient identifying all pairs with equal images. The ring inclusion ℤ → ℚ shows why an ordinary epimorphism does not suffice.
+
+**nLab:** [regular epimorphism](https://ncatlab.org/nlab/show/regular+epimorphism), [epimorphism](https://ncatlab.org/nlab/show/epimorphism). It says: “the inclusion ℤ → ℚ is an epimorphism of rings, and of commutative rings.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Clone inclusions detect formula definability
+
+**Remember:** Witnesses combine by the operation that combines the visible entries.
+
+*Makes the theorem clean to state or prove.* MSC 08A40 (Operations and polynomials in algebraic structures, primal algebras). arXiv math.LO. Level 4: research.
+
+**Definition.** A primitive positive formula uses relation tests, equality, conjunction and existential quantifiers. Allow a false formula for the empty relation. A polymorphism is an operation that preserves each relation when applied coordinate by coordinate. A clone collects these operations, including projections and all composites.
+
+**Problem.** Take two relational structures on the same finite set. The first defines every relation of the second by primitive positive formulas exactly when its polymorphisms preserve those relations.
+
+**How the definition helps.** Collecting all preserving operations turns comparison of two formula languages into inclusion of two sets of operations (our own explanation). Equality and conjunction preserve compatibility with an operation. For an existential quantifier, apply the operation to the witnesses as well as the visible inputs (our own explanation). The finite preservation theorem supplies the converse.
+
+**Paper or page:** [Mal'cev clones over a three-element set up to minor-equivalence](https://arxiv.org/abs/2508.06918v1). It says: “Then A pp-defines B if and only if Pol(A) ⊆ Pol(B).”
+
+**Sources:**
+
+- [David Geiger, Closed systems of functions and predicates](https://doi.org/10.2140/pjm.1968.27.95)
 
 ### Alternating polymorphisms characterize affine integer programming
 
@@ -288,6 +542,22 @@
 
 - [Andrei Krokhin, Jakub Opršal, An invitation to the promise constraint satisfaction problem, ACM SIGLOG News (2022)](https://doi.org/10.1145/3559736.3559740)
 - [Libor Barto, Jakub Bulín, Andrei Krokhin, Jakub Opršal, Algebraic Approach to Promise Constraint Satisfaction, Journal of the ACM (2021)](https://doi.org/10.1145/3457606)
+
+### Named constants force idempotent polymorphisms
+
+**Remember:** Preserving each singleton forces every constant tuple to return its entry.
+
+*Rules out counterexamples.* MSC 08A70 (Applications of universal algebra in computer science). arXiv math.LO. Level 4: research.
+
+**Definition.** A homomorphism between relational structures sends each related tuple to a related tuple. A finite core is a smallest substructure admitting homomorphisms both to and from the original structure. Name each core element a by adding the unary relation {a}. A polymorphism takes tuples from any one relation and combines them coordinate by coordinate into another tuple of that relation.
+
+**Problem.** Naming all elements of a finite core forces each polymorphism f to satisfy f(a,…,a) = a. For a fixed finite relational signature, this preserves the constraint problem up to polynomial-time reductions in both directions.
+
+**How the definition helps.** Preserving the singleton {a} forces f(a,…,a) to belong to {a} (our own explanation). For example, swapping two elements preserves equality but fails to preserve either singleton (our own example). The constraint problem asks whether an input structure admits a homomorphism to the fixed structure. The cited core theorem supplies the reductions.
+
+**Paper or page:** [Mal'cev clones over a three-element set up to minor-equivalence](https://arxiv.org/abs/2508.06918v1). It says: “For a finite relational structure A, let A′ denote its core, extended by all constants. Then A pp-constructs A′ and vice-versa.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Constant terms select unique idempotents
 
@@ -360,6 +630,62 @@
 **Sources:**
 
 - [Benno van den Berg, Freek Geerligs, Examples and cofibrant generation of effective Kan fibrations, arXiv:2402.10568 (2024)](https://arxiv.org/abs/2402.10568)
+
+### Absorbing polynomials make commutators symmetric
+
+**Remember:** Reorder the variables and the same pairs still generate the commutator.
+
+*True by definition.* MSC 08B10 (Congruence modularity, congruence distributivity). arXiv math.RA. Level 4: research.
+
+**Definition.** A congruence is an equivalence relation respecting all operations. A polynomial uses the operations and fixed elements as parameters. It absorbs a tuple a if fixing any input at its entry in a forces the output to equal its value at a. A Malcev term is an expression p satisfying p(x,x,y) = y and p(x,y,y) = x.
+
+**Problem.** In an algebra with a Malcev term, permuting a list of congruences leaves its higher commutator unchanged.
+
+**How the definition helps.** The absorbing-polynomial description makes symmetry visible because each input obeys the same rule (our own proof). For a list of k congruences, take tuples a and b whose entries in each position satisfy the corresponding congruence. Form every pair (f(a),f(b)) for k-input polynomials f absorbing a. Theorem 7 identifies the higher commutator with the least congruence containing these pairs. It carries the work of proving agreement with the usual definition, which tests a cube of evaluations in one distinguished direction. Permuting the inputs and the congruences together leaves precisely the same pairs.
+
+**Paper or page:** [CSAT and CEQV for nilpotent Maltsev algebras of Fitting length &gt; 2](https://arxiv.org/abs/2105.00689v2). It says: “Then \[α₁,…,αₖ\] is generated as a congruence by the set”
+
+**Sources:**
+
+- [Michael Kompatscher, CSAT and CEQV for nilpotent Maltsev algebras of Fitting length &gt; 2, Theorem 7](https://arxiv.org/abs/2105.00689v2)
+
+### Distributivity bounds irreducible factor sizes
+
+**Remember:** Distributivity keeps irreducible factors within the size of the finite generators.
+
+*Rules out counterexamples.* MSC 08B26 (Subdirect products and subdirect irreducibility). arXiv math.RA. Level 4: research.
+
+**Definition.** A subdirect product is a subalgebra of a product that projects onto every factor. A nontrivial algebra is subdirectly irreducible if every such representation has a projection that is also injective. A variety consists of all algebras satisfying specified equations. It is congruence-distributive when intersection distributes over the least upper bound of equivalence relations respecting all operations.
+
+**Problem.** Suppose finitely many finite algebras generate a congruence-distributive variety. Each subdirectly irreducible member has at most as many elements as the largest generator.
+
+**How the definition helps.** Distributivity lets Jónsson’s lemma bound each irreducible member by a single generator. For a finite list of finite generators, the lemma places each such member among the quotients of subalgebras of those generators. Neither taking a subalgebra nor taking a quotient increases size. Without distributivity, even one finite generator can have arbitrarily large subdirectly irreducible algebras in its variety.
+
+**Wikipedia:** [Subdirectly irreducible algebra](https://en.wikipedia.org/wiki/Subdirectly_irreducible_algebra). It says: “By Jónsson's Lemma, subdirectly irreducible algebras of a congruence-distributive variety generated by a finite set of finite algebras are no larger than the generating algebras”
+
+**Paper or page:** [Structural completeness in quasivarieties](https://arxiv.org/abs/2401.02754v1). It says: “Suppose that K is a class of algebras such that V(K) = V is congruence distributive”
+
+**Sources:**
+
+- [Bjarni Jónsson, Algebras whose congruence lattices are distributive](https://doi.org/10.7146/math.scand.a-10850)
+
+### Equational Noetherianity yields separating maps
+
+**Remember:** Reduce the whole diagram to finite equations while keeping the pair distinct.
+
+*Rules out counterexamples.* MSC 08C15 (Quasivarieties), 08A45. arXiv math.RA. Level 4: research.
+
+**Definition.** Fix a class K of algebras with the same operations. Call K equationally Noetherian if each system of equations in finitely many variables has a finite subsystem with identical solutions throughout K. Its quasivariety consists of the algebras satisfying every conditional equation valid throughout K. A conditional equation says one equation follows whenever finitely many given equations hold.
+
+**Problem.** Let K be an equationally Noetherian class in one fixed signature. Every finitely generated member of its quasivariety embeds into a product of members of K.
+
+**How the definition helps.** The finite subsystem lets one conditional equation test whether two elements must coincide (our own proof). Write down every equation true of a chosen finite generating tuple. Replace that system by a finite subsystem with the same solutions throughout K. If every solution in K equated two chosen terms, the corresponding conditional equation would hold throughout the quasivariety. Thus distinct elements have distinct images under some homomorphism to a member of K. Taking all these maps together gives the embedding.
+
+**Paper or page:** [Coherent Conditions: Algebraic Geometry for Arbitrary Classes of Algebras](https://arxiv.org/abs/2510.23647v1). It says: “A is separated by K”
+
+**Sources:**
+
+- [K. R. van Nispen, Coherent Conditions: Algebraic Geometry for Arbitrary Classes of Algebras, Theorem 4.6](https://arxiv.org/abs/2510.23647v1)
 
 ### Free algebras give structural cores
 

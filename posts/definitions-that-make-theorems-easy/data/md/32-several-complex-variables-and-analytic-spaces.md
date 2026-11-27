@@ -48,6 +48,72 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Circle averaging fixes the origin kernel
+
+**Remember:** Circle averaging leaves only the constant term.
+
+*True by definition.* MSC 32A25 (Integral representations; canonical kernels (Szeg?, Bergman, etc.)), 32Q02. arXiv math.CV. Level 3: graduate.
+
+**Definition.** A domain D in ℂⁿ is balanced if λz belongs to D whenever z belongs to D and \|λ\|≤1. The Bergman kernel represents point evaluation by an inner product on square-integrable holomorphic functions, using ordinary volume.
+
+**Problem.** For a bounded balanced domain D, the Bergman kernel with one argument at the origin is the constant 1/Vol(D).
+
+**How the definition helps.** Defining the kernel by evaluation lets us identify it at zero without summing an orthonormal basis (our own). For each z, the disk mean-value formula averages f(λz) over \|λ\|=1 to give f(0) (our own). Rotations preserve both D and volume, so integrating this identity gives the volume average of f as f(0) (our own). The unique vector representing this average is the constant reciprocal of the volume (our own).
+
+**Paper or page:** [2-proper holomorphic images of classical Cartan domains](https://arxiv.org/abs/2303.11940v4). It says: “Consequently, the Bergman kernel Kᴅ is given by the formula Kᴅ(0,z)=1/Vol(D), z∈D.”
+
+**Sources:**
+
+- [2-proper holomorphic images of classical Cartan domains](https://arxiv.org/abs/2303.11940v4)
+
+### Evaluation gives sharp Bergman bounds
+
+**Remember:** The norm of the evaluation vector is the sharp bound.
+
+*True by definition.* MSC 32A25 (Integral representations; canonical kernels (Szeg?, Bergman, etc.)), 32A36. arXiv math.CV. Level 3: graduate.
+
+**Definition.** The Bergman space on a domain in ℂⁿ consists of holomorphic functions with finite squared integral against volume. Its kernel vector k at w satisfies ⟨f,k⟩ = f(w) for every function f in that space. Another definition expands the kernel in an orthonormal basis.
+
+**Problem.** Among functions of norm at most one, the largest squared modulus at w equals the kernel value K(w,w).
+
+**How the definition helps.** Representing evaluation by a vector turns the sharp bound into its squared norm (our own). Cauchy–Schwarz gives the bound, and a unit vector in the kernel vector’s direction attains it (our own). If the kernel vector is zero, every value vanishes (our own). Evaluating the vector at w gives K(w,w) (our own). The mean-value inequality makes evaluation bounded, and Hilbert space representation supplies the vector used in the basis expansion (our own).
+
+**nLab:** [Bergman kernel](https://ncatlab.org/nlab/show/Bergman+kernel). It says: “The Bergman kernel is the reproducing kernel for the Hilbert space of square integrable holomorphic functions in a domain in ℂⁿ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Evaluation kernels multiply on products
+
+**Remember:** Evaluating in two variables takes one kernel per factor.
+
+*True by definition.* MSC 32A25 (Integral representations; canonical kernels (Szeg?, Bergman, etc.)), 32A36. arXiv math.CV. Level 3: graduate.
+
+**Definition.** On a domain in ℂⁿ, the Bergman kernel represents evaluation of square-integrable holomorphic functions by an inner product using ordinary volume. The equivalent basis formula sums products of values of orthonormal basis functions.
+
+**Problem.** The Bergman kernel of a product of bounded domains is the product of the kernels of the factors.
+
+**How the definition helps.** Defining the kernel by evaluation lets one evaluate in each variable separately without constructing a product basis (our own). The mean-value inequality in one factor bounds the squared integral on each fixed slice by a constant times the full squared integral (our own). Each factor kernel therefore evaluates the corresponding slice (our own). Fubini’s theorem combines the two integrals, and uniqueness of the evaluation vector identifies the product kernel (our own).
+
+**nLab:** [Bergman kernel](https://ncatlab.org/nlab/show/Bergman+kernel). It says: “The Bergman kernel is the reproducing kernel for the Hilbert space of square integrable holomorphic functions in a domain in ℂⁿ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The polydisk maximum needs only its torus
+
+**Remember:** The torus suffices, and each of its points can peak.
+
+*Makes the theorem clean to state or prove.* MSC 32A40 (Boundary behavior of holomorphic functions of several complex variables), 32Q02. arXiv math.CV. Level 3: graduate.
+
+**Definition.** The unit polydisk is a product of open unit disks. Consider the functions holomorphic inside and continuous on its closure. Their Shilov boundary is the smallest closed subset of the closure where each function attains its maximum modulus.
+
+**Problem.** The Shilov boundary of a unit polydisk is the product of its boundary circles. It excludes the boundary faces on which only some coordinates have modulus one.
+
+**How the definition helps.** The smallest common maximum set expresses exactly which boundary points the whole family needs (our own). Applying the disk maximum principle successively in each coordinate shows that the product of boundary circles suffices (our own). For each chosen circle point a, the factor (1 + āz)/2 has modulus one only at a on the closed disk (our own). Multiplying these factors gives a function attaining its maximum modulus only at the chosen torus point (our own).
+
+**Wikipedia:** [Shilov boundary](https://en.wikipedia.org/wiki/Shilov_boundary). It says: “the Shilov boundary of a polydisc 𝔻₁×𝔻₂×⋯×𝔻ₖ is the product of the boundaries ∂𝔻₁×∂𝔻₂×⋯×∂𝔻ₖ”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Weierstrass polynomials give free quotients
 
 **Remember:** Divide by the monic polynomial and keep the short remainder.
@@ -182,6 +248,96 @@
 
 - [Jean-Pierre Serre, Géométrie algébrique et géométrie analytique (1956)](https://doi.org/10.5802/aif.59)
 
+### Riemann domains allow multiple sheets
+
+**Remember:** Keep the continuation sheet as well as the coordinates.
+
+*Makes the theorem clean to state or prove.* MSC 32D10 (Envelopes of holomorphy), 32D26. arXiv math.CV. Level 3: graduate.
+
+**Definition.** A Riemann domain over ℂⁿ is a connected complex manifold with a projection that is locally a holomorphic coordinate map. Unlike a subset of ℂⁿ, it can have distinct points with the same projected coordinates.
+
+**Problem.** Every domain in ℂⁿ has an envelope of holomorphy, the largest common continuation space for all its holomorphic functions. Its projection to ℂⁿ can take different points to the same coordinates.
+
+**How the definition helps.** Distinct sheets let continuations take different values at the same coordinates (our own). Hazra and Porten construct a domain whose envelope has several sheets above a circle. The existence theorem must still construct the common continuation space and show that distinct points have disjoint neighborhoods (our own).
+
+**Paper or page:** [Truncated tube domains with multi-sheeted envelope](https://arxiv.org/abs/2306.00441v1). It says: “the envelope of holomorphy of D=X+iBᵣ universally covers a circle T⊂ℝ²∖X.”
+
+**Sources:**
+
+- [Truncated tube domains with multi-sheeted envelope](https://arxiv.org/abs/2306.00441v1)
+
+### Tube envelopes fill convex hulls
+
+**Remember:** Fill the real convex hull and leave the imaginary directions free.
+
+*Rules out counterexamples.* MSC 32D10 (Envelopes of holomorphy), 32Q02. arXiv math.CV. Level 3: graduate.
+
+**Definition.** A tube domain consists of the points whose real parts lie in a given connected open set. Its imaginary parts range over all of ℝⁿ. A truncated tube allows only a limited set of imaginary parts.
+
+**Problem.** Every holomorphic function on a tube domain extends to the tube over the convex hull of its real base. This larger tube is its envelope of holomorphy, the largest space of common continuation.
+
+**How the definition helps.** Allowing every imaginary displacement excludes truncated tubes whose continuations need several sheets over the same coordinates (our own). Bochner proves extension to the convex hull for a full tube. Convex domains admit holomorphic functions singular at each chosen boundary point, so no larger common continuation is possible (our own). Hazra and Porten give a truncated tube whose envelope has several sheets above a circle.
+
+**Wikipedia:** [Bochner's tube theorem](https://en.wikipedia.org/wiki/Bochner%27s_tube_theorem). It says: “every function holomorphic on a tube domain in ℂⁿ can be extended to the convex hull of this domain.”
+
+**Paper or page:** [Truncated tube domains with multi-sheeted envelope](https://arxiv.org/abs/2306.00441v1). It says: “the envelope of holomorphy of D=X+iBᵣ universally covers a circle T⊂ℝ²∖X.”
+
+**Sources:**
+
+- [Bochner, Analytic and Meromorphic Continuation by Means of Green’s Formula (1943)](https://doi.org/10.2307/1969103)
+
+### Compact support simplifies Hartogs extension
+
+**Remember:** Subtract a compactly supported correction and keep the exterior values.
+
+*Makes the theorem clean to state or prove.* MSC 32D20 (Removable singularities in several complex variables), 32W05. arXiv math.CV. Level 3: graduate.
+
+**Definition.** The operator ∂̄ differentiates in conjugate complex directions. Its kernel on functions consists of holomorphic functions. The first compactly supported Dolbeault group takes compactly supported forms with one conjugate differential and ∂̄ equal to zero. It identifies two such forms when their difference equals ∂̄ of a compactly supported smooth function.
+
+**Problem.** Let a compact set lie inside a domain in ℂⁿ and have connected complement there. If n≥2, every holomorphic function on that complement extends to the whole domain.
+
+**How the definition helps.** Compactly supported cohomology states exactly when a derivative error has a correction that vanishes far away (our own). Choose a smooth cutoff vanishing near the compact set and equal to one outside a compact neighborhood inside the domain (our own). Multiply by the cutoff, extend by zero across the missing set and extend its derivative error by zero to ℂⁿ (our own). In dimension at least two, the first compactly supported Dolbeault group of ℂⁿ vanishes, providing the required correction (our own). Outside the cutoff neighborhood, the correction is holomorphic and vanishes on the unbounded exterior component by the identity theorem (our own). Subtracting it gives a holomorphic function agreeing with the original on an open set, hence throughout the connected complement (our own).
+
+**Wikipedia:** [Hartogs's extension theorem](https://en.wikipedia.org/wiki/Hartogs%27s_extension_theorem). It says: “there exists a smooth and compactly supported function η on ℂⁿ with ∂̄η = ω.”
+
+**Sources:**
+
+- [Ehrenpreis, A new proof and an extension of Hartog’s theorem (1961)](https://doi.org/10.1090/s0002-9904-1961-10661-7)
+
+### Polynomial convexity excludes circle obstructions
+
+**Remember:** Polynomials cannot see the hole inside a circle.
+
+*Rules out counterexamples.* MSC 32E20 (Polynomial convexity, rational convexity, meromorphic convexity in several complex variables), 32E30. arXiv math.CV. Level 3: graduate.
+
+**Definition.** A compact set is polynomially convex if each outside point can be separated by a polynomial. Separation means the absolute value at that point exceeds the maximum on the compact set.
+
+**Problem.** Every function holomorphic near a polynomially convex compact set in ℂⁿ can be approximated there uniformly by polynomials.
+
+**How the definition helps.** Polynomial separation excludes the circle obstruction because the maximum principle bounds every polynomial inside the circle by its boundary maximum (our own). On the unit circle in a coordinate line, the reciprocal coordinate is holomorphic nearby (our own). Its contour integral is 2πi, whereas every polynomial integrates to zero there (our own). Uniform convergence would preserve these integrals (our own). The Oka–Weil theorem proves that polynomial separation suffices for approximation (our own).
+
+**Wikipedia:** [Oka–Weil theorem](https://en.wikipedia.org/wiki/Oka%E2%80%93Weil_theorem). It says: “every holomorphic function in an open neighborhood of K can be approximated uniformly on K”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Retractions preserve extension norms
+
+**Remember:** Compose with the retraction to extend without taking new values.
+
+*True by definition.* MSC 32E30 (Holomorphic, polynomial and rational approximation, and interpolation in several complex variables; Runge pairs), 32H02. arXiv math.CV. Level 3: graduate.
+
+**Definition.** A holomorphic retraction maps a domain holomorphically onto a subset and fixes each point there. Its image is a retract. Relative polynomial convexity means each outside point in the domain admits a polynomial whose modulus there exceeds its supremum on the subset.
+
+**Problem.** Let V be a nonempty relatively polynomially convex subset of the bidisk, the product of two unit disks. Every polynomial restricted to V extends holomorphically to the bidisk with unchanged supremum norm exactly when V is a holomorphic retract.
+
+**How the definition helps.** The retraction gives one extension formula for every bounded holomorphic function on V (our own). Composition with the retraction preserves every value and introduces no others (our own). Agler and McCarthy prove the difficult converse, which constructs a retraction from the existence of polynomial extensions.
+
+**Paper or page:** [Norm Preserving Extensions of Holomorphic Functions Defined on Varieties in ℂⁿ](https://arxiv.org/abs/2204.08517v1). It says: “Let V be a nonempty relatively polynomially convex subset of 𝔻². Every polynomial has a norm preserving extension to 𝔻² if and only if V is a holomorphic retract of 𝔻².”
+
+**Sources:**
+
+- [Agler and McCarthy, Norm preserving extensions of holomorphic functions from subvarieties of the bidisk (2003)](https://doi.org/10.4007/annals.2003.157.289)
+
 ### Pseudoconvexity turns the domain of holomorphy problem into a local test
 
 **Remember:** Domains of holomorphy are exactly the pseudoconvex domains, a local test.
@@ -200,6 +356,41 @@
 
 - [H. Grauert, On Levi's Problem and the Imbedding of Real-Analytic Manifolds, Annals of Mathematics 68 (1958)](https://doi.org/10.2307/1970257)
 - [K. Oka, Sur les fonctions analytiques de plusieurs variables VI. Domaines pseudoconvexes, Tohoku Mathematical Journal 49 (1942)](https://www.nara-wu.ac.jp/aic/gdb/nwugdb/oka/ko_ron/f/n06/p001.html)
+
+### Disk chains lift through coverings
+
+**Remember:** A disk lifts once you pick its starting sheet.
+
+*True by definition.* MSC 32F45 (Invariant metrics and pseudodistances in several complex variables), 32D26. arXiv math.CV. Level 3: graduate.
+
+**Definition.** A holomorphic disk is a holomorphic map from the unit disk. A chain joins successive points using such disks and charges the hyperbolic distance between the chosen preimages on each disk. The Kobayashi pseudodistance is the infimum of the total costs and can vanish between distinct points.
+
+**Problem.** Consider a holomorphic covering between connected complex manifolds, locally a collection of disjoint copies of the base. Fix a lift of the starting point. The distance downstairs equals the infimum of distances from this lift to all lifts of the endpoint.
+
+**How the definition helps.** The chain definition lets each disk lift with its original cost because the unit disk is simply connected (our own). Starting each lift where the previous one ends gives a chain upstairs (our own). Projecting any chain back down also preserves its cost, giving the opposite inequality (our own). Equivalently, this is the largest pseudodistance for which disks decrease distance (our own). The equivalence follows by bounding each link and then summing along the chain (our own).
+
+**Wikipedia:** [Kobayashi metric](https://en.wikipedia.org/wiki/Kobayashi_metric). It says: “A complex space is Kobayashi hyperbolic if and only if its universal covering space is Kobayashi hyperbolic.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Disk chains restore triangle inequalities
+
+**Remember:** Join two chains to get a chain.
+
+*True by definition.* MSC 32F45 (Invariant metrics and pseudodistances in several complex variables). arXiv math.CV. Level 3: graduate.
+
+**Definition.** A holomorphic disk maps the unit disk holomorphically into the domain. A link joins two images at a cost equal to the hyperbolic distance between their chosen preimages. The Lempert function takes the infimum for one link. The Kobayashi pseudodistance allows any finite chain and takes the infimum of total costs.
+
+**Problem.** The Kobayashi pseudodistance always satisfies the triangle inequality. The single disk Lempert function can fail it.
+
+**How the definition helps.** Chains can be joined at a common endpoint, which gives the triangle inequality by taking infima (our own). A single disk need not realize the cost of two successive links (our own). Lempert’s theorem shows that the single-disk and chain formulas agree on bounded convex domains (our own).
+
+**Paper or page:** [Quasi Triangle Inequality for the Lempert function](https://arxiv.org/abs/2503.19754v2). It says: “The (unbounded version of the) Lempert function l<sub>D</sub> on a domain D⊂ℂᵈ does not usually satisfy the triangle inequality”
+
+**Sources:**
+
+- [Quasi Triangle Inequality for the Lempert function](https://arxiv.org/abs/2503.19754v2)
+- [Lempert, La métrique de Kobayashi et la représentation des domaines sur la boule (1981)](https://doi.org/10.24033/bsmf.1948)
 
 ### The largest disc-contracting distance makes every holomorphic map distance-decreasing
 
@@ -254,6 +445,38 @@
 **Sources:**
 
 - [Wei-Liang Chow, On Compact Complex Analytic Varieties (1949)](https://doi.org/10.2307/2372375)
+
+### Bundle connections in conjugate directions integrate on curves
+
+**Remember:** On a curve there is no room for two conjugate directions.
+
+*True by definition.* MSC 32L05 (Holomorphic bundles and generalizations), 32W05. arXiv math.DG. Level 3: graduate.
+
+**Definition.** A connection in conjugate directions differentiates smooth bundle sections in those directions and obeys the product rule. Its square measures curvature in pairs of conjugate directions. When the square vanishes, the operator defines a holomorphic structure, usually described by local frames with holomorphic changes of basis.
+
+**Problem.** Every smooth complex vector bundle on a complex curve has a unique holomorphic structure compatible with any given connection in conjugate directions.
+
+**How the definition helps.** The operator description needs only its square to vanish, and alternating forms in two conjugate directions vanish in complex dimension one (our own). The Koszul–Malgrange theorem supplies local frames killed by the operator. Their changes of basis are holomorphic (our own).
+
+**nLab:** [Koszul-Malgrange theorem](https://ncatlab.org/nlab/show/Koszul-Malgrange+theorem). It says: “such that ∂̄ₑ ∘ ∂̄ₑ = 0, hence with a compatible Dolbeault operator”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Curvature makes tensor products positive
+
+**Remember:** Multiply the local metric weights and add their curvatures.
+
+*True by definition.* MSC 32L05 (Holomorphic bundles and generalizations), 32Q40. arXiv math.DG. Level 3: graduate.
+
+**Definition.** A holomorphic line bundle has one complex dimension in each fiber and holomorphic changes of local frame. A Hermitian metric assigns each fiber a squared norm. The bundle is positive if some such metric has curvature that becomes positive in every complex direction after multiplication by i. On compact complex manifolds, ampleness asks whether sections of a tensor power give a projective embedding.
+
+**Problem.** The tensor product of positive holomorphic line bundles is positive. A line bundle is positive if some positive tensor power has positive curvature for a suitable metric.
+
+**How the definition helps.** Curvature adds under tensor products because local squared norms multiply and curvature differentiates their logarithms (our own). The sum of positive curvature forms stays positive (our own). Taking the positive root of squared norms on a tensor power divides curvature by the exponent (our own). Kodaira’s theorem relates this test to ampleness on compact complex manifolds.
+
+**nLab:** [positive line bundle](https://ncatlab.org/nlab/show/positive+line+bundle). It says: “A holomorphic line bundle on a complex manifold is called positive if its curvature differential 2-form is, after multiplication with i=√−1, a positive definite (1,1)-form.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### The exponential sequence makes first Chern classes add under tensor products
 
@@ -323,6 +546,61 @@
 
 - [K. Stein, Analytische Funktionen mehrerer komplexer Veränderlichen zu vorgegebenen Periodizitätsmoduln und das zweite Cousinsche Problem, Mathematische Annalen 123 (1951)](https://doi.org/10.1007/bf02054949)
 
+### Stein exhaustions bound handle dimensions
+
+**Remember:** A positive complex Hessian leaves at most half the directions negative.
+
+*True by definition.* MSC 32Q28 (Stein manifolds), 32Q55. arXiv math.DG. Level 3: graduate.
+
+**Definition.** A Stein manifold admits a smooth real exhaustion with positive complex Hessian, the matrix of mixed complex and conjugate derivatives. An exhaustion has compact sublevel sets. Another definition requires a closed holomorphic embedding in complex Euclidean space.
+
+**Problem.** A Stein manifold of complex dimension n has the homotopy type of a space built by attaching balls of real dimension at most n.
+
+**How the definition helps.** The exhaustion definition gives a function whose curvature bounds the dimensions of the balls in Morse theory (our own). Grauert’s characterization allows a Morse exhaustion, whose real Hessian is nonsingular at each critical point. Strict positivity prevents the real Hessian from being negative on both a vector and its complex rotation (our own). Any real subspace of dimension above n meets its complex rotation nontrivially (our own). The negative subspace therefore has dimension at most n (our own). Morse theory attaches a ball of precisely that dimension when the exhaustion passes the critical point (our own).
+
+**Wikipedia:** [Stein manifold](https://en.wikipedia.org/wiki/Stein_manifold). It says: “Being a Stein manifold is equivalent to being a (complex) strongly pseudoconvex manifold.”
+
+**Sources:**
+
+- [Grauert, On Levi’s Problem and the Imbedding of Real-Analytic Manifolds (1958)](https://doi.org/10.2307/1970257)
+- [Andreotti and Frankel, The Lefschetz Theorem on Hyperplane Sections (1959)](https://doi.org/10.2307/1970034)
+
+### Strict Stein exhaustions exclude compact curves
+
+**Remember:** Strict positivity prevents a maximum on a compact complex curve.
+
+*Rules out counterexamples.* MSC 32Q28 (Stein manifolds), 32U10. arXiv math.CV. Level 3: graduate.
+
+**Definition.** A Stein manifold admits a smooth exhaustion, a real function with compact closed sublevel sets, whose complex Hessian is positive definite. The complex Hessian is the matrix of mixed complex and conjugate second derivatives. Such an exhaustion is strictly plurisubharmonic. A plurisubharmonic exhaustion can have zero eigenvalues.
+
+**Problem.** A Stein manifold contains no compact complex submanifold of positive dimension.
+
+**How the definition helps.** Strict positivity passes to each complex submanifold and rules out an interior maximum there in positive dimension (our own). A compact submanifold must have a maximum, giving the contradiction (our own). On the product of the complex projective line with ℂ, squared modulus of the ℂ coordinate gives a plurisubharmonic exhaustion (our own). Its complex Hessian vanishes along each compact projective line (our own). Grauert’s theorem supplies the strict exhaustion characterization of Stein manifolds.
+
+**Wikipedia:** [Stein manifold](https://en.wikipedia.org/wiki/Stein_manifold). It says: “Being a Stein manifold is equivalent to being a (complex) strongly pseudoconvex manifold.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Integral Kähler classes exclude nonprojective tori
+
+**Remember:** Projective embeddings pull back an integral positive form.
+
+*Rules out counterexamples.* MSC 32Q40 (Embedding theorems for complex manifolds), 32J27. arXiv math.DG. Level 3: graduate.
+
+**Definition.** A Kähler form is a closed real two-form compatible with the complex structure that gives a positive Hermitian metric. A Hodge metric is a Kähler metric whose form has integer integrals over every integral two-cycle, a closed oriented chain with integer coefficients.
+
+**Problem.** A compact complex manifold embeds holomorphically into projective space exactly when it admits a Hodge metric.
+
+**How the definition helps.** Integral periods let the positive form represent the first Chern class, the degree-two characteristic class of a holomorphic line bundle (our own). Kodaira proves that sections of a sufficiently high tensor power give an embedding in projective space. Conversely, pulling back the normalized projective Kähler form gives a positive form with integral periods (our own). A generic complex torus of dimension at least two admits Kähler forms but no nonzero integral class represented by such a form (our own).
+
+**nLab:** [Hodge manifold](https://ncatlab.org/nlab/show/Hodge+manifold). It says: “A Hodge manifold is a Kähler manifold whose canonical differential 2-form is integral.”
+
+**Wikipedia:** [Kodaira embedding theorem](https://en.wikipedia.org/wiki/Kodaira_embedding_theorem). It says: “there is a complex-analytic embedding of M into complex projective space of some high enough dimension N.”
+
+**Sources:**
+
+- [Kodaira, On Kähler Varieties of Restricted Type (1954)](https://doi.org/10.2307/1969701)
+
 ### Compact hyperbolicity survives products
 
 **Remember:** An entire curve in a product has two entire projections.
@@ -375,6 +653,38 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Maxima preserve pseudoconvex intersections
+
+**Remember:** The larger exhaustion keeps points away from both boundaries.
+
+*True by definition.* MSC 32U10 (Plurisubharmonic exhaustion functions), 32T05. arXiv math.CV. Level 3: graduate.
+
+**Definition.** A domain in ℂⁿ is pseudoconvex if it has a continuous plurisubharmonic exhaustion. An exhaustion has compact closed sublevel sets. Plurisubharmonic means that on each complex line the value at a disk center is at most its circular average.
+
+**Problem.** Each connected component of a finite intersection of pseudoconvex domains is pseudoconvex.
+
+**How the definition helps.** Taking the maximum combines the exhaustions into one test for all the boundaries (our own). Its closed sublevel sets are intersections of compact sublevel sets and remain compact on each component (our own). The maximum also satisfies the disk mean inequality (our own). The Levi problem identifies these domains with domains supporting a holomorphic function that cannot extend across any boundary point (our own).
+
+**Wikipedia:** [Pseudoconvexity](https://en.wikipedia.org/wiki/Pseudoconvexity). It says: “In other words, a domain is pseudoconvex if G has a continuous plurisubharmonic exhaustion function.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Logarithmic growth gives vanishing order
+
+**Remember:** Compare the first nonzero Taylor term with the logarithm of distance.
+
+*True by definition.* MSC 32U25 (Lelong numbers), 32A60. arXiv math.CV. Level 3: graduate.
+
+**Definition.** A plurisubharmonic function is upper semicontinuous and satisfies the disk mean inequality on complex lines. Its Lelong number at a point is the lower limit of its value divided by the logarithm of distance to that point. For a hypersurface, an alternative measures its local area density, counting multiplicities.
+
+**Problem.** If a nonzero holomorphic function vanishes to order m at a point, the Lelong number of its logarithmic modulus there is m.
+
+**How the definition helps.** The logarithmic definition reads vanishing order directly from the first nonzero Taylor term (our own). If this term has degree m, the modulus is at most a constant times the mth power of distance (our own). Taking logarithms and dividing by the negative logarithm of distance gives a lower limit at least m (our own). Along a line where the leading term is nonzero, the ratio tends to m (our own). The Lelong–Poincaré and density formulas identify the result with the area density of the zero set counted with multiplicity (our own).
+
+**Wikipedia:** [Lelong number](https://en.wikipedia.org/wiki/Lelong_number). It says: “The Lelong number of a plurisubharmonic function φ at a point x of ℂⁿ is liminf<sub>z→x</sub> φ(z)/log \|z−x\|.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Logarithmic derivatives add zero divisors
 
 **Remember:** The logarithm turns products into sums of zero currents.
@@ -388,6 +698,22 @@
 **How the definition helps.** In our own argument the logarithm changes a product into a sum, and differentiation preserves sums. The local Poincaré–Lelong formula identifies this derivative with the geometric zero current. The quoted theorem gives a version on a domain with boundary.
 
 **Paper or page:** [Induced Fubini-Study metrics on strictly pseudoconvex CR manifolds and zeros of random CR functions](https://arxiv.org/abs/2401.09143v1). It says: “(\[Div(f)\], ψ) = (i/π) ∫₍G₎ ∂∂̄ log(\|f\|) ∧ ψ”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Real analyticity permits holomorphic flattening
+
+**Remember:** Flat complex leaves need analytic transverse dependence to straighten holomorphically.
+
+*Rules out counterexamples.* MSC 32V40 (Real submanifolds in complex manifolds), 32V05. arXiv math.DG. Level 3: graduate.
+
+**Definition.** A real hypersurface is a smooth submanifold of real codimension one. It is Levi-flat if locally it splits into complex hypersurfaces that vary smoothly in one real parameter. Real analyticity means that local defining equations can be chosen as convergent real power series.
+
+**Problem.** A real analytic Levi-flat hypersurface is locally a real hyperplane in holomorphic coordinates.
+
+**How the definition helps.** Real analyticity allows the family of complex hypersurfaces to extend holomorphically in its real parameter (our own). Straightening the extended family gives the holomorphic coordinates in the theorem (our own). Take the product of a complex coordinate space with a smooth plane curve that fails to be real analytic at one point (our own). This product is Levi-flat (our own). Holomorphic coordinates flattening it there would give a real analytic defining equation with nonzero derivative for the curve (our own).
+
+**Paper or page:** [Levi-flats in ℂℙⁿ: a survey for nonexperts](https://arxiv.org/abs/2501.15710v2). It says: “If p∈M⊂ℂⁿ is a real analytic Levi flat hypersurface, then there exists a neighbourhood U of p in ℂⁿ and a biholomorphic map”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -589,3 +915,23 @@
 **Paper or page:** [On the Canonical Bundle Formula and Adjunction for Generalized Kaehler Pairs](https://arxiv.org/abs/2404.12007v1). It says: “χ₍A₎T = ν(T, A)\[A\], where ν(T, A) is the generic Lelong number of T along A.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Smooth curves can miss infinite type
+
+**Remember:** A cusp can lie in the boundary even when smooth curves leave it.
+
+*Rules out counterexamples.* MSC 32V35 (Finite-type conditions on CR manifolds), 32T25. arXiv math.CV. Level 4: research.
+
+**Definition.** At a smooth boundary point, test each nonconstant holomorphic curve through the point. Divide the vanishing order of a local boundary equation along the curve by the least vanishing order of its coordinate differences. D’Angelo type is the supremum of these ratios. Regular type considers only curves with nonzero derivative.
+
+**Problem.** Consider a smooth bounded domain with pseudoconvex boundary, meaning its complex curvature is nonnegative from the domain side along complex tangent directions. For forms with one conjugate differential, the local ∂̄-Neumann boundary estimate gains a positive fraction of a derivative exactly at points of finite D’Angelo type.
+
+**How the definition helps.** Testing curves with zero derivative detects contact that regular curves miss (our own). The boundary Re w + \|x² − y³\|² = 0 contains the curve (t³,t²,0) (our own). A regular curve with nonzero w derivative has contact one (our own). Otherwise x or y has order one, so the two powers cannot cancel their leading terms and contact is at most six (our own). In complex dimension at least three, Kamimoto gives an infinite-type example with finite regular type and no single infinitely tangent holomorphic curve. Catlin proves the connection with the boundary estimate (our own).
+
+**Paper or page:** [On holomorphic curves tangent to real hypersurfaces of infinite type](https://arxiv.org/abs/2011.05044v1). It says: “Let n≥2. There exists a smooth pseudoconvex real hypersurface M in ℂⁿ⁺¹ with Δ₁(M,p)=∞ and Δ₁ʳᵉᵍ(M,p)&lt;∞”
+
+**Sources:**
+
+- [On holomorphic curves tangent to real hypersurfaces of infinite type](https://arxiv.org/abs/2011.05044v1)
+- [Catlin, Necessary Conditions for Subellipticity of the ∂̄-Neumann Problem (1983)](https://doi.org/10.2307/2006974)
+- [Catlin, Subelliptic Estimates for the ∂̄-Neumann Problem on Pseudoconvex Domains (1987)](https://doi.org/10.2307/1971347)

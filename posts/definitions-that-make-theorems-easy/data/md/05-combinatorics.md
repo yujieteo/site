@@ -130,6 +130,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Cycles give the Stirling recurrence
+
+**Remember:** The new element starts a cycle or follows an old element.
+
+*True by definition.* MSC 05A10 (Factorials, binomial coefficients, combinatorial functions). arXiv math.CO. Level 1: early undergraduate.
+
+**Definition.** Define the unsigned Stirling number c(n,k) by counting permutations of n elements with k cycles. A fixed element counts as a cycle of length one. The algebraic alternative takes the coefficient of degree k in the product x(x + 1) ⋯ (x + n − 1).
+
+**Problem.** For integers n ≥ 1 and k ≥ 1, c(n + 1,k) = n c(n,k) + c(n,k − 1).
+
+**How the definition helps.** Cycles give two ways to add a new element. It can form a cycle alone or follow any of the n old elements in their cycles. Deleting it recovers the previous permutation in either case. To compare with the coefficient definition, expand the last factor and check that both counts have the same recurrence and starting values.
+
+**Wikipedia:** [Stirling numbers of the first kind](https://en.wikipedia.org/wiki/Stirling_numbers_of_the_first_kind). It says: “We prove the recurrence relation using the definition of Stirling numbers in terms of permutations with a given number of cycles”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Defining binomial coefficients as repeated sums of ones simplifies nested sums
 
 **Remember:** One more row of running totals raises the lower index by one.
@@ -163,6 +179,24 @@
 **Paper or page:** [Forward Difference of Falling Factorial](https://proofwiki.org/wiki/Forward_Difference_of_Falling_Factorial). It says: “Δ(xᵐ̲) = m x⁽ᵐ⁻¹⁾̲”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Marked paths explain Pascal’s weights
+
+**Remember:** Mark one right step and choose the rest freely.
+
+*True by definition.* MSC 05A10 (Factorials, binomial coefficients, combinatorial functions), 97K20. arXiv math.CO, math.HO. Level 1: early undergraduate.
+
+**Definition.** In row n of Pascal’s triangle, entry k counts paths of n steps, each either down-left or down-right, with exactly k down-right steps. The usual factorial quotient gives the same number.
+
+**Problem.** For n ≥ 1, the sum of k times the entry in column k of row n is n · 2ⁿ⁻¹.
+
+**How the definition helps.** Counting paths turns the weight k into a choice of one marked down-right step. In our own proof, choose its position in n ways. Each remaining step has two choices. To recover the usual factorial formula, count the choices of k down-right positions among n positions.
+
+**Paper or page:** [Arrow-chasing in Pascal's triangle -- Visual proofs for summation formulas involving binomial coefficients](https://arxiv.org/abs/2508.16388). It says: “\\sum \\limits <sub>k=0</sub><sup>nk\\cdot</sup> \\binom nk=n\\cdot 2<sup>n-1</sup>”
+
+**Sources:**
+
+- [Regula Krapf, Arrow-chasing in Pascal's triangle -- Visual proofs for summation formulas involving binomial coefficients](https://arxiv.org/abs/2508.16388)
 
 ### Setting 0! = 1 keeps the binomial formulas exact
 
@@ -332,6 +366,42 @@
 
 - [R. P. Stanley, Enumerative Combinatorics, Volume 1, second edition, Cambridge University Press (2011)](https://doi.org/10.1017/CBO9781139058520)
 
+### A fixed rank splits a subset count
+
+**Remember:** Choose the element of rank m + 1, then fill both sides.
+
+*True by definition.* MSC 05A19 (Combinatorial identities, bijective combinatorics), 97K20. arXiv math.CO, math.HO. Level 1: early undergraduate.
+
+**Definition.** Define a binomial coefficient as the number of subsets of a given size, rather than as a quotient of factorials.
+
+**Problem.** Let l, m and n be nonnegative integers with l + m ≤ n. How many subsets of {0, …, n} have l + m + 1 elements?
+
+**How the definition helps.** Counting subsets lets us sort them by their element of rank m + 1 in increasing order. In our own proof, call that element k. Choose m smaller elements from k possibilities and l larger elements from n − k possibilities. Summing (k choose m) times (n − k choose l) from k = m to n − l counts every subset once. The factorial formula follows by counting ordered selections and dividing by their possible orders.
+
+**Paper or page:** [Arrow-chasing in Pascal's triangle -- Visual proofs for summation formulas involving binomial coefficients](https://arxiv.org/abs/2508.16388). It says: “Let l, m, n ∈ ℕ be natural numbers such that l + m ≤ n. Then we have the following identity: \\sum <sub>k=m</sub><sup>n-l</sup>\\binom km\\binom {n-k}l=\\binom {n+1}{l+m+1}”
+
+**Sources:**
+
+- [Regula Krapf, Arrow-chasing in Pascal's triangle -- Visual proofs for summation formulas involving binomial coefficients](https://arxiv.org/abs/2508.16388)
+
+### Indicators give inclusion and exclusion
+
+**Remember:** Multiply the indicators of absence and subtract the result from one.
+
+*True by definition.* MSC 05A19 (Combinatorial identities, bijective combinatorics). arXiv math.CO. Level 1: early undergraduate.
+
+**Definition.** The indicator of a set assigns 1 to elements in the set and 0 to other elements. It replaces each membership condition by a number.
+
+**Problem.** The size of a finite union of finite sets is an alternating sum of intersection sizes. Include each nonempty selection of sets once. Add its intersection size for an odd number of selected sets and subtract it for an even number.
+
+**How the definition helps.** Indicators turn intersections into products, so the distributive law supplies every term of inclusion and exclusion. In our own presentation, subtract each indicator from 1 and multiply the resulting functions. The product equals 1 exactly outside the union. Subtract the product from 1, expand, and sum over the union. This replaces counting how often each element appears with ordinary multiplication.
+
+**Wikipedia:** [Inclusion–exclusion principle](https://en.wikipedia.org/wiki/Inclusion%E2%80%93exclusion_principle). It says: “An algebraic proof can be obtained using indicator functions (also known as characteristic functions).”
+
+**Paper or page:** [Inclusion-Exclusion Principle](https://proofwiki.org/wiki/Inclusion-Exclusion_Principle). It says: “Let A₁, A₂, …, Aₙ be finite sets.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Largest elements give hockey stick sums
 
 **Remember:** Choose the largest element, then choose the rest below it.
@@ -432,6 +502,22 @@
 
 - [Frank Harary and Ronald C. Read, Is the null-graph a pointless concept?, in Graphs and Combinatorics, Lecture Notes in Mathematics 406 (1974) 37–44](https://doi.org/10.1007/bfb0066433)
 
+### Unique paths make tree edges bridges
+
+**Remember:** Remove the only path and its endpoints separate.
+
+*True by definition.* MSC 05C05 (Trees). arXiv math.CO. Level 1: early undergraduate.
+
+**Definition.** Define a tree as a nonempty simple undirected graph with exactly one simple path between each pair of distinct vertices. A simple path does not repeat a vertex. The usual alternative requires a connected graph with no cycles.
+
+**Problem.** Every edge of a tree is a bridge, an edge whose deletion disconnects the graph.
+
+**How the definition helps.** The edge itself is the only simple path between its endpoints. In our own proof, deleting it therefore disconnects those endpoints. The definitions agree because a cycle gives two paths between its vertices, and two distinct simple paths with the same endpoints contain a cycle.
+
+**Paper or page:** [Edge of Tree is Bridge](https://proofwiki.org/wiki/Edge_of_Tree_is_Bridge). It says: “Let T be a tree. Let e be an edge of T. Then e is a bridge of T.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Counting a loop twice makes the degree sum formula hold
 
 **Remember:** A loop is one edge with two ends, and both ends count.
@@ -498,6 +584,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Shortest walks give graph distance
+
+**Remember:** Join two walks to bound the shortest one.
+
+*True by definition.* MSC 05C12 (Distance in graphs). arXiv math.CO. Level 1: early undergraduate.
+
+**Definition.** Define the distance as the minimum number of edges in a walk joining two vertices. A walk may repeat vertices, unlike a simple path. Set the distance to ∞ if no walk joins the vertices.
+
+**Problem.** Graph distance obeys the triangle inequality even between vertices in different connected components.
+
+**How the definition helps.** Two walks always join to give another walk when the first ends where the second begins. In our own proof, joining shortest walks through a third vertex bounds the direct distance by the sum of their lengths. If either distance in the sum is infinite, the bound holds automatically. Deleting any segment between repeated vertices shortens a walk, so a shortest walk is a path.
+
+**Wikipedia:** [Distance (graph theory)](https://en.wikipedia.org/wiki/Distance_%28graph_theory%29). It says: “is the number of edges in a shortest path (also called a graph geodesic) connecting them.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Graph colouring assumes no loops, so every graph has a chromatic number
 
 **Remember:** A loop would clash with itself, so colouring theory leaves loops out.
@@ -516,6 +618,24 @@
 
 - [T. R. Jensen and B. Toft, Graph Coloring Problems, Wiley (1994)](https://doi.org/10.1002/9781118032497)
 
+### Reachability orders acyclic graphs
+
+**Remember:** Order all prerequisites, not just neighboring ones.
+
+*Rules out counterexamples.* MSC 05C20 (Directed graphs (digraphs), tournaments). arXiv math.CO. Level 1: early undergraduate.
+
+**Definition.** In a finite directed graph, say one vertex precedes another if a nonempty directed walk leads from the first to the second. Use this relation on graphs with no directed cycles.
+
+**Problem.** The vertices can be listed with every edge pointing forward exactly when the graph has no directed cycle.
+
+**How the definition helps.** Without a directed cycle, reachability gives consistent instructions about which vertices must come first. In our own proof, some remaining vertex must have no incoming edge from another remaining vertex. Otherwise, following incoming edges backward would eventually repeat a vertex and give a cycle. Repeatedly place such a vertex next and remove it. Conversely, a forward ordering cannot follow a cycle back to its starting vertex.
+
+**Wikipedia:** [Topological sorting](https://en.wikipedia.org/wiki/Topological_sorting). It says: “A topological ordering is possible if and only if the graph has no directed cycles”
+
+**Sources:**
+
+- [A. B. Kahn, Topological sorting of large networks, Communications of the ACM (1962).](https://doi.org/10.1145/368996.369025)
+
 ### Color counts give deletion and contraction
 
 **Remember:** After deleting an edge, split colorings by whether its endpoints match.
@@ -529,6 +649,24 @@
 **How the definition helps.** Counting colorings lets us split the colorings after deletion by whether the endpoints have the same color. Different colors give exactly the colorings of G. Equal colors give exactly the colorings after contraction. For an edgeless graph, each vertex has k independent choices (our own). Induction on the number of edges then proves the count is a polynomial (our own).
 
 **Wikipedia:** [Chromatic polynomial](https://en.wikipedia.org/wiki/Chromatic_polynomial). It says: “This follows from the observation that every k-coloring of G either gives different colors to u and v, or the same colors.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Distance parity detects bipartite graphs
+
+**Remember:** An edge within one parity gives an odd cycle.
+
+*Rules out counterexamples.* MSC 05C38 (Paths and cycles). arXiv math.CO. Level 1: early undergraduate.
+
+**Definition.** In each connected piece of a graph, choose a starting vertex and group vertices by even or odd distance from it. A graph is bipartite if its vertices split into two groups with every edge between groups.
+
+**Problem.** A finite undirected graph is bipartite exactly when it contains no odd cycle.
+
+**How the definition helps.** Grouping vertices by distance parity gives a bipartition unless some edge joins vertices in the same group. In our own proof, take shortest paths from the starting vertex to both ends of that edge. Follow one path out, cross the edge, and return along the other path. This closed walk has odd length. Such a walk contains an odd cycle. Conversely, a cycle in a bipartite graph alternates groups and must have even length.
+
+**Wikipedia:** [Bipartite graph](https://en.wikipedia.org/wiki/Bipartite_graph). It says: “a graph is bipartite if and only if it has no odd cycle as a subgraph”
+
+**Paper or page:** [Graph containing Closed Walk of Odd Length also contains Odd Cycle](https://proofwiki.org/wiki/Graph_containing_Closed_Walk_of_Odd_Length_also_contains_Odd_Cycle). It says: “Let G have a closed walk of odd length. Then G has an odd cycle.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -602,6 +740,22 @@
 
 - [Carl Hierholzer and Chr. Wiener, Ueber die Möglichkeit, einen Linienzug ohne Wiederholung und ohne Unterbrechung zu umfahren (1873).](https://doi.org/10.1007/bf01442866)
 
+### Adjacency matrix powers count walks
+
+**Remember:** Multiplication counts all ways to join two walks.
+
+*True by definition.* MSC 05C50 (Graphs and linear algebra (matrices, eigenvalues, etc.)). arXiv math.CO. Level 1: early undergraduate.
+
+**Definition.** For a finite simple graph, put 1 in a matrix entry if its row and column vertices share an edge. Put 0 otherwise. This replaces an edge list with a table of one-step walk counts.
+
+**Problem.** For n ≥ 0, entry (i,j) of the nth matrix power counts walks of length n from i to j.
+
+**How the definition helps.** Matrix multiplication counts every choice of the next edge from the endpoint of a walk. A walk follows consecutive edges and may repeat vertices. Our own proof starts with the identity matrix, which counts walks of length zero. Unlike an edge list, each matrix entry already counts one-step walks. Removing the last edge splits each longer walk uniquely, so induction gives the formula.
+
+**nLab:** [adjacency matrix](https://ncatlab.org/nlab/show/adjacency+matrix). It says: “entry bᵢ,ⱼ in Aⁿ is the number of n-step walks between vertex vᵢ ∈ G and vⱼ ∈ G.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Free endpoints identify larger matchings
 
 **Remember:** Only an alternating path with two free ends adds a matching edge.
@@ -619,6 +773,22 @@
 **Sources:**
 
 - [Claude Berge, Two Theorems in Graph Theory (1957).](https://doi.org/10.1073/pnas.43.9.842)
+
+### Line graphs turn matchings into independent sets
+
+**Remember:** Edges that do not meet become vertices that are not adjacent.
+
+*True by definition.* MSC 05C76 (Graph operations (line graphs, products, etc.)). arXiv math.CO. Level 1: early undergraduate.
+
+**Definition.** For a simple undirected graph G, make one new vertex for each edge. Join two new vertices exactly when their edges in G share an endpoint. The resulting graph is the line graph of G.
+
+**Problem.** Matchings correspond to independent sets in the line graph, with the same size. A matching has no shared endpoints, and an independent set contains no adjacent vertices.
+
+**How the definition helps.** The line graph turns the rule against shared endpoints into the rule against adjacent vertices. In our own comparison, the original matching problem selects edges directly. The correspondence preserves size because each edge supplies exactly one vertex.
+
+**Wikipedia:** [Line graph](https://en.wikipedia.org/wiki/Line_graph). It says: “corresponds to a set of vertices in L(G) no two of which are adjacent, that is, an independent set.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Forbidding objects of size zero makes sequence and set constructions countable
 
@@ -854,6 +1024,24 @@
 - [S. K. Stein, Convex maps, Proceedings of the American Mathematical Society 2 (1951) 464–466](https://doi.org/10.1090/S0002-9939-1951-0041425-5)
 - [W. T. Tutte, How to draw a graph, Proceedings of the London Mathematical Society 13 (1963) 743–767](https://doi.org/10.1112/plms/s3-13.1.743)
 
+### Landmark distances bound graph size
+
+**Remember:** Every nonlandmark needs its own list of positive distances.
+
+*True by definition.* MSC 05C12 (Distance in graphs). arXiv cs.DM. Level 2: later undergraduate.
+
+**Definition.** Landmarks resolve a connected graph if every pair of vertices has different distances to at least one landmark. Equivalently, each vertex has a unique list of distances to the landmarks in a fixed order. The metric dimension is the fewest landmarks needed. The diameter is the largest distance between vertices.
+
+**Problem.** Let β be the metric dimension and D the diameter of a finite connected graph. If β ≥ 1, the graph has at most Dᵝ + β vertices.
+
+**How the definition helps.** Distance lists turn pairwise separation into an injection, so counting possible lists bounds the graph’s size. Each nonlandmark has a positive integer distance of at most D to each landmark. There are at most Dᵝ such lists and β landmarks to add. In our own explanation, the definitions agree because unequal lists differ in at least one coordinate.
+
+**Wikipedia:** [Metric dimension (graph theory)](https://en.wikipedia.org/wiki/Metric_dimension_%28graph_theory%29). It says: “each vertex that is not in the resolving set is uniquely determined by a distance vector”
+
+**Sources:**
+
+- [Samir Khuller, Balaji Raghavachari, and Azriel Rosenfeld, Landmarks in Graphs (1996)](https://doi.org/10.1016/0166-218X(95)00106-2)
+
 ### Brooks' theorem needs connected graphs to name its exceptions
 
 **Remember:** Ask for connected simple graphs, and only odd cycles and cliques need Δ + 1.
@@ -965,6 +1153,24 @@
 **Sources:**
 
 - [L. Lovász, Normal hypergraphs and the perfect graph conjecture, Discrete Mathematics 2 (1972) 253–267](https://doi.org/10.1016/0012-365X(72)90006-4)
+
+### Conservative weights bound closed walks
+
+**Remember:** Check cycles once, but do not traverse a negative edge twice.
+
+*Rules out counterexamples.* MSC 05C22 (Signed and weighted graphs), 05C38. arXiv cs.DM, cs.DS. Level 2: later undergraduate.
+
+**Definition.** In a simple undirected graph, an edge weighting is conservative if every simple cycle has nonnegative total weight. This lets some individual edges have negative weights.
+
+**Problem.** Every closed walk that uses each negative edge at most once has nonnegative weight under a conservative weighting.
+
+**How the definition helps.** Conservativity rules out negative simple cycles, leaving only immediate returns along one edge to check. In our own proof, split the walk at repeated vertices until each piece is a simple cycle or a two-step return. A return uses its edge twice, so the restriction forbids a negative return. A negative triangle shows why the cycle condition matters. Traversing one negative edge twice shows why the repetition restriction matters.
+
+**Paper or page:** [Shortest Odd Paths in Undirected Graphs with Conservative Weight Functions](https://arxiv.org/abs/2308.12653v1). It says: “If W is a closed walk that does not contain any edge of E⁻ more than once, then w(W) ≥ w(E(W)) ≥ 0.”
+
+**Sources:**
+
+- [Shortest Odd Paths in Undirected Graphs with Conservative Weight Functions](https://arxiv.org/abs/2308.12653v1)
 
 ### Switching turns Harary's balance theorem into one change of signs
 
@@ -1283,6 +1489,76 @@
 
 - [N. Robertson and P. D. Seymour, Graph minors. III. Planar tree-width, Journal of Combinatorial Theory, Series B 36 (1984) 49–64](https://doi.org/10.1016/0095-8956(84)90013-3)
 - [R. Halin, S-functions for graphs, Journal of Geometry 8 (1976) 171–186](https://doi.org/10.1007/BF01917434)
+
+### Minimal time windows answer reachability
+
+**Remember:** A larger window needs no record if a smaller one already works.
+
+*True by definition.* MSC 05C85 (Graph algorithms (graph-theoretic aspects)), 68R10. arXiv cs.DS, cs.DM. Level 2: later undergraduate.
+
+**Definition.** In a graph with finitely many timed contacts, a temporal route uses contacts in increasing time order. Its window runs from departure to arrival. For each ordered pair of distinct vertices, store only route windows that contain no strictly smaller route window for the same pair.
+
+**Problem.** A target can be reached from a source inside a query window exactly when that window contains a stored minimal window.
+
+**How the definition helps.** The route that works in a smaller window also works in any containing window. Our own converse starts with a route inside the query window and shrinks its time window to a minimal one. For a finite list of contacts, a minimal window must exist. Our own note is that constructing and maintaining the list still takes work.
+
+**Paper or page:** [A Dynamic Data Structure for Temporal Reachability with Unsorted Contact Insertions](https://arxiv.org/abs/2102.04187v2). It says: “If u can reach v within ℐ₁, then u can reach v within ℐ₂.”
+
+**Sources:**
+
+- [A Dynamic Data Structure for Temporal Reachability with Unsorted Contact Insertions](https://arxiv.org/abs/2102.04187v2)
+
+### Negative cycles prevent cheapest walks
+
+**Remember:** A reachable negative cycle can repeatedly lower the cost of reaching a later vertex.
+
+*Rules out counterexamples.* MSC 05C85 (Graph algorithms (graph-theoretic aspects)), 05C12. arXiv cs.DS, cs.DM. Level 2: later undergraduate.
+
+**Definition.** Define distance as the infimum of the costs of walks, which may repeat vertices. If no walk exists, use infinity. In contrast, a simple path cannot revisit a vertex.
+
+**Problem.** For a reachable target in a finite directed graph, a cheapest walk exists exactly when no negative cycle lies on a source-to-target walk.
+
+**How the definition helps.** The walk definition isolates the obstruction, because one more circuit of a negative cycle lowers the cost again. Our own counterexample is a source joined to a negative cycle with an exit to the target. If there is no such cycle, our own proof deletes every repeated cycle without raising the cost. A cheapest simple path is then also a cheapest walk in our own argument.
+
+**Wikipedia:** [Bellman–Ford algorithm](https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm). It says: “any path that has a point on the negative cycle can be made cheaper by one more walk around the negative cycle.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Restricted paths give Floyd’s recurrence
+
+**Remember:** Allow one more interior vertex and compare routes with and without it.
+
+*True by definition.* MSC 05C85 (Graph algorithms (graph-theoretic aspects)), 68W05. arXiv cs.DS. Level 2: later undergraduate.
+
+**Definition.** Number the vertices of a finite directed graph with real edge weights. For each ordered pair, record the cheapest walk whose interior vertices belong to the first k vertices. Allow an empty walk of cost zero and record infinity if no walk exists.
+
+**Problem.** Assume the graph has no negative cycles. Allow one more interior vertex. The new distance is the smaller of the old distance and the sum of the two old distances through that vertex.
+
+**How the definition helps.** Restricting the allowed interior vertices splits the ordinary shortest-distance problem into two cases at each step. In our own proof, remove cycles from a cheapest walk without raising its cost. The resulting path either avoids the new vertex or visits it once, splitting into two previously allowed paths. Conversely, joining the two old walks gives an allowed walk. The work moves to computing the restricted distances in order.
+
+**Wikipedia:** [Floyd–Warshall algorithm](https://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm). It says: “using vertices only from the set {1,2,…,k} as intermediate points along the way.”
+
+**Sources:**
+
+- [Robert W. Floyd, Algorithm 97: Shortest Path (1962)](https://doi.org/10.1145/367766.368168)
+
+### Tour minima find common ancestors
+
+**Remember:** Between two visits, the shallowest vertex is their lowest common ancestor.
+
+*True by definition.* MSC 05C85 (Graph algorithms (graph-theoretic aspects)), 68W05. arXiv cs.DS. Level 2: later undergraduate.
+
+**Definition.** Walk a rooted tree from the root, returning along each edge after visiting its descendants. Record the vertex and its depth at every visit. Use the first recorded visit to represent each queried vertex.
+
+**Problem.** The lowest common ancestor, the deepest ancestor of both queried vertices, is the shallowest vertex between their first visits, including the endpoints. Count each vertex as its own ancestor.
+
+**How the definition helps.** The recorded tour converts a search through ancestors into a search for the minimum depth in an interval. In our own proof, the tour stays inside the common ancestor’s subtree throughout that interval. It visits the ancestor when passing between branches, or starts there if one queried vertex is the ancestor. Precomputing interval minima does the work for fast repeated queries.
+
+**Wikipedia:** [Lowest common ancestor](https://en.wikipedia.org/wiki/Lowest_common_ancestor). It says: “a lowest common ancestor query can then be transformed into a query that seeks the minimum value occurring within some subinterval of this sequence of numbers.”
+
+**Sources:**
+
+- [Michael A. Bender and Martin Farach-Colton, The LCA Problem Revisited (2000)](https://doi.org/10.1007/10719839_9)
 
 ### The infinite Hall theorem needs every set to be finite
 
@@ -1662,6 +1938,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Decision diagrams turn coloring into flow
+
+**Remember:** Replace weights on whole paths by flows along their edges.
+
+*True by definition.* MSC 05C72 (Fractional graph theory, fuzzy graph theory), 05C85. arXiv cs.DS, cs.DM. Level 3: graduate.
+
+**Definition.** A fractional coloring assigns nonnegative weights to sets of pairwise nonadjacent vertices. The sets containing each vertex must have total weight at least one. An exact decision diagram represents precisely these sets by paths from a start node to an end node in a directed acyclic graph. Each path tests every vertex once and includes it exactly when the path takes an edge marked for inclusion.
+
+**Problem.** The minimum total coloring weight equals the least flow from start to end that sends at least one unit through each vertex’s inclusion edges collectively.
+
+**How the definition helps.** Exactness lets us replace weighted sets by weighted paths with identical vertex coverage. In our own explanation, send each set’s weight along a path representing it. Flow adds along shared edges and balances at every intermediate node. Conversely, the flow decomposition theorem splits any such nonnegative flow into weighted paths. Their sets give a fractional coloring with the same total weight.
+
+**Paper or page:** [Fractional Chromatic Numbers from Exact Decision Diagrams](https://arxiv.org/abs/2411.03003v1). It says: “Then the linear relaxation $(F')$ is equivalent to (\\ref{VCLP}).”
+
+**Sources:**
+
+- [Fractional Chromatic Numbers from Exact Decision Diagrams](https://arxiv.org/abs/2411.03003v1)
+
 ### The exponential graph turns Hedetniemi's conjecture into a question about one graph
 
 **Remember:** Product into K means a map into the exponential graph.
@@ -1739,6 +2033,22 @@
 
 - [Neil Robertson and Paul D. Seymour, Graph Minors. XX. Wagner's conjecture, Journal of Combinatorial Theory, Series B (2004)](https://doi.org/10.1016/j.jctb.2004.08.001)
 - [Guoli Ding, Excluding a long double path minor, Journal of Combinatorial Theory, Series B 66 (1996) 11–23](https://doi.org/10.1006/jctb.1996.0002)
+
+### Optimal eliminations can leave cliques last
+
+**Remember:** Root at the bag containing the clique and eliminate toward it.
+
+*True by definition.* MSC 05C85 (Graph algorithms (graph-theoretic aspects)), 05C83. arXiv cs.DS, cs.DM. Level 3: graduate.
+
+**Definition.** To eliminate a vertex, join every pair of its remaining neighbors and delete it. An order costs one plus the largest remaining neighbor count at any deletion. A tree decomposition puts vertex sets called bags on a tree so that each edge has both ends in some bag. The bags containing each vertex form a nonempty connected subtree.
+
+**Problem.** For any clique, a set of pairwise adjacent vertices, some minimum-cost order eliminates all other vertices first.
+
+**How the definition helps.** A tree decomposition puts the whole clique in one bag, which our own proof saves for last. The minimum possible largest bag size equals the minimum elimination cost. Take a decomposition attaining that minimum. The clique vertices occur in pairwise intersecting subtrees, which share a node in a tree. Root the tree there and repeatedly delete vertices unique to a nonroot leaf bag, then discard that bag. All remaining neighbors of each deleted vertex fit in its bag, including neighbors joined by earlier deletions. In the root bag, delete the vertices outside the clique first.
+
+**Paper or page:** [On Sparsification for Computing Treewidth](https://arxiv.org/abs/1308.3665v1). It says: “There is a minimum-cost elimination order π∗ of G that eliminates all vertices of A before eliminating any vertex of B.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### A ratio of alternating determinants makes Schur polynomials symmetric
 

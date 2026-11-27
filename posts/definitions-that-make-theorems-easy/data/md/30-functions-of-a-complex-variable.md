@@ -84,6 +84,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Log-convexity controls reciprocal signs
+
+**Remember:** Nondecreasing coefficient ratios control the signs in the reciprocal series.
+
+*Rules out counterexamples.* MSC 30B10 (Power series (including lacunary series) in one complex variable). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** A positive sequence is log-convex if its ratios of successive terms never decrease. This is stronger than requiring positive coefficients in a power series.
+
+**Problem.** For a power series of positive radius with positive log-convex coefficients, its reciprocal has nonpositive coefficients beyond the constant.
+
+**How the definition helps.** Nondecreasing ratios provide the comparisons needed to keep every later reciprocal coefficient nonpositive. Our own explanation uses the identity f(x)(1/f(x)) = 1. Comparing coefficients gives a recurrence, and Kaluza’s sign test follows by induction. Our own counterexample has coefficients 1, 1, ½, ¼, …. Its reciprocal has quadratic coefficient 1 − ½ = ½.
+
+**Paper or page:** [On Kaluza's sign criterion for reciprocal power series](https://arxiv.org/abs/1010.5337v3). It says: “b₀ = 1/a₀ &gt; 0 and bₙ ≤ 0 for all n ∈ {1, 2, …}.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Power series make holomorphic functions differentiable to every order
 
 **Remember:** Differentiate the power series term by term to get another power series.
@@ -654,6 +670,22 @@
 **Wikipedia:** [Radó's theorem (Riemann surfaces)](https://en.wikipedia.org/wiki/Rad%C3%B3%27s_theorem_%28Riemann_surfaces%29). It says: “states that every connected Riemann surface is second-countable (has a countable base for its topology).”
 
 **Paper or page:** [Riemann Surface is Metrizable](https://proofwiki.org/wiki/Riemann_Surface_is_Metrizable). It says: “A Riemann surface is metrizable.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Nonnegative modes bound Hardy evaluation
+
+**Remember:** Point evaluation pairs the coefficients with a geometric sequence.
+
+*True by definition.* MSC 30H10 (Hardy spaces), 42A16. arXiv math.CV, math.CA. Level 3: graduate.
+
+**Definition.** Use circle measure with total mass one. The boundary Hardy space H² consists of square-integrable functions whose negative Fourier coefficients vanish. Its interior description uses analytic functions on the disk whose mean squared magnitude stays bounded on circles centered at zero.
+
+**Problem.** For \|z\| &lt; 1, evaluation at z on the interior function has operator norm 1/√(1 − \|z\|²).
+
+**How the definition helps.** The boundary coefficients turn evaluation into a sum of coefficients times successive powers of z (our own). Parseval identifies the function norm with the square-sum norm of its coefficients (our own). Cauchy–Schwarz bounds evaluation by the norm of the geometric sequence (our own). Choosing the coefficients as successive powers of the complex conjugate of z attains equality (our own). The Hardy boundary theorem identifies the two descriptions of the space (our own).
+
+**Wikipedia:** [Hardy space](https://en.wikipedia.org/wiki/Hardy_space). It says: “the associated holomorphic function f of Hᵖ is given by f(z)=∑ₙ₌₀∞ aₙ zⁿ, \|z\| &lt; 1.”
 
 **Sources:** none listed. No primary source with a working link was found.
 

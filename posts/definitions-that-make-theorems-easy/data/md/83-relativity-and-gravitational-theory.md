@@ -84,6 +84,40 @@
 
 - [H. Minkowski, Die Grundgleichungen für die elektromagnetischen Vorgänge in bewegten Körpern, Nachrichten von der Gesellschaft der Wissenschaften zu Göttingen (1908), 53–111](https://en.wikisource.org/wiki/Translation:The_Fundamental_Equations_for_Electromagnetic_Processes_in_Moving_Bodies)
 
+### Spacelike separation permits order reversal
+
+**Remember:** Only spacelike pairs can swap their order.
+
+*True by definition.* MSC 83A05 (Special relativity), 01A60. arXiv physics.hist-ph. Level 2: later undergraduate.
+
+**Definition.** Minkowski’s spacetime description combines time and space differences into the squared interval c²Δt² − \|Δx\|², where c is the speed of light. A negative interval defines spacelike separation.
+
+**Problem.** Two distinct events occur in opposite time orders for some pair of future-directed inertial observers exactly when their separation is spacelike. An inertial observer moves at constant velocity.
+
+**How the definition helps.** A negative interval means the change of frame needed to make the events simultaneous requires a speed below c. In our own proof, orient the spatial axis along the separation and call the distance x. For relative velocity v along that axis, the Lorentz transformation gives the new time difference the sign of Δt − vx/c². When x exceeds c\|Δt\|, allowed velocities on opposite sides of c²Δt/x give opposite time orders. Otherwise no allowed velocity can reverse the sign. The work lies in the Lorentz transformation law.
+
+**Wikipedia:** [Spacetime](https://en.wikipedia.org/wiki/Spacetime). It says: “From a different reference frame, the orderings of these non-causally-related events can be reversed.”
+
+**Sources:**
+
+- [Hermann Minkowski, Raum und Zeit (1908 address, reprinted 1988)](https://doi.org/10.1007/978-3-322-89451-9_11)
+
+### Horizons exclude overcharged solutions
+
+**Remember:** Too much charge leaves no real horizon radius.
+
+*Rules out counterexamples.* MSC 83C57 (Black holes). arXiv gr-qc, astro-ph.HE. Level 2: later undergraduate.
+
+**Definition.** The Reissner–Nordström family describes the empty region around a spherical, nonrotating charged mass in Einstein–Maxwell theory with zero cosmological constant. A black hole must have an event horizon, the boundary beyond which light cannot escape to distant observers. Measure charge Q and positive mass M in units where the possible horizon radii solve r² − 2Mr + Q² = 0.
+
+**Problem.** For positive M, a Reissner–Nordström black hole has \|Q\| ≤ M. At equality the two horizon radii coincide.
+
+**How the definition helps.** Requiring a horizon rules out parameter values for which the radius equation has no real root. In our own calculation, real roots require M² ≥ Q². If charge exceeds mass in magnitude, the central singularity can send signals to distant observers. Showing that the larger root actually bounds the escape region requires the causal structure of the solution.
+
+**Wikipedia:** [Reissner–Nordström metric](https://en.wikipedia.org/wiki/Reissner%E2%80%93Nordstr%C3%B6m_metric). It says: “have no event horizon (the term under the square root becomes negative) and would display a naked singularity.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Curvature density makes gravity coordinate invariant
 
 **Remember:** Pull back the metric and the whole curvature density follows.
@@ -290,6 +324,25 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Irreducible mass bounds extraction
+
+**Remember:** The initial horizon area sets a floor for the final mass.
+
+*True by definition.* MSC 83C57 (Black holes). arXiv gr-qc, astro-ph.HE. Level 3: graduate.
+
+**Definition.** A Kerr black hole rotates and carries no electric charge. Its horizon is the boundary beyond which light cannot escape to distant observers. Use units where the gravitational constant and light speed equal one. For horizon area A, define the irreducible mass as √(A/(16π)).
+
+**Problem.** Suppose a Kerr black hole ends up as another Kerr black hole in a process covered by the classical area theorem. The final total mass cannot fall below the initial irreducible mass.
+
+**How the definition helps.** Expressing horizon area as a mass turns the area theorem into a lower bound on the final mass. In our own derivation, the classical area theorem first bounds the final irreducible mass below by its initial value. The Kerr mass formula then puts the final total mass at least as high. These two theorems supply the physical work.
+
+**Wikipedia:** [Kerr metric](https://en.wikipedia.org/wiki/Kerr_metric). It says: “M² = Mᵢᵣᵣ² + J²c²/(4Mᵢᵣᵣ²G²).”
+
+**Sources:**
+
+- [Demetrios Christodoulou (1970), Reversible and Irreversible Transformations in Black-Hole Physics](https://doi.org/10.1103/PhysRevLett.25.1596)
+- [J. M. Bardeen, B. Carter and S. W. Hawking (1973), The four laws of black hole mechanics](https://doi.org/10.1007/BF01645742)
+
 ### Killing tensors conserve the Carter quantity
 
 **Remember:** The Killing tensor equation cancels the derivative along a geodesic.
@@ -330,6 +383,22 @@
 **Sources:**
 
 - [Martin Kruskal (1960), Maximal Extension of Schwarzschild Metric](https://doi.org/10.1103/PhysRev.119.1743)
+
+### Radial potential locates photon spheres
+
+**Remember:** The peak of the radial light potential marks the unstable circular orbit.
+
+*True by definition.* MSC 83C57 (Black holes). arXiv gr-qc, astro-ph.HE. Level 3: graduate.
+
+**Definition.** Outside a nonrotating, uncharged black hole, the areal radius r labels spheres of area 4πr². In units where light speed and the gravitational constant equal one, define the radial potential as L²(1 − 2M/r)/r². Here M is the mass and L is the light ray’s conserved angular momentum.
+
+**Problem.** Outside a Schwarzschild black hole of mass M, circular light orbits have areal radius 3M. They are unstable under radial perturbations.
+
+**How the definition helps.** The radial potential turns the search for a circular light orbit into a search for a stationary point. In our own calculation with L ≠ 0, differentiation gives a unique exterior stationary point at r = 3M. The point is a maximum, so a radial disturbance can grow. The physical work derives the radial motion equation that justifies the potential test.
+
+**Wikipedia:** [Schwarzschild geodesics](https://en.wikipedia.org/wiki/Schwarzschild_geodesics). It says: “the unstable orbit &lt;math&gt;r<sub>crit</sub> ={3\\over 2}r<sub>s</sub>&lt;/math&gt;.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Incomplete geodesics need not encounter curvature
 
@@ -388,6 +457,24 @@
 - [H. Bondi, M. G. J. van der Burg, and A. W. K. Metzner (1962), Gravitational waves in general relativity, VII. Waves from axi-symmetric isolated system](https://doi.org/10.1098/rspa.1962.0161)
 - [R. K. Sachs (1962), Gravitational waves in general relativity VIII. Waves in asymptotically flat space-time](https://doi.org/10.1098/rspa.1962.0206)
 
+### Dominant energy bounds total momentum
+
+**Remember:** Keep local energy large enough to pay for local momentum.
+
+*Rules out counterexamples.* MSC 83C40 (Gravitational energy and conservation laws; groups of motions). arXiv gr-qc. Level 4: research.
+
+**Definition.** Initial data describe spatial geometry and its bending in spacetime at one time. The gravitational constraint equations determine local energy density μ and momentum density J from these data. The dominant energy condition requires μ ≥ \|J\| everywhere.
+
+**Problem.** Take smooth complete three-dimensional initial data without boundary, with integrable energy and momentum densities satisfying the dominant energy condition. Assume metric error decays as 1/r and bending as 1/r², gaining one inverse power per derivative through orders two and one respectively. Then total energy is at least total momentum magnitude.
+
+**How the definition helps.** The density bound makes the energy term in the positive mass proof nonnegative. In our own example, take zero bending and multiply the Euclidean metric by (1 − a/√(1 + r²))⁴, with 0 &lt; a &lt; 1. The resulting complete geometry has total energy −2a and zero momentum. Our own sign check uses μ\|v\| + J · v ≥ 0 for every vector v. The proof still needs a global estimate connecting this local sign to energy at infinity.
+
+**Paper or page:** [The case of equality for the spacetime positive mass theorem](https://arxiv.org/abs/2203.01984v3). It says: “Suppose (M,g,k) is a complete asymptotically flat initial data set satisfying the dominant energy condition (DEC) μ ≥ \|J\|. Then E ≥ \|P\|.”
+
+**Sources:**
+
+- [Sven Hirsch and Yiyue Zhang, The case of equality for the spacetime positive mass theorem](https://arxiv.org/abs/2203.01984v3)
+
 ### Nearly round spheres recover total mass
 
 **Remember:** Going to infinity does not make a fixed oval shape round.
@@ -426,6 +513,24 @@
 
 - [Oliver Petersen, András Vasy, Stationarity and Fredholm Theory in Subextremal Kerr-de Sitter Spacetimes, arXiv:2306.09213 (2024), SIGMA 20 (2024), 052, 11 pages](https://arxiv.org/abs/2306.09213v2)
 - [Oliver Petersen, András Vasy, Wave equations in the Kerr–de Sitter spacetime: the full subextremal range, Journal of the European Mathematical Society 27 (2025)](https://doi.org/10.4171/jems/1448)
+
+### Rescaling makes horizon inversion isometric
+
+**Remember:** Divide by radius squared to turn horizon inversion into an isometry.
+
+*True by definition.* MSC 83C57 (Black holes). arXiv gr-qc. Level 4: research.
+
+**Definition.** Consider the exterior of a nonrotating charged black hole whose charge magnitude equals its mass M in geometric units. Define r by the area 4πr² of each sphere. Divide the spacetime metric by r². The inversion keeps time and angles fixed and sends r − M to M²/(r − M).
+
+**Problem.** The inversion preserves the rescaled metric. On the extended exterior it exchanges the future horizon with the boundary reached by outgoing light, and similarly for the past.
+
+**How the definition helps.** Dividing by r² cancels the position-dependent change in the original metric under inversion. In our own calculation, the transformed sphere radius is Mr/(r − M). The original metric gains exactly the square of the ratio of transformed to original radius. The separate boundary argument identifies where incoming and outgoing rays end.
+
+**Paper or page:** [Peeling at extreme black hole horizons](https://arxiv.org/abs/2303.14574v1). It says: “It fixes the photon sphere and exchanges the future event horizon ℋ⁺ and the future null infinity ℐ⁺”
+
+**Sources:**
+
+- [Jack Borthwick, Eric Gourgoulhon and Jean-Philippe Nicolas, Peeling at extreme black hole horizons](https://arxiv.org/abs/2303.14574v1)
 
 ### Strict trapping rules out flat cylinders
 

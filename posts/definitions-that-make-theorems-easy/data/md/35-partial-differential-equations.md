@@ -445,6 +445,24 @@
 - [P. D. Lax, Hyperbolic systems of conservation laws II, Communications on Pure and Applied Mathematics 10 (1957) 537–566](https://doi.org/10.1002/cpa.3160100406)
 - [S. N. Kružkov, First order quasilinear equations in several independent variables, Mathematics of the USSR-Sbornik 10 (1970) 217–243](https://doi.org/10.1070/SM1970v010n02ABEH002156)
 
+### Weak conservation determines shock speed
+
+**Remember:** Across a shock, the flux jump pays for the moving state jump.
+
+*Makes the theorem clean to state or prove.* MSC 35L67 (Shocks and singularities for hyperbolic equations), 76L05. arXiv math.AP, physics.flu-dyn. Level 3: graduate.
+
+**Definition.** A weak solution satisfies the conservation equation after integration against every smooth test function of compact support. Integration by parts places the derivatives on the test function, so the state may jump.
+
+**Problem.** Suppose a bounded weak solution of a one-dimensional conservation law jumps across a smooth moving interface and is smooth up to each side. The interface speed times the state jump equals the flux jump.
+
+**How the definition helps.** In our own proof, the weak equation puts the entire mismatch at the interface into one boundary term. Integration by parts on both sides gives the flux jump minus the interface speed times the state jump. Both jumps mean right value minus left value. The term vanishes for every test function, so its coefficient is zero.
+
+**Paper or page:** [One Dimensional Hyperbolic Conservation Laws: Past and Future](https://arxiv.org/abs/2310.16707v1). It says: “Then the left and right states u⁻, u⁺ and the speed λ satisfy the Rankine-Hugoniot equations”
+
+**Sources:**
+
+- [Alberto Bressan, One Dimensional Hyperbolic Conservation Laws: Past and Future.](https://arxiv.org/abs/2310.16707v1)
+
 ### Variational Dirichlet eigenvalues cannot rise when the domain grows
 
 **Remember:** A larger domain offers more trial functions and can only lower the eigenvalues.

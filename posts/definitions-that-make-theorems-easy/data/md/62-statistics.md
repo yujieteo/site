@@ -1,3 +1,39 @@
+### An envelope makes rejection sampling exact
+
+**Remember:** An envelope lets acceptance multiply the proposal back into the target.
+
+*Rules out counterexamples.* MSC 62-08 (Computational methods for problems pertaining to statistics). arXiv stat.CO. Level 2: later undergraduate.
+
+**Definition.** Choose a proposal density g and a finite constant M such that the target density f satisfies f ≤ Mg almost everywhere. Draw from g and accept with probability f divided by Mg. Repeat independent attempts until one is accepted.
+
+**Problem.** The first accepted draw has density f. Without the envelope condition, clipping the acceptance probability at one need not give that density.
+
+**How the definition helps.** The envelope makes the acceptance weight a probability, so multiplying it by g gives f/M (our own). Conditioning on acceptance then gives density f (our own). For a uniform proposal on \[0,1\], take f(x) = 2x and M = 1 (our own). Clipping the acceptance probability at one gives density proportional to min(2x,1) (our own).
+
+**Wikipedia:** [Rejection sampling](https://en.wikipedia.org/wiki/Rejection_sampling). It says: “Accepting only pairs such that u &lt; f(x)/(Mg(x)) then produces pairs (x,v) uniformly distributed over the subgraph of f(x)”
+
+**Sources:**
+
+- [G. Casella, C. P. Robert and M. T. Wells, Generalized Accept-Reject sampling schemes](https://doi.org/10.1214/lnms/1196285403)
+
+### Antithetic pairs integrate lines exactly
+
+**Remember:** Pair a draw with its reflection so their sum is fixed.
+
+*True by definition.* MSC 62-08 (Computational methods for problems pertaining to statistics). arXiv stat.CO. Level 2: later undergraduate.
+
+**Definition.** For simulation on \[0,1\], pair a uniform draw U with 1 − U. Average the two function values rather than drawing two independent points.
+
+**Problem.** This paired estimator integrates every affine function on \[0,1\] with zero variance.
+
+**How the definition helps.** Reflection fixes the pair’s sum at one, so averaging any affine function gives its midpoint value (our own). For a function of the form ax + b, that midpoint value equals its integral on \[0,1\] (our own). Independent draws lack this cancellation (our own). For nonlinear functions, the work lies in finding pairs whose deviations tend to cancel (our own).
+
+**Paper or page:** [Living on the Edge: An Unified Approach to Antithetic Sampling](https://arxiv.org/abs/2110.15124v2). It says: “CCV are marginally standard uniform and constant in sum.”
+
+**Sources:**
+
+- [Living on the Edge: An Unified Approach to Antithetic Sampling (arXiv 2110.15124v2)](https://arxiv.org/abs/2110.15124v2)
+
 ### Completeness makes the best unbiased estimator unique
 
 **Remember:** A complete statistic has no non-zero function that is unbiased for zero.
@@ -52,6 +88,42 @@
 
 - [R. A. Fisher, Theory of Statistical Estimation, Mathematical Proceedings of the Cambridge Philosophical Society 22 (1925)](https://doi.org/10.1017/S0305004100009580)
 
+### Inverse inclusion weights recover totals
+
+**Remember:** Weight each observation by the inverse of its chance to appear.
+
+*True by definition.* MSC 62D05 (Sampling theory, sample surveys). arXiv stat.ME, stat.AP. Level 2: later undergraduate.
+
+**Definition.** For each sampled person, divide the observed value by that person’s chance of selection. Add the results to estimate the population total. A common multiplier for everyone would ignore differences in selection probabilities.
+
+**Problem.** In a finite population with positive known inclusion probabilities, this estimator is unbiased for the total. Sample members need not be selected independently.
+
+**How the definition helps.** A member contributes its inflated value only with the probability used to inflate it (our own). Taking expectations thus recovers each member’s original value (our own). The work moves to finding the inclusion probabilities from the survey design and the joint probabilities for variance (our own).
+
+**Wikipedia:** [Horvitz–Thompson estimator](https://en.wikipedia.org/wiki/Horvitz%E2%80%93Thompson_estimator). It says: “Taking the expectation of the estimator we can prove it is unbiased as follows:”
+
+**Sources:**
+
+- [D. G. Horvitz and D. J. Thompson, A Generalization of Sampling Without Replacement from a Finite Universe](https://www.tandfonline.com/doi/full/10.1080/01621459.1952.10483446)
+
+### Independent missingness preserves respondent distributions
+
+**Remember:** If observation ignores the data, observed cases keep the original distribution.
+
+*Rules out counterexamples.* MSC 62D10 (Missing data). arXiv stat.ME, stat.AP. Level 2: later undergraduate.
+
+**Definition.** Call data missing completely at random if the pattern of missing values is independent of the full data. The full data include the values that would have been recorded with complete observation.
+
+**Problem.** If complete observation has positive probability, complete cases have the same data distribution as all cases.
+
+**How the definition helps.** Independence gives every data pattern the same chance of being recorded completely (our own). Conditioning on complete observation therefore preserves every event probability (our own). If only high earners skip an income question, respondents underrepresent high earners (our own). The work lies in justifying independence for the study (our own).
+
+**Wikipedia:** [Missing data](https://en.wikipedia.org/wiki/Missing_data). It says: “the participants with completely observed data are in effect a random sample of all the participants assigned a particular intervention.”
+
+**Sources:**
+
+- [D. B. Rubin, Inference and missing data](https://doi.org/10.1093/biomet/63.3.581)
+
 ### Chi-squared ratios give reciprocal F laws and squared t laws
 
 **Remember:** Flip the F ratio or square the t ratio.
@@ -97,6 +169,22 @@
 **How the definition helps.** The sum-of-squares definition lets us put the two lists of independent squares together. We can choose all j + k normals independently because only the joint law of X and Y matters (our own). The density proof instead integrates the product of two gamma densities to find the density of their sum (our own). The work shifts to showing that the normal squares have the stated gamma density (our own).
 
 **Wikipedia:** [Chi-squared distribution](https://en.wikipedia.org/wiki/Chi-squared_distribution). It says: “It follows from the definition of the chi-squared distribution that the sum of independent chi-squared variables is also chi-squared distributed.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Median unbiasedness survives reparameterization
+
+**Remember:** A monotone map can swap the two tails but cannot change their probabilities.
+
+*True by definition.* MSC 62F10 (Point estimation). arXiv stat.TH. Level 2: later undergraduate.
+
+**Definition.** Call an estimate median-unbiased if the true value is a median of its sampling distribution. This replaces the usual requirement that the estimate average to the true value.
+
+**Problem.** A strictly monotone transformation of a median-unbiased real estimate is median-unbiased for the transformed parameter.
+
+**How the definition helps.** A strictly monotone map preserves or swaps the events that the estimate lies above or below the truth (our own). Each event, including equality, still has probability at least one half (our own). The work lies in constructing an estimate with these two bounds (our own). For a positive estimate with finite, positive variance, squaring preserves order but adds the variance to the squared mean (our own).
+
+**Wikipedia:** [Median](https://en.wikipedia.org/wiki/Median). It says: “and has the additional property that it is invariant under one-to-one transformation.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -218,6 +306,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Distinct test rates identify prevalence
+
+**Remember:** A positive rate identifies prevalence when the two groups have different positive rates.
+
+*Rules out counterexamples.* MSC 62P10 (Applications of statistics to biology and medical sciences; meta analysis). arXiv stat.AP, stat.ME. Level 2: later undergraduate.
+
+**Definition.** Choose a set of test readings. Let p and h be its known probabilities among diseased and healthy people, respectively. Require p ≠ h. Subtract h from the observed fraction in the set and divide by p − h.
+
+**Problem.** Draw independent readings from the same population. The estimate averages to the fraction of people with the disease, and its mean squared error tends to zero as the sample grows.
+
+**How the definition helps.** The two different rates make the population fraction in the set an invertible linear function of prevalence (our own). If a test reports positive half the time in both groups, the positive rate cannot distinguish any two prevalences (our own). The work moves to learning the two rates and finding a set that separates them well (our own).
+
+**Paper or page:** [Analysis of Diagnostics (Part I): Prevalence, Uncertainty Quantification, and Machine Learning](https://arxiv.org/abs/2309.00645v2). It says: “is an unbiased estimate of q that converges in mean-square as s → ∞”
+
+**Sources:**
+
+- [Analysis of Diagnostics (Part I): Prevalence, Uncertainty Quantification, and Machine Learning (arXiv 2309.00645v2)](https://arxiv.org/abs/2309.00645v2)
+
 ### Bayesian sufficiency lets Bayes estimates use only the statistic
 
 **Remember:** If the statistic gives the same posterior, it gives the same optimal choices.
@@ -287,6 +393,22 @@
 **Sources:**
 
 - [P. R. Halmos and L. J. Savage, Application of the Radon–Nikodym theorem to the theory of sufficient statistics, Annals of Mathematical Statistics 20 (1949) 225–241](https://doi.org/10.1214/aoms/1177730032)
+
+### Likelihood ratios give minimal sufficiency
+
+**Remember:** Keep relative likelihoods and drop the scale shared by all parameter values.
+
+*True by definition.* MSC 62B05 (Sufficient statistics and fields). arXiv stat.TH. Level 3: graduate.
+
+**Definition.** Start with a finite family of strictly positive densities relative to one common measure. Divide each density by the same reference density from that family. Record the resulting ratios at the observed data point.
+
+**Problem.** A statistic is sufficient if the conditional data distribution given that statistic is the same for every parameter. The ratio vector is minimal sufficient. This means it is sufficient and every other sufficient statistic determines it apart from events of probability zero.
+
+**How the definition helps.** Taking ratios cancels every common factor in the likelihood (our own). The factorization theorem says a sufficient statistic captures all parameter dependence in the density (our own). The reference density times each ratio recovers the original density, proving sufficiency by that theorem (our own). Conversely, factoring through any sufficient statistic shows that it determines each ratio (our own).
+
+**Wikipedia:** [Sufficient statistic](https://en.wikipedia.org/wiki/Sufficient_statistic). It says: “The collection of likelihood ratios {L(X ∣ θᵢ)/L(X ∣ θ₀)} for i = 1,…,k, is a minimal sufficient statistic if the parameter space is discrete {θ₀,…,θₖ}.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### The Pitman–Koopman–Darmois theorem needs a support that does not move
 
@@ -379,6 +501,58 @@
 - [Tilmann Gneiting and Adrian E. Raftery, Strictly Proper Scoring Rules, Prediction, and Estimation, Journal of the American Statistical Association 102 (2007) 359–378](https://doi.org/10.1198/016214506000001437)
 - [Yiling Chen and Fang-Yi Yu, Optimal Scoring Rule Design under Partial Knowledge, arXiv 2107.07420](https://arxiv.org/abs/2107.07420v3)
 
+### Equalizer Bayes rules are minimax
+
+**Remember:** An equalizer makes the average risk equal the worst risk.
+
+*True by definition.* MSC 62C20 (Minimax procedures in statistical decision theory), 62C10. arXiv stat.TH. Level 3: graduate.
+
+**Definition.** Call a decision rule an equalizer if its risk, or expected loss, is constant across parameter values. A Bayes rule minimizes the average risk under a given prior.
+
+**Problem.** If a Bayes rule for a probability prior has finite constant risk, it minimizes the worst-case risk.
+
+**How the definition helps.** Constant risk turns the prior average into the worst risk, avoiding a separate optimization over parameters (our own). Every competitor’s worst risk bounds its prior average from above (our own). Its prior average is at least as large as the Bayes rule’s average by definition (our own). The work lies in finding a prior whose Bayes rule has constant risk (our own).
+
+**Wikipedia:** [Minimax estimator](https://en.wikipedia.org/wiki/Minimax_estimator). It says: “If a Bayes estimator has constant risk, it is minimax.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Propensity scores balance measured covariates
+
+**Remember:** At a fixed score, the measurements cannot change the treatment probability.
+
+*True by definition.* MSC 62D20 (Causal inference from observational studies). arXiv stat.ME, stat.AP. Level 3: graduate.
+
+**Definition.** For a treatment with two options, record each person’s measurements before treatment. The propensity score is the probability of receiving the first option given those measurements. Group people by this single probability instead of matching every measurement separately.
+
+**Problem.** Conditional on the true score, treatment is independent of the recorded measurements. Wherever the score lies strictly between zero and one, each option has positive conditional probability.
+
+**How the definition helps.** Once the score is fixed, knowing the measurements cannot further change the treatment probability (our own). Taking conditional expectations gives that probability both with the measurements and without them (our own). The work moves to estimating the score and checking which parts of the sample have both treatment groups (our own).
+
+**Wikipedia:** [Propensity score matching](https://en.wikipedia.org/wiki/Propensity_score_matching). It says: “The propensity score e(x) is a balancing score.”
+
+**Sources:**
+
+- [P. R. Rosenbaum and D. B. Rubin, The central role of the propensity score in observational studies for causal effects](https://doi.org/10.1093/biomet/70.1.41)
+
+### Weighted residuals give two safeguards
+
+**Remember:** Either a correct prediction or a correct weight removes the bias.
+
+*True by definition.* MSC 62D20 (Causal inference from observational studies). arXiv stat.ME, stat.AP. Level 3: graduate.
+
+**Definition.** Pick one treatment and predict its mean outcome from each person’s pretreatment measurements. Start with the population average prediction. Among people receiving that treatment, weight each prediction error by the reciprocal of their predicted probability of receiving it. Add the weighted average error, dividing by the sum of weights when averaging a sample.
+
+**Problem.** Assume each observed outcome equals the outcome under the treatment received, and both treatments are possible given the measurements. Given those measurements, treatment must be independent of the outcomes each treatment would produce. With positive working probabilities and finite averages, the population formula recovers the treatment mean if either model is correct (our own).
+
+**How the definition helps.** Adding a weighted correction gives the prediction and probability models two ways to recover the mean (our own). With correct predictions, the average error at each measurement pattern is zero among recipients (our own). With correct probabilities, weighting recipients restores the population distribution of measurements (our own). Their weighted average error then supplies exactly what the population average prediction missed (our own). The paper proves consistency for estimated models, which requires controlling their estimation errors.
+
+**Paper or page:** [Normalized Augmented Inverse Probability Weighting with Neural Network Predictions](https://arxiv.org/abs/2108.01768v2). It says: “The $DR$ estimator \\eqref {nAIPW} is consistent if either $\\hat {Q}<sup>k\\xrightarrow</sup> {p}Q<sup>k$</sup>, $k=0, 1$, or $\\hat {g}\\xrightarrow {p}g$.”
+
+**Sources:**
+
+- [Normalized Augmented Inverse Probability Weighting with Neural Network Predictions (arXiv 2108.01768v2)](https://arxiv.org/abs/2108.01768v2)
+
 ### A natural parameter space with interior makes the sufficient statistic complete
 
 **Remember:** A full-dimensional parameter set makes the sufficient statistic complete.
@@ -462,6 +636,62 @@
 **Sources:**
 
 - [S. Karlin and H. Rubin, The Theory of Decision Procedures for Distributions with Monotone Likelihood Ratio, Annals of Mathematical Statistics 27 (1956)](https://doi.org/10.1214/aoms/1177728259)
+
+### Randomization makes test tradeoffs convex
+
+**Remember:** A coin toss interpolates between the error rates of two tests.
+
+*True by definition.* MSC 62F03 (Parametric hypothesis testing), 62C05. arXiv stat.TH. Level 3: graduate.
+
+**Definition.** Describe a test by its rejection probability at each possible observation, allowing any value from zero to one. An ordinary nonrandomized test allows only zero and one.
+
+**Problem.** Our own specialization considers two fixed probability laws, one for each hypothesis. The attainable pairs of false rejection and false acceptance probabilities form a convex set.
+
+**How the definition helps.** A weighted average of rejection probabilities is another test, and both error probabilities follow the same weighted average (our own). Without randomization, a test on a single possible observation gives only the two constant decisions (our own). The work moves to finding tests on the best attainable boundary, which likelihood ratios give for two fixed laws (our own).
+
+**Paper or page:** [Optimal Decision Rules for Composite Binary Hypothesis Testing under Neyman-Pearson Framework](https://arxiv.org/abs/2505.17851v1). It says: “𝒫 is convex and compact.”
+
+**Sources:**
+
+- [Optimal Decision Rules for Composite Binary Hypothesis Testing under Neyman-Pearson Framework (arXiv 2505.17851v1)](https://arxiv.org/abs/2505.17851v1)
+
+### Split likelihoods give valid tests
+
+**Remember:** Fit on one half and test on the other.
+
+*True by definition.* MSC 62F03 (Parametric hypothesis testing). arXiv stat.TH, stat.ME. Level 3: graduate.
+
+**Definition.** Fit a probability model on one part of the sample. On an independent part, compute the fitted density and divide it by the largest density allowed under the null hypothesis. Use the supremum if no model attains the largest value. An ordinary likelihood ratio fits both models on the test data.
+
+**Problem.** For independent observations from a model with densities, reject when this ratio reaches 1/α, where 0 &lt; α &lt; 1. If the null hypothesis is true, the chance of rejection is at most α.
+
+**How the definition helps.** The separate fit makes the numerator a fixed probability density when we condition on the fitting data (our own). The denominator is at least the true likelihood, so the conditional mean of the ratio is at most one (our own). Markov's inequality gives the bound (our own). The work moves to designing a split and a fit with good power, the chance to detect a false null (our own).
+
+**Paper or page:** [Universal Inference for Testing Calibration of Mean Estimates within the Exponential Dispersion Family](https://arxiv.org/abs/2510.23821v1). It says: “The split and sub-sampled split LRTs \\eqref {def<sub>split</sub><sub>lrt</sub><sub>rejection</sub>} control the type I error of rejecting $\\mathcal {H}<sub>0</sub>$ in favor of $\\mathcal {H}<sub>1</sub>$ at the significance level $\\alpha \\in (0,1)$.”
+
+**Sources:**
+
+- [L. Wasserman, A. Ramdas and S. Balakrishnan, Universal inference](https://doi.org/10.1073/pnas.1922664117)
+- [Universal Inference for Testing Calibration of Mean Estimates within the Exponential Dispersion Family (arXiv 2510.23821v1)](https://arxiv.org/abs/2510.23821v1)
+
+### Posterior averaging gives likelihood ascent
+
+**Remember:** Raising the conditional average keeps the observed likelihood from falling.
+
+*True by definition.* MSC 62F10 (Point estimation), 62-08. arXiv stat.CO, stat.ME. Level 3: graduate.
+
+**Definition.** The observed likelihood integrates the joint density over the missing values. Instead of maximizing it directly, average the complete-data log likelihood under the current conditional distribution of missing values given the observations. Choose a new parameter that preserves or increases this average.
+
+**Problem.** Assume the current observed likelihood is positive and the conditional averages are finite. Any such update preserves or increases the observed likelihood (our own extension).
+
+**How the definition helps.** The posterior average gives a lower bound on the gain in log likelihood (our own). The bound follows from Jensen’s inequality applied to the complete-data likelihood ratio under the current conditional law (our own). The work moves to computing the conditional average and finding a parameter that increases it (our own).
+
+**Paper or page:** [A review of Monte Carlo-based versions of the EM algorithm](https://arxiv.org/abs/2401.00945v1). It says: “Let θ ∈ Θ, and θ′ = M(θ) be the EM update from θ. Then ℓ(θ′) ≥ ℓ(θ).”
+
+**Sources:**
+
+- [A. P. Dempster, N. M. Laird and D. B. Rubin, Maximum Likelihood from Incomplete Data Via the EM Algorithm](https://doi.org/10.1111/j.2517-6161.1977.tb01600.x)
+- [A review of Monte Carlo-based versions of the EM algorithm (arXiv 2401.00945v1)](https://arxiv.org/abs/2401.00945v1)
 
 ### Profile likelihood preserves maximum likelihood estimates under parameter maps
 
@@ -601,6 +831,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Block medians tolerate heavy tails
+
+**Remember:** A bad block can spoil its mean but not outvote a good majority.
+
+*True by definition.* MSC 62G35 (Nonparametric robustness). arXiv stat.TH, stat.ME. Level 3: graduate.
+
+**Definition.** Split independent observations into equally sized blocks. Use the median of their means instead of the mean of all observations.
+
+**Problem.** Assume n independent draws from one distribution with finite standard deviation σ. Choose K = ⌈8 log(1/δ)⌉ equal blocks, with 0 &lt; δ ≤ 1/2 and K dividing n. Our own bound gives error at most 2σ√(K/n) with probability at least 1 − δ.
+
+**How the definition helps.** Taking the median turns a large error into a count of bad blocks (our own). Chebyshev’s inequality bounds each block’s chance of exceeding the error threshold by one quarter (our own). Hoeffding’s inequality bounds the chance that at least half the independent blocks exceed it by exp(−K/8) (our own).
+
+**Paper or page:** [On importance sampling and independent Metropolis-Hastings with an unbounded weight function](https://arxiv.org/abs/2411.09514v2). It says: “Denote by μ̂₍MoM,ₙ₎ the MoM estimator computed with K blocks of size m.”
+
+**Sources:**
+
+- [On importance sampling and independent Metropolis-Hastings with an unbounded weight function (arXiv 2411.09514v2)](https://arxiv.org/abs/2411.09514v2)
+
 ### Continuous margins make copulas unique
 
 **Remember:** Continuous margins fill the cube on which the copula lives.
@@ -688,6 +936,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Overlap guarantees finite logistic fits
+
+**Remember:** Without a separating direction, the likelihood cannot improve by sending coefficients to infinity.
+
+*Rules out counterexamples.* MSC 62J12 (Generalized linear models (logistic models)). arXiv stat.ME, stat.TH. Level 3: graduate.
+
+**Definition.** In binary logistic regression, each observation has a score equal to its predictor vector dotted with the coefficient vector. Reverse the score’s sign for outcome zero. Call the sample overlapping if no coefficient vector makes every signed score nonnegative and at least one positive.
+
+**Problem.** Assume the predictor matrix has linearly independent columns and the sample overlaps. Then exactly one finite coefficient vector maximizes the likelihood.
+
+**How the definition helps.** Overlap forces some signed score below zero in every unit direction (our own). Compactness gives a uniform negative bound for the smallest score, so the log likelihood tends to minus infinity as coefficients diverge (our own). Strict concavity gives uniqueness (our own). If a direction instead gives every observation a positive signed score, scaling it up improves the fit indefinitely (our own).
+
+**Wikipedia:** [Separation (statistics)](https://en.wikipedia.org/wiki/Separation_%28statistics%29). It says: “in case of a logistic regression with completely separated data the maximum appears at the parameter space's margin, leading to "infinite" estimates”
+
+**Sources:**
+
+- [A. Albert and J. A. Anderson, On the existence of maximum likelihood estimates in logistic regression models](https://doi.org/10.1093/biomet/71.1.1)
+
 ### Closed testing protects true hypotheses
 
 **Remember:** Reject a claim only after rejecting every conjunction that contains it.
@@ -706,6 +972,78 @@
 
 - [Too Many, Too Improbable: testing joint hypotheses and closed testing shortcuts](https://arxiv.org/abs/2108.04731v3)
 - [Marcus, Peritz, and Gabriel (1976), On closed testing procedures with special reference to ordered analysis of variance](https://doi.org/10.1093/biomet/63.3.655)
+
+### Confidence sequences bound false alarms
+
+**Remember:** If every set contains the truth, the sets cannot have empty intersection.
+
+*True by definition.* MSC 62L10 (Sequential statistical analysis). arXiv stat.ME, stat.TH. Level 3: graduate.
+
+**Definition.** A confidence sequence is a stream of sets which all contain the true parameter with probability at least 1 − α. Ordinary confidence intervals give that promise for each fixed time alone.
+
+**Problem.** Signal a change the first time the sets seen so far have empty intersection. If the parameter never changes, the chance of ever signaling is at most α.
+
+**How the definition helps.** One parameter inside every set also lies in their intersection (our own). An empty intersection therefore requires at least one set to miss the unchanged parameter (our own). The work lies in constructing sets whose chance of ever missing the parameter is at most α (our own).
+
+**Paper or page:** [Sequential change detection via backward confidence sequences](https://arxiv.org/abs/2302.02544v1). It says: “controls the probability of false alarm (PFA) at level α.”
+
+**Sources:**
+
+- [Sequential change detection via backward confidence sequences (arXiv 2302.02544v1)](https://arxiv.org/abs/2302.02544v1)
+
+### Risk sets cancel baseline hazards
+
+**Remember:** Compare event rates at the same time and the common factor cancels.
+
+*True by definition.* MSC 62N02 (Estimation in survival analysis and censored data), 62P10. arXiv stat.AP, stat.ME. Level 3: graduate.
+
+**Definition.** In a proportional hazards model, a subject’s instantaneous event rate is a common baseline rate times a subject-specific multiplier. The risk set holds the subjects who have not yet had the event. Multiply the conditional event probabilities within those sets instead of using the full event-time likelihood.
+
+**Problem.** Take independent subjects with continuous event times and complete follow-up. At an event time with positive total event rate, condition on that time and the subjects still at risk. Each subject’s chance of being the one who fails equals their multiplier divided by the sum of the at-risk subjects’ multipliers.
+
+**How the definition helps.** Conditioning on the event time and risk set makes each rate share the same baseline factor (our own). That factor cancels in the ratio (our own). The work moves to justifying the proportional rate model and deriving uncertainty for the estimate from these conditional comparisons (our own).
+
+**Wikipedia:** [Proportional hazards model](https://en.wikipedia.org/wiki/Proportional_hazards_model). It says: “The first factor is the partial likelihood shown below, in which the baseline hazard has "canceled out".”
+
+**Sources:**
+
+- [D. R. Cox, Regression Models and Life-Tables](https://doi.org/10.1111/j.2517-6161.1972.tb00899.x)
+
+### Coupled proposals attain total variation
+
+**Remember:** The stickier chain stays put whenever shared proposals fail to join the chains.
+
+*True by definition.* MSC 62-08 (Computational methods for problems pertaining to statistics). arXiv stat.CO, stat.TH. Level 4: research.
+
+**Definition.** Take positive finite target and proposal densities on the same region of Euclidean space. Write w for their ratio, target divided by proposal. From state x, propose z independently from the proposal and accept if a uniform draw on \[0,1\] is below min(1,w(z)/w(x)). Give two chains the same fresh proposal and uniform draw at every step.
+
+**Problem.** Start the chains at distinct points. After t steps, their probability of still differing equals the largest difference between the probabilities they assign to any one event.
+
+**How the definition helps.** Shared draws keep both chains together once they meet, unlike independent draws (our own). Call the starting point with greater weight x, choosing either point in a tie (our own). Before meeting, the chain from x stays there and the other chain has weight at most w(x) (our own). Whenever the chain from x accepts, the other chain therefore accepts too (our own). Continuous proposals almost surely never hit x (our own). The probability difference at x therefore equals the probability of disagreement, which bounds the difference for every event (our own).
+
+**Paper or page:** [On importance sampling and independent Metropolis-Hastings with an unbounded weight function](https://arxiv.org/abs/2411.09514v2). It says: “for all t ≥ 1, \|Pᵗ(𝐱,·) − Pᵗ(𝐲,·)\|ₜᵥ = ℙ(𝐱,𝐲)(τ &gt; t) = max(r(𝐱),r(𝐲))ᵗ.”
+
+**Sources:**
+
+- [On importance sampling and independent Metropolis-Hastings with an unbounded weight function (arXiv 2411.09514v2)](https://arxiv.org/abs/2411.09514v2)
+
+### Reweighted samples restore unbiasedness
+
+**Remember:** Weight the whole pool by the same factor that normalizes the point weights.
+
+*True by definition.* MSC 62-08 (Computational methods for problems pertaining to statistics). arXiv stat.CO. Level 4: research.
+
+**Definition.** Start with N independent points from a proposal distribution, where N ≥ 1. Give each point weight equal to its target density divided by its proposal density. Multiply the joint density of the points by their average weight to define a new sampling law. Under this law, average function values using weights proportional to the point weights.
+
+**Problem.** For an integrable function, the weighted average in a pool from the new law has the target mean. The target law must have a density relative to the proposal law.
+
+**How the definition helps.** The average weight in the new density cancels the denominator in the weighted average (our own). Pools with zero total weight have zero probability under the new law (our own). Each remaining term integrates to the target mean after weighting its proposal density (our own). The work moves from correcting a biased average to sampling from the new law (our own).
+
+**Paper or page:** [BR-SNIS: Bias Reduced Self-Normalized Importance Sampling](https://arxiv.org/abs/2207.06364v2). It says: “For every $N \\in \\mathbb{N}<sup>\*</sup> $ and $\\pi $-integrable function $f$, \\\[ {\\textstyle \\int \\targetkern f(x<sup>1:N</sup>) \\boldsymbol{\\pi}<sub>N</sub> ( {d} x<sup>1:N</sup>) = \\pi (f) .} \\\]”
+
+**Sources:**
+
+- [G. Cardoso, S. Samsonov, A. Thin, E. Moulines and J. Olsson, BR-SNIS: Bias Reduced Self-Normalized Importance Sampling](https://arxiv.org/abs/2207.06364v2)
 
 ### A log score that uses survival for censored cases stays strictly proper
 
@@ -1194,6 +1532,24 @@
 **Sources:**
 
 - [Oliver Y. Feng, Yu-Chun Kao, Min Xu, Richard J. Samworth, Optimal convex $M$-estimation via score matching, arXiv:2403.16688v2 (2024)](https://arxiv.org/abs/2403.16688v2)
+
+### Adjusted maxima allow asynchronous tests
+
+**Remember:** Adjust the maximum before comparing tests that can stop at different times.
+
+*Rules out counterexamples.* MSC 62J15 (Paired and multiple comparisons; multiple testing), 62L10. arXiv stat.ME, stat.TH. Level 4: research.
+
+**Definition.** Start each test with a nonnegative sequence of values beginning at one. Under a true null hypothesis, its mean at every stopping time must be at most one. Apply an increasing nonnegative function A to the largest value seen so far. Require ∫₁∞ A(x)/x² dx ≤ 1.
+
+**Problem.** Read the K adjusted values at possibly different times and order them from largest to smallest. Reject the first k hypotheses for the largest k whose value reaches K/(kα), or reject none if no k qualifies. For 0 &lt; α &lt; 1, the expected fraction of rejections that are false is at most α.
+
+**How the definition helps.** The adjustment bounds the mean even if we select the largest value across all times (our own). Under a true null hypothesis, Ville’s inequality bounds the probability of ever reaching x by 1/x for x ≥ 1 (our own). Integration gives the required mean bound (our own). Each false rejection contributes at most α/K times its adjusted value to the false fraction (our own). Count that fraction as zero when no test rejects (our own).
+
+**Paper or page:** [Carefree multiple testing with e-processes](https://arxiv.org/abs/2501.19360v2). It says: “The e-BH procedure applied to the adjusted running maxima of e-processes controls the FDR-sup at level K₀ α / K.”
+
+**Sources:**
+
+- [Carefree multiple testing with e-processes (arXiv 2501.19360v2)](https://arxiv.org/abs/2501.19360v2)
 
 ### Swappable knockoffs give fair signs
 

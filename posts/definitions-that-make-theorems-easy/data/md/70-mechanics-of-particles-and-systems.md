@@ -46,6 +46,38 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Inertia operators reveal principal axes
+
+**Remember:** Diagonalize the inertia operator to find the spin axes.
+
+*True by definition.* MSC 70E15 (Free motion of a rigid body), 70B10. arXiv physics.class-ph. Level 2: later undergraduate.
+
+**Definition.** For rotation about a fixed point, the inertia operator I sends angular velocity to angular momentum about that point. A principal axis is a line through the point whose direction is an eigenvector of I.
+
+**Problem.** A three-dimensional rigid body has an orthonormal basis of principal axes. Angular momentum is parallel to angular velocity for rotation about each one.
+
+**How the definition helps.** The operator gives every principal axis at once by the spectral theorem for real symmetric matrices (our own). Finding the scalar moment about one chosen axis alone does not identify the other axes (our own). The mass integral gives a symmetric matrix because each mass contributes a symmetric matrix (our own).
+
+**nLab:** [moment of inertia](https://ncatlab.org/nlab/show/moment+of+inertia). It says: “This linear function is additionally symmetric with respect to the induced inner product”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Poinsot’s ellipsoid rolls without slipping
+
+**Remember:** At contact, the radius is the rotation axis.
+
+*Makes the theorem clean to state or prove.* MSC 70E15 (Free motion of a rigid body), 70G45. arXiv physics.class-ph. Level 2: later undergraduate.
+
+**Definition.** Work in a frame moving with the center of mass and with axes fixed in direction. Let I send angular velocity to angular momentum about that center. Attach to the body the ellipsoid of vectors u satisfying u · Iu = 2T, where T is its rotational kinetic energy.
+
+**Problem.** For torque-free rotation about the center of mass with nonzero spin and positive definite inertia, the ellipsoid rolls without slipping. Its point of contact with a fixed plane is the tip of the angular velocity vector.
+
+**How the definition helps.** The energy equation puts the spin vector on the ellipsoid with its normal parallel to the conserved angular momentum (our own). Their dot product is twice the conserved energy, so the tangent plane has fixed direction and height (our own). The contact point lies on the instantaneous spin axis and therefore has zero velocity in this frame (our own). Conservation of energy and angular momentum supplies the dynamical part of the proof (our own).
+
+**Wikipedia:** [Poinsot's ellipsoid](https://en.wikipedia.org/wiki/Poinsot%27s_ellipsoid). It says: “Its inertia ellipsoid rolls, without slipping, on the invariable plane, with the center of the ellipsoid a constant height above the plane.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Mass centers give parallel axis shifts
 
 **Remember:** Shift from the mass center and the cross term vanishes.
@@ -59,6 +91,40 @@
 **How the definition helps.** Choosing the center of mass as origin removes the cross term that an arbitrary origin would leave (our own). Projecting each displacement onto the plane perpendicular to the axes preserves its zero mass-weighted sum (our own). The squared shift then contributes Md² (our own).
 
 **Wikipedia:** [Parallel axis theorem](https://en.wikipedia.org/wiki/Parallel_axis_theorem). It says: “which is zero since the center of mass lies at the origin.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Kepler velocity traces a circle
+
+**Remember:** Kepler’s ellipse becomes a circle in velocity space.
+
+*Makes the theorem clean to state or prove.* MSC 70F05 (Two-body problems), 70F15. arXiv physics.class-ph. Level 2: later undergraduate.
+
+**Definition.** Define the hodograph as the path of the velocity vector’s tip, with its tail fixed at the origin. This tracks motion in velocity space rather than position space.
+
+**Problem.** Under an attractive inverse-square force with nonzero angular momentum, the velocities lie on a circle. An unbound orbit may trace only part of that circle.
+
+**How the definition helps.** The hodograph makes the orbit equation an integral of a rotating unit vector in velocity space (our own). Conservation of angular momentum gives an angular speed proportional to inverse squared distance (our own). Acceleration contains the same distance factor, so velocity differentiated with respect to angle is a constant times the radial unit vector (our own). Integration gives a fixed vector plus a rotating vector of constant length (our own).
+
+**Wikipedia:** [Hodograph](https://en.wikipedia.org/wiki/Hodograph). It says: “The hodograph may be defined as the path traced out by the extremity of a vector which continually represents, in direction and magnitude, the velocity of a moving body.”
+
+**Sources:**
+
+- [William Rowan Hamilton, The Hodograph, or a New Method of Expressing in Symbolical Language the Newtonian Law of Attraction (1847)](https://www.maths.tcd.ie/pub/HistMath/People/Hamilton/Hodograph/)
+
+### Reciprocal radius linearizes Kepler orbits
+
+**Remember:** Use reciprocal distance and angle to straighten the Kepler equation.
+
+*Makes the theorem clean to state or prove.* MSC 70F05 (Two-body problems), 70F15. arXiv physics.class-ph, math-ph. Level 2: later undergraduate.
+
+**Definition.** Describe a central-force orbit using the reciprocal radius u = 1/r as a function of polar angle θ. Use the conserved angular momentum to trade the time variable for θ.
+
+**Problem.** For an attractive inverse-square force and nonzero angular momentum, u is a constant plus a sinusoid in θ. Hence each orbit is part of a conic with a focus at the force center.
+
+**How the definition helps.** Using reciprocal radius and polar angle turns Newton’s radial equation into u″ + u = k/h² (our own). Here primes mean angle derivatives, k is the inverse-square attraction strength per unit mass, and h is angular momentum per unit mass (our own). Conservation of h justifies changing the independent variable from time to angle (our own). Solving the linear equation gives the polar equation of a conic (our own).
+
+**Wikipedia:** [Binet equation](https://en.wikipedia.org/wiki/Binet_equation). It says: “For the Binet equation, the orbital shape is instead more concisely described by the reciprocal u = 1/r as a function of θ.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -93,6 +159,24 @@
 **Wikipedia:** [Jacobi integral](https://en.wikipedia.org/wiki/Jacobi_integral). It says: “Note that the Jacobi integral is minus twice the total energy per unit mass in the rotating frame of reference”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Bounded virials give energy averages
+
+**Remember:** A bounded virial leaves only energy terms in the long-time average.
+
+*Makes the theorem clean to state or prove.* MSC 70F10 (\\(n\\)-body problems), 70H33. arXiv physics.class-ph, math-ph. Level 2: later undergraduate.
+
+**Definition.** Define the virial function as the sum of each particle’s position dotted with its momentum. It equals half the time derivative of the sum of the masses times squared distances from the origin.
+
+**Problem.** Consider Newtonian particles of constant mass acted on only by a potential homogeneous of degree n. Scaling every position by a positive factor scales the potential by its nth power. If the virial stays bounded and both long-time means exist, twice mean kinetic energy equals n times mean potential energy.
+
+**How the definition helps.** The virial puts the difference between the two energy terms into a single time derivative (our own). Newton’s law and Euler’s identity for a homogeneous potential give the derivative as twice kinetic energy minus n times potential energy (our own). Averaging that derivative divides a bounded endpoint difference by elapsed time, so its mean vanishes (our own).
+
+**Wikipedia:** [Virial theorem](https://en.wikipedia.org/wiki/Virial_theorem). It says: “Thus, twice the average total kinetic energy ⟨T⟩ equals n times the average total potential energy”
+
+**Sources:**
+
+- [Rudolf Clausius, On a Mechanical Theorem Applicable to Heat (1870)](https://doi.org/10.1080/14786447008640370)
 
 ### Central configurations scale without changing shape
 
@@ -144,6 +228,54 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Eccentric anomaly gives orbital time
+
+**Remember:** Use the circle’s angle to measure the ellipse’s swept area.
+
+*True by definition.* MSC 70F15 (Celestial mechanics). arXiv astro-ph.EP. Level 2: later undergraduate.
+
+**Definition.** For a noncircular elliptical Kepler orbit, draw the circle whose diameter is the major axis. Scale perpendicular distances from that axis by the ratio of minor to major axis lengths. This maps the circle to the ellipse. Measure E at the circle’s center, from the closest-approach direction to the orbiting body’s circle point, following orbital motion.
+
+**Problem.** During one revolution, the elapsed fraction of a period since closest approach is (E − e sin E)/(2π). Here e is the eccentricity.
+
+**How the definition helps.** The circle angle turns the swept area into a sector area minus a triangle area. In our own derivation, compression multiplies the swept area and the whole circle area by the same factor. Kepler’s equal-area law converts the resulting area fraction to elapsed time as a fraction of the period.
+
+**Wikipedia:** [Kepler's equation](https://en.wikipedia.org/wiki/Kepler%27s_equation). It says: “M = E − e sin E”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Eccentricity vectors include circles
+
+**Remember:** A circular orbit has a zero eccentricity vector, with no preferred direction.
+
+*Makes the theorem clean to state or prove.* MSC 70F15 (Celestial mechanics). arXiv astro-ph.EP. Level 2: later undergraduate.
+
+**Definition.** For a Newtonian two-body orbit, write r for relative position and v for relative velocity. Let μ equal the gravitational constant times the combined mass. Set h = r × v and define the eccentricity vector as (v × h)/μ − r/\|r\|. Its length gives orbital eccentricity, and its direction points toward closest approach whenever its length is positive.
+
+**Problem.** For a Kepler orbit with nonzero angular momentum, the eccentricity vector is constant. The formula gives zero for a circle without a separate choice of direction.
+
+**How the definition helps.** A single vector represents both orbital shape and closest approach, including the circular case where no direction is preferred. In our own calculation, differentiating the vector and using inverse-square acceleration makes its derivative zero. On a circular orbit its two terms cancel. Identifying its length and direction uses the geometric orbit equation.
+
+**Wikipedia:** [Kepler orbit](https://en.wikipedia.org/wiki/Kepler_orbit). It says: “For a "close to circular" orbit the concept "eccentricity vector" defined as”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Homogeneous constraints conserve mechanical energy
+
+**Remember:** A homogeneous constraint makes the actual velocity a direction of zero reaction work.
+
+*Rules out counterexamples.* MSC 70F25 (Nonholonomic systems related to the dynamics of a system of particles), 70H33. arXiv physics.class-ph. Level 2: later undergraduate.
+
+**Definition.** A homogeneous linear velocity constraint restricts velocities to a vector subspace at each position. An ideal reaction force does no work on any vector in that subspace.
+
+**Problem.** An autonomous mechanical system with conservative applied forces and ideal homogeneous linear velocity constraints conserves energy.
+
+**How the definition helps.** Homogeneity makes the actual velocity one of the directions on which an ideal constraint force does no work (our own). Taking the dot product of Newton’s law with velocity then gives energy conservation (our own). A bead constrained to climb a straight incline at a prescribed positive speed has constant kinetic energy and gains potential energy (our own). Its constraint force supplies the difference (our own).
+
+**Wikipedia:** [D'Alembert's principle](https://en.wikipedia.org/wiki/D%27Alembert%27s_principle). It says: “projected onto any virtual displacement consistent with the constraints of the system is zero.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Stationary action ignores total time derivatives at fixed endpoints
 
 **Remember:** A total derivative changes the action only by a fixed endpoint term.
@@ -192,6 +324,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Inertia metrics make rotation geodesic
+
+**Remember:** Use rotational kinetic energy as the ruler for orientations.
+
+*Makes the theorem clean to state or prove.* MSC 70E15 (Free motion of a rigid body), 70G45. arXiv physics.class-ph, math-ph. Level 3: graduate.
+
+**Definition.** The rotation group consists of all orientations of the rigid body. Assume positive definite inertia about its center of mass. Choose a metric on orientations whose squared speed equals twice the rotational kinetic energy.
+
+**Problem.** Without external torque about the center of mass, the orientation follows a geodesic of this metric in physical time. A geodesic here is a path stationary for the integral of squared speed with fixed endpoints.
+
+**How the definition helps.** The metric makes the rotational action exactly half the integral of squared speed (our own). The stationary-action principle therefore gives the geodesic equation in physical time (our own). The mechanical step identifies the kinetic energy for each orientation from the inertia measured in axes attached to the body (our own).
+
+**nLab:** [Hamiltonian dynamics on Lie groups](https://ncatlab.org/nlab/show/Hamiltonian+dynamics+on+Lie+groups). It says: “The left invariant metric ⟨−, −⟩ is the moment of inertia of the body.”
+
+**Sources:**
+
+- [Vladimir Arnold, Sur la géométrie différentielle des groupes de Lie de dimension infinie et ses applications à l’hydrodynamique des fluides parfaits (1966)](https://www.numdam.org/item/AIF_1966__16_1_319_0/)
+
 ### Jacobi energy bounds accessible regions
 
 **Remember:** Where the effective potential exceeds the energy, the particle cannot go.
@@ -224,6 +374,42 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Kepler collisions become oscillator paths
+
+**Remember:** Square the new coordinate and slow the physical clock near collision.
+
+*Makes the theorem clean to state or prove.* MSC 70F16 (Collisions in celestial mechanics, regularization), 70F05. arXiv math.DS, physics.class-ph. Level 3: graduate.
+
+**Definition.** Identify the plane with the complex numbers and write position as q = u². Away from collision choose momentum v so that momentum paired with displacement stays the same in both coordinates. For unit mass write the energy as H = \|p\|²/2 − k/\|q\| with k &gt; 0. At fixed energy E use K = \|u\|²(H − E), with physical time advancing by \|u\|² per unit of new time.
+
+**Problem.** At negative energy the planar Kepler problem becomes a harmonic oscillator in the new variables. The oscillator trajectory extends smoothly through u = 0.
+
+**How the definition helps.** Squaring the position and changing time cancel both singular terms, leaving K = \|v\|²/8 − E\|u\|² − k (our own). For E &lt; 0 this is an oscillator Hamiltonian, smooth even at u = 0 (our own). Away from collision the work is verifying the momentum change and the clock relation on K = 0 (our own).
+
+**Wikipedia:** [Levi-Civita regularization](https://en.wikipedia.org/wiki/Levi-Civita_regularization). It says: “is a method to transform the perturbed planar Kepler problem into a perturbed harmonic oscillator”
+
+**Sources:**
+
+- [Tullio Levi-Civita, Sur la régularisation du problème des trois corps (1920)](https://doi.org/10.1007/BF02404404)
+
+### Allowed symmetries conserve constrained momentum
+
+**Remember:** A symmetry keeps its momentum when its direction cannot feel the reaction.
+
+*Rules out counterexamples.* MSC 70F25 (Nonholonomic systems related to the dynamics of a system of particles), 70H33. arXiv physics.class-ph, math-ph. Level 3: graduate.
+
+**Definition.** A continuous symmetry preserves the Lagrangian, the function of position and velocity that gives the equations of motion. Its direction at a point is the velocity produced there by the symmetry. Call the symmetry horizontal if its direction is an allowed velocity at every position.
+
+**Problem.** Suppose the allowed velocities form a vector space at each position and constraint forces do no work along those directions. For a horizontal symmetry, momentum evaluated on its direction stays constant.
+
+**How the definition helps.** Horizontality makes the constraint force contribute zero to the rate of change of the symmetry momentum (our own). The remaining contribution vanishes because the symmetry preserves the Lagrangian (our own). A vertical disk rolling without slipping admits horizontal translations, but a sideways velocity violates the rolling constraint (our own). When its heading turns, its linear momentum can change (our own).
+
+**Paper or page:** [Affine generalizations of the nonholonomic problem of a convex body rolling without slipping on the plane](https://arxiv.org/abs/2409.08072v1). It says: “ξ is a horizontal symmetry), then Jξ\|𝒟 is a first integral of the nonholonomic system (L, Q, 𝒟).”
+
+**Sources:**
+
+- [Affine generalizations of the nonholonomic problem of a convex body rolling without slipping on the plane](https://arxiv.org/abs/2409.08072v1)
+
 ### Regular Lagrangians give local momentum inverses
 
 **Remember:** The derivative of momentum with respect to velocity is the velocity Hessian.
@@ -240,6 +426,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Exterior powers preserve Hamiltonian volume
+
+**Remember:** Preserve the form and every exterior power survives.
+
+*True by definition.* MSC 70H05 (Hamilton's equations), 37J06. arXiv math-ph, physics.class-ph. Level 3: graduate.
+
+**Definition.** A symplectic form Ω is a closed alternating bilinear form on tangent vectors that pairs every nonzero vector nontrivially with some vector. In dimension 2n, define Liouville volume by taking the exterior product of n copies of Ω, up to a constant factor.
+
+**Problem.** Hamiltonian motion preserves Liouville volume.
+
+**How the definition helps.** Defining volume from Ω makes volume preservation follow as soon as the flow preserves Ω (our own). Changing variables in an exterior product changes each factor in the same way (our own). In canonical position and momentum coordinates, this volume agrees with ordinary coordinate volume up to normalization (our own). This replaces a direct calculation of the flow’s volume change with the theorem that Hamiltonian flows preserve Ω (our own).
+
+**Paper or page:** [Geometry of Mechanics](https://arxiv.org/abs/2401.12650v2). It says: “Let (M, Ω) be a symplectic manifold and Ωⁿ the Liouville volume form in M.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Hyperregularity makes Hamiltonians single valued
 
 **Remember:** Local momentum inverses can disagree, but a global inverse cannot.
@@ -253,6 +455,54 @@
 **How the definition helps.** A global inverse selects exactly one velocity for every position and momentum, so the energy defines a smooth Hamiltonian (our own). For two velocity components u and v, take L = eᵘ cos v (our own). Its velocity Hessian has determinant −e²ᵘ, yet increasing v by 2π leaves both momenta unchanged (our own). The energy changes by 2π times the second momentum, which can be nonzero (our own).
 
 **Paper or page:** [Geometry of Mechanics](https://arxiv.org/abs/2401.12650v2). It says: “Then there exists a unique function h ∈ C∞(T\*Q)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Regular levels exclude the upright pendulum equilibrium
+
+**Remember:** Check independence everywhere before calling a compact level a torus.
+
+*Rules out counterexamples.* MSC 70H06 (Completely integrable systems and methods of integration for problems in Hamiltonian and Lagrangian mechanics), 37J35. arXiv math.DS, math-ph. Level 3: graduate.
+
+**Definition.** An integral is a smooth function that stays constant during the motion. A common level fixes one value for each integral. It is regular if their differentials are independent everywhere on it. The integrals commute if each stays constant under the Hamiltonian motions generated by the others.
+
+**Problem.** Consider n commuting integrals on a symplectic phase space of dimension 2n. Each nonempty compact connected regular common level is an n-dimensional torus, a product of n circles.
+
+**How the definition helps.** Regularity excludes the pendulum’s upright rest point, where the energy derivative vanishes (our own). Two loops meet there on the critical energy level, so that level is not a circle (our own). The torus theorem shows that the commuting flows cover the regular level by Euclidean space modulo a lattice of periods (our own).
+
+**Paper or page:** [Arnold diffusion and geodesic dynamics of blackholes](https://arxiv.org/abs/2012.03047v1). It says: “At each point of M𝐚, the n vectors DHᵢ, i = 1, …, n are linearly independent.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Fixing energy makes the return section symplectic
+
+**Remember:** Fixed energy erases the effect of different return times.
+
+*Rules out counterexamples. Confidence: medium.* MSC 70H12 (Periodic and almost periodic solutions for problems in Hamiltonian and Lagrangian mechanics), 37J11. arXiv math.DS, math-ph. Level 3: graduate.
+
+**Definition.** A regular energy surface is a level where the energy derivative never vanishes. Inside it choose a hypersurface that crosses the flow, so its tangent space omits the flow direction. The return map sends each point to its next crossing wherever the return time is smooth.
+
+**Problem.** For an autonomous Hamiltonian flow, the return map preserves the restricted symplectic form on this section. That form pairs each nonzero tangent vector nontrivially with some other tangent vector.
+
+**How the definition helps.** Fixing energy removes one dimension before taking the section, so the section can carry a nondegenerate alternating form (our own). A hypersurface in the full phase space has odd dimension and cannot carry such a form (our own). On the energy surface, precisely the flow direction pairs to zero with every tangent vector (our own). Crossing that direction removes the degeneracy (our own). Variable return time adds only multiples of that direction to transported tangent vectors (our own). Preservation now follows from preservation of the full form by the Hamiltonian flow (our own).
+
+**Wikipedia:** [Poincaré map](https://en.wikipedia.org/wiki/Poincar%C3%A9_map). It says: “the Poincaré section, transversal to the flow of the system.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Identity needs different generating coordinates
+
+**Remember:** Choose independent coordinates on the graph before integrating.
+
+*Rules out counterexamples.* MSC 70H15 (Canonical and symplectic transformations for problems in Hamiltonian and Lagrangian mechanics), 37J11. arXiv math-ph, physics.class-ph. Level 3: graduate.
+
+**Definition.** A canonical transformation preserves the form that pairs position and momentum changes. Its graph records each old state together with its new state. A type-one generating function uses old and new positions as coordinates on this graph. Its derivatives give the old momentum and the negative of the new momentum.
+
+**Problem.** A canonical transformation has a local type-one generating function where the old and new positions give coordinates on its graph. The identity has no such function on any open set.
+
+**How the definition helps.** The coordinate requirement rules out the identity immediately because its old and new positions coincide (our own). For a canonical map, old momentum times displacement minus new momentum times displacement defines a closed one-form on the graph (our own). A closed one-form locally equals the derivative of a function (our own). Independent position coordinates make that function a type-one generating function (our own). Using old position q and new momentum P instead gives the identity a generating function q · P (our own).
+
+**nLab:** [generating function in classical mechanics](https://ncatlab.org/nlab/show/generating+function+in+classical+mechanics). It says: “the difference must be a (variation of the integral of the) total differential of a function, which can be chosen as a function of some set of old and new coordinates in a consistent way.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -285,6 +535,72 @@
 **How the definition helps.** The strict inequality makes the new metric positive definite and the time change invertible (our own). A projectile fired straight up has zero speed at the top, which is a brake point (our own). The metric degenerates there (our own). The remaining work is the Jacobi–Maupertuis principle, which relates the equations by a change of time (our own).
 
 **Paper or page:** [The negative energy N-body problem has finite diameter](https://arxiv.org/abs/2406.05563v1). It says: “Away from collisions and brake points, the energy E solutions to Newton’s equations are reparameterizations of geodesics on the Hill region.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The Jacobi metric makes paths geodesic
+
+**Remember:** At fixed energy, fold the potential into the ruler.
+
+*Makes the theorem clean to state or prove.* MSC 70H30 (Other variational principles in mechanics), 70G45. arXiv physics.class-ph, math-ph. Level 3: graduate.
+
+**Definition.** Suppose the energy equals kinetic energy plus a potential V depending only on position. The mass metric measures squared speed as twice the kinetic energy. At energy E, define the Jacobi metric by multiplying the mass metric by 2(E − V) wherever V &lt; E.
+
+**Problem.** After a change of time, each trajectory with energy E follows a geodesic, a path stationary for length in the Jacobi metric.
+
+**How the definition helps.** The Jacobi metric makes length equal the fixed-energy action, the integral of momentum along a path (our own). Maupertuis’s principle supplies the dynamical step (our own). It says that the mechanical path makes this integral stationary under variations with fixed endpoints and energy (our own).
+
+**Wikipedia:** [Maupertuis's principle](https://en.wikipedia.org/wiki/Maupertuis%27s_principle). It says: “𝒮₀ ≝ ∫ p · dq = ∫ ds √2 √(Eₜₒₜ − V(q))”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Augmented energy detects steady rotation
+
+**Remember:** Subtract the symmetry motion to look for a rest point.
+
+*True by definition.* MSC 70H33 (Symmetries and conservation laws, reverse symmetries, invariant manifolds and their bifurcations, reduction for problems in Hamiltonian and Lagrangian mechanics), 70E17. arXiv math.DS, math-ph. Level 3: graduate.
+
+**Definition.** A relative equilibrium is a trajectory traced by a one-parameter symmetry. Suppose the symmetry has a momentum function J whose Hamiltonian field equals its velocity field. For energy H, define the augmented energy as H − J.
+
+**Problem.** Suppose the symmetry preserves H. A point follows the chosen symmetry motion exactly when the derivative of H − J vanishes there.
+
+**How the definition helps.** Subtracting the momentum function converts equality of two velocity fields into a critical-point test for one function (our own). The field generated by H − J is the difference of the two fields (our own). It vanishes exactly where d(H − J) vanishes, because the symplectic form is nondegenerate (our own). Energy invariance transports equality at the initial point along the symmetry orbit (our own).
+
+**Paper or page:** [Nonlinear Stability of Relative Equilibria and Isomorphic Vector Fields](https://arxiv.org/abs/1707.02828v4). It says: “the point $m\\in M$ is a critical point of the function $h<sup>\\xi</sup> :=h-\\langle \\Phi ,\\xi \\rangle $.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Discrete action symmetries conserve momentum
+
+**Remember:** One step’s outgoing momentum equals the next step’s incoming momentum.
+
+*True by definition.* MSC 70H33 (Symmetries and conservation laws, reverse symmetries, invariant manifolds and their bifurcations, reduction for problems in Hamiltonian and Lagrangian mechanics), 65P10. arXiv math-ph, physics.class-ph. Level 3: graduate.
+
+**Definition.** A discrete Lagrangian assigns an action to each step between two positions. Define motion by requiring that moving any intermediate position leaves the total action unchanged to first order. Define step momentum by differentiating the action as its final position moves along the symmetry.
+
+**Problem.** Suppose a smooth one-parameter symmetry leaves every step’s action unchanged when applied to both positions together. Along a stationary path, all steps have the same symmetry momentum.
+
+**How the definition helps.** Defining momentum by a step’s endpoint derivative turns conservation into cancellation at each shared position (our own). Symmetry makes the two endpoint derivatives of one step add to zero along the symmetry direction (our own). Stationarity makes the derivatives of adjacent steps at their shared endpoint add to zero (our own). Together these identities equate successive momenta without discretizing the continuous momentum equation (our own). The work lies in constructing a step action with the symmetry (our own).
+
+**Paper or page:** [Energy and quadratic invariants preserving methods for Hamiltonian systems with holonomic constraints](https://arxiv.org/abs/2007.06338v1). It says: “p<sub>n+1</sub><sup>T</sup> a(q<sub>n+1</sub>)=p<sub>n</sub><sup>T</sup> a(q<sub>n</sub>)”
+
+**Sources:**
+
+- [Jerrold E. Marsden and Matthew West, Discrete Mechanics and Variational Integrators (2001)](https://doi.org/10.1017/S096249290100006X)
+
+### Invariant primitives give symmetry momentum
+
+**Remember:** Pair the invariant one-form with the direction of motion.
+
+*True by definition.* MSC 70H33 (Symmetries and conservation laws, reverse symmetries, invariant manifolds and their bifurcations, reduction for problems in Hamiltonian and Lagrangian mechanics), 53D20. arXiv math-ph. Level 3: graduate.
+
+**Definition.** A primitive of a symplectic form Ω is a one-form Θ with dΘ = Ω. Call a symmetry action exact here if it preserves Θ. Each one-parameter symmetry has a velocity field Y.
+
+**Problem.** For each Y, the function J = −Θ(Y) has Hamiltonian field Y. This uses the convention Ω(Y, ·) = dJ.
+
+**How the definition helps.** An invariant primitive gives the momentum function directly, replacing the search for a global solution of dJ = Ω(Y, ·) (our own). Cartan’s differentiation formula gives d(−Θ(Y)) = Ω(Y, ·) because the symmetry preserves Θ (our own). The work lies in finding a primitive that every symmetry preserves (our own).
+
+**Paper or page:** [Geometry of Mechanics](https://arxiv.org/abs/2401.12650v2). It says: “If (M, Ω) is an exact symplectic manifold and the action of G on M is exact, then a momentum map exists.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -322,6 +638,22 @@
 
 - [P. A. M. Dirac, Generalized Hamiltonian Dynamics (1950)](https://doi.org/10.4153/CJM-1950-012-1)
 
+### Bounded vibrations exclude Jordan growth
+
+**Remember:** A unit multiplier can still hide growth in a Jordan block.
+
+*Rules out counterexamples.* MSC 70J25 (Stability for problems in linear vibration theory), 34D20. arXiv physics.class-ph, math.DS. Level 3: graduate.
+
+**Definition.** For a homogeneous linear vibration equation with continuous periodic coefficients, the evolution matrix maps the initial state to the state one period later. Its eigenvalues are called multipliers. A multiplier is semisimple when its eigenspace dimension equals its algebraic multiplicity.
+
+**Problem.** All solutions stay bounded for forward time exactly when every multiplier has modulus at most one and every multiplier of modulus one is semisimple.
+
+**How the definition helps.** Semisimplicity excludes the polynomial growth that repeated matrix powers can produce at an eigenvalue of modulus one (our own). A free mass has a repeated multiplier equal to one, yet constant nonzero velocity makes its position grow (our own). The proof uses the Jordan form to bound all matrix powers and continuity to bound evolution within one period (our own).
+
+**Wikipedia:** [Floquet theory](https://en.wikipedia.org/wiki/Floquet_theory). It says: “the Floquet multipliers of modulus 1 are semisimple (equivalently, their algebraic and geometric multiplicities agree)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Metric variation makes the Hilbert stress tensor symmetric and gauge invariant
 
 **Remember:** Vary a symmetric metric in a gauge-invariant action.
@@ -337,6 +669,60 @@
 **Wikipedia:** [Stress–energy tensor](https://en.wikipedia.org/wiki/Stress%E2%80%93energy_tensor). It says: “This is symmetric and gauge-invariant.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Symmetry fixes the asteroid midpoint
+
+**Remember:** Equal asteroids on opposite sides keep their midpoint at the center.
+
+*Makes the theorem clean to state or prove.* MSC 70F15 (Celestial mechanics). arXiv astro-ph.EP. Level 4: research.
+
+**Definition.** In the planar binary asteroid model, two asteroids attract each other and feel gravity from two larger bodies on prescribed circular orbits. Use coordinates rotating with the larger bodies about their common center. Describe the asteroids by midpoint and separation, with corresponding momentum coordinates. The reduced equations set both the midpoint and its momentum to zero.
+
+**Problem.** Assume the two larger bodies have equal masses and the two asteroids have equal masses. Each equilibrium or periodic orbit of the reduced equations gives one in the full model.
+
+**How the definition helps.** Midpoint coordinates describe the symmetric motions by setting two vectors to zero. In our own argument, rotating by half a turn and exchanging the asteroids leaves these states fixed. Equal masses make that operation a symmetry of the equations. Uniqueness of motion keeps the solution symmetric.
+
+**Paper or page:** [Relative Equilibria and Periodic Orbits in a Binary Asteroid Model](https://arxiv.org/abs/2306.00273v1). It says: “defines an equilibrium or T-periodic solution of the Hamiltonian system”
+
+**Sources:**
+
+- [Lennard F. Bakker and Nicholas J. Freeman, Relative Equilibria and Periodic Orbits in a Binary Asteroid Model](https://arxiv.org/abs/2306.00273v1)
+
+### A closed rescaled form gives an invariant volume
+
+**Remember:** A change of clock produces a matching change of volume.
+
+*Makes the theorem clean to state or prove.* MSC 70F25 (Nonholonomic systems related to the dynamics of a system of particles), 37J60. arXiv math-ph, math.DS. Level 4: research.
+
+**Definition.** A Chaplygin system has velocity constraints and symmetries that allow fewer variables to describe its motion. In these variables a nondegenerate alternating form Ω pairs the motion field X with other directions to give the energy derivative. Consider the condition that multiplying Ω by exp(φ) gives a closed form, one with zero exterior derivative. Here φ depends only on position.
+
+**Problem.** Under this condition in dimension 2m, the reduced flow preserves exp((m − 1)φ) times the exterior product of m copies of Ω.
+
+**How the definition helps.** The closed rescaled form gives both a Hamiltonian clock and its preserved volume (our own). Dividing X by exp(φ) gives the Hamiltonian field for the same energy and the new form (our own). Its volume gains m factors of exp(φ), one per copy of Ω (our own). Returning to X divides the density by one such factor (our own). The geometric work shows that the paper’s φ-simple constraint condition makes the rescaled form closed (our own).
+
+**Paper or page:** [Projective geodesic extensions by conformal modifications in nonholonomic mechanics](https://arxiv.org/abs/2509.15863v1). It says: “If the system is φ-simple, the reduced Chaplygin equations have an invariant volume form”
+
+**Sources:**
+
+- [Projective geodesic extensions by conformal modifications in nonholonomic mechanics](https://arxiv.org/abs/2509.15863v1)
+
+### Constraint leaves give canonical relations
+
+**Remember:** Two points on one leaf represent one point in the quotient.
+
+*Makes the theorem clean to state or prove.* MSC 70H45 (Constrained dynamics, Dirac's theory of constraints), 53D12. arXiv math-ph. Level 4: research.
+
+**Definition.** A coisotropic surface in phase space contains every direction perpendicular to its tangent space under the symplectic form. Group points into leaves by joining them with paths tangent to these perpendicular directions. Relate points precisely when they belong to the same leaf.
+
+**Problem.** Suppose the leaves form a smooth space and the projection onto it has surjective derivative everywhere. In finite dimensions the relation is Lagrangian in the product. This means it has half the product dimension and the difference of the two symplectic forms vanishes on it.
+
+**How the definition helps.** Points on the same leaf have the same projection, so both factors give the same reduced form on the relation (our own). The work is proving that the restricted symplectic form comes from the space of leaves (our own). For a surface of codimension k in dimension 2n, the first point has 2n − k dimensions of freedom (our own). Its partner varies on a k-dimensional leaf, giving 2n dimensions in total (our own).
+
+**Paper or page:** [Constrained systems, generalized Hamilton-Jacobi actions, and quantization](https://arxiv.org/abs/2012.13270v3). It says: “If M is finite-dimensional, then L is lagrangian, hence a canonical relation from M to itself.”
+
+**Sources:**
+
+- [Constrained systems, generalized Hamilton-Jacobi actions, and quantization](https://arxiv.org/abs/2012.13270v3)
 
 ### Taking gauge fields as maps into a moduli stack restores locality
 

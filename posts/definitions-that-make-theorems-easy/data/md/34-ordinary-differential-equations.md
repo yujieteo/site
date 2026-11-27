@@ -78,6 +78,60 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Finite maximal time forces escape
+
+**Remember:** A solution cannot stop where a uniform local restart is possible.
+
+*Makes the theorem clean to state or prove.* MSC 34A12 (Initial value problems, existence, uniqueness, continuous dependence and continuation of solutions to ordinary differential equations). arXiv math.DS. Level 2: later undergraduate.
+
+**Definition.** Call a solution maximal if no solution extends it to a strictly longer interval. This distinguishes the longest possible interval from any smaller interval on which the same solution is defined.
+
+**Problem.** For a smooth vector field on an open set, a maximal trajectory with a finite forward endpoint eventually leaves every compact subset of that set.
+
+**How the definition helps.** In our own argument, maximality turns a local restart into a contradiction. If the trajectory visits one compact set arbitrarily near its endpoint, local existence gives all those visits a common positive restart time. Starting sufficiently late extends the trajectory past its endpoint. Uniqueness makes the two trajectories agree where their time intervals overlap.
+
+**Wikipedia:** [Ordinary differential equation](https://en.wikipedia.org/wiki/Ordinary_differential_equation). It says: “A solution that has no extension is called a maximal solution.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### One-sided bounds control separation
+
+**Remember:** Bound only the part of velocity that pulls the states apart.
+
+*True by definition.* MSC 34A12 (Initial value problems, existence, uniqueness, continuous dependence and continuation of solutions to ordinary differential equations). arXiv math.DS, math.AP. Level 2: later undergraduate.
+
+**Definition.** Write b for the velocity field. It has forward one-sided Lipschitz bound L if (b(x) − b(y)) · (x − y) ≤ L\|x − y\|² for every pair. This bounds the component that increases separation, whereas an ordinary Lipschitz bound controls the entire velocity difference.
+
+**Problem.** Two solutions satisfy \|x(t) − y(t)\| ≤ exp(Lt)\|x(0) − y(0)\| for forward times where both exist. In particular they cannot split from the same starting point.
+
+**How the definition helps.** In our own proof, the dot product equals half the time derivative of squared distance between solutions. Multiplying squared distance by exp(−2Lt) therefore gives a nonincreasing quantity. Taking square roots yields the estimate. The paper states the lower bound, which becomes our upper bound when velocity changes sign.
+
+**Paper or page:** [Transport equations and flows with one-sided Lipschitz velocity fields](https://arxiv.org/abs/2306.13288v1). It says: “(B(x) − B(y)) · (x − y) ≥ −C\|x − y\|²”
+
+**Sources:**
+
+- [Transport equations and flows with one-sided Lipschitz velocity fields](https://arxiv.org/abs/2306.13288v1)
+
+### One Wronskian value tests independence
+
+**Remember:** For two solutions of one linear equation, a single Wronskian value is enough.
+
+*Rules out counterexamples.* MSC 34A30 (Linear ordinary differential equations and systems). arXiv math.DS. Level 2: later undergraduate.
+
+**Definition.** Take two solutions of y″ + py′ + qy = 0 on an interval with continuous coefficients p and q. Their Wronskian is the determinant whose columns give each solution and its first derivative at the same point.
+
+**Problem.** The two solutions are linearly independent if and only if their Wronskian is nonzero at any one point.
+
+**How the definition helps.** The determinant tests independence of the two initial data vectors at one point. In our own proof, uniqueness makes any linear combination with zero initial data vanish throughout the interval. Without a common equation, x² and x\|x\| are independent on (−1,1) although their Wronskian vanishes everywhere.
+
+**nLab:** [Wronskian](https://ncatlab.org/nlab/show/Wronskian). It says: “The Wronskian is its determinant.”
+
+**Wikipedia:** [Wronskian](https://en.wikipedia.org/wiki/Wronskian). It says: “A common misconception is that W = 0 everywhere implies linear dependence.”
+
+**Paper or page:** [Zero Wronskian of Solutions of Homogeneous Linear Second Order ODE iff Linearly Dependent](https://proofwiki.org/wiki/Zero_Wronskian_of_Solutions_of_Homogeneous_Linear_Second_Order_ODE_iff_Linearly_Dependent). It says: “the Wronskian W(y₁, y₂) of y₁ and y₂ is zero everywhere on \[a,b\].”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Disconjugacy gives unique two-point solutions
 
 **Remember:** No two zeros means no two solutions share the same two values.
@@ -112,6 +166,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Separated endpoints give simple eigenvalues
+
+**Remember:** One endpoint already limits starting data to a line.
+
+*Rules out counterexamples.* MSC 34B24 (Sturm-Liouville theory). arXiv math.SP. Level 2: later undergraduate.
+
+**Definition.** Consider −(py′)′ + qy = λwy on a finite closed interval. Assume p is continuously differentiable, q and w are real and continuous, and p and w are positive. Separated endpoint conditions impose one nontrivial homogeneous linear relation between y and y′ at each endpoint separately.
+
+**Problem.** Each eigenvalue of a regular scalar Sturm–Liouville problem with separated conditions has a one-dimensional eigenspace.
+
+**How the definition helps.** In our own argument, the first endpoint condition confines all allowed starting data to one line. Initial value uniqueness transfers that bound to the dimension of the eigenspace, in our own account. Our own counterexample is −y″ with periodic endpoints on \[0, 2π\], where sine and cosine share eigenvalue 1.
+
+**Wikipedia:** [Sturm–Liouville theory](https://en.wikipedia.org/wiki/Sturm%E2%80%93Liouville_theory). It says: “is a unique eigenfunction yₙ = yₙ(x) (up to constant multiple)”
+
+**Paper or page:** [Orthogonality of Solutions to the Sturm-Liouville Equation with Distinct Eigenvalues](https://proofwiki.org/wiki/Orthogonality_of_Solutions_to_the_Sturm-Liouville_Equation_with_Distinct_Eigenvalues). It says: “with separated boundary conditions of the form”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Dulac weights rule out cycles
 
 **Remember:** A closed orbit has zero outward flux even after weighting.
@@ -141,6 +213,22 @@
 **How the definition helps.** The return map replaces following an entire closed path with testing one equality. In our own argument, uniqueness repeats the path after a return to its starting point. Near a periodic orbit, the implicit function theorem gives nearby return times because the velocity crosses the surface.
 
 **Wikipedia:** [Poincaré map](https://en.wikipedia.org/wiki/Poincar%C3%A9_map). It says: “Per definition this system has a fixed point at p.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Gradient systems forbid nonconstant cycles
+
+**Remember:** A path that keeps climbing cannot return to its start.
+
+*Rules out counterexamples.* MSC 34C25 (Periodic solutions to ordinary differential equations). arXiv math.DS. Level 2: later undergraduate.
+
+**Definition.** A gradient system has velocity equal to the gradient of a smooth real function on an open subset of Euclidean space. A nonzero gradient points toward steepest increase.
+
+**Problem.** A smooth gradient system has no nonconstant periodic trajectory.
+
+**How the definition helps.** In our own proof, the definition forces the function to increase whenever the path moves. The chain rule gives its time derivative as the squared gradient length. A nonconstant periodic path would therefore return with a higher value. Our own example without the gradient condition is the rotation x′ = −y, y′ = x.
+
+**nLab:** [gradient flow](https://ncatlab.org/nlab/show/gradient+flow). It says: “The flow induced by this on X is the gradient flow of f.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -210,6 +298,24 @@
 **How the definition helps.** The history supplies every delayed value needed to integrate the equation over the next interval of length τ. In our own proof, repeating this integration gives existence and uniqueness for all forward times. Histories with equal values at zero can differ at −τ, giving different initial right derivatives.
 
 **Wikipedia:** [Delay differential equation](https://en.wikipedia.org/wiki/Delay_differential_equation). It says: “with given initial condition φ: \[−τ,0\] → ℝⁿ. Then the solution on the interval \[0,τ\] is given by ψ(t)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Osgood bounds rule out waiting
+
+**Remember:** An infinite reciprocal integral prevents a solution from leaving zero separation.
+
+*Rules out counterexamples.* MSC 34A12 (Initial value problems, existence, uniqueness, continuous dependence and continuation of solutions to ordinary differential equations). arXiv math.DS. Level 3: graduate.
+
+**Definition.** Bound differences in velocity by μ(r), where r is the distance between states. Use a continuous nondecreasing μ with μ(0) = 0 and μ(r) &gt; 0 for r &gt; 0. It is an Osgood modulus if the integral of 1/μ(r) diverges at zero.
+
+**Problem.** For a continuous differential equation with this bound, two solutions with the same initial state agree forward wherever both exist.
+
+**How the definition helps.** In our own proof, the divergent integral forces the time needed to grow from zero separation to be infinite. Osgood’s lemma makes this argument precise for the inequality satisfied by the distance. For x′ = √\|x\| the reciprocal integral is finite. Our own example waits at zero until time T and then follows (t − T)²/4.
+
+**Wikipedia:** [Peano existence theorem](https://en.wikipedia.org/wiki/Peano_existence_theorem). It says: “The solution need not be unique”
+
+**Paper or page:** [Lagrangian aspects of Yudovich theory for 2D Euler](https://arxiv.org/abs/2509.21121v1). It says: “and if c = 0, then ρ = 0.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -341,6 +447,38 @@
 - [Jussi Behrndt, Fritz Gesztesy, Seppo Hassi, Roger Nichols, Henk de Snoo, On Sesquilinear Forms for Lower Semibounded (Singular) Sturm-Liouville Operators, arXiv:2509.07205 (2025)](https://arxiv.org/abs/2509.07205v1)
 - [Weyl, Über gewöhnliche Differentialgleichungen mit Singularitäten und die zugehörigen Entwicklungen willkürlicher Funktionen, Mathematische Annalen 68 (1910), 220–269](https://doi.org/10.1007/bf01474161)
 
+### Green impulses fix derivative jumps
+
+**Remember:** One point impulse is one unit of flux jump.
+
+*True by definition.* MSC 34B27 (Green's functions for ordinary differential equations). arXiv math.SP. Level 3: graduate.
+
+**Definition.** For Ly = (py′)′ + qy on a finite closed interval, take smooth positive p and continuous q. Assume only the zero solution of Ly = 0 vanishes at both endpoints. Define G by LG = δₛ and zero endpoint values, where the point impulse δₛ evaluates test functions at the interior point s. This single equation replaces separate matching conditions at s.
+
+**Problem.** If G is continuous and smooth on both sides of s with one-sided derivatives there, the right derivative minus the left derivative is 1/p(s).
+
+**How the definition helps.** In our own calculation, the impulse coefficient is exactly the jump in pG′. Integration by parts on both sides of s gives that coefficient because G is continuous there. The defining equation sets it equal to one. Dividing by p(s) gives the derivative jump. Constructing G still requires solving the homogeneous equations and matching their endpoint values.
+
+**Wikipedia:** [Green's function](https://en.wikipedia.org/wiki/Green%27s_function). It says: “G′(s₀₊,s) − G′(s₀₋,s) = 1 / p(s)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Tangent cones test invariance
+
+**Remember:** At a corner, the entire cone tells you which directions stay possible.
+
+*Makes the theorem clean to state or prove.* MSC 34C05 (Topological structure of integral curves, singular points, limit cycles of ordinary differential equations). arXiv math.DS. Level 3: graduate.
+
+**Definition.** At a point x in a closed convex subset S of Euclidean space, take all nonnegative multiples of vectors from x to points in S. Their closure is the tangent cone at x.
+
+**Problem.** Consider a continuous velocity field with a unique global forward solution from each point of S at every starting time. All these solutions stay in S exactly when every boundary velocity belongs to its tangent cone at every time.
+
+**How the definition helps.** The cone replaces separate tests for each possible boundary shape. In our own account, a curve that stays in S has its initial velocity in the cone by taking difference quotients. Nagumo’s theorem carries the hard direction, from the pointwise test to a trajectory that stays in S.
+
+**Paper or page:** [Positive Invariance Condition for Continuous Dynamical Systems Based on Nagumo Theorem](https://arxiv.org/abs/2207.05429v1). It says: “f(t,x)\\in \\mathcal {T}\_\\mathcal {S}(x),\\text { for all } x\\in \\partial \\mathcal {S},”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Isochrons advance phase uniformly
 
 **Remember:** Match the future trajectory to measure phase now.
@@ -440,6 +578,40 @@
 **Paper or page:** [Algebraic Test for Asymptotic Stability of Periodic Orbits for Polynomial Systems](https://arxiv.org/abs/2112.05998v1). It says: “L(Γ(0, ·)) eᵃᵗ ≤ L(Γ(t, ·)) ≤ L(Γ(0, ·)) eᴬᵗ.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Weighted row sums test stability
+
+**Remember:** With nonnegative off-diagonal entries, negative weighted row sums trap the eigenvalues.
+
+*Rules out counterexamples.* MSC 34D20 (Stability of solutions to ordinary differential equations). arXiv math.DS. Level 3: graduate.
+
+**Definition.** Call a real square matrix Metzler if every entry outside the main diagonal is nonnegative. The diagonal itself has no sign restriction.
+
+**Problem.** If A is Metzler and a vector v with positive entries satisfies Av &lt; 0 entry by entry, the system x′ = Ax decays exponentially.
+
+**How the definition helps.** In our own proof, nonnegative off-diagonal entries make each off-diagonal row sum equal its sum of absolute values. Divide each coordinate by the corresponding entry of v. The new matrix has negative row sums and retains the off-diagonal signs. The Gershgorin disk theorem then puts all eigenvalues in the open left half-plane, giving exponential decay. Our own counterexample has rows (1, −2) and (0, −1). Both row sums are negative, but eigenvalue 1 gives growth.
+
+**Paper or page:** [Qualitative analysis of solutions to mixed-order positive linear coupled systems with bounded or unbounded delays](https://arxiv.org/abs/2208.10706v2). It says: “There exists a vector λ ≻ 0 such that Aλ ≺ 0.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Swapping factors transfers eigenfunctions
+
+**Remember:** Swap the factors and apply the factor on the right.
+
+*True by definition. Confidence: medium.* MSC 34L10 (Eigenfunctions, eigenfunction expansions, completeness of eigenfunctions of ordinary differential operators). arXiv math.CA. Level 3: graduate.
+
+**Definition.** Let A and B be first-order linear differential operators with smooth coefficients on an interval. When a second-order operator factors as BA + λ, define its Darboux partner as AB + λ.
+
+**Problem.** Choose any number μ different from λ. Applying A maps local solutions of (BA + λ)u = μu bijectively onto those of (AB + λ)v = μv.
+
+**How the definition helps.** In our own proof, swapping factors makes A(BA) = (AB)A the identity needed to transfer solutions. On solutions at μ, applying B and dividing by μ − λ gives the inverse. Compared with working directly from the coefficients, the work shifts to finding the factorization.
+
+**Paper or page:** [Exceptional Gegenbauer polynomials via isospectral deformation](https://arxiv.org/abs/2110.04059v1). It says: “A multi-step rational Darboux transformation is necessarily a factorization chain, and viceversa.”
+
+**Sources:**
+
+- [Exceptional Gegenbauer polynomials via isospectral deformation](https://arxiv.org/abs/2110.04059v1)
 
 ### Regular singularities prevent exponential blow-up
 

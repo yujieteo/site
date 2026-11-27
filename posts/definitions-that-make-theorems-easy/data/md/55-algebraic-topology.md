@@ -82,6 +82,24 @@
 
 - [Allen Hatcher, Algebraic Topology, §2.1](https://pi.math.cornell.edu/~hatcher/AT/ATch2.pdf)
 
+### Groupoids reveal every path component
+
+**Remember:** Keep paths between every pair and read off the components.
+
+*True by definition.* MSC 55Q05 (Homotopy groups, general; sets of homotopy classes), 01A60. arXiv math.AT, math.HO. Level 2: later undergraduate.
+
+**Definition.** The fundamental group records loops at one chosen point, identifying loops that deform into each other while fixing that point. The fundamental groupoid uses all points and records paths between them, up to deformations that fix both endpoints.
+
+**Problem.** The components of the fundamental groupoid are exactly the path components of the space.
+
+**How the definition helps.** Keeping paths between all points makes a groupoid component exactly a set of points connected by paths. In our own comparison, a group at one point cannot see paths in the other components. To define composition, one must show that joining paths gives an associative operation on deformation classes. Brown used several base points in his 1967 version of van Kampen’s theorem, which computes paths in a union from its pieces.
+
+**nLab:** [fundamental groupoid](https://ncatlab.org/nlab/show/fundamental+groupoid). It says: “The set of connected components of Π₁(X) is precisely the set Π₀(X) of path-components of X.”
+
+**Sources:**
+
+- [Ronald Brown, Groupoids and Van Kampen’s Theorem (1967)](https://doi.org/10.1112/plms/s3-17.3.385)
+
 ### Van Kampen's theorem works for a set of base points
 
 **Remember:** Take a base point in each piece, so that no piece is left out.

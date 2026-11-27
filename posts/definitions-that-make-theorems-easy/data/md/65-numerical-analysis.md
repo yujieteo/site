@@ -146,6 +146,40 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Schur complements split definiteness tests
+
+**Remember:** Eliminate the first block to see the remaining energy.
+
+*True by definition.* MSC 65F05 (Direct numerical methods for linear systems and matrix inversion). arXiv math.NA. Level 2: later undergraduate.
+
+**Definition.** Take a real symmetric block matrix with invertible upper left block A, upper right block B, and lower right block C. Its Schur complement of A is S = C − BᵀA⁻¹B.
+
+**Problem.** The full matrix is positive definite exactly when A and its Schur complement are both positive definite.
+
+**How the definition helps.** The Schur complement gives the quadratic form remaining after eliminating the first variable (our own explanation). Replace x by the coordinate u = x + A⁻¹By. Completing the square gives uᵀAu + yᵀSy. This invertible change of coordinates proves the test and explains the formula for S.
+
+**Wikipedia:** [Schur complement](https://en.wikipedia.org/wiki/Schur_complement). It says: “If A is invertible, then X is positive definite if and only if A and its complement X/A are both positive definite”
+
+**Sources:**
+
+- [Emilie V. Haynsworth, Determination of the inertia of a partitioned Hermitian matrix (1968)](https://doi.org/10.1016/0024-3795(68)90050-5)
+
+### Power iteration converges in direction
+
+**Remember:** Follow the line, not its sign.
+
+*Makes the theorem clean to state or prove.* MSC 65F15 (Numerical computation of eigenvalues and eigenvectors of matrices). arXiv math.NA. Level 2: later undergraduate.
+
+**Definition.** Power iteration repeatedly multiplies a starting vector by a matrix and normalizes the result. Represent each nonzero iterate by the line it spans. The angle between lines ignores the signs of the vectors.
+
+**Problem.** Let a real symmetric matrix have a simple nonzero eigenvalue strictly larger in magnitude than every other eigenvalue. Start with a vector having a nonzero component along its eigenvector. The angle between the iterate’s line and that eigenvector’s line tends to zero.
+
+**How the definition helps.** The line definition ignores a sign that might flip on every step, our own. Expanding in eigenvectors leaves ratios of smaller eigenvalues to the dominant one, whose powers tend to zero, our own. For the matrix diag(−2, 1), normalized iterates starting at (1, 0) alternate signs, our own.
+
+**Wikipedia:** [Power iteration](https://en.wikipedia.org/wiki/Power_iteration). It says: “the starting vector b₀ has a nonzero component in the direction of an eigenvector associated with the dominant eigenvalue”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Strict diagonal dominance prevents singularity
 
 **Remember:** Every row gives a disc that misses zero.
@@ -313,6 +347,42 @@
 
 - [G. Dahlquist, Convergence and stability in the numerical integration of ordinary differential equations, Mathematica Scandinavica 4 (1956) 33–53](https://doi.org/10.7146/math.scand.a-10454)
 
+### Stencil reach excludes oversized steps
+
+**Remember:** The grid must carry news at least as fast as the wave.
+
+*Rules out counterexamples.* MSC 65M12 (Stability and convergence of numerical methods for initial value and initial-boundary value problems involving PDEs), 65M06. arXiv math.NA. Level 2: later undergraduate.
+
+**Definition.** The numerical domain of dependence consists of the initial grid points that can affect a computed value. Consider an update using only the previous values at a grid point and its two immediate neighbors.
+
+**Problem.** Consider transport at constant speed on the line, with the ratio of time step to grid spacing fixed during refinement. If the wave crosses more than one grid interval per step, the method cannot converge for all smooth initial data.
+
+**How the definition helps.** The definition bounds how far information can travel through the grid (our own argument). At fixed positive time the reachable interval misses the initial position supplying the exact value. Choose smooth initial data supported near that position and equal to one there. The method sees the same data as for zero input, although the exact values differ by one.
+
+**Wikipedia:** [Courant–Friedrichs–Lewy condition](https://en.wikipedia.org/wiki/Courant%E2%80%93Friedrichs%E2%80%93Lewy_condition). It says: “the numerical domain of dependence of any point in space and time (as determined by initial conditions and the parameters of the approximation scheme) must include the analytical domain of dependence”
+
+**Sources:**
+
+- [Richard Courant, Kurt Friedrichs and Hans Lewy, On the Partial Difference Equations of Mathematical Physics (1967 English translation)](https://doi.org/10.1147/rd.112.0215)
+
+### Variation bounds preserve monotone profiles
+
+**Remember:** A monotone profile spends all its variation on the net change.
+
+*True by definition.* MSC 65M12 (Stability and convergence of numerical methods for initial value and initial-boundary value problems involving PDEs), 65M08. arXiv math.NA. Level 2: later undergraduate.
+
+**Definition.** Define total variation on a grid as the sum of absolute jumps between neighbors. A variation-diminishing update cannot increase that sum.
+
+**Problem.** If a variation-diminishing update keeps the two end values fixed, it preserves monotonicity on a finite grid.
+
+**How the definition helps.** One bound on the sum of absolute jumps replaces checking the sign of every updated jump (our own argument). The absolute difference between the endpoints is a lower bound for this sum. A monotone input attains that bound. Fixed endpoints and a variation-diminishing update force equality again, so every nonzero jump has the same sign. The remaining work is proving the variation bound for the update.
+
+**Wikipedia:** [Total variation diminishing](https://en.wikipedia.org/wiki/Total_variation_diminishing). It says: “If uⁿ is monotonically increasing (or decreasing) in space, then so is uⁿ⁺¹.”
+
+**Sources:**
+
+- [Ami Harten, High resolution schemes for hyperbolic conservation laws (1983)](https://doi.org/10.1016/0021-9991(83)90136-5)
+
 ### Lebesgue constants as operator norms bound interpolation error by best approximation
 
 **Remember:** Subtract the best polynomial first, then let interpolation amplify only that.
@@ -330,6 +400,22 @@
 **Sources:**
 
 - [Chebyshev admissible meshes and Lebesgue constants of complex polynomial projections](https://arxiv.org/abs/2311.06511v1)
+
+### Lobatto endpoints limit exactness
+
+**Remember:** Two fixed ends cost two degrees of exactness.
+
+*Rules out counterexamples.* MSC 65D32 (Numerical quadrature and cubature formulas). arXiv math.NA. Level 3: graduate.
+
+**Definition.** An integration rule estimates an integral by a weighted sum of function values at selected points, called nodes. A Gauss–Lobatto rule on \[a, b\], with a &lt; b, fixes both endpoints and chooses the other nodes for maximum polynomial exactness.
+
+**Problem.** Any such weighted sum with n ≥ 2 distinct nodes including both endpoints misses some polynomial of degree 2n − 2. The Gauss–Lobatto rule integrates every polynomial through degree 2n − 3 exactly.
+
+**How the definition helps.** Fixing both endpoints lets a polynomial of degree 2n − 2 vanish at every node without changing sign, our own. Multiply (x − a)(b − x) by the squared product of the interior node factors, our own. Its quadrature is zero but its integral is positive, our own. Attaining the lower degree requires choosing the interior nodes by orthogonality for the weight (x − a)(b − x), our own.
+
+**Wikipedia:** [Gaussian quadrature](https://en.wikipedia.org/wiki/Gaussian_quadrature). It says: “an n point Gauss-Lobatto rule is only accurate for polynomials up to degree 2n − 3.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Paired nodes cancel odd powers
 
@@ -365,6 +451,42 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Projected weights make quadrature exact
+
+**Remember:** Project the weight first so the product stays within the exact degree.
+
+*True by definition.* MSC 65D32 (Numerical quadrature and cubature formulas), 41A55. arXiv math.NA, cs.NA. Level 3: graduate.
+
+**Definition.** On a compact region, use a finite positive measure μ with a density and a polynomial inner product given by integration against μ. For a square-integrable weight h, project h orthogonally onto polynomials of total degree at most n. Multiply each original integration weight by the projected value at its node.
+
+**Problem.** Suppose the original weighted sum integrates all polynomials of degree at most 2n exactly against μ. The modified sum then integrates every polynomial of degree at most n exactly against h dμ.
+
+**How the definition helps.** The discarded part of the weight is orthogonal to every test polynomial, so discarding it changes no target integral, our own. The remaining product has degree at most 2n, so the original quadrature is exact, our own. The work lies in finding the weight’s polynomial moments and constructing a base rule exact through degree 2n, our own.
+
+**Paper or page:** [Cheap and stable quadrature on polyhedral elements](https://arxiv.org/abs/2502.03446v1). It says: “the nodes and positive weights of a quadrature formula for integration in dμ, exact on ℙ₂ₙᵈ (the polynomials with total degree not exceeding 2n)”
+
+**Sources:**
+
+- [Alvise Sommariva, Marco Vianello, Cheap and stable quadrature on polyhedral elements](https://arxiv.org/abs/2502.03446v1)
+
+### Signed box counts bound integrals
+
+**Remember:** If every reflected box is overcounted, so is every positive mixture of them.
+
+*Rules out counterexamples.* MSC 65D32 (Numerical quadrature and cubature formulas). arXiv math.NA. Level 3: graduate.
+
+**Definition.** In the unit cube, count sample points in each box running from the origin to a chosen upper corner. Include each lower face and exclude each upper face. Nonnegative local discrepancy means the fraction of points in every such box is at least its volume.
+
+**Problem.** Reflect the points and boxes through the center of the cube. For any nonnegative weighted sum of reflected box indicators, the sample mean bounds the integral from above.
+
+**How the definition helps.** Each box indicator equals one inside its box and zero outside, so its sample mean is the fraction counted (our own explanation). Reflection preserves both the count and the volume. Multiplying by nonnegative weights and adding preserves the inequalities. A single midpoint misses the interval (¾, 1\], whose length is positive.
+
+**Paper or page:** [Computable error bounds for quasi-Monte Carlo using points with non-negative local discrepancy](https://arxiv.org/abs/2309.04209v2). It says: “Let P̃ₙ have non-negative local discrepancy.”
+
+**Sources:**
+
+- [Michael Gnewuch, Peter Kritzer, Art B. Owen, Zexin Pan, Computable error bounds for quasi-Monte Carlo using points with non-negative local discrepancy](https://arxiv.org/abs/2309.04209v2)
+
 ### Tridiagonal matrices reveal Gaussian nodes
 
 **Remember:** The recurrence turns polynomial zeros into matrix eigenvalues.
@@ -382,6 +504,24 @@
 **Sources:**
 
 - [Gene H. Golub and John H. Welsch. Calculation of Gauss quadrature rules (1969).](https://doi.org/10.1090/s0025-5718-69-99647-1)
+
+### Augmentation exposes an inverse block
+
+**Remember:** When constraints span the missing directions, their weight supplies the inverse block.
+
+*True by definition.* MSC 65F08 (Preconditioners for iterative methods), 65F05. arXiv math.NA. Level 3: graduate.
+
+**Definition.** Let A be a real symmetric matrix and B a constraint matrix with m rows. Assume B maps the null space of A bijectively onto ℝᵐ. Replace A by M = A + BᵀWB, where W is an invertible m by m matrix.
+
+**Problem.** If the augmented block is invertible, multiplying its inverse by B on the left and Bᵀ on the right gives W⁻¹.
+
+**How the definition helps.** The added term gives the entire action of M on the null space of A (our own argument). This avoids calculating the full inverse. For any y, choose z in that null space with Bz = W⁻¹y. Then Mz = Bᵀy, so applying B to M⁻¹Bᵀy gives W⁻¹y. The work lies in checking the bijection on the null space.
+
+**Paper or page:** [Augmentation-Based Preconditioners for Saddle-Point Systems with Singular Leading Blocks](https://arxiv.org/abs/2206.13624v1). It says: “B(A + BᵀWB)⁻¹Bᵀ = W⁻¹.”
+
+**Sources:**
+
+- [Susanne Bradley, Chen Greif, Augmentation-Based Preconditioners for Saddle-Point Systems with Singular Leading Blocks](https://arxiv.org/abs/2206.13624v1)
 
 ### Bregman projections decrease solution error
 
@@ -507,6 +647,42 @@
 
 - [Lloyd N. Trefethen, Pseudospectra of Linear Operators (1997).](https://doi.org/10.1137/S0036144595295284)
 
+### Null directions preserve weighted fits
+
+**Remember:** The combined matrix records exactly the directions neither weight can see.
+
+*True by definition.* MSC 65F20 (Numerical solutions to overdetermined systems, pseudoinverses). arXiv math.NA. Level 3: graduate.
+
+**Definition.** For a real matrix A and data b, first minimize (Ax − b)ᵀP(Ax − b). Among its minimizers, minimize xᵀQx. Both weights are symmetric positive semidefinite. Combine them in G = AᵀPA + Q.
+
+**Problem.** Orthogonal projection onto the range of G preserves solutions. Adding any vector from the null space of G also preserves solutions.
+
+**How the definition helps.** Combining the weights makes their common invisible directions exactly the null space of G (our own argument). Indeed, zᵀGz is the sum of the two nonnegative quantities (Az)ᵀP(Az) and zᵀQz. It vanishes exactly when PAz and Qz both vanish. Adding such a z changes neither objective. Projecting onto the range of symmetric G removes just such a vector.
+
+**Paper or page:** [A new interpretation of the weighted pseudoinverse and its applications](https://arxiv.org/abs/2408.09412v1). It says: “conversally, if x ∈ ℛ(G) is a solution, then x + z is a solution for any z ∈ 𝒩(G)”
+
+**Sources:**
+
+- [Haibo Li, A new interpretation of the weighted pseudoinverse and its applications](https://arxiv.org/abs/2408.09412v1)
+
+### Rotations expose the numerical radius
+
+**Remember:** Rotate before maximizing to turn an absolute value into an eigenvalue.
+
+*True by definition.* MSC 65F35 (Numerical computation of matrix norms, conditioning, scaling), 65F15. arXiv math.NA. Level 3: graduate.
+
+**Definition.** For a complex square matrix C, its numerical radius is the largest value of \|x\*Cx\| over unit vectors x. Here x\* is the conjugate transpose. Equivalently, maximize the real part of x\*Cx over all unit vectors and all rotations of that complex number.
+
+**Problem.** Write C = A + iB with A and B Hermitian, meaning equal to their conjugate transposes. The numerical radius is the largest top eigenvalue of cos θ A + sin θ B over θ.
+
+**How the definition helps.** The rotated definition makes the objective a Hermitian quadratic form for each angle, our own. Its maximum over unit vectors is the largest eigenvalue by the Rayleigh principle, our own. The equivalence with the absolute-value definition follows by rotating each complex number onto the nonnegative real axis, our own.
+
+**Paper or page:** [On semidefinite programming characterizations of the numerical radius and its dual norm](https://arxiv.org/abs/2308.07287v3). It says: “r(C) = max₍θ ∈ \[0, 2π)₎ λₘₐₓ(cos θ A + sin θ B).”
+
+**Sources:**
+
+- [Shmuel Friedland, Chi-Kwong Li, On semidefinite programming characterizations of the numerical radius and its dual norm](https://arxiv.org/abs/2308.07287v3)
+
 ### Acyclic matching makes solves triangular
 
 **Remember:** No cycle means an order for solving the paired equations.
@@ -625,6 +801,22 @@
 **How the definition helps.** In our own argument, every term in a stage average already satisfies the bound, so convexity gives the bound for the average. In our own words, induction carries it through the stages. The work is to find a nonnegative stage representation and check its largest Euler substep.
 
 **Paper or page:** [Embedded error estimation and adaptive step-size control for optimal explicit strong stability preserving Runge--Kutta methods](https://arxiv.org/abs/1806.08693v1). It says: “then the solution obtained by ERK method satisfies the strong stability bound ‖uⁿ⁺¹‖ ≤ ‖uⁿ‖”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Last-stage updates damp stiff modes
+
+**Remember:** Use the last stage to inherit its damping.
+
+*True by definition. Confidence: medium.* MSC 65L20 (Stability and convergence of numerical methods for ordinary differential equations), 65L04. arXiv math.NA. Level 3: graduate.
+
+**Definition.** A Runge–Kutta method computes intermediate values called stages, then combines their derivatives to update the solution. A stiffly accurate method uses its last stage as the output. For the test equation y′ = λy with step length h, write z = hλ. A-stability means the step never increases \|y\| when Re(z) ≤ 0.
+
+**Problem.** Suppose a stiffly accurate method is A-stable and its matrix A of stage coefficients is invertible. Then it is L-stable, meaning its one-step amplification also tends to zero as \|z\| tends to infinity.
+
+**How the definition helps.** Using the last stage as output makes its decay sufficient for damping the whole update (our own argument). The stage vector equals (I − zA)⁻¹ applied to a vector whose entries all equal the starting value. Invertibility of A makes this inverse tend to zero as \|z\| grows. Proving A-stability for the chosen method remains a separate task.
+
+**Wikipedia:** [L-stability](https://en.wikipedia.org/wiki/L-stability). It says: “A method is L-stable if it is A-stable and φ(z) → 0 as z → ∞,”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -784,6 +976,24 @@
 - [Jeremias Arf, Bernd Simeon, Structure-preserving Discretization of the Hessian Complex based on Spline Spaces, arXiv:2109.05293v1 (2021)](https://arxiv.org/abs/2109.05293v1)
 - [Douglas N. Arnold, Richard S. Falk, Ragnar Winther, Finite element exterior calculus, homological techniques, and applications, Acta Numerica 15 (2006)](https://doi.org/10.1017/S0962492906210018)
 
+### Trial gradients recover Galerkin
+
+**Remember:** Put trial gradients in the flux space and the projection disappears.
+
+*True by definition.* MSC 65N30 (Finite element, Rayleigh-Ritz and Galerkin methods for boundary value problems involving PDEs). arXiv math.NA. Level 3: graduate.
+
+**Definition.** For Poisson’s equation with zero boundary values, approximate the unknown function u and its gradient in separate finite-dimensional spaces. Choose the second space to contain the gradient of every function in the first.
+
+**Problem.** The computed gradient equals the gradient of the computed function. The latter function satisfies the standard Galerkin equations, which test Poisson’s equation against each trial function after integration by parts.
+
+**How the definition helps.** Including all trial gradients makes the projection in the first equation exact (our own explanation). That equation sets the computed gradient equal to the orthogonal projection of ∇uₕ onto the second space. Substituting ∇uₕ in the second equation gives the Galerkin equations. Zero boundary values make their energy positive for every nonzero trial function.
+
+**Paper or page:** [On the necessity of the inf-sup condition for a mixed finite element formulation](https://arxiv.org/abs/2206.06968v2). It says: “The other component of the solution is given by σₕ = ∇uₕ.”
+
+**Sources:**
+
+- [Fleurianne Bertrand, Daniele Boffi, On the necessity of the inf-sup condition for a mixed finite element formulation](https://arxiv.org/abs/2206.06968v2)
+
 ### Symplectic integrators almost exactly conserve a nearby shadow Hamiltonian
 
 **Remember:** A symplectic method solves the wrong problem almost exactly.
@@ -873,6 +1083,45 @@
 **Sources:**
 
 - [Yvain Bruned, Kurusch Ebrahimi-Fard, Yingtong Hou, Multi-indice B-series, arXiv:2402.13971v3 (2024). Journal of the London Mathematical Society, 111, Issue 1, (2025), e70049](https://arxiv.org/abs/2402.13971v3)
+
+### Tree cuts compose numerical steps
+
+**Remember:** Cut a tree to see which step supplies each derivative.
+
+*Makes the theorem clean to state or prove.* MSC 65L06 (Multistep, Runge-Kutta and extrapolation methods for ordinary differential equations). arXiv math.NA. Level 4: research.
+
+**Definition.** A B-series writes a formal time step as a Taylor series indexed by rooted trees. Each branch records a derivative applied to the terms from its child branches. Use a unit coefficient for the unchanged starting value in each step.
+
+**Problem.** The composition of two such steps is another B-series. Its coefficients come from cuts that split each tree into a connected part containing the root and the branches above it.
+
+**How the definition helps.** Tree cuts record exactly which derivatives come from each step (our own explanation). Multiply the outer coefficient for the root part by the inner coefficients for the detached branches. Sum over cuts, including the case with an empty root part. The composition theorem proves that Taylor substitution supplies the required multiplicities.
+
+**nLab:** [Butcher group](https://ncatlab.org/nlab/show/Butcher+group). It says: “The elements of the group are (generalised) numerical schemes which contain the Runge-Kutta schemes and the group product encodes composition of numerical schemes.”
+
+**Paper or page:** [On the B-series composition theorem](https://arxiv.org/abs/2409.08533v1). It says: “is also a B-series”
+
+**Sources:**
+
+- [John C. Butcher, Taketomo Mitsui, Yuto Miyatake, Shun Sato, On the B-series composition theorem](https://arxiv.org/abs/2409.08533v1)
+- [J. C. Butcher, An algebraic theory of integration methods (1972)](https://doi.org/10.1090/S0025-5718-1972-0305608-0)
+
+### Boundary penalties constrain eigenvalues
+
+**Remember:** The left boundary penalty turns both boundary contributions into nonnegative terms.
+
+*True by definition.* MSC 65L20 (Stability and convergence of numerical methods for ordinary differential equations), 65L12. arXiv math.NA. Level 4: research.
+
+**Definition.** Let D approximate differentiation on a grid, with symmetric positive definite weight matrix H. Suppose HD + DᵀH = qqᵀ − ppᵀ + S, where S is symmetric positive semidefinite. The vectors p and q evaluate a grid function at the left and right ends. Add H⁻¹ppᵀ to D to penalize the left boundary.
+
+**Problem.** Every eigenvalue of the modified matrix has nonnegative real part. Equality holds precisely when its eigenvector w satisfies pᵀw = qᵀw = 0 and Sw = 0.
+
+**How the definition helps.** The penalty changes the negative left boundary term into a positive square (our own argument). For an eigenpair (λ,w), twice Re(λ) times w\*Hw equals \|pᵀw\|² + \|qᵀw\|² + w\*Sw. Here w\* denotes conjugate transpose. All three terms are nonnegative, and the last vanishes exactly when Sw vanishes. The construction must supply D and H with the stated identity.
+
+**Paper or page:** [On an eigenvalue property of Summation-By-Parts operators](https://arxiv.org/abs/2201.01193v1). It says: “Then Re(λ) ≥ 0 with equality if and only if p₀ᵀw = pₙᵀw = 0 and Sw = 0.”
+
+**Sources:**
+
+- [Viktor Linders, On an eigenvalue property of Summation-By-Parts operators](https://arxiv.org/abs/2201.01193v1)
 
 ### Discrete gradients make energy decrease exactly in dissipative schemes
 

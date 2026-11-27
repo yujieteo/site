@@ -34,6 +34,24 @@
 
 - [J. Jang and T. M. Leslie, Separable motions for self-gravitating hyperelastic matter (2025).](https://doi.org/10.3934/cam.2025032)
 
+### Central bond forces cancel torque
+
+**Remember:** Two opposite forces cancel their torque if they act along the same line.
+
+*Rules out counterexamples.* MSC 74A70 (Peridynamics). arXiv physics.class-ph. Level 2: later undergraduate.
+
+**Definition.** In a bond model of a solid, require opposite forces at a bond’s two ends. Also require both forces to lie along the line between the deformed ends.
+
+**Problem.** For a bounded body containing both ends of every bond considered, the internal forces produce zero total torque if the pair forces are integrable.
+
+**How the definition helps.** The two forces on each bond have zero combined torque because their common line contains both ends. Integrating these pair contributions gives the result. In our own counterexample, equal and opposite sideways forces at separate points cancel total force but leave a torque.
+
+**Wikipedia:** [Peridynamics](https://en.wikipedia.org/wiki/Peridynamics). It says: “the pairwise force density vector has the same direction as the relative deformed ray-vector”
+
+**Sources:**
+
+- [S. A. Silling (2000), Reformulation of elasticity theory for discontinuities and long-range forces](https://doi.org/10.1016/S0022-5096(99)00029-0)
+
 ### Airy’s function builds in equilibrium
 
 **Remember:** Put stresses in crossed second derivatives and the force balance cancels.
@@ -63,6 +81,24 @@
 **How the definition helps.** In our own proof, the energy formulation expresses both works as values of the same symmetric form. Each displacement is an allowed test for the other equilibrium equation because both vanish on the supports. Swapping their order preserves the value. The work moves from the usual force balance to deriving the bilinear equilibrium equation from stored energy.
 
 **Wikipedia:** [Betti's theorem](https://en.wikipedia.org/wiki/Betti%27s_theorem). It says: “the work done by the set P through the displacements produced by the set Q is equal to the work done by the set Q through the displacements produced by the set P.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Symmetry leaves twenty-one elastic constants
+
+**Remember:** Six strain coordinates give twenty-one entries in a symmetric stiffness matrix.
+
+*True by definition.* MSC 74B05 (Classical linear elasticity). arXiv physics.class-ph. Level 2: later undergraduate.
+
+**Definition.** Define the elastic stiffness as the Hessian of stored energy on symmetric strain matrices. A Hessian is the matrix of second derivatives. This replaces counting entries of an unconstrained four-index array.
+
+**Problem.** At a point in a three-dimensional linear elastic body, suppose stress is the derivative of a twice continuously differentiable strain energy. At most twenty-one independent constants determine the stiffness there.
+
+**How the definition helps.** The energy Hessian is a symmetric matrix on the six-dimensional space of symmetric strains. In our own count, its upper triangle has six diagonal entries and fifteen others. The work lies in establishing an energy law on symmetric strains before counting constants.
+
+**nLab:** [elasticity](https://ncatlab.org/nlab/show/elasticity). It says: “here the strain tensor is related by a linear equation to the stress tensor”
+
+**Wikipedia:** [Elasticity tensor](https://en.wikipedia.org/wiki/Elasticity_tensor). It says: “This fact follows from the symmetry of the stress and strain tensors, together with the requirement that the stress derives from an elastic energy potential.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -98,6 +134,88 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Parallel damping prevents instant creep
+
+**Remember:** A bounded stress cannot jump the strain of a damper.
+
+*Rules out counterexamples.* MSC 74D05 (Linear constitutive equations for materials with memory). arXiv cond-mat.mtrl-sci. Level 2: later undergraduate.
+
+**Definition.** The Kelvin–Voigt model places a spring and a viscous damper in parallel. Their strains, or relative changes in length, are equal and their stresses add. The spring stress is proportional to strain and the damper stress to strain rate.
+
+**Problem.** A bounded stress step cannot cause an instantaneous strain jump in a Kelvin–Voigt solid with positive viscosity.
+
+**How the definition helps.** A strain jump would give the damper an impulse of stress that the spring’s finite stress cannot cancel, in our own proof. The parallel connection forces the whole element to share the damper’s continuous strain. In our own comparison, a spring in series with the damper jumps immediately under the same nonzero stress step.
+
+**Wikipedia:** [Kelvin–Voigt material](https://en.wikipedia.org/wiki/Kelvin%E2%80%93Voigt_material). It says: “Since the two components of the model are arranged in parallel, the strains in each component are identical:”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Effective length unifies buckling loads
+
+**Remember:** Use the pinned formula after accounting for the ends.
+
+*Makes the theorem clean to state or prove.* MSC 74G60 (Bifurcation and buckling). arXiv physics.class-ph. Level 2: later undergraduate.
+
+**Definition.** For a straight, uniform Euler column under axial compression, define effective length as half the wavelength of the first buckling mode’s bending moment. This is the spacing between consecutive zeros of the sinusoidal moment, extending the sinusoid beyond the ends if needed.
+
+**Problem.** For an ideal slender column, the first buckling load equals π² times bending stiffness divided by effective length squared. Clamping both ends gives four times the load for two pinned ends when all other properties agree.
+
+**How the definition helps.** The half-wavelength puts the same buckling formula to work for different supports, in our own explanation. The column equation makes the bending moment sinusoidal. The work is to enforce the end conditions and find the first mode. Two pinned ends give an effective length equal to the column length. Two clamped ends give half that length.
+
+**Wikipedia:** [Buckling](https://en.wikipedia.org/wiki/Buckling). It says: “the distance between inflection points on the displacement curve of the deflected column”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Complementary energy gives displacement
+
+**Remember:** Differentiate complementary energy with respect to load to get displacement.
+
+*True by definition.* MSC 74G65 (Energy minimization in equilibrium problems in solid mechanics). arXiv physics.class-ph. Level 2: later undergraduate.
+
+**Definition.** Let U(q) be the stored energy at displacement q, with force F = U′(q). Define complementary energy at load F as the maximum of Fq − U(q) over the chosen displacement interval.
+
+**Problem.** Suppose U is twice continuously differentiable with U″ &gt; 0 on an open interval. For loads in the range of U′ there, the derivative of complementary energy equals the displacement.
+
+**How the definition helps.** At the maximizing displacement, F = U′(q) cancels the terms containing the derivative of q, in our own calculation. Strict convexity makes that displacement the unique maximizer. In our own comparison, F = q³ for q &gt; 0 gives derivative q/3 if we express stored energy directly in F.
+
+**Wikipedia:** [Castigliano's method](https://en.wikipedia.org/wiki/Castigliano%27s_method). It says: “If the force-displacement curve is nonlinear then the complementary strain energy needs to be used instead of strain energy.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Independent rotation reveals beam shear
+
+**Remember:** Slope minus section rotation is the shear.
+
+*Makes the theorem clean to state or prove.* MSC 74K10 (Rods (beams, columns, shafts, arches, rings, etc.)). arXiv physics.class-ph. Level 2: later undergraduate.
+
+**Definition.** Let the rotation of a beam’s cross-section vary independently of the slope of its centerline. Define shear strain as the slope minus that rotation. The Euler–Bernoulli model sets the two equal.
+
+**Problem.** Consider a uniform linear Timoshenko beam clamped at one end under a transverse point load at its free end. Shear adds a tip displacement equal to the load times the length divided by the shear stiffness.
+
+**How the definition helps.** The independent rotation leaves a shear term in the slope, so the tip displacement includes its integral. In our own derivation, force balance makes shear force constant along the beam. Dividing by shear stiffness gives the constant shear strain to integrate.
+
+**Wikipedia:** [Timoshenko–Ehrenfest beam theory](https://en.wikipedia.org/wiki/Timoshenko%E2%80%93Ehrenfest_beam_theory). It says: “unlike the Euler–Bernoulli theory, the angular deflection is another variable and not approximated by the slope of the deflection.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Normal lines remove plate shear
+
+**Remember:** A normal that stays normal has no transverse shear.
+
+*True by definition.* MSC 74K20 (Plates). arXiv physics.class-ph. Level 2: later undergraduate.
+
+**Definition.** In the Kirchhoff–Love plate model, initially straight lines normal to the middle surface stay straight and normal as the plate bends. A model allowing shear lets those lines tilt relative to the surface normal.
+
+**Problem.** In the linear Kirchhoff–Love plate model, both transverse shear strains vanish for every admissible displacement.
+
+**How the definition helps.** Keeping the right angle rules out transverse shear, which measures the change in that angle. In our own calculation, sideways displacement through the thickness exactly cancels the contribution from the slope of the middle surface. The modeling work is to justify that constraint for a thin plate.
+
+**Wikipedia:** [Kirchhoff–Love plate theory](https://en.wikipedia.org/wiki/Kirchhoff%E2%80%93Love_plate_theory). It says: “straight lines normal to the mid-surface remain normal to the mid-surface after deformation”
+
+**Sources:**
+
+- [A. E. H. Love (1888), The small free vibrations and deformation of a thin elastic shell](https://doi.org/10.1098/rsta.1888.0016)
+
 ### Simply connected solids admit compatible displacements
 
 **Remember:** If every loop contracts, locally compatible strains fit together throughout the body.
@@ -115,6 +233,40 @@
 **Sources:**
 
 - [C. Amrouche, P. G. Ciarlet, L. Gratie and S. Kesavan, On Saint Venant’s compatibility conditions and Poincaré’s lemma (2006).](https://doi.org/10.1016/j.crma.2006.03.026)
+
+### Pullback keeps stress symmetric
+
+**Remember:** Pull back both indices to keep stress symmetric.
+
+*True by definition.* MSC 74A10 (Stress). arXiv physics.class-ph. Level 3: graduate.
+
+**Definition.** Let F be the invertible derivative matrix of a deformation that preserves orientation, and let σ be the current stress matrix. The first Piola–Kirchhoff stress is P = (det F)σF⁻ᵀ, where F⁻ᵀ is the transpose of the inverse. Define the second stress as S = F⁻¹P, so both indices refer to the original body.
+
+**Problem.** Suppose the only torques on a classical solid come from forces. Then the second stress is symmetric even for large deformations.
+
+**How the definition helps.** The second stress multiplies σ on opposite sides by a matrix and its transpose, which preserves symmetry. Angular momentum balance supplies the symmetry of σ. In our own comparison, a quarter turn under uniform nonzero pressure gives a first stress that is not symmetric.
+
+**Wikipedia:** [Piola–Kirchhoff stress tensors](https://en.wikipedia.org/wiki/Piola%E2%80%93Kirchhoff_stress_tensors). It says: “This tensor, a one-point tensor, is symmetric.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Weak balance detects point loads
+
+**Remember:** A test displacement can feel a point force.
+
+*Rules out counterexamples.* MSC 74A10 (Stress). arXiv math.AP. Level 3: graduate.
+
+**Definition.** A stress assigns a force per unit length to each cut through a plane body. Define equilibrium by requiring internal and applied forces to do equal work on every smooth test displacement supported inside the body.
+
+**Problem.** Suppose the body is in equilibrium under one point force, and the stress is smooth elsewhere. Across any enclosing circle inside the body, the total outward stress force equals minus the applied force.
+
+**How the definition helps.** A test displacement can take a nonzero value at the load, so weak balance detects it. In our own proof, choose a displacement constant inside the circle and zero near the outer boundary. Integration by parts outside the circle gives the stated force. Zero stress passes the pointwise balance away from the load but fails this test, as our own counterexample shows.
+
+**Paper or page:** [Point Singularities in Incompatible Elasticity](https://arxiv.org/abs/2107.10755v1). It says: “∫∂Bε (σ\|Ω−O n) dl = −b⁽⁰˒⁰⁾”
+
+**Sources:**
+
+- [Point Singularities in Incompatible Elasticity, Lemma 3.2](https://arxiv.org/abs/2107.10755v1)
 
 ### Stretch represents objective elastic energy
 
@@ -148,6 +300,40 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Plane stress minimizes elastic energy
+
+**Remember:** Free transverse strain can only lower elastic energy.
+
+*True by definition. Confidence: medium.* MSC 74B05 (Classical linear elasticity). arXiv physics.class-ph. Level 3: graduate.
+
+**Definition.** Fix the strain components within a plane. Plane stress means that the force per unit area across that plane vanishes. Plane strain instead fixes all out-of-plane strain components at zero.
+
+**Problem.** For a positive definite linear elastic energy, plane stress gives no more stored energy than plane strain at the same in-plane strain.
+
+**How the definition helps.** Zero force across the plane makes every energy derivative in the free strain directions vanish, in our own proof. The work lies in identifying stress with the derivative of stored energy. Positive definiteness makes the stationary point a minimum, and the plane-strain choice is one competitor.
+
+**Wikipedia:** [Plane stress](https://en.wikipedia.org/wiki/Plane_stress). It says: “a material is said to be under plane stress if the stress vector is zero across a particular plane.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Proper rotations rule out folds
+
+**Remember:** A fold can preserve lengths and still reverse orientation.
+
+*Rules out counterexamples.* MSC 74B20 (Nonlinear elasticity). arXiv math.AP. Level 3: graduate.
+
+**Definition.** The deformation gradient is the matrix of first derivatives of the new position. Measure strain by its distance to the rotation matrices with determinant one. Allowing every orthogonal matrix would also give reflections zero strain.
+
+**Problem.** On an open cube, suppose a deformation and its weak first derivatives are square-integrable. If its strain vanishes almost everywhere, it agrees almost everywhere with one rotation followed by a translation.
+
+**How the definition helps.** The proper-rotation condition rules out a fold made of a rotation and a reflection, our own explanation. The geometric rigidity estimate does the work by bounding the distance to a single rotation. Our own counterexample for the broader definition is (x, y) ↦ (\|x\|, y), which folds a square across x = 0.
+
+**Paper or page:** [Geometric rigidity in variable domains and derivation of linearized models for elastic materials with free surfaces](https://arxiv.org/abs/2107.10808v5). It says: “there exist R ∈ SO(d) and b ∈ ℝᵈ such that”
+
+**Sources:**
+
+- [Geometric rigidity in variable domains and derivation of linearized models for elastic materials with free surfaces, Proposition 2.9](https://arxiv.org/abs/2107.10808v5)
+
 ### Volume-only polyconvexity is scalar convexity
 
 **Remember:** If only volume matters, test convexity in volume.
@@ -165,6 +351,108 @@
 **Sources:**
 
 - [P. Neff et al., Hypo-elasticity, Cauchy-elasticity, corotational stability and monotonicity in the logarithmic strain (2025).](https://doi.org/10.1016/j.jmps.2025.106074)
+
+### Convex dissipation gives monotone flow
+
+**Remember:** Supporting planes make the dissipation law monotone.
+
+*True by definition.* MSC 74C05 (Small-strain, rate-independent theories of plasticity (including rigid-plastic and elasto-plastic materials)). arXiv math.AP. Level 3: graduate.
+
+**Definition.** A convex dissipation potential assigns an energy cost to each rate of permanent deformation. Define the allowed driving forces at a rate as all slopes of planes supporting the potential there. This extends the derivative rule to rates where no single derivative exists.
+
+**Problem.** Consider two solutions of the same flow law, with the same dissipation potential. At almost every time, the energy-gradient difference paired with the rate difference is nonpositive, taking both differences in the same order.
+
+**How the definition helps.** The two supporting-plane inequalities add directly to the desired bound, in our own proof. The driving force is the negative gradient of stored energy, which accounts for the sign. The modeling step is to express the flow law through that common convex potential.
+
+**Paper or page:** [Homogenization of rate-independent elastoplastic spring network models with non-local random fields](https://arxiv.org/abs/2509.09872v1). It says: “⟨Dℰ(t, y₁(t)) − Dℰ(t, y₂(t)), ẏ₁(t) − ẏ₂(t)⟩ ≤ 0.”
+
+**Sources:**
+
+- [Homogenization of rate-independent elastoplastic spring network models with non-local random fields, Lemma 5.10](https://arxiv.org/abs/2509.09872v1)
+
+### Tresca’s stress range stays convex
+
+**Remember:** A bound on stress spread defines a convex region.
+
+*True by definition.* MSC 74C05 (Small-strain, rate-independent theories of plasticity (including rigid-plastic and elasto-plastic materials)). arXiv cond-mat.mtrl-sci. Level 3: graduate.
+
+**Definition.** A stress matrix lies in the Tresca elastic region when its largest and smallest eigenvalues differ by at most a fixed threshold. This replaces checking shear, the sideways force per unit area, on every plane.
+
+**Problem.** A weighted average of two stress matrices within the Tresca elastic region stays within it when the weights are nonnegative and sum to one.
+
+**How the definition helps.** The eigenvalue bound gives linear inequalities with a convex common solution set, in our own proof. For all unit vectors u and v, require uᵀSu − vᵀSv ≤ T, where S is stress and T is the threshold. Maximizing over both vectors gives the eigenvalue difference. The mechanical calculation identifies half that difference with the largest shear on any plane.
+
+**Wikipedia:** [Yield surface](https://en.wikipedia.org/wiki/Yield_surface). It says: “In terms of the principal stresses the Tresca criterion is expressed as ½ max(\|σ₁ − σ₂\|, \|σ₂ − σ₃\|, \|σ₃ − σ₁\|) = Sₛᵧ = ½ Sᵧ”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Stiffer solids reduce boundary work
+
+**Remember:** A stiffer body cannot deliver more work under the same load.
+
+*True by definition.* MSC 74G65 (Energy minimization in equilibrium problems in solid mechanics). arXiv math.AP. Level 3: graduate.
+
+**Definition.** For a fixed boundary force, define half its equilibrium work as the maximum of applied work minus stored energy over admissible displacements. Admissible displacements vanish on the clamped boundary.
+
+**Problem.** Consider a bounded isotropic linear elastic body with a clamped boundary portion of positive area and no body force. Assume both elastic coefficients are bounded above and bounded away from zero. Increasing them pointwise cannot increase the work of a fixed boundary force.
+
+**How the definition helps.** Increasing stored energy lowers each trial value and therefore cannot raise the maximum, in our own proof. The equilibrium equation identifies this maximum with half the work computed from the actual displacement.
+
+**Paper or page:** [Resolution Guarantees for the Reconstruction of Inclusions in Linear Elasticity Based on Monotonicity Methods](https://arxiv.org/abs/2208.06865v1). It says: “λ₀ ≤ λ₁ and μ₀ ≤ μ₁ implies Λ(λ₀, μ₀) ≥ Λ(λ₁, μ₁).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Potentials separate elastic wave modes
+
+**Remember:** One potential carries compression and the other carries shear.
+
+*Makes the theorem clean to state or prove.* MSC 74J10 (Bulk waves in solid mechanics). arXiv math.AP. Level 3: graduate.
+
+**Definition.** Represent the displacement in a plane by two scalar functions called potentials. Add the gradient of the first to the gradient of the second rotated through a right angle.
+
+**Problem.** Consider waves at a fixed nonzero frequency in a uniform, isotropic linear elastic solid with no body force. Scalar waves at the compression and shear speeds give an interior displacement solution through these potentials. The boundary conditions can still couple them.
+
+**How the definition helps.** Each potential produces just one wave type, so each solves a scalar equation. In our own calculation, the gradient has zero curl and the rotated gradient has zero divergence. Their sum therefore solves the elastic wave equation. Recovering the potentials from a given displacement requires a decomposition theorem.
+
+**Paper or page:** [A virtual element method for the solution of 2D time-harmonic elastic wave equations via scalar potentials](https://arxiv.org/abs/2303.10696v1). It says: “the decoupling of the elastic vector field into scalar Pressure (P-) and Shear (S-) waves via a suitable Helmholtz-Hodge decomposition.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Incompressible flows preserve plate volume
+
+**Remember:** Follow a divergence-free velocity to preserve volume at every step.
+
+*True by definition.* MSC 74K20 (Plates). arXiv math.AP. Level 3: graduate.
+
+**Definition.** An incompressible deformation has a derivative matrix with determinant one almost everywhere. To vary it, move each deformed point along a smooth velocity field with zero divergence. Assume the field and its first derivatives are bounded.
+
+**Problem.** Every such variation of an incompressible plate has deformation gradient of determinant one.
+
+**How the definition helps.** Composition multiplies determinants, so a volume-preserving flow keeps the deformation incompressible. The flow lemma supplies the work by differentiating the determinant along each trajectory. In our own comparison, adding the velocity times a small step preserves the constraint only to first order in general.
+
+**Paper or page:** [Convergence of Equilibria for Incompressible Elastic Plates in the von Kármán Regime](https://arxiv.org/abs/1211.3942v1), [Convergence of Equilibria for Incompressible Elastic Plates in the von Kármán Regime](https://arxiv.org/abs/1211.3942v1). It says: “Given a deformation uʰ ∈ W¹˒²(Ωʰ, ℝ³) with det ∇uʰ = 1”
+
+**Sources:**
+
+- [Convergence of Equilibria for Incompressible Elastic Plates in the von Kármán Regime, Lemma 2.1 and Theorem 2.3](https://arxiv.org/abs/1211.3942v1)
+
+### Zero membrane strain forbids double curvature
+
+**Remember:** The slope term ties stretching to curvature.
+
+*Rules out counterexamples.* MSC 74K20 (Plates). arXiv math.AP. Level 3: graduate.
+
+**Definition.** In a flat plate, let u denote displacement within the plane and w the height change. Start with the symmetric part of the derivative matrix of u. Add half the outer product of the gradient of w with itself to obtain membrane strain. Linear strain omits this height term.
+
+**Problem.** Assume u has square-integrable weak derivatives through order one and w through order two on a planar open set. If membrane strain vanishes, the matrix of second derivatives of w has zero determinant almost everywhere.
+
+**How the definition helps.** Including the slope term prevents a doubly curved height from satisfying zero strain, in our own explanation. A second-derivative compatibility identity cancels the symmetric derivative of u and leaves minus the determinant of the height Hessian. The work includes justifying this identity for weak derivatives. In our own counterexample on a disk, u = 0 and w = x² + y² give zero linear strain but determinant four.
+
+**Paper or page:** [An improved existence theorem for rigid nonlinearly elastic plates](https://arxiv.org/abs/2511.14487v1). It says: “only if det(∂αβu₃) = 0 in ω.”
+
+**Sources:**
+
+- [An improved existence theorem for rigid nonlinearly elastic plates, Proposition 1](https://arxiv.org/abs/2511.14487v1)
 
 ### Crack energy flux is path independent
 
@@ -184,6 +472,58 @@
 
 - [J. R. Rice, A Path Independent Integral and the Approximate Analysis of Strain Concentration by Notches and Cracks (1968).](https://doi.org/10.1115/1.3601206)
 
+### Crack size omits waiting time
+
+**Remember:** The crack path does not record waiting time.
+
+*Makes the theorem clean to state or prove.* MSC 74R10 (Brittle fracture). arXiv math.AP. Level 3: graduate.
+
+**Definition.** Index the states of a continuous, growing crack by their length, or by their area in three dimensions. This replaces elapsed time as the index for the path itself.
+
+**Problem.** Suppose a nested crack grows continuously in size and gains positive size whenever its state changes. It has a unique path indexed by size that recovers the crack at every time.
+
+**How the definition helps.** Indexing by size gives a single crack state throughout each pause in growth. In our own explanation, nesting orders the states and strict size increase distinguishes any two different ones. Continuity of size fills the interval between the initial and final sizes.
+
+**Paper or page:** [What is the physical origin of the gradient flow structure of variational fracture models?](https://arxiv.org/abs/2311.00730v1). It says: “Σ(t) = Σₚ(L(t)) for t ∈ \[t₀, t₁\]”
+
+**Sources:**
+
+- [What is the physical origin of the gradient flow structure of variational fracture models?, Proposition B.3](https://arxiv.org/abs/2311.00730v1)
+
+### Stress intensities add under superposition
+
+**Remember:** Add the singular coefficients, not the infinite tip stresses.
+
+*True by definition. Confidence: medium.* MSC 74R10 (Brittle fracture). arXiv physics.class-ph. Level 3: graduate.
+
+**Definition.** Near a sharp crack tip, the leading stress can grow as the inverse square root of distance. For each basic pattern of crack opening or sliding, define its stress intensity as the coefficient of that pattern.
+
+**Problem.** Consider a fixed straight crack with unloaded faces in a homogeneous isotropic linear elastic body. For loads with a crack-tip expansion, the intensity for each pattern adds when the stress fields add.
+
+**How the definition helps.** Reading a coefficient from the common expansion is linear, so each intensity adds, in our own proof. Stress at the tip itself generally has no finite value. The work lies in deriving the crack-tip expansion and identifying its distinct angular patterns.
+
+**Wikipedia:** [Stress intensity factor](https://en.wikipedia.org/wiki/Stress_intensity_factor). It says: “Theoretically, as r goes to 0, the stress σᵢⱼ goes to ∞ resulting in a stress singularity.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Pressure normalization permits stress bounds
+
+**Remember:** An invisible constant pressure must be fixed before it can be bounded.
+
+*Rules out counterexamples.* MSC 74A10 (Stress). arXiv math.AP. Level 4: research.
+
+**Definition.** Take square-integrable stress matrices on a bounded connected body whose boundary is locally the graph of a Lipschitz function. Choose a closed linear subspace that excludes the constant identity matrix.
+
+**Problem.** In this subspace, the square-integral norm of the trace is bounded by a constant times the sum of two norms. One is the square-integral norm after subtracting the scalar part of the stress. The other measures divergence against test fields vanishing at the boundary with gradient norm at most one.
+
+**How the definition helps.** The subspace excludes constant pressure, which both norms on the right miss. The identity matrix illustrates this obstruction in our own example. The estimate still requires a bound on the variable part of the trace and control of its mean.
+
+**Paper or page:** [Locking-free hybrid high-order method for linear elasticity](https://arxiv.org/abs/2404.02768v2). It says: “The subspace Σ₀ does not contain the identity matrix”
+
+**Sources:**
+
+- [Locking-free hybrid high-order method for linear elasticity, Lemma 3.7](https://arxiv.org/abs/2404.02768v2)
+
 ### A Dirichlet-to-Neumann boundary map reduces exterior elastic scattering to a bounded domain
 
 **Remember:** Let the boundary answer as the outgoing wave outside would.
@@ -201,3 +541,37 @@
 **Sources:**
 
 - [Gang Bao, Peijun Li, Xiaokai Yuan, An adaptive finite element DtN method for the elastic wave scattering problem in three dimensions, arXiv:2101.05835v1 (2021)](https://arxiv.org/abs/2101.05835v1)
+
+### Affine boundary data allow gluing
+
+**Remember:** The same boundary displacement lets cell trials join without a seam.
+
+*True by definition.* MSC 74Q05 (Homogenization in equilibrium problems of solid mechanics). arXiv math.AP. Level 4: research.
+
+**Definition.** Fix an affine displacement, a linear map plus a constant. Define a cell’s energy as the infimum of its bulk energy over displacements agreeing with this map near the boundary.
+
+**Problem.** Partition a rectangular cell into finitely many rectangles and use the same local energy density and affine boundary values throughout. The whole cell’s energy is at most the sum of the smaller cell energies.
+
+**How the definition helps.** The matching boundary values let trial displacements join without a jump, in our own proof. Choose trials arbitrarily close to each smaller infimum. Their energies add, and the joined trial bounds the whole cell’s infimum from above. Free boundary values would require a separate estimate for joining the trials.
+
+**Paper or page:** [Non-local approximation of free-discontinuity problems in linear elasticity and application to stochastic homogenisation](https://arxiv.org/abs/2212.13759v1). It says: “defines a subadditive process on (Ω, 𝒯, P).”
+
+**Sources:**
+
+- [Non-local approximation of free-discontinuity problems in linear elasticity and application to stochastic homogenisation, Proposition 7.5](https://arxiv.org/abs/2212.13759v1)
+
+### Fracture compactness allows drifting pieces
+
+**Remember:** Crack energy need not bound how far a loose piece moves.
+
+*Makes the theorem clean to state or prove.* MSC 74R10 (Brittle fracture). arXiv math.AP. Level 4: research.
+
+**Definition.** A crack separates pieces of a body whose displacements may jump across their common boundary. Along a chosen subsequence, mark points where displacement magnitude tends to infinity. Require convergence in measure elsewhere, meaning that the volume with error above any fixed positive tolerance tends to zero.
+
+**Problem.** Consider displacements in the paper’s brittle fracture space on a bounded open body. Assume uniformly bounded crack area and a uniform bound on the integral of the pth power of symmetric gradient magnitude, for fixed p &gt; 1. Some subsequence converges in measure outside its marked set, whose boundary has finite area in the measure-theoretic sense.
+
+**How the definition helps.** Marking diverging points lets the theorem describe a finite limit on the rest of the body. The compactness theorem supplies the subsequence and the boundary bound. In our own example, a detached piece translates farther at each step without changing its strain or crack area.
+
+**Paper or page:** [Non-local approximation of free-discontinuity problems in linear elasticity and application to stochastic homogenisation](https://arxiv.org/abs/2212.13759v1). It says: “the set U∞ := {x ∈ U : \|uⱼ\| → +∞} has finite perimeter”
+
+**Sources:** none listed. No primary source with a working link was found.

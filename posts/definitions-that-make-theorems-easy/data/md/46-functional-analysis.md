@@ -153,6 +153,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Differentiating a step gives delta
+
+**Remember:** Move the derivative to the test function and read the jump.
+
+*True by definition.* MSC 46F10 (Operations with distributions and generalized functions), 01A60. arXiv math.FA, math.HO. Level 2: later undergraduate.
+
+**Definition.** On the real line, Schwartz’s distributions act on smooth test functions that vanish outside a bounded interval. A locally integrable function acts by integrating its product with each test function. Its distributional derivative acts by applying the original rule to the derivative of the test function and changing the sign. Ordinary differentiation misses the unit step’s jump.
+
+**Problem.** The distributional derivative of the unit step is the Dirac delta, the rule that evaluates a test function at zero.
+
+**How the definition helps.** Moving the derivative onto the test function turns the jump into a boundary value. In our own calculation, the unit step is zero to the left of zero and one to the right. Its derivative therefore integrates the negative derivative of the test function over the positive half-line. The fundamental theorem of calculus gives the value at zero, since the test function eventually vanishes. Integration by parts shows that the new derivative agrees with ordinary differentiation for smooth functions.
+
+**Wikipedia:** [Dirac delta function](https://en.wikipedia.org/wiki/Dirac_delta_function). It says: “For instance, it is the distributional derivative of the Heaviside step function.”
+
+**Sources:**
+
+- [Laurent Schwartz, Généralisation de la notion de fonction et de dérivation, théorie des distributions (1948)](https://doi.org/10.1007/BF03020757)
+
 ### Local convexity is what the Hahn–Banach theorem needs
 
 **Remember:** Convex neighbourhoods give seminorms, and seminorms give continuous linear functionals.
@@ -361,6 +379,38 @@
 **Sources:**
 
 - [R. C. James, A non-reflexive Banach space isometric with its second conjugate space, Proc. Nat. Acad. Sci. USA 37 (1951), 174–177](https://doi.org/10.1073/pnas.37.3.174)
+
+### Completeness makes Schauder coordinates continuous
+
+**Remember:** Completeness makes the coefficients depend continuously on the vector.
+
+*Rules out counterexamples.* MSC 46B15 (Summability and bases; functional analytic aspects of frames in Banach and Hilbert spaces). arXiv math.FA. Level 3: graduate.
+
+**Definition.** A Schauder basis gives each vector a unique expansion that converges in norm in the chosen order. A Banach space is a normed space in which all Cauchy sequences converge.
+
+**Problem.** Each coordinate functional of a Schauder basis in a Banach space is bounded. It sends a vector to its coefficient at a fixed basis position.
+
+**How the definition helps.** In our own proof, completeness lets the bounded inverse theorem transfer continuity from coefficient sequences to vectors. Give each convergent expansion the supremum of its partial-sum norms. This makes the coefficient space complete, and summation gives a bounded bijection onto the Banach space. Each individual term is a difference of partial sums, so each coefficient is continuous in that norm. Our own counterexample uses finite sequences with the Euclidean norm and the usual unit vectors eₙ. Use the basis e₁ followed by e₁ + eₙ for n ≥ 2. A unit vector with first entry zero and N later entries equal to 1/√N needs first coefficient −√N to cancel their sum.
+
+**Paper or page:** [Coordinate Functionals Associated with Schauder Basis of Banach Space are Bounded](https://proofwiki.org/wiki/Coordinate_Functionals_Associated_with_Schauder_Basis_of_Banach_Space_are_Bounded). It says: “Then each linear functional eₙ∗ is bounded.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Riesz bases give stable unique coefficients
+
+**Remember:** Two bounds control both synthesis and recovery.
+
+*Rules out counterexamples.* MSC 46B15 (Summability and bases; functional analytic aspects of frames in Banach and Hilbert spaces). arXiv math.FA. Level 3: graduate.
+
+**Definition.** A Riesz basis spans a Hilbert space densely and has two-sided norm bounds on all finite linear combinations. These bounds compare the norm of the combination with the square-sum norm of its coefficients.
+
+**Problem.** Every vector has a unique square-summable coefficient sequence in a Riesz basis. The map to coefficients and the map back are both bounded.
+
+**How the definition helps.** In our own proof, the lower bound prevents large coefficient changes from producing small changes in the vector. The upper bound extends finite sums to a bounded map from square-summable sequences. The lower bound makes this map injective with closed range and bounded inverse on its range. Density gives the whole Hilbert space as its range. Our own counterexample divides the nth unit vector in the square-summable sequence space by n. These vectors still span densely and satisfy the upper bound, but recovering the nth unit vector requires a coefficient of size n.
+
+**Wikipedia:** [Riesz sequence](https://en.wikipedia.org/wiki/Riesz_sequence). It says: “is an orthonormal basis for H and U : H → H is a bounded bijective operator.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Unconditional convergence makes a sum independent of order by definition
 
@@ -683,6 +733,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Doubling makes simple functions dense in Orlicz spaces
+
+**Remember:** Doubling lets one integrable scale control every smaller norm error.
+
+*Rules out counterexamples.* MSC 46E30 (Spaces of measurable functions (\\(L<sup>p\\</sup>)-spaces, Orlicz spaces, Köthe function spaces, Lorentz spaces, rearrangement invariant spaces, ideal spaces, etc.)). arXiv math.FA. Level 3: graduate.
+
+**Definition.** An Orlicz space uses a convex increasing function Φ on nonnegative numbers, with Φ(0) = 0 and Φ(t) tending to infinity. A measurable function f belongs if Φ(c\|f\|) has finite integral for some c &gt; 0. The doubling condition requires Φ(2t) ≤ CΦ(t) for one constant C and every t ≥ 0.
+
+**Problem.** On a finite measure space, measurable functions taking finitely many values are dense in the Orlicz space when Φ satisfies the doubling condition.
+
+**How the definition helps.** In our own proof, repeated doubling makes Φ(c\|f\|) integrable at every positive scale c. Truncation and approximation by finite-valued functions then give errors whose integrals at any fixed scale tend to zero by dominated convergence. Our own counterexample on (0,1) uses Lebesgue measure, Φ(t) = exp(t) − 1, and f(x) = log(1/x). The integral of Φ(\|f\|/2) is finite. For every bounded simple function g, the integral of Φ(\|f − g\|) diverges by comparison with 1/x near zero. The Luxemburg norm is the infimum of positive divisors that make the integral of Φ applied to the divided absolute error at most one. Thus every such g has error norm at least one.
+
+**Paper or page:** [Convolutions of Orlicz spaces and Orlicz Schatten classes, with applications to Toeplitz operators](https://arxiv.org/abs/2505.01707v2). It says: “if $\\Phi$ is a quasi-Young function which satisfies a $\\Delta<sub>2</sub>$-condition, then the simple functions are dense in $L<sup>\\Phi</sup>(d\\mu)$;”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Fourier Sobolev norms make higher-to-lower order circle embeddings compact
 
 **Remember:** Discard high frequencies and the error tends uniformly to zero on bounded sets.
@@ -862,6 +928,22 @@
 **How the definition helps.** The weak-derivative definition gives an integral identity that passes to limits, in our own proof. In a Sobolev Cauchy sequence, the functions and each of their first derivatives are Cauchy in Lᵖ. By completeness of Lᵖ they have limits u and gⱼ. Hölder’s inequality lets both sides of the defining identity pass to the limit. Thus gⱼ is the weak derivative of u, and the sequence converges in the Sobolev norm. For finite p on (−1, 1), smooth functions √(x² + ε²) converge in this norm to \|x\|, which lacks a classical derivative at zero. The work moves into completeness of Lᵖ and Hölder’s bound for integration against the test functions.
 
 **Wikipedia:** [Sobolev space](https://en.wikipedia.org/wiki/Sobolev_space). It says: “The derivatives are understood in a suitable weak sense to make the space complete, i.e. a Banach space.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Zero boundary values make gradient norms complete
+
+**Remember:** Zero boundary values let the gradient control the whole function.
+
+*Rules out counterexamples.* MSC 46E35 (Sobolev spaces and other spaces of \`\`smooth'' functions, embedding theorems, trace theorems). arXiv math.FA. Level 3: graduate.
+
+**Definition.** On an open subset of Euclidean space, the first Sobolev norm combines the square-integral norms of a function and its weak gradient. The weak gradient gives the first derivatives through integration by parts against smooth test functions of compact support. The space H₀¹ is the closure of smooth functions of compact support in this norm.
+
+**Problem.** On a bounded open subset of Euclidean space, the square-integral norm of the weak gradient is a complete norm on H₀¹.
+
+**How the definition helps.** The Poincaré inequality lets the gradient of a function with zero boundary values control its square-integral norm. Our own conclusion uses equivalence to the original complete Sobolev norm. In our own counterexample, the constant one on a bounded interval belongs to the full Sobolev space and has zero gradient.
+
+**Paper or page:** [The S-resolvent estimates for the Dirac operator on hyperbolic and spherical spaces](https://arxiv.org/abs/2504.12725v1). It says: “∥F∥₍L²₎ ≤ Cₚ(Ω)∥F∥ᴅ, F ∈ H₀¹(Ω).”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -1062,6 +1144,22 @@
 **Sources:**
 
 - [Maurice Fréchet, La notion de différentielle dans l'analyse générale, Annales scientifiques de l'École normale supérieure 42 (1925)](https://doi.org/10.24033/asens.766)
+
+### Strong measurability lets integrable norms give vector integrals
+
+**Remember:** Integrable norms suffice only when simple functions can see the vector values.
+
+*Rules out counterexamples.* MSC 46G10 (Vector-valued measures and integration), 46E40. arXiv math.FA. Level 3: graduate.
+
+**Definition.** A function into a Banach space is strongly measurable if it is an almost-everywhere limit of finite-valued measurable functions. Weak measurability only tests the scalar functions obtained by applying bounded linear functionals.
+
+**Problem.** A strongly measurable Banach-space-valued function with integrable norm has a Bochner integral. This is the norm limit of integrals of simple functions that approximate it in integrated norm.
+
+**How the definition helps.** Strong measurability supplies the simple approximations needed for the Bochner integrability criterion. Our own example sends t in \[0,1\], with Lebesgue measure, to the unit vector indexed by t in ℓ²(\[0,1\]). This Hilbert space consists of square-summable families indexed by the interval. Every bounded linear functional has only countably many nonzero coordinates, so each scalar test is measurable. Every vector in the example has norm one. A sequence of finite-valued approximations uses only countably many vectors, which together involve only countably many coordinates. Outside those coordinates it cannot approximate the assigned unit vectors, so the function has no Bochner integral.
+
+**Wikipedia:** [Bochner integral](https://en.wikipedia.org/wiki/Bochner_integral). It says: “a Bochner-measurable function f : X → B is Bochner integrable if and only if ∫₍X₎ ∥f∥ʙ dμ &lt; ∞.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### The weak Pettis definition lets bounded operators commute with the integral
 

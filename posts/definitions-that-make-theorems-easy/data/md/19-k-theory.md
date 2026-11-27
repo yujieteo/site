@@ -14,6 +14,38 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Length classifies Artinian local G₀
+
+**Remember:** Every simple factor contributes one copy of the residue field.
+
+*Rules out counterexamples.* MSC 19A49 (\\(K<sub>0</sub>\\) of other rings), 13D15. arXiv math.KT. Level 3: graduate.
+
+**Definition.** G₀ has one generator \[M\] for each isomorphism class of finitely generated modules. For every finitely generated submodule N impose \[M\] = \[N\] + \[M/N\]. The split group uses only direct sum relations.
+
+**Problem.** Let R be a commutative Artinian local ring. It has one maximal ideal, and descending chains of ideals stabilize. Module length counts the simple factors in a composition series and identifies G₀(R) with ℤ.
+
+**How the definition helps.** In our own proof, the relations replace each module by the sum of its simple factors. Every factor is the residue field, the quotient by the maximal ideal. The finite length theorem supplies the series and makes its length additive. For the ring of dual numbers over a field k, write ε for its generator with ε² = 0. Multiplication by ε has rank one on the ring and zero on two residue fields. That rank respects direct sums, so the split group distinguishes them.
+
+**Paper or page:** [Algebra](https://stacks.math.columbia.edu/tag/00JI). It says: “The map lengthᵣ : K′₀(R) → ℤ”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Perfect complexes multiply in K₀
+
+**Remember:** Bounded projective complexes keep tensor products bounded and exact on triangles.
+
+*Rules out counterexamples.* MSC 19A49 (\\(K<sub>0</sub>\\) of other rings), 18F25. arXiv math.KT. Level 3: graduate.
+
+**Definition.** A perfect complex has a bounded model made of direct summands of finite free modules. Maps inducing homology isomorphisms identify models. In K₀ the class of a mapping cone, the complex associated to a map, is target minus source. Compute the derived tensor product by tensoring these models.
+
+**Problem.** For every commutative ring, derived tensor product gives a ring structure on K₀ of perfect complexes.
+
+**How the definition helps.** In our own proof, tensoring bounded projective models gives another such model and preserves mapping cones. The cited lemma then gives bilinearity. The ring itself supplies the unit, and the usual tensor identities give associativity and commutativity. Over k\[ε\]/(ε²), for a field k, the residue field k has an infinite free resolution with every differential multiplication by ε. Tensoring it with k gives zero differentials, so the product has homology in arbitrarily high degrees.
+
+**Paper or page:** [Derived](https://stacks.math.columbia.edu/tag/0FCT). It says: “Then ⊗ induces a bilinear map K₀(𝒟) × K₀(𝒟′) → K₀(𝒟″) which sends (\[X\], \[X′\]) to \[X ⊗ X′\].”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Projectives separate product-ring K₀
 
 **Remember:** Each factor of a product ring gets its own projective summand.
@@ -30,6 +62,38 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Rank classifies local projective K₀
+
+**Remember:** Over a local ring, projective means free and rank counts the generators.
+
+*Rules out counterexamples.* MSC 19A49 (\\(K<sub>0</sub>\\) of other rings), 13C10. arXiv math.KT. Level 3: graduate.
+
+**Definition.** Define K₀ as the group of formal differences of finite projective modules, with direct sum as addition. A finite projective module is a direct summand of a finite free module.
+
+**Problem.** Rank identifies K₀ of a commutative local ring, a ring with one maximal ideal, with ℤ.
+
+**How the definition helps.** In our own calculation, restricting to projective modules lets rank distinguish all classes before taking differences. The cited theorem says these modules are free over a local ring. Taking differences then turns nonnegative ranks into integers. For comparison, localize ℤ at a prime p by allowing denominators prime to p. The module ℤ/p has rank zero but contributes one to torsion length, an additive invariant for direct sums.
+
+**Paper or page:** [Algebra](https://stacks.math.columbia.edu/tag/00JJ). It says: “Every finite projective R-module is finite free.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Exact sequences cancel Euler boundaries
+
+**Remember:** Boundaries appear twice with opposite signs.
+
+*True by definition.* MSC 19A99 (Grothendieck groups and \\(K<sub>0</sub>\\)), 18F30. arXiv math.KT. Level 3: graduate.
+
+**Definition.** Form a group with one generator \[B\] for each isomorphism class. Whenever A is a subobject of B, impose \[B\] = \[A\] + \[B/A\]. The split version imposes this relation only when B is a direct sum of the two pieces.
+
+**Problem.** Take a bounded complex in an abelian category, where kernels and quotients behave as they do for modules. Its alternating sum of classes equals that of its homology.
+
+**How the definition helps.** Our own proof uses the relation twice to split each term into its homology and two neighboring boundary classes. Each boundary appears once with each sign. In finitely generated abelian groups, the subgroup 2ℤ of ℤ forces \[ℤ/2\] = 0. Direct sum relations alone preserve the number of cyclic factors of order two.
+
+**Paper or page:** [Grothendieck's proof of Hirzebruch-Riemann-Roch theorem](https://arxiv.org/abs/2511.06880v2). It says: “Then we have the following equality in K₀(𝒞) ∑ (−1)ⁱ\[Xᵢ\] = ∑ (−1)ⁱ\[Hᵢ(X•)\].”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Finitely generated projectives keep K₀ from collapsing under the Eilenberg swindle
 
 **Remember:** An infinite sum absorbs one more copy of its summand.
@@ -43,6 +107,22 @@
 **How the definition helps.** The restriction to finitely generated modules removes the infinite sums that the swindle needs. For any object A, let S be the sum of countably many copies of A. Then A ⊕ S ≅ S, so \[A\] + \[S\] = \[S\] and \[A\] = 0. The nLab gives this argument as the reason to restrict to finitely generated projective modules. With that restriction, K₀(ℤ) = ℤ, since rank is additive (our own).
 
 **nLab:** [Eilenberg swindle](https://ncatlab.org/nlab/show/Eilenberg+swindle). It says: “This is the reason that, for instance, one has to restrict oneself to categories of finitely generated (projective) modules (which lack infinite direct sums)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Spectral sequence pages preserve Euler classes
+
+**Remember:** Along each differential, the same image enters twice with opposite signs.
+
+*True by definition.* MSC 19A99 (Grothendieck groups and \\(K<sub>0</sub>\\)), 18G40. arXiv math.KT. Level 3: graduate.
+
+**Definition.** Use the group of object classes with \[B\] = \[A\] + \[B/A\] for every subobject A. A spectral sequence is a sequence of arrays in which each new page is the homology of the preceding page. Sign each entry by the parity of its total degree, the sum of its two indices.
+
+**Problem.** If one page has finitely many nonzero entries, every later page has the same alternating class sum. For a bounded complex with a finite filtration, this sum equals the alternating sum of its cohomology classes.
+
+**How the definition helps.** In our own proof, the quotient relations cancel each differential’s image between adjacent total degrees. Direct sum relations alone would require the corresponding short exact sequences to split. Convergence identifies the final entries as successive quotients of cohomology, and the same relations add these quotients back together.
+
+**Paper or page:** [Homology](https://stacks.math.columbia.edu/tag/0BDW). It says: “Then only a finite number of Hⁿ(K•) are nonzero and we have ∑ (−1)ⁿ\[Hⁿ(K•)\] = ∑ (−1)ᵖ⁺ᑫ\[Eᵣ(p, q)\]”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -131,6 +211,38 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Series extend virtual exterior powers
+
+**Remember:** Exterior powers of a difference come from dividing the two series.
+
+*Rules out counterexamples.* MSC 19E08 (\\(K\\)-theory of schemes), 19A99. arXiv math.KT. Level 3: graduate.
+
+**Definition.** Collect all exterior powers of a vector bundle into one formal series with constant term one. To take exterior powers of a formal difference, divide the series of its two bundles.
+
+**Problem.** On a scheme, a space locally described by commutative rings, exterior powers extend to formal differences of vector bundles. Their series carries addition to multiplication.
+
+**How the definition helps.** In our own argument, constant term one makes the series invertible, so subtraction becomes division. The coefficient of degree r is the class of the rth exterior power, which records alternating products of r vectors. The exterior powers of an extension have successive pieces built from the subbundle and quotient. This proves that the series respects the defining exact sequence relations. For the negative trivial line the series is 1/(1 + t), which is no longer a polynomial.
+
+**Paper or page:** [Weil](https://stacks.math.columbia.edu/tag/0FIC). It says: “Let X be a scheme. There are maps λʳ : K₀(Vect(X)) → K₀(Vect(X))”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Real Witt classes equal signatures
+
+**Remember:** Cancel positive and negative squares in pairs to leave the signature.
+
+*Rules out counterexamples.* MSC 19G12 (Witt groups of rings), 11E81. arXiv math.KT. Level 3: graduate.
+
+**Definition.** Start with nonsingular symmetric bilinear forms on finite-dimensional real vector spaces, up to change of basis. The Witt ring identifies forms after adding any number of hyperbolic planes on either side. Each such plane has one positive and one negative square. Addition uses direct sum and multiplication uses tensor product.
+
+**Problem.** Signature identifies the real Witt ring with ℤ as a ring.
+
+**How the definition helps.** In our own proof, removing hyperbolic planes cancels positive and negative squares in pairs. Sylvester’s law says their counts are independent of the diagonalizing basis. The difference of the counts, called the signature, determines what survives and takes every integer value. Tensoring diagonal forms multiplies their signatures. Without the quotient, dimension detects the hyperbolic plane even though its signature vanishes.
+
+**Wikipedia:** [Witt group](https://en.wikipedia.org/wiki/Witt_group). It says: “Sylvester's law of inertia holds for quadratic forms over k and the signature defines a ring homomorphism”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Dividing K₁ by group elements makes Whitehead torsion independent of cell lifts
 
 **Remember:** Changing a cell lift multiplies by a group element that the quotient kills.
@@ -148,6 +260,22 @@
 **Sources:**
 
 - [John Milnor, Whitehead torsion (1966).](https://doi.org/10.1090/S0002-9904-1966-11484-2)
+
+### Unit classes distinguish matrix sizes
+
+**Remember:** A minimal projection counts one, while the identity counts the matrix size.
+
+*Rules out counterexamples.* MSC 19K14 (\\(K<sub>0</sub>\\) as an ordered group, traces), 46L80. arXiv math.OA, math.KT. Level 3: graduate.
+
+**Definition.** A projection is a matrix equal to its square and its conjugate transpose. Form K₀ from formal differences of projection classes, allowing larger matrices by adjoining zero blocks. Mark actual projection classes as positive and record the class of the identity of the original algebra.
+
+**Problem.** For complex square matrix algebras, the ordered K₀ group with its marked identity determines the matrix size. Forgetting the mark gives the same ordered group for every size.
+
+**How the definition helps.** In our own calculation, the marked identity records the matrix size as its rank. Projections over complex matrices are classified by rank after enlargement and unitary change of basis. Thus K₀ is ℤ with its usual positive cone, the set of nonnegative integers. Its only order-preserving group automorphism fixes one and hence fixes every integer. Marking n therefore distinguishes size n from every other size.
+
+**Paper or page:** [A review of the Elliott program of classification of simple amenable C\*-algebras](https://arxiv.org/abs/2311.14238v1). It says: “Then A ≅ B if and only if (K₀(A), K₀(A)₊, \[1ₐ\], K₁(A)) ≅ (K₀(B), K₀(B)₊, \[1ᵦ\], K₁(B)).”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Defining the Fredholm index by a K-theory boundary map makes indices add
 
@@ -182,6 +310,70 @@
 **Sources:**
 
 - [Klaus Jänich, Vektorraumbündel und der Raum der Fredholm-Operatoren (1965)](https://doi.org/10.1007/BF01360851)
+
+### Cone boundaries give suspension isomorphisms
+
+**Remember:** A cone has no K-groups, so its boundary map is an isomorphism.
+
+*True by definition.* MSC 19K99 (\\(K\\)-theory and operator algebras), 46L80. arXiv math.OA, math.KT. Level 3: graduate.
+
+**Definition.** For a complex C\*-algebra A, a norm-closed algebra of operators closed under adjoints, its cone consists of continuous A-valued paths vanishing at zero. The suspension consists of cone paths also vanishing at one. It is therefore the kernel of evaluation at one.
+
+**Problem.** The boundary maps identify K₀(A) with K₁ of its suspension and K₁(A) with K₀ of its suspension.
+
+**How the definition helps.** In our own proof, the kernel description puts the suspension into an exact sequence with the cone and A. Shrinking the path parameter contracts the cone, so its K-groups vanish. The six-term exact sequence for operator K-theory now places zeros on both sides of each boundary map. Exactness makes both maps isomorphisms. The six-term theorem incorporates Bott periodicity, the repetition of K-groups every two degrees. A description using loops of matrices still needs this periodicity to recover both maps.
+
+**Paper or page:** [Notes on C★-algebras](https://arxiv.org/abs/2505.17456v1), [Notes on C★-algebras](https://arxiv.org/abs/2505.17456v1). It says: “The cone CA is contractible. Hence K₀(CA) = 0 and K₁(CA) = 0.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Paths kill scalar operator K₁
+
+**Remember:** A complex unitary can rotate all its eigenvalues back to one.
+
+*Rules out counterexamples. Confidence: medium.* MSC 19K99 (\\(K\\)-theory and operator algebras), 19B99. arXiv math.OA, math.KT. Level 3: graduate.
+
+**Definition.** For operator K₁ of ℂ, use unitary matrices, whose conjugate transposes are their inverses. Enlarge matrices by adjoining identity blocks and identify matrices joined by continuous paths. Algebraic K₁ instead uses invertible matrices under enlargement and takes the quotient that makes multiplication commutative.
+
+**Problem.** Operator K₁ of ℂ is zero, while algebraic K₁ of ℂ is the nonzero multiplicative group of complex numbers.
+
+**How the definition helps.** In our own calculation, paths identify every complex unitary matrix with the identity. Diagonalize the matrix and rotate each eigenvalue along the unit circle to one. For algebraic K₁ of a field, the determinant identifies the group with its nonzero scalars. In particular, the matrix −1 survives there.
+
+**Wikipedia:** [Operator K-theory](https://en.wikipedia.org/wiki/Operator_K-theory), [Algebraic K-theory](https://en.wikipedia.org/wiki/Algebraic_K-theory). It says: “K₁(A) is the abelianization of the infinite general linear group”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The circle unitary represents operator K₁
+
+**Remember:** Send the circle coordinate to the unitary that represents the class.
+
+*True by definition.* MSC 19K99 (\\(K\\)-theory and operator algebras), 46L80. arXiv math.OA, math.KT. Level 3: graduate.
+
+**Definition.** For a unital complex C\*-algebra A, an algebra of bounded operators closed under adjoints and norm limits, use unitary matrices to define K₁(A). A unitary has its adjoint as inverse. Identify matrices joined by a continuous path after enlargement by identity blocks.
+
+**Problem.** Every class in K₁(A) comes from the circle coordinate z under a unital map preserving products, sums, complex scalars and adjoints. The target may be a matrix algebra over A.
+
+**How the definition helps.** In our own proof, a unitary representative specifies exactly where the circle coordinate must go. The theorem on continuous functions of a unitary extends this assignment to the entire algebra of continuous functions on the circle. Matrix enlargement identifies the resulting K₁ class with the original one. Starting with invertible matrices would first require deforming the representative to a unitary.
+
+**Paper or page:** [Notes on C★-algebras](https://arxiv.org/abs/2505.17456v1). It says: “The algebra of continuous functions on the circle 𝕋 denoted C(𝕋) is the universal C★-algebra generated by u such that u\*u = uu\* = 1.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Rational Chern characters kill precisely torsion
+
+**Remember:** Rationalization forgets precisely the classes killed by some nonzero integer.
+
+*True by definition. Confidence: medium.* MSC 19L10 (Riemann-Roch theorems, Chern characters), 55N15. arXiv math.AT, math.KT. Level 3: graduate.
+
+**Definition.** Complex K⁰ records formal differences of complex vector bundles. The Chern character sends them to even-degree rational cohomology. One description first allows rational coefficients in K-theory, then identifies the result with even-degree rational cohomology.
+
+**Problem.** On a finite cell complex, the kernel of the Chern character on K⁰ consists exactly of classes killed by some nonzero integer.
+
+**How the definition helps.** In our own proof, allowing rational coefficients kills exactly those elements annihilated by a nonzero integer. For finite cell complexes, the comparison theorem identifies this rationalized group with even-degree rational cohomology. It also identifies the composite with the usual Chern character defined by characteristic classes of vector bundles. The cited page describes the corresponding localization over the real numbers.
+
+**nLab:** [Chern character](https://ncatlab.org/nlab/show/Chern+character). It says: “there is a canonical localization map”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Characterizing Adams operations by line bundles makes them compose multiplicatively
 
@@ -237,6 +429,24 @@
 
 - [Graeme Segal, Equivariant K-theory (1968).](https://www.numdam.org/item/PMIHES%5F1968%5F%5F34%5F%5F129%5F0/)
 
+### Free actions allow equivariant descent
+
+**Remember:** A free orbit carries no extra representation on its fibers.
+
+*Rules out counterexamples.* MSC 19L47 (Equivariant \\(K\\)-theory), 55N91. arXiv math.AT, math.KT. Level 3: graduate.
+
+**Definition.** An equivariant complex vector bundle carries a group action by linear maps between fibers, compatible with the action on its base. Form equivariant K⁰ by taking formal differences under direct sum. A free action means that only the identity fixes any given point.
+
+**Problem.** For a finite group acting freely on a compact Hausdorff space, equivariant K⁰ equals ordinary K⁰ of the orbit space.
+
+**How the definition helps.** In our own proof, freeness lets each orbit of fibers become one vector space over the orbit space. A finite free action on a Hausdorff space gives each point a neighborhood disjoint from its nonidentity translates. Local bundle coordinates there give local coordinates on the quotient bundle. Pullback reverses this construction, so taking formal differences gives Segal’s isomorphism. Over a fixed point, the group of order two has distinct trivial and sign lines, although both underlying lines are identical.
+
+**nLab:** [equivariant K-theory](https://ncatlab.org/nlab/show/equivariant+K-theory). It says: “equivariant K-theory is given by equivalence classes of virtual equivariant bundles”
+
+**Sources:**
+
+- [Graeme Segal, Equivariant K-theory (1968), Proposition 2.1](https://www.numdam.org/item/PMIHES_1968__34__129_0.pdf)
+
 ### Stabilizer representations classify coset bundles
 
 **Remember:** One fiber determines the bundle when the group moves between all base points.
@@ -254,6 +464,40 @@
 **Sources:**
 
 - [Graeme Segal, Equivariant K-theory (1968), example (ii)](https://www.numdam.org/item/PMIHES_1968__34__129_0/)
+
+### Clutching classifies sphere bundles stably
+
+**Remember:** The determinant of the equator loop counts the stable class.
+
+*Makes the theorem clean to state or prove.* MSC 19L99 (Topological \\(K\\)-theory), 55R50. arXiv math.AT, math.KT. Level 3: graduate.
+
+**Definition.** Glue two trivial complex vector bundles over the hemispheres by a loop of unitary matrices along the equator. This loop is the transition function, which changes coordinates between the two trivializations. Adding a trivial bundle adds an identity block to each matrix.
+
+**Problem.** The reduced group of virtual complex bundles of rank zero on the two-sphere is ℤ. A Hopf line, the bundle of lines over the complex projective line, minus a trivial line generates it.
+
+**How the definition helps.** In our own calculation, the equator description reduces a stable bundle class to the winding number of one determinant loop. Winding number counts signed turns around the circle. The gluing theorem classifies bundles by homotopies of transition functions. The determinant theorem identifies homotopy classes of unitary loops with integers via winding number. The transition function of a Hopf line winds once, up to orientation.
+
+**nLab:** [clutching construction](https://ncatlab.org/nlab/show/clutching+construction). It says: “and one single transition function on that equator Sⁿ⁻¹ → G.”
+
+**Paper or page:** [Topological K-Theory of Complex Projective Spaces](https://arxiv.org/abs/1303.3959v1). It says: “where γ = ζ − 1̃, ζ is the Hopf bundle”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Idempotents lift K₀ across nilpotent ideals
+
+**Remember:** Idempotents lift across nilpotent ideals, and their image modules lift with them.
+
+*True by definition.* MSC 19A49 (\\(K<sub>0</sub>\\) of other rings), 13C10. arXiv math.KT. Level 4: research.
+
+**Definition.** A finite projective module is a direct summand of a finite free module. Equivalently, it is the image of an idempotent matrix, a matrix e satisfying e² = e. Take formal differences of these module classes under direct sum to form K₀.
+
+**Problem.** Let I be an ideal in a commutative ring R such that some power of I is zero. Reduction gives K₀(R) ≅ K₀(R/I).
+
+**How the definition helps.** In our own proof, the matrix description turns the problem of lifting a module into lifting one idempotent. The idempotent lifting theorem supplies this step. To compare two lifts, projectivity lets us lift an isomorphism and its inverse as module maps. Each composite differs from the identity by a map with image in I times the module. Such a map has a power equal to zero, so each composite is invertible. Reduction therefore identifies the direct sum classes before taking formal differences.
+
+**Paper or page:** [Algebra](https://stacks.math.columbia.edu/tag/0D47). It says: “Then there exists a finite projective R-module P such that P/IP ≅ P̄.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### An acyclic map to an E₁-group is a plus construction
 
@@ -363,6 +607,22 @@
 
 - [Daniel Quillen, Higher algebraic K-theory I (1973)](https://doi.org/10.1007/BFb0067053)
 
+### Derived tensor gives the projection formula
+
+**Remember:** A perfect factor pulled back from the target comes back out of pushforward.
+
+*True by definition.* MSC 19E08 (\\(K\\)-theory of schemes), 14C35. arXiv math.KT. Level 4: research.
+
+**Definition.** On a Noetherian scheme, local coordinate rings have finitely generated ideals. G₀ records bounded complexes with coherent cohomology, meaning their cohomology modules are locally finitely generated. K₀ uses perfect complexes, which locally have bounded models of finite free modules. Both groups impose additivity for mapping cones, which represent differences between the target and source of a map.
+
+**Problem.** Let f be a proper map of Noetherian schemes, meaning it is separated, of finite type and closed after every base change. Multiplying a source G₀ class by a pulled-back target K₀ class commutes with pushing the result forward.
+
+**How the definition helps.** In our own argument, defining both operations on complexes turns the group identity into the class of a known isomorphism. Derived tensor product computes multiplication after replacing the perfect factor locally by a free complex. Derived direct image computes pushforward while retaining higher cohomology. The projection formula identifies the two resulting complexes, and properness ensures their cohomology stays coherent. Ordinary tensor product can destroy exact sequences.
+
+**Paper or page:** [Perfect](https://stacks.math.columbia.edu/tag/0FDM). It says: “Then we have f∗(α ⋅ f⁎β) = f∗α ⋅ β for α ∈ K′₀(X) and β ∈ K₀(Y).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Perfect complexes instead of vector bundles let K-theory glue along open covers
 
 **Remember:** Use perfect complexes, not vector bundles, and K-theory glues along open covers.
@@ -380,6 +640,24 @@
 **Sources:**
 
 - [R. W. Thomason, Thomas Trobaugh, Higher algebraic K-theory of schemes and of derived categories, The Grothendieck Festschrift vol. III, Progress in Math. 88 (1990) 247–435](https://doi.org/10.1007/978-0-8176-4576-2_10)
+
+### Reduced K₀ removes free-cell contributions
+
+**Remember:** Free cells should not count against having a finite cell model.
+
+*Rules out counterexamples.* MSC 19J05 (Finiteness and other obstructions in \\(K<sub>0</sub>\\)), 57Q12. arXiv math.AT, math.KT. Level 4: research.
+
+**Definition.** For a connected cell complex X, form the integral group ring from integer combinations of based loop classes, multiplying by concatenating loops. For a homotopy retract of a finite complex, Wall models the universal cover’s chains by a finite complex of projective modules. These modules are direct summands of finite free modules over the group ring. The obstruction is their alternating class sum in reduced K₀, where the free rank-one class is zero.
+
+**Problem.** Suppose X is a homotopy retract of a finite cell complex, so the composite through that complex is homotopic to the identity. Wall’s obstruction vanishes exactly when X is homotopy equivalent to a finite cell complex.
+
+**How the definition helps.** In our own argument, reduced K₀ makes every cell in a finite model contribute zero. Choosing one lift per cell gives a basis for the cellular chains over the group ring. At a point the ordinary K₀ class is one, although the point already has a finite model. Wall constructs the finite projective model, proves independence of the choices and establishes the converse.
+
+**nLab:** [Wall's finiteness obstruction](https://ncatlab.org/nlab/show/Wall%27s+finiteness+obstruction). It says: “the vanishing of Wall's finiteness obstruction is a necessary and sufficient condition for this to happen.”
+
+**Sources:**
+
+- [C. T. C. Wall, Finiteness Conditions for CW-Complexes (1965)](https://doi.org/10.2307/1970382)
 
 ### Defining KK and E-theory by universal properties gives the comparison functor
 
@@ -400,6 +678,40 @@
 - [Nigel Higson, A characterization of KK-theory (1987).](https://doi.org/10.2140/pjm.1987.126.253)
 - [Nigel Higson, Categories of fractions and excision in KK-theory (1990).](https://doi.org/10.1016/0022-4049(90)90114-w)
 
+### Kasparov equivalences preserve operator K-theory
+
+**Remember:** Compose with an invertible correspondence and then compose with its inverse.
+
+*True by definition.* MSC 19K35 (Kasparov theory (\\(KK\\)-theory)), 46L80. arXiv math.OA, math.KT. Level 4: research.
+
+**Definition.** For separable complex operator algebras closed under adjoints and norm limits, Kasparov’s category KK has generalized maps between algebras. Separable means having a countable dense subset. A KK-equivalence is a generalized map with a two-sided inverse. Describe K₀(A) and K₁(A) by the even and odd KK groups of maps from ℂ to A.
+
+**Problem.** A KK-equivalence between separable complex C\*-algebras induces isomorphisms on both operator K-groups.
+
+**How the definition helps.** In our own proof, composing maps from ℂ with the equivalence gives the desired map in each degree. Composing with its inverse gives the inverse on each group. The comparison theorem identifies these groups with the usual definitions using projections and unitaries. Those definitions alone supply no algebra homomorphism representing the equivalence.
+
+**nLab:** [KK-theory](https://ncatlab.org/nlab/show/KK-theory). It says: “KK(ℂ, A) ≃ K₀(A)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Module spectra express the operator Künneth formula
+
+**Remember:** Tensor the spectra so torsion is not lost in the product formula.
+
+*Makes the theorem clean to state or prove.* MSC 19K35 (Kasparov theory (\\(KK\\)-theory)), 46L80. arXiv math.OA, math.KT. Level 4: research.
+
+**Definition.** A spectrum packages groups in all degrees with the maps relating them. Operator K-theory assigns an algebra A a spectrum K(A) with an action of periodic complex K-theory, denoted KU. This action makes K(A) a module over KU and allows two such modules to be tensored over KU.
+
+**Problem.** Work in the stable version of Kasparov’s category KK, which allows generalized maps between operator algebras. Suppose A belongs to the smallest stable subcategory containing ℂ and closed under all colimits, which assemble diagrams of objects. For any B in KK, the comparison from K(A) tensored over KU with K(B) to K(A ⊗ B) is an equivalence.
+
+**How the definition helps.** In our own formulation, the tensor product of modules over KU packages the entire product formula into one map. An equivalence means the map induces isomorphisms on homotopy groups in every degree. The cited theorem proves this comparison for the stated category. Tensoring only the graded abelian groups can miss contributions from torsion.
+
+**Paper or page:** [A survey on operator K-theory via homotopical algebra](https://arxiv.org/abs/2311.17191v1), [A survey on operator K-theory via homotopical algebra](https://arxiv.org/abs/2311.17191v1). It says: “For A in UCT and B in 𝐊𝐊, the canonical map K(A) ⊗<sub>KU</sub> K(B) → K(A ⊗ B) is an equivalence.”
+
+**Sources:**
+
+- [Ulrich Bunke, Markus Land and Ulrich Pennig, A survey on operator K-theory via homotopical algebra, Corollary 5.17](https://arxiv.org/abs/2311.17191v1)
+
 ### The universal property of KK-theory gives every split-exact stable functor Bott periodicity
 
 **Remember:** A functor that factors through KK inherits its periodicity.
@@ -418,6 +730,40 @@
 
 - [Gennady Kasparov, The operator K-functor and extensions of C\*-algebras (1981, English translation)](https://doi.org/10.1070/IM1981v016n03ABEH001320)
 - [Nigel Higson, A characterization of KK-theory (1987)](https://doi.org/10.2140/pjm.1987.126.253)
+
+### Shift defects compute Toeplitz boundaries
+
+**Remember:** The unilateral shift misses one basis vector, so its index is minus one.
+
+*True by definition.* MSC 19K56 (Index theory), 46L80. arXiv math.OA, math.KT. Level 4: research.
+
+**Definition.** A partial isometry v preserves lengths on the orthogonal complement of its kernel and vanishes on the kernel. If v lifts a quotient unitary u, compute the boundary of \[u\] as \[1 − v\*v\] − \[1 − vv\*\]. Here v\* denotes the adjoint, and the brackets denote projection classes in K₀ of the kernel ideal.
+
+**Problem.** For the algebra generated by the unilateral shift and its adjoint, quotienting by compact operators gives the continuous functions on the circle. The boundary sends the circle coordinate to minus the rank-one projection class.
+
+**How the definition helps.** In our own calculation, the two projections measure the kernel and missing range of the unilateral shift. This shift sends each basis vector to the next, so its kernel is zero and its range misses one basis vector. The defect formula gives minus the class of the projection onto that vector. The Toeplitz extension theorem identifies the shift modulo compact operators with the circle coordinate. Computing instead by winding number requires the index theorem relating winding to this boundary.
+
+**Wikipedia:** [Toeplitz algebra](https://en.wikipedia.org/wiki/Toeplitz_algebra). It says: “So the Toeplitz algebra can be viewed as the C\*-algebra extension of continuous functions on the circle by the compact operators.”
+
+**Paper or page:** [Notes on C★-algebras](https://arxiv.org/abs/2505.17456v1). It says: “Then ∂(\[u\])=\[1ₙ−v\*v\]−\[1ₙ−vv\*\].”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Connective K-theory modulo Bott gives integers
+
+**Remember:** Removing positive powers of Bott from connective K-theory leaves only the integers.
+
+*Rules out counterexamples.* MSC 19L41 (Connective \\(K\\)-theory, cobordism), 55N20. arXiv math.AT, math.KT. Level 4: research.
+
+**Definition.** A spectrum represents a cohomology theory in all degrees at once. The connective cover ku of periodic complex K-theory keeps its nonnegative homotopy groups and sets its negative groups to zero. The Bott element β is the generator in degree two that produces periodicity.
+
+**Problem.** The cofiber of multiplication by β on ku represents ordinary integral cohomology. Here the cofiber is the homotopy version of the quotient by a map.
+
+**How the definition helps.** In our own calculation, removing the negative groups leaves no class in degree minus two that can map onto degree zero. By Bott periodicity the homotopy ring of ku is the polynomial ring ℤ\[β\]. Multiplication by β is injective, with cokernel ℤ in degree zero. The cofiber exact sequence gives those same groups for the cofiber. A spectrum with only ℤ in degree zero represents ordinary integral cohomology. In periodic K-theory, β is invertible and the cofiber vanishes.
+
+**nLab:** [ku](https://ncatlab.org/nlab/show/ku), [Bott periodicity](https://ncatlab.org/nlab/show/Bott+periodicity). It says: “The ring spectrum commonly denoted ku is the connective cover of the spectrum KU, which represents complex topological K-theory.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Fredholm sections allow nontorsion twists
 

@@ -82,6 +82,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Atomless measures take every intermediate value
+
+**Remember:** Without indivisible pieces, every smaller mass can be cut out.
+
+*Rules out counterexamples.* MSC 28A12 (Contents, measures, outer measures, capacities). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** A finite measure is atomless if each measurable set of positive measure contains a measurable subset of strictly smaller positive measure.
+
+**Problem.** Every measurable set A in a finite atomless measure space has a measurable subset of any prescribed mass between zero and μ(A).
+
+**How the definition helps.** Atomlessness lets one split any positive piece instead of having to take it whole, in our own explanation. In our own example, a Dirac probability measure puts all its mass on one point and cannot give any subset mass one half. Sierpiński’s theorem assembles exact masses by extending a nested family of subsets with prescribed masses.
+
+**Wikipedia:** [Atom (measure theory)](https://en.wikipedia.org/wiki/Atom_%28measure_theory%29). It says: “there exists a measurable subset B of A such that μ(B) = b.”
+
+**Sources:**
+
+- [Wacław Sierpiński. Sur les fonctions d'ensemble additives et continues. Fundamenta Mathematicae 3 (1922), 240–246.](https://doi.org/10.4064/fm-3-1-240-246)
+
 ### Carathéodory's measurability condition builds additivity into the definition
 
 **Remember:** A measurable set cuts every other set into two pieces whose sizes add up.

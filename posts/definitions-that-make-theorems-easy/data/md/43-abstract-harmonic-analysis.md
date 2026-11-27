@@ -14,6 +14,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Unimodularity makes inversion measure-preserving
+
+**Remember:** Inversion swaps the two sides of Haar invariance.
+
+*Rules out counterexamples.* MSC 43A05 (Measures on groups and semigroups, etc.). arXiv math.FA. Level 3: graduate.
+
+**Definition.** On a locally compact Hausdorff group, a left Haar measure is a nonzero regular Borel measure, finite on compact sets and invariant under left translations. The group is unimodular if right translations also preserve that measure.
+
+**Problem.** Inversion preserves left Haar measure exactly when the group is unimodular.
+
+**How the definition helps.** Inversion exchanges left and right translations, so it takes a left Haar measure to a right Haar measure (our own). In a unimodular group, uniqueness gives a positive scalar relating these measures (our own). Applying inversion twice squares the scalar and restores the measure, so the scalar is one (our own). Conversely, inversion invariance gives right invariance (our own).
+
+**nLab:** [Haar integral](https://ncatlab.org/nlab/show/Haar+integral). It says: “The left and the right Haar measure may or may not coincide, groups for which they coincide are called unimodular.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Amenability gives invariant measures through its fixed-point definition
 
 **Remember:** An invariant measure is a fixed point for the action on probability measures.
@@ -49,6 +65,24 @@
 **Sources:**
 
 - [J. von Neumann, Zur allgemeinen Theorie des Masses, Fundamenta Mathematicae 13 (1929) 73–116](https://doi.org/10.4064/fm-13-1-73-116)
+
+### Fixed points preserve amenable extensions
+
+**Remember:** Fix the normal subgroup first, then let the quotient act.
+
+*True by definition.* MSC 43A07 (Means on groups, semigroups, etc.; amenable groups). arXiv math.FA. Level 3: graduate.
+
+**Definition.** Amenability usually means that bounded functions admit a positive normalized average invariant under translation, using essentially bounded measurable functions for locally compact groups. Day’s equivalent test uses a nonempty compact convex set in a locally convex space, where convex neighborhoods form a base at zero. Every separately continuous group action preserving convex combinations must fix a point.
+
+**Problem.** A locally compact group with a closed normal amenable subgroup and an amenable quotient is amenable.
+
+**How the definition helps.** The subgroup’s fixed points form a nonempty compact convex set, so the same test applies again (our own). Normality preserves this set under the whole group, and the subgroup acts trivially there (our own). The resulting quotient action has a fixed point, which the whole group fixes (our own). Day’s theorem connects this argument to the invariant average.
+
+**Paper or page:** [Amenability of group actions on compact spaces and the associated Banach algebras](https://arxiv.org/abs/2504.08357). It says: “then K has a G–fixed point.”
+
+**Sources:**
+
+- [Mahlon M. Day, Fixed-point theorems for compact convex sets (1961)](https://doi.org/10.1215/ijm/1255631582)
 
 ### Invariant means make quotients of amenable groups amenable
 
@@ -184,6 +218,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Compactness gives Fourier algebra identities
+
+**Remember:** Constants enter the Fourier algebra when constant vectors are square integrable.
+
+*Rules out counterexamples.* MSC 43A30 (Fourier and Fourier-Stieltjes transforms on nonabelian groups and on semigroups, etc.). arXiv math.FA. Level 3: graduate.
+
+**Definition.** For square-integrable functions u and v on a locally compact group, write λ(g)u for the left translate of u by g. The Fourier algebra consists of the coefficients g ↦ ⟨λ(g)u,v⟩ and uses pointwise multiplication.
+
+**Problem.** The Fourier algebra of a locally compact group has a multiplicative identity exactly when the group is compact.
+
+**How the definition helps.** Compactness makes the constant functions square integrable, and a unit constant vector gives the coefficient one (our own). At any g, choose a unit vector u and set v = λ(g)u to obtain a coefficient equal to one there (our own). Any identity must therefore equal one everywhere (our own). Compactly supported vectors give compactly supported coefficients and approximate every coefficient uniformly (our own). Thus every coefficient vanishes at infinity, excluding the constant one on a noncompact group (our own).
+
+**Wikipedia:** [Fourier algebra](https://en.wikipedia.org/wiki/Fourier_algebra). It says: “We define the Fourier algebra A(G) to be the closed subalgebra spanned by the matrix coefficients of the left regular representation of G on L²(G).”
+
+**Sources:**
+
+- [Pierre Eymard, L’algèbre de Fourier d’un groupe localement compact (1964)](https://doi.org/10.24033/bsmf.1607)
+
 ### Tensor products multiply Fourier–Stieltjes coefficients
 
 **Remember:** Tensor both actions and both pairs of vectors to multiply coefficients.
@@ -201,6 +253,42 @@
 **Sources:**
 
 - [P. Eymard, L’algèbre de Fourier d’un groupe localement compact (1964)](https://doi.org/10.24033/bsmf.1607)
+
+### Open subgroups preserve zero extensions
+
+**Remember:** Cosets give positive blocks, and openness keeps the zero extension continuous.
+
+*Rules out counterexamples.* MSC 43A35 (Positive definite functions on groups, semigroups, etc.). arXiv math.FA. Level 3: graduate.
+
+**Definition.** A function on a group is positive definite if every matrix with entries f(xᵢ⁻¹xⱼ) is positive semidefinite. This means each matrix gives a nonnegative quadratic form. Require the subgroup to be open when extending a continuous positive definite function by zero.
+
+**Problem.** A continuous positive definite function on an open subgroup extends by zero to a continuous positive definite function on the group.
+
+**How the definition helps.** Openness makes the subgroup and its complement open, so zero extension preserves continuity (our own). Partition any finite list of group elements by left coset (our own). Entries between different cosets vanish, and each diagonal block is a positive semidefinite matrix from the subgroup (our own). Extending the constant one from {0} to ℝ gives a discontinuous function (our own).
+
+**Paper or page:** [On extremal problems of Delsarte type for positive definite functions on LCA groups](https://arxiv.org/abs/2412.00482). It says: “Let H be an open subgroup of a LCA group G”
+
+**Sources:**
+
+- [On extremal problems of Delsarte type for positive definite functions on LCA groups](https://arxiv.org/abs/2412.00482)
+
+### Evaluation makes biduality natural
+
+**Remember:** Evaluating after precomposition gives the same value as first mapping the point.
+
+*True by definition.* MSC 43A40 (Character groups and dual objects). arXiv math.FA. Level 3: graduate.
+
+**Definition.** The dual of a locally compact abelian group consists of its continuous homomorphisms to the unit circle, called characters. Give it the topology of uniform convergence on compact sets. The dual of a map sends a character to its composition with that map. Identify a point x with the function χ ↦ χ(x) on the dual.
+
+**Problem.** The evaluation isomorphisms from locally compact abelian groups to their double duals commute with every continuous group homomorphism.
+
+**How the definition helps.** Choosing evaluation as the identification makes both compositions evaluate the same character at the same point (our own). For a map u and target character χ, both give χ(u(x)) (our own). Choosing unspecified isomorphisms with the double dual would require a separate compatibility proof (our own). Pontryagin duality proves that evaluation is a continuous isomorphism with continuous inverse (our own).
+
+**Wikipedia:** [Pontryagin duality](https://en.wikipedia.org/wiki/Pontryagin_duality). It says: “each group element x is identified to the evaluation character on the dual.”
+
+**Sources:**
+
+- [Lev Pontryagin, The Theory of Topological Commutative Groups (1934)](https://doi.org/10.2307/1968438)
 
 ### Inverse limits make profinite group characters have finite order
 
@@ -287,6 +375,78 @@
 **Sources:**
 
 - [Felix Pogorzelski, Christoph Richard, Nicolae Strungaru, Leptin densities in amenable groups, arXiv:2107.04760v2 (2021)](https://arxiv.org/abs/2107.04760v2)
+
+### Open subgroup coefficients extend isometrically
+
+**Remember:** Extend the vectors by zero and their coefficient extends by zero too.
+
+*True by definition.* MSC 43A30 (Fourier and Fourier-Stieltjes transforms on nonabelian groups and on semigroups, etc.). arXiv math.FA. Level 4: research.
+
+**Definition.** On a locally compact group, use Haar measure, the regular measure invariant under left translation. The Fourier algebra consists of functions g ↦ ⟨λ(g)u,v⟩, where λ(g) translates the square-integrable function u on the left. The norm is the infimum of ‖u‖₂‖v‖₂ over all such pairs.
+
+**Problem.** For an open subgroup, zero extension preserves the Fourier algebra norm.
+
+**How the definition helps.** Extending both vectors by zero gives the required coefficient with the same vector norms (our own). Outside the subgroup the translated vector has support disjoint from the other vector (our own). The restriction bound in the quoted lemma gives the opposite norm inequality (our own). Eymard identifies the coefficient norm with the alternative norm from pairing functions with operators generated by translations (our own).
+
+**Paper or page:** [Spectral synthesis in multidimensional Fourier algebras](https://arxiv.org/abs/2501.04349). It says: “If H is open, then Aⁿ(H) is completely isometrically isomorphic to (Aⁿ(G))°”
+
+**Sources:**
+
+- [Pierre Eymard, L’algèbre de Fourier d’un groupe localement compact (1964)](https://doi.org/10.24033/bsmf.1607)
+
+### Boundary coherence preserves support constraints
+
+**Remember:** Boundary points cannot carry positive values if outside points approach them.
+
+*Rules out counterexamples.* MSC 43A35 (Positive definite functions on groups, semigroups, etc.). arXiv math.CA. Level 4: research.
+
+**Definition.** A set is boundary coherent if every neighborhood of each boundary point meets the exterior of its closure. The positive set of a real function consists of points where its value exceeds zero. Define the negative set using values below zero.
+
+**Problem.** Consider continuous real functions on a locally compact abelian group with prescribed symmetric sets for the two signs. Assume both sets are boundary coherent and the positive constraint set contains a neighborhood of zero. Requiring each sign set to lie in its prescribed set is equivalent to requiring containment of their respective closures.
+
+**How the definition helps.** A positive boundary value would force positive values outside the prescribed closure by continuity and boundary coherence (our own). Apply the same argument to the negative of the function for the other sign (our own). Removing ±1 from ℝ leaves its closure unchanged, so a positive Gaussian passes only the closure test (our own).
+
+**Paper or page:** [On extremal problems of Delsarte type for positive definite functions on LCA groups](https://arxiv.org/abs/2412.00482). It says: “Let G be a LCA group and Ω₊, Ω₋ be boundary-coherent symmetric subsets of G with Ω₊ a neighbourhood of 0.”
+
+**Sources:**
+
+- [On extremal problems of Delsarte type for positive definite functions on LCA groups](https://arxiv.org/abs/2412.00482)
+
+### Nonnegative series yield positive spherical kernels
+
+**Remember:** Each power of an inner product is another inner product.
+
+*True by definition.* MSC 43A35 (Positive definite functions on groups, semigroups, etc.), 43A90. arXiv math.CA. Level 4: research.
+
+**Definition.** A continuous function F on \[−1,1\] defines a kernel on each real unit sphere by assigning F(⟨x,y⟩) to each pair of points. Positive definiteness means every matrix of these values on a finite list of points has a nonnegative quadratic form. Schoenberg’s alternative description uses a power series with nonnegative coefficients having finite sum.
+
+**Problem.** A summable nonnegative power series in the inner product is positive definite on every real unit sphere.
+
+**How the definition helps.** Each power of the inner product gives a positive semidefinite matrix (our own). Indeed, multiplying coordinates in ordered tuples gives vectors whose inner products are the required powers (our own). Nonnegative sums preserve nonnegative quadratic forms, and so do limits (our own). Schoenberg proves that continuity and positivity on spheres of every dimension force this series representation.
+
+**Paper or page:** [Positive definite singular kernels on two-point homogeneous spaces](https://arxiv.org/abs/2410.22104). It says: “A function f:\[−1,1\] → ℝ is positive definite on all spheres”
+
+**Sources:**
+
+- [Isaac J. Schoenberg, Positive definite functions on spheres (1942)](https://doi.org/10.1215/s0012-7094-42-00908-6)
+
+### Discreteness guarantees abelian spectral synthesis
+
+**Remember:** Finite cutoffs leave all required zeros untouched.
+
+*Rules out counterexamples.* MSC 43A45 (Spectral synthesis on groups, semigroups, etc.). arXiv math.FA. Level 4: research.
+
+**Definition.** For an abelian group, the Fourier algebra consists of transforms of integrable functions on its group of continuous circle-valued characters. Use Haar measure, the translation-invariant regular measure, on the character group. The algebra norm is the integral of the absolute value of the function transformed. A closed set admits spectral synthesis if every algebra function vanishing there is a norm limit of functions supported on compact sets disjoint from it.
+
+**Problem.** Every subset of a discrete abelian group has spectral synthesis. This is not true of all closed sets on the circle.
+
+**How the definition helps.** On a discrete group, multiplying by a finitely supported function preserves every required zero and gives compact support (our own). Leptin’s theorem and density provide such multipliers whose products converge to each function in the algebra norm (our own). The cited equivalence also gives a closed set on the circle where synthesis fails.
+
+**Paper or page:** [Spectral synthesis in multidimensional Fourier algebras](https://arxiv.org/abs/2501.04349). It says: “Let G be a locally compact abelian group. Then every closed subset of Gⁿ is a set of spectral synthesis for Aⁿ(G) if and only if G is discrete.”
+
+**Sources:**
+
+- [Paul Malliavin, Impossibilité de la synthèse spectrale sur les groupes abéliens non compacts (1959)](https://doi.org/10.1007/bf02684707)
 
 ### Frequency bands reconstruct modulo polynomials
 

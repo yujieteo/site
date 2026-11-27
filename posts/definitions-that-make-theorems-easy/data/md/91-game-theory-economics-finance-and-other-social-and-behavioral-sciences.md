@@ -1,3 +1,19 @@
+### Conventional cash flows yield one return
+
+**Remember:** One initial cost and only later gains give one break-even rate.
+
+*Rules out counterexamples.* MSC 91G50 (Corporate finance (dividends, real options, etc.)). arXiv q-fin.MF. Level 1: early undergraduate.
+
+**Definition.** Call a cash stream conventional here if it starts with an outflow followed only by inflows or zero payments. The internal rate of return is a discount rate above minus one that makes the sum of discounted cash flows zero.
+
+**Problem.** For a finite conventional cash stream with at least one later positive inflow, the internal rate of return is unique.
+
+**How the definition helps.** Every later inflow falls in present value as the discount rate rises (our own). Their sum decreases continuously from infinity to zero as the rate runs from minus one to infinity (our own). It therefore equals the initial cost exactly once (our own). At dates zero, one, and two, payments of −10, 21, and −11 give two rates, zero and ten percent (our own).
+
+**Wikipedia:** [Internal rate of return](https://en.wikipedia.org/wiki/Internal_rate_of_return). It says: “In this case the NPV of the payment stream is a convex, strictly decreasing function of interest rate.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Mixed strategies give every finite zero-sum game a value
 
 **Remember:** Randomizing makes the best guaranteed gain equal the least guaranteed loss.
@@ -146,6 +162,56 @@
 
 - [J. von Neumann and O. Morgenstern, Theory of Games and Economic Behavior, Princeton University Press (1944; 2nd ed. 1947, with the utility axioms)](https://doi.org/10.1515/9781400829460)
 
+### Compensated demand cannot slope upward
+
+**Remember:** Hold utility fixed and a price rise cannot increase demand.
+
+*Rules out counterexamples.* MSC 91B42 (Consumer behavior, demand theory). arXiv econ.TH. Level 2: later undergraduate.
+
+**Definition.** Compensated demand selects a cheapest bundle that gives the buyer at least a fixed level of satisfaction, called utility. Ordinary demand instead maximizes utility at a fixed budget.
+
+**Problem.** If only one price rises, the cost-minimizing quantity of that good cannot increase, provided both minima exist.
+
+**How the definition helps.** Holding utility fixed lets each bundle compete with the other at both price vectors (our own). Each chosen bundle costs no more than the other at its own prices (our own). Adding the inequalities cancels the unchanged prices and shows that the quantity bought cannot rise (our own).
+
+**Wikipedia:** [Hicksian demand function](https://en.wikipedia.org/wiki/Hicksian_demand_function). It says: “Hicksian demand always slopes down.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Minimum expenditure is price-concave
+
+**Remember:** The cheapest of linear cost plans is concave in prices.
+
+*True by definition.* MSC 91B42 (Consumer behavior, demand theory). arXiv econ.TH. Level 2: later undergraduate.
+
+**Definition.** The expenditure function gives the least cost of reaching a fixed level of satisfaction, called utility. Take the infimum of costs over all bundles reaching that target.
+
+**Problem.** At any fixed attainable utility level, minimum expenditure is concave in prices where its value is finite.
+
+**How the definition helps.** Each feasible bundle gives one linear cost function, and the same bundles compete at every price (our own). Their pointwise infimum is concave (our own). Using expenditure avoids tracking switches between the bundles chosen by a consumer with a fixed budget (our own). Connecting the two descriptions requires the duality theorem for consumer choice (our own).
+
+**Wikipedia:** [Expenditure function](https://en.wikipedia.org/wiki/Expenditure_function). It says: “Concave in p”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Separate sides guarantee stable matching
+
+**Remember:** Separate the people who propose from the people who hold offers.
+
+*Rules out counterexamples.* MSC 91B68 (Matching models). arXiv econ.TH. Level 2: later undergraduate.
+
+**Definition.** A stable matching has no two people who would rather pair with each other than keep their assigned partners. In the two-sided model, only members of opposite sides can pair. The roommates model instead allows any pair.
+
+**Problem.** Two equally sized sides with strict, complete rankings of the opposite side always admit a stable matching.
+
+**How the definition helps.** Two sides let one group propose while the other holds its best offers. When proposers try partners in order, a receiver who rejects one eventually gets a preferred partner. This proves stability when proposals end. In the roommates example, A ranks B then C, B ranks C then A, and C ranks A then B (our own). All three rank D last, and D may rank the others in any strict order (our own). Whoever pairs with D can find a mutually preferred partner among the other two (our own).
+
+**Wikipedia:** [Stable roommates problem](https://en.wikipedia.org/wiki/Stable_roommates_problem), [Gale–Shapley algorithm](https://en.wikipedia.org/wiki/Gale%E2%80%93Shapley_algorithm). It says: “Unlike the stable marriage problem, a stable matching may fail to exist for certain sets of participants and their preferences.”
+
+**Sources:**
+
+- [D. Gale, L. S. Shapley. College Admissions and the Stability of Marriage (1962).](https://doi.org/10.1080/00029890.1962.11989827)
+
 ### Log wealth turns growth into addition
 
 **Remember:** Logarithms turn compounded returns into an average of one-round gains.
@@ -163,6 +229,98 @@
 **Sources:**
 
 - [Kelly, A New Interpretation of Information Rate (1956)](https://doi.org/10.1002/j.1538-7305.1956.tb03809.x)
+
+### Two funds span minimum-variance portfolios
+
+**Remember:** Find two points on the line of variance-minimizing portfolios.
+
+*Makes the theorem clean to state or prove.* MSC 91G10 (Portfolio theory). arXiv q-fin.PM. Level 2: later undergraduate.
+
+**Definition.** At a target expected return, choose asset weights summing to one that minimize return variance. Allow negative weights, which represent selling borrowed assets. A positive definite covariance matrix makes variance the squared length of the weight vector in the corresponding inner product.
+
+**Problem.** With unequal expected returns across assets, all target-return minimizers lie on one line. Any two minimizers at different targets generate the others by combinations whose coefficients sum to one.
+
+**How the definition helps.** Viewing variance as squared length turns each minimizer into the closest feasible point to zero (our own). It lies in the span of the two normals to the budget and return constraints in this inner product (our own). The budget equation cuts that plane in a line, and each target return selects one point (our own).
+
+**Wikipedia:** [Mutual fund separation theorem](https://en.wikipedia.org/wiki/Mutual_fund_separation_theorem). It says: “Now consider two benchmark efficient portfolios constructed at benchmark expected returns”
+
+**Sources:**
+
+- [Robert C. Merton. An Analytic Derivation of the Efficient Portfolio Frontier (1972).](https://doi.org/10.2307/2329621)
+
+### Risk-neutral prices exclude arbitrage
+
+**Remember:** A fair average cannot hide a gain that never loses.
+
+*True by definition.* MSC 91G15 (Financial markets). arXiv q-fin.MF. Level 2: later undergraduate.
+
+**Definition.** Consider finitely many states and trading dates, with a positive bank account and no dividends. Risk-neutral probabilities give positive weight to exactly the states possible under the original probabilities. Under them, each asset price in bank-account units equals its expected next price given current information.
+
+**Problem.** An arbitrage starts from zero, has no terminal loss, and gains money with positive probability. In a finite market with finitely many trading dates, risk-neutral probabilities rule out arbitrage.
+
+**How the definition helps.** Risk-neutral probabilities replace a check on every trading strategy with one conditional average for each asset (our own). Each trade uses only current information and money in the account, so its expected discounted gain is zero (our own). An arbitrage would have positive expected gain (our own). The converse theorem constructs these probabilities when no arbitrage exists.
+
+**nLab:** [martingale](https://ncatlab.org/nlab/show/martingale). It says: “For each n ≤ m, the function fₙ is a conditional expectation of fₘ given ℱₙ:”
+
+**Paper or page:** [The Golden Age of the Mathematical Finance](https://arxiv.org/abs/2102.06693v2). It says: “There are not arbitrage opportunities if and only if there is a probability ℙ∗ ∼ ℙ under which the process S̃ is a martingale.”
+
+**Sources:**
+
+- [J. Michael Harrison, Stanley R. Pliska. Martingales and stochastic integrals in the theory of continuous trading (1981).](https://doi.org/10.1016/0304-4149(81)90026-0)
+
+### Risk-neutral averages price exact hedges
+
+**Remember:** Average the claim to value its exact hedge.
+
+*True by definition.* MSC 91G20 (Derivative securities (option pricing, hedging, etc.)). arXiv q-fin.PR. Level 2: later undergraduate.
+
+**Definition.** A hedge replicates a claim if its final wealth equals the claim’s payoff in every possible state. It funds each trade from its own account. Measure dividend-free asset prices and payoffs in units of a positive bank account. Risk-neutral probabilities preserve the possible states and make each price equal its expected next value given current information.
+
+**Problem.** In a finite-state, finite-period market without arbitrage, a self-financing exact hedge costs the expected discounted payoff under any risk-neutral probability.
+
+**How the definition helps.** Pricing by a risk-neutral average avoids solving again for the holdings in an exact hedge (our own). Each trade has zero conditional expected gain in bank-account units, so expected final wealth equals initial wealth (our own). Every risk-neutral probability therefore gives the same cost for a payoff the hedge replicates (our own). Existence of pricing probabilities uses the fundamental theorem, and existence of a hedge still requires proof (our own).
+
+**Paper or page:** [Asset pricing under model uncertainty with discrete time and states](https://arxiv.org/abs/2408.13048v2). It says: “Π(F) := {x ∈ ℝ: ∃ H such that x + H·S\*(T) = F\*, 𝒫-q.s.} = E<sub>Q</sub>\[F\*\],”
+
+**Sources:**
+
+- [J. Michael Harrison, Stanley R. Pliska. Martingales and stochastic integrals in the theory of continuous trading (1981).](https://doi.org/10.1016/0304-4149(81)90026-0)
+
+### State securities linearize pricing
+
+**Remember:** Price each state separately and add the pieces.
+
+*True by definition.* MSC 91G30 (Interest rates, asset pricing, etc. (stochastic models)). arXiv q-fin.PR. Level 2: later undergraduate.
+
+**Definition.** A state security pays one unit in one specified state and zero elsewhere. Its current cost is the state price. A complete market can reproduce any future payoff by trading existing assets.
+
+**Problem.** Consider a complete, frictionless finite-state market with one payment date and unrestricted holdings. Without arbitrage, every payoff costs the sum of its state payments times their state prices.
+
+**How the definition helps.** Writing a payoff in state securities gives an explicit portfolio with exactly that payoff (our own). Hold as many units of each security as the payment required in its state (our own). This replaces a new search for a replicating portfolio with a sum of known costs (our own). Completeness supplies the securities, and arbitrage rules out different prices for identical payments (our own).
+
+**Wikipedia:** [Arrow–Debreu model](https://en.wikipedia.org/wiki/Arrow%E2%80%93Debreu_model). It says: “An Arrow security is an instrument with a fixed payout of one unit in a specified state and no payout in other states.”
+
+**Sources:**
+
+- [K. J. Arrow. The Role of Securities in the Optimal Allocation of Risk-bearing (1964).](https://doi.org/10.2307/2296188)
+
+### Quantile averages handle tied losses
+
+**Remember:** Fill the whole tail, even when losses tie.
+
+*Rules out counterexamples.* MSC 91G70 (Statistical methods; risk measures). arXiv q-fin.RM. Level 2: later undergraduate.
+
+**Definition.** For probability p between zero and one, the loss quantile is the smallest threshold with probability at least p of loss at or below it. Expected shortfall averages these quantiles over the highest chosen fraction of probabilities. It includes just enough probability at a tied cutoff to fill that fraction.
+
+**Problem.** Expected shortfall is finite for every integrable loss and every tail fraction strictly between zero and one. For a continuously distributed loss it equals the average loss conditional on exceeding the cutoff.
+
+**How the definition helps.** The quantile integral always covers exactly the chosen fraction, even at a tied cutoff (our own). If a bet loses one unit with probability 5 percent and otherwise zero, the worst 10 percent average is one half (our own). Conditioning strictly above the zero cutoff instead gives one (our own). Proving the formula agrees with conditional averaging for continuous laws uses the distribution of a uniform quantile (our own).
+
+**Wikipedia:** [Expected shortfall](https://en.wikipedia.org/wiki/Expected_shortfall). It says: “but may differ for distributions having atoms at the quantile.”
+
+**Sources:**
+
+- [Carlo Acerbi, Dirk Tasche. On the coherence of expected shortfall (2002).](https://doi.org/10.1016/s0378-4266(02)00283-2)
 
 ### Best-response sets contain the supports of Nash equilibria
 
@@ -404,6 +562,24 @@
 - [Gibbard, A. (1973). Manipulation of voting schemes: a general result. Econometrica 41(4), 587–601.](https://doi.org/10.2307/1914083)
 - [Myerson, R. B. (1979). Incentive compatibility and the bargaining problem. Econometrica 47(1), 61–73.](https://doi.org/10.2307/1912346)
 
+### Certainty equivalents compose
+
+**Remember:** Replace risk with certainty without changing its averaged utility.
+
+*True by definition.* MSC 91B06 (Decision theory). arXiv econ.TH. Level 3: graduate.
+
+**Definition.** Fix a continuous, strictly increasing utility function that assigns a numerical value to each payoff. For a bounded risky payoff, its conditional certainty equivalent is the amount known from current information with the same conditional expected utility.
+
+**Problem.** Compute a certainty equivalent with finer information, then compute its certainty equivalent with coarser information. The result equals the certainty equivalent computed directly with coarser information.
+
+**How the definition helps.** Matching conditional expected utility makes two successive replacements preserve the same average as one replacement (our own). Averaging first with finer information and then with coarser information gives the coarser average directly (our own). Strict increase gives just one amount with this utility (our own). The paper’s representation theorem identifies when an abstract family of consistent evaluations admits a utility description.
+
+**Paper or page:** [On conditioning and consistency for nonlinear functionals](https://arxiv.org/abs/2401.09054v2). It says: “is a family of time consistent conditional nonlinear expectations”
+
+**Sources:**
+
+- [Edoardo Berton, Alessandro Doldi, Marco Maggis. On conditioning and consistency for nonlinear functionals (2024).](https://arxiv.org/abs/2401.09054v2)
+
 ### Consumers who always want a bit more make equilibria efficient
 
 **Remember:** Near every bundle of goods there is a slightly better one.
@@ -439,6 +615,24 @@
 **Sources:**
 
 - [John W. Pratt, Risk Aversion in the Small and in the Large, Econometrica 32 (1964) 122–136](https://doi.org/10.2307/1913738)
+
+### Allocation probabilities determine auction payments
+
+**Remember:** Match the chances of winning and pin down one payment.
+
+*Makes the theorem clean to state or prove.* MSC 91B26 (Auctions, bargaining, bidding and selling, and other market models). arXiv econ.TH. Level 3: graduate.
+
+**Definition.** For each bidder, record the probability of winning at each private value, averaging over the other bidders’ values and any auction randomness. This function summarizes how the auction allocates the item.
+
+**Problem.** Suppose bidders have independent private values on closed intervals and maximize expected value received minus payment. In each auction, truthful reporting maximizes this expectation when others report truthfully. If win probabilities agree at each value and expected payments agree at each bidder’s lowest value, expected payments agree throughout.
+
+**How the definition helps.** The win probability gives the slope of expected surplus as the bidder’s value varies (our own). Surplus means expected value received minus expected payment. Truthful reporting bounds the change in surplus between the two endpoint win probabilities times the change in value (our own). Integrating the win probability therefore recovers surplus up to its starting value (our own). Subtracting surplus from value times win probability then gives the expected payment (our own).
+
+**Wikipedia:** [Revenue equivalence](https://en.wikipedia.org/wiki/Revenue_equivalence). It says: “The expected payments of all types are the same in both mechanisms, and hence:”
+
+**Sources:**
+
+- [Roger B. Myerson. Optimal Auction Design (1981).](https://doi.org/10.1287/moor.6.1.58)
 
 ### Virtual valuations turn auction revenue into a pointwise objective
 
@@ -476,6 +670,43 @@
 
 - [Hal R. Varian, Equity, envy, and efficiency, Journal of Economic Theory 9 (1974) 63–91](https://doi.org/10.1016/0022-0531(74)90075-1)
 
+### Strict housing preferences force uniqueness
+
+**Remember:** Give everyone in a top-choice cycle their first choice.
+
+*Rules out counterexamples.* MSC 91B32 (Resource and cost allocation (including fair division, apportionment, etc.)). arXiv econ.TH. Level 3: graduate.
+
+**Definition.** Each person owns one house and ranks the houses. A group blocks an assignment if it can redistribute its original houses and help someone without hurting any member. The strict core consists of assignments that no group can block.
+
+**Problem.** With finitely many owners and strict rankings, exactly one assignment belongs to the strict core. Each round, owners point to the owners of their favorite remaining houses, trade along the resulting cycles, and leave if they traded.
+
+**How the definition helps.** Any different assignment on a top-choice cycle lets its members block by trading with one another (our own). Remove that cycle and repeat (our own). To prove existence, start with the earliest round represented in a proposed blocking group (our own). Those members already got their best available houses, so the group must give them the same houses (our own). Repeating leaves no member better off (our own). With two owners indifferent between both houses, both assignments are in the strict core (our own).
+
+**Wikipedia:** [Top trading cycle](https://en.wikipedia.org/wiki/Top_trading_cycle). It says: “Moreover, with strict preferences, there is a unique core-stable allocation, and it is the one found by TTC.”
+
+**Sources:**
+
+- [Lloyd Shapley, Herbert Scarf. On cores and indivisibility (1974).](https://doi.org/10.1016/0304-4068(74)90033-0)
+- [Alvin E. Roth, Andrew Postlewaite. Weak versus strong domination in a market with indivisible goods (1977).](https://doi.org/10.1016/0304-4068(77)90004-0)
+
+### Utility weights certify fractional efficiency
+
+**Remember:** Check efficiency against splits to get a certificate from utility weights.
+
+*Rules out counterexamples.* MSC 91B32 (Resource and cost allocation (including fair division, apportionment, etc.)). arXiv econ.TH. Level 3: graduate.
+
+**Definition.** With additive item values, permit each item to be split into fractions, with value proportional to the fraction. An allocation is fractionally Pareto efficient when no such allocation helps anyone without hurting someone.
+
+**Problem.** An allocation of finitely many goods with additive values is fractionally Pareto efficient exactly when it maximizes a strictly positive weighted sum of utilities.
+
+**How the definition helps.** Allowing fractions makes the attainable utility vectors a convex polytope, so linear programming gives every efficient point strictly positive supporting weights (our own). Conversely, improving someone without hurting anyone increases every strictly positive weighted sum (our own). Give Alice values 3 and 2 for two goods, and George values 4 and 1 (our own). Give Alice the first good and George the second (our own). No whole-item reassignment improves either without hurting the other (our own). Give Alice half the first and all the second instead (our own). Her value rises to 3.5 and George’s to 2 (our own).
+
+**Wikipedia:** [Pareto efficiency](https://en.wikipedia.org/wiki/Pareto_efficiency). It says: “it is not Pareto dominated even by an allocation in which some items are split between agents.”
+
+**Sources:**
+
+- [Siddharth Barman, Sanath Kumar Krishnamurthy, Rohit Vaish. Finding Fair and Efficient Allocations (2018).](https://doi.org/10.1145/3219166.3219176)
+
 ### Support functions make profit convex in prices
 
 **Remember:** Linear revenue at each production plan gives convex profit across prices.
@@ -507,6 +738,58 @@
 **Wikipedia:** [Indirect utility function](https://en.wikipedia.org/wiki/Indirect_utility_function). It says: “if prices and income are all multiplied by a given constant the same bundle of consumption represents a maximum, so optimal utility does not change”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Expenditure slopes give compensated demand
+
+**Remember:** At the minimum, one extra unit of price reveals the quantity.
+
+*Makes the theorem clean to state or prove.* MSC 91B42 (Consumer behavior, demand theory). arXiv econ.TH. Level 3: graduate.
+
+**Definition.** Define expenditure as the minimum cost of reaching a fixed level of satisfaction, called utility. Compensated demand consists of the bundles that attain this minimum.
+
+**Problem.** If expenditure is differentiable at a positive price vector and a minimizing bundle exists, its price gradient equals that bundle.
+
+**How the definition helps.** A minimizing bundle gives a linear function of prices that touches the expenditure function from above (our own). At a point of differentiability their gradients agree, and the linear function has the bundle itself as gradient (our own). This identifies demand directly from minimum cost (our own). Differentiability still needs proof when several bundles compete (our own).
+
+**Wikipedia:** [Shephard's lemma](https://en.wikipedia.org/wiki/Shephard%27s_lemma). It says: “the partial derivatives of the expenditure function with respect to the prices of goods equal the Hicksian demand functions for the relevant goods.”
+
+**Sources:**
+
+- [Lionel McKenzie. Demand Theory Without a Utility Index (1957).](https://doi.org/10.2307/2296067)
+
+### Simulating signals cannot improve decisions
+
+**Remember:** Better data can imitate worse data and then use its strategy.
+
+*True by definition.* MSC 91B44 (Economics of information). arXiv econ.TH. Level 3: graduate.
+
+**Definition.** One experiment is a garbling of another if a random rule can make its signal from the other experiment’s signal. The rule cannot use the hidden state.
+
+**Problem.** If one finite experiment is a garbling of another, the original yields at least as much optimal expected utility in every finite decision problem.
+
+**How the definition helps.** Defining information by signal simulation gives a decision maker an explicit way to copy every strategy using the weaker signal (our own). For each state, the copied strategy gives the same distribution of actions and the same expected payoff (our own). Blackwell’s converse supplies the difficult direction, deriving simulation from payoff comparisons across all decision problems.
+
+**Wikipedia:** [Blackwell's informativeness theorem](https://en.wikipedia.org/wiki/Blackwell%27s_informativeness_theorem). It says: “Intuitively, garbling is a way of adding "noise" to an information structure, such that the garbled information structure is considered to be less informative.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Gross substitutes ensure price equilibria
+
+**Remember:** Raise some prices without driving demand away from unchanged items.
+
+*Rules out counterexamples.* MSC 91B50 (General equilibrium theory). arXiv econ.TH. Level 3: graduate.
+
+**Definition.** A buyer’s best bundle maximizes its value minus its total price. A valuation has gross substitutes if the following holds after any price increases. For every formerly best bundle, some new best bundle retains all its items whose prices stayed fixed.
+
+**Problem.** Suppose finitely many buyers have gross substitutes valuations for finitely many distinct goods, and adding goods never lowers value. Some nonnegative item prices let each buyer receive a best bundle, with each unassigned item priced at zero.
+
+**How the definition helps.** Gross substitutes allows price adjustment while retaining demand for goods whose prices stay fixed (our own). Three buyers each value bundles containing their own designated pair at one and all other bundles at zero (our own). With three distinct pairs from three goods, at most one buyer can receive a designated pair (our own). Only items in a received pair can have positive prices, since buyers can discard other items without losing value (our own). If nobody receives a pair, zero prices make every buyer demand one (our own). Otherwise each losing buyer’s pair must cost at least one, forcing both items in the winning pair to cost at least one each (our own). Its buyer would prefer the empty bundle, contradicting equilibrium (our own).
+
+**Wikipedia:** [Gross substitutes (indivisible items)](https://en.wikipedia.org/wiki/Gross_substitutes_%28indivisible_items%29). It says: “The GS property means that when the price of some items increases, the demand for other items does not decrease.”
+
+**Sources:**
+
+- [Faruk Gul, Ennio Stacchetti. Walrasian Equilibrium with Gross Substitutes (1999).](https://doi.org/10.1006/jeth.1999.2531)
 
 ### Quasi-equilibrium makes the second welfare theorem hold without extra conditions
 
@@ -560,6 +843,60 @@
 
 - [Convex Order and Arbitrage](https://arxiv.org/abs/2510.01599v1)
 
+### Exchange options become calls
+
+**Remember:** Use the asset you give up as your unit.
+
+*Makes the theorem clean to state or prove.* MSC 91G20 (Derivative securities (option pricing, hedging, etc.)). arXiv q-fin.PR. Level 3: graduate.
+
+**Definition.** An exchange option lets its holder give one unit of a second asset for one unit of the first at expiry. In units of the second asset, its payoff is the larger of zero and the price ratio minus one.
+
+**Problem.** Assume two dividend-free assets with positive prices follow correlated geometric Brownian motions with constant volatilities and correlation in a frictionless Black–Scholes market. The exchange option costs as much, in second-asset units, as a call on their ratio with exercise price one.
+
+**How the definition helps.** Dividing by the asset to be delivered makes the exercise price constant (our own). The change of pricing unit gives a probability under which the ratio has zero expected instantaneous change (our own). Its logarithm has normally distributed increments with variance computed from both volatilities and their correlation (our own). The ordinary call formula then prices the exchange (our own).
+
+**Wikipedia:** [Margrabe's formula](https://en.wikipedia.org/wiki/Margrabe%27s_formula). It says: “has become a call option on the first asset (with its numeraire pricing) with a strike of 1 unit of the riskless asset.”
+
+**Sources:**
+
+- [William Margrabe. The Value of an Option to Exchange One Asset for Another (1978).](https://doi.org/10.1111/j.1540-6261.1978.tb03397.x)
+
+### Geometric averaging makes averages lognormal
+
+**Remember:** Average log prices to keep a normal distribution.
+
+*Makes the theorem clean to state or prove.* MSC 91G20 (Derivative securities (option pricing, hedging, etc.)). arXiv q-fin.PR. Level 3: graduate.
+
+**Definition.** An Asian option uses an average stock price in its payoff. Take the geometric mean of prices at fixed dates instead of their arithmetic mean.
+
+**Problem.** Assume the stock’s log price follows Brownian motion with constant drift and volatility under the pricing probability, with a constant interest rate. Then the geometric average at fixed dates is lognormal, meaning its logarithm is normally distributed.
+
+**How the definition helps.** Taking the logarithm turns the geometric average into an arithmetic average of jointly normal log prices (our own). Their average is normal, with mean and variance determined by the observation dates (our own). For a call, average the excess above the agreed exercise price, counting negative excess as zero, and discount to today (our own).
+
+**Wikipedia:** [Asian option](https://en.wikipedia.org/wiki/Asian_option). It says: “However, an exact result is easily obtained for Asian options with geometric averaging”
+
+**Sources:**
+
+- [A.G.Z. Kemna, A.C.F. Vorst. A pricing method for options based on average asset values (1990).](https://doi.org/10.1016/0378-4266(90)90039-5)
+
+### Changing units preserves martingale pricing
+
+**Remember:** Change the unit and reweight by the same asset.
+
+*True by definition.* MSC 91G30 (Interest rates, asset pricing, etc. (stochastic models)). arXiv q-fin.PR. Level 3: graduate.
+
+**Definition.** Use a strictly positive traded asset with a known initial price as the unit for quoting all prices. Discounting a price means dividing it by the value of the bank account. Weight each outcome by the new unit’s final discounted price divided by its initial discounted price.
+
+**Problem.** Consider assets paying no dividends over a fixed finite horizon. Suppose each discounted price, including the new unit’s, equals its expected future value given current information. Under the reweighted probability, prices expressed in the new unit have the same property.
+
+**How the definition helps.** The weight used in the conditional average cancels the asset used as the unit (our own). Applying the original conditional pricing identities to the numerator and denominator gives today’s price ratio (our own). The original pricing probability must exist, and the discounted unit must have constant expectation for its weight to define a probability (our own).
+
+**Wikipedia:** [Numéraire](https://en.wikipedia.org/wiki/Num%C3%A9raire). It says: “Then it can be shown that S(t) is a martingale under Qᴺ when priced in terms of the new numéraire N(t):”
+
+**Sources:**
+
+- [Hélyette Geman, Nicole El Karoui, Jean-Charles Rochet. Changes of numéraire, changes of probability measure and option pricing (1995).](https://doi.org/10.2307/3215299)
+
 ### Convex acceptance makes capital convex
 
 **Remember:** Mix acceptable positions and mix their cash cushions in the same proportions.
@@ -575,6 +912,76 @@
 **Paper or page:** [A note on the induction of comonotonic additive risk measures from acceptance sets](https://arxiv.org/abs/2307.04647v2). It says: “If A is convex, then ρₐ is convex.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Firm tails bound systemic exposure
+
+**Remember:** A market crash need not select a firm’s worst losses.
+
+*True by definition.* MSC 91G70 (Statistical methods; risk measures). arXiv q-fin.RM. Level 3: graduate.
+
+**Definition.** Fix a fraction between zero and one, and suppose all losses are integrable and have continuous distributions. Assume total market loss also has a continuous distribution. Marginal expected shortfall averages a firm’s loss on the event containing the worst fraction of total market losses. Expected shortfall averages the firm’s own worst fraction, equivalently the largest conditional average over events of that probability.
+
+**Problem.** A firm’s marginal expected shortfall cannot exceed its own expected shortfall. The bound is sharp when all losses increase with the same uniform random variable.
+
+**How the definition helps.** The event selected by total market loss is one candidate in the maximum defining the firm’s expected shortfall (our own). If every firm’s loss increases with the same uniform random draw, the market and firm select the same tail. The work lies in proving that the usual tail average equals the maximum over events (our own).
+
+**Paper or page:** [Static marginal expected shortfall: Systemic risk measurement under dependence uncertainty](https://arxiv.org/abs/2504.19953v2), [An elementary proof of the dual representation of Expected Shortfall](https://arxiv.org/abs/2306.14506v1). It says: “The upper bound of MESₚ(Xᵢ, S) is M(p) = ESₚ(Xᵢ).”
+
+**Sources:**
+
+- [Jinghui Chen, Edward Furman, X. Sheldon Lin. Static marginal expected shortfall: Systemic risk measurement under dependence uncertainty (2025).](https://arxiv.org/abs/2504.19953v2)
+
+### Independent entropic risks add
+
+**Remember:** Independence multiplies exponential averages, and the log adds them.
+
+*True by definition.* MSC 91G70 (Statistical methods; risk measures). arXiv q-fin.RM. Level 3: graduate.
+
+**Definition.** For risk aversion a &gt; 0, entropic risk assigns a loss X the sure loss with the same expected exponential disutility. Equating disutilities gives exp(a times sure loss) = E\[exp(aX)\], where E means expectation. Equivalently, entropic risk is ln(E\[exp(aX)\])/a.
+
+**Problem.** Entropic risk adds across independent losses when both use the same parameter and their exponential moments are finite.
+
+**How the definition helps.** The logarithm formula turns independent losses into an addition rule (our own). Independence makes the expected exponential of the sum the product of the two expected exponentials (our own). The logarithm adds their risks (our own). The conversion from the preference definition consists of solving the equal-disutility equation for the sure loss (our own).
+
+**Wikipedia:** [Entropic risk measure](https://en.wikipedia.org/wiki/Entropic_risk_measure). It says: “the entropic risk measure is a risk measure which depends on the risk aversion of the user through the exponential utility function.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Quantile averages handle tail ties
+
+**Remember:** Take exactly the chosen probability mass, splitting ties at the cutoff.
+
+*Rules out counterexamples.* MSC 91G70 (Statistical methods; risk measures), 90C15. arXiv q-fin.RM, math.OC. Level 3: graduate.
+
+**Definition.** At probability p between zero and one, the loss quantile is the smallest value with cumulative probability at least p. For a tail fraction t strictly between zero and one, define expected shortfall as the average quantile over levels between 1 − t and one.
+
+**Problem.** For an integrable loss, choose a real threshold and add to it the expected excess divided by t. Excess is the amount by which the loss exceeds the threshold, or zero if it falls below. Expected shortfall is the minimum of this expression over all thresholds.
+
+**How the definition helps.** Quantile averaging takes exactly the required tail mass, even when several outcomes share the cutoff loss. In our own proof, choose the cutoff quantile as threshold. Integrating the upper quantiles above that threshold gives the expected excess. The probability strictly above it is at most t. The probability at or above it is at least t, so neither direction improves the objective. In our own example, loss is zero with probability 0.95 and otherwise 100. The upper tenth averages 50, while conditioning on strictly positive loss gives 100.
+
+**Paper or page:** [Risk-Adaptive Approaches to Stochastic Optimization: A Survey](https://arxiv.org/abs/2212.00856v3). It says: “expectation of the α-tail distribution of ξ”
+
+**Sources:**
+
+- [Johannes O. Royset, Risk-Adaptive Approaches to Stochastic Optimization: A Survey](https://arxiv.org/abs/2212.00856v3)
+
+### Scaled tail risk is concave
+
+**Remember:** Scale out the tail probability and minimize lines.
+
+*True by definition.* MSC 91G70 (Statistical methods; risk measures). arXiv q-fin.RM. Level 3: graduate.
+
+**Definition.** For an integrable loss Y, expected shortfall averages its quantiles from probability β to one, where 0 &lt; β &lt; 1. Equivalently, minimize t + E\[max(Y − t, 0)\]/(1 − β) over real thresholds t. Here E denotes expectation.
+
+**Problem.** Multiplying expected shortfall by 1 − β gives a concave function of β for each fixed loss.
+
+**How the definition helps.** The threshold formula expresses scaled expected shortfall as the infimum of lines in β (our own). Each line has value (1 − β)t + E\[max(Y − t, 0)\] at β (our own). An infimum of affine functions is concave (our own). The work lies in proving that threshold minimization gives the same value as the quantile average (our own).
+
+**Paper or page:** [Higher order measures of risk and stochastic dominance](https://arxiv.org/abs/2402.15387v1). It says: “For Y fixed in the domain of ℛ, the mapping β ↦ (1 − β) · ℛᵦ(Y) is concave.”
+
+**Sources:**
+
+- [Alois Pichler. Higher order measures of risk and stochastic dominance (2024).](https://arxiv.org/abs/2402.15387v1)
 
 ### Worst-case averages make expected shortfall subadditive
 
@@ -975,6 +1382,24 @@
 
 - [A Belief-Based Characterization of Reduced-Form Auctions](https://arxiv.org/abs/2307.04070v1)
 
+### Unbiased statistics elicit posterior means
+
+**Remember:** Score the report against a signal with the right mean.
+
+*Makes the theorem clean to state or prove.* MSC 91B44 (Economics of information). arXiv econ.TH. Level 4: research.
+
+**Definition.** An analyst has information about a hidden state. The analyst’s posterior mean is the average target value given that information. A verifier observes a signal independent of the analyst’s information given the state. A statistic is unbiased here if its mean in each state equals that state’s target value.
+
+**Problem.** For finite states and signals, an unbiased statistic lets a verifier reward a risk-neutral analyst for reporting the posterior mean. A risk-neutral analyst maximizes expected payment.
+
+**How the definition helps.** Unbiasedness makes the expected statistic given the analyst’s information equal the posterior mean (our own). Pay twice the report times the statistic minus the square of the report (our own). The expected payment is a quadratic uniquely maximized at the posterior mean (our own).
+
+**Paper or page:** [Elicitability](https://arxiv.org/abs/2510.00879v1). It says: “then the mean of g(θ) is elicitable with (Y, π).”
+
+**Sources:**
+
+- [Yaron Azrieli, Christopher Chambers, Paul Healy, Nicolas Lambert. Elicitability (2025).](https://arxiv.org/abs/2510.00879v1)
+
 ### Saturated agent spaces make fractional and ordinary coalitions block the same allocations
 
 **Remember:** On a saturated space, some whole coalition matches every fractional coalition's totals.
@@ -1084,6 +1509,42 @@
 
 - [Leonardo Baggiani, Martin Herdegen, Nazem Khan, The Interplay between Utility and Risk in Portfolio Selection, arXiv:2509.10351v1 (2025)](https://arxiv.org/abs/2509.10351v1)
 
+### Wealth-weighted portfolios add their wealth
+
+**Remember:** Combine the accounts by current size, not by their starting shares.
+
+*True by definition.* MSC 91G10 (Portfolio theory). arXiv q-fin.PM. Level 4: research.
+
+**Definition.** Split one unit of initial wealth into nonnegative shares summing to one. Each account follows a strategy that funds trades from its own holdings. While total wealth is positive, weight each account’s asset mix by its current share of total wealth.
+
+**Problem.** Under the paper’s continuous-time trading assumptions, this mix funds its own trades. On each price path its wealth equals the sum of the separately funded accounts.
+
+**How the definition helps.** Current wealth shares make the combined holdings exactly the sum of the individual holdings (our own). Fixed starting weights would require moving money between accounts when their returns differ (our own). The paper proves that the resulting continuous-time rule remains a valid trading strategy path by path.
+
+**Paper or page:** [Model-free portfolio allocation in continuous-time](https://arxiv.org/abs/2411.05470v3). It says: “then θ̂(b) ∈ Θ and W(θ̂(b)) = ∑ₖ₌₁ᵐ bₖ W(θ⁽ᵏ⁾)”
+
+**Sources:**
+
+- [Henry Chiu. Model-free portfolio allocation in continuous-time (2025).](https://arxiv.org/abs/2411.05470v3)
+
+### Closures catch vanishing-risk free lunches
+
+**Remember:** No exact arbitrage is not enough when trades can approach one.
+
+*Rules out counterexamples.* MSC 91G15 (Financial markets). arXiv q-fin.MF. Level 4: research.
+
+**Definition.** Start with bounded payoffs no greater than the final gains of zero-cost trades whose wealth stays bounded below. Include all limits in the essential supremum norm, which ignores events of probability zero. No free lunch with vanishing risk means that only zero among these payoffs is everywhere nonnegative, apart from events of probability zero.
+
+**Problem.** Consider finitely many discounted prices over a finite horizon. Suitable stopping makes them bounded, and they decompose into fluctuations satisfying conditional averaging after suitable stopping and parts with finite total variation. The closure condition holds exactly when some probability preserving null events makes suitably stopped prices equal their conditional future averages.
+
+**How the definition helps.** Taking limits detects gains that individual trades can only approximate (our own). For illustration, allow finite portfolios of countably many zero-cost bets (our own). Bet n pays one on a common event and loses 1/n on its own separate event, paying zero elsewhere (our own). Give each event positive probability (our own). Avoiding losses on separate events requires nonpositive holdings, while avoiding loss on the common event requires their sum to be nonnegative (our own). Thus only zero holdings avoid loss, yet individual bets converge uniformly to the common event’s indicator (our own). The fundamental theorem proves the probability characterization for finitely many assets.
+
+**Paper or page:** [The Golden Age of the Mathematical Finance](https://arxiv.org/abs/2102.06693v2). It says: “There are not free lunches with vanishing risk if and only if there is probability ℙ∗ ∼ ℙ under which S̃ is a local martingale.”
+
+**Sources:**
+
+- [Freddy Delbaen, Walter Schachermayer. A general version of the fundamental theorem of asset pricing (1994).](https://doi.org/10.1007/bf01450498)
+
 ### Comonotonic prices satisfy put–call parity
 
 **Remember:** Split a payoff into two parts that rise together, then add their prices.
@@ -1101,6 +1562,24 @@
 **Sources:**
 
 - [Bastianello, Chateauneuf and Cornet, Put–Call Parities, absence of arbitrage opportunities, and nonlinear pricing rules (2024)](https://doi.org/10.1111/mafi.12433)
+
+### One currency prices both markets
+
+**Remember:** Use one unit for both currencies, then convert the answer back.
+
+*Makes the theorem clean to state or prove.* MSC 91G20 (Derivative securities (option pricing, hedging, etc.)). arXiv q-fin.PR. Level 4: research.
+
+**Definition.** Let f be the dollar price of one euro. In an intermediate currency, one euro costs √f and one dollar costs 1/√f. A payoff has degree one if multiplying both inputs by a positive factor multiplies the payoff by that factor.
+
+**Problem.** In the paper’s euro–dollar model, consider options payable only at expiry with degree-one payoffs. The same pricing probability values options written on euros and options written on dollars.
+
+**How the definition helps.** Measuring both currencies in the same unit gives both contracts the same pricing probability (our own). Degree-one scaling converts the amount paid at expiry into that unit (our own). The paper constructs the intermediate interest rate and proves that the corresponding pricing probability exists.
+
+**Paper or page:** [Pricing FX Options under Intermediate Currency](https://arxiv.org/abs/1912.01387v2), [Pricing FX Options under Intermediate Currency](https://arxiv.org/abs/1912.01387v2). It says: “Then the arbitrage price of a European option on EUR with a payoff g(x; K) being homogeneous function of order 1 and maturity time T is given by”
+
+**Sources:**
+
+- [S. Maurer, T. E. Sharp, M. V. Tretyakov. Pricing FX Options under Intermediate Currency (2021).](https://arxiv.org/abs/1912.01387v2)
 
 ### Directional closure makes capital limits attainable
 
@@ -1137,3 +1616,21 @@
 **Sources:**
 
 - [Multi-asset return risk measures](https://arxiv.org/abs/2411.08763v2)
+
+### Moment bounds control worst-case risk
+
+**Remember:** Enlarge the set and the worst case cannot improve.
+
+*Makes the theorem clean to state or prove.* MSC 91G70 (Statistical methods; risk measures). arXiv q-fin.RM. Level 4: research.
+
+**Definition.** Consider distributions with finite second moments. The quadratic transport distance is the smallest root mean square difference between random vectors with two given distributions. A transport ball includes all laws within a chosen distance of a reference law. A Gelbrich set applies the same test after replacing each law by a Gaussian with its mean and covariance.
+
+**Problem.** For the same reference law and radius, the supremum of risk over the Gelbrich set bounds the supremum over the transport ball from above.
+
+**How the definition helps.** Using only means and covariances enlarges the set over which one takes the worst risk (our own). The Gelbrich inequality proves that replacing both laws by their matching Gaussians cannot increase their transport distance (our own). Set inclusion then gives the risk bound for each fixed loss function.
+
+**Paper or page:** [Mean-Covariance Robust Risk Measurement](https://arxiv.org/abs/2112.09959v3), [Mean-Covariance Robust Risk Measurement](https://arxiv.org/abs/2112.09959v3). It says: “then we have 𝒲ᵨ(ℙ̂) ⊆ 𝒢ᵨ(μ̂, Σ̂).”
+
+**Sources:**
+
+- [Viet Anh Nguyen, Soroosh Shafiee, Damir Filipović, Daniel Kuhn. Mean-Covariance Robust Risk Measurement (2025).](https://arxiv.org/abs/2112.09959v3)

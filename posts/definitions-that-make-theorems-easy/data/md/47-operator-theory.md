@@ -50,6 +50,22 @@
 
 - [J. von Neumann, Allgemeine Eigenwerttheorie Hermitescher Funktionaloperatoren, Mathematische Annalen 102 (1930), 49–131](https://doi.org/10.1007/BF01782338)
 
+### Closability gives densely defined adjoints
+
+**Remember:** Without a vertical limit in the graph, the adjoint has dense domain.
+
+*Rules out counterexamples.* MSC 47A05 (General (adjoints, conjugates, products, inverses, domains, ranges, etc.)), 46C05. arXiv math.FA. Level 3: graduate.
+
+**Definition.** A densely defined operator acts on a dense linear subspace of a Hilbert space. It is closable if the closure of its graph still assigns at most one output to each input. Its adjoint is defined at y when the functional x ↦ ⟨Tx,y⟩ is bounded on the domain.
+
+**Problem.** A densely defined linear operator on a complex Hilbert space has a densely defined adjoint if and only if it is closable.
+
+**How the definition helps.** In our own proof, closability excludes a limit (0,y) of graph points with y nonzero. Taking the orthogonal complement of the graph twice identifies these vertical limits with vectors y perpendicular to the adjoint domain. Only y = 0 qualifies exactly when that domain is dense. Our own counterexample sends a polynomial in L²\[0,1\] to the constant function equal to its value at zero. The polynomials (1 − x)ⁿ converge to zero in norm, but their images all equal one.
+
+**Paper or page:** [Densely-Defined Linear Operator is Closable iff Adjoint is Densely-Defined](https://proofwiki.org/wiki/Densely-Defined_Linear_Operator_is_Closable_iff_Adjoint_is_Densely-Defined). It says: “A densely-defined linear operator on a complex Hilbert space is closable if and only if its adjoint is also densely-defined.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Closed densely defined operators are exactly those equal to their double adjoint
 
 **Remember:** Closed plus dense is the class where taking adjoints twice gives back T.
@@ -439,6 +455,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Trace norm preserves determinant multiplication
+
+**Remember:** Approximate both factors and multiply before taking limits.
+
+*True by definition.* MSC 47B10 (Linear operators belonging to operator ideals (nuclear, \\(p\\)-summing, in the Schatten-von Neumann classes, etc.)), 45B05. arXiv math.FA. Level 3: graduate.
+
+**Definition.** For operators on a Hilbert space, the trace norm sums the singular values, the eigenvalues of √(A∗A). Define det(I + A) by continuous extension from finite-rank operators in this norm. A kernel-based definition instead integrates a series of determinants.
+
+**Problem.** If A and B have finite trace norm, the Fredholm determinant of (I + A)(I + B) is the product of their determinants.
+
+**How the definition helps.** Finite-rank approximations to A and B have ranges inside one finite-dimensional space, where determinants multiply (our own). Their products converge in trace norm, so continuity passes the identity to the limit (our own). The work lies in proving the continuous extension exists and agrees with the kernel series where both apply (our own).
+
+**Wikipedia:** [Fredholm determinant](https://en.wikipedia.org/wiki/Fredholm_determinant). It says: “The function det defines a homomorphism of type G → ℂ×”
+
+**Sources:**
+
+- [Barry Simon, Notes on infinite determinants of Hilbert space operators (1977)](https://doi.org/10.1016/0001-8708(77)90057-3)
+
 ### Trace-class operators have a trace that does not depend on the basis
 
 **Remember:** If \|T\| has finite trace, the trace of T converges absolutely.
@@ -452,6 +486,22 @@
 **How the definition helps.** The class is chosen so that the trace is well defined. The article defines trace-class operators as the ones for which a trace exists that is finite and independent of the basis. Our own remark: for a general bounded operator, the diagonal sum can diverge, or it can change when the basis is reordered or rotated. So the trace must be restricted to such a class. Lidskii's theorem, that the trace equals the sum of the eigenvalues, is the hard part, and the definition does not give it.
 
 **Wikipedia:** [Trace class](https://en.wikipedia.org/wiki/Trace_class). It says: “a trace-class operator is a linear operator for which a trace may be defined, such that the trace is a finite number independent of the choice of basis used to compute the trace.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Two Hilbert–Schmidt factors give trace class
+
+**Remember:** Two square sums give one absolute sum.
+
+*Rules out counterexamples.* MSC 47B10 (Linear operators belonging to operator ideals (nuclear, \\(p\\)-summing, in the Schatten-von Neumann classes, etc.)). arXiv math.FA. Level 3: graduate.
+
+**Definition.** A Hilbert–Schmidt operator is a compact operator on a Hilbert space whose singular values have a finite sum of squares. These are the eigenvalues of the positive square root of its adjoint times itself, counted with multiplicity. Compact operators need only have singular values tending to zero.
+
+**Problem.** The product of two Hilbert–Schmidt operators is trace class, meaning its singular values are summable.
+
+**How the definition helps.** In our own proof, the Hilbert–Schmidt condition bounds the sum of the trace norms of rank-one terms for the product AB. Insert an orthonormal basis between the factors. Each basis vector e contributes one term with trace norm ‖Ae‖ ‖B∗e‖, where B∗ is the adjoint. Both sequences of norms are square summable, so Cauchy–Schwarz gives a finite sum. Our own counterexample is the compact diagonal operator with entries 1/√n. Its square has entries 1/n, whose sum diverges.
+
+**Wikipedia:** [Hilbert–Schmidt operator](https://en.wikipedia.org/wiki/Hilbert%E2%80%93Schmidt_operator). It says: “The product of two Hilbert–Schmidt operators has finite trace-class norm”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -614,6 +664,22 @@
 
 - [G. Lumer, R. S. Phillips, Dissipative operators in a Banach space, Pacific Journal of Mathematics 11 (1961) 679–698](https://doi.org/10.2140/pjm.1961.11.679)
 
+### Resolvent powers are time moments
+
+**Remember:** Compose the operators by adding their times.
+
+*True by definition.* MSC 47D03 (Groups and semigroups of linear operators), 44A10. arXiv math.FA. Level 3: graduate.
+
+**Definition.** Let T(t), for t ≥ 0, be bounded operators on a complex Banach space, continuous in operator norm. Assume T(0) = I and T(t)T(u) = T(t + u). The generator A is the right derivative at zero. Represent the inverse of λI − A by integrating exp(−λt)T(t) over t ≥ 0.
+
+**Problem.** Suppose ‖T(t)‖ ≤ M exp(ωt) and Re λ &gt; ω. For each integer n ≥ 1, the nth power of the inverse uses the same integral with extra weight tⁿ⁻¹/(n − 1)!.
+
+**How the definition helps.** Multiplying two time integrals adds the times in their operator factors (our own). For n factors, repeated integration at fixed total time t gives the weight tⁿ⁻¹/(n − 1)! (our own). The growth bound permits the integrations, and the Laplace representation identifies the integral with the inverse (our own).
+
+**Paper or page:** [On the Properties of the Semigroup Generated by the RL Fractional Integral](https://arxiv.org/abs/2405.05265v1). It says: “Let T be a uniformly continuous semigroup of type (M,ω) with the infinitesimal generator A.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Mild solutions make well-posedness the same as generating a semigroup
 
 **Remember:** Integrate once, and the solution makes sense for every starting point.
@@ -768,6 +834,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Regularized determinants handle square-integrable kernels
+
+**Remember:** Remove the linear term so squared singular values suffice.
+
+*Rules out counterexamples.* MSC 47B10 (Linear operators belonging to operator ideals (nuclear, \\(p\\)-summing, in the Schatten-von Neumann classes, etc.)), 45P05. arXiv math.FA. Level 4: research.
+
+**Definition.** For an integral operator K with square-integrable kernel, set D(λ) equal to the Fredholm determinant of (I + λK)exp(−λK). The Fredholm determinant extends ordinary determinants to identity plus an operator with summable singular values. Singular values are the eigenvalues of √(K∗K).
+
+**Problem.** D is analytic for every complex λ. Without the exponential correction, the product of one plus λ times each eigenvalue can diverge.
+
+**How the definition helps.** The correction cancels the linear term, so the difference from the identity starts with K² (our own). The singular values of K are square-summable, which makes those of K² summable (our own). Controlling the higher terms in the same norm gives analyticity through the ordinary Fredholm determinant (our own). On \[0,1\], diagonal coefficients 1/n in an orthonormal basis define a square-integrable kernel (our own). Its uncorrected product at λ = 1 has partial products N + 1 (our own).
+
+**Wikipedia:** [Hilbert–Schmidt integral operator](https://en.wikipedia.org/wiki/Hilbert%E2%80%93Schmidt_integral_operator). It says: “Hilbert–Schmidt integral operators are both continuous and compact.”
+
+**Sources:**
+
+- [Folkmar Bornemann, On the numerical evaluation of Fredholm determinants (2010)](https://doi.org/10.1090/s0025-5718-09-02280-7)
+
 ### Abstract Friedrichs operators split into skew-symmetric and bounded positive parts
 
 **Remember:** Half the sum is the positive part; half the difference is skew.
@@ -785,6 +869,24 @@
 **Sources:**
 
 - [Marko Erceg, Sandeep Kumar Soni, The von Neumann extension theory for abstract Friedrichs operators, arXiv:2312.09618v2 (2024)](https://arxiv.org/abs/2312.09618v2)
+
+### Boundary data classify self-adjoint extensions
+
+**Remember:** Equal deficiency indices let boundary values pair up.
+
+*Makes the theorem clean to state or prove.* MSC 47B25 (Linear symmetric and selfadjoint operators (unbounded)), 81Q10. arXiv math-ph. Level 4: research.
+
+**Definition.** Start with a densely defined closed symmetric operator S. A boundary triple consists of a Hilbert space and two boundary maps on the domain of S\*. Together the maps attain every pair of boundary values and express the difference of the two inner products in the adjoint identity.
+
+**Problem.** A boundary triple exists exactly when the eigenspaces of S\* at i and −i have equal dimension. For such a triple, prescribing the second boundary value as a self-adjoint operator of the first defines a self-adjoint extension.
+
+**How the definition helps.** In our own explanation, the boundary maps turn the adjoint calculation into an identity involving only the two boundary values. Surjectivity lets the two values vary independently in this identity. Taking the adjoint of an extension defined by a closed densely defined boundary operator then replaces that boundary operator by its adjoint. Constructing the triple uses the equal dimensions of the two eigenspaces.
+
+**Paper or page:** [Fundamental solutions and Hadamard states for a scalar field with arbitrary boundary conditions on an asymptotically AdS spacetimes](https://arxiv.org/abs/2101.10290v1). It says: “Then an associated boundary triple (𝖍, γ₀, γ₁) exists if and only if S∗ has equal deficiency indices.”
+
+**Sources:**
+
+- [Fundamental solutions and Hadamard states for a scalar field with arbitrary boundary conditions on an asymptotically AdS spacetimes](https://arxiv.org/abs/2101.10290v1)
 
 ### Boundary triplets reduce eigenvalues of extensions to a boundary equation
 
@@ -804,6 +906,24 @@
 
 - [Jussi Behrndt, Markus Holzmann, Delio Mugnolo, On Spectral Properties of Restricted Fractional Laplacians with Self-adjoint Boundary Conditions on a Finite Interval, arXiv:2505.00094 (2025)](https://arxiv.org/abs/2505.00094)
 - [V. A. Derkach, M. M. Malamud, Generalized resolvents and the boundary value problems for Hermitian operators with gaps, J. Funct. Anal. 95 (1991), 1–95](https://doi.org/10.1016/0022-1236(91)90024-y)
+
+### Canonical factors invert Wiener–Hopf equations
+
+**Remember:** Invert the two factors in reverse order.
+
+*Rules out counterexamples.* MSC 47B35 (Toeplitz operators, Hankel operators, Wiener-Hopf operators), 45E10. arXiv math.FA. Level 4: research.
+
+**Definition.** On the unit circle, factor a bounded function G as an outside factor times an inside factor. Each factor and its reciprocal extend analytically and boundedly to their side, including infinity for the outside factor. Such a factorization is canonical because it has no intervening power of z.
+
+**Problem.** Take square-integrable functions on the circle whose negative Fourier coefficients vanish. Multiply by G and discard negative frequencies to define its Toeplitz operator. A canonical factorization gives an inverse by applying the projected reciprocal factors in reverse product order.
+
+**How the definition helps.** The inside factor preserves nonnegative modes, and the outside factor preserves strictly negative modes (our own). These facts let the projection split the product and make both factor inverses valid after projection (our own). The symbol z has a power between its factors, and its projected multiplication misses constants (our own). The work lies in proving a given symbol has canonical factors (our own).
+
+**Paper or page:** [A new systems theory perspective on canonical Wiener-Hopf factorization on the unit circle](https://arxiv.org/abs/2409.17324v3). It says: “G(z) = V₋(z) V₊(z)”
+
+**Sources:**
+
+- [A new systems theory perspective on canonical Wiener-Hopf factorization on the unit circle](https://arxiv.org/abs/2409.17324v3)
 
 ### A boundary tuple matches dissipative Maxwell boundary conditions with boundary contractions
 

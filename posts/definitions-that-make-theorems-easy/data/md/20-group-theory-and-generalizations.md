@@ -17,6 +17,22 @@
 - [ProofWiki, Equivalence of Axiom Schemata for Groups](https://proofwiki.org/wiki/Equivalence_of_Axiom_Schemata_for_Groups)
 - [ProofWiki, Left Identity in Semigroup may not be Unique](https://proofwiki.org/wiki/Left_Identity_in_Semigroup_may_not_be_Unique)
 
+### Equal outputs identify kernel cosets
+
+**Remember:** Inputs have the same output exactly when they share a kernel coset.
+
+*True by definition.* MSC 20A05 (Axiomatics and elementary properties of groups). arXiv math.GR. Level 1: early undergraduate.
+
+**Definition.** The kernel of a group homomorphism f consists of the elements mapped to the identity. Define classes by putting two inputs together whenever their outputs agree. The usual quotient uses cosets, which are translates of the kernel.
+
+**Problem.** The quotient by the kernel of a group homomorphism is isomorphic to its image.
+
+**How the definition helps.** Labeling each class by its common output gives an immediate bijection with the image. Our own proof multiplies classes by multiplying representatives. The output of a product is the product of the outputs, so this rule is well defined and preserves multiplication. Finally, f(a) = f(b) exactly when a⁻¹b lies in the kernel, so the classes are precisely its cosets.
+
+**Paper or page:** [First Isomorphism Theorem/Groups](https://proofwiki.org/wiki/First_Isomorphism_Theorem/Groups). It says: “Then: Img φ ≅ G₁ / ker φ where ≅ denotes group isomorphism.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The subgroup test asks for nonempty, since the empty set passes
 
 **Remember:** The empty set is closed under everything, so test for nonempty first.
@@ -66,6 +82,22 @@
 **How the definition helps.** The number of inversions depends on σ alone, so the sign is well defined from the start. The work moves into one lemma: composing with a transposition of two adjacent positions changes the number of inversions by exactly one. Every transposition is a product of an odd number of adjacent ones, so every transposition changes the sign (our own). If the sign were defined by counting transpositions, a separate proof would be needed that the parity does not depend on the decomposition.
 
 **Wikipedia:** [Parity of a permutation](https://en.wikipedia.org/wiki/Parity_of_a_permutation). It says: “We can thus define the parity of σ to be that of its number of constituent transpositions in any decomposition. And this must agree with the parity of the number of inversions under any ordering, as seen above.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Cycle lengths determine permutation order
+
+**Remember:** Every cycle must finish a whole number of laps.
+
+*True by definition.* MSC 20B30 (Symmetric groups). arXiv math.GR. Level 1: early undergraduate.
+
+**Definition.** A permutation of a finite set is a bijection from the set to itself. Equivalently, partition the set into cycles and send each letter to the next in its cycle, wrapping around at the end.
+
+**Problem.** The order of a finite permutation is the smallest positive power that fixes every letter. It equals the least common multiple of the cycle lengths, with value one for the identity.
+
+**How the definition helps.** Each cycle returns to its starting position exactly at multiples of its length. Our own proof therefore takes the first positive multiple common to all lengths. To pass from a bijection to the cycle description, follow each unused letter until it returns. Finiteness and injectivity ensure that these cycles partition the set.
+
+**Paper or page:** [Order of Product of Disjoint Permutations](https://proofwiki.org/wiki/Order_of_Product_of_Disjoint_Permutations). It says: “Let π be a product of disjoint permutations of orders k₁, k₂, …, kᵣ. Then: \|π\| = lcm {k₁, k₂, …, kᵣ}”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -132,6 +164,24 @@
 **How the definition helps.** Normality is exactly the condition that makes coset multiplication well defined. For an arbitrary subgroup, multiplying cosets is not well defined. For a normal subgroup, G/N is a group and N is the kernel of G → G/N; conversely, every kernel is normal. So normal subgroups are the same as kernels and as congruences on G. Congruences on a group commute with each other, because groups form a Mal'cev category. So the normal subgroups of a group form a modular lattice (a lattice where a ≤ c implies a ∨ (b ∧ c) = (a ∨ b) ∧ c). The lattice of all subgroups need not be modular; for the dihedral group of order 8 it contains a pentagon, the five-element lattice that is not modular.
 
 **nLab:** [normal subgroup](https://ncatlab.org/nlab/show/normal+subgroup). It says: “Thus normal subgroups may also be defined as kernels f⁻¹(e) of group homomorphisms G → H (e ∈ H is the identity), and this is largely the point of normal subgroups: they are equivalent to congruence relations in the category of groups.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Normalizers are largest groups preserving subgroups
+
+**Remember:** Preserve the subgroup as a set, not point by point.
+
+*True by definition.* MSC 20E07 (Subgroup theorems; subgroup growth). arXiv math.GR. Level 1: early undergraduate.
+
+**Definition.** The normalizer of a subgroup H in G consists of the elements g with gHg⁻¹ = H. This asks g to preserve H as a set, not to fix each element.
+
+**Problem.** The normalizer of H is the largest subgroup of G in which H is normal.
+
+**How the definition helps.** Testing conjugation one element at a time collects every possible member of a subgroup in which H is normal. Our own proof checks that the test holds for the identity, products, inverses, and every element of H. The resulting subgroup therefore contains H as a normal subgroup. Describing the normalizer by maximality alone would leave its existence to prove.
+
+**nLab:** [normalizer](https://ncatlab.org/nlab/show/normalizer). It says: “If the subset S is in fact a subgroup of G, then it is a normal subgroup of the normalizer Nɢ(S)”
+
+**Paper or page:** [Normalizer of Subgroup is Largest Subgroup containing that Subgroup as Normal Subgroup](https://proofwiki.org/wiki/Normalizer_of_Subgroup_is_Largest_Subgroup_containing_that_Subgroup_as_Normal_Subgroup). It says: “Then Nɢ(H), the normalizer of H in G, is the largest subgroup of G containing H as a normal subgroup.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -714,6 +764,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Maximal subgroups of finite supersolvable groups have prime index
+
+**Remember:** Prime-order normal factors force maximal subgroups to have prime index.
+
+*Rules out counterexamples.* MSC 20F16 (Solvable groups, supersolvable groups). arXiv math.GR. Level 2: later undergraduate.
+
+**Definition.** A finite group is supersolvable if it has a chain from the identity subgroup to the whole group with prime-order quotients. Every subgroup in the chain must be normal in the whole group.
+
+**Problem.** Every maximal proper subgroup of a finite supersolvable group has prime index.
+
+**How the definition helps.** A prime-order first step leaves only one possible index when it lies outside a maximal subgroup, in our own proof. Let N be that first step and H a maximal subgroup. If N lies in H, use induction in the quotient by N. Otherwise HN is the whole group and H meets N trivially, so the index equals the order of N. In our own counterexample, the solvable alternating group A₄ has a maximal subgroup of order three and index four.
+
+**Wikipedia:** [Supersolvable group](https://en.wikipedia.org/wiki/Supersolvable_group). It says: “Every maximal subgroup in a supersolvable group has prime index.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Solvable groups match equations that radicals can solve
 
 **Remember:** A solvable group is built from abelian pieces, one radical at a time.
@@ -745,6 +811,22 @@
 **How the definition helps.** With this definition the theorem holds by definition, since G adds one more central extension. The bound on the class also holds by definition, if the class is the least number of central extensions needed. The work moves to a comparison theorem with the usual definition. A central series is a chain of normal subgroups whose successive quotients are central. A chain of central extensions gives one, and the lower central series descends at least as fast as any central series. So both definitions give the same groups and the same class. The nLab defines the class inductively in this way; the comparison is our own summary.
 
 **nLab:** [nilpotent group](https://ncatlab.org/nlab/show/nilpotent+group). It says: “If 1 → G′ → G → G″ → 1 is a central extension (so that in particular, G′ is abelian) and G″ is nilpotent, then G is nilpotent.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Nilpotence makes normalizers grow
+
+**Remember:** In a nilpotent group, normalizers of proper subgroups grow.
+
+*Rules out counterexamples.* MSC 20F18 (Nilpotent groups). arXiv math.GR. Level 2: later undergraduate.
+
+**Definition.** Start with the identity subgroup. At each step take the inverse image of the center of the quotient by the current subgroup. A group is nilpotent if this process reaches the whole group in finitely many steps.
+
+**Problem.** Every proper subgroup H of a finite nilpotent group is strictly contained in its normalizer. The normalizer consists of the elements whose conjugation preserves H.
+
+**How the definition helps.** The first central layer outside H supplies an element that normalizes H, in our own proof. Choose g outside H in that layer. For each h in H, the commutator ghg⁻¹h⁻¹ lies in the preceding layer, hence in H. The same holds for g⁻¹, so conjugation by g preserves H. In our own example, only the identity and (12) normalize the subgroup generated by (12) in the solvable group S₃.
+
+**Wikipedia:** [Nilpotent group](https://en.wikipedia.org/wiki/Nilpotent_group). It says: “This is called the normalizer property and can be phrased simply as "normalizers grow".”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -918,6 +1000,22 @@
 **How the definition helps.** As a central character value, the number is the image of an integral element under a ring map (our own). Class sums form an integer basis of the centre of ℤ\[G\] (our own). Multiplication by a class sum is an integer matrix, and its characteristic polynomial annihilates the class sum (our own). Taking traces of the scalar action identifies the image with h·χ(x)/χ(1) (our own). Ordinary character values are sums of roots of unity, but that alone does not justify dividing by χ(1) (our own). The remaining divisibility argument uses character orthogonality to express \|G\|/χ(1) as a sum of products of algebraic integers (our own).
 
 **Wikipedia:** [Character theory](https://en.wikipedia.org/wiki/Character_theory). It says: “If F = ℂ and χ is irreducible, then \[G:C<sub>G</sub>(x)\]\\frac{\\chi(x)}{\\chi(1)} is an algebraic integer for all x in G.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Multiplicity-free restriction passes upward
+
+**Remember:** More conjugation symmetries leave fewer sums to test for commutativity.
+
+*True by definition.* MSC 20C15 (Ordinary representations and characters), 43A90. arXiv math.RT. Level 3: graduate.
+
+**Definition.** For a subgroup H of a finite group G, take the formal complex sums of group elements unchanged by conjugation by H. Multiply sums by extending group multiplication linearly. One definition calls (G,H) a strong Gelfand pair if these sums commute. Equivalently, each irreducible complex representation of G splits over H into distinct irreducibles, meaning components with no proper nonzero invariant subspace.
+
+**Problem.** If a finite group forms a strong Gelfand pair with a subgroup, it also does so with each intermediate subgroup.
+
+**How the definition helps.** A larger subgroup imposes more conjugation symmetries, so its invariant sums form a subalgebra of the original commutative algebra (our own). They therefore still commute (our own). The matrix decomposition of the group algebra and Schur’s lemma identify commutativity with the absence of repeated components (our own).
+
+**Paper or page:** [Strong Gelfand pairs of the sporadic groups and their extensions](https://arxiv.org/abs/2510.25790). It says: “Suppose K ≤ H ≤ G are groups. If (G, H) is not a strong Gelfand pair, then neither is (G, K).”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -1215,6 +1313,40 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Residual finiteness decides word problems
+
+**Remember:** Finite quotients detect nonidentity words in residually finite groups.
+
+*Rules out counterexamples.* MSC 20F10 (Word problems, other decision problems, connections with logic and automata (group-theoretic aspects)), 20E26. arXiv math.GR. Level 3: graduate.
+
+**Definition.** A group is residually finite if each element other than the identity survives in some finite quotient. A finite presentation by itself guarantees no such quotient.
+
+**Problem.** A finitely presented residually finite group has an algorithm to decide if a word in its generators is the identity.
+
+**How the definition helps.** Residual finiteness supplies a finite witness whenever a word represents a nonidentity element, in our own proof. Enumerate proofs from the defining relations while also enumerating maps from the generators to finite groups. Test each map against the relations and check whether it sends the word away from the identity. One search must finish. In our own comparison, Boone’s finitely presented group with undecidable word problem cannot have this property.
+
+**nLab:** [residually finite group](https://ncatlab.org/nlab/show/residually+finite+group). It says: “The intersection of all normal subgroups N ⊂ G of finite index \[G : N\] ∈ ℕ is trivial.”
+
+**Wikipedia:** [Residually finite group](https://en.wikipedia.org/wiki/Residually_finite_group). It says: “Finitely presented residually finite groups have a solvable word problem”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Subgroup separability decides subgroup membership
+
+**Remember:** Finite quotients certify nonmembership when the group is subgroup separable.
+
+*Rules out counterexamples.* MSC 20F10 (Word problems, other decision problems, connections with logic and automata (group-theoretic aspects)), 20E26. arXiv math.GR. Level 3: graduate.
+
+**Definition.** Subgroup separability means each element outside a finitely generated subgroup stays outside its image in some finite quotient. An Artin group has generators with relations equating two alternating words of equal length in a pair of generators.
+
+**Problem.** In a subgroup separable Artin group given by a finite presentation, an algorithm decides membership in any subgroup given by finitely many generators.
+
+**How the definition helps.** Subgroup separability lets a finite quotient certify a negative answer, in our own proof. Search through maps to finite groups that satisfy the defining relations. At the same time, enumerate subgroup words and proofs that they equal the input word. One search must find a certificate. The cited theorem also covers sets described by finite automata, which include finitely generated subgroups. In our own comparison, Mihailova constructed a finitely generated subgroup with undecidable membership in the product of two rank-two free groups.
+
+**Paper or page:** [Membership problems in braid groups and Artin groups](https://arxiv.org/abs/2409.11335v3). It says: “Every subgroup separable Artin group has decidable rational subset membership problem.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Isoclinism makes the Schur cover of every finite group unique
 
 **Remember:** Isoclinism ignores the center, which is where Schur covers differ.
@@ -1232,6 +1364,24 @@
 **Sources:**
 
 - [P. Hall, The classification of prime-power groups, Journal für die reine und angewandte Mathematik 182 (1940) 130–141](https://doi.org/10.1515/crll.1940.182.130)
+
+### Polycyclic groups have finite presentations
+
+**Remember:** Finitely many cyclic layers give a finite list of relations.
+
+*Rules out counterexamples.* MSC 20F16 (Solvable groups, supersolvable groups), 20F05. arXiv math.GR. Level 3: graduate.
+
+**Definition.** A polycyclic group has a finite chain from the identity subgroup to the whole group. Each subgroup is normal in the next, and each successive quotient is cyclic. A solvable group allows abelian quotients in such a chain.
+
+**Problem.** Every polycyclic group has a presentation using finitely many generators and relations.
+
+**How the definition helps.** Cyclic layers let us build a finite presentation one layer at a time, in our own explanation. The extension theorem gives a finite presentation when both the normal subgroup and its quotient have finite presentations. Every cyclic group has one. The lamplighter group allows a walker on ℤ to move or switch a lamp of order two. This group is solvable and finitely generated, yet has no finite presentation. Its lamp changes alone form a subgroup requiring infinitely many generators, which a polycyclic group cannot contain (our own explanation).
+
+**Wikipedia:** [Polycyclic group](https://en.wikipedia.org/wiki/Polycyclic_group), [Lamplighter group](https://en.wikipedia.org/wiki/Lamplighter_group). It says: “Polycyclic groups are finitely presented, which makes them interesting from a computational point of view.”
+
+**Sources:**
+
+- [Gilbert Baumslag, Wreath products and finitely presented groups (1961).](https://doi.org/10.1007/bf01211007)
 
 ### Virtually nilpotent, not nilpotent, matches polynomial growth exactly
 
@@ -1540,6 +1690,22 @@
 **Sources:**
 
 - [André Weil, Adeles and Algebraic Groups (1982)](https://doi.org/10.1007/978-1-4684-9156-2)
+
+### Finitely generated linear groups are residually finite
+
+**Remember:** Finite matrix generators let finite quotients detect nonidentity elements.
+
+*Rules out counterexamples.* MSC 20H20 (Other matrix groups over fields), 20E26. arXiv math.GR. Level 3: graduate.
+
+**Definition.** A linear group is a subgroup of the invertible matrices of some fixed finite size over a field. It is finitely generated if it is generated as a group by finitely many matrices.
+
+**Problem.** Every finitely generated complex linear group is residually finite. Thus each nonidentity element survives in some finite quotient.
+
+**How the definition helps.** Finite generation places the entries of all group elements in one finitely generated ring, in our own explanation. Use the entries of the generating matrices and their inverses as ring generators over ℤ. Malcev’s proof reduces this ring to a finite field where a chosen matrix still differs from the identity. In our own counterexample, upper triangular two-by-two matrices with diagonal entries one and rational upper entry form a copy of the additive group ℚ. For a finite image of order n, write each rational as n times another rational. Its image is then zero.
+
+**Paper or page:** [Residual finiteness and discrete subgroups of Lie groups](https://arxiv.org/abs/2407.07680v2). It says: “Let $\\Gamma$ be a finitely generated subgroup of $\\operatorname{GL}<sub>N</sub>(\\mathbb{C})$ for some $N \\ge 1$. Then $\\Gamma$ is residually finite.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Cohomology as Ext makes Shapiro’s lemma an adjunction
 
@@ -1850,6 +2016,24 @@
 **Sources:**
 
 - [M. Aschbacher, R. Lyons, S. D. Smith, R. Solomon, The Classification of Finite Simple Groups: Groups of Characteristic 2 Type, AMS Mathematical Surveys and Monographs 172 (2011)](https://doi.org/10.1090/surv/172)
+
+### Relators without powers give local indicability
+
+**Remember:** A single relator that is not a proper power gives local indicability.
+
+*Rules out counterexamples.* MSC 20F05 (Generators, relations, and presentations of groups). arXiv math.GR. Level 4: research.
+
+**Definition.** A one-relator presentation defines a group by setting one word in free generators equal to the identity. A proper power is a word equal in the free group to a power with exponent at least two.
+
+**Problem.** A group with a single nontrivial relator that is not a proper power is locally indicable. This means every nontrivial finitely generated subgroup maps onto ℤ.
+
+**How the definition helps.** Excluding proper powers prevents the defining word from introducing finite-order elements, in our own explanation. The one-relator torsion theorem gives that conclusion. The stronger Brodskii–Howie theorem gives local indicability. In our own example, the presentation with one generator a and relation a² = 1 gives a group of order two. It cannot map onto ℤ.
+
+**Paper or page:** [The theory of one-relator groups: history and recent progress](https://arxiv.org/abs/2501.18306v1). It says: “If X = (Λ, λ) is a one-relator complex with deg(λ) = 1, then π₁(X) is locally indicable.”
+
+**Sources:**
+
+- [James Howie, On locally indicable groups (1982).](https://doi.org/10.1007/bf01214717)
 
 ### Polyhedral descriptions of rational sets give rational growth in virtually abelian groups
 

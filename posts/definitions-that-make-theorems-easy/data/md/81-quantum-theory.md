@@ -67,6 +67,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Normal ordering kills vacuum averages
+
+**Remember:** An annihilator next to the vacuum kills the term.
+
+*True by definition.* MSC 81Q12 (Nonselfadjoint operator theory in quantum theory including creation and destruction operators), 81T10. arXiv hep-th, math-ph. Level 2: later undergraduate.
+
+**Definition.** Creation operators add particles, and annihilation operators remove them. Normal ordering puts all creation operators to the left without adding terms from commutators. For fermions, each exchange contributes a minus sign.
+
+**Problem.** The vacuum expectation of every nonempty normal-ordered word is zero.
+
+**How the definition helps.** In our own proof, a normal-ordered word with any annihilator has one at its right end, where it kills the vacuum. If the word contains only creators, the leftmost creator gives zero against the vacuum on the left. Ordinary products can have nonzero vacuum expectations. Wick’s theorem recovers the extra terms needed to expand them in normal order.
+
+**Wikipedia:** [Normal order](https://en.wikipedia.org/wiki/Normal_order). It says: “The vacuum expectation value of a normal ordered product of creation and annihilation operators is zero.”
+
+**Sources:**
+
+- [G. C. Wick, The Evaluation of the Collision Matrix (1950)](https://doi.org/10.1103/PhysRev.80.268)
+
 ### Shared tables give Bell's bound
 
 **Remember:** One joint table makes the four signed products add to ±2.
@@ -85,6 +103,42 @@
 
 - [John F. Clauser, Michael A. Horne, Abner Shimony and Richard A. Holt, Proposed Experiment to Test Local Hidden-Variable Theories (1969)](https://doi.org/10.1103/PhysRevLett.23.880)
 - [Arthur Fine, Hidden Variables, Joint Probability, and the Bell Inequalities (1982)](https://doi.org/10.1103/PhysRevLett.48.291)
+
+### Holonomy sees hidden solenoid flux
+
+**Remember:** Zero field on the path need not mean zero phase.
+
+*Makes the theorem clean to state or prove.* MSC 81Q70 (Differential geometric methods, including holonomy, Berry and Hannay phases, Aharonov-Bohm effect, etc. in quantum theory). arXiv quant-ph, math-ph. Level 2: later undergraduate.
+
+**Definition.** Use the phase acquired by parallel transport of a charged wave around a loop. This phase, called holonomy, is exp(iqI/ℏ). Here I is the line integral of the magnetic potential and q is the charge. The alternative uses only the magnetic field along the path.
+
+**Problem.** For a loop going once around an ideal solenoid, the phase is exp(iqΦ/ℏ), where Φ is the enclosed magnetic flux. The field on the loop can vanish.
+
+**How the definition helps.** In our own calculation, holonomy records the integral around the whole loop, even where the local magnetic field vanishes. Choose a spanning surface oriented by the loop and include the solenoid interior when computing its flux. Stokes’ theorem identifies that flux with the potential integral for a finite-radius solenoid. The transport law comes from the coupling between charge and magnetic potential.
+
+**Wikipedia:** [Aharonov–Bohm effect](https://en.wikipedia.org/wiki/Aharonov%E2%80%93Bohm_effect). It says: “experiences a phase shift as a result of the enclosed magnetic field”
+
+**Sources:**
+
+- [Yakir Aharonov and David Bohm, Significance of Electromagnetic Potentials in the Quantum Theory (1959)](https://doi.org/10.1103/PhysRev.115.485)
+
+### Parity strings give fermion signs
+
+**Remember:** One earlier sign operator supplies the fermion minus sign.
+
+*Rules out counterexamples.* MSC 81T25 (Quantum field theory on lattices), 81R15. arXiv quant-ph, math-ph. Level 2: later undergraduate.
+
+**Definition.** On a finite ordered chain of two-state spins, let the lowering operator send the upper state to the lower state and kill the lower state. At each site multiply it by the product of the sign operators at all earlier sites. Each sign operator acts by +1 and −1 on the two states.
+
+**Problem.** Write aⱼ for the resulting operator at site j. Every pair satisfies aⱼaₖ + aₖaⱼ = 0 and aⱼaₖ\* + aₖ\*aⱼ = δⱼₖ I. Here δⱼₖ equals one for equal sites and zero otherwise.
+
+**How the definition helps.** In our own calculation, exactly one sign operator crosses a lowering operator on its own site when the two products exchange order. This gives a minus sign that bare lowering operators on different sites would miss. At one site the earlier signs square to the identity, leaving the two-state matrix identities.
+
+**Wikipedia:** [Jordan–Wigner transformation](https://en.wikipedia.org/wiki/Jordan%E2%80%93Wigner_transformation). It says: “The transformed spin operators now have the appropriate fermionic canonical anti-commutation relations”
+
+**Sources:**
+
+- [Pascual Jordan and Eugene Wigner, Über das Paulische Äquivalenzverbot (1928)](https://doi.org/10.1007/BF01331938)
 
 ### Defined this way, indistinguishable particles can only be bosons or fermions
 
@@ -420,6 +474,60 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Connected graphs have unique ground modes
+
+**Remember:** Zero energy means one constant per connected component.
+
+*Rules out counterexamples.* MSC 81Q35 (Quantum mechanics on special spaces: manifolds, fractals, graphs, lattices), 81Q10. arXiv math-ph. Level 3: graduate.
+
+**Definition.** Replace each edge of a finite connected graph by an interval of positive finite length. Allow functions with square-integrable first derivatives on the edges and matching values at each vertex. Define the free Laplacian through the energy obtained by integrating the squared derivative magnitude over every edge.
+
+**Problem.** The zero eigenvalue of the free Laplacian on a connected compact metric graph is simple. Two disjoint intervals instead give two independent zero modes.
+
+**How the definition helps.** In our own proof, zero energy forces each edge function to be constant. Matching vertex values make the constants equal throughout a connected graph. Conversely, every constant has zero energy. The theorem associating an operator to this energy identifies zero-energy functions with its kernel.
+
+**Paper or page:** [Geometric spectral theory of quantum graphs](https://arxiv.org/abs/2310.02707v3). It says: “In particular, its spectrum is real and takes the form λ₁ &lt; λ₂ ≤ λ₃ ≤ … → ∞”
+
+**Sources:**
+
+- [Geometric spectral theory of quantum graphs](https://arxiv.org/abs/2310.02707v3)
+
+### Energy forms give Kirchhoff conditions
+
+**Remember:** One test value per vertex makes the edge currents add.
+
+*True by definition.* MSC 81Q35 (Quantum mechanics on special spaces: manifolds, fractals, graphs, lattices), 81Q10. arXiv math-ph. Level 3: graduate.
+
+**Definition.** Replace the edges of a finite graph by intervals of positive finite length. Define energy by integrating the squared derivative magnitude along the edges. Allow functions with square-integrable first derivatives and matching values at each vertex.
+
+**Problem.** The associated operator acts as the negative second derivative on each edge. Its domain also requires square-integrable second derivatives and zero sum of outgoing derivatives at each vertex.
+
+**How the definition helps.** In our own proof, continuity gives one test value per vertex, so integration by parts adds all outgoing derivatives there. Test functions can take independent values at different vertices. Their boundary terms vanish precisely when each sum vanishes. The theorem associating an operator to the energy justifies this alternative to prescribing boundary conditions directly.
+
+**Paper or page:** [Geometric spectral theory of quantum graphs](https://arxiv.org/abs/2310.02707v3). It says: “(Aq f)\|ₑ = −f\|ₑ″ + q\|ₑ f\|ₑ”
+
+**Sources:**
+
+- [Geometric spectral theory of quantum graphs](https://arxiv.org/abs/2310.02707v3)
+
+### Vertex cuts lower graph eigenvalues
+
+**Remember:** A cut allows more trial functions at the same energy.
+
+*True by definition.* MSC 81Q35 (Quantum mechanics on special spaces: manifolds, fractals, graphs, lattices), 81Q10. arXiv math-ph. Level 3: graduate.
+
+**Definition.** Give each edge of a finite graph positive finite length and integrate the squared derivative magnitude along every edge. Allow functions with square-integrable derivatives and matching values at each vertex. Splitting one vertex into r + 1 nonempty groups of edge ends releases r independent matching conditions.
+
+**Problem.** Splitting a vertex into r + 1 vertices cannot raise any eigenvalue of the free graph Laplacian. The new eigenvalue at index k is at least the old one at index k − r when k &gt; r.
+
+**How the definition helps.** In our own proof, splitting the vertex enlarges the space of trial functions by r dimensions while preserving the energy formula. The minimum–maximum characterization of eigenvalues gives both bounds by comparing trial subspaces. This avoids solving the differential equations with new vertex conditions. The operator associated with the energy has zero total outgoing derivative at each vertex.
+
+**Paper or page:** [Geometric spectral theory of quantum graphs](https://arxiv.org/abs/2310.02707v3). It says: “Suppose Γ̃ is formed from Γ by making a rank r ≥ 1 cut of a vertex v of Γ, preserving standard conditions at all vertices.”
+
+**Sources:**
+
+- [Geometric spectral theory of quantum graphs](https://arxiv.org/abs/2310.02707v3)
+
 ### Signed traces cancel excited states
 
 **Remember:** The signed trace cancels every positive-energy pair.
@@ -473,6 +581,25 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Weyl relations restore uniqueness
+
+**Remember:** Use the full unitary groups to control what their generators miss.
+
+*Rules out counterexamples.* MSC 81S05 (Commutation relations and statistics as related to quantum mechanics (general)), 81R15. arXiv math-ph, quant-ph. Level 3: graduate.
+
+**Definition.** Let U(s) and V(t) be unitary groups for position and momentum, continuous on each vector. Fix a nonzero real constant c and impose U(s)V(t) = exp(icst)V(t)U(s) for all real s and t. These are the Weyl relations.
+
+**Problem.** Any two irreducible pairs obeying these relations for the same c are unitarily equivalent. Irreducibility means they have no common proper nonzero closed invariant subspace.
+
+**How the definition helps.** In our own example, the Weyl relations would shift the position spectrum by arbitrary real amounts. Position on a bounded interval has bounded spectrum, so this is impossible. Yet position and periodic momentum satisfy the usual infinitesimal commutator on smooth functions supported inside the interval. The Stone–von Neumann theorem supplies the uniqueness proof.
+
+**Wikipedia:** [Stone–von Neumann theorem](https://en.wikipedia.org/wiki/Stone%E2%80%93von_Neumann_theorem). It says: “one must require that the operators satisfy the exponentiated form of the canonical commutation relations, known as the Weyl relations.”
+
+**Sources:**
+
+- [Hermann Weyl, Quantenmechanik und Gruppentheorie (1927)](https://doi.org/10.1007/BF02055756)
+- [John von Neumann, Die Eindeutigkeit der Schrödingerschen Operatoren (1931)](https://doi.org/10.1007/BF01457956)
+
 ### Primitive channels forget their inputs
 
 **Remember:** Irreducible channels can cycle, but primitive channels converge.
@@ -510,6 +637,24 @@
 
 - [Hilbrand J. Groenewold, On the Principles of Elementary Quantum Mechanics (1946)](https://doi.org/10.1007/978-94-017-6065-2)
 
+### Rank-one Wigner symbols multiply by overlaps
+
+**Remember:** Two rank-one operators meet in one inner product.
+
+*True by definition.* MSC 81S30 (Phase-space methods including Wigner distributions, etc. applied to problems in quantum mechanics). arXiv math-ph. Level 3: graduate.
+
+**Definition.** A Weyl symbol represents an operator by a function of position and momentum. The star product represents composition of operators. For square-integrable wavefunctions ψ and φ on ℝⁿ, the symbol of v ↦ ψ⟨φ,v⟩ is (2πℏ)ⁿ times their Wigner function W(ψ,φ).
+
+**Problem.** The star product of W(ψ,φ) and W(ψ′,φ′) equals ⟨φ,ψ′⟩ W(ψ,φ′)/(2πℏ)ⁿ. The inner product is linear in its second argument.
+
+**How the definition helps.** In our own proof, composing the two rank-one maps leaves exactly one inner product. This avoids evaluating the integral formula for the star product. The work lies in identifying the symbol and proving that the integral represents operator composition.
+
+**Paper or page:** [Phase Space Representation of the Density Operator: Bopp Pseudodifferential Calculus and Moyal Product](https://arxiv.org/abs/2411.14391v2). It says: “Let ψ, ψ′, φ, φ′ be in L²(ℝⁿ).”
+
+**Sources:**
+
+- [Phase Space Representation of the Density Operator: Bopp Pseudodifferential Calculus and Moyal Product](https://arxiv.org/abs/2411.14391v2)
+
 ### Wigner functions preserve both marginals
 
 **Remember:** Integrate out either coordinate to recover the probability density of the other.
@@ -527,6 +672,24 @@
 **Sources:**
 
 - [Eugene Wigner, On the Quantum Correction For Thermodynamic Equilibrium (1932)](https://doi.org/10.1103/PhysRev.40.749)
+
+### Causal propagation gives spacelike commutation
+
+**Remember:** No retarded or advanced response means no commutator.
+
+*True by definition.* MSC 81T05 (Axiomatic quantum field theory; operator algebras), 81T20. arXiv math-ph, hep-th. Level 3: graduate.
+
+**Definition.** For a free scalar field, average the field against smooth functions of compact support. Define the commutator, the difference between the two product orders, by pairing these functions through i times the retarded minus advanced propagator. The retarded and advanced operators solve the wave equation with response confined to the causal future and past respectively. Use units with ℏ = 1.
+
+**Problem.** On a spacetime admitting a surface for complete initial data, these averaged fields commute when no causal path connects their supports.
+
+**How the definition helps.** In our own proof, the support bounds make both pairings zero whenever the supports are causally disjoint. This gives commutation without evolving commutators from initial data. The work lies in constructing the two solution operators and proving agreement with quantization from initial data.
+
+**nLab:** [causal propagator](https://ncatlab.org/nlab/show/causal+propagator). It says: “its support as a distribution, is, for one of the two arguments fixed, the causal cone of that point”
+
+**Sources:**
+
+- [Christian Bär, Green-Hyperbolic Operators on Globally Hyperbolic Spacetimes](https://doi.org/10.1007/s00220-014-2097-7)
 
 ### The covariant derivative commutator gives gauge-covariant field strength
 
@@ -563,6 +726,26 @@
 **Sources:**
 
 - [Kenneth G. Wilson, Confinement of quarks, Physical Review D 10 (1974) 2445](https://doi.org/10.1103/PhysRevD.10.2445)
+
+### Integer levels preserve Chern–Simons phases
+
+**Remember:** Integer levels make a winding change invisible to the phase.
+
+*Rules out counterexamples.* MSC 81T45 (Topological field theories in quantum mechanics), 81T13. arXiv hep-th, math-ph. Level 3: graduate.
+
+**Definition.** In SU(2) Chern–Simons theory, the level k multiplies an action measuring a gauge field on an oriented three-dimensional space. SU(2) consists of two-by-two unitary matrices with determinant one. Normalize the action so a change of gauge of degree n shifts it by 2πkn. The quantum phase is the exponential of i times the action.
+
+**Problem.** On a closed oriented three-manifold the phase is invariant under changes of gauge at integer level. On the three-sphere, identified with SU(2), the identity map has degree one and reverses the phase at level one-half.
+
+**How the definition helps.** In our own calculation, integer level makes the extra phase exp(2πikn) equal to one for every integer degree n. The work lies in deriving the action shift and identifying n as the winding number of the gauge transformation.
+
+**nLab:** [level (Chern-Simons theory)](https://ncatlab.org/nlab/show/level+%28Chern-Simons+theory%29). It says: “only for certain discrete choices of the scale (a global prefactor) of the Lagrangian.”
+
+**Wikipedia:** [Chern–Simons theory](https://en.wikipedia.org/wiki/Chern%E2%80%93Simons_theory). It says: “The action is gauge dependent, however the partition function of the quantum theory is well-defined when the level is an integer”
+
+**Sources:**
+
+- [Edward Witten, Quantum field theory and the Jones polynomial (1989)](https://doi.org/10.1007/BF01217730)
 
 ### Braids allow arbitrary exchange phases
 
@@ -744,6 +927,60 @@
 
 - [Jean Dolbeault, Maria J. Esteban, Eric Séré, Distinguished self-adjoint extension and eigenvalues of operators with gaps. Application to Dirac-Coulomb operators, J. Spectr. Theory 13 (2023), no. 2, 491–524, arXiv:2206.11679](https://arxiv.org/abs/2206.11679)
 
+### Metaplectic generators preserve oscillator levels
+
+**Remember:** Commuting symmetries preserve each energy level.
+
+*True by definition.* MSC 81R05 (Finite-dimensional groups and algebras motivated by physics and their representations), 81Q05. arXiv math-ph. Level 4: research.
+
+**Definition.** The isotropic harmonic oscillator has the same frequency in every direction. Linear changes of position and momentum preserving their standard symplectic form act on wavefunctions through a double cover, the metaplectic group. Each change has two lifts to this group. Differentiate the lifted unitary group action to obtain the quantum generators.
+
+**Problem.** The quantum generator for an element of the unitary Lie algebra preserves every eigenspace of the isotropic harmonic oscillator.
+
+**How the definition helps.** In our own proof, the oscillator evolution acts by scalar rotations on the classical coordinates, so its lifted flow commutes with every lifted unitary transformation. Differentiating preserves each oscillator energy space. This avoids computing commutators of unbounded differential operators directly. The work lies in identifying these generators with the operators obtained by quantizing the classical quadratic functions.
+
+**Paper or page:** [Explicit Spectral Analysis for Operators Representing the unitary group 𝕌(d) and its Lie algebra 𝔲(d) through the Metaplectic Representation and Weyl Quantization](https://arxiv.org/abs/2412.18728v2). It says: “is essentially selfadjoint and it strongly commutes with H₀.”
+
+**Sources:**
+
+- [Explicit Spectral Analysis for Operators Representing the unitary group 𝕌(d) and its Lie algebra 𝔲(d) through the Metaplectic Representation and Weyl Quantization](https://arxiv.org/abs/2412.18728v2)
+
+### Monomials give metaplectic eigenvalues
+
+**Remember:** A monomial multiplies the eigenvalues of its factors.
+
+*True by definition.* MSC 81R05 (Finite-dimensional groups and algebras motivated by physics and their representations), 81Q10. arXiv math-ph. Level 4: research.
+
+**Definition.** The Bargmann transform represents oscillator wavefunctions by holomorphic functions with a Gaussian norm. A unitary matrix g acts by substituting g⁻¹z for z and multiplying by an inverse square root of its determinant. The two choices of square root distinguish the two lifts of g in the metaplectic representation.
+
+**Problem.** The eigenvalues of the lifted unitary action are products of nonnegative powers of the conjugate matrix eigenvalues, times the chosen determinant factor.
+
+**How the definition helps.** In our own proof, diagonalizing g makes every monomial an eigenvector for inverse substitution. The factors from its variables multiply, and the determinant supplies the common scalar. The monomials form an orthogonal basis, so every eigenvalue appears this way. The Bargmann transform identifies this action with the original operator on wavefunctions.
+
+**Paper or page:** [Explicit Spectral Analysis for Operators Representing the unitary group 𝕌(d) and its Lie algebra 𝔲(d) through the Metaplectic Representation and Weyl Quantization](https://arxiv.org/abs/2412.18728v2). It says: “Then, the point spectrum of μ(g) is given by”
+
+**Sources:**
+
+- [Explicit Spectral Analysis for Operators Representing the unitary group 𝕌(d) and its Lie algebra 𝔲(d) through the Metaplectic Representation and Weyl Quantization](https://arxiv.org/abs/2412.18728v2)
+
+### Biunitary averaging preserves trace
+
+**Remember:** The second unitary identity is the one the trace needs.
+
+*Rules out counterexamples.* MSC 81R50 (Quantum groups and related algebraic methods applied to problems in quantum theory), 81R15. arXiv math-ph, quant-ph. Level 4: research.
+
+**Definition.** Let U be a unitary matrix whose entries are operators on a finite-dimensional Hilbert space K. Require the matrix formed by taking each entry’s adjoint to be unitary too. For an operator x on K, form U(I ⊗ x)U\*. Apply a state, a positive normalized linear functional, to the matrix index while leaving the operators on K in place.
+
+**Problem.** With both unitarity conditions, the averaged map preserves the ordinary trace on K. Without the second condition, swapping two equal-dimensional factors gives x ↦ φ(x)I, where φ is the averaging state.
+
+**How the definition helps.** In our own proof, the second unitarity condition supplies exactly the sums needed after taking the trace on K. Cyclically moving the last factor of each term to the front produces sums of entry products in reversed order. Ordinary unitarity controls the forward order. The second condition reduces the partial trace to the identity matrix times the trace of x. Applying the state then preserves that trace. In our own swap example, a state concentrated on one basis vector fails to preserve the trace in dimension two.
+
+**Paper or page:** [Quantum expanders and property (T) discrete quantum groups](https://arxiv.org/abs/2502.01974v1). It says: “If u is a bi-unitary (e.g. if 𝐆 is of Kac type ⇔ Ĝ is unimodular), then Φ is trace-preserving.”
+
+**Sources:**
+
+- [Quantum expanders and property (T) discrete quantum groups](https://arxiv.org/abs/2502.01974v1)
+
 ### Cyclic vacua remove invisible states
 
 **Remember:** A dense set of vacuum descendants leaves no room for an unseen sector.
@@ -761,6 +998,24 @@
 **Sources:**
 
 - [Arthur S. Wightman, Quantum Field Theory in Terms of Vacuum Expectation Values (1956)](https://doi.org/10.1103/PhysRev.101.860)
+
+### Fixed vectors describe standard real subspaces
+
+**Remember:** Every vector in the domain splits into two fixed parts.
+
+*True by definition.* MSC 81T05 (Axiomatic quantum field theory; operator algebras), 81R15. arXiv math-ph. Level 4: research.
+
+**Definition.** In a complex Hilbert space, a standard real subspace K is closed and satisfies K ∩ iK = {0} and K + iK dense. Alternatively, take a conjugate-linear map S with closed graph and dense domain. Require S to preserve its domain and satisfy S²x = x there.
+
+**Problem.** Taking the fixed vectors of S gives a bijection between these maps and standard real subspaces.
+
+**How the definition helps.** In our own proof, the involution gives both parts of the decomposition directly. For each domain vector x, set u = (x + Sx)/2 and v = (x − Sx)/(2i). Both are fixed, and x = u + iv. A vector fixed together with its imaginary multiple must vanish. The closed graph makes the fixed space closed. Conversely, the unique decomposition defines S(u + iv) = u − iv. Closedness of K then gives closedness of the graph.
+
+**Paper or page:** [The Bisognano-Wichmann property for non-unitary Wightman conformal field theories](https://arxiv.org/abs/2506.10625v1). It says: “induces a bijection between i) standard subspaces K of 𝒟, and 2) closed conjugate-linear involutions S”
+
+**Sources:**
+
+- [The Bisognano-Wichmann property for non-unitary Wightman conformal field theories](https://arxiv.org/abs/2506.10625v1)
 
 ### Haag duality localizes purification changes
 
@@ -834,6 +1089,24 @@
 **Sources:**
 
 - [Konrad Osterwalder and Robert Schrader, Axioms for Euclidean Green's functions (1973)](https://doi.org/10.1007/BF01645738)
+
+### Action exponentials transport master equations
+
+**Remember:** Transport the exponential with a map that respects the differential.
+
+*True by definition.* MSC 81T15 (Perturbative methods of renormalization applied to problems in quantum field theory), 81T70. arXiv hep-th, math-ph. Level 4: research.
+
+**Definition.** Write the interaction I as a formal exponential E = exp(I/ℏ), where ℏ counts powers in the expansion. The quantum master equation then says DE = 0 for a linear operator D with D² = 0. A change in the rule for pairing fields acts on E by a linear map R.
+
+**Problem.** If the change replaces D by D′ and D′R = RD, the transformed exponential solves the new quantum master equation.
+
+**How the definition helps.** In our own proof, writing the equation for E turns the transport step into D′RE = RDE = 0. Working directly with I would leave a nonlinear equation. The work lies in proving the operator identity for the actual change of pairing rule and recovering the transformed interaction.
+
+**Paper or page:** [Quantization and Algebraic Index](https://arxiv.org/abs/2511.12875v1). It says: “Then Ĩ ∈ 𝒪(V)\[\[ℏ\]\] satisfies QME”
+
+**Sources:**
+
+- [Quantization and Algebraic Index](https://arxiv.org/abs/2511.12875v1)
 
 ### Causal perturbation theory makes causal factorization an axiom of the S-matrix
 
@@ -910,6 +1183,42 @@
 
 - [Marek Radzikowski, Micro-local approach to the Hadamard condition in quantum field theory on curved space-time (1996)](https://doi.org/10.1007/BF02100096)
 
+### Time slices compare spacetime dynamics
+
+**Remember:** Use unchanged past and future slices to compare two metrics.
+
+*Makes the theorem clean to state or prove.* MSC 81T20 (Quantum field theory on curved space or space-time backgrounds), 81T05. arXiv math-ph. Level 4: research.
+
+**Definition.** Assign each spacetime an algebra of observables and each inclusion preserving the causal structure a map that respects composition. A Cauchy surface meets every inextendible causal path exactly once. The time slice axiom makes the inclusion map invertible whenever the smaller region contains such a surface of the larger spacetime.
+
+**Problem.** A compactly supported change of the metric that preserves global hyperbolicity gives an automorphism of the original observable algebra. Global hyperbolicity ensures the spacetime admits a surface for complete initial data.
+
+**How the definition helps.** In our own construction, the time slice axiom makes each comparison through an unchanged region reversible. A past region gives an isomorphism from the old algebra to the new one. A future region gives an isomorphism back. Their composition compares the dynamics within the original algebra. The work lies in finding common Cauchy regions and verifying the axiom for the field equations.
+
+**nLab:** [time slice axiom](https://ncatlab.org/nlab/show/time+slice+axiom). It says: “if whenever a causal inclusion of Lorentzian spaces O₁ ↪︎ O₂ is such that O₁ contains a Cauchy surface of O₂ then A(O₁ ↪︎ O₂) is an isomorphism.”
+
+**Sources:**
+
+- [Romeo Brunetti, Klaus Fredenhagen and Rainer Verch, The Generally Covariant Locality Principle (2003)](https://doi.org/10.1007/s00220-003-0815-7)
+
+### Trivial turns let conformal nets descend
+
+**Remember:** A scalar full turn makes the lift invisible.
+
+*Makes the theorem clean to state or prove.* MSC 81T40 (Two-dimensional field theories, conformal field theories, etc. in quantum mechanics). arXiv math-ph, hep-th. Level 4: research.
+
+**Definition.** A conformal net assigns an algebra of observables to each interval and moves these algebras under angle-preserving changes of coordinates. On the line, the lifted symmetry action can distinguish a full turn from doing nothing. Require a full turn to multiply every state by the same scalar.
+
+**Problem.** Under this condition, a conformal net on the line extends to a conformal net on the circle.
+
+**How the definition helps.** In our own explanation, the full-turn condition makes transport of observable algebras independent of the chosen lift. Two lifts represent the same circle symmetry and differ by whole turns. Scalar factors cancel when a symmetry acts on an operator by conjugation. The extension theorem must still show that the transported algebras satisfy the net axioms.
+
+**Paper or page:** [Wightman fields for two-dimensional conformal field theories with pointed representation category](https://arxiv.org/abs/2301.12310v3). It says: “that is, the lift of 2π-rotation is trivial.”
+
+**Sources:**
+
+- [Wightman fields for two-dimensional conformal field theories with pointed representation category](https://arxiv.org/abs/2301.12310v3)
+
 ### Spin-statistics for topological field theories follows from a sign-twisted duality structure
 
 **Remember:** Put the fermion sign into the rule for duals and adjoints.
@@ -927,3 +1236,21 @@
 **Sources:**
 
 - [Luuk Stehouwer, The spin-statistics theorem for topological quantum field theories, arXiv:2403.02282v2 (2024)](https://arxiv.org/abs/2403.02282v2)
+
+### The master action gives a differential
+
+**Remember:** Bracketing twice is bracketing with half the self-bracket.
+
+*True by definition.* MSC 81T70 (Quantization in field theory; cohomological methods), 81T13. arXiv hep-th, math-ph. Level 4: research.
+
+**Definition.** In the classical Batalin–Vilkovisky construction, observables have integer degrees. Their odd Poisson bracket is a bilinear operation that raises total degree by one and satisfies the graded Jacobi identity. Choose an action S of degree zero satisfying {S,S} = 0. Define the operator d by df = {S,f}.
+
+**Problem.** The differential squares to zero on the graded algebra of classical observables.
+
+**How the definition helps.** In our own calculation, the bracket definition replaces separate checks on each observable by one identity for the action. The graded Jacobi identity gives d²f = {{S,S},f}/2 over the real or complex numbers. Constructing S to encode the field equations and gauge symmetries carries the remaining work.
+
+**nLab:** [quantum master equation](https://ncatlab.org/nlab/show/quantum+master+equation). It says: “the classical master equation expresses the nilpotency of the BV-differential before quantization”
+
+**Sources:**
+
+- [Igor Batalin and Grigori Vilkovisky, Gauge algebra and quantization (1981)](https://doi.org/10.1016/0370-2693(81)90205-7)

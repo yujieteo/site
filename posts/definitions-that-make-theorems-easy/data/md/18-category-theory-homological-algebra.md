@@ -571,6 +571,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Initial arrows assemble left adjoints
+
+**Remember:** One initial arrow for every input builds the adjoint.
+
+*True by definition.* MSC 18A40 (Adjoint functors (universal constructions, reflective subcategories, Kan extensions, etc.)), 01A60. arXiv math.CT, math.HO. Level 3: graduate.
+
+**Definition.** A functor R sends objects and arrows of a category C to those of D, preserving identities and composition. For an object d of D, call u from d to R(c) universal if it has the following property. Every arrow from d to R(b) factors uniquely as u followed by R(h), for an arrow h from c to b.
+
+**Problem.** If we choose such a universal arrow for every d, then R has a left adjoint. This means arrows from its value at d to b correspond bijectively to arrows from d to R(b), compatibly with composition.
+
+**How the definition helps.** A universal arrow gives the required bijection by assigning each arrow its unique factor h. In our own explanation, these same factorizations determine how the left adjoint acts on arrows. Uniqueness then gives the identity and composition laws. The hard part in an existence theorem is finding the universal arrows. The historical paper gives one such theorem under additional hypotheses.
+
+**nLab:** [adjoint functor theorem](https://ncatlab.org/nlab/show/adjoint+functor+theorem). It says: “the existence of the adjoint is equivalent to the existence for each d ∈ D of an initial object”
+
+**Paper or page:** [The history of the General Adjoint Functor Theorem](https://arxiv.org/abs/2310.19528). It says: “for each S-object (S, σ) there exists an E-universal arrow”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The Isbell adjunction between spaces and algebras holds by unwinding definitions
 
 **Remember:** Functions map a space into representables, and points map an algebra into representables.

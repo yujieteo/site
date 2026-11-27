@@ -86,6 +86,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Every field has a smallest subfield
+
+**Remember:** Keep exactly the elements that every subfield must contain.
+
+*True by definition.* MSC 12E99 (General field theory). arXiv math.AC. Level 1: early undergraduate.
+
+**Definition.** Define the prime subfield as the intersection of all subfields that share the field's one. An alternative builds it from one using the field operations.
+
+**Problem.** Every field has a unique smallest subfield.
+
+**How the definition helps.** The intersection automatically lies in every subfield, which is the required minimality. In our own proof, zero and one belong to every subfield. The intersection inherits addition, subtraction, multiplication, and inversion of nonzero elements. Constructing the smallest subfield from one instead requires showing that the construction gives exactly this intersection.
+
+**Paper or page:** [Intersection of All Division Subrings is Prime Subfield](https://proofwiki.org/wiki/Intersection_of_All_Division_Subrings_is_Prime_Subfield). It says: “Let P be the intersection of the set of all division subrings of K. Then P is the prime subfield of K.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### As the terminal Archimedean ordered field, the reals are unique by definition
 
 **Remember:** Every Archimedean ordered field maps into the reals in exactly one way.

@@ -1,3 +1,19 @@
+### Divided differences include equal parameters
+
+**Remember:** Use the polynomial, and equal parameters need no separate case.
+
+*Makes the theorem clean to state or prove.* MSC 39A06 (Linear difference equations). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** Define the divided difference of the monomial tⁿ as the sum of all monomials in A and B of total degree n−1. For n = 0 set it to zero. The usual quotient (Aⁿ − Bⁿ)/(A − B) is defined only for distinct A and B.
+
+**Problem.** Start at y(0) = 0 and set y(n+1) = A y(n) + Bⁿ for n ≥ 0. Then y(n) is the divided difference of tⁿ at A and B.
+
+**How the definition helps.** The polynomial gives one formula even when A equals B. Our own derivation starts with the zero polynomial at n = 0. Multiplying by A and adding Bⁿ gives every monomial of degree n exactly once. For distinct inputs the geometric sum gives the quoted quotient. For equal inputs all n summands agree when n ≥ 1.
+
+**Paper or page:** [Recurrence Relation where n+1th Term is A by nth term + B to the n](https://proofwiki.org/wiki/Recurrence_Relation_where_n+1th_Term_is_A_by_nth_term_+_B_to_the_n). It says: “(Aⁿ − Bⁿ)/(A − B) : A ≠ B   n Aⁿ⁻¹ : A = B”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Generating series make recurrences rational
 
 **Remember:** A lag is multiplication by z, apart from initial terms.
@@ -31,6 +47,54 @@
 **Sources:**
 
 - [Algebraic Modification of the Method of Undetermined Coefficients For Solving Nonhomogeneous Linear Difference Equations](https://arxiv.org/abs/2307.07182v1)
+
+### One basis handles repeated roots including zero
+
+**Remember:** Each shifted difference drops the coefficient index by one.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 39A06 (Linear difference equations). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** Let n run over the nonnegative integers. For a real or complex number r, define uⱼ(n) as the coefficient of tʲ in (r+t)ⁿ. The usual solutions use powers of n times rⁿ, which miss solutions supported at early indices when r = 0.
+
+**Problem.** Let S shift a sequence forward by one index, and let I be the identity. For each positive integer d, the sequences uⱼ with 0 ≤ j &lt; d form a basis for solutions of (S − rI)ᵈu = 0.
+
+**How the definition helps.** Taking polynomial coefficients gives one basis even when the repeated root is zero. Our own construction uses the fact that shifting n multiplies the polynomial by r+t. Subtracting r times the original polynomial leaves multiplication by t. After d repetitions, every coefficient below degree d vanishes. The first d values of the proposed sequences form a triangular matrix with ones on its diagonal. They therefore realize all initial values, which determine a forward solution uniquely.
+
+**Wikipedia:** [Linear recurrence with constant coefficients](https://en.wikipedia.org/wiki/Linear_recurrence_with_constant_coefficients). It says: “the terms in this formula corresponding to the second and later occurrences of the same root are multiplied by increasing powers of n.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Geometric products give q-exponential shifts
+
+**Remember:** Scaling x by q removes exactly one factor.
+
+*True by definition.* MSC 39A13 (Difference equations, scaling (\\(q\\)-differences)). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** Fix 0 &lt; q &lt; 1 and take \|(1 − q)x\| &lt; 1. Define E(x) as the product of the factors 1/(1 − (1 − q)xqᵏ) for integers k ≥ 0.
+
+**Problem.** For nonzero x in the stated interval, the q-exponential is its own q-derivative. This derivative divides the value at x minus the value at qx by (1−q)x.
+
+**How the definition helps.** Replacing x by qx drops exactly the first factor of the product. Thus E(qx) = (1 − (1 − q)x)E(x), which gives the stated difference quotient. Our own explanation compares this product with the usual definition by a power series. The factors converge to one with geometrically decreasing errors, giving a convergent product on the stated interval. Comparing coefficients in the shift equation recovers the usual series from E(0) = 1.
+
+**Wikipedia:** [Q-exponential](https://en.wikipedia.org/wiki/Q-exponential). It says: “e<sub>q</sub>(x)=\\left(\\prod<sub>k=0</sub><sup>\\infty</sup>(1-q<sup>k</sup>(1-q)x)\\right)<sup>-1</sup>.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Geometric-grid sums invert Jackson differentiation
+
+**Remember:** Match the integral weights to the gaps in the grid.
+
+*True by definition.* MSC 39A13 (Difference equations, scaling (\\(q\\)-differences)). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** For 0 &lt; q &lt; 1 and x ≥ 0, sum f at x, qx, q²x, and later grid points. Give each value the weight equal to its grid spacing toward zero. This sum is the Jackson integral.
+
+**Problem.** Let f be continuous on \[0,A\], where A &gt; 0. Its Jackson integral F satisfies (F(x) − F(qx))/((1 − q)x) = f(x) for 0 &lt; x ≤ A.
+
+**How the definition helps.** The chosen weights make F(qx) the tail of F(x), so subtraction isolates the first term. Our own explanation compares this sum with an ordinary integral over the same interval. An ordinary integral averages across each grid gap, while the Jackson sum uses its upper endpoint. The grid spacings sum to x, so boundedness of f gives absolute convergence. The first term equals (1 − q)xf(x).
+
+**Wikipedia:** [Jackson integral](https://en.wikipedia.org/wiki/Jackson_integral). It says: “then the Jackson integral converges to a function F(x) on \[0,A) which is a q-antiderivative of f(x).”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Sequence updates give unique solutions
 
@@ -99,6 +163,38 @@
 **How the definition helps.** The state definition turns decay for all initial data into decay of the powers of one matrix. In our own proof, put the matrix into Jordan form, which groups repeated eigenvalues into triangular blocks. Each nonzero eigenvalue contributes powers multiplied by polynomials in the time index. Blocks for zero vanish after finitely many steps. All blocks therefore decay when every root has modulus below one. An eigenvector for a root of modulus at least one gives a state that fails to decay.
 
 **Wikipedia:** [Linear recurrence with constant coefficients](https://en.wikipedia.org/wiki/Linear_recurrence_with_constant_coefficients). It says: “Linear recurrences with constant coefficients can also be solved using matrix methods.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Angle doubling solves logistic iteration
+
+**Remember:** Double the angle and take the square of its sine.
+
+*True by definition.* MSC 39A33 (Chaotic behavior of solutions of difference equations). arXiv math.DS. Level 2: later undergraduate.
+
+**Definition.** Represent the starting value x in \[0,1\] as sin² θ, with θ in \[0,π/2\]. Use the angle as the evolving variable instead of x.
+
+**Problem.** After n applications of x ↦ 4x(1 − x), the value is sin²(2ⁿθ).
+
+**How the definition helps.** Doubling an angle is easier to repeat than applying the quadratic update directly. Our own derivation uses sin²(2θ) = 4 sin²(θ)(1 − sin²(θ)). Choose the initial angle in \[0,π/2\], then double it freely at each step. Squaring its sine gives the required value even after the angle leaves the initial interval.
+
+**Wikipedia:** [Logistic map](https://en.wikipedia.org/wiki/Logistic_map). It says: “xₙ = sin²(2ⁿ θ π),”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Fixed-point coordinates make iterates geometric
+
+**Remember:** Send the two fixed points to zero and infinity.
+
+*True by definition.* MSC 39A45 (Difference equations in the complex domain). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** Let f(z) = (az + b)/(cz + d), with ad − bc ≠ 0, on the complex plane with infinity added. Suppose f fixes two distinct finite points α and β. Replace z by w = (z − α)/(z − β), taking w = ∞ at β.
+
+**Problem.** In the new coordinate, each step of the fractional linear recurrence multiplies by a constant. Its nth iterate therefore multiplies by the nth power of that constant.
+
+**How the definition helps.** The new coordinate changes the original fractional update into multiplication by a constant. The coordinate sends α to zero and β to infinity. In our own derivation, a fractional linear map fixing both zero and infinity has the form w ↦ kw. Iterating now raises k to a power.
+
+**Wikipedia:** [Möbius transformation](https://en.wikipedia.org/wiki/M%C3%B6bius_transformation). It says: “(f(z) − γ₁)/(f(z) − γ₂) = k (z − γ₁)/(z − γ₂).”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -205,6 +301,24 @@
 **Sources:**
 
 - [M. Fekete, Über die Verteilung der Wurzeln bei gewissen algebraischen Gleichungen mit ganzzahligen Koeffizienten (1923)](https://doi.org/10.1007/BF01504345)
+
+### Factorial weights simplify binomial convolution
+
+**Remember:** Divide coefficients by factorials to multiply binomial convolutions.
+
+*Makes the theorem clean to state or prove.* MSC 39A06 (Linear difference equations). arXiv math.CO. Level 3: graduate.
+
+**Definition.** For a sequence a, its exponential generating series has coefficient aₙ/n! at degree n. Its binomial convolution with b sums aₖbₙ₋ₖ times the binomial coefficient “n choose k” over 0 ≤ k ≤ n.
+
+**Problem.** Take two complex sequences that satisfy constant-coefficient linear recurrences from some index onward. Their binomial convolution also satisfies such a recurrence from some index onward.
+
+**How the definition helps.** Factorial weights turn binomial convolution into ordinary multiplication of series. Our own proof uses the characterization of sequences satisfying an eventual linear recurrence with constant coefficients. Their exponential generating series are exactly the finite sums of polynomials times exponentials. Partial fractions of the ordinary generating series give this characterization. Products preserve this class, so the convolution satisfies another such recurrence.
+
+**Paper or page:** [Binomial convolutions for rational power series](https://arxiv.org/abs/2304.10426v2). It says: “If {aₙ} and {bₙ} have rational generating functions then so does their binomial convolution.”
+
+**Sources:**
+
+- [Ira M. Gessel and Ishan Kar, Binomial convolutions for rational power series](https://arxiv.org/abs/2304.10426v2)
 
 ### Falling factorial series simplify index multiplication
 

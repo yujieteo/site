@@ -241,6 +241,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Form degrees preserve Hodge filtration
+
+**Remember:** Pullback cannot lower the degree of a holomorphic form.
+
+*True by definition.* MSC 58A14 (Hodge theory in global analysis), 32Q15. arXiv math.DG. Level 3: graduate.
+
+**Definition.** The holomorphic de Rham complex consists of local holomorphic differential forms linked by exterior differentiation. Its hypercohomology computes cohomology using both these derivatives and the gluing of local forms. Stage p of the Hodge filtration is the image in complex cohomology after discarding degrees below p. For a Kähler metric, the associated positive two-form is closed.
+
+**Problem.** Holomorphic pullback preserves every stage of the Hodge filtration.
+
+**How the definition helps.** Pullback preserves form degree and commutes with differentiation, so it maps each shortened complex to the corresponding shortened complex (our own). Passing to cohomology preserves the inclusion of their images (our own). On compact Kähler manifolds, Hodge theory identifies these images with the classes represented by harmonic forms having at least p holomorphic factors in every term.
+
+**nLab:** [holomorphic de Rham complex](https://ncatlab.org/nlab/show/holomorphic+de+Rham+complex). It says: “If X happens to be a Kähler manifold then the Frölicher spectral sequence shows that this coincides with the more traditional definition via harmonic differential forms”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Harmonic representatives minimize the norm
 
 **Remember:** A harmonic form is orthogonal to every exact correction.

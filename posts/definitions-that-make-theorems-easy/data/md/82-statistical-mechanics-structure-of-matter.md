@@ -16,6 +16,22 @@
 
 - [Jaynes, E. T. (1992). The Gibbs paradox. In Smith, Erickson and Neudorfer (eds.), Maximum Entropy and Bayesian Methods, Kluwer, 1–22.](https://bayes.wustl.edu/etj/articles/gibbs.paradox.pdf)
 
+### Relative entropy selects Boltzmann equilibrium
+
+**Remember:** Free energy above equilibrium is a scaled relative entropy.
+
+*True by definition.* MSC 82B05 (Classical equilibrium statistical mechanics (general)), 80A05. arXiv cond-mat.stat-mech. Level 2: later undergraduate.
+
+**Definition.** For probabilities q on finitely many energy states, define entropy by S(q) = −k Σ q ln q, taking zero terms as zero. Here k is Boltzmann’s constant. At temperature T, define free energy as mean energy minus TS(q). The Boltzmann distribution p assigns each state of energy E a weight proportional to exp(−E/(kT)).
+
+**Problem.** At positive temperature T, the Boltzmann distribution uniquely minimizes free energy over probability distributions on the given states.
+
+**How the definition helps.** Our own argument replaces constrained minimization with a comparison to p by relative entropy, the sum of q ln(q/p) over states. Substituting the Boltzmann weights gives the free energy of q minus that of p as kT times this sum. The relative entropy inequality makes the sum nonnegative, with equality exactly when q equals p.
+
+**nLab:** [Boltzmann distribution](https://ncatlab.org/nlab/show/Boltzmann+distribution). It says: “which maximizes the entropy subject to the constraint that the expectation value of the energy is fixed.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Boson mode sums require lower chemical potential
 
 **Remember:** Unlimited occupancy needs a weight ratio below one.
@@ -51,6 +67,24 @@
 **Sources:**
 
 - [\[, ', U, l, r, i, k,  , T, h, i, n, g, g, a, a, r, d,  , H, a, n, s, e, n, ', ,,  , ', J, i, a, n, p, i, n, g,  , J, i, a, n, g, ', ,,  , ', F, r, e, d, e, r, i, k,  , R, a, v, n,  , K, l, a, u, s, e, n, ', \], A General Coupling for Ising Models and Beyond](https://arxiv.org/abs/2506.10765v1)
+
+### Spin reversal pairs polynomial zeros
+
+**Remember:** Spin reversal exchanges the coefficients at opposite ends.
+
+*True by definition.* MSC 82B20 (Lattice systems (Ising, dimer, Potts, etc.) and systems on graphs arising in equilibrium statistical mechanics), 82B26. arXiv cond-mat.stat-mech, math-ph. Level 2: later undergraduate.
+
+**Definition.** Consider finitely many spins taking values +1 and −1. Write their common field as h in units where its weight is exp(h times the spin sum). Factor out the all-up field weight and set z = exp(−2h). The coefficient of degree k then sums the interaction weights of configurations with exactly k down spins.
+
+**Problem.** With spin-flip invariant interactions and a common field, the polynomial coefficients read the same in both directions. Thus its zeros occur in reciprocal pairs.
+
+**How the definition helps.** Counting down spins turns global reversal into an exchange of coefficients k and n − k for n spins (our own). This gives the reciprocal polynomial identity without locating any zeros (our own). For ferromagnetic pair interactions, which favor equal spins, the Lee–Yang theorem proves the stronger conclusion that every zero has modulus one (our own).
+
+**Wikipedia:** [Lee–Yang theorem](https://en.wikipedia.org/wiki/Lee%E2%80%93Yang_theorem). It says: “With this change of variable the Lee–Yang theorem says that all zeros ρ lie on the unit circle.”
+
+**Sources:**
+
+- [T. D. Lee and C. N. Yang, Statistical Theory of Equations of State and Phase Transitions. II. Lattice Gas and Ising Model (1952)](https://doi.org/10.1103/PhysRev.87.410)
 
 ### Transfer matrices close rings by trace
 
@@ -138,6 +172,24 @@
 
 - [Hastings, Monte Carlo sampling methods using Markov chains and their applications (1970)](https://doi.org/10.1093/biomet/57.1.97)
 
+### Canonical weights bar negative heat capacity
+
+**Remember:** In a heat bath, heat capacity is a scaled energy variance.
+
+*Rules out counterexamples.* MSC 82B05 (Classical equilibrium statistical mechanics (general)), 80A10. arXiv cond-mat.stat-mech. Level 3: graduate.
+
+**Definition.** Use the canonical distribution for a system in a heat bath. It assigns each state with energy E a weight proportional to exp(−E/(kT)), with k the Boltzmann constant. This fixes temperature T rather than the energy of each state.
+
+**Problem.** Assume finitely many states with temperature-independent energies and positive temperature T. The derivative of mean energy with respect to T equals the variance of energy divided by kT². This derivative, the heat capacity at fixed external parameters, is nonnegative.
+
+**How the definition helps.** Our own calculation uses the exponential weights to turn the temperature derivative into a variance, which cannot be negative. The quoted example concerns an isolated gravitating system. It can heat up as it loses energy, so its heat capacity can be negative. Deriving the canonical weights requires modeling contact with a heat bath.
+
+**Wikipedia:** [Heat capacity](https://en.wikipedia.org/wiki/Heat_capacity). It says: “If the system loses energy, for example, by radiating energy into space, the average kinetic energy actually increases.”
+
+**Sources:**
+
+- [D. Lynden-Bell and R. M. Lynden-Bell, On the negative specific heat paradox](https://doi.org/10.1093/mnras/181.3.405)
+
 ### Imaginary time implies thermal stationarity
 
 **Remember:** Matching the edges of a bounded time strip makes one-point averages constant.
@@ -157,6 +209,22 @@
 **Sources:**
 
 - [Rudolf Haag, N. M. Hugenholtz and M. Winnink, On the equilibrium states in quantum statistical mechanics (1967)](https://doi.org/10.1007/BF01646342)
+
+### Relative entropy measures free-energy gaps
+
+**Remember:** The thermal matrix logarithm turns relative entropy into free energy.
+
+*True by definition.* MSC 82B10 (Quantum equilibrium statistical mechanics (general)), 82B30. arXiv math-ph, cond-mat.stat-mech. Level 3: graduate.
+
+**Definition.** A density matrix is positive semidefinite with trace one. In units with Boltzmann’s constant one, its entropy is minus the sum of λ log λ over positive eigenvalues λ. Free energy is mean energy minus temperature times entropy. For a density matrix ρ and a strictly positive thermal density matrix φ, relative entropy is tr ρ(log ρ − log φ), omitting zero-weight terms.
+
+**Problem.** On a finite-dimensional space at positive temperature, the thermal state uniquely minimizes free energy. The free energy of any trial state equals the minimum plus temperature times its relative entropy with respect to the thermal state.
+
+**How the definition helps.** Substituting the thermal matrix logarithm into relative entropy gives the free-energy gap directly (our own). This replaces minimizing over matrices with Klein’s inequality, which makes relative entropy nonnegative and gives equality only for identical states (our own).
+
+**nLab:** [relative entropy](https://ncatlab.org/nlab/show/relative+entropy). It says: “S(ρ/φ) := tr ρ(log ρ − log φ)”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### The thermal strip forces stationarity
 
@@ -196,6 +264,24 @@
 
 - [R. Haag, N. M. Hugenholtz and M. Winnink, On the equilibrium states in quantum statistical mechanics (1967)](https://doi.org/10.1007/BF01646342)
 
+### Clique weights separate regions
+
+**Remember:** Fix the separating spins and the two sides have separate weights.
+
+*True by definition.* MSC 82B20 (Lattice systems (Ising, dimer, Potts, etc.) and systems on graphs arising in equilibrium statistical mechanics). arXiv math-ph, math.PR. Level 3: graduate.
+
+**Definition.** Give each vertex of a finite graph a spin with finitely many possible values. A clique is a set of pairwise adjacent vertices. Define the probability of a spin configuration as proportional to a product of positive clique weights. The alternative definition makes each spin conditionally independent of all non-neighbors given its neighbors.
+
+**Problem.** If deleting a set of vertices separates two groups, the groups are independent given the spins on that set.
+
+**How the definition helps.** Once the separating spins are fixed, no clique weight joins the two sides (our own). The weights and their normalizing sum split into two factors (our own). The Hammersley–Clifford theorem carries the work of deriving clique weights from the local conditional independence rule (our own).
+
+**Wikipedia:** [Hammersley–Clifford theorem](https://en.wikipedia.org/wiki/Hammersley%E2%80%93Clifford_theorem). It says: “If variables C and D are fixed, then the global Markov property requires that: A, B ⟂ E, F \| C, D”
+
+**Sources:**
+
+- [C. J. Preston, Generalized Gibbs states and Markov random fields (1973)](https://doi.org/10.2307/1426035)
+
 ### Cluster colors turn agreement into connectivity
 
 **Remember:** Same cluster means same color, and different clusters choose colors independently.
@@ -213,6 +299,43 @@
 **Sources:**
 
 - [Edwards and Sokal, Generalization of the Fortuin-Kasteleyn-Swendsen-Wang representation and Monte Carlo algorithm (1988)](https://doi.org/10.1103/PhysRevD.38.2009)
+
+### Dimer signs prevent cancellation
+
+**Remember:** Choose edge signs so that matching weights add instead of cancel.
+
+*Rules out counterexamples.* MSC 82B20 (Lattice systems (Ising, dimer, Potts, etc.) and systems on graphs arising in equilibrium statistical mechanics), 05C70. arXiv math-ph, cond-mat.stat-mech. Level 3: graduate.
+
+**Definition.** A dimer cover pairs every vertex with one neighbor. Color the vertices of a finite connected plane graph black and white so each edge joins opposite colors. Put signed nonnegative edge weights in a matrix with black vertices indexing rows and white vertices indexing columns. Around each bounded face of length 2k, require a positive sign product for odd k and a negative product for even k.
+
+**Problem.** Assume the graph is simple and has a dimer cover. The absolute determinant equals the sum over covers of the products of their edge weights.
+
+**How the definition helps.** The face rule makes the determinant terms of different covers have the same sign (our own). With unsigned unit weights on a square, the two terms instead cancel to zero (our own). The work is to construct the signs and extend the face rule to cycles along which two covers differ (our own).
+
+**Wikipedia:** [Pfaffian orientation](https://en.wikipedia.org/wiki/Pfaffian_orientation). It says: “the choice of a Pfaffian orientation ensures that these contributions all have the same sign”
+
+**Paper or page:** [Rank-N Dimer Models on Surfaces](https://arxiv.org/abs/2408.12066v1). It says: “Let the reference matching ℛ and Kasteleyn signs ε correspond to a spin structure η.”
+
+**Sources:**
+
+- [Sri Tata, Rank-N Dimer Models on Surfaces](https://arxiv.org/abs/2408.12066v1)
+- [P. W. Kasteleyn, The statistics of dimers on a lattice (1961)](https://doi.org/10.1016/0031-8914(61)90063-5)
+
+### Gibbs laws allow mixtures
+
+**Remember:** Resample either component and the mixture stays the same.
+
+*True by definition.* MSC 82B20 (Lattice systems (Ising, dimer, Potts, etc.) and systems on graphs arising in equilibrium statistical mechanics). arXiv cond-mat.stat-mech, math.PR. Level 3: graduate.
+
+**Definition.** For each finite region of an infinite lattice, specify how to redraw its spins given the exterior spins. Leave all exterior spins in place and require the rules for nested regions to agree. Define a Gibbs law as a probability law unchanged by every such update. This avoids normalizing the energy of the entire infinite lattice.
+
+**Problem.** The Gibbs laws for a fixed family of local resampling rules form a convex set.
+
+**How the definition helps.** Resampling a mixture averages the resampled component laws with the original mixture weights (our own). If both component laws are unchanged, their mixture is unchanged (our own). The work moves to constructing consistent rules and verifying that their fixed laws have the prescribed conditional probabilities (our own).
+
+**Wikipedia:** [Gibbs measure](https://en.wikipedia.org/wiki/Gibbs_measure). It says: “The set of Gibbs measures on a system is always convex”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Gibbs measures turn a phase transition into non-uniqueness
 
@@ -232,6 +355,78 @@
 
 - [Dobrushin, R. L. (1968). The description of a random field by means of conditional probabilities and conditions of its regularity. Theory of Probability and Its Applications 13, 197–224.](https://doi.org/10.1137/1113026)
 - [Lanford, O. E.; Ruelle, D. (1969). Observables at infinity and states with short range correlations in statistical mechanics. Communications in Mathematical Physics 13, 194–215.](https://doi.org/10.1007/BF01645487)
+
+### Independence kills connected correlations
+
+**Remember:** A log splits independent groups before the mixed derivative acts.
+
+*True by definition.* MSC 82B20 (Lattice systems (Ising, dimer, Potts, etc.) and systems on graphs arising in equilibrium statistical mechanics), 60E10. arXiv cond-mat.stat-mech, math-ph. Level 3: graduate.
+
+**Definition.** Give each bounded random variable its own parameter. Form the expected exponential of the sum of the variables times their parameters. Its logarithm defines the joint connected correlation by differentiating once in every parameter at zero. An equivalent formula sums signed products of moments over partitions of the variables.
+
+**Problem.** The connected correlation vanishes when the variables split into two nonempty independent groups. For independent lattice spins, products involving disjoint groups of sites give an example.
+
+**How the definition helps.** Independence splits the generating function into two factors, so its log has no term involving both groups (our own). The equivalence with the alternating moment formula follows by expanding the log (our own).
+
+**Paper or page:** [The Strong Gauss Lucas Theorem and Analyticity of Correlation Functions via the Lee-Yang Theorem](https://arxiv.org/abs/2111.00650v1). It says: “Then the Ursell function $u<sub>k+2</sub>(\\sigma \_p,\\sigma \_\\ell ,\\sigma <sup>A<sub>1</sub></sup>,\\dots ,\\sigma <sup>A<sub>k</sub></sup>)= 0$.”
+
+**Sources:**
+
+- [Barry Simon, The Strong Gauss Lucas Theorem and Analyticity of Correlation Functions via the Lee-Yang Theorem](https://arxiv.org/abs/2111.00650v1)
+
+### One-site ratios factor partition sums
+
+**Remember:** Every new site multiplies the old sum by one plus its ratio.
+
+*True by definition. Confidence: medium.* MSC 82B20 (Lattice systems (Ising, dimer, Potts, etc.) and systems on graphs arising in equilibrium statistical mechanics). arXiv math-ph, cond-mat.stat-mech. Level 3: graduate.
+
+**Definition.** In a finite lattice gas, a site is empty or occupied. The partition sum adds the weights of all configurations, and the empty system has weight one. Add sites in order, with the empty choice at a new site preserving each old configuration’s weight. The effective activity is the sum of weights with the new site occupied divided by the sum with it empty.
+
+**Problem.** If each successive denominator is nonzero, the partition sum is the product of one plus the effective activity at each step. In particular, bounds strictly below one on the moduli of those activities keep the sum from vanishing.
+
+**How the definition helps.** Splitting on the new site makes its effective activity plus one exactly the ratio of consecutive partition sums (our own). Multiplying these ratios cancels the intermediate sums (our own). Starting with the model’s original site weights requires controlling the effective activities on smaller sets to keep every denominator nonzero (our own).
+
+**Paper or page:** [A Multi-Body Dobrushin-Sokal Criterion -- Part I](https://arxiv.org/abs/2508.12078v1). It says: “Suppose that Z(Λ) ≠ 0”
+
+**Sources:**
+
+- [Jan Philipp Neumann, A Multi-Body Dobrushin-Sokal Criterion -- Part I](https://arxiv.org/abs/2508.12078v1)
+
+### Ordered spins bound boundary effects
+
+**Remember:** Ordered spins turn each disagreement into one difference of probabilities.
+
+*True by definition.* MSC 82B20 (Lattice systems (Ising, dimer, Potts, etc.) and systems on graphs arising in equilibrium statistical mechanics), 60K35. arXiv cond-mat.stat-mech, math.PR. Level 3: graduate.
+
+**Definition.** In a finite Ising model each spin is +1 or −1, and ferromagnetic interactions favor equal neighbors. Fix the boundary spins first to +1 and then to −1. An ordered coupling draws both configurations together with their prescribed laws and makes the first spin at least the second everywhere.
+
+**Problem.** The total variation distance between the two laws on a set of sites is at most the sum of the single-site distances. Total variation distance is the largest probability difference over events.
+
+**How the definition helps.** With ordered binary spins, disagreement at one site has probability equal to the difference between the two probabilities of +1 (our own). This equals the single-site total variation distance (our own). Any event on the region can differ only if some site disagrees (our own). Summing the site probabilities replaces a direct search over all regional events (our own). The existence of the ordered coupling uses the ordering theorem for ferromagnetic spins (our own).
+
+**Paper or page:** [Fast relaxation of the random field Ising dynamics](https://arxiv.org/abs/2311.06171v2). It says: “Consider two subsets of vertices Δ ⊂ Δ′ ⊆ V”
+
+**Sources:**
+
+- [Ahmed El Alaoui, Ronen Eldan, Reza Gheissari, Arianna Piana, Fast relaxation of the random field Ising dynamics](https://arxiv.org/abs/2311.06171v2)
+
+### Positivity excludes hidden forbidden states
+
+**Remember:** Positive probabilities let the factorization proof take logarithms everywhere.
+
+*Rules out counterexamples.* MSC 82B20 (Lattice systems (Ising, dimer, Potts, etc.) and systems on graphs arising in equilibrium statistical mechanics), 60G60. arXiv math-ph, math.PR. Level 3: graduate.
+
+**Definition.** Take a finite graph with finitely many spin values at each vertex. In a Markov random field each spin is independent of all non-neighbors given its neighbors. Positivity requires every configuration to have positive probability. A clique is a group of pairwise adjacent vertices.
+
+**Problem.** A positive finite-state Markov random field has a product of weights on cliques. Without positivity, the local conditional independence rule does not imply that product form.
+
+**How the definition helps.** Positivity rules out hidden forbidden configurations that every individual clique permits (our own). Give equal probabilities to 0011, 0100, 0101, and 1000 around a square (our own). Given the other two spins on any event of positive probability, at least one spin in each opposite pair is fixed (our own). Every edge permits 00, yet the law forbids 0000, so no product of nonnegative edge weights works (our own). For positive laws the Hammersley–Clifford proof can expand the log probabilities into clique contributions (our own).
+
+**Wikipedia:** [Gibbs measure](https://en.wikipedia.org/wiki/Gibbs_measure). It says: “any positive probability distribution (nonzero density everywhere) having the Markov property can be represented as a Gibbs measure for an appropriate energy function.”
+
+**Sources:**
+
+- [C. J. Preston, Generalized Gibbs states and Markov random fields (1973)](https://doi.org/10.2307/1426035)
 
 ### Local stability keeps partition sums finite
 
@@ -325,6 +520,24 @@
 
 - [\[, ', U, l, r, i, k,  , T, h, i, n, g, g, a, a, r, d,  , H, a, n, s, e, n, ', ,,  , ', J, i, a, n, p, i, n, g,  , J, i, a, n, g, ', ,,  , ', F, r, e, d, e, r, i, k,  , R, a, v, n,  , K, l, a, u, s, e, n, ', \], A General Coupling for Ising Models and Beyond](https://arxiv.org/abs/2506.10765v1)
 
+### Disjoint witnesses bound joint probabilities
+
+**Remember:** Separate witnesses stop one open edge from doing double duty.
+
+*Rules out counterexamples.* MSC 82B43 (Percolation), 60K35. arXiv math.PR, cond-mat.stat-mech. Level 3: graduate.
+
+**Definition.** Open each edge of a finite graph independently. An event is increasing if opening more edges always preserves it. Two increasing events occur disjointly when each has a separate set of open edges sufficient to guarantee it. Ordinary intersection allows the same edge to count for both.
+
+**Problem.** On a finite graph, the probability of disjoint occurrence is at most the product of the individual probabilities.
+
+**How the definition helps.** Separate witnesses exclude the shared evidence that can make an intersection too likely (our own). Let both events require the same edge to open, with probability p strictly between zero and one (our own). Their intersection has probability p, greater than p², while disjoint occurrence is impossible (our own). The van den Berg–Kesten theorem proves the bound even after taking the union over all possible witnesses (our own).
+
+**Wikipedia:** [Van den Berg–Kesten inequality](https://en.wikipedia.org/wiki/Van_den_Berg%E2%80%93Kesten_inequality). It says: “whose memberships in A and in B can be verified on disjoint subsets of indices.”
+
+**Sources:**
+
+- [J. van den Berg and H. Kesten, Inequalities with applications to percolation and reliability (1985)](https://doi.org/10.2307/3213860)
+
 ### Exponential work recovers free energy
 
 **Remember:** The work factor replaces the initial Boltzmann weight with the final one.
@@ -343,6 +556,41 @@
 
 - [Jarzynski, Nonequilibrium Equality for Free Energy Differences (1997)](https://doi.org/10.1103/PhysRevLett.78.2690)
 
+### Pairwise balance excludes steady currents
+
+**Remember:** A steady state can still circulate unless each pair balances.
+
+*Rules out counterexamples.* MSC 82C05 (Classical dynamic and nonequilibrium statistical mechanics (general)). arXiv cond-mat.stat-mech. Level 3: graduate.
+
+**Definition.** Call a stationary state balanced in detail if each pair of states exchanges probability at equal rates in both directions. Stationarity alone only balances the total inflow and outflow at each state.
+
+**Problem.** In a finite continuous-time Markov chain, assume positive stationary probabilities and positive rates in both directions on every allowed edge. Then entropy production vanishes exactly at detailed balance.
+
+**How the definition helps.** In our own finite-chain proof, detailed balance makes every contribution to entropy production vanish separately. If a and b are the two probability flows on one edge, its contribution is (a − b)ln(a/b). This is nonnegative and vanishes exactly when a equals b. Our own example uses a three-state ring whose clockwise rates are twice its counterclockwise rates. Its uniform stationary state carries a current. The cited theorem proves a related equivalence for processes that combine jumps and continuous motion.
+
+**Paper or page:** [Entropy production rate and time-reversibility for general jump diffusions on ℝⁿ](https://arxiv.org/abs/2506.13135v2). It says: “The entropy production rate vanishes at the stationary measure”
+
+**Sources:**
+
+- [Qi Zhang, Yubin Lu, Entropy production rate and time-reversibility for general jump diffusions on ℝⁿ](https://arxiv.org/abs/2506.13135v2)
+- [J. Schnakenberg, Network theory of microscopic and macroscopic behavior of master equation systems](https://doi.org/10.1103/revmodphys.48.571)
+
+### Heat-bath updates are projections
+
+**Remember:** Once averaged over a spin, a second average changes nothing.
+
+*True by definition. Confidence: medium.* MSC 82C20 (Dynamic lattice systems (kinetic Ising, etc.) and systems on graphs in time-dependent statistical mechanics), 82M31. arXiv cond-mat.stat-mech, math.PR. Level 3: graduate.
+
+**Definition.** Choose one site in a finite spin system at equilibrium. A heat-bath step redraws that spin conditional on all the others. Its operator takes a function to its expected value after the update. This describes the step without listing its full transition matrix.
+
+**Problem.** On square-integrable functions of the whole configuration, this operator projects orthogonally onto the functions of the other spins.
+
+**How the definition helps.** The conditional average already depends only on the other spins, so averaging twice gives the same result (our own). The residual has conditional mean zero and hence zero inner product with every function of those spins (our own). This conditional expectation identity supplies the orthogonality (our own).
+
+**Wikipedia:** [Gibbs sampling](https://en.wikipedia.org/wiki/Gibbs_sampling). It says: “The Gibbs sampling algorithm generates an instance from the distribution of each variable in turn, conditional on the current values of the other variables.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Insertion energies make particle births reversible
 
 **Remember:** The weight for adding a particle pays for its reverse removal.
@@ -360,6 +608,60 @@
 **Sources:**
 
 - [\[, ', S, a, m, u, e, l,  , B, a, g, u, l, e, y, ', ,,  , ', A, n, d, r, e, a, s,  , G, ö, b, e, l, ', ,,  , ', M, a, r, c, u, s,  , P, a, p, p, i, k, ', \], Uniqueness of locally stable Gibbs point processes via spatial birth-death dynamics](https://arxiv.org/abs/2407.01321v1)
+
+### Sorting solves hard-rod motion
+
+**Remember:** Let the points pass through, then sort to recover the rods.
+
+*True by definition.* MSC 82C23 (Exactly solvable dynamic models in time-dependent statistical mechanics), 82C21. arXiv math-ph. Level 3: graduate.
+
+**Definition.** Take finitely many rods of equal mass and length on an infinite line, with elastic collisions. Number them from left to right, starting at zero. Subtract each rod’s number times its length from its center, then move each resulting point at its initial velocity. Sort these positions at each time and restore the offsets.
+
+**Problem.** For almost every allowed initial state, this formula gives the rod positions between collisions. Continuity gives their positions at collisions.
+
+**How the definition helps.** At a crossing, sorting swaps the two velocities, just as a collision of equal masses does (our own). The proof of equivalence uses the elastic collision law and excludes multiple collisions for generic data (our own).
+
+**Paper or page:** [Weyl Group Representation of Billiard Trajectories for One-dimensional Hard Sphere Dynamics](https://arxiv.org/abs/2311.00446v1). It says: “the unique momentum- and energy-conserving billiard trajectory”
+
+**Sources:**
+
+- [Mark Wilkinson, Weyl Group Representation of Billiard Trajectories for One-dimensional Hard Sphere Dynamics](https://arxiv.org/abs/2311.00446v1)
+
+### Symmetric jump weights ensure reversibility
+
+**Remember:** Split the energy difference evenly between the forward and reverse rates.
+
+*True by definition.* MSC 82C31 (Stochastic methods (Fokker-Planck, Langevin, etc.) applied to problems in time-dependent statistical mechanics), 82C35. arXiv math-ph, cond-mat.stat-mech. Level 3: graduate.
+
+**Definition.** Fix an energy E for each state and an inverse temperature β. For each pair of distinct states choose a finite nonnegative base rate that is the same in both directions. Multiply it by exp(−β ΔE/2), where ΔE is the destination energy minus the starting energy.
+
+**Problem.** On a finite state space, start the resulting jump process with probabilities proportional to exp(−βE). Its law then stays the same when time runs backward.
+
+**How the definition helps.** Multiplying a rate by its starting probability leaves a symmetric factor depending on the average of the two energies (our own). Thus every equilibrium jump has the same probability flow as its reverse (our own). The detailed balance theorem converts this paired equality into reversibility, replacing a direct comparison of path laws (our own).
+
+**Paper or page:** [Entropy production rate and time-reversibility for general jump diffusions on ℝⁿ](https://arxiv.org/abs/2506.13135v2). It says: “where s(x,y) = s(y,x) is a nonnegative measurable symmetric function”
+
+**Sources:**
+
+- [Qi Zhang, Yubin Lu, Entropy production rate and time-reversibility for general jump diffusions on ℝⁿ](https://arxiv.org/abs/2506.13135v2)
+
+### Path ratios give fluctuation identities
+
+**Remember:** The inverse path ratio changes forward weights into reverse weights.
+
+*True by definition.* MSC 82C35 (Irreversible thermodynamics, including Onsager-Machlup theory). arXiv cond-mat.stat-mech, math-ph. Level 3: graduate.
+
+**Definition.** Take two experiments with the same possible paths. Let P be the forward path probabilities and Q the reverse experiment’s probabilities after reversing each path. Define entropy production on a path as S = log(P/Q).
+
+**Problem.** The forward expectation of exp(−S) is one. The forward weight of paths with S = s is exp(s) times their weight under Q.
+
+**How the definition helps.** Exponentiating −S gives Q/P, so averaging under P simply sums Q (our own). On paths with S = s, multiplying Q by exp(s) recovers P (our own). Starting from heat and work, one must prove that the physical entropy production equals this log ratio (our own).
+
+**Wikipedia:** [Crooks fluctuation theorem](https://en.wikipedia.org/wiki/Crooks_fluctuation_theorem). It says: “The most general statement of the CFT relates the probability of a space-time trajectory x(t) to the time-reversal of the trajectory x̃(t).”
+
+**Sources:**
+
+- [Gavin E. Crooks, Entropy production fluctuation theorem and the nonequilibrium work relation for free energy differences (1999)](https://doi.org/10.1103/PhysRevE.60.2721)
 
 ### Independent collisions exclude Loschmidt’s reversal
 
@@ -397,6 +699,42 @@
 
 - [\[, ', N, i, k, o, s,  , Z, y, g, o, u, r, a, s, ', \], Directed polymers in a random environment: a review of the phase transitions](https://arxiv.org/abs/2401.01757v4)
 
+### Gaussian thermal correlations use pairs
+
+**Remember:** Once the thermal state is Gaussian, only pairs need calculations.
+
+*True by definition.* MSC 82B10 (Quantum equilibrium statistical mechanics (general)). arXiv math-ph, cond-mat.stat-mech. Level 4: research.
+
+**Definition.** Consider fermions, particles whose wave functions change sign when two particles are exchanged. The basic field operators add or remove a particle, or form linear combinations of those operations. In an even quasi-free state, odd field moments vanish and even moments sum over pairings. Each pairing contributes its two-point moments multiplied together, with a minus sign for each pair of crossing arcs.
+
+**Problem.** For a free fermion thermal state of the cited model with finite normalizing trace, the four-field moment has three terms. Pairings (12)(34), (13)(24), and (14)(23) have signs +, −, and +, respectively.
+
+**How the definition helps.** The quasi-free definition gives the three pairings in their original operator order without computing a new thermal trace (our own). The cited result supplies the harder step by proving that the thermal state is quasi-free.
+
+**Paper or page:** [On the semiclassical regularity of thermal equilibria](https://arxiv.org/abs/2208.07911v1). It says: “is quasi-free and its one-particle reduced density matrix operator is given”
+
+**Sources:**
+
+- [Jacky J. Chong, Laurent Lafleche, Chiara Saffirio, On the semiclassical regularity of thermal equilibria](https://arxiv.org/abs/2208.07911v1)
+
+### A shared field separates spins
+
+**Remember:** One shared field carries all the mean-field dependence.
+
+*Makes the theorem clean to state or prove.* MSC 82B20 (Lattice systems (Ising, dimer, Potts, etc.) and systems on graphs arising in equilibrium statistical mechanics), 82B26. arXiv cond-mat.stat-mech, math.PR. Level 4: research.
+
+**Definition.** In the ferromagnetic Curie–Weiss model, every pair of spins has the same positive interaction strength. Write the exponential of the squared spin sum as an integral over one Gaussian variable. Keep that variable as an extra field shared by all spins. Conditional on it, the exponent is a sum of terms linear in individual spins.
+
+**Problem.** Given the extra field and fixed site fields, all spins are independent. At fixed positive inverse temperature, concentration of the extra field at one value gives the corresponding product limit for any fixed set of spins.
+
+**How the definition helps.** Fixing the extra field makes the exponential weight a product of one-spin factors (our own). Integrating the Gaussian variable recovers the interacting law exactly (our own). Each one-spin probability varies continuously with the field, so concentration gives the product limit (our own). The hard step in the cited model is proving that concentration for almost every realization of the site fields (our own).
+
+**Paper or page:** [Propagation of chaos in the Random field Curie-Weiss model](https://arxiv.org/abs/2312.01866v1). It says: “Assume that the function G(y) has a unique, non-degenerate global maximum in some point y₀.”
+
+**Sources:**
+
+- [Matthias Löwe, Zakhar Kabluchko, Propagation of chaos in the Random field Curie-Weiss model](https://arxiv.org/abs/2312.01866v1)
+
 ### Continuity excludes a decimated Ising law
 
 **Remember:** Distant spins must lose their influence when nearby spins are fixed.
@@ -414,6 +752,42 @@
 **Sources:**
 
 - [\[, ", M, a, t, t, e, o,  , D, ', A, c, h, i, l, l, e, ", ,,  , ', A, e, r, n, o, u, t,  , C, .,  , D, .,  , v, a, n,  , E, n, t, e, r, ', ,,  , ', A, r, n, a, u, d,  , L, e,  , N, y, ', \], Decimations for Two-dimensional Ising and Rotator Models I](https://arxiv.org/abs/2105.07950v1)
+
+### Normalization excludes uniform heights
+
+**Remember:** A valid branch recursion still needs a finite single-site normalization.
+
+*Rules out counterexamples.* MSC 82B20 (Lattice systems (Ising, dimer, Potts, etc.) and systems on graphs arising in equilibrium statistical mechanics). arXiv math-ph, math.PR. Level 4: research.
+
+**Definition.** Give each vertex of a regular tree an integer height. A boundary law assigns branch weights that agree with the weights obtained by summing over each child height. Call the law normalizable if the resulting weights at each vertex sum to a finite number.
+
+**Problem.** Suppose the edge weight is a positive summable function of the difference between the two heights. A constant positive boundary law solves the branch recursion up to scale but gives no probability distribution for the height at a vertex.
+
+**How the definition helps.** The interaction and the constant message give the same positive weight to every integer height (our own). Those weights cannot be normalized, even though the constant message solves the recursion on a regular tree (our own). The boundary-law theorem carries the existence proof once the finite-sum condition holds (our own).
+
+**Paper or page:** [Gradient Gibbs measures with periodic boundary laws of a generalized SOS model on a Cayley tree](https://arxiv.org/abs/2309.00867v1). It says: “defines a unique tree-indexed Markov chain μ ∈ 𝒢(γ)”
+
+**Sources:**
+
+- [F. H. Haydarov, R. A. Ilyasova, Gradient Gibbs measures with periodic boundary laws of a generalized SOS model on a Cayley tree](https://arxiv.org/abs/2309.00867v1)
+
+### Path recoloring switches current sources
+
+**Remember:** Switch the colors along a path to move its odd endpoints.
+
+*Makes the theorem clean to state or prove.* MSC 82B20 (Lattice systems (Ising, dimer, Potts, etc.) and systems on graphs arising in equilibrium statistical mechanics). arXiv cond-mat.stat-mech, math.PR. Level 4: research.
+
+**Definition.** A current assigns a nonnegative integer to each edge of a finite graph. Draw that many distinct copies of each edge. The sources of a color are vertices incident to an odd number of copies of that color. Write A △ B for the vertices belonging to exactly one of A and B.
+
+**Problem.** Fix the copies and distinct vertices x and y joined by a path of copies. Equally many red-blue colorings have source sets (A, {x,y}) as have source sets (A △ {x,y}, ∅).
+
+**How the definition helps.** Swapping colors along one fixed simple path changes both colors’ parities exactly at its ends (our own). Repeating the swap restores every color, so it pairs the two sets of colorings (our own). Applying this count to spins requires expanding the Ising interaction weights and accounting for the different colorings of distinct copies (our own).
+
+**Paper or page:** [A geometric perspective on the scaling limits of critical Ising and φ⁴ models in dimension d](https://arxiv.org/abs/2112.04248v3). It says: “for which there exists a sub-current $\\mathbf{n} ' \\leq \\mathbf m $ supported on $\\mathcal{E} \_2$ with $\\partial \\mathbf{n} '=B$”
+
+**Sources:**
+
+- [Michael Aizenman, A geometric perspective on the scaling limits of critical Ising and φ⁴ models in dimension d](https://arxiv.org/abs/2112.04248v3)
 
 ### The one-line projection of the Ising model has continuous one-sided predictions
 
@@ -433,6 +807,96 @@
 
 - [Aernout van Enter, Senya Shlosman, The Schonmann projection as a g-measure-, how Gibbsian is it?, arXiv:2102.10622v2 (2022)](https://arxiv.org/abs/2102.10622v2)
 
+### Tree messages give Gibbs transitions
+
+**Remember:** Sum out a branch once, then use its weight at each edge.
+
+*Makes the theorem clean to state or prove.* MSC 82B20 (Lattice systems (Ising, dimer, Potts, etc.) and systems on graphs arising in equilibrium statistical mechanics), 60K35. arXiv math-ph, math.PR. Level 4: research.
+
+**Definition.** Consider a regular tree with d children per nonroot vertex, finitely many spins, and positive symmetric edge weights Q(i,j). A homogeneous boundary law gives each spin j a positive branch weight u(j). Write b(i) = Σⱼ Q(i,j)u(j). Require u(i) to be proportional to the dth power of b(i), with the same constant for every spin.
+
+**Problem.** The corresponding equilibrium law has independent child branches given the parent spin i. The probability of child spin j equals Q(i,j)u(j)/b(i).
+
+**How the definition helps.** The branch weight includes the whole subtree, so dividing the weighted edge by its row sum gives a transition probability (our own). The recursion ensures that the resulting tree law gives the prescribed conditional probabilities in each finite region (our own).
+
+**Paper or page:** [Infinite-volume states with irreducible localization sets for gradient models on trees](https://arxiv.org/abs/2302.05398v1). It says: “Pμ(i,j) = u(j) Q(i−j)/(Q ∗ u)(i)”
+
+**Sources:**
+
+- [Alberto Abbondandolo, Florian Henning, Christof Kuelske, Pietro Majer, Infinite-volume states with irreducible localization sets for gradient models on trees](https://arxiv.org/abs/2302.05398v1)
+
+### Local swaps commute rows
+
+**Remember:** Slide the crossing through one column at a time.
+
+*True by definition. Confidence: medium.* MSC 82B23 (Exactly solvable models; Bethe ansatz). arXiv math-ph, cond-mat.stat-mech. Level 4: research.
+
+**Definition.** In the six-vertex model, each vertex has four arrows, two pointing in and two out. Each allowed arrangement has a weight. A periodic row defines a matrix by summing products of weights over the internal arrows, including the arrow joining its ends. Choose two rows whose weights satisfy the Yang–Baxter equation with an invertible crossing operator.
+
+**Problem.** Periodic six-vertex row transfer matrices commute if an invertible crossing operator satisfies the local swapping relation with the row weights.
+
+**How the definition helps.** The equation lets the crossing operator pass one column while exchanging the order of its two row weights (our own). Repeat across the row (our own). Summing the internal indices around both closed rows takes a trace and removes the crossing and its inverse (our own). This replaces direct multiplication of large matrices with the task of finding weights that satisfy one local identity (our own).
+
+**Paper or page:** [Switch Operators for the Six-Vertex Model](https://arxiv.org/abs/2302.08089v3). It says: “Consider a six-vertex model and attach a cross vertex. Then the following relationship between partition functions holds.”
+
+**Sources:**
+
+- [Evelyn Choi, Jadon Geathers, Slava Naprienko, Switch Operators for the Six-Vertex Model](https://arxiv.org/abs/2302.08089v3)
+
+### Path reversal gives fluctuation symmetry
+
+**Remember:** Reversing a path negates its log probability ratio.
+
+*True by definition.* MSC 82C05 (Classical dynamic and nonequilibrium statistical mechanics (general)). arXiv cond-mat.stat-mech. Level 4: research.
+
+**Definition.** For a sampled trajectory, divide its probability density by the density of its time reversal under the same law. Define entropy production as the natural log of that ratio, in units with Boltzmann’s constant equal to one. This replaces an expression in forward transition and endpoint terms with one ratio.
+
+**Problem.** For the paper’s centered, stable Gaussian Markov chains, the entropy produced per step has a rate function I. It describes exponential decay of probabilities as the path length grows and satisfies I(−w) = I(w) + w.
+
+**How the definition helps.** In our own derivation, swapping each path with its reverse negates the log ratio and gives a finite-time symmetry. Our own rate-function argument passes that symmetry to the exponential rates once they exist. The proof of existence for these Gaussian chains is the harder step.
+
+**Paper or page:** [Large deviations for quadratic functionals of stable Gauss-Markov chains and entropy production](https://arxiv.org/abs/2204.08059v1). It says: “and I(−w) = I(w) + w for all w ∈ ℝ.”
+
+**Sources:**
+
+- [Marco Zamparo, Massimiliano Semeraro, Large deviations for quadratic functionals of stable Gauss-Markov chains and entropy production](https://arxiv.org/abs/2204.08059v1)
+
+### Path support restores fluctuation equality
+
+**Remember:** Every event impossible in the forward experiment must also be impossible under reversed paths.
+
+*Rules out counterexamples.* MSC 82C05 (Classical dynamic and nonequilibrium statistical mechanics (general)). arXiv cond-mat.stat-mech. Level 4: research.
+
+**Definition.** View paths from the reverse experiment in forward time order by reversing each recorded trajectory. Require its law R to give zero probability to every set of forward probability zero. Using densities p and r against the same measure, define σ = ln(p/r) on sampled forward paths. Set σ = +∞ where p is positive and r is zero.
+
+**Problem.** Under this condition the forward mean of exp(−σ) equals one. In general it equals one minus the reverse probability of the set where p vanishes.
+
+**How the definition helps.** Our own calculation cancels p in the forward mean, leaving the integral of r over the set where p is positive. The stated condition makes this integral one. Our own example starts with gas confined to half a box and lets it expand freely. Reversing a compression path can give an initial position in the initially empty half, which the forward preparation excludes. Identifying the density ratio with physical entropy production requires a model of the dynamics.
+
+**Wikipedia:** [Fluctuation theorem](https://en.wikipedia.org/wiki/Fluctuation_theorem). It says: “This condition is known as the condition of ergodic consistency.”
+
+**Sources:**
+
+- [Yûto Murashita, Ken Funo, and Masahito Ueda, Nonequilibrium equalities in absolutely irreversible processes](https://doi.org/10.1103/physreve.90.042110)
+
+### Subtracting steady heat makes excess finite
+
+**Remember:** Subtract the running cost before adding up the transient cost.
+
+*Rules out counterexamples.* MSC 82C05 (Classical dynamic and nonequilibrium statistical mechanics (general)). arXiv cond-mat.stat-mech. Level 4: research.
+
+**Definition.** For a driven Markov chain on a finite ring, subtract the steady mean heat flow from the heat flow at each state. Define excess heat as the time integral of the expected difference from an initial state. Without the subtraction the integral would include the heat needed to sustain steady operation.
+
+**Problem.** Suppose the continuous-time chain can reach every state from every other state. For centered heat flow f, the integrated excess V has steady mean zero and uniquely solves LV = −f. The generator L gives the initial rate of change of an expected observable.
+
+**How the definition helps.** Our own explanation subtracts the constant heat flow that survives indefinitely. The remaining expected flow decays exponentially on a finite irreducible ring, so its integral converges. Integrating its time derivative gives LV = −f. Our own counterexample uses a uniformly driven ring with nonzero steady heat flow, whose uncentered integral diverges.
+
+**Paper or page:** [Drazin-Inverse and heat capacity for driven random walks on the ring](https://arxiv.org/abs/2204.04974v4). It says: “for a function f having ⟨f⟩ˢ = 0, then V₍f₎ = −Lᴰ⁻¹f.”
+
+**Sources:**
+
+- [Faezeh Khodabandehlou, Irene Maes, Drazin-Inverse and heat capacity for driven random walks on the ring](https://arxiv.org/abs/2204.04974v4)
+
 ### Transport distance bounds lost work
 
 **Remember:** Moving a distribution farther in less time raises the lower bound on work.
@@ -450,3 +914,21 @@
 **Sources:**
 
 - [Amirhossein Taghvaei, Olga Movilla Miangolarra, Rui Fu, Yongxin Chen and Tryphon T. Georgiou, On the relation between information and power in stochastic thermodynamic engines](https://arxiv.org/abs/2103.03986v1)
+
+### Matched moments conserve energy
+
+**Remember:** Match the moments that collisions must leave unchanged.
+
+*True by definition.* MSC 82C40 (Kinetic theory of gases in time-dependent statistical mechanics), 35Q20. arXiv math-ph. Level 4: research.
+
+**Definition.** Model collisions by moving each species toward a target distribution at a specified rate. A moment is an integral of a distribution against a chosen function of momentum. Choose targets so that the rate-weighted change in each particle count vanishes. Require the same cancellation for total energy and total momentum across species.
+
+**Problem.** Assume each species has a nonzero, nonnegative integrable distribution with finite particle, energy, and momentum moments. The collision term preserves each species’ particle number and the mixture’s total energy and momentum.
+
+**How the definition helps.** Matching these moments makes the gain and loss terms cancel without tracking individual collisions (our own). The existence proof must still find targets with a common temperature and bulk velocity (our own).
+
+**Paper or page:** [Relativistic BGK model for gas mixtures](https://arxiv.org/abs/2306.05349v1). It says: “Thus, the partial particle four-flow and the energy-momentum tensor of gas mixtures are conserved”
+
+**Sources:**
+
+- [Byung-Hoon Hwang, Myeong-Su Lee, Seok-Bae Yun, Relativistic BGK model for gas mixtures](https://arxiv.org/abs/2306.05349v1)

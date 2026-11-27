@@ -14,6 +14,124 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Gramians detect unobservable states
+
+**Remember:** Zero output energy means the state left no trace.
+
+*True by definition.* MSC 93B07 (Observability), 93C05. arXiv math.OC, eess.SY. Level 2: later undergraduate.
+
+**Definition.** Let O send an initial state to its continuous output on a fixed interval of positive length, with zero input. The observability Gramian is W = O\*O, where O\* is the adjoint for the integrated output inner product. Thus xᵀWx is the integral of the squared output norm.
+
+**Problem.** For a real finite-dimensional linear system, the observed output determines the initial state exactly when W is nonsingular.
+
+**How the definition helps.** The squared output norm gives the Gramian and the observation map the same kernel (our own). Continuity makes zero integrated energy equivalent to zero output throughout the interval (our own). This replaces comparing entire output curves with checking a matrix (our own). Computing the observation map still requires solving the state equations (our own).
+
+**Paper or page:** [Controllability and observability of tempered fractional differential systems](https://arxiv.org/abs/2412.05349v1). It says: “if, and only if, the observability Gramian matrix”
+
+**Sources:**
+
+- [Controllability and observability of tempered fractional differential systems](https://arxiv.org/abs/2412.05349v1)
+
+### Error coordinates separate stability tests
+
+**Remember:** Track the error and the two designs separate.
+
+*True by definition.* MSC 93B52 (Feedback control), 93B53. arXiv eess.SY, cs.SY. Level 2: later undergraduate.
+
+**Definition.** An observer estimates the state from the measured output and the known input. Write the combined equations using the true state and its estimation error in place of the true and estimated states.
+
+**Problem.** Consider x′ = Ax + Bu with output Cx. Use feedback u = −Kx̂ and an observer that corrects its model prediction by L(Cx − Cx̂). The combined eigenvalues are those of A − BK and A − LC, counted with multiplicity.
+
+**How the definition helps.** Subtracting the observer equation from the state equation isolates the error e = x − x̂ (our own). Its equation is e′ = (A − LC)e. The combined matrix is triangular in blocks, so its eigenvalues come from the diagonal blocks. Finding gains K and L that stabilize those blocks remains a separate design problem (our own).
+
+**nLab:** [controllability and observability](https://ncatlab.org/nlab/show/controllability+and+observability). It says: “the design of a feedback controller and of a state observer are mutually independent.”
+
+**Wikipedia:** [Separation principle](https://en.wikipedia.org/wiki/Separation_principle). It says: “the eigenvalues are just those of A − BK together with those of A − LC.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Strict properness prevents algebraic loops
+
+**Remember:** One missing direct term breaks the instantaneous loop.
+
+*Rules out counterexamples.* MSC 93B52 (Feedback control), 93C05. arXiv eess.SY, cs.SY. Level 2: later undergraduate.
+
+**Definition.** A transfer function describes how a linear system converts input to output with zero initial state. A rational transfer function is proper when its numerator degree does not exceed its denominator degree. Strict properness requires a smaller numerator degree, or an identically zero transfer function. Its output then has no direct dependence on the current input.
+
+**Problem.** Connect two proper finite-dimensional scalar linear time-invariant systems in feedback. If either transfer function is strictly proper, the current states and external inputs uniquely determine both current inputs.
+
+**How the definition helps.** The strictly proper system supplies its output from its state, which lets us evaluate the other system next (our own). With direct dependence on both sides, the equations can fail (our own). Negative feedback around a static gain of −1 gives y = −(r − y), impossible for a nonzero reference r (our own). The direct gain equals the high-frequency limit of the transfer function (our own).
+
+**Wikipedia:** [Proper transfer function](https://en.wikipedia.org/wiki/Proper_transfer_function). It says: “A strictly proper transfer function will approach zero as the frequency approaches infinity”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### The bilinear transform preserves stability
+
+**Remember:** The left half-plane goes inside the unit circle.
+
+*Rules out counterexamples.* MSC 93C57 (Sampled-data control/observation systems), 93C80. arXiv eess.SY, cs.SY. Level 2: later undergraduate.
+
+**Definition.** For step size h &gt; 0, the bilinear transform replaces a continuous-time rate s by the discrete multiplier z = (1 + hs/2)/(1 − hs/2). Forward Euler uses z = 1 + hs instead.
+
+**Problem.** If every eigenvalue of a state matrix has negative real part, every transformed eigenvalue has magnitude below one for every positive step size.
+
+**How the definition helps.** A negative real part makes \|1 + hs/2\| smaller than \|1 − hs/2\|, so their ratio has magnitude below one (our own). The matrix result uses the fact that a rational function maps each eigenvalue to its value there (our own). Forward Euler instead sends the stable rate −3 to the unstable multiplier −2 at step size 1 (our own).
+
+**Wikipedia:** [Bilinear transform](https://en.wikipedia.org/wiki/Bilinear_transform). It says: “The bilinear transform maps the left half of the complex s-plane to the interior of the unit circle in the z-plane.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Minimum-phase systems compose reversibly
+
+**Remember:** Undo the last system first.
+
+*Rules out counterexamples.* MSC 93C80 (Frequency-response methods in control theory), 93D25. arXiv eess.SY, cs.SY. Level 2: later undergraduate.
+
+**Definition.** A discrete-time linear time-invariant system is minimum-phase if both it and its inverse are causal and stable. Causal systems use only current and past inputs. Stability here means every bounded input gives a bounded output.
+
+**Problem.** A series connection of discrete-time minimum-phase systems is minimum-phase. Its inverse is the series of their inverses in reverse order.
+
+**How the definition helps.** Each inverse already preserves causality and boundedness, so applying them in reverse order gives a causal, stable inverse (our own). The stable transfer function (z − 2)/(z − ½) has a zero at 2 (our own). Its causal inverse has a pole outside the unit circle, so bounded inputs can produce unbounded outputs (our own).
+
+**Wikipedia:** [Minimum phase](https://en.wikipedia.org/wiki/Minimum_phase). It says: “a linear, time-invariant system is said to be minimum-phase if the system and its inverse are causal and stable.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Independent readings add information
+
+**Remember:** Multiply Gaussian likelihoods by adding their information.
+
+*True by definition.* MSC 93E11 (Filtering in stochastic control theory), 93E10. arXiv eess.SY, cs.SY. Level 2: later undergraduate.
+
+**Definition.** For a Gaussian state, the precision matrix is the inverse covariance. The information vector is the precision matrix times the mean. Together they specify the quadratic and linear terms of the log density.
+
+**Problem.** Start with a Gaussian prior and take linear measurements with centered Gaussian errors independent of each other and the state. Assume the prior and error covariances are nonsingular. Each measurement adds its own contribution to the precision matrix and information vector.
+
+**How the definition helps.** The information form stores coefficients of the log density, so multiplying independent likelihoods adds their coefficients (our own). For a measurement y = Hx plus noise with covariance R, the contributions are HᵀR⁻¹H and HᵀR⁻¹y (our own). The work goes into converting the result back to a mean and covariance and propagating it through time (our own).
+
+**Wikipedia:** [Kalman filter](https://en.wikipedia.org/wiki/Kalman_filter). It says: “measurements can be filtered at each time step simply by summing their information matrices and vectors.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Chain-reachable sets are closed
+
+**Remember:** Leave room for a last small jump, and limits stay reachable.
+
+*True by definition.* MSC 93B03 (Attainable sets, reachability), 93B24. arXiv math.OC. Level 3: graduate.
+
+**Definition.** A chain follows controlled trajectories for a prescribed minimum time per segment. It allows a small jump after each segment. A target is chain reachable if such chains reach it for every positive jump tolerance and minimum time.
+
+**Problem.** The set of chain-reachable states from any fixed state is closed.
+
+**How the definition helps.** The last jump lets a chain reach a limit point directly (our own). Choose a reachable endpoint within half the allowed tolerance, then reach it with jumps smaller than half that tolerance (our own). Replacing the endpoint preserves the jump bound by the triangle inequality (our own). Exact reachability lacks this freedom (our own). Starting at 1, x′ = −x approaches zero without reaching it (our own).
+
+**Paper or page:** [Chain controllability of linear control systems](https://arxiv.org/abs/2312.14595v1). It says: “The chain controllable sets Cᶜ(x) and the chain reachable sets Rᶜ(x) are closed.”
+
+**Sources:**
+
+- [Chain controllability of linear control systems](https://arxiv.org/abs/2312.14595v1)
+
 ### Detectability permits a convergent observer
 
 **Remember:** An invisible error is harmless only if it dies out.
@@ -30,6 +148,42 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Flat outputs generate trajectories
+
+**Remember:** Choose a flat output path and differentiate to recover the motion.
+
+*True by definition.* MSC 93B18 (Linearizations), 93C10. arXiv eess.SY, math.OC. Level 3: graduate.
+
+**Definition.** A flat output is a signal computed locally from the state, input, and finitely many input derivatives. One may choose the signal freely within its domain. The signal and finitely many of its derivatives then determine the state and input.
+
+**Problem.** A sufficiently smooth choice of flat output gives a system trajectory. Its derivatives must stay in the domain of the reconstruction formulas.
+
+**How the definition helps.** The reconstruction formulas produce a solution for every sufficiently smooth local choice of flat output (our own). Ordinary measured outputs need not determine the motion this way (our own). Finding the formulas and their domain replaces integrating the equations for each new trajectory (our own). The bicycle example checks endpoint and safety constraints separately.
+
+**Paper or page:** [Optimal Control for Kinematic Bicycle Model with Continuous-time Safety Guarantees: A Sequential Second-order Cone Programming Approach](https://arxiv.org/abs/2204.08980v1). It says: “obtained by passing the parameterized flat outputs”
+
+**Sources:**
+
+- [M. Fliess, J. Lévine, P. Martin and P. Rouchon, Flatness and defect of non-linear systems: introductory theory and examples (1995)](https://doi.org/10.1080/00207179508921959)
+
+### Hankel rank gives minimal dimension
+
+**Remember:** Count the independent futures that past inputs can produce.
+
+*Makes the theorem clean to state or prove.* MSC 93B20 (Minimal systems representations), 93B15. arXiv eess.SY, cs.SY. Level 3: graduate.
+
+**Definition.** Start a discrete-time linear system at zero and apply a finite input history. The Hankel map sends that history to all subsequent outputs when every subsequent input is zero. Its rank counts the independent future output sequences the past can produce.
+
+**Problem.** For a finite-dimensional time-invariant linear system, the Hankel rank equals the smallest state dimension that reproduces its input-output behavior.
+
+**How the definition helps.** The map passes through the present state, so its rank is at most the state dimension (our own). Its image can serve as the state space by shifting future outputs and adding the response to the newest input (our own). Any direct input-to-output term stays unchanged (our own). The work is to prove that these updates preserve the image and reproduce the input-output behavior (our own).
+
+**nLab:** [controllability and observability](https://ncatlab.org/nlab/show/controllability+and+observability). It says: “a system may be seen as giving rise to a map from an initial algebra to a terminal coalgebra which factors through it”
+
+**Sources:**
+
+- [B. L. Ho and R. E. Kalman, Effective construction of linear state-variable models from input/output functions (1966)](https://doi.org/10.1524/auto.1966.14.112.545)
+
 ### Minimality rules out hidden poles
 
 **Remember:** In a minimal model, no internal mode can hide from the transfer function.
@@ -43,6 +197,94 @@
 **How the definition helps.** Minimality makes every internal eigenvalue appear as a transfer-function pole, a point where the function is singular (our own). The realization theorem proves this correspondence (our own). Bounded inputs give bounded outputs exactly when every pole has negative real part. Without minimality, ẋ = x and output equal to input give a bounded response from rest while hiding a growing state (our own).
 
 **Wikipedia:** [Minimal realization](https://en.wikipedia.org/wiki/Minimal_realization), [BIBO stability](https://en.wikipedia.org/wiki/BIBO_stability). It says: “model that is both controllable and observable and has the same input-output behaviour as the transfer function”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Tangent cones reject false tangency
+
+**Remember:** Test the set’s directions, not just its equation.
+
+*Rules out counterexamples.* MSC 93B27 (Geometric methods), 93C10. arXiv math.OC, eess.SY. Level 3: graduate.
+
+**Definition.** At a point x of a closed set, take sequences of points y in the set tending to x. Divide each displacement y − x by a positive time step tending to zero. The tangent cone contains exactly the limits of these quotients.
+
+**Problem.** Assume the vector field is continuous and gives unique global solutions. Trajectories stay in a closed set exactly when the field lies in its tangent cone at each boundary point.
+
+**How the definition helps.** The cone measures feasible first-order directions even when the equation for the boundary is flat (our own). For the set x³ ≤ 0, the derivative test at zero accepts x′ = 1, but the tangent cone rejects it (our own). The work goes into the tangency theorem, which turns local feasible directions and uniqueness into entire trajectories that stay inside (our own).
+
+**Paper or page:** [Safe Control Synthesis via Input Constrained Control Barrier Functions](https://arxiv.org/abs/2104.01704v1). It says: “a closed set S ⊆ X is forward invariant for the system, if and only if”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Rich input windows span trajectories
+
+**Remember:** Enough independent windows turn one experiment into many trajectories.
+
+*Makes the theorem clean to state or prove.* MSC 93B30 (System identification), 93C55. arXiv eess.SY, math.OC. Level 3: graduate.
+
+**Definition.** An input record is persistently exciting of order q if its overlapping windows of q consecutive inputs span all input sequences of length q. Distinct input values alone do not guarantee this property.
+
+**Problem.** Consider a discrete-time linear time-invariant system with n states that can be steered between any two states. Record its states and inputs without noise, using an input persistently exciting of order L + n. The paired state and input windows span exactly the trajectories of length L.
+
+**How the definition helps.** The definition turns a rich experiment into a rank condition on input windows (our own). Linear combinations of matching input and state windows are trajectories by linearity (our own). The work is the fundamental lemma, which uses the extra n steps and controllability to show that no trajectory directions are missing (our own).
+
+**Paper or page:** [Fast and memory-efficient optimization for large-scale data-driven predictive control](https://arxiv.org/abs/2402.13090v1). It says: “is persistently exciting of order L + n.”
+
+**Sources:**
+
+- [J. C. Willems, P. Rapisarda, I. Markovsky and B. L. M. De Moor, A note on persistency of excitation (2005)](https://doi.org/10.1016/j.sysconle.2004.09.003)
+
+### Invariant endpoints preserve plan feasibility
+
+**Remember:** Shift the old plan and append one legal move.
+
+*True by definition.* MSC 93B45 (Model predictive control), 93C55. arXiv eess.SY, math.OC. Level 3: graduate.
+
+**Definition.** An invariant terminal set is a set of allowed endpoints with a feasible feedback move that keeps each endpoint in the set. A predictive controller requires its finite plan to end there. A plan with no such endpoint condition may end at a state with no legal next move.
+
+**Problem.** Suppose a deterministic discrete-time model is exact and constraints stay fixed. After applying the first move of a feasible plan, another plan of the same length exists if the terminal set is invariant.
+
+**How the definition helps.** The endpoint condition supplies one legal move to append after shifting the plan (our own). Exact prediction lets the remaining moves start from the actual next state (our own). Finding endpoints that always admit another legal move is the design work (our own). The cited paper proves feasibility for its controller with equilibrium endpoints.
+
+**Wikipedia:** [Model predictive control](https://en.wikipedia.org/wiki/Model_predictive_control). It says: “Only the first step of the control strategy is implemented”
+
+**Paper or page:** [On Model Predictive Funnel Control with Equilibrium Endpoint Constraints](https://arxiv.org/abs/2505.20090v1). It says: “implies its solvability at the next time step”
+
+**Sources:**
+
+- [On Model Predictive Funnel Control with Equilibrium Endpoint Constraints](https://arxiv.org/abs/2505.20090v1)
+
+### Invariant error tubes protect constraints
+
+**Remember:** Check every point in the error band.
+
+*True by definition.* MSC 93B45 (Model predictive control), 93D09. arXiv math.OC, eess.SY. Level 3: graduate.
+
+**Definition.** A tracking policy chooses inputs to keep the actual state near a planned state. An error set is invariant if this policy keeps the next tracking error inside whenever the current error belongs, for every allowed disturbance. Adding all errors in the set to each planned state gives a tube.
+
+**Problem.** If the initial error belongs to the invariant set, every actual state lies in its corresponding tube section. If every section lies inside the allowed state region, every actual state meets the constraints.
+
+**How the definition helps.** Invariance supplies exactly the induction step from one tube section to the next (our own). Checking the planned states alone would miss errors caused by disturbances (our own). The work lies in constructing the tracking policy and its invariant error set (our own).
+
+**Paper or page:** [State-Dependent Dynamic Tube MPC: A Novel Tube MPC Method with a Fuzzy Model of Disturbances](https://arxiv.org/abs/2310.19997v1). It says: “we need to constrain both the nominal state and the potential errors”
+
+**Sources:**
+
+- [State-Dependent Dynamic Tube MPC: A Novel Tube MPC Method with a Fuzzy Model of Disturbances](https://arxiv.org/abs/2310.19997v1)
+
+### Stabilizing Riccati solutions are unique
+
+**Remember:** The right Riccati solution must stabilize the system.
+
+*Rules out counterexamples.* MSC 93B52 (Feedback control), 93C05. arXiv math.OC, eess.SY. Level 3: graduate.
+
+**Definition.** For x′ = Ax + Bu, let Q and R be symmetric state and input cost matrices, with R positive definite. Write G = BR⁻¹Bᵀ. Consider symmetric solutions P of AᵀP + PA − PGP + Q = 0. A solution is stabilizing when A − GP has eigenvalues with negative real parts.
+
+**Problem.** At most one symmetric solution of this equation is stabilizing.
+
+**How the definition helps.** The stability requirement makes both matrix exponentials in the difference argument decay (our own). Let P and S be stabilizing solutions and write D = P − S (our own). Set U = A − GP and W = A − GS (our own). Subtraction gives UᵀD + DW = 0 (our own). Thus exp(tUᵀ)D exp(tW) is constant, yet tends to zero, so D = 0 (our own). For x′ = u with unit cost weights, both 1 and −1 solve the equation, but only 1 stabilizes (our own).
+
+**Wikipedia:** [Algebraic Riccati equation](https://en.wikipedia.org/wiki/Algebraic_Riccati_equation). It says: “Though generally this system can have many solutions, it is usually specified that we want to obtain the unique stabilizing solution, if such a solution exists.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -63,6 +305,56 @@
 **Sources:**
 
 - [A continuous-time fundamental lemma and its application in data-driven optimal control](https://arxiv.org/abs/2407.12179v1)
+
+### Finite-step decrease permits temporary increases
+
+**Remember:** Judge progress at the end of each block.
+
+*Makes the theorem clean to state or prove.* MSC 93D15 (Stabilization of systems by feedback), 93B45. arXiv math.OC, eess.SY. Level 3: graduate.
+
+**Definition.** Suppose a‖x‖² ≤ V(x) ≤ b‖x‖² for positive constants a and b. From each allowed state x, require a feasible block of m moves ending with V below or equal to qV(x). The block length m and factor q strictly between zero and one are fixed. Intermediate state norms must stay below c‖x‖ for a common constant c.
+
+**Problem.** Under these bounds, every allowed initial state has a trajectory that obeys the constraints and converges to zero.
+
+**How the definition helps.** A fixed block replaces the usual one-step decrease, so intermediate increases are allowed (our own). After k blocks the function is at most qᵏ times its initial value (our own). The lower quadratic bound forces the endpoint states toward zero, and the intermediate bound controls all other states (our own). Finding feasible blocks with these bounds remains the design work (our own).
+
+**Paper or page:** [Flexible-step Model Predictive Control based on Generalized Lyapunov Functions](https://arxiv.org/abs/2211.02780v2). It says: “there exists a feasible control sequence such that limₖ→∞ xᵏ = 0.”
+
+**Sources:**
+
+- [Flexible-step Model Predictive Control based on Generalized Lyapunov Functions](https://arxiv.org/abs/2211.02780v2)
+
+### Common Lyapunov functions handle switching
+
+**Remember:** Switch the dynamics without switching what measures the state.
+
+*True by definition.* MSC 93D23 (Exponential stability), 93C30. arXiv eess.SY, math.OC. Level 3: graduate.
+
+**Definition.** A mode is one of the linear equations that a switched system can follow. A common quadratic Lyapunov function is a single positive definite quadratic form whose derivative is negative away from zero in every mode. Separate tests may use different forms.
+
+**Problem.** Consider finitely many continuous-time linear modes with continuous state and finitely many switches on each bounded interval. A common quadratic Lyapunov function guarantees constants C, a &gt; 0 with ‖x(t)‖ ≤ C exp(−at)‖x(0)‖ for every switching sequence.
+
+**How the definition helps.** One form decreases throughout every interval and keeps the same value across each switch (our own). Finitely many strict quadratic bounds give one common exponential decay rate (our own). Finding a common form is the hard part (our own). The cited theorem supplies one when all mode matrices are individually stable and simultaneously upper triangular in some complex coordinates.
+
+**Paper or page:** [Feedback rectifiable pairs and stabilization of switched linear systems](https://arxiv.org/abs/2308.10591v2). It says: “the origin of the switched system is asymptotically stable for arbitrary switching”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Joint spectral radius detects switching instability
+
+**Remember:** Stable pieces can make an unstable product.
+
+*Rules out counterexamples.* MSC 93D23 (Exponential stability), 93C30. arXiv eess.SY, math.OC. Level 3: graduate.
+
+**Definition.** Take a finite, nonempty set of square matrices of the same size. For each k, find the largest operator norm among all products of k factors from the set. The joint spectral radius is the limit of the kth roots of these maxima.
+
+**Problem.** Uniform exponential decay means every k-step product has norm at most Cqᵏ, with common constants C &gt; 0 and 0 &lt; q &lt; 1. This holds exactly when the joint spectral radius is below one.
+
+**How the definition helps.** Mixed products enter the definition, so it detects growth that each matrix misses alone (our own). Take two 2 × 2 matrices with a single entry 2, in opposite off-diagonal positions (our own). Both square to zero, but their product has eigenvalue 4 (our own). Submultiplicativity gives the limit, and equivalence of norms makes it independent of the chosen norm (our own).
+
+**Paper or page:** [Stability Analysis of Switched Linear Systems with Neural Lyapunov Functions](https://arxiv.org/abs/2312.08190v1), [Stability Analysis of Switched Linear Systems with Neural Lyapunov Functions](https://arxiv.org/abs/2312.08190v1). It says: “The corresponding switched linear system is stable if and only if ρ(Σ) &lt; 1.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Input-to-state stability makes cascades of stable systems stable
 
@@ -136,6 +428,24 @@
 
 - [Dissipative energy functionals of passive linear time-varying systems](https://arxiv.org/abs/2412.16347v1)
 
+### Innovations isolate measurement corrections
+
+**Remember:** Correct the prediction with only the unexpected part of each reading.
+
+*Makes the theorem clean to state or prove.* MSC 93E11 (Filtering in stochastic control theory). arXiv eess.SY, math.OC. Level 3: graduate.
+
+**Definition.** The innovation is the observed signal minus the accumulated change predicted from earlier measurements. Its increment measures the new observation after subtracting its predicted drift, or expected rate of change.
+
+**Problem.** Consider a continuous linear system with known initial state, deterministic coefficients, and additive Brownian noise with nonsingular observation noise covariance. The state estimate given the observations evolves by the predicted dynamics plus a gain times the innovation increment.
+
+**How the definition helps.** Subtracting the predicted drift puts all measurement corrections into one term (our own). The filtering theorem determines the gain and proves that the update gives the conditional mean (our own).
+
+**Paper or page:** [Stochastic Linear-Quadratic Optimal Control with Partial Observation](https://arxiv.org/abs/2202.13632v1). It says: “V(t) ≜ Y(t) − ∫₀ᵗ \[H(s)X̂(s) + h(s)\] ds”
+
+**Sources:**
+
+- [Stochastic Linear-Quadratic Optimal Control with Partial Observation](https://arxiv.org/abs/2202.13632v1)
+
 ### Occupation measures satisfy flow balance
 
 **Remember:** Every visit either starts the run or comes from a previous visit.
@@ -153,6 +463,24 @@
 **Sources:**
 
 - [Absorbing Markov Decision Processes](https://arxiv.org/abs/2309.07059v2)
+
+### Transient Gramians stay finite
+
+**Remember:** Remove the steady part before measuring the transient.
+
+*Rules out counterexamples.* MSC 93B11 (System structure simplification), 93C05. arXiv eess.SY, math.OC. Level 4: research.
+
+**Definition.** Consider the linear system x′ = Ax + Bu, where x is the state and u is the input. Assume exp(tA) tends exponentially to a matrix J as time t increases. The usual controllability Gramian integrates F(t)F(t)ᵀ from zero to infinity with F(t) = exp(tA)B. The modified Gramian uses F(t) = exp(tA)B − JB instead.
+
+**Problem.** The modified Gramian P is finite. It is the unique symmetric solution of AP + PAᵀ + (B − JB)(B − JB)ᵀ = 0 with JPJᵀ = 0.
+
+**How the definition helps.** The subtraction leaves only exponentially decaying modes, so the integral converges (our own). The usual integral diverges for x′ = u because its state response to an impulse is constant (our own). The work goes into deriving the matrix equation and proving its uniqueness on the projected space (our own).
+
+**Paper or page:** [Gramian-Based Model Reduction of Directed Networks](https://arxiv.org/abs/1901.01285v2). It says: “are the unique symmetric solutions of the following sets of linear matrix equations”
+
+**Sources:**
+
+- [Gramian-Based Model Reduction of Directed Networks](https://arxiv.org/abs/1901.01285v2)
 
 ### Strong chain control sets are preserved by topological conjugacy
 
@@ -189,6 +517,24 @@
 **Sources:**
 
 - [Tyler Westenbroek, Humberto Gonzalez, S. Shankar Sastry, A New Solution Concept and Family of Relaxations for Hybrid Dynamical Systems, arXiv:1803.08092 (2018)](https://arxiv.org/abs/1803.08092v5)
+
+### Inner safe sets respect braking limits
+
+**Remember:** Check the allowed inputs before calling a state safe.
+
+*Rules out counterexamples.* MSC 93D15 (Stabilization of systems by feedback), 93C10. arXiv eess.SY, math.OC. Level 4: research.
+
+**Definition.** Start with a smooth function whose nonnegative values describe safe states. Given a test b, take the infimum of its time derivative over allowed controls and add α(b) to obtain the next test. Each α is an increasing function with α(0) = 0. The inner set contains states where every test, including the first, is nonnegative.
+
+**Problem.** Assume smooth tests and well-defined closed-loop solutions. Suppose a Lipschitz feedback uses allowed inputs and enforces b′ ≥ −α(b) for the final test throughout the inner set. Under the paper’s barrier hypotheses, trajectories starting there stay there throughout their existence.
+
+**How the definition helps.** Each nonnegative test supplies the derivative bound that protects the preceding test (our own). The final bound closes this chain (our own). A car at the position limit with outward velocity passes the position test but cannot stop instantly with bounded acceleration (our own). Constructing the tests and finding feedback that satisfies the final bound are the remaining tasks (our own).
+
+**Paper or page:** [Safe Control Synthesis via Input Constrained Control Barrier Functions](https://arxiv.org/abs/2104.01704v1). It says: “is an ICCBF, then any Lipschitz continuous controller”
+
+**Sources:**
+
+- [Safe Control Synthesis via Input Constrained Control Barrier Functions](https://arxiv.org/abs/2104.01704v1)
 
 ### Measuring with a seminorm lets unstable modes be ignored in stability
 

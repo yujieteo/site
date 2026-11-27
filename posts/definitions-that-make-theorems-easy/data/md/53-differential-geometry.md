@@ -1,3 +1,19 @@
+### Nonzero curvature fixes Frenet normals
+
+**Remember:** No turn means no principal normal.
+
+*Rules out counterexamples.* MSC 53A04 (Curves in Euclidean and related spaces). arXiv math.DG. Level 1: early undergraduate.
+
+**Definition.** A smooth space curve is regular if its velocity never vanishes. Write T for its unit tangent and s for arc length. Its curvature is the length of dT/ds. The Frenet frame consists of T, the unit vector N in the direction of dT/ds, and their cross product T × N.
+
+**Problem.** At each point of positive curvature, these three vectors form an orthonormal basis of three-dimensional space.
+
+**How the definition helps.** Our own check uses positive curvature to keep the normalizing denominator from vanishing. Our own counterexample is the straight line s ↦ (s, 0, 0), which has constant tangent and no principal normal. Our own check differentiates unit tangent length to prove the derivative is perpendicular to the tangent. Our own construction uses the cross product to complete the three perpendicular directions.
+
+**Wikipedia:** [Frenet–Serret formulas](https://en.wikipedia.org/wiki/Frenet%E2%80%93Serret_formulas). It says: “The Frenet–Serret formulas apply to curves which are non-degenerate, which roughly means that they have nonzero curvature.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Polygons with corners on the curve define arc length correctly
 
 **Remember:** Put the corners on the curve, or the staircase will lie to you.
@@ -11,6 +27,102 @@
 **How the definition helps.** Putting the vertices on the curve rules out approximations that converge to the curve but have the wrong length. If the vertices only need to be near the curve, the staircase paradox appears. Staircases of total length 2 converge to a diagonal of length √2. Requiring the vertices to lie on the curve excludes this. The same idea fails for surfaces. Schwarz's lantern, a surface of inscribed triangles, converges to a cylinder, while its area can tend to any larger value or to infinity. It refuted Serret's 1868 definition of surface area, so surface area needs another definition.
 
 **Wikipedia:** [Schwarz lantern](https://en.wikipedia.org/wiki/Schwarz_lantern). It says: “However, for this to work correctly, the vertices of the polygonal chains must lie on the given curve, rather than merely near it.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Regular curves admit unit speed
+
+**Remember:** With positive speed, the distance clock never stops.
+
+*Rules out counterexamples.* MSC 53A04 (Curves in Euclidean and related spaces). arXiv math.DG. Level 1: early undergraduate.
+
+**Definition.** A regular continuously differentiable curve has nonzero velocity at every parameter value. A continuously differentiable curve without this restriction may have zero speed.
+
+**Problem.** Every regular continuously differentiable curve on a compact interval of positive length admits a continuously differentiable parametrization with speed one.
+
+**How the definition helps.** Positive speed gives accumulated length a differentiable inverse in our own proof. Using length as the parameter divides the old velocity by its length, giving speed one. For the cusp t ↦ (t², t³), the unit tangents approach opposite directions from the two sides of zero. Thus no continuously differentiable unit-speed parametrization can trace the cusp through zero.
+
+**Wikipedia:** [Curve](https://en.wikipedia.org/wiki/Curve). It says: “A differentiable curve is said to be regular if its derivative never vanishes.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Zero curvature forces straightness
+
+**Remember:** A tangent that never changes draws a straight line.
+
+*True by definition.* MSC 53A04 (Curves in Euclidean and related spaces). arXiv math.DG. Level 1: early undergraduate.
+
+**Definition.** A regular curve has nonzero velocity. Its curvature is the length of the derivative of its unit tangent with respect to arc length. At positive curvature, an alternative definition uses the reciprocal radius of the circle that best fits the curve to second order.
+
+**Problem.** A twice continuously differentiable regular curve on an interval lies on a line if and only if its curvature vanishes everywhere.
+
+**How the definition helps.** In our own proof, zero curvature makes the derivative of the unit tangent zero everywhere. The tangent is therefore constant on the interval. Integrating it with respect to arc length gives a path along one line. Conversely, a regular curve on a line has a continuous unit tangent with only two possible directions, so its tangent stays constant. The geometric work in the circle definition is proving the reciprocal-radius formula at points of positive curvature.
+
+**Paper or page:** [Straight Line has Zero Curvature](https://proofwiki.org/wiki/Straight_Line_has_Zero_Curvature). It says: “A straight line has zero curvature.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Level surfaces have gradient normals
+
+**Remember:** A velocity along a level surface cannot change its level.
+
+*True by definition.* MSC 53A05 (Surfaces in Euclidean and related spaces). arXiv math.DG. Level 1: early undergraduate.
+
+**Definition.** Define tangent vectors as velocities of differentiable curves in the surface through the point. Another approach reads the tangent plane from a graph of one coordinate as a function of two others.
+
+**Problem.** If F is continuously differentiable and ∇F is nonzero at a point of F = c, then ∇F is normal there.
+
+**How the definition helps.** In our own proof, the velocity definition turns perpendicularity into the derivative of a constant function. Along every curve in the level surface, F has constant value c. The chain rule gives zero for the dot product of the gradient with the curve velocity. The implicit function theorem gives a continuously differentiable local graph and two independent tangent directions.
+
+**Wikipedia:** [Gradient](https://en.wikipedia.org/wiki/Gradient). It says: “It follows that in this case the gradient of f is orthogonal to the level sets of f.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Regular surface patches have tangents
+
+**Remember:** Two independent surface directions span one tangent plane.
+
+*Rules out counterexamples.* MSC 53A05 (Surfaces in Euclidean and related spaces). arXiv math.DG. Level 1: early undergraduate.
+
+**Definition.** A regular surface patch has a continuously differentiable, one-to-one parametrization from an open part of the plane into three-dimensional space. Its inverse on its image is continuous, and its two partial derivative vectors are linearly independent.
+
+**Problem.** A regular surface patch has a unique tangent plane at each point of the patch.
+
+**How the definition helps.** Independent partial derivatives give two independent tangent directions in our own proof. Their span gives a plane through the surface point. The inverse function theorem locally expresses the patch as a graph over two coordinate axes. The chain rule then puts every velocity of a curve on the patch in that same plane, proving uniqueness. At the apex of the cone x² + y² = z², the lines on the cone have directions spanning three dimensions.
+
+**Wikipedia:** [Surface (mathematics)](https://en.wikipedia.org/wiki/Surface_%28mathematics%29). It says: “Such an irregular point, where the tangent plane is undefined, is said singular.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Surface area ignores parameter changes
+
+**Remember:** A parameter change scales each tiny area by its absolute determinant.
+
+*True by definition.* MSC 53A05 (Surfaces in Euclidean and related spaces). arXiv math.DG. Level 1: early undergraduate.
+
+**Definition.** Parametrize a surface patch once by a smooth map r with two independent partial derivatives. Define its area by integrating the length of their cross product over the parameter domain. Another approach approximates the surface by triangles.
+
+**Problem.** An invertible smooth change of parameters with smooth inverse does not change the area of a regular surface patch.
+
+**How the definition helps.** In our own proof, a parameter change scales the cross-product length by exactly the factor required by the change-of-variables theorem. The chain rule expresses each new partial derivative as a linear combination of the old ones. Expanding their cross product gives the old cross product times the determinant of the parameter derivative. Taking lengths gives the absolute determinant, so the two integrals agree. A triangle-based definition needs extra conditions to ensure that the approximating areas converge to this integral.
+
+**Wikipedia:** [Surface area](https://en.wikipedia.org/wiki/Surface_area). It says: “integrating the length of the normal vector rᵤ × rᵥ to the surface over the appropriate region D in the parametric uv plane.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Tangent planes follow affine maps
+
+**Remember:** Apply the same affine map to the surface and its tangent plane.
+
+*True by definition.* MSC 53A05 (Surfaces in Euclidean and related spaces). arXiv math.DG. Level 1: early undergraduate.
+
+**Definition.** For a surface given locally by two parameters with independent partial derivative vectors, take their span and translate it to the surface point. This gives the tangent plane. Another description uses a perpendicular vector called a normal.
+
+**Problem.** An invertible affine map, a linear transformation followed by a translation, carries each tangent plane to the corresponding tangent plane of the image surface.
+
+**How the definition helps.** Our own argument applies the linear part to both partial derivatives, so it carries their span along. Our own calculation uses the chain rule and adds the translation only at the base point. Our own comparison with normals requires proving that they transform by the inverse transpose.
+
+**Wikipedia:** [Surface (mathematics)](https://en.wikipedia.org/wiki/Surface_%28mathematics%29). It says: “maps the tangent plane to the surface at a point to the tangent plane to the image of the surface at the image of the point.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -167,6 +279,24 @@
 **Wikipedia:** [Geodesic](https://en.wikipedia.org/wiki/Geodesic). It says: “paths that are minima of L can be arbitrarily re-parameterized (without changing their length), while minima of E cannot.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Cauchy slices exclude loops
+
+**Remember:** A clock that repeats a loop cannot visit a slice just once.
+
+*Rules out counterexamples.* MSC 53C50 (Global differential geometry of Lorentz manifolds, manifolds with indefinite metrics). arXiv gr-qc. Level 2: later undergraduate.
+
+**Definition.** A timelike path can carry a clock moving below light speed. A Cauchy surface meets every timelike path exactly once when the path extends as far as possible in both directions.
+
+**Problem.** A spacetime with a Cauchy surface has no closed future-directed timelike path.
+
+**How the definition helps.** The single-visit requirement rules out repeating a timelike loop indefinitely. In our own proof, the repeated path either misses the surface or visits it infinitely often. In our own example, identify times one period apart in flat spacetime. A stationary clock revisits the same constant-time slice every period.
+
+**nLab:** [Cauchy surface](https://ncatlab.org/nlab/show/Cauchy+surface). It says: “a Cauchy surface is an embedded submanifold Σ ↪︎ X such that every timelike curve in X may be extended to a timelike curve that intersects Σ precisely in one point.”
+
+**Sources:**
+
+- [Robert Geroch (1970), Domain of Dependence](https://doi.org/10.1063/1.1665157)
 
 ### Minimal surfaces as real parts of null curves give isometric associate families
 
@@ -773,6 +903,22 @@
 **nLab:** [Cauchy surface](https://ncatlab.org/nlab/show/Cauchy+surface). It says: “intersects Σ precisely in one point.”
 
 **Paper or page:** [Limit curve theorems for incomplete metric spaces and the null distance on Lorentzian manifolds](https://arxiv.org/abs/2511.05847v1). It says: “M is the disjoint union M = I⁺(S) ∪ S ∪ I⁻(S).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Compact diamonds yield longest paths
+
+**Remember:** Compact diamonds keep maximizing clock paths from escaping through a hole.
+
+*Rules out counterexamples.* MSC 53C50 (Global differential geometry of Lorentz manifolds, manifolds with indefinite metrics). arXiv gr-qc. Level 3: graduate.
+
+**Definition.** A causal path moves toward the future at or below light speed. The causal diamond from p to q consists of events on such paths from p to q. A spacetime is globally hyperbolic if it has no closed causal paths and every causal diamond is compact.
+
+**Problem.** In smooth globally hyperbolic spacetime, two events joined by a causal path admit one with the greatest elapsed clock time.
+
+**How the definition helps.** Compact diamonds confine candidate paths, which is the first step toward finding a longest one. In our own outline, a limit-curve theorem gives a limiting path. Its elapsed time is at least the upper limit of the times along the sequence. In our own example, remove the midpoint between two events on a stationary clock in flat spacetime with a spatial direction. Detours approach the original elapsed time, but only the missing straight path could attain it.
+
+**Wikipedia:** [Globally hyperbolic spacetime](https://en.wikipedia.org/wiki/Globally_hyperbolic_spacetime). It says: “The spacetime is causal, and for every pair of points p and q in M, the subset J⁺(p) ∩ J⁻(q) is compact.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -1577,6 +1723,24 @@
 
 - [E. Minguzzi, Lorentzian manifolds properly isometrically embeddable in Minkowski spacetime, arXiv:2303.05941v1 (2023), Letters in Mathematical Physics 113, 67 (2023)](https://arxiv.org/abs/2303.05941v1)
 
+### Nearly timelike paths restore semicontinuity
+
+**Remember:** Keep causal paths whose segments can be approached by timelike signals.
+
+*Rules out counterexamples.* MSC 53C50 (Global differential geometry of Lorentz manifolds, manifolds with indefinite metrics). arXiv gr-qc. Level 4: research.
+
+**Definition.** A causal path moves toward the future at or below light speed. On a nearly timelike path, each later point lies in the closure of points reachable from each earlier point below light speed. Each earlier point must likewise lie in the closure of the past reachable below light speed from each later point. Time separation takes the supremum of elapsed clock times along such paths, or zero if none exist.
+
+**Problem.** For a continuous spacetime metric, nearby endpoint pairs have time separation above any strict lower bound for the original pair. For a smooth metric, this definition gives the usual time separation.
+
+**How the definition helps.** The closure tests exclude paths that enter regions unreachable even as limits of slower signals. In our own outline, these tests let us join a slightly shortened path to nearby endpoints. The proof must show that shortening loses arbitrarily little elapsed time.
+
+**Paper or page:** [A lower semicontinuous time separation function for C⁰ spacetimes](https://arxiv.org/abs/2308.10182v3). It says: “τ is lower semicontinuous.”
+
+**Sources:**
+
+- [Eric Ling, A lower semicontinuous time separation function for C⁰ spacetimes](https://arxiv.org/abs/2308.10182v3)
+
 ### Null distance straightens causal curves
 
 **Remember:** One causal segment costs exactly its clock change.
@@ -1859,6 +2023,24 @@
 
 - [Victor Guillemin, Shlomo Sternberg, Geometric quantization and multiplicities of group representations, Inventiones Mathematicae 67 (1982) 515–538](https://doi.org/10.1007/BF01398934)
 - [Eckhard Meinrenken, Symplectic surgery and the Spinᶜ–Dirac operator, Advances in Mathematics 134 (1998) 240–277](https://doi.org/10.1006/aima.1997.1701)
+
+### Flat Weyl lifts give associativity
+
+**Remember:** Lift, multiply, and project without losing associativity.
+
+*True by definition.* MSC 53D55 (Deformation quantization, star products), 81S10. arXiv math-ph. Level 4: research.
+
+**Definition.** A symplectic manifold is a space with a closed, nondegenerate differential two-form. At each point, formal power series on its tangent space carry an associative multiplication called the Moyal product. Fedosov lifts each formal function uniquely to a family of series unchanged by parallel transport for a specially chosen connection. Multiply two lifts point by point and evaluate at zero in each tangent space.
+
+**Problem.** The Fedosov product on formal series of smooth functions on a symplectic manifold is associative.
+
+**How the definition helps.** In our own proof, lifting the result recovers the product of the lifts, so associativity follows from pointwise multiplication. This avoids comparing coefficients in the two possible triple products. The work lies in constructing a connection that preserves multiplication and proving existence and uniqueness of lifts.
+
+**Paper or page:** [Lectures on Symplectic Geometry, Poisson Geometry, Deformation Quantization and Quantum Field Theory](https://arxiv.org/abs/2012.14662v1). It says: “Then one can define a global star product”
+
+**Sources:**
+
+- [Lectures on Symplectic Geometry, Poisson Geometry, Deformation Quantization and Quantum Field Theory](https://arxiv.org/abs/2012.14662v1)
 
 ### Outer-minimizing starts make the weak flow's area grow exactly like eᵗ
 

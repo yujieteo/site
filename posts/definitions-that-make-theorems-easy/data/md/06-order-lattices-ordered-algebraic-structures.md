@@ -339,6 +339,24 @@
 
 - [Alfred Tarski, A lattice-theoretical fixpoint theorem and its applications, Pacific Journal of Mathematics (1955)](https://doi.org/10.2140/pjm.1955.5.285)
 
+### Distributivity implies modularity by substitution
+
+**Remember:** Distribute first, then absorb the smaller element.
+
+*True by definition. Confidence: medium.* MSC 06D05 (Structure and representation theory of distributive lattices), 01A60. arXiv math.CO, math.HO. Level 2: later undergraduate.
+
+**Definition.** In a lattice, two elements have a greatest lower bound, their meet ∧, and a least upper bound, their join ∨. A distributive lattice satisfies both distributive laws for these operations.
+
+**Problem.** Every distributive lattice is modular. If a ≤ b, then (a ∨ z) ∧ b = a ∨ (z ∧ b).
+
+**How the definition helps.** The distributive law expands (a ∨ z) ∧ b into (a ∧ b) ∨ (z ∧ b). In our own calculation, a ≤ b gives a ∧ b = a, proving the modular law. Birkhoff also characterized distributivity by excluding two five-element lattices, the diamond and the pentagon, as subsets closed under meet and join. Starting from that description puts the work in Birkhoff’s equivalence.
+
+**nLab:** [distributive lattice](https://ncatlab.org/nlab/show/distributive+lattice), [modular lattice](https://ncatlab.org/nlab/show/modular+lattice). It says: “A lattice L is distributive if and only if there is no embedding of N₅ or M₃ into L that preserves binary meets and binary joins.”
+
+**Paper or page:** [On complemented, uniquely complemented and uniquely complemented nondistributive lattices (a historical and epistemological note about a mathematical mystery)](https://arxiv.org/abs/2308.04506). It says: “Any distributive lattice is modular.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The bottom element is not join-irreducible, so Birkhoff's representation is exact
 
 **Remember:** The bottom is the empty join, as 1 is the empty product.
@@ -865,6 +883,24 @@
 
 - [Tatsuji Kawai, Predicative theories of continuous lattices](https://arxiv.org/abs/2006.05642v4)
 - [Rudolf-E. Hoffmann, Continuous posets and adjoint sequences, Semigroup Forum (1979)](https://doi.org/10.1007/BF02574184)
+
+### Modularity excludes Dilworth’s counterexamples
+
+**Remember:** Unique complements need modularity to force distributivity.
+
+*Rules out counterexamples.* MSC 06C05 (Modular lattices, Desarguesian lattices), 01A60. arXiv math.CO, math.HO. Level 3: graduate.
+
+**Definition.** In a lattice, ∧ gives the greatest lower bound and ∨ the least upper bound of two elements. A complement of x meets x at the bottom element and joins x at the top element. The modular law requires (a ∨ z) ∧ b = a ∨ (z ∧ b) whenever a ≤ b.
+
+**Problem.** Every bounded modular lattice with exactly one complement for each element is distributive.
+
+**How the definition helps.** The modular law rules out any lattice containing a smaller lattice that violates the same equation. In our own example, start with the five-element pentagon, which violates the law. Dilworth’s theorem embeds it in a lattice with unique complements while preserving both operations. The larger lattice still violates the law and therefore cannot be distributive. The positive result needs von Neumann’s theorem that a modular lattice with unique complements is distributive.
+
+**Paper or page:** [On complemented, uniquely complemented and uniquely complemented nondistributive lattices (a historical and epistemological note about a mathematical mystery)](https://arxiv.org/abs/2308.04506). It says: “Every uniquely complemented modular lattice is distributive.”
+
+**Sources:**
+
+- [R. P. Dilworth, Lattices with Unique Complements (1945)](https://doi.org/10.1090/S0002-9947-1945-0012263-6)
 
 ### Orthomodularity keeps the part of the modular law Hilbert subspaces satisfy
 

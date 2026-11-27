@@ -14,6 +14,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Summable coefficients ensure uniform convergence
+
+**Remember:** Every exponential has modulus one, so the same tail bound works everywhere.
+
+*Rules out counterexamples.* MSC 42A20 (Convergence and absolute convergence of Fourier and trigonometric series). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** The Wiener algebra on the circle consists of continuous complex functions whose Fourier coefficients have a finite sum of absolute values.
+
+**Problem.** A continuous circle function in the Wiener algebra has a uniformly convergent Fourier series. Its sum is the original function.
+
+**How the definition helps.** An absolute coefficient tail bounds the Fourier series tail uniformly (our own). Fourier uniqueness identifies the sum, since termwise integration recovers the same coefficients (our own). The requirement excludes du Bois-Reymond's continuous function whose Fourier series diverges at a point (our own).
+
+**Wikipedia:** [Convergence of Fourier series](https://en.wikipedia.org/wiki/Convergence_of_Fourier_series). It says: “If f is continuous and its Fourier coefficients are absolutely summable, then the Fourier series converges uniformly.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Defining the Fejér kernel as a square makes it nonnegative
 
 **Remember:** A squared absolute value cannot be negative.
@@ -46,6 +62,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Poisson smoothing recovers continuous functions
+
+**Remember:** Poisson averaging keeps its mass while narrowing to the starting point.
+
+*Rules out counterexamples.* MSC 42A24 (Summability and absolute summability of Fourier and trigonometric series). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** An Abel mean of a Fourier series multiplies its coefficient at frequency k by r to the power \|k\|, with 0 &lt; r &lt; 1. This replaces a fixed frequency cutoff by a smooth reduction of all high frequencies.
+
+**Problem.** The Abel means of every continuous circle function converge to it uniformly as r tends to one.
+
+**How the definition helps.** The Abel weights turn the Fourier sum into a weighted average of translates using the Poisson kernel (our own). Summing the geometric series shows that the weights are positive, have total mass one, and concentrate near zero (our own). Uniform continuity controls the nearby translates, and the remaining weight tends to zero (our own). Under ordinary frequency truncation, a continuous function can have a Fourier series that diverges at a point (our own).
+
+**Wikipedia:** [Poisson kernel](https://en.wikipedia.org/wiki/Poisson_kernel). It says: “the functions Pᵣ(θ) form an approximate unit in the convolution algebra L¹(T).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Band limits make sampling injective
 
 **Remember:** Samples are Fourier coefficients of the spectrum on one frequency interval.
@@ -64,6 +96,22 @@
 
 - [C. E. Shannon, Communication in the Presence of Noise (1949)](https://doi.org/10.1109/jrproc.1949.232969)
 
+### Integrable transforms invert absolutely
+
+**Remember:** Both integrals are ordinary absolute integrals when both functions are integrable.
+
+*Rules out counterexamples.* MSC 42A38 (Fourier and Fourier-Stieltjes transforms and other transforms of Fourier type). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** On ℝ, take functions f with finite integral of \|f\| whose Fourier transforms also have finite integral of their absolute value.
+
+**Problem.** An integrable function with integrable Fourier transform equals its absolutely convergent inverse transform almost everywhere. Equality holds wherever the original function is continuous.
+
+**How the definition helps.** Absolute integrability of the transform bounds the inverse integral because its exponential kernel has modulus one (our own). For the indicator of \[−1,1\], the transform is sin(2πξ)/(πξ), whose absolute value has infinite integral (our own). Fourier inversion identifies the resulting continuous function with the original function almost everywhere (our own).
+
+**Wikipedia:** [Fourier inversion theorem](https://en.wikipedia.org/wiki/Fourier_inversion_theorem). It says: “Furthermore, we assume that the Fourier transform is also integrable.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Periodization gives Poisson summation
 
 **Remember:** Fold the line into one period, then read its Fourier coefficients.
@@ -79,6 +127,22 @@
 **Wikipedia:** [Poisson summation formula](https://en.wikipedia.org/wiki/Poisson_summation_formula). It says: “the Fourier series coefficients of \\(s<sub>P</sub>(x)\\) are \\(\\frac{1}{P} S\\left(\\frac{k}{P}\\right)\\)”
 
 **Paper or page:** [Poisson Summation Formula](https://proofwiki.org/wiki/Poisson_Summation_Formula). It says: “Then: ∑ₙ∈ℤ f(n) = ∑ₘ∈ℤ f̂(m)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Dirichlet convolution makes convergence local
+
+**Remember:** Away from the point, only a fast oscillation remains in the kernel.
+
+*True by definition.* MSC 42A63 (Uniqueness of trigonometric expansions, uniqueness of Fourier expansions, Riemann theory, localization). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** The Dirichlet kernel is the sum of the complex exponentials at integer frequencies from −n to n. Instead of computing separate Fourier coefficients, integrate the function against a translate of this kernel using normalized circle measure.
+
+**Problem.** If two integrable circle functions agree near a point, the difference of their Fourier partial sums tends to zero at that point.
+
+**How the definition helps.** The kernel formula puts the vanishing difference and all frequency dependence in one integral (our own). In the shift variable t, the difference vanishes near zero, where the denominator sin(t/2) could vanish (our own). Dividing by that denominator therefore leaves an integrable function on \[−π,π\] (our own). The numerator oscillates at frequency n + ½ (our own). The Riemann–Lebesgue lemma says that integrating an integrable function against these increasingly rapid oscillations gives a limit of zero (our own).
+
+**Wikipedia:** [Dirichlet kernel](https://en.wikipedia.org/wiki/Dirichlet_kernel). It says: “The convolution of Dₙ(x) with any function f of period 2π is the nth-degree Fourier series approximation to f”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -221,6 +285,58 @@
 
 - [H. Bohr, Zur Theorie der fast periodischen Funktionen I, Acta Mathematica 45 (1925)](https://doi.org/10.1007/BF02395468)
 
+### Continuity excludes Bochner counterexamples
+
+**Remember:** Finite measures cannot transform into a spike at one point.
+
+*Rules out counterexamples.* MSC 42A82 (Positive definite functions in one variable harmonic analysis), 43A35. arXiv math.FA. Level 3: graduate.
+
+**Definition.** Require a positive definite function on ℝ to be continuous at zero. Positive definiteness alone only requires the matrices with entries f(xᵢ − xⱼ) to be positive semidefinite. A positive semidefinite matrix gives a nonnegative quadratic form.
+
+**Problem.** A positive definite function on ℝ continuous at zero is the Fourier transform of a finite positive measure.
+
+**How the definition helps.** Continuity at zero excludes the function equal to one at zero and zero elsewhere (our own). Grouping equal inputs shows that its test matrices have positive semidefinite all-ones blocks (our own). Every finite measure has a continuous transform by dominated convergence (our own). For positive definite functions, the matrix test gives \|f(x+h)−f(x)\|² ≤ 2f(0)(f(0)−Re f(h)), so continuity at zero suffices (our own). Bochner’s theorem then gives the measure.
+
+**Wikipedia:** [Positive-definite function](https://en.wikipedia.org/wiki/Positive-definite_function). It says: “any continuous positive-definite function on the real line is the Fourier transform of a (positive) measure.”
+
+**Sources:**
+
+- [Salomon Bochner, Monotone Funktionen, Stieltjessche Integrale und harmonische Analyse (1933)](https://doi.org/10.1007/bf01452844)
+
+### Alternation makes symplectic transforms involutive
+
+**Remember:** Swapping the inputs negates the phase, so the forward kernel is the inverse.
+
+*True by definition.* MSC 42B10 (Fourier and Fourier-Stieltjes transforms and other transforms of Fourier type). arXiv math.CA. Level 3: graduate.
+
+**Definition.** On ℝ²ᵈ use Lebesgue measure and replace the ordinary Fourier dot product by σ((x,ξ),(y,η)) = ξ·y − x·η. The symplectic Fourier transform integrates against exp(−2πiσ). Swapping the two arguments reverses the sign of σ.
+
+**Problem.** Applying the symplectic Fourier transform twice gives the original function in square-integral norm.
+
+**How the definition helps.** Swapping the arguments and conjugating the exponential leaves this kernel unchanged (our own). The inverse of a unitary integral transform uses that swapped, conjugated kernel (our own). Ordinary Plancherel and a rotation preserving Lebesgue measure give unitarity on square-integrable functions (our own).
+
+**Paper or page:** [Time-Frequency Analysis (Lecture Notes)](https://arxiv.org/abs/2204.01596). It says: “The symplectic Fourier transform is unitary and involutive”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Small tails force large supports
+
+**Remember:** Small tails mean that cutting twice preserves most of the signal.
+
+*Makes the theorem clean to state or prove.* MSC 42B10 (Fourier and Fourier-Stieltjes transforms and other transforms of Fourier type). arXiv math.CA. Level 3: graduate.
+
+**Definition.** A square-integrable signal is ε-concentrated on a measurable set if its norm outside the set is at most ε times its total norm. Use Lebesgue measure on ℝᵈ and the Fourier kernel exp(−2πix·ξ).
+
+**Problem.** Take a unit signal with tail norm ε off T and Fourier tail norm δ off Ω. If ε + δ ≤ 1, then \|T\|\|Ω\| is at least (1 − ε − δ)².
+
+**How the definition helps.** Concentration bounds the combined error of cutting in space and then in frequency by ε + δ (our own). Thus the twice-cut unit signal has norm at least 1 − ε − δ (our own). The restricted Fourier kernel has modulus one on Ω × T and vanishes elsewhere (our own). Cauchy–Schwarz bounds its operator norm by its square-integral norm, √(\|T\|\|Ω\|) (our own).
+
+**Paper or page:** [Time-Frequency Analysis (Lecture Notes)](https://arxiv.org/abs/2204.01596). It says: “Let f ∈ L²(ℝᵈ) (not the zero-function) be εₜ-concentrated on T ⊂ ℝᵈ”
+
+**Sources:**
+
+- [David L. Donoho and Philip B. Stark, Uncertainty Principles and Signal Recovery (1989)](https://doi.org/10.1137/0149053)
+
 ### The Leray multiplier projects vector fields onto divergence-free fields
 
 **Remember:** Remove the part of the vector that points along its frequency.
@@ -254,6 +370,22 @@
 **Sources:**
 
 - [A. P. Calderón and A. Zygmund (1952), On the existence of certain singular integrals, Acta Mathematica](https://doi.org/10.1007/BF02392130)
+
+### Disjoint bands preserve energy
+
+**Remember:** Every frequency contributes to exactly one squared term.
+
+*True by definition.* MSC 42B25 (Maximal functions, Littlewood-Paley theory). arXiv math.CA. Level 3: graduate.
+
+**Definition.** For a square-integrable function on ℝᵈ, use a Fourier transform that preserves the square-integral norm. Partition nonzero frequencies into rings with radii from 2ʲ inclusive to 2ʲ⁺¹ exclusive, for every integer j. Invert the transform separately on each ring, setting it to zero elsewhere. The square function is the square root of the sum of the squared magnitudes of these pieces.
+
+**Problem.** The square-integral norm of this square function equals the square-integral norm of the original signal.
+
+**How the definition helps.** Disjoint rings count each nonzero frequency exactly once when the squared norms are added (our own). Plancherel’s theorem identifies the squared norm of each piece with the integral of squared Fourier magnitude on its ring (our own). Integration commutes with the nonnegative sum, and the single omitted frequency has measure zero (our own). With overlapping smooth weights, the same identity requires their squared magnitudes to sum to one almost everywhere (our own).
+
+**Wikipedia:** [Littlewood–Paley theory](https://en.wikipedia.org/wiki/Littlewood%E2%80%93Paley_theory). It says: “this gives a so-called "dyadic decomposition" of f”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### The Muckenhoupt condition is exactly what weighted maximal function bounds need
 
@@ -290,6 +422,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Adjacent averages detect hidden oscillation
+
+**Remember:** Two neighboring grid intervals catch what one grid interval misses.
+
+*Rules out counterexamples.* MSC 42B35 (Function spaces arising in harmonic analysis). arXiv math.CA. Level 3: graduate.
+
+**Definition.** For a locally integrable function, bounded mean oscillation means that its average absolute deviation from its mean stays uniformly bounded over all bounded intervals. The dyadic test uses only intervals \[k2ʲ,(k+1)2ʲ) for integers j and k. Also bound the difference of the means on any adjacent grid intervals of equal length.
+
+**Problem.** On ℝ, the dyadic deviation bound together with the adjacent mean bound implies bounded mean oscillation over all intervals.
+
+**How the definition helps.** The adjacent mean bound controls the gap when an interval crosses a grid boundary (our own). Choose the smallest grid length at least as long as the interval, then cover it by two neighboring grid intervals (our own). Their combined length is at most four times the original length (our own). Compare with the mean on the first grid interval, using both bounds, then with the original interval’s mean (our own). The function equal to log x for x &gt; 0 and zero elsewhere passes the dyadic test. Its means on opposite sides of zero differ without bound as the intervals shrink (our own).
+
+**Wikipedia:** [Bounded mean oscillation](https://en.wikipedia.org/wiki/Bounded_mean_oscillation). It says: “is a function that is in dyadic BMO but not in BMO.”
+
+**Sources:**
+
+- [Fritz John and Louis Nirenberg, On functions of bounded mean oscillation (1961)](https://doi.org/10.1002/cpa.3160140317)
+
 ### Defining polynomials by orthogonality makes the three-term recurrence a short argument
 
 **Remember:** Move the factor x across the inner product to the lower degree side.
@@ -303,6 +453,22 @@
 **How the definition helps.** With orthogonality as the definition, multiplication by x moves across the inner product. So the inner product of x·pₙ with pₖ equals that of pₙ with x·pₖ, which is zero when k + 1 &lt; n. Hence only three terms of the expansion of x·pₙ survive. With the recurrence as the definition, the recurrence is free but orthogonality is hard. That converse is Favard’s theorem, which Wikipedia names; it builds a positive measure from the recurrence. The proof steps are our own.
 
 **Wikipedia:** [Orthogonal polynomials](https://en.wikipedia.org/wiki/Orthogonal_polynomials). It says: “These recurrence relations are key for deriving properties of orthogonal polynomials.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Raising operators give Fourier eigenfunctions
+
+**Remember:** Each raising step multiplies the Fourier eigenvalue by −i.
+
+*True by definition.* MSC 42C05 (Orthogonal functions and polynomials, general theory of nontrigonometric harmonic analysis), 42A38. arXiv math.CA. Level 3: graduate.
+
+**Definition.** Start with the Gaussian x ↦ exp(−πx²). Repeatedly apply the raising operator h ↦ xh − h′/(2π) to obtain successive Hermite functions up to constant factors. Another definition multiplies the Gaussian by polynomials orthogonal for its squared weight.
+
+**Problem.** With exponential kernel exp(−2πixξ), the Hermite function of degree n has Fourier eigenvalue (−i)ⁿ.
+
+**How the definition helps.** The Fourier transform moves past the raising operator at the cost of a factor −i (our own). The Gaussian transforms to itself, so induction gives the eigenvalues (our own). The Gaussian transform formula and the rules for Fourier transforms of multiplication and differentiation do the work (our own).
+
+**Paper or page:** [Time-Frequency Analysis (Lecture Notes)](https://arxiv.org/abs/2204.01596). It says: “The Hermite functions are eigenfunctions of the Fourier transform”
 
 **Sources:** none listed. No primary source with a working link was found.
 

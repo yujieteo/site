@@ -100,6 +100,54 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Transport plans let atoms split
+
+**Remember:** A plan can send one source atom to two target points.
+
+*Makes the theorem clean to state or prove.* MSC 49Q22 (Optimal transportation). arXiv math.OC. Level 2: later undergraduate.
+
+**Definition.** A transport plan is a probability measure on pairs of points whose two coordinate distributions are the given source and target. A transport map sends each source point to just one target point.
+
+**Problem.** Any two probability measures on Euclidean spaces have a transport plan. They need not admit a transport map.
+
+**How the definition helps.** A joint distribution allows the independent product of the prescribed measures, which always gives a plan. The nLab contrasts this with a source concentrated at one point. In our own explicit example, a map cannot send that point to two targets with half the mass each. A separate optimal transport theorem needs further hypotheses to obtain a cost-minimizing map.
+
+**nLab:** [transport plan](https://ncatlab.org/nlab/show/transport+plan). It says: “there may exist no measure-preserving function between two probability spaces”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Minty tests make solutions convex
+
+**Remember:** Evaluate the operator at the known point so each test is linear.
+
+*True by definition.* MSC 49J40 (Variational inequalities). arXiv math.OC. Level 3: graduate.
+
+**Definition.** Let C be a closed convex subset of a real Hilbert space and let F map C into that space. The usual inequality asks for x in C satisfying ⟨F(x),y − x⟩ ≥ 0 for every y in C. The Minty form replaces F(x) by F(y).
+
+**Problem.** For continuous monotone F on a closed convex set, the solutions of the usual inequality form a closed convex set. Monotonicity means ⟨F(y) − F(x), y − x⟩ ≥ 0.
+
+**How the definition helps.** The Minty form expresses the solution set as an intersection of closed half-spaces with the constraint set. In our own proof, monotonicity gives the forward implication. To reverse it, move y along a segment toward x and use continuity. The work moves to this equivalence, known as Minty’s lemma.
+
+**Paper or page:** [An inertial proximal splitting algorithm for hierarchical bilevel equilibria in Hilbert spaces](https://arxiv.org/abs/2502.20999v1). It says: “If f is monotone, then every solution of (EP) is also a solution of (DEP).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Constant Γ-limits repair cost jumps
+
+**Remember:** A constant sequence still relaxes the cost if nearby values are lower.
+
+*True by definition.* MSC 49J45 (Methods involving semicontinuity and convergence; relaxation). arXiv math.AP, math.OC. Level 3: graduate.
+
+**Definition.** For each open ball around x, take the infimum of each cost on that ball. Take the lower and upper limits of these numbers as the index increases. Then shrink the ball to x in both expressions. Their common value, when they agree at every x, defines the Γ-limit.
+
+**Problem.** Let every term of a sequence equal the same nonnegative cost F on a metric space. Its Γ-limit is the largest lower semicontinuous cost below F. Lower semicontinuity means the value at a point cannot exceed the lower limit of nearby values.
+
+**How the definition helps.** Using neighborhoods instead of constructing sequences makes both limits equal the supremum of the ball infima. In our own proof, a ball with infimum above a threshold contains a smaller such ball around every interior point. This proves lower semicontinuity. Every lower semicontinuous cost below F lies below the formula, by applying its lower bounds on small balls. For our own example on the real line, give zero cost everywhere except at zero, where the cost is one. Its Γ-limit vanishes everywhere.
+
+**Wikipedia:** [Γ-convergence](https://en.wikipedia.org/wiki/%CE%93-convergence). It says: “the largest lower semicontinuous functional below F”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Gamma limits preserve limiting minimizers
 
 **Remember:** Check moving points to keep moving wells from disappearing.
@@ -115,6 +163,40 @@
 **Wikipedia:** [Γ-convergence](https://en.wikipedia.org/wiki/%CE%93-convergence). It says: “then every cluster point of the sequence xₙ is a minimizer of F.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Global slope formulas preserve semicontinuity
+
+**Remember:** Write the slope as a supremum over fixed comparison points.
+
+*True by definition.* MSC 49J45 (Methods involving semicontinuity and convergence; relaxation). arXiv math.AP, math.OC. Level 3: graduate.
+
+**Definition.** At x, compare the decrease max(0,F(x) − F(y)) with the distance d(x,y). The local slope takes the upper limit of this ratio as y approaches x through other points. The global slope takes its supremum over every y ≠ x. Both slopes are zero at an isolated point in a geodesic space.
+
+**Problem.** Suppose F is finite and convex along constant-speed shortest paths in a space where such a path joins every pair of points. If F is lower semicontinuous, its local slope is lower semicontinuous. This means the value at a limit point never exceeds the lower limit of nearby values.
+
+**How the definition helps.** The global formula allows each comparison point to stay fixed while x varies. In our own proof, lower semicontinuity gives the bound for each fixed y ≠ x. Taking the supremum proves the claim. Convexity along the path from x to y identifies the local and global slopes, which is the essential preceding result.
+
+**Paper or page:** [Stability of a class of action functionals depending on convex functions](https://arxiv.org/abs/2106.10908v1). It says: “\\abs {\\partial f}(x)=\\sup <sub>y\\ne x</sub>\\frac{\\left(f(y)-f(x)-\\frac{\\lambda }{2}{\\mathsf{d}}(y,x)<sup>2\\right</sup>)<sup>-}{{\\mathsf{d}}</sup>(y,x)}.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Mosco convergence preserves nearest points
+
+**Remember:** Weak limits stay feasible, and strong approximations recover every target.
+
+*Makes the theorem clean to state or prove.* MSC 49J45 (Methods involving semicontinuity and convergence; relaxation), 49J53. arXiv math.AP, math.OC. Level 3: graduate.
+
+**Definition.** Closed convex sets converge in the sense of Mosco when two tests hold. Every weak subsequential limit of points in the varying sets belongs to the limit set. Weak convergence means convergence of inner products against every fixed vector. Every limit-set point must also be a norm limit of points chosen from each successive set.
+
+**Problem.** For nonempty closed convex sets in a Hilbert space, Mosco convergence makes the nearest point to any fixed x converge in norm.
+
+**How the definition helps.** The two tests bound the nearest distances from opposite sides. In our own proof, approximate the nearest limit-set point in norm to bound the distances from above. The projections are therefore bounded. Each weak subsequential limit belongs to the limit set and attains the minimum by weak lower semicontinuity of distance. Uniqueness gives weak convergence to that nearest point. Convergence of the distances upgrades weak convergence to norm convergence in a Hilbert space.
+
+**Paper or page:** [Stability of a class of action functionals depending on convex functions](https://arxiv.org/abs/2106.10908v1). It says: “J<sup>{f<sup>h</sup>}\_\\tau</sup> x \\rightarrow J<sup>f\_\\tau</sup> x.”
+
+**Sources:**
+
+- [Umberto Mosco, Convergence of convex sets and of solutions of variational inequalities (1969)](https://doi.org/10.1016/0001-8708(69)90009-7)
 
 ### Polyconvexity implies quasiconvexity by averaging
 
@@ -185,6 +267,24 @@
 - [Feng-Yi Liao, Yang Zheng, A Proximal Descent Method for Minimizing Weakly Convex Optimization, arXiv:2509.02804v1 (2025)](https://arxiv.org/abs/2509.02804v1)
 - [J. J. Moreau, Proximité et dualité dans un espace hilbertien, Bulletin de la Société Mathématique de France (1965)](https://doi.org/10.24033/bsmf.1625)
 
+### Moving difference quotients detect stationarity
+
+**Remember:** Moving the base point lets the direction test see both sides.
+
+*Rules out counterexamples.* MSC 49J52 (Nonsmooth analysis). arXiv math.OC. Level 3: graduate.
+
+**Definition.** The Clarke directional derivative takes the upper limit of forward difference quotients while the base point also approaches the point of interest. Its subgradients are the vectors whose inner products with directions never exceed these derivatives.
+
+**Problem.** Suppose a function on Euclidean space is locally Lipschitz, so nearby changes in value are bounded by a constant times distance. At each local minimum, zero is a Clarke subgradient even when a fixed-base directional derivative fails to exist.
+
+**How the definition helps.** The moving-base upper limit includes all forward quotients starting at the minimum, where every quotient is nonnegative. Thus the zero vector satisfies every direction test. In our own example, put f(0) = 0 and f(x) = \|x\|(2 + sin(log \|x\|)) elsewhere. Its derivative is bounded on both sides of zero, so the function is Lipschitz there. The right difference quotient oscillates at the minimum.
+
+**Wikipedia:** [Clarke generalized derivative](https://en.wikipedia.org/wiki/Clarke_generalized_derivative). It says: “f°(x, v) = limsup\[y → x, h ↓ 0\] (f(y + hv) − f(y))/h,”
+
+**Sources:**
+
+- [Frank H. Clarke, Generalized gradients and applications (1975)](https://doi.org/10.1090/s0002-9947-1975-0367131-6)
+
 ### On complete spaces every finite lower semicontinuous convex function has subgradients
 
 **Remember:** A complete space leaves no room for the missing support.
@@ -202,6 +302,112 @@
 **Sources:**
 
 - [Gerd Wachsmuth, A convex, finite and lower semicontinuous function with empty subdifferential, arXiv:2409.18650v1 (2024)](https://arxiv.org/abs/2409.18650v1)
+
+### Proximal maps bound separation
+
+**Remember:** Two subgradient inequalities keep proximal outputs from moving too far.
+
+*True by definition.* MSC 49J52 (Nonsmooth analysis). arXiv math.OC. Level 3: graduate.
+
+**Definition.** A proximal step at x minimizes f(p) + ‖p − x‖²/2 over p. Equivalently, it returns the p for which x − p is a subgradient of f at p. A subgradient is the slope of an affine lower bound that touches f.
+
+**Problem.** Let f be convex on Euclidean space, finite somewhere, never −∞, and have closed sublevel sets. Its proximal map P satisfies ‖P(x) − P(y)‖² ≤ ⟨P(x) − P(y), x − y⟩.
+
+**How the definition helps.** Writing each input as its output plus a subgradient gives two supporting inequalities. In our own proof, adding them gives ⟨(x − p) − (y − q), p − q⟩ ≥ 0 for outputs p and q. Rearranging gives the bound. The quadratic minimum gives this alternative description through its optimality condition.
+
+**Paper or page:** [Optimization with First Order Algorithms](https://arxiv.org/abs/2410.19506v1). It says: “In particular, these two operators are nonexpansive (1-Lipschitz).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Relative interiors let normals add
+
+**Remember:** Require the sets to overlap from the inside before adding normals.
+
+*Rules out counterexamples.* MSC 49J53 (Set-valued and variational analysis), 49J52. arXiv math.OC. Level 3: graduate.
+
+**Definition.** The relative interior of a convex set is its interior in the smallest affine space containing it. Its normal cone at x contains the vectors that make a nonpositive inner product with every displacement from x into the set.
+
+**Problem.** Suppose the relative interiors of two convex sets in Euclidean space meet. At every shared point, the normal cone of the intersection equals the sum of their normal cones.
+
+**How the definition helps.** The relative interior condition permits the rule that adds supporting slopes for a sum of convex functions. In our own derivation, represent each set by a cost equal to zero inside and infinity outside. Adding the costs represents intersection, and their supporting slopes are precisely the normal vectors. The rule for adding slopes supplies the difficult inclusion. In our own counterexample, two externally tangent closed disks meet at one point. Its normal cone fills the plane, but adding the two normal rays gives only a line.
+
+**Paper or page:** [Approximate optimality conditions and sensitivity analysis in nearly convex optimization](https://arxiv.org/abs/2410.04710v1). It says: “If ri Ω₁ ∩ ri Ω₂ ≠ ∅, then for each x̄ ∈ Ω₁ ∩ Ω₂”
+
+**Sources:**
+
+- [Approximate optimality conditions and sensitivity analysis in nearly convex optimization](https://arxiv.org/abs/2410.04710v1)
+
+### A backward adjoint gives sensitivity
+
+**Remember:** Run one linear equation backward to read the initial gradient.
+
+*True by definition.* MSC 49K40 (Sensitivity, stability, well-posedness), 49K15. arXiv math.OC. Level 3: graduate.
+
+**Definition.** Along a solution of x′ = f(x), define an adjoint p by p′ = −Df(x)ᵀp. Give it the terminal value ∇C(x(T)), where C is the terminal cost.
+
+**Problem.** If f and C are continuously differentiable, the gradient of the terminal cost with respect to the initial state is p(0). Assume the solution exists on the full interval for initial states nearby.
+
+**How the definition helps.** The backward equation preserves the inner product with each first-order change of state, replacing a separate forward calculation for each input direction. In our own calculation, the product rule cancels the two terms in the derivative of this inner product. Its terminal value gives the cost change, so its initial value gives the same change. Differentiating the original flow with respect to its initial state supplies the forward equation used here.
+
+**Paper or page:** [Optimal Potential Shaping on SE(3) via Neural ODEs on Lie Groups](https://arxiv.org/abs/2401.15107v2). It says: “\\text{d} (C\\circ \\Psi \_f<sup>T</sup>) = \\lambda (0)\\, ,”
+
+**Sources:**
+
+- [Optimal Potential Shaping on SE(3) via Neural ODEs on Lie Groups](https://arxiv.org/abs/2401.15107v2)
+
+### Moving contacts preserve viscosity subsolutions
+
+**Remember:** Let the test contact move along with the solution.
+
+*Makes the theorem clean to state or prove.* MSC 49L25 (Viscosity solutions to Hamilton-Jacobi equations in optimal control and differential games), 35D40. arXiv math.AP, math.OC. Level 3: graduate.
+
+**Definition.** The upper half-relaxed limit at x takes the upper limit of sequence values as the index tends to infinity and the evaluation point approaches x. A viscosity subsolution is upper semicontinuous, meaning its value dominates all nearby limiting values. Whenever a smooth test function touches it from above, the test gradient must satisfy the equation with equality replaced by ≤.
+
+**Problem.** Consider a fixed continuous first-order equation H(x,∇u) = 0 on an open Euclidean set. If a sequence of viscosity subsolutions is uniformly bounded on each compact subset, its upper half-relaxed limit is a viscosity subsolution.
+
+**How the definition helps.** The joint limit allows points of contact with a smooth test to move as the index increases. In our own proof, make contact strict by adding a small quadratic centered at the contact point. Choose a subsequence approaching the limiting value and maximize each subsolution minus the test on a small closed ball. The maximizing points approach the strict contact point. Continuity of H then gives the test inequality there.
+
+**Wikipedia:** [Viscosity solution](https://en.wikipedia.org/wiki/Viscosity_solution). It says: “More generally, the notions of viscosity sub- and supersolution are also conserved by half-relaxed limits.”
+
+**Paper or page:** [Convergence Guarantees for Neural Network-Based Hamilton-Jacobi Reachability](https://arxiv.org/abs/2410.02904v1). It says: “is a viscosity subsolution to the equation”
+
+**Sources:**
+
+- [Michael Crandall, Hitoshi Ishii and Pierre-Louis Lions, User’s guide to viscosity solutions of second order partial differential equations (1992)](https://doi.org/10.1090/s0273-0979-1992-00266-5)
+
+### Quadratic envelopes bound upward curvature
+
+**Remember:** Take away the common quadratic and the remaining infimum is concave.
+
+*True by definition. Confidence: medium.* MSC 49L25 (Viscosity solutions to Hamilton-Jacobi equations in optimal control and differential games), 49J45. arXiv math.AP, math.OC. Level 3: graduate.
+
+**Definition.** For a bounded Lipschitz function g on Euclidean space, define u(t,x) for t &gt; 0 by minimizing g(y) + ‖x − y‖²/(2t) over y. This quadratic envelope represents the solution of ∂u/∂t + ‖∇u‖²/2 = 0 with initial value g.
+
+**Problem.** For t &gt; 0, the function x ↦ u(t,x) − ‖x‖²/(2t) is concave, even if g is not.
+
+**How the definition helps.** The formula gives each competitor the same quadratic term in x. In our own proof, subtract that term and take the infimum of the remaining affine functions. The work moves to proving that the envelope gives the viscosity solution, which interprets the equation by using smooth touching tests.
+
+**Wikipedia:** [Moreau's theorem](https://en.wikipedia.org/wiki/Moreau%27s_theorem). It says: “φ₍α₎(x) = inf\[y ∈ H\] 1/(2α) ‖y − x‖² + φ(y).”
+
+**Paper or page:** [Note on the q-Logarithmic Sobolev and p-Talagrand Inequalities on Carnot Groups](https://arxiv.org/abs/2105.04928v1). It says: “is given by the Hopf-Lax formula”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Linear penalties enforce exact feasibility
+
+**Remember:** A penalty steeper than the multiplier makes every violation too expensive.
+
+*Rules out counterexamples. Confidence: medium.* MSC 49N15 (Duality theory (optimization)), 49M37. arXiv math.OC. Level 3: graduate.
+
+**Definition.** To penalize g(x) ≤ 0, add ρ max(0, g(x)) to the objective. A quadratic penalty instead adds ρ max(0, g(x))².
+
+**Problem.** Suppose f attains its constrained minimum m and some λ ≥ 0 satisfies infₓ(f(x) + λg(x)) = m. For every ρ &gt; λ, the penalized and constrained objectives have exactly the same minimizers.
+
+**How the definition helps.** The linear penalty makes the objective exceed the multiplier lower bound wherever g is positive. In our own proof, f(x) + λg(x) ≥ m everywhere, and the penalty vanishes at every feasible minimizer. For our own counterexample, minimize −x subject to x ≤ 0. Every quadratic penalty with positive weight ρ gives the infeasible minimizer 1/(2ρ). Establishing the multiplier bound requires a separate argument.
+
+**Wikipedia:** [Penalty method](https://en.wikipedia.org/wiki/Penalty_method). It says: “Common penalty functions in constrained optimization are the quadratic penalty function and the deadzone-linear penalty function.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Perturbation duality gives weak duality through affine lower bounds
 
@@ -309,6 +515,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Tight transport pairs certify optimality
+
+**Remember:** Move mass only where the two potentials add to the cost.
+
+*True by definition. Confidence: medium.* MSC 49Q22 (Optimal transportation), 49N15. arXiv math.OC. Level 3: graduate.
+
+**Definition.** On finite source and target sets, assign real costs c(x,y) to pairs and real numbers a(x) to sources. Define b(y) as the minimum of c(x,y) − a(x) over all sources x. Thus b is the largest target function satisfying a(x) + b(y) ≤ c(x,y) for every pair. Call a pair tight when equality holds.
+
+**Problem.** A transport plan distributes nonnegative mass over pairs, with prescribed source and target totals. A plan supported on tight pairs has minimum cost among all plans with those totals.
+
+**How the definition helps.** The minimum formula constructs a lower bound on the cost of every plan from just one source function. In our own finite proof, sum the pair inequalities after weighting them by the mass transported. The lower bound depends only on the prescribed totals, and tight pairs attain it. Finite linear programming duality gives the converse, producing a certificate for each optimal plan.
+
+**Paper or page:** [Optimal transport and regularity of weak Kantorovich potentials on a globally hyperbolic spacetime](https://arxiv.org/abs/2412.01012v2). It says: “If $\\varphi $ is any Kantorovich potential, then it holds that $\\varphi <sup>c</sup>(y)-\\varphi (x)=c(x,y)$ $\\pi $-a.e.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Transport plans are optimal exactly when no cyclic reassignment lowers cost
 
 **Remember:** An optimal shipment has no cheaper cycle of reassignments.
@@ -327,6 +549,22 @@
 
 - [L. De Pascale, A. Kausamo, K. Wyczesany, 60 years of cyclic monotonicity: a survey, arXiv:2308.07682v2 (2023)](https://arxiv.org/abs/2308.07682v2)
 - [Aldo Pratelli, On the sufficiency of c-cyclical monotonicity for optimality of transport plans, Mathematische Zeitschrift (2008)](https://doi.org/10.1007/s00209-007-0191-7)
+
+### Distance inequalities compare gradient flows
+
+**Remember:** Compare two flows in both directions and their energy terms cancel.
+
+*True by definition.* MSC 49J45 (Methods involving semicontinuity and convergence; relaxation). arXiv math.AP, math.OC. Level 4: research.
+
+**Definition.** Take a continuous path x(t) in a metric space. On each closed interval of positive times, require distance traveled to be bounded by the integral of some integrable speed bound over every subinterval. For each fixed comparison point y, put D(t) = d(x(t),y)². Require D′(t)/2 + λD(t)/2 ≤ F(y) − F(x(t)) almost everywhere.
+
+**Problem.** Let F be finite and lower semicontinuous, meaning values cannot jump upward at a limit point. Two such paths for F and λ satisfy d(x(t),z(t)) ≤ exp(−λt)d(x(0),z(0)) for t ≥ 0.
+
+**How the definition helps.** The distance formulation gives opposite energy differences when each path serves as comparison for the other. For smooth convex energies it replaces the differential equation x′ = −∇F(x) when λ = 0. In our own proof outline, vary the two times independently before restricting to equal times. The energy terms cancel, and integrating the remaining differential inequality gives the bound. Existence of paths satisfying the comparison requires a separate theorem.
+
+**Paper or page:** [Stability of a class of action functionals depending on convex functions](https://arxiv.org/abs/2106.10908v1). It says: “{\\mathsf{d}}(G<sub>t</sub><sup>f</sup> x<sub>0</sub>,G<sub>t</sub><sup>f</sup> x<sub>1</sub>)\\le e<sup>-\\lambda t</sup>{\\mathsf{d}}(x<sub>0</sub>,x<sub>1</sub>)\\quad \\text{for every $t\\in \[0,+\\infty )$}.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Tangential polyconvexity gives minimizers for elastic energies with surface terms
 

@@ -16,6 +16,22 @@
 
 - [ProofWiki, Set of Endomorphisms of Non-Abelian Group is not Ring](https://proofwiki.org/wiki/Set_of_Endomorphisms_of_Non-Abelian_Group_is_not_Ring)
 
+### Preserving one preserves units
+
+**Remember:** Send both sides of the inverse equations, including one.
+
+*Rules out counterexamples.* MSC 16U60 (Units, groups of units (associative rings and algebras)). arXiv math.RA. Level 1: early undergraduate.
+
+**Definition.** A unital ring homomorphism preserves the multiplicative identity as well as addition and multiplication. A unit is an element with a two-sided multiplicative inverse.
+
+**Problem.** A unital ring homomorphism sends units to units and restricts to a homomorphism of their multiplicative groups.
+
+**How the definition helps.** The image of an inverse is an inverse because the image of one is one. Our own counterexample is n ↦ (n, 0) from ℤ to ℤ × ℤ, which preserves addition and multiplication but not one. Our own check notes that (1, 0) is not invertible because its second coordinate is zero.
+
+**Wikipedia:** [Ring homomorphism](https://en.wikipedia.org/wiki/Ring_homomorphism). It says: “For any unit a in R, f(a) is a unit element such that f(a)⁻¹ = f(a⁻¹).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Allowing 0 = 1 gives the category of rings a terminal object
 
 **Remember:** Every ring maps to the one-element ring in exactly one way.
@@ -390,6 +406,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Semiperfect rings give projective covers
+
+**Remember:** Lift idempotents to lift the projective pieces.
+
+*Rules out counterexamples.* MSC 16L30 (Noncommutative local and semilocal rings, perfect rings), 16D40. arXiv math.RA. Level 3: graduate.
+
+**Definition.** Write J for the Jacobson radical of a ring R, the intersection of its maximal left ideals. Call R semilocal if R/J is a finite product of matrix rings over division rings. A semilocal ring is semiperfect if each idempotent of R/J is the image of an idempotent in R. An idempotent is an element equal to its square.
+
+**Problem.** Every finitely generated left module over a semiperfect ring has a projective cover. This is a surjection from a direct summand of a free module such that no proper submodule still maps onto the target.
+
+**How the definition helps.** Lifting idempotents allows the direct summands over R/J to lift to projective modules over R, in our own explanation. The projective cover theorem turns these lifts into covers. In our own example, invert all integers coprime to six in ℤ. The resulting domain has radical quotient 𝔽₂ × 𝔽₃. The idempotent (1, 0) cannot lift because a domain has only the idempotents zero and one. The corresponding simple module 𝔽₂ has no projective cover.
+
+**Wikipedia:** [Perfect ring](https://en.wikipedia.org/wiki/Perfect_ring). It says: “A semiperfect ring is a ring over which every finitely generated left module has a projective cover.”
+
+**Sources:**
+
+- [Hyman Bass, Finitistic dimension and a homological generalization of semi-primary rings (1960).](https://doi.org/10.1090/s0002-9947-1960-0157984-8)
+
 ### Splitting multiplication by the Frobenius coproduct makes special Frobenius algebras separable
 
 **Remember:** The coproduct already is the section that separability asks for.
@@ -440,6 +474,26 @@
 
 - [C. Hopkins, Rings with minimal condition for left ideals, Annals of Mathematics 40 (1939) 712–730](https://doi.org/10.2307/1968951)
 - [J. Levitzki, On rings which satisfy the minimum condition for the right-hand ideals, Compositio Mathematica 7 (1940) 214–222](https://www.numdam.org/item/CM_1940__7__214_0/)
+
+### Semiprime Goldie rings have semisimple fractions
+
+**Remember:** Semiprimeness excludes the square-zero ideal that survives in the dual numbers.
+
+*Rules out counterexamples.* MSC 16P60 (Chain conditions on annihilators and summands: Goldie-type conditions), 16N60. arXiv math.RA. Level 3: graduate.
+
+**Definition.** A right Goldie ring has no infinite direct sum of nonzero right ideals. Every ascending chain of right annihilators must stabilize. The right annihilator of a set S consists of elements r such that sr = 0 for every s in S. A semiprime ring has no nonzero two-sided ideal whose square is zero.
+
+**Problem.** A semiprime right Goldie ring has a semisimple Artinian right ring of fractions. Such a ring of fractions is a finite product of matrix rings over division rings.
+
+**How the definition helps.** Semiprimeness rules out the square-zero ideal that spoils the conclusion in our own example. In the dual numbers ℚ\[ε\]/(ε²), every element has the form a + bε with rational coefficients. The ring is right Goldie because it is finite dimensional. Every element that is not a zero divisor already has an inverse, so taking fractions leaves the ideal (ε) intact. Goldie’s theorem establishes the fraction ring structure when both hypotheses hold.
+
+**Wikipedia:** [Goldie's theorem](https://en.wikipedia.org/wiki/Goldie%27s_theorem). It says: “the semiprime right Goldie rings are precisely those that have a semisimple Artinian right classical ring of quotients”
+
+**Paper or page:** [Pointed Hopf algebras, the Dixmier-Moeglin Equivalence and Noetherian group algebras](https://arxiv.org/abs/2507.23730v2). It says: “R is semiprime right Goldie.”
+
+**Sources:**
+
+- [Alfred Goldie, Semi-Prime Rings with Maximum Condition (1960).](https://doi.org/10.1112/plms/s3-10.1.201)
 
 ### Defining the symmetric algebra as free commutative gives its tensor-algebra presentation
 

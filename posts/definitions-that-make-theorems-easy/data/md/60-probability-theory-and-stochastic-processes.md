@@ -1,3 +1,19 @@
+### Bayesian odds update by multiplication
+
+**Remember:** Multiply the old odds by how strongly the evidence favors the hypothesis.
+
+*True by definition.* MSC 60A05 (Axioms; other general questions in probability). arXiv math.PR. Level 1: early undergraduate.
+
+**Definition.** The odds of a hypothesis are its probability divided by the probability of its complement. After observing evidence, use conditional probabilities in the same ratio.
+
+**Problem.** Posterior odds equal prior odds times the ratio of the evidence probabilities under the hypothesis and its complement. Assume the prior odds are finite and nonzero, and the evidence has positive probability under the complement.
+
+**How the definition helps.** Taking the ratio cancels the shared probability of the evidence in Bayes’ two formulas (our own). The work lies in Bayes’ theorem, which rewrites each conditional probability using the common joint event (our own).
+
+**Wikipedia:** [Bayes' theorem](https://en.wikipedia.org/wiki/Bayes%27_theorem). It says: “This is often summarized by saying that the posterior odds are the prior odds times the likelihood.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Mean squared deviation makes variance nonnegative and unchanged by shifts
 
 **Remember:** Squares cannot be negative, and shifting X also shifts its mean.
@@ -102,6 +118,104 @@
 
 - [Georgios Tzachristas, Lei Deng, Ioannis Tzachristas, Gong Zhang, Renhai Chen, A Mathematical Theory of Top-k Sparse Attention via Total Variation Distance, arXiv:2512.07647v1 (2025)](https://arxiv.org/abs/2512.07647v1)
 
+### All medians minimize absolute error
+
+**Remember:** Keep both halves balanced, even when that leaves a whole interval.
+
+*Makes the theorem clean to state or prove.* MSC 60E05 (Probability distributions: general theory). arXiv math.PR. Level 1: early undergraduate.
+
+**Definition.** A median is any number with at least half the probability at or below it and at least half at or above it. For an even list, a common convention picks the midpoint of the two middle values instead.
+
+**Problem.** For a random variable with finitely many possible values, the medians are exactly the numbers that minimize mean absolute error.
+
+**How the definition helps.** The two median inequalities give exactly the slope conditions for a minimum (our own). At a candidate m, the left slope of the expected error is 2P(X &lt; m) − 1 (our own). The right slope is 2P(X ≤ m) − 1 (our own). The error is convex, so it reaches a minimum exactly when these slopes bracket zero (our own). For equal probabilities at zero and two, every point between them minimizes the error (our own).
+
+**Wikipedia:** [Median](https://en.wikipedia.org/wiki/Median). It says: “m is a median of X if and only if m is a minimizer of the mean absolute error with respect to X.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Counting endpoints gives right continuity
+
+**Remember:** Count the point itself to get the limit from the right.
+
+*Rules out counterexamples.* MSC 60E05 (Probability distributions: general theory). arXiv math.PR. Level 1: early undergraduate.
+
+**Definition.** Define the cumulative distribution function at x as the probability of a value at or below x. The strict alternative counts only values below x.
+
+**Problem.** Every cumulative distribution function is right-continuous, even at a point with positive probability.
+
+**How the definition helps.** As thresholds decrease to x, the shrinking events intersect in the event that the value is at or below x (our own). The work lies in continuity of probability for decreasing events, which follows from countable additivity (our own). For a variable always equal to zero, the strict alternative is zero at zero but one just to its right (our own).
+
+**Wikipedia:** [Cumulative distribution function](https://en.wikipedia.org/wiki/Cumulative_distribution_function). It says: “Every probability distribution defined on the real numbers, discrete or "mixed" as well as continuous, is uniquely identified by a right-continuous monotone increasing function”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Exponential minimum rates add
+
+**Remember:** The minimum exceeds a threshold exactly when every wait exceeds it.
+
+*True by definition.* MSC 60E05 (Probability distributions: general theory). arXiv math.PR. Level 1: early undergraduate.
+
+**Definition.** Define an exponential wait of rate λ by the chance exp(−λt) that it lasts past time t. Here λ is positive and t is nonnegative. The usual density instead gives probabilities by integrating over intervals.
+
+**Problem.** The minimum of finitely many independent exponential waits is exponential, with rate equal to the sum of their rates.
+
+**How the definition helps.** The minimum lasts past t exactly when every wait lasts past t (our own). Independence turns that probability into a product of exponentials, so their rates add (our own). To recover the density, differentiate one minus the probability of lasting past t (our own).
+
+**Wikipedia:** [Exponential distribution](https://en.wikipedia.org/wiki/Exponential_distribution). It says: “is also exponentially distributed, with parameter λ = λ₁ + ⋯ + λₙ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Factorial moments count distinct successes
+
+**Remember:** Count distinct trials so every ordered group succeeds with the same probability.
+
+*True by definition.* MSC 60E05 (Probability distributions: general theory). arXiv math.PR. Level 1: early undergraduate.
+
+**Definition.** The kth factorial moment is the average number of ways to choose k distinct items in order from X items. The ordinary kth moment instead averages the number of ordered choices that allow repeats.
+
+**Problem.** Let X count successes in n independent trials with common success probability p. For 1 ≤ k ≤ n, its kth factorial moment equals n(n − 1)⋯(n − k + 1) times pᵏ.
+
+**How the definition helps.** Every ordered group of k distinct trials succeeds with probability p to the kth power (our own). Add these probabilities to get the average count (our own). The work moves to interpreting a falling factorial as the count of ordered choices without repeats (our own).
+
+**Wikipedia:** [Factorial moment](https://en.wikipedia.org/wiki/Factorial_moment). It says: “then the factorial moments of X are E\[(X)ᵣ\] = (n choose r) pʳ r! = (n)ᵣ pʳ,”
+
+**Sources:**
+
+- [R. B. Potts, Note on the Factorial Moments of Standard Distributions, Australian Journal of Physics 6 (1953), 498–499.](https://doi.org/10.1071/ph530498)
+
+### Geometric waits forget past failures
+
+**Remember:** Past failures leave the next toss unchanged.
+
+*True by definition.* MSC 60E05 (Probability distributions: general theory). arXiv math.PR. Level 1: early undergraduate.
+
+**Definition.** Define the geometric wait as the number of trials up to and including the first success. The trials are independent and have the same positive success probability. The alternative lists the probability of each possible wait length.
+
+**Problem.** Given no success in the first m trials, the remaining wait has the original geometric law. Assume that the event we condition on has positive probability.
+
+**How the definition helps.** The future trials have the same law even after conditioning on earlier failures (our own). The work of recovering the probability formula lies in multiplying the probabilities of consecutive failures and one success (our own).
+
+**Wikipedia:** [Geometric distribution](https://en.wikipedia.org/wiki/Geometric_distribution). It says: “The geometric distribution is the only memoryless discrete probability distribution.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Independent binomial counts add
+
+**Remember:** Join the trial lists to add the counts.
+
+*True by definition.* MSC 60E05 (Probability distributions: general theory). arXiv math.PR. Level 1: early undergraduate.
+
+**Definition.** A binomial random variable counts successes in a fixed number of independent trials with the same success probability. The alternative definition lists the probabilities using binomial coefficients.
+
+**Problem.** The sum of independent binomial counts from m and n trials with the same success probability is binomial with m + n trials.
+
+**How the definition helps.** Putting the trial lists together adds their counts without changing the success probability (our own). Independence of the two counts allows us to model them with two independent lists (our own). The work of recovering the probability formula lies in counting which trials succeed (our own).
+
+**Paper or page:** [Sum of Independent Binomial Random Variables](https://proofwiki.org/wiki/Sum_of_Independent_Binomial_Random_Variables). It says: “Then their sum Z = X + Y is distributed as: Z ∼ Binomial(m + n, p)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Joint normality makes uncorrelated normal variables independent
 
 **Remember:** Jointly normal means every straight-line mixture is normal, not just each variable alone.
@@ -115,6 +229,38 @@
 **How the definition helps.** For jointly normal variables, the mean and covariance fix the joint law, so zero covariance gives a product law. Without joint normality this fails. Let X be standard normal, and let W be ±1 with equal probability, independent of X. Let Y = WX. Then X and Y are each standard normal and uncorrelated, but \|Y\| = \|X\|, so they are not independent. Requiring every linear combination to be normal excludes this example, because X + Y is 0 with probability 1/2.
 
 **Wikipedia:** [Misconceptions about the normal distribution](https://en.wikipedia.org/wiki/Misconceptions_about_the_normal_distribution). It says: “In that case, if X and Y are uncorrelated then they are independent.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Standardization makes correlation unitless
+
+**Remember:** Remove the offset and the units before multiplying.
+
+*True by definition.* MSC 60E05 (Probability distributions: general theory). arXiv math.PR. Level 1: early undergraduate.
+
+**Definition.** Standardize each variable by subtracting its mean and dividing by its positive standard deviation. Define correlation as the average product of the two standardized variables. Another formula divides their covariance, the average product of the centered variables, by both standard deviations.
+
+**Problem.** Adding constants or multiplying by positive constants separately does not change the population correlation. Assume both variances are finite and positive.
+
+**How the definition helps.** Standardizing either variable cancels a change of origin or a positive change of scale (our own). Adding a constant shifts the mean by the same amount, so the centered value stays the same (our own). Positive rescaling multiplies the centered value and standard deviation by the same factor (our own). Taking the expected product gives the covariance formula (our own).
+
+**Wikipedia:** [Pearson correlation coefficient](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient). It says: “A key mathematical property of the Pearson correlation coefficient is that it is invariant under separate changes in location and scale in the two variables.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Subset overlap reveals hypergeometric symmetry
+
+**Remember:** The overlap does not care which subset you draw first.
+
+*True by definition.* MSC 60E05 (Probability distributions: general theory). arXiv math.PR. Level 1: early undergraduate.
+
+**Definition.** Take two independent, uniformly chosen subsets of sizes K and n from a population of size N. Define the hypergeometric count as the number of elements they share. The usual sampling model fixes the K marked elements in advance.
+
+**Problem.** In the hypergeometric law, swapping the number of marked elements and the sample size leaves the count distribution unchanged.
+
+**How the definition helps.** Swapping the two subsets does not change their overlap (our own). To recover the usual model, condition on the marked subset (our own). Each fixed subset of size K gives the same count law because relabeling the population changes no sampling probabilities (our own).
+
+**Wikipedia:** [Hypergeometric distribution](https://en.wikipedia.org/wiki/Hypergeometric_distribution). It says: “The symmetry in K and n stems from the fact that the two rounds are independent”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -167,6 +313,24 @@
 **Sources:**
 
 - [N. Metropolis, A. W. Rosenbluth, M. N. Rosenbluth, A. H. Teller and E. Teller, Equation of State Calculations by Fast Computing Machines, Journal of Chemical Physics 21 (1953)](https://doi.org/10.1063/1.1699114)
+
+### Countable additivity blocks fair integer lotteries
+
+**Remember:** Countably many equal chances cannot add to one.
+
+*Rules out counterexamples.* MSC 60A05 (Axioms; other general questions in probability), 01A60. arXiv math.PR, math.HO. Level 2: later undergraduate.
+
+**Definition.** Kolmogorov’s definition makes probabilities add over countably many disjoint events, not just finitely many. In a fair lottery on positive integers, all single outcomes have equal probability.
+
+**Problem.** There is no countably additive probability on the positive integers with equal probabilities for every single outcome.
+
+**How the definition helps.** Countable additivity makes the probability of the whole lottery the sum of the single outcomes’ probabilities. In our own proof, any positive common probability would make a sufficiently large finite set have probability greater than one. A common probability of zero gives total probability zero. For our own finitely additive example, allow the finite sets and their complements as events. Give finite sets probability zero and their complements probability one.
+
+**Wikipedia:** [Probability axioms](https://en.wikipedia.org/wiki/Probability_axioms). It says: “The third axiom, σ-additivity, is relatively modern, and originates with Lebesgue's measure theory.”
+
+**Sources:**
+
+- [A. N. Kolmogorov, Foundations of the Theory of Probability (1933, English translation 1950)](https://archive.org/details/foundationsofthe00kolm)
 
 ### Independence of σ-algebras makes functions of independent variables independent
 
@@ -673,6 +837,24 @@
 **Sources:**
 
 - [Michael Rothschild and Joseph E. Stiglitz, Increasing risk: I. A definition, Journal of Economic Theory 2 (1970) 225–243](https://doi.org/10.1016/0022-0531(70)90038-4)
+
+### Two particles test chaos
+
+**Remember:** Two-particle averages control the variance of the whole particle cloud.
+
+*Makes the theorem clean to state or prove.* MSC 60F05 (Central limit and other weak theorems), 82B21. arXiv math.PR, math-ph. Level 3: graduate.
+
+**Definition.** Represent n particles by their empirical measure, which puts mass 1/n at each particle position. Call the laws chaotic with limit μ if every fixed number of labeled positions converges jointly to independent samples from μ. Here convergence means convergence of averages against bounded continuous functions.
+
+**Problem.** Assume the position space has a complete separable metric and each joint law is invariant under particle permutations. If the two-particle law converges to two independent samples from μ, the laws are chaotic with limit μ.
+
+**How the definition helps.** The first two particle laws give the mean and variance of every bounded continuous empirical average (our own). The limit variance is zero, so the empirical law tends to μ in probability (our own). The remaining work compares fixed-size draws with and without replacement, whose difference vanishes (our own).
+
+**Paper or page:** [Aspects of Coulomb gases](https://arxiv.org/abs/2108.10653v2). It says: “For all μ ∈ ℳ₁(E), the following properties are equivalent”
+
+**Sources:**
+
+- [Djalil Chafaï, Aspects of Coulomb gases](https://arxiv.org/abs/2108.10653v2)
 
 ### Lower semicontinuity makes the large deviations rate function unique
 
@@ -1270,6 +1452,22 @@
 **How the definition helps.** The definition replaces a single recurrent state by a set A. In A, the chain can forget its past with a coin flip of probability ε, and this gives the coupling arguments of the countable case. The page couples two copies of the chain: in A they use the same coin flip, so they meet with probability at least ε. Our own: on an uncountable space with continuous transition densities, the chain hits each single point with probability 0. So the countable definition of a recurrent state would apply to no state at all. What stays hard is to find a suitable set A and measure ρ for a given chain.
 
 **Wikipedia:** [Harris chain](https://en.wikipedia.org/wiki/Harris_chain), [Markov chain](https://en.wikipedia.org/wiki/Markov_chain). It says: “Many results for discrete-time Markov chains with finite state space can be generalized to chains with uncountable state space through Harris chains.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Detailed balance excludes one-way cycles
+
+**Remember:** Pairwise balance reverses an entire path, one step at a time.
+
+*Rules out counterexamples.* MSC 60J10 (Markov chains (discrete-time Markov processes on discrete state spaces)), 82C31. arXiv math.PR, cond-mat.stat-mech. Level 3: graduate.
+
+**Definition.** Stationarity balances the total probability flowing into and out of each state. Detailed balance instead requires the equilibrium probability of every one-step move to equal that of its reverse.
+
+**Problem.** A finite stationary Markov chain has the same path law when read backward exactly when it satisfies detailed balance.
+
+**How the definition helps.** Pairing opposite moves lets the initial equilibrium weight pass along the path one transition at a time (our own). The result is exactly the probability of the reversed path (our own). Paths with one transition give the converse (our own). A deterministic four-state cycle has a uniform stationary law, yet each forward move has zero probability in reverse (our own).
+
+**nLab:** [detailed balance](https://ncatlab.org/nlab/show/detailed+balance). It says: “A Markov process satisfies detailed balance if and only if it is time-reversible.”
 
 **Sources:** none listed. No primary source with a working link was found.
 

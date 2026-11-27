@@ -14,6 +14,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Simply connected domains admit harmonic conjugates
+
+**Remember:** A curl-free field gives one integral value when there are no holes.
+
+*Rules out counterexamples.* MSC 31A05 (Harmonic, subharmonic, superharmonic functions in two dimensions). arXiv math.CV. Level 2: later undergraduate.
+
+**Definition.** For a real harmonic function u in the plane, find its conjugate by integrating the field (−∂u/∂y, ∂u/∂x). This gives the imaginary part of a holomorphic function if the integral does not depend on the path. A simply connected domain is connected and every loop in it can shrink to a point.
+
+**Problem.** On a simply connected planar domain, each real harmonic function has a single-valued harmonic conjugate, unique up to a constant.
+
+**How the definition helps.** In our own proof, simple connectivity makes the integral of the rotated gradient independent of the path. Its curl equals the Laplacian of u, which vanishes because u is harmonic. The resulting potential satisfies the equations for a harmonic conjugate, and any two potentials differ by a constant. On an annulus centered at zero, the rotated gradient of log\|z\| integrates to 2π around a counterclockwise circle.
+
+**Wikipedia:** [Harmonic conjugate](https://en.wikipedia.org/wiki/Harmonic_conjugate). It says: “taking a harmonic function u on a simply connected region in ℝ² to its harmonic conjugate v”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The real-part Poisson kernel makes Poisson integrals harmonic
 
 **Remember:** Average the holomorphic expression, then take its real part.
@@ -27,6 +43,22 @@
 **How the definition helps.** The real-part formula makes the Poisson integral the real part of one holomorphic function. Move the real part outside the integral, which is valid since f is real. The integral of the complex expression is holomorphic because its power series in z converges uniformly on each smaller closed disc before integration. This is our own argument and avoids computing second partial derivatives of the real kernel. The work goes into justifying the holomorphic integral and identifying the two kernel formulas by multiplying by the conjugate of the denominator.
 
 **Wikipedia:** [Poisson kernel](https://en.wikipedia.org/wiki/Poisson_kernel). It says: “is harmonic in D and has a radial limit that agrees with f almost everywhere on the boundary T of the disc.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Increasing convex functions preserve subharmonicity
+
+**Remember:** A convex increasing function keeps the center below the new average.
+
+*True by definition.* MSC 31B05 (Harmonic, subharmonic, superharmonic functions in higher dimensions). arXiv math.AP. Level 2: later undergraduate.
+
+**Definition.** Define a continuous subharmonic function by requiring its value at each center to be at most its spherical average on every interior ball. The twice differentiable definition uses a nonnegative Laplacian instead.
+
+**Problem.** Composing a continuous subharmonic function with a convex nondecreasing real function gives another subharmonic function.
+
+**How the definition helps.** In our own proof, the average definition lets us apply monotonicity and then Jensen’s inequality. First apply the nondecreasing function to the inequality between the center value and the sphere average. Convexity bounds the function of the average by the average of the function. The work is showing that the average test agrees with comparison against harmonic functions on balls.
+
+**Wikipedia:** [Subharmonic function](https://en.wikipedia.org/wiki/Subharmonic_function). It says: “the values of the subharmonic function are no larger than the values of the harmonic function also inside the ball”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -64,6 +96,22 @@
 
 - [F. Riesz, Sur les fonctions subharmoniques et leur rapport à la théorie du potentiel, Acta Mathematica 48 (1926)](https://doi.org/10.1007/bf02565338)
 
+### Conformal maps preserve condenser capacity
+
+**Remember:** In the plane, the gradient scale cancels the area scale.
+
+*True by definition.* MSC 31A15 (Potentials and capacity, harmonic measure, extremal length and related notions in two dimensions). arXiv math.CV. Level 3: graduate.
+
+**Definition.** On a bounded planar domain with two disjoint smooth boundary curves, take the infimum of the integral of squared gradient length. Use smooth interior functions that extend continuously to the closure, with value zero on one curve and one on the other. This defines condenser capacity without first solving for the equilibrium voltage.
+
+**Problem.** A conformal bijection that extends to a homeomorphism of the closures preserves this capacity.
+
+**How the definition helps.** In our own proof, using the energy infimum makes it enough to transport each test function. Composing with the map multiplies squared gradient length by the squared magnitude of its derivative. This is also the area factor, so changing variables gives equal energies. The inverse map gives the reverse correspondence, and the two infima agree. The work is proving agreement with the charge computed from the harmonic voltage with the prescribed boundary values.
+
+**Wikipedia:** [Capacity of a set](https://en.wikipedia.org/wiki/Capacity_of_a_set). It says: “a variational characterization: C(Σ, S) is the infimum of the Dirichlet's energy functional”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Conformal maps transport harmonic measure
 
 **Remember:** Transport the boundary data and its harmonic average stays the same.
@@ -81,6 +129,42 @@
 **Paper or page:** [Rational lemniscates and the matching problem](https://arxiv.org/abs/2507.03547v1). It says: “ω(B₁,w,Ω) = ω(B₂,f(w),Ω′) (w ∈ Ω).”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Disk averages preserve harmonic measure
+
+**Remember:** A fixed center keeps the boundary average fixed.
+
+*True by definition. Confidence: medium.* MSC 31A15 (Potentials and capacity, harmonic measure, extremal length and related notions in two dimensions). arXiv math.DS. Level 3: graduate.
+
+**Definition.** Take a bounded planar domain enclosed by a simple closed curve. Choose a conformal bijection from the disk that sends its center to p. Its boundary map sends uniform circle probability to a measure called harmonic measure from p. Equivalently, averaging continuous boundary data against this measure gives the value of their harmonic extension at p.
+
+**Problem.** Let a holomorphic self-map of this domain extend continuously to its closure and send boundary to boundary. If it fixes p, it preserves harmonic measure from p.
+
+**How the definition helps.** In our own proof, disk coordinates turn harmonic measure into a circle average. The boundary extension theorem gives a continuous boundary map in both directions. In these coordinates the given map fixes zero. Extend continuous circle data harmonically using the Poisson formula. Composing with the disk map preserves harmonicity and the value at zero. The mean value property therefore gives equal boundary averages before and after composition.
+
+**Paper or page:** [Pesin theory for transcendental maps and applications](https://arxiv.org/abs/2410.19703v2). It says: “the harmonic measure $ \\omega \_U(p,\\cdot ) $ is invariant under $ f $.”
+
+**Sources:**
+
+- [Pesin theory for transcendental maps and applications](https://arxiv.org/abs/2410.19703v2)
+
+### Disk derivatives give conformal radius scaling
+
+**Remember:** Compose the disk map and multiply the derivatives.
+
+*True by definition.* MSC 31A15 (Potentials and capacity, harmonic measure, extremal length and related notions in two dimensions). arXiv math.CV. Level 3: graduate.
+
+**Definition.** Choose a conformal bijection g from the unit disk onto a simply connected planar domain other than the whole plane. Choose g so that g(0) = a. Define the conformal radius at a as \|g′(0)\|.
+
+**Problem.** A conformal bijection f multiplies the conformal radius at a by \|f′(a)\|.
+
+**How the definition helps.** In our own proof, composing g with f gives a disk map for the image domain. The chain rule multiplies its derivative magnitude by \|f′(a)\|. Two choices of g differ by a disk rotation, so both give the same radius. The alternative uses the positive Green function G with logarithmic pole at a and zero boundary values. The work is proving that G(z) + log\|z − a\| tends to the logarithm of the disk derivative magnitude.
+
+**Paper or page:** [Two dimensional potential theory with a view towards vortex motion: Energy, capacity and Green functions](https://arxiv.org/abs/2405.19215v3). It says: “h₀(z) = h̃₀(w) + log \|f′(w)\|”
+
+**Sources:**
+
+- [Two dimensional potential theory with a view towards vortex motion: Energy, capacity and Green functions](https://arxiv.org/abs/2405.19215v3)
 
 ### Extremal length distinguishes annuli with different radius ratios
 
@@ -101,6 +185,40 @@
 **Sources:**
 
 - [L. Ahlfors and A. Beurling, Conformal invariants and function-theoretic null-sets, Acta Mathematica 83 (1950), 101–129](https://doi.org/10.1007/BF02392634)
+
+### Green distance controls capacity
+
+**Remember:** If two Green functions stay close, their constants at infinity stay close.
+
+*True by definition.* MSC 31A15 (Potentials and capacity, harmonic measure, extremal length and related notions in two dimensions). arXiv math.CV. Level 3: graduate.
+
+**Definition.** Take compact planar sets with connected complements. Assume each has a positive harmonic function g outside it that extends continuously by zero across the set. Require g(z) − log\|z\| to have a finite limit at infinity, and define logarithmic capacity as the exponential of minus that limit. Define Γ as the supremum over the plane of the absolute difference between two such functions.
+
+**Problem.** The difference of the logarithms of the two capacities has absolute value at most Γ.
+
+**How the definition helps.** The pointwise bound on the difference also bounds its limit at infinity, in our own argument. In our own account, the work is showing that the constant at infinity gives the same capacity as energy minimization.
+
+**Paper or page:** [Non-autonomous iteration of polynomials in the complex plane](https://arxiv.org/abs/2309.13447v3). It says: “In particular the logarithmic capacity is continuous on (ℛ, Γ).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Green levels give exact capacities
+
+**Remember:** Raise the Green level and multiply capacity by the exponential of that level.
+
+*True by definition.* MSC 31A15 (Potentials and capacity, harmonic measure, extremal length and related notions in two dimensions). arXiv math.CV. Level 3: graduate.
+
+**Definition.** Let K be compact in the plane with connected complement. Its exterior Green function g is positive and harmonic outside K, and g(z) − log\|z\| has a finite limit at infinity. Assume g extends continuously by zero on K. For ε &gt; 0 define Kε by g ≤ ε, using potential levels instead of ordinary distance.
+
+**Problem.** The logarithmic capacity of Kε equals exp(ε) times the logarithmic capacity of K.
+
+**How the definition helps.** In our own proof, subtracting ε makes the potential vanish on the new boundary. Outside Kε the shifted function remains positive and harmonic. Uniqueness identifies it as the new Green function. Logarithmic capacity equals the exponential of minus the limit of g(z) − log\|z\|, so the shift multiplies capacity by exp(ε).
+
+**Paper or page:** [Non-autonomous iteration of polynomials in the complex plane](https://arxiv.org/abs/2309.13447v3). It says: “Furthermore, cap(Kε) = exp(−γ + ε).”
+
+**Sources:**
+
+- [Non-autonomous iteration of polynomials in the complex plane](https://arxiv.org/abs/2309.13447v3)
 
 ### Harmonic exit measures compose
 
@@ -236,6 +354,38 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Weak harmonicity survives integral limits
+
+**Remember:** Put the derivatives on the test function before taking the limit.
+
+*True by definition.* MSC 31B05 (Harmonic, subharmonic, superharmonic functions in higher dimensions). arXiv math.AP. Level 3: graduate.
+
+**Definition.** Call a locally integrable function weakly harmonic if its integral against Δφ is zero for every smooth, compactly supported φ. Here Δφ is the sum of the pure second derivatives. The classical definition instead takes the second derivatives of the function itself.
+
+**Problem.** A limit in local L¹ of harmonic functions agrees almost everywhere with a harmonic function. Local L¹ convergence means that the integral of the absolute error tends to zero on every compact subset.
+
+**How the definition helps.** In our own proof, the definition puts all derivatives on a fixed test function. Its Laplacian is bounded and vanishes outside a compact set, so local integral convergence preserves the zero integral. Weyl’s lemma gives a smooth harmonic function equal to the limit almost everywhere.
+
+**Wikipedia:** [Weyl's lemma (Laplace equation)](https://en.wikipedia.org/wiki/Weyl%27s_lemma_%28Laplace_equation%29). It says: “every weak solution of Laplace's equation is a smooth solution”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Centered ball exits are uniform
+
+**Remember:** A random path from the center treats every direction the same.
+
+*True by definition.* MSC 31B10 (Integral representations, integral operators, integral equations methods in higher dimensions), 60J45. arXiv math.PR, math.AP. Level 3: graduate.
+
+**Definition.** Brownian motion is continuous random motion with independent Gaussian displacements of mean zero and covariance tI over each interval of length t. Define harmonic measure as the distribution of its first exit point from a ball. Equivalently, averaging continuous boundary data against harmonic measure gives the harmonic extension at the starting point.
+
+**Problem.** Harmonic measure from the center of a ball is uniform surface measure on its boundary.
+
+**How the definition helps.** Rotating the path does not change its law, so the exit law is rotation invariant. In our own account, the only rotation invariant probability on the sphere is uniform. The work shifts to identifying Brownian exit averages with solutions of the Dirichlet problem, in our own account.
+
+**Wikipedia:** [Harmonic measure](https://en.wikipedia.org/wiki/Harmonic_measure). It says: “coincides with the normalized surface measure”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Heat integration gives positive Green kernels
 
 **Remember:** A discounted sum of positive heat kernels stays positive.
@@ -271,6 +421,22 @@
 **Sources:**
 
 - [The Strong Maximum Principle and the Harnack inequality for a class of hypoelliptic divergence-form operators](https://arxiv.org/abs/1407.1669v1)
+
+### Finite energy forbids point charges
+
+**Remember:** A point charge makes the reciprocal distance infinite with positive probability.
+
+*True by definition.* MSC 31B15 (Potentials and capacities, extremal length and related notions in higher dimensions). arXiv math.AP. Level 3: graduate.
+
+**Definition.** For a compact set in ℝ³, define Newtonian capacity as the reciprocal of the infimum of energy over probability measures on the set. Energy is the average of 1/\|x − y\| for two independent points with that measure. Use zero for the reciprocal of infinite energy.
+
+**Problem.** Every finite-energy probability measure gives each point zero mass. In particular, each singleton has zero Newtonian capacity.
+
+**How the definition helps.** In our own argument, the energy integral detects a point mass through the event that both sampled points equal it. A point of mass m gives that event probability m², and the integrand is infinite there. On a singleton the only probability measure has this form. The work is proving agreement with the alternative definition using a potential held at unit voltage.
+
+**Wikipedia:** [Capacity of a set](https://en.wikipedia.org/wiki/Capacity_of_a_set). It says: “C(K)=\\left\[\\inf\_\\lambda E(\\lambda)\\right\]<sup>-1</sup>”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Riesz potential orders add
 
@@ -323,6 +489,24 @@
 - [O. Perron, Eine neue Behandlung der ersten Randwertaufgabe für Δu = 0, Mathematische Zeitschrift 18 (1923)](https://doi.org/10.1007/BF01192395)
 - [N. Wiener, The Dirichlet Problem, Journal of Mathematics and Physics 3 (1924)](https://doi.org/10.1002/sapm192433127)
 
+### Exterior balls supply barriers
+
+**Remember:** Use distance from an outside ball to build a function that vanishes only at contact.
+
+*True by definition.* MSC 31B25 (Boundary behavior of harmonic functions in higher dimensions). arXiv math.AP. Level 3: graduate.
+
+**Definition.** A barrier at a boundary point is a positive superharmonic function nearby inside the domain. It tends to zero there and stays bounded away from zero outside each smaller neighborhood. A continuous function is superharmonic if its value at each ball center is at least its average over the sphere.
+
+**Problem.** For a bounded domain in ℝ³, an exterior closed ball meeting the closure only at one point makes that point regular. This means harmonic extensions of continuous data tend to the given value there.
+
+**How the definition helps.** In our own proof, the barrier criterion replaces a separate boundary estimate for each choice of continuous data. Write c for the exterior ball’s center and R for its radius. The function 1/R − 1/\|x − c\| is harmonic inside the domain and positive except at contact on the closure. Compactness gives a positive lower bound away from contact. This function and its negative provide upper and lower barriers. The barrier criterion supplies the implication from these inequalities to boundary convergence.
+
+**Paper or page:** [The Wiener criterion for fully nonlinear elliptic equations](https://arxiv.org/abs/2301.00960v1). It says: “there exist an upper barrier and a lower barrier at x₀.”
+
+**Sources:**
+
+- [The Wiener criterion for fully nonlinear elliptic equations](https://arxiv.org/abs/2301.00960v1)
+
 ### Disk tests preserve plurisubharmonicity
 
 **Remember:** A holomorphic map sends each test disk to another test disk.
@@ -336,6 +520,22 @@
 **How the definition helps.** Composing the holomorphic map with a test disk gives another test disk, so the circular average inequality follows immediately (our own). Continuity of the map preserves upper semicontinuity (our own). The work lies in proving that the affine-line test implies the disk test (our own).
 
 **Wikipedia:** [Plurisubharmonic function](https://en.wikipedia.org/wiki/Plurisubharmonic_function). It says: “the function f ∘ φ : Δ → ℝ ∪ {−∞} is subharmonic”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Harmonic weights cancel along paths
+
+**Remember:** The intermediate harmonic weights cancel along a path.
+
+*True by definition.* MSC 31C20 (Discrete potential theory). arXiv math.PR. Level 3: graduate.
+
+**Definition.** Consider a Markov chain on a countable set with one-step probabilities P(x,y). Choose a finite positive function h whose expected value after one step from x equals h(x). Such a function is harmonic for the chain. Define the transformed transition probability as P(x,y) times h(y)/h(x).
+
+**Problem.** The transformed probabilities define a random walk. Its n-step transitions are the original n-step transitions times the same ratio of final to initial weights.
+
+**How the definition helps.** In our own calculation, the denominator at each intermediate state cancels the preceding numerator. Summing over paths gives the formula for any number of steps. Harmonicity ensures that the probabilities from each state sum to one. This replaces conditioning each path separately when h gives the positive probability of a future event from each state. That interpretation requires proving that conditioning on the event gives the stated one-step probabilities.
+
+**Wikipedia:** [Doob's h-transform](https://en.wikipedia.org/wiki/Doob%27s_h-transform). It says: “the transition probabilities of the transformed process are explicitly given as functions of h”
 
 **Sources:** none listed. No primary source with a working link was found.
 

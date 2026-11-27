@@ -84,6 +84,24 @@
 
 - [Aslanbek Naziev, On the independence of conditions in the linear mapping definition (revised), arXiv:2208.12648 (2022)](https://arxiv.org/abs/2208.12648v3)
 
+### Idempotent projections split spaces
+
+**Remember:** Project once to keep one part and subtract to get the other.
+
+*True by definition.* MSC 15A04 (Linear transformations, semilinear transformations). arXiv math.RA. Level 1: early undergraduate.
+
+**Definition.** A projection is a linear map P from a vector space to itself with P² = P. Geometrically, a projection keeps one component in a direct sum and discards the other.
+
+**Problem.** Every vector has a unique sum of a vector in the image of P and a vector in its kernel.
+
+**How the definition helps.** The identity P² = P gives the two components explicitly in our own proof. Write v = Pv + (v − Pv). The first term belongs to the image, and P sends the second to zero. Every image vector is fixed, so only zero belongs to both parts. Conversely, keeping one component of a direct sum gives a map that squares to itself.
+
+**nLab:** [idempotent](https://ncatlab.org/nlab/show/idempotent). It says: “it is an endomorphism e : X → X of some object X that "squares to itself”
+
+**Paper or page:** [Range of Idempotent is Kernel of Complementary Idempotent](https://proofwiki.org/wiki/Range_of_Idempotent_is_Kernel_of_Complementary_Idempotent). It says: “Rng A = ker(I − A)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Affine spaces include translated solution sets
 
 **Remember:** Subtract one solution to turn all the rest into solutions with zero right side.
@@ -97,6 +115,22 @@
 **How the definition helps.** Choosing one solution p makes the full solution set a translate of the kernel (our own). Indeed, x solves Ax = b exactly when A(x − p) = 0 (our own). The line x + y = 1 translates the line x + y = 0 and omits the origin (our own).
 
 **nLab:** [affine space](https://ncatlab.org/nlab/show/affine+space). It says: “An affine space or affine linear space is a vector space that has forgotten its origin.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Invertible row operations preserve solutions
+
+**Remember:** Undo the row operation to recover the old equations.
+
+*True by definition.* MSC 15A06 (Linear equations (linear algebraic aspects)). arXiv math.RA. Level 1: early undergraduate.
+
+**Definition.** Define row equivalence of augmented matrices by left multiplication by an invertible matrix. In the usual description, apply a sequence of elementary row operations to the whole matrix, including the right-hand side.
+
+**Problem.** Row-equivalent augmented matrices describe systems with exactly the same solutions.
+
+**How the definition helps.** Our own proof cancels the invertible left factor on both sides of the new system. Our own calculation writes the new system as EAx = Eb, then applies E⁻¹. Our own comparison uses elementary matrices to express each row operation. Our own check uses row reduction to show that any invertible left factor can be built from those operations.
+
+**Paper or page:** [Elementary Row Operation on Augmented Matrix leads to Equivalent System of Simultaneous Linear Equations](https://proofwiki.org/wiki/Elementary_Row_Operation_on_Augmented_Matrix_leads_to_Equivalent_System_of_Simultaneous_Linear_Equations). It says: “Then S and S′ are equivalent.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -168,6 +202,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Rectangular products have equal traces
+
+**Remember:** Both traces add the same pairs of entries.
+
+*True by definition.* MSC 15A15 (Determinants, permanents, traces, other special matrix functions). arXiv math.RA. Level 1: early undergraduate.
+
+**Definition.** The trace of a square matrix is the sum of its diagonal entries. For a real matrix, another formula sums its complex eigenvalues with algebraic multiplicity.
+
+**Problem.** For a real m × n matrix A and an n × m matrix B, tr(AB) = tr(BA), even when m ≠ n.
+
+**How the definition helps.** Our own calculation finds the same entry pairs in both diagonal sums, with the factors in opposite orders. Our own calculation pairs the entry at position (i, j) in A with the entry at position (j, i) in B. Our own proof exchanges the sums and commutes the factors. Our own comparison moves the work into showing that the diagonal sum equals the eigenvalue sum.
+
+**Paper or page:** [Trace of Product of Matrices](https://proofwiki.org/wiki/Trace_of_Product_of_Matrices). It says: “tr(AB) = tr(BA)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The adjugate works over any commutative ring, which proves Cayley–Hamilton
 
 **Remember:** Adjugate times matrix is determinant times identity, in every commutative ring.
@@ -202,6 +252,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Matrix exponentials solve linear systems
+
+**Remember:** Differentiate the series and one factor of A comes out.
+
+*True by definition.* MSC 15A16 (Matrix exponential and similar functions of matrices). arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** For a fixed real square matrix A, define exp(tA) as the unique matrix solution of Y′ = AY with Y(0) = I. The usual series starts with I + tA + t²A²/2.
+
+**Problem.** For each initial vector v, the solution of x′ = Ax with x(0) = v is x(t) = exp(tA)v.
+
+**How the definition helps.** The defining differential equation gives the vector equation immediately in our own proof. Multiplying Y′ = AY on the right by v gives x′ = Ax, and Y(0)v = v. Existence and uniqueness come from the theorem for linear differential equations. To recover the series formula, differentiate its convergent power series term by term and apply uniqueness.
+
+**Wikipedia:** [Matrix exponential](https://en.wikipedia.org/wiki/Matrix_exponential). It says: “matrix defined by the power series”
+
+**Paper or page:** [Derivative of Matrix Exponential](https://proofwiki.org/wiki/Derivative_of_Matrix_Exponential). It says: “d/dt eᴬᵗ = A eᴬᵗ”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Changing coordinates preserves eigenspace dimensions
 
 **Remember:** The basis changes, but the vectors scaled by the map do not.
@@ -215,6 +283,22 @@
 **How the definition helps.** Changing coordinates leaves the underlying map and its eigenspaces unchanged (our own). Coordinates in either basis therefore give each eigenspace the same dimension (our own). The work moves to deriving the formula B = S⁻¹AS for a change of basis (our own).
 
 **Wikipedia:** [Change of basis](https://en.wikipedia.org/wiki/Change_of_basis). It says: “two matrices are similar if and only if they represent the same endomorphism on two different bases.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Diagonal forms simplify powers
+
+**Remember:** Change coordinates once, then raise each diagonal entry to a power.
+
+*True by definition.* MSC 15A18 (Eigenvalues, singular values, and eigenvectors). arXiv math.RA. Level 1: early undergraduate.
+
+**Definition.** A square matrix A is diagonalizable if A = SDS⁻¹ for an invertible matrix S and a diagonal matrix D. Equivalently, A has a basis of eigenvectors.
+
+**Problem.** If A = SDS⁻¹ with D diagonal and S invertible, then Aⁿ = SDⁿS⁻¹ for every integer n ≥ 0.
+
+**How the definition helps.** Our own calculation cancels each adjacent S⁻¹ and S, leaving only powers of the diagonal entries. Our own comparison puts the work into finding an eigenvector basis and checking that its columns give S.
+
+**Paper or page:** [Powers of Diagonalizable Matrix](https://proofwiki.org/wiki/Powers_of_Diagonalizable_Matrix). It says: “Aⁿ = XDⁿX⁻¹”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -284,6 +368,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Positive QR diagonals ensure uniqueness
+
+**Remember:** Positive pivots stop the two factors from trading minus signs.
+
+*Rules out counterexamples.* MSC 15A23 (Factorization of matrices). arXiv math.NA. Level 1: early undergraduate.
+
+**Definition.** In a reduced factorization A = QR, the columns of Q are perpendicular unit vectors. The square matrix R has zeros below its diagonal. For a real matrix with independent columns, require positive diagonal entries of R.
+
+**Problem.** A real matrix with independent columns has exactly one reduced QR factorization with positive diagonal entries in R.
+
+**How the definition helps.** Positive diagonal entries remove the sign choices in a reduced QR factorization. Without this rule, even I = I·I = (−I)(−I) gives two choices. In our own proof, Gram–Schmidt gives existence because each new column has positive length after removing earlier components. If QR = US, then Q = U(SR⁻¹). Both sets of columns are orthonormal, so SR⁻¹ is orthogonal. Its inverse is both upper triangular and its transpose, so it is diagonal. Its positive diagonal entries must all equal one.
+
+**Wikipedia:** [QR decomposition](https://en.wikipedia.org/wiki/QR_decomposition). It says: “we require that the diagonal elements of R₁ are positive then R₁ and Q₁ are unique”
+
+**Paper or page:** [On the Column and Row Ranks of a Matrix](https://arxiv.org/abs/2112.06638v1). It says: “Q is m × n with orthonormal columns and R is an n × n upper triangular matrix”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Dot products reverse transpose order
 
 **Remember:** Move the left factor first, then the right factor.
@@ -336,6 +438,22 @@
 
 - [Cayley, A. (1858). A memoir on the theory of matrices. Philosophical Transactions of the Royal Society of London 148.](https://doi.org/10.1098/rstl.1858.0002)
 
+### Operator norms bound products
+
+**Remember:** The greatest stretch of a product cannot exceed the product of the greatest stretches.
+
+*True by definition.* MSC 15A60 (Norms of matrices, numerical range, applications of functional analysis to matrix theory). arXiv math.FA. Level 1: early undergraduate.
+
+**Definition.** Define the operator norm of a matrix as the largest length of Ax for a unit vector x. Another formula uses the largest singular value. That is the square root of the largest eigenvalue of AᵀA.
+
+**Problem.** For compatible real matrices A and B of positive dimensions, their Euclidean operator norms satisfy ‖AB‖ ≤ ‖A‖‖B‖.
+
+**How the definition helps.** Our own argument bounds each of the two successive stretches by its largest stretch. Our own proof applies ‖Ay‖ ≤ ‖A‖‖y‖ to y = Bx, then maximizes over unit x. Our own comparison puts the work into showing the stretch equals the largest singular value when using that formula.
+
+**Paper or page:** [Supremum Operator Norm on Continuous Linear Transformation Space is Submultiplicative](https://proofwiki.org/wiki/Supremum_Operator_Norm_on_Continuous_Linear_Transformation_Space_is_Submultiplicative). It says: “‖A ∘ B‖ ≤ ‖A‖ · ‖B‖”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Trace proves Frobenius norm invariance
 
 **Remember:** Orthogonal factors cancel inside the trace.
@@ -381,6 +499,24 @@
 **How the definition helps.** For any point q in the subspace, the vectors x − p and p − q are perpendicular (our own). Pythagoras shows that the squared distance to q exceeds the squared distance to p unless q = p (our own). The work moves to showing that the basis formula produces a perpendicular residual (our own).
 
 **Wikipedia:** [Projection (linear algebra)](https://en.wikipedia.org/wiki/Projection_%28linear_algebra%29). It says: “⟨Px, y − Py⟩ = ⟨x, (P − P²)y⟩ = 0”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Orthonormal coordinates preserve dot products
+
+**Remember:** Perpendicular unit axes let you multiply matching coordinates and add.
+
+*Rules out counterexamples.* MSC 15A63 (Quadratic and bilinear forms, inner products). arXiv math.FA. Level 1: early undergraduate.
+
+**Definition.** An orthonormal basis consists of pairwise perpendicular unit vectors. A general basis need not have either property.
+
+**Problem.** In an orthonormal basis of a finite-dimensional real inner product space, the inner product equals the dot product of the coordinate lists.
+
+**How the definition helps.** Perpendicularity removes mixed terms, and unit length gives coefficient one to each matching term. In our own calculation, expanding both vectors in the basis therefore gives their coordinate dot product. For a counterexample, use the single basis vector 2 on the real line. Its coordinate is 1, but its squared length is 4. Two nonperpendicular unit basis vectors also fail because their coordinate lists have dot product zero.
+
+**Wikipedia:** [Orthonormal basis](https://en.wikipedia.org/wiki/Orthonormal_basis). It says: “Under these coordinates, the inner product becomes a dot product of vectors.”
+
+**Paper or page:** [Dot Product of Orthonormal Basis Vectors](https://proofwiki.org/wiki/Dot_Product_of_Orthonormal_Basis_Vectors). It says: “eᵢ · eⱼ = δᵢⱼ”
 
 **Sources:** none listed. No primary source with a working link was found.
 

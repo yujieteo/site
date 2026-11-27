@@ -409,6 +409,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Reduced alternating diagrams minimize crossings
+
+**Remember:** A reduced alternating diagram already uses the fewest possible crossings.
+
+*Rules out counterexamples.* MSC 57K10 (Knot theory), 57K14. arXiv math.GT. Level 3: graduate.
+
+**Definition.** A link diagram is alternating if overcrossings and undercrossings alternate as one follows each component. It is reduced if no simple closed curve crosses the diagram only at one crossing and separates its four strands into two pairs.
+
+**Problem.** Every reduced alternating diagram of a knot realizes the knot’s crossing number, the least number of crossings in any diagram.
+
+**How the definition helps.** Reducedness excludes a removable twist that could increase the crossing count, in our own explanation. The Jones polynomial gives a lower bound through its span, the difference between its highest and lowest exponents. For a reduced alternating knot diagram, that span equals its crossing count. In our own example, a circle with one twist is an alternating unknot diagram. Removing the twist gives a diagram with no crossings.
+
+**Wikipedia:** [Tait conjectures](https://en.wikipedia.org/wiki/Tait_conjectures). It says: “a knot diagram is called "reduced" if all the "isthmi", or "nugatory crossings" have been removed.”
+
+**Sources:**
+
+- [Louis H. Kauffman, State models and the Jones polynomial (1987).](https://doi.org/10.1016/0040-9383(87)90009-7)
+
 ### Signed crossing counts make linking number symmetric
 
 **Remember:** Swapping the knot names changes neither the crossings nor their signs.
@@ -704,6 +722,22 @@
 **How the definition helps.** The quotient definition reveals a universal cover and the group from which first homology is computed (our own). Left multiplication acts freely on the simply connected sphere, so the quotient has fundamental group the binary icosahedral group (our own). The icosahedron has 60 rotations, so their preimage has order 120 (our own). The source identifies the group as perfect, meaning its commutators generate the whole group. Thus making the group abelian gives zero, so first homology vanishes (our own). The closed oriented 3-manifold then has the remaining homology of a sphere by Poincaré duality (our own). The work lies in proving perfectness and identifying this quotient with the face gluing (our own).
 
 **Wikipedia:** [Homology sphere](https://en.wikipedia.org/wiki/Homology_sphere). It says: “In this case, the Poincaré homology sphere is isomorphic to S³/Ĩ where Ĩ is the binary icosahedral group, the perfect double cover of I embedded in S³.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Two-sided incompressible surfaces preserve fundamental groups under inclusion
+
+**Remember:** A two-sided surface without compressing disks keeps its fundamental group.
+
+*Rules out counterexamples.* MSC 57K30 (General topology of 3-manifolds). arXiv math.GT. Level 3: graduate.
+
+**Definition.** Consider a closed connected surface other than a sphere, embedded in the interior of a three-manifold and locally looking like a coordinate plane. A compressing disk meets the surface only in its boundary, a loop that bounds no disk on the surface. The surface is incompressible if it has no compressing disk. It is two-sided if its neighborhood is a product with an open interval.
+
+**Problem.** For such a two-sided incompressible surface, inclusion induces an injection of fundamental groups. A loop that contracts in the ambient manifold already contracts on the surface.
+
+**How the definition helps.** Two-sidedness lets us cut along the surface and apply the loop theorem to either boundary copy, in our own explanation. If inclusion kills a nontrivial loop class, the theorem supplies a compressing disk. The one-sided Klein bottle in the lens space L(4,1) has no compressing disk. Its fundamental group is infinite, while the ambient fundamental group has order four.
+
+**Wikipedia:** [Incompressible surface](https://en.wikipedia.org/wiki/Incompressible_surface). It says: “However, if S is two-sided, the loop theorem implies Kneser's lemma, that if S is incompressible, then it is π₁-injective.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -2047,6 +2081,24 @@
 - [Vaughan F. R. Jones, A polynomial invariant for knots via von Neumann algebras, Bulletin of the AMS (1985)](https://doi.org/10.1090/s0273-0979-1985-15304-2)
 - [Vaughan F. R. Jones, Hecke algebra representations of braid groups and link polynomials, Annals of Mathematics (1987)](https://doi.org/10.2307/1971403)
 
+### Topologically slice knots have square determinants
+
+**Remember:** Local flatness makes the determinant of a slice knot a square.
+
+*Rules out counterexamples.* MSC 57K14 (Knot polynomials), 57K10. arXiv math.GT. Level 4: research.
+
+**Definition.** A knot is topologically slice if it bounds an embedded disk in the four-dimensional ball that meets the boundary exactly in the knot. The disk must be locally flat. Near each point, the disk and ball look like a plane in four-dimensional space, using half-spaces at boundary points.
+
+**Problem.** The absolute value of the Alexander polynomial at −1 is a square for every topologically slice knot.
+
+**How the definition helps.** Local flatness rules out a cone singularity and gives the hypothesis of the Fox–Milnor factorization, in our own explanation. This theorem writes the Alexander polynomial as f(t)f(1/t), up to sign and a power of t. At −1 the two factors agree, so the absolute value is a square. In our own counterexample, the trefoil bounds the disk formed by coning it to the ball’s centre. Its determinant is 3, so this disk cannot be locally flat.
+
+**Wikipedia:** [Slice knot](https://en.wikipedia.org/wiki/Slice_knot). It says: “It follows that the knot's determinant (= Δ(−1)) is a square number.”
+
+**Paper or page:** [Seifert forms and slice Euler characteristic of links](https://arxiv.org/abs/2405.14076v1). It says: “If L bounds a locally flat surface in B⁴ with Euler characteristic 1, then there exists F ∈ ℤ\[t\]”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Vassiliev’s crossing difference makes top values depend on chord diagrams
 
 **Remember:** An ordinary crossing change introduces a double point beyond the allowed degree.
@@ -2143,6 +2195,42 @@
 
 - [S. Friedl, S. Vidussi, Twisted Alexander polynomials detect fibered 3-manifolds, Ann. of Math. (2) 173 (2011) 1587-1643, arXiv:0805.1234](https://arxiv.org/abs/0805.1234)
 
+### Finite volume gives hyperbolic rigidity
+
+**Remember:** Finite volume makes a complete hyperbolic three-manifold rigid.
+
+*Rules out counterexamples.* MSC 57K32 (Hyperbolic 3-manifolds). arXiv math.GT. Level 4: research.
+
+**Definition.** A complete hyperbolic manifold has a complete metric of constant sectional curvature −1. A finite-volume hyperbolic manifold also has finite total volume in that metric.
+
+**Problem.** Complete connected hyperbolic three-manifolds without boundary and of finite volume are isometric if their fundamental groups are isomorphic. An isometry preserves all distances.
+
+**How the definition helps.** Finite volume excludes the following family of complete metrics with the same fundamental group, in our own example. Identify points of hyperbolic three-space under the iterates of a translation along a fixed geodesic. Each quotient has infinite volume and fundamental group ℤ. The shortest closed geodesic has the translation length, so different lengths give different metrics up to isometry. Mostow–Prasad rigidity supplies the theorem for finite volume.
+
+**nLab:** [Mostow rigidity theorem](https://ncatlab.org/nlab/show/Mostow+rigidity+theorem). It says: “then this structure is unique up to isometry, and in fact it is uniquely determined already by the fundamental group π₁(Σ).”
+
+**Wikipedia:** [Mostow rigidity theorem](https://en.wikipedia.org/wiki/Mostow_rigidity_theorem). It says: “There is also a rich theory of deformation spaces of hyperbolic structures on infinite volume manifolds in three dimensions.”
+
+**Sources:**
+
+- [Gopal Prasad, Strong rigidity of Q-rank 1 lattices (1973).](https://doi.org/10.1007/bf01418789)
+
+### Pseudo-Anosov gluing gives hyperbolic bundles
+
+**Remember:** Pseudo-Anosov gluing gives a mapping torus a hyperbolic metric.
+
+*Rules out counterexamples.* MSC 57K32 (Hyperbolic 3-manifolds), 57K20. arXiv math.GT. Level 4: research.
+
+**Definition.** A pseudo-Anosov surface map preserves two transverse measured foliations. These divide the surface into curves, with finitely many prong singularities, and measure arcs crossing the curves. The map multiplies one transverse measure by a constant greater than one and the other by its reciprocal.
+
+**Problem.** For a closed oriented surface of genus at least two, the mapping torus of an orientation-preserving pseudo-Anosov map is hyperbolic. A mapping torus glues the two ends of the surface times an interval by the map.
+
+**How the definition helps.** Pseudo-Anosov stretching excludes the identity gluing and its persistent closed curves, in our own explanation. Thurston’s hyperbolization theorem supplies a complete metric of curvature −1 on the mapping torus. In our own counterexample, identity gluing gives a surface times a circle. A noncontractible simple closed curve times the circle gives a subgroup ℤ² in its fundamental group. A closed hyperbolic three-manifold cannot have such a subgroup.
+
+**Paper or page:** [Cusp geometry of fibered 3-manifolds](https://arxiv.org/abs/1108.5748v2). It says: “For every orientation-preserving, pseudo-Anosov homeomorphism φ : F → F, the mapping torus Mφ is a hyperbolic 3–manifold”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Trisections give every smooth 4-manifold a surface picture, unique up to stabilization
 
 **Remember:** Three simple pieces and their spine hold the whole 4-manifold.
@@ -2179,6 +2267,24 @@
 **Sources:**
 
 - [Simon Donaldson, The Seiberg-Witten equations and 4-manifold topology, Bull. Amer. Math. Soc. 33 (1996) 45–70](https://doi.org/10.1090/S0273-0979-96-00625-8)
+
+### Smoothness diagonalizes definite intersection forms
+
+**Remember:** A smooth closed four-manifold cannot carry the definite E₈ form.
+
+*Rules out counterexamples.* MSC 57K41 (Invariants of 4-manifolds (including Donaldson and Seiberg-Witten invariants)), 57R10. arXiv math.GT. Level 4: research.
+
+**Definition.** A smooth 4-manifold has Euclidean charts with smooth changes of coordinates. A topological 4-manifold only requires continuous changes of coordinates with continuous inverses.
+
+**Problem.** The intersection form counts signed intersections of two-dimensional homology classes. If a closed, oriented, simply connected smooth four-manifold has definite form, some integer basis makes it diagonal. Definite means all nonzero real classes have squares of the same sign.
+
+**How the definition helps.** Smoothness excludes Freedman’s topological E₈ manifold, in our own comparison. Its positive definite form has determinant one and gives only even squares. A positive diagonal integer form of determinant one has only ones on its diagonal, so it represents one. Donaldson’s theorem supplies the diagonal basis in the smooth case through the study of differential equations on the manifold.
+
+**Wikipedia:** [Donaldson's theorem](https://en.wikipedia.org/wiki/Donaldson%27s_theorem). It says: “a definite intersection form of a closed, oriented, smooth manifold of dimension 4 is diagonalizable”
+
+**Sources:**
+
+- [S. K. Donaldson, An application of gauge theory to four-dimensional topology (1983).](https://doi.org/10.4310/jdg/1214437665)
 
 ### Every continuum has a compact universal cover
 

@@ -48,6 +48,22 @@
 
 - [C. E. Shannon, A Mathematical Theory of Communication, Bell System Technical Journal 27 (1948)](https://doi.org/10.1002/j.1538-7305.1948.tb01338.x)
 
+### Error flags reveal Fano’s bound
+
+**Remember:** One bit marks the error, then only wrong choices remain.
+
+*Makes the theorem clean to state or prove.* MSC 94A17 (Measures of information, entropy), 94B70. arXiv math.IT. Level 2: later undergraduate.
+
+**Definition.** Let X be a message from a set of M possibilities, with M at least two. Let X̃ guess it from the same set. Add a flag E that says whether the guess is wrong.
+
+**Problem.** The uncertainty remaining about X given X̃ is at most h(p) + p log₂(M − 1) bits. Here p is the error probability, and h(p) is the entropy of a bit that equals one with probability p.
+
+**How the definition helps.** The flag leaves only one possible message after a correct guess and at most M − 1 after an error. Given both the guess and the message, the flag is known. The entropy chain rule therefore splits the remaining uncertainty into uncertainty about the flag and uncertainty after learning its value. In our own wording, the first term is at most h(p), since conditioning cannot increase average uncertainty. The second averages to at most p log₂(M − 1).
+
+**Wikipedia:** [Fano's inequality](https://en.wikipedia.org/wiki/Fano%27s_inequality). It says: “Consider H(E,X\|X̃). We can use the chain rule for entropies to expand this in two different ways”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Independent collision entropies add
 
 **Remember:** Independent matches multiply, so their collision entropies add.
@@ -129,6 +145,22 @@
 **How the definition helps.** The convention fills the only gap in the formula with its limit value, so entropy has no exceptions at the edge of the simplex. The page says that the value 0 agrees with the limit. Our own: without it, the entropy of a point mass would be undefined. The fact that entropy is zero exactly for a certain outcome would then need special cases. Our own: the continuity axiom in the page's alternative characterization also needs this convention. What stays hard is the characterization itself, which shows that −Σ p log p is the only function with the listed properties.
 
 **Wikipedia:** [Entropy (information theory)](https://en.wikipedia.org/wiki/Entropy_%28information_theory%29). It says: “the value of the corresponding summand ... is taken to be 0, which is consistent with the limit”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Types separate counts from probabilities
+
+**Remember:** Count words once, then multiply by one word’s probability.
+
+*True by definition.* MSC 94A17 (Measures of information, entropy), 94A29. arXiv math.IT. Level 2: later undergraduate.
+
+**Definition.** Group length-n words by type, the vector of their symbol frequencies. Let T be the class of words of type Q. Draw the symbols independently from a positive law P.
+
+**Problem.** The probability of T under P equals its probability under Q times 2 raised to −nD. Here D is the sum of Q(s) log₂(Q(s)/P(s)) over symbols s with positive frequency.
+
+**How the definition helps.** Grouping by frequency makes the probability ratio constant throughout each group. Our own calculation compares this with adding the probability of every word separately. A word of type Q contains nQ(s) copies of symbol s. Independence makes its log probability ratio under P versus Q equal to −nD. The common factor therefore comes outside the sum over words.
+
+**Wikipedia:** [Method of types](https://en.wikipedia.org/wiki/Method_of_types). It says: “The sets of sequences having empirical distribution Q, are called the type classes”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -236,6 +268,24 @@
 
 - [B. McMillan, Two inequalities implied by unique decipherability, IRE Transactions on Information Theory 2 (1956)](https://doi.org/10.1109/TIT.1956.1056818)
 
+### Trees make Huffman merging optimal
+
+**Remember:** Merge the two lightest leaves, then solve the smaller tree.
+
+*Makes the theorem clean to state or prove.* MSC 94A45 (Prefix, length-variable, comma-free codes), 94A29. arXiv cs.IT, math.IT. Level 2: later undergraduate.
+
+**Definition.** In a binary prefix code, no symbol’s bit string starts with another symbol’s entire bit string. Represent a string by a path from the root of a binary tree, taking the branch labeled by each bit. Symbols then occupy leaves, and path lengths give code lengths. Merge two sibling leaves by replacing them with a leaf carrying their combined probability.
+
+**Problem.** For finitely many positive symbol probabilities, Huffman’s repeated merging of the two smallest weights minimizes the mean binary prefix code length.
+
+**How the definition helps.** The tree makes merging two siblings change the mean length by exactly their combined probability. Our own proof starts with an optimal tree on at least two symbols. Every internal vertex has two children because removing a vertex with one child shortens some paths. Two deepest leaves share a parent. Swapping smaller probabilities onto deeper leaves never raises the mean length, so the two smallest probabilities can occupy those siblings. Their merged tree must be optimal since any improvement would also improve the original tree after splitting the leaf. Induction now proves the rule.
+
+**Wikipedia:** [Huffman coding](https://en.wikipedia.org/wiki/Huffman_coding). It says: “equivalently, a tree with minimum weighted path length from the root”
+
+**Sources:**
+
+- [David A. Huffman, A Method for the Construction of Minimum-Redundancy Codes (1952)](https://doi.org/10.1109/JRPROC.1952.273898)
+
 ### Perfect hiding rules out perfect binding
 
 **Remember:** Identical commitment laws cannot have disjoint supports.
@@ -322,6 +372,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Doubly even codes are self-orthogonal
+
+**Remember:** Multiples of four force even overlaps.
+
+*Rules out counterexamples.* MSC 94B05 (Linear codes (general theory)). arXiv math.IT. Level 2: later undergraduate.
+
+**Definition.** A binary linear code is a vector space of bit strings under addition modulo two. A doubly even code requires every word to have a multiple of four ones. An even code requires only a multiple of two.
+
+**Problem.** Any two words in a doubly even binary linear code have dot product zero modulo two.
+
+**How the definition helps.** Divisibility by four forces any two words to share an even number of ones. Our own proof counts ones in their sum by adding their individual counts and subtracting twice their overlap. All three counts are divisible by four, so twice the overlap is divisible by four. The even code spanned by 110 and 011 fails this test because those words share just one position.
+
+**nLab:** [binary linear code](https://ncatlab.org/nlab/show/binary+linear+code). It says: “Notice that the quadratic form (hence the bilinear form) vanishes on a type II code C, so that we have C ⊂ C⊥ (i.e., C is isotropic).”
+
+**Paper or page:** [Construction for both self-dual codes and LCD codes](https://arxiv.org/abs/2108.12544v1). It says: “If C is doubly even, then C is a self-orthogonal code.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Dual distance gives uniform projections
 
 **Remember:** A biased projection would expose a short dual word.
@@ -335,6 +403,22 @@
 **How the definition helps.** The dual definition turns any missing pattern in a projection into a constraint on just those positions. Our own proof observes that a proper projected subspace has a nonzero vector orthogonal to it. Padding that vector with zeros gives a dual word with too few nonzero positions. The projection is therefore onto, and its fibers have equal size by linearity. This replaces the orthogonal-array definition, which asks us to count every pattern on each selection of positions.
 
 **Wikipedia:** [Orthogonal array](https://en.wikipedia.org/wiki/Orthogonal_array). It says: “Then C⊥ (the orthogonal complement of the vector subspace C) is a (linear) OA(qⁿ⁻ᵐ, n, q, d − 1)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Gram matrices detect code hulls
+
+**Remember:** Pairwise dot products reveal which codewords are orthogonal to the code.
+
+*True by definition.* MSC 94B05 (Linear codes (general theory)). arXiv math.IT. Level 2: later undergraduate.
+
+**Definition.** Take a linear code over a finite field with the ordinary dot product. Its hull consists of the codewords orthogonal to every codeword. Let G have a basis of codewords as its rows. Instead of constructing the dual separately, form the Gram matrix GGᵀ of dot products between basis rows.
+
+**Problem.** For a code of dimension k, the hull dimension equals k minus the rank of GGᵀ. The hull is zero exactly when GGᵀ is invertible.
+
+**How the definition helps.** The Gram matrix turns orthogonality to the whole code into one matrix equation. Our own proof writes each codeword uniquely as aG, where a lists its coefficients in the chosen basis. Its dot products with the basis rows form aGGᵀ. The hull therefore corresponds to the left kernel of GGᵀ, whose dimension follows from rank–nullity.
+
+**Paper or page:** [Construction for both self-dual codes and LCD codes](https://arxiv.org/abs/2108.12544v1). It says: “Then rank(GGᵀ) = k − dim(Hull(C)).”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -355,6 +439,22 @@
 **Sources:**
 
 - [Richard W. Hamming, Error Detecting and Error Correcting Codes (1950)](https://doi.org/10.1002/j.1538-7305.1950.tb00463.x)
+
+### Independent columns preserve dual optimality
+
+**Remember:** Independent columns rule out short dual words.
+
+*True by definition.* MSC 94B05 (Linear codes (general theory)), 94B65. arXiv math.IT. Level 2: later undergraduate.
+
+**Definition.** The minimum distance of a linear code is the fewest nonzero entries in any nonzero codeword. For length n and dimension k, the Singleton bound says this distance is at most n − k + 1. A code attaining equality is maximum distance separable. A generator matrix has the vectors of a code basis as its rows.
+
+**Problem.** If 0 &lt; k &lt; n, the dual of a maximum distance separable linear code is also maximum distance separable. The dual consists of all words orthogonal to the code.
+
+**How the definition helps.** The independent-column description turns a short dual word into a forbidden dependence. Our own argument starts with the usual distance definition. A nonzero combination of generator rows vanishes on k selected positions exactly when those k columns fail to span. Thus attaining the Singleton bound means every k columns are independent. A nonzero dual word gives a dependence among the columns at its nonzero positions, so it has at least k + 1 such positions. The dual has dimension n − k, so its Singleton bound gives the matching upper limit.
+
+**Wikipedia:** [Singleton bound](https://en.wikipedia.org/wiki/Singleton_bound). It says: “C⊥ is an MDS code.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Reed–Solomon codes as polynomial evaluations have distance n − k + 1
 
@@ -408,6 +508,22 @@
 
 - [W. W. Peterson and D. T. Brown, Cyclic Codes for Error Detection (1961)](https://doi.org/10.1109/JRPROC.1961.287814)
 
+### Error locators linearize Reed–Solomon decoding
+
+**Remember:** Multiply by a polynomial that vanishes at every error.
+
+*Makes the theorem clean to state or prove.* MSC 94B35 (Decoding). arXiv cs.IT, math.IT. Level 2: later undergraduate.
+
+**Definition.** A Reed–Solomon word records the values of a polynomial f of degree less than k at n distinct elements of a finite field. Instead of fitting f directly, look for a polynomial E that vanishes at the errors, and its product N = Ef. At each point require the value of N to be E times the received value.
+
+**Problem.** Suppose at most t errors occur and n − k is at least twice t. Solve for N of degree below k + t and E of degree at most t. Any nonzero solution gives f = N/E.
+
+**How the definition helps.** The error locator makes the fitting equations linear in the unknown coefficients. Our own proof takes E as the product of the linear factors at the error positions and sets N = Ef. For any solution, N − Ef has degree below k + t and at least n − t ≥ k + t distinct roots. Hence N = Ef, and every nonzero solution has E nonzero.
+
+**Paper or page:** [Code-based Cryptography: Lecture Notes](https://arxiv.org/abs/2304.03541v1). It says: “Then, N₁/E₁ = N₂/E₂ = f.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Syndromes label cosets
 
 **Remember:** Equal syndromes mean the difference is a codeword.
@@ -440,6 +556,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Gray labels preserve Lee distance
+
+**Remember:** A four-point circle is a two-bit square.
+
+*True by definition.* MSC 94B60 (Other types of codes). arXiv math.IT. Level 2: later undergraduate.
+
+**Definition.** Label the residues 0, 1, 2, 3 by 00, 01, 11, 10. Lee distance counts the shorter way around the four residues, then adds these counts across positions.
+
+**Problem.** Applying the labels at each position converts Lee distance into Hamming distance, the number of differing bits.
+
+**How the definition helps.** The chosen labels turn each step around the four residues into one change of a bit. Our own proof compares this with counting differing residues, which would charge one even for a pair of opposite residues. The four neighboring pairs differ in one bit, and the two opposite pairs differ in two bits. Both distances add over positions.
+
+**Wikipedia:** [Lee distance](https://en.wikipedia.org/wiki/Lee_distance). It says: “However, there exists a Gray isometry (weight-preserving bijection)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Erasure recovery by projection gives the Singleton bound on code size
 
 **Remember:** A projection that keeps words apart cannot have fewer outputs than words.
@@ -457,6 +589,72 @@
 **Sources:**
 
 - [Richard C. Singleton, Maximum Distance q-nary Codes (1964)](https://doi.org/10.1109/TIT.1964.1053661)
+
+### Lists extend the sphere-packing bound
+
+**Remember:** Each received word has room for L candidates.
+
+*Makes the theorem clean to state or prove.* MSC 94B65 (Bounds on codes), 94B35. arXiv math.IT. Level 2: later undergraduate.
+
+**Definition.** Instead of requiring one possible answer, allow up to L codewords within t changes of each received word. Such a code is called list decodable at radius t.
+
+**Problem.** If words have length n over q symbols, the code size times the radius-t ball size is at most L times qⁿ.
+
+**How the definition helps.** The list limit bounds the number of decoding balls that can cover any word. Our own count pairs each codeword with every word obtained by changing at most t positions. Counting by codeword gives the code size times the ball size. Counting by received word gives at most L times qⁿ.
+
+**Wikipedia:** [List decoding](https://en.wikipedia.org/wiki/List_decoding). It says: “the number of codewords c ∈ C within Hamming distance pn from y is at most L.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Maximal codes cover the space
+
+**Remember:** Where no codeword reaches, add a word.
+
+*True by definition.* MSC 94B65 (Bounds on codes). arXiv math.IT. Level 2: later undergraduate.
+
+**Definition.** Use length-n words over q symbols and fix an integer d between 1 and n. Require different codewords to differ in at least d positions. A code is maximal by inclusion if adding any word breaks this rule.
+
+**Problem.** A maximal code covers every word with balls of radius d − 1, where a ball contains words within that many changes of its center. Its size is at least the number of all words divided by the size of one such ball.
+
+**How the definition helps.** Inclusion maximality turns each omitted word into evidence that some codeword lies within d − 1 changes. The source chooses a code of maximum size, which has this property. Our own formulation needs only inclusion maximality. Each codeword covers the same number of words because relabeling symbols preserves distance. Counting the covered words with overlaps gives the bound.
+
+**Wikipedia:** [Gilbert–Varshamov bound](https://en.wikipedia.org/wiki/Gilbert%E2%80%93Varshamov_bound). It says: “since otherwise we could add x to the code whilst maintaining the code's minimum Hamming distance d”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Signed words yield Plotkin’s bound
+
+**Remember:** Different bits subtract from the dot product.
+
+*True by definition.* MSC 94B65 (Bounds on codes). arXiv math.IT. Level 2: later undergraduate.
+
+**Definition.** Represent a binary word by a vector with +1 for each zero and −1 for each one. If two words differ at s positions, their vectors have dot product n − 2s, where n is the word length.
+
+**Problem.** For a binary code of length n with at least two words, let d be the smallest number of positions where two distinct words differ. If d &gt; n/2, the code size is at most 2d divided by 2d − n.
+
+**How the definition helps.** The signed representation turns a minimum distance into an upper bound on dot products. The usual proof counts disagreements across ordered pairs in two ways. Our own proof sums the M signed vectors and expands the squared length of their sum. The diagonal terms total Mn, and each of the M(M − 1) remaining terms is at most n − 2d. The squared length is nonnegative, which gives the stated bound.
+
+**Wikipedia:** [Plotkin bound](https://en.wikipedia.org/wiki/Plotkin_bound). It says: “The bound is proved by bounding the quantity ∑\[(x,y) ∈ C², x ≠ y\] d(x,y) in two different ways.”
+
+**Sources:**
+
+- [Morris Plotkin, Binary Codes with Specified Minimum Distance (1960)](https://doi.org/10.1109/TIT.1960.1057584)
+
+### Causal conditioning splits feedback information
+
+**Remember:** Put each new symbol on just one side of the ledger.
+
+*True by definition.* MSC 94A17 (Measures of information, entropy), 94A24. arXiv math.IT. Level 3: graduate.
+
+**Definition.** Directed information measures how much the source history through each time reduces uncertainty about the current output, given earlier outputs. Sum these average reductions in uncertainty over time. For delayed reverse information, exchange source and output and use only the strictly earlier output history to predict each source symbol.
+
+**Problem.** For equal-length streams of finite-valued symbols, forward information plus delayed reverse information equals their mutual information, the average uncertainty either stream removes about the other.
+
+**How the definition helps.** Using the strict past in the reverse direction assigns each part of the shared information exactly once. Our own proof expands the joint probability by taking each source symbol immediately before its matching output. Divide by the product of the separate stream probabilities, then take the mean logarithm. This is the usual definition of mutual information. Grouping its terms by stream gives the two directed sums.
+
+**Wikipedia:** [Directed information](https://en.wikipedia.org/wiki/Directed_information). It says: “except one conditions on "past" and "present" symbols yⁱ rather than all symbols yⁿ.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Collision bias bounds distance from uniform
 
@@ -494,6 +692,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Entropy power adds at fixed shape
+
+**Remember:** Use a Gaussian’s variance scale instead of its entropy scale.
+
+*Makes the theorem clean to state or prove.* MSC 94A17 (Measures of information, entropy). arXiv math.IT. Level 3: graduate.
+
+**Definition.** For a random vector with a density, its differential entropy is the mean negative logarithm of that density evaluated at the vector. When this mean is finite, match it with a Gaussian vector whose coordinates are independent and have equal variance. Their common variance is the entropy power.
+
+**Problem.** For independent Gaussian vectors with positive definite proportional covariances, the entropy power of their sum equals the sum of their entropy powers.
+
+**How the definition helps.** Entropy power expresses Gaussian entropy on a scale that adds when covariance matrices are proportional. The Gaussian entropy formula gives the entropy power as the nth root of the covariance determinant in dimension n. Our own calculation writes the two matrices as K and cK with c positive. Independence makes the sum’s covariance (1 + c)K. Its determinant root is therefore 1 + c times that of K.
+
+**Wikipedia:** [Entropy power inequality](https://en.wikipedia.org/wiki/Entropy_power_inequality). It says: “In particular, N(X) = \|K\|¹⁄ⁿ when X is normally distributed with covariance matrix K.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Jensen–Shannon divergence as mutual information cannot exceed one bit
 
 **Remember:** Learning the outcome of a fair coin can give at most one bit.
@@ -511,6 +725,24 @@
 **Sources:**
 
 - [J. Lin, Divergence measures based on the Shannon entropy, IEEE Transactions on Information Theory 37 (1991) 145–151](https://doi.org/10.1109/18.61115)
+
+### Likelihood ratios encode Rényi moments
+
+**Remember:** One ratio distribution stores the whole Rényi curve.
+
+*Makes the theorem clean to state or prove.* MSC 94A17 (Measures of information, entropy). arXiv math.IT. Level 3: graduate.
+
+**Definition.** Start with two probability laws p and q on a finite set, with q positive. Replace the original outcome by its likelihood ratio p/q and record that ratio’s distribution under q.
+
+**Problem.** The Rényi divergences of orders in any open subinterval of (0, ∞) determine this ratio distribution on a finite set.
+
+**How the definition helps.** The ratio distribution turns each divergence order into a moment calculation. For order a ≠ 1, multiply the divergence by a − 1 to get the logarithm of the mean of (p/q)ᵃ under q. Our own finite-set proof writes that mean as a sum of exponential functions of a, one per distinct positive ratio. Distinct exponentials are linearly independent on any open interval, so the moments determine the positive ratios and their masses. The remaining mass belongs to zero.
+
+**Paper or page:** [Sufficiency of Rényi divergences](https://arxiv.org/abs/2304.12989v6). It says: “Let p ≪ q be probability distributions on a measurable space X. Then there is a probability measure q̃ on (−∞,∞\]”
+
+**Sources:**
+
+- [Sufficiency of Rényi divergences](https://arxiv.org/abs/2304.12989v6)
 
 ### Likelihood ratios survive sufficient compression
 
@@ -649,6 +881,24 @@
 **nLab:** [entropy](https://ncatlab.org/nlab/show/entropy). It says: “the entropy is the supremum, over all ways of expressing X as an internal disjoint union of finitely many elements of the σ-algebra M”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Tree factors simplify distribution matching
+
+**Remember:** Keep the tree with the most information on its edges.
+
+*Makes the theorem clean to state or prove.* MSC 94A17 (Measures of information, entropy). arXiv math.IT. Level 3: graduate.
+
+**Definition.** A tree model chooses one variable as its root and gives every other variable one parent. Multiply the root probability by the probability of each child given its parent. Measure the approximation error by relative entropy. This is the mean log ratio of original probability to model probability, averaged under the original law.
+
+**Problem.** For a finite joint law, choose a tree connecting all variables with the largest total edge weight. Each edge weight is mutual information, the relative entropy of its pair’s law against the product of their individual laws. Use the original root and conditional probabilities wherever the parent has positive probability.
+
+**How the definition helps.** The tree product turns the log probability into a sum with one term per child and one for the root. Our own fixed-tree argument minimizes each term separately using nonnegativity of relative entropy. Substituting the optimal probabilities leaves a constant minus the sum of edge weights. Thus a tree with maximum weight gives minimum error.
+
+**Wikipedia:** [Chow–Liu tree](https://en.wikipedia.org/wiki/Chow%E2%80%93Liu_tree). It says: “only the sum of the pairwise mutual informations”
+
+**Sources:**
+
+- [C. K. Chow and C. N. Liu, Approximating Discrete Probability Distributions with Dependence Trees (1968)](https://doi.org/10.1109/TIT.1968.1054142)
 
 ### Giving polar channels the earlier bit preserves total symmetric capacity
 
@@ -965,6 +1215,26 @@
 - [Oded Goldreich, Shafi Goldwasser and Silvio Micali, On the Cryptographic Applications of Random Functions (1985)](https://doi.org/10.1007/3-540-39568-7_22)
 - [Oded Goldreich, Shafi Goldwasser and Silvio Micali, How to Construct Random Functions (1986)](https://doi.org/10.1145/6490.6503)
 
+### Fourier weights count dual words
+
+**Remember:** One Fourier transform changes each zero and one factor.
+
+*Makes the theorem clean to state or prove.* MSC 94B05 (Linear codes (general theory)). arXiv math.IT. Level 3: graduate.
+
+**Definition.** A binary code’s weight enumerator sums a monomial for each word. Give each zero a factor x and each one a factor y, reversing the source’s variable names. Regard the monomial as a product of one-bit functions.
+
+**Problem.** If C is a binary linear code, substitute x + y and x − y for x and y in its enumerator. Divide by the size of C to get the enumerator of its dual, the words orthogonal to C.
+
+**How the definition helps.** The polynomial records all weight counts in one substitution. Our own proof weights each binary word by multiplying x for every zero and y for every one. For a fixed word u, multiply each weight by the sign (−1) raised to the dot product with u. Summing over all words gives a factor x + y at each zero of u and x − y at each one. Averaging the signs over u in C leaves one on words orthogonal to C and zero elsewhere.
+
+**Wikipedia:** [Enumerator polynomial](https://en.wikipedia.org/wiki/Enumerator_polynomial). It says: “W(C⊥;x,y) = (1/\|C\|) W(C;y−x,y+x).”
+
+**Paper or page:** [Steiner systems S(2,4,2ᵐ) supported by a family of extended cyclic codes](https://arxiv.org/abs/1904.02310v2). It says: “A<sup>\\perp</sup> (z)=q<sup>-\\kappa </sup>\\Big(1+(q-1)z\\Big)<sup>vA\\Big</sup>(\\frac{1-z}{1+(q-1)z}\\Big).”
+
+**Sources:**
+
+- [Jessie MacWilliams, A Theorem on the Distribution of Weights in a Systematic Code (1963)](https://doi.org/10.1002/j.1538-7305.1963.tb04003.x)
+
 ### Reed–Muller codes as polynomial evaluations make their duals Reed–Muller codes
 
 **Remember:** A monomial missing a variable sums to zero over the cube.
@@ -994,6 +1264,40 @@
 **How the definition helps.** The consecutive roots give enough independent equations to rule out a nonzero word with fewer than d nonzero symbols. Suppose a word has s such symbols, with 0 &lt; s &lt; d. The first s equations use consecutive powers of s distinct nonzero field elements, one for each occupied position. After dividing each column by its first entry, the determinant is a product of nonzero differences. All s symbols would have to vanish. Our own comparison replaces testing pairwise distances by testing zeros of word polynomials, since the difference of two codewords is a codeword.
 
 **Wikipedia:** [BCH code](https://en.wikipedia.org/wiki/BCH_code). It says: “A BCH code has minimal Hamming distance at least d.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Different twists give complementary duals
+
+**Remember:** Different twists force a code and its dual apart.
+
+*Rules out counterexamples.* MSC 94B15 (Cyclic codes), 94B05. arXiv math.IT. Level 3: graduate.
+
+**Definition.** Take a linear code over a finite field. A twisted shift moves each entry right one place and wraps the last entry to the front multiplied by a nonzero λ. Call the code constacyclic when it is closed under this shift.
+
+**Problem.** If λ² ≠ 1, the only codeword orthogonal to every codeword under the ordinary dot product is zero.
+
+**How the definition helps.** Different twists let our own proof isolate a single coordinate in the sum of the code and its dual. The dual uses the inverse twist because shifting two vectors with opposite twists preserves their dot product. Given a nonzero shared word, shift while the last entry is zero, when both shifts agree. Once the last entry is nonzero, subtract the two shifts and rescale to obtain the first unit vector in the sum. The sum is now shift-invariant because the two shifts differ only by a multiple of that unit vector. Its shifts span the whole space, so the dimension formula forces zero intersection, a contradiction. With λ = 1, the binary code {00, 11} equals its dual.
+
+**Paper or page:** [The ℓ-intersection Pairs of Constacyclic and Conjucyclic Codes](https://arxiv.org/abs/2309.01985v1). It says: “such that λ² ≠ 1. Then C is an LCD code.”
+
+**Sources:**
+
+- [The ℓ-intersection Pairs of Constacyclic and Conjucyclic Codes](https://arxiv.org/abs/2309.01985v1)
+
+### Pole budgets bound code distance
+
+**Remember:** Each zero spends one unit of the pole budget.
+
+*Rules out counterexamples.* MSC 94B27 (Geometric methods (including applications of algebraic geometry) applied to coding theory), 94B65. arXiv math.IT. Level 3: graduate.
+
+**Definition.** Choose n distinct points with coordinates in a finite field on a smooth projective curve over that field. Assume the curve stays irreducible over the field’s algebraic closure. Form codewords by evaluating rational functions at those points. Allow poles only at other specified field points, with maximum orders totaling m.
+
+**Problem.** If m &lt; n, any two different codewords differ in at least n − m positions.
+
+**How the definition helps.** The pole restriction limits the number of positions where two evaluations can agree. Our own proof applies the degree theorem for rational functions to the difference of the functions. Its zeros and poles have equal total order when counted over the algebraic closure. Its poles have total order at most m, so at most m evaluation points can be zeros.
+
+**Paper or page:** [Attaining Sudan's decoding radius with no genus penalty for algebraic geometry codes](https://arxiv.org/abs/2103.11188v2). It says: “d(C) ≥ n − deg G”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -1032,6 +1336,24 @@
 **Sources:**
 
 - [Sibson α-Mutual Information and Its Variational Representations, Theorem 4.1](https://arxiv.org/abs/2405.08352v2)
+
+### Spectrum distance controls Shannon capacity
+
+**Remember:** Uniformly close bounds have uniformly close minima.
+
+*True by definition.* MSC 94A24 (Coding theorems (Shannon theory)). arXiv math.IT. Level 4: research.
+
+**Definition.** A spectrum function assigns nonnegative numbers to finite graphs and sends the one-vertex graph to one. It adds under disjoint union and multiplies under strong product, where distinct tuples are adjacent when corresponding entries are equal or adjacent. Its value cannot decrease under a vertex map that sends distinct nonneighbors to distinct nonneighbors. The spectrum distance is the largest absolute difference between two graphs’ values over all such functions.
+
+**Problem.** The absolute difference in Shannon capacities is at most the spectrum distance between two finite graphs.
+
+**How the definition helps.** The distance bounds every spectrum value’s change, so it bounds the change in their minimum. This quantitative argument is our own. Shannon capacity measures the growth of the largest distinguishable message set over repeated channel uses. The graph form of Strassen’s duality theorem identifies that growth factor with the minimum spectrum value.
+
+**Paper or page:** [The asymptotic spectrum distance, graph limits, and the Shannon capacity](https://arxiv.org/abs/2404.16763v1). It says: “converges to a graph H in the asymptotic spectrum distance, then (Θ(Gᵢ))ᵢ∈ℕ converges to Θ(H).”
+
+**Sources:**
+
+- [The asymptotic spectrum distance, graph limits, and the Shannon capacity](https://arxiv.org/abs/2404.16763v1)
 
 ### Asking only indistinguishability lets obfuscation escape the impossibility theorem
 
@@ -1118,3 +1440,21 @@
 **Paper or page:** [On the list decodability of rank-metric codes containing Gabidulin codes](https://arxiv.org/abs/2103.07547v1). It says: “is a constant dimension subspace code with parameters”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Shortest paths measure phase rotations
+
+**Remember:** One edge means one allowed change.
+
+*True by definition.* MSC 94B60 (Other types of codes), 94B65. arXiv math.IT. Level 4: research.
+
+**Definition.** Use words of equal length over a finite field. A move changes one coordinate or adds the same nonzero field element to every coordinate. Join words related by one move.
+
+**Problem.** The shortest path distance between two words equals their phase-rotation distance. The latter minimizes the number of coordinate changes plus one if a common shift is used.
+
+**How the definition helps.** Graph edges let us count a sequence of moves by its path length. Our own proof compares this with the formula allowing just one common shift. Write each coordinate change as addition in that coordinate. These additions commute with common shifts, and all common shifts combine into at most one. The remaining coordinate changes cost at least the number of mismatched positions, which one change per mismatch attains.
+
+**Paper or page:** [The Eigenvalue Method in Coding Theory](https://arxiv.org/abs/2509.08917v1). It says: “coincides with the phase-rotation distance.”
+
+**Sources:**
+
+- [The Eigenvalue Method in Coding Theory](https://arxiv.org/abs/2509.08917v1)

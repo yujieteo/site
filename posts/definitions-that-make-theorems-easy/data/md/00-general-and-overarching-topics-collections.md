@@ -36,3 +36,21 @@
 
 - [Wm. Woolsey Johnson and William E. Story, Notes on the "15" Puzzle (1879)](https://doi.org/10.2307/2369492)
 - [Viren Khandal, Modeling the 15 Tile Puzzle Through the Lens of Group Theory](https://arxiv.org/abs/2112.11634v1)
+
+### Dimension labels preserve unit arithmetic
+
+**Remember:** Changing units rescales each dimension by its own powers.
+
+*True by definition.* MSC 00A79 (Physics). arXiv math-ph. Level 3: graduate.
+
+**Definition.** Represent each base dimension, such as length or time, by a one-dimensional real vector space. A unit is a basis vector that assigns a numerical value to each quantity. A derived dimension records integer powers of the base dimensions, as in length divided by time squared. A bare numerical value omits this dimension information.
+
+**Problem.** Two choices of base units give isomorphic arithmetic on quantities. The change preserves addition within a dimension and multiplication across dimensions.
+
+**How the definition helps.** Dimension powers tell us exactly how each change of base units rescales a numerical value. In our own explanation, quantities of the same dimension acquire the same factor, so conversion preserves sums. Multiplication adds dimension powers, so conversion also preserves products. The construction combines the base spaces and their duals, which represent reciprocal units, into one space for each dimension.
+
+**Paper or page:** [Measurand Spaces and Dimensioned Hamiltonian Mechanics](https://arxiv.org/abs/2208.08893). It says: “are related by a type-preserving isomorphism of typed fields.”
+
+**Sources:**
+
+- [Carlos Zapata-Carratala, Measurand Spaces and Dimensioned Hamiltonian Mechanics](https://arxiv.org/abs/2208.08893)

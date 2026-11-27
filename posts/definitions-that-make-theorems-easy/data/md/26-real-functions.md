@@ -352,6 +352,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Normalized Taylor coefficients equal derivatives
+
+**Remember:** Divide by the factorial that differentiation puts back.
+
+*True by definition.* MSC 26A24 (Differentiation (real functions of one variable): general theory, generalized derivatives, mean value theorems). arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** For degree k, use the kth power of x − c divided by k!. In this basis, give the degree k term the coefficient equal to the kth derivative at c. For k = 0, use the function value at c.
+
+**Problem.** Suppose f has derivatives through order n at c. Its Taylor polynomial matches all these derivatives and the value at c. It is the unique polynomial of degree at most n with those values.
+
+**How the definition helps.** The kth derivative at the center is one for the normalized power of degree k and zero for all the others (our own). The work of approximation is separate and belongs to Taylor’s remainder theorem (our own).
+
+**nLab:** [Taylor's theorem](https://ncatlab.org/nlab/show/Taylor%27s+theorem). It says: “whose derivatives at c match those of f up to order k.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Summing over set partitions turns the higher chain rule into simple induction
 
 **Remember:** A new derivative starts a block or joins one.
@@ -488,6 +504,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Signed heights make integration linear
+
+**Remember:** Signed heights can cancel before or after you add.
+
+*Rules out counterexamples.* MSC 26A42 (Integrals of Riemann, Stieltjes and Lebesgue type). arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** Form rectangle sums using sampled function values as signed heights. The definite integral is their limit as the largest subinterval width tends to zero. Using absolute heights gives unsigned area.
+
+**Problem.** Let f and g be Riemann integrable on the same closed bounded interval. Every real linear combination is integrable there, and integration preserves that combination.
+
+**How the definition helps.** At every sample point, signed heights add before or after multiplication by the rectangle width (our own). Unsigned area fails for the constant functions one and minus one, whose sum has zero area (our own). The limit laws carry the equality of rectangle sums to the integrals (our own).
+
+**Paper or page:** [Linear Combination of Integrals/Definite](https://proofwiki.org/wiki/Linear_Combination_of_Integrals/Definite). It says: “The integral of this linear combination equals the same linear combination of their integrals.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Uniform limits preserve Riemann integrals
 
 **Remember:** A small error everywhere gives a small total error.
@@ -604,6 +636,94 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Unit directions reveal steepest slopes
+
+**Remember:** Compare equal-length steps to find the steepest slope.
+
+*Makes the theorem clean to state or prove.* MSC 26B05 (Continuity and differentiation questions). arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** Define a directional slope as the rate of change per unit distance along a direction. Use a vector of length one to specify that direction. A derivative along an arbitrary velocity instead gives the rate per unit time.
+
+**Problem.** For a differentiable real function, the greatest directional slope equals the length of its gradient. If the gradient is nonzero, that slope occurs in the gradient direction.
+
+**How the definition helps.** A unit vector removes speed from the comparison, so only the angle with the gradient matters (our own). Without that restriction, increasing an uphill velocity makes the rate arbitrarily large (our own). The chain rule gives the dot product formula, and the dot product is largest at alignment (our own).
+
+**Wikipedia:** [Gradient](https://en.wikipedia.org/wiki/Gradient). It says: “The steepness of the slope at that point is given by the magnitude of the gradient vector.”
+
+**Sources:**
+
+- [Gilbert Strang and Edwin Herman, Calculus Volume 3, OpenStax (2016), §4.6.](https://openstax.org/books/calculus-volume-3/pages/4-6-directional-derivatives-and-the-gradient)
+
+### Unit speed makes acceleration perpendicular
+
+**Remember:** A constant speed leaves acceleration only to turn the velocity.
+
+*True by definition.* MSC 26B12 (Calculus of vector functions). arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** Measure progress along a smooth curve by length traveled from its starting point. This replaces a parameter that may run at varying speed. For a regular curve, its original velocity never vanishes.
+
+**Problem.** When a twice continuously differentiable regular curve is measured by arc length, its acceleration is perpendicular to its velocity.
+
+**How the definition helps.** The squared speed is constant, and its derivative is twice the dot product of velocity and acceleration (our own). The work lies in showing that the derivative of arc length is speed and using it to change parameters (our own).
+
+**Wikipedia:** [Differentiable curve](https://en.wikipedia.org/wiki/Differentiable_curve). It says: “is at a constant unit speed.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Scalar line integrals ignore direction
+
+**Remember:** Reversing the walk reverses the pieces, not their lengths.
+
+*True by definition.* MSC 26B15 (Integration of real functions of several variables: length, area, volume). arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** Divide the curve into short pieces. Multiply the function value at one point of each piece by its arc length. The scalar line integral is the limit of these sums as the longest piece shrinks to zero. The parameter formula weights function values by speed.
+
+**Problem.** Reversing a smooth curve leaves the scalar line integral of a continuous function unchanged.
+
+**How the definition helps.** Reversing the path keeps all the weighted pieces and only reverses their order (our own). The work is to get the speed formula using the derivative of arc length (our own).
+
+**nLab:** [line integral](https://ncatlab.org/nlab/show/line+integral). It says: “whether increasing or decreasing”
+
+**Wikipedia:** [Line integral](https://en.wikipedia.org/wiki/Line_integral). It says: “Line integrals of scalar fields over a curve C do not depend on the chosen parametrization r of C.”
+
+**Sources:**
+
+- [Gilbert Strang and Edwin Herman, Calculus Volume 3, OpenStax (2016), §6.2.](https://openstax.org/books/calculus-volume-3/pages/6-2-line-integrals)
+
+### Clockwise inner boundaries preserve Green’s theorem
+
+**Remember:** Keep the region on your left, even at a hole.
+
+*Rules out counterexamples.* MSC 26B20 (Integral formulas of real functions of several variables (Stokes, Gauss, Green, etc.)). arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** For a positive boundary, walk with the region to your left. This rule sends you counterclockwise around the outside and clockwise around any hole. The simpler rule “walk counterclockwise” works only for an outside boundary.
+
+**Problem.** Take a bounded plane region whose boundary consists of finitely many disjoint, simple, piecewise smooth closed curves. Suppose a vector field has continuous first derivatives on a neighborhood of the closed region. Green’s theorem equates circulation around the oriented boundary with the area integral of the scalar curl, the local rotation rate.
+
+**How the definition helps.** The left-hand rule makes the two copies of every cut run in opposite directions, so their integrals cancel (our own). On a ring centered at the origin, the field (−y, x)/(x² + y²) has zero curl (our own). Each counterclockwise circle contributes 2π, so the inner circle must run clockwise (our own). Green’s theorem on the pieces supplies the integral identity (our own).
+
+**Wikipedia:** [Green's theorem](https://en.wikipedia.org/wiki/Green%27s_theorem). It says: “where the path of integration along C is counterclockwise.”
+
+**Sources:**
+
+- [Gilbert Strang and Edwin Herman, Calculus Volume 3, OpenStax (2016), §6.4.](https://openstax.org/books/calculus-volume-3/pages/6-4-greens-theorem)
+
+### All directions detect joint convexity
+
+**Remember:** Test every direction, including directions between the axes.
+
+*Rules out counterexamples.* MSC 26B25 (Convexity of real functions of several variables, generalizations). arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** A function on a convex set is convex if its restriction to every line segment is convex. Testing lines parallel to the coordinate axes alone instead defines separate convexity.
+
+**Problem.** A twice continuously differentiable function on an open convex set is convex exactly when its Hessian is positive semidefinite everywhere. That means the matrix of second derivatives gives a nonnegative quadratic value in every direction.
+
+**How the definition helps.** Each directional quadratic value is the second derivative along that line, so the one-variable test applies (our own). The function xy is linear on each coordinate line but concave on y = −x (our own). The work is the chain rule along a line and the one-variable second derivative test (our own).
+
+**nLab:** [convex function](https://ncatlab.org/nlab/show/convex+function). It says: “a twice-differentiable function f: D → ℝ is convex iff its Hessian is a positive semidefinite bilinear form.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Derivatives lower root multiplicity by one
 
 **Remember:** One derivative shifts the first nonzero derivative down by one place.
@@ -617,6 +737,22 @@
 **How the definition helps.** The derivative starts the list of derivative values one place later (our own). The work moves to Taylor’s formula for polynomials, which shows that the first nonzero term gives the number of linear factors (our own).
 
 **Wikipedia:** [Multiplicity (mathematics)](https://en.wikipedia.org/wiki/Multiplicity_%28mathematics%29). It says: “If a is a root of multiplicity k of a polynomial, then it is a root of multiplicity k − 1 of the derivative”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Odd multiplicity makes roots cross
+
+**Remember:** An odd number of sign reversals still reverses the sign.
+
+*Makes the theorem clean to state or prove.* MSC 26C05 (Real polynomials: analytic properties, etc.). arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** At a polynomial root a, remove factors x − a until the remaining factor is nonzero at a. The number removed is the multiplicity. Merely knowing that a is a root does not distinguish a crossing from a touch.
+
+**Problem.** A nonzero real polynomial changes sign across a real root exactly when that root has odd multiplicity.
+
+**How the definition helps.** The remaining factor has constant sign nearby, so only the parity of the removed power matters (our own). The root zero of x² shows why not every root is a crossing (our own). The work is repeated division by x − a and continuity of the remaining factor (our own).
+
+**Wikipedia:** [Multiplicity (mathematics)](https://en.wikipedia.org/wiki/Multiplicity_%28mathematics%29). It says: “The graph traverses the x-axis at roots of odd multiplicity and does not traverse it at roots of even multiplicity”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -1020,6 +1156,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Coefficient ratios control quotient monotonicity
+
+**Remember:** Larger inputs give higher indices more weight.
+
+*Rules out counterexamples.* MSC 26A48 (Monotonic functions, generalizations), 30B10. arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** Let f and g be real power series with the same positive radius r. Write aₙ and bₙ for their respective coefficients, with every bₙ positive. At 0 &lt; x &lt; r, give index n the weight bₙxⁿ/g(x). Then f(x)/g(x) is the weighted mean of the ratios aₙ/bₙ.
+
+**Problem.** If the coefficient ratios never decrease, then f(x)/g(x) never decreases on (0,r).
+
+**How the definition helps.** Increasing x favors larger indices, where the coefficient ratios are at least as large. Our own proof pairs indices i &lt; j after differentiating the quotient. Each pair contributes a positive factor times (j − i)(aⱼ/bⱼ − aᵢ/bᵢ). Our own counterexample uses f(x) = 1/(1 − x) and g(x) = 1/(1 − x)². The coefficient ratios decrease and the quotient 1 − x decreases.
+
+**Paper or page:** [On Kaluza's sign criterion for reciprocal power series](https://arxiv.org/abs/1010.5337v3). It says: “Then the function x ↦ f(x)/g(x) is increasing (decreasing) on (0,r) if the sequence {aₙ/bₙ} is increasing (decreasing).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Continuity upgrades midpoint convexity
 
 **Remember:** Repeatedly halve the interval, then use continuity to fill the gaps.
@@ -1035,6 +1187,22 @@
 **Wikipedia:** [Cauchy's functional equation](https://en.wikipedia.org/wiki/Cauchy%27s_functional_equation). It says: “Such functions are sometimes called Hamel functions.”
 
 **Paper or page:** [Continuous Midpoint-Convex Function is Convex](https://proofwiki.org/wiki/Continuous_Midpoint-Convex_Function_is_Convex). It says: “Let f be midpoint-convex and continuous on I. Then f is convex.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Increasing ratios allow one turn
+
+**Remember:** An increasing ratio can cross one only once.
+
+*True by definition.* MSC 26A51 (Convexity of real functions in one variable, generalizations). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** A positive sequence is log-convex if the ratio of each term to its predecessor never decreases. Equivalently, each interior term squared is at most the product of its neighbors.
+
+**Problem.** A positive log-convex sequence is monotone or first decreases and then increases, with ties allowed.
+
+**How the definition helps.** Successive ratios show directly which steps go up and which go down. Our own explanation starts from the usual inequality involving three neighboring terms. Dividing by the first two terms shows that the second ratio is at least the first. Once a ratio exceeds one, every later step goes up.
+
+**Paper or page:** [On Kaluza's sign criterion for reciprocal power series](https://arxiv.org/abs/1010.5337v3). It says: “If a₀ ≤ a₁, then a₀ ≤ a₁ ≤ a₂ ≤ …;”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -1169,6 +1337,38 @@
 **How the definition helps.** Ratios express the inverse law even when a power alone does not describe growth (our own). Fix a positive multiplier a and choose positive numbers b and c straddling a raised to 1/ρ (our own). For large x, regular variation gives f(bx) &lt; a f(x) &lt; f(cx) (our own). Taking inverses and dividing by x traps the inverse ratio between b and c (our own). The positive index and monotonicity imply unbounded growth, so the inverse covers every sufficiently large argument (our own). Bringing b and c together gives the limit (our own).
 
 **Wikipedia:** [Slowly varying function](https://en.wikipedia.org/wiki/Slowly_varying_function). It says: “Similarly, a regularly varying function is a function of a real variable whose behaviour at infinity is similar to the behaviour of a power law function”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Dini continuity gives pointwise Fourier convergence
+
+**Remember:** Dini continuity controls how much small oscillations can accumulate.
+
+*Rules out counterexamples.* MSC 26A15 (Continuity and related questions (modulus of continuity, semicontinuity, discontinuities, etc.) for real functions in one variable), 42A20. arXiv math.CA. Level 3: graduate.
+
+**Definition.** For a function f and a point x, let ω(r) be the supremum of \|f(y) − f(x)\| over points within distance r. Dini continuity at x means that ω(r)/r has finite integral near zero.
+
+**Problem.** The Fourier series of an integrable periodic function converges to its value at every point where it is Dini continuous.
+
+**How the definition helps.** Our own explanation uses the Dini bound to make the amplitude in the Fourier error integral integrable. The Riemann–Lebesgue lemma then makes its oscillatory integral tend to zero, in our own proof. Ordinary continuity cannot substitute, as du Bois-Reymond’s continuous periodic example has a Fourier series that diverges at a point, in our own comparison.
+
+**Wikipedia:** [Dini test](https://en.wikipedia.org/wiki/Dini_test). It says: “Then the Fourier series of f converges at t to f(t).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Everywhere approximate continuity gives intermediate values
+
+**Remember:** Approximate continuity everywhere still rules out jumps over values.
+
+*Rules out counterexamples.* MSC 26A15 (Continuity and related questions (modulus of continuity, semicontinuity, discontinuities, etc.) for real functions in one variable), 26A24. arXiv math.CA. Level 3: graduate.
+
+**Definition.** A measurable real function is approximately continuous at a point if nearby points where it differs by more than any fixed tolerance have density zero. Density zero means that their fraction in shrinking intervals about the point tends to zero.
+
+**Problem.** A real function approximately continuous at every point of an open interval takes every value between any two of its values.
+
+**How the definition helps.** In our own proof, approximate continuity everywhere makes each bounded function in this class the derivative of its indefinite integral. At every point, the average absolute difference from the point value tends to zero on shrinking intervals. This gives the derivative there. Darboux’s theorem says derivatives take every intermediate value. For an unbounded function, first apply arctangent, which is bounded, continuous, and strictly increasing. Our own counterexample takes zero on the negative half-line and one elsewhere. It is approximately continuous almost everywhere but skips one half.
+
+**Wikipedia:** [Approximately continuous function](https://en.wikipedia.org/wiki/Approximately_continuous_function). It says: “when f is essentially bounded, its points of approximate continuity coincide with its Lebesgue points.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -1321,6 +1521,22 @@
 **How the definition helps.** With the integral definition, a density g is given, and only g = f′ almost everywhere remains, in our own account. The Lebesgue differentiation theorem supplies that step. The main work moves into the theorem that the integral form agrees with the interval definition. Wikipedia lists the two as equivalent conditions.
 
 **Wikipedia:** [Absolute continuity](https://en.wikipedia.org/wiki/Absolute_continuity). It says: “there exists a Lebesgue integrable function g on \[a,b\] such that f(x) = f(a) + ∫ₐˣ g(t) dt for all x in \[a,b\].”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Absolute monotonicity forces analyticity
+
+**Remember:** Signs at every derivative order keep Taylor remainders under control.
+
+*Rules out counterexamples.* MSC 26A48 (Monotonic functions, generalizations), 26E05. arXiv math.CA. Level 3: graduate.
+
+**Definition.** A smooth real function is absolutely monotone on an interval if it and every derivative are nonnegative there.
+
+**Problem.** Every absolutely monotone function on an open interval is real analytic there. That means its Taylor series equals the function near each point.
+
+**How the definition helps.** In our own explanation, the derivative signs bound Taylor coefficients using the function value at a point farther right. Bernstein’s theorem uses this control to show that the Taylor remainder tends to zero. Our own counterexample equals exp(−1/x) for x &gt; 0 and zero elsewhere. It is smooth and nondecreasing, yet its Taylor series at zero vanishes while the function is positive immediately to the right.
+
+**Wikipedia:** [Absolutely and completely monotonic functions and sequences](https://en.wikipedia.org/wiki/Absolutely_and_completely_monotonic_functions_and_sequences). It says: “A function that is absolutely monotonic on the open interval (a,b) can be extended to an analytic function on the open disk”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -1568,6 +1784,24 @@
 **Sources:**
 
 - [Lucia De Luca, Riccardo Scala, Nicolas Van Goethem, A new approach to topological singularities via a weak notion of Jacobian for functions of bounded variation, arXiv:2205.14746 (2022)](https://arxiv.org/abs/2205.14746v1)
+
+### Derivative growth bounds make Taylor data unique
+
+**Remember:** With the right derivative bounds, a flat point forces a zero function.
+
+*Rules out counterexamples.* MSC 26E10 (\\(C<sup>\\infty\\</sup>)-functions, quasi-analytic functions). arXiv math.CA. Level 4: research.
+
+**Definition.** Take positive weights Mₖ with M₀ = 1 whose successive ratios are nondecreasing and tend to infinity. In the corresponding class, one constant C ≥ 1 bounds the absolute kth derivative everywhere by Mₖ times the (k + 1)st power of C. Require the sum of the reciprocals of the successive ratios to diverge.
+
+**Problem.** Two functions in this class on a closed interval coincide if their values and all their derivatives agree at one interior point.
+
+**How the definition helps.** The Denjoy–Carleman theorem makes the divergent sum a test for uniqueness from derivatives at one point. Our own counterexample for a convergent sum is the smooth bump exp(−1/(1 − x²)) on \|x\| &lt; 1, extended by zero. On \[−2,2\], let Dₖ be the maximum absolute kth derivative. Starting with M₀ = 1, choose nondecreasing successive ratios so that Mₖ ≥ Dₖ and Mₖ/Mₖ₋₁ ≥ k² for k ≥ 1. These weights bound every derivative of the bump, yet the reciprocals of their ratios have finite sum. At the interior point 1 the bump and zero have identical derivatives of every order.
+
+**Wikipedia:** [Quasi-analytic function](https://en.wikipedia.org/wiki/Quasi-analytic_function). It says: “the only function in it having all its partial derivatives equal to zero at a point is the function identically equal to zero.”
+
+**Paper or page:** [Ultradifferentiable extension theorems: a survey](https://arxiv.org/abs/2107.01061v2). It says: “∑ₖ 1/μₖ = ∞.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Convergence at every nonstandard point makes Cauchy's proof correct
 

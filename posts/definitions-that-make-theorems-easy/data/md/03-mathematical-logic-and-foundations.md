@@ -1,3 +1,21 @@
+### False rows build conjunctive normal form
+
+**Remember:** One clause rules out one false row.
+
+*True by definition.* MSC 03B05 (Classical propositional logic). arXiv math.LO. Level 1: early undergraduate.
+
+**Definition.** A clause joins letters or their negations with OR. A conjunctive normal form joins clauses with AND. Its truth-table construction uses one clause for each false row.
+
+**Problem.** Every propositional formula has an equivalent conjunctive normal form.
+
+**How the definition helps.** Each clause rejects exactly its designated row, so their conjunction has the required truth table. In each clause, negate the letters that are true on its row and leave the others unchanged. This replaces repeated algebraic rewrites with a single construction. In our own convention, an empty conjunction is true and an empty clause is false.
+
+**Wikipedia:** [Conjunctive normal form](https://en.wikipedia.org/wiki/Conjunctive_normal_form). It says: “A CNF equivalent of a formula can be derived from its truth table.”
+
+**Paper or page:** [Existence of Conjunctive Normal Form of Statement](https://proofwiki.org/wiki/Existence_of_Conjunctive_Normal_Form_of_Statement). It says: “Any propositional formula can be expressed in conjunctive normal form (CNF).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Universal statements about S conflict only when S is nonempty
 
 **Remember:** If there are no unicorns, all unicorns fly and no unicorn flies.
@@ -37,6 +55,22 @@
 - [ProofWiki, Universal Affirmative implies Particular Affirmative iff First Predicate is not Vacuous](https://proofwiki.org/wiki/Universal_Affirmative_implies_Particular_Affirmative_iff_First_Predicate_is_not_Vacuous)
 - [ProofWiki, Universal Negative implies Particular Negative iff First Predicate is not Vacuous](https://proofwiki.org/wiki/Universal_Negative_implies_Particular_Negative_iff_First_Predicate_is_not_Vacuous)
 
+### Binary digits count finite subsets
+
+**Remember:** A finite subset is a binary number with finitely many ones.
+
+*True by definition. Confidence: medium.* MSC 03E10 (Ordinal and cardinal numbers). arXiv math.LO. Level 1: early undergraduate.
+
+**Definition.** Call a set countable if its elements admit distinct nonnegative integer labels. Encode each finite subset by the integer whose binary expansion has ones exactly at its members’ labels.
+
+**Problem.** The finite subsets of a countable set form a countable set.
+
+**How the definition helps.** The code supplies the distinct integer labels that countability requires. Our own proof replaces separate lists for the different subset sizes with one encoding. Uniqueness of binary expansion ensures that different subsets receive different labels. The empty subset receives zero.
+
+**Paper or page:** [Set of Finite Subsets of Countable Set is Countable](https://proofwiki.org/wiki/Set_of_Finite_Subsets_of_Countable_Set_is_Countable). It says: “Then the set of finite subsets of A is countable.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Measuring size by one-to-one correspondence settles Galileo's paradox
 
 **Remember:** Pair them off: squares and integers match, so they are equally many.
@@ -54,6 +88,22 @@
 **Sources:**
 
 - [Cantor, G. (1878). Ein Beitrag zur Mannigfaltigkeitslehre. Journal für die reine und angewandte Mathematik 84, 242–258.](https://doi.org/10.1515/crll.1878.84.242)
+
+### Subsets keep their countable labels
+
+**Remember:** A subset keeps the labels it already has.
+
+*True by definition.* MSC 03E10 (Ordinal and cardinal numbers). arXiv math.LO. Level 1: early undergraduate.
+
+**Definition.** Call a set countable if its elements can receive distinct natural number labels. An alternative is to list the elements using a function from the natural numbers that reaches each element.
+
+**Problem.** Every subset of a countable set is countable, including the empty set.
+
+**How the definition helps.** An injection on the whole set remains an injection on every subset. In our own comparison, a list indexed by all natural numbers cannot list the empty set. To recover the usual enumeration of an infinite subset, list its labels in increasing order.
+
+**Wikipedia:** [Countable set](https://en.wikipedia.org/wiki/Countable_set). It says: “A subset of a countable set is countable.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Adding indicator functions modulo two makes symmetric difference associative
 
@@ -94,6 +144,40 @@
 - [ProofWiki, Symmetric and Transitive therefore Reflexive](https://proofwiki.org/wiki/Symmetric_and_Transitive_therefore_Reflexive)
 - [ProofWiki, Symmetric and Transitive Relation is not necessarily Reflexive](https://proofwiki.org/wiki/Symmetric_and_Transitive_Relation_is_not_necessarily_Reflexive)
 - [ProofWiki, Equivalence Class is not Empty](https://proofwiki.org/wiki/Equivalence_Class_is_not_Empty)
+
+### Indicators split across disjoint unions
+
+**Remember:** Choose the indicator on each piece independently.
+
+*True by definition.* MSC 03E20 (Other classical set theory (including functions, relations, and set algebra)). arXiv math.LO. Level 1: early undergraduate.
+
+**Definition.** Represent a subset by a function that gives 1 on the subset and 0 off it. This replaces the description of the subset as an unordered collection of elements.
+
+**Problem.** The subsets of a disjoint union correspond one-to-one to pairs of subsets of its two parts.
+
+**How the definition helps.** An indicator on a disjoint union amounts to one independent choice of indicator on each part. In our own proof, restrict the function to recover the pair. Conversely, the two functions fit together because their domains are disjoint. The inputs with value 1 recover the original subset.
+
+**nLab:** [characteristic function](https://ncatlab.org/nlab/show/characteristic+function). It says: “that takes a in X to the truth value of the statement that a ∈ U.”
+
+**Paper or page:** [Bijection between Power Set of Disjoint Union and Cartesian Product of Power Sets](https://proofwiki.org/wiki/Bijection_between_Power_Set_of_Disjoint_Union_and_Cartesian_Product_of_Power_Sets). It says: “Then there exists a bijection between 𝒫(S ∪ T) and (𝒫S) × (𝒫T).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Injections preserve image intersections
+
+**Remember:** An output shared by two images has the same input in both sets.
+
+*Rules out counterexamples.* MSC 03E20 (Other classical set theory (including functions, relations, and set algebra)). arXiv math.LO. Level 1: early undergraduate.
+
+**Definition.** Use the definition of an injection that asks each output to have at most one input. The image of a set contains the outputs reached from that set.
+
+**Problem.** A function preserves every intersection of two sets under direct image exactly when it is injective.
+
+**How the definition helps.** Injectivity forces two inputs for a shared output to be the same input. That input belongs to both sets, which proves the difficult inclusion. Conversely, two distinct inputs with the same output give disjoint singleton sets whose images overlap. In our own example, squaring sends both −1 and 1 to 1.
+
+**Paper or page:** [Image of Intersection under Injection](https://proofwiki.org/wiki/Image_of_Intersection_under_Injection). It says: “∀ A, B ⊆ S: f\[A ∩ B\] = f\[A\] ∩ f\[B\]”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Integers as classes of pairs of naturals inherit their laws from ℕ
 
@@ -152,6 +236,22 @@
 - [ProofWiki, Empty Mapping is Injective](https://proofwiki.org/wiki/Empty_Mapping_is_Injective)
 - [ProofWiki, Relation to Empty Set is Mapping iff Domain is Empty](https://proofwiki.org/wiki/Relation_to_Empty_Set_is_Mapping_iff_Domain_is_Empty)
 - [ProofWiki, Cardinality of Set of All Mappings from Empty Set](https://proofwiki.org/wiki/Cardinality_of_Set_of_All_Mappings_from_Empty_Set)
+
+### Quotient maps use any representative
+
+**Remember:** To give a class a value, give every member the same value.
+
+*True by definition.* MSC 03E20 (Other classical set theory (including functions, relations, and set algebra)). arXiv math.LO. Level 1: early undergraduate.
+
+**Definition.** An equivalence relation partitions S into classes. A quotient map q sends S onto Q and gives equivalent elements the same image. Require each function f on S that is constant on classes to factor uniquely as f = g ∘ q.
+
+**Problem.** The set of equivalence classes satisfies this definition when q sends each element to its class.
+
+**How the definition helps.** The factorization rule specifies exactly what a function on the quotient must do. Our own verification starts with the usual construction of Q as the set of classes. Assign each class the value of f at any member. Constancy makes this assignment independent of the member, and every class has a member, so the assignment is unique.
+
+**nLab:** [quotient set](https://ncatlab.org/nlab/show/quotient+set). It says: “two elements are now considered equal if in S they were merely equivalent.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Taking the empty intersection as the whole set keeps intersection order-reversing
 
@@ -3822,6 +3922,24 @@
 
 - [B. Accattoli, U. Dal Lago, (Leftmost-outermost) beta reduction is invariant, indeed, Log. Methods Comput. Sci. 2016, arXiv:1601.01233](https://arxiv.org/abs/1601.01233)
 - [B. Accattoli, P. Barenbaum, D. Mazza, Distilling abstract machines, 2014, arXiv:1406.2370](https://arxiv.org/abs/1406.2370)
+
+### An opremum detects modal irreducibility
+
+**Remember:** One element lies in every nontrivial filter closed under the modal operation.
+
+*True by definition.* MSC 03B45 (Modal logic (including the logic of norms)), 08B26. arXiv math.LO. Level 4: research.
+
+**Definition.** A modal algebra is a Boolean algebra with an operation □ preserving intersections and 1. A modal filter contains 1 and is closed upwards, under intersections, and under □. An opremum is an element c strictly below 1 with the following property. For every a strictly below 1, some finite meet a ∧ □a ∧ … ∧ □ⁿa is at most c.
+
+**Problem.** A modal algebra is subdirectly irreducible exactly when it has an opremum. Subdirect irreducibility means there is a least congruence strictly larger than equality.
+
+**How the definition helps.** The inequality replaces a test over all congruences by a test on individual elements (our own explanation). The hard step identifies congruences with modal filters, ordered by inclusion. The filter generated by a consists of the elements above one of the displayed meets. Thus every filter larger than {1} contains the opremum, and the filter it generates is the least such filter. Conversely, any element below 1 in the least such filter satisfies the inequality.
+
+**Paper or page:** [Stable Canonical Rules and Formulas for Pre-transitive Logics via Definable Filtration](https://arxiv.org/abs/2510.22638v1). It says: “A modal algebra A is s.i. iff A has an opremum”
+
+**Sources:**
+
+- [Tenyo Takahashi, Stable Canonical Rules and Formulas for Pre-transitive Logics via Definable Filtration, Proposition 2.1](https://arxiv.org/abs/2510.22638v1)
 
 ### In hybrid logic every pure axiom is complete for its frames
 

@@ -1,3 +1,35 @@
+### Interiors commute with finite intersections
+
+**Remember:** Intersect finitely many largest open pieces to get the largest open piece.
+
+*True by definition.* MSC 54A05 (Topological spaces and generalizations (closure spaces, etc.)). arXiv math.GN. Level 1: early undergraduate.
+
+**Definition.** The interior of a set is its largest open subset. Another description keeps the points that have a whole open neighborhood inside the set.
+
+**Problem.** The interior of a finite intersection is the intersection of the interiors.
+
+**How the definition helps.** The largest-open-subset description lets us compare the two sides directly by inclusion. In our own proof, the finite intersection of the interiors is open and lies in every original set. Conversely, the interior of the intersection is open and lies in each set, hence in each interior. The pointwise description gives the same interior because the union of all open neighborhoods inside a set is its largest open subset. For the intervals (−1/n, 1/n), the interiors intersect in {0}, while the intersection has empty interior.
+
+**Paper or page:** [Interior of Finite Intersection equals Intersection of Interiors](https://proofwiki.org/wiki/Interior_of_Finite_Intersection_equals_Intersection_of_Interiors). It says: “(⋂ᵢ₌₁ⁿ Hᵢ)° = ⋂ᵢ₌₁ⁿ Hᵢ°”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Subspace topology preserves continuity into subsets
+
+**Remember:** Intersecting an open set with the target subspace leaves its preimage unchanged.
+
+*True by definition.* MSC 54B05 (Subspaces in general topology). arXiv math.GN. Level 1: early undergraduate.
+
+**Definition.** The subspace topology on a subset S makes its open sets precisely the intersections of S with open sets in the larger space. This is the coarsest topology making the inclusion continuous.
+
+**Problem.** A map into a subspace is continuous exactly when the same map into the larger space is continuous.
+
+**How the definition helps.** Intersecting an open set with the target subset leaves its preimage unchanged. Our own proof uses this identity to identify the two continuity tests. To recover the description using the coarsest topology, first check that the intersections form a topology. Continuity of the inclusion requires every one of those intersections to be open.
+
+**nLab:** [subspace topology](https://ncatlab.org/nlab/show/subspace+topology). It says: “is continuous precisely if the composition i ∘ f is continuous as a function to X”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Finite closed pieces preserve continuity
 
 **Remember:** Closed preimages join over finitely many closed pieces.
@@ -11,6 +43,70 @@
 **How the definition helps.** The closed-preimage test reduces the proof to taking a finite union of closed sets (our own). On each piece, the preimage of a closed set is closed relative to that piece (our own). Each piece is closed in the whole space, so its part of the preimage is also closed there (our own). Their union is the full preimage (our own). The work moves to proving that the closed-preimage and distance tests agree (our own).
 
 **Paper or page:** [Pasting Lemma/Finite Union of Closed Sets](https://proofwiki.org/wiki/Pasting_Lemma/Finite_Union_of_Closed_Sets). It says: “Let I be a finite indexing set.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Open covers let continuity glue
+
+**Remember:** Open pieces stay open when you join them.
+
+*True by definition.* MSC 54C05 (Continuous maps). arXiv math.GN. Level 1: early undergraduate.
+
+**Definition.** Use preimages of open sets to define continuity. On a subset, the open sets are intersections with open sets of the larger space.
+
+**Problem.** A map that is continuous on each member of an open cover is continuous on the whole space.
+
+**How the definition helps.** With the open-set test, each preimage is a union of open pieces. In our own proof, continuity on each piece makes its part of the preimage open relative to that piece. Since the piece itself is open, this part is open in the whole space. Taking their union proves continuity without choosing a distance bound at each point. In metric spaces the separate step is proving the two continuity tests equivalent.
+
+**Paper or page:** [Pasting Lemma/Union of Open Sets](https://proofwiki.org/wiki/Pasting_Lemma/Union_of_Open_Sets). It says: “that is, f ↾ C is continuous.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Open preimages make continuity compose
+
+**Remember:** Pull an open set back one map at a time.
+
+*True by definition.* MSC 54C05 (Continuous maps). arXiv math.GN. Level 1: early undergraduate.
+
+**Definition.** A map is continuous if the preimage of each open set is open. In metric spaces the usual alternative tests distances at each point with epsilon and delta.
+
+**Problem.** The composite of two continuous maps is continuous.
+
+**How the definition helps.** The open-set definition turns the composite test into two successive preimages. In our own proof, the second map pulls an open set back to an open set. The first map does the same. For metric spaces, the separate step is proving that the open-set test agrees with the pointwise distance test.
+
+**Paper or page:** [Composite of Continuous Mappings is Continuous](https://proofwiki.org/wiki/Composite_of_Continuous_Mappings_is_Continuous). It says: “Then the composite mapping g ∘ f: T₁ → T₃ is continuous.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Compactness keeps nested intersections nonempty
+
+**Remember:** If the complements cover, finitely many already cover.
+
+*True by definition.* MSC 54D30 (Compactness). arXiv math.GN. Level 1: early undergraduate.
+
+**Definition.** Use this test for compactness. If every finite selection from a family of closed sets has a common point, the whole family has a common point. The usual test asks whether every open cover contains a finite subcover.
+
+**Problem.** In a compact space, every nested sequence of nonempty closed sets has a common point.
+
+**How the definition helps.** The closed-set test reduces the nested case to checking the smallest set in each finite selection. In our own proof, that set is nonempty and lies in every selected set. Taking complements proves that the closed-set test agrees with the open-cover test.
+
+**Paper or page:** [Intersection of Closed Subsets satisfying Finite Intersection Property in Compact Space](https://proofwiki.org/wiki/Intersection_of_Closed_Subsets_satisfying_Finite_Intersection_Property_in_Compact_Space). It says: “Suppose that 𝓕 satisfies the finite intersection property. That is, the intersection of every finite subset is non-empty. Then the intersection of 𝓕 is non-empty.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Compactness survives continuous images
+
+**Remember:** Pull back the cover and keep the finite part.
+
+*True by definition.* MSC 54D30 (Compactness). arXiv math.GN. Level 1: early undergraduate.
+
+**Definition.** A space is compact if every family of open sets covering it contains a finite family that still covers it. In a metric space, an equivalent test asks whether every sequence has a subsequence converging in the space.
+
+**Problem.** A continuous image of a compact space is compact.
+
+**How the definition helps.** The cover definition lets us pull an open cover of the image back to an open cover of the domain. In our own proof, compactness selects finitely many of these preimages. The corresponding original sets cover every image point. The separate metric-space theorem identifies this cover test with the subsequence test.
+
+**Paper or page:** [Continuous Image of Compact Space is Compact](https://proofwiki.org/wiki/Continuous_Image_of_Compact_Space_is_Compact). It says: “If T₁ is compact then so is its image f\[T₁\] under f.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -343,6 +439,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Closed relations give Hausdorff open quotients
+
+**Remember:** Closed pairs keep distinct quotient points apart when the quotient map is open.
+
+*Rules out counterexamples.* MSC 54B15 (Quotient spaces, decompositions in general topology), 54C10. arXiv math.GN. Level 2: later undergraduate.
+
+**Definition.** An equivalence relation is closed if its equivalent pairs form a closed subset of the product space. The quotient map sends each point to its class. It is open if it sends open sets to open sets.
+
+**Problem.** The quotient by a closed equivalence relation is Hausdorff whenever the quotient map is open.
+
+**How the definition helps.** In our own proof, closedness puts each inequivalent pair inside an open rectangle containing no equivalent pair. The two sides therefore have disjoint open images, as the Hausdorff condition requires. Our own counterexample is the line with two origins. Identify matching nonzero points in two copies of the real line. The quotient map is open, but any neighborhoods of the two origins intersect.
+
+**Paper or page:** [A converse theorem for hyperbolic surface spectra and the conformal bootstrap](https://arxiv.org/abs/2509.17935v1). It says: “Let Y be a topological space, and ∼ a closed equivalence relation on Y such that the quotient map Y → Y/∼ is open. Then Y/∼ is Hausdorff.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Distance functions represent Hausdorff distance
 
 **Remember:** Compare two sets by comparing their distances from every point.
@@ -415,6 +527,38 @@
 
 - [Nicolas Bourbaki, General Topology, Chapters 1–4, Elements of Mathematics, Springer (1995 reprint)](https://doi.org/10.1007/978-3-642-61701-0)
 - [Richard S. Palais, When proper maps are closed, Proc. AMS 24 (1970) 835–836](https://doi.org/10.1090/s0002-9939-1970-0254818-x)
+
+### Perfect maps pull back compactness
+
+**Remember:** Compact fibers handle one point, and closedness handles its neighbors.
+
+*Rules out counterexamples.* MSC 54C10 (Special maps on topological spaces (open, closed, perfect, etc.)), 54D30. arXiv math.GN. Level 2: later undergraduate.
+
+**Definition.** A perfect map is a continuous, surjective, closed map with compact fibers. A closed map sends closed sets to closed sets, and a fiber is the preimage of a point.
+
+**Problem.** The preimage of every compact set under a perfect map is compact.
+
+**How the definition helps.** In our own proof, compact fibers give finite covers and closedness extends each cover to nearby fibers. Take any open cover of the preimage of a compact set. Cover each fiber with finitely many members. The image of the complement of their union is closed and misses the target point. Compactness in the target now gives a finite subcover. Our own counterexample maps the disjoint union of \[0,1\] and (0,1\] onto \[0,1\] by keeping each coordinate. Every fiber is finite, but the second component is closed with nonclosed image, and the full preimage is noncompact.
+
+**Wikipedia:** [Perfect map](https://en.wikipedia.org/wiki/Perfect_map). It says: “If p : X → Y is a perfect map and Y is compact, then X is compact.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Proper local homeomorphisms are coverings
+
+**Remember:** Properness keeps extra sheets from appearing near a fiber.
+
+*Rules out counterexamples.* MSC 54C10 (Special maps on topological spaces (open, closed, perfect, etc.)). arXiv math.GN. Level 2: later undergraduate.
+
+**Definition.** A local homeomorphism maps some neighborhood of each point homeomorphically onto an open set. It is proper if compact sets have compact preimages.
+
+**Problem.** A surjective proper local homeomorphism between Hausdorff spaces is a covering map if its target is locally compact. A covering map splits over a neighborhood of each target point into disjoint copies of that neighborhood.
+
+**How the definition helps.** In our own proof, properness makes each fiber compact and hence finite, since its points are isolated. Choose disjoint neighborhoods of those points on which the map has continuous local inverses. Properness over a locally compact Hausdorff target makes the map closed. The complement of those neighborhoods has closed image, so a smaller target neighborhood excludes every extra preimage. Our own counterexample wraps (0,4π) around the unit circle by t ↦ exp(it). Only 1 has a single preimage, so no neighborhood of 1 splits into a fixed number of copies.
+
+**Wikipedia:** [Local homeomorphism](https://en.wikipedia.org/wiki/Local_homeomorphism). It says: “if p : X → Y is a proper local homeomorphism between two Hausdorff spaces and if Y is also locally compact, then p is a covering map.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Equicontinuity gives compactness in spaces of continuous functions
 
@@ -865,6 +1009,22 @@
 **Sources:**
 
 - [Alexey A. Tuzhilin, Lectures on Hausdorff and Gromov-Hausdorff Distance Geometry, arXiv:2012.00756v1 (2020)](https://arxiv.org/abs/2012.00756v1)
+
+### Uniform embeddings stay injective after completion
+
+**Remember:** Uniform control in both directions keeps new limit points distinct.
+
+*Rules out counterexamples. Confidence: medium.* MSC 54E40 (Special maps on metric spaces), 54E50. arXiv math.GN. Level 2: later undergraduate.
+
+**Definition.** A uniform embedding is an injective, uniformly continuous map whose inverse on its image is also uniformly continuous.
+
+**Problem.** Every uniform embedding of metric spaces extends to a uniform embedding of their completions.
+
+**How the definition helps.** In our own proof, uniform continuity in both directions lets both maps extend by limits of Cauchy sequences. The completed image is its closure in the completed target. The two extensions remain inverses there because their compositions agree with the identity on dense subsets. Our own counterexample maps (0,1) into the unit circle by t ↦ exp(2πit). This uniformly continuous embedding sends both endpoints to 1 after completion.
+
+**Wikipedia:** [Uniform space](https://en.wikipedia.org/wiki/Uniform_space). It says: “whose inverse i⁻¹ : i(X) → X is also uniformly continuous”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Closure in a Banach space gives a complete metric completion
 
@@ -1424,6 +1584,22 @@
 
 - [Allen Hatcher, Algebraic Topology, Cambridge University Press (2002), Appendix](https://pi.math.cornell.edu/~hatcher/AT/ATpage.html)
 
+### Fréchet–Urysohn spaces have sequential subspaces
+
+**Remember:** One sequence reaches each closure point, even after passing to a subspace.
+
+*Rules out counterexamples.* MSC 54D55 (Sequential spaces). arXiv math.GN. Level 3: graduate.
+
+**Definition.** A sequential space detects closed sets by whether they contain all limits of sequences from the set. In a Fréchet–Urysohn space, every point in a set’s closure is already the limit of a sequence from that set.
+
+**Problem.** A space is Fréchet–Urysohn exactly when all of its subspaces are sequential.
+
+**How the definition helps.** In our own proof, any sequence reaching a closure point from a set still works inside every subspace containing both. Conversely, take a set A and one missing closure point x. In the subspace A ∪ {x}, sequentiality forces some sequence from A to reach x, since A is not closed there. Our own counterexample uses Arens’ sequential space, where each row has a limit and the row limits converge to a final point. Removing the row limits leaves the final point in the closure of the rows, although no sequence from them reaches it.
+
+**Wikipedia:** [Fréchet–Urysohn space](https://en.wikipedia.org/wiki/Fr%C3%A9chet%E2%80%93Urysohn_space). It says: “Every subspace of X is a sequential space.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Closed embeddings in powers of ℝ make products of realcompact spaces realcompact
 
 **Remember:** A product of closed real embeddings is another closed real embedding.
@@ -1668,6 +1844,38 @@
 **Sources:**
 
 - [Andrew M. Gleason, Projective topological spaces (1958)](https://doi.org/10.1215/ijm/1255454110)
+
+### Scattered spaces force point masses
+
+**Remember:** On a scattered compact space, no positive mass can stay diffuse.
+
+*Rules out counterexamples. Confidence: medium.* MSC 54G12 (Scattered spaces), 28C15. arXiv math.GN. Level 3: graduate.
+
+**Definition.** A compact Hausdorff space is scattered if every nonempty subset has a point isolated within that subset. Total disconnectedness only says that the connected components are single points.
+
+**Problem.** Every finite Radon measure on a scattered compact Hausdorff space is a countable sum of point masses. A Radon measure approximates the mass of each Borel set from within by compact sets.
+
+**How the definition helps.** In our own proof, an isolated point of the support must carry positive mass. The support consists of points whose every open neighborhood has positive mass. Its complement has measure zero because each compact subset there has a finite cover by open sets of measure zero. Remove the countably many points of positive mass and apply this argument to the remaining measure. If any mass remained, its support would have an isolated point, giving another point of positive mass. Our own counterexample is the totally disconnected Cantor set with its atomless fair-coin measure.
+
+**nLab:** [scattered space](https://ncatlab.org/nlab/show/scattered+space). It says: “A topological space X is called scattered if X doesn't contain nonempty dense-in-itself subsets.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Closed subgroups give metrizable quotients
+
+**Remember:** Closed cosets stay a positive distance from points outside them.
+
+*Rules out counterexamples.* MSC 54H11 (Topological groups (topological aspects)), 54E35. arXiv math.GN. Level 3: graduate.
+
+**Definition.** A subgroup H is closed if its complement is open. The quotient G/H consists of the left cosets gH. A set of cosets is open when its preimage in G is open.
+
+**Problem.** The coset space of a closed subgroup of a first-countable topological group is metrizable. First countable means that each point has a countable neighborhood base.
+
+**How the definition helps.** In our own proof, closedness keeps the distance between different cosets positive. First divide out the closure of the identity, which lies in H and leaves the coset space unchanged. The Birkhoff–Kakutani theorem gives the resulting first-countable Hausdorff group a compatible metric preserved by right translations. Right translation by members of H moves each coset onto itself and acts transitively there. Thus the infimum distance between two cosets equals the distance from any point of the first to the closed second coset. Its open balls are images of group balls, so it gives the quotient topology. Our own counterexample is ℝ/ℚ, whose only open sets are the empty set and the whole space.
+
+**Paper or page:** [The quotient spaces of topological groups with a q-point](https://arxiv.org/abs/2311.08814v1). It says: “Let H be a closed subgroup of a first-countable topological group G (without any separator axiom on G). Then the quotient space G/H is metrizable.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Group uniformities make Hausdorff topological groups completely regular
 

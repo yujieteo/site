@@ -1,3 +1,19 @@
+### Union by size bounds depth
+
+**Remember:** Each time depth increases, the set at least doubles.
+
+*Rules out counterexamples.* MSC 68P05 (Data structures). arXiv cs.DS. Level 1: early undergraduate.
+
+**Definition.** Represent each disjoint set by a rooted tree, initially a single vertex. To unite two sets, attach the root of the smaller tree below the root of the larger tree. Either root may become the parent when the sizes agree.
+
+**Problem.** Starting with n singletons, union by size keeps every depth at most ⌊log₂ n⌋. Depth counts the edges from a vertex to its root.
+
+**How the definition helps.** A node gains depth only when its entire tree joins one at least as large, our own explanation. After d such moves its set has at least 2ᵈ elements. The work moves to keeping the correct size at each root, which takes one addition per merger. Attaching the larger tree under a singleton at each merger can instead make a chain, our own example.
+
+**Wikipedia:** [Disjoint-set data structure](https://en.wikipedia.org/wiki/Disjoint-set_data_structure). It says: “Both strategies ensure that trees do not become too deep.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Mutual reachability removes cycles
 
 **Remember:** A cycle of groups would be one group.
@@ -31,6 +47,24 @@
 **Sources:**
 
 - [Edsger W. Dijkstra, A Note on Two Problems in Connexion with Graphs (1959)](https://doi.org/10.1007/BF01386390)
+
+### Quorum thresholds force read-write overlap
+
+**Remember:** Disjoint groups cannot hold more votes than exist.
+
+*Rules out counterexamples.* MSC 68M14 (Distributed systems), 68M12. arXiv cs.DC. Level 2: later undergraduate.
+
+**Definition.** A replica stores a copy of a data item and has a fixed positive vote weight. A read or write quorum is a group whose combined weight reaches the threshold for that operation. Require the read and write thresholds together to exceed the total weight.
+
+**Problem.** Every read quorum intersects every write quorum. If stored versions never decrease, a read after a completed quorum write sees its version or a newer one.
+
+**How the definition helps.** The threshold sum forces overlap because disjoint groups cannot hold more votes than exist. In our own example at equality, four replicas have one vote each. Writing to two and reading from the other two misses the write. With strict overlap, the reader can select the newest version it sees.
+
+**Wikipedia:** [Quorum (distributed computing)](https://en.wikipedia.org/wiki/Quorum_%28distributed_computing%29). It says: “it ensures that a read quorum contains at least one site with the newest version of the data item.”
+
+**Sources:**
+
+- [David K. Gifford, Weighted Voting for Replicated Data (1979)](https://doi.org/10.1145/800215.806583)
 
 ### Cartesian trees encode minima
 
@@ -104,6 +138,24 @@
 
 - [Raimund Seidel and Cecilia R. Aragon, Randomized Search Trees (1996)](https://doi.org/10.1007/s004539900061)
 
+### Reduction makes decision diagrams unique
+
+**Remember:** Skip tests that change nothing and share all identical branches.
+
+*Rules out counterexamples.* MSC 68P05 (Data structures). arXiv cs.DS, cs.LO. Level 2: later undergraduate.
+
+**Definition.** A binary decision diagram computes true or false by branching on the value of a variable at each test. Along every path, test variables in the same strict order, allowing skips. Keep only reachable nodes and one terminal node per output value used. Reduce the diagram by removing tests with identical children and merging nodes with the same test and children.
+
+**Problem.** A Boolean function has a unique reduced decision diagram up to renaming nodes for each fixed variable order. Ordinary decision diagrams need not be unique.
+
+**How the definition helps.** In our own proof, the first test must use the earliest variable that can change the output. Each branch then computes a function of fewer variables. Induction fixes those branches, and merging identical nodes fixes how branches share nodes. A diagram without reduction could represent true by a terminal or by testing a variable with both outcomes leading to true.
+
+**Wikipedia:** [Binary decision diagram](https://en.wikipedia.org/wiki/Binary_decision_diagram). It says: “it is canonical (unique up to isomorphism) for a particular function and variable order.”
+
+**Sources:**
+
+- [Randal E. Bryant (1986), Graph-Based Algorithms for Boolean Function Manipulation](https://doi.org/10.1109/TC.1986.1676819)
+
 ### Binary tests certify sorting networks
 
 **Remember:** Turn any failed comparison into a one before a zero.
@@ -121,6 +173,94 @@
 **Sources:**
 
 - [Kenneth E. Batcher, Sorting Networks and Their Applications (1968)](https://doi.org/10.1145/1468075.1468121)
+
+### Canonical databases test query containment
+
+**Remember:** Try the second query on the first query’s own facts.
+
+*True by definition.* MSC 68P15 (Database theory). arXiv cs.DB. Level 2: later undergraduate.
+
+**Definition.** A Boolean conjunctive query asks whether some values make all its listed relation facts true. Its canonical database replaces each distinct variable by a separate fresh value and stores those facts. Containment normally compares truth of two queries on every database.
+
+**Problem.** For Boolean conjunctive queries without constants or built-in comparisons, Q implies P on every database exactly when P holds on Q’s canonical database.
+
+**How the definition helps.** Every witness for Q gives a fact-preserving map from its canonical database, our own explanation. Map the witnesses for P along it to establish containment. For the converse, Q holds on its own canonical database. The work moves to finding a fact-preserving map from the facts of P to the facts of Q, our own explanation.
+
+**Wikipedia:** [Conjunctive query](https://en.wikipedia.org/wiki/Conjunctive_query). It says: “the query containment problem for conjunctive queries is exactly the same problem as the query evaluation problem.”
+
+**Sources:**
+
+- [Ashok K. Chandra and Philip M. Merlin (1977), Optimal implementation of conjunctive queries in relational data bases](https://doi.org/10.1145/800105.803397)
+
+### Join trees make local matching sufficient
+
+**Remember:** A shared column cannot leave the path and reappear later.
+
+*Rules out counterexamples.* MSC 68P15 (Database theory). arXiv cs.DB. Level 2: later undergraduate.
+
+**Definition.** A join tree has a table at each vertex. The tables containing any particular column must form a connected subtree. Rows in adjacent tables match when they agree on all shared columns. A full join row assigns values to all columns and restricts to a row of each table.
+
+**Problem.** On a join tree, if each row matches across every incident edge, every row extends to a full join result.
+
+**How the definition helps.** In our own proof, connectedness carries each column value along the entire path between any two tables containing it. Start with any row and choose matching rows outward along the tree. All choices then agree on shared columns, so they form a full join row. Two filtering passes, first toward a root and then away, remove rows without matches. Our own counterexample uses three tables on bits requiring X≠Y, Y≠Z and Z≠X. Every row has pairwise matches, but three bits cannot all differ.
+
+**Wikipedia:** [Yannakakis algorithm](https://en.wikipedia.org/wiki/Yannakakis_algorithm). It says: “After both sweeps, every remaining tuple participates in at least one full join result.”
+
+**Sources:**
+
+- [Philip A. Bernstein and Nathan Goodman (1981), Power of Natural Semijoins](https://doi.org/10.1137/0210059)
+
+### Positive rule closure preserves answers
+
+**Remember:** Adding facts can only make more positive premises true.
+
+*Rules out counterexamples.* MSC 68P15 (Database theory). arXiv cs.DB, cs.AI. Level 2: later undergraduate.
+
+**Definition.** Positive Datalog uses rules that require facts to be present. Start with the input rows and repeatedly add every conclusion whose premises hold. The resulting facts form the smallest set containing the input and closed under the rules.
+
+**Problem.** Adding input rows cannot remove any answer produced by a positive Datalog query.
+
+**How the definition helps.** In our own proof, every rule application available with fewer input rows remains available with more. Induction preserves this inclusion at every stage. Taking the union of stages gives the smallest set closed under the rules and containing the input. For our own counterexample with negation, report an employee whenever the absence table has no row for them. Adding an absence removes the report.
+
+**Wikipedia:** [Datalog](https://en.wikipedia.org/wiki/Datalog). It says: “adds all of the new ground atoms that can be derived from the rules of the program in a single step.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Row swaps make joins lossless
+
+**Remember:** If rows can swap their values, joining the projections adds nothing.
+
+*Rules out counterexamples.* MSC 68P15 (Database theory). arXiv cs.DB. Level 2: later undergraduate.
+
+**Definition.** Treat a table as a set of rows and divide its columns into disjoint groups X, Y and Z. Projection keeps only selected columns. A join combines projected rows that agree on their shared columns. A multivalued dependency from X to Y requires rows agreeing on X to exchange their Y values without creating a missing row.
+
+**Problem.** Joining the projections onto XY and XZ recovers the original table exactly when this multivalued dependency holds.
+
+**How the definition helps.** In our own proof, every row in the join comes from exactly the kind of exchange the dependency allows. Conversely, every exchange of this kind gives a join row. The original table always contributes all its rows to the join. For our own counterexample, the table containing just (a,b,c) and (a,d,e) lacks the join row (a,b,e).
+
+**Wikipedia:** [Multivalued dependency](https://en.wikipedia.org/wiki/Multivalued_dependency). It says: “A multivalued dependency is a special case of a join dependency, with only two sets of values involved”
+
+**Sources:**
+
+- [Ronald Fagin (1977), Multivalued dependencies and a new normal form for relational databases](https://doi.org/10.1145/320557.320571)
+
+### Determinism defeats chosen-message secrecy
+
+**Remember:** Public encryption needs fresh randomness to hide a chosen message.
+
+*Rules out counterexamples.* MSC 68P25 (Data encryption (aspects in computer science)), 94A60. arXiv cs.CR. Level 2: later undergraduate.
+
+**Definition.** Deterministic public-key encryption always gives the same ciphertext for the same message and public key. Chosen-message secrecy asks that efficient tests cannot tell which of two chosen equal-length messages was encrypted.
+
+**Problem.** No deterministic public-key cipher with correct decryption can hide which of two distinct equal-length messages it encrypted.
+
+**How the definition helps.** The chosen-message test lets an observer predict both possible ciphertexts when encryption is deterministic. Our own argument fixes two distinct equal-length messages and encrypts each under the public key. Correct decryption forces the outputs to differ. Comparing the challenge with these outputs identifies the message with certainty.
+
+**Wikipedia:** [Deterministic encryption](https://en.wikipedia.org/wiki/Deterministic_encryption). It says: “While deterministic encryption schemes can never be semantically secure, they have some advantages over probabilistic schemes.”
+
+**Sources:**
+
+- [Shafi Goldwasser and Silvio Micali, Probabilistic Encryption (1984)](https://doi.org/10.1016/0022-0000(84)90070-9)
 
 ### A read-only input tape makes logarithmic space a meaningful class
 
@@ -440,6 +580,42 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Disjoint blocks reverse independently
+
+**Remember:** Reverse the block rule, then reverse the order of the partitions.
+
+*True by definition.* MSC 68Q80 (Cellular automata (computational aspects)). arXiv nlin.CG. Level 2: later undergraduate.
+
+**Definition.** A block cellular automaton splits the grid into disjoint blocks of the same shape at each step. It applies one rule to each block. Every assignment of cell states is allowed. In an ordinary cellular automaton, the neighborhoods used for simultaneous updates can overlap.
+
+**Problem.** Each step is invertible exactly when the block rule is a permutation. The inverse of a schedule of steps uses the inverse rules in reverse order.
+
+**How the definition helps.** Invert each block independently because its cells occur in no other block at that step. If two block states have the same output, changing just that block gives a collision. The work moves to checking a single finite table rather than finding a reverse rule for the whole grid, our own explanation.
+
+**Wikipedia:** [Block cellular automaton](https://en.wikipedia.org/wiki/Block_cellular_automaton). It says: “As long as the rule for evolving each block is reversible, the entire automaton will also be.”
+
+**Sources:**
+
+- [Norman Margolus (1984), Physics-like models of computation](https://doi.org/10.1016/0167-2789(84)90252-5)
+
+### Shift polynomials generate Rule 90 patterns
+
+**Remember:** Raise the shift sum to get the pattern at any time.
+
+*True by definition.* MSC 68Q80 (Cellular automata (computational aspects)). arXiv nlin.CG. Level 2: later undergraduate.
+
+**Definition.** Rule 90 updates each bit on the integer line by adding its two neighbors modulo two. Encode a configuration with finitely many live cells as a polynomial whose exponent records position and whose coefficient records the bit. Allow negative exponents. One update then multiplies the polynomial by x + 1/x, using coefficients modulo two.
+
+**Problem.** Start with only the origin live. At time t, every second cell from −t to t gives the parity of the corresponding entry in row t of Pascal’s triangle.
+
+**How the definition helps.** In our own proof, multiplication turns t updates into one power, whose coefficients the binomial theorem gives directly. Multiplication by x shifts a bit one position right, and division by x shifts it left. Adding those shifts modulo two proves the polynomial rule agrees with the cell update. Its expansion uses exponents spaced two apart, so all intervening cells are zero.
+
+**Wikipedia:** [Rule 90](https://en.wikipedia.org/wiki/Rule_90). It says: “The diagram has a 1 wherever Pascal's triangle has an odd number, and a 0 wherever Pascal's triangle has an even number.”
+
+**Sources:**
+
+- [Olivier Martin, Andrew M. Odlyzko, and Stephen Wolfram (1984), Algebraic properties of cellular automata](https://doi.org/10.1007/BF01223745)
+
 ### Real time excludes stale reads
 
 **Remember:** A finished write comes before a later read.
@@ -528,6 +704,24 @@
 
 - [Donald B. Johnson, Efficient Algorithms for Shortest Paths in Sparse Networks (1977)](https://doi.org/10.1145/321992.321993)
 
+### Twin classes replace sets with counts
+
+**Remember:** Same class and same membership counts mean the names can be shuffled.
+
+*True by definition. Confidence: medium.* MSC 68R10 (Graph theory (including graph drawing) in computer science), 05C85. arXiv cs.DM, cs.DS. Level 2: later undergraduate.
+
+**Definition.** In a finite simple undirected graph, two vertices are twins if they have the same neighbors outside the pair. Group twins into classes. For a list of chosen vertex sets, record each vertex’s membership pattern, which lists exactly the sets containing it. Count each pattern separately within each class.
+
+**Problem.** Two lists of vertex sets with the same counts differ only by a relabeling that preserves adjacency. Any property of the sets that ignores vertex names therefore agrees for both lists.
+
+**How the definition helps.** Per-class counts discard vertex names while retaining precisely the information needed to match two choices by permutations within classes. In our own proof, pair vertices with the same pattern in each class. Swapping twins preserves adjacency, so the resulting permutation preserves every edge and carries each chosen set to its partner. The paper proves a related statement about formulas evaluated on numerical descriptions of sets.
+
+**Paper or page:** [Simplified Algorithmic Metatheorems Beyond MSO: Treewidth and Neighborhood Diversity](https://arxiv.org/abs/1703.00544v5). It says: “Then either each realization μ of σ satisfies φ or no realization of σ satisfies φ.”
+
+**Sources:**
+
+- [Simplified Algorithmic Metatheorems Beyond MSO: Treewidth and Neighborhood Diversity](https://arxiv.org/abs/1703.00544v5)
+
 ### Mechanical Sturmian words are balanced because their block sums telescope
 
 **Remember:** Add consecutive differences to count the ones in any block.
@@ -546,6 +740,58 @@
 
 - [M. Morse, G. A. Hedlund, Symbolic dynamics II. Sturmian trajectories, Amer. J. Math. 62 (1940) 1–42](https://doi.org/10.2307/2371431)
 
+### Consistent heuristics prevent reopening
+
+**Remember:** Consistency means every reweighted edge still has nonnegative cost.
+
+*Rules out counterexamples.* MSC 68T20 (Problem solving in the context of artificial intelligence (heuristics, search strategies, etc.)). arXiv cs.AI. Level 2: later undergraduate.
+
+**Definition.** A heuristic estimates the remaining cost from a vertex to the goal. A\* expands a vertex with least known path cost plus estimated remaining cost. A consistent estimate is zero at the goal and never exceeds an outgoing edge cost plus the estimate at its other end. An admissible estimate never exceeds the true remaining cost.
+
+**Problem.** On a finite graph with nonnegative edge costs, A\* with a consistent heuristic finds a cheapest path to each vertex by its first expansion.
+
+**How the definition helps.** Consistency makes every reweighted edge cost nonnegative when we add the next estimate and subtract the current estimate. These adjustments telescope along paths, so Dijkstra’s shortest-path theorem applies. Our own example uses edges S→A, S→B, B→A and A→G with costs 3, 1, 1 and 3. Set all estimates to zero except the estimate 4 at B. The estimates are admissible, but A\* expands A at cost 3 before B reveals cost 2. Without reopening A, it returns 6 instead of 5.
+
+**Wikipedia:** [Consistent heuristic](https://en.wikipedia.org/wiki/Consistent_heuristic). It says: “then A\* is equivalent to best-first search on that graph using Dijkstra's algorithm.”
+
+**Sources:**
+
+- [Peter E. Hart, Nils J. Nilsson, and Bertram Raphael (1968), A Formal Basis for the Heuristic Determination of Minimum Cost Paths](https://doi.org/10.1109/TSSC.1968.300136)
+
+### Stable models reject circular support
+
+**Remember:** A loop cannot start a derivation without a seed.
+
+*Rules out counterexamples.* MSC 68T27 (Logic in artificial intelligence), 68T30. arXiv cs.AI. Level 2: later undergraduate.
+
+**Definition.** Consider a finite program whose rules contain no variables and have one conclusion each. Given proposed true facts, discard rules with a negative premise that names a proposed fact. Erase the remaining negative premises to obtain the reduct. The proposal is stable if it equals the smallest set of facts closed under the reduct’s rules.
+
+**Problem.** Each fact in a stable model has a finite derivation using the reduct. A cycle of rules cannot establish its own facts without an outside derivation.
+
+**How the definition helps.** Build the least model of the reduct by adding only facts whose premises already hold, our own explanation. At any stage, an unseeded positive cycle has nothing to add. The one-rule program “p if p” admits {p} under ordinary satisfaction, but its only stable model is empty, our own example. The underlying theorem identifies the least model of positive rules with the result of this forward iteration.
+
+**Wikipedia:** [Stable model semantics](https://en.wikipedia.org/wiki/Stable_model_semantics). It says: “We say that I is a stable model of P if I is the stable model of the reduct of P relative to I.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Moral graphs make blankets symmetric
+
+**Remember:** If I am your neighbor, you are mine.
+
+*True by definition.* MSC 68T37 (Reasoning under uncertainty in the context of artificial intelligence). arXiv cs.AI. Level 2: later undergraduate.
+
+**Definition.** A Bayesian network represents variables by vertices of a directed graph without directed cycles. The graphical Markov blanket lists a vertex’s parents, children, and other parents of its children. Equivalently, join parents of each common child and erase arrow directions. The neighbors in this undirected graph form the same blanket.
+
+**Problem.** In a Bayesian network, one node belongs to another node’s graphical Markov blanket exactly when the reverse holds.
+
+**How the definition helps.** In our own proof, membership becomes adjacency in an undirected graph, which is symmetric. Each original arrow accounts for a parent or child. Each added edge accounts for a shared child. These observations identify the neighbor definition with the original list.
+
+**Paper or page:** [Markov Blanket Discovery using Minimum Message Length](https://arxiv.org/abs/2107.08140). It says: “For any two distinct variables Xᵢ, Xⱼ ∈ X: Xⱼ ∈ MBᵢ ⇔ Xᵢ ∈ MBⱼ.”
+
+**Sources:**
+
+- [Markov Blanket Discovery using Minimum Message Length](https://arxiv.org/abs/2107.08140)
+
 ### Coefficients test higher-order monotonicity
 
 **Remember:** Read the sign from the highest coefficient.
@@ -563,6 +809,40 @@
 **Sources:**
 
 - [Marek Elias, Jiri Matousek, Higher-order Erdos–Szekeres theorems, arXiv:1111.3824v3](https://arxiv.org/abs/1111.3824v3)
+
+### Difference sets turn clearance into distance
+
+**Remember:** The shortest difference vector is the clearance between the shapes.
+
+*True by definition.* MSC 68U05 (Computer graphics; computational geometry (digital and algorithmic aspects)), 52B55. arXiv cs.CG, cs.GR. Level 2: later undergraduate.
+
+**Definition.** For two shapes, form the set of all vectors a−b, with one point from each shape. It records their possible relative positions. The direct distance definition searches pairs of points in the two shapes.
+
+**Problem.** For two nonempty compact shapes, their minimum distance is the distance from the origin to their difference set. Zero distance means the shapes intersect.
+
+**How the definition helps.** In our own proof, the lengths of the difference vectors are exactly the distances between pairs of points. Compactness ensures a minimum exists. For convex shapes the difference set is convex. The computational work lies in finding its nearest point without listing all differences. To maximize a dot product with a−b, maximize it over a and minimize it over b.
+
+**Wikipedia:** [Gilbert–Johnson–Keerthi distance algorithm](https://en.wikipedia.org/wiki/Gilbert%E2%80%93Johnson%E2%80%93Keerthi_distance_algorithm). It says: “the configuration space obstacle (CSO) of two convex shapes, more commonly known as the Minkowski difference.”
+
+**Sources:**
+
+- [Elmer G. Gilbert, Daniel W. Johnson, and S. Sathiya Keerthi (1988), A fast procedure for computing the distance between complex objects in three-dimensional space](https://doi.org/10.1109/56.2083)
+
+### Half edges encode rotation around vertices
+
+**Remember:** Cross the edge, then step along the next face.
+
+*True by definition. Confidence: medium.* MSC 68U05 (Computer graphics; computational geometry (digital and algorithmic aspects)), 68P05. arXiv cs.GR, cs.CG. Level 2: later undergraduate.
+
+**Definition.** A polygon mesh represents a surface by faces meeting along edges. Assume every edge has two faces and the faces around each vertex form one ring. Orient adjacent face boundaries oppositely along their shared edge. Store each directed half edge with its reverse, called its twin, and its successor around its face.
+
+**Problem.** Starting from any outgoing half edge at a vertex, repeatedly taking the twin and then the successor visits every outgoing half edge before returning.
+
+**How the definition helps.** In our own proof, the two stored links move directly to the next face in the ring. The twin ends at the vertex, so its successor starts there. A single ring gives one cycle containing every outgoing half edge. With only lists of face vertices, one must first identify matching edges and check the ring condition.
+
+**Wikipedia:** [Doubly connected edge list](https://en.wikipedia.org/wiki/Doubly_connected_edge_list). It says: “A half-edge has a pointer to the next half-edge and previous half-edge of the same face.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Lower envelopes give power diagrams
 
@@ -618,6 +898,22 @@
 
 - [Ioannis Z. Emiris, Vissarion Fisikopoulos, Bernd Gärtner, Efficient edge-skeleton computation for polytopes defined by oracles, arXiv:1412.3987v1](https://arxiv.org/abs/1412.3987v1)
 
+### Plane equations transform normals
+
+**Remember:** Apply the inverse map to the input of the plane equation.
+
+*True by definition.* MSC 68U05 (Computer graphics; computational geometry (digital and algorithmic aspects)). arXiv cs.GR. Level 2: later undergraduate.
+
+**Definition.** Define a normal by the coefficients of a linear equation that every tangent vector satisfies. This treats the normal as a linear functional, which takes a vector to a number. The usual geometric definition gives a perpendicular arrow.
+
+**Problem.** Transport a plane equation by an invertible linear transformation. The new coefficient column equals the inverse transpose times the old column.
+
+**How the definition helps.** In our own derivation, substituting the inverse transformation into the old equation gives the new equation immediately. For a map with matrix A, a new tangent vector w came from A⁻¹w. The old equation n·A⁻¹w = 0 therefore gives the new coefficient column (A⁻¹)ᵀn. The Euclidean dot product identifies this column with a perpendicular vector. Divide it by its length if a unit normal is required.
+
+**Wikipedia:** [Normal (geometry)](https://en.wikipedia.org/wiki/Normal_%28geometry%29). It says: “Therefore, one should use the inverse transpose of the linear transformation when transforming surface normals.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Turn signs order rays
 
 **Remember:** From a hull corner, every turn compares two rays.
@@ -635,6 +931,95 @@
 **Sources:**
 
 - [Mathilde Bouvel, Valentin Féray, Xavier Goaoc, Florent Koechlin, A canonical tree decomposition for order types, and some applications, arXiv:2403.10311v2](https://arxiv.org/abs/2403.10311v2)
+
+### Recursive spline bases localize control edits
+
+**Remember:** One control point affects only the knot spans its basis function covers.
+
+*True by definition.* MSC 68U07 (Computer science aspects of computer-aided design), 68U05. arXiv cs.GR. Level 2: later undergraduate.
+
+**Definition.** Knots are a nondecreasing sequence of parameter values, with a span between consecutive knots. A degree-zero B-spline basis function indicates one half-open span. The standard recursion builds each higher-degree function as a linearly weighted sum of two adjacent functions of the preceding degree. A spline curve sums these functions times their respective control points.
+
+**Problem.** Changing one control point of a degree-p B-spline can affect the curve only within the closed interval covering its p+1 knot spans.
+
+**How the definition helps.** In our own proof, the recursion can enlarge the interval where a function is nonzero by at most one span per degree. Adjacent lower-degree functions together cover that larger interval. Changing a control point changes only the term multiplying its basis function. A description by separate polynomial pieces and matching conditions does not show this locality directly. The work lies in proving the recursive functions form a basis for that spline space.
+
+**Wikipedia:** [B-spline](https://en.wikipedia.org/wiki/B-spline). It says: “the supports of the two terms in the B-spline recursion are different (the outermost subintervals are not common).”
+
+**Sources:**
+
+- [M. G. Cox (1972), The Numerical Evaluation of B-Splines](https://doi.org/10.1093/imamat/10.2.134)
+- [Carl de Boor (1972), On calculating with B-splines](https://doi.org/10.1016/0021-9045(72)90080-9)
+
+### Containment makes erosions compose
+
+**Remember:** Two translations add before the probe has to fit.
+
+*True by definition.* MSC 68U10 (Computing methodologies for image processing). arXiv cs.CV. Level 2: later undergraduate.
+
+**Definition.** An erosion of a shape by a probe retains positions where the entire translated probe fits in the shape. A dilation by another probe forms all sums of one point from each set. In a binary image one can instead compute erosion by intersecting shifted copies of the image.
+
+**Problem.** Eroding by B and then by C equals one erosion by the set of all sums b+c from B and C.
+
+**How the definition helps.** In our own proof, successive containment tests require every point x+c+b to lie in the original shape. These are exactly the points of the sum probe translated by x. The work lies in identifying the containment definition with the intersection used in image processing. A position belongs to every shifted image exactly when every point of its translated probe lies in the image.
+
+**Wikipedia:** [Erosion (morphology)](https://en.wikipedia.org/wiki/Erosion_%28morphology%29). It says: “The erosion satisfies (A⊖B)⊖C = A⊖(B⊕C), where ⊕ denotes the morphological dilation.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Arithmetic maps commute with dynamic programming
+
+**Remember:** Preserve the arithmetic and you preserve the calculation.
+
+*True by definition.* MSC 68W05 (Nonnumerical algorithms), 05C85. arXiv cs.DS. Level 2: later undergraduate.
+
+**Definition.** Write a finite calculation as an expression with two operations, their identity elements, and edge weights. A map preserves this arithmetic if it preserves both operations and identities and sends each input weight to its corresponding output weight.
+
+**Problem.** For a finite acyclic path calculation, applying a map that preserves both operations and identities commutes with evaluating the calculation.
+
+**How the definition helps.** One expression describes both calculations, so preserving its building blocks preserves its value. In our own path example, multiplication joins successive edges and addition combines alternatives. The usual direct check compares the two calculations step by step. Here induction on the expression does that work once, leaving only the preservation rules to check for each new map.
+
+**Paper or page:** [Dynamic programming by polymorphic semiring algebraic shortcut fusion](https://arxiv.org/abs/2107.01752v5). It says: “then \\emph{shortcut fusion }applies to the function $f$”
+
+**Sources:**
+
+- [Dynamic programming by polymorphic semiring algebraic shortcut fusion](https://arxiv.org/abs/2107.01752v5)
+
+### Live frontiers bound memory
+
+**Remember:** Keep only the earlier values that some later calculation still needs.
+
+*True by definition. Confidence: medium.* MSC 68W05 (Nonnumerical algorithms), 68W40. arXiv cs.DS. Level 2: later undergraduate.
+
+**Definition.** Order the calculations so that every input comes before its use. At each cut in the order, count earlier results that a later calculation still needs. These results form the live frontier, and its largest size is the frontier width.
+
+**Problem.** The calculation can use at most a constant times one plus the frontier width in working words, excluding input and streamed output.
+
+**How the definition helps.** The frontier counts precisely the past values that later steps may still read. In our own single-pass argument, keep these values in place of a table containing every result. Assume the order and last uses are available and each update has bounded input count and needs constant temporary space. Keep each value and its vertex label in a constant number of words, then discard them after the last use. The paper’s recomputation lemma also assumes that the boundary values are available.
+
+**Paper or page:** [Universal Hirschberg for Width Bounded Dynamic Programs](https://arxiv.org/abs/2512.10132v1). It says: “can be recomputed using additional workspace O(ω) (in words).”
+
+**Sources:**
+
+- [Universal Hirschberg for Width Bounded Dynamic Programs](https://arxiv.org/abs/2512.10132v1)
+
+### Matchings test cuckoo placements
+
+**Remember:** An overloaded set of keys has too few slots between them.
+
+*Rules out counterexamples.* MSC 68W05 (Nonnumerical algorithms), 05C85. arXiv cs.DS. Level 2: later undergraduate.
+
+**Definition.** In cuckoo hashing, each key has a list of allowed storage locations. Draw an edge from the key to each allowed slot, counting each place in a shared location separately. If every key can use overflow storage, connect every key to each overflow slot.
+
+**Problem.** A placement exists exactly when every set of keys has at least as many neighboring slots as keys.
+
+**How the definition helps.** The slot graph exposes the obstruction directly when some keys have too few slots between them. In our own explanation, a valid placement picks one edge per key with no shared slot. Hall’s matching theorem says that such a choice exists exactly when every group of keys has enough neighboring slots. This tests whether a placement exists, regardless of how keys are inserted.
+
+**Paper or page:** [Cuckoo Hashing in Cryptography: Optimal Parameters, Robustness and Applications](https://arxiv.org/abs/2306.11220v1). It says: “the construction failure probability is equal to the probability that there exists a subset of left vertices X such that \|N(X)\| &lt; \|X\|”
+
+**Sources:**
+
+- [Cuckoo Hashing in Cryptography: Optimal Parameters, Robustness and Applications](https://arxiv.org/abs/2306.11220v1)
 
 ### Residual reachability certifies maximum flow
 
@@ -654,6 +1039,24 @@
 
 - [L. R. Ford Jr. and D. R. Fulkerson, Maximal Flow Through a Network (1956)](https://doi.org/10.4153/CJM-1956-045-5)
 
+### Lamport timestamps extend causal order
+
+**Remember:** Advance past both clocks when a message arrives.
+
+*True by definition.* MSC 68W15 (Distributed algorithms), 68M14. arXiv cs.DC. Level 2: later undergraduate.
+
+**Definition.** An event happens before another if a chain of local steps and message deliveries leads from the first to the second. Each process gives successive events strictly increasing integer timestamps. At a receipt, it chooses a number greater than both its previous timestamp and the timestamp on the message.
+
+**Problem.** Ordering events by timestamp and then by process identifier gives a total order that respects happened-before.
+
+**How the definition helps.** Each link in a causal chain increases the timestamp, so the chain’s endpoints already appear in the required order. In our own explanation, the count replaces the need to trace every chain between processes. Events with equal timestamps must belong to different processes. A fixed order of distinct process identifiers breaks those ties consistently, including ties between events with no causal connection.
+
+**Wikipedia:** [Lamport timestamp](https://en.wikipedia.org/wiki/Lamport_timestamp). It says: “Lamport timestamps can be used to create a total ordering of events in a distributed system”
+
+**Sources:**
+
+- [Leslie Lamport, Time, Clocks, and the Ordering of Events in a Distributed System (1978)](https://doi.org/10.1145/359545.359563)
+
 ### Vector clocks detect causality
 
 **Remember:** Each coordinate records how far that process has reached you.
@@ -671,6 +1074,24 @@
 **Sources:**
 
 - [Reinhard Schwarz and Friedemann Mattern, Detecting causal relationships in distributed computations: In search of the holy grail (1994)](https://doi.org/10.1007/BF02277859)
+
+### Random minima measure set overlap
+
+**Remember:** Both minima agree exactly when the union’s first element belongs to both sets.
+
+*True by definition.* MSC 68W20 (Randomized algorithms), 68W25. arXiv cs.DS. Level 2: later undergraduate.
+
+**Definition.** Choose a uniform random order on a finite universe and represent each nonempty set by its first element. Use the same order for both sets. The Jaccard similarity is the size of their intersection divided by the size of their union.
+
+**Problem.** The probability that the two representatives agree equals the Jaccard similarity.
+
+**How the definition helps.** Both representatives agree exactly when the first element of the union belongs to the intersection. Every union element has the same chance of coming first. Thus counting favorable first elements gives the intersection size divided by the union size. In our own comparison, a shared random order replaces counting all common elements with one equality test. Estimating the probability requires repeated independent orders.
+
+**Wikipedia:** [MinHash](https://en.wikipedia.org/wiki/MinHash). It says: “the element with the minimum hash value lies in the intersection A ∩ B. The probability of this being true is exactly the Jaccard index”
+
+**Sources:**
+
+- [Andrei Z. Broder, On the Resemblance and Containment of Documents (1997)](https://doi.org/10.1109/SEQUEN.1997.666900)
 
 ### Universal hashing bounds collisions
 
@@ -708,6 +1129,76 @@
 
 - [Nicos Christofides, Worst-Case Analysis of a New Heuristic for the Travelling Salesman Problem (1976, published 2022)](https://doi.org/10.1007/s43069-021-00101-z)
 
+### End markers make rotation sorting reversible
+
+**Remember:** Use one unique marker to recover the start of a circular string.
+
+*Rules out counterexamples.* MSC 68W32 (Algorithms on strings), 68R15. arXiv cs.DS. Level 2: later undergraduate.
+
+**Definition.** Append a marker that does not occur in the input. Sort all cyclic rotations of the marked string and keep the last column. Without the marker, the same construction forgets which rotation was the input.
+
+**Problem.** The last column of the sorted rotations determines the original string once a unique end marker is appended.
+
+**How the definition helps.** The marker distinguishes the original from its rotations. Our own counterexample without it is that abc and bca have the same rotations and the same last column. Our own explanation reconstructs the sorted prefixes from left to right. In our own argument, attaching the last column on the left and sorting extends each reconstructed prefix by one letter. Our own procedure then selects the reconstructed row ending with the marker.
+
+**Wikipedia:** [Burrows–Wheeler transform](https://en.wikipedia.org/wiki/Burrows%E2%80%93Wheeler_transform). It says: “all circular permutations of a string have the same Burrows–Wheeler transform.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Neighboring suffixes reveal shared prefixes
+
+**Remember:** The shortest neighboring match limits the shared prefix of the endpoints.
+
+*True by definition.* MSC 68W32 (Algorithms on strings), 68R15. arXiv cs.DS. Level 2: later undergraduate.
+
+**Definition.** A suffix starts at a chosen position in a string and continues to its end. Sort the suffixes in dictionary order. For each adjacent pair, record how many initial characters agree before the first difference or the end of either suffix.
+
+**Problem.** For two distinct suffixes, the length of their longest common prefix equals the smallest recorded length between their positions in sorted order.
+
+**How the definition helps.** The sorted order forces any prefix shared by the endpoints to be common to the whole interval. Our own proof of the reverse bound uses equality of neighboring prefixes up to the minimum length. The work of answering repeated queries moves to preprocessing the array for interval minimum queries.
+
+**Wikipedia:** [LCP array](https://en.wikipedia.org/wiki/LCP_array). It says: “the length of the longest prefix that is shared by all of these suffixes is the minimum value in the interval”
+
+**Sources:**
+
+- [Toru Kasai and colleagues, Linear-Time Longest-Common-Prefix Computation in Suffix Arrays and Its Applications (2001)](https://doi.org/10.1007/3-540-48194-X_17)
+
+### Sorted suffixes group pattern matches
+
+**Remember:** A pattern occurs exactly where it begins a suffix.
+
+*True by definition.* MSC 68W32 (Algorithms on strings), 68R15. arXiv cs.DS. Level 2: later undergraduate.
+
+**Definition.** A suffix is the part of a string from a chosen position to the end. A suffix array sorts these positions by their suffixes, in dictionary order rather than text order.
+
+**Problem.** For a nonempty pattern, all matching starting positions form one possibly empty interval in the suffix array. Two binary searches find its ends.
+
+**How the definition helps.** Dictionary order groups all suffixes with the same prefix, so searching for a pattern is searching for one interval. Our own proof compares any intervening suffix at its first difference from the prefix. Such a difference would place it outside the proposed interval in our own argument. Our own note is that building the sorted array is the preprocessing cost.
+
+**Wikipedia:** [Suffix array](https://en.wikipedia.org/wiki/Suffix_array). It says: “these suffixes will be grouped together in the suffix array and can be found efficiently with two binary searches.”
+
+**Sources:**
+
+- [Udi Manber and Gene Myers, Suffix Arrays: A New Method for On-Line String Searches (1993)](https://doi.org/10.1137/0222058)
+
+### Suffix links list ending matches
+
+**Remember:** Follow shorter endings to report every word that ends here.
+
+*True by definition.* MSC 68W32 (Algorithms on strings), 68R15. arXiv cs.DS. Level 2: later undergraduate.
+
+**Definition.** In a dictionary of nonempty words, build a tree with one node for each distinct prefix, including the empty prefix at the root. Mark the nodes for whole words. Link every nonroot node to the node for its longest proper suffix, a shorter ending that also occurs in the tree.
+
+**Problem.** After a text position, start at the longest matching prefix node that ends there. The marked nodes on its suffix-link chain, including the starting node, are exactly the dictionary words ending there.
+
+**How the definition helps.** Suffix links list all candidate endings in decreasing length, replacing a separate search for each word. In our own proof, each shorter candidate is a suffix of the longest shorter candidate. Repeating the argument reaches every candidate, and the marks select exactly the whole words. The remaining work lies in building the links and maintaining the longest matching prefix as characters arrive.
+
+**Wikipedia:** [Aho–Corasick algorithm](https://en.wikipedia.org/wiki/Aho%E2%80%93Corasick_algorithm). It says: “There is a blue directed "suffix" arc from each node to the node that is the longest possible strict suffix of it in the graph.”
+
+**Sources:**
+
+- [Alfred V. Aho and Margaret J. Corasick, Efficient String Matching: An Aid to Bibliographic Search (1975)](https://doi.org/10.1145/360825.360855)
+
 ### Potential changes cancel
 
 **Remember:** The intermediate potentials cancel.
@@ -723,6 +1214,24 @@
 **Wikipedia:** [Amortized analysis](https://en.wikipedia.org/wiki/Amortized_analysis). It says: “The amortized cost is the immediate cost plus the change in potential.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Linearizability can be checked separately
+
+**Remember:** Choose legal positions inside operation intervals, then merge those positions across objects.
+
+*Makes the theorem clean to state or prove.* MSC 68M14 (Distributed systems), 68W15. arXiv cs.DC. Level 3: graduate.
+
+**Definition.** An operation runs from a call to its reply. A history is linearizable if its operations fit a serial order that gives the specified results for each object. This order must put each completed operation before every operation called after its reply. Sequential consistency requires the serial order to respect each process’s own order, even when it reverses the real-time order across processes.
+
+**Problem.** Consider a finite history of completed operations, each on one object, with one outstanding call per process at most. The history is linearizable exactly when each object’s history is linearizable.
+
+**How the definition helps.** The real-time rule lets us place each object’s serial order inside the operations’ actual time intervals. In our own proof, assign each operation the latest call time among itself and its predecessors in that object’s order. This time cannot follow the operation’s reply, since then a predecessor would have to follow it. Merge the lists by assigned times, preserving each object’s order at ties. The merged order respects real time and gives the specified results on every object. Conversely, restricting a global order to one object preserves both conditions.
+
+**Wikipedia:** [Linearizability](https://en.wikipedia.org/wiki/Linearizability). It says: “If an operation op₁ completes (gets a response) before op₂ begins (invokes), then op₁ precedes op₂ in σ.”
+
+**Sources:**
+
+- [Maurice P. Herlihy and Jeannette M. Wing, Linearizability: A Correctness Condition for Concurrent Objects (1990)](https://doi.org/10.1145/78969.78972)
 
 ### Precise definitions turned Brewer's CAP conjecture into a theorem
 
@@ -906,6 +1415,42 @@
 **Sources:**
 
 - [Bernard Chazelle and Leonidas J. Guibas, Fractional Cascading: I. A Data Structuring Technique (1986)](https://doi.org/10.1007/BF01840440)
+
+### Universal models test conjunctive queries
+
+**Remember:** Map the witnesses from one model into every model.
+
+*True by definition.* MSC 68P15 (Database theory), 68T30. arXiv cs.DB, cs.AI. Level 3: graduate.
+
+**Definition.** A universal model of a database and its rules maps into every model by a map that preserves facts and named values. A Boolean conjunctive query asks whether some values make a given conjunction of facts true. The usual certain-answer test asks about all models.
+
+**Problem.** For database facts and existential rules with a universal model, a Boolean conjunctive query follows exactly when it holds in that model.
+
+**How the definition helps.** In our own proof, a map from the universal model carries the values satisfying the query into every other model. The map preserves every required fact. Conversely, a query true in every model holds in the universal model. The work lies in constructing that model. For existential rules, the chase repeatedly adds required facts and introduces witnesses when a rule calls for new values.
+
+**Paper or page:** [Connecting Proof Theory and Knowledge Representation: Sequent Calculi and the Chase with Existential Rules](https://arxiv.org/abs/2306.02521). It says: “then a universal model can be constructed witnessing that (D, R) ⊭ ∃x q(x).”
+
+**Sources:**
+
+- [Connecting Proof Theory and Knowledge Representation: Sequent Calculi and the Chase with Existential Rules](https://arxiv.org/abs/2306.02521)
+
+### Ciphertext integrity strengthens privacy
+
+**Remember:** Reject fresh ciphertexts and decryption adds no useful information.
+
+*Rules out counterexamples.* MSC 68P25 (Data encryption (aspects in computer science)), 94A60. arXiv cs.CR. Level 3: graduate.
+
+**Definition.** Ciphertext integrity requires that an efficient observer has negligible probability of producing a new ciphertext that decrypts successfully, even after requesting encryptions. Negligible means smaller than every inverse polynomial for sufficiently large security parameters. New means that encryption never returned that ciphertext, even if it returned another one carrying the same message.
+
+**Problem.** Suppose a secret-key cipher has ciphertext integrity and hides which of two chosen equal-length messages it encrypts, even with access to encryption. It still hides that choice with access to decryption before and after the challenge, provided the observer cannot submit the challenge for decryption afterward.
+
+**How the definition helps.** Ciphertext integrity rules out fresh accepted ciphertexts, the one case where simulated decryption could give the wrong answer. In our own proof sketch, the simulation records messages and ciphertexts from ordinary encryption requests. It answers decryption requests from that record and rejects other permitted requests. A difference from real decryption requires a first accepted fresh ciphertext. Guessing its request number converts any appreciable chance of such a difference into an appreciable chance of forging a ciphertext. The simulated test now needs only encryption access, so the original privacy guarantee applies.
+
+**Wikipedia:** [Authenticated encryption](https://en.wikipedia.org/wiki/Authenticated_encryption). It says: “Katz and Yung investigated the notion under the name "unforgeable encryption" and proved it implies security against chosen ciphertext attacks.”
+
+**Sources:**
+
+- [Mihir Bellare and Chanathip Namprempre, Authenticated Encryption: Relations among Notions and Analysis of the Generic Composition Paradigm](https://doi.org/10.1007/s00145-008-9026-x)
 
 ### Defining differential privacy by a probability ratio makes it compose
 
@@ -1655,6 +2200,60 @@
 
 - [D. Kozen, A completeness theorem for Kleene algebras and the algebra of regular events, Information and Computation 110 (1994) 366–390](https://doi.org/10.1006/inco.1994.1037)
 
+### Balanced counts preserve the uniform distribution
+
+**Remember:** Count input words to get the probability of each output word.
+
+*True by definition. Confidence: medium.* MSC 68Q80 (Cellular automata (computational aspects)). arXiv nlin.CG. Level 3: graduate.
+
+**Definition.** A window is a finite set of output cells. Its input neighborhood contains all cells used to update that window. An update is balanced if, on every window, each output pattern comes from equally many assignments on its input neighborhood.
+
+**Problem.** A finite-range update on a finite alphabet preserves the uniform independent distribution exactly when its local window counts are balanced.
+
+**How the definition helps.** In our own proof, counting equally likely input assignments gives each output pattern’s probability. Balance therefore gives the same probability to all patterns on each window, and the converse follows by the same count. The usual definition of preservation compares probabilities of all measurable events before and after updating. The work lies in the uniqueness theorem that finite pattern probabilities determine the whole distribution. The quoted lemma treats bijective updates on the integer line.
+
+**Paper or page:** [Reversibility, balance and expansivity of non-uniform cellular automata](https://arxiv.org/abs/2507.06896). It says: “The uniform probability measure μ is invariant under Hθ.”
+
+**Sources:**
+
+- [Reversibility, balance and expansivity of non-uniform cellular automata](https://arxiv.org/abs/2507.06896)
+
+### Finite windows detect surjectivity
+
+**Remember:** Compactness turns successful finite tests into one input for the whole grid.
+
+*Makes the theorem clean to state or prove.* MSC 68Q80 (Cellular automata (computational aspects)). arXiv nlin.CG. Level 3: graduate.
+
+**Definition.** A finite output test asks whether the update can produce a prescribed pattern on a finite box. Only the cells in the box and its input neighborhood need values for this test. The global test instead asks for one input producing a whole prescribed configuration.
+
+**Problem.** A finite-range update on the full grid ℤᵈ over a finite alphabet is onto exactly when it can produce every pattern on every finite box.
+
+**How the definition helps.** In our own proof, each box test gives a closed set of inputs matching the target on that box. These sets are closed because only finitely many input cells matter. Choose growing boxes that cover the grid. Passing every test gives nested nonempty sets. Compactness of the space of inputs gives one input in their intersection.
+
+**Paper or page:** [On the surjunctivity and the Garden of Eden theorem for non-uniform cellular automata](https://arxiv.org/abs/2507.06987). It says: “The $d$-dimensional global update rule $H\_\\theta $ is surjective if and only if the partial update rule $H<sub>\\theta \|C</sub>$ is surjective for all hypercubes $C\\subseteq \\mathbb{Z} ^d$”
+
+**Sources:**
+
+- [On the surjunctivity and the Garden of Eden theorem for non-uniform cellular automata](https://arxiv.org/abs/2507.06987)
+
+### Pre-injectivity detects finite collisions
+
+**Remember:** Only finite changes can be swapped into a larger pattern.
+
+*Rules out counterexamples.* MSC 68Q80 (Cellular automata (computational aspects)). arXiv nlin.CG. Level 3: graduate.
+
+**Definition.** A cellular automaton updates each cell by the same rule on a fixed finite neighborhood. It is pre-injective if distinct inputs that differ at finitely many cells always give distinct outputs. Ordinary injectivity also compares inputs that differ at infinitely many cells.
+
+**Problem.** On the full grid ℤᵈ with a finite alphabet, surjectivity is equivalent to pre-injectivity.
+
+**How the definition helps.** Pre-injectivity tests only collisions that can recur inside finite boxes. Our own example on ℤ updates each bit by adding its right neighbor modulo two. Any output has an input because choosing one input bit determines the rest in both directions. The all-zero and all-one inputs give the same output. The hard part of the Garden of Eden theorem compares pattern counts in boxes with counts near their boundaries. The quoted theorem includes the case where every cell uses the same rule.
+
+**Paper or page:** [On the surjunctivity and the Garden of Eden theorem for non-uniform cellular automata](https://arxiv.org/abs/2507.06987). It says: “The NUCA Hθ is surjective if and only if it is pre-injective.”
+
+**Sources:**
+
+- [On the surjunctivity and the Garden of Eden theorem for non-uniform cellular automata](https://arxiv.org/abs/2507.06987)
+
 ### Bisimilarity as the union of all bisimulations gives proof by coinduction
 
 **Remember:** To prove two processes equal, show one relation that keeps matching.
@@ -1794,6 +2393,24 @@
 
 - [Clément Dallard, Fedor V. Fomin, Petr A. Golovach, Tuukka Korhonen, Martin Milanič, Computing Tree Decompositions with Small Independence Number, arXiv:2207.09993v4](https://arxiv.org/abs/2207.09993v4)
 
+### Vertex merging counts restricted maps
+
+**Remember:** Count forbidden equalities by merging the vertices they identify.
+
+*Makes the theorem clean to state or prove.* MSC 68R10 (Graph theory (including graph drawing) in computer science), 05C60. arXiv cs.DM, cs.DS. Level 3: graduate.
+
+**Definition.** A map between finite graphs must send adjacent vertices to adjacent vertices. Draw a separate graph whose edges mark pairs of source vertices that must receive different images. For any subset of these extra edges, merge all vertices connected by them, keeping every original adjacency.
+
+**Problem.** The number of graph maps that obey the restrictions is an alternating sum of ordinary graph map counts from quotient graphs.
+
+**How the definition helps.** Merging turns prescribed equalities into ordinary graph maps from the smaller graph. In our own derivation, apply inclusion and exclusion to the forbidden equalities. Each edge subset contributes its merged graph’s map count with a positive sign for even size and a negative sign for odd size. If merging creates a loop, that term vanishes for a target without loops. Grouping terms by their vertex partition gives the paper’s coefficients.
+
+**Paper or page:** [Counting Restricted Homomorphisms via Möbius Inversion over Matroid Lattices](https://arxiv.org/abs/1706.08414v1). It says: “\\\# \\mathsf{Hom}\_\\tau (H,G)=\\sum <sub>\\rho \\geq \\emptyset </sub> \\mu (\\emptyset ,\\rho )\\cdot \\\# \\mathsf{Hom}(H/\\rho ,G)”
+
+**Sources:**
+
+- [Counting Restricted Homomorphisms via Möbius Inversion over Matroid Lattices](https://arxiv.org/abs/1706.08414v1)
+
 ### A kernel replaces feature vectors in inner product algorithms
 
 **Remember:** Compute feature inner products without building feature vectors.
@@ -1880,6 +2497,40 @@
 
 - [Alex Graves, Santiago Fernández, Faustino Gomez, and Jürgen Schmidhuber. Connectionist Temporal Classification: Labelling Unsegmented Sequence Data with Recurrent Neural Networks. 2006.](https://doi.org/10.1145/1143844.1143891)
 
+### Covered arrows preserve Bayesian models
+
+**Remember:** Shared parents let the two variables swap their conditioning order.
+
+*Rules out counterexamples.* MSC 68T37 (Reasoning under uncertainty in the context of artificial intelligence). arXiv cs.AI. Level 3: graduate.
+
+**Definition.** A Bayesian network uses a directed graph without directed cycles. Each variable has a conditional distribution given its parents, the variables with arrows into it. The joint distribution is the product of these conditional distributions. An arrow from X to Y is covered when the parents of Y are X and all the parents of X.
+
+**Problem.** For finite variables with unrestricted conditional distributions, reversing a covered arrow preserves the family of joint distributions.
+
+**How the definition helps.** In our own proof, the two affected factors describe X and Y jointly given their shared parents. The conditional probability rule factors that same joint distribution in reverse order. No other directed path can lead from X to Y because its last intermediate vertex would already be a parent of X. Thus reversal creates no directed cycle. Without coverage, reversal can introduce a new independence requirement.
+
+**Paper or page:** [Likelihoods and Parameter Priors for Bayesian Networks](https://arxiv.org/abs/2105.06241). It says: “there exists a set of covered arc reversals that transform one structure into the other.”
+
+**Sources:**
+
+- [Likelihoods and Parameter Priors for Bayesian Networks](https://arxiv.org/abs/2105.06241)
+
+### Subtree messages give exact marginals
+
+**Remember:** Fix one variable and multiply the sums from its branches.
+
+*True by definition.* MSC 68T37 (Reasoning under uncertainty in the context of artificial intelligence). arXiv cs.AI. Level 3: graduate.
+
+**Definition.** A factor graph connects each variable to the functions, called factors, that depend on it. Their product gives the joint probability up to a positive normalizing constant. Cut an edge of a tree and fix the value of its variable. The message from one side sums its product of factors over all its other variables.
+
+**Problem.** For finitely many finite-valued variables on a factor tree, one message in each direction along each edge suffices for every single-variable probability.
+
+**How the definition helps.** In our own proof, fixing one variable separates the sums over the branches meeting there. Multiplying their messages gives its probability up to normalization. The usual local algorithm passes messages toward a chosen root and then away from it. Induction from the leaves shows that its sums and products compute exactly the cut sums. This identity avoids summing over all variables separately for each requested probability.
+
+**Wikipedia:** [Belief propagation](https://en.wikipedia.org/wiki/Belief_propagation). It says: “the belief propagation algorithm will compute the exact marginals.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Bounded overlap shrinks separators
 
 **Remember:** Bound the overlap to find a small cut.
@@ -1913,6 +2564,60 @@
 **Wikipedia:** [Delaunay triangulation](https://en.wikipedia.org/wiki/Delaunay_triangulation). It says: “As the convex hull is unique, so is the triangulation, assuming all facets of the convex hull are simplices.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Slack ratios make Hilbert balls polyhedral
+
+**Remember:** Bound each slack ratio and the ball becomes an intersection of half spaces.
+
+*True by definition.* MSC 68U05 (Computer graphics; computational geometry (digital and algorithmic aspects)), 52B55. arXiv cs.CG. Level 3: graduate.
+
+**Definition.** Write each facet inequality of a bounded polytope as an affine function that is nonnegative inside. Its value is the slack. Divide each slack by its value at the interior center. Use the Hilbert distance convention in which distance from the center is the logarithm of the largest ratio of two normalized slacks.
+
+**Problem.** A closed Hilbert ball of positive finite radius inside a bounded full-dimensional polytope with m facets has at most m(m−1) facets.
+
+**How the definition helps.** In our own proof, bounding a ratio of positive slacks gives one linear inequality. There is one inequality for each ordered pair of distinct facets. The work lies in proving the slack formula equals the usual distance defined by the two boundary points on the line through the inputs.
+
+**Paper or page:** [Voronoi Diagrams in the Hilbert Metric](https://arxiv.org/abs/2112.03056). It says: “is a convex polytope bounded by at most m(m−1) facets.”
+
+**Sources:**
+
+- [Voronoi Diagrams in the Hilbert Metric](https://arxiv.org/abs/2112.03056)
+
+### Ordered channels make snapshot markers reliable
+
+**Remember:** A marker separates messages sent before the recorded state from messages sent after it.
+
+*Rules out counterexamples.* MSC 68W15 (Distributed algorithms), 68M14. arXiv cs.DC. Level 3: graduate.
+
+**Definition.** Assume processes keep running and each directed channel delivers every message once, in sending order. A process records its state when it starts the snapshot or receives its first marker. It then sends a marker on each outgoing channel before sending further application messages.
+
+**Problem.** Each channel record contains exactly the messages sent before the sender recorded its state and received after the receiver recorded its state.
+
+**How the definition helps.** Ordered delivery makes the marker separate messages sent before the sender recorded its state from messages sent afterward. In our own explanation, the receiver records arrivals on each incoming channel from its local snapshot until that channel’s marker arrives. If a marker triggers the local snapshot, its own channel record is empty. Without ordered delivery, a marker could overtake an earlier message and end recording too soon.
+
+**Wikipedia:** [Chandy–Lamport algorithm](https://en.wikipedia.org/wiki/Chandy%E2%80%93Lamport_algorithm). It says: “The communication channels are unidirectional and FIFO ordered”
+
+**Sources:**
+
+- [K. Mani Chandy and Leslie Lamport, Distributed Snapshots: Determining Global States of Distributed Systems (1985)](https://doi.org/10.1145/214451.214456)
+
+### Paxos counts votes within ballots
+
+**Remember:** Count votes for one numbered proposal.
+
+*Rules out counterexamples.* MSC 68W15 (Distributed algorithms), 68M14. arXiv cs.DC. Level 3: graduate.
+
+**Definition.** A Paxos ballot is a numbered proposal for a single value. A value becomes chosen when a majority accepts that proposal. Counting acceptances of that value across different ballot numbers is not enough.
+
+**Problem.** In single-decision Paxos, once a proposal has a majority, every later chosen proposal has the same value.
+
+**How the definition helps.** A majority for one ballot gives later proposers an accepted vote they must account for. In our own proof, every later proposer first obtains promises from a majority to reject earlier ballots. Each reply includes the highest ballot that voter has accepted, if any. The proposer takes the value from the highest reported ballot whenever one exists. Majority overlap and induction on ballot numbers then preserve any chosen value. Acceptances split across ballot numbers give no such guarantee.
+
+**Wikipedia:** [Paxos (computer science)](https://en.wikipedia.org/wiki/Paxos_%28computer_science%29). It says: “consensus is achieved when a majority of Acceptors accept the same identifier number (rather than the same value).”
+
+**Sources:**
+
+- [Leslie Lamport, Paxos Made Simple (2001)](https://www.microsoft.com/en-us/research/publication/paxos-made-simple/)
 
 ### Termination with probability one lets consensus escape the FLP impossibility
 

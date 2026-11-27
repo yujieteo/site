@@ -104,6 +104,22 @@
 
 - [U. Görtz, T. Wedhorn, Algebraic Geometry I: Schemes, Springer (2020)](https://doi.org/10.1007/978-3-658-30733-2)
 
+### Affine diagonals give affine intersections
+
+**Remember:** Pull the diagonal back to intersect two affine opens.
+
+*Rules out counterexamples.* MSC 14A15 (Schemes and morphisms). arXiv math.AG. Level 3: graduate.
+
+**Definition.** An affine scheme is the spectrum of one ring. A scheme has affine diagonal if the map x ↦ (x, x) has affine inverse images of affine opens.
+
+**Problem.** In a scheme with affine diagonal, any two affine opens have affine intersection.
+
+**How the definition helps.** The diagonal has U ∩ V as the inverse image of U × V, in our own explanation. The product of two affine opens is affine, so the condition applies. For our own counterexample, glue two affine planes along the plane minus its origin. Their intersection has the same polynomial functions as the whole plane but lacks the origin, so it cannot be affine.
+
+**Paper or page:** [Coherent, Lemma 30.2.5.](https://stacks.math.columbia.edu/tag/0BDX). It says: “for U, V ⊂ X affine open, the intersection U ∩ V is affine”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Affine schemes as duals of rings make Gelfand duality a definition
 
 **Remember:** Define the space by its ring, and the bundle by its module of sections.
@@ -303,6 +319,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Geometric integrality keeps products integral
+
+**Remember:** One geometrically integral factor keeps the whole product integral.
+
+*Rules out counterexamples.* MSC 14A15 (Schemes and morphisms). arXiv math.AG, math.AC. Level 3: graduate.
+
+**Definition.** An affine scheme is the space described by one coordinate ring. It is integral when that ring is an integral domain. It is geometrically integral over a field when the ring stays a domain after every extension of the field.
+
+**Problem.** The product over a field of an integral affine scheme and a geometrically integral affine scheme is integral.
+
+**How the definition helps.** Geometric integrality keeps the second coordinate ring a domain over the fraction field of the first, in our own proof. Tensoring over a field preserves injections, so the product ring embeds in that domain. In our own example, ℂ is a domain, but ℂ ⊗ℝ ℂ is isomorphic to ℂ × ℂ and has zero divisors.
+
+**Paper or page:** [Algebra, Lemma 10.49.3.](https://stacks.math.columbia.edu/tag/0FWF), [Algebra, Lemma 10.49.4.](https://stacks.math.columbia.edu/tag/09P9). It says: “Let k be a field. Let S be a geometrically integral k-algebra. Let R be a k-algebra and an integral domain. Then R ⊗ₖ S is an integral domain.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Integral morphisms are exactly the affine universally closed morphisms
 
 **Remember:** Integral means affine and closed after every base change.
@@ -338,6 +370,22 @@
 **Sources:**
 
 - [The Stacks Project Authors, The Stacks Project, Tag 01I1 (Schemes, Lemma 26.6.4)](https://stacks.math.columbia.edu/tag/01I1)
+
+### Proper quasi-finite maps are finite
+
+**Remember:** Finite fibres need properness to give a finite map.
+
+*Rules out counterexamples.* MSC 14A15 (Schemes and morphisms). arXiv math.AG. Level 3: graduate.
+
+**Definition.** A finite map of schemes has affine preimages of affine opens, with coordinate rings finite as modules over the corresponding base rings. A finite-type map locally uses finitely many algebra generators and has a finite affine cover over each affine open. A quasi-finite map has finite type and finite fibres. A proper map has finite type, has closed diagonal, and takes closed sets to closed sets after every change of base.
+
+**Problem.** A morphism of schemes is finite if and only if it is proper and has finite fibres.
+
+**How the definition helps.** Properness forces the open piece in Zariski’s Main Theorem to be closed as well, in our own explanation. Over each affine open of the base, the theorem factors a separated quasi-finite map through an open subset of a scheme finite over the base. A closed piece of that finite scheme is still finite over the base. In our own example, the punctured line includes into the affine line with finite fibres. Its image omits the origin and is not closed, so the inclusion cannot be finite.
+
+**Paper or page:** [More Morphisms, Lemma 37.44.1.](https://stacks.math.columbia.edu/tag/02LS). It says: “Let f : X → S be a morphism of schemes. The following are equivalent: f is finite, f is proper with finite fibres, f is proper and locally quasi-finite”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Quasi-compact, quasi-separated morphisms push quasi-coherent sheaves to quasi-coherent sheaves
 
@@ -1610,6 +1658,22 @@
 - [J. B. McCarthy, Stability conditions and canonical metrics, arXiv:2302.04966 (2023)](https://arxiv.org/abs/2302.04966)
 - [G. Kempf and L. Ness, The length of vectors in representation spaces, Algebraic Geometry, Lecture Notes in Mathematics 732 (1979) 233–243](https://doi.org/10.1007/bfb0066647)
 
+### Normality fills codimension-two holes
+
+**Remember:** On a normal variety, a hole of codimension two hides no poles.
+
+*Rules out counterexamples.* MSC 14M05 (Varieties defined by ring conditions (factorial, Cohen-Macaulay, seminormal)), 13B22. arXiv math.AG, math.AC. Level 3: graduate.
+
+**Definition.** An affine integral variety has a coordinate ring that is a domain. It is normal if that ring contains each fraction satisfying a monic polynomial over the ring.
+
+**Problem.** Remove a closed subset of dimension at least two less than that of a normal affine integral variety. Every regular function on the remainder extends uniquely across the missing set. Regular means locally expressible as a fraction with nonvanishing denominator.
+
+**How the definition helps.** Normality makes it enough to test a fraction along the subsets of codimension one, in our own explanation. These subsets have dimension one less than the variety. The cited intersection theorem says their local rings together detect membership in the coordinate ring. In our own example, take the polynomials in ℚ\[x, y\] with no linear terms. Off the origin, the fractions x³/x² and (xy²)/y² define x wherever their denominators are nonzero. They cover the punctured surface, but x does not belong to its coordinate ring.
+
+**Paper or page:** [Algebra, Lemma 10.157.6.](https://stacks.math.columbia.edu/tag/031T). It says: “R = \\bigcap\\nolimits\_{\\text{height}(\\mathfrak p) = 1} R<sub>\\mathfrak p</sub>”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Normality rules out finite birational maps that glue or pinch
 
 **Remember:** A normal variety cannot be simplified by a finite birational map.
@@ -1682,6 +1746,22 @@
 
 - [Michel Demazure, Sous-groupes algébriques de rang maximum du groupe de Cremona, Annales scientifiques de l'École Normale Supérieure 3 (1970) 507–588](https://doi.org/10.24033/asens.1201)
 - [G. Kempf, F. Knudsen, D. Mumford, B. Saint-Donat, Toroidal Embeddings I, Lecture Notes in Mathematics 339 (1973)](https://doi.org/10.1007/BFb0070318)
+
+### Real radical ideals are determined by their real zeros
+
+**Remember:** A real radical ideal contains every polynomial that vanishes on its real zeros.
+
+*Rules out counterexamples.* MSC 14P05 (Real algebraic sets), 13A15. arXiv math.AG, math.AC. Level 3: graduate.
+
+**Definition.** An ideal is radical if it contains f whenever it contains a positive power of f. A real radical ideal satisfies a stronger test. Whenever a sum of polynomial squares belongs to the ideal, each polynomial in that sum must itself belong before squaring.
+
+**Problem.** Let I be a real radical ideal in a polynomial ring in finitely many variables over ℝ. Then I consists exactly of the polynomials vanishing on all common real zeros of I.
+
+**How the definition helps.** The extra condition captures a rule obeyed by real zeros, in our own explanation. When a sum of real squares vanishes at a point, every term vanishes there. The real Nullstellensatz proves this condition suffices for a radical ideal to contain every polynomial vanishing on its real zeros. In our own example, the prime ideal (x² + y²) in ℝ\[x, y\] is radical. Its only real zero is the origin, but the ideal contains neither x nor y.
+
+**Wikipedia:** [Real radical](https://en.wikipedia.org/wiki/Real_radical). It says: “However, one can recover a similar theorem, the real Nullstellensatz, by using the real radical in place of the (ordinary) radical.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Allowing inequalities makes projections of real algebraic sets stay in the class
 

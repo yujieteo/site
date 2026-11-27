@@ -1,3 +1,109 @@
+### Generalized quantiles handle demand ties
+
+**Remember:** Choose the first stock level where the demand probability reaches the cost ratio.
+
+*Rules out counterexamples.* MSC 90B05 (Inventory, storage, reservoirs). arXiv math.OC. Level 2: later undergraduate.
+
+**Definition.** For nonnegative demand D, write F(x) for the probability that D ≤ x. For 0 &lt; p &lt; 1, the generalized quantile is the smallest x with F(x) ≥ p. An ordinary inverse may miss p when F jumps.
+
+**Problem.** Choose a nonnegative stock level before demand is known. Pay a fixed positive cost per unit short and another per unit left over, and assume finite mean demand. The quantile minimizes expected cost when p equals the shortage cost divided by the sum of the two costs.
+
+**How the definition helps.** In our own proof, allowing F to jump across p puts zero between the left and right slopes of the convex expected cost. Deriving those slopes requires counting the shortage or surplus caused by a small stock increase. If demand is zero or two with equal probability, F never equals one quarter. The generalized quantile still selects zero at that probability.
+
+**Wikipedia:** [Newsvendor model](https://en.wikipedia.org/wiki/Newsvendor_model). It says: “denotes the generalized inverse cumulative distribution function of D.”
+
+**Sources:**
+
+- [E. L. Porteus (2008), The Newsvendor Problem](https://doi.org/10.1007/978-0-387-73699-0_7)
+
+### Customer time gives Little’s law
+
+**Remember:** Count one block of customer time either by customer or by clock time.
+
+*True by definition.* MSC 90B22 (Queues and service in operations research). arXiv math.PR. Level 2: later undergraduate.
+
+**Definition.** For each customer, measure the part of their stay inside the observation window. Define observed customer time as the sum of these lengths.
+
+**Problem.** For finitely many visits, observed customer time equals the integral of the number present. Suppose the arrival rate and the average full stay of arrivals have finite limits as the window grows. Their product gives mean occupancy if the difference between total full and observed customer time divided by window length tends to zero.
+
+**How the definition helps.** In our own proof, clipping each visit lets us count the same pairs of customers and times in either order. Summing by customer gives observed customer time. Summing by time gives the occupancy integral. The work in passing to full stays is controlling the visits crossing the window boundaries.
+
+**Wikipedia:** [Little's law](https://en.wikipedia.org/wiki/Little%27s_law). It says: “multiplied by the average time that a customer spends in the system (W).”
+
+**Sources:**
+
+- [J. D. C. Little (1961), A Proof for the Queuing Formula L = λW](https://doi.org/10.1287/opre.9.3.383)
+
+### Reflected walks give waiting times
+
+**Remember:** Subtract the lowest past level to keep the workload nonnegative.
+
+*True by definition. Confidence: medium.* MSC 90B22 (Queues and service in operations research). arXiv math.PR. Level 2: later undergraduate.
+
+**Definition.** Start with an empty queue and one server that takes customers in arrival order whenever work is waiting. After each arrival, add its service time and subtract the time until the next arrival. Reflect the resulting sum by subtracting its lowest value so far, including the starting zero.
+
+**Problem.** Just before each arrival, the reflected sum equals that customer’s waiting time. The next wait equals the current wait plus the increment, or zero if that sum is negative.
+
+**How the definition helps.** In our own queue argument, subtracting the running minimum gives exactly the usual waiting-time update. When the sum reaches a new low, the server has cleared all waiting work. Otherwise the reflected sum changes by the service time minus the time between arrivals. Starting at zero therefore gives the waiting time at each arrival.
+
+**Paper or page:** [On fluctuation-theoretic decompositions via Lindley-type recursions](https://arxiv.org/abs/2212.01811v1). It says: “where Wₙ ∼ Sₙ − minₖ∈{0,…,n} Sₖ”
+
+**Sources:**
+
+- [Onno Boxma, Offer Kella, Michel Mandjes, On fluctuation-theoretic decompositions via Lindley-type recursions](https://arxiv.org/abs/2212.01811v1)
+
+### Longest paths give project duration
+
+**Remember:** Each event waits for its slowest chain of predecessors.
+
+*True by definition.* MSC 90B35 (Deterministic scheduling theory in operations research). arXiv cs.DS. Level 2: later undergraduate.
+
+**Definition.** Draw the project as a finite directed graph with no cycles, one start event and one finish event. Each edge represents a task and carries its duration. Every task lies on a path from start to finish. An event waits for all incoming tasks, and enough resources exist to start all ready tasks immediately.
+
+**Problem.** The earliest project finish equals the longest weighted path from the start to the finish event.
+
+**How the definition helps.** In our own proof, the graph makes earliest event times and longest path lengths satisfy the same rule. Start the clock at zero. At each later event, take the largest predecessor time plus the duration of its connecting task, maximizing over incoming tasks. Applying this rule in dependency order gives both quantities. The modeling work is encoding every precedence constraint and accounting for resource limits.
+
+**Wikipedia:** [Critical path method](https://en.wikipedia.org/wiki/Critical_path_method). It says: “A critical path is determined by identifying the longest stretch of dependent activities”
+
+**Sources:**
+
+- [J. E. Kelley Jr. and M. R. Walker (1959), Critical-Path Planning and Scheduling](https://doi.org/10.1145/1460299.1460318)
+
+### Preemption makes earliest deadlines optimal
+
+**Remember:** With pause and resume, urgent work can always go first.
+
+*Rules out counterexamples.* MSC 90B35 (Deterministic scheduling theory in operations research). arXiv cs.DS. Level 2: later undergraduate.
+
+**Definition.** For independent jobs on one processor, allow preemption, which means a job can pause and resume without cost. Whenever jobs are ready, run one whose deadline is earliest.
+
+**Problem.** If any schedule meets all release times and deadlines, the preemptive earliest deadline rule does too.
+
+**How the definition helps.** Allowing pauses lets an earlier deadline take priority even when a later job has already started. In our own exchange argument, move ready work with the earliest deadline forward, shifting the displaced work into its later slot. That slot still meets the displaced job’s deadline. For our own counterexample, a three-unit job arrives at zero and is due at five. A one-unit job arrives at one and is due at two. Without pauses, starting the first job immediately misses the second deadline, though idling until one would meet both.
+
+**Wikipedia:** [Earliest deadline first scheduling](https://en.wikipedia.org/wiki/Earliest_deadline_first_scheduling). It says: “EDF is an optimal scheduling algorithm on preemptive uniprocessors”
+
+**Sources:**
+
+- [W. A. Horn (1974), Some Simple Scheduling Algorithms](https://doi.org/10.1002/nav.3800210113)
+
+### Fractional assignments decompose into matchings
+
+**Remember:** Fractional assignments are mixtures of whole assignments.
+
+*True by definition.* MSC 90B80 (Discrete location and assignment). arXiv cs.DS. Level 2: later undergraduate.
+
+**Definition.** A whole assignment pairs each worker with one job and uses every job once. Define a fractional assignment by drawing a whole assignment at random and recording the probability of each worker–job pair. Equivalently, these probabilities form a nonnegative square matrix whose rows and columns each sum to one.
+
+**Problem.** The minimum linear cost over all fractional assignments equals the cheapest whole assignment’s cost.
+
+**How the definition helps.** In our own argument, the random-assignment definition makes fractional cost an average of whole-assignment costs. This average cannot beat its cheapest term, and choosing that term with probability one attains it. The work lies in proving that every matrix with the stated sums represents such a draw. This is the Birkhoff–von Neumann theorem.
+
+**Wikipedia:** [Doubly stochastic matrix](https://en.wikipedia.org/wiki/Doubly_stochastic_matrix). It says: “the vertices of Bₙ are precisely the permutation matrices.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Basic feasible solutions are vertices, so linear programs need finite search
 
 **Remember:** Some optimum always sits at a vertex, and vertices are finitely many.
@@ -32,6 +138,43 @@
 
 - [A. J. Hoffman and J. B. Kruskal, Integral boundary points of convex polyhedra, in Linear Inequalities and Related Systems, Annals of Mathematics Studies 38 (1956), 223–246](https://doi.org/10.1515/9781400881987-014)
 
+### Strong quasiconvexity forbids tied minima
+
+**Remember:** Two equal minima would make their midpoint lower than both.
+
+*Rules out counterexamples.* MSC 90C26 (Nonconvex programming, global optimization). arXiv math.OC. Level 2: later undergraduate.
+
+**Definition.** Choose γ &gt; 0 and let z = (1−t)x + ty for 0 ≤ t ≤ 1. Strong quasiconvexity requires h(z) ≤ max(h(x),h(y)) − γt(1−t)‖x−y‖²/2 for every x and y. Ordinary quasiconvexity requires only h(z) ≤ max(h(x),h(y)).
+
+**Problem.** A real strongly quasiconvex function on a convex set has at most one minimizer.
+
+**How the definition helps.** The positive midpoint gap rules out two different points at the minimum value. In our own counterexample, f(x) = max(0, \|x\| − 1) is quasiconvex but has a whole interval of minima. The work moves to finding a positive modulus γ, rather than just proving that sublevel sets are convex.
+
+**Paper or page:** [Characterizations of Strongly Quasiconvex Functions](https://arxiv.org/abs/2509.21580v1). It says: “If h is strongly quasiconvex with modulus γ &gt; 0”
+
+**Sources:**
+
+- [Characterizations of Strongly Quasiconvex Functions](https://arxiv.org/abs/2509.21580v1)
+
+### Diminishing returns bound greedy gains
+
+**Remember:** The best single gain covers at least one share of the remaining gap.
+
+*Rules out counterexamples.* MSC 90C27 (Combinatorial optimization). arXiv cs.DS. Level 2: later undergraduate.
+
+**Definition.** A set score has diminishing returns if adding an absent item gives at least as much gain on a smaller set as on any superset. The item must be absent from both sets. Assume adding items never lowers the score. Starting from the empty set, repeatedly add an item with largest gain.
+
+**Problem.** Choose a budget k from one to the number of items. After k steps, the gain above the empty-set score is at least 1 − 1/e times the best gain with that budget.
+
+**How the definition helps.** Diminishing returns bounds the remaining improvement by k times the best single gain. In our own proof, add the missing optimal items to the current set, one by one. Their gains can only shrink, and the union scores at least as highly as the optimal set. Thus each greedy step removes at least a fraction 1/k of the remaining gap. In our own counterexample, two special items together earn 100, and a third item independently earns one. With budget two, greedy earns one because neither special item earns anything alone.
+
+**Paper or page:** [Incremental space-filling design based on coverings and spacings: improving upon low discrepancy sequences](https://arxiv.org/abs/2106.05833v1). It says: “Let f be a non-decreasing submodular set function, then, for any given k, 1 ≤ k ≤ C, Algorithm 1 returns a set Xₖ with bounded optimality gap”
+
+**Sources:**
+
+- [Amaya Nogales Gómez, Luc Pronzato, Maria-João Rendas, Incremental space-filling design based on coverings and spacings: improving upon low discrepancy sequences](https://arxiv.org/abs/2106.05833v1)
+- [G. L. Nemhauser, L. A. Wolsey and M. L. Fisher (1978), An Analysis of Approximations for Maximizing Submodular Set Functions I](https://doi.org/10.1007/BF01588971)
+
 ### Touching objectives share envelope slopes
 
 **Remember:** At a smooth contact, the upper envelope and its touching curve share a slope.
@@ -49,6 +192,81 @@
 **Sources:**
 
 - [Milgrom and Segal, Envelope Theorems for Arbitrary Choice Sets (2002)](https://doi.org/10.1111/1468-0262.00296)
+
+### Ratio minima become scalar zeros
+
+**Remember:** Subtract the candidate times the denominator and look for zero.
+
+*True by definition.* MSC 90C32 (Fractional programming). arXiv math.OC. Level 2: later undergraduate.
+
+**Definition.** For an objective A(x)/B(x) with B(x) &gt; 0, define F(q) as the minimum of A(x) − qB(x). The new problem tests candidate values q without optimizing a ratio directly.
+
+**Problem.** If the ratio attains its minimum, and each defining minimum exists, F has exactly one zero. Its zero is the minimum ratio.
+
+**How the definition helps.** The difference has the same sign as the ratio minus the candidate. In our own proof, below the optimum all differences are positive, and above it the ratio minimizer gives a negative difference. At the optimum all differences are nonnegative and one is zero. The work moves to solving the difference minimizations and proving that they attain their minima.
+
+**Paper or page:** [Fast Algorithms for Stackelberg Prediction Game with Least Squares Loss](https://arxiv.org/abs/2105.05531v1). It says: “Then, the equation F(q) = 0 has a unique solution.”
+
+**Sources:**
+
+- [Werner Dinkelbach, On Nonlinear Fractional Programming (1967)](https://doi.org/10.1287/mnsc.13.7.492)
+
+### Scaling linearizes an affine ratio
+
+**Remember:** Scale the denominator to one and optimize the scaled numerator.
+
+*True by definition.* MSC 90C32 (Fractional programming). arXiv math.OC. Level 2: later undergraduate.
+
+**Definition.** An affine expression is a linear function plus a constant. For a ratio of affine expressions, define the scale t as the reciprocal of the denominator. Replace the original vector x by y = tx.
+
+**Problem.** On a nonempty bounded polyhedron where its denominator is positive, an affine ratio can be optimized by linear programming.
+
+**How the definition helps.** Scaling makes the denominator one and turns the numerator into a linear function of y and t. Multiply each original inequality by t and impose the scaled denominator equation with t ≥ 0. In our own reverse argument, t = 0 would give a nonzero direction along which the original feasible region extends forever. Boundedness rules this out, so division by t recovers x.
+
+**Wikipedia:** [Linear-fractional programming](https://en.wikipedia.org/wiki/Linear-fractional_programming). It says: “Any linear-fractional program can be transformed into a linear program, assuming that the feasible region is non-empty and bounded”
+
+**Sources:**
+
+- [A. Charnes and W. W. Cooper (1962), Programming with Linear Fractional Functionals](https://doi.org/10.1002/nav.3800090303)
+
+### Consistent estimates settle vertices once
+
+**Remember:** One-edge consistency keeps search priorities from dropping along a path.
+
+*Rules out counterexamples.* MSC 90C35 (Programming involving graphs or networks). arXiv cs.DS. Level 2: later undergraduate.
+
+**Definition.** Give each vertex an estimate of the remaining cost to a goal. An estimate is consistent if it vanishes at the goal and never exceeds an outgoing edge’s cost plus its neighbor’s estimate. An admissible estimate never exceeds the true remaining cost.
+
+**Problem.** In a finite graph with nonnegative edge costs and a reachable goal, A\* selects the vertex with least cost so far plus estimated remaining cost. With consistent estimates it can permanently close each selected vertex and return a shortest path.
+
+**How the definition helps.** Consistency makes every adjusted edge cost nonnegative when we add the head estimate and subtract the tail estimate. Along a path, the adjustments cancel except at its endpoints. Dijkstra’s theorem now guarantees that each selected vertex already has its cheapest path. Our own example gives s→a, s→b, b→a and a→g costs 3, 1, 1 and 3. Set the estimate at b to four and all others to zero. These estimates are admissible, yet closing a permanently returns six instead of five.
+
+**Wikipedia:** [Consistent heuristic](https://en.wikipedia.org/wiki/Consistent_heuristic). It says: “A consistent heuristic is also admissible, i.e. it never overestimates the cost of reaching the goal”
+
+**Sources:**
+
+- [P. E. Hart, N. J. Nilsson and B. Raphael (1968), A Formal Basis for the Heuristic Determination of Minimum Cost Paths](https://doi.org/10.1109/tssc.1968.300136)
+
+### Residual cycles certify cheapest flows
+
+**Remember:** Undoing a shipment refunds its cost.
+
+*Makes the theorem clean to state or prove.* MSC 90C35 (Programming involving graphs or networks). arXiv cs.DS. Level 2: later undergraduate.
+
+**Definition.** Start with a flow that respects edge capacities, has nonnegative edge amounts and meets the required net supplies. Its residual graph records changes still possible. A forward edge has the unused capacity and original unit cost. A reverse edge has capacity equal to the flow sent and the opposite cost, and both directions require positive remaining capacity.
+
+**Problem.** A feasible flow with prescribed net supply at each vertex is cheapest exactly when its residual graph has no negative-cost directed cycle.
+
+**How the definition helps.** The residual graph turns a cost-saving change with unchanged supplies into a search for a negative cycle. Sending a small amount around such a cycle lowers cost. In our own converse proof, the difference to a cheaper flow splits into directed cycles with positive weights. Their costs sum with those weights to a negative number, so at least one cycle has negative cost.
+
+**Wikipedia:** [Minimum-cost flow problem](https://en.wikipedia.org/wiki/Minimum-cost_flow_problem). It says: “The reverse arc (which has negative flow value) has a negative cost −a(e).”
+
+**Paper or page:** [An Optimal Algorithm for the Stacker Crane Problem on Fixed Topologies](https://arxiv.org/abs/2410.06764v2). It says: “Every non-negative circulation on a graph with cycle rank r can be decomposed into at most r non-negative cycle flows.”
+
+**Sources:**
+
+- [A. V. Goldberg and R. E. Tarjan (1989), Finding Minimum-Cost Circulations by Canceling Negative Cycles](https://doi.org/10.1145/76359.76368)
+- [Yike Chen, Ke Shi, Chao Xu, An Optimal Algorithm for the Stacker Crane Problem on Fixed Topologies](https://arxiv.org/abs/2410.06764v2)
 
 ### Residual edges certify maximum flow
 
@@ -83,6 +301,60 @@
 **nLab:** [Lagrange multiplier](https://ncatlab.org/nlab/show/Lagrange+multiplier). It says: “Then there is a function(al) l in Y\* such that x is a critical point of the function F − l∘G.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Jackson queues factor at equilibrium
+
+**Remember:** Traffic rates include return visits, but the equilibrium probabilities multiply.
+
+*Rules out counterexamples.* MSC 90B15 (Stochastic network models in operations research). arXiv math.PR. Level 3: graduate.
+
+**Definition.** In this open Jackson network, independent external Poisson processes bring jobs to single-server stations. Each busy station serves continuously, with independent exponential service times at its own fixed rate. After service, a job independently chooses its next station or exits, with fixed probabilities and eventual exit certain. At every station, the total arrival rate, including return visits, must be below the service rate.
+
+**Problem.** At equilibrium the station counts are independent. Each has a geometric distribution on the nonnegative integers, with successive probabilities in the ratio of arrival rate to service rate.
+
+**How the definition helps.** The arrival, service and routing rules let independent geometric counts satisfy equilibrium balance at every network state. Checking that balance requires matching the total rates entering and leaving each state. In our own counterexample, arrivals are three time units apart, with uniform random phase, and visit two successive stations with unit service times. Each station is busy one third of the time, yet they are never busy together.
+
+**Wikipedia:** [Jackson network](https://en.wikipedia.org/wiki/Jackson_network). It says: “In general, this network does not have a product-form stationary distribution, so approximations are sought.”
+
+**Sources:**
+
+- [J. R. Jackson (1957), Networks of Waiting Lines](https://doi.org/10.1287/opre.5.4.518)
+
+### Poisson arrivals see time averages
+
+**Remember:** A constant arrival rate samples busy and idle time in proportion.
+
+*Rules out counterexamples.* MSC 90B22 (Queues and service in operations research). arXiv math.PR. Level 3: graduate.
+
+**Definition.** Sample the state immediately before each arrival. Require Poisson arrivals whose instantaneous rate stays constant even when the past queue history is known.
+
+**Problem.** In a stationary queue with this property, an arrival sees the same state probabilities as a random time.
+
+**How the definition helps.** A constant arrival rate given the entire past weights every pre-arrival state in proportion to the time spent there. Our own argument counts arrivals occurring while the queue has a specified state. Its expected count equals the arrival rate times the expected time in that state. Justifying this identity uses the conditional arrival rate. In our own counterexample, arrivals come two time units apart with uniform random phase, and each service lasts one unit. Every arrival finds the server idle, although it works half the time.
+
+**Wikipedia:** [Arrival theorem](https://en.wikipedia.org/wiki/Arrival_theorem). It says: “the probability of the state as seen by an outside random observer is the same as the probability of the state seen by an arriving customer.”
+
+**Sources:**
+
+- [R. W. Wolff (1982), Poisson Arrivals See Time Averages](https://doi.org/10.1287/opre.30.2.223)
+
+### Reversed queues yield Poisson departures
+
+**Remember:** Backward arrivals are forward departures.
+
+*True by definition.* MSC 90B22 (Queues and service in operations research). arXiv math.PR. Level 3: graduate.
+
+**Definition.** Consider one server that serves whenever customers are waiting. Arrivals follow a Poisson process, and service times are independent exponentials, independent of arrivals. Assume arrivals are slower on average than service and start the customer count in equilibrium. Call the count reversible if reading it backward gives the same law.
+
+**Problem.** In equilibrium, departures form a Poisson process with the same rate as arrivals.
+
+**How the definition helps.** Reversibility turns the departure process into a copy of the known arrival process. A forward departure is an upward jump when time runs backward. The work is proving reversibility by checking that equilibrium transitions between each two neighboring counts occur equally often in both directions.
+
+**Wikipedia:** [Burke's theorem](https://en.wikipedia.org/wiki/Burke%27s_theorem). It says: “the arrival instants in the forward Markov chain are the departure instants of the reversed Markov chain.”
+
+**Sources:**
+
+- [P. J. Burke (1956), The Output of a Queuing System](https://doi.org/10.1287/opre.4.6.699)
 
 ### Integer dual certificates force integer vertices
 
@@ -138,6 +410,40 @@
 
 - [Sergio Calo, Anders Jonsson, Gergely Neu, Ludovic Schwartz, Javier Segovia-Aguas, Distances for Markov chains from sample streams, arXiv:2505.18005v1 (2025)](https://arxiv.org/abs/2505.18005v1)
 
+### Proximal steps expose composite optima
+
+**Remember:** Take a gradient step, then let the proximal step handle the rest.
+
+*True by definition.* MSC 90C25 (Convex programming), 49J52. arXiv math.OC. Level 3: graduate.
+
+**Definition.** For a &gt; 0, let P(z) be the point y minimizing g(y) + ‖y − z‖²/(2a). A forward-backward step first subtracts a∇f(x) from x, then applies P.
+
+**Problem.** Let f be differentiable and convex everywhere on Euclidean space. Let g be convex, finite somewhere, never −∞, and have closed sublevel sets. Then x minimizes f + g exactly when P(x − a∇f(x)) = x.
+
+**How the definition helps.** The forward-backward map turns minimization of the sum into a fixed-point test. In our own derivation, the quadratic minimum returns x exactly when −∇f(x) is the slope of an affine lower bound touching g there. The rule for slopes of convex sums identifies this condition with minimization of f + g.
+
+**Paper or page:** [Optimization with First Order Algorithms](https://arxiv.org/abs/2410.19506v1). It says: “\\operatorname {zeros}(\\partial \\mathcal{J})=\\operatorname {Fix}(\\operatorname {prox}<sub>\\gamma g</sub>(\\operatorname {Id}-\\gamma \\nabla f)).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Relative smoothness ensures descent
+
+**Remember:** Reference curvature pays for the objective's departure from its tangent.
+
+*True by definition.* MSC 90C25 (Convex programming). arXiv math.OC. Level 3: graduate.
+
+**Definition.** On an open convex domain, take a differentiable objective f and a differentiable convex reference h. Call f smooth relative to h with constant L &gt; 0 if Lh − f is convex. The Bregman distance from x to y is the value of h at y minus its tangent estimate from x.
+
+**Problem.** At x, minimize the tangent estimate of f plus the Bregman distance from x divided by a positive step size. If a minimizer exists in the domain and the step size is at most 1/L, this step cannot raise f.
+
+**How the definition helps.** In our own proof, convexity of Lh − f makes the model an upper bound that equals f at x. Minimizing this bound gives descent. The usual Euclidean model bounds the tangent error by a multiple of squared distance. Here the work is finding h and proving Lh − f convex.
+
+**Paper or page:** [Multilevel Bregman Proximal Gradient Descent](https://arxiv.org/abs/2506.03950v3). It says: “For any τ ∈ (0, L⁻¹\], the following inequality holds f(x⁺τ) ≤ f(x) − Dφ(x, x⁺τ)/τ.”
+
+**Sources:**
+
+- [Yara Elshiaty, Stefania Petra, Multilevel Bregman Proximal Gradient Descent](https://arxiv.org/abs/2506.03950v3)
+
 ### The subgradient definition makes proximal fixed points minimizers
 
 **Remember:** A proximal step stays put exactly when zero is a subgradient.
@@ -155,6 +461,42 @@
 **Sources:**
 
 - [Neal Parikh and Stephen Boyd, Proximal Algorithms, Foundations and Trends in Optimization 1 (2014)](https://doi.org/10.1561/2400000003)
+
+### Pseudoconvexity makes stationary points global minima
+
+**Remember:** A better point must point downhill.
+
+*Rules out counterexamples.* MSC 90C26 (Nonconvex programming, global optimization). arXiv math.OC. Level 3: graduate.
+
+**Definition.** A differentiable function on a convex domain is pseudoconvex if each better point gives a strictly negative directional derivative toward it. A better point has a lower function value. Quasiconvexity only requires that each set below a given function value be convex.
+
+**Problem.** Every point with zero gradient is a global minimizer of a differentiable pseudoconvex function on a convex domain.
+
+**How the definition helps.** In our own scalar argument, pseudoconvexity makes a lower value impossible when the gradient is zero. Every directional derivative there is zero. In our own example, x³ has convex sets below each level and zero derivative at zero, yet takes smaller values elsewhere. The work is verifying the strict derivative condition for the given function.
+
+**Paper or page:** [A Refined Proximal Algorithm for Nonconvex Multiobjective Optimization in Hilbert Spaces](https://arxiv.org/abs/2403.09922v1). It says: “If x ∈ Ω is a Pareto critical point of F in Ω, then it is a weak Pareto solution of F in Ω.”
+
+**Sources:**
+
+- [G. C. Bento, J. X. Cruz Neto, J. O. Lopes, B. S. Mordukhovich, P. R. Silva Filho, A Refined Proximal Algorithm for Nonconvex Multiobjective Optimization in Hilbert Spaces](https://arxiv.org/abs/2403.09922v1)
+
+### Threshold averages preserve minima
+
+**Remember:** A threshold average cannot beat its cheapest set.
+
+*True by definition. Confidence: medium.* MSC 90C27 (Combinatorial optimization). arXiv math.OC. Level 3: graduate.
+
+**Definition.** Take a nonnegative score on subsets of a finite set, with score zero for the empty set. On the unit cube, define its Lovász extension by averaging scores over thresholds chosen uniformly between zero and one. Each threshold selects the coordinates above it.
+
+**Problem.** The smallest value of the extension on the cube equals the smallest value of the set function.
+
+**How the definition helps.** In our own proof, every threshold selects a set, so its score is at least the minimum. A zero-one vector for a minimizing set attains that minimum. The usual formula sorts the coordinates first. Splitting the average at those coordinates gives the same formula.
+
+**Paper or page:** [Conductance Estimation in Digraphs: Submodular Transformation, Lovász Extension and Dinkelbach Iteration](https://arxiv.org/abs/2506.23131v1). It says: “then the Lovász extension Fᴸ of f can be calculated as the following:”
+
+**Sources:**
+
+- [Sihong Shao, Chuan Yang, Xinyang Ye, Conductance Estimation in Digraphs: Submodular Transformation, Lovász Extension and Dinkelbach Iteration](https://arxiv.org/abs/2506.23131v1)
 
 ### One score tests coordinatewise dominance
 
@@ -174,6 +516,24 @@
 
 - [Set-based Robust Optimization of Uncertain Multiobjective Problems via Epigraphical Reformulations](https://arxiv.org/abs/2212.14018v1)
 
+### Extra variables separate ratio terms
+
+**Remember:** Tune the extra variable until the two terms match.
+
+*True by definition.* MSC 90C32 (Fractional programming). arXiv math.OC. Level 3: graduate.
+
+**Definition.** For a positive numerator a and a positive denominator b, replace a/b by the minimum over y &gt; 0 of a²y + 1/(4b²y). This puts a and b in separate terms.
+
+**Problem.** For a finite sum of positive ratios, the enlarged minimization has the same infimum. Its minimizers give exactly the original minimizers after discarding the extra variables.
+
+**How the definition helps.** In our own proof, the extra variable makes the product of the two new terms independent of that variable. Their sum is least when they agree, at y = 1/(2ab). The minimum is then a/b. Choosing a separate y for each ratio attains every original objective value at its original input. Solving the enlarged problem can still be difficult because its objective need not be convex.
+
+**Paper or page:** [Transforms for Multiplicative and Fractional Programming with Broad Applications in Edge Computing and Communication Networks](https://arxiv.org/abs/2312.06202v1). It says: “Fₖ(x,yₖ) ≔ \[Aₖ(x)\]²yₖ + 1/(4\[Bₖ(x)\]²yₖ)”
+
+**Sources:**
+
+- [Yitong Wang, Chang Liu, Jun Zhao, Transforms for Multiplicative and Fractional Programming with Broad Applications in Edge Computing and Communication Networks](https://arxiv.org/abs/2312.06202v1)
+
 ### Closure captures limiting linear constraints
 
 **Remember:** An infinite system can imply inequalities that appear only as limits.
@@ -189,6 +549,24 @@
 **Paper or page:** [On the Polyhedrality of the Chvatal-Gomory Closure](https://arxiv.org/abs/2106.00295v1). It says: “The inequality ax ≥ b is a consequence of the consistent system”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Thresholds price directed cuts
+
+**Remember:** An edge crosses exactly the thresholds between its two labels, in the outgoing direction.
+
+*True by definition.* MSC 90C35 (Programming involving graphs or networks). arXiv math.OC. Level 3: graduate.
+
+**Definition.** Give each vertex of a finite directed graph a real label and each edge a nonnegative weight. The outgoing cut cost of a set is the total weight of edges leaving it. Define its Lovász extension by integrating this cost over all real thresholds, using the vertices above each threshold.
+
+**Problem.** Each edge contributes its weight times the larger of zero and the tail label minus the head label.
+
+**How the definition helps.** In our own proof, integrating turns an edge’s contribution into the length of an interval. The edge leaves the set exactly when the threshold lies below its tail label and at or above its head label. Splitting the integral at the sorted labels recovers the usual formula.
+
+**Paper or page:** [Conductance Estimation in Digraphs: Submodular Transformation, Lovász Extension and Dinkelbach Iteration](https://arxiv.org/abs/2506.23131v1). It says: “Let G = (V,A) be a digraph, the Lovász extension of cut⁺(S) is cut⁺ᴸ(x) = ∑ᵢ→ⱼ (wᵢⱼ/2)(xᵢ − xⱼ + \|xᵢ − xⱼ\|).”
+
+**Sources:**
+
+- [Sihong Shao, Chuan Yang, Xinyang Ye, Conductance Estimation in Digraphs: Submodular Transformation, Lovász Extension and Dinkelbach Iteration](https://arxiv.org/abs/2506.23131v1)
 
 ### A strictly feasible point closes the duality gap in convex programs
 
@@ -208,6 +586,22 @@
 
 - [M. Slater, Lagrange Multipliers Revisited, Cowles Commission Discussion Paper No. 403 (1950)](https://cowles.yale.edu/sites/default/files/files/pub/d00/d0080.pdf)
 - [S. Boyd and L. Vandenberghe, Convex Optimization, Cambridge University Press (2004)](https://web.stanford.edu/~boyd/cvxbook/)
+
+### Closed cones certify infeasibility
+
+**Remember:** A closed image separates every point outside it.
+
+*Rules out counterexamples.* MSC 90C46 (Optimality conditions and duality in mathematical programming). arXiv math.OC. Level 3: graduate.
+
+**Definition.** In finite dimensions, let admissible right sides form the linear image of a nonempty convex cone. A convex cone contains all nonnegative linear combinations of its points. Require the image to contain its limits.
+
+**Problem.** For a closed image cone, each unattainable right side has a certificate. A linear functional is nonnegative on the cone but strictly negative on that right side.
+
+**How the definition helps.** Closedness lets a separating hyperplane distinguish every point outside the image from all attainable points. Our own example sends a symmetric matrix with nonnegative eigenvalues to its upper-left and off-diagonal entries. The pair (ε, 1) occurs for ε &gt; 0 by choosing lower-right entry 1/ε. The pair (0, 1) cannot occur because the determinant would be negative. Continuity therefore rules out a certificate there.
+
+**Wikipedia:** [Farkas' lemma](https://en.wikipedia.org/wiki/Farkas%27_lemma). It says: “The closedness condition is necessary”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Constraint qualifications make the KKT conditions necessary at a minimizer
 
@@ -264,6 +658,22 @@
 - [Grigoriy Blekherman, Santanu S. Dey, Shengding Sun, Aggregations of quadratic inequalities and hidden hyperplane convexity, arXiv:2210.01722v2 (2022)](https://arxiv.org/abs/2210.01722v2)
 - [Grigoriy Blekherman, Santanu S. Dey, Shengding Sun, Aggregations of Quadratic Inequalities and Hidden Hyperplane Convexity, SIAM Journal on Optimization (2024)](https://doi.org/10.1137/22m1528215)
 
+### A ball around a dual point certifies zero coefficients
+
+**Remember:** A dual ball missing a constraint face certifies a zero coefficient.
+
+*Makes the theorem clean to state or prove.* MSC 90C25 (Convex programming), 49N15. arXiv math.OC. Level 4: research.
+
+**Definition.** Fit data y with matrix X by minimizing P(b) = ‖y − Xb‖²/2 + λ∑ⱼ\|bⱼ\|, with λ &gt; 0. A vector θ is dual feasible if \|Xⱼᵀθ\| ≤ 1 for every column Xⱼ. Its dual value D(θ) = λ⟨y,θ⟩ − λ²‖θ‖²/2 bounds the minimum from below. For any trial b, use the gap P(b) − D(θ) to define a ball centered at θ with radius r = √(2(P(b) − D(θ)))/λ.
+
+**Problem.** If \|Xⱼᵀθ\| + ‖Xⱼ‖r &lt; 1 for some column Xⱼ, the corresponding coefficient is zero in every optimal solution.
+
+**How the definition helps.** The ball gives a checkable bound on each column’s inner product with the unknown dual maximizer. In our own derivation, Cauchy–Schwarz gives strict inequality throughout the ball under the stated test. At an optimum, a nonzero coefficient requires its column’s absolute inner product with the dual maximizer to equal one. The quadratic dual objective supplies the radius bound that places the maximizer inside the ball.
+
+**Paper or page:** [Continuation Path with Linear Convergence Rate](https://arxiv.org/abs/2112.05104v1). It says: “\\lVert  \\hat  {\\theta }<sup>{</sup>({\\lambda })} - \\theta  \\rVert  \\leq  \\sqrt  { \\frac  {2 \\nu }{\\lambda <sup>2</sup>}  \\Gap  <sub>\\lambda </sub>(\\beta , \\theta )} =: r(\\lambda )  \\enspace  .”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Mirror descent is a flow with frozen gradient in the Hessian metric
 
 **Remember:** Freeze the objective gradient, not the metric, to get mirror descent.
@@ -281,6 +691,24 @@
 **Sources:**
 
 - [Suriya Gunasekar, Blake Woodworth, Nathan Srebro, Mirrorless Mirror Descent: A Natural Derivation of Mirror Descent, arXiv:2004.01025v3 (2021)](https://arxiv.org/abs/2004.01025v3)
+
+### Proximal averages average steps
+
+**Remember:** Average after adding curvature, and the proximal steps average too.
+
+*True by definition.* MSC 90C25 (Convex programming). arXiv math.OC. Level 4: research.
+
+**Definition.** On Euclidean space let q(x) = ‖x‖²/2. The proximal step at x minimizes f(y) + q(y − x) over y. The convex conjugate of g at x is the supremum of x·y − g(y) over y. Add q to each function, take conjugates, average with fixed positive weights summing to one, take the conjugate again, then subtract q.
+
+**Problem.** Take two convex functions that never equal −∞ and each take a finite value somewhere. Assume each function’s sets below or at any real level are closed. The proximal step of their proximal average equals the same weighted average of their proximal steps.
+
+**How the definition helps.** In our own Euclidean proof, averaging the conjugates turns averaging steps into differentiating a sum. Directly averaging the original functions gives no such rule for their minimizers. The work lies in proving convexity of the proximal average and identifying each step with the gradient of the corresponding conjugate. Taking the conjugate twice recovers the closed convex sum.
+
+**Paper or page:** [The Bregman proximal average](https://arxiv.org/abs/2108.11440v2). It says: “is convex, and (∀ x ∈ U) prox⃖λ,ϕ\[Pλ,ϕ(f₁,f₂,α)\](x) = α prox⃖λ,ϕ\[f₁\](x) + (1−α) prox⃖λ,ϕ\[f₂\](x).”
+
+**Sources:**
+
+- [Xianfu Wang, Heinz H. Bauschke, The Bregman proximal average](https://arxiv.org/abs/2108.11440v2)
 
 ### Concave tents keep the minimum value when the feasible set is convexified
 

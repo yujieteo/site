@@ -706,6 +706,22 @@
 - [O. Goldman, Hilbert rings and the Hilbert Nullstellensatz, Mathematische Zeitschrift 54 (1951) 136–140](https://doi.org/10.1007/BF01179855)
 - [W. Krull, Jacobsonsche Ringe, Hilbertscher Nullstellensatz, Dimensionstheorie, Mathematische Zeitschrift 54 (1951) 354–387](https://doi.org/10.1007/BF01238035)
 
+### The Jacobson radical lifts generators
+
+**Remember:** Reduce inside the Jacobson radical, and generators lift.
+
+*Rules out counterexamples.* MSC 13A15 (Ideals and multiplicative ideal theory in commutative rings). arXiv math.AC. Level 3: graduate.
+
+**Definition.** The Jacobson radical of a commutative ring is the intersection of its maximal ideals. An ideal inside this radical therefore lies in every maximal ideal.
+
+**Problem.** Let M be a finitely generated module over a commutative ring. If I lies in the Jacobson radical, any lifts of generators of M/IM generate M.
+
+**How the definition helps.** The radical condition makes every element of 1 + I invertible, in our own explanation. Take the quotient of M by the proposed generators. Nakayama’s determinant argument gives an element of 1 + I that kills the quotient, so the quotient is zero. In our own example, 2ℤ lies outside the radical of ℤ. The class of 3 generates ℤ/2ℤ, but 3 does not generate ℤ.
+
+**Paper or page:** [Algebra, Lemma 10.20.1.](https://stacks.math.columbia.edu/tag/00DV). It says: “If IM = M, M is finite, and I ⊂ rad(R), then M = 0.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The square-zero ring R ⊕ M gives Lasker–Noether for modules from ideals
 
 **Remember:** Turn submodules into ideals by declaring their internal products zero.
@@ -719,6 +735,22 @@
 **How the definition helps.** The construction turns the module theorem into a case of the ideal theorem, so no separate proof is needed. Wikipedia says that this deduction is straightforward. In our own details, R ⊕ M is Noetherian because it is finite over R. Write the submodule as an intersection of primary ideals Q, then intersect each Q with M. Each intersection is M or a primary submodule, since rm in Q with m not in Q forces a power of r into Q. The real work stays in the Lasker–Noether theorem for ideals.
 
 **Wikipedia:** [Algebra over a field](https://en.wikipedia.org/wiki/Algebra_over_a_field). It says: “Similarly, unital zero algebras allow to deduce straightforwardly the Lasker–Noether theorem for modules”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Finite algebra generation forces finite field extensions
+
+**Remember:** Finite algebra generation of a field leaves no transcendental generators.
+
+*Rules out counterexamples.* MSC 13B02 (Extension theory of commutative rings). arXiv math.AC. Level 3: graduate.
+
+**Definition.** A field extension is finitely generated as an algebra if finitely many elements generate it using just addition and multiplication over the base field. For finite generation as a field, division is allowed too.
+
+**Problem.** A field extension finitely generated as an algebra has finite dimension as a vector space over the base field.
+
+**How the definition helps.** Algebra generators allow only finitely many denominators in our own example, the rational function field ℚ(t). Any finite list of rational functions uses only finitely many irreducible denominator factors. Addition and multiplication cannot introduce another one, so the list misses 1/(t − a) for some rational a. Yet t generates ℚ(t) as a field, and its powers are linearly independent over ℚ. Zariski’s lemma proves that finite algebra generation excludes transcendental elements in every field extension.
+
+**Paper or page:** [ProofWiki, Zariski's Lemma](https://proofwiki.org/wiki/Zariski's_Lemma). It says: “Let L / k be a field extension. Let L be finitely generated as an algebra over k. Then L / k is a finite field extension.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -739,6 +771,22 @@
 **Sources:**
 
 - [The Stacks Project Authors, The Stacks Project, Tag 030C (Algebra, Lemma 10.37.16)](https://stacks.math.columbia.edu/tag/030C)
+
+### Integral closure keeps monic factors
+
+**Remember:** Integral closure keeps coefficients of monic factors from escaping.
+
+*Rules out counterexamples.* MSC 13B22 (Integral closure of commutative rings and ideals), 13B25. arXiv math.AC. Level 3: graduate.
+
+**Definition.** A domain A is integrally closed if it contains every element of its fraction field satisfying a monic polynomial over A. A monic polynomial has leading coefficient one.
+
+**Problem.** If a monic polynomial over an integrally closed domain factors into monic polynomials over its fraction field, both factors have coefficients in the domain.
+
+**How the definition helps.** Integral closure brings each factor coefficient back into the ring once it satisfies a monic equation. The cited proof writes these coefficients as signed sums of products of roots. The roots satisfy the original monic equation, and elements satisfying such equations form a ring. In our own counterexample, ℚ\[t², t³\] omits t even though t = t³/t² belongs to its fraction field. Its polynomial x² − t² factors there as (x − t)(x + t).
+
+**Paper or page:** [Finite local principal ideal rings](https://arxiv.org/abs/2301.07664v7). It says: “If f ∈ A\[X\] factorizes as f = gh in B\[X\] with g and h monic, then g and h are in A\[X\].”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### The Rees algebra definition shows an ideal's integral closure is an ideal
 
@@ -893,6 +941,22 @@
 **How the definition helps.** Extension of scalars preserves tensor products, so it carries the two maps and their identities over to S ⊗ P. Hence S ⊗ P\* is a dual of S ⊗ P, and duals are unique up to isomorphism. The real work is the nLab theorem that dualizable modules are the finitely generated projective ones. The base-change argument is our own.
 
 **nLab:** [dualizable module](https://ncatlab.org/nlab/show/dualizable+module). It says: “An R-module is dualizable if and only if it is a finitely generated projective module.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Local rings make projectives free
+
+**Remember:** Over a local ring, every projective module has a basis.
+
+*Rules out counterexamples.* MSC 13C10 (Projective and free modules and ideals in commutative rings), 16D40. arXiv math.AC. Level 3: graduate.
+
+**Definition.** A local commutative ring has exactly one maximal ideal. A projective module is a direct summand of a free module. Projective modules over general rings do not have to be free.
+
+**Problem.** Every projective module over a commutative local ring is free, even if it is not finitely generated.
+
+**How the definition helps.** A local ring excludes the product decomposition that gives our own counterexample. Over k × k for a field k, the first factor is a direct summand, so it is projective. The element (0, 1) kills that whole factor, whereas no nonzero scalar kills a nonzero free module. Kaplansky’s theorem supplies the full proof over a local ring, even for modules with infinitely many generators.
+
+**Paper or page:** [Algebra, Theorem 10.85.4.](https://stacks.math.columbia.edu/tag/0593). It says: “If P is a projective module over a local ring R, then P is free.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -1393,6 +1457,22 @@
 **Sources:**
 
 - [M. Auslander and D. A. Buchsbaum, Homological dimension in local rings, Transactions of the American Mathematical Society 85 (1957) 390–405](https://doi.org/10.1090/S0002-9947-1957-0086822-7)
+
+### Regular local rings factor uniquely
+
+**Remember:** Regularity at a point gives unique factorization in its local ring.
+
+*Rules out counterexamples.* MSC 13H05 (Regular local rings), 13F15. arXiv math.AC. Level 3: graduate.
+
+**Definition.** A commutative local ring has one maximal ideal. Assume it is Noetherian, meaning every ideal is finitely generated. Its dimension is the largest possible length of a chain of strict inclusions between prime ideals, when this length is finite. The ring is regular if its dimension equals the minimum number of generators for its maximal ideal.
+
+**Problem.** Every regular local ring is a unique factorization domain.
+
+**How the definition helps.** Regularity rules out singular points like the vertex of the cone xy = z², in our own example. The local ring at this vertex has dimension two, but its maximal ideal needs three generators, x, y and z. Each lies outside the square of the maximal ideal, so each is irreducible. Their classes are linearly independent modulo that square, so no two differ by a unit. Thus xy = z² gives two different factorizations. The Auslander–Buchsbaum theorem supplies unique factorization in the regular case.
+
+**Paper or page:** [More Algebra, Lemma 15.122.2.](https://stacks.math.columbia.edu/tag/0AG0). It says: “A regular local ring is a UFD.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Regular local rings make smoothness independent of the embedding
 

@@ -33,6 +33,70 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Cauchy reciprocals work away from zero
+
+**Remember:** Keep a gap from zero before taking reciprocals.
+
+*Rules out counterexamples.* MSC 40A05 (Convergence and divergence of series and sequences). arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** A sequence stays away from zero eventually if all its late absolute values exceed the same positive bound. This asks more than merely requiring each term to be nonzero.
+
+**Problem.** If a real Cauchy sequence stays away from zero eventually, its late reciprocals form a Cauchy sequence.
+
+**How the definition helps.** The positive lower bound controls the denominator in \|1/x − 1/y\| = \|x − y\|/\|xy\| (our own). The sequence 1/n is Cauchy and never zero, but its reciprocals are unbounded (our own). For a real Cauchy sequence, completeness identifies the lower-bound condition with having a nonzero limit (our own).
+
+**Paper or page:** [Combination Theorem for Cauchy Sequences/Inverse Rule](https://proofwiki.org/wiki/Combination_Theorem_for_Cauchy_Sequences/Inverse_Rule). It says: “is well-defined and a Cauchy sequence.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Condensed terms bound whole blocks
+
+**Remember:** The next block’s first term bounds the current block from below.
+
+*Rules out counterexamples.* MSC 40A05 (Convergence and divergence of series and sequences). arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** Start with a nonincreasing sequence of nonnegative terms indexed from one. Group consecutive terms into blocks of lengths 1, 2, 4, 8, and so on. In the condensed series, each block contributes its length times its first term.
+
+**Problem.** The original series converges if and only if the condensed series converges.
+
+**How the definition helps.** Monotonicity bounds each block sum between its condensed term and half the next condensed term. Our own proof sums these bounds and applies the comparison test in both directions. Our own counterexample sets aₙ = 1/n at powers of two and zero elsewhere. The original series is geometric on its support, but every condensed term equals one.
+
+**Wikipedia:** [Cauchy condensation test](https://en.wikipedia.org/wiki/Cauchy_condensation_test). It says: “each run is bounded above by replacing each term by the largest term in that run.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Independent tails prevent false convergence
+
+**Remember:** Both tails must settle before their sums can be added.
+
+*Rules out counterexamples.* MSC 40A05 (Convergence and divergence of series and sequences). arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** A series indexed by all integers converges if its negative and nonnegative parts converge separately. A symmetric cutoff instead keeps equally many positive and negative indices.
+
+**Problem.** Let the lower endpoint tend to minus infinity and the upper endpoint to plus infinity independently. For a convergent series over all integers, the interval sums approach its sum.
+
+**How the definition helps.** Separate convergence lets each endpoint control its own tail. Our own proof splits an interval sum at zero and applies the sum rule for limits. Our own counterexample takes value 1 at positive indices, −1 at negative indices, and 0 at zero. Every symmetric sum vanishes, but neither tail converges.
+
+**nLab:** [doubly infinite series](https://ncatlab.org/nlab/show/doubly+infinite+series). It says: “A doubly infinite series converges if each of its constituent parts (positive and negative), converges; the sum of the series is then, by definition, the sum of the limits of the two series.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Root tests accept zero terms
+
+**Remember:** Take roots when zero terms break the ratios.
+
+*Makes the theorem clean to state or prove.* MSC 40A05 (Convergence and divergence of series and sequences). arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** Take the nth root of the absolute value of each term. Define the upper limit of these roots as the limit of their tail suprema. Roots remain defined at zero terms.
+
+**Problem.** The series converges absolutely if this upper limit is below one. It diverges if the upper limit is above one. The test gives no answer when the upper limit is one.
+
+**How the definition helps.** Taking roots compares each term to a geometric term without dividing by another term (our own). Take terms that are zero at even indices and 2⁻ⁿ at odd indices (our own). Their ratios are undefined infinitely often (our own). The work is a geometric comparison below one, or showing that terms fail to tend to zero above one (our own).
+
+**Paper or page:** [Nth Root Test](https://proofwiki.org/wiki/Nth_Root_Test). It says: “If this limit is less than one, the series converges absolutely.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Separate limits remove cutoff dependence
 
 **Remember:** Separate convergence lets each endpoint go to infinity at its own pace.
@@ -119,6 +183,22 @@
 
 - [Imre Lakatos, Mathematics, Science and Epistemology (Philosophical Papers vol. 2), Cambridge University Press (1978), chapter 3](https://doi.org/10.1017/CBO9780511624926)
 
+### Cesàro averaging gives cycle means
+
+**Remember:** Average a complete cycle to remove the oscillation.
+
+*Makes the theorem clean to state or prove.* MSC 40G05 (Cesàro, Euler, Nörlund and Hausdorff methods). arXiv math.CA. Level 1: early undergraduate.
+
+**Definition.** The Cesàro sum is the limit of the averages of the first n partial sums. The ordinary sum is the limit of the partial sums themselves.
+
+**Problem.** If the partial sums repeat in a finite cycle, the Cesàro sum is the mean of that cycle.
+
+**How the definition helps.** Complete cycles all have the same mean, and the incomplete cycle contributes a vanishing error (our own). For example, the partial sums of 1 − 1 + 1 − ⋯ alternate between one and zero (our own). Agreement with ordinary convergence is separate and follows by bounding the average error of a late tail (our own).
+
+**Wikipedia:** [Cesàro summation](https://en.wikipedia.org/wiki/Ces%C3%A0ro_summation). It says: “This sequence of partial sums does not converge, so the series G is divergent. However, G is Cesàro summable.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Absolute convergence saves Cauchy products
 
 **Remember:** Absolute weights make the shifted partial sums safe to average.
@@ -151,6 +231,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Positive increments justify Stolz averages
+
+**Remember:** Positive steps make long slopes average the short slopes.
+
+*Rules out counterexamples.* MSC 40A05 (Convergence and divergence of series and sequences). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** For real sequences a and b, write Δa and Δb for their changes from index n to n+1. Assume b increases strictly to infinity. Give each local slope Δa/Δb the positive weight Δb.
+
+**Problem.** If those local slopes converge to a finite limit, the ratios a(n)/b(n) converge to the same limit.
+
+**How the definition helps.** Positive increments make the slope over a long interval a weighted average of the individual slopes. Our own proof sums the changes in a and b separately. Any fixed initial contribution vanishes after division by b(n), so the average approaches the limiting slope. Our own counterexample sets a(n) = n, b(2k) = k and b(2k+1) = (k+1)² + 1. The increments of b grow in absolute value, so the local slopes approach zero. Yet a(2k)/b(2k) = 2 for every positive k.
+
+**Wikipedia:** [Stolz–Cesàro theorem](https://en.wikipedia.org/wiki/Stolz%E2%80%93Ces%C3%A0ro_theorem). It says: “Since (bₙ) is strictly increasing, bₙ₊₁ − bₙ &gt; 0”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Improper integrals as suprema of partial areas make comparison immediate
 
 **Remember:** If every partial area of f is smaller, so is the supremum.
@@ -164,6 +260,22 @@
 **How the definition helps.** With the supremum definition, the claim is that a pointwise bound passes to suprema (our own). Each partial area of f is at most the matching partial area of g, so at most the supremum for g (our own). The usual definition first needs both one-sided limits to exist (our own). The work moves into showing that the definitions agree for f ≥ 0. Partial areas grow with the subinterval, and a bounded increasing function has a limit (our own).
 
 **Paper or page:** [Comparison Test for Improper Integral](https://proofwiki.org/wiki/Comparison_Test_for_Improper_Integral). It says: “If the improper integral of φ over I exists, then so does that of f.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Alternating gaps make continued fractions converge
+
+**Remember:** Successive gaps alternate and shrink as the denominators grow.
+
+*Makes the theorem clean to state or prove.* MSC 40A15 (Convergence and divergence of continued fractions). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** A simple continued fraction nests reciprocals, as in a₀ + 1/(a₁ + 1/(a₂ + ⋯)). For each digit a, form the matrix with rows (a,1) and (1,0). Multiply these matrices in digit order. The first column gives the numerator and denominator of the corresponding finite fraction.
+
+**Problem.** Every infinite simple continued fraction with positive integer digits after the first has convergent finite truncations.
+
+**How the definition helps.** The matrix determinant gives the gap between consecutive fractions, including its sign. In our own proof, multiplying by one more digit matrix reverses the determinant’s sign. The gap therefore alternates in sign and has magnitude one divided by the product of adjacent denominators. Each new denominator equals the latest digit times the preceding denominator plus the one before it. The positive digits force the denominators to grow without bound. The alternating series test now gives convergence.
+
+**Paper or page:** [Difference between Adjacent Convergents of Simple Continued Fraction](https://proofwiki.org/wiki/Difference_between_Adjacent_Convergents_of_Simple_Continued_Fraction). It says: “Cₖ − Cₖ₋₁ = pₖ/qₖ − pₖ₋₁/qₖ₋₁ = (−1)ᵏ⁺¹/(qₖ qₖ₋₁)”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -196,6 +308,22 @@
 **How the definition helps.** Uniform control makes all sufficiently late increments smaller than one half everywhere (our own). There the logarithm of 1 + fₙ given by its power series has magnitude at most 2\|fₙ\| (our own). Its sum converges uniformly, and exponentiating gives a tail product without zeros (our own). Only the finite initial product can vanish (our own). Constant factors exp(−1/n) have no zeros, yet their partial products converge uniformly to zero (our own).
 
 **Paper or page:** [Uniform Absolute Convergence of Infinite Product of Complex Functions](https://proofwiki.org/wiki/Uniform_Absolute_Convergence_of_Infinite_Product_of_Complex_Functions). It says: “there exists n₀ ∈ ℕ such that ∏ from n = n₀ to ∞ (1 + fₙ(x)) has no zeroes.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Geometric errors make Aitken exact
+
+**Remember:** Fit a geometric error and keep only the constant.
+
+*True by definition.* MSC 40A25 (Approximation to limiting values (summation of series, etc.)). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** Define the extrapolated limit from three successive values. Fit a constant plus a geometric error whose ratio is nonzero and has absolute value less than one. Use the fitted constant instead of the latest value whenever such a fit exists.
+
+**Problem.** For a sequence with exactly that geometric error and nonzero amplitude, one Aitken step returns the true limit.
+
+**How the definition helps.** Fitting a constant plus geometric error recovers the constant immediately when the data follow that model. Our own derivation connects this definition to Aitken’s usual formula. Let u and v be the first and second increments. Their ratio v/u gives the unique geometric ratio. Subtract u²/(v − u) from the first value to obtain the fitted constant.
+
+**Wikipedia:** [Aitken's delta-squared process](https://en.wikipedia.org/wiki/Aitken%27s_delta-squared_process). It says: “aₙ = xₙ − (Δxₙ)²/Δ²xₙ”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -283,6 +411,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Small terms let Abel recover convergence
+
+**Remember:** When n times the term vanishes, smoothing changes no limit.
+
+*Rules out counterexamples.* MSC 40E05 (Tauberian theorems). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** An Abel sum is the limit of the series with term n weighted by rⁿ as r increases to one. To recover ordinary convergence, restrict the series to terms whose product with their index tends to zero.
+
+**Problem.** A series with an Abel sum and n a(n) tending to zero converges ordinarily to its Abel sum.
+
+**How the definition helps.** The condition k aₖ → 0 makes the difference between the weighted sum and the ordinary partial sum tend to zero. Our own proof takes r = 1 − 1/n. Any fixed initial block contributes a difference tending to zero. Given ε &gt; 0, choose the block large enough that \|k aₖ\| ≤ ε thereafter. Through index n, use 1 − rᵏ ≤ k/n to bound the remaining difference by ε. Beyond n, use \|aₖ\| ≤ ε/n and sum the geometric weights to get another bound of ε. Our own counterexample is 1 − 1 + 1 − ⋯, which diverges despite its Abel sum of one half.
+
+**Wikipedia:** [Abelian and Tauberian theorems](https://en.wikipedia.org/wiki/Abelian_and_Tauberian_theorems). It says: “if the Abel sum of a series exists and the coefficients are sufficiently small (o(1/n)) then the series converges to the Abel sum.”
+
+**Sources:**
+
+- [Alfred Tauber, Ein Satz aus der Theorie der unendlichen Reihen (1897)](https://doi.org/10.1007/BF01696278)
+
 ### Averaging the partial sums recovers every continuous function (Fejér)
 
 **Remember:** Average the partial sums, and the wobbles of the Fourier series cancel.
@@ -346,6 +492,22 @@
 **How the definition helps.** The transform is geometric near zero, so it extends as 1/(1 + t) for positive t (our own). The resulting integral converges by comparison with exp(−t) (our own). The work moves from ordinary convergence to continuing and integrating the transform (our own).
 
 **Wikipedia:** [Borel summation](https://en.wikipedia.org/wiki/Borel_summation). It says: “so the original divergent series is Borel summable for all such z.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Geometric weights make Abel summation regular
+
+**Remember:** Abel weights leave every fixed initial block behind.
+
+*Makes the theorem clean to state or prove.* MSC 40G10 (Abel, Borel and power series methods). arXiv math.CA. Level 2: later undergraduate.
+
+**Definition.** For a series starting at index zero, multiply term n by rⁿ, where 0 &lt; r &lt; 1. The Abel sum is the limit of these weighted sums as r increases to one, when that limit exists.
+
+**Problem.** If a real or complex series converges ordinarily, it has the same Abel sum.
+
+**How the definition helps.** Rewriting the weighted sum as an average of partial sums makes the ordinary limit visible. Summation by parts assigns partial sum n the weight (1 − r)rⁿ. In our own explanation, these weights add to one and every fixed initial block loses its weight as r approaches one. All later partial sums are close to the ordinary limit.
+
+**Wikipedia:** [Abel's theorem](https://en.wikipedia.org/wiki/Abel%27s_theorem). It says: “Then substituting aₖ = sₖ − sₖ₋₁ and performing a simple manipulation of the series (summation by parts) results in”
 
 **Sources:** none listed. No primary source with a working link was found.
 
