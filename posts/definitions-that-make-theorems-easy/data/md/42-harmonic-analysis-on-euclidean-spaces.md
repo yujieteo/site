@@ -194,6 +194,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Frequency plateaus give near-best approximation
+
+**Remember:** Keep the low modes exactly while smoothing away the higher ones.
+
+*True by definition. Confidence: medium.* MSC 42A10 (Trigonometric approximation), 42A24. arXiv math.CA. Level 3: graduate.
+
+**Definition.** For an integer n ≥ 1, define the de la Vallée Poussin mean by averaging Fourier partial sums of orders n through 2n − 1. Each partial sum keeps the waves whose frequency indices have magnitude at most its order. A Fejér mean averages all partial sums starting at order zero.
+
+**Problem.** For a continuous periodic function, the uniform error is at most four times the best uniform error among trigonometric polynomials of degree at most n.
+
+**How the definition helps.** Starting the average at n makes every term reproduce all trigonometric polynomials of degree at most n in our own proof. Unlike a single Fourier partial sum, this average also has uniformly bounded norm. It equals twice the Fejér mean of order 2n − 1 minus the Fejér mean of order n − 1. Positivity and unit mass of the Fejér kernels give each mean norm one, hence the difference has norm at most three. Subtracting a best approximating polynomial now gives the error factor four.
+
+**Paper or page:** [Weighted norm inequalities in Lebesgue spaces with Muckenhoupt weights and some applications to operators](https://arxiv.org/abs/1709.02928v5), [Weighted norm inequalities in Lebesgue spaces with Muckenhoupt weights and some applications to operators](https://arxiv.org/abs/1709.02928v5). It says: “Fₙ(f,·) := 1/(n+1){S₀(·,f)+S₁(·,f)+...+Sₙ(·,f)}”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Wiener reciprocals retain summable coefficients
 
 **Remember:** In the Wiener algebra, the only tests for invertibility are point evaluations.
@@ -213,6 +229,24 @@
 - [N. Wiener, Tauberian Theorems (1932)](https://doi.org/10.2307/1968102)
 - [D. J. Newman, Shorter Notes: A Simple Proof of Wiener’s 1/f Theorem (1975)](https://doi.org/10.2307/2040730)
 
+### Adjoint synthesis inverts the short-time Fourier transform
+
+**Remember:** The adjoint of an isometry is its left inverse.
+
+*True by definition.* MSC 42A38 (Fourier and Fourier-Stieltjes transforms and other transforms of Fourier type), 42C20. arXiv math.CA. Level 3: graduate.
+
+**Definition.** Fix a window, a square-integrable function on the real line with norm one. Analysis multiplies the signal by each translated, conjugated window and takes the Fourier transform of each product. Define synthesis as the adjoint of analysis, so pairing a signal with synthesized data equals pairing its analysis with those data.
+
+**Problem.** Synthesis with the same unit window recovers every square-integrable input from its short-time Fourier transform.
+
+**How the definition helps.** With synthesis defined by the adjoint, our own proof reduces reconstruction to preservation of inner products. The short-time Fourier orthogonality theorem gives exactly that identity for a unit window. The usual reconstruction integral adds translated and frequency-shifted windows against the measured coefficients. Our own comparison pairs this integral with a test signal to identify it with the adjoint.
+
+**Paper or page:** [Time-Frequency Analysis (Lecture Notes)](https://arxiv.org/abs/2204.01596v1), [Time-Frequency Analysis (Lecture Notes)](https://arxiv.org/abs/2204.01596v1). It says: “Then we have for all f ∈ L²(ℝᵈ) f = 1/⟨g̃, g⟩ ∬ℝ²ᵈ Vg f(x, ω) Mω Tx g̃ d(x, ω).”
+
+**Sources:**
+
+- [Time-Frequency Analysis (Lecture Notes)](https://arxiv.org/abs/2204.01596v1)
+
 ### Extending by continuity defines the Fourier transform on all of L²
 
 **Remember:** Define it where the integral converges, check it keeps L² norms, extend by continuity.
@@ -230,6 +264,56 @@
 **Sources:**
 
 - [Plancherel, M. (1910). Contribution à l'étude de la représentation d'une fonction arbitraire par des intégrales définies. Rendiconti del Circolo Matematico di Palermo 30(1), 289–335.](https://doi.org/10.1007/BF03014877)
+
+### Interior support prevents Fourier aliasing
+
+**Remember:** Keep support away from the seam to test nonperiodic waves.
+
+*Rules out counterexamples. Confidence: medium.* MSC 42A38 (Fourier and Fourier-Stieltjes transforms and other transforms of Fourier type), 42A16. arXiv math.CA. Level 3: graduate.
+
+**Definition.** Fix a closed interval strictly inside (−½, ½) and consider finite positive measures supported there. The Fourier transform integrates the wave exp(−2πixξ) against the measure. At integer frequencies these waves take the same values at points one unit apart.
+
+**Problem.** For positive finite measures with uniformly bounded masses and this support, convergence at integer frequencies implies convergence at every real frequency. If the endpoints are allowed, this fails.
+
+**How the definition helps.** In our own corrected theorem the gap at the endpoints lets each real-frequency wave extend from the support to a continuous function of period one. Trigonometric polynomials approximate that extension uniformly. Their integrals converge by the integer-frequency hypothesis, and the common mass bound controls the approximation error. Alternating unit masses at −½ and ½ agree at every integer frequency but alternate between opposite values at frequency ½.
+
+**Paper or page:** [Sharpness of the Mockenhaupt-Mitsis-Bak-Seeger Fourier restriction theorem in all dimensions](https://arxiv.org/abs/2505.19526v1). It says: “If (ν̂ₖ(s)) converges for each s ∈ ℤᵈ, then (ν̂ₖ(ξ)) converges for each ξ ∈ ℝᵈ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Multiplier symbols give Laurent norms
+
+**Remember:** The largest multiplier value gives the operator norm.
+
+*True by definition.* MSC 42A45 (Multipliers in one variable harmonic analysis), 42A16. arXiv math.CA. Level 3: graduate.
+
+**Definition.** For a continuous function m on the circle, define its Laurent operator on square-summable sequences indexed by the integers. Form the Fourier series, multiply by m, then take Fourier coefficients again. In sequence coordinates this amounts to convolution with the Fourier coefficients of m.
+
+**Problem.** The operator norm on square-summable sequences equals the supremum of \|m\|.
+
+**How the definition helps.** Our own proof uses Fourier coordinates to turn convolution into multiplication, whose norm is at most the maximum of \|m\|. Testing on indicators of short arcs near a maximum gives the reverse inequality. Parseval’s identity and completeness justify the change of coordinates.
+
+**Paper or page:** [Time-Frequency Analysis (Lecture Notes)](https://arxiv.org/abs/2204.01596v1). It says: “‖L(m)‖ₒₚ = ‖m‖∞”
+
+**Sources:**
+
+- [Time-Frequency Analysis (Lecture Notes)](https://arxiv.org/abs/2204.01596v1)
+
+### Tapered cutoffs give integrable kernels
+
+**Remember:** Taper the band edge to replace the nonintegrable sinc tail.
+
+*Rules out counterexamples.* MSC 42A45 (Multipliers in one variable harmonic analysis), 42A38. arXiv math.CA. Level 3: graduate.
+
+**Definition.** To form a Bochner–Riesz mean on the line, multiply the Fourier transform by a frequency cutoff and transform back. At frequency ξ the cutoff is the positive part of 1 − (ξ/R)² raised to the power δ, with R and δ positive.
+
+**Problem.** These Bochner–Riesz means are uniformly bounded on L¹ as R varies. The sharp interval cutoff does not give a bounded L¹ operator.
+
+**How the definition helps.** In our own proof, tapering the cutoff makes its inverse Fourier transform integrable. The Fourier decay estimate for that kernel carries the work. Changing R rescales the kernel without changing its integral norm, so convolution gives a uniform bound. An abrupt cutoff gives a multiple of sin(x)/x after rescaling. Testing on unit-mass bumps concentrating at zero would force this kernel to be integrable by Fatou’s lemma.
+
+**Wikipedia:** [Bochner–Riesz mean](https://en.wikipedia.org/wiki/Bochner%E2%80%93Riesz_mean). It says: “may be written as convolution operators, where the convolution kernel is an approximate identity.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### The Hilbert transform multiplier squares to minus one
 
@@ -353,6 +437,26 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Cube averages give singular-integral cancellation
+
+**Remember:** Remove the cube average to leave a remainder with integral zero.
+
+*True by definition.* MSC 42B20 (Singular and oscillatory integrals (Calderón-Zygmund, etc.)), 42B25. arXiv math.CA. Level 3: graduate.
+
+**Definition.** For an integrable function f, select the largest cubes in a grid of successive bisections where the average of \|f\| exceeds a fixed positive threshold. On each selected cube replace f by its average. Define the remainder for that cube as the difference there and zero outside.
+
+**Problem.** Each bad part has integral zero. Away from its cube, a singular integral can subtract the kernel value at the cube center without changing its output.
+
+**How the definition helps.** Replacing f by its average makes each remainder integrate to zero in our own proof. Keeping the original function on the cube would generally leave a nonzero integral. For a point outside the cube, the kernel value at the cube center is constant in the integration variable. Subtracting it therefore leaves the integral against the remainder unchanged. The remaining work is to control the selected cubes and estimate the resulting kernel difference.
+
+**Wikipedia:** [Calderón–Zygmund lemma](https://en.wikipedia.org/wiki/Calder%C3%B3n%E2%80%93Zygmund_lemma). It says: “has the beneficial property that its average value is zero on each of these cubes.”
+
+**Paper or page:** [Twisted bilinear spherical maximal functions](https://arxiv.org/abs/2410.17583v1). It says: “∫ over Qᵢ,ᵧ hᵢ(x,y) dx = 0”
+
+**Sources:**
+
+- [Alberto P. Calderón and Antoni Zygmund, On the existence of certain singular integrals (1952)](https://doi.org/10.1007/bf02392130)
+
 ### Riesz transform multipliers recover second derivatives from the Laplacian
 
 **Remember:** Two Riesz transforms recover a second derivative from the Laplacian, up to sign.
@@ -384,6 +488,58 @@
 **How the definition helps.** Disjoint rings count each nonzero frequency exactly once when the squared norms are added (our own). Plancherel’s theorem identifies the squared norm of each piece with the integral of squared Fourier magnitude on its ring (our own). Integration commutes with the nonnegative sum, and the single omitted frequency has measure zero (our own). With overlapping smooth weights, the same identity requires their squared magnitudes to sum to one almost everywhere (our own).
 
 **Wikipedia:** [Littlewood–Paley theory](https://en.wikipedia.org/wiki/Littlewood%E2%80%93Paley_theory). It says: “this gives a so-called "dyadic decomposition" of f”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Dual weights preserve Muckenhoupt bounds
+
+**Remember:** Swap the two weights and raise the old test to q/p.
+
+*True by definition.* MSC 42B25 (Maximal functions, Littlewood-Paley theory). arXiv math.CA. Level 3: graduate.
+
+**Definition.** Fix 1 &lt; p &lt; ∞ and let 1/p + 1/q = 1. A weight w is a positive, locally integrable function. Set v = w⁻ᑫ⁄ᵖ. The Muckenhoupt constant of w is the supremum over balls of average(w) times average(v) raised to p/q.
+
+**Problem.** The weight w passes the test at p exactly when v passes at q. The best constant for v is the best constant for w raised to q/p.
+
+**How the definition helps.** The ball test makes duality a swap of averages in our own proof. Raising each product to q/p gives the test at q for v because its dual weight is w. Taking suprema gives the formula for the best constants. The weighted maximal theorem identifies the ball test with boundedness of the operator taking the supremum of local averages on weighted Lᵖ.
+
+**Wikipedia:** [Muckenhoupt weights](https://en.wikipedia.org/wiki/Muckenhoupt_weights). It says: “(1/\|B\| ∫ over B ω(x) dx)(1/\|B\| ∫ over B ω(x)⁻ᑫ⁄ᵖ dx)ᵖ⁄ᑫ ≤ C &lt; ∞”
+
+**Sources:**
+
+- [Benjamin Muckenhoupt, Weighted norm inequalities for the Hardy maximal function (1972)](https://doi.org/10.1090/S0002-9947-1972-0293384-6)
+
+### Maximal control extends pointwise convergence
+
+**Remember:** Control every error at once, then approximate by a dense class.
+
+*Makes the theorem clean to state or prove.* MSC 42B25 (Maximal functions, Littlewood-Paley theory). arXiv math.CA. Level 3: graduate.
+
+**Definition.** For a sequence of linear operators on integrable functions, form a maximal operator by taking the supremum of their absolute outputs at each point. A weak L¹ bound means the measure above each threshold λ &gt; 0 is at most C‖f‖₁/λ, with one constant C for every input.
+
+**Problem.** Suppose the operators converge to their inputs almost everywhere on a dense subset of L¹. If the maximal operator has a weak L¹ bound, convergence holds almost everywhere on all of L¹.
+
+**How the definition helps.** In our own proof the supremum controls the error from replacing the input by a nearby function for every operator at once. Choose a nearby input from the dense set where convergence holds. The weak bound controls the maximal output of their difference, and Markov’s inequality controls the difference itself. As the integral norm of the difference tends to zero, the measure of every set with persistent positive error vanishes.
+
+**Paper or page:** [Bounded operators on Martingale Hardy spaces](https://arxiv.org/abs/2201.12134v3). It says: “then Tₙf → f, a.e. for every f ∈ L₁(Gₘ).”
+
+**Sources:**
+
+- [Bounded operators on Martingale Hardy spaces](https://arxiv.org/abs/2201.12134v3)
+
+### Nested cubes give sharp bounds
+
+**Remember:** Sum the largest cubes that still exceed the threshold.
+
+*True by definition. Confidence: medium.* MSC 42B25 (Maximal functions, Littlewood-Paley theory). arXiv math.CA. Level 3: graduate.
+
+**Definition.** Fix the grid of half-open dyadic cubes in Euclidean space, obtained at each scale by bisecting every side. At each point take the supremum of the averages of \|f\| over grid cubes containing it. This defines the dyadic maximal function.
+
+**Problem.** For integrable f and λ &gt; 0, the volume where the dyadic maximal function exceeds λ is at most ‖f‖₁/λ. The constant one is sharp.
+
+**How the definition helps.** In our own proof the grid replaces the covering estimate for arbitrary cubes because two grid cubes that meet are nested. For integrable f, averages over sufficiently large cubes fall below any fixed positive threshold. The largest cubes exceeding that threshold therefore cover the exceptional set without overlap. Summing their integrals gives the bound with constant one. The indicator of one grid cube shows sharpness as the threshold approaches one from below.
+
+**Paper or page:** [Muckenhoupt-type weights and the intrinsic structure in Bessel Setting](https://arxiv.org/abs/2304.07986v3), [An alternative approach to sharp L¹ estimates for the dyadic maximal operator](https://arxiv.org/abs/2104.03585v2). It says: “The dyadic maximal function is of weak (1,1)”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -422,6 +578,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Hardy atoms force zero mean
+
+**Remember:** Mean zero survives any sum that converges in the integral norm.
+
+*Rules out counterexamples.* MSC 42B30 (\\(H<sup>p\\</sup>)-spaces). arXiv math.CA. Level 3: graduate.
+
+**Definition.** A real Hardy space atom vanishes outside a ball in Euclidean space and has integral zero. Its magnitude is at most one divided by the ball’s volume. Define H¹ by sums of atoms with absolutely summable coefficients, taking limits in the integral norm.
+
+**Problem.** Every function in real H¹ on Euclidean space has integral zero. The indicator of the unit ball is integrable but is not in H¹.
+
+**How the definition helps.** In our own proof the atomic definition builds zero integral into every summand. Each atom has integral norm at most one, so the series converges in that norm and integration preserves the limit. The atomic decomposition theorem identifies this space with the usual definition using the supremum of smoothed values across scales.
+
+**Wikipedia:** [Hardy space](https://en.wikipedia.org/wiki/Hardy_space). It says: “any element f of Hᵖ has an atomic decomposition as a convergent infinite combination of Hᵖ-atoms”
+
+**Sources:**
+
+- [Robert Latter, A characterization of Hᵖ(ℝⁿ) in terms of atoms (1978)](https://doi.org/10.4064/sm-62-1-93-101)
+
 ### Adjacent averages detect hidden oscillation
 
 **Remember:** Two neighboring grid intervals catch what one grid interval misses.
@@ -453,6 +627,58 @@
 **How the definition helps.** With orthogonality as the definition, multiplication by x moves across the inner product. So the inner product of x·pₙ with pₖ equals that of pₙ with x·pₖ, which is zero when k + 1 &lt; n. Hence only three terms of the expansion of x·pₙ survive. With the recurrence as the definition, the recurrence is free but orthogonality is hard. That converse is Favard’s theorem, which Wikipedia names; it builds a positive measure from the recurrence. The proof steps are our own.
 
 **Wikipedia:** [Orthogonal polynomials](https://en.wikipedia.org/wiki/Orthogonal_polynomials). It says: “These recurrence relations are key for deriving properties of orthogonal polynomials.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Jacobi matrices supply orthogonality measures
+
+**Remember:** The recurrence carries the first coordinate to every other coordinate.
+
+*True by definition.* MSC 42C05 (Orthogonal functions and polynomials, general theory of nontrigonometric harmonic analysis), 47B36. arXiv math.CA. Level 3: graduate.
+
+**Definition.** Take a self-adjoint operator J on square-summable sequences whose matrix has three diagonals and positive entries just above and below the main diagonal. Its spectral measure at the first coordinate vector e assigns each set the squared length of the spectral projection of e onto that set.
+
+**Problem.** Start the three-term polynomial recurrence from the rows of J with constant polynomial one. Its polynomials form an orthonormal basis for square-integrable functions of the spectral measure.
+
+**How the definition helps.** The spectral measure turns integrals of polynomial products into inner products of vectors, without guessing an integration weight. In our own argument, applying the successive recurrence polynomials of J to e gives the successive coordinate vectors. They form an orthonormal basis. The work lies in choosing a self-adjoint realization and applying the spectral theorem to this basis.
+
+**Paper or page:** [Spectral analysis of Jacobi operators and asymptotic behavior of orthogonal polynomials](https://arxiv.org/abs/2202.02087v1). It says: “The polynomials Pₙ(λ) are orthogonal and normalized in the spaces L²(ℝ; dρ<sub>J</sub>)”
+
+**Sources:**
+
+- [D. R. Yafaev. Spectral analysis of Jacobi operators and asymptotic behavior of orthogonal polynomials](https://arxiv.org/abs/2202.02087v1)
+
+### Matched weights simplify Hilbert recurrences
+
+**Remember:** Match the weights so orthogonality erases every positive-degree mean.
+
+*True by definition.* MSC 42C05 (Orthogonal functions and polynomials, general theory of nontrigonometric harmonic analysis), 45E05. arXiv math.CA, math.NA. Level 3: graduate.
+
+**Definition.** On \[−1,1\], form orthonormal polynomials for a weight w given by powers of the two endpoint distances, both exponents greater than −1. At an interior point t, integrate each polynomial against w(x)/(x − t). Take the limit after excluding equal lengths on both sides of t.
+
+**Problem.** From degree one onward, the transformed polynomials follow the same homogeneous three-term recurrence as the original polynomials.
+
+**How the definition helps.** Matching the weights makes the extra term in the transformed recurrence vanish for every positive degree. The paper gives this term as a constant times the weighted integral of the polynomial. Our own observation is that this integral vanishes by orthogonality to constants. An independently chosen transform weight need not cancel the term.
+
+**Paper or page:** [Filtered integration rules for finite Hilbert transforms](https://arxiv.org/abs/2109.10634v1). It says: “satisfy the following three-term recurrence relation”
+
+**Sources:**
+
+- [D. Occorsio, M. G. Russo, W. Themistoclakis. Filtered integration rules for finite Hilbert transforms](https://arxiv.org/abs/2109.10634v1)
+
+### Positive weights force simple roots
+
+**Remember:** Multiply by the factors at sign changes and use positivity.
+
+*Rules out counterexamples.* MSC 42C05 (Orthogonal functions and polynomials, general theory of nontrigonometric harmonic analysis). arXiv math.CA. Level 3: graduate.
+
+**Definition.** Take a positive measure on the real line with infinite support and finite integrals of all absolute powers. The support consists of points whose every neighborhood has positive measure. A monic real polynomial P of degree n is orthogonal if the integral of PQ vanishes for every polynomial Q of smaller degree.
+
+**Problem.** P has n distinct simple roots in the interior of the smallest interval containing the support.
+
+**How the definition helps.** In our own proof, positivity makes a polynomial of constant sign have nonzero integral unless it vanishes throughout the support. Form Q by multiplying one linear factor for each interior root where P changes sign. Then PQ has constant sign throughout the interval and vanishes at only finitely many points. If Q had degree below n, orthogonality would force its product with P to have zero integral. Thus P has n sign changes and every root is simple. In our own example, weights 1, −4, 1 at −1, 0, 1 make x² + 1 orthogonal to both 1 and x.
+
+**Wikipedia:** [Orthogonal polynomials](https://en.wikipedia.org/wiki/Orthogonal_polynomials). It says: “If the measure dα is supported on an interval \[a,b\], all the zeros of Pₙ lie in \[a,b\].”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -523,6 +749,24 @@
 - [Daniel Freeman, Daniel Haider, Optimal lower Lipschitz bounds for ReLU layers, saturation, and phase retrieval, arXiv:2502.09898v1 (2025)](https://arxiv.org/abs/2502.09898v1)
 - [Radu Balan, Pete Casazza, Dan Edidin, On signal reconstruction without phase, Applied and Computational Harmonic Analysis 20(3), 345–356 (2006)](https://doi.org/10.1016/j.acha.2005.07.001)
 
+### Short windows flatten spectral energy
+
+**Remember:** Nonoverlapping window translates kill the nonconstant Fourier coefficients.
+
+*Rules out counterexamples.* MSC 42C15 (General harmonic expansions, frames), 42A38. arXiv math.CA. Level 3: graduate.
+
+**Definition.** Let g be a square-integrable function on the line and P a positive frequency spacing. Use Fourier waves exp(−2πixξ). Define periodized spectral energy at y by summing \|ĝ(y + nP)\|² over all integers n. Require g to vanish outside an interval of length at most 1/P.
+
+**Problem.** The periodized energy equals ‖g‖₂²/P almost everywhere. This can fail for longer windows.
+
+**How the definition helps.** In our own proof the support length prevents overlap with any translate by a nonzero integer multiple of 1/P, apart from endpoints. By Plancherel, the Fourier coefficients of the periodized energy are the corresponding inner products divided by P. Only the constant coefficient survives, and Fourier uniqueness gives the identity. For P = 1, the indicator of \[0,2\] overlaps its translate by one, giving our own counterexample.
+
+**Paper or page:** [Frequency-dependent stability for Gabor frames](https://arxiv.org/abs/2410.01681v2). It says: “∑ₙ \|ĝ(y + Pn)\|² = (1/P) ‖g‖₂².”
+
+**Sources:**
+
+- [Frequency-dependent stability for Gabor frames](https://arxiv.org/abs/2410.01681v2)
+
 ### Zak zeros prevent Gabor frames
 
 **Remember:** At critical spacing, a Zak zero kills the lower bound.
@@ -575,6 +819,40 @@
 
 - [S. G. Mallat, A theory for multiresolution signal decomposition: the wavelet representation (1989)](https://doi.org/10.1109/34.192463)
 
+### Fourier decay gives positive-volume sumsets
+
+**Remember:** Two copies of the Fourier decay give a square-integrable convolution transform.
+
+*Rules out counterexamples. Confidence: medium.* MSC 42A38 (Fourier and Fourier-Stieltjes transforms and other transforms of Fourier type), 28A80. arXiv math.CA. Level 4: research.
+
+**Definition.** The Fourier dimension of a compact subset of the line is the supremum of exponents s in \[0,1\] satisfying this test. Some probability measure supported on the set has Fourier transform bounded in magnitude by C times (1 + \|ξ\|) raised to −s/2.
+
+**Problem.** If a compact set has Fourier dimension greater than one half, the set of all sums of two of its points has positive length.
+
+**How the definition helps.** In our own proof the definition supplies enough decay for the fourth power of the transform to be integrable. The distribution of the sum of two independent samples has Fourier transform equal to the square of the original transform. Plancherel’s theorem therefore gives this sum a square-integrable density. Its support must have positive length because the density has integral one. Our own counterexample for Hausdorff dimension, which measures size by covers at small scales, uses base-nine digits zero through three. Its dimension is log(4)/log(9), yet sums use only seven digits and lie in a set of length zero.
+
+**Paper or page:** [Fourier Dimension and Translation Invariant Linear Equations](https://arxiv.org/abs/2411.06302v1). It says: “Let E ⊂ \[0,1\] be a closed set and μ be a probability measure supported on E satisfying \|μ̂(ξ)\| ≤ C (1+\|ξ\|)⁻ᵝ for some finite positive constant C and β &gt; 1/4.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Tile counts give lattice spectra
+
+**Remember:** Count translates on one cell, then read the count through Fourier coefficients.
+
+*Makes the theorem clean to state or prove.* MSC 42B10 (Fourier and Fourier-Stieltjes transforms and other transforms of Fourier type), 42B05. arXiv math.CA. Level 4: research.
+
+**Definition.** A full-rank lattice consists of the integer combinations of a basis of Euclidean space. Its dual consists of frequencies whose exponential waves have every lattice vector as a period. The dual is a spectrum for a set when these waves form an orthogonal basis for square-integrable functions there. The set tiles by the lattice when its translates cover almost every point exactly once.
+
+**Problem.** A measurable set of finite positive volume tiles by a lattice exactly when its dual lattice is a spectrum.
+
+**How the definition helps.** Our own proof uses the dual frequencies because they read the overlap count on one lattice cell as a Fourier series. Orthogonality makes every nonconstant coefficient vanish, so the count is constant almost everywhere. Completeness rules out multiple coverage because periodic waves take identical values on overlapping copies. Conversely, a tile gives one representative per point of the cell almost everywhere, so the cell’s Fourier basis transfers to the tile.
+
+**Paper or page:** [Orthogonal Fourier Analysis on Domains](https://arxiv.org/abs/2408.15361v3). It says: “Then E tiles ℝᵈ when translated by the lattice L if and only if the dual lattice L\* of L is a spectrum of E.”
+
+**Sources:**
+
+- [Bent Fuglede, Commuting self-adjoint partial differential operators and a group theoretic problem (1974)](https://doi.org/10.1016/0022-1236(74)90072-x)
+
 ### Weak porosity is exactly what makes a distance weight an A₁ weight
 
 **Remember:** Enough room in the holes, and the distance weight stays averaged.
@@ -593,6 +871,60 @@
 
 - [Theresa C. Anderson, Juha Lehrbäck, Carlos Mudarra, Antti V. Vähäkangas, Weakly porous sets and Muckenhoupt Aₚ distance functions, arXiv:2209.06284 (2022)](https://arxiv.org/abs/2209.06284v2)
 
+### Gaussian modulation norms survive Fourier transformation
+
+**Remember:** Fourier rotation preserves a common exponent and a self-transforming window.
+
+*True by definition.* MSC 42B35 (Function spaces arising in harmonic analysis), 42A38. arXiv math.CA. Level 4: research.
+
+**Definition.** Use the Fourier transform with waves exp(−2πix·ξ), and take the window g(x) = exp(−π\|x\|²). Multiply the signal by each translated window and take the Fourier transform of each product. Define the modulation norm as one Lᵖ norm over all positions and frequencies together.
+
+**Problem.** Fourier transformation preserves this norm for 1 ≤ p ≤ ∞ on Schwartz functions. These smooth functions and all their derivatives decay faster than every inverse power.
+
+**How the definition helps.** Our own proof uses a Gaussian because Fourier transformation leaves this window unchanged. The cited transform identity exchanges position and frequency, reverses one sign, and introduces a factor of magnitude one. Our own calculation now uses invariance of one integral norm under that change of variables. With separate position and frequency exponents, exchanging the axes need not preserve the norm.
+
+**Paper or page:** [Time-Frequency Analysis (Lecture Notes)](https://arxiv.org/abs/2204.01596v1), [Time-Frequency Analysis (Lecture Notes)](https://arxiv.org/abs/2204.01596v1). It says: “If p = q, then Mᵖ˒ᑫ(ℝᵈ) is invariant under the Fourier transform.”
+
+**Sources:**
+
+- [Time-Frequency Analysis (Lecture Notes)](https://arxiv.org/abs/2204.01596v1)
+
+### Irrational angles determine signals up to phase
+
+**Remember:** Two reflections make a rotation, and an irrational rotation is dense.
+
+*Rules out counterexamples.* MSC 42C15 (General harmonic expansions, frames), 42A38. arXiv math.CA. Level 4: research.
+
+**Definition.** For a signal on the line, multiply by a translate of the Gaussian exp(−πx²) and take the Fourier transform with waves exp(−2πixξ). Record the magnitude on two lines in the position and frequency plane. Take the horizontal axis as the first line and choose the second at an irrational multiple of π.
+
+**Problem.** Two square-integrable signals with identical measurements differ only by a constant factor of magnitude one. This can fail at rational multiples of π.
+
+**How the definition helps.** In our own proof, reflecting across the two measurement lines gives a rotation whose powers are dense among all rotations. The Bargmann transform represents each signal by a function analytic on the complex plane and converts the measurements to magnitudes with a known factor. If either transform vanishes identically, agreement on a line forces both to vanish. Otherwise reflection across either line sends the quotient of the transforms to its conjugate reciprocal, wherever defined. Composing the reflections leaves the quotient invariant, forcing it to be constant with magnitude one. At angle π/m for a positive integer m, the polynomials zᵐ + i and zᵐ − i give our own counterexample through the Bargmann correspondence.
+
+**Paper or page:** [Phase retrieval of entire functions and its implications for Gabor phase retrieval](https://arxiv.org/abs/2202.03733v5). It says: “Then, there exists an α ∈ ℝ such that f = eⁱᵅ g.”
+
+**Sources:**
+
+- [Phase retrieval of entire functions and its implications for Gabor phase retrieval](https://arxiv.org/abs/2202.03733v5)
+
+### Metaplectic operators preserve Gabor frame bounds
+
+**Remember:** Transform the window and the grid together to keep the bounds.
+
+*True by definition.* MSC 42C15 (General harmonic expansions, frames). arXiv math.CA. Level 4: research.
+
+**Definition.** A Gabor frame measures a signal by pairing it with translated and frequency-shifted copies of a window on a grid. Frame bounds compare the sum of squared measurements with the squared signal norm from above and below. A symplectic map is a linear change of position and frequency that preserves the pairing x·η − y·ξ of points (x,ξ) and (y,η). A metaplectic operator implements such a map by carrying each window shift to the corresponding transformed shift, up to phase.
+
+**Problem.** Applying a metaplectic operator to the window and its symplectic map to the grid preserves both frame bounds.
+
+**How the definition helps.** Our own proof uses the defining shift identity to identify every new frame vector with a unitary image, up to phase. Taking absolute values removes the phase. Moving the unitary operator across the inner product then gives the old bounds for a signal of equal norm. The construction of a unitary implementing each symplectic map carries the work. This avoids estimating the transformed measurements one by one.
+
+**Paper or page:** [Time-Frequency Analysis (Lecture Notes)](https://arxiv.org/abs/2204.01596v1), [Time-Frequency Analysis (Lecture Notes)](https://arxiv.org/abs/2204.01596v1). It says: “In this case, both systems possess the same frame bounds.”
+
+**Sources:**
+
+- [Time-Frequency Analysis (Lecture Notes)](https://arxiv.org/abs/2204.01596v1)
+
 ### Frequency tiles give wavelet bases
 
 **Remember:** Scaling partitions the frequencies and folding supplies a basis within each tile.
@@ -610,3 +942,21 @@
 **Sources:**
 
 - [J. Liu and C. Zhang, A characterization of wavelet sets on Vilenkin groups with its application to construction of MRA wavelets (2024)](https://arxiv.org/abs/2405.04220v1)
+
+### Matching grids cancel wavelet moments
+
+**Remember:** Matching moments cancel when the fine grid subtracts the coarse grid.
+
+*True by definition.* MSC 42C40 (Nontrigonometric harmonic analysis involving wavelets and other special systems), 41A10. arXiv math.NA. Level 4: research.
+
+**Definition.** Start with n coarse Chebyshev nodes, the cosine images of equally spaced angle midpoints in \[0, π\]. The corresponding grid of 3n nodes includes every coarse node. At each new node, start with its fine-grid basis polynomial and subtract a linear combination of fine-grid basis polynomials at the coarse nodes. Use as coefficients the coarse interpolation basis evaluated at that new node.
+
+**Problem.** Fix an integer filter width m with 1 ≤ m &lt; n. Every resulting polynomial has zero integral against each monomial through degree n − m with weight 1/√(1 − x²) on (−1, 1).
+
+**How the definition helps.** Subtraction cancels the two contributions to each integral (our own). Each fine basis polynomial integrates against the monomial to the same constant times its value at the corresponding node (our own). Coarse interpolation reproduces the monomial at the new node, so the subtracted terms sum to the first contribution (our own). The work lies in proving these identities for the filtered interpolation bases (our own). This construction replaces separate equations for each vanishing integral (our own).
+
+**Paper or page:** [A free parameter depending family of polynomial wavelets on a compact interval](https://arxiv.org/abs/2503.12397v1). It says: “the first n − m moments of the interpolating wavelets ψₙ,ₖᵐ are zero”
+
+**Sources:**
+
+- [A free parameter depending family of polynomial wavelets on a compact interval](https://arxiv.org/abs/2503.12397v1)

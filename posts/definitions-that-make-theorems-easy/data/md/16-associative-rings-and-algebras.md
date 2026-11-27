@@ -301,6 +301,56 @@
 
 - [A. Facchini, D. Herbera, L. S. Levy and P. Vámos, Krull–Schmidt fails for Artinian modules, Proceedings of the American Mathematical Society 123 (1995) 3587](https://doi.org/10.1090/S0002-9939-1995-1277109-4)
 
+### Basic representatives are unique
+
+**Remember:** Keep one projective of each kind to recover one ring.
+
+*Rules out counterexamples.* MSC 16D90 (Module categories in associative algebras). arXiv math.RA. Level 3: graduate.
+
+**Definition.** A finite-dimensional algebra is basic if its regular right module decomposes into one copy of each indecomposable finitely generated projective, up to isomorphism. The regular right module is the algebra acting on itself by right multiplication. A projective module is a summand of a free module. Indecomposable means the module cannot split into two nonzero summands.
+
+**Problem.** Consider finite-dimensional algebras over a field whose module categories are equivalent by functors linear over that field. Each such equivalence class has exactly one basic algebra up to algebra isomorphism.
+
+**How the definition helps.** An equivalence must preserve the sum containing one representative of each kind of indecomposable finitely generated projective, in our own argument. For a basic algebra, this sum is its regular right module. Its endomorphism algebra recovers the algebra by left multiplication. Morita’s theorem gives existence by taking the endomorphism algebra of this sum. Uniqueness of indecomposable decompositions justifies choosing the summands. Without the basic condition, a field and its two-by-two matrix algebra give different representatives.
+
+**Wikipedia:** [Morita equivalence](https://en.wikipedia.org/wiki/Morita_equivalence). It says: “While isomorphic rings are Morita equivalent, Morita equivalent rings can be nonisomorphic.”
+
+**Paper or page:** [Rickard's Derived Morita Theory: Review and Outlook](https://arxiv.org/abs/2509.06369v1). It says: “the regular representation of B is a direct summand of a finite direct sum of copies of P.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Full corners recover modules
+
+**Remember:** A full corner still sees the whole ring.
+
+*Rules out counterexamples.* MSC 16D90 (Module categories in associative algebras). arXiv math.RA. Level 3: graduate.
+
+**Definition.** An idempotent e satisfies e² = e. It is full if all finite sums of products aeb fill the ring, or equivalently if such a sum equals 1.
+
+**Problem.** Let R be a ring with identity and e a full idempotent. Its corner eRe has identity e. Sending each right R-module M to Me gives an equivalence of module categories, called a Morita equivalence.
+
+**How the definition helps.** Fullness makes R a direct summand of a finite sum of copies of eR. Indeed, write 1 as a sum of products aeb to construct the inclusion and retraction, in our own argument. Morita’s theorem now applies because eR itself is a direct summand of R. In our own counterexample, take e = (1, 0) in k × k. Then Me vanishes for every module supported on the second factor.
+
+**Paper or page:** [Rickard's Derived Morita Theory: Review and Outlook](https://arxiv.org/abs/2509.06369v1), [On compatibility of Koszul- and higher preprojective gradings](https://arxiv.org/abs/2411.13283v3). It says: “is a graded basic algebra and Morita equivalent to R.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Module centers survive equivalence
+
+**Remember:** The center acts on every module in the same way.
+
+*True by definition.* MSC 16D90 (Module categories in associative algebras). arXiv math.RA. Level 3: graduate.
+
+**Definition.** The center of a module category is the ring of natural endomorphisms of its identity functor. A natural endomorphism assigns a module map to each module and commutes with all module maps.
+
+**Problem.** Rings with equivalent module categories have isomorphic centers.
+
+**How the definition helps.** An equivalence transports families of maps that commute with every module map, so it transports the category center. The work lies in identifying this ring with the usual ring center. In our own proof, naturality on the free module of rank one forces its assigned map to multiply by a central element. Maps from that module to each other module determine the whole family.
+
+**nLab:** [Morita equivalence](https://ncatlab.org/nlab/show/Morita+equivalence). It says: “the center of an algebra is isomorphic to the center of its category of modules and that Morita equivalent algebras have isomorphic centers.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Ring properties defined through modules are automatically Morita invariant
 
 **Remember:** Say it with modules, and Morita equivalence keeps it.
@@ -316,6 +366,58 @@
 **Wikipedia:** [Morita equivalence](https://en.wikipedia.org/wiki/Morita_equivalence). It says: “Generally speaking, any property of modules defined purely in terms of modules and their homomorphisms (and not to their underlying elements or ring) is a categorical property which will be preserved by the equivalence functor.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Tensor products compose functors
+
+**Remember:** Compose tensor functors by tensoring their bimodules.
+
+*True by definition.* MSC 16D90 (Module categories in associative algebras). arXiv math.RA. Level 3: graduate.
+
+**Definition.** A bimodule has commuting left and right ring actions. Tensoring right modules with a fixed bimodule defines a functor between right module categories. Equivalently, such functors are the additive functors preserving arbitrary direct sums and cokernels, up to natural isomorphism. The cokernel of a map is its target modulo its image.
+
+**Problem.** The composite of two such functors is represented by the tensor product of their representing bimodules over the middle ring.
+
+**How the definition helps.** The tensor description makes composition just associativity of tensor products, in our own argument. The Eilenberg–Watts theorem carries the work of showing that every such functor is of this form. In our own explanation, its value on the ring as a module over itself gives the bimodule. Presentations by free modules extend the formula to every module, in our own explanation.
+
+**nLab:** [Eilenberg-Watts theorem](https://ncatlab.org/nlab/show/Eilenberg-Watts+theorem). It says: “The Eilenberg-Watts theorem identifies colimit-preserving functors between categories of modules with the operations of forming tensor products with bimodules.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Perfect complexes survive equivalence
+
+**Remember:** Perfect complexes are the ones that see sums one piece at a time.
+
+*True by definition.* MSC 16E35 (Derived categories and associative algebras). arXiv math.RA. Level 3: graduate.
+
+**Definition.** In the derived category, maps of complexes that induce isomorphisms on cohomology become invertible. A perfect complex there has a bounded representative whose terms are summands of finite free modules. Equivalently, it is compact, meaning every map from it to a direct sum factors through a finite subsum.
+
+**Problem.** An equivalence between the unbounded derived categories of two rings restricts to an equivalence between their perfect complexes.
+
+**How the definition helps.** An equivalence preserves maps and direct sums, so it preserves compactness, in our own argument. The compact generator theorem identifies the compact objects from the ring placed in degree zero. Closing that object under shifts of degree, mapping cones and direct summands gives exactly the perfect complexes.
+
+**Paper or page:** [Rickard's Derived Morita Theory: Review and Outlook](https://arxiv.org/abs/2509.06369v1). It says: “the full subcategory of T spanned by the compact objects coincides with its smallest idempotent complete triangulated subcategory which contains G.”
+
+**Sources:**
+
+- [Amnon Neeman, The Grothendieck duality theorem via Bousfield’s techniques and Brown representability](https://doi.org/10.1090/s0894-0347-96-00174-9)
+
+### Tilting complexes detect equivalence
+
+**Remember:** Replace a projective generator with a generator that can stretch across degrees.
+
+*Makes the theorem clean to state or prove.* MSC 16E35 (Derived categories and associative algebras). arXiv math.RA. Level 3: graduate.
+
+**Definition.** A tilting complex T is a bounded complex of right modules whose terms are summands of finite free modules. In the derived category, maps inducing cohomology isomorphisms become invertible. There are no nonzero maps from T to any nonzero degree shift of T there. Shifts, mapping cones and direct summands of objects already obtained must generate all bounded complexes of finitely generated projective modules.
+
+**Problem.** Take two algebras over a field. Their unbounded derived module categories admit a field-linear equivalence preserving shifts and exact triangles precisely under the following condition. One algebra is the endomorphism algebra, computed in the derived category, of a tilting complex over the other.
+
+**How the definition helps.** The complex lets one test an equivalence by examining a single generator and its shifts, in our own explanation. A derived equivalence carries the regular module to such a complex, in our own explanation. Rickard's theorem does the work in the other direction, realizing the endomorphisms and constructing the equivalence.
+
+**Paper or page:** [Rickard's Derived Morita Theory: Review and Outlook](https://arxiv.org/abs/2509.06369v1). It says: “the regular representation of B can be obtained from T and its shifts by forming extensions and taking direct summands.”
+
+**Sources:**
+
+- [Jeremy Rickard, Morita Theory for Derived Categories](https://doi.org/10.1112/jlms/s2-39.3.436)
 
 ### Pseudo-inverses make commutative von Neumann regular rings a variety
 
@@ -372,6 +474,78 @@
 
 - [Gabriel, P. (1972). Unzerlegbare Darstellungen I. manuscripta mathematica 6.](https://doi.org/10.1007/BF01298413)
 
+### Minimal almost split maps are unique
+
+**Remember:** Factorization finds the map, and minimality prevents spare summands.
+
+*Rules out counterexamples.* MSC 16G70 (Auslander-Reiten sequences (almost split sequences) and Auslander-Reiten quivers). arXiv math.RT. Level 3: graduate.
+
+**Definition.** A map to an indecomposable module is right almost split if it satisfies two conditions. It has no right inverse, and every map without a right inverse to that module factors through it. It is right minimal if every endomorphism of its source that leaves the map unchanged is invertible.
+
+**Problem.** Two minimal right almost split maps to the same finite-dimensional module differ only by an isomorphism of sources.
+
+**How the definition helps.** Minimality makes both composites of comparison maps invertible, in our own proof. Each almost split map factors through the other, so the composites leave the respective maps unchanged. Thus either comparison gives an isomorphism between the sources. In our own counterexample, start with the quotient k\[x\]/(x²) → k of modules over k\[x\]/(x²). Add a second copy of the source and send it to zero. The enlarged map still has the factorization property, but the sources have different dimensions.
+
+**Wikipedia:** [Auslander–Reiten theory](https://en.wikipedia.org/wiki/Auslander%E2%80%93Reiten_theory). It says: “there is an almost-split sequence as above, which is unique up to isomorphism.”
+
+**Paper or page:** [Largest exact structures and almost split sequences on hearts of twin cotorsion pairs](https://arxiv.org/abs/2306.06616v3). It says: “x is minimal left almost split (resp. y is minimal right almost split).”
+
+**Sources:**
+
+- [Maurice Auslander, A functorial approach to representation theory](https://doi.org/10.1007/bfb0094058)
+
+### Azumaya algebras survive base change
+
+**Remember:** Extend the multiplication map along with the algebra.
+
+*True by definition.* MSC 16H05 (Separable algebras (e.g., quaternion algebras, Azumaya algebras, etc.)). arXiv math.RA. Level 3: graduate.
+
+**Definition.** An Azumaya algebra A over a commutative ring R is a direct summand of a finite free R-module, with positive rank at every prime. Write Aᵒᵖ for the algebra with multiplication reversed. Form the tensor product of A and Aᵒᵖ over R. Sending a ⊗ b to the map x ↦ axb must identify this product with all R-linear endomorphisms of A.
+
+**Problem.** Any change of commutative base ring takes Azumaya algebras to Azumaya algebras.
+
+**How the definition helps.** Tensoring the multiplication isomorphism with the new ring gives the required isomorphism there, in our own argument. Endomorphisms commute with scalar extension for summands of finite free modules. Positive rank persists because each new prime lies over an old prime with the same fiber dimension. An equivalent test asks that the algebra become a matrix algebra locally after a faithfully flat extension of scalars. The Azumaya criterion connects that test to the multiplication isomorphism.
+
+**nLab:** [Azumaya algebra](https://ncatlab.org/nlab/show/Azumaya+algebra). It says: “As a left R-module, A finitely generated, faithful and projective”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Bimodule projectivity kills higher cohomology
+
+**Remember:** A projective input has no higher extensions.
+
+*True by definition.* MSC 16H05 (Separable algebras (e.g., quaternion algebras, Azumaya algebras, etc.)), 16E40. arXiv math.RA. Level 3: graduate.
+
+**Definition.** A bimodule has commuting left and right algebra actions. An algebra over a field is separable if every surjective bimodule map onto the algebra has a bimodule section. This says the algebra is projective as a bimodule. For finite-dimensional algebras, an equivalent test asks whether every scalar extension is a product of matrix algebras over division algebras.
+
+**Problem.** A separable algebra has zero Hochschild cohomology in every positive degree with any bimodule coefficients. This cohomology measures extensions out of the algebra as a bimodule.
+
+**How the definition helps.** With projectivity as the definition, higher extensions out of the algebra vanish, in our own argument. The work goes into identifying Hochschild cohomology with those extensions and proving the equivalence with semisimplicity after scalar extension.
+
+**nLab:** [separable algebra](https://ncatlab.org/nlab/show/separable+algebra). It says: “Third, a k-algebra A is separable if and only if it is projective when considered as a left module of Aᵉ in the usual way.”
+
+**Sources:**
+
+- [Gerhard Hochschild, On the Cohomology Groups of an Associative Algebra](https://doi.org/10.2307/1969145)
+
+### Separability preserves semisimplicity
+
+**Remember:** Check the centers before trusting semisimplicity over a larger field.
+
+*Rules out counterexamples.* MSC 16H05 (Separable algebras (e.g., quaternion algebras, Azumaya algebras, etc.)). arXiv math.RA. Level 3: graduate.
+
+**Definition.** A finite-dimensional semisimple algebra is a product of matrix algebras over division algebras. It is separable over k if each factor’s center is a separable field extension of k. This means the minimal polynomial of each element of the center has distinct roots.
+
+**Problem.** A finite-dimensional separable algebra stays semisimple after every extension of the base field.
+
+**How the definition helps.** Separability ensures that each center stays a product of fields after any scalar extension. Each corresponding algebra factor stays central simple over its new center by the scalar extension theorem. For our own counterexample, take k = 𝔽ₚ(t) and let L be the field obtained by adjoining a pth root of t. In L ⊗ₖ L the two copies of that root have nonzero difference with pth power zero. This commutative algebra cannot be a product of fields.
+
+**nLab:** [separable algebra](https://ncatlab.org/nlab/show/separable+algebra). It says: “separable algebras are the same as finite products of matrix algebras over finite-dimensional division algebras whose centers are finite-dimensional separable field extensions of the field k.”
+
+**Paper or page:** [Stacks Project, Brauer, Lemma 11.4.9.](https://stacks.math.columbia.edu/tag/074H). It says: “Then A′ = A ⊗ₖ k′ is a finite central simple algebra over k′.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Brauer equivalence gives central simple algebras inverses
 
 **Remember:** Forget the matrix size, and every algebra has an inverse.
@@ -389,6 +563,56 @@
 **Sources:**
 
 - [Richard Brauer, Helmut Hasse and Emmy Noether, Beweis eines Hauptsatzes in der Theorie der Algebren, Journal für die reine und angewandte Mathematik 167 (1932)](https://doi.org/10.1515/crll.1932.167.399)
+
+### Centrality preserves simplicity
+
+**Remember:** Fix the center before extending the field.
+
+*Rules out counterexamples.* MSC 16K50 (Brauer groups (algebraic aspects)). arXiv math.RA. Level 3: graduate.
+
+**Definition.** A central simple algebra over a field k has center k and no proper nonzero two-sided ideals. Here we require finite dimension over k.
+
+**Problem.** A finite central simple algebra stays central simple after any field extension.
+
+**How the definition helps.** Fixing the center excludes field extensions that split into several factors after a change of scalars. In our own example, ℂ is simple over ℝ, but ℂ ⊗ℝ ℂ is isomorphic to ℂ × ℂ. The splitting theorem gives a full matrix algebra over an algebraic closure of the new field. In our own argument, a proper nonzero ideal would remain proper and nonzero there. Likewise, a center larger than the new field would give more than scalar matrices in the center there.
+
+**Paper or page:** [Stacks Project, Brauer, Lemma 11.4.9.](https://stacks.math.columbia.edu/tag/074H), [Stacks Project, Brauer, Lemma 11.8.6.](https://stacks.math.columbia.edu/tag/0753). It says: “Then A′ = A ⊗ₖ k′ is a finite central simple algebra over k′.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Division representatives minimize splitting degrees
+
+**Remember:** Remove the matrix factor to find the smallest splitting degree.
+
+*Makes the theorem clean to state or prove.* MSC 16K50 (Brauer groups (algebraic aspects)). arXiv math.RA. Level 3: graduate.
+
+**Definition.** Consider finite-dimensional simple algebras with center k, where k is a field. Two belong to the same Brauer class if they are matrix algebras over the same division algebra D, up to isomorphism. A division algebra allows division by every nonzero element. The index of the class is the square root of the dimension of D over k.
+
+**Problem.** A splitting field is an extension over which the algebra becomes a full matrix algebra. The index is the least degree of a finite splitting field and divides every such degree.
+
+**How the definition helps.** Discarding the matrix size gives one number for all representatives of the class. A maximal subfield of D splits D and has degree equal to its index. Every finite splitting field has degree divisible by that index. In our own example, two-by-two matrices already split over k, so their matrix size cannot give the least splitting degree.
+
+**Paper or page:** [Stacks Project, Brauer, Lemma 11.5.1.](https://stacks.math.columbia.edu/tag/074K), [Stacks Project, Brauer, Lemma 11.8.3.](https://stacks.math.columbia.edu/tag/0750), [Stacks Project, Brauer, Lemma 11.8.4.](https://stacks.math.columbia.edu/tag/0751), [Stacks Project, Brauer, Proposition 11.8.5.](https://stacks.math.columbia.edu/tag/0752). It says: “For any finite splitting field k′ for K the degree \[k′ : k\] is divisible by d.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Reduced norms multiply
+
+**Remember:** Split first and take the determinant at the smaller matrix size.
+
+*True by definition.* MSC 16K50 (Brauer groups (algebraic aspects)). arXiv math.RA. Level 3: graduate.
+
+**Definition.** Take a finite-dimensional simple algebra with center equal to its base field. A splitting field turns it into a full matrix algebra by scalar extension. The reduced norm of an element is the determinant of its matrix there.
+
+**Problem.** The reduced norm of a product is the product of the reduced norms.
+
+**How the definition helps.** Over a splitting field, multiplicativity becomes the usual determinant rule, in our own argument. The work is showing that this determinant gives an element of the base field independent of the matrix representation. The intrinsic construction uses the characteristic polynomial of left multiplication. For split matrices of size r, this polynomial is the rth power of the matrix characteristic polynomial. The unique monic rth root therefore recovers the determinant as its constant term times (−1)ʳ.
+
+**Paper or page:** [Constructive basic theory of central simple algebras](https://arxiv.org/abs/2102.12775v2). It says: “The coefficient sᵣ, denoted by Nrd(a), is called the reduced norm of a (over F).”
+
+**Sources:**
+
+- [Constructive basic theory of central simple algebras, Proposition 4.9](https://arxiv.org/abs/2102.12775v2)
 
 ### Noncommutative local rings use maximal left ideals, so non-units form an ideal
 
@@ -424,6 +648,24 @@
 
 - [Hyman Bass, Finitistic dimension and a homological generalization of semi-primary rings (1960).](https://doi.org/10.1090/s0002-9947-1960-0157984-8)
 
+### Self-injectivity reverses syzygy
+
+**Remember:** Kernels and cokernels reverse each other once projectives disappear.
+
+*Rules out counterexamples.* MSC 16L60 (Quasi-Frobenius rings). arXiv math.RT, math.RA. Level 3: graduate.
+
+**Definition.** A projective module is a summand of a free module. An injective module allows maps into it to extend from any submodule to the whole module. A finite-dimensional algebra is self-injective if its regular module is injective. In its stable category of finite-dimensional modules, two maps agree when their difference factors through a projective module.
+
+**Problem.** For a finite-dimensional self-injective algebra, taking the kernel of a projective surjection defines an equivalence of the stable module category with itself. This kernel is called a syzygy.
+
+**How the definition helps.** Self-injectivity makes the projective and injective modules coincide, so embeddings supply an inverse to taking kernels, in our own explanation. Embed a module into an injective module and take the quotient. The stable category theorem proves that the two constructions undo each other there. For our own counterexample, use representations of the arrow 1 → 2. The simple representation at 1 is nonprojective, but its projective cover has projective kernel, which becomes zero in the stable category.
+
+**nLab:** [Frobenius category](https://ncatlab.org/nlab/show/Frobenius+category). It says: “The stable category of a Frobenius category is canonically a triangulated category.”
+
+**Sources:**
+
+- [Dieter Happel, Triangulated Categories in the Representation Theory of Finite Dimensional Algebras](https://doi.org/10.1017/cbo9780511629228)
+
 ### Splitting multiplication by the Frobenius coproduct makes special Frobenius algebras separable
 
 **Remember:** The coproduct already is the section that separability asks for.
@@ -437,6 +679,22 @@
 **How the definition helps.** With separability defined by a bimodule section, the claim is immediate, since a multiple of Δ is that section (our own). The Frobenius laws say exactly that Δ respects both actions. The work moves into two other theorems. One builds Δ from a nondegenerate form and its inverse tensor. The other shows that a bimodule section of m is equivalent to semisimplicity after every field extension (our own summary). The special condition is a real restriction. For A = k\[x\]/(x²), m ∘ Δ is multiplication by 2x, which is never invertible (our own).
 
 **nLab:** [Frobenius algebra](https://ncatlab.org/nlab/show/Frobenius+algebra). It says: “the main point is to require that the product is the left inverse to the coproduct”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Radical quotients preserve simple modules
+
+**Remember:** Remove only elements that all simple modules already ignore.
+
+*True by definition.* MSC 16N20 (Jacobson radical, quasimultiplication). arXiv math.RA. Level 3: graduate.
+
+**Definition.** The Jacobson radical of a ring with identity consists of the elements acting as zero on every simple left module. A simple module is nonzero and has no proper nonzero submodule. Equivalently, the radical is the intersection of all maximal left ideals.
+
+**Problem.** A ring and its quotient by the Jacobson radical have the same simple modules under restriction. In particular, the quotient has zero Jacobson radical.
+
+**How the definition helps.** Every simple action already kills the radical, so it factors through the quotient, in our own explanation. The work goes into showing that the maximal left ideal description gives the same ideal. In our own proof, use a nonzero vector of a simple module to present it as a quotient of the regular module.
+
+**nLab:** [Jacobson radical](https://ncatlab.org/nlab/show/Jacobson+radical). It says: “Given any ring R, the quotient R/J(R) is semiprimitive.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -577,6 +835,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Linear resolutions invert Hilbert series
+
+**Remember:** Matching degrees turn the resolution into a signed inverse series.
+
+*True by definition.* MSC 16S37 (Quadratic and Koszul algebras). arXiv math.RA, math.RT. Level 3: graduate.
+
+**Definition.** A connected graded algebra A has nonnegative degrees and consists of scalars in degree zero. Killing all positive degrees gives the base field k as an A-module. The algebra is Koszul if k has a graded free resolution whose term in position n has all its generators in degree n. A resolution is an exact sequence of free modules ending in k.
+
+**Problem.** Let A be Koszul with finite-dimensional graded pieces, and let B be its quadratic dual. This dual uses the dual degree-one generators and the degree-two relations that annihilate the original relation space under tensor pairing. The Hilbert series, which record dimensions by degree, satisfy Hₐ(t)Hᵦ(−t) = 1.
+
+**How the definition helps.** The matching degrees turn exactness into the inverse-series identity, in our own calculation. The quadratic description builds a complex from the degree-one generators and degree-two relations. Its term in position n has as many free generators as the dimension of degree n in B. The Koszul criterion identifies exactness of this complex with existence of the linear resolution. Taking alternating dimensions in each degree now gives the formula.
+
+**nLab:** [Koszul algebra](https://ncatlab.org/nlab/show/Koszul+algebra). It says: “has a projective resolution where the ith term is generated in grade i.”
+
+**Sources:**
+
+- [Stewart Priddy, Koszul resolutions](https://doi.org/10.1090/s0002-9947-1970-0265437-8)
+
 ### Adjoining an identity makes every rng an ideal of a ring
 
 **Remember:** Add a formal 1 to any rng, and it becomes an ideal.
@@ -612,6 +888,22 @@
 **Sources:**
 
 - [Øystein Ore, Linear equations in non-commutative fields, Annals of Mathematics 32 (1931) 463–477](https://doi.org/10.2307/1968245)
+
+### Torsion classes form lattices
+
+**Remember:** Intersection keeps the closure rules, and generated closure gives joins.
+
+*True by definition.* MSC 16S90 (Torsion theories; radicals on module categories (associative algebraic aspects)). arXiv math.RT, math.RA. Level 3: graduate.
+
+**Definition.** Consider finite-dimensional modules over a finite-dimensional algebra. A torsion class contains zero and contains every quotient of each member. It also contains any module having a submodule and corresponding quotient both in the class. Equivalently, it forms the torsion half of a torsion pair.
+
+**Problem.** Ordered by inclusion, the torsion classes form a complete lattice. Every family has a greatest lower bound and a least upper bound.
+
+**How the definition helps.** The two closure rules survive arbitrary intersections, giving the greatest lower bound directly. In our own argument, intersect all torsion classes containing the given family to obtain its least upper bound. The equivalence with torsion pairs uses each module’s largest submodule in the class. Its quotient receives only zero maps from members of the class.
+
+**Paper or page:** [τ-tilting theory -- An introduction](https://arxiv.org/abs/2106.00426v3), [τ-tilting theory -- An introduction](https://arxiv.org/abs/2106.00426v3). It says: “Then the intersection of arbitrarily many torsion classes is a torsion class.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Convolution-inverse antipodes exist in connected graded bialgebras by geometric series
 
@@ -697,6 +989,38 @@
 
 - [Douglas C. Ravenel, Complex Cobordism and Stable Homotopy Groups of Spheres, 2nd edition, AMS Chelsea (2004), Appendix A1](https://doi.org/10.1090/chel/347)
 
+### Hopf ideals let all operations descend
+
+**Remember:** Every structure map must pass through the quotient.
+
+*Rules out counterexamples.* MSC 16T05 (Hopf algebras and their applications). arXiv math.RA. Level 3: graduate.
+
+**Definition.** A Hopf algebra has a coproduct Δ into its tensor square, a counit to scalars, and an antipode playing the role of inversion. A Hopf ideal I is a two-sided ideal killed by the counit and preserved by the antipode. Each Δ(x) for x in I must be a sum of tensors having at least one factor in I.
+
+**Problem.** Quotienting a Hopf algebra by a Hopf ideal gives a Hopf algebra with the induced operations.
+
+**How the definition helps.** The extra conditions make every operation descend, so the identities descend, in our own explanation. Our own counterexample is the ideal generated by g − 2 in the rational group algebra of an infinite cyclic group. The counit sends g to 1, so it cannot factor through that quotient. The work in applying the theorem goes into checking the coideal and antipode conditions, in our own explanation.
+
+**nLab:** [quotient bialgebra](https://ncatlab.org/nlab/show/quotient+bialgebra). It says: “A Hopf ideal is a bialgebra ideal which is invariant under the antipode map.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Normal Hopf subalgebras give quotients
+
+**Remember:** Conjugation stability turns a one-sided ideal into a quotient.
+
+*Rules out counterexamples.* MSC 16T05 (Hopf algebras and their applications). arXiv math.RA. Level 3: graduate.
+
+**Definition.** In a Hopf algebra H the coproduct writes Δ(h) as a sum of tensors a ⊗ b, and the antipode S generalizes inversion. A Hopf subalgebra K is normal if both adjoint actions preserve it. For h in H and x in K, this requires both sums ∑ axS(b) and ∑ S(a)xb to belong to K.
+
+**Problem.** For normal K, the kernel of its counit, the map to scalars, generates the same left and right ideal in H. The quotient by this ideal inherits all the Hopf algebra operations.
+
+**How the definition helps.** The two adjoint actions let generators pass from one side of the ideal to the other, in our own explanation. The normality theorem identifies the common ideal as a Hopf ideal, so all operations descend. In our own counterexample, take the rational group algebra of the permutation group on three letters. Use the subalgebra spanned by the subgroup generated by (12). The left ideal generated by (12) − 1 identifies permutations in the same left coset. Right multiplication fails to preserve this identification because the subgroup is not normal.
+
+**Paper or page:** [Locally Frobenius algebras and Hopf algebras](https://arxiv.org/abs/2212.00437v3). It says: “Then HK⁺ = K⁺H and this is a Hopf ideal in H”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The Hopf algebra axioms are what make modules rigid monoidal
 
 **Remember:** Comultiplication gives tensor products of modules; the antipode gives their duals.
@@ -714,6 +1038,22 @@
 **Sources:**
 
 - [K.-H. Ulbrich, On Hopf algebras and rigid monoidal categories, Israel J. Math. 72 (1990) 252–256](https://doi.org/10.1007/BF02764622)
+
+### Triangular swaps cancel
+
+**Remember:** A second swap must undo the first one.
+
+*Rules out counterexamples.* MSC 16T05 (Hopf algebras and their applications). arXiv math.RA. Level 3: graduate.
+
+**Definition.** A quasitriangular Hopf algebra has an invertible tensor R that gives consistent swaps on tensor products of modules. It is triangular if exchanging the two tensor factors of R gives R⁻¹.
+
+**Problem.** Swapping two modules over a triangular Hopf algebra and then swapping them back gives the identity map. This property makes the module braiding symmetric.
+
+**How the definition helps.** The second swap uses the flipped tensor, so triangularity makes its action cancel the first, in our own argument. The correspondence between quasitriangular tensors and coherent swaps supplies the module braiding. For our own counterexample, use complex representations of the cyclic group of order three. Label character spaces by integers modulo three and choose a primitive cube root ω. On spaces labeled a and b, multiply the ordinary swap by ω raised to the power ab. Bilinearity of ab gives coherent swaps, but two swaps on labels 1 and 1 multiply by ω².
+
+**nLab:** [triangular Hopf algebra](https://ncatlab.org/nlab/show/triangular+Hopf+algebra). It says: “a braided monoidal category/symmetric monoidal category”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Writing Hopf axioms as maps makes the finite dual Hopf
 
@@ -746,6 +1086,24 @@
 **nLab:** [dual bialgebra](https://ncatlab.org/nlab/show/dual+bialgebra). It says: “This subspace is consequently a coalgebra”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Strong gradings recover modules
+
+**Remember:** Products with inverse degrees must generate the identity.
+
+*Rules out counterexamples.* MSC 16W50 (Graded rings and modules (associative rings and algebras)). arXiv math.RA. Level 3: graduate.
+
+**Definition.** A group grading decomposes a ring into additive pieces indexed by group elements. Products from degrees g and h must lie in degree gh. The grading is strong if finite sums of such products fill the piece of degree gh.
+
+**Problem.** For a strongly graded unital ring, taking the identity-degree part gives an equivalence from graded right modules to modules over the identity-degree subring. Tensoring with the whole ring gives the inverse.
+
+**How the definition helps.** Strong grading expresses 1 as a sum of products from any degree and its inverse, in our own explanation. These expressions give the inverse to the map sending m ⊗ r to mr in Dade’s theorem. In our own counterexample, grade k\[x\] by polynomial degree and place the module k\[x\]/(x) entirely in degree one. Taking its degree-zero part loses the whole module.
+
+**Paper or page:** [Classification conjectures for Leavitt path algebras](https://arxiv.org/abs/2401.04262v3). It says: “The following are equivalent. (1) R is strongly graded”
+
+**Sources:**
+
+- [Everett Dade, Group-graded rings and modules](https://doi.org/10.1007/bf01161413)
 
 ### Ring completion as a left adjoint preserves pushouts of semirings
 
@@ -798,6 +1156,38 @@
 **Sources:**
 
 - [Alex Martsinkovsky, The defect, the Malgrange functor, and linear control systems, arXiv:2403.13520 (2024)](https://arxiv.org/abs/2403.13520v1)
+
+### Green sequences filter modules
+
+**Remember:** Each jump adds the next kind of filtration factor.
+
+*Makes the theorem clean to state or prove.* MSC 16G10 (Representations of associative Artinian rings). arXiv math.RT, math.RA. Level 4: research.
+
+**Definition.** Work with finite-dimensional modules over a finite-dimensional algebra. A torsion class contains zero and is closed under quotients and extensions. A maximal green sequence is a finite increasing chain from the zero torsion class to all modules. No torsion class lies strictly between consecutive terms.
+
+**Problem.** Fix a maximal green sequence and label each step by its brick, a module whose nonzero endomorphisms are invertible. Every nonzero module has a filtration whose successive quotients each have a filtration by copies of one step’s brick, in strictly increasing step order. This filtration is unique up to isomorphism.
+
+**How the definition helps.** The chain determines the cuts by taking the largest submodule in each torsion class, in our own explanation. Delete repeated submodules to get the filtration. The brick labeling theorem identifies the factors at each remaining step as successive extensions of copies of its brick.
+
+**Paper or page:** [τ-tilting theory -- An introduction](https://arxiv.org/abs/2106.00426v3), [τ-tilting theory -- An introduction](https://arxiv.org/abs/2106.00426v3). It says: “Moreover, this filtration is unique up-to-isomorphism.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Semibricks give simple objects
+
+**Remember:** Choose simple pieces that have no maps between them.
+
+*Makes the theorem clean to state or prove.* MSC 16G10 (Representations of associative Artinian rings). arXiv math.RT, math.RA. Level 4: research.
+
+**Definition.** Consider finite-dimensional modules over a finite-dimensional algebra. A brick is a nonzero module whose nonzero endomorphisms are all invertible. A semibrick is a set of isomorphism classes of bricks with no nonzero maps between different members. A wide subcategory contains all maps between its objects and is closed under kernels, cokernels and extensions.
+
+**Problem.** Sending each wide subcategory to its simple objects, up to isomorphism, gives a bijection with semibricks. The inverse takes all modules having a finite chain of submodules whose successive quotients belong to the semibrick.
+
+**How the definition helps.** The vanishing maps let distinct bricks serve as distinct simple objects, in our own explanation. In our own counterexample, the two indecomposable projectives for a single arrow are bricks with a nonzero map between them. They cannot both be simple objects in a wide subcategory. The theorem proves that modules filtered by a semibrick form a wide subcategory with exactly those simple objects.
+
+**Paper or page:** [τ-tilting theory -- An introduction](https://arxiv.org/abs/2106.00426v3). It says: “The map S(−): wide-A → sbrick-A is a bijection with inverse Filt(−): sbrick-A → wide-A.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Eventually constant roots extend Gabriel's theorem to infinite quivers
 
@@ -853,6 +1243,24 @@
 **Sources:**
 
 - [Nan Gao, Xue-Song Lu, Pu Zhang, Claus Michael Ringel's main contributions to Gorenstein-projective modules, arXiv:2505.12637 (2025)](https://arxiv.org/abs/2505.12637v1)
+
+### Tilting pairs include zero
+
+**Remember:** The projective complement marks where the torsion generator can vanish.
+
+*Rules out counterexamples.* MSC 16G70 (Auslander-Reiten sequences (almost split sequences) and Auslander-Reiten quivers). arXiv math.RT, math.RA. Level 4: research.
+
+**Definition.** Work with finite-dimensional modules over a finite-dimensional algebra. A τ-tilting pair consists of a module M and a projective module P, a summand of a free module. All maps from P to M and from M to its Auslander–Reiten translate τM must vanish. The total number of distinct indecomposable summands in the two modules must equal the number of simple module types.
+
+**Problem.** Basic pairs, with no repeated indecomposable summands, correspond to functorially finite torsion classes. These classes are closed under quotients and extensions and admit universal factorizations of maps to and from each module, without requiring unique factorizations. The class of a pair consists of quotients of finite sums of M.
+
+**How the definition helps.** The projective term counts missing summands without adding any quotients to the torsion class, in our own explanation. The translate τM comes from applying the ring dual to a minimal projective presentation of M, then taking the vector-space dual of its cokernel. In our own example, M = 0 gives the zero class. Taking one copy of each indecomposable projective for P then supplies the required count. The correspondence theorem proves that the class determines the basic pair.
+
+**Paper or page:** [τ-tilting theory -- An introduction](https://arxiv.org/abs/2106.00426v3), [τ-tilting theory -- An introduction](https://arxiv.org/abs/2106.00426v3). It says: “There are bijections between the sets τ-tp-A, ftors-A, fwide-A and fsbrick-A.”
+
+**Sources:**
+
+- [Takashi Adachi, Osamu Iyama and Idun Reiten, τ-tilting theory](https://doi.org/10.1112/s0010437x13007422)
 
 ### τ-rigid modules have no self-extensions by the Auslander–Reiten formula
 

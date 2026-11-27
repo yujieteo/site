@@ -236,6 +236,40 @@
 
 - [G. C. Debney, R. P. Kerr, and A. Schild (1969), Solutions of the Einstein and Einstein-Maxwell Equations](https://doi.org/10.1063/1.1664769)
 
+### Static symmetry excludes rotating Kerr
+
+**Remember:** Static means steady and without twist.
+
+*Rules out counterexamples.* MSC 83C20 (Classes of solutions; algebraically special solutions, metrics with symmetries for problems in general relativity and gravitational theory). arXiv gr-qc. Level 3: graduate.
+
+**Definition.** A spacetime is stationary on a region if a timelike vector field there generates local maps preserving the metric. It is static if it admits such a field perpendicular to a family of hypersurfaces filling the region. A timelike field points inside the light cone.
+
+**Problem.** A static metric admits local coordinates in which its coefficients are independent of time and all mixed time and space coefficients vanish. The rotating Kerr metric shows why stationarity alone does not suffice, even near spatial infinity.
+
+**How the definition helps.** The perpendicular hypersurfaces give the spatial coordinates a place to start (our own construction). Choose coordinates on one such slice and transport them by the symmetry flow. The flow preserves perpendicularity, so all mixed coefficients vanish. Assessing staticity requires testing whether the perpendicular planes fit together into slices.
+
+**Wikipedia:** [Static spacetime](https://en.wikipedia.org/wiki/Static_spacetime). It says: “Thus, the Kerr solution provides an example of a stationary spacetime that is not static”
+
+**Sources:**
+
+- [Kerr (1963), Gravitational Field of a Spinning Mass as an Example of Algebraically Special Metrics](https://doi.org/10.1103/physrevlett.11.237)
+
+### Vacuum twist has a potential
+
+**Remember:** In vacuum, twist is locally a gradient.
+
+*Makes the theorem clean to state or prove.* MSC 83C20 (Classes of solutions; algebraically special solutions, metrics with symmetries for problems in general relativity and gravitational theory). arXiv gr-qc, math-ph. Level 3: graduate.
+
+**Definition.** A stationary metric has a timelike vector field K whose flow preserves the metric. Pair K with the metric to obtain a one-form α. In four oriented dimensions its twist is the Hodge dual of α ∧ dα, where the metric and orientation identify three-forms with one-forms.
+
+**Problem.** If the Ricci tensor vanishes, the twist of K is locally the differential of a real function. A single such function exists on each simply connected region.
+
+**How the definition helps.** Expressing twist as a one-form turns the potential question into a test for a vanishing exterior derivative (our own explanation). The curvature identity for a symmetry field gives this derivative in terms of its pairing with the Ricci tensor. Hence the derivative vanishes under the hypothesis. The Poincaré lemma gives a local potential, and path integration gives a global potential on a simply connected region.
+
+**Wikipedia:** [Stationary spacetime](https://en.wikipedia.org/wiki/Stationary_spacetime). It says: “the twist 4-vector ωμ is curl-free”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Conformal rescaling extends flat spacetime to a finite diamond
 
 **Remember:** Compact coordinates bring infinity closer without tipping the light cones.
@@ -255,6 +289,24 @@
 **Sources:**
 
 - [Roger Penrose (1963), Asymptotic Properties of Fields and Space-Times](https://doi.org/10.1103/PhysRevLett.10.66)
+
+### Hawking energy ignores normal rescaling
+
+**Remember:** One light expansion gains what the other loses.
+
+*True by definition.* MSC 83C40 (Gravitational energy and conservation laws; groups of motions). arXiv gr-qc, math-ph. Level 3: graduate.
+
+**Definition.** Take a smooth closed surface with positive definite induced metric in a four-dimensional spacetime. Choose two future null normals, vectors of zero squared length perpendicular to the surface, with inner product −2. Their expansions measure the fractional area change along each normal. Hawking energy depends on the surface area and the integral of the product of the expansions.
+
+**Problem.** Hawking energy stays fixed when the null normals are multiplied by a smooth positive function and its reciprocal, respectively.
+
+**How the definition helps.** The product formula exposes the cancellation that the formula in spatial slice coordinates hides (our own comparison). Each expansion is the trace over tangent directions of the derivative of its normal. Differentiating a scale factor adds a normal vector, whose pairing with every tangent vector vanishes. The two expansions therefore acquire reciprocal factors. The geometric work is relating this formula to the surface curvatures in a chosen spatial slice.
+
+**Wikipedia:** [Hawking energy](https://en.wikipedia.org/wiki/Hawking_energy). It says: “measure the divergence of these families of null geodesics”
+
+**Sources:**
+
+- [Hawking (1968), Gravitational Radiation in an Expanding Universe](https://doi.org/10.1063/1.1664615)
 
 ### Killing fields give conserved matter currents
 
@@ -400,6 +452,42 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Surface gravity detects affine flow
+
+**Remember:** Surface gravity measures how the symmetry parameter departs from an affine one.
+
+*True by definition.* MSC 83C57 (Black holes). arXiv gr-qc. Level 3: graduate.
+
+**Definition.** A Killing field K generates local maps preserving the metric. A Killing horizon is a hypersurface where K is normal and lightlike, meaning its squared length vanishes. Where K is nonzero, its covariant acceleration along its own flow equals κK. The coefficient κ is its surface gravity.
+
+**Problem.** On such a horizon orbit, the flow parameter is affine exactly when κ vanishes along the orbit. An affine parameter gives zero covariant acceleration. At each point with K nonzero, κ vanishes exactly when the gradient of its squared length vanishes.
+
+**How the definition helps.** The acceleration definition reads the affine parameter test directly from κ (our own comparison). The alternative gradient definition gives minus half the gradient of the squared length as κK. The Killing equation equates these two expressions. The gradient is the full spacetime gradient, so it can be nonzero even where the squared length vanishes along the horizon.
+
+**Wikipedia:** [Surface gravity](https://en.wikipedia.org/wiki/Surface_gravity). It says: “kᵃ ∇ₐ kᵇ = κ kᵇ implies −kᵃ ∇ᵇ kₐ = κ kᵇ”
+
+**Sources:**
+
+- [Bardeen, Carter, Hawking (1973), The four laws of black hole mechanics](https://doi.org/10.1007/bf01645742)
+
+### Null frame coefficients detect geodesics
+
+**Remember:** No sideways acceleration means a light ray follows a geodesic.
+
+*True by definition.* MSC 83C60 (Spinor and twistor methods in general relativity and gravitational theory; Newman-Penrose formalism). arXiv gr-qc, math-ph. Level 3: graduate.
+
+**Definition.** In four-dimensional Lorentzian geometry, choose a basis with two real null vectors, meaning vectors of zero squared length. Their common perpendicular plane has an orthonormal basis of two spacelike vectors. The Newman–Penrose coefficient κ combines the two components of the acceleration of one null vector field ℓ in that plane into one complex number.
+
+**Problem.** The curves tangent to ℓ can be parametrized as geodesics exactly when κ vanishes along them. A geodesic in this parameter has zero covariant acceleration.
+
+**How the definition helps.** The complex coefficient replaces the vector geodesic equation with one scalar test. Differentiating the zero squared length shows that acceleration is perpendicular to ℓ. Thus κ records all the acceleration except the component along ℓ. Solving a scalar equation for a new parameter removes that remaining component. The explanation by perpendicularity and change of parameter is our own.
+
+**Wikipedia:** [Newman–Penrose formalism](https://en.wikipedia.org/wiki/Newman%E2%80%93Penrose_formalism). It says: “shows that ℓᵃ is tangent to a geodesic if and only if κ = 0”
+
+**Sources:**
+
+- [Newman, Penrose (1962), An Approach to Gravitational Radiation by a Method of Spin Coefficients](https://doi.org/10.1063/1.1724257)
+
 ### Incomplete geodesics need not encounter curvature
 
 **Remember:** A missing event can stop a geodesic without curving spacetime.
@@ -417,6 +505,24 @@
 **Sources:**
 
 - [Roger Penrose (1965), Gravitational Collapse and Space-Time Singularities](https://doi.org/10.1103/PhysRevLett.14.57)
+
+### Null convergence bounds the distance to focusing
+
+**Remember:** Negative expansion cannot stay finite forever.
+
+*Makes the theorem clean to state or prove.* MSC 83C75 (Space-time singularities, cosmic censorship, etc.). arXiv gr-qc. Level 3: graduate.
+
+**Definition.** Consider neighboring geodesics with lightlike tangent k in a smooth four-dimensional spacetime. Use an affine parameter, one for which the tangent has zero covariant acceleration. Their expansion θ is the derivative of the logarithm of their cross-sectional area density. Null convergence means that the Ricci tensor satisfies Ric(k,k) ≥ 0 for every lightlike k.
+
+**Problem.** Suppose the geodesics leave a spacelike surface orthogonally with initial expansion θ₀ &lt; 0 on one generator. Under null convergence, that generator reaches a focal point within affine parameter length 2/\|θ₀\| if it extends that far. At a focal point the cross-sectional area density vanishes.
+
+**How the definition helps.** Using logarithmic area change turns focusing into a scalar differential inequality (our own explanation). Orthogonality to the initial surface makes the rotation term vanish in the Raychaudhuri equation for θ. The remaining terms give θ′ ≤ −θ²/2 until focusing. Thus 1/θ increases at least at rate 1/2 while θ stays negative. The work lies in deriving the equation and relating divergence of θ to the first focal point.
+
+**Wikipedia:** [Raychaudhuri equation](https://en.wikipedia.org/wiki/Raychaudhuri_equation). It says: “As the expansion gives the rate of change of the logarithm of the area density”
+
+**Sources:**
+
+- [Raychaudhuri (1955), Relativistic Cosmology. I](https://doi.org/10.1103/physrev.98.1123)
 
 ### Conformal time measures light travel
 
@@ -456,6 +562,42 @@
 
 - [H. Bondi, M. G. J. van der Burg, and A. W. K. Metzner (1962), Gravitational waves in general relativity, VII. Waves from axi-symmetric isolated system](https://doi.org/10.1098/rspa.1962.0161)
 - [R. K. Sachs (1962), Gravitational waves in general relativity VIII. Waves in asymptotically flat space-time](https://doi.org/10.1098/rspa.1962.0206)
+
+### Bulk symmetries act conformally at infinity
+
+**Remember:** A bulk symmetry preserves the boundary metric up to scale.
+
+*Makes the theorem clean to state or prove.* MSC 83C30 (Asymptotic procedures (radiation, news functions, \\(\\mathcal \\)-spaces, etc.) in general relativity and gravitational theory). arXiv gr-qc. Level 4: research.
+
+**Definition.** A conformal compactification adds a boundary where a smooth function Ω vanishes with nonzero differential. Multiplying the interior metric by Ω² gives a smooth nondegenerate metric there. Changing Ω rescales the induced boundary metric by a positive function. A Killing field generates local maps preserving the metric.
+
+**Problem.** Consider a smooth conformal compactification with timelike boundary, meaning its induced metric has one negative direction. Any interior Killing field extending smoothly to the boundary generates local maps preserving the boundary metric up to positive rescaling.
+
+**How the definition helps.** Keeping the boundary metric up to scale absorbs the change of Ω under the symmetry (our own explanation). Write h for the rescaled metric and K for the field. In the interior, the derivative of h along the flow equals 2K(Ω)h/Ω. Taking its trace shows that K(Ω)/Ω extends smoothly. Thus K(Ω) vanishes on the boundary, so the flow stays there and changes the induced metric only by scale.
+
+**Paper or page:** [Geometric reflective boundary conditions for asymptotically Anti-de Sitter spaces](https://arxiv.org/abs/2507.20661). It says: “then it is tangent to ℐ”
+
+**Sources:**
+
+- [Geometric reflective boundary conditions for asymptotically Anti-de Sitter spaces](https://arxiv.org/abs/2507.20661)
+
+### Cotton curvature supplies boundary stress
+
+**Remember:** Cotton–York curvature already obeys the boundary constraints.
+
+*Makes the theorem clean to state or prove.* MSC 83C30 (Asymptotic procedures (radiation, news functions, \\(\\mathcal \\)-spaces, etc.) in general relativity and gravitational theory). arXiv gr-qc. Level 4: research.
+
+**Definition.** On an oriented three-dimensional Lorentzian manifold, the Cotton–York tensor measures how the curvature varies. First subtract one quarter of the scalar curvature times the metric from the Ricci tensor, the trace of the curvature tensor. Take the covariant derivative and contract its derivative index and first tensor index with the volume form to obtain the curl.
+
+**Problem.** A conformal boundary specifies its metric only up to multiplication by a positive function. A constant multiple of its Cotton–York tensor has zero trace and divergence for each metric h. Changing h to Ω²h multiplies this covariant tensor by Ω⁻¹, as required for boundary stress data in three dimensions.
+
+**How the definition helps.** Choosing the boundary tensor as a multiple of curvature satisfies the constraints for every boundary metric at once. The Cotton–York identities give its symmetry, vanishing trace and vanishing divergence. Its rescaling law makes the prescription consistent across all representatives. The work lies in proving those curvature identities (our own assessment).
+
+**Paper or page:** [Geometric reflective boundary conditions for asymptotically Anti-de Sitter spaces](https://arxiv.org/abs/2507.20661), [Geometric reflective boundary conditions for asymptotically Anti-de Sitter spaces](https://arxiv.org/abs/2507.20661). It says: “is symmetric, trace-free with respect to the metric h and divergence-free for the Levi-Civita connection D of h.”
+
+**Sources:**
+
+- [Geometric reflective boundary conditions for asymptotically Anti-de Sitter spaces](https://arxiv.org/abs/2507.20661)
 
 ### Dominant energy bounds total momentum
 
@@ -531,6 +673,42 @@
 **Sources:**
 
 - [Jack Borthwick, Eric Gourgoulhon and Jean-Philippe Nicolas, Peeling at extreme black hole horizons](https://arxiv.org/abs/2303.14574v1)
+
+### A quadratic test detects type D
+
+**Remember:** Two distinct polynomial roots rule out a Jordan block.
+
+*True by definition.* MSC 83C60 (Spinor and twistor methods in general relativity and gravitational theory; Newman-Penrose formalism). arXiv gr-qc, math-ph. Level 4: research.
+
+**Definition.** At a point of an oriented four-dimensional spacetime, the trace-free part of curvature defines an operator W on a three-dimensional complex space. Its elements are self-dual two-forms, which the metric’s Hodge star sends to i times themselves. In the operator classification, Petrov type D means W is diagonalizable with eigenvalues λ, λ and −2λ for some nonzero λ.
+
+**Problem.** Suppose tr(W²) ≠ 0 and set λ = −tr(W³)/tr(W²). The curvature has Petrov type D exactly when W² + λW − 2λ²I = 0, where I is the identity.
+
+**How the definition helps.** The operator definition replaces the geometric search for repeated lightlike directions with a polynomial test (our own explanation). For the stated spectrum, taking traces gives the displayed value of λ. Conversely, λ cannot vanish because the equation would imply W² = 0. The polynomial has distinct roots λ and −2λ, so W is diagonalizable. Its zero trace forces multiplicities two and one. The geometric work is proving agreement with the classification by lightlike directions.
+
+**Paper or page:** [An ideal conformally covariant characterization of the Kerr conformal structure](https://arxiv.org/abs/2308.04783). It says: “is of “genuine” Petrov type D (Petrov type D, but not any of its specializations) if and only if\\begin{equation}  \\tilde{a}\\neq 0\\; ,\\quad \\tilde{\\mathcal{D}}<sub>abcd</sub>=0\\; ,  \\end{equation}”
+
+**Sources:**
+
+- [An ideal conformally covariant characterization of the Kerr conformal structure](https://arxiv.org/abs/2308.04783)
+
+### Curvature blocks twice differentiable extensions
+
+**Remember:** Curvature can diverge where first derivatives still extend continuously.
+
+*Rules out counterexamples.* MSC 83C75 (Space-time singularities, cosmic censorship, etc.). arXiv gr-qc. Level 4: research.
+
+**Definition.** An extension identifies a spacetime with a proper open subset of a larger spacetime while preserving its metric. A C² extension has metric coefficients with continuous second derivatives in smooth coordinates. A C¹ extension requires only continuous first derivatives.
+
+**Problem.** Each interior Lorentzian Hawking–Page metric in the cited family extends across its specified lightlike boundary with continuous first derivatives. No extension across that boundary has continuous second derivatives.
+
+**How the definition helps.** Requiring two continuous derivatives rules out extensions whose curvature diverges in a regular frame (our own explanation). A C² metric has continuous curvature components in every smooth local frame. The cited extensions have first derivatives whose changes are locally bounded by a constant times the square root of coordinate distance. It also proves curvature blowup at the boundary for every extension. Constructing the extension and establishing that obstruction are the substantive results.
+
+**Paper or page:** [Extensions of Lorentzian Hawking--Page Solutions with Null Singularities, Spacelike Singularities, and Cauchy horizons of Taub--NUT type](https://arxiv.org/abs/2209.06134), [Extensions of Lorentzian Hawking--Page Solutions with Null Singularities, Spacelike Singularities, and Cauchy horizons of Taub--NUT type](https://arxiv.org/abs/2209.06134). It says: “For any extension of the Lorentzian Hawking–Page vacuum solution, the sectional curvature blows up along C₀⁻.”
+
+**Sources:**
+
+- [Extensions of Lorentzian Hawking--Page Solutions with Null Singularities, Spacelike Singularities, and Cauchy horizons of Taub--NUT type](https://arxiv.org/abs/2209.06134)
 
 ### Strict trapping rules out flat cylinders
 

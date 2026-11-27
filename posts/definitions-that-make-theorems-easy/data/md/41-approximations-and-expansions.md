@@ -248,6 +248,26 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Chebyshev grids prevent Runge divergence
+
+**Remember:** Space the angles evenly, not the points.
+
+*Rules out counterexamples.* MSC 41A05 (Interpolation in approximation theory). arXiv math.NA. Level 3: graduate.
+
+**Definition.** For n + 1 nodes, divide \[0, π\] into n + 1 equal intervals and take the cosine of each midpoint. These Chebyshev nodes cluster near both ends of \[−1, 1\].
+
+**Problem.** Suppose f extends analytically to a complex neighborhood of \[−1, 1\]. Its degree-n interpolants at Chebyshev nodes converge uniformly with error at most Cρ⁻ⁿ for some C &gt; 0 and ρ &gt; 1.
+
+**How the definition helps.** The cosine grid controls how strongly interpolation amplifies errors, including errors near the endpoints (our own). Runge’s function 1/(1 + 25x²) has divergent interpolants on equally spaced nodes. The geometric rate uses the Chebyshev interpolation estimate on a complex ellipse enclosing the interval inside the analytic neighborhood (our own).
+
+**Wikipedia:** [Runge's phenomenon](https://en.wikipedia.org/wiki/Runge%27s_phenomenon). It says: “A standard example of such a set of nodes is Chebyshev nodes, for which the maximum error in approximating the Runge function is guaranteed to diminish with increasing polynomial order.”
+
+**Paper or page:** [On polynomial interpolation in the monomial basis](https://arxiv.org/abs/2212.10519v5). It says: “{\\lVert F-P<sub>N</sub> \\rVert } \_{L<sup>\\infty </sup>(\[a,b\])}\\leq \\frac{4M}{\\rho -1}\\rho <sup>-N</sup>”
+
+**Sources:**
+
+- [On polynomial interpolation in the monomial basis](https://arxiv.org/abs/2212.10519v5)
+
 ### Discrete projections match all samples
 
 **Remember:** Measure every sample error and leave none for the projection to miss.
@@ -283,6 +303,56 @@
 **Sources:**
 
 - [Ludovico Bruni Bruno and Wolfgang Erb. The Fekete problem in segmental polynomial interpolation (2024).](https://doi.org/10.1007/s10543-024-01047-4)
+
+### Sample signs attain interpolation norms
+
+**Remember:** Choose sample signs to make every basis term add.
+
+*True by definition.* MSC 41A05 (Interpolation in approximation theory). arXiv math.NA. Level 3: graduate.
+
+**Definition.** Use distinct interpolation nodes in a compact real interval. For each node, take the basis polynomial of degree below the node count that equals one there and zero at the other nodes. Define the Lebesgue constant as the maximum over the interval of the sum of their absolute values.
+
+**Problem.** This constant equals the largest possible maximum absolute value of the interpolant when the continuous input function has absolute value at most one.
+
+**How the definition helps.** The sum formula gives the largest contribution the samples can make at any point (our own). The triangle inequality bounds every interpolant by this sum (our own). At a maximizing point, give each sample the sign of its basis polynomial there, choosing either sign at zero (our own). Join the samples by straight lines and extend constantly to the interval ends (our own). This continuous input attains the bound, identifying the sum formula with the operator norm (our own).
+
+**Paper or page:** [Order of uniform approximation by polynomial interpolation in the complex plane and beyond](https://arxiv.org/abs/2209.07101v3). It says: “L\_{{\\bf {z}}<sub>n</sub>}= \\max <sub>z\\in X</sub> \\, \\sum <sup>n</sup><sub>j=0</sub> \|\\ell \_ {n,j}(z)\|”
+
+**Sources:**
+
+- [Order of uniform approximation by polynomial interpolation in the complex plane and beyond](https://arxiv.org/abs/2209.07101v3)
+
+### Polynomial kernels give polynomial averages
+
+**Remember:** A polynomial kernel turns averaging into a polynomial.
+
+*True by definition. Confidence: medium.* MSC 41A10 (Approximation by polynomials). arXiv math.NA. Level 3: graduate.
+
+**Definition.** Normalize the polynomials (1 − t²)ⁿ to have integral 1 on \[−1, 1\]. Extend them by zero outside that interval. Approximate a function on \[0, 1\] by convolving its zero extension with these kernels.
+
+**Problem.** For 1 ≤ p &lt; ∞, every function in Lᵖ(\[0, 1\]) has polynomial averages that converge to it in the Lᵖ norm.
+
+**How the definition helps.** Every difference x − y from our own interval lies within the polynomial part of the kernel. Integrating against f(y) gives the coefficients of a polynomial in x (our own). The kernels have unit mass and their mass outside every neighborhood of zero tends to zero. Continuity of translations in Lᵖ then gives convergence (our own). Using polynomial kernels replaces a separate polynomial approximation of each smoothed function (our own).
+
+**nLab:** [approximation of the identity](https://ncatlab.org/nlab/show/approximation+of+the+identity). It says: “Hence f ∗ pₙ is polynomial.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Box averages preserve spline unity
+
+**Remember:** An average of the constant one stays one.
+
+*True by definition.* MSC 41A15 (Spline approximation). arXiv math.NA. Level 3: graduate.
+
+**Definition.** Define a cardinal B-spline by convolving the indicator of \[0, 1) with itself repeatedly. Each step averages the lower-degree spline over a unit interval.
+
+**Problem.** For each degree, all the integer translates of the cardinal B-spline sum to 1 at every real x.
+
+**How the definition helps.** Each convolution averages the preceding sum of translates, so it preserves the value one (our own). The half-open unit intervals tile the line, giving the starting sum (our own). Compact support leaves only finitely many terms over each averaging interval (our own). The work moves to identifying these repeated averages with the usual piecewise polynomial spline basis (our own).
+
+**Wikipedia:** [B-spline](https://en.wikipedia.org/wiki/B-spline). It says: “by iterative filtering with a rectangle function, higher-order interpolation is obtained.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Box convolutions simplify spline derivatives
 
@@ -336,6 +406,22 @@
 
 - [John C. Holladay, A smoothest curve approximation (1957)](https://doi.org/10.1090/S0025-5718-1957-0093894-6)
 
+### Natural splines solve smoothing
+
+**Remember:** Keep the fit and minimize the bending.
+
+*True by definition.* MSC 41A15 (Spline approximation). arXiv math.NA. Level 3: graduate.
+
+**Definition.** On the interval between the outermost data sites, consider functions with absolutely continuous first derivative and square-integrable second derivative. Define the smoothing spline to minimize squared data errors plus a positive multiple of the integral of the squared second derivative.
+
+**Problem.** With at least two distinct sites, the unique minimizer is a natural cubic spline. Its cubic pieces join with two continuous derivatives at data sites, and its second derivative vanishes at both ends.
+
+**How the definition helps.** Fixing the fitted values leaves only the bending penalty to minimize. Among curves with those values, the natural cubic interpolant uniquely minimizes that penalty. This interpolation theorem supplies the main step. The remaining finite-dimensional objective has a unique minimum because its data term is strictly convex and grows without bound (our own).
+
+**Wikipedia:** [Smoothing spline](https://en.wikipedia.org/wiki/Smoothing_spline). It says: “It remains only to minimize ∫ f̂″(x)² dx, and the minimizer is a natural cubic spline”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Imaginary-axis interpolation forces unit modulus
 
 **Remember:** Enough matches force the entire axis onto the unit circle.
@@ -349,6 +435,54 @@
 **How the definition helps.** Interpolation turns a condition on the whole imaginary axis into enough zeros to force a polynomial identity. In our own proof, write the fraction as P/Q and set z = it for real t. The difference \|P(it)\|² − \|Q(it)\|² is a polynomial in t of degree at most 2n. It vanishes at every match since the exponential has modulus one there. Its 2n + 1 distinct zeros force it to vanish identically. Constructing an interpolant with the required degrees is a separate problem.
 
 **Paper or page:** [The error of Chebyshev approximations on shrinking domains](https://arxiv.org/abs/2410.04885v1). It says: “An (n,n)-rational function is unitary if and only if it interpolates the exponential function at ≥ 2n+1 nodes on the imaginary axis, counting multiplicity.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Alternating extremes certify optimality
+
+**Remember:** Every improvement would need too many sign changes.
+
+*Makes the theorem clean to state or prove.* MSC 41A50 (Best approximation, Chebyshev systems). arXiv math.NA. Level 3: graduate.
+
+**Definition.** Take a continuous real function on a compact interval and a candidate polynomial of degree at most n. Call n + 2 increasing points alternating extremes if the error reaches its largest absolute value there with alternating signs.
+
+**Problem.** A candidate with alternating extremes minimizes the maximum absolute error among all real polynomials of degree at most n.
+
+**How the definition helps.** Alternating extremes force any strict improvement to change the sign of its correction between successive points (our own). The difference of the two polynomials would have at least n + 1 distinct zeros, more than its degree allows (our own). A candidate with zero error already minimizes the error (our own). The converse requires a separate proof that every best fit with positive error has alternating extremes (our own).
+
+**Wikipedia:** [Equioscillation theorem](https://en.wikipedia.org/wiki/Equioscillation_theorem). It says: “Define an alternating set (given polynomial g and function f) to be a set of ordered points x₀, …, xₙ in \[a,b\]”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Normalized kernels minimize squared norm
+
+**Remember:** The shortest polynomial with value one points along its kernel.
+
+*True by definition. Confidence: medium.* MSC 41A50 (Best approximation, Chebyshev systems). arXiv math.NA. Level 3: graduate.
+
+**Definition.** Fix n ≥ 0 and a finite positive measure with infinite support on a compact real interval. Choose real polynomials of degrees zero through n, normalized so their pairwise product integrals vanish for different degrees and equal one for matching degrees. Form K(a, x) by summing each polynomial’s value at a times its value at x. At a fixed real point a, divide by K(a, a), which is positive because the constant term contributes.
+
+**Problem.** Among polynomials of degree at most n that have value 1 at a, the normalized kernel uniquely minimizes the integral of the squared polynomial.
+
+**How the definition helps.** The normalized kernel turns a point constraint into an orthogonal decomposition (our own). Integrating K(a, x) against any polynomial of degree at most n returns its value at a. Subtract the normalized kernel from any competitor to get a polynomial vanishing at a (our own). Reproduction makes the difference orthogonal to the normalized kernel, so its squared norm adds to the minimum (our own). This replaces solving constrained coefficient equations with proving the reproduction identity (our own).
+
+**Wikipedia:** [Christoffel–Darboux formula](https://en.wikipedia.org/wiki/Christoffel%E2%80%93Darboux_formula). It says: “In other words, the kernel is an integral operator that orthogonally projects each polynomial to the space of polynomials of degree up to n.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Flat norm faces permit ties
+
+**Remember:** A tie would give a better midpoint.
+
+*Rules out counterexamples. Confidence: medium.* MSC 41A52 (Uniqueness of best approximation). arXiv math.NA. Level 3: graduate.
+
+**Definition.** Use a strictly convex norm, meaning the midpoint of distinct unit vectors has norm less than one. Let the permitted approximants form a convex set, so their midpoints stay in the set.
+
+**Problem.** A point has at most one closest point in a convex set under a strictly convex norm.
+
+**How the definition helps.** Strict convexity would make the midpoint of two different best approximants closer to the target (our own). Their error vectors have the same positive length, so divide by that length and apply the unit-vector condition (our own). Convexity keeps the midpoint among the permitted choices (our own). For the maximum norm, every point of \[−1, 1\] × {0} is closest to (0, 1) (our own).
+
+**Wikipedia:** [Strictly convex space](https://en.wikipedia.org/wiki/Strictly_convex_space). It says: “the segment joining x and y meets ∂B only at x and y.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -404,6 +538,42 @@
 
 - [Ludovico Bruni Bruno, Francesco Dell'Accio, Wolfgang Erb, Federico Nudo. Bivariate polynomial histopolation techniques on Padua, Fekete and Leja triangles (2025).](https://arxiv.org/abs/2506.03025v1)
 
+### Parity preserves disk coordinates
+
+**Remember:** Two sign flips leave the same disk point unchanged.
+
+*True by definition.* MSC 41A05 (Interpolation in approximation theory). arXiv math.NA. Level 4: research.
+
+**Definition.** Allow signed radii when interpolating on the unit disk. Replace a single formula in radius and angle by the sum of two functions. The first stays unchanged under either radius reversal or a half-turn. The second changes sign under each operation.
+
+**Problem.** The sum assigns the same value to (r, θ) and (−r, θ + π). At the center it has a single value if the first function there is independent of θ.
+
+**How the definition helps.** The two sign changes cancel, so both coordinate descriptions give the same interpolated value (our own). At radius zero, reversing the radius fixes the point and forces the second function to vanish (our own). The remaining work is to construct interpolants with these symmetries and make the first function constant at the center (our own).
+
+**Paper or page:** [Barycentric interpolation formulas for the sphere and the disk](https://arxiv.org/abs/2410.05439v1). It says: “If f⁺ is furthermore constant for all φ when ρ = 0, then f̃ is a BMC-II function.”
+
+**Sources:**
+
+- [Barycentric interpolation formulas for the sphere and the disk](https://arxiv.org/abs/2410.05439v1)
+
+### Reflected poles bound modulus
+
+**Remember:** A right-half-plane pole puts its reflected zero on the left.
+
+*True by definition.* MSC 41A20 (Approximation by rational functions). arXiv math.NA. Level 4: research.
+
+**Definition.** Represent a rational function of modulus one on the imaginary axis by pairing each pole s with its reflection −s̄. The bar means complex conjugation. Replace separate numerator and denominator polynomials by a product of factors (z + s̄)/(z − s), times a constant of modulus one.
+
+**Problem.** Take the best uniform approximation to exp(iωx) on \[−1, 1\] by such functions evaluated at ix, with numerator and denominator degrees at most n. For n ≥ 1 and 0 &lt; ω &lt; (n + 1)π, its modulus is below one throughout the open left half-plane.
+
+**How the definition helps.** The product turns the modulus bound into a distance comparison for each pole (our own). The paper proves that all n poles lie in the open right half-plane. Every point in the open left half-plane is closer to each reflected zero than to its pole (our own). Each factor therefore has modulus below one, as does their product (our own).
+
+**Paper or page:** [Unitary rational best approximations to the exponential function](https://arxiv.org/abs/2312.13809v1). It says: “the poles s₁,…,sₙ of the unitary best approximation r(ix) ≈ exp(iωx), r ∈ 𝒰ₙ, are located in the right complex plane”
+
+**Sources:**
+
+- [Unitary rational best approximations to the exponential function](https://arxiv.org/abs/2312.13809v1)
+
 ### Angular differences commute with smoothing
 
 **Remember:** Rotations stay on the cone and commute with its polynomial smoothing.
@@ -421,3 +591,39 @@
 **Sources:**
 
 - [Yan Ge, Yuan Xu, Best approximation by polynomials on the conic domains](https://arxiv.org/abs/2506.22916v1)
+
+### Reproduction cancels Taylor terms
+
+**Remember:** Reproducing Taylor polynomials leaves only their remainders.
+
+*Makes the theorem clean to state or prove.* MSC 41A25 (Rate of convergence, degree of approximation). arXiv math.NA. Level 4: research.
+
+**Definition.** Let h be the largest distance from a point of a bounded domain to its nearest sample. Approximate f(x) by a weighted sum of samples that returns p(x) exactly for every polynomial p of degree at most m. Write d for each sample’s distance from x. Require the sum of absolute weights times dᵐ⁺¹ to be at most C hᵐ⁺¹, uniformly in x and h.
+
+**Problem.** Suppose f has bounded continuous derivatives through order m + 1 on a neighborhood of the closed convex hull of the domain and samples. Then the maximum error is at most a constant times hᵐ⁺¹.
+
+**How the definition helps.** Polynomial reproduction cancels the entire Taylor polynomial before the weights can amplify any error (our own). Taylor’s theorem bounds each sample remainder by a constant times dᵐ⁺¹ (our own). The weighted distance bound then gives the estimate (our own). The paper proves such bounds for its rapidly decaying weights.
+
+**Paper or page:** [Fast-Decaying Polynomial Reproduction](https://arxiv.org/abs/2411.14933v1). It says: “\\\| f-z<sub>f,X</sub>\\\| \_{L<sup>\\infty </sup>(\\Omega )} \\leq K h<sub>X,\\Omega </sub><sup>m+1</sup>\\\| f\\\| \_{\\mathcal{C}<sup>m+1</sup>(\\Omega ^\*)}”
+
+**Sources:**
+
+- [Fast-Decaying Polynomial Reproduction](https://arxiv.org/abs/2411.14933v1)
+
+### Degree bounds bracket filter error
+
+**Remember:** Unchanged low terms and absent high terms bound the error.
+
+*True by definition.* MSC 41A81 (Weighted approximation). arXiv math.NA. Level 4: research.
+
+**Definition.** Measure error on the positive half-line by the supremum of its absolute value times a fixed positive weight. In a Laguerre polynomial expansion, replace a sharp cutoff by a linear filter T that tapers the higher coefficients. Choose integers 1 ≤ m &lt; n. The filter fixes degrees through n − m and returns polynomials of degree below n + m.
+
+**Problem.** For any input in the filter’s normed space, the output error is at least the least achievable error through degree n + m − 1. It is at most the least error through degree n − m times 1 + ‖T‖. Here ‖T‖ is the largest amplification of the weighted norm, understood as a supremum.
+
+**How the definition helps.** The two degree cutoffs give comparison polynomials for opposite sides of the estimate (our own). The output itself gives the lower bound (our own). Subtracting any preserved polynomial leaves the output error unchanged, so the triangle inequality gives the upper bound (our own). The paper proves a bound on ‖T‖ independent of n and m under additional weight and bandwidth conditions (our own).
+
+**Paper or page:** [De la Vallée Poussin filtered polynomial approximation on the half line](https://arxiv.org/abs/2402.08358v1). It says: “E<sub>n+m-1</sub>(f)<sub>u</sub>\\le \\\| \[f-\\mathcal{V}n<sup>m</sup>(w\\alpha ,f)\]u\\\| \\le {\\mathcal{C}}E<sub>n-m</sub>(f)<sub>u</sub>”
+
+**Sources:**
+
+- [De la Vallée Poussin filtered polynomial approximation on the half line](https://arxiv.org/abs/2402.08358v1)

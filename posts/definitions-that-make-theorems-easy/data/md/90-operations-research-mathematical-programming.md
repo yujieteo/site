@@ -392,6 +392,22 @@
 
 - [A note on quadratic constraints with indicator variables: Convex hull description and perspective relaxation](https://arxiv.org/abs/2209.01433v1)
 
+### Escape directions detect compact minimizer sets
+
+**Remember:** Compact minimizers require the cost to rise in every feasible escape direction.
+
+*Makes the theorem clean to state or prove.* MSC 90C25 (Convex programming), 49J53. arXiv math.OC. Level 3: graduate.
+
+**Definition.** For a finite convex cost f, the recession cost in direction d is the limit of (f(x + td) − f(x))/t as t grows. A direction is a recession direction of a constraint set if every ray from a feasible point in that direction stays feasible.
+
+**Problem.** Minimize a finite convex cost on Euclidean space over a nonempty closed convex set. The minimizer set is nonempty and compact exactly when the recession cost is positive in every nonzero recession direction.
+
+**How the definition helps.** The recession cost tests whether a whole feasible ray can stay below one cost level. In our own convex specialization, every nonempty unbounded closed convex set contains a ray, by compactness of the unit sphere. Apply this fact to the feasible points below a given cost level. Convexity makes the slopes along a ray increase toward its recession cost, whose value does not depend on the starting point. Positivity therefore makes every nonempty feasible set of points at or below a fixed cost level compact, and continuity gives a minimizer. Conversely, a feasible direction with nonpositive recession cost gives a whole ray of minimizers from any minimizer.
+
+**Paper or page:** [Weak sharp minima at infinity and solution stability in mathematical programming via asymptotic analysis](https://arxiv.org/abs/2410.04695). It says: “is nonempty and compact.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Negative entropy turns mirror descent into multiplicative exponential weights
 
 **Remember:** Exponentiate the negative gradient, multiply by the old probabilities, then normalize.

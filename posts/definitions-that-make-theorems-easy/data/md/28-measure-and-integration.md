@@ -374,6 +374,38 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Total variation adds both signs
+
+**Remember:** Count both signs as positive mass.
+
+*True by definition.* MSC 28A10 (Real- or complex-valued set functions). arXiv math.CA. Level 3: graduate.
+
+**Definition.** A finite signed measure assigns real masses and adds them over disjoint countable unions. Split its space into regions P and N whose measurable subsets have nonnegative and nonpositive mass, respectively. On a measurable set A, define variation as μ(A ∩ P) − μ(A ∩ N). Alternatively, take the supremum of sums of absolute masses over finite measurable partitions of A.
+
+**Problem.** The total variation of a finite signed measure is a nonnegative measure.
+
+**How the definition helps.** The formula adds two nonnegative measures, so it gives a measure. In our own comparison, the Hahn decomposition theorem supplies the two regions. The triangle inequality bounds every partition sum by their combined unsigned mass. Splitting A along the two regions attains the bound and proves independence of the split.
+
+**Paper or page:** [Variation of Signed Measure is Measure](https://proofwiki.org/wiki/Variation_of_Signed_Measure_is_Measure). It says: “Then \|μ\| is a measure.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Finite mass controls small sets
+
+**Remember:** With finite mass, control at zero also controls nearby values.
+
+*Rules out counterexamples.* MSC 28A12 (Contents, measures, outer measures, capacities). arXiv math.CA. Level 3: graduate.
+
+**Definition.** Let μ and ν be measures on the same measurable space, with ν finite. Absolute continuity means that ν vanishes on every measurable set of μ-mass zero.
+
+**Problem.** For every ε &gt; 0, some δ &gt; 0 works for all measurable sets A. If μ(A) &lt; δ, then ν(A) &lt; ε.
+
+**How the definition helps.** Finite total mass makes ν continuous on decreasing sequences of sets. For our own proof, suppose the bound fails for some ε. Choose sets with μ-masses at most 2⁻ⁿ and ν-masses at least ε. The unions of the tails decrease to a set of μ-mass zero, since the geometric tails tend to zero. Each union has ν-mass at least ε, so their intersection does too, a contradiction. Our own counterexample takes ν as counting measure and assigns μ-mass 2⁻ⁿ to each positive integer n. The singletons disprove the uniform bound.
+
+**Paper or page:** [Characterization of Absolutely Continuous Measures](https://proofwiki.org/wiki/Characterization_of_Absolutely_Continuous_Measures). It says: “for each ε &gt; 0 there exists δ &gt; 0 such that for each A ∈ Σ with μ(A) &lt; δ, we have ν(A) &lt; ε.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Localizable measures are exactly where the main measure theorems hold
 
 **Remember:** Localizable means measurable sets modulo null sets form a complete Boolean algebra.
@@ -475,6 +507,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Bounded mass controls vague tests
+
+**Remember:** A uniform mass bound keeps small tails small in the integral.
+
+*Rules out counterexamples.* MSC 28A33 (Spaces of measures, convergence of measures). arXiv math.CA. Level 3: graduate.
+
+**Definition.** Measures converge vaguely if their integrals converge against every continuous function that is zero outside a compact set. A function on the line vanishes at infinity if it tends to zero as \|x\| grows. Require a single finite upper bound on all total masses.
+
+**Problem.** Suppose finite positive Borel measures on the line converge vaguely to a finite measure and have uniformly bounded masses. Their integrals converge against every continuous function vanishing at infinity.
+
+**How the definition helps.** A compactly supported test can approximate a vanishing test uniformly, and the mass bound controls every integral error. In our own proof, multiply the test by a cutoff that equals one on a large interval and dies away outside it. In our own counterexample, mass n at n converges vaguely to zero. Its integral against f(x) = 1/(1 + \|x\|) tends to one.
+
+**Paper or page:** [Vague Convergence of Uniformly Bounded Sequence of Finite Borel Measures implies Convergence of Integrals of Bounded Continuous Functions Vanishing at Infinity](https://proofwiki.org/wiki/Vague_Convergence_of_Uniformly_Bounded_Sequence_of_Finite_Borel_Measures_implies_Convergence_of_Integrals_of_Bounded_Continuous_Functions_Vanishing_at_Infinity). It says: “∫ f dμₙ → ∫ f dμ”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Lipschitz tests bound closed-set masses
 
 **Remember:** Fade a closed set’s indicator to zero just beyond its boundary.
@@ -491,6 +539,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Countable covers by finite rectangles determine product measures
+
+**Remember:** Countably many finite rectangles let their masses determine the whole product.
+
+*Rules out counterexamples.* MSC 28A35 (Measures and integrals in product spaces). arXiv math.CA. Level 3: graduate.
+
+**Definition.** A measure is σ-finite if countably many measurable sets of finite mass cover its space. The product σ-algebra is the smallest collection containing measurable rectangles and closed under complements and countable unions.
+
+**Problem.** For two σ-finite measures, exactly one measure on the product σ-algebra assigns each rectangle the product of its side masses. Use zero for zero times infinity.
+
+**How the definition helps.** Finite-mass rectangles can exhaust the product, so the finite-measure uniqueness theorem applies on each rectangle. In our own account, the measure extension theorem gives existence. For our own counterexample, use length and counting measure on two copies of the Borel sets of \[0, 1\]. One measure sums the lengths of horizontal sections over the second coordinate. It gives the diagonal zero mass because each section is a singleton. Adding length along the diagonal changes its mass to one. Rectangle masses stay fixed because a positive-length first side and an infinite second side already give infinite mass.
+
+**Wikipedia:** [Product measure](https://en.wikipedia.org/wiki/Product_measure). It says: “In fact, when the spaces are σ-finite, the product measure is uniquely defined, and for every measurable set E,”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Defining product measure by integrating sections makes Tonelli's equality hold by construction
 
 **Remember:** Measure each slice, then integrate the slice measures.
@@ -504,6 +568,54 @@
 **How the definition helps.** For indicator functions of sets, which equal one on the set and zero elsewhere, the equality is the definition itself, in our own account. Sums and the monotone convergence theorem extend it to all nonnegative measurable functions, in our own proof. The work is proving that x ↦ ν(Eₓ) is measurable and that the formula defines a measure. The other order of integration needs the uniqueness of product measures, which uses σ-finiteness.
 
 **Paper or page:** [Existence of Product Measures](https://proofwiki.org/wiki/Existence_of_Product_Measures). It says: “ρ₁(E) = ∫<sub>X</sub> ν(E<sub>x</sub>) dμ”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Fiber averages contract integral norms
+
+**Remember:** Average over each fiber before taking the norm.
+
+*True by definition.* MSC 28A50 (Integration and disintegration of measures). arXiv math.PR. Level 3: graduate.
+
+**Definition.** The image law assigns each set the probability of its inverse image. Disintegration expresses the original probability as an average of conditional probabilities, one on almost every fiber. Define the fiber average of a function by integrating it against each conditional probability.
+
+**Problem.** Let a Borel map carry a probability on one complete separable metric space to its image law on another. For 1 ≤ p &lt; ∞, the Lᵖ norm of the fiber average is at most the original Lᵖ norm.
+
+**How the definition helps.** Using conditional probabilities makes Jensen’s inequality available on each fiber. Our own proof bounds the pth power of the absolute average by the average of the absolute pth power. Integrating gives the norm bound. The alternative definition uses a measure density for each function. Disintegration supplies one measurable family of probabilities that works for all functions.
+
+**Paper or page:** [A note about charts built by Eriksson-Bique and Soultanis on metric measure spaces](https://arxiv.org/abs/2210.07010v1). It says: “{\\rm Pr}\_\\varphi (f)(y) = \\int \_\\mathsf{X}f(x)\\, \\mathrm d\\mathfrak m<sub>y</sub>(x)\\quad \\mathfrak m\_\\mathsf{Y}-\\text{a.e.},\\quad \\forall f\\in {\\rm L}<sup>p</sup>(\\mathfrak m\_\\mathsf{X}),”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### New densities reweight fiber laws
+
+**Remember:** Weight each fiber, then move its total weight to the image law.
+
+*True by definition. Confidence: medium.* MSC 28A50 (Integration and disintegration of measures). arXiv math.PR. Level 3: graduate.
+
+**Definition.** A disintegration gives a conditional probability on almost every fiber of a map. Averaging these probabilities against the image law recovers the original probability. A probability density here means a nonnegative measurable function whose integral is one.
+
+**Problem.** Take a probability on a complete separable metric space and a Borel map into another such space. After reweighting by a probability density, the image density equals its fiber average almost everywhere. Where this average is positive and finite, multiply the old conditional law by the density and divide by the average.
+
+**How the definition helps.** The fiber description splits reweighting into two operations, changing the image law and normalizing each conditional probability. Our own proof substitutes this formula into the defining integral for disintegration. The normalizing factor cancels the new image density. Fibers with zero or infinite average have zero mass under the new image law. Uniqueness of disintegration identifies the result without constructing conditional laws afresh.
+
+**Wikipedia:** [Disintegration theorem](https://en.wikipedia.org/wiki/Disintegration_theorem). It says: “for every Borel-measurable function f : Y → \[0,∞\]”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Shared fibers glue couplings
+
+**Remember:** Take products within fibers and average over the shared coordinate.
+
+*True by definition.* MSC 28A50 (Integration and disintegration of measures). arXiv math.PR. Level 3: graduate.
+
+**Definition.** A coupling is a joint probability with prescribed coordinate laws. For each value of the shared coordinate, take the conditional laws of the two outer coordinates. Define a joint law by multiplying these conditional laws and averaging their product against the shared law.
+
+**Problem.** Two couplings on complete separable metric spaces with a common middle law have a joint law on three coordinates. The joint law has the original couplings as its adjacent marginals.
+
+**How the definition helps.** The product of the conditional laws gives both required marginals because each factor has mass one. Here a marginal means the law obtained by keeping only the specified coordinates. Our own proof integrates out one factor, then averages the other against the shared law. Disintegration supplies measurable conditional laws. The two adjacent marginals alone need not determine a unique joint law.
+
+**Paper or page:** [Hypergraph Co-Optimal Transport: Metric and Categorical Properties](https://arxiv.org/abs/2112.03904v3). It says: “π′ ⊠ π (dx × dx′ × dx″) = π′ₓ′(dx″) πₓ′(dx) μ′(dx′).”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -525,6 +637,90 @@
 
 - [V. A. Rokhlin, On the fundamental ideas of measure theory, Mat. Sbornik 25 (67) (1949), 107–150; English translation, AMS Translations 71 (1952), 1–54](http://ma.huji.ac.il/~matang02/rohlin.pdf)
 
+### Flat norms contract boundaries
+
+**Remember:** Take a boundary and only the small remainder survives.
+
+*True by definition.* MSC 28A75 (Length, area, volume, other geometric measure theory). arXiv math.MG. Level 3: graduate.
+
+**Definition.** A current acts on smooth differential forms and can represent an oriented region. Its mass norm measures its size without allowing it to move. The flat norm of T takes the infimum of the sum of masses of R and S over decompositions T = R + ∂S.
+
+**Problem.** The boundary operator is a contraction for the flat norm on Euclidean currents of finite flat norm.
+
+**How the definition helps.** The flat norm allows a boundary to cost only the mass of a filling. Our own proof starts with T = R + ∂S and takes boundaries to obtain ∂T = ∂R. Thus R fills ∂T, at cost at most the original sum of masses. Taking the infimum gives the contraction. The mass norm alone gives no such estimate. A short oriented segment has two boundary points whatever its length.
+
+**Wikipedia:** [Current (mathematics)](https://en.wikipedia.org/wiki/Current_%28mathematics%29). It says: “they are close in the flat norm if they coincide up to a small deformation.”
+
+**Sources:**
+
+- [Herbert Federer and Wendell H. Fleming, Normal and Integral Currents (1960)](https://doi.org/10.2307/1970227)
+
+### Lipschitz charts preserve rectifiability
+
+**Remember:** A Lipschitz map composes with charts and preserves Hausdorff null sets.
+
+*True by definition.* MSC 28A75 (Length, area, volume, other geometric measure theory). arXiv math.MG. Level 3: graduate.
+
+**Definition.** A countably m-rectifiable set is covered, except for an m-dimensional Hausdorff null set, by countably many Lipschitz images from subsets of ℝᵐ. One can instead use smooth charts in Euclidean space.
+
+**Problem.** A Lipschitz map between metric spaces sends a countably m-rectifiable set to a countably m-rectifiable set, for m ≥ 1.
+
+**How the definition helps.** Lipschitz charts remain Lipschitz after composition, even when differentiable charts would lose differentiability. Our own proof also tracks the exceptional set. If the map multiplies distances by at most L, it multiplies each covering diameter by at most L. Its image therefore still has zero m-dimensional Hausdorff measure. In Euclidean space the equivalence with continuously differentiable charts carries the additional work.
+
+**Wikipedia:** [Rectifiable set](https://en.wikipedia.org/wiki/Rectifiable_set). It says: “Equivalently, the fᵢ may be taken to be Lipschitz continuous without altering the definition.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Normal components count boundary crossings
+
+**Remember:** The projected area factor turns a boundary integral into a crossing count.
+
+*Makes the theorem clean to state or prove.* MSC 28A75 (Length, area, volume, other geometric measure theory). arXiv math.CA. Level 3: graduate.
+
+**Definition.** A set has finite perimeter when the distributional derivative of its indicator is a finite vector measure. Its variation measures its size without cancellation. The reduced boundary consists of points where the derivative divided by its variation on shrinking centered balls is defined and approaches a unit normal.
+
+**Problem.** Let E be a bounded set of finite perimeter in ℝⁿ. Integrate the absolute last component of its normal over the reduced boundary with respect to (n−1)-dimensional Hausdorff measure. This equals the integral, over horizontal coordinates, of the number of reduced boundary points on each vertical line.
+
+**How the definition helps.** The reduced boundary provides the normal needed to state the projection formula even for sets without a smooth boundary. Our own derivation uses De Giorgi’s theorem, which gives a tangent plane at almost every reduced boundary point. Projecting that plane horizontally scales area by the absolute last component of the normal. The area formula integrates this factor and counts each point in each fiber.
+
+**Paper or page:** [The Petty projection inequality for sets of finite perimeter](https://arxiv.org/abs/2102.07103v1). It says: “\\int\_{\\partial<sup>\\ast</sup>E}g(x)\|\\nu<sup>E<sub>y</sub></sup>(x)\|d\\mathcal{H}<sup>n-1</sup>(x)=\\int\_{\\mathbb{R}<sup>n-1</sup>}dx<sup>\\prime</sup>\\int\_{(\\partial<sup>\\ast</sup>E)\_{x<sup>\\prime</sup>}}g(x<sup>\\prime</sup>,y)d\\mathcal{H}<sup>0</sup>(y).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Reduced boundaries ignore null holes
+
+**Remember:** Removing a null set does not change the measured boundary.
+
+*Rules out counterexamples.* MSC 28A75 (Length, area, volume, other geometric measure theory). arXiv math.CA, math.MG. Level 3: graduate.
+
+**Definition.** A set has finite perimeter if the distributional derivative of its indicator is a finite vector measure. This derivative tests the indicator by integration against derivatives of smooth functions. Its total variation measures the size of the derivative without cancellation. At a reduced boundary point, the derivative divided by its variation on shrinking centered balls is defined and tends to a unit vector.
+
+**Problem.** Changing a set of finite perimeter on a Lebesgue null set preserves its reduced boundary. Its perimeter measure equals normalized (n−1)-dimensional Hausdorff measure restricted to that boundary in ℝⁿ.
+
+**How the definition helps.** The reduced boundary uses only the derivative measure, which ignores changes on null sets. Our own example removes a countable dense subset from an open ball. Every point inside the ball then belongs to the topological boundary, but the reduced boundary stays on the sphere. De Giorgi’s structure theorem identifies surface measure there with perimeter for general sets of finite perimeter.
+
+**Paper or page:** [Rectifiability; a survey](https://arxiv.org/abs/2112.00540v3). It says: “Let E ⊂ ℝⁿ be a set of finite perimeter. Then ∂∗E is (n−1)-rectifiable”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Covering fixes packing premeasure
+
+**Remember:** Pack each piece, then take the cheapest countable cover.
+
+*Rules out counterexamples.* MSC 28A78 (Hausdorff and packing measures). arXiv math.MG. Level 3: graduate.
+
+**Definition.** Packing premeasure takes the supremum of sums of diameter powers over disjoint small balls centered on the set. It then shrinks the diameter cutoff to zero. Packing measure takes the infimum of the sums of premeasures over all countable covers.
+
+**Problem.** Packing measure is countably subadditive and gives countable sets zero measure in every positive dimension. Packing premeasure need not do either.
+
+**How the definition helps.** Taking countable covers lets each singleton contribute zero, even when disjoint balls around a dense set have large total diameter. Our own example uses rational grid points in \[0,1\]. At arbitrarily small scales, disjoint balls centered there have total diameter at least one-half. The one-dimensional packing premeasure is therefore positive. Covering by singletons gives packing measure zero, and combining covers proves countable subadditivity.
+
+**Wikipedia:** [Packing dimension](https://en.wikipedia.org/wiki/Packing_dimension). It says: “the packing measure of S is the infimum of the packing pre-measures of countable covers of S.”
+
+**Sources:**
+
+- [Claude Tricot, Two definitions of fractional dimension (1982)](https://doi.org/10.1017/s0305004100059119)
+
 ### Diameter powers reveal dimension
 
 **Remember:** On small sets, raising the exponent makes every cover cheaper.
@@ -538,6 +734,54 @@
 **How the definition helps.** The same cover compares costs at two exponents (our own). For t &lt; s, the cost at s is at most the cost at t times δ raised to s − t (our own). Thus finite measure at t forces zero measure at s (our own). This gives one cutoff without first computing any of the measures (our own).
 
 **Paper or page:** [Strictly Positive Hausdorff Measure implies Infinite Lower Dimensional Measure](https://proofwiki.org/wiki/Strictly_Positive_Hausdorff_Measure_implies_Infinite_Lower_Dimensional_Measure). It says: “ℋˢ(F) &gt; 0 ⇒ ∀ t ∈ \[0, s) : ℋᵗ(F) = +∞”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Frostman bounds force positive measure
+
+**Remember:** If each covering set carries little mass, the whole cover must cost enough.
+
+*True by definition.* MSC 28A78 (Hausdorff and packing measures). arXiv math.MG. Level 3: graduate.
+
+**Definition.** A Frostman probability of exponent s assigns each ball of radius r at most Crˢ, for a fixed C. Hausdorff measure takes the least sum of diameter powers over covers, then sends the allowed diameters to zero.
+
+**Problem.** A Borel subset of Euclidean space carrying a Frostman probability of exponent s &gt; 0 has positive s-dimensional Hausdorff measure.
+
+**How the definition helps.** The ball bound replaces a search through all covers with an estimate on each member of any cover. Our own proof encloses each member of positive diameter in a ball of at most twice that diameter. Singletons have zero mass. Summing the ball bounds gives a positive lower bound for every cover’s cost. The converse for compact sets requires Frostman’s lemma, which constructs the measure.
+
+**Paper or page:** [A Study Guide to "Kaufman and Falconer estimates for radial projections"](https://arxiv.org/abs/2402.11847v1). It says: “If a Borel set X supports an s-Frostman probability measure μ, then ℋˢ(X) &gt; 0.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Hausdorff dimension respects countable unions
+
+**Remember:** A countable union of sets of measure zero still has measure zero.
+
+*True by definition.* MSC 28A78 (Hausdorff and packing measures). arXiv math.CA. Level 3: graduate.
+
+**Definition.** At each scale δ, take the infimum of sums of s-th powers of diameters over countable covers with diameters at most δ. Letting δ decrease to zero gives s-dimensional Hausdorff measure up to normalization. Hausdorff dimension is the infimum of exponents giving zero measure. Box dimension instead counts boxes of one size at a time.
+
+**Problem.** The Hausdorff dimension of a countable union is the supremum of the dimensions of its members.
+
+**How the definition helps.** Above the supremum, every member has measure zero, so the union has measure zero. In our own proof, monotonicity gives the reverse inequality. Countable subadditivity comes from joining the countable covers with a summable error budget. In our own comparison, each singleton has box dimension zero, but the rationals in \[0, 1\] have box dimension one.
+
+**Wikipedia:** [Hausdorff dimension](https://en.wikipedia.org/wiki/Hausdorff_dimension). It says: “If X=\\bigcup<sub>i\\in I</sub>X<sub>i</sub> is a finite or countable union, then \\dim\_{\\operatorname{Haus}}(X) =\\sup<sub>i\\in I</sub> \\dim\_{\\operatorname{Haus}}(X<sub>i</sub>).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Mass bounds give dimension bounds
+
+**Remember:** A cover must pay enough to carry all the mass.
+
+*Makes the theorem clean to state or prove.* MSC 28A78 (Hausdorff and packing measures). arXiv math.CA. Level 3: graduate.
+
+**Definition.** For each countable cover, add the s-th powers of its set diameters. Take the infimum over covers with diameters at most δ, then let δ decrease to zero. This defines s-dimensional Hausdorff measure up to normalization. Hausdorff dimension is the infimum of exponents giving zero measure.
+
+**Problem.** Suppose a finite measure gives a Borel set F on the line positive mass. For some C and s &gt; 0, each sufficiently small closed interval has mass at most C times its diameter to power s. Then F has Hausdorff dimension at least s.
+
+**How the definition helps.** The diameter bound turns each covering cost into an upper bound on the mass covered, up to the factor C. In our own proof, enclose each covering set in a closed interval of the same diameter. Summing the interval bounds shows that every sufficiently fine cover costs at least μ(F)/C. The s-dimensional measure is therefore positive. Finding a measure with the interval bound is the work in applications.
+
+**Paper or page:** [Constructing self-similar subsets within the fractal support of Lacunary Wavelet Series for their multifractal analysis](https://arxiv.org/abs/2501.17712). It says: “μ(U) ≤ c \|U\|ᵗ”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -558,6 +802,58 @@
 **Sources:**
 
 - [Claude Tricot Jr., Two definitions of fractional dimension (1982)](https://doi.org/10.1017/S0305004100059119)
+
+### Disjoint pieces give unique addresses
+
+**Remember:** The first place where two addresses differ puts them in disjoint pieces.
+
+*Rules out counterexamples.* MSC 28A80 (Fractals), 37B10. arXiv math.DS. Level 3: graduate.
+
+**Definition.** Consider finitely many injective contractions on a compact metric space. Their attractor is the unique nonempty compact set A equal to the union of its images. Strong separation means those images are pairwise disjoint. An address is an infinite list of maps whose successive compositions, applied to A with the first map outermost, contain the point.
+
+**Problem.** If the space and the family are nonempty and strong separation holds, each point of A has exactly one address.
+
+**How the definition helps.** Disjoint images determine the first map uniquely, and injectivity determines the point to use at the next step. Our own proof repeats this choice inside A to construct the entire address. The contraction mapping theorem supplies the attractor. Without separation, the two half-size copies of \[0,1\] meet at 1/2, giving our own example of two addresses.
+
+**Paper or page:** [Applications of the Tarski-Kantorovitch Fixed-Point Principle to the study of Infinite Iterated Function Systems](https://arxiv.org/abs/2110.04650v1). It says: “the canonical projection π : Λ(I) → A is bijective.”
+
+**Sources:**
+
+- [Applications of the Tarski-Kantorovitch Fixed-Point Principle to the study of Infinite Iterated Function Systems](https://arxiv.org/abs/2110.04650v1)
+
+### Graph norms let closed operators commute with integrals
+
+**Remember:** Integrate the point and its image together.
+
+*True by definition.* MSC 28B05 (Vector-valued set functions, measures and integrals). arXiv math.FA. Level 3: graduate.
+
+**Definition.** Let T be a linear operator from part of one Banach space into another. Suppose its graph is closed in the product space. Give its domain the graph norm ‖x‖ + ‖Tx‖. The Bochner integral uses approximations by measurable functions with finitely many values, with error measured by the integral of the norm.
+
+**Problem.** If f takes values in the domain of T and both f and Tf are Bochner integrable, T commutes with integration. In particular, the integral of f belongs to the domain.
+
+**How the definition helps.** The graph norm makes T bounded on its domain even when the original norm does not. Our own proof integrates the pair (f, Tf) in the product space. Its integral belongs to the closed graph because simple approximations can take their values there. The two coordinates of the integral therefore satisfy the required identity.
+
+**Paper or page:** [A Representation of Matrix-Valued Harmonic Functions by the Poisson Integral of Non-commutative BMO Functions](https://arxiv.org/abs/2309.11752v2). It says: “T\\left(\\int \_E f(x)\\, d\\mu (x) \\right)=\\int \_E T(f(x))\\, d\\mu (x),”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Separable range rules out invisible vectors
+
+**Remember:** A separable range lets scalar tests detect strong measurability.
+
+*Rules out counterexamples.* MSC 28B05 (Vector-valued set functions, measures and integrals). arXiv math.FA. Level 3: graduate.
+
+**Definition.** A Banach-valued function is weakly measurable if every continuous linear functional gives a measurable scalar function. It is essentially separably valued if its values outside a null set lie in a separable subspace. Strong measurability means it is an almost everywhere norm limit of simple functions.
+
+**Problem.** Pettis's theorem says that weak measurability gives strong measurability when the range is essentially separable.
+
+**How the definition helps.** A separable subspace has a countable dense set, which lets scalar tests yield measurable simple approximations in Pettis’s theorem. Our own example on the Lebesgue interval sends t to the unit vector at coordinate t in ℓ²(\[0,1\]). Each continuous linear functional has only countably many nonzero coordinates, so its value is zero almost everywhere. Distinct unit vectors have distance √2, so a separable subspace contains only countably many of them.
+
+**Paper or page:** [Kernel-Summability Methods and the Silverman-Toeplitz Theorem](https://arxiv.org/abs/2302.06770v3). It says: “A function v : E → X is strongly measurable if, and only if, the two following conditions are satisfied: v is weakly measurable; v is essentially separably valued.”
+
+**Sources:**
+
+- [B. J. Pettis, On integration in vector spaces (1938)](https://doi.org/10.1090/s0002-9947-1938-1501970-8)
 
 ### Stone's condition lets an abstract Daniell integral come from a measure
 
@@ -681,6 +977,38 @@
 
 - [Tobias Fritz, Paolo Perrone, Sharwin Rezagholi, Probability, valuations, hyperspace: Three monads on Top and the support as a morphism (2019); arXiv:1910.03752](https://arxiv.org/abs/1910.03752)
 
+### Proper maps keep Radon measures locally finite
+
+**Remember:** Compact inverse images keep mass finite near every target point.
+
+*Rules out counterexamples.* MSC 28C15 (Set functions and measures on topological spaces (regularity of measures, etc.)). arXiv math.GN. Level 3: graduate.
+
+**Definition.** A Radon measure is locally finite and approximates Borel sets from inside by compact sets. A proper continuous map has compact inverse images of compact sets. Its pushforward assigns each Borel set the measure of its inverse image.
+
+**Problem.** A proper continuous map between locally compact Hausdorff spaces sends a Radon measure to a Radon measure in the inner-regular convention.
+
+**How the definition helps.** Properness makes the inverse image of a compact neighborhood compact, so the image measure stays locally finite. Our own proof approximates the inverse image of a Borel set from inside by compact sets. Their images give compact subsets of the target set with at least as much image measure. Our own counterexample sends the whole real line to one point, which receives infinite Lebesgue mass under the pushforward.
+
+**nLab:** [Radon measure](https://ncatlab.org/nlab/show/Radon+measure). It says: “is a Borel measure m on X such that m is locally finite and inner regular on all Borel subsets.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Proper maps preserve Radon measures
+
+**Remember:** Compact sets cannot collect infinite mass from far away.
+
+*Rules out counterexamples.* MSC 28C15 (Set functions and measures on topological spaces (regularity of measures, etc.)). arXiv math.CA. Level 3: graduate.
+
+**Definition.** A proper map has compact inverse images of compact sets. On locally compact metric spaces, use Radon measures that are finite on compact sets and approximate Borel sets from inside by compact sets.
+
+**Problem.** A continuous proper map between locally compact metric spaces sends a Radon measure to a Radon measure.
+
+**How the definition helps.** Properness makes each compact target set receive only the finite mass of its compact inverse image. In our own specialization, each target point has a compact neighborhood, so its inverse image also has finite mass. To approximate a Borel set from inside, first approximate its inverse image by compact sets. Their continuous images are compact and capture at least the same mass. In our own counterexample, a constant map sends the entire length of the line to one point.
+
+**nLab:** [Radon measure](https://ncatlab.org/nlab/show/Radon+measure). It says: “The pushforward measure H∗μ is a Radon measure on Y defined as follows.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Regularity makes the measure in the Riesz representation theorem unique
 
 **Remember:** Regularity picks one measure for each positive functional on continuous functions.
@@ -699,6 +1027,24 @@
 
 - [S. Kakutani, Concrete representation of abstract (M)-spaces, Annals of Mathematics 42 (1941), 994–1024](https://doi.org/10.2307/1968778)
 
+### Finite energy protects Brownian null sets
+
+**Remember:** A continuous shift can be too rough to preserve Brownian null sets.
+
+*Rules out counterexamples.* MSC 28C20 (Set functions and measures and integrals in infinite-dimensional spaces (Wiener measure, Gaussian measure, etc.)). arXiv math.FA. Level 3: graduate.
+
+**Definition.** Consider Brownian paths starting at zero on \[0,1\]. Their Cameron–Martin space consists of paths obtained by integrating a square-integrable function from zero to each time t.
+
+**Problem.** Brownian path measure and its translate have the same null sets for shifts in the Cameron–Martin space. All other continuous shifts starting at zero give mutually singular measures.
+
+**How the definition helps.** Square-integrable derivatives identify exactly the shifts that preserve Brownian null sets. Our own example uses the continuous shift t ↦ √t. Its derivative has square 1/(4t), whose integral diverges at zero. The Cameron–Martin theorem gives singularity here, meaning that some set has full original probability and zero translated probability.
+
+**Paper or page:** [Notions of null sets in infinite-dimensional Carnot groups](https://arxiv.org/abs/2304.14524v1). It says: “A Gaussian measure γ is quasi-invariant under translation by elements of its Cameron–Martin space H.”
+
+**Sources:**
+
+- [R. H. Cameron and W. T. Martin, Transformations of Wiener Integrals Under Translations (1944)](https://doi.org/10.2307/1969276)
+
 ### Linear functional tests show continuous linear maps preserve Gaussian laws
 
 **Remember:** Compose a linear functional with the operator to test the image law.
@@ -714,6 +1060,22 @@
 **Wikipedia:** [Gaussian measure](https://en.wikipedia.org/wiki/Gaussian_measure). It says: “Even so, it is possible to define Gaussian measures on infinite-dimensional spaces, the main example being the abstract Wiener space construction.”
 
 **Paper or page:** [Gaussian Process Priors for Systems of Linear Partial Differential Equations with Constant Coefficients](https://arxiv.org/abs/2212.14319v4). It says: “be a linear continuous map. Then B∗γ is a Gaussian measure”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Weighted spaces carry Gaussian sequences
+
+**Remember:** Independent standard Gaussians fit in weighted ℓ², not in ordinary ℓ².
+
+*Rules out counterexamples.* MSC 28C20 (Set functions and measures and integrals in infinite-dimensional spaces (Wiener measure, Gaussian measure, etc.)). arXiv math.FA. Level 3: graduate.
+
+**Definition.** A cylinder law specifies consistent joint laws for finite lists of coordinates. Choose positive weights with finite sum. The weighted space consists of sequences whose weighted sum of squares is finite, with norm equal to its square root.
+
+**Problem.** Independent standard Gaussian coordinates define a Borel probability on the weighted space, but not on ordinary ℓ².
+
+**How the definition helps.** Summable weights give the squared norm finite expectation, which makes it finite almost surely. Our own proof starts with the countable product of standard Gaussian laws. The truncated sequences converge almost surely in weighted norm, so their limit defines a random element of that space. In ordinary ℓ² the squared norm diverges almost surely because the average of the first n squares tends to one. The strong law of large numbers supplies this last step.
+
+**Wikipedia:** [Abstract Wiener space](https://en.wikipedia.org/wiki/Abstract_Wiener_space). It says: “the cylinder set measure on B, unlike the cylinder set measure on H, will extend to a countably additive measure”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -771,6 +1133,22 @@
 **Sources:**
 
 - [Ruben Van Belle, A categorical proof of the Carathéodory extension theorem, arXiv:2210.01720 (2022)](https://arxiv.org/abs/2210.01720)
+
+### Area lifts preserve nonlinear integrals
+
+**Remember:** Adjoin volume before measuring the size of a vector measure.
+
+*Rules out counterexamples. Confidence: medium.* MSC 28A33 (Spaces of measures, convergence of measures), 28B05. arXiv math.FA. Level 4: research.
+
+**Definition.** The total variation of a vector measure measures mass without cancellation. Strict convergence means convergence against continuous tests together with convergence of total variation masses. Lift a vector measure by adjoining Lebesgue measure on the domain as its first coordinate. Area-strict convergence means strict convergence of these lifted measures.
+
+**Problem.** Consider finite vector measures on the closure of a bounded Euclidean domain. Under area-strict convergence, integrals of continuous functions of position and unit direction against lifted total variation converge. The unit direction is the density of the lifted measure relative to its variation.
+
+**How the definition helps.** The lift detects concentrations that ordinary strict convergence misses. The cited lemma constructs concentration even under strict convergence. In our own example, divide \[0,1\] into n equal intervals. Put density n on the first 1/n fraction of each interval and zero elsewhere. These measures converge strictly to Lebesgue measure, but their lifted masses tend to two instead of √2. Our own deduction applies Reshetnyak’s continuity theorem directly to the strictly converging lifts.
+
+**Paper or page:** [Relaxation of functionals with linear growth: interactions of emerging measures and free discontinuities](https://arxiv.org/abs/2107.12687v1). It says: “vε → σ weakly∗ and strictly in ℳ(Ω̄; ℝᵈ).”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Comparing distribution functions up to constants characterizes vague convergence of signed measures
 
@@ -844,6 +1222,22 @@
 **Sources:**
 
 - [David Bate, Characterising rectifiable metric spaces using tangent spaces, arXiv:2109.12371v3 (2022)](https://arxiv.org/abs/2109.12371v3)
+
+### Countable tests fix weak density versions
+
+**Remember:** Countably many scalar tests can share one exceptional null set.
+
+*Rules out counterexamples.* MSC 28B05 (Vector-valued set functions, measures and integrals). arXiv math.FA. Level 4: research.
+
+**Definition.** A weak-star density takes values in the dual of a Banach space. It represents a vector measure when testing against each original-space vector gives the corresponding scalar measure density. Separability lets these tests use a single countable dense set.
+
+**Problem.** On a finite Lebesgue interval, two weak-star densities of the same vector measure agree almost everywhere if the original Banach space is separable.
+
+**How the definition helps.** A countable dense set lets every scalar uniqueness argument use the same exceptional null set. Our own proof removes the union of those null sets and extends equality to every vector by continuity. For our own counterexample take X = ℓ¹(\[0,1\]) and let the density at t evaluate a vector at coordinate t. Each vector has countable support, so each scalar test vanishes almost everywhere on the Lebesgue interval. The density therefore represents the zero measure although its norm equals one everywhere.
+
+**Paper or page:** [Global entropy solutions to a degenerate parabolic-parabolic chemotaxis system for flux-limited dispersal](https://arxiv.org/abs/2401.03887v3). It says: “If X is separable, then any ζ₁ and ζ₂ that satisfy the conditions on ζ coincide a.e. in {g &gt; 0}.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Prevalence gives infinite-dimensional spaces a measure meaning of almost every
 

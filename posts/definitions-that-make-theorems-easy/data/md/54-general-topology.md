@@ -1304,6 +1304,42 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Compact families have compact unions
+
+**Remember:** To cover a compact family, cover each member finitely first.
+
+*True by definition.* MSC 54B20 (Hyperspaces in general topology). arXiv math.GN. Level 3: graduate.
+
+**Definition.** A hyperspace has sets as points. On nonempty compact subsets, the upper Vietoris topology uses tests requiring an entire subset to lie in a given open set. The full Vietoris topology also tests whether a subset meets a given open set.
+
+**Problem.** The union of a compact family of compact subsets is compact, even for the upper Vietoris topology alone.
+
+**How the definition helps.** One upper Vietoris test captures every member covered by the same finite collection of open sets (our own). Start with any open cover of the union (our own). For each finite subcollection, test containment in its union (our own). Compactness of each member makes these tests cover the family (our own). Compactness of the family selects finitely many tests, hence finitely many original open sets (our own). For metric spaces, this avoids the theorem identifying the Hausdorff distance topology with the full Vietoris topology (our own).
+
+**Paper or page:** [Modulo arithmetic of function spaces: Subset hyperspaces as quotients of function spaces](https://arxiv.org/abs/2503.10803v2). It says: “If $\\mathcal{A}\\subset (K<sub>Y</sub>(X),\\tau<sub>v</sub>)$ is compact, then so is $K:=\\bigcup\_{A\\in\\mathcal{A}}A\\subset X$.”
+
+**Sources:**
+
+- [Modulo arithmetic of function spaces: Subset hyperspaces as quotients of function spaces](https://arxiv.org/abs/2503.10803v2)
+
+### Compact misses make Fell spaces compact
+
+**Remember:** Add infinity to every set, then test it inside a compact space.
+
+*True by definition.* MSC 54B20 (Hyperspaces in general topology). arXiv math.GN. Level 3: graduate.
+
+**Definition.** The Fell topology on closed subsets, including the empty set, tests whether a subset meets an open set or avoids a compact set. The Vietoris topology instead tests avoidance of arbitrary closed sets.
+
+**Problem.** The Fell space of all closed subsets of a locally compact Hausdorff space is compact Hausdorff.
+
+**How the definition helps.** The compact miss tests are exactly the containment tests that remain after every set gains the point at infinity (our own). Our own proof sends each closed set to its union with infinity in the one-point extension. This identifies the Fell space with the closed family of compact subsets containing infinity (our own). The work moves to compactness and Hausdorffness of the Vietoris space over a compact Hausdorff space (our own).
+
+**Wikipedia:** [Hypertopology](https://en.wikipedia.org/wiki/Hypertopology). It says: “the Fell topology is always compact”
+
+**Sources:**
+
+- [J. M. G. Fell, A Hausdorff topology for the closed subsets of a locally compact non-Hausdorff space (1962)](https://doi.org/10.1090/S0002-9939-1962-0139135-6)
+
 ### Expansions give largest Hausdorff intermediates
 
 **Remember:** Intersect the two expansions to keep every allowed point.
@@ -1321,6 +1357,42 @@
 **Sources:**
 
 - [Between Shapes, Using the Hausdorff Distance, Lemma 2](https://arxiv.org/abs/2009.14719v2)
+
+### Proper maps act continuously on Fell spaces
+
+**Remember:** A proper map pulls each compact miss test back to another.
+
+*True by definition.* MSC 54B20 (Hyperspaces in general topology). arXiv math.GN. Level 3: graduate.
+
+**Definition.** The Fell topology on closed subsets tests whether a subset meets an open set or misses a compact set. The Vietoris topology uses misses of arbitrary closed sets instead. Here a proper map is a continuous map whose inverse images of compact sets are compact.
+
+**Problem.** A proper map between locally compact Hausdorff spaces induces a continuous map on Fell hyperspaces by taking images of closed sets.
+
+**How the definition helps.** The inverse image of a compact miss test is a miss test for the compact preimage (our own). An open hit test pulls back to an open hit test (our own). Our own account uses the proper mapping theorem to know that the image of a closed set is closed.
+
+**Paper or page:** [Some notes on induced functions and group actions on hyperspaces](https://arxiv.org/abs/2104.12904v1). It says: “If Y is locally compact and f is proper, then f̃: CL₍F⁺₎(X) → CL₍F⁺₎(Y) is continuous.”
+
+**Sources:**
+
+- [Some notes on induced functions and group actions on hyperspaces](https://arxiv.org/abs/2104.12904v1)
+
+### Vietoris hit tests preserve image continuity
+
+**Remember:** Meeting an open set can be tested before taking closure.
+
+*Rules out counterexamples. Confidence: medium.* MSC 54B20 (Hyperspaces in general topology). arXiv math.GN. Level 3: graduate.
+
+**Definition.** The lower Vietoris topology on nonempty closed subsets has open tests that ask whether a closed subset meets a given open set. The induced image map sends a closed subset to the closure of its image.
+
+**Problem.** Suppose singletons in X are closed, and let Y be any topological space. A map from X to Y is continuous exactly when its induced map on closed sets is continuous for the lower Vietoris topologies.
+
+**How the definition helps.** A test for meeting an open set pulls back to a test for meeting its preimage when the original map is continuous (our own). Taking closure preserves which open sets an image meets (our own). Conversely, sending x to its singleton is continuous because each hit test pulls back to the tested open set (our own). Composing with the induced map recovers the open preimage test for the original map (our own). Give two points the topology with only the empty set and the whole space open (our own). The identity into the discrete topology fails continuity, but its induced map has a one-point domain (our own).
+
+**Paper or page:** [Some notes on induced functions and group actions on hyperspaces](https://arxiv.org/abs/2104.12904v1). It says: “f is continuous if and only if f̃: CLᵥ⁻(X) → CLᵥ⁻(Y) is continuous.”
+
+**Sources:**
+
+- [Some notes on induced functions and group actions on hyperspaces](https://arxiv.org/abs/2104.12904v1)
 
 ### Defining proper maps by compact preimages makes them extend to one-point compactifications
 
@@ -1355,6 +1427,58 @@
 **Sources:**
 
 - [Hans Freudenthal, Über die Enden topologischer Räume und Gruppen, Mathematische Zeitschrift 33 (1931) 692–713](https://doi.org/10.1007/BF01174375)
+
+### Compact tests make evaluation continuous
+
+**Remember:** Test one compact neighborhood to control nearby inputs together.
+
+*Rules out counterexamples.* MSC 54C35 (Function spaces in general topology). arXiv math.GN. Level 3: graduate.
+
+**Definition.** In the compact-open topology, one open test requires a map to send a specified compact set into a specified open set. Pointwise convergence uses only tests at individual points.
+
+**Problem.** Evaluation at a variable input is continuous for the compact-open topology when the domain is locally compact Hausdorff.
+
+**How the definition helps.** A compact test controls the function throughout a neighborhood of the input (our own). Local compactness supplies a compact neighborhood inside the inverse image of the desired open set (our own). Our own counterexample uses continuous real functions on the interval \[0, 1\] with the pointwise topology. A neighborhood tests only finitely many inputs (our own). A continuous function can pass those tests and still take a large value arbitrarily near zero (our own).
+
+**nLab:** [compact-open topology](https://ncatlab.org/nlab/show/compact-open+topology). It says: “given by (x,f) ↦ f(x) is continuous”
+
+**Sources:**
+
+- [Ralph H. Fox, On topologies for function spaces (1945)](https://doi.org/10.1090/S0002-9904-1945-08370-0)
+
+### Hemicompactness metrizes compact-open function spaces
+
+**Remember:** One sequence can track every compact test.
+
+*Rules out counterexamples.* MSC 54C35 (Function spaces in general topology). arXiv math.GN. Level 3: graduate.
+
+**Definition.** A Hausdorff space is hemicompact if some sequence of compact sets contains every compact subset in at least one member. The compact-open topology tests whether a function sends a specified compact set into a specified open set.
+
+**Problem.** Continuous maps from a hemicompact space to a metric space form a metrizable space in the compact-open topology.
+
+**How the definition helps.** One sequence suffices because every compact test set fits inside one member (our own). On each nonempty member, take the greatest distance between corresponding function values (our own). Cap each distance at one, multiply by 2⁻ⁿ and add the results (our own). Uniform convergence on compact sets gives the compact-open topology here (our own). The rationals have a countable cover by compact singletons (our own). Every compact subset of the rationals has empty interior, so choose a rational within 1/n of zero outside member n (our own). These points together with zero form a compact set that no member contains (our own).
+
+**Wikipedia:** [Hemicompact space](https://en.wikipedia.org/wiki/Hemicompact_space). It says: “defines a metric on C(X,M) which induces the compact-open topology.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Retracts preserve neighborhood extension
+
+**Remember:** Extend into the larger target, then retract the result.
+
+*True by definition.* MSC 54C55 (Absolute neighborhood extensor, absolute extensor, absolute neighborhood retract (ANR), absolute retract spaces (general properties)). arXiv math.GN. Level 3: graduate.
+
+**Definition.** An absolute neighborhood extensor for metric spaces allows every continuous map into it from a closed subset to extend continuously over some open neighborhood. Here the closed subset belongs to any metric space. A metrizable absolute neighborhood retract admits a continuous retraction from a neighborhood whenever it embeds as a closed subset of a metric space. A retraction maps onto the subset and fixes each of its points.
+
+**Problem.** A retract of a metrizable absolute neighborhood extensor is an absolute neighborhood extensor. Thus a retract of a metrizable absolute neighborhood retract has the same property.
+
+**How the definition helps.** The extension definition lets one extend into the original target and compose with the retraction (our own). Our own proof first regards the given map as a map into the larger target. The work of comparing the definitions lies in Dugundji’s equivalence of neighborhood retracts and neighborhood extensors for metric spaces (our own).
+
+**Wikipedia:** [Absolute neighborhood retract](https://en.wikipedia.org/wiki/Absolute_neighborhood_retract). It says: “For each metric space X and closed subset A ⊂ X, each A → Y extends to a neighborhood of A”
+
+**Sources:**
+
+- [James Dugundji, An extension of Tietze’s theorem (1951)](https://doi.org/10.2140/pjm.1951.1.353)
 
 ### Michael's selection theorem makes gluing paracompact spaces easy
 
@@ -1457,6 +1581,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Regularity makes H-closed spaces compact
+
+**Remember:** Shrink first so a finite dense family really covers.
+
+*Rules out counterexamples.* MSC 54D25 (\`\`\\(P\\)-minimal'' and \`\`\\(P\\)-closed'' spaces). arXiv math.GN. Level 3: graduate.
+
+**Definition.** A Hausdorff space is H-closed if it is closed in every Hausdorff space containing it. Equivalently, each open cover has finitely many members with dense union. Regularity lets each point shrink an open neighborhood so its closure lies in the original neighborhood.
+
+**Problem.** A regular Hausdorff H-closed space is compact.
+
+**How the definition helps.** Regularity lets us shrink each cover member around each of its points before applying the dense-union test (our own). Finitely many shrunken sets have dense union, so their closures cover the space (our own). The original cover members containing those closures give a finite subcover (our own). The cited example adds the rational points as one open set to the usual topology on the unit interval. The resulting space is H-closed and fails compactness.
+
+**Wikipedia:** [H-closed space](https://en.wikipedia.org/wiki/H-closed_space). It says: “Every regular Hausdorff H-closed space is compact.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Compact Hausdorff spaces are the algebras of the ultrafilter monad
 
 **Remember:** Compact gives each ultrafilter a limit; Hausdorff makes that limit unique.
@@ -1512,6 +1652,24 @@
 
 - [Eduard Čech, On Bicompact Spaces (1937)](https://doi.org/10.2307/1968839)
 
+### Discrete Stone–Čech compactifications are projective
+
+**Remember:** Choose a lift on discrete points, then extend once.
+
+*True by definition.* MSC 54D35 (Extensions of spaces (compactifications, supercompactifications, completions, etc.)). arXiv math.GN. Level 3: graduate.
+
+**Definition.** The Stone–Čech compactification contains the original space densely in a compact Hausdorff space. Every continuous map into a compact Hausdorff space extends uniquely from the original space over the compactification. A compact Hausdorff space P is projective if every continuous map from P to Y factors through every continuous surjection Z → Y. Here Y and Z are compact Hausdorff, and the factor from P to Z must be continuous.
+
+**Problem.** The Stone–Čech compactification of every discrete space is projective among compact Hausdorff spaces.
+
+**How the definition helps.** The extension property reduces a continuous lift to a choice of preimages on the discrete subset (our own). Choose one preimage of each prescribed value under the surjection (our own). The chosen assignment is continuous on a discrete space, so it extends to the compactification (our own). Composing with the surjection recovers the given map by uniqueness (our own). This bypasses Gleason’s characterization and uses the theorem giving the Stone–Čech extension property (our own).
+
+**nLab:** [Stone-Čech compactification](https://ncatlab.org/nlab/show/Stone-%C4%8Cech+compactification). It says: “is an extremally disconnected topological space. By a theorem by Gleason, these are precisely the projective objects”
+
+**Sources:**
+
+- [Andrew M. Gleason, Projective topological spaces (1958)](https://doi.org/10.1215/ijm/1255454110)
+
 ### Discretizing the dual gives locally compact abelian groups their Bohr compactification
 
 **Remember:** Give the dual the discrete topology, then take its dual.
@@ -1527,6 +1685,43 @@
 **Wikipedia:** [Pontryagin duality](https://en.wikipedia.org/wiki/Pontryagin_duality), [Bohr compactification](https://en.wikipedia.org/wiki/Bohr_compactification). It says: “is a morphism into a compact group which is easily shown to satisfy the requisite universal property.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Pseudocompact products preserve Stone–Čech products
+
+**Remember:** Check bounded functions on the product, not just on its factors.
+
+*Rules out counterexamples.* MSC 54D35 (Extensions of spaces (compactifications, supercompactifications, completions, etc.)). arXiv math.GN. Level 3: graduate.
+
+**Definition.** For a subspace of a compact Hausdorff space, the Stone–Čech compactification contains that subspace densely and extends every bounded continuous real function. Pseudocompactness means that every continuous real function is bounded.
+
+**Problem.** Let X and Y be infinite subspaces of compact Hausdorff spaces. Compactifying each factor gives a natural map from the Stone–Čech compactification of X × Y to the product of the two Stone–Čech compactifications. This map is a homeomorphism exactly when X × Y is pseudocompact.
+
+**How the definition helps.** The extension property turns the product comparison into a test on bounded continuous functions (our own). Glicksberg’s theorem connects that test to pseudocompactness. For two discrete copies of ℕ, take the function equal to one on the diagonal and zero elsewhere (our own). Choose an added point p in the Stone–Čech compactification of ℕ (our own). Any two neighborhoods of p overlap on infinitely many natural numbers (our own). Hence each product neighborhood of (p, p) meets both the diagonal and its complement, preventing continuous extension (our own).
+
+**Paper or page:** [Functions on products of pseudocompact spaces](https://arxiv.org/abs/2109.09716v2). It says: “If X is pseudocompact and Φ is continuous, then Φ extends to a continuous function Φ̂: X̂ → ℝ.”
+
+**Sources:**
+
+- [Functions on products of pseudocompact spaces](https://arxiv.org/abs/2109.09716v2)
+- [Irving Glicksberg, Stone-Čech compactifications of products (1959)](https://doi.org/10.1090/S0002-9947-1959-0105667-4)
+
+### Wallman filters yield compactness
+
+**Remember:** Extend a family with nonempty finite intersections to obtain a common Wallman point.
+
+*True by definition.* MSC 54D35 (Extensions of spaces (compactifications, supercompactifications, completions, etc.)). arXiv math.GN. Level 3: graduate.
+
+**Definition.** A Wallman point is a maximal family of closed sets excluding the empty set and closed under finite intersections and passage to larger closed sets. For each closed set F, take all Wallman points containing F. These sets generate the closed sets of the Wallman topology by finite unions and arbitrary intersections.
+
+**Problem.** For any nonempty space with closed singletons, its Wallman extension is compact.
+
+**How the definition helps.** Choosing filters as points turns a common-point problem into extending a family of closed sets (our own). Alexander’s subbase theorem reduces the usual open-cover proof to checking the generating closed sets (our own). Suppose every finite group of these generators shares a point (our own). Then every finite intersection of their defining closed sets is nonempty (our own). The maximal filter lemma extends those sets to one Wallman point belonging to every generator in the family (our own).
+
+**Wikipedia:** [Wallman compactification](https://en.wikipedia.org/wiki/Wallman_compactification). It says: “The points of the Wallman compactification ωX of a space X are the maximal proper filters in the poset of closed subsets of X.”
+
+**Sources:**
+
+- [Henry Wallman, Lattices and Topological Spaces (1938)](https://doi.org/10.2307/1968717)
 
 ### Exponentiable spaces are exactly the core-compact spaces
 
@@ -1546,6 +1741,22 @@
 
 - [Karl H. Hofmann, Jimmie D. Lawson, The spectral theory of distributive continuous lattices, Trans. AMS 246 (1978) 285–310](https://doi.org/10.1090/S0002-9947-1978-0515540-7)
 - [J. M. E. Hyland, Function spaces in the category of locales, in: Continuous Lattices, Lecture Notes in Mathematics 871, Springer (1981) 264–281](https://doi.org/10.1007/BFb0089910)
+
+### Compact tests survive quotients
+
+**Remember:** Quotient tests still work after a second quotient.
+
+*True by definition.* MSC 54D50 (\\(k\\)-spaces). arXiv math.GN. Level 3: graduate.
+
+**Definition.** A space is compactly generated here when maps from compact Hausdorff spaces detect its open sets. This means a set is open whenever all those continuous maps have open preimages of it. Equivalently, the space is a quotient of a locally compact Hausdorff space.
+
+**Problem.** Every quotient of a compactly generated space is compactly generated in the compact Hausdorff test sense.
+
+**How the definition helps.** The quotient description makes a second quotient automatic because two quotient maps compose to a quotient map (our own). The work lies in proving that the open-set test and the quotient description agree (our own).
+
+**Wikipedia:** [Compactly generated space](https://en.wikipedia.org/wiki/Compactly_generated_space). It says: “A quotient space of a CG-2 space is CG-2.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Compactly generated spaces make the exponential law hold for all spaces
 
@@ -1600,6 +1811,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Bounded realcompact coordinates give compactness
+
+**Remember:** Every bounded coordinate can live in a compact interval.
+
+*Rules out counterexamples.* MSC 54D60 (Realcompactness and realcompactification). arXiv math.GN. Level 3: graduate.
+
+**Definition.** A realcompact space embeds as a closed subset of a product of real lines. A pseudocompact space has bounded image under each continuous real function.
+
+**Problem.** A pseudocompact realcompact space is compact.
+
+**How the definition helps.** Bounded coordinate functions place the closed image in a product of compact intervals (our own). Tychonoff’s theorem makes that product compact, so its closed subspace is compact (our own). Without realcompactness, take all countable ordinals in their order topology (our own). Every countable open cover has a finite subcover, which forces each continuous real function to be bounded (our own). The open initial segments cover the space without a finite subcover (our own).
+
+**Wikipedia:** [Pseudocompact space](https://en.wikipedia.org/wiki/Pseudocompact_space). It says: “For a Hausdorff space X to be compact requires that X be pseudocompact and realcompact”
+
+**Sources:**
+
+- [Edwin Hewitt, Rings of real-valued continuous functions. I (1948)](https://doi.org/10.1090/S0002-9947-1948-0026239-9)
+
 ### Closed embeddings in powers of ℝ make products of realcompact spaces realcompact
 
 **Remember:** A product of closed real embeddings is another closed real embedding.
@@ -1617,6 +1846,25 @@
 **Sources:**
 
 - [Edwin Hewitt, Rings of real-valued continuous functions. I (1948)](https://doi.org/10.1090/s0002-9947-1948-0026239-9)
+
+### Countable covers detect realcompactness
+
+**Remember:** An empty total intersection already has an empty countable intersection.
+
+*True by definition.* MSC 54D60 (Realcompactness and realcompactification). arXiv math.GN. Level 3: graduate.
+
+**Definition.** A zero set is where a continuous real function vanishes. Consider a maximal family of zero sets in which every finite collection has nonempty intersection. The realcompactness test requires each such family to share a point whenever every countable collection does.
+
+**Problem.** Assume the axiom of choice. A completely regular Hausdorff space is realcompact if each open cover has a countable subcover. Complete regularity means continuous real functions separate points from closed sets that omit them.
+
+**How the definition helps.** The countable subcover gives exactly the countable test needed for zero sets (our own). If the family shares no point, its complements form an open cover (our own). A countable subcover would give countably many zero sets with empty intersection (our own). Hewitt’s theorem identifies this test with having a closed embedding in a product of real lines (our own).
+
+**Paper or page:** [Characterizations of ℕ-compactness and realcompactness via ultrafilters in the absence of the axiom of choice](https://arxiv.org/abs/2408.01461v1). It says: “CMC implies that every Tychonoff Lindelöf space is realcompact.”
+
+**Sources:**
+
+- [Characterizations of ℕ-compactness and realcompactness via ultrafilters in the absence of the axiom of choice](https://arxiv.org/abs/2408.01461v1)
+- [Edwin Hewitt, Rings of real-valued continuous functions. I (1948)](https://doi.org/10.1090/S0002-9947-1948-0026239-9)
 
 ### Proximity relations classify the compactifications of a Tychonoff space
 
@@ -1717,6 +1965,58 @@
 **nLab:** [totally bounded space](https://ncatlab.org/nlab/show/totally+bounded+space). It says: “A uniform space X is totally bounded if every uniform cover of X has a finite subcover.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Metric topologies can hide nonmetrizable uniformities
+
+**Remember:** Count uniform scales, not the open sets they generate.
+
+*Rules out counterexamples.* MSC 54E15 (Uniform structures and generalizations). arXiv math.GN. Level 3: graduate.
+
+**Definition.** A uniformity describes closeness by sets of pairs called entourages. A base is a family of entourages such that every entourage contains one from the family. A metric generates a uniformity when its positive distance bounds give such a base.
+
+**Problem.** A Hausdorff uniformity comes from a metric exactly when it has a countable base of close-pair relations.
+
+**How the definition helps.** A single metric supplies a countable base by taking distance bounds 1, ½, ⅓ and so on (our own). The uniform metrization theorem gives the converse (our own). On ℝ, let basic entourages bound the changes of finitely many continuous real functions (our own). Continuity and the identity function give the usual topology (our own). For each proposed basic entourage number n, continuity gives two distinct points in (n, n + 1) passing its tests (our own). Interpolate continuously between prescribed values zero and one on each successive pair (our own). Requiring this function to change by less than ½ excludes one pair from every proposed base member (our own).
+
+**Paper or page:** [Uniform Space whose Topology is Metrizable is not necessarily Metrizable](https://proofwiki.org/wiki/Uniform_Space_whose_Topology_is_Metrizable_is_not_necessarily_Metrizable). It says: “Then it is not necessarily the case that 𝒰 is itself a metrizable uniformity.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Product Cauchy tests are coordinatewise
+
+**Remember:** Finitely many coordinate tests need only one common starting point.
+
+*Rules out counterexamples.* MSC 54E15 (Uniform structures and generalizations). arXiv math.GN. Level 3: graduate.
+
+**Definition.** An entourage specifies which pairs of points count as close. A basic product entourage tests closeness in finitely many coordinates. A net has ordered indices such that every finite group of indices has a common upper bound. It is Cauchy if every entourage contains all pairs of terms beyond some index.
+
+**Problem.** A net in a product of uniform spaces is Cauchy exactly when each coordinate net is Cauchy.
+
+**How the definition helps.** Finitely many coordinate tests share a starting index beyond which all of them pass (our own). Testing one coordinate gives the converse (our own). For comparison, take the sequence of unit vectors in a countable product of real lines (our own). Each coordinate eventually vanishes, yet distinct vectors differ by one somewhere (our own). A box test requiring every coordinate difference to be below one therefore fails (our own).
+
+**Paper or page:** [Lebesgue Property and G-completeness in Generalized Quasi-uniform Spaces](https://arxiv.org/abs/2311.02325v1). It says: “Then a net (Rₙ)₍ₙ∈D₎ in X is Cauchy if and only if for each i ∈ I, the net (πᵢ(Rₙ))₍ₙ∈D₎ in Xᵢ is Cauchy.”
+
+**Sources:**
+
+- [Lebesgue Property and G-completeness in Generalized Quasi-uniform Spaces](https://arxiv.org/abs/2311.02325v1)
+
+### Uniform scales become partitions
+
+**Remember:** At each scale, one partition says which points are close.
+
+*True by definition.* MSC 54E15 (Uniform structures and generalizations). arXiv math.GN. Level 3: graduate.
+
+**Definition.** A uniformity describes closeness using sets of pairs called entourages. It is non-Archimedean if every entourage contains an entourage that is an equivalence relation. A cover is uniform if, for some entourage, each point and all its neighbors fit inside one cover member.
+
+**Problem.** A uniformity is non-Archimedean exactly when every uniform cover has a finer uniform cover made of disjoint blocks.
+
+**How the definition helps.** The classes of an equivalence relation give precisely the blocks needed for a partition (our own). Conversely, pairs in the same block form an equivalence relation (our own). The general correspondence between uniform covers and entourages supplies the translation between bases (our own).
+
+**Paper or page:** [Equivalent characterizations of non-Archimedean uniform spaces](https://arxiv.org/abs/2111.09722v1). It says: “The maps in remark 2.1.1 restrict to bijections of non-Archimedean diagonal uniformities and covering uniformities having a basis consisting of partitions.”
+
+**Sources:**
+
+- [Equivalent characterizations of non-Archimedean uniform spaces](https://arxiv.org/abs/2111.09722v1)
 
 ### Short maps and infinite distances make the category of metric spaces complete
 
@@ -1826,6 +2126,42 @@
 **Sources:**
 
 - [Urysohn, P. (1925). Mémoire sur les multiplicités Cantoriennes. Fundamenta Mathematicae 7, 30–137.](https://doi.org/10.4064/fm-7-1-30-137)
+
+### Small inductive dimension is hereditary
+
+**Remember:** Restrict the neighborhoods and the boundaries only get smaller.
+
+*True by definition.* MSC 54F45 (Dimension theory in general topology). arXiv math.GN. Level 3: graduate.
+
+**Definition.** Small inductive dimension is at most n if every point has arbitrarily small open neighborhoods whose boundaries have dimension at most n − 1. The empty space starts the recursion at −1. Covering dimension instead measures how many sets of a refined cover can overlap.
+
+**Problem.** For a separable metric space, every subspace has covering dimension at most that of the whole space. Separable means that a countable subset is dense.
+
+**How the definition helps.** The recursive boundary test passes to subspaces because restricting an open set can only shrink its boundary (our own). Induction therefore bounds the dimension of each restricted boundary by the original bound (our own). The cited subspace theorem gives this for small inductive dimension. The dimension comparison theorem identifies it with covering dimension for separable metric spaces and their subspaces (our own).
+
+**nLab:** [inductive dimension](https://ncatlab.org/nlab/show/inductive+dimension). It says: “for every subspace M of a regular space X we have ind(M) ≤ ind(X).”
+
+**Sources:**
+
+- [Ryszard Engelking, Dimension Theory (1978)](https://www.maths.ed.ac.uk/~v1ranick/papers/engelking.pdf)
+
+### Sphere extensions glue dimension bounds
+
+**Remember:** Extend over one closed piece, then extend over the next.
+
+*True by definition.* MSC 54F45 (Dimension theory in general topology). arXiv math.GN. Level 3: graduate.
+
+**Definition.** For an integer n ≥ 0, the sphere test asks whether every continuous map from a closed subset into the n-sphere extends over the space. Covering dimension at most n means every finite open cover has a finite open refinement with at most n + 1 sets through each point.
+
+**Problem.** Let n ≥ 0 be an integer. If a normal Hausdorff space is a finite union of closed subspaces of covering dimension at most n, its dimension is at most n.
+
+**How the definition helps.** The sphere test lets one extend over each closed piece in turn while keeping the values already fixed (our own). Our own proof joins each extension to the map already defined using the closed-set pasting lemma. The work moves to the dimension theorem equating sphere extension with the open-cover bound on normal spaces (our own).
+
+**Wikipedia:** [Lebesgue covering dimension](https://en.wikipedia.org/wiki/Lebesgue_covering_dimension). It says: “if f: A → Sⁿ is continuous, then there is an extension of f to g: X → Sⁿ.”
+
+**Sources:**
+
+- [Ryszard Engelking, Dimension Theory (1978)](https://www.maths.ed.ac.uk/~v1ranick/papers/engelking.pdf)
 
 ### Defining extremally disconnected spaces as projective makes their retracts extremally disconnected
 
@@ -1966,6 +2302,60 @@
 
 - [Xiongping Dai, Yuxun Xie, Characterizations of open and semi-open maps of compact Hausdorff spaces by induced maps, arXiv:2404.12727 (2024)](https://arxiv.org/abs/2404.12727v2)
 
+### Pointwise quotients yield Vietoris hit tests
+
+**Remember:** Finite coordinate tests become hit tests when order is forgotten.
+
+*True by definition.* MSC 54B20 (Hyperspaces in general topology). arXiv math.GN. Level 4: research.
+
+**Definition.** Give maps from ℕ to X the pointwise topology, which tests values at finitely many inputs. Identify maps when the closures of their ranges agree. The lower Vietoris topology tests whether a closed set meets a given open set.
+
+**Problem.** The map sending a sequence to the closure of its range is a quotient onto the nonempty closed sets with countable dense subsets. Give those sets the lower Vietoris topology.
+
+**How the definition helps.** Forgetting the order turns finitely many coordinate requirements into an intersection of open hit tests (our own). A closed set passing those tests contains a point for each required coordinate (our own). Its remaining coordinates can list a dense sequence (our own). Thus the map takes basic open sets to open sets (our own). It is continuous because a hit test pulls back to a union of single-coordinate tests (our own). An open continuous surjection gives the quotient topology, where a set is open exactly when its preimage is open (our own).
+
+**Paper or page:** [Modulo arithmetic of function spaces: Subset hyperspaces as quotients of function spaces](https://arxiv.org/abs/2503.10803v2). It says: “the map $q:(\\mathcal{F},\\tau<sub>p</sub>)\\rightarrow (Cl<sub>Y</sub>(X),\\tau<sub>v</sub><sup>-</sup>)$ is a quotient map”
+
+**Sources:**
+
+- [Modulo arithmetic of function spaces: Subset hyperspaces as quotients of function spaces](https://arxiv.org/abs/2503.10803v2)
+
+### Patch topologies keep spectral limits compact
+
+**Remember:** Complemented tests make the compatibility equations closed.
+
+*True by definition.* MSC 54B35 (Spectra in general topology). arXiv math.GN. Level 4: research.
+
+**Definition.** A spectral space is compact and has a base of compact open sets closed under finite intersections. Each nonempty closed set that cannot split into two smaller closed sets must also be the closure of exactly one point. A spectral map is continuous and pulls compact open sets back to compact open sets. The patch topology is generated by compact open sets and their complements.
+
+**Problem.** Any inverse limit of spectral spaces and spectral maps is compact in its original limit topology.
+
+**How the definition helps.** The patch topology turns the limit into a closed subset of a compact product (our own). Spectral maps remain continuous because their preimages preserve the generating patch tests (our own). A limit consists of tuples whose coordinates agree under each specified map (our own). Each agreement defines a closed set because the target patch space is Hausdorff (our own). Their intersection stays compact when we return to the coarser original topology (our own). The main theorem used here makes each patch space compact Hausdorff (our own).
+
+**Paper or page:** [Lemma 5.24.1.](https://stacks.math.columbia.edu/tag/0A2V). It says: “The space X = lim Xᵢ is quasi-compact.”
+
+**Sources:**
+
+- [The Stacks Project, Lemma 5.24.1](https://stacks.math.columbia.edu/tag/0A2V)
+
+### Spectral maps preserve patch continuity
+
+**Remember:** Preserve compact opens and their complements come along.
+
+*Rules out counterexamples.* MSC 54B35 (Spectra in general topology). arXiv math.GN. Level 4: research.
+
+**Definition.** A spectral space is compact and has a base of compact open sets closed under finite intersections. Each nonempty closed set that cannot split into two smaller closed sets must also be the closure of exactly one point. A spectral map is continuous and pulls compact open sets back to compact open sets. The patch topology is generated by compact open sets and their complements.
+
+**Problem.** A continuous map between spectral spaces is patch-continuous exactly when it is spectral.
+
+**How the definition helps.** A spectral map pulls back both kinds of generating patch sets to sets of the same kind (our own). Conversely, patch continuity makes each preimage of a compact open set closed in the compact patch space (our own). This preimage stays compact in the original topology and is open by original continuity (our own). Take the one-point compactification of the discrete natural numbers (our own). Map the natural numbers to a and infinity to b in the two-point space whose only proper nonempty open set is {a} (our own). This map is continuous, yet the preimage of {a} is open and fails compactness (our own).
+
+**Paper or page:** [Lemma 5.23.4.](https://stacks.math.columbia.edu/tag/0G1J). It says: “Then f is spectral if and only if f is continuous in the constructible topology.”
+
+**Sources:**
+
+- [The Stacks Project, Lemma 5.23.4](https://stacks.math.columbia.edu/tag/0G1J)
+
 ### A weaker filter condition shows core-compact well-filtered spaces are sober
 
 **Remember:** Test the filter condition on open sets, not on compact sets.
@@ -2020,6 +2410,42 @@
 
 - [Marco Abbadini and Dirk Hofmann, Barr-coexactness for metric compact Hausdorff spaces, arXiv:2408.07039 (2024)](https://arxiv.org/abs/2408.07039)
 
+### Slow oscillation controls Higson extensions
+
+**Remember:** Far away, fixed-size balls must look almost constant.
+
+*True by definition.* MSC 54D35 (Extensions of spaces (compactifications, supercompactifications, completions, etc.)). arXiv math.GN. Level 4: research.
+
+**Definition.** A metric space is proper if closed bounded sets are compact. A map oscillates slowly if its image on every fixed-radius ball has diameter tending to zero as the center goes to infinity. In the coordinate construction, use every continuous slowly oscillating function into \[0, 1\] as a coordinate. The closure of the resulting image in the product of intervals is the Higson compactification.
+
+**Problem.** A continuous map from a proper metric space into a compact metric space extends over the Higson compactification exactly when it is slowly oscillating. For a map, measure variation by the diameter of the image.
+
+**How the definition helps.** Coordinates make extension automatic for each continuous slowly oscillating function into \[0, 1\] (our own). Embed the compact metric target in a product of intervals (our own). Each coordinate of a slowly oscillating map then oscillates slowly by uniform continuity on the target (our own). The extended coordinates land in the closed target image by density (our own). Conversely, compactness makes each target tolerance depend on finitely many coordinate tolerances (our own). Slow oscillation in those coordinates gives slow oscillation of the original map (our own). This proves the extension criterion from the coordinate construction, including continuity at the added points called the corona (our own).
+
+**Paper or page:** [Embedding of Higson compactification into the product of adelic solenoids](https://arxiv.org/abs/2205.03698v1). It says: “a continuous map f: X → C to a compact metric space C extends continuously to the Higson corona if and only if f is slowly oscillating.”
+
+**Sources:**
+
+- [Embedding of Higson compactification into the product of adelic solenoids](https://arxiv.org/abs/2205.03698v1)
+
+### Closed graphs preserve realcompact inverse images
+
+**Remember:** Closed product embeddings turn inverse images into closed graphs.
+
+*True by definition.* MSC 54D60 (Realcompactness and realcompactification). arXiv math.GN. Level 4: research.
+
+**Definition.** A realcompact space embeds as a closed subset of a product of real lines. An equivalent test uses maximal families of zero sets, the sets where continuous real functions vanish. If each finite intersection in such a family is nonempty, the test asks whether nonempty countable intersections force a common point.
+
+**Problem.** Let f map a realcompact space X continuously into a Hausdorff space Y. If B is a realcompact subspace of Y, then f⁻¹\[B\] is realcompact.
+
+**How the definition helps.** Closed product embeddings reduce the claim to finding a closed copy of the inverse image (our own). In X × B, take all pairs (x, b) with f(x) = b (our own). They form a closed set because the diagonal of Y × Y is closed (our own). Projection identifies this set with the inverse image, and X × B embeds closed in a product of real lines (our own). Hewitt’s theorem connects this embedding definition with the zero-set test (our own).
+
+**Paper or page:** [Characterizations of ℕ-compactness and realcompactness via ultrafilters in the absence of the axiom of choice](https://arxiv.org/abs/2408.01461v1). It says: “the subspace f⁻¹\[B\] of X is E-compact.”
+
+**Sources:**
+
+- [Characterizations of ℕ-compactness and realcompactness via ultrafilters in the absence of the axiom of choice](https://arxiv.org/abs/2408.01461v1)
+
 ### Uniform regularity gives constructive uniform spaces regularity and apartness
 
 **Remember:** Any two points are either close at one scale or apart at a finer one.
@@ -2071,6 +2497,24 @@
 **Sources:**
 
 - [Asier Estevan, Roberto Maura, Oscar Valero, Intergenerational Preferences and Continuity: Reconciling Order and Topology, arXiv:2402.01699v1 (2024)](https://arxiv.org/abs/2402.01699v1)
+
+### Clopen bases preserve product dimension zero
+
+**Remember:** Products of closed and open tests stay closed and open.
+
+*Rules out counterexamples.* MSC 54F45 (Dimension theory in general topology). arXiv math.GN. Level 4: research.
+
+**Definition.** Small inductive dimension is zero for a nonempty space with a base of clopen sets, meaning sets both closed and open. Here covering dimension zero means every finite open cover has a finite disjoint open refinement, also for spaces that are not normal.
+
+**Problem.** Every nonempty product of spaces of small inductive dimension zero has small inductive dimension zero. Covering dimension zero does not have this permanence.
+
+**How the definition helps.** Products have a base of sets restricting finitely many coordinates, and clopen restrictions give clopen product sets (our own). For comparison, the Sorgenfrey line has a base of intervals \[a, b) (our own). These intervals are clopen, and each open cover has a countable subcover (our own). Thus any finite open cover has a countable clopen refinement (our own). Subtract earlier sets from each successive set, then group the disjoint pieces by the original cover members (our own). This proves covering dimension zero for the line (our own). Sipacheva proves that its square has infinite covering dimension.
+
+**Paper or page:** [The Covering Dimension of the Sorgenfrey Plane](https://arxiv.org/abs/2110.08867v2). It says: “dim S × S = ∞.”
+
+**Sources:**
+
+- [The Covering Dimension of the Sorgenfrey Plane](https://arxiv.org/abs/2110.08867v2)
 
 ### Palais's stronger properness gives slices without local compactness
 

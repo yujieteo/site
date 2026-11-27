@@ -302,6 +302,24 @@
 
 - [M. Fekete, Über die Verteilung der Wurzeln bei gewissen algebraischen Gleichungen mit ganzzahligen Koeffizienten (1923)](https://doi.org/10.1007/BF01504345)
 
+### Divided measures solve recurrences
+
+**Remember:** An index shift multiplies the moment integrand by its variable.
+
+*True by definition.* MSC 39A06 (Linear difference equations). arXiv math.CA. Level 3: graduate.
+
+**Definition.** Let μ be a finite positive measure on a compact subset of the real line. Its nth moment is aₙ = ∫ tⁿ dμ(t). Choose a polynomial P strictly positive on that set, and define bₙ = ∫ tⁿ/P(t) dμ(t).
+
+**Problem.** Write P(t) = c₀ + c₁t + ⋯ + cₘtᵐ with cₘ ≠ 0. Then c₀bₙ + c₁bₙ₊₁ + ⋯ + cₘbₙ₊ₘ = aₙ for every n ≥ 0. The first m integrals defining bₙ supply the initial values.
+
+**How the definition helps.** Defining all terms by integrals makes an index shift multiply the integrand by t. Our own explanation replaces recursive solution by a single cancellation. The weighted sum multiplies the integrand by P(t), leaving the moment aₙ. The work lies in finding a representing measure and checking that division preserves finiteness.
+
+**Paper or page:** [Moment sequences and difference equations](https://arxiv.org/abs/2204.04706v5). It says: “∑ⱼ₌₀ᵐ cⱼbₙ₊ⱼ = aₙ”
+
+**Sources:**
+
+- [Moment sequences and difference equations](https://arxiv.org/abs/2204.04706v5)
+
 ### Factorial weights simplify binomial convolution
 
 **Remember:** Divide coefficients by factorials to multiply binomial convolutions.
@@ -337,6 +355,24 @@
 **Sources:**
 
 - [Discrete Generating Series and Linear Difference Equations](https://arxiv.org/abs/2504.21722v1)
+
+### Nonresonance prevents infinitely many zeros
+
+**Remember:** Without roots that repeat powers together, cancellations cannot persist along a progression.
+
+*Rules out counterexamples.* MSC 39A06 (Linear difference equations). arXiv math.NT. Level 3: graduate.
+
+**Definition.** For a linear recurrence sequence over a field of characteristic zero, let S shift the sequence forward by one place. Its minimal recurrence polynomial is the monic polynomial P of least degree for which P(S) sends the sequence to zero. Require all roots of P to be nonzero. Call the recurrence nondegenerate if no ratio of distinct roots has a positive integer power equal to one.
+
+**Problem.** A nonzero sequence indexed by the nonnegative integers and satisfying such a nondegenerate linear recurrence has only finitely many zeros.
+
+**How the definition helps.** Nondegeneracy keeps distinct roots distinct after raising them to any common positive integer power. Our own argument writes the sequence as a sum of terms p(n)λⁿ, one for each root λ, over a field containing the roots. On a progression of step d, the new exponential bases are the distinct numbers λᵈ. Independence of polynomial multiples of distinct exponentials prevents the restricted sequence from vanishing identically. The Skolem–Mahler–Lech theorem supplies the difficult implication that infinitely many zeros would contain an infinite arithmetic progression. Our own example 1−(−1)ⁿ vanishes at every even index.
+
+**Wikipedia:** [Skolem–Mahler–Lech theorem](https://en.wikipedia.org/wiki/Skolem%E2%80%93Mahler%E2%80%93Lech_theorem). It says: “is equal to the union of finitely many arithmetic progressions and a finite set.”
+
+**Sources:**
+
+- [Christer Lech, A note on recurring series (1953)](https://doi.org/10.1007/bf02590997)
 
 ### Reversible weights make spectra nonnegative
 
@@ -374,6 +410,24 @@
 
 - [Hyers-Ulam stability for finite-dimensional nonautonomous dynamics](https://arxiv.org/abs/2401.04516v1)
 
+### Unit circle roots prevent shadowing
+
+**Remember:** Correct shrinking errors from the past and growing errors from the future.
+
+*Rules out counterexamples.* MSC 39A30 (Stability theory for difference equations). arXiv math.DS. Level 3: graduate.
+
+**Definition.** A square complex matrix A is hyperbolic if every eigenvalue has modulus different from one. An exact orbit satisfies xₙ₊₁ = Axₙ for every n ≥ 0.
+
+**Problem.** The recurrence has forward shadowing exactly when A is hyperbolic. For every ε &gt; 0, some δ &gt; 0 must work for every sequence with errors ‖yₙ₊₁ − Ayₙ‖ ≤ δ. Some exact orbit must then stay within ε of that sequence at every step.
+
+**How the definition helps.** Hyperbolicity splits the space into directions that shrink under forward or backward iteration. In our own proof, we sum past errors on the forward-shrinking part and future errors on the backward-shrinking part. Both sums have a uniform bound proportional to δ. For an eigenvalue λ of modulus one, a left eigenvector gives a scalar coordinate evolving by multiplication by λ. Small errors aligned with successive powers of λ accumulate linearly in that coordinate. No exact orbit can shadow that drift.
+
+**Paper or page:** [Shadowing and hyperbolicity for linear delay difference equations](https://arxiv.org/abs/2401.10767v2). It says: “has no root on the unit circle \|λ\| = 1”
+
+**Sources:**
+
+- [Shadowing and hyperbolicity for linear delay difference equations](https://arxiv.org/abs/2401.10767v2)
+
 ### Nested compositions absorb one more step
 
 **Remember:** Moving time forward puts one more map on the outside.
@@ -410,6 +464,24 @@
 
 - [On the convergence of Newton series and the asymptotics of finite differences](https://arxiv.org/abs/2404.04288v3)
 
+### Böttcher coordinates turn iteration into powers
+
+**Remember:** In Böttcher coordinates, each step raises the previous value to the same power.
+
+*True by definition.* MSC 39B12 (Iteration theory, iterative and composite equations). arXiv math.DS. Level 3: graduate.
+
+**Definition.** Let h be a nonconstant analytic map near a fixed point a, with h′(a) = 0. Let d be the order of the first nonzero term of h(z) − a at a. A Böttcher coordinate is a locally invertible analytic map φ with φ(a) = 0 and φ(h(z)) = φ(z)ᵈ.
+
+**Problem.** In this coordinate, applying h successively n times raises the starting value to the power dⁿ.
+
+**How the definition helps.** The coordinate turns composition of h into repeated exponentiation with the same exponent. Our own calculation multiplies the exponents, avoiding repeated composition of the original power series. Böttcher’s theorem supplies the difficult step by proving that an analytic coordinate exists.
+
+**Wikipedia:** [Böttcher's equation](https://en.wikipedia.org/wiki/B%C3%B6ttcher%27s_equation). It says: “conjugates h(z) in a neighbourhood of the fixed point to the function zⁿ.”
+
+**Sources:**
+
+- [Pierre Fatou, Sur les équations fonctionnelles (1919)](https://doi.org/10.24033/bsmf.998)
+
 ### Normalized iterates solve Schröder’s equation
 
 **Remember:** Composing with f advances the iterate count and leaves one λ.
@@ -427,6 +499,24 @@
 **Sources:**
 
 - [Gabriel Koenigs, Recherches sur les intégrales de certaines équations fonctionnelles (1884)](https://doi.org/10.24033/asens.247)
+
+### One orbit interval builds square roots
+
+**Remember:** One step adds one, so a square root adds one half.
+
+*True by definition.* MSC 39B12 (Iteration theory, iterative and composite equations). arXiv math.DS. Level 3: graduate.
+
+**Definition.** Let F map \[a,b\] continuously and strictly increasingly into itself, with F(x) &gt; x for a ≤ x &lt; b. Choose a continuous increasing bijection h from \[a,F(a)\] onto \[0,1\]. Extend h by h(Fⁿ(x)) = h(x)+n, where Fⁿ means n successive applications.
+
+**Problem.** Choose any c strictly between a and F(a). Some continuous strictly increasing map g from \[a,b\] into itself satisfies g(a) = c and g∘g = F.
+
+**How the definition helps.** In the extended coordinate, one application of F adds one, so adding one half gives a square root. Our own construction chooses h(c) = 1/2. The successive endpoints Fⁿ(a) increase to b because their limit must be a fixed point. Adjacent intervals agree on the coordinate of their shared endpoint, giving a continuous increasing bijection from \[a,b) onto \[0,∞). Pulling translation by one half back through h defines g below b. Setting g(b) = b gives continuity there because h tends to infinity at b.
+
+**Paper or page:** [A sufficient condition for existence of iterative roots of PM functions without the characteristic endpoints condition](https://arxiv.org/abs/2109.12747v1). It says: “has a continuous and strictly increasing iterative root φ of order 2”
+
+**Sources:**
+
+- [A sufficient condition for existence of iterative roots of PM functions without the characteristic endpoints condition](https://arxiv.org/abs/2109.12747v1)
 
 ### Diagonal values simplify mixed differences
 
@@ -536,3 +626,21 @@
 **Sources:**
 
 - [Solution of the Kac--Bernstein functional equation on Abelian groups in the class of positive functions](https://arxiv.org/abs/2102.01592v1)
+
+### Negative scaling erases entropy errors
+
+**Remember:** Add a large positive input and every scaled error tends to zero.
+
+*Makes the theorem clean to state or prove.* MSC 39B82 (Stability, separation, extension, and related topics for functional equations). arXiv math.CA. Level 4: research.
+
+**Definition.** Fix α &lt; 0 and a real function f on (0,1). For u,v &gt; 0 define F(u,v) = (u+v)ᵅ f(v/(u+v)). Write Δ(v) for the forward difference in the first variable, so Δ(v)F(u,w) = F(u+v,w) − F(u,w).
+
+**Problem.** For x,y &gt; 0 with x+y &lt; 1, put T(x,y) = f(x) + (1−x)ᵅ f(y/(1−x)). If \|T(x,y)−T(y,x)\| has a uniform finite bound ε, then T(x,y) = T(y,x) everywhere on this domain.
+
+**How the definition helps.** The new variables express the error through commuting differences and give it a bound that decays at large scales. Our own proof sets E(u,v,w) = Δ(v)F(u,w) − Δ(w)F(u,v). Substituting x = w/(u+v+w) and y = v/(u+v+w) gives \|E(u,v,w)\| ≤ ε(u+v+w)ᵅ. Commuting the differences gives Δ(s)E(u,v,w) = Δ(v)E(u,s,w) − Δ(w)E(u,s,v). As s grows, the right side tends to zero, while the left side tends to −E(u,v,w). Thus E vanishes, and taking u = 1−x−y, v = y and w = x proves the claim.
+
+**Paper or page:** [Hyperstability of a functional equation](https://arxiv.org/abs/1307.0631v1). It says: “Then, and only then, there exist c,d ∈ ℝ such that f(x) = cxᵅ + d(1−x)ᵅ − d”
+
+**Sources:**
+
+- [Hyperstability of a functional equation](https://arxiv.org/abs/1307.0631v1)

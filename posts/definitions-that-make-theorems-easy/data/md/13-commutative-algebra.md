@@ -1058,6 +1058,42 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Cohen–Macaulay modules exclude embedded primes
+
+**Remember:** In a Cohen–Macaulay module, positive local dimension forces positive local depth.
+
+*Rules out counterexamples.* MSC 13C14 (Cohen-Macaulay modules). arXiv math.AC. Level 3: graduate.
+
+**Definition.** A module’s support consists of the primes where localization leaves it nonzero. Test a finite module for Cohen–Macaulayness by requiring depth to equal dimension at every prime in its support. Local depth counts the longest sequence in the local maximal ideal acting injectively on successive quotients. For a Noetherian local ring, the localization theorem makes this equivalent to testing only at the maximal ideal.
+
+**Problem.** Every associated prime of a finite Cohen–Macaulay module over a Noetherian local ring is minimal in its support. An associated prime consists of all scalars killing some particular nonzero element.
+
+**How the definition helps.** The local depth test rules out embedded primes because they have positive local dimension but depth zero (our own). The ring k\[x,y\]/(x²,xy) at (x,y) fails the test because x has annihilator (x,y), above the minimal prime (x) (our own). Localization of Cohen–Macaulay modules proves that the test agrees with the usual definition (our own).
+
+**Paper or page:** [Algebra, Lemma 10.103.7.](https://stacks.math.columbia.edu/tag/0BUS). It says: “In particular, M has no embedded associated primes.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Regular quotients preserve Cohen–Macaulayness
+
+**Remember:** One regular element lowers both numbers by one.
+
+*True by definition.* MSC 13C14 (Cohen-Macaulay modules). arXiv math.AC. Level 3: graduate.
+
+**Definition.** For a nonzero finite module over a Noetherian local ring, Cohen–Macaulay means depth equals dimension. Depth counts the longest sequence in the maximal ideal acting injectively on successive quotients. Dimension counts the longest chain of strict prime inclusions where localization leaves the module nonzero.
+
+**Problem.** If x lies in the maximal ideal and acts injectively on a nonzero finite module M, then M is Cohen–Macaulay exactly when M/xM is.
+
+**How the definition helps.** The depth definition reduces the comparison to subtracting one from both sides of an equality (our own). An alternative tests whether every sequence of parameters acts injectively on successive quotients (our own). The work here lies in proving that an injective element of the maximal ideal lowers both depth and dimension by one (our own).
+
+**nLab:** [Cohen-Macaulay module](https://ncatlab.org/nlab/show/Cohen-Macaulay+module). It says: “its depth is equal to its Krull dimension”
+
+**Wikipedia:** [Cohen–Macaulay ring](https://en.wikipedia.org/wiki/Cohen%E2%80%93Macaulay_ring). It says: “R is Cohen–Macaulay if and only if R/(u) is Cohen–Macaulay.”
+
+**Paper or page:** [Algebra, Lemma 10.103.5.](https://stacks.math.columbia.edu/tag/0C6G). It says: “Then M is Cohen-Macaulay if and only if M/xM is Cohen-Macaulay.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The Ext definition of depth makes depth bounds follow from exact sequences
 
 **Remember:** If both ends have zero Ext in low degrees, the middle does too.
@@ -1071,6 +1107,22 @@
 **How the definition helps.** With this definition, the bound is read off from the long exact sequence of Ext. That sequence contains Extⁱ(k, N′) → Extⁱ(k, N) → Extⁱ(k, N″) (our own). Below both outer depths, the outer groups are zero, so the middle one is zero too (our own). The work moves to Stacks Lemma 10.72.5, which shows that the Ext definition agrees with the usual one. With regular sequences, the bound needs a separate induction (our own).
 
 **Paper or page:** [Algebra, Lemma 10.72.6.](https://stacks.math.columbia.edu/tag/00LX), [Algebra, Lemma 10.72.5.](https://stacks.math.columbia.edu/tag/00LW). It says: “depth(N) ≥ min{depth(N′), depth(N″)}”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Fitting ideals commute with base change
+
+**Remember:** The same minors work over the new ring.
+
+*True by definition.* MSC 13C40 (Linkage, complete intersections and determinantal ideals). arXiv math.AC. Level 3: graduate.
+
+**Definition.** Choose n generators of a finite module and put their relations in the columns of a matrix. For 0 ≤ k &lt; n, determinants of square submatrices of size n − k generate the kth Fitting ideal. If no such submatrix exists, the ideal is zero. For k ≥ n, use the whole ring.
+
+**Problem.** Fitting ideals of finite modules commute with extension of scalars along every ring map.
+
+**How the definition helps.** Ring maps preserve determinants, so the same matrix gives the transformed ideal (our own). Tensoring a presentation still presents the module after extending scalars (our own). The work lies in showing that the ideal depends only on the module (our own). The zeroth Fitting ideal describes the same supporting primes as the annihilator, the ideal of scalars killing the module (our own). The annihilator can acquire extra elements after extending scalars (our own).
+
+**Paper or page:** [More Algebra, Lemma 15.8.4.](https://stacks.math.columbia.edu/tag/07ZA). It says: “If $R \\to R'$ is a ring map, then $\\text{Fit}<sub>k</sub>(M \\otimes<sub>R</sub> R')$ is the ideal of $R'$ generated by the image of $\\text{Fit}<sub>k</sub>(M)$.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -1144,6 +1196,22 @@
 - [The Stacks Project Authors, The Stacks Project, Tag 063C (Divisors, Lemma 31.20.1)](https://stacks.math.columbia.edu/tag/063C)
 - [The Stacks Project Authors, The Stacks Project, Tag 08SJ (Cotangent, Lemma 92.14.2)](https://stacks.math.columbia.edu/tag/08SJ)
 
+### Minimal resolutions reveal projective dimension
+
+**Remember:** Over the residue field, all differentials vanish.
+
+*True by definition.* MSC 13D05 (Homological dimension and commutative rings). arXiv math.AC. Level 3: graduate.
+
+**Definition.** A free resolution is an exact sequence of free modules ending in the given module. Over a Noetherian local ring, call it minimal when every differential between free modules has entries in the maximal ideal. Equivalently, choose a smallest generating set at each step. Projective dimension is the least length of a projective resolution, or infinity when none has finite length.
+
+**Problem.** For a nonzero finite module, projective dimension equals the largest degree with nonzero Tor against the residue field, or infinity if the degrees are unbounded.
+
+**How the definition helps.** The matrix test makes all differentials zero after tensoring with the residue field, the quotient by the maximal ideal (our own). Tor is the homology of this tensor product, so it records the rank in every degree (our own). A nonzero Tor group rules out any shorter projective resolution (our own). When the ranks vanish above some degree, the minimal resolution itself supplies the upper bound (our own). Nakayama’s lemma connects the matrix test to the construction by smallest generating sets (our own).
+
+**Paper or page:** [Homological Local, Corollary 4.7.](https://math.uchicago.edu/~amathew/CRing.pdf). It says: “Then pd(M) is the largest integer n such that Torₙ(M, k) ≠ 0.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Perfect complexes are exactly the compact objects of the derived category
 
 **Remember:** A purely categorical property picks out the perfect complexes.
@@ -1180,6 +1248,72 @@
 **Sources:**
 
 - [The Stacks Project Authors, The Stacks Project, Tag 066E (More Algebra, Lemma 15.65.17)](https://stacks.math.columbia.edu/tag/066E)
+
+### Depth two keeps punctures connected
+
+**Remember:** When sections extend across the puncture, so do idempotents.
+
+*Rules out counterexamples.* MSC 13D45 (Local cohomology and commutative rings). arXiv math.AC. Level 3: graduate.
+
+**Definition.** The punctured spectrum consists of all prime ideals of a local ring except its maximal ideal. Local cohomology at the maximal ideal measures sections supported at that point and the higher groups obtained by deriving this operation. Depth is the first degree where these groups are nonzero.
+
+**Problem.** The punctured spectrum of a Noetherian local ring of depth at least two is connected. The punctured spectrum omits the maximal ideal.
+
+**How the definition helps.** The depth test makes the first two local cohomology groups vanish, so every section on the puncture extends uniquely (our own). This follows from the exact sequence for restriction (our own). A disconnection would give a section equal to one on one part and zero on the other (our own). Its extension would satisfy e² = e, but a local ring has only zero and one as such elements (our own). A comparison theorem identifies this depth with the longest regular sequence in the maximal ideal (our own). In depth one, removing the closed point of k\[\[x,y\]\]/(xy) separates the two axes (our own).
+
+**Paper or page:** [Local Cohomology, Lemma 51.3.1.](https://stacks.math.columbia.edu/tag/0BLR). It says: “Let $A$ be a Noetherian local ring of depth $\\geq 2$. Then the punctured spectra of $A$, $A<sup>h$</sup>, and $A<sup>sh</sup>$ are connected.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Local cohomology ignores ideal thickening
+
+**Remember:** Ideals defining the same closed set give the same local cohomology.
+
+*True by definition.* MSC 13D45 (Local cohomology and commutative rings). arXiv math.AC. Level 3: graduate.
+
+**Definition.** Define local cohomology as the derived functor of sections supported on the closed set of primes containing an ideal. A section is supported there if it vanishes outside that set. The module definition instead derives the functor taking elements killed by some power of the ideal.
+
+**Problem.** The radical of an ideal consists of elements having some positive power in that ideal. Over a Noetherian ring, ideals with the same radical give naturally isomorphic local cohomology functors.
+
+**How the definition helps.** The support definition sees only the primes containing the ideal (our own). Those primes depend only on its radical (our own). A comparison theorem identifies the resulting groups with those obtained by deriving the module operation (our own).
+
+**Wikipedia:** [Local cohomology](https://en.wikipedia.org/wiki/Local_cohomology). It says: “Since the local cohomology with respect to I may be computed using any such ideal,”
+
+**Paper or page:** [Local Cohomology, Lemma 51.2.1.](https://stacks.math.columbia.edu/tag/0A6T). It says: “there is a functorial isomorphism $$ R\\Gamma<sub>Z</sub>(K) = R\\Gamma<sub>Z</sub>(X, \\widetilde{K}) $$”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Local cohomology measures extension failure
+
+**Remember:** Degree zero detects sections that disappear, and degree one detects those that cannot extend.
+
+*True by definition.* MSC 13D45 (Local cohomology and commutative rings). arXiv math.AC. Level 3: graduate.
+
+**Definition.** Local cohomology measures sections supported on a closed set Z and the higher groups obtained by deriving that operation. Equivalently, take the complex of restriction to the complement, using its shifted mapping cone to record the failure of restriction to be invertible.
+
+**Problem.** Let Z consist of the primes containing a finitely generated ideal of a ring A. Restrict sections of a module on the prime spectrum of A to the complement of Z. The kernel is degree zero local cohomology, and the cokernel is degree one local cohomology.
+
+**How the definition helps.** The cone places the restriction map between degree zero and degree one local cohomology in an exact sequence (our own). A module on the whole affine spectrum has no higher cohomology, so the sequence ends there (our own). Over a Noetherian ring, a comparison theorem identifies this construction with deriving the operation of taking elements killed by ideal powers (our own).
+
+**Paper or page:** [Local Cohomology, Lemma 51.2.2.](https://stacks.math.columbia.edu/tag/0DWR). It says: “given $M$ there is an exact sequence $$ 0 \\to H<sup>0<sub>Z</sub></sup>(M) \\to M \\to H<sup>0</sup>(U, \\mathcal{F}) \\to H<sup>1<sub>Z</sub></sup>(M) \\to 0 $$”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Čech length bounds local cohomology
+
+**Remember:** No term past the last generator means no cohomology there.
+
+*True by definition.* MSC 13D45 (Local cohomology and commutative rings). arXiv math.AC. Level 3: graduate.
+
+**Definition.** Over a Noetherian ring, the augmented Čech complex of ideal generators computes local cohomology. It begins with the module in degree zero. In degree j it takes one copy localized at each product of j distinct generators, making that product invertible. The alternative derives the operation taking elements killed by some power of the ideal.
+
+**Problem.** Over a Noetherian ring, local cohomology in an ideal generated by r elements vanishes in degrees above r for every module.
+
+**How the definition helps.** The Čech complex stops at degree r, so there is nothing to compute above it (our own). The comparison theorem identifies this finite complex with the derived functor of ideal torsion (our own).
+
+**Paper or page:** [Local Cohomology, Lemma 51.4.3.](https://stacks.math.columbia.edu/tag/0DX9). It says: “cd(A, I) is at most equal to the number of generators of I”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Defining coherence by kernels gives finitely presented modules finite free resolutions
 
@@ -1318,6 +1452,24 @@
 
 - [Wolfgang Krull, Allgemeine Bewertungstheorie, Journal für die reine und angewandte Mathematik 167 (1932)](https://doi.org/10.1515/crll.1932.167.160)
 
+### Discrete valuation rings need Noetherianity
+
+**Remember:** A smallest positive value need not generate the whole value group.
+
+*Rules out counterexamples.* MSC 13F30 (Valuation rings). arXiv math.AC. Level 3: graduate.
+
+**Definition.** A discrete valuation ring is a Noetherian local domain whose maximal ideal has one nonzero generator. A local ring has one maximal ideal, and Noetherian means every ideal has finitely many generators.
+
+**Problem.** In a discrete valuation ring, each nonzero element is a unit times a power of the maximal ideal generator. Can this fail in a valuation ring whose maximal ideal still has one generator?
+
+**How the definition helps.** The Noetherian condition forces the powers of the maximal ideal to have zero intersection, by Krull’s intersection theorem (our own). Without it, take pairs of integers ordered first by the first coordinate and then by the second (our own). In the iterated Laurent series field k((u))((t)), record the lowest t exponent and the lowest u exponent in its coefficient (our own). In the ring of nonnegative values, u has the smallest positive value, (0,1), so it generates the maximal ideal (our own). Yet t has value (1,0), so every power of u divides t (our own).
+
+**nLab:** [valuation ring](https://ncatlab.org/nlab/show/valuation+ring). It says: “When the value group is isomorphic to ℤ, the ring O is called a discrete valuation ring.”
+
+**Paper or page:** [Algebra, Lemma 10.119.7.](https://stacks.math.columbia.edu/tag/00PD). It says: “The ring A is a Noetherian local domain with maximal ideal 𝔪 generated by a single nonzero element.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The divisibility test makes quotients of valuation rings by primes valuation rings
 
 **Remember:** Test a fraction before reducing it modulo the prime ideal.
@@ -1388,6 +1540,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Valuation rings restrict to subfields
+
+**Remember:** An element and its inverse stay in the same subfield.
+
+*True by definition.* MSC 13F30 (Valuation rings). arXiv math.AC. Level 3: graduate.
+
+**Definition.** A valuation ring of a field L is a subring containing x or x⁻¹ for each nonzero x in L. The equivalent valuation description keeps zero and all elements with nonnegative value.
+
+**Problem.** Let B be a valuation ring with fraction field L. For any subfield K of L, B ∩ K is a valuation ring with fraction field K.
+
+**How the definition helps.** The inverse test passes directly to a subfield K because x and x⁻¹ both belong to K (our own). The test also gives every element of K as a fraction of elements in the intersection (our own). To recover values from the test, identify nonzero elements whose ratio is a unit and order the classes by divisibility (our own).
+
+**nLab:** [valuation ring](https://ncatlab.org/nlab/show/valuation+ring). It says: “for every nonzero element x in its field of fractions K, either x ∈ O or x⁻¹ ∈ O;”
+
+**Paper or page:** [Algebra, Lemma 10.50.7.](https://stacks.math.columbia.edu/tag/052L). It says: “Let L/K be an extension of fields. If B ⊂ L is a valuation ring, then A = K ∩ B is a valuation ring.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Valuation rings, holding x or 1/x, capture integral closure
 
 **Remember:** Of x and 1/x, a valuation ring always holds one.
@@ -1405,6 +1575,22 @@
 **Sources:**
 
 - [W. Krull, Beiträge zur Arithmetik kommutativer Integritätsbereiche VI, Mathematische Zeitschrift 45 (1939) 1–19](https://doi.org/10.1007/BF01580269)
+
+### Value bounds classify valuation ideals
+
+**Remember:** An ideal keeps every value above any value it already contains.
+
+*True by definition.* MSC 13F30 (Valuation rings). arXiv math.AC. Level 3: graduate.
+
+**Definition.** A valuation assigns values in a totally ordered group to the nonzero elements of a field. Products add values, and a nonzero sum has value at least the smaller summand value. The valuation ring contains zero and all elements with nonnegative value. Equivalently, it contains x or x⁻¹ for each nonzero field element x.
+
+**Problem.** Ideals of a valuation ring correspond to upward closed subsets of the nonnegative values, including the empty set.
+
+**How the definition helps.** Comparing values tests divisibility, so an ideal containing x contains everything of equal or greater value (our own). Conversely, take all elements with values in an upward closed set and include zero (our own). The sum inequality gives closure under addition, and nonnegative ring values give closure under multiplication by ring elements (our own). Recovering an ordered value group from the inverse test proves the two descriptions agree (our own).
+
+**Paper or page:** [Algebra, Lemma 10.50.17.](https://stacks.math.columbia.edu/tag/00IH). It says: “Ideals in A correspond 1 - 1 with ideals of Γ. This bijection is inclusion preserving, and maps prime ideals to prime ideals.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Ghost coordinates make big Witt vectors over rational algebras a ring
 
@@ -1493,6 +1679,42 @@
 - [O. Zariski, The concept of a simple point of an abstract algebraic variety, Transactions of the American Mathematical Society 62 (1947) 1–52](https://doi.org/10.1090/s0002-9947-1947-0021694-1)
 - [W. Krull, Beiträge zur Arithmetik kommutativer Integritätsbereiche III, Mathematische Zeitschrift 42 (1937) 745–766](https://doi.org/10.1007/BF01160110)
 
+### Dimension drops detect regular sequences
+
+**Remember:** Complete the parameters, then take the prefix.
+
+*True by definition.* MSC 13H10 (Special types (Cohen-Macaulay, Gorenstein, Buchsbaum, etc.)). arXiv math.AC. Level 3: graduate.
+
+**Definition.** In a local ring of dimension d, a system of parameters consists of d elements whose only common containing prime is the maximal ideal. A Noetherian local ring is Cohen–Macaulay exactly when every system of parameters is regular. Regular means each element acts injectively after quotienting by its predecessors.
+
+**Problem.** In a Noetherian Cohen–Macaulay local ring, c elements in the maximal ideal form a regular sequence if their quotient lowers dimension by c.
+
+**How the definition helps.** The parameter test gives regularity as soon as the given elements start a system of parameters (our own). Choose parameters in their quotient and lift them to the ring (our own). The dimension drop ensures the combined list has exactly the required length (our own). The substantive theorem identifies this parameter test with the usual equality of depth and dimension (our own).
+
+**Paper or page:** [Algebra, Lemma 10.104.2.](https://stacks.math.columbia.edu/tag/02JN). It says: “Regular sequences in Cohen-Macaulay local rings are characterized by cutting out something of the correct dimension.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Regular quotients preserve Gorensteinness
+
+**Remember:** Use the same final quotient to test type one.
+
+*True by definition.* MSC 13H10 (Special types (Cohen-Macaulay, Gorenstein, Buchsbaum, etc.)). arXiv math.AC. Level 3: graduate.
+
+**Definition.** A Noetherian local ring is Gorenstein if a regular sequence in its maximal ideal leaves a zero-dimensional quotient with one-dimensional socle. Regular means each element acts injectively after quotienting by the preceding elements. The socle consists of elements killed by the maximal ideal, and its dimension is taken over the residue field.
+
+**Problem.** Quotienting a Noetherian local ring by a nonzero divisor in its maximal ideal preserves and reflects the Gorenstein property.
+
+**How the definition helps.** The socle test lets both rings use the same final quotient (our own). In a Gorenstein ring, any full regular sequence gives a quotient with one-dimensional socle (our own). The given element extends to such a sequence because Gorenstein rings are Cohen–Macaulay (our own). Conversely, lift a testing sequence from the quotient and put the given element first (our own). The substantive criterion identifies this socle test with having a finite resolution by injective modules (our own).
+
+**Wikipedia:** [Gorenstein ring](https://en.wikipedia.org/wiki/Gorenstein_ring). It says: “Equivalently, R has simple socle as an R-module.”
+
+**Paper or page:** [Dualizing, Lemma 47.21.6.](https://stacks.math.columbia.edu/tag/0BJJ). It says: “Then A is Gorenstein if and only if B is Gorenstein.”
+
+**Sources:**
+
+- [Hyman Bass, On the ubiquity of Gorenstein rings (1963)](https://doi.org/10.1007/bf01112819)
+
 ### Testing every prime makes Cohen–Macaulay rings stay Cohen–Macaulay after localization
 
 **Remember:** Each prime localization of the new ring was already a test of the original.
@@ -1510,6 +1732,42 @@
 **Sources:**
 
 - [The Stacks Project, Lemma 10.104.5, Tag 00NB](https://stacks.math.columbia.edu/tag/00NB)
+
+### The socle detects graded quotients
+
+**Remember:** A nonzero graded kernel must hit the socle line.
+
+*Rules out counterexamples.* MSC 13H10 (Special types (Cohen-Macaulay, Gorenstein, Buchsbaum, etc.)). arXiv math.AC. Level 3: graduate.
+
+**Definition.** Consider a finite-dimensional commutative graded algebra over a field, with only nonnegative degrees and just the field in degree zero. Its socle consists of the elements killed by every element of positive degree. Such an algebra is Gorenstein exactly when its socle has dimension one over the field.
+
+**Problem.** Take a surjective degree-preserving map between two such Gorenstein algebras over the same field. If their highest nonzero degrees agree, the map is an isomorphism.
+
+**How the definition helps.** The socle line is the entire top degree, so a surjection nonzero there cannot have a nonzero kernel (our own). Every nonzero graded ideal meets the socle because its highest nonzero degree is killed by all positive degrees (our own). The comparison with self-injectivity is the zero-dimensional Gorenstein criterion (our own). If the socle has two dimensions, k\[x,y\]/(x²,xy,y²) can surject onto k\[y\]/(y²) without changing the highest degree (our own).
+
+**Wikipedia:** [Gorenstein ring](https://en.wikipedia.org/wiki/Gorenstein_ring). It says: “R is not Gorenstein because the socle has dimension 2 (not 1) as a k-vector space, spanned by x and y.”
+
+**Paper or page:** [Complete intersection algebras with binomial Macaulay dual generator](https://arxiv.org/abs/2503.13920v1). It says: “Any surjective degree-preserving homomorphism π : A → B between Artinian Gorenstein K-algebras with the same socle degree is an isomorphism.”
+
+**Sources:**
+
+- [Roberta Di Gennaro and Rosa M. Miró-Roig, Complete Intersection Algebras with Binomial Macaulay Dual Generator (2025)](https://doi.org/10.1007/s00009-025-02946-8)
+
+### Regular parameters reduce multiplicity to length
+
+**Remember:** Regular parameters leave only degree zero in the Koszul sum.
+
+*Rules out counterexamples.* MSC 13H15 (Multiplicity theory and related topics). arXiv math.AC. Level 3: graduate.
+
+**Definition.** In a local ring of dimension d, a parameter ideal has d generators and only the maximal ideal contains it among prime ideals. A Noetherian local ring is Cohen–Macaulay exactly when every such list of parameters is regular. Regular means each element acts injectively after quotienting by its predecessors.
+
+**Problem.** In a Noetherian Cohen–Macaulay local ring, a parameter ideal has multiplicity equal to the length of its quotient. Length counts simple factors in a composition series. Multiplicity is the leading coefficient of the polynomial giving lengths modulo successive ideal powers, multiplied by the factorial of the ring dimension.
+
+**How the definition helps.** Regular parameters leave only the quotient in Serre’s alternating sum for multiplicity (our own). The other terms measure failures of exactness in the Koszul complex built from the parameters, and regularity makes them vanish (our own). The proof uses Serre’s formula and the characterization of Cohen–Macaulay rings by regular parameters (our own). For a counterexample, quotient the formal power series ring k\[\[t,u,v\]\] by the ideal (u²,uv,v²,tu,tv), with k a field (our own). Modulo t, the basis is 1, u, v (our own). Modulo its nth power, the length is n + 2 for n ≥ 1, giving multiplicity one (our own).
+
+**Paper or page:** [Intersection, Theorem 43.15.5.](https://stacks.math.columbia.edu/tag/0AZZ). It says: “Then $$ e<sub>I</sub>(M, r) = \\sum (-1)<sup>i\\text{length}<sub>A</sub></sup> H<sub>i</sub>(K\_\\bullet(f<sub>1</sub>, \\ldots, f<sub>r</sub>) \\otimes<sub>A</sub> M) $$”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Early local rings had to be Noetherian, which keeps Krull's intersection theorem
 
@@ -1725,6 +1983,22 @@
 - [The Stacks Project, Lemma 15.105.16, Tag 092Q](https://stacks.math.columbia.edu/tag/092Q)
 - [B. Bhatt and P. Scholze, The pro-étale topology for schemes, Astérisque 369](https://doi.org/10.24033/ast.960)
 
+### Height-one intersections preserve reflexivity
+
+**Remember:** Recover a reflexive module from its height-one pieces.
+
+*True by definition. Confidence: medium.* MSC 13C13 (Other special types of modules and ideals in commutative rings). arXiv math.AC. Level 4: research.
+
+**Definition.** Let R be a Noetherian normal domain, so every ideal is finitely generated and R is integrally closed in its fraction field. A finite module is torsion free if no nonzero scalar kills a nonzero element. It is reflexive if it is torsion free and equals the intersection of its height-one localizations inside its vector space of fractions. A height-one prime is nonzero and contains no smaller nonzero prime.
+
+**Problem.** Let two finite reflexive modules span the same vector space over the fraction field of a Noetherian normal domain. Their intersection in that space is reflexive.
+
+**How the definition helps.** The intersection test lets us intersect the two modules before or after testing each height-one prime (our own). Localization preserves finite intersections, and the intersection is finitely generated because the ring is Noetherian (our own). The cited criterion identifies the height-one test with the usual definition, which requires the natural map to the double dual to be invertible (our own).
+
+**Paper or page:** [More Algebra, Lemma 15.23.18.](https://stacks.math.columbia.edu/tag/0AVB). It says: “$M$ is torsion free and $M = \\bigcap\_{\\text{height}(\\mathfrak p) = 1} M<sub>\\mathfrak p</sub>$ where the intersection happens in $M<sub>K</sub> = M \\otimes<sub>R</sub> K$.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Cohen–Macaulay complexes give new proofs of homological conjectures
 
 **Remember:** Complexes can be Cohen–Macaulay where modules are hard to find.
@@ -1743,6 +2017,22 @@
 
 - [Srikanth B. Iyengar, Linquan Ma, Karl Schwede, Mark E. Walker, Maximal Cohen-Macaulay complexes and their uses: A partial survey, arXiv:2106.08173 (2021)](https://arxiv.org/abs/2106.08173v1)
 
+### One-degree duality preserves Cohen–Macaulay modules
+
+**Remember:** Dualize once in one degree, then dualize back.
+
+*True by definition.* MSC 13C14 (Cohen-Macaulay modules). arXiv math.AC. Level 4: research.
+
+**Definition.** Use a normalized dualizing complex, a complex giving double duality with degrees indexed so the residue field has dual in degree zero. The derived dual computes module maps into that complex together with their higher cohomology groups. A finite module of dimension d is Cohen–Macaulay exactly when its derived dual has cohomology only in degree −d.
+
+**Problem.** Fix a Noetherian local ring with such a dualizing complex. Taking degree −d cohomology of the dual sends finite Cohen–Macaulay modules of dimension d back to that class and reverses maps. Applying the operation twice recovers the original module naturally.
+
+**How the definition helps.** Concentration in one degree makes the first dual a single module placed in degree −d (our own). Double duality then puts the dual of that module in the same single degree (our own). The concentration criterion identifies its dimension and shows it too is Cohen–Macaulay (our own). Local duality relates this criterion to the usual equality between depth and dimension (our own).
+
+**Paper or page:** [Dualizing, Lemma 47.16.7.](https://stacks.math.columbia.edu/tag/0B5A). It says: “Then $M \\mapsto \\mathop{\\mathrm{Ext}}\\nolimits<sup>-d</sup><sub>A</sub>(M, \\omega<sub>A</sub><sup>\\bullet</sup>)$ defines an anti-auto-equivalence of $CM<sub>d</sub>$.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Sequentially Cohen–Macaulay modules are closed under direct sums
 
 **Remember:** Sort the pieces by dimension, and each piece can be Cohen–Macaulay.
@@ -1760,6 +2050,24 @@
 **Sources:**
 
 - [Giulio Caviglia, Alessandro De Stefani, Enrico Sbarra, Francesco Strazzanti, On the notion of sequentially Cohen-Macaulay modules, arXiv:2304.06609 (2023), Research in the Mathematical Sciences 9 (2022), Article 40](https://arxiv.org/abs/2304.06609v1)
+
+### Dual cosupport joins exact sequences
+
+**Remember:** Dualize, localize, and take the union.
+
+*True by definition.* MSC 13C60 (Module categories and commutative rings). arXiv math.AC. Level 4: research.
+
+**Definition.** In a Noetherian local ring, take the injective hull of the residue field, its smallest injective extension. The Matlis dual of a module consists of its linear maps over the ring into that hull. Define cosupport as the support of this dual, meaning the primes where its localization is nonzero. Equivalently, take primes containing the annihilator of some nonzero quotient of the module that embeds in the hull.
+
+**Problem.** In a short exact sequence, the cosupport of the middle module is the union of the cosupports of the end modules.
+
+**How the definition helps.** The dual definition reduces the result to the union rule for support (our own). Dualizing into an injective module preserves exactness and reverses the arrows (our own). The work lies in showing that localizing the dual detects the same primes as the quotient definition (our own).
+
+**Paper or page:** [On Artinianness of Formal Local Cohomology, Colocalization and Coassociated Primes](https://arxiv.org/abs/1011.4141v3). It says: “If 0 → M′ → M → M″ → 0 is exact, then CoSupp M = CoSupp M′ ∪ CoSupp M″.”
+
+**Sources:**
+
+- [Majid Eghbali, On Artinianness of Formal Local Cohomology, Colocalization and Coassociated Primes (2013)](https://doi.org/10.7146/math.scand.a-15478)
 
 ### Weak proregularity makes derived completion agree with completion
 
@@ -1872,6 +2180,70 @@
 **Sources:**
 
 - [Nicolas Spaltenstein, Resolutions of unbounded complexes (1988)](https://www.numdam.org/item/CM_1988__65_2_121_0/)
+
+### Tor amplitude survives base change
+
+**Remember:** Test against modules over the new ring as modules over the old one.
+
+*True by definition.* MSC 13D09 (Derived categories and commutative rings). arXiv math.AC. Level 4: research.
+
+**Definition.** A complex has Tor amplitude in an interval if its derived tensor product with every module has cohomology only in that interval. This tensor product uses a resolution by flat modules, whose tensor products preserve exact sequences. Equivalently, a complex of flat modules concentrated in that interval represents the original complex.
+
+**Problem.** Tor amplitude in a finite interval survives derived extension of scalars along any ring map.
+
+**How the definition helps.** The test-module definition makes each test over the new ring a test over the old ring by associativity of derived tensor (our own). The comparison with bounded flat complexes carries the work of truncating a flat resolution at the endpoints (our own).
+
+**Paper or page:** [More Algebra, Lemma 15.67.13.](https://stacks.math.columbia.edu/tag/066L). It says: “Then $K<sup>\\bullet</sup> \\otimes<sub>A</sub><sup>{\\mathbf{L}}</sup> B$ as a complex of $B$-modules has tor amplitude in $\[a, b\]$.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Derived local cohomology changes rings
+
+**Remember:** Changing rings changes each localization in the same way.
+
+*True by definition.* MSC 13D45 (Local cohomology and commutative rings). arXiv math.AC. Level 4: research.
+
+**Definition.** For a finitely generated ideal, use the augmented Čech complex to compute derived sections supported on the primes containing the ideal. Build this complex by tensoring the maps that invert each individual generator. Each map forms a complex in degrees zero and one.
+
+**Problem.** Extend scalars along any ring map, using a flat resolution to compute the derived tensor product. Taking derived sections with closed support commutes with this operation when the new support uses the images of the generators.
+
+**How the definition helps.** The Čech definition makes the change term by term since localizations are flat and commute with extension of scalars (our own). The work lies in comparing this complex with derived sections on the closed support, without a Noetherian hypothesis (our own).
+
+**Paper or page:** [Dualizing, Lemma 47.9.3.](https://stacks.math.columbia.edu/tag/0ALZ). It says: “Then $$ R\\Gamma<sub>Z</sub>(K) \\otimes<sub>A</sub><sup>\\mathbf{L}</sup> B = R\\Gamma<sub>Y</sub>(K \\otimes<sub>A</sub><sup>\\mathbf{L}</sup> B) $$ functorially in $K \\in D(A)$.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Derived supports compose by intersection
+
+**Remember:** Joining the generator lists intersects the closed supports.
+
+*True by definition.* MSC 13D45 (Local cohomology and commutative rings). arXiv math.AC. Level 4: research.
+
+**Definition.** For each generator f of an ideal, form the two-term complex mapping the ring to the ring with f inverted. Tensor these complexes together to form the augmented Čech complex. Tensoring a module complex with this complex computes derived sections supported at primes containing the ideal.
+
+**Problem.** Applying derived local cohomology for two finitely generated ideals in succession gives derived local cohomology for their sum.
+
+**How the definition helps.** Tensoring the two Čech complexes simply joins their generator lists (our own). The joined list generates the sum of the ideals, whose containing primes belong to both closed sets (our own). The comparison with derived sections proves independence from the chosen generators (our own).
+
+**Paper or page:** [Dualizing, Lemma 47.9.6.](https://stacks.math.columbia.edu/tag/0BJC). It says: “Then $Z \\cap Y = V(I + J)$ and $R\\Gamma<sub>Y</sub> \\circ R\\Gamma<sub>Z</sub> = R\\Gamma<sub>Y \\cap Z</sub>$”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Derived torsion fixes torsion complexes
+
+**Remember:** A right adjoint to a full inclusion fixes objects already inside.
+
+*True by definition.* MSC 13D45 (Local cohomology and commutative rings). arXiv math.AC. Level 4: research.
+
+**Definition.** Call a complex torsion for an ideal if some power of the ideal kills each individual cohomology element. Work in the derived category, where maps inducing cohomology isomorphisms become invertible. Derived local cohomology supplies a map from a torsion complex to the original complex. Every map from a torsion complex to the original complex factors uniquely through this map.
+
+**Problem.** For a Noetherian ring, derived ideal torsion acts as the identity on complexes whose cohomology is already ideal-power torsion.
+
+**How the definition helps.** For a torsion complex, its identity map already has the required factorization property (our own). Uniqueness identifies the derived local cohomology map with that identity (our own). Over a Noetherian ring, the comparison theorem shows that deriving ordinary module torsion gives this same construction (our own).
+
+**Paper or page:** [Dualizing, Lemma 47.10.1.](https://stacks.math.columbia.edu/tag/0955). It says: “the adjunction $R\\Gamma<sub>I</sub>(K) \\to K$ is an isomorphism for $K \\in D\_{I<sup>\\infty\\text{-torsion}}</sup>(A)$”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Counting generators up to symmetry makes infinite polynomial rings Noetherian
 

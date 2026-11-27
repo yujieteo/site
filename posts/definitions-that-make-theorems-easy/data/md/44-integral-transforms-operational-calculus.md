@@ -112,6 +112,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Gamma averages invert Laplace transforms
+
+**Remember:** High Laplace derivatives average with weights that concentrate near t.
+
+*True by definition.* MSC 44A10 (Laplace transform). arXiv math.CA. Level 3: graduate.
+
+**Definition.** Let F(s) be the integral of f(u) exp(−su) over nonnegative u. For t &gt; 0 and integer n ≥ 1, define a probability density proportional to uⁿ exp(−nu/t). Set Aₙ(t) equal to the average of f against this density.
+
+**Problem.** For bounded continuous f, Aₙ(t) tends to f(t). This average equals the nth derivative of F at n/t multiplied by (−1)ⁿ(n/t)ⁿ⁺¹/n!.
+
+**How the definition helps.** The probability density turns inversion by high derivatives into averaging near t (our own). The gamma integral gives mean (n + 1)t/n and variance (n + 1)t²/n² (our own). Chebyshev’s inequality makes the probability outside any fixed neighborhood of t tend to zero (our own). Continuity controls the average inside that neighborhood, and boundedness controls the rest (our own). Differentiating under the Laplace integral identifies this average with the derivative formula (our own).
+
+**Paper or page:** [Multidimensional vector-valued Laplace transform and applications](https://arxiv.org/abs/2506.18909v1). It says: “Then the following Post-Widder inversion formula holds”
+
+**Sources:**
+
+- [Multidimensional vector-valued Laplace transform and applications](https://arxiv.org/abs/2506.18909v1)
+
 ### Zero extension absorbs initial values
 
 **Remember:** The jump at zero carries the initial value.
@@ -125,6 +143,40 @@
 **How the definition helps.** The distribution derivative transfers the derivative to the exponential, which gives the factor s (our own). The work is to justify the pairing with the exponential by cutoffs and identify the term at zero (our own). Integration by parts shows that term is a point mass with weight f(0), which cancels the usual subtraction (our own).
 
 **Paper or page:** [Laplace Transform of Derivative](https://proofwiki.org/wiki/Laplace_Transform_of_Derivative). It says: “ℒ(f′(t)) = sℒ(f(t)) − f(0)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Backprojection transposes Radon integration
+
+**Remember:** Integrate over the same point and plane pairs in reverse order.
+
+*True by definition. Confidence: medium.* MSC 44A12 (Radon transform). arXiv math.FA. Level 3: graduate.
+
+**Definition.** The Radon transform R integrates f over the hyperplane x · θ = t, where θ is a unit normal. Define the backprojection Bg at x by averaging g(θ, x · θ) over directions with uniform probability.
+
+**Problem.** For real smooth compactly supported f and g, integrating (Rf)g over directions and offsets gives the same value as integrating f(Bg) over space.
+
+**How the definition helps.** Backprojection averages over precisely the hyperplanes through x, so both integrals count the same point and plane pairs (our own). In orthogonal coordinates, volume splits into distance along θ and volume on each perpendicular plane (our own). Fubini’s theorem then identifies the geometric average with the adjoint, the operator defined by the pairing identity (our own).
+
+**nLab:** [Radon transform](https://ncatlab.org/nlab/show/Radon+transform). It says: “It corresponds to pull-push through the incidence correspondence of points and hyperplanes.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Compact support restores limited-angle Radon uniqueness
+
+**Remember:** Compact support lets the measured Fourier wedge determine the rest.
+
+*Rules out counterexamples. Confidence: medium.* MSC 44A12 (Radon transform). arXiv math.CA. Level 3: graduate.
+
+**Definition.** The planar Radon transform integrates a function along lines. Fix a nonempty open arc of unit normals shorter than a semicircle. Keep all line integrals with normals in that arc, and restrict inputs to smooth functions that vanish outside a compact set.
+
+**Problem.** In the plane, Radon data in any such nonempty arc determine a compactly supported smooth input uniquely.
+
+**How the definition helps.** Compact support makes the Fourier transform locally equal to its power series, so values on an open wedge determine it everywhere (our own). The Fourier slice theorem gives those values by taking the one-dimensional Fourier transform of the measured line integrals in each direction. Without compact support, choose a nonzero smooth Fourier transform supported in a small disk outside both measured wedges (our own). Its inverse transform decreases faster than every inverse power and has zero measured line integrals (our own).
+
+**nLab:** [Radon transform](https://ncatlab.org/nlab/show/Radon+transform). It says: “The Radon transform converts between functions on ℝⁿ which are integrable on all hyperplanes and functions on the space of all hyperplanes of ℝⁿ.”
+
+**Wikipedia:** [Projection-slice theorem](https://en.wikipedia.org/wiki/Projection-slice_theorem). It says: “F₁P₁ = S₁F₂.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -178,6 +230,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Radon projections preserve convolution
+
+**Remember:** Projection preserves sums, so it preserves convolution.
+
+*True by definition. Confidence: medium.* MSC 44A12 (Radon transform). arXiv math.CA. Level 3: graduate.
+
+**Definition.** Fix a unit vector θ. To project a measure, send each point x and its mass to the real number x · θ. Define its Radon data in direction θ as this projected measure.
+
+**Problem.** For two finite measures, projecting their convolution gives the convolution of their projections.
+
+**How the definition helps.** With the projection definition, both sides send each pair (x, y) to the same number (our own). Convolving measures sends their product measure through addition, and (x + y) · θ equals x · θ + y · θ (our own). The usual definition integrates a density over each perpendicular hyperplane. Fubini’s theorem in orthogonal coordinates identifies these slice integrals with the projected density almost everywhere (our own).
+
+**nLab:** [Radon transform](https://ncatlab.org/nlab/show/Radon+transform). It says: “It corresponds to pull-push through the incidence correspondence of points and hyperplanes.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Hermite phases add transform orders
 
 **Remember:** Multiplying the phases adds the orders.
@@ -195,6 +263,24 @@
 **Sources:**
 
 - [Fractional Fourier transforms, harmonic oscillator propagators and Strichartz estimates on Pilipovic and modulation spaces](https://arxiv.org/abs/2111.09575v5)
+
+### Kernel subtraction repairs Hilbert tails
+
+**Remember:** Subtract the distant tail without changing the local singularity.
+
+*Rules out counterexamples.* MSC 44A15 (Special integral transforms (Legendre, Hilbert, etc.)). arXiv math.CA. Level 3: graduate.
+
+**Definition.** Start with the Hilbert kernel 1/(x − t). Add 1/t when \|t\| &gt; 1, then divide the kernel by π. Integrate against f(t), omitting a symmetric interval about x and taking the limit as its width tends to zero.
+
+**Problem.** The modified integral exists at every x for bounded, locally Hölder continuous functions. On each compact interval their increments satisfy \|f(t) − f(x)\| ≤ C\|t − x\|ᵅ for constants C, α &gt; 0.
+
+**How the definition helps.** Adding 1/t makes the distant kernel decay quadratically, so bounded inputs give integrable tails (our own). Near x, symmetric integration cancels the constant f(x), and the Hölder bound makes the remainder integrable (our own). For f(t) = tanh(t), the uncorrected integrand at x = 0 behaves like −1/\|t\| at both ends (our own).
+
+**Wikipedia:** [Hilbert transform](https://en.wikipedia.org/wiki/Hilbert_transform). It says: “with u = sgn(x), the integral defining H(u) diverges almost everywhere to ±∞.”
+
+**Sources:**
+
+- [Charles Fefferman, Characterizations of bounded mean oscillation (1971)](https://doi.org/10.1090/S0002-9904-1971-12763-5)
 
 ### Logarithms turn Mellin norm preservation into Fourier norm preservation
 
@@ -266,6 +352,60 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Stieltjes imaginary parts smooth measures
+
+**Remember:** The negative imaginary part divided by π gives a unit-mass averaging kernel.
+
+*True by definition.* MSC 44A15 (Special integral transforms (Legendre, Hilbert, etc.)). arXiv math.CA. Level 3: graduate.
+
+**Definition.** Define G(z) by integrating 1/(z − t) against a finite positive measure μ on the real line. For ε &gt; 0, set pε(x) = −Im G(x + iε)/π.
+
+**Problem.** The measures with density pε approach μ as ε decreases to zero. This means their integrals against every continuous compactly supported function approach its integral against μ.
+
+**How the definition helps.** Keeping a positive height turns boundary inversion into averaging with a probability density (our own). The negative imaginary part divided by π gives the Poisson kernel ε/\[π((x − t)² + ε²)\]. This kernel has integral one in x, and its mass outside every fixed neighborhood of t tends to zero (our own). Thus averaging a continuous compactly supported function recovers its value at t (our own). Fubini’s theorem and bounded convergence give the asserted convergence of measures (our own).
+
+**Wikipedia:** [Stieltjes transformation](https://en.wikipedia.org/wiki/Stieltjes_transformation). It says: “the smaller the value of ε, the less smoothing is applied.”
+
+**Sources:**
+
+- [Matthew J. Colbrook, Computing Spectral Measures and Spectral Types (2021)](https://doi.org/10.1007/s00220-021-04072-4)
+
+### Product grids preserve Laplace uniqueness
+
+**Remember:** Independent sample coordinates let you apply one-variable uniqueness repeatedly.
+
+*Makes the theorem clean to state or prove.* MSC 44A30 (Multiple integral transforms). arXiv math.FA. Level 3: graduate.
+
+**Definition.** Choose a countable sequence of complex numbers with positive real parts for each coordinate. The product grid contains every tuple formed by choosing one number from each sequence. Call samples determining if their Laplace transform values distinguish integrable functions up to equality almost everywhere.
+
+**Problem.** On a finite product of nonnegative half-lines, the grid is determining exactly when every coordinate sequence is determining on its half-line.
+
+**How the definition helps.** Independent coordinate choices let us test one variable while keeping all other samples fixed (our own). The exponential weight factors, so Fubini’s theorem gives successive one-variable integrals (our own). Countability lets us discard one null set for all remaining sample choices at each step (our own). If one sequence fails, multiply its undetected function by nonzero integrable functions of the other variables (our own).
+
+**Paper or page:** [Uniqueness sequences for multidimensional vector-valued Laplace transform](https://arxiv.org/abs/2510.17485v1). It says: “are the uniqueness sequences for the one-dimensional Laplace transform if and only if”
+
+**Sources:**
+
+- [Uniqueness sequences for multidimensional vector-valued Laplace transform](https://arxiv.org/abs/2510.17485v1)
+
+### Logarithms transfer Young’s inequality
+
+**Remember:** The logarithm turns division into subtraction and dx/x into ordinary length.
+
+*True by definition.* MSC 44A35 (Convolution as an integral transform). arXiv math.CA. Level 3: graduate.
+
+**Definition.** Define the Mellin convolution h(x) by integrating f(x/y)g(y) against dy/y over positive y. Compute each integral norm with the same measure dx/x.
+
+**Problem.** Let f and g be smooth with compact support in (0, ∞). Choose finite p, q, r ≥ 1 with 1/r = 1/p + 1/q − 1. The r-norm of h is at most the p-norm of f times the q-norm of g.
+
+**How the definition helps.** Choosing dx/x makes logarithmic coordinates preserve both convolution and all three norms (our own). Indeed, u = log x gives du = dx/x and turns division into subtraction (our own). Young’s inequality for ordinary convolution on the real line supplies the bound (our own).
+
+**Paper or page:** [From Schwartz space to Mellin transform](https://arxiv.org/abs/2207.10706v1). It says: “Let p, q, r ∈ \[1, ∞) be such that 1/r = 1/p + 1/q − 1.”
+
+**Sources:**
+
+- [From Schwartz space to Mellin transform](https://arxiv.org/abs/2207.10706v1)
+
 ### Quadratic-phase convolution becomes multiplication
 
 **Remember:** Put the same phase into both inputs before convolving.
@@ -332,6 +472,25 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Unit-interval moments have nonnegative differences
+
+**Remember:** On the unit interval, taking a moment difference inserts a nonnegative factor.
+
+*Rules out counterexamples.* MSC 44A60 (Moment problems). arXiv math.CA. Level 3: graduate.
+
+**Definition.** A Hausdorff moment sequence consists of the integrals of 1, x, x², and all higher powers against one finite positive measure on \[0, 1\]. Form a difference sequence by subtracting each term’s successor from that term.
+
+**Problem.** A real sequence is a Hausdorff moment sequence exactly when every term of every difference sequence is nonnegative. Include the original sequence as the difference of order zero.
+
+**How the definition helps.** Restricting x to \[0, 1\] makes every difference insert the nonnegative factor 1 − x into the moment integral (our own). A unit mass at 2 gives first difference 1 − 2, so the half-line permits a counterexample (our own). The converse needs a separate theorem. Bernstein polynomial approximation and the representation of positive linear functionals by measures provide the reverse implication (our own).
+
+**Paper or page:** [Chapter 12: The moment problem on compact semi-algebraic sets (revised version)](https://arxiv.org/abs/2309.10052v1). It says: “s is a Hausdorff moment sequence on \[0, 1\]ᵈ.”
+
+**Sources:**
+
+- [Chapter 12: The moment problem on compact semi-algebraic sets (revised version)](https://arxiv.org/abs/2309.10052v1)
+- [Felix Hausdorff, Summationsmethoden und Momentfolgen. I (1921)](https://doi.org/10.1007/BF01378337)
+
 ### Compact support removes light ray ambiguity
 
 **Remember:** Compact support lets visible Fourier data determine the missing frequencies.
@@ -350,6 +509,24 @@
 
 - [The Momentum Light Ray Transform, Theorem 2 (2025)](https://arxiv.org/abs/2510.18450v1)
 
+### Filtered Radon data localize ridges
+
+**Remember:** Opposite directions share the profile, with reversed offsets.
+
+*True by definition.* MSC 44A12 (Radon transform). arXiv math.FA. Level 4: research.
+
+**Definition.** A ridge with unit direction θ has the form r(x · θ), where its one-dimensional profile r may be a finite measure. Interpret a measure profile by integrating test functions over perpendicular hyperplanes before applying r to their offsets. Define the filtered transform by testing the ridge against the inverse Radon transform of smooth, rapidly decreasing Radon data.
+
+**Problem.** For a finite measure profile, the filtered transform has an even measure representation. It places half the profile at θ and half its reflection at −θ.
+
+**How the definition helps.** Testing through the inverse transform recovers the data at the ridge direction without integrating the ridge over hyperplanes (our own). Reversing both direction and offset describes the same hyperplane, so averaging the two descriptions gives the even measure (our own). The work lies in characterizing which smooth data arise from hyperplane integrals and inverting the transform there (our own).
+
+**Paper or page:** [Ridges, Neural Networks, and the Radon Transform](https://arxiv.org/abs/2203.02543v1). It says: “be the ridge with profile r ∈ 𝒮′(ℝ) and direction ξ₀ ∈ 𝕊ᵈ⁻¹.”
+
+**Sources:**
+
+- [Ridges, Neural Networks, and the Radon Transform](https://arxiv.org/abs/2203.02543v1)
+
 ### Positive backprojections transfer Radon bounds
 
 **Remember:** Pull the positive test back to the measured side.
@@ -367,6 +544,24 @@
 **Sources:**
 
 - [Comparison Problems for Radon Transforms](https://arxiv.org/abs/2305.17796v1)
+
+### Reflections select Hilbert modes
+
+**Remember:** Odd and even reflections select exactly the required half-integer modes.
+
+*True by definition.* MSC 44A15 (Special integral transforms (Legendre, Hilbert, etc.)), 42A50. arXiv math.CA, math.FA. Level 4: research.
+
+**Definition.** Extend a function on (0, T), with T &gt; 0, by odd reflection about zero and even reflection about T. Repeat with period 4T. Apply the periodic Hilbert transform, which shifts each positive-frequency sine to minus its cosine. Negate the result and restrict it to (0, T).
+
+**Problem.** This reflected transform sends each sine with frequency (j + ½)π/T to the cosine of the same frequency, for every nonnegative integer j.
+
+**How the definition helps.** The reflection leaves each stated sine unchanged as a periodic sine on the extended interval (our own). The negative periodic Hilbert transform therefore gives its cosine (our own). The usual series definition replaces every sine in this interval basis by its cosine (our own). Completeness of the basis and boundedness of the periodic transform identify the two definitions for all square-integrable inputs (our own).
+
+**Paper or page:** [Some properties of a modified Hilbert transform](https://arxiv.org/abs/2404.02609v1). It says: “where φ̃ is the periodic reflection”
+
+**Sources:**
+
+- [Some properties of a modified Hilbert transform](https://arxiv.org/abs/2404.02609v1)
 
 ### Stieltjes products add orders
 

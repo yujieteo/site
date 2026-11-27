@@ -34,6 +34,24 @@
 
 - [Ivar Fredholm, Sur une classe d’équations fonctionnelles (1903)](https://doi.org/10.1007/BF02421317)
 
+### Positive kernels give convergent Mercer expansions
+
+**Remember:** Positive kernels turn the diagonal expansion into a sum of squares.
+
+*Rules out counterexamples.* MSC 45C05 (Eigenvalue problems for integral equations), 45P05. arXiv math.FA, math.CA. Level 3: graduate.
+
+**Definition.** Call a continuous symmetric kernel positive definite if every matrix of its values at finitely many points has a nonnegative quadratic form.
+
+**Problem.** On a closed bounded interval, expand a continuous symmetric positive definite kernel in eigenfunctions of its integral operator. The series converges absolutely and uniformly to the kernel.
+
+**How the definition helps.** Positivity makes every diagonal term a nonnegative eigenvalue times a square. In our own proof outline, the main step identifies the sum of these terms with the original diagonal. Continuity then gives uniform convergence there. Cauchy–Schwarz bounds the absolute tails everywhere by the diagonal tails. The cited indefinite kernel fails even to converge pointwise.
+
+**Paper or page:** [Extending Mercer's expansion to indefinite and asymmetric kernels](https://arxiv.org/abs/2409.16453v2). It says: “there exists a continuous symmetric indefinite kernel Kₚₜ: \[a, b\] × \[a, b\] → ℝ with a Mercer's expansion that does not converge pointwise.”
+
+**Sources:**
+
+- [Sungwoo Jeong, Alex Townsend. Extending Mercer's expansion to indefinite and asymmetric kernels](https://arxiv.org/abs/2409.16453v2)
+
 ### Resolvent kernels handle every forcing
 
 **Remember:** Find one kernel and reuse it for every forcing.
@@ -50,6 +68,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Finite parts differentiate Cauchy integrals
+
+**Remember:** Differentiate the simple pole to define the squared pole.
+
+*True by definition.* MSC 45E05 (Integral equations with kernels of Cauchy type), 46F10. arXiv math.CA. Level 3: graduate.
+
+**Definition.** For a smooth density f on \[a,b\], integrate f(t)/(t − x) after excluding equal lengths on each side of the interior point x. Call the limit the Cauchy principal value. Define the finite part for the squared denominator as the derivative of that principal value with respect to x.
+
+**Problem.** On the interior of a bounded interval, the derivative equals the limit of the squared-pole cutoff integral after subtracting 2f(x)/ε. Here ε is the length cut out on each side.
+
+**How the definition helps.** The derivative definition gives the squared-pole operator directly from the simple-pole operator. The work is to show agreement with the alternative cutoff definition. In our own calculation, differentiating the moving endpoints subtracts (f(x − ε) + f(x + ε))/ε. Smoothness lets us replace this by 2f(x)/ε with an error tending to zero. Our own check with f = 1 on \[−1,1\] gives finite part −2 at zero.
+
+**Wikipedia:** [Hadamard regularization](https://en.wikipedia.org/wiki/Hadamard_regularization). It says: “exists, then it may be differentiated with respect to x to obtain the Hadamard finite part integral as follows:”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Frequency halves invert Hilbert equations
 
 **Remember:** Divide separately on the two frequency halves.
@@ -63,6 +97,22 @@
 **How the definition helps.** The multiplier definition splits the equation into two scalar equations (our own). When both scalars are nonzero, their reciprocals give a bounded inverse (our own). A zero scalar kills every function supported in frequency on that half-line (our own). The work lies in proving the integral and multiplier definitions agree and that the Fourier transform preserves the norm (our own).
 
 **Wikipedia:** [Hilbert transform](https://en.wikipedia.org/wiki/Hilbert_transform). It says: “the phase of the negative frequency components of u(t) by +90°”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Total mass fixes Hilbert ambiguity
+
+**Remember:** Prescribe the mass to fix the otherwise invisible arcsine term.
+
+*Rules out counterexamples.* MSC 45E05 (Integral equations with kernels of Cauchy type), 42A50. arXiv math.CA. Level 3: graduate.
+
+**Definition.** On (−1,1), use densities p(t)/√(1 − t²) with polynomial numerator p. Record both the integral of the density and its finite Hilbert transform. The transform integrates the density against 1/(x − t), taking the limit after omitting equal lengths on both sides of x.
+
+**Problem.** Fix an integer n ≥ 0 and a real mass. Each polynomial forcing of degree at most n determines one numerator of degree at most n + 1 with that mass.
+
+**How the definition helps.** Recording the mass determines the constant numerator that the transform cannot detect. The cited integral shows that the transform annihilates 1/√(1 − t²). In our own calculation, subtract p(x) from p(t) before dividing by x − t. For a monic numerator of degree d ≥ 1, the transformed polynomial has degree d − 1 and leading coefficient −π. Successive coefficient comparisons determine all nonconstant terms. The free constant changes the mass by π times its value.
+
+**Paper or page:** [On the Local Regularity of the Hilbert Transform](https://arxiv.org/abs/2308.11947v3). It says: “p.v. ∫₋₁¹ 1/(√(1−t²) (x−t)) dt = 0 if \|x\|&lt;1,”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -98,6 +148,110 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Exponential norms contract Volterra iteration
+
+**Remember:** Discount later errors and long histories no longer obstruct contraction.
+
+*True by definition.* MSC 45G10 (Other nonlinear integral equations), 45D05, 47H09. arXiv math.FA, math.CA. Level 3: graduate.
+
+**Definition.** On continuous functions on \[0,T\], use the supremum of exp(−at)\|u(t)\|, with a &gt; 0, in place of the usual supremum norm. Define the integral map by adding to f(t) the integral of G(t,s,u(s)) from zero to t.
+
+**Problem.** Assume f and G are continuous and \|G(t,s,v) − G(t,s,w)\| ≤ L\|v − w\| whenever 0 ≤ s ≤ t ≤ T. For a &gt; L, iteration from any continuous input converges geometrically to the unique fixed point.
+
+**How the definition helps.** The weight puts the decaying factor exp(−a(t − s)) into the error integral. In our own estimate, integrating this factor gives at most 1/a. Thus each iteration shrinks the error by a factor at most L/a. The weighted norm is complete because it is equivalent to the supremum norm on this bounded interval. Banach’s fixed-point theorem now gives convergence.
+
+**Wikipedia:** [Banach fixed-point theorem](https://en.wikipedia.org/wiki/Banach_fixed-point_theorem). It says: “the most difficult part is typically to define X properly so that T(X) ⊆ X.”
+
+**Sources:**
+
+- [Mihály Bessenyei and Zsolt Páles. Applications of the Bielecki renorming technique.](https://doi.org/10.1007/s11784-020-00845-x)
+
+### Normalization separates shape from scale
+
+**Remember:** Fix a value to find the shape, then recover the scale.
+
+*True by definition.* MSC 45G10 (Other nonlinear integral equations), 45M20. arXiv math.FA. Level 3: graduate.
+
+**Definition.** On \[0,1\], let H(u)(x) integrate K(x,y)u(y)ᵏ over 0 ≤ y ≤ 1, with continuous K &gt; 0 and integer k ≥ 2. For positive continuous u with u(0) = 1, set N(u) = H(u)/H(u)(0).
+
+**Problem.** Dividing each positive fixed point of H by its value at zero gives a bijection onto the fixed points of N.
+
+**How the definition helps.** Normalization turns the unknown scale into one positive number. In our own calculation, N(u) = u means H(u) = cu with c = H(u)(0) &gt; 0. Homogeneity gives H(su) = sᵏcu. The equation s⁽ᵏ⁻¹⁾c = 1 determines the unique positive scale that turns u into a fixed point of H.
+
+**Paper or page:** [On positive fixed points of operator of Hammerstein type with degenerate kernel and Gibbs Measures](https://arxiv.org/abs/2306.08496v1). It says: “has a nontrivial positive solution iff the Hammerstein’s operator Hₖ has a nontrivial positive fixed point,”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Separable kernels give cubic systems
+
+**Remember:** The kernel’s output functions give all the unknowns you need.
+
+*True by definition.* MSC 45G10 (Other nonlinear integral equations), 45M20. arXiv math.FA. Level 3: graduate.
+
+**Definition.** On \[0,1\], let H(u)(x) integrate K(x,y)u(y)³ over y. Write the continuous kernel as a finite sum of products aⱼ(x)bⱼ(y), using linearly independent functions aⱼ. Represent a candidate fixed point by its coefficients in these functions.
+
+**Problem.** The fixed points correspond exactly to the solutions of a finite system of cubic equations. For positive fixed points, retain the vectors whose reconstructed functions are positive.
+
+**How the definition helps.** The kernel forces every fixed point into the span of the functions aⱼ. In our own derivation, substitute the coordinate sum for u and equate coefficients. Each coefficient must equal the integral of bⱼ times the cube of that sum. Conversely these equations reconstruct a fixed point. The remaining work is solving the cubic system.
+
+**Paper or page:** [On positive fixed points of operator of Hammerstein type with degenerate kernel and Gibbs Measures](https://arxiv.org/abs/2306.08496v1). It says: “The Hammerstein’s operator H₃ has a nontrivial positive fixed point iff the cubic operator P has a nontrivial positive fixed point,”
+
+**Sources:**
+
+- [I. M. Mavlonov, Kh. N. Khushvaktov, G. P. Arzikulov, F. H. Haydarov. On positive fixed points of operator of Hammerstein type with degenerate kernel and Gibbs Measures](https://arxiv.org/abs/2306.08496v1)
+
+### Skew coupling preserves monotonicity
+
+**Remember:** The two cross terms cancel when you test the product operator.
+
+*True by definition.* MSC 45G10 (Other nonlinear integral equations), 47H05. arXiv math.FA. Level 3: graduate.
+
+**Definition.** On a real Hilbert space, call F monotone if ⟨F(u) − F(w),u − w⟩ ≥ 0 for every u,w. For maps F and K on this space, introduce v = F(u). Replace u + K(F(u)) = 0 by the zero equation for A(u,v) = (F(u) − v,K(v) + u).
+
+**Problem.** If F and K are monotone, then A is monotone for the sum of the coordinate inner products. If each pairing bounds the squared input difference below by a positive multiple, A keeps the smaller multiple.
+
+**How the definition helps.** The opposite signs cancel the two cross terms in the pairing for A. In our own calculation, only the original pairings for F and K remain. Their lower bounds add. The remaining task is to solve the product equation using these separate bounds.
+
+**Paper or page:** [Algorithm for equations of Hammerstein type and applications](https://arxiv.org/abs/2112.07117v1). It says: “Then A is a (p, η)-strongly monotone mapping, where η := min{η₁, η₂}.”
+
+**Sources:**
+
+- [M. O. Aibinu, S. C. Thakur, S. Moyo. Algorithm for equations of Hammerstein type and applications](https://arxiv.org/abs/2112.07117v1)
+
+### Quadrature weights preserve convolution composition
+
+**Remember:** Multiply the generating functions and the discrete convolutions compose.
+
+*True by definition.* MSC 45L05 (Theoretical approximation of solutions to integral equations), 45E10, 65R20. arXiv math.NA. Level 3: graduate.
+
+**Definition.** Fix a time step h &gt; 0. For a kernel with Laplace transform K analytic near 1/h, expand K((1 − z)/h) in powers of z. Use the coefficients as weights for discrete convolution, which sums weighted past inputs.
+
+**Problem.** Suppose two scalar Laplace transforms are analytic near 1/h. Composing their discrete convolution maps gives the map defined by the product transform.
+
+**How the definition helps.** A common substitution turns the product of two transforms into the product of their weight series. In our own calculation, coefficient multiplication gives exactly the weights for composing the discrete maps. This avoids approximating the two successive integrals independently. Proving accuracy for the underlying integrals requires separate estimates.
+
+**Wikipedia:** [Cauchy product](https://en.wikipedia.org/wiki/Cauchy_product). It says: “the Cauchy product of these two power series is defined by a discrete convolution as follows:”
+
+**Sources:**
+
+- [C. Lubich, Convolution quadrature and discretized operational calculus. I (1988)](https://doi.org/10.1007/BF01398686)
+
+### Continuous diagonals recover traces
+
+**Remember:** Continuity pins down the diagonal that integration can otherwise ignore.
+
+*Rules out counterexamples.* MSC 45P05 (Integral operators), 47B10. arXiv math.FA. Level 3: graduate.
+
+**Definition.** Represent an integral operator on L²(\[a,b\]) by a continuous kernel K when one exists. Two continuous kernels that agree almost everywhere agree everywhere. Call an operator trace class if its singular values have finite sum.
+
+**Problem.** For a trace-class integral operator with a continuous kernel, the trace equals ∫ₐᵇ K(x,x) dx.
+
+**How the definition helps.** Continuity makes the diagonal values recoverable from averages on small squares. Our own counterexample takes K equal to one on the diagonal and zero elsewhere. Its operator has trace zero, but its diagonal integral equals b − a. Our own proof uses projections onto functions constant on short intervals. Their traces converge to the operator trace, while the square averages converge to the diagonal values.
+
+**Paper or page:** [Numerical Fredholm determinants for matrix-valued kernels on the real line](https://arxiv.org/abs/2507.22875v1). It says: “Then Tr(𝒦) = ∫ₐᵇ K(x,x) dx.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Schur weights handle divergent rows
 
 **Remember:** Measure each row and column against a weight it can integrate.
@@ -116,6 +270,38 @@
 
 - [Issai Schur, Bemerkungen zur Theorie der beschränkten Bilinearformen mit unendlich vielen Veränderlichen (1911)](https://doi.org/10.1515/crll.1911.140.1)
 
+### Actual ranges characterize attained fits
+
+**Remember:** Projecting onto the closure finds the target, not necessarily an input.
+
+*Rules out counterexamples.* MSC 45Q05 (Inverse problems for integral equations), 45B05. arXiv math.FA. Level 3: graduate.
+
+**Definition.** For a bounded integral operator K between Hilbert spaces, write R for its actual range. Define the domain of least-squares inversion as R + R⊥, where R⊥ consists of vectors perpendicular to every output.
+
+**Problem.** A vector u minimizing ‖Ku − f‖ exists exactly when f belongs to this domain.
+
+**How the definition helps.** The actual range condition ensures that some input attains the closest output. In our own proof, project f onto the closure of R. This projection has a preimage exactly when it belongs to R. Our own example maps g in L²(\[0,1\]) to its integral from zero to x. The range contains every smooth function supported inside the interval, so it is dense. Its continuous outputs vanish at zero, so none equals the constant one almost everywhere.
+
+**Paper or page:** [Fredholm integral equations for function approximation and the training of neural networks](https://arxiv.org/abs/2303.05262v3). It says: “Assume that F ∈ R(𝒢) + R(𝒢)⊥ ⊂ L²(X).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Quadratic penalties stabilize Fredholm inversion
+
+**Remember:** The penalty puts a positive floor under the normal operator.
+
+*Rules out counterexamples.* MSC 45Q05 (Inverse problems for integral equations), 47A52. arXiv math.FA. Level 3: graduate.
+
+**Definition.** Let K be a bounded integral operator between Hilbert spaces. For data f and λ &gt; 0, define the regularized solution as the minimizer of ‖Ku − f‖² + λ‖u‖².
+
+**Problem.** The regularized solution exists uniquely for any data. Its change is at most 1/(2√λ) times the norm of the data change.
+
+**How the definition helps.** The penalty adds λI to K\*K, where K\* denotes the adjoint. This gives a positive lower bound and makes the equation for the minimizer uniquely solvable. In our own stability proof, a singular value σ contributes a gain of σ/(σ² + λ). The spectral theorem bounds the full gain by the supremum of this expression, namely 1/(2√λ).
+
+**Paper or page:** [Moore-Penrose inverse and applications to linear equations](https://arxiv.org/abs/2110.01332v3). It says: “has a unique global minimizer”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Nonzero diagonals ensure Abel uniqueness
 
 **Remember:** Keep the diagonal so differentiation can expose the input.
@@ -133,3 +319,39 @@
 **Sources:**
 
 - [Generalized Abel equations and applications to translation invariant Radon transforms](https://arxiv.org/abs/2306.08180v1)
+
+### Divided differences preserve discrete inversion
+
+**Remember:** Use divided differences of the inverse symbol to undo the discrete convolution.
+
+*True by definition.* MSC 45L05 (Theoretical approximation of solutions to integral equations), 45E10, 65R20. arXiv math.NA. Level 4: research.
+
+**Definition.** Take distinct positive nodes x₀,…,xₙ and a scalar transform K nonzero at each node. Start divided differences with the values K(xⱼ). For each longer list, subtract the value omitting the last node from the value omitting the first, then divide by the endpoint spacing. In the lower triangular matrix, entry (i,j) uses nodes xⱼ through xᵢ, with negative sign for even i − j and positive sign otherwise.
+
+**Problem.** The lower triangular matrix for 1/K is the inverse of the matrix for K.
+
+**How the definition helps.** Divided differences encode the product rule needed to invert the weights without solving one row at a time. In our own sign check, write A(K) for the signed matrix. The divided-difference product rule gives A(K)A(L) = −A(KL). Since A(1) = −I, taking L = 1/K gives I. The proof depends on the product rule, which sums over every possible split of a node list.
+
+**Paper or page:** [Generalized convolution quadrature based on the trapezoidal rule](https://arxiv.org/abs/2305.11134v1). It says: “the relation φₙ = ∑ⱼ₌₀ⁿ (−1)ⁿ⁻ʲ⁺¹ gⱼ ⟨xⱼ,…,xₙ⟩ 𝒦 can be inverted”
+
+**Sources:**
+
+- [Lehel Banjai, Matteo Ferrari. Generalized convolution quadrature based on the trapezoidal rule](https://arxiv.org/abs/2305.11134v1)
+
+### Iterated collocation transfers a smoothed error bound
+
+**Remember:** The extra integral smooths the collocation error.
+
+*True by definition.* MSC 45L05 (Theoretical approximation of solutions to integral equations), 65R20. arXiv math.NA. Level 4: research.
+
+**Definition.** For u = f + Ku on a bounded interval, let P interpolate at nodes with spacing h. First solve v = P(f + Kv) in the interpolation space. Define the improved approximation w = f + Kv by applying the integral operator once more.
+
+**Problem.** Suppose I − KP has uniformly bounded inverses as h decreases. If ‖K(u − Pu)‖∞ ≤ Chᵖ, then the maximum error of w is bounded by a constant times hᵖ.
+
+**How the definition helps.** The last integral puts the interpolation error inside K. In our own calculation, v = Pw gives (I − KP)(u − w) = K(u − Pu). Applying the bounded inverse proves the estimate. The paper obtains an improved rate by bounding the right side for its particular kernels and smooth solutions.
+
+**Paper or page:** [A note on improvement by iteration for the approximate solutions of second kind Fredholm integral equations with Green's kernels](https://arxiv.org/abs/2406.12343v2). It says: “Then ‖φ − φₙᶜ‖∞ = O(h²ʳ⁺¹), ‖φ − φₙˢ‖∞ = O(h²ʳ⁺²).”
+
+**Sources:**
+
+- [Gobinda Rakshit, Shashank K. Shukla, Akshay S. Rane. A note on improvement by iteration for the approximate solutions of second kind Fredholm integral equations with Green's kernels](https://arxiv.org/abs/2406.12343v2)

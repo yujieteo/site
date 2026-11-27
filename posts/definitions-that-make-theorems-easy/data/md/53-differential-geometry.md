@@ -888,6 +888,40 @@
 - [Christian Bär, Nicolas Ginoux, Frank Pfäffle, Wave equations on Lorentzian manifolds and quantization, EMS (2007), arXiv:0806.1036](https://arxiv.org/abs/0806.1036)
 - [Robert Geroch, Domain of dependence, J. Math. Phys. 11 (1970) 437–449](https://doi.org/10.1063/1.1665157)
 
+### A flat torus defeats compact diamonds
+
+**Remember:** Compact travel regions do not rule out time loops.
+
+*Rules out counterexamples.* MSC 53C50 (Global differential geometry of Lorentz manifolds, manifolds with indefinite metrics), 83C99. arXiv gr-qc. Level 3: graduate.
+
+**Definition.** A future causal curve has tangent in the chosen future light cone or its interior. The diamond from p to q consists of points on such curves from p to q, including the endpoints when a curve exists. Global hyperbolicity requires compact diamonds and forbids closed causal curves.
+
+**Problem.** Every smooth globally hyperbolic spacetime admits a Cauchy surface, which every causal curve without past or future endpoint crosses exactly once. Compact diamonds alone do not ensure this.
+
+**How the definition helps.** The ban on closed causal curves excludes the flat torus with periodic time and space (our own counterexample). Each event can reach any other along a timelike path by winding around time sufficiently often. Every diamond is therefore the whole compact torus. A periodic timelike curve cannot cross a surface exactly once throughout its indefinite repetitions. The full existence result uses the Cauchy surface theorem.
+
+**Wikipedia:** [Globally hyperbolic spacetime](https://en.wikipedia.org/wiki/Globally_hyperbolic_spacetime). It says: “This condition states that no closed causal curves exist, thus forbidding matter or energy from traveling into its own past.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Cauchy horizons exclude timelike links
+
+**Remember:** Two points on the prediction boundary cannot share a timelike path.
+
+*Makes the theorem clean to state or prove.* MSC 53C50 (Global differential geometry of Lorentz manifolds, manifolds with indefinite metrics), 83C75. arXiv gr-qc, math-ph. Level 3: graduate.
+
+**Definition.** A causal curve follows the light cone or its interior. For an initial surface S, its future domain of dependence D comprises points where every past causal curve without a past endpoint meets S. The future Cauchy horizon consists of points in the closure of D from which no future timelike curve enters D. A timelike curve stays inside the cone.
+
+**Problem.** Let S be a closed hypersurface in a smooth spacetime, with no causal curve joining distinct points of S. No timelike curve joins two points of its future Cauchy horizon outside S.
+
+**How the definition helps.** Defining the horizon by timelike reachability reduces the claim to openness of this relation (our own proof). Suppose one horizon point reaches another by a timelike curve. Its timelike future is open, so it contains a neighborhood of the second point. That neighborhood meets D by the closure condition. The first point could then reach D, contrary to the horizon definition.
+
+**Paper or page:** [Low regularity extensions beyond Cauchy horizons](https://arxiv.org/abs/2110.07388). It says: “is an achronal locally Lipschitz topological hypersurface”
+
+**Sources:**
+
+- [Low regularity extensions beyond Cauchy horizons](https://arxiv.org/abs/2110.07388)
+
 ### Cauchy surfaces separate past and future
 
 **Remember:** Every observer crosses once, so every event lies before, on, or after.
@@ -921,6 +955,40 @@
 **Wikipedia:** [Globally hyperbolic spacetime](https://en.wikipedia.org/wiki/Globally_hyperbolic_spacetime). It says: “The spacetime is causal, and for every pair of points p and q in M, the subset J⁺(p) ∩ J⁻(q) is compact.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Rescaling preserves light rays
+
+**Remember:** Change the scale, not the light ray.
+
+*True by definition.* MSC 53C50 (Global differential geometry of Lorentz manifolds, manifolds with indefinite metrics), 83C80. arXiv gr-qc, math-ph. Level 3: graduate.
+
+**Definition.** A Lorentzian metric gives one negative and one positive squared length in a suitable basis on a surface. A null direction has zero squared length. A conformal map is a smooth local diffeomorphism whose pullback rescales the metric by a positive function. A light ray is the path of a null geodesic, with its parameter forgotten.
+
+**Problem.** A conformal map between smooth Lorentzian surfaces sends light rays to light rays.
+
+**How the definition helps.** Forgetting the parameter lets us identify light rays by their tangent lines alone (our own explanation). On a Lorentzian surface, each null line equals its perpendicular line. Differentiating the zero squared speed shows that a regular null curve has acceleration along its tangent. Thus a change of parameter makes it a geodesic. A conformal map preserves null lines, so this test replaces comparison of the two geodesic equations. The argument from perpendicularity is our own.
+
+**Paper or page:** [Causal Classification of Pathological Misner-Type Spacetimes](https://arxiv.org/abs/2501.00841). It says: “Conformal transformations between 2-dimensional Lorentzian manifolds send null hypersurfaces to null hypersurfaces and therefore null geodesics to null geodesics.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Time prevents compact causal confinement
+
+**Remember:** A trapped curve would force time to stand still on a limit curve.
+
+*Rules out counterexamples.* MSC 53C50 (Global differential geometry of Lorentz manifolds, manifolds with indefinite metrics), 83C99. arXiv gr-qc, math-ph. Level 3: graduate.
+
+**Definition.** A time function on a spacetime is a continuous real function that strictly increases along every nonconstant future causal curve. Such a curve follows the chosen future light cone or its interior.
+
+**Problem.** In a smooth spacetime with a time function, no compact set contains an entire future-inextendible causal curve. Such a curve has no future endpoint in the spacetime.
+
+**How the definition helps.** Strict increase rules out a limiting curve on which time stays constant (our own explanation). On a confined curve the time values increase to a finite limit by compactness. Measure lengths with a complete auxiliary Riemannian metric. The limit curve theorem gives a nonconstant limiting segment from successive late segments of fixed length. Time has its limiting value everywhere on that segment by continuity.
+
+**Paper or page:** [Time functions on Lorentzian length spaces](https://arxiv.org/abs/2108.02693). It says: “If X admits a time function, then X is non-totally imprisoning.”
+
+**Sources:**
+
+- [Time functions on Lorentzian length spaces](https://arxiv.org/abs/2108.02693)
 
 ### Unit clock gradients follow free fall
 
@@ -1704,6 +1772,24 @@
 **Sources:**
 
 - [Annegret Burtscher, Leonardo García-Heveling, Time functions on Lorentzian length spaces, arXiv:2108.02693v3 (2024), Ann. Henri Poincaré 26, 1533--1572 (2025)](https://arxiv.org/abs/2108.02693v3)
+
+### Bubble-free metrics restore timelike approximation
+
+**Remember:** Without causal bubbles, timelike paths can approach lightlike reach.
+
+*Rules out counterexamples.* MSC 53C50 (Global differential geometry of Lorentz manifolds, manifolds with indefinite metrics), 83C99. arXiv gr-qc. Level 4: research.
+
+**Definition.** In a continuous spacetime metric, causal paths follow the future light cone or its interior. In a small coordinate neighborhood, compare the reachable region with the union of futures for smooth metrics with strictly narrower cones. Strict narrowing puts every nonzero causal vector of the smooth metric inside the original cone. Causal plainness requires their boundaries to agree locally at every starting point, in both time directions.
+
+**Problem.** In sufficiently small such neighborhoods of a causally plain spacetime, timelike paths reach points arbitrarily close to each causally reachable endpoint. A timelike path stays inside the cones.
+
+**How the definition helps.** The boundary agreement excludes a gap between the two reachable regions (our own explanation). In local coordinates the two future boundaries are graphs over space. The narrower-cone future lies above its graph and the causal future lies on or above its graph. Equal graphs give the approximation. The cited continuous metric has an open set of reachable points outside the closure of the timelike future.
+
+**Paper or page:** [Causal bubbles in globally hyperbolic spacetimes](https://arxiv.org/abs/2207.01392). It says: “consists of points in $J<sup>+</sup>(0)\\setminus \\overline{I<sup>+</sup>(0)}$.”
+
+**Sources:**
+
+- [Causal bubbles in globally hyperbolic spacetimes](https://arxiv.org/abs/2207.01392)
 
 ### Globally hyperbolic spacetimes are exactly those properly conformally embeddable in Minkowski space
 

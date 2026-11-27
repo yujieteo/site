@@ -549,6 +549,76 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Frobenius groups irreducible factors
+
+**Remember:** Multiply conjugate factors to recover one factor over the smaller field.
+
+*True by definition.* MSC 12E20 (Finite fields (field-theoretic aspects)). arXiv math.NT. Level 3: graduate.
+
+**Definition.** Let g be a monic polynomial without repeated factors over a field with q elements. Factor g into monic irreducible polynomials over a larger finite field. The Frobenius map raises each coefficient to its qth power. For each factor, multiply the distinct factors reached by repeating this map.
+
+**Problem.** These products, taken once per orbit, give precisely the monic irreducible factors of g over the smaller field. An orbit is the set reached from one factor.
+
+**How the definition helps.** In our own proof, taking a whole orbit makes its product fixed by Frobenius. The fixed coefficients belong to the smaller field. Finding factors directly there would require ruling out every proper factor. Unique factorization over the larger field reduces this to ruling out a nonempty proper subset of the orbit preserved by Frobenius. Repeated application reaches every member, so no such subset exists.
+
+**Paper or page:** [Closed formulas for the factorization of Xⁿ−1, the n-th cyclotomic polynomial, Xⁿ−a and f(Xⁿ) over a finite field for arbitrary positive integers n](https://arxiv.org/abs/2306.11183). It says: “Then the factorization of g into monic irreducible polynomials over 𝔽q is given by: ∏(R ∈ ℛ/∼) spin<sub>q</sub>\[R\]”
+
+**Sources:**
+
+- [Anna-Maurin Graner, Closed formulas for the factorization of Xⁿ−1, the n-th cyclotomic polynomial, Xⁿ−a and f(Xⁿ) over a finite field for arbitrary positive integers n](https://arxiv.org/abs/2306.11183)
+
+### Norm forms preserve C₁ under extension
+
+**Remember:** Taking the norm multiplies the degree and variable count equally.
+
+*Makes the theorem clean to state or prove.* MSC 12E30 (Field arithmetic). arXiv math.NT, math.AC. Level 3: graduate.
+
+**Definition.** A field is C₁ if every homogeneous polynomial of positive degree d in more than d variables has a nonzero solution. For a finite field extension, the norm of an element is the determinant of multiplication by that element over the base field.
+
+**Problem.** Every finite extension of a C₁ field is again C₁.
+
+**How the definition helps.** The C₁ inequality survives taking the norm because the degree and the number of variables grow by the same factor. In our own proof, write each of m variables in a basis of the extension of degree n. Taking the norm of the polynomial gives a homogeneous polynomial of degree nd in nm coordinates. Since m exceeds d, the base field supplies a nonzero coordinate vector where that norm vanishes. The basis turns this vector into a nonzero tuple over the extension. Only zero has norm zero, so the original polynomial vanishes there.
+
+**Wikipedia:** [Quasi-algebraically closed field](https://en.wikipedia.org/wiki/Quasi-algebraically_closed_field). It says: “Any algebraic extension of a quasi-algebraically closed field is quasi-algebraically closed.”
+
+**Sources:**
+
+- [Serge Lang, On Quasi Algebraic Closure (1952)](https://doi.org/10.2307/1969785)
+
+### Pseudo-finite fields inherit norm surjectivity
+
+**Remember:** At each fixed degree, norms are given by one formula.
+
+*True by definition. Confidence: medium.* MSC 12E30 (Field arithmetic). arXiv math.LO, math.NT. Level 3: graduate.
+
+**Definition.** A pseudo-finite field is an infinite field satisfying every first-order sentence true in every finite field. Such sentences quantify over field elements and use field operations and equality.
+
+**Problem.** The norm from every finite extension of a pseudo-finite field is onto the nonzero elements of the base field.
+
+**How the definition helps.** The first-order definition transfers the finite-field norm theorem one extension degree at a time. In our own proof, fix the degree and describe a simple extension by the coefficients of an irreducible polynomial. Irreducibility in fixed degree can be tested by quantifying over possible factors. The norm is the determinant of multiplication in the quotient, so surjectivity also has a first-order formula. Pseudo-finite fields are perfect, meaning their finite extensions are separable. The primitive element theorem then gives one generator for each finite extension. Ax’s characterization supplies the equivalent description using unique extensions of each degree and rational points on varieties that remain integral over an algebraic closure.
+
+**Wikipedia:** [Pseudo-finite field](https://en.wikipedia.org/wiki/Pseudo-finite_field). It says: “an infinite model of the first-order theory of finite fields.”
+
+**Sources:**
+
+- [James Ax, The Elementary Theory of Finite Fields (1968)](https://doi.org/10.2307/1970573)
+
+### Rational points split Brauer classes
+
+**Remember:** Find a point on the variety that records splitting.
+
+*Makes the theorem clean to state or prove.* MSC 12E30 (Field arithmetic). arXiv math.NT, math.AC. Level 3: graduate.
+
+**Definition.** A pseudo-algebraically closed field supplies a rational point on every geometrically integral variety over it. Such a variety stays irreducible and has no nilpotent functions after extending to an algebraic closure. A rational point has coordinates in the original field.
+
+**Problem.** Over a pseudo-algebraically closed field, every finite-dimensional central simple algebra is a matrix algebra. Equivalently, the field has trivial Brauer group. A central simple algebra has center equal to the field and no proper nonzero two-sided ideal.
+
+**How the definition helps.** The rational-point axiom applies to the variety that detects whether a given algebra is a matrix algebra. The Severi–Brauer theorem constructs this variety and identifies its rational points as the test for splitting. Over an algebraic closure the variety becomes projective space, so it is geometrically integral.
+
+**Wikipedia:** [Pseudo algebraically closed field](https://en.wikipedia.org/wiki/Pseudo_algebraically_closed_field). It says: “The Brauer group of a PAC field is trivial, as any Severi–Brauer variety has a rational point.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Defining separable as geometrically reduced makes separability survive base change
 
 **Remember:** Changing the base field just changes which tensor product you test.
@@ -602,6 +672,40 @@
 - [Hendrik Lenstra, Galois theory for schemes, Mathematisch Instituut, Universiteit van Amsterdam (1985; electronic third edition, Leiden, 2008), Section 2.1](https://websites.math.leidenuniv.nl/algebra/GSchemes.pdf)
 - [Wolfgang Krull, Galoissche Theorie der unendlichen algebraischen Erweiterungen, Mathematische Annalen 100 (1928) 687–698](https://doi.org/10.1007/BF01448872)
 
+### Separability prevents degenerate trace pairings
+
+**Remember:** A nonzero trace pairs every nonzero element with something.
+
+*Rules out counterexamples.* MSC 12F10 (Separable extensions, Galois theory). arXiv math.AC. Level 3: graduate.
+
+**Definition.** For a finite field extension L of K, the trace of z is the matrix trace of multiplication by z on L over K. Pair x and y by taking the trace of xy. The extension is separable if every minimal polynomial over K of an element of L has distinct roots.
+
+**Problem.** The pairing detects every nonzero x exactly when L is separable. Detection means that some y gives a nonzero trace of xy.
+
+**How the definition helps.** In our own proof, separability excludes precisely the extensions whose trace vanishes everywhere. If z has nonzero trace, take y = z/x for each nonzero x. The main field theorem identifies separability with the existence of such a z. For our own counterexample, adjoin a square root u of t to the rational function field over the two-element field. In the basis 1,u, multiplication by a + bu has diagonal entries a,a. Their sum is zero.
+
+**Paper or page:** [Lemma 9.20.7.](https://stacks.math.columbia.edu/tag/0BIL). It says: “L/K is separable, Traceₗ⁄ₖ is not identically zero, and the trace pairing Qₗ⁄ₖ is nondegenerate.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### A p-basis gives differential coordinates
+
+**Remember:** Differentiate the bounded powers as if they were independent variables.
+
+*Rules out counterexamples.* MSC 12F15 (Inseparable field extensions). arXiv math.AC. Level 3: graduate.
+
+**Definition.** For a field extension K over k of characteristic p, let E be the field generated by k and all pth powers in K. A p-basis is a set whose monomials form a vector space basis of K over E. These monomials use finitely many factors and exponents from zero through p − 1. The differential space records formal derivatives, with the sum and product rules and zero derivative on k.
+
+**Problem.** The differentials of the elements of a p-basis form a basis of the differential space of K over k.
+
+**How the definition helps.** Unique monomial expansions let us take a partial derivative in each chosen element independently. In our own argument, reducing an exponent by the relation for a pth power respects differentiation because both sides have derivative zero. The resulting partial derivatives distinguish the basis differentials, and the monomial expansions show that those differentials span. In our own example, adjoining tᵖ to the list containing t preserves generation of 𝔽ₚ(t) but adds a zero differential.
+
+**Paper or page:** [Power Towers: Purely Inseparable Galois Theory and Foliations in Positive Characteristic](https://arxiv.org/abs/2510.06058). It says: “dxᵢ is a basis of the K-vector space Ω(K/k).”
+
+**Sources:**
+
+- [Przemysław Grabowski, Power Towers: Purely Inseparable Galois Theory and Foliations in Positive Characteristic (2025), Lemma 2.16](https://arxiv.org/abs/2510.06058)
+
 ### Building perfect closures from pth roots makes field maps extend uniquely
 
 **Remember:** Each new root has only one possible image.
@@ -615,6 +719,40 @@
 **How the definition helps.** In characteristic p an element has at most one pth root, so each adjoined root has only one possible image (our own). A map φ sends the pⁿth root of a to the pⁿth root of φ(a) in the target closure (our own). This rule preserves sums and products because x ↦ xᵖ does (our own). The work moves to Stacks Lemma 10.45.4, which shows that this construction is the unique perfect, purely inseparable extension.
 
 **Paper or page:** [Lemma 10.45.4.](https://stacks.math.columbia.edu/tag/046W). It says: “The field extension k′/k is unique up to unique isomorphism.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Regular extensions stay integral
+
+**Remember:** Test the tensor product once over an algebraic closure.
+
+*True by definition.* MSC 12F20 (Transcendental field extensions). arXiv math.AC. Level 3: graduate.
+
+**Definition.** One can test whether a field extension L of k is regular by taking its tensor product with an algebraic closure of k. The product must be a domain, a ring without zero divisors.
+
+**Problem.** For a regular extension L of k and any field extension E of k, E ⊗ₖ L is a domain.
+
+**How the definition helps.** The tensor definition gives exactly the single test needed to preserve integrality over every larger field. The first cited lemma proves that testing an algebraic closure suffices. In our own comparison, the usual definition requires separability and requires every element of L algebraic over k to lie in k. The equivalence with that definition carries the field-theoretic work.
+
+**Wikipedia:** [Regular extension](https://en.wikipedia.org/wiki/Regular_extension). It says: “or equivalently, L ⊗ₖ k̄ is an integral domain when k̄ is the algebraic closure of k”
+
+**Paper or page:** [Lemma 10.49.3.](https://stacks.math.columbia.edu/tag/0FWF), [Lemma 10.49.4.](https://stacks.math.columbia.edu/tag/09P9). It says: “Let k be a field. Let S be a geometrically integral k-algebra. Let R be a k-algebra and an integral domain. Then R ⊗ₖ S is an integral domain.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Separating bases leave one algebraic generator
+
+**Remember:** Choose the variables so the algebraic part stays separable.
+
+*Rules out counterexamples.* MSC 12F20 (Transcendental field extensions). arXiv math.AC. Level 3: graduate.
+
+**Definition.** A separating transcendence basis is an algebraically independent set that leaves only a separable algebraic extension. In other words, over the rational function field it generates, all minimal polynomials have distinct roots. An ordinary transcendence basis does not require this.
+
+**Problem.** If a finitely generated field extension admits a separating transcendence basis, one separable element suffices to generate the extension over the resulting rational function field.
+
+**How the definition helps.** Choosing a separating basis makes the remaining extension finite and separable, so the primitive element theorem gives one generator. In our own example, the singleton containing tᵖ is a transcendence basis for 𝔽ₚ(t) over the field with p elements. Over 𝔽ₚ(tᵖ), the minimal polynomial of t has a repeated root. No separable element generates that extension.
+
+**Paper or page:** [Lemma 10.42.3.](https://stacks.math.columbia.edu/tag/030Q). It says: “K = k(x₁, …, xᵣ₊₁), and xᵣ₊₁ is separable over k(x₁, …, xᵣ).”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -636,6 +774,38 @@
 
 - [Emmy Noether, Der Hauptgeschlechtssatz für relativ-galoissche Zahlkörper, Mathematische Annalen 108 (1933)](https://doi.org/10.1007/BF01452845)
 - [David Hilbert, Die Theorie der algebraischen Zahlkörper, Jahresbericht der Deutschen Mathematiker-Vereinigung 4 (1897)](http://resolver.sub.uni-goettingen.de/purl?GDZPPN002115344)
+
+### Differential closedness gives separability without perfection
+
+**Remember:** An extension must carry the derivative before it can supply a root.
+
+*Rules out counterexamples.* MSC 12H05 (Differential algebra). arXiv math.AC. Level 3: graduate.
+
+**Definition.** A differentially closed field solves any finite system of differential equations and inequations that has a solution in a differential field extension. A differential equation can involve the unknown and its repeated derivatives. Unlike ordinary algebraic closedness, this definition tests only extensions that admit the original derivative.
+
+**Problem.** Every differentially closed field is separably closed, meaning that every nonconstant polynomial with distinct roots in an algebraic closure has a root in the field. In positive characteristic some polynomials have no root in the field.
+
+**How the definition helps.** Testing differential extensions gives roots of separable polynomials because the derivative extends to every separable algebraic extension. In our own argument, adjoin a variable with derivative one. Differential closedness then gives an element a of the original field with derivative one. In characteristic p, every pth power has derivative zero, so a has no pth root. The extension theorem for derivatives supplies the first step.
+
+**Wikipedia:** [Differentially closed field](https://en.wikipedia.org/wiki/Differentially_closed_field). It says: “Taking g=1 and f any ordinary separable polynomial shows that any differentially closed field is separably closed.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Fixed constants preserve solution dimension
+
+**Remember:** A full set of solutions needs no extra constants.
+
+*Rules out counterexamples.* MSC 12H05 (Differential algebra). arXiv math.AC. Level 3: graduate.
+
+**Definition.** A Picard–Vessiot field for a system Y′ = AY is generated by the entries of an invertible matrix F satisfying F′ = AF. It adds no constants, meaning elements with derivative zero.
+
+**Problem.** In a Picard–Vessiot field for an n-dimensional system, the solution space has dimension n over the original constants.
+
+**How the definition helps.** The constant-field condition forces every solution to be a combination of the columns of F with coefficients in the original constants. In our own calculation, multiplying a solution by the inverse of F gives a vector with derivative zero. For our own counterexample, take ℂ(x) with ordinary differentiation and adjoin a transcendental constant c. For y′ = 0, the invertible solution matrix (c) generates this extension, yet 1 and c are independent solutions over ℂ.
+
+**Paper or page:** [Differential Central Simple Algebras](https://arxiv.org/abs/2303.12430). It says: “The field of constants C<sub>K</sub>=C<sub>k</sub>.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Henselian as unique extension makes conjugate elements have equal values
 
@@ -671,6 +841,134 @@
 
 - [André Weil, Basic Number Theory, Springer (1974)](https://doi.org/10.1007/978-3-642-61945-8)
 
+### Residue fields classify unramified extensions
+
+**Remember:** A simple residue factor lifts without splitting ambiguities.
+
+*Rules out counterexamples.* MSC 12J10 (Valued fields). arXiv math.AC. Level 3: graduate.
+
+**Definition.** A discrete valuation ring has a maximal ideal generated by one uniformizer, an element of least positive value. Its residue field is the quotient by that ideal. The ring is henselian if relatively prime monic factors of a monic polynomial modulo the maximal ideal lift to factors over the ring. A finite field extension is unramified here if its degree equals its residue degree and its residue extension is separable.
+
+**Problem.** For a henselian discrete valuation ring, reduction classifies finite unramified extensions of its fraction field by finite separable extensions of its residue field. It also gives a bijection between the corresponding embeddings.
+
+**How the definition helps.** The henselian lifting property recovers separable residue extensions and their embeddings from lifted polynomial factors. The cited theorem proves this for finite étale algebras, which here are finite free algebras with separable field products as fibers. Its connected algebras, those without a nontrivial product decomposition, give the unramified fields. In our own counterexample, adjoin √6 to the integers localized at five, where denominators are prime to five. The result is a domain, but its reduction splits because X² − 6 has two distinct roots modulo five.
+
+**Paper or page:** [Lemma 10.153.7.](https://stacks.math.columbia.edu/tag/04GK). It says: “The category of finite étale ring extensions R → S is equivalent to the category of finite étale algebras κ → S̄ via the functor S ↦ S/𝔪S.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Divisible exponents yield real closedness
+
+**Remember:** An nth root needs room for the leading exponent divided by n.
+
+*Rules out counterexamples.* MSC 12J15 (Ordered fields). arXiv math.AC. Level 3: graduate.
+
+**Definition.** A Hahn field consists of formal series with exponents in an ordered abelian group. Every nonempty subset of the exponents with nonzero coefficients must have a least element. Over ordered coefficients, the first nonzero coefficient determines the sign. A divisible exponent group allows division by every positive integer.
+
+**Problem.** Suppose the ordered coefficient field is real closed, meaning it has no proper ordered algebraic extension. Its Hahn field is also real closed if the exponent group is divisible.
+
+**How the definition helps.** Divisibility removes the obstruction from the first nonzero term of a series. In our own example, t has no square root in ℝ((t)), since a square has an even leading exponent. The algebraic closure theorem for Hahn fields does the hard work. Adjoining a square root of −1 just extends the coefficients, and the resulting Hahn field is algebraically closed.
+
+**nLab:** [Hahn series](https://ncatlab.org/nlab/show/Hahn+series). It says: “As a corollary, if G is divisible, k\[tᴳ\] is real closed if k is real closed.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Field embeddings preserve real closed orders
+
+**Remember:** A field map sends squares to squares.
+
+*True by definition.* MSC 12J15 (Ordered fields). arXiv math.AC. Level 3: graduate.
+
+**Definition.** A real closed ordered field has square roots of all positive elements and roots of all odd-degree polynomials. One can also define it as an ordered field with no proper ordered algebraic extension.
+
+**Problem.** Every field embedding between real closed fields preserves their unique orders.
+
+**How the definition helps.** The square-root axiom identifies positive elements with nonzero squares. Every field embedding preserves nonzero squares, so it preserves the order. In our own argument, the Artin–Schreier theorem supplies the root axioms when one starts with the definition using ordered algebraic extensions.
+
+**nLab:** [real closed field](https://ncatlab.org/nlab/show/real+closed+field). It says: “In fact, the category of real closed fields and order-preserving field homomorphisms is a full subcategory of the category Field of fields and field homomorphisms.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Fixed orders make real closures unique
+
+**Remember:** Keep the signs before you adjoin square roots.
+
+*Rules out counterexamples.* MSC 12J15 (Ordered fields). arXiv math.AC. Level 3: graduate.
+
+**Definition.** A real closure of an ordered field is an algebraic extension with an order extending the given one. In that extension, every positive element has a square root and every polynomial of odd degree has a root.
+
+**Problem.** An ordered field has a real closure unique up to a unique order-preserving isomorphism over that field.
+
+**How the definition helps.** Fixing the order rules out extensions that give square roots to elements declared negative. In our own example, the rational function field ℚ(t) admits orders with t positive and orders with t negative. Only the first real closures contain a square root of t, so no isomorphism fixing ℚ(t) can identify the two. The Artin–Schreier theorem proves existence and uniqueness once the order is fixed.
+
+**Paper or page:** [An Artin-Schreier-type theory for signatures of hermitian forms over involutions](https://arxiv.org/abs/2304.03598). It says: “unique up to a unique K-isomorphism.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Root axioms make value groups divisible
+
+**Remember:** Roots of positive representatives divide their values.
+
+*True by definition.* MSC 12J15 (Ordered fields). arXiv math.AC. Level 3: graduate.
+
+**Definition.** In an ordered field, two nonzero elements have the same natural value when their absolute ratio lies between two positive rational bounds. These classes form the natural value group, with field multiplication written as group addition. In a real closed ordered field, positive elements have square roots and odd-degree polynomials have roots.
+
+**Problem.** The natural value group of a real closed field is divisible. For every value v and positive integer n, some value w satisfies nw = v.
+
+**How the definition helps.** Every value has a positive representative, and a positive nth root divides its value by n. The odd-degree root axiom handles the odd part of n, and repeated square roots handle the powers of two. In our own terms, the Artin–Schreier theorem supplies these root axioms if real closed means maximal among ordered algebraic extensions.
+
+**nLab:** [real closed field](https://ncatlab.org/nlab/show/real+closed+field). It says: “If R is real closed, then the value group is a linearly ordered divisible group (divisible because we can take nth roots of positive elements in R).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Discrete henselization changes no values or residues
+
+**Remember:** Take the separable algebraic part without changing the values or residues.
+
+*True by definition.* MSC 12J20 (General valuation theory for fields). arXiv math.AC. Level 3: graduate.
+
+**Definition.** A discrete valuation assigns integer orders to nonzero elements of a field. It is henselian if it extends uniquely to algebraic extensions. Its henselization is the smallest henselian extension inside a chosen valued algebraic closure. For a discrete valuation, this field also consists of the separable algebraic elements in the completion.
+
+**Problem.** The henselization of a discretely valued field has its original value group and residue field.
+
+**How the definition helps.** The completion description puts the henselization in a field where arbitrarily close approximations come from the base. In our own argument, approximate a nonzero element until the error has higher value than the element. The approximation then has the same value. For an element of nonnegative value, an error of positive value also leaves the residue unchanged. The henselization theorem identifies the separable algebraic part of the completion with the smallest henselian extension.
+
+**nLab:** [Henselian ring](https://ncatlab.org/nlab/show/Henselian+ring). It says: “Then the Henselization of R is isomorphic to the subring of R̂ whose elements are roots of separable polynomials with coefficients in K.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Pure inseparability gives one valuation ring
+
+**Remember:** Test an element by raising it back to the base field.
+
+*True by definition.* MSC 12J20 (General valuation theory for fields), 12F15. arXiv math.AC. Level 3: graduate.
+
+**Definition.** Let A be a valuation ring of K. This means A contains x or its inverse for every nonzero x in K. In characteristic p &gt; 0, an extension L of K is purely inseparable if each element has some p-power in K. A p-power means the result of repeatedly raising an element to the power p.
+
+**Problem.** Exactly one valuation ring of L meets K in A. It is the integral closure of A in L, the elements satisfying a monic polynomial over A.
+
+**How the definition helps.** In our own proof, the power description forces membership in any extending valuation ring B. For x in L choose a p-power y of x in K. If x belongs to B, then y belongs to A. Conversely, if y belongs to A, then x satisfies a monic equation over B and belongs to B because valuation rings are integrally closed. The cited lemma proves that the integral closure gives one such ring. The power description is equivalent to requiring each minimal polynomial over K to have just one distinct root.
+
+**Paper or page:** [Lemma 15.124.3.](https://stacks.math.columbia.edu/tag/0H37). It says: “Then the integral closure B of A in L is a valuation ring with fraction field L and A ⊂ B is an extension of valuation rings.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Valuation rings restrict by intersection
+
+**Remember:** Restrict the field and keep the elements of size at most one.
+
+*True by definition.* MSC 12J20 (General valuation theory for fields). arXiv math.AC. Level 3: graduate.
+
+**Definition.** A valuation ring in a field is a subring containing x or its inverse for each nonzero field element x. Its elements have size at most one for the corresponding valuation. Alternatively, a valuation assigns values in an ordered group.
+
+**Problem.** Restricting a valuation from a field L to a subfield K pulls its valuation ring back to K. These restrictions compose in towers.
+
+**How the definition helps.** The ring definition turns restriction to a subfield K into intersection with K. In our own proof, the intersection still contains x or its inverse for every nonzero x in K. Taking two successive intersections gives the same ring as restricting directly. The correspondence with ordered-group valuations requires recovering the group of values by dividing the multiplicative group by the units of the ring.
+
+**nLab:** [valuation ring](https://ncatlab.org/nlab/show/valuation+ring). It says: “There is a natural bijective correspondence between equivalence classes of valuations on K and valuation rings in K.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Haar scaling makes a local field’s module multiplicative
 
 **Remember:** Multiplying twice multiplies the volume scaling factors.
@@ -688,6 +986,22 @@
 **Sources:**
 
 - [A. Weil, Basic Number Theory, Springer (2nd ed. 1974)](https://doi.org/10.1007/978-3-642-61945-8)
+
+### Hahn series admit a missing root
+
+**Remember:** Well-ordered exponents need not have bounded denominators.
+
+*Makes the theorem clean to state or prove.* MSC 12J25 (Non-Archimedean valued fields). arXiv math.AC. Level 3: graduate.
+
+**Definition.** A Hahn series has exponents in an ordered abelian group. Each nonempty subset of the exponents with nonzero coefficients must have a least element. A Puiseux series is a Laurent series in a single fractional power of t, so its exponents share a denominator.
+
+**Problem.** Over a field of characteristic p, the Hahn field with rational exponents has a root of Xᵖ − X = t⁻¹. The Puiseux field does not.
+
+**How the definition helps.** The Hahn definition admits the increasing exponents −1/p, −1/p², and so on, although they have no common denominator. Give each exponent coefficient one. Raising this series to the pth power shifts the terms, so subtraction leaves t⁻¹. In our own argument, any two roots differ by a solution of zᵖ = z, hence by an element of the prime field. Adding a constant leaves all the negative exponents in place.
+
+**Wikipedia:** [Hahn series](https://en.wikipedia.org/wiki/Hahn_series). It says: “it is not a Puiseux series because the denominators in the exponents are unbounded.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### p-adic numbers make Hasse–Minkowski a test one prime at a time
 
@@ -722,6 +1036,24 @@
 **Paper or page:** [An Infinitely Large Napkin: Calculus: P Adic](https://venhance.github.io/napkin/Napkin.pdf). It says: “The number x ∈ ℤₚ is invertible if and only if x₁ ≠ 0. In symbols, x ∈ ℤₚˣ ⟺ x ≢ 0 (mod p).”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Spherical completeness excludes immediate extensions
+
+**Remember:** A new element in an immediate extension produces nested balls with no common point.
+
+*Makes the theorem clean to state or prove. Confidence: medium.* MSC 12J25 (Non-Archimedean valued fields). arXiv math.NT. Level 3: graduate.
+
+**Definition.** A valuation assigns ordered values to nonzero elements, with larger values meaning smaller size. A valued field is spherically complete if every nested family of closed balls has a common point. An immediate extension preserves the value group and the residue field, obtained by reducing elements of size at most one modulo those of smaller size.
+
+**Problem.** A spherically complete valued field has no proper immediate extension.
+
+**How the definition helps.** Spherical completeness tests all approximations to a proposed new element at once. In our own proof, take a new element x and form a closed ball around each old element a with radius the distance to x. The valuation inequality makes the balls nested. Immediacy gives a closer old element b by matching the value of x − a and then its first nonzero residue. The ball around b excludes a, so no old element lies in every ball.
+
+**Wikipedia:** [Spherically complete field](https://en.wikipedia.org/wiki/Spherically_complete_field). It says: “every collection of balls that is totally ordered by inclusion has a nonempty intersection.”
+
+**Sources:**
+
+- [Irving Kaplansky, Maximal fields with valuations (1942)](https://doi.org/10.1215/s0012-7094-42-00922-0)
 
 ### The fundamental theorem of algebra, stated for the multiset of roots
 
@@ -777,6 +1109,22 @@
 
 - [Nathan Jacobson, Galois theory of purely inseparable fields of exponent one, American Journal of Mathematics 66 (1944)](https://doi.org/10.2307/2371772)
 
+### Iterated closures solve new equations
+
+**Remember:** Each equation appears at a finite stage and is solved at the next.
+
+*True by definition.* MSC 12H05 (Differential algebra). arXiv math.AC. Level 4: research.
+
+**Definition.** A Picard–Vessiot field adjoins a basis of solutions of one homogeneous linear differential equation without adding constants, meaning elements with derivative zero. A Picard–Vessiot closure does this for all such equations over the starting field. The complete closure repeats this step indefinitely and takes the union.
+
+**Problem.** Suppose the starting differential field has characteristic zero and its constants form an algebraically closed field. The union has the same constants. Each homogeneous linear differential equation of positive order n over the union has n solutions linearly independent over those constants.
+
+**How the definition helps.** The iteration allows the next stage to solve equations using the previous stage’s solutions as coefficients. In our own terms, a linear equation has finitely many coefficients, so a single finite stage contains all of them. A constant in the union already lies at some finite stage and so belongs to the original field. The existence theorem for a Picard–Vessiot closure with unchanged constants supplies each stage.
+
+**Paper or page:** [The Complete Picard Vessiot Closure](https://arxiv.org/abs/2203.00705). It says: “The constants of F∞ are those of F.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### L'Hôpital's rule holds in an ordered field exactly when suprema exist
 
 **Remember:** Without suprema, a function with zero derivative can still jump.
@@ -794,3 +1142,21 @@
 **Sources:**
 
 - [Martin Grant, Kyle Hambrook, Alex Rusterholtz, L'Hôpital's Rule is Equivalent to the Least Upper Bound Property, arXiv:2505.23092 (2025)](https://arxiv.org/abs/2505.23092v1)
+
+### Tame ramification kills logarithmic differentials
+
+**Remember:** An invertible ramification index kills the new logarithmic derivative.
+
+*Rules out counterexamples.* MSC 12J20 (General valuation theory for fields). arXiv math.NT, math.AC. Level 4: research.
+
+**Definition.** A discrete valuation assigns integer orders to nonzero elements, with a uniformizer having order one. A henselian valuation extends uniquely to algebraic extensions. A finite extension is tame if its residue field extension is separable and its ramification index is invertible in the residue field. It must also have degree equal to the residue degree times that index, which measures how much the value group grows.
+
+**Problem.** For a finite tame extension of henselian discretely valued fields, the relative logarithmic differentials of the valuation rings vanish. These record ordinary derivatives and symbols dlog x satisfying x dlog x = dx for nonzero x, with base elements held constant.
+
+**How the definition helps.** Tameness makes the coefficient of the new logarithmic derivative invertible. In our own explanation, first lift the separable residue extension, which contributes no relative differentials. The tame ramification theorem gives a uniformizer s such that s raised to the ramification index e belongs to the lifted base. Taking logarithmic derivatives gives e dlog s = 0, so dlog s vanishes. For our own wild example, take Laurent series in characteristic p and set t = sᵖ. The operator s times differentiation with respect to s kills every base series in t and sends dlog s to one.
+
+**Paper or page:** [Logarithmic differentials on discretely ringed adic spaces](https://arxiv.org/abs/2009.14128). It says: “For any tame extension L\|K of valued fields the logarithmic cotangent complex is trivial.”
+
+**Sources:**
+
+- [Katharina Hübner, Logarithmic differentials on discretely ringed adic spaces (2025), Proposition 3.2](https://doi.org/10.24033/bsmf.2905)

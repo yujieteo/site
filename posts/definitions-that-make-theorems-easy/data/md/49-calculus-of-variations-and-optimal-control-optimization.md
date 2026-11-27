@@ -116,6 +116,40 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Mixtures capture fast control switches
+
+**Remember:** Fast switches can converge to a mixture even when actions cannot.
+
+*Rules out counterexamples. Confidence: medium.* MSC 49J15 (Existence theories for optimal control problems involving ordinary differential equations). arXiv math.OC. Level 3: graduate.
+
+**Definition.** On a finite interval, represent a relaxed control by a measure on pairs of times and actions. Its time coordinate has length measure as its distribution. Conditional on the time, actions can follow any probability distribution. An ordinary control concentrates that distribution on one action.
+
+**Problem.** Our own compact-action version uses a compact metric action space. Weak limits of relaxed controls are relaxed controls, where weak convergence tests integrals of continuous functions of time and action.
+
+**How the definition helps.** The fixed distribution of time passes to the limit by testing with functions of time alone. In our own account, a conditional probability theorem recovers the action distribution at almost every time. In our own counterexample, let actions alternate faster and faster between −1 and 1 in equal proportions. The limit puts half the mass on each action at every time, so it is not an ordinary control.
+
+**Paper or page:** [A non-exchangeable mean field control problem with controlled interactions](https://arxiv.org/abs/2511.00288). It says: “is closed with respect to the Wasserstein topology.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Point masses embed ordinary controls
+
+**Remember:** A point mass averages exactly one action.
+
+*True by definition.* MSC 49J15 (Existence theories for optimal control problems involving ordinary differential equations). arXiv math.OC. Level 3: graduate.
+
+**Definition.** An ordinary control picks one action at each time. A relaxed control picks a probability measure on the actions instead and averages the velocity and running cost against it.
+
+**Problem.** Every ordinary control has a relaxed form with the same trajectory and cost. Thus the relaxed infimum is no greater than the ordinary infimum.
+
+**How the definition helps.** A point mass, which puts all probability on one action, reproduces its velocity and cost exactly. Thus each ordinary control remains available at the same cost when controls may use distributions. In our own comparison, the reverse bound requires approximating relaxed trajectories and costs by ordinary ones under additional hypotheses.
+
+**Paper or page:** [Lagrangian, Eulerian and Kantorovich formulations of multi-agent optimal control problems: Equivalence and Gamma-convergence](https://arxiv.org/abs/2011.07117). It says: “In particular Vᴿᴸ(X₀) ≤ Vᴸ(X₀).”
+
+**Sources:**
+
+- [Lagrangian, Eulerian and Kantorovich formulations of multi-agent optimal control problems: Equivalence and Gamma-convergence](https://arxiv.org/abs/2011.07117)
+
 ### Minty tests make solutions convex
 
 **Remember:** Evaluate the operator at the known point so each test is linear.
@@ -132,6 +166,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Compactness keeps Γ-minima from escaping
+
+**Remember:** Compactness keeps minimizers where the limit can see them.
+
+*Rules out counterexamples.* MSC 49J45 (Methods involving semicontinuity and convergence; relaxation). arXiv math.OC. Level 3: graduate.
+
+**Definition.** Costs Γ-converge to F if every sequence approaching x has lower limiting cost at least F(x). At each x, some approaching sequence must have costs tending to F(x). Require one compact set to contain a minimizer of each cost.
+
+**Problem.** Suppose nonnegative costs on a complete metric space Γ-converge and meet this compactness requirement. Their minima converge to the minimum of F, and F attains it.
+
+**How the definition helps.** Compactness supplies a convergent subsequence of minimizers, which the Γ-limit can test. In our own proof, the lower bound applies to a subsequence realizing the lower limit of the minima. The upper bound follows by testing a sequence approaching any chosen point and then taking the infimum. In our own counterexample, the costs fₙ(x) = min(1, \|x − n\|) on ℝ have minima zero. Their Γ-limit is the constant one.
+
+**Paper or page:** [Phase transitions and minimal interfaces on manifolds with conical singularities](https://arxiv.org/abs/2403.07178). It says: “Then, $\\mathcal F\_\\infty $ has a minimizer and \\\[\\min<sub>X</sub> \\mathcal F\_\\infty = \\lim<sub>k\\rightarrow \\infty</sub> \\inf<sub>X</sub> \\mathcal F<sub>k</sub>.\\\]”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Constant Γ-limits repair cost jumps
 
 **Remember:** A constant sequence still relaxes the cost if nearby values are lower.
@@ -145,6 +195,22 @@
 **How the definition helps.** Using neighborhoods instead of constructing sequences makes both limits equal the supremum of the ball infima. In our own proof, a ball with infimum above a threshold contains a smaller such ball around every interior point. This proves lower semicontinuity. Every lower semicontinuous cost below F lies below the formula, by applying its lower bounds on small balls. For our own example on the real line, give zero cost everywhere except at zero, where the cost is one. Its Γ-limit vanishes everywhere.
 
 **Wikipedia:** [Γ-convergence](https://en.wikipedia.org/wiki/%CE%93-convergence). It says: “the largest lower semicontinuous functional below F”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Continuous additions preserve Γ-limits
+
+**Remember:** A continuous added cost has the same limit along every approaching sequence.
+
+*Rules out counterexamples.* MSC 49J45 (Methods involving semicontinuity and convergence; relaxation). arXiv math.OC. Level 3: graduate.
+
+**Definition.** Costs Γ-converge to F on a metric space if every sequence approaching x has lower limiting cost at least F(x). At each x, some approaching sequence must have costs tending to F(x).
+
+**Problem.** Suppose nonnegative costs Γ-converge to F. Adding the same finite nonnegative continuous function G to each cost gives Γ-limit F + G.
+
+**How the definition helps.** Along each convergent sequence, the added cost tends to the same value at the limit point. In our own proof, this preserves the lower bound and leaves each original matching sequence valid. In our own counterexample, let fₙ be zero only at 1/n and one elsewhere. Its Γ-limit F is zero only at zero and one elsewhere. Add G, which is zero at zero and one elsewhere. Then fₙ + G is at least one everywhere, but F + G is zero at zero.
+
+**Wikipedia:** [Γ-convergence](https://en.wikipedia.org/wiki/%CE%93-convergence). It says: “Γ-convergence is stable under continuous perturbations”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -177,6 +243,22 @@
 **How the definition helps.** The global formula allows each comparison point to stay fixed while x varies. In our own proof, lower semicontinuity gives the bound for each fixed y ≠ x. Taking the supremum proves the claim. Convexity along the path from x to y identifies the local and global slopes, which is the essential preceding result.
 
 **Paper or page:** [Stability of a class of action functionals depending on convex functions](https://arxiv.org/abs/2106.10908v1). It says: “\\abs {\\partial f}(x)=\\sup <sub>y\\ne x</sub>\\frac{\\left(f(y)-f(x)-\\frac{\\lambda }{2}{\\mathsf{d}}(y,x)<sup>2\\right</sup>)<sup>-}{{\\mathsf{d}}</sup>(y,x)}.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Lower semicontinuity makes increasing Γ-limits pointwise
+
+**Remember:** An earlier cost bounds the tail, and a constant sequence gives the upper bound.
+
+*Rules out counterexamples.* MSC 49J45 (Methods involving semicontinuity and convergence; relaxation). arXiv math.OC. Level 3: graduate.
+
+**Definition.** A cost is lower semicontinuous if its value at a limit point never exceeds the lower limit along a sequence approaching it. Costs Γ-converge to F if every sequence approaching x has lower limiting cost at least F(x). At each x, some such sequence must have costs tending to F(x).
+
+**Problem.** Increasing lower semicontinuous costs on a metric space Γ-converge to their pointwise supremum.
+
+**How the definition helps.** Lower semicontinuity lets each earlier cost bound the lower limit along every approaching sequence. In our own proof, taking the supremum gives the required lower bound. At each point the constant sequence attains the supremum in the limit. For our own counterexample, repeat a cost on the line that equals one at zero and zero elsewhere. The sequence 1/n approaches zero with cost zero, violating the lower bound for the pointwise limit.
+
+**Paper or page:** [A representation formula of the viscosity solution of the contact Hamilton-Jacobi equation and its applications](https://arxiv.org/abs/2101.00446). It says: “If Fₙ is an increasing sequence, then Γ-limₙ→∞ Fₙ = limₙ→∞ sc⁻ Fₙ = supₙ∈ℕ sc⁻ Fₙ.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -337,6 +419,22 @@
 
 - [Approximate optimality conditions and sensitivity analysis in nearly convex optimization](https://arxiv.org/abs/2410.04710v1)
 
+### Controllability rules out abnormal multipliers
+
+**Remember:** Controllability forces an abnormal multiplier vector to vanish.
+
+*Rules out counterexamples.* MSC 49K15 (Optimality conditions for problems involving ordinary differential equations). arXiv math.OC. Level 3: graduate.
+
+**Definition.** In the maximum principle, a multiplier consists of a time-dependent vector and a scalar multiplying the cost. An abnormal multiplier has zero cost scalar. For x′ = Ax + Bu with constant matrices, controllability means the columns of B, AB, …, Aⁿ⁻¹B span the n-dimensional state space.
+
+**Problem.** In our own fixed-endpoint version, minimize a smooth running cost with these linear dynamics and no state constraints. Let the action set be open. Then a controllable system admits no abnormal multiplier.
+
+**How the definition helps.** Controllability makes orthogonality to every propagated input direction force the multiplier vector to vanish. In our own proof, suppose the cost scalar vanishes and call the vector p. Stationarity in the open action set gives pᵀB = 0 almost everywhere, hence everywhere by continuity. The multiplier equation becomes p′ = −Aᵀp. Repeated differentiation gives pᵀAB = 0 and all the remaining column conditions. The span condition forces p = 0, contradicting the maximum principle’s requirement that the multiplier pair be nonzero.
+
+**Paper or page:** [Hidden regularity in singular optimal control of port-Hamiltonian systems](https://arxiv.org/abs/2305.03790). It says: “then the scalar multiplier in \\eqref{eq:the<sub>optimality</sub><sub>condition</sub>} satisfies λ₀ ≠ 0.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### A backward adjoint gives sensitivity
 
 **Remember:** Run one linear equation backward to read the initial gradient.
@@ -461,6 +559,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Higher moments give Wasserstein compactness
+
+**Remember:** A higher moment prevents distant mass from carrying lasting transport cost.
+
+*Rules out counterexamples.* MSC 49Q22 (Optimal transportation). arXiv math.OC. Level 3: graduate.
+
+**Definition.** For two probability measures, consider joint distributions having those measures as coordinate distributions. The p-Wasserstein distance takes the least mean pth power of travel distance and then takes its pth root. A moment of order q is the mean qth power of distance from the origin.
+
+**Problem.** For 1 ≤ p &lt; q, probability measures on Euclidean space with qth moment at most K form a compact set in p-Wasserstein distance.
+
+**How the definition helps.** The higher moment bound controls both distant mass and its contribution to the pth moment. In our own proof, the mass outside radius R is at most K divided by the qth power of R. This uniform bound gives a weakly convergent subsequence by Prokhorov’s theorem, where weak convergence tests bounded continuous functions. The limit inherits the qth moment bound by truncation. Outside radius R, the pth moment is at most K times R to the power p − q. Truncation now gives convergence of pth moments, which together with weak convergence gives Wasserstein convergence. Our own counterexample puts mass n⁻ᵖ at n and the rest at zero, so the weak limit loses the entire pth moment.
+
+**Paper or page:** [Viscosity Solutions of Fully second-order HJB Equations in the Wasserstein Space](https://arxiv.org/abs/2501.01612). It says: “Let K &gt; 0 and p₂ &gt; p₁ ≥ 1.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Kantorovich–Rubinstein duality makes Wasserstein distance W₁ jointly convex
 
 **Remember:** Each test is linear in the laws, so their supremum is convex.
@@ -478,6 +592,22 @@
 **Sources:**
 
 - [Cédric Villani, Optimal Transport: Old and New, Springer (2009), Theorem 5.10](https://doi.org/10.1007/978-3-540-71050-9)
+
+### Lipschitz maps bound the first Wasserstein distance
+
+**Remember:** Move both ends of each transport pair and keep its weight.
+
+*True by definition.* MSC 49Q22 (Optimal transportation). arXiv math.OC. Level 3: graduate.
+
+**Definition.** The first Wasserstein distance is the least mean travel distance over joint distributions with the two given coordinate distributions. A pushforward assigns each measurable target set the mass of its inverse image.
+
+**Problem.** Consider two Euclidean probability measures with finite mean distance from the origin. A map that stretches distances by at most L stretches their first Wasserstein distance by at most L.
+
+**How the definition helps.** Applying the map to both coordinates gives a joint distribution of the pushforwards and multiplies its mean travel distance by at most L. In our own proof, taking the infimum gives the claim. Alternatively, one can define the distance as the supremum of mean differences over functions that stretch distances by at most one. The Kantorovich–Rubinstein theorem proves that these two definitions agree.
+
+**Paper or page:** [On the Use of the Kantorovich-Rubinstein Distance for Dimensionality Reduction](https://arxiv.org/abs/2309.09442). It says: “W\_\\mathcal{Y}(\\varphi(\\mu<sub>1</sub>),\\varphi(\\mu<sub>2</sub>)) \\leq k\\, W\_\\mathcal{X}(\\mu<sub>1</sub>,\\mu<sub>2</sub>).”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### The dual definition of Wasserstein distance gives its triangle inequality
 
@@ -657,6 +787,26 @@
 
 - [Andrew Warren, Gradient flow structure for some nonlocal diffusion equations, arXiv:2412.20969 (2025)](https://arxiv.org/abs/2412.20969v3)
 
+### Adjacent costs split martingale transport
+
+**Remember:** A sum of pair costs can be minimized one pair at a time.
+
+*Makes the theorem clean to state or prove.* MSC 49Q22 (Optimal transportation). arXiv math.OC. Level 4: research.
+
+**Definition.** A martingale transport is a joint distribution of successive values with prescribed distributions at each time. Given the past, the mean next value must equal the current value. An additive cost charges a separate amount for each consecutive pair and adds those amounts.
+
+**Problem.** Consider finitely many distributions on the real line and continuous pair costs bounded below. Suppose each consecutive pair has a martingale transport of least finite cost. Then these pairwise optimizers can form one optimal transport over all times.
+
+**How the definition helps.** An additive cost depends only on the consecutive pairs, so the sum of their separate minima bounds every path cost below. In our own account, use each optimal pair’s conditional distribution of the next value to generate the next step. This constructs a joint distribution with all the chosen pairs. Each step preserves the current value in conditional mean even given the entire past. The construction attains the lower bound.
+
+**nLab:** [transport plan](https://ncatlab.org/nlab/show/transport+plan). It says: “the measure r has p and q as marginals, in the sense that for all A ∈ 𝒜 and B ∈ ℬ,”
+
+**Paper or page:** [Remarks on multi-period martingale optimal transport](https://arxiv.org/abs/2506.05505). It says: “is optimal for the multi-period MOT problem with cost”
+
+**Sources:**
+
+- [Remarks on multi-period martingale optimal transport](https://arxiv.org/abs/2506.05505)
+
 ### Defining distance to fairness by optimal transport makes it a linear program
 
 **Remember:** Measure how much the data would have to move to reach fairness.
@@ -674,6 +824,22 @@
 **Sources:**
 
 - [Nian Si, Karthyek Murthy, Jose Blanchet, Viet Anh Nguyen, Testing Group Fairness via Optimal Transport Projections, International Conference on Machine Learning 2021](https://arxiv.org/abs/2106.01070v1)
+
+### Means fix binary martingale transport
+
+**Remember:** Two possible destinations leave no freedom once you fix the mean.
+
+*Rules out counterexamples.* MSC 49Q22 (Optimal transportation). arXiv math.OC. Level 4: research.
+
+**Definition.** A coupling is a joint distribution with the prescribed distributions of its two coordinates. A martingale coupling also requires the conditional mean of the destination given the source to equal the source.
+
+**Problem.** Consider distributions on the real line for which a martingale coupling exists. If the destination takes only two values, the martingale coupling is unique.
+
+**How the definition helps.** The required mean fixes both probabilities once the two destinations are known. In our own proof, let the destinations be a &lt; b and the starting value be x. The conditional probability of b must equal (x − a)/(b − a), which determines the joint law. Our own counterexample gives both coordinates equal probabilities at −1 and 1. Both matching and swapping give couplings, but only matching preserves the conditional mean.
+
+**Paper or page:** [Remarks on multi-period martingale optimal transport](https://arxiv.org/abs/2506.05505). It says: “the set of martingale couplings \\Pi<sub>M</sub>(\\mu<sub>X</sub>, \\mu<sub>Y</sub>) is a singleton.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Monotone multispecies flows have at most one steady state
 

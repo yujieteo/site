@@ -116,6 +116,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Cohomologous cocycles give conjugate extensions
+
+**Remember:** Changing the zero of each group fiber changes no orbit structure.
+
+*True by definition.* MSC 37A20 (Algebraic ergodic theory, cocycles, orbit equivalence, ergodic equivalence relations). arXiv math.DS. Level 3: graduate.
+
+**Definition.** Over a map T, a cocycle adds a measurable increment a(x) in a compact abelian group each time the base point x advances. Two increment functions a and b are cohomologous if b(x) − a(x) = u(Tx) − u(x) almost everywhere for some measurable group-valued function u.
+
+**Problem.** A skew product advances the base point and adds its increment to a group coordinate. Over an invertible probability-preserving map, cohomologous increments give isomorphic skew products with uniform probability on the group.
+
+**How the definition helps.** The function witnessing cohomology gives the change of coordinates that a direct isomorphism proof would have to find. In our own calculation, send (x, g) to (x, g + u(x)). The defining equation says this translation commutes with taking a step between the two systems. Subtracting u(x) gives its inverse, and translation preserves uniform probability on the compact group. Finding such a function for given increments remains the substantive problem.
+
+**Paper or page:** [Khintchine-type double recurrence in abelian groups](https://arxiv.org/abs/2307.04698v2). It says: “Then $\\mathbf{X}\\times <sub>\\sigma </sub> H\\cong \\mathbf{X}\\times <sub>\\tau </sub> H$.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### An ergodic square rules out nonconstant eigenfunctions
 
 **Remember:** An eigenfunction times its conjugate gives an invariant function on the square.
@@ -168,6 +184,22 @@
 
 - [Birkhoff, G. D. (1931). Proof of the ergodic theorem. Proceedings of the National Academy of Sciences 17, 656–660.](https://doi.org/10.1073/pnas.17.2.656)
 
+### Independent coordinates make Bernoulli shifts mix
+
+**Remember:** Far apart finite coordinate blocks use independent samples.
+
+*True by definition.* MSC 37A25 (Ergodicity, mixing, rates of mixing), 37A50. arXiv math.DS. Level 3: graduate.
+
+**Definition.** A Bernoulli shift moves each coordinate of a sequence one place. Its probability measure makes all coordinates independent with the same distribution.
+
+**Problem.** A Bernoulli shift is mixing of every finite order. The probability of a joint occurrence tends to the product of the separate probabilities as the time gaps grow.
+
+**How the definition helps.** The product measure makes events on disjoint coordinate sets exactly independent. An arbitrary probability measure preserved by the shift need not have this property. In our own proof, approximate each event in probability by an event involving finitely many coordinates. Widely separated shifts then use disjoint coordinates, so their joint probability factors. The error in the joint probability is bounded by the sum of the approximation errors. The source states ordinary mixing, and our own argument works for any fixed finite number of events.
+
+**Wikipedia:** [Ergodicity](https://en.wikipedia.org/wiki/Ergodicity). It says: “Bernoulli shifts are mixing”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The ergodic-product definition makes weak mixing closed under products
 
 **Remember:** Test the two factors against an ergodic system one at a time.
@@ -213,6 +245,44 @@
 **How the definition helps.** The invariant-function definition makes absolute values and quotients useful because any invariant function must be constant (our own). The map preserves the norm, so \|λ\| = 1 and \|f\| is invariant. Thus \|f\| is a positive constant almost everywhere. If g has the same eigenvalue, then g/f is bounded and invariant, so it is constant almost everywhere. Products and complex conjugates of these bounded eigenfunctions give products and inverses of eigenvalues. The work in the function definition is its equivalence with the set definition, which uses level sets of invariant functions.
 
 **Paper or page:** [Characterization of Ergodicity in terms of Koopman Operator](https://proofwiki.org/wiki/Characterization_of_Ergodicity_in_terms_of_Koopman_Operator). It says: “(5): For all f ∈ L² μ: if U<sub>T</sub> f = f for μ-a.e., then f is constant μ-a.e.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Koopman averages converge to projections
+
+**Remember:** Average the iterates of one operator and project onto its fixed functions.
+
+*Makes the theorem clean to state or prove.* MSC 37A30 (Ergodic theorems, spectral theory, Markov operators). arXiv math.DS. Level 3: graduate.
+
+**Definition.** The Koopman operator sends a function f to f ∘ T, where T advances time by one step. Its fixed functions satisfy f ∘ T = f almost everywhere.
+
+**Problem.** Suppose T preserves a probability measure and f is square-integrable. The orbit averages of f converge in mean square to its orthogonal projection onto the fixed functions.
+
+**How the definition helps.** The Koopman operator turns successive observations along an orbit into successive powers of one linear operator. Our own calculation identifies the orbit average with the average of those powers. Since T preserves probability, the operator preserves the mean-square norm. Von Neumann’s mean ergodic theorem then gives the projection.
+
+**nLab:** [Koopman operator](https://ncatlab.org/nlab/show/Koopman+operator). It says: “The Koopman operator Cφ of a morphism φ is defined by pre-composing with φ.”
+
+**Paper or page:** [Mean Ergodic Theorem](https://proofwiki.org/wiki/Mean_Ergodic_Theorem). It says: “converges in the L²-norm”
+
+**Sources:**
+
+- [John von Neumann, Proof of the Quasi-Ergodic Hypothesis (1932)](https://doi.org/10.1073/pnas.18.1.70)
+
+### Unique ergodicity forces uniform averages
+
+**Remember:** Every limiting orbit measure must be the same one.
+
+*Rules out counterexamples.* MSC 37A30 (Ergodic theorems, spectral theory, Markov operators), 37A25. arXiv math.DS. Level 3: graduate.
+
+**Definition.** A continuous map of a compact metric space is uniquely ergodic if exactly one probability measure stays unchanged under the map.
+
+**Problem.** In a uniquely ergodic compact metric system with a continuous time map, orbit averages of continuous functions converge uniformly to their space averages.
+
+**How the definition helps.** Uniqueness forces every limiting distribution of orbit visits to give the same integral. In our own proof, failure of uniform convergence gives longer and longer orbit segments whose averages miss the integral by a fixed amount. Compactness gives a convergent subsequence of their probability measures, each assigning equal mass to the visits. Shifting a segment changes only its endpoints, so the limit is invariant. Uniqueness now gives a contradiction. Our own counterexample is the identity on two points, where each point mass is ergodic but the two orbits can give different averages.
+
+**nLab:** [ergodicity](https://ncatlab.org/nlab/show/ergodicity). It says: “There is a unique invariant probability measure”
+
+**Paper or page:** [Equidistribution in 2-Nilpotent Polish Groups and triple restricted sumsets](https://arxiv.org/abs/2504.07865v2). It says: “is uniquely ergodic with unique invariant measure μₓ if and only if for every continuous function f ∈ C(X)”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -353,6 +423,40 @@
 
 - [B. Weiss, Subshifts of finite type and sofic systems, Monatsh. Math. 77 (1973) 462–474](https://doi.org/10.1007/bf01295322)
 
+### Swapping graph halves conjugates shifts
+
+**Remember:** Move each pair boundary one edge along a bipartite path.
+
+*True by definition.* MSC 37B10 (Symbolic dynamics), 37C15. arXiv math.DS. Level 3: graduate.
+
+**Definition.** A nonnegative integer matrix describes a graph by counting edges between each ordered pair of vertices. Two matrices are elementary strong shift equivalent if they are RS and SR for rectangular nonnegative integer matrices R and S. Strong shift equivalence allows a chain of these steps.
+
+**Problem.** An edge shift advances one edge along a two-sided infinite path. Strong shift equivalent matrices give conjugate edge shifts, meaning a homeomorphism between their path spaces commutes with the shifts.
+
+**How the definition helps.** Factoring the matrices builds a change of coordinates from two ways to pair the same edges. In our own construction, alternate edges from the graphs described by R and S. Pairing edges starting with R gives RS, while pairing one edge later gives SR. Moving the pair boundaries back gives the inverse. This replaces a search for a homeomorphism with explicit local changes of coordinates. Williams’s classification theorem supplies the difficult converse.
+
+**Paper or page:** [Invertible and noninvertible symbolic dynamics and their C\*-algebras](https://arxiv.org/abs/2212.11188v2). It says: “are conjugate if and only if the matrices A and B are strong shift equivalent.”
+
+**Sources:**
+
+- [Robert F. Williams, Classification of Subshifts of Finite Type](https://doi.org/10.2307/1970908)
+
+### Synchronizing words distinguish finite type
+
+**Remember:** A long enough shared word should erase the need for hidden state.
+
+*Rules out counterexamples.* MSC 37B10 (Symbolic dynamics). arXiv math.DS. Level 3: graduate.
+
+**Definition.** A shift space is a closed, shift-invariant set of two-sided sequences over a finite alphabet. It has finite type if a finite list of forbidden blocks defines it. An allowed word w is synchronizing if allowed words uw and wv always give an allowed word uwv.
+
+**Problem.** A shift is of finite type exactly when every sufficiently long allowed word is synchronizing.
+
+**How the definition helps.** A synchronizing overlap lets two allowed blocks join without introducing a forbidden pattern. In our own proof, a shared block longer than every forbidden word prevents a forbidden word from crossing both joins. Conversely, if every length-M word synchronizes, overlapping allowed length-(M + 1) blocks build every locally permitted word. Our own counterexample uses the even shift, which requires an even number of zeros between successive ones. An odd block of zeros allows a one on either side separately, but forbids both together.
+
+**Paper or page:** [Computational complexity of problems for deterministic presentations of sofic shifts](https://arxiv.org/abs/2112.03484v2). It says: “A shift space X is an SFT if and only if there exists an integer M ≥ 0 such that every word w ∈ ℬ(X) with \|w\| ≥ M is intrinsically synchronizing for X.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Chain recurrence splits every compact flow into recurrent and gradient-like parts
 
 **Remember:** Allow tiny jumps, and every flow becomes recurrent part plus downhill part.
@@ -371,6 +475,26 @@
 
 - [C. Conley, Isolated Invariant Sets and the Morse Index, CBMS Regional Conference Series in Mathematics 38, American Mathematical Society (1978)](https://doi.org/10.1090/cbms/038)
 
+### Unique shadowing yields topological stability
+
+**Remember:** A perturbed orbit picks out exactly one nearby true orbit.
+
+*Rules out counterexamples.* MSC 37B25 (Stability of topological dynamical systems), 37B65. arXiv math.DS. Level 3: graduate.
+
+**Definition.** A homeomorphism is expansive if some fixed distance eventually separates any two distinct points in forward or backward time. It has shadowing if, for each tolerance, every two-sided sequence with sufficiently small step errors stays within that tolerance of a true orbit.
+
+**Problem.** An expansive homeomorphism with shadowing on a compact metric space is topologically stable. Each sufficiently nearby homeomorphism admits a continuous map close to the identity that intertwines it with the original system.
+
+**How the definition helps.** Expansivity rules out competing shadows, so following a perturbed orbit selects a single point. Our own proof takes a shadowing tolerance below half the separation distance. Uniformly nearby maps make uniformly small step errors along their orbits. Two true shadows would stay closer than the separation distance at every time, so they coincide. Uniqueness makes shifting the perturbed orbit shift its shadow. Compactness and uniqueness give continuity of the selected point. Without expansivity, even a constant orbit of the identity on a Cantor set has arbitrarily close constant shadows.
+
+**Wikipedia:** [Expansive homeomorphism](https://en.wikipedia.org/wiki/Expansive_homeomorphism). It says: “such that for every pair of points x ≠ y in X there is an integer n such that”
+
+**Paper or page:** [Pointed Gromov-Hausdorff Topological Stability for non-compact metric spaces](https://arxiv.org/abs/2204.06649v1). It says: “If f is 𝒞-expansive and has the 𝒞-shadowing property then it is 𝒞-topologically stable.”
+
+**Sources:**
+
+- [Peter Walters, On the pseudo orbit tracing property and its relationship to stability](https://doi.org/10.1007/BFb0101795)
+
 ### The Conley index detects nonempty isolated invariant sets
 
 **Remember:** The empty invariant set has the index of a point.
@@ -388,6 +512,22 @@
 **Sources:**
 
 - [C. Conley, Isolated invariant sets and the Morse index, CBMS Regional Conference Series in Mathematics 38 (1978)](https://doi.org/10.1090/cbms/038)
+
+### Bundled orbit names scale entropy
+
+**Remember:** Bundle k consecutive readings into each reading of the faster clock.
+
+*True by definition.* MSC 37B40 (Topological entropy). arXiv math.DS. Level 3: graduate.
+
+**Definition.** For a finite open cover, an n-step name specifies a cover member at each of the first n times. The corresponding set consists of points that meet all n specifications. The cover entropy is the limit of log N(n) divided by n, where N(n) is the smallest number of these sets covering the space. Topological entropy is the supremum over finite open covers.
+
+**Problem.** For a continuous map of a compact metric space, the entropy of its k-th iterate is k times its entropy for each positive integer k.
+
+**How the definition helps.** The open-cover definition lets one observation of the faster map record a whole block of k original observations. Our own proof uses the cover by all k-step names. Under the k-th iterate, n successive readings of this cover give exactly the original kn-step names. Their entropy rate is therefore k times the original cover’s rate. The block cover refines the original cover, so observing only every k steps cannot give a larger rate. Taking suprema proves equality without estimating distances between orbits. Subadditivity gives the cover limits used here.
+
+**Paper or page:** [Unifying topological entropy notions for piecewise continuous maps on the interval](https://arxiv.org/abs/2404.10867v1). It says: “hₜₒₚ(fᵏ) = k hₜₒₚ(f) for every integer k ≥ 0.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Counting separated orbits gives isometries zero topological entropy
 
@@ -510,6 +650,24 @@
 
 - [M. Artin, B. Mazur, On periodic points, Ann. of Math. 81 (1965) 82–99](https://doi.org/10.2307/1970384)
 
+### Normalized weights undo pullback
+
+**Remember:** A backward average of a value constant on the fiber returns that value.
+
+*True by definition.* MSC 37C30 (Functional analytic techniques in dynamical systems; zeta functions, (Ruelle-Frobenius) transfer operators, etc.), 37D35. arXiv math.DS. Level 3: graduate.
+
+**Definition.** A transfer operator forms a weighted sum of function values over the preimages of each point. A normalized transfer operator uses nonnegative weights whose sum at each point is one.
+
+**Problem.** A normalized transfer operator for a map is a left inverse of composing a function with that map.
+
+**How the definition helps.** Normalization makes the total weight on each set of preimages exactly one. Our own calculation starts with a function f composed with the map T. At every preimage of y, this composition equals f(y), so its weighted sum is f(y). Without normalization, the same calculation multiplies f(y) by the total weight. Converting a given operator to this form can require a positive eigenfunction, whose existence is the substantial part of Ruelle’s theorem in its setting.
+
+**Paper or page:** [Measurable multiresolution systems, endomorphisms, and representations of Cuntz relations](https://arxiv.org/abs/2304.14558v1). It says: “The adjoint operator Sσ\* is a transfer operator Sσ\*(g(f ∘ σ)) = f Sσ\*(g).”
+
+**Sources:**
+
+- [David Ruelle, Statistical mechanics of a one-dimensional lattice gas (1968)](https://doi.org/10.1007/BF01654281)
+
 ### Writing the Artin–Mazur zeta as a product over orbits gives integer coefficients
 
 **Remember:** Each periodic orbit contributes a geometric series with coefficients zero and one.
@@ -600,6 +758,94 @@
 
 - [S. Smale, Differentiable dynamical systems, Bulletin of the American Mathematical Society 73 (1967) 747–817](https://doi.org/10.1090/s0002-9904-1967-11798-1)
 - [R. Bowen, Markov partitions for axiom A diffeomorphisms, American Journal of Mathematics 92 (1970) 725–747](https://doi.org/10.2307/2373370)
+
+### Markov rectangles give finite-type coding
+
+**Remember:** Compatible rectangles make consecutive steps enough to test a whole itinerary.
+
+*Makes the theorem clean to state or prove.* MSC 37D20 (Uniformly hyperbolic systems (expanding, Anosov, Axiom A, etc.)), 37B10. arXiv math.DS. Level 3: graduate.
+
+**Definition.** A Markov partition covers a hyperbolic set by small closed rectangles with disjoint interiors. Hyperbolicity splits local motion into uniformly contracting and expanding directions, and each rectangle follows those directions. At an interior transition, the map sends the contracting slice inside the next contracting slice and the expanding slice across the next expanding slice.
+
+**Problem.** Consider a diffeomorphism with a compact hyperbolic set consisting of the orbits that stay in a given neighborhood for all time. A sufficiently fine Markov partition codes this set by all two-sided sequences of rectangles with allowed consecutive pairs. The coding map is continuous, covers the set, and turns a shift of the sequence into one step of the diffeomorphism.
+
+**How the definition helps.** The rectangle rules reduce the test for an entire itinerary to tests on adjacent pairs. In our own explanation, take interiors relative to the hyperbolic set. A transition is allowed when the image of one interior meets the next interior. The slice conditions let compatible finite itineraries extend one step at a time. Compactness gives a point for each infinite itinerary. Distinct orbits eventually separate, so sufficiently small rectangles determine one point per itinerary, although boundary points can have several itineraries. Bowen’s coding theorem supplies the geometric argument.
+
+**Wikipedia:** [Markov partition](https://en.wikipedia.org/wiki/Markov_partition). It says: “the movement of a trajectory from one open cover to the next is determined only by the most recent cover, and not the history of the system.”
+
+**Paper or page:** [Geometric Markov partitions for pseudo-Anosov homeomorphisms with prescribed combinatorics](https://arxiv.org/abs/2409.03066v1). It says: “is a continuous, surjective, and finite-to-one map.”
+
+**Sources:**
+
+- [Rufus Bowen, Markov Partitions for Axiom A Diffeomorphisms (1970)](https://doi.org/10.2307/2373370)
+
+### Rotation averages survive coordinate changes
+
+**Remember:** A bounded coordinate change disappears when divided by the number of steps.
+
+*True by definition.* MSC 37E10 (Dynamical systems involving maps of the circle). arXiv math.DS. Level 3: graduate.
+
+**Definition.** Write the circle as ℝ/ℤ. Represent an orientation-preserving circle homeomorphism by an increasing map F on ℝ that induces it modulo integers and satisfies F(x+1) = F(x)+1. Its rotation number is the limit modulo integers of (Fⁿ(x)−x)/n, where Fⁿ means n successive applications.
+
+**Problem.** Two such homeomorphisms f and g have equal rotation numbers if a continuous circle map h satisfies h∘f = g∘h. We require h to have a nondecreasing real lift H with H(x+1) = H(x)+1.
+
+**How the definition helps.** Averaging displacement over many steps removes the bounded error introduced by h. In our own argument, we choose lifts F and G so that H∘F = G∘H. The difference H(x)−x is periodic and bounded. The total displacements from x and H(x) therefore differ by a bounded amount, which vanishes after division by n in the limit. Poincaré’s theorem proves the limit exists and is independent of x.
+
+**Wikipedia:** [Rotation number](https://en.wikipedia.org/wiki/Rotation_number). It says: “The rotation number is invariant under topological conjugacy, and even monotone topological semiconjugacy”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Bounded variation excludes wandering intervals
+
+**Remember:** Control the total changes of the derivative to control orbit distortion.
+
+*Rules out counterexamples.* MSC 37E45 (Rotation numbers and vectors), 37E10. arXiv math.DS. Level 3: graduate.
+
+**Definition.** A derivative has bounded variation if one bound controls the sums of its absolute changes over all ordered partitions of the circle. A wandering interval is a nonempty open interval whose forward images are pairwise disjoint.
+
+**Problem.** Suppose a circle diffeomorphism preserves orientation and has a positive continuous derivative of bounded variation. Suppose its rotation number, the average number of turns per iterate modulo one, is irrational. A homeomorphism then changes coordinates so that the map becomes rotation by that number.
+
+**How the definition helps.** Bounded variation controls accumulated stretching on disjoint intervals, which is where continuity of the derivative alone can fail. In our own explanation, the logarithm of the positive derivative also has bounded variation on the compact circle. Its total variation bounds the change in the logarithm of an iterate’s derivative across an interval with disjoint successive images. Denjoy’s distortion argument uses this estimate to exclude wandering intervals and prove conjugacy. Denjoy also constructed a continuously differentiable example with irrational rotation number and a wandering interval.
+
+**Wikipedia:** [Denjoy's theorem on rotation number](https://en.wikipedia.org/wiki/Denjoy%27s_theorem_on_rotation_number). It says: “a continuous function with bounded variation on the interval \[0,1).”
+
+**Sources:**
+
+- [Arnaud Denjoy, Sur les courbes définies par les équations différentielles à la surface du tore (1932)](https://www.numdam.org/item/JMPA_1932_9_11__333_0/)
+
+### Normalized escape rates scale
+
+**Remember:** One more iterate multiplies the escape rate by the degree.
+
+*True by definition.* MSC 37F10 (Dynamics of complex polynomials, rational maps, entire and meromorphic functions; Fatou and Julia sets), 30D05. arXiv math.DS, math.CV. Level 3: graduate.
+
+**Definition.** Let zₙ be the result of applying a polynomial P of degree d ≥ 2 to z exactly n times. Measure escape by the limit of log(max(1, \|zₙ\|))/dⁿ as n increases. This normalization accounts for the degree at each step.
+
+**Problem.** The escape rate G exists for every complex polynomial of degree d ≥ 2 and satisfies G(P(z)) = dG(z). It vanishes exactly where the forward orbit is bounded.
+
+**How the definition helps.** Shifting the index by one in the limit gives the scaling law (our own). For convergence, the difference between log max(1, \|P(z)\|) and d log max(1, \|z\|) is bounded (our own). After division by dⁿ these differences sum absolutely (our own). The same bound makes G positive at sufficiently large \|z\| (our own). The scaling law then gives positivity at every escaping point (our own).
+
+**Wikipedia:** [Julia set](https://en.wikipedia.org/wiki/Julia_set). It says: “those points whose orbits under iterations of f remain bounded.”
+
+**Paper or page:** [Non-autonomous iteration of polynomials in the complex plane](https://arxiv.org/abs/2309.13447v3). It says: “In particular the function sequence \\\[ \\left(\\frac1{ \\deg p<sub>n</sub>\\cdot ...\\cdot \\deg p<sub>1</sub>}\\log ^+\\left\|p<sub>n</sub>\\circ ...\\circ p<sub>1</sub>\\right\|\\right)<sub>n=1</sub><sup>\\infty</sup> \\\]is uniformly convergent in $\\mathbb {C}$.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Shared randomness gives unique stationarity
+
+**Remember:** Use the same random choice on two points and their laws move closer.
+
+*True by definition.* MSC 37H12 (Random iteration), 37A30. arXiv math.DS. Level 3: graduate.
+
+**Definition.** The Wasserstein distance between two probability laws is the infimum of the expected distance over joint samples having those laws. Random maps contract on average if applying the same map to any two points reduces their expected distance by a uniform factor below one.
+
+**Problem.** Choose continuous maps independently from a fixed law on a compact parameter space, with continuous dependence on the parameter and point. On a compact metric state space, average contraction gives a unique stationary law, meaning one random step preserves it.
+
+**How the definition helps.** The joint-sample definition lets the same random map witness contraction of two updated laws. In our own proof, start with any joint sample and apply one independent map to both points. Take the infimum over joint samples to obtain the same contraction factor for laws. The equivalent definition using test functions conceals this joint sample. The fixed-point theorem gives existence and uniqueness because the space of laws is complete in this distance.
+
+**Paper or page:** [The Hutchinson-Barnsley theory for generalized iterated function systems by means of infinite iterated function systems](https://arxiv.org/abs/2204.00373v2). It says: “is contractive in the Monge-Kantorovich metric with Lip(Mℛ) ≤ λ &lt; 1.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### The symplectic definition makes Hamiltonian energy conservation immediate
 
@@ -756,6 +1002,22 @@
 
 - [Till Hauser, Mean Diameter, Regularity and Diam-Mean Equicontinuity, arXiv:2510.22484 (2025)](https://arxiv.org/abs/2510.22484v1)
 
+### Orbit histories expose expansivity
+
+**Remember:** Shift any differing coordinate into view.
+
+*Makes the theorem clean to state or prove.* MSC 37B05 (Dynamical systems involving transformations and group actions with special properties (minimality, distality, proximality, expansivity, etc.)), 37B02. arXiv math.DS. Level 4: research.
+
+**Definition.** A set-valued map specifies a set of possible next points. Its orbit space consists of infinite sequences that follow those rules forward. The shift drops the first point of each sequence. Call the original map expansive if some fixed distance separates every pair of distinct allowed sequences at some coordinate.
+
+**Problem.** Suppose a set-valued map on a compact metric space has nonempty compact values and a closed graph. It is expansive on its right-infinite orbits exactly when their shift is positively expansive, which uses only forward iterates.
+
+**How the definition helps.** The orbit space turns a rule with many possible successors into one ordinary map on complete histories. Our own proof measures the distance between histories by summing bounded coordinate distances with weights ½, ¼, ⅛, and so on. Shifting a separating coordinate to the front makes its weight ½. Conversely, if all coordinates stay close, every shifted pair stays close in this metric. The closed graph makes the orbit space compact, so changing to another compatible metric preserves expansivity.
+
+**Paper or page:** [Shadowing property for set-valued map and its inverse limit](https://arxiv.org/abs/2412.11221v2). It says: “Then F is expansive if and only if (Orbᵣ(X), σᵣF) is expansive.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Sensitivity is redundant in Devaney chaos for stronger families of times
 
 **Remember:** Transitivity at the right times plus dense periodic points gives sensitivity.
@@ -830,6 +1092,74 @@
 
 - [Shital H. Joshi, Ekta Shah, On stronger forms of Devaney chaos, arXiv:2505.15286 (2025)](https://arxiv.org/abs/2505.15286v1)
 
+### Independent coset patterns multiply
+
+**Remember:** Each coset supplies its part of the pattern independently.
+
+*True by definition.* MSC 37B10 (Symbolic dynamics). arXiv math.DS. Level 4: research.
+
+**Definition.** A subgroup shift specifies which symbol configurations are allowed on the subgroup. Its free extension to the group permits a translated copy of any such configuration on each coset independently.
+
+**Problem.** The number of allowed patterns on a finite window in a free extension is the product of the counts on the parts in each coset.
+
+**How the definition helps.** Independence across cosets turns a global count into a product of local counts. Our own argument extends each allowed piece to a configuration on its coset, then combines the configurations. General extensions can impose relations between cosets, so this construction can fail for them. The cited lemma gives the product formula directly.
+
+**Paper or page:** [Projectional entropy for actions of amenable groups](https://arxiv.org/abs/2403.01230v1). It says: “Let F₁,…,Fₙ ∈ ℱ(G) be subsets of different cosets.”
+
+**Sources:**
+
+- [Michał Prusik, Projectional entropy for actions of amenable groups, Lemma 3.7](https://arxiv.org/abs/2403.01230v1)
+
+### Receptive lifts preserve least periods
+
+**Remember:** If fixed ends accept every long repeat, one period can lift.
+
+*Rules out counterexamples.* MSC 37B10 (Symbolic dynamics). arXiv math.DS. Level 4: research.
+
+**Definition.** An irreducible sofic shift consists of label sequences along paths in a finite strongly connected graph. A word synchronizes if any allowed left and right contexts for it can occur together. A periodic sequence is receptive if two fixed synchronizing words can bracket every sufficiently long repetition of its shortest period block.
+
+**Problem.** A finite-type shift forbids finitely many blocks. A cover maps one shift continuously onto another and commutes with shifting. In an irreducible sofic shift, receptivity characterizes periodic points with a preimage of the same least period in some irreducible finite-type cover.
+
+**How the definition helps.** Receptivity rules out a parity obstruction that can prevent a periodic point from lifting with its least period. Our own example uses the even shift, where successive ones enclose an even number of zeros. Every synchronizing word contains a one, since a block of zeros cannot determine the parity at both ends. Between fixed synchronizing ends, the all-zero point therefore permits only one parity of repeat counts. The cited theorem proves that receptivity suffices by constructing a suitable cover.
+
+**Paper or page:** [Factorizable embeddings and the period of an irreducible sofic shift](https://arxiv.org/abs/2508.02554v2). It says: “Then, w is receptive if and only if there is an irreducible SFT X, a factor code π : X → Y and a periodic point x ∈ X with least period p such that π(x) = w.”
+
+**Sources:**
+
+- [Brian Marcus, Tom Meyerovitch, Klaus Thomsen, and Chengyu Wu, Factorizable embeddings and the period of an irreducible sofic shift, Theorem 4.7](https://arxiv.org/abs/2508.02554v2)
+
+### Trees force linear word complexity
+
+**Remember:** One fewer edge than vertices means no change in the growth rate.
+
+*True by definition.* MSC 37B10 (Symbolic dynamics). arXiv math.DS. Level 4: research.
+
+**Definition.** In a shift space of symbol sequences, form a graph for each allowed word. Use separate vertices for letters that can precede or follow it. Join two vertices if those letters can occur together around the word. The shift is dendric if every such graph, including the empty word’s graph, is a tree.
+
+**Problem.** In a dendric shift using d letters, there are exactly 1 + (d − 1)n words of length n.
+
+**How the definition helps.** The tree condition replaces a count of two-sided extensions with a count of vertices minus one. In our own calculation, summing edge counts over length-n words counts all length-(n + 2) words once. Left and right vertices each count all length-(n + 1) words once. Subtracting one per tree therefore makes successive increases in the word count equal. Starting with one empty word and d single letters gives the formula. The cited counting identity explains why this graph test replaces counting longer words directly.
+
+**Paper or page:** [𝒮-adic characterization of minimal dendric shifts](https://arxiv.org/abs/2206.00333v4). It says: “then pₓ(n) = (pₓ(1) − 1)n + 1 for every n.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Maximum distance ensures set convergence
+
+**Remember:** After m updates, all m sets satisfy the smaller distance bound.
+
+*Makes the theorem clean to state or prove.* MSC 37B35 (Gradient-like behavior; isolated (locally maximal) invariant sets; attractors, repellers for topological dynamical systems), 39A30. arXiv math.DS. Level 4: research.
+
+**Definition.** For two nonempty compact sets, their Hausdorff distance is the greatest distance from a point of either set to the other set. For tuples of m such sets, use the maximum of the m coordinate distances. Given a family of maps with m inputs, each update takes the union of their images of the latest m sets in order.
+
+**Problem.** Take a nonempty finite family of maps from m copies of a nonempty complete metric space into that space, where m ≥ 1. Each map must shrink distances by a common factor 0 ≤ q &lt; 1 when inputs use the maximum distance. From any m nonempty compact starting sets, the updates converge in Hausdorff distance to the same compact set.
+
+**How the definition helps.** The maximum distance makes each group of m updates shrink the entire tuple by a factor of at most q. Our own proof bounds the distance between two new unions by q times the largest distance between corresponding input sets. Until m steps have passed, the tuple can still contain an original set. After m updates every coordinate satisfies the improved bound. Completeness of the space of nonempty compact sets and the contraction mapping theorem give the unique limit.
+
+**Paper or page:** [The Hutchinson-Barnsley theory for generalized iterated function systems by means of infinite iterated function systems](https://arxiv.org/abs/2204.00373v2). It says: “converges to A𝒮, the fractal attractor.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Axioms for abstract entropy make every entropy limit exist at once
 
 **Remember:** Two time blocks together cost at most the sum of their costs.
@@ -847,6 +1177,42 @@
 **Sources:**
 
 - [Mauricio Achigar, Abstract entropy and expansiveness, arXiv:2203.10394 (2023)](https://arxiv.org/abs/2203.10394v2)
+
+### Bowen entropy respects countable unions
+
+**Remember:** Pay for each orbit ball separately and combine the covering budgets.
+
+*Rules out counterexamples.* MSC 37B40 (Topological entropy). arXiv math.DS. Level 4: research.
+
+**Definition.** A Bowen ball of length n contains points that stay within a chosen distance of its center during the first n observations. Cover the set with countably many such balls and give each length-n ball cost exp(−sn). For each distance, take the infimum of s ≥ 0 allowing arbitrarily cheap covers with arbitrarily large minimum length. Bowen entropy is the limit of these thresholds as the distance tends to zero.
+
+**Problem.** For a homeomorphism of a compact metric space, the Bowen entropy of a countable union equals the supremum of its members’ Bowen entropies.
+
+**How the definition helps.** Variable lengths let us combine arbitrarily cheap covers even when different members require different lengths. In our own proof, choose s above every member’s entropy by a common positive margin. At any fixed distance and minimum length, give member j ≥ 1 a budget of ε divided by 2ʲ. The union costs at most ε, and inclusion gives the reverse inequality. Our own comparison uses the shift on all binary sequences. Its countably many periodic points realize every finite binary word, so fixed-length counts grow exponentially even though each singleton has zero entropy.
+
+**Paper or page:** [Entropy properties of mostly expanding partially hyperbolic diffeomorphisms](https://arxiv.org/abs/2401.12465v1). It says: “hₜₒₚ(f,Y) = supₙ hₜₒₚ(f,Yₙ), where Y = ⋃ₙ∈ℕ Yₙ ⊂ X.”
+
+**Sources:**
+
+- [Rufus Bowen, Topological entropy for noncompact sets (1973)](https://doi.org/10.1090/S0002-9947-1973-0338317-X)
+
+### Pattern counts make entropy additive
+
+**Remember:** Independent pattern choices multiply counts and add entropy.
+
+*True by definition.* MSC 37B40 (Topological entropy), 37B10. arXiv math.DS. Level 4: research.
+
+**Definition.** A subshift is a closed set of configurations over a finite alphabet that is invariant under translations of the group. An amenable group admits finite windows whose relative change under each fixed translation tends to zero. Along such windows, entropy is the limit of the logarithm of the allowed pattern count divided by the window size.
+
+**Problem.** For two subshifts over the same countable amenable group, the topological entropy of their product is the sum of their entropies.
+
+**How the definition helps.** Counting patterns makes the product rule ordinary multiplication on each window. Our own proof pairs any allowed pattern in the first system with any allowed pattern in the second. Logarithms turn the product into a sum. The substantive theorem identifies the limiting counts with topological entropy defined using open covers.
+
+**Paper or page:** [An embedding theorem for subshifts over amenable groups with the comparison property](https://arxiv.org/abs/2211.00215v2). It says: “Let X and T be subshifts. Then h(X × T) = h(X) + h(T).”
+
+**Sources:**
+
+- [Robert Bland, An embedding theorem for subshifts over amenable groups with the comparison property, Lemma 2.20](https://doi.org/10.1017/etds.2024.21)
 
 ### Shifts on orbit sequences define metric mean dimension for discontinuous maps
 

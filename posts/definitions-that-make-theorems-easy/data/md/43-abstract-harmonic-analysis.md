@@ -14,6 +14,42 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Compact kernels let Haar measure descend
+
+**Remember:** A quotient can inherit volume directly when each fiber has unit volume.
+
+*Rules out counterexamples.* MSC 43A05 (Measures on groups and semigroups, etc.). arXiv math.FA. Level 3: graduate.
+
+**Definition.** Haar measure is a nonzero regular measure invariant under left translations and finite on compact sets. Start with a locally compact group whose topology has a countable base. Form its quotient by a compact normal subgroup N, and normalize Haar measure on N to total mass one.
+
+**Problem.** Pushing Haar measure to the quotient by a compact normal subgroup gives Haar measure. Without compactness the pushforward can be infinite on every nonempty open set.
+
+**How the definition helps.** Our own explanation is that compactness gives each fiber finite volume, while left invariance passes through the quotient map. Weil’s integration formula separates integration along the fibers from integration over the quotient. With fiber mass one, it identifies the measure of a preimage with the quotient measure. For ℝ modulo ℤ, each open arc lifts to infinitely many intervals of equal positive length.
+
+**Paper or page:** [Synthetic properties of locally compact groups: preservation and transference](https://arxiv.org/abs/2111.12005), [Synthetic properties of locally compact groups: preservation and transference](https://arxiv.org/abs/2111.12005). It says: “μ(π⁻¹(E)) = λ(N)ν(E)”
+
+**Sources:**
+
+- [M. Anoussis, G. K. Eleftherakis, A. Katavolos, Synthetic properties of locally compact groups: preservation and transference](https://arxiv.org/abs/2111.12005)
+
+### Open images preserve Haar null preimages
+
+**Remember:** An open image gives the pushed measure room in the target.
+
+*Rules out counterexamples.* MSC 43A05 (Measures on groups and semigroups, etc.), 43A85. arXiv math.FA. Level 3: graduate.
+
+**Definition.** Take a continuous homomorphism between locally compact groups whose topologies have countable bases. Require its image to be open in the target. Haar measure is a nonzero regular measure invariant under left translations and finite on compact sets.
+
+**Problem.** The preimage of every target Haar-null set is Haar-null exactly when the homomorphism has open image.
+
+**How the definition helps.** Our own explanation is that an open image carries the restriction of target Haar measure, up to a constant. Integration along the kernel then shows that preimages of null sets have measure zero. Conversely, the image is a countable union of compact sets. If preimages preserve null sets, the image must have positive measure because its preimage is the entire group. A measurable subgroup of positive Haar measure is open. For our own counterexample, the inclusion of ℤ in ℝ pulls the Lebesgue-null singleton {0} back to a set of counting measure one.
+
+**Paper or page:** [Synthetic properties of locally compact groups: preservation and transference](https://arxiv.org/abs/2111.12005). It says: “The following are equivalent: (i) θ∗(μ) ≪ ν (ii) θ(G) is an open subgroup of H.”
+
+**Sources:**
+
+- [M. Anoussis, G. K. Eleftherakis, A. Katavolos, Synthetic properties of locally compact groups: preservation and transference](https://arxiv.org/abs/2111.12005)
+
 ### Unimodularity makes inversion measure-preserving
 
 **Remember:** Inversion swaps the two sides of Haar invariance.
@@ -66,6 +102,42 @@
 
 - [J. von Neumann, Zur allgemeinen Theorie des Masses, Fundamenta Mathematicae 13 (1929) 73–116](https://doi.org/10.4064/fm-13-1-73-116)
 
+### Coset representatives transfer invariant means
+
+**Remember:** Copy a function across cosets before taking the average.
+
+*True by definition.* MSC 43A07 (Means on groups, semigroups, etc.; amenable groups). arXiv math.FA. Level 3: graduate.
+
+**Definition.** For a discrete group, use a left-invariant mean, a positive normalized linear average on all bounded functions. To extend a function from a subgroup H, choose a representative t for each coset Ht and give ht the value at h.
+
+**Problem.** Every subgroup of an amenable discrete group is amenable.
+
+**How the definition helps.** Our own explanation extends functions across right cosets, so the group mean can average a function defined only on H. The extension respects left shifts by H, preserves positivity and takes the constant one to one. Composing it with the group mean gives the required subgroup mean. Directly restricting an invariant finitely additive probability could give H mass zero.
+
+**Wikipedia:** [Amenable group](https://en.wikipedia.org/wiki/Amenable_group). It says: “Every (closed) subgroup of an amenable group is amenable.”
+
+**Sources:**
+
+- [Mahlon M. Day, Amenable semigroups (1957)](https://doi.org/10.1215/ijm/1255380675)
+
+### Directed unions preserve amenability
+
+**Remember:** Each finite translation test fits inside one subgroup.
+
+*True by definition.* MSC 43A07 (Means on groups, semigroups, etc.; amenable groups). arXiv math.FA. Level 3: graduate.
+
+**Definition.** A discrete group satisfies the Følner test if every finite list of translations passes the following test for every ε &gt; 0. Some nonempty finite set F satisfies \|gF △ F\| &lt; ε\|F\| for each listed translation g. The symmetric difference gF △ F contains the elements belonging to exactly one of these sets. The equivalent mean definition requires a positive translation-invariant linear functional on bounded functions taking one to one.
+
+**Problem.** A directed union of amenable discrete subgroups is amenable. Directed means any two subgroups in the family lie in a third.
+
+**How the definition helps.** Our own explanation is that a finite list of translations lies inside one subgroup, whose finite witness also works in the union. The work is Følner’s theorem equating these tests with the invariant mean definition.
+
+**Wikipedia:** [Amenable group](https://en.wikipedia.org/wiki/Amenable_group). It says: “if a group can be written as a directed union of amenable subgroups, then it is amenable.”
+
+**Sources:**
+
+- [Erling Følner, On groups with full Banach mean value (1955)](https://doi.org/10.7146/math.scand.a-10442)
+
 ### Fixed points preserve amenable extensions
 
 **Remember:** Fix the normal subgroup first, then let the quotient act.
@@ -84,6 +156,26 @@
 
 - [Mahlon M. Day, Fixed-point theorems for compact convex sets (1961)](https://doi.org/10.1215/ijm/1255631582)
 
+### Følner overlaps give positive definite coefficients
+
+**Remember:** The overlap of a set with its translate is a positive definite coefficient.
+
+*True by definition. Confidence: medium.* MSC 43A07 (Means on groups, semigroups, etc.; amenable groups), 43A35. arXiv math.FA. Level 3: graduate.
+
+**Definition.** Use the Følner definition of amenability for a discrete group. For any finite list of translations, one can choose a nonempty finite set F with arbitrarily small relative change under each translation. Define φ(g) as the fraction of F contained in gF.
+
+**Problem.** For any finite subset of an amenable discrete group, normalized positive definite functions of finite support approximate one uniformly there. Normalized means φ(e) = 1, and positive definite means each finite matrix with entries φ(x⁻¹y) is positive semidefinite.
+
+**How the definition helps.** Our own proof uses the Følner definition to make approximation by overlap fractions immediate. The fraction is one minus half the relative size of the symmetric difference between F and gF. It vanishes unless g belongs to the finite set FF⁻¹. Positive definiteness follows because the test matrix records inner products of normalized indicators of translates of F. Følner’s theorem connects the finite set test to the invariant mean definition. The quoted paper gives a related approximation theorem for second-countable unimodular groups, whose left invariant measure is also right invariant.
+
+**Wikipedia:** [Amenable group](https://en.wikipedia.org/wiki/Amenable_group). It says: “For every finite (or compact) subset F of G there is a measurable subset U of G with finite positive Haar measure”
+
+**Paper or page:** [Proper cocycles, measure equivalence and Lₚ-Fourier multipliers](https://arxiv.org/abs/2506.18320). It says: “there exists a sequence of unital positive definite functions (mₙ)ₙ≥₀ ⊂ A(G) such that mₙ → 1 uniformly on compact sets”
+
+**Sources:**
+
+- [Erling Følner, On groups with full Banach mean value (1955)](https://doi.org/10.7146/math.scand.a-10442)
+
 ### Invariant means make quotients of amenable groups amenable
 
 **Remember:** Pull back functions from the quotient to reuse the invariant mean.
@@ -101,6 +193,22 @@
 **Sources:**
 
 - [M. M. Day, Amenable semigroups, Illinois Journal of Mathematics 1 (1957)](https://doi.org/10.1215/ijm/1255380675)
+
+### Mean averaging makes bounded actions unitary
+
+**Remember:** Average the inner product so every group element preserves it.
+
+*True by definition.* MSC 43A07 (Means on groups, semigroups, etc.; amenable groups), 43A65. arXiv math.RT. Level 3: graduate.
+
+**Definition.** Use amenability in the form of a right-invariant mean, a positive normalized linear average unchanged by right shifts. Give two vectors a new inner product by taking the mean of the old inner products of their translates.
+
+**Problem.** Every uniformly bounded, strongly continuous Hilbert space representation of a locally compact amenable group is unitary for an equivalent inner product. Strong continuity means that each vector moves continuously.
+
+**How the definition helps.** Our own explanation uses a right-invariant mean to average inner products even when the group has infinite invariant volume. Applying the action to both vectors right-translates the function being averaged and leaves its mean unchanged. Uniform bounds on the operators and their inverses give upper and positive lower bounds for the new norm relative to the original. The invariant mean characterization of amenability supplies the average.
+
+**nLab:** [unitarization](https://ncatlab.org/nlab/show/unitarization). It says: “every bounded strong-operator-continuous representation of a locally compact amenable group on a Hilbert space ℋ is unitarizable.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### The fixed-point definition makes locally compact abelian groups amenable
 
@@ -136,6 +244,25 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Weak containment equates group completions
+
+**Remember:** If no representation gives a larger norm, both completions use the same norm.
+
+*True by definition.* MSC 43A07 (Means on groups, semigroups, etc.; amenable groups), 22D25. arXiv math.FA. Level 3: graduate.
+
+**Definition.** A unitary representation acts on a Hilbert space by inner-product-preserving maps. Integrating the action against an integrable group function gives an operator. One characterization of amenability says that its operator norm never exceeds the corresponding norm for left translation on square-integrable functions. This comparison, for every continuous unitary representation, is called weak containment in left translation.
+
+**Problem.** For a locally compact amenable group, the full and reduced group C\*-algebras agree under the canonical map. These algebras complete the convolution algebra of integrable functions using two operator norms.
+
+**How the definition helps.** Our own explanation is that weak containment gives exactly the missing comparison between the two norms. The full norm takes the supremum over continuous unitary representations. The reduced norm uses only left translation, so it cannot exceed the full norm. Weak containment gives the reverse inequality. Hulanicki’s theorem identifies this comparison with amenability defined by an invariant mean.
+
+**Wikipedia:** [Group algebra of a locally compact group](https://en.wikipedia.org/wiki/Group_algebra_of_a_locally_compact_group). It says: “The reduced group C\*-algebra is isomorphic to the non-reduced group C\*-algebra defined above if and only if G is amenable.”
+
+**Sources:**
+
+- [Andrzej Hulanicki, Groups whose regular representation weakly contains all unitary representations (1964)](https://doi.org/10.4064/sm-24-1-27-59)
+- [Andrzej Hulanicki, Means and Følner condition on locally compact groups (1966)](https://doi.org/10.4064/sm-27-2-87-104)
+
 ### Homomorphisms preserve measure convolution
 
 **Remember:** Multiplying and then mapping agrees with mapping and then multiplying.
@@ -151,6 +278,24 @@
 **Paper or page:** [Homomorphisms of L¹ algebras and Fourier algebras](https://arxiv.org/abs/2302.09573v1). It says: “a homomorphism φ : L¹(F) → M(G) of the form f ↦ θ∗(f)”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Nonzero finite translation spaces require compactness
+
+**Remember:** On a noncompact group, translations escape every finite-dimensional space of functions that fade at infinity.
+
+*Rules out counterexamples.* MSC 43A15 (\\(L<sup>p\\</sup>)-spaces and other function spaces on groups, semigroups, etc.), 43A60. arXiv math.FA. Level 3: graduate.
+
+**Definition.** Use continuous functions that vanish at infinity: for every positive threshold the set where the absolute value reaches it is compact. This is stronger than merely requiring the functions to be bounded.
+
+**Problem.** A locally compact group admits a nonzero finite-dimensional translation-invariant space of continuous functions vanishing at infinity exactly when it is compact.
+
+**How the definition helps.** Our own explanation uses vanishing at infinity to make translates tend pointwise to zero as group elements escape every compact set. All translates of a nonzero function have the same positive supremum norm. In a finite-dimensional space, compactness of the closed norm ball would give a subnet converging in norm, necessarily to zero. On a compact group, constants give the required space. If one allows bounded continuous functions instead, constants also work on ℝ.
+
+**Paper or page:** [The ideal structure of measure algebras and asymptotic properties of group representations](https://arxiv.org/abs/2106.07526). It says: “contains a non-zero finite-dimensional linear subspace invariant under left translation if and only if G is compact.”
+
+**Sources:**
+
+- [Jared T. White, The ideal structure of measure algebras and asymptotic properties of group representations](https://arxiv.org/abs/2106.07526)
 
 ### Haar correction gives convolution adjoints
 
@@ -218,6 +363,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Compact fibers preserve Fourier coefficients
+
+**Remember:** Finite fiber volume keeps lifted vectors square-integrable.
+
+*Rules out counterexamples.* MSC 43A30 (Fourier and Fourier-Stieltjes transforms on nonabelian groups and on semigroups, etc.), 43A22. arXiv math.FA. Level 3: graduate.
+
+**Definition.** The Fourier algebra consists of functions g ↦ ⟨L(g)u,v⟩, where L(g) translates square-integrable functions on the left. Let H be a compact normal subgroup of a locally compact group G. Lift a function on G/H by composing it with the quotient map.
+
+**Problem.** Pulling back a Fourier algebra function from a quotient by a compact normal subgroup gives a Fourier algebra function on the larger group.
+
+**How the definition helps.** Our own explanation is that compact fibers let us lift the two square-integrable vectors as well as their coefficient. Normalize the invariant measure on H to mass one. Weil’s integration formula then shows that lifting preserves inner products, and lifting commutes with left translation. Without compactness, the constant one on ℝ/ℤ lifts to one on ℝ, although every Fourier algebra function on ℝ vanishes at infinity.
+
+**Paper or page:** [Idempotents of large norm and homomorphisms of Fourier algebras](https://arxiv.org/abs/2109.12318). It says: “if H is compact, then j₍π₎(A(G/H)) ⊆ A(G).”
+
+**Sources:**
+
+- [Pierre Eymard, L’algèbre de Fourier d’un groupe localement compact (1964)](https://doi.org/10.24033/bsmf.1607)
+
 ### Compactness gives Fourier algebra identities
 
 **Remember:** Constants enter the Fourier algebra when constant vectors are square integrable.
@@ -254,6 +417,22 @@
 
 - [P. Eymard, L’algèbre de Fourier d’un groupe localement compact (1964)](https://doi.org/10.24033/bsmf.1607)
 
+### Cyclic vectors give unique realizations
+
+**Remember:** Keep only the vectors whose inner products the function actually records.
+
+*Rules out counterexamples.* MSC 43A35 (Positive definite functions on groups, semigroups, etc.), 43A65. arXiv math.RT. Level 3: graduate.
+
+**Definition.** A group function φ is positive definite if each finite matrix with entries φ(x⁻¹y) is positive semidefinite. A realization writes φ(g) = ⟨π(g)v,v⟩ using a continuous group action by unitary operators on a Hilbert space. Call v cyclic when its translates have dense linear span.
+
+**Problem.** Every continuous positive definite function on a locally compact group has a cyclic realization. Any two such realizations admit a unique unitary map matching their chosen vectors and commuting with the group actions.
+
+**How the definition helps.** Our own explanation is that cyclicity lets the function determine inner products on a dense span. Matching translates preserves all inner products there and extends uniquely to a unitary map of the whole spaces. The Gelfand–Naimark–Segal construction supplies existence by completing the span after removing vectors of length zero. Without cyclicity, an extra orthogonal summand leaves the function unchanged. For example, the constant one comes from the trivial action on either ℂ or ℂ² with a chosen unit vector.
+
+**Wikipedia:** [Positive-definite function on a group](https://en.wikipedia.org/wiki/Positive-definite_function_on_a_group). It says: “The unitary representation is unique, up to Hilbert space isomorphism, provided the following minimality condition holds:”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Open subgroups preserve zero extensions
 
 **Remember:** Cosets give positive blocks, and openness keeps the zero extension continuous.
@@ -271,6 +450,22 @@
 **Sources:**
 
 - [On extremal problems of Delsarte type for positive definite functions on LCA groups](https://arxiv.org/abs/2412.00482)
+
+### Positive definite functions peak at identity
+
+**Remember:** A vector cannot meet its own translate with a larger inner product.
+
+*True by definition.* MSC 43A35 (Positive definite functions on groups, semigroups, etc.), 43A65. arXiv math.FA. Level 3: graduate.
+
+**Definition.** Write a continuous positive definite function as φ(g) = ⟨π(g)v, v⟩. Here π is a continuous action by unitary operators on a Hilbert space. The usual definition asks that every finite matrix with entries φ(x⁻¹y) be positive semidefinite.
+
+**Problem.** A continuous positive definite function takes its largest absolute value at the identity.
+
+**How the definition helps.** Our own explanation uses the coefficient formula to turn the peak bound into Cauchy–Schwarz. Both vectors have norm ‖v‖, so the absolute value is at most ‖v‖² = φ(e). The Gelfand–Naimark–Segal construction gives this coefficient formula from the usual matrix test.
+
+**Paper or page:** [Spherical Fourier multipliers related to Gelfand pairs](https://arxiv.org/abs/2407.09225). It says: “∀ x ∈ G, \|φ(x)\| ≤ φ(e).”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Evaluation makes biduality natural
 
@@ -342,6 +537,80 @@
 
 - [L. Pontrjagin, The theory of topological commutative groups, Annals of Mathematics 35 (1934)](https://doi.org/10.2307/1968438)
 
+### Hilbert coefficients have weakly compact orbits
+
+**Remember:** Translate the coefficient by moving a vector inside a weakly compact ball.
+
+*True by definition.* MSC 43A60 (Almost periodic functions on groups and semigroups and their generalizations (recurrent functions, distal functions, etc.); almost automorphic functions), 43A30. arXiv math.FA. Level 3: graduate.
+
+**Definition.** A bounded continuous group function is weakly almost periodic when the weak closure of its translation orbit is compact. Weak convergence tests all bounded linear functionals on the space of bounded continuous functions. Define the Fourier–Stieltjes algebra of a locally compact group by the coefficients g ↦ ⟨π(g)u,v⟩ of continuous unitary actions on Hilbert spaces.
+
+**Problem.** Every Fourier–Stieltjes function is weakly almost periodic.
+
+**How the definition helps.** Our own explanation uses the coefficient definition to control every right translate by moving just the vector u. Its translates lie in a fixed Hilbert ball because the action preserves norms. The map from a vector to its coefficient is bounded and linear, so it takes weakly compact sets to weakly compact sets. Closed Hilbert balls are weakly compact. Starting from the alternative definition as the dual of the full group C\*-algebra requires the theorem identifying its functionals with coefficients.
+
+**Wikipedia:** [Almost periodic function](https://en.wikipedia.org/wiki/Almost_periodic_function). It says: “A function on a locally compact group is called weakly almost periodic if its orbit is weakly relatively compact in L∞.”
+
+**Paper or page:** [Power boundedness in Fourier and Fourier-Stieltjes algebra of an ultraspherical hypergroup](https://arxiv.org/abs/2309.11074). It says: “Let H be a locally compact hypergroup with a Haar measure. Then B(H) ⊂ wap(H).”
+
+**Sources:**
+
+- [Pierre Eymard, L’algèbre de Fourier d’un groupe localement compact (1964)](https://doi.org/10.24033/bsmf.1607)
+
+### Matching modular functions permits quotient volume
+
+**Remember:** Fiber rescaling must match ambient rescaling to leave quotient volume unchanged.
+
+*Rules out counterexamples.* MSC 43A85 (Harmonic analysis on homogeneous spaces), 43A05. arXiv math.FA. Level 3: graduate.
+
+**Definition.** The modular function of a locally compact group records how right translation rescales its left Haar measure, using one convention for both groups. For a closed subgroup H of G, require the two modular functions to agree on H.
+
+**Problem.** The space of left cosets G/H has a nonzero left-invariant Radon measure exactly when the modular functions agree on H. A Radon measure is locally finite and regular.
+
+**How the definition helps.** Our own explanation is that matching the two volume changes lets integration along a coset agree with integration on the group. The quotient integration theorem proves this condition is sufficient. For our own counterexample, use the group of maps x ↦ ax + b with a &gt; 0. Its quotient by the subgroup of dilations is the real line, via evaluation at zero. Translation invariance forces a nonzero regular volume to be a multiple of Lebesgue measure, which dilations rescale.
+
+**Wikipedia:** [Haar measure](https://en.wikipedia.org/wiki/Haar_measure). It says: “an invariant measure on G/H exists if and only if the modular function Δ of G restricted to H is the modular function δ of H.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Conjugate symbols give spherical adjoints
+
+**Remember:** Conjugate the symbol to take the adjoint.
+
+*True by definition.* MSC 43A90 (Harmonic analysis and spherical functions), 43A22. arXiv math.FA. Level 3: graduate.
+
+**Definition.** A Gelfand pair consists of a locally compact group G and a compact subgroup K with the following property. Convolution commutes for integrable functions unchanged by left and right translations by K. The spherical Fourier transform expresses such functions in frequency variables. A spherical multiplier transforms the function, multiplies by a bounded measurable symbol, then transforms back.
+
+**Problem.** On square-integrable functions with this invariance, the adjoint of a spherical multiplier has the conjugate symbol.
+
+**How the definition helps.** Our own explanation uses frequency variables to avoid computing the adjoint from its integral kernel. Multiplication by a bounded function has adjoint multiplication by its complex conjugate. The spherical Plancherel theorem makes the transform unitary, so changing variables preserves adjoints.
+
+**Paper or page:** [Spherical Fourier multipliers related to Gelfand pairs](https://arxiv.org/abs/2407.09225), [Spherical Fourier multipliers related to Gelfand pairs](https://arxiv.org/abs/2407.09225). It says: “defined by Tₘ\* f = Tₘ̄f, where m̄ is the complex conjugate of m.”
+
+**Sources:**
+
+- [Yaogan Mensah, Marie Françoise Ouedraogo, Spherical Fourier multipliers related to Gelfand pairs](https://arxiv.org/abs/2407.09225)
+
+### Coset symmetry makes convolution commute
+
+**Remember:** A symmetry that reverses every product but changes no factor forces commutativity.
+
+*True by definition.* MSC 43A90 (Harmonic analysis and spherical functions), 43A85. arXiv math.RT. Level 3: graduate.
+
+**Definition.** Let K be a compact subgroup of a locally compact group G. Call (G,K) a Gelfand pair when convolution commutes for finite regular measures invariant under left and right translations by K. A double coset KxK consists of all products kxh with k and h in K.
+
+**Problem.** Suppose a continuous map reverses products, squares to the identity and preserves each double coset as a set. Then (G,K) is a Gelfand pair.
+
+**How the definition helps.** Our own explanation uses the measure definition to test commutativity without decomposing representations. Averaging over K on both sides of x gives the unique invariant probability on its double coset. Reversal preserves that probability and therefore fixes every invariant measure by double averaging. Reversal exchanges the two factors of a convolution, but their convolution is itself invariant. The two orders therefore give the same measure.
+
+**Wikipedia:** [Gelfand pair](https://en.wikipedia.org/wiki/Gelfand_pair). It says: “there exists an involutive anti-automorphism σ of G such that any (K, K) double coset is σ-invariant.”
+
+**Paper or page:** [Weighted Gelfand pairs, weighted spherical Fourier transform and multipliers](https://arxiv.org/abs/2406.03613). It says: “then (G,K, ω) is a weighted Gelfand pair.”
+
+**Sources:**
+
+- [Assèkè Y. Tissinam, Abudulaï Issa, Yaogan Mensah, Weighted Gelfand pairs, weighted spherical Fourier transform and multipliers](https://arxiv.org/abs/2406.03613)
+
 ### One fixed line factors spherical averages
 
 **Remember:** Averaging onto one line splits the inner product into two factors.
@@ -375,6 +644,24 @@
 **Sources:**
 
 - [Felix Pogorzelski, Christoph Richard, Nicolae Strungaru, Leptin densities in amenable groups, arXiv:2107.04760v2 (2021)](https://arxiv.org/abs/2107.04760v2)
+
+### Finite Brascamp–Lieb bounds require properness
+
+**Remember:** Keep joint preimages compact before trying to bound the product integral.
+
+*Rules out counterexamples.* MSC 43A15 (\\(L<sup>p\\</sup>)-spaces and other function spaces on groups, semigroups, etc.), 43A25. arXiv math.FA. Level 4: research.
+
+**Definition.** A Brascamp–Lieb inequality bounds an integral of a product by a product of norms. Each factor is pulled back along a homomorphism of locally compact abelian groups. Require the joint map into the product to be proper, meaning that preimages of compact sets are compact.
+
+**Problem.** A finite Brascamp–Lieb constant requires the joint map to be proper. For instance, the map from ℝ to the circle given by t ↦ exp(it) fails even the one-factor inequality with exponent one.
+
+**How the definition helps.** Our own example shows how a noncompact preimage defeats the bound. The constant function one has finite integral on the circle, but its pullback has infinite integral on ℝ. The cited theorem proves that every nonproper joint map forces an infinite constant.
+
+**Paper or page:** [Brascamp--Lieb inequalities on locally compact abelian groups](https://arxiv.org/abs/2412.11514), [Brascamp--Lieb inequalities on locally compact abelian groups](https://arxiv.org/abs/2412.11514), [Brascamp--Lieb inequalities on locally compact abelian groups](https://arxiv.org/abs/2412.11514). It says: “and assume that $\\boldsymbol {\\sigma }: G \\to \\boldsymbol {G}$ is not proper. Then $\\operatorname {\\mathbf{BL}}(G, \\boldsymbol {\\sigma }, \\boldsymbol {p})$ and $\\operatorname {\\widehat{\\mathbf{BL}}}(G, \\boldsymbol {\\sigma }, \\boldsymbol {p’})$ are infinite.”
+
+**Sources:**
+
+- [Jonathan Bennett, Michael G. Cowling, Brascamp--Lieb inequalities on locally compact abelian groups](https://arxiv.org/abs/2412.11514)
 
 ### Open subgroup coefficients extend isometrically
 
@@ -429,6 +716,58 @@
 **Sources:**
 
 - [Isaac J. Schoenberg, Positive definite functions on spheres (1942)](https://doi.org/10.1215/s0012-7094-42-00908-6)
+
+### Strict aperiodicity removes rotating phases
+
+**Remember:** Powers decay wherever the modulus is less than one.
+
+*Rules out counterexamples.* MSC 43A35 (Positive definite functions on groups, semigroups, etc.), 43A22. arXiv math.FA. Level 4: research.
+
+**Definition.** A positive definite function gives positive semidefinite matrices with entries φ(x⁻¹y). Assume it is continuous and equals one at the identity. Call it adapted if it equals one nowhere else. Call it strictly aperiodic if its modulus equals one nowhere else.
+
+**Problem.** On a discrete group, multiplication by successive powers of a strictly aperiodic function converges on each Fourier algebra vector in its norm. The limit multiplies by the indicator of the identity.
+
+**How the definition helps.** Our own explanation is that strict aperiodicity forces scalar powers to decay at every point except the identity. The Fourier algebra consists of coefficients of left translation on square-summable functions. The cited theorem upgrades the scalar limit to norm convergence after multiplication by each fixed Fourier algebra function. On the two-element group, the sign character is adapted, but its powers alternate at the nonidentity element.
+
+**Paper or page:** [Positive definite functions as uniformly ergodic multipliers of the Fourier algebra](https://arxiv.org/abs/2411.12122), [Positive definite functions as uniformly ergodic multipliers of the Fourier algebra](https://arxiv.org/abs/2411.12122). It says: “then φ is strictly aperiodic if, and only if, it is completely mixing.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Closed frequency sets survive weak-star limits
+
+**Remember:** Frequency restrictions survive limits when they are written as vanishing tests.
+
+*True by definition.* MSC 43A45 (Spectral synthesis on groups, semigroups, etc.), 43A25. arXiv math.FA. Level 4: research.
+
+**Definition.** Take an essentially bounded measurable function on a locally compact abelian group. A frequency lies outside its spectrum if convolution with some integrable kernel kills the function and the kernel’s Fourier transform is nonzero there. Equivalently, containment in a closed set A means every kernel with compact Fourier support disjoint from A kills the function.
+
+**Problem.** If every function in a net has spectrum inside the same closed set, so does its weak-star limit. This limit is taken by testing integrals against integrable functions.
+
+**How the definition helps.** Our own explanation uses the same convolution tests for every member of the convergent family. At each group element, convolution pairs the function with an integrable test, so a weak-star limit preserves zero. The equivalence with the frequency-by-frequency definition uses local Fourier cutoffs.
+
+**Paper or page:** [On almost convergence on locally compact abelian groups](https://arxiv.org/abs/2301.01672). It says: “If w\*-limₐ ψₐ = ψ, namely, {ψₐ} converge to ψ in the weak\* sense, then we have sp(ψ) ⊆ A.”
+
+**Sources:**
+
+- [Ryoichi Kunisada, On almost convergence on locally compact abelian groups](https://arxiv.org/abs/2301.01672)
+
+### Consecutive differences transfer spectral synthesis
+
+**Remember:** Consecutive differences record exactly what a common right shift leaves unchanged.
+
+*Makes the theorem clean to state or prove.* MSC 43A45 (Spectral synthesis on groups, semigroups, etc.), 43A30. arXiv math.FA. Level 4: research.
+
+**Definition.** Start with a closed set E of n-tuples in a compact group G. Its lift contains exactly those longer tuples whose list of consecutive differences belongs to E. For neighboring entries x and y, the difference is xy⁻¹. A common right translation leaves every difference unchanged.
+
+**Problem.** The multidimensional Fourier algebra is a normed algebra of functions on tuples of group elements. A closed set admits spectral synthesis when functions vanishing there are norm limits of functions vanishing on neighborhoods of it. The theorem says that E admits synthesis exactly when its lift admits synthesis in the next dimension.
+
+**How the definition helps.** Our own explanation is that the lift gives both vanishing conditions the same meaning in difference coordinates. The paper proves that composing with the difference map preserves norms and identifies functions unchanged by common right translations. Its transfer theorem handles approximation by functions vanishing on neighborhoods.
+
+**Paper or page:** [Spectral synthesis in multidimensional Fourier algebras](https://arxiv.org/abs/2501.04349), [Spectral synthesis in multidimensional Fourier algebras](https://arxiv.org/abs/2501.04349), [Spectral synthesis in multidimensional Fourier algebras](https://arxiv.org/abs/2501.04349). It says: “The set E is a set of spectral synthesis for Aⁿ(G) if and only if E\* is a set of spectral synthesis for Aⁿ⁺¹(G).”
+
+**Sources:**
+
+- [Kanupriya, N. Shravan Kumar, Spectral synthesis in multidimensional Fourier algebras](https://arxiv.org/abs/2501.04349)
 
 ### Discreteness guarantees abelian spectral synthesis
 

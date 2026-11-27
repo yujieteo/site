@@ -703,6 +703,24 @@
 
 - [Øystein Ore, Galois connexions, Transactions of the American Mathematical Society (1944)](https://doi.org/10.1090/S0002-9947-1944-0010555-7)
 
+### MacNeille cuts preserve existing bounds
+
+**Remember:** An existing join has exactly the same upper bounds as its summands.
+
+*True by definition.* MSC 06B23 (Complete lattices, completions). arXiv math.CT. Level 3: graduate.
+
+**Definition.** In the MacNeille completion, close a set by taking the common lower bounds of its common upper bounds. The closed sets are ordered by inclusion. Send an element to the set of all elements below it, rather than using the lattice of all downward closed sets.
+
+**Problem.** The MacNeille completion preserves all existing least upper bounds and greatest lower bounds.
+
+**How the definition helps.** Closing a union of principal lower sets uses exactly the common upper bounds of the original elements. If their least upper bound exists, closing the union gives all elements below that bound. In our own comparison, taking the union alone can omit the least upper bound itself. Intersections of principal lower sets already preserve greatest lower bounds. The remaining work proves that taking common bounds twice defines a closure operation.
+
+**nLab:** [MacNeille completion](https://ncatlab.org/nlab/show/MacNeille+completion). It says: “preserves all least upper bounds (joins) and greatest lower bounds (meets) existing in L.”
+
+**Sources:**
+
+- [H. M. MacNeille, Partially ordered sets (1937)](https://doi.org/10.1090/S0002-9947-1937-1501929-X)
+
 ### The Dedekind–MacNeille completion extends Dedekind cuts to every poset
 
 **Remember:** Cut any partial order like Dedekind cut ℚ, and get its smallest completion.
@@ -884,6 +902,24 @@
 - [Tatsuji Kawai, Predicative theories of continuous lattices](https://arxiv.org/abs/2006.05642v4)
 - [Rudolf-E. Hoffmann, Continuous posets and adjoint sequences, Semigroup Forum (1979)](https://doi.org/10.1007/BF02574184)
 
+### The compact ideals are principal
+
+**Remember:** A single generator witnesses compactness in a directed union.
+
+*True by definition.* MSC 06B35 (Continuous lattices and posets, applications). arXiv math.CT. Level 3: graduate.
+
+**Definition.** In a join semilattice with a least element, every pair has a join, its least upper bound. An ideal is a nonempty downward closed subset closed under binary joins. A principal ideal contains exactly the elements below one generator.
+
+**Problem.** An ideal is compact if containment in a directed union of ideals implies containment in one member. The compact ideals are exactly the principal ideals. Consequently every ideal is a join of compact ideals in the complete lattice of ideals.
+
+**How the definition helps.** Testing compactness on directed unions reduces the usual finite-cover test to finding one generator. A directed family is nonempty and contains an upper bound for each pair of its members. Its union is an ideal because any two elements lie together in one member. In our own proof, a union covering a principal ideal contains its generator in one member, which contains the whole ideal. Conversely, every ideal is the directed union of its principal ideals. Compactness puts it inside one of those principal ideals, giving equality.
+
+**nLab:** [algebraic lattice](https://ncatlab.org/nlab/show/algebraic+lattice). It says: “An algebraic lattice is a lattice which is a complete lattice; such that every element is a join of compact elements.”
+
+**Paper or page:** [Ideals form Algebraic Lattice](https://proofwiki.org/wiki/Ideals_form_Algebraic_Lattice). It says: “Then I is an algebraic lattice.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Modularity excludes Dilworth’s counterexamples
 
 **Remember:** Unique complements need modularity to force distributivity.
@@ -901,6 +937,24 @@
 **Sources:**
 
 - [R. P. Dilworth, Lattices with Unique Complements (1945)](https://doi.org/10.1090/S0002-9947-1945-0012263-6)
+
+### Orthomodularity excludes zero gaps
+
+**Remember:** If the part outside a vanishes, b is just a.
+
+*Rules out counterexamples.* MSC 06C15 (Complemented lattices, orthocomplemented lattices and posets). arXiv math.LO. Level 3: graduate.
+
+**Definition.** In a bounded lattice, write ∧ for greatest lower bound and ∨ for least upper bound. An ortholattice has an order-reversing operation x ↦ x′ with x″ = x and x ∧ x′ = 0. The orthomodular law says b = a ∨ (b ∧ a′) whenever a ≤ b.
+
+**Problem.** In an orthomodular lattice, if a ≤ b and b ∧ a′ = 0, then a = b.
+
+**How the definition helps.** The orthomodular law reconstructs b from a and the part of b below a′. If that part is zero, the formula gives b = a. Our own counterexample has two chains with shared endpoints and no other comparisons between them. The chains are 0 &lt; a &lt; b &lt; 1 and 0 &lt; b′ &lt; a′ &lt; 1. Here b ∧ a′ = 0 although a &lt; b. The cited proposition also proves that the zero test implies the orthomodular law.
+
+**Paper or page:** [Topological duality for orthomodular lattices](https://arxiv.org/abs/2208.07430v2). It says: “if a ≤ b and −a · b = 0, then a = b.”
+
+**Sources:**
+
+- [Topological duality for orthomodular lattices](https://arxiv.org/abs/2208.07430v2)
 
 ### Orthomodularity keeps the part of the modular law Hilbert subspaces satisfy
 
@@ -920,6 +974,22 @@
 
 - [Birkhoff, G.; von Neumann, J. (1936). The logic of quantum mechanics. Annals of Mathematics 37, 823–843.](https://doi.org/10.2307/1968621)
 
+### Upward sets give complete distributivity
+
+**Remember:** Unions and intersections keep every membership test pointwise.
+
+*True by definition.* MSC 06D10 (Complete distributivity), 06D50. arXiv math.LO. Level 3: graduate.
+
+**Definition.** In a bounded distributive lattice, a meet is a greatest lower bound and a join is a least upper bound. A prime filter is an upward closed set containing the top, omitting the bottom and closed under binary meets. A binary join belongs to it only if at least one summand does. Order prime filters by inclusion and represent each lattice element by the filters containing it.
+
+**Problem.** The canonical extension, formed from all upward closed sets of prime filters, is completely distributive. An intersection of unions equals the union of intersections obtained by choosing one set from each family.
+
+**How the definition helps.** Upward closed sets admit ordinary unions and intersections, so membership proves the entire distributive law. In our own argument, a point in every union belongs to one set in each family by the axiom of choice. It therefore lies in one of the stated intersections. The converse follows from membership alone. The representation theorem does the work of identifying this concrete lattice with the canonical extension.
+
+**nLab:** [canonical extension](https://ncatlab.org/nlab/show/canonical+extension). It says: “The canonical extension Lᵟ of a distributive lattice L is a complete and completely distributive lattice.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### An order-reversing adjunction gives one De Morgan law
 
 **Remember:** Negation as a left adjoint converts joins into meets.
@@ -935,6 +1005,24 @@
 **nLab:** [Heyting algebra](https://ncatlab.org/nlab/show/Heyting+algebra). It says: “−⇒a is self-adjoint: −⇒a: L → Lᵒᵖ is left adjoint to −⇒a: Lᵒᵖ → L.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Back conditions preserve Heyting implication
+
+**Remember:** Lift each point that implication has to check.
+
+*True by definition. Confidence: medium.* MSC 06D20 (Heyting algebras (lattice-theoretic aspects)). arXiv math.LO. Level 3: graduate.
+
+**Definition.** An upward closed set contains every point above any of its members, including the point itself. Define U → V to contain x when every member of U above x belongs to V. An order-preserving map f satisfies the back condition if every y ≥ f(x) equals f(z) for some z ≥ x.
+
+**Problem.** For order-preserving maps, inverse image preserves this implication exactly when the map satisfies the back condition.
+
+**How the definition helps.** The back condition makes the points tested by implication above f(x) exactly the images of points above x. Our own proof compares this point test with preservation of the operation → on all upward closed sets. If some y ≥ f(x) fails to lift, take U to contain all points at or above y. Take V to contain only the points strictly above y. At f(x), y witnesses failure of implication. Above x, every image in U belongs to V, so implication holds after inverse image.
+
+**Paper or page:** [Etale algebras over finite Heyting algebras](https://arxiv.org/abs/2410.23442v1). It says: “f satisfies the ‘back’ condition of a p-morpism if and only if ↑f(x) ⊆ f∗(↑x).”
+
+**Sources:**
+
+- [Etale algebras over finite Heyting algebras](https://arxiv.org/abs/2410.23442v1)
 
 ### Defining implication by adjunction forces distributivity
 
@@ -967,6 +1055,22 @@
 **nLab:** [sober topological space](https://ncatlab.org/nlab/show/sober+topological+space). It says: “every irreducible closed set (non-empty closed set that is not the union of any two proper closed subsets) is the closure of a unique point.”
 
 **Paper or page:** [Spectrum of Locale as Completely Prime Filters is Sober Space](https://proofwiki.org/wiki/Spectrum_of_Locale_as_Completely_Prime_Filters_is_Sober_Space). It says: “Then: Sp(L) is a sober space.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Double negation gives the smallest dense sublocale
+
+**Remember:** Fixing the empty open stops a dense nucleus at double negation.
+
+*True by definition.* MSC 06D22 (Frames, locales). arXiv math.CT. Level 3: graduate.
+
+**Definition.** A locale describes a space by its ordered collection of opens. A nucleus is an order-preserving operation j on opens with a ≤ j(a) = j(j(a)) that preserves binary intersections. Its fixed opens describe a sublocale, called dense when j fixes the empty open. For each open a, let ¬a be the largest open disjoint from a.
+
+**Problem.** The double negation sublocale is contained in every dense sublocale. Its opens form a Boolean algebra.
+
+**How the definition helps.** Using nuclei turns containment in every dense sublocale into a single inequality about opens. Our own calculation starts with any dense nucleus j. The opens j(a) and j(¬a) are disjoint because j preserves intersections and fixes the empty open. Since ¬a ≤ j(¬a), the open j(a) misses ¬a and therefore lies below ¬¬a. Larger nuclei give smaller sublocales, which yields the required inclusion. The remaining work shows that double negation is a dense nucleus and its fixed opens form a Boolean algebra.
+
+**nLab:** [double negation](https://ncatlab.org/nlab/show/double+negation). It says: “it is the smallest dense sublocale of L, the intersection of all dense sublocales.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -1018,6 +1122,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Clopen inverse images detect surjectivity
+
+**Remember:** A missing point leaves two distinct clopen sets with the same inverse image.
+
+*Rules out counterexamples.* MSC 06D50 (Lattices and duality). arXiv math.LO. Level 3: graduate.
+
+**Definition.** A Priestley space is compact and ordered. Whenever x is not below y, a set that is open, closed and upward closed contains x but misses y. The lattice dual to the space uses exactly these sets, with maps acting by inverse image.
+
+**Problem.** A continuous order-preserving map between Priestley spaces is onto exactly when inverse image is injective on the open and closed upward sets.
+
+**How the definition helps.** Compactness and ordered separation expose a missing point through two clopen upward sets, where clopen means closed and open. In our own proof, each image point misses a clopen upward or downward neighborhood of the missing point. Compactness lets finitely many such neighborhoods exclude the entire image by intersection. Intersect the upward ones into U and the downward ones into D, taking an empty intersection as the whole space. Then U and U ∖ D differ but have equal inverse images. Our own counterexample embeds an infinite discrete space in its one-point compactification, with equality as the order on both. The dense image meets every nonempty clopen set, so inverse image is injective despite the missing point.
+
+**Paper or page:** [On a Generalization of Heyting Algebras II](https://arxiv.org/abs/2409.10642v1). It says: “f is surjective iff f⁻¹∶ CU(Y, ≤ᵧ) → CU(X, ≤ₓ) is one-to-one”
+
+**Sources:**
+
+- [On a Generalization of Heyting Algebras II](https://arxiv.org/abs/2409.10642v1)
+
 ### The Priestley separation axiom gives a duality for distributive lattices
 
 **Remember:** Clopen up-sets must separate points, so the lattice of up-sets remembers everything.
@@ -1049,6 +1171,22 @@
 **How the definition helps.** The formula for implication gives meet a right adjoint, so meet preserves all joins. The main check is that x ∧ y ≤ z holds exactly when y ≤ ¬x ∨ z. Our own proof uses finite distributivity to split y into its parts inside x and ¬x. The general theorem that left adjoints preserve joins then gives the frame law.
 
 **Paper or page:** [Boolean Lattice is Heyting Lattice](https://proofwiki.org/wiki/Boolean_Lattice_is_Heyting_Lattice), [Complete Boolean Lattice is a Frame](https://proofwiki.org/wiki/Complete_Boolean_Lattice_is_a_Frame). It says: “∀x, y ∈ B : x → y = ¬x ∨ y”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Regular opens complete clopen algebras
+
+**Remember:** Every regular open is a join of clopens inside it.
+
+*True by definition.* MSC 06E10 (Chain conditions, complete algebras). arXiv math.LO. Level 3: graduate.
+
+**Definition.** A Stone space is compact and Hausdorff with a basis of clopen sets, meaning sets that are both closed and open. An open set is regular if it equals the interior of its closure. A Boolean completion embeds a Boolean algebra in a complete one so that every element is a least upper bound of original elements.
+
+**Problem.** The regular open algebra of a Stone space is the Boolean completion of its clopen algebra.
+
+**How the definition helps.** Using regular opens gives a complete Boolean algebra in which the clopen basis already generates every element. Our own check writes a regular open as the union of the clopens inside it. Joins of regular opens take the interior of the closure of the union. Here that operation returns the original regular open. The remaining work proves that regular opens form a complete Boolean algebra and that the stated property characterizes the completion.
+
+**Wikipedia:** [Complete Boolean algebra](https://en.wikipedia.org/wiki/Complete_Boolean_algebra). It says: “a complete Boolean algebra containing A such that every element is the supremum of some subset of A.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -1086,6 +1224,24 @@
 
 - [M. H. Stone, The theory of representations for Boolean algebras, Transactions of the American Mathematical Society (1936)](https://doi.org/10.1090/S0002-9947-1936-1501865-8)
 
+### Residuals combine implications
+
+**Remember:** A test against two factors becomes two successive tests.
+
+*True by definition.* MSC 06F05 (Ordered semigroups and monoids). arXiv math.LO. Level 3: graduate.
+
+**Definition.** In a lattice, each pair has a least upper bound and a greatest lower bound. Equip it with an associative, commutative product and a unit. Define implication by requiring t ≤ x → z exactly when x · t ≤ z, for all x, t and z.
+
+**Problem.** In a commutative residuated lattice, x → (y → z) = (x · y) → z.
+
+**How the definition helps.** The order definition turns nested implications into successive multiplications. Our own proof tests whether an arbitrary t lies below each side. On the left this means y · (x · t) ≤ z. On the right it means (x · y) · t ≤ z. Associativity and commutativity identify the tests, so both sides have the same lower bounds. The work in using this definition is proving the required implication exists for each pair.
+
+**Paper or page:** [An alternative definition of tense operators on residuated lattices](https://arxiv.org/abs/2312.10876v1). It says: “x → (y → z) = (x · y) → z”
+
+**Sources:**
+
+- [An alternative definition of tense operators on residuated lattices](https://arxiv.org/abs/2312.10876v1)
+
 ### Residuals make multiplication preserve joins
 
 **Remember:** When multiplication has a right adjoint, distributivity is not a separate axiom.
@@ -1103,6 +1259,70 @@
 **Sources:**
 
 - [Morgan Ward and R. P. Dilworth, Residuated lattices, Transactions of the American Mathematical Society (1939)](https://doi.org/10.1090/S0002-9947-1939-1501995-3)
+
+### A greatest unit makes idempotent products meets
+
+**Remember:** A greatest unit bounds products, and idempotence supplies every lower bound.
+
+*Rules out counterexamples.* MSC 06F07 (Quantales). arXiv math.RA. Level 3: graduate.
+
+**Definition.** A quantale is an ordered set with all least upper bounds and an associative product distributing over them in each variable. It is integral if it has a unit and that unit is greatest. It is idempotent if xx = x for every x.
+
+**Problem.** In an integral idempotent quantale, the product is the greatest lower bound. Its order is a frame, so finite greatest lower bounds distribute over all least upper bounds.
+
+**How the definition helps.** A greatest unit bounds the product above, and idempotence puts it above every common lower bound. Multiplication preserves order, so xy ≤ x and xy ≤ y. If a ≤ x and a ≤ y, then a = aa ≤ xy. The quantale distributive law now gives the stated law for greatest lower bounds. Our own counterexample uses ordinary multiplication on the real interval \[0, 1\]. Its unit is greatest, but half times half is smaller than half.
+
+**nLab:** [quantale](https://ncatlab.org/nlab/show/quantale). It says: “If a monoid object in the cartesian category of posets is idempotent and affine, then the monoid multiplication is the meet operation.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Subset products freely add joins
+
+**Remember:** Send singletons first, then send each union to a join.
+
+*True by definition. Confidence: medium.* MSC 06F07 (Quantales). arXiv math.RA. Level 3: graduate.
+
+**Definition.** A monoid has an associative product and a unit. Multiply two subsets by taking every product of a member of the first with a member of the second. Union gives least upper bounds, called joins, and the singleton containing the unit serves as unit. A unital quantale has all joins and an associative product with unit that distributes over joins in each variable.
+
+**Problem.** Every map preserving multiplication and unit from a monoid into a unital quantale extends uniquely from singletons to all subsets. The extension preserves arbitrary least upper bounds, products and the unit.
+
+**How the definition helps.** Every subset is a union of singletons, so preservation of least upper bounds forces its image. Our own extension sends each subset to the least upper bound of its members’ images. Distributing multiplication over both bounds proves the product rule, including for empty subsets. The concrete subset construction thus satisfies the abstract extension property defining the free unital quantale.
+
+**nLab:** [quantale](https://ncatlab.org/nlab/show/quantale). It says: “The order is the inclusion order on sets, and meet and join are just intersection and union, respectively.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Archimedean linearly ordered groups embed in ℝ
+
+**Remember:** Repeated addition must eventually break every fixed bound.
+
+*Rules out counterexamples.* MSC 06F15 (Ordered groups). arXiv math.GR. Level 3: graduate.
+
+**Definition.** A group order is invariant under translation on either side. In a total group order, the Archimedean condition says repeated addition of any positive element eventually exceeds each fixed bound.
+
+**Problem.** Every Archimedean totally ordered group is isomorphic as an ordered group to a subgroup of the additive real numbers.
+
+**How the definition helps.** The Archimedean condition excludes positive elements whose multiples stay below a fixed bound, an obstruction to embedding in the reals. In our own counterexample, order integer pairs by first coordinate, breaking ties by second coordinate. Every positive multiple of (0, 1) stays below (1, 0). Hölder’s theorem proves the hard direction by constructing a real-valued order embedding.
+
+**Wikipedia:** [Linearly ordered group](https://en.wikipedia.org/wiki/Linearly_ordered_group). It says: “is isomorphic to a subgroup of the additive group of real numbers,”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Interpolation splits ordered sums
+
+**Remember:** Interpolate once, then subtract to get the second piece.
+
+*True by definition.* MSC 06F20 (Ordered abelian groups, Riesz groups, ordered linear spaces). arXiv math.GR. Level 3: graduate.
+
+**Definition.** In an ordered abelian group, addition preserves the partial order. Riesz interpolation requires a common intermediate element whenever each of two lower elements lies below each of two upper elements.
+
+**Problem.** Let an ordered abelian group satisfy Riesz interpolation. Suppose y and z are nonnegative and 0 ≤ x ≤ y + z. Then x = u + v for some 0 ≤ u ≤ y and 0 ≤ v ≤ z.
+
+**How the definition helps.** Interpolation supplies the first summand from its four required bounds. Our own proof translates the bounds on v = x − u into bounds on u. Both 0 and x − z lie below both x and y. Interpolation therefore gives u between these two pairs. This replaces the usual choice of the greatest lower bound of x and y, which need not exist.
+
+**Wikipedia:** [Partially ordered group](https://en.wikipedia.org/wiki/Partially_ordered_group). It says: “there exists z ∈ G such that xᵢ ≤ z ≤ yⱼ.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Pseudo-orders let the real numbers be linearly ordered constructively
 
@@ -1211,6 +1431,24 @@
 
 - [Jonathan Sterling, Tensorial structure of the lifting doctrine in constructive domain theory](https://arxiv.org/abs/2312.17023v5)
 
+### Compact elements test strong maximality
+
+**Remember:** Test a compact element against itself to detect strong maximality.
+
+*True by definition.* MSC 06B35 (Continuous lattices and posets, applications). arXiv math.LO. Level 4: research.
+
+**Definition.** A directed family is nonempty and contains an upper bound for each pair of members. Write a ≪ b if every directed family with least upper bound at least b contains a member above a. A Scott open is upward closed and meets every directed family whose least upper bound belongs to it. Strong maximality of x requires, whenever a ≪ b, either a ≪ x or disjoint Scott opens containing b and x respectively.
+
+**Problem.** Assume every directed family has a least upper bound and every element is a directed join of compact elements below it. Here a join is a least upper bound, and c is compact when c ≪ c. Strong maximality is equivalent to requiring, for each compact c, either c ≤ x or disjoint Scott opens separating c and x.
+
+**How the definition helps.** A compact element can occupy both positions in the two-element test because it is way below itself. Here “way below” means ≪. Our own converse uses the directed family of compact elements below b to choose c with a ≤ c ≤ b. If c ≤ x, compactness gives a ≪ x. Otherwise disjoint Scott opens separate c from x, and the open containing c also contains b. The approximation hypothesis thus recovers the full test from the compact test.
+
+**Paper or page:** [Apartness, sharp elements, and the Scott topology of domains](https://arxiv.org/abs/2106.05064v5). It says: “An element x of an algebraic dcpo D is strongly maximal if and only if for every compact element c ∈ D either c ⊑ x or c and x are Hausdorff separated.”
+
+**Sources:**
+
+- [Apartness, sharp elements, and the Scott topology of domains](https://arxiv.org/abs/2106.05064v5)
+
 ### On sharp elements of a domain the intrinsic apartness becomes tight
 
 **Remember:** Keep only the sharp points, and apartness works as on the reals.
@@ -1304,6 +1542,78 @@
 
 - [Francesco Ciraulo, Overlap Algebras as Almost Discrete Locales, Logical Methods in Computer Science 19(4) (2023), arXiv:1601.04830](https://arxiv.org/abs/1601.04830)
 
+### Perfect maps have Scott-continuous right adjoints
+
+**Remember:** Approximate on the left to preserve directed joins on the right.
+
+*True by definition.* MSC 06D22 (Frames, locales). arXiv math.CT. Level 4: research.
+
+**Definition.** A frame has all joins (least upper bounds), and binary meets (greatest lower bounds) distribute over them. A frame map preserves all joins and finite meets. A directed family is nonempty and contains an upper bound for each pair of members. Write a ≪ b if every directed family with join at least b contains a member above a.
+
+**Problem.** Suppose every element of the source frame is a directed join of elements way below it, where “way below” means ≪. A frame map h is perfect exactly when it preserves ≪. Its right adjoint g, defined by h(a) ≤ d exactly when a ≤ g(d), then preserves directed joins.
+
+**How the definition helps.** Testing perfection by preservation of ≪ gives a witness in the directed family for each approximation. The cited lemma identifies this test with perfection. In our own argument, take a ≪ g(∨D) for a directed family D. Then h(a) ≪ h(g(∨D)) ≤ ∨D, so h(a) ≤ d for some d in D. By the adjoint rule, a ≤ g(d). Taking the join of these approximations gives g(∨D) ≤ ∨g(D), and monotonicity gives the reverse inequality.
+
+**Paper or page:** [Canonical extensions of locally compact frames](https://arxiv.org/abs/1910.03542v1). It says: “The right adjoint of h preserves directed joins.”
+
+**Sources:**
+
+- [Canonical extensions of locally compact frames](https://arxiv.org/abs/1910.03542v1)
+
+### Boolean rough sets have equal bounds
+
+**Remember:** Negation swaps the two bounds, and Boolean truth makes them coincide.
+
+*True by definition.* MSC 06D30 (De Morgan algebras, ?ukasiewicz algebras (lattice-theoretic aspects)). arXiv math.LO. Level 4: research.
+
+**Definition.** Start with a reflexive, transitive relation and call y a successor of x when x is related to y. The rough set of a subset records two bounds. Its lower bound contains the points whose every successor belongs to the subset. Its upper bound contains the points with at least one successor there.
+
+**Problem.** The rough sets form a Nelson algebra, an algebra for reasoning with strong negation. Its Boolean elements, those whose join with their negation is the top element, are exactly the pairs with equal bounds.
+
+**How the definition helps.** Representing elements by two bounds turns the abstract Boolean test into a comparison of sets. In our own calculation the join takes unions in each coordinate, and strong negation swaps and complements the bounds. For bounds L ⊆ U, the lower coordinate of the join is L ∪ (complement of U). It fills the whole space exactly when U ⊆ L, and the upper coordinate always fills the space. The representation of the Nelson algebra by these pairs supplies the operation rules.
+
+**Paper or page:** [Nelson algebras, residuated lattices and rough sets: A survey](https://arxiv.org/abs/2402.02606v2). It says: “The Boolean elements of the Nelson FLₑw-algebra ⟨RS; ∧, ∨, \*, ⇒, (∅,∅), (U,U)⟩ are the exact rough sets.”
+
+**Sources:**
+
+- [Nelson algebras, residuated lattices and rough sets: A survey](https://arxiv.org/abs/2402.02606v2)
+
+### Quotients force Boolean elements to one
+
+**Remember:** Forcing x to one means killing its negation.
+
+*True by definition.* MSC 06D35 (MV-algebras). arXiv math.RA. Level 4: research.
+
+**Definition.** An MV-algebra has operations modeled on the unit interval by negation 1 − t and truncated addition min(1, s + t). An element x is Boolean if adding it to itself leaves it unchanged. Localization at x is the universal map sending x to one. Every map preserving the operations and sending x to one must factor uniquely through it.
+
+**Problem.** For a Boolean element x, localization is the quotient by the ideal generated by ¬x. This quotient imposes the single equation ¬x = 0.
+
+**How the definition helps.** The defining equation for localization becomes a quotient equation after taking negations. A map sends x to one exactly when it sends ¬x to zero. The quotient therefore has precisely the required factorization property. Our own explanation uses the ideal correspondence for MV-algebras, which identifies imposing an equation with taking the indicated quotient.
+
+**Paper or page:** [Separable MV-algebras and lattice-groups](https://arxiv.org/abs/2307.03978v2). It says: “the quotient q∶ A → A/⟨¬x⟩ has the universal property of A → A\[x⁻¹\].”
+
+**Sources:**
+
+- [Separable MV-algebras and lattice-groups](https://arxiv.org/abs/2307.03978v2)
+
+### Radicals give semisimple quotients
+
+**Remember:** Intersect all maximal ideals, then kill what every semisimple target kills.
+
+*True by definition.* MSC 06D35 (MV-algebras). arXiv math.CT, math.RA. Level 4: research.
+
+**Definition.** An MV-algebra has operations modeled by negation and truncated addition on the real unit interval. An ideal contains zero, contains everything below its members, and is closed under truncated addition. The radical is the intersection of the maximal proper ideals. The algebra is semisimple if its radical contains only zero.
+
+**Problem.** Every map from an MV-algebra A to a semisimple MV-algebra factors uniquely through A modulo its radical. The quotient is itself semisimple.
+
+**How the definition helps.** Defining the radical by maximal ideals gives a single quotient through which every map to a semisimple algebra must pass. Our own proof uses the theorem that the inverse image of each maximal target ideal is a maximal source ideal. Thus each such inverse image contains the radical. Its image therefore lies in every maximal target ideal, whose intersection is zero. The quotient property gives the unique factorization, and the ideal correspondence makes the quotient semisimple.
+
+**Paper or page:** [A Galois Theory and a Pretorsion Theory in MV-Algebras](https://arxiv.org/abs/2310.11006v1). It says: “given a morphism of MV-algebras g∶ A → i(B), where B is semisimple, we want to prove that there exists a unique morphism of MV-algebras g̃∶ S(A) → B”
+
+**Sources:**
+
+- [A Galois Theory and a Pretorsion Theory in MV-Algebras](https://arxiv.org/abs/2310.11006v1)
+
 ### Overlap algebras let constructive powersets be complete Boolean algebras
 
 **Remember:** Replace complements by overlaps, and powersets become Boolean again.
@@ -1321,3 +1631,21 @@
 **Sources:**
 
 - [Francesco Ciraulo, Michele Contente, Overlap Algebras: a Constructive Look at Complete Boolean Algebras, Logical Methods in Computer Science 16(1) (2020), arXiv:1904.13320](https://arxiv.org/abs/1904.13320v3)
+
+### Multiplicative filters form frames
+
+**Remember:** Generated joins allow finite products, and intersection can distribute through them.
+
+*True by definition.* MSC 06F07 (Quantales). arXiv math.RA. Level 4: research.
+
+**Definition.** A quantale has all least upper bounds, called joins, and an associative product distributing over them in each variable. Assume the product is commutative and its unit is greatest. A multiplicative filter contains the unit, is upward closed and is closed under products. Order these filters by inclusion.
+
+**Problem.** The filters form a frame, meaning that binary intersections distribute over arbitrary joins.
+
+**How the definition helps.** Describing a generated filter by finite products lets us test the distributive law one element at a time. The join of filters is the smallest filter containing their union. In our own proof, each member a of that join lies above a finite product of factors from the union. If a also belongs to F, replace each factor x by x ∨ a, which belongs to F and the filter supplying x. Expanding gives the original product and terms containing a, all below a because the unit is greatest. Thus a belongs to the join of the intersections, even for the empty product, when a is the unit. The reverse inclusion follows because each intersection lies in both F and the original join.
+
+**Paper or page:** [Commutative Quantale and Localization](https://arxiv.org/abs/2508.02991v1). It says: “ℱ · 𝒢 = ℱ ∩ 𝒢”
+
+**Sources:**
+
+- [Commutative Quantale and Localization](https://arxiv.org/abs/2508.02991v1)

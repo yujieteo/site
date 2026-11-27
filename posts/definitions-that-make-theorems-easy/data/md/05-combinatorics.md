@@ -1613,6 +1613,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Gapless log-concavity survives convolution
+
+**Remember:** No internal zeros lets adjacent inequalities control every pair of rows.
+
+*Rules out counterexamples.* MSC 05A20 (Combinatorial inequalities). arXiv math.CO. Level 3: graduate.
+
+**Definition.** Nonnegative coefficients are log-concave if each coefficient squared dominates the product of its neighbors. Require also that the positive coefficients form a single interval. Equivalently, every two-by-two minor of the shifted coefficient matrix is nonnegative. Its entry in row i and column j is the coefficient of degree j − i, or zero outside the degree range.
+
+**Problem.** The product of two polynomials with such coefficients has such coefficients.
+
+**How the definition helps.** The shifted-row matrices multiply by coefficient convolution (our own). The formula for a minor of a matrix product makes each new two-by-two minor a sum of nonnegative products (our own). The work moves into proving the equivalence with the adjacent inequalities and no internal zeros (our own). Without the gap condition, 1 + x³ passes the adjacent tests (our own). Its product with 1 + 2x + x² fails at degree two (our own).
+
+**Paper or page:** [Genus Polynomials of Cubic Graphs with Non-Real Roots](https://arxiv.org/abs/2212.09971v1). It says: “If A(x) and B(x) are log-concave polynomials with non-negative coefficients and no internal zero coefficients, then so is A(x)B(x).”
+
+**Sources:**
+
+- [S. G. Hoggar, Chromatic polynomials and logarithmic concavity (1974)](https://doi.org/10.1016/0095-8956(74)90071-9)
+
 ### A rank formula makes matroid contractions and deletions commute
 
 **Remember:** Subtracting ranks cancels the intermediate terms in successive contractions.
@@ -1649,6 +1667,40 @@
 
 - [H. Whitney, On the abstract properties of linear dependence, American Journal of Mathematics 57 (1935) 509–533](https://doi.org/10.2307/2371182)
 
+### Convolution factors matroid characteristic polynomials
+
+**Remember:** Inversion and rank both separate across a direct sum.
+
+*True by definition.* MSC 05B35 (Combinatorial aspects of matroids and geometric lattices), 06A07. arXiv math.CO. Level 3: graduate.
+
+**Definition.** A flat of a matroid contains every element whose addition leaves its rank unchanged. Rank counts the largest independent subset. On intervals of flats ordered by inclusion, convolution multiplies two functions by summing their products over intermediate flats. The Möbius function is the convolution inverse of the constant function one.
+
+**Problem.** For each flat, weight the variable raised to its rank deficit by the Möbius value from the least flat. Summing gives the characteristic polynomial, where rank deficit means full rank minus flat rank. These polynomials multiply for direct sums of finite loopless matroids, those in which every singleton is independent.
+
+**How the definition helps.** Convolution makes inversion separate across pairs of flats without running the Möbius recursion on the combined order (our own). In a direct sum, independence means independence in each component (our own). Thus flats form pairs and ranks add (our own). The product of the component inverses inverts the constant function on the product order (our own). The characteristic sum now factors (our own).
+
+**nLab:** [Möbius inversion](https://ncatlab.org/nlab/show/M%C3%B6bius+inversion). It says: “The Möbius function of the cartesian product P × Q of two posets P and Q is the product of their Möbius functions”
+
+**Sources:**
+
+- [Gian-Carlo Rota, On the foundations of combinatorial theory I. Theory of Möbius functions (1964)](https://doi.org/10.1007/bf00531932)
+
+### Generic minors detect transversal independence
+
+**Remember:** Every matching contributes its own determinant monomial.
+
+*True by definition.* MSC 05B35 (Combinatorial aspects of matroids and geometric lattices), 05D15. arXiv math.CO. Level 3: graduate.
+
+**Definition.** In a finite transversal matroid, a set is independent when its elements can occupy distinct allowed slots. Form a matrix with rows for slots and columns for elements. Give each allowed pair its own variable, and set all other entries to zero.
+
+**Problem.** Over every sufficiently large field, one can choose column vectors whose linearly independent sets are exactly the matchable sets.
+
+**How the definition helps.** Using separate variables lets each matching in a square submatrix contribute a distinct determinant term (our own). Thus its determinant is nonzero exactly when a matching fills its rows and columns (our own). This replaces checking linear independence separately for each set (our own). The remaining work is to choose field values that preserve every nonzero determinant (our own). A field larger than the total degree of their product suffices (our own).
+
+**Paper or page:** [A theory of q-transversals](https://arxiv.org/abs/2503.12201v1). It says: “Transversal matroids are representable over all sufficiently large fields. Thus they are representable over fields of every characteristic.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### In a pregeometry, the exchange condition makes dimension well defined
 
 **Remember:** Exchange lets you swap one generator for another, so all bases have equal size.
@@ -1666,6 +1718,24 @@
 **Sources:**
 
 - [J. T. Baldwin, A. H. Lachlan, On strongly minimal sets, Journal of Symbolic Logic 36 (1971) 79–96](https://doi.org/10.2307/2271517)
+
+### Maximizing faces select matroid bases
+
+**Remember:** Keep the top face and read off its bases.
+
+*True by definition.* MSC 05B35 (Combinatorial aspects of matroids and geometric lattices). arXiv math.CO. Level 3: graduate.
+
+**Definition.** A finite matroid specifies a nonempty family of equal-sized sets called bases, subject to the basis exchange rule. Its base polytope is the convex hull of their indicator vectors. A linear function on these vectors gives the total weight of each basis.
+
+**Problem.** The maximum-weight bases of any finite matroid form the bases of a matroid on the same ground set.
+
+**How the definition helps.** The maximizing face inherits the edge directions that characterize matroid base polytopes (our own). For equal-sized sets, the geometric criterion requires each edge to be parallel to a difference of coordinate vectors (our own). Its proof connects this condition to exchanging elements between bases (our own). Applying the criterion to the face replaces a new exchange proof for the maximizing bases (our own).
+
+**Wikipedia:** [Matroid polytope](https://en.wikipedia.org/wiki/Matroid_polytope). It says: “Every edge of a matroid polytope Pₘ is a parallel translate of eᵢ−eⱼ for some i,j∈E”
+
+**Sources:**
+
+- [I. M. Gelfand, R. M. Goresky, R. D. MacPherson and V. V. Serganova, Combinatorial geometries, convex polyhedra, and Schubert cells (1987)](https://doi.org/10.1016/0001-8708(87)90059-4)
 
 ### Minkowski sums of generalized polymatroids are given by summing their bounds
 
@@ -1866,6 +1936,24 @@
 - [W. T. Tutte, A contribution to the theory of chromatic polynomials, Canadian Journal of Mathematics 6 (1954) 80–91](https://doi.org/10.4153/CJM-1954-010-9)
 - [H. H. Crapo, The Tutte polynomial, Aequationes Mathematicae 3 (1969) 211–229](https://doi.org/10.1007/BF01817442)
 
+### Acyclic orientations reveal chromatic reciprocity
+
+**Remember:** Orient edges by color, then switch strict inequalities to weak ones.
+
+*Makes the theorem clean to state or prove.* MSC 05C31 (Graph polynomials), 06A07. arXiv math.CO. Level 3: graduate.
+
+**Definition.** A proper coloring assigns different colors to adjacent vertices. Orient every edge toward its higher color. The orientation has no directed cycle, and directed paths define a partial order on the vertices.
+
+**Problem.** For a finite simple graph with n vertices, its chromatic polynomial counts proper colorings at positive integers. At −k, its value times (−1)ⁿ counts pairs of an acyclic orientation and a coloring with colors from 1 through k. Colors may stay equal or increase along each arrow.
+
+**How the definition helps.** Grouping by orientation makes each group a strict order count (our own). The work moves into order-polynomial reciprocity, which turns evaluation at a negative integer into a weak order count (our own). The compatible maps need not be proper (our own).
+
+**Paper or page:** [q-Chromatic polynomials](https://arxiv.org/abs/2403.19573v1). It says: “where the sum is over all pairs of an n-coloring c and a compatible acyclic orientation ρ.”
+
+**Sources:**
+
+- [q-Chromatic polynomials](https://arxiv.org/abs/2403.19573v1)
+
 ### Allowing a few irregular pairs makes Szemerédi's regularity lemma true
 
 **Remember:** Most pairs regular, not all: half graphs make exceptions unavoidable.
@@ -1883,6 +1971,22 @@
 **Sources:**
 
 - [D. Conlon and J. Fox, Bounds for graph regularity and removal lemmas, Geometric and Functional Analysis 22 (2012) 1191–1256](https://doi.org/10.1007/s00039-012-0171-x)
+
+### Cut norms control graph densities
+
+**Remember:** Change one edge factor at a time and test it on rectangles.
+
+*Rules out counterexamples.* MSC 05C35 (Extremal problems in graph theory), 05C80. arXiv math.CO. Level 3: graduate.
+
+**Definition.** A graphon is a symmetric measurable function on the unit square with values between zero and one. The cut norm of a difference takes the largest absolute integral in the sense of a supremum over measurable rectangles.
+
+**Problem.** Give each vertex of a finite simple graph an independent uniform label. Given the labels, sample edges independently using the graphon values as probabilities. The probability that all required edges occur changes by at most the edge count times the cut norm of the graphon difference.
+
+**How the definition helps.** The rectangle tests bound the effect of changing one edge probability at a time (our own). Fix all labels except the endpoints of that edge (our own). The remaining factors separate into one bounded function per endpoint and a constant (our own). Write each function as an average of indicators of its level sets (our own). Their products then test rectangles, and summing the edge bounds gives the claim (our own). A constant one-half graphon and a balanced complete bipartite graphon have equal edge densities but different triangle densities (our own).
+
+**Paper or page:** [Prominent examples of flip processes](https://arxiv.org/abs/2206.03884v1). It says: “Suppose that we have a graph F of order k and two graphons U and W. Then we have \|t(F,U) − t(F,W)\| ≤ (k choose 2)d□(U, W).”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### A matrix quotient makes the sandpile group order a determinant
 
@@ -1903,6 +2007,22 @@
 **Sources:**
 
 - [D. Dhar, Self-organized critical state of sandpile automaton models, Physical Review Letters 64 (1990) 1613–1616](https://doi.org/10.1103/PhysRevLett.64.1613)
+
+### Directed edges turn cycle products into determinants
+
+**Remember:** A directed edge remembers enough to forbid the next reversal.
+
+*True by definition.* MSC 05C50 (Graphs and linear algebra (matrices, eigenvalues, etc.)), 05C30. arXiv math.CO. Level 3: graduate.
+
+**Definition.** For a finite simple undirected graph, use both directions of each edge as separate states. Follow one directed edge by another when endpoints match and the second edge does not reverse the first. Identify closed walks up to cyclic shifts, keeping those with no reversal even across the closing step. For each such walk that is no shorter walk repeated, include the reciprocal of one minus t raised to its length.
+
+**Problem.** The product of these factors is the Ihara zeta function. Its reciprocal equals the determinant of the identity minus t times the directed-edge transition matrix.
+
+**How the definition helps.** Closed walks of the matrix already enforce the ban on reversals (our own). Its power traces count them with a marked start (our own). The work is to group walks by their primitive cycle and use the trace expansion of the logarithm of the determinant (our own).
+
+**Paper or page:** [On the double covers of a line graph](https://arxiv.org/abs/2202.04756v2). It says: “Let M be the edge adjacency matrix of a graph X. Then ζₓ(u)⁻¹ = det(I−Mu).”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Extension axioms give the zero-one law for random finite graphs
 
@@ -2050,6 +2170,56 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Colex order computes minimum shadows
+
+**Remember:** Colex puts all sets with the same largest element together.
+
+*Makes the theorem clean to state or prove.* MSC 05D05 (Extremal set theory). arXiv math.CO. Level 3: graduate.
+
+**Definition.** The lower shadow of a family of k-element sets consists of all sets formed by removing one element. In colex order, compare two sets by the largest element where they differ. The set containing that element comes later.
+
+**Problem.** Among families of fixed size, an initial colex segment has minimum lower shadow. Its shadow is also an initial colex segment.
+
+**How the definition helps.** Colex order describes an extremal family of every size without listing its members (our own). Group the sets by their largest element in increasing order (our own). Within each group, deleting that element leaves the smaller sets in colex order again (our own). This recursive structure lets one calculate the shadow of the initial segment (our own). The Kruskal–Katona theorem proves that no family of the same size has a smaller shadow (our own).
+
+**Paper or page:** [Diversity](https://arxiv.org/abs/1811.01111v1). It says: “If ℱ ⊆ (\[n\] choose k), then \|∂ℱ\| ≥ ∂𝒞(\[n\],\|ℱ\|,k).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Grid weights isolate top-degree coefficients
+
+**Remember:** A highest-degree monomial survives the weighted grid sum.
+
+*True by definition.* MSC 05D40 (Probabilistic methods in extremal combinatorics, including polynomial methods (combinatorial Nullstellensatz, etc.)). arXiv math.CO. Level 3: graduate.
+
+**Definition.** For a polynomial over a field, choose a target monomial of maximum total degree. In each coordinate, choose one more distinct field element than its target exponent. Weight each chosen element by the reciprocal of the product of its differences from the others in that coordinate. A grid point receives the product of its coordinate weights.
+
+**Problem.** If a monomial of maximum total degree has a nonzero coefficient, the polynomial cannot vanish on every point of this grid.
+
+**How the definition helps.** The weighted evaluations extract the target coefficient, turning a vanishing question into one interpolation identity (our own). One-variable interpolation gives zero below the target exponent and one at that exponent (our own). Every other monomial within the degree bound falls below the target in some coordinate (our own). This replaces division by the grid’s vanishing polynomials with a weighted sum (our own). Without the degree bound, x − x² vanishes on {0,1} despite its nonzero linear term (our own).
+
+**Paper or page:** [Additive colorings of planar graphs](https://arxiv.org/abs/1202.0667v2). It says: “Suppose that there is a nonvanishing monomial x₁ᵏ¹⋯xₙᵏⁿ in P such that k₁+⋯+kₙ=deg(P).”
+
+**Sources:**
+
+- [Noga Alon, Combinatorial Nullstellensatz (1999)](https://doi.org/10.1017/S0963548398003411)
+
+### Stable subset laws survive conditioning
+
+**Remember:** Set a variable to zero for absence, and differentiate for presence.
+
+*True by definition.* MSC 05D40 (Probabilistic methods in extremal combinatorics, including polynomial methods (combinatorial Nullstellensatz, etc.)). arXiv math.CO. Level 3: graduate.
+
+**Definition.** Encode a random subset of a finite set by a polynomial. Each subset contributes its probability times the product of its variables. The law is strongly Rayleigh when this polynomial has no zero with every variable in the open upper half-plane.
+
+**Problem.** Conditioning a strongly Rayleigh random subset on inclusion or exclusion of an element preserves the property if the event has positive probability.
+
+**How the definition helps.** Encoding subsets as monomials avoids checking the zeros of every conditional polynomial separately (our own). Setting a variable to zero selects subsets missing its element (our own). Differentiating selects subsets containing the element and removes that element from the recorded subset (our own). Multiply back its variable to record its certain presence (our own). Divide by the event probability in either case (our own). The work lies in proving closure under differentiation and substitution of real constants (our own).
+
+**Paper or page:** [Stable multivariate Narayana polynomials and labeled plane trees](https://arxiv.org/abs/2403.15058v2). It says: “Given i,j ∈ \[n\], the following operations preserve real stability of f ∈ ℝ\[x\]:”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### A ratio of alternating determinants makes Schur polynomials symmetric
 
 **Remember:** Swapping variables flips both determinant signs, so the ratio stays fixed.
@@ -2065,6 +2235,40 @@
 **nLab:** [Schur function](https://ncatlab.org/nlab/show/Schur+function). It says: “Then the Schur polynomial attached to λ is the quotient”
 
 **Wikipedia:** [Schur polynomial](https://en.wikipedia.org/wiki/Schur_polynomial). It says: “This is a symmetric function because the numerator and denominator are both alternating, and a polynomial since all alternating polynomials are divisible by the Vandermonde determinant.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Increasing indices merge quasisymmetric products
+
+**Remember:** Merge index lists and add exponents at shared indices.
+
+*True by definition.* MSC 05E05 (Symmetric functions and generalizations). arXiv math.CO. Level 3: graduate.
+
+**Definition.** Index monomial quasisymmetric functions by lists of positive integers. Sum the monomials that place those exponents, in order, on distinct increasing variable indices. The fundamental basis instead allows adjacent variable indices to coincide except at prescribed rises.
+
+**Problem.** Multiply two monomial quasisymmetric functions by merging their exponent lists in all ways that preserve both orders. A merge may add one exponent from each list. Sum the resulting monomial functions, counting repeated outcomes separately.
+
+**How the definition helps.** The indexed monomials show that only shared variable indices need special treatment (our own). The work is to show that each merge records exactly one pattern of shared indices (our own). Once the merge is fixed, summing over the actual indices gives its monomial quasisymmetric function (our own).
+
+**nLab:** [quasi-symmetric function](https://ncatlab.org/nlab/show/quasi-symmetric+function). It says: “Let X be a totally ordered set of indeterminants.”
+
+**Paper or page:** [The Bernstein homomorphism via Aguiar-Bergeron-Sottile universality](https://arxiv.org/abs/1604.02969v2). It says: “Mα₁Mα₂⋯Mαₖ = ∑\[A ∈ ℕᵏ˒• Cred, (Aɡ,•)ʳᵉᵈ = αɡ for each g\] Mcolumn A.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Ordered variables split quasisymmetric functions
+
+**Remember:** Two ordered lists cut each exponent list once.
+
+*True by definition.* MSC 05E05 (Symmetric functions and generalizations). arXiv math.CO. Level 3: graduate.
+
+**Definition.** For each list of positive exponents, sum the monomials placing them in order on strictly increasing variable indices. This sum is the corresponding monomial quasisymmetric function. Its coproduct evaluates it on two ordered lists with every first-list variable preceding every second-list variable. Read products across the lists as tensors, keeping one factor for each list.
+
+**Problem.** The coproduct sums over all cuts of the exponent list, including the two end cuts. Each term pairs the monomial functions for the two pieces, with the empty piece giving one.
+
+**How the definition helps.** Evaluation on consecutive lists forces each increasing index sequence to cross between lists at most once (our own). Each cut therefore gives a product of independent sums (our own). This realizes the usual abstract splitting map by substitution and explains its cut formula (our own). Three consecutive lists give the same terms whichever split comes first (our own).
+
+**Paper or page:** [The Bernstein homomorphism via Aguiar-Bergeron-Sottile universality](https://arxiv.org/abs/1604.02969v2). It says: “Let γ ∈ Comp and k ∈ ℕ. Then, Δ⁽ᵏ⁻¹⁾Mγ = ∑\[(γ₁, γ₂, …, γₖ) ∈ Compᵏ, γ₁γ₂⋯γₖ = γ\] Mγ₁ ⊗ Mγ₂ ⊗ ⋯ ⊗ Mγₖ.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -2100,6 +2304,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Tableau weights explain the Cauchy identity
+
+**Remember:** One matrix gives two tableaux of the same shape.
+
+*True by definition.* MSC 05E05 (Symmetric functions and generalizations). arXiv math.CO. Level 3: graduate.
+
+**Definition.** Draw left-aligned rows of boxes whose lengths decrease weakly. Fill them with variable indices that increase weakly across rows and strictly down columns. Each filling contributes the product of the variables in its boxes. The Schur polynomial sums these products for one shape.
+
+**Problem.** Multiply the two Schur polynomials for each shape, using a different variable list for each factor. Summing over shapes gives the product of 1/(1 − xy) over all pairs of variables from the two lists.
+
+**How the definition helps.** The filling definition lets both sides count matrices by their row and column sums (our own). Expanding each geometric series chooses one nonnegative matrix entry (our own). The Robinson–Schensted–Knuth bijection turns each matrix into two fillings of equal shape with those variable counts (our own). The work lies in proving the bijection and identifying the filling sum with the usual determinant ratio (our own).
+
+**nLab:** [Schur function](https://ncatlab.org/nlab/show/Schur+function). It says: “the corresponding Schur polynomial sλ is equal to the sum over the monomials”
+
+**Paper or page:** [Growth diagram proofs for the Littlewood identities](https://arxiv.org/abs/2404.04014v1). It says: “\\sum<sub>\\lambda</sub> s\_\\lambda(\\mathbf{x})s\_\\lambda(\\mathbf{y}) &amp;= \\prod\_{\\substack{1 \\leq i \\leq n \\\\ 1 \\leq j \\leq m}} \\frac{1}{1-x<sub>iy</sub><sub>j</sub>},”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Tableaux make Kostka numbers nonnegative
 
 **Remember:** Each coefficient counts fillings of a fixed shape and weight.
@@ -2113,6 +2335,22 @@
 **How the definition helps.** The filling definition makes positivity immediate because each monomial coefficient counts fillings with the prescribed label counts. Symmetry makes the coefficients equal for monomials in the same basis polynomial. In the determinant definition, the quotient of signed sums does not show that the coefficients are nonnegative. The work moves into proving that the filling sum equals the determinant ratio, which also gives symmetry.
 
 **Wikipedia:** [Schur polynomial](https://en.wikipedia.org/wiki/Schur_polynomial). It says: “The Kostka numbers K\_λμ are given by the number of semi-standard Young tableaux of shape λ and weight μ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Thresholds triangulate the order polytope
+
+**Remember:** As the threshold rises, the upper sets form a nested chain.
+
+*True by definition.* MSC 05E45 (Combinatorial aspects of simplicial complexes), 06A07. arXiv math.CO. Level 3: graduate.
+
+**Definition.** An order polytope assigns each element of a finite ordered set a number between zero and one. The assigned numbers increase weakly along the order. Describe an assignment by its upper sets above each threshold, where an upper set contains everything above any member.
+
+**Problem.** The canonical simplices of the order polytope are exactly the convex hulls of indicator vectors on chains of upper sets.
+
+**How the definition helps.** Threshold sets express each point as a convex combination along one chain of upper sets (our own). Sorting coordinates usually describes this subdivision by inequalities (our own). Here the gaps between consecutive distinct values, including the endpoints zero and one, give the weights (our own). The sets with positive weights are uniquely determined, so two chain simplices intersect in their common face (our own).
+
+**Paper or page:** [Equatorial Flow Triangulations of Gorenstein Flow Polytopes](https://arxiv.org/abs/2408.05320v2). It says: “chains of nested upper order ideals correspond to the simplicies of the canonical triangulation.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -2170,6 +2408,22 @@
 
 - [Peter G. Doyle, A category for bijective combinatorics, arXiv:1907.09015 (2019)](https://arxiv.org/abs/1907.09015)
 
+### Lorentzian quadratics control coefficient exchanges
+
+**Remember:** One positive eigenvalue controls each pair of exchanged exponents.
+
+*Rules out counterexamples.* MSC 05A20 (Combinatorial inequalities). arXiv math.CO. Level 4: research.
+
+**Definition.** Start with a homogeneous polynomial of degree d ≥ 2 with nonnegative coefficients. For any two occurring exponent vectors, each excess coordinate in the first must admit an exchange with a deficit coordinate. Moving one unit between these coordinates in opposite directions must give two occurring vectors. The polynomial is Lorentzian if this rule holds and every order d − 2 partial derivative has at most one positive Hessian eigenvalue.
+
+**Problem.** Multiply each coefficient by the product of the factorials of its exponents. These scaled coefficients are log-concave along a line that exchanges units of exponent between two variables.
+
+**How the definition helps.** The eigenvalue condition gives the coefficient inequality on a two-by-two block of second derivatives (our own). Differentiate according to the middle exponent vector after subtracting one from each exchange coordinate (our own). The diagonal entries are the scaled neighbors, and the off-diagonal entry is the scaled middle coefficient (our own). The block has nonnegative entries and at most one positive eigenvalue, so its determinant is nonpositive (our own). The exchange rule excludes gaps between positive coefficients on the line (our own). The polynomial x² + xy + y² satisfies the exchange rule but fails the scaled inequality (our own).
+
+**Paper or page:** [Log-concavity in Combinatorics](https://arxiv.org/abs/2404.10284v1). It says: “If f = ∑α cαxα/α! is a Lorentzian polynomial, then cα² ≥ cα₊ₑᵢ₋ₑⱼ cα₋ₑᵢ₊ₑⱼ”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Fixing the distance from the middle coefficient makes Gaussian polynomial unimodality easy
 
 **Remember:** Track the same distance from the middle as the box grows.
@@ -2187,6 +2441,24 @@
 **Sources:**
 
 - [Christian Krattenthaler, Brandt Kronholm, Paul Marsh, An Orthogonal View of Gaußian Polynomials, arXiv:2510.14124v1 (2025)](https://arxiv.org/abs/2510.14124v1)
+
+### Bergman augmentation makes bases count spheres
+
+**Remember:** Put bases last in the shelling to count the spheres.
+
+*Makes the theorem clean to state or prove.* MSC 05B35 (Combinatorial aspects of matroids and geometric lattices), 05E45. arXiv math.CO. Level 4: research.
+
+**Definition.** In a finite matroid, independent sets are hereditary and smaller ones can gain an element from larger ones. A flat contains every element whose addition leaves its rank, the maximum independent size, unchanged. A face of the augmented Bergman complex consists of an independent set and a strictly nested chain of proper flats containing it. Either part may be empty.
+
+**Problem.** Let the matroid have positive rank r. Its augmented Bergman complex has the homotopy type of spheres of dimension r − 1 joined at one point. There is one sphere for each basis, a maximal independent set.
+
+**How the definition helps.** The added independent-set faces let a shelling put the bases last (our own). A shelling orders maximal faces so their successive intersections are unions of faces one dimension smaller (our own). The work moves to proving this shelling and showing that precisely the basis faces attach along their full boundary (our own). The shelling theorem then gives one sphere per such face (our own).
+
+**Paper or page:** [Topology of augmented Bergman complexes](https://arxiv.org/abs/2108.13394v2). It says: “For a matroid M, the augmented Bergman complex Δₘ is homotopy equivalent to a β-fold wedge of (r(M)−1)-spheres”
+
+**Sources:**
+
+- [Topology of augmented Bergman complexes](https://arxiv.org/abs/2108.13394v2)
 
 ### Linear weak maps make the direct sum a coproduct of q-matroids
 
@@ -2370,6 +2642,24 @@
 
 - [Iain Moffatt, Constructing a Tutte polynomial for graphs embedded in surfaces, arXiv:2502.15318 (2025)](https://arxiv.org/abs/2502.15318)
 
+### Rooted flags multiply density limits
+
+**Remember:** Fix the labels, then sample the two remaining parts separately.
+
+*Makes the theorem clean to state or prove.* MSC 05C35 (Extremal problems in graph theory). arXiv math.CO. Level 4: research.
+
+**Definition.** A flag is a graph with a specified labeled subgraph. Multiply two flags by considering every possible union that shares exactly the labeled vertices. In each candidate, randomly partition the unlabeled vertices into ordered parts of the two required sizes. Its coefficient is the probability that these parts, together with the labels, induce the two given flags.
+
+**Problem.** For a convergent sequence of larger and larger graphs with fixed labeled part, limiting flag densities preserve flag products.
+
+**How the definition helps.** The product counts what two independent samples see, apart from accidental overlap (our own). That overlap has probability tending to zero for fixed sample sizes (our own). The work moves to showing that averaging a flag over larger samples gives the same limit (our own).
+
+**Wikipedia:** [Flag algebra](https://en.wikipedia.org/wiki/Flag_algebra). It says: “One can show that the set of limit functionals Φ is exactly the set of positive homomorphisms”
+
+**Sources:**
+
+- [Alexander A. Razborov, Flag algebras (2007)](https://doi.org/10.2178/jsl/1203350785)
+
 ### Perron eigenvector weights give an expander mixing lemma for irregular graphs
 
 **Remember:** Weight vertices by the leading eigenvector.
@@ -2552,6 +2842,22 @@
 
 - [Davi Castro-Silva, Quasirandom additive sets and Cayley hypergraphs, arXiv:2305.03012 (2023)](https://arxiv.org/abs/2305.03012v1)
 
+### Pair coverage equates hypergraph densities
+
+**Remember:** Pair coverage keeps forbidden copies from collapsing when vertices are duplicated.
+
+*Rules out counterexamples.* MSC 05C65 (Hypergraphs), 05C35. arXiv math.CO. Level 4: research.
+
+**Definition.** A uniform hypergraph has edges of one size, r, and covers pairs when every vertex pair lies in an edge. Its Turán density is the limiting largest edge fraction in hypergraphs avoiding a copy of it. Give vertices nonnegative weights totaling one, and sum the products of weights on edges. The Lagrangian density is the supremum of this sum times r! over all such weights and avoiding hypergraphs.
+
+**Problem.** For a forbidden uniform hypergraph that covers pairs, its Turán density equals its Lagrangian density.
+
+**How the definition helps.** Pair coverage forces the vertices of any forbidden copy into distinct classes when vertices are duplicated (our own). Each edge uses at most one duplicate of each original vertex (our own). A forbidden copy would therefore project to a forbidden copy before duplication (our own). Approximating vertex weights by class proportions realizes normalized weighted mass as a limiting edge density (our own). Uniform weights give the reverse bound in the limit (our own). For a two-edge path, avoiding graphs are matchings, with limiting edge density zero (our own). A single edge with equal weights gives normalized mass one half (our own).
+
+**Paper or page:** [Lagrangian densities of some 3-uniform hypergraphs](https://arxiv.org/abs/2209.13250v1). It says: “In particular, if F covers pairs, then π(F) = πλ(F).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Vertex-extendability reduces hypergraph stability to checking one vertex
 
 **Remember:** Stability follows if one extra vertex always fits the extremal pattern.
@@ -2715,6 +3021,22 @@
 **Sources:**
 
 - [Darij Grinberg, Double posets and the antipode of QSym, arXiv:1509.08355 (2017). The Electronic Journal of Combinatorics 24(2) (2017), \#P2.22 (published with minor changes to Section 2 and without ancillary file)](https://arxiv.org/abs/1509.08355v3)
+
+### Orbit counts constrain cyclic sieving
+
+**Remember:** Fixed counts must grow along divisibility, not merely stay nonnegative.
+
+*Rules out counterexamples.* MSC 05E18 (Group actions on combinatorial structures), 05A15. arXiv math.CO. Level 4: research.
+
+**Definition.** Fix a cyclic group of order m acting on a finite set, and choose a primitive mth root of unity. Cyclic sieving means that evaluating a polynomial at each power of the root counts the points fixed by the corresponding generator power.
+
+**Problem.** A polynomial can take nonnegative integer values at every mth root of unity and still fail to describe any cyclic action. At each divisor of m, subtract the points already accounted for by smaller orbit sizes dividing it. The remainder must be nonnegative.
+
+**How the definition helps.** Each orbit contributes its size exactly when that size divides the power of the generator (our own). Subtract contributions from smaller divisors to recover the number of points in orbits of each size (our own). These recovered counts must be nonnegative (our own). For order four, 4 + 2q + 2q³ gives four at i but zero at −1 (our own). Every point fixed by the generator must also be fixed by its square (our own). The converse requires proving that each recovered count is divisible by its orbit size (our own).
+
+**Paper or page:** [Skew Schur polynomials and cyclic sieving phenomenon](https://arxiv.org/abs/2112.12394v3). It says: “Then there exists an action of a cyclic group C of order m on X such that (X, C, f(q)) exhibits the cyclic sieving phenomenon if and only if for each d ∣ m, ∑\[j ∣ d\] μ(d/j)f(ωₘʲ) ≥ 0.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### A useless edge makes both path complexes cones, hence contractible
 

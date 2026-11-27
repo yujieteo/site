@@ -342,6 +342,24 @@
 
 - [Vladimir Arnold, Sur la géométrie différentielle des groupes de Lie de dimension infinie et ses applications à l’hydrodynamique des fluides parfaits (1966)](https://www.numdam.org/item/AIF_1966__16_1_319_0/)
 
+### Radial powers straighten zero-energy paths
+
+**Remember:** Rescale radius and angle to unfold the orbit.
+
+*Makes the theorem clean to state or prove.* MSC 70F05 (Two-body problems). arXiv math.DS, math.DG. Level 3: graduate.
+
+**Definition.** On the punctured plane, scale squared Euclidean length by r⁻ᵅ, where r is distance from the origin and 0 &lt; α &lt; 2. Put c = 1 − α/2. Use radius ρ = rᶜ/c and angle φ = cθ, with angles identified modulo 2πc.
+
+**Problem.** These coordinates turn geodesics, the locally straight paths of the given metric, into straight lines on each unfolded patch of a cone. They describe the unparameterized zero-level orbits of the Hamiltonian H = \|p\|²/2 − r⁻ᵅ.
+
+**How the definition helps.** The new radius absorbs the radial length factor, and the new angle gives the matching angular factor (our own). Substitution gives dρ² + ρ²dφ², the Euclidean length rule in polar coordinates (our own). The Jacobi–Maupertuis theorem identifies geodesics of this metric with the zero-level Hamiltonian orbits up to time change.
+
+**Paper or page:** [The Kepler Cone, Maclaurin Duality and Jacobi-Maupertuis metrics](https://arxiv.org/abs/2312.08173). It says: “is isometric to the conical metric”
+
+**Sources:**
+
+- [The Kepler Cone, Maclaurin Duality and Jacobi-Maupertuis metrics](https://arxiv.org/abs/2312.08173)
+
 ### Jacobi energy bounds accessible regions
 
 **Remember:** Where the effective potential exceeds the energy, the particle cannot go.
@@ -392,6 +410,24 @@
 
 - [Tullio Levi-Civita, Sur la régularisation du problème des trois corps (1920)](https://doi.org/10.1007/BF02404404)
 
+### Moser coordinates reveal great circles
+
+**Remember:** Swap position and momentum to see the sphere.
+
+*Makes the theorem clean to state or prove.* MSC 70F16 (Collisions in celestial mechanics, regularization). arXiv physics.class-ph. Level 3: graduate.
+
+**Definition.** On pairs of vectors (q,p) with q nonzero, take H = \|p\|²/2 − 1/\|q\| and restrict to H = −1/2. Set x = p and y = −q. Regard x as stereographic coordinates on the unit sphere minus one pole and y as the components of a covector there. Use its spherical length K = \|y\|(1 + \|x\|²)/2 as the new Hamiltonian.
+
+**Problem.** On this energy surface, the coordinate change takes Hamiltonian orbits to unit spherical covectors tracing great circles, up to a change of time. The spherical flow continues through the missing pole.
+
+**How the definition helps.** The new Hamiltonian measures spherical length, so its unit level carries the geodesic flow of the round sphere (our own). The coordinate swap preserves the canonical symplectic form, which pairs position and momentum directions (our own). The identity K − 1 = \|q\|(H + 1/2) gives dK = \|q\|dH on the chosen level (our own). Thus the two Hamiltonian fields trace the same curves there (our own). The geometric work is deriving the spherical length formula from stereographic projection (our own).
+
+**Wikipedia:** [Moser regularization](https://en.wikipedia.org/wiki/Moser_regularization). It says: “into a geodesic flow on the sphere using the Moser (regularization) map”
+
+**Sources:**
+
+- [Jürgen Moser, Regularization of Kepler’s problem and the averaging method on a manifold](https://doi.org/10.1002/cpa.3160230406)
+
 ### Allowed symmetries conserve constrained momentum
 
 **Remember:** A symmetry keeps its momentum when its direction cannot feel the reaction.
@@ -410,6 +446,38 @@
 
 - [Affine generalizations of the nonholonomic problem of a convex body rolling without slipping on the plane](https://arxiv.org/abs/2409.08072v1)
 
+### Contact geometry preserves zero energy
+
+**Remember:** Contact energy can change but cannot cross zero.
+
+*True by definition.* MSC 70G45 (Differential geometric methods (tensors, connections, symplectic, Poisson, contact, Riemannian, nonholonomic, etc.) for problems in mechanics). arXiv math-ph, math.DG. Level 3: graduate.
+
+**Definition.** A contact form η is a one-form whose exterior derivative dη is nondegenerate on the directions where η vanishes. Its Reeb field R satisfies η(R) = 1 and dη(R, ·) = 0. For a smooth function h, define X by η(X) = −h and dη(X, ·) = dh − R(h)η. Here R(h) means the derivative along R.
+
+**Problem.** A smooth autonomous contact Hamiltonian h stays zero along any trajectory that starts at zero. Its sign stays fixed on every trajectory where it starts nonzero.
+
+**How the definition helps.** The form equations give one scalar equation for h along a trajectory, without solving Hamilton’s coordinate equations (our own). Skew symmetry gives dη(X, X) = 0, so X(h) = −R(h)h. Integration multiplies the initial value by a positive exponential (our own). The comparison step expresses the coordinate equations in terms of η and dη (our own).
+
+**Paper or page:** [Geometry of Mechanics](https://arxiv.org/abs/2401.12650). It says: “ℒ(Xₕ)h = −(ℛ(h))h.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Rescaled contact forms give Reeb flows
+
+**Remember:** Divide the contact form by negative energy to read one.
+
+*True by definition.* MSC 70G45 (Differential geometric methods (tensors, connections, symplectic, Poisson, contact, Riemannian, nonholonomic, etc.) for problems in mechanics). arXiv math-ph, math.DG. Level 3: graduate.
+
+**Definition.** A contact form η is a one-form whose exterior derivative dη is nondegenerate on its kernel. Its Reeb field R satisfies η(R) = 1 and dη(R, ·) = 0. For smooth h, the contact Hamiltonian field X satisfies η(X) = −h and dη(X, ·) = dh − R(h)η. Wherever h is nonzero, use the rescaled form β = −η/h.
+
+**Problem.** On the region where h is nonzero, the contact Hamiltonian field of h is the Reeb field of −η/h.
+
+**How the definition helps.** The rescaling turns the two contact Hamilton equations into the two equations defining the Reeb field (our own). Since η(X) = −h, we get β(X) = 1 (our own). The cited identity gives dβ = Ω/h², where Ω = −h dη + dh ∧ η and Ω(X, ·) = 0 (our own). Nonzero rescaling preserves the contact condition, so these equations identify X uniquely (our own).
+
+**Paper or page:** [Geometry of Mechanics](https://arxiv.org/abs/2401.12650). It says: “Ω = −h dη + dh ∧ η”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Regular Lagrangians give local momentum inverses
 
 **Remember:** The derivative of momentum with respect to velocity is the velocity Hessian.
@@ -425,6 +493,24 @@
 **Paper or page:** [The evolution operator connecting the Lagrangian and Hamiltonian formalisms for contact systems](https://arxiv.org/abs/2511.13401v1). It says: “The Legendre map ℱL is a local diffeomorphism.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Characteristic lines determine Hamiltonian orbits
+
+**Remember:** Same regular surface, same orbit lines.
+
+*True by definition.* MSC 70H05 (Hamilton's equations). arXiv math.DS, math.DG. Level 3: graduate.
+
+**Definition.** A symplectic form ω is a closed, nondegenerate skew form on tangent vectors. On a hypersurface, its characteristic line consists of tangent vectors v satisfying ω(v,w) = 0 for every tangent vector w. For a smooth function H, its Hamiltonian field X satisfies ω(X, ·) = dH.
+
+**Problem.** Two Hamiltonians with the same regular energy surface trace the same local paths there, up to time change and possible reversal.
+
+**How the definition helps.** The characteristic line uses only the surface, so every Hamiltonian defining it regularly gives the same orbit direction (our own). Its differential vanishes on tangent vectors there and is nonzero, so its field spans that line (our own). This replaces a comparison of two sets of Hamilton’s coordinate equations (our own). The linear algebra behind the definition is that the symplectic orthogonal of a hyperplane is a line inside it (our own).
+
+**Paper or page:** [The Kepler Cone, Maclaurin Duality and Jacobi-Maupertuis metrics](https://arxiv.org/abs/2312.08173). It says: “If two different functions on phase space share the same non-degenerate level set, then their Hamiltonian vector fields are parallel along this level set.”
+
+**Sources:**
+
+- [The Kepler Cone, Maclaurin Duality and Jacobi-Maupertuis metrics](https://arxiv.org/abs/2312.08173)
 
 ### Exterior powers preserve Hamiltonian volume
 
@@ -489,6 +575,24 @@
 **Wikipedia:** [Poincaré map](https://en.wikipedia.org/wiki/Poincar%C3%A9_map). It says: “the Poincaré section, transversal to the flow of the system.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Discrete actions preserve the symplectic form
+
+**Remember:** The boundary terms of one action fit together.
+
+*True by definition.* MSC 70H15 (Canonical and symplectic transformations for problems in Hamiltonian and Lagrangian mechanics). arXiv physics.class-ph. Level 3: graduate.
+
+**Definition.** Choose a smooth function L(q,Q) of two successive positions, called a discrete Lagrangian. Define the initial momentum p as minus the derivative in q and the final momentum P as the derivative in Q. Require the mixed derivative matrix to be invertible so the equations define a smooth local map from (q,p) to (Q,P).
+
+**Problem.** The local time step preserves the canonical symplectic form, the skew pairing between position and momentum directions.
+
+**How the definition helps.** Generating both momenta from one function makes the change in the momentum one-form an exact differential (our own). In coordinates this says P·dQ − p·dq = dL along the graph of the step (our own). Taking an exterior derivative proves preservation of the symplectic form (our own). For directly specified update formulas one would need to check that identity separately (our own). The discrete variational principle supplies the endpoint momentum rules (our own).
+
+**Wikipedia:** [Variational integrator](https://en.wikipedia.org/wiki/Variational_integrator). It says: “Variational integrators are momentum-preserving and symplectic.”
+
+**Sources:**
+
+- [Marsden and West, Discrete mechanics and variational integrators](https://doi.org/10.1017/S096249290100006X)
 
 ### Identity needs different generating coordinates
 
@@ -619,6 +723,24 @@
 **Wikipedia:** [Routhian mechanics](https://en.wikipedia.org/wiki/Routhian_mechanics). It says: “The Routhian approach has the best of both approaches, because cyclic coordinates can be split off to the Hamiltonian equations and eliminated”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Reduced brackets carry the flow
+
+**Remember:** Pull back functions and push down motion.
+
+*True by definition.* MSC 70H33 (Symmetries and conservation laws, reverse symmetries, invariant manifolds and their bifurcations, reduction for problems in Hamiltonian and Lagrangian mechanics). arXiv math-ph, math.DG. Level 3: graduate.
+
+**Definition.** A Jacobi bracket is a Lie bracket on smooth functions that differentiates each argument to at most first order. Let a Lie group act by transformations that preserve this bracket. Assume its orbit space is smooth and the projection π has surjective derivative everywhere. Define the bracket of f and g downstairs by requiring its pullback to equal the bracket of f ∘ π and g ∘ π.
+
+**Problem.** For a symmetry that preserves the Jacobi bracket and Hamiltonian, the flow projects to the reduced Hamiltonian flow. Assume the orbit space is smooth and the projection is a submersion.
+
+**How the definition helps.** The pullback rule lets us compare the two flows on functions without finding coordinates on the orbit space (our own). The evolution rule uses the bracket with the Hamiltonian and a correction involving the constant function one (our own). Pullback preserves both terms (our own). Existence requires proving that brackets of invariant functions descend to smooth functions on the quotient (our own).
+
+**Paper or page:** [Reduction by symmetries of contact mechanical systems on Lie groups](https://arxiv.org/abs/2306.07028). It says: “called the reduced Jacobi bracket such that π is a Jacobi map.”
+
+**Sources:**
+
+- [Reduction by symmetries of contact mechanical systems on Lie groups](https://arxiv.org/abs/2306.07028)
 
 ### Dirac brackets freeze constraints
 

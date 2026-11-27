@@ -214,6 +214,38 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Bott–Chern classes map to both theories
+
+**Remember:** Closed in both directions means closed for their sum.
+
+*True by definition.* MSC 32C35 (Analytic sheaves and cohomology groups). arXiv math.CV. Level 3: graduate.
+
+**Definition.** On a complex manifold, the exterior derivative splits into two operators, ∂ and ∂̄. Bott–Chern cohomology uses forms of fixed type killed by both operators, modulo forms of the shape ∂∂̄β. Type counts ordinary and conjugate differentials separately.
+
+**Problem.** Every Bott–Chern class determines a de Rham class, computed with the full derivative, and a Dolbeault class, computed with ∂̄.
+
+**How the definition helps.** The two closure conditions make the same form represent a class for either ∂̄ or the full derivative. In our own argument, ∂∂̄β equals the full derivative of ∂̄β and also equals −∂̄∂β. Thus changing representatives adds a derivative in both target groups. The stronger claim that the first map is injective on compact Kähler manifolds uses the ∂∂̄ lemma.
+
+**Wikipedia:** [Bott–Chern cohomology](https://en.wikipedia.org/wiki/Bott%E2%80%93Chern_cohomology). It says: “The theory admits canonical morphisms to de Rham and Dolbeault cohomology and to the related Aeppli cohomology.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Conjugation pairs Bott–Chern groups
+
+**Remember:** Conjugation swaps the operators but keeps both conditions.
+
+*True by definition.* MSC 32C35 (Analytic sheaves and cohomology groups). arXiv math.CV. Level 3: graduate.
+
+**Definition.** On a complex manifold, write ∂ and ∂̄ for the two parts of the exterior derivative. A form of type (p, q) has p ordinary and q conjugate differentials. Bott–Chern cohomology takes forms of each type killed by both operators, modulo forms of the shape ∂∂̄β.
+
+**Problem.** Complex conjugation gives an antilinear isomorphism between Bott–Chern groups of types (p, q) and (q, p).
+
+**How the definition helps.** Requiring both derivatives to vanish makes the condition survive complex conjugation, which interchanges the derivatives. In our own argument, reversing their order changes the sign of their composite and preserves its image. Conjugating twice gives the identity, and conjugation acts on scalars by complex conjugation. Dolbeault cohomology uses only ∂̄, so this argument does not give the same symmetry there. On compact Kähler manifolds the corresponding Dolbeault symmetry follows from Hodge theory.
+
+**Wikipedia:** [Bott–Chern cohomology](https://en.wikipedia.org/wiki/Bott%E2%80%93Chern_cohomology). It says: “Complex conjugation exchanges forms of bidegree (p,q) with forms of bidegree (q,p).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Dolbeault products are wedge products
 
 **Remember:** Wedge two closed forms to multiply their classes.
@@ -227,6 +259,22 @@
 **How the definition helps.** In our own argument, smooth representatives make multiplication a wedge product because ∂̄ satisfies the graded product rule. The local Dolbeault lemma and smooth partitions of unity justify computing sheaf cohomology this way. Wedge multiplication on smooth forms extends wedge multiplication on holomorphic forms, giving the product comparison.
 
 **nLab:** [Dolbeault theorem](https://ncatlab.org/nlab/show/Dolbeault+theorem). It says: “its Dolbeault cohomology in bi-degree (p,q) is naturally isomorphic to the abelian sheaf cohomology in degree q”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Holomorphic cohomology receives a Hodge projection
+
+**Remember:** Forget the components with a holomorphic differential.
+
+*True by definition.* MSC 32C35 (Analytic sheaves and cohomology groups), 14F25. arXiv math.CV, math.AG. Level 3: graduate.
+
+**Definition.** A complex manifold has ordinary and conjugate coordinate differentials. Compute complex cohomology using all smooth differential forms. Compute cohomology of holomorphic functions using only conjugate differentials and the part of the derivative that adds one such differential.
+
+**Problem.** On a compact Kähler manifold, inclusion of constants into holomorphic functions induces projection onto the component with only conjugate differentials. Kähler means the manifold has a Hermitian metric whose associated two-form is closed.
+
+**How the definition helps.** The two descriptions by differential forms turn inclusion of constants into a projection in every degree. In our own calculation, discard each term containing an ordinary differential. Differentiating a discarded term cannot remove that differential, so the projection respects derivatives. The de Rham and Dolbeault theorems justify these two ways to compute cohomology. Hodge decomposition identifies the resulting map with projection onto a direct summand.
+
+**Paper or page:** [Generic vanishing theorem for Fujiki class C](https://arxiv.org/abs/2309.09738v1). It says: “coincides with the projection Hᵏ(X, ℂ) → H⁰˒ᵏ(X) given by the Hodge decomposition”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -247,6 +295,22 @@
 **Sources:**
 
 - [Jean-Pierre Serre, Géométrie algébrique et géométrie analytique (1956)](https://doi.org/10.5802/aif.59)
+
+### Stein overlaps justify Čech cohomology
+
+**Remember:** Use overlaps with no higher coherent cohomology.
+
+*Makes the theorem clean to state or prove.* MSC 32C35 (Analytic sheaves and cohomology groups), 32Q28. arXiv math.CV. Level 3: graduate.
+
+**Definition.** A Stein manifold is a complex manifold that embeds as a closed complex submanifold of some complex coordinate space. Choose an open cover in which every nonempty finite intersection is Stein.
+
+**Problem.** A coherent analytic sheaf describes local modules over holomorphic functions with finite local presentations. For such a sheaf, the cohomology computed from this cover and its overlaps equals the intrinsic sheaf cohomology.
+
+**How the definition helps.** Stein intersections make every higher cohomology group on each overlap vanish for the chosen sheaf. Cartan’s theorem B gives this vanishing. Leray’s theorem then identifies the calculation on the cover, called Čech cohomology, with sheaf cohomology.
+
+**nLab:** [Stein manifold](https://ncatlab.org/nlab/show/Stein+manifold). It says: “the positive-degree abelian sheaf cohomology with values in any analytic coherent sheaf on any Stein manifold vanishes”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Riemann domains allow multiple sheets
 
@@ -446,6 +510,22 @@
 
 - [Wei-Liang Chow, On Compact Complex Analytic Varieties (1949)](https://doi.org/10.2307/2372375)
 
+### Kähler Moishezon manifolds are projective
+
+**Remember:** Enough meromorphic functions still need a Kähler metric.
+
+*Rules out counterexamples.* MSC 32J25 (Transcendental methods of algebraic geometry (complex-analytic aspects)). arXiv math.AG, math.CV. Level 3: graduate.
+
+**Definition.** A connected compact complex manifold is Moishezon if it has as many algebraically independent meromorphic functions as its complex dimension. Meromorphic functions are locally quotients of holomorphic functions. A Kähler metric is a Hermitian metric whose associated two-form is closed.
+
+**Problem.** A Moishezon manifold embeds as a closed complex submanifold of projective space exactly when it admits a Kähler metric.
+
+**How the definition helps.** Counting independent meromorphic functions narrows the projectivity question to a single metric condition. The Kähler hypothesis excludes Hironaka’s smooth three-dimensional example, which meets the function count but has no projective embedding. Moishezon’s theorem supplies the difficult implication from the function count and the metric to an embedding. In our own argument for the converse, restrict the standard Kähler metric from projective space.
+
+**Wikipedia:** [Moishezon manifold](https://en.wikipedia.org/wiki/Moishezon_manifold). It says: “a Moishezon manifold is a projective algebraic variety if and only if it admits a Kähler metric.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Bundle connections in conjugate directions integrate on curves
 
 **Remember:** On a curve there is no room for two conjugate directions.
@@ -491,6 +571,38 @@
 **How the definition helps.** The exponential-sequence definition makes additivity immediate because the connecting map is a group homomorphism. The group law on line bundles is tensor product, which multiplies the functions used to glue their local pieces. Exactness says the kernel is the image of H¹(M, O), where O records local holomorphic functions. In our own comparison, the Euler-class definition needs a separate proof of additivity for complex line bundles. The work shifts to establishing the sequence and proving that its class agrees with the Euler class.
 
 **Wikipedia:** [Exponential sheaf sequence](https://en.wikipedia.org/wiki/Exponential_sheaf_sequence). It says: “Here H¹(O<sub>M</sub>\*) can be identified with the Picard group of holomorphic line bundles on M. The connecting homomorphism sends a line bundle to its first Chern class.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Amoeba complements have convex components
+
+**Remember:** A line segment in log coordinates interpolates radii geometrically.
+
+*Makes the theorem clean to state or prove.* MSC 32Q02 (Special domains (Reinhardt, Hartogs, circular, tube, etc.) in \\(\\mathbb<sup>n\\</sup>) and complex manifolds), 32D10. arXiv math.CV, math.AG. Level 3: graduate.
+
+**Definition.** A Laurent polynomial allows negative integer powers of its variables. Its amoeba consists of the coordinatewise logarithms of absolute values of its zeros with all coordinates nonzero.
+
+**Problem.** Every connected component of the complement of a polynomial amoeba is convex.
+
+**How the definition helps.** Logarithms turn the absolute values of monomials into exponentials of linear functions. In our own proof, lift one complementary component back to complex coordinates. There the reciprocal polynomial has a single Laurent expansion because the domain is invariant under coordinate rotations. Hölder’s inequality makes the open region of absolute convergence convex in logarithmic coordinates. Multiplying the series by the polynomial gives one throughout that region, so it cannot meet the amoeba. The region therefore equals the chosen component in logarithmic coordinates.
+
+**Wikipedia:** [Amoeba (mathematics)](https://en.wikipedia.org/wiki/Amoeba_%28mathematics%29). It says: “Any connected component of the complement ℝⁿ ∖ 𝒜ₚ is convex.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Odd-degree Betti numbers of compact Kähler manifolds are even
+
+**Remember:** In odd degree, each Hodge piece has a distinct conjugate.
+
+*Rules out counterexamples.* MSC 32Q15 (Kähler manifolds). arXiv math.CV. Level 3: graduate.
+
+**Definition.** A Hermitian metric gives each complex tangent space an inner product that varies smoothly. It is Kähler when the imaginary part of that inner product gives a closed differential form.
+
+**Problem.** A Betti number is the dimension of a cohomology group with complex coefficients. On a compact Kähler manifold, each odd-degree Betti number is even.
+
+**How the definition helps.** The Kähler condition gives a decomposition in which complex conjugation pairs summands of equal dimension. Hodge theory supplies this decomposition by the numbers p and q of ordinary and conjugate differentials. In odd degree, p + q is odd, so the partner with indices (q, p) is distinct. The Hopf surface shows why the metric matters. It is compact and complex, but its first Betti number is one.
+
+**Wikipedia:** [Kähler manifold](https://en.wikipedia.org/wiki/K%C3%A4hler_manifold). It says: “A simple consequence of Hodge theory is that every odd Betti number b₂ₐ₊₁ of a compact Kähler manifold is even, by Hodge symmetry.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -565,6 +677,24 @@
 - [Grauert, On Levi’s Problem and the Imbedding of Real-Analytic Manifolds (1958)](https://doi.org/10.2307/1970257)
 - [Andreotti and Frankel, The Lefschetz Theorem on Hyperplane Sections (1959)](https://doi.org/10.2307/1970034)
 
+### Stein global sections preserve exactness
+
+**Remember:** No first cohomology means local lifts have no global obstruction.
+
+*True by definition.* MSC 32Q28 (Stein manifolds), 32C35. arXiv math.CV. Level 3: graduate.
+
+**Definition.** A coherent analytic sheaf describes local modules over holomorphic functions with finite local presentations. The cohomological definition calls a complex manifold Stein when every such sheaf has zero cohomology in all positive degrees.
+
+**Problem.** On a Stein manifold, every short exact sequence of coherent analytic sheaves stays exact on global sections. In particular, every global section of the quotient lifts to the middle sheaf.
+
+**How the definition helps.** The cohomological definition kills the obstruction to lifting a global section. In our own argument, the long exact sequence places that obstruction in the first cohomology group of the kernel. The geometric definition asks for a closed holomorphic embedding into complex coordinate space. Cartan’s theorem B gives vanishing from the geometric condition, and the converse uses the cohomological criterion for Stein manifolds.
+
+**nLab:** [Stein manifold](https://ncatlab.org/nlab/show/Stein+manifold). It says: “the positive-degree abelian sheaf cohomology with values in any analytic coherent sheaf on any Stein manifold vanishes”
+
+**Wikipedia:** [Cartan's theorems A and B](https://en.wikipedia.org/wiki/Cartan%27s_theorems_A_and_B). It says: “then X is Stein (resp. affine)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Strict Stein exhaustions exclude compact curves
 
 **Remember:** Strict positivity prevents a maximum on a compact complex curve.
@@ -619,6 +749,24 @@
 
 - [Robert Brody, Compact Manifolds and Hyperbolicity (1978)](https://doi.org/10.2307/1998216)
 
+### Entire curves test compact hyperbolicity
+
+**Remember:** Compactness lets fast disks give an entire curve.
+
+*Rules out counterexamples.* MSC 32Q45 (Hyperbolic and Kobayashi hyperbolic manifolds). arXiv math.CV. Level 3: graduate.
+
+**Definition.** Brody hyperbolicity rules out nonconstant holomorphic maps from the whole complex plane. Kobayashi hyperbolicity instead requires a distance built from chains of holomorphic disks to separate distinct points.
+
+**Problem.** For compact complex manifolds, Brody hyperbolicity and Kobayashi hyperbolicity agree. The equivalence can fail without compactness.
+
+**How the definition helps.** On a compact target, Brody’s theorem replaces every disk-chain distance test with one test for entire curves. Its hard step rescales disks and extracts a convergent subsequence when the distance fails to separate points. For our own counterexample, join the unit bidisk to the domain where 0 &lt; \|w\| &lt; 1 and \|zw\| &lt; 1. Every entire curve has constant w by boundedness, then constant z because each slice is bounded. Fix 0 &lt; a &lt; 1 and use disks ζ ↦ (Nζ, ζ(ζ − a/N)/(2N)) for positive integers N. These disks join (0,0) to (a,0) at parameters 0 and a/N. The parameter distance tends to zero, so the target distance between those distinct points vanishes.
+
+**Wikipedia:** [Kobayashi metric](https://en.wikipedia.org/wiki/Kobayashi_metric). It says: “a compact complex space X is Kobayashi hyperbolic if and only if every holomorphic map ℂ → X is constant.”
+
+**Sources:**
+
+- [Robert Brody, Compact manifolds in hyperbolicity (1978)](https://doi.org/10.1090/S0002-9947-1978-0470252-3)
+
 ### A tensor test for complex structures, by the Newlander–Nirenberg theorem
 
 **Remember:** Zero Nijenhuis tensor means honest holomorphic charts.
@@ -636,6 +784,22 @@
 **Sources:**
 
 - [A. Newlander and L. Nirenberg, Complex analytic coordinates in almost complex manifolds, Annals of Mathematics 65 (1957) 391–404](https://doi.org/10.2307/1970051)
+
+### Duality preserves perverse sheaves
+
+**Remember:** Duality trades the two vanishing bounds.
+
+*True by definition. Confidence: medium.* MSC 32S60 (Stratifications; constructible sheaves; intersection cohomology (complex-analytic aspects)). arXiv math.AG. Level 3: graduate.
+
+**Definition.** Choose a decomposition into smooth pieces, called a Whitney stratification, with compatible limiting tangent spaces. Use a bounded complex of sheaves whose cohomology along each piece is locally constant and finite-dimensional over ℂ. On a piece of complex dimension d, middle perversity requires ordinary restriction to have zero cohomology above degree −d. Restriction with support along that piece must have zero cohomology below −d.
+
+**Problem.** Verdier duality, the duality exchanging ordinary restriction and restriction with support, preserves middle perverse sheaves on a complex analytic space.
+
+**How the definition helps.** The two restriction tests exchange places under duality, so their combination gives a symmetric definition. In our own argument, duality on a smooth stratum reverses degrees and shifts by its real dimension 2d. Thus a degree k corresponds to −2d − k, which exchanges the two sides of −d. The usual bounds on dimensions of supports give these local tests after choosing strata. The equivalence of those tests and the exchange identities for Verdier duality supply the work.
+
+**Paper or page:** [A note on the support and cosupport conditions for a perverse sheaf](https://arxiv.org/abs/2207.02566v1). It says: “(new support) for all m ≥ 0, for all k &gt; −m, Hᵏ(uₘ\* A•) = 0.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Disk tests make pullback plurisubharmonic
 
@@ -717,6 +881,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Kähler classes fix Monge–Ampère mass
+
+**Remember:** The top power of a closed form integrates to a cohomology number.
+
+*True by definition. Confidence: medium.* MSC 32W20 (Complex Monge-Ampère operators). arXiv math.CV. Level 3: graduate.
+
+**Definition.** On a complex manifold of dimension n, a Kähler form is a closed positive real form with one ordinary and one conjugate differential. Its smooth Monge–Ampère measure is its n-fold exterior product.
+
+**Problem.** Two Kähler forms in the same cohomology class on a compact complex manifold have equal total Monge–Ampère mass.
+
+**How the definition helps.** Writing the density as an exterior power makes its integral depend only on the cohomology class. In our own proof, closed forms that differ by a derivative represent the same class. Exterior products induce products of classes, so the two top powers also differ by a derivative. Its integral vanishes by Stokes’ theorem. Expanding the exterior power in local coordinates recovers the usual determinant density with the corresponding constant factor.
+
+**Wikipedia:** [Kähler manifold](https://en.wikipedia.org/wiki/K%C3%A4hler_manifold). It says: “Since the 2-form ω is closed, it determines an element in de Rham cohomology”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Hyperfunctions as boundary values form a flabby sheaf
 
 **Remember:** Every hyperfunction on a smaller set extends to the whole line.
@@ -753,6 +933,43 @@
 
 - [Hans Grauert, Ein Theorem der analytischen Garbentheorie und die Modulräume komplexer Strukturen (1960)](https://doi.org/10.1007/bf02684746)
 
+### Bott–Chern vanishing fills pluriharmonic holes
+
+**Remember:** Cut off near the hole, then erase the resulting derivative.
+
+*Makes the theorem clean to state or prove.* MSC 32D15 (Continuation of analytic objects in several complex variables), 32C35. arXiv math.CV. Level 4: research.
+
+**Definition.** On a complex manifold, ∂ and ∂̄ are the two parts of the exterior derivative. Consider compactly supported forms with one ordinary and one conjugate differential, killed by both operators. Their Bott–Chern group identifies forms differing by ∂∂̄ of a compactly supported function.
+
+**Problem.** Let Ω be a domain in a Stein manifold of complex dimension at least two. Stein manifolds admit closed holomorphic embeddings into complex coordinate space. If K is compact in Ω and Ω ∖ K is connected, every pluriharmonic function there extends uniquely to Ω.
+
+**How the definition helps.** The quotient measures exactly the error that a compactly supported correcting function can cancel. A real pluriharmonic function locally equals the real part of a holomorphic function and satisfies ∂∂̄u = 0. In our own account, cut the function off near K and take ∂∂̄. The resulting error extends by zero to a compactly supported form on the ambient manifold. The paper’s vanishing theorem gives a compactly supported function with precisely that derivative. Subtracting it gives the extension, with agreement following by continuation from an open set where the correction vanishes.
+
+**Paper or page:** [Bott-Chern cohomology and the Hartogs extension theorem for pluriharmonic functions](https://arxiv.org/abs/2205.02494v2). It says: “Then every pluriharmonic function on Ω ∖ K has a unique pluriharmonic extension to Ω.”
+
+**Sources:**
+
+- [Xieping Wang, Bott-Chern cohomology and the Hartogs extension theorem for pluriharmonic functions (2024), Theorems 1.1 and 1.2](https://doi.org/10.2422/2036-2145.202205_007)
+
+### Entire equations present Stein subspaces
+
+**Remember:** Entire equations belong in the algebra that represents their zero space.
+
+*Makes the theorem clean to state or prove.* MSC 32E10 (Stein spaces). arXiv math.CV, math.AG. Level 4: research.
+
+**Definition.** An algebra with entire functional calculus has an operation for every entire function in finitely many variables. The operations respect composition. A presentation by generators and relations may therefore use entire equations instead of polynomial equations.
+
+**Problem.** Let finitely many entire functions on ℂⁿ generate the local defining ideal of a closed complex subspace. Its global holomorphic functions form the quotient of the entire functions by the ideal generated by those equations.
+
+**How the definition helps.** Allowing entire functions as operations makes analytic equations into algebraic relations in a presentation. An entire function is holomorphic on all of its complex coordinate space. In our own account, the local equations specify the function sheaf of the subspace, including multiplicities. Cartan’s theorem B shows that every global section lifts and that every global relation is an entire linear combination of the equations. Stein duality identifies this quotient with the algebra representing the subspace.
+
+**nLab:** [Stein duality](https://ncatlab.org/nlab/show/Stein+duality). It says: “The equivalence functor sends a Stein space to its EFC-algebra of global sections.”
+
+**Sources:**
+
+- [J. P. Pridham, A differential graded model for derived analytic geometry (2020), Proposition 1.13](https://doi.org/10.1016/j.aim.2019.106922)
+- [Alexei Yu. Pirkovskii, Holomorphically finitely generated algebras (2015), Theorem 3.23](https://doi.org/10.4171/jncg/192)
+
 ### Unchanged functions force connected fibers
 
 **Remember:** Disconnected fibers would give extra locally constant holomorphic functions.
@@ -788,6 +1005,38 @@
 **Sources:**
 
 - [Jérôme Poineau, Valuative compactifications of analytic varieties, arXiv:2503.18643v2 (2025)](https://arxiv.org/abs/2503.18643v2)
+
+### Dual growth weights need rounding
+
+**Remember:** Dualize the allowed integer orders, not the real weight alone.
+
+*Rules out counterexamples.* MSC 32L05 (Holomorphic bundles and generalizations), 14H60. arXiv math.CV. Level 4: research.
+
+**Definition.** At weight a, keep holomorphic sections whose norm near the puncture is bounded by C times \|z\| to the power −(a + ε). Require this for every positive ε, allowing C to depend on ε.
+
+**Problem.** Consider a holomorphic line bundle on the punctured disk with an acceptable metric, meaning its curvature is bounded near zero in the hyperbolic metric. Dualizing the extension at weight a gives the extension of the dual at weight 1 − a − ε for all sufficiently small positive ε.
+
+**How the definition helps.** The growth definition detects integer pole orders, which explains the correction when dualizing a weight. In our own example, give the trivial line its constant metric. At weight one-half, the bound allows exactly the sections without poles. Their dual again allows constants, whereas weight minus one-half requires a zero. The corrected weight just below one-half gives exactly the required extension. The theorem for arbitrary acceptable metrics uses growth estimates beyond this example.
+
+**Paper or page:** [Notes on acceptable bundles](https://arxiv.org/abs/2511.00760v1). It says: “\\left({}\_\\alpha L\\right)<sup>\\vee</sup> ={}<sub>-\\alpha +1-\\varepsilon </sub>\\left(L<sup>\\vee</sup> \\right)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Numerically flat bundles tensor together
+
+**Remember:** Tensor the filtrations, then tensor their flat unitary pieces.
+
+*True by definition.* MSC 32L05 (Holomorphic bundles and generalizations), 32Q15. arXiv math.CV. Level 4: research.
+
+**Definition.** A holomorphic bundle is numerically flat if its tautological quotient line bundle and the corresponding line bundle for its dual have nef classes. A nef class is a limit of Kähler classes on the projective bundle parametrizing one-dimensional quotients. Equivalently here, the bundle has a chain of holomorphic subbundles whose successive quotients admit flat connections preserving inner products.
+
+**Problem.** The tensor product of two numerically flat bundles on a compact Kähler manifold is numerically flat.
+
+**How the definition helps.** The chain description reduces tensoring bundles to tensoring their flat quotient pieces. In our own proof, group the tensor products of the two chains by the sum of their indices. Each resulting quotient is a direct sum of tensor products of old quotients. Tensor products and direct sums preserve flat connections and their inner products. The filtration theorem supplies the equivalence with the original positivity test.
+
+**Paper or page:** [Numerical flatness and principal bundles on Fujiki manifolds](https://arxiv.org/abs/2111.15243v1). It says: “the connection on Eᵢ/Eᵢ₋₁ induced by ∇ is unitary for all 1 ≤ i ≤ ℓ.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Uniform relative K-polystability is exactly the condition for toric extremal metrics
 
@@ -845,6 +1094,22 @@
 - [Vikramjeet Singh Chandel, Anwoy Maitra, Amar Deep Sarkar, Notions of Visibility with respect to the Kobayashi distance: Comparison and Applications, arXiv:2111.00549 (2021)](https://arxiv.org/abs/2111.00549v2)
 - [Bharali, Zimmer, Goldilocks domains, a weak notion of visibility, and applications, Advances in Mathematics 310 (2017), 377–425](https://doi.org/10.1016/j.aim.2017.02.005)
 
+### Oka families preserve homotopy groups
+
+**Remember:** Use spheres for representatives and disks for relations.
+
+*True by definition.* MSC 32Q56 (Oka principle and Oka manifolds). arXiv math.CV. Level 4: research.
+
+**Definition.** A Stein manifold admits a closed holomorphic embedding into some complex coordinate space. Use the parametric Oka property for the target. It deforms continuous families of maps into families of holomorphic maps while fixing a specified subfamily already holomorphic.
+
+**Problem.** For maps from a Stein manifold to an Oka target, inclusion of holomorphic maps into continuous maps induces a bijection on path components. At each holomorphic base map, it also induces isomorphisms on all homotopy groups. Both spaces use uniform convergence on compact sets.
+
+**How the definition helps.** The parametric definition tests precisely the families needed to represent and compare homotopy classes. In our own proof, spheres represent classes and disks give deformations to a point with prescribed boundary values. Points and intervals give the corresponding bijection on path components. The Oka equivalence theorem derives the parametric property from approximation of holomorphic maps near compact convex sets.
+
+**Paper or page:** [From Stein manifolds to Oka manifolds: the h-principle in complex analysis](https://arxiv.org/abs/2509.21197v1). It says: “the inclusion of the space of holomorphic maps X → Y in the space of continuous maps”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The convex approximation property gives every form of the Oka principle
 
 **Remember:** Approximate on convex sets, and every Oka principle follows.
@@ -899,6 +1164,56 @@
 **Sources:**
 
 - [Tobias Dyckerhoff, Mikhail Kapranov, Yan Soibelman, Perverse sheaves on Riemann surfaces as Milnor sheaves, arXiv:2012.11388v2 (2021)](https://arxiv.org/abs/2012.11388v2)
+
+### Slice comparison puts maxima on boundaries
+
+**Remember:** An affine bound on a slice rules out a strict interior peak.
+
+*True by definition.* MSC 32U05 (Plurisubharmonic functions and generalizations). arXiv math.CV. Level 4: research.
+
+**Definition.** An upper semicontinuous function has value at least its upper limit at each point. Call it q-plurisubharmonic if it passes this test on each complex affine plane of dimension q + 1. Whenever a real affine function bounds it above on the boundary of a closed ball in the domain slice, that bound holds throughout.
+
+**Problem.** Take a nonempty bounded open set in ℂⁿ and an integer q between zero and n − 1 inclusive. A q-plurisubharmonic function there, upper semicontinuous on the closure, attains its maximum on the boundary.
+
+**How the definition helps.** Affine comparison rules out a strict interior peak even when derivatives do not exist. In our own proof, suppose an interior value exceeds every boundary value. Adding a sufficiently small positive multiple of squared distance to the origin preserves this gap. At an interior maximum of the sum, a constant minus that quadratic bounds the original function above with equality. Its tangent affine function lies strictly higher on every small sphere in a test plane through the maximum. Lowering the tangent function slightly contradicts comparison there. For smooth functions, equivalence with the usual test on complex second derivatives takes a separate theorem.
+
+**Paper or page:** [On rigid q-plurisubharmonic functions and q-pseudoconvex tube domains in ℂⁿ](https://arxiv.org/abs/2510.05009v2). It says: “Then any function $u$ which is upper semi-continuous on $\\overline{\\Omega }$ and $q$-plurisubharmonic on $\\Omega $ fulfills\\\[ \\max \\{ \\psi (z) : z \\in \\overline{\\Omega }\\} = \\max \\{ \\psi (z) : z \\in \\partial \\Omega \\} . \\\]”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Polar constraints leave corrected envelopes unchanged
+
+**Remember:** A tiny amount of the polar witness enforces the extra constraint.
+
+*True by definition.* MSC 32U35 (Plurisubharmonic extremal functions, pluricomplex Green functions), 31C15. arXiv math.CV. Level 4: research.
+
+**Definition.** On a compact Kähler manifold, the metric has smooth local potentials h whose complex second derivatives give the metric. Call u admissible if u+h is upper semicontinuous and satisfies the circle mean inequality on complex lines in each coordinate chart. For u+h, each value bounds nearby upper limits and cannot exceed its average around any small circle in a complex line. A polar set lies where an admissible function, finite somewhere on the connected manifold, equals minus infinity.
+
+**Problem.** Take the supremum of admissible functions nonpositive on E, then replace each value by the limit of the suprema on shrinking neighborhoods. Adding a polar set to E leaves this corrected supremum unchanged.
+
+**How the definition helps.** Our own proof uses the defining polar function to enforce every added constraint at once. Subtract a constant so this function is everywhere nonpositive. Mix any competitor with a small positive proportion of this function. The mixture stays admissible and equals minus infinity on the polar set. As the proportion shrinks, the mixtures recover the competitor wherever the polar function is finite. The work lies in recovering admissible functions from nearby values outside their exceptional sets of measure zero. Taking the corrected supremum, instead of the raw supremum, permits this recovery.
+
+**Paper or page:** [Polar sets for m-subharmonic functions on compact Hermitian manifolds](https://arxiv.org/abs/2511.01159). It says: “Let E ⊂ X and P be a m-polar set. Then, V₍E ∪ P₎⋆ = V₍E₎⋆.”
+
+**Sources:**
+
+- [Polar sets for m-subharmonic functions on compact Hermitian manifolds, Corollary 6.10](https://arxiv.org/abs/2511.01159)
+
+### Nonpluripolar restriction drops divisorial mass
+
+**Remember:** Read the smooth part and leave the divisor mass behind.
+
+*True by definition.* MSC 32U40 (Currents). arXiv math.CV. Level 4: research.
+
+**Definition.** A current is a differential form with distribution coefficients. A positive current of type (1, 1) has measure coefficients and pairs nonnegatively with positive test forms of complementary degree. Analytic singularities come from local potentials with logarithms of sums of squared absolute values of holomorphic functions, up to smooth terms. Restrict the current off their common zero set and extend its coefficients by zero.
+
+**Problem.** For a closed positive current of type (1, 1) with analytic singularities, this restriction is its absolutely continuous part. It is again closed and positive.
+
+**How the definition helps.** Restriction separates smooth coefficients from mass concentrated on the singular set. In our own argument, the current is smooth off that set, and the set has ordinary volume zero. Extension by zero therefore gives exactly the part absolutely continuous with respect to volume. The extension theorem for positive closed currents supplies the separate conclusion that this part remains closed.
+
+**Paper or page:** [Definitions of the volume of a big cohomology class](https://arxiv.org/abs/2506.09486v1). It says: “If $T$ is a closed positive $(1,1)$-current with analytic singularities along $A\\subset X$, then $T<sub>ac</sub> =1<sub>X\\setminus A</sub>T$.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Restricted currents add divisorial coefficients
 

@@ -915,6 +915,26 @@
 - [Thomas Booker, Ross Street, Torsors, herds and flocks, Journal of Algebra 330 (2011) 346–374, arXiv:0912.4551](https://arxiv.org/abs/0912.4551)
 - [Peter T. Johnstone, The 'closed subgroup theorem' for localic herds and pregroupoids, Journal of Pure and Applied Algebra 70 (1991) 97–106](https://doi.org/10.1016/0022-4049(91)90010-y)
 
+### Subgroup marks determine finite actions
+
+**Remember:** Count fixed points subgroup by subgroup to recover the orbits.
+
+*True by definition.* MSC 20B05 (General theory for finite permutation groups), 19A22. arXiv math.GR. Level 3: graduate.
+
+**Definition.** The mark of a subgroup H on a finite group action counts points fixed by all of H. Use all subgroup marks rather than only the fixed-point counts of individual elements.
+
+**Problem.** Two finite sets with an action of a finite group G are isomorphic as G-sets if all their marks agree.
+
+**How the definition helps.** Counting points fixed by whole subgroups lets us recover orbit counts one subgroup at a time. Every orbit is a coset space G/K, where K fixes a chosen point. A subgroup H fixes a coset only if some conjugate of H lies in K. Start with the largest stabilizers and subtract the contributions of orbit types already counted (our own). Among the remaining types, only G/H contributes to the H count, and H fixes at least the identity coset (our own).
+
+**nLab:** [table of marks](https://ncatlab.org/nlab/show/table+of+marks). It says: “Hence any two finite G-sets are isomorphic precisely if they have the same Burnside marks”
+
+**Wikipedia:** [Burnside ring](https://en.wikipedia.org/wiki/Burnside_ring). It says: “if H is not conjugate to a subgroup of K then m(K, H) = 0.”
+
+**Sources:**
+
+- [L. Solomon, The Burnside algebra of a finite group, 1967](https://doi.org/10.1016/S0021-9800(67)80064-4)
+
 ### Mackey functors defined on spans have the double coset formula built in
 
 **Remember:** A Mackey functor is a functor on spans; composing spans is the double coset formula.
@@ -1016,6 +1036,22 @@
 **How the definition helps.** A larger subgroup imposes more conjugation symmetries, so its invariant sums form a subalgebra of the original commutative algebra (our own). They therefore still commute (our own). The matrix decomposition of the group algebra and Schur’s lemma identify commutativity with the absence of repeated components (our own).
 
 **Paper or page:** [Strong Gelfand pairs of the sporadic groups and their extensions](https://arxiv.org/abs/2510.25790). It says: “Suppose K ≤ H ≤ G are groups. If (G, H) is not a strong Gelfand pair, then neither is (G, K).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Strong Gelfand pairs survive quotients
+
+**Remember:** Passing to the quotient cannot create a repeated summand.
+
+*True by definition.* MSC 20C15 (Ordinary representations and characters), 43A90. arXiv math.RT. Level 3: graduate.
+
+**Definition.** Let H be a subgroup of a finite group G. Call (G,H) a strong Gelfand pair if restricting any irreducible complex representation of G to H gives distinct irreducible summands. An irreducible representation has no proper nonzero invariant subspace. An equivalent definition asks whether convolution commutes for functions unchanged by conjugation by H.
+
+**Problem.** A strong Gelfand pair remains strong after quotienting both groups by a common normal subgroup of the larger group.
+
+**How the definition helps.** Our own explanation uses restriction to read the quotient multiplicities without calculating convolutions. Every quotient representation gives a representation upstairs by composition with the quotient map. Both actions have exactly the same invariant subspaces, even after restriction to the smaller group. The equivalence with the convolution definition uses the decomposition of the group algebra into matrix blocks.
+
+**Paper or page:** [Almost Commutative Terwilliger Algebras II: Strong Gelfand Pairs](https://arxiv.org/abs/2509.16174). It says: “Suppose N ≤ H ≤ G with N ◁ G. If (G,H) is a SGP, then (G/N,H/N) is a SGP.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -1127,6 +1163,24 @@
 
 - [Otto Schreier, Die Untergruppen der freien Gruppen (1927).](https://doi.org/10.1007/bf02952517)
 
+### Banning edge flips gives stabilizer inclusions
+
+**Remember:** No flips means each edge stabilizer lies in both vertex stabilizers.
+
+*Rules out counterexamples.* MSC 20E08 (Groups acting on trees). arXiv math.GR. Level 3: graduate.
+
+**Definition.** A tree action has no edge inversions if every element that preserves an edge also fixes both endpoints. A graph of groups attaches groups to vertices and edges and embeds each edge group into its endpoint groups.
+
+**Problem.** When a group acts on a tree without edge inversions, the quotient graph records the orbits of vertices and edges. Its graph of stabilizer groups determines the acting group up to isomorphism.
+
+**How the definition helps.** Banning flips makes every element preserving an edge fix each endpoint (our own). Thus the edge stabilizer, the subgroup preserving that edge, embeds in each endpoint stabilizer (our own). Conjugation transports these inclusions to the chosen orbit representatives (our own). A group of order two flipping a single edge preserves the edge but has trivial endpoint stabilizers (our own). The Bass–Serre theorem reconstructs the acting group from the graph and these inclusions (our own).
+
+**Paper or page:** [On acylindrical tree actions and outer automorphism group of Baumslag-Solitar groups](https://arxiv.org/abs/2501.01754v2). It says: “Then G can be identified with the fundamental group of a certain graph of groups (Γ, 𝒢), where Γ is the quotient graph X/G.”
+
+**Sources:**
+
+- [J.-P. Serre, Trees, 1980](https://doi.org/10.1007/978-3-642-61856-7)
+
 ### Graphs of groups make the Kurosh subgroup theorem a short corollary
 
 **Remember:** Let the subgroup act on the tree, then read off its pieces.
@@ -1144,6 +1198,72 @@
 **Sources:**
 
 - [J.-P. Serre, Trees, translated by J. Stillwell, Springer (1980); French original Arbres, amalgames, SL₂, Astérisque 46 (1977)](https://doi.org/10.1007/978-3-642-61856-7)
+
+### Completion commutes with abelianization
+
+**Remember:** Close the commutator subgroup before taking the profinite abelian quotient.
+
+*True by definition. Confidence: medium.* MSC 20E18 (Limits, profinite groups). arXiv math.GR. Level 3: graduate.
+
+**Definition.** The profinite completion consists of compatible elements in all finite quotients, with the topology inherited from their product. Abelianization kills the subgroup generated by commutators. Hausdorff abelianization kills its closure, so distinct points of the quotient have disjoint neighborhoods.
+
+**Problem.** The profinite completion of an abelianization is the Hausdorff abelianization of the profinite completion.
+
+**How the definition helps.** Both constructions are determined by the same maps to finite abelian groups (our own). Such maps kill all commutators in the discrete case and their closure in the continuous case (our own). The work is in showing that maps to finite groups extend uniquely to the completion (our own).
+
+**nLab:** [profinite completion of a group](https://ncatlab.org/nlab/show/profinite+completion+of+a+group). It says: “the limit (in the category of topological groups) over the diagram with objects all the finite quotient groups”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Completion preserves quotients
+
+**Remember:** Take the closure of the old kernel to get the new kernel.
+
+*True by definition.* MSC 20E18 (Limits, profinite groups). arXiv math.GR. Level 3: graduate.
+
+**Definition.** The profinite completion of a group consists of compatible elements in its finite quotients, with the topology inherited from their product. Equivalently, every homomorphism to a finite discrete group extends uniquely to a continuous homomorphism from the completion.
+
+**Problem.** For N normal in G, the profinite completion of G/N is the completion of G modulo the closure of the image of N.
+
+**How the definition helps.** Using finite quotient maps identifies both groups by the same family of quotients (our own). A map from G to a finite group factors through G/N exactly when it kills N (our own). Its continuous extension then kills the closure of the image of N (our own). The extension theorem and the fact that quotients by closed normal subgroups remain profinite justify this comparison (our own).
+
+**Paper or page:** [Profinite almost rigidity in 3-manifolds](https://arxiv.org/abs/2410.16002v4). It says: “The profinite completion functor is right exact”
+
+**Sources:**
+
+- [L. Ribes and P. Zalesskii, Profinite Groups, 2010](https://doi.org/10.1007/978-3-642-01642-4)
+
+### Completion turns conjugacy into closure
+
+**Remember:** Close the conjugacy class by allowing the conjugating element to lie in the completion.
+
+*True by definition. Confidence: medium.* MSC 20E18 (Limits, profinite groups), 20E45. arXiv math.GR. Level 3: graduate.
+
+**Definition.** Give a group its profinite topology, with normal finite-index subgroups as neighborhoods of the identity. Its completion is the compact group of compatible elements of all finite quotients.
+
+**Problem.** Let G be residually finite, so finite quotients distinguish its elements. In G, the profinite closure of a conjugacy class consists exactly of elements conjugate to its representative in the completion.
+
+**How the definition helps.** Allowing the conjugating element to range over the completion replaces separate finite quotient tests with one compact image (our own). Fix x in G and map each element h of the completion to hxh⁻¹ (our own). The image is compact and hence closed, while density of G makes the original conjugates dense in it (our own). Intersecting that image with G gives the required closure (our own). The completion theorem supplies the dense embedding with the stated topology (our own).
+
+**nLab:** [profinite group](https://ncatlab.org/nlab/show/profinite+group), [profinite completion of a group](https://ncatlab.org/nlab/show/profinite+completion+of+a+group). It says: “Any group has a profinite completion, given by taking the projective limit of the group's quotients by its finite index normal subgroups.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Frattini quotients count pro-p generators
+
+**Remember:** Generators are detected in the largest quotient that is a vector space over 𝔽ₚ.
+
+*True by definition. Confidence: medium.* MSC 20E18 (Limits, profinite groups). arXiv math.GR. Level 3: graduate.
+
+**Definition.** For a prime p, a pro-p group G is an inverse limit of finite groups of p-power order. Its Frattini subgroup is the intersection of its maximal proper open subgroups. Topological generators generate a dense subgroup.
+
+**Problem.** The minimum number of topological generators of a finitely generated pro-p group is the dimension of its Frattini quotient over 𝔽ₚ.
+
+**How the definition helps.** The intersection definition detects exactly when proposed generators lie in a maximal proper open subgroup (our own). Every proper closed subgroup has proper image in some finite quotient, where a maximal subgroup contains that image (our own). In a finite p-group every maximal subgroup is normal of index p, so the same holds for maximal proper open subgroups (our own). Their intersection therefore gives a quotient that embeds in a product of groups of order p (our own). For finitely many topological generators this vector space is finite, and lifting a basis gives a smallest topological generating set (our own).
+
+**Wikipedia:** [Frattini subgroup](https://en.wikipedia.org/wiki/Frattini_subgroup), [Pro-p group](https://en.wikipedia.org/wiki/Pro-p_group). It says: “then k is the smallest number of generators for G”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Inverse limits give profinite completion its unique extension property
 
@@ -1179,6 +1299,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Profinite limits preserve surjections
+
+**Remember:** Compact fibers turn finite compatibility into a compatible lift.
+
+*True by definition.* MSC 20E18 (Limits, profinite groups). arXiv math.GR. Level 3: graduate.
+
+**Definition.** An inverse system consists of groups and compatible maps from later groups to earlier ones. Its inverse limit consists of tuples whose coordinates agree under these maps. A profinite group is an inverse limit of finite discrete groups with the topology inherited from their product.
+
+**Problem.** Consider two inverse systems of profinite groups indexed by the same directed set, where any two indices have a common later index. Compatible continuous surjections at each index give a surjection between the inverse limits.
+
+**How the definition helps.** Viewing the groups as compact spaces turns simultaneous lifting into a finite compatibility test (our own). Fix a target tuple and take the product of its nonempty compact coordinate fibers (our own). Each compatibility equation defines a closed subset because the maps are continuous and the groups are Hausdorff (our own). For finitely many equations, lift at a common later index and project to the required coordinates (our own). Compactness gives a lift satisfying all equations (our own). The finite-group definition supplies compactness through the theorem that products of compact spaces are compact (our own).
+
+**nLab:** [profinite group](https://ncatlab.org/nlab/show/profinite+group). It says: “The projective limit of a system of profinite groups is an exact functor”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The topological definition makes closed subgroups of profinite groups profinite
 
 **Remember:** A closed subgroup inherits compactness, the Hausdorff property and total disconnectedness.
@@ -1192,6 +1328,22 @@
 **How the definition helps.** The topological definition makes the result follow from three properties of closed subspaces (our own). A closed subset of a compact space is compact, and all subspaces inherit the Hausdorff property and total disconnectedness (our own). With the limit definition, one instead shows that the subgroup is the inverse limit of its images in the finite quotients (our own). The work moved to the theorem identifying compact Hausdorff totally disconnected groups with inverse limits of finite discrete groups.
 
 **Wikipedia:** [Profinite group](https://en.wikipedia.org/wiki/Profinite_group). It says: “Every closed subgroup of a profinite group is itself profinite; the topology arising from the profiniteness agrees with the subspace topology.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Complete normal subgroups split off
+
+**Remember:** A complete normal subgroup has a canonical projection from its ambient group.
+
+*Rules out counterexamples.* MSC 20E22 (Extensions, wreath products, and other compositions of groups). arXiv math.GR. Level 3: graduate.
+
+**Definition.** A group is complete if conjugation identifies the group with its full automorphism group. This requires both a trivial center and that every automorphism come from conjugation.
+
+**Problem.** If a normal subgroup N of G is complete, then G is the direct product of N and the elements that commute with N.
+
+**How the definition helps.** Completeness makes conjugation by each element of G agree on N with conjugation by a unique element of N. This gives a homomorphism onto N that fixes N pointwise. Its kernel consists of the elements commuting with N, giving the direct product. In S₅, the centerless subgroup A₅ admits conjugation by an odd permutation that no element of A₅ induces (our own). The order-two subgroup of C₄ has only the identity automorphism but has no direct complement (our own).
+
+**Wikipedia:** [Complete group](https://en.wikipedia.org/wiki/Complete_group). It says: “If the kernel, N, is a complete group then the extension splits:”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -1245,6 +1397,40 @@
 
 - [I. Schur, Über die Darstellung der endlichen Gruppen durch gebrochen lineare Substitutionen, Journal für die reine und angewandte Mathematik 127 (1904) 20–50](https://doi.org/10.1515/crll.1904.127.20)
 
+### Finite quotients detect surviving elements
+
+**Remember:** An element survives if some finite quotient sees it.
+
+*Rules out counterexamples.* MSC 20E26 (Residual properties and generalizations; residually finite groups), 20E18. arXiv math.GR. Level 3: graduate.
+
+**Definition.** Form the profinite completion from compatible tuples in all finite quotient groups. A group is residually finite if each nonidentity element survives in some finite quotient.
+
+**Problem.** The map from a group to its profinite completion is injective exactly for residually finite groups.
+
+**How the definition helps.** The completion map sends an element to the tuple of its images, so residual finiteness makes its kernel trivial. In our own example, every homomorphism from additive ℚ to a finite group of order m is trivial. Indeed, every rational is m times another rational, and multiplication by m kills the image.
+
+**Wikipedia:** [Profinite group](https://en.wikipedia.org/wiki/Profinite_group). It says: “The homomorphism η is injective if and only if the group G is residually finite”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Quasisimple groups have central proper normal subgroups
+
+**Remember:** No proper normal subgroup of a quasisimple group can cover its simple quotient.
+
+*Rules out counterexamples.* MSC 20E32 (Simple groups). arXiv math.GR. Level 3: graduate.
+
+**Definition.** A group is perfect if its commutators generate it. A quasisimple group is perfect and becomes nonabelian simple after quotienting by its center.
+
+**Problem.** Every proper normal subgroup of a quasisimple group lies in its center.
+
+**How the definition helps.** Perfectness prevents a proper normal subgroup N from mapping onto the simple quotient (our own). A nontrivial image would fill that quotient, giving G = NZ(G), where Z(G) denotes the center (our own). Then G/N would be both abelian and perfect, hence trivial (our own). The direct product A₅ × C₂ has simple central quotient but contains the noncentral proper normal subgroup A₅ × {1} (our own).
+
+**Paper or page:** [Quasirandom and quasisimple groups](https://arxiv.org/abs/2404.05550v3). It says: “Let G be a quasisimple group, and let N ◁ G be a proper normal subgroup. Then N ⊆ Z(G), and G/N is again quasisimple.”
+
+**Sources:**
+
+- [Quasirandom and quasisimple groups, Lemma 2.10](https://arxiv.org/abs/2404.05550v3)
+
 ### BN-pair axioms prove simplicity for all groups of Lie type at once
 
 **Remember:** Check the axioms once instead of checking each family.
@@ -1262,6 +1448,24 @@
 **Sources:**
 
 - [J. Tits, Algebraic and abstract simple groups, Annals of Mathematics 80 (1964) 313–329](https://doi.org/10.2307/1970394)
+
+### A coset absorbs twisted conjugation
+
+**Remember:** Multiply by the new generator to absorb the twist.
+
+*True by definition.* MSC 20E45 (Conjugacy classes for groups). arXiv math.GR. Level 3: graduate.
+
+**Definition.** For an automorphism φ of G, twisted conjugation by h sends x to hxφ(h)⁻¹. Form the semidirect product of G with an infinite cyclic group whose generator t satisfies tgt⁻¹ = φ(g).
+
+**Problem.** Multiplication by t matches φ-twisted conjugacy classes in G with ordinary conjugacy classes in the coset Gt.
+
+**How the definition helps.** The new generator turns the twisted formula into ordinary conjugation because h(xt)h⁻¹ = hxφ(h)⁻¹t (our own). Conjugation by t adds no new classes because t(xt)t⁻¹ = x⁻¹(xt)x (our own). The semidirect product construction keeps G embedded while imposing the required relation (our own).
+
+**Paper or page:** [Twisted Conjugacy in Big Mapping Class Groups](https://arxiv.org/abs/2112.06612v2). It says: “The map x ↦ xt gives a bijection between the set of φ-twisted conjugacy classes of G and the set of conjugacy classes of Gφ contained in the coset G · t.”
+
+**Sources:**
+
+- [Sushil Bhunia and Swathi Krishna, Twisted Conjugacy in Big Mapping Class Groups, Corollary 2.9](https://arxiv.org/abs/2112.06612v2)
 
 ### Defining finitely presented groups as compact objects makes retracts finitely presented
 
@@ -1525,6 +1729,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Finite support preserves wreath bi-orders
+
+**Remember:** Finite support gives the sequence a last place where two values differ.
+
+*Rules out counterexamples.* MSC 20F60 (Ordered groups (group-theoretic aspects)), 20E22. arXiv math.GR. Level 3: graduate.
+
+**Definition.** In the restricted wreath product of ℤ by ℤ, one copy of ℤ shifts doubly infinite integer sequences. The sequences add coordinatewise and have only finitely many nonzero entries. The unrestricted product allows every such sequence, including those with infinitely many nonzero entries. A bi-order is a total order that multiplication on either side preserves.
+
+**Problem.** The restricted wreath product of ℤ by ℤ admits a bi-order. The unrestricted wreath product of the same groups does not.
+
+**How the definition helps.** Finite support gives a greatest differing index, so lexicographic comparison from that end is shift invariant (our own). Order first by the shift exponent, then by this comparison on the sequence group (our own). In the unrestricted product, shifting the sequence with entries alternating 1 and −1 sends it to its inverse (our own). A nonidentity element cannot be conjugate to its inverse in a bi-ordered group (our own).
+
+**Paper or page:** [The complexity of knapsack problems in wreath products](https://arxiv.org/abs/2002.08086v2). It says: “This holds only for the restricted wreath product; which is the wreath product construction we are dealing with.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Defining ends through Cayley graphs makes them invariants of the group
 
 **Remember:** Count the different ways to run off to infinity.
@@ -1543,6 +1763,40 @@
 
 - [H. Freudenthal, Über die Enden diskreter Räume und Gruppen, Commentarii Mathematici Helvetici 17 (1944) 1–38](https://doi.org/10.1007/BF02566233)
 - [J. R. Stallings, On torsion-free groups with infinitely many ends, Annals of Mathematics 88 (1968) 312–334](https://doi.org/10.2307/1970577)
+
+### Homogeneous quasimorphisms ignore conjugation
+
+**Remember:** Taking powers makes the bounded error from conjugation disappear.
+
+*Rules out counterexamples.* MSC 20F65 (Geometric group theory), 20J06. arXiv math.GR. Level 3: graduate.
+
+**Definition.** A real quasimorphism has a uniform bound on the absolute difference between f(xy) and f(x) + f(y). It is homogeneous if its value on any integer power is the exponent times its value on the element.
+
+**Problem.** Homogeneous quasimorphisms are constant on conjugacy classes. Quasimorphisms without the power condition need not be.
+
+**How the definition helps.** Homogeneity lets one divide away a bounded error to obtain exact conjugacy invariance (our own). Conjugation changes the value on any positive power by at most twice the addition error bound, since f(h⁻¹) = −f(h) (our own). Divide by the exponent and let it grow (our own). In S₃ the indicator of one transposition is bounded, hence a quasimorphism, and distinguishes conjugates (our own). Separately, homogenization constructs a homogeneous quasimorphism by taking the limit of values on powers divided by their exponents.
+
+**Wikipedia:** [Quasimorphism](https://en.wikipedia.org/wiki/Quasimorphism). It says: “It is constant on conjugacy classes”
+
+**Paper or page:** [On conjugation invariant norms, asymptotic cones, metric ultraproducts and contractibility](https://arxiv.org/abs/2203.10889v1). It says: “The homogenisation ψ̄ of a quasimorphism ψ : G → ℝ is a homogeneous quasimorphism.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Marked limits preserve group laws
+
+**Remember:** A failed law has a finite witness in the marked generators.
+
+*True by definition.* MSC 20F65 (Geometric group theory), 20F70. arXiv math.GR. Level 3: graduate.
+
+**Definition.** Mark each group by an ordered generating list of the same finite length. Convergence means that each word in these generators eventually equals the identity exactly when it does in the limit. Equivalently, the groups eventually agree on every fixed-radius neighborhood of the identity in their labeled Cayley graphs. These graphs have a directed edge for multiplication by each named generator.
+
+**Problem.** A word law is an equation that holds for every substitution of group elements for its variables. A limit of marked groups satisfying the same word law also satisfies it.
+
+**How the definition helps.** Eventual agreement passes each tested word equation to the limit (our own). Write the elements being tested as words in the marked generators and substitute these into the law (our own). The work moves to proving that word equality in a fixed finite range is determined by the corresponding labeled balls (our own).
+
+**Paper or page:** [Bounded conciseness in the space of marked groups](https://arxiv.org/abs/2502.05070v1). It says: “have balls of radius R isomorphic as labeled directed graphs”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Thin triangles survive quasi-isometry, so hyperbolic groups need no chosen generators
 
@@ -1707,6 +1961,38 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Classifying spaces give graded commutativity
+
+**Remember:** The group cup product inherits the sign rule from space cohomology.
+
+*True by definition. Confidence: medium.* MSC 20J06 (Cohomology of groups). arXiv math.GR. Level 3: graduate.
+
+**Definition.** For a discrete group G, choose a connected cell complex BG with fundamental group G and contractible universal cover. Define its integral group cohomology ring as the integer cohomology of BG with its usual multiplication, the cup product.
+
+**Problem.** The integral cohomology ring of a group is graded commutative. Interchanging factors of degrees p and q introduces a minus sign precisely when both degrees are odd.
+
+**How the definition helps.** The space definition gives the sign rule immediately from graded commutativity of the cup product in ordinary cohomology (our own). To obtain the same rule for the algebraic definition, one must identify the products, as well as the groups (our own). That comparison relates cohomology of BG to the calculation using functions on tuples of group elements (our own).
+
+**Wikipedia:** [Group cohomology](https://en.wikipedia.org/wiki/Group_cohomology). It says: “The group cohomology of a discrete group G is the singular cohomology of a suitable space having G as its fundamental group”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Cohomological dimension decreases on restriction
+
+**Remember:** A group ring stays free over the group ring of a subgroup.
+
+*True by definition.* MSC 20J06 (Cohomology of groups). arXiv math.GR. Level 3: graduate.
+
+**Definition.** Fix a nonzero ring R with identity, and let G act trivially on R. A projective resolution of R is an exact sequence ending in R whose preceding terms are direct summands of free modules over the group ring. Cohomological dimension over R is the least length of such a resolution, or infinity if none has finite length.
+
+**Problem.** The cohomological dimension of a subgroup over R is at most that of the whole group over R.
+
+**How the definition helps.** Using resolution length lets the same resolution give a bound for every subgroup (our own). Choosing coset representatives gives a basis for the larger group ring over the smaller one (our own). Free modules therefore stay free, their direct summands stay projective, and the sequence stays exact (our own). The comparison theorem identifies this length with the supremum of degrees that can have nonzero cohomology (our own).
+
+**Wikipedia:** [Cohomological dimension](https://en.wikipedia.org/wiki/Cohomological_dimension). It says: “if the trivial RG-module R has a projective resolution of length n”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Cohomology as Ext makes Shapiro’s lemma an adjunction
 
 **Remember:** The maps in a resolution match term by term under coinduction.
@@ -1725,6 +2011,24 @@
 \\operatorname{Ext}<sup>n<sub>R</sub></sup>({}<sub>R</sub> M,N) \\cong \\operatorname{Ext}<sup>n<sub>S</sub></sup>(M,\\operatorname{Hom}<sub>R</sub>(S,N))”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Coset sums give relative cohomology
+
+**Remember:** The kernel of the coset sum measures the difference between the two cohomologies.
+
+*True by definition.* MSC 20J06 (Cohomology of groups). arXiv math.GR. Level 3: graduate.
+
+**Definition.** For a subgroup H of G, form the free abelian group on the cosets G/H, with G acting by left multiplication. Let D be the kernel of the map adding the coefficients. For n ≥ 1, define relative cohomology with coefficients M as Ext in degree n − 1 from D to M over ℤ\[G\]. Ext gives the higher groups obtained by applying module homomorphisms into M to a projective resolution, an exact replacement by summands of free modules.
+
+**Problem.** The relative cohomology of a group pair fits into a long exact sequence with the cohomologies of G and H.
+
+**How the definition helps.** The kernel definition gives the desired sequence directly from the long exact sequence for Ext (our own). It avoids constructing connecting maps on functions of group elements (our own). The sum map gives a short exact sequence from D through the coset module to ℤ (our own). Shapiro’s lemma identifies Ext from the coset module with the cohomology of H (our own).
+
+**Paper or page:** [Relative cohomological dimension of a relatively hyperbolic pair](https://arxiv.org/abs/2505.04349v1). It says: “For any group pair (G,H) and any G-module M, there is a long exact sequence in cohomology:”
+
+**Sources:**
+
+- [R. Bieri and B. Eckmann, Relative homology and Poincaré duality for group pairs, 1978](https://doi.org/10.1016/0022-4049(78)90012-9)
 
 ### Group cohomology as a derived functor gets long exact sequences for free
 
@@ -1762,6 +2066,40 @@
 **Sources:**
 
 - [John Tate, The higher dimensional cohomology groups of class field theory, Annals of Mathematics 56 (1952)](https://doi.org/10.2307/1969801)
+
+### Two-stage invariants give spectral sequences
+
+**Remember:** Take fixed elements first under the kernel and then under the quotient.
+
+*True by definition.* MSC 20J06 (Cohomology of groups). arXiv math.GR. Level 3: graduate.
+
+**Definition.** A G-module M is an abelian group on which G acts by automorphisms. Group cohomology measures in successive degrees how taking fixed elements can fail to preserve exact sequences of modules. One can also compute it from functions on tuples of group elements.
+
+**Problem.** For N normal in G, a spectral sequence computes group cohomology in stages, starting with Hᵖ(G/N, Hᑫ(N, M)) on its second page. The final terms of total degree n describe successive quotients of a chain of subgroups in Hⁿ(G, M).
+
+**How the definition helps.** The fixed-element definition splits the calculation into two steps, so the spectral sequence for composed functors applies. First take elements fixed by N, then take those fixed by G/N. The theorem requires modules used to resolve M to have no higher quotient cohomology after the first step (our own). One uses injective modules, meaning maps into them extend from any submodule to the whole module (our own). Taking N-fixed elements preserves injectivity because viewing a quotient action as a G-action preserves inclusions (our own).
+
+**nLab:** [group cohomology](https://ncatlab.org/nlab/show/group+cohomology). It says: “This decomposition gives rise to a Grothendieck spectral sequence for the group cohomology”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Virtual dimension handles torsion
+
+**Remember:** Pass to a torsion-free subgroup before measuring dimension.
+
+*Rules out counterexamples.* MSC 20J06 (Cohomology of groups). arXiv math.GR. Level 3: graduate.
+
+**Definition.** Integral cohomological dimension is the supremum of degrees with nonzero group cohomology for some coefficients. Group cohomology measures, degree by degree, how taking fixed elements of a group action can fail to preserve exact sequences of modules. For a torsion-free subgroup H of finite index in G, define the virtual cohomological dimension of G as the integral cohomological dimension of H. Torsion-free means that only the identity has finite order.
+
+**Problem.** The group SL₂(ℤ) has virtual cohomological dimension one but infinite integral cohomological dimension.
+
+**How the definition helps.** Passing to a torsion-free subgroup removes the obstruction from elements of finite order (our own). In SL₂(ℤ), the negative identity generates a subgroup of order two with nonzero integer cohomology in every positive even degree (our own). Cohomological dimension cannot increase on passing to a subgroup, so SL₂(ℤ) has infinite dimension (our own). It has a nontrivial free subgroup of finite index, and such groups have dimension one (our own). Independence of the chosen torsion-free subgroup is a separate theorem.
+
+**nLab:** [virtual cohomological dimension](https://ncatlab.org/nlab/show/virtual+cohomological+dimension). It says: “all such subgroups have the same cohomological dimension; this common dimension is called the virtual cohomological dimension of G”
+
+**Sources:**
+
+- [A. Borel and J.-P. Serre, Corners and arithmetic groups, 1973](https://doi.org/10.1007/bf02566134)
 
 ### Defining free groupoids by a universal property makes them preserve pushouts
 
@@ -1998,6 +2336,26 @@
 **Sources:**
 
 - [Jean Pierre Mutanguha, Limit pretrees for free group automorphisms: existence, Forum Math. Sigma 12 (2024) e57](https://arxiv.org/abs/2112.10846v3)
+
+### Strong completeness forces continuity
+
+**Remember:** Finite quotients cannot forget the topology of a strongly complete group.
+
+*Rules out counterexamples.* MSC 20E18 (Limits, profinite groups). arXiv math.GR. Level 4: research.
+
+**Definition.** A profinite group is an inverse limit of finite discrete groups, with the topology inherited from their product. It is strongly complete if every subgroup of finite index is open. A group is topologically finitely generated if finitely many elements generate a dense subgroup.
+
+**Problem.** Every abstract homomorphism from a strongly complete group to a profinite group is continuous. This applies in particular when the source is topologically finitely generated.
+
+**How the definition helps.** Strong completeness makes preimages of open normal subgroups open, because these preimages have finite index (our own). Open normal subgroups form a neighborhood base at the identity in the target, so this proves continuity (our own). In the countable product of groups of order two, sequences with finitely many nonzero entries form a proper dense vector subspace (our own). Some nonzero linear functional vanishes there, so its index-two kernel is dense and cannot be open (our own). Nikolov and Segal proved that finitely many topological generators suffice for strong completeness.
+
+**nLab:** [profinite group](https://ncatlab.org/nlab/show/profinite+group). It says: “A finite index subgroup of a profinite group is not necessarily open.”
+
+**Paper or page:** [Groups of finite type: classification and structural properties](https://arxiv.org/abs/2509.03927v1). It says: “Every topologically finitely generated profinite group is strongly complete.”
+
+**Sources:**
+
+- [N. Nikolov and D. Segal, On finitely generated profinite groups, I, 2007](https://doi.org/10.4007/annals.2007.165.171)
 
 ### Characteristic p type, defined through F\*, shows which field a group needs
 

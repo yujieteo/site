@@ -497,6 +497,26 @@
 
 - [John Guckenheimer (1975), Isochrons and phaseless sets](https://doi.org/10.1007/BF01273747)
 
+### Normally hyperbolic manifolds persist
+
+**Remember:** Faster transverse rates can hold a surface together under perturbation.
+
+*Rules out counterexamples.* MSC 34C45 (Invariant manifolds for ordinary differential equations), 34D10. arXiv math.DS. Level 3: graduate.
+
+**Definition.** A flow preserves an invariant manifold by carrying it onto itself. Along a normally hyperbolic manifold, the linearized flow preserves a splitting into tangent, stable, and unstable directions. Stable directions contract forward in time, and unstable directions contract backward. Each contraction is uniformly exponential and dominates any tangent contraction in the same time direction.
+
+**Problem.** A compact normally hyperbolic invariant manifold without boundary for a smooth flow persists as a nearby invariant manifold under sufficiently small continuously differentiable perturbations.
+
+**How the definition helps.** The uniform gap in contraction rates lets Fenichel’s theorem construct the perturbed manifold as a nearby graph (our own). Invariance alone allows every circle of constant radius on a cylinder with angular speed one and radial speed zero (our own). Giving the radius a small constant positive speed destroys every such compact invariant circle (our own).
+
+**Wikipedia:** [Normally hyperbolic invariant manifold](https://en.wikipedia.org/wiki/Normally_hyperbolic_invariant_manifold). It says: “the dynamics of Λ itself is neutral compared with the dynamics nearby”
+
+**Paper or page:** [An SIRS model with hospitalizations: economic impact by disease severity](https://arxiv.org/abs/2503.03540v3). It says: “there exists a locally invariant manifold ℳε, called slow manifold, diffeomorphic to ℳ₀”
+
+**Sources:**
+
+- [Neil Fenichel, Persistence and Smoothness of Invariant Manifolds for Flows](https://doi.org/10.1512/iumj.1972.21.21017)
+
 ### Dichotomies give unique bounded responses
 
 **Remember:** Integrate each part of the forcing in the direction that decays.
@@ -629,6 +649,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Continuous Caputo derivatives compose
+
+**Remember:** Subtract the initial value, then add the orders of integration.
+
+*Rules out counterexamples.* MSC 34A08 (Fractional ordinary differential equations), 26A33. arXiv math.CA. Level 4: research.
+
+**Definition.** For order α between zero and one, subtract f(a) before taking the Riemann–Liouville derivative on \[a,b\]. That derivative first integrates against the weight (t − s)⁻ᵅ/Γ(1 − α) from a to t, then differentiates in t. Here Γ denotes the gamma function. Continuous Caputo differentiability requires this derivative to extend continuously to a.
+
+**Problem.** Let a continuous function have a continuous Caputo derivative of order α. For 0 &lt; β &lt; α &lt; 1, applying orders β then α − β gives order α.
+
+**How the definition helps.** Subtracting the initial value lets fractional integration recover the increment f(t) − f(a) from the continuous derivative (our own). Fractional integrals add their orders under composition (our own). Thus the order-β derivative is the fractional integral of order α − β of the order-α derivative (our own). It vanishes at a, so the remaining Caputo derivative cancels that integral (our own). Without endpoint continuity, take f(t) = tᵝ on \[0,1\] (our own). Its order-β derivative is constant, while its order-α derivative grows without bound near zero (our own).
+
+**Paper or page:** [Semigroup property of fractional differential operators and its applications](https://arxiv.org/abs/2107.08914v1). It says: “Moreover, ᶜDₐ⁽ᵅ⁻ᵝ⁾f₁ = ᶜDₐᵅf”
+
+**Sources:**
+
+- [Semigroup property of fractional differential operators and its applications, Proposition 7](https://arxiv.org/abs/2107.08914v1)
+
 ### Inverse factors encode return derivatives
 
 **Remember:** The factor and the derivative of the return map grow by the same multiplier.
@@ -700,3 +738,23 @@
 **Sources:**
 
 - [V. Mikhailets, V. Molyboga, One-dimensional Schrödinger operators with singular periodic potentials, Methods Funct. Anal. Topology 14 (2008), no. 2, 184–200, arXiv:0805.1000](https://arxiv.org/abs/0805.1000)
+
+### Time gaps weight delta integrals
+
+**Remember:** Each discrete time contributes the length of its following gap.
+
+*True by definition.* MSC 34N05 (Dynamic equations on time scales or measure chains). arXiv math.CA. Level 4: research.
+
+**Definition.** A time scale is a closed subset of the real line on which time can vary. Between two times a &lt; b, extend a continuous function across each gap by its value at the gap’s left endpoint. Integrating this extension over \[a,b\] defines its delta integral.
+
+**Problem.** On a time scale, the delta integral of a continuous function is the ordinary integral of its extension. On a finite interval of isolated time points it is the sum of point values weighted by the gaps, excluding the last point.
+
+**How the definition helps.** The extension makes each gap contribute the function’s left endpoint value times the gap length (our own). On a real interval, it gives the usual integral directly (our own). The alternative definition takes the change in an antiderivative between the endpoints (our own). The equivalence uses the time-scale fundamental theorem of calculus (our own).
+
+**Wikipedia:** [Time-scale calculus](https://en.wikipedia.org/wiki/Time-scale_calculus). It says: “the delta derivative turns out to be the Radon–Nikodym derivative with respect to this measure”
+
+**Paper or page:** [Existence Result for Singular Second Order Dynamic Equations with Mixed Boundary Conditions](https://arxiv.org/abs/2506.16505v1). It says: “where the integral on the right is the usual Riemann integral from calculus.”
+
+**Sources:**
+
+- [Jonathan Eckhardt and Gerald Teschl, On the connection between the Hilger and Radon–Nikodym derivatives](https://doi.org/10.1016/j.jmaa.2011.07.041)

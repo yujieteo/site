@@ -102,6 +102,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Discriminators build all finite operations
+
+**Remember:** One equality test builds the whole lookup table.
+
+*True by definition.* MSC 08A40 (Operations and polynomials in algebraic structures, primal algebras). arXiv math.LO. Level 3: graduate.
+
+**Definition.** A polynomial operation is an expression built from variables, fixed elements and the given operations. An algebra is polynomially complete if these expressions give every operation with finitely many inputs. The discriminator d(x,y,z) returns z when x = y and x otherwise.
+
+**Problem.** For a finite algebra, polynomial completeness is equivalent to having a polynomial expression for the discriminator.
+
+**How the definition helps.** A discriminator expression builds every finite lookup table by testing one input at a time (our own). The expression d(d(x,y,u),d(x,y,v),v) selects u when x = y and v otherwise (our own). Use these tests against fixed elements and put the desired result at each leaf (our own). Conversely, polynomial completeness already supplies the discriminator (our own).
+
+**Paper or page:** [Proof complexity of universal algebra in a CSP dichotomy proof](https://arxiv.org/abs/2403.06704). It says: “A finite algebra is polynomially complete if and only if it has the ternary discriminator as a polynomial operation.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Free generators recover natural operations
 
 **Remember:** Apply the operation to the free generators to read its term.
@@ -383,6 +399,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Terminating decomposition makes magmas free
+
+**Remember:** Split uniquely and stop, and you recover the whole tree.
+
+*Rules out counterexamples.* MSC 08B20 (Free algebras). arXiv math.RA. Level 3: graduate.
+
+**Definition.** A magma is a set with a binary operation. Call a product uniquely decomposable if its value determines both factors. Also require every element to be built in finitely many steps from elements that are not products.
+
+**Problem.** A magma with these two properties is free on the elements that are not products. Every assignment of those elements to another magma extends uniquely to a map that preserves multiplication.
+
+**How the definition helps.** Each element has exactly one finite decomposition tree, so evaluating that tree in the target gives the required map (our own). Any map preserving multiplication must evaluate every tree this way (our own). Unique decomposition alone allows a one-element magma with a·a = a and no starting elements (our own).
+
+**Paper or page:** [Equidecomposable magmas](https://arxiv.org/abs/2407.17698). It says: “A magma is free iff it is initial and equidec.”
+
+**Sources:**
+
+- [Equidecomposable magmas](https://arxiv.org/abs/2407.17698)
+
 ### Common sections make set coequalizers work
 
 **Remember:** A common section lets a relation change one input while holding the others fixed.
@@ -451,6 +485,22 @@
 
 - [Garrett Birkhoff. Subdirect unions in universal algebra (1944).](https://doi.org/10.1090/S0002-9904-1944-08235-9)
 
+### Free retracts lift through surjections
+
+**Remember:** Lift the free generators, then restrict along the embedding.
+
+*True by definition.* MSC 08B30 (Injectives, projectives). arXiv math.LO. Level 3: graduate.
+
+**Definition.** A variety consists of algebras defined by equations. A free algebra on generators extends any assignment of those generators uniquely to a map preserving operations. A retract embeds in another algebra by a map with a left inverse, both preserving operations. Projectivity means that every map to a quotient lifts through its quotient map, with both maps preserving operations.
+
+**Problem.** In a variety of algebras, every retract of a free algebra lifts maps through surjective homomorphisms.
+
+**How the definition helps.** Free generators can be lifted one at a time, and the retract transfers that lift to the original algebra (our own). The reverse direction takes a free algebra on the underlying set and lifts the identity through its natural surjection (our own). The work moves to constructing the free algebra and finding a retraction (our own).
+
+**Paper or page:** [Generalization of terms via universal algebra](https://arxiv.org/abs/2502.18259). It says: “If a class of algebras K contains all its free algebras, an algebra P is projective in K if and only if it is a retract of a free algebra in K.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Regular epimorphisms recover algebra surjections
 
 **Remember:** A universal quotient cannot have a proper image.
@@ -464,6 +514,22 @@
 **How the definition helps.** The unique factorization through the quotient forces every target element into the image (our own proof). Factor e through its image. The map to the image already equalizes u and v, so it factors through e. Uniqueness makes the resulting map a right inverse to the image inclusion. Conversely, a surjection is the universal quotient identifying all pairs with equal images. The ring inclusion ℤ → ℚ shows why an ordinary epimorphism does not suffice.
 
 **nLab:** [regular epimorphism](https://ncatlab.org/nlab/show/regular+epimorphism), [epimorphism](https://ncatlab.org/nlab/show/epimorphism). It says: “the inclusion ℤ → ℚ is an epimorphism of rings, and of commutative rings.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Relative congruences keep quotients torsion-free
+
+**Remember:** Intersect the kernels as usual, but keep the new quotient in the class.
+
+*Rules out counterexamples.* MSC 08C15 (Quasivarieties). arXiv math.LO. Level 3: graduate.
+
+**Definition.** A congruence is an equivalence relation compatible with all operations. A quasivariety is a class of algebras defined by implications from finite lists of equations to single equations. A congruence is relative to the class when its quotient lies in that class.
+
+**Problem.** Relative congruences are closed under intersections. Their least upper bounds may differ from ordinary congruence joins.
+
+**How the definition helps.** The quotient by an intersection embeds in the product of the quotients, and the class is closed under subalgebras and products (our own). Consider torsion-free abelian groups, where no nonzero element has finite order (our own). In ℤ² the subgroups generated separately by (1,0) and (1,2) both have quotient ℤ (our own). Their sum contains exactly the pairs with even second coordinate, giving a quotient of order two (our own). Thus the ordinary least upper bound fails the quotient test (our own).
+
+**Wikipedia:** [Quasivariety](https://en.wikipedia.org/wiki/Quasivariety). It says: “K contains a trivial algebra and is closed under isomorphisms, subalgebras, direct products, and ultraproducts.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -630,6 +696,24 @@
 **Sources:**
 
 - [Benno van den Berg, Freek Geerligs, Examples and cofibrant generation of effective Kan fibrations, arXiv:2402.10568 (2024)](https://arxiv.org/abs/2402.10568)
+
+### Size bounds give rewriting tables
+
+**Remember:** Bound the generated algebras and put their common term operations in a table.
+
+*Makes the theorem clean to state or prove.* MSC 08B05 (Equational logic, Mal'tsev conditions). arXiv math.LO. Level 4: research.
+
+**Definition.** A pseudovariety is a class of finite algebras with the same operations, closed under quotients, subalgebras and finite products. Uniform local finiteness bounds the size of every subalgebra generated by k elements by a number depending only on k.
+
+**Problem.** Fix a positive number of variables and a uniformly locally finite pseudovariety with finitely many basic operations of finite arity. A finite table decides whether two expressions agree throughout the class.
+
+**How the definition helps.** The size bound leaves only finitely many generated algebras with a marked generating tuple, up to isomorphism (our own). Evaluate each expression on all these tuples and choose one representative expression for each resulting list of values (our own). Tabulate the result of each basic operation on the representatives (our own). Reading expressions from the variables upwards now gives identical representatives exactly when the identity holds (our own).
+
+**Paper or page:** [Finite model theory for pseudovarieties and universal algebra: preservation, definability and complexity](https://arxiv.org/abs/2212.02653). It says: “for every term t(x⃗) there is a unique i ≤ ℓ such that K ⊨ t(x⃗) ≈ uᵢ(x⃗)”
+
+**Sources:**
+
+- [Finite model theory for pseudovarieties and universal algebra: preservation, definability and complexity](https://arxiv.org/abs/2212.02653)
 
 ### Absorbing polynomials make commutators symmetric
 

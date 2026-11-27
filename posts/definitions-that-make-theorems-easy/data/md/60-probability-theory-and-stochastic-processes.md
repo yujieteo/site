@@ -1575,6 +1575,22 @@
 
 - [D. Revuz and M. Yor, Continuous Martingales and Brownian Motion, 3rd edition, Springer (1999)](https://doi.org/10.1007/978-3-662-06400-9)
 
+### An initial atom inverts renewal
+
+**Remember:** Count the initial arrival so convolution has its identity term.
+
+*True by definition. Confidence: medium.* MSC 60K05 (Renewal theory), 45E10. arXiv math.PR. Level 3: graduate.
+
+**Definition.** Take independent positive waiting times with common law F. Define the renewal measure U by summing the laws of all arrival times, including the unit mass δ₀ at time zero.
+
+**Problem.** Then U − F ∗ U = δ₀, where convolution ∗ adds independent waiting times. For locally bounded measurable forcing g vanishing before zero, u = U ∗ g solves u = g + F ∗ u.
+
+**How the definition helps.** Including the initial arrival leaves exactly the convolution identity when successive arrival laws cancel. In our own derivation, convolution by F sends each arrival law to the next one. To justify the sum, discount time t by exp(−t). The expected discount for one wait is strictly below one, so the discounted masses sum to a finite geometric series. Thus U has finite mass on bounded intervals.
+
+**Wikipedia:** [Renewal theory](https://en.wikipedia.org/wiki/Renewal_theory). It says: “The renewal function satisfies a recursive integral equation”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Iterated-integral signatures turn joining paths into multiplying in a tensor algebra
 
 **Remember:** Split the ordered times at the join to multiply signatures.

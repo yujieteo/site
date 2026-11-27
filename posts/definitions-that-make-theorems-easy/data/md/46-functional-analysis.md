@@ -717,6 +717,22 @@
 
 - [Aronszajn, N. (1950). Theory of reproducing kernels. Transactions of the American Mathematical Society 68(3), 337–404.](https://doi.org/10.1090/S0002-9947-1950-0051437-7)
 
+### Range norms make rows reproduce
+
+**Remember:** Measure outputs by inputs and the rows become evaluation vectors.
+
+*True by definition.* MSC 46E22 (Hilbert spaces with reproducing kernels (= (proper) functional Hilbert spaces, including de Branges-Rovnyak and other structured spaces)), 45P05. arXiv math.FA. Level 3: graduate.
+
+**Definition.** For each point x choose a real square-integrable kernel row kₓ. Map an input g to the function Lg with value ⟨g,kₓ⟩ at x. Give each output the norm of its shortest input, with equality of outputs at every point.
+
+**Problem.** The range is a Hilbert space with continuous point evaluations. Its reproducing kernel, which represents evaluation by an inner product, is the inner product of two kernel rows.
+
+**How the definition helps.** The shortest-input norm makes evaluation at x an inner product with the output Lkₓ. Our own extension of the finite-rank argument identifies each shortest input by projection perpendicular to the null space of L. That null space is closed because it is the intersection of the orthogonal complements of all rows. Every row is already perpendicular to it. Thus the range is complete and its kernel has values ⟨kₓ,kᵧ⟩.
+
+**Paper or page:** [Minimal-norm solution to the Fredholm integral equations of the first kind via the H-HK formulation](https://arxiv.org/abs/2406.07303v1). It says: “R(L) is a RKHS with reproducing kernel defined by K(x,x′) = Gᵀ(x)HG(x′), x,x′ ∈ D.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Defining Lorentz norms by decreasing rearrangement makes them rearrangement invariant
 
 **Remember:** Same level-set measures give the same decreasing rearrangement.
@@ -931,6 +947,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Weak gradients ignore exceptional curves
+
+**Remember:** Ignore curves that an integrable weight can make infinitely costly.
+
+*Rules out counterexamples.* MSC 46E35 (Sobolev spaces and other spaces of \`\`smooth'' functions, embedding theorems, trace theorems), 28A75. arXiv math.FA, math.MG. Level 3: graduate.
+
+**Definition.** An upper gradient is a nonnegative measurable function whose line integral bounds the absolute change between endpoints of every curve of finite length. A p-weak upper gradient permits exceptions on a family of curves of p-modulus zero. This means some nonnegative Lᵖ function has infinite line integral along every exceptional curve.
+
+**Problem.** For 1 ≤ p &lt; n, the indicator of the origin in ℝⁿ has zero as a p-weak upper gradient. Zero is not an upper gradient for that representative.
+
+**How the definition helps.** Allowing exceptions of zero p-modulus removes precisely the obstruction in our own example. Use the weight 1/\|x\| inside the unit ball and zero outside. It belongs to Lᵖ when p &lt; n, but every curve from the origin to another point accumulates infinite line integral. A straight segment leaving the origin violates the ordinary upper gradient bound with gradient zero. The cited lemma gives actual upper gradients at arbitrarily small extra cost in the integral of the pth power.
+
+**Paper or page:** [Density of continuous functions in Sobolev spaces with applications to capacity](https://arxiv.org/abs/2303.00649v3). It says: “If g ∈ Lᵖ(X) is any p-weak upper gradient for f, then for any ε &gt; 0, there exists a lower semicontinuous”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Zero boundary values make gradient norms complete
 
 **Remember:** Zero boundary values let the gradient control the whole function.
@@ -944,6 +976,22 @@
 **How the definition helps.** The Poincaré inequality lets the gradient of a function with zero boundary values control its square-integral norm. Our own conclusion uses equivalence to the original complete Sobolev norm. In our own counterexample, the constant one on a bounded interval belongs to the full Sobolev space and has zero gradient.
 
 **Paper or page:** [The S-resolvent estimates for the Dirac operator on hyperbolic and spherical spaces](https://arxiv.org/abs/2504.12725v1). It says: “∥F∥₍L²₎ ≤ Cₚ(Ω)∥F∥ᴅ, F ∈ H₀¹(Ω).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Zero traces allow zero extension
+
+**Remember:** Approximate inside the domain before extending by zero.
+
+*Rules out counterexamples.* MSC 46E35 (Sobolev spaces and other spaces of \`\`smooth'' functions, embedding theorems, trace theorems), 35J25. arXiv math.AP. Level 3: graduate.
+
+**Definition.** The Sobolev space H¹ consists of square-integrable functions whose first weak derivatives are also square-integrable. Weak derivatives move differentiation onto smooth test functions by integration by parts. Close the smooth functions of compact support inside the domain in the H¹ norm to define its zero boundary space.
+
+**Problem.** Suppose the bounded domain has a boundary locally given by graphs of Lipschitz functions. Every H¹ function with zero trace, its boundary value in the Sobolev sense, extends by zero to an H¹ function on the whole space.
+
+**How the definition helps.** Taking the closure makes zero extension continuous because extension preserves the H¹ norm on smooth functions supported inside. In our own proof, extending an approximating sequence gives the required limit on the whole space. The trace theorem identifies this closure with the functions of zero trace. Our own counterexample extends the constant one from an interval by zero. Its derivative contains endpoint point masses and cannot be square-integrable.
+
+**Wikipedia:** [Trace operator](https://en.wikipedia.org/wiki/Trace_operator). It says: “is the subspace of functions in W¹˒ᵖ(Ω) with trace zero.”
 
 **Sources:** none listed. No primary source with a working link was found.
 

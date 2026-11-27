@@ -401,6 +401,22 @@
 
 - [Chebyshev admissible meshes and Lebesgue constants of complex polynomial projections](https://arxiv.org/abs/2311.06511v1)
 
+### Strictly positive definite kernels interpolate arbitrary data
+
+**Remember:** A nonzero kernel coefficient vector cannot lie in the null space.
+
+*Rules out counterexamples.* MSC 65D12 (Numerical radial basis function approximation), 41A05. arXiv math.NA. Level 3: graduate.
+
+**Definition.** Choose a real function of distance and center one copy at each data site. Form the square matrix whose entry for two sites is the function evaluated at their distance. Call the kernel strictly positive definite if every nonzero real vector has positive quadratic form for every finite set of distinct sites.
+
+**Problem.** Any real values prescribed at finitely many distinct sites determine exactly one linear combination of the centered functions that takes those values.
+
+**How the definition helps.** A vector in the null space would give a zero quadratic form, so the square interpolation matrix is invertible (our own). A constant kernel gives an all-ones matrix and cannot fit unequal data at two sites (our own). The work moves to proving positive definiteness for the chosen kernel (our own).
+
+**Wikipedia:** [Radial basis function interpolation](https://en.wikipedia.org/wiki/Radial_basis_function_interpolation). It says: “Such functions, including the Gaussian, inverse quadratic, and inverse multiquadric are often used as radial basis functions for this reason.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Lobatto endpoints limit exactness
 
 **Remember:** Two fixed ends cost two degrees of exactness.

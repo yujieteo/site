@@ -871,6 +871,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Determinants give hypersurface adjunction
+
+**Remember:** Take the determinant, then move the conormal factor across.
+
+*True by definition.* MSC 14C20 (Divisors, linear systems, invertible sheaves), 32L05. arXiv math.AG, math.CV. Level 3: graduate.
+
+**Definition.** The canonical line bundle consists of holomorphic differential forms of top degree. The conormal bundle of a smooth hypersurface records functions vanishing on it, modulo products of two vanishing functions.
+
+**Problem.** Let D be a smooth hypersurface in a complex manifold X. Its canonical bundle is the restriction to D of the ambient canonical bundle tensored with the line bundle of D.
+
+**How the definition helps.** Taking top exterior powers turns the exact sequence of differentials into a product of line bundles. In our own calculation, restriction maps ambient differentials onto differentials along D. Its kernel is the conormal line, the dual of the hypersurface line bundle restricted to D. Moving that factor across gives the formula. The local equation for D identifies the kernel, and Serre duality identifies top forms with the bundle representing duality.
+
+**Wikipedia:** [Adjunction formula](https://en.wikipedia.org/wiki/Adjunction_formula). It says: “The conormal bundle I/I² is i\*O(−D), which, combined with the formula above, gives”
+
+**Paper or page:** [Lipschitz geometry of complex surface germs via inner rates of primary ideals](https://arxiv.org/abs/2407.14265v2). It says: “Let S be a complex surface and C ⊂ S be a compact Riemann surface embedded in S.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Factorial schemes make Weil divisors and Cartier divisors the same
 
 **Remember:** Two kinds of divisor, one meaning wherever local rings factor uniquely.
@@ -920,6 +938,24 @@
 **Paper or page:** [Divisors, Lemma 31.14.4](https://stacks.math.columbia.edu/tag/02OP). It says: “Let D = D₁ + D₂. Then there is a unique isomorphism”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Properness algebraizes holomorphic line bundles
+
+**Remember:** Without properness, holomorphic line bundles can outnumber algebraic ones.
+
+*Rules out counterexamples.* MSC 14C22 (Picard groups), 32L05. arXiv math.AG, math.CV. Level 3: graduate.
+
+**Definition.** Analytification takes a complex algebraic variety and allows holomorphic functions in place of regular algebraic functions. A complex variety is proper precisely when its associated analytic space is compact.
+
+**Problem.** Every holomorphic line bundle on the analytic space of a proper complex variety comes from an algebraic line bundle. This fails on the product of two punctured complex lines.
+
+**How the definition helps.** Properness excludes examples where the analytic space admits extra line bundles. The comparison theorem for coherent sheaves gives algebraization, first for projective varieties and then more generally for proper varieties. Our own example is the product of two punctured complex lines. Its Laurent polynomial ring has unique factorization, so every algebraic line bundle is trivial. Analytically, Cartan’s vanishing theorem and the exponential sequence classify line bundles by second integral cohomology. The space retracts onto a two-dimensional torus, whose second integral cohomology is ℤ.
+
+**nLab:** [GAGA](https://ncatlab.org/nlab/show/GAGA). It says: “Typically GAGA-type theorems hold for proper (compact) varieties, but not for non-proper varieties.”
+
+**Sources:**
+
+- [Jean-Pierre Serre, Géométrie algébrique et géométrie analytique (1956), Théorèmes 2 and 3](https://doi.org/10.5802/aif.59)
 
 ### The relative Picard functor divides out line bundles from the base
 
@@ -1966,6 +2002,24 @@
 
 - [Jacob Lurie, Derived Algebraic Geometry V: Structured Spaces, 2009, arXiv:0905.0459](https://arxiv.org/abs/0905.0459)
 
+### Total transforms preserve nodal gluing
+
+**Remember:** Keep the exceptional curve to keep the two branches joined.
+
+*Rules out counterexamples.* MSC 14B05 (Singularities in algebraic geometry), 32S35. arXiv math.AG, math.CV. Level 4: research.
+
+**Definition.** Embed a reduced complex variety in a smooth space. Resolve its ideal without changing the exterior, so its full inverse image consists of smooth hypersurfaces meeting like coordinate planes. Take this inverse image without multiplicities. The strict transform instead takes the closure of the lifted smooth part.
+
+**Problem.** Blow up the origin where two coordinate axes meet, replacing the origin by its projective line of directions. Functions on the reduced full inverse image descend exactly to functions on the original axes.
+
+**How the definition helps.** Keeping the line of directions forces the two branch values to agree at the crossing. In our own example, every regular function on that projective line is constant. Conversely, branch functions agreeing at the crossing extend across the line by that constant. The strict transform separates the branches and allows unequal values. Schwede’s theorem identifies when the full inverse image also recovers the original function sheaf with no higher cohomological corrections.
+
+**Wikipedia:** [Du Bois singularity](https://en.wikipedia.org/wiki/Du_Bois_singularity). It says: “let E be the reduced preimage of X in Z”
+
+**Sources:**
+
+- [Karl Schwede, A simple characterization of Du Bois singularities (2007), Theorem 4.6](https://doi.org/10.1112/S0010437X07003004)
+
 ### Formal moduli problems are the same as differential graded Lie algebras
 
 **Remember:** A deformation problem that respects gluing of thickenings is a Lie algebra in disguise.
@@ -2277,6 +2331,24 @@
 **Sources:**
 
 - [Agnieszka Bodzenta, Alexey Bondal, Reconstruction of a surface from the category of reflexive sheaves, arXiv:2302.04635v3 (2023)](https://arxiv.org/abs/2302.04635v3)
+
+### Reflexive pullbacks push back unchanged
+
+**Remember:** Take the double dual before pushing back.
+
+*True by definition.* MSC 14F06 (Sheaves in algebraic geometry), 32C35. arXiv math.AG. Level 4: research.
+
+**Definition.** A coherent sheaf describes locally presented modules of sections. Its dual consists of local linear maps into functions. A sheaf is reflexive when the natural map to its double dual is an isomorphism. The reflexive pullback takes the double dual after ordinary pullback.
+
+**Problem.** For a proper birational morphism between normal varieties, pushing forward the reflexive pullback of a coherent reflexive sheaf recovers that sheaf. Birational means the map identifies dense open subsets. Normal means the local rings are integrally closed domains.
+
+**How the definition helps.** Taking the double dual removes sections supported entirely over the exceptional set, where the map fails to be an isomorphism. In our own proof, pullback gives a map from original sections to sections upstairs. Conversely, every section upstairs restricts to a section downstairs away from a subset of codimension at least two. Reflexive sections on a normal variety extend uniquely across such subsets. That extension theorem gives the inverse, since a section of the double dual is determined on a dense open set.
+
+**Paper or page:** [Rational singularities and q-birational morphism](https://arxiv.org/abs/2301.04262v5). It says: “Suppose that $\\mathcal {F}$ is any reflexive sheaf on $X$. Then $\\mathcal {F}\\cong f\_\*(f<sup>\*\\mathcal</sup> {F})<sup>DD</sup>$.”
+
+**Sources:**
+
+- [Donghyeon Kim, Rational singularities and q-birational morphism, Lemma 3.6 (2024 preprint)](https://arxiv.org/abs/2301.04262v5)
 
 ### Sheaves on the generic fiber are sheaves on the family modulo torsion
 

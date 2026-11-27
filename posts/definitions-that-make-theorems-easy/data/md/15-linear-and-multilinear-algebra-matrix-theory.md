@@ -1185,6 +1185,40 @@
 
 - [The CRing Project, Various, Theorem 2.7 (McCoy) and Corollary 2.8](https://math.uchicago.edu/~amathew/CRing.pdf)
 
+### Drazin inversion respects commuting maps
+
+**Remember:** Invert on the stable image and set the nilpotent part to zero.
+
+*True by definition.* MSC 15A09 (Theory of matrix inversion and generalized inverses), 15A27. arXiv math.RA. Level 3: graduate.
+
+**Definition.** For a square matrix A, take k large enough that Aᵏ and Aᵏ⁺¹ have the same rank. Define the Drazin inverse D by inverting A on the image of Aᵏ and setting D to zero on the kernel of Aᵏ. The equivalent equation definition asks for AD = DA, DAD = D and Aᵏ⁺¹D = Aᵏ.
+
+**Problem.** Every matrix that commutes with A also commutes with its Drazin inverse.
+
+**How the definition helps.** Our own proof uses the fact that a matrix commuting with A preserves the image and kernel of every power. It therefore commutes with the ordinary inverse on the stable image and with zero on the stable kernel. The work moves to proving that the two spaces split the domain and that this inverse satisfies the defining equations.
+
+**Wikipedia:** [Drazin inverse](https://en.wikipedia.org/wiki/Drazin_inverse). It says: “The Drazin inverse is then the operation that maps invertible Jordan blocks to their inverses, and nilpotent Jordan blocks to zero.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Matching kernels make pseudoinverses reverse order
+
+**Remember:** Invert on the shared range and leave the shared kernel at zero.
+
+*Rules out counterexamples.* MSC 15A09 (Theory of matrix inversion and generalized inverses), 15A39. arXiv math.FA. Level 3: graduate.
+
+**Definition.** For a positive semidefinite matrix, its pseudoinverse inverts the matrix on its range and acts as zero on its kernel. Write C ≤ D when D − C is positive semidefinite.
+
+**Problem.** If 0 ≤ C ≤ D and the kernels match, then D⁺ ≤ C⁺. Here the superscript plus denotes the pseudoinverse. The kernel condition is also necessary.
+
+**How the definition helps.** In our own account, matching kernels let us invert ordinary positive definite matrices on a shared subspace. The work in our own proof is the order reversal theorem for ordinary positive definite inverses. Our own counterexample is C = 0 and D = I, where pseudoinversion preserves both matrices and fails to reverse the inequality. For necessity, our own argument notes that the original and reversed inequalities give opposite inclusions of the kernels.
+
+**Paper or page:** [Matrix monotonicity and concavity of the principal pivot transform](https://arxiv.org/abs/2302.04293v2). It says: “if 0 ≤ C ≤ D then D⁺ ≤ C⁺ if and only if ker C = ker D.”
+
+**Sources:**
+
+- [Kenneth Beard, Aaron Welters, Matrix monotonicity and concavity of the principal pivot transform](https://arxiv.org/abs/2302.04293v2)
+
 ### Defining minors through the wedge pairing gives Jacobi's complementary minor theorem
 
 **Remember:** Wedge products pair complementary degrees into the single line of volumes.
@@ -1235,6 +1269,42 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Schur complements explain bordered minors
+
+**Remember:** Bordered minors are entries of a single scaled Schur complement.
+
+*True by definition.* MSC 15A15 (Determinants, permanents, traces, other special matrix functions), 15A24. arXiv math.CO, math.RA. Level 3: graduate.
+
+**Definition.** Choose a leading square block P of a matrix A. Form a smaller matrix B by bordering P with one remaining row and one remaining column and taking each determinant. When P is invertible, view B instead as its Schur complement multiplied by det P. The Schur complement is the block left after elimination of P.
+
+**Problem.** Select ℓ rows and ℓ columns of B, with ℓ ≥ 1. Border P with the corresponding rows and columns of A to obtain Q. The selected determinant of B equals det Q times the (ℓ − 1)st power of det P.
+
+**How the definition helps.** In our own proof, writing the bordered determinants as one scaled Schur complement replaces many determinant expansions by a single block elimination. Scaling contributes ℓ factors of det P. Block elimination identifies one factor times the selected Schur determinant with det Q. Both sides are polynomials in the entries, so equality extends from invertible P to singular P.
+
+**Paper or page:** [Sufficient conditions for total positivity, compounds, and Dodgson condensation](https://arxiv.org/abs/2405.06069v1). It says: “det B\[δ, γ\] = (det A\[α\])ˡ⁻¹ det A\[α ∪ δ, α ∪ γ\].”
+
+**Sources:**
+
+- [Shaun Fallat, Himanshu Gupta, Charles R. Johnson, Sufficient conditions for total positivity, compounds, and Dodgson condensation](https://arxiv.org/abs/2405.06069v1)
+
+### Symmetrization turns permanents into inner products
+
+**Remember:** Each matching of the two vector lists contributes once after normalization.
+
+*True by definition.* MSC 15A15 (Determinants, permanents, traces, other special matrix functions), 15A69. arXiv math.RA, math.CO. Level 3: graduate.
+
+**Definition.** For m vectors in a real inner product space, form their tensor product in each of the m! possible orders. Sum these products and divide by √(m!). The permanent sums matrix entry products over all permutations pairing rows with columns, with coefficient one each time.
+
+**Problem.** The inner product of the two symmetrized tensors is the permanent of the matrix of pairwise inner products.
+
+**How the definition helps.** In our own explanation, products of vector inner products combine according to the relative permutation of the two lists. Each permutation occurs m! times before normalization, so the inner product gives the permanent. The work in our own account moves to constructing the tensor inner product with the desired product rule.
+
+**Paper or page:** [Separable symmetric tensors and separable anti-symmetric tensors](https://arxiv.org/abs/2202.12792v3). It says: “⟨𝒜ₛ, ℬₛ⟩ = perm(A) where perm(A) denotes the permanent of matrix A.”
+
+**Sources:**
+
+- [Changqing Xu, Separable symmetric tensors and separable anti-symmetric tensors](https://arxiv.org/abs/2202.12792v3)
+
 ### The Dieudonné determinant lets us define SL(n) over the quaternions
 
 **Remember:** Over a noncommutative field, the determinant can only be known up to commutators.
@@ -1252,6 +1322,96 @@
 **Sources:**
 
 - [Jean Dieudonné, Les déterminants sur un corps non commutatif, Bulletin de la Société Mathématique de France 71 (1943) 27–45](https://doi.org/10.24033/bsmf.1345)
+
+### Ideal classes classify matrix similarity
+
+**Remember:** Changing an ideal basis changes the multiplication matrix by similarity.
+
+*Makes the theorem clean to state or prove.* MSC 15A21 (Canonical forms, reductions, classification), 15B33. arXiv math.RA, math.NT. Level 3: graduate.
+
+**Definition.** Let A be a principal ideal domain, a domain where each ideal has one generator. Let θ solve a monic polynomial f over A that is irreducible over its fraction field K. A fractional ideal here is a nonzero finitely generated A\[θ\]-submodule of K(θ). Two such ideals represent one class if multiplication by a nonzero element of K(θ) takes one onto the other.
+
+**Problem.** For n equal to the degree of f, these ideal classes classify n-by-n matrices over A with characteristic polynomial f up to similarity.
+
+**How the definition helps.** Ideal classes give a basis-independent way to describe multiplication by θ. Our own account lets θ act on column vectors through the given matrix. Over K the resulting space has dimension one over K(θ), so changing its identification with K(θ) only rescales the ideal. Conversely, each ideal has an A-basis because it is finitely generated and torsion-free over a principal ideal domain.
+
+**Paper or page:** [Representatives of similarity classes of matrices over PIDs corresponding to ideal classes](https://arxiv.org/abs/2205.02094v2). It says: “There is a canonical bijection between the similarity classes of matrices in Mₙ(A) with characteristic polynomial f(x) and ideal classes in A\[θ\].”
+
+**Sources:**
+
+- [Lucy Knight, Alexander Stasinski, Representatives of similarity classes of matrices over PIDs corresponding to ideal classes](https://arxiv.org/abs/2205.02094v2)
+
+### Minor ideals recover Smith factors
+
+**Remember:** The first k diagonal factors generate the kth minor ideal through their product.
+
+*True by definition.* MSC 15A21 (Canonical forms, reductions, classification), 15A15. arXiv math.RA. Level 3: graduate.
+
+**Definition.** For each size k, form the ideal generated by the determinants of all k-by-k submatrices. Smith normal form uses invertible row and column changes to reach a diagonal where each entry divides the next.
+
+**Problem.** Over a principal ideal domain, where every ideal has one generator, these ideals determine the nonzero Smith entries up to invertible factors.
+
+**How the definition helps.** In Smith form, our own calculation reads the generator of each nonzero minor ideal directly from the diagonal. The product of the first k entries is a minor and divides every minor of size k. Successive generators therefore give the diagonal entries by division, up to invertible factors. The work lies in obtaining Smith form and proving that invertible row and column changes preserve the ideals.
+
+**Paper or page:** [On integral Ext² between certain Weyl modules of GLn](https://arxiv.org/abs/2411.00675v1). It says: “Let δᵢ be a g.c.d of the determinants of the i × i submatrices of A.”
+
+**Sources:**
+
+- [H. J. Stephen Smith, On systems of linear indeterminate equations and congruences](https://doi.org/10.1098/rstl.1861.0016)
+
+### Kernel compatibility makes singular elimination valid
+
+**Remember:** Elimination cannot cancel a coupling to a direction with no quadratic term.
+
+*Rules out counterexamples.* MSC 15A39 (Linear inequalities of matrices), 15A09. arXiv math.FA. Level 3: graduate.
+
+**Definition.** Write a Hermitian matrix in blocks with top row A, B and bottom row B∗, D. The star denotes conjugate transpose. The pseudoinverse D⁺ inverts D on its range and acts as zero on its kernel. The generalized Schur complement is A − BD⁺B∗.
+
+**Problem.** The whole matrix is positive semidefinite exactly when three conditions hold. Both D and the generalized Schur complement must be positive semidefinite. Also, B must vanish on the kernel of D.
+
+**How the definition helps.** In our own proof, the kernel condition allows elimination with D⁺, leaving the two diagonal blocks D and A − BD⁺B∗. Positivity forces the condition because a nonzero coupling to a kernel vector lets the quadratic form take negative values. For example, take zero diagonal entries and both off-diagonal entries equal to one. Both diagonal tests give zero, yet the original matrix has eigenvalue −1.
+
+**Paper or page:** [Matrix monotonicity and concavity of the principal pivot transform](https://arxiv.org/abs/2302.04293v2). It says: “then 0 ≤ A if and only if 0 ≤ A₂₂, ker A₂₂ ⊆ ker A₁₂, and 0 ≤ A/A₂₂.”
+
+**Sources:**
+
+- [Kenneth Beard, Aaron Welters, Matrix monotonicity and concavity of the principal pivot transform](https://arxiv.org/abs/2302.04293v2)
+
+### Minimization makes Schur complements concave
+
+**Remember:** The minimum of an average is at least the average of the minima.
+
+*True by definition.* MSC 15A39 (Linear inequalities of matrices), 15A45. arXiv math.FA. Level 3: graduate.
+
+**Definition.** Start with a positive semidefinite Hermitian block matrix. Fix the first group of variables in its quadratic form and minimize over the second group. The Schur complement is the matrix of the resulting quadratic form. The usual elimination formula uses the inverse of the eliminated block on its range and zero on its kernel.
+
+**Problem.** On positive semidefinite matrices split into fixed blocks, the Schur complement is concave. In other words, the complement of an average is at least the average of the complements in the positive semidefinite order.
+
+**How the definition helps.** In our own proof, the minimum of an average is no smaller than the average of the minima. Our own argument works pointwise in the first group, even when the two eliminated blocks have different kernels. The work moves to proving the minimization principle when the eliminated block is singular.
+
+**Paper or page:** [Matrix monotonicity and concavity of the principal pivot transform](https://arxiv.org/abs/2302.04293v2). It says: “is the unique self-adjoint matrix satisfying the minimization principle”
+
+**Sources:**
+
+- [Kenneth Beard, Aaron Welters, Matrix monotonicity and concavity of the principal pivot transform](https://arxiv.org/abs/2302.04293v2)
+
+### Harmonic mixtures preserve matrix order
+
+**Remember:** Two inversions reverse order twice, and positive mixtures keep it.
+
+*True by definition.* MSC 15A45 (Miscellaneous inequalities involving matrices), 15A39. arXiv math.FA, math.OA. Level 3: graduate.
+
+**Definition.** For 0 ≤ λ ≤ 1, the weighted harmonic mean of 1 and t is the reciprocal of (1 − λ) + λ/t. Integrate these functions against a finite positive measure on \[0,1\]. For a positive definite matrix, apply the resulting function to its eigenvalues in an orthonormal eigenbasis.
+
+**Problem.** The resulting function is operator monotone on positive definite matrices of every size. This means that if B − A is positive semidefinite, then so is f(B) − f(A).
+
+**How the definition helps.** In our own proof, each harmonic function preserves order because taking positive definite inverses reverses order twice. Our own integration step preserves the inequality because the measure is positive. The work moves to showing that every positive operator monotone function has this representation.
+
+**Paper or page:** [On a comprehensive review of a proof of Löwner's theorem](https://arxiv.org/abs/2510.00121v2). It says: “Conversely, any function given in this form is operator monotone.”
+
+**Sources:**
+
+- [Karl Löwner, Über monotone Matrixfunktionen](https://doi.org/10.1007/BF01170633)
 
 ### Clifford matrices make free Dirac solutions satisfy Klein–Gordon
 
@@ -1287,6 +1447,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Border rank restores best approximations
+
+**Remember:** Include rank limits so a minimizing sequence cannot leave the allowed set.
+
+*Rules out counterexamples.* MSC 15A69 (Multilinear algebra, tensor calculus), 15A60. arXiv math.NA. Level 3: graduate.
+
+**Definition.** In a finite-dimensional real tensor product, rank counts the fewest products of vectors that sum to a tensor. Border rank is the least r for which a sequence of tensors of rank at most r converges to the tensor.
+
+**Problem.** For any norm and any nonnegative integer r, every tensor has a nearest tensor of border rank at most r. Ordinary rank can fail this test.
+
+**How the definition helps.** Our own proof uses the closed set of tensors of border rank at most r. A bounded minimizing sequence has a convergent subsequence whose limit attains the minimum. Take the standard basis e₁, e₂ of the real plane. The tensor e₂⊗e₁⊗e₁ + e₁⊗e₂⊗e₁ + e₁⊗e₁⊗e₂ has rank three and border rank two. Its distance to tensors of rank at most two is zero, and none attains that distance.
+
+**Wikipedia:** [Tensor rank decomposition](https://en.wikipedia.org/wiki/Tensor_rank_decomposition). It says: “Therefore, its border rank is 2, which is strictly less than its rank.”
+
+**Sources:**
+
+- [Vin de Silva and Lek-Heng Lim, Tensor Rank and the Ill-Posedness of the Best Low-Rank Approximation Problem](https://doi.org/10.1137/06066518X)
+
 ### Defining divided powers as symmetric tensors makes them duals of symmetric powers
 
 **Remember:** The dual of a quotient by permutations is the space of invariant tensors.
@@ -1302,6 +1480,24 @@
 **nLab:** [divided power algebra](https://ncatlab.org/nlab/show/divided+power+algebra). It says: “We then have the relation (Sₙ(A\*))\* = Γₙ(A)”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Derivative matrices bound symmetric border rank
+
+**Remember:** A power of one linear form contributes at most one derivative direction.
+
+*True by definition.* MSC 15A69 (Multilinear algebra, tensor calculus), 15A03. arXiv math.AG. Level 3: graduate.
+
+**Definition.** For a homogeneous complex polynomial, collect all partial derivatives of a fixed order k, from zero through its degree. Their coefficient vectors form the columns of a matrix called a catalecticant. Symmetric border rank is the least r allowing approximation by sums of r powers of linear forms, with convergence of every coefficient.
+
+**Problem.** Every catalecticant rank bounds symmetric border rank from below. For the sth power of a sum of n variable squares, the order-s matrix gives the bound (s+n−1 choose s).
+
+**How the definition helps.** In our own proof, the derivative matrix turns a search over power decompositions into an ordinary matrix rank bound. All derivatives of one fixed order of a power of a linear form are multiples of the same lower power. A sum of r powers therefore has derivative matrix rank at most r. The bound survives limits because all larger minors vanish. For the quoted example, the separate calculation proves that the order-s derivative matrix has full rank.
+
+**Paper or page:** [Upper bounds for the rank of powers of quadrics](https://arxiv.org/abs/2305.06470v3). It says: “rk(qₙˢ) ≥ brk(qₙˢ) ≥ rk(Catˢ(qₙˢ))”
+
+**Sources:**
+
+- [Cosimo Flavi, Upper bounds for the rank of powers of quadrics](https://arxiv.org/abs/2305.06470v3)
 
 ### Universal-property tensor products make tensoring preserve quotients
 
@@ -1369,6 +1565,112 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Trace matrices encode field multiplication
+
+**Remember:** An invertible multiplier gives another nondegenerate trace form.
+
+*True by definition.* MSC 15B33 (Matrices over special rings (quaternions, finite fields, etc.)), 15A63. arXiv math.RA, math.NT. Level 3: graduate.
+
+**Definition.** Use a degree-n extension of a finite field and choose a basis. For each extension element a, take the matrix of the bilinear form sending x and y to the field trace of axy. The field trace sums the images under all field embeddings that fix the base field. The usual matrix of multiplication by a need not be symmetric.
+
+**Problem.** For every n, there is an n-dimensional space of n-by-n symmetric matrices over a given finite field whose nonzero members are invertible.
+
+**How the definition helps.** Our own proof places multiplication by a inside a symmetric pairing, so each matrix is automatically symmetric. The field trace pairing is nondegenerate, meaning each nonzero x pairs nontrivially with some y. Multiplication by nonzero a is invertible, so inserting it preserves nondegeneracy. Linearity in a then gives an injective map from the extension field to the space of symmetric matrices.
+
+**Paper or page:** [Properties of determinantal polynomials of subspaces of matrices over a finite field](https://arxiv.org/abs/2112.07293v1). It says: “For any positive integer n, there exists an n-dimensional subspace of symmetric matrices”
+
+**Sources:**
+
+- [Rod Gow, Properties of determinantal polynomials of subspaces of matrices over a finite field](https://arxiv.org/abs/2112.07293v1)
+
+### Choi rank counts Kraus terms
+
+**Remember:** Each Kraus term contributes one outer product to the Choi matrix.
+
+*True by definition.* MSC 15B48 (Positive matrices and their generalizations; cones of matrices), 15A03. arXiv math.OA, quant-ph. Level 3: graduate.
+
+**Definition.** Put the images of the matrix units into one block matrix, called the Choi matrix. A matrix unit has a single one and is otherwise zero. A Kraus term is the map sending X to VXV∗ for a fixed V. The star denotes conjugate transpose.
+
+**Problem.** A completely positive map preserves positive semidefiniteness when applied block by block to any positive semidefinite block matrix of compatible size. For such a map between complex matrix algebras, the fewest Kraus terms needed to represent it equal its Choi matrix rank.
+
+**How the definition helps.** Our own explanation is that each Kraus term gives a rank-at-most-one outer product after stacking the columns of V into a vector. Conversely, each term in an eigenvector factorization of the positive Choi matrix gives one Kraus term. The work moves to Choi's theorem, which identifies complete positivity with positivity of the Choi matrix.
+
+**Wikipedia:** [Choi's theorem on completely positive maps](https://en.wikipedia.org/wiki/Choi%27s_theorem_on_completely_positive_maps). It says: “any "square root" factorization of the Choi matrix CΦ = B∗B gives a set of Kraus operators.”
+
+**Sources:**
+
+- [Man-Duen Choi, Completely positive linear maps on complex matrices](https://doi.org/10.1016/0024-3795(75)90075-0)
+
+### Path sums prove total positivity
+
+**Remember:** Positive paths give positive minors when disjoint paths exist.
+
+*True by definition. Confidence: medium.* MSC 15B48 (Positive matrices and their generalizations; cones of matrices). arXiv math.RA, math.CO. Level 3: graduate.
+
+**Definition.** Draw a finite directed planar network without cycles, with sources and sinks on two boundary arcs. Order the two lists so disjoint paths preserve their order. Define each matrix entry as the sum of path weights between its source and sink. A path weight is the product of its edge weights.
+
+**Problem.** A matrix is totally positive if every square submatrix has positive determinant. With positive edge weights, this holds exactly when every equally sized choice of sources and sinks admits vertex-disjoint connecting paths.
+
+**How the definition helps.** Path sums replace a determinant with cancellation by a sum of positive terms. The Lindström–Gessel–Viennot identity cancels families that meet at a vertex. Our own deduction uses the boundary order to give every surviving family a positive sign. The sum is positive exactly when a family survives.
+
+**Paper or page:** [Scaffoldings of Totally Positive Matrices and Line Insertion](https://arxiv.org/abs/2109.06369v1). It says: “where the sum is over all vertex-disjoint path systems from I to J”
+
+**Sources:**
+
+- [Karel Casteels, Scaffoldings of Totally Positive Matrices and Line Insertion](https://arxiv.org/abs/2109.06369v1)
+
+### Positive exterior powers order eigenvalues
+
+**Remember:** The dominant eigenvalue of each exterior power reveals the next eigenvalue.
+
+*True by definition.* MSC 15B48 (Positive matrices and their generalizations; cones of matrices), 15A18. arXiv math.RA. Level 3: graduate.
+
+**Definition.** For an n-by-n real matrix, consider its exterior powers of orders 1 through n. The kth exterior power applies the matrix to each factor in an alternating product of k vectors. Its entries in the increasing-index basis are the k-by-k minors. Total positivity means every entry of every such matrix is strictly positive.
+
+**Problem.** A totally positive real square matrix has distinct positive eigenvalues.
+
+**How the definition helps.** Our own proof uses entrywise positivity to apply the Perron–Frobenius theorem to each exterior power. That theorem gives a simple positive eigenvalue strictly larger in modulus than every other eigenvalue. Order the original eigenvalues by decreasing modulus. Products of k distinct indexed eigenvalues give the spectrum of the kth exterior power, counting multiplicity. A tie across position k would produce two dominant products, contradicting strict dominance or simplicity. Each leading product is therefore positive, and successive ratios recover the individual positive eigenvalues.
+
+**nLab:** [totally positive matrix](https://ncatlab.org/nlab/show/totally+positive+matrix). It says: “Total positivity implies a number of remarkable properties; for example all eigenvalues are distinct and positive.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Positive limits keep eigenvalues nonnegative
+
+**Remember:** Limits of positive eigenvalues can only stay positive or reach zero.
+
+*True by definition.* MSC 15B48 (Positive matrices and their generalizations; cones of matrices), 15A18. arXiv math.RA. Level 3: graduate.
+
+**Definition.** Define total nonnegativity as being a limit of strictly totally positive matrices. A strictly totally positive matrix has all square minors positive. The usual definition of total nonnegativity asks that those minors be nonnegative.
+
+**Problem.** Every totally nonnegative real square matrix has only real, nonnegative eigenvalues.
+
+**How the definition helps.** In our own argument, the limit definition lets eigenvalue continuity pass positivity to nonnegativity. The work moves to the approximation theorem, which shows that matrices with nonnegative minors really are such limits. Our own argument also uses the positive spectrum theorem for strictly totally positive matrices.
+
+**Paper or page:** [Characterizing total positivity: single vector tests via Linear Complementarity, sign non-reversal, and variation diminution](https://arxiv.org/abs/2103.05624v4). It says: “the set of m × n TPₖ matrices is dense in the set of m × n TNₖ matrices.”
+
+**Sources:**
+
+- [Projesh Nath Choudhury, Characterizing total positivity: single vector tests via Linear Complementarity, sign non-reversal, and variation diminution](https://arxiv.org/abs/2103.05624v4)
+
+### Spectral bounds keep M-matrix inverses nonnegative
+
+**Remember:** The strict spectral bound makes the geometric series converge.
+
+*Rules out counterexamples.* MSC 15B48 (Positive matrices and their generalizations; cones of matrices), 15A09. arXiv math.RA. Level 3: graduate.
+
+**Definition.** Write a real matrix as sI − B with B entrywise nonnegative. A nonsingular M-matrix requires s to exceed the spectral radius of B, the largest modulus of its eigenvalues. The M-matrix definition without nonsingularity also allows equality.
+
+**Problem.** A nonsingular M-matrix has an entrywise nonnegative inverse.
+
+**How the definition helps.** In our own proof, the strict bound makes the inverse a convergent sum of nonnegative matrices. Expand (sI − B)⁻¹ as the geometric series in B/s divided by s. Convergence follows because the spectral radius of B/s is less than one. At equality the conclusion can fail. Take the two-by-two matrix B of ones and s = 2. Then (1,1) lies in the kernel of sI − B.
+
+**Wikipedia:** [M-matrix](https://en.wikipedia.org/wiki/M-matrix). It says: “A is inverse-positive. That is, A⁻¹ exists and A⁻¹ ≥ 0.”
+
+**Sources:**
+
+- [Miroslav Fiedler and Vlastimil Pták, On matrices with non-positive off-diagonal elements and positive principal minors](https://doi.org/10.21136/CMJ.1962.100526)
+
 ### The pseudoinverse lets Wedderburn rank reduction work for singular blocks
 
 **Remember:** Subtract only the directions that Y\*AX actually sees.
@@ -1406,6 +1708,24 @@
 
 - [I. M. Gel'fand, V. S. Retakh, Determinants of matrices over noncommutative rings, Functional Analysis and Its Applications 25 (1991) 91–102](https://doi.org/10.1007/BF01079588)
 - [I. Gelfand, V. Retakh, Quasideterminants, I, Selecta Mathematica 3 (1997) 517–546, arXiv:q-alg/9705026](https://arxiv.org/abs/q-alg/9705026)
+
+### Congruence classifies pairs with invertible pivots
+
+**Remember:** Cancel the left changes and keep only congruence on the right.
+
+*True by definition.* MSC 15A21 (Canonical forms, reductions, classification), 15A30. arXiv math.RA. Level 4: research.
+
+**Definition.** For complex square matrices E and Q, change the pair to (UEV, U⁻ᵀQV) with U and V invertible. Here U⁻ᵀ means the transpose of the inverse. Use EᵀQ as the matrix of the bilinear form associated to the pair.
+
+**Problem.** Take two pairs whose first matrices are both invertible. They are equivalent exactly when their products EᵀQ are congruent, meaning one equals VᵀSV for the other product S and some invertible V.
+
+**How the definition helps.** The product EᵀQ cancels the left changes of basis and records the right change by congruence. In our own proof, choosing U = E⁻¹ and V = I reduces each pair to (I,EᵀQ). On a reduced pair, choosing U = V⁻¹ realizes any congruence while preserving I. The classification of individual congruence classes remains a separate problem.
+
+**Paper or page:** [Canonical forms for pairs of matrices associated with Lagrangian and Dirac subspaces](https://arxiv.org/abs/2510.25631v1). It says: “EᵀQ (respectively, E∗Q) is ᵀ-congruent (respectively, ∗-congruent) to E₁ᵀQ₁ (respectively, E₁∗Q₁).”
+
+**Sources:**
+
+- [Sweta Das, Andrii Dmytryshyn, Volker Mehrmann, Canonical forms for pairs of matrices associated with Lagrangian and Dirac subspaces](https://arxiv.org/abs/2510.25631v1)
 
 ### Strongly minimal linearizations exist for every rational matrix and keep its symmetry
 
@@ -1480,3 +1800,39 @@
 
 - [H. Blaine Lawson, Marie-Louise Michelsohn, Spin geometry, Princeton Mathematical Series 38, Princeton University Press (1989)](https://doi.org/10.1515/9781400883912)
 - [William Kingdon Clifford, Applications of Grassmann's extensive algebra, American Journal of Mathematics 1 (1878) 350–358](https://doi.org/10.2307/2369379)
+
+### Gradient zeros make geometric rank additive
+
+**Remember:** Separate variables make the gradient zero set a product.
+
+*Makes the theorem clean to state or prove.* MSC 15A69 (Multilinear algebra, tensor calculus). arXiv math.AG. Level 4: research.
+
+**Definition.** View a complex symmetric tensor of degree at least two as a homogeneous polynomial. Its symmetric geometric rank is the number of variables minus the dimension of the set where every first derivative vanishes. This difference in dimensions is called codimension.
+
+**Problem.** Symmetric geometric rank adds when two symmetric tensors of the same degree use disjoint variable sets.
+
+**How the definition helps.** In our own proof, the sum has two independent gradients, so its zero set is the product of their zero sets. The work in our own account moves to the dimension theorem for products of algebraic sets. The codimensions add because the dimensions of the ambient spaces also add.
+
+**Paper or page:** [The symmetric geometric rank of symmetric tensors](https://arxiv.org/abs/2303.17537v1). It says: “SGR(T₁ ⊕ T₂) = SGR(T₁) + SGR(T₂).”
+
+**Sources:**
+
+- [Julia Lindberg, Pierpaola Santarsiero, The symmetric geometric rank of symmetric tensors](https://arxiv.org/abs/2303.17537v1)
+
+### Positive scaffoldings extend totally positive matrices
+
+**Remember:** Add weights above the grid and read the new row from paths.
+
+*True by definition.* MSC 15B48 (Positive matrices and their generalizations; cones of matrices). arXiv math.RA. Level 4: research.
+
+**Definition.** A matrix is totally positive if every square submatrix has positive determinant. Its Γ-scaffolding records positive parameters on a rectangular grid with paths running left and down. Each matrix entry sums path weights from one row entrance to one column exit.
+
+**Problem.** Every totally positive matrix can gain a top row while keeping all minors positive.
+
+**How the definition helps.** In scaffolding coordinates, any positive row of parameters gives a valid top extension. In our own explanation, paths from old entrances cannot visit the new top row. The larger grid still has disjoint paths for each minor. The work lies in expressing minors as path sums and recovering positive grid parameters from the original matrix.
+
+**Paper or page:** [Scaffoldings of Totally Positive Matrices and Line Insertion](https://arxiv.org/abs/2109.06369v1). It says: “the matrix X′ obtained from X by adding \[x₀₁ x₀₂ ⋯ x₀ₙ\] above the first row is totally positive.”
+
+**Sources:**
+
+- [Karel Casteels, Scaffoldings of Totally Positive Matrices and Line Insertion](https://arxiv.org/abs/2109.06369v1)

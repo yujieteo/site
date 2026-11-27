@@ -96,6 +96,74 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Subtracting wave responses removes sources
+
+**Remember:** Subtract two responses to the same source and the source disappears.
+
+*True by definition.* MSC 35A08 (Fundamental solutions to PDEs), 53C50. arXiv math-ph, gr-qc. Level 3: graduate.
+
+**Definition.** A Green operator for a linear wave operator P sends a smooth, compactly supported function f to a solution of Pu = f. The retarded operator gives a solution supported in the causal future of the source, the region reachable along future lightlike or timelike paths. The advanced operator uses the causal past. The causal propagator is their difference, with the retarded operator first.
+
+**Problem.** For a wave operator with both Green operators, the causal propagator sends every smooth compactly supported source to a solution with zero source.
+
+**How the definition helps.** Taking the difference cancels the common source by linearity. Our own comparison starts with the equation Pu = 0 and asks how to construct solutions. The difference formula gives one immediately for each source. The work lies in constructing both Green operators with the stated support.
+
+**nLab:** [causal propagator](https://ncatlab.org/nlab/show/causal+propagator). It says: “If the advanced/retarded Green functions Gₚ± exists, then the difference Gₚ ≔ Gₚ,₊ − Gₚ,₋ is called the causal Green function.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Normal form guarantees analytic existence
+
+**Remember:** Solve for the top time derivative before counting power series coefficients.
+
+*Rules out counterexamples.* MSC 35A10 (Cauchy-Kovalevskaya theorems). arXiv math.AP. Level 3: graduate.
+
+**Definition.** Put an analytic equation of order k in normal form by solving for its pure time derivative of order k. Allow spatial and mixed derivatives of total order at most k, but only lower time orders on the right.
+
+**Problem.** An analytic equation in this normal form has a unique local analytic solution for analytic initial time derivatives through order k minus one.
+
+**How the definition helps.** Solving for the highest time derivative determines each time coefficient from earlier ones. The work lies in proving convergence by bounding the coefficients with a convergent comparison series. Our own example uses the heat equation, whose second spatial derivative exceeds its first time order. For initial profile 1/(1 − x), the coefficient of time degree j at x = 0 is (2j)!/j!. The resulting series has radius of convergence zero.
+
+**Wikipedia:** [Cauchy–Kovalevskaya theorem](https://en.wikipedia.org/wiki/Cauchy%E2%80%93Kovalevskaya_theorem). It says: “However this formal power series does not converge for any non-zero values of t”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Nehari minimizers solve the equation
+
+**Remember:** Test a Nehari multiplier in the scaling direction.
+
+*True by definition.* MSC 35A15 (Variational methods applied to PDEs), 35B38. arXiv math.AP. Level 3: graduate.
+
+**Definition.** For a twice continuously differentiable energy J on a real Banach space, the Nehari set consists of nonzero u satisfying J′(u)\[u\] = 0. This requires stationarity only along the line through u.
+
+**Problem.** Suppose u minimizes J locally on the Nehari set and the second derivative of t ↦ J(tu) at t = 1 is nonzero. Then J′(u) vanishes in every direction.
+
+**How the definition helps.** The scaling direction makes the energy derivative zero while leaving the constraint derivative nonzero. In our own proof, the latter fact permits the Lagrange multiplier rule for one constraint. Evaluating that rule in the scaling direction forces the multiplier to vanish. The cited paper proves criticality for a particular minimizing problem.
+
+**Wikipedia:** [Nehari manifold](https://en.wikipedia.org/wiki/Nehari_manifold). It says: “Solutions are precisely the critical points for the energy functional”
+
+**Paper or page:** [Nehari-type ground state solutions for asymptotically periodic bi-harmonic Kirchhoff-type problems in ℝᴺ](https://arxiv.org/abs/2501.11693v3). It says: “then u₀ is a critical point of J.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Separating tests ensure weak solvability
+
+**Remember:** One condition closes the range, and the other makes it dense.
+
+*Rules out counterexamples.* MSC 35A15 (Variational methods applied to PDEs). arXiv math.AP. Level 3: graduate.
+
+**Definition.** Let B pair vectors in two real Hilbert spaces by a continuous bilinear form. Weak coercivity requires a constant c &gt; 0 such that the supremum of \|B(u,v)\| over unit tests v is at least c‖u‖. Each nonzero test must also pair nontrivially with some trial vector.
+
+**Problem.** For every continuous linear functional F on the test space, there is exactly one trial vector u satisfying B(u,v) = F(v) for every test v.
+
+**How the definition helps.** The two conditions make the range of the pairing operator both closed and dense. In our own proof, the uniform lower bound gives injectivity and closed range. The second condition gives density by Hilbert space duality. Our own counterexample pairs the right shift of a square-summable sequence with a test sequence by the inner product. The shift preserves norms, but its range misses the first coordinate vector.
+
+**Wikipedia:** [Babuška–Lax–Milgram theorem](https://en.wikipedia.org/wiki/Babu%C5%A1ka%E2%80%93Lax%E2%80%93Milgram_theorem). It says: “Suppose also that B is weakly coercive”
+
+**Sources:**
+
+- [Ivo Babuška, Error-bounds for finite element method](https://doi.org/10.1007/BF02165003)
+
 ### A parametrix transfers smoothness to solutions
 
 **Remember:** Apply the approximate inverse and the error is already smooth.
@@ -145,6 +213,40 @@
 **How the definition helps.** Keeping only the specified degree discards every product-rule term in which a derivative hits a coefficient. In our own proof, only derivatives acting on the input contribute to degree m + n. The full symbols require extra terms for differentiated coefficients. A separate coordinate-change argument identifies the leading polynomial intrinsically.
 
 **nLab:** [symbol of a differential operator](https://ncatlab.org/nlab/show/symbol+of+a+differential+operator). It says: “the principal symbol is the highest degree homogeneous component of the symbol.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Two-scale averages recover weak limits
+
+**Remember:** Ignore the fast coordinate in the test to average it in the limit.
+
+*True by definition.* MSC 35B27 (Homogenization in context of PDEs; PDEs in media with periodic structure), 35D30. arXiv math.AP. Level 3: graduate.
+
+**Definition.** Two-scale convergence tests a sequence against smooth weights φ(x,x/ε), periodic with period one in each fast coordinate. As ε tends to zero, each tested integral converges to the integral of u(x,y)φ(x,y) over position x and the unit cell y.
+
+**Problem.** If a bounded sequence in Lᵖ converges in this two-scale sense, its ordinary weak limit is the cell average of u. Here 1 &lt; p &lt; ∞, and ordinary weak convergence tests integrals against fixed functions in the dual space.
+
+**How the definition helps.** Tests independent of the fast coordinate read the cell average directly. In our own proof, boundedness and approximation extend the identity from smooth tests to all dual tests. The separate compactness theorem gives a two-scale limit along a subsequence of any bounded sequence.
+
+**Paper or page:** [Homogenization of high-contrast composites under differential constraints](https://arxiv.org/abs/2104.11306v2). It says: “If $u\_\\varepsilon \\stackrel{2}{\\rightharpoonup}u$ weakly two-scale in $L<sup>p$</sup>, then $u\_\\varepsilon \\rightharpoonup \\int<sub>Q</sub> u(\\,\\cdot\\,,y)\\mathrm{d}y$ weakly in $L<sup>p</sup>(\\Omega;\\mathbb{R}<sup>N</sup>)$.”
+
+**Sources:**
+
+- [Elisa Davoli, Martin Kružík, Valerio Pagliari. Homogenization of high-contrast composites under differential constraints. 2104.11306v2](https://arxiv.org/abs/2104.11306v2)
+
+### Positive eigenvalues prevent negative responses
+
+**Remember:** Positive energy forces the negative part to vanish.
+
+*Rules out counterexamples.* MSC 35B50 (Maximum principles in context of PDEs), 35J10. arXiv math.AP. Level 3: graduate.
+
+**Definition.** For a real potential V, the energy integrates \|∇u\|² + Vu². The lowest Dirichlet eigenvalue is the infimum of energy divided by squared L² norm over nonzero functions with zero boundary values and square-integrable first derivatives.
+
+**Problem.** On a smooth bounded connected domain, suppose V is bounded and the lowest eigenvalue is positive. Any weak solution of −Δu + Vu = f with nonnegative square-integrable f and nonnegative boundary values is nonnegative almost everywhere.
+
+**How the definition helps.** Positive energy for every nonzero competitor rules out a negative part in our own proof. Test the integrated equation with max(−u,0), which vanishes at the boundary. Its energy is nonpositive, so it vanishes. At eigenvalue zero, the negative of a positive first eigenfunction gives a counterexample with zero forcing and boundary values. Existence of that eigenfunction uses elliptic spectral theory.
+
+**Paper or page:** [Positive solutions of quasilinear elliptic equations with Fuchsian potentials in Wolff class](https://arxiv.org/abs/2204.08061v1). It says: “The weak maximum principle for $Q<sub>p,A,V</sub>$ holds true in ω:”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -217,6 +319,24 @@
 **Sources:**
 
 - [Weyl, H. (1940). The method of orthogonal projection in potential theory. Duke Mathematical Journal 7, 411–444.](https://doi.org/10.1215/S0012-7094-40-00725-6)
+
+### Moving-point limits preserve viscosity inequalities
+
+**Remember:** Let the evaluation point move with the touching test.
+
+*True by definition.* MSC 35D40 (Viscosity solutions to PDEs), 35B30. arXiv math.AP. Level 3: graduate.
+
+**Definition.** The upper half-relaxed limit takes the limit superior while the approximation parameter tends to zero and the evaluation point tends to x. The lower limit takes the corresponding limit inferior. Pointwise limits would hold x fixed.
+
+**Problem.** Consider locally uniformly bounded viscosity solutions on a common open domain, with continuous operators converging locally uniformly in all arguments. Assume each operator decreases weakly when the matrix of second derivatives increases. The upper limit satisfies the limiting inequality at smooth upper touches, and the lower limit satisfies the reverse inequality at smooth lower touches.
+
+**How the definition helps.** In our own proof, allowing the evaluation point to move captures nearby points where a smooth test touches an approximation. A strict local touch at the limit gives nearby extrema along a sequence realizing the limit. The inequalities at those extrema pass to the limit by operator convergence. Identifying both limits as one solution also requires comparison and compatible boundary bounds.
+
+**Paper or page:** [On the homogenization of second order level set PDE in periodic media](https://arxiv.org/abs/2011.15062v3). It says: “are sub- and supersolution, respectively, of the following problems:”
+
+**Sources:**
+
+- [Michael G. Crandall, Hitoshi Ishii and Pierre-Louis Lions. User’s guide to viscosity solutions of second order partial differential equations. Bulletin of the American Mathematical Society, 1992.](https://doi.org/10.1090/S0273-0979-1992-00266-5)
 
 ### Touching tests preserve maxima of subsolutions
 
@@ -308,6 +428,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Weak flux needs only traces
+
+**Remember:** Two lifts differ by a zero-boundary test.
+
+*True by definition. Confidence: medium.* MSC 35J67 (Boundary values of solutions to elliptic equations and elliptic systems), 46E35. arXiv math.AP. Level 3: graduate.
+
+**Definition.** A trace is the boundary value assigned to a function v whose value and weak first derivatives are square-integrable. To define outward flux on that trace, integrate F · ∇v + v div F over the domain.
+
+**Problem.** On a bounded domain with locally Lipschitz boundary graphs, suppose the vector field F and its weak divergence are square-integrable. The integral defines a continuous functional on boundary traces, independent of the chosen extension v.
+
+**How the definition helps.** In our own proof, changing the extension adds a function with zero trace. The trace theorem approximates it in value and first derivatives by smooth functions supported inside. The definition of weak divergence cancels the integral for each approximation. Cauchy–Schwarz passes this cancellation to the limit and bounds the functional by the least extension norm. For smooth fields, integration by parts recovers the classical outward component.
+
+**Wikipedia:** [Green's identities](https://en.wikipedia.org/wiki/Green%27s_identities). It says: “is essentially the higher dimensional equivalent of integration by parts”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### An obstacle minimizer is harmonic off contact
 
 **Remember:** Where there is room to move both ways, the Laplacian vanishes.
@@ -323,6 +459,40 @@
 **Wikipedia:** [Obstacle problem](https://en.wikipedia.org/wiki/Obstacle_problem). It says: “A variational argument shows that, away from the contact set, the solution to the obstacle problem is harmonic.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Sorting competitors orders obstacle solutions
+
+**Remember:** Sort the competitors to sort the obstacle solutions.
+
+*True by definition. Confidence: medium.* MSC 35J86 (Unilateral problems for linear elliptic equations and variational inequalities with linear elliptic operators), 35B51. arXiv math.AP. Level 3: graduate.
+
+**Definition.** Fix boundary values and a lower bound called the obstacle. Among functions above the obstacle with those boundary values, minimize the integral of the squared gradient. Competitors and their weak first derivatives must be square-integrable.
+
+**Problem.** Take two ordered obstacles on a bounded domain with locally Lipschitz boundary graphs. Suppose each problem admits a competitor with the prescribed common boundary values. Then the two minimizers have the same order almost everywhere.
+
+**How the definition helps.** In our own proof, sorting the minimizers produces two competitors with the same total energy. Their minimum clears the lower obstacle, and their maximum clears the higher one. Minimality forces each sorted competitor to attain the original minimum for its problem. Strict convexity with fixed boundary data gives uniqueness and hence the ordering. The minimization formula avoids comparing the two differential inequalities directly.
+
+**Wikipedia:** [Obstacle problem](https://en.wikipedia.org/wiki/Obstacle_problem). It says: “A solution to the obstacle problem is a function u ∈ K which minimizes the energy integral”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Absolute minimization rejects hidden slopes
+
+**Remember:** A global slope can hide a bump that local tests see.
+
+*Rules out counterexamples.* MSC 35J94 (Elliptic equations with infinity-Laplacian), 35D40. arXiv math.AP. Level 3: graduate.
+
+**Definition.** A Lipschitz constant bounds the ratio of change in value to distance between points. An absolutely minimizing extension minimizes that constant on each interior subdomain among functions agreeing on its boundary.
+
+**Problem.** For a bounded Euclidean domain with Lipschitz boundary data, absolute minimizers solve the infinity Laplace equation. Its viscosity formulation checks the second derivative along the gradient using smooth functions touching from above or below. A minimizer of the global Lipschitz constant can fail this equation.
+
+**How the definition helps.** Local minimization tests slopes even where the boundary data leave room for a bump. In our own example, prescribe max(x,0) on the boundary of the square (−2,2)². Add a nonzero smooth bump with gradient magnitude at most one inside a disk in the left half. The resulting function still has global Lipschitz constant one, which the boundary values require. On the disk, replacing the bump by zero improves the local constant. The equivalence with viscosity solutions supplies the differential conclusion.
+
+**Paper or page:** [Comparison Principles for the Finsler Infinity Laplacian with Applications to Minimal Lipschitz Extensions](https://arxiv.org/abs/2405.05684v1). It says: “In addition to the equivalences (i), (ii), and (iii) stated above, $\\varphi$-AMLE are characterized by the following condition: (iv) $u \\in \\mathrm{Sub}<sub>\\varphi</sub>(U) \\cap \\mathrm{Super}<sub>\\varphi</sub>(U)$.”
+
+**Sources:**
+
+- [Peter S. Morfe. Comparison Principles for the Finsler Infinity Laplacian with Applications to Minimal Lipschitz Extensions. 2405.05684v1](https://arxiv.org/abs/2405.05684v1)
 
 ### Convexity picks one Monge–Ampère branch
 
@@ -390,6 +560,22 @@
 
 - [Mark Kac, On distributions of certain Wiener functionals (1949).](https://doi.org/10.1090/S0002-9947-1949-0027960-X)
 
+### Self-adjoint heat kernels are symmetric
+
+**Remember:** Taking the adjoint swaps the two positions in a real heat kernel.
+
+*True by definition. Confidence: medium.* MSC 35K08 (Heat kernel), 35P05. arXiv math.AP. Level 3: graduate.
+
+**Definition.** The heat operator maps an initial temperature to its temperature at time t. Its integral kernel K(t,x,y) weights the contribution from y to x. This defines K through the solution operator instead of starting with heat from a point source.
+
+**Problem.** Take a real, nonnegative, self-adjoint scalar elliptic operator of order two with smooth coefficients on a compact manifold without boundary. For t &gt; 0 its heat kernel satisfies K(t,x,y) = K(t,y,x).
+
+**How the definition helps.** In our own proof, taking the adjoint swaps the variables of a real integral kernel. The spectral theorem makes the heat operator self-adjoint when its generator is self-adjoint. Equality of operators gives equality of kernels almost everywhere. Elliptic heat theory supplies a smooth kernel for positive time, so symmetry holds everywhere.
+
+**nLab:** [heat kernel](https://ncatlab.org/nlab/show/heat+kernel). It says: “The heat kernel K for P is then the kernel of an integral operator representing the heat operator:”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Minimizing steps pay for movement
 
 **Remember:** Doing nothing is always a candidate and costs no movement.
@@ -408,6 +594,24 @@
 
 - [Yanghong Huang, Edoardo Mainini, Juan Luis Vázquez, Bruno Volzone, Nonlinear aggregation-diffusion equations with Riesz potentials (2022).](https://arxiv.org/abs/2205.13520v1)
 
+### Accretive time steps preserve contraction
+
+**Remember:** Each step is nonexpansive, so their limit cannot expand.
+
+*True by definition.* MSC 35K90 (Abstract parabolic equations), 35B30. arXiv math.AP. Level 3: graduate.
+
+**Definition.** An operator A on a Banach space is accretive if ∥u−v∥ ≤ ∥u−v+h(Au−Av)∥ for every h &gt; 0 and all domain points. Maximal accretivity also requires that u+hAu can attain every value for each h. A mild solution at time t is the limit of n implicit steps of length t/n.
+
+**Problem.** For a densely defined, single-valued, maximally accretive operator A, two mild solutions of u′ + Au = 0 stay within their initial distance.
+
+**How the definition helps.** In our own proof, accretivity says that solving u+hAu = f cannot increase distances between inputs. Iterating the step and taking its limit preserves the bound, even when the solutions have no time derivative. The Crandall–Liggett theorem establishes existence of that limit.
+
+**Paper or page:** [Lipschitz stability for Bayesian inference in porous medium tissue growth models](https://arxiv.org/abs/2506.04769v1). It says: “Moreover, the family of operators Sₜ(A), t &gt; 0, is a strongly continuous semigroup of contractive mappings”
+
+**Sources:**
+
+- [M. G. Crandall and T. M. Liggett. Generation of Semi-Groups of Nonlinear Transformations on General Banach Spaces. American Journal of Mathematics, 1971.](https://doi.org/10.2307/2373376)
+
 ### Relabeling curves preserves curvature motion
 
 **Remember:** An increasing relabeling leaves the unit normal unchanged.
@@ -425,6 +629,22 @@
 **Sources:**
 
 - [Stanley Osher and James A. Sethian, Fronts propagating with curvature-dependent speed: Algorithms based on Hamilton-Jacobi formulations (1988).](https://doi.org/10.1016/0021-9991(88)90002-2)
+
+### Real wave speeds need independent modes
+
+**Remember:** Real speeds alone do not separate the waves.
+
+*Rules out counterexamples.* MSC 35L40 (First-order hyperbolic systems). arXiv math.AP. Level 3: graduate.
+
+**Definition.** For a constant real matrix A in one spatial dimension, call the first-order system strongly hyperbolic when A has a real eigenbasis.
+
+**Problem.** On the real line, consider ∂ₜu + A∂ₓu = 0 with square-integrable initial data. Strong hyperbolicity bounds the solution norm by a fixed multiple of the initial norm at every time.
+
+**How the definition helps.** In our own proof, the eigenbasis separates the system into scalar equations that translate their data without changing norms. The work in our own proof is finding the eigenbasis, or choosing a positive inner product that makes A symmetric. Our own counterexample uses the two-by-two Jordan block with zero diagonal and upper-right entry 1. The solution’s first component then contains minus time times the derivative of the second initial component. That derivative is not bounded by the square-integral norm of the data.
+
+**Wikipedia:** [Hyperbolic partial differential equation](https://en.wikipedia.org/wiki/Hyperbolic_partial_differential_equation). It says: “has only real eigenvalues and is diagonalizable.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### The entropy condition picks the one physical shock solution
 
@@ -511,6 +731,40 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### The Leray projection removes pressure
+
+**Remember:** Pressure is a gradient, so the incompressible projection erases it.
+
+*True by definition.* MSC 35Q30 (Navier-Stokes equations), 35D30. arXiv math.AP. Level 3: graduate.
+
+**Definition.** On a torus the Leray projection is the orthogonal projection onto square-integrable vector fields with zero divergence. Applying it to the momentum equation gives an equation for velocity alone.
+
+**Problem.** For smooth periodic incompressible Navier–Stokes flow, adding a periodic gradient ∇φ to the force preserves the velocity when pressure changes from p to p+φ.
+
+**How the definition helps.** The projection removes both the pressure gradient and the added gradient from the velocity equation. In our own proof, integration by parts makes every periodic gradient orthogonal to each divergence-free field. Recovering pressure from the projected equation uses the Helmholtz decomposition, which identifies the removed component as a gradient.
+
+**Wikipedia:** [Leray projection](https://en.wikipedia.org/wiki/Leray_projection). It says: “The pressure and the divergence free condition are "projected away".”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Weak transport conserves mass
+
+**Remember:** A constant spatial test reads the total mass.
+
+*True by definition.* MSC 35Q49 (Transport equations), 35D30. arXiv math.AP. Level 3: graduate.
+
+**Definition.** A weak transport solution satisfies the equation after integration against smooth tests. Integration by parts puts the derivatives on the test function, so the transported density can be rough.
+
+**Problem.** On a torus, let an integrable, divergence-free velocity transport a bounded initial density. Every bounded weak solution preserves its initial mass for almost every time.
+
+**How the definition helps.** A spatially constant test eliminates the transport term in our own proof. The remaining identity says that total mass has zero time derivative and takes its initial value. The paper constructs a solution whose integrals against spatial tests vary continuously, so its identity holds at every time.
+
+**Paper or page:** [Non-Uniqueness and Inadmissibility of the Vanishing Viscosity Limit of the Passive Scalar Transport Equation](https://arxiv.org/abs/2307.00809v4). It says: “(Conservation of Mass) \\quad \\int\_{\\mathbb{T}<sup>d}</sup> f(\\cdot,t)\\,dx = \\int\_{\\mathbb{T}<sup>d}</sup> f<sub>0</sub>\\,dx .”
+
+**Sources:**
+
+- [Lucas Huysmans, Edriss S. Titi. Non-Uniqueness and Inadmissibility of the Vanishing Viscosity Limit of the Passive Scalar Transport Equation. 2307.00809v4](https://arxiv.org/abs/2307.00809v4)
+
 ### The Hodge star makes vacuum Maxwell equations conformally invariant
 
 **Remember:** In four dimensions the star on 2-forms ignores metric rescaling.
@@ -544,6 +798,24 @@
 **Sources:**
 
 - [Luis Caffarelli and Luis Silvestre, An Extension Problem Related to the Fractional Laplacian (2007).](https://doi.org/10.1080/03605300600987306)
+
+### Exterior data fix fractional extensions
+
+**Remember:** A nonlocal equation can see beyond the boundary.
+
+*Rules out counterexamples.* MSC 35R11 (Fractional partial differential equations), 35J25. arXiv math.AP. Level 3: graduate.
+
+**Definition.** For 0 &lt; s &lt; 1, the integral fractional Laplacian compares a value at x with values at all other points. Its Dirichlet problem prescribes the function everywhere outside the interval. The energy adds squared differences between values at pairs of points, weighted more heavily at shorter distances.
+
+**Problem.** A smooth function of compact support supplies exterior values on the complement of a bounded interval. There is a unique energy-minimizing extension, up to equality almost everywhere. Endpoint values alone do not determine the interior solution.
+
+**How the definition helps.** Full exterior data fix the outside values in every pairwise comparison. In our own example, compare zero data with a nonnegative, nonzero smooth bump supported away from the interval. Both vanish at the endpoints. Extending the bump by zero inside gives a strictly negative fractional Laplacian there. The cited existence and uniqueness theorem supplies the extension whose fractional Laplacian vanishes.
+
+**Paper or page:** [Perron solutions and boundary regularity for nonlocal nonlinear Dirichlet problems](https://arxiv.org/abs/2406.05994v3). It says: “and in particular Hg ≡ g outside Ω.”
+
+**Sources:**
+
+- [Anders Björn, Jana Björn, Minhyun Kim. Perron solutions and boundary regularity for nonlocal nonlinear Dirichlet problems. 2406.05994v3](https://arxiv.org/abs/2406.05994v3)
 
 ### Fourier multipliers factor the half Laplacian through Riesz transforms
 
@@ -617,6 +889,22 @@
 
 - [Shiqi Ma, Lecture notes for pseudodifferential operators and microlocal analysis, arXiv:2107.12839v1 (2021)](https://arxiv.org/abs/2107.12839v1)
 
+### Projection gives Calderón identities
+
+**Remember:** Take traces after reconstruction to get a projector.
+
+*True by definition.* MSC 35S15 (Boundary value problems for PDEs with pseudodifferential operators). arXiv math.AP. Level 3: graduate.
+
+**Definition.** On a smooth bounded domain, record a harmonic function’s boundary value and outward normal derivative as a pair. The interior Calderón operator takes a proposed pair, reconstructs a harmonic function by boundary integration, and records its pair.
+
+**Problem.** Let V give the boundary value of the potential formed from a surface density. Let K give the averaged boundary value when the kernel uses a normal derivative at the source, and let K′ be its adjoint. These boundary operators satisfy KV = VK′.
+
+**How the definition helps.** Reconstruction followed by taking boundary values gives a projection, so its matrix equals its square. Our own calculation reads the upper-right entry of this identity as V − KV + VK′ = V. This avoids comparing the two composed integral kernels directly. The work lies in Green’s representation formula, which recovers each harmonic function from its boundary pair.
+
+**Wikipedia:** [Calderón projector](https://en.wikipedia.org/wiki/Calder%C3%B3n_projector). It says: “As the Calderón operator is a projector”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Causal support and adjoints force uniqueness
 
 **Remember:** Pair a future-supported solution with a past-supported inverse.
@@ -671,6 +959,24 @@
 
 - [Robert Lasarzik, Maximilian E. V. Reiter, Analysis and numerical approximation of energy-variational solutions to the Ericksen--Leslie equations, arXiv:2210.17242v1 (2022)](https://arxiv.org/abs/2210.17242v1)
 
+### Transverse wave fronts allow restriction
+
+**Remember:** Control frequencies normal to the submanifold before restricting a distribution.
+
+*Rules out counterexamples.* MSC 35A27 (Microlocal methods and methods of sheaf theory and homological algebra applied to PDEs). arXiv math.AP. Level 4: research.
+
+**Definition.** A distribution acts on smooth test functions. Its order-s Sobolev wave front set records where its localized Fourier transform fails a weighted square-integrability test and in which directions. A conormal covector is a nonzero linear function that vanishes on the tangent space of the submanifold.
+
+**Problem.** Let a smooth embedded submanifold have positive dimension and codimension c, the number of missing dimensions. If s &gt; c/2 and the order-s wave front set avoids its conormal covectors, the distribution has a restriction. Its order-(s − c/2) wave front set lies among the tangential restrictions of the original singular covectors over the submanifold.
+
+**How the definition helps.** Excluding conormal directions gives the Fourier control needed in the directions that restriction integrates out. This explanation is our own. The work lies in the cited continuous extension theorem for pullbacks, applied to the inclusion of the submanifold. Our own counterexample is mass distributed along a line in the plane. Its singular covectors are normal to the line, and smooth approximations can diverge there.
+
+**Paper or page:** [Spaces of distributions with Sobolev wave front in a fixed conic set: compactness, pullback by smooth maps and the compensated compactness theorem](https://arxiv.org/abs/2408.10741v1). It says: “If f has constant rank l ≥ 1, then this is valid when r₂ − r₁ ≥ (n − l)/2 and r₂ &gt; (n − l)/2.”
+
+**Sources:**
+
+- [Stevan Pilipović and Bojan Prangoski, Spaces of distributions with Sobolev wave front in a fixed conic set: compactness, pullback by smooth maps and the compensated compactness theorem](https://arxiv.org/abs/2408.10741v1)
+
 ### Viscosity solutions survive uniform limits, so monotone numerical schemes converge
 
 **Remember:** Derivatives sit on test functions, so limits of solutions stay solutions.
@@ -707,6 +1013,60 @@
 
 - [Marco Pozza, Large Time Behavior of Solutions to Hamilton-Jacobi Equations on Networks (2024).](https://arxiv.org/abs/2303.03872v3)
 
+### Cordès coefficients restore Dirichlet uniqueness
+
+**Remember:** Rescale toward the Laplacian until the error is a contraction.
+
+*Rules out counterexamples.* MSC 35J15 (Second-order elliptic equations), 35D35. arXiv math.AP. Level 4: research.
+
+**Definition.** Let A be a measurable symmetric matrix field whose eigenvalues stay between fixed positive bounds. The Cordès condition requires a positive scalar multiplier γ(x) with ∥γ(x)A(x)−I∥ ≤ k &lt; 1 almost everywhere. The matrix norm is the square root of the sum of squared entries.
+
+**Problem.** On a smooth bounded convex domain, prescribe zero boundary values and square-integrable forcing f. Under the Cordès condition, the equation ∑ᵢⱼ Aᵢⱼ ∂ᵢ∂ⱼu = f holds almost everywhere and has a unique solution with square-integrable derivatives through order two.
+
+**How the definition helps.** In our own proof, the uniform bound makes the rescaled equation a contraction around the Laplacian. This uses solvability for the Laplacian and the convex-domain estimate bounding second derivatives by the Laplacian in square mean. In our own counterexample on the three-dimensional unit ball, take radial eigenvalue six and tangential eigenvalues one. The function u(r) = ∛(r²) − 1, where r is radius, has zero boundary values and solves the homogeneous equation almost everywhere. Its second derivatives grow like \|x\| to the power −4/3, so they are square-integrable.
+
+**Paper or page:** [A least-squares Galerkin approach to gradient and Hessian recovery for nondivergence-form elliptic equations](https://arxiv.org/abs/1909.00491v2). It says: “satisfies the Cordes condition with λ = 0”
+
+**Sources:**
+
+- [Iain Smears and Endre Süli. Discontinuous Galerkin Finite Element Approximation of Nondivergence Form Elliptic Equations with Cordès Coefficients. 2013.](https://doi.org/10.1137/120899613)
+
+### One distance tests boundary regularity
+
+**Remember:** One distance profile tests every continuous datum.
+
+*Makes the theorem clean to state or prove.* MSC 35J67 (Boundary values of solutions to elliptic equations and elliptic systems). arXiv math.AP. Level 4: research.
+
+**Definition.** Consider a bounded open set and the fractional p-Laplace equation, with fractional order between zero and one and exponent p greater than one. Its Dirichlet problem prescribes values on the whole exterior. Call a boundary point regular if solutions approach its prescribed value for every bounded continuous exterior datum having a limit at infinity.
+
+**Problem.** Let the test datum be distance to the boundary point, capped at one. Regularity is equivalent to its energy solution tending to zero as one approaches the point from inside.
+
+**How the definition helps.** The capped distance vanishes at the chosen point and stays uniformly positive outside every neighborhood of it. In our own explanation, multiples of this profile and constant shifts bound any bounded datum continuous at the point. Comparison carries the bounds inside. The cited theorem identifies regularity defined using energy solutions with regularity defined by Perron’s method of upper and lower bounds.
+
+**Paper or page:** [Perron solutions and boundary regularity for nonlocal nonlinear Dirichlet problems](https://arxiv.org/abs/2406.05994v3). It says: “where dₓ₀(x) := min {1, \|x − x₀\|}.”
+
+**Sources:**
+
+- [Anders Björn, Jana Björn, and Minhyun Kim, Perron solutions and boundary regularity for nonlocal nonlinear Dirichlet problems](https://arxiv.org/abs/2406.05994v3)
+
+### Cone comparison permits disjoint sums
+
+**Remember:** In the sum metric a distance cone splits into two cones.
+
+*Makes the theorem clean to state or prove.* MSC 35J94 (Elliptic equations with infinity-Laplacian), 35D40. arXiv math.AP. Level 4: research.
+
+**Definition.** A distance cone has the form a + b d(x,z), where z is its vertex. Two-sided cone comparison passes upper and lower cone bounds from the boundary of each relatively compact open test region to its interior. The vertex must lie outside the region.
+
+**Problem.** Suppose both metric spaces have shortest paths and compact closed bounded sets. Let continuous functions u and v satisfy two-sided cone comparison on open domains in the respective spaces. Then u(x)+v(y) satisfies the same comparison on their product when distances add.
+
+**How the definition helps.** Cone comparison states the product theorem using distances alone, even on spaces without derivatives. In our own reading, adding the distances splits every product cone into separate distance terms with the same slope. The cited theorem proves that comparison on the two factors passes to their disjoint sum. That passage requires an argument because the product vertex can project inside a test section.
+
+**Paper or page:** [Superposition Property in Disjoint Variables for the Infinity Laplace Equation](https://arxiv.org/abs/2508.17106v2). It says: “Similar results for functions that satisfy comparison with cones from below and from both sides hold.”
+
+**Sources:**
+
+- [Qing Liu, Juan J. Manfredi, Xiaodan Zhou. Superposition Property in Disjoint Variables for the Infinity Laplace Equation. 2508.17106v2](https://arxiv.org/abs/2508.17106v2)
+
 ### A profile is reachable when backward-then-forward evolution returns it
 
 **Remember:** Go back once, then forward, to test whether the profile is reachable.
@@ -742,6 +1102,24 @@
 **Sources:**
 
 - [Henri Berestycki, Grégoire Nadin, Luca Rossi, Generalized principal eigenvalues for parabolic operators in bounded domains, arXiv:2502.16522v1 (2025)](https://arxiv.org/abs/2502.16522v1)
+
+### Energy admissibility prevents spontaneous flow
+
+**Remember:** Zero initial energy leaves no energy for motion.
+
+*Rules out counterexamples.* MSC 35Q30 (Navier-Stokes equations), 35D30. arXiv math.AP. Level 4: research.
+
+**Definition.** A weak flow satisfies the momentum equation after integration against smooth test fields. An energy-admissible flow also bounds its kinetic energy plus accumulated viscous loss by its initial energy when no force acts.
+
+**Problem.** Can an unforced fluid start moving from rest if its weak solution satisfies the energy inequality?
+
+**How the definition helps.** The energy inequality bounds two nonnegative quantities by zero in our own argument. Zero kinetic energy forces the velocity to vanish almost everywhere. For a specific model with strengthened viscosity on the three-dimensional torus, the cited theorem gives infinitely many weak flows starting from rest.
+
+**Paper or page:** [Non-uniqueness of weak solutions for a logarithmically supercritical hyperdissipative Navier-Stokes system](https://arxiv.org/abs/2406.05853v1). It says: “In particular, there are infinitely many weak solutions with zero initial condition.”
+
+**Sources:**
+
+- [Marco Romito, Francesco Triggiano. Non-uniqueness of weak solutions for a logarithmically supercritical hyperdissipative Navier-Stokes system. 2406.05853v1](https://arxiv.org/abs/2406.05853v1)
 
 ### Particle projection gives shared cluster velocity
 
@@ -850,3 +1228,21 @@
 **Sources:**
 
 - [Jongmyeong Kim, Minhyun Kim, Ki-Ahm Lee, The fractional p-Laplacian on hyperbolic spaces, arXiv:2210.07029 (2025)](https://arxiv.org/abs/2210.07029v2)
+
+### Perron envelopes preserve order
+
+**Remember:** Higher data leave fewer upper candidates.
+
+*True by definition.* MSC 35R11 (Fractional partial differential equations). arXiv math.AP. Level 4: research.
+
+**Definition.** For the fractional p-Laplace equation, values outside the domain influence the equation inside. Upper Perron candidates are bounded below and dominate local comparison solutions inside. They dominate the exterior data and have boundary lower limits at least as large as the prescribed values. Take their pointwise infimum to define the upper Perron solution.
+
+**Problem.** For bounded continuous exterior data on a bounded domain, increasing the data can only increase the upper Perron solution or leave it unchanged.
+
+**How the definition helps.** Requiring candidates to dominate the data makes their sets nested when the data increase. Taking infima gives the order inequality directly. The alternative definition requires candidates to equal the data outside. Those candidate sets need not be nested. The cited theorem proves that the two infima agree for these data, so the same order inequality holds for both.
+
+**Paper or page:** [Perron solutions and boundary regularity for nonlocal nonlinear Dirichlet problems](https://arxiv.org/abs/2406.05994v3). It says: “g₁ ≤ g₂ in Ωᶜ, then Q̄ g₁ ≤ Q̄ g₂ in ℝⁿ.”
+
+**Sources:**
+
+- [Anders Björn, Jana Björn, and Minhyun Kim, Perron solutions and boundary regularity for nonlocal nonlinear Dirichlet problems](https://arxiv.org/abs/2406.05994v3)

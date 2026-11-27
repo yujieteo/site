@@ -80,6 +80,22 @@
 
 - [H. Weyl, Theorie der Darstellung kontinuierlicher halb-einfacher Gruppen durch lineare Transformationen. I, Math. Z. 23 (1925) 271–309](https://doi.org/10.1007/BF01506234)
 
+### Averaged matrix coefficients give characters
+
+**Remember:** Average out the choice of basis, leaving only the trace.
+
+*True by definition. Confidence: medium.* MSC 22C05 (Compact groups). arXiv math.RT. Level 3: graduate.
+
+**Definition.** A class function is constant on each conjugacy class. For a compact Hausdorff group, averaging over all conjugates uses Haar measure, the translation-invariant probability measure. This operation projects continuous functions onto continuous class functions. A matrix coefficient takes the inner product of a translated vector with a fixed vector.
+
+**Problem.** For a continuous irreducible unitary representation, averaging a matrix coefficient gives a multiple of its character, the trace function. Finite linear combinations of these characters approximate every continuous complex class function uniformly.
+
+**How the definition helps.** The averaging projection converts approximation by matrix coefficients into approximation by characters. In our own proof, averaging the conjugates of a representation matrix gives a matrix commuting with the entire representation. Schur’s lemma makes that average scalar, and its trace gives the scalar as the character divided by the dimension. The Peter–Weyl theorem supplies uniform approximation by sums of coefficients. Averaging cannot increase the uniform error and fixes the class function being approximated.
+
+**Wikipedia:** [Class function](https://en.wikipedia.org/wiki/Class_function). It says: “the irreducible characters form a Hilbert basis of the Hilbert space of square-integrable class functions”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Coincident group uniformities give compact groups conjugation-invariant neighbourhoods
 
 **Remember:** When left and right closeness agree, conjugation preserves suitably small neighbourhoods.
@@ -96,6 +112,40 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Distinct eigenvalues give covering sheets
+
+**Remember:** With distinct eigenvalues, only their order remains to choose.
+
+*Rules out counterexamples.* MSC 22C05 (Compact groups). arXiv math.GR. Level 3: graduate.
+
+**Definition.** In the unitary group G = U(n), call a matrix regular if all its eigenvalues are distinct. The quotient G/T by the diagonal unitary subgroup parametrizes ordered lists of mutually orthogonal complex lines spanning the space.
+
+**Problem.** The map sends each ordered eigenline list and regular diagonal matrix to the corresponding unitary matrix. Over the regular matrices, this map is a covering with n! sheets.
+
+**How the definition helps.** Distinct eigenvalues determine their lines uniquely, leaving only their order to choose. In our own proof, put each eigenvalue in a separate small disk. Nearby unitary matrices have one eigenvalue in each disk, and the corresponding line projections vary smoothly. The n! possible orders therefore give local sheets. In our own counterexample, the identity in U(2) admits every orthogonal pair of lines, so its fiber is infinite.
+
+**Wikipedia:** [Weyl integration formula](https://en.wikipedia.org/wiki/Weyl_integration_formula). It says: “is a smooth covering with fiber W when it is restricted to regular points”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Haar measure gives invariant orbit measures
+
+**Remember:** Sample a group element and move one point to sample the orbit.
+
+*True by definition.* MSC 22C05 (Compact groups). arXiv math.GR. Level 3: graduate.
+
+**Definition.** Let a compact Hausdorff group act continuously on a compact Hausdorff space with just one orbit. Its normalized Haar measure is its translation-invariant regular probability measure. Measure a Borel set by the Haar measure of all group elements sending a chosen point into it.
+
+**Problem.** This prescription gives the unique invariant regular probability measure on the space, independently of the chosen point.
+
+**How the definition helps.** Using the orbit map transfers translation invariance directly to the space. In our own proof, translating a set left-translates its inverse image, preserving its measure. Changing the chosen point right-translates that inverse image, also preserving measure. For uniqueness, average a continuous function over all translates of each point. The result is constant, and every invariant probability measure integrates the function to that constant. Existence uses Haar’s theorem, and uniqueness uses the fact that continuous functions determine regular measures.
+
+**Paper or page:** [The Orbit Method for Compact Connected Lie Groups](https://arxiv.org/abs/0906.4915v1). It says: “There exists a G-invariant measure on Oλ.”
+
+**Sources:**
+
+- [Alfréd Haar, Der Massbegriff in der Theorie der Kontinuierlichen Gruppen (1933), for existence of Haar measure](https://doi.org/10.2307/1968346)
+
 ### Matrix coefficients form dense algebras
 
 **Remember:** The product of two coefficients is a coefficient of their tensor product.
@@ -109,6 +159,24 @@
 **How the definition helps.** Matrix coefficients give a class of functions closed under products that can distinguish points in the same conjugacy class (our own explanation). Tensor the representations to multiply their coefficients. The trivial representation gives constants, and conjugate representations supply complex conjugates. The substantial part of Peter–Weyl shows that finite-dimensional continuous representations separate points of a compact Hausdorff group. Stone–Weierstrass now gives uniform density.
 
 **nLab:** [Peter-Weyl theorem](https://ncatlab.org/nlab/show/Peter-Weyl+theorem). It says: “Representative functions on a compact topological group form a dense subspace of the space of all continuous functions.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Profinite matrix representations factor finitely
+
+**Remember:** A small subgroup in a matrix Lie group must be trivial.
+
+*True by definition.* MSC 22C05 (Compact groups). arXiv math.RT. Level 3: graduate.
+
+**Definition.** A profinite group is a compact Hausdorff group whose connected components are singletons. Equivalently, its elements are compatible tuples in a directed system of finite discrete groups. A continuous finite-dimensional unitary representation is a continuous homomorphism to a group of unitary matrices.
+
+**Problem.** Every continuous finite-dimensional unitary representation of a profinite group factors through a finite quotient.
+
+**How the definition helps.** The tuple description gives an entire subgroup in the kernel once a single finite coordinate is controlled. In our own proof, choose a neighborhood of the identity matrix containing no nontrivial subgroup. Its inverse image contains the kernel of a projection to one sufficiently fine finite group. The representation sends that kernel to a subgroup inside the chosen neighborhood, so it kills the kernel. The cited Lie group fact supplies the neighborhood, and the inverse limit characterization supplies the projection.
+
+**nLab:** [profinite group](https://ncatlab.org/nlab/show/profinite+group). It says: “A profinite group is an inverse limit of a system of finite groups.”
+
+**Paper or page:** [Stationary random subgroups in negative curvature](https://arxiv.org/abs/2303.04237v4). It says: “For example, Lie groups as well as discrete groups have no small subgroups.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -130,6 +198,42 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Weyl orbits classify conjugacy
+
+**Remember:** Move to one torus, then test a finite orbit.
+
+*Makes the theorem clean to state or prove.* MSC 22C05 (Compact groups). arXiv math.RT. Level 3: graduate.
+
+**Definition.** Choose a maximal torus T in a compact connected Lie group G, a maximal subgroup isomorphic to a product of circles. The elements whose conjugation preserves T form its normalizer. Dividing the normalizer by T gives the Weyl group.
+
+**Problem.** Every conjugacy class in G meets T, and its intersection with T is exactly one Weyl group orbit.
+
+**How the definition helps.** The Weyl group records precisely the conjugations visible inside the chosen torus. In our own proof, if g carries t to t′, both T and gTg⁻¹ contain t′. Both are maximal tori in the identity component of the subgroup commuting with t′. Conjugacy of maximal tori there lets us adjust g to preserve T without changing t′. The maximal torus theorem also ensures that each conjugacy class meets T.
+
+**nLab:** [maximal torus](https://ncatlab.org/nlab/show/maximal+torus). It says: “Any two elements of a maximal torus T ↪︎ G are conjugate in G precisely if they are conjugate via the Weyl group.”
+
+**Paper or page:** [The Orbit Method for Compact Connected Lie Groups](https://arxiv.org/abs/0906.4915v1). It says: “The following map between the set of Weyl orbits in T and the set of conjugacy classes of T in G is a bijection.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Bohr compactification preserves quotients
+
+**Remember:** Kill the subgroup, and continuity kills its closure too.
+
+*True by definition.* MSC 22D05 (General properties and structure of locally compact groups). arXiv math.GR. Level 3: graduate.
+
+**Definition.** The Bohr compactification is a compact Hausdorff group reached by a continuous homomorphism with dense image. Every continuous homomorphism to a compact Hausdorff group must factor uniquely through it. To pass to a quotient, take the closure of the image of the subgroup being killed.
+
+**Problem.** Let N be a closed normal subgroup of a locally compact group G. The Bohr compactification of G/N is the Bohr compactification of G divided by the closure of the image of N.
+
+**How the definition helps.** The unique factorization property turns the quotient formula into a test of which maps kill N. In our own proof, a continuous map from G/N to a compact Hausdorff group lifts to G and kills N. Its extension to the Bohr compactification kills the closure of the image of N by continuity. It therefore factors uniquely through the compact quotient, which has the required dense image of G/N. A concrete construction takes the closure of the diagonal image across all continuous finite-dimensional unitary representations. Its factorization property uses the Peter–Weyl theorem.
+
+**nLab:** [Bohr compactification](https://ncatlab.org/nlab/show/Bohr+compactification). It says: “The Bohr compactification exists for any topological group G.”
+
+**Paper or page:** [On Bohr compactifications and profinite completions of group extensions](https://arxiv.org/abs/2305.04803v1). It says: “Bohr(p) is surjective and its kernel is $\\overline{\\beta \_G(N)}$.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Closed subgroups make Chabauty compact
 
 **Remember:** Closed subgroup limits may stop being discrete.
@@ -148,6 +252,22 @@
 
 - [Computably locally compact groups and their closed subgroups, Proposition 4.2](https://arxiv.org/abs/2407.19440)
 - [Claude Chabauty, Limite d’ensembles et géométrie des nombres (1950)](https://doi.org/10.24033/bsmf.1412)
+
+### Coset counts give rational modular values
+
+**Remember:** Measure the two subgroups in units of their intersection.
+
+*True by definition.* MSC 22D05 (General properties and structure of locally compact groups). arXiv math.GR. Level 3: graduate.
+
+**Definition.** A totally disconnected group has only singletons as connected components. Suppose it is locally compact, so the identity has a compact neighborhood. Fix a left Haar measure μ, a nonzero regular measure unchanged by left translations. For a compact open subgroup U, define Δ(g) as μ(U) divided by μ(g⁻¹Ug).
+
+**Problem.** The modular function of a totally disconnected locally compact group takes values in the positive rational numbers.
+
+**How the definition helps.** The coset formula writes the modular function as a ratio of positive integers. In our own derivation, both subgroups split into finitely many cosets of their open intersection. Each coset has the same measure, which cancels in the ratio. Uniqueness of Haar measure up to scale identifies this ratio with the factor for conjugation. Van Dantzig’s theorem supplies U.
+
+**Paper or page:** [Cayley--Abels graphs and invariants of totally disconnected, locally compact groups](https://arxiv.org/abs/2105.12630v1). It says: “the image of the modular function is a subgroup of the multiplicative group of positive rational numbers.”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Finite stabilizer orbits give compactness
 
@@ -283,6 +403,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Double cosets turn reversal into commutativity
+
+**Remember:** If reversal fixes both factors and their product, the factors commute.
+
+*True by definition.* MSC 22D15 (Group algebras of locally compact groups). arXiv math.RT. Level 3: graduate.
+
+**Definition.** Let G be compact and K a closed subgroup. A Gelfand pair has a commutative convolution algebra of continuous functions constant on double cosets KgK. Convolution combines f and h by integrating f(y)h(y⁻¹x) over y with the translation-invariant probability measure. A continuous map σ reverses products if σ(xy) = σ(y)σ(x).
+
+**Problem.** If σ reverses products, preserves each double coset and satisfies σ(σ(x)) = x, then G and K form a Gelfand pair.
+
+**How the definition helps.** The convolution definition turns the theorem into a symmetry test on functions. In our own proof, composing with σ fixes every double-coset function, including any convolution of two such functions. Changing variables by σ reverses the order of convolution because σ preserves the invariant probability measure. Both orders therefore agree. The representation-theoretic definition asks that each irreducible representation occur at most once in square-integrable functions on G/K. Equivalence with that definition uses the decomposition of the compact group representation.
+
+**Wikipedia:** [Gelfand pair](https://en.wikipedia.org/wiki/Gelfand_pair). It says: “Suppose that there exists an involutive anti-automorphism σ of G such that any (K, K) double coset is σ-invariant.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Defining the full group C\*-algebra by all representations makes every representation extend
 
 **Remember:** The supremum bounds every representation at once.
@@ -312,6 +448,22 @@
 **How the definition helps.** Finite coset support makes compact induction a direct sum on the underlying vector spaces (our own argument). Evaluate at one representative per right coset. Each nonzero value has an open stabilizer in H. Intersecting their conjugates gives an open subgroup fixing the function under right translation. Direct sums of exact sequences of vector spaces are exact.
 
 **Wikipedia:** [Induced representation](https://en.wikipedia.org/wiki/Induced_representation). It says: “φ has compact support mod H”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Equivariant functions describe bundle sections
+
+**Remember:** Changing the coset representative changes the coordinate by the inverse character.
+
+*True by definition.* MSC 22D30 (Induced representations for locally compact groups). arXiv math.RT. Level 3: graduate.
+
+**Definition.** Let H be a closed subgroup of a Lie group G, and let χ be a smooth homomorphism from H to nonzero complex numbers. Put a complex line over each coset gH by identifying (gh, z) with (g, χ(h)z). A section chooses one point on each line.
+
+**Problem.** Smooth sections of this line bundle correspond to smooth functions f on G with f(gh) = χ(h)⁻¹f(g). The correspondence respects the G-actions.
+
+**How the definition helps.** The quotient construction turns agreement between two descriptions of a section into one equation for f. In our own proof, the section over gH has representative (g, f(g)). Replacing g by gh gives the same point exactly when f(gh) = χ(h)⁻¹f(g). Smooth local choices of coset representatives give the equivalence of smoothness. Left translation on G gives the stated compatibility with the group actions.
+
+**Paper or page:** [The Orbit Method for Compact Connected Lie Groups](https://arxiv.org/abs/0906.4915v1). It says: “f ↦ (gH ↦ \[g, f(g)\]) is G-equivariant bijection.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -349,6 +501,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Bi-invariant metrics give subgroup geodesics
+
+**Remember:** With both translation symmetries, a constant group velocity gives a geodesic.
+
+*Rules out counterexamples.* MSC 22E15 (General properties and structure of real Lie groups). arXiv math.GR. Level 3: graduate.
+
+**Definition.** A bi-invariant Riemannian metric measures tangent vectors without changing their lengths under left or right translation. A left-invariant metric requires only the first symmetry. A geodesic has zero acceleration for the metric, and a one-parameter subgroup is a smooth homomorphism from additive ℝ.
+
+**Problem.** For a bi-invariant metric, the geodesics through the identity are exactly the one-parameter subgroups, with their usual linear time parameter.
+
+**How the definition helps.** Right invariance removes the acceleration term that can occur for left-invariant metrics. In our own proof, the cited connection formula gives acceleration ½\[X,X\] = 0 for a path following a left-invariant field X. Every initial velocity gives one such subgroup path, and geodesics are unique for a given initial velocity. For our own counterexample, use the group of maps t ↦ at + b with a positive. Give it the left-invariant metric making dilation and translation generators A and B orthonormal, with \[A,B\] = B. The metric connection formula gives the translation subgroup a nonzero acceleration along A.
+
+**Paper or page:** [Dirichlet-Voronoi domain and injectivity radius of flag manifolds -- equivariant cell structure on O(3)/O(1)³](https://arxiv.org/abs/2011.06338v4). It says: “If g is a bi-invariant Riemannian metric on a Lie group G and if ∇ is the associated Levi-Civita connection, then ∀ X,Y ∈ 𝒳ₗ(G), ∇ₓ Y = ½\[X,Y\].”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Defining exp by one-parameter subgroups makes homomorphisms commute with it
 
 **Remember:** A homomorphism sends a one-parameter subgroup to another.
@@ -362,6 +530,38 @@
 **How the definition helps.** With the subgroup definition, both sides are values of one-parameter subgroups with the same initial velocity. In our own step, the curve t ↦ φ(exp tX) is a one-parameter subgroup with velocity dφ(X). Wikipedia states that such a subgroup is unique, which gives equality at t = 1. In our own comparison, the power series gives no direct route, because φ need not be linear or polynomial. In our own account, the work moves to building one-parameter subgroups as flows of left-invariant vector fields and proving uniqueness.
 
 **Wikipedia:** [Exponential map (Lie theory)](https://en.wikipedia.org/wiki/Exponential_map_%28Lie_theory%29). It says: “is the unique one-parameter subgroup of G whose tangent vector at the identity is equal to X.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Discrete central quotients preserve Lie algebras
+
+**Remember:** A covering kernel is discrete, and connected conjugation cannot move it.
+
+*Rules out counterexamples.* MSC 22E15 (General properties and structure of real Lie groups). arXiv math.GR. Level 3: graduate.
+
+**Definition.** Start with the simply connected Lie group for a given finite-dimensional real Lie algebra. Consider quotients by discrete central subgroups, not by arbitrary subgroups of the center.
+
+**Problem.** Every connected Lie group with that Lie algebra is such a quotient. Conversely, dividing by a discrete central subgroup keeps the Lie algebra.
+
+**How the definition helps.** A discrete kernel lets the quotient map preserve local coordinates and hence the tangent Lie algebra. In our own proof of the converse, take the universal covering group of the connected Lie group. Its kernel is discrete, and conjugation moves each kernel element continuously inside that discrete set. Connectedness therefore makes the kernel central. Lie’s integration theorem identifies the covering group from its Lie algebra. In our own counterexample, dividing additive ℝ² by a line reduces the Lie algebra dimension to one.
+
+**Wikipedia:** [Lie group–Lie algebra correspondence](https://en.wikipedia.org/wiki/Lie_group%E2%80%93Lie_algebra_correspondence). It says: “there is a one-to-one correspondence between quotients of G̃ by discrete central subgroups and connected Lie groups having Lie algebra 𝔤”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Positive roots give complex flags
+
+**Remember:** Positive root directions stay on the same side under brackets.
+
+*Makes the theorem clean to state or prove.* MSC 22E15 (General properties and structure of real Lie groups), 22C05. arXiv math.RT. Level 3: graduate.
+
+**Definition.** Take a compact connected Lie group G with a maximal torus T, a maximal subgroup that is a product of circles. Conjugation by T splits the complexified Lie algebra into spaces on which T acts by scalars. The nontrivial scalar actions give weights called roots. A real linear functional nonzero on every root selects those with positive value.
+
+**Problem.** Use the positive root spaces as the +i eigenspace on the complexified tangent space of G/T at the identity coset. Translating this choice gives an invariant complex structure on G/T.
+
+**How the definition helps.** Choosing positive roots turns the test for complex coordinates into addition of positive numbers. In our own proof, include the complexified tangent algebra of T with the positive root spaces. Bracketing with that algebra preserves each root space. A nonzero bracket between positive root spaces has weight equal to the sum of their roots, which is still positive. The cited integrability criterion turns this closure into local complex coordinates.
+
+**Paper or page:** [The Orbit Method for Compact Connected Lie Groups](https://arxiv.org/abs/0906.4915v1). It says: “Then J is integrable if and only if P is closed under the Lie bracket.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -416,6 +616,54 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Positive gradings give group dilations
+
+**Remember:** Weights add under brackets, so their scale factors multiply.
+
+*True by definition.* MSC 22E25 (Nilpotent and solvable Lie groups). arXiv math.GR. Level 3: graduate.
+
+**Definition.** A positive grading splits a Lie algebra into spaces of positive integer weights. The bracket of directions of weights i and j has weight i + j, or vanishes. A dilation with factor r &gt; 0 scales each weight-j space by r to the power j.
+
+**Problem.** Every positively graded finite-dimensional real Lie algebra gives a family of group automorphisms on its simply connected Lie group. Applying two of these multiplies their dilation factors.
+
+**How the definition helps.** The grading replaces a check of the group multiplication law with addition of weights. In our own proof, scaling the two inputs multiplies their bracket by exactly the factor assigned to its weight. Each scaling therefore preserves brackets and has an inverse given by the reciprocal scale. Lie’s integration theorem extends it uniquely to the simply connected group. Uniqueness then gives the composition law.
+
+**Paper or page:** [Characteristically nilpotent Lie groups with flat coadjoint orbits](https://arxiv.org/abs/2408.10660v2). It says: “𝔤 admits a family of dilations.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Heisenberg coefficients integrate modulo the center
+
+**Remember:** Remove the center before integrating a coefficient whose size ignores it.
+
+*Rules out counterexamples. Confidence: medium.* MSC 22E27 (Representations of nilpotent and solvable Lie groups (special orbital integrals, non-type I representations, etc.)). arXiv math.RT. Level 3: graduate.
+
+**Definition.** A unitary representation acts by operators preserving inner products, and a matrix coefficient takes the inner product of a translated vector with another vector. In an irreducible representation, central elements act by scalars of absolute value one. Square integrability modulo the center asks that some nonzero coefficient have finite squared integral over cosets of the center.
+
+**Problem.** The Schrödinger representation of the real Heisenberg group is square integrable modulo its center, but not square integrable on the full group.
+
+**How the definition helps.** Integrating over cosets removes an infinite central direction along which the absolute value stays constant. In our own example, translations and multiplication by phases act on square-integrable functions on the real line. Together with constant phases, these operators realize the Schrödinger representation of the real Heisenberg group with nonzero central parameter. Parseval’s identity gives a quotient integral proportional to the product of the vectors’ squared norms. Integrating a nonzero coefficient squared over the full group adds the infinite measure of its real center.
+
+**Paper or page:** [Characteristically nilpotent Lie groups with flat coadjoint orbits](https://arxiv.org/abs/2408.10660v2). It says: “π is square-integrable modulo Z”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Brackets give coadjoint symplectic forms
+
+**Remember:** Pair the point of the orbit with the bracket of two directions.
+
+*Makes the theorem clean to state or prove.* MSC 22E60 (Lie algebras of Lie groups). arXiv math.RT. Level 3: graduate.
+
+**Definition.** A Lie group acts on its tangent algebra at the identity by differentiating conjugation. The resulting action on the dual vector space is the coadjoint action. On the orbit of λ, define a two-form directly by pairing directions generated by X and Y as λ(\[X,Y\]).
+
+**Problem.** This formula gives each coadjoint orbit a symplectic form, an alternating pairing with zero kernel and zero exterior derivative.
+
+**How the definition helps.** The bracket formula makes the kernel exactly the directions that leave the orbit point fixed to first order. In our own proof, these directions represent zero tangent vectors on the orbit. The orbit tangent space therefore inherits a well-defined nondegenerate pairing. Taking its exterior derivative gives a sum of three nested brackets, which vanishes by the Jacobi identity.
+
+**Paper or page:** [The Orbit Method for Compact Connected Lie Groups](https://arxiv.org/abs/0906.4915v1). It says: “ω is a symplectic 2-form on Oλ and the coadjoint action is Hamiltonian with Lie algebra homomorphism μ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Defining a subgroup's Lie algebra by one-parameter subgroups proves Cartan's theorem
 
 **Remember:** A subgroup's tangent directions are the lines it contains through the identity.
@@ -447,6 +695,22 @@
 **How the definition helps.** With this definition, the theorem is the definition read in one line. The nLab supports this order, obtaining the adjoint action of the Lie algebra by differentiating the group action a second time. In our own account, the work moves to the theorem that this bracket equals the commutator of left invariant vector fields. That proof uses the flow formula for a bracket of vector fields. The flow of a left invariant field is right translation by exp tX, which turns that formula into the derivative of conjugation.
 
 **nLab:** [adjoint action](https://ncatlab.org/nlab/show/adjoint+action). It says: “Differentiating the above example also in the second argument, yields the adjoint action of a Lie algebra on itself”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Left-invariant fields preserve brackets under differentiation
+
+**Remember:** Differentiate along the group, and commutators pass through the map.
+
+*True by definition.* MSC 22E60 (Lie algebras of Lie groups). arXiv math.GR. Level 3: graduate.
+
+**Definition.** Translate a tangent vector at the identity to obtain a left-invariant vector field. Define the Lie bracket as the commutator of these fields acting as differential operators on smooth functions.
+
+**Problem.** The derivative at the identity of a smooth Lie group homomorphism preserves the Lie bracket.
+
+**How the definition helps.** Using differential operators lets the chain rule replace a second derivative of a group commutator. In our own proof, left translation commutes with a group homomorphism after translating by the image element. Thus corresponding vector fields give the same derivative on functions pulled back from the target. Subtracting their two compositions gives the same bracket. The identification of identity tangent vectors with left-invariant fields supplies the bracket on the tangent space.
+
+**Paper or page:** [The Orbit Method for Compact Connected Lie Groups](https://arxiv.org/abs/0906.4915v1). It says: “Then by taking the derivative of φ at e we obtain a homomorphism of Lie algebras”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -501,6 +765,40 @@
 **Sources:**
 
 - [Szilárd Gy. Révész, Kahane's upper density and syndetic sets in LCA groups, arXiv:2309.06088 (2023)](https://arxiv.org/abs/2309.06088v2)
+
+### Compact generation connects coset graphs
+
+**Remember:** A finite list of moves connects the graph only if it generates.
+
+*Rules out counterexamples.* MSC 22D05 (General properties and structure of locally compact groups). arXiv math.GR. Level 4: research.
+
+**Definition.** A group is compactly generated if a compact subset generates it as an abstract group. A Cayley–Abels graph is connected, with finitely many neighbors per vertex. The group acts transitively on its vertices and each vertex stabilizer is compact and open.
+
+**Problem.** A locally compact group whose connected components are singletons admits a Cayley–Abels graph exactly when it is compactly generated.
+
+**How the definition helps.** Compact generation supplies finitely many kinds of edges that connect all cosets. In our own construction, take a compact open subgroup U from van Dantzig’s theorem. A compact generating set meets only finitely many double cosets UsU. Join xU to yU when x⁻¹y belongs to these double cosets or their inverses. Each double coset contains finitely many left cosets because U is compact and open. Conversely, paths show that U and finitely many moves to neighbors generate the group. Our own counterexample is an infinite direct sum of discrete two-element groups, whose compact subsets are finite.
+
+**Paper or page:** [Discretisable quasi-actions I: Topological completions and hyperbolicity](https://arxiv.org/abs/2207.04401v2). It says: “Let G be a compactly generated locally compact group containing a compact open subgroup. Then G acts geometrically on its Cayley–Abels graph.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Lie quotients detect dense powers
+
+**Remember:** Test density in each quotient, where open sets can see it.
+
+*True by definition.* MSC 22D05 (General properties and structure of locally compact groups). arXiv math.GR. Level 4: research.
+
+**Definition.** In a locally compact group, the identity has a compact neighborhood. When the group is connected, it can be described by compatible points in Lie group quotients, which are groups with smooth coordinates. Each quotient divides out a compact normal subgroup. Every open neighborhood contains a smaller one specified in a single quotient.
+
+**Problem.** For every positive integer k, kth powers are dense in the group exactly when they are dense in every Lie quotient of this system.
+
+**How the definition helps.** The inverse limit description replaces an open set in the original group with a test in one quotient. In our own proof, lift a root from that quotient and take its kth power upstairs. Conversely, projecting a dense set of powers gives a dense set of powers. The structure theorem for connected locally compact groups supplies the inverse limit description.
+
+**Paper or page:** [Cartan subgroups in connected locally compact groups](https://arxiv.org/abs/2310.15564v1). It says: “Then Pₖ(G) is dense in G if and only if Pₖ(Gα) is dense in Gα for every α.”
+
+**Sources:**
+
+- [Arunava Mandal and Riddhi Shah, Cartan subgroups in connected locally compact groups (2023), Lemma 8.1](https://arxiv.org/abs/2310.15564v1)
 
 ### Translation-like actions make a Burnside-type theorem true for locally compact groups
 
@@ -585,6 +883,42 @@
 **nLab:** [Maurer-Cartan form](https://ncatlab.org/nlab/show/Maurer-Cartan+form). It says: “θ(x,y) θ(y,z) = θ(x,z). This is what analytically becomes the statement of vanishing curvature.”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Differences lower group polynomial degree
+
+**Remember:** A difference uses up one allowed step.
+
+*True by definition.* MSC 22E25 (Nilpotent and solvable Lie groups). arXiv math.GR. Level 4: research.
+
+**Definition.** For a real function f on a group, its difference in direction h is Δₕf(x) = f(xh) − f(x). Give f degree at most d if every sequence of d + 1 differences gives zero. On a simply connected nilpotent Lie group, exponential coordinates identify group elements with tangent vectors at the identity. Nilpotence means that sufficiently long nested brackets vanish.
+
+**Problem.** A difference of a group polynomial of degree at most d has degree at most d minus one for d ≥ 1.
+
+**How the definition helps.** Counting differences makes the degree drop immediate without computing translations in coordinates. In our own proof, applying d differences after the first gives d + 1 differences of f, hence zero. The cited equivalence identifies these functions with ordinary polynomials in exponential coordinates. It identifies the functions without requiring their two degrees to agree.
+
+**Paper or page:** [Polynomial and horizontally polynomial functions on Lie groups](https://arxiv.org/abs/2011.13665v1). It says: “f is represented by a function that is polynomial in exponential chart”
+
+**Sources:**
+
+- [Gioacchino Antonelli and Enrico Le Donne, Polynomial and horizontally polynomial functions on Lie groups (2020), Corollary 1.4](https://arxiv.org/abs/2011.13665v1)
+
+### Derivatives bound product degrees
+
+**Remember:** Too many derivatives must exhaust the degree of one factor.
+
+*True by definition.* MSC 22E30 (Analysis on real and complex Lie groups). arXiv math.GR. Level 4: research.
+
+**Definition.** Leibman degree at most d means that every sequence of d + 1 differences gives zero, where a difference subtracts f(x) from f(xh). For smooth real functions on a connected Lie group, one can replace differences by derivatives. Each derivative follows a tangent direction carried from the identity by left translation.
+
+**Problem.** Multiplying two such functions of degrees at most d and e gives a function of degree at most d + e.
+
+**How the definition helps.** The derivative test turns the degree bound into a count of derivatives in the product rule. In our own proof, each derivative acts on one factor in each term. After d + e + 1 derivatives, every term exceeds the degree of one factor. The cited equivalence transfers the result to Leibman degree.
+
+**Paper or page:** [Polynomial and horizontally polynomial functions on Lie groups](https://arxiv.org/abs/2011.13665v1). It says: “Then φ is a polynomial with degree at most d à la Leibman”
+
+**Sources:**
+
+- [Gioacchino Antonelli and Enrico Le Donne, Polynomial and horizontally polynomial functions on Lie groups (2020), Proposition 5.1](https://arxiv.org/abs/2011.13665v1)
 
 ### Locally smooth cochains let Lie group cohomology see all central extensions
 

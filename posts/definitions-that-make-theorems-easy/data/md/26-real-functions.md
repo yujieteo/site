@@ -1440,6 +1440,24 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Clock changes preserve fractional composition
+
+**Remember:** Change the clock and fractional integration keeps its addition law.
+
+*True by definition.* MSC 26A33 (Fractional derivatives and integrals), 45D05. arXiv math.CA. Level 3: graduate.
+
+**Definition.** On \[a,b\], choose a continuously differentiable clock ψ with ψ′ &gt; 0. For α &gt; 0, integrate f(s) from a to t against the weight ψ′(s)(ψ(t) − ψ(s))ᵅ⁻¹/Γ(α). Here Γ is the gamma function, with Γ(n + 1) = n! for nonnegative integers n.
+
+**Problem.** On continuous inputs, applying these integrals successively with positive orders α and β gives the integral of order α + β for the same clock.
+
+**How the definition helps.** The derivative turns integration in s into ordinary integration in the new coordinate ψ(s). In our own derivation, this substitution turns each operator into the usual fractional integral with lower endpoint ψ(a). The ordinary composition law then gives the stated result. Its proof uses the beta integral to combine the two power kernels.
+
+**Wikipedia:** [Riemann–Liouville integral](https://en.wikipedia.org/wiki/Riemann%E2%80%93Liouville_integral). It says: “the latter of which is a semigroup property.”
+
+**Paper or page:** [Existence and Ulam-Hyers Mittag-Leffler stability of ψ-Hilfer fractional functional integrodifferential equation](https://arxiv.org/abs/2001.01567v1). It says: “Then, we have the following semigroup property given by \\(I\_{a<sup>+</sup>}<sup>\\alpha ,\\psi </sup>I\_{a<sup>+</sup>}<sup>\\beta ,\\psi </sup>(\\cdot )=I\_{a<sup>+</sup>}<sup>\\alpha +\\beta ,\\psi </sup>(\\cdot )\\)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Gamma normalization adds fractional orders
 
 **Remember:** Normalized integration kernels add their orders when convolved.
@@ -1453,6 +1471,24 @@
 **How the definition helps.** The gamma factors cancel the constant produced by convolving two power kernels (our own). Substituting s = tu reduces that constant to an integral on \[0,1\], called the beta integral (our own). The beta–gamma identity evaluates it as Γ(α)Γ(β)/Γ(α + β) (our own). At integer orders the same rule recovers repeated ordinary integration (our own).
 
 **Paper or page:** [An extension of the Cartwright-McMullen theorem in fractional calculus for the smooth Stieltjes case](https://arxiv.org/abs/2309.07148v1). It says: “The Index Law holds. That is, $J<sub>a<sup>+</sub><sup>\\alpha</sup> </sup> \\circ J<sub>a<sup>+</sub><sup>\\beta</sup> </sup>=J<sub>a<sup>+</sub><sup>\\alpha</sup> +\\beta </sup>$ for all $\\alpha ,\\beta &gt; 0$.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Half integration squares to integration
+
+**Remember:** Two copies of the half-order kernel convolve to the constant one.
+
+*True by definition.* MSC 26A33 (Fractional derivatives and integrals), 45P05. arXiv math.CA, math.FA. Level 3: graduate.
+
+**Definition.** On L²(\[0,1\]), seek an operator whose square is integration from zero to x. Define half integration by integrating f(s)/√(π(x − s)) from zero to x.
+
+**Problem.** Applying this operator twice gives ordinary integration from zero to x.
+
+**How the definition helps.** Choosing a convolution kernel turns the operator square into the convolution square of one function. In our own proof, interchange the two integrals and rescale the inner interval to \[0,1\]. Its kernel integral becomes ∫₀¹ ds/√(s(1 − s)) divided by π, which equals one. The quoted classification of all square roots requires a separate theorem.
+
+**Wikipedia:** [Riemann–Liouville integral](https://en.wikipedia.org/wiki/Riemann%E2%80%93Liouville_integral). It says: “the latter of which is a semigroup property.”
+
+**Paper or page:** [Square roots of some classical operators](https://arxiv.org/abs/2109.13688v1). It says: “The operators ±Y are the only two square roots of V.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -1492,6 +1528,38 @@
 
 - [T. J. Stieltjes, Recherches sur les fractions continues, Annales de la Faculté des sciences de Toulouse 8 (1894)](https://doi.org/10.5802/afst.108)
 
+### A variation clock gives compactness
+
+**Remember:** Charge each change in position to the new clock.
+
+*Makes the theorem clean to state or prove.* MSC 26A45 (Functions of bounded variation, generalizations), 26B12. arXiv math.CA. Level 3: graduate.
+
+**Definition.** For a continuous curve in Euclidean space, accumulated variation is its length up to the current time. On a fixed nondegenerate compact interval, add elapsed time to accumulated variation, then divide by the final sum. For a curve of finite length, this gives a continuous strictly increasing clock from zero to one.
+
+**Problem.** Suppose a sequence of such curves has bounded lengths and bounded starting points. In the new clock, some subsequence converges uniformly.
+
+**How the definition helps.** Each change in position is at most the length traveled, so the normalized clocks give a common bound on speed (our own). Bounded starting points and lengths keep every curve in one compact ball (our own). The Arzelà–Ascoli theorem now gives a uniformly convergent subsequence (our own). The cited proposition identifies a particular limit under stronger convergence hypotheses.
+
+**Paper or page:** [On the relaxation of polyconvex functionals with linear growth under strict convergence in BV](https://arxiv.org/abs/2508.11041v1). It says: “are Lipschitz continuous with uniformly bounded Lipschitz constants”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Continuity removes exponential jump terms
+
+**Remember:** No jumps means small increments make the Taylor errors vanish.
+
+*Rules out counterexamples.* MSC 26A45 (Functions of bounded variation, generalizations), 26A24. arXiv math.CA. Level 3: graduate.
+
+**Definition.** A real function has locally bounded variation if sums of absolute increments stay bounded over partitions of each compact interval. Its signed Stieltjes measure df assigns f(b) − f(a) to (a,b\] when f is right-continuous. A jump contributes its size as mass at one point.
+
+**Problem.** For continuous f of locally bounded variation, d(exp f) = exp(f) df.
+
+**How the definition helps.** Continuity makes the largest increment on a fine partition small, so the linear Taylor terms give the entire measure (our own). On a compact interval, the total error is bounded by a constant times that increment bound times total variation (our own). For a right-continuous jump from zero to one, the two sides assign masses e − 1 and e respectively (our own).
+
+**Paper or page:** [Semiclassical estimates for measure potentials on the real line](https://arxiv.org/abs/2303.17722v2). It says: “Then, as measures on a bounded Borel set of ℝ, d(eᶠ) = eᶠ df.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Absolute continuity as an indefinite integral makes zero derivative force constancy
 
 **Remember:** If the integrand is zero almost everywhere, the integral never moves.
@@ -1521,6 +1589,22 @@
 **How the definition helps.** With the integral definition, a density g is given, and only g = f′ almost everywhere remains, in our own account. The Lebesgue differentiation theorem supplies that step. The main work moves into the theorem that the integral form agrees with the interval definition. Wikipedia lists the two as equivalent conditions.
 
 **Wikipedia:** [Absolute continuity](https://en.wikipedia.org/wiki/Absolute_continuity). It says: “there exists a Lebesgue integrable function g on \[a,b\] such that f(x) = f(a) + ∫ₐˣ g(t) dt for all x in \[a,b\].”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Weak derivatives determine continuous representatives
+
+**Remember:** Integrate the weak derivative and recover only a missing constant.
+
+*Makes the theorem clean to state or prove.* MSC 26A46 (Absolutely continuous real functions in one variable). arXiv math.CA. Level 3: graduate.
+
+**Definition.** An integrable function g is the weak derivative of f if ∫fφ′ = −∫gφ for every smooth test function φ supported on a compact subinterval. An absolutely continuous representative is an absolutely continuous function equal to f almost everywhere.
+
+**Problem.** An integrable real function with an integrable weak derivative on a bounded interval has a unique absolutely continuous representative on the closed interval.
+
+**How the definition helps.** A weak derivative depends only on integrals, so the theorem can specify one continuous version of an entire almost-everywhere equivalence class (our own). Subtract the indefinite integral of the derivative (our own). The difference has weak derivative zero and is therefore constant almost everywhere on the interval (our own). Adding that constant gives the desired representative, including its endpoint limits (our own). Two continuous representatives agreeing almost everywhere agree everywhere (our own).
+
+**Wikipedia:** [Absolute continuity](https://en.wikipedia.org/wiki/Absolute_continuity). It says: “it coincides almost everywhere with an absolutely continuous function”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -1574,6 +1658,40 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Whitney compatibility excludes impossible slopes
+
+**Remember:** Values and slopes must tell the same Taylor story.
+
+*Rules out counterexamples.* MSC 26B05 (Continuity and differentiation questions). arXiv math.CA. Level 3: graduate.
+
+**Definition.** A first-order Whitney jet assigns a value f(x) and a continuous slope vector p(x) on a closed Euclidean set. On each compact subset, the ratio \|f(y) − f(x) − p(x)·(y−x)\|/‖y−x‖ must tend uniformly to zero as distinct points approach each other.
+
+**Problem.** A first-order Whitney jet on a closed subset of Euclidean space extends to a continuously differentiable function with the prescribed values and slopes.
+
+**How the definition helps.** Taylor compatibility rules out assigning value zero and slope one at every point of {0, 1, ½, ⅓, …} (our own). The slope at zero would have to be zero along that sequence (our own). Whitney’s extension theorem proves sufficiency by gluing local Taylor polynomials off the closed set (our own).
+
+**Wikipedia:** [Whitney extension theorem](https://en.wikipedia.org/wiki/Whitney_extension_theorem). It says: “it is possible to extend a given function of A in such a way as to have prescribed derivatives”
+
+**Sources:**
+
+- [Hassler Whitney, Analytic extensions of differentiable functions defined in closed sets (1934)](https://doi.org/10.1090/S0002-9947-1934-1501735-3)
+
+### Null-set preservation prevents uncounted area
+
+**Remember:** A map must not create positive area from a null set.
+
+*Rules out counterexamples.* MSC 26B15 (Integration of real functions of several variables: length, area, volume), 26B05. arXiv math.CA. Level 3: graduate.
+
+**Definition.** Lusin’s property N requires a map to send sets of measure zero to sets of measure zero. An approximate derivative at x gives a linear approximation on a set occupying a fraction tending to one of shrinking balls about x.
+
+**Problem.** Let f map an open Euclidean set into Euclidean space of the same dimension. Assume f has an approximate derivative almost everywhere and satisfies property N. The integral of the absolute determinant of that derivative equals the integral counting preimages at each target point.
+
+**How the definition helps.** Property N makes the image of the exceptional null set invisible to the preimage integral (our own). Federer’s area theorem supplies the formula on the differentiable pieces (our own). The Cantor function has derivative zero almost everywhere but maps the null Cantor set onto the unit interval (our own).
+
+**Paper or page:** [Local L¹-convergence of Jacobians of Sobolev homeomorphisms via area formula](https://arxiv.org/abs/2501.11106v2). It says: “If f satisfies the Lusin condition (N), then for any measurable function”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Averaging gradients gives a center that splits expected Bregman divergence exactly
 
 **Remember:** Average gradients to find the center for a random second argument.
@@ -1611,6 +1729,38 @@
 - [W. Fenchel, On conjugate convex functions, Canadian Journal of Mathematics 1 (1949)](https://doi.org/10.4153/CJM-1949-007-x)
 - [J. J. Moreau, Proximité et dualité dans un espace hilbertien, Bulletin de la Société Mathématique de France 93 (1965)](https://doi.org/10.24033/bsmf.1625)
 
+### Curvature bounds survive limits
+
+**Remember:** Subtract the same quadratic before passing to the limit.
+
+*True by definition.* MSC 26B25 (Convexity of real functions of several variables, generalizations). arXiv math.CA. Level 3: graduate.
+
+**Definition.** For K ≥ 0, a function on a convex domain is K-semiconcave when subtracting K times half the squared norm makes it concave. This replaces an upper bound on second derivatives, which may not exist.
+
+**Problem.** A uniform limit of functions with the same semiconcavity constant K is K-semiconcave.
+
+**How the definition helps.** After subtracting the same quadratic, every function satisfies the ordinary concavity inequality, which passes to the limit (our own). For twice differentiable functions, this definition bounds every second derivative along a unit direction from above by K (our own). The one-variable second derivative test along lines proves the equivalence (our own).
+
+**Paper or page:** [Global propagation of singularities for magnetic mechanical systems](https://arxiv.org/abs/2509.13433v1). It says: “then ψ is K-semiconcave.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Log-concavity survives integration
+
+**Remember:** The geometric-mean inequality lets you integrate whole slices at once.
+
+*Makes the theorem clean to state or prove.* MSC 26B25 (Convexity of real functions of several variables, generalizations), 26D15. arXiv math.CA. Level 3: graduate.
+
+**Definition.** Call a nonnegative function log-concave if its value at a weighted average is at least the weighted geometric mean of its endpoint values. Unlike the formula using an ordinary logarithm, this definition allows zeros for weights strictly between zero and one.
+
+**Problem.** Let F be a nonnegative measurable log-concave function on a product of Euclidean spaces, with finite integrals over all second-variable slices. Integrating over the second variable gives a log-concave function of the first.
+
+**How the definition helps.** Joint log-concavity is exactly the pointwise comparison that Prékopa–Leindler needs for two endpoint slices and the middle slice (our own). The hard work shifts to that integral inequality, which turns the pointwise geometric mean bound into the same bound for the integrals (our own).
+
+**Wikipedia:** [Logarithmically concave function](https://en.wikipedia.org/wiki/Logarithmically_concave_function). It says: “is log-concave (see Prékopa–Leindler inequality).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Strict epigraphs make partial minimization a projection
 
 **Remember:** A linear projection of a convex set stays convex.
@@ -1624,6 +1774,22 @@
 **How the definition helps.** The strict-epigraph definition turns partial minimization into a linear projection, which preserves convexity. Our own proof is that a height above the infimum exceeds f(x, y) for at least one y in C. Thus the strict epigraph is the projection obtained by omitting y after restricting it to C. The ordinary epigraph need not project to the ordinary epigraph if the infimum is not attained. The chord proof instead needs two near-minimizers and a limit. The work in relating the definitions is the short proof that convexity of the strict epigraph is equivalent to the chord inequality.
 
 **Wikipedia:** [Convex function](https://en.wikipedia.org/wiki/Convex_function). It says: “provided that C is a convex set and that g(x) ≠ −∞.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Subtracting quadratics gives strong monotonicity
+
+**Remember:** Subtract the quadratic, use monotonicity, then put the quadratic back.
+
+*True by definition.* MSC 26B25 (Convexity of real functions of several variables, generalizations). arXiv math.CA. Level 3: graduate.
+
+**Definition.** For ρ &gt; 0, call a real function on Euclidean space strongly convex with constant ρ if subtracting ρ‖x‖²/2 leaves a convex function. Equivalently, its chord inequality improves the ordinary convexity bound by a quadratic term. A subgradient is the slope of an affine function touching the graph from below.
+
+**Problem.** Subgradients p and q at x and y satisfy ⟨p − q, x − y⟩ ≥ ρ‖x − y‖².
+
+**How the definition helps.** Subtracting the quadratic turns the claimed bound into ordinary monotonicity of supporting slopes (our own). The subgradient sum rule subtracts ρx from the slope at x (our own). Adding the two supporting inequalities gives monotonicity (our own). Expanding the squared norm in the chord inequality proves the two definitions agree (our own).
+
+**Paper or page:** [New Douglas-Rashford Splitting Algorithms for Generalized DC Programming with Applications in Machine Learning](https://arxiv.org/abs/2404.14800v1). It says: “If f is ρ-strongly convex, then ∂f is ρ-strongly monotone.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -1643,6 +1809,38 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Clipping removes perimeter levels
+
+**Remember:** Clipping throws away levels without changing the levels it keeps.
+
+*True by definition.* MSC 26B30 (Absolutely continuous real functions of several variables, functions of bounded variation). arXiv math.CA. Level 3: graduate.
+
+**Definition.** Describe total variation as the integral of the perimeters of the sets where the function exceeds each height. Perimeter here means variation of a set’s indicator function. This level-set formula replaces direct tests of the weak derivative.
+
+**Problem.** Let f be integrable with finite variation on an open Euclidean set. Clipping its values to \[a,b\], where a ≤ 0 ≤ b, cannot increase its variation.
+
+**How the definition helps.** Clipping keeps the upper level sets for heights strictly between a and b (our own). At other heights, apart from endpoints, the sets are empty or full and have zero perimeter inside the domain (our own). Clipping toward an interval containing zero preserves integrability (our own). The coarea theorem identifies variation with the perimeter integral and gives finite variation when that integral is finite.
+
+**Paper or page:** [Free-Boundary Monotonicity for Almost-Minimizers of the Relative Perimeter](https://arxiv.org/abs/2407.05039v2). It says: “\|Df\|(Ω) = ∫ℝ P(Eₜ; Ω) dt”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Smoothing cannot increase variation
+
+**Remember:** Average translated derivatives before taking their mass.
+
+*True by definition.* MSC 26B30 (Absolutely continuous real functions of several variables, functions of bounded variation). arXiv math.CA. Level 3: graduate.
+
+**Definition.** Integration by parts defines the weak derivative. For a function of bounded variation, this derivative is a vector measure, and total variation is its mass. Smooth the function by averaging translates against a nonnegative smooth function with compact support and integral one.
+
+**Problem.** On all of Euclidean space, smoothing an integrable function of bounded variation cannot increase its total variation.
+
+**How the definition helps.** The smoothed derivative averages translated derivative measures, so the triangle inequality bounds its mass by their average mass (our own). Translation preserves that mass (our own). The cited identity lets the derivative pass through the average. The measure representation theorem identifies this mass with the usual supremum over smooth test fields of length at most one (our own).
+
+**Paper or page:** [Weighted Bounded Variation Revisited](https://arxiv.org/abs/2510.14105v1). It says: “D(f ∗ ηε) = \[Df\] ∗ ηε”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### The duality definition of total variation makes it lower semicontinuous in L¹
 
 **Remember:** A supremum of continuous functionals is lower semicontinuous.
@@ -1656,6 +1854,56 @@
 **How the definition helps.** The definition makes total variation a supremum of functionals that are continuous for L¹ convergence, and such a supremum is lower semicontinuous. Each integral of fₙ div φ converges, because div φ is bounded. Wikipedia's article on bounded variation gives this argument. With a definition through the gradient, the statement does not even apply to limits with jumps, in our own account. The work moves to the Riesz representation theorem, which turns finite variation into a vector measure for the derivative.
 
 **Wikipedia:** [Bounded variation](https://en.wikipedia.org/wiki/Bounded_variation), [Total variation](https://en.wikipedia.org/wiki/Total_variation). It says: “lim infₙ→∞ V(uₙ,Ω) ≥ V(u,Ω) which is exactly the definition of lower semicontinuity.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Centered balls maximize rearranged overlap
+
+**Remember:** Centered balls nest, so their overlap is as large as possible.
+
+*Makes the theorem clean to state or prove.* MSC 26D15 (Inequalities for sums, series and integrals), 28A25. arXiv math.CA. Level 3: graduate.
+
+**Definition.** Symmetric decreasing rearrangement replaces every set where a nonnegative function exceeds a given height by a centered ball of equal volume. The nested balls determine the rearranged function.
+
+**Problem.** For nonnegative measurable functions on Euclidean space with finite positive-height level volumes, rearranging both cannot decrease the integral of their product.
+
+**How the definition helps.** Two centered balls overlap in the entire smaller ball, the largest possible overlap for sets of their volumes. The layer cake formula expresses each function value as the length of the interval of heights below it. Integrating the resulting product counts overlaps over all pairs of heights. In our own justification, Tonelli’s theorem permits this change of integration order because the integrand is nonnegative.
+
+**Wikipedia:** [Hardy–Littlewood inequality](https://en.wikipedia.org/wiki/Hardy%E2%80%93Littlewood_inequality). It says: “is exactly the smaller one of the two balls:”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Concentration is convex by supremum
+
+**Remember:** Concentration at a fixed length is a maximum over linear tests.
+
+*True by definition.* MSC 26D15 (Inequalities for sums, series and integrals). arXiv math.CA. Level 3: graduate.
+
+**Definition.** Take a real integrable function on a finite interval. For each length t between zero and the interval length, its concentration is the supremum of its integrals over measurable subsets of length t. Another formula integrates its decreasing rearrangement, which sorts function values from largest to smallest while preserving the measure above every height.
+
+**Problem.** On a finite interval, concentration at fixed length is convex as a function of the input function.
+
+**How the definition helps.** Each test integrates over a fixed set, so it is linear, and the supremum of linear tests is convex (our own). The rearrangement formula carries the work of showing which sets attain the supremum (our own). Pick the highest values first and split a level set when ties occur (our own).
+
+**Paper or page:** [Symmetrization of measures and the one-dimensional Poisson equation with Dirichlet boundary conditions](https://arxiv.org/abs/2506.13311v1). It says: “there exists a Borel set E ⊂ \[−π, π\] with λ(E) = t”
+
+**Sources:**
+
+- [Symmetrization of measures and the one-dimensional Poisson equation with Dirichlet boundary conditions](https://arxiv.org/abs/2506.13311v1)
+
+### Concentric levels maximize product integrals
+
+**Remember:** Concentric balls overlap as much as their volumes allow.
+
+*True by definition.* MSC 26D15 (Inequalities for sums, series and integrals). arXiv math.CA. Level 3: graduate.
+
+**Definition.** Define the symmetric decreasing rearrangement by replacing every upper level set by a ball of the same volume centered at zero. These nested balls determine a new nonnegative function.
+
+**Problem.** For two nonnegative measurable functions with finite upper level volumes at every positive height, rearranging both cannot decrease the integral of their product.
+
+**How the definition helps.** Concentric balls realize the largest possible intersection at each pair of heights. The usual description asks for a radially decreasing function with the original volumes above each height (our own). Taking centered balls constructs those level sets up to sets of measure zero (our own). Integrating their intersection volumes over both heights gives the product integral by Tonelli’s theorem (our own).
+
+**Wikipedia:** [Hardy–Littlewood inequality](https://en.wikipedia.org/wiki/Hardy%E2%80%93Littlewood_inequality). It says: “we continue by estimating the volume of the intersection by the minimum of the volumes of the two sets.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -1767,6 +2015,38 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Flat directions block convex smoothing
+
+**Remember:** A flat direction can repeat a corner across infinite space.
+
+*Rules out counterexamples.* MSC 26B25 (Convexity of real functions of several variables, generalizations). arXiv math.CA. Level 4: research.
+
+**Definition.** Consider a finite convex function on Euclidean space. Its graph contains a full line if the function is affine along some entire straight line. A locally Lipschitz gradient changes by at most a constant times distance near each point.
+
+**Problem.** For every ε &gt; 0, seek a convex approximation whose gradient is locally Lipschitz and whose disagreement set has measure below ε. Unless the original gradient already has this regularity, such approximations exist exactly when the graph contains no full line.
+
+**How the definition helps.** Excluding full lines rules out a corner that repeats unchanged along an infinite direction (our own). For f(x,y) = \|x\|, finite disagreement area gives finite disagreement length on almost every vertical line (our own). On each such line the approximation equals \|x\| at points arbitrarily far in both directions (our own). Convexity then forces that vertical restriction to be constant (our own). Continuity gives agreement everywhere, including the corner (our own). The cited theorem proves sufficiency.
+
+**Paper or page:** [C²-Lusin approximation of convex functions: one variable case](https://arxiv.org/abs/2505.22975v2). It says: “The graph of f does not contain any line isometric to ℝ.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Retained slopes preserve contact
+
+**Remember:** Keep the touching slope and you keep the value.
+
+*True by definition.* MSC 26B25 (Convexity of real functions of several variables, generalizations). arXiv math.CA. Level 4: research.
+
+**Definition.** Let f be a convex function on Euclidean space with closed epigraph, the set on or above its graph. Allow +∞ but require a finite value somewhere. Choose a compact set of slopes admitting at least one affine function below f everywhere. Define g as the supremum of all such affine functions with slopes in that set.
+
+**Problem.** The function g has a global Lipschitz bound, meaning its changes are bounded by a constant times distance. It equals f at x exactly when an allowed affine function touches f there.
+
+**How the definition helps.** Keeping a touching affine function forces equality at its contact point (our own). The largest allowed slope norm bounds every change in g per unit distance (our own). For the converse, compactness gives a maximizing slope because the best affine value at x depends upper semicontinuously on the slope (our own). That value is the infimum over y of f(y) plus the slope applied to x − y (our own). Allowing every slope recovers the usual affine representation of f by the Fenchel–Moreau theorem (our own).
+
+**Paper or page:** [Singularities of Fitzpatrick and convex functions](https://arxiv.org/abs/2212.09954v3). It says: “∂f(x) ∩ C ≠ ∅ ⇔ f(x) = f꜀(x)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### A weak Jacobian for maps with jumps tracks vortices of circle-valued maps
 
 **Remember:** Use the weak Jacobian to keep track of what jumps carry.
@@ -1784,6 +2064,24 @@
 **Sources:**
 
 - [Lucia De Luca, Riccardo Scala, Nicolas Van Goethem, A new approach to topological singularities via a weak notion of Jacobian for functions of bounded variation, arXiv:2205.14746 (2022)](https://arxiv.org/abs/2205.14746v1)
+
+### Height absorbs variation weights
+
+**Remember:** Make a weight the height of an extra coordinate.
+
+*Makes the theorem clean to state or prove.* MSC 26B30 (Absolutely continuous real functions of several variables, functions of bounded variation). arXiv math.CA. Level 4: research.
+
+**Definition.** On an open subset of Euclidean space, take a positive weight w whose strict upper level sets are open. Above each point x, use the vertical interval 0 &lt; t &lt; w(x). Give every point in that interval the value f(x). Weighted variation integrates w against the total mass measure of the derivative defined by integration by parts.
+
+**Problem.** Suppose both the weighted integral of \|f\| and the weighted variation of f are finite. The ordinary integral of the lifted absolute value and its ordinary variation equal the respective weighted quantities.
+
+**How the definition helps.** Each vertical interval contributes its length w(x) when we integrate the lifted absolute value (our own). For variation, the lifting theorem shows that only horizontal changes contribute. Integrating their mass up each interval gives the same factor w(x) (our own).
+
+**Paper or page:** [Weighted Bounded Variation Revisited](https://arxiv.org/abs/2510.14105v1). It says: “is an isometric embedding”
+
+**Sources:**
+
+- [Weighted Bounded Variation Revisited](https://arxiv.org/abs/2510.14105v1)
 
 ### Derivative growth bounds make Taylor data unique
 
@@ -1840,6 +2138,22 @@
 
 - [The Univalent Foundations Program, Homotopy Type Theory: Univalent Foundations of Mathematics, Institute for Advanced Study (2013)](https://homotopytypetheory.org/book/)
 - [Auke Booij, Analysis in Univalent Type Theory, PhD thesis, University of Birmingham (2020)](http://etheses.bham.ac.uk/id/eprint/10411)
+
+### Changed coordinates reveal mean convexity
+
+**Remember:** Change scale, then use Jensen on the midpoint map.
+
+*Makes the theorem clean to state or prove.* MSC 26E60 (Means), 26B25. arXiv math.CA. Level 4: research.
+
+**Definition.** Let f be continuous and strictly increasing on an interval. Define the mean of a list by averaging its f-values with nonnegative weights totaling one, then applying the inverse of f. For u and v in the range, let H(u,v) be f at the midpoint of their inverse images.
+
+**Problem.** For two lists with common weights, compare the mean of their coordinatewise midpoints with the midpoint of their means. The first never exceeds the second, for any lists and weights, exactly when H is concave.
+
+**How the definition helps.** Applying f turns the comparison of means into Jensen’s inequality for H on pairs of transformed entries (our own). Every pair in the range has inverse images, so the mean comparisons also give every weighted concavity inequality for H (our own).
+
+**Paper or page:** [Hölder- and Minkowski-type inequalities for generalized quasi-arithmetic means](https://arxiv.org/abs/2511.05411v1). It says: “The function f is continuous and the function Ψ: f(I)² → ℝ defined by”
+
+**Sources:** none listed. No primary source with a working link was found.
 
 ### Time scales prove the discrete and continuous Weyl–Titchmarsh theories at once
 

@@ -126,6 +126,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Stable matrices remove an extra sign
+
+**Remember:** An extra row gives shear matrices an extra index.
+
+*Rules out counterexamples.* MSC 19B14 (Stability for linear groups). arXiv math.KT. Level 3: graduate.
+
+**Definition.** Start with invertible matrices over a ring with identity. Identify each matrix with the larger matrix obtained by adding an identity block along the diagonal. Define K₁ by imposing commutativity on the resulting group.
+
+**Problem.** Every elementary row addition is trivial in K₁. At size two this assertion can fail in the abelianization.
+
+**How the definition helps.** Adding a spare index lets one express each row addition as the commutator of two row additions (our own). The Whitehead lemma proves the full equality between the stable elementary subgroup and the stable commutator subgroup (our own). Without the spare index, the row addition over 𝔽₂ swaps two of the three nonzero vectors (our own). Its permutation sign survives in the abelianization of the two-by-two group (our own).
+
+**nLab:** [Steinberg group](https://ncatlab.org/nlab/show/Steinberg+group). It says: “By the above Whitehead lemma this is also Gℓ(R)/E(R).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Defining K₁ as an abelianization makes every homomorphism to abelian groups factor
 
 **Remember:** Any abelian-valued homomorphism of matrix groups factors through K₁.
@@ -224,6 +240,22 @@
 **How the definition helps.** In our own argument, constant term one makes the series invertible, so subtraction becomes division. The coefficient of degree r is the class of the rth exterior power, which records alternating products of r vectors. The exterior powers of an extension have successive pieces built from the subbundle and quotient. This proves that the series respects the defining exact sequence relations. For the negative trivial line the series is 1/(1 + t), which is no longer a polynomial.
 
 **Paper or page:** [Weil](https://stacks.math.columbia.edu/tag/0FIC). It says: “Let X be a scheme. There are maps λʳ : K₀(Vect(X)) → K₀(Vect(X))”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Nondegenerate forms have Witt inverses
+
+**Remember:** Reverse the form to get its inverse.
+
+*Rules out counterexamples.* MSC 19G12 (Witt groups of rings). arXiv math.KT. Level 3: graduate.
+
+**Definition.** Use finite-dimensional symmetric bilinear forms over a field of characteristic other than two. Require nondegeneracy, meaning that only zero pairs to zero with every vector. Two forms represent the same Witt class if adding hyperbolic planes to each makes them isometric. A hyperbolic plane has two basis vectors that each pair to zero with themselves and to one with each other.
+
+**Problem.** Every form has an additive inverse for orthogonal sum in the Witt group. The inverse is the form with its signs reversed.
+
+**How the definition helps.** Nondegeneracy lets the diagonal in the sum of a form and its negative supply half of a hyperbolic basis (our own). The diagonal pairs to zero with itself and has half the total dimension (our own). The splitting theorem for such subspaces proves the sum is hyperbolic (our own). A zero form on a line leaves a vector pairing to zero with everything, however many nonsingular planes we add (our own).
+
+**Wikipedia:** [Witt group](https://en.wikipedia.org/wiki/Witt_group). It says: “zero or more copies of a hyperbolic plane, the non-degenerate two-dimensional symmetric bilinear form with a norm 0 vector.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -465,6 +497,22 @@
 
 - [Graeme Segal, Equivariant K-theory (1968), example (ii)](https://www.numdam.org/item/PMIHES_1968__34__129_0/)
 
+### Classifying maps survive homotopy
+
+**Remember:** Homotopic pullbacks give the same classifying map class.
+
+*True by definition.* MSC 19L99 (Topological \\(K\\)-theory). arXiv math.KT. Level 3: graduate.
+
+**Definition.** Let X be a connected finite cell complex with a chosen base point. Reduced complex K-theory records formal differences of complex vector bundles of equal rank. An equivalent definition uses maps from X to BU, the space classifying bundles up to addition of trivial bundles. Identify maps joined by a continuous deformation that fixes the base point.
+
+**Problem.** Based homotopic maps between connected pointed finite cell complexes induce the same pullback on reduced complex K-theory.
+
+**How the definition helps.** In the map definition, pulling back a bundle class just means composing its classifying map with the given map (our own). Composing with a deformation gives a deformation of the composites (our own). The bundle classification theorem supplies the equivalence and its compatibility with pullback.
+
+**Paper or page:** [Topological K-Theory of Complex Projective Spaces](https://arxiv.org/abs/1303.3959). It says: “For any finite CW complex X, K̃(X) is equal to the set of homotopic maps from X to BU.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Clutching classifies sphere bundles stably
 
 **Remember:** The determinant of the equator loop counts the stable class.
@@ -483,6 +531,40 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Collapsing the subspace gives excision
+
+**Remember:** Deleting points already collapsed does not change the quotient.
+
+*True by definition.* MSC 19L99 (Topological \\(K\\)-theory). arXiv math.KT. Level 3: graduate.
+
+**Definition.** Let X be compact Hausdorff, and let A be a nonempty closed subset. Define relative complex K-theory as reduced K-theory of X/A, the space obtained by identifying A to one point. Reduced K-theory records formal differences of bundles whose ranks agree at that point. A different description uses pairs of bundles on X with an isomorphism over A after adding trivial summands.
+
+**Problem.** Removing an open subset of X contained in A leaves relative K-theory unchanged, provided some of A remains.
+
+**How the definition helps.** Collapsing what remains of A gives the same pointed space (our own). The natural map of quotients is a continuous bijection from a compact space to a Hausdorff space (our own). Comparing quotient classes with bundle pairs and stable identifications is the work in the bundle model (our own).
+
+**nLab:** [topological K-theory](https://ncatlab.org/nlab/show/topological+K-theory). It says: “K(X,A) ≔ K̃(X/A).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Variable ranks capture projective modules
+
+**Remember:** Fiber dimensions may differ between components.
+
+*Rules out counterexamples.* MSC 19L99 (Topological \\(K\\)-theory). arXiv math.KT. Level 3: graduate.
+
+**Definition.** Over a compact Hausdorff space X, allow complex vector bundles whose fiber dimension is locally constant. Form their K-group by taking formal differences under direct sum. Write C(X) for the ring of continuous complex-valued functions. Its algebraic K₀ records formal differences of finitely generated projective modules, the direct summands of finite free modules.
+
+**Problem.** Taking sections identifies bundle K-theory with the algebraic K₀ of the complex continuous functions on a compact Hausdorff space.
+
+**How the definition helps.** Allowing different ranks on different components captures the images of all continuous projection matrices (our own). On two points, the function with values one and zero acts on C(X) by projection onto the first coordinate (our own). Its image has ranks one and zero, which no difference of globally constant ranks can produce (our own). The Serre–Swan theorem identifies bundles with finitely generated projective modules by taking their sections.
+
+**Wikipedia:** [Serre–Swan theorem](https://en.wikipedia.org/wiki/Serre%E2%80%93Swan_theorem). It says: “the category of real finite-rank vector bundles on X is equivalent to the category of finitely generated projective modules over C(X).”
+
+**Sources:**
+
+- [Richard G. Swan, Vector bundles and projective modules](https://doi.org/10.1090/s0002-9947-1962-0143225-6)
+
 ### Idempotents lift K₀ across nilpotent ideals
 
 **Remember:** Idempotents lift across nilpotent ideals, and their image modules lift with them.
@@ -496,6 +578,24 @@
 **How the definition helps.** In our own proof, the matrix description turns the problem of lifting a module into lifting one idempotent. The idempotent lifting theorem supplies this step. To compare two lifts, projectivity lets us lift an isomorphism and its inverse as module maps. Each composite differs from the identity by a map with image in I times the module. Such a map has a power equal to zero, so each composite is invertible. Reduction therefore identifies the direct sum classes before taking formal differences.
 
 **Paper or page:** [Algebra](https://stacks.math.columbia.edu/tag/0D47). It says: “Then there exists a finite projective R-module P such that P/IP ≅ P̄.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Steinberg kernels give second homology
+
+**Remember:** Read second homology in the universal extension kernel.
+
+*True by definition.* MSC 19C09 (Central extensions and Schur multipliers). arXiv math.KT. Level 4: research.
+
+**Definition.** Over a ring with identity, elementary matrices add a multiple of one row to another. Allow arbitrarily large matrices by adjoining identity blocks, and let E be the group these matrices of row additions generate. A central extension maps onto E and has kernel in its center. Define the stable Steinberg group by the extension admitting a unique map over E to every central extension of E.
+
+**Problem.** The kernel of the stable Steinberg extension of a unital ring is the second integral homology of its stable elementary matrix group.
+
+**How the definition helps.** The universal description identifies the kernel by a general theorem about groups, without calculating cycles from matrix relations (our own). The theorem says that for a group generated by commutators, its universal central extension has second integral homology as kernel (our own). The ring-specific work proves that the usual Steinberg generators and relations present this universal extension (our own).
+
+**nLab:** [Steinberg group](https://ncatlab.org/nlab/show/Steinberg+group), [Schur multiplier](https://ncatlab.org/nlab/show/Schur+multiplier). It says: “This is a universal central extension and its kernel is Milnor's K2.”
+
+**Wikipedia:** [Steinberg group (K-theory)](https://en.wikipedia.org/wiki/Steinberg_group_%28K-theory%29). It says: “Equivalently, it is the Schur multiplier of the group of elementary matrices, so it is also a homology group”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -641,6 +741,24 @@
 
 - [R. W. Thomason, Thomas Trobaugh, Higher algebraic K-theory of schemes and of derived categories, The Grothendieck Festschrift vol. III, Progress in Math. 88 (1990) 247–435](https://doi.org/10.1007/978-0-8176-4576-2_10)
 
+### Larger residue fields preserve Witt presentations
+
+**Remember:** The two-element residue field can hide a relation.
+
+*Rules out counterexamples.* MSC 19G38 (Hermitian \\(K\\)-theory, relations with \\(K\\)-theory of rings). arXiv math.KT. Level 4: research.
+
+**Definition.** A commutative local ring has a unique maximal ideal. Its residue field is the quotient by that ideal. Require the residue field to have more than two elements.
+
+**Problem.** The natural map from degree-zero Milnor–Witt K-theory to the Grothendieck–Witt ring is an isomorphism for these rings. The first ring uses formal symbols for units and relations among them. The second uses formal differences of nondegenerate symmetric bilinear forms, with addition by orthogonal sum and multiplication by tensor product.
+
+**How the definition helps.** The residue field condition excludes a ring where two different symbol classes give the same form class (our own). For the polynomial ring over the two-element field modulo x⁴, the map is onto with kernel of order two. The comparison theorem proves that the symbol relations suffice under the stated hypothesis (our own).
+
+**Paper or page:** [On the presentation of the Grothendieck-Witt group of symmetric bilinear forms over local rings](https://arxiv.org/abs/2311.03962), [On the presentation of the Grothendieck-Witt group of symmetric bilinear forms over local rings](https://arxiv.org/abs/2311.03962). It says: “In fact, we have isomorphisms of abelian groups GW(R) ≅ ℤ ⊕ (ℤ/2)² and K₀ᴹᵂ(R) ≅ ℤ ⊕ (ℤ/2)³.”
+
+**Sources:**
+
+- [On the presentation of the Grothendieck-Witt group of symmetric bilinear forms over local rings](https://arxiv.org/abs/2311.03962)
+
 ### Reduced K₀ removes free-cell contributions
 
 **Remember:** Free cells should not count against having a finite cell model.
@@ -749,6 +867,58 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Essential positivity contracts Fredholm components
+
+**Remember:** Join positive quotient operators by straight lines.
+
+*Makes the theorem clean to state or prove.* MSC 19K99 (\\(K\\)-theory and operator algebras), 47A53. arXiv math.KT. Level 4: research.
+
+**Definition.** A bounded operator is Fredholm if its range is closed and its kernel and cokernel are finite-dimensional. Identify operators whose difference is compact, meaning a norm limit of finite-rank operators. Call a self-adjoint Fredholm operator essentially positive if its image in this quotient has nonnegative spectrum.
+
+**Problem.** On an infinite-dimensional separable complex Hilbert space, the essentially positive operators form one whole component of the self-adjoint Fredholm operators in the operator norm. This component contracts continuously to the identity.
+
+**How the definition helps.** Positivity in the quotient describes the whole component while allowing finitely many negative eigenvalues before taking the quotient (our own). Fredholm’s condition is equivalent to invertibility in the quotient by Atkinson’s theorem (our own). Straight lines from positive invertible elements to the identity stay positive and invertible, so straight lines contract the original operators (our own). Along any continuous self-adjoint Fredholm path, the quotient spectrum cannot acquire negative values without crossing zero (our own).
+
+**Paper or page:** [Chern character and Fermi point](https://arxiv.org/abs/2505.06704). It says: “consisting of self-adjoint Fredholm operators that are positive in the Calkin algebra, forms a path-connected component of Fredₛₐ and is contractible.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Spectral maps expose the kernel fiber
+
+**Remember:** Maps over zero land in the kernel.
+
+*True by definition.* MSC 19K99 (\\(K\\)-theory and operator algebras). arXiv math.KT. Level 4: research.
+
+**Definition.** Give each operator algebra a grading into even and odd parts compatible with multiplication and adjoints. Stabilize it by taking its graded tensor product with compact operators on a fixed graded Hilbert space. Representatives are linear maps from continuous functions vanishing at infinity on the real line into this stabilization. They preserve multiplication, adjoints and grading by reflection, and convergence means norm convergence on each input.
+
+**Problem.** A surjective grading-preserving star homomorphism induces a map of K-theory spaces. Its homotopy fiber over zero, which allows images equipped with a path to zero, is equivalent to the kernel’s K-theory space.
+
+**How the definition helps.** In the map model, a representative maps to zero exactly when its values lie in the stabilized kernel (our own). This identifies the ordinary fiber directly, without computing a boundary map in the usual exact sequence (our own). The cited lifting theorem lets the ordinary fiber compute the homotopy fiber (our own).
+
+**Paper or page:** [The spectral model of (Real) K-theory](https://arxiv.org/abs/2410.21606). It says: “Then, 𝕂(A,H) → 𝕂(B,H) is a Serre fibration, with fiber 𝕂(J).”
+
+**Sources:**
+
+- [The spectral model of (Real) K-theory](https://arxiv.org/abs/2410.21606)
+
+### Spectral products associate on representatives
+
+**Remember:** Split the input, then tensor the maps.
+
+*True by definition.* MSC 19K99 (\\(K\\)-theory and operator algebras). arXiv math.KT. Level 4: research.
+
+**Definition.** Let S consist of continuous complex functions vanishing at infinity on the real line, graded by even and odd parity. Representatives are graded star homomorphisms from S into an operator algebra tensored with compact operators, the norm limits of finite-rank operators. These linear maps preserve multiplication, adjoints and grading. To multiply representatives, first apply the standard splitting of S into its graded tensor square, then apply the two maps.
+
+**Problem.** At the level of maps, the external product is associative after the canonical identification of the two tensor products. Swapping the inputs gives the same result after the graded swap, which introduces a minus sign when both factors are odd.
+
+**How the definition helps.** The two ways to split the input three ways give the same map, so both products agree before taking classes (our own). The splitting also respects the graded swap (our own). The work lies in constructing this splitting and comparing map classes with the usual groups defined from projections in the ungraded case (our own).
+
+**Paper or page:** [The spectral model of (Real) K-theory](https://arxiv.org/abs/2410.21606). It says: “Products are commutative and associative, in the sense that the following diagrams commute strictly”
+
+**Sources:**
+
+- [The spectral model of (Real) K-theory](https://arxiv.org/abs/2410.21606)
+
 ### Connective K-theory modulo Bott gives integers
 
 **Remember:** Removing positive powers of Bott from connective K-theory leaves only the integers.
@@ -762,6 +932,22 @@
 **How the definition helps.** In our own calculation, removing the negative groups leaves no class in degree minus two that can map onto degree zero. By Bott periodicity the homotopy ring of ku is the polynomial ring ℤ\[β\]. Multiplication by β is injective, with cokernel ℤ in degree zero. The cofiber exact sequence gives those same groups for the cofiber. A spectrum with only ℤ in degree zero represents ordinary integral cohomology. In periodic K-theory, β is invertible and the cofiber vanishes.
 
 **nLab:** [ku](https://ncatlab.org/nlab/show/ku), [Bott periodicity](https://ncatlab.org/nlab/show/Bott+periodicity). It says: “The ring spectrum commonly denoted ku is the connective cover of the spectrum KU, which represents complex topological K-theory.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Exact connection changes preserve curvature
+
+**Remember:** An exact change contributes zero after differentiation.
+
+*True by definition.* MSC 19L50 (Twisted \\(K\\)-theory; differential \\(K\\)-theory). arXiv math.KT. Level 4: research.
+
+**Definition.** Equip a smooth complex vector bundle with a connection, a rule for differentiating its sections. Its Chern character form is an even differential form computed from the curvature of the connection. The Chern–Simons form compares two connections and is defined up to an exact form, the exterior derivative of another form. Identify the connections when their Chern–Simons form is exact.
+
+**Problem.** Taking the difference of Chern character forms gives a well-defined curvature map on formal differences of these structured bundles.
+
+**How the definition helps.** Exactness kills the derivative of the comparison form, so equivalent connections give identical character forms (our own). Forgetting the connection altogether would retain only the cohomology class, which identifies forms differing by an exact form (our own). The transgression formula supplies the work by identifying the difference of character forms with the exterior derivative of the comparison form (our own). Additivity under direct sum gives the map on formal differences (our own).
+
+**nLab:** [differential K-theory](https://ncatlab.org/nlab/show/differential+K-theory). It says: “the equivalence relation that identifies two connections ∇ and ∇′ if their Chern-Simons form CS(∇,∇′) is exact.”
 
 **Sources:** none listed. No primary source with a working link was found.
 

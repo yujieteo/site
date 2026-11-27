@@ -191,6 +191,22 @@
 
 - [Dominic Joyce, On manifolds with corners, arXiv:0910.3518 (2009)](https://arxiv.org/abs/0910.3518)
 
+### Connected fibers let forms descend
+
+**Remember:** Basic forms forget both vertical directions and position along a connected fiber.
+
+*Rules out counterexamples.* MSC 58A10 (Differential forms in global analysis). arXiv math.DG. Level 3: graduate.
+
+**Definition.** A surjective submersion is a smooth map that looks locally like a coordinate projection and reaches every target point. Call a form basic when it vanishes whenever one argument is tangent to a fiber and stays fixed under flows within fibers.
+
+**Problem.** For a surjective submersion with connected fibers, every basic form is the pullback of a unique form downstairs.
+
+**How the definition helps.** The first condition removes differentials along fibers, and the second makes the remaining coefficients locally constant along each fiber. Connectedness makes these coefficients constant on the whole fiber. In our own proof, local projection coordinates then give a smooth form downstairs. Surjectivity gives uniqueness. Our own counterexample projects two disjoint copies of the base onto one. A function taking different constants on the copies is basic but cannot come from downstairs.
+
+**nLab:** [basic differential form](https://ncatlab.org/nlab/show/basic+differential+form). It says: “If the fibers of p are connected (otherwise the characterization given below is valid only locally in E)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Defining Lie derivatives by flows makes the wedge product rule immediate
 
 **Remember:** Pullback respects wedges, so its derivative obeys the product rule.
@@ -222,6 +238,54 @@
 **How the definition helps.** The Lie-derivative definition makes zero divergence mean zero instantaneous change of volume (our own). At any time t, the flow law gives the rate of change by pulling the initial derivative back along the time-t map. Zero divergence therefore gives zero change at every time, and a volume-preserving flow has zero derivative at time zero. The work goes into checking that for ordinary Euclidean volume this rule gives the sum of the coordinate derivatives.
 
 **Wikipedia:** [Divergence](https://en.wikipedia.org/wiki/Divergence). It says: “This means that the divergence measures the rate of expansion of a unit of volume (a volume element) as it flows with the vector field.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Lie and exterior derivatives commute
+
+**Remember:** Pull back before differentiating in time.
+
+*True by definition.* MSC 58A10 (Differential forms in global analysis). arXiv math.DG. Level 3: graduate.
+
+**Definition.** A smooth vector field moves points along its local flow. Pull a differential form back along this motion and differentiate at time zero to obtain its Lie derivative.
+
+**Problem.** Taking a Lie derivative and taking an exterior derivative commute on smooth forms.
+
+**How the definition helps.** The flow definition lets us use the same pullback identity at every time. In our own proof, exterior differentiation commutes with smooth pullback and with differentiation in time. Differentiating the pullback identity gives the claim. Cartan’s alternative formula expresses the Lie derivative using exterior differentiation and insertion of the field into a form. Proving the pullback identity or deriving Cartan’s formula supplies the underlying work.
+
+**nLab:** [Lie derivative](https://ncatlab.org/nlab/show/Lie+derivative). It says: “the linearization of the pullback of ω along the flow exp(X −)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Closed twists square to zero
+
+**Remember:** Closedness removes the derivative of the twist, and odd degree removes its square.
+
+*Rules out counterexamples.* MSC 58A12 (de Rham theory in global analysis). arXiv math.DG. Level 3: graduate.
+
+**Definition.** Let d denote exterior differentiation of real differential forms. Choose a closed 3-form H, meaning dH = 0. Set Dα = dα + H ∧ α, where ∧ denotes the alternating product of forms. Both terms switch the parity of the degree.
+
+**Problem.** The twisted exterior derivative has square zero and hence defines cohomology.
+
+**How the definition helps.** The square reduces to wedge multiplication by dH because the mixed terms cancel and H wedges with itself to zero. The simple proof uses the exterior product rule and the sign change when swapping odd forms. Our own counterexample takes H = x₁ dx₂ ∧ dx₃ ∧ dx₄ on ℝ⁴. The square applied to 1 is then a nonzero 4-form.
+
+**nLab:** [twisted de Rham cohomology](https://ncatlab.org/nlab/show/twisted+de+Rham+cohomology). It says: “Notice that this is nilpotent, due to the odd degree of H, such that H ∧ H = 0, and the closure of H, d H = 0.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Invariance makes Cartan differentials square to zero
+
+**Remember:** Invariance kills the square of the Cartan differential.
+
+*Rules out counterexamples.* MSC 58A12 (de Rham theory in global analysis). arXiv math.DG. Level 3: graduate.
+
+**Definition.** Suppose the circle acts smoothly on a manifold. Use polynomials in a variable u of degree two whose coefficients are differential forms fixed by the action. Set D = d − uι, where d differentiates forms and ι inserts the velocity field of the rotation.
+
+**Problem.** The Cartan differential has square zero on invariant forms, so its cohomology is defined.
+
+**How the definition helps.** Invariance makes each coefficient’s derivative along the rotation vanish. In our own calculation, Cartan’s formula identifies D² with minus u times that derivative. On the rotating circle, the same calculation gives D² sin θ = −u cos θ. This example shows what fails when the coefficients can change under rotation.
+
+**nLab:** [equivariant de Rham cohomology](https://ncatlab.org/nlab/show/equivariant+de+Rham+cohomology). It says: “Equip this graded vector space Ω•(G, 𝔥∗\[1\])ᴳ with a differential d by”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -270,6 +334,22 @@
 **How the definition helps.** The condition d\*ω = 0 says directly that ω is orthogonal to all exact forms (our own). All other representatives differ from ω by such a form, so Pythagoras gives the strict norm increase (our own). The Hodge theorem does the work of finding the harmonic representative (our own).
 
 **Wikipedia:** [Hodge theory](https://en.wikipedia.org/wiki/Hodge_theory). It says: “the harmonic representative is the unique closed form of minimum L² norm that represents a given cohomology class.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Exterior closure detects integrable planes
+
+**Remember:** Differentiate the vanishing forms to test integrability.
+
+*Rules out counterexamples.* MSC 58A17 (Pfaffian systems). arXiv math.DG. Level 3: graduate.
+
+**Definition.** A smooth plane field assigns a tangent subspace of fixed dimension to each point. Take all sums of alternating products having at least one factor a one-form that vanishes on those planes. These forms constitute an ideal. Call it closed under exterior differentiation when differentiating any member gives another member.
+
+**Problem.** A local integral leaf is a submanifold whose tangent spaces equal the prescribed planes. Such a leaf passes through every point exactly when the ideal is closed under exterior differentiation.
+
+**How the definition helps.** Closure tests integrability by differentiating the one-forms that describe the planes. In our own explanation, evaluate such a derivative on two vector fields lying in the planes. The result equals minus the original form on their Lie bracket, which measures failure of their flows to commute. The Frobenius theorem constructs the local leaves when all these brackets stay in the planes. Our own counterexample uses the planes annihilated by dz − x dy. Its derivative −dx ∧ dy is nonzero on each plane.
+
+**nLab:** [exterior differential system](https://ncatlab.org/nlab/show/exterior+differential+system). It says: “Frobenius systems are in bijection with involutive subbundles of the tangent bundle of X”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -324,6 +404,24 @@
 - [Jean-Marie Souriau, Groupes différentiels, Lecture Notes in Math. 836, Springer (1980) 91–128](https://doi.org/10.1007/BFb0089728)
 - [Patrick Iglesias-Zemmour, Diffeology, Mathematical Surveys and Monographs 185, AMS (2013)](https://doi.org/10.1090/surv/185)
 
+### Quotient plots detect smoothness
+
+**Remember:** Test smoothness upstairs by lifting each plot locally.
+
+*True by definition.* MSC 58A40 (Differential spaces). arXiv math.DG. Level 3: graduate.
+
+**Definition.** A diffeological space specifies smooth parametrizations, called plots, on open subsets of Euclidean spaces. A map is smooth when it sends plots to plots. On a quotient, take the smallest collection of plots making the projection smooth, subject to the usual rules for plots.
+
+**Problem.** A map out of a diffeological quotient is smooth exactly when its composite with the quotient map is smooth.
+
+**How the definition helps.** One can describe the quotient plots explicitly as parametrizations that locally lift to plots upstairs. This description turns the smoothness test into composition with a local lift. Our own proof uses the fact that smoothness can be tested locally. The work is showing that local lifts give exactly the smallest allowed collection. They include constant plots and remain plots after smooth changes of parameters and gluing.
+
+**Paper or page:** [Diffeological Principal Bundles and Principal Infinity Bundles](https://arxiv.org/abs/2202.11023v4). It says: “is smooth if and only if f π is”
+
+**Sources:**
+
+- [Emilio Minichiello, Diffeological Principal Bundles and Principal Infinity Bundles](https://arxiv.org/abs/2202.11023v4)
+
 ### Absolute differential forms give the triangle inequality for integrals
 
 **Remember:** An absolute form is what you integrate over an unoriented curve, like arc length \|dx\|.
@@ -358,6 +456,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Clifford multiplication makes Dirac operators elliptic
+
+**Remember:** A square equal to a nonzero scalar gives an inverse.
+
+*True by definition. Confidence: medium.* MSC 58J05 (Elliptic equations on manifolds, general theory). arXiv math.DG. Level 3: graduate.
+
+**Definition.** The principal symbol of a first-order operator records its derivative coefficients at a covector, a linear function on tangent vectors. Use the real symbol convention without a factor of i. Call the operator Dirac-type if its symbol squares to minus the squared covector length times the identity.
+
+**Problem.** Every Riemannian Dirac-type operator is elliptic, meaning its symbol is invertible for every nonzero covector.
+
+**How the definition helps.** The symbol definition gives an inverse by dividing the symbol by minus the squared covector length. This Riemannian argument is our own generalization of the cited Euclidean example. Another construction differentiates sections of a vector bundle using a connection and then applies Clifford multiplication. The work there is identifying its symbol and checking the stated square relation.
+
+**nLab:** [Dirac operator](https://ncatlab.org/nlab/show/Dirac+operator). It says: “In Euclidean space the Dirac operator is elliptic, but not in Minkowski space.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Defining the Laplacian as d\*d makes it symmetric and nonnegative
 
 **Remember:** Pairing the Laplacian with a function pairs their differentials.
@@ -389,6 +503,24 @@
 **nLab:** [symbol of a differential operator](https://ncatlab.org/nlab/show/symbol+of+a+differential+operator). It says: “where in the commutator on the right we regard multiplication by f as an endomorphism of Γ(E).”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Causal subtraction gives skew adjoints
+
+**Remember:** Taking the adjoint swaps future and past.
+
+*True by definition.* MSC 58J45 (Hyperbolic equations on manifolds). arXiv math.DG. Level 3: graduate.
+
+**Definition.** Retarded and advanced Green operators solve a linear equation with forcing and restrict the response to the causal future and past, respectively. Green hyperbolicity requires these inverse operators for both the equation and its formal adjoint. Subtract the advanced operator from the retarded operator to define the causal propagator.
+
+**Problem.** For a formally self-adjoint Green-hyperbolic operator on a globally hyperbolic spacetime, its causal propagator is formally skew adjoint. The adjoint identity is tested by integrating against compactly supported smooth sections.
+
+**How the definition helps.** Taking the adjoint exchanges the two terms in the defining difference, which changes its sign. Our own explanation uses the separate Green operators to avoid computing the propagator’s integral kernel. The work is proving the exchange identity by integration by parts. Global hyperbolicity makes the overlap of the relevant future and past supports compact for compactly supported forcing.
+
+**nLab:** [Green hyperbolic partial differential equation](https://ncatlab.org/nlab/show/Green+hyperbolic+partial+differential+equation). It says: “are formally adjoint differential operators, up to a sign”
+
+**Sources:**
+
+- [Christian Bär, Green-Hyperbolic Operators on Globally Hyperbolic Spacetimes](https://doi.org/10.1007/s00220-014-2097-7)
 
 ### In smooth sets, every differential form comes from one universal form
 
@@ -516,6 +648,24 @@
 
 - [P. Hajłasz, J. Mirra and A. Schikorra, Hölder continuous mappings, differential forms and the Heisenberg groups, arXiv:2503.11506 (2025)](https://arxiv.org/abs/2503.11506)
 
+### Jet pullbacks classify formal solutions
+
+**Remember:** A pullback collects exactly the compatible formal derivatives.
+
+*True by definition.* MSC 58A20 (Jets in global analysis). arXiv math.DG. Level 4: research.
+
+**Definition.** An infinite jet records formal derivatives of every order at a point. An equation selects a space E of allowed jets. To prolong it, pair a jet of the unknown with a jet of data taking values in E. Keep the pair when differentiating the first jet formally gives the same repeated derivatives as including the second in the ambient jet space.
+
+**Problem.** Every parametrized family of formal solutions factors uniquely through the universal family over the infinite prolongation.
+
+**How the definition helps.** The pullback definition packages the compatibility conditions into one space, so each compatible pair determines a unique map into it. The usual description imposes the equation and all its differentiated equations separately. In our own explanation, the work is identifying families of formal solutions with pairs of maps having the same repeated derivative data.
+
+**Paper or page:** [Synthetic geometry of differential equations: I. Jets and comonad structure](https://arxiv.org/abs/1701.06238v1). It says: “Every parametrized family of formal solutions of this PDE factors uniquely through a universal one”
+
+**Sources:**
+
+- [Igor Khavkine and Urs Schreiber, Synthetic geometry of differential equations: I. Jets and comonad structure](https://arxiv.org/abs/1701.06238v1)
+
 ### Constant rank along flows makes involutive singular distributions integrable
 
 **Remember:** Involutive is not enough; the rank must also stay constant along flows.
@@ -551,6 +701,24 @@
 **Sources:**
 
 - [P. Albin, M. Banagl and P. Piazza, Smooth atlas stratified spaces, K-Homology Orientations, and Gysin maps, arXiv:2505.14952 (2025)](https://arxiv.org/abs/2505.14952)
+
+### Plotwise triviality survives pullback
+
+**Remember:** Compose a test plot with the base map to test the pulled-back bundle.
+
+*True by definition.* MSC 58A40 (Differential spaces). arXiv math.DG. Level 4: research.
+
+**Definition.** A diffeological space specifies smooth parametrizations called plots. Test the bundle on plots with domains diffeomorphic to Euclidean spaces. Each pullback must be a product with the group, respecting its action. Any two points in one fiber must differ by a unique group element that depends smoothly on the pair.
+
+**Problem.** Pulling a diffeological principal bundle back along a smooth map gives another principal bundle. Pullback assigns to each new base point the fiber over its image.
+
+**How the definition helps.** In our own proof, pulling back first along a base map and then along a plot gives the pullback along their composite. The composite is a plot, so the resulting bundle is trivial. Our own argument also uses that the smooth map giving unique group transport pulls back to the new fibers. The source proves the equivalence of this plotwise test with the definition by a smooth quotient and a principal group action.
+
+**Paper or page:** [Diffeological Principal Bundles and Principal Infinity Bundles](https://arxiv.org/abs/2202.11023v4). It says: “the pullback p₀∗P is trivial”
+
+**Sources:**
+
+- [Emilio Minichiello, Diffeological Principal Bundles and Principal Infinity Bundles](https://arxiv.org/abs/2202.11023v4)
 
 ### Maps of graded manifolds are detected by probes with one ordinary point
 
@@ -765,6 +933,24 @@
 **Sources:**
 
 - [John Phillips, Self-Adjoint Fredholm Operators and Spectral Flow (1996)](https://doi.org/10.4153/CMB-1996-054-4)
+
+### Stochastic completeness rules out unprescribed heat
+
+**Remember:** No lost heat means no unprescribed heat.
+
+*Rules out counterexamples.* MSC 58J35 (Heat and other parabolic equation methods for PDEs on manifolds). arXiv math.DG. Level 4: research.
+
+**Definition.** On a Riemannian manifold, evolve heat on expanding bounded regions with boundary temperature zero. Their limiting kernel gives the minimal heat evolution. Call the manifold stochastically complete when this evolution preserves the constant function one.
+
+**Problem.** Take a smooth, connected, noncompact Riemannian manifold without boundary whose negative Laplacian is subcritical, meaning it admits a positive Green function. Stochastic completeness holds exactly when every bounded classical heat solution with zero initial data vanishes on every finite time interval.
+
+**How the definition helps.** Subtracting the minimal evolution of one from one measures lost heat and gives a bounded solution with zero initial data. In our own explanation, comparison on bounded regions bounds the magnitude of any such solution by its supremum times this loss. On the open half-line, the missing endpoint absorbs heat. Our own example there has loss erfc(x/(2√t)), where erfc is the complementary error function.
+
+**Paper or page:** [Stochastic completeness and L¹-Liouville property for second-order elliptic operators](https://arxiv.org/abs/2203.06493v1). It says: “has a bounded solution in M × (0, T), then necessarily v = 0.”
+
+**Sources:**
+
+- [Debdip Ganguly, Yehuda Pinchover, and Prasun Roychowdhury, Stochastic completeness and L¹-Liouville property for second-order elliptic operators](https://arxiv.org/abs/2203.06493v1)
 
 ### A bracket-aware principal symbol is invertible exactly for maximally hypoelliptic operators
 

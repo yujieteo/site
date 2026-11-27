@@ -583,6 +583,24 @@ a parallelogram.”
 
 - [Cospanning characterizations of antimatroids and convex geometries, Theorem 2.8](https://arxiv.org/abs/2107.08556v1)
 
+### Nondegenerate equilibria satisfy Euler’s formula
+
+**Remember:** A sphere has no isolated equilibria about its center.
+
+*Rules out counterexamples.* MSC 52A15 (Convex sets in \\(3\\) dimensions (including convex surfaces)). arXiv math.MG. Level 3: graduate.
+
+**Definition.** For a smooth convex body and an interior point c, equilibria are critical points of squared distance from c on the boundary. Minima are stable, maxima are unstable, and saddles have both increasing and decreasing directions. An equilibrium is nondegenerate if the matrix of second derivatives in local surface coordinates has no zero eigenvalue.
+
+**Problem.** For a smooth convex body in three dimensions with only nondegenerate equilibria, stable plus unstable equilibria minus saddles equals two.
+
+**How the definition helps.** In our own account, nondegeneracy lets each equilibrium contribute a sign determined by its second derivatives. Our own account puts the work in Morse theory, which identifies the signed count with the Euler characteristic of the boundary sphere. In our own counterexample, every point of a round sphere is an equilibrium relative to its center.
+
+**Paper or page:** [Centroids and equilibrium points of convex bodies](https://arxiv.org/abs/2407.19177v2). It says: “S−H+U=2.”
+
+**Sources:**
+
+- [Centroids and equilibrium points of convex bodies (Theorem 3.4)](https://arxiv.org/abs/2407.19177v2)
+
 ### Recession directions guard closed sums
 
 **Remember:** Escaping summands with a convergent sum leave opposite rays inside the two sets.
@@ -699,6 +717,24 @@ a parallelogram.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### John’s contacts bound symmetric bodies
+
+**Remember:** Weighted contact directions measure every squared length.
+
+*True by definition.* MSC 52A40 (Inequalities and extremum problems involving convexity in convex geometry). arXiv math.MG. Level 3: graduate.
+
+**Definition.** A convex body symmetric about zero is in John’s position if its largest-volume inscribed ellipsoid is the Euclidean unit ball. Equivalently, it contains that ball and admits unit contact vectors where the two boundaries meet. Positive weights on those vectors express the identity matrix as a sum of their weighted outer products.
+
+**Problem.** In dimension n, a convex body symmetric about zero and in John’s position lies inside the concentric ball of radius √n.
+
+**How the definition helps.** In our own proof, the contact definition expresses each squared norm as a weighted sum of squared projections. Our own bound uses the two supporting hyperplanes at each pair of opposite contacts to bound each projection by one in magnitude. Our own calculation sums the diagonal entries of the identity to see that the weights sum to n. The work in our own account is John’s theorem, which derives the contact decomposition from maximal volume.
+
+**Wikipedia:** [John ellipsoid](https://en.wikipedia.org/wiki/John_ellipsoid). It says: “x = ∑ᵐᵢ₌₁ cᵢ (x · uᵢ) uᵢ.”
+
+**Sources:**
+
+- [Fritz John, Extremum Problems with Inequalities as Subsidiary Conditions (1948, reprinted)](https://doi.org/10.1007/978-1-4612-5412-6_25)
+
 ### Surface area as an outer volume derivative gives the isoperimetric inequality
 
 **Remember:** The change in volume under thickening measures surface area.
@@ -766,6 +802,22 @@ a parallelogram.”
 **How the definition helps.** The supremum formula gives convexity and closedness because its epigraph is an intersection of closed half-spaces, one for each x where f is finite. Our own comparison is that the classical formula needs a point with gradient p and gives no formula when p is outside the gradient’s range. The supporting-plane inequality proves that the two formulas agree wherever the classical formula applies. The biconjugate theorem uses separation to show when taking the conjugate twice recovers f. It applies when f is convex and its epigraph is closed.
 
 **Wikipedia:** [Convex conjugate](https://en.wikipedia.org/wiki/Convex_conjugate). It says: “The convex conjugate of a function is always lower semi-continuous.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Connected sections exclude pinches
+
+**Remember:** Meeting at one vertex is not enough for flag connectivity.
+
+*Rules out counterexamples.* MSC 52B05 (Combinatorial properties of polytopes and polyhedra (number of faces, shortest paths, etc.)). arXiv math.CO. Level 3: graduate.
+
+**Definition.** An abstract polytope orders faces by containment, with a least face, a greatest face, and ranks increasing by one at each immediate inclusion. Between two faces two ranks apart there must be exactly two intermediate faces. For larger rank gaps, any two intermediate faces must be linked by a sequence of intermediate faces with consecutive faces comparable.
+
+**Problem.** In an abstract polytope, a flag is a maximal chain of faces. Any two flags can be joined by single-face changes that keep their common faces fixed.
+
+**How the definition helps.** In our own proof, connectivity between bounding faces lets us change a flag one face at a time while keeping the bounds fixed. Each consecutive comparable pair belongs to some flag. Induction connects flags through each fixed face by working separately above and below it. In the example of two pyramids meeting only at their apex, the faces strictly above the apex and below the common top split by pyramid.
+
+**nLab:** [abstract polytope](https://ncatlab.org/nlab/show/abstract+polytope). It says: “The next definition disallows constructions such as two pyramids kissing on a single vertex:”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -869,6 +921,24 @@ a parallelogram.”
 
 - [Ehrhart theory of cosmological polytopes, Theorem 2.1](https://arxiv.org/abs/2412.01602v2)
 
+### Reflexive polytopes have palindromic numerators
+
+**Remember:** Integral facet normals turn strict inequalities into a shift by one.
+
+*Rules out counterexamples.* MSC 52B20 (Lattice polytopes in convex geometry (including relations with commutative algebra and algebraic geometry)). arXiv math.CO. Level 3: graduate.
+
+**Definition.** A full-dimensional rational polytope containing zero in its interior is rational reflexive if its polar has integer vertices. The polar contains exactly the vectors whose dot product with every point of the polytope is at most one. Let q be the least positive integer making all vertices integral after scaling, and write u for z raised to q. In dimension d, multiply the lattice-count series by the (d + 1)st power of (1 − u) to obtain the Ehrhart numerator.
+
+**Problem.** The Ehrhart numerator of a rational reflexive polytope is palindromic. Its coefficients read the same in either direction.
+
+**How the definition helps.** In our own proof, integer polar vertices turn strict inequalities at scale m into closed inequalities at scale m − 1 for lattice points. Ehrhart reciprocity relates the series counting interior lattice points to the original series with the variable inverted. The shift then forces the coefficients to read equally in both directions. Our own interval \[−1,2\] lacks an integral polar and has numerator 1 + 2z.
+
+**Paper or page:** [Boundary h\*-polynomials of rational polytopes](https://arxiv.org/abs/2206.04175v3). It says: “If P is a rational reflexive polytope, then h\*ₚ(z) is palindromic.”
+
+**Sources:**
+
+- [Esme Bajo and Matthias Beck, Boundary h\*-polynomials of rational polytopes (Theorem 5.1)](https://arxiv.org/abs/2206.04175v3)
+
 ### Support functions make Newton polytopes of products add as Minkowski sums
 
 **Remember:** In each direction, the top parts of f and g multiply without cancelling.
@@ -884,6 +954,58 @@ a parallelogram.”
 **Wikipedia:** [Newton polytope](https://en.wikipedia.org/wiki/Newton_polytope). It says: “Newt(fg) = Newt(f) + Newt(g)”
 
 **Sources:** none listed. No primary source with a working link was found.
+
+### Unimodular triangulations reveal Ehrhart coefficients
+
+**Remember:** A lattice basis makes counting points inside a simplex count compositions.
+
+*Rules out counterexamples.* MSC 52B20 (Lattice polytopes in convex geometry (including relations with commutative algebra and algebraic geometry)). arXiv math.CO. Level 3: graduate.
+
+**Definition.** A unimodular triangulation divides a lattice polytope into simplices whose edges from one vertex form a lattice basis in their span. To obtain the h-polynomial in dimension d, sum one term per face, including the empty face. For j vertices, use t raised to j times (1 − t) raised to d + 1 − j. The h\*-polynomial multiplies the series counting lattice points in integer dilations by the (d + 1)st power of (1 − t).
+
+**Problem.** For a unimodular triangulation, the h-polynomial of the triangulation equals the h\*-polynomial of the lattice polytope.
+
+**How the definition helps.** In our own proof, a lattice basis makes the points inside each dilated open face correspond to positive integer vertex coefficients. These coefficients sum to the dilation factor. A face with j vertices therefore contributes the jth power of t/(1 − t). Summing over faces, including the empty face at scale zero, gives the h-polynomial as the numerator. Our own segment \[0,2\] with no subdivision has h-polynomial 1 and lattice-count numerator 1 + t.
+
+**Paper or page:** [Equatorial Flow Triangulations of Gorenstein Flow Polytopes](https://arxiv.org/abs/2408.05320v2). It says: “Given a unimodular triangulation T of a lattice polytope P, the h-vector of T is equal to the h\*-vector of P.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Unimodularity prevents Reeve’s missing sums
+
+**Remember:** A lattice basis gives integer coordinates, not just empty simplices.
+
+*Rules out counterexamples.* MSC 52B20 (Lattice polytopes in convex geometry (including relations with commutative algebra and algebraic geometry)). arXiv math.CO, math.MG. Level 3: graduate.
+
+**Definition.** A lattice polytope has integer vertices. A unimodular triangulation divides it into simplices whose edge vectors from one vertex form a basis of the lattice parallel to each simplex. An empty lattice simplex contains no lattice points besides its vertices.
+
+**Problem.** Suppose a lattice polytope has a unimodular triangulation. Then every lattice point in its dilation by a positive integer m is a sum of m original lattice points.
+
+**How the definition helps.** In our own proof, a lattice basis gives nonnegative integer vertex coefficients summing to the dilation. Our own counterexample to using just emptiness is Reeve’s tetrahedron with vertices 0, (1,0,0), (0,1,0) and (1,1,2). Its double contains (1,1,1), but no two vertices sum to that point in our own example. The work in our own account is constructing the unimodular triangulation.
+
+**Wikipedia:** [Reeve tetrahedra](https://en.wikipedia.org/wiki/Reeve_tetrahedra). It says: “No other lattice points lie on the surface or in the interior of the tetrahedron.”
+
+**Sources:**
+
+- [J. E. Reeve, On the Volume of Lattice Polyhedra (1957)](https://doi.org/10.1112/plms/s3-7.1.378)
+
+### Gale complements detect faces
+
+**Remember:** A face leaves a positive dependence on its complement.
+
+*True by definition.* MSC 52B35 (Gale and other diagrams). arXiv math.CO, math.MG. Level 3: graduate.
+
+**Definition.** Append a one to each vertex coordinate column and form the matrix of these columns. The Gale diagram uses the rows of a matrix whose columns form a basis of that matrix’s kernel. This replaces the vertex coordinates with vectors that encode all their affine dependencies.
+
+**Problem.** A proper nonempty vertex subset spans a face exactly when its complementary Gale vectors have a weighted sum of zero with every weight positive.
+
+**How the definition helps.** In our own proof, the kernel basis turns a supporting affine function into one linear equation among the complementary vectors. A function exposing the face takes value zero on its vertices and positive values elsewhere. Its values form a vector orthogonal to every kernel column, so the positive values give the required weights. Conversely, extend the weights by zeros. Orthogonality puts this vector in the original matrix’s row space, so an affine function realizes those values.
+
+**Paper or page:** [Eigenpolytope Universality and Graphical Designs](https://arxiv.org/abs/2209.06349v2). It says: “if and only if I is the support of a positive dependence (circuit) of 𝒱.”
+
+**Sources:**
+
+- [David Gale, Neighborly and cyclic polytopes (1963)](https://doi.org/10.1090/pspum/007/0152944)
 
 ### Lifted energy selects Delaunay triangulations
 
@@ -957,6 +1079,40 @@ a parallelogram.”
 **How the definition helps.** Writing the zonotope as a sum of segments lets each direction choose an endpoint of every segment independently. Our own proof uses this description of the projected cube, with each cube coordinate contributing one segment. Within a chamber, the signs of the dot products fix every endpoint, giving a unique maximizing vertex. Crossing to another chamber changes an endpoint and strictly lowers the original direction's value on the new sum. Every vertex uniquely maximizes some linear function, and a small perturbation avoids all the hyperplanes.
 
 **Wikipedia:** [Zonotope](https://en.wikipedia.org/wiki/Zonotope). It says: “The Minkowski sum of a finite set of line segments in ℝᵈ forms a type of convex polytope called a zonotope.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Affine images preserve algebraic interiors
+
+**Remember:** Affine maps carry extensions of segments to extensions of segments.
+
+*True by definition.* MSC 52A05 (Convex sets without dimension restrictions (aspects of convex geometry)). arXiv math.MG. Level 4: research.
+
+**Definition.** The relative algebraic interior singles out points x of a convex set where every direction in its affine span permits a small two-sided move. Equivalently, the segment from any other point of the set to x extends beyond x inside the set.
+
+**Problem.** An affine map sends the relative algebraic interior onto the relative algebraic interior of the image, if the original relative algebraic interior is nonempty.
+
+**How the definition helps.** In our own proof, the equivalent segment test works directly because affine maps preserve segment parameters. For the converse, start from the image of a known algebraic interior point. Extend the segment from this image past the desired image point, unless the two already coincide. Lift the far endpoint to the convex set. The lifted segment stays in the algebraic interior until its far endpoint, so interpolation supplies the desired lift.
+
+**Paper or page:** [A note on faces of convex sets](https://arxiv.org/abs/2404.00832v3). It says: “Then rai(α(K)) = α(rai(K)).”
+
+**Sources:**
+
+- [A note on faces of convex sets (Theorem 6.5)](https://arxiv.org/abs/2404.00832v3)
+
+### Segments make minimal faces intersect
+
+**Remember:** To belong to both smallest faces, shorten both extensions to the same length.
+
+*True by definition.* MSC 52A05 (Convex sets without dimension restrictions (aspects of convex geometry)). arXiv math.MG. Level 4: research.
+
+**Definition.** A face is a convex subset of a convex set. If an interior point of a segment in the set belongs to the face, both endpoints must belong to it. The smallest face containing x consists of x and each point y whose segment to x extends beyond x within the set.
+
+**Problem.** For convex sets K and L containing x, the smallest face of their intersection through x equals the intersection of their smallest faces through x.
+
+**How the definition helps.** In our own proof, the segment test lets both sets use the same extension beyond x. If two extensions work separately, the shorter one lies in both sets by convexity. Conversely, any extension in the intersection works in each set. The underlying result identifies this segment description with the intersection of all faces containing x.
+
+**Paper or page:** [A note on faces of convex sets](https://arxiv.org/abs/2404.00832v3). It says: “Let K,L ⊆ V be convex sets and let x ∈ K ∩ L.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -1068,6 +1224,60 @@ a parallelogram.”
 
 - [A pithy look at the Polytope Algebra, Theorem 4.13](https://arxiv.org/abs/2111.02820v1)
 - [P. McMullen, The polytope algebra (1989)](https://doi.org/10.1016/0001-8708(89)90029-7)
+
+### Polarity swaps lattice extremal directions
+
+**Remember:** A narrow span becomes a long central chord in the polar.
+
+*Makes the theorem clean to state or prove.* MSC 52C07 (Lattices and convex bodies in \\(n\\) dimensions (aspects of discrete geometry)). arXiv math.MG. Level 4: research.
+
+**Definition.** The dual lattice consists of vectors taking integer dot products with the original lattice. Lattice width minimizes the range of these dot products over nonzero dual vectors. Lattice diameter maximizes chord length measured in steps of the shortest lattice vector along the chord. The polar contains all vectors whose dot product with every point of the body is at most one.
+
+**Problem.** For a full-dimensional origin-symmetric polytope, the lattice width directions are the polar polytope’s lattice diameter directions in the dual lattice.
+
+**How the definition helps.** In our own proof, polarity turns each directional span into the reciprocal length of a chord, so minimizers become maximizers. For a shortest dual lattice vector y on its line, symmetry makes the span twice the largest dot product with y. The polar’s central chord has length two divided by that largest value, in steps of y. Averaging a chord with its reflection, with endpoints reversed, gives a central chord of the same length.
+
+**Paper or page:** [Lattice Reduced and Complete Convex Bodies](https://arxiv.org/abs/2307.09429v2). It says: “The width directions of C with respect to Λ are the diameter directions of C⋆ with respect to Λ⋆.”
+
+**Sources:**
+
+- [Lattice Reduced and Complete Convex Bodies (Theorem 3.8)](https://arxiv.org/abs/2307.09429v2)
+
+### Stationarity turns coverage into intensity
+
+**Remember:** A point is covered exactly when its radius ball contains a center.
+
+*True by definition.* MSC 52C17 (Packing and covering in \\(n\\) dimensions (aspects of discrete geometry)). arXiv math.MG. Level 4: research.
+
+**Definition.** Consider a metric space whose isometries can send any point to any other and whose invariant volume is unique up to scale. A stationary random packing has a probability law unchanged by these isometries. Define its density as the probability that an open packing ball covers a fixed point. Its center intensity is the expected number of centers per unit volume.
+
+**Problem.** For a stationary packing by equal open balls in a homogeneous space with invariant volume, density equals center intensity times one ball’s volume.
+
+**How the definition helps.** In our own explanation, defining density by coverage probability avoids taking limits over expanding regions. Disjoint open balls make the number of centers within radius r of a point either zero or one. Its expectation equals the probability of coverage. Stationarity makes the expected counting measure invariant, so uniqueness makes it a constant multiple of volume.
+
+**Paper or page:** [Linear programming bounds in homogeneous spaces, I: Optimal packing density](https://arxiv.org/abs/2505.23572v1). It says: “D(Λ) = 𝔼\[Λ(B(x,r))\] = i(Λ)m<sub>X</sub>(B(x₀,r)).”
+
+**Sources:**
+
+- [Linear programming bounds in homogeneous spaces, I: Optimal packing density (Proposition 4.10)](https://arxiv.org/abs/2505.23572v1)
+
+### Strict convexity separates Voronoi interiors
+
+**Remember:** A flat unit ball can give a whole region of ties.
+
+*Rules out counterexamples.* MSC 52C22 (Tilings in \\(n\\) dimensions (aspects of discrete geometry)). arXiv math.MG. Level 4: research.
+
+**Definition.** A weighted Voronoi cell contains the points minimizing distance to its site minus the site’s weight. A nondegenerate site strictly wins at its own location. A strictly convex norm has no line segment on the boundary of its unit ball.
+
+**Problem.** In a plane with a strictly convex norm, the interior of either cell of two distinct nondegenerate sites misses the other cell.
+
+**How the definition helps.** In our own proof, strict convexity makes a small move from a tie toward either site favor that site. Off the line of the sites this follows from strict triangle inequality. On the line, nondegeneracy forces a tie to lie between the sites, where the distances change in opposite directions. Our own counterexample uses the maximum norm and unweighted sites (−1,0) and (1,0). Both cells contain the open region y &gt; \|x\| + 1 because both distances equal y.
+
+**Paper or page:** [Non-Euclidean Erdős-Anning Theorems](https://arxiv.org/abs/2401.06328v3). It says: “the interior of Vᵢ is disjoint from Vⱼ, and vice versa.”
+
+**Sources:**
+
+- [Non-Euclidean Erdős-Anning Theorems (Lemma 7)](https://arxiv.org/abs/2401.06328v3)
 
 ### Spherical and hyperbolic discrete Laplacians keep the smooth conformal eigenvalue equation
 

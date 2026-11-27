@@ -546,6 +546,22 @@
 
 - [Don Zagier, The Dilogarithm Function (2007)](https://doi.org/10.1007/978-3-540-30308-4_1)
 
+### Reflection gives Pfaff’s transformation
+
+**Remember:** Reflect the averaging density, then factor out one minus z.
+
+*True by definition.* MSC 33C05 (Classical hypergeometric functions, \\(\_2F<sub>1</sub>\\)). arXiv math.CA. Level 3: graduate.
+
+**Definition.** Take complex a, real z &lt; 1, and real 0 &lt; b &lt; c. Euler’s integral defines the Gauss hypergeometric function F(a,b;c;z) as the average of exp(−a log(1 − zt)) over 0 &lt; t &lt; 1. The averaging density is proportional to exp((b − 1)log t + (c − b − 1)log(1 − t)).
+
+**Problem.** For these parameters, F(a,b;c;z) = exp(−a log(1 − z)) F(a,c − b;c;z/(z − 1)).
+
+**How the definition helps.** In our own derivation, reflecting t to 1 − t exchanges b and c − b in the density. The new base of the power factors as (1 − z)(1 − zt/(z − 1)). Both factors are positive, so their logarithms add and the first gives the constant multiplier. To recover the usual Gauss series for \|z\| &lt; 1, expand the integrand and integrate each term. Euler’s integral continues that series to the stated real domain.
+
+**Wikipedia:** [Hypergeometric function](https://en.wikipedia.org/wiki/Hypergeometric_function). It says: “₂F₁(a,b;c;z) = (1−z)⁻ᵃ ₂F₁(a,c−b;c;z/(z−1))”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Regularizing Gauss removes parameter poles
 
 **Remember:** Use reciprocal gamma in the coefficients, including its zeros.
@@ -596,6 +612,40 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Beta reflection gives Kummer’s transformation
+
+**Remember:** Reflecting the beta variable swaps its two parameters.
+
+*True by definition.* MSC 33C15 (Confluent hypergeometric functions, Whittaker functions, \\(\_1F<sub>1</sub>\\)). arXiv math.CA. Level 3: graduate.
+
+**Definition.** For real 0 &lt; a &lt; b, take a probability density on (0,1) proportional to tᵃ⁻¹(1 − t)ᵇ⁻ᵃ⁻¹. Represent Kummer’s confluent hypergeometric function M(a,b,z) by the mean of exp(zt) under this density.
+
+**Problem.** For b not a nonpositive integer, M(a,b,z) = exp(z) M(b − a,b,−z).
+
+**How the definition helps.** In our own proof, reflecting t to 1 − t swaps the density parameters and extracts the factor exp(z). The usual power series hides this symmetry. Expanding the exponential and integrating gives the series definition. Analytic continuation then extends the identity to complex parameters wherever both sides are defined.
+
+**Wikipedia:** [Confluent hypergeometric function](https://en.wikipedia.org/wiki/Confluent_hypergeometric_function). It says: “Kummer's functions are also related by Kummer's transformations”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Distributional differentiation gives moment recurrences
+
+**Remember:** Testing the Pearson equation on powers gives the moment recurrence.
+
+*True by definition.* MSC 33C45 (Orthogonal polynomials and functions of hypergeometric type (Jacobi, Laguerre, Hermite, Askey scheme, etc.)). arXiv math.CA. Level 3: graduate.
+
+**Definition.** A polynomial functional u assigns numbers linearly to polynomials. Define its derivative by u′(f) = −u(f′), and define multiplication by (φu)(f) = u(φf). The Pearson equation is (φu)′ = ψu, with φ(x) = ax² + bx + c and ψ(x) = px + q.
+
+**Problem.** Write mₙ for the value of u on the nth power of x. The Pearson equation holds exactly when (na + p)mₙ₊₁ + (nb + q)mₙ + ncmₙ₋₁ = 0 for every n ≥ 0. Omit the last term at n = 0.
+
+**How the definition helps.** In our own comparison, differentiating the test polynomial replaces integration by parts against a differentiable weight. Testing on each power of x gives the recurrence directly. Powers span the polynomials, so linearity gives the converse. Finding a functional that gives classical orthogonal polynomials is a separate problem.
+
+**Paper or page:** [Classical orthogonal polynomials revisited](https://arxiv.org/abs/2110.00401v1). It says: “satisfies the distributional differential equation”
+
+**Sources:**
+
+- [K. Castillo, J. Petronilho. Classical orthogonal polynomials revisited](https://arxiv.org/abs/2110.00401v1)
+
 ### Rodrigues’s formula makes the Jacobi reflection symmetry a change of variable
 
 **Remember:** Reflection swaps the two weight factors and negates each derivative.
@@ -644,6 +694,22 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Mellin powers shift Meijer parameters
+
+**Remember:** A power of z shifts the Mellin variable.
+
+*True by definition.* MSC 33C60 (Hypergeometric integrals and functions defined by them (\\(E\\), \\(G\\), \\(H\\) and \\(I\\) functions)). arXiv math.CA. Level 3: graduate.
+
+**Definition.** Represent Meijer’s G-function by a complex contour integral. Use the convention whose integrand contains exp(s log z) times a quotient of gamma products. The gamma arguments have the forms b − s, 1 − a + s, 1 − b + s and a − s. Here a and b range over the upper and lower parameter lists, respectively.
+
+**Problem.** Multiplying the function by exp(h log z) adds h to every upper and lower parameter. Fix one logarithm of z and translate the integration path by h wherever the original integral converges.
+
+**How the definition helps.** In our own proof, multiplying exponentials replaces s by s + h in the power of z. Changing variables then adds h to every parameter in the gamma factors. This single substitution replaces separate calculations in the different series expansions of the function. The work lies in establishing the contour representation and its convergence.
+
+**Wikipedia:** [Meijer G-function](https://en.wikipedia.org/wiki/Meijer_G-function). It says: “a functional equation that allows to liberate from a G-function”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Coincident Appell arguments give Gauss
 
 **Remember:** Two equal Appell inputs combine their exponents into one Gauss parameter.
@@ -662,6 +728,38 @@
 
 - [Émile Picard, Sur une extension aux fonctions de deux variables du problème de Riemann relatif aux fonctions hypergéométriques (1881)](https://www.numdam.org/item/ASENS_1881_2_10__305_0/)
 
+### Geometric products give q-gamma multiplication
+
+**Remember:** Split the product into residue classes to change the base to qⁿ.
+
+*True by definition.* MSC 33D05 (\\(q\\)-gamma functions, \\(q\\)-beta functions and integrals), 39A13. arXiv math.CA. Level 3: graduate.
+
+**Definition.** Fix 0 &lt; q &lt; 1 and x &gt; 0. Define G(q,x) by multiplying (1−q)⁽¹⁻ˣ⁾ by the infinite product of (1−qᵏ⁺¹)/(1−qᵏ⁺ˣ) over integers k ≥ 0.
+
+**Problem.** Fix an integer n ≥ 2 and write r = qⁿ. Form C by multiplying G(r,j/n) over 1 ≤ j &lt; n. Then C G(q,nx) equals \[(1−r)/(1−q)\]⁽ⁿˣ⁻¹⁾ times the product of G(r,x+j/n) over 0 ≤ j &lt; n.
+
+**How the definition helps.** The infinite product exposes the n residue classes that a recurrence in x hides. Our own derivation groups denominator factors by writing k = nj+i with 0 ≤ i &lt; n. Each group gives the denominator for G(r,x+i/n). Convergence justifies regrouping, and evaluation at x = 1/n fixes the constant independent of x.
+
+**Wikipedia:** [q-gamma function](https://en.wikipedia.org/wiki/q-gamma_function). It says: “Γq(nx)Γr(1/n)Γr(2/n)⋯Γr((n−1)/n) = ((1−qⁿ)/(1−q))⁽ⁿˣ⁻¹⁾ Γr(x)Γr(x+1/n)⋯Γr(x+(n−1)/n), r = qⁿ”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### One product shift proves the q-binomial theorem
+
+**Remember:** Peel off the first factor to find every coefficient.
+
+*True by definition.* MSC 33D15 (Basic hypergeometric functions in one variable, \\(\_r\\phi<sub>s</sub>\\)). arXiv math.CA. Level 3: graduate.
+
+**Definition.** For 0 &lt; \|q\| &lt; 1 and \|z\| &lt; 1, define F(z) by multiplying (1 − aqʲz)/(1 − qʲz) over integers j ≥ 0.
+
+**Problem.** On \|z\| &lt; 1, this quotient of products equals the q-binomial series. Its coefficient of degree n is the product of the first n factors (1 − aqʲ)/(1 − qʲ⁺¹), starting at j = 0.
+
+**How the definition helps.** Removing the first factor gives (1 − z)F(z) = (1 − az)F(qz). In our own comparison, the product gives this equation without manipulating the series coefficients first. Comparing powers of z fixes each coefficient from the previous one, starting with F(0) = 1. Convergence of the product on compact subsets of the disk justifies the power series expansion.
+
+**Wikipedia:** [Basic hypergeometric series](https://en.wikipedia.org/wiki/Basic_hypergeometric_series). It says: “₁φ₀(a;q,z) = (az;q)∞/(z;q)∞”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### A theta shift reindexes terms
 
 **Remember:** One theta shift adds a full turn, and the other shifts the summation index.
@@ -677,6 +775,22 @@
 **nLab:** [Jacobi theta function](https://ncatlab.org/nlab/show/Jacobi+theta+function). It says: “The fundamental example of theta functions is the Jacobi theta function given by”
 
 **Paper or page:** [Kronecker theta function and a decomposition theorem for theta functions I](https://arxiv.org/abs/2012.01670v1). It says: “θ₃(z\|τ) = θ₃(z+π\|τ) = q¹ᐟ² e²ⁱᶻ θ₃(z+πτ\|τ)”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Arithmetic–geometric means evaluate elliptic integrals
+
+**Remember:** Keep the integral unchanged until its integrand is constant.
+
+*Makes the theorem clean to state or prove.* MSC 33E05 (Elliptic functions and integrals). arXiv math.CA. Level 3: graduate.
+
+**Definition.** Replace two positive numbers by their arithmetic and geometric means, then repeat. Their common limit is the arithmetic–geometric mean.
+
+**Problem.** For 0 ≤ k &lt; 1, integrate 1/√(1 − k² sin²t) from zero to π/2. This complete elliptic integral equals π divided by twice the arithmetic–geometric mean of 1 and √(1 − k²).
+
+**How the definition helps.** The common limit turns a sequence of equal integrals into one with a constant integrand. Landen’s transformation preserves the integral at each step. Our own limit argument bounds every integrand by the reciprocal of the smaller starting value. The work lies in proving the transformation and the convergence of the two means.
+
+**Wikipedia:** [Landen's transformation](https://en.wikipedia.org/wiki/Landen%27s_transformation). It says: “In the limit, the integrand becomes a constant, so that integration is trivial”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -698,6 +812,54 @@
 
 - [S. N. M. Ruijsenaars, First order analytic difference equations and integrable quantum systems (1997)](https://doi.org/10.1063/1.531809)
 
+### Lattice sums give Weierstrass scaling
+
+**Remember:** Scale the argument and the whole lattice together.
+
+*True by definition.* MSC 33E05 (Elliptic functions and integrals). arXiv math.CA. Level 3: graduate.
+
+**Definition.** A lattice consists of all integer combinations of two complex numbers independent over the reals. For z outside the lattice, define ℘ by adding z⁻² to the sum of (z − λ)⁻² − λ⁻² over nonzero lattice points λ.
+
+**Problem.** Multiplying z and every lattice point by the same nonzero complex number c multiplies ℘ by 1/c².
+
+**How the definition helps.** Keeping the whole lattice as an argument makes scaling visible in each summand. In our own comparison, fixing one period to one hides the effect of changing both periods. Multiplying z and λ by c extracts the same factor 1/c² from every term. The work lies in proving absolute convergence away from the lattice, which permits this reindexing.
+
+**Wikipedia:** [Weierstrass elliptic function](https://en.wikipedia.org/wiki/Weierstrass_elliptic_function). It says: “℘ is a homogeneous function in that”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### One mean step gives Landen’s identity
+
+**Remember:** The limit stays the same after one averaging step.
+
+*True by definition.* MSC 33E05 (Elliptic functions and integrals). arXiv math.CA. Level 3: graduate.
+
+**Definition.** Start with positive numbers a and b. Repeatedly replace them by (a + b)/2 and √(ab), and call their common limit M(a,b). For 0 &lt; k &lt; 1, define K(k) = π/(2M(1,√(1 − k²))). Gauss identified this with the integral of 1/√(1 − k² sin² θ) from zero to π/2.
+
+**Problem.** Write h = √(1 − k²). Then K(k) = 2K((1 − h)/(1 + h))/(1 + h).
+
+**How the definition helps.** In our own derivation, starting one step later gives the same limit. Starting from 1,h gives the pair A,√h with A = (1 + h)/2. Scaling both entries scales every later pair, so M(1,h) = A M(1,√h/A). Set u = (1 − h)/(1 + h). Since √(1 − u²) = √h/A, the formula for K gives K(k) = K(u)/A. Gauss’s integral identity does the work of connecting this iteration with the elliptic integral.
+
+**Wikipedia:** [Arithmetic–geometric mean](https://en.wikipedia.org/wiki/Arithmetic%E2%80%93geometric_mean). It says: “K(k) = π/(2M(1,√(1−k²))).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Sigma factors give Weierstrass differences
+
+**Remember:** Sigma factors put the zeros and poles in place.
+
+*Makes the theorem clean to state or prove.* MSC 33E05 (Elliptic functions and integrals). arXiv math.CA. Level 3: graduate.
+
+**Definition.** Fix a lattice of complex periods, the integer combinations of two periods independent over the reals. The Weierstrass sigma function σ is the standard entire product with simple zeros at the lattice points and σ′(0) = 1. Translated factors place zeros at chosen points, while denominator factors place poles.
+
+**Problem.** For v outside the lattice, ℘(u) − ℘(v) equals −σ(u + v)σ(u − v) divided by σ(u)²σ(v)², as meromorphic functions of u.
+
+**How the definition helps.** Translated sigma factors encode the zeros and poles of the difference directly. The even Weierstrass function ℘ takes the value ℘(v) at v and −v modulo periods, counting multiplicities. The period multipliers of the displayed quotient cancel. The ratio of the two expressions is therefore periodic and has no poles, so it is constant. The leading term at u = 0 fixes that constant. Our own account places the work in the period formulas and the count of zeros with multiplicity.
+
+**Wikipedia:** [Weierstrass elliptic function](https://en.wikipedia.org/wiki/Weierstrass_elliptic_function). It says: “℘(u)−℘(v)=−σ(u+v)σ(u−v)/(σ(u)²σ(v)²).”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Subtracting 1/λ² makes the Weierstrass ℘ series converge without a constant
 
 **Remember:** Subtract each pole's value at zero, and ℘ converges with no constant term.
@@ -714,6 +876,40 @@
 
 **Sources:** none listed. No primary source with a working link was found.
 
+### Theta quotients avoid amplitude branches
+
+**Remember:** Theta quotients give single-valued functions without choosing an angle.
+
+*True by definition.* MSC 33E05 (Elliptic functions and integrals). arXiv math.CA. Level 3: graduate.
+
+**Definition.** Fix 0 &lt; m &lt; 1 and let K be the integral of 1/√(1 − m sin²t) from zero to π/2. Evaluate the four Jacobi theta series at πu/(2K) with parameter exp(−πK′/K), where K′ uses 1 − m. Define sn, cn and dn as constant multiples of θ₁/θ₄, θ₂/θ₄ and θ₃/θ₄, respectively. Choose the constants so that sn′(0) = 1 and cn(0) = dn(0) = 1.
+
+**Problem.** The three functions extend from the real line to single-valued meromorphic functions on the complex plane.
+
+**How the definition helps.** Each theta series is analytic throughout the plane, so its quotient gives a single-valued function with at most poles. In our own comparison, the amplitude definition first inverts an elliptic integral and requires a choice of inverse branch. The work lies in proving that the quotients agree on the real axis with the functions defined using that inverse.
+
+**Wikipedia:** [Jacobi elliptic functions](https://en.wikipedia.org/wiki/Jacobi_elliptic_functions). It says: “Equivalently, Jacobi's elliptic functions can be defined in terms of the theta functions.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Theta series solve heat equations
+
+**Remember:** Two space derivatives give the same factor as one time derivative.
+
+*True by definition.* MSC 33E05 (Elliptic functions and integrals), 35K05. arXiv math.CA. Level 3: graduate.
+
+**Definition.** Define the Jacobi theta function by summing exp(πin²τ + 2πinz) over all integers n, with Im τ &gt; 0. Set z = x on the circle of circumference one and τ = 4πit.
+
+**Problem.** For t &gt; 0 the time derivative equals the second space derivative. As t decreases to zero, integration against any smooth periodic test function tends to its value at zero.
+
+**How the definition helps.** The theta series gives each Fourier mode exactly the decay required by the heat equation. In our own comparison, the series supplies the solution directly instead of requiring a separate differential equation for every mode. Exponential decay justifies differentiation for positive time. Fourier inversion gives the initial point mass.
+
+**nLab:** [Jacobi theta function](https://ncatlab.org/nlab/show/Jacobi+theta+function). It says: “The fundamental example of theta functions is the Jacobi theta function given by”
+
+**Wikipedia:** [Theta function](https://en.wikipedia.org/wiki/Theta_function). It says: “The Jacobi theta function is the fundamental solution of the one-dimensional heat equation with spatially periodic boundary conditions.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
 ### Two periods forbid lone simple poles
 
 **Remember:** Opposite edges cancel, so one nonzero residue cannot stand alone.
@@ -727,6 +923,22 @@
 **How the definition helps.** In our own proof, the two periods cancel the integrals along opposite sides of a period parallelogram whose boundary avoids all poles. The residue theorem then gives zero for the sum of residues inside. A residue is the coefficient of 1/(z − a) near a pole a. A simple pole has nonzero residue. Our own counterexample, cot z, has one simple pole per period strip.
 
 **Wikipedia:** [Elliptic function](https://en.wikipedia.org/wiki/Elliptic_function). It says: “Every elliptic function has finitely many poles in ℂ/Λ and the sum of its residues is zero.”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Weierstrass coordinates generate elliptic functions
+
+**Remember:** The even part uses ℘ and the odd part uses ℘′.
+
+*Makes the theorem clean to state or prove.* MSC 33E05 (Elliptic functions and integrals), 30F10. arXiv math.CA. Level 3: graduate.
+
+**Definition.** A period lattice consists of all integer combinations of two complex numbers independent over the reals. Its Weierstrass function ℘ is even and periodic, with double poles precisely at the lattice points. Normalize it by requiring ℘(z) − 1/z² to tend to zero at the origin. Use ℘ and its odd derivative as coordinates.
+
+**Problem.** Every function periodic under this lattice and analytic except at poles is a rational expression in ℘ and ℘′.
+
+**How the definition helps.** The two coordinates separate the even and odd parts of any such function. In our own proof, ℘ takes the same value precisely at opposite points modulo periods, counting a repeated point twice. Thus every even function gives a meromorphic function of ℘ on the sphere, hence a rational one. Dividing the odd part by ℘′ makes it even. The work lies in proving the description of the fibers and meromorphicity at their repeated points.
+
+**Wikipedia:** [Elliptic function](https://en.wikipedia.org/wiki/Elliptic_function). It says: “Every elliptic function with respect to a given period lattice Λ can be expressed as a rational function in terms of ℘ and ℘′.”
 
 **Sources:** none listed. No primary source with a working link was found.
 
@@ -747,6 +959,148 @@
 **Sources:**
 
 - [Peter Reinhard Hansen and Chen Tong, A Unifying Integral Representation of the Gamma Function and Its Reciprocal, Theorem 1](https://arxiv.org/abs/2506.12112v1)
+
+### Normalized convolution joins parameters
+
+**Remember:** Divide out the binomial before multiplying coefficients.
+
+*True by definition.* MSC 33C20 (Generalized hypergeometric series, \\(\_pF<sub>q</sub>\\)). arXiv math.CA. Level 4: research.
+
+**Definition.** Let Bₖ be the coefficient of degree k in (1 − x)ⁿ. In the constant-term-one convention, finite free multiplicative convolution multiplies corresponding coefficients and divides each product by Bₖ.
+
+**Problem.** A terminating hypergeometric polynomial has coefficients built from rising products, such as a(a + 1)⋯(a + k − 1). An upper parameter contributes a numerator product, and a lower parameter contributes a denominator product. Convolving two such polynomials with upper parameter −n joins their remaining parameter lists, provided all denominators through degree n are nonzero.
+
+**How the definition helps.** In our own comparison, ordinary coefficientwise multiplication counts the coefficient Bₖ twice. The convolution divides out one copy, leaving precisely the rising products from both lists. The work lies in identifying Bₖ as the contribution from −n and the factorial denominator.
+
+**Paper or page:** [Zeros of generalized hypergeometric polynomials via finite free convolution. Applications to multiple orthogonality](https://arxiv.org/abs/2404.11479v2). It says: “then their n-th free multiplicative convolution is given by”
+
+**Sources:**
+
+- [Andrei Martinez-Finkelshtein, Rafael Morales, Daniel Perales. Zeros of generalized hypergeometric polynomials via finite free convolution. Applications to multiple orthogonality](https://arxiv.org/abs/2404.11479v2)
+
+### Disjoint weights locate zeros
+
+**Remember:** Each interval contributes its own sign changes to the degree count.
+
+*Rules out counterexamples.* MSC 33C47 (Other special orthogonal polynomials and functions), 42C05. arXiv math.CA. Level 4: research.
+
+**Definition.** An Angelesco system assigns a positive measure with finite moments and infinite support to each of several intervals with disjoint interiors. For measure j, require the polynomial to integrate to zero against each power from degree zero through nⱼ − 1.
+
+**Problem.** The polynomial with leading coefficient one and degree n₁ + ⋯ + nᵣ satisfying these conditions has exactly nⱼ simple zeros inside interval j.
+
+**How the definition helps.** In our own proof, disjoint interiors let the degree count include each sign change only once. For each interval, multiply the linear factors corresponding to its interior sign changes. If their number were below nⱼ, orthogonality would force the integral of this product times the polynomial to vanish. Yet the integrand has constant sign and is nonzero on part of the support. The total degree leaves room for exactly the required zeros. Our own counterexample uses two identical measures at index (1,1), which impose only one independent condition.
+
+**Paper or page:** [Zeros of Multiple Orthogonal Polynomials: Location and Interlacing](https://arxiv.org/abs/2503.15122v1). It says: “Then Pₙ has exactly nⱼ zeros on each Γ̊ⱼ, and each zero is simple.”
+
+**Sources:**
+
+- [Rostyslav Kozhan, Marcus Vaktnäs. Zeros of Multiple Orthogonal Polynomials: Location and Interlacing](https://arxiv.org/abs/2503.15122v1)
+
+### Divided differences clear Uvarov denominators
+
+**Remember:** Subtract the value at z to leave a polynomial.
+
+*True by definition.* MSC 33C47 (Other special orthogonal polynomials and functions), 42C05. arXiv math.CA. Level 4: research.
+
+**Definition.** A matrix measure has a measure in each entry. Denote the old and new matrices by μ and ν. A Uvarov change requires dν(x)R(x) = L(x)dμ(x) for polynomial matrices L and R of compatible sizes. Define the Cauchy transform by integrating each entry divided by z − x.
+
+**Problem.** Take z outside both supports and assume the measures have finite moments through the degrees of L and R. The new transform times R(z) equals L(z) times the old transform plus a polynomial matrix. Its degree is at most the larger matrix degree minus one, with zero correction for two constant matrices.
+
+**How the definition helps.** In our own comparison, the Cauchy transform collects all moment relations into one identity. Subtract the measure relation inside the integral. Each difference, R(z) − R(x) or L(z) − L(x), contains the factor z − x. This gives the degree bound without solving any moment equations. Constructing the new measure is a separate problem.
+
+**Paper or page:** [Uvarov Perturbations for Multiple Orthogonal Polynomials of the Mixed Type on the Step-Line](https://arxiv.org/abs/2510.13754v1). It says: “induces a matrix linear spectral transformation of the form”
+
+**Sources:**
+
+- [Manuel Mañas, Miguel Rojas. Uvarov Perturbations for Multiple Orthogonal Polynomials of the Mixed Type on the Step-Line](https://arxiv.org/abs/2510.13754v1)
+
+### Double shifts detect Wronskian zeros
+
+**Remember:** A double zero puts a squared factor into the measure.
+
+*Makes the theorem clean to state or prove.* MSC 33C47 (Other special orthogonal polynomials and functions), 42C05. arXiv math.CA. Level 4: research.
+
+**Definition.** For each measure j with finite moments, require a polynomial to integrate to zero against the first nⱼ powers, starting with 1. Write N for the sum of the counts nⱼ. Call the list of counts normal if exactly one degree-N polynomial with leading coefficient one meets these conditions.
+
+**Problem.** Take two normal lists, the second formed by increasing one count by one. Their Wronskian is the determinant of their polynomial values and first derivatives. It vanishes at z exactly when multiplying every measure by (x − z)² destroys normality for the lower list.
+
+**How the definition helps.** Normality lets us express a double-root condition as a uniqueness test on the measures. In our own proof, the two polynomials span all solutions of the lower conditions through degree N + 1. Their degrees differ, and normality gives this solution space dimension two. The determinant vanishes exactly when some nonzero combination has a double root at z. Dividing by (x − z)² gives a solution of degree below N for the modified measures. Multiplication gives the converse.
+
+**Paper or page:** [Zeros of Multiple Orthogonal Polynomials: Location and Interlacing](https://arxiv.org/abs/2503.15122v1). It says: “Assume n and n + eⱼ are normal for μ.”
+
+**Sources:**
+
+- [Rostyslav Kozhan, Marcus Vaktnäs. Zeros of Multiple Orthogonal Polynomials: Location and Interlacing](https://arxiv.org/abs/2503.15122v1)
+
+### Separate intervals locate orthogonal zeros
+
+**Remember:** Each separate interval needs its own quota of sign changes.
+
+*Rules out counterexamples.* MSC 33C47 (Other special orthogonal polynomials and functions). arXiv math.CA. Level 4: research.
+
+**Definition.** An Angelesco system assigns positive measures to real intervals with disjoint interiors. Here assume disjoint closed intervals, infinite supports, and finite integrals of all absolute powers. Choose nonnegative integers nⱼ and seek a monic polynomial P of degree equal to their sum. For measure j, require the integral of PQ to vanish for every polynomial Q of degree below nⱼ.
+
+**Problem.** The polynomial has exactly nⱼ simple zeros inside interval j for each j.
+
+**How the definition helps.** In our own proof, separate intervals let us count sign changes for each measure without counting any root twice. In interval j, form Q by multiplying one linear factor for each interior root where P changes sign. The polynomial PQ has constant sign and nonzero integral there. Orthogonality therefore forces Q to have degree at least nⱼ. Adding these bounds exhausts the degree of P, so all roots are simple. In our own counterexample, take two identical uniform measures on \[−1,1\] and prescribe one root per interval. The polynomial x² − 1/3 meets both integral conditions but has two roots there.
+
+**Paper or page:** [Zeros of Multiple Orthogonal Polynomials: Location and Interlacing](https://arxiv.org/abs/2503.15122). It says: “Then Pₙ has exactly nⱼ zeros on each Γ̊ⱼ, and each zero is simple.”
+
+**Sources:**
+
+- [Rostyslav Kozhan and Marcus Vaktnäs, Zeros of Multiple Orthogonal Polynomials: Location and Interlacing](https://arxiv.org/abs/2503.15122)
+
+### Shifted measures detect zeros
+
+**Remember:** Insert a root by multiplying each measure by its linear factor.
+
+*Makes the theorem clean to state or prove.* MSC 33C47 (Other special orthogonal polynomials and functions), 42C05. arXiv math.CA. Level 4: research.
+
+**Definition.** For each measure j with finite moments, require a polynomial to integrate to zero against the first nⱼ powers, starting with 1. Write N for the sum of the counts nⱼ. Call the list of counts normal if exactly one degree-N polynomial with leading coefficient one meets these conditions.
+
+**Problem.** For a normal list, z is a root of its polynomial exactly when multiplying each measure by x − z destroys normality.
+
+**How the definition helps.** Normality lets us state a root test using only uniqueness for modified measures. In our own proof, loss of normality means a nonzero polynomial of degree below N satisfies the modified equations. Multiplying it by x − z gives a multiple of the original polynomial, by uniqueness. Conversely, dividing the original polynomial by its root factor gives a solution of the modified equations of degree below N.
+
+**Paper or page:** [Zeros of Multiple Orthogonal Polynomials: Location and Interlacing](https://arxiv.org/abs/2503.15122v1). It says: “Let n be normal with respect to μ.”
+
+**Sources:**
+
+- [Rostyslav Kozhan, Marcus Vaktnäs. Zeros of Multiple Orthogonal Polynomials: Location and Interlacing](https://arxiv.org/abs/2503.15122v1)
+
+### Macdonald operators give orthogonality
+
+**Remember:** Distinct joint eigenvalues give orthogonal polynomials.
+
+*True by definition.* MSC 33D52 (Basic orthogonal polynomials and functions associated with root systems (Macdonald polynomials, etc.)). arXiv math.CA. Level 4: research.
+
+**Definition.** A difference operator forms a weighted sum of function values at shifted arguments. Define Macdonald polynomials as common eigenvectors of their commuting difference operators. Fix the scale by giving the leading symmetric monomial sum coefficient one.
+
+**Problem.** For generic parameters, distinct labels have different lists of eigenvalues. The corresponding polynomials are orthogonal for the Macdonald inner product.
+
+**How the definition helps.** For each pair, one self-adjoint operator distinguishes their eigenvalues and therefore forces their inner product to vanish. Self-adjoint means the operator can move between the two arguments of the inner product. Our own comparison starts from the usual expansion, which allows only lower symmetric monomials after the leading one. The work lies in constructing the operators and identifying their eigenvectors with those polynomials.
+
+**Wikipedia:** [Macdonald polynomials](https://en.wikipedia.org/wiki/Macdonald_polynomials). It says: “for an algebra of commuting self-adjoint operators with 1-dimensional eigenspaces”
+
+**Sources:** none listed. No primary source with a working link was found.
+
+### Balanced parameters give elliptic ratios
+
+**Remember:** Matching parameter products cancel the period multiplier.
+
+*Rules out counterexamples.* MSC 33E05 (Elliptic functions and integrals), 33D15. arXiv math.CA. Level 4: research.
+
+**Definition.** Fix 0 &lt; \|p\| &lt; 1. Define θ(x;p) by multiplying (1 − xpʲ)(1 − pʲ⁺¹/x) over integers j ≥ 0 for x ≠ 0. Form a ratio with equally many factors θ(ax;p) above and θ(bx;p) below. Call the parameters balanced when all are nonzero and the product of the upper parameters equals the product of the lower ones.
+
+**Problem.** A balanced ratio gives a meromorphic function on the complex torus formed by identifying each nonzero x with px.
+
+**How the definition helps.** In our own calculation, balance cancels the multiplier produced by replacing x with px. Shifting the infinite product gives θ(px;p) = −θ(x;p)/x. Equal list lengths cancel the signs and powers of x, while balance cancels the remaining constants. Our own counterexample θ(2x;p)/θ(3x;p) gains a factor of 3/2. This period test explains how theta products supply consecutive-term ratios for elliptic hypergeometric series.
+
+**Wikipedia:** [Elliptic hypergeometric series](https://en.wikipedia.org/wiki/Elliptic_hypergeometric_series). It says: “the ratio cₙ/cₙ₋₁ is an elliptic function of n”
+
+**Sources:**
+
+- [S. Ole Warnaar, Summation and transformation formulas for elliptic hypergeometric series (2002)](https://doi.org/10.1007/s00365-002-0501-6)
 
 ### Nonmatching multipliers make residues decisive
 

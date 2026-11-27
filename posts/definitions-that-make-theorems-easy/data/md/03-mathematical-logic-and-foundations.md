@@ -4141,6 +4141,24 @@
 
 - [Moreno Pierobon and Matteo Viale, Boolean valued models, presheaves, and étalé spaces, arXiv:2006.14852 (2023)](https://arxiv.org/abs/2006.14852)
 
+### Mixing supplies existential witnesses
+
+**Remember:** Refine the join into disjoint pieces, then mix the witnesses.
+
+*Rules out counterexamples.* MSC 03C90 (Nonclassical models (Boolean-valued, sheaf, etc.)), 06E10. arXiv math.LO. Level 4: research.
+
+**Definition.** A Boolean-valued model assigns formulas values in a Boolean algebra with all least upper bounds, called joins. An existential formula has value equal to the join of its possible witnesses’ values. Mixing allows any family of witnesses on pairwise disjoint nonzero Boolean pieces to agree with one element on their respective pieces. Agreement on a piece means that the Boolean value of equality contains that piece.
+
+**Problem.** In a Boolean-valued model with mixing, every existential truth value equals the value given by some single witness.
+
+**How the definition helps.** Mixing combines witnesses from disjoint pieces into one witness with the full existential value. Our own proof chooses a maximal disjoint family of pieces, each below the value of some witness. Their join is the existential value, since any uncovered part would meet another witness value. Choose a witness on each piece and mix them. Substitution for Boolean equality makes the formula true on each piece for the resulting witness. Our own counterexample assigns a predicate complementary nonzero values on a two-element model with ordinary equality. Its existential value is one, yet neither element attains it.
+
+**Paper or page:** [Boolean valued models, presheaves, and étalé spaces](https://arxiv.org/abs/2006.14852v5). It says: “Assume that ℳ satisfies the κ-mixing property for some κ ≥ min {\|𝖡\|, \|M\|}. Then ℳ is full.”
+
+**Sources:**
+
+- [Boolean valued models, presheaves, and étalé spaces](https://arxiv.org/abs/2006.14852v5)
+
 ### Free memo lookups make ramified recurrence feasible
 
 **Remember:** Charge nothing for memo lookups, and soundness follows.
